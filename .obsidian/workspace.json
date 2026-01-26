@@ -1,0 +1,214 @@
+{
+  "main": {
+    "id": "03232a50c02b4d74",
+    "type": "split",
+    "children": [
+      {
+        "id": "ed9aff99b91e0312",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dd8c5c2d9e2327e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Table of Contents.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Table of Contents"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "b831494fc751c755",
+    "type": "split",
+    "children": [
+      {
+        "id": "6267a508464a5f60",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7d81b113f4ee749a",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "5af0e57d5d381d9d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "787b61029d292aa7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 280.5
+  },
+  "right": {
+    "id": "366214bcd0347c3d",
+    "type": "split",
+    "children": [
+      {
+        "id": "7d6146e900af2b5f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "884cc1114400c47e",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Table of Contents.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for Table of Contents"
+            }
+          },
+          {
+            "id": "eb5908b722d4f414",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Table of Contents.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from Table of Contents"
+            }
+          },
+          {
+            "id": "01f37e0b9676c98c",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "abfdfc9765375214",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "f073e008fbde31e2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Table of Contents.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Table of Contents"
+            }
+          }
+        ],
+        "currentTab": 4
+      },
+      {
+        "id": "cea43154900c12a5",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "de35f6785be6a86b",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 417.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false
+    }
+  },
+  "active": "dd8c5c2d9e2327e4",
+  "lastOpenFiles": [
+    "Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",
+    "Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
+    "Table of Contents.md",
+    "Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
+    "Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md",
+    "Underactuated Robotics, Spring 2024",
+    "Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
+    "Untitled.canvas",
+    "Optimal Control (CMU 16-745) 2025"
+  ]
+}
