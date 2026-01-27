@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 338.5
+    "width": 489.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -201,6 +201,7 @@
   },
   "active": "dd8c5c2d9e2327e4",
   "lastOpenFiles": [
+    "README.md",
     "Robot Dynamics 2022",
     "Robotic Manipulation, Fall 2023",
     "Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",

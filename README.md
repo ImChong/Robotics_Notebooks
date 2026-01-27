@@ -1,5 +1,6 @@
 # Robotics_Notebooks
 
+- [ ] [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
 - [ ] [Optimal Control (CMU 16-745) 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
 	- [ ] [[00 - Syllabus - Optimal Control]] 
 - [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
