@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -87,6 +87,7 @@
       {
         "id": "7d6146e900af2b5f",
         "type": "tabs",
+        "dimension": 41.018387553041016,
         "children": [
           {
             "id": "884cc1114400c47e",
@@ -156,13 +157,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline"
             }
           }
         ],
@@ -171,6 +171,7 @@
       {
         "id": "cea43154900c12a5",
         "type": "tabs",
+        "dimension": 58.981612446958984,
         "children": [
           {
             "id": "de35f6785be6a86b",
@@ -186,8 +187,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 401.5,
-    "collapsed": true
+    "width": 991.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -200,16 +200,21 @@
       "bases:Create new base": false
     }
   },
-  "active": "f440f38ae5c28afc",
+  "active": "de35f6785be6a86b",
   "lastOpenFiles": [
-    "人形机器人技术栈.md",
     "README.md",
     "02_Train/Framework/BeyondMimic.md",
     "02_Train/Framework/MimicKit.md",
+    "00_Theory/Theory.md",
+    "Untitled",
+    "00_Theory/Underactuated Robotics, Spring 2024/00 - Underactuated Robotics.md",
+    "00_Theory/Robotic Manipulation, Fall 2023/00 - Robotic Manipulation.md",
+    "00_Theory/Robot Dynamics 2022/00 - Robot Dynamics.md",
+    "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
+    "人形机器人技术栈.md",
     "02_Train/Simulator/IsaacGym.md",
     "Untitled.canvas",
     "02_Train/Simulator/IsaacLab.md",
-    "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
     "02_Train/Framework",
     "02_Train/Simulator",
     "01_Retarget",
@@ -218,14 +223,10 @@
     "02_Train",
     "00_Theory",
     "00_Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
-    "00_Theory/Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
-    "00_Theory/Robotic Manipulation, Fall 2023/00 - Syllabus - Robotic Manipulation.md",
     "00_Theory/Robot Dynamics 2022",
     "00_Theory/Robotic Manipulation, Fall 2023",
-    "00_Theory/Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",
     "00_Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
     "Table of Contents.md",
-    "00_Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md",
-    "00_Theory/Underactuated Robotics, Spring 2024"
+    "00_Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md"
   ]
 }

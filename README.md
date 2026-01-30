@@ -2,7 +2,7 @@
     - [ ] [ROBOTO_ORIGIN - Fully Open-Source DIY Humanoid Robot](https://github.com/Roboparty/roboto_origin?tab=readme-ov-file)
         - [ ] [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
 
-- [ ] Theory
+- [ ] [[Theory]]
     - [ ] [Optimal Control 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
     - [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
     - [ ] [Robotic Manipulation, Fall 2023](https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX)
