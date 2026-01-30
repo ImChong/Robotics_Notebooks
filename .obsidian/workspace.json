@@ -8,17 +8,31 @@
         "type": "tabs",
         "children": [
           {
-            "id": "dd8c5c2d9e2327e4",
+            "id": "1199acd3babe76c4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "README"
+            }
+          },
+          {
+            "id": "dd8c5c2d9e2327e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "00 - Syllabus - Optimal Control"
             }
           }
         ]
@@ -78,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 280.5
+    "width": 473.5
   },
   "right": {
     "id": "366214bcd0347c3d",
@@ -156,13 +170,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Untitled.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of README"
             }
           }
         ],
@@ -199,16 +213,20 @@
       "bases:Create new base": false
     }
   },
-  "active": "7d81b113f4ee749a",
+  "active": "1199acd3babe76c4",
   "lastOpenFiles": [
-    "03_Sim2Real",
-    "02_Sim2Sim",
-    "01_Train",
+    "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
     "README.md",
+    "02_Train/Framework/MimicKit.md",
+    "02_Train/Framework",
+    "02_Train/Simulator",
+    "01_Retarget",
     "Untitled.md",
+    "04_Sim2Real",
+    "03_Sim2Sim",
+    "02_Train",
     "00_Theory",
     "00_Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
-    "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
     "00_Theory/Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
     "00_Theory/Robotic Manipulation, Fall 2023/00 - Syllabus - Robotic Manipulation.md",
     "00_Theory/Robot Dynamics 2022",
@@ -218,7 +236,6 @@
     "Table of Contents.md",
     "00_Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md",
     "00_Theory/Underactuated Robotics, Spring 2024",
-    "Untitled.canvas",
-    "00_Theory/Optimal Control (CMU 16-745) 2025"
+    "Untitled.canvas"
   ]
 }

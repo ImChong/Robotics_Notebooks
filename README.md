@@ -1,18 +1,30 @@
 # Robotics_Notebooks
+
 - [ ] [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
 - [ ] Theory
 	- [ ]  [Optimal Control (CMU 16-745) 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
-		- [ ] [[00 - Syllabus - Optimal Control]] 
+		- [ ] [[00 - Syllabus - Optimal Control]]
 	- [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
 		- [ ] [[00 - Syllabus - Underactuated Robotics|00 - Syllabus - Underactuated Robotics]]
 	- [ ] [Robotic Manipulation, Fall 2023](https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX)
 		- [ ] [[00 - Syllabus - Robotic Manipulation]]
 	- [ ] [Robot Dynamics 2022](https://www.youtube.com/playlist?list=PLZnJoM76RM6ItAfZIxJYNKdaR_BobleLY)
-		- [ ] [[00 - Syllabus - Robot Dynamics]]b
+		- [ ] [[00 - Syllabus - Robot Dynamics]]
+- [ ] Retarget
+	- [ ] [GMR](https://github.com/YanjieZe/GMR)
+	- [ ] [PHC](https://github.com/ZhengyiLuo/PHC)
+	- [ ] [ProtoMotions](https://github.com/NVlabs/ProtoMotions)
+	- [ ] [OmniRetarget](https://omniretarget.github.io/)
+	- [ ] [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file)
+	- [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
 - [ ] Train
-	- [ ] IsaacGym
-	- [ ] IsaacLab
-		- [ ] IsaacSim
+	- [ ] Simulator
+		- [ ] [IsaacGym](https://docs.robotsfan.com/isaacgym/index.html)
+		- [ ] [IsaacLab](https://isaac-sim.github.io/IsaacLab/main/index.html)
+			- [ ] [IsaacSim](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html)
+	- [ ] Framework
+		- [ ] locomotion
+			- [ ] [[MimicKit]]
 - [ ] Sim2sim
 	- [ ] Mujoco
 	- [ ] Pybullet
