@@ -156,12 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Untitled.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Untitled"
             }
           }
         ],
@@ -198,21 +199,26 @@
       "bases:Create new base": false
     }
   },
-  "active": "de35f6785be6a86b",
+  "active": "7d81b113f4ee749a",
   "lastOpenFiles": [
+    "03_Sim2Real",
+    "02_Sim2Sim",
+    "01_Train",
     "README.md",
-    "Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
-    "Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
-    "Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
-    "Robotic Manipulation, Fall 2023/00 - Syllabus - Robotic Manipulation.md",
-    "Robot Dynamics 2022",
-    "Robotic Manipulation, Fall 2023",
-    "Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",
-    "Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
+    "Untitled.md",
+    "00_Theory",
+    "00_Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
+    "00_Theory/Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
+    "00_Theory/Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
+    "00_Theory/Robotic Manipulation, Fall 2023/00 - Syllabus - Robotic Manipulation.md",
+    "00_Theory/Robot Dynamics 2022",
+    "00_Theory/Robotic Manipulation, Fall 2023",
+    "00_Theory/Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",
+    "00_Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
     "Table of Contents.md",
-    "Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md",
-    "Underactuated Robotics, Spring 2024",
+    "00_Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md",
+    "00_Theory/Underactuated Robotics, Spring 2024",
     "Untitled.canvas",
-    "Optimal Control (CMU 16-745) 2025"
+    "00_Theory/Optimal Control (CMU 16-745) 2025"
   ]
 }
