@@ -19,13 +19,14 @@
 	- [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
 - [ ] Train
 	- [ ] Simulator
-		- [ ] [IsaacGym](https://docs.robotsfan.com/isaacgym/index.html)
+		- [ ] [[IsaacGym]]
 		- [ ] [IsaacLab](https://isaac-sim.github.io/IsaacLab/main/index.html)
 			- [ ] [IsaacSim](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html)
 	- [ ] Framework
 		- [ ] locomotion
 			- [ ] [[MimicKit]]
-- [ ] Sim2sim
+			- [ ] [[BeyondMimic]]
+- [ ] Sim2Sim
 	- [ ] Mujoco
 	- [ ] Pybullet
 	- [ ] Newton
