@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -157,12 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of README"
             }
           }
         ],
@@ -200,13 +201,16 @@
       "bases:Create new base": false
     }
   },
-  "active": "de35f6785be6a86b",
+  "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
     "README.md",
+    "Train/Train.md",
+    "Train/IsaacGym.md",
+    "Train/Simulator.md",
+    "Train",
     "02_Train/Framework/BeyondMimic.md",
     "02_Train/Framework/MimicKit.md",
     "00_Theory/Theory.md",
-    "Untitled",
     "00_Theory/Underactuated Robotics, Spring 2024/00 - Underactuated Robotics.md",
     "00_Theory/Robotic Manipulation, Fall 2023/00 - Robotic Manipulation.md",
     "00_Theory/Robot Dynamics 2022/00 - Robot Dynamics.md",

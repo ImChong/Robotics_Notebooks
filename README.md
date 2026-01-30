@@ -28,7 +28,7 @@
     - [ ] [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file)
     - [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
 
-- [ ] Train
+- [ ] [[Train]]
     - [ ] Hardware
         - [ ] [RTX 50系显卡上PyTorch 2.4.1使用说明](https://f0exxg5fp6u.feishu.cn/wiki/IfHdw9ILaiK4kwkbitFczocKnee?from=from_copylink)
     - [ ] Simulator
@@ -50,7 +50,7 @@
                     - [ ] [MimicKit](https://github.com/xbpeng/MimicKit)
                     - [ ] [BeyondMimic](https://github.com/HybridRobotics/whole_body_tracking)
                     - [ ] [ASAP](https://github.com/LeCAR-Lab/ASAP)
-                    - [ ] [PBHC -](https://kungfu-bot.github.io/) [KungfuBot](https://kungfu-bot.github.io/)
+                    - [ ] [PBHC-KungfuBot](https://kungfu-bot.github.io/)
                     - [ ] [ATOM01-Train](https://github.com/Roboparty/atom01_train)
             - [ ] Perception
                 - [ ] [Project Instinct](https://github.com/project-instinct/InstinctLab?tab=readme-ov-file)
