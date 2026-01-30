@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "01 - Intro and Dynamics Review"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of 01 - Intro and Dynamics Review"
             }
           }
         ],
@@ -186,7 +186,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 489.5
+    "width": 916.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -201,10 +201,10 @@
   },
   "active": "dd8c5c2d9e2327e4",
   "lastOpenFiles": [
+    "Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
+    "Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
     "README.md",
     "Robotic Manipulation, Fall 2023/00 - Syllabus - Robotic Manipulation.md",
-    "Robot Dynamics 2022/00 - Syllabus - Robot Dynamics.md",
-    "Optimal Control (CMU 16-745) 2025/00 - Syllabus - Optimal Control.md",
     "Robot Dynamics 2022",
     "Robotic Manipulation, Fall 2023",
     "Underactuated Robotics, Spring 2024/00 - Syllabus - Underactuated Robotics.md",
