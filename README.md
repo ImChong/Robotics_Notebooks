@@ -1,33 +1,75 @@
-# Robotics_Notebooks
+- [ ] [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)
+    - [ ] [ROBOTO_ORIGIN - [ ] Fully Open-Source DIY Humanoid Robot](https://github.com/Roboparty/roboto_origin?tab=readme-ov-file)
+        - [ ] [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
 
-- [ ] [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
 - [ ] Theory
-	- [ ]  [Optimal Control (CMU 16-745) 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
-		- [ ] [[00 - Syllabus - Optimal Control]]
-	- [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
-		- [ ] [[00 - Syllabus - Underactuated Robotics|00 - Syllabus - Underactuated Robotics]]
-	- [ ] [Robotic Manipulation, Fall 2023](https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX)
-		- [ ] [[00 - Syllabus - Robotic Manipulation]]
-	- [ ] [Robot Dynamics 2022](https://www.youtube.com/playlist?list=PLZnJoM76RM6ItAfZIxJYNKdaR_BobleLY)
-		- [ ] [[00 - Syllabus - Robot Dynamics]]
+    - [ ] [Optimal Control 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
+    - [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
+    - [ ] [Robotic Manipulation, Fall 2023](https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX)
+    - [ ] [Robot Dynamics 2022](https://www.youtube.com/playlist?list=PLZnJoM76RM6ItAfZIxJYNKdaR_BobleLY)
+
+- [ ] Data Set
+    - [ ] [AMASS](https://amass.is.tue.mpg.de/)
+    - [ ] [LAFAN1](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)
+    - [ ] [Mixamo](https://www.mixamo.com/#/)
+    - [ ] [Motorica Dance Dataset](https://github.com/simonalexanderson/MotoricaDanceDataset)
+    - [ ] [CMU Motion Capture Database](https://mocap.cs.cmu.edu/)
+    - [ ] [NUS Mocap](https://mocap.cs.sfu.ca/nusmocap.html)
+
+- [ ] URDF
+    - [ ] [Robot Viewer](https://viewer.robotsfan.com/)
+
 - [ ] Retarget
-	- [ ] [GMR](https://github.com/YanjieZe/GMR)
-	- [ ] [PHC](https://github.com/ZhengyiLuo/PHC)
-	- [ ] [ProtoMotions](https://github.com/NVlabs/ProtoMotions)
-	- [ ] [OmniRetarget](https://omniretarget.github.io/)
-	- [ ] [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file)
-	- [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
+    - [ ] [三维人体动捕模型 SMPL：A Skinned Multi Person Linear Model](https://yunyang1994.github.io/2021/08/21/%E4%B8%89%E7%BB%B4%E4%BA%BA%E4%BD%93%E6%A8%A1%E5%9E%8B-SMPL-A-Skinned-Multi-Person-Linear-Model/)
+    - [ ] [GMR](https://github.com/YanjieZe/GMR)
+    - [ ] [PHC](https://github.com/ZhengyiLuo/PHC)
+    - [ ] [ProtoMotions](https://github.com/NVlabs/ProtoMotions)
+    - [ ] [OmniRetarget](https://omniretarget.github.io/)
+    - [ ] [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file)
+    - [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
+
 - [ ] Train
-	- [ ] Simulator
-		- [ ] [[IsaacGym]]
-		- [ ] [IsaacLab](https://isaac-sim.github.io/IsaacLab/main/index.html)
-			- [ ] [IsaacSim](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html)
-	- [ ] Framework
-		- [ ] locomotion
-			- [ ] [[MimicKit]]
-			- [ ] [[BeyondMimic]]
+    - [ ] Hardware
+        - [ ] [RTX 50系显卡上PyTorch 2.4.1使用说明](https://f0exxg5fp6u.feishu.cn/wiki/IfHdw9ILaiK4kwkbitFczocKnee?from=from_copylink)
+    - [ ] Simulator
+        - [ ] [IsaacGym](https://docs.robotsfan.com/isaacgym/index.html)
+        - [ ] [IsaacLab](https://isaac-sim.github.io/IsaacLab/main/index.html)
+            - [ ] [IsaacSim](https://docs.isaacsim.omniverse.nvidia.com/5.1.0/index.html)
+    - [ ] Framework
+        - [ ] Locomotion
+            - [ ] Reinforcement Learning
+                - [ ] [IsaacGymEnvs](https://github.com/isaac-sim/IsaacGymEnvs)
+                - [ ] [Legged Gym](https://github.com/leggedrobotics/legged_gym)
+                - [ ] quadruped
+                    - [ ] [Robot Parkour Learning](https://github.com/ZiwenZhuang/parkour?tab=readme-ov-file)
+                - [ ] Humanoid
+                    - [ ] [Unitree RL GYM](https://github.com/unitreerobotics/unitree_rl_gym)
+                    - [ ] [Humanoid-Gym](https://github.com/roboterax/humanoid-gym)
+            - [ ] Imitation Learning
+                - [ ] Whole Body Control
+                    - [ ] [MimicKit](https://github.com/xbpeng/MimicKit)
+                    - [ ] [BeyondMimic](https://github.com/HybridRobotics/whole_body_tracking)
+                    - [ ] [ASAP](https://github.com/LeCAR-Lab/ASAP)
+                    - [ ] [PBHC -](https://kungfu-bot.github.io/) [KungfuBot](https://kungfu-bot.github.io/)
+                    - [ ] [ATOM01-Train](https://github.com/Roboparty/atom01_train)
+            - [ ] Perception
+                - [ ] [Project Instinct](https://github.com/project-instinct/InstinctLab?tab=readme-ov-file)
+                - [ ] [TienKung-Lab](https://github.com/Open-X-Humanoid/TienKung-Lab)
+        - [ ] Manipulation
+
 - [ ] Sim2Sim
-	- [ ] Mujoco
-	- [ ] Pybullet
-	- [ ] Newton
+    - [ ] [Mujoco](https://mujoco.readthedocs.io/en/stable/overview.html)
+        - [ ] [MuJoCo Playground](https://github.com/google-deepmind/mujoco_playground/)
+    - [ ] [Pybullet](https://pybullet.org/wordpress/index.php/forum-2/)
+    - [ ] Gazebo
+        - [ ] [Gazebo Classic](https://classic.gazebosim.org/tutorials)
+        - [ ] [GZ](https://gazebosim.org/docs/jetty/getstarted/)
+    - [ ] [Newton](https://newton-physics.github.io/newton/guide/overview.html)
+
 - [ ] Sim2Real
+    - [ ] [ROS2 Humble](https://docs.ros.org/en/humble/Installation.html)
+    - [ ] [ros2_control](https://control.ros.org/humble/doc/getting_started/getting_started.html)
+        - [ ] [使用模板](https://rtw.b-robotized.com/master/tutorials/index.html)
+    - [ ] 经验分享
+        - [ ] [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
+    - [ ] [ATOM01 ROS2 Deploy](https://github.com/Roboparty/atom01_deploy)

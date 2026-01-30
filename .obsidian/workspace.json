@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "README.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -201,8 +201,9 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "02_Train/Framework/BeyondMimic.md",
+    "人形机器人技术栈.md",
     "README.md",
+    "02_Train/Framework/BeyondMimic.md",
     "02_Train/Framework/MimicKit.md",
     "02_Train/Simulator/IsaacGym.md",
     "Untitled.canvas",
@@ -211,7 +212,6 @@
     "02_Train/Framework",
     "02_Train/Simulator",
     "01_Retarget",
-    "Untitled.md",
     "04_Sim2Real",
     "03_Sim2Sim",
     "02_Train",
