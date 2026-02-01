@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
-                "mode": "preview",
+                "file": "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "00 - Optimal Control"
             }
           },
           {
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md",
+                "file": "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of 00 - Optimal Control"
             }
           }
         ],
@@ -217,9 +217,11 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "Know-How",
-    "Know-How/人形机器人运动控制Know-How.md",
+    "Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
+    "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
     "README.md",
+    "Know-How/人形机器人运动控制Know-How.md",
+    "Know-How",
     "Train/IsaacGym.md",
     "Train/MimicKit.md",
     "Train/Train.md",
@@ -231,7 +233,6 @@
     "Theory/Underactuated Robotics, Spring 2024/00 - Underactuated Robotics.md",
     "Theory/Robotic Manipulation, Fall 2023/00 - Robotic Manipulation.md",
     "Theory/Robot Dynamics 2022/00 - Robot Dynamics.md",
-    "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
     "人形机器人技术栈.md",
     "02_Train/Simulator/IsaacGym.md",
     "Untitled.canvas",
@@ -243,9 +244,7 @@
     "03_Sim2Sim",
     "02_Train",
     "Theory",
-    "Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
     "Theory/Robot Dynamics 2022",
-    "Theory/Robotic Manipulation, Fall 2023",
     "Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
     "Table of Contents.md",
     "Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md"
