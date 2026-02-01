@@ -1,7 +1,7 @@
 - Know-How
     - [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)
         - [ROBOTO_ORIGIN - Fully Open-Source DIY Humanoid Robot](https://github.com/Roboparty/roboto_origin?tab=readme-ov-file)
-            - [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87)
+            - [人形机器人运动控制Know-How](https://roboparty.feishu.cn/wiki/GvUxwKVeNiGa7kku6vEcvqfKn87) [[人形机器人运动控制Know-How]]
     - [具身智能技术指南 Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide/tree/main)
 
 - Theory
