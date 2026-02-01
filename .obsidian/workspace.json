@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 266.5
+    "width": 390.5
   },
   "right": {
     "id": "366214bcd0347c3d",
@@ -188,7 +188,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 991.5
+    "width": 850.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -203,9 +203,10 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "README.md",
-    "Train/Train.md",
     "Train/IsaacGym.md",
+    "README.md",
+    "Train/MimicKit.md",
+    "Train/Train.md",
     "Train/Simulator.md",
     "Train",
     "02_Train/Framework/BeyondMimic.md",
