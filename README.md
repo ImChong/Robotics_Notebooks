@@ -5,18 +5,21 @@
     - [ ] [具身智能技术指南 Embodied-AI-Guide](https://github.com/TianxingChen/Embodied-AI-Guide/tree/main)
 
 - [ ] [[Theory]]
-    - [x] [Optimal Control 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) 
+    - [x] [Optimal Control 2025](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI)
     - [ ] [Underactuated Robotics, Spring 2024](https://www.youtube.com/playlist?list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s)
     - [ ] [Robotic Manipulation, Fall 2023](https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX)
     - [ ] [Robot Dynamics 2022](https://www.youtube.com/playlist?list=PLZnJoM76RM6ItAfZIxJYNKdaR_BobleLY)
 
-- [ ] Data Set
-    - [ ] [AMASS](https://amass.is.tue.mpg.de/)
-    - [ ] [LAFAN1](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)
-    - [ ] [Mixamo](https://www.mixamo.com/#/)
-    - [ ] [Motorica Dance Dataset](https://github.com/simonalexanderson/MotoricaDanceDataset)
-    - [ ] [CMU Motion Capture Database](https://mocap.cs.cmu.edu/)
-    - [ ] [NUS Mocap](https://mocap.cs.sfu.ca/nusmocap.html)
+- [ ] Motion
+    - [ ] Data Set
+        - [ ] [AMASS](https://amass.is.tue.mpg.de/)
+        - [ ] [LAFAN1](https://github.com/ubisoft/ubisoft-laforge-animation-dataset)
+        - [ ] [Mixamo](https://www.mixamo.com/#/)
+        - [ ] [Motorica Dance Dataset](https://github.com/simonalexanderson/MotoricaDanceDataset)
+        - [ ] [CMU Motion Capture Database](https://mocap.cs.cmu.edu/)
+        - [ ] [NUS Mocap](https://mocap.cs.sfu.ca/nusmocap.html)
+    - [ ] Motion Generation
+        - [ ] [HY-Motion 1.0: Scaling Flow Matching Models for Text-To-Motion Generation](https://arxiv.org/pdf/2512.23464)
 
 - [ ] URDF
     - [ ] [Robot Viewer](https://viewer.robotsfan.com/)
@@ -24,15 +27,22 @@
         - [ ] [Unitree](https://github.com/unitreerobotics/unitree_ros/tree/master/robots)
         - [ ] [Deep Robotics](https://github.com/DeepRoboticsLab/deep_robotics_model)
         - [ ] [MagicLabRobotics](https://github.com/MagiclabRobotics)
+    - [ ] URDF 处理
+        - [ ] [Beyond URDF](https://arxiv.org/pdf/2512.23135)
 
 - [ ] Retarget
     - [ ] [三维人体动捕模型 SMPL：A Skinned Multi Person Linear Model](https://yunyang1994.github.io/2021/08/21/%E4%B8%89%E7%BB%B4%E4%BA%BA%E4%BD%93%E6%A8%A1%E5%9E%8B-SMPL-A-Skinned-Multi-Person-Linear-Model/)
     - [ ] [GMR](https://github.com/YanjieZe/GMR)
+    - [ ] [OmniRetarget](https://omniretarget.github.io/)
+    - [ ] [SPIDER](https://github.com/facebookresearch/spider)
     - [ ] [PHC](https://github.com/ZhengyiLuo/PHC)
     - [ ] [ProtoMotions](https://github.com/NVlabs/ProtoMotions)
-    - [ ] [OmniRetarget](https://omniretarget.github.io/)
     - [ ] [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file)
     - [ ] [VideoMimic](https://github.com/hongsukchoi/VideoMimic)
+    - [ ] Motion Editing
+        - [ ] [机器人关键帧编辑器](https://github.com/cyoahs/robot_motion_editor)
+        - [ ] [robot-keyframe-kit](https://github.com/Stanford-TML/robot_keyframe_kit)
+        - [ ] [Robot Motion Editor](https://github.com/project-instinct/robot-motion-editor)
 
 - [ ] Train
     - [ ] Hardware
@@ -65,6 +75,7 @@
             - [ ] Perception
                 - [ ] [Project Instinct](https://github.com/project-instinct/InstinctLab?tab=readme-ov-file)
                 - [ ] [TienKung-Lab](https://github.com/Open-X-Humanoid/TienKung-Lab)
+                - [ ] [FastStair: Learning to Run Up Stairs with Humanoid Robots](https://arxiv.org/pdf/2601.10365)
         - [ ] Manipulation
             - [ ] Unitree
                 - [ ] [xr_teleoperate](https://github.com/unitreerobotics/xr_teleoperate)
@@ -73,17 +84,23 @@
                 - [ ] [unitree_sim_isaaclab](https://github.com/unitreerobotics/unitree_sim_isaaclab)
         - [ ] VLA
             - [ ] [UnifoLM-VLA-0](https://github.com/unitreerobotics/unifolm-vla)
+        - [ ] World Model
+            - [ ] [Robotic World Model Lite](https://github.com/leggedrobotics/robotic_world_model_lite)
+            - [ ] [LIFT: Large-scale Pretraining & Efficient Finetuning for Humanoid Control](https://github.com/bigai-ai/LIFT-humanoid)
 
 - [ ] Sim2Sim
-    - [ ] [Mujoco](https://mujoco.readthedocs.io/en/stable/overview.html)
-        - [ ] [MuJoCo Playground](https://github.com/google-deepmind/mujoco_playground/)
-        - [ ] Locomotion
-            - [ ] [Unitree mujoco](https://github.com/unitreerobotics/unitree_mujoco)
-    - [ ] [Pybullet](https://pybullet.org/wordpress/index.php/forum-2/)
-    - [ ] Gazebo
-        - [ ] [Gazebo Classic](https://classic.gazebosim.org/tutorials)
-        - [ ] [GZ](https://gazebosim.org/docs/jetty/getstarted/)
-    - [ ] [Newton](https://newton-physics.github.io/newton/guide/overview.html)
+    - [ ] Simulator
+        - [ ] [Mujoco](https://mujoco.readthedocs.io/en/stable/overview.html)
+            - [ ] [MuJoCo Playground](https://github.com/google-deepmind/mujoco_playground/)
+            - [ ] Locomotion
+                - [ ] [Unitree mujoco](https://github.com/unitreerobotics/unitree_mujoco)
+        - [ ] [Pybullet](https://pybullet.org/wordpress/index.php/forum-2/)
+        - [ ] Gazebo
+            - [ ] [Gazebo Classic](https://classic.gazebosim.org/tutorials)
+            - [ ] [GZ](https://gazebosim.org/docs/jetty/getstarted/)
+        - [ ] [Newton](https://newton-physics.github.io/newton/guide/overview.html)
+    - [ ] Framework
+        - [ ] [RoboVerse](https://github.com/RoboVerseOrg/RoboVerse)
 
 - [ ] Sim2Real
     - [ ] [ROS2 Humble](https://docs.ros.org/en/humble/Installation.html)
@@ -92,4 +109,5 @@
     - [ ] [Unitree_SDK](https://support.unitree.com/home/zh/G1_developer)
     - [ ] 经验分享
         - [ ] [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
+        - [ ] [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage?tab=readme-ov-file)
     - [ ] [ATOM01 ROS2 Deploy](https://github.com/Roboparty/atom01_deploy)

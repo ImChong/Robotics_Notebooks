@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00 - Optimal Control"
+              "title": "README"
             }
           },
           {
@@ -171,13 +171,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
+                "file": "README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 00 - Optimal Control"
+              "title": "Outline of README"
             }
           }
         ],
@@ -217,8 +217,8 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
     "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
+    "Theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md",
     "README.md",
     "Know-How/人形机器人运动控制Know-How.md",
     "Know-How",
