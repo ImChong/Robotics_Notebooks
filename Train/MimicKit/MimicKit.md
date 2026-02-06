@@ -1,7 +1,6 @@
-# 相关视频
-
-- [【NotebookLM机器人学N讲】MimicKit教数字角色像我们一样运动](https://www.bilibili.com/video/BV1Pgv6BrE1w/?spm_id_from=333.337.search-card.all.click&vd_source=75275452d1d334b4d80721d4823e4631)
-- [[SIGGRAPH Asia 2025] Physics-Based Motion Imitation with Adversarial Differential Discriminators](https://www.youtube.com/watch?v=SZpQfXNDulo)
+# 相关链接
+- https://github.com/xbpeng/MimicKit
+- https://arxiv.org/abs/2510.13794
 
 # 常用指令
 
