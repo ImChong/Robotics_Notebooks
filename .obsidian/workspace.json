@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Train/MimicKit/MimicKit.md",
+                "file": "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MimicKit"
+              "title": "MimicKit 代码仓学习计划（每天30分钟）"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Train/MimicKit/MimicKit.md",
+                "file": "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MimicKit"
+              "title": "Outline of MimicKit 代码仓学习计划（每天30分钟）"
             }
           },
           {
@@ -196,11 +196,11 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
+    "Train/MimicKit/MimicKit 每天30分钟的学习建议.md",
+    "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
     "Train/MimicKit/MimicKit - view_motion_humanoid_args.txt.md",
     "Train/MimicKit/MimicKit.md",
-    "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
     "Train/MimicKit",
-    "Train/MimicKit/MimicKit 每天30分钟的学习建议.md",
     "Train/Simulator.md",
     "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
     "Know-How/人形机器人运动控制Know-How.md",
