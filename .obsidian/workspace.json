@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
-                "mode": "preview",
+                "file": "Train/MimicKit/MimicKit - view_motion_humanoid_args.txt.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MimicKit 代码仓学习计划（每天30分钟）"
+              "title": "MimicKit - view_motion_humanoid_args.txt"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
+                "file": "Train/MimicKit/MimicKit - view_motion_humanoid_args.txt.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MimicKit 代码仓学习计划（每天30分钟）"
+              "title": "Outline of MimicKit - view_motion_humanoid_args.txt"
             }
           },
           {
@@ -180,8 +180,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 558.5,
-    "collapsed": true
+    "width": 558.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -196,8 +195,8 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "Train/MimicKit/MimicKit 每天30分钟的学习建议.md",
     "Train/MimicKit/MimicKit 代码仓学习计划（每天30分钟）.md",
+    "Train/MimicKit/MimicKit 每天30分钟的学习建议.md",
     "Train/MimicKit/MimicKit - view_motion_humanoid_args.txt.md",
     "Train/MimicKit/MimicKit.md",
     "Train/MimicKit",
