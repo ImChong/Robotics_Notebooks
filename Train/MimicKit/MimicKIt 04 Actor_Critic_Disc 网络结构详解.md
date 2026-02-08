@@ -448,3 +448,450 @@ Encoder（编码器）是 **ASE（Adversarial Skill Embeddings）** 特有的，
 | **Critic** | 打分的裁判 | 一个分数（状态价值） | Actor 学习时计算"优势" |
 | **Discriminator** | 验钞机/鉴定师 | 一个分数（真/假） | 转化为奖励信号给 Actor |
 | **Encoder** | 技能分类器 | 64 维潜变量 z | 作为条件输入给 Actor 和 Critic |
+
+
+## 网络是同时训练的吗？——训练顺序与关联关系
+
+**简短回答：是的，在一次更新中所有网络是"同时"训练的。** 它们的 loss 被加在一起，走一次 `backward()`，一个优化器同时更新所有参数。
+
+但"同时"只是表面现象，背后有严格的**数据依赖链**。下面从最简单的 PPO 讲到最复杂的 ASE。
+
+---
+
+### 1. PPO / AWR — 最简单的情况：Actor + Critic 同时更新
+
+```mermaid
+flowchart TB
+    subgraph "第1阶段: 收集数据 (rollout_train, 无梯度)"
+        R1["Actor 推理 → 产生动作 (torch.no_grad)"]
+        R2["Env.step → 获得 reward, done"]
+        R3["数据存入 exp_buffer"]
+        R1 --> R2 --> R3
+    end
+
+    subgraph "第2阶段: 准备训练数据 (_build_train_data)"
+        D1["Critic 推理 → 预估每步价值 V(s)"]
+        D2["计算 TD-lambda Return<br/>(目标值 = 真实奖励 + 折扣未来价值)"]
+        D3["advantage = 目标值 - V(s)<br/>(这个动作比平均水平好多少)"]
+        D1 --> D2 --> D3
+    end
+
+    subgraph "第3阶段: 梯度更新 (_update_model)"
+        direction TB
+        L1["actor_loss: PPO 策略梯度<br/>让 advantage 高的动作概率变大"]
+        L2["critic_loss: 均方误差<br/>让 V(s) 逼近目标值"]
+        L3["loss = actor_loss + critic_loss_weight × critic_loss"]
+        L4["optimizer.step(loss)<br/>一次 backward, 同时更新 Actor + Critic"]
+        L1 --> L3
+        L2 --> L3
+        L3 --> L4
+    end
+
+    R3 --> D1
+    D3 --> L1
+
+    style R1 fill:#E3F2FD,stroke:#1565C0
+    style L4 fill:#FF9800,color:white
+```
+
+**关键点**：Critic 的预估值在第2阶段已经 `.detach()` 了（不参与梯度计算），它只是提供一个"参考基线"。到第3阶段，Actor 和 Critic 各自的 loss 加在一起，一次 `backward()` 同时更新两者。
+
+---
+
+### 2. AMP / ADD — 加入 Discriminator 的三方联动
+
+```mermaid
+flowchart TB
+    subgraph "第1阶段: 收集数据"
+        R1["Actor 推理 → 产生动作"]
+        R2["Env.step → 获得 obs, reward, done, disc_obs"]
+        R3["disc_obs 存入 exp_buffer + disc_replay_buffer"]
+        R1 --> R2 --> R3
+    end
+
+    subgraph "第2阶段: 计算奖励 (_compute_rewards)"
+        DR1["Disc 推理 AI 的 disc_obs → 判别分数"]
+        DR2["disc_r = -log(1 - sigmoid(分数)) × scale"]
+        DR3["最终 reward = task_w × task_r + disc_w × disc_r"]
+        DR1 --> DR2 --> DR3
+    end
+
+    subgraph "第3阶段: 准备训练数据"
+        D1["Critic 推理 → V(s)"]
+        D2["TD-lambda Return → 目标值"]
+        D3["advantage = 目标值 - V(s)"]
+        D1 --> D2 --> D3
+    end
+
+    subgraph "第4阶段: 梯度更新 (_compute_loss)"
+        direction TB
+        L1["actor_loss: PPO 策略梯度"]
+        L2["critic_loss: 均方误差"]
+        L3["disc_loss:<br/>真人demo → 标签1 (BCE)<br/>AI动作 → 标签0 (BCE)<br/>+ 梯度惩罚 + 权重衰减"]
+        L4["loss = actor_loss<br/>+ critic_w × critic_loss<br/>+ disc_w × disc_loss"]
+        L5["optimizer.step(loss)<br/>一次 backward<br/>同时更新 Actor + Critic + Disc"]
+        L1 --> L4
+        L2 --> L4
+        L3 --> L4
+        L4 --> L5
+    end
+
+    R3 --> DR1
+    DR3 --> D1
+    D3 --> L1
+
+    style DR2 fill:#FFEBEE,stroke:#C62828
+    style L5 fill:#FF9800,color:white
+```
+
+**关键洞察**：Discriminator 有**两个角色**，分别在不同阶段发挥作用：
+
+| 阶段 | Disc 的角色 | 是否计算梯度 |
+|------|-----------|------------|
+| 第2阶段（计算奖励） | 当"裁判"，给 AI 动作打分转化为 reward | `torch.no_grad`，**不回传梯度** |
+| 第4阶段（更新模型） | 当"学生"，自己学习如何更好地分辨真假 | **回传梯度**，更新 Disc 参数 |
+
+这形成了一个**对抗循环**：
+- Disc 打分 → 转化成 reward → 指导 Actor 学习（Actor 间接受 Disc 影响）
+- Disc 自己也在学习变得更好 → 给出更准确的分数 → Actor 需要更努力
+
+---
+
+### 3. ASE — 四个网络的完整联动
+
+```mermaid
+flowchart TB
+    subgraph "第1阶段: 收集数据"
+        R0["随机采样潜变量 z (单位球)"]
+        R1["Actor(obs, z) → 动作"]
+        R2["Env.step → obs, reward, done, disc_obs"]
+        R3["存储 obs, action, reward, disc_obs, z"]
+        R0 --> R1 --> R2 --> R3
+    end
+
+    subgraph "第2阶段: 计算三种奖励"
+        DR1["Disc(disc_obs) → disc_r (动作自然度)"]
+        ER1["Encoder(disc_obs) → 预测的 z'"]
+        ER2["enc_r = max(0, z · z')<br/>(z' 和真实 z 有多接近)"]
+        TR1["task_r (来自环境)"]
+        MR["reward = task_w × task_r<br/>+ disc_w × disc_r<br/>+ enc_w × enc_r"]
+        DR1 --> MR
+        TR1 --> MR
+        ER1 --> ER2 --> MR
+    end
+
+    subgraph "第3阶段: 准备训练数据"
+        D1["Critic(obs, z) → V(s,z)"]
+        D2["TD-lambda Return → 目标值"]
+        D3["advantage"]
+        D1 --> D2 --> D3
+    end
+
+    subgraph "第4阶段: 梯度更新"
+        direction TB
+        L1["actor_loss: PPO + diversity_loss"]
+        L2["critic_loss: MSE"]
+        L3["disc_loss: BCE + grad penalty"]
+        L4["enc_loss: 让 Encoder 预测的 z' 接近真实 z"]
+        L5["loss = actor_loss<br/>+ critic_w × critic_loss<br/>+ disc_w × disc_loss<br/>+ enc_w × enc_loss"]
+        L6["optimizer.step(loss)<br/>一次 backward<br/>同时更新 Actor+Critic+Disc+Encoder"]
+        L1 --> L5
+        L2 --> L5
+        L3 --> L5
+        L4 --> L5
+        L5 --> L6
+    end
+
+    R3 --> DR1
+    R3 --> ER1
+    MR --> D1
+    D3 --> L1
+
+    style MR fill:#FFF3E0,stroke:#E65100
+    style L6 fill:#FF9800,color:white
+```
+
+---
+
+### 总结：一次迭代中各网络的"时间线"
+
+```mermaid
+gantt
+    title 一次训练迭代中各网络的活动时间线
+    dateFormat X
+    axisFormat %s
+
+    section 第1阶段 收集数据
+    Actor 推理 (no_grad)         :a1, 0, 10
+
+    section 第2阶段 计算奖励
+    Disc 推理打分 (no_grad)      :d1, 10, 15
+    Enc 推理打分 (no_grad, ASE)  :e1, 10, 15
+
+    section 第3阶段 准备数据
+    Critic 推理估值 (no_grad)    :c1, 15, 20
+    计算 advantage               :c2, 20, 22
+
+    section 第4阶段 梯度更新
+    Actor loss 计算              :crit1, 22, 26
+    Critic loss 计算             :crit2, 22, 26
+    Disc loss 计算               :crit3, 22, 26
+    Enc loss 计算 (ASE)          :crit4, 22, 26
+    合并loss + backward + step   :crit5, 26, 30
+```
+
+### 用大白话说清楚
+
+**所有网络用的是一个优化器，走一次 `loss.backward()`。** 具体来说：
+
+```python
+# ppo_agent._compute_loss() 核心逻辑
+loss = actor_loss + critic_w * critic_loss           # PPO
+
+# amp_agent._compute_loss() 在此基础上
+loss = loss + disc_w * disc_loss                     # +AMP
+
+# ase_agent._compute_loss() 在此基础上
+loss = loss + enc_w * enc_loss                       # +ASE
+
+# 然后一步到位
+optimizer.step(loss)  # 一次 backward，所有网络参数同时更新
+```
+
+| 问题 | 回答 |
+|------|------|
+| **是同时训练吗？** | 是。所有 loss 加在一起，一次 backward，一个优化器 step |
+| **有先后依赖吗？** | 有。**数据准备**有严格的先后顺序（Disc/Enc 先算 reward → Critic 算 advantage → 然后才能计算 loss），但**参数更新**是同时的 |
+| **为什么能同时？** | 因为各个 loss 作用在不同的网络参数上：actor_loss 的梯度只流过 Actor 参数，disc_loss 的梯度只流过 Disc 参数，互不干扰 |
+| **权重如何平衡？** | 通过 `critic_loss_weight`、`disc_loss_weight`、`enc_loss_weight` 控制各网络学习的相对速度 |
+
+
+## 核心原理：梯度只沿着计算图流动
+
+一次 `backward()` 确实对**所有参数**计算了梯度，然后优化器也确实**同时更新了所有参数**。但关键是——**如果某个 loss 的计算图根本没经过某个网络的参数，那该参数的梯度对这个 loss 就是 0。**
+
+用一个极简的例子说明：
+
+```python
+# 假设有两个完全独立的网络
+net_A = Linear(10, 5)   # 参数: w_A
+net_B = Linear(10, 5)   # 参数: w_B
+
+# 各自计算 loss
+loss_A = net_A(input_1).sum()    # 计算图只经过 w_A
+loss_B = net_B(input_2).sum()    # 计算图只经过 w_B
+
+# 加在一起
+total_loss = loss_A + loss_B
+
+# 一次 backward
+total_loss.backward()
+```
+
+此时会发生什么？
+
+| 参数 | `loss_A` 对它的梯度 | `loss_B` 对它的梯度 | 总梯度 |
+|------|-------------------|-------------------|--------|
+| `w_A` | **有值**（因为 `loss_A` 经过了 `net_A`） | **0**（因为 `loss_B` 完全没碰 `net_A`） | = `∂loss_A/∂w_A` |
+| `w_B` | **0**（因为 `loss_A` 完全没碰 `net_B`） | **有值**（因为 `loss_B` 经过了 `net_B`） | = `∂loss_B/∂w_B` |
+
+**加法的导数是各项导数之和。某一项对某个参数没有依赖关系，导数就是 0，加了也等于没加。**
+
+---
+
+## 结合 MimicKit 代码验证
+
+以 AMP 为例，看 `_compute_loss` 的实际代码。
+
+`amp_agent.py` 第 118-128 行：
+
+```118:128:mimickit/learning/amp_agent.py
+    def _compute_loss(self, batch):
+        info = super()._compute_loss(batch)
+
+        disc_info = self._compute_disc_loss(batch)
+        disc_loss = disc_info["disc_loss"]
+
+        loss = info["loss"]
+        loss = loss + self._disc_loss_weight * disc_loss
+        info["loss"] = loss
+        info = {**info, **disc_info}
+        return info
+```
+
+其中 `super()._compute_loss()` 来自 `ppo_agent.py` 第 169-182 行：
+
+```169:182:mimickit/learning/ppo_agent.py
+    def _compute_loss(self, batch):
+        batch["norm_obs"] = self._obs_norm.normalize(batch["obs"])
+        batch["norm_action"] = self._a_norm.normalize(batch["action"])
+
+        critic_info = self._compute_critic_loss(batch)
+        actor_info = self._compute_actor_loss(batch)
+
+        critic_loss = critic_info["critic_loss"]
+        actor_loss = actor_info["actor_loss"]
+
+        loss = actor_loss + self._critic_loss_weight * critic_loss
+
+        info = {"loss":loss, **critic_info, **actor_info}
+        return info
+```
+
+最终的 total loss 是：
+
+```python
+total_loss = actor_loss + critic_w * critic_loss + disc_w * disc_loss
+```
+
+现在来跟踪每个 loss 的**计算图**经过了哪些网络参数：
+
+### actor_loss 的计算图
+
+```198:213:mimickit/learning/ppo_agent.py
+    def _compute_actor_loss(self, batch):
+        norm_obs = batch["norm_obs"]
+        norm_a = batch["norm_action"]
+        old_a_logp = batch["a_logp"]
+        adv = batch["adv"]
+        # ...
+        a_dist = self._model.eval_actor(norm_obs)  # ← 经过 Actor 网络
+        a_logp = a_dist.log_prob(norm_a)
+
+        a_ratio = torch.exp(a_logp - old_a_logp)
+        # ...
+        actor_loss = -torch.mean(actor_loss)
+```
+
+`eval_actor` 经过了 `_actor_layers` + `_action_dist`。所以：
+
+> **actor_loss 的计算图只包含 Actor 的参数**
+
+### critic_loss 的计算图
+
+```184:196:mimickit/learning/ppo_agent.py
+    def _compute_critic_loss(self, batch):
+        norm_obs = batch["norm_obs"]
+        tar_val = batch["tar_val"]
+        pred = self._model.eval_critic(norm_obs)  # ← 经过 Critic 网络
+        pred = pred.squeeze(-1)
+
+        diff = tar_val - pred
+        loss = torch.mean(torch.square(diff))
+```
+
+`eval_critic` 经过了 `_critic_layers` + `_critic_out`。而 `tar_val` 在 `_build_train_data` 中已经 `.detach()` 了，它只是一个**数值常量**，不携带任何计算图。
+
+> **critic_loss 的计算图只包含 Critic 的参数**
+
+### disc_loss 的计算图
+
+```130:149:mimickit/learning/amp_agent.py
+    def _compute_disc_loss(self, batch):
+        disc_obs = batch["disc_obs"]
+        disc_demo_obs = batch["disc_obs_demo"]
+        # ...
+        disc_agent_logit = self._model.eval_disc(norm_disc_obs)      # ← 经过 Disc 网络
+        disc_demo_logit = self._model.eval_disc(norm_disc_obs_demo)  # ← 经过 Disc 网络
+
+        disc_loss_agent = self._disc_loss_neg(disc_agent_logit)
+        disc_loss_demo = self._disc_loss_pos(disc_demo_logit)
+        disc_loss = 0.5 * (disc_loss_agent + disc_loss_demo)
+```
+
+`eval_disc` 经过了 `_disc_layers` + `_disc_logits`。输入的 `disc_obs` 和 `disc_demo_obs` 都是从 buffer 中取出来的数据（没有梯度），不会连回 Actor 或 Critic。
+
+> **disc_loss 的计算图只包含 Discriminator 的参数**
+
+---
+
+## 一图看透全局
+
+```mermaid
+flowchart TB
+    subgraph "计算图: actor_loss"
+        I1["norm_obs (数据, 无梯度)"] --> ACTOR_LAYERS["_actor_layers<br/>参数: w₁"]
+        ACTOR_LAYERS --> ACTOR_DIST["_action_dist<br/>参数: w₂"]
+        ACTOR_DIST --> AL["actor_loss"]
+    end
+
+    subgraph "计算图: critic_loss"
+        I2["norm_obs (数据, 无梯度)"] --> CRITIC_LAYERS["_critic_layers<br/>参数: w₃"]
+        CRITIC_LAYERS --> CRITIC_OUT["_critic_out<br/>参数: w₄"]
+        I3["tar_val (.detach, 无梯度)"] --> MSE
+        CRITIC_OUT --> MSE["MSE → critic_loss"]
+    end
+
+    subgraph "计算图: disc_loss"
+        I4["disc_obs (数据, 无梯度)"] --> DISC_LAYERS["_disc_layers<br/>参数: w₅"]
+        DISC_LAYERS --> DISC_LOGITS["_disc_logits<br/>参数: w₆"]
+        DISC_LOGITS --> DL["disc_loss"]
+    end
+
+    AL --> TOTAL["total_loss = actor_loss + c_w × critic_loss + d_w × disc_loss"]
+    MSE --> TOTAL
+    DL --> TOTAL
+
+    TOTAL --> BW["total_loss.backward()"]
+
+    BW -->|"∂total/∂w₁ = ∂actor_loss/∂w₁"| ACTOR_LAYERS
+    BW -->|"∂total/∂w₂ = ∂actor_loss/∂w₂"| ACTOR_DIST
+    BW -->|"∂total/∂w₃ = ∂critic_loss/∂w₃"| CRITIC_LAYERS
+    BW -->|"∂total/∂w₄ = ∂critic_loss/∂w₄"| CRITIC_OUT
+    BW -->|"∂total/∂w₅ = ∂disc_loss/∂w₅"| DISC_LAYERS
+    BW -->|"∂total/∂w₆ = ∂disc_loss/∂w₆"| DISC_LOGITS
+
+    style AL fill:#E3F2FD,stroke:#1565C0
+    style MSE fill:#FFF3E0,stroke:#E65100
+    style DL fill:#FFEBEE,stroke:#C62828
+    style TOTAL fill:#E8F5E9,stroke:#2E7D32
+    style BW fill:#FF9800,color:white
+```
+
+---
+
+## 数学上为什么成立？
+
+加法的偏导数具有**可分解性**：
+
+\[
+\frac{\partial \text{total\_loss}}{\partial w_i} = \frac{\partial \text{actor\_loss}}{\partial w_i} + c_w \cdot \frac{\partial \text{critic\_loss}}{\partial w_i} + d_w \cdot \frac{\partial \text{disc\_loss}}{\partial w_i}
+\]
+
+以 Actor 的参数 \( w_1 \) 为例：
+
+- \( \frac{\partial \text{actor\_loss}}{\partial w_1} \) = **有值**（actor_loss 经过了 \( w_1 \)）
+- \( \frac{\partial \text{critic\_loss}}{\partial w_1} \) = **0**（critic_loss 的计算过程完全没碰 \( w_1 \)）
+- \( \frac{\partial \text{disc\_loss}}{\partial w_1} \) = **0**（disc_loss 的计算过程完全没碰 \( w_1 \)）
+
+所以：
+
+\[
+\frac{\partial \text{total\_loss}}{\partial w_1} = \frac{\partial \text{actor\_loss}}{\partial w_1} + 0 + 0
+\]
+
+**等价于只用 actor_loss 单独对 Actor 做 backward。** 对 Critic 和 Disc 同理。
+
+---
+
+## 那 loss_weight 有什么用？
+
+既然各网络的梯度互不影响，`disc_loss_weight=5` 的意义就不是"平衡不同网络"，而是**控制 Disc 参数更新的步长大小**：
+
+```python
+total_loss = actor_loss + 1.0 * critic_loss + 5.0 * disc_loss
+```
+
+对于 Disc 参数来说：
+
+\[
+\frac{\partial \text{total\_loss}}{\partial w_{\text{disc}}} = 5.0 \times \frac{\partial \text{disc\_loss}}{\partial w_{\text{disc}}}
+\]
+
+相当于把 Disc 的梯度**放大了 5 倍**，让判别器每步学得更快。这和用不同学习率的效果类似，但实现更简洁——只需一个优化器。
+
+---
+
+### 一句话总结
+
+**加在一起的 loss 做一次 backward，PyTorch 的自动微分会让梯度只沿着各自的计算图流动。某个 loss 没经过某个网络，那个网络的参数对这个 loss 的梯度天然就是 0，加了也白加。所以效果等价于各网络"各管各的"，只是写法上合并在了一起。**
