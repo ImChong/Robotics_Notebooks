@@ -24,8 +24,8 @@
 **目标**：理解训练/测试的主流程
 
 - [x] 阅读 `mimickit/run.py`（仅160行）
-- [ ] 理解关键流程：`load_args → build_env → build_agent → train/test`
-- [ ] 理解配置文件系统：`engine_config`、`env_config`、`agent_config`
+- [x] 理解关键流程：`load_args → build_env → build_agent → train/test`
+- [x] 理解配置文件系统：`engine_config`、`env_config`、`agent_config`
 
 ### Day 3 - [ ] 配置文件系统
 
