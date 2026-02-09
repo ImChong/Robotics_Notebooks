@@ -854,21 +854,20 @@ flowchart TB
 
 加法的偏导数具有**可分解性**：
 
-\[
-\frac{\partial \text{total\_loss}}{\partial w_i} = \frac{\partial \text{actor\_loss}}{\partial w_i} + c_w \cdot \frac{\partial \text{critic\_loss}}{\partial w_i} + d_w \cdot \frac{\partial \text{disc\_loss}}{\partial w_i}
-\]
+
+$\frac{\partial \text{total\_loss}}{\partial w_i} = \frac{\partial \text{actor\_loss}}{\partial w_i} + c_w \cdot \frac{\partial \text{critic\_loss}}{\partial w_i} + d_w \cdot \frac{\partial \text{disc\_loss}}{\partial w_i}$
+
 
 以 Actor 的参数 \( w_1 \) 为例：
 
-- \( \frac{\partial \text{actor\_loss}}{\partial w_1} \) = **有值**（actor_loss 经过了 \( w_1 \)）
-- \( \frac{\partial \text{critic\_loss}}{\partial w_1} \) = **0**（critic_loss 的计算过程完全没碰 \( w_1 \)）
-- \( \frac{\partial \text{disc\_loss}}{\partial w_1} \) = **0**（disc_loss 的计算过程完全没碰 \( w_1 \)）
+- \( $\frac{\partial \text{actor\_loss}}{\partial w_1}$ \) = **有值**（actor_loss 经过了 \( w_1 \)）
+- \( $\frac{\partial \text{critic\_loss}}{\partial w_1}$ \) = **0**（critic_loss 的计算过程完全没碰 \( w_1 \)）
+- \( $\frac{\partial \text{disc\_loss}}{\partial w_1}$ \) = **0**（disc_loss 的计算过程完全没碰 \( w_1 \)）
 
 所以：
 
-\[
-\frac{\partial \text{total\_loss}}{\partial w_1} = \frac{\partial \text{actor\_loss}}{\partial w_1} + 0 + 0
-\]
+$\frac{\partial \text{total\_loss}}{\partial w_1} = \frac{\partial \text{actor\_loss}}{\partial w_1} + 0 + 0$
+
 
 **等价于只用 actor_loss 单独对 Actor 做 backward。** 对 Critic 和 Disc 同理。
 
@@ -884,9 +883,8 @@ total_loss = actor_loss + 1.0 * critic_loss + 5.0 * disc_loss
 
 对于 Disc 参数来说：
 
-\[
-\frac{\partial \text{total\_loss}}{\partial w_{\text{disc}}} = 5.0 \times \frac{\partial \text{disc\_loss}}{\partial w_{\text{disc}}}
-\]
+$\frac{\partial \text{total\_loss}}{\partial w_{\text{disc}}} = 5.0 \times \frac{\partial \text{disc\_loss}}{\partial w_{\text{disc}}}$
+
 
 相当于把 Disc 的梯度**放大了 5 倍**，让判别器每步学得更快。这和用不同学习率的效果类似，但实现更简洁——只需一个优化器。
 
