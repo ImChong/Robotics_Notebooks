@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md",
-                "mode": "preview",
+                "file": "Train/MimicKit/MimicKit 05 DeepMimic.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "MimicKIt 04 Actor_Critic_Disc 网络结构详解"
+              "title": "MimicKit 05 DeepMimic"
             }
           }
         ]
@@ -156,13 +156,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md",
+                "file": "Train/MimicKit/MimicKit 05 DeepMimic.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of MimicKIt 04 Actor_Critic_Disc 网络结构详解"
+              "title": "Outline of MimicKit 05 DeepMimic"
             }
           },
           {
@@ -195,13 +195,14 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
-    "Train/MimicKit/MimicKit 03 配置文件系统详解.md",
     "Train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md",
-    "Train/MimicKit/MimicKit 02 关键流程 UML 图.md",
-    "Train/MimicKit/MimicKit 01 view_motion_humanoid_args.txt.md",
-    "Train/MimicKit/MimicKit.md",
+    "Train/MimicKit/MimicKit 05 DeepMimic.md",
     "Train/MimicKit/MimicKit 00 每天30分钟的学习建议.md",
     "Train/MimicKit/MimicKit 00 代码仓学习计划（每天30分钟）.md",
+    "Train/MimicKit/MimicKit.md",
+    "Train/MimicKit/MimicKit 03 配置文件系统详解.md",
+    "Train/MimicKit/MimicKit 02 关键流程 UML 图.md",
+    "Train/MimicKit/MimicKit 01 view_motion_humanoid_args.txt.md",
     "Train/MimicKit",
     "Train/Simulator.md",
     "Theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md",
@@ -230,7 +231,6 @@
     "02_Train",
     "Theory",
     "Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
-    "Table of Contents.md",
-    "Theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md"
+    "Table of Contents.md"
   ]
 }
