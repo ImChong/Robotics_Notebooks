@@ -3,6 +3,8 @@ https://ar5iv.labs.arxiv.org/html/1804.02717?_immersive_translate_auto_translate
 https://xbpeng.github.io/projects/DeepMimic/DeepMimic_2018.pdf
 https://github.com/xbpeng/MimicKit/blob/main/docs/README_DeepMimic.md
 
+# 《DeepMimic》论文
+
 在《DeepMimic》论文的第 4 部分（Background），作者设定了标准**强化学习（RL）**问题的数学框架，用于训练物理仿真角色。以下是该部分公式的详细解释：
 
 ### 1. 期望回报（Expected Return）
@@ -43,3 +45,35 @@ https://github.com/xbpeng/MimicKit/blob/main/docs/README_DeepMimic.md
 在本文的具体实现中，作者采用了**近端策略优化算法（PPO）**，并结合 **TD($\lambda$)** 训练价值函数，使用**广义优势估计（GAE($\lambda$)）**来计算梯度所需的优势值。
 
 如果您需要更深入的公式推导或想了解这些公式在 PPO 算法中是如何具体变形的，我可以为您生成一份**定制报告**。
+
+
+
+# MimicKit DeepMimic
+
+```JSON
+		{
+            "name": "MimicKit: 训练 (Train)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/mimickit/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "stopOnEntry": true,
+            "python": "${userHome}/miniconda3/envs/env_mimickit_isaacgym/bin/python",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LD_LIBRARY_PATH": "${userHome}/miniconda3/envs/env_mimickit_isaacgym/lib:${env:LD_LIBRARY_PATH}"
+            },
+            "args": [
+                "--mode", "train",
+                "--num_envs", "4096",
+                "--arg_file", "args/deepmimic_g1_ppo_args.txt",
+                "--visualize", "false"
+            ]
+        }
+```
+
+```bash
+tensorboard --logdir /home/chong/Desktop/Project/RobotMimic/MimicKit/output
+```
+
