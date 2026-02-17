@@ -48,7 +48,7 @@ https://github.com/xbpeng/MimicKit/blob/main/docs/README_DeepMimic.md
 
 
 
-# MimicKit DeepMimic
+# MimicKit DeepMimic - g1_walk
 
 ```JSON
 		{
@@ -76,4 +76,30 @@ https://github.com/xbpeng/MimicKit/blob/main/docs/README_DeepMimic.md
 ```bash
 tensorboard --logdir /home/chong/Desktop/Project/RobotMimic/MimicKit/output
 ```
+
+```JSON
+		{
+            "name": "MimicKit: 测试 (Test)",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/mimickit/run.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "stopOnEntry": false,
+            "python": "${userHome}/miniconda3/envs/env_mimickit_isaacgym/bin/python",
+            "cwd": "${workspaceFolder}",
+            "env": {
+                "LD_LIBRARY_PATH": "${userHome}/miniconda3/envs/env_mimickit_isaacgym/lib:${env:LD_LIBRARY_PATH}"
+            },
+            "args": [
+                "--mode", "test",
+                "--num_envs", "8",
+                "--arg_file", "args/deepmimic_g1_ppo_args.txt",
+                "--visualize", "true",
+                "--model_file", "output/g1_deepmimic_20260215/model.pt"
+            ]
+        }
+```
+
+# MimicKit DeepMimic - g1_walk 理解
 

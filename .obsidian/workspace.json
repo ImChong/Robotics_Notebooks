@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "Train/MimicKit/MimicKit 05 DeepMimic.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -195,10 +195,11 @@
   },
   "active": "f440f38ae5c28afc",
   "lastOpenFiles": [
+    "Train/MimicKit/MimicKit 06 给定目标速度执行复合动作.md",
+    "Train/MimicKit/MimicKit 05 DeepMimic.md",
     "Train/MimicKit/MimicKit.md",
     "README.md",
     "Train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md",
-    "Train/MimicKit/MimicKit 05 DeepMimic.md",
     "Train/MimicKit/MimicKit 00 每天30分钟的学习建议.md",
     "Train/MimicKit/MimicKit 00 代码仓学习计划（每天30分钟）.md",
     "Train/MimicKit/MimicKit 03 配置文件系统详解.md",
@@ -230,7 +231,6 @@
     "03_Sim2Sim",
     "02_Train",
     "Theory",
-    "Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md",
-    "Table of Contents.md"
+    "Theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md"
   ]
 }
