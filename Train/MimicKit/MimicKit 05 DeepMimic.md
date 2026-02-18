@@ -642,7 +642,7 @@ flowchart LR
 
 **参数说明：**
 | 参数 | 含义 |
-|---|---|
+| --- | --- |
 | `max_samples` | 训练的最大样本数量，作为训练循环的终止条件。当累计采集的样本数 `_sample_count` 达到此值时停止训练 |
 | `out_dir` | 输出目录路径，用于保存最终模型文件（`model.pt`）和训练日志文件（`log.txt`） |
 | `save_int_models` | 布尔值，是否保存中间模型快照。如果为 `True`，会在训练过程中按迭代次数定期保存带编号的模型文件 |
@@ -766,4 +766,70 @@ flowchart LR
 3. **训练循环**：
    - 每次迭代执行 rollout + 模型更新
    - 每隔 N 次迭代（或训练结束时）执行测试评估、保存模型、写入日志、重置环境
-4. **终止条件**：累计样本数达到 `max_samples`
+1. **终止条件**：累计样本数达到 `max_samples`
+
+## Sample & Episode
+
+用一个简单的类比来解释：
+
+---
+
+### Sample（样本）= 一步
+
+机器人走**一步**就是一个 sample。具体来说就是：
+
+> 观察环境 → 策略网络输出动作 → 环境执行动作 → 获得奖励
+
+这个循环执行一次 = **1 个 sample**。
+
+代码中 `self._sample_count` 统计的就是从训练开始到现在，所有并行环境**总共走了多少步**。比如 4 个环境各走了 32 步，就是 128 个 samples。
+
+---
+
+### Episode（回合）= 一局
+
+机器人从**站起来到摔倒**（或跑满 10 秒）的完整过程就是一个 episode。
+
+一个 episode 结束的原因有三种：
+- 摔倒了（FAIL）
+- 成功了（SUCC）
+- 时间到了（TIME，跑满 10 秒）
+
+结束后环境重置，机器人重新开始，进入下一个 episode。
+
+---
+
+### 它们的关系
+
+```
+Episode 1（一局）
+├── sample 1（第1步）
+├── sample 2（第2步）
+├── sample 3（第3步）
+├── ...
+└── sample N（摔倒了，这局结束）
+
+Episode 2（下一局）
+├── sample 1
+├── sample 2
+├── ...
+```
+
+**一个 episode 包含很多 samples**。如果机器人走得稳，一个 episode 最多有 300 个 samples（10秒 × 30Hz）；如果一上来就摔倒，可能只有几个 samples。
+
+---
+
+### 对应到代码
+
+```68:72:mimickit/learning/base_agent.py
+        while self._sample_count < max_samples:
+            train_info = self._train_iter()
+            
+            self._sample_count = self._update_sample_count()
+            output_iter = (self._iter % self._iters_per_output == 0) or (self._sample_count >= max_samples)
+```
+
+- `max_samples`：训练到**总共走了这么多步**才停止（控制训练总量）
+- `self._test_episodes = 32`：测试时跑 **32 局**来评估表现（控制评估精度）
+
+简单记：**sample 是步，episode 是局**。训练按步数算进度，评估按局数算效果。
