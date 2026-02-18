@@ -626,3 +626,144 @@ flowchart LR
     CHECK -->|否| OBS
     CHECK -->|是| BREAK["break 退出"]
 ```
+
+
+## def train_model(self, max_samples, out_dir, save_int_models, logger_type)
+
+下面逐行解释 `train_model` 方法（第 51-90 行）：
+
+---
+
+### 函数签名（第 51 行）
+
+```51:51:mimickit/learning/base_agent.py
+    def train_model(self, max_samples, out_dir, save_int_models, logger_type):
+```
+
+**参数说明：**
+| 参数 | 含义 |
+|---|---|
+| `max_samples` | 训练的最大样本数量，作为训练循环的终止条件。当累计采集的样本数 `_sample_count` 达到此值时停止训练 |
+| `out_dir` | 输出目录路径，用于保存最终模型文件（`model.pt`）和训练日志文件（`log.txt`） |
+| `save_int_models` | 布尔值，是否保存中间模型快照。如果为 `True`，会在训练过程中按迭代次数定期保存带编号的模型文件 |
+| `logger_type` | 日志记录器类型，支持 `"tb"`（TensorBoard）和 `"wandb"`（Weights & Biases） |
+
+---
+
+### 初始化阶段（第 52-66 行）
+
+```52:52:mimickit/learning/base_agent.py
+        start_time = time.time()
+```
+**第 52 行**：记录训练开始的时间戳，后续用于计算训练的墙上时钟时间（wall time）。
+
+```54:56:mimickit/learning/base_agent.py
+        out_model_file = os.path.join(out_dir, "model.pt")
+        log_file = os.path.join(out_dir, "log.txt")
+        self._logger = self._build_logger(logger_type, log_file, self._config)
+```
+**第 54 行**：拼接最终模型文件的保存路径，格式为 `<out_dir>/model.pt`。
+**第 55 行**：拼接日志文件路径，格式为 `<out_dir>/log.txt`。
+**第 56 行**：根据 `logger_type` 构建日志记录器。查看 `_build_logger`（第 217-229 行）可知：`"tb"` 创建 TensorBoard logger，`"wandb"` 创建 W&B logger，并配置输出文件。
+
+```58:63:mimickit/learning/base_agent.py
+        if (save_int_models):
+            int_out_dir = os.path.join(out_dir, "int_models")
+            if (mp_util.is_root_proc() and not os.path.exists(int_out_dir)):
+                os.makedirs(int_out_dir, exist_ok=True)
+        else:
+            int_out_dir = ""
+```
+**第 58-63 行**：如果需要保存中间模型：
+- 构建中间模型目录路径 `<out_dir>/int_models`
+- `mp_util.is_root_proc()` 检查当前是否为主进程（多进程分布式训练时只由主进程创建目录，避免竞态条件）
+- 目录不存在则创建
+- 如果不需要保存中间模型，`int_out_dir` 设为空字符串（后续 `_output_train_model` 会据此跳过中间模型保存）
+
+```65:66:mimickit/learning/base_agent.py
+        self._curr_obs, self._curr_info = self._reset_envs()
+        self._init_train()
+```
+**第 65 行**：重置所有环境，获取初始观测（observations）和环境信息（info）。`_reset_envs` 不传参时重置全部环境。
+**第 66 行**：初始化训练状态——将迭代次数和样本计数归零，清空经验缓冲区，重置回报追踪器（参见第 236-242 行）。
+
+---
+
+### 训练主循环（第 68-88 行）
+
+```68:69:mimickit/learning/base_agent.py
+        while self._sample_count < max_samples:
+            train_info = self._train_iter()
+```
+**第 68 行**：训练主循环，以累计样本数未达到 `max_samples` 为继续条件。
+**第 69 行**：执行一次训练迭代。`_train_iter`（第 244-265 行）会依次：
+1. 切换到训练模式
+2. 执行 `_steps_per_iter` 步的环境交互（rollout），收集经验数据
+3. 构建训练数据
+4. 更新模型参数
+5. 在需要时更新 normalizer
+6. 返回训练信息字典（包含损失、回报、episode 长度等）
+
+```71:72:mimickit/learning/base_agent.py
+            self._sample_count = self._update_sample_count()
+            output_iter = (self._iter % self._iters_per_output == 0) or (self._sample_count >= max_samples)
+```
+**第 71 行**：更新累计样本数。`_update_sample_count` 从经验缓冲区获取总样本数，并通过 `mp_util.reduce_sum` 跨进程求和（支持分布式训练）。
+**第 72 行**：判断当前迭代是否为"输出迭代"——每隔 `_iters_per_output` 次输出一次，或者训练即将结束时也输出。`_iters_per_output` 由配置文件中的 `iters_per_output` 设定。
+
+```74:75:mimickit/learning/base_agent.py
+            if (output_iter):
+                test_info = self.test_model(self._test_episodes)
+```
+**第 74-75 行**：在输出迭代时，运行测试评估。`test_model`（第 92-103 行）会切换到测试模式，使用无梯度推理运行 `_test_episodes` 个 episode，返回测试回报和 episode 长度。
+
+```77:79:mimickit/learning/base_agent.py
+            env_diag_info = self._env.get_diagnostics()
+            self._log_train_info(train_info, test_info, env_diag_info, start_time) 
+            self._logger.print_log()
+```
+**第 77 行**：获取环境诊断信息（如任务特定的指标）。
+**第 78 行**：将训练信息、测试信息、环境诊断信息和运行时间统一记录到 logger 中。`_log_train_info`（第 377-420 行）会记录迭代次数、墙上时钟时间、样本数、测试/训练回报、episode 长度、观测 normalizer 的均值/标准差等。
+**第 79 行**：将当前迭代的日志打印到控制台。
+
+> **注意**：这里有一个潜在 bug——如果 `output_iter` 为 `False`，`test_info` 不会在第 75 行被赋值，但第 78 行仍然会引用它。第一次非输出迭代时 `test_info` 尚未定义，会导致 `NameError`。不过在实际运行中，如果 `_iters_per_output` 从 0 开始计数（`self._iter` 初始为 0），第一次循环 `0 % N == 0` 总为 `True`，所以 `test_info` 会在首次循环被赋值，后续引用的是上一次输出迭代的值。
+
+```81:86:mimickit/learning/base_agent.py
+            if (output_iter):
+                self._logger.write_log()
+                self._output_train_model(self._iter, out_model_file, int_out_dir)
+
+                self._train_return_tracker.reset()
+                self._curr_obs, self._curr_info = self._reset_envs()
+```
+**第 81-82 行**：在输出迭代时，将日志写入文件（写入磁盘上的 `log.txt` 以及 TensorBoard/W&B）。
+**第 83 行**：保存模型。`_output_train_model`（第 444-450 行）会保存 `model.pt`（最终模型），如果 `int_out_dir` 非空还会保存 `model_0000000XXX.pt` 格式的中间模型快照。
+**第 85 行**：重置训练回报追踪器，清除之前累积的回报统计，为下一轮统计做准备。
+**第 86 行**：重置所有环境，获得新的初始观测。这使得每个输出周期的统计都是从干净的环境状态开始。
+
+```88:88:mimickit/learning/base_agent.py
+            self._iter += 1
+```
+**第 88 行**：迭代计数器加 1，进入下一轮循环。
+
+---
+
+### 函数结束（第 90 行）
+
+```90:90:mimickit/learning/base_agent.py
+        return
+```
+**第 90 行**：训练循环结束，函数返回。
+
+---
+
+### 总结
+
+这个 `train_model` 方法是强化学习训练的**主入口**，整体流程是：
+
+1. **准备**：设置输出路径、日志器、中间模型目录
+2. **初始化**：重置环境、清零计数器
+3. **训练循环**：
+   - 每次迭代执行 rollout + 模型更新
+   - 每隔 N 次迭代（或训练结束时）执行测试评估、保存模型、写入日志、重置环境
+4. **终止条件**：累计样本数达到 `max_samples`
