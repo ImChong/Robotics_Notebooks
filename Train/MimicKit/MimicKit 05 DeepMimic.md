@@ -521,7 +521,7 @@ graph LR
 
 简单来说：**Engine** 是底层物理世界，**Env** 在其上定义了"模仿步行"的任务，**Agent** 是在这个任务中学习的 PPO 大脑。三者自底向上，协同完成"G1 机器人学习步行"这一目标。
 
-## def _rollout_test(self, num_episodes) 参数含义
+## def _rollout_test(self, num_episodes) 
 
 mimickit/learning/base_agent.py
 ### 第 299 行
@@ -530,12 +530,12 @@ mimickit/learning/base_agent.py
 action, action_info = self._decide_action(self._curr_obs, self._curr_info)
 ```
 
-| 参数 | 形状 | 含义 |
-|---|---|---|
-| `self._curr_obs` | `[num_envs, obs_dim]` | 当前所有并行环境的**观测向量**（包含机器人关节角度、速度、目标姿态等） |
-| `self._curr_info` | `dict` | 当前环境的**附加信息**（辅助数据，如相位等） |
-| `action` | `[num_envs, action_dim]` | 策略网络输出的**动作向量**（每个关节的目标位置偏移量） |
-| `action_info` | `dict` | 动作的**附加信息**（如动作分布的 log_prob 等，测试时不使用） |
+| 参数                | 形状                       | 含义                                    |
+| ----------------- | ------------------------ | ------------------------------------- |
+| `self._curr_obs`  | `[num_envs, obs_dim]`    | 当前所有并行环境的**观测向量**（包含机器人关节角度、速度、目标姿态等） |
+| `self._curr_info` | `dict`                   | 当前环境的**附加信息**（辅助数据，如相位等）              |
+| `action`          | `[num_envs, action_dim]` | 策略网络输出的**动作向量**（每个关节的目标位置偏移量）         |
+| `action_info`     | `dict`                   | 动作的**附加信息**（如动作分布的 log_prob 等，测试时不使用） |
 
 ---
 
