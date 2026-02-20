@@ -31,17 +31,17 @@
 
 **目标**：理解YAML配置如何驱动整个系统
 
-- [ ] 查看 `data/envs/deepmimic_humanoid_env.yaml`
-- [ ] 查看 `data/agents/deepmimic_humanoid_ppo_agent.yaml`
-- [ ] 查看 `args/deepmimic_humanoid_ppo_args.txt`
-- [ ] 理解三层配置的关系
+- [x] 查看 `data/envs/deepmimic_humanoid_env.yaml`
+- [x] 查看 `data/agents/deepmimic_humanoid_ppo_agent.yaml`
+- [x] 查看 `args/deepmimic_humanoid_ppo_args.txt`
+- [x] 理解三层配置的关系
 
 ### Day 4 - [ ] 基础环境类
 
 **目标**：理解强化学习环境的基本接口
 
-- [ ] 阅读 `mimickit/envs/base_env.py`（仅70行）
-- [ ] 理解核心接口：`reset()`、`step()`、`get_obs_space()`、`get_action_space()`
+- [x] 阅读 `mimickit/envs/base_env.py`（仅70行）
+- [x] 理解核心接口：`reset()`、`step()`、`get_obs_space()`、`get_action_space()`
 
 ### Day 5 - [ ] 基础智能体类（上）
 

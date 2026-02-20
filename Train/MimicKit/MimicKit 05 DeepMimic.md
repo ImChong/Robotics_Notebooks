@@ -893,3 +893,80 @@ Episode 2（下一局）
 ### 如何生效
 
 从 `_parse_joint_err_weights` 的代码可以看到，这些权重最终传入奖励函数的 `joint_rot_err_w` 参数，计算 `reward_pose`（姿态匹配奖励）时作为加权系数——权重高的关节如果偏离参考动作，惩罚更大；权重为 0 的关节（头部）则完全不参与误差计算。
+
+
+现在我有了完整的信息。根据你的 yaml 配置（`global_obs: True`, `root_height_obs: True`, `enable_phase_obs: False`, `enable_tar_obs: True`, `tar_obs_steps: [1, 2, 3]`），整理如下：
+
+## DeepMimic Observations 组成
+
+整个观测由 **两大部分** 拼接而成：
+
+```
+obs = [char_obs] + [tar_obs]
+```
+
+（`phase_obs` 在你的配置中 `enable_phase_obs: False`，所以没有启用）
+
+---
+
+### 第一部分：`char_obs` — 角色自身状态
+
+来自 `compute_char_obs`（`char_env.py:411-445`），由于 `global_obs=True`，所有量都在**世界坐标系**下：
+
+| 分量 | 内容 | 维度 | 说明 |
+|---|---|---|---|
+| `root_h` | 根节点高度 | 1 | `root_height_obs=True` 时启用 |
+| `root_rot_obs` | 根节点朝向 | 6 | 四元数 → `tan_norm` 表示（两个正交 3D 向量） |
+| `root_vel_obs` | 根节点线速度 | 3 | 世界坐标系 |
+| `root_ang_vel_obs` | 根节点角速度 | 3 | 世界坐标系 |
+| `joint_rot_obs` | 所有关节旋转 | J×6 | 每个关节四元数 → `tan_norm`（6维） |
+| `dof_vel` | 所有关节 DOF 速度 | 29 | 直接使用 DOF 速度值 |
+| `key_pos_flat` | 关键点相对位置 | K×3 | 关键点位置 - 根节点位置 |
+
+其中 G1 机器人：J=28 个关节（不含 root），K=5 个关键点（双脚、头、双手腕）。
+
+`tan_norm` 是什么？把四元数转成旋转矩阵的前两列（两个正交向量，各 3 维），共 6 维。比四元数的优势是没有符号歧义（q 和 -q 表示同一旋转）。
+
+---
+
+### 第二部分：`tar_obs` — 未来目标状态（×3 步）
+
+来自 `compute_tar_obs`（`deepmimic_env.py:627-678`），查询未来 3 个时间步的参考动作。由于 `global_obs=True`，参考坐标系是当前仿真角色自身：
+
+| 分量 | 内容 | 每步维度 | 说明 |
+|---|---|---|---|
+| `root_pos_obs` | 目标根节点位置差 | 3 | `tar_root_pos - sim_root_pos`（含高度） |
+| `root_rot_obs` | 目标根节点朝向 | 6 | `tan_norm` 表示 |
+| `joint_rot_obs` | 目标关节旋转 | J×6 | 每个关节 `tan_norm` |
+| `tar_key_pos` | 目标关键点相对位置 | K×3 | 关键点相对于目标根节点 |
+
+3 个时间步展平后拼接：每步的维度 × 3。
+
+---
+
+### 总维度估算（G1 配置）
+
+| 部分 | 计算 | 维度 |
+|---|---|---|
+| **char_obs** | 1 + 6 + 3 + 3 + 28×6 + 29 + 5×3 | **219** |
+| **tar_obs** | (3 + 6 + 28×6 + 5×3) × 3 | **561** |
+| **总计** | | **≈780** |
+
+---
+
+### 观测结构图
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                    char_obs (自身状态)                      │
+│  [root_h | root_rot | root_vel | root_ang_vel |         │
+│   joint_rot×28 | dof_vel | key_pos×5]                   │
+├─────────────────────────────────────────────────────────┤
+│                tar_obs (未来目标, ×3步)                     │
+│  步1: [Δroot_pos | tar_rot | tar_joint_rot×28 | tar_key×5] │
+│  步2: [Δroot_pos | tar_rot | tar_joint_rot×28 | tar_key×5] │
+│  步3: [Δroot_pos | tar_rot | tar_joint_rot×28 | tar_key×5] │
+└─────────────────────────────────────────────────────────┘
+```
+
+策略网络看到的就是"我现在什么样"+"未来 3 步该往哪走"，据此输出动作。
