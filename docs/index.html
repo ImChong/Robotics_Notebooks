@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotics Notebooks — Mind Map</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f5f5f5;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+
+    .header-title {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 6px 14px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+
+    .btn:hover { background: rgba(255,255,255,0.1); }
+
+    .btn.active {
+      background: rgba(255,255,255,0.2);
+      border-color: rgba(255,255,255,0.6);
+    }
+
+    #mindmap-container {
+      flex: 1;
+      overflow: hidden;
+      background: #f5f5f5;
+    }
+
+    svg.markmap {
+      width: 100%;
+      height: 100%;
+    }
+
+    .markmap-node text { fill: #1a1a2e; }
+    .markmap-node circle { fill: #e8e8ff; stroke: #6366f1; stroke-width: 2px; }
+    .markmap-node link { stroke: #6366f1; stroke-width: 2px; fill: none; }
+
+    .markmap-node.depth-0 > circle { fill: #4f46e5; }
+    .markmap-node.depth-0 text { fill: #1a1a2e; font-weight: 700; }
+    .markmap-node.depth-1 > circle { fill: #818cf8; }
+    .markmap-node.depth-2 > circle { fill: #c7d2fe; }
+    .markmap-node.depth-3 > circle { fill: #e0e7ff; }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      background: #f5f5f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: #666;
+    }
+
+    #error {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #fff3f3;
+      color: #c00;
+      padding: 40px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    #error h2 { margin-bottom: 16px; }
+
+    /* Theme dark */
+    body.dark {
+      background: #1a1a2e;
+    }
+    body.dark .header {
+      background: #0f0f1a;
+    }
+    body.dark #mindmap-container {
+      background: #1a1a2e;
+    }
+    body.dark .markmap-node text { fill: #e0e0e0; }
+    body.dark .markmap-node circle { fill: #2d2d5a; stroke: #818cf8; }
+    body.dark .markmap-node link { stroke: #6366f1; }
+    body.dark .markmap-node.depth-0 > circle { fill: #4f46e5; }
+    body.dark .markmap-node.depth-1 > circle { fill: #6366f1; }
+    body.dark .markmap-node.depth-2 > circle { fill: #4338ca; }
+    body.dark .markmap-node.depth-3 > circle { fill: #3730a3; }
+
+    #themeToggle {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <span class="header-title">🤖 Robotics Notebooks — Mind Map</span>
+    <div class="header-actions">
+      <button class="btn" id="zoomIn">🔍+</button>
+      <button class="btn" id="zoomOut">🔍−</button>
+      <button class="btn" id="fitView">⊡ Fit</button>
+      <button id="themeToggle">🌙</button>
+    </div>
+  </div>
+
+  <div id="mindmap-container"></div>
+  <div id="loading">Loading mind map…</div>
+  <div id="error">
+    <h2>⚠️ Failed to load README</h2>
+    <p id="errorMsg"></p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/markmap@0.15.4/dist/view.min.js"></script>
+  <script>
+    const { Markmap, loadCSS, loadJS } = window.markmap;
+
+    let mm = null;
+    let scaleFactor = 1;
+    const ZOOM_STEP = 0.15;
+    const THEME_KEY = 'rn-theme';
+
+    // ── Theme ───────────────────────────────────────────────
+    function applyTheme(theme) {
+      document.body.classList.toggle('dark', theme === 'dark');
+      document.getElementById('themeToggle').textContent = theme === 'dark' ? '☀️' : '🌙';
+      localStorage.setItem(THEME_KEY, theme);
+      if (mm) {
+        const svg = document.querySelector('svg.markmap');
+        if (svg) mm.setScale(1);
+      }
+    }
+
+    (function () {
+      var saved = localStorage.getItem(THEME_KEY);
+      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (saved === null && dark) ? 'dark' : 'light');
+    })();
+
+    document.getElementById('themeToggle').addEventListener('click', function () {
+      var cur = localStorage.getItem(THEME_KEY) === 'dark' ? 'light' : 'dark';
+      applyTheme(cur);
+    });
+
+    // ── Fetch & render ─────────────────────────────────────
+    async function renderMindMap() {
+      try {
+        const resp = await fetch('./README.md');
+        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        const md = await resp.text();
+        document.getElementById('loading').style.display = 'none';
+        const container = document.getElementById('mindmap-container');
+        mm = Markmap.create(container, { markdown: md });
+      } catch (err) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').style.display = 'block';
+        document.getElementById('errorMsg').textContent = err.message;
+        console.error(err);
+      }
+    }
+
+    renderMindMap();
+
+    // ── Zoom controls ──────────────────────────────────────
+    function zoom(delta) {
+      if (!mm) return;
+      scaleFactor = Math.max(0.3, Math.min(3, scaleFactor + delta));
+      const svg = document.querySelector('svg.markmap');
+      if (svg) {
+        svg.style.transform = 'scale(' + scaleFactor + ')';
+        svg.style.transformOrigin = 'center center';
+      }
+    }
+
+    function fitView() {
+      scaleFactor = 1;
+      const svg = document.querySelector('svg.markmap');
+      if (svg) { svg.style.transform = 'scale(1)'; }
+    }
+
+    document.getElementById('zoomIn').addEventListener('click', function () { zoom(ZOOM_STEP); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
+    document.getElementById('zoomOut').addEventListener('click', function () { zoom(-ZOOM_STEP); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
+    document.getElementById('fitView').addEventListener('click', function () { fitView(); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
+
+    window.addEventListener('keydown', function (e) {
+      if (e.key === '+' || e.key === '=') zoom(ZOOM_STEP);
+      if (e.key === '-') zoom(-ZOOM_STEP);
+      if (e.key === '0') fitView();
+    });
+  </script>
+</body>
+</html>
