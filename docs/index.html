@@ -186,6 +186,7 @@ function render(data) {
   const ROW_H = 70;   // vertical step per depth level
   const spineX = W / 2; // center spine x
 
+  treeLayout = d3.tree().nodeSize([NODE_H + 12, COL_W]).separation((a, b) => a.parent === b.parent ? 1.8 : 2.5);
   treeLayout(root);
 
   // Assign timeline positions: y = depth * ROW_H, x = distributed horizontally
