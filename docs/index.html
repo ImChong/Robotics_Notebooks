@@ -238,28 +238,29 @@ function render(data) {
       enter => {
         const grp = enter.append('g').attr('class', 'node')
           .attr('transform', d => `translate(${d.y},${d.x})`);
-        // Append text first (invisible) to measure its rendered width
+        // Append text first with visibility:hidden to measure rendered width
+        // (display:none returns 0 for getComputedTextLength, visibility:hidden does not)
         const txt = grp.append('text')
           .attr('x', NODE_PAD_X).attr('y', 0)
           .attr('fill', isDark() ? '#e8e8e4' : '#37352f')
-          .attr('display', 'none')
+          .style('visibility', 'hidden')
           .text(d => {
             const count = (d._children || []).length;
             return (d.children || count === 0) ? d.data.text : `${d.data.text}  (${count})`;
           });
-        // Measure actual rendered text width and store
+        // Measure actual rendered width
         txt.each(function(d) {
           d._w = Math.max(this.getComputedTextLength() + NODE_PAD_X * 3, 40);
         });
-        // Now append rect with accurately measured width
-        grp.append('rect')
+        // Insert rect behind text with accurate width
+        grp.insert('rect', 'text')
           .attr('x', 0).attr('y', -NODE_H / 2)
           .attr('width', d => d._w).attr('height', NODE_H)
           .attr('rx', 5).attr('ry', 5)
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
           .attr('stroke', d => palette[d.depth % palette.length]);
-        // Show text now that rect width is set
-        txt.attr('display', null);
+        // Reveal text
+        txt.style('visibility', null);
         return grp;
       },
       update => {
