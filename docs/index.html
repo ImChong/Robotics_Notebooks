@@ -342,10 +342,34 @@ function fitView(g, W, H) {
 
 // ── Boot ─────────────────────────────────────────────────
 (async function() {
+  const README_URL = 'https://raw.githubusercontent.com/ImChong/Robotics_Notebooks/main/README.md';
+  const MAX_RETRIES = 4;
+
+  let md = null;
+  for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
+    try {
+      const r = await fetch(README_URL);
+      if (r.ok) {
+        md = await r.text();
+        break;
+      }
+      if (r.status === 429 && attempt < MAX_RETRIES - 1) {
+        // Rate limited — wait with exponential backoff
+        const waitMs = (attempt + 1) * 1200;
+        document.getElementById('loading').textContent = `⏳ Rate limited, retrying in ${waitMs/1000}s…`;
+        await new Promise(resolve => setTimeout(resolve, waitMs));
+        continue;
+      }
+      throw new Error(`HTTP ${r.status}`);
+    } catch(e) {
+      if (attempt === MAX_RETRIES - 1) throw e;
+      await new Promise(resolve => setTimeout(resolve, 800));
+    }
+  }
+
+  if (!md) { document.getElementById('loading').style.display = 'none'; return; }
+
   try {
-    const r = await fetch('https://raw.githubusercontent.com/ImChong/Robotics_Notebooks/main/README.md');
-    if (!r.ok) throw new Error(`HTTP ${r.status} fetching README`);
-    const md = await r.text();
     const tree = parseMd(md);
     document.getElementById('loading').style.display = 'none';
     render(tree);
