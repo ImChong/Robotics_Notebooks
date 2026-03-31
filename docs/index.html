@@ -20,7 +20,7 @@
     .header {
       background: #1a1a2e;
       color: #fff;
-      padding: 12px 24px;
+      padding: 10px 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -28,29 +28,29 @@
       z-index: 10;
     }
 
-    .header-title { font-size: 18px; font-weight: 600; }
-    .header-actions { display: flex; gap: 8px; align-items: center; }
+    .header-title { font-size: 17px; font-weight: 600; }
+    .header-actions { display: flex; gap: 6px; align-items: center; }
 
     .btn {
-      padding: 6px 14px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.3);
+      padding: 5px 12px;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.25);
       background: transparent;
       color: #fff;
       cursor: pointer;
-      font-size: 13px;
-      transition: background 0.2s;
+      font-size: 12px;
+      transition: background 0.15s;
     }
     .btn:hover { background: rgba(255,255,255,0.1); }
 
     #themeToggle {
       background: none;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.25);
       color: #fff;
-      padding: 6px 12px;
-      border-radius: 6px;
+      padding: 5px 10px;
+      border-radius: 5px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: 15px;
     }
     #themeToggle:hover { background: rgba(255,255,255,0.1); }
 
@@ -58,47 +58,45 @@
       flex: 1;
       overflow: hidden;
       background: #f5f5f5;
-      transition: background 0.3s;
     }
 
     svg { width: 100%; height: 100%; }
 
-    .node circle { cursor: pointer; transition: r 0.2s; }
-    .node:hover circle { r: 10 !important; }
+    .node circle { cursor: pointer; }
     .node text {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       fill: #1a1a2e;
-      font-size: 13px;
+      font-size: 12px;
       pointer-events: none;
     }
 
-    .link { fill: none; stroke: #6366f1; stroke-width: 2px; stroke-opacity: 0.6; }
+    .link { fill: none; stroke-width: 1.8px; }
 
     #loading {
       position: fixed; inset: 0; background: #f5f5f5;
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px; color: #666;
+      font-size: 15px; color: #666;
     }
 
     #error {
       display: none; position: fixed; inset: 0;
-      background: #fff3f3; color: #c00; padding: 40px; font-size: 15px; line-height: 1.6;
+      background: #fff3f3; color: #c00; padding: 40px; font-size: 14px; line-height: 1.7;
     }
+    #error h2 { margin-bottom: 14px; }
 
-    #error h2 { margin-bottom: 16px; }
-
-    body.dark { background: #1a1a2e; }
-    body.dark .header { background: #0f0f1a; }
-    body.dark #mindmap-container { background: #1a1a2e; }
-    body.dark .node text { fill: #e0e0e0; }
-    body.dark .link { stroke: #818cf8; }
-    body.dark #loading { background: #1a1a2e; color: #aaa; }
+    /* Dark mode */
+    body.dark { background: #111827; }
+    body.dark .header { background: #0f172a; }
+    body.dark #mindmap-container { background: #111827; }
+    body.dark .node text { fill: #e2e8f0; }
+    body.dark .link { stroke-opacity: 0.7; }
+    body.dark #loading { background: #111827; color: #94a3b8; }
   </style>
 </head>
 <body>
 
   <div class="header">
-    <span class="header-title">🤖 Robotics Notebooks — Mind Map</span>
+    <span class="header-title">🤖 Robotics Notebooks</span>
     <div class="header-actions">
       <button class="btn" id="zoomIn">🔍+</button>
       <button class="btn" id="zoomOut">🔍−</button>
@@ -109,165 +107,170 @@
 
   <div id="mindmap-container"></div>
   <div id="loading">Loading mind map…</div>
-  <div id="error"><h2>⚠️ Failed to load README</h2><p id="errorMsg"></p></div>
+  <div id="error"><h2>⚠️ Failed to load</h2><p id="errorMsg"></p></div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script>
     // ── Theme ─────────────────────────────────────────────
-    const THEME_KEY = 'rn-theme';
+    const TK = 'rn2-theme';
     function applyTheme(dark) {
       document.body.classList.toggle('dark', dark);
       document.getElementById('themeToggle').textContent = dark ? '☀️' : '🌙';
-      localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light');
+      localStorage.setItem(TK, dark ? 'dark' : 'light');
+      d3.selectAll('.link').attr('stroke', dark ? '#818cf8' : '#6366f1');
+      d3.selectAll('.node circle').attr('fill', d => nodeColor(d, dark));
     }
     (function () {
-      const saved = localStorage.getItem(THEME_KEY);
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      applyTheme(saved === 'dark' || (!saved && prefersDark));
+      const s = localStorage.getItem(TK);
+      const pd = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(s === 'dark' || (!s && pd));
     })();
     document.getElementById('themeToggle').addEventListener('click', () => {
       applyTheme(!document.body.classList.contains('dark'));
     });
 
-    // ── Markdown tree parser ─────────────────────────────
-    function parseMarkdownTree(md) {
+    // ── Bullet-point tree parser ─────────────────────────
+    function parseBulletTree(md) {
       const lines = md.split('\n');
-      const root = { text: 'Robotics Notebooks', children: [], depth: -1 };
-      const stack = [{ node: root, depth: -1 }];
+      const root = { text: 'Robotics Notebooks', children: [], links: [] };
 
-      for (let line of lines) {
-        const trimmed = line.replace(/^\s+|\s+$/g, '');
-        if (!trimmed) continue;
-        const match = trimmed.match(/^(#+)\s+(.+)/);
-        if (!match) continue;
-        const depth = match[1].length;
-        const text = match[2].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/`([^`]+)`/g, '$1');
-        const node = { text, children: [], depth, links: [] };
+      for (const line of lines) {
+        const trimmed = line.replace(/\t/g, '    ');
+        const m = trimmed.match(/^( {0,4})(- )\s*(.+)/);
+        if (!m) continue;
 
-        // extract URLs
-        const linkMatches = trimmed.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g);
-        for (const m of linkMatches) node.links.push({ label: m[1], url: m[2] });
+        const indent = m[1].length;
+        const raw = m[3].trim();
 
-        while (stack.length > 1 && stack[stack.length - 1].depth >= depth) stack.pop();
-        stack[stack.length - 1].node.children.push(node);
-        stack.push({ node, depth });
+        // extract links from raw text
+        const links = [];
+        let clean = raw.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+          links.push({ label: label.trim(), url: url.trim() });
+          return label.trim();
+        });
+        // strip remaining markdown
+        clean = clean.replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+
+        if (!clean) continue;
+
+        const node = { text: clean, children: [], links };
+
+        // walk up the stack to find parent at indent/4 - 1
+        const depth = Math.floor(indent / 4) + 1;
+        if (!root._stack) root._stack = [];
+        while (root._stack.length > 0 && root._stack[root._stack.length - 1].depth >= depth) {
+          root._stack.pop();
+        }
+        const parent = root._stack.length === 0 ? root : root._stack[root._stack.length - 1].node;
+        parent.children.push(node);
+        root._stack.push({ node, depth });
       }
+
+      delete root._stack;
       return root;
     }
 
-    // ── D3 mind map ──────────────────────────────────────
+    // ── Mind map renderer ─────────────────────────────────
+    function nodeColor(d, isDark) {
+      if (d.depth === 0) return '#4f46e5';
+      const palette = isDark
+        ? ['#312e81','#3730a3','#4338ca','#4f46e5','#6366f1']
+        : ['#e0e7ff','#c7d2fe','#a5b4fc','#818cf8','#6366f1'];
+      return palette[Math.min(d.depth, palette.length - 1)];
+    }
+
     function renderMindMap(data) {
       const container = document.getElementById('mindmap-container');
       const W = container.clientWidth;
       const H = container.clientHeight;
+      const isDark = document.body.classList.contains('dark');
+      const linkColor = isDark ? '#818cf8' : '#6366f1';
 
       d3.select(container).selectAll('*').remove();
-
       const svg = d3.select(container).append('svg');
       const g = svg.append('g');
 
-      const zoom = d3.zoom()
-        .scaleExtent([0.2, 4])
-        .on('zoom', (event) => g.attr('transform', event.transform));
-
+      const zoom = d3.zoom().scaleExtent([0.15, 5])
+        .on('zoom', e => g.attr('transform', e.transform));
       svg.call(zoom);
       svg.on('dblclick.zoom', null);
 
-      const tree = d3.tree().size([2 * Math.PI, Math.min(W, H) / 2 - 80]);
-      const root = d3.hierarchy(data, d => d.children);
-      const treeData = tree(root);
-
-      // colors by depth
-      const depthColors = ['#4f46e5', '#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe'];
+      const tree = d3.tree().size([2 * Math.PI, Math.min(W, H) / 2 - 100]);
+      const root = d3.hierarchy(data, d => d.children.length ? d : null);
+      const td = tree(root);
 
       // links
-      g.selectAll('.link')
-        .data(treeData.links())
-        .join('path')
+      g.selectAll('.link').data(td.links()).join('path')
         .attr('class', 'link')
-        .attr('d', d3.linkRadial()
-          .angle(d => d.x)
-          .radius(d => d.y));
+        .attr('stroke', linkColor)
+        .attr('d', d3.linkRadial().angle(d => d.x).radius(d => d.y));
 
       // nodes
-      const node = g.selectAll('.node')
-        .data(treeData.descendants())
-        .join('g')
+      const nd = g.selectAll('.node').data(td.descendants()).join('g')
         .attr('class', 'node')
         .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
 
-      const isDark = document.body.classList.contains('dark');
-      const fillColor = isDark ? '#2d2d5a' : depthColors[Math.min(root.data.depth + 1, depthColors.length - 1)];
-      const r = d => Math.min(5 + d.data.depth * 1.5, 12);
+      nd.append('circle')
+        .attr('r', d => d.depth === 0 ? 14 : Math.max(5, 8 - d.depth * 0.5))
+        .attr('fill', d => nodeColor(d, isDark))
+        .attr('stroke', 'rgba(0,0,0,0.12)');
 
-      node.append('circle')
-        .attr('r', d => r(d))
-        .attr('fill', (d, i) => i === 0 ? '#4f46e5' : depthColors[Math.min(d.depth, depthColors.length - 1)])
-        .attr('stroke', 'rgba(0,0,0,0.1)');
-
-      node.append('text')
-        .attr('dy', '0.31em')
-        .attr('x', d => d.x < Math.PI === !d.children ? 8 : -8)
+      nd.append('text')
+        .attr('dy', '0.35em')
+        .attr('x', d => d.x < Math.PI === !d.children ? 9 : -9)
         .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
         .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
         .text(d => d.data.text)
         .clone(true).lower()
-        .attr('stroke', 'var(--bg, #f5f5f5)')
+        .attr('stroke', isDark ? '#111827' : '#f5f5f5')
         .attr('stroke-width', 4);
 
-      // tooltips on hover
-      node.on('mouseover', function(event, d) {
+      // tooltip
+      nd.on('mouseover', function(event, d) {
         if (!d.data.links || d.data.links.length === 0) return;
-        const links = d.data.links;
-        const rect = this.getBoundingClientRect();
-        let tip = document.getElementById('mm-tooltip');
+        let tip = document.getElementById('tip');
         if (!tip) {
           tip = document.createElement('div');
-          tip.id = 'mm-tooltip';
-          tip.style.cssText = 'position:fixed;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font-size:13px;pointer-events:none;z-index:9999;max-width:300px;box-shadow:0 4px 12px rgba(0,0,0,0.3);line-height:1.6;';
+          tip.id = 'tip';
+          Object.assign(tip.style, {
+            position: 'fixed', background: '#1e1b4b', color: '#e0e7ff',
+            padding: '10px 14px', borderRadius: '8px', fontSize: '13px',
+            pointerEvents: 'none', zIndex: 9999, maxWidth: '340px',
+            boxShadow: '0 8px 24px rgba(0,0,0,0.4)', lineHeight: '1.8',
+            display: 'none'
+          });
           document.body.appendChild(tip);
         }
-        tip.innerHTML = links.map(l => `<a href="${l.url}" target="_blank" style="color:#a5b4fc">${l.label} ↗</a>`).join('<br>');
+        tip.innerHTML = d.data.links.map(l =>
+          `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
+        ).join('<br>');
         tip.style.display = 'block';
-        tip.style.left = (rect.right + 10) + 'px';
-        tip.style.top = rect.top + 'px';
+        tip.style.left = (event.clientX + 14) + 'px';
+        tip.style.top = (event.clientY - 10) + 'px';
       }).on('mouseout', function() {
-        const tip = document.getElementById('mm-tooltip');
-        if (tip) tip.style.display = 'none';
+        const t = document.getElementById('tip');
+        if (t) t.style.display = 'none';
       });
 
-      // double-click to open first link
-      node.on('dblclick', function(event, d) {
+      // double-click opens first link
+      nd.on('dblclick', function(event, d) {
         event.stopPropagation();
         if (d.data.links && d.data.links.length > 0) {
           window.open(d.data.links[0].url, '_blank');
         }
       });
 
-      fitView();
-
       function fitView() {
-        const bounds = g.node().getBBox();
-        const tx = W / 2;
-        const ty = H / 2;
-        const scale = Math.min(0.9, Math.min(W / (bounds.width + 80), H / (bounds.height + 80)));
-        svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+        const bb = g.node().getBBox();
+        const s = Math.min(0.88, Math.min(W / (bb.width + 120), H / (bb.height + 120)));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2 - bb.x * s - bb.width * s / 2, H / 2 - bb.y * s - bb.height * s / 2).scale(s));
       }
 
-      window._mmZoom = zoom;
-      window._mmSvg = svg;
-      window._mmFit = fitView;
+      fitView();
 
-      document.getElementById('zoomIn').addEventListener('click', () => {
-        svg.transition().duration(300).call(zoom.scaleBy, 1.3);
-      });
-      document.getElementById('zoomOut').addEventListener('click', () => {
-        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
-      });
-      document.getElementById('fitView').addEventListener('click', () => {
-        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
-        setTimeout(fitView, 420);
-      });
+      document.getElementById('zoomIn').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 1.35));
+      document.getElementById('zoomOut').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 0.72));
+      document.getElementById('fitView').addEventListener('click', () => { svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity); setTimeout(fitView, 420); });
       document.addEventListener('keydown', e => {
         if (e.key === '+' || e.key === '=') svg.transition().duration(200).call(zoom.scaleBy, 1.2);
         if (e.key === '-') svg.transition().duration(200).call(zoom.scaleBy, 0.8);
@@ -278,16 +281,17 @@
     // ── Init ─────────────────────────────────────────────
     (async function () {
       try {
-        const resp = await fetch('./README.md');
-        if (!resp.ok) throw new Error('HTTP ' + resp.status + ' — README not found in docs/ folder');
-        const md = await resp.text();
+        const r = await fetch('./README.md');
+        if (!r.ok) throw new Error('HTTP ' + r.status + ' — docs/README.md not found. Check GitHub Actions deployment.');
+        const md = await r.text();
         document.getElementById('loading').style.display = 'none';
-        const tree = parseMarkdownTree(md);
+        const tree = parseBulletTree(md);
         renderMindMap(tree);
       } catch (err) {
         document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').style.display = 'block';
-        document.getElementById('errorMsg').textContent = err.message + '\n\nMake sure GitHub Actions has deployed the page and README.md exists in the docs/ folder.';
+        const ed = document.getElementById('error');
+        ed.style.display = 'block';
+        document.getElementById('errorMsg').textContent = err.message;
         console.error(err);
       }
     })();
