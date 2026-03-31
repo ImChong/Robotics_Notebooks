@@ -181,8 +181,8 @@ function render(data) {
   root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
   treeLayout = d3.tree()
-    .nodeSize([NODE_H + 4, COL_W])
-    .separation((a, b) => a.parent === b.parent ? 1 : 1.2);
+    .nodeSize([NODE_H + 12, COL_W])
+    .separation((a, b) => a.parent === b.parent ? 1.8 : 2.5);
 
   treeLayout(root);
 
