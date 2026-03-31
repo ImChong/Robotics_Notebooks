@@ -118,7 +118,11 @@ function setTheme(dark) {
   const s = localStorage.getItem('rn-theme');
   setTheme(s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme:dark)').matches));
 })();
-document.getElementById('btnTheme').onclick = () => setTheme(!isDark());
+document.getElementById('btnTheme').onclick = () => {
+  setTheme(!isDark());
+  // Re-render to apply new palette colors
+  if (window._mindmapData) render(window._mindmapData);
+};
 
 
 
@@ -186,14 +190,6 @@ function render(data) {
     : ['#f0f2fd','#f5f0fe','#f0f9ff','#f0fdf4','#fefce8','#fdf2f8'];
   const linkColor = isDark() ? '#5b9cf6' : '#2d74da';
 
-  const canvas = document.createElement('canvas');
-  const ctx = canvas.getContext('2d');
-  ctx.font = '12px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
-  const textWidth = t => ctx.measureText(t).width;
-  root.descendants().forEach(d => {
-    d._w = Math.min(textWidth(d.data.text) + NODE_PAD_X * 2 + 30, COL_W - 16);
-  });
-
   const svg = d3.select(container).append('svg');
   svgEl = svg;
   const g = svg.append('g');
@@ -242,34 +238,42 @@ function render(data) {
       enter => {
         const grp = enter.append('g').attr('class', 'node')
           .attr('transform', d => `translate(${d.y},${d.x})`);
+        // Append text first (invisible) to measure its rendered width
+        const txt = grp.append('text')
+          .attr('x', NODE_PAD_X).attr('y', 0)
+          .attr('fill', isDark() ? '#e8e8e4' : '#37352f')
+          .attr('display', 'none')
+          .text(d => {
+            const count = (d._children || []).length;
+            return (d.children || count === 0) ? d.data.text : `${d.data.text}  (${count})`;
+          });
+        // Measure actual rendered text width and store
+        txt.each(function(d) {
+          d._w = Math.max(this.getComputedTextLength() + NODE_PAD_X * 3, 40);
+        });
+        // Now append rect with accurately measured width
         grp.append('rect')
           .attr('x', 0).attr('y', -NODE_H / 2)
           .attr('width', d => d._w).attr('height', NODE_H)
           .attr('rx', 5).attr('ry', 5)
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
           .attr('stroke', d => palette[d.depth % palette.length]);
-        grp.append('text')
-          .attr('x', NODE_PAD_X).attr('y', 0)
-          .attr('fill', d => isDark() ? '#e8e8e4' : '#37352f')
-          .text(d => {
-            const count = (d._children || []).length;
-            if (d.children || count === 0) return d.data.text;
-            return `${d.data.text}  (${count})`;
-          });
+        // Show text now that rect width is set
+        txt.attr('display', null);
         return grp;
       },
       update => {
         update.transition().duration(300)
           .attr('transform', d => `translate(${d.y},${d.x})`);
         update.select('rect')
+          .attr('width', d => d._w)
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
           .attr('stroke', d => palette[d.depth % palette.length]);
         update.select('text')
           .attr('fill', d => isDark() ? '#e8e8e4' : '#37352f')
           .text(d => {
             const count = (d._children || []).length;
-            if (d.children || count === 0) return d.data.text;
-            return `${d.data.text}  (${count})`;
+            return (d.children || count === 0) ? d.data.text : `${d.data.text}  (${count})`;
           });
         return update;
       },
@@ -372,6 +376,7 @@ function fitView(g, W, H) {
   try {
     const tree = parseMd(md);
     document.getElementById('loading').style.display = 'none';
+    window._mindmapData = tree;
     render(tree);
   } catch(e) {
     document.getElementById('loading').style.display = 'none';
