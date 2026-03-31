@@ -118,25 +118,9 @@ function setTheme(dark) {
   const s = localStorage.getItem('rn-theme');
   setTheme(s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme:dark)').matches));
 })();
-document.getElementById('btnTheme').onclick = () => {
-  setTheme(!isDark());
-  // Refresh colors after theme change
-  if (typeof updateThemeColors === 'function') updateThemeColors();
-};
+document.getElementById('btnTheme').onclick = () => setTheme(!isDark());
 
-function getThemeColors() {
-  const computed = getComputedStyle(document.body);
-  const isD = isDark();
-  return {
-    link: isD ? '#5b9cf6' : '#2d74da',
-    nodeStroke: isD ? '#5b9cf6' : '#2d74da',
-    text: computed.getPropertyValue('--text').trim() || (isD ? '#e8e8e4' : '#37352f'),
-    bg: computed.getPropertyValue('--bg').trim() || (isD ? '#191919' : '#ffffff'),
-    bgAlt: computed.getPropertyValue('--bg-alt').trim() || (isD ? '#222222' : '#f7f6f3'),
-    nodeBg: isD ? ['#222222','#2a2a2a','#1e1e1e','#252525','#1a1a1a'] : ['#f0f0ee','#e8f0fb','#fdf3e0','#e8f5e9','#fff3e0'],
-    nodeBorder: isD ? ['#3d3d3d','#4a4a4a','#3c3c3c','#4d4d4d','#3a3a3a'] : ['#d0d0cc','#c0d0f0','#e0d0a0','#c0e0c8','#e0d0b0'],
-  };
-}
+
 
 // ── Parser: bullet-point indentation → tree ─────────────
 function parseMd(md) {
@@ -193,12 +177,13 @@ function render(data) {
 
   treeLayout(root);
 
-  const darkPalette  = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
-  const lightPalette = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
-  const palette   = isDark() ? darkPalette : lightPalette;
+  // Light mode: pale/muted pastels; Dark mode: vivid
+  const palette = isDark()
+    ? ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d']
+    : ['#a5b4fc','#c4b5fd','#7dd3fc','#86efac','#fcd34d','#f9a8d4'];
   const bgPalette = isDark()
     ? ['#1e1b4b','#2e1065','#0c4a6e','#052e16','#431407','#500724']
-    : ['#e0e7ff','#ede9fe','#e0f2fe','#dcfce7','#fef3c7','#fce7f3'];
+    : ['#f0f2fd','#f5f0fe','#f0f9ff','#f0fdf4','#fefce8','#fdf2f8'];
   const linkColor = isDark() ? '#5b9cf6' : '#2d74da';
 
   const canvas = document.createElement('canvas');
@@ -215,7 +200,8 @@ function render(data) {
 
   zoomBehavior = d3.zoom().scaleExtent([0.1, 4])
     .on('zoom', e => g.attr('transform', e.transform));
-  svg.call(zoomBehavior).on('dblclick.zoom', null);
+  svg.call(zoomBehavior).on('dblclick.zoom', null)
+    .on('dblclick', function(event) { event.stopPropagation(); });
 
   // Tooltip element
   const tipBg = isDark() ? '#252525' : '#f7f6f3';
@@ -250,7 +236,7 @@ function render(data) {
     );
 
     // ── Nodes ──
-    const nodes = nodeSel.selectAll('.node').data(root.descendants(), d => d.data.text + d.depth);
+    const nodes = nodeSel.selectAll('.node').data(root.descendants(), d => d);
 
     nodes.join(
       enter => {
@@ -302,12 +288,10 @@ function render(data) {
         .style('top',  (event.clientY - 10) + 'px');
       })
       .on('mouseleave', () => tip.style('display', 'none'))
-      .on('click', (event, d) => {
+      // Single click = expand/collapse; double click = open link
+      .on('click', function(event, d) {
+        if (d.data.links && d.data.links.length) return; // let dblclick handle
         event.stopPropagation();
-        if (d.data.links && d.data.links.length) {
-          window.open(d.data.links[0].url, '_blank');
-          return;
-        }
         if (d.children) {
           d._children = d.children;
           d.children = null;
@@ -316,6 +300,12 @@ function render(data) {
           d._children = null;
         }
         update();
+      })
+      .on('dblclick', function(event, d) {
+        event.stopPropagation();
+        if (d.data.links && d.data.links.length) {
+          window.open(d.data.links[0].url, '_blank');
+        }
       })
       .style('cursor', d => d.data.links && d.data.links.length ? 'pointer' : 'pointer');
   }
