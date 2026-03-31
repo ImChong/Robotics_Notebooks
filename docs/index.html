@@ -14,6 +14,7 @@
       height: 100vh;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
     }
 
     .header {
@@ -27,16 +28,8 @@
       z-index: 10;
     }
 
-    .header-title {
-      font-size: 18px;
-      font-weight: 600;
-    }
-
-    .header-actions {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
+    .header-title { font-size: 18px; font-weight: 600; }
+    .header-actions { display: flex; gap: 8px; align-items: center; }
 
     .btn {
       padding: 6px 14px;
@@ -48,76 +41,7 @@
       font-size: 13px;
       transition: background 0.2s;
     }
-
     .btn:hover { background: rgba(255,255,255,0.1); }
-
-    .btn.active {
-      background: rgba(255,255,255,0.2);
-      border-color: rgba(255,255,255,0.6);
-    }
-
-    #mindmap-container {
-      flex: 1;
-      overflow: hidden;
-      background: #f5f5f5;
-    }
-
-    svg.markmap {
-      width: 100%;
-      height: 100%;
-    }
-
-    .markmap-node text { fill: #1a1a2e; }
-    .markmap-node circle { fill: #e8e8ff; stroke: #6366f1; stroke-width: 2px; }
-    .markmap-node link { stroke: #6366f1; stroke-width: 2px; fill: none; }
-
-    .markmap-node.depth-0 > circle { fill: #4f46e5; }
-    .markmap-node.depth-0 text { fill: #1a1a2e; font-weight: 700; }
-    .markmap-node.depth-1 > circle { fill: #818cf8; }
-    .markmap-node.depth-2 > circle { fill: #c7d2fe; }
-    .markmap-node.depth-3 > circle { fill: #e0e7ff; }
-
-    #loading {
-      position: fixed;
-      inset: 0;
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #666;
-    }
-
-    #error {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: #fff3f3;
-      color: #c00;
-      padding: 40px;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    #error h2 { margin-bottom: 16px; }
-
-    /* Theme dark */
-    body.dark {
-      background: #1a1a2e;
-    }
-    body.dark .header {
-      background: #0f0f1a;
-    }
-    body.dark #mindmap-container {
-      background: #1a1a2e;
-    }
-    body.dark .markmap-node text { fill: #e0e0e0; }
-    body.dark .markmap-node circle { fill: #2d2d5a; stroke: #818cf8; }
-    body.dark .markmap-node link { stroke: #6366f1; }
-    body.dark .markmap-node.depth-0 > circle { fill: #4f46e5; }
-    body.dark .markmap-node.depth-1 > circle { fill: #6366f1; }
-    body.dark .markmap-node.depth-2 > circle { fill: #4338ca; }
-    body.dark .markmap-node.depth-3 > circle { fill: #3730a3; }
 
     #themeToggle {
       background: none;
@@ -128,6 +52,47 @@
       cursor: pointer;
       font-size: 16px;
     }
+    #themeToggle:hover { background: rgba(255,255,255,0.1); }
+
+    #mindmap-container {
+      flex: 1;
+      overflow: hidden;
+      background: #f5f5f5;
+      transition: background 0.3s;
+    }
+
+    svg { width: 100%; height: 100%; }
+
+    .node circle { cursor: pointer; transition: r 0.2s; }
+    .node:hover circle { r: 10 !important; }
+    .node text {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      fill: #1a1a2e;
+      font-size: 13px;
+      pointer-events: none;
+    }
+
+    .link { fill: none; stroke: #6366f1; stroke-width: 2px; stroke-opacity: 0.6; }
+
+    #loading {
+      position: fixed; inset: 0; background: #f5f5f5;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #666;
+    }
+
+    #error {
+      display: none; position: fixed; inset: 0;
+      background: #fff3f3; color: #c00; padding: 40px; font-size: 15px; line-height: 1.6;
+    }
+
+    #error h2 { margin-bottom: 16px; }
+
+    body.dark { background: #1a1a2e; }
+    body.dark .header { background: #0f0f1a; }
+    body.dark #mindmap-container { background: #1a1a2e; }
+    body.dark .node text { fill: #e0e0e0; }
+    body.dark .link { stroke: #818cf8; }
+    body.dark #loading { background: #1a1a2e; color: #aaa; }
   </style>
 </head>
 <body>
@@ -144,87 +109,188 @@
 
   <div id="mindmap-container"></div>
   <div id="loading">Loading mind map…</div>
-  <div id="error">
-    <h2>⚠️ Failed to load README</h2>
-    <p id="errorMsg"></p>
-  </div>
+  <div id="error"><h2>⚠️ Failed to load README</h2><p id="errorMsg"></p></div>
 
-  <script src="https://unpkg.com/markmap@0.15.4/dist/view.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
   <script>
-    const { Markmap, loadCSS, loadJS } = window.markmap;
-
-    let mm = null;
-    let scaleFactor = 1;
-    const ZOOM_STEP = 0.15;
+    // ── Theme ─────────────────────────────────────────────
     const THEME_KEY = 'rn-theme';
-
-    // ── Theme ───────────────────────────────────────────────
-    function applyTheme(theme) {
-      document.body.classList.toggle('dark', theme === 'dark');
-      document.getElementById('themeToggle').textContent = theme === 'dark' ? '☀️' : '🌙';
-      localStorage.setItem(THEME_KEY, theme);
-      if (mm) {
-        const svg = document.querySelector('svg.markmap');
-        if (svg) mm.setScale(1);
-      }
+    function applyTheme(dark) {
+      document.body.classList.toggle('dark', dark);
+      document.getElementById('themeToggle').textContent = dark ? '☀️' : '🌙';
+      localStorage.setItem(THEME_KEY, dark ? 'dark' : 'light');
     }
-
     (function () {
-      var saved = localStorage.getItem(THEME_KEY);
-      var dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      applyTheme(saved === 'dark' || (saved === null && dark) ? 'dark' : 'light');
+      const saved = localStorage.getItem(THEME_KEY);
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(saved === 'dark' || (!saved && prefersDark));
     })();
-
-    document.getElementById('themeToggle').addEventListener('click', function () {
-      var cur = localStorage.getItem(THEME_KEY) === 'dark' ? 'light' : 'dark';
-      applyTheme(cur);
+    document.getElementById('themeToggle').addEventListener('click', () => {
+      applyTheme(!document.body.classList.contains('dark'));
     });
 
-    // ── Fetch & render ─────────────────────────────────────
-    async function renderMindMap() {
+    // ── Markdown tree parser ─────────────────────────────
+    function parseMarkdownTree(md) {
+      const lines = md.split('\n');
+      const root = { text: 'Robotics Notebooks', children: [], depth: -1 };
+      const stack = [{ node: root, depth: -1 }];
+
+      for (let line of lines) {
+        const trimmed = line.replace(/^\s+|\s+$/g, '');
+        if (!trimmed) continue;
+        const match = trimmed.match(/^(#+)\s+(.+)/);
+        if (!match) continue;
+        const depth = match[1].length;
+        const text = match[2].replace(/\[([^\]]+)\]\([^)]+\)/g, '$1').replace(/`([^`]+)`/g, '$1');
+        const node = { text, children: [], depth, links: [] };
+
+        // extract URLs
+        const linkMatches = trimmed.matchAll(/\[([^\]]+)\]\(([^)]+)\)/g);
+        for (const m of linkMatches) node.links.push({ label: m[1], url: m[2] });
+
+        while (stack.length > 1 && stack[stack.length - 1].depth >= depth) stack.pop();
+        stack[stack.length - 1].node.children.push(node);
+        stack.push({ node, depth });
+      }
+      return root;
+    }
+
+    // ── D3 mind map ──────────────────────────────────────
+    function renderMindMap(data) {
+      const container = document.getElementById('mindmap-container');
+      const W = container.clientWidth;
+      const H = container.clientHeight;
+
+      d3.select(container).selectAll('*').remove();
+
+      const svg = d3.select(container).append('svg');
+      const g = svg.append('g');
+
+      const zoom = d3.zoom()
+        .scaleExtent([0.2, 4])
+        .on('zoom', (event) => g.attr('transform', event.transform));
+
+      svg.call(zoom);
+      svg.on('dblclick.zoom', null);
+
+      const tree = d3.tree().size([2 * Math.PI, Math.min(W, H) / 2 - 80]);
+      const root = d3.hierarchy(data, d => d.children);
+      const treeData = tree(root);
+
+      // colors by depth
+      const depthColors = ['#4f46e5', '#6366f1', '#818cf8', '#a5b4fc', '#c7d2fe'];
+
+      // links
+      g.selectAll('.link')
+        .data(treeData.links())
+        .join('path')
+        .attr('class', 'link')
+        .attr('d', d3.linkRadial()
+          .angle(d => d.x)
+          .radius(d => d.y));
+
+      // nodes
+      const node = g.selectAll('.node')
+        .data(treeData.descendants())
+        .join('g')
+        .attr('class', 'node')
+        .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
+
+      const isDark = document.body.classList.contains('dark');
+      const fillColor = isDark ? '#2d2d5a' : depthColors[Math.min(root.data.depth + 1, depthColors.length - 1)];
+      const r = d => Math.min(5 + d.data.depth * 1.5, 12);
+
+      node.append('circle')
+        .attr('r', d => r(d))
+        .attr('fill', (d, i) => i === 0 ? '#4f46e5' : depthColors[Math.min(d.depth, depthColors.length - 1)])
+        .attr('stroke', 'rgba(0,0,0,0.1)');
+
+      node.append('text')
+        .attr('dy', '0.31em')
+        .attr('x', d => d.x < Math.PI === !d.children ? 8 : -8)
+        .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
+        .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
+        .text(d => d.data.text)
+        .clone(true).lower()
+        .attr('stroke', 'var(--bg, #f5f5f5)')
+        .attr('stroke-width', 4);
+
+      // tooltips on hover
+      node.on('mouseover', function(event, d) {
+        if (!d.data.links || d.data.links.length === 0) return;
+        const links = d.data.links;
+        const rect = this.getBoundingClientRect();
+        let tip = document.getElementById('mm-tooltip');
+        if (!tip) {
+          tip = document.createElement('div');
+          tip.id = 'mm-tooltip';
+          tip.style.cssText = 'position:fixed;background:#1a1a2e;color:#fff;padding:8px 12px;border-radius:6px;font-size:13px;pointer-events:none;z-index:9999;max-width:300px;box-shadow:0 4px 12px rgba(0,0,0,0.3);line-height:1.6;';
+          document.body.appendChild(tip);
+        }
+        tip.innerHTML = links.map(l => `<a href="${l.url}" target="_blank" style="color:#a5b4fc">${l.label} ↗</a>`).join('<br>');
+        tip.style.display = 'block';
+        tip.style.left = (rect.right + 10) + 'px';
+        tip.style.top = rect.top + 'px';
+      }).on('mouseout', function() {
+        const tip = document.getElementById('mm-tooltip');
+        if (tip) tip.style.display = 'none';
+      });
+
+      // double-click to open first link
+      node.on('dblclick', function(event, d) {
+        event.stopPropagation();
+        if (d.data.links && d.data.links.length > 0) {
+          window.open(d.data.links[0].url, '_blank');
+        }
+      });
+
+      fitView();
+
+      function fitView() {
+        const bounds = g.node().getBBox();
+        const tx = W / 2;
+        const ty = H / 2;
+        const scale = Math.min(0.9, Math.min(W / (bounds.width + 80), H / (bounds.height + 80)));
+        svg.call(zoom.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+      }
+
+      window._mmZoom = zoom;
+      window._mmSvg = svg;
+      window._mmFit = fitView;
+
+      document.getElementById('zoomIn').addEventListener('click', () => {
+        svg.transition().duration(300).call(zoom.scaleBy, 1.3);
+      });
+      document.getElementById('zoomOut').addEventListener('click', () => {
+        svg.transition().duration(300).call(zoom.scaleBy, 0.7);
+      });
+      document.getElementById('fitView').addEventListener('click', () => {
+        svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity);
+        setTimeout(fitView, 420);
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === '+' || e.key === '=') svg.transition().duration(200).call(zoom.scaleBy, 1.2);
+        if (e.key === '-') svg.transition().duration(200).call(zoom.scaleBy, 0.8);
+        if (e.key === '0') { svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity); setTimeout(fitView, 420); }
+      });
+    }
+
+    // ── Init ─────────────────────────────────────────────
+    (async function () {
       try {
         const resp = await fetch('./README.md');
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
+        if (!resp.ok) throw new Error('HTTP ' + resp.status + ' — README not found in docs/ folder');
         const md = await resp.text();
         document.getElementById('loading').style.display = 'none';
-        const container = document.getElementById('mindmap-container');
-        mm = Markmap.create(container, { markdown: md });
+        const tree = parseMarkdownTree(md);
+        renderMindMap(tree);
       } catch (err) {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('error').style.display = 'block';
-        document.getElementById('errorMsg').textContent = err.message;
+        document.getElementById('errorMsg').textContent = err.message + '\n\nMake sure GitHub Actions has deployed the page and README.md exists in the docs/ folder.';
         console.error(err);
       }
-    }
-
-    renderMindMap();
-
-    // ── Zoom controls ──────────────────────────────────────
-    function zoom(delta) {
-      if (!mm) return;
-      scaleFactor = Math.max(0.3, Math.min(3, scaleFactor + delta));
-      const svg = document.querySelector('svg.markmap');
-      if (svg) {
-        svg.style.transform = 'scale(' + scaleFactor + ')';
-        svg.style.transformOrigin = 'center center';
-      }
-    }
-
-    function fitView() {
-      scaleFactor = 1;
-      const svg = document.querySelector('svg.markmap');
-      if (svg) { svg.style.transform = 'scale(1)'; }
-    }
-
-    document.getElementById('zoomIn').addEventListener('click', function () { zoom(ZOOM_STEP); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
-    document.getElementById('zoomOut').addEventListener('click', function () { zoom(-ZOOM_STEP); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
-    document.getElementById('fitView').addEventListener('click', function () { fitView(); this.classList.add('active'); setTimeout(() => this.classList.remove('active'), 200); });
-
-    window.addEventListener('keydown', function (e) {
-      if (e.key === '+' || e.key === '=') zoom(ZOOM_STEP);
-      if (e.key === '-') zoom(-ZOOM_STEP);
-      if (e.key === '0') fitView();
-    });
+    })();
   </script>
 </body>
 </html>
