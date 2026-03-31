@@ -281,7 +281,7 @@
     // ── Init ─────────────────────────────────────────────
     (async function () {
       try {
-        const r = await fetch('./README.md');
+        const r = await fetch('https://raw.githubusercontent.com/ImChong/Robotics_Notebooks/main/README.md');
         if (!r.ok) throw new Error('HTTP ' + r.status + ' — docs/README.md not found. Check GitHub Actions deployment.');
         const md = await r.text();
         document.getElementById('loading').style.display = 'none';
