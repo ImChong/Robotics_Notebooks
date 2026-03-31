@@ -7,301 +7,285 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f5f5f5;
+      background: #f0f4f8;
       height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
     }
-
     .header {
       background: #1a1a2e;
       color: #fff;
-      padding: 10px 20px;
+      padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
-      z-index: 10;
     }
-
-    .header-title { font-size: 17px; font-weight: 600; }
-    .header-actions { display: flex; gap: 6px; align-items: center; }
-
+    .header-title { font-size: 16px; font-weight: 600; }
+    .header-actions { display: flex; gap: 6px; }
     .btn {
-      padding: 5px 12px;
+      padding: 4px 10px;
       border-radius: 5px;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid rgba(255,255,255,0.3);
       background: transparent;
       color: #fff;
       cursor: pointer;
       font-size: 12px;
-      transition: background 0.15s;
     }
-    .btn:hover { background: rgba(255,255,255,0.1); }
-
-    #themeToggle {
-      background: none;
-      border: 1px solid rgba(255,255,255,0.25);
-      color: #fff;
-      padding: 5px 10px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 15px;
-    }
-    #themeToggle:hover { background: rgba(255,255,255,0.1); }
-
-    #mindmap-container {
-      flex: 1;
-      overflow: hidden;
-      background: #f5f5f5;
-    }
-
+    .btn:hover { background: rgba(255,255,255,0.12); }
+    #chart { flex: 1; overflow: hidden; }
     svg { width: 100%; height: 100%; }
 
-    .node circle { cursor: pointer; }
+    .node rect {
+      rx: 5; ry: 5;
+      stroke-width: 1.5;
+    }
     .node text {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      fill: #1a1a2e;
       font-size: 12px;
+      dominant-baseline: middle;
       pointer-events: none;
     }
-
-    .link { fill: none; stroke-width: 1.8px; }
+    .link {
+      fill: none;
+      stroke-width: 1.5;
+      stroke-opacity: 0.6;
+    }
 
     #loading {
-      position: fixed; inset: 0; background: #f5f5f5;
+      position: fixed; inset: 0; background: #f0f4f8;
       display: flex; align-items: center; justify-content: center;
       font-size: 15px; color: #666;
     }
-
     #error {
       display: none; position: fixed; inset: 0;
-      background: #fff3f3; color: #c00; padding: 40px; font-size: 14px; line-height: 1.7;
+      background: #fff3f3; color: #c00; padding: 40px; font-size: 14px; line-height: 1.8;
     }
-    #error h2 { margin-bottom: 14px; }
 
-    /* Dark mode */
+    /* Dark */
     body.dark { background: #111827; }
-    body.dark .header { background: #0f172a; }
-    body.dark #mindmap-container { background: #111827; }
-    body.dark .node text { fill: #e2e8f0; }
-    body.dark .link { stroke-opacity: 0.7; }
+    body.dark #chart { background: #111827; }
     body.dark #loading { background: #111827; color: #94a3b8; }
   </style>
 </head>
 <body>
 
-  <div class="header">
-    <span class="header-title">🤖 Robotics Notebooks</span>
-    <div class="header-actions">
-      <button class="btn" id="zoomIn">🔍+</button>
-      <button class="btn" id="zoomOut">🔍−</button>
-      <button class="btn" id="fitView">⊡ Fit</button>
-      <button id="themeToggle">🌙</button>
-    </div>
+<div class="header">
+  <span class="header-title">🤖 Robotics Notebooks</span>
+  <div class="header-actions">
+    <button class="btn" id="btnZoomIn">+</button>
+    <button class="btn" id="btnZoomOut">−</button>
+    <button class="btn" id="btnFit">Fit</button>
+    <button class="btn" id="btnTheme">🌙</button>
   </div>
+</div>
 
-  <div id="mindmap-container"></div>
-  <div id="loading">Loading mind map…</div>
-  <div id="error"><h2>⚠️ Failed to load</h2><p id="errorMsg"></p></div>
+<div id="chart"></div>
+<div id="loading">Loading…</div>
+<div id="error"><b>⚠ Error</b><br><span id="errMsg"></span></div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-  <script>
-    // ── Theme ─────────────────────────────────────────────
-    const TK = 'rn2-theme';
-    function applyTheme(dark) {
-      document.body.classList.toggle('dark', dark);
-      document.getElementById('themeToggle').textContent = dark ? '☀️' : '🌙';
-      localStorage.setItem(TK, dark ? 'dark' : 'light');
-      d3.selectAll('.link').attr('stroke', dark ? '#818cf8' : '#6366f1');
-      d3.selectAll('.node circle').attr('fill', d => nodeColor(d, dark));
-    }
-    (function () {
-      const s = localStorage.getItem(TK);
-      const pd = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      applyTheme(s === 'dark' || (!s && pd));
-    })();
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      applyTheme(!document.body.classList.contains('dark'));
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script>
+// ── Theme ───────────────────────────────────────────────
+const isDark = () => document.body.classList.contains('dark');
+function setTheme(dark) {
+  document.body.classList.toggle('dark', dark);
+  document.getElementById('btnTheme').textContent = dark ? '☀️' : '🌙';
+  localStorage.setItem('rn-theme', dark ? 'dark' : 'light');
+}
+(function(){
+  const s = localStorage.getItem('rn-theme');
+  setTheme(s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme:dark)').matches));
+})();
+document.getElementById('btnTheme').onclick = () => setTheme(!isDark());
+
+// ── Parser: bullet-point indentation → tree ─────────────
+function parseMd(md) {
+  const root = { text: 'Robotics Notebooks', children: [], links: [] };
+  // stack entries: { node, depth }
+  const stack = [{ node: root, depth: -1 }];
+
+  for (const rawLine of md.split('\n')) {
+    const line = rawLine.replace(/\t/g, '    ');
+    const m = line.match(/^( *)-[ \t]+(.+)/);
+    if (!m) continue;
+
+    const depth = Math.floor(m[1].length / 4);   // 0-based indent level
+    let text = m[2].trim();
+
+    // extract markdown links
+    const links = [];
+    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
+      links.push({ label: label.trim(), url: url.trim() });
+      return label.trim();
     });
+    // strip inline code & bold
+    text = text.replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
+    if (!text) continue;
 
-    // ── Bullet-point tree parser ─────────────────────────
-    function parseBulletTree(md) {
-      const lines = md.split('\n');
-      const root = { text: 'Robotics Notebooks', children: [], links: [] };
-      const stack = [{ node: root, depth: -1 }];
+    const node = { text, links, children: [] };
 
-      for (const line of lines) {
-        // normalize tabs to 4 spaces
-        const expanded = line.replace(/\t/g, '    ');
-        // match any leading spaces followed by "- "
-        const m = expanded.match(/^( *)-\s+(.+)/);
-        if (!m) continue;
+    // find parent: pop until stack top has depth < current depth
+    while (stack.length > 1 && stack[stack.length - 1].depth >= depth) stack.pop();
+    stack[stack.length - 1].node.children.push(node);
+    stack.push({ node, depth });
+  }
+  return root;
+}
 
-        const indent = m[1].length;
-        const raw = m[2].trim();
+// ── Renderer: horizontal left-to-right tree ─────────────
+const NODE_H = 24;    // row height per node
+const NODE_PAD_X = 12;
+const COL_W = 200;    // horizontal step per depth level
 
-        // extract links
-        const links = [];
-        let clean = raw.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
-          links.push({ label: label.trim(), url: url.trim() });
-          return label.trim();
-        });
-        clean = clean.replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
-        if (!clean) continue;
+let svgEl, zoomBehavior;
 
-        const depth = Math.floor(indent / 4);
-        const node = { text: clean, children: [], links };
+function render(data) {
+  const container = document.getElementById('chart');
+  container.innerHTML = '';
 
-        // pop stack until we find the parent
-        while (stack.length > 1 && stack[stack.length - 1].depth >= depth) {
-          stack.pop();
-        }
-        stack[stack.length - 1].node.children.push(node);
-        stack.push({ node, depth });
-      }
+  const W = container.clientWidth;
+  const H = container.clientHeight;
 
-      return root;
-    }
+  // D3 hierarchy — children accessor returns the children array
+  const root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
-    // ── Mind map renderer ─────────────────────────────────
-    function nodeColor(d, isDark) {
-      if (d.depth === 0) return '#4f46e5';
-      const palette = isDark
-        ? ['#312e81','#3730a3','#4338ca','#4f46e5','#6366f1']
-        : ['#e0e7ff','#c7d2fe','#a5b4fc','#818cf8','#6366f1'];
-      return palette[Math.min(d.depth, palette.length - 1)];
-    }
+  // Tree layout: x = vertical position, y = horizontal (depth)
+  const treeLayout = d3.tree()
+    .nodeSize([NODE_H + 4, COL_W])
+    .separation((a, b) => a.parent === b.parent ? 1 : 1.2);
 
-    function renderMindMap(data) {
-      const container = document.getElementById('mindmap-container');
-      const W = container.clientWidth;
-      const H = container.clientHeight;
-      const isDark = document.body.classList.contains('dark');
-      const linkColor = isDark ? '#818cf8' : '#6366f1';
+  treeLayout(root);
 
-      d3.select(container).selectAll('*').remove();
-      const svg = d3.select(container).append('svg');
-      const g = svg.append('g');
+  // Palette by depth
+  const darkPalette  = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
+  const lightPalette = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
+  const palette = isDark() ? darkPalette : lightPalette;
+  const bgPalette = isDark()
+    ? ['#1e1b4b','#2e1065','#0c4a6e','#052e16','#431407','#500724']
+    : ['#e0e7ff','#ede9fe','#e0f2fe','#dcfce7','#fef3c7','#fce7f3'];
 
-      const zoom = d3.zoom().scaleExtent([0.15, 5])
-        .on('zoom', e => g.attr('transform', e.transform));
-      svg.call(zoom);
-      svg.on('dblclick.zoom', null);
+  // Measure text width
+  const canvas = document.createElement('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.font = '12px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
+  const textWidth = t => ctx.measureText(t).width;
 
-      const tree = d3.tree().size([2 * Math.PI, Math.min(W, H) / 2 - 100]);
-      const root = d3.hierarchy(data, d => d.children.length ? d : null);
-      const td = tree(root);
+  // Compute actual node box widths
+  root.descendants().forEach(d => {
+    d._w = Math.min(textWidth(d.data.text) + NODE_PAD_X * 2, COL_W - 16);
+  });
 
-      // links
-      g.selectAll('.link').data(td.links()).join('path')
-        .attr('class', 'link')
-        .attr('stroke', linkColor)
-        .attr('d', d3.linkRadial().angle(d => d.x).radius(d => d.y));
+  const svg = d3.select(container).append('svg');
+  svgEl = svg;
 
-      // nodes
-      const nd = g.selectAll('.node').data(td.descendants()).join('g')
-        .attr('class', 'node')
-        .attr('transform', d => `rotate(${d.x * 180 / Math.PI - 90}) translate(${d.y},0)`);
+  const g = svg.append('g');
 
-      nd.append('circle')
-        .attr('r', d => d.depth === 0 ? 14 : Math.max(5, 8 - d.depth * 0.5))
-        .attr('fill', d => nodeColor(d, isDark))
-        .attr('stroke', 'rgba(0,0,0,0.12)');
+  zoomBehavior = d3.zoom().scaleExtent([0.1, 4])
+    .on('zoom', e => g.attr('transform', e.transform));
+  svg.call(zoomBehavior).on('dblclick.zoom', null);
 
-      nd.append('text')
-        .attr('dy', '0.35em')
-        .attr('x', d => {
-          if (d.depth === 0) return 0;
-          return d.x < Math.PI === !d.children ? 9 : -9;
-        })
-        .attr('text-anchor', d => {
-          if (d.depth === 0) return 'middle';
-          return d.x < Math.PI === !d.children ? 'start' : 'end';
-        })
-        .attr('transform', d => {
-          if (d.depth === 0) return 'rotate(90)'; // undo the node group rotation
-          return d.x >= Math.PI ? 'rotate(180)' : null;
-        })
-        .text(d => d.data.text)
-        .clone(true).lower()
-        .attr('stroke', isDark ? '#111827' : '#f5f5f5')
-        .attr('stroke-width', 4);
+  // Links
+  g.selectAll('.link')
+    .data(root.links())
+    .join('path')
+    .attr('class', 'link')
+    .attr('stroke', isDark() ? '#6366f1' : '#a5b4fc')
+    .attr('d', d3.linkHorizontal()
+      .x(d => d.y)
+      .y(d => d.x));
 
-      // tooltip
-      nd.on('mouseover', function(event, d) {
-        if (!d.data.links || d.data.links.length === 0) return;
-        let tip = document.getElementById('tip');
-        if (!tip) {
-          tip = document.createElement('div');
-          tip.id = 'tip';
-          Object.assign(tip.style, {
-            position: 'fixed', background: '#1e1b4b', color: '#e0e7ff',
-            padding: '10px 14px', borderRadius: '8px', fontSize: '13px',
-            pointerEvents: 'none', zIndex: 9999, maxWidth: '340px',
-            boxShadow: '0 8px 24px rgba(0,0,0,0.4)', lineHeight: '1.8',
-            display: 'none'
-          });
-          document.body.appendChild(tip);
-        }
-        tip.innerHTML = d.data.links.map(l =>
-          `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
-        ).join('<br>');
-        tip.style.display = 'block';
-        tip.style.left = (event.clientX + 14) + 'px';
-        tip.style.top = (event.clientY - 10) + 'px';
-      }).on('mouseout', function() {
-        const t = document.getElementById('tip');
-        if (t) t.style.display = 'none';
-      });
+  // Nodes
+  const node = g.selectAll('.node')
+    .data(root.descendants())
+    .join('g')
+    .attr('class', 'node')
+    .attr('transform', d => `translate(${d.y},${d.x})`);
 
-      // double-click opens first link
-      nd.on('dblclick', function(event, d) {
-        event.stopPropagation();
-        if (d.data.links && d.data.links.length > 0) {
-          window.open(d.data.links[0].url, '_blank');
-        }
-      });
+  node.append('rect')
+    .attr('x', 0)
+    .attr('y', -NODE_H / 2)
+    .attr('width', d => d._w)
+    .attr('height', NODE_H)
+    .attr('rx', 5).attr('ry', 5)
+    .attr('fill', d => bgPalette[d.depth % bgPalette.length])
+    .attr('stroke', d => palette[d.depth % palette.length]);
 
-      function fitView() {
-        const bb = g.node().getBBox();
-        const s = Math.min(0.88, Math.min(W / (bb.width + 120), H / (bb.height + 120)));
-        svg.call(zoom.transform, d3.zoomIdentity.translate(W / 2 - bb.x * s - bb.width * s / 2, H / 2 - bb.y * s - bb.height * s / 2).scale(s));
-      }
+  node.append('text')
+    .attr('x', NODE_PAD_X)
+    .attr('y', 0)
+    .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
+    .text(d => d.data.text);
 
-      fitView();
+  // Cursor for nodes with links
+  node.style('cursor', d => d.data.links && d.data.links.length ? 'pointer' : 'default');
 
-      document.getElementById('zoomIn').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 1.35));
-      document.getElementById('zoomOut').addEventListener('click', () => svg.transition().duration(250).call(zoom.scaleBy, 0.72));
-      document.getElementById('fitView').addEventListener('click', () => { svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity); setTimeout(fitView, 420); });
-      document.addEventListener('keydown', e => {
-        if (e.key === '+' || e.key === '=') svg.transition().duration(200).call(zoom.scaleBy, 1.2);
-        if (e.key === '-') svg.transition().duration(200).call(zoom.scaleBy, 0.8);
-        if (e.key === '0') { svg.transition().duration(400).call(zoom.transform, d3.zoomIdentity); setTimeout(fitView, 420); }
-      });
-    }
+  // Tooltip
+  const tip = d3.select(document.body).append('div')
+    .style('position', 'fixed')
+    .style('background', '#1e1b4b')
+    .style('color', '#e0e7ff')
+    .style('padding', '10px 14px')
+    .style('border-radius', '8px')
+    .style('font-size', '13px')
+    .style('pointer-events', 'none')
+    .style('z-index', '9999')
+    .style('max-width', '360px')
+    .style('box-shadow', '0 8px 24px rgba(0,0,0,0.4)')
+    .style('line-height', '1.9')
+    .style('display', 'none');
 
-    // ── Init ─────────────────────────────────────────────
-    (async function () {
-      try {
-        const r = await fetch('https://raw.githubusercontent.com/ImChong/Robotics_Notebooks/main/README.md');
-        if (!r.ok) throw new Error('HTTP ' + r.status + ' — docs/README.md not found. Check GitHub Actions deployment.');
-        const md = await r.text();
-        document.getElementById('loading').style.display = 'none';
-        const tree = parseBulletTree(md);
-        renderMindMap(tree);
-      } catch (err) {
-        document.getElementById('loading').style.display = 'none';
-        const ed = document.getElementById('error');
-        ed.style.display = 'block';
-        document.getElementById('errorMsg').textContent = err.message;
-        console.error(err);
-      }
-    })();
-  </script>
+  node.on('mouseenter', function(event, d) {
+    if (!d.data.links || !d.data.links.length) return;
+    tip.html(d.data.links.map(l =>
+      `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
+    ).join('<br>'))
+    .style('display', 'block')
+    .style('left', (event.clientX + 14) + 'px')
+    .style('top',  (event.clientY - 10) + 'px');
+  })
+  .on('mouseleave', () => tip.style('display', 'none'))
+  .on('click', (event, d) => {
+    if (d.data.links && d.data.links.length) window.open(d.data.links[0].url, '_blank');
+  });
+
+  // Initial fit
+  fitView(g, W, H);
+
+  // Controls
+  document.getElementById('btnZoomIn').onclick  = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.3);
+  document.getElementById('btnZoomOut').onclick = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 0.75);
+  document.getElementById('btnFit').onclick     = () => fitView(g, W, H);
+}
+
+function fitView(g, W, H) {
+  const bb = g.node().getBBox();
+  if (!bb.width || !bb.height) return;
+  const scale = Math.min(0.9, Math.min(W / (bb.width + 40), H / (bb.height + 40)));
+  const tx = W / 2 - (bb.x + bb.width / 2) * scale;
+  const ty = H / 2 - (bb.y + bb.height / 2) * scale;
+  svgEl.transition().duration(400)
+    .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
+}
+
+// ── Boot ─────────────────────────────────────────────────
+(async function() {
+  try {
+    const r = await fetch('https://raw.githubusercontent.com/ImChong/Robotics_Notebooks/main/README.md');
+    if (!r.ok) throw new Error(`HTTP ${r.status} fetching README`);
+    const md = await r.text();
+    const tree = parseMd(md);
+    document.getElementById('loading').style.display = 'none';
+    render(tree);
+  } catch(e) {
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('error').style.display = 'block';
+    document.getElementById('errMsg').textContent = e.message;
+    console.error(e);
+  }
+})();
+</script>
 </body>
 </html>
