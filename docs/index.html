@@ -298,9 +298,8 @@ function render(data) {
         .style('top',  (event.clientY - 10) + 'px');
       })
       .on('mouseleave', () => tip.style('display', 'none'))
-      // Single click = expand/collapse; double click = open link
+      // Single click = expand/collapse (always); double click = open link
       .on('click', function(event, d) {
-        if (d.data.links && d.data.links.length) return; // let dblclick handle
         event.stopPropagation();
         if (d.children) {
           d._children = d.children;
@@ -350,7 +349,7 @@ function render(data) {
 function fitView(g, W, H) {
   const bb = g.node().getBBox();
   if (!bb.width || !bb.height) return;
-  const scale = Math.min(0.9, Math.min(W / (bb.width + 40), H / (bb.height + 40)));
+  const scale = Math.min(1.4, Math.min(W / (bb.width + 40), H / (bb.height + 40)));
   const tx = W / 2 - (bb.x + bb.width / 2) * scale;
   const ty = H / 2 - (bb.y + bb.height / 2) * scale;
   svgEl.transition().duration(400)
