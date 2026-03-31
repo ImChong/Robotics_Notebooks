@@ -135,123 +135,161 @@ function parseMd(md) {
   return root;
 }
 
-// ── Renderer: horizontal left-to-right tree ─────────────
-const NODE_H = 24;    // row height per node
-const NODE_PAD_X = 12;
-const COL_W = 200;    // horizontal step per depth level
+// ── Renderer: collapsible horizontal tree ───────────────
+const NODE_H   = 24;
+const NODE_PAD_X = 10;
+const COL_W    = 200;
 
-let svgEl, zoomBehavior;
+let svgEl, zoomBehavior, root, treeLayout;
 
 function render(data) {
   const container = document.getElementById('chart');
   container.innerHTML = '';
-
   const W = container.clientWidth;
   const H = container.clientHeight;
 
-  // D3 hierarchy — children accessor returns the children array
-  const root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
+  root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
-  // Tree layout: x = vertical position, y = horizontal (depth)
-  const treeLayout = d3.tree()
+  treeLayout = d3.tree()
     .nodeSize([NODE_H + 4, COL_W])
     .separation((a, b) => a.parent === b.parent ? 1 : 1.2);
 
   treeLayout(root);
 
-  // Palette by depth
   const darkPalette  = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
   const lightPalette = ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d'];
-  const palette = isDark() ? darkPalette : lightPalette;
+  const palette   = isDark() ? darkPalette : lightPalette;
   const bgPalette = isDark()
     ? ['#1e1b4b','#2e1065','#0c4a6e','#052e16','#431407','#500724']
     : ['#e0e7ff','#ede9fe','#e0f2fe','#dcfce7','#fef3c7','#fce7f3'];
 
-  // Measure text width
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
   ctx.font = '12px -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif';
   const textWidth = t => ctx.measureText(t).width;
-
-  // Compute actual node box widths
   root.descendants().forEach(d => {
-    d._w = Math.min(textWidth(d.data.text) + NODE_PAD_X * 2, COL_W - 16);
+    d._w = Math.min(textWidth(d.data.text) + NODE_PAD_X * 2 + 30, COL_W - 16);
   });
 
   const svg = d3.select(container).append('svg');
   svgEl = svg;
-
   const g = svg.append('g');
 
   zoomBehavior = d3.zoom().scaleExtent([0.1, 4])
     .on('zoom', e => g.attr('transform', e.transform));
   svg.call(zoomBehavior).on('dblclick.zoom', null);
 
-  // Links
-  g.selectAll('.link')
-    .data(root.links())
-    .join('path')
-    .attr('class', 'link')
-    .attr('stroke', isDark() ? '#6366f1' : '#a5b4fc')
-    .attr('d', d3.linkHorizontal()
-      .x(d => d.y)
-      .y(d => d.x));
-
-  // Nodes
-  const node = g.selectAll('.node')
-    .data(root.descendants())
-    .join('g')
-    .attr('class', 'node')
-    .attr('transform', d => `translate(${d.y},${d.x})`);
-
-  node.append('rect')
-    .attr('x', 0)
-    .attr('y', -NODE_H / 2)
-    .attr('width', d => d._w)
-    .attr('height', NODE_H)
-    .attr('rx', 5).attr('ry', 5)
-    .attr('fill', d => bgPalette[d.depth % bgPalette.length])
-    .attr('stroke', d => palette[d.depth % palette.length]);
-
-  node.append('text')
-    .attr('x', NODE_PAD_X)
-    .attr('y', 0)
-    .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
-    .text(d => d.data.text);
-
-  // Cursor for nodes with links
-  node.style('cursor', d => d.data.links && d.data.links.length ? 'pointer' : 'default');
-
-  // Tooltip
+  // Tooltip element
   const tip = d3.select(document.body).append('div')
-    .style('position', 'fixed')
-    .style('background', '#1e1b4b')
-    .style('color', '#e0e7ff')
-    .style('padding', '10px 14px')
-    .style('border-radius', '8px')
-    .style('font-size', '13px')
-    .style('pointer-events', 'none')
-    .style('z-index', '9999')
-    .style('max-width', '360px')
-    .style('box-shadow', '0 8px 24px rgba(0,0,0,0.4)')
-    .style('line-height', '1.9')
-    .style('display', 'none');
+    .style('position', 'fixed').style('background', '#1e1b4b')
+    .style('color', '#e0e7ff').style('padding', '10px 14px')
+    .style('border-radius', '8px').style('font-size', '13px')
+    .style('pointer-events', 'none').style('z-index', '9999')
+    .style('max-width', '360px').style('box-shadow', '0 8px 24px rgba(0,0,0,0.4)')
+    .style('line-height', '1.9').style('display', 'none');
 
-  node.on('mouseenter', function(event, d) {
-    if (!d.data.links || !d.data.links.length) return;
-    tip.html(d.data.links.map(l =>
-      `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
-    ).join('<br>'))
-    .style('display', 'block')
-    .style('left', (event.clientX + 14) + 'px')
-    .style('top',  (event.clientY - 10) + 'px');
-  })
-  .on('mouseleave', () => tip.style('display', 'none'))
-  .on('click', (event, d) => {
-    if (d.data.links && d.data.links.length) window.open(d.data.links[0].url, '_blank');
+  let linkSel = g.append('g').attr('class', 'links');
+  let nodeSel = g.append('g').attr('class', 'nodes');
+
+  function update() {
+    // Re-layout with current children/_children state
+    treeLayout(root);
+
+    // ── Links ──
+    linkSel.selectAll('.link').data(root.links()).join(
+      enter => enter.append('path').attr('class', 'link')
+        .attr('stroke', isDark() ? '#6366f1' : '#a5b4fc')
+        .attr('fill', 'none')
+        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
+      update => update
+        .transition().duration(300)
+        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
+      exit => exit.remove()
+    );
+
+    // ── Nodes ──
+    const nodes = nodeSel.selectAll('.node').data(root.descendants(), d => d.data.text + d.depth);
+
+    nodes.join(
+      enter => {
+        const grp = enter.append('g').attr('class', 'node')
+          .attr('transform', d => `translate(${d.y},${d.x})`);
+        grp.append('rect')
+          .attr('x', 0).attr('y', -NODE_H / 2)
+          .attr('width', d => d._w).attr('height', NODE_H)
+          .attr('rx', 5).attr('ry', 5)
+          .attr('fill', d => bgPalette[d.depth % bgPalette.length])
+          .attr('stroke', d => palette[d.depth % palette.length]);
+        grp.append('text')
+          .attr('x', NODE_PAD_X).attr('y', 0)
+          .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
+          .text(d => {
+            const count = (d._children || []).length;
+            if (d.children || count === 0) return d.data.text;
+            return `${d.data.text}  (${count})`;
+          });
+        return grp;
+      },
+      update => {
+        update.transition().duration(300)
+          .attr('transform', d => `translate(${d.y},${d.x})`);
+        update.select('rect')
+          .attr('fill', d => bgPalette[d.depth % bgPalette.length])
+          .attr('stroke', d => palette[d.depth % palette.length]);
+        update.select('text')
+          .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
+          .text(d => {
+            const count = (d._children || []).length;
+            if (d.children || count === 0) return d.data.text;
+            return `${d.data.text}  (${count})`;
+          });
+        return update;
+      },
+      exit => exit.remove()
+    );
+
+    // Re-attach events after join
+    nodeSel.selectAll('.node')
+      .on('mouseenter', function(event, d) {
+        if (!d.data.links || !d.data.links.length) return;
+        tip.html(d.data.links.map(l =>
+          `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
+        ).join('<br>'))
+        .style('display', 'block')
+        .style('left', (event.clientX + 14) + 'px')
+        .style('top',  (event.clientY - 10) + 'px');
+      })
+      .on('mouseleave', () => tip.style('display', 'none'))
+      .on('click', (event, d) => {
+        event.stopPropagation();
+        if (d.data.links && d.data.links.length) {
+          window.open(d.data.links[0].url, '_blank');
+          return;
+        }
+        if (d.children) {
+          d._children = d.children;
+          d.children = null;
+        } else if (d._children) {
+          d.children = d._children;
+          d._children = null;
+        }
+        update();
+      })
+      .style('cursor', d => d.data.links && d.data.links.length ? 'pointer' : 'pointer');
+  }
+
+  update();
+
+  // Collapse all except root depth 0
+  root.descendants().forEach(d => {
+    if (d.depth > 0) {
+      d._children = d.children;
+      d.children = null;
+    }
   });
+  treeLayout(root);
+  update();
 
-  // Initial fit
   fitView(g, W, H);
 
   // Controls
