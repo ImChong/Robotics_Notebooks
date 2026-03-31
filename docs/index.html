@@ -120,8 +120,13 @@ function setTheme(dark) {
 })();
 document.getElementById('btnTheme').onclick = () => {
   setTheme(!isDark());
-  // Re-render to apply new palette colors
-  if (window._mindmapData) render(window._mindmapData);
+  if (!window._mindmapData) return;
+  const W = document.getElementById('chart').clientWidth;
+  const H = document.getElementById('chart').clientHeight;
+  render(window._mindmapData);
+  // fit to window after re-render
+  const gSel = svgEl ? svgEl.select('g') : null;
+  if (gSel && gSel.node()) fitView(gSel, W, H);
 };
 
 
