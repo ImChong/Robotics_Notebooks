@@ -7,36 +7,59 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #ffffff;
+      --bg-alt: #f7f6f3;
+      --text: #37352f;
+      --text-muted: #787774;
+      --accent: #2d74da;
+      --accent-hover: #1a5bb8;
+      --border: #e8e8e4;
+    }
+    body.dark {
+      --bg: #191919;
+      --bg-alt: #222222;
+      --text: #e8e8e4;
+      --text-muted: #9b9a97;
+      --accent: #5b9cf6;
+      --accent-hover: #7ab3ff;
+      --border: #3d3d3d;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #f0f4f8;
+      background: var(--bg);
+      color: var(--text);
       height: 100vh;
       display: flex;
       flex-direction: column;
       overflow: hidden;
+      transition: background 0.3s, color 0.3s;
     }
     .header {
-      background: #1a1a2e;
-      color: #fff;
+      background: var(--bg-alt);
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
       padding: 10px 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-shrink: 0;
+      transition: background 0.3s, border-color 0.3s;
     }
-    .header-title { font-size: 16px; font-weight: 600; }
+    .header-title { font-size: 16px; font-weight: 600; color: var(--text); }
     .header-actions { display: flex; gap: 6px; }
     .btn {
       padding: 4px 10px;
       border-radius: 5px;
-      border: 1px solid rgba(255,255,255,0.3);
+      border: 1px solid var(--border);
       background: transparent;
-      color: #fff;
+      color: var(--text-muted);
       cursor: pointer;
       font-size: 12px;
+      transition: border-color 0.2s, color 0.2s;
     }
-    .btn:hover { background: rgba(255,255,255,0.12); }
-    #chart { flex: 1; overflow: hidden; }
+    .btn:hover { border-color: var(--accent); color: var(--accent); }
+    #chart { flex: 1; overflow: hidden; background: var(--bg); transition: background 0.3s; }
     svg { width: 100%; height: 100%; }
 
     .node rect {
@@ -55,19 +78,15 @@
     }
 
     #loading {
-      position: fixed; inset: 0; background: #f0f4f8;
+      position: fixed; inset: 0; background: var(--bg);
       display: flex; align-items: center; justify-content: center;
-      font-size: 15px; color: #666;
+      font-size: 15px; color: var(--text-muted);
     }
     #error {
       display: none; position: fixed; inset: 0;
-      background: #fff3f3; color: #c00; padding: 40px; font-size: 14px; line-height: 1.8;
+      background: var(--bg-alt); color: var(--text);
+      padding: 40px; font-size: 14px; line-height: 1.8;
     }
-
-    /* Dark */
-    body.dark { background: #111827; }
-    body.dark #chart { background: #111827; }
-    body.dark #loading { background: #111827; color: #94a3b8; }
   </style>
 </head>
 <body>
@@ -99,7 +118,25 @@ function setTheme(dark) {
   const s = localStorage.getItem('rn-theme');
   setTheme(s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme:dark)').matches));
 })();
-document.getElementById('btnTheme').onclick = () => setTheme(!isDark());
+document.getElementById('btnTheme').onclick = () => {
+  setTheme(!isDark());
+  // Refresh colors after theme change
+  if (typeof updateThemeColors === 'function') updateThemeColors();
+};
+
+function getThemeColors() {
+  const computed = getComputedStyle(document.body);
+  const isD = isDark();
+  return {
+    link: isD ? '#5b9cf6' : '#2d74da',
+    nodeStroke: isD ? '#5b9cf6' : '#2d74da',
+    text: computed.getPropertyValue('--text').trim() || (isD ? '#e8e8e4' : '#37352f'),
+    bg: computed.getPropertyValue('--bg').trim() || (isD ? '#191919' : '#ffffff'),
+    bgAlt: computed.getPropertyValue('--bg-alt').trim() || (isD ? '#222222' : '#f7f6f3'),
+    nodeBg: isD ? ['#222222','#2a2a2a','#1e1e1e','#252525','#1a1a1a'] : ['#f0f0ee','#e8f0fb','#fdf3e0','#e8f5e9','#fff3e0'],
+    nodeBorder: isD ? ['#3d3d3d','#4a4a4a','#3c3c3c','#4d4d4d','#3a3a3a'] : ['#d0d0cc','#c0d0f0','#e0d0a0','#c0e0c8','#e0d0b0'],
+  };
+}
 
 // ── Parser: bullet-point indentation → tree ─────────────
 function parseMd(md) {
@@ -162,6 +199,7 @@ function render(data) {
   const bgPalette = isDark()
     ? ['#1e1b4b','#2e1065','#0c4a6e','#052e16','#431407','#500724']
     : ['#e0e7ff','#ede9fe','#e0f2fe','#dcfce7','#fef3c7','#fce7f3'];
+  const linkColor = isDark() ? '#5b9cf6' : '#2d74da';
 
   const canvas = document.createElement('canvas');
   const ctx = canvas.getContext('2d');
@@ -180,13 +218,17 @@ function render(data) {
   svg.call(zoomBehavior).on('dblclick.zoom', null);
 
   // Tooltip element
+  const tipBg = isDark() ? '#252525' : '#f7f6f3';
+  const tipText = isDark() ? '#e8e8e4' : '#37352f';
+  const tipLink = isDark() ? '#5b9cf6' : '#2d74da';
   const tip = d3.select(document.body).append('div')
-    .style('position', 'fixed').style('background', '#1e1b4b')
-    .style('color', '#e0e7ff').style('padding', '10px 14px')
+    .style('position', 'fixed').style('background', tipBg)
+    .style('color', tipText).style('padding', '10px 14px')
     .style('border-radius', '8px').style('font-size', '13px')
     .style('pointer-events', 'none').style('z-index', '9999')
     .style('max-width', '360px').style('box-shadow', '0 8px 24px rgba(0,0,0,0.4)')
-    .style('line-height', '1.9').style('display', 'none');
+    .style('line-height', '1.9').style('display', 'none')
+    .style('border', `1px solid ${isDark() ? '#3d3d3d' : '#e8e8e4'}`);
 
   let linkSel = g.append('g').attr('class', 'links');
   let nodeSel = g.append('g').attr('class', 'nodes');
@@ -198,7 +240,7 @@ function render(data) {
     // ── Links ──
     linkSel.selectAll('.link').data(root.links()).join(
       enter => enter.append('path').attr('class', 'link')
-        .attr('stroke', isDark() ? '#6366f1' : '#a5b4fc')
+        .attr('stroke', linkColor)
         .attr('fill', 'none')
         .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
       update => update
@@ -222,7 +264,7 @@ function render(data) {
           .attr('stroke', d => palette[d.depth % palette.length]);
         grp.append('text')
           .attr('x', NODE_PAD_X).attr('y', 0)
-          .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
+          .attr('fill', d => isDark() ? '#e8e8e4' : '#37352f')
           .text(d => {
             const count = (d._children || []).length;
             if (d.children || count === 0) return d.data.text;
@@ -237,7 +279,7 @@ function render(data) {
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
           .attr('stroke', d => palette[d.depth % palette.length]);
         update.select('text')
-          .attr('fill', d => isDark() ? '#e2e8f0' : '#1e293b')
+          .attr('fill', d => isDark() ? '#e8e8e4' : '#37352f')
           .text(d => {
             const count = (d._children || []).length;
             if (d.children || count === 0) return d.data.text;
@@ -253,7 +295,7 @@ function render(data) {
       .on('mouseenter', function(event, d) {
         if (!d.data.links || !d.data.links.length) return;
         tip.html(d.data.links.map(l =>
-          `<a href="${l.url}" target="_blank" style="color:#a5b4fc;text-decoration:none">${l.label} ↗</a>`
+          `<a href="${l.url}" target="_blank" style="color:${tipLink};text-decoration:none">${l.label} ↗</a>`
         ).join('<br>'))
         .style('display', 'block')
         .style('left', (event.clientX + 14) + 'px')
