@@ -309,7 +309,14 @@ function render(data) {
           d.children = d._children;
           d._children = null;
         }
+        treeLayout(root);
         update();
+      })
+      .on('dblclick', function(event, d) {
+        event.stopPropagation();
+        if (d.data.links && d.data.links.length) {
+          window.open(d.data.links[0].url, '_blank');
+        }
       })
       .on('dblclick', function(event, d) {
         event.stopPropagation();
