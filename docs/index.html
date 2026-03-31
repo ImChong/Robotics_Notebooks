@@ -133,40 +133,38 @@
     function parseBulletTree(md) {
       const lines = md.split('\n');
       const root = { text: 'Robotics Notebooks', children: [], links: [] };
+      const stack = [{ node: root, depth: -1 }];
 
       for (const line of lines) {
-        const trimmed = line.replace(/\t/g, '    ');
-        const m = trimmed.match(/^( {0,4})(- )\s*(.+)/);
+        // normalize tabs to 4 spaces
+        const expanded = line.replace(/\t/g, '    ');
+        // match any leading spaces followed by "- "
+        const m = expanded.match(/^( *)-\s+(.+)/);
         if (!m) continue;
 
         const indent = m[1].length;
-        const raw = m[3].trim();
+        const raw = m[2].trim();
 
-        // extract links from raw text
+        // extract links
         const links = [];
         let clean = raw.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
           links.push({ label: label.trim(), url: url.trim() });
           return label.trim();
         });
-        // strip remaining markdown
         clean = clean.replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
-
         if (!clean) continue;
 
+        const depth = Math.floor(indent / 4);
         const node = { text: clean, children: [], links };
 
-        // walk up the stack to find parent at indent/4 - 1
-        const depth = Math.floor(indent / 4) + 1;
-        if (!root._stack) root._stack = [];
-        while (root._stack.length > 0 && root._stack[root._stack.length - 1].depth >= depth) {
-          root._stack.pop();
+        // pop stack until we find the parent
+        while (stack.length > 1 && stack[stack.length - 1].depth >= depth) {
+          stack.pop();
         }
-        const parent = root._stack.length === 0 ? root : root._stack[root._stack.length - 1].node;
-        parent.children.push(node);
-        root._stack.push({ node, depth });
+        stack[stack.length - 1].node.children.push(node);
+        stack.push({ node, depth });
       }
 
-      delete root._stack;
       return root;
     }
 
@@ -217,9 +215,18 @@
 
       nd.append('text')
         .attr('dy', '0.35em')
-        .attr('x', d => d.x < Math.PI === !d.children ? 9 : -9)
-        .attr('text-anchor', d => d.x < Math.PI === !d.children ? 'start' : 'end')
-        .attr('transform', d => d.x >= Math.PI ? 'rotate(180)' : null)
+        .attr('x', d => {
+          if (d.depth === 0) return 0;
+          return d.x < Math.PI === !d.children ? 9 : -9;
+        })
+        .attr('text-anchor', d => {
+          if (d.depth === 0) return 'middle';
+          return d.x < Math.PI === !d.children ? 'start' : 'end';
+        })
+        .attr('transform', d => {
+          if (d.depth === 0) return 'rotate(90)'; // undo the node group rotation
+          return d.x >= Math.PI ? 'rotate(180)' : null;
+        })
         .text(d => d.data.text)
         .clone(true).lower()
         .attr('stroke', isDark ? '#111827' : '#f5f5f5')
