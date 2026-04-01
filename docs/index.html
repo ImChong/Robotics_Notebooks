@@ -227,6 +227,16 @@ function render(data) {
   }
 
   // All nodes expanded by default — no collapse on init
+  // Measure all node widths before layout so positions are correct on first render
+  nodeSel.selectAll('.node').data(root.descendants(), d => d)
+    .each(function(d) {
+      const txt = document.createElement('span');
+      txt.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:14px system-ui,sans-serif';
+      txt.textContent = d.data.text;
+      document.body.appendChild(txt);
+      d._w = Math.max(txt.getBoundingClientRect().width + NODE_PAD_X * 3, 40);
+      document.body.removeChild(txt);
+    });
   doLayout();
 
   // ── Palette ─────────────────────────────────────────
