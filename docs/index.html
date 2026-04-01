@@ -187,8 +187,10 @@ function render(data) {
 
   // ── Layout ─────────────────────────────────────────────
   function leafCount(n) {
-    const kids = n.children || n._children || [];
-    return kids.length === 0 ? 1 : kids.reduce((s, c) => s + leafCount(c), 0);
+    // Only count visible children (in 'children'), not hidden ones in '_children'
+    const kids = n.children || [];
+    if (kids.length === 0) return n._hidden ? 0 : 1;
+    return kids.reduce((s, c) => s + leafCount(c), 0);
   }
 
   function doLayout() {
@@ -347,6 +349,8 @@ function render(data) {
       .on('click', function(event, d) {
         event.stopPropagation();
         if (d.children) {
+          // Mark children as hidden so leafCount excludes them
+          (d.children || []).forEach(c => { c._hidden = true; });
           d._children = d.children;
           d.children = null;
           doLayout();
@@ -354,6 +358,8 @@ function render(data) {
         } else if (d._children) {
           d.children = d._children;
           d._children = null;
+          // Clear hidden flag on restored children
+          (d.children || []).forEach(c => { c._hidden = false; });
           update();   // first: measure new children's widths
           doLayout(); // second: layout with correct widths
           update();   // third: render at correct positions
