@@ -180,93 +180,11 @@ function render(data) {
 
   root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
-  // Timeline layout: each depth on its own horizontal level (y = depth * ROW_H)
-  // Siblings at same depth spread evenly across full width
-  // Use treeLayout just to compute the hierarchy structure, then override positions
-  const ROW_H = 70;   // vertical step per depth level
-  const spineX = W / 2; // center spine x
+  treeLayout = d3.tree()
+    .nodeSize([COL_W, NODE_H + 12])
+    .separation((a, b) => a.parent === b.parent ? 1.8 : 2.5);
 
-  treeLayout = d3.tree().nodeSize([NODE_H + 12, COL_W]).separation((a, b) => a.parent === b.parent ? 1.8 : 2.5);
   treeLayout(root);
-
-  // Assign timeline positions: y = depth * ROW_H, x = distributed horizontally
-  root.descendants().forEach(d => {
-    d._depth = d.depth;
-  });
-
-  function timelinePositions(node, depth, startX, endX) {
-    const children = (node.children || []).filter(c => !c._hidden);
-    if (children.length === 0) return;
-    const step = (endX - startX) / children.length;
-    children.forEach((c, i) => {
-      c._x = startX + step * i + step / 2;
-      c._y = depth * ROW_H;
-    });
-    // Recurse for grandchildren (they stay at same depth spread)
-    children.forEach(c => {
-      const grandchildren = (c.children || []).filter(gc => !gc._hidden);
-      if (grandchildren.length > 0) {
-        const gcStart = c._x - (c._maxChildSpan || 60) * 1.5;
-        const gcEnd = c._x + (c._maxChildSpan || 60) * 1.5;
-        timelinePositions(c, depth + 1, gcStart, gcEnd);
-      }
-    });
-  }
-
-  // Mark collapsed nodes as hidden
-  function markHidden(n) {
-    if (n._children && n._children.length && !n.children) {
-      n._hidden = true;
-      n._children.forEach(markHidden);
-    } else {
-      n._hidden = false;
-      (n.children || []).forEach(markHidden);
-    }
-  }
-  markHidden(root);
-
-  // Root at top center
-  root.x = spineX;
-  root.y = 0;
-
-  // Compute child x positions: spread visible children of root across W
-  const rootChildren = (root.children || []).filter(c => !c._hidden);
-  const rootStep = W * 0.85 / Math.max(rootChildren.length, 1);
-  const rootStart = W * 0.075;
-  rootChildren.forEach((c, i) => {
-    c._x = rootStart + rootStep * i + rootStep / 2;
-    c._y = ROW_H;
-  });
-
-  // Second level: spread grandchildren under each child
-  rootChildren.forEach(c => {
-    const grandchildren = (c.children || []).filter(gc => !gc._hidden);
-    if (grandchildren.length === 0) return;
-    const span = Math.min(W * 0.18, 200);
-    const gcStart = c._x - span * grandchildren.length / 2;
-    grandchildren.forEach((gc, i) => {
-      gc._x = gcStart + span * i + span / 2;
-      gc._y = ROW_H * 2;
-    });
-  });
-
-  // Deeper levels: inherit parent's x, go one row down
-  function assignDeep(node) {
-    const children = (node.children || []).filter(c => !c._hidden);
-    children.forEach(c => {
-      if (c._x === undefined) c._x = c.parent._x;
-      if (c._y === undefined) c._y = c.parent._y + ROW_H;
-      assignDeep(c);
-    });
-  }
-  rootChildren.forEach(c => assignDeep(c));
-
-  // Override tree positions with timeline positions
-  root.each(d => {
-    if (d === root) return;
-    if (d._x !== undefined) { d.x = d._x; d.y = d._y !== undefined ? d._y : d.depth * ROW_H; }
-    else { d.y = d.depth * ROW_H; }
-  });
 
   // Light mode: pale/muted pastels; Dark mode: vivid
   const palette = isDark()
@@ -299,83 +217,22 @@ function render(data) {
     .style('line-height', '1.9').style('display', 'none')
     .style('border', `1px solid ${isDark() ? '#3d3d3d' : '#e8e8e4'}`);
 
-  let spineSel = g.append('g').attr('class', 'spine');
   let linkSel = g.append('g').attr('class', 'links');
   let nodeSel = g.append('g').attr('class', 'nodes');
 
   function update() {
-    // Mark collapsed nodes hidden before computing positions
-    function markHidden(n) {
-      n._hidden = !!(n._children && n._children.length && !n.children);
-      (n.children || []).forEach(markHidden);
-      (n._children || []).forEach(markHidden);
-    }
-    markHidden(root);
+    // Re-layout with current children/_children state
+    treeLayout(root);
 
-    // Re-assign timeline positions
-    const rootChildren = (root.children || []).filter(c => !c._hidden);
-    const rootStep = W * 0.85 / Math.max(rootChildren.length, 1);
-    const rootStart = W * 0.075;
-    rootChildren.forEach((c, i) => {
-      c._x = rootStart + rootStep * i + rootStep / 2;
-      c._y = ROW_H;
-    });
-    rootChildren.forEach(c => {
-      const grandchildren = (c.children || []).filter(gc => !gc._hidden);
-      if (!grandchildren.length) return;
-      const span = Math.min(W * 0.18, 200);
-      const gcStart = c._x - span * grandchildren.length / 2;
-      grandchildren.forEach((gc, i) => {
-        gc._x = gcStart + span * i + span / 2;
-        gc._y = ROW_H * 2;
-      });
-    });
-
-    function assignDeep(node) {
-      const children = (node.children || []).filter(c => !c._hidden);
-      children.forEach(c => {
-        if (c._x === undefined) c._x = c.parent._x;
-        if (c._y === undefined) c._y = (c.parent._y || 0) + ROW_H;
-        assignDeep(c);
-      });
-    }
-    rootChildren.forEach(c => assignDeep(c));
-
-    // Override tree positions
-    root.each(d => {
-      if (d === root) return;
-      if (d._x !== undefined) { d.x = d._x; d.y = d._y !== undefined ? d._y : d.depth * ROW_H; }
-      else { d.y = d.depth * ROW_H; }
-    });
-
-    // ── Spine line ──
-    const maxDepth = root.descendants().filter(d => !d._hidden).reduce((max, d) => Math.max(max, d._y || 0), ROW_H * 2);
-    spineSel.selectAll('.spine-line').data([1]).join(
-      enter => enter.append('line').attr('class', 'spine-line')
-        .attr('stroke', linkColor).attr('stroke-width', 2).attr('stroke-opacity', 0.25)
-        .attr('x1', spineX).attr('x2', spineX)
-        .attr('y1', 0).attr('y2', maxDepth + ROW_H),
-      update => update.transition().duration(300)
-        .attr('x1', spineX).attr('x2', spineX)
-        .attr('y2', maxDepth + ROW_H)
-    );
-
-    // ── Links (elbow: horizontal then vertical) ──
-    const visibleLinks = root.links().filter(l => !l.source._hidden && !l.target._hidden);
-    linkSel.selectAll('.link').data(visibleLinks).join(
+    // ── Links ──
+    linkSel.selectAll('.link').data(root.links()).join(
       enter => enter.append('path').attr('class', 'link')
-        .attr('stroke', linkColor).attr('fill', 'none')
-        .attr('d', d => {
-          const sx = d.source.x, sy = d.source.y, tx = d.target.x, ty = d.target.y;
-          const midY = sy + (ty - sy) / 2;
-          return `M${sx},${sy} L${sx},${midY} L${tx},${midY} L${tx},${ty}`;
-        }),
-      update => update.transition().duration(300)
-        .attr('d', d => {
-          const sx = d.source.x, sy = d.source.y, tx = d.target.x, ty = d.target.y;
-          const midY = sy + (ty - sy) / 2;
-          return `M${sx},${sy} L${sx},${midY} L${tx},${midY} L${tx},${ty}`;
-        }),
+        .attr('stroke', linkColor)
+        .attr('fill', 'none')
+        .attr('d', d3.linkVertical().x(dd => dd.x).y(dd => dd.y)),
+      update => update
+        .transition().duration(300)
+        .attr('d', d3.linkVertical().x(dd => dd.x).y(dd => dd.y)),
       exit => exit.remove()
     );
 
@@ -451,7 +308,14 @@ function render(data) {
           d.children = d._children;
           d._children = null;
         }
+        treeLayout(root);
         update();
+      })
+      .on('dblclick', function(event, d) {
+        event.stopPropagation();
+        if (d.data.links && d.data.links.length) {
+          window.open(d.data.links[0].url, '_blank');
+        }
       })
       .on('dblclick', function(event, d) {
         event.stopPropagation();
@@ -461,15 +325,6 @@ function render(data) {
       })
       .style('cursor', d => d.data.links && d.data.links.length ? 'pointer' : 'pointer');
   }
-
-  // Initial collapse: hide all except root depth
-  root.descendants().forEach(d => {
-    if (d.depth > 0) {
-      d._children = d.children;
-      d.children = null;
-    }
-  });
-  update();
 
   update();
 
