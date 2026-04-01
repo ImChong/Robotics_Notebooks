@@ -224,12 +224,7 @@ function render(data) {
     });
   }
 
-  root.descendants().forEach(d => {
-    if (d.depth > 0) {
-      d._children = d.children;
-      d.children = null;
-    }
-  });
+  // All nodes expanded by default — no collapse on init
   doLayout();
 
   // ── Palette ─────────────────────────────────────────
