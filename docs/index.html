@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robotics Notebooks — Mind Map</title>
+  <title>Robotics Notebooks | Mind Map</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -227,17 +227,10 @@ function render(data) {
   }
 
   // All nodes expanded by default — no collapse on init
-  // Measure all node widths before layout so positions are correct on first render
-  nodeSel.selectAll('.node').data(root.descendants(), d => d)
-    .each(function(d) {
-      const txt = document.createElement('span');
-      txt.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap;font:14px system-ui,sans-serif';
-      txt.textContent = d.data.text;
-      document.body.appendChild(txt);
-      d._w = Math.max(txt.getBoundingClientRect().width + NODE_PAD_X * 3, 40);
-      document.body.removeChild(txt);
-    });
-  doLayout();
+  update();    // 1. create nodes + measure widths (enter phase measures _w)
+  doLayout(); // 2. layout with correct widths
+  update();    // 3. render at correct positions
+  fitView(g, W, H);
 
   // ── Palette ─────────────────────────────────────────
   const palette = isDark()
@@ -372,7 +365,6 @@ function render(data) {
       .style('cursor', 'pointer');
   }
 
-  update();
   fitView(g, W, H);
 
   document.getElementById('btnZoomIn').onclick  = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.3);
