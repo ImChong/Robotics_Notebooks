@@ -184,31 +184,10 @@ function render(data) {
   root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
   // ── Layout ─────────────────────────────────────────────
-  function leafCount(n) {
-    const kids = n.children || n._children || [];
-    return kids.length === 0 ? 1 : kids.reduce((s, c) => s + leafCount(c), 0);
-  }
-
-  function assign(n, xStart, yStart, yEnd) {
-    n._x = xStart;
-    const kids = n.children || n._children || [];
-    if (kids.length === 0) {
-      n._y = (yStart + yEnd) / 2;
-      return;
-    }
-    const totalLeaf = kids.reduce((s, c) => s + leafCount(c), 0);
-    const totalH = totalLeaf * LEAF_H + Math.max(0, totalLeaf - 1) * H_GAP;
-    let yCur = yStart + Math.max(0, (yEnd - yStart - totalH) / 2);
-    kids.forEach(c => {
-      const ch = leafCount(c) * LEAF_H + Math.max(0, leafCount(c) - 1) * H_GAP;
-      assign(c, xStart + COL_W, yCur, yCur + ch);
-      yCur += ch + H_GAP;
-    });
-  }
 
   function doLayout() {
     root._x = spineX;
-    root._y = H / 2;  // root centered vertically on spine
+    root._y = H / 2;
     const rootKids = root.children || root._children || [];
     if (rootKids.length > 0) {
       const totalLeaf = rootKids.reduce((s, c) => s + leafCount(c), 0);
@@ -216,13 +195,31 @@ function render(data) {
       let yCur = (H - totalH) / 2;
       rootKids.forEach(c => {
         const ch = leafCount(c) * LEAF_H + Math.max(0, leafCount(c) - 1) * H_GAP;
-        assign(c, spineX + COL_W, yCur, yCur + ch);
+        assignAll(c, spineX + COL_W, yCur, yCur + ch);
         yCur += ch + H_GAP;
       });
     }
   }
 
-  // Collapse all except root
+  // Recursively assign positions to a node and ALL its visible descendants
+  function assignAll(n, x, yStart, yEnd) {
+    const kids = n.children || n._children || [];
+    n._x = x;
+    if (kids.length === 0) {
+      n._y = (yStart + yEnd) / 2;
+      return;
+    }
+    n._y = (yStart + yEnd) / 2;
+    const totalLeaf = kids.reduce((s, c) => s + leafCount(c), 0);
+    const totalH = totalLeaf * LEAF_H + Math.max(0, totalLeaf - 1) * H_GAP;
+    let yCur = yStart + Math.max(0, (yEnd - yStart - totalH) / 2);
+    kids.forEach(c => {
+      const ch = leafCount(c) * LEAF_H + Math.max(0, leafCount(c) - 1) * H_GAP;
+      assignAll(c, x + COL_W, yCur, yCur + ch);
+      yCur += ch + H_GAP;
+    });
+  }
+
   root.descendants().forEach(d => {
     if (d.depth > 0) {
       d._children = d.children;
