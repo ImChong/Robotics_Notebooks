@@ -208,6 +208,7 @@ function render(data) {
 
   function doLayout() {
     root._x = spineX;
+    root._y = H / 2;  // root centered vertically on spine
     const rootKids = root.children || root._children || [];
     if (rootKids.length > 0) {
       const totalLeaf = rootKids.reduce((s, c) => s + leafCount(c), 0);
