@@ -226,11 +226,7 @@ function render(data) {
     });
   }
 
-  // All nodes expanded by default — no collapse on init
-  update();    // 1. create nodes + measure widths (enter phase measures _w)
-  doLayout(); // 2. layout with correct widths
-  update();    // 3. render at correct positions
-  fitView(g, W, H);
+
 
   // ── Palette ─────────────────────────────────────────
   const palette = isDark()
@@ -265,6 +261,13 @@ function render(data) {
 
   let linkSel = g.append('g').attr('class', 'links');
   let nodeSel = g.append('g').attr('class', 'nodes');
+
+  // All nodes expanded by default — no collapse on init
+  // 3-step: create nodes + measure widths → layout → render
+  update();    // 1. create nodes + measure widths (enter phase measures _w)
+  doLayout(); // 2. layout with correct widths
+  update();    // 3. render at correct positions
+  fitView(g, W, H);
 
   function update() {
     linkSel.selectAll('.link').data(root.links()).join(
