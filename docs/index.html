@@ -165,13 +165,14 @@ function parseMd(md) {
   return root;
 }
 
-// ── Renderer: collapsible horizontal tree ───────────────
+// ── Renderer: bilateral collapsible tree ───────────────
 const NODE_H   = 24;
 const NODE_PAD_X = 10;
-const COL_W    = 350;   // horizontal step per depth level (must exceed max node width)
-const LEVEL_GAP = 80;   // vertical gap between sibling subtrees
+const COL_W    = 320;   // horizontal step per depth level
+const LEAF_H   = 44;    // vertical space per leaf node
+const H_GAP    = 10;    // minimum vertical gap between sibling nodes
 
-let svgEl, zoomBehavior, root, treeLayout;
+let svgEl, zoomBehavior, root;
 
 function render(data) {
   const container = document.getElementById('chart');
@@ -181,13 +182,49 @@ function render(data) {
 
   root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
-  treeLayout = d3.tree()
-    .nodeSize([NODE_H + LEVEL_GAP, COL_W])
-    .separation((a, b) => a.parent === b.parent
-      ? Math.max(1.5, (a.data._w || 60) / COL_W + 0.5)
-      : Math.max(1.0, (a.data._w || 60) / COL_W * 0.8 + 0.5));
+  const spineX = W / 2;
 
-  treeLayout(root);
+  function computeLeafCount(n) {
+    const kids = n.children || n._children || [];
+    if (kids.length === 0) return 1;
+    return kids.reduce((s, c) => s + computeLeafCount(c), 0);
+  }
+
+  function doLayout() {
+    root._x = 0;
+    const rootKids = root.children || root._children || [];
+    if (rootKids.length > 0) {
+      const totalLeaf = rootKids.reduce((s, c) => s + computeLeafCount(c), 0);
+      const totalH = totalLeaf * LEAF_H + (totalLeaf - 1) * H_GAP;
+      let yCur = (H - totalH) / 2;
+      rootKids.forEach(c => {
+        const ch = computeLeafCount(c) * LEAF_H + (computeLeafCount(c) - 1) * H_GAP;
+        assignPositions(c, COL_W, W, yCur, yCur + ch);
+        yCur += ch + H_GAP;
+      });
+    }
+  }
+
+  function assignPositions(n, xStart, xEnd, yStart, yEnd) {
+    n._x = xStart;
+    const kids = n.children || n._children || [];
+    if (kids.length === 0) {
+      n._y = (yStart + yEnd) / 2;
+      return;
+    }
+    const totalLeaf = kids.reduce((s, c) => s + computeLeafCount(c), 0);
+    const totalH = totalLeaf * LEAF_H + (totalLeaf - 1) * H_GAP;
+    let yCur = yStart + Math.max(0, (yEnd - yStart - totalH) / 2);
+    kids.forEach(c => {
+      const childLeaf = computeLeafCount(c);
+      const childH = childLeaf * LEAF_H + (childLeaf - 1) * H_GAP;
+      const childYEnd = yCur + childH;
+      assignPositions(c, xStart + COL_W, xEnd, yCur, childYEnd);
+      yCur = childYEnd + H_GAP;
+    });
+  }
+
+  doLayout();
 
   // Light mode: pale/muted pastels; Dark mode: vivid
   const palette = isDark()
@@ -224,18 +261,25 @@ function render(data) {
   let nodeSel = g.append('g').attr('class', 'nodes');
 
   function update() {
-    // Re-layout with current children/_children state
-    treeLayout(root);
-
     // ── Links ──
     linkSel.selectAll('.link').data(root.links()).join(
       enter => enter.append('path').attr('class', 'link')
         .attr('stroke', linkColor)
         .attr('fill', 'none')
-        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
+        .attr('d', d => {
+          const sx = spineX + d.source._x, sy = d.source._y;
+          const tx = spineX + d.target._x, ty = d.target._y;
+          const midX = sx + (tx - sx) / 2;
+          return `M${sx},${sy} L${midX},${sy} L${midX},${ty} L${tx},${ty}`;
+        }),
       update => update
         .transition().duration(300)
-        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
+        .attr('d', d => {
+          const sx = spineX + d.source._x, sy = d.source._y;
+          const tx = spineX + d.target._x, ty = d.target._y;
+          const midX = sx + (tx - sx) / 2;
+          return `M${sx},${sy} L${midX},${sy} L${midX},${ty} L${tx},${ty}`;
+        }),
       exit => exit.remove()
     );
 
@@ -245,7 +289,7 @@ function render(data) {
     nodes.join(
       enter => {
         const grp = enter.append('g').attr('class', 'node')
-          .attr('transform', d => `translate(${d.y},${d.x})`);
+          .attr('transform', d => `translate(${spineX + d._x},${d._y})`);
         // Append text first with visibility:hidden to measure rendered width
         // (display:none returns 0 for getComputedTextLength, visibility:hidden does not)
         const txt = grp.append('text')
@@ -273,7 +317,7 @@ function render(data) {
       },
       update => {
         update.transition().duration(300)
-          .attr('transform', d => `translate(${d.y},${d.x})`);
+          .attr('transform', d => `translate(${spineX + d._x},${d._y})`);
         update.select('rect')
           .attr('width', d => d._w)
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
@@ -311,7 +355,7 @@ function render(data) {
           d.children = d._children;
           d._children = null;
         }
-        treeLayout(root);
+        doLayout();
         update();
       })
       .on('dblclick', function(event, d) {
@@ -338,7 +382,7 @@ function render(data) {
       d.children = null;
     }
   });
-  treeLayout(root);
+  doLayout();
   update();
 
   fitView(g, W, H);
