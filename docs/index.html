@@ -207,6 +207,7 @@ function render(data) {
   }
 
   function doLayout() {
+    root._x = spineX;
     const rootKids = root.children || root._children || [];
     if (rootKids.length > 0) {
       const totalLeaf = rootKids.reduce((s, c) => s + leafCount(c), 0);
