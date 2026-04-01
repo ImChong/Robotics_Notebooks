@@ -181,7 +181,7 @@ function render(data) {
   root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
 
   treeLayout = d3.tree()
-    .nodeSize([COL_W, NODE_H + 12])
+    .nodeSize([NODE_H + 12, COL_W])
     .separation((a, b) => a.parent === b.parent ? 1.8 : 2.5);
 
   treeLayout(root);
@@ -229,10 +229,10 @@ function render(data) {
       enter => enter.append('path').attr('class', 'link')
         .attr('stroke', linkColor)
         .attr('fill', 'none')
-        .attr('d', d3.linkVertical().x(dd => dd.x).y(dd => dd.y)),
+        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
       update => update
         .transition().duration(300)
-        .attr('d', d3.linkVertical().x(dd => dd.x).y(dd => dd.y)),
+        .attr('d', d3.linkHorizontal().x(dd => dd.y).y(dd => dd.x)),
       exit => exit.remove()
     );
 
@@ -242,7 +242,7 @@ function render(data) {
     nodes.join(
       enter => {
         const grp = enter.append('g').attr('class', 'node')
-          .attr('transform', d => `translate(${d.x},${d.y})`);
+          .attr('transform', d => `translate(${d.y},${d.x})`);
         // Append text first with visibility:hidden to measure rendered width
         // (display:none returns 0 for getComputedTextLength, visibility:hidden does not)
         const txt = grp.append('text')
@@ -270,7 +270,7 @@ function render(data) {
       },
       update => {
         update.transition().duration(300)
-          .attr('transform', d => `translate(${d.x},${d.y})`);
+          .attr('transform', d => `translate(${d.y},${d.x})`);
         update.select('rect')
           .attr('width', d => d._w)
           .attr('fill', d => bgPalette[d.depth % bgPalette.length])
