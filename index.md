@@ -32,10 +32,13 @@
 ### Concepts
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Whole-Body Control](wiki/concepts/whole-body-control.md)
+- [Domain Randomization](wiki/concepts/domain-randomization.md)
+- [Optimal Control (OCP)](wiki/concepts/optimal-control.md)
 
 ### Methods
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)
+- [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 
 ### Tasks
 - [Locomotion](wiki/tasks/locomotion.md)
