@@ -1,0 +1,61 @@
+# Locomotion
+
+**运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。
+
+## 一句话定义
+
+让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。
+
+## 核心挑战
+
+### 1. 平衡
+人形机器人是天然不稳定的系统，必须主动维持平衡。
+
+- 静态平衡：重心在支撑多边形内
+- 动态平衡：ZMP（Zero Moment Point）条件
+- 接触力分配：多接触时的力分配问题
+
+### 2. 接触切换
+行走本质是不断在单脚支撑和双脚支撑之间切换，每次切换都容易失稳。
+
+### 3. 高维动作空间
+30+ 自由度，每次决策都要协调所有关节。
+
+### 4. 地形变化
+平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。
+
+## 主要方法路线
+
+### 传统控制路线
+- **ZMP + 预观控制**：经典人形行走（Honda ASIMO）
+- **LIP + 步长调节**：简单高效的行走控制
+- **Hybrid Zero Dynamics**：考虑机器人动力学结构的步态生成
+
+### 学习路线
+- **RL from scratch**：直接在仿真里训，不需要人工步态设计
+  - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）
+- **IL + RL**：用 MoCap 数据初始化，再用 RL 提升
+  - 代表：DeepMimic, AMP
+- **世界模型**：学习环境模型，在模型里规划
+  - 代表：Dreamer, LIFT
+
+## 评价指标
+
+- **行走速度**：m/s
+- **能耗效率**：J/kg/m 或 Cost of Transport (CoT)
+- **地形适应能力**：是否能处理楼梯、不平整地面
+- **稳定性**：摔倒频率
+- **运动自然性**：和人类步态的相似度
+- **泛化能力**：能否迁移到未见过的地形
+
+## 关联系统/方法
+
+- [Whole-Body Control](../concepts/whole-body-control.md)
+- [Sim2Real](../concepts/sim2real.md)
+- [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Imitation Learning](../methods/imitation-learning.md)
+- [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）
+
+## 关联任务
+
+- [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
