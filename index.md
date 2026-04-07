@@ -52,9 +52,9 @@
 
 ## 与其他项目的边界
 
-- `paper-reading`：单篇论文深读
-- `Robotics_Notebooks`：跨主题、跨论文、跨模块的知识组织
+- [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)：单篇论文深读
+- [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)：跨主题、跨论文、跨模块的知识组织
 
 一句话：
 
-> `paper-reading` 负责点，`Robotics_Notebooks` 负责线和面。
+> `Humanoid_Robot_Learning_Paper_Notebooks` 负责点，`Robotics_Notebooks` 负责线和面。

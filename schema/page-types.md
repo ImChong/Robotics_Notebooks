@@ -103,4 +103,4 @@
 
 注意：
 - 这里只做简版摘要与定位说明
-- 深度论文拆解尽量放在 `paper-reading`
+- 深度论文拆解尽量放在 [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
