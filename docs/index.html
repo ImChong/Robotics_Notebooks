@@ -1,424 +1,600 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Robotics Notebooks | 机器人技术栈</title>
+  <meta name="description" content="Robotics Notebooks - 以机器人运动控制为切入口，系统梳理强化学习、模仿学习、人形机器人与全栈工程能力的成长路径。" />
+  <meta name="keywords" content="Robotics Notebooks, 机器人技术栈, Humanoid Robot, Motion Control, Reinforcement Learning, Imitation Learning, Whole-Body Control" />
+  <meta name="author" content="Chong Liu" />
+  <meta property="og:title" content="Robotics Notebooks | 机器人技术栈地图" />
+  <meta property="og:description" content="以机器人运动控制为切入口，系统梳理强化学习、模仿学习、人形机器人与全栈工程能力的成长路径。" />
+  <meta property="og:type" content="website" />
+  <title>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --bg: #ffffff;
       --bg-alt: #f7f6f3;
+      --surface: #ffffff;
+      --border: #e8e8e4;
       --text: #37352f;
       --text-muted: #787774;
       --accent: #2d74da;
       --accent-hover: #1a5bb8;
-      --border: #e8e8e4;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.10);
+      --radius: 8px;
+      --header-h: 56px;
+      --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans SC', sans-serif;
+      --transition: .2s ease;
     }
-    body.dark {
+
+    [data-theme="dark"] {
       --bg: #191919;
       --bg-alt: #222222;
+      --surface: #2f2f2f;
+      --border: #3d3d3d;
       --text: #e8e8e4;
       --text-muted: #9b9a97;
       --accent: #5b9cf6;
       --accent-hover: #7ab3ff;
-      --border: #3d3d3d;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,.3);
+      --shadow-md: 0 4px 12px rgba(0,0,0,.35);
     }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-family: var(--font-sans);
       background: var(--bg);
       color: var(--text);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      transition: background 0.3s, color 0.3s;
+      line-height: 1.7;
+      transition: background var(--transition), color var(--transition);
     }
-    .header {
-      background: var(--bg-alt);
+    img { max-width: 100%; display: block; }
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--header-h);
+      background: var(--bg);
       border-bottom: 1px solid var(--border);
-      color: var(--text);
-      padding: 10px 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .site-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+      white-space: nowrap;
       flex-shrink: 0;
-      transition: background 0.3s, border-color 0.3s;
     }
-    .header-title { font-size: 16px; font-weight: 600; color: var(--text); }
-    .header-actions { display: flex; gap: 6px; }
-    .btn {
-      padding: 4px 10px;
-      border-radius: 5px;
-      border: 1px solid var(--border);
-      background: transparent;
+
+    .site-title:hover { color: var(--accent); text-decoration: none; }
+
+    .main-nav {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+
+    .main-nav a {
+      font-size: .82rem;
       color: var(--text-muted);
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
+      background: var(--bg-alt);
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .header-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 0.6rem;
       cursor: pointer;
-      font-size: 12px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .btn:hover { border-color: var(--accent); color: var(--accent); }
-    #chart { flex: 1; overflow: hidden; background: var(--bg); transition: background 0.3s; }
-    svg { width: 100%; height: 100%; }
-
-    .node rect {
-      rx: 5; ry: 5;
-      stroke-width: 1.5;
-    }
-    .node text {
-      font-size: 12px;
-      dominant-baseline: middle;
-      pointer-events: none;
-    }
-    .link {
-      fill: none;
-      stroke-width: 1.5;
-      stroke-opacity: 0.6;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      min-width: 36px;
+      text-align: center;
     }
 
-    #loading {
-      position: fixed; inset: 0; background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; color: var(--text-muted);
+    .theme-toggle:hover { border-color: var(--accent); }
+    .icon-sun { display: none; }
+    .icon-moon { display: inline; }
+    [data-theme="dark"] .icon-sun { display: inline; }
+    [data-theme="dark"] .icon-moon { display: none; }
+
+    .hero {
+      padding: 72px 0 56px;
+      border-bottom: 1px solid var(--border);
     }
-    #error {
-      display: none; position: fixed; inset: 0;
-      background: var(--bg-alt); color: var(--text);
-      padding: 40px; font-size: 14px; line-height: 1.8;
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .9fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .hero-kicker {
+      font-size: .9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      line-height: 1.15;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--text);
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .hero-desc {
+      font-size: .96rem;
+      color: var(--text);
+      margin-bottom: 22px;
+      max-width: 62ch;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: .92rem;
+    }
+
+    .hero-links span { color: var(--text-muted); }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-size: .92rem;
+      font-weight: 600;
+      border: 1px solid var(--border);
+      transition: all var(--transition);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .hero-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 18px 18px 16px;
+    }
+
+    .hero-panel h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .hero-panel ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-panel li {
+      font-size: .92rem;
+      color: var(--text-muted);
+      border-left: 2px solid var(--border);
+      padding-left: 10px;
+    }
+
+    .section {
+      padding: 56px 0;
+    }
+
+    .section-alt {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 750;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: .96rem;
+      margin-bottom: 28px;
+      max-width: 68ch;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      padding: 18px;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(45,116,218,.35);
+    }
+
+    .card h3 {
+      font-size: 1.02rem;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: .92rem;
+      color: var(--text);
+    }
+
+    .route-list,
+    .structure-list,
+    .boundary-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .simple-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .simple-card h3 {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .simple-card p,
+    .simple-card li {
+      font-size: .92rem;
+      color: var(--text);
+    }
+
+    .simple-card ul {
+      margin-top: 8px;
+      padding-left: 18px;
+    }
+
+    .simple-card li + li { margin-top: 6px; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 48px;
+      color: var(--text-muted);
+      font-size: .88rem;
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        gap: 12px;
+      }
+      .main-nav {
+        display: none;
+      }
+      .hero-grid,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="#hero">Robotics Notebooks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#hero">首页</a>
+        <a href="#routes">成长路线</a>
+        <a href="#tech-map">技术栈地图</a>
+        <a href="#modules">知识模块</a>
+        <a href="#references">论文导航</a>
+        <a href="#about">关于项目</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<div class="header">
-  <span class="header-title">🗺️ Robotics Notebooks | 机器人技术栈</span>
-  <div class="header-actions">
-    <a id="btnGithub" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" style="color:var(--text-muted);text-decoration:none;font-size:13px;padding:4px 8px;">GitHub</a>
-    <button class="btn" id="btnZoomIn">+</button>
-    <button class="btn" id="btnZoomOut">−</button>
-    <button class="btn" id="btnFit">Fit</button>
-    <button class="btn" id="btnTheme">🌙</button>
-  </div>
-</div>
+  <main>
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="hero-kicker">🗺️ 机器人技术栈地图 / Robotics Notebooks</p>
+          <h1 class="hero-title">以运动控制为切入口，逐步走向全栈机器人工程能力</h1>
+          <p class="hero-subtitle">Motion Control → Reinforcement Learning → Imitation Learning → Full-Stack Robotics</p>
+          <p class="hero-desc">
+            这是一个面向机器人学习与工程实践的技术栈导航项目。当前重点聚焦 <strong>运动控制、强化学习、模仿学习、人形机器人</strong>，并逐步扩展到 <strong>感知、规划、软件系统、部署与整机集成</strong>，目标是构建一张通向 <strong>全栈机器人工程师</strong> 的成长地图。
+          </p>
+          <div class="hero-links">
+            <a href="../README.md" target="_blank" rel="noopener noreferrer">README</a>
+            <span>·</span>
+            <a href="../STRUCTURE_v1.md" target="_blank" rel="noopener noreferrer">结构蓝图</a>
+            <span>·</span>
+            <a href="../roadmap/README.md" target="_blank" rel="noopener noreferrer">成长路线</a>
+            <span>·</span>
+            <a href="../tech-map/README.md" target="_blank" rel="noopener noreferrer">技术栈地图</a>
+            <span>·</span>
+            <a href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+          <div class="cta-row">
+            <a class="btn-primary" href="#routes">开始看路线</a>
+            <a class="btn-secondary" href="#tech-map">查看技术栈地图</a>
+            <a class="btn-secondary" href="#references">进入论文导航</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <h3>当前定位</h3>
+          <ul>
+            <li><strong>终极目标：</strong>全栈机器人工程师</li>
+            <li><strong>当前切入口：</strong>机器人运动控制算法工程师</li>
+            <li><strong>当前重点：</strong>运动控制 / 强化学习 / 模仿学习 / 人形机器人</li>
+            <li><strong>组织方法：</strong>参考 Karpathy 的分层知识组织思路，持续演化知识结构</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
 
-<div id="chart"></div>
-<div id="loading">Loading…</div>
-<div id="error"><b>⚠ Error</b><br><span id="errMsg"></span></div>
+    <section class="section" id="modules">
+      <div class="container">
+        <h2 class="section-title">这个项目是做什么的？</h2>
+        <p class="section-subtitle">不是资源堆砌，也不是单纯的思维导图展示，而是一个面向长期成长的技术导航系统。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>看清模块</h3>
+            <p>帮助你看清机器人领域的核心模块，不再在零散名词和碎片链接里打转。</p>
+          </article>
+          <article class="card">
+            <h3>理解依赖</h3>
+            <p>把数学、机器人学、控制、学习算法、系统工程之间的依赖关系讲清楚。</p>
+          </article>
+          <article class="card">
+            <h3>形成路径</h3>
+            <p>告诉你当前该学什么、下一步该补什么，而不是只给一堆“看起来很全”的目录。</p>
+          </article>
+          <article class="card">
+            <h3>连接行动</h3>
+            <p>把知识页、路线图、论文导航、开源生态串起来，最终服务研究与工程落地。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
-<script>
-// ── Theme ───────────────────────────────────────────────
-const isDark = () => document.body.classList.contains('dark');
-function setTheme(dark) {
-  document.body.classList.toggle('dark', dark);
-  document.getElementById('btnTheme').textContent = dark ? '☀️' : '🌙';
-  localStorage.setItem('rn-theme', dark ? 'dark' : 'light');
-}
-(function(){
-  const s = localStorage.getItem('rn-theme');
-  setTheme(s === 'dark' || (!s && window.matchMedia('(prefers-color-scheme:dark)').matches));
-})();
-document.getElementById('btnTheme').onclick = () => {
-  setTheme(!isDark());
-  if (!window._mindmapData) return;
-  const W = document.getElementById('chart').clientWidth;
-  const H = document.getElementById('chart').clientHeight;
-  render(window._mindmapData);
-  // fit to window after re-render
-  const gSel = svgEl ? svgEl.select('g') : null;
-  if (gSel && gSel.node()) fitView(gSel, W, H);
-};
+    <section class="section section-alt" id="routes">
+      <div class="container">
+        <h2 class="section-title">两条成长路线</h2>
+        <p class="section-subtitle">先打穿控制切入口，再向全栈能力扩张，这是现在这条路线最靠谱的走法。</p>
+        <div class="route-list">
+          <article class="simple-card">
+            <h3>路线 A：运动控制算法工程师成长路线</h3>
+            <p>从数学基础、刚体运动、运动学、动力学出发，进入控制、优化、人形 locomotion，再扩展到强化学习与模仿学习。</p>
+          </article>
+          <article class="simple-card">
+            <h3>路线 B：机器人全栈工程师扩展路线</h3>
+            <p>在控制与学习的基础上，继续补齐感知、规划、ROS2 / 中间件、部署调试、硬件认知与系统集成能力。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section" id="tech-map">
+      <div class="container">
+        <h2 class="section-title">当前技术栈主干</h2>
+        <p class="section-subtitle">当前重点不是把内容铺满，而是把主干打深，把边界立住。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>运动控制</h3>
+            <p class="card-meta">刚体运动 · 运动学 · 动力学 · 状态估计 · MPC · WBC</p>
+            <p>这是当前最核心的切入口，也是后续理解人形 locomotion、sim2real 和整机部署的骨架。</p>
+          </article>
+          <article class="card">
+            <h3>强化学习</h3>
+            <p class="card-meta">PPO · SAC · Reward Design · Domain Randomization · Sim2Real</p>
+            <p>重点不是泛泛谈算法，而是围绕机器人运动控制的实际问题去组织 RL 知识。</p>
+          </article>
+          <article class="card">
+            <h3>模仿学习</h3>
+            <p class="card-meta">Behavior Cloning · DAgger · Motion Retarget · Diffusion Policy</p>
+            <p>连接人类动作数据、技能迁移与人形机器人行为学习，是后续高价值方向。</p>
+          </article>
+          <article class="card">
+            <h3>全栈扩展</h3>
+            <p class="card-meta">Perception · Planning · ROS2 · Deployment · Integration</p>
+            <p>先立骨架，后续逐步补齐，最终把“算法强”扩展为“整机闭环也能打”。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
+    <section class="section section-alt" id="references">
+      <div class="container">
+        <h2 class="section-title">论文导航与开源生态</h2>
+        <p class="section-subtitle">把论文、代码、benchmark 和知识模块挂钩，避免“读完就散”。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>论文导航</h3>
+            <p>按 locomotion RL、模仿学习、WBC、sim2real、人形硬件和综述论文组织入口。</p>
+          </article>
+          <article class="card">
+            <h3>开源生态</h3>
+            <p>按 simulation、RL frameworks、humanoid projects、retarget tools 和通用 utilities 分类整理。</p>
+          </article>
+          <article class="card">
+            <h3>Benchmark</h3>
+            <p>逐步沉淀 locomotion benchmark、人形环境、训练场景与评测任务的结构化索引。</p>
+          </article>
+          <article class="card">
+            <h3>知识反哺</h3>
+            <p>最终让论文和开源项目不是“收藏夹”，而是能回流到路线图和技术地图里的知识资产。</p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-// ── Parser: bullet-point indentation → tree ─────────────
-function parseMd(md) {
-  const root = { text: 'Robotics Notebooks', children: [], links: [] };
-  // stack entries: { node, depth }
-  const stack = [{ node: root, depth: -1 }];
+    <section class="section" id="about">
+      <div class="container">
+        <h2 class="section-title">和另外两个项目的边界</h2>
+        <p class="section-subtitle">三个项目各司其职，别混成一锅粥。</p>
+        <div class="boundary-list">
+          <article class="simple-card">
+            <h3>Humanoid_Robot_Learning_Paper_Notebooks</h3>
+            <p>负责单篇论文深读，也就是“点”。</p>
+          </article>
+          <article class="simple-card">
+            <h3>Robotics_Notebooks</h3>
+            <p>负责技术栈、成长路线、模块依赖和研究导航，也就是“线和面”。</p>
+          </article>
+          <article class="simple-card">
+            <h3>ImChong.github.io</h3>
+            <p>负责对外展示，也就是“展示层”。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  for (const rawLine of md.split('\n')) {
-    const line = rawLine.replace(/\t/g, '    ');
-    const m = line.match(/^( *)-[ \t]+(.+)/);
-    if (!m) continue;
+  <footer class="footer">
+    <div class="container">
+      <p>© Chong Liu 2026 · Robotics Notebooks · Built for structured robotics learning and engineering growth.</p>
+    </div>
+  </footer>
 
-    const depth = Math.floor(m[1].length / 4);   // 0-based indent level
-    let text = m[2].trim();
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const themeToggle = document.getElementById('themeToggle');
+      const key = 'robotics-notebooks-theme';
+      const saved = localStorage.getItem(key);
+      const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const dark = saved ? saved === 'dark' : preferDark;
+      root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
-    // extract markdown links
-    const links = [];
-    text = text.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) => {
-      links.push({ label: label.trim(), url: url.trim() });
-      return label.trim();
-    });
-    // strip inline code & bold
-    text = text.replace(/`([^`]+)`/g, '$1').replace(/\*\*([^*]+)\*\*/g, '$1').trim();
-    if (!text) continue;
-
-    const node = { text, links, children: [] };
-
-    // find parent: pop until stack top has depth < current depth
-    while (stack.length > 1 && stack[stack.length - 1].depth >= depth) stack.pop();
-    stack[stack.length - 1].node.children.push(node);
-    stack.push({ node, depth });
-  }
-  return root;
-}
-
-// ── Bilateral collapsible tree renderer ──────────────────
-const NODE_H   = 24;
-const NODE_PAD_X = 10;
-const COL_W    = 320;   // horizontal step per depth level (used when parent width is unknown)
-const LEAF_H   = 38;    // vertical space per leaf node
-const H_GAP    = 12;    // vertical gap between sibling subtrees
-const CHILD_X_OFFSET = 20; // extra horizontal gap between parent right edge and child x
-
-let svgEl, zoomBehavior, root, spineX;
-
-function render(data) {
-  const container = document.getElementById('chart');
-  container.innerHTML = '';
-  const W = container.clientWidth;
-  const H = container.clientHeight;
-  spineX = W / 2;
-
-  root = d3.hierarchy(data, d => d.children && d.children.length ? d.children : null);
-
-  // ── Layout ─────────────────────────────────────────────
-  function leafCount(n) {
-    // Only count visible children (in 'children'), not hidden ones in '_children'
-    const kids = n.children || [];
-    if (kids.length === 0) return n._hidden ? 0 : 1;
-    return kids.reduce((s, c) => s + leafCount(c), 0);
-  }
-
-  function doLayout() {
-    root._x = spineX;
-    root._y = H / 2;
-    const rootKids = root.children || root._children || [];
-    if (rootKids.length > 0) {
-      const totalLeaf = rootKids.reduce((s, c) => s + leafCount(c), 0);
-      const totalH = totalLeaf * LEAF_H + Math.max(0, totalLeaf - 1) * H_GAP;
-      let yCur = (H - totalH) / 2;
-      rootKids.forEach(c => {
-        const ch = leafCount(c) * LEAF_H + Math.max(0, leafCount(c) - 1) * H_GAP;
-        assignAll(c, spineX + COL_W, yCur, yCur + ch);
-        yCur += ch + H_GAP;
+      themeToggle.addEventListener('click', function () {
+        const isDark = root.getAttribute('data-theme') === 'dark';
+        root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        localStorage.setItem(key, isDark ? 'light' : 'dark');
       });
-    }
-  }
 
-  // Recursively assign positions to a node and ALL its visible descendants
-  function assignAll(n, x, yStart, yEnd) {
-    const kids = n.children || n._children || [];
-    n._x = x;
-    if (kids.length === 0) {
-      n._y = (yStart + yEnd) / 2;
-      return;
-    }
-    n._y = (yStart + yEnd) / 2;
-    const totalLeaf = kids.reduce((s, c) => s + leafCount(c), 0);
-    const totalH = totalLeaf * LEAF_H + Math.max(0, totalLeaf - 1) * H_GAP;
-    let yCur = yStart + Math.max(0, (yEnd - yStart - totalH) / 2);
-    kids.forEach(c => {
-      const ch = leafCount(c) * LEAF_H + Math.max(0, leafCount(c) - 1) * H_GAP;
-      assignAll(c, Math.max(x + (n._w || 0) + CHILD_X_OFFSET, spineX + c.depth * COL_W), yCur, yCur + ch);
-      yCur += ch + H_GAP;
-    });
-  }
+      const links = document.querySelectorAll('.main-nav a');
+      const sections = Array.from(links)
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
 
-
-
-  // ── Palette ─────────────────────────────────────────
-  const palette = isDark()
-    ? ['#4f46e5','#7c3aed','#0369a1','#047857','#92400e','#9d174d']
-    : ['#a5b4fc','#c4b5fd','#7dd3fc','#86efac','#fcd34d','#f9a8d4'];
-  const bgPalette = isDark()
-    ? ['#1e1b4b','#2e1065','#0c4a6e','#052e16','#431407','#500724']
-    : ['#f0f2fd','#f5f0fe','#f0f9ff','#f0fdf4','#fefce8','#fdf2f8'];
-  const linkColor = isDark() ? '#5b9cf6' : '#2d74da';
-
-  const svg = d3.select(container).append('svg');
-  svgEl = svg;
-  const g = svg.append('g');
-
-  zoomBehavior = d3.zoom().scaleExtent([0.1, 4])
-    .on('zoom', e => g.attr('transform', e.transform));
-  svg.call(zoomBehavior).on('dblclick.zoom', null)
-    .on('dblclick', function(event) { event.stopPropagation(); });
-
-  // Tooltip
-  const tipBg = isDark() ? '#252525' : '#f7f6f3';
-  const tipText = isDark() ? '#e8e8e4' : '#37352f';
-  const tipLink = isDark() ? '#5b9cf6' : '#2d74da';
-  const tip = d3.select(document.body).append('div')
-    .style('position', 'fixed').style('background', tipBg)
-    .style('color', tipText).style('padding', '10px 14px')
-    .style('border-radius', '8px').style('font-size', '13px')
-    .style('pointer-events', 'none').style('z-index', '9999')
-    .style('max-width', '360px').style('box-shadow', '0 8px 24px rgba(0,0,0,0.4)')
-    .style('line-height', '1.9').style('display', 'none')
-    .style('border', `1px solid ${isDark() ? '#3d3d3d' : '#e8e8e4'}`);
-
-  let linkSel = g.append('g').attr('class', 'links');
-  let nodeSel = g.append('g').attr('class', 'nodes');
-
-  // All nodes expanded by default — no collapse on init
-  // 3-step: create nodes + measure widths → layout → render
-  update();    // 1. create nodes + measure widths (enter phase measures _w)
-  doLayout(); // 2. layout with correct widths
-  update();    // 3. render at correct positions
-  fitView(g, W, H);
-
-  function update() {
-    linkSel.selectAll('.link').data(root.links()).join(
-      enter => enter.append('path').attr('class', 'link')
-        .attr('stroke', linkColor).attr('fill', 'none')
-        .attr('d', d => {
-          const sx = d.source._x, sy = d.source._y;
-          const tx = d.target._x, ty = d.target._y;
-          const midX = sx + (tx - sx) / 2;
-          return `M${sx},${sy} L${midX},${sy} L${midX},${ty} L${tx},${ty}`;
-        }),
-      update => update.transition().duration(300)
-        .attr('d', d => {
-          const sx = d.source._x, sy = d.source._y;
-          const tx = d.target._x, ty = d.target._y;
-          const midX = sx + (tx - sx) / 2;
-          return `M${sx},${sy} L${midX},${sy} L${midX},${ty} L${tx},${ty}`;
-        }),
-      exit => exit.remove()
-    );
-
-    const nodes = nodeSel.selectAll('.node').data(root.descendants(), d => d);
-
-    nodes.join(
-      enter => {
-        const grp = enter.append('g').attr('class', 'node')
-          .attr('transform', d => `translate(${d._x},${d._y})`);
-        const txt = grp.append('text')
-          .attr('x', NODE_PAD_X).attr('y', 0)
-          .attr('fill', isDark() ? '#e8e8e4' : '#37352f')
-          .style('visibility', 'hidden')
-          .text(d => {
-            const count = (d._children || []).length;
-            return (d.children || count === 0) ? d.data.text : `${d.data.text}  (${count})`;
-          });
-        txt.each(function(d) {
-          d._w = Math.max(this.getComputedTextLength() + NODE_PAD_X * 3, 40);
+      function updateActive() {
+        const scrollPos = window.scrollY + 100;
+        let currentId = '#hero';
+        sections.forEach(section => {
+          if (section.offsetTop <= scrollPos) currentId = '#' + section.id;
         });
-        grp.insert('rect', 'text')
-          .attr('x', 0).attr('y', -NODE_H / 2)
-          .attr('width', d => d._w).attr('height', NODE_H)
-          .attr('rx', 5).attr('ry', 5)
-          .attr('fill', d => bgPalette[d.depth % bgPalette.length])
-          .attr('stroke', d => palette[d.depth % palette.length]);
-        txt.style('visibility', null);
-        return grp;
-      },
-      update => {
-        update.transition().duration(300)
-          .attr('transform', d => `translate(${d._x},${d._y})`);
-        update.select('rect')
-          .attr('width', d => d._w)
-          .attr('fill', d => bgPalette[d.depth % bgPalette.length])
-          .attr('stroke', d => palette[d.depth % palette.length]);
-        update.select('text')
-          .attr('fill', isDark() ? '#e8e8e4' : '#37352f')
-          .text(d => {
-            const count = (d._children || []).length;
-            return (d.children || count === 0) ? d.data.text : `${d.data.text}  (${count})`;
-          });
-        return update;
-      },
-      exit => exit.remove()
-    );
+        links.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === currentId);
+        });
+      }
 
-    nodeSel.selectAll('.node')
-      .on('mouseenter', function(event, d) {
-        if (!d.data.links || !d.data.links.length) return;
-        tip.html(d.data.links.map(l =>
-          `<a href="${l.url}" target="_blank" style="color:${tipLink};text-decoration:none">${l.label} ↗</a>`
-        ).join('<br>'))
-        .style('display', 'block')
-        .style('left', (event.clientX + 14) + 'px')
-        .style('top', (event.clientY - 10) + 'px');
-      })
-      .on('mouseleave', () => tip.style('display', 'none'))
-      .on('click', function(event, d) {
-        event.stopPropagation();
-        if (d.children) {
-          // Mark children as hidden so leafCount excludes them
-          (d.children || []).forEach(c => { c._hidden = true; });
-          d._children = d.children;
-          d.children = null;
-          doLayout();
-          update();
-        } else if (d._children) {
-          d.children = d._children;
-          d._children = null;
-          // Clear hidden flag on restored children
-          (d.children || []).forEach(c => { c._hidden = false; });
-          update();   // first: measure new children's widths
-          doLayout(); // second: layout with correct widths
-          update();   // third: render at correct positions
-        }
-      })
-      .on('dblclick', function(event, d) {
-        event.stopPropagation();
-        if (d.data.links && d.data.links.length) {
-          window.open(d.data.links[0].url, '_blank');
-        }
-      })
-      .style('cursor', 'pointer');
-  }
-
-  fitView(g, W, H);
-
-  document.getElementById('btnZoomIn').onclick  = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.3);
-  document.getElementById('btnZoomOut').onclick = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 0.75);
-  document.getElementById('btnFit').onclick     = () => fitView(g, W, H);
-}
-
-function fitView(g, W, H) {
-  const bb = g.node().getBBox();
-  if (!bb.width || !bb.height) return;
-  const scale = Math.min(1.4, Math.min(W / (bb.width + 40), H / (bb.height + 40)));
-  const tx = W / 2 - (bb.x + bb.width / 2) * scale;
-  const ty = H / 2 - (bb.y + bb.height / 2) * scale;
-  svgEl.transition().duration(400)
-    .call(zoomBehavior.transform, d3.zoomIdentity.translate(tx, ty).scale(scale));
-}
-
-// ── Boot ─────────────────────────────────────────────────
-(function() {
-  const README_URL = 'https://cdn.jsdelivr.net/gh/ImChong/Robotics_Notebooks@main/README.md';
-  function loadMd() {
-    var attempt = 0;
-    function tryLoad() {
-      return fetch(README_URL).then(function(r) {
-        if (r.ok) return r.text();
-        if (r.status === 429 && attempt < 3) {
-          attempt++;
-          return new Promise(function(res) { setTimeout(res, attempt * 1200); }).then(tryLoad);
-        }
-        throw new Error('HTTP ' + r.status);
-      });
-    }
-    return tryLoad();
-  }
-  loadMd().then(function(md) {
-    var tree = parseMd(md);
-    document.getElementById('loading').style.display = 'none';
-    window._mindmapData = tree;
-    render(tree);
-  }).catch(function(e) {
-    document.getElementById('loading').style.display = 'none';
-    document.getElementById('error').style.display = 'block';
-    document.getElementById('errMsg').textContent = e.message;
-  });
-})();
-</script>
+      window.addEventListener('scroll', updateActive);
+      updateActive();
+    })();
+  </script>
 </body>
 </html>
