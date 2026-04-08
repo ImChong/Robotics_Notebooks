@@ -22,6 +22,7 @@
 - `roadmap/`：成长路线与阶段导航
 - `tech-map/`：技术栈地图与依赖关系
 - `references/`：论文导航与开源生态
+- `docs/homepage-copy-v1.md`：首页文案草稿
 - `schema/`：知识库规则
 - `exports/`：面向网页渲染的导出层
 - `log.md`：重构与更新日志
