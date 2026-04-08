@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>运动控制模块 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦿</text></svg>" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">Robotics Notebooks</a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../roadmap.html">成长路线</a>
+        <a href="../tech-map.html">技术栈地图</a>
+        <a href="../references.html">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>运动控制模块</h1>
+        <p>这是 `Robotics_Notebooks` 的标准模块页模板示例。目标不是只解释概念，而是把“问题、依赖、方法、产出、资源、关联模块”串起来。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>这个模块解决什么问题</h3>
+            <p>让机器人在给定任务和约束下，产生稳定、可控、可执行的身体运动行为。</p>
+          </article>
+          <article class="simple-card">
+            <h3>为什么对人形机器人重要</h3>
+            <p>运动控制是人形机器人的硬骨架。没有它，强化学习和模仿学习再花，也只是飘在空中的策略。</p>
+          </article>
+          <article class="simple-card">
+            <h3>前置依赖</h3>
+            <ul>
+              <li>线性代数</li>
+              <li>刚体运动与坐标变换</li>
+              <li>运动学</li>
+              <li>动力学</li>
+              <li>优化基础</li>
+            </ul>
+          </article>
+          <article class="simple-card">
+            <h3>核心子主题</h3>
+            <ul>
+              <li>状态估计</li>
+              <li>PID / LQR</li>
+              <li>MPC</li>
+              <li>QP-WBC / TSID</li>
+              <li>人形 locomotion</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">学完后应该会什么</h2>
+        <div class="card-grid">
+          <article class="card"><h3>理解骨架</h3><p>知道一个人形机器人控制系统从状态估计、模型、约束到控制输出怎么串起来。</p></article>
+          <article class="card"><h3>读懂论文</h3><p>能读懂 WBC、MPC、locomotion 和 humanoid control 相关论文里的核心结构。</p></article>
+          <article class="card"><h3>跑通 baseline</h3><p>能在仿真中搭起基本控制闭环，并对控制表现做基础分析。</p></article>
+          <article class="card"><h3>连接学习算法</h3><p>知道控制主线如何和 RL / IL 结合，而不是把两者割裂看待。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">最小落地任务</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>任务 1</h3><p>用 Pinocchio 或类似工具跑通一个人形模型的正逆运动学。</p></article>
+          <article class="simple-card"><h3>任务 2</h3><p>实现一个简单倒立摆或二阶系统的 LQR / MPC 控制。</p></article>
+          <article class="simple-card"><h3>任务 3</h3><p>读一篇 humanoid locomotion / WBC 论文，并把控制结构画成框图。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">相关入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../roadmap.html">成长路线</a></h3><p>看这个模块在整体成长路线里的位置。</p></article>
+          <article class="card"><h3><a href="../tech-map.html">技术栈地图</a></h3><p>看它和数学、机器人学、学习算法之间的依赖关系。</p></article>
+          <article class="card"><h3><a href="../references.html">论文导航</a></h3><p>看 locomotion RL、WBC、sim2real 等相关论文入口。</p></article>
+          <article class="card"><h3><a href="../../wiki/control/">知识层（后续接入）</a></h3><p>后续这里会连接到更细的结构化知识页。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="../main.js"></script>
+</body>
+</html>
