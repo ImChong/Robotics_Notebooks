@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>论文导航 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="index.html">Robotics Notebooks</a>
+      <nav class="main-nav">
+        <a href="index.html">首页</a>
+        <a href="roadmap.html">成长路线</a>
+        <a href="tech-map.html">技术栈地图</a>
+        <a href="#hero">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <section id="hero" class="page-hero">
+      <div class="container">
+        <h1>论文导航与开源生态</h1>
+        <p>把论文、代码、benchmark 和主线问题绑在一起，避免“看完就散、收藏即吃灰”。</p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">论文导航</h2>
+        <div class="card-grid">
+          <article class="card"><h3>Locomotion RL</h3><p>聚焦人形 / 腿足机器人 locomotion 中的强化学习论文。</p></article>
+          <article class="card"><h3>Imitation Learning</h3><p>行为克隆、DAgger、Diffusion Policy、Motion Prior、Retarget。</p></article>
+          <article class="card"><h3>Whole-Body Control</h3><p>任务空间控制、TSID、QP-WBC、人形全身运动控制。</p></article>
+          <article class="card"><h3>Sim2Real / Survey</h3><p>域随机化、系统辨识、鲁棒训练、部署经验与综述论文。</p></article>
+        </div>
+      </div>
+    </section>
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">开源生态与 Benchmark</h2>
+        <div class="card-grid">
+          <article class="card"><h3>Simulation</h3><p>MuJoCo、Isaac Gym、Isaac Lab、Isaac Sim、Gazebo / GZ。</p></article>
+          <article class="card"><h3>RL Frameworks</h3><p>IsaacGymEnvs、legged_gym、humanoid-gym、MimicKit。</p></article>
+          <article class="card"><h3>Humanoid Projects</h3><p>人形机器人运动控制、模仿学习、感知与部署相关开源项目。</p></article>
+          <article class="card"><h3>Benchmark</h3><p>Locomotion benchmark、人形训练环境、评测任务与场景。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="main.js"></script>
+</body>
+</html>
