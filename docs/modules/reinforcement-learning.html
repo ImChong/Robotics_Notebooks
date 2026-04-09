@@ -9,16 +9,280 @@
 </head>
 <body>
   <header class="site-header"><div class="header-inner"><a class="site-title" href="../index.html">Robotics Notebooks</a><nav class="main-nav"><a href="../index.html">首页</a><a href="../roadmap.html">成长路线</a><a href="../tech-map.html">技术栈地图</a><a href="../references.html">论文导航</a></nav><div class="header-actions"><button class="theme-toggle" id="themeToggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button></div></div></header>
+
   <main>
-    <section class="page-hero"><div class="container"><h1>强化学习模块</h1><p>围绕机器人控制问题组织 RL，而不是只罗列算法名词。</p></div></section>
-    <section class="section"><div class="container"><div class="structure-list">
-      <article class="simple-card"><h3>这个模块解决什么问题</h3><p>在难以手工设计控制器或难以显式建模的任务中，通过交互优化策略。</p></article>
-      <article class="simple-card"><h3>为什么重要</h3><p>它是当前人形机器人运动智能的重要增长点，尤其适合高维控制和长期回报优化。</p></article>
-      <article class="simple-card"><h3>前置依赖</h3><ul><li>概率统计</li><li>优化</li><li>神经网络基础</li><li>控制基础</li></ul></article>
-      <article class="simple-card"><h3>核心子主题</h3><ul><li>PPO / SAC</li><li>Reward Design</li><li>Sim2Real</li><li>Domain Randomization</li><li>Humanoid RL</li></ul></article>
-    </div></div></section>
-    <section class="section section-alt"><div class="container"><h2 class="section-title">相关入口</h2><div class="card-grid"><article class="card"><h3><a href="../roadmap.html">成长路线</a></h3><p>查看 RL 在路线 A 中的位置。</p></article><article class="card"><h3><a href="../tech-map.html">技术栈地图</a></h3><p>查看 RL 和控制、模仿学习的关系。</p></article><article class="card"><h3><a href="../references.html">论文导航</a></h3><p>进入 locomotion RL、sim2real 和 survey 入口。</p></article><article class="card"><h3><a href="motion-control.html">运动控制模块</a></h3><p>看 RL 如何建立在控制主线之上。</p></article></div></div></section>
+    <section class="page-hero">
+      <div class="container">
+        <h1>强化学习模块</h1>
+        <p>不是背 PPO、SAC、TD3 的名词表，而是从“机器人控制到底为什么要用 RL”出发，把问题建模、算法选择、训练稳定性、Sim2Real 和 humanoid 落地串成一条主线。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>这个模块解决什么问题</h3>
+            <p>当解析控制器难设计、动力学难精确建模、目标又涉及长期回报时，RL 通过与环境交互直接优化策略，适合处理高维状态、非线性系统和复杂任务约束。</p>
+          </article>
+          <article class="simple-card">
+            <h3>为什么对机器人重要</h3>
+            <p>机器人里最有价值的，不是“让 agent 玩游戏”，而是学到稳定、鲁棒、能泛化的控制策略。尤其在人形 locomotion、全身协调、接触丰富任务里，RL 已经是核心工具之一。</p>
+          </article>
+          <article class="simple-card">
+            <h3>前置依赖</h3>
+            <ul>
+              <li>概率统计：随机变量、期望、方差、采样</li>
+              <li>优化：梯度下降、约束优化、目标函数</li>
+              <li>神经网络基础：前向传播、反向传播、训练稳定性</li>
+              <li>控制基础：状态、反馈、闭环稳定性、轨迹跟踪</li>
+            </ul>
+          </article>
+          <article class="simple-card">
+            <h3>你真正要掌握的主线</h3>
+            <ul>
+              <li>MDP 视角下怎么描述机器人控制问题</li>
+              <li>策略梯度 / Actor-Critic 到底在优化什么</li>
+              <li>On-policy 和 Off-policy 各自适合什么机器人场景</li>
+              <li>Reward、Curriculum、Randomization 为什么决定上限</li>
+              <li>仿真训练出来的策略，怎么尽量别在真机上当场去世</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">快速导览</h2>
+        <p class="section-subtitle">先建立地图，再往里钻。不然很容易陷进算法细节，结果不知道自己到底在解什么问题。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3><a href="#robot-formulation">机器人问题怎么写成 RL</a></h3>
+            <p>状态、动作、奖励、终止条件，不只是形式化，而是直接决定训练成败。</p>
+          </article>
+          <article class="card">
+            <h3><a href="#algo-family">算法家族怎么选</a></h3>
+            <p>PPO、SAC、TD3、离线 RL，不同数据成本、稳定性和机器人适配性。</p>
+          </article>
+          <article class="card">
+            <h3><a href="#training-stack">训练系统怎么搭</a></h3>
+            <p>并行采样、归一化、课程学习、随机化、日志指标，都是工程基本盘。</p>
+          </article>
+          <article class="card">
+            <h3><a href="#sim2real">Sim2Real 怎么落地</a></h3>
+            <p>延迟、噪声、模型失配、接触误差，这些才是真正的对手。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="robot-formulation">
+      <div class="container">
+        <h2 class="section-title">1. 先把机器人任务写对</h2>
+        <p class="section-subtitle">RL 失败，很多时候不是算法不行，而是问题建模就有坑。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>状态 State</h3>
+            <p>常见包括关节位置/速度、机身姿态、接触状态、目标速度、历史观测等。机器人里观测往往并不完整，所以你需要考虑部分可观测性、时序堆叠，甚至 RNN/Transformer policy。</p>
+          </article>
+          <article class="simple-card">
+            <h3>动作 Action</h3>
+            <p>动作不是只能输出 torque。实际里常见有目标关节位置、PD target、残差动作、phase-conditioned action。动作空间定义直接影响学习难度和真机稳定性。</p>
+          </article>
+          <article class="simple-card">
+            <h3>奖励 Reward</h3>
+            <p>奖励的本质不是“给分”，而是告诉策略什么值得优化。速度跟踪、姿态保持、能耗惩罚、足滑惩罚、动作平滑、接触节律，通常要组合起来，但别堆成一锅粥。</p>
+          </article>
+          <article class="simple-card">
+            <h3>终止条件 Done</h3>
+            <p>摔倒、超角度、离开安全区域、数值爆炸，都可能触发终止。Done 设计过激会让策略只学会保守苟活；太松又会污染训练数据。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="algo-family">
+      <div class="container">
+        <h2 class="section-title">2. 算法别乱选，按机器人场景来</h2>
+        <p class="section-subtitle">先问数据怎么来、采样贵不贵、动作是不是连续的、训练是否追求极稳，再决定用谁。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>PPO</h3>
+            <p class="card-meta">On-policy · 稳定 · 工程上最常见</p>
+            <p>优点是稳定、好调、适合大规模并行仿真，在 locomotion 和 humanoid 上极常见。缺点是样本效率一般，真机直接采样会很贵。</p>
+          </article>
+          <article class="card">
+            <h3>SAC</h3>
+            <p class="card-meta">Off-policy · 样本效率高 · 连续控制强</p>
+            <p>适合连续动作控制，探索能力强，理论上更省样本。但在高维复杂接触任务里，稳定性和调参复杂度通常高于 PPO。</p>
+          </article>
+          <article class="card">
+            <h3>TD3</h3>
+            <p class="card-meta">Off-policy · 经典连续控制</p>
+            <p>适合做基线和理解 deterministic actor-critic 思路。机器人里能用，但在复杂 humanoid 任务上未必是最省心选择。</p>
+          </article>
+          <article class="card">
+            <h3>离线 RL / 模仿 + RL</h3>
+            <p class="card-meta">数据复用强 · 适合昂贵数据</p>
+            <p>如果你有 demonstration、teleop 数据或者历史日志，这条线很值得看。很多实用系统不是纯 RL，而是 imitation、tracking、RL 三者混搭。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="training-stack">
+      <div class="container">
+        <h2 class="section-title">3. 真正决定效果的，是整套训练系统</h2>
+        <p class="section-subtitle">算法只是中间一层。把训练系统搭烂了，再好的算法也救不了。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>Observation / Reward Normalization</h3>
+            <p>数值尺度乱飞时，训练会非常不稳定。观测归一化、回报缩放、优势标准化这些操作，看起来土，但特别有用。</p>
+          </article>
+          <article class="simple-card">
+            <h3>Curriculum Learning</h3>
+            <p>别一上来就让 humanoid 完成全目标任务。先站稳、再走、再变速、再抗扰、再复杂地形。课程学习不是锦上添花，是降低搜索难度。</p>
+          </article>
+          <article class="simple-card">
+            <h3>Domain Randomization</h3>
+            <p>质量、摩擦、关节阻尼、延迟、噪声、地形、推力扰动都可以随机。目标不是“随机得很酷”，而是让策略学会对真实世界失配不敏感。</p>
+          </article>
+          <article class="simple-card">
+            <h3>并行环境与吞吐</h3>
+            <p>机器人 RL 很吃仿真吞吐。Isaac Gym / Isaac Lab 这类 GPU 并行环境改变了训练范式：不是靠更聪明的算法，而是靠更快地产生有效经验。</p>
+          </article>
+          <article class="simple-card">
+            <h3>日志与诊断</h3>
+            <p>至少盯住 episode return、成功率、摔倒率、动作幅度、接触统计、tracking error、能耗。别只看 reward 曲线，那玩意很会骗人。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="sim2real">
+      <div class="container">
+        <h2 class="section-title">4. Sim2Real：从会跑到真能用</h2>
+        <p class="section-subtitle">仿真里赢麻了，真机一上电就抽风，这才是机器人 RL 的经典剧情。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>常见失配来源</h3>
+            <ul>
+              <li>动力学参数不准：质量、惯量、摩擦、关节死区</li>
+              <li>执行器模型不准：带宽、延迟、饱和、温升</li>
+              <li>接触建模不准：足底碰撞、软硬地面、滑动误差</li>
+              <li>传感器问题：IMU 漂移、编码器噪声、时间不同步</li>
+            </ul>
+          </article>
+          <article class="simple-card">
+            <h3>常见对策</h3>
+            <ul>
+              <li>加观测噪声和动作延迟</li>
+              <li>做参数随机化，不追单一“最准模型”</li>
+              <li>使用更稳的动作表示，如 PD target / residual policy</li>
+              <li>在真机上逐级放权：站立 → 慢走 → 变速 → 扰动测试</li>
+            </ul>
+          </article>
+          <article class="simple-card">
+            <h3>一个硬判断</h3>
+            <p>如果你的 policy 只能在“极干净观测 + 极准模型 + 极短时间”下工作，那它大概率不是可部署控制器，只是仿真 demo。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="humanoid-focus">
+      <div class="container">
+        <h2 class="section-title">5. 人形机器人为什么特别适合用 RL</h2>
+        <p class="section-subtitle">因为它难。高自由度、混合接触、非线性强、手工设计空间太大，传统方法单打独斗经常顶不住。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>Locomotion</h3>
+            <p>站立、行走、跑跳、抗扰、上坡下坡、变速变向，是 humanoid RL 的主战场。</p>
+          </article>
+          <article class="card">
+            <h3>Whole-body Coordination</h3>
+            <p>手臂摆动、躯干平衡、足端接触切换、动量管理，需要全身协同，不是局部控制就能轻松搞定。</p>
+          </article>
+          <article class="card">
+            <h3>Style / Tracking</h3>
+            <p>把 motion capture、reference trajectories、demonstration 融进去，可以让策略学“像人一样动”，而不只是“别摔”。</p>
+          </article>
+          <article class="card">
+            <h3>Robustness</h3>
+            <p>抗推、抗地形扰动、抗参数失配，RL 很擅长把这些都并进一个训练目标里。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="learning-path">
+      <div class="container">
+        <h2 class="section-title">6. 推荐学习路径</h2>
+        <p class="section-subtitle">如果你目标是 humanoid 运动控制，不建议从一堆 benchmark 论文乱啃，按下面这条路走更稳。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>阶段 1：建立概念骨架</h3>
+            <p>搞懂 MDP、value function、policy gradient、actor-critic、exploration、credit assignment。目标不是推满公式，而是知道每个组件在干嘛。</p>
+          </article>
+          <article class="simple-card">
+            <h3>阶段 2：拿连续控制算法做最小闭环</h3>
+            <p>先通读 PPO / SAC 的核心思路，理解采样、更新、优势估计、熵正则、target network。做到“我能解释给别人听”。</p>
+          </article>
+          <article class="simple-card">
+            <h3>阶段 3：切进机器人语境</h3>
+            <p>开始重点看 locomotion、sim2real、reward design、curriculum、actuator modeling，不再停留在通用 RL 教材层。</p>
+          </article>
+          <article class="simple-card">
+            <h3>阶段 4：看 humanoid 代表工作</h3>
+            <p>重点看会走、会跑、能跟踪参考动作、能抗扰、能迁移真机的工作。读论文时优先抓 observation、action、reward、randomization、deployment pipeline。</p>
+          </article>
+          <article class="simple-card">
+            <h3>阶段 5：自己复现一个可控实验</h3>
+            <p>哪怕只是 Isaac Lab / Mujoco 里做一个速度跟踪 walking task，也比只看论文强十倍。RL 不自己练，理解永远是虚的。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pitfalls">
+      <div class="container">
+        <h2 class="section-title">7. 常见坑点</h2>
+        <p class="section-subtitle">这些坑，你早点知道，就能少浪费很多天。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>把 reward 调大，当成问题解决了</h3>
+            <p>不是。很多时候只是某个项把别的信号淹没了，策略学成奇怪捷径。</p>
+          </article>
+          <article class="simple-card">
+            <h3>只看最终回报，不看行为质量</h3>
+            <p>回报涨了，不代表动作自然、稳定、可部署。要看 gait、接触、能耗、平滑性和恢复能力。</p>
+          </article>
+          <article class="simple-card">
+            <h3>仿真参数追求“唯一真实值”</h3>
+            <p>很多人会掉进这个坑。机器人部署通常更需要鲁棒区间，而不是一个自以为精确的点估计。</p>
+          </article>
+          <article class="simple-card">
+            <h3>过早上真机</h3>
+            <p>这不是勇，是烧机器。先把仿真稳定性、扰动恢复、延迟鲁棒性做够，再逐步上线。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">相关入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../roadmap.html">成长路线</a></h3><p>查看 RL 在整体学习路线中的位置，决定先学哪里、后学哪里。</p></article>
+          <article class="card"><h3><a href="../tech-map.html">技术栈地图</a></h3><p>看 RL 和控制、模仿学习、动力学、仿真平台之间的关系。</p></article>
+          <article class="card"><h3><a href="../references.html">论文导航</a></h3><p>沿着 locomotion、sim2real、humanoid tracking 继续深挖论文。</p></article>
+          <article class="card"><h3><a href="motion-control.html">运动控制模块</a></h3><p>把 RL 放回控制主线里看，你会更清楚它在系统里扮演什么角色。</p></article>
+        </div>
+      </div>
+    </section>
   </main>
+
   <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
   <script src="../main.js"></script>
 </body>
