@@ -245,9 +245,34 @@
       </div>
     </section>
 
+    <section class="section section-alt" id="paper-entry">
+      <div class="container">
+        <h2 class="section-title">7. 核心论文入口</h2>
+        <p class="section-subtitle">如果你是做人形机器人运动控制，这几个方向比泛泛刷 RL benchmark 更值得优先读。</p>
+        <div class="card-grid">
+          <article class="card">
+            <h3>PPO for Locomotion</h3>
+            <p>重点看为什么 PPO 成了 humanoid locomotion 的工程默认解，以及它和大规模并行仿真的配合方式。</p>
+          </article>
+          <article class="card">
+            <h3>Sim-to-Real Locomotion</h3>
+            <p>重点看 actuator model、randomization、noise injection、deployment pipeline，不要只看“跑起来了”的视频。</p>
+          </article>
+          <article class="card">
+            <h3>Humanoid Agile / Robust Control</h3>
+            <p>重点看抗扰、恢复、复杂地形、多目标 tracking，这些更接近真实机器人能力边界。</p>
+          </article>
+          <article class="card">
+            <h3>RL + Imitation Hybrid</h3>
+            <p>重点看 reference motion、tracking reward、motion prior，理解为什么很多强工作不是纯 RL。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="pitfalls">
       <div class="container">
-        <h2 class="section-title">7. 常见坑点</h2>
+        <h2 class="section-title">8. 常见坑点</h2>
         <p class="section-subtitle">这些坑，你早点知道，就能少浪费很多天。</p>
         <div class="structure-list">
           <article class="simple-card">
