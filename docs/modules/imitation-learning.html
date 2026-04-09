@@ -204,24 +204,32 @@
 
     <section class="section section-alt" id="paper-entry">
       <div class="container">
-        <h2 class="section-title">6. 核心论文入口</h2>
-        <p class="section-subtitle">读论文别平均用力，按问题类型抓代表工作：基础 IL、动作跟踪、humanoid skill、扩散策略。</p>
+        <h2 class="section-title">6. 推荐阅读顺序 + 核心论文入口</h2>
+        <p class="section-subtitle">先把最基础的 distribution shift 和参考动作跟踪吃透，再去看 humanoid 技能和 diffusion 这类更强表达路线。</p>
         <div class="card-grid">
           <article class="card">
-            <h3>Behavior Cloning / DAgger</h3>
+            <h3>Step 1 · Behavior Cloning / DAgger</h3>
+            <p class="card-meta">先读</p>
             <p>先建立对 distribution shift、online aggregation、supervised imitation 的核心理解。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#il">去论文导航</a></div>
           </article>
           <article class="card">
-            <h3>DeepMimic 路线</h3>
+            <h3>Step 2 · DeepMimic 路线</h3>
+            <p class="card-meta">第二批</p>
             <p>这是 humanoid 动作模仿绕不过去的入口，重点看 reference motion、tracking reward、技能迁移。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#humanoid">看 Humanoid 入口</a></div>
           </article>
           <article class="card">
-            <h3>AMP / Adversarial Motion Prior</h3>
+            <h3>Step 3 · AMP / Adversarial Motion Prior</h3>
+            <p class="card-meta">进阶</p>
             <p>重点看如何用动作先验替代手工细碎 reward，让行为更自然。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#humanoid">看专项入口</a></div>
           </article>
           <article class="card">
-            <h3>Diffusion Policy 系列</h3>
+            <h3>Step 4 · Diffusion Policy 系列</h3>
+            <p class="card-meta">拓展</p>
             <p>重点看复杂时序行为、多峰动作分布、视觉条件控制的表达能力。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#il">看 IL 入口</a></div>
           </article>
         </div>
       </div>

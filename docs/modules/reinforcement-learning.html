@@ -247,24 +247,32 @@
 
     <section class="section section-alt" id="paper-entry">
       <div class="container">
-        <h2 class="section-title">7. 核心论文入口</h2>
-        <p class="section-subtitle">如果你是做人形机器人运动控制，这几个方向比泛泛刷 RL benchmark 更值得优先读。</p>
+        <h2 class="section-title">7. 推荐阅读顺序 + 核心论文入口</h2>
+        <p class="section-subtitle">别乱跳。按“先建立骨架 → 再看部署 → 最后看混合范式”的顺序读，理解会扎实很多。</p>
         <div class="card-grid">
           <article class="card">
-            <h3>PPO for Locomotion</h3>
+            <h3>Step 1 · PPO for Locomotion</h3>
+            <p class="card-meta">先读</p>
             <p>重点看为什么 PPO 成了 humanoid locomotion 的工程默认解，以及它和大规模并行仿真的配合方式。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#rl">去论文导航</a></div>
           </article>
           <article class="card">
-            <h3>Sim-to-Real Locomotion</h3>
+            <h3>Step 2 · Sim-to-Real Locomotion</h3>
+            <p class="card-meta">第二批</p>
             <p>重点看 actuator model、randomization、noise injection、deployment pipeline，不要只看“跑起来了”的视频。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#sim2real">看 Sim2Real 入口</a></div>
           </article>
           <article class="card">
-            <h3>Humanoid Agile / Robust Control</h3>
+            <h3>Step 3 · Humanoid Agile / Robust Control</h3>
+            <p class="card-meta">进阶</p>
             <p>重点看抗扰、恢复、复杂地形、多目标 tracking，这些更接近真实机器人能力边界。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#humanoid">看 Humanoid 入口</a></div>
           </article>
           <article class="card">
-            <h3>RL + Imitation Hybrid</h3>
+            <h3>Step 4 · RL + Imitation Hybrid</h3>
+            <p class="card-meta">拓展</p>
             <p>重点看 reference motion、tracking reward、motion prior，理解为什么很多强工作不是纯 RL。</p>
+            <div class="cta-row"><a class="btn-secondary" href="../references.html#il">看 IL 关联入口</a></div>
           </article>
         </div>
       </div>
