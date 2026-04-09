@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks - 以机器人运动控制为切入口，系统梳理强化学习、模仿学习、人形机器人与全栈工程能力的成长路径。" />
+  <meta name="description" content="Robotics Notebooks - 面向机器人学习与工程实践的技术栈导航，系统梳理运动控制、强化学习、模仿学习、人形机器人与相关技术主线。" />
   <meta name="keywords" content="Robotics Notebooks, 机器人技术栈, Humanoid Robot, Motion Control, Reinforcement Learning, Imitation Learning, Whole-Body Control" />
   <meta name="author" content="Chong Liu" />
   <meta property="og:title" content="Robotics Notebooks | 机器人技术栈地图" />
-  <meta property="og:description" content="以机器人运动控制为切入口，系统梳理强化学习、模仿学习、人形机器人与全栈工程能力的成长路径。" />
+  <meta property="og:description" content="面向机器人学习与工程实践的技术栈导航，系统梳理运动控制、强化学习、模仿学习、人形机器人与相关技术主线。" />
   <meta property="og:type" content="website" />
   <title>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
@@ -41,10 +41,10 @@
       <div class="container hero-grid">
         <div>
           <p class="hero-kicker">🗺️ 机器人技术栈地图 / Robotics Notebooks</p>
-          <h1 class="hero-title">以运动控制为切入口，逐步走向全栈机器人工程能力</h1>
-          <p class="hero-subtitle">Motion Control → Reinforcement Learning → Imitation Learning → Full-Stack Robotics</p>
+          <h1 class="hero-title">从运动控制到强化学习与模仿学习，构建清晰的机器人技术栈</h1>
+          <p class="hero-subtitle">Motion Control → Reinforcement Learning → Imitation Learning → Humanoid Robotics</p>
           <p class="hero-desc">
-            这是一个面向机器人学习与工程实践的技术栈导航项目。当前重点聚焦 <strong>运动控制、强化学习、模仿学习、人形机器人</strong>，并逐步扩展到 <strong>感知、规划、软件系统、部署与整机集成</strong>，目标是构建一张通向 <strong>全栈机器人工程师</strong> 的成长地图。
+            这是一个面向机器人学习与工程实践的技术栈导航项目，围绕 <strong>运动控制、强化学习、模仿学习、人形机器人</strong> 等核心主题，持续整理知识结构、学习路径与论文入口。
           </p>
           <div class="hero-links">
             <a href="../README.md" target="_blank" rel="noopener noreferrer">README</a>
@@ -66,12 +66,12 @@
           </div>
         </div>
         <aside class="hero-panel">
-          <h3>当前定位</h3>
+          <h3>页面导航</h3>
           <ul>
-            <li><strong>终极目标：</strong>全栈机器人工程师</li>
-            <li><strong>当前切入口：</strong>机器人运动控制算法工程师</li>
-            <li><strong>当前重点：</strong>运动控制 / 强化学习 / 模仿学习 / 人形机器人</li>
-            <li><strong>组织方法：</strong>参考 Karpathy 的分层知识组织思路，持续演化知识结构</li>
+            <li><strong>成长路线：</strong>按学习阶段组织主线能力</li>
+            <li><strong>技术栈地图：</strong>查看模块依赖与关系</li>
+            <li><strong>知识模块：</strong>聚焦运动控制、RL、IL 等核心主题</li>
+            <li><strong>论文导航：</strong>按问题与方向进入代表工作</li>
           </ul>
         </aside>
       </div>
@@ -105,14 +105,14 @@
     <section class="section section-alt" id="routes">
       <div class="container">
         <h2 class="section-title">两条成长路线</h2>
-        <p class="section-subtitle">先打穿控制切入口，再向全栈能力扩张，这是现在这条路线最靠谱的走法。</p>
+        <p class="section-subtitle">先建立清晰主线，再沿着控制、学习与机器人系统逐层扩展。</p>
         <div class="route-list">
           <article class="simple-card">
-            <h3>路线 A：运动控制算法工程师成长路线</h3>
+            <h3>路线 A：控制与学习主线</h3>
             <p>从数学基础、刚体运动、运动学、动力学出发，进入控制、优化、人形 locomotion，再扩展到强化学习与模仿学习。</p>
           </article>
           <article class="simple-card">
-            <h3>路线 B：机器人全栈工程师扩展路线</h3>
+            <h3>路线 B：系统能力扩展主线</h3>
             <p>在控制与学习的基础上，继续补齐感知、规划、ROS2 / 中间件、部署调试、硬件认知与系统集成能力。</p>
           </article>
         </div>
@@ -122,12 +122,12 @@
     <section class="section" id="tech-map">
       <div class="container">
         <h2 class="section-title">当前技术栈主干</h2>
-        <p class="section-subtitle">当前重点不是把内容铺满，而是把主干打深，把边界立住。</p>
+        <p class="section-subtitle">先把关键主干打清楚，再逐步补齐周边模块。</p>
         <div class="card-grid">
           <article class="card">
             <h3><a href="modules/motion-control.html">运动控制</a></h3>
             <p class="card-meta">刚体运动 · 运动学 · 动力学 · 状态估计 · MPC · WBC</p>
-            <p>这是当前最核心的切入口，也是后续理解人形 locomotion、sim2real 和整机部署的骨架。</p>
+            <p>这是理解 humanoid locomotion、sim2real 和真实部署问题的核心骨架之一。</p>
           </article>
           <article class="card">
             <h3><a href="modules/reinforcement-learning.html">强化学习</a></h3>
@@ -142,7 +142,7 @@
           <article class="card">
             <h3>全栈扩展</h3>
             <p class="card-meta">Perception · Planning · ROS2 · Deployment · Integration</p>
-            <p>先立骨架，后续逐步补齐，最终把“算法强”扩展为“整机闭环也能打”。</p>
+            <p>先把主要结构整理清楚，后续再逐步扩展到感知、规划、部署与系统集成。</p>
           </article>
         </div>
       </div>
@@ -172,32 +172,11 @@
         </div>
       </div>
     </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <h2 class="section-title">和另外两个项目的边界</h2>
-        <p class="section-subtitle">三个项目各司其职，别混成一锅粥。</p>
-        <div class="boundary-list">
-          <article class="simple-card">
-            <h3>Humanoid_Robot_Learning_Paper_Notebooks</h3>
-            <p>负责单篇论文深读，也就是“点”。</p>
-          </article>
-          <article class="simple-card">
-            <h3>Robotics_Notebooks</h3>
-            <p>负责技术栈、成长路线、模块依赖和研究导航，也就是“线和面”。</p>
-          </article>
-          <article class="simple-card">
-            <h3>ImChong.github.io</h3>
-            <p>负责对外展示，也就是“展示层”。</p>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
 
   <footer class="footer">
     <div class="container">
-      <p>© Chong Liu 2026 · Robotics Notebooks · Built for structured robotics learning and engineering growth.</p>
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
     </div>
   </footer>
 
