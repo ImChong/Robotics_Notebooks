@@ -201,7 +201,105 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="paper-list">
+      <div class="container">
+        <h2 class="section-title">代表论文卡片</h2>
+        <p class="section-subtitle">这一版先放真正值得点开的代表作，优先选有论文页、官方项目页或 arXiv 的入口，避免塞一堆只有名字的卡片。</p>
+        <div class="structure-list">
+          <article class="simple-card">
+            <h3>RL / Locomotion</h3>
+            <div class="card-grid">
+              <article class="card">
+                <h3>Learning to Walk in Minutes Using Massively Parallel Deep RL</h3>
+                <p class="card-meta">Rudin et al., 2021</p>
+                <p>并行仿真训练 locomotion 的代表作，适合理解 GPU 大规模采样和 PPO 工程化训练范式。</p>
+                <div class="cta-row"><a class="btn-secondary" href="https://arxiv.org/abs/2109.11978" target="_blank" rel="noopener noreferrer">Paper</a></div>
+              </article>
+              <article class="card">
+                <h3>A Walk in the Park</h3>
+                <p class="card-meta">Smith, Kostrikov, Levine · 2022</p>
+                <p>真实机器人用 model-free RL 学会 locomotion 的代表作，适合理解 real-world RL 的节奏和约束。</p>
+                <div class="cta-row">
+                  <a class="btn-secondary" href="https://arxiv.org/abs/2208.07860" target="_blank" rel="noopener noreferrer">Paper</a>
+                  <a class="btn-secondary" href="https://sites.google.com/berkeley.edu/walk-in-the-park" target="_blank" rel="noopener noreferrer">Project</a>
+                </div>
+              </article>
+              <article class="card">
+                <h3>Grow Your Limits</h3>
+                <p class="card-meta">Smith et al., 2023</p>
+                <p>真实世界持续改进式 locomotion RL，适合理解在线数据积累、保守更新和性能迭代。</p>
+                <div class="cta-row"><a class="btn-secondary" href="https://arxiv.org/abs/2310.17634" target="_blank" rel="noopener noreferrer">Paper</a></div>
+              </article>
+              <article class="card">
+                <h3>Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control</h3>
+                <p class="card-meta">Xie et al.</p>
+                <p>从腿足 locomotion 往双足 / humanoid 过渡时非常好的入口，重点看鲁棒双足控制和部署表达。</p>
+                <div class="cta-row"><a class="btn-secondary" href="https://xbpeng.github.io/projects/Cassie_Locomotion/index.html" target="_blank" rel="noopener noreferrer">Project</a></div>
+              </article>
+            </div>
+          </article>
+
+          <article class="simple-card">
+            <h3>IL / Motion Prior / Diffusion</h3>
+            <div class="card-grid">
+              <article class="card">
+                <h3>DeepMimic</h3>
+                <p class="card-meta">Peng et al., 2018</p>
+                <p>humanoid motion imitation 绕不过去的经典入口，重点看 reference motion、tracking reward 和技能组合。</p>
+                <div class="cta-row">
+                  <a class="btn-secondary" href="https://xbpeng.github.io/projects/DeepMimic/index.html" target="_blank" rel="noopener noreferrer">Project</a>
+                  <a class="btn-secondary" href="https://arxiv.org/abs/1804.02717" target="_blank" rel="noopener noreferrer">arXiv</a>
+                </div>
+              </article>
+              <article class="card">
+                <h3>AMP: Adversarial Motion Priors</h3>
+                <p class="card-meta">Peng et al., 2021</p>
+                <p>理解 motion prior 如何替代手工复杂 reward 的关键论文，也是自然动作控制的重要入口。</p>
+                <div class="cta-row">
+                  <a class="btn-secondary" href="https://xbpeng.github.io/projects/AMP/" target="_blank" rel="noopener noreferrer">Project</a>
+                  <a class="btn-secondary" href="https://arxiv.org/abs/2104.02180" target="_blank" rel="noopener noreferrer">arXiv</a>
+                </div>
+              </article>
+              <article class="card">
+                <h3>Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions</h3>
+                <p class="card-meta">Escontrela et al.</p>
+                <p>看 motion prior 怎么帮助 locomotion 学出更自然、更稳的行为，也适合作为 sim2real 视角入口。</p>
+                <div class="cta-row"><a class="btn-secondary" href="https://xbpeng.github.io/projects/AMP_Locomotion/index.html" target="_blank" rel="noopener noreferrer">Project</a></div>
+              </article>
+              <article class="card">
+                <h3>Diffusion Policy</h3>
+                <p class="card-meta">Chi et al., 2023</p>
+                <p>机器人 diffusion policy 的代表作，适合理解多峰动作分布、视觉条件控制和 receding-horizon action generation。</p>
+                <div class="cta-row">
+                  <a class="btn-secondary" href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noopener noreferrer">Project</a>
+                  <a class="btn-secondary" href="https://arxiv.org/abs/2303.04137" target="_blank" rel="noopener noreferrer">arXiv</a>
+                </div>
+              </article>
+            </div>
+          </article>
+
+          <article class="simple-card">
+            <h3>Sim2Real / Deployment</h3>
+            <div class="card-grid">
+              <article class="card">
+                <h3>Rapid Locomotion via Reinforcement Learning</h3>
+                <p class="card-meta">MIT Mini Cheetah 项目</p>
+                <p>非常经典的部署入口，重点看真实系统里的高频控制、敏捷动作和 sim2real 训练范式。</p>
+                <div class="cta-row"><a class="btn-secondary" href="https://agility.csail.mit.edu/" target="_blank" rel="noopener noreferrer">Project</a></div>
+              </article>
+              <article class="card">
+                <h3>Deployment Reports / Surveys</h3>
+                <p class="card-meta">建议长期补</p>
+                <p>这类内容通常最有工程味。读的时候重点抓 actuator model、delay、randomization、safety margin，不要只看 headline。</p>
+                <div class="cta-row"><a class="btn-secondary" href="#sim2real">回 Sim2Real 导航</a></div>
+              </article>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
       <div class="container">
         <h2 class="section-title">开源生态与工具链入口</h2>
         <p class="section-subtitle">论文不要孤立看，最好和代码仓、仿真平台、训练框架一起看，这样理解会快很多。</p>
