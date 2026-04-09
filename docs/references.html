@@ -10,15 +10,22 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-title" href="index.html">Robotics Notebooks</a>
-      <nav class="main-nav">
+      <a class="site-title" href="index.html">
+        <span class="site-title-main">Robotics Notebooks</span>
+        <span class="site-title-sub">机器人技术栈地图</span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
         <a href="index.html">首页</a>
         <a href="roadmap.html">成长路线</a>
         <a href="tech-map.html">技术栈地图</a>
-        <a href="#hero">论文导航</a>
+        <a href="references.html">论文导航</a>
       </nav>
       <div class="header-actions">
-        <button class="theme-toggle" id="themeToggle"><span class="icon-sun">☀️</span><span class="icon-moon">🌙</span></button>
+        <a class="header-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
       </div>
     </div>
   </header>
