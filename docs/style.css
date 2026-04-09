@@ -71,25 +71,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   gap: 24px;
 }
 .site-title {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
   color: var(--text);
   white-space: nowrap;
   flex-shrink: 0;
   letter-spacing: -.01em;
   line-height: 1.1;
-}
-.site-title:hover { color: var(--accent); text-decoration: none; }
-.site-title-main {
-  font-size: 1rem;
+  font-size: .95rem;
   font-weight: 800;
 }
-.site-title-sub {
-  font-size: .72rem;
-  color: var(--text-muted);
-  font-weight: 600;
-}
+.site-title:hover { color: var(--accent); text-decoration: none; }
 .main-nav { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
 .main-nav a {
   font-size: .82rem;
@@ -126,14 +116,18 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 999px;
-  padding: 0.42rem 0.72rem;
+  border-radius: 8px;
+  padding: 0;
   cursor: pointer;
   font-size: 0.85rem;
   color: var(--text-muted);
-  min-width: 40px;
   text-align: center;
   box-shadow: var(--shadow-sm);
 }
@@ -243,9 +237,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 @media (max-width: 860px) {
   .header-inner { gap: 12px; }
   .main-nav { display: none; }
-  .site-title-sub { font-size: .68rem; }
+  .site-title { font-size: .84rem; }
   .header-actions { gap: 8px; }
   .header-link { padding: 0.4rem 0.78rem; font-size: .8rem; }
+  .theme-toggle { width: 36px; height: 36px; }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .page-hero h1 { font-size: 2rem; }
