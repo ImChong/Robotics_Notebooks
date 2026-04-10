@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sim2Real Pipeline | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔄</text></svg>" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">机器人技术栈地图 | Robotics Notebooks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html">首页</a>
+        <a href="../roadmap.html">成长路线</a>
+        <a href="../tech-map.html">技术栈地图</a>
+        <a href="../references.html">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Sim2Real Pipeline：仿真到真机的完整路径</h1>
+        <p>Sim2Real 不是“训练完了往真机上一拷贝”这么简单。它是一整条 pipeline，每个环节都可能让你在真机上付出惨重代价。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. 为什么 Sim2Real 是人形机器人的关键瓶颈</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>真实试错代价极高</h3><p>人形机器人摔一次可能损伤硬件，不可能靠大量真实试错来训练策略。仿真成了唯一可行的训练环境。</p></article>
+          <article class="simple-card"><h3>仿真和真实之间永远有差距</h3><p>动力学参数不准、执行器行为不同、传感器噪声特性不同、接触摩擦无法完美建模，这个 gap 必须被系统性地处理。</p></article>
+          <article class="simple-card"><h3>这个 gap 处理不好，前面训练全废</h3><p>在仿真里达到 100% 成功率的策略，上真机可能 0%。Sim2Real 的工程含金量，不在算法，在 gap 处理。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">2. 完整 Pipeline 的 6 个关键环节</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>Step 1：仿真环境搭建</h3><p>选仿真器（MuJoCo / Isaac Gym / Isaac Lab），建模（URDF / MJCF），调参数（质量、摩擦、关节限制）。这一步的模型准确度，直接决定后续所有工作的上限。</p></article>
+          <article class="simple-card"><h3>Step 2：策略训练</h3><p>在仿真里用 RL 训练控制策略。关键是要在这个阶段就考虑部署侧的感受器，而不是训完再考虑。</p></article>
+          <article class="simple-card"><h3>Step 3：Domain Randomization（DR）</h3><p>在训练时随机化动力学参数、观测噪声、延迟、地面摩擦、动作幅值等，强制策略对失配不敏感。DR 不是撒开了随机，而是围绕真实系统的 uncertainty 来设计。</p></article>
+          <article class="simple-card"><h3>Step 4：System Identification</h3><p>通过实验辨识真实机器人的动力学参数，把辨识结果反馈到仿真模型里，缩小系统性差距。这一步不一定追求唯一最准参数，而是缩小最致命的失配。</p></article>
+          <article class="simple-card"><h3>Step 5：Actuator & Delay Modeling</h3><p>执行器响应带宽、动作延迟、控制频率不匹配是导致策略失效的高频原因。训练时要主动模拟这些因素，不要假设完美执行。</p></article>
+          <article class="simple-card"><h3>Step 6：真机部署与迭代</h3><p>从最容易成功的条件开始（站立、慢速），逐步加难度（变速、抗扰、复杂地形）。每次上真机都是一个诊断机会，失败经验往往比成功经验更值钱。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. 三个最常见的失败来源</h2>
+        <div class="card-grid">
+          <article class="card"><h3>动力学参数失配</h3><p>质量、惯量、摩擦、关节死区与真实系统不符，是最常见的策略失效原因。</p></article>
+          <article class="card"><h3>执行器模型失配</h3><p>带宽不足、延迟过大、饱和非线性，在仿真里很容易被忽略，在真机上却是决定性因素。</p></article>
+          <article class="card"><h3>接触力学不准确</h3><p>足底碰撞、软硬地面差异、滑动摩擦误差，在高动态动作里会迅速放大。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4. Domain Randomization 的正确打开方式</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>不是随机得越多越好</h3><p>随机化范围太大会让策略学不到任何有效信息，太小又无法覆盖真实不确定性。需要围绕真实系统实测来确定范围。</p></article>
+          <article class="simple-card"><h3>要随机化哪些量</h3><p>质量、摩擦系数、关节阻尼、延迟时间、观测噪声、动作延迟、执行器带宽。不要随机化那些对系统影响很小的参数。</p></article>
+          <article class="simple-card"><h3>Payload Randomization</h3><p>在人形机器人上经常被忽略的一个随机化来源，是负载变化（手里拿东西）。把 payload 也纳入随机范围很重要。</p></article>
+          <article class="simple-card"><h3>观测随机化</h3><p>IMU 噪声特性、编码器分辨率、传感器延迟，观测侧的随机化往往比只随机化动力学更重要。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 部署时的分级放权策略</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>Level 1：站立与静态平衡</h3><p>先验证策略在最低难度下能工作，建立基准。</p></article>
+          <article class="simple-card"><h3>Level 2：慢速行走</h3><p>在降低速度要求下验证基本 locomotion 是否成立。</p></article>
+          <article class="simple-card"><h3>Level 3：正常速度与变速</h3><p>在设计速度下测试，检查速度变化时的鲁棒性。</p></article>
+          <article class="simple-card"><h3>Level 4：外部扰动</h3><p>轻推、地面变化、不平整地形，逐步加大扰动强度。</p></article>
+          <article class="simple-card"><h3>Level 5：复杂地形与任务集成</h3><p>楼梯、障碍物、上层任务目标，逐步推向完整任务。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 一句话总结</h2>
+        <div class="simple-card">
+          <p>Sim2Real 的核心不是算法，而是系统性 gap 处理。训练时就把真实约束塞进来，比训完再救场要靠谱得多。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">关联入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../modules/reinforcement-learning.html">机器人强化学习总览</a></h3><p>RL 训练是 Sim2Real pipeline 的上游。</p></article>
+          <article class="card"><h3><a href="wbc-vs-rl.html">WBC vs RL</a></h3><p>WBC 策略的 Sim2Real，往往比 RL 更直接，因为不需要处理 exploration 带来的额外 gap。</p></article>
+          <article class="card"><h3><a href="retargeting-pipeline.html">Motion Retargeting Pipeline</a></h3><p>IL 数据从哪来、如何处理，也是 Sim2Real 里经常出问题的环节。</p></article>
+          <article class="card"><h3><a href="../references.html#sim2real">论文导航：Sim2Real 专项</a></h3><p>按论文入口进一步深入理解 Sim2Real 的方法论。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="../main.js"></script>
+</body>
+</html>

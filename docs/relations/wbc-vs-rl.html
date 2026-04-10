@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WBC vs RL | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">机器人技术栈地图 | Robotics Notebooks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html">首页</a>
+        <a href="../roadmap.html">成长路线</a>
+        <a href="../tech-map.html">技术栈地图</a>
+        <a href="../references.html">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>WBC vs RL：传统控制与强化学习的关系</h1>
+        <p>这是人形机器人里最容易产生路线之争的一对概念。但真正的问题不是“谁更好”，而是“在什么场景下该用谁”。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. 一句话定义</h2>
+        <div class="card-grid">
+          <article class="card"><h3>WBC（全身控制）</h3><p>基于精确动力学模型和优化，把全身约束、接触力分配和任务优先级组织起来，输出实时控制力矩。</p></article>
+          <article class="card"><h3>RL（强化学习）</h3><p>不要求精确建模，通过与环境交互最大化累积奖励，学出能泛化的控制策略。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">2. 核心差异</h2>
+        <div class="card-grid">
+          <article class="card"><h3>依赖模型</h3><p>WBC 必须有足够精确的动力学模型；RL 可以 model-free，也可以学一个近似模型。</p></article>
+          <article class="card"><h3>样本效率</h3><p>WBC 一次优化即可；RL 通常需要大量交互样本。</p></article>
+          <article class="card"><h3>泛化能力</h3><p>WBC 严格依赖模型精度；RL 通过随机化和探索可以泛化到更多场景。</p></article>
+          <article class="card"><h3>实时性</h3><p>QP / NMPC 可以实时求解；RL 推理通常很快，但训练需要大量算力。</p></article>
+          <article class="card"><h3>接触处理</h3><p>WBC 需要精心设计接触切换逻辑；RL 自然地从交互中学会接触行为。</p></article>
+          <article class="card"><h3>理论保证</h3><p>WBC 有稳定性、收敛性保证；RL 在理论上弱很多，尤其在真实机器人上。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. 各自适合的场景</h2>
+        <div class="card-grid">
+          <article class="card"><h3>WBC 更适合</h3><p>有精确模型的工业场景、需要硬约束安全边界、算力受限的嵌入式部署、精确轨迹跟踪任务。</p></article>
+          <article class="card"><h3>RL 更适合</h3><p>模型难以精确获取、任务难以手工设计控制器、高维复杂接触、具备足够仿真资源的场景。</p></article>
+          <article class="card"><h3>人形机器人的特殊性</h3><p>人形系统精确建模极难，高自由度、多接触、浮动基让纯 WBC 很难覆盖所有场景，RL 的价值因此特别突出。</p></article>
+          <article class="card"><h3>共同难点</h3><p>两者在真实系统上都会遇到模型误差、执行器延迟、传感器噪声等问题，需要系统性工程支撑。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4. 融合是真实方向</h2>
+        <p class="section-subtitle">“WBC 派”和“RL 派”的对立其实越来越没有意义，最强的人形系统往往两者都用。</p>
+        <div class="route-list">
+          <article class="simple-card"><h3>RL 训练策略，WBC 做底层执行</h3><p>RL 输出高层任务指令，WBC 负责全身力矩分配和约束满足。比如 RL 给出步态参数，WBC 负责实时跟踪。</p></article>
+          <article class="simple-card"><h3>RL 训练 low-level policy，WBC 做 high-level</h3><p>典型 LLC + HLC 架构。RL 负责快速响应层，WBC 负责全局任务协调。</p></article>
+          <article class="simple-card"><h3>WBC 提供 privileged information 给 RL</h3><p>训练时用 WBC 计算的接触力、质心动力学量作为额外观测，推理时去掉这些量，让策略学会处理缺失信息。</p></article>
+          <article class="simple-card"><h3>Residual RL</h3><p>用 RL 学一个残差补偿，加在已有的 WBC 控制输出上，让系统同时具备模型精度和学习适应性。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 学习路径建议</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>第一步：打控制骨架</h3><p>先把 WBC 核心概念弄清楚：QP、任务优先级、接触建模、质心动力学。不要跳过这个，否则理解 RL 在机器人里的定位会非常虚。</p></article>
+          <article class="simple-card"><h3>第二步：理解 RL 的本质</h3><p>重点不是背 PPO / SAC 的参数，而是理解 MDP 建模、reward 设计、训练系统和 sim2real 这些真正决定成败的环节。</p></article>
+          <article class="simple-card"><h3>第三步：看融合工作</h3><p>找 2 到 3 篇把 WBC 和 RL 结合的真实人形机器人论文，看清楚他们是怎么在系统层面组织这两个组件的。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 一句话总结</h2>
+        <div class="simple-card">
+          <p>WBC 和 RL 不是对手关系，而是互补关系。理解它们各自的能力边界，并在系统层面组合使用，才是人形机器人运动控制的真实方向。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">关联入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../modules/motion-control.html">运动控制总览</a></h3><p>WBC 是运动控制模块的核心方法之一。</p></article>
+          <article class="card"><h3><a href="../modules/reinforcement-learning.html">机器人强化学习总览</a></h3><p>RL 是人形机器人运动控制的另一条主线。</p></article>
+          <article class="card"><h3><a href="sim2real-pipeline.html">Sim2Real Pipeline</a></h3><p>RL 在人形机器人上能否部署，sim2real 是关键环节。</p></article>
+          <article class="card"><h3><a href="rl-vs-il.html">RL vs IL</a></h3><p>IL 和 RL 同样不是对立关系，这条线也很值得理解。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="../main.js"></script>
+</body>
+</html>

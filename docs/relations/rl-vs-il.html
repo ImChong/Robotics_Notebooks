@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RL vs IL | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">机器人技术栈地图 | Robotics Notebooks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html">首页</a>
+        <a href="../roadmap.html">成长路线</a>
+        <a href="../tech-map.html">技术栈地图</a>
+        <a href="../references.html">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>RL vs IL：强化学习与模仿学习的关系</h1>
+        <p>这两个概念在机器人领域经常被对立起来讨论，但最实用的人形机器人系统往往同时用两者。理解它们的真实关系，比站队更重要。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. 一句话定义</h2>
+        <div class="card-grid">
+          <article class="card"><h3>RL（强化学习）</h3><p>通过与环境交互最大化累积奖励，让机器人自己探索出好策略。核心是“试”。</p></article>
+          <article class="card"><h3>IL（模仿学习）</h3><p>通过专家演示数据，让机器人直接模仿映射关系。核心是“抄”。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">2. 核心差异</h2>
+        <div class="card-grid">
+          <article class="card"><h3>数据来源</h3><p>RL 需要大量真实或仿真交互；IL 依赖专家演示、遥操作或动捕数据。</p></article>
+          <article class="card"><h3>样本效率</h3><p>IL 样本效率高，有演示就能训；RL 样本效率通常较低，需要大量探索。</p></article>
+          <article class="card"><h3>可超越专家</h3><p>RL 理论上可以超越专家数据的上限；IL 通常不会超出演示数据范围。</p></article>
+          <article class="card"><h3>奖励设计</h3><p>RL 必须设计奖励函数，往往非常复杂；IL 不需要显式奖励。</p></article>
+          <article class="card"><h3>分布偏移风险</h3><p>IL 面临经典的 distribution shift 问题；RL 如果 exploration 充分，则不存在这个问题。</p></article>
+          <article class="card"><h3>安全性</h3><p>RL 在真实机器人上探索代价高；IL 通常更安全，因为它只复现已知安全行为。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. 它们各自的强项</h2>
+        <div class="card-grid">
+          <article class="card"><h3>RL 的强项</h3><p>能探索出超越人类演示的策略、处理长时序信用分配问题、在仿真环境里可以承受大量失败、适合 reward 设计相对清晰但动作设计困难的任务。</p></article>
+          <article class="card"><h3>IL 的强项</h3><p>样本效率高、适合难以定义 reward 的复杂技能、能利用已有的高质量专家数据、对安全性要求高的真实机器人更友好。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4. 为什么最强系统两者都用</h2>
+        <p class="section-subtitle">在人形机器人里，最实用的路线往往不是二选一，而是先 IL 后 RL，或者 IL + RL 混合。</p>
+        <div class="route-list">
+          <article class="simple-card"><h3>IL 提供初始策略</h3><p>先用 BC 或 DAgger 训一个能基本运作的策略，大幅降低 RL 的探索难度和训练时间。</p></article>
+          <article class="simple-card"><h3>IL 提供行为先验</h3><p>通过 reference motion、motion prior 或 latent skill 把人类动作结构注入训练过程，让 RL 不从零开始。</p></article>
+          <article class="simple-card"><h3>RL 在 IL 基础上优化</h3><p>让 RL 在 imitation prior 的基础上继续探索，优化鲁棒性、抗扰性、任务完成度和能效。</p></article>
+          <article class="simple-card"><h3>IL 做在线校正</h3><p>在 RL 训练过程中引入在线专家反馈（DAgger 类方法），持续纠正分布偏移。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 人形机器人里的典型组合模式</h2>
+        <div class="card-grid">
+          <article class="card"><h3>BC + RL Fine-tune</h3><p>先用行为克隆训出基础动作，再用 RL 在仿真里强化鲁棒性。这是 DeepMimic 类工作的典型路线。</p></article>
+          <article class="card"><h3>Reference Tracking Reward + RL</h3><p>用参考动作构建 reward 信号，让策略既学会基本动作模式，又有 RL 的探索和泛化能力。</p></article>
+          <article class="card"><h3>AMP / Motion Prior + RL</h3><p>用 adversarial motion prior 替代手工 reward，RL 在这个先验约束下探索更自然的动作。</p></article>
+          <article class="card"><h3>Latent Skill + RL</h3><p>先用 IL 学出 latent skill embedding，再用 RL 在技能空间里探索更高层的任务策略。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 学习路径建议</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>第一步：把 BC 和 DAgger 弄清楚</h3><p>这是理解 imitation learning 核心矛盾的最好入口，也是大多数实用系统的起点。</p></article>
+          <article class="simple-card"><h3>第二步：理解 RL 里的 reward shaping 问题</h3><p>知道 reward 设计为什么难，以及 imitation reward / reference tracking reward 如何帮助缓解这个问题。</p></article>
+          <article class="simple-card"><h3>第三步：找几篇 IL + RL 组合的人形机器人论文</h3><p>重点看他们怎么设计 demonstration、reward 和 training pipeline，不要只看结论。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">7. 一句话总结</h2>
+        <div class="simple-card">
+          <p>RL 和 IL 不是竞争关系，而是互补关系。IL 提供行为先验和数据效率，RL 提供泛化能力和超越演示的可能性。最强的人形系统，往往是把两者按层次组合起来。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">关联入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../modules/reinforcement-learning.html">机器人强化学习总览</a></h3><p>RL 是技能学习的探索主线。</p></article>
+          <article class="card"><h3><a href="../modules/imitation-learning.html">机器人模仿学习总览</a></h3><p>IL 是技能学习的模仿主线。</p></article>
+          <article class="card"><h3><a href="wbc-vs-rl.html">WBC vs RL</a></h3><p>传统控制和强化学习的关系同样值得理解。</p></article>
+          <article class="card"><h3><a href="retargeting-pipeline.html">Motion Retargeting Pipeline</a></h3><p>人形机器人 IL 里，数据从哪来、怎么处理，是关键的 pipeline 问题。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="../main.js"></script>
+</body>
+</html>

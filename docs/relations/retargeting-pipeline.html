@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motion Retargeting Pipeline | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>" />
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="site-title" href="../index.html">机器人技术栈地图 | Robotics Notebooks</a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="../index.html">首页</a>
+        <a href="../roadmap.html">成长路线</a>
+        <a href="../tech-map.html">技术栈地图</a>
+        <a href="../references.html">论文导航</a>
+      </nav>
+      <div class="header-actions">
+        <a class="header-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Motion Retargeting Pipeline：动作迁移的完整路径</h1>
+        <p>人形机器人的模仿学习里，最难的部分往往不是策略训练，而是“如何把人类动作变成机器人能执行的动作”。这条 pipeline 处理不好，前面的学习全部白费。</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">1. 为什么 Retargeting 是人形机器人 IL 的核心难点</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>人体和机器人结构不一样</h3><p>骨架比例、自由度数量、关节顺序、接触点分布都不同，不可能做简单的坐标映射。</p></article>
+          <article class="simple-card"><h3>人类动作依赖肌肉和肌腱</h3><p>人类的很多自然动作在机器人关节空间里可能是奇异的或者超出关节限位的。</p></article>
+          <article class="simple-card"><h3>接触模式不一样</h3><p>人的足底、手掌接触模式，和机器人的末端执行器几何完全不同。</p></article>
+          <article class="simple-card"><h3>动力学差异巨大</h3><p>人的动态特性（质量分布、响应速度、力矩输出）和机器人完全不在一个量级。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">2. 完整 Pipeline 的 6 个关键环节</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>Step 1：数据采集</h3><p>动捕、遥操作、仿真规划器或已有策略 rollouts。每种数据源的偏差和成本不同，质量差异也很大。</p></article>
+          <article class="simple-card"><h3>Step 2：骨架对齐与姿态标准化</h3><p>把原始动作数据映射到公共骨架表示，处理骨骼长度差异和采集系统的噪声。</p></article>
+          <article class="simple-card"><h3>Step 3：逆运动学（IK）映射</h3><p>把人体动作映射到机器人关节空间，处理自由度数量不匹配的问题。通常需要自定义 IK 求解器或 learning-based 方法。</p></article>
+          <article class="simple-card"><h3>Step 4：接触与可行性修正</h3><p>修正足底滑移、接触力方向错误、关节超限等问题。这一步往往需要手动规则或 learning-based 校正。</p></article>
+          <article class="simple-card"><h3>Step 5：时间对齐与相位标准化</h3><p>处理采样率差异、相位对齐、动作分割，把连续动作切分成可用的片段。</p></article>
+          <article class="simple-card"><h3>Step 6：策略训练数据准备</h3><p>对处理后的数据进行归一化、分割、重采样，形成可直接用于 IL 训练的干净数据集。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. 常见数据来源的差异</h2>
+        <div class="card-grid">
+          <article class="card"><h3>动捕数据</h3><p>最接近自然人类动作，但需要 retarget；骨骼长度差异处理复杂，foot skating 需要后处理。</p></article>
+          <article class="card"><h3>遥操作</h3><p>直接用机器人同构或近构骨架采集，无需 retarget；但数据量少、采集成本高、动作不一定自然。</p></article>
+          <article class="card"><h3>仿真规划器 / MPC</h3><p>数据完全基于机器人模型，无 retarget 问题；但可能缺乏人类动作的自然性。</p></article>
+          <article class="card"><h3>已有策略 rollouts</h3><p>适合做 knowledge distillation，但质量取决于 teacher 策略本身。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4. Retargeting 失败的常见表现</h2>
+        <div class="card-grid">
+          <article class="card"><h3>关节超限</h3><p>映射后的关节角度超出机器人关节限位，导致动作不可执行或危险。</p></article>
+          <article class="card"><h3>足底滑移</h3><p>机器人站立时足底位置和参考动作不符，导致训练数据包含不可能的滑动。</p></article>
+          <article class="card"><h3>质心轨迹不合理</h3><p>机器人质心位置或速度超出可行域，导致训练出的策略无法保持平衡。</p></article>
+          <article class="card"><h3>动作不自然</h3><p>经过大量修正后，动作失去了原始人类演示的风格和自然性。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 如何验证 Retargeting 结果</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>可视化对比</h3><p>把原始人类动作和 retarget 后结果同时可视化，检查姿态和接触是否合理。</p></article>
+          <article class="simple-card"><h3>关节限位检查</h3><p>逐帧检查是否有任何关节超出物理限位，并统计超限比例。</p></article>
+          <article class="simple-card"><h3>动力学可行性验证</h3><p>用机器人模型 forward dynamics 验证 retarget 动作是否能被真实执行。</p></article>
+          <article class="simple-card"><h3>仿真回放</h3><p>把 retarget 动作在仿真器里直接回放，观察是否有碰撞、奇异或爆炸等问题。</p></article>
+          <article class="simple-card"><h3>小范围策略训练测试</h3><p>用少量 retarget 数据训练一个 baseline 策略，验证数据质量是否足以学到合理行为。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 一句话总结</h2>
+        <div class="simple-card">
+          <p>Retargeting 的质量直接决定了模仿学习数据的上限。即使策略训练做得再好，输入的 retarget 数据不行，最终效果也一定不行。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">关联入口</h2>
+        <div class="card-grid">
+          <article class="card"><h3><a href="../modules/imitation-learning.html">机器人模仿学习总览</a></h3><p>Retargeting 是 IL 数据准备的核心环节。</p></article>
+          <article class="card"><h3><a href="rl-vs-il.html">RL vs IL</a></h3><p>IL 数据质量决定 RL + IL 混合系统的最终上限。</p></article>
+          <article class="card"><h3><a href="sim2real-pipeline.html">Sim2Real Pipeline</a></h3><p>Retarget 后的动作是否能在真实系统上执行，是 Sim2Real 的最后一步。</p></article>
+          <article class="card"><h3><a href="../references.html#il">论文导航：IL 专项</a></h3><p>从 DeepMimic 到 MimicKit，理解真实的 retargeting pipeline 是怎么做的。</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <script src="../main.js"></script>
+</body>
+</html>
