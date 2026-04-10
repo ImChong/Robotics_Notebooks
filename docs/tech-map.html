@@ -27,31 +27,90 @@
     </div>
   </header>
   <main>
-    <section id="hero" class="page-hero">
+    <section class="page-hero">
       <div class="container">
         <h1>技术栈地图</h1>
-        <p>当前主干不是“覆盖全”，而是“依赖关系清楚、重点主线明确、扩展边界清晰”。</p>
+        <p>这页的职责不是把所有主题都列出来，而是把“哪些模块是主干、哪些是支撑、哪些是扩展、它们之间怎么依赖”讲清楚。</p>
       </div>
     </section>
+
     <section class="section">
       <div class="container">
-        <h2 class="section-title">核心依赖主链</h2>
+        <h2 class="section-title">1. 这张地图解决什么问题</h2>
         <div class="structure-list">
-          <article class="simple-card"><h3>数学 → 机器人学 → 控制</h3><p>线性代数 → 刚体运动 → 运动学 → 动力学 → 全身控制。</p></article>
-          <article class="simple-card"><h3>概率 → 状态估计</h3><p>概率统计 → 滤波 → 状态估计 → 部分可观测建模。</p></article>
-          <article class="simple-card"><h3>优化 → 最优控制</h3><p>优化基础 → OCP → MPC / QP-WBC。</p></article>
-          <article class="simple-card"><h3>深度学习 → 学习控制</h3><p>深度学习 → 强化学习 / 模仿学习 → humanoid skill learning。</p></article>
+          <article class="simple-card"><h3>不是资源目录</h3><p>这里不负责堆链接，也不负责代替细节知识页，它的核心任务是帮你建立结构感和依赖感。</p></article>
+          <article class="simple-card"><h3>不是“覆盖全”比赛</h3><p>当前阶段不追求一次性把所有机器人主题都铺满，而是优先把最关键的主干模块讲清楚。</p></article>
+          <article class="simple-card"><h3>它负责回答三个问题</h3><p>我现在在哪一层，我下一步该补什么，这个模块和其他模块到底是什么关系。</p></article>
         </div>
       </div>
     </section>
+
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">当前主攻与未来扩展</h2>
+        <h2 class="section-title">2. 当前主干结构</h2>
+        <p class="section-subtitle">这条主线是当前项目最重要的价值来源，也是最适合持续深挖的部分。</p>
+        <div class="route-list">
+          <article class="simple-card"><h3>数学基础</h3><p>线性代数、微积分、概率统计、优化基础，负责提供建模和分析语言。</p></article>
+          <article class="simple-card"><h3>机器人学基础</h3><p>刚体运动、运动学、动力学，是控制和学习进入机器人语境的入口。</p></article>
+          <article class="simple-card"><h3><a href="modules/motion-control.html">运动控制</a></h3><p>当前最核心主干，负责把状态、目标、约束和执行器组织成真实可执行的行为。</p></article>
+          <article class="simple-card"><h3><a href="modules/reinforcement-learning.html">机器人强化学习</a></h3><p>在控制骨架之上学习更复杂、更高维、更难显式设计的策略。</p></article>
+          <article class="simple-card"><h3><a href="modules/imitation-learning.html">机器人模仿学习</a></h3><p>利用演示、参考动作和行为先验，更快地学到技能和动作风格。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">3. 依赖关系怎么理解</h2>
         <div class="card-grid">
-          <article class="card"><h3><a href="modules/motion-control.html">当前主攻：运动控制</a></h3><p>运动控制、强化学习、模仿学习、人形机器人。</p></article>
-          <article class="card"><h3>未来扩展</h3><p>感知、规划、ROS2 / Middleware、部署、硬件系统、系统集成。</p></article>
-          <article class="card"><h3>技术地图职责</h3><p>不是替代知识页，而是为知识页提供结构和依赖导航。</p></article>
-          <article class="card"><h3>后续演化</h3><p>后续会继续扩成更强的模块卡片和可视化依赖图。</p></article>
+          <article class="card"><h3>数学 → 机器人学</h3><p>数学不是孤立基础课，而是理解坐标变换、最优化、状态估计和策略学习的工具箱。</p></article>
+          <article class="card"><h3>机器人学 → 控制</h3><p>不理解刚体运动和动力学，控制问题就会变成纯经验调参，难以稳定升级。</p></article>
+          <article class="card"><h3>控制 → 学习</h3><p>强化学习和模仿学习不是悬空层，它们最终还是要落在控制接口、动作表示和系统稳定性上。</p></article>
+          <article class="card"><h3>仿真 / Sim2Real 横穿全链路</h3><p>仿真不是某一页的附属内容，而是训练、分析、验证和部署几乎都会碰到的横向基础设施。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">4. 当前主攻与未来扩展</h2>
+        <div class="card-grid">
+          <article class="card"><h3>当前主攻</h3><p>运动控制、机器人强化学习、机器人模仿学习、人形机器人 locomotion 与技能学习。</p></article>
+          <article class="card"><h3>支撑能力</h3><p>状态估计、优化、仿真平台、执行器建模、system identification、sim2real。</p></article>
+          <article class="card"><h3>未来扩展</h3><p>感知、视觉、多模态、规划、ROS2 / Middleware、系统集成、部署与硬件闭环。</p></article>
+          <article class="card"><h3>扩展原则</h3><p>后续不是想到什么加什么，而是围绕“人形机器人控制与学习”这条主线向外扩。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 面向人形机器人的特殊性</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>为什么这张地图不该做成泛机器人百科</h3><p>你的真实目标并不是“机器人什么都懂一点”，而是围绕人形机器人控制与学习建立真正能落地的专业能力。</p></article>
+          <article class="simple-card"><h3>人形场景里最关键的难点</h3><p>高自由度、浮动基、多接触、平衡约束、执行器限制、sim2real 和全身协调，让很多模块都必须重新按人形语境来理解。</p></article>
+          <article class="simple-card"><h3>因此地图的重点也应收敛</h3><p>优先把 locomotion、whole-body control、RL、IL、retargeting、sim2real 这一组链条梳清楚，而不是先横向铺太开。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 现在最值得优先补的内容</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>优先级 1：三大模块页持续加深</h3><p>先把运动控制、强化学习、模仿学习这三页做成真正能反复回看的知识入口。</p></article>
+          <article class="simple-card"><h3>优先级 2：把关系页补出来</h3><p>比如 WBC vs RL、RL vs IL、State Estimation 在整机系统里的位置，这类“关系页”会特别值钱。</p></article>
+          <article class="simple-card"><h3>优先级 3：把项目内资源挂回主线</h3><p>把 resources 里的理论、训练和 know-how 有选择地挂回对应模块，而不是让资源与结构断开。</p></article>
+          <article class="simple-card"><h3>优先级 4：逐步补扩展层</h3><p>等主干稳定后，再按需求逐步扩展感知、规划、系统工程和部署页。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">7. 一句话总结</h2>
+        <div class="simple-card">
+          <p>技术栈地图的价值，不在于列出多少主题，而在于让你知道“当前主线是什么、下一步该补什么、各模块为什么会连在一起”。</p>
         </div>
       </div>
     </section>

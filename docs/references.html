@@ -28,307 +28,110 @@
   </header>
 
   <main>
-    <section id="hero" class="page-hero">
+    <section class="page-hero">
       <div class="container">
         <h1>论文导航</h1>
-        <p>这页不是论文仓库目录，而是一个真正能顺着读下去的导航页：按问题分类、按主线组织、按进入顺序给入口，尽量避免“收藏几百篇，结果一篇都没读透”。</p>
+        <p>这页不是“论文仓库目录”，而是帮助你按问题、按主线、按进入顺序去读论文，尽量避免收藏一堆、真正消化很少的典型陷阱。</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">怎么使用这页</h2>
-        <p class="section-subtitle">最稳的方式不是到处跳，而是先沿一条主线打穿，再横向扩展。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>如果你当前主攻 humanoid locomotion</h3>
-            <p>先读 <a href="#rl">RL</a> → <a href="#sim2real">Sim2Real</a> → <a href="#humanoid">Humanoid</a>，最后再回到 <a href="#il">IL</a> 看参考动作与技能迁移。</p>
-          </article>
-          <article class="card">
-            <h3>如果你想补技能学习方法论</h3>
-            <p>先读 <a href="#il">IL</a> 和 <a href="#rl">RL</a> 的对照，再看 <a href="#humanoid">Humanoid</a> 里混合范式的代表工作。</p>
-          </article>
-          <article class="card">
-            <h3>如果你想补控制主线</h3>
-            <p>先从 <a href="#motion-control">Motion Control</a> 打骨架，再看 RL / IL 如何建立在控制主线之上。</p>
-          </article>
-          <article class="card">
-            <h3>如果你怕读散</h3>
-            <p>每个分类先抓 2–4 篇代表作，别上来就全刷。读完一组，回模块页做结构化总结更值钱。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="rl">
-      <div class="container">
-        <h2 class="section-title">RL：强化学习主线</h2>
-        <p class="section-subtitle">适合想把 locomotion、鲁棒性训练、长期回报优化打透的人。重点不是算法百科，而是机器人控制任务里 RL 为什么有效、怎么稳定、怎么部署。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3><a href="modules/reinforcement-learning.html">进入 RL 模块页</a></h3>
-            <p class="card-meta">建议先看</p>
-            <p>先在模块页里建立 state / action / reward / sim2real 的整体框架，再去读论文，不然很容易只记住算法名。</p>
-          </article>
-          <article class="card">
-            <h3>PPO / Locomotion 代表作</h3>
-            <p class="card-meta">第一批必读</p>
-            <p>重点看大规模并行仿真、策略结构、奖励分解和训练稳定性，理解为什么 PPO 成了很多 humanoid locomotion 的工程默认选项。</p>
-          </article>
-          <article class="card">
-            <h3>Robust Locomotion / Disturbance Recovery</h3>
-            <p class="card-meta">第二批建议读</p>
-            <p>重点看抗扰、恢复、复杂地形、速度变化和接触切换，不要只盯“在平地上能走”。</p>
-          </article>
-          <article class="card">
-            <h3>RL + Motion Prior</h3>
-            <p class="card-meta">进阶</p>
-            <p>当你开始关心“既能走，又要自然、协调、像人”，就要看 RL 和 imitation / motion prior 的混合路线。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="il">
-      <div class="container">
-        <h2 class="section-title">IL：模仿学习主线</h2>
-        <p class="section-subtitle">适合想利用动捕、遥操作、专家轨迹、已有策略数据来加速技能学习的人。核心问题是：怎么把演示变成可泛化、可部署的控制能力。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3><a href="modules/imitation-learning.html">进入 IL 模块页</a></h3>
-            <p class="card-meta">建议先看</p>
-            <p>先建立对 behavior cloning、distribution shift、retargeting、tracking pipeline 的理解，再决定往哪类论文深挖。</p>
-          </article>
-          <article class="card">
-            <h3>Behavior Cloning / DAgger</h3>
-            <p class="card-meta">第一批必读</p>
-            <p>先把最基础的 supervised imitation 和 online aggregation 逻辑吃透，不然后面看 fancy 模型会飘。</p>
-          </article>
-          <article class="card">
-            <h3>Motion Retarget / Reference Tracking</h3>
-            <p class="card-meta">第二批建议读</p>
-            <p>重点看人类动作到机器人动作的转换、参考动作跟踪和闭环稳定性，这部分跟 humanoid 特别相关。</p>
-          </article>
-          <article class="card">
-            <h3>Diffusion Policy / Sequence Policy</h3>
-            <p class="card-meta">进阶</p>
-            <p>适合关心复杂时序行为、多峰动作分布和视觉条件控制的场景，尤其在 manipulation 里很值钱。</p>
-          </article>
+        <h2 class="section-title">1. 怎么使用这页</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>先按问题走，不要按热度走</h3><p>先明确你是想补运动控制、强化学习、模仿学习、sim2real，还是人形专项，再进入对应主线。</p></article>
+          <article class="simple-card"><h3>先抓代表作，不要一口吞百科</h3><p>每条线先抓 2 到 4 篇真正奠基或改变你理解框架的代表工作，读透比堆数量更值钱。</p></article>
+          <article class="simple-card"><h3>读完必须回结构页</h3><p>论文不是目的，结构化理解才是目的。每次读完一组论文，都应该回模块页或关系页重新整理知识框架。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt" id="motion-control">
       <div class="container">
-        <h2 class="section-title">Motion Control：运动控制主线</h2>
-        <p class="section-subtitle">如果骨架没搭起来，后面很多 RL / IL 论文会看得很虚。控制主线是整个理解体系的底板。</p>
+        <h2 class="section-title">2. Motion Control：运动控制论文主线</h2>
+        <p class="section-subtitle">适合先打控制骨架的人。控制主线越稳，后面看 RL / IL 越不容易飘。</p>
         <div class="card-grid">
-          <article class="card">
-            <h3><a href="modules/motion-control.html">进入 Motion Control 模块页</a></h3>
-            <p class="card-meta">建议先看</p>
-            <p>从质心动力学、任务空间控制、全身控制、步态与平衡开始，把控制问题的语言体系搭起来。</p>
-          </article>
-          <article class="card">
-            <h3>WBC / QP / TSID</h3>
-            <p class="card-meta">第一批必读</p>
-            <p>理解任务优先级、约束、接触力分配、可行性边界，这些是机器人控制论文里的基本语法。</p>
-          </article>
-          <article class="card">
-            <h3>MPC / Optimal Control</h3>
-            <p class="card-meta">第二批建议读</p>
-            <p>重点看如何把系统动力学、目标函数和约束写成可以在线求解的问题。</p>
-          </article>
-          <article class="card">
-            <h3>Learning-augmented Control</h3>
-            <p class="card-meta">进阶</p>
-            <p>当你开始关注学习控制与经典控制的结合，这条线会非常重要。</p>
-          </article>
+          <article class="card"><h3><a href="modules/motion-control.html">先进入运动控制模块页</a></h3><p>先把控制语言建立起来，再看 WBC、MPC、TSID、centroidal dynamics 等论文会顺很多。</p></article>
+          <article class="card"><h3>第一批：WBC / QP / TSID</h3><p>重点读任务优先级、约束组织、接触力分配、全身协调这条线，这是人形控制论文的基本语法。</p></article>
+          <article class="card"><h3>第二批：MPC / Optimal Control</h3><p>重点看如何把目标、动力学和约束写成优化问题，以及为什么这条线在人形 locomotion 里长期有生命力。</p></article>
+          <article class="card"><h3>第三批：Learning-augmented Control</h3><p>重点看学习方法怎样增强控制器，而不是粗暴替代控制器。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="rl">
+      <div class="container">
+        <h2 class="section-title">3. RL：机器人强化学习论文主线</h2>
+        <p class="section-subtitle">适合想真正理解 humanoid locomotion、鲁棒训练和策略部署的人。</p>
+        <div class="card-grid">
+          <article class="card"><h3><a href="modules/reinforcement-learning.html">先进入机器人强化学习模块页</a></h3><p>先理清 state、action、reward、训练系统和 sim2real，再看具体论文，不然很容易只记住算法名字。</p></article>
+          <article class="card"><h3>第一批：PPO / Locomotion 代表作</h3><p>重点看 observation、action、reward、并行仿真和训练范式，而不是只看“几分钟学会走”。</p></article>
+          <article class="card"><h3>第二批：Robust Locomotion / Disturbance Recovery</h3><p>重点看抗扰、复杂地形、变速和恢复策略，不要只盯平地稳定步行。</p></article>
+          <article class="card"><h3>第三批：Motion Prior / Reference Tracking</h3><p>当你关心“既稳又自然”的行为时，这条线很关键，它会把 RL 和 IL 真正接起来。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="il">
+      <div class="container">
+        <h2 class="section-title">4. IL：机器人模仿学习论文主线</h2>
+        <p class="section-subtitle">适合想利用演示、动捕、遥操作、参考动作和先验行为来加速技能学习的人。</p>
+        <div class="card-grid">
+          <article class="card"><h3><a href="modules/imitation-learning.html">先进入机器人模仿学习模块页</a></h3><p>先建立对 BC、distribution shift、retargeting 和参考动作跟踪的理解，再读论文会更清楚。</p></article>
+          <article class="card"><h3>第一批：Behavior Cloning / DAgger</h3><p>这是最基础也最重要的起点，重点不是背定义，而是看清 deployment distribution mismatch 到底怎么出现。</p></article>
+          <article class="card"><h3>第二批：Motion Imitation / DeepMimic / AMP</h3><p>这一批特别适合人形机器人语境，重点看动作先验、参考跟踪和自然行为生成。</p></article>
+          <article class="card"><h3>第三批：Diffusion / Sequence Policy</h3><p>适合在长时序、多峰动作分布、复杂技能表达这类问题上进一步扩展理解。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section" id="sim2real">
       <div class="container">
-        <h2 class="section-title">Sim2Real：从仿真到真机</h2>
-        <p class="section-subtitle">这是最容易被一句“成功迁移到真机”糊弄过去的部分，但它恰恰最值钱。</p>
+        <h2 class="section-title">5. Sim2Real：从仿真到真机</h2>
+        <p class="section-subtitle">这是最容易被一句“成功迁移到真机”轻描淡写带过，但最能体现工程含金量的部分。</p>
         <div class="card-grid">
-          <article class="card">
-            <h3>Domain Randomization</h3>
-            <p class="card-meta">第一批必读</p>
-            <p>看摩擦、质量、延迟、噪声、地形扰动这些随机化是怎么帮助策略获得鲁棒性的。</p>
-          </article>
-          <article class="card">
-            <h3>Actuator Modeling / Delay Modeling</h3>
-            <p class="card-meta">第二批建议读</p>
-            <p>很多真机成败就卡在执行器和延迟上。没把这部分看明白，部署很容易扑街。</p>
-          </article>
-          <article class="card">
-            <h3>System Identification</h3>
-            <p class="card-meta">补充线</p>
-            <p>不一定追求“唯一最准参数”，但理解系统辨识怎么辅助部署很有必要。</p>
-          </article>
-          <article class="card">
-            <h3>Deployment Reports / Survey</h3>
-            <p class="card-meta">强烈建议读</p>
-            <p>多看真实部署经验总结。很多最关键的坑，往往写在 appendix、supplementary 或工程报告里。</p>
-          </article>
+          <article class="card"><h3>第一批：Domain Randomization</h3><p>重点看随机化究竟随机了什么，以及为什么这些随机项能提升真机鲁棒性。</p></article>
+          <article class="card"><h3>第二批：Actuator / Delay Modeling</h3><p>很多部署能不能站住，就卡在执行器模型和延迟建模上，这一组特别值得深挖。</p></article>
+          <article class="card"><h3>第三批：System Identification</h3><p>重点看辨识不是为了找到唯一最准参数，而是为了缩小仿真和真机之间最致命的失配。</p></article>
+          <article class="card"><h3>第四批：Deployment Reports</h3><p>多看工程总结、supplementary 和失败经验，很多真正有用的信息不在 headline，而在这些细节里。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt" id="humanoid">
       <div class="container">
-        <h2 class="section-title">Humanoid：人形机器人专项</h2>
-        <p class="section-subtitle">这里不是再重复 RL / IL / Control，而是看它们在人形系统里如何真正缠在一起工作。</p>
+        <h2 class="section-title">6. Humanoid：人形机器人专项阅读主线</h2>
+        <p class="section-subtitle">这里不是重复控制、RL、IL，而是看它们在人形系统里如何真正缠在一起工作。</p>
         <div class="card-grid">
-          <article class="card">
-            <h3>Locomotion</h3>
-            <p class="card-meta">先读</p>
-            <p>站、走、跑、转向、抗扰、复杂地形，先打透最核心主战场。</p>
-          </article>
-          <article class="card">
-            <h3>Motion Imitation / Style Control</h3>
-            <p class="card-meta">再读</p>
-            <p>重点看 reference motion、style prior、AMP、tracking reward，理解“像人一样动”怎么来的。</p>
-          </article>
-          <article class="card">
-            <h3>Whole-body Skills</h3>
-            <p class="card-meta">进阶</p>
-            <p>上肢参与、全身协调、多接触交互，开始逼近更真实的人形能力。</p>
-          </article>
-          <article class="card">
-            <h3>Deployment / Hardware Reports</h3>
-            <p class="card-meta">别跳过</p>
-            <p>真正决定你有没有工程直觉的，往往不是 headline，而是部署细节和失败经验。</p>
-          </article>
+          <article class="card"><h3>Locomotion</h3><p>先打透站立、行走、跑跳、抗扰和复杂地形这条主战场，别急着横向铺太开。</p></article>
+          <article class="card"><h3>Motion Style / Skill Prior</h3><p>重点看 reference motion、style prior、AMP、tracking reward 这些如何让动作更自然。</p></article>
+          <article class="card"><h3>Whole-body Skills</h3><p>开始看上肢参与、全身协调、多接触交互和更复杂的技能结构。</p></article>
+          <article class="card"><h3>Hardware & Deployment</h3><p>真正决定工程直觉上限的，很多时候不是模型名字，而是部署细节、系统限制和失败案例。</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="paper-list">
+    <section class="section">
       <div class="container">
-        <h2 class="section-title">代表论文卡片</h2>
-        <p class="section-subtitle">这一版先放真正值得点开的代表作，优先选有论文页、官方项目页或 arXiv 的入口，避免塞一堆只有名字的卡片。</p>
-        <div class="structure-list">
-          <article class="simple-card">
-            <h3>RL / Locomotion</h3>
-            <div class="card-grid">
-              <article class="card">
-                <h3>Learning to Walk in Minutes Using Massively Parallel Deep RL</h3>
-                <p class="card-meta">Rudin et al., 2021</p>
-                <p>并行仿真训练 locomotion 的代表作，适合理解 GPU 大规模采样和 PPO 工程化训练范式。</p>
-                <div class="cta-row"><a class="btn-secondary" href="https://arxiv.org/abs/2109.11978" target="_blank" rel="noopener noreferrer">Paper</a></div>
-              </article>
-              <article class="card">
-                <h3>A Walk in the Park</h3>
-                <p class="card-meta">Smith, Kostrikov, Levine · 2022</p>
-                <p>真实机器人用 model-free RL 学会 locomotion 的代表作，适合理解 real-world RL 的节奏和约束。</p>
-                <div class="cta-row">
-                  <a class="btn-secondary" href="https://arxiv.org/abs/2208.07860" target="_blank" rel="noopener noreferrer">Paper</a>
-                  <a class="btn-secondary" href="https://sites.google.com/berkeley.edu/walk-in-the-park" target="_blank" rel="noopener noreferrer">Project</a>
-                </div>
-              </article>
-              <article class="card">
-                <h3>Grow Your Limits</h3>
-                <p class="card-meta">Smith et al., 2023</p>
-                <p>真实世界持续改进式 locomotion RL，适合理解在线数据积累、保守更新和性能迭代。</p>
-                <div class="cta-row"><a class="btn-secondary" href="https://arxiv.org/abs/2310.17634" target="_blank" rel="noopener noreferrer">Paper</a></div>
-              </article>
-              <article class="card">
-                <h3>Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control</h3>
-                <p class="card-meta">Xie et al.</p>
-                <p>从腿足 locomotion 往双足 / humanoid 过渡时非常好的入口，重点看鲁棒双足控制和部署表达。</p>
-                <div class="cta-row"><a class="btn-secondary" href="https://xbpeng.github.io/projects/Cassie_Locomotion/index.html" target="_blank" rel="noopener noreferrer">Project</a></div>
-              </article>
-            </div>
-          </article>
-
-          <article class="simple-card">
-            <h3>IL / Motion Prior / Diffusion</h3>
-            <div class="card-grid">
-              <article class="card">
-                <h3>DeepMimic</h3>
-                <p class="card-meta">Peng et al., 2018</p>
-                <p>humanoid motion imitation 绕不过去的经典入口，重点看 reference motion、tracking reward 和技能组合。</p>
-                <div class="cta-row">
-                  <a class="btn-secondary" href="https://xbpeng.github.io/projects/DeepMimic/index.html" target="_blank" rel="noopener noreferrer">Project</a>
-                  <a class="btn-secondary" href="https://arxiv.org/abs/1804.02717" target="_blank" rel="noopener noreferrer">arXiv</a>
-                </div>
-              </article>
-              <article class="card">
-                <h3>AMP: Adversarial Motion Priors</h3>
-                <p class="card-meta">Peng et al., 2021</p>
-                <p>理解 motion prior 如何替代手工复杂 reward 的关键论文，也是自然动作控制的重要入口。</p>
-                <div class="cta-row">
-                  <a class="btn-secondary" href="https://xbpeng.github.io/projects/AMP/" target="_blank" rel="noopener noreferrer">Project</a>
-                  <a class="btn-secondary" href="https://arxiv.org/abs/2104.02180" target="_blank" rel="noopener noreferrer">arXiv</a>
-                </div>
-              </article>
-              <article class="card">
-                <h3>Adversarial Motion Priors Make Good Substitutes for Complex Reward Functions</h3>
-                <p class="card-meta">Escontrela et al.</p>
-                <p>看 motion prior 怎么帮助 locomotion 学出更自然、更稳的行为，也适合作为 sim2real 视角入口。</p>
-                <div class="cta-row"><a class="btn-secondary" href="https://xbpeng.github.io/projects/AMP_Locomotion/index.html" target="_blank" rel="noopener noreferrer">Project</a></div>
-              </article>
-              <article class="card">
-                <h3>Diffusion Policy</h3>
-                <p class="card-meta">Chi et al., 2023</p>
-                <p>机器人 diffusion policy 的代表作，适合理解多峰动作分布、视觉条件控制和 receding-horizon action generation。</p>
-                <div class="cta-row">
-                  <a class="btn-secondary" href="https://diffusion-policy.cs.columbia.edu/" target="_blank" rel="noopener noreferrer">Project</a>
-                  <a class="btn-secondary" href="https://arxiv.org/abs/2303.04137" target="_blank" rel="noopener noreferrer">arXiv</a>
-                </div>
-              </article>
-            </div>
-          </article>
-
-          <article class="simple-card">
-            <h3>Sim2Real / Deployment</h3>
-            <div class="card-grid">
-              <article class="card">
-                <h3>Rapid Locomotion via Reinforcement Learning</h3>
-                <p class="card-meta">MIT Mini Cheetah 项目</p>
-                <p>非常经典的部署入口，重点看真实系统里的高频控制、敏捷动作和 sim2real 训练范式。</p>
-                <div class="cta-row"><a class="btn-secondary" href="https://agility.csail.mit.edu/" target="_blank" rel="noopener noreferrer">Project</a></div>
-              </article>
-              <article class="card">
-                <h3>Deployment Reports / Surveys</h3>
-                <p class="card-meta">建议长期补</p>
-                <p>这类内容通常最有工程味。读的时候重点抓 actuator model、delay、randomization、safety margin，不要只看 headline。</p>
-                <div class="cta-row"><a class="btn-secondary" href="#sim2real">回 Sim2Real 导航</a></div>
-              </article>
-            </div>
-          </article>
+        <h2 class="section-title">7. 推荐阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>如果你当前主攻 locomotion</h3><p>先 Motion Control → RL → Sim2Real → Humanoid，再回过头补 IL 和动作先验路线。</p></article>
+          <article class="simple-card"><h3>如果你当前主攻技能学习</h3><p>先 IL → RL → Humanoid，再重点看 motion prior、reference tracking 和 multi-skill 组合。</p></article>
+          <article class="simple-card"><h3>如果你当前骨架还不稳</h3><p>先补控制主线，再往学习方法扩。否则论文越看越多，结构越看越散。</p></article>
+          <article class="simple-card"><h3>如果你怕读散</h3><p>每次只打一条主线，先吃透代表作，再回项目里写结构化总结，不要全地图乱跳。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">开源生态与工具链入口</h2>
-        <p class="section-subtitle">论文不要孤立看，最好和代码仓、仿真平台、训练框架一起看，这样理解会快很多。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Simulation</h3>
-            <p>MuJoCo、Isaac Gym、Isaac Lab、Isaac Sim、Gazebo / GZ。重点不是都学，而是知道各自适合什么工作流。</p>
-          </article>
-          <article class="card">
-            <h3>RL Frameworks</h3>
-            <p>legged_gym、IsaacGymEnvs、humanoid-gym 等，是理解实际训练工程的好入口。</p>
-          </article>
-          <article class="card">
-            <h3>Humanoid Projects</h3>
-            <p>看真实项目如何组织 observation、action、reward、deploy pipeline，比只看算法摘要值钱得多。</p>
-          </article>
-          <article class="card">
-            <h3>Benchmark / Survey</h3>
-            <p>用 benchmark 看共性，用 survey 建地图，但别停留在 survey 层。最终还是得回到代表工作和代码。</p>
-          </article>
+        <h2 class="section-title">8. 一句话总结</h2>
+        <div class="simple-card">
+          <p>论文导航真正要做的，不是告诉你“哪里有论文”，而是告诉你“为什么先读这组、读完应该获得什么理解、接下来该往哪条线推进”。</p>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
   <script src="main.js"></script>
 </body>
