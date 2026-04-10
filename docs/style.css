@@ -228,7 +228,11 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   padding: 30px 0 50px;
   color: var(--text-muted);
   font-size: .88rem;
-  text-align: center;
+}
+.footer .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 860px) {
