@@ -72,14 +72,26 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .site-title {
   color: var(--text);
-  white-space: nowrap;
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
   letter-spacing: -.01em;
   line-height: 1.1;
   font-size: .95rem;
   font-weight: 800;
 }
 .site-title:hover { color: var(--accent); text-decoration: none; }
+.site-title-emoji {
+  font-size: 1.6rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.site-title-text {
+  display: inline-block;
+  white-space: nowrap;
+}
 .main-nav { display: flex; gap: 6px; flex-wrap: wrap; flex: 1; }
 .main-nav a {
   font-size: .82rem;
@@ -115,21 +127,38 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--accent);
   text-decoration: none;
 }
+.header-link-github {
+  padding: 0.3rem 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  color: var(--text);
+}
+.header-link-github:hover {
+  border: none;
+  color: var(--accent);
+}
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 38px;
+  min-width: 72px;
   height: 38px;
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 0;
+  border-radius: 12px;
+  padding: 0 12px;
   cursor: pointer;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-muted);
   text-align: center;
   box-shadow: var(--shadow-sm);
+}
+.theme-toggle-track {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 .icon-sun { display: none; }
@@ -237,10 +266,13 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 @media (max-width: 860px) {
   .header-inner { gap: 12px; }
   .main-nav { display: none; }
-  .site-title { font-size: .84rem; }
+  .site-title { font-size: .84rem; gap: 10px; }
+  .site-title-emoji { font-size: 1.35rem; }
+  .site-title-text { white-space: normal; }
   .header-actions { gap: 8px; }
   .header-link { padding: 0.4rem 0.78rem; font-size: .8rem; }
-  .theme-toggle { width: 36px; height: 36px; }
+  .header-link-github { padding: 0.28rem 0; }
+  .theme-toggle { min-width: 64px; height: 36px; padding: 0 10px; }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .page-hero h1 { font-size: 2rem; }
