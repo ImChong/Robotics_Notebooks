@@ -1,5 +1,7 @@
 # Robotics_Notebooks
 
+[![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
+
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
 这个项目正在从“资源堆叠式思维导图”重构为一个**面向机器人全栈成长路径的技术栈导航项目**。
@@ -62,16 +64,6 @@
 请改从这里进入：
 - [sources/README.md](sources/README.md)
 - [旧版 README 资源归档](sources/notes/legacy-readme-resource-map.md)
-
-## 与其他项目的边界
-
-- [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)：单篇论文深读
-- [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)：跨主题、跨论文、跨模块的机器人知识组织
-- [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io)：个人简历与对外展示
-
-一句话：
-
-> 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
 
 ## 当前状态
 
