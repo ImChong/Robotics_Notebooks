@@ -1,6 +1,7 @@
 # Robotics_Notebooks
 
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
+[![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
