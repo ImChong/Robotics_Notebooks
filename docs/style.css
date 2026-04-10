@@ -69,14 +69,16 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: flex;
   align-items: center;
   gap: 24px;
+  width: 100%;
 }
 .site-title {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
   line-height: 1.2;
-  flex-shrink: 0;
+  flex-shrink: 1;
+  min-width: 0;
 }
 .site-title:hover {
   color: var(--accent);
@@ -224,10 +226,39 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .footer { border-top: 1px solid var(--border); padding: 30px 0 50px; color: var(--text-muted); font-size: .88rem; }
 
 @media (max-width: 860px) {
-  .header-inner { gap: 12px; }
-  .site-title { font-size: .92rem; }
-  .header-right { gap: 0.8rem; }
-  .theme-toggle { min-width: 64px; height: 36px; padding: 0 10px; }
+  .header-inner {
+    gap: 10px;
+    padding: 10px 16px;
+    align-items: center;
+  }
+  .site-title {
+    font-size: 1.08rem;
+    line-height: 1.25;
+    font-weight: 700;
+    flex: 1 1 auto;
+    white-space: normal;
+    max-width: calc(100% - 150px);
+  }
+  .header-spacer {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+  .header-right {
+    gap: 0.7rem;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+  .github-link {
+    font-size: 0.82rem;
+    white-space: nowrap;
+  }
+  .theme-toggle {
+    min-width: 52px;
+    height: 34px;
+    padding: 0 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .page-hero h1 { font-size: 2rem; }
