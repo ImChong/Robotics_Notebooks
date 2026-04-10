@@ -128,7 +128,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 [data-theme="dark"] .icon-sun { display: inline; }
 [data-theme="dark"] .icon-moon { display: none; }
 
-.hero { padding: 80px 0 60px; border-bottom: 1px solid var(--border); }
+.hero { padding: 44px 0 40px; border-bottom: 1px solid var(--border); }
 .hero-grid { display: grid; grid-template-columns: 1.4fr .9fr; gap: 36px; align-items: start; }
 .hero-kicker { font-size: .9rem; color: var(--text-muted); margin-bottom: 10px; }
 .hero-title { font-size: 2.8rem; line-height: 1.1; font-weight: 850; margin-bottom: 14px; color: var(--text); letter-spacing: -.03em; }
@@ -168,7 +168,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-left: 2px solid var(--border-strong);
   padding-left: 10px;
 }
-.section { padding: 64px 0; }
+.section { padding: 44px 0; }
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
   border-top: 1px solid var(--border);
@@ -259,6 +259,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     border-radius: 8px;
     flex-shrink: 0;
     font-size: 0.88rem;
+  }
+  .hero {
+    padding: 28px 0 28px;
+  }
+  .section {
+    padding: 30px 0;
   }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
