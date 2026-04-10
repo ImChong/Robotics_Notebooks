@@ -7,11 +7,21 @@
   const dark = saved ? saved === 'dark' : preferDark;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
+  function updateThemeToggle() {
+    if (!themeToggle) return;
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    themeToggle.setAttribute('title', isDark ? '切换到白天模式' : '切换到黑夜模式');
+    themeToggle.setAttribute('aria-label', isDark ? '切换到白天模式' : '切换到黑夜模式');
+  }
+
+  updateThemeToggle();
+
   if (themeToggle) {
     themeToggle.addEventListener('click', function () {
       const isDark = root.getAttribute('data-theme') === 'dark';
       root.setAttribute('data-theme', isDark ? 'light' : 'dark');
       localStorage.setItem(key, isDark ? 'light' : 'dark');
+      updateThemeToggle();
     });
   }
 

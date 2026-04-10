@@ -67,7 +67,6 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   padding: 8px 24px;
   min-height: 56px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   gap: 24px;
 }
@@ -77,16 +76,21 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text);
   text-decoration: none;
   line-height: 1.2;
+  flex-shrink: 0;
 }
 .site-title:hover {
   color: var(--accent);
   text-decoration: none;
+}
+.header-spacer {
+  flex: 1;
 }
 .header-right {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-shrink: 0;
+  margin-left: auto;
 }
 .github-link {
   font-size: 0.85rem;
@@ -98,14 +102,18 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   text-decoration: none;
 }
 .theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 72px;
+  height: 38px;
+  padding: 0 12px;
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
-  padding: 0.3rem 0.9rem;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1;
-  min-width: 56px;
   text-align: center;
   color: var(--text);
 }
@@ -113,6 +121,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-color: var(--accent);
   color: var(--accent);
 }
+.icon-sun { display: none; }
+.icon-moon { display: inline; }
+[data-theme="dark"] .icon-sun { display: inline; }
+[data-theme="dark"] .icon-moon { display: none; }
 
 .hero { padding: 80px 0 60px; border-bottom: 1px solid var(--border); }
 .hero-grid { display: grid; grid-template-columns: 1.4fr .9fr; gap: 36px; align-items: start; }
@@ -215,7 +227,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .header-inner { gap: 12px; }
   .site-title { font-size: .92rem; }
   .header-right { gap: 0.8rem; }
-  .theme-toggle { min-width: 52px; padding: 0.28rem 0.75rem; }
+  .theme-toggle { min-width: 64px; height: 36px; padding: 0 10px; }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .page-hero h1 { font-size: 2rem; }
