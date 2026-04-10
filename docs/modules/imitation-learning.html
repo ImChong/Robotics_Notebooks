@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>模仿学习模块 | Robotics Notebooks</title>
+  <title>机器人模仿学习总览 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>" />
   <link rel="stylesheet" href="../style.css" />
 </head>
@@ -30,266 +30,140 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <h1>模仿学习模块</h1>
-        <p>模仿学习的核心不是“把演示喂给网络”，而是把人类或专家策略里的动作先验、技能结构和行为风格，转成机器人能学、能执行、能泛化的控制能力。</p>
+        <h1>机器人模仿学习总览</h1>
+        <p>机器人模仿学习的关键，不是把演示塞给网络，而是把示范里的动作先验、技能结构和行为风格，转成机器人能学会、能泛化、能部署的控制能力。</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
+        <h2 class="section-title">1. 模块定位</h2>
         <div class="structure-list">
-          <article class="simple-card">
-            <h3>这个模块解决什么问题</h3>
-            <p>当任务很难手写 reward、探索空间太大，或者你已经有专家演示数据时，模仿学习能显著降低学习难度，让机器人更快得到可用策略。</p>
-          </article>
-          <article class="simple-card">
-            <h3>为什么对机器人重要</h3>
-            <p>机器人很多高阶技能，本质上带有人类行为先验。无论是遥操作、动捕、专家控制器，还是已有 policy 生成的数据，IL 都是把这些经验注入系统的高效方法。</p>
-          </article>
-          <article class="simple-card">
-            <h3>前置依赖</h3>
-            <ul>
-              <li>深度学习基础：监督学习、损失函数、泛化</li>
-              <li>时序建模：序列、历史窗口、动作条件预测</li>
-              <li>控制基础：状态反馈、轨迹跟踪、稳定性</li>
-              <li>动作表示：关节角、root pose、接触、phase、latent skill</li>
-            </ul>
-          </article>
-          <article class="simple-card">
-            <h3>你真正要掌握的主线</h3>
-            <ul>
-              <li>演示数据从哪来，质量怎么判断</li>
-              <li>Behavior Cloning 为什么简单但容易翻车</li>
-              <li>Distribution Shift 为什么是 IL 的核心痛点</li>
-              <li>DAgger、逆动力学、latent skill、diffusion policy 分别解决什么问题</li>
-              <li>IL 怎么和 RL、tracking control、retargeting 组合起来用</li>
-            </ul>
-          </article>
+          <article class="simple-card"><h3>这是什么</h3><p>模仿学习研究的是，如何利用专家演示、参考动作、遥操作数据、动捕数据或已有策略轨迹，让机器人直接学习有价值的行为先验。</p></article>
+          <article class="simple-card"><h3>它和监督学习、强化学习的关系</h3><p>它常常长得像监督学习，但核心难点在于部署分布会偏离演示分布；它也经常和强化学习结合，用演示提供起点，再由 RL 增强鲁棒性和性能。</p></article>
+          <article class="simple-card"><h3>它处于哪一层</h3><p>它位于技能学习层，往下需要落到控制可执行性，往上可以支撑动作风格学习、技能迁移、多技能组合和人形机器人复杂行为生成。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">快速导览</h2>
-        <p class="section-subtitle">先理解模仿学习的基本矛盾：你想复制专家行为，但部署时机器人会偏离专家分布。后面所有方法，基本都在和这件事较劲。</p>
+        <h2 class="section-title">2. 为什么重要</h2>
         <div class="card-grid">
-          <article class="card">
-            <h3><a href="#data-source">演示数据从哪来</a></h3>
-            <p>遥操作、动捕、仿真专家、优化器轨迹、历史日志，各有偏差和成本。</p>
-          </article>
-          <article class="card">
-            <h3><a href="#core-methods">核心方法怎么分</a></h3>
-            <p>BC、DAgger、inverse model、latent skill、diffusion policy，不是一锅粥。</p>
-          </article>
-          <article class="card">
-            <h3><a href="#robot-pipeline">机器人里怎么落地</a></h3>
-            <p>retarget、tracking、reference motion、policy conditioning，才是真正接地气的部分。</p>
-          </article>
-          <article class="card">
-            <h3><a href="#il-rl">IL 和 RL 怎么协同</a></h3>
-            <p>现实里强系统经常不是二选一，而是先模仿、再强化、最后部署。</p>
-          </article>
+          <article class="card"><h3>它能显著降低探索难度</h3><p>很多高维机器人任务，特别是人形动作学习，如果完全靠 trial-and-error 搜索，代价高得离谱。演示可以把搜索空间迅速压缩。</p></article>
+          <article class="card"><h3>它特别适合注入行为先验</h3><p>人类动作、专家控制器、遥操作示范和已有策略 rollouts，都是极强的结构先验，模仿学习让这些经验真正进入策略训练过程。</p></article>
+          <article class="card"><h3>它能帮助学到更自然的动作</h3><p>对于人形机器人来说，“会做”和“像人一样做”差很多。模仿学习特别适合弥合这两个层面的差距。</p></article>
+          <article class="card"><h3>它是很多实用系统的起点</h3><p>现实里很多强系统不是纯 RL，而是先 IL、再 RL、再部署，或者 tracking reward + RL 混合，这条路线非常实用。</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="data-source">
+    <section class="section">
       <div class="container">
-        <h2 class="section-title">1. 演示数据从哪来，比算法名更重要</h2>
-        <p class="section-subtitle">垃圾数据进，垃圾策略出。IL 很吃数据分布和动作质量。</p>
-        <div class="structure-list">
-          <article class="simple-card">
-            <h3>遥操作 / Teleoperation</h3>
-            <p>优势是贴近真实任务，能收集操作意图；问题是噪声大、延迟重、动作不一定适合目标机器人直接执行。</p>
-          </article>
-          <article class="simple-card">
-            <h3>动作捕捉 / Motion Capture</h3>
-            <p>适合 humanoid 技能和自然动作风格迁移，但人和机器人形态不一致，必须经过 retargeting、动力学约束和接触修正。</p>
-          </article>
-          <article class="simple-card">
-            <h3>仿真专家 / 规划器 / MPC</h3>
-            <p>优点是可批量生成、标签稳定；缺点是继承了上游控制器的偏置，而且未必覆盖复杂恢复行为。</p>
-          </article>
-          <article class="simple-card">
-            <h3>已有策略回放数据</h3>
-            <p>你可以用已有 RL policy 或专家 policy 生成 rollouts，再训练更轻、更稳、更快部署的 student policy。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="core-methods">
-      <div class="container">
-        <h2 class="section-title">2. 核心方法不是一个桶</h2>
-        <p class="section-subtitle">它们解决的问题不同。别把所有“从演示学”的方法都叫 BC。</p>
+        <h2 class="section-title">3. 核心问题</h2>
         <div class="card-grid">
-          <article class="card">
-            <h3>Behavior Cloning</h3>
-            <p class="card-meta">最直接 · 最常见 · 也是最容易分布偏移</p>
-            <p>把专家状态映射到专家动作，按监督学习做。优点是简单、稳定、快；缺点是部署时一旦偏离专家轨迹，误差会连锁放大。</p>
-          </article>
-          <article class="card">
-            <h3>DAgger</h3>
-            <p class="card-meta">解决 distribution shift 的经典方法</p>
-            <p>让 learner 自己跑，再让专家给纠正标签，把 learner 真会到达的状态也纳入训练。代价是需要在线专家反馈。</p>
-          </article>
-          <article class="card">
-            <h3>Inverse / Forward Model</h3>
-            <p class="card-meta">建模动作-结果关系</p>
-            <p>常用于表示学习、动作恢复和控制辅助。特别适合处理观测和动作之间的时序因果结构。</p>
-          </article>
-          <article class="card">
-            <h3>Diffusion / Sequence Policy</h3>
-            <p class="card-meta">适合复杂多峰行为</p>
-            <p>当一个状态下存在多种合理动作时，扩散或序列生成模型往往比单点回归更自然，尤其适合 manipulation 和长时序技能。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="robot-pipeline">
-      <div class="container">
-        <h2 class="section-title">3. 机器人里的 IL，重点是动作表示和落地管线</h2>
-        <p class="section-subtitle">论文里一句 “train policy from demonstrations”，落地时背后通常是一整条很长的工程链。</p>
-        <div class="structure-list">
-          <article class="simple-card">
-            <h3>Retargeting</h3>
-            <p>人体动作不能直接塞给机器人。需要处理骨架比例、自由度差异、接触约束、关节极限和动力学可执行性。</p>
-          </article>
-          <article class="simple-card">
-            <h3>Reference Motion Tracking</h3>
-            <p>很多 humanoid 技能学习，不是纯 BC，而是让 policy 在奖励里跟踪参考动作。这其实是 imitation 和 RL 的混合范式。</p>
-          </article>
-          <article class="simple-card">
-            <h3>Conditioned Policy</h3>
-            <p>给策略输入 phase、future reference、goal token、skill embedding，可以把“会做动作”提升成“可控地做指定动作”。</p>
-          </article>
-          <article class="simple-card">
-            <h3>动作平滑与可部署性</h3>
-            <p>演示数据看起来很帅，不代表机器人真能跟。最终部署时要考虑带宽、关节冲击、稳定裕度、延迟和安全约束。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="il-rl">
-      <div class="container">
-        <h2 class="section-title">4. IL 和 RL 不是对立关系</h2>
-        <p class="section-subtitle">很多最好用的系统，都是先靠 IL 拿到行为先验，再用 RL 做鲁棒性和性能提升。</p>
-        <div class="structure-list">
-          <article class="simple-card">
-            <h3>先 BC，再 RL Fine-tune</h3>
-            <p>先学会“像样地动”，再让 RL 优化速度、能耗、抗扰和任务完成度。这是非常常见的路线。</p>
-          </article>
-          <article class="simple-card">
-            <h3>Tracking Reward + RL</h3>
-            <p>让策略跟踪参考动作，同时保留 RL 的探索能力。对 humanoid 动作风格学习尤其有效。</p>
-          </article>
-          <article class="simple-card">
-            <h3>Teacher-Student Distillation</h3>
-            <p>让复杂专家（MPC、大模型策略、多模态控制器）教一个轻量 student policy，适合部署侧压缩。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="humanoid-focus">
-      <div class="container">
-        <h2 class="section-title">5. 人形机器人场景下，IL 特别有价值的地方</h2>
-        <p class="section-subtitle">因为很多“自然动作”很难直接靠 reward 搜出来，但人类演示能提供极强先验。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Locomotion Style</h3>
-            <p>不仅要走，还想走得像人、协调、自然，这时参考动作和 imitation signal 很关键。</p>
-          </article>
-          <article class="card">
-            <h3>Recovery / Agile Skills</h3>
-            <p>摔倒恢复、快速转身、侧移、跨步等技能，单靠 reward 搜索很痛苦，演示能大幅降低难度。</p>
-          </article>
-          <article class="card">
-            <h3>Manipulation with Intent</h3>
-            <p>抓、放、插、开关门这类带语义结构的任务，演示数据往往比纯探索更高效。</p>
-          </article>
-          <article class="card">
-            <h3>Multi-skill Composition</h3>
-            <p>多个 skill 之间切换和组合，可以借助 latent embedding、skill token 或 reference library 来做。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="paper-entry">
-      <div class="container">
-        <h2 class="section-title">6. 推荐阅读顺序 + 核心论文入口</h2>
-        <p class="section-subtitle">先把最基础的 distribution shift 和参考动作跟踪吃透，再去看 humanoid 技能和 diffusion 这类更强表达路线。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>Step 1 · Behavior Cloning / DAgger</h3>
-            <p class="card-meta">先读</p>
-            <p>先建立对 distribution shift、online aggregation、supervised imitation 的核心理解。</p>
-            <div class="cta-row"><a class="btn-secondary" href="../references.html#il">去论文导航</a></div>
-          </article>
-          <article class="card">
-            <h3>Step 2 · DeepMimic 路线</h3>
-            <p class="card-meta">第二批</p>
-            <p>这是 humanoid 动作模仿绕不过去的入口，重点看 reference motion、tracking reward、技能迁移。</p>
-            <div class="cta-row"><a class="btn-secondary" href="../references.html#humanoid">看 Humanoid 入口</a></div>
-          </article>
-          <article class="card">
-            <h3>Step 3 · AMP / Adversarial Motion Prior</h3>
-            <p class="card-meta">进阶</p>
-            <p>重点看如何用动作先验替代手工细碎 reward，让行为更自然。</p>
-            <div class="cta-row"><a class="btn-secondary" href="../references.html#humanoid">看专项入口</a></div>
-          </article>
-          <article class="card">
-            <h3>Step 4 · Diffusion Policy 系列</h3>
-            <p class="card-meta">拓展</p>
-            <p>重点看复杂时序行为、多峰动作分布、视觉条件控制的表达能力。</p>
-            <div class="cta-row"><a class="btn-secondary" href="../references.html#il">看 IL 入口</a></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="pitfalls">
-      <div class="container">
-        <h2 class="section-title">7. 常见坑点</h2>
-        <p class="section-subtitle">模仿学习看着比 RL 简单，实际很容易被数据和分布问题狠狠干碎。</p>
-        <div class="structure-list">
-          <article class="simple-card">
-            <h3>以为数据多就够</h3>
-            <p>没覆盖关键恢复状态，再多数据也可能一偏就崩。</p>
-          </article>
-          <article class="simple-card">
-            <h3>忽视演示质量差异</h3>
-            <p>专家数据如果混了大量迟滞、犹豫、误操作，模型会老实学进去。</p>
-          </article>
-          <article class="simple-card">
-            <h3>只追求动作拟合误差低</h3>
-            <p>离线 loss 很低，不代表闭环执行效果好。机器人里闭环稳定性永远比单步回归漂亮更重要。</p>
-          </article>
-          <article class="simple-card">
-            <h3>retarget 不认真做</h3>
-            <p>人类动作很优雅，但机器人身体不是人。retarget 做烂了，后面学什么都歪。</p>
-          </article>
+          <article class="card"><h3>示范数据从哪来</h3><p>遥操作、动捕、仿真专家、规划器轨迹、历史策略 rollouts，不同数据源的偏差、噪声和成本完全不同。</p></article>
+          <article class="card"><h3>数据如何表示</h3><p>关节角、root pose、phase、接触标签、future reference、latent skill，这些表示方式决定了策略能学到什么粒度的结构。</p></article>
+          <article class="card"><h3>动作如何映射到机器人</h3><p>人类动作并不能直接喂给机器人，需要经过 retargeting、接触修正、动力学可执行性检查和控制接口转换。</p></article>
+          <article class="card"><h3>如何处理 distribution shift</h3><p>训练时看的是专家分布，部署时走的是自己分布。一旦偏离，误差可能会层层放大，这正是 IL 的经典痛点。</p></article>
+          <article class="card"><h3>如何学复杂长时序技能</h3><p>多技能切换、动作风格保持、长时序任务目标和多峰动作分布，是把 IL 做强时一定会碰到的问题。</p></article>
+          <article class="card"><h3>如何兼顾“像”和“能做”</h3><p>动作看起来像人类，并不等于机器人真能稳定执行。自然性、可执行性和鲁棒性必须一起考虑。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">相关入口</h2>
+        <h2 class="section-title">4. 核心方法脉络</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>Behavior Cloning</h3><p>最直接的路线，按监督学习从状态映射到动作。优点是简单、快，缺点是最容易被分布偏移狠狠干碎。</p></article>
+          <article class="simple-card"><h3>DAgger</h3><p>通过让 learner 自己跑，再让专家纠正 learner 真会到达的状态，缓解部署分布和演示分布不一致的问题。</p></article>
+          <article class="simple-card"><h3>Inverse / Forward Model</h3><p>通过学习动作和状态变化之间的关系，帮助表示学习、动作恢复和时序建模，是很多机器人 IL 管线里的重要组件。</p></article>
+          <article class="simple-card"><h3>Reference Tracking / Motion Imitation</h3><p>在人形机器人里非常常见，不是直接复制动作，而是通过参考动作、tracking reward 和控制结构，让策略学出风格与能力。</p></article>
+          <article class="simple-card"><h3>Diffusion / Sequence Policy</h3><p>当一个状态对应多种合理动作，或者任务需要复杂时序结构时，这类方法往往比单点回归更有表达力。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">5. 前置知识</h2>
         <div class="card-grid">
-          <article class="card"><h3><a href="../roadmap.html">成长路线</a></h3><p>看 IL 在整体路线中的位置，判断什么时候该切进来。</p></article>
-          <article class="card"><h3><a href="../tech-map.html">技术栈地图</a></h3><p>看它和强化学习、控制、感知、动作表示的连接关系。</p></article>
-          <article class="card"><h3><a href="../references.html">论文导航</a></h3><p>继续往 imitation、humanoid motion prior、diffusion policy 深挖。</p></article>
-          <article class="card"><h3><a href="reinforcement-learning.html">强化学习模块</a></h3><p>把 IL 和 RL 放在同一条技能学习主线上一起看。</p></article>
+          <article class="card"><h3>必备基础</h3><p>监督学习、损失函数、时序建模、机器人状态与动作表示、控制基础。</p></article>
+          <article class="card"><h3>建议补充</h3><p>强化学习、动作捕捉、retargeting、接触动力学、策略蒸馏、行为生成模型。</p></article>
+          <article class="card"><h3>最容易卡住的地方</h3><p>只盯模型结构，不看数据质量和动作可执行性，这会让模仿学习很容易沦为“离线 demo 好看，上机就碎”。</p></article>
+          <article class="card"><h3>最值得先补的能力</h3><p>先理解 distribution shift、retargeting 和控制落地，再去追 fancy 的生成式策略模型。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">6. 与其他模块的关系</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>与强化学习</h3><p>模仿学习擅长快速拿到行为先验，强化学习擅长继续优化鲁棒性、任务完成度和恢复能力。两者经常应该联用，而不是二选一。</p></article>
+          <article class="simple-card"><h3>与运动控制</h3><p>模仿来的动作最终要通过控制器落地，所以动作能不能执行、稳定不稳定、会不会对硬件太猛，本质上都还要回到控制问题。</p></article>
+          <article class="simple-card"><h3>与 retargeting / human motion</h3><p>在人形机器人里，动作数据处理链往往和策略学习本身同样重要，很多性能上限就卡在这里。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">7. 面向人形机器人的特殊性</h2>
+        <div class="card-grid">
+          <article class="card"><h3>人和机器人本体不一致</h3><p>骨架比例、自由度、接触模式和执行器能力不同，意味着动作迁移绝不是简单坐标映射。</p></article>
+          <article class="card"><h3>动作“像”不等于“能做”</h3><p>人类动作捕捉数据看起来很自然，但不一定满足机器人动力学和稳定性边界。</p></article>
+          <article class="card"><h3>自然性和稳定性经常冲突</h3><p>越想做得像人，越容易把系统推向更小的稳定裕度，所以策略设计和控制接口必须一起想。</p></article>
+          <article class="card"><h3>多技能组合价值极高</h3><p>人形机器人后续会非常依赖技能库、风格切换、复合动作与条件策略，IL 在这里特别有潜力。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">8. 推荐学习路径</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>阶段 1：理解 BC 和 distribution shift</h3><p>先把模仿学习最核心的矛盾想清楚，不然很容易把 IL 看成“监督学习小变种”。</p></article>
+          <article class="simple-card"><h3>阶段 2：切入机器人数据表示</h3><p>重点看动作表示、历史窗口、参考动作、phase、skill embedding 等输入输出结构。</p></article>
+          <article class="simple-card"><h3>阶段 3：看 motion imitation / retargeting</h3><p>在人形机器人语境里，这部分比抽象算法名更关键，直接关系到能不能学出可执行动作。</p></article>
+          <article class="simple-card"><h3>阶段 4：看 IL + RL 混合范式</h3><p>开始理解为什么很多强系统要先模仿、再强化、再部署，而不是单独死磕某一条路线。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">9. 推荐资料</h2>
+        <div class="card-grid">
+          <article class="card"><h3>基础论文</h3><p>Behavior Cloning、DAgger、GAIL、Inverse RL 等，是建立方法谱系的底层入口。</p></article>
+          <article class="card"><h3>人形主线论文</h3><p>DeepMimic、AMP、reference motion tracking、humanoid motion imitation 等路线值得优先读。</p></article>
+          <article class="card"><h3>动作数据与工具</h3><p>动捕数据、retargeting 工具、动作表示与清洗流程，是这一模块的重要资源层。</p></article>
+          <article class="card"><h3>项目内资源</h3><p>后续把 MimicKit、动捕和训练笔记统一挂到 resources/train，不再让训练相关内容散落在根目录。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">10. 常见误区</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>误区 1</h3><p>把模仿学习当成“简单监督学习”。部署分布偏移是核心难点，不处理这个问题，很容易训练时像样、部署时翻车。</p></article>
+          <article class="simple-card"><h3>误区 2</h3><p>只关心演示是否好看，不关心动作能否执行。机器人不是视频播放器，动作必须过控制与动力学这关。</p></article>
+          <article class="simple-card"><h3>误区 3</h3><p>以为 IL 和 RL 是对立路线。现实里最强的系统很多恰恰是把两者揉在一起用。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">11. 一句话总结</h2>
+        <div class="simple-card">
+          <p>机器人模仿学习的关键，是把“示范看起来很强”真正变成“机器人能稳定复现、还能泛化扩展”的控制能力。</p>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
   <script src="../main.js"></script>
 </body>

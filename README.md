@@ -25,6 +25,7 @@
 
 - `wiki/`：结构化知识页（核心知识层）
 - `sources/`：原始资料与资源索引
+- `resources/`：课程、训练笔记、know-how 等沉淀资源
 - `roadmap/`：成长路线与阶段导航
 - `tech-map/`：技术栈地图与依赖关系
 - `references/`：论文导航、开源生态、项目索引

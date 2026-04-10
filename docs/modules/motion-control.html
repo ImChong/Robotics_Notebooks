@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>运动控制模块 | Robotics Notebooks</title>
+  <title>运动控制总览 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦿</text></svg>" />
   <link rel="stylesheet" href="../style.css" />
 </head>
@@ -29,26 +29,26 @@
   <main>
     <section class="page-hero">
       <div class="container">
-        <h1>运动控制模块</h1>
-        <p>运动控制是机器人技术栈中的核心骨架之一。这一页不只是概念介绍，而是把控制问题、依赖关系、方法分层和学习入口组织清楚的结构页。</p>
+        <h1>运动控制总览</h1>
+        <p>运动控制是人形机器人系统真正落地的骨架层。它负责把模型、状态、约束、任务目标和执行器能力组织成稳定、可执行、可部署的运动行为。</p>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">这个模块解决什么问题</h2>
+        <h2 class="section-title">1. 模块定位</h2>
         <div class="structure-list">
           <article class="simple-card">
-            <h3>本质问题</h3>
-            <p>让机器人在给定任务、模型、约束和扰动条件下，产生稳定、可控、可执行的身体运动行为。</p>
+            <h3>这是什么</h3>
+            <p>运动控制研究的是，如何根据机器人状态、任务目标和系统约束，生成能在真实系统上执行的控制输出，让机器人持续完成稳定运动。</p>
           </article>
           <article class="simple-card">
-            <h3>在人形机器人里的具体含义</h3>
-            <p>不是简单地“让关节动起来”，而是要在接触切换、浮动基、平衡约束、关节限制、驱动能力和外界扰动下，持续生成可落地的控制输出。</p>
+            <h3>它处于哪一层</h3>
+            <p>它位于机器人系统的执行核心层，承上连接状态估计、规划、学习策略，承下连接电机、驱动器、关节和接触力。</p>
           </article>
           <article class="simple-card">
-            <h3>为什么它是硬骨架</h3>
-            <p>因为无论后面是强化学习、模仿学习，还是感知、规划、部署，最终都要落到控制执行层。没有运动控制，后面的智能层没有真正的落点。</p>
+            <h3>它主要解决什么</h3>
+            <p>核心不是“让关节动起来”，而是在浮动基、多接触、强约束、实时性要求和外部扰动下，依然让机器人稳定地产生身体行为。</p>
           </article>
         </div>
       </div>
@@ -56,108 +56,118 @@
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">为什么它是核心骨架</h2>
+        <h2 class="section-title">2. 为什么重要</h2>
         <div class="card-grid">
-          <article class="card"><h3>它连接建模与执行</h3><p>无论是状态估计、规划还是学习策略，最终都要通过控制层变成真实可执行的运动行为。</p></article>
-          <article class="card"><h3>它决定理解深度</h3><p>控制骨架不清楚，后面看 RL / IL 往往容易停留在调参层，而很难真正理解系统约束和行为来源。</p></article>
-          <article class="card"><h3>它连接传统方法与学习方法</h3><p>传统控制、优化控制、WBC、MPC 和 RL / IL 不是互斥关系，而是连续谱。</p></article>
-          <article class="card"><h3>它最容易形成闭环</h3><p>从模型、仿真到实验验证，控制问题天然适合做结构化闭环学习。</p></article>
+          <article class="card"><h3>它决定系统有没有落点</h3><p>无论前面是感知、规划、强化学习还是模仿学习，最后都必须通过控制层变成真实动作，没有这一层，前面的智能基本悬空。</p></article>
+          <article class="card"><h3>它决定你是不是只会调参</h3><p>如果控制骨架不清楚，后面看 RL / IL 很容易停留在 reward、网络、超参数层面，难以真正理解行为从哪来。</p></article>
+          <article class="card"><h3>它决定可解释性和可部署性</h3><p>运动控制是理解稳定性、约束、接触、执行边界和实时性的核心入口，也是把仿真结果推向真实系统的关键中间层。</p></article>
+          <article class="card"><h3>它最适合建立结构化闭环</h3><p>从建模、仿真、分析到实验验证，运动控制特别适合形成“问题建模 → 方法实现 → 行为分析”的学习闭环。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">前置依赖图</h2>
-        <div class="route-list">
-          <article class="simple-card"><h3>第一层：数学基础</h3><p>线性代数、微积分、概率统计、优化基础。</p></article>
-          <article class="simple-card"><h3>第二层：机器人学基础</h3><p>刚体运动、坐标系变换、运动学、动力学。</p></article>
-          <article class="simple-card"><h3>第三层：状态与约束</h3><p>状态估计、接触建模、约束理解、执行器能力边界。</p></article>
-          <article class="simple-card"><h3>第四层：控制方法</h3><p>PID / LQR → OCP / MPC / QP → WBC / TSID → Humanoid Locomotion。</p></article>
+        <h2 class="section-title">3. 核心问题</h2>
+        <div class="card-grid">
+          <article class="card"><h3>运动学与动力学建模</h3><p>明确机器人怎么运动、力怎么传递、状态变量如何演化，是后续控制与优化的前提。</p></article>
+          <article class="card"><h3>状态估计</h3><p>控制首先要回答“机器人现在到底处于什么状态”，尤其在人形系统里，接触、IMU、关节编码器和外界扰动都会影响估计质量。</p></article>
+          <article class="card"><h3>轨迹跟踪与反馈稳定</h3><p>控制要在模型不完美和扰动存在时，持续把系统拉回任务目标附近，而不是只在理想模型里好看。</p></article>
+          <article class="card"><h3>约束与接触处理</h3><p>接触切换、摩擦锥、关节极限、执行器饱和、可行接触力分布，都是人形机器人控制里的硬约束。</p></article>
+          <article class="card"><h3>全身协调</h3><p>不是只管腿或者只管躯干，而是把平衡、摆臂、足端接触、上身姿态和任务优先级一起组织起来。</p></article>
+          <article class="card"><h3>平衡与步态生成</h3><p>双足 locomotion 的难点不在于关节会动，而在于重心、支撑域、动量和接触切换能否稳定协同。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">核心子主题</h2>
-        <div class="card-grid">
-          <article class="card"><h3>状态估计</h3><p>解决“机器人现在到底处于什么状态”的问题，是一切控制的入口。</p></article>
-          <article class="card"><h3>经典控制</h3><p>PID、LQR 等方法帮助建立最基础的控制直觉和闭环认知。</p></article>
-          <article class="card"><h3>最优控制 / MPC</h3><p>把模型、约束、目标函数和未来预测引入控制问题。</p></article>
-          <article class="card"><h3>QP-WBC / TSID</h3><p>处理多任务、多约束和全身控制问题，是人形控制的关键中枢。</p></article>
-          <article class="card"><h3>质心动力学 / 步态控制</h3><p>直接关联双足平衡、步态生成和扰动恢复。</p></article>
-          <article class="card"><h3>控制与学习结合</h3><p>理解传统控制如何与 RL / IL 协同，而不是把两者对立起来。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">学完后应该会什么</h2>
-        <div class="card-grid">
-          <article class="card"><h3>懂系统结构</h3><p>知道一个人形控制系统从状态估计、模型、任务约束到控制输出怎么串起来。</p></article>
-          <article class="card"><h3>懂方法边界</h3><p>知道 PID、LQR、MPC、WBC 各自擅长什么、局限什么，不会把它们混成一团。</p></article>
-          <article class="card"><h3>懂论文结构</h3><p>能读懂 humanoid locomotion / WBC / MPC 论文中的控制框架，不再只看结论图。</p></article>
-          <article class="card"><h3>懂如何往 RL / IL 过渡</h3><p>知道学习方法不是替代控制，而是在某些层面增强控制能力。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">最小落地任务</h2>
-        <div class="route-list">
-          <article class="simple-card"><h3>任务 1：模型理解</h3><p>用 Pinocchio 或类似工具导入一个人形模型，跑通正逆运动学与基本动力学量读取。</p></article>
-          <article class="simple-card"><h3>任务 2：控制直觉</h3><p>实现一个倒立摆 / 二阶系统的 PID、LQR 或 MPC 控制，对比不同方法的表现。</p></article>
-          <article class="simple-card"><h3>任务 3：论文拆图</h3><p>读一篇 humanoid locomotion / WBC 论文，把其控制系统结构重新画成框图。</p></article>
-          <article class="simple-card"><h3>任务 4：仿真闭环</h3><p>在仿真环境里跑通一个最基础的 locomotion 或 balance baseline，并记录问题来源。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">推荐工具 / 推荐入口</h2>
-        <div class="card-grid">
-          <article class="card"><h3>工具</h3><p>Pinocchio、MuJoCo、Isaac Gym / Isaac Lab、Drake（后续可补）。</p></article>
-          <article class="card"><h3>课程 / 理论</h3><p>Underactuated Robotics、Robot Dynamics、Optimal Control 等主线资源。</p></article>
-          <article class="card"><h3>论文方向</h3><p>WBC、TSID、Centroidal Dynamics、Humanoid Locomotion、MPC、State Estimation。</p></article>
-          <article class="card"><h3>关联模块</h3><p>强化学习模块、模仿学习模块、技术栈地图页、成长路线页。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">和 RL / IL 的关系</h2>
+        <h2 class="section-title">4. 核心方法脉络</h2>
         <div class="structure-list">
-          <article class="simple-card"><h3>和强化学习的关系</h3><p>RL 不是对控制的替代，而是让你在高维、复杂、难建模任务中学习策略。没有控制骨架，RL 很容易流于黑箱调参。</p></article>
-          <article class="simple-card"><h3>和模仿学习的关系</h3><p>IL 让技能迁移更快，但最终也要落到控制可执行性上。动作数据不是魔法，还是得落在动力学和执行边界里。</p></article>
-          <article class="simple-card"><h3>更合理的理解</h3><p>控制是骨架，RL / IL 是能力增强层。先懂骨架，再扩智能，路线才稳。</p></article>
+          <article class="simple-card"><h3>经典反馈控制</h3><p>PID、PD、阻抗控制帮助建立最基础的闭环直觉，是理解更复杂控制结构的入口，而不是过时内容。</p></article>
+          <article class="simple-card"><h3>模型驱动控制</h3><p>从逆运动学、逆动力学到 LQR，重点是利用系统结构把控制问题写清楚，而不是只做经验调参。</p></article>
+          <article class="simple-card"><h3>最优控制与 MPC</h3><p>把目标函数、动力学预测和约束显式纳入控制问题，适合处理轨迹优化、接触切换和短期预测。</p></article>
+          <article class="simple-card"><h3>QP-WBC / TSID</h3><p>通过二次规划和任务层次结构处理多目标、多约束和全身协调，是人形控制系统的关键中枢之一。</p></article>
+          <article class="simple-card"><h3>Learning-augmented Control</h3><p>学习方法不是替代控制，而是可以在建模不足、复杂接触和高维策略设计困难时增强控制系统能力。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">下一步学习建议</h2>
-        <div class="route-list">
-          <article class="simple-card"><h3>如果你现在基础还不稳</h3><p>先补线性代数、刚体运动、运动学和动力学，别急着直接冲 RL 论文。</p></article>
-          <article class="simple-card"><h3>如果你已经在做控制</h3><p>重点把状态估计、MPC、WBC 和 humanoid locomotion 的结构理解打深。</p></article>
-          <article class="simple-card"><h3>如果你准备往学习方向扩</h3><p>在控制主线稳定之后，再把 RL / IL 接进来，这样会比一上来就端到端更稳。</p></article>
+        <h2 class="section-title">5. 前置知识</h2>
+        <div class="card-grid">
+          <article class="card"><h3>必备基础</h3><p>线性代数、微积分、刚体运动、坐标变换、运动学、动力学、控制基础。</p></article>
+          <article class="card"><h3>建议补充</h3><p>概率统计、状态估计、数值优化、接触动力学、最优控制、机器人软件工具链。</p></article>
+          <article class="card"><h3>最容易卡住的地方</h3><p>刚体运动和动力学不牢，会直接导致看 humanoid locomotion / WBC 论文时像在看黑话。</p></article>
+          <article class="card"><h3>最值得先补的能力</h3><p>不是先背大公式，而是先把“系统状态、任务目标、约束、反馈”这几个控制语言建立起来。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">相关入口</h2>
+        <h2 class="section-title">6. 与其他模块的关系</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>与强化学习</h3><p>强化学习常常在控制骨架之上学习更复杂、更高维或更难手写的策略。控制直觉越强，越能看懂 RL 为什么有效、什么时候会失效。</p></article>
+          <article class="simple-card"><h3>与模仿学习</h3><p>模仿学习可以更快注入动作先验，但最终动作能不能执行、稳不稳定、会不会伤机，还是要落回控制可执行性。</p></article>
+          <article class="simple-card"><h3>与仿真和 sim2real</h3><p>控制模型和执行器建模是否合理，会直接决定策略是否可迁移、调参效率是否可接受、真机表现是否稳。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">7. 面向人形机器人的特殊性</h2>
         <div class="card-grid">
-          <article class="card"><h3><a href="../roadmap.html">成长路线</a></h3><p>看这个模块在整体成长路线里的位置。</p></article>
-          <article class="card"><h3><a href="../tech-map.html">技术栈地图</a></h3><p>看它和数学、机器人学、学习算法之间的依赖关系。</p></article>
-          <article class="card"><h3><a href="../references.html">论文导航</a></h3><p>看 locomotion RL、WBC、sim2real 等相关论文入口。</p></article>
-          <article class="card"><h3><a href="reinforcement-learning.html">强化学习模块</a></h3><p>看学习控制如何建立在控制主线之上。</p></article>
+          <article class="card"><h3>浮动基与高自由度</h3><p>人形机器人不是固定底座机械臂，整机自由度高，导致建模、估计和控制耦合显著增强。</p></article>
+          <article class="card"><h3>多接触与切换接触</h3><p>双足行走本身就包含支撑切换，后续再叠加手部支撑、复杂地形、多接触交互，系统难度会迅速上升。</p></article>
+          <article class="card"><h3>平衡问题极其突出</h3><p>任何动作都不能脱离平衡与恢复能力来谈，控制器不仅要能动，还要能持续不摔。</p></article>
+          <article class="card"><h3>实时性和鲁棒性要求更狠</h3><p>控制输出要能跟上系统节拍，同时承受模型误差、延迟、噪声、地面变化和外界扰动。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">8. 推荐学习路径</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>阶段 1：补机器人学骨架</h3><p>先把刚体运动、运动学、动力学打通，建立控制系统的基本语言。</p></article>
+          <article class="simple-card"><h3>阶段 2：建立反馈控制直觉</h3><p>通过 PD / PID / LQR 之类方法，真正理解闭环、误差、反馈和稳定性。</p></article>
+          <article class="simple-card"><h3>阶段 3：切入最优控制与全身控制</h3><p>开始看 MPC、QP、WBC、TSID，把目标、约束和多任务结构引入脑子里。</p></article>
+          <article class="simple-card"><h3>阶段 4：进入 humanoid locomotion 语境</h3><p>重点理解质心动力学、步态控制、平衡恢复、接触切换和系统级控制框架。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">9. 推荐资料</h2>
+        <div class="card-grid">
+          <article class="card"><h3>理论课程</h3><p>Underactuated Robotics、Robot Dynamics、Optimal Control 等理论主线课程。</p></article>
+          <article class="card"><h3>工具</h3><p>Pinocchio、MuJoCo、Isaac Lab / Isaac Gym、Drake 等工具适合做最小闭环实验。</p></article>
+          <article class="card"><h3>论文方向</h3><p>WBC、TSID、Centroidal Dynamics、Humanoid Locomotion、State Estimation、Learning-based Control。</p></article>
+          <article class="card"><h3>项目内资源</h3><p>后续优先从 resources/theory、resources/train 和 references 里挂回对应入口，而不是在根目录散放。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">10. 常见误区</h2>
+        <div class="structure-list">
+          <article class="simple-card"><h3>误区 1</h3><p>把运动控制理解成“调 PID”。控制问题远不止局部跟踪，而是系统建模、约束处理、接触组织和整机协调。</p></article>
+          <article class="simple-card"><h3>误区 2</h3><p>只学公式，不关心系统结构。这样一旦进入 humanoid 或 sim2real 场景，很快就会失去判断力。</p></article>
+          <article class="simple-card"><h3>误区 3</h3><p>以为 RL / IL 能跳过控制。实际上学习方法往往更依赖控制理解，否则只能停在“能跑起来”的黑箱层。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">11. 一句话总结</h2>
+        <div class="simple-card">
+          <p>运动控制是把“机器人会动”真正变成“机器人能稳定、可解释、可部署地动”的核心骨架。</p>
         </div>
       </div>
     </section>
