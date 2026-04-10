@@ -103,14 +103,25 @@
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">6. 一句话总结</h2>
+        <h2 class="section-title">6. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先看仿真侧能力</h3><p>先读 <a href="../resources/train/IsaacGym.md" target="_blank" rel="noopener noreferrer">IsaacGym.md</a> 和 <a href="../resources/train/Simulator.md" target="_blank" rel="noopener noreferrer">Simulator.md</a>，明确并行仿真、物理后端和 domain randomization 在哪里起作用。</p></article>
+          <article class="simple-card"><h3>再看训练系统</h3><p>接着读 <a href="../resources/train/Train.md" target="_blank" rel="noopener noreferrer">Train.md</a> 和 <a href="../resources/train/MimicKit/MimicKit 06 def train_model(self, max_samples, out_dir, save_int_models, logger_type).md" target="_blank" rel="noopener noreferrer">训练循环解析</a>，把 rollout、测试、日志和 checkpoint 串起来。</p></article>
+          <article class="simple-card"><h3>最后回到控制与部署</h3><p>再跳到 <a href="../modules/motion-control.html">运动控制总览</a> 和 <a href="wbc-vs-rl.html">WBC vs RL</a>，理解为什么真实落地时，控制骨架和系统约束往往比算法 headline 更重要。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">7. 一句话总结</h2>
         <div class="simple-card">
           <p>Sim2Real 的核心不是算法，而是系统性 gap 处理。训练时就把真实约束塞进来，比训完再救场要靠谱得多。</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-alt">
       <div class="container">
         <h2 class="section-title">关联入口</h2>
         <div class="card-grid">
@@ -120,6 +131,7 @@
           <article class="card"><h3>IsaacGym 示例清单</h3><p>28 个示例覆盖 GPU 并行仿真、domain randomization、力控等主题，是上手 Isaac Gym 的实操路径。</p><p class="card-meta"><a href="../resources/train/IsaacGym.md" target="_blank" rel="noopener noreferrer">IsaacGym.md</a></p></article>
           <article class="card"><h3>Simulator 笔记</h3><p>仿真器选型对比与实践记录。</p><p class="card-meta"><a href="../resources/train/Simulator.md" target="_blank" rel="noopener noreferrer">Simulator.md</a></p></article>
           <article class="card"><h3>Train 总览</h3><p>训练相关资源入口，适合把仿真、训练和部署问题串成一条线。</p><p class="card-meta"><a href="../resources/train/Train.md" target="_blank" rel="noopener noreferrer">Train.md</a></p></article>
+          <article class="card"><h3>MimicKit 训练循环解析</h3><p>如果你关心 sample collection、测试回放、日志与 checkpoint，这篇是从训练系统角度理解 sim2real 准备工作的入口。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 06 def train_model(self, max_samples, out_dir, save_int_models, logger_type).md" target="_blank" rel="noopener noreferrer">MimicKit 06 def train_model(...)</a></p></article>
         </div>
       </div>
     </section>

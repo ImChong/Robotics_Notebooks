@@ -112,14 +112,25 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">7. 一句话总结</h2>
+        <h2 class="section-title">7. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先理解项目脉络</h3><p>先读 <a href="../resources/train/MimicKit/MimicKit.md" target="_blank" rel="noopener noreferrer">MimicKit.md</a>，知道 DeepMimic、AMP、ASE、ADD 这条线是怎么演化的。</p></article>
+          <article class="simple-card"><h3>再看核心机制</h3><p>接着读 <a href="../resources/train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md" target="_blank" rel="noopener noreferrer">Actor-Critic-Disc 网络详解</a> 和 <a href="../resources/train/MimicKit/MimicKit 05 DeepMimic.md" target="_blank" rel="noopener noreferrer">DeepMimic 公式详解</a>，把“先模仿、再强化”的机制真正吃透。</p></article>
+          <article class="simple-card"><h3>最后接到数据与系统</h3><p>再看 <a href="retargeting-pipeline.html">Retargeting Pipeline</a> 和 <a href="sim2real-pipeline.html">Sim2Real Pipeline</a>，理解为什么 demonstration 质量和部署系统会一起决定上限。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">8. 一句话总结</h2>
         <div class="simple-card">
           <p>RL 和 IL 不是竞争关系，而是互补关系。IL 提供行为先验和数据效率，RL 提供泛化能力和超越演示的可能性。最强的人形系统，往往是把两者按层次组合起来。</p>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section">
       <div class="container">
         <h2 class="section-title">关联入口</h2>
         <div class="card-grid">
@@ -128,6 +139,7 @@
           <article class="card"><h3>Actor-Critic-Disc 网络详解</h3><p>详细拆解 MimicKit 中 PPOModel、AMPModel、ASEModel 的继承关系和网络结构，是理解 IL + RL 融合的代码级入口。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md" target="_blank" rel="noopener noreferrer">MimicKIt 04 Actor_Critic_Disc 网络结构详解</a></p></article>
           <article class="card"><h3>DeepMimic 公式详解</h3><p>把 DeepMimic 里的 RL 数学框架讲清楚，是理解“先模仿、再强化”路线的关键材料。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 05 DeepMimic.md" target="_blank" rel="noopener noreferrer">MimicKit 05 DeepMimic</a></p></article>
           <article class="card"><h3>MimicKit 总览</h3><p>从 DeepMimic、AMP、ASE 到 ADD 的演化脉络，帮助理解为什么真实系统会同时用到 IL 和 RL。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit.md" target="_blank" rel="noopener noreferrer">MimicKit.md</a></p></article>
+          <article class="card"><h3>训练循环解析</h3><p>如果你想理解 IL + RL 混合系统怎么真正跑起来，这篇能把采样、测试、日志和 checkpoint 串到一起。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 06 def train_model(self, max_samples, out_dir, save_int_models, logger_type).md" target="_blank" rel="noopener noreferrer">MimicKit 06 def train_model(...)</a></p></article>
           <article class="card"><h3><a href="retargeting-pipeline.html">Motion Retargeting Pipeline</a></h3><p>人形机器人 IL 里，数据从哪来、怎么处理，是关键的 pipeline 问题。</p></article>
         </div>
       </div>

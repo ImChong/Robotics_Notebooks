@@ -152,9 +152,11 @@
           <article class="card"><h3>理论课程</h3><p>Underactuated Robotics、Robot Dynamics、Optimal Control 等理论主线课程。</p></article>
           <article class="card"><h3>工具</h3><p>Pinocchio、MuJoCo、Isaac Lab / Isaac Gym、Drake 等工具适合做最小闭环实验。</p></article>
           <article class="card"><h3>论文方向</h3><p>WBC、TSID、Centroidal Dynamics、Humanoid Locomotion、State Estimation、Learning-based Control。</p></article>
+          <article class="card"><h3>Theory 总入口</h3><p>项目内理论课程索引，适合先看课程全貌，再决定先补哪条主线。</p><p class="card-meta"><a href="../resources/theory/Theory.md" target="_blank" rel="noopener noreferrer">Theory.md</a></p></article>
           <article class="card"><h3>Optimal Control 课程笔记</h3><p>CMU 16-745 课程学习记录，覆盖 Equilibria、Stability、MPC、Trajectory Optimization、Legged Robots 等主线。</p><p class="card-meta"><a href="../resources/theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md" target="_blank" rel="noopener noreferrer">00 - Optimal Control</a> · <a href="../resources/theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md" target="_blank" rel="noopener noreferrer">01 - Intro and Dynamics Review</a> · <a href="../resources/theory/Optimal Control (CMU 16-745) 2025/01-1 - Pendulum Example.md" target="_blank" rel="noopener noreferrer">01-1 - Pendulum Example</a></p></article>
           <article class="card"><h3>Robot Dynamics 课程笔记</h3><p>机器人动力学课程学习记录，适合补充浮动基动力学、正逆动力学和动力学建模直觉。</p><p class="card-meta"><a href="../resources/theory/Robot Dynamics 2022/00 - Robot Dynamics.md" target="_blank" rel="noopener noreferrer">00 - Robot Dynamics</a></p></article>
           <article class="card"><h3>Underactuated Robotics 课程笔记</h3><p>MIT Underactuated Robotics 课程记录，特别适合补 locomotion、平衡和欠驱动系统思维。</p><p class="card-meta"><a href="../resources/theory/Underactuated Robotics, Spring 2024/00 - Underactuated Robotics.md" target="_blank" rel="noopener noreferrer">00 - Underactuated Robotics</a> · <a href="../resources/theory/Underactuated Robotics, Spring 2024/01 - Robot dynamics and model-based control.md" target="_blank" rel="noopener noreferrer">01 - Robot dynamics and model-based control</a></p></article>
+          <article class="card"><h3>Robotic Manipulation 课程笔记</h3><p>虽然更偏操作，但对刚体运动、接触、抓取与控制建模也有帮助，适合做横向补充。</p><p class="card-meta"><a href="../resources/theory/Robotic Manipulation, Fall 2023/00 - Robotic Manipulation.md" target="_blank" rel="noopener noreferrer">00 - Robotic Manipulation</a></p></article>
           <article class="card"><h3>人形机器人运动控制 Know-How</h3><p>从发展趋势、学习路线到 Sim2Real 问题，整理了人形机器人控制的核心解决思路。</p><p class="card-meta"><a href="../resources/knowhow/人形机器人运动控制Know-How.md" target="_blank" rel="noopener noreferrer">人形机器人运动控制Know-How</a></p></article>
         </div>
       </div>
@@ -173,7 +175,18 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">11. 一句话总结</h2>
+        <h2 class="section-title">11. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先打骨架</h3><p>先看 <a href="../resources/theory/Robot Dynamics 2022/00 - Robot Dynamics.md" target="_blank" rel="noopener noreferrer">Robot Dynamics</a> 和 <a href="../resources/theory/Underactuated Robotics, Spring 2024/00 - Underactuated Robotics.md" target="_blank" rel="noopener noreferrer">Underactuated Robotics</a>，把动力学、欠驱动、平衡这些基本语言建立起来。</p></article>
+          <article class="simple-card"><h3>再补控制与优化</h3><p>接着看 <a href="../resources/theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md" target="_blank" rel="noopener noreferrer">Optimal Control</a> 和 <a href="../resources/theory/Optimal Control (CMU 16-745) 2025/01 - Intro and Dynamics Review.md" target="_blank" rel="noopener noreferrer">Intro and Dynamics Review</a>，把建模、稳定性、MPC 和轨迹优化接到控制语境里。</p></article>
+          <article class="simple-card"><h3>最后进入工程语境</h3><p>再看 <a href="../resources/knowhow/人形机器人运动控制Know-How.md" target="_blank" rel="noopener noreferrer">人形机器人运动控制 Know-How</a>，然后跳到 <a href="../relations/wbc-vs-rl.html">WBC vs RL</a> 和 <a href="../relations/sim2real-pipeline.html">Sim2Real Pipeline</a>，把理论和人形系统问题连起来。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">12. 一句话总结</h2>
         <div class="simple-card">
           <p>运动控制是把“机器人会动”真正变成“机器人能稳定、可解释、可部署地动”的核心骨架。</p>
         </div>

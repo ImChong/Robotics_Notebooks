@@ -148,6 +148,7 @@
           <article class="card"><h3>Simulator 笔记</h3><p>仿真器选型对比与实践记录，适合补仿真器差异和工作流选择。</p><p class="card-meta"><a href="../resources/train/Simulator.md" target="_blank" rel="noopener noreferrer">Simulator.md</a></p></article>
           <article class="card"><h3>Train 总览</h3><p>训练相关资源入口，适合从训练主线回看项目内已有沉淀。</p><p class="card-meta"><a href="../resources/train/Train.md" target="_blank" rel="noopener noreferrer">Train.md</a></p></article>
           <article class="card"><h3>MimicKit 训练循环解析</h3><p>逐步解析 `train_model(self, max_samples, out_dir, save_int_models, logger_type)`，适合理解 sample collection、test_model、log、checkpoint 等训练循环细节。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 06 def train_model(self, max_samples, out_dir, save_int_models, logger_type).md" target="_blank" rel="noopener noreferrer">MimicKit 06 def train_model(...)</a></p></article>
+          <article class="card"><h3>Actor-Critic-Disc 网络详解</h3><p>从 PPOModel、AMPModel、ASEModel 的继承关系出发，理解 IL + RL 混合训练里策略网络是如何组织的。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md" target="_blank" rel="noopener noreferrer">MimicKIt 04 Actor_Critic_Disc</a></p></article>
         </div>
       </div>
     </section>
@@ -165,7 +166,18 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">11. 一句话总结</h2>
+        <h2 class="section-title">11. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先把训练系统看顺</h3><p>先看 <a href="../resources/train/Train.md" target="_blank" rel="noopener noreferrer">Train.md</a> 和 <a href="../resources/train/IsaacGym.md" target="_blank" rel="noopener noreferrer">IsaacGym.md</a>，把环境、并行仿真、控制接口和训练工作流串起来。</p></article>
+          <article class="simple-card"><h3>再补仿真与部署差异</h3><p>接着看 <a href="../resources/train/Simulator.md" target="_blank" rel="noopener noreferrer">Simulator.md</a>，然后跳到 <a href="../relations/sim2real-pipeline.html">Sim2Real Pipeline</a>，理解为什么机器人 RL 的难点常常不在算法名，而在系统 gap。</p></article>
+          <article class="simple-card"><h3>最后进入 IL + RL 混合路线</h3><p>再看 <a href="../resources/train/MimicKit/MimicKIt 04 Actor_Critic_Disc 网络结构详解.md" target="_blank" rel="noopener noreferrer">Actor-Critic-Disc 网络详解</a> 和 <a href="../resources/train/MimicKit/MimicKit 06 def train_model(self, max_samples, out_dir, save_int_models, logger_type).md" target="_blank" rel="noopener noreferrer">训练循环解析</a>，然后跳到 <a href="../relations/rl-vs-il.html">RL vs IL</a>。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">12. 一句话总结</h2>
         <div class="simple-card">
           <p>机器人强化学习的核心，不只是学出一个能动的策略，而是学出一个能在复杂系统里稳定、鲁棒、可迁移地工作的控制能力。</p>
         </div>

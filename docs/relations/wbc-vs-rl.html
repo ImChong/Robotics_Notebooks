@@ -102,20 +102,32 @@
 
     <section class="section section-alt">
       <div class="container">
-        <h2 class="section-title">6. 一句话总结</h2>
-        <div class="simple-card">
-          <p>WBC 和 RL 不是对手关系，而是互补关系。理解它们各自的能力边界，并在系统层面组合使用，才是人形机器人运动控制的真实方向。</p>
+        <h2 class="section-title">6. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先把控制语境打牢</h3><p>先读 <a href="../modules/motion-control.html">运动控制总览</a>，再补 <a href="../resources/theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md" target="_blank" rel="noopener noreferrer">Optimal Control</a>，别一上来就把 WBC 和 RL 当成路线之争。</p></article>
+          <article class="simple-card"><h3>再看工程经验</h3><p>接着看 <a href="../resources/knowhow/人形机器人运动控制Know-How.md" target="_blank" rel="noopener noreferrer">人形机器人运动控制 Know-How</a>，理解真系统里为什么融合方案更常见。</p></article>
+          <article class="simple-card"><h3>最后接到部署问题</h3><p>再跳到 <a href="sim2real-pipeline.html">Sim2Real Pipeline</a> 和 <a href="../modules/reinforcement-learning.html">机器人强化学习总览</a>，把策略训练、控制约束和真机部署串成一条线。</p></article>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
+        <h2 class="section-title">7. 一句话总结</h2>
+        <div class="simple-card">
+          <p>WBC 和 RL 不是对手关系，而是互补关系。理解它们各自的能力边界，并在系统层面组合使用，才是人形机器人运动控制的真实方向。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
         <h2 class="section-title">关联入口</h2>
         <div class="card-grid">
           <article class="card"><h3><a href="../modules/motion-control.html">运动控制总览</a></h3><p>WBC 是运动控制模块的核心方法之一。</p></article>
           <article class="card"><h3><a href="../modules/reinforcement-learning.html">机器人强化学习总览</a></h3><p>RL 是人形机器人运动控制的另一条主线。</p></article>
           <article class="card"><h3><a href="sim2real-pipeline.html">Sim2Real Pipeline</a></h3><p>RL 在人形机器人上能否部署，sim2real 是关键环节。</p></article>
+          <article class="card"><h3>Optimal Control 课程笔记</h3><p>如果你想从控制和优化视角理解 WBC 这类方法，这门课是比直接跳论文更稳的入口。</p><p class="card-meta"><a href="../resources/theory/Optimal Control (CMU 16-745) 2025/00 - Optimal Control.md" target="_blank" rel="noopener noreferrer">00 - Optimal Control</a></p></article>
           <article class="card"><h3>人形机器人运动控制 Know-How</h3><p>从建模求解到 Sim2Real，从传统控制到深度强化学习，整理了人形机器人运动控制的核心解决思路。</p><p class="card-meta"><a href="../resources/knowhow/人形机器人运动控制Know-How.md" target="_blank" rel="noopener noreferrer">人形机器人运动控制Know-How</a></p></article>
         </div>
       </div>

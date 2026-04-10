@@ -147,6 +147,7 @@
           <article class="card"><h3>MimicKit 总览</h3><p>DeepMimic → AMP → ASE → ADD 的 MimicKit 代码仓学习记录，总览整个项目脉络。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit.md" target="_blank" rel="noopener noreferrer">MimicKit.md</a></p></article>
           <article class="card"><h3>MimicKit UML 流程图</h3><p>通过顺序图和 Mermaid 图示，把 MimicKit 从 run.py 到 agent / env 构建的执行链条梳清楚。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md" target="_blank" rel="noopener noreferrer">MimicKit 02 关键流程 UML 图</a></p></article>
           <article class="card"><h3>DeepMimic 公式详解</h3><p>把《DeepMimic》论文中的期望回报、轨迹分布、策略梯度和优势函数公式展开解释。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 05 DeepMimic.md" target="_blank" rel="noopener noreferrer">MimicKit 05 DeepMimic</a></p></article>
+          <article class="card"><h3>view_motion_humanoid_args 解析</h3><p>从参考动作可视化和数据参数入手，适合第一次真正进入 motion imitation / retargeting 代码语境。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 01 view_motion_humanoid_args.txt.md" target="_blank" rel="noopener noreferrer">MimicKit 01 view_motion_humanoid_args.txt</a></p></article>
           <article class="card"><h3>MimicKit 学习计划</h3><p>按 3 周学习节奏组织的代码仓学习计划，以及每天半小时的快速上手建议，适合把 IL 学习落到具体代码阅读路径上。</p><p class="card-meta"><a href="../resources/train/MimicKit/MimicKit 00 代码仓学习计划（每天30分钟）.md" target="_blank" rel="noopener noreferrer">MimicKit 00 学习计划</a> · <a href="../resources/train/MimicKit/MimicKit 00 每天30分钟的学习建议.md" target="_blank" rel="noopener noreferrer">每天30分钟建议</a></p></article>
         </div>
       </div>
@@ -165,7 +166,18 @@
 
     <section class="section">
       <div class="container">
-        <h2 class="section-title">11. 一句话总结</h2>
+        <h2 class="section-title">11. 建议下一步阅读顺序</h2>
+        <div class="route-list">
+          <article class="simple-card"><h3>先看项目脉络</h3><p>先看 <a href="../resources/train/MimicKit/MimicKit.md" target="_blank" rel="noopener noreferrer">MimicKit.md</a> 和 <a href="../resources/train/MimicKit/MimicKit 00 代码仓学习计划（每天30分钟）.md" target="_blank" rel="noopener noreferrer">学习计划</a>，知道自己该先读哪里，不然很容易一头扎进代码细节。</p></article>
+          <article class="simple-card"><h3>再进入数据与流程</h3><p>接着看 <a href="../resources/train/MimicKit/MimicKit 01 view_motion_humanoid_args.txt.md" target="_blank" rel="noopener noreferrer">view_motion_humanoid_args 解析</a> 和 <a href="../resources/train/MimicKit/MimicKit 02 关键流程 UML 图.md" target="_blank" rel="noopener noreferrer">关键流程 UML 图</a>，把参考动作、环境构建和 agent 流程真正串起来。</p></article>
+          <article class="simple-card"><h3>最后理解“先模仿再强化”</h3><p>再看 <a href="../resources/train/MimicKit/MimicKit 05 DeepMimic.md" target="_blank" rel="noopener noreferrer">DeepMimic 公式详解</a>，然后跳到 <a href="../relations/retargeting-pipeline.html">Retargeting Pipeline</a> 和 <a href="../relations/rl-vs-il.html">RL vs IL</a>，把数据、训练和策略组合逻辑接起来。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container">
+        <h2 class="section-title">12. 一句话总结</h2>
         <div class="simple-card">
           <p>机器人模仿学习的关键，是把“示范看起来很强”真正变成“机器人能稳定复现、还能泛化扩展”的控制能力。</p>
         </div>
