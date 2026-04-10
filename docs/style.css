@@ -253,11 +253,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     white-space: nowrap;
   }
   .theme-toggle {
-    min-width: 52px;
-    height: 34px;
-    padding: 0 8px;
+    min-width: 44px;
+    height: 30px;
+    padding: 0 6px;
     border-radius: 8px;
     flex-shrink: 0;
+    font-size: 0.88rem;
   }
   .hero-grid, .card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
