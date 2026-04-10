@@ -223,7 +223,13 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .toc-card { padding: 18px 20px; }
 .toc-card ul { padding-left: 18px; }
 .toc-card li + li { margin-top: 6px; }
-.footer { border-top: 1px solid var(--border); padding: 30px 0 50px; color: var(--text-muted); font-size: .88rem; }
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 0 50px;
+  color: var(--text-muted);
+  font-size: .88rem;
+  text-align: center;
+}
 
 @media (max-width: 860px) {
   .header-inner {
