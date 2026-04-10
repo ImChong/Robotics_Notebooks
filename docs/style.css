@@ -263,12 +263,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
     white-space: nowrap;
   }
   .theme-toggle {
-    min-width: 44px;
-    height: 30px;
-    padding: 0 6px;
-    border-radius: 8px;
+    min-width: 38px;
+    height: 27px;
+    padding: 0 5px;
+    border-radius: 7px;
     flex-shrink: 0;
-    font-size: 0.88rem;
+    font-size: 0.85rem;
   }
   .hero {
     padding: 28px 0 28px;
