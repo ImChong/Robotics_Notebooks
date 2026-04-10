@@ -95,6 +95,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   margin-left: auto;
 }
 .github-link {
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  padding: 0 2px;
   font-size: 0.85rem;
   color: var(--text-muted);
   text-decoration: none;
@@ -218,7 +222,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .simple-card ul { margin-top: 8px; padding-left: 18px; }
 .simple-card li + li { margin-top: 6px; }
 .page-hero { padding: 70px 0 18px; }
-.page-hero h1 { font-size: 2.3rem; margin-bottom: 12px; letter-spacing: -.03em; }
+.page-hero h1 {
+  font-size: 2.3rem;
+  margin-bottom: 12px;
+  letter-spacing: -.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
 .page-hero p { color: var(--text-muted); max-width: 76ch; font-size: .98rem; }
 .page-subnav-wrap {
   padding: 0 0 24px;
