@@ -148,6 +148,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 实现第一版最小导出脚本并批量导出核心页面
 - [x] 将 `tech-map` 节点正式纳入导出层
 - [x] 优化第一版导出质量（summary / tags / related）
+- [x] 定义网页消费层字段设计
 
 ## 我建议的实际执行顺序
 1. 先看 `references/` 现状
@@ -247,7 +248,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已实现 `scripts/export_minimal.py`，并生成 `exports/index-v1.json`，当前可批量导出核心 markdown 页面为结构化数据。
 - 2026-04-11：已将 `tech-map` 正式纳入导出层，当前 `index-v1.json` 共导出 63 个对象，其中包含 18 个 `tech_map_node`。
 - 2026-04-11：已优化第一版导出质量，当前 `summary` 优先取定义句，`tags` 从标题+路径扩展到正文线索，`related` 优先提取“关联页面 / 继续深挖入口 / 关联任务”区块，再补一般显式链接。
-- 下一步建议：开始定义网页消费层该如何读取 `index-v1.json`，或者补一层针对前端的聚合导出格式。
+- 2026-04-11：已建立 `exports/web-consumption-v1.md`，定义网页消费层的 5 类页面（`home_page`、`module_page`、`roadmap_page`、`tech_map_page`、`detail_page`）以及它们如何从 `exports/index-v1.json` 取字段。
+- 下一步建议：开始定义最小网页信息架构，或者补一层针对前端的聚合导出格式。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
