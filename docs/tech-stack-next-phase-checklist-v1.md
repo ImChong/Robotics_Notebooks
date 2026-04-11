@@ -30,7 +30,7 @@
 - [x] 补 `TSID`
 - [x] 补 `State Estimation`（面向运动控制）
 - [x] 补 `System Identification`（面向 sim2real）
-- [ ] 补 `Trajectory Optimization`
+- [x] 补 `Trajectory Optimization`
 
 完成标准：
 - 每页都有：一句话定义、为什么重要、核心公式/概念、在机器人里的作用、和已有页面的关联跳转
@@ -131,7 +131,7 @@
 - [x] 产出 `TSID` 页面
 - [x] 产出 `State Estimation` 页面
 - [x] 产出 `System Identification` 页面
-- [ ] 产出 `Trajectory Optimization` 页面
+- [x] 产出 `Trajectory Optimization` 页面
 - [ ] 更新 `tech-map/overview.md`
 - [ ] 更新 `tech-map/dependency-graph.md`
 - [ ] 更新 `roadmap/route-a-motion-control.md`
@@ -146,12 +146,13 @@
 - 2026-04-11：已新增 `wiki/concepts/tsid.md`，并同步更新 `index.md` 索引。
 - 2026-04-11：已新增 `wiki/concepts/state-estimation.md`，并同步更新 `index.md` 索引。
 - 2026-04-11：已新增 `wiki/concepts/system-identification.md`，并同步更新 `index.md` 索引。
-- 下一步建议继续补 `Trajectory Optimization`，把“规划问题怎么写成优化问题”这层也补齐。
+- 2026-04-11：已新增 `wiki/methods/trajectory-optimization.md`，并同步更新 `index.md` 索引。
+- P0 主干 wiki / methods 页面已补齐，下一阶段应切换到结构联动与入口优化。
 
 ## 维护规则
 以后我会优先更新这个文件，而不是把方向散落在聊天里。
 每次你让我继续推进 `Robotics_Notebooks`，我会默认先看并更新这份清单，再执行具体工作。
-README 已加入这个文件的固定入口，后续我们就一起维护它，用它作为项目下一阶段方向和待办的统一看板。
+README 已加入当前执行清单的固定入口；从本次开始，默认以 v2 版本作为主执行看板。
 
 ## 状态约定
 - `[ ]` 未开始

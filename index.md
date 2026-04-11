@@ -66,6 +66,7 @@
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
+- [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
 
 ### Tasks
 - [Locomotion](wiki/tasks/locomotion.md)
