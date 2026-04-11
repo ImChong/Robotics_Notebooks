@@ -242,6 +242,18 @@ Trajectory Optimization 给出参考轨迹，TSID / WBC 负责把这些参考真
 - 控制可跟踪性
 - 对扰动的鲁棒性
 
+## 继续深挖入口
+
+如果你想沿着 trajectory optimization 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Survey Papers](../../references/papers/survey-papers.md)
+- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)
+
+### 工具 / Repo 入口
+- [Utilities](../../references/repos/utilities.md)
+- [Humanoid Projects](../../references/repos/humanoid-projects.md)
+
 ## 推荐继续阅读
 
 - Tedrake, *Underactuated Robotics*（trajectory optimization 章节）

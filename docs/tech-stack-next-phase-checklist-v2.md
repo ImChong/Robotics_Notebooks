@@ -230,7 +230,9 @@ State Estimation / System Identification / Sim2Real
 - 当前阶段判断已更新：下一步应从“继续补概念”切换到“建立 references / sources / wiki 的三层联动”。
 - 2026-04-11：已完成对 `references/` 与 `sources/` 现状的审视，并明确三层职责边界：`sources/` 负责原始输入，`references/` 负责继续深挖入口，`wiki/` 负责结构化知识主线。
 - 2026-04-11：已为第一批主线页补“继续深挖入口”，当前覆盖 `Locomotion`、`Sim2Real`、`Reinforcement Learning`、`Whole-Body Control`、`Isaac Gym / Isaac Lab`、`MuJoCo`。
-- 下一步建议：继续为 `Centroidal Dynamics`、`TSID`、`Trajectory Optimization`、`System Identification` 等主线页补 references 入口，并逐步让 references 目录本身也更可导航。
+- 2026-04-11：已为第二批主线页补“继续深挖入口”，当前新增覆盖 `Centroidal Dynamics`、`TSID`、`Trajectory Optimization`、`System Identification`。
+- 当前主线的大部分关键页已经能顺着跳到 references / repos / benchmarks。
+- 下一步建议：开始让 `references/` 目录本身更可导航，例如补 README / 分类入口 / 模块映射页，而不是只在 wiki 侧单向链接过去。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

@@ -267,6 +267,17 @@ MPC 负责规划未来参考，TSID 负责在每个控制周期把这些参考�
 
 见：[Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 
+## 继续深挖入口
+
+如果你想沿着 TSID 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)
+
+### 工具 / Repo 入口
+- [Utilities](../../references/repos/utilities.md)
+- [Humanoid Projects](../../references/repos/humanoid-projects.md)
+
 ## 推荐继续阅读
 
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: “Task Space Inverse Dynamics”*
