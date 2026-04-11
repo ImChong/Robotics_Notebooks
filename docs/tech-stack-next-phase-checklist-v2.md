@@ -142,7 +142,7 @@ State Estimation / System Identification / Sim2Real
 - [~] 为当前控制主线建立 references 入口
 - [~] 为当前工具实体页建立 docs / repo / project 入口
 - [~] 提升 `references/` 目录自身的总入口可导航性
-- [ ] 设计导出层最小 schema 草案
+- [x] 设计导出层最小 schema 草案
 
 ## 我建议的实际执行顺序
 1. 先看 `references/` 现状
@@ -236,7 +236,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已重写 `references/README.md`，从目录说明升级为 references 总入口页（快速入口 / 三个子目录职责 / 主线深挖入口 / 和 wiki / sources 的边界）。
 - 2026-04-11：已重写 `references/papers/README.md`、`references/repos/README.md`、`references/benchmarks/README.md`，让 references 三个子目录都具备“适合谁看 / 快速入口 / 主线对应关系”。
 - 当前 `references/` 已从目录树升级为初步可导航层。
-- 下一步建议：开始补 `sources/` 这侧的状态感与提炼感，或者直接推进导出层 schema 草案。
+- 2026-04-11：已建立 `exports/minimal-schema-v1.md`，定义当前阶段最小可用导出层 schema，覆盖 `wiki_page`、`roadmap_page`、`entity_page`、`reference_page`、`tech_map_node` 五类对象。
+- 下一步建议：开始为现有页面补最小可导出元信息规则，并明确 `id / tags / related` 的生成策略。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
