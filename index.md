@@ -35,6 +35,7 @@
 - [System Identification](wiki/concepts/system-identification.md)
 - [Floating Base Dynamics](wiki/concepts/floating-base-dynamics.md)
 - [Contact Dynamics](wiki/concepts/contact-dynamics.md)
+- [Capture Point / DCM](wiki/concepts/capture-point-dcm.md)
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)

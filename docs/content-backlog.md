@@ -41,7 +41,7 @@
 | ~~`Contact Dynamics`~~ ✅ | `wiki/concepts/contact-dynamics.md` | 已完成：接触力学基础，locomotion 关键 |
 | `Gait Generation` | wiki/tasks/ | 步态生成方法，和 LIP/MPC 强相关 |
 | `LQR / iLQR` | wiki/methods/ | 经典控制方法，MPC 的基础 |
-| `Capture Point / DCM` | wiki/concepts/ | 比 ZMP 更适合高动态的稳定性指标 |
+| ~~`Capture Point / DCM`~~ ✅ | `wiki/concepts/capture-point-dcm.md` | 已完成：比 ZMP 更适合高动态的稳定性指标 |
 
 ---
 
@@ -120,4 +120,4 @@
 - [x] Pinocchio 页面
 - [x] Floating Base Dynamics 页面
 - [x] Contact Dynamics 页面
-- [ ] Capture Point / DCM 页面
+- [x] Capture Point / DCM 页面
