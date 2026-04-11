@@ -71,3 +71,15 @@
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
+
+## 继续深挖入口
+
+如果你想沿着 RL 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
+- [Survey Papers](../../references/papers/survey-papers.md)
+
+### 开源框架入口
+- [RL Frameworks](../../references/repos/rl-frameworks.md)
+- [Simulation](../../references/repos/simulation.md)

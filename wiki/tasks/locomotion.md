@@ -59,3 +59,17 @@
 ## 关联任务
 
 - [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
+
+## 继续深挖入口
+
+如果你想沿着 locomotion 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
+
+### Benchmark 入口
+- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)
+
+### 开源项目 / 框架入口
+- [RL Frameworks](../../references/repos/rl-frameworks.md)
+- [Simulation](../../references/repos/simulation.md)

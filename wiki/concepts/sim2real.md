@@ -67,6 +67,17 @@
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 
+## 继续深挖入口
+
+如果你想沿着 sim2real 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Sim2Real 论文导航](../../references/papers/sim2real.md)
+
+### 仿真 / 平台入口
+- [Simulation](../../references/repos/simulation.md)
+- [RL Frameworks](../../references/repos/rl-frameworks.md)
+
 ## 推荐继续阅读
 
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)

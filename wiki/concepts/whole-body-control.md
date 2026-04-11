@@ -74,6 +74,16 @@ WBC 的优势：
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
 
+## 继续深挖入口
+
+如果你想沿着 WBC 继续往下挖，建议从这里进入：
+
+### 论文入口
+- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)
+
+### 工具 / Repo 入口
+- [Utilities / Tooling](../../references/repos/utilities.md)
+
 ## 推荐继续阅读
 
 - [ATOM01-Train](https://github.com/Roboparty/atom01_train)

@@ -139,8 +139,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 审视 `references/` 当前结构
 - [x] 审视 `sources/` 当前结构
 - [x] 明确 references / sources / wiki 三层职责边界
-- [ ] 为当前控制主线建立 references 入口
-- [ ] 为当前工具实体页建立 docs / repo / project 入口
+- [~] 为当前控制主线建立 references 入口
+- [~] 为当前工具实体页建立 docs / repo / project 入口
 - [ ] 设计导出层最小 schema 草案
 
 ## 我建议的实际执行顺序
@@ -229,7 +229,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已补齐第一批关键缺失概念页：Floating Base Dynamics、Contact Dynamics、Capture Point / DCM。
 - 当前阶段判断已更新：下一步应从“继续补概念”切换到“建立 references / sources / wiki 的三层联动”。
 - 2026-04-11：已完成对 `references/` 与 `sources/` 现状的审视，并明确三层职责边界：`sources/` 负责原始输入，`references/` 负责继续深挖入口，`wiki/` 负责结构化知识主线。
-- 下一步建议：优先为当前控制主线补 references 入口，让用户从核心概念页能直接顺着进入论文 / repo / benchmark。 
+- 2026-04-11：已为第一批主线页补“继续深挖入口”，当前覆盖 `Locomotion`、`Sim2Real`、`Reinforcement Learning`、`Whole-Body Control`、`Isaac Gym / Isaac Lab`、`MuJoCo`。
+- 下一步建议：继续为 `Centroidal Dynamics`、`TSID`、`Trajectory Optimization`、`System Identification` 等主线页补 references 入口，并逐步让 references 目录本身也更可导航。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

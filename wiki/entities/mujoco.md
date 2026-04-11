@@ -206,6 +206,14 @@ MuJoCo 不只是拿来做 model-free RL，也很适合控制和优化实验。
 - MuJoCo 特别适合做 dynamics-based baseline
 - 拿来做 MPC / trajectory optimization / system identification 验证很顺手
 
+## 继续深挖入口
+
+如果你想沿着仿真平台继续往下挖，建议从这里进入：
+
+### Repo / 平台入口
+- [Simulation](../../references/repos/simulation.md)
+- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)
+
 ## 推荐继续阅读
 
 - MuJoCo 官网：<https://mujoco.org/>

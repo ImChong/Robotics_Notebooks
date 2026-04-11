@@ -206,6 +206,14 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - 直接优先 Isaac Lab
 - 把 Gym 当成旧基线和历史语境
 
+## 继续深挖入口
+
+如果你想沿着仿真与训练平台继续往下挖，建议从这里进入：
+
+### Repo / 平台入口
+- [Simulation](../../references/repos/simulation.md)
+- [RL Frameworks](../../references/repos/rl-frameworks.md)
+
 ## 推荐继续阅读
 
 - NVIDIA Isaac Gym 页面：<https://developer.nvidia.com/isaac-gym>
