@@ -86,9 +86,9 @@ State Estimation / System Identification / Sim2Real
 目标：让项目首页第一次打开就知道怎么用。
 
 待办：
-- [ ] 重写 README 的“适合谁看 / 怎么使用 / 从哪里开始”
-- [ ] 更新 `index.md`，让它更像总导航页而不是简单索引
-- [ ] 明确 wiki / roadmap / tech-map / references 的边界
+- [x] 重写 README 的“适合谁看 / 怎么使用 / 从哪里开始”
+- [x] 更新 `index.md`，让它更像总导航页而不是简单索引
+- [x] 明确 wiki / roadmap / tech-map / references 的边界
 
 完成标准：
 - 新读者打开 README 和 index，就能迅速找到起点和路径
@@ -159,8 +159,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 更新 `roadmap/route-a-motion-control.md`
 - [x] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
 - [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
-- [ ] 更新 `README.md`
-- [ ] 更新 `index.md`
+- [x] 更新 `README.md`
+- [x] 更新 `index.md`
 - [ ] 建 `docs/content-backlog.md`
 - [ ] 建统一模板规范文件
 
@@ -179,12 +179,14 @@ State Estimation / System Identification / Sim2Real
 - 以后默认维护 v2，不再以 v1 作为主要执行看板
 
 ## 本次推进记录
-- 2026-04-11：已完成 `tech-map/overview.md` 重写，从简单列表升级为“模块总览 + 知识入口 + 当前主攻主线”页面。
-- 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写，从箭头列表升级为“主线依赖 + 分层关系 + 横向桥接 + 推荐阅读顺序”页面。
-- 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写，从空章节升级为完整执行路线。
-- 2026-04-11：已完成 `if-goal-locomotion-rl.md` 和 `if-goal-imitation-learning.md` 两个 learning path 重写，从空列表升级为完整执行路径。
-- V2 P0 第 1、2 项已全部完成。
-- 下一步建议继续推进 V2 P0 第 3 项：升级 README 和 index 为真正入口。
+- 2026-04-11：已完成 `tech-map/overview.md` 重写。
+- 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写。
+- 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写。
+- 2026-04-11：已完成两个 learning path 重写。
+- 2026-04-11：已完成 README 重写为真正入口页（适合谁 / 怎么用 / 从哪开始 / 项目结构 / 当前阶段）。
+- 2026-04-11：已完成 index.md 重写为真正导航页（快速入口表 / 四模块分工 / 推荐阅读顺序 / 主线知识链）。
+- **V2 P0 全部完成。**
+- 下一步切换到 V2 P1：建立模板规范、backlog、content-backlog。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

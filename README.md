@@ -1,86 +1,126 @@
 # Robotics_Notebooks
 
+机器人技术栈知识库 / Robotics research and engineering wiki.
+
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
 
-机器人技术栈知识库 / Robotics research and engineering wiki.
+---
 
-这个项目正在从“资源堆叠式思维导图”重构为一个**面向机器人全栈成长路径的技术栈导航项目**。
+## 适合谁
 
-## 项目定位
+如果你：
+- 想系统学人形机器人运动控制 / 强化学习 / 模仿学习
+- 想有一条能照着走的学习路线，而不是到处找散资源
+- 有一定编程基础（Python / C++）和本科数学基础
 
-- **终极目标：** 全栈机器人工程师
-- **当前切入口：** 机器人运动控制算法工程师
-- **当前重点：** 运动控制、强化学习、模仿学习、人形机器人相关能力
+这个项目是为你设计的。
 
-一句话定位：
+如果你不知道从哪开始，直接看 [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)。
 
-> 面向人形机器人运动控制、强化学习与模仿学习的技术栈地图与学习路线图，最终通向机器人全栈工程能力。
+---
+
+## 这个项目是什么
+
+`Robotics_Notebooks` 是一个**技术栈导航项目**，不是资源收集箱。
+
+它把机器人工程能力的成长路径拆成模块，然后告诉你：
+- 每个模块在解决什么问题
+- 模块之间是什么关系
+- 应该先学什么、再学什么
+- 每一步学完能拿出什么
+
+一句话：
+
+> 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
+
+---
+
+## 这个项目不是什么
+
+- 不是教科书——它不系统讲理论，它告诉你去哪儿找、怎么串
+- 不是笔记堆——它有结构、有依赖关系、有成长路线
+- 不是工具文档——工具在实体页（后续会补）
+
+---
+
+## 从哪里开始
+
+### 如果你是第一次来
+**推荐从这里进入：**
+
+1. [路线A：运动控制算法工程师成长路线](roadmap/route-a-motion-control.md) — 照着走就对了
+
+如果你的目标更具体：
+- [如果想用强化学习做 locomotion](roadmap/learning-paths/if-goal-locomotion-rl.md)
+- [如果想学模仿学习与技能迁移](roadmap/learning-paths/if-goal-imitation-learning.md)
+
+### 如果你想看知识页
+按这条主链读：
+
+```
+LIP / ZMP
+  ↓
+Centroidal Dynamics
+  ↓
+Trajectory Optimization / MPC
+  ↓
+TSID / WBC
+  ↓
+State Estimation / System Identification / Sim2Real
+```
+
+从 [LIP / ZMP](wiki/concepts/lip-zmp.md) 开始即可。
+
+### 如果你想看技术栈地图
+从 [tech-map/overview.md](tech-map/overview.md) 进入。
+
+---
+
+## 项目结构
+
+| 目录 | 是什么 | 用来做什么 |
+|------|--------|-----------|
+| `wiki/` | 结构化知识页 | 核心概念和方法 |
+| `roadmap/` | 成长路线 | 照着走的学习路径 |
+| `tech-map/` | 技术栈地图 | 模块关系与依赖 |
+| `sources/` | 原始资源索引 | 论文 / 课程 / 工具入口 |
+| `references/` | 论文导航 | 按主题整理的论文列表 |
+| `docs/` | 项目文档 | 执行清单 / 变更记录 |
+
+---
+
+## 当前执行清单
+
+项目的下一阶段目标和当前待办，都在这份文件里：
+- [技术栈项目下一阶段执行清单 v2](docs/tech-stack-next-phase-checklist-v2.md)
+
+它不是给读者看的，是给我们一起维护项目方向用的。
+
+---
+
+## 和其他项目的边界
+
+| 项目 | 做什么 |
+|------|--------|
+| [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)（本项目）| 跨模块知识组织、成长路线、技术栈地图 |
+| [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) | 单篇论文深读笔记 |
+| [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io) | 个人简历与对外展示 |
+
+---
+
+## 当前阶段
+
+项目已经完成 V1 的主干知识页搭建，正在推进 V2：**结构联动、入口优化、路线执行化**。
+
+具体进展见 [执行清单 v2](docs/tech-stack-next-phase-checklist-v2.md)。
+
+---
 
 ## 方法说明
 
-本项目的知识组织与迭代方式，参考并借鉴了 Andrej Karpathy 提出的个人知识库/研究组织方法：
+知识组织参考了 Andrej Karpathy 的个人研究系统方法：
 - https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
 
-核心思路不是简单堆资料，而是把原始资源、结构化知识、路线图、依赖关系和可执行入口逐步拆层，形成一个可持续演进的研究与工程知识系统。
-
-## v1 目录结构
-
-- `wiki/`：结构化知识页（核心知识层）
-- `sources/`：原始资料与资源索引
-- `resources/`：课程、训练笔记、know-how 等沉淀资源
-- `roadmap/`：成长路线与阶段导航
-- `tech-map/`：技术栈地图与依赖关系
-- `references/`：论文导航、开源生态、项目索引
-- `docs/homepage-copy-v1.md`：首页文案与导航文案草稿
-- `schema/`：知识库维护规则
-- `exports/`：未来给网页/思维导图导出的数据层
-- `index.md`：知识入口索引
-- `STRUCTURE_v1.md`：项目目录结构蓝图 v1
-- `log.md`：重构变更日志
-
-## 从哪里开始看
-
-### 当前执行清单
-- [技术栈项目下一阶段执行清单 v2](docs/tech-stack-next-phase-checklist-v2.md)
-- [上一版 v1](docs/tech-stack-next-phase-checklist-v1.md)
-
-这份文件是当前项目的**统一执行入口**，用于持续维护：
-- 下一阶段优先级
-- 当前明确待办
-- 最近推进记录
-- 接下来应该做什么
-
-后续默认一起维护 v2 这份文件，用它来决定 `Robotics_Notebooks` 下一步往哪推。
-
-### 结构蓝图
-- [STRUCTURE_v1.md](STRUCTURE_v1.md)
-- [index.md](index.md)
-
-### 知识入口
-- [Robot Learning Overview](wiki/overview/robot-learning-overview.md)
-- [Humanoid Control Roadmap](wiki/roadmaps/humanoid-control-roadmap.md)
-
-### 核心概念 / 方法
-- [Sim2Real](wiki/concepts/sim2real.md)
-- [Whole-Body Control](wiki/concepts/whole-body-control.md)
-- [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
-- [Imitation Learning](wiki/methods/imitation-learning.md)
-- [Locomotion](wiki/tasks/locomotion.md)
-- [Manipulation](wiki/tasks/manipulation.md)
-- [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
-
-## 资源入口
-
-旧版 README 中的大量资源链接已从首页移出，避免继续把 README 堆成资源垃圾场。
-
-请改从这里进入：
-- [sources/README.md](sources/README.md)
-- [旧版 README 资源归档](sources/notes/legacy-readme-resource-map.md)
-
-## 当前状态
-
-- 当前思维导图网页渲染暂时不改
-- 当前重点是先把知识结构、成长路线和模块边界搭对
-- 后续再逐步把 `wiki/`、`roadmap/`、`tech-map/` 导出为网页可消费的数据
+核心思路：不是堆资料，而是把资源、知识、路线、依赖关系分层拆开，形成可持续演进的研究与工程系统。
