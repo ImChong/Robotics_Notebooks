@@ -284,9 +284,135 @@
 
 ---
 
+## id / tags / related 生成规则
+
+这是当前阶段最关键的三条规则。只要这三条定清楚，后面无论是导出 JSON、做网页还是做关系图，都会稳定很多。
+
+### 1. `id` 生成规则
+
+原则：
+- 稳定优先，不要依赖页面标题
+- 直接基于**类型 + 相对路径**生成
+- 保持全小写、连字符风格
+
+推荐规则：
+
+```text
+wiki/concepts/centroidal-dynamics.md
+→ wiki-concepts-centroidal-dynamics
+
+wiki/methods/trajectory-optimization.md
+→ wiki-methods-trajectory-optimization
+
+wiki/entities/mujoco.md
+→ entity-mujoco
+
+roadmap/route-a-motion-control.md
+→ roadmap-route-a-motion-control
+
+references/papers/locomotion-rl.md
+→ reference-papers-locomotion-rl
+
+tech-map/dependency-graph.md 中的节点“Centroidal Dynamics”
+→ tech-node-centroidal-dynamics
+```
+
+#### 规则摘要
+- `wiki/concepts/*` → `wiki-concepts-*`
+- `wiki/methods/*` → `wiki-methods-*`
+- `wiki/tasks/*` → `wiki-tasks-*`
+- `wiki/comparisons/*` → `wiki-comparisons-*`
+- `wiki/overview/*` → `wiki-overview-*`
+- `wiki/entities/*` → `entity-*`
+- `roadmap/*` → `roadmap-*`
+- `references/papers/*` → `reference-papers-*`
+- `references/repos/*` → `reference-repos-*`
+- `references/benchmarks/*` → `reference-benchmarks-*`
+- `tech-map` 中的抽象节点 → `tech-node-*`
+
+### 2. `tags` 生成规则
+
+当前阶段先不做全自动 NLP 标签抽取，避免不稳定。
+
+采用**半规则化生成**：
+
+#### 第一层：目录标签（强规则）
+根据文件目录直接生成：
+- `wiki/concepts/*` → `concept`
+- `wiki/methods/*` → `method`
+- `wiki/tasks/*` → `task`
+- `wiki/comparisons/*` → `comparison`
+- `wiki/entities/*` → `entity`
+- `roadmap/*` → `roadmap`
+- `references/papers/*` → `papers`
+- `references/repos/*` → `repos`
+- `references/benchmarks/*` → `benchmarks`
+
+#### 第二层：主线标签（弱规则）
+根据文件路径名和标题进行人工维护映射：
+- `humanoid`
+- `locomotion`
+- `control`
+- `dynamics`
+- `optimization`
+- `rl`
+- `il`
+- `sim2real`
+- `wbc`
+- `tooling`
+- `hardware`
+
+#### 当前建议
+第一版导出时：
+- 至少保留 1 个目录标签
+- 再补 2–4 个主线标签
+- 总标签数控制在 3–6 个之间
+
+### 3. `related` 生成规则
+
+当前阶段也不做复杂自动图推理，采用**显式链接优先**策略。
+
+#### 优先级 1：页面中的“关联页面”区块
+如果页面末尾有 `关联页面`，直接把这些页面对应的 `id` 放进 `related`。
+
+#### 优先级 2：页面中的“继续深挖入口”区块
+如果页面有 `继续深挖入口`，其中链接到的 references / repos / benchmarks 页面也进入 `related`。
+
+#### 优先级 3：同主题显式互链
+例如：
+- `Centroidal Dynamics` ↔ `TSID`
+- `Locomotion` ↔ `Reinforcement Learning`
+- `MuJoCo` ↔ `Isaac Gym / Isaac Lab`
+
+只要页面正文里有明确链接，也可进入 `related`。
+
+#### 当前不做
+- 不做纯 embedding 相似度生成 related
+- 不做复杂图算法自动补全 related
+- 不做无显式依据的“猜测性关联”
+
+原因：
+- 当前内容还在快速演化
+- 先保证 related 可解释、稳定
+
+## 当前最小落地建议
+
+如果现在就开始做导出脚本，建议第一版规则是：
+
+1. `id`：完全按路径规则生成
+2. `tags`：目录标签 + 少量人工主线标签
+3. `related`：只取显式 markdown 链接（重点取“关联页面”和“继续深挖入口”）
+4. `summary`：优先取“一句话定义”或首段摘要
+
+这样做的好处是：
+- 简单
+- 稳定
+- 可维护
+- 后面容易扩展
+
 ## 推荐下一步
 
 1. 为现有页面补最小可导出的元信息约束（哪怕先是人工规则）
-2. 确定 `id` 命名规则
-3. 确定 tags 和 related 的最小生成策略
-4. 再决定要不要做自动导出脚本
+2. 按本文档规则生成第一版 `id / tags / related`
+3. 再决定是否写自动导出脚本
+4. 最后再考虑是否引入更复杂的自动推理
