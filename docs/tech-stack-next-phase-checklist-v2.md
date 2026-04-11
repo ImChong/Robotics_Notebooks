@@ -249,7 +249,9 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已将 `tech-map` 正式纳入导出层，当前 `index-v1.json` 共导出 63 个对象，其中包含 18 个 `tech_map_node`。
 - 2026-04-11：已优化第一版导出质量，当前 `summary` 优先取定义句，`tags` 从标题+路径扩展到正文线索，`related` 优先提取“关联页面 / 继续深挖入口 / 关联任务”区块，再补一般显式链接。
 - 2026-04-11：已建立 `exports/web-consumption-v1.md`，定义网页消费层的 5 类页面（`home_page`、`module_page`、`roadmap_page`、`tech_map_page`、`detail_page`）以及它们如何从 `exports/index-v1.json` 取字段。
-- 下一步建议：开始定义最小网页信息架构，或者补一层针对前端的聚合导出格式。
+- 2026-04-11：已扩展 `scripts/export_minimal.py`，在对象池 `exports/index-v1.json` 之外新增页面级聚合导出 `exports/site-data-v1.json`。
+- 2026-04-11：`site-data-v1.json` 当前已覆盖首页、6 个模块页、全部路线页、tech-map 页和全量 detail pages，可直接作为前端第一阶段消费层。
+- 下一步建议：开始用 `site-data-v1.json` 验证最小网页首页 / 模块页 / 路线页渲染，而不是再回到继续补散页。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

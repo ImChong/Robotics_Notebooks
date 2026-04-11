@@ -14,6 +14,24 @@
 
 ---
 
+## 2026-04-11 — 页面级聚合导出推进
+
+### 完成内容
+
+**导出层从对象级推进到页面级**
+- 扩展 `scripts/export_minimal.py`，让它在生成 `exports/index-v1.json` 之外，同时生成 `exports/site-data-v1.json`
+- 新增 `site-data-v1.json` 的 5 类页面聚合结果：`home_page`、`module_pages`、`roadmap_pages`、`tech_map_page`、`detail_pages`
+- 当前首页聚合已包含：hero、quick entries、featured chain、featured modules
+- 当前模块页聚合已覆盖：`control`、`rl`、`il`、`sim2real`、`locomotion`、`tooling`
+- 当前路线页、tech-map 页和 detail pages 已可直接被前端按页面类型消费
+
+### 项目阶段变化
+
+- 导出层从“对象 schema + 对象池导出”推进到“页面消费层聚合导出”
+- 下一步可以直接进入最小网页渲染验证，而不是回到继续补散页
+
+---
+
 ## 2026-04-11 — V2 阶段第二次推进
 
 ### 完成内容

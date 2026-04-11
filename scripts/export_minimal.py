@@ -8,6 +8,7 @@ from typing import Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
+SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
 
 TAG_HINTS = {
     "humanoid": ["humanoid", "unitree"],
@@ -292,6 +293,196 @@ def collect_paths() -> List[Path]:
     return [p for p in paths if p.name != "README.md"]
 
 
+def sort_items(items: List[Dict]) -> List[Dict]:
+    return sorted(items, key=lambda item: (item.get("title", ""), item.get("path", "")))
+
+
+def pick_existing(ids: List[str], item_map: Dict[str, Dict]) -> List[str]:
+    seen = set()
+    out = []
+    for item_id in ids:
+        if item_id in item_map and item_id not in seen:
+            seen.add(item_id)
+            out.append(item_id)
+    return out
+
+
+def build_module_page(module_id: str, title: str, summary: str, tag: str, related_modules: List[str], item_map: Dict[str, Dict]) -> Dict:
+    entry_items = sort_items([
+        item for item in item_map.values()
+        if item.get("type") in {"wiki_page", "entity_page"} and tag in item.get("tags", [])
+    ])
+    references = sort_items([
+        item for item in item_map.values()
+        if item.get("type") == "reference_page" and tag in item.get("tags", [])
+    ])
+    roadmaps = sort_items([
+        item for item in item_map.values()
+        if item.get("type") == "roadmap_page" and tag in item.get("tags", [])
+    ])
+    return {
+        "module_id": module_id,
+        "title": title,
+        "summary": summary,
+        "tag": tag,
+        "entry_items": [item["id"] for item in entry_items[:12]],
+        "references": [item["id"] for item in references[:8]],
+        "roadmaps": [item["id"] for item in roadmaps[:6]],
+        "related_modules": related_modules,
+    }
+
+
+def build_site_data(items: List[Dict]) -> Dict:
+    item_map = {item["id"]: item for item in items}
+
+    module_specs = [
+        {
+            "module_id": "control",
+            "title": "控制与优化主链",
+            "summary": "从 LIP / ZMP、Centroidal Dynamics 到 MPC、TSID、WBC 的控制主干。",
+            "tag": "control",
+            "related_modules": ["locomotion", "sim2real", "rl"],
+        },
+        {
+            "module_id": "rl",
+            "title": "强化学习主链",
+            "summary": "围绕 PPO、策略优化、人形运动控制训练与仿真平台的学习路径。",
+            "tag": "rl",
+            "related_modules": ["control", "locomotion", "sim2real"],
+        },
+        {
+            "module_id": "il",
+            "title": "模仿学习主链",
+            "summary": "从行为克隆到技能迁移，连接动作数据、策略表示与人形技能学习。",
+            "tag": "il",
+            "related_modules": ["rl", "locomotion", "control"],
+        },
+        {
+            "module_id": "sim2real",
+            "title": "Sim2Real 主链",
+            "summary": "把仿真中的控制与学习方法迁移到真实机器人系统的桥接层。",
+            "tag": "sim2real",
+            "related_modules": ["control", "rl", "tooling"],
+        },
+        {
+            "module_id": "locomotion",
+            "title": "Locomotion 任务主链",
+            "summary": "聚焦双足 / 人形 locomotion，串联动力学、控制、学习与部署问题。",
+            "tag": "locomotion",
+            "related_modules": ["control", "rl", "sim2real"],
+        },
+        {
+            "module_id": "tooling",
+            "title": "工具与平台生态",
+            "summary": "整理仿真器、动力学库、训练框架与硬件平台的进入方式。",
+            "tag": "tooling",
+            "related_modules": ["control", "rl", "sim2real"],
+        },
+    ]
+    module_pages = {
+        spec["module_id"]: build_module_page(
+            spec["module_id"], spec["title"], spec["summary"], spec["tag"], spec["related_modules"], item_map
+        )
+        for spec in module_specs
+    }
+
+    quick_entries = pick_existing(
+        [
+            "roadmap-route-a-motion-control",
+            "roadmap-if-goal-locomotion-rl",
+            "roadmap-if-goal-imitation-learning",
+        ],
+        item_map,
+    )
+    featured_chain = pick_existing(
+        [
+            "wiki-concepts-lip-zmp",
+            "wiki-concepts-floating-base-dynamics",
+            "wiki-concepts-contact-dynamics",
+            "wiki-concepts-capture-point-dcm",
+            "wiki-concepts-centroidal-dynamics",
+            "wiki-methods-trajectory-optimization",
+            "wiki-methods-model-predictive-control",
+            "wiki-concepts-tsid",
+            "wiki-concepts-whole-body-control",
+            "wiki-concepts-sim2real",
+        ],
+        item_map,
+    )
+    featured_modules = [spec["module_id"] for spec in module_specs if module_pages[spec["module_id"]]["entry_items"]]
+
+    roadmap_items = sort_items([item for item in items if item.get("type") == "roadmap_page"])
+    roadmap_pages = {
+        item["id"]: {
+            "id": item["id"],
+            "title": item["title"],
+            "summary": item.get("summary", ""),
+            "stages": item.get("stages", []),
+            "related_items": item.get("related", []),
+            "source_links": item.get("source_links", []),
+        }
+        for item in roadmap_items
+    }
+
+    tech_nodes = sort_items([item for item in items if item.get("type") == "tech_map_node"])
+    tech_map_page = {
+        "graph_meta": {
+            "overview_id": "tech-node-overview",
+            "dependency_graph_id": "tech-node-dependency-graph",
+        },
+        "nodes": [
+            {
+                "id": item["id"],
+                "title": item["title"],
+                "summary": item.get("summary", ""),
+                "layer": item.get("layer"),
+                "node_kind": item.get("node_kind"),
+                "related": item.get("related", []),
+            }
+            for item in tech_nodes
+        ],
+    }
+
+    detail_pages = {
+        item["id"]: {
+            "id": item["id"],
+            "title": item["title"],
+            "type": item.get("type"),
+            "path": item.get("path"),
+            "summary": item.get("summary", ""),
+            "tags": item.get("tags", []),
+            "related": item.get("related", []),
+            "source_links": item.get("source_links", []),
+            "status": item.get("status", "active"),
+        }
+        for item in items
+    }
+
+    home_page = {
+        "hero": {
+            "title": "Robotics_Notebooks",
+            "subtitle": "机器人技术栈知识库 / Robotics research and engineering wiki.",
+        },
+        "quick_entries": quick_entries,
+        "featured_chain": featured_chain,
+        "featured_modules": featured_modules,
+    }
+
+    return {
+        "version": "v1",
+        "generated_mode": "script",
+        "source_index": "index-v1.json",
+        "page_types": ["home_page", "module_page", "roadmap_page", "tech_map_page", "detail_page"],
+        "pages": {
+            "home_page": home_page,
+            "module_pages": module_pages,
+            "roadmap_pages": roadmap_pages,
+            "tech_map_page": tech_map_page,
+            "detail_pages": detail_pages,
+        },
+    }
+
+
 def main() -> None:
     items = [build_item(p) for p in collect_paths()]
     payload = {
@@ -300,9 +491,12 @@ def main() -> None:
         "item_count": len(items),
         "items": items,
     }
+    site_payload = build_site_data(items)
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    SITE_OUTPUT.write_text(json.dumps(site_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {OUTPUT} with {len(items)} items")
+    print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
 
 
 if __name__ == "__main__":
