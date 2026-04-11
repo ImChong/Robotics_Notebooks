@@ -141,6 +141,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 明确 references / sources / wiki 三层职责边界
 - [~] 为当前控制主线建立 references 入口
 - [~] 为当前工具实体页建立 docs / repo / project 入口
+- [~] 提升 `references/` 目录自身的总入口可导航性
 - [ ] 设计导出层最小 schema 草案
 
 ## 我建议的实际执行顺序
@@ -232,7 +233,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已为第一批主线页补“继续深挖入口”，当前覆盖 `Locomotion`、`Sim2Real`、`Reinforcement Learning`、`Whole-Body Control`、`Isaac Gym / Isaac Lab`、`MuJoCo`。
 - 2026-04-11：已为第二批主线页补“继续深挖入口”，当前新增覆盖 `Centroidal Dynamics`、`TSID`、`Trajectory Optimization`、`System Identification`。
 - 当前主线的大部分关键页已经能顺着跳到 references / repos / benchmarks。
-- 下一步建议：开始让 `references/` 目录本身更可导航，例如补 README / 分类入口 / 模块映射页，而不是只在 wiki 侧单向链接过去。
+- 2026-04-11：已重写 `references/README.md`，从目录说明升级为 references 总入口页（快速入口 / 三个子目录职责 / 主线深挖入口 / 和 wiki / sources 的边界）。
+- 下一步建议：开始补 `references/papers/README.md`、`references/repos/README.md`、`references/benchmarks/README.md` 的主线映射感，继续把 references 本身做成真正的导航层。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
