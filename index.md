@@ -45,6 +45,7 @@
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
 - [Crocoddyl](wiki/entities/crocoddyl.md)
+- [Unitree](wiki/entities/unitree.md)
 
 ### roadmap/ — 成长路线
 回答“应该先学什么、再学什么、学完输出什么”。
