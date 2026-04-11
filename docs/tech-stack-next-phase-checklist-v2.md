@@ -76,8 +76,8 @@ State Estimation / System Identification / Sim2Real
 待办：
 - [x] 更新 `roadmap/route-a-motion-control.md`
 - [x] 为阶段补齐：前置知识 / 核心问题 / 推荐阅读 / 产出物
-- [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
-- [ ] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
+- [x] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
+- [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
 
 完成标准：
 - 路线图能直接回答：现在先学什么，下一步学什么，学完输出什么
@@ -157,19 +157,19 @@ State Estimation / System Identification / Sim2Real
 - [x] 更新 `tech-map/overview.md`
 - [x] 更新 `tech-map/dependency-graph.md`
 - [x] 更新 `roadmap/route-a-motion-control.md`
-- [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
-- [ ] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
+- [x] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
+- [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
 - [ ] 更新 `README.md`
 - [ ] 更新 `index.md`
 - [ ] 建 `docs/content-backlog.md`
 - [ ] 建统一模板规范文件
 
 ## 我建议的实际执行顺序
-1. 先改 `tech-map/overview.md`
-2. 再改 `tech-map/dependency-graph.md`
-3. 再改 `roadmap/route-a-motion-control.md`
-4. 然后补两个 learning path
-5. 再统一 README / index 入口
+1. ~~先改 `tech-map/overview.md`~~
+2. ~~再改 `tech-map/dependency-graph.md`~~
+3. ~~再改 `roadmap/route-a-motion-control.md`~~
+4. ~~然后补两个 learning path~~
+5. **下一步：改 README / index 入口**
 6. 之后再做模板和 backlog
 7. 最后再考虑导出层
 
@@ -181,9 +181,10 @@ State Estimation / System Identification / Sim2Real
 ## 本次推进记录
 - 2026-04-11：已完成 `tech-map/overview.md` 重写，从简单列表升级为“模块总览 + 知识入口 + 当前主攻主线”页面。
 - 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写，从箭头列表升级为“主线依赖 + 分层关系 + 横向桥接 + 推荐阅读顺序”页面。
-- 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写，从空章节升级为“前置知识 + 核心问题 + 推荐做什么 + 推荐读什么 + 学完输出”的完整执行路线。
-- V2 P0 前两项已基本完成。
-- 下一步建议继续完善两个 learning path 页面，然后把重心切换到 README 和 index 入口优化。
+- 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写，从空章节升级为完整执行路线。
+- 2026-04-11：已完成 `if-goal-locomotion-rl.md` 和 `if-goal-imitation-learning.md` 两个 learning path 重写，从空列表升级为完整执行路径。
+- V2 P0 第 1、2 项已全部完成。
+- 下一步建议继续推进 V2 P0 第 3 项：升级 README 和 index 为真正入口。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
