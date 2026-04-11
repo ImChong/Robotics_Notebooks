@@ -42,6 +42,17 @@
 
 ## 从哪里开始看
 
+### 当前执行清单
+- [技术栈项目下一阶段执行清单 v1](docs/tech-stack-next-phase-checklist-v1.md)
+
+这份文件是当前项目的**统一执行入口**，用于持续维护：
+- 下一阶段优先级
+- 当前明确待办
+- 最近推进记录
+- 接下来应该做什么
+
+后续默认一起维护这份文件，用它来决定 `Robotics_Notebooks` 下一步往哪推。
+
 ### 结构蓝图
 - [STRUCTURE_v1.md](STRUCTURE_v1.md)
 - [index.md](index.md)
