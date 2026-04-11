@@ -63,8 +63,8 @@ State Estimation / System Identification / Sim2Real
 
 待办：
 - [x] 更新 `tech-map/overview.md`，补一级模块说明
-- [ ] 更新 `tech-map/dependency-graph.md`，明确主线依赖关系
-- [~] 为关键模块补对应 wiki 链接
+- [x] 更新 `tech-map/dependency-graph.md`，明确主线依赖关系
+- [x] 为关键模块补对应 wiki 链接
 - [ ] 明确模块卡片与 wiki 页的双向映射规则
 
 完成标准：
@@ -155,7 +155,7 @@ State Estimation / System Identification / Sim2Real
 
 ## 当前最明确待办
 - [x] 更新 `tech-map/overview.md`
-- [ ] 更新 `tech-map/dependency-graph.md`
+- [x] 更新 `tech-map/dependency-graph.md`
 - [ ] 更新 `roadmap/route-a-motion-control.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
@@ -180,7 +180,9 @@ State Estimation / System Identification / Sim2Real
 
 ## 本次推进记录
 - 2026-04-11：已完成 `tech-map/overview.md` 重写，从简单列表升级为“模块总览 + 知识入口 + 当前主攻主线”页面。
-- 下一步直接继续做 `tech-map/dependency-graph.md`，把模块关系和主线依赖也补清楚。
+- 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写，从箭头列表升级为“主线依赖 + 分层关系 + 横向桥接 + 推荐阅读顺序”页面。
+- V2 第一项中的“overview / dependency / 关键模块链接”已基本打通。
+- 下一步建议继续推进 `roadmap/route-a-motion-control.md`，把结构联动进一步落到学习执行路线。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
