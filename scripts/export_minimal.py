@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
@@ -49,10 +49,25 @@ def extract_title(text: str, fallback: str) -> str:
     return fallback
 
 
+def clean_summary(text: str) -> str:
+    text = text.strip()
+    text = re.sub(r"^[-*]\s+", "", text)
+    text = re.sub(r"^>\s*", "", text)
+    text = text.replace("**", "")
+    text = re.sub(r"\s+", " ", text)
+    return text.strip(" ：:，,。") + ("。" if text and not text.endswith(("。", "!", "?", ".")) else "")
+
+
 def extract_summary(text: str) -> str:
     lines = text.splitlines()
+
+    for line in lines[1:10]:
+        stripped = line.strip()
+        if stripped.startswith("**") and "：" in stripped:
+            return clean_summary(stripped)
+
     in_one_liner = False
-    for i, line in enumerate(lines):
+    for line in lines:
         stripped = line.strip()
         if stripped == "## 一句话定义":
             in_one_liner = True
@@ -62,13 +77,12 @@ def extract_summary(text: str) -> str:
                 continue
             if stripped.startswith("## "):
                 break
-            if stripped.startswith(">"):
-                return stripped.lstrip("> ").strip()
-            return stripped
+            return clean_summary(stripped)
+
     for line in lines[1:20]:
         stripped = line.strip()
         if stripped and not stripped.startswith("#"):
-            return stripped.replace("**", "")
+            return clean_summary(stripped)
     return ""
 
 
@@ -99,7 +113,7 @@ def path_to_id(path: Path) -> str:
     return slugify("-".join(parts)).removesuffix("-md")
 
 
-def infer_tags(path: Path, title: str) -> List[str]:
+def infer_tags(path: Path, title: str, text: str) -> List[str]:
     tags: List[str] = []
     parts = path.relative_to(ROOT).parts
     if parts[0] == "wiki":
@@ -113,7 +127,7 @@ def infer_tags(path: Path, title: str) -> List[str]:
     elif parts[0] == "tech-map":
         tags.append("tech-map")
 
-    haystack = f"{rel(path)} {title}".lower()
+    haystack = f"{rel(path)} {title} {text[:2000]}".lower()
     for tag, hints in TAG_HINTS.items():
         if any(h in haystack for h in hints):
             tags.append(tag)
@@ -127,8 +141,39 @@ def infer_tags(path: Path, title: str) -> List[str]:
     return ordered[:6]
 
 
+def extract_section_links(text: str, current_path: Path, headings: List[str]) -> List[str]:
+    lines = text.splitlines()
+    collecting = False
+    results: List[str] = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("## ") or stripped.startswith("### "):
+            heading = re.sub(r"^#+\s*", "", stripped)
+            if any(h in heading for h in headings):
+                collecting = True
+                continue
+            if collecting and (stripped.startswith("## ") or stripped.startswith("### ")):
+                collecting = False
+        if not collecting:
+            continue
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", line):
+            if target.startswith(("http://", "https://", "#")):
+                continue
+            target = target.split("#", 1)[0]
+            if not target.endswith(".md"):
+                continue
+            resolved = (current_path.parent / target).resolve()
+            try:
+                resolved.relative_to(ROOT)
+            except ValueError:
+                continue
+            results.append(path_to_id(resolved))
+    return results
+
+
 def collect_markdown_links(text: str, current_path: Path) -> List[str]:
-    results = []
+    priority = extract_section_links(text, current_path, ["关联页面", "继续深挖入口", "关联任务"])
+    general = []
     for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", text):
         if target.startswith("http://") or target.startswith("https://") or target.startswith("#"):
             continue
@@ -140,8 +185,14 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
             resolved.relative_to(ROOT)
         except ValueError:
             continue
-        results.append(path_to_id(resolved))
-    return results
+        general.append(path_to_id(resolved))
+    ordered = []
+    seen = set()
+    for item in priority + general:
+        if item not in seen:
+            seen.add(item)
+            ordered.append(item)
+    return ordered[:12]
 
 
 def collect_external_links(text: str) -> List[str]:
@@ -173,8 +224,8 @@ def build_item(path: Path) -> Dict:
         "title": title,
         "path": rel(path),
         "summary": extract_summary(text),
-        "tags": infer_tags(path, title),
-        "related": sorted(set(collect_markdown_links(text, path))),
+        "tags": infer_tags(path, title, text),
+        "related": collect_markdown_links(text, path),
         "source_links": collect_external_links(text),
         "status": "active",
     }

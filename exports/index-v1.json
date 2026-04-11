@@ -7,14 +7,16 @@
       "id": "wiki-concepts-capture-point-dcm",
       "title": "Capture Point / DCM",
       "path": "wiki/concepts/capture-point-dcm.md",
-      "summary": "- **Capture Point**：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里。",
+      "summary": "Capture Point：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里",
       "tags": [
-        "concept"
+        "concept",
+        "control",
+        "dynamics"
       ],
       "related": [
+        "wiki-concepts-lip-zmp",
         "wiki-concepts-contact-dynamics",
-        "wiki-concepts-floating-base-dynamics",
-        "wiki-concepts-lip-zmp"
+        "wiki-concepts-floating-base-dynamics"
       ],
       "source_links": [],
       "status": "active",
@@ -25,21 +27,24 @@
       "id": "wiki-concepts-centroidal-dynamics",
       "title": "Centroidal Dynamics",
       "path": "wiki/concepts/centroidal-dynamics.md",
-      "summary": "如果说全关节动力学太重、LIP 又太简，那么 **Centroidal Dynamics** 就是中间那层最常用的折中：",
+      "summary": "Centroidal Dynamics（质心动力学）：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式",
       "tags": [
         "concept",
-        "dynamics"
+        "locomotion",
+        "control",
+        "dynamics",
+        "il"
       ],
       "related": [
-        "reference-papers-survey-papers",
-        "reference-papers-whole-body-control",
-        "reference-repos-humanoid-projects",
-        "reference-repos-utilities",
         "wiki-concepts-lip-zmp",
-        "wiki-concepts-optimal-control",
-        "wiki-concepts-whole-body-control",
         "wiki-methods-model-predictive-control",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
+        "wiki-concepts-optimal-control",
+        "reference-papers-whole-body-control",
+        "reference-papers-survey-papers",
+        "reference-repos-humanoid-projects",
+        "reference-repos-utilities"
       ],
       "source_links": [],
       "status": "active",
@@ -50,18 +55,22 @@
       "id": "wiki-concepts-contact-dynamics",
       "title": "Contact Dynamics",
       "path": "wiki/concepts/contact-dynamics.md",
-      "summary": "如果说 Floating Base Dynamics 研究的是“机器人底座不固定时整机怎么动”，那 **Contact Dynamics** 研究的就是：",
+      "summary": "Contact Dynamics（接触动力学）：研究机器人与地面、物体、墙面等环境发生接触时，接触力、约束和系统运动之间关系的动力学框架",
       "tags": [
         "concept",
-        "dynamics"
+        "locomotion",
+        "control",
+        "dynamics",
+        "rl",
+        "il"
       ],
       "related": [
-        "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-floating-base-dynamics",
-        "wiki-concepts-state-estimation",
+        "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-tasks-locomotion"
+        "wiki-tasks-locomotion",
+        "wiki-concepts-state-estimation"
       ],
       "source_links": [],
       "status": "active",
@@ -72,15 +81,19 @@
       "id": "wiki-concepts-domain-randomization",
       "title": "Domain Randomization",
       "path": "wiki/concepts/domain-randomization.md",
-      "summary": "把仿真环境“搞乱”，强制机器人在各种随机化的环境变体中训练，这样到了真实环境反而能应对。",
+      "summary": "域随机化：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实",
       "tags": [
         "concept",
+        "locomotion",
+        "control",
+        "dynamics",
+        "rl",
         "sim2real"
       ],
       "related": [
         "wiki-concepts-sim2real",
-        "wiki-concepts-whole-body-control",
         "wiki-methods-reinforcement-learning",
+        "wiki-concepts-whole-body-control",
         "wiki-tasks-locomotion"
       ],
       "source_links": [
@@ -95,17 +108,21 @@
       "id": "wiki-concepts-floating-base-dynamics",
       "title": "Floating Base Dynamics",
       "path": "wiki/concepts/floating-base-dynamics.md",
-      "summary": "如果说固定底座机械臂的基座是“焊死在地上”的，那人形、四足、无人机这类机器人就不是这样。",
+      "summary": "Floating Base Dynamics（浮动基动力学）：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架",
       "tags": [
         "concept",
-        "dynamics"
+        "locomotion",
+        "control",
+        "dynamics",
+        "il",
+        "hardware"
       ],
       "related": [
         "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-lip-zmp",
-        "wiki-concepts-state-estimation",
         "wiki-concepts-tsid",
-        "wiki-concepts-whole-body-control"
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-state-estimation"
       ],
       "source_links": [],
       "status": "active",
@@ -116,16 +133,20 @@
       "id": "wiki-concepts-lip-zmp",
       "title": "LIP / ZMP",
       "path": "wiki/concepts/lip-zmp.md",
-      "summary": "- **LIP**：用“质心高度近似不变”的简化模型描述双足机器人平衡与步行。",
+      "summary": "LIP：用“质心高度近似不变”的简化模型描述双足机器人平衡与步行",
       "tags": [
         "concept",
-        "control"
+        "locomotion",
+        "control",
+        "dynamics",
+        "rl",
+        "il"
       ],
       "related": [
-        "wiki-concepts-optimal-control",
-        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
         "wiki-methods-model-predictive-control",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-optimal-control"
       ],
       "source_links": [],
       "status": "active",
@@ -136,15 +157,17 @@
       "id": "wiki-concepts-optimal-control",
       "title": "Optimal Control (OCP)",
       "path": "wiki/concepts/optimal-control.md",
-      "summary": "“给定一个会动的机器人，什么样的控制序列能让它完成任务的同时代价最小？”",
+      "summary": "最优控制：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架",
       "tags": [
         "concept",
         "control",
-        "optimization"
+        "optimization",
+        "rl",
+        "il"
       ],
       "related": [
-        "wiki-concepts-whole-body-control",
         "wiki-methods-model-predictive-control",
+        "wiki-concepts-whole-body-control",
         "wiki-methods-reinforcement-learning",
         "wiki-tasks-locomotion"
       ],
@@ -159,18 +182,22 @@
       "id": "wiki-concepts-sim2real",
       "title": "Sim2Real",
       "path": "wiki/concepts/sim2real.md",
-      "summary": "在仿真里学会，在现实中生效。",
+      "summary": "Sim2Real（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上",
       "tags": [
         "concept",
-        "sim2real"
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "rl"
       ],
       "related": [
-        "reference-papers-sim2real",
-        "reference-repos-rl-frameworks",
-        "reference-repos-simulation",
-        "wiki-concepts-whole-body-control",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
+        "reference-papers-sim2real",
+        "reference-repos-simulation",
+        "reference-repos-rl-frameworks"
       ],
       "source_links": [
         "https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/",
@@ -184,15 +211,20 @@
       "id": "wiki-concepts-state-estimation",
       "title": "State Estimation",
       "path": "wiki/concepts/state-estimation.md",
-      "summary": "控制器不是直接看见“真实世界”，它看到的是带噪声、带延迟、甚至不完整的传感器数据。",
+      "summary": "State Estimation（状态估计）：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程",
       "tags": [
-        "concept"
+        "concept",
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization",
+        "rl"
       ],
       "related": [
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-sim2real",
         "wiki-concepts-tsid",
-        "wiki-concepts-whole-body-control"
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-sim2real"
       ],
       "source_links": [],
       "status": "active",
@@ -203,20 +235,24 @@
       "id": "wiki-concepts-system-identification",
       "title": "System Identification",
       "path": "wiki/concepts/system-identification.md",
-      "summary": "State Estimation 在回答“机器人现在是什么状态”，那 **System Identification** 回答的是：",
+      "summary": "System Identification（系统辨识 / SysID）：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程",
       "tags": [
         "concept",
-        "sim2real"
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization",
+        "il"
       ],
       "related": [
-        "reference-papers-sim2real",
-        "reference-papers-survey-papers",
-        "reference-repos-simulation",
         "wiki-concepts-sim2real",
         "wiki-concepts-state-estimation",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-model-predictive-control"
+        "wiki-methods-model-predictive-control",
+        "reference-papers-sim2real",
+        "reference-papers-survey-papers",
+        "reference-repos-simulation"
       ],
       "source_links": [],
       "status": "active",
@@ -227,20 +263,23 @@
       "id": "wiki-concepts-tsid",
       "title": "TSID",
       "path": "wiki/concepts/tsid.md",
-      "summary": "如果说 MPC / Centroidal Dynamics 在回答“机器人整体接下来该怎么动”，那 **TSID** 回答的就是：",
+      "summary": "如果说 MPC / Centroidal Dynamics 在回答“机器人整体接下来该怎么动”，那 TSID 回答的就是。",
       "tags": [
         "concept",
-        "control"
+        "control",
+        "dynamics",
+        "optimization",
+        "il"
       ],
       "related": [
-        "reference-papers-whole-body-control",
-        "reference-repos-humanoid-projects",
-        "reference-repos-utilities",
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-optimal-control",
         "wiki-concepts-whole-body-control",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-tasks-locomotion",
+        "wiki-concepts-optimal-control",
         "wiki-methods-model-predictive-control",
-        "wiki-tasks-locomotion"
+        "reference-papers-whole-body-control",
+        "reference-repos-utilities",
+        "reference-repos-humanoid-projects"
       ],
       "source_links": [
         "https://github.com/stack-of-tasks/tsid"
@@ -253,19 +292,22 @@
       "id": "wiki-concepts-whole-body-control",
       "title": "Whole-Body Control (WBC)",
       "path": "wiki/concepts/whole-body-control.md",
-      "summary": "不单独控制每个关节，而是把整个身体当成一个整体来协调控制。",
+      "summary": "全身控制：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法",
       "tags": [
         "concept",
+        "locomotion",
         "control",
-        "il"
+        "dynamics",
+        "optimization",
+        "rl"
       ],
       "related": [
-        "reference-papers-whole-body-control",
-        "reference-repos-utilities",
+        "wiki-tasks-locomotion",
+        "wiki-methods-imitation-learning",
         "wiki-comparisons-wbc-vs-rl",
         "wiki-concepts-sim2real",
-        "wiki-methods-imitation-learning",
-        "wiki-tasks-locomotion"
+        "reference-papers-whole-body-control",
+        "reference-repos-utilities"
       ],
       "source_links": [
         "https://github.com/Roboparty/atom01_train",
@@ -279,16 +321,20 @@
       "id": "wiki-methods-imitation-learning",
       "title": "Imitation Learning (IL)",
       "path": "wiki/methods/imitation-learning.md",
-      "summary": "让机器人看人类/专家怎么做，它就模仿着做。",
+      "summary": "模仿学习：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”",
       "tags": [
         "method",
-        "il"
+        "locomotion",
+        "control",
+        "rl",
+        "il",
+        "sim2real"
       ],
       "related": [
-        "wiki-concepts-sim2real",
-        "wiki-concepts-whole-body-control",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
+        "wiki-concepts-sim2real"
       ],
       "source_links": [],
       "status": "active",
@@ -299,16 +345,20 @@
       "id": "wiki-methods-model-predictive-control",
       "title": "Model Predictive Control (MPC)",
       "path": "wiki/methods/model-predictive-control.md",
-      "summary": "不是一次性算出全局最优控制，而是**每一步都在线求解一个有限时域优化问题，只执行当前动作，然后重复**。",
+      "summary": "模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复",
       "tags": [
         "method",
-        "control"
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization"
       ],
       "related": [
-        "wiki-concepts-optimal-control",
         "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-optimal-control"
       ],
       "source_links": [
         "https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI",
@@ -323,21 +373,25 @@
       "id": "wiki-methods-reinforcement-learning",
       "title": "Reinforcement Learning (RL)",
       "path": "wiki/methods/reinforcement-learning.md",
-      "summary": "不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己摸索。",
+      "summary": "强化学习：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式",
       "tags": [
         "method",
-        "rl"
+        "locomotion",
+        "control",
+        "rl",
+        "il",
+        "sim2real"
       ],
       "related": [
+        "wiki-methods-imitation-learning",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
+        "wiki-comparisons-wbc-vs-rl",
         "reference-papers-locomotion-rl",
         "reference-papers-survey-papers",
         "reference-repos-rl-frameworks",
-        "reference-repos-simulation",
-        "wiki-comparisons-wbc-vs-rl",
-        "wiki-concepts-sim2real",
-        "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
-        "wiki-tasks-locomotion"
+        "reference-repos-simulation"
       ],
       "source_links": [],
       "status": "active",
@@ -348,21 +402,24 @@
       "id": "wiki-methods-trajectory-optimization",
       "title": "Trajectory Optimization",
       "path": "wiki/methods/trajectory-optimization.md",
-      "summary": "如果说控制在回答“这一刻该怎么做”，那 **Trajectory Optimization** 更像是在回答：",
+      "summary": "Trajectory Optimization（轨迹优化）：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹",
       "tags": [
         "method",
+        "locomotion",
+        "control",
+        "dynamics",
         "optimization"
       ],
       "related": [
-        "reference-papers-survey-papers",
-        "reference-papers-whole-body-control",
-        "reference-repos-humanoid-projects",
-        "reference-repos-utilities",
-        "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-optimal-control",
+        "wiki-methods-model-predictive-control",
+        "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-model-predictive-control"
+        "reference-papers-survey-papers",
+        "reference-papers-whole-body-control",
+        "reference-repos-utilities",
+        "reference-repos-humanoid-projects"
       ],
       "source_links": [],
       "status": "active",
@@ -373,21 +430,25 @@
       "id": "wiki-tasks-locomotion",
       "title": "Locomotion",
       "path": "wiki/tasks/locomotion.md",
-      "summary": "让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。",
+      "summary": "运动/行走：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力",
       "tags": [
         "task",
-        "locomotion"
+        "locomotion",
+        "control",
+        "dynamics",
+        "rl",
+        "il"
       ],
       "related": [
-        "reference-benchmarks-locomotion-benchmarks",
-        "reference-papers-locomotion-rl",
-        "reference-repos-rl-frameworks",
-        "reference-repos-simulation",
-        "wiki-concepts-sim2real",
+        "wiki-tasks-manipulation",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
+        "wiki-concepts-sim2real",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-manipulation"
+        "wiki-methods-imitation-learning",
+        "reference-papers-locomotion-rl",
+        "reference-benchmarks-locomotion-benchmarks",
+        "reference-repos-rl-frameworks",
+        "reference-repos-simulation"
       ],
       "source_links": [
         "https://en.wikipedia.org/wiki/Model_predictive_control"
@@ -400,15 +461,19 @@
       "id": "wiki-tasks-manipulation",
       "title": "Manipulation",
       "path": "wiki/tasks/manipulation.md",
-      "summary": "让机器人的手能做事情——抓东西、搬东西、用东西。",
+      "summary": "操作：让机器人的手/末端执行器抓取、移动、操作物体",
       "tags": [
-        "task"
+        "task",
+        "locomotion",
+        "control",
+        "rl",
+        "il"
       ],
       "related": [
-        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
         "wiki-methods-imitation-learning",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-whole-body-control"
       ],
       "source_links": [],
       "status": "active",
@@ -419,18 +484,20 @@
       "id": "wiki-comparisons-wbc-vs-rl",
       "title": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "path": "wiki/comparisons/wbc-vs-rl.md",
-      "summary": "人形机器人运动控制领域最常见的两种路线对比。",
+      "summary": "人形机器人运动控制领域最常见的两种路线对比",
       "tags": [
         "comparison",
         "control",
+        "optimization",
         "rl",
-        "il"
+        "il",
+        "sim2real"
       ],
       "related": [
-        "wiki-concepts-sim2real",
         "wiki-concepts-whole-body-control",
+        "wiki-methods-reinforcement-learning",
         "wiki-methods-imitation-learning",
-        "wiki-methods-reinforcement-learning"
+        "wiki-concepts-sim2real"
       ],
       "source_links": [],
       "status": "active",
@@ -441,15 +508,20 @@
       "id": "wiki-overview-robot-learning-overview",
       "title": "Robot Learning Overview",
       "path": "wiki/overview/robot-learning-overview.md",
-      "summary": "机器人学习：让机器人通过数据学会完成复杂任务的方法集合，核心是把“如何做”从人工编程转向从经验中学习。",
+      "summary": "机器人学习：让机器人通过数据学会完成复杂任务的方法集合，核心是把“如何做”从人工编程转向从经验中学习",
       "tags": [
-        "overview"
+        "overview",
+        "locomotion",
+        "control",
+        "rl",
+        "il",
+        "hardware"
       ],
       "related": [
-        "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-locomotion",
+        "wiki-concepts-whole-body-control"
       ],
       "source_links": [
         "https://spinningup.openai.com"
@@ -462,20 +534,22 @@
       "id": "entity-crocoddyl",
       "title": "Crocoddyl",
       "path": "wiki/entities/crocoddyl.md",
-      "summary": "如果说 Pinocchio 提供的是机器人运动学、动力学和导数的高质量计算底座，那 **Crocoddyl** 提供的就是：",
+      "summary": "如果说 Pinocchio 提供的是机器人运动学、动力学和导数的高质量计算底座，那 Crocoddyl 提供的就是。",
       "tags": [
         "entities",
         "entity",
-        "optimization",
-        "tooling"
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics"
       ],
       "related": [
-        "entity-pinocchio",
-        "wiki-concepts-centroidal-dynamics",
+        "wiki-methods-trajectory-optimization",
         "wiki-concepts-optimal-control",
-        "wiki-concepts-whole-body-control",
+        "entity-pinocchio",
         "wiki-methods-model-predictive-control",
-        "wiki-methods-trajectory-optimization"
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-whole-body-control"
       ],
       "source_links": [
         "https://github.com/loco-3d/crocoddyl",
@@ -489,19 +563,22 @@
       "id": "entity-isaac-gym-isaac-lab",
       "title": "Isaac Gym / Isaac Lab",
       "path": "wiki/entities/isaac-gym-isaac-lab.md",
-      "summary": "- **Isaac Gym**：NVIDIA 早期的 GPU 加速机器人 RL 仿真框架，主打大规模并行训练。",
+      "summary": "Isaac Gym：NVIDIA 早期的 GPU 加速机器人 RL 仿真框架，主打大规模并行训练",
       "tags": [
         "entities",
         "entity",
+        "locomotion",
+        "rl",
+        "sim2real",
         "tooling"
       ],
       "related": [
-        "reference-repos-rl-frameworks",
-        "reference-repos-simulation",
-        "wiki-concepts-domain-randomization",
-        "wiki-concepts-sim2real",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-tasks-locomotion",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization",
+        "reference-repos-simulation",
+        "reference-repos-rl-frameworks"
       ],
       "source_links": [
         "https://developer.nvidia.com/isaac-gym",
@@ -516,18 +593,21 @@
       "id": "entity-legged-gym",
       "title": "legged_gym",
       "path": "wiki/entities/legged-gym.md",
-      "summary": "如果说 Isaac Gym 提供的是高并行 GPU 仿真底座，那 **legged_gym** 提供的就是：",
+      "summary": "如果说 Isaac Gym 提供的是高并行 GPU 仿真底座，那 legged_gym 提供的就是。",
       "tags": [
         "entities",
         "entity",
-        "locomotion"
+        "humanoid",
+        "locomotion",
+        "rl",
+        "sim2real"
       ],
       "related": [
         "entity-isaac-gym-isaac-lab",
-        "wiki-concepts-domain-randomization",
-        "wiki-concepts-sim2real",
         "wiki-methods-reinforcement-learning",
-        "wiki-tasks-locomotion"
+        "wiki-tasks-locomotion",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization"
       ],
       "source_links": [
         "https://github.com/leggedrobotics/legged_gym"
@@ -540,21 +620,24 @@
       "id": "entity-mujoco",
       "title": "MuJoCo",
       "path": "wiki/entities/mujoco.md",
-      "summary": "MuJoCo 是一个强调**刚体动力学、接触仿真、控制与优化友好性**的机器人物理引擎。",
+      "summary": "MuJoCo 是一个强调刚体动力学、接触仿真、控制与优化友好性的机器人物理引擎",
       "tags": [
         "entities",
         "entity",
-        "tooling"
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics"
       ],
       "related": [
         "entity-isaac-gym-isaac-lab",
-        "reference-benchmarks-locomotion-benchmarks",
-        "reference-repos-simulation",
-        "wiki-methods-imitation-learning",
-        "wiki-methods-model-predictive-control",
         "wiki-methods-reinforcement-learning",
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-locomotion",
         "wiki-methods-trajectory-optimization",
-        "wiki-tasks-locomotion"
+        "wiki-methods-model-predictive-control",
+        "reference-repos-simulation",
+        "reference-benchmarks-locomotion-benchmarks"
       ],
       "source_links": [
         "https://mujoco.org/",
@@ -571,20 +654,23 @@
       "id": "entity-pinocchio",
       "title": "Pinocchio",
       "path": "wiki/entities/pinocchio.md",
-      "summary": "如果说 MuJoCo、Isaac Gym 这类工具是在做“仿真”，那 **Pinocchio** 做的是：",
+      "summary": "如果说 MuJoCo、Isaac Gym 这类工具是在做“仿真”，那 Pinocchio 做的是。",
       "tags": [
         "entities",
         "entity",
-        "tooling"
+        "humanoid",
+        "control",
+        "dynamics",
+        "optimization"
       ],
       "related": [
-        "entity-crocoddyl",
-        "entity-tsid",
         "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
+        "wiki-methods-trajectory-optimization",
         "wiki-methods-model-predictive-control",
-        "wiki-methods-trajectory-optimization"
+        "entity-tsid",
+        "entity-crocoddyl"
       ],
       "source_links": [
         "https://github.com/stack-of-tasks/pinocchio",
@@ -598,12 +684,14 @@
       "id": "entity-unitree",
       "title": "Unitree",
       "path": "wiki/entities/unitree.md",
-      "summary": "如果说很多论文和算法都在讲“机器人应该怎么走、怎么跑、怎么控制”，那 **Unitree** 的重要性在于：",
+      "summary": "如果说很多论文和算法都在讲“机器人应该怎么走、怎么跑、怎么控制”，那 Unitree 的重要性在于。",
       "tags": [
         "entities",
         "entity",
         "humanoid",
-        "hardware"
+        "locomotion",
+        "control",
+        "dynamics"
       ],
       "related": [
         "wiki-concepts-whole-body-control",
@@ -624,26 +712,27 @@
       "id": "roadmap-route-a-motion-control",
       "title": "路线A：运动控制算法工程师成长路线",
       "path": "roadmap/route-a-motion-control.md",
-      "summary": "> 目标：从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
+      "summary": "这条路线怎么用。",
       "tags": [
         "roadmap",
-        "control"
+        "control",
+        "dynamics",
+        "optimization",
+        "rl",
+        "il"
       ],
       "related": [
-        "roadmap-if-goal-imitation-learning",
-        "roadmap-if-goal-locomotion-rl",
-        "tech-node-dependency-graph",
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-domain-randomization",
         "wiki-concepts-lip-zmp",
-        "wiki-concepts-sim2real",
-        "wiki-concepts-system-identification",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-methods-trajectory-optimization",
+        "wiki-methods-model-predictive-control",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
-        "wiki-methods-model-predictive-control",
         "wiki-methods-reinforcement-learning",
-        "wiki-methods-trajectory-optimization",
+        "wiki-methods-imitation-learning",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-domain-randomization",
         "wiki-roadmaps-humanoid-control-roadmap"
       ],
       "source_links": [
@@ -687,7 +776,7 @@
       "id": "roadmap-route-b-fullstack",
       "title": "路线B：机器人全栈工程师扩展路线",
       "path": "roadmap/route-b-fullstack.md",
-      "summary": "> 目标：在路线A基础上，从“控制切入口”逐步扩展到感知、规划、软件系统、部署与整机集成。",
+      "summary": "目标：在路线A基础上，从“控制切入口”逐步扩展到感知、规划、软件系统、部署与整机集成",
       "tags": [
         "roadmap"
       ],
@@ -701,7 +790,7 @@
       "id": "roadmap-if-goal-generalist",
       "title": "学习路径：如果目标是全栈通用能力",
       "path": "roadmap/learning-paths/if-goal-generalist.md",
-      "summary": "推荐顺序：",
+      "summary": "推荐顺序。",
       "tags": [
         "roadmap"
       ],
@@ -715,19 +804,20 @@
       "id": "roadmap-if-goal-imitation-learning",
       "title": "学习路径：如果目标是模仿学习与技能迁移",
       "path": "roadmap/learning-paths/if-goal-imitation-learning.md",
-      "summary": "> 如果你更感兴趣的是怎么把人类的动作迁移到机器人上，从这里切入。",
+      "summary": "这条路径怎么用。",
       "tags": [
         "roadmap",
+        "rl",
         "il"
       ],
       "related": [
-        "roadmap-if-goal-locomotion-rl",
-        "roadmap-route-a-motion-control",
-        "tech-node-dependency-graph",
-        "wiki-concepts-domain-randomization",
-        "wiki-concepts-sim2real",
         "wiki-methods-imitation-learning",
-        "wiki-roadmaps-humanoid-control-roadmap"
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization",
+        "roadmap-route-a-motion-control",
+        "roadmap-if-goal-locomotion-rl",
+        "wiki-roadmaps-humanoid-control-roadmap",
+        "tech-node-dependency-graph"
       ],
       "source_links": [],
       "status": "active",
@@ -738,24 +828,27 @@
       "id": "roadmap-if-goal-locomotion-rl",
       "title": "学习路径：如果目标是人形 RL 运动控制",
       "path": "roadmap/learning-paths/if-goal-locomotion-rl.md",
-      "summary": "> 如果你已经明确想用强化学习路线来做人形机器人运动控制，从这里切入。",
+      "summary": "这条路径怎么用。",
       "tags": [
         "roadmap",
+        "humanoid",
         "locomotion",
-        "rl"
+        "control",
+        "rl",
+        "il"
       ],
       "related": [
         "roadmap-route-a-motion-control",
-        "tech-node-dependency-graph",
+        "wiki-methods-reinforcement-learning",
+        "wiki-tasks-locomotion",
         "wiki-comparisons-wbc-vs-rl",
-        "wiki-concepts-domain-randomization",
-        "wiki-concepts-sim2real",
-        "wiki-concepts-system-identification",
         "wiki-concepts-whole-body-control",
         "wiki-methods-model-predictive-control",
-        "wiki-methods-reinforcement-learning",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization",
+        "wiki-concepts-system-identification",
         "wiki-roadmaps-humanoid-control-roadmap",
-        "wiki-tasks-locomotion"
+        "tech-node-dependency-graph"
       ],
       "source_links": [],
       "status": "active",
@@ -766,10 +859,12 @@
       "id": "roadmap-if-goal-whole-body-control",
       "title": "学习路径：如果目标是全身控制与优化",
       "path": "roadmap/learning-paths/if-goal-whole-body-control.md",
-      "summary": "推荐顺序：",
+      "summary": "推荐顺序。",
       "tags": [
         "roadmap",
-        "control"
+        "control",
+        "optimization",
+        "il"
       ],
       "related": [],
       "source_links": [],
@@ -781,7 +876,7 @@
       "id": "reference-papers-humanoid-hardware",
       "title": "Humanoid Hardware",
       "path": "references/papers/humanoid-hardware.md",
-      "summary": "聚焦人形机器人硬件架构、执行器、传感器与系统设计相关论文。",
+      "summary": "聚焦人形机器人硬件架构、执行器、传感器与系统设计相关论文",
       "tags": [
         "papers",
         "humanoid",
@@ -797,7 +892,7 @@
       "id": "reference-papers-imitation-learning",
       "title": "Imitation Learning",
       "path": "references/papers/imitation-learning.md",
-      "summary": "聚焦行为克隆、DAgger、Diffusion Policy、Motion Prior、Motion Retarget 等方向。",
+      "summary": "聚焦行为克隆、DAgger、Diffusion Policy、Motion Prior、Motion Retarget 等方向",
       "tags": [
         "papers",
         "il"
@@ -812,11 +907,12 @@
       "id": "reference-papers-locomotion-rl",
       "title": "Locomotion RL",
       "path": "references/papers/locomotion-rl.md",
-      "summary": "聚焦人形/腿足机器人 locomotion 中的强化学习论文。",
+      "summary": "聚焦人形/腿足机器人 locomotion 中的强化学习论文",
       "tags": [
         "papers",
         "locomotion",
-        "rl"
+        "rl",
+        "sim2real"
       ],
       "related": [],
       "source_links": [],
@@ -828,7 +924,7 @@
       "id": "reference-papers-sim2real",
       "title": "Sim2Real",
       "path": "references/papers/sim2real.md",
-      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移。",
+      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移",
       "tags": [
         "papers",
         "sim2real"
@@ -843,7 +939,7 @@
       "id": "reference-papers-survey-papers",
       "title": "Survey Papers",
       "path": "references/papers/survey-papers.md",
-      "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的综述论文。",
+      "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的综述论文",
       "tags": [
         "papers"
       ],
@@ -857,10 +953,12 @@
       "id": "reference-papers-whole-body-control",
       "title": "Whole-Body Control",
       "path": "references/papers/whole-body-control.md",
-      "summary": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。",
+      "summary": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文",
       "tags": [
         "papers",
-        "control"
+        "control",
+        "optimization",
+        "il"
       ],
       "related": [],
       "source_links": [],
@@ -872,7 +970,7 @@
       "id": "reference-repos-humanoid-projects",
       "title": "Humanoid Projects",
       "path": "references/repos/humanoid-projects.md",
-      "summary": "聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目。",
+      "summary": "聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目",
       "tags": [
         "repos",
         "humanoid"
@@ -887,7 +985,7 @@
       "id": "reference-repos-retarget-tools",
       "title": "Retarget Tools",
       "path": "references/repos/retarget-tools.md",
-      "summary": "聚焦人体动作到机器人动作的重定向工具与项目。",
+      "summary": "聚焦人体动作到机器人动作的重定向工具与项目",
       "tags": [
         "repos",
         "il"
@@ -902,9 +1000,11 @@
       "id": "reference-repos-rl-frameworks",
       "title": "RL Frameworks",
       "path": "references/repos/rl-frameworks.md",
-      "summary": "当前重点框架：",
+      "summary": "当前重点框架。",
       "tags": [
         "repos",
+        "humanoid",
+        "locomotion",
         "rl",
         "tooling"
       ],
@@ -918,7 +1018,7 @@
       "id": "reference-repos-simulation",
       "title": "Simulation",
       "path": "references/repos/simulation.md",
-      "summary": "当前重点平台：",
+      "summary": "当前重点平台。",
       "tags": [
         "repos",
         "tooling"
@@ -933,9 +1033,10 @@
       "id": "reference-repos-utilities",
       "title": "Utilities",
       "path": "references/repos/utilities.md",
-      "summary": "收录 Pinocchio、RBDL、Drake、curobo 等通用工具链。",
+      "summary": "收录 Pinocchio、RBDL、Drake、curobo 等通用工具链",
       "tags": [
-        "repos"
+        "repos",
+        "tooling"
       ],
       "related": [],
       "source_links": [],
@@ -947,7 +1048,7 @@
       "id": "reference-benchmarks-humanoid-environments",
       "title": "Humanoid Environments",
       "path": "references/benchmarks/humanoid-environments.md",
-      "summary": "用于整理人形机器人常用训练环境与评测场景。",
+      "summary": "用于整理人形机器人常用训练环境与评测场景",
       "tags": [
         "benchmarks",
         "humanoid"
@@ -962,7 +1063,7 @@
       "id": "reference-benchmarks-locomotion-benchmarks",
       "title": "Locomotion Benchmarks",
       "path": "references/benchmarks/locomotion-benchmarks.md",
-      "summary": "用于整理平地行走、越障、跑酷、复杂地形运动等 benchmark。",
+      "summary": "用于整理平地行走、越障、跑酷、复杂地形运动等 benchmark",
       "tags": [
         "benchmarks",
         "locomotion"
@@ -977,30 +1078,28 @@
       "id": "tech-node-overview",
       "title": "全栈技术域总览",
       "path": "tech-map/overview.md",
-      "summary": "本页不是单纯列方向，而是 `Robotics_Notebooks` 的技术栈模块入口页。",
+      "summary": "本页不是单纯列方向，而是 `Robotics_Notebooks` 的技术栈模块入口页",
       "tags": [
-        "tech-map"
+        "tech-map",
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization"
       ],
       "related": [
-        "roadmap-README",
-        "wiki-comparisons-wbc-vs-rl",
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-domain-randomization",
-        "wiki-concepts-lip-zmp",
         "wiki-concepts-optimal-control",
-        "wiki-concepts-sim2real",
-        "wiki-concepts-state-estimation",
-        "wiki-concepts-system-identification",
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-methods-model-predictive-control",
+        "wiki-methods-trajectory-optimization",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
-        "wiki-methods-model-predictive-control",
         "wiki-methods-reinforcement-learning",
-        "wiki-methods-trajectory-optimization",
+        "wiki-methods-imitation-learning",
         "wiki-overview-robot-learning-overview",
-        "wiki-roadmaps-humanoid-control-roadmap",
-        "wiki-tasks-locomotion",
-        "wiki-tasks-manipulation"
+        "wiki-comparisons-wbc-vs-rl",
+        "wiki-concepts-state-estimation"
       ],
       "source_links": [],
       "status": "active",
@@ -1011,27 +1110,28 @@
       "id": "tech-node-dependency-graph",
       "title": "模块依赖关系图",
       "path": "tech-map/dependency-graph.md",
-      "summary": "本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚。",
+      "summary": "本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚",
       "tags": [
-        "tech-map"
+        "tech-map",
+        "control",
+        "dynamics",
+        "optimization",
+        "il",
+        "sim2real"
       ],
       "related": [
-        "wiki-comparisons-wbc-vs-rl",
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-domain-randomization",
         "wiki-concepts-lip-zmp",
+        "wiki-concepts-centroidal-dynamics",
         "wiki-concepts-optimal-control",
-        "wiki-concepts-sim2real",
-        "wiki-concepts-state-estimation",
-        "wiki-concepts-system-identification",
+        "wiki-methods-trajectory-optimization",
+        "wiki-methods-model-predictive-control",
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
-        "wiki-methods-imitation-learning",
-        "wiki-methods-model-predictive-control",
-        "wiki-methods-reinforcement-learning",
-        "wiki-methods-trajectory-optimization",
-        "wiki-overview-robot-learning-overview",
-        "wiki-tasks-locomotion"
+        "wiki-concepts-state-estimation",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization",
+        "wiki-methods-reinforcement-learning"
       ],
       "source_links": [],
       "status": "active",
@@ -1042,7 +1142,7 @@
       "id": "tech-node-control-humanoid-locomotion",
       "title": "Humanoid Locomotion",
       "path": "tech-map/modules/control/humanoid-locomotion.md",
-      "summary": "人形双足步行、平衡与扰动恢复是当前主攻方向之一。",
+      "summary": "人形双足步行、平衡与扰动恢复是当前主攻方向之一",
       "tags": [
         "tech-map",
         "humanoid",
@@ -1060,7 +1160,7 @@
       "id": "tech-node-control-mpc",
       "title": "MPC",
       "path": "tech-map/modules/control/mpc.md",
-      "summary": "模型预测控制是连接模型、约束与优化求解的重要方法。",
+      "summary": "模型预测控制是连接模型、约束与优化求解的重要方法",
       "tags": [
         "tech-map",
         "control"
@@ -1076,7 +1176,7 @@
       "id": "tech-node-control-whole-body-control",
       "title": "Whole-Body Control",
       "path": "tech-map/modules/control/whole-body-control.md",
-      "summary": "全身控制是人形机器人运动控制的重要枢纽。",
+      "summary": "全身控制是人形机器人运动控制的重要枢纽",
       "tags": [
         "tech-map",
         "control"
@@ -1092,7 +1192,7 @@
       "id": "tech-node-il-behavior-cloning",
       "title": "Behavior Cloning",
       "path": "tech-map/modules/il/behavior-cloning.md",
-      "summary": "模仿学习最基础的切入口。",
+      "summary": "模仿学习最基础的切入口",
       "tags": [
         "tech-map"
       ],
@@ -1107,7 +1207,7 @@
       "id": "tech-node-il-diffusion-policy",
       "title": "Diffusion Policy",
       "path": "tech-map/modules/il/diffusion-policy.md",
-      "summary": "当前模仿学习中的重要生成式方法之一。",
+      "summary": "当前模仿学习中的重要生成式方法之一",
       "tags": [
         "tech-map"
       ],
@@ -1122,7 +1222,7 @@
       "id": "tech-node-il-motion-retarget",
       "title": "Motion Retarget",
       "path": "tech-map/modules/il/motion-retarget.md",
-      "summary": "连接人体动作数据与人形机器人技能迁移的关键模块。",
+      "summary": "连接人体动作数据与人形机器人技能迁移的关键模块",
       "tags": [
         "tech-map",
         "il"
@@ -1138,7 +1238,7 @@
       "id": "tech-node-math-linear-algebra",
       "title": "线性代数",
       "path": "tech-map/modules/math/linear-algebra.md",
-      "summary": "机器人场景重点：向量空间、矩阵变换、特征值分解、最小二乘、雅可比相关计算。",
+      "summary": "机器人场景重点：向量空间、矩阵变换、特征值分解、最小二乘、雅可比相关计算",
       "tags": [
         "tech-map"
       ],
@@ -1153,10 +1253,11 @@
       "id": "tech-node-rl-humanoid-rl",
       "title": "Humanoid RL",
       "path": "tech-map/modules/rl/humanoid-rl.md",
-      "summary": "聚焦人形机器人 locomotion 与 skill learning 中的强化学习问题。",
+      "summary": "聚焦人形机器人 locomotion 与 skill learning 中的强化学习问题",
       "tags": [
         "tech-map",
         "humanoid",
+        "locomotion",
         "rl"
       ],
       "related": [],
@@ -1170,7 +1271,7 @@
       "id": "tech-node-rl-ppo",
       "title": "PPO",
       "path": "tech-map/modules/rl/ppo.md",
-      "summary": "PPO 是机器人强化学习中最常见、最实用的基础算法之一。",
+      "summary": "PPO 是机器人强化学习中最常见、最实用的基础算法之一",
       "tags": [
         "tech-map",
         "rl"
@@ -1186,7 +1287,7 @@
       "id": "tech-node-rl-sim2real",
       "title": "Sim2Real",
       "path": "tech-map/modules/rl/sim2real.md",
-      "summary": "重点关注域随机化、系统辨识、鲁棒训练与部署闭环。",
+      "summary": "重点关注域随机化、系统辨识、鲁棒训练与部署闭环",
       "tags": [
         "tech-map",
         "rl",
@@ -1203,7 +1304,7 @@
       "id": "tech-node-robotics-dynamics",
       "title": "动力学",
       "path": "tech-map/modules/robotics/dynamics.md",
-      "summary": "重点包括牛顿欧拉法、拉格朗日法、浮动基动力学、接触建模。",
+      "summary": "重点包括牛顿欧拉法、拉格朗日法、浮动基动力学、接触建模",
       "tags": [
         "tech-map",
         "dynamics"
@@ -1219,7 +1320,7 @@
       "id": "tech-node-robotics-kinematics",
       "title": "运动学",
       "path": "tech-map/modules/robotics/kinematics.md",
-      "summary": "重点包括正逆运动学、雅可比、微分运动学。",
+      "summary": "重点包括正逆运动学、雅可比、微分运动学",
       "tags": [
         "tech-map"
       ],
@@ -1234,7 +1335,7 @@
       "id": "tech-node-robotics-rigid-body-motion",
       "title": "刚体运动",
       "path": "tech-map/modules/robotics/rigid-body-motion.md",
-      "summary": "重点包括旋转表示、坐标变换、SE(3)、Twist/Wrench。",
+      "summary": "重点包括旋转表示、坐标变换、SE(3)、Twist/Wrench",
       "tags": [
         "tech-map"
       ],
@@ -1249,7 +1350,7 @@
       "id": "tech-node-system-deployment",
       "title": "Deployment",
       "path": "tech-map/modules/system/deployment.md",
-      "summary": "部署阶段关注控制频率、硬件接口、安全性与调试闭环。",
+      "summary": "部署阶段关注控制频率、硬件接口、安全性与调试闭环",
       "tags": [
         "tech-map"
       ],
@@ -1264,7 +1365,7 @@
       "id": "tech-node-system-ros2",
       "title": "ROS2",
       "path": "tech-map/modules/system/ros2.md",
-      "summary": "机器人系统工程和集成阶段的重要基础设施。",
+      "summary": "机器人系统工程和集成阶段的重要基础设施",
       "tags": [
         "tech-map"
       ],
@@ -1279,7 +1380,7 @@
       "id": "tech-node-system-simulation",
       "title": "Simulation",
       "path": "tech-map/modules/system/simulation.md",
-      "summary": "仿真是控制、学习与部署之间的中介层。",
+      "summary": "仿真是控制、学习与部署之间的中介层",
       "tags": [
         "tech-map",
         "tooling"
