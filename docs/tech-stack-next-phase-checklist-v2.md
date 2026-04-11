@@ -146,6 +146,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 明确 `id / tags / related` 的生成规则
 - [x] 生成第一版导出样例
 - [x] 实现第一版最小导出脚本并批量导出核心页面
+- [x] 将 `tech-map` 节点正式纳入导出层
 
 ## 我建议的实际执行顺序
 1. 先看 `references/` 现状
@@ -242,8 +243,9 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已建立 `exports/minimal-schema-v1.md`，定义当前阶段最小可用导出层 schema，覆盖 `wiki_page`、`roadmap_page`、`entity_page`、`reference_page`、`tech_map_node` 五类对象。
 - 2026-04-11：已在导出层 schema 草案中明确 `id / tags / related` 的生成规则，当前采用“路径稳定命名 + 半规则标签 + 显式链接优先 related”的最小策略。
 - 2026-04-11：已生成 `exports/sample-export-v1.json`，用一批核心页面验证最小 schema 的可落地性，当前覆盖 `Centroidal Dynamics`、`Reinforcement Learning`、`Locomotion`、`MuJoCo`、`Route A`、`Locomotion RL references`。
-- 2026-04-11：已实现 `scripts/export_minimal.py`，并生成 `exports/index-v1.json`，当前可批量导出 45 个核心 markdown 页面为结构化数据。
-- 下一步建议：继续提高导出质量，例如补 `tech-map` 节点导出、优化 `summary / tags / related` 的精度，或者开始对接网页消费层。
+- 2026-04-11：已实现 `scripts/export_minimal.py`，并生成 `exports/index-v1.json`，当前可批量导出核心 markdown 页面为结构化数据。
+- 2026-04-11：已将 `tech-map` 正式纳入导出层，当前 `index-v1.json` 共导出 63 个对象，其中包含 18 个 `tech_map_node`。
+- 下一步建议：继续提高导出质量，例如优化 `summary / tags / related` 的精度，或者开始定义网页消费层该如何读取 `index-v1.json`。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

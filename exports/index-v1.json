@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 45,
+  "item_count": 63,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -972,6 +972,324 @@
       "status": "active",
       "type": "reference_page",
       "reference_kind": "benchmarks"
+    },
+    {
+      "id": "tech-node-overview",
+      "title": "全栈技术域总览",
+      "path": "tech-map/overview.md",
+      "summary": "本页不是单纯列方向，而是 `Robotics_Notebooks` 的技术栈模块入口页。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [
+        "roadmap-README",
+        "wiki-comparisons-wbc-vs-rl",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-domain-randomization",
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-optimal-control",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-state-estimation",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-tsid",
+        "wiki-concepts-whole-body-control",
+        "wiki-methods-imitation-learning",
+        "wiki-methods-model-predictive-control",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-trajectory-optimization",
+        "wiki-overview-robot-learning-overview",
+        "wiki-roadmaps-humanoid-control-roadmap",
+        "wiki-tasks-locomotion",
+        "wiki-tasks-manipulation"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "overview"
+    },
+    {
+      "id": "tech-node-dependency-graph",
+      "title": "模块依赖关系图",
+      "path": "tech-map/dependency-graph.md",
+      "summary": "本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [
+        "wiki-comparisons-wbc-vs-rl",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-domain-randomization",
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-optimal-control",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-state-estimation",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-tsid",
+        "wiki-concepts-whole-body-control",
+        "wiki-methods-imitation-learning",
+        "wiki-methods-model-predictive-control",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-trajectory-optimization",
+        "wiki-overview-robot-learning-overview",
+        "wiki-tasks-locomotion"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "dependency_graph"
+    },
+    {
+      "id": "tech-node-control-humanoid-locomotion",
+      "title": "Humanoid Locomotion",
+      "path": "tech-map/modules/control/humanoid-locomotion.md",
+      "summary": "人形双足步行、平衡与扰动恢复是当前主攻方向之一。",
+      "tags": [
+        "tech-map",
+        "humanoid",
+        "locomotion",
+        "control"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "control"
+    },
+    {
+      "id": "tech-node-control-mpc",
+      "title": "MPC",
+      "path": "tech-map/modules/control/mpc.md",
+      "summary": "模型预测控制是连接模型、约束与优化求解的重要方法。",
+      "tags": [
+        "tech-map",
+        "control"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "control"
+    },
+    {
+      "id": "tech-node-control-whole-body-control",
+      "title": "Whole-Body Control",
+      "path": "tech-map/modules/control/whole-body-control.md",
+      "summary": "全身控制是人形机器人运动控制的重要枢纽。",
+      "tags": [
+        "tech-map",
+        "control"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "control"
+    },
+    {
+      "id": "tech-node-il-behavior-cloning",
+      "title": "Behavior Cloning",
+      "path": "tech-map/modules/il/behavior-cloning.md",
+      "summary": "模仿学习最基础的切入口。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "il"
+    },
+    {
+      "id": "tech-node-il-diffusion-policy",
+      "title": "Diffusion Policy",
+      "path": "tech-map/modules/il/diffusion-policy.md",
+      "summary": "当前模仿学习中的重要生成式方法之一。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "il"
+    },
+    {
+      "id": "tech-node-il-motion-retarget",
+      "title": "Motion Retarget",
+      "path": "tech-map/modules/il/motion-retarget.md",
+      "summary": "连接人体动作数据与人形机器人技能迁移的关键模块。",
+      "tags": [
+        "tech-map",
+        "il"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "il"
+    },
+    {
+      "id": "tech-node-math-linear-algebra",
+      "title": "线性代数",
+      "path": "tech-map/modules/math/linear-algebra.md",
+      "summary": "机器人场景重点：向量空间、矩阵变换、特征值分解、最小二乘、雅可比相关计算。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "math"
+    },
+    {
+      "id": "tech-node-rl-humanoid-rl",
+      "title": "Humanoid RL",
+      "path": "tech-map/modules/rl/humanoid-rl.md",
+      "summary": "聚焦人形机器人 locomotion 与 skill learning 中的强化学习问题。",
+      "tags": [
+        "tech-map",
+        "humanoid",
+        "rl"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "rl"
+    },
+    {
+      "id": "tech-node-rl-ppo",
+      "title": "PPO",
+      "path": "tech-map/modules/rl/ppo.md",
+      "summary": "PPO 是机器人强化学习中最常见、最实用的基础算法之一。",
+      "tags": [
+        "tech-map",
+        "rl"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "rl"
+    },
+    {
+      "id": "tech-node-rl-sim2real",
+      "title": "Sim2Real",
+      "path": "tech-map/modules/rl/sim2real.md",
+      "summary": "重点关注域随机化、系统辨识、鲁棒训练与部署闭环。",
+      "tags": [
+        "tech-map",
+        "rl",
+        "sim2real"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "rl"
+    },
+    {
+      "id": "tech-node-robotics-dynamics",
+      "title": "动力学",
+      "path": "tech-map/modules/robotics/dynamics.md",
+      "summary": "重点包括牛顿欧拉法、拉格朗日法、浮动基动力学、接触建模。",
+      "tags": [
+        "tech-map",
+        "dynamics"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "robotics"
+    },
+    {
+      "id": "tech-node-robotics-kinematics",
+      "title": "运动学",
+      "path": "tech-map/modules/robotics/kinematics.md",
+      "summary": "重点包括正逆运动学、雅可比、微分运动学。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "robotics"
+    },
+    {
+      "id": "tech-node-robotics-rigid-body-motion",
+      "title": "刚体运动",
+      "path": "tech-map/modules/robotics/rigid-body-motion.md",
+      "summary": "重点包括旋转表示、坐标变换、SE(3)、Twist/Wrench。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "robotics"
+    },
+    {
+      "id": "tech-node-system-deployment",
+      "title": "Deployment",
+      "path": "tech-map/modules/system/deployment.md",
+      "summary": "部署阶段关注控制频率、硬件接口、安全性与调试闭环。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "system"
+    },
+    {
+      "id": "tech-node-system-ros2",
+      "title": "ROS2",
+      "path": "tech-map/modules/system/ros2.md",
+      "summary": "机器人系统工程和集成阶段的重要基础设施。",
+      "tags": [
+        "tech-map"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "system"
+    },
+    {
+      "id": "tech-node-system-simulation",
+      "title": "Simulation",
+      "path": "tech-map/modules/system/simulation.md",
+      "summary": "仿真是控制、学习与部署之间的中介层。",
+      "tags": [
+        "tech-map",
+        "tooling"
+      ],
+      "related": [],
+      "source_links": [],
+      "status": "active",
+      "type": "tech_map_node",
+      "node_kind": "module",
+      "layer": "system"
     }
   ]
 }

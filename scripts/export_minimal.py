@@ -91,6 +91,10 @@ def path_to_id(path: Path) -> str:
     if parts[0] == "references":
         return f"reference-{parts[1]}-{stem}"
     if parts[0] == "tech-map":
+        if len(parts) >= 3 and parts[1] == "modules":
+            return f"tech-node-{parts[2]}-{stem}"
+        if len(parts) >= 3 and parts[1] == "research-directions":
+            return f"tech-node-research-{stem}"
         return f"tech-node-{stem}"
     return slugify("-".join(parts)).removesuffix("-md")
 
@@ -199,7 +203,15 @@ def build_item(path: Path) -> Dict:
         item["reference_kind"] = parts[1] if parts[1] in REFERENCE_KINDS else "unknown"
     elif parts[0] == "tech-map":
         item["type"] = "tech_map_node"
-        item["node_kind"] = "module"
+        if len(parts) >= 3 and parts[1] == "modules":
+            item["node_kind"] = "module"
+            item["layer"] = parts[2]
+        elif path.name == "dependency-graph.md":
+            item["node_kind"] = "dependency_graph"
+        elif path.name == "overview.md":
+            item["node_kind"] = "overview"
+        else:
+            item["node_kind"] = "meta"
     else:
         item["type"] = "unknown"
     return item
@@ -218,6 +230,10 @@ def collect_paths() -> List[Path]:
         "references/papers/*.md",
         "references/repos/*.md",
         "references/benchmarks/*.md",
+        "tech-map/overview.md",
+        "tech-map/dependency-graph.md",
+        "tech-map/modules/*/*.md",
+        "tech-map/research-directions/*.md",
     ]
     paths: List[Path] = []
     for pattern in patterns:
