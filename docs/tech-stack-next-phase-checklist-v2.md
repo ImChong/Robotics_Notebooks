@@ -153,7 +153,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 建 `docs/content-backlog.md`
 - [x] 建 `docs/change-log.md`
 - [x] 完善模板规范与质量标准
-- [ ] 开始补 P0 实体页（Isaac Gym / MuJoCo / legged_gym / Unitree / Crocoddyl / Pinocchio）
+- [x] 补第一个 P0 实体页：Isaac Gym / Isaac Lab
+- [ ] 继续补 P0 实体页（MuJoCo / legged_gym / Unitree / Crocoddyl / Pinocchio）
 - [ ] 开始补 P0 缺失概念页（Floating Base Dynamics / Contact Dynamics / Capture Point）
 
 ## 我建议的实际执行顺序
@@ -183,7 +184,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已建 `docs/change-log.md`（与旧 `log.md` 区分的维护日志）。
 - 2026-04-11：已在 `schema/page-types.md` 末尾新增“新增页面最低质量标准”章节。
 - **V2 P1 全部完成。**
-- 下一步切换到 V2 P1 实体页补全（P0 backlog 第一批）：Isaac Gym / MuJoCo / legged_gym / Unitree / Pinocchio 等。
+- 2026-04-11：已补首个 P0 实体页 `Isaac Gym / Isaac Lab`，并在实体页中明确说明 NVIDIA 官方已弃用 Isaac Gym，推荐迁移到 Isaac Lab。
+- 下一步继续补 P0 实体页：MuJoCo / legged_gym / Unitree / Crocoddyl / Pinocchio。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
