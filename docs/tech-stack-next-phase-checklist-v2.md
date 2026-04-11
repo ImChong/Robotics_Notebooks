@@ -7,17 +7,18 @@
 
 ## 当前项目状态判断
 
-和 v1 阶段相比，项目已经不是“只有骨架”的状态了。
+和 v2 刚建立时相比，项目状态已经明显变化了。
 
 现在更准确的判断是：
 
-1. **核心主干 wiki 已经基本成型**
-2. **页面数量已经开始形成主线知识链**
-3. **真正的短板，开始从“缺页面”转向“缺结构联动”和“缺执行入口”**
+1. **核心主干 wiki 已经不仅是“基本成型”，而是已经能串出完整主线**
+2. **tech-map / roadmap / README / index 已经形成可用入口体系**
+3. **第一批关键实体页和缺失概念页也已补齐**
+4. **当前最主要的短板，开始从“缺概念页”转向“缺继续深挖入口”和“缺 references / sources 联动”**
 
 一句话：
 
-> 现在项目的主要矛盾，已经从“内容不够”切换成“结构怎么联起来、入口怎么更好用、路线怎么更可执行”。
+> 现在项目的主要矛盾，已经从“主干内容不够”切换成“已有内容如何继续向论文、代码、工具和资源层展开”。
 
 ## 已完成的主干内容
 
@@ -28,12 +29,29 @@
 - [x] `State Estimation`
 - [x] `System Identification`
 - [x] `Trajectory Optimization`
+- [x] `Floating Base Dynamics`
+- [x] `Contact Dynamics`
+- [x] `Capture Point / DCM`
+
+### 已完成的第一批关键实体页
+- [x] `Isaac Gym / Isaac Lab`
+- [x] `MuJoCo`
+- [x] `legged_gym`
+- [x] `Pinocchio`
+- [x] `Crocoddyl`
+- [x] `Unitree`
 
 ### 当前主线已经能串起来
 当前已经初步具备这条知识链：
 
 ```text
 LIP / ZMP
+  ↓
+Floating Base Dynamics
+  ↓
+Contact Dynamics
+  ↓
+Capture Point / DCM
   ↓
 Centroidal Dynamics
   ↓
@@ -45,86 +63,46 @@ State Estimation / System Identification / Sim2Real
 ```
 
 这意味着：
-- 再继续无脑补散页，收益已经下降
-- 接下来更该做的是“把已有内容组织成可导航、可执行、可扩展的系统”
+- 再继续线性补散页，收益已经明显下降
+- 接下来更该做的是“让已有主线连接到论文、代码、工具、资源入口”
 
 ## 下一阶段总目标
 
-把 `Robotics_Notebooks` 从“已经有主干内容的知识库草稿”，推进到：
+把 `Robotics_Notebooks` 从“已经有主干内容的技术栈知识库”，推进到：
 
-> **一个能指导学习顺序、能提供模块导航、能继续稳定扩展的机器人技术栈系统。**
+> **一个不仅能讲清主线，还能把用户自然带到 references / sources / tools / papers 继续深挖的导航系统。**
 
 ## 下一阶段优先级重排
 
-## P0，最高优先级，先做结构联动
+## P0，最高优先级，先做 references / sources / wiki 联动
 
-### 1. 打通 tech-map 和 wiki 的映射
-目标：让技术栈地图不只是标题列表，而是真正能跳到知识页。
+### 1. 建立 references / sources 与现有主线模块的映射关系
+目标：让已有 wiki 页面不只停在概念解释，而是能继续往下挖论文、开源代码、课程和工具。
 
 待办：
-- [x] 更新 `tech-map/overview.md`，补一级模块说明
-- [x] 更新 `tech-map/dependency-graph.md`，明确主线依赖关系
-- [x] 为关键模块补对应 wiki 链接
-- [ ] 明确模块卡片与 wiki 页的双向映射规则
+- [ ] 审视 `references/` 当前结构
+- [ ] 审视 `sources/` 当前结构
+- [ ] 为当前主线模块建立 references 映射入口
+- [ ] 为关键实体页建立工具 / repo / docs 映射入口
+- [ ] 让 `references/` 和 `sources/` 明确区分职责
 
 完成标准：
-- 用户从 tech-map 任一主模块出发，都能跳到对应的 wiki / roadmap / references
+- 用户从任一主线概念页或实体页，都能顺着进入对应的论文 / 开源项目 / 资源入口
 
-### 2. 强化 roadmap 的执行性
-目标：把路线图从“知识导航”升级成“学习执行路线”。
+### 2. 建立“主线深挖入口”页面
+目标：不是让用户自己到处找，而是给出下一步看什么。
 
 待办：
-- [x] 更新 `roadmap/route-a-motion-control.md`
-- [x] 为阶段补齐：前置知识 / 核心问题 / 推荐阅读 / 产出物
-- [x] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
-- [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
+- [ ] 按当前主线补“继续阅读入口”结构
+- [ ] 为控制主链建立 paper / repo / tool 三类延伸入口
+- [ ] 为学习主链建立 benchmark / project / course 三类延伸入口
 
 完成标准：
-- 路线图能直接回答：现在先学什么，下一步学什么，学完输出什么
+- 任意一条主链都不止有 wiki 页面，还有继续深挖的结构化出口
 
-### 3. 升级 README 和 index 为真正入口
-目标：让项目首页第一次打开就知道怎么用。
+## P1，第二优先级，准备导出层与网页消费层
 
-待办：
-- [x] 重写 README 的“适合谁看 / 怎么使用 / 从哪里开始”
-- [x] 更新 `index.md`，让它更像总导航页而不是简单索引
-- [x] 明确 wiki / roadmap / tech-map / references 的边界
-
-完成标准：
-- 新读者打开 README 和 index，就能迅速找到起点和路径
-
-## P1，第二优先级，开始规范化扩展
-
-### 4. 建立统一页面模板规范
-目标：控制后续扩展质量，避免页面风格越来越散。
-
-待办：
-- [x] 建 wiki 页面模板规范（`schema/page-types.md` 已含完整页面类型定义）
-- [x] 建立 wiki 页面最低质量标准（`schema/page-types.md` 末尾新增章节）
-- [x] 建 tech-map 模块卡片模板规范（`tech-map/overview.md` 和 `tech-map/dependency-graph.md` 已实质完成）
-
-### 5. 建立 backlog 和迭代记录
-目标：让后续扩展变成可持续维护，而不是想到哪写到哪。
-
-待办：
-- [x] 建 `docs/content-backlog.md`
-- [x] 建 `docs/change-log.md`
-- [x] 定义新增页面的最低质量标准
-- [x] 定义页面之间必须互链的规则（`schema/linking.md` 已覆盖）
-
-### 6. 开始补关键实体页
-目标：把“概念和方法”继续接到“工具和生态”。
-
-待办：
-- [ ] `Isaac Gym / Isaac Lab`
-- [ ] `MuJoCo`
-- [ ] `Unitree`
-- [ ] `legged_gym`
-- [ ] `OpenLoong / 人形机器人开源生态`
-
-## P2，第三优先级，准备导出和展示层
-
-### 7. 准备最小可用导出层
+### 3. 准备最小可用导出层
 目标：为网页、脑图、未来可视化展示打基础。
 
 待办：
@@ -132,8 +110,9 @@ State Estimation / System Identification / Sim2Real
 - [ ] 导出 wiki 元信息
 - [ ] 导出 roadmap 数据
 - [ ] 导出 dependency 数据
+- [ ] 导出 entity 元信息
 
-### 8. 评估网页消费层需要什么字段
+### 4. 评估网页消费层需要什么字段
 目标：不是急着做页面，而是先把数据层准备对。
 
 待办：
@@ -142,41 +121,40 @@ State Estimation / System Identification / Sim2Real
 - [ ] 列出路线页需要字段
 - [ ] 对照现有 markdown 看缺什么
 
+## P2，第三优先级，继续第二批扩展内容
+
+### 5. 第二批实体页 / 方法页 / 概念页补充
+目标：在不打散主线的前提下继续扩展完整度。
+
+待办：
+- [ ] `Policy Optimization Methods (PPO / SAC / TD3)`
+- [ ] `Diffusion Policy`
+- [ ] `Model-Based RL`
+- [ ] `Privileged Training`
+- [ ] `Loco-manipulation`
+- [ ] `Balance Recovery`
+- [ ] `Jump / Hopping`
+
 ## 当前最明确待办
-- [x] 更新 `tech-map/overview.md`
-- [x] 更新 `tech-map/dependency-graph.md`
-- [x] 更新 `roadmap/route-a-motion-control.md`
-- [x] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
-- [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
-- [x] 更新 `README.md`
-- [x] 更新 `index.md`
-- [x] 建 `docs/content-backlog.md`
-- [x] 建 `docs/change-log.md`
-- [x] 完善模板规范与质量标准
-- [x] 补第一个 P0 实体页：Isaac Gym / Isaac Lab
-- [x] 补第二个 P0 实体页：MuJoCo
-- [x] 补第三个 P0 实体页：legged_gym
-- [x] 补第四个 P0 实体页：Pinocchio
-- [x] 补第五个 P0 实体页：Crocoddyl
-- [x] 补第六个 P0 实体页：Unitree
-- [x] 开始补 P0 缺失概念页：Floating Base Dynamics
-- [x] 补第二个 P0 缺失概念页：Contact Dynamics
-- [x] 补第三个 P0 缺失概念页：Capture Point / DCM
+- [ ] 审视 `references/` 当前结构
+- [ ] 审视 `sources/` 当前结构
+- [ ] 规划 references / sources / wiki 三层联动规则
+- [ ] 为当前控制主线建立 references 入口
+- [ ] 为当前工具实体页建立 docs / repo / project 入口
+- [ ] 设计导出层最小 schema 草案
 
 ## 我建议的实际执行顺序
-1. ~~先改 `tech-map/overview.md`~~
-2. ~~再改 `tech-map/dependency-graph.md`~~
-3. ~~再改 `roadmap/route-a-motion-control.md`~~
-4. ~~然后补两个 learning path~~
-5. ~~改 README / index 入口~~
-6. ~~做模板和 backlog~~
-7. **下一步：补 P0 实体页和缺失概念页**
-8. 之后推进 V2 P2（导出层）
+1. 先看 `references/` 现状
+2. 再看 `sources/` 现状
+3. 明确这两个目录和 `wiki/` 的职责边界
+4. 先把控制主链接到 references / repo / docs
+5. 再把实体页接到工具文档与开源项目
+6. 然后开始做导出层 schema
 
-## 本次版本升级说明
-- v1 的重点是补主干 wiki 页面
-- v2 的重点切换为：**结构联动、入口优化、路线执行化、维护规范化**
-- 以后默认维护 v2，不再以 v1 作为主要执行看板
+## 当前阶段变化说明
+- v1 的重点：补主干 wiki 页面
+- v2 前半段的重点：结构联动、入口优化、路线执行化
+- v2 当前阶段的重点：**把主干内容继续接到 references / sources / tools / projects**
 
 ## 本次推进记录
 - 2026-04-11：已完成 `tech-map/overview.md` 重写。
@@ -185,21 +163,14 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已完成两个 learning path 重写。
 - 2026-04-11：已完成 README 重写为真正入口页。
 - 2026-04-11：已完成 index.md 重写为真正导航页。
-- **V2 P0 全部完成。**
+- **V2 P0（结构联动）已全部完成。**
 - 2026-04-11：已建 `docs/content-backlog.md`（P0/P1/P2 分级待办 + 质量标准）。
 - 2026-04-11：已建 `docs/change-log.md`（与旧 `log.md` 区分的维护日志）。
 - 2026-04-11：已在 `schema/page-types.md` 末尾新增“新增页面最低质量标准”章节。
-- **V2 P1 全部完成。**
-- 2026-04-11：已补首个 P0 实体页 `Isaac Gym / Isaac Lab`，并在实体页中明确说明 NVIDIA 官方已弃用 Isaac Gym，推荐迁移到 Isaac Lab。
-- 2026-04-11：已补第二个 P0 实体页 `MuJoCo`，并明确说明当前官方维护者是 Google DeepMind，`mujoco-py` 已 deprecated，新项目应优先官方 bindings。
-- 2026-04-11：已补第三个 P0 实体页 `legged_gym`，并明确说明它是建立在 Isaac Gym 之上的经典 RL 训练框架，值得学工程经验，但技术语境偏旧一代 NVIDIA 栈。
-- 2026-04-11：已补第四个 P0 实体页 `Pinocchio`，并明确说明它不是仿真器也不是控制器，而是 TSID / WBC / trajectory optimization 工具链中的关键动力学计算底座。
-- 2026-04-11：已补第五个 P0 实体页 `Crocoddyl`，并明确说明它是建立在 Pinocchio 之上的最优控制与轨迹优化工具箱，适合做人形 / 足式的 shooting-based optimal control。
-- 2026-04-11：已补第六个 P0 实体页 `Unitree`，并明确说明它是当前四足 / 人形机器人研究里最重要的真实硬件平台之一。
-- **P0 backlog 第一批实体页已全部完成。**
-- 2026-04-11：已补第一批缺失概念页 `Floating Base Dynamics`，用于补齐 humanoid / legged control 与 fixed-base robot 的本质差异。
-- 2026-04-11：已补第二个缺失概念页 `Contact Dynamics`，用于补齐接触力、接触约束与 locomotion / WBC / state estimation 之间的动力学桥接。
-- 2026-04-11：已补第三个缺失概念页 `Capture Point / DCM`，用于补齐从 LIP / ZMP 到动态平衡与扰动恢复理解的关键桥梁。
+- **V2 P1（规范化扩展）已全部完成。**
+- 2026-04-11：已补齐第一批关键实体页：Isaac Gym / Isaac Lab、MuJoCo、legged_gym、Pinocchio、Crocoddyl、Unitree。
+- 2026-04-11：已补齐第一批关键缺失概念页：Floating Base Dynamics、Contact Dynamics、Capture Point / DCM。
+- 当前阶段判断已更新：下一步应从“继续补概念”切换到“建立 references / sources / wiki 的三层联动”。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
