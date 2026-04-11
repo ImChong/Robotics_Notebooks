@@ -58,6 +58,7 @@
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md)
 - [LIP / ZMP](wiki/concepts/lip-zmp.md)
 - [Centroidal Dynamics](wiki/concepts/centroidal-dynamics.md)
+- [TSID](wiki/concepts/tsid.md)
 
 ### Methods
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)

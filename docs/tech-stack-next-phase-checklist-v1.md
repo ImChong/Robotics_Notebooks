@@ -27,7 +27,7 @@
 待办：
 - [x] 补 `LIP / ZMP`
 - [x] 补 `Centroidal Dynamics`
-- [ ] 补 `TSID`
+- [x] 补 `TSID`
 - [ ] 补 `State Estimation`（面向运动控制）
 - [ ] 补 `System Identification`（面向 sim2real）
 - [ ] 补 `Trajectory Optimization`
@@ -128,7 +128,7 @@
 ## 当前明确待办
 - [x] 产出 `LIP / ZMP` 页面
 - [x] 产出 `Centroidal Dynamics` 页面
-- [ ] 产出 `TSID` 页面
+- [x] 产出 `TSID` 页面
 - [ ] 产出 `State Estimation` 页面
 - [ ] 产出 `System Identification` 页面
 - [ ] 产出 `Trajectory Optimization` 页面
@@ -143,7 +143,8 @@
 ## 本次推进记录
 - 2026-04-11：已新增 `wiki/concepts/lip-zmp.md`，并同步更新 `index.md` 索引。
 - 2026-04-11：已新增 `wiki/concepts/centroidal-dynamics.md`，并同步更新 `index.md` 索引。
-- 下一步建议直接继续补 `TSID`，这样 `Centroidal Dynamics → TSID / WBC` 这段控制落地链条就完整了。
+- 2026-04-11：已新增 `wiki/concepts/tsid.md`，并同步更新 `index.md` 索引。
+- 下一步建议继续补 `State Estimation`，把控制闭环里的“状态从哪来”这块补上。
 
 ## 维护规则
 以后我会优先更新这个文件，而不是把方向散落在聊天里。
