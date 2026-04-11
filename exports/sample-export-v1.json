@@ -1,0 +1,142 @@
+{
+  "version": "v1",
+  "generated_mode": "manual-sample",
+  "purpose": "验证 minimal-schema-v1 在核心页面上的可落地性",
+  "items": [
+    {
+      "id": "wiki-concepts-centroidal-dynamics",
+      "type": "wiki_page",
+      "page_type": "concept",
+      "title": "Centroidal Dynamics",
+      "path": "wiki/concepts/centroidal-dynamics.md",
+      "summary": "用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。",
+      "tags": ["concept", "humanoid", "dynamics", "control", "locomotion"],
+      "related": [
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-tsid",
+        "wiki-concepts-whole-body-control",
+        "reference-papers-whole-body-control",
+        "reference-papers-survey-papers",
+        "reference-repos-humanoid-projects",
+        "reference-repos-utilities"
+      ],
+      "source_links": [],
+      "status": "active"
+    },
+    {
+      "id": "wiki-methods-reinforcement-learning",
+      "type": "wiki_page",
+      "page_type": "method",
+      "title": "Reinforcement Learning (RL)",
+      "path": "wiki/methods/reinforcement-learning.md",
+      "summary": "通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。",
+      "tags": ["method", "rl", "learning", "robotics", "locomotion"],
+      "related": [
+        "wiki-methods-imitation-learning",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-whole-body-control",
+        "wiki-tasks-locomotion",
+        "wiki-comparisons-wbc-vs-rl",
+        "reference-papers-locomotion-rl",
+        "reference-papers-survey-papers",
+        "reference-repos-rl-frameworks",
+        "reference-repos-simulation"
+      ],
+      "source_links": [],
+      "status": "active"
+    },
+    {
+      "id": "wiki-tasks-locomotion",
+      "type": "wiki_page",
+      "page_type": "task",
+      "title": "Locomotion",
+      "path": "wiki/tasks/locomotion.md",
+      "summary": "让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。",
+      "tags": ["task", "locomotion", "humanoid", "control", "rl"],
+      "related": [
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-sim2real",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-manipulation",
+        "reference-papers-locomotion-rl",
+        "reference-benchmarks-locomotion-benchmarks",
+        "reference-repos-rl-frameworks",
+        "reference-repos-simulation"
+      ],
+      "source_links": ["https://en.wikipedia.org/wiki/Model_predictive_control"],
+      "status": "active"
+    },
+    {
+      "id": "entity-mujoco",
+      "type": "entity_page",
+      "entity_kind": "simulator",
+      "title": "MuJoCo",
+      "path": "wiki/entities/mujoco.md",
+      "summary": "机器人与控制领域最经典的物理引擎之一，由 Google DeepMind 维护并开源。",
+      "tags": ["entity", "simulator", "robotics", "rl", "control"],
+      "related": [
+        "entity-isaac-gym-isaac-lab",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-locomotion",
+        "wiki-methods-trajectory-optimization",
+        "wiki-methods-model-predictive-control",
+        "reference-repos-simulation",
+        "reference-benchmarks-locomotion-benchmarks"
+      ],
+      "source_links": [
+        "https://mujoco.org/",
+        "https://github.com/google-deepmind/mujoco"
+      ],
+      "status": "active"
+    },
+    {
+      "id": "roadmap-route-a-motion-control",
+      "type": "roadmap_page",
+      "title": "路线A：运动控制算法工程师成长路线",
+      "path": "roadmap/route-a-motion-control.md",
+      "summary": "从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
+      "tags": ["roadmap", "motion-control", "humanoid", "learning"],
+      "related": [
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-methods-trajectory-optimization",
+        "wiki-concepts-tsid",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-imitation-learning"
+      ],
+      "source_links": [
+        "https://www.bilibili.com/video/BV17T421k78T/",
+        "https://arxiv.org/abs/1709.10219"
+      ],
+      "status": "active",
+      "stages": [
+        {"id": "l0", "title": "数学与编程基础"},
+        {"id": "l1", "title": "机器人学骨架"},
+        {"id": "l2", "title": "动力学与刚体建模"},
+        {"id": "l3", "title": "控制基础与最优化"},
+        {"id": "l4", "title": "人形运动控制主干"},
+        {"id": "l5", "title": "强化学习与模仿学习"},
+        {"id": "l6", "title": "综合实战与部署"}
+      ]
+    },
+    {
+      "id": "reference-papers-locomotion-rl",
+      "type": "reference_page",
+      "reference_kind": "papers",
+      "title": "Locomotion RL",
+      "path": "references/papers/locomotion-rl.md",
+      "summary": "聚焦人形/腿足机器人 locomotion 中的强化学习论文。",
+      "tags": ["papers", "rl", "locomotion", "humanoid"],
+      "related": [
+        "wiki-tasks-locomotion",
+        "wiki-methods-reinforcement-learning",
+        "reference-repos-rl-frameworks",
+        "reference-benchmarks-locomotion-benchmarks"
+      ],
+      "source_links": [],
+      "status": "active"
+    }
+  ]
+}

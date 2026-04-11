@@ -144,6 +144,7 @@ State Estimation / System Identification / Sim2Real
 - [~] 提升 `references/` 目录自身的总入口可导航性
 - [x] 设计导出层最小 schema 草案
 - [x] 明确 `id / tags / related` 的生成规则
+- [x] 生成第一版导出样例
 
 ## 我建议的实际执行顺序
 1. 先看 `references/` 现状
@@ -239,7 +240,8 @@ State Estimation / System Identification / Sim2Real
 - 当前 `references/` 已从目录树升级为初步可导航层。
 - 2026-04-11：已建立 `exports/minimal-schema-v1.md`，定义当前阶段最小可用导出层 schema，覆盖 `wiki_page`、`roadmap_page`、`entity_page`、`reference_page`、`tech_map_node` 五类对象。
 - 2026-04-11：已在导出层 schema 草案中明确 `id / tags / related` 的生成规则，当前采用“路径稳定命名 + 半规则标签 + 显式链接优先 related”的最小策略。
-- 下一步建议：按这套规则，开始生成第一版导出样例（先人工或半自动），验证 schema 能不能真的喂给网页层。
+- 2026-04-11：已生成 `exports/sample-export-v1.json`，用一批核心页面验证最小 schema 的可落地性，当前覆盖 `Centroidal Dynamics`、`Reinforcement Learning`、`Locomotion`、`MuJoCo`、`Route A`、`Locomotion RL references`。
+- 下一步建议：开始把样例导出扩成真正的批量导出（先手工扩一版或直接写导出脚本）。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
