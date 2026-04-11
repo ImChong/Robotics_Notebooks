@@ -157,7 +157,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 补第二个 P0 实体页：MuJoCo
 - [x] 补第三个 P0 实体页：legged_gym
 - [x] 补第四个 P0 实体页：Pinocchio
-- [ ] 继续补 P0 实体页（Unitree / Crocoddyl）
+- [x] 补第五个 P0 实体页：Crocoddyl
+- [ ] 继续补 P0 实体页（Unitree）
 - [ ] 开始补 P0 缺失概念页（Floating Base Dynamics / Contact Dynamics / Capture Point）
 
 ## 我建议的实际执行顺序
@@ -191,7 +192,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已补第二个 P0 实体页 `MuJoCo`，并明确说明当前官方维护者是 Google DeepMind，`mujoco-py` 已 deprecated，新项目应优先官方 bindings。
 - 2026-04-11：已补第三个 P0 实体页 `legged_gym`，并明确说明它是建立在 Isaac Gym 之上的经典 RL 训练框架，值得学工程经验，但技术语境偏旧一代 NVIDIA 栈。
 - 2026-04-11：已补第四个 P0 实体页 `Pinocchio`，并明确说明它不是仿真器也不是控制器，而是 TSID / WBC / trajectory optimization 工具链中的关键动力学计算底座。
-- 下一步继续补 P0 实体页：Unitree / Crocoddyl。
+- 2026-04-11：已补第五个 P0 实体页 `Crocoddyl`，并明确说明它是建立在 Pinocchio 之上的最优控制与轨迹优化工具箱，适合做人形 / 足式的 shooting-based optimal control。
+- 下一步继续补 P0 实体页：Unitree。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
