@@ -159,7 +159,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 补第四个 P0 实体页：Pinocchio
 - [x] 补第五个 P0 实体页：Crocoddyl
 - [x] 补第六个 P0 实体页：Unitree
-- [ ] 开始补 P0 缺失概念页（Floating Base Dynamics / Contact Dynamics / Capture Point）
+- [x] 开始补 P0 缺失概念页：Floating Base Dynamics
+- [ ] 继续补 P0 缺失概念页（Contact Dynamics / Capture Point）
 
 ## 我建议的实际执行顺序
 1. ~~先改 `tech-map/overview.md`~~
@@ -195,6 +196,7 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已补第五个 P0 实体页 `Crocoddyl`，并明确说明它是建立在 Pinocchio 之上的最优控制与轨迹优化工具箱，适合做人形 / 足式的 shooting-based optimal control。
 - 2026-04-11：已补第六个 P0 实体页 `Unitree`，并明确说明它是当前四足 / 人形机器人研究里最重要的真实硬件平台之一。
 - **P0 backlog 第一批实体页已全部完成。**
+- 2026-04-11：已补第一批缺失概念页 `Floating Base Dynamics`，用于补齐 humanoid / legged control 与 fixed-base robot 的本质差异。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
