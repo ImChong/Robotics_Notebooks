@@ -136,9 +136,9 @@ State Estimation / System Identification / Sim2Real
 - [ ] `Jump / Hopping`
 
 ## 当前最明确待办
-- [ ] 审视 `references/` 当前结构
-- [ ] 审视 `sources/` 当前结构
-- [ ] 规划 references / sources / wiki 三层联动规则
+- [x] 审视 `references/` 当前结构
+- [x] 审视 `sources/` 当前结构
+- [x] 明确 references / sources / wiki 三层职责边界
 - [ ] 为当前控制主线建立 references 入口
 - [ ] 为当前工具实体页建立 docs / repo / project 入口
 - [ ] 设计导出层最小 schema 草案
@@ -156,6 +156,63 @@ State Estimation / System Identification / Sim2Real
 - v2 前半段的重点：结构联动、入口优化、路线执行化
 - v2 当前阶段的重点：**把主干内容继续接到 references / sources / tools / projects**
 
+## references / sources / wiki 三层职责边界
+
+经过当前审视，三层职责可以明确为：
+
+### `sources/` = 原始资料输入层
+作用：
+- 新资料先扔这里
+- 原始课程、论文、视频、教程、博客、数据、工具入口的原材料层
+- 偏“待提炼、待吸收”
+
+不做什么：
+- 不负责给出结论
+- 不负责组织完整知识结构
+- 不直接承担主导航职责
+
+### `references/` = 继续深挖入口层
+作用：
+- 已经知道一个概念后，下一步应该看哪些论文、benchmark、repo、生态项目
+- 偏“按主题整理的外部延伸入口”
+- 服务于已有 wiki / roadmap 主线
+
+不做什么：
+- 不重复讲 wiki 里的概念解释
+- 不退化成纯链接堆
+- 不承担原始资料归档职责
+
+### `wiki/` = 结构化知识层
+作用：
+- 解释概念 / 方法 / 任务 / 比较 / 路线
+- 给出主线、定义、关系、理解框架
+- 是当前项目最核心的一层
+
+不做什么：
+- 不把资源全堆进正文
+- 不把页面写成 bibliography
+
+## 当前审视结论
+
+### `references/` 当前状态
+优点：
+- 已经分成 `papers/`、`repos/`、`benchmarks/` 三个大类
+- 结构方向是对的
+
+当前短板：
+- 和现有 wiki 主线的映射还不够显式
+- 用户还不能从某个概念页自然跳到对应 references 入口
+
+### `sources/` 当前状态
+优点：
+- 已经有输入资料层意识
+- 也明确了“先 sources，再 wiki”的原则
+
+当前短板：
+- 主题命名还偏原材料收纳
+- 和 references / wiki 的界面还没完全打清楚
+- 缺少“哪些 sources 已经被提炼、哪些还没被提炼”的状态感
+
 ## 本次推进记录
 - 2026-04-11：已完成 `tech-map/overview.md` 重写。
 - 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写。
@@ -171,6 +228,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已补齐第一批关键实体页：Isaac Gym / Isaac Lab、MuJoCo、legged_gym、Pinocchio、Crocoddyl、Unitree。
 - 2026-04-11：已补齐第一批关键缺失概念页：Floating Base Dynamics、Contact Dynamics、Capture Point / DCM。
 - 当前阶段判断已更新：下一步应从“继续补概念”切换到“建立 references / sources / wiki 的三层联动”。
+- 2026-04-11：已完成对 `references/` 与 `sources/` 现状的审视，并明确三层职责边界：`sources/` 负责原始输入，`references/` 负责继续深挖入口，`wiki/` 负责结构化知识主线。
+- 下一步建议：优先为当前控制主线补 references 入口，让用户从核心概念页能直接顺着进入论文 / repo / benchmark。 
 
 ## 维护规则
 以后优先维护这个 v2 文件。
