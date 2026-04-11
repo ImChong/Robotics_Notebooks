@@ -41,6 +41,7 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [MuJoCo](wiki/entities/mujoco.md)
 
 ### roadmap/ — 成长路线
 回答“应该先学什么、再学什么、学完输出什么”。
