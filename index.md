@@ -59,6 +59,7 @@
 - [LIP / ZMP](wiki/concepts/lip-zmp.md)
 - [Centroidal Dynamics](wiki/concepts/centroidal-dynamics.md)
 - [TSID](wiki/concepts/tsid.md)
+- [State Estimation](wiki/concepts/state-estimation.md)
 
 ### Methods
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
