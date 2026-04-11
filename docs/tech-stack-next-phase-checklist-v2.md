@@ -234,7 +234,9 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已为第二批主线页补“继续深挖入口”，当前新增覆盖 `Centroidal Dynamics`、`TSID`、`Trajectory Optimization`、`System Identification`。
 - 当前主线的大部分关键页已经能顺着跳到 references / repos / benchmarks。
 - 2026-04-11：已重写 `references/README.md`，从目录说明升级为 references 总入口页（快速入口 / 三个子目录职责 / 主线深挖入口 / 和 wiki / sources 的边界）。
-- 下一步建议：开始补 `references/papers/README.md`、`references/repos/README.md`、`references/benchmarks/README.md` 的主线映射感，继续把 references 本身做成真正的导航层。
+- 2026-04-11：已重写 `references/papers/README.md`、`references/repos/README.md`、`references/benchmarks/README.md`，让 references 三个子目录都具备“适合谁看 / 快速入口 / 主线对应关系”。
+- 当前 `references/` 已从目录树升级为初步可导航层。
+- 下一步建议：开始补 `sources/` 这侧的状态感与提炼感，或者直接推进导出层 schema 草案。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
