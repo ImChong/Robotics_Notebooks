@@ -156,7 +156,8 @@ State Estimation / System Identification / Sim2Real
 - [x] 补第一个 P0 实体页：Isaac Gym / Isaac Lab
 - [x] 补第二个 P0 实体页：MuJoCo
 - [x] 补第三个 P0 实体页：legged_gym
-- [ ] 继续补 P0 实体页（Unitree / Crocoddyl / Pinocchio）
+- [x] 补第四个 P0 实体页：Pinocchio
+- [ ] 继续补 P0 实体页（Unitree / Crocoddyl）
 - [ ] 开始补 P0 缺失概念页（Floating Base Dynamics / Contact Dynamics / Capture Point）
 
 ## 我建议的实际执行顺序
@@ -189,7 +190,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已补首个 P0 实体页 `Isaac Gym / Isaac Lab`，并在实体页中明确说明 NVIDIA 官方已弃用 Isaac Gym，推荐迁移到 Isaac Lab。
 - 2026-04-11：已补第二个 P0 实体页 `MuJoCo`，并明确说明当前官方维护者是 Google DeepMind，`mujoco-py` 已 deprecated，新项目应优先官方 bindings。
 - 2026-04-11：已补第三个 P0 实体页 `legged_gym`，并明确说明它是建立在 Isaac Gym 之上的经典 RL 训练框架，值得学工程经验，但技术语境偏旧一代 NVIDIA 栈。
-- 下一步继续补 P0 实体页：Unitree / Crocoddyl / Pinocchio。
+- 2026-04-11：已补第四个 P0 实体页 `Pinocchio`，并明确说明它不是仿真器也不是控制器，而是 TSID / WBC / trajectory optimization 工具链中的关键动力学计算底座。
+- 下一步继续补 P0 实体页：Unitree / Crocoddyl。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

@@ -43,6 +43,7 @@
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [legged_gym](wiki/entities/legged-gym.md)
+- [Pinocchio](wiki/entities/pinocchio.md)
 
 ### roadmap/ — 成长路线
 回答“应该先学什么、再学什么、学完输出什么”。

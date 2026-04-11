@@ -29,7 +29,7 @@
 | ~~`legged_gym`~~ ✅ | `wiki/entities/legged-gym.md` | 已完成：ETH 开源四足/人形 RL 训练框架 |
 | `Unitree` | wiki/entities/ | 国内最主流人形/四足硬件平台之一 |
 | `Crocoddyl` | wiki/entities/ | CNRS 的飞踢式人形优化控制框架 |
-| `Pinocchio` | wiki/entities/ | 刚体动力学 C++ 库，TSID/WBC 常用底层 |
+| ~~`Pinocchio`~~ ✅ | `wiki/entities/pinocchio.md` | 已完成：刚体动力学 C++ 库，TSID/WBC 常用底层 |
 
 ### 补缺失概念页
 
@@ -117,7 +117,7 @@
 - [x] legged_gym 页面
 - [ ] Unitree 页面
 - [ ] Crocoddyl 页面
-- [ ] Pinocchio 页面
+- [x] Pinocchio 页面
 - [ ] Floating Base Dynamics 页面
 - [ ] Contact Dynamics 页面
 - [ ] Capture Point / DCM 页面
