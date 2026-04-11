@@ -74,8 +74,8 @@ State Estimation / System Identification / Sim2Real
 目标：把路线图从“知识导航”升级成“学习执行路线”。
 
 待办：
-- [ ] 更新 `roadmap/route-a-motion-control.md`
-- [ ] 为阶段补齐：前置知识 / 核心问题 / 推荐阅读 / 产出物
+- [x] 更新 `roadmap/route-a-motion-control.md`
+- [x] 为阶段补齐：前置知识 / 核心问题 / 推荐阅读 / 产出物
 - [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
 
@@ -156,7 +156,7 @@ State Estimation / System Identification / Sim2Real
 ## 当前最明确待办
 - [x] 更新 `tech-map/overview.md`
 - [x] 更新 `tech-map/dependency-graph.md`
-- [ ] 更新 `roadmap/route-a-motion-control.md`
+- [x] 更新 `roadmap/route-a-motion-control.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
 - [ ] 更新 `README.md`
@@ -181,8 +181,9 @@ State Estimation / System Identification / Sim2Real
 ## 本次推进记录
 - 2026-04-11：已完成 `tech-map/overview.md` 重写，从简单列表升级为“模块总览 + 知识入口 + 当前主攻主线”页面。
 - 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写，从箭头列表升级为“主线依赖 + 分层关系 + 横向桥接 + 推荐阅读顺序”页面。
-- V2 第一项中的“overview / dependency / 关键模块链接”已基本打通。
-- 下一步建议继续推进 `roadmap/route-a-motion-control.md`，把结构联动进一步落到学习执行路线。
+- 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写，从空章节升级为“前置知识 + 核心问题 + 推荐做什么 + 推荐读什么 + 学完输出”的完整执行路线。
+- V2 P0 前两项已基本完成。
+- 下一步建议继续完善两个 learning path 页面，然后把重心切换到 README 和 index 入口优化。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
