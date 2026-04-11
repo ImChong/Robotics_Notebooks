@@ -99,29 +99,18 @@ State Estimation / System Identification / Sim2Real
 目标：控制后续扩展质量，避免页面风格越来越散。
 
 待办：
-- [ ] 建 wiki 页面模板规范
-- [ ] 建 roadmap 页面模板规范
-- [ ] 建 tech-map 模块卡片模板规范
-
-建议统一字段：
-- 一句话定义
-- 它解决什么问题
-- 为什么重要
-- 前置知识
-- 相关方法
-- 相关任务
-- 推荐资源
-- 相关项目/工具
-- 延伸阅读
+- [x] 建 wiki 页面模板规范（`schema/page-types.md` 已含完整页面类型定义）
+- [x] 建立 wiki 页面最低质量标准（`schema/page-types.md` 末尾新增章节）
+- [x] 建 tech-map 模块卡片模板规范（`tech-map/overview.md` 和 `tech-map/dependency-graph.md` 已实质完成）
 
 ### 5. 建立 backlog 和迭代记录
 目标：让后续扩展变成可持续维护，而不是想到哪写到哪。
 
 待办：
-- [ ] 建 `docs/content-backlog.md`
-- [ ] 建 `docs/change-log-next.md`
-- [ ] 定义新增页面的最低质量标准
-- [ ] 定义页面之间必须互链的规则
+- [x] 建 `docs/content-backlog.md`
+- [x] 建 `docs/change-log.md`
+- [x] 定义新增页面的最低质量标准
+- [x] 定义页面之间必须互链的规则（`schema/linking.md` 已覆盖）
 
 ### 6. 开始补关键实体页
 目标：把“概念和方法”继续接到“工具和生态”。
@@ -161,17 +150,21 @@ State Estimation / System Identification / Sim2Real
 - [x] 更新 `roadmap/learning-paths/if-goal-imitation-learning.md`
 - [x] 更新 `README.md`
 - [x] 更新 `index.md`
-- [ ] 建 `docs/content-backlog.md`
-- [ ] 建统一模板规范文件
+- [x] 建 `docs/content-backlog.md`
+- [x] 建 `docs/change-log.md`
+- [x] 完善模板规范与质量标准
+- [ ] 开始补 P0 实体页（Isaac Gym / MuJoCo / legged_gym / Unitree / Crocoddyl / Pinocchio）
+- [ ] 开始补 P0 缺失概念页（Floating Base Dynamics / Contact Dynamics / Capture Point）
 
 ## 我建议的实际执行顺序
 1. ~~先改 `tech-map/overview.md`~~
 2. ~~再改 `tech-map/dependency-graph.md`~~
 3. ~~再改 `roadmap/route-a-motion-control.md`~~
 4. ~~然后补两个 learning path~~
-5. **下一步：改 README / index 入口**
-6. 之后再做模板和 backlog
-7. 最后再考虑导出层
+5. ~~改 README / index 入口~~
+6. ~~做模板和 backlog~~
+7. **下一步：补 P0 实体页和缺失概念页**
+8. 之后推进 V2 P2（导出层）
 
 ## 本次版本升级说明
 - v1 的重点是补主干 wiki 页面
@@ -183,10 +176,14 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已完成 `tech-map/dependency-graph.md` 重写。
 - 2026-04-11：已完成 `roadmap/route-a-motion-control.md` 重写。
 - 2026-04-11：已完成两个 learning path 重写。
-- 2026-04-11：已完成 README 重写为真正入口页（适合谁 / 怎么用 / 从哪开始 / 项目结构 / 当前阶段）。
-- 2026-04-11：已完成 index.md 重写为真正导航页（快速入口表 / 四模块分工 / 推荐阅读顺序 / 主线知识链）。
+- 2026-04-11：已完成 README 重写为真正入口页。
+- 2026-04-11：已完成 index.md 重写为真正导航页。
 - **V2 P0 全部完成。**
-- 下一步切换到 V2 P1：建立模板规范、backlog、content-backlog。
+- 2026-04-11：已建 `docs/content-backlog.md`（P0/P1/P2 分级待办 + 质量标准）。
+- 2026-04-11：已建 `docs/change-log.md`（与旧 `log.md` 区分的维护日志）。
+- 2026-04-11：已在 `schema/page-types.md` 末尾新增“新增页面最低质量标准”章节。
+- **V2 P1 全部完成。**
+- 下一步切换到 V2 P1 实体页补全（P0 backlog 第一批）：Isaac Gym / MuJoCo / legged_gym / Unitree / Pinocchio 等。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
