@@ -56,6 +56,7 @@
 - [Whole-Body Control](wiki/concepts/whole-body-control.md)
 - [Domain Randomization](wiki/concepts/domain-randomization.md)
 - [Optimal Control (OCP)](wiki/concepts/optimal-control.md)
+- [LIP / ZMP](wiki/concepts/lip-zmp.md)
 
 ### Methods
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
