@@ -62,9 +62,9 @@ State Estimation / System Identification / Sim2Real
 目标：让技术栈地图不只是标题列表，而是真正能跳到知识页。
 
 待办：
-- [ ] 更新 `tech-map/overview.md`，补一级模块说明
+- [x] 更新 `tech-map/overview.md`，补一级模块说明
 - [ ] 更新 `tech-map/dependency-graph.md`，明确主线依赖关系
-- [ ] 为关键模块补对应 wiki 链接
+- [~] 为关键模块补对应 wiki 链接
 - [ ] 明确模块卡片与 wiki 页的双向映射规则
 
 完成标准：
@@ -154,7 +154,7 @@ State Estimation / System Identification / Sim2Real
 - [ ] 对照现有 markdown 看缺什么
 
 ## 当前最明确待办
-- [ ] 更新 `tech-map/overview.md`
+- [x] 更新 `tech-map/overview.md`
 - [ ] 更新 `tech-map/dependency-graph.md`
 - [ ] 更新 `roadmap/route-a-motion-control.md`
 - [ ] 更新 `roadmap/learning-paths/if-goal-locomotion-rl.md`
@@ -177,6 +177,10 @@ State Estimation / System Identification / Sim2Real
 - v1 的重点是补主干 wiki 页面
 - v2 的重点切换为：**结构联动、入口优化、路线执行化、维护规范化**
 - 以后默认维护 v2，不再以 v1 作为主要执行看板
+
+## 本次推进记录
+- 2026-04-11：已完成 `tech-map/overview.md` 重写，从简单列表升级为“模块总览 + 知识入口 + 当前主攻主线”页面。
+- 下一步直接继续做 `tech-map/dependency-graph.md`，把模块关系和主线依赖也补清楚。
 
 ## 维护规则
 以后优先维护这个 v2 文件。
