@@ -60,6 +60,7 @@
 - [Centroidal Dynamics](wiki/concepts/centroidal-dynamics.md)
 - [TSID](wiki/concepts/tsid.md)
 - [State Estimation](wiki/concepts/state-estimation.md)
+- [System Identification](wiki/concepts/system-identification.md)
 
 ### Methods
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
