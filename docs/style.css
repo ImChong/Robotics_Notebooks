@@ -430,6 +430,15 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   font-size: .92rem;
   line-height: 1.75;
 }
+.data-chip-button {
+  cursor: pointer;
+  background: var(--bg-alt);
+}
+.data-chip-active {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(45,116,218,.08);
+}
 #detailContentSection[hidden] {
   display: none;
 }

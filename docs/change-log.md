@@ -74,11 +74,15 @@
 - 扩展 `docs/main.js`，新增 roadmap page 渲染器，直接消费 `roadmap_pages`
 - 更新 `docs/index.html`，让首页“开始看路线”入口改为统一 roadmap route
 - 新增 `tests/test_roadmap_page.py`，验证 roadmap page 挂载点与渲染器接入点
+- 扩展 `docs/tech-map.html`，新增最小 layer filter / 分组导航区块
+- 扩展 `docs/main.js`，新增 tech-map layer filter 与节点重渲染逻辑
+- 新增 `tests/test_tech_map_filter.py`，验证 tech-map filter 挂载点与渲染逻辑接入点
 
 ### 项目阶段变化
 
 - 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module / roadmap page
-- 下一步重点应转向：tech-map 的最小 filter / 分组导航，以及是否还需要为其他页面类型补更细的信息架构
+- tech-map 也已经从“只能看全部节点”推进到“可以按 layer 进行最小筛选”的可用导航页
+- 下一步重点应转向：是否还需要为 tech-map 加更细筛选能力，以及是否继续补更多页面的信息架构细节
 
 ---
 
