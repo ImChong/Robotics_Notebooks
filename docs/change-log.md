@@ -70,11 +70,15 @@
 - 扩展 `docs/main.js`，新增 module page 渲染器，直接消费 `module_pages`
 - 更新 `docs/index.html`，让首页三个核心模块入口改为统一 module route
 - 新增 `tests/test_module_page.py`，验证 module page 挂载点与渲染器接入点
+- 重写 `docs/roadmap.html`，建立统一的 `roadmap.html?id=...` data-driven roadmap page
+- 扩展 `docs/main.js`，新增 roadmap page 渲染器，直接消费 `roadmap_pages`
+- 更新 `docs/index.html`，让首页“开始看路线”入口改为统一 roadmap route
+- 新增 `tests/test_roadmap_page.py`，验证 roadmap page 挂载点与渲染器接入点
 
 ### 项目阶段变化
 
-- 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module page
-- 下一步重点应转向：roadmap page 是否也从 preview 升级为真实页面，以及 tech-map 的最小 filter / 分组导航
+- 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module / roadmap page
+- 下一步重点应转向：tech-map 的最小 filter / 分组导航，以及是否还需要为其他页面类型补更细的信息架构
 
 ---
 

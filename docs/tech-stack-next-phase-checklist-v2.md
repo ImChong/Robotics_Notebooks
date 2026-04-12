@@ -157,7 +157,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 将 `docs/tech-map.html` 推进为 data-driven 页面，并接入 detail route
 - [x] 决定 detail page 下一阶段先支持最小 markdown 正文同步（保真展示 raw markdown）
 - [x] 将 module page 从 preview 升级为真实页面（`module.html?id=...`）
-- [ ] 评估 roadmap page 是否也从 preview 升级为真实页面
+- [x] 将 roadmap page 从 preview 升级为真实页面（`roadmap.html?id=...`）
 - [ ] 为 tech-map 增加最小 layer filter 或分组导航
 
 ## 我建议的实际执行顺序
@@ -273,7 +273,10 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-12：已新增 `docs/module.html`，开始直接消费 `module_pages`，建立真实的 `module.html?id=...` 路由。
 - 2026-04-12：已扩展 `docs/main.js`，新增 module page 渲染器，并让首页模块入口跳到统一 module route。
 - 2026-04-12：已新增 `tests/test_module_page.py`，验证 module page 挂载点与渲染器接入点。
-- 当前阶段判断已更新：detail page 已进入 content-backed 阶段，module page 也已从 preview 升级为真实页面；下一步重点转向 roadmap page 是否也升级为真实页面，以及 tech-map 的最小 filter / 分组导航。
+- 2026-04-12：已重写 `docs/roadmap.html`，开始直接消费 `roadmap_pages`，建立真实的 `roadmap.html?id=...` 路由。
+- 2026-04-12：已扩展 `docs/main.js`，新增 roadmap page 渲染器，并让首页“开始看路线”跳到统一 roadmap route。
+- 2026-04-12：已新增 `tests/test_roadmap_page.py`，验证 roadmap page 挂载点与渲染器接入点。
+- 当前阶段判断已更新：detail / module / roadmap 页面都已从 preview 进入真实页面阶段；下一步重点转向 tech-map 的最小 filter / 分组导航。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

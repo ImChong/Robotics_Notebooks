@@ -67,6 +67,10 @@
     return 'module.html?id=' + encodeURIComponent(id);
   }
 
+  function roadmapHref(id) {
+    return 'roadmap.html?id=' + encodeURIComponent(id);
+  }
+
   function renderChipList(container, items, options) {
     if (!container) return;
     const renderItem = (options && options.renderItem) || function (item) {
@@ -286,13 +290,116 @@
 
     renderInternalLinks(entryEl, modulePage.entry_items, detailPages, { emptyText: '当前模块暂无入口项。' });
     renderInternalLinks(referenceEl, modulePage.references, detailPages, { emptyText: '当前模块暂无 references。' });
-    renderInternalLinks(roadmapEl, modulePage.roadmaps, detailPages, { emptyText: '当前模块暂无 roadmap 入口。' });
+    if (roadmapEl) {
+      const roadmapPages = pages.roadmap_pages || {};
+      roadmapEl.innerHTML = Array.isArray(modulePage.roadmaps) && modulePage.roadmaps.length ? modulePage.roadmaps.map(function (id) {
+        const page = roadmapPages[id] || {};
+        return [
+          '<article class="card data-card">',
+          '  <div>',
+          '    <h3><a href="' + escapeHtml(roadmapHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
+          '    <p class="card-meta">roadmap_page</p>',
+          '    <p>' + escapeHtml(page.summary || '当前路线暂无摘要') + '</p>',
+          '  </div>',
+          '  <div class="chip-list">',
+          '    <span class="data-chip"><code>' + escapeHtml(id) + '</code></span>',
+          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(roadmapHref(id)) + '">打开路线页</a>',
+          '  </div>',
+          '</article>'
+        ].join('');
+      }).join('') : '<article class="card"><p>当前模块暂无 roadmap 入口。</p></article>';
+      removeLoadingState(roadmapEl);
+    }
     renderChipList(relatedModuleEl, modulePage.related_modules, {
       renderItem: function (id) {
         const relatedModule = modulePages[id] || {};
         return '<a class="data-chip" href="' + escapeHtml(moduleHref(id)) + '">' + escapeHtml(relatedModule.title || id) + '</a>';
       }
     });
+  }
+
+  function renderRoadmapPage(siteData) {
+    if (!siteData || !siteData.pages) return;
+
+    const pages = siteData.pages;
+    const roadmapPages = pages.roadmap_pages || {};
+    const detailPages = pages.detail_pages || {};
+    const params = new URLSearchParams(window.location.search);
+    const roadmapId = params.get('id') || '';
+    const roadmapPage = roadmapId ? roadmapPages[roadmapId] : null;
+
+    const titleEl = document.getElementById('roadmapTitle');
+    const summaryEl = document.getElementById('roadmapSummary');
+    const metaEl = document.getElementById('roadmapMeta');
+    const stageEl = document.getElementById('roadmapStageList');
+    const relatedEl = document.getElementById('roadmapRelatedList');
+    const sourceEl = document.getElementById('roadmapSourceList');
+    const emptyState = document.getElementById('roadmapEmptyState');
+    const breadcrumb = document.getElementById('roadmapBreadcrumb');
+
+    if (!roadmapPage) {
+      if (emptyState) emptyState.hidden = false;
+      if (titleEl) titleEl.textContent = '未找到对应 roadmap page';
+      if (summaryEl) {
+        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>roadmap.html?id=roadmap-route-a-motion-control</code>。';
+        removeLoadingState(summaryEl);
+      }
+      if (metaEl) {
+        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 roadmap_pages 项。</p>';
+        removeLoadingState(metaEl);
+      }
+      if (stageEl) {
+        stageEl.innerHTML = '<article class="card"><p>当前无可展示的阶段。</p></article>';
+        removeLoadingState(stageEl);
+      }
+      renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
+      renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
+      if (breadcrumb) removeLoadingState(breadcrumb);
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+    document.title = (roadmapPage.title || roadmapId) + ' | Robotics Notebooks';
+
+    if (titleEl) titleEl.textContent = roadmapPage.title || roadmapId;
+    if (summaryEl) {
+      summaryEl.innerHTML = escapeHtml(roadmapPage.summary || '当前路线暂无摘要。');
+      removeLoadingState(summaryEl);
+    }
+    if (metaEl) {
+      metaEl.innerHTML = [
+        '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
+        '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
+        '<p><strong>相关项：</strong>' + escapeHtml((roadmapPage.related_items || []).length) + '</p>',
+        '<p><strong>来源链接：</strong>' + escapeHtml((roadmapPage.source_links || []).length) + '</p>'
+      ].join('');
+      removeLoadingState(metaEl);
+    }
+    if (breadcrumb) {
+      breadcrumb.innerHTML = [
+        '<a href="index.html">首页</a>',
+        '<span>/</span>',
+        '<span>' + escapeHtml(roadmapPage.title || roadmapId) + '</span>'
+      ].join('');
+      removeLoadingState(breadcrumb);
+    }
+    if (stageEl) {
+      const stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+      stageEl.innerHTML = stages.length ? stages.map(function (stage) {
+        return [
+          '<article class="card data-card">',
+          '  <div>',
+          '    <h3>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</h3>',
+          '    <p class="card-meta">阶段 ID：' + escapeHtml(stage.id || '-') + '</p>',
+          '  </div>',
+          '</article>'
+        ].join('');
+      }).join('') : '<article class="card"><p>当前路线暂无阶段定义。</p></article>';
+      removeLoadingState(stageEl);
+    }
+
+    renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
+    renderSourceCards(sourceEl, roadmapPage.source_links, '当前路线暂无来源链接。');
   }
 
   function renderTechMapPage(siteData) {
@@ -415,7 +522,7 @@
       quickEntries.innerHTML = entries.length
         ? entries.map(function (item) {
             const page = roadmapPages[item] || detailPages[item] || {};
-            return '<li><strong>' + escapeHtml(page.title || item) + '</strong><br /><small>' + escapeHtml(item) + '</small></li>';
+            return '<li><a href="' + escapeHtml(roadmapHref(item)) + '"><strong>' + escapeHtml(page.title || item) + '</strong></a><br /><small>' + escapeHtml(item) + '</small></li>';
           }).join('')
         : '<li>暂无快速入口数据</li>';
       removeLoadingState(quickEntries);
@@ -473,7 +580,7 @@
         return [
           '<article class="card data-card">',
           '  <div>',
-          '    <h3>' + escapeHtml(roadmapPage.title || roadmapId) + '</h3>',
+          '    <h3><a href="' + escapeHtml(roadmapHref(roadmapId)) + '">' + escapeHtml(roadmapPage.title || roadmapId) + '</a></h3>',
           '    <p class="card-meta">' + escapeHtml(roadmapId) + '</p>',
           '    <p>' + escapeHtml(roadmapPage.summary || '暂无路线摘要') + '</p>',
           '  </div>',
@@ -601,8 +708,9 @@
   const detailRoot = document.getElementById('detailTitle');
   const techMapRoot = document.getElementById('techMapNodeGrid');
   const moduleRoot = document.getElementById('moduleEntryList');
+  const roadmapRoot = document.getElementById('roadmapStageList');
 
-  if (previewRoot || detailRoot || techMapRoot || moduleRoot) {
+  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapRoot) {
     fetch('exports/site-data-v1.json')
       .then(function (response) {
         if (!response.ok) {
@@ -615,6 +723,7 @@
         if (detailRoot) renderDetailPage(siteData);
         if (techMapRoot) renderTechMapPage(siteData);
         if (moduleRoot) renderModulePage(siteData);
+        if (roadmapRoot) renderRoadmapPage(siteData);
       })
       .catch(function (error) {
         if (previewRoot) {
@@ -660,6 +769,16 @@
             'moduleReferenceList',
             'moduleRoadmapList',
             'moduleRelatedModules'
+          ]);
+        }
+        if (roadmapRoot) {
+          handlePageDataError(error, [
+            'roadmapBreadcrumb',
+            'roadmapSummary',
+            'roadmapMeta',
+            'roadmapStageList',
+            'roadmapRelatedList',
+            'roadmapSourceList'
           ]);
         }
       });

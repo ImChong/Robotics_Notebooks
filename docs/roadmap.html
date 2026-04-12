@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>成长路线 | Robotics Notebooks</title>
+  <meta name="description" content="Robotics Notebooks 路线页：直接消费 roadmap_pages，展示路线摘要、阶段、相关项和来源链接。" />
+  <meta name="keywords" content="Robotics Notebooks, roadmap page, roadmap_pages, 成长路线" />
+  <meta name="author" content="Chong Liu" />
+  <meta property="og:title" content="Robotics Notebooks | 路线页" />
+  <meta property="og:description" content="基于 site-data-v1.json 的真实路线页。" />
+  <meta property="og:type" content="website" />
+  <title>Robotics Notebooks | 路线页</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛣️</text></svg>" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="site-title" href="index.html">🗺️ 机器人技术栈地图 | Robotics Notebooks</a>
+      <a class="site-title" href="index.html">🛣️ 路线页 | Robotics Notebooks</a>
       <div class="header-spacer"></div>
       <div class="header-right">
         <a class="github-link" href="https://github.com/ImChong/Robotics_Notebooks" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <button class="theme-toggle" id="themeToggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
           <span class="icon-sun">☀️</span>
           <span class="icon-moon">🌙</span>
         </button>
@@ -22,107 +28,86 @@
     </div>
   </header>
   <main>
-    <section class="page-hero">
-      <div class="container">
-        <h1>🛣️ 成长路线</h1>
-        <p>这页不是给你一份看起来很全的课程目录，而是把“从当前能力出发，怎样一步步长成更强的人形机器人控制与学习工程师”讲清楚。</p>
-      </div>
-    </section>
-    <section class="page-subnav-wrap">
-      <div class="container">
-        <nav class="page-subnav" aria-label="页面导航">
-          <a href="./index.html">首页</a>
-          <a href="./roadmap.html">成长路线</a>
-          <a href="./tech-map.html">技术栈地图</a>
-          <a href="./references.html">论文导航</a>
+    <section class="page-hero detail-hero">
+      <div class="container detail-hero-stack">
+        <nav id="roadmapBreadcrumb" class="detail-breadcrumb data-loading" aria-label="面包屑导航">
+          <a href="index.html">首页</a>
+          <span>/</span>
+          <span>路线页</span>
         </nav>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">1. 这条路线为谁准备</h2>
-        <div class="structure-list">
-          <article class="simple-card"><h3>当前画像</h3><p>适合已经有一定机器人基础，但想把运动控制、强化学习、模仿学习和人形机器人主线真正打深的人。</p></article>
-          <article class="simple-card"><h3>目标画像</h3><p>不是泛泛懂一点，而是能在控制、学习、仿真和部署之间形成稳定闭环，逐步成长为更强的人形机器人算法工程师。</p></article>
-          <article class="simple-card"><h3>路线原则</h3><p>先打主线，再补扩展；先做出闭环，再扩知识面；先形成判断力，再追求资料覆盖率。</p></article>
+        <div class="detail-hero-top">
+          <div>
+            <p class="hero-kicker">Data-driven roadmap page</p>
+            <h1 id="roadmapTitle">正在读取路线页…</h1>
+            <p id="roadmapSummary" class="detail-summary data-loading">当前页面直接消费 <code>roadmap_pages</code>，展示路线摘要、阶段和相关入口。</p>
+          </div>
+          <aside class="hero-panel detail-meta-panel">
+            <h3>路线元信息</h3>
+            <div id="roadmapMeta" class="detail-meta-list data-loading">
+              <p class="data-meta">正在读取路线元信息…</p>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="page-subnav-wrap">
+      <div class="container page-subnav">
+        <a href="#roadmap-stages">阶段</a>
+        <a href="#roadmap-related">相关项</a>
+        <a href="#roadmap-sources">来源链接</a>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap-empty-section">
       <div class="container">
-        <h2 class="section-title">2. 路线 A：控制与学习主线</h2>
-        <p class="section-subtitle">这是当前最核心、最值得投入的主线，也是你项目内容建设的主骨架。</p>
-        <div class="route-list">
-          <article class="simple-card"><h3>L0 数学基础</h3><p>线性代数、微积分、概率统计、优化基础。目标不是把数学做成孤岛，而是让它能服务控制、估计和学习。</p></article>
-          <article class="simple-card"><h3>L1 机器人学骨架</h3><p>刚体运动、坐标变换、运动学、动力学。目标是能读懂机器人系统怎么描述，而不是只会抄公式。</p></article>
-          <article class="simple-card"><h3>L2 控制基础</h3><p>PD / PID、LQR、MPC、QP 和控制问题建模。目标是建立闭环、稳定性、约束和系统结构直觉。</p></article>
-          <article class="simple-card"><h3><a href="modules/motion-control.html">L3 人形运动控制</a></h3><p>质心动力学、步态控制、全身控制、接触切换、平衡与扰动恢复。目标是把 humanoid locomotion 主线真正打透。</p></article>
-          <article class="simple-card"><h3><a href="modules/reinforcement-learning.html">L4 机器人强化学习</a></h3><p>从 MDP 建模、PPO / SAC 到 reward design、curriculum、domain randomization 和 sim2real，目标是建立机器人 RL 的完整工程视角。</p></article>
-          <article class="simple-card"><h3><a href="modules/imitation-learning.html">L5 机器人模仿学习</a></h3><p>从 behavior cloning、distribution shift 到 motion retargeting、reference tracking、diffusion policy，目标是建立技能学习和行为先验注入能力。</p></article>
+        <article id="roadmapEmptyState" class="card empty-state" hidden>
+          <h2>未找到对应 roadmap page</h2>
+          <p>请在 URL 里传入合法的 <code>?id=...</code>。例如：<code>roadmap.html?id=roadmap-route-a-motion-control</code></p>
+          <div class="cta-row">
+            <a class="btn-secondary" href="site-data-preview.html">回到导出预览</a>
+            <a class="btn-secondary" href="index.html">回到首页</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="roadmap-stages">
+      <div class="container">
+        <h2 class="section-title">阶段</h2>
+        <p class="section-subtitle">先把路线阶段可视化，让路线页真正具备“照着走”的基本能力。</p>
+        <div id="roadmapStageList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取路线阶段…</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section section-alt" id="roadmap-related">
       <div class="container">
-        <h2 class="section-title">3. 路线 B：系统能力扩展主线</h2>
-        <p class="section-subtitle">在主线稳定后，再逐步向系统化能力扩展，不要一开始就把自己摊太平。</p>
-        <div class="card-grid">
-          <article class="card"><h3>感知与视觉</h3><p>视觉、点云、多模态、状态感知和任务感知，会在后续真实系统集成里越来越重要。</p></article>
-          <article class="card"><h3>规划与决策</h3><p>从低层控制走向任务层结构，理解 motion planning、task planning 和层级系统如何衔接。</p><p class="card-meta"><a href="../resources/theory/Robotic Manipulation, Fall 2023/00 - Robotic Manipulation.md" target="_blank" rel="noopener noreferrer">00 - Robotic Manipulation</a></p></article>
-          <article class="card"><h3>ROS2 / Middleware / 通信</h3><p>这是把算法塞进真实机器人系统的基础设施，不补这层，很多能力会长期停在单机实验里。</p></article>
-          <article class="card"><h3>硬件、部署与系统集成</h3><p>驱动、执行器、安全、调试、工程闭环，决定你能不能把算法真正落到整机。</p></article>
+        <h2 class="section-title">相关项</h2>
+        <p class="section-subtitle">当前阶段先统一跳到 detail route，后续如果关系页/模块页更稳定，再继续细化。</p>
+        <div id="roadmapRelatedList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取相关项…</p></article>
         </div>
       </div>
     </section>
 
-    <section class="section section-alt">
+    <section class="section" id="roadmap-sources">
       <div class="container">
-        <h2 class="section-title">4. 每个阶段应该达到什么状态</h2>
-        <div class="card-grid">
-          <article class="card"><h3>早期目标</h3><p>不再把控制、RL、IL 看成互相割裂的三个词，而是知道它们在系统里各自站什么位置。</p></article>
-          <article class="card"><h3>中期目标</h3><p>能复现一个最小 humanoid / locomotion 训练闭环，能读懂主流论文的系统结构，不只是看结果图。</p></article>
-          <article class="card"><h3>进阶目标</h3><p>能对 observation、action、reward、control interface、sim2real 路径给出自己的判断，而不是照抄已有配置。</p></article>
-          <article class="card"><h3>长期目标</h3><p>形成从理论、控制、学习到工程部署的连续理解，逐步向更完整的人形机器人系统能力扩展。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">5. 现在最值得优先做什么</h2>
-        <div class="route-list">
-          <article class="simple-card"><h3>优先动作 1</h3><p>持续深化三大模块页，把运动控制、强化学习、模仿学习写成真正能反复回看的总览页。</p></article>
-          <article class="simple-card"><h3>优先动作 2</h3><p>围绕 locomotion 主线补关键关系页，例如 WBC vs RL、RL vs IL、Sim2Real pipeline、retargeting pipeline。</p></article>
-          <article class="simple-card"><h3>优先动作 3</h3><p>从 resources 里挑最有价值的理论笔记、训练笔记和 know-how，逐步挂回主线页面形成内容闭环。</p></article>
-          <article class="simple-card"><h3>优先动作 4</h3><p>每补一页，都尽量回答“我为什么要学它”和“它在人形机器人系统里处于哪一层”。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt">
-      <div class="container">
-        <h2 class="section-title">6. 最常见的跑偏方式</h2>
-        <div class="structure-list">
-          <article class="simple-card"><h3>跑偏 1</h3><p>知识面摊太开，结果控制主线不深，什么都知道一点，但没形成真正能落地的判断力。</p></article>
-          <article class="simple-card"><h3>跑偏 2</h3><p>过早沉迷网页形式或资料收集，而没有持续产出结构化内容页。项目会越来越像展示页，而不是知识系统。</p></article>
-          <article class="simple-card"><h3>跑偏 3</h3><p>跳过控制骨架，直接端到端冲 RL / IL，最后容易停在“调参能跑”但无法解释系统行为的层面。</p></article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">7. 一句话总结</h2>
-        <div class="simple-card">
-          <p>成长路线的重点，不是把主题越列越多，而是让你沿着控制 → 学习 → 部署这条主线，持续长出真正可用的系统能力。</p>
+        <h2 class="section-title">来源链接</h2>
+        <p class="section-subtitle">这里先展示路线页显式引用的外部来源。</p>
+        <div id="roadmapSourceList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
         </div>
       </div>
     </section>
   </main>
-  <footer class="footer"><div class="container"><p>© Chong Liu 2026 · Robotics Notebooks</p></div></footer>
+  <footer class="footer">
+    <div class="container footer-stack">
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
+      <p class="footer-note">当前页是 roadmap page 的第一阶段实现：先把 preview 中的路线页升级为真实页面。</p>
+    </div>
+  </footer>
   <script src="main.js"></script>
 </body>
 </html>
