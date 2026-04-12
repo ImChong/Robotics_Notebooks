@@ -97,11 +97,15 @@
 - 扩展 `docs/main.js`，为 markdown 标题自动生成锚点，并根据正文自动生成 TOC
 - 扩展 `docs/style.css`，补齐目录导航布局、缩进层级与响应式样式
 - 再次扩展 `tests/test_content_sync.py`，验证 TOC 挂载点与目录渲染逻辑接入点
+- 再继续扩展 `docs/main.js`，给 detail 标题追加锚点复制按钮，并让 TOC 根据滚动位置自动高亮当前章节
+- 再继续扩展 `docs/style.css`，补齐标题锚点按钮与 TOC active 态样式
+- 再次扩展 `tests/test_content_sync.py`，验证阅读态增强逻辑已接入 detail page
 
 ### 项目阶段变化
 
 - 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module / roadmap page
 - detail page 的公式展示也已经从“最小样式高亮”推进到“KaTeX 真正数学排版”
+- detail page 的长文阅读体验也继续前进了一步：TOC 会跟随阅读位置高亮，标题支持一键复制锚点
 - tech-map 也已经从“只能看全部节点”推进到“可以按 layer 进行最小筛选”的可用导航页
 - 下一步重点应转向：是否还需要为 tech-map 加更细筛选能力，以及是否继续补更多页面的信息架构细节
 

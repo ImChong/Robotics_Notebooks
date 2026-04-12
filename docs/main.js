@@ -144,6 +144,56 @@
     removeLoadingState(container);
   }
 
+  function enhanceDetailHeadings(container) {
+    if (!container) return;
+    Array.from(container.querySelectorAll('h2[id], h3[id], h4[id]')).forEach(function (heading) {
+      if (heading.querySelector('.heading-anchor-link')) return;
+      heading.classList.add('detail-heading');
+      const anchorLink = document.createElement('button');
+      anchorLink.type = 'button';
+      anchorLink.className = 'heading-anchor-link';
+      anchorLink.setAttribute('class', 'heading-anchor-link');
+      anchorLink.setAttribute('aria-label', '复制当前标题链接');
+      anchorLink.setAttribute('title', '复制当前标题链接');
+      anchorLink.innerHTML = '#';
+      anchorLink.addEventListener('click', function () {
+        const headingUrl = window.location.origin + window.location.pathname + window.location.search + '#' + heading.id;
+        if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+          navigator.clipboard.writeText(headingUrl).catch(function () {});
+        }
+        history.replaceState({}, '', '#' + heading.id);
+        anchorLink.classList.add('copied');
+        anchorLink.textContent = '已复制';
+        window.setTimeout(function () {
+          anchorLink.classList.remove('copied');
+          anchorLink.textContent = '#';
+        }, 1200);
+      });
+      heading.appendChild(anchorLink);
+    });
+  }
+
+  function bindDetailTocSpy(container, tocContainer) {
+    if (!container || !tocContainer) return;
+    const headings = Array.from(container.querySelectorAll('h2[id], h3[id], h4[id]'));
+    const links = Array.from(tocContainer.querySelectorAll('a[href^="#"]'));
+    if (!headings.length || !links.length) return;
+
+    function updateActiveTocLink() {
+      let activeId = headings[0].id;
+      headings.forEach(function (heading) {
+        if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
+      });
+      links.forEach(function (link) {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+      });
+    }
+
+    window.addEventListener('scroll', updateActiveTocLink, { passive: true });
+    window.addEventListener('hashchange', updateActiveTocLink);
+    updateActiveTocLink();
+  }
+
   function renderMarkdownContent(markdown, headings) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source) {
@@ -435,6 +485,8 @@
     if (contentEl) {
       contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings) : '<p>当前 detail page 暂无可同步正文。</p>';
       renderDetailMath(contentEl);
+      enhanceDetailHeadings(contentEl);
+      bindDetailTocSpy(contentEl, tocEl);
       removeLoadingState(contentEl);
     }
 

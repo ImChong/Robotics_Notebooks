@@ -86,13 +86,14 @@ State Estimation / System Identification / Sim2Real
 - [x] 给 detail page 增加最小公式显示，提升含公式条目的可读性
 - [x] 将 detail page 公式从样式高亮升级为 KaTeX 真正数学排版
 - [x] 给长文 detail page 增加最小目录导航与标题锚点
+- [x] 给 detail page 增加 TOC 当前阅读位置高亮与标题锚点一键复制
 - [~] 明确哪些页面类型优先支持正文（当前已覆盖 wiki / entity / reference，tech-map 节点仍允许为空正文）
 
 完成标准：
 - detail page 的下一阶段路线被明确，不再停留在试验态
 - detail page 的正文展示从“能同步”推进到“基础可读”
 - 含公式的 detail page 已具备 KaTeX 数学排版能力，不再只是最小样式高亮
-- 长文 detail page 已具备最小 TOC + 锚点跳转能力
+- 长文 detail page 已具备最小 TOC + 锚点跳转能力，并支持当前阅读位置高亮与标题链接复制
 
 ### 2. 继续把 tech-map / roadmap / module page 做成真实页面体系
 目标：不只验证单页能渲染，而是形成真正可浏览的网站结构。

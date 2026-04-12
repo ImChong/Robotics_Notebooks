@@ -94,6 +94,31 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_toc_active_state_and_anchor_copy_hooks(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function enhanceDetailHeadings(container)',
+            'heading-anchor-link',
+            'navigator.clipboard.writeText',
+            'function bindDetailTocSpy(container, tocContainer)',
+            "tocContainer.querySelectorAll('a[href^=\"#\"]')",
+            "link.classList.toggle('active',",
+            'enhanceDetailHeadings(contentEl);',
+            'bindDetailTocSpy(contentEl, tocEl);',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_style_css_contains_heading_anchor_and_active_toc_styles(self):
+        style_content = (ROOT / 'docs' / 'style.css').read_text(encoding='utf-8')
+        expected_snippets = [
+            '.heading-anchor-link',
+            '.detail-markdown-body h2:hover .heading-anchor-link',
+            '.detail-toc-list a.active',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, style_content)
+
 
 if __name__ == '__main__':
     unittest.main()
