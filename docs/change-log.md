@@ -49,6 +49,23 @@
 
 ---
 
+## 2026-04-12 — 补齐 detail page / tech-map 预览验证
+
+### 完成内容
+
+**把页面级导出验证从首页 / 模块 / 路线继续推进到详情页与技术栈图层**
+- 扩展 `docs/site-data-preview.html`，新增 detail page 和 tech-map 两个预览分区
+- 扩展 `docs/main.js`，从 `detail_pages` 中选取代表页面做通用详情页渲染验证
+- 扩展 `docs/main.js`，直接消费 `tech_map_page`，渲染 graph meta、layer 分布与节点卡片
+- 扩展 `docs/style.css`，补充 detail / tech-map 预览所需样式
+
+### 项目阶段变化
+
+- 现在已经不只是验证“页面级导出能不能驱动首页”，而是开始验证“能不能支撑通用详情页和技术栈节点页”
+- 下一步可以继续把预览页中的 detail / tech-map 渲染，推进为真正独立的数据驱动页面
+
+---
+
 ## 2026-04-11 — V2 阶段第二次推进
 
 ### 完成内容

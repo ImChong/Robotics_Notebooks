@@ -252,7 +252,8 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：已扩展 `scripts/export_minimal.py`，在对象池 `exports/index-v1.json` 之外新增页面级聚合导出 `exports/site-data-v1.json`。
 - 2026-04-11：`site-data-v1.json` 当前已覆盖首页、6 个模块页、全部路线页、tech-map 页和全量 detail pages，可直接作为前端第一阶段消费层。
 - 2026-04-12：已新增 `docs/site-data-preview.html`，开始直接消费 `site-data-v1.json` 验证首页 / 模块页 / 路线页的最小网页渲染。
-- 下一步建议：继续补 detail page / tech-map page 的直接渲染，把预览验证推进到真正的数据驱动页面。
+- 2026-04-12：已继续扩展预览页，开始验证 `detail_pages` 和 `tech_map_page` 的最小网页渲染。
+- 下一步建议：把当前预览验证进一步拆成真正独立的 data-driven detail page / tech-map page，而不是只停留在单页总览。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

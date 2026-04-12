@@ -184,6 +184,9 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .preview-panel {
   min-height: 100%;
 }
+.top-gap {
+  margin-top: 18px;
+}
 .data-grid {
   align-items: stretch;
 }
@@ -240,6 +243,10 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .data-card {
   display: grid;
   gap: 12px;
+}
+.data-card h4 {
+  font-size: .95rem;
+  margin-bottom: 4px;
 }
 .data-card ul {
   padding-left: 18px;

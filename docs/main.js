@@ -207,6 +207,94 @@
       roadmapGrid.innerHTML = roadmapCards.length ? roadmapCards.join('') : '<article class="card"><p>暂无路线页数据</p></article>';
       removeLoadingState(roadmapGrid);
     }
+
+    const detailGrid = document.getElementById('detailPreviewGrid');
+    if (detailGrid) {
+      const preferredDetails = [
+        'wiki-concepts-centroidal-dynamics',
+        'wiki-methods-model-predictive-control',
+        'entity-isaac-gym-isaac-lab',
+        'tech-node-control-mpc'
+      ];
+      const detailCards = preferredDetails
+        .map(function (id) { return detailPages[id]; })
+        .filter(Boolean)
+        .map(function (detailPage) {
+          const tags = Array.isArray(detailPage.tags) ? detailPage.tags.slice(0, 5) : [];
+          const related = Array.isArray(detailPage.related) ? detailPage.related.slice(0, 4) : [];
+          const sources = Array.isArray(detailPage.source_links) ? detailPage.source_links.slice(0, 2) : [];
+          return [
+            '<article class="card data-card">',
+            '  <div>',
+            '    <h3>' + escapeHtml(detailPage.title || detailPage.id) + '</h3>',
+            '    <p class="card-meta">' + escapeHtml(detailPage.type || 'detail_page') + '</p>',
+            '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>',
+            '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>',
+            '  </div>',
+            '  <div>',
+            '    <h4>标签</h4>',
+            '    <div class="chip-list">' + (tags.length ? tags.map(function (tag) { return '<span class="data-chip">' + escapeHtml(tag) + '</span>'; }).join('') : '<span class="data-meta">暂无标签</span>') + '</div>',
+            '  </div>',
+            '  <div>',
+            '    <h4>关联项</h4>',
+            '    <ul>' + (related.length ? related.map(function (item) { return '<li><code>' + escapeHtml(item) + '</code></li>'; }).join('') : '<li>暂无关联项</li>') + '</ul>',
+            '  </div>',
+            '  <div>',
+            '    <h4>来源链接</h4>',
+            '    <ul>' + (sources.length ? sources.map(function (url) { return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a></li>'; }).join('') : '<li>暂无来源链接</li>') + '</ul>',
+            '  </div>',
+            '</article>'
+          ].join('');
+        });
+      detailGrid.innerHTML = detailCards.length ? detailCards.join('') : '<article class="card"><p>暂无详情页数据</p></article>';
+      removeLoadingState(detailGrid);
+    }
+
+    const techMapSummary = document.getElementById('techMapSummary');
+    const techMapNodes = Array.isArray(techMapPage.nodes) ? techMapPage.nodes : [];
+    if (techMapSummary) {
+      const uniqueLayers = Array.from(new Set(techMapNodes.map(function (node) { return node.layer; }).filter(Boolean)));
+      techMapSummary.innerHTML = [
+        '<h4>graph_meta</h4>',
+        '<p class="data-meta">overview_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></p>',
+        '<p class="data-meta">dependency_graph_id: <code>' + escapeHtml((techMapPage.graph_meta || {}).dependency_graph_id || '-') + '</code></p>',
+        '<p class="data-submeta">当前 tech-map 共 ' + escapeHtml(techMapNodes.length) + ' 个节点，覆盖 ' + escapeHtml(uniqueLayers.length) + ' 个 layer，可直接生成第一版分层节点视图。</p>'
+      ].join('');
+      removeLoadingState(techMapSummary);
+    }
+
+    const layerCounts = techMapNodes.reduce(function (acc, node) {
+      const layer = node.layer || 'unknown';
+      acc[layer] = (acc[layer] || 0) + 1;
+      return acc;
+    }, {});
+    renderChipList(document.getElementById('techMapLayers'), Object.keys(layerCounts), {
+      renderItem: function (layer) {
+        return '<span class="data-chip">' + escapeHtml(layer) + ' · ' + escapeHtml(layerCounts[layer]) + '</span>';
+      }
+    });
+
+    const techMapNodeGrid = document.getElementById('techMapNodeGrid');
+    if (techMapNodeGrid) {
+      const nodeCards = techMapNodes.slice(0, 6).map(function (node) {
+        const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
+        return [
+          '<article class="card data-card">',
+          '  <div>',
+          '    <h3>' + escapeHtml(node.title || node.id) + '</h3>',
+          '    <p class="card-meta">layer: ' + escapeHtml(node.layer || '-') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
+          '    <p>' + escapeHtml(node.summary || '暂无节点摘要') + '</p>',
+          '  </div>',
+          '  <div class="chip-list">',
+          '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
+          '  </div>',
+          '  <ul>' + (related.length ? related.map(function (item) { return '<li><code>' + escapeHtml(item) + '</code></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
+          '</article>'
+        ].join('');
+      });
+      techMapNodeGrid.innerHTML = nodeCards.length ? nodeCards.join('') : '<article class="card"><p>暂无 tech-map 节点数据</p></article>';
+      removeLoadingState(techMapNodeGrid);
+    }
   }
 
   const previewRoot = document.getElementById('previewSummary');
@@ -220,7 +308,19 @@
       })
       .then(renderPreviewPage)
       .catch(function (error) {
-        ['previewSummary', 'homeHeroPreview', 'quickEntriesPreview', 'featuredChainPreview', 'featuredModulesPreview', 'modulePreviewGrid', 'roadmapPreviewGrid']
+        [
+          'previewSummary',
+          'homeHeroPreview',
+          'quickEntriesPreview',
+          'featuredChainPreview',
+          'featuredModulesPreview',
+          'modulePreviewGrid',
+          'roadmapPreviewGrid',
+          'detailPreviewGrid',
+          'techMapSummary',
+          'techMapLayers',
+          'techMapNodeGrid'
+        ]
           .map(function (id) { return document.getElementById(id); })
           .filter(Boolean)
           .forEach(function (element) {

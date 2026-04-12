@@ -46,6 +46,8 @@
         <a href="#preview-home">首页数据</a>
         <a href="#preview-modules">模块页数据</a>
         <a href="#preview-roadmaps">路线页数据</a>
+        <a href="#preview-detail">详情页数据</a>
+        <a href="#preview-tech-map">Tech-map 数据</a>
       </div>
     </section>
 
@@ -107,6 +109,38 @@
         <p class="section-subtitle">这里直接按 <code>roadmap_pages</code> 生成路线卡片，验证阶段数量、关键条目和关联项是否可直接展示。</p>
         <div id="roadmapPreviewGrid" class="card-grid data-grid data-loading">
           <article class="card skeleton-card"><p>正在读取路线页数据…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preview-detail">
+      <div class="container">
+        <h2 class="section-title">详情页最小渲染验证</h2>
+        <p class="section-subtitle">这里从 <code>detail_pages</code> 中挑选代表性页面，验证通用详情页是否已经具备标题、摘要、标签、关联项与来源链接。</p>
+        <div id="detailPreviewGrid" class="card-grid data-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取详情页数据…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="preview-tech-map">
+      <div class="container">
+        <h2 class="section-title">Tech-map 最小渲染验证</h2>
+        <p class="section-subtitle">这里直接消费 <code>tech_map_page</code>，验证 layer、node_kind、summary 和节点数量是否已经足够支撑第一版技术栈地图页面。</p>
+        <div class="preview-split-grid">
+          <article class="card preview-panel">
+            <h3>Tech-map 摘要</h3>
+            <div id="techMapSummary" class="data-loading">
+              <p>正在读取 tech-map 数据…</p>
+            </div>
+          </article>
+          <article class="card preview-panel">
+            <h3>Layer 分布</h3>
+            <div id="techMapLayers" class="chip-list data-loading"></div>
+          </article>
+        </div>
+        <div id="techMapNodeGrid" class="card-grid data-grid data-loading top-gap">
+          <article class="card skeleton-card"><p>正在读取 tech-map 节点…</p></article>
         </div>
       </div>
     </section>
