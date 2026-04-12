@@ -80,13 +80,14 @@ State Estimation / System Identification / Sim2Real
 目标：让 `detail.html?id=...` 不只是 metadata 演示，而是稳定的一类真实页面。
 
 待办：
-- [ ] 明确 detail page 是否继续保持 metadata-first
-- [ ] 如果需要正文，设计 markdown 正文同步到 `docs/` 的方案
-- [ ] 评估正文同步后的最小字段与最小模板
-- [ ] 明确哪些页面类型优先支持正文（wiki / entity / reference / tech-map）
+- [x] 明确 detail page 不再停留在纯 metadata-first，而是进入 content-backed detail page
+- [x] 采用最小前端 markdown 渲染方案，继续直接消费 `content_markdown`
+- [x] 明确正文同步后的最小模板：无构建链路、无额外依赖、先支持基础 markdown 可读性
+- [~] 明确哪些页面类型优先支持正文（当前已覆盖 wiki / entity / reference，tech-map 节点仍允许为空正文）
 
 完成标准：
 - detail page 的下一阶段路线被明确，不再停留在试验态
+- detail page 的正文展示从“能同步”推进到“基础可读”
 
 ### 2. 继续把 tech-map / roadmap / module page 做成真实页面体系
 目标：不只验证单页能渲染，而是形成真正可浏览的网站结构。
@@ -155,7 +156,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 建立 `docs/exports/` 镜像导出，打通 GitHub Pages 消费链路
 - [x] 新增 `docs/detail.html`，跑通 metadata-first detail page
 - [x] 将 `docs/tech-map.html` 推进为 data-driven 页面，并接入 detail route
-- [x] 决定 detail page 下一阶段先支持最小 markdown 正文同步（保真展示 raw markdown）
+- [x] 决定 detail page 下一阶段先支持最小 markdown 正文同步，并升级为基础 markdown 渲染
 - [x] 将 module page 从 preview 升级为真实页面（`module.html?id=...`）
 - [x] 将 roadmap page 从 preview 升级为真实页面（`roadmap.html?id=...`）
 - [x] 为 tech-map 增加最小 layer filter / 分组导航

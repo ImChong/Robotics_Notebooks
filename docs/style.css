@@ -418,17 +418,72 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .empty-state[hidden] {
   display: none;
 }
-.detail-content-box {
-  white-space: pre-wrap;
-  word-break: break-word;
-  overflow-x: auto;
+.detail-markdown-body {
   padding: 18px 20px;
   border-radius: var(--radius);
   border: 1px solid var(--border);
   background: var(--surface);
   box-shadow: var(--shadow-sm);
-  font-size: .92rem;
-  line-height: 1.75;
+  font-size: .98rem;
+  line-height: 1.8;
+  word-break: break-word;
+}
+.detail-markdown-body > :first-child {
+  margin-top: 0;
+}
+.detail-markdown-body > :last-child {
+  margin-bottom: 0;
+}
+.detail-markdown-body h1,
+.detail-markdown-body h2,
+.detail-markdown-body h3,
+.detail-markdown-body h4,
+.detail-markdown-body h5,
+.detail-markdown-body h6 {
+  margin: 1.4em 0 .6em;
+  line-height: 1.35;
+}
+.detail-markdown-body p,
+.detail-markdown-body ul,
+.detail-markdown-body ol,
+.detail-markdown-body blockquote,
+.detail-markdown-body pre {
+  margin: 0 0 1em;
+}
+.detail-markdown-body ul,
+.detail-markdown-body ol {
+  padding-left: 1.4em;
+}
+.detail-markdown-body li + li {
+  margin-top: .35em;
+}
+.detail-markdown-body a {
+  color: var(--accent);
+}
+.detail-markdown-body code {
+  padding: .12em .38em;
+  border-radius: 6px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: .92em;
+}
+.detail-markdown-body pre {
+  overflow-x: auto;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+}
+.detail-markdown-body pre code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+.detail-markdown-body blockquote {
+  margin-left: 0;
+  padding: .2em 0 .2em 1em;
+  border-left: 4px solid var(--accent);
+  color: var(--text-muted);
 }
 .data-chip-button {
   cursor: pointer;

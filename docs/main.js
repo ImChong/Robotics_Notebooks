@@ -71,6 +71,148 @@
     return 'roadmap.html?id=' + encodeURIComponent(id);
   }
 
+  function renderInlineMarkdown(text) {
+    return escapeHtml(text || '')
+      .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, label, url) {
+        return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
+      })
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  }
+
+  function renderMarkdownContent(markdown) {
+    const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
+    if (!source) {
+      return '<p>当前 detail page 暂无可同步正文。</p>';
+    }
+
+    const lines = source.split('\n');
+    const blocks = [];
+    let paragraphLines = [];
+    let listItems = [];
+    let listTag = '';
+    let quoteLines = [];
+    let codeLines = [];
+    let inCodeBlock = false;
+
+    function flushParagraph() {
+      if (!paragraphLines.length) return;
+      blocks.push('<p>' + renderInlineMarkdown(paragraphLines.join(' ')) + '</p>');
+      paragraphLines = [];
+    }
+
+    function flushList() {
+      if (!listItems.length) return;
+      const openTag = listTag === 'ol' ? 'ol' : 'ul';
+      blocks.push((function () {
+        if (openTag === 'ul') return '<ul>';
+        if (openTag === 'ol') return '<ol>';
+        return '<ul>';
+      })() + listItems.map(function (item) {
+        return '<li>' + renderInlineMarkdown(item) + '</li>';
+      }).join('') + '</' + openTag + '>');
+      listItems = [];
+      listTag = '';
+    }
+
+    function flushQuote() {
+      if (!quoteLines.length) return;
+      blocks.push((function () {
+        return '<blockquote>';
+      })() + quoteLines.map(function (line) {
+        return '<p>' + renderInlineMarkdown(line) + '</p>';
+      }).join('') + '</blockquote>');
+      quoteLines = [];
+    }
+
+    function flushCodeBlock() {
+      if (!codeLines.length) return;
+      blocks.push((function () {
+        return '<pre><code>';
+      })() + escapeHtml(codeLines.join('\n')) + '</code></pre>');
+      codeLines = [];
+    }
+
+    lines.forEach(function (line) {
+      const trimmed = line.trim();
+
+      if (trimmed.startsWith('```')) {
+        if (inCodeBlock) {
+          flushCodeBlock();
+          inCodeBlock = false;
+        } else {
+          flushParagraph();
+          flushList();
+          flushQuote();
+          inCodeBlock = true;
+        }
+        return;
+      }
+
+      if (inCodeBlock) {
+        codeLines.push(line);
+        return;
+      }
+
+      if (!trimmed) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        return;
+      }
+
+      const headingMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
+      if (headingMatch) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        const level = Math.min(headingMatch[1].length, 6);
+        blocks.push('<h' + level + '>' + renderInlineMarkdown(headingMatch[2]) + '</h' + level + '>');
+        return;
+      }
+
+      const quoteMatch = trimmed.match(/^>\s?(.*)$/);
+      if (quoteMatch) {
+        flushParagraph();
+        flushList();
+        quoteLines.push(quoteMatch[1]);
+        return;
+      }
+
+      const unorderedMatch = trimmed.match(/^[-*]\s+(.*)$/);
+      if (unorderedMatch) {
+        flushParagraph();
+        flushQuote();
+        if (listTag && listTag !== 'ul') flushList();
+        listTag = 'ul';
+        listItems.push(unorderedMatch[1]);
+        return;
+      }
+
+      const orderedMatch = trimmed.match(/^\d+\.\s+(.*)$/);
+      if (orderedMatch) {
+        flushParagraph();
+        flushQuote();
+        if (listTag && listTag !== 'ol') flushList();
+        listTag = 'ol';
+        listItems.push(orderedMatch[1]);
+        return;
+      }
+
+      flushList();
+      flushQuote();
+      paragraphLines.push(trimmed);
+    });
+
+    if (inCodeBlock) flushCodeBlock();
+    flushParagraph();
+    flushList();
+    flushQuote();
+
+    return blocks.join('');
+  }
+
   function renderChipList(container, items, options) {
     if (!container) return;
     const renderItem = (options && options.renderItem) || function (item) {
@@ -210,7 +352,7 @@
       contentSectionEl.hidden = !contentMarkdown;
     }
     if (contentEl) {
-      contentEl.textContent = contentMarkdown || '当前 detail page 暂无可同步正文。';
+      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown) : '<p>当前 detail page 暂无可同步正文。</p>';
       removeLoadingState(contentEl);
     }
 
