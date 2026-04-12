@@ -524,6 +524,28 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-left: 4px solid var(--accent);
   color: var(--text-muted);
 }
+.tech-map-group {
+  margin: 0 0 18px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.tech-map-group-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 16px 18px;
+  font-weight: 700;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-alt);
+}
+.tech-map-group-summary::-webkit-details-marker {
+  display: none;
+}
+.tech-map-group-grid {
+  padding: 18px;
+}
 .data-chip-button {
   cursor: pointer;
   background: var(--bg-alt);

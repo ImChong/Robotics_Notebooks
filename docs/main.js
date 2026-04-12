@@ -604,6 +604,45 @@
     renderSourceCards(sourceEl, roadmapPage.source_links, '当前路线暂无来源链接。');
   }
 
+  function renderTechMapNodeCard(node, detailPages) {
+    const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
+    const detailSummary = detailPages[node.id] && detailPages[node.id].summary ? detailPages[node.id].summary : node.summary;
+    return [
+      '<article class="card data-card" data-layer="' + escapeHtml(node.layer || 'meta') + '">',
+      '  <div>',
+      '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
+      '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
+      '    <p>' + escapeHtml(detailSummary || '暂无节点摘要') + '</p>',
+      '  </div>',
+      '  <div class="chip-list">',
+      '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
+      '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
+      '  </div>',
+      '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
+      '</article>'
+    ].join('');
+  }
+
+  function renderTechMapGroupedNodes(nodes, detailPages) {
+    const grouped = nodes.reduce(function (acc, node) {
+      const layer = node.layer || 'meta';
+      if (!acc[layer]) acc[layer] = [];
+      acc[layer].push(node);
+      return acc;
+    }, {});
+    return Object.keys(grouped).map(function (layer) {
+      const layerNodes = grouped[layer];
+      return [
+        '<details class="tech-map-group" open>',
+        '  <summary class="tech-map-group-summary">' + escapeHtml(layer) + ' · ' + escapeHtml(layerNodes.length) + '</summary>',
+        '  <div class="card-grid data-grid tech-map-group-grid">',
+             layerNodes.map(function (node) { return renderTechMapNodeCard(node, detailPages); }).join(''),
+        '  </div>',
+        '</details>'
+      ].join('');
+    }).join('');
+  }
+
   function renderTechMapNodes(nodes, detailPages, activeLayer) {
     const nodeGrid = document.getElementById('techMapNodeGrid');
     if (!nodeGrid) return;
@@ -612,24 +651,9 @@
       ? nodes
       : nodes.filter(function (node) { return (node.layer || 'meta') === activeLayer; });
 
-    nodeGrid.innerHTML = visibleNodes.length ? visibleNodes.map(function (node) {
-      const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
-      const detailSummary = detailPages[node.id] && detailPages[node.id].summary ? detailPages[node.id].summary : node.summary;
-      return [
-        '<article class="card data-card" data-layer="' + escapeHtml(node.layer || 'meta') + '">',
-        '  <div>',
-        '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
-        '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
-        '    <p>' + escapeHtml(detailSummary || '暂无节点摘要') + '</p>',
-        '  </div>',
-        '  <div class="chip-list">',
-        '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
-        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
-        '  </div>',
-        '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
-        '</article>'
-      ].join('');
-    }).join('') : '<article class="card"><p>当前筛选条件下暂无 tech-map 节点。</p></article>';
+    nodeGrid.innerHTML = visibleNodes.length
+      ? renderTechMapGroupedNodes(visibleNodes, detailPages)
+      : '<article class="card"><p>当前筛选条件下暂无 tech-map 节点。</p></article>';
     removeLoadingState(nodeGrid);
   }
 

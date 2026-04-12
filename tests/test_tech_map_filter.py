@@ -36,6 +36,18 @@ class TechMapFilterTests(unittest.TestCase):
         for snippet in expected:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_grouped_collapsible_rendering(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected = [
+            'function renderTechMapNodeCard(node, detailPages)',
+            'function renderTechMapGroupedNodes(nodes, detailPages)',
+            '<details class="tech-map-group"',
+            '<summary class="tech-map-group-summary">',
+            'renderTechMapGroupedNodes(visibleNodes, detailPages)',
+        ]
+        for snippet in expected:
+            self.assertIn(snippet, content)
+
 
 if __name__ == '__main__':
     unittest.main()
