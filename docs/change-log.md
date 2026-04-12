@@ -77,6 +77,8 @@
 - 扩展 `docs/tech-map.html`，新增最小 layer filter / 分组导航区块
 - 扩展 `docs/main.js`，新增 tech-map layer filter 与节点重渲染逻辑
 - 新增 `tests/test_tech_map_filter.py`，验证 tech-map filter 挂载点与渲染逻辑接入点
+- 继续扩展 `docs/main.js`，让 tech-map 当前 layer 同步到 URL 查询参数 `?layer=...`
+- 再次扩展 `tests/test_tech_map_filter.py`，验证 URL 同步逻辑（读取 query、写回 URL、回到 all 时清参数）
 - 将 `docs/detail.html` 的正文区从 raw markdown `<pre>` 升级为基础 markdown 渲染容器
 - 扩展 `docs/main.js`，新增不依赖构建链路的最小 markdown 渲染器，支持标题、列表、引用、代码块、粗体、行内代码与链接
 - 扩展 `docs/style.css`，补齐 detail markdown body 的基础排版样式

@@ -640,8 +640,8 @@
 
     const layers = ['all'].concat(Object.keys(layerCounts));
     filterState.innerHTML = activeLayer === 'all'
-      ? '当前展示 <strong>全部 layer</strong>。点击下方 chip 可只看单个 layer。'
-      : '当前仅展示 <strong>' + escapeHtml(activeLayer) + '</strong> layer。';
+      ? '当前展示 <strong>全部 layer</strong>。点击下方 chip 可只看单个 layer；回到 all 时会自动清掉 URL 里的筛选参数。'
+      : '当前仅展示 <strong>' + escapeHtml(activeLayer) + '</strong> layer。这个状态会同步到 URL，刷新或分享链接后仍可保留。';
     removeLoadingState(filterState);
 
     filterList.innerHTML = layers.map(function (layer) {
@@ -669,6 +669,7 @@
     const heroSummary = document.getElementById('techMapHeroSummary');
     const graphMeta = document.getElementById('techMapGraphMeta');
     const layerList = document.getElementById('techMapLayerList');
+    const params = new URLSearchParams(window.location.search);
 
     const layerCounts = nodes.reduce(function (acc, node) {
       const layer = node.layer || 'meta';
@@ -697,9 +698,24 @@
       }
     });
 
-    var currentLayer = 'all';
+    const allowedLayers = ['all'].concat(Object.keys(layerCounts));
+    const requestedLayer = params.get('layer') || 'all';
+    const initialLayer = allowedLayers.indexOf(requestedLayer) >= 0 ? requestedLayer : 'all';
+
+    function syncTechMapLayerInUrl(layer) {
+      const url = new URL(window.location.href);
+      if (layer === 'all') {
+        url.searchParams.delete('layer');
+      } else {
+        url.searchParams.set('layer', layer);
+      }
+      history.replaceState({}, '', url.toString());
+    }
+
+    var currentLayer = initialLayer;
     function updateTechMapLayer(nextLayer) {
-      currentLayer = nextLayer;
+      currentLayer = allowedLayers.indexOf(nextLayer) >= 0 ? nextLayer : 'all';
+      syncTechMapLayerInUrl(currentLayer);
       renderTechMapFilters(layerCounts, currentLayer, updateTechMapLayer);
       renderTechMapNodes(nodes, detailPages, currentLayer);
     }

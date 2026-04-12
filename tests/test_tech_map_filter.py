@@ -24,6 +24,18 @@ class TechMapFilterTests(unittest.TestCase):
         for snippet in expected:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_url_synced_layer_filter_logic(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected = [
+            "params.get('layer')",
+            'history.replaceState',
+            'url.searchParams.set(\'layer\'',
+            'url.searchParams.delete(\'layer\'',
+            'currentLayer = initialLayer',
+        ]
+        for snippet in expected:
+            self.assertIn(snippet, content)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -96,6 +96,7 @@ State Estimation / System Identification / Sim2Real
 
 待办：
 - [x] 为 tech-map 增加最小 layer filter / 分组导航
+- [x] 让 tech-map 当前筛选状态同步到 URL 查询参数，支持刷新与分享链接保留状态
 - [x] 将 module page 从 preview 升级为真实页面
 - [x] 将 roadmap page 从 preview 升级为真实页面
 - [x] 统一 detail / tech-map / roadmap / module 之间的跳转方式
@@ -163,6 +164,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 将 module page 从 preview 升级为真实页面（`module.html?id=...`）
 - [x] 将 roadmap page 从 preview 升级为真实页面（`roadmap.html?id=...`）
 - [x] 为 tech-map 增加最小 layer filter / 分组导航
+- [x] 让 tech-map 当前筛选状态同步到 URL 查询参数，支持刷新与分享链接保留状态
 
 ## 我建议的实际执行顺序
 1. 先明确 detail page 是否继续 metadata-first
