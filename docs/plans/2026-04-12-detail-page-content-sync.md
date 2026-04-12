@@ -4,7 +4,7 @@
 
 **Goal:** 让 `detail.html?id=...` 在标题、摘要、标签之外，还能展示来自源 markdown 的基础可读正文，完成 detail page 从 metadata-only 到 content-backed 的第一步。
 
-**Architecture:** 继续沿用 `site-data-v1.json`。导出层保持 `detail_pages[*].content_markdown`，内容为去掉一级标题后的 markdown 正文。前端 detail page 新增最小 markdown renderer，直接在浏览器里把标题、列表、引用、代码块、粗体、行内代码与链接渲染成基础 HTML；同时为二级到四级标题生成锚点，并自动生成最小 TOC。整个方案仍然不引入额外 markdown parser，也不增加打包步骤。
+**Architecture:** 继续沿用 `site-data-v1.json`。导出层保持 `detail_pages[*].content_markdown`，内容为去掉一级标题后的 markdown 正文。前端 detail page 新增最小 markdown renderer，直接在浏览器里把标题、列表、引用、代码块、粗体、行内代码与链接渲染成基础 HTML；同时为二级到四级标题生成锚点，并自动生成最小 TOC。对于公式，当前不引入 KaTeX / MathJax，而是先识别 `\(...\)` 与 `$$...$$`，做最小样式化显示。整个方案仍然不引入额外 markdown parser，也不增加打包步骤。
 
 **Tech Stack:** Python 导出脚本、原生 HTML/CSS/JS、`unittest`
 
@@ -56,6 +56,7 @@
 - detail page 读取 `content_markdown`
 - 用仓库内原生 JS 实现最小 markdown 渲染，不引入外部依赖
 - 第一阶段至少支持：标题、列表、引用、代码块、粗体、行内代码、链接
+- 对 `\(...\)` 与 `$$...$$` 做最小公式样式化显示
 - 为长文自动生成最小 TOC 与标题锚点
 - 保持空态处理
 
@@ -68,5 +69,6 @@
 验收：
 - detail page 出现“正文同步内容”分区
 - 页面能把来自 markdown 的正文渲染成基础可读结构
+- 公式块与行内公式至少能以独立样式显示出来
 - 长文页面会自动出现目录导航，并能跳到对应标题
 - tech-map 节点页若无正文，不会报错或白屏

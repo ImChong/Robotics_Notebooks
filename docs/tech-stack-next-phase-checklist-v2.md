@@ -83,12 +83,14 @@ State Estimation / System Identification / Sim2Real
 - [x] 明确 detail page 不再停留在纯 metadata-first，而是进入 content-backed detail page
 - [x] 采用最小前端 markdown 渲染方案，继续直接消费 `content_markdown`
 - [x] 明确正文同步后的最小模板：无构建链路、无额外依赖、先支持基础 markdown 可读性
+- [x] 给 detail page 增加最小公式显示，提升含公式条目的可读性
 - [x] 给长文 detail page 增加最小目录导航与标题锚点
 - [~] 明确哪些页面类型优先支持正文（当前已覆盖 wiki / entity / reference，tech-map 节点仍允许为空正文）
 
 完成标准：
 - detail page 的下一阶段路线被明确，不再停留在试验态
 - detail page 的正文展示从“能同步”推进到“基础可读”
+- 含公式的 detail page 已具备最小公式高亮显示能力
 - 长文 detail page 已具备最小 TOC + 锚点跳转能力
 
 ### 2. 继续把 tech-map / roadmap / module page 做成真实页面体系

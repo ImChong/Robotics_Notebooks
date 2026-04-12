@@ -81,6 +81,16 @@
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
+  function renderMathBlocks(text) {
+    return String(text || '')
+      .replace(/\\\((.+?)\\\)/g, function (_, expr) {
+        return '<span class="math-inline">\\(' + expr + '\\)</span>';
+      })
+      .replace(/\$\$([\s\S]+?)\$\$/g, function (_, expr) {
+        return '<div class="math-block">$$' + expr.trim() + '$$</div>';
+      });
+  }
+
   function slugifyHeading(text) {
     const normalized = String(text || '')
       .toLowerCase()
@@ -141,7 +151,7 @@
 
     function flushParagraph() {
       if (!paragraphLines.length) return;
-      blocks.push('<p>' + renderInlineMarkdown(paragraphLines.join(' ')) + '</p>');
+      blocks.push('<p>' + renderMathBlocks(renderInlineMarkdown(paragraphLines.join(' '))) + '</p>');
       paragraphLines = [];
     }
 
@@ -153,7 +163,7 @@
         if (openTag === 'ol') return '<ol>';
         return '<ul>';
       })() + listItems.map(function (item) {
-        return '<li>' + renderInlineMarkdown(item) + '</li>';
+        return '<li>' + renderMathBlocks(renderInlineMarkdown(item)) + '</li>';
       }).join('') + '</' + openTag + '>');
       listItems = [];
       listTag = '';
@@ -164,7 +174,7 @@
       blocks.push((function () {
         return '<blockquote>';
       })() + quoteLines.map(function (line) {
-        return '<p>' + renderInlineMarkdown(line) + '</p>';
+        return '<p>' + renderMathBlocks(renderInlineMarkdown(line)) + '</p>';
       }).join('') + '</blockquote>');
       quoteLines = [];
     }
@@ -214,7 +224,7 @@
         const text = headingMatch[2].trim();
         const headingMeta = level >= 2 && headingQueue.length ? headingQueue.shift() : null;
         const headingId = headingMeta ? headingMeta.slug : slugifyHeading(text);
-        blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderInlineMarkdown(text) + '</h' + level + '>');
+        blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderMathBlocks(renderInlineMarkdown(text)) + '</h' + level + '>');
         return;
       }
 

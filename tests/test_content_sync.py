@@ -57,6 +57,18 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function renderMathBlocks(text)',
+            'class="math-block"',
+            'class="math-inline"',
+            'expr.trim() +',
+            'renderMathBlocks(renderInlineMarkdown(paragraphLines.join(',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
 
 if __name__ == '__main__':
     unittest.main()

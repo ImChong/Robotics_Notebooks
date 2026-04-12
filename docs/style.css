@@ -524,6 +524,24 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-left: 4px solid var(--accent);
   color: var(--text-muted);
 }
+.detail-markdown-body .math-inline {
+  display: inline-block;
+  padding: .05em .35em;
+  border-radius: 6px;
+  background: rgba(45,116,218,.08);
+  border: 1px solid rgba(45,116,218,.18);
+  font-family: "Times New Roman", "Cambria Math", serif;
+}
+.detail-markdown-body .math-block {
+  margin: 1em 0;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px dashed var(--border);
+  background: rgba(45,116,218,.04);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  font-family: "Times New Roman", "Cambria Math", serif;
+}
 .tech-map-group {
   margin: 0 0 18px;
   border: 1px solid var(--border);
