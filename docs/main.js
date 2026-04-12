@@ -81,7 +81,49 @@
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
   }
 
-  function renderMarkdownContent(markdown) {
+  function slugifyHeading(text) {
+    const normalized = String(text || '')
+      .toLowerCase()
+      .replace(/<[^>]+>/g, '')
+      .replace(/[^\p{Letter}\p{Number}\s-]+/gu, ' ')
+      .trim()
+      .replace(/\s+/g, '-');
+    return normalized || 'section';
+  }
+
+  function collectMarkdownHeadings(markdown) {
+    const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
+    if (!source) return [];
+    const counts = {};
+    return source.split('\n').map(function (line) {
+      const match = line.trim().match(/^(#{2,4})\s+(.*)$/);
+      if (!match) return null;
+      const text = match[2].trim();
+      const baseSlug = slugifyHeading(text);
+      counts[baseSlug] = (counts[baseSlug] || 0) + 1;
+      return {
+        level: Math.min(match[1].length, 4),
+        text: text,
+        slug: counts[baseSlug] === 1 ? baseSlug : baseSlug + '-' + counts[baseSlug]
+      };
+    }).filter(Boolean);
+  }
+
+  function renderDetailToc(container, headings) {
+    if (!container) return;
+    if (!Array.isArray(headings) || !headings.length) {
+      container.innerHTML = '<p class="data-meta">当前正文较短，暂不生成目录。</p>';
+      removeLoadingState(container);
+      return;
+    }
+
+    container.innerHTML = '<ol>' + headings.map(function (heading) {
+      return '<li class="toc-level-' + escapeHtml(heading.level) + '"><a href="#' + escapeHtml(heading.slug) + '">' + escapeHtml(heading.text) + '</a></li>';
+    }).join('') + '</ol>';
+    removeLoadingState(container);
+  }
+
+  function renderMarkdownContent(markdown, headings) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source) {
       return '<p>当前 detail page 暂无可同步正文。</p>';
@@ -89,6 +131,7 @@
 
     const lines = source.split('\n');
     const blocks = [];
+    const headingQueue = Array.isArray(headings) ? headings.slice() : collectMarkdownHeadings(source);
     let paragraphLines = [];
     let listItems = [];
     let listTag = '';
@@ -168,7 +211,10 @@
         flushList();
         flushQuote();
         const level = Math.min(headingMatch[1].length, 6);
-        blocks.push('<h' + level + '>' + renderInlineMarkdown(headingMatch[2]) + '</h' + level + '>');
+        const text = headingMatch[2].trim();
+        const headingMeta = level >= 2 && headingQueue.length ? headingQueue.shift() : null;
+        const headingId = headingMeta ? headingMeta.slug : slugifyHeading(text);
+        blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderInlineMarkdown(text) + '</h' + level + '>');
         return;
       }
 
@@ -288,6 +334,8 @@
     const titleEl = document.getElementById('detailTitle');
     const summaryEl = document.getElementById('detailSummary');
     const metaEl = document.getElementById('detailMeta');
+    const tocSectionEl = document.getElementById('detailTocSection');
+    const tocEl = document.getElementById('detailTocList');
     const contentSectionEl = document.getElementById('detailContentSection');
     const contentEl = document.getElementById('detailContent');
     const tagEl = document.getElementById('detailTagList');
@@ -306,6 +354,11 @@
       if (metaEl) {
         metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 detail_pages 项。</p>';
         removeLoadingState(metaEl);
+      }
+      if (tocSectionEl) tocSectionEl.hidden = true;
+      if (tocEl) {
+        tocEl.innerHTML = '';
+        removeLoadingState(tocEl);
       }
       if (contentSectionEl) contentSectionEl.hidden = true;
       if (contentEl) {
@@ -348,11 +401,18 @@
     }
 
     const contentMarkdown = detailPage.content_markdown || '';
+    const detailHeadings = collectMarkdownHeadings(contentMarkdown);
+    if (tocSectionEl) {
+      tocSectionEl.hidden = !detailHeadings.length;
+    }
+    if (tocEl) {
+      renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));
+    }
     if (contentSectionEl) {
       contentSectionEl.hidden = !contentMarkdown;
     }
     if (contentEl) {
-      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown) : '<p>当前 detail page 暂无可同步正文。</p>';
+      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings) : '<p>当前 detail page 暂无可同步正文。</p>';
       removeLoadingState(contentEl);
     }
 
@@ -930,6 +990,7 @@
             'detailBreadcrumb',
             'detailSummary',
             'detailMeta',
+            'detailTocList',
             'detailContent',
             'detailTagList',
             'detailRelatedList',

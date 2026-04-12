@@ -28,14 +28,31 @@ class DetailContentSyncTests(unittest.TestCase):
         self.assertIn('class="detail-markdown-body data-loading"', content)
         self.assertNotIn('<pre id="detailContent"', content)
 
+    def test_detail_page_contains_toc_mount_points(self):
+        content = DETAIL_HTML.read_text(encoding="utf-8")
+        self.assertIn('id="detailTocSection"', content)
+        self.assertIn('id="detailTocList"', content)
+
     def test_main_js_contains_markdown_renderer_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            'function renderMarkdownContent(markdown)',
-            'contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown)',
+            'function renderMarkdownContent(markdown, headings)',
+            'contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings)',
             "return '<pre><code>'",
             "return '<blockquote>'",
             "return '<ul>'",
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_main_js_contains_toc_renderer_for_detail_content(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function slugifyHeading(text)',
+            'function collectMarkdownHeadings(markdown)',
+            'function renderDetailToc(container, headings)',
+            "document.getElementById('detailTocList')",
+            'renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));',
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

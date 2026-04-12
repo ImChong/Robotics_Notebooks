@@ -81,6 +81,10 @@
 - 扩展 `docs/main.js`，新增不依赖构建链路的最小 markdown 渲染器，支持标题、列表、引用、代码块、粗体、行内代码与链接
 - 扩展 `docs/style.css`，补齐 detail markdown body 的基础排版样式
 - 扩展 `tests/test_content_sync.py`，验证 detail page 已切到 markdown 容器并接入 markdown 渲染逻辑
+- 继续扩展 `docs/detail.html`，新增 detail 正文侧边目录导航区块
+- 扩展 `docs/main.js`，为 markdown 标题自动生成锚点，并根据正文自动生成 TOC
+- 扩展 `docs/style.css`，补齐目录导航布局、缩进层级与响应式样式
+- 再次扩展 `tests/test_content_sync.py`，验证 TOC 挂载点与目录渲染逻辑接入点
 
 ### 项目阶段变化
 
