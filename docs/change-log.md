@@ -86,9 +86,13 @@
 - 扩展 `docs/main.js`，新增不依赖构建链路的最小 markdown 渲染器，支持标题、列表、引用、代码块、粗体、行内代码与链接
 - 扩展 `docs/style.css`，补齐 detail markdown body 的基础排版样式
 - 扩展 `tests/test_content_sync.py`，验证 detail page 已切到 markdown 容器并接入 markdown 渲染逻辑
-- 再继续扩展 `docs/main.js`，为 detail page 增加最小公式显示钩子，识别 `\(...\)` 与 `$$...$$`
+- 再继续扩展 `docs/main.js`，为 detail page 增加最小公式显示钩子，识别 `\\(...\\)` 与 `$$...$$`
 - 扩展 `docs/style.css`，补齐 inline / block math 的基础样式
 - 再次扩展 `tests/test_content_sync.py`，验证公式显示逻辑已接入 markdown 渲染器
+- 继续扩展 `docs/detail.html`，接入 KaTeX CSS / JS 与 auto-render，升级 detail page 公式为真正数学排版
+- 继续扩展 `docs/main.js`，新增 `renderDetailMath`，在正文渲染后调用 KaTeX auto-render
+- 再继续扩展 `docs/style.css`，让 KaTeX inline / display 公式与当前 detail page 版式兼容
+- 再次扩展 `tests/test_content_sync.py`，验证 KaTeX 资源与 auto-render 调用已接入 detail page
 - 继续扩展 `docs/detail.html`，新增 detail 正文侧边目录导航区块
 - 扩展 `docs/main.js`，为 markdown 标题自动生成锚点，并根据正文自动生成 TOC
 - 扩展 `docs/style.css`，补齐目录导航布局、缩进层级与响应式样式
@@ -97,6 +101,7 @@
 ### 项目阶段变化
 
 - 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module / roadmap page
+- detail page 的公式展示也已经从“最小样式高亮”推进到“KaTeX 真正数学排版”
 - tech-map 也已经从“只能看全部节点”推进到“可以按 layer 进行最小筛选”的可用导航页
 - 下一步重点应转向：是否还需要为 tech-map 加更细筛选能力，以及是否继续补更多页面的信息架构细节
 

@@ -525,12 +525,17 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text-muted);
 }
 .detail-markdown-body .math-inline {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: .05em .35em;
   border-radius: 6px;
   background: rgba(45,116,218,.08);
   border: 1px solid rgba(45,116,218,.18);
-  font-family: "Times New Roman", "Cambria Math", serif;
+  min-height: 1.7em;
+}
+.detail-markdown-body .math-inline .katex,
+.detail-markdown-body .math-inline .katex * {
+  color: var(--accent);
 }
 .detail-markdown-body .math-block {
   margin: 1em 0;
@@ -539,8 +544,22 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border: 1px dashed var(--border);
   background: rgba(45,116,218,.04);
   overflow-x: auto;
-  white-space: pre-wrap;
-  font-family: "Times New Roman", "Cambria Math", serif;
+}
+.detail-markdown-body .math-block .katex-display {
+  margin: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.detail-markdown-body .math-block .katex,
+.detail-markdown-body .math-block .katex * {
+  color: var(--text);
+}
+[data-theme="dark"] .detail-markdown-body .math-inline {
+  background: rgba(105,163,255,.12);
+  border-color: rgba(105,163,255,.28);
+}
+[data-theme="dark"] .detail-markdown-body .math-block {
+  background: rgba(105,163,255,.06);
 }
 .tech-map-group {
   margin: 0 0 18px;

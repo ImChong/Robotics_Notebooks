@@ -69,6 +69,31 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_detail_page_loads_katex_assets(self):
+        content = DETAIL_HTML.read_text(encoding="utf-8")
+        expected_snippets = [
+            'katex.min.css',
+            'katex.min.js',
+            'auto-render.min.js',
+            'integrity=',
+            'crossorigin="anonymous"',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_main_js_invokes_katex_auto_render_for_detail_content(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function renderDetailMath(container)',
+            "typeof window.renderMathInElement !== 'function'",
+            'window.renderMathInElement(container, {',
+            "left: '$$', right: '$$', display: true",
+            "left: '\\\\(', right: '\\\\)', display: false",
+            'renderDetailMath(contentEl);',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
 
 if __name__ == '__main__':
     unittest.main()

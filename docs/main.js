@@ -91,6 +91,17 @@
       });
   }
 
+  function renderDetailMath(container) {
+    if (!container || typeof window.renderMathInElement !== 'function') return;
+    window.renderMathInElement(container, {
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '\\(', right: '\\)', display: false }
+      ],
+      throwOnError: false
+    });
+  }
+
   function slugifyHeading(text) {
     const normalized = String(text || '')
       .toLowerCase()
@@ -423,6 +434,7 @@
     }
     if (contentEl) {
       contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings) : '<p>当前 detail page 暂无可同步正文。</p>';
+      renderDetailMath(contentEl);
       removeLoadingState(contentEl);
     }
 
