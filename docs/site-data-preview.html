@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotics Notebooks 页面级聚合导出预览：直接消费 exports/site-data-v1.json，验证首页、模块页和路线页的最小渲染。" />
+  <meta name="keywords" content="Robotics Notebooks, site-data-v1.json, 页面级聚合导出, 导出验证, 模块页, 路线页" />
+  <meta name="author" content="Chong Liu" />
+  <meta property="og:title" content="Robotics Notebooks | 页面级导出预览" />
+  <meta property="og:description" content="直接消费 site-data-v1.json，验证首页、模块页和路线页的最小网页渲染。" />
+  <meta property="og:type" content="website" />
+  <title>Robotics Notebooks | 页面级导出预览</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧪</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🧪 页面级导出预览 | Robotics Notebooks</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <p class="hero-kicker">Page-level export validation</p>
+        <h1>site-data-v1.json 最小网页消费验证</h1>
+        <p>
+          这个页面直接消费 <code>exports/site-data-v1.json</code>，验证页面级聚合导出是否已经足够支撑
+          <strong>首页 / 模块页 / 路线页</strong> 的第一阶段渲染。
+        </p>
+      </div>
+    </section>
+
+    <section class="page-subnav-wrap">
+      <div class="container page-subnav">
+        <a href="#preview-summary">预览摘要</a>
+        <a href="#preview-home">首页数据</a>
+        <a href="#preview-modules">模块页数据</a>
+        <a href="#preview-roadmaps">路线页数据</a>
+      </div>
+    </section>
+
+    <section class="section" id="preview-summary">
+      <div class="container">
+        <h2 class="section-title">导出摘要</h2>
+        <p class="section-subtitle">先确认这份页面级聚合导出到底覆盖了哪些页面类型和数量。</p>
+        <div id="previewSummary" class="card-grid data-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取页面级导出数据…</p></article>
+          <article class="card skeleton-card"><p>正在统计模块页与路线页数量…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="preview-home">
+      <div class="container">
+        <h2 class="section-title">首页数据预览</h2>
+        <p class="section-subtitle">验证首页是否已经能直接从聚合导出里拿到 hero、快速入口、主干链路和模块入口。</p>
+        <div class="preview-home-layout">
+          <article class="hero-panel preview-panel">
+            <h3>Hero / 首页核心文案</h3>
+            <div id="homeHeroPreview" class="data-loading">
+              <p>正在读取首页 hero…</p>
+            </div>
+          </article>
+          <article class="hero-panel preview-panel">
+            <h3>Quick entries / 快速入口</h3>
+            <ul id="quickEntriesPreview" class="preview-list data-loading">
+              <li>正在读取快速入口…</li>
+            </ul>
+          </article>
+        </div>
+        <div class="preview-split-grid">
+          <article class="card preview-panel">
+            <h3>Featured chain / 主干链路</h3>
+            <div id="featuredChainPreview" class="chip-list data-loading"></div>
+          </article>
+          <article class="card preview-panel">
+            <h3>Featured modules / 模块入口</h3>
+            <div id="featuredModulesPreview" class="chip-list data-loading"></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="preview-modules">
+      <div class="container">
+        <h2 class="section-title">模块页最小渲染验证</h2>
+        <p class="section-subtitle">这里直接按 <code>module_pages</code> 生成模块卡片，验证模块摘要、入口、references 和路线是否已经齐备。</p>
+        <div id="modulePreviewGrid" class="card-grid data-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取模块页数据…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="preview-roadmaps">
+      <div class="container">
+        <h2 class="section-title">路线页最小渲染验证</h2>
+        <p class="section-subtitle">这里直接按 <code>roadmap_pages</code> 生成路线卡片，验证阶段数量、关键条目和关联项是否可直接展示。</p>
+        <div id="roadmapPreviewGrid" class="card-grid data-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取路线页数据…</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-stack">
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
+      <p class="footer-note">当前页面用于验证页面级聚合导出是否已经足够支撑第一阶段网页渲染。</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

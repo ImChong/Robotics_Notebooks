@@ -172,6 +172,100 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   border-left: 2px solid var(--border-strong);
   padding-left: 10px;
 }
+.preview-home-layout,
+.preview-split-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.preview-split-grid {
+  margin-top: 18px;
+}
+.preview-panel {
+  min-height: 100%;
+}
+.data-grid {
+  align-items: stretch;
+}
+.preview-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.preview-list li {
+  font-size: .92rem;
+  color: var(--text);
+  border-left: 2px solid var(--border-strong);
+  padding-left: 10px;
+}
+.preview-list small,
+.footer-note,
+.kpi-card .kpi-label,
+.data-meta,
+.data-submeta {
+  color: var(--text-muted);
+}
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.data-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  font-size: .86rem;
+  color: var(--text);
+}
+.kpi-card {
+  display: grid;
+  gap: 8px;
+}
+.kpi-card .kpi-value {
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 820;
+  letter-spacing: -.03em;
+}
+.kpi-card .kpi-label {
+  font-size: .88rem;
+}
+.kpi-card .kpi-note {
+  font-size: .93rem;
+}
+.data-card {
+  display: grid;
+  gap: 12px;
+}
+.data-card ul {
+  padding-left: 18px;
+}
+.data-card li + li {
+  margin-top: 6px;
+}
+.data-card code,
+.page-hero code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: .9em;
+}
+.data-loading {
+  opacity: .78;
+}
+.skeleton-card {
+  color: var(--text-muted);
+}
+.footer-stack {
+  display: grid;
+  gap: 6px;
+  justify-items: center;
+}
 .section { padding: 44px 0; }
 .section-alt {
   background: linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.1)), var(--bg-alt);
@@ -332,7 +426,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .section {
     padding: 30px 0;
   }
-  .hero-grid, .card-grid { grid-template-columns: 1fr; }
+  .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .page-hero h1 { font-size: 2rem; }
   .container { padding: 0 18px; }
