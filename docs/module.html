@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotics Notebooks 模块页：直接消费 module_pages，展示模块摘要、入口项、references、roadmaps 与相关模块。" />
+  <meta name="keywords" content="Robotics Notebooks, module page, module_pages, 控制, 强化学习, 模仿学习" />
+  <meta name="author" content="Chong Liu" />
+  <meta property="og:title" content="Robotics Notebooks | 模块页" />
+  <meta property="og:description" content="基于 site-data-v1.json 的真实模块页。" />
+  <meta property="og:type" content="website" />
+  <title>Robotics Notebooks | 模块页</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧱</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🧱 模块页 | Robotics Notebooks</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero detail-hero">
+      <div class="container detail-hero-stack">
+        <nav id="moduleBreadcrumb" class="detail-breadcrumb data-loading" aria-label="面包屑导航">
+          <a href="index.html">首页</a>
+          <span>/</span>
+          <span>模块页</span>
+        </nav>
+        <div class="detail-hero-top">
+          <div>
+            <p class="hero-kicker">Data-driven module page</p>
+            <h1 id="moduleTitle">正在读取模块页…</h1>
+            <p id="moduleSummary" class="detail-summary data-loading">当前页面直接消费 <code>module_pages</code>，展示模块摘要与导航入口。</p>
+          </div>
+          <aside class="hero-panel detail-meta-panel">
+            <h3>模块元信息</h3>
+            <div id="moduleMeta" class="detail-meta-list data-loading">
+              <p class="data-meta">正在读取 module_id / tag…</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-subnav-wrap">
+      <div class="container page-subnav">
+        <a href="#module-entries">入口项</a>
+        <a href="#module-references">深挖入口</a>
+        <a href="#module-roadmaps">相关路线</a>
+        <a href="#module-related-modules">相关模块</a>
+      </div>
+    </section>
+
+    <section class="section" id="module-empty-section">
+      <div class="container">
+        <article id="moduleEmptyState" class="card empty-state" hidden>
+          <h2>未找到对应 module page</h2>
+          <p>请在 URL 里传入合法的 <code>?id=...</code>。例如：<code>module.html?id=control</code></p>
+          <div class="cta-row">
+            <a class="btn-secondary" href="site-data-preview.html">回到导出预览</a>
+            <a class="btn-secondary" href="index.html">回到首页</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="module-entries">
+      <div class="container">
+        <h2 class="section-title">入口项</h2>
+        <p class="section-subtitle">当前模块最值得先点进去的 detail pages，会统一跳转到 <code>detail.html?id=...</code>。</p>
+        <div id="moduleEntryList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取模块入口项…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="module-references">
+      <div class="container">
+        <h2 class="section-title">深挖入口</h2>
+        <p class="section-subtitle">这里展示 references 层入口，让模块页不只是解释概念，而是继续通向论文、repo、benchmark。</p>
+        <div id="moduleReferenceList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取 references…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="module-roadmaps">
+      <div class="container">
+        <h2 class="section-title">相关路线</h2>
+        <p class="section-subtitle">当前阶段先统一跳到 detail route；后续如果 roadmap page 独立，再切到真实路线页。</p>
+        <div id="moduleRoadmapList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取 roadmap 入口…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="module-related-modules">
+      <div class="container">
+        <h2 class="section-title">相关模块</h2>
+        <p class="section-subtitle">模块之间先用统一 <code>module.html?id=...</code> 路由互相连接。</p>
+        <div id="moduleRelatedModules" class="chip-list data-loading"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-stack">
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
+      <p class="footer-note">当前页是 module page 的第一阶段实现：先把 preview 中的模块页升级为真实页面。</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

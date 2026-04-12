@@ -27,16 +27,16 @@
 
   const links = document.querySelectorAll('.page-subnav a, .main-nav a');
   const sections = Array.from(links)
-    .map(link => document.querySelector(link.getAttribute('href')))
+    .map(function (link) { return document.querySelector(link.getAttribute('href')); })
     .filter(Boolean);
 
   function updateActive() {
     const scrollPos = window.scrollY + 100;
     let currentId = sections.length ? '#' + sections[0].id : '';
-    sections.forEach(section => {
+    sections.forEach(function (section) {
       if (section.offsetTop <= scrollPos) currentId = '#' + section.id;
     });
-    links.forEach(link => {
+    links.forEach(function (link) {
       link.classList.toggle('active', link.getAttribute('href') === currentId);
     });
   }
@@ -59,6 +59,14 @@
     if (element) element.classList.remove('data-loading');
   }
 
+  function detailHref(id) {
+    return 'detail.html?id=' + encodeURIComponent(id);
+  }
+
+  function moduleHref(id) {
+    return 'module.html?id=' + encodeURIComponent(id);
+  }
+
   function renderChipList(container, items, options) {
     if (!container) return;
     const renderItem = (options && options.renderItem) || function (item) {
@@ -71,6 +79,281 @@
     }
     container.innerHTML = items.map(renderItem).join('');
     removeLoadingState(container);
+  }
+
+  function renderInternalLinks(container, ids, detailPages, options) {
+    if (!container) return;
+    const emptyText = (options && options.emptyText) || '暂无内部关联项';
+    if (!Array.isArray(ids) || !ids.length) {
+      container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText) + '</p></article>';
+      removeLoadingState(container);
+      return;
+    }
+
+    container.innerHTML = ids.map(function (id) {
+      const page = detailPages[id] || {};
+      return [
+        '<article class="card data-card">',
+        '  <div>',
+        '    <h3><a href="' + escapeHtml(detailHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
+        '    <p class="card-meta">' + escapeHtml(page.type || 'detail_page') + '</p>',
+        '    <p>' + escapeHtml(page.summary || '当前关联项暂无摘要') + '</p>',
+        '  </div>',
+        '  <div class="chip-list">',
+        '    <span class="data-chip"><code>' + escapeHtml(id) + '</code></span>',
+        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(id)) + '">打开详情页</a>',
+        '  </div>',
+        '</article>'
+      ].join('');
+    }).join('');
+    removeLoadingState(container);
+  }
+
+  function renderSourceCards(container, links, emptyText) {
+    if (!container) return;
+    if (!Array.isArray(links) || !links.length) {
+      container.innerHTML = '<article class="card"><p>' + escapeHtml(emptyText || '暂无来源链接') + '</p></article>';
+      removeLoadingState(container);
+      return;
+    }
+
+    container.innerHTML = links.map(function (url) {
+      return [
+        '<article class="card data-card">',
+        '  <div>',
+        '    <h3><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">打开来源</a></h3>',
+        '    <p class="data-submeta"><code>' + escapeHtml(url) + '</code></p>',
+        '  </div>',
+        '</article>'
+      ].join('');
+    }).join('');
+    removeLoadingState(container);
+  }
+
+  function renderDetailPage(siteData) {
+    if (!siteData || !siteData.pages) return;
+
+    const pages = siteData.pages;
+    const detailPages = pages.detail_pages || {};
+    const params = new URLSearchParams(window.location.search);
+    const detailId = params.get('id') || '';
+    const detailPage = detailId ? detailPages[detailId] : null;
+
+    const titleEl = document.getElementById('detailTitle');
+    const summaryEl = document.getElementById('detailSummary');
+    const metaEl = document.getElementById('detailMeta');
+    const contentSectionEl = document.getElementById('detailContentSection');
+    const contentEl = document.getElementById('detailContent');
+    const tagEl = document.getElementById('detailTagList');
+    const relatedEl = document.getElementById('detailRelatedList');
+    const sourceEl = document.getElementById('detailSourceList');
+    const emptyState = document.getElementById('detailEmptyState');
+    const breadcrumb = document.getElementById('detailBreadcrumb');
+
+    if (!detailPage) {
+      if (emptyState) emptyState.hidden = false;
+      if (titleEl) titleEl.textContent = '未找到对应 detail page';
+      if (summaryEl) {
+        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>detail.html?id=wiki-concepts-centroidal-dynamics</code>。';
+        removeLoadingState(summaryEl);
+      }
+      if (metaEl) {
+        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 detail_pages 项。</p>';
+        removeLoadingState(metaEl);
+      }
+      if (contentSectionEl) contentSectionEl.hidden = true;
+      if (contentEl) {
+        contentEl.textContent = '';
+        removeLoadingState(contentEl);
+      }
+      renderChipList(tagEl, [], {});
+      renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。' });
+      renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
+      if (breadcrumb) removeLoadingState(breadcrumb);
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+    document.title = (detailPage.title || detailId) + ' | Robotics Notebooks';
+
+    if (titleEl) titleEl.textContent = detailPage.title || detailId;
+    if (summaryEl) {
+      summaryEl.innerHTML = escapeHtml(detailPage.summary || '当前页面暂无摘要，可先通过 tags / related / source links 继续导航。');
+      removeLoadingState(summaryEl);
+    }
+    if (metaEl) {
+      metaEl.innerHTML = [
+        '<p><strong>id：</strong><code>' + escapeHtml(detailPage.id || detailId) + '</code></p>',
+        '<p><strong>type：</strong>' + escapeHtml(detailPage.type || '-') + '</p>',
+        '<p><strong>status：</strong>' + escapeHtml(detailPage.status || 'active') + '</p>',
+        '<p><strong>path：</strong><code>' + escapeHtml(detailPage.path || '-') + '</code></p>'
+      ].join('');
+      removeLoadingState(metaEl);
+    }
+    if (breadcrumb) {
+      breadcrumb.innerHTML = [
+        '<a href="index.html">首页</a>',
+        '<span>/</span>',
+        '<a href="site-data-preview.html">页面级导出预览</a>',
+        '<span>/</span>',
+        '<span>' + escapeHtml(detailPage.title || detailId) + '</span>'
+      ].join('');
+      removeLoadingState(breadcrumb);
+    }
+
+    const contentMarkdown = detailPage.content_markdown || '';
+    if (contentSectionEl) {
+      contentSectionEl.hidden = !contentMarkdown;
+    }
+    if (contentEl) {
+      contentEl.textContent = contentMarkdown || '当前 detail page 暂无可同步正文。';
+      removeLoadingState(contentEl);
+    }
+
+    renderChipList(tagEl, detailPage.tags, {
+      renderItem: function (tag) {
+        return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+      }
+    });
+    renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
+    renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
+  }
+
+  function renderModulePage(siteData) {
+    if (!siteData || !siteData.pages) return;
+
+    const pages = siteData.pages;
+    const modulePages = pages.module_pages || {};
+    const detailPages = pages.detail_pages || {};
+    const params = new URLSearchParams(window.location.search);
+    const moduleId = params.get('id') || '';
+    const modulePage = moduleId ? modulePages[moduleId] : null;
+
+    const titleEl = document.getElementById('moduleTitle');
+    const summaryEl = document.getElementById('moduleSummary');
+    const metaEl = document.getElementById('moduleMeta');
+    const entryEl = document.getElementById('moduleEntryList');
+    const referenceEl = document.getElementById('moduleReferenceList');
+    const roadmapEl = document.getElementById('moduleRoadmapList');
+    const relatedModuleEl = document.getElementById('moduleRelatedModules');
+    const emptyState = document.getElementById('moduleEmptyState');
+    const breadcrumb = document.getElementById('moduleBreadcrumb');
+
+    if (!modulePage) {
+      if (emptyState) emptyState.hidden = false;
+      if (titleEl) titleEl.textContent = '未找到对应 module page';
+      if (summaryEl) {
+        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>module.html?id=control</code>。';
+        removeLoadingState(summaryEl);
+      }
+      if (metaEl) {
+        metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 module_pages 项。</p>';
+        removeLoadingState(metaEl);
+      }
+      renderInternalLinks(entryEl, [], detailPages, { emptyText: '当前无可展示的模块入口项。' });
+      renderInternalLinks(referenceEl, [], detailPages, { emptyText: '当前无可展示的 references。' });
+      renderInternalLinks(roadmapEl, [], detailPages, { emptyText: '当前无可展示的 roadmap 入口。' });
+      renderChipList(relatedModuleEl, [], {});
+      if (breadcrumb) removeLoadingState(breadcrumb);
+      return;
+    }
+
+    if (emptyState) emptyState.hidden = true;
+    document.title = (modulePage.title || moduleId) + ' | Robotics Notebooks';
+
+    if (titleEl) titleEl.textContent = modulePage.title || moduleId;
+    if (summaryEl) {
+      summaryEl.innerHTML = escapeHtml(modulePage.summary || '当前模块暂无摘要。');
+      removeLoadingState(summaryEl);
+    }
+    if (metaEl) {
+      metaEl.innerHTML = [
+        '<p><strong>module_id：</strong><code>' + escapeHtml(modulePage.module_id || moduleId) + '</code></p>',
+        '<p><strong>tag：</strong>' + escapeHtml(modulePage.tag || '-') + '</p>',
+        '<p><strong>入口项：</strong>' + escapeHtml((modulePage.entry_items || []).length) + '</p>',
+        '<p><strong>深挖入口：</strong>' + escapeHtml((modulePage.references || []).length) + '</p>'
+      ].join('');
+      removeLoadingState(metaEl);
+    }
+    if (breadcrumb) {
+      breadcrumb.innerHTML = [
+        '<a href="index.html">首页</a>',
+        '<span>/</span>',
+        '<span>' + escapeHtml(modulePage.title || moduleId) + '</span>'
+      ].join('');
+      removeLoadingState(breadcrumb);
+    }
+
+    renderInternalLinks(entryEl, modulePage.entry_items, detailPages, { emptyText: '当前模块暂无入口项。' });
+    renderInternalLinks(referenceEl, modulePage.references, detailPages, { emptyText: '当前模块暂无 references。' });
+    renderInternalLinks(roadmapEl, modulePage.roadmaps, detailPages, { emptyText: '当前模块暂无 roadmap 入口。' });
+    renderChipList(relatedModuleEl, modulePage.related_modules, {
+      renderItem: function (id) {
+        const relatedModule = modulePages[id] || {};
+        return '<a class="data-chip" href="' + escapeHtml(moduleHref(id)) + '">' + escapeHtml(relatedModule.title || id) + '</a>';
+      }
+    });
+  }
+
+  function renderTechMapPage(siteData) {
+    if (!siteData || !siteData.pages) return;
+
+    const techMapPage = siteData.pages.tech_map_page || {};
+    const detailPages = siteData.pages.detail_pages || {};
+    const nodes = Array.isArray(techMapPage.nodes) ? techMapPage.nodes : [];
+    const heroSummary = document.getElementById('techMapHeroSummary');
+    const graphMeta = document.getElementById('techMapGraphMeta');
+    const layerList = document.getElementById('techMapLayerList');
+    const nodeGrid = document.getElementById('techMapNodeGrid');
+
+    const layerCounts = nodes.reduce(function (acc, node) {
+      const layer = node.layer || 'meta';
+      acc[layer] = (acc[layer] || 0) + 1;
+      return acc;
+    }, {});
+
+    if (heroSummary) {
+      const layerCount = Object.keys(layerCounts).length;
+      heroSummary.innerHTML = '当前 tech-map 共收录 <strong>' + escapeHtml(nodes.length) + '</strong> 个节点，覆盖 <strong>' + escapeHtml(layerCount) + '</strong> 个 layer。第一阶段先用 layer 分布 + 节点卡片验证页面消费模型，不急着上复杂可视化。';
+      removeLoadingState(heroSummary);
+    }
+
+    if (graphMeta) {
+      graphMeta.innerHTML = [
+        '<p><strong>overview：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).overview_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></a></p>',
+        '<p><strong>dependency_graph：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).dependency_graph_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).dependency_graph_id || '-') + '</code></a></p>',
+        '<p class="data-meta">当前页面直接消费 <code>tech_map_page</code>，节点统一回流到 detail page。</p>'
+      ].join('');
+      removeLoadingState(graphMeta);
+    }
+
+    renderChipList(layerList, Object.keys(layerCounts), {
+      renderItem: function (layer) {
+        return '<span class="data-chip">' + escapeHtml(layer) + ' · ' + escapeHtml(layerCounts[layer]) + '</span>';
+      }
+    });
+
+    if (nodeGrid) {
+      nodeGrid.innerHTML = nodes.length ? nodes.map(function (node) {
+        const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
+        const detailSummary = detailPages[node.id] && detailPages[node.id].summary ? detailPages[node.id].summary : node.summary;
+        return [
+          '<article class="card data-card">',
+          '  <div>',
+          '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
+          '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
+          '    <p>' + escapeHtml(detailSummary || '暂无节点摘要') + '</p>',
+          '  </div>',
+          '  <div class="chip-list">',
+          '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
+          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
+          '  </div>',
+          '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
+          '</article>'
+        ].join('');
+      }).join('') : '<article class="card"><p>暂无 tech-map 节点数据</p></article>';
+      removeLoadingState(nodeGrid);
+    }
   }
 
   function renderPreviewPage(siteData) {
@@ -141,14 +424,14 @@
     renderChipList(document.getElementById('featuredChainPreview'), homePage.featured_chain, {
       renderItem: function (item) {
         const page = detailPages[item] || {};
-        return '<span class="data-chip" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</span>';
+        return '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
       }
     });
 
     renderChipList(document.getElementById('featuredModulesPreview'), homePage.featured_modules, {
       renderItem: function (item) {
         const page = modulePages[item] || {};
-        return '<span class="data-chip" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</span>';
+        return '<a class="data-chip" href="' + escapeHtml(moduleHref(item)) + '" title="' + escapeHtml(item) + '">' + escapeHtml(page.title || item) + '</a>';
       }
     });
 
@@ -171,7 +454,7 @@
           '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>',
           '  </div>',
           '  <ul>',
-               entries.map(function (item) { return '    <li><code>' + escapeHtml(item) + '</code></li>'; }).join(''),
+               entries.map(function (item) { return '    <li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join(''),
           '  </ul>',
           '</article>'
         ].join('');
@@ -186,7 +469,7 @@
         const roadmapId = entry[0];
         const roadmapPage = entry[1] || {};
         const stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
-        const related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items : [];
+        const related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items.slice(0, 4) : [];
         return [
           '<article class="card data-card">',
           '  <div>',
@@ -201,6 +484,9 @@
           '  <ul>',
                stages.slice(0, 4).map(function (stage) { return '    <li>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</li>'; }).join(''),
           '  </ul>',
+          '  <div class="chip-list">',
+               related.map(function (item) { return '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '">' + escapeHtml(item) + '</a>'; }).join(''),
+          '  </div>',
           '</article>'
         ].join('');
       });
@@ -226,7 +512,7 @@
           return [
             '<article class="card data-card">',
             '  <div>',
-            '    <h3>' + escapeHtml(detailPage.title || detailPage.id) + '</h3>',
+            '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>',
             '    <p class="card-meta">' + escapeHtml(detailPage.type || 'detail_page') + '</p>',
             '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>',
             '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>',
@@ -237,11 +523,14 @@
             '  </div>',
             '  <div>',
             '    <h4>关联项</h4>',
-            '    <ul>' + (related.length ? related.map(function (item) { return '<li><code>' + escapeHtml(item) + '</code></li>'; }).join('') : '<li>暂无关联项</li>') + '</ul>',
+            '    <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>暂无关联项</li>') + '</ul>',
             '  </div>',
             '  <div>',
             '    <h4>来源链接</h4>',
             '    <ul>' + (sources.length ? sources.map(function (url) { return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a></li>'; }).join('') : '<li>暂无来源链接</li>') + '</ul>',
+            '  </div>',
+            '  <div class="chip-list">',
+            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>',
             '  </div>',
             '</article>'
           ].join('');
@@ -281,14 +570,15 @@
         return [
           '<article class="card data-card">',
           '  <div>',
-          '    <h3>' + escapeHtml(node.title || node.id) + '</h3>',
+          '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
           '    <p class="card-meta">layer: ' + escapeHtml(node.layer || '-') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
           '    <p>' + escapeHtml(node.summary || '暂无节点摘要') + '</p>',
           '  </div>',
           '  <div class="chip-list">',
           '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
+          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
           '  </div>',
-          '  <ul>' + (related.length ? related.map(function (item) { return '<li><code>' + escapeHtml(item) + '</code></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
+          '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
           '</article>'
         ].join('');
       });
@@ -297,36 +587,81 @@
     }
   }
 
+  function handlePageDataError(error, ids) {
+    ids
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean)
+      .forEach(function (element) {
+        element.innerHTML = '<p class="data-meta">读取 <code>exports/site-data-v1.json</code> 失败：' + escapeHtml(error.message) + '</p>';
+        removeLoadingState(element);
+      });
+  }
+
   const previewRoot = document.getElementById('previewSummary');
-  if (previewRoot) {
-    fetch('../exports/site-data-v1.json')
+  const detailRoot = document.getElementById('detailTitle');
+  const techMapRoot = document.getElementById('techMapNodeGrid');
+  const moduleRoot = document.getElementById('moduleEntryList');
+
+  if (previewRoot || detailRoot || techMapRoot || moduleRoot) {
+    fetch('exports/site-data-v1.json')
       .then(function (response) {
         if (!response.ok) {
           throw new Error('HTTP ' + response.status);
         }
         return response.json();
       })
-      .then(renderPreviewPage)
+      .then(function (siteData) {
+        if (previewRoot) renderPreviewPage(siteData);
+        if (detailRoot) renderDetailPage(siteData);
+        if (techMapRoot) renderTechMapPage(siteData);
+        if (moduleRoot) renderModulePage(siteData);
+      })
       .catch(function (error) {
-        [
-          'previewSummary',
-          'homeHeroPreview',
-          'quickEntriesPreview',
-          'featuredChainPreview',
-          'featuredModulesPreview',
-          'modulePreviewGrid',
-          'roadmapPreviewGrid',
-          'detailPreviewGrid',
-          'techMapSummary',
-          'techMapLayers',
-          'techMapNodeGrid'
-        ]
-          .map(function (id) { return document.getElementById(id); })
-          .filter(Boolean)
-          .forEach(function (element) {
-            element.innerHTML = '<p class="data-meta">读取 <code>../exports/site-data-v1.json</code> 失败：' + escapeHtml(error.message) + '</p>';
-            removeLoadingState(element);
-          });
+        if (previewRoot) {
+          handlePageDataError(error, [
+            'previewSummary',
+            'homeHeroPreview',
+            'quickEntriesPreview',
+            'featuredChainPreview',
+            'featuredModulesPreview',
+            'modulePreviewGrid',
+            'roadmapPreviewGrid',
+            'detailPreviewGrid',
+            'techMapSummary',
+            'techMapLayers',
+            'techMapNodeGrid'
+          ]);
+        }
+        if (detailRoot) {
+          handlePageDataError(error, [
+            'detailBreadcrumb',
+            'detailSummary',
+            'detailMeta',
+            'detailContent',
+            'detailTagList',
+            'detailRelatedList',
+            'detailSourceList'
+          ]);
+        }
+        if (techMapRoot) {
+          handlePageDataError(error, [
+            'techMapHeroSummary',
+            'techMapGraphMeta',
+            'techMapLayerList',
+            'techMapNodeGrid'
+          ]);
+        }
+        if (moduleRoot) {
+          handlePageDataError(error, [
+            'moduleBreadcrumb',
+            'moduleSummary',
+            'moduleMeta',
+            'moduleEntryList',
+            'moduleReferenceList',
+            'moduleRoadmapList',
+            'moduleRelatedModules'
+          ]);
+        }
       });
   }
 })();

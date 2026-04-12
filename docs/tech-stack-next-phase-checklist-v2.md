@@ -1,24 +1,24 @@
 # 技术栈项目下一阶段执行清单 v2
 
-最后更新：2026-04-11
+最后更新：2026-04-12
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 关联项目：<https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks>
 上一版清单：[`docs/tech-stack-next-phase-checklist-v1.md`](tech-stack-next-phase-checklist-v1.md)
 
 ## 当前项目状态判断
 
-和 v2 刚建立时相比，项目状态已经明显变化了。
+和 v2 刚建立时相比，项目状态又往前推进了一大步。
 
 现在更准确的判断是：
 
-1. **核心主干 wiki 已经不仅是“基本成型”，而是已经能串出完整主线**
-2. **tech-map / roadmap / README / index 已经形成可用入口体系**
-3. **第一批关键实体页和缺失概念页也已补齐**
-4. **当前最主要的短板，开始从“缺概念页”转向“缺继续深挖入口”和“缺 references / sources 联动”**
+1. **核心主干 wiki、roadmap、references、exports 已经形成可串联的知识骨架**
+2. **页面级聚合导出不再只是 schema / preview，而是已经开始驱动真实页面**
+3. **`detail.html?id=...` 和 data-driven `tech-map.html` 已经跑通，页面层闭环初步建立**
+4. **当前最主要的短板，已经从“有没有页面级导出”切换成“如何继续补真实页面能力与正文消费层”**
 
 一句话：
 
-> 现在项目的主要矛盾，已经从“主干内容不够”切换成“已有内容如何继续向论文、代码、工具和资源层展开”。
+> 现在项目的主要矛盾，已经从“把知识结构导出来”切换成“如何把导出层真正推进为稳定、可扩展、可继续深挖的网站页面体系”。
 
 ## 已完成的主干内容
 
@@ -68,58 +68,60 @@ State Estimation / System Identification / Sim2Real
 
 ## 下一阶段总目标
 
-把 `Robotics_Notebooks` 从“已经有主干内容的技术栈知识库”，推进到：
+把 `Robotics_Notebooks` 从“已经有页面级导出能力的技术栈知识库”，推进到：
 
-> **一个不仅能讲清主线，还能把用户自然带到 references / sources / tools / papers 继续深挖的导航系统。**
+> **一个已经有统一 detail route、技术栈页、后续还能继续扩展正文与导航能力的数据驱动机器人知识网站。**
 
 ## 下一阶段优先级重排
 
-## P0，最高优先级，先做 references / sources / wiki 联动
+## P0，最高优先级，继续完善页面消费层
 
-### 1. 建立 references / sources 与现有主线模块的映射关系
-目标：让已有 wiki 页面不只停在概念解释，而是能继续往下挖论文、开源代码、课程和工具。
+### 1. 巩固 detail page，决定正文消费策略
+目标：让 `detail.html?id=...` 不只是 metadata 演示，而是稳定的一类真实页面。
 
 待办：
-- [ ] 审视 `references/` 当前结构
-- [ ] 审视 `sources/` 当前结构
-- [ ] 为当前主线模块建立 references 映射入口
-- [ ] 为关键实体页建立工具 / repo / docs 映射入口
-- [ ] 让 `references/` 和 `sources/` 明确区分职责
+- [ ] 明确 detail page 是否继续保持 metadata-first
+- [ ] 如果需要正文，设计 markdown 正文同步到 `docs/` 的方案
+- [ ] 评估正文同步后的最小字段与最小模板
+- [ ] 明确哪些页面类型优先支持正文（wiki / entity / reference / tech-map）
 
 完成标准：
-- 用户从任一主线概念页或实体页，都能顺着进入对应的论文 / 开源项目 / 资源入口
+- detail page 的下一阶段路线被明确，不再停留在试验态
 
-### 2. 建立“主线深挖入口”页面
-目标：不是让用户自己到处找，而是给出下一步看什么。
+### 2. 继续把 tech-map / roadmap / module page 做成真实页面体系
+目标：不只验证单页能渲染，而是形成真正可浏览的网站结构。
 
 待办：
-- [ ] 按当前主线补“继续阅读入口”结构
-- [ ] 为控制主链建立 paper / repo / tool 三类延伸入口
-- [ ] 为学习主链建立 benchmark / project / course 三类延伸入口
+- [ ] 为 tech-map 增加最小 layer filter 或分组导航
+- [ ] 评估 module page 是否也要从 preview 升级为真实页面
+- [ ] 评估 roadmap page 是否也要从 preview 升级为真实页面
+- [ ] 统一 detail / tech-map / roadmap / module 之间的跳转方式
 
 完成标准：
-- 任意一条主链都不止有 wiki 页面，还有继续深挖的结构化出口
+- 页面之间不是松散 demo，而是统一的信息架构
 
-## P1，第二优先级，准备导出层与网页消费层
+## P1，第二优先级，继续补 references / sources / wiki 联动
 
-### 3. 准备最小可用导出层
-目标：为网页、脑图、未来可视化展示打基础。
-
-待办：
-- [ ] 设计最小可用导出 schema
-- [ ] 导出 wiki 元信息
-- [ ] 导出 roadmap 数据
-- [ ] 导出 dependency 数据
-- [ ] 导出 entity 元信息
-
-### 4. 评估网页消费层需要什么字段
-目标：不是急着做页面，而是先把数据层准备对。
+### 3. 把 references / sources 的深挖入口补到更多关键页
+目标：保证页面层增长的同时，知识层不会断开到外部资源。
 
 待办：
-- [ ] 列出网页首页需要字段
-- [ ] 列出模块页需要字段
-- [ ] 列出路线页需要字段
-- [ ] 对照现有 markdown 看缺什么
+- [ ] 为当前控制主线补齐剩余 references 入口
+- [ ] 为关键实体页补齐 docs / repo / project 入口
+- [ ] 为学习主链补 benchmark / project / course 延伸入口
+- [ ] 给 `sources/` 增加“已提炼 / 待提炼”的状态感
+
+完成标准：
+- 用户不只会“看页面”，还能顺着进入论文 / repo / docs 继续深挖
+
+### 4. 稳定导出层与页面层的部署链路
+目标：保证页面和数据不是本地能跑、上线就断。
+
+待办：
+- [ ] 持续维护 `docs/exports/` 镜像导出
+- [ ] 明确页面统一读取 `docs/exports/site-data-v1.json`
+- [ ] 检查后续新增页面类型是否仍能复用现有导出结构
+- [ ] 必要时补充导出字段而不是临时在前端硬编码
 
 ## P2，第三优先级，继续第二批扩展内容
 
@@ -141,7 +143,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 明确 references / sources / wiki 三层职责边界
 - [~] 为当前控制主线建立 references 入口
 - [~] 为当前工具实体页建立 docs / repo / project 入口
-- [~] 提升 `references/` 目录自身的总入口可导航性
+- [x] 提升 `references/` 目录自身的总入口可导航性
 - [x] 设计导出层最小 schema 草案
 - [x] 明确 `id / tags / related` 的生成规则
 - [x] 生成第一版导出样例
@@ -149,19 +151,27 @@ State Estimation / System Identification / Sim2Real
 - [x] 将 `tech-map` 节点正式纳入导出层
 - [x] 优化第一版导出质量（summary / tags / related）
 - [x] 定义网页消费层字段设计
+- [x] 生成页面级聚合导出 `site-data-v1.json`
+- [x] 建立 `docs/exports/` 镜像导出，打通 GitHub Pages 消费链路
+- [x] 新增 `docs/detail.html`，跑通 metadata-first detail page
+- [x] 将 `docs/tech-map.html` 推进为 data-driven 页面，并接入 detail route
+- [x] 决定 detail page 下一阶段先支持最小 markdown 正文同步（保真展示 raw markdown）
+- [x] 将 module page 从 preview 升级为真实页面（`module.html?id=...`）
+- [ ] 评估 roadmap page 是否也从 preview 升级为真实页面
+- [ ] 为 tech-map 增加最小 layer filter 或分组导航
 
 ## 我建议的实际执行顺序
-1. 先看 `references/` 现状
-2. 再看 `sources/` 现状
-3. 明确这两个目录和 `wiki/` 的职责边界
-4. 先把控制主链接到 references / repo / docs
-5. 再把实体页接到工具文档与开源项目
-6. 然后开始做导出层 schema
+1. 先明确 detail page 是否继续 metadata-first
+2. 如果需要正文，再设计 markdown 正文同步到 `docs/` 的最小方案
+3. 然后给 tech-map 增加最小 filter / 分组导航
+4. 再决定 module page / roadmap page 是否从 preview 升级为真实页面
+5. 页面层稳定后，再回头继续补 references / docs / repo 深挖入口
 
 ## 当前阶段变化说明
 - v1 的重点：补主干 wiki 页面
 - v2 前半段的重点：结构联动、入口优化、路线执行化
-- v2 当前阶段的重点：**把主干内容继续接到 references / sources / tools / projects**
+- v2 中段的重点：把主干内容接到 references / sources / tools / projects
+- v2 当前阶段的重点：**把页面级导出真正推进为 detail page / tech-map page 等真实数据驱动页面**
 
 ## references / sources / wiki 三层职责边界
 
@@ -253,7 +263,17 @@ State Estimation / System Identification / Sim2Real
 - 2026-04-11：`site-data-v1.json` 当前已覆盖首页、6 个模块页、全部路线页、tech-map 页和全量 detail pages，可直接作为前端第一阶段消费层。
 - 2026-04-12：已新增 `docs/site-data-preview.html`，开始直接消费 `site-data-v1.json` 验证首页 / 模块页 / 路线页的最小网页渲染。
 - 2026-04-12：已继续扩展预览页，开始验证 `detail_pages` 和 `tech_map_page` 的最小网页渲染。
-- 下一步建议：把当前预览验证进一步拆成真正独立的 data-driven detail page / tech-map page，而不是只停留在单页总览。
+- 2026-04-12：已在 `scripts/export_minimal.py` 中增加 `docs/exports/` 镜像导出，修正 GitHub Pages 只部署 `docs/` 时的导出数据可访问问题。
+- 2026-04-12：已新增 `docs/detail.html`，并扩展 `docs/main.js` / `docs/style.css`，跑通 metadata-first detail page。
+- 2026-04-12：已新增 `tests/test_detail_page.py`，验证 detail page 骨架与渲染器接入点。
+- 2026-04-12：已将 `docs/tech-map.html` 从静态说明页推进为真正消费 `tech_map_page` 的 data-driven 页面，并统一接到 `detail.html?id=...`。
+- 2026-04-12：已新增 `tests/test_tech_map_page.py`，验证 tech-map 页面挂载点与渲染器接入点。
+- 2026-04-12：已为 `detail_pages` 新增 `content_markdown` 字段，并让 `detail.html` 开始展示来自源 markdown 的最小正文同步内容。
+- 2026-04-12：已新增 `tests/test_content_sync.py`，验证正文同步字段、挂载点与前端渲染器接入点。
+- 2026-04-12：已新增 `docs/module.html`，开始直接消费 `module_pages`，建立真实的 `module.html?id=...` 路由。
+- 2026-04-12：已扩展 `docs/main.js`，新增 module page 渲染器，并让首页模块入口跳到统一 module route。
+- 2026-04-12：已新增 `tests/test_module_page.py`，验证 module page 挂载点与渲染器接入点。
+- 当前阶段判断已更新：detail page 已进入 content-backed 阶段，module page 也已从 preview 升级为真实页面；下一步重点转向 roadmap page 是否也升级为真实页面，以及 tech-map 的最小 filter / 分组导航。
 
 ## 维护规则
 以后优先维护这个 v2 文件。

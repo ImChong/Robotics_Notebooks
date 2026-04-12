@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotics Notebooks 通用详情页：直接消费 site-data-v1.json，展示知识页、实体页、reference 页和 tech-map 节点的统一元信息。" />
+  <meta name="keywords" content="Robotics Notebooks, detail page, site-data-v1.json, 通用详情页" />
+  <meta name="author" content="Chong Liu" />
+  <meta property="og:title" content="Robotics Notebooks | 通用详情页" />
+  <meta property="og:description" content="基于页面级聚合导出渲染的 metadata-first detail page。" />
+  <meta property="og:type" content="website" />
+  <title>Robotics Notebooks | 通用详情页</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧩</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🧩 通用详情页 | Robotics Notebooks</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式" title="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero detail-hero">
+      <div class="container detail-hero-stack">
+        <nav id="detailBreadcrumb" class="detail-breadcrumb data-loading" aria-label="面包屑导航">
+          <a href="index.html">首页</a>
+          <span>/</span>
+          <a href="site-data-preview.html">页面级导出预览</a>
+          <span>/</span>
+          <span>详情页</span>
+        </nav>
+        <div class="detail-hero-top">
+          <div>
+            <p class="hero-kicker">Metadata-first detail page</p>
+            <h1 id="detailTitle">正在读取详情页…</h1>
+            <p id="detailSummary" class="detail-summary data-loading">当前页面直接消费 <code>exports/site-data-v1.json</code>，展示 detail page 元信息。</p>
+          </div>
+          <aside class="hero-panel detail-meta-panel">
+            <h3>页面元信息</h3>
+            <div id="detailMeta" class="detail-meta-list data-loading">
+              <p class="data-meta">正在读取 type / status / path…</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-subnav-wrap">
+      <div class="container page-subnav">
+        <a href="#detail-content">正文同步内容</a>
+        <a href="#detail-tags">标签</a>
+        <a href="#detail-related">关联项</a>
+        <a href="#detail-sources">来源链接</a>
+      </div>
+    </section>
+
+    <section class="section" id="detail-empty-section">
+      <div class="container">
+        <article id="detailEmptyState" class="card empty-state" hidden>
+          <h2>未找到对应 detail page</h2>
+          <p>请在 URL 里传入合法的 <code>?id=...</code>。例如：<code>detail.html?id=wiki-concepts-centroidal-dynamics</code></p>
+          <div class="cta-row">
+            <a class="btn-secondary" href="site-data-preview.html">回到导出预览</a>
+            <a class="btn-secondary" href="index.html">回到首页</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="detail-content-section">
+      <div class="container">
+        <section id="detailContentSection">
+          <h2 class="section-title" id="detail-content">正文同步内容</h2>
+          <p class="section-subtitle">当前先做最小正文同步：直接展示来自源 markdown 的正文内容，优先验证链路打通，不追求最终排版。</p>
+          <pre id="detailContent" class="detail-content-box data-loading">正在读取正文同步内容…</pre>
+        </section>
+      </div>
+    </section>
+
+    <section class="section" id="detail-tags">
+      <div class="container">
+        <h2 class="section-title">标签</h2>
+        <p class="section-subtitle">第一阶段先验证 tags 是否已经足够支撑 detail page 的聚合视图与二次导航。</p>
+        <div id="detailTagList" class="chip-list data-loading"></div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="detail-related">
+      <div class="container">
+        <h2 class="section-title">关联项</h2>
+        <p class="section-subtitle">这里优先展示 `related`，并直接跳回同一套 detail page 路由。</p>
+        <div id="detailRelatedList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取关联项…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="detail-sources">
+      <div class="container">
+        <h2 class="section-title">来源链接</h2>
+        <p class="section-subtitle">当前阶段只展示结构化外链入口，不直接渲染 markdown 正文。</p>
+        <div id="detailSourceList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-stack">
+      <p>© Chong Liu 2026 · Robotics Notebooks</p>
+      <p class="footer-note">当前页是 detail page 的第一阶段实现：先验证页面级聚合导出是否足够支撑真实详情页。</p>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

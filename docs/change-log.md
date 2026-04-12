@@ -49,20 +49,32 @@
 
 ---
 
-## 2026-04-12 — 补齐 detail page / tech-map 预览验证
+## 2026-04-12 — Detail page / data-driven tech-map 页面落地
 
 ### 完成内容
 
-**把页面级导出验证从首页 / 模块 / 路线继续推进到详情页与技术栈图层**
-- 扩展 `docs/site-data-preview.html`，新增 detail page 和 tech-map 两个预览分区
-- 扩展 `docs/main.js`，从 `detail_pages` 中选取代表页面做通用详情页渲染验证
-- 扩展 `docs/main.js`，直接消费 `tech_map_page`，渲染 graph meta、layer 分布与节点卡片
-- 扩展 `docs/style.css`，补充 detail / tech-map 预览所需样式
+**把页面级导出从 preview 推进到真实页面**
+- 扩展 `scripts/export_minimal.py`，在仓库根目录 `exports/` 之外，同步生成 `docs/exports/`，修正 GitHub Pages 只部署 `docs/` 时页面拿不到导出 JSON 的问题
+- 新增 `docs/detail.html`，建立统一的 `detail.html?id=...` metadata-first detail page
+- 扩展 `docs/main.js`，新增 detail page 渲染器，直接消费 `detail_pages`
+- 扩展 `docs/style.css`，补充 detail page 所需样式
+- 新增 `tests/test_detail_page.py`，验证 detail page 骨架和渲染器挂载点
+- 重写 `docs/tech-map.html`，从静态说明页推进为真正消费 `tech_map_page` 的 data-driven 页面
+- 扩展 `docs/main.js`，新增 tech-map page 渲染器，展示 graph meta、layer 分布和节点卡片
+- 新增 `tests/test_tech_map_page.py`，验证 tech-map 页面挂载点和渲染器接入点
+- 扩展 `scripts/export_minimal.py`，为 `detail_pages` 新增 `content_markdown` 字段，开始同步源 markdown 正文
+- 扩展 `docs/detail.html`，新增“正文同步内容”分区
+- 扩展 `docs/main.js`，让 detail page 开始展示最小正文同步内容（保真展示 raw markdown）
+- 新增 `tests/test_content_sync.py`，验证正文同步字段、挂载点与渲染器接入点
+- 新增 `docs/module.html`，建立统一的 `module.html?id=...` data-driven module page
+- 扩展 `docs/main.js`，新增 module page 渲染器，直接消费 `module_pages`
+- 更新 `docs/index.html`，让首页三个核心模块入口改为统一 module route
+- 新增 `tests/test_module_page.py`，验证 module page 挂载点与渲染器接入点
 
 ### 项目阶段变化
 
-- 现在已经不只是验证“页面级导出能不能驱动首页”，而是开始验证“能不能支撑通用详情页和技术栈节点页”
-- 下一步可以继续把预览页中的 detail / tech-map 渲染，推进为真正独立的数据驱动页面
+- 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module page
+- 下一步重点应转向：roadmap page 是否也从 preview 升级为真实页面，以及 tech-map 的最小 filter / 分组导航
 
 ---
 

@@ -9,6 +9,8 @@ from typing import Dict, List
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
 SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
+DOCS_OUTPUT = ROOT / "docs" / "exports" / "index-v1.json"
+DOCS_SITE_OUTPUT = ROOT / "docs" / "exports" / "site-data-v1.json"
 
 TAG_HINTS = {
     "humanoid": ["humanoid", "unitree"],
@@ -85,6 +87,17 @@ def extract_summary(text: str) -> str:
         if stripped and not stripped.startswith("#"):
             return clean_summary(stripped)
     return ""
+
+
+def extract_body_markdown(text: str) -> str:
+    lines = text.splitlines()
+    if lines and lines[0].startswith("# "):
+        lines = lines[1:]
+    while lines and not lines[0].strip():
+        lines = lines[1:]
+    while lines and not lines[-1].strip():
+        lines = lines[:-1]
+    return "\n".join(lines)
 
 
 def slugify(value: str) -> str:
@@ -225,6 +238,7 @@ def build_item(path: Path) -> Dict:
         "title": title,
         "path": rel(path),
         "summary": extract_summary(text),
+        "content_markdown": extract_body_markdown(text),
         "tags": infer_tags(path, title, text),
         "related": collect_markdown_links(text, path),
         "source_links": collect_external_links(text),
@@ -450,6 +464,7 @@ def build_site_data(items: List[Dict]) -> Dict:
             "type": item.get("type"),
             "path": item.get("path"),
             "summary": item.get("summary", ""),
+            "content_markdown": item.get("content_markdown", ""),
             "tags": item.get("tags", []),
             "related": item.get("related", []),
             "source_links": item.get("source_links", []),
@@ -483,6 +498,11 @@ def build_site_data(items: List[Dict]) -> Dict:
     }
 
 
+def write_json(path: Path, payload: Dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
 def main() -> None:
     items = [build_item(p) for p in collect_paths()]
     payload = {
@@ -492,11 +512,15 @@ def main() -> None:
         "items": items,
     }
     site_payload = build_site_data(items)
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    SITE_OUTPUT.write_text(json.dumps(site_payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+    write_json(OUTPUT, payload)
+    write_json(SITE_OUTPUT, site_payload)
+    write_json(DOCS_OUTPUT, payload)
+    write_json(DOCS_SITE_OUTPUT, site_payload)
+
     print(f"Wrote {OUTPUT} with {len(items)} items")
     print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
+    print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
 
 
 if __name__ == "__main__":
