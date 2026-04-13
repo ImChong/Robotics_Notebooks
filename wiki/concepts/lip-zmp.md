@@ -172,6 +172,12 @@ LIP 太简化，忽略了：
 
 所以别把 ZMP 神化。它很经典，但不是终点。
 
+## 参考来源
+
+- Kajita et al., *Introduction to Humanoid Robotics* — LIP/ZMP 理论基础经典教材
+- Kajita et al., *Biped walking pattern generation by using preview control of zero-moment point* — preview control 经典论文
+- Wieber, *Trajectory Free Linear Model Predictive Control for Stable Walking in the Presence of Strong Perturbations* — LIP 与 MPC 的理论连接
+
 ## 和已有页面的关系
 
 ### 和 Locomotion 的关系

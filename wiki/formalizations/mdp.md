@@ -108,7 +108,7 @@ MDP（数学框架）
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — MDP 是 RL 的理论根基
-- [Optimal Control](./optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
+- [Optimal Control](../concepts/optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
 - [Reward Design](../concepts/domain-randomization.md) — MDP 中奖励函数的设计直接决定学到的策略
 
 ## 推荐继续阅读

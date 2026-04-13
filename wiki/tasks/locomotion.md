@@ -48,6 +48,12 @@
 - **运动自然性**：和人类步态的相似度
 - **泛化能力**：能否迁移到未见过的地形
 
+## 参考来源
+
+- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文
+- Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表
+- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合
+
 ## 关联系统/方法
 
 - [Whole-Body Control](../concepts/whole-body-control.md)

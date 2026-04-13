@@ -119,8 +119,8 @@
 
 三种核心 Op：
 - **`ingest`** — 新资料进入知识库（先 `sources/`，再判断是否升格 `wiki/`）
-- **`query`** — 向知识库提问，结果写回 wiki 而非留在聊天记录
-- **`lint`** — 定期健康检查（orphan pages、矛盾、缺失 cross-reference 等）
+- **`query`** — 向知识库提问，结果写回 wiki 而非留在聊天记录；独立洞见写入 `wiki/queries/`
+- **`lint`** — 定期健康检查（orphan pages、矛盾、缺失 cross-reference、缺失参考来源等）
 
 关键约束：
 - 不要把 source 直接复制成 wiki — 要提炼，不是转存
@@ -129,3 +129,5 @@
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - 每次 ingest 都要追加到 `log.md`
 - 每次 query 有好结果都要写回 wiki
+- **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
+  （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）

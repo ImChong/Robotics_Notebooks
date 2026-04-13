@@ -61,9 +61,17 @@
 - 或新建一个 wiki 页
 
 同时补充：
+- `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
+  ```markdown
+  ## 参考来源
+  - [资料标题](../sources/xxx.md)
+  ```
 - `关联页面` — 至少 2 个相关 wiki 页
 - `推荐继续阅读` — 至少 1 个外部资源
 - 必要时更新 `index.md`
+
+> **为什么要在 wiki 页面内标注来源**：log.md 记录了操作时间线，但页面本身也应能追溯知识来源，
+> 这样读者不依赖 log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
 ### 步骤 6：运行导出脚本
 
@@ -122,8 +130,16 @@ python3 scripts/export_minimal.py
 
 **Step 5：写回到 wiki**
 
-- 独立洞见 → 新建 `wiki/concepts/xxx.md` 或 `wiki/comparisons/xxx.md`
+- 独立洞见（跨多个 wiki 页面的综合分析）→ 新建 `wiki/queries/xxx.md`，并在页面顶部注明触发问题
+- 对比分析 → 新建 `wiki/comparisons/xxx.md`
+- 新概念 → 新建 `wiki/concepts/xxx.md`
 - 补充性内容 → 找到最接近的已有页面插入
+
+写回页面格式要求（query 产物特有）：
+```markdown
+> **Query 产物**：本页由以下问题触发：「<问题一句话>」
+> 综合来源：<列出精读的 wiki 页面>
+```
 
 **Step 6：记录到 `log.md`**
 

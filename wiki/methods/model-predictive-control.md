@@ -149,6 +149,12 @@ IsaacGym /机器人领域常见。
 - **RL 训练低层策略 + MPC 做高层规划**
 - **RL 训练一个 "policy prior" + MPC 在其中做优化**
 
+## 参考来源
+
+- Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文
+- [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
+- Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
+
 ## 关联页面
 
 - [Whole-Body Control](../concepts/whole-body-control.md)

@@ -243,6 +243,12 @@ TSID / WBC
 ### 4. 接触切换仍然麻烦
 脚抬起、落地那一下最容易出幺蛾子，TSID 也得配合状态机、接触估计和过渡策略。
 
+## 参考来源
+
+- Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID 核心论文
+- Saab et al., *Dynamic whole-body motion generation under rigid contacts and other unilateral constraints* — 约束下全身动作生成
+- [TSID library](https://github.com/stack-of-tasks/tsid) — 开源实现
+
 ## 和已有页面的关系
 
 ### 和 Whole-Body Control 的关系
