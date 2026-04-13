@@ -71,14 +71,94 @@
     return 'roadmap.html?id=' + encodeURIComponent(id);
   }
 
-  function renderInlineMarkdown(text) {
-    return escapeHtml(text || '')
-      .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, function (_, label, url) {
-        return '<a href="' + url + '" target="_blank" rel="noopener noreferrer">' + label + '</a>';
-      })
+  function buildMarkdownRouteIndex(siteData) {
+    const pages = siteData && siteData.pages ? siteData.pages : {};
+    const detailPages = pages.detail_pages || {};
+    const roadmapPages = pages.roadmap_pages || {};
+    const routeIndex = {};
+
+    Object.keys(detailPages).forEach(function (id) {
+      const page = detailPages[id] || {};
+      if (page.path) routeIndex[page.path] = detailHref(id);
+    });
+    Object.keys(roadmapPages).forEach(function (id) {
+      const page = roadmapPages[id] || {};
+      if (page.path) routeIndex[page.path] = roadmapHref(id);
+    });
+
+    return routeIndex;
+  }
+
+  function normalizeInternalMarkdownTarget(target, currentPath) {
+    const raw = String(target || '').trim();
+    if (!raw || /^(https?:)?\/\//i.test(raw) || /^[a-z][a-z0-9+.-]*:/i.test(raw)) return '';
+    if (raw.startsWith('#')) return (currentPath || '') + raw;
+
+    const parts = raw.split('#');
+    const pathPart = parts[0] || '';
+    const hash = parts[1] ? '#' + parts[1] : '';
+    if (!pathPart) return (currentPath || '') + hash;
+
+    const baseSegments = String(currentPath || '').split('/').filter(Boolean);
+    if (baseSegments.length) baseSegments.pop();
+    const targetSegments = pathPart.startsWith('/')
+      ? pathPart.split('/').filter(Boolean)
+      : baseSegments.concat(pathPart.split('/').filter(Boolean));
+    const resolvedSegments = [];
+    targetSegments.forEach(function (segment) {
+      if (!segment || segment === '.') return;
+      if (segment === '..') {
+        if (resolvedSegments.length) resolvedSegments.pop();
+        return;
+      }
+      resolvedSegments.push(segment);
+    });
+
+    return resolvedSegments.join('/') + hash;
+  }
+
+  function resolveInternalMarkdownHref(target, currentPath, routeIndex) {
+    const normalizedTarget = normalizeInternalMarkdownTarget(target, currentPath);
+    if (!normalizedTarget) return '';
+
+    const hashIndex = normalizedTarget.indexOf('#');
+    const normalizedPath = hashIndex >= 0 ? normalizedTarget.slice(0, hashIndex) : normalizedTarget;
+    const hash = hashIndex >= 0 ? normalizedTarget.slice(hashIndex) : '';
+    if (!normalizedPath && hash) return hash;
+
+    return routeIndex && routeIndex[normalizedPath] ? routeIndex[normalizedPath] + hash : '';
+  }
+
+  function renderInlineMarkdown(text, markdownContext) {
+    markdownContext = markdownContext || {};
+    const tokenPrefix = '@@MDLINKTOKEN';
+    const linkTokens = [];
+    const withLinkTokens = String(text || '').replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
+      let html = '';
+      if (/^https?:\/\//i.test(target)) {
+        html = '<a href="' + escapeHtml(target) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+      } else {
+        const internalHref = resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex);
+        if (internalHref) {
+          html = '<a href="' + escapeHtml(internalHref) + '">' + escapeHtml(label) + '</a>';
+        }
+      }
+      if (!html) return match;
+      const token = tokenPrefix + linkTokens.length + '@@';
+      linkTokens.push({ token: token, html: html });
+      return token;
+    });
+
+    let rendered = escapeHtml(withLinkTokens)
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    linkTokens.forEach(function (entry) {
+      rendered = rendered.replace(entry.token, entry.html);
+    });
+
+    return rendered;
   }
 
   function renderMathBlocks(text) {
@@ -194,12 +274,13 @@
     updateActiveTocLink();
   }
 
-  function renderMarkdownContent(markdown, headings) {
+  function renderMarkdownContent(markdown, headings, markdownContext) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source) {
       return '<p>当前 detail page 暂无可同步正文。</p>';
     }
 
+    const context = markdownContext || {};
     const lines = source.split('\n');
     const blocks = [];
     const headingQueue = Array.isArray(headings) ? headings.slice() : collectMarkdownHeadings(source);
@@ -212,7 +293,7 @@
 
     function flushParagraph() {
       if (!paragraphLines.length) return;
-      blocks.push('<p>' + renderMathBlocks(renderInlineMarkdown(paragraphLines.join(' '))) + '</p>');
+      blocks.push('<p>' + renderMathBlocks(renderInlineMarkdown(paragraphLines.join(' '), context)) + '</p>');
       paragraphLines = [];
     }
 
@@ -224,7 +305,7 @@
         if (openTag === 'ol') return '<ol>';
         return '<ul>';
       })() + listItems.map(function (item) {
-        return '<li>' + renderMathBlocks(renderInlineMarkdown(item)) + '</li>';
+        return '<li>' + renderMathBlocks(renderInlineMarkdown(item, context)) + '</li>';
       }).join('') + '</' + openTag + '>');
       listItems = [];
       listTag = '';
@@ -235,7 +316,7 @@
       blocks.push((function () {
         return '<blockquote>';
       })() + quoteLines.map(function (line) {
-        return '<p>' + renderMathBlocks(renderInlineMarkdown(line)) + '</p>';
+        return '<p>' + renderMathBlocks(renderInlineMarkdown(line, context)) + '</p>';
       }).join('') + '</blockquote>');
       quoteLines = [];
     }
@@ -285,7 +366,7 @@
         const text = headingMatch[2].trim();
         const headingMeta = level >= 2 && headingQueue.length ? headingQueue.shift() : null;
         const headingId = headingMeta ? headingMeta.slug : slugifyHeading(text);
-        blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderMathBlocks(renderInlineMarkdown(text)) + '</h' + level + '>');
+        blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderMathBlocks(renderInlineMarkdown(text, context)) + '</h' + level + '>');
         return;
       }
 
@@ -398,6 +479,7 @@
 
     const pages = siteData.pages;
     const detailPages = pages.detail_pages || {};
+    const markdownRouteIndex = buildMarkdownRouteIndex(siteData);
     const params = new URLSearchParams(window.location.search);
     const detailId = params.get('id') || '';
     const detailPage = detailId ? detailPages[detailId] : null;
@@ -483,7 +565,10 @@
       contentSectionEl.hidden = !contentMarkdown;
     }
     if (contentEl) {
-      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings) : '<p>当前 detail page 暂无可同步正文。</p>';
+      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {
+        currentPath: detailPage.path || '',
+        routeIndex: markdownRouteIndex
+      }) : '<p>当前 detail page 暂无可同步正文。</p>';
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);

@@ -100,12 +100,16 @@
 - 再继续扩展 `docs/main.js`，给 detail 标题追加锚点复制按钮，并让 TOC 根据滚动位置自动高亮当前章节
 - 再继续扩展 `docs/style.css`，补齐标题锚点按钮与 TOC active 态样式
 - 再次扩展 `tests/test_content_sync.py`，验证阅读态增强逻辑已接入 detail page
+- 继续扩展 `docs/main.js`，为 detail 正文建立基于 `path` 的站内 markdown 内链解析，让 wiki / references / roadmap 相对链接统一回流到 `detail.html?id=...` 或 `roadmap.html?id=...`
+- 更新 `docs/detail.html` 的文案，明确 detail page 已进入 content-backed 阶段，并能承接正文里的站内导航
+- 再次扩展 `tests/test_content_sync.py`，验证站内 markdown 内链路由钩子已接入 detail page 正文渲染链路
 
 ### 项目阶段变化
 
 - 项目已经不再只是“有页面级导出 + 有预览页”，而是开始拥有真正的 detail route、data-driven tech-map page、最小 content-backed detail page，以及真实 module / roadmap page
 - detail page 的公式展示也已经从“最小样式高亮”推进到“KaTeX 真正数学排版”
 - detail page 的长文阅读体验也继续前进了一步：TOC 会跟随阅读位置高亮，标题支持一键复制锚点
+- detail page 的正文内链也已经开始回流到统一路由，页面不再只靠 `related` 区块做站内跳转
 - tech-map 也已经从“只能看全部节点”推进到“可以按 layer 进行最小筛选”的可用导航页
 - 下一步重点应转向：是否还需要为 tech-map 加更细筛选能力，以及是否继续补更多页面的信息架构细节
 

@@ -87,6 +87,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 将 detail page 公式从样式高亮升级为 KaTeX 真正数学排版
 - [x] 给长文 detail page 增加最小目录导航与标题锚点
 - [x] 给 detail page 增加 TOC 当前阅读位置高亮与标题锚点一键复制
+- [x] 让 detail page 正文里的站内 markdown 内链统一回流到 detail / roadmap 路由
 - [~] 明确哪些页面类型优先支持正文（当前已覆盖 wiki / entity / reference，tech-map 节点仍允许为空正文）
 
 完成标准：

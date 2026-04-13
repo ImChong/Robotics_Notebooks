@@ -5,3 +5,5 @@ __pycache__/
 # Test / tool caches
 .pytest_cache/
 .mypy_cache/
+test-results/
+playwright-report/

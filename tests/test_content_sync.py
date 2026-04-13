@@ -36,8 +36,8 @@ class DetailContentSyncTests(unittest.TestCase):
     def test_main_js_contains_markdown_renderer_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            'function renderMarkdownContent(markdown, headings)',
-            'contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings)',
+            'function renderMarkdownContent(markdown, headings, markdownContext)',
+            'contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {',
             "return '<pre><code>'",
             "return '<blockquote>'",
             "return '<ul>'",
@@ -105,6 +105,21 @@ class DetailContentSyncTests(unittest.TestCase):
             "link.classList.toggle('active',",
             'enhanceDetailHeadings(contentEl);',
             'bindDetailTocSpy(contentEl, tocEl);',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_main_js_contains_internal_markdown_link_routing_hooks(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function buildMarkdownRouteIndex(siteData)',
+            'function normalizeInternalMarkdownTarget(target, currentPath)',
+            'function resolveInternalMarkdownHref(target, currentPath, routeIndex)',
+            'function renderInlineMarkdown(text, markdownContext)',
+            'resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)',
+            'renderMarkdownContent(contentMarkdown, detailHeadings, {',
+            'currentPath: detailPage.path || \'\'',
+            'routeIndex: markdownRouteIndex',
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

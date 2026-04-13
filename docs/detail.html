@@ -41,9 +41,9 @@
         </nav>
         <div class="detail-hero-top">
           <div>
-            <p class="hero-kicker">Metadata-first detail page</p>
+            <p class="hero-kicker">Content-backed detail page</p>
             <h1 id="detailTitle">正在读取详情页…</h1>
-            <p id="detailSummary" class="detail-summary data-loading">当前页面直接消费 <code>exports/site-data-v1.json</code>，展示 detail page 元信息。</p>
+            <p id="detailSummary" class="detail-summary data-loading">当前页面直接消费 <code>exports/site-data-v1.json</code>，展示 detail page 元信息、正文与站内跳转。</p>
           </div>
           <aside class="hero-panel detail-meta-panel">
             <h3>页面元信息</h3>
@@ -87,7 +87,7 @@
         </aside>
         <section id="detailContentSection" class="detail-content-main">
           <h2 class="section-title" id="detail-content">正文同步内容</h2>
-          <p class="section-subtitle">现在直接把导出的 markdown 渲染成基础可读版，先解决可读性，再逐步补更完整排版。</p>
+          <p class="section-subtitle">现在直接把导出的 markdown 渲染成基础可读版，先解决可读性，再逐步补更完整排版；正文里的站内 markdown 内链也会统一回流到 detail / roadmap 路由。</p>
           <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
         </section>
       </div>
@@ -125,7 +125,7 @@
   <footer class="footer">
     <div class="container footer-stack">
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
-      <p class="footer-note">当前页是 detail page 的第一阶段实现：先验证页面级聚合导出是否足够支撑真实详情页。</p>
+      <p class="footer-note">当前页已从最小 detail page 继续推进到 content-backed 版本：正文、目录、公式与站内内链都已经接入统一路由。</p>
     </div>
   </footer>
 
