@@ -61,6 +61,12 @@
 仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）
 ```
 
+## 参考来源
+
+- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
+- [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合
+- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
+
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

@@ -67,6 +67,12 @@ WBC 的优势：
 ### Centroidal Dynamics
 用质心动力学代替全关节动力学，更高效但精度略低。
 
+## 参考来源
+
+- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文
+- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现
+- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合
+
 ## 关联页面
 
 - [Locomotion](../tasks/locomotion.md)

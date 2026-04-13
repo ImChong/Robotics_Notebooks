@@ -64,6 +64,12 @@
 - **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。
 - **vs 最优控制**：RL model-free，最优控制 model-based。两者在 model-based RL 中逐渐融合。
 
+## 参考来源
+
+- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
+- Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
+- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
+
 ## 关联页面
 
 - [Imitation Learning](./imitation-learning.md)

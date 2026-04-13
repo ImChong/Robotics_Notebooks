@@ -241,6 +241,12 @@ Centroidal Dynamics 比 LIP 强，但它依然不是全刚体动力学。
 
 Centroidal 模型没有魔法，只是让问题更可控，不是让问题消失。
 
+## 参考来源
+
+- Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot* — centroidal dynamics 系统性阐述
+- Herzog et al., *Momentum Control with Hierarchical Inverse Dynamics on a Torque-Controlled Humanoid* — WBC 与 centroidal 结合代表
+- Winkler et al., *Gait and Trajectory Optimization for Legged Systems through Phase-based End-Effector Parameterization* — 接触规划代表
+
 ## 和已有页面的关系
 
 ### 和 LIP / ZMP 的关系

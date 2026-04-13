@@ -84,6 +84,12 @@ $$\min_\theta \mathbb{E}_{(s,a) \sim D}[-\log \pi_\theta(a|s)]$$
 - **分布偏移**：训练分布和真实部署差异
 - **技能组合**：如何把多个独立技能串成复杂长序列
 
+## 参考来源
+
+- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
+- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis* — IL + RL 融合路线代表
+- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合
+
 ## 关联页面
 
 - [Reinforcement Learning](./reinforcement-learning.md)

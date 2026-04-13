@@ -267,7 +267,7 @@ Pinocchio 很值得优先学。
 
 - 官方仓库：<https://github.com/stack-of-tasks/pinocchio>
 - 官方文档：<https://stack-of-tasks.github.io/pinocchio/>
-- [TSID](./tsid.md)
+- [TSID](../concepts/tsid.md)
 - [Crocoddyl](./crocoddyl.md)
 
 ## 关联页面
