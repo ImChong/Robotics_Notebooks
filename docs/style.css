@@ -522,6 +522,12 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   background: rgba(45,116,218,.10);
   text-decoration: none;
 }
+.detail-hash-target {
+  border-radius: 10px;
+  background: rgba(45,116,218,.10);
+  box-shadow: 0 0 0 1px rgba(45,116,218,.18);
+  transition: background var(--transition), box-shadow var(--transition);
+}
 .detail-markdown-body p,
 .detail-markdown-body ul,
 .detail-markdown-body ol,

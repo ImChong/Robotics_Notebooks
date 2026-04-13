@@ -274,6 +274,32 @@
     updateActiveTocLink();
   }
 
+  function scrollToDetailHashTarget(container) {
+    if (!container) return;
+    const rawHash = window.location.hash.replace(/^#/, '');
+    if (!rawHash) return;
+
+    let decodedHash = rawHash;
+    try {
+      decodedHash = decodeURIComponent(rawHash);
+    } catch (_) {}
+
+    const safeHash = typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function'
+      ? window.CSS.escape(decodedHash)
+      : decodedHash.replace(/[^\w-]/g, '\\$&');
+    const target = container.querySelector('#' + safeHash);
+    if (!target) return;
+
+    Array.from(container.querySelectorAll('.detail-hash-target')).forEach(function (node) {
+      node.classList.remove('detail-hash-target');
+    });
+    target.classList.add('detail-hash-target');
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function () {
+      target.classList.remove('detail-hash-target');
+    }, 1800);
+  }
+
   function renderMarkdownContent(markdown, headings, markdownContext) {
     const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
     if (!source) {
@@ -572,6 +598,8 @@
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
+      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
+      scrollToDetailHashTarget(contentEl);
       removeLoadingState(contentEl);
     }
 

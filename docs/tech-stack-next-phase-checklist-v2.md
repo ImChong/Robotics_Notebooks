@@ -1,6 +1,6 @@
 # 技术栈项目下一阶段执行清单 v2
 
-最后更新：2026-04-12
+最后更新：2026-04-13
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 关联项目：<https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks>
 上一版清单：[`docs/tech-stack-next-phase-checklist-v1.md`](tech-stack-next-phase-checklist-v1.md)
@@ -88,13 +88,14 @@ State Estimation / System Identification / Sim2Real
 - [x] 给长文 detail page 增加最小目录导航与标题锚点
 - [x] 给 detail page 增加 TOC 当前阅读位置高亮与标题锚点一键复制
 - [x] 让 detail page 正文里的站内 markdown 内链统一回流到 detail / roadmap 路由
+- [x] 让 detail page 在异步渲染后仍能消费 `#heading` 深链，支持跨页锚点打开与目标标题高亮
 - [~] 明确哪些页面类型优先支持正文（当前已覆盖 wiki / entity / reference，tech-map 节点仍允许为空正文）
 
 完成标准：
 - detail page 的下一阶段路线被明确，不再停留在试验态
 - detail page 的正文展示从“能同步”推进到“基础可读”
 - 含公式的 detail page 已具备 KaTeX 数学排版能力，不再只是最小样式高亮
-- 长文 detail page 已具备最小 TOC + 锚点跳转能力，并支持当前阅读位置高亮与标题链接复制
+- 长文 detail page 已具备最小 TOC + 锚点跳转能力，并支持当前阅读位置高亮、标题链接复制，以及异步渲染后的深链落点恢复
 
 ### 2. 继续把 tech-map / roadmap / module page 做成真实页面体系
 目标：不只验证单页能渲染，而是形成真正可浏览的网站结构。
@@ -167,6 +168,7 @@ State Estimation / System Identification / Sim2Real
 - [x] 将 `docs/tech-map.html` 推进为 data-driven 页面，并接入 detail route
 - [x] 决定 detail page 下一阶段先支持最小 markdown 正文同步，并升级为基础 markdown 渲染
 - [x] 为 detail page 增加最小 TOC / 锚点导航，提升长文可用性
+- [x] 补齐 detail page 的 `#heading` 深链恢复，避免异步正文渲染后锚点落空
 - [x] 将 module page 从 preview 升级为真实页面（`module.html?id=...`）
 - [x] 将 roadmap page 从 preview 升级为真实页面（`roadmap.html?id=...`）
 - [x] 为 tech-map 增加最小 layer filter / 分组导航

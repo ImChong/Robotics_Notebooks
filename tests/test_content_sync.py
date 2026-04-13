@@ -124,12 +124,27 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
-    def test_style_css_contains_heading_anchor_and_active_toc_styles(self):
+    def test_main_js_contains_hash_navigation_hooks_for_detail_content(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            'function scrollToDetailHashTarget(container)',
+            "window.location.hash.replace(/^#/, '')",
+            'decodeURIComponent(rawHash)',
+            "container.querySelector('#' +",
+            'target.scrollIntoView({ behavior: \'smooth\', block: \'start\' });',
+            "window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });",
+            'scrollToDetailHashTarget(contentEl);',
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
         style_content = (ROOT / 'docs' / 'style.css').read_text(encoding='utf-8')
         expected_snippets = [
             '.heading-anchor-link',
             '.detail-markdown-body h2:hover .heading-anchor-link',
             '.detail-toc-list a.active',
+            '.detail-hash-target',
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, style_content)
