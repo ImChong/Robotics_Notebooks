@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-04-13] ingest | paper | ULTRA: Survey of Humanoid Locomotion RL ← 计划但未执行
+
+- 规划了 ULTRA 论文 ingest：在 wiki/concepts/ 建立 ultra-survey 页面，更新 wiki/tasks/locomotion 的 related，新增 tags: rl, survey, humanoid
+- **实际未执行**（ultra-survey 页面不存在，locomotion related 链接未建立）
+- 待后续有空闲窗口时补上
+
+---
+
 ## [2026-04-13] ingest | paper | Detail page 相关推荐模块
 
 - 基于 Karpathy LLM Wiki 分析，开始补齐项目 Wiki-Ops 体系
