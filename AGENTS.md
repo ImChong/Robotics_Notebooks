@@ -110,3 +110,22 @@
 - 若知识点已存在，补充而不是重复造页
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
 - 若会影响学习路径，应同步更新 `index.md` 或相关 roadmap 页面
+
+### LLM Wiki Ops 规范（必须遵守）
+
+本知识库采用 **Karpathy LLM Wiki 模式**：LLM 是维护者，人类是 curator。
+
+核心操作规范在 `schema/ingest-workflow.md`，每次维护本仓库前必须先读该文件。
+
+三种核心 Op：
+- **`ingest`** — 新资料进入知识库（先 `sources/`，再判断是否升格 `wiki/`）
+- **`query`** — 向知识库提问，结果写回 wiki 而非留在聊天记录
+- **`lint`** — 定期健康检查（orphan pages、矛盾、缺失 cross-reference 等）
+
+关键约束：
+- 不要把 source 直接复制成 wiki — 要提炼，不是转存
+- 不要把 wiki 页写成纯外链列表 — 要有知识归纳
+- 不要为了收集而收集 — 优先服务学习与研究主线
+- 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
+- 每次 ingest 都要追加到 `log.md`
+- 每次 query 有好结果都要写回 wiki
