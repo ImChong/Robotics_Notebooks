@@ -55,6 +55,8 @@
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）
+- [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）
+- [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
 
 ## 关联任务
 

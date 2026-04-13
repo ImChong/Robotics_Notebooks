@@ -226,7 +226,10 @@ MPC / Centroidal Planner / TSID / WBC / Policy
 
 所以它不是一个边角模块，而是全控制链的入口。
 
-## 和已有页面的关系
+### 和已有页面的关系
+
+- [System Identification](./system-identification.md)（状态估计依赖机器人动力学模型，SysID 是模型可信度的前提）
+- [Floating Base Dynamics](./floating-base-dynamics.md)（floating base 状态估计是 state estimation 最难的部分之一）
 
 ### 和 TSID 的关系
 TSID 要算任务误差、雅可比项、动力学一致解，前提是当前姿态、速度、接触状态得估得靠谱。

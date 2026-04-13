@@ -66,6 +66,7 @@
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
+- [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 
 ## 继续深挖入口
 
