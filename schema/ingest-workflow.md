@@ -2,7 +2,7 @@
 
 > 本文件定义 Robotics_Notebooks 知识库的日常维护操作规范。
 > 基于 Karpathy LLM Wiki 模式：LLM 是维护者，人类是 curator。
-> 三种核心 ops：Ingest（吃进）、Query（查询）、Lint（体检）。
+> 四种核心 ops：Ingest（吃进）、Query（查询）、Lint（体检）、Index（索引）。
 
 ---
 
@@ -43,18 +43,29 @@
 - 能帮助做选型对比
 - 能影响学习路线或研究判断
 
-### 步骤 4：更新相关页面
+### 步骤 4：判断放进哪个 wiki 子目录
+
+| 资料性质 | 目标位置 |
+|---------|---------|
+| 形式化基础（数学/理论框架）| `wiki/formalizations/` |
+| 核心概念/方法 | `wiki/concepts/` 或 `wiki/methods/` |
+| 实体（工具/框架/硬件）| `wiki/entities/` |
+| 任务方向 | `wiki/tasks/` |
+| 对比分析 | `wiki/comparisons/` |
+| 学习路线 | `roadmap/` 或 `wiki/roadmaps/` |
+
+### 步骤 5：更新相关页面
 
 若资料有价值：
 - 更新一个已有 wiki 页（补充 cross-reference、关联关系）
 - 或新建一个 wiki 页
 
 同时补充：
-- `related` — 关联页面
-- `继续深挖入口` — references 链接
+- `关联页面` — 至少 2 个相关 wiki 页
+- `推荐继续阅读` — 至少 1 个外部资源
 - 必要时更新 `index.md`
 
-### 步骤 5：更新导出数据
+### 步骤 6：运行导出脚本
 
 如果新增或大幅修改了 wiki 页面，运行导出脚本同步到前端：
 
@@ -62,7 +73,7 @@
 python3 scripts/export_minimal.py
 ```
 
-### 步骤 6：记录到 `log.md`
+### 步骤 7：记录到 `log.md`
 
 每次 ingest 都追加到 `log.md`，格式：
 
@@ -83,26 +94,46 @@ python3 scripts/export_minimal.py
 - 想了解某个概念但不想翻完所有原始资料
 - 想找"哪个页面涉及 X 和 Y 的对比"
 - 想确认"关于这个主题目前 wiki 里有什么"
+- 主动发现了一个值得深挖的连接
 
-### 执行方式
+### 标准流程
 
-直接在对话里向 LLM 描述你的问题，附上 `index.md` 的内容作为上下文。
+**Step 1：定位相关页面**
 
-### Query 结果写回 wiki
+先读 `index.md` 和相关分类页，找到最接近的 2-4 个 wiki 页。
 
-好的 Query 结果不应该消失在聊天记录里。如果 LLM 给出了：
-- 一个有价值的对比分析 → 写成 wiki comparison 页面
-- 一个新的联系或洞见 → 补充到相关概念页的 `related` 或正文
-- 一段值得留存的总结 → 写成 wiki 概念页
+**Step 2：综合分析**
 
-写回后，在 `log.md` 追加一条：
+精读相关页面，提取：
+- 各页的核心结论
+- 它们的相同点和分歧点
+- 是否有页面已经过时或相互矛盾
+
+**Step 3：形成答案**
+
+好的答案可以是：
+- 一个 wiki comparison 页面（两个方法的系统对比）
+- 一个新的概念页（把多个来源的洞见综合成一篇）
+- 对已有页面的补充（补充 cross-reference 或纠正矛盾）
+
+**Step 4：判断是否写回 wiki**
+
+写回标准：有独立的认知价值——不是简单的复述，而是有新的连接、对比或洞见。
+
+**Step 5：写回到 wiki**
+
+- 独立洞见 → 新建 `wiki/concepts/xxx.md` 或 `wiki/comparisons/xxx.md`
+- 补充性内容 → 找到最接近的已有页面插入
+
+**Step 6：记录到 `log.md`**
 
 ```markdown
-## [YYYY-MM-DD] query | <topic> | <question summary>
+## [YYYY-MM-DD] query | <topic> | <问题一句话>
 
 - Q: <问题摘要>
 - A: <结论摘要>
-- 写回：<写到哪个页面了>
+- 写回：<写到哪个页面了，新页面还是已有页面>
+- 涉及页面：<精读了哪些 wiki 页>
 ```
 
 ---
@@ -111,7 +142,8 @@ python3 scripts/export_minimal.py
 
 ### 触发条件
 
-- 每隔一段时间（建议至少每 1-2 周一次）
+- 每天早上定时任务自动跑（主要）
+- 每隔一段时间（建议至少每 1-2 周一次）手动触发
 - 新增大量页面后
 - 发现某块内容明显过时或矛盾时
 
@@ -123,6 +155,7 @@ python3 scripts/export_minimal.py
 4. **过时内容**：某页面长期未更新但相关来源已有新发展
 5. **空壳页面**：只有标题没有实质内容的页面
 6. **stale related**：某页面的 `related` 列表已经明显不反映当前知识结构
+7. **索引一致性**：index.md 中的页面列表是否和实际 wiki 目录一致
 
 ### Lint 后记录
 
@@ -132,7 +165,27 @@ python3 scripts/export_minimal.py
 - 发现：<问题 1>
 - 发现：<问题 2>
 - 修复：<问题 X 已修复>
+- 待处理：<问题 Y 暂未处理，原因>
 ```
+
+---
+
+## Op 4：Index — 维护 index.md
+
+### 触发条件
+
+- 每次新增 wiki 页面后
+- 每次删除或重命名 wiki 页面后
+- 定期检查（建议配合 Lint 一起做）
+
+### 维护原则
+
+`index.md` 是知识库的总入口，每次新增页面必须同步更新，不允许页面存在于 wiki 目录但不在 index.md 中。
+
+更新内容：
+- 在对应的 `### Wiki Pages` / `### Formalizations` / `### Comparisons` 等区块下追加新页面
+- 格式：`[<页面名>](<路径>) — <一句话摘要>`
+- 一句话摘要从页面顶部的"**一句话定义**"字段提取
 
 ---
 
@@ -143,6 +196,7 @@ python3 scripts/export_minimal.py
 | `ingest` | 新资料进入知识库 |
 | `query` | 向知识库提问并将结果写回 |
 | `lint` | 定期健康检查 |
+| `index` | 维护 index.md 索引 |
 | `structural` | 结构性变更（新增页面类型、路由调整等） |
 
 ---
@@ -150,9 +204,9 @@ python3 scripts/export_minimal.py
 ## 与 `docs/change-log.md` 的分工
 
 - **`log.md`** = 每次操作的时间线（ingest / query / lint / structural）
-- **`docs/change-log.md`** = 重要结构性变更的里程碑记录
+- **`docs/change-log.md`** = 重要结构性变更的里程碑记录（V1→V2、新入口/路由重大调整等）
 
-日常维护优先写 `log.md`；里程碑性质的变化（如 V1 → V2）才写 `docs/change-log.md`。
+日常维护优先写 `log.md`；里程碑性质的变化（如版本升级、重大架构调整）才写 `docs/change-log.md`。
 
 ---
 
@@ -162,3 +216,4 @@ python3 scripts/export_minimal.py
 - 不要把 wiki 页写成纯外链列表 — 要有知识归纳
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
+- 每次 ingest 都要更新 index.md 和 log.md，不要遗漏
