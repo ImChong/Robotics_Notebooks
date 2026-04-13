@@ -73,3 +73,9 @@
 ### 开源项目 / 框架入口
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 - [Simulation](../../references/repos/simulation.md)
+
+## 推荐继续阅读
+
+- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）
+- Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
+- Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）

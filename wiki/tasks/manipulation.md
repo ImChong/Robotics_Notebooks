@@ -58,3 +58,9 @@
 ## 关联任务
 
 - [Locomotion](./locomotion.md)：loco-manipulation 是两者的结合
+
+## 推荐继续阅读
+
+- [Imitation Learning](../methods/imitation-learning.md)
+- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前模仿学习 SOTA 路线之一）
+- Unitree 开源操作项目：<https://github.com/unitreerobotics>
