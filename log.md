@@ -10,6 +10,18 @@
 
 ---
 
+## [2026-04-13] ingest | paper | ULTRA: Survey 完成
+
+- 新建 `wiki/tasks/ultra-survey.md`（ULTRA 统一多模态 loco-manipulation 控制器笔记）
+- 在 `wiki/tasks/locomotion.md` 的关联系统区块新增 ULTRA 链接
+- 同步更新 `index.md` Page Catalog，新增 ULTRA 条目（Wiki Tasks 任务页）
+
+## [2026-04-13] ops | page-catalog-automation | Page Catalog 自动化脚本
+
+- 新建 `scripts/generate_page_catalog.py`：自动扫描 wiki/、roadmap/、tech-map/、references/ 目录生成 Page Catalog markdown
+- 替换 `index.md` 中手动维护的 Page Catalog 为脚本生成版本
+- 以后新增页面后运行 `python3 scripts/generate_page_catalog.py >> index.md` 即可同步
+
 ## [2026-04-13] ingest | paper | ULTRA: Survey of Humanoid Locomotion RL ← 计划但未执行
 
 - 规划了 ULTRA 论文 ingest：在 wiki/concepts/ 建立 ultra-survey 页面，更新 wiki/tasks/locomotion 的 related，新增 tags: rl, survey, humanoid

@@ -57,6 +57,7 @@
 - [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）
 - [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
+- [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
 
 ## 关联任务
 
