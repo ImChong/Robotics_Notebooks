@@ -500,6 +500,34 @@
     removeLoadingState(container);
   }
 
+  function findRelatedByTags(currentId, currentTags, detailPages, maxResults) {
+    if (!Array.isArray(currentTags) || !currentTags.length) return [];
+    maxResults = typeof maxResults === 'number' ? maxResults : 5;
+    var tagSet = {};
+    currentTags.forEach(function (tag) { tagSet[tag] = true; });
+
+    var scored = [];
+    Object.keys(detailPages).forEach(function (id) {
+      if (id === currentId) return;
+      var page = detailPages[id] || {};
+      var pageTags = Array.isArray(page.tags) ? page.tags : [];
+      var matchCount = 0;
+      pageTags.forEach(function (tag) {
+        if (tagSet[tag]) matchCount++;
+      });
+      if (matchCount > 0) {
+        scored.push({ id: id, page: page, score: matchCount, topTag: pageTags[0] || '' });
+      }
+    });
+
+    scored.sort(function (a, b) {
+      if (b.score !== a.score) return b.score - a.score;
+      return (b.page.title || '').localeCompare(a.page.title || '');
+    });
+
+    return scored.slice(0, maxResults).map(function (item) { return item.id; });
+  }
+
   function renderDetailPage(siteData) {
     if (!siteData || !siteData.pages) return;
 
@@ -519,6 +547,7 @@
     const contentEl = document.getElementById('detailContent');
     const tagEl = document.getElementById('detailTagList');
     const relatedEl = document.getElementById('detailRelatedList');
+    const recommendedEl = document.getElementById('detailRecommendedList');
     const sourceEl = document.getElementById('detailSourceList');
     const emptyState = document.getElementById('detailEmptyState');
     const breadcrumb = document.getElementById('detailBreadcrumb');
@@ -546,6 +575,10 @@
       }
       renderChipList(tagEl, [], {});
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。' });
+      if (recommendedEl) {
+        recommendedEl.innerHTML = '<article class="card"><p>当前无可展示的相关推荐。</p></article>';
+        removeLoadingState(recommendedEl);
+      }
       renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
       if (breadcrumb) removeLoadingState(breadcrumb);
       return;
@@ -609,6 +642,35 @@
       }
     });
     renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
+
+    if (recommendedEl) {
+      var recommendedIds = findRelatedByTags(detailId, detailPage.tags, detailPages, 5);
+      if (recommendedIds.length) {
+        recommendedEl.innerHTML = recommendedIds.map(function (id) {
+          var page = detailPages[id] || {};
+          var pageTags = Array.isArray(page.tags) ? page.tags : [];
+          return [
+            '<article class="card data-card">',
+            '  <div>',
+            '    <h3><a href="' + escapeHtml(detailHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
+            '    <p class="card-meta">tag 匹配推荐</p>',
+            '    <p>' + escapeHtml(page.summary || '暂无摘要') + '</p>',
+            '  </div>',
+            '  <div class="chip-list">',
+            pageTags.slice(0, 3).map(function (tag) {
+              return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+            }).join(''),
+            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(id)) + '">打开详情页</a>',
+            '  </div>',
+            '</article>'
+          ].join('');
+        }).join('');
+      } else {
+        recommendedEl.innerHTML = '<article class="card"><p>暂无 tag 匹配的相关推荐。</p></article>';
+      }
+      removeLoadingState(recommendedEl);
+    }
+
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
   }
 

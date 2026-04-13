@@ -61,6 +61,7 @@
         <a href="#detail-toc">目录导航</a>
         <a href="#detail-tags">标签</a>
         <a href="#detail-related">关联项</a>
+        <a href="#detail-recommended">相关推荐</a>
         <a href="#detail-sources">来源链接</a>
       </div>
     </section>
@@ -104,9 +105,19 @@
     <section class="section section-alt" id="detail-related">
       <div class="container">
         <h2 class="section-title">关联项</h2>
-        <p class="section-subtitle">这里优先展示 `related`，并直接跳回同一套 detail page 路由。</p>
+        <p class="section-subtitle">这里优先展示 <code>related</code>，并直接跳回同一套 detail page 路由。</p>
         <div id="detailRelatedList" class="card-grid data-loading">
           <article class="card skeleton-card"><p>正在读取关联项…</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="detail-recommended">
+      <div class="container">
+        <h2 class="section-title">相关推荐</h2>
+        <p class="section-subtitle">基于当前页面标签自动匹配，展示 tag 重合度最高的其他页面，帮助你拓展阅读路径。</p>
+        <div id="detailRecommendedList" class="card-grid data-loading">
+          <article class="card skeleton-card"><p>正在计算相关推荐…</p></article>
         </div>
       </div>
     </section>
