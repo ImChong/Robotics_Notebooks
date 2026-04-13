@@ -18,6 +18,16 @@
 
 ---
 
+## [2026-04-13] ingest | sources-backfill | 补全 sources/ 资料层结构
+
+- 系统检查发现 sources/ 资料层严重缺失（193 条 git commit 没有任何 sources 条目）
+- 建立 `sources/papers/`、`sources/repos/`、`sources/blogs/` 三个子目录骨架
+- 补全实体来源归档：mujoco.md、isaac_gym_isaac_lab.md、pinocchio.md、crocoddyl.md、unitree.md、legged_gym.md
+- 补全论文来源归档：locomotion_rl.md、sim2real.md、survey_papers.md、imitation_learning.md、whole_body_control.md、humanoid_hardware.md
+- 重写 `sources/README.md`，按 papers/repos/blogs/notes/根目录散文件 五区重组
+
+---
+
 ## [2026-04-13] ingest | paper | Detail page 相关推荐模块
 
 - 基于 Karpathy LLM Wiki 分析，开始补齐项目 Wiki-Ops 体系
@@ -44,6 +54,17 @@
 
 ---
 
+## [2026-04-13] ingest | wiki-content | Detail page 阅读体验全链路升级
+
+- 将 detail page 正文从 raw markdown `<pre>` 升级为基础 markdown 渲染容器（支持标题、列表、引用、代码块、粗体、链接）
+- 接入 KaTeX CSS/JS 与 auto-render，detail page 公式从最小样式高亮升级为真正数学排版
+- 新增 detail 正文侧边目录导航区块（TOC），根据正文自动生成
+- 给 detail 标题追加锚点复制按钮，TOC 根据滚动位置自动高亮当前章节
+- 建立基于 path 的站内 markdown 内链解析，wiki/references/roadmap 相对链接统一回流到 detail.html?id=... 或 roadmap.html?id=...
+- 这一系列使 detail page 从"能看"推进到"能稳定导航长文"
+
+---
+
 ## [2026-04-12] structural | page-routing | 统一 detail / module / roadmap route
 
 - 将 `docs/tech-map.html` 从静态说明页升级为 data-driven 页面
@@ -54,7 +75,46 @@
 
 ---
 
-## [2026-04-12] ingest | wiki-content | 第一批关键概念页深化
+## [2026-04-12] structural | export-layer | 页面级聚合导出落地
+
+- 扩展 `scripts/export_minimal.py`，生成 `exports/site-data-v1.json`，包含 5 类页面聚合结果
+- 新增 `docs/site-data-preview.html` 作为页面级聚合导出的最小验证页
+- 直接消费 `site-data-v1.json` 渲染首页摘要、模块页数据、路线页数据
+- 扩展 `scripts/export_minimal.py`，为 `detail_pages` 新增 `content_markdown` 字段，同步源 markdown 正文
+- 项目从"对象 schema 导出"推进到"页面消费层聚合导出"
+
+---
+
+## [2026-04-11] ingest | wiki-entities | 第一批实体页补全
+
+- 新增 `wiki/entities/legged_gym.md`（ETH RSL 足式机器人 RL 训练框架）
+- 新增 `wiki/entities/mujoco.md`（Google DeepMind 物理引擎）
+- 新增 `wiki/entities/isaac-gym-isaac-lab.md`（NVIDIA GPU 加速仿真框架）
+- 新增 `wiki/entities/pinocchio.md`（机器人运动学/动力学底层引擎）
+- 新增 `wiki/entities/crocoddyl.md`（Pinocchio 之上的最优控制框架）
+- 新增 `wiki/entities/unitree.md`（Unitree 硬件与 SDK 平台）
+- 同步在 `sources/repos/` 建立对应来源归档条目
+
+---
+
+## [2026-04-11] ingest | wiki-content | 第二批关键概念页深化
+
+- 新增 `wiki/concepts/capture-point-dcm.md`（Capture Point 与 DCM 步行平衡方法）
+- 新增 `wiki/concepts/floating-base-dynamics.md`（浮动基动力学）
+- 新增 `wiki/concepts/contact-dynamics.md`（接触动力学）
+- 补全 `wiki/concepts/centroidal-dynamics.md` / `lip-zmp.md` / `tsid.md` / `state-estimation.md` / `system-identification.md`
+
+---
+
+## [2026-04-11] structural | references-cleanup | 梳理 references 与 sources 职责边界
+
+- 重写 `references/README.md` 和 `references/papers/`、`references/repos/`、`references/benchmarks/` 各子目录 README
+- 明确三层职责边界：sources（原始资料输入）→ references（论文/仓库导航索引）→ wiki（结构化知识）
+- references 层现在具备快速入口和主线映射能力
+
+---
+
+## [2026-04-11] ingest | wiki-content | 第一批关键概念页深化
 
 - 深化 `wiki/concepts/` 主干，补全 Capture Point / DCM / Floating Base Dynamics / Contact Dynamics 等关键节点
 - 为关键实体页（Isaac Gym / Isaac Lab、MuJoCo、legged_gym、Pinocchio、Crocoddyl、Unitree）补充 references 入口
