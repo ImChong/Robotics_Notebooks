@@ -173,6 +173,11 @@ State Estimation / System Identification / Sim2Real
 - [ROS2](tech-map/modules/system/ros2.md) — 机器人系统工程和集成阶段的重要基础设施... `📅2026-04-08` `⬆️0` `[tech_map_node]`  _tech-map_
 - [Simulation](tech-map/modules/system/simulation.md) — 仿真是控制、学习与部署之间的中介层... `📅2026-04-08` `⬆️0` `[tech_map_node]`  _tech-map, tooling_
 
+### Formalizations（形式化基础）
+
+- [MDP](wiki/formalizations/mdp.md) — 马尔可夫决策过程：强化学习的数学理论根基，包含状态/动作/转移/奖励/折扣五元组与最优性定义
+- [Bellman 方程](wiki/formalizations/bellman-equation.md) — 值函数的递归关系：几乎所有 RL 算法的理论基础，包含 Value Iteration / Policy Iteration / TD Learning
+
 ### Wiki Pages（知识页）
 
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md) — Capture Point：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里... `📅2026-04-11` `⬆️0` `[wiki_page]`  _concept, control, dynamics_

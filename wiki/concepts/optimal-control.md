@@ -20,6 +20,14 @@
 - 时间
 - 或者它们的加权组合
 
+在人形机器人里，最优控制的思路无处不在：
+- **MPC**：在线滚动求解 OCP，是目前最主流的人形控制器架构
+- **WBC**：底层 QP 等价于一个带约束的凸优化 OCP
+- **RL**：model-free 最优控制——不显式建模，但目标同样是解 Bellman 最优方程
+- **轨迹优化**：离线求解 OCP，给 MPC 提供参考轨迹或初始化
+
+不懂 OCP，就看不懂当前人形控制算法的底层逻辑。
+
 ## 核心问题：OCP 的标准形式
 
 一个标准最优控制问题（OCP）包括：
@@ -160,6 +168,8 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 - [Whole-Body Control](./whole-body-control.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)
+- [MDP](../formalizations/mdp.md) — OCP 是确定性版本的 MDP；OCP 不含随机转移，RL 含随机转移
+- [Bellman 方程](../formalizations/bellman-equation.md) — Bellman 最优方程是 OCP（尤其是 LQR）的解析求解基础
 
 ## 推荐继续阅读
 
