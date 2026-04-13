@@ -223,6 +223,12 @@
 - 论文：Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 
+## 关联页面
+
+- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Sim2Real](../concepts/sim2real.md)
+
 ## 一句话记忆
 
 > `legged_gym` 是足式机器人 RL 里最经典的开源训练框架之一，它不是物理引擎，而是一套把 locomotion、reward、domain randomization 和 sim2real 工程实践组织起来的旧经典训练栈。

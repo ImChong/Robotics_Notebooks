@@ -222,6 +222,12 @@ MuJoCo 不只是拿来做 model-free RL，也很适合控制和优化实验。
 - `mujoco-py` 仓库（deprecated 说明）：<https://github.com/openai/mujoco-py>
 - MuJoCo Playground：<https://playground.mujoco.org/>
 
+## 关联页面
+
+- [Pinocchio](./pinocchio.md)
+- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [Simulation](../../references/repos/simulation.md)
+
 ## 一句话记忆
 
 > MuJoCo 是 Google DeepMind 维护的开源机器人物理引擎，是控制、强化学习、模仿学习和动作生成研究里最经典也最耐用的实验底座之一。

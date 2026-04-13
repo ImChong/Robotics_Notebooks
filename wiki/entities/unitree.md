@@ -191,6 +191,12 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 - G1 页面：<https://www.unitree.com/g1/>
 - H1 页面：<https://www.unitree.com/h1/>
 
+## 关联页面
+
+- [legged_gym](./legged-gym.md)
+- [Locomotion](../tasks/locomotion.md)
+- [Humanoid Hardware](../../references/papers/humanoid-hardware.md)
+
 ## 一句话记忆
 
 > Unitree 的核心意义，不只是做出四足和人形机器人，而是把真实腿式 / 人形平台变成更多团队能真正拿来做控制、RL、locomotion 和 sim2real 研究的硬件入口。

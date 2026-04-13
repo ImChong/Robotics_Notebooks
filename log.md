@@ -18,6 +18,14 @@
 
 ---
 
+## [2026-04-13] ingest | wiki-quality | 补全所有 entity 页的关联页面区块
+
+- 系统检查发现 6 个 entity 页（crocoddyl / isaac-gym-isaac-lab / legged-gym / mujoco / pinocchio / unitree）缺少"关联页面"区块
+- 为每个 entity 页在"推荐继续阅读"和"一句话记忆"之间新增"关联页面"区块，包含 2-3 个相关 wiki 页链接
+- 这是 schema/page-types.md 质量标准落地的重要一步
+
+---
+
 ## [2026-04-13] ingest | sources-backfill | 补全 sources/ 资料层结构
 
 - 系统检查发现 sources/ 资料层严重缺失（193 条 git commit 没有任何 sources 条目）
@@ -72,6 +80,15 @@
 - 扩展 `docs/main.js`，新增 tech-map / module / roadmap page 渲染器
 - 统一四类页面之间的跳转方式到 `detail.html?id=...` / `module.html?id=...` / `roadmap.html?id=...`
 - 在 `scripts/export_minimal.py` 增加 `docs/exports/` 镜像导出，打通 GitHub Pages 部署链路
+
+---
+
+## [2026-04-12] structural | page-routing | tech-map 筛选与分组增强
+
+- tech-map 页面增加 layer filter，最小筛选能力
+- tech-map 当前 layer 同步到 URL 查询参数 `?layer=...`
+- tech-map 节点列表改为按 layer 分组的可折叠 `details` 区块
+- 这一步让 tech-map 从"全量节点展示"变为"可按层筛选"
 
 ---
 

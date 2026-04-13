@@ -270,6 +270,12 @@ Pinocchio 很值得优先学。
 - [TSID](./tsid.md)
 - [Crocoddyl](./crocoddyl.md)
 
+## 关联页面
+
+- [Crocoddyl](./crocoddyl.md)
+- [TSID](../concepts/tsid.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
+
 ## 一句话记忆
 
 > Pinocchio 不是仿真器，也不是控制器，它是机器人运动学、动力学和导数计算的底层引擎，是 TSID、WBC、trajectory optimization 和 humanoid control 工具链里的关键基础设施。

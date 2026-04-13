@@ -247,6 +247,12 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 - 论文：Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*
 - [Pinocchio](./pinocchio.md)
 
+## 关联页面
+
+- [Pinocchio](./pinocchio.md)
+- [Optimal Control](../methods/model-predictive-control.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
+
 ## 一句话记忆
 
 > Crocoddyl 是建立在 Pinocchio 之上的机器人最优控制与轨迹优化工具箱，特别适合 legged / humanoid 场景，是把动力学模型真正变成可求解 optimal control 问题的关键一层。

@@ -58,3 +58,10 @@
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
+
+## 推荐继续阅读
+
+- [WBC vs RL 论文导航](../../references/papers/whole-body-control.md)
+- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
+- [ATOM01-Train](https://github.com/Roboparty/atom01_train)（WBC 工程实践）
+- PPO (Schulman 2017)、AMP (Peng 2021)、ASE (Peng 2022)（RL 参考里程碑）
