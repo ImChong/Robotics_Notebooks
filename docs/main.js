@@ -586,6 +586,11 @@
 
     if (emptyState) emptyState.hidden = true;
     document.title = (detailPage.title || detailId) + ' | Robotics Notebooks';
+    var ogTitle = document.getElementById('ogTitleMeta');
+    var ogDesc = document.getElementById('ogDescMeta');
+    var pageDesc = detailPage.summary || '当前页面暂无摘要，可先通过 tags / related / source links 继续导航。';
+    if (ogTitle) ogTitle.setAttribute('content', (detailPage.title || detailId) + ' | Robotics Notebooks');
+    if (ogDesc) ogDesc.setAttribute('content', pageDesc);
 
     if (titleEl) titleEl.textContent = detailPage.title || detailId;
     if (summaryEl) {

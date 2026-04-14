@@ -57,7 +57,7 @@ def extract_title(text: str, fallback: str) -> str:
 def clean_summary(text: str) -> str:
     text = text.strip()
     text = re.sub(r"^[-*]\s+", "", text)
-    text = re.sub(r"^>\s*", "", text)
+    text = re.sub(r">\s*", "", text)
     text = text.replace("**", "")
     text = re.sub(r"\s+", " ", text)
     return text.strip(" ：:，,。") + ("。" if text and not text.endswith(("。", "!", "?", ".")) else "")
@@ -502,30 +502,86 @@ def build_site_data(items: List[Dict]) -> Dict:
     }
 
 
-def write_json(path: Path, payload: Dict) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+def generate_sitemap(items: List[Dict], base_url: str = "https://ImChong.github.io/Robotics_Notebooks") -> str:
+    """生成 sitemap.xml，包含首页、预览页和所有 detail_pages。"""
+    urls = [
+        {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
+        {"loc": base_url + "/docs/index.html", "priority": "0.9", "changefreq": "weekly"},
+        {"loc": base_url + "/docs/site-data-preview.html", "priority": "0.8", "changefreq": "daily"},
+        {"loc": base_url + "/docs/tech-map.html", "priority": "0.8", "changefreq": "weekly"},
+    ]
 
+    detail_pages = [item for item in items if item.get("type") in ("wiki_page", "entity_page")]
+    for item in detail_pages:
+        item_id = item.get("id", "")
+        priority = "0.7"
+        page_type = item.get("page_type", "")
+        if page_type == "overview":
+            priority = "0.9"
+        elif page_type == "task":
+            priority = "0.7"
+        elif page_type == "query":
+            priority = "0.6"
+        urls.append({
+            "loc": f"{base_url}/docs/detail.html?id={item_id}",
+            "priority": priority,
+            "changefreq": "monthly",
+            "lastmod": None,
+        })
 
-def main() -> None:
-    items = [build_item(p) for p in collect_paths()]
-    payload = {
-        "version": "v1",
-        "generated_mode": "script",
-        "item_count": len(items),
-        "items": items,
-    }
-    site_payload = build_site_data(items)
-
-    write_json(OUTPUT, payload)
-    write_json(SITE_OUTPUT, site_payload)
-    write_json(DOCS_OUTPUT, payload)
-    write_json(DOCS_SITE_OUTPUT, site_payload)
-
-    print(f"Wrote {OUTPUT} with {len(items)} items")
-    print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
-    print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
+    sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
+                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for url in urls:
+        line = '  <url>'
+        line += f'<loc>{url["loc"]}</loc>'
+        line += f'<changefreq>{url["changefreq"]}</changefreq>'
+        line += f'<priority>{url["priority"]}</priority>'
+        if url.get("lastmod"):
+            line += f'<lastmod>{url["lastmod"]}</lastmod>'
+        line += '</url>'
+        sitemap_lines.append(line)
+    sitemap_lines.append('</urlset>')
+    return "\n".join(sitemap_lines) + "\n"
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    base_url = sys.argv[1] if len(sys.argv) > 1 else "https://ImChong.github.io/Robotics_Notebooks"
+
+    paths = collect_paths()
+    items = sort_items([build_item(p) for p in paths])
+
+    # index-v1.json
+    index_items = []
+    for item in items:
+        index_items.append({
+            "id": item["id"],
+            "title": item["title"],
+            "path": item["path"],
+            "summary": item.get("summary", ""),
+            "tags": item.get("tags", []),
+            "type": item.get("type"),
+            "page_type": item.get("page_type"),
+            "entity_kind": item.get("entity_kind"),
+            "reference_kind": item.get("reference_kind"),
+            "content_markdown": item.get("content_markdown", ""),
+        })
+
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    SITE_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    DOCS_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    DOCS_SITE_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+
+    OUTPUT.write_text(json.dumps({"items": index_items}, ensure_ascii=False, indent=2), encoding="utf-8")
+    SITE_OUTPUT.write_text(json.dumps(build_site_data(items), ensure_ascii=False, indent=2), encoding="utf-8")
+    DOCS_OUTPUT.write_text(json.dumps({"items": index_items}, ensure_ascii=False, indent=2), encoding="utf-8")
+    DOCS_SITE_OUTPUT.write_text(json.dumps(build_site_data(items), ensure_ascii=False, indent=2), encoding="utf-8")
+
+    # sitemap.xml
+    sitemap = generate_sitemap(items, base_url)
+    sitemap_path = ROOT / "docs" / "sitemap.xml"
+    sitemap_path.write_text(sitemap, encoding="utf-8")
+
+    print(f"index-v1.json: {OUTPUT} ({len(index_items)} items)")
+    print(f"site-data-v1.json: {SITE_OUTPUT}")
+    print(f"sitemap.xml: {sitemap_path} ({len(sitemap)} bytes)")
