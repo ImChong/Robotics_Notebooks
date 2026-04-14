@@ -1,0 +1,7 @@
+# Auto-generated export artifacts: keep current branch (latest) on merge conflicts
+exports/*.json merge=ours
+docs/exports/*.json merge=ours
+
+# Append-friendly logs/checklists: prefer union merge to reduce manual conflict resolution
+log.md merge=union
+docs/tech-stack-next-phase-checklist-v3.md merge=union
