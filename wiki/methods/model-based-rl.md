@@ -148,6 +148,7 @@ Critic: z_t → V(z_t)（在想象中训练）
 - Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划
 - Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
 - Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架
+- **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
 
 ---
 
@@ -159,6 +160,7 @@ Critic: z_t → V(z_t)（在想象中训练）
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数
 - [Sim2Real](../concepts/sim2real.md) — MBRL 的样本效率优势直接帮助真实机器人学习
 - [Imitation Learning](./imitation-learning.md) — 可以和 IL 结合：用演示数据初始化模型
+- [Model-Based vs Model-Free 对比](../comparisons/model-based-vs-model-free.md) — 两种范式的多维对比与选型建议
 
 ## 一句话记忆
 

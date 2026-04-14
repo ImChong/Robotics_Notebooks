@@ -102,9 +102,9 @@
 
 ### 5.3 增强已有页面深度
 
-- [ ] `wiki/concepts/sim2real.md`：补充 RMA（Rapid Motor Adaptation）具体步骤
-- [ ] `wiki/methods/reinforcement-learning.md`：补充 model-based RL 与 model-free 对比表格
-- [ ] `wiki/comparisons/wbc-vs-rl.md`：状态从 `draft` 升级到 `complete`，补充更多融合架构实例
+- [x] `wiki/concepts/sim2real.md`：补充 RMA（Rapid Motor Adaptation）具体步骤
+- [x] `wiki/methods/reinforcement-learning.md`：补充 model-based RL 与 model-free 对比表格
+- [x] `wiki/comparisons/wbc-vs-rl.md`：状态从 `draft` 升级到 `complete`，补充更多融合架构实例
 
 ---
 
@@ -114,12 +114,12 @@
 
 ### 任务
 
-- [ ] 每次复杂 Query 操作后，将答案整理为 wiki/queries/xxx.md
+- [x] 每次复杂 Query 操作后，将答案整理为 wiki/queries/xxx.md
   - 建议格式：`## 触发问题` + 正文 + `## 参考页面`
-- [ ] 候选 Query 产物（下次回答这些问题时保存结果）：
-  - `wiki/queries/rl-algorithm-selection.md`：在足式机器人里选 PPO / SAC / TD3 的决策指南
-  - `wiki/queries/sim2real-checklist.md`：从仿真到真机部署的工程 checklist
-  - `wiki/queries/control-architecture-comparison.md`：各主流人形控制架构（MPC-WBC / End2End RL / Hierarchical IL）的综合对比
+- [x] 候选 Query 产物（下次回答这些问题时保存结果）：
+  - [x] `wiki/queries/rl-algorithm-selection.md`：在足式机器人里选 PPO / SAC / TD3 的决策指南
+  - [x] `wiki/queries/sim2real-checklist.md`：从仿真到真机部署的工程 checklist
+  - [x] `wiki/queries/control-architecture-comparison.md`：各主流人形控制架构（MPC-WBC / End2End RL / Hierarchical IL）的综合对比
 
 ---
 
@@ -137,13 +137,13 @@
 
 ### 3.2 搜索工具增强
 
-- [ ] 在 `scripts/search_wiki.py` 中增加 `--related` 选项：输出匹配页面的关联页面（用于 Query 时快速找邻居）
+- [x] 在 `scripts/search_wiki.py` 中增加 `--related` 选项：输出匹配页面的关联页面（用于 Query 时快速找邻居）
 - [ ] 考虑：是否引入 [qmd](https://github.com/tobi/qmd) 做 BM25/向量混合搜索（Karpathy 推荐工具）
 
 ### 3.3 Lint 规则扩展
 
-- [ ] 新增检测："推荐继续阅读" 中含有失效外链（HTTP 404）
-- [ ] 新增检测：wiki 页面引用了 sources/ 文件但该文件不存在
+- [-] 新增检测："推荐继续阅读" 中含有失效外链（HTTP 404）（需要 HTTP 请求，暂缓）
+- [x] 新增检测：wiki 页面引用了 sources/ 文件但该文件不存在
 
 ---
 
@@ -151,9 +151,9 @@
 
 延续 V2 已完成的 detail.html / tech-map.html / module.html / roadmap.html 体系，进一步完善：
 
-- [ ] 给 `detail.html` 增加"相关页面"侧边栏（从 `related` 字段渲染）
-- [ ] 给 `tech-map.html` 增加从某个节点出发的"最短路径"视图
-- [ ] 为 `index.html` 添加快速搜索框（消费 `index-v1.json` 做客户端全文搜索）
+- [-] 给 `detail.html` 增加"相关页面"侧边栏（已有关联项区块，暂缓进一步改造）
+- [-] 给 `tech-map.html` 增加从某个节点出发的"最短路径"视图（暂缓）
+- [x] 为 `index.html` 添加快速搜索框（消费 `index-v1.json` 做客户端全文搜索）
 
 ---
 

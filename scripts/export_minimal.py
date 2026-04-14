@@ -32,6 +32,8 @@ WIKI_PAGE_TYPES = {
     "comparisons": "comparison",
     "overview": "overview",
     "roadmaps": "roadmap",
+    "formalizations": "formalization",
+    "queries": "query",
 }
 
 REFERENCE_KINDS = {"papers", "repos", "benchmarks"}
@@ -290,6 +292,8 @@ def collect_paths() -> List[Path]:
         "wiki/tasks/*.md",
         "wiki/comparisons/*.md",
         "wiki/overview/*.md",
+        "wiki/formalizations/*.md",
+        "wiki/queries/*.md",
         "wiki/entities/*.md",
         "roadmap/*.md",
         "roadmap/learning-paths/*.md",

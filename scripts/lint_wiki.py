@@ -99,7 +99,8 @@ def lint() -> dict:
         "missing_sources": [],
         "broken_links": [],
         "stub_pages": [],
-        "missing_pages": [],   # 提及但缺少对应 wiki 页面的技术概念
+        "missing_pages": [],          # 提及但缺少对应 wiki 页面的技术概念
+        "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
     }
 
     for page in pages:
@@ -139,6 +140,16 @@ def lint() -> dict:
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
 
+        # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
+        stripped = strip_code_blocks(content)
+        for m in re.finditer(r'\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)', stripped):
+            href = m.group(2).split("#")[0]
+            resolved_src = (page.parent / href).resolve()
+            if not resolved_src.exists():
+                results["broken_source_refs"].append(
+                    f"{rel} → {href}"
+                )
+
     # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
     WATCH_TERMS = {
         # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
@@ -177,12 +188,13 @@ def format_report(results: dict) -> str:
     lines.append("")
 
     sections = [
-        ("orphan_pages",    "孤儿页（无入链）",                      "⚠️"),
-        ("missing_related", "缺少关联页面区块",                      "⚠️"),
-        ("missing_sources", "缺少参考来源区块",                      "⚠️"),
-        ("broken_links",    "断链（内链目标不存在）",                 "❌"),
-        ("stub_pages",      "空壳页面（< 200 字）",                  "⚠️"),
-        ("missing_pages",   "频繁提及但缺少 wiki 页面的概念",         "💡"),
+        ("orphan_pages",       "孤儿页（无入链）",                      "⚠️"),
+        ("missing_related",    "缺少关联页面区块",                      "⚠️"),
+        ("missing_sources",    "缺少参考来源区块",                      "⚠️"),
+        ("broken_links",       "断链（内链目标不存在）",                 "❌"),
+        ("broken_source_refs", "引用了不存在的 sources/ 文件",           "❌"),
+        ("stub_pages",         "空壳页面（< 200 字）",                  "⚠️"),
+        ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",         "💡"),
     ]
 
     for key, label, icon in sections:

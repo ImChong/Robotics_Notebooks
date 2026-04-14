@@ -728,3 +728,49 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .page-hero h1 { font-size: 2rem; }
   .container { padding: 0 18px; }
 }
+
+/* ── Wiki 搜索框 ─────────────────────────────────────── */
+.search-bar-wrap {
+  margin-bottom: 24px;
+}
+.search-bar-wrap input[type="search"] {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+  box-sizing: border-box;
+}
+.search-bar-wrap input[type="search"]:focus {
+  border-color: var(--accent);
+}
+.search-bar-wrap input[type="search"]::placeholder {
+  color: var(--text-muted);
+}
+.search-bar-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.search-bar-wrap input[type="search"] {
+  flex: 1;
+}
+#wikiTypeFilter {
+  padding: 10px 12px;
+  font-size: .9rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s;
+  white-space: nowrap;
+}
+#wikiTypeFilter:focus {
+  border-color: var(--accent);
+}

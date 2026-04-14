@@ -105,6 +105,7 @@ $$\min_\theta \mathbb{E}_{(s,a) \sim D}[-\log \pi_\theta(a|s)]$$
 - [Locomotion](../tasks/locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
+- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹
 
 ## 推荐继续阅读
 
