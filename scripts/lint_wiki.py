@@ -90,12 +90,16 @@ def lint() -> dict:
                     str(target.relative_to(REPO_ROOT)) if target.is_relative_to(REPO_ROOT) else str(target)
                 )
 
+    # 已有 wiki 页面的 stem 集合（用于"提及但缺页"检测）
+    existing_stems = {p.stem.lower() for p in pages}
+
     results = {
         "orphan_pages": [],
         "missing_related": [],
         "missing_sources": [],
         "broken_links": [],
         "stub_pages": [],
+        "missing_pages": [],   # 提及但缺少对应 wiki 页面的技术概念
     }
 
     for page in pages:
@@ -135,6 +139,31 @@ def lint() -> dict:
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
 
+    # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
+    WATCH_TERMS = {
+        "EKF": "ekf",
+        "InEKF": "inekf",
+        "HQP": "hqp",
+        "MPPI": "mppi",
+        "CEM": "cem",
+        "DMP": "dmp",
+        "GAE": "gae",
+        "HER": "her",
+        "POMDP": "pomdp",
+        "SAC-X": "sac-x",
+    }
+    term_counts: dict[str, int] = {}
+    all_content = ""
+    for page in pages:
+        all_content += page.read_text(encoding="utf-8")
+    for term in WATCH_TERMS:
+        count = len(re.findall(rf'\b{re.escape(term)}\b', all_content))
+        slug = WATCH_TERMS[term]
+        if count >= 2 and slug not in existing_stems:
+            term_counts[term] = count
+    for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
+        results["missing_pages"].append(f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）")
+
     return results
 
 def format_report(results: dict) -> str:
@@ -146,11 +175,12 @@ def format_report(results: dict) -> str:
     lines.append("")
 
     sections = [
-        ("orphan_pages",    "孤儿页（无入链）",            "⚠️"),
-        ("missing_related", "缺少关联页面区块",            "⚠️"),
-        ("missing_sources", "缺少参考来源区块",            "⚠️"),
-        ("broken_links",    "断链（内链目标不存在）",       "❌"),
-        ("stub_pages",      "空壳页面（< 200 字）",        "⚠️"),
+        ("orphan_pages",    "孤儿页（无入链）",                      "⚠️"),
+        ("missing_related", "缺少关联页面区块",                      "⚠️"),
+        ("missing_sources", "缺少参考来源区块",                      "⚠️"),
+        ("broken_links",    "断链（内链目标不存在）",                 "❌"),
+        ("stub_pages",      "空壳页面（< 200 字）",                  "⚠️"),
+        ("missing_pages",   "频繁提及但缺少 wiki 页面的概念",         "💡"),
     ]
 
     for key, label, icon in sections:

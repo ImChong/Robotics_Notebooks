@@ -73,7 +73,18 @@
 > **为什么要在 wiki 页面内标注来源**：log.md 记录了操作时间线，但页面本身也应能追溯知识来源，
 > 这样读者不依赖 log.md 就能知道这个 wiki 页的知识是从哪里编译来的。
 
-### 步骤 6：运行导出脚本
+### 步骤 6：更新 index.md Page Catalog
+
+每次新增 wiki 页面后，必须重新生成 Page Catalog 更新 index.md：
+
+```bash
+# 生成最新 Page Catalog 输出到 stdout，手动合并到 index.md 的 Page Catalog 区块
+python3 scripts/generate_page_catalog.py
+```
+
+或直接替换 index.md 中的 Page Catalog 区块（从 `### Entities` 开始到文件末尾）。
+
+### 步骤 7：运行导出脚本
 
 如果新增或大幅修改了 wiki 页面，运行导出脚本同步到前端：
 
@@ -81,7 +92,7 @@
 python3 scripts/export_minimal.py
 ```
 
-### 步骤 7：记录到 `log.md`
+### 步骤 8：记录到 `log.md`
 
 每次 ingest 都追加到 `log.md`，格式：
 

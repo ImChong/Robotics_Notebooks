@@ -102,6 +102,32 @@ State Estimation / System Identification / Sim2Real
 
 ---
 
+## Obsidian Dataview 动态查询
+
+> 以下查询块在 Obsidian + Dataview 插件中可直接使用。在 GitHub/普通 Markdown 渲染器中显示为代码块。
+
+**查看所有 concept 页面及状态：**
+```dataview
+TABLE status, tags FROM "wiki/concepts"
+SORT file.name ASC
+```
+
+**查看所有 draft 状态的页面（待完善）：**
+```dataview
+TABLE type, file.folder FROM "wiki"
+WHERE status = "draft"
+SORT type ASC
+```
+
+**查看带 rl 标签的所有页面：**
+```dataview
+LIST FROM "wiki"
+WHERE contains(tags, "rl")
+SORT type ASC
+```
+
+---
+
 ## 与其他项目的边界
 
 - [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)：单篇论文深读
@@ -111,6 +137,7 @@ State Estimation / System Identification / Sim2Real
 > 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
 
 ---
+
 
 
 
@@ -133,6 +160,7 @@ State Estimation / System Identification / Sim2Real
 - [LIP / ZMP](concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
+- [Reward Design](concepts/reward-design.md) — 奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。 `📅unknown` `[wiki_page]`
 - [Sim2Real](concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [State Estimation](concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [System Identification](concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
@@ -158,6 +186,7 @@ State Estimation / System Identification / Sim2Real
 ### Wiki Formalizations（形式化基础）
 
 - [Bellman 方程](formalizations/bellman-equation.md) — Bellman 方程**：值函数的递归关系，揭示了"未来奖励"与"当前决策"之间的数学联系，是几乎所有强化学习算法的理论基础。 `📅unknown` `[formalization_page]`
+- [LQR / iLQR](formalizations/lqr.md) — LQR（Linear Quadratic Regulator，线性二次调节器）**：最优控制中最经典的解析解，针对线性系统 + 二次代价函数，给出最优状态反馈增益的闭式解。**iLQR（itera `📅unknown` `[formalization_page]`
 - [Markov Decision Process (MDP)](formalizations/mdp.md) — 马尔可夫决策过程**：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。 `📅unknown` `[formalization_page]`
 
 ### Wiki Comparisons（对比页）

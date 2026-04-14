@@ -170,6 +170,7 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 ## 关联页面
 
+- [LQR / iLQR](../formalizations/lqr.md) — LQR 是 OCP 在线性系统上的解析解；iLQR 是非线性扩展
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
