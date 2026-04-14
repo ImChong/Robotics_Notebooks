@@ -49,6 +49,7 @@
 | 文件 | 触发问题 | 综合来源 |
 |------|---------|---------|
 | [mpc-wbc-integration](../concepts/mpc-wbc-integration.md) | MPC 和 WBC 在人形机器人 locomotion 里是怎么配合工作的？ | MPC、WBC、Locomotion、Optimal Control |
+| [rl-algorithm-selection](./rl-algorithm-selection.md) | 在足式/人形机器人任务里，PPO、SAC、TD3 应该怎么选？ | RL、Locomotion、Sim2Real、WBC vs RL |
 
 ---
 

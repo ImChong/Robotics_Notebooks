@@ -1,6 +1,6 @@
 ---
 type: method
-tags: [rl, locomotion, policy-optimization, model-free]
+tags: [rl, locomotion, policy-optimization, model-free, model-based]
 status: complete
 ---
 
@@ -45,6 +45,21 @@ status: complete
 
 代表：CQL, IQL, Decision Transformer
 
+### Model-based vs Model-free（机器人语境）
+
+| 维度 | Model-free RL | Model-based RL |
+|---|---|---|
+| 核心思想 | 直接学策略/价值函数 | 学动力学模型 + 在模型上规划或生成数据 |
+| 典型算法 | PPO, SAC, TD3 | PETS, MBPO, Dreamer |
+| 样本效率 | 通常较低 | 通常更高（复用模型 rollout） |
+| 偏差来源 | 高方差、探索不足 | 模型误差（model bias） |
+| 工程代价 | 训练时间长，但实现路径成熟 | 系统复杂度高（模型学习 + 规划） |
+| 在机器人中的常见用法 | 大规模仿真并行训练 locomotion 策略 | 在数据昂贵场景下做样本效率优化，或做混合架构 |
+
+实践上常见折中是：
+- 先用 model-based 方式快速得到可行策略
+- 再用 model-free 微调，降低模型误差带来的性能上限问题
+
 ## 在机器人控制中的典型应用
 
 - 四足/双足行走
@@ -74,6 +89,8 @@ status: complete
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
+- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
+- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 
 ## 关联页面

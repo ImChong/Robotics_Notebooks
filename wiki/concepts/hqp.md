@@ -126,6 +126,7 @@ TSID（Task Space Inverse Dynamics）是典型的 HQP 实现框架：
 - Kanoun et al., *Kinematic Control of Redundant Manipulators: Generalizing the Task-Priority Framework to Inequality Task* (2011) — HQP 优先级框架理论基础
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID + HQP 的核心实现论文
 - Escande et al., *Hierarchical Quadratic Programming: Fast Online Humanoid-Robot Motion Generation* (2014) — 人形机器人 HQP 实时求解
+- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — HQP 相关来源整理
 
 ## 推荐继续阅读
 
