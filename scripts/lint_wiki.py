@@ -141,16 +141,18 @@ def lint() -> dict:
 
     # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
     WATCH_TERMS = {
-        "EKF": "ekf",
-        "InEKF": "inekf",
-        "HQP": "hqp",
+        # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
+        # 已有覆盖的术语不在此列（EKF→ekf.md, HQP→hqp.md, SAC→policy-optimization.md,
+        #   InEKF→ekf.md, LQR→lqr.md, NMPC→model-predictive-control.md）
         "MPPI": "mppi",
-        "CEM": "cem",
         "DMP": "dmp",
         "GAE": "gae",
         "HER": "her",
         "POMDP": "pomdp",
-        "SAC-X": "sac-x",
+        "Pontryagin": "optimal-control",  # 已在 optimal-control.md 有专节
+        "DDPG": "policy-optimization",    # 已在 policy-optimization.md 提及
+        "MARL": "marl",
+        "ContactNet": "contact-net",
     }
     term_counts: dict[str, int] = {}
     all_content = ""

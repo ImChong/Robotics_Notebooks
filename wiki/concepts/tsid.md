@@ -257,8 +257,13 @@ TSID / WBC
 
 ## 和已有页面的关系
 
+### 和 HQP 的关系
+分层 QP（HQP）是 TSID 的核心求解机制——用优先级层次结构处理多任务冲突，保证高优先级任务精确满足。
+
+见：[HQP（Hierarchical QP）](./hqp.md)
+
 ### 和 Whole-Body Control 的关系
-TSID 是 WBC 最经典的实现路线之一，可以理解为“动力学一致的全身任务控制”。
+TSID 是 WBC 最经典的实现路线之一，可以理解为”动力学一致的全身任务控制”。
 
 见：[Whole-Body Control](./whole-body-control.md)
 
