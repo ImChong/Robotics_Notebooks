@@ -591,6 +591,10 @@
     var pageDesc = detailPage.summary || '当前页面暂无摘要，可先通过 tags / related / source links 继续导航。';
     if (ogTitle) ogTitle.setAttribute('content', (detailPage.title || detailId) + ' | Robotics Notebooks');
     if (ogDesc) ogDesc.setAttribute('content', pageDesc);
+    var metaDesc = document.getElementById('metaDescription');
+    if (metaDesc && detailPage.summary) {
+      metaDesc.setAttribute('content', detailPage.summary.slice(0, 160));
+    }
 
     if (titleEl) titleEl.textContent = detailPage.title || detailId;
     if (summaryEl) {
@@ -860,12 +864,17 @@
 
   function renderTechMapNodeCard(node, detailPages) {
     const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
-    const detailSummary = detailPages[node.id] && detailPages[node.id].summary ? detailPages[node.id].summary : node.summary;
+    const detail = detailPages[node.id] || {};
+    const detailSummary = detail.summary || node.summary;
+    const hasIngest = detail.has_ingest;
+    const ingestBadge = hasIngest
+      ? '<span class="ingest-badge" title="已有 sources/ ingest 来源：' + escapeHtml(detail.ingest_source || '') + '">📄 ingest</span>'
+      : '<span class="ingest-badge ingest-missing" title="暂无 sources/papers/ 对应条目">— no ingest</span>';
     return [
       '<article class="card data-card" data-layer="' + escapeHtml(node.layer || 'meta') + '">',
       '  <div>',
       '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
-      '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
+      '    <p class="card-meta">layer: ' + escapeHtml(node.layer || 'meta') + ' · kind: ' + escapeHtml(node.node_kind || '-') + ' · ' + ingestBadge + '</p>',
       '    <p>' + escapeHtml(detailSummary || '暂无节点摘要') + '</p>',
       '  </div>',
       '  <div class="chip-list">',

@@ -66,31 +66,31 @@
 为以下高频引用论文建立 `sources/papers/` 对应条目（每条至少：标题/年份/核心贡献/与 wiki 映射）：
 
 **控制类**
-- [ ] `sources/papers/whole_body_control.md`：补充 Koolen et al. N-step Capture Point（平衡恢复理论）
-- [ ] `sources/papers/optimal_control.md`（新建）：Bellman 1957、Pontryagin、Bryson & Ho — 最优控制奠基
-- [ ] `sources/papers/mpc.md`（新建）：Mayne et al. 2000（MPC 综述）、Di Carlo et al. 2018（MIT Cheetah 3 MPC）
+- [x] `sources/papers/whole_body_control.md`：补充 Koolen et al. N-step Capture Point（平衡恢复理论）
+- [x] `sources/papers/optimal_control.md`（新建）：Bellman 1957、Pontryagin、Bryson & Ho — 最优控制奠基
+- [x] `sources/papers/mpc.md`（新建）：Mayne et al. 2000（MPC 综述）、Di Carlo et al. 2018（MIT Cheetah 3 MPC）
 
 **RL 类**
-- [ ] `sources/papers/locomotion_rl.md`：补充 Lee et al. 2020（Science Robotics 四足）、ETH ANYmal 系列
-- [ ] `sources/papers/policy_optimization.md`（新建）：PPO（Schulman 2017）、SAC（Haarnoja 2018）、TD3（Fujimoto 2018）
-- [ ] `sources/papers/model_based_rl.md`（新建）：DreamerV3、MBPO、PETS、TD-MPC2
+- [x] `sources/papers/locomotion_rl.md`：补充 Lee et al. 2020（Science Robotics 四足）、ETH ANYmal 系列
+- [x] `sources/papers/policy_optimization.md`（新建）：PPO（Schulman 2017）、SAC（Haarnoja 2018）、TD3（Fujimoto 2018）
+- [x] `sources/papers/model_based_rl.md`（新建）：DreamerV3、MBPO、PETS、TD-MPC2
 
 **IL 类**
-- [ ] `sources/papers/imitation_learning.md`：补充 ACT（Zhao et al. 2023）、Chi et al. Diffusion Policy
+- [x] `sources/papers/imitation_learning.md`：补充 ACT（Zhao et al. 2023）、Chi et al. Diffusion Policy
 
 **Sim2Real 类**
-- [ ] `sources/papers/sim2real.md`：补充 Kumar et al. RMA 2021 详细摘要
+- [x] `sources/papers/sim2real.md`：补充 Kumar et al. RMA 2021 详细摘要
 
 ### 任务 0.2：wiki 参考来源链接化
 
 将已有 sources/papers/ 文件对应的 wiki 页面参考来源，从纯文本引用改为 sources/ 链接：
 
-- [ ] `wiki/methods/model-based-rl.md` → 链接到 `sources/papers/model_based_rl.md`
-- [ ] `wiki/methods/policy-optimization.md` → 链接到 `sources/papers/policy_optimization.md`
-- [ ] `wiki/concepts/optimal-control.md` → 链接到 `sources/papers/optimal_control.md`
-- [ ] `wiki/concepts/capture-point-dcm.md` → 链接到 `sources/papers/whole_body_control.md`
-- [ ] `wiki/tasks/balance-recovery.md` → 链接到 `sources/papers/whole_body_control.md`
-- [ ] `wiki/methods/model-predictive-control.md` → 链接到 `sources/papers/mpc.md`
+- [x] `wiki/methods/model-based-rl.md` → 链接到 `sources/papers/model_based_rl.md`
+- [x] `wiki/methods/policy-optimization.md` → 链接到 `sources/papers/policy_optimization.md`
+- [x] `wiki/concepts/optimal-control.md` → 链接到 `sources/papers/optimal_control.md`
+- [x] `wiki/concepts/capture-point-dcm.md` → 链接到 `sources/papers/whole_body_control.md`
+- [x] `wiki/tasks/balance-recovery.md` → 链接到 `sources/papers/whole_body_control.md`
+- [x] `wiki/methods/model-predictive-control.md` → 链接到 `sources/papers/mpc.md`
 
 ### 完成标准
 - sources/papers/ 文件数达到 **10+**（目前 4 个）
@@ -103,30 +103,30 @@
 
 ### 1.1 缺失的高价值概念页
 
-- [ ] `wiki/concepts/curriculum-learning.md`
+- [x] `wiki/concepts/curriculum-learning.md`
   - 课程学习：从简单到复杂的训练策略（地形课程、速度课程等）
   - 被 locomotion.md、sim2real.md、domain-randomization.md 频繁提及
   - 与 domain-randomization 密切相关但定位不同
 
-- [ ] `wiki/concepts/contact-estimation.md`
+- [x] `wiki/concepts/contact-estimation.md`
   - 足式机器人接触状态估计：接触检测、接触力估计、接触时序预测
   - 被 state-estimation.md、locomotion.md、contact-dynamics.md 提及
   - 与 EKF 的 contact-aided 滤波器直接相关
 
-- [ ] `wiki/concepts/motion-retargeting.md`
+- [x] `wiki/concepts/motion-retargeting.md`
   - 人类动作到机器人动作的重定向：IK 重定向、物理约束重定向、风格保持
   - 被 imitation-learning.md、loco-manipulation.md 提及
   - 是 IL 数据获取链路的关键一步
 
 ### 1.2 缺失的对比页
 
-- [ ] `wiki/comparisons/model-based-vs-model-free.md`
+- [x] `wiki/comparisons/model-based-vs-model-free.md`
   - 基于模型 vs 无模型：在机器人任务中的实际差异、选型指南
   - 补充 reinforcement-learning.md 和 model-based-rl.md 中对比表格的深度
 
 ### 1.3 实体页补全
 
-- [ ] `wiki/entities/drake.md`
+- [x] `wiki/entities/drake.md`
   - Drake（Tedrake lab）：机器人轨迹优化和控制工具链
   - 被 trajectory-optimization.md、optimal-control.md 提及
 
@@ -136,15 +136,15 @@
 
 Query 产物遵循 schema：`## 触发问题` + 正文 + `## 关联页面` + `## 参考来源`
 
-- [ ] `wiki/queries/humanoid-hardware-selection.md`
+- [x] `wiki/queries/humanoid-hardware-selection.md`
   - 触发问题：「人形机器人研究平台怎么选？Unitree G1/H1 vs Fourier GR1 vs 自研？」
   - 综合来源：unitree.md、locomotion.md、sim2real.md
 
-- [ ] `wiki/queries/wbc-implementation-guide.md`
+- [x] `wiki/queries/wbc-implementation-guide.md`
   - 触发问题：「从 URDF 到能跑起来的 TSID/WBC，要走哪些步骤？」
   - 综合来源：tsid.md、hqp.md、pinocchio.md、crocoddyl.md
 
-- [ ] `wiki/queries/locomotion-reward-design-guide.md`
+- [x] `wiki/queries/locomotion-reward-design-guide.md`
   - 触发问题：「足式 locomotion 的 reward 怎么设计，有哪些关键项？」
   - 综合来源：reward-design.md、locomotion.md、rl-algorithm-selection.md
 
@@ -154,7 +154,7 @@ Query 产物遵循 schema：`## 触发问题` + 正文 + `## 关联页面` + `##
 
 ### 3.1 GitHub Actions：Lint on Push
 
-- [ ] 新建 `.github/workflows/lint.yml`：
+- [x] 新建 `.github/workflows/lint.yml`：
   ```yaml
   name: Wiki Lint
   on: [push, pull_request]
@@ -171,23 +171,23 @@ Query 产物遵循 schema：`## 触发问题` + 正文 + `## 关联页面` + `##
 
 ### 3.2 Ingest 辅助工具
 
-- [ ] `scripts/ingest_paper.py`：给定论文标题 + 年份 + 作者，自动生成 `sources/papers/` 模板文件，包含：
+- [x] `scripts/ingest_paper.py`：给定论文标题 + 年份 + 作者，自动生成 `sources/papers/` 模板文件，包含：
   - YAML frontmatter（topic/year/status）
   - 模板区块：核心贡献、与 wiki 的映射关系、ingest 状态
-- [ ] `Makefile` 新增：`make ingest TITLE="xxx" YEAR=20xx`
+- [x] `Makefile` 新增：`make ingest TITLE="xxx" YEAR=20xx`
 
 ### 3.3 Export 增强
 
-- [ ] `export_minimal.py` 支持生成 `sitemap.xml`，便于 GitHub Pages SEO
-- [ ] `detail.html` 中从 `summary` 字段动态填充 `<meta description>`
+- [x] `export_minimal.py` 支持生成 `sitemap.xml`，便于 GitHub Pages SEO
+- [x] `detail.html` 中从 `summary` 字段动态填充 `<meta description>`
 
 ---
 
 ## P4 · 前端体验深化（持续改进）
 
-- [ ] `index.html` 搜索框增强：支持按类型过滤（concept/method/task 下拉选择）
-- [ ] `detail.html`："在所有页面中搜索此关键词"快捷链接（点击标签跳转搜索）
-- [ ] `tech-map.html`：节点详情弹窗中加入 sources/ ingest 状态标记
+- [x] `index.html` 搜索框增强：支持按类型过滤（concept/method/task 下拉选择）
+- [x] `detail.html`："在所有页面中搜索此关键词"快捷链接（点击标签跳转搜索）
+- [x] `tech-map.html`：节点详情弹窗中加入 sources/ ingest 状态标记
 
 ---
 
@@ -260,3 +260,39 @@ make export    # 更新 exports/ JSON（81 页）
 - `[~]` 进行中
 - `[x]` 已完成
 - `[-]` 暂缓
+
+---
+
+## V4 完成汇总（2026-04-14）
+
+### P0 Sources 层深度激活
+- [x] 新建 4 个 `sources/papers/`：`optimal_control` / `mpc` / `policy_optimization` / `model_based_rl`（各含 5 条核心论文摘录）
+- [x] 扩充 `whole_body_control.md`（Koolen N-step Capture Point）+ `locomotion_rl.md`（Lee 2020 / ANYmal 系列）
+- [x] 6 个 wiki 页面参考来源新增 `ingest 档案` 双向链接（model-based-rl / policy-optimization / optimal-control / capture-point-dcm / balance-recovery / model-predictive-control）
+- [x] sources/papers/ 文件数：10，wiki 含 sources 链接页：31（`has_ingest` 字段追踪）
+
+### P1 Wiki 内容缺口
+- [x] `curriculum-learning.md`（手动/自适应/地形课程，与 RL+sim2real 关系）
+- [x] `contact-estimation.md`（力矩估计/F/T传感器/分类器，WBC 依赖分析）
+- [x] `motion-retargeting.md`（MoCap→机器人骨架，AMP/ASE 连接）
+- [x] `comparisons/model-based-vs-model-free.md`（8 维对比表 + 机器人选型决策树）
+- [x] `entities/drake.md`（MultibodyPlant / MathProg / 轨迹优化工具链）
+- [x] exports 89 页（+8 页），lint ✅ 0 issues
+
+### P2 Query 产物
+- [x] `humanoid-hardware-selection.md`（G1/H1/GR1 平台对比与决策树）
+- [x] `wbc-implementation-guide.md`（Pinocchio + OSQP 从零 WBC 工程步骤）
+- [x] `locomotion-reward-design-guide.md`（奖励函数分类/调参/失败模式诊断）
+
+### P3 自动化与 CI
+- [x] `.github/workflows/lint.yml`（所有分支 push/PR 自动运行 lint）
+- [x] `scripts/ingest_paper.py`（一行生成 sources/papers/ 模板）
+- [x] `Makefile` 新增 `make ingest NAME=xxx TITLE=yyy DESC=zzz`
+- [x] `export_minimal.py` 支持生成 `docs/sitemap.xml`（89 wiki/entity URL + 4 静态页）
+- [x] `detail.html` 动态填充 `<meta description>`（从 summary 字段，截取前 160 字符）
+
+### P4 前端体验
+- [x] `index.html` 搜索框新增类型过滤下拉（concept/method/task/comparison/entity/query）
+- [x] `data-wiki-tag` 点击委托→填入搜索框并触发搜索
+- [x] tech-map 节点卡片：`📄 ingest` / `— no ingest` 标记（联动 `has_ingest` 字段）
+- [x] `ingest-badge` CSS 样式（主题色徽章 + muted 缺失态）

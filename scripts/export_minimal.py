@@ -11,6 +11,27 @@ OUTPUT = ROOT / "exports" / "index-v1.json"
 SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
 DOCS_OUTPUT = ROOT / "docs" / "exports" / "index-v1.json"
 DOCS_SITE_OUTPUT = ROOT / "docs" / "exports" / "site-data-v1.json"
+SITEMAP_OUTPUT = ROOT / "docs" / "sitemap.xml"
+BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
+
+
+def build_ingest_index() -> Dict[str, str]:
+    """Return {wiki_stem: sources_file_rel} for all wiki pages mentioned in sources/papers/*.md."""
+    index: Dict[str, str] = {}
+    sources_dir = ROOT / "sources" / "papers"
+    if not sources_dir.exists():
+        return index
+    wiki_link_re = re.compile(r'\]\(\S*wiki/[^)]+/([^/)]+)\.md\)')
+    for src in sources_dir.glob("*.md"):
+        text = src.read_text(encoding="utf-8")
+        for m in wiki_link_re.finditer(text):
+            stem = m.group(1)
+            if stem not in index:
+                index[stem] = rel(src)
+    return index
+
+
+_INGEST_INDEX: Dict[str, str] = {}  # populated in main()
 
 TAG_HINTS = {
     "humanoid": ["humanoid", "unitree"],
@@ -263,6 +284,11 @@ def build_item(path: Path) -> Dict:
         else:
             item["type"] = "wiki_page"
             item["page_type"] = WIKI_PAGE_TYPES.get(parts[1], parts[1])
+        # ingest coverage: check if any sources/papers/ file mentions this wiki page
+        src_file = _INGEST_INDEX.get(path.stem)
+        if src_file:
+            item["has_ingest"] = True
+            item["ingest_source"] = src_file
     elif parts[0] == "roadmap":
         item["type"] = "roadmap_page"
         item["stages"] = parse_roadmap_stages(text)
@@ -544,10 +570,38 @@ def generate_sitemap(items: List[Dict], base_url: str = "https://ImChong.github.
     return "\n".join(sitemap_lines) + "\n"
 
 
+def main() -> None:
+    global _INGEST_INDEX
+    _INGEST_INDEX = build_ingest_index()
+    items = [build_item(p) for p in collect_paths()]
+    payload = {
+        "version": "v1",
+        "generated_mode": "script",
+        "item_count": len(items),
+        "items": items,
+    }
+    site_payload = build_site_data(items)
+
+    write_json(OUTPUT, payload)
+    write_json(SITE_OUTPUT, site_payload)
+    write_json(DOCS_OUTPUT, payload)
+    write_json(DOCS_SITE_OUTPUT, site_payload)
+
+    sitemap_content = generate_sitemap(items, BASE_URL)
+    SITEMAP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
+    SITEMAP_OUTPUT.write_text(sitemap_content, encoding="utf-8")
+
+    print(f"Wrote {OUTPUT} with {len(items)} items")
+    print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
+    print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
+    print(f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page','entity_page'})} wiki/entity URLs")
+
+
 if __name__ == "__main__":
     import sys
     base_url = sys.argv[1] if len(sys.argv) > 1 else "https://ImChong.github.io/Robotics_Notebooks"
 
+    _INGEST_INDEX = build_ingest_index()
     paths = collect_paths()
     items = sort_items([build_item(p) for p in paths])
 
@@ -565,6 +619,8 @@ if __name__ == "__main__":
             "entity_kind": item.get("entity_kind"),
             "reference_kind": item.get("reference_kind"),
             "content_markdown": item.get("content_markdown", ""),
+            "has_ingest": item.get("has_ingest", False),
+            "ingest_source": item.get("ingest_source", ""),
         })
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)

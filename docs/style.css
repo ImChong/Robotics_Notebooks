@@ -774,3 +774,18 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 #wikiTypeFilter:focus {
   border-color: var(--accent);
 }
+.ingest-badge {
+  display: inline-block;
+  font-size: .7rem;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+  white-space: nowrap;
+}
+.ingest-badge.ingest-missing {
+  background: transparent;
+  color: var(--text-muted);
+  font-weight: 400;
+}
