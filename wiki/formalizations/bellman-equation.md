@@ -1,3 +1,9 @@
+---
+type: formalization
+tags: [rl, bellman, value-function, dynamic-programming]
+status: complete
+---
+
 # Bellman 方程
 
 **Bellman 方程**：值函数的递归关系，揭示了"未来奖励"与"当前决策"之间的数学联系，是几乎所有强化学习算法的理论基础。
@@ -118,6 +124,12 @@ TD 方法用 $V(s')$ 来更新 $V(s)$，这叫 bootstrapping。好处是 sample 
 DP 需要遍历整个状态空间——对人形机器人不可能（状态空间连续、高维）。
 
 解决方案：用函数近似器（神经网络）代替查表，即 Deep RL 的核心。
+
+## 参考来源
+
+- Bellman, *Dynamic Programming* (1957) — Bellman 方程原始提出
+- Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed.) — RL 中 Bellman 方程的标准教材
+- Bertsekas, *Dynamic Programming and Optimal Control* — 动态规划理论权威参考
 
 ## 关联页面
 

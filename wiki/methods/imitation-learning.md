@@ -1,3 +1,9 @@
+---
+type: method
+tags: [il, behavior-cloning, diffusion-policy, sim2real]
+status: complete
+---
+
 # Imitation Learning (IL)
 
 **模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。

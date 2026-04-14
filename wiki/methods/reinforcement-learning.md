@@ -1,3 +1,9 @@
+---
+type: method
+tags: [rl, locomotion, policy-optimization, model-free]
+status: complete
+---
+
 # Reinforcement Learning (RL)
 
 **强化学习**：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。
@@ -81,6 +87,8 @@
 ## 继续深挖入口
 
 如果你想沿着 RL 继续往下挖，建议从这里进入：
+
+- [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景
 
 ### 论文入口
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)

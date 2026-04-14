@@ -1,3 +1,9 @@
+---
+type: formalization
+tags: [rl, mdp, markov, decision-process]
+status: complete
+---
+
 # Markov Decision Process (MDP)
 
 **马尔可夫决策过程**：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。
@@ -105,11 +111,17 @@ MDP（数学框架）
 
 所有 RL 方法都是对 Bellman 方程的近似求解。
 
+## 参考来源
+
+- Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed.) — MDP 与 RL 标准教材，Chapter 3
+- Puterman, *Markov Decision Processes: Discrete Stochastic Dynamic Programming* — MDP 理论权威参考
+- Bellman, *Dynamic Programming* (1957) — MDP 理论基础
+
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — MDP 是 RL 的理论根基
 - [Optimal Control](../concepts/optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
-- [Reward Design](../concepts/domain-randomization.md) — MDP 中奖励函数的设计直接决定学到的策略
+- [Reward Design](../concepts/reward-design.md) — MDP 中奖励函数的设计直接决定学到的策略
 
 ## 推荐继续阅读
 

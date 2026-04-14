@@ -162,8 +162,15 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 解法：预计算、凸近似、定制求解器（Acados, FORCES Pro）。
 
+## 参考来源
+
+- Kirk, *Optimal Control Theory: An Introduction* — OCP 经典入门教材
+- Bertsekas, *Dynamic Programming and Optimal Control* — DP 与 OCP 理论基础
+- Betts, *Practical Methods for Optimal Control Using Nonlinear Programming* — 直接法数值实现参考
+
 ## 关联页面
 
+- [LQR / iLQR](../formalizations/lqr.md) — LQR 是 OCP 在线性系统上的解析解；iLQR 是非线性扩展
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

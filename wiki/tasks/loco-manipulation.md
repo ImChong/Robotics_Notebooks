@@ -1,3 +1,9 @@
+---
+type: task
+tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
+status: complete
+---
+
 # Loco-Manipulation
 
 **移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。

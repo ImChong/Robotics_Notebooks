@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [sim2real, rl, domain-randomization, deployment]
+status: complete
+---
+
 # Sim2Real
 
 **Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。

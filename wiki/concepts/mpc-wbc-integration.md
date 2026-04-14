@@ -126,6 +126,12 @@ QP 优化层：
 
 **主流趋势**：MPC + WBC 作为 baseline，RL 作为提升层（学更好的策略 prior 或补偿误差）。
 
+## 参考来源
+
+- Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC+WBC 两层架构代表作
+- Bellicoso et al., *Advances in Real-world Applications for Legged Systems* (2018) — ANYmal MPC-WBC 实践
+- Kim et al., *Highly Dynamic Quadruped Locomotion via Whole-Body Impulse Control* (2019) — WBC 全身冲量控制
+
 ## 关联页面
 
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — MPC 层

@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [locomotion, control, dynamics, bipedal]
+status: complete
+---
+
 # LIP / ZMP
 
 **LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定性概念。

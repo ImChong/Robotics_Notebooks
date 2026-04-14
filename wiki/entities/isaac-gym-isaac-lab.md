@@ -220,6 +220,11 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>
 
+## 参考来源
+
+- Makoviychuk et al., *Isaac Gym: High Performance GPU Based Physics Simulation For Robot Learning* (2021) — Isaac Gym 原论文
+- 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
+
 ## 关联页面
 
 - [legged_gym](./legged-gym.md)

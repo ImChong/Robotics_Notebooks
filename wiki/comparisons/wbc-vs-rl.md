@@ -1,3 +1,9 @@
+---
+type: comparison
+tags: [wbc, rl, control, locomotion, humanoid]
+status: draft
+---
+
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning
 
 人形机器人运动控制领域最常见的两种路线对比。
@@ -51,6 +57,12 @@
 - 先学 WBC 打好控制基础（建模、优化、QP）
 - 再学 RL 理解学习范式
 - 最终目标是能用两者配合解决真实问题
+
+## 参考来源
+
+- Peng et al., *AMP: Adversarial Motion Priors* (2021) — RL 与 WBC 融合路线代表
+- Sentis & Khatib, *Synthesis of Whole-Body Behaviors* — WBC 理论基础
+- [WBC vs RL 论文导航](../../references/papers/whole-body-control.md)
 
 ## 关联页面
 

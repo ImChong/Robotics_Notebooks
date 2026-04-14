@@ -1,3 +1,9 @@
+---
+type: method
+tags: [control, mpc, optimization, locomotion, humanoid]
+status: complete
+---
+
 # Model Predictive Control (MPC)
 
 **模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。

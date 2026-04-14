@@ -90,12 +90,16 @@ def lint() -> dict:
                     str(target.relative_to(REPO_ROOT)) if target.is_relative_to(REPO_ROOT) else str(target)
                 )
 
+    # 已有 wiki 页面的 stem 集合（用于"提及但缺页"检测）
+    existing_stems = {p.stem.lower() for p in pages}
+
     results = {
         "orphan_pages": [],
         "missing_related": [],
         "missing_sources": [],
         "broken_links": [],
         "stub_pages": [],
+        "missing_pages": [],   # 提及但缺少对应 wiki 页面的技术概念
     }
 
     for page in pages:
@@ -108,13 +112,22 @@ def lint() -> dict:
             if not inbound.get(resolved):
                 results["orphan_pages"].append(str(rel))
 
-        # 2. 缺少关联页面区块（支持多种命名变体）
+        # 2. 缺少关联页面区块（README、references/、roadmaps/ 元页面豁免）
+        is_meta_page = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+            or "roadmaps/" in str(rel)
+        )
         related_patterns = ["关联", "related", "已有页面", "关系"]
-        if not has_section(content, related_patterns):
+        if not is_meta_page and not has_section(content, related_patterns):
             results["missing_related"].append(str(rel))
 
-        # 3. 缺少参考来源区块
-        if not has_section(content, ["参考来源", "sources", "参考"]):
+        # 3. 缺少参考来源区块（README、references/ 元页面豁免）
+        is_meta_sources = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+        )
+        if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
 
         # 4. 断链
@@ -125,6 +138,33 @@ def lint() -> dict:
         # 5. 空壳页面（< 200 字）
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
+
+    # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
+    WATCH_TERMS = {
+        # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
+        # 已有覆盖的术语不在此列（EKF→ekf.md, HQP→hqp.md, SAC→policy-optimization.md,
+        #   InEKF→ekf.md, LQR→lqr.md, NMPC→model-predictive-control.md）
+        "MPPI": "mppi",
+        "DMP": "dmp",
+        "GAE": "gae",
+        "HER": "her",
+        "POMDP": "pomdp",
+        "Pontryagin": "optimal-control",  # 已在 optimal-control.md 有专节
+        "DDPG": "policy-optimization",    # 已在 policy-optimization.md 提及
+        "MARL": "marl",
+        "ContactNet": "contact-net",
+    }
+    term_counts: dict[str, int] = {}
+    all_content = ""
+    for page in pages:
+        all_content += page.read_text(encoding="utf-8")
+    for term in WATCH_TERMS:
+        count = len(re.findall(rf'\b{re.escape(term)}\b', all_content))
+        slug = WATCH_TERMS[term]
+        if count >= 2 and slug not in existing_stems:
+            term_counts[term] = count
+    for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
+        results["missing_pages"].append(f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）")
 
     return results
 
@@ -137,11 +177,12 @@ def format_report(results: dict) -> str:
     lines.append("")
 
     sections = [
-        ("orphan_pages",    "孤儿页（无入链）",            "⚠️"),
-        ("missing_related", "缺少关联页面区块",            "⚠️"),
-        ("missing_sources", "缺少参考来源区块",            "⚠️"),
-        ("broken_links",    "断链（内链目标不存在）",       "❌"),
-        ("stub_pages",      "空壳页面（< 200 字）",        "⚠️"),
+        ("orphan_pages",    "孤儿页（无入链）",                      "⚠️"),
+        ("missing_related", "缺少关联页面区块",                      "⚠️"),
+        ("missing_sources", "缺少参考来源区块",                      "⚠️"),
+        ("broken_links",    "断链（内链目标不存在）",                 "❌"),
+        ("stub_pages",      "空壳页面（< 200 字）",                  "⚠️"),
+        ("missing_pages",   "频繁提及但缺少 wiki 页面的概念",         "💡"),
     ]
 
     for key, label, icon in sections:

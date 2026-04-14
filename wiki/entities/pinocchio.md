@@ -270,6 +270,12 @@ Pinocchio 很值得优先学。
 - [TSID](../concepts/tsid.md)
 - [Crocoddyl](./crocoddyl.md)
 
+## 参考来源
+
+- Carpentier et al., *Pinocchio: Fast Forward and Inverse Dynamics for Poly-articulated Systems* (2019) — Pinocchio 论文
+- 官方仓库：<https://github.com/stack-of-tasks/pinocchio>
+- 官方文档：<https://stack-of-tasks.github.io/pinocchio/>
+
 ## 关联页面
 
 - [Crocoddyl](./crocoddyl.md)

@@ -37,6 +37,18 @@
 - **计算机视觉**：感知模块的基础
 - **运动控制**：具体执行层面的基础
 
+## 知识库维护方法论
+
+本知识库采用 Karpathy LLM Wiki 模式构建：LLM 作为维护者，人类作为 curator，通过 Ingest / Query / Lint 三类操作持续积累知识。
+
+- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 知识库构建模式来源
+- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人控制的学习路线
+
+## 参考来源
+
+- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材
+- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门
+
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

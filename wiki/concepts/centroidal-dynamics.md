@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [dynamics, locomotion, control, mpc, wbc]
+status: complete
+---
+
 # Centroidal Dynamics
 
 **Centroidal Dynamics（质心动力学）**：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。

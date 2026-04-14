@@ -222,6 +222,12 @@ MuJoCo 不只是拿来做 model-free RL，也很适合控制和优化实验。
 - `mujoco-py` 仓库（deprecated 说明）：<https://github.com/openai/mujoco-py>
 - MuJoCo Playground：<https://playground.mujoco.org/>
 
+## 参考来源
+
+- Todorov et al., *MuJoCo: A physics engine for model-based control* (2012) — MuJoCo 原论文
+- 官方网站：<https://mujoco.org/>
+- 官方仓库：<https://github.com/google-deepmind/mujoco>
+
 ## 关联页面
 
 - [Pinocchio](./pinocchio.md)

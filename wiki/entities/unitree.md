@@ -191,6 +191,12 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 - G1 页面：<https://www.unitree.com/g1/>
 - H1 页面：<https://www.unitree.com/h1/>
 
+## 参考来源
+
+- 官方网站：<https://www.unitree.com/>
+- 官方 GitHub：<https://github.com/unitreerobotics>
+- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 基于 Unitree 的 sim2real 代表工作
+
 ## 关联页面
 
 - [legged_gym](./legged-gym.md)

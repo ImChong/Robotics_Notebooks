@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [state-estimation, ekf, kalman, imu, contact]
+status: complete
+---
+
 # State Estimation
 
 **State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。
@@ -230,6 +236,7 @@ MPC / Centroidal Planner / TSID / WBC / Policy
 
 - [System Identification](./system-identification.md)（状态估计依赖机器人动力学模型，SysID 是模型可信度的前提）
 - [Floating Base Dynamics](./floating-base-dynamics.md)（floating base 状态估计是 state estimation 最难的部分之一）
+- [EKF / InEKF](../formalizations/ekf.md)（EKF 是状态估计的核心滤波算法，见独立 formalization 页）
 
 ### 和 TSID 的关系
 TSID 要算任务误差、雅可比项、动力学一致解，前提是当前姿态、速度、接触状态得估得靠谱。

@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [control, wbc, humanoid, optimization]
+status: complete
+---
+
 # Whole-Body Control (WBC)
 
 **全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。

@@ -182,3 +182,56 @@
 - 将原根目录 README 的大型资源链接列表归档到 `sources/notes/legacy-readme-resource-map.md`
 - 新增 `sources/README.md` 作为资料层入口
 - 将根目录 `README.md` 改成项目说明 + 知识入口 + 资料入口，减少首页堆叠
+
+---
+
+## [2026-04-14] structural | karpathy-alignment | 对齐 Karpathy LLM Wiki 方法论
+
+### 核心改进内容
+
+**1. YAML Frontmatter 规范化（Obsidian Dataview 支持）**
+- 为 12+ 核心 wiki 页面补全 `type`/`tags`/`status` frontmatter 字段
+- 更新 `schema/page-types.md`：新增 YAML Frontmatter 规范区块，含 Dataview 查询示例
+
+**2. 参考来源（Sources 溯源）**
+- 为 10+ 核心 wiki 页面新增 `## 参考来源` 区块
+  - wiki/concepts/: lip-zmp, tsid, whole-body-control, centroidal-dynamics, sim2real, state-estimation
+  - wiki/methods/: reinforcement-learning, model-predictive-control, imitation-learning, policy-optimization, diffusion-policy
+  - wiki/tasks/: locomotion, manipulation, loco-manipulation
+  - wiki/formalizations/: bellman-equation, mdp
+  - wiki/comparisons/: wbc-vs-rl
+  - wiki/overview/: robot-learning-overview
+- 更新 `schema/page-types.md` 各模板：`参考来源` 列为 Must-Have 必填项
+- 更新 `schema/ingest-workflow.md`：Ingest Step 5 和 Query Step 5 明确要求写 sources
+- 更新 `AGENTS.md`：lint checklist 新增"缺失参考来源"
+
+**3. 自动化 Lint 脚本**
+- 新建 `scripts/lint_wiki.py`
+  - 检测孤儿页（无入链）、缺失关联页面、缺失参考来源、断链、空壳页（< 200 字）
+  - `--write-log` 标志将报告追加到 log.md
+  - lint 结果：0 孤儿页、0 断链、0 空壳页；21 个"缺失参考来源"待后续补全
+
+**4. 自动化搜索工具**
+- 新建 `scripts/search_wiki.py`
+  - 支持关键词（AND 逻辑）、`--type`、`--tag`、`--context` 过滤
+  - ANSI 高亮输出；用法：`python3 scripts/search_wiki.py MPC locomotion`
+
+**5. P2 内容扩展（3 个新页面）**
+- 新建 `wiki/methods/policy-optimization.md`（PPO/SAC/TRPO/AWR 对比与机器人应用）
+- 新建 `wiki/methods/diffusion-policy.md`（扩散策略、DDPM vs DDIM、模仿学习应用）
+- 新建 `wiki/tasks/loco-manipulation.md`（移动操作任务定义、挑战、四种方法路线）
+
+**6. Query 产物规范化**
+- 新建 `wiki/queries/README.md`：说明 query 目录定位，追踪现有 query 产物
+- 更新 `schema/ingest-workflow.md`：独立 query 洞见路由到 `wiki/queries/`
+
+**7. 其他 bug 修复**
+- 修复 `scripts/generate_page_catalog.py`：`extract_first_sentence()` 增加 frontmatter 剥离，避免描述显示"---"
+- 修复 `wiki/formalizations/bellman-equation.md` 和 `mdp.md` 的断链（`./optimal-control.md` → `../concepts/optimal-control.md`）
+- 修复 `wiki/entities/pinocchio.md` 的断链（`./tsid.md` → `../concepts/tsid.md`）
+- 修复 `wiki/concepts/state-estimation.md` 的关联页面区块层级（`###` → `##`）
+- 更新 `index.md` Page Catalog，包含三个新建 P2 页面
+
+### lint 历史对比
+- 改进前：82 个问题（大量断链、孤儿页）
+- 改进后：21 个问题（0 断链，0 孤儿页，0 空壳页；剩余均为"缺失参考来源"可逐步回填）

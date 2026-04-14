@@ -102,6 +102,32 @@ State Estimation / System Identification / Sim2Real
 
 ---
 
+## Obsidian Dataview 动态查询
+
+> 以下查询块在 Obsidian + Dataview 插件中可直接使用。在 GitHub/普通 Markdown 渲染器中显示为代码块。
+
+**查看所有 concept 页面及状态：**
+```dataview
+TABLE status, tags FROM "wiki/concepts"
+SORT file.name ASC
+```
+
+**查看所有 draft 状态的页面（待完善）：**
+```dataview
+TABLE type, file.folder FROM "wiki"
+WHERE status = "draft"
+SORT type ASC
+```
+
+**查看带 rl 标签的所有页面：**
+```dataview
+LIST FROM "wiki"
+WHERE contains(tags, "rl")
+SORT type ASC
+```
+
+---
+
 ## 与其他项目的边界
 
 - [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)：单篇论文深读
@@ -111,6 +137,8 @@ State Estimation / System Identification / Sim2Real
 > 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
 
 ---
+
+
 
 
 ### Entities（实体页）
@@ -129,9 +157,11 @@ State Estimation / System Identification / Sim2Real
 - [Contact Dynamics](concepts/contact-dynamics.md) — Contact Dynamics（接触动力学）**：研究机器人与地面、物体、墙面等环境发生接触时，接触力、约束和系统运动之间关系的动力学框架。 `📅unknown` `[wiki_page]`
 - [Domain Randomization](concepts/domain-randomization.md) — 域随机化**：在仿真训练中主动随机化物理参数、视觉纹理、环境设置，让策略被迫学会适应各种变化的泛化能力，从而实现零样本从仿真迁移到现实。 `📅unknown` `[wiki_page]`
 - [Floating Base Dynamics](concepts/floating-base-dynamics.md) — Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。 `📅unknown` `[wiki_page]`
+- [HQP（Hierarchical QP）](concepts/hqp.md) — 分层二次规划（Hierarchical Quadratic Programming，HQP）**：全身控制（WBC）中处理多任务优先级冲突的优化框架，通过将任务按优先级分层求解，确保高优先级任务精 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
+- [Reward Design](concepts/reward-design.md) — 奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。 `📅unknown` `[wiki_page]`
 - [Sim2Real](concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
 - [State Estimation](concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [System Identification](concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
@@ -140,13 +170,16 @@ State Estimation / System Identification / Sim2Real
 
 ### Wiki Methods（方法页）
 
+- [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Imitation Learning (IL)](methods/imitation-learning.md) — 模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
+- [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL)](methods/reinforcement-learning.md) — 强化学习**：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Trajectory Optimization](methods/trajectory-optimization.md) — Trajectory Optimization（轨迹优化）**：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹。 `📅unknown` `[method_page]`
 
 ### Wiki Tasks（任务页）
 
+- [Loco-Manipulation](tasks/loco-manipulation.md) — 移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。 `📅unknown` `[task_page]`
 - [Locomotion](tasks/locomotion.md) — 运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。 `📅unknown` `[task_page]`
 - [Manipulation](tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`
@@ -154,6 +187,8 @@ State Estimation / System Identification / Sim2Real
 ### Wiki Formalizations（形式化基础）
 
 - [Bellman 方程](formalizations/bellman-equation.md) — Bellman 方程**：值函数的递归关系，揭示了"未来奖励"与"当前决策"之间的数学联系，是几乎所有强化学习算法的理论基础。 `📅unknown` `[formalization_page]`
+- [Extended Kalman Filter (EKF)](formalizations/ekf.md) — 扩展卡尔曼滤波（EKF）**：将标准卡尔曼滤波推广到非线性系统的经典状态估计方法，通过每步线性化（一阶 Taylor 展开）在非线性系统上近似应用 Kalman 递推公式。 `📅unknown` `[formalization_page]`
+- [LQR / iLQR](formalizations/lqr.md) — LQR（Linear Quadratic Regulator，线性二次调节器）**：最优控制中最经典的解析解，针对线性系统 + 二次代价函数，给出最优状态反馈增益的闭式解。**iLQR（itera `📅unknown` `[formalization_page]`
 - [Markov Decision Process (MDP)](formalizations/mdp.md) — 马尔可夫决策过程**：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。 `📅unknown` `[formalization_page]`
 
 ### Wiki Comparisons（对比页）
