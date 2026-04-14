@@ -85,7 +85,7 @@
     <section class="section" id="wiki-search">
       <div class="container">
         <h2 class="section-title">知识库搜索</h2>
-        <p class="section-subtitle">在 74 个知识页面中快速定位概念、方法或任务。</p>
+        <p class="section-subtitle">在 89 个知识页面中快速定位概念、方法或任务。</p>
         <div class="search-bar-wrap">
           <input
             id="wikiSearchInput"
@@ -94,6 +94,15 @@
             aria-label="搜索知识页面"
             autocomplete="off"
           />
+          <select id="wikiTypeFilter" aria-label="按类型过滤">
+            <option value="">全部类型</option>
+            <option value="concept">概念 (concept)</option>
+            <option value="method">方法 (method)</option>
+            <option value="task">任务 (task)</option>
+            <option value="comparison">对比 (comparison)</option>
+            <option value="entity">工具/平台 (entity)</option>
+            <option value="query">Query 产物</option>
+          </select>
         </div>
         <div id="wikiSearchResults" class="card-grid" aria-live="polite"></div>
       </div>

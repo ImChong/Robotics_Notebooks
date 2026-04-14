@@ -1321,6 +1321,7 @@
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
+  var typeFilter = document.getElementById('wikiTypeFilter');
   if (searchInput && searchResults) {
     var _indexData = null;
 
@@ -1332,12 +1333,22 @@
     function renderSearchResults(query) {
       if (!_indexData) return;
       var q = query.trim().toLowerCase();
-      if (!q) { searchResults.innerHTML = ''; return; }
+      var typeVal = typeFilter ? typeFilter.value : '';
+      if (!q && !typeVal) { searchResults.innerHTML = ''; return; }
 
-      var words = q.split(/\s+/);
+      var words = q ? q.split(/\s+/) : [];
       var matched = _indexData.filter(function(item) {
-        var haystack = ((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content_markdown || '')).toLowerCase();
-        return words.every(function(w) { return haystack.indexOf(w) !== -1; });
+        // type filter (check page_type for wiki pages, entity_page for entities)
+        if (typeVal) {
+          var eff = item.page_type || (item.type === 'entity_page' ? 'entity' : item.type);
+          if (eff !== typeVal) return false;
+        }
+        // text filter
+        if (words.length) {
+          var haystack = ((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content_markdown || '')).toLowerCase();
+          if (!words.every(function(w) { return haystack.indexOf(w) !== -1; })) return false;
+        }
+        return true;
       }).slice(0, 12);
 
       if (!matched.length) {
@@ -1347,11 +1358,11 @@
 
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
-        var typeLabel = item.path ? item.path.split('/').slice(1, 3).join(' / ') : '';
+        var typeLabel = item.page_type || (item.type === 'entity_page' ? 'entity' : '') || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
         return '<article class="card">'
-          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + typeLabel + '</p>'
+          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + '</p>'
           + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a></h3>'
-          + '<p>' + escapeHtml((item.summary || '').slice(0, 100)) + '</p>'
+          + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
           + '</article>';
       }).join('');
     }
@@ -1360,12 +1371,30 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
+    function triggerSearch() {
+      renderSearchResults(searchInput.value);
+    }
+
     var _searchTimer;
     searchInput.addEventListener('input', function() {
       clearTimeout(_searchTimer);
-      _searchTimer = setTimeout(function() {
-        renderSearchResults(searchInput.value);
-      }, 200);
+      _searchTimer = setTimeout(triggerSearch, 200);
+    });
+    if (typeFilter) {
+      typeFilter.addEventListener('change', triggerSearch);
+    }
+
+    // Tag click: populate search input and trigger search
+    document.addEventListener('click', function(e) {
+      var tag = e.target.closest('[data-wiki-tag]');
+      if (!tag) return;
+      var term = tag.getAttribute('data-wiki-tag');
+      if (term && searchInput) {
+        searchInput.value = term;
+        if (typeFilter) typeFilter.value = '';
+        triggerSearch();
+        searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     });
   }
 })();

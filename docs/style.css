@@ -751,3 +751,26 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 .search-bar-wrap input[type="search"]::placeholder {
   color: var(--text-muted);
 }
+.search-bar-wrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.search-bar-wrap input[type="search"] {
+  flex: 1;
+}
+#wikiTypeFilter {
+  padding: 10px 12px;
+  font-size: .9rem;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  cursor: pointer;
+  transition: border-color .2s;
+  white-space: nowrap;
+}
+#wikiTypeFilter:focus {
+  border-color: var(--accent);
+}
