@@ -63,20 +63,20 @@
 
 ### 任务
 
-- [ ] 将 `sources/papers/` 中的论文列表升级为实际 ingest 笔记（每篇至少：标题、核心贡献、与 wiki 的映射关系）
-  - [ ] `locomotion_rl.md`：补充 AMP / ASE / PPO-for-locomotion 核心摘要
-  - [ ] `whole_body_control.md`：补充 TSID / HQP / Crocoddyl 核心摘要
-  - [ ] `imitation_learning.md`：补充 DAgger / ACT / Diffusion Policy 核心摘要
-  - [ ] `sim2real.md`：补充域随机化 / RMA / InEKF 核心摘要
-- [ ] 在 sources/README.md 中为每条资料增加状态标记
+- [~] 将 `sources/papers/` 中的论文列表升级为实际 ingest 笔记（每篇至少：标题、核心贡献、与 wiki 的映射关系）
+  - [x] `locomotion_rl.md`：补充 AMP / ASE / PPO-for-locomotion 核心摘要
+  - [x] `whole_body_control.md`：补充 TSID / HQP / Crocoddyl 核心摘要
+  - [x] `imitation_learning.md`：补充 DAgger / ACT / Diffusion Policy 核心摘要
+  - [x] `sim2real.md`：补充域随机化 / RMA / InEKF 核心摘要
+- [x] 在 sources/README.md 中为每条资料增加状态标记
   - `[x]` 已提炼进 wiki
   - `[ ]` 待提炼
   - `[-]` 暂不提炼
-- [ ] 将 wiki 页面的 `## 参考来源` 中的论文引用，逐步从纯文本改为链接到 `sources/papers/xxx.md` 具体条目（已有源文件的优先补）
+- [~] 将 wiki 页面的 `## 参考来源` 中的论文引用，逐步从纯文本改为链接到 `sources/papers/xxx.md` 具体条目（已有源文件的优先补）
 
 ### 完成标准
-- sources/papers/ 至少 3 个文件有真实 ingest 内容（不只是链接列表）
-- 至少 5 个 wiki 页面的参考来源链接到 sources/ 实体文件
+- [x] sources/papers/ 至少 3 个文件有真实 ingest 内容（不只是链接列表）
+- [x] 至少 5 个 wiki 页面的参考来源链接到 sources/ 实体文件
 
 ---
 
@@ -102,9 +102,9 @@
 
 ### 5.3 增强已有页面深度
 
-- [ ] `wiki/concepts/sim2real.md`：补充 RMA（Rapid Motor Adaptation）具体步骤
-- [ ] `wiki/methods/reinforcement-learning.md`：补充 model-based RL 与 model-free 对比表格
-- [ ] `wiki/comparisons/wbc-vs-rl.md`：状态从 `draft` 升级到 `complete`，补充更多融合架构实例
+- [x] `wiki/concepts/sim2real.md`：补充 RMA（Rapid Motor Adaptation）具体步骤
+- [x] `wiki/methods/reinforcement-learning.md`：补充 model-based RL 与 model-free 对比表格
+- [x] `wiki/comparisons/wbc-vs-rl.md`：状态从 `draft` 升级到 `complete`，补充更多融合架构实例
 
 ---
 
@@ -127,7 +127,7 @@
 
 ### 3.1 Makefile 一键操作
 
-- [ ] 新建根目录 `Makefile`，提供常用操作的快捷方式：
+- [x] 新建根目录 `Makefile`，提供常用操作的快捷方式：
   ```makefile
   make lint        # python3 scripts/lint_wiki.py
   make catalog     # python3 scripts/generate_page_catalog.py
@@ -137,7 +137,7 @@
 
 ### 3.2 搜索工具增强
 
-- [ ] 在 `scripts/search_wiki.py` 中增加 `--related` 选项：输出匹配页面的关联页面（用于 Query 时快速找邻居）
+- [x] 在 `scripts/search_wiki.py` 中增加 `--related` 选项：输出匹配页面的关联页面（用于 Query 时快速找邻居）
 - [ ] 考虑：是否引入 [qmd](https://github.com/tobi/qmd) 做 BM25/向量混合搜索（Karpathy 推荐工具）
 
 ### 3.3 Lint 规则扩展
@@ -197,6 +197,23 @@ python3 scripts/export_minimal.py          # 更新 exports/ JSON
 ---
 
 ## 本次推进记录（V3 起点，2026-04-14）
+
+### P3 工具链推进（2026-04-14）
+- [x] 新建根目录 `Makefile`，提供 `make lint / make catalog / make export / make search Q=` 快捷命令
+- [x] `scripts/search_wiki.py` 新增 `--related` 选项，可在查询结果中输出「关联页面」邻接信息
+
+### P1 深挖推进（2026-04-14）
+- [x] `wiki/concepts/sim2real.md` 补充 RMA（Rapid Motor Adaptation）步骤化说明（教师策略→适应器→学生部署→在线更新）
+- [x] `wiki/methods/reinforcement-learning.md` 增加 model-based vs model-free 对比表（样本效率/偏差来源/工程代价）
+- [x] `wiki/comparisons/wbc-vs-rl.md` 从 `draft` 升级为 `complete`，并补充 3 种常见融合架构实例
+
+### P0 Sources 激活推进（2026-04-14）
+- [x] `sources/papers/locomotion_rl.md` 增加 AMP/ASE/Heess 等 ingest 摘要与 wiki 映射
+- [x] `sources/papers/whole_body_control.md` 增加 TSID/HQP/Crocoddyl ingest 摘要与 wiki 映射
+- [x] `sources/papers/imitation_learning.md` 增加 DAgger/ACT/Diffusion ingest 摘要与 wiki 映射
+- [x] `sources/papers/sim2real.md` 增加 DR/RMA/InEKF ingest 摘要与 wiki 映射
+- [x] `sources/README.md` 增加 `[x]/[ ]/[-]` 提炼状态标记
+- [x] 6 个 wiki 页面参考来源补充 `sources/papers/*.md` 实体链接（RL/IL/Sim2Real/WBC/TSID/HQP）
 
 ### Karpathy 对齐专项（2026-04-14）
 - [x] 为 16+ 核心 wiki 页面补全 `## 参考来源` 区块（含 entities、concepts、methods、formalizations）

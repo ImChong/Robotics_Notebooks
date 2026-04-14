@@ -32,7 +32,7 @@ status: complete
 ### 1. Domain Randomization
 在仿真中随机化物理参数，强制策略适应多样化环境。
 
-代表工作：Tobio et al. 2018, "Sim-to-Real Transfer of Robotic Control with Dynamics Randomization"
+代表工作：Tobin / Peng 等经典工作（2017-2018），其中 Dynamics Randomization 是 locomotion 迁移常用基线。
 
 ### 2. System Identification
 精确测量真实机器人参数，减少仿真-现实差距。
@@ -45,6 +45,17 @@ status: complete
 
 ### 5. Privileged Information
 训练时用额外信息（如 true state），推理时只用可观测信息。
+
+### RMA（Rapid Motor Adaptation）典型步骤
+
+RMA 常用于腿足/人形机器人在未知地形或参数漂移下的快速适应，简化流程可分为：
+
+1. **教师策略训练（Privileged）**：在仿真中给策略额外的特权信息（真实摩擦、外力、地形参数等），先学到强性能控制器。
+2. **适应模块训练（Encoder/Adapter）**：训练一个在线适应器，从历史观测窗口估计隐变量（例如环境 embedding）。
+3. **学生部署策略（Observable-only）**：真实部署时移除特权信息，仅输入可观测状态 + 适应器输出隐变量。
+4. **在线闭环更新**：每个控制周期滚动更新隐变量，让策略对地形变化、执行器差异、建模误差快速响应。
+
+一句话理解：RMA 不是“重新训练一个新策略”，而是给已有策略加一个实时“环境估计外挂”。
 
 ## 常见误区
 
@@ -70,6 +81,9 @@ status: complete
 ## 参考来源
 
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
+- Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
+- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
+- Kumar et al. 2021, *Rapid Motor Adaptation for Legged Robots* — sim2real 在线适应代表工作
 - [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
 

@@ -1,7 +1,7 @@
 ---
 type: comparison
 tags: [wbc, rl, control, locomotion, humanoid]
-status: draft
+status: complete
 ---
 
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning
@@ -48,6 +48,20 @@ status: draft
 - **RL 训练 low-level policy，WBC 做 high-level**：如 ASE/CALM 的 LLC+HLC 架构
 - **WBC 提供 privileged information 给 RL**：训练时用 WBC 计算的量，推理时去掉
 
+### 融合架构实例（工程上最常见）
+
+1. **MPC/WBC 上层 + RL 下层残差**
+   - 上层给出可解释参考（步态、接触、速度）。
+   - RL 学 residual 或策略先验，补偿模型误差。
+
+2. **RL 产生命令 + WBC 执行约束**
+   - RL 输出期望 CoM/足端/速度目标。
+   - WBC 负责接触约束、力矩限制、安全边界。
+
+3. **IL/RL 预训练 + WBC 安全壳**
+   - 用 IL/RL 提高动作表现。
+   - 真机阶段用 WBC/安全过滤器兜底，降低跌倒风险。
+
 ## 结论
 
 不是非此即彼，而是看场景。
@@ -62,6 +76,8 @@ status: draft
 
 - Peng et al., *AMP: Adversarial Motion Priors* (2021) — RL 与 WBC 融合路线代表
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors* — WBC 理论基础
+- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — WBC/TSID/HQP ingest 摘要
+- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要
 - [WBC vs RL 论文导航](../../references/papers/whole-body-control.md)
 
 ## 关联页面
