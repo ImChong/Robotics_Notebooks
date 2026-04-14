@@ -111,14 +111,14 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 72px;
-  height: 38px;
-  padding: 0 12px;
+  min-width: 44px;
+  height: 30px;
+  padding: 0 8px;
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   line-height: 1;
   text-align: center;
   color: var(--text);
