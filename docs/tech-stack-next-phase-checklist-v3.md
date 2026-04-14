@@ -84,19 +84,19 @@
 
 ### 5.1 缺失的高价值概念页
 
-- [ ] `wiki/concepts/privileged-training.md`
+- [x] `wiki/concepts/privileged-training.md`
   - 特权信息训练（teacher-student）、asymmetric actor-critic
   - 被 sim2real.md、reinforcement-learning.md、loco-manipulation.md 频繁提及
-- [ ] `wiki/methods/model-based-rl.md`
+- [x] `wiki/methods/model-based-rl.md`
   - Dreamer / MBPO / PETS 等；与 model-free 对比
   - 被 reinforcement-learning.md 提及但无专页
-- [ ] `wiki/tasks/balance-recovery.md`
+- [x] `wiki/tasks/balance-recovery.md`
   - 扰动恢复、推一下站回来；capture point 的实际应用场景
   - 被 locomotion.md、capture-point-dcm.md 提及
 
 ### 5.2 缺失的对比页
 
-- [ ] `wiki/comparisons/rl-vs-il.md`
+- [x] `wiki/comparisons/rl-vs-il.md`
   - RL vs 模仿学习：数据效率 / 泛化 / 行为质量 / 实际应用场景对比
   - 被多个方法页提及，目前只有 wbc-vs-rl.md
 
@@ -127,7 +127,7 @@
 
 ### 3.1 Makefile 一键操作
 
-- [ ] 新建根目录 `Makefile`，提供常用操作的快捷方式：
+- [x] 新建根目录 `Makefile`，提供常用操作的快捷方式：
   ```makefile
   make lint        # python3 scripts/lint_wiki.py
   make catalog     # python3 scripts/generate_page_catalog.py

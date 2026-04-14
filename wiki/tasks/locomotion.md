@@ -75,6 +75,7 @@ status: complete
 
 - [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
 - [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战
+- [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力
 
 ## 继续深挖入口
 

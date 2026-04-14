@@ -48,6 +48,7 @@
         "summary": "从 LIP / ZMP、Centroidal Dynamics 到 MPC、TSID、WBC 的控制主干。",
         "tag": "control",
         "entry_items": [
+          "wiki-tasks-balance-recovery",
           "wiki-concepts-capture-point-dcm",
           "wiki-concepts-centroidal-dynamics",
           "wiki-concepts-contact-dynamics",
@@ -58,8 +59,7 @@
           "wiki-methods-imitation-learning",
           "wiki-concepts-lip-zmp",
           "wiki-tasks-loco-manipulation",
-          "wiki-tasks-locomotion",
-          "wiki-concepts-mpc-wbc-integration"
+          "wiki-tasks-locomotion"
         ],
         "references": [
           "reference-papers-sim2real",
@@ -82,6 +82,7 @@
         "summary": "围绕 PPO、策略优化、人形运动控制训练与仿真平台的学习路径。",
         "tag": "rl",
         "entry_items": [
+          "wiki-tasks-balance-recovery",
           "wiki-concepts-contact-dynamics",
           "wiki-concepts-domain-randomization",
           "wiki-methods-imitation-learning",
@@ -90,10 +91,9 @@
           "wiki-tasks-loco-manipulation",
           "wiki-tasks-locomotion",
           "wiki-tasks-manipulation",
+          "wiki-methods-model-based-rl",
           "wiki-concepts-optimal-control",
-          "wiki-methods-policy-optimization",
-          "wiki-methods-reinforcement-learning",
-          "wiki-concepts-reward-design"
+          "wiki-methods-policy-optimization"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -127,8 +127,8 @@
           "wiki-concepts-mpc-wbc-integration",
           "wiki-tasks-manipulation",
           "wiki-concepts-optimal-control",
-          "wiki-methods-reinforcement-learning",
-          "wiki-overview-robot-learning-overview"
+          "wiki-concepts-privileged-training",
+          "wiki-comparisons-rl-vs-il"
         ],
         "references": [
           "reference-papers-imitation-learning",
@@ -157,6 +157,7 @@
           "wiki-concepts-domain-randomization",
           "wiki-methods-imitation-learning",
           "entity-isaac-gym-isaac-lab",
+          "wiki-concepts-privileged-training",
           "entity-legged-gym"
         ],
         "references": [
@@ -176,6 +177,7 @@
         "summary": "聚焦双足 / 人形 locomotion，串联动力学、控制、学习与部署问题。",
         "tag": "locomotion",
         "entry_items": [
+          "wiki-tasks-balance-recovery",
           "wiki-concepts-centroidal-dynamics",
           "wiki-concepts-contact-dynamics",
           "entity-crocoddyl",
@@ -186,8 +188,7 @@
           "wiki-tasks-loco-manipulation",
           "wiki-tasks-locomotion",
           "wiki-concepts-mpc-wbc-integration",
-          "wiki-tasks-manipulation",
-          "wiki-methods-model-predictive-control"
+          "wiki-tasks-manipulation"
         ],
         "references": [
           "reference-benchmarks-locomotion-benchmarks",
@@ -528,7 +529,7 @@
         "type": "wiki_page",
         "path": "wiki/concepts/capture-point-dcm.md",
         "summary": "Capture Point：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里",
-        "content_markdown": "**Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描述系统“往哪里倒”以及“该踩到哪里才能救回来”。\n\n## 一句话定义\n\n- **Capture Point**：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里。\n- **DCM**：把系统运动拆成“会发散的那一部分”，方便分析动态平衡和控制。\n\n一句话说白了：\n\n> ZMP 更像“现在还能不能稳住”，Capture Point / DCM 更像“已经开始失稳时，下一步该怎么救”。\n\n## 为什么重要\n\nLIP / ZMP 是理解双足步行的经典入口，但它们有一个局限：\n\n- 更偏静态或准动态平衡理解\n- 对快速运动、强扰动恢复、高动态步态不够直观\n\n一旦机器人已经在往前倒，光说“ZMP 要在支撑多边形里”就不够了。\n\n这时候更核心的问题变成：\n\n- 系统当前的发散趋势往哪里走\n- 是否还能通过下一步踩踏把自己接住\n- 如果能接住，脚应该放到哪里\n\n这正是 Capture Point / DCM 的核心价值。\n\n## 背后的模型直觉\n\n这些概念通常建立在 **LIP（线性倒立摆）** 模型上。\n\nLIP 的经典动力学：\n\n$$\n\\ddot{x} = \\omega^2 (x - x_{zmp}), \\quad \\omega = \\sqrt{g / z_c}\n$$\n\n这里：\n- \\( x \\)：质心位置\n- \\( \\dot{x} \\)：质心速度\n- \\( x_{zmp} \\)：ZMP\n- \\( z_c \\)：质心高度\n- \\( \\omega \\)：倒立摆自然频率\n\n这个系统很重要的一点是：\n- 它包含**稳定模式**和**发散模式**\n- Capture Point / DCM 正是在抓“发散那一支”\n\n## Capture Point 是什么\n\n最经典的一维定义是：\n\n$$\n\\xi = x + \\frac{\\dot{x}}{\\omega}\n$$\n\n其中：\n- \\( x \\)：质心位置\n- \\( \\dot{x} \\)：质心速度\n- \\( \\omega = \\sqrt{g/z_c} \\)\n\n这个量 \\( \\xi \\) 就是 Capture Point。\n\n它的物理意义可以理解为：\n\n> 如果你此刻想把机器人停住，并且允许它再迈一步，那么脚应该踩向的位置大致就是这个点。\n\n### 直觉理解\n\n- 如果机器人站得很稳，速度很小，Capture Point 靠近 CoM\n- 如果机器人往前冲得很快，Capture Point 会跑到前面很远\n- 如果 Capture Point 已经跑出支撑区域，而你又不能迈步，那大概率稳不住\n\n## DCM 是什么\n\nDCM（Divergent Component of Motion）在很多文献里和 Capture Point 非常接近，甚至在 LIP 条件下它们本质上就是一个东西。\n\n它定义为：\n\n$$\n\\xi = x + \\frac{\\dot{x}}{\\omega}\n$$\n\n这个变量有个关键动力学：\n\n$$\n\\dot{\\xi} = \\omega (\\xi - x_{zmp})\n$$\n\n这个式子非常有启发性。\n\n它说明：\n- DCM 自己会发散\n- ZMP 可以用来“拉住”这个发散趋势\n- 步态控制很多时候其实就是在控制 DCM\n\n## 为什么 DCM 比单看 CoM 更有用\n\n如果你只看 CoM：\n- 会知道机器人现在在哪里\n- 但不一定知道它“接下来会往哪里跑”\n\n如果你看 DCM：\n- 你会同时考虑位置和速度\n- 更接近系统真正的失稳趋势\n\n所以 DCM 的好处是：\n\n> 它把“状态 + 趋势”压进了一个更适合动态平衡控制的变量里。\n\n## Capture Point / DCM 和 ZMP 的关系\n\n这三个概念很容易混。\n\n### ZMP\n更像：\n- 当前支撑稳定性相关量\n- 地面合力矩平衡点\n- 常用来做经典步态规划和稳定性约束\n\n### Capture Point / DCM\n更像：\n- 当前运动发散趋势\n- 如果失稳，下一步该踩哪里\n- 更适合做动态平衡和扰动恢复分析\n\n一句话：\n\n> ZMP 更像“当前还能不能稳住”，Capture Point / DCM 更像“已经开始不稳时该怎么接住”。\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 Contact Dynamics 的关系\n\nCapture Point / DCM 看起来像质心变量，但本质上依赖接触能力。\n\n因为你能不能把自己接住，取决于：\n- 能不能在合适时刻建立新接触\n- 能不能在可行位置落脚\n- 接触力和摩擦约束是否允许\n\n所以它不是脱离 contact 单独存在的量。\n\n见：[Contact Dynamics](./contact-dynamics.md)\n\n## 和 Floating Base Dynamics 的关系\n\n在 floating base 系统里，base 不可直接控制，整体稳定性非常依赖：\n- 接触组织\n- 质心速度\n- 动量演化\n\nCapture Point / DCM 是对这类发散趋势的简化描述。\n\n见：[Floating Base Dynamics](./floating-base-dynamics.md)\n\n## 在机器人中的典型应用\n\n### 1. 扰动恢复\n机器人被推一把之后：\n- 是否需要迈步\n- 往哪迈\n- 多远能接住\n\n这些问题几乎都可以借助 Capture Point 理解。\n\n### 2. 动态步态控制\n比起只用 ZMP，很多更动态的 walking controller 会显式或隐式使用 DCM / CP。\n\n### 3. Footstep Planning\nCapture Point 可以直接影响：\n- 下一步落脚位置\n- 步长调整\n- 何时从站立转入迈步\n\n### 4. 高动态 locomotion 直觉建立\n如果你想理解“为什么机器人不能一直原地稳住，而必须迈步”，Capture Point 是最好的概念之一。\n\n## 在人形控制里的意义\n\n对于人形机器人来说：\n- 站立时可以主要看静态 / 准动态平衡\n- 一旦开始快速行走、跑、被推、切换支撑，动态因素立刻主导\n\n这时：\n- Capture Point 告诉你“还能不能接回来”\n- DCM 告诉你“发散分量现在往哪里走”\n\n所以在现代 humanoid locomotion 语境里，它们往往比单独讲 ZMP 更贴近控制直觉。\n\n## 常见误区\n\n### 1. 以为 Capture Point 能完全替代 ZMP\n不能。它们关注的物理问题不同，常常是互补关系。\n\n### 2. 以为 Capture Point 是精确万能落脚解\n不是。它是很有力的简化指标，但真实系统还要考虑接触、关节限位、可达性、时序等。\n\n### 3. 以为 DCM 是一个完全不同于 Capture Point 的新东西\n在很多 LIP 语境里，它们本质上非常接近。区别更多在使用语境和控制表达方式。\n\n### 4. 低估速度项的重要性\n很多初学者只盯着 CoM 位置，但动态平衡真正关键的是“位置 + 速度”的组合。\n\n## 推荐使用建议\n\n### 如果你学 locomotion\n一定值得掌握。因为它能把“为什么要迈步”这件事讲得非常直观。\n\n### 如果你学 MPC / footstep planning\nCapture Point / DCM 是很重要的中间概念。\n\n### 如果你学 WBC / TSID\n哪怕你不直接用它们做控制变量，也建议理解，因为它们能帮你建立更动态的稳定性直觉。\n\n## 参考来源\n\n- Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery* (2006) — Capture Point 概念提出\n- Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion* (2015) — DCM 三维扩展\n- Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — 可捕获性理论\n\n## 推荐继续阅读\n\n- Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery*\n- Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion*\n- [LIP / ZMP](./lip-zmp.md)\n- [Contact Dynamics](./contact-dynamics.md)\n\n## 一句话记忆\n\n> Capture Point / DCM 研究的是“机器人当前的发散趋势往哪里走，以及下一步该踩到哪里才能把自己接住”，它是比 ZMP 更动态的平衡与扰动恢复理解框架。",
+        "content_markdown": "**Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描述系统“往哪里倒”以及“该踩到哪里才能救回来”。\n\n## 一句话定义\n\n- **Capture Point**：如果机器人已经在往前倒，那么要想在有限步内停住，脚应该踩到哪里。\n- **DCM**：把系统运动拆成“会发散的那一部分”，方便分析动态平衡和控制。\n\n一句话说白了：\n\n> ZMP 更像“现在还能不能稳住”，Capture Point / DCM 更像“已经开始失稳时，下一步该怎么救”。\n\n## 为什么重要\n\nLIP / ZMP 是理解双足步行的经典入口，但它们有一个局限：\n\n- 更偏静态或准动态平衡理解\n- 对快速运动、强扰动恢复、高动态步态不够直观\n\n一旦机器人已经在往前倒，光说“ZMP 要在支撑多边形里”就不够了。\n\n这时候更核心的问题变成：\n\n- 系统当前的发散趋势往哪里走\n- 是否还能通过下一步踩踏把自己接住\n- 如果能接住，脚应该放到哪里\n\n这正是 Capture Point / DCM 的核心价值。\n\n## 背后的模型直觉\n\n这些概念通常建立在 **LIP（线性倒立摆）** 模型上。\n\nLIP 的经典动力学：\n\n$$\n\\ddot{x} = \\omega^2 (x - x_{zmp}), \\quad \\omega = \\sqrt{g / z_c}\n$$\n\n这里：\n- \\( x \\)：质心位置\n- \\( \\dot{x} \\)：质心速度\n- \\( x_{zmp} \\)：ZMP\n- \\( z_c \\)：质心高度\n- \\( \\omega \\)：倒立摆自然频率\n\n这个系统很重要的一点是：\n- 它包含**稳定模式**和**发散模式**\n- Capture Point / DCM 正是在抓“发散那一支”\n\n## Capture Point 是什么\n\n最经典的一维定义是：\n\n$$\n\\xi = x + \\frac{\\dot{x}}{\\omega}\n$$\n\n其中：\n- \\( x \\)：质心位置\n- \\( \\dot{x} \\)：质心速度\n- \\( \\omega = \\sqrt{g/z_c} \\)\n\n这个量 \\( \\xi \\) 就是 Capture Point。\n\n它的物理意义可以理解为：\n\n> 如果你此刻想把机器人停住，并且允许它再迈一步，那么脚应该踩向的位置大致就是这个点。\n\n### 直觉理解\n\n- 如果机器人站得很稳，速度很小，Capture Point 靠近 CoM\n- 如果机器人往前冲得很快，Capture Point 会跑到前面很远\n- 如果 Capture Point 已经跑出支撑区域，而你又不能迈步，那大概率稳不住\n\n## DCM 是什么\n\nDCM（Divergent Component of Motion）在很多文献里和 Capture Point 非常接近，甚至在 LIP 条件下它们本质上就是一个东西。\n\n它定义为：\n\n$$\n\\xi = x + \\frac{\\dot{x}}{\\omega}\n$$\n\n这个变量有个关键动力学：\n\n$$\n\\dot{\\xi} = \\omega (\\xi - x_{zmp})\n$$\n\n这个式子非常有启发性。\n\n它说明：\n- DCM 自己会发散\n- ZMP 可以用来“拉住”这个发散趋势\n- 步态控制很多时候其实就是在控制 DCM\n\n## 为什么 DCM 比单看 CoM 更有用\n\n如果你只看 CoM：\n- 会知道机器人现在在哪里\n- 但不一定知道它“接下来会往哪里跑”\n\n如果你看 DCM：\n- 你会同时考虑位置和速度\n- 更接近系统真正的失稳趋势\n\n所以 DCM 的好处是：\n\n> 它把“状态 + 趋势”压进了一个更适合动态平衡控制的变量里。\n\n## Capture Point / DCM 和 ZMP 的关系\n\n这三个概念很容易混。\n\n### ZMP\n更像：\n- 当前支撑稳定性相关量\n- 地面合力矩平衡点\n- 常用来做经典步态规划和稳定性约束\n\n### Capture Point / DCM\n更像：\n- 当前运动发散趋势\n- 如果失稳，下一步该踩哪里\n- 更适合做动态平衡和扰动恢复分析\n\n一句话：\n\n> ZMP 更像“当前还能不能稳住”，Capture Point / DCM 更像“已经开始不稳时该怎么接住”。\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 Contact Dynamics 的关系\n\nCapture Point / DCM 看起来像质心变量，但本质上依赖接触能力。\n\n因为你能不能把自己接住，取决于：\n- 能不能在合适时刻建立新接触\n- 能不能在可行位置落脚\n- 接触力和摩擦约束是否允许\n\n所以它不是脱离 contact 单独存在的量。\n\n见：[Contact Dynamics](./contact-dynamics.md)\n\n## 和 Floating Base Dynamics 的关系\n\n在 floating base 系统里，base 不可直接控制，整体稳定性非常依赖：\n- 接触组织\n- 质心速度\n- 动量演化\n\nCapture Point / DCM 是对这类发散趋势的简化描述。\n\n见：[Floating Base Dynamics](./floating-base-dynamics.md)\n\n## 在机器人中的典型应用\n\n### 1. 扰动恢复\n机器人被推一把之后：\n- 是否需要迈步\n- 往哪迈\n- 多远能接住\n\n这些问题几乎都可以借助 Capture Point 理解。\n\n### 2. 动态步态控制\n比起只用 ZMP，很多更动态的 walking controller 会显式或隐式使用 DCM / CP。\n\n### 3. Footstep Planning\nCapture Point 可以直接影响：\n- 下一步落脚位置\n- 步长调整\n- 何时从站立转入迈步\n\n### 4. 高动态 locomotion 直觉建立\n如果你想理解“为什么机器人不能一直原地稳住，而必须迈步”，Capture Point 是最好的概念之一。\n\n## 在人形控制里的意义\n\n对于人形机器人来说：\n- 站立时可以主要看静态 / 准动态平衡\n- 一旦开始快速行走、跑、被推、切换支撑，动态因素立刻主导\n\n这时：\n- Capture Point 告诉你“还能不能接回来”\n- DCM 告诉你“发散分量现在往哪里走”\n\n所以在现代 humanoid locomotion 语境里，它们往往比单独讲 ZMP 更贴近控制直觉。\n\n## 常见误区\n\n### 1. 以为 Capture Point 能完全替代 ZMP\n不能。它们关注的物理问题不同，常常是互补关系。\n\n### 2. 以为 Capture Point 是精确万能落脚解\n不是。它是很有力的简化指标，但真实系统还要考虑接触、关节限位、可达性、时序等。\n\n### 3. 以为 DCM 是一个完全不同于 Capture Point 的新东西\n在很多 LIP 语境里，它们本质上非常接近。区别更多在使用语境和控制表达方式。\n\n### 4. 低估速度项的重要性\n很多初学者只盯着 CoM 位置，但动态平衡真正关键的是“位置 + 速度”的组合。\n\n## 推荐使用建议\n\n### 如果你学 locomotion\n一定值得掌握。因为它能把“为什么要迈步”这件事讲得非常直观。\n\n### 如果你学 MPC / footstep planning\nCapture Point / DCM 是很重要的中间概念。\n\n### 如果你学 WBC / TSID\n哪怕你不直接用它们做控制变量，也建议理解，因为它们能帮你建立更动态的稳定性直觉。\n\n## 参考来源\n\n- Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery* (2006) — Capture Point 概念提出\n- Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion* (2015) — DCM 三维扩展\n- Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — 可捕获性理论\n\n## 推荐继续阅读\n\n- Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery*\n- Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion*\n- [LIP / ZMP](./lip-zmp.md)\n- [Contact Dynamics](./contact-dynamics.md)\n- [Balance Recovery](../tasks/balance-recovery.md)（Capture Point 的实际应用场景：扰动恢复策略）\n\n## 一句话记忆\n\n> Capture Point / DCM 研究的是“机器人当前的发散趋势往哪里走，以及下一步该踩到哪里才能把自己接住”，它是比 ZMP 更动态的平衡与扰动恢复理解框架。",
         "tags": [
           "concept",
           "control",
@@ -537,7 +538,8 @@
         "related": [
           "wiki-concepts-lip-zmp",
           "wiki-concepts-contact-dynamics",
-          "wiki-concepts-floating-base-dynamics"
+          "wiki-concepts-floating-base-dynamics",
+          "wiki-tasks-balance-recovery"
         ],
         "source_links": [],
         "status": "active"
@@ -755,6 +757,31 @@
         ],
         "status": "active"
       },
+      "wiki-concepts-privileged-training": {
+        "id": "wiki-concepts-privileged-training",
+        "title": "Privileged Training（特权信息训练）",
+        "type": "wiki_page",
+        "path": "wiki/concepts/privileged-training.md",
+        "summary": "特权训练（Privileged Training / Teacher-Student Training）：训练阶段提供给策略额外的、在真实部署时无法获取的信息，再通过知识蒸馏将能力迁移给仅使用可观测信息的部署策略",
+        "content_markdown": "---\ntype: concept\ntags: [rl, sim2real, training, humanoid, policy-optimization]\nstatus: complete\n---\n\n# Privileged Training（特权信息训练）\n\n**特权训练**（Privileged Training / Teacher-Student Training）：训练阶段提供给策略额外的、在真实部署时无法获取的信息，再通过知识蒸馏将能力迁移给仅使用可观测信息的部署策略。\n\n## 一句话定义\n\n> 让老师策略用\"作弊信息\"学会技能，然后教会学生策略只用真实传感器也能做到。\n\n---\n\n## 为什么重要\n\n人形/足式机器人的核心矛盾：\n\n- **仿真里**：可以访问完整物理状态（地形高度、质量参数、摩擦系数、所有接触力……）\n- **真实里**：只有 IMU、关节编码器、摄像头等有限传感器\n\n直接只用可观测信息训练：样本效率低、策略难以收敛（状态不可完整观测）。\n\n特权训练的价值：\n1. **训练效率**：Teacher 策略用完整状态收敛快，Student 从 Teacher 蒸馏，比 Student 直接从头练快得多\n2. **性能上界**：Teacher 给了 Student 一个可靠的行为模板，而不只是 reward 信号\n3. **Sim2Real 关键**：避免策略依赖仿真才有的状态，天然对齐 sim2real 需求\n\n---\n\n## 核心机制\n\n### Teacher-Student 两阶段流程\n\n```\n阶段 1：训练 Teacher 策略\n  输入：完整特权状态 s_priv（包含仿真才有的信息）\n  训练方法：标准 RL（PPO/SAC 等）\n  目标：在仿真中最大化 reward，尽量学好\n\n阶段 2：训练 Student 策略\n  输入：仅可观测状态 s_obs（传感器数据）\n  目标：模仿 Teacher 的行为（行为克隆 + DAgger 变体）\n  损失：KL 散度 / 动作回归 / 特征对齐\n```\n\n### Asymmetric Actor-Critic（非对称 Actor-Critic）\n\n单阶段变体：Actor 和 Critic 使用不同的状态空间。\n\n- **Actor**：只使用可观测状态 $s_{obs}$（直接生成部署策略）\n- **Critic**：使用完整特权状态 $s_{priv}$（更准确的价值估计，指导 Actor 更新）\n\n$$L_{actor} = -\\mathbb{E}[\\log \\pi_\\theta(a|s_{obs}) \\cdot A(s_{priv}, a)]$$\n\n优点：单阶段即可，无需两步训练；Critic 不部署，可以用所有信息。\n\n---\n\n## 特权信息的类型\n\n| 类别 | 示例 | 真实部署能否获取 |\n|------|------|---------------|\n| 地形信息 | 高度图、斜度、障碍位置 | 需要感知（激光/深度相机），有延迟 |\n| 物理参数 | 质量、摩擦系数、关节刚度 | 基本不可知，RMA 用自适应估计 |\n| 接触状态 | 精确接触力、接触点位置 | 需要力传感器（部分机器人无） |\n| 对手/目标状态 | 物体精确位置/速度 | 视觉估计有噪声 |\n| 全局状态 | 机器人世界坐标（GPS-like） | 通常无法精确获取 |\n\n---\n\n## 典型算法与实现\n\n### RMA（Rapid Motor Adaptation，Kumar et al. 2021）\n\n最具代表性的 Teacher-Student + Sim2Real 框架。\n\n**阶段 1**：训练 Teacher（base policy）\n- 输入：机器人状态 + 环境参数（摩擦、质量等特权信息）\n- PPO 训练，学会适应各种参数\n\n**阶段 2**：训练 Adaptation Module\n- 输入：过去 $n$ 步的关节状态历史\n- 目标：从历史轨迹中隐式估计 Teacher 用的特权信息\n- 损失：预测 Teacher 所用的隐变量\n\n部署时：Base policy + Adaptation Module，无需特权信息。\n\n### Learning to Walk in Minutes（ETH Zurich）\n\n- Teacher：完整地形信息 → PPO\n- Student：只用 proprioception（本体感知）→ 行为克隆\n- 关键发现：高度仅凭步态历史即可隐式估计\n\n### AMP + Teacher-Student\n\n- Teacher：用高质量参考动作 + 判别器训练\n- Student：蒸馏 Teacher 策略到本体感知策略\n\n---\n\n## 和标准 Sim2Real 的关系\n\n```\n标准 Sim2Real 路线：\n  Domain Randomization → 在仿真中训练鲁棒策略 → 直接部署\n\n特权训练路线：\n  Teacher（特权信息）→ 高效收敛 →\n  Student 蒸馏 → 仅用可观测状态 →\n  Domain Randomization + 鲁棒训练 → 部署\n```\n\n两者不互斥——特权训练常和域随机化结合：Teacher 在随机参数空间训练，Student 从 Teacher 蒸馏同时也在随机参数下训练。\n\n---\n\n## 常见优点\n\n- 训练效率高：Teacher 利用完整状态快速收敛\n- 部署简洁：Student 只需传感器输入，不依赖特权信息\n- 自然解耦：仿真能力和真实部署能力分开优化\n- 可组合：与域随机化、课程学习等方法无缝结合\n\n## 常见局限\n\n- **两阶段训练成本**：需要训练两个网络，调试工作量翻倍\n- **Student 上界有限**：Student 只能逼近 Teacher，不能超越它\n- **特权信息选择**：哪些信息作为特权信息需要领域知识判断\n- **Adaptation 泛化性**：Adaptation Module 对分布外情况可能失效\n\n---\n\n## 参考来源\n\n- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现\n- Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展\n- Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用\n- Pinto et al., *Asymmetric Actor Critic for Image-Based Robot Learning* (2018) — 非对称 AC 理论基础\n\n---\n\n## 关联页面\n\n- [Sim2Real](./sim2real.md) — 特权训练是 sim2real 的核心技术之一，解决训练-部署感知差异\n- [Reinforcement Learning](../methods/reinforcement-learning.md) — Teacher 阶段用标准 RL 训练\n- [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆\n- [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡\n\n## 一句话记忆\n\n> 特权训练让策略在仿真里\"作弊\"学技能，再通过蒸馏让真实部署的策略继承这些技能——训练时用全知，部署时用感知。",
+        "tags": [
+          "concept",
+          "humanoid",
+          "optimization",
+          "rl",
+          "il",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-concepts-sim2real",
+          "wiki-methods-reinforcement-learning",
+          "wiki-methods-imitation-learning",
+          "wiki-concepts-domain-randomization",
+          "wiki-tasks-loco-manipulation"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-concepts-reward-design": {
         "id": "wiki-concepts-reward-design",
         "title": "Reward Design",
@@ -785,7 +812,7 @@
         "type": "wiki_page",
         "path": "wiki/concepts/sim2real.md",
         "summary": "Sim2Real（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上",
-        "content_markdown": "---\ntype: concept\ntags: [sim2real, rl, domain-randomization, deployment]\nstatus: complete\n---\n\n# Sim2Real\n\n**Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。\n\n## 一句话定义\n\n在仿真里学会，在现实中生效。\n\n## 为什么重要\n\n- 真实机器人训练成本高、速度慢、容易损坏\n- 仿真可以并行加速、任意重置、无硬件损耗\n- 但仿真和现实有 domain gap，必须解决迁移问题\n\n## 核心问题：Domain Gap\n\n仿真和现实的主要差异：\n\n- **物理参数差异**：质量、摩擦力、延迟等参数不准\n- **传感器差异**：相机噪声、IMU 漂移、触觉反馈\n- **动作执行差异**：电机响应延迟、控制频率限制\n- **视觉差异**：纹理、光照、背景\n\n## 主要方法\n\n### 1. Domain Randomization\n在仿真中随机化物理参数，强制策略适应多样化环境。\n\n代表工作：Tobio et al. 2018, \"Sim-to-Real Transfer of Robotic Control with Dynamics Randomization\"\n\n### 2. System Identification\n精确测量真实机器人参数，减少仿真-现实差距。\n\n### 3. Domain Adaptation\n用视觉/感知层面的 domain adaptation 减少感知差异。\n\n### 4. Curriculum Learning\n从简单环境逐步过渡到复杂/真实环境。\n\n### 5. Privileged Information\n训练时用额外信息（如 true state），推理时只用可观测信息。\n\n## 常见误区\n\n- **以为仿真越逼真越好**：太精确的仿真不一定更好，domain randomization 可能更 robust\n- **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟\n- **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件\n\n## 在人形机器人中的应用\n\n人形机器人 sim2real 的特殊挑战：\n\n- 高维状态空间（30+ 自由度）\n- 接触力难以精确建模\n- 视觉感知差异大\n- 足式接触的不确定性\n\n典型 pipeline：\n\n```\n仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）\n```\n\n## 参考来源\n\n- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文\n- Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要\n- [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）\n\n## 继续深挖入口\n\n如果你想沿着 sim2real 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Sim2Real 论文导航](../../references/papers/sim2real.md)\n\n### 仿真 / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)\n- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)",
+        "content_markdown": "---\ntype: concept\ntags: [sim2real, rl, domain-randomization, deployment]\nstatus: complete\n---\n\n# Sim2Real\n\n**Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。\n\n## 一句话定义\n\n在仿真里学会，在现实中生效。\n\n## 为什么重要\n\n- 真实机器人训练成本高、速度慢、容易损坏\n- 仿真可以并行加速、任意重置、无硬件损耗\n- 但仿真和现实有 domain gap，必须解决迁移问题\n\n## 核心问题：Domain Gap\n\n仿真和现实的主要差异：\n\n- **物理参数差异**：质量、摩擦力、延迟等参数不准\n- **传感器差异**：相机噪声、IMU 漂移、触觉反馈\n- **动作执行差异**：电机响应延迟、控制频率限制\n- **视觉差异**：纹理、光照、背景\n\n## 主要方法\n\n### 1. Domain Randomization\n在仿真中随机化物理参数，强制策略适应多样化环境。\n\n代表工作：Tobio et al. 2018, \"Sim-to-Real Transfer of Robotic Control with Dynamics Randomization\"\n\n### 2. System Identification\n精确测量真实机器人参数，减少仿真-现实差距。\n\n### 3. Domain Adaptation\n用视觉/感知层面的 domain adaptation 减少感知差异。\n\n### 4. Curriculum Learning\n从简单环境逐步过渡到复杂/真实环境。\n\n### 5. Privileged Information\n训练时用额外信息（如 true state），推理时只用可观测信息。\n\n## 常见误区\n\n- **以为仿真越逼真越好**：太精确的仿真不一定更好，domain randomization 可能更 robust\n- **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟\n- **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件\n\n## 在人形机器人中的应用\n\n人形机器人 sim2real 的特殊挑战：\n\n- 高维状态空间（30+ 自由度）\n- 接触力难以精确建模\n- 视觉感知差异大\n- 足式接触的不确定性\n\n典型 pipeline：\n\n```\n仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）\n```\n\n## 参考来源\n\n- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文\n- Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要\n- [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）\n- [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）\n\n## 继续深挖入口\n\n如果你想沿着 sim2real 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Sim2Real 论文导航](../../references/papers/sim2real.md)\n\n### 仿真 / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)\n- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)",
         "tags": [
           "concept",
           "humanoid",
@@ -799,6 +826,7 @@
           "wiki-concepts-whole-body-control",
           "wiki-tasks-locomotion",
           "wiki-concepts-system-identification",
+          "wiki-concepts-privileged-training",
           "sources-papers-sim2real",
           "reference-papers-sim2real",
           "reference-repos-simulation",
@@ -960,7 +988,7 @@
         "type": "wiki_page",
         "path": "wiki/methods/imitation-learning.md",
         "summary": "模仿学习：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”",
-        "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\n---\n\n# Imitation Learning (IL)\n\n**模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢\n- 很多任务难以定义 reward\n- 专家演示提供了高质量数据，可以快速初始化策略\n\n## 核心方法\n\n### 1. 行为克隆（Behavior Cloning, BC）\n\n最简单的 IL：把专家数据当监督学习做。\n\n$$\\min_\\theta \\mathbb{E}_{(s,a) \\sim D}[-\\log \\pi_\\theta(a|s)]$$\n\n问题：\n- 分布偏移（covariate shift）：训练和测试时状态分布不同\n- 错误累积：早期的小错误会不断放大\n\n### 2. DAgger（Dataset Aggregation）\n\n迭代式数据收集：\n\n1. 用当前策略收集数据\n2. 让专家标注这些数据\n3. 合并到训练集\n4. 重复\n\n有效缓解 BC 的分布偏移问题。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控）→ 动作重定向（Retarget）→ 模仿学习训练 → Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- MimicKit：j提炼 encoder-decoder 框架\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — ASE 与 locomotion 技能学习补充\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
+        "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\n---\n\n# Imitation Learning (IL)\n\n**模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢\n- 很多任务难以定义 reward\n- 专家演示提供了高质量数据，可以快速初始化策略\n\n## 核心方法\n\n### 1. 行为克隆（Behavior Cloning, BC）\n\n最简单的 IL：把专家数据当监督学习做。\n\n$$\\min_\\theta \\mathbb{E}_{(s,a) \\sim D}[-\\log \\pi_\\theta(a|s)]$$\n\n问题：\n- 分布偏移（covariate shift）：训练和测试时状态分布不同\n- 错误累积：早期的小错误会不断放大\n\n### 2. DAgger（Dataset Aggregation）\n\n迭代式数据收集：\n\n1. 用当前策略收集数据\n2. 让专家标注这些数据\n3. 合并到训练集\n4. 重复\n\n有效缓解 BC 的分布偏移问题。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控）→ 动作重定向（Retarget）→ 模仿学习训练 → Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- MimicKit：j提炼 encoder-decoder 框架\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — ASE 与 locomotion 技能学习补充\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
         "tags": [
           "method",
           "locomotion",
@@ -974,6 +1002,7 @@
           "wiki-concepts-whole-body-control",
           "wiki-tasks-locomotion",
           "wiki-concepts-sim2real",
+          "wiki-comparisons-rl-vs-il",
           "sources-papers-imitation-learning",
           "sources-papers-locomotion-rl",
           "reference-papers-imitation-learning"
@@ -981,6 +1010,31 @@
         "source_links": [
           "https://diffusion-policy.cs.columbia.edu/"
         ],
+        "status": "active"
+      },
+      "wiki-methods-model-based-rl": {
+        "id": "wiki-methods-model-based-rl",
+        "title": "Model-Based RL（基于模型的强化学习）",
+        "type": "wiki_page",
+        "path": "wiki/methods/model-based-rl.md",
+        "summary": "Model-Based RL（MBRL）：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率",
+        "content_markdown": "---\ntype: method\ntags: [rl, model-based, planning, locomotion, sample-efficiency]\nstatus: complete\n---\n\n# Model-Based RL（基于模型的强化学习）\n\n**Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。\n\n## 一句话定义\n\n> 先学会世界是怎么运作的（模型），再用这个模型来练技能——而不是只靠和真实环境反复试错。\n\n---\n\n## 为什么重要\n\nModel-Free RL 的核心问题：**样本效率低**。\n\n在机器人任务中：\n- 真实机器人每次交互有物理成本（时间、硬件损耗）\n- 仿真虽然可以并行加速，但高保真度仿真依然慢\n- 复杂操作任务需要大量探索\n\nMBRL 的价值：\n- **样本效率**：利用模型生成虚拟经验（Model Rollouts），减少真实交互\n- **规划能力**：有了模型可以做前向搜索/轨迹优化\n- **迁移性**：模型可以跨任务复用（学一次世界模型，解多个任务）\n\n---\n\n## 核心范式\n\n### 范式 1：Dyna 架构（经典）\n\n$$\\text{真实经验} \\rightarrow \\text{学习模型} \\rightarrow \\text{模型生成虚拟经验} \\rightarrow \\text{更新策略}$$\n\n- 与真实环境交互收集少量数据\n- 学习动力学模型 $\\hat{f}(s, a) \\rightarrow s'$\n- 用模型采样大量虚拟轨迹\n- 用真实 + 虚拟经验更新 value function / 策略\n\n### 范式 2：基于规划的 MBRL\n\n直接在模型中做轨迹优化，不显式学习策略。\n\n代表：MPC（Model Predictive Control）、MPPI、CEM。\n\n$$a^* = \\arg\\max_{\\{a_t\\}_{t=0}^{H}} \\sum_{t=0}^{H} r(s_t, a_t)$$\n\n每步都重新规划，不需要预先学好的策略。\n\n### 范式 3：世界模型（World Model）\n\n在潜空间中学习紧凑的世界表示，在潜空间中规划和想象。\n\n代表：Dreamer 系列。\n\n$$s_t \\sim q_\\phi(s_t | s_{t-1}, a_{t-1}, o_t), \\quad \\hat{o}_t \\sim p_\\theta(\\hat{o}_t | s_t)$$\n\n---\n\n## 代表性算法\n\n### Dreamer / DreamerV3（Hafner et al.）\n\n**核心思想**：学习一个紧凑的循环世界模型（RSSM），在潜空间中想象未来，用想象轨迹训练 Actor-Critic。\n\n```\n感知编码器: o_t → z_t（潜状态）\n世界模型（RSSM）: (z_t, a_t) → z_{t+1}（在潜空间演化）\n奖励模型: z_t → r_t\nActor: z_t → a_t（在想象中训练）\nCritic: z_t → V(z_t)（在想象中训练）\n```\n\n优点：\n- 极高样本效率，几乎在所有任务上优于 Model-Free\n- DreamerV3 实现了真正的通用性（Atari/DMControl/Minecraft 等）\n\n局限：\n- 机器人真实部署的精度要求难以保证（模型误差累积）\n- 高频控制下潜空间动力学不稳定\n\n### MBPO（Model-Based Policy Optimization, Janner et al. 2019）\n\n**核心思想**：用神经网络集成模型（Ensemble of Neural Networks）生成短 rollout，与真实数据混合训练 SAC。\n\n- 集成模型（5~7 个网络）检测不确定区域，避免过度利用错误模型\n- 短 rollout（1~5 步）避免模型误差累积\n- 真实数据 + 模型数据混合训练\n\n在连续控制基准上，MBPO 用约 5% 的 SAC 样本量达到相同性能。\n\n### PETS（Probabilistic Ensembles with Trajectory Sampling, Chua et al. 2018）\n\n**核心思想**：不显式学习策略，直接用模型集成做 CEM（交叉熵方法）规划。\n\n- 模型：概率神经网络集成（捕获认知不确定性 + 偶然不确定性）\n- 规划：CEM 在模型中优化动作序列\n- 无需策略训练，只需模型 + 规划器\n\n特别适合数据稀少的真实机器人操作场景。\n\n### TD-MPC / TD-MPC2\n\n**核心思想**：结合 Temporal Difference（TD）价值学习和 Model Predictive Control。\n\n- 学习隐空间动力学模型 + 价值函数\n- 规划时用 MPPI 在潜空间搜索，用价值函数截断规划 horizon\n- 在机器人操作和 locomotion 上都有强结果\n\n---\n\n## MBRL vs Model-Free RL 对比\n\n| 维度 | MBRL | Model-Free RL |\n|------|------|---------------|\n| 样本效率 | ✅ 高（可用模型生成数据） | ❌ 低（需大量真实交互） |\n| 渐近性能 | ⚠️ 受模型精度限制 | ✅ 理论上可达最优 |\n| 实现复杂度 | ❌ 高（需学模型 + 策略） | ✅ 低 |\n| 计算效率 | ❌ 推理时规划开销大 | ✅ 策略直接查询 |\n| 在机器人上的应用 | 操作任务、真实机器人 | Locomotion（高频控制） |\n| 代表算法 | Dreamer, MBPO, PETS | PPO, SAC, TD3 |\n\n---\n\n## 在机器人中的应用场景\n\n### 适合 MBRL 的场景\n- **操作任务**：接触动力学复杂，需要精细规划；数据稀少（真实机器人）\n- **未知环境适应**：RMA 的 Adaptation Module 本质是隐式的模型识别\n- **低频控制**：规划 horizon 不需要太长，模型误差不累积\n- **样本稀缺的真实机器人学习**：PETS 类方法\n\n### 不适合 MBRL 的场景\n- **高频 locomotion 控制**（200~1000 Hz）：规划开销无法实时\n- **高维视觉输入 + 接触丰富**：模型难以精确，误差在 rollout 中爆炸\n- **需要极高渐近性能**：模型误差有上界，Model-Free 可以做到更好\n\n---\n\n## 参考来源\n\n- Hafner et al., *Mastering Diverse Domains through World Models* (DreamerV3, 2023) — 世界模型通用化\n- Janner et al., *When to Trust Your Model: Model-Based Policy Optimization* (MBPO, 2019) — 短 rollout 混合训练\n- Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划\n- Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值\n- Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架\n\n---\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列\n- [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的\"控制论版\"\n- [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器\n- [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数\n- [Sim2Real](../concepts/sim2real.md) — MBRL 的样本效率优势直接帮助真实机器人学习\n- [Imitation Learning](./imitation-learning.md) — 可以和 IL 结合：用演示数据初始化模型\n\n## 一句话记忆\n\n> Model-Based RL 用\"学习的世界模型\"代替部分真实交互，通过在想象中规划和练习大幅提升样本效率——代价是模型精度的上限和更高的实现复杂度。",
+        "tags": [
+          "method",
+          "locomotion",
+          "control",
+          "optimization",
+          "rl"
+        ],
+        "related": [
+          "wiki-methods-reinforcement-learning",
+          "wiki-methods-model-predictive-control",
+          "wiki-methods-trajectory-optimization",
+          "wiki-concepts-optimal-control",
+          "wiki-concepts-sim2real",
+          "wiki-methods-imitation-learning"
+        ],
+        "source_links": [],
         "status": "active"
       },
       "wiki-methods-model-predictive-control": {
@@ -1047,7 +1101,7 @@
         "type": "wiki_page",
         "path": "wiki/methods/reinforcement-learning.md",
         "summary": "强化学习：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式",
-        "content_markdown": "---\ntype: method\ntags: [rl, locomotion, policy-optimization, model-free]\nstatus: complete\n---\n\n# Reinforcement Learning (RL)\n\n**强化学习**：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。\n\n## 一句话定义\n\n不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己摸索。\n\n## 核心框架：MDP\n\n强化学习问题通常建模为马尔可夫决策过程（MDP）：\n\n- **状态** $s$：机器人当前感知到的环境信息\n- **动作** $a$：机器人可以采取的行动\n- **奖励** $r$：环境给机器人的反馈信号\n- **策略** $\\pi(a|s)$：在每个状态下选择动作的规则\n- **折扣因子** $\\gamma$：未来奖励的重要性\n\n目标：找到最优策略 $\\pi^*$ 最大化期望累积折扣奖励。\n\n## 主要分类\n\n### 无模型（Model-Free）\n不学习环境模型，直接从交互数据学习策略。\n\n代表算法：\n- **Policy Gradient**：直接优化策略（REINFORCE, PPO, AWR）\n- **Q-Learning**：学习状态-动作价值函数（DQN, DDPG, SAC）\n- **Actor-Critic**：结合两者（PPO, SAC, TD3）\n\n### 有模型（Model-Based）\n先学习环境动态模型，再用模型做 planning。\n\n代表：\n- Dreamer, MuZero, PETS, MBRL\n\n### 离线强化学习（Offline RL）\n从固定数据集中学习，不允许和环境交互。\n\n代表：CQL, IQL, Decision Transformer\n\n## 在机器人控制中的典型应用\n\n- 四足/双足行走\n- 人形机器人全身控制\n- 机械臂操作\n- 多指灵巧手操作\n\n## 优势\n\n- 能处理高维状态/动作空间\n- 不需要精确建模\n- 能发现人工难以设计的复杂策略\n\n## 局限\n\n- Sample efficiency 低（需要大量交互）\n- Reward 设计困难\n- 安全性难以保证（尤其是真实机器人上）\n- 训练不稳定\n\n## 和其他方法的关系\n\n- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。\n- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 model-based RL 中逐渐融合。\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础\n- Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合\n\n## 关联页面\n\n- [Imitation Learning](./imitation-learning.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n\n## 继续深挖入口\n\n如果你想沿着 RL 继续往下挖，建议从这里进入：\n\n- [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n- [Survey Papers](../../references/papers/survey-papers.md)\n\n### 开源框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)",
+        "content_markdown": "---\ntype: method\ntags: [rl, locomotion, policy-optimization, model-free]\nstatus: complete\n---\n\n# Reinforcement Learning (RL)\n\n**强化学习**：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。\n\n## 一句话定义\n\n不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己摸索。\n\n## 核心框架：MDP\n\n强化学习问题通常建模为马尔可夫决策过程（MDP）：\n\n- **状态** $s$：机器人当前感知到的环境信息\n- **动作** $a$：机器人可以采取的行动\n- **奖励** $r$：环境给机器人的反馈信号\n- **策略** $\\pi(a|s)$：在每个状态下选择动作的规则\n- **折扣因子** $\\gamma$：未来奖励的重要性\n\n目标：找到最优策略 $\\pi^*$ 最大化期望累积折扣奖励。\n\n## 主要分类\n\n### 无模型（Model-Free）\n不学习环境模型，直接从交互数据学习策略。\n\n代表算法：\n- **Policy Gradient**：直接优化策略（REINFORCE, PPO, AWR）\n- **Q-Learning**：学习状态-动作价值函数（DQN, DDPG, SAC）\n- **Actor-Critic**：结合两者（PPO, SAC, TD3）\n\n### 有模型（Model-Based）\n先学习环境动态模型，再用模型做 planning。\n\n代表：\n- Dreamer, MuZero, PETS, MBRL\n\n### 离线强化学习（Offline RL）\n从固定数据集中学习，不允许和环境交互。\n\n代表：CQL, IQL, Decision Transformer\n\n## 在机器人控制中的典型应用\n\n- 四足/双足行走\n- 人形机器人全身控制\n- 机械臂操作\n- 多指灵巧手操作\n\n## 优势\n\n- 能处理高维状态/动作空间\n- 不需要精确建模\n- 能发现人工难以设计的复杂策略\n\n## 局限\n\n- Sample efficiency 低（需要大量交互）\n- Reward 设计困难\n- 安全性难以保证（尤其是真实机器人上）\n- 训练不稳定\n\n## 和其他方法的关系\n\n- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。\n- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 model-based RL 中逐渐融合。\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础\n- Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合\n\n## 关联页面\n\n- [Imitation Learning](./imitation-learning.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Model-Based RL](./model-based-rl.md)（RL 的另一主要范式，利用学习的世界模型提升样本效率）\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）\n\n## 继续深挖入口\n\n如果你想沿着 RL 继续往下挖，建议从这里进入：\n\n- [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n- [Survey Papers](../../references/papers/survey-papers.md)\n\n### 开源框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)",
         "tags": [
           "method",
           "locomotion",
@@ -1062,13 +1116,13 @@
           "wiki-concepts-whole-body-control",
           "wiki-tasks-locomotion",
           "wiki-comparisons-wbc-vs-rl",
+          "wiki-methods-model-based-rl",
+          "wiki-comparisons-rl-vs-il",
           "wiki-overview-robot-learning-overview",
           "sources-papers-locomotion-rl",
           "sources-papers-sim2real",
           "reference-papers-locomotion-rl",
-          "reference-papers-survey-papers",
-          "reference-repos-rl-frameworks",
-          "reference-repos-simulation"
+          "reference-papers-survey-papers"
         ],
         "source_links": [],
         "status": "active"
@@ -1098,6 +1152,32 @@
           "reference-papers-whole-body-control",
           "reference-repos-utilities",
           "reference-repos-humanoid-projects"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-tasks-balance-recovery": {
+        "id": "wiki-tasks-balance-recovery",
+        "title": "Balance Recovery（平衡恢复）",
+        "type": "wiki_page",
+        "path": "wiki/tasks/balance-recovery.md",
+        "summary": "平衡恢复（Balance Recovery / Push Recovery）：机器人在受到外部扰动（推力、地形突变、碰撞等）后，从失衡状态恢复到稳定姿态并继续任务的能力",
+        "content_markdown": "---\ntype: task\ntags: [locomotion, balance, stability, humanoid, bipedal, control]\nstatus: complete\n---\n\n# Balance Recovery（平衡恢复）\n\n**平衡恢复**（Balance Recovery / Push Recovery）：机器人在受到外部扰动（推力、地形突变、碰撞等）后，从失衡状态恢复到稳定姿态并继续任务的能力。\n\n## 一句话定义\n\n> 机器人被推了一把，能不摔倒还能走回来。\n\n---\n\n## 为什么重要\n\nLocomotion 是动态平衡问题，真实环境中扰动不可避免：\n\n- 人类推碰、物体碰撞\n- 地面不平、意外台阶\n- 负载突变（拿起重物）\n- 关节执行误差累积\n\n一个无法应对扰动的机器人，在真实环境中几乎无法部署。平衡恢复是从\"在实验室走路\"到\"在真实世界工作\"的关键能力。\n\n---\n\n## 核心理论工具\n\n### Capture Point / DCM（Divergent Component of Motion）\n\n**Capture Point**：机器人在某姿态下，必须将脚踩到该点才能在不摔倒的情况下停下来。\n\n$$x_{CP} = x_{CoM} + \\frac{\\dot{x}_{CoM}}{\\omega_0}, \\quad \\omega_0 = \\sqrt{g / z_c}$$\n\n其中 $\\omega_0$ 是倒立摆的自然频率，$z_c$ 是质心高度。\n\n**恢复判断**：\n- 若 Capture Point 在支撑多边形内 → 可以通过原地站立恢复\n- 若超出支撑多边形 → 必须迈步才能恢复（stepping recovery）\n\n### N-step Capture Point\n\n单步恢复不够时，可以规划 N 步使 Capture Point 落回支撑域：\n\n$$x_{CP}^{(n)} = p_{step}^{(n)} + (x_{CP}^{(n-1)} - p_{step}^{(n)}) e^{-\\omega_0 T_{step}}$$\n\nN-step 规划形成了阶梯式平衡恢复策略：先定恢复步序列，再执行。\n\n### 稳定裕度（Stability Margin）\n\n衡量当前状态离失稳有多远的指标：\n\n| 指标 | 定义 | 适用场景 |\n|------|------|---------|\n| CoP（Center of Pressure）裕度 | CoP 到支撑多边形边界的距离 | 静态/拟静态平衡 |\n| ZMP 裕度 | ZMP 到支撑多边形边界的距离 | 动态行走 |\n| Capture Point 裕度 | CP 到支撑域边界的距离 | 推力恢复预判 |\n| DCM 误差 | 当前 DCM 与期望 DCM 的偏差 | 实时控制反馈 |\n\n---\n\n## 恢复策略分类\n\n### 1. Ankle Strategy（踝关节策略）\n\n**适用**：小扰动，重心轻微偏移。\n\n通过踝关节的主动力矩调节 CoP 位置，将 ZMP 推回支撑域中心。不需要迈步，速度快。\n\n**局限**：踝关节力矩有限，超过范围即失效。\n\n### 2. Hip Strategy（髋关节策略）\n\n**适用**：中等扰动。\n\n通过髋关节反向运动（类似人低头弯腰）调整全身质量分布。常与踝关节策略联合使用。\n\n### 3. Stepping Strategy（迈步策略）\n\n**适用**：大扰动，CP 已超出支撑域。\n\n主动迈步到新位置使 Capture Point 回到新支撑域内。是最通用的恢复策略，但需要快速步位规划。\n\n**关键约束**：\n- 步位约束（腿的可达范围）\n- 步时约束（最短迈步时间）\n- 地形约束（落脚点需要可行）\n\n### 4. Multi-Contact Strategy（多接触策略）\n\n**适用**：极端扰动、接近倒地时。\n\n主动利用环境接触（扶墙、蹲低、扶地）避免摔倒。常见于人类本能反应，机器人实现较难。\n\n---\n\n## 典型方法路线\n\n### 经典控制方法\n\n**基于 Capture Point 的在线步位规划**（Koolen et al., Englsberger et al.）：\n1. 实时计算当前 Capture Point\n2. 判断是否需要迈步及迈步位置\n3. 用 LIPM + MPC 生成恢复轨迹\n4. WBC 执行\n\n**IHMC 推力恢复**：\n- 多策略切换：Ankle → Hip → Stepping → Multi-Contact\n- 根据稳定裕度实时选择策略\n- 已在 Atlas、Valkyrie 等机器人上验证\n\n### RL 方法\n\n近年来 RL 在平衡恢复上取得了强结果，尤其是在不规则扰动和复杂地形上：\n\n**端到端 RL**（如 ANYmal 系列）：\n- 在仿真中以随机推力作为扰动进行域随机化训练\n- 策略直接输出关节力矩\n- 优点：无需手工设计策略切换逻辑\n- 缺点：可解释性差，边界行为难以预测\n\n**RL + 经典控制融合**：\n- 用 RL 学习高层稳定策略（是否迈步、迈到哪里）\n- 用 TSID/WBC 执行底层动作\n- 结合两者优点\n\n---\n\n## Sim2Real 挑战\n\n平衡恢复的 sim2real 难度较高：\n\n- **推力时序**：仿真中的瞬时冲击和真实硬件响应不一致\n- **接触模型**：地面刚度、鞋底摩擦在仿真中难以精确模拟\n- **延迟**：控制延迟在高扰动恢复中影响显著\n- **状态估计噪声**：剧烈扰动下 IMU 和状态估计会产生较大误差\n\n常用缓解措施：\n- 域随机化（推力大小/方向/时序 + 质量参数）\n- 加入状态估计噪声\n- 延迟随机化\n\n---\n\n## 评估指标\n\n| 指标 | 说明 |\n|------|------|\n| 最大可恢复推力 | 在保证不摔倒的前提下可承受的最大推力 |\n| 恢复时间 | 从扰动到重新稳定行走的耗时 |\n| 迈步次数 | 恢复过程中需要的额外步数（越少越好） |\n| 成功率 @ N kg·m/s 冲量 | 给定冲量大小下的恢复成功比例 |\n\n---\n\n## 参考来源\n\n- Pratt et al., *Capture Point: A Step toward Humanoid Push Recovery* (2006) — Capture Point 理论基础\n- Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion* (2015) — DCM 三维扩展与步行控制\n- Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — N-step capturability 理论框架\n- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — RL 结合域随机化应对扰动\n- Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 足式机器人扰动恢复\n\n---\n\n## 关联页面\n\n- [Capture Point / DCM](../concepts/capture-point-dcm.md) — 平衡恢复的核心理论工具，步位规划的依据\n- [Locomotion](./locomotion.md) — 平衡恢复是高鲁棒 locomotion 的子问题\n- [Whole-Body Control](../concepts/whole-body-control.md) — WBC 执行恢复策略输出的关节指令\n- [TSID](../concepts/tsid.md) — 经典恢复策略的底层执行器\n- [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — 在线步位规划常用 MPC 求解\n- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法直接从仿真中学习鲁棒恢复策略\n\n## 一句话记忆\n\n> 平衡恢复是让机器人在被推之后不摔倒还能继续走的能力——从 Capture Point 的几何直觉，到踝-髋-迈步的策略层次，再到现代 RL 的端到端学习，都是在解决\"扰动后稳回来\"这一个问题。",
+        "tags": [
+          "task",
+          "humanoid",
+          "locomotion",
+          "control",
+          "dynamics",
+          "rl"
+        ],
+        "related": [
+          "wiki-concepts-capture-point-dcm",
+          "wiki-tasks-locomotion",
+          "wiki-concepts-whole-body-control",
+          "wiki-concepts-tsid",
+          "wiki-methods-model-predictive-control",
+          "wiki-methods-reinforcement-learning"
         ],
         "source_links": [],
         "status": "active"
@@ -1140,7 +1220,7 @@
         "type": "wiki_page",
         "path": "wiki/tasks/locomotion.md",
         "summary": "运动/行走：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力",
-        "content_markdown": "---\ntype: task\ntags: [locomotion, bipedal, humanoid, rl, control]\nstatus: complete\n---\n\n# Locomotion\n\n**运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。\n\n## 一句话定义\n\n让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。\n\n## 核心挑战\n\n### 1. 平衡\n人形机器人是天然不稳定的系统，必须主动维持平衡。\n\n- 静态平衡：重心在支撑多边形内\n- 动态平衡：ZMP（Zero Moment Point）条件\n- 接触力分配：多接触时的力分配问题\n\n### 2. 接触切换\n行走本质是不断在单脚支撑和双脚支撑之间切换，每次切换都容易失稳。\n\n### 3. 高维动作空间\n30+ 自由度，每次决策都要协调所有关节。\n\n### 4. 地形变化\n平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。\n\n## 主要方法路线\n\n### 传统控制路线\n- **ZMP + 预观控制**：经典人形行走（Honda ASIMO）\n- **LIP + 步长调节**：简单高效的行走控制\n- **Hybrid Zero Dynamics**：考虑机器人动力学结构的步态生成\n\n### 学习路线\n- **RL from scratch**：直接在仿真里训，不需要人工步态设计\n  - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）\n- **IL + RL**：用 MoCap 数据初始化，再用 RL 提升\n  - 代表：DeepMimic, AMP\n- **世界模型**：学习环境模型，在模型里规划\n  - 代表：Dreamer, LIFT\n\n## 评价指标\n\n- **行走速度**：m/s\n- **能耗效率**：J/kg/m 或 Cost of Transport (CoT)\n- **地形适应能力**：是否能处理楼梯、不平整地面\n- **稳定性**：摔倒频率\n- **运动自然性**：和人类步态的相似度\n- **泛化能力**：能否迁移到未见过的地形\n\n## 参考来源\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文\n- Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合\n\n## 关联系统/方法\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）\n- [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）\n- [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）\n- [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）\n\n## 关联任务\n\n- [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation\n- [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战\n\n## 继续深挖入口\n\n如果你想沿着 locomotion 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n\n### Benchmark 入口\n- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)\n\n### 开源项目 / 框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)\n\n## 推荐继续阅读\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）\n- Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）\n- Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线",
+        "content_markdown": "---\ntype: task\ntags: [locomotion, bipedal, humanoid, rl, control]\nstatus: complete\n---\n\n# Locomotion\n\n**运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。\n\n## 一句话定义\n\n让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。\n\n## 核心挑战\n\n### 1. 平衡\n人形机器人是天然不稳定的系统，必须主动维持平衡。\n\n- 静态平衡：重心在支撑多边形内\n- 动态平衡：ZMP（Zero Moment Point）条件\n- 接触力分配：多接触时的力分配问题\n\n### 2. 接触切换\n行走本质是不断在单脚支撑和双脚支撑之间切换，每次切换都容易失稳。\n\n### 3. 高维动作空间\n30+ 自由度，每次决策都要协调所有关节。\n\n### 4. 地形变化\n平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。\n\n## 主要方法路线\n\n### 传统控制路线\n- **ZMP + 预观控制**：经典人形行走（Honda ASIMO）\n- **LIP + 步长调节**：简单高效的行走控制\n- **Hybrid Zero Dynamics**：考虑机器人动力学结构的步态生成\n\n### 学习路线\n- **RL from scratch**：直接在仿真里训，不需要人工步态设计\n  - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）\n- **IL + RL**：用 MoCap 数据初始化，再用 RL 提升\n  - 代表：DeepMimic, AMP\n- **世界模型**：学习环境模型，在模型里规划\n  - 代表：Dreamer, LIFT\n\n## 评价指标\n\n- **行走速度**：m/s\n- **能耗效率**：J/kg/m 或 Cost of Transport (CoT)\n- **地形适应能力**：是否能处理楼梯、不平整地面\n- **稳定性**：摔倒频率\n- **运动自然性**：和人类步态的相似度\n- **泛化能力**：能否迁移到未见过的地形\n\n## 参考来源\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文\n- Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合\n\n## 关联系统/方法\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）\n- [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）\n- [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）\n- [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）\n\n## 关联任务\n\n- [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation\n- [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战\n- [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力\n\n## 继续深挖入口\n\n如果你想沿着 locomotion 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n\n### Benchmark 入口\n- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)\n\n### 开源项目 / 框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)\n\n## 推荐继续阅读\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）\n- Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）\n- Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线",
         "tags": [
           "task",
           "humanoid",
@@ -1152,6 +1232,7 @@
         "related": [
           "wiki-tasks-manipulation",
           "wiki-tasks-loco-manipulation",
+          "wiki-tasks-balance-recovery",
           "reference-papers-locomotion-rl",
           "wiki-concepts-whole-body-control",
           "wiki-concepts-sim2real",
@@ -1160,8 +1241,7 @@
           "wiki-concepts-capture-point-dcm",
           "entity-unitree",
           "wiki-tasks-ultra-survey",
-          "reference-benchmarks-locomotion-benchmarks",
-          "reference-repos-rl-frameworks"
+          "reference-benchmarks-locomotion-benchmarks"
         ],
         "source_links": [
           "https://en.wikipedia.org/wiki/Model_predictive_control"
@@ -1228,6 +1308,33 @@
           "https://ultra-humanoid.github.io/",
           "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks"
         ],
+        "status": "active"
+      },
+      "wiki-comparisons-rl-vs-il": {
+        "id": "wiki-comparisons-rl-vs-il",
+        "title": "RL vs 模仿学习（Imitation Learning）",
+        "type": "wiki_page",
+        "path": "wiki/comparisons/rl-vs-il.md",
+        "summary": "type: comparison。",
+        "content_markdown": "---\ntype: comparison\ntags: [rl, il, imitation-learning, policy-optimization, locomotion, manipulation]\nstatus: complete\n---\n\n# RL vs 模仿学习（Imitation Learning）\n\nRL 和 IL 是机器人策略学习的两条主干路线。两者都在学\"策略 $\\pi(a|s)$\"，但监督信号、数据需求、能达到的行为质量完全不同。\n\n---\n\n## 核心对比表\n\n| 维度 | RL（强化学习） | IL（模仿学习） |\n|------|--------------|--------------|\n| **监督信号** | 奖励函数 $r(s,a)$（设计） | 专家演示 $D = \\{(s,a)\\}$（收集） |\n| **数据来源** | 自身与环境交互（无监督） | 人类/专家演示（有监督） |\n| **数据效率** | 低（需大量交互） | 高（直接学专家行为） |\n| **性能上限** | 理论上可超越专家 | 受专家质量上限限制 |\n| **探索难度** | 高（稀疏奖励下难探索） | 无需探索（直接模仿） |\n| **泛化性** | 依赖奖励函数覆盖范围 | 依赖演示数据分布 |\n| **行为质量** | 取决于 reward 设计质量 | 接近专家（如演示质量高） |\n| **可解释性** | 优化了什么清晰，但行为不透明 | 行为来自演示，可追溯 |\n\n---\n\n## 典型失败模式对比\n\n### RL 的常见问题\n\n**Reward Hacking**：策略利用 reward 定义的漏洞，以非预期方式得分。\n\n> 例：locomotion reward 只惩罚摔倒，策略学会原地抖腿却不前进。\n\n**Exploration Collapse**：在高维动作空间中无法找到有意义的 reward 信号。\n\n> 例：精细操作任务，随机探索几乎不可能碰到\"成功\"状态。\n\n**Reward Shaping 敏感性**：reward 的细微变化会导致策略行为大幅波动。\n\n### IL 的常见问题\n\n**Covariate Shift（分布偏移）**：测试时进入训练时未覆盖的状态，行为崩溃。\n\n> 例：行为克隆在看过的场景里完美，一旦偏离专家轨迹就越走越偏。\n\n**性能上界**：永远无法超越专家质量；专家演示本身有噪声时性能受限。\n\n**演示收集成本**：高质量演示需要设备（遥操纵、动捕）和人力，代价高。\n\n---\n\n## 详细方法对比\n\n### 主流 RL 方法（机器人）\n\n| 算法 | 特点 | 典型应用 |\n|------|------|---------|\n| PPO | On-policy，稳定，适合仿真 | Locomotion（ANYmal, Unitree） |\n| SAC | Off-policy，样本效率高，适合真实机器人 | 操作、连续控制 |\n| TD3 | 确定性策略，低方差 | 精细操作 |\n| AMP | 用判别器做 reward，模仿运动风格 | 自然步态 locomotion |\n\n### 主流 IL 方法（机器人）\n\n| 算法 | 特点 | 典型应用 |\n|------|------|---------|\n| BC（行为克隆） | 最简单，监督学习，covariate shift 严重 | 简单操作、初始化 |\n| DAgger | 在线交互修正分布偏移 | 需要专家在线反馈 |\n| ACT（Action Chunking） | 预测动作序列而非单步，减少时序误差 | Bi-manual 操作 |\n| Diffusion Policy | 分布建模，多模态动作 | 精细操作、灵巧手 |\n| IBC | 能量模型，隐式行为克隆 | 高维连续控制 |\n| GAIL / AIRL | GAN-like，从演示中隐式学 reward | 风格模仿 |\n\n---\n\n## 在机器人任务上的选择指南\n\n### 选 RL 的场景\n\n- **任务目标清晰、reward 易定义**：locomotion（能量效率 + 速度 + 稳定性）\n- **允许大量仿真交互**：可以并行仿真环境大规模训练\n- **需要超越人类表现**：游戏、棋类、极限运动\n- **行为空间探索需要多样性**：鲁棒性训练、域随机化\n\n### 选 IL 的场景\n\n- **演示容易获取，reward 难定义**：精细操作（折叠衣服、装配零件）\n- **数据效率要求高**：真实机器人样本成本高，不能大量交互\n- **需要快速跟上人类意图**：teleoperation、人机协作\n- **行为质量要求高且一致**：医疗、服务机器人\n\n### 两者结合（最常见）\n\n**IL 初始化 + RL 微调**：\n- 用演示数据做 BC 初始化，避免从随机策略探索\n- 再用 RL 优化超越专家\n\n**AMP（Adversarial Motion Priors）**：\n- 用判别器从运动捕捉数据学习运动风格 reward\n- 结合 RL 完成目标任务\n\n**RLHF 类方法**：\n- 人类偏好反馈（演示/排序）构建 reward 模型\n- RL 优化 reward 模型\n\n---\n\n## 与其他概念的关系\n\n```\n                 ┌────────────────────────────────────┐\n                 │    策略学习（Policy Learning）       │\n                 └───────────┬────────────────────────┘\n                    ┌────────┴──────────┐\n                    ▼                  ▼\n               Model-Free RL        Imitation Learning\n               (PPO/SAC/TD3)      (BC/DAgger/Diffusion)\n                    │                  │\n                    │    融合路线       │\n                    └────────┬──────────┘\n                             ▼\n                    AMP / RLHF / IL+RL\n```\n\n---\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 理论基础\n- Pomerleau, *ALVINN: An Autonomous Land Vehicle in a Neural Network* (1989) — BC 早期工作\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (DAgger, 2011) — 分布偏移的经典解法\n- Ho & Ermon, *Generative Adversarial Imitation Learning* (GAIL, 2016) — 从演示隐式学 reward\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023) — IL 的 SOTA\n- Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021) — RL + 演示的标志性融合\n\n---\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法详细展开\n- [Imitation Learning](../methods/imitation-learning.md) — IL 方法详细展开\n- [Policy Optimization](../methods/policy-optimization.md) — RL 中的策略梯度方法（PPO/SAC/TD3）\n- [Diffusion Policy](../methods/diffusion-policy.md) — IL 的 SOTA 方法\n- [WBC vs RL](./wbc-vs-rl.md) — 另一个控制方法对比视角\n- [Reward Design](../concepts/reward-design.md) — RL 选择时 reward 设计是核心挑战\n- [Sim2Real](../concepts/sim2real.md) — 两种方法的 sim2real 挑战不同\n\n## 一句话记忆\n\n> RL 靠奖励信号自己探索，可以超越专家但 reward 难设计；IL 靠演示监督，行为质量好但受演示上界限制——实践中最强的方案往往是两者的结合。",
+        "tags": [
+          "comparison",
+          "humanoid",
+          "locomotion",
+          "optimization",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-methods-reinforcement-learning",
+          "wiki-methods-imitation-learning",
+          "wiki-methods-policy-optimization",
+          "wiki-methods-diffusion-policy",
+          "wiki-comparisons-wbc-vs-rl",
+          "wiki-concepts-reward-design",
+          "wiki-concepts-sim2real"
+        ],
+        "source_links": [],
         "status": "active"
       },
       "wiki-comparisons-wbc-vs-rl": {

@@ -144,7 +144,7 @@ def lint() -> dict:
         # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
         # 已有覆盖的术语不在此列（EKF→ekf.md, HQP→hqp.md, SAC→policy-optimization.md,
         #   InEKF→ekf.md, LQR→lqr.md, NMPC→model-predictive-control.md）
-        "MPPI": "mppi",
+        "MPPI": "model-based-rl",   # 已在 model-based-rl.md 中覆盖
         "DMP": "dmp",
         "GAE": "gae",
         "HER": "her",
