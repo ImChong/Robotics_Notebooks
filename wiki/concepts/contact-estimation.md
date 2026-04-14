@@ -103,6 +103,7 @@ J^T · f = τ_gravity_compensation - τ_actuator
 
 ## 参考来源
 
+- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（MuJoCo 接触模型 / CBF 接触一致性）
 - Bledt et al., *Contact Model Fusion for Event-Based Locomotion in Unstructured Terrains* (ICRA 2018) — MIT Cheetah 接触估计
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU* (RSS 2013) — 腿式机器人状态与接触估计
 - Camurri et al., *Probabilistic Contact Estimation and Impact Detection for State Estimation of Quadruped Robots* (RA-L 2017) — 概率接触检测

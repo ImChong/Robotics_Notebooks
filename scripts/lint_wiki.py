@@ -101,6 +101,8 @@ def lint() -> dict:
         "stub_pages": [],
         "missing_pages": [],          # 提及但缺少对应 wiki 页面的技术概念
         "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
+        "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
+        "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
 
     for page in pages:
@@ -139,6 +141,12 @@ def lint() -> dict:
         # 5. 空壳页面（< 200 字）
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
+
+        # Ingest coverage: count non-meta wiki pages and those with sources/papers/ links
+        if not is_meta_page:
+            results["_ingest_total"] += 1
+            if "sources/papers/" in content:
+                results["_ingest_covered"] += 1
 
         # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
         stripped = strip_code_blocks(content)
@@ -183,7 +191,7 @@ def format_report(results: dict) -> str:
     today = date.today().isoformat()
     lines = [f"## [{today}] lint | health-check | 自动化 wiki 健康检查", ""]
 
-    total_issues = sum(len(v) for v in results.values())
+    total_issues = sum(len(v) for k, v in results.items() if not k.startswith("_"))
     lines.append(f"共发现 **{total_issues}** 个问题：")
     lines.append("")
 
@@ -207,6 +215,12 @@ def format_report(results: dict) -> str:
             lines.append("- 无")
         lines.append("")
 
+    covered = results.get("_ingest_covered", 0)
+    total = results.get("_ingest_total", 0)
+    pct = round(covered / total * 100) if total else 0
+    lines.append(f"📊 Sources 覆盖率：{covered}/{total} ({pct}%) wiki/entity 页有 ingest 来源")
+    lines.append("")
+
     return "\n".join(lines)
 
 def main():
@@ -220,7 +234,7 @@ def main():
 
     print(report)
 
-    total = sum(len(v) for v in results.values())
+    total = sum(len(v) for k, v in results.items() if not k.startswith("_"))
     if total == 0:
         print("✅ 所有检查通过！")
         sys.exit(0)

@@ -244,3 +244,33 @@
 - 更新 `sources/README.md`：为 papers 列表增加 `[x]/[ ]/[-]` 提炼状态标记
 - 在 6 个 wiki 页面的 `## 参考来源` 中加入 `sources/papers/*.md` 实体链接（RL/IL/Sim2Real/WBC/TSID/HQP）
 - 同步更新 `docs/tech-stack-next-phase-checklist-v3.md` 的 P0 任务状态与推进记录
+
+---
+
+## [2026-04-14] ingest | sources/papers/optimal_control.md — Bellman 1957 / Pontryagin 1962 / Bryson & Ho 1975 / DDP / Bertsekas 2019，覆盖 optimal-control / trajectory-optimization
+
+## [2026-04-14] ingest | sources/papers/mpc.md — Mayne 2000 / Di Carlo 2018 / Sleiman 2021 / Wieber 2006 / MPPI，覆盖 model-predictive-control / mpc-wbc-integration
+
+## [2026-04-14] ingest | sources/papers/policy_optimization.md — PPO / SAC / TD3 / TRPO / Rudin 2022，覆盖 reinforcement-learning / locomotion
+
+## [2026-04-14] ingest | sources/papers/model_based_rl.md — DreamerV3 / MBPO / PETS / TD-MPC2 / Dyna，覆盖 model-based-rl / reinforcement-learning
+
+## [2026-04-14] structural | v4 清单推进 — 新增 wiki 概念页 curriculum-learning / contact-estimation / motion-retargeting；新增 comparisons/model-based-vs-model-free；新增实体页 drake.md；query 产物 humanoid-hardware-selection / wbc-implementation-guide / locomotion-reward-design-guide
+
+## [2026-04-14] structural | .github/workflows/lint.yml — GitHub Actions CI，每次 push 自动运行 lint_wiki.py
+
+## [2026-04-14] structural | scripts/ingest_paper.py + Makefile ingest — 快速生成 sources/papers/ 模板工具
+
+## [2026-04-14] index | make export → sitemap.xml（89 URL）；前端新增类型过滤 + ingest 标记；rebase 合并 main 的 sitemap/meta 改动
+
+## [2026-04-14] structural | docs/tech-stack-next-phase-checklist-v5.md — 新建 V5 执行清单（P0-P6），深度对齐 Karpathy LLM Wiki；README 同步更新至 89 页 / v5 清单 / make ingest 命令
+
+## [2026-04-14] structural | P0 运营层建立 — log.md 激活（已有文件补全近期条目）+ scripts/append_log.py + make log + schema/log-format.md
+
+## [2026-04-14] lint | P0 验证通过 — log.md 建立 + append_log.py + make log + schema/log-format.md
+
+## [2026-04-14] ingest | sources/papers/contact_dynamics.md + privileged_training.md + state_estimation.md + system_identification.md + simulation_tools.md + robot_kinematics_tools.md — P1 Sources 层扩充，覆盖 7 个 wiki 页面
+
+## [2026-04-14] structural | P2 Wiki 缺口补全 — footstep-planning / gait-generation / contact-complementarity（3 个新页面）；P3.4 lint 覆盖率报告；P4 3 个 Query 产物（humanoid-rl-cookbook / pinocchio-quick-start / mpc-solver-selection）
+
+## [2026-04-14] lint | 0 issues，覆盖率 50%（29/58），wiki 95 页

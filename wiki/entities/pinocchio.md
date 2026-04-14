@@ -272,6 +272,7 @@ Pinocchio 很值得优先学。
 
 ## 参考来源
 
+- [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / Crocoddyl 2020 / RBDL 2017）
 - Carpentier et al., *Pinocchio: Fast Forward and Inverse Dynamics for Poly-articulated Systems* (2019) — Pinocchio 论文
 - 官方仓库：<https://github.com/stack-of-tasks/pinocchio>
 - 官方文档：<https://stack-of-tasks.github.io/pinocchio/>

@@ -8,6 +8,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-bellman-equation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-capture-point-dcm</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-centroidal-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-contact-complementarity</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-contact-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-contact-estimation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-crocoddyl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -17,6 +18,8 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-drake</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-ekf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-floating-base-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-footstep-planning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-gait-generation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-hqp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-imitation-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-isaac-gym-isaac-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -26,6 +29,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-locomotion</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-locomotion-reward-design-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-mpc-wbc-integration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-mpc-solver-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-mdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-model-predictive-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -35,6 +39,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mujoco</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-optimal-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-pinocchio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-pinocchio-quick-start</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-policy-optimization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-privileged-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-rl-vs-il</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -54,6 +59,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-wbc-implementation-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-whole-body-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-legged-gym</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-humanoid-rl-cookbook</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-control-architecture-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-humanoid-hardware-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

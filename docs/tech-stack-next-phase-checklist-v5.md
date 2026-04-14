@@ -37,24 +37,24 @@
 
 ### 0.1 log.md 建立
 
-- [ ] 新建 `log.md`：append-only 操作日志，格式 `## [YYYY-MM-DD] op | 描述`
+- [x] 新建 `log.md`：append-only 操作日志，格式 `## [YYYY-MM-DD] op | 描述`
   - 支持类型前缀：`ingest`、`query`、`lint`、`index`
   - 示例：`## [2026-04-14] ingest | sources/papers/mpc.md — 新增 Mayne 2000 等 5 条 MPC 论文摘要`
   - 用途：LLM 通过 grep 快速了解近期操作，避免重复工作
 
-- [ ] `scripts/append_log.py`：命令行追加 log 条目
+- [x] `scripts/append_log.py`：命令行追加 log 条目
   ```bash
   python3 scripts/append_log.py ingest "sources/papers/xxx.md — 描述"
   python3 scripts/append_log.py query "关键词 → wiki/queries/xxx.md"
   python3 scripts/append_log.py lint "0 issues，全绿"
   ```
 
-- [ ] `Makefile` 新增：`make log OP=ingest DESC="描述"`
+- [x] `Makefile` 新增：`make log OP=ingest DESC="描述"`
 
 ### 0.2 schema 更新
 
-- [ ] `schema/ingest-workflow.md`：在每步操作后加入 `追加 log.md 条目` 子步骤
-- [ ] 新建 `schema/log-format.md`：规范 log 格式与可解析前缀约定
+- [ ] `schema/ingest-workflow.md`：在每步操作后加入 `追加 log.md 条目` 子步骤（已有内容，待细化）
+- [x] 新建 `schema/log-format.md`：规范 log 格式与可解析前缀约定
 
 ### 完成标准
 - `log.md` 存在，可用 `grep "^## \[" log.md | tail -5` 查看最近 5 条
@@ -76,18 +76,18 @@
 | `sources/papers/state_estimation.md` | state-estimation, EKF | Bloesch RSL 2013；Hartley InEKF 2020；Teng 2021 legged odom |
 | `sources/papers/system_identification.md` | system-identification | Nguyen IJRR 2011；Gautier 2013 excitation traj；Hwangbo 2019 ActuatorNet |
 
-- [ ] `sources/papers/contact_dynamics.md`
-- [ ] `sources/papers/privileged_training.md`
-- [ ] `sources/papers/state_estimation.md`
-- [ ] `sources/papers/system_identification.md`
+- [x] `sources/papers/contact_dynamics.md`
+- [x] `sources/papers/privileged_training.md`
+- [x] `sources/papers/state_estimation.md`
+- [x] `sources/papers/system_identification.md`
 
 ### 1.2 实体页 sources 补充
 
-- [ ] `sources/papers/simulation_tools.md`
+- [x] `sources/papers/simulation_tools.md`
   - MuJoCo（Todorov et al. 2012）、Isaac Gym（Makoviychuk et al. 2021）、Genesis（2024）
   - 覆盖：mujoco.md、isaac-gym-isaac-lab.md
 
-- [ ] `sources/papers/robot_kinematics_tools.md`
+- [x] `sources/papers/robot_kinematics_tools.md`
   - Pinocchio（Carpentier et al. 2019）、RBDL、Crocoddyl
   - 覆盖：pinocchio.md、crocoddyl.md
 
@@ -112,15 +112,15 @@
 
 ### 2.1 频繁提及但缺独立页面的概念
 
-- [ ] `wiki/concepts/footstep-planning.md`
+- [x] `wiki/concepts/footstep-planning.md`
   - 步位规划：contact sequence + step location optimization
   - 被 capture-point-dcm.md、locomotion.md、balance-recovery.md 提及
 
-- [ ] `wiki/concepts/gait-generation.md`
+- [x] `wiki/concepts/gait-generation.md`
   - 步态生成：中枢模式生成器（CPG）、参数化步态、数据驱动步态
   - 被 locomotion.md、mpc.md 提及
 
-- [ ] `wiki/formalizations/contact-complementarity.md`
+- [x] `wiki/formalizations/contact-complementarity.md`
   - LCP / complementarity 条件：接触力学的数学基础
   - 被 contact-dynamics.md、whole-body-control.md 提及
 
@@ -167,9 +167,9 @@
 
 ### 3.4 覆盖率报告
 
-- [ ] `lint_wiki.py` 末尾输出 ingest 覆盖率统计：
+- [x] `lint_wiki.py` 末尾输出 ingest 覆盖率统计：
   ```
-  📊 Sources 覆盖率：31/52 (59%) wiki/entity 页有 ingest 来源
+  📊 Sources 覆盖率：29/58 (50%) wiki/entity 页有 ingest 来源
   ```
 
 ### 完成标准
@@ -182,17 +182,17 @@
 
 Query 产物是 Karpathy 模式的核心价值点：**好答案应该写回 wiki，让探索复利**。
 
-- [ ] `wiki/queries/humanoid-rl-cookbook.md`
+- [x] `wiki/queries/humanoid-rl-cookbook.md`
   - 触发问题：「从零开始训练一个能在真机上走路的人形机器人 RL 策略，完整 checklist？」
   - 综合来源：sim2real-checklist.md、rl-algorithm-selection.md、locomotion-reward-design-guide.md
 
-- [ ] `wiki/queries/pinocchio-quick-start.md`
+- [x] `wiki/queries/pinocchio-quick-start.md`
   - 触发问题：「用 Pinocchio 做机器人动力学计算的最小可运行示例？」
   - 综合来源：pinocchio.md、wbc-implementation-guide.md、tsid.md
 
-- [ ] `wiki/queries/mpc-solver-selection.md`
+- [x] `wiki/queries/mpc-solver-selection.md`
   - 触发问题：「机器人 MPC 求解器怎么选：OSQP vs qpOASES vs Acados vs FORCES Pro？」
-  - 综合来源：model-predictive-control.md、mpc-wbc-integration.md
+  - 综合来源：model-predictive-control.md、wbc-vs-rl.md
 
 ### 完成标准
 - 3 个新 query 产物，wiki/queries/README.md 同步更新

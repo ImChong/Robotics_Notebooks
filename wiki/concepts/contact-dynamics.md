@@ -260,6 +260,7 @@ locomotion 本质上可以看成是：
 
 ## 参考来源
 
+- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Featherstone 2008 / Stewart LCP 2000 / Todorov MuJoCo 2012）
 - Featherstone, *Rigid Body Dynamics Algorithms* — 刚体接触动力学核心算法参考
 - Murray et al., *A Mathematical Introduction to Robotic Manipulation* — 接触约束与闭链建模
 - Mirtich & Canny, *Impulse-based Simulation of Rigid Bodies* (1995) — 冲量接触建模基础
@@ -270,6 +271,7 @@ locomotion 本质上可以看成是：
 - [Floating Base Dynamics](./floating-base-dynamics.md)
 - [Centroidal Dynamics](./centroidal-dynamics.md)
 - [TSID](./tsid.md)
+- [Contact Complementarity](../formalizations/contact-complementarity.md) — 接触动力学的 LCP 数学框架
 
 ## 一句话记忆
 
