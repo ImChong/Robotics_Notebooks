@@ -61,12 +61,34 @@ def strip_frontmatter(content: str) -> str:
 
 # ── 搜索逻辑 ──────────────────────────────────────────────────────────────────
 
+def extract_related_links(content: str, source_path: Path) -> list[str]:
+    """从页面的关联页面区块中提取链接标题和路径。"""
+    related = []
+    # 找关联页面区块
+    in_related = False
+    for line in content.splitlines():
+        if re.match(r'^##\s+.*(关联|related|相关)', line, re.IGNORECASE):
+            in_related = True
+            continue
+        if in_related:
+            if line.startswith("##"):
+                break
+            # 提取 [title](path) 格式的链接
+            for m in re.finditer(r'\[([^\]]+)\]\(([^)]+)\)', line):
+                title, href = m.group(1), m.group(2)
+                if not href.startswith("http") and href.endswith(".md"):
+                    resolved = (source_path.parent / href).resolve()
+                    related.append(f"{title}  ({resolved.relative_to(REPO_ROOT) if resolved.is_relative_to(REPO_ROOT) else href})")
+    return related
+
+
 def search(
     query_words: list[str],
     type_filter: str | None,
     tag_filters: list[str],
     context_lines: int,
     case_sensitive: bool,
+    show_related: bool = False,
 ) -> list[dict]:
     results = []
     pages = sorted(WIKI_DIR.rglob("*.md"))
@@ -106,10 +128,12 @@ def search(
             # 无关键词时只显示页面标题行
             matched_lines = [(1, [lines[0]] if lines else [""], 0)]
 
+        related_links = extract_related_links(raw, page) if show_related else []
         results.append({
             "path": page.relative_to(REPO_ROOT),
             "fm": fm,
             "matches": matched_lines[:5],  # 最多显示 5 处匹配
+            "related": related_links,
         })
 
     return results
@@ -143,6 +167,11 @@ def print_results(results: list[dict], query_words: list[str], case_sensitive: b
                 else:
                     print(f"\033[2m{prefix}{line}\033[0m")
 
+        if r.get("related"):
+            print("  \033[2m关联页面：\033[0m")
+            for rel in r["related"]:
+                print(f"  \033[2m  → {rel}\033[0m")
+
     print(f"\n共找到 {len(results)} 个页面。")
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
@@ -163,6 +192,7 @@ def main():
     parser.add_argument("--tag", dest="tag_filters", action="append", default=[], help="按标签过滤（可多次指定，AND 逻辑）")
     parser.add_argument("--context", type=int, default=1, help="每处匹配显示的上下文行数（默认 1）")
     parser.add_argument("--case", action="store_true", help="区分大小写")
+    parser.add_argument("--related", action="store_true", help="同时输出每个匹配页面的关联页面（用于快速找邻居）")
     args = parser.parse_args()
 
     if not args.query and not args.type_filter and not args.tag_filters:
@@ -175,6 +205,7 @@ def main():
         tag_filters=args.tag_filters,
         context_lines=args.context,
         case_sensitive=args.case,
+        show_related=args.related,
     )
     print_results(results, args.query, args.case)
 

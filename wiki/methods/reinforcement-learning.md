@@ -65,10 +65,25 @@ status: complete
 - 安全性难以保证（尤其是真实机器人上）
 - 训练不稳定
 
+## Model-Free vs Model-Based 对比
+
+| 维度 | Model-Free RL | Model-Based RL |
+|------|--------------|----------------|
+| **代表算法** | PPO, SAC, TD3 | Dreamer, MBPO, PETS, TD-MPC |
+| **样本效率** | 低（需大量真实交互） | 高（模型生成虚拟经验） |
+| **渐近性能** | ✅ 理论上最优 | ⚠️ 受模型精度限制 |
+| **实现复杂度** | ✅ 低 | ❌ 高（学模型 + 策略） |
+| **计算开销** | ✅ 推理直接 | ❌ 推理时需规划 |
+| **机器人应用** | Locomotion（高频控制） | 操作任务、真实机器人少样本 |
+| **Sim2Real** | 依赖域随机化 | 适配模块（RMA 类） |
+
+两者不互斥：Model-Based 方法（如 RMA Adaptation Module）常与 Model-Free 策略结合。
+
 ## 和其他方法的关系
 
-- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。
-- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 model-based RL 中逐渐融合。
+- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。见 [RL vs IL 对比](../comparisons/rl-vs-il.md)。
+- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。
+- **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
 
 ## 参考来源
 

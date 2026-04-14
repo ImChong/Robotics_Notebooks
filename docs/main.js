@@ -1317,4 +1317,55 @@
         }
       });
   }
+
+  // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
+  var searchInput = document.getElementById('wikiSearchInput');
+  var searchResults = document.getElementById('wikiSearchResults');
+  if (searchInput && searchResults) {
+    var _indexData = null;
+
+    fetch('exports/index-v1.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { _indexData = data.items || []; })
+      .catch(function() {});
+
+    function renderSearchResults(query) {
+      if (!_indexData) return;
+      var q = query.trim().toLowerCase();
+      if (!q) { searchResults.innerHTML = ''; return; }
+
+      var words = q.split(/\s+/);
+      var matched = _indexData.filter(function(item) {
+        var haystack = ((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content_markdown || '')).toLowerCase();
+        return words.every(function(w) { return haystack.indexOf(w) !== -1; });
+      }).slice(0, 12);
+
+      if (!matched.length) {
+        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">未找到匹配结果。</p>';
+        return;
+      }
+
+      searchResults.innerHTML = matched.map(function(item) {
+        var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+        var typeLabel = item.path ? item.path.split('/').slice(1, 3).join(' / ') : '';
+        return '<article class="card">'
+          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + typeLabel + '</p>'
+          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a></h3>'
+          + '<p>' + escapeHtml((item.summary || '').slice(0, 100)) + '</p>'
+          + '</article>';
+      }).join('');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    var _searchTimer;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(_searchTimer);
+      _searchTimer = setTimeout(function() {
+        renderSearchResults(searchInput.value);
+      }, 200);
+    });
+  }
 })();

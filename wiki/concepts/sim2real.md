@@ -43,8 +43,33 @@ status: complete
 ### 4. Curriculum Learning
 从简单环境逐步过渡到复杂/真实环境。
 
-### 5. Privileged Information
-训练时用额外信息（如 true state），推理时只用可观测信息。
+### 5. Privileged Information / Teacher-Student
+训练时用额外信息（如 true state、环境参数），推理时只用可观测信息。见 [Privileged Training](./privileged-training.md)。
+
+### 6. RMA（Rapid Motor Adaptation）
+
+**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student 框架之一（Kumar et al. 2021）。
+
+**两阶段流程：**
+
+```
+阶段 1：训练 Base Policy（仿真中）
+  输入：机器人本体感知状态 s_t + 环境特权参数 e_t（质量/摩擦/电机参数）
+  算法：PPO
+  产出：Base Policy π(a | s_t, e_t)
+
+阶段 2：训练 Adaptation Module（仿真中，模拟真机条件）
+  输入：过去 k 步的关节状态历史 {s_{t-k}, ..., s_{t-1}}
+  目标：从历史轨迹中隐式估计 e_t 的压缩表示 ê_t
+  损失：||ê_t - φ(e_t)||²（对齐 Base Policy 所用的特权嵌入）
+
+部署（真实机器人）：
+  Base Policy + Adaptation Module（无需特权参数 e_t）
+```
+
+**为什么有效**：机器人与地面的历史交互隐含了地形/摩擦/质量等信息，Adaptation Module 从行为历史中隐式重建这些信息。
+
+**在 Unitree A1 上实测**：复杂地形（草地/碎石/台阶）零样本迁移成功。
 
 ## 常见误区
 
