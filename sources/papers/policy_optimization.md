@@ -19,6 +19,7 @@
   - [Policy Optimization](../../wiki/methods/policy-optimization.md)
   - [Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
   - [Locomotion](../../wiki/tasks/locomotion.md)
+  - [RL Algorithm Selection](../../wiki/queries/rl-algorithm-selection.md)
 
 ### 2) Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning (Haarnoja et al., 2018)
 - **链接：** <https://arxiv.org/abs/1801.01290>
@@ -47,6 +48,8 @@
   - [Locomotion](../../wiki/tasks/locomotion.md)
   - [Isaac Gym / Isaac Lab](../../wiki/entities/isaac-gym-isaac-lab.md)
   - [legged_gym](../../wiki/entities/legged-gym.md)
+  - [curriculum-learning](../../wiki/concepts/curriculum-learning.md)
+  - [reward-design](../../wiki/concepts/reward-design.md)
 
 ## 当前提炼状态
 

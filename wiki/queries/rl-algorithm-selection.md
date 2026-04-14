@@ -142,3 +142,4 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning* (2018) — SAC 原论文
 - Fujimoto et al., *Addressing Function Approximation Error in Actor-Critic Methods* (TD3, 2018)
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021)
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC/TD3/TRPO 核心论文摘录

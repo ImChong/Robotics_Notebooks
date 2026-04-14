@@ -104,6 +104,7 @@ status: complete
 
 - [Locomotion](./locomotion.md)
 - [Manipulation](./manipulation.md)
+- [Teleoperation](./teleoperation.md) — 遥操作是 loco-manipulation 数据采集的主要方式
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [TSID](../concepts/tsid.md)
@@ -116,6 +117,8 @@ status: complete
 - Cheng et al., *Expressive Whole-Body Control for Humanoid Robots* (2024) — 全身运动控制与操作
 - Fu et al., *Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation* (2024) — 移动双手操作代表
 - [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述（2026）
+- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI 遥操作系统
+- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT / Diffusion Policy / π₀（loco-manip 策略学习）
 
 ## 推荐继续阅读
 

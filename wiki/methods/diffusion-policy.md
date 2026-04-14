@@ -110,6 +110,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023) — Diffusion Policy 原论文
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023) — 操作任务 IL 代表（动作块预测）
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/)
+- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — Chi 2023 / π₀ / BESO / ACT / Consistency Policy
 
 ## 关联页面
 
