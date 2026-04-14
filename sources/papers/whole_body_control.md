@@ -38,7 +38,16 @@
   - [Crocoddyl](../../wiki/entities/crocoddyl.md)
   - [MPC 与 WBC 集成](../../wiki/concepts/mpc-wbc-integration.md)
 
+### 5) Capturability-based Analysis and Control of Legged Locomotion (Koolen et al., 2012)
+- **链接：** <https://journals.sagepub.com/doi/10.1177/0278364912452673>
+- **核心贡献：** 提出 N-step Capturable 概念，将 1-step/N-step capture point 形式化为可行域分析，为双足平衡恢复提供严格的可行性判定准则。
+- **关键结论：** 0-step CP = Divergent Component of Motion（DCM）；N-step CP 递归定义扩展了可恢复扰动范围
+- **对 wiki 的映射：**
+  - [Capture Point / DCM](../../wiki/concepts/capture-point-dcm.md)
+  - [Balance Recovery](../../wiki/tasks/balance-recovery.md)
+  - [LIP / ZMP](../../wiki/concepts/lip-zmp.md)
+
 ## 当前提炼状态
 
-- [x] 已补 TSID / HQP / Crocoddyl 三条主线摘要
-- [~] 后续补：加入“QP-WBC 与 NMPC-WBC”架构级对比
+- [x] 已补 TSID / HQP / Sentis&Khatib / Crocoddyl / Koolen N-step CP 五条主线摘要
+- [~] 后续补：加入”QP-WBC 与 NMPC-WBC”架构级对比

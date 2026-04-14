@@ -148,6 +148,7 @@ Critic: z_t → V(z_t)（在想象中训练）
 - Chua et al., *Deep Reinforcement Learning in a Handful of Trials using Probabilistic Dynamics Models* (PETS, 2018) — 集成模型 + CEM 规划
 - Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
 - Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架
+- **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
 
 ---
 

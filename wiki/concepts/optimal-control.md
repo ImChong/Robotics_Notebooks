@@ -167,6 +167,7 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 - Kirk, *Optimal Control Theory: An Introduction* — OCP 经典入门教材
 - Bertsekas, *Dynamic Programming and Optimal Control* — DP 与 OCP 理论基础
 - Betts, *Practical Methods for Optimal Control Using Nonlinear Programming* — 直接法数值实现参考
+- **ingest 档案：** [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)
 
 ## 关联页面
 

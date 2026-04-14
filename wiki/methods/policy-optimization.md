@@ -123,6 +123,7 @@ SAC 常用于：
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 原论文
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning* (2018) — SAC 原论文
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — locomotion + PPO 代表
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)
 
 ## 关联页面
 
