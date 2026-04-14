@@ -8,12 +8,14 @@ search_wiki.py — wiki 内容搜索工具
   - 按页面类型过滤（concept / method / task / comparison 等）
   - 按标签过滤（从 YAML frontmatter 读取）
   - 显示匹配行上下文
+  - 可选输出页面「关联页面」列表（--related）
 
 用法：
   python3 scripts/search_wiki.py "MPC locomotion"
   python3 scripts/search_wiki.py "diffusion" --type method
   python3 scripts/search_wiki.py --tag rl --tag humanoid
   python3 scripts/search_wiki.py "state estimation" --context 3
+  python3 scripts/search_wiki.py "sim2real" --related
 """
 
 import argparse
@@ -51,6 +53,23 @@ def parse_frontmatter(content: str) -> dict:
                 fm[key] = val.strip('"\'')
     return fm
 
+def extract_related_pages(body: str) -> list[str]:
+    """从 markdown 正文中提取「## 关联页面」区块下的链接文本。"""
+    m = re.search(r"^##\s+关联页面\s*$", body, re.MULTILINE)
+    if not m:
+        return []
+
+    start = m.end()
+    remaining = body[start:]
+    next_heading = re.search(r"^##\s+", remaining, re.MULTILINE)
+    section = remaining[: next_heading.start()] if next_heading else remaining
+
+    # 提取 markdown 链接 [title](url)
+    links = re.findall(r"\[([^\]]+)\]\(([^)]+)\)", section)
+    if not links:
+        return []
+    return [f"{title} -> {url}" for title, url in links]
+
 def strip_frontmatter(content: str) -> str:
     if not content.startswith("---"):
         return content
@@ -67,6 +86,7 @@ def search(
     tag_filters: list[str],
     context_lines: int,
     case_sensitive: bool,
+    show_related: bool,
 ) -> list[dict]:
     results = []
     pages = sorted(WIKI_DIR.rglob("*.md"))
@@ -110,6 +130,7 @@ def search(
             "path": page.relative_to(REPO_ROOT),
             "fm": fm,
             "matches": matched_lines[:5],  # 最多显示 5 处匹配
+            "related": extract_related_pages(body) if show_related else [],
         })
 
     return results
@@ -121,7 +142,7 @@ def highlight(text: str, words: list[str], case_sensitive: bool) -> str:
         text = re.sub(f"({re.escape(w)})", r"\033[1;33m\1\033[0m", text, flags=flags)
     return text
 
-def print_results(results: list[dict], query_words: list[str], case_sensitive: bool):
+def print_results(results: list[dict], query_words: list[str], case_sensitive: bool, show_related: bool):
     if not results:
         print("未找到匹配结果。")
         return
@@ -143,6 +164,15 @@ def print_results(results: list[dict], query_words: list[str], case_sensitive: b
                 else:
                     print(f"\033[2m{prefix}{line}\033[0m")
 
+        if show_related:
+            related = r.get("related", [])
+            if related:
+                print("  related:")
+                for rel in related:
+                    print(f"    - {rel}")
+            else:
+                print("  related: -")
+
     print(f"\n共找到 {len(results)} 个页面。")
 
 # ── CLI ───────────────────────────────────────────────────────────────────────
@@ -156,6 +186,7 @@ def main():
   python3 scripts/search_wiki.py "diffusion" --type method
   python3 scripts/search_wiki.py --tag rl --tag humanoid
   python3 scripts/search_wiki.py "bellman" --context 5
+  python3 scripts/search_wiki.py "sim2real" --related
         """,
     )
     parser.add_argument("query", nargs="*", help="搜索关键词（多词为 AND 逻辑）")
@@ -163,6 +194,7 @@ def main():
     parser.add_argument("--tag", dest="tag_filters", action="append", default=[], help="按标签过滤（可多次指定，AND 逻辑）")
     parser.add_argument("--context", type=int, default=1, help="每处匹配显示的上下文行数（默认 1）")
     parser.add_argument("--case", action="store_true", help="区分大小写")
+    parser.add_argument("--related", action="store_true", help="输出匹配页面的关联页面列表")
     args = parser.parse_args()
 
     if not args.query and not args.type_filter and not args.tag_filters:
@@ -175,8 +207,9 @@ def main():
         tag_filters=args.tag_filters,
         context_lines=args.context,
         case_sensitive=args.case,
+        show_related=args.related,
     )
-    print_results(results, args.query, args.case)
+    print_results(results, args.query, args.case, args.related)
 
 if __name__ == "__main__":
     main()

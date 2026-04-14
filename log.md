@@ -235,3 +235,50 @@
 ### lint 历史对比
 - 改进前：82 个问题（大量断链、孤儿页）
 - 改进后：21 个问题（0 断链，0 孤儿页，0 空壳页；剩余均为"缺失参考来源"可逐步回填）
+
+---
+
+## [2026-04-14] ingest | papers | P0 Sources 层激活（checklist v3 推进）
+
+- 完成 `sources/papers/locomotion_rl.md`、`whole_body_control.md`、`imitation_learning.md`、`sim2real.md` 的 ingest 摘要升级（标题/贡献/wiki 映射）
+- 更新 `sources/README.md`：为 papers 列表增加 `[x]/[ ]/[-]` 提炼状态标记
+- 在 6 个 wiki 页面的 `## 参考来源` 中加入 `sources/papers/*.md` 实体链接（RL/IL/Sim2Real/WBC/TSID/HQP）
+- 同步更新 `docs/tech-stack-next-phase-checklist-v3.md` 的 P0 任务状态与推进记录
+
+
+---
+
+## [2026-04-14] query | control-stack | P1 深挖：RL/Sim2Real/WBC 对比补强
+
+- Q: 继续推进 checklist v3，优先补齐 P1 的三个深挖任务（RMA 步骤、model-based vs model-free、WBC-vs-RL 状态升级）
+- A: 已在 `sim2real.md`、`reinforcement-learning.md`、`wbc-vs-rl.md` 增补关键结构并完成状态升级
+- 写回：更新现有页面（非新建）
+- 涉及页面：`wiki/concepts/sim2real.md`、`wiki/methods/reinforcement-learning.md`、`wiki/comparisons/wbc-vs-rl.md`
+
+
+---
+
+## [2026-04-14] structural | tooling | P3 工具链增强（Makefile + search --related）
+
+- 新建 `Makefile`：统一 `lint/catalog/export/search` 常用命令入口
+- 更新 `scripts/search_wiki.py`：新增 `--related` 参数，输出匹配页面的「关联页面」列表
+- 同步更新 `docs/tech-stack-next-phase-checklist-v3.md` 的 P3 状态与推进记录
+
+
+---
+
+## [2026-04-14] lint | merge-conflict-check | PR 冲突排查与约定补充
+
+- 排查结果：仓库工作区无冲突标记（未发现 `<<<<<<< / ======= / >>>>>>>`）
+- 风险定位：历史冲突高发点主要在 `exports/*.json` 与 `docs/exports/*.json` 大文件并发改动
+- 处理动作：在 `docs/tech-stack-next-phase-checklist-v3.md` 补充冲突治理约定（导出 JSON 与内容改动尽量拆分提交）
+
+
+---
+
+## [2026-04-14] query | rl-selection | PPO/SAC/TD3 选型指南写回
+
+- Q: 在足式/人形机器人里，PPO、SAC、TD3 怎么选，按什么决策顺序落地？
+- A: 输出工程向决策流程 + 三种策略模板（默认工程/数据效率/双轨）
+- 写回：新增 `wiki/queries/rl-algorithm-selection.md`，并更新 `wiki/queries/README.md`
+- 涉及页面：`wiki/methods/reinforcement-learning.md`、`wiki/tasks/locomotion.md`、`wiki/concepts/sim2real.md`、`wiki/comparisons/wbc-vs-rl.md`
