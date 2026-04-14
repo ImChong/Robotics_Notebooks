@@ -2,7 +2,7 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-13 -->
+<!-- Last updated: 2026-04-14 -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
@@ -12,117 +12,65 @@
 
 ## 适合谁
 
-如果你：
-- 想系统学人形机器人运动控制 / 强化学习 / 模仿学习
-- 想有一条能照着走的学习路线，而不是到处找散资源
-- 有一定编程基础（Python / C++）和本科数学基础
+想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++）和本科数学基础。
 
-这个项目是为你设计的。
-
-如果你不知道从哪开始，直接看 [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)。
+不知道从哪开始？直接看 [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)。
 
 ---
 
 ## 这个项目是什么
 
-`Robotics_Notebooks` 是一个**技术栈导航项目**，不是资源收集箱。
+`Robotics_Notebooks` 是一个**机器人工程知识库**，不是资源收集箱。它把机器人技术栈拆成互联的知识页面——每个概念解释清楚是什么、为什么重要、和哪些概念相关。
 
-它把机器人工程能力的成长路径拆成模块，然后告诉你：
-- 每个模块在解决什么问题
-- 模块之间是什么关系
-- 应该先学什么、再学什么
-- 每一步学完能拿出什么
-
-一句话：
-
-> 论文项目负责点，技术栈项目负责线和面，个人主页负责展示。
-
----
-
-## 这个项目不是什么
-
-- 不是教科书——它不系统讲理论，它告诉你去哪儿找、怎么串
-- 不是笔记堆——它有结构、有依赖关系、有成长路线
-- 不是工具文档——工具在实体页（后续会补）
+**不是**：教科书（不系统讲理论）、笔记堆（有结构和依赖关系）、工具文档。
 
 ---
 
 ## 从哪里开始
 
-### 如果你是第一次来
-**推荐从这里进入：**
-
-1. [路线A：运动控制算法工程师成长路线](roadmap/route-a-motion-control.md) — 照着走就对了
-
-如果你的目标更具体：
-- [如果想用强化学习做 locomotion](roadmap/learning-paths/if-goal-locomotion-rl.md)
-- [如果想学模仿学习与技能迁移](roadmap/learning-paths/if-goal-imitation-learning.md)
-
-### 如果你想看知识页
-按这条主链读：
-
-```
-LIP / ZMP
-  ↓
-Centroidal Dynamics
-  ↓
-Trajectory Optimization / MPC
-  ↓
-TSID / WBC
-  ↓
-State Estimation / System Identification / Sim2Real
-```
-
-从 [LIP / ZMP](wiki/concepts/lip-zmp.md) 开始即可。
-
-### 如果你想看技术栈地图
-从 [tech-map/overview.md](tech-map/overview.md) 进入。
+| 你的目标 | 入口 |
+|---------|------|
+| 有一条路线照着走 | [路线A：运动控制成长路线](roadmap/route-a-motion-control.md) |
+| 用 RL 做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
+| 学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
+| 浏览所有知识页 | [index.md 导航总入口](index.md) |
+| 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
 ---
 
 ## 项目结构
 
-| 目录 | 是什么 | 用来做什么 |
-|------|--------|-----------|
-| `wiki/` | 结构化知识页 | 核心概念和方法 |
-| `roadmap/` | 成长路线 | 照着走的学习路径 |
-| `tech-map/` | 技术栈地图 | 模块关系与依赖 |
-| `sources/` | 原始资源索引 | 论文 / 课程 / 工具入口 |
-| `references/` | 论文导航 | 按主题整理的论文列表 |
-| `docs/` | 项目文档 | 执行清单 / 变更记录 |
+| 目录 | 用途 |
+|------|------|
+| `wiki/` | 结构化知识页（概念 / 方法 / 任务 / 对比 / 实体） |
+| `roadmap/` | 成长路线与学习路径 |
+| `tech-map/` | 技术栈模块依赖关系图 |
+| `sources/` | 原始资料输入层（论文 / 博客 / 课程） |
+| `references/` | 深挖入口（按主题整理的论文 / repo / benchmark） |
+| `schema/` | 知识库维护规则（ingest 流程 / 页面类型规范） |
+| `scripts/` | 自动化工具（lint / search / catalog / export） |
+| `docs/` | 网站前端 + 执行清单 + 变更记录 |
 
 ---
 
-## 当前执行清单
+## 知识库维护方法论
 
-项目的下一阶段目标和当前待办，都在这份文件里：
-- [技术栈项目下一阶段执行清单 v2](docs/tech-stack-next-phase-checklist-v2.md)
+本项目采用 [Karpathy LLM Wiki 模式](wiki/references/llm-wiki-karpathy.md)：三层架构（sources → wiki → schema），LLM 负责维护和交叉引用，人类负责资料筛选和方向判断。
 
-它不是给读者看的，是给我们一起维护项目方向用的。
+常用操作：
+```bash
+python3 scripts/lint_wiki.py              # 健康检查
+python3 scripts/search_wiki.py <关键词>  # 搜索
+python3 scripts/generate_page_catalog.py # 刷新 index.md
+python3 scripts/export_minimal.py        # 更新前端 JSON
+```
 
----
-
-## 和其他项目的边界
-
-| 项目 | 做什么 |
-|------|--------|
-| [`Robotics_Notebooks`](https://github.com/ImChong/Robotics_Notebooks)（本项目）| 跨模块知识组织、成长路线、技术栈地图 |
-| [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks) | 单篇论文深读笔记 |
-| [`ImChong.github.io`](https://github.com/ImChong/ImChong.github.io) | 个人简历与对外展示 |
+维护操作规范见 [schema/ingest-workflow.md](schema/ingest-workflow.md)。
 
 ---
 
-## 当前阶段
+## 执行清单
 
-项目已经完成 V1 的主干知识页搭建，正在推进 V2：**结构联动、入口优化、路线执行化**。
+[技术栈项目执行清单 v3](docs/tech-stack-next-phase-checklist-v3.md) — 当前阶段目标与待办
 
-具体进展见 [执行清单 v2](docs/tech-stack-next-phase-checklist-v2.md)。
-
----
-
-## 方法说明
-
-知识组织参考了 Andrej Karpathy 的个人研究系统方法：
-- https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f
-
-核心思路：不是堆资料，而是把资源、知识、路线、依赖关系分层拆开，形成可持续演进的研究与工程系统。
+历史版本：[v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)
