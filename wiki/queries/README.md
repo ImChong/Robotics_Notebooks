@@ -55,6 +55,9 @@
 | [humanoid-hardware-selection](./humanoid-hardware-selection.md) | 做人形机器人运动控制研究，该选哪个硬件平台？ | Locomotion、Sim2Real、Loco-Manipulation |
 | [wbc-implementation-guide](./wbc-implementation-guide.md) | 如何从零搭建一个 WBC 控制器？ | WBC、TSID、HQP、Centroidal Dynamics、Contact Estimation |
 | [locomotion-reward-design-guide](./locomotion-reward-design-guide.md) | 怎么设计 locomotion RL 的奖励函数？ | RL、Locomotion、Reward Design、Curriculum Learning |
+| [humanoid-rl-cookbook](./humanoid-rl-cookbook.md) | 从零训练人形机器人 RL 策略的完整 checklist？ | RL、Sim2Real、Privileged Training、Curriculum、Deployment |
+| [pinocchio-quick-start](./pinocchio-quick-start.md) | 用 Pinocchio 做机器人动力学计算的最小可运行示例？ | Pinocchio、WBC、Kinematics、Dynamics |
+| [mpc-solver-selection](./mpc-solver-selection.md) | 机器人 MPC 求解器怎么选：OSQP vs qpOASES vs Acados vs FORCES Pro？ | MPC、QP Solver、Optimization、Acados |
 
 ---
 

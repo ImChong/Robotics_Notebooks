@@ -1,4 +1,4 @@
-.PHONY: lint catalog export search ingest
+.PHONY: lint catalog export search ingest log
 
 lint:
 	python3 scripts/lint_wiki.py
@@ -14,3 +14,6 @@ search:
 
 ingest:
 	python3 scripts/ingest_paper.py $(NAME) --title "$(TITLE)" --desc "$(DESC)"
+
+log:
+	python3 scripts/append_log.py $(OP) "$(DESC)"

@@ -135,6 +135,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 ## 参考来源
 
+- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现
 - Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用

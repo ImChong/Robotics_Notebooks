@@ -224,6 +224,7 @@ MuJoCo 不只是拿来做 model-free RL，也很适合控制和优化实验。
 
 ## 参考来源
 
+- [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — ingest 档案（MuJoCo 2012 / Isaac Gym 2021 / Genesis 2024）
 - Todorov et al., *MuJoCo: A physics engine for model-based control* (2012) — MuJoCo 原论文
 - 官方网站：<https://mujoco.org/>
 - 官方仓库：<https://github.com/google-deepmind/mujoco>
