@@ -254,6 +254,12 @@ Trajectory Optimization 给出参考轨迹，TSID / WBC 负责把这些参考真
 - [Utilities](../../references/repos/utilities.md)
 - [Humanoid Projects](../../references/repos/humanoid-projects.md)
 
+## 参考来源
+
+- Tedrake, *Underactuated Robotics* — trajectory optimization 入门（MIT 课程，Chapter 10）
+- Kelly, *An Introduction to Trajectory Optimization: How to Do Your Own Direct Collocation* (2017) — 直接配置法综述
+- Posa et al., *Optimization and stabilization of trajectories for constrained dynamical systems* (2014) — 接触轨迹优化
+
 ## 推荐继续阅读
 
 - Tedrake, *Underactuated Robotics*（trajectory optimization 章节）

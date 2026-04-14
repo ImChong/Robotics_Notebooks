@@ -223,6 +223,11 @@
 - 论文：Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 
+## 参考来源
+
+- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — legged_gym 原论文
+- 官方仓库：<https://github.com/leggedrobotics/legged_gym>
+
 ## 关联页面
 
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)

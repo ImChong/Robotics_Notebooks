@@ -268,6 +268,12 @@ floating base 系统还有一个麻烦点：
 ### 如果你做 WBC / TSID / MPC
 这页其实就是你的前置数学语境。
 
+## 参考来源
+
+- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考
+- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学
+- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材
+
 ## 推荐继续阅读
 
 - Featherstone, *Rigid Body Dynamics Algorithms*

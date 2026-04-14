@@ -40,6 +40,12 @@
 4. CALM (Tesslar 2023) — latent 方向控制
 5. LessMimic / OmniXtreme / ULTRA (2024-2025) — 新进展
 
+## 参考来源
+
+- Peng et al., *AMP: Adversarial Motion Priors* (2021) — RL 模仿运动风格代表
+- Peng et al., *ASE: Large-Scale Reusable Adversarial Skill Embeddings* (2022) — 技能空间嵌入
+- Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 训练框架
+
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)

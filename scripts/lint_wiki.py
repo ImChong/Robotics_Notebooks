@@ -108,13 +108,22 @@ def lint() -> dict:
             if not inbound.get(resolved):
                 results["orphan_pages"].append(str(rel))
 
-        # 2. 缺少关联页面区块（支持多种命名变体）
+        # 2. 缺少关联页面区块（README、references/、roadmaps/ 元页面豁免）
+        is_meta_page = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+            or "roadmaps/" in str(rel)
+        )
         related_patterns = ["关联", "related", "已有页面", "关系"]
-        if not has_section(content, related_patterns):
+        if not is_meta_page and not has_section(content, related_patterns):
             results["missing_related"].append(str(rel))
 
-        # 3. 缺少参考来源区块
-        if not has_section(content, ["参考来源", "sources", "参考"]):
+        # 3. 缺少参考来源区块（README、references/ 元页面豁免）
+        is_meta_sources = (
+            page.name.lower() in ("readme.md", "index.md")
+            or "references/" in str(rel)
+        )
+        if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
 
         # 4. 断链

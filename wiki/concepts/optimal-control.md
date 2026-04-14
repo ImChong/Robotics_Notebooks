@@ -162,6 +162,12 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 解法：预计算、凸近似、定制求解器（Acados, FORCES Pro）。
 
+## 参考来源
+
+- Kirk, *Optimal Control Theory: An Introduction* — OCP 经典入门教材
+- Bertsekas, *Dynamic Programming and Optimal Control* — DP 与 OCP 理论基础
+- Betts, *Practical Methods for Optimal Control Using Nonlinear Programming* — 直接法数值实现参考
+
 ## 关联页面
 
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)

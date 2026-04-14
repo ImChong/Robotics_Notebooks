@@ -247,6 +247,11 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 - 论文：Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*
 - [Pinocchio](./pinocchio.md)
 
+## 参考来源
+
+- Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control* (2020) — Crocoddyl 论文
+- 官方仓库：<https://github.com/loco-3d/crocoddyl>
+
 ## 关联页面
 
 - [Pinocchio](./pinocchio.md)
