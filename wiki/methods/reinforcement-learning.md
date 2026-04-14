@@ -85,6 +85,8 @@ status: complete
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
+- [Model-Based RL](./model-based-rl.md)（RL 的另一主要范式，利用学习的世界模型提升样本效率）
+- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）
 
 ## 继续深挖入口
 

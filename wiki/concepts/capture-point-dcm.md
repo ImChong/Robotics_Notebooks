@@ -228,6 +228,7 @@ Capture Point / DCM 是很重要的中间概念。
 - Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion*
 - [LIP / ZMP](./lip-zmp.md)
 - [Contact Dynamics](./contact-dynamics.md)
+- [Balance Recovery](../tasks/balance-recovery.md)（Capture Point 的实际应用场景：扰动恢复策略）
 
 ## 一句话记忆
 
