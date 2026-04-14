@@ -62,7 +62,7 @@
 make lint                                 # 健康检查（0 issues 为目标）
 make search Q=<关键词>                    # 搜索
 make catalog                             # 刷新 index.md
-make export                              # 更新前端 JSON（89 页）
+make export                              # 更新前端 JSON（96 页）
 make ingest NAME=<stem> TITLE="..." DESC="..."  # 生成 sources/papers/ 模板
 python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页面
 ```
@@ -73,6 +73,6 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 
 ## 执行清单
 
-[技术栈项目执行清单 v5](docs/tech-stack-next-phase-checklist-v5.md) — 当前阶段目标与待办（Karpathy LLM Wiki 深度对齐）
+[技术栈项目执行清单 v6](docs/tech-stack-next-phase-checklist-v6.md) — 当前阶段目标与待办（Ingest 深度 / TF-IDF 搜索 / Sources 75% 覆盖率）
 
-历史版本：[v4](docs/tech-stack-next-phase-checklist-v4.md) · [v3](docs/tech-stack-next-phase-checklist-v3.md) · [v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[v5](docs/tech-stack-next-phase-checklist-v5.md) · [v4](docs/tech-stack-next-phase-checklist-v4.md) · [v3](docs/tech-stack-next-phase-checklist-v3.md) · [v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)

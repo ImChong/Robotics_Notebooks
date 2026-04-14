@@ -7,6 +7,9 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   3. 缺少"参考来源"区块的页面
   4. 内链断链（链接目标文件不存在）
   5. 空壳页面（内容过少，< 200 字）
+  6. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
+  7. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
+  8. 矛盾检测（同一概念在不同页面有相反描述）
 
 用法：
   python3 scripts/lint_wiki.py
@@ -17,7 +20,7 @@ import argparse
 import os
 import re
 import sys
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -101,6 +104,9 @@ def lint() -> dict:
         "stub_pages": [],
         "missing_pages": [],          # 提及但缺少对应 wiki 页面的技术概念
         "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
+        "sources_orphans": [],        # P3.3: sources/papers 中的死链（wiki 目标不存在）
+        "stale_pages": [],            # P3.2: wiki 页面比对应 sources 文件旧
+        "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -185,6 +191,71 @@ def lint() -> dict:
     for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
         results["missing_pages"].append(f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）")
 
+    # P3.3: Sources 孤儿检测 — sources/papers/*.md 中链接到不存在的 wiki 页
+    sources_papers_dir = REPO_ROOT / "sources" / "papers"
+    if sources_papers_dir.exists():
+        for src_file in sorted(sources_papers_dir.glob("*.md")):
+            src_content = src_file.read_text(encoding="utf-8")
+            for m in re.finditer(r'\]\(([^)]*wiki/[^)]+\.md)\)', src_content):
+                href = m.group(1).split("#")[0]
+                target = (src_file.parent / href).resolve()
+                if not target.exists():
+                    results["sources_orphans"].append(
+                        f"sources/papers/{src_file.name} → {href}"
+                    )
+
+    # P3.2: 陈旧页面检测 — sources 文件比对应 wiki 页更新时，标记需 review
+    if sources_papers_dir.exists():
+        seen_stale = set()
+        for src_file in sorted(sources_papers_dir.glob("*.md")):
+            src_content = src_file.read_text(encoding="utf-8")
+            src_mtime = src_file.stat().st_mtime
+            for m in re.finditer(r'\]\(([^)]*wiki/[^)]+\.md)\)', src_content):
+                href = m.group(1).split("#")[0]
+                wiki_target = (src_file.parent / href).resolve()
+                if wiki_target.exists() and wiki_target not in seen_stale:
+                    wiki_mtime = wiki_target.stat().st_mtime
+                    if src_mtime > wiki_mtime + 86400:  # 1天容差，避免同批次误报
+                        seen_stale.add(wiki_target)
+                        rel_wiki = wiki_target.relative_to(REPO_ROOT)
+                        src_date = date.fromtimestamp(src_mtime).isoformat()
+                        wiki_date = date.fromtimestamp(wiki_mtime).isoformat()
+                        results["stale_pages"].append(
+                            f"{rel_wiki} (wiki:{wiki_date} < sources/{src_file.name}:{src_date})"
+                        )
+
+    # P3.1: 矛盾检测 — 检查同一概念在不同页面是否有相反的定性描述
+    # CANONICAL_FACTS: {fact_id: {terms, pos_claims, neg_claims}}
+    # 当 pos_claims 和 neg_claims 同时出现在不同页面时，报告潜在矛盾
+    CANONICAL_FACTS = {
+        "PPO 样本效率": {
+            "terms": ["PPO"],
+            "pos_claims": [r"样本效率.*高|高.*样本效率|sample.efficient"],
+            "neg_claims": [r"样本效率.*低|低.*样本效率|sample.inefficient|样本效率差"],
+        },
+        "MPC 实时性": {
+            "terms": ["MPC", "model.predictive"],
+            "pos_claims": [r"实时|real.?time|online"],
+            "neg_claims": [r"无法实时|not real.?time|计算量.*过大.*实时"],
+        },
+    }
+    all_pages_content = {p: p.read_text(encoding="utf-8") for p in pages}
+    for fact_id, fact in CANONICAL_FACTS.items():
+        pos_pages, neg_pages = [], []
+        for page, content in all_pages_content.items():
+            if not all(re.search(t, content, re.IGNORECASE) for t in fact["terms"]):
+                continue
+            has_pos = any(re.search(p, content, re.IGNORECASE) for p in fact["pos_claims"])
+            has_neg = any(re.search(p, content, re.IGNORECASE) for p in fact["neg_claims"])
+            if has_pos:
+                pos_pages.append(page.stem)
+            if has_neg:
+                neg_pages.append(page.stem)
+        if pos_pages and neg_pages:
+            results["contradictions"].append(
+                f"「{fact_id}」正面描述({', '.join(pos_pages)}) vs 负面描述({', '.join(neg_pages)})"
+            )
+
     return results
 
 def format_report(results: dict) -> str:
@@ -196,13 +267,16 @@ def format_report(results: dict) -> str:
     lines.append("")
 
     sections = [
-        ("orphan_pages",       "孤儿页（无入链）",                      "⚠️"),
-        ("missing_related",    "缺少关联页面区块",                      "⚠️"),
-        ("missing_sources",    "缺少参考来源区块",                      "⚠️"),
-        ("broken_links",       "断链（内链目标不存在）",                 "❌"),
-        ("broken_source_refs", "引用了不存在的 sources/ 文件",           "❌"),
-        ("stub_pages",         "空壳页面（< 200 字）",                  "⚠️"),
-        ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",         "💡"),
+        ("orphan_pages",       "孤儿页（无入链）",                           "⚠️"),
+        ("missing_related",    "缺少关联页面区块",                           "⚠️"),
+        ("missing_sources",    "缺少参考来源区块",                           "⚠️"),
+        ("broken_links",       "断链（内链目标不存在）",                      "❌"),
+        ("broken_source_refs", "引用了不存在的 sources/ 文件",                "❌"),
+        ("sources_orphans",    "Sources 孤儿（sources/papers 死链）",         "❌"),
+        ("stale_pages",        "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
+        ("contradictions",     "潜在矛盾（跨页面相反定性描述）",              "⚠️"),
+        ("stub_pages",         "空壳页面（< 200 字）",                       "⚠️"),
+        ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),
     ]
 
     for key, label, icon in sections:

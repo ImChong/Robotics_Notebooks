@@ -68,7 +68,8 @@
         "roadmaps": [
           "roadmap-if-goal-locomotion-rl",
           "roadmap-if-goal-whole-body-control",
-          "roadmap-route-a-motion-control"
+          "roadmap-route-a-motion-control",
+          "roadmap-route-b-fullstack"
         ],
         "related_modules": [
           "locomotion",
@@ -103,7 +104,8 @@
         "roadmaps": [
           "roadmap-if-goal-locomotion-rl",
           "roadmap-if-goal-imitation-learning",
-          "roadmap-route-a-motion-control"
+          "roadmap-route-a-motion-control",
+          "roadmap-route-b-fullstack"
         ],
         "related_modules": [
           "control",
@@ -139,7 +141,8 @@
           "roadmap-if-goal-locomotion-rl",
           "roadmap-if-goal-whole-body-control",
           "roadmap-if-goal-imitation-learning",
-          "roadmap-route-a-motion-control"
+          "roadmap-route-a-motion-control",
+          "roadmap-route-b-fullstack"
         ],
         "related_modules": [
           "rl",
@@ -160,11 +163,11 @@
           "wiki-methods-imitation-learning",
           "entity-isaac-gym-isaac-lab",
           "wiki-queries-locomotion-reward-design-guide",
+          "wiki-comparisons-mpc-vs-rl",
           "wiki-comparisons-model-based-vs-model-free",
           "wiki-concepts-privileged-training",
           "wiki-queries-sim2real-checklist",
-          "entity-legged-gym",
-          "wiki-queries-humanoid-rl-cookbook"
+          "entity-legged-gym"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -350,9 +353,45 @@
       "roadmap-route-b-fullstack": {
         "id": "roadmap-route-b-fullstack",
         "title": "路线B：机器人全栈工程师扩展路线",
-        "summary": "目标：在路线A基础上，从“控制切入口”逐步扩展到感知、规划、软件系统、部署与整机集成",
-        "stages": [],
-        "related_items": [],
+        "summary": "type: roadmap。",
+        "stages": [
+          {
+            "id": "l1",
+            "title": "· 感知层（状态估计 + 视觉）"
+          },
+          {
+            "id": "l2",
+            "title": "· 规划层"
+          },
+          {
+            "id": "l3",
+            "title": "· 软件系统"
+          },
+          {
+            "id": "l4",
+            "title": "· 仿真与数字孪生"
+          },
+          {
+            "id": "l5",
+            "title": "· 硬件认知"
+          },
+          {
+            "id": "l6",
+            "title": "· 部署与安全"
+          },
+          {
+            "id": "l7",
+            "title": "· 整机集成"
+          }
+        ],
+        "related_items": [
+          "roadmap-route-a-motion-control",
+          "wiki-concepts-state-estimation",
+          "wiki-concepts-footstep-planning",
+          "wiki-concepts-gait-generation",
+          "wiki-concepts-sim2real",
+          "wiki-queries-humanoid-rl-cookbook"
+        ],
         "source_links": []
       }
     },
@@ -920,7 +959,7 @@
         "type": "wiki_page",
         "path": "wiki/concepts/floating-base-dynamics.md",
         "summary": "Floating Base Dynamics（浮动基动力学）：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架",
-        "content_markdown": "**Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。\n\n## 一句话定义\n\n如果说固定底座机械臂的基座是“焊死在地上”的，那人形、四足、无人机这类机器人就不是这样。\n\n它们的躯干 / base 会随系统整体运动，因此：\n\n> **Floating Base Dynamics** 研究的就是：当机器人“根部不固定”时，整机动力学该怎么建模、怎么理解、怎么控制。\n\n## 为什么重要\n\n这页看起来像基础概念，但其实是人形控制里最容易被跳过、又最不能跳过的一页。\n\n原因很简单：\n\n- 人形机器人不是机械臂\n- 机械臂的 base 固定在地上\n- 人形机器人的躯干位置和姿态会随接触与动作一起变化\n- 所以你不能直接把它当普通关节链来做控制\n\n一句话：\n\n> 只要你研究人形、四足、双足 locomotion、全身控制、centroidal dynamics、TSID / WBC，这一层都绕不过去。\n\n## 什么叫 floating base\n\n### 固定底座（fixed base）\n比如桌面机械臂：\n- 机器人底盘固定在世界坐标系\n- base 的位置和姿态已知且不变\n- 只需要考虑关节自由度\n\n典型状态：\n\n$$\nq = [q_1, q_2, ..., q_n]\n$$\n\n### 浮动底座（floating base）\n比如：\n- 人形机器人\n- 四足机器人\n- 双足机器人\n- 无人机机械臂系统\n\n这类系统中：\n- 躯干 / 根节点本身可以平移和旋转\n- base 不是直接被 actuator 驱动的关节\n- 它通过接触力、关节运动和整体动力学间接变化\n\n所以状态通常写成：\n\n$$\nq = [q_b, q_j]\n$$\n\n其中：\n- \\( q_b \\)：floating base 的位姿（通常 6 自由度）\n- \\( q_j \\)：关节自由度\n\n## 为什么它和固定底座完全不是一回事\n\n### 1. base 不是直接可控量\n在人形机器人里，你不能像控制一个关节那样直接“给 base 一个电机命令”。\n\nbase 的运动是通过：\n- 关节动作\n- 接触力\n- 地面反力\n- 整体动力学耦合\n\n共同产生的。\n\n### 2. 整体动力学会强耦合\n固定底座系统里，很多事情更局部。\n\nfloating base 系统里：\n- 摆腿会影响躯干\n- 接触力会改变整体动量\n- 手臂摆动也会反过来影响平衡\n\n这就是为什么人形控制天然更难。\n\n### 3. 接触决定可控性\n机器人 base 能不能稳住，不只是看关节控制器，而是看：\n- 当前有没有接触\n- 接触在哪里\n- 接触力够不够\n- 摩擦是否允许\n\n所以 floating base 系统的控制几乎天然和 contact dynamics 绑在一起。\n\n## 典型状态表示\n\n在浮动基机器人里，常见广义坐标表示为：\n\n$$\nq = [x_b, y_b, z_b, \\phi_b, \\theta_b, \\psi_b, q_1, ..., q_n]\n$$\n\n也就是：\n- 基座位置（3）\n- 基座姿态（3）\n- 关节角（n）\n\n广义速度常见写法：\n\n$$\n\\dot{q} = [v_b, \\omega_b, \\dot{q}_j]\n$$\n\n其中：\n- \\( v_b \\)：base 线速度\n- \\( \\omega_b \\)：base 角速度\n- \\( \\dot{q}_j \\)：关节速度\n\n## 动力学方程长什么样\n\n浮动基机器人的经典动力学通常写成：\n\n$$\nM(q) \\ddot{q} + h(q, \\dot{q}) = S^T \\tau + J_c^T f\n$$\n\n这里：\n- \\( M(q) \\)：质量矩阵\n- \\( h(q, \\dot{q}) \\)：重力、科里奥利、离心项\n- \\( \\tau \\)：关节力矩\n- \\( S \\)：选择矩阵（只对 actuated joints 有控制输入）\n- \\( J_c \\)：接触雅可比\n- \\( f \\)：接触力\n\n这个式子和固定底座最不一样的点在于：\n\n> **不是所有自由度都直接有 actuator。**\n\nfloating base 的 6 个自由度通常是 **unactuated**。\n\n这也是为什么要引入选择矩阵 \\( S \\)。\n\n## 这意味着什么\n\n### 1. 你不能直接命令 base 加速度\n你不能说：\n- “base 往前加速一点”\n- 然后就像关节那样直接实现\n\n你必须通过：\n- 关节运动\n- 接触力分配\n- 整体动量调整\n\n来间接产生这个效果。\n\n### 2. 接触力是控制链的一部分\n对机械臂来说，很多时候末端接触只是任务场景。\n\n对人形来说：\n- 接触力本身就是系统动力学的核心变量\n- 地面反力不是“环境反馈”，而是 base motion 的关键来源\n\n### 3. 平衡控制本质上是浮动基控制\n很多“平衡问题”其实就是：\n- 如何在 unactuated base 的前提下\n- 通过可控关节和接触力\n- 维持整体姿态、质心与动量稳定\n\n## 和 centroidal dynamics 的关系\n\nFloating Base Dynamics 是更通用、更底层的整机动力学视角。\n\nCentroidal Dynamics 可以看作：\n- 从 full-body floating base dynamics 里抽取出\n- 对质心和整体动量最关键的一层中间模型\n\n所以关系大概是：\n\n```text\nFloating Base Full-Body Dynamics\n    ↓（抽取与平衡最相关的量）\nCentroidal Dynamics\n    ↓（进一步简化）\nLIP / ZMP\n```\n\n见：[Centroidal Dynamics](./centroidal-dynamics.md)\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 TSID / WBC 的关系\n\nTSID / WBC 其实很多时候就是在处理 floating base 系统的控制问题。\n\n它们在做的事情是：\n- 接受任务空间目标\n- 满足 floating base 动力学一致性\n- 同时满足接触约束\n- 输出关节加速度 / 力矩 / 接触力\n\n所以你可以把这页理解成：\n\n> TSID / WBC 的动力学前置。\n\n见：[TSID](./tsid.md)\n\n见：[Whole-Body Control](./whole-body-control.md)\n\n## 和 State Estimation 的关系\n\nfloating base 系统还有一个麻烦点：\n\n- base pose 和 base velocity 常常不能直接测\n- 需要靠 IMU、编码器、接触信息去估计\n\n所以：\n- fixed-base 机械臂的状态估计往往比较简单\n- floating-base 人形机器人里，状态估计是核心难点之一\n\n见：[State Estimation](./state-estimation.md)\n\n## 在机器人中的典型应用\n\n### 1. 人形机器人 locomotion\n只要你研究：\n- 单脚支撑\n- 双脚支撑\n- 摆腿\n- 扰动恢复\n\n本质上都在处理 floating base dynamics。\n\n### 2. 四足机器人\n四足虽然不是人形，但同样是 floating base 系统。\n\n### 3. 全身操作\n如果机器人一边站着、一边用手操作，那 floating base dynamics 和接触约束都会一起上来。\n\n### 4. 高动态动作\n跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。\n\n## 常见误区\n\n### 1. 以为只是在状态里多了 6 个自由度\n不止。真正难的是：\n- 这 6 个自由度不是直接可控的\n- 它们和关节、接触、整体动量耦合得非常强\n\n### 2. 以为人形控制只是“大一点的机械臂控制”\n完全不是。floating base + contact 才是本质区别。\n\n### 3. 以为只要会 WBC / TSID 就不用懂 floating base dynamics\n不行。你可以不天天手推公式，但得知道这些方法到底在解决什么动力学结构问题。\n\n### 4. 低估 contact 的重要性\n在 floating base 系统里，contact 不是附加项，而是系统动力学的一部分。\n\n## 推荐使用建议\n\n### 如果你做人形控制\n这页必须懂。\n\n### 如果你做 RL locomotion\n哪怕你不直接写动力学方程，也建议理解 floating base 和 fixed base 的根本差异，不然很多 reward / observation / action 设计会很模糊。\n\n### 如果你做 WBC / TSID / MPC\n这页其实就是你的前置数学语境。\n\n## 参考来源\n\n- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考\n- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学\n- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材\n\n## 推荐继续阅读\n\n- Featherstone, *Rigid Body Dynamics Algorithms*\n- [Centroidal Dynamics](./centroidal-dynamics.md)\n- [TSID](./tsid.md)\n- [State Estimation](./state-estimation.md)\n\n## 一句话记忆\n\n> Floating Base Dynamics 研究的是“机器人基座不固定时，整机动力学怎么建模和控制”，它是人形、四足、WBC、centroidal dynamics 和状态估计的共同前置。",
+        "content_markdown": "**Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。\n\n## 一句话定义\n\n如果说固定底座机械臂的基座是“焊死在地上”的，那人形、四足、无人机这类机器人就不是这样。\n\n它们的躯干 / base 会随系统整体运动，因此：\n\n> **Floating Base Dynamics** 研究的就是：当机器人“根部不固定”时，整机动力学该怎么建模、怎么理解、怎么控制。\n\n## 为什么重要\n\n这页看起来像基础概念，但其实是人形控制里最容易被跳过、又最不能跳过的一页。\n\n原因很简单：\n\n- 人形机器人不是机械臂\n- 机械臂的 base 固定在地上\n- 人形机器人的躯干位置和姿态会随接触与动作一起变化\n- 所以你不能直接把它当普通关节链来做控制\n\n一句话：\n\n> 只要你研究人形、四足、双足 locomotion、全身控制、centroidal dynamics、TSID / WBC，这一层都绕不过去。\n\n## 什么叫 floating base\n\n### 固定底座（fixed base）\n比如桌面机械臂：\n- 机器人底盘固定在世界坐标系\n- base 的位置和姿态已知且不变\n- 只需要考虑关节自由度\n\n典型状态：\n\n$$\nq = [q_1, q_2, ..., q_n]\n$$\n\n### 浮动底座（floating base）\n比如：\n- 人形机器人\n- 四足机器人\n- 双足机器人\n- 无人机机械臂系统\n\n这类系统中：\n- 躯干 / 根节点本身可以平移和旋转\n- base 不是直接被 actuator 驱动的关节\n- 它通过接触力、关节运动和整体动力学间接变化\n\n所以状态通常写成：\n\n$$\nq = [q_b, q_j]\n$$\n\n其中：\n- \\( q_b \\)：floating base 的位姿（通常 6 自由度）\n- \\( q_j \\)：关节自由度\n\n## 为什么它和固定底座完全不是一回事\n\n### 1. base 不是直接可控量\n在人形机器人里，你不能像控制一个关节那样直接“给 base 一个电机命令”。\n\nbase 的运动是通过：\n- 关节动作\n- 接触力\n- 地面反力\n- 整体动力学耦合\n\n共同产生的。\n\n### 2. 整体动力学会强耦合\n固定底座系统里，很多事情更局部。\n\nfloating base 系统里：\n- 摆腿会影响躯干\n- 接触力会改变整体动量\n- 手臂摆动也会反过来影响平衡\n\n这就是为什么人形控制天然更难。\n\n### 3. 接触决定可控性\n机器人 base 能不能稳住，不只是看关节控制器，而是看：\n- 当前有没有接触\n- 接触在哪里\n- 接触力够不够\n- 摩擦是否允许\n\n所以 floating base 系统的控制几乎天然和 contact dynamics 绑在一起。\n\n## 典型状态表示\n\n在浮动基机器人里，常见广义坐标表示为：\n\n$$\nq = [x_b, y_b, z_b, \\phi_b, \\theta_b, \\psi_b, q_1, ..., q_n]\n$$\n\n也就是：\n- 基座位置（3）\n- 基座姿态（3）\n- 关节角（n）\n\n广义速度常见写法：\n\n$$\n\\dot{q} = [v_b, \\omega_b, \\dot{q}_j]\n$$\n\n其中：\n- \\( v_b \\)：base 线速度\n- \\( \\omega_b \\)：base 角速度\n- \\( \\dot{q}_j \\)：关节速度\n\n## 动力学方程长什么样\n\n浮动基机器人的经典动力学通常写成：\n\n$$\nM(q) \\ddot{q} + h(q, \\dot{q}) = S^T \\tau + J_c^T f\n$$\n\n这里：\n- \\( M(q) \\)：质量矩阵\n- \\( h(q, \\dot{q}) \\)：重力、科里奥利、离心项\n- \\( \\tau \\)：关节力矩\n- \\( S \\)：选择矩阵（只对 actuated joints 有控制输入）\n- \\( J_c \\)：接触雅可比\n- \\( f \\)：接触力\n\n这个式子和固定底座最不一样的点在于：\n\n> **不是所有自由度都直接有 actuator。**\n\nfloating base 的 6 个自由度通常是 **unactuated**。\n\n这也是为什么要引入选择矩阵 \\( S \\)。\n\n## 这意味着什么\n\n### 1. 你不能直接命令 base 加速度\n你不能说：\n- “base 往前加速一点”\n- 然后就像关节那样直接实现\n\n你必须通过：\n- 关节运动\n- 接触力分配\n- 整体动量调整\n\n来间接产生这个效果。\n\n### 2. 接触力是控制链的一部分\n对机械臂来说，很多时候末端接触只是任务场景。\n\n对人形来说：\n- 接触力本身就是系统动力学的核心变量\n- 地面反力不是“环境反馈”，而是 base motion 的关键来源\n\n### 3. 平衡控制本质上是浮动基控制\n很多“平衡问题”其实就是：\n- 如何在 unactuated base 的前提下\n- 通过可控关节和接触力\n- 维持整体姿态、质心与动量稳定\n\n## 核心算法：RNEA / CRBA / ABA\n\nFeatherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 Pinocchio/RBDL 等工具的核心：\n\n### RNEA（Recursive Newton-Euler Algorithm）— 逆动力学\n\n**输入**：$q, \\dot{q}, \\ddot{q}$（广义位置/速度/加速度）  \n**输出**：关节力矩 $\\tau$\n\n递推流程（两遍扫描）：\n```\n前向扫描（根→叶）：\n  计算每个链节的空间速度和加速度\n  计算惯性力和科氏力\n\n后向扫描（叶→根）：\n  从叶节点向上累积力\n  输出每个关节处的力矩\n```\n\n浮动基时，base 的 6D 力矩通常不直接对应 actuator，需配合选择矩阵 $S$。\n\n### CRBA（Composite Rigid Body Algorithm）— 惯性矩阵\n\n**计算** $M(q)$，用于后续动力学方程求解：\n\n$$M(q)\\ddot{q} + h(q,\\dot{q}) = S^T\\tau + J_c^T f$$\n\n复杂度 $O(n^2)$，输出惯性矩阵 $M \\in \\mathbb{R}^{(n+6)\\times(n+6)}$。\n\n### ABA（Articulated Body Algorithm）— 正动力学\n\n**输入**：$q, \\dot{q}, \\tau$  \n**输出**：$\\ddot{q}$（关节加速度）\n\n复杂度 $O(n)$，比直接求逆 $M$ 快得多，常用于仿真器时间积分。\n\n---\n\n## 空间向量代数（Spatial Vector Algebra）\n\nFeatherstone 的空间向量代数将 3D 力学量统一为 6D 向量，简化推导：\n\n| 空间量 | 维度 | 组成 |\n|--------|------|------|\n| 空间速度（twist）| 6 | $[ω; v]$（角速度 + 线速度） |\n| 空间加速度 | 6 | $[\\dot{ω}; \\dot{v}]$ |\n| 空间力（wrench）| 6 | $[τ; f]$（力矩 + 力） |\n| 空间惯性 | 6×6 | $I^A = \\begin{bmatrix} I_{cm} + mcc^T & mc \\\\ mc^T & mE \\end{bmatrix}$ |\n\n空间运动方程简化为：\n\n$$I^A \\dot{V} + v \\times^* I^A V = F$$\n\n其中 $v \\times^*$ 是空间力的伴随算子。这种表示消除了大量符号混乱，Pinocchio 完全基于此实现。\n\n---\n\n## 浮动基的约束结构\n\n浮动基的 EOM（运动方程）在有接触时展开为：\n\n$$\\begin{bmatrix} M_{ff} & M_{fj} \\\\ M_{jf} & M_{jj} \\end{bmatrix} \\begin{bmatrix} \\ddot{q}_f \\\\ \\ddot{q}_j \\end{bmatrix} + \\begin{bmatrix} h_f \\\\ h_j \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ \\tau \\end{bmatrix} + J_c^T f$$\n\n- 左上 $M_{ff}$：base 自身惯性（6×6）\n- 右下 $M_{jj}$：关节惯性（n×n）\n- 耦合块 $M_{fj}$：base-关节交叉耦合\n- $h$ 包含重力、科氏力、离心力\n- 约束 $J_c \\ddot{q} = -\\dot{J}_c \\dot{q}$（接触加速度为零）\n\nWBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配 $\\tau$ 和 $f$。\n\n---\n\n## 和 centroidal dynamics 的关系\n\nFloating Base Dynamics 是更通用、更底层的整机动力学视角。\n\nCentroidal Dynamics 可以看作：\n- 从 full-body floating base dynamics 里抽取出\n- 对质心和整体动量最关键的一层中间模型\n\n所以关系大概是：\n\n```text\nFloating Base Full-Body Dynamics\n    ↓（抽取与平衡最相关的量）\nCentroidal Dynamics\n    ↓（进一步简化）\nLIP / ZMP\n```\n\n见：[Centroidal Dynamics](./centroidal-dynamics.md)\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 TSID / WBC 的关系\n\nTSID / WBC 其实很多时候就是在处理 floating base 系统的控制问题。\n\n它们在做的事情是：\n- 接受任务空间目标\n- 满足 floating base 动力学一致性\n- 同时满足接触约束\n- 输出关节加速度 / 力矩 / 接触力\n\n所以你可以把这页理解成：\n\n> TSID / WBC 的动力学前置。\n\n见：[TSID](./tsid.md)\n\n见：[Whole-Body Control](./whole-body-control.md)\n\n## 和 State Estimation 的关系\n\nfloating base 系统还有一个麻烦点：\n\n- base pose 和 base velocity 常常不能直接测\n- 需要靠 IMU、编码器、接触信息去估计\n\n所以：\n- fixed-base 机械臂的状态估计往往比较简单\n- floating-base 人形机器人里，状态估计是核心难点之一\n\n见：[State Estimation](./state-estimation.md)\n\n## 在机器人中的典型应用\n\n### 1. 人形机器人 locomotion\n只要你研究：\n- 单脚支撑\n- 双脚支撑\n- 摆腿\n- 扰动恢复\n\n本质上都在处理 floating base dynamics。\n\n### 2. 四足机器人\n四足虽然不是人形，但同样是 floating base 系统。\n\n### 3. 全身操作\n如果机器人一边站着、一边用手操作，那 floating base dynamics 和接触约束都会一起上来。\n\n### 4. 高动态动作\n跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。\n\n## 常见误区\n\n### 1. 以为只是在状态里多了 6 个自由度\n不止。真正难的是：\n- 这 6 个自由度不是直接可控的\n- 它们和关节、接触、整体动量耦合得非常强\n\n### 2. 以为人形控制只是“大一点的机械臂控制”\n完全不是。floating base + contact 才是本质区别。\n\n### 3. 以为只要会 WBC / TSID 就不用懂 floating base dynamics\n不行。你可以不天天手推公式，但得知道这些方法到底在解决什么动力学结构问题。\n\n### 4. 低估 contact 的重要性\n在 floating base 系统里，contact 不是附加项，而是系统动力学的一部分。\n\n## 推荐使用建议\n\n### 如果你做人形控制\n这页必须懂。\n\n### 如果你做 RL locomotion\n哪怕你不直接写动力学方程，也建议理解 floating base 和 fixed base 的根本差异，不然很多 reward / observation / action 设计会很模糊。\n\n### 如果你做 WBC / TSID / MPC\n这页其实就是你的前置数学语境。\n\n## 参考来源\n\n- [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）\n- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）\n- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学\n- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材\n\n## 推荐继续阅读\n\n- Featherstone, *Rigid Body Dynamics Algorithms*\n- [Centroidal Dynamics](./centroidal-dynamics.md)\n- [TSID](./tsid.md)\n- [State Estimation](./state-estimation.md)\n\n## 一句话记忆\n\n> Floating Base Dynamics 研究的是“机器人基座不固定时，整机动力学怎么建模和控制”，它是人形、四足、WBC、centroidal dynamics 和状态估计的共同前置。",
         "tags": [
           "concept",
           "locomotion",
@@ -934,7 +973,8 @@
           "wiki-concepts-lip-zmp",
           "wiki-concepts-tsid",
           "wiki-concepts-whole-body-control",
-          "wiki-concepts-state-estimation"
+          "wiki-concepts-state-estimation",
+          "sources-papers-robot-kinematics-tools"
         ],
         "source_links": [],
         "status": "active"
@@ -1376,6 +1416,33 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-comparisons-mpc-vs-rl": {
+        "id": "wiki-comparisons-mpc-vs-rl",
+        "title": "MPC vs RL：控制策略选型对比",
+        "type": "wiki_page",
+        "path": "wiki/comparisons/mpc-vs-rl.md",
+        "summary": "背景：MPC（模型预测控制）和 RL（强化学习）是当前机器人运动控制领域的两大主流范式。MPC 基于显式动力学模型在线求解最优控制，RL 离线学习隐式策略。两者在假设、计算模式和适用场景上都有本质差异",
+        "content_markdown": "---\ntype: comparison\ntags: [mpc, rl, control, locomotion, comparison, engineering-selection]\nstatus: stable\n---\n\n# MPC vs RL：控制策略选型对比\n\n**背景**：MPC（模型预测控制）和 RL（强化学习）是当前机器人运动控制领域的两大主流范式。MPC 基于显式动力学模型在线求解最优控制，RL 离线学习隐式策略。两者在假设、计算模式和适用场景上都有本质差异。\n\n## 一句话定义\n\n> MPC 是\"实时思考，有模型有规划\"；RL 是\"离线练好，推理时直接执行\"——前者依赖精确模型但可在线适应，后者不需模型但泛化受训练分布约束。\n\n---\n\n## 核心维度对比\n\n| 维度 | MPC | RL |\n|------|-----|----|\n| **模型依赖** | 需要精确动力学模型 | 不需要（Model-Free RL）或弱依赖（Model-Based RL） |\n| **计算时机** | 在线求解 OCP（每控制周期） | 离线训练，推理时仅前向传播 |\n| **推理速度** | 受求解器限制（毫秒~几十毫秒） | 极快（神经网络前向，< 1ms） |\n| **样本效率** | 高（利用模型，少量数据） | 低（Model-Free 需百万~亿级交互） |\n| **可解释性** | 高（优化目标和约束显式） | 低（策略为黑盒） |\n| **约束处理** | 显式，硬约束（关节限位/力约束） | 隐式（奖励惩罚，不保证满足） |\n| **泛化能力** | 弱（模型误差大时降级） | 强（域随机化后对扰动更鲁棒） |\n| **真机 gap** | 依赖 SysID 精度 | sim2real gap，但可通过域随机化缓解 |\n| **开发周期** | 长（建模+调参+求解器集成） | 中等（奖励设计+训练时间） |\n| **高动态场景** | 需要快速求解器，否则延迟成问题 | 天然实时（推理 < 1ms） |\n\n---\n\n## 什么时候选 MPC\n\n**适合 MPC 的场景**：\n\n1. **需要硬约束保证**：安全临界场景（关节力矩上限、稳定性约束）\n2. **任务目标频繁变化**：在线更改速度命令 / 步态 / 轨迹，MPC 在线重规划\n3. **模型准确且可辨识**：系统参数已知，动力学误差 < 5%\n4. **需要可解释决策**：工业/医疗场景，需要知道控制器在做什么\n5. **低速精细操作**：操作臂精密操作，速度要求不高但精度要求高\n\n**典型 MPC 工作流**：\n```\n系统辨识 → 建立动力学模型 → 设计代价函数 + 约束 → 选择求解器\n→ 实时 OCP 求解（50-200Hz）→ 执行第一步控制\n```\n\n**代表系统**：ETH RSL OCS2（ANYmal）、MIT Cheetah3 MPC、Unitree 官方 MPC 控制器\n\n---\n\n## 什么时候选 RL\n\n**适合 RL 的场景**：\n\n1. **高动态/高速运动**：奔跑、跳跃、翻滚——MPC 求解器跟不上动态变化\n2. **模型难以精确建模**：软体机器人、复杂接触、变形地面\n3. **需要鲁棒性而非精确性**：崎岖地形、外力扰动、传感器噪声\n4. **端到端感知→动作**：视觉输入直接→关节命令，MPC 难以处理高维感知\n5. **策略复用 / finetune**：在多个硬件上快速迁移，修改奖励而非重建模型\n\n**典型 RL 工作流**：\n```\n仿真环境 → 奖励函数设计 → PPO/SAC 训练 → 域随机化\n→ Teacher-Student 蒸馏 → 真机部署（推理 < 1ms）\n```\n\n**代表系统**：legged_gym + Isaac Lab、parkour policy（ETH/CMU）、Unitree RL 策略\n\n---\n\n## 混合架构：MPC + RL\n\n实际高性能系统往往结合两者优势：\n\n```\n高层 RL 策略（步态/步位决策）\n         ↓\n低层 MPC 执行器（实时接触力优化）\n```\n\n- **RL 上层**：学习步态切换、行为风格、长时序规划\n- **MPC 下层**：保证物理约束，精确接触力分配\n\n代表工作：\n- CMU Humanoid Locomotion（2023）：RL policy + MPC 接触规划\n- ETH RSL：OCS2 MPC + RL 初始化\n- MIT Cheetah：MPC + RL 结合的高速奔跑\n\n---\n\n## 决策矩阵\n\n```\n你的主要需求是什么？\n│\n├── 保证约束满足（安全关键）→ MPC\n├── 高速/动态运动（> 2m/s 奔跑/跳跃）→ RL\n├── 视觉输入 → RL\n├── 模型已知且精确 → MPC\n├── 需要鲁棒扰动恢复 → RL（或 RL+MPC 混合）\n├── 快速原型（周内出策略）→ RL（legged_gym 10分钟出策略）\n├── 精密操作（工业机械臂）→ MPC\n└── 未知/复杂接触（爬行/操作软物体）→ RL\n```\n\n---\n\n## 与 model-based-vs-model-free 对比页的区别\n\n[model-based-vs-model-free](./model-based-vs-model-free.md) 讨论的是 RL 内部的 Model-Based vs Model-Free 之分。  \n本页讨论的是**控制范式**层面：基于优化的控制（MPC）vs 基于学习的控制（RL），是更高层的工程选型问题。\n\n---\n\n## 参考来源\n\n- [sources/papers/mpc.md](../../sources/papers/mpc.md) — MPC 核心论文（Di Carlo 2018, Sleiman 2021）\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — RL 策略优化论文（PPO, Rudin 2022）\n- Kumar et al., *RMA: Rapid Motor Adaptation* (2021) — RL sim2real 真机控制\n- Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC 足式控制\n\n---\n\n## 关联页面\n\n- [Model Predictive Control](../methods/model-predictive-control.md) — MPC 详细介绍\n- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 详细介绍\n- [WBC vs RL](./wbc-vs-rl.md) — 相关的控制架构对比\n- [Model-Based vs Model-Free](./model-based-vs-model-free.md) — RL 内部的方法对比\n- [MPC Solver Selection](../queries/mpc-solver-selection.md) — MPC 求解器选型指南\n\n---\n\n## 推荐继续阅读\n\n- Bledt & Kim, *Implementing Regularized Predictive Control for High-Performance Quadrupedal Locomotion*\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep RL*\n\n## 一句话记忆\n\n> MPC 有模型会算约束，适合精密可控场景；RL 练好了推理极快，适合高速鲁棒场景；顶级系统往往两者结合——RL 管策略，MPC 管约束。",
+        "tags": [
+          "comparison",
+          "humanoid",
+          "locomotion",
+          "control",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-methods-model-predictive-control",
+          "wiki-methods-reinforcement-learning",
+          "wiki-comparisons-wbc-vs-rl",
+          "wiki-comparisons-model-based-vs-model-free",
+          "wiki-queries-mpc-solver-selection",
+          "sources-papers-mpc",
+          "sources-papers-policy-optimization"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-concepts-mpc-wbc-integration": {
         "id": "wiki-concepts-mpc-wbc-integration",
         "title": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
@@ -1486,7 +1553,7 @@
         "type": "wiki_page",
         "path": "wiki/methods/model-predictive-control.md",
         "summary": "模型预测控制：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复",
-        "content_markdown": "---\ntype: method\ntags: [control, mpc, optimization, locomotion, humanoid]\nstatus: complete\n---\n\n# Model Predictive Control (MPC)\n\n**模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。\n\n## 一句话定义\n\n不是一次性算出全局最优控制，而是**每一步都在线求解一个有限时域优化问题，只执行当前动作，然后重复**。\n\n## 为什么重要\n\nMPC 是机器人控制中最接近“万能控制框架”的东西——只要你能建模，就能控制。\n\n核心优势：\n\n- **处理约束**：关节限位、接触力限制、碰撞避免——都可以自然地塞进优化约束里\n- **处理多目标**：同时处理平衡、跟踪、能耗等多个目标\n- **处理非线性**：非线性 MPC 可以处理复杂动力学\n- **处理时变系统**：每步重新计算，自然适应变化\n\n代价是**计算量大**，实时性要求高。\n\n## 核心工作原理\n\n### 预测模型\n首先需要一个动力学模型：\n\n$$\\dot{x} = f(x, u)$$\n\n或者离散形式：\n\n$$x_{k+1} = f(x_k, u_k)$$\n\n这个模型不需要很精确（这也是 MPC 的一个优点），但越精确效果越好。\n\n### 有限时域优化\n在每个时刻 $t$：\n\n1. **预测**：用模型预测未来 $N$ 步的状态序列\n2. **优化**：求解一个优化问题，找到使代价函数最小的控制序列 $u_t, u_{t+1}, ..., u_{t+N-1}$\n3. **执行**：只把 $u_t$ 发给机器人\n4. **重复**：到下一个时刻，重新预测 + 求解\n\n这就是\"滚动时域\"（receding horizon）控制的核心。\n\n### 代价函数\n典型形式：\n\n$$J = \\sum_{k=0}^{N-1} (x_k - x_{ref})^T Q (x_k - x_{ref}) + u_k^T R u_k$$\n\n包含两项：\n- **状态代价**：状态跟参考值的偏差\n- **控制代价**：控制输入的大小（防止过于激进）\n\n可以加硬约束（不等式）和软约束。\n\n### 约束处理\n这是 MPC 相比 LQR 等方法最关键的优势：\n\n- **关节角度限位**：$\\underline{q} \\leq q \\leq \\bar{q}$\n- **关节速度限位**：$\\underline{\\dot{q}} \\leq \\dot{q} \\leq \\bar{\\dot{q}}$\n- **接触力约束**：$f_z \\geq 0$（地面反力非负）\n- **碰撞避免**：作为不等式约束加入\n\n## 主要类型\n\n### 1. 线性 MPC（LMPC）\n假设线性系统：\n\n$$x_{k+1} = A x_k + B u_k$$\n\n可以用 QP（二次规划）求解，速度快，适合实时控制。\n\n典型应用：双足行走的 ZMP 控制、轮式机器人轨迹跟踪。\n\n### 2. 非线性 MPC（NMPC）\n用非线性动力学模型，需要求解非线性优化问题（NLP）。\n\n计算量比 LMPC 大很多，通常需要：\n\n- 实时非线性优化求解器（e.g. Acados, FORCES Pro）\n- 比较好的初值（可以用线性 MPC 的结果做 warm start）\n\n### 3. 凸非线性 MPC\n把非线性问题凸化——比如用多面体约束、凸成本函数。\n\nIsaacGym /机器人领域常见。\n\n### 4. 随机 MPC\n处理模型不确定性和外界干扰。\n\n加入随机约束或者 robustness budget。\n\n## 在人形机器人中的典型应用\n\n### 行走控制\n用 centroidal dynamics + NMPC：\n\n- 预测未来几步的质心/角动量\n- 优化接触力分配\n- 保持平衡约束\n\n代表工作：\n- \"Convex Model Predictive Control for Bipedal Locomotion\" (C原 Bellicoso et al.)\n- ANYmal 的行走控制\n\n### 全身控制\n用 WBC 框架下：\n\n- 上层用 MPC 计算 task-space 指令\n- 下层用 QP 分配关节力矩\n\n### 足式机器人\n四足/双足机器人的站立、行走、跑跳控制几乎都离不开 MPC。\n\n代表：\n- MIT Cheetah 的凸 MPC\n- Unitree 的 NMPC 控制器\n\n## 关键参数\n\n### 预测时域 $N$\n- $N$ 太短：来不及规划，响应快但可能不稳定\n- $N$ 太长：计算量大，实时性差\n- 通常 $N=10\\sim 40$ 步（取决于控制频率）\n\n### 控制频率\n- 人形机器人典型：1-5 kHz\n- 越快越好，但受限于求解器速度\n- 高频MPC + 低频 RL 是常见组合\n\n### 模型精度 vs 计算速度\n这是一个 trade-off：\n- 精确模型 → 更好的跟踪和预测，但计算慢\n- 简化模型 → 计算快，但跟踪精度差\n\n常用 trick：用简化模型做 MPC，用更精确的模型做仿真验证。\n\n## 和强化学习的比较\n\n| 维度 | MPC | 强化学习 |\n|------|-----|---------|\n| 依赖模型 | 必须有模型 | 不需要（model-free）|\n| 计算量 | 在线优化，实时要求高 | 离线训练，在线推理快 |\n| 泛化能力 | 受模型精度限制 | 可泛化到新任务 |\n| 处理约束 | 自然 | 需要专门设计 |\n| 超越人类 | 难 | 可以 |\n\n常见组合：\n- **RL 训练低层策略 + MPC 做高层规划**\n- **RL 训练一个 \"policy prior\" + MPC 在其中做优化**\n\n## 参考来源\n\n- Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文\n- [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解\n- Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考\n- **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)\n\n## 关联页面\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Optimal Control (OCP)](../concepts/optimal-control.md)\n\n## 推荐继续阅读\n\n- [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) - Lecture 10: Convex Model-Predictive Control\n- [Convex MPC for Bipedal Locomotion](https://arxiv.org/abs/1709.10219) - Cory (Bellicoso et al.)\n- Acados: http://acados.org/ - NMPC solver",
+        "content_markdown": "---\ntype: method\ntags: [control, mpc, optimization, locomotion, humanoid]\nstatus: complete\n---\n\n# Model Predictive Control (MPC)\n\n**模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。\n\n## 一句话定义\n\n不是一次性算出全局最优控制，而是**每一步都在线求解一个有限时域优化问题，只执行当前动作，然后重复**。\n\n## 为什么重要\n\nMPC 是机器人控制中最接近“万能控制框架”的东西——只要你能建模，就能控制。\n\n核心优势：\n\n- **处理约束**：关节限位、接触力限制、碰撞避免——都可以自然地塞进优化约束里\n- **处理多目标**：同时处理平衡、跟踪、能耗等多个目标\n- **处理非线性**：非线性 MPC 可以处理复杂动力学\n- **处理时变系统**：每步重新计算，自然适应变化\n\n代价是**计算量大**，实时性要求高。\n\n## 核心工作原理\n\n### 预测模型\n首先需要一个动力学模型：\n\n$$\\dot{x} = f(x, u)$$\n\n或者离散形式：\n\n$$x_{k+1} = f(x_k, u_k)$$\n\n这个模型不需要很精确（这也是 MPC 的一个优点），但越精确效果越好。\n\n### 有限时域优化\n在每个时刻 $t$：\n\n1. **预测**：用模型预测未来 $N$ 步的状态序列\n2. **优化**：求解一个优化问题，找到使代价函数最小的控制序列 $u_t, u_{t+1}, ..., u_{t+N-1}$\n3. **执行**：只把 $u_t$ 发给机器人\n4. **重复**：到下一个时刻，重新预测 + 求解\n\n这就是\"滚动时域\"（receding horizon）控制的核心。\n\n### 代价函数\n典型形式：\n\n$$J = \\sum_{k=0}^{N-1} (x_k - x_{ref})^T Q (x_k - x_{ref}) + u_k^T R u_k$$\n\n包含两项：\n- **状态代价**：状态跟参考值的偏差\n- **控制代价**：控制输入的大小（防止过于激进）\n\n可以加硬约束（不等式）和软约束。\n\n### 约束处理\n这是 MPC 相比 LQR 等方法最关键的优势：\n\n- **关节角度限位**：$\\underline{q} \\leq q \\leq \\bar{q}$\n- **关节速度限位**：$\\underline{\\dot{q}} \\leq \\dot{q} \\leq \\bar{\\dot{q}}$\n- **接触力约束**：$f_z \\geq 0$（地面反力非负）\n- **碰撞避免**：作为不等式约束加入\n\n## 主要类型\n\n### 1. 线性 MPC（LMPC）\n假设线性系统：\n\n$$x_{k+1} = A x_k + B u_k$$\n\n可以用 QP（二次规划）求解，速度快，适合实时控制。\n\n典型应用：双足行走的 ZMP 控制、轮式机器人轨迹跟踪。\n\n### 2. 非线性 MPC（NMPC）\n用非线性动力学模型，需要求解非线性优化问题（NLP）。\n\n计算量比 LMPC 大很多，通常需要：\n\n- 实时非线性优化求解器（e.g. Acados, FORCES Pro）\n- 比较好的初值（可以用线性 MPC 的结果做 warm start）\n\n### 3. 凸非线性 MPC\n把非线性问题凸化——比如用多面体约束、凸成本函数。\n\nIsaacGym /机器人领域常见。\n\n### 4. 随机 MPC\n处理模型不确定性和外界干扰。\n\n加入随机约束或者 robustness budget。\n\n## 在人形机器人中的典型应用\n\n### 行走控制\n用 centroidal dynamics + NMPC：\n\n- 预测未来几步的质心/角动量\n- 优化接触力分配\n- 保持平衡约束\n\n代表工作：\n- \"Convex Model Predictive Control for Bipedal Locomotion\" (C原 Bellicoso et al.)\n- ANYmal 的行走控制\n\n### 全身控制\n用 WBC 框架下：\n\n- 上层用 MPC 计算 task-space 指令\n- 下层用 QP 分配关节力矩\n\n### 足式机器人\n四足/双足机器人的站立、行走、跑跳控制几乎都离不开 MPC。\n\n代表：\n- MIT Cheetah 的凸 MPC\n- Unitree 的 NMPC 控制器\n\n## 关键参数\n\n### 预测时域 $N$\n- $N$ 太短：来不及规划，响应快但可能不稳定\n- $N$ 太长：计算量大，实时性差\n- 通常 $N=10\\sim 40$ 步（取决于控制频率）\n\n### 控制频率\n- 人形机器人典型：1-5 kHz\n- 越快越好，但受限于求解器速度\n- 高频MPC + 低频 RL 是常见组合\n\n### 模型精度 vs 计算速度\n这是一个 trade-off：\n- 精确模型 → 更好的跟踪和预测，但计算慢\n- 简化模型 → 计算快，但跟踪精度差\n\n常用 trick：用简化模型做 MPC，用更精确的模型做仿真验证。\n\n## 和强化学习的比较\n\n| 维度 | MPC | 强化学习 |\n|------|-----|---------|\n| 依赖模型 | 必须有模型 | 不需要（model-free）|\n| 计算量 | 在线优化，实时要求高 | 离线训练，在线推理快 |\n| 泛化能力 | 受模型精度限制 | 可泛化到新任务 |\n| 处理约束 | 自然 | 需要专门设计 |\n| 超越人类 | 难 | 可以 |\n\n常见组合：\n- **RL 训练低层策略 + MPC 做高层规划**\n- **RL 训练一个 \"policy prior\" + MPC 在其中做优化**\n\n## 参考来源\n\n- Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文\n- [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解\n- Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考\n- **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)\n\n## 关联页面\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Optimal Control (OCP)](../concepts/optimal-control.md)\n- [MPC vs RL](../comparisons/mpc-vs-rl.md) — 控制范式选型对比\n\n## 推荐继续阅读\n\n- [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI) - Lecture 10: Convex Model-Predictive Control\n- [Convex MPC for Bipedal Locomotion](https://arxiv.org/abs/1709.10219) - Cory (Bellicoso et al.)\n- Acados: http://acados.org/ - NMPC solver",
         "tags": [
           "method",
           "humanoid",
@@ -1500,6 +1567,7 @@
           "wiki-tasks-locomotion",
           "wiki-methods-reinforcement-learning",
           "wiki-concepts-optimal-control",
+          "wiki-comparisons-mpc-vs-rl",
           "sources-papers-mpc"
         ],
         "source_links": [
@@ -2784,12 +2852,24 @@
         "title": "路线B：机器人全栈工程师扩展路线",
         "type": "roadmap_page",
         "path": "roadmap/route-b-fullstack.md",
-        "summary": "目标：在路线A基础上，从“控制切入口”逐步扩展到感知、规划、软件系统、部署与整机集成",
-        "content_markdown": "> 目标：在路线A基础上，从“控制切入口”逐步扩展到感知、规划、软件系统、部署与整机集成。\n\n## 扩展方向\n\n1. 感知与视觉\n2. 任务规划与运动规划\n3. ROS2 / 中间件 / 通信\n4. 仿真平台与数字孪生\n5. 硬件系统认知（执行器 / 传感器 / 驱动）\n6. 部署、调试、测试、安全\n7. 系统集成与整机闭环",
+        "summary": "type: roadmap。",
+        "content_markdown": "---\ntype: roadmap\ntags: [fullstack, humanoid, perception, planning, deployment, integration]\nstatus: stable\n---\n\n# 路线B：机器人全栈工程师扩展路线\n\n> **目标**：在路线A（运动控制成长路线）基础上，从\"控制切入口\"扩展到感知、规划、软件系统、部署与整机集成，成为能独立交付\"会走 + 会看 + 会规划 + 能上真机\"的全栈机器人工程师。\n>\n> **前置条件**：完成路线A L0-L3（基础运动控制、WBC/RL 基础，能在仿真中训练出可用策略）。\n\n---\n\n## 路线B 全局地图\n\n```\nL0  运动控制基础（路线A前置）\n    ↓\nL1  感知层：状态估计 + 视觉感知\n    ↓\nL2  规划层：运动规划 + 任务规划\n    ↓\nL3  软件系统：ROS2 + 中间件 + 实时通信\n    ↓\nL4  仿真与数字孪生\n    ↓\nL5  硬件认知：执行器 + 传感器 + 驱动\n    ↓\nL6  部署、调试、测试、安全\n    ↓\nL7  整机集成：感知→规划→控制全链路闭环\n```\n\n---\n\n## L1 · 感知层（状态估计 + 视觉）\n\n### L1.1 机器人状态估计\n\n**目标**：理解并能实现基于 IMU + 运动学的 EKF 基座姿态估计。\n\n核心知识：\n- EKF 基础：预测步（IMU 积分）+ 更新步（接触运动学约束）\n- 浮动基状态：$[p_b, q_b, v_b, q_j, \\dot{q}_j]$\n- 接触检测：力矩估计 / 接触力阈值 / 概率模型\n- InEKF（不变 EKF）：李群 $SE_2(3)$ 上的状态估计，比标准 EKF 更鲁棒\n\n工具：\n```bash\n# 典型状态估计实现路径\n1. 了解 bloesch-rsll-state-est（ETH 经典EKF）\n2. 了解 contact_estimation（接触概率模型）\n3. Pinocchio + IMU 数据融合\n```\n\n关键论文：Bloesch 2013（RSL EKF）、Hartley InEKF 2020\n\n**阶段验收**：在 Isaac Sim 中给仿真机器人写一个简单 EKF，base 速度估计误差 < 0.1 m/s。\n\n### L1.2 视觉感知基础\n\n**目标**：理解深度图、点云处理、高度图生成；能从 RGB-D 数据生成地形高度图。\n\n核心知识：\n- 深度传感器：结构光 / ToF / 立体视觉 / LiDAR\n- 点云处理：下采样 / 地面分割 / 高度图生成\n- 视觉里程计：ORB-SLAM3 / DROID-SLAM 原理\n- 地形感知在 RL 中的应用：高度图 → privileged observation\n\n工具：\n```python\n# 高度图生成示例\nimport open3d as o3d\nimport numpy as np\npcd = o3d.io.read_point_cloud(\"scan.pcd\")\n# 体素降采样 → 投影到网格 → 生成高度图\n```\n\n**阶段验收**：从 Isaac Sim 的深度图数据生成 11×11 高度图，可视化验证与真实地形一致。\n\n---\n\n## L2 · 规划层\n\n### L2.1 运动规划基础\n\n**目标**：理解路径规划→轨迹规划→步位规划的层次结构；能调用现有库生成无碰撞轨迹。\n\n核心知识：\n- **导航层**：A\\* / Dijkstra / RRT（全局路径规划）\n- **局部规划**：DWA（动态窗口法）/ TEB / MPPI\n- **步位规划**：基于 Capture Point 的反应式 + MPC 多步预测\n- **接触序列规划**：离散接触点 → 连续轨迹优化\n\n工具栈：\n- Nav2（ROS2 导航框架）\n- OMPL（采样规划库）\n- Drake DirectCollocation（接触轨迹优化）\n\n**阶段验收**：用 Nav2 让机器人在带障碍物的地图中从 A 走到 B。\n\n### L2.2 任务规划基础\n\n**目标**：理解行为树（BT）和有限状态机（FSM），能用 BT 编排多步任务。\n\n核心知识：\n- FSM：状态定义 + 转移条件 + 典型步态切换实现\n- 行为树：Sequence / Selector / Condition / Action 节点\n- 任务分解：高层任务 → 子任务 → 基本动作\n- LLM + Robotics：用语言模型生成任务规划\n\n工具：\n- BehaviorTree.CPP（C++/Python BT 框架）\n- py_trees（Python BT）\n\n**阶段验收**：用行为树实现\"走到目标点 → 检测障碍 → 绕行 → 到达\"的完整任务序列。\n\n---\n\n## L3 · 软件系统\n\n### L3.1 ROS2 核心概念\n\n**目标**：理解 ROS2 通信模型，能用 ROS2 完成机器人感知→控制的完整数据流。\n\n核心知识：\n- **话题（Topic）**：异步发布/订阅，适合传感器数据\n- **服务（Service）**：同步请求/响应，适合一次性任务\n- **动作（Action）**：带反馈的异步任务，适合长时运动\n- **参数服务器**：运行时配置管理\n- **生命周期节点**：受控节点启停，用于安全关键系统\n\n实践：\n```bash\n# 标准开发流程\nros2 pkg create --build-type ament_cmake my_robot_pkg\ncolcon build\nsource install/setup.bash\nros2 run my_robot_pkg my_node\n```\n\n**阶段验收**：用 ROS2 实现 IMU 数据订阅 → 状态估计节点 → 关节命令发布的完整链路。\n\n### L3.2 实时通信与中间件\n\n**目标**：了解机器人低延迟通信的核心要求，理解 EtherCAT / LCM / CycloneDDS。\n\n核心知识：\n- **实时性要求**：控制循环通常 1kHz，通信延迟 < 1ms\n- **EtherCAT**：工业标准现场总线，用于伺服驱动器通信\n- **LCM（Lightweight Communications）**：MIT Cheetah 使用，低延迟 UDP 多播\n- **DDS（Data Distribution Service）**：ROS2 底层，支持 QoS 配置\n- **共享内存**：同机器高速数据共享，延迟 < 10μs\n\n**阶段验收**：了解 Unitree SDK 的通信协议（LCM 或 CycloneDDS），能读取关节状态并发送命令。\n\n---\n\n## L4 · 仿真与数字孪生\n\n### L4.1 仿真平台选型与使用\n\n**目标**：能在 MuJoCo / Isaac Lab 中建立自定义机器人场景，实现感知→控制闭环。\n\n| 平台 | 适合 | 注意 |\n|------|------|------|\n| MuJoCo | 精度高，接触物理稳定 | 单线程（MJX 除外） |\n| Isaac Lab | GPU 并行，大规模 RL | 依赖 NVIDIA GPU |\n| Genesis | 速度极快，可微分 | 新兴，API 还在变化 |\n| Drake | 精确物理+控制设计 | 学习曲线陡 |\n\n**阶段验收**：在 Isaac Lab 中从 URDF 导入自定义场景，训练一个能走 5m 的简单策略。\n\n### L4.2 数字孪生概念\n\n**目标**：了解什么是数字孪生及其在机器人测试中的价值。\n\n核心概念：\n- **数字孪生**：与真实机器人同步更新的虚拟模型\n- **软在环（SIL）**：策略在仿真中运行，真实传感器输入\n- **硬在环（HIL）**：真实控制器运行，仿真环境反馈\n- **param sweeping**：在孪生中批量测试参数，无需真机风险\n\n**阶段验收**：能描述 SIL / HIL 的差异，并用 Isaac Sim 实现一个简单的 SIL 测试。\n\n---\n\n## L5 · 硬件认知\n\n### L5.1 执行器与驱动\n\n**目标**：理解关节执行器的控制接口，能调整 PD 增益实现稳定关节控制。\n\n核心知识：\n- **电机类型**：直流无刷（BLDC）/ 行星减速器 / 谐波减速器\n- **控制模式**：位置控制 / 速度控制 / 力矩控制（优先）\n- **PD 增益调参**：$\\tau = k_p(q_{des} - q) + k_d(\\dot{q}_{des} - \\dot{q})$\n- **Unitree SDK 接口**：`MotorState.q`, `MotorState.dq`, `MotorCmd.tau`\n- **执行器网络（ActuatorNet）**：用神经网络建模非线性执行器动力学（Hwangbo 2019）\n\n**阶段验收**：在真实 Unitree Go1/G1 上手动调 kp/kd，实现稳定站立。\n\n### L5.2 传感器认知\n\n**目标**：了解机器人主要传感器的特性和局限。\n\n| 传感器 | 用途 | 局限 |\n|--------|------|------|\n| IMU（6轴） | 姿态估计、加速度 | 积分漂移、震动噪声 |\n| 关节编码器 | 关节位置/速度 | 分辨率、延迟 |\n| 力/力矩传感器 | 接触力直接测量 | 昂贵、噪声 |\n| RGB-D（RealSense/ZED） | 深度感知、地形 | 计算量大、光照敏感 |\n| LiDAR | 精确 3D 环境扫描 | 重量、功耗 |\n\n---\n\n## L6 · 部署与安全\n\n### L6.1 真机部署流程\n\n**目标**：掌握从仿真策略到真机部署的完整流程，具备安全操作意识。\n\n```\n仿真策略 → 导出 ONNX/TorchScript\n         → 真机推理测试（吊绳）\n         → 低速平地验证\n         → 逐步放开速度/地形\n         → 全参数测试\n```\n\n部署 Checklist（参考 [humanoid-rl-cookbook](../wiki/queries/humanoid-rl-cookbook.md)）：\n- [ ] 策略推理频率 ≥ 控制频率\n- [ ] Observation 归一化参数一致\n- [ ] 动作裁剪（关节限位）\n- [ ] 紧急停止按钮可达\n- [ ] 首次运行全程有人监控\n\n### L6.2 调试技能\n\n**目标**：能系统性诊断\"策略在仿真里好，真机上差\"的问题。\n\n常见 sim2real 失败原因：\n1. **执行器动力学差异**：仿真 PD 增益与真机不符 → 检查 kp/kd/力矩限制\n2. **传感器噪声不匹配**：仿真无 IMU 噪声 → 加入噪声层\n3. **延迟差异**：仿真无通信延迟 → 加 1-2 步 action latency\n4. **接触建模差异**：地面硬度/摩擦系数 → 域随机化扩大范围\n5. **执行器饱和**：真机力矩饱和但仿真无限制 → 加力矩裁剪\n\n---\n\n## L7 · 整机集成\n\n### L7.1 感知→规划→控制全链路\n\n**目标**：能独立完成\"看到目标 → 规划路径 → 走过去\"的完整整机演示。\n\n全链路架构：\n```\n传感器层       → RGB-D + IMU + 关节编码器\n      ↓\n感知层         → 高度图 + 目标检测 + 状态估计\n      ↓\n规划层         → 全局路径 + 步位规划 + 步态选择\n      ↓\n控制层         → MPC/RL 策略 + WBC 接触力分配\n      ↓\n执行层         → 关节力矩命令 → 执行器驱动\n```\n\n**阶段验收**：在 Isaac Sim 中完成端到端演示：机器人从 RGB-D 视频流中识别目标，自动规划路径并行走到达。\n\n### L7.2 系统集成工程技能\n\n- **配置管理**：YAML/TOML 集中管理所有模块参数\n- **日志系统**：时序数据记录（关节状态/控制命令/估计值），便于复现问题\n- **可视化**：RViz2 / Foxglove Studio 实时监控\n- **单元测试**：每个模块有独立测试，集成测试验证接口兼容性\n- **CI**：GitHub Actions 自动运行仿真冒烟测试\n\n---\n\n## 推荐学习顺序\n\n| 阶段 | 时间（估计） | 核心产出 |\n|------|-------------|---------|\n| L1 状态估计 | 2-3 周 | EKF 在 Isaac Sim 中验证 |\n| L1 视觉基础 | 2-3 周 | 高度图生成 pipeline |\n| L2 运动规划 | 2-3 周 | Nav2 避障导航 |\n| L3 ROS2 | 2-4 周 | 完整传感→控制 ROS2 节点 |\n| L4 仿真 | 1-2 周 | 自定义场景 Isaac Lab |\n| L5 硬件 | 持续 | Unitree SDK 实操 |\n| L6 部署 | 2-3 周 | 真机策略上线 |\n| L7 集成 | 4-6 周 | 端到端整机演示 |\n\n---\n\n## 关联页面\n\n- [路线A：运动控制成长路线](./route-a-motion-control.md) — 本路线的前置\n- [State Estimation](../wiki/concepts/state-estimation.md) — L1 状态估计深度参考\n- [Footstep Planning](../wiki/concepts/footstep-planning.md) — L2 步位规划\n- [Gait Generation](../wiki/concepts/gait-generation.md) — L2 步态生成\n- [Sim2Real](../wiki/concepts/sim2real.md) — L6 真机部署的核心挑战\n- [Humanoid RL Cookbook](../wiki/queries/humanoid-rl-cookbook.md) — L6 部署 Checklist\n\n---\n\n## 一句话记忆\n\n> 路线B 在运动控制基础上加了\"眼睛\"（感知）、\"大脑\"（规划）和\"神经系统\"（ROS2/中间件），最终目标是端到端整机——从传感器信号到关节力矩，全链路自己能跑通。",
         "tags": [
-          "roadmap"
+          "roadmap",
+          "humanoid",
+          "control",
+          "dynamics",
+          "rl",
+          "il"
         ],
-        "related": [],
+        "related": [
+          "roadmap-route-a-motion-control",
+          "wiki-concepts-state-estimation",
+          "wiki-concepts-footstep-planning",
+          "wiki-concepts-gait-generation",
+          "wiki-concepts-sim2real",
+          "wiki-queries-humanoid-rl-cookbook"
+        ],
         "source_links": [],
         "status": "active"
       },

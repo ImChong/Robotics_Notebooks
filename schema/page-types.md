@@ -141,6 +141,34 @@ SORT type ASC
 - 这里只做简版摘要与定位说明
 - 深度论文拆解尽量放在 [`Humanoid_Robot_Learning_Paper_Notebooks`](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks)
 
+## 8. Query Page（wiki/queries/）
+回答：一个高价值问题的综合分析，将探索结论写回 wiki 实现知识复利。
+
+适用场景：
+- 跨多个 wiki 页的综合分析（不适合放在单个 concept/method 页）
+- 工程选型决策（solver 选哪个 / 算法怎么选）
+- 完整 checklist / 操作指南
+
+**必须满足的特殊格式要求**（区别于其他 wiki 页）：
+
+```markdown
+> **Query 产物**：本页由以下问题触发：「<问题一句话>」
+> 综合来源：<精读的 wiki 页面列表>
+```
+
+推荐结构：
+1. TL;DR 决策路径（决策树 / 快速结论）
+2. 详细分析（对比表 / 分阶段步骤 / 代码示例）
+3. 参考来源（链接到 sources/papers/*.md）
+4. 关联页面
+5. 一句话记忆
+
+**质量要求**：
+- 300+ 字（有实质内容，非简单重复 wiki 页内容）
+- 至少包含一个对比表格或决策树
+- 精读来源不少于 2 个 wiki 页面
+- 在 `wiki/queries/README.md` 的产物列表中注册
+
 ---
 
 ## 新增页面最低质量标准
