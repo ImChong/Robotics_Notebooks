@@ -93,7 +93,7 @@
           "wiki-concepts-lip-zmp",
           "wiki-tasks-loco-manipulation",
           "wiki-tasks-locomotion",
-          "wiki-tasks-manipulation"
+          "wiki-queries-locomotion-reward-design-guide"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -159,10 +159,12 @@
           "wiki-concepts-domain-randomization",
           "wiki-methods-imitation-learning",
           "entity-isaac-gym-isaac-lab",
+          "wiki-queries-locomotion-reward-design-guide",
           "wiki-comparisons-model-based-vs-model-free",
           "wiki-concepts-privileged-training",
           "wiki-queries-sim2real-checklist",
-          "entity-legged-gym"
+          "entity-legged-gym",
+          "wiki-queries-humanoid-hardware-selection"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -219,7 +221,8 @@
           "wiki-formalizations-lqr",
           "wiki-comparisons-model-based-vs-model-free",
           "wiki-methods-policy-optimization",
-          "wiki-queries-sim2real-checklist"
+          "wiki-queries-sim2real-checklist",
+          "wiki-queries-wbc-implementation-guide"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -1632,6 +1635,57 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-queries-humanoid-hardware-selection": {
+        "id": "wiki-queries-humanoid-hardware-selection",
+        "title": "人形机器人硬件选型指南",
+        "type": "wiki_page",
+        "path": "wiki/queries/humanoid-hardware-selection.md",
+        "summary": "title: 人形机器人硬件选型指南。",
+        "content_markdown": "---\ntitle: 人形机器人硬件选型指南\ntype: query\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-14\nsummary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。\n---\n\n> **Query 产物**：本页由以下问题触发：「做人形机器人运动控制研究，该选哪个硬件平台？」\n> 综合来源：[Locomotion](../tasks/locomotion.md)、[Sim2Real](../concepts/sim2real.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)\n\n# 人形机器人硬件选型指南\n\n## 核心选型维度\n\n在比较具体平台之前，先确定你的主要约束：\n\n| 约束 | 推荐方向 |\n|------|---------|\n| 学术研究预算（< 200K CNY）| Unitree H1 / G1 |\n| 商业应用，需要技术支持 | Agility Cassie / Figure |\n| 复杂操作（双手+locomotion）| Unitree G1 / Fourier GR1 |\n| 极限性能测试 | Boston Dynamics Atlas（不对外销售） |\n| 仿真先行，暂不购买硬件 | MuJoCo 官方模型 + Isaac Lab |\n\n---\n\n## 主流平台对比\n\n| 平台 | 开发商 | DoF | 身高 | 重量 | 价格范围 | 开源程度 |\n|------|--------|-----|------|------|---------|---------|\n| **Unitree G1** | Unitree | 43 | 1.27m | 35kg | ~90K CNY | 较高（SDK+URDF） |\n| **Unitree H1** | Unitree | 19 | 1.8m | 47kg | ~90K CNY | 较高（SDK+URDF）|\n| **Fourier GR1** | Fourier Intelligence | 44 | 1.65m | 55kg | ~150K CNY | 中等 |\n| **UBTECH Walker X** | 优必选 | 41 | 1.7m | 76kg | 未公开 | 低 |\n| **Figure 02** | Figure AI | ~50 | 1.7m | 60kg | 未公开 | 低 |\n| **Atlas (BD)** | Boston Dynamics | 28 | 1.5m | 89kg | 不对外销 | 无 |\n\n---\n\n## 各平台详细分析\n\n### Unitree G1\n**适合：** 学术研究、全身操作、loco-manipulation\n\n**优势：**\n- 43 自由度（含手指），可做精细操作\n- 价格相对低，学术界可承受\n- 良好的开源生态（legged_gym + IsaacLab G1 模型）\n- Unitree SDK2 支持 Python/C++ 控制\n\n**劣势：**\n- 较矮（1.27m），部分场景（开门、货架操作）受限\n- 关节力矩相对较小（非 SEA 驱动）\n\n**典型用途：** loco-manipulation 研究、RL 全身控制、中文学术圈主流\n\n---\n\n### Unitree H1\n**适合：** locomotion 研究、高速移动、赛跑任务\n\n**优势：**\n- 更高（1.8m）更重，locomotion 更稳定\n- 关节力矩大，适合动态运动\n- 同样良好的 SDK 支持\n\n**劣势：**\n- DoF 较少（无手，操作能力有限）\n- 速度场景无双臂\n\n**典型用途：** 双足 locomotion RL、地形穿越、户外测试\n\n---\n\n### Fourier GR1\n**适合：** 工业/服务场景验证、操作研究\n\n**优势：**\n- 成熟的工业化设计，可靠性高\n- 全身 44 DoF，含灵巧手选项\n- 国内工业界有实际落地\n\n**劣势：**\n- 价格较高\n- 开源生态不如 Unitree 丰富\n\n---\n\n### Figure 02 / Agility Digit\n**适合：** 仓储 / 物流场景，海外合作\n\n**特点：**\n- 面向商业落地，不是学术平台\n- Agility Digit 有较成熟的 locomotion 控制系统（来自 Cassie 积累）\n- Figure 背后有 OpenAI 合作，VLA / 具身智能路线\n\n---\n\n## 仿真平台选型（无硬件时）\n\n在购买硬件之前，强烈建议先在仿真中验证：\n\n| 仿真器 | 搭配硬件型号 | 适用场景 |\n|-------|------------|---------|\n| MuJoCo | G1/H1 官方 MJCF | 算法开发、学术 RL |\n| Isaac Lab | G1/H1/H1_2 资产 | 大规模并行训练 |\n| Genesis | 新兴，G1 支持中 | 快速原型 |\n| Drake | 定制 URDF | 轨迹优化 / MPC 研究 |\n\n---\n\n## 决策树\n\n```\n目标是 locomotion（行走/跑步/地形）？\n├── 是\n│   ├── 需要操作能力 → G1\n│   └── 只需移动 → H1（力矩更大）\n└── 否（主要做操作 / loco-manip）\n    ├── 预算 < 150K CNY → G1\n    ├── 预算 OK，需工业可靠性 → Fourier GR1\n    └── 仿真先行 → IsaacLab G1 模型\n```\n\n---\n\n## 参考来源\n\n- Unitree G1 产品页与 SDK 文档\n- Fourier GR1 技术白皮书\n- Rudin et al., *Learning to Walk in Minutes* (2022) — 大规模仿真训练基准\n\n---\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md) — 平台选择直接影响 locomotion 任务的难度和方案\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 操作任务需要关节数量和灵巧手支持\n- [Sim2Real](../concepts/sim2real.md) — 硬件特性影响 sim2real 策略（SEA vs 刚性关节）\n- [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 大规模并行训练平台，支持多种机器人型号\n- [legged_gym](../entities/legged-gym.md) — legged_gym 有主流平台的训练模板",
+        "tags": [
+          "query",
+          "humanoid",
+          "locomotion",
+          "dynamics",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-tasks-locomotion",
+          "wiki-tasks-loco-manipulation",
+          "wiki-concepts-sim2real",
+          "entity-isaac-gym-isaac-lab",
+          "entity-legged-gym"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-queries-locomotion-reward-design-guide": {
+        "id": "wiki-queries-locomotion-reward-design-guide",
+        "title": "Locomotion 奖励函数设计指南",
+        "type": "wiki_page",
+        "path": "wiki/queries/locomotion-reward-design-guide.md",
+        "summary": "title: Locomotion 奖励函数设计指南。",
+        "content_markdown": "---\ntitle: Locomotion 奖励函数设计指南\ntype: query\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-14\nsummary: 系统整理 RL 训练足式/人形机器人 locomotion 的奖励函数设计原则、常用奖励项分类、调参策略和常见失败模式。\n---\n\n> **Query 产物**：本页由以下问题触发：「怎么设计 locomotion RL 的奖励函数？」\n> 综合来源：[Reinforcement Learning](../methods/reinforcement-learning.md)、[Locomotion](../tasks/locomotion.md)、[Sim2Real](../concepts/sim2real.md)、[Reward Design](../concepts/reward-design.md)\n\n# Locomotion 奖励函数设计指南\n\n## 奖励函数的核心哲学\n\n好的 locomotion 奖励设计满足：\n1. **任务奖励**：奖励\"达成目标\"（速度跟踪、到达目的地）\n2. **风格约束**：惩罚\"不想要的行为\"（能量消耗、关节震荡、不稳定姿态）\n3. **稀疏 vs 稠密**：locomotion 通常用稠密奖励（每步都有反馈）\n\n---\n\n## 标准奖励项分类\n\n### A. 任务奖励（Task Reward）\n核心奖励，权重最高\n\n| 奖励项 | 公式 | 典型权重 |\n|--------|------|---------|\n| 线速度跟踪 | $\\exp(-\\|v_{xy} - v_{cmd}\\|^2 / \\sigma)$ | 1.0 |\n| 角速度跟踪（yaw） | $\\exp(-\\|w_z - w_{cmd}\\|^2 / \\sigma)$ | 0.5 |\n| 目标方向行走 | $v \\cdot \\hat{d}$（速度在目标方向上的投影） | 1.0 |\n\n**注意：** 用 `exp(-x²/σ)` 而不是线性 `-|x|`，在目标附近梯度更平滑，训练更稳定。\n\n### B. 稳定性奖励（Stability Reward）\n惩罚会导致跌倒或不自然姿态的行为\n\n| 奖励项 | 公式 | 典型权重 |\n|--------|------|---------|\n| 躯干高度保持 | $-\\|h - h_{ref}\\|^2$ | 0.2 |\n| 躯干姿态 | $-(\\phi^2 + \\theta^2)$（roll, pitch） | 0.2 |\n| 基座线速度 Z 轴 | $-(v_z)^2$ | 0.1 |\n| 基座角速度 X/Y 轴 | $-(w_{xy})^2$ | 0.1 |\n\n### C. 能效奖励（Efficiency Reward）\n鼓励省力、平滑的动作\n\n| 奖励项 | 公式 | 典型权重 |\n|--------|------|---------|\n| 关节力矩惩罚 | $-\\|\\tau\\|^2$ | 0.0001 |\n| 关节速度惩罚 | $-\\|\\dot{q}\\|^2$ | 0.0001 |\n| 动作变化惩罚（平滑性） | $-\\|\\Delta a\\|^2 = -\\|a_t - a_{t-1}\\|^2$ | 0.005 |\n| 电能消耗 | $-|\\tau \\cdot \\dot{q}|$ | 0.0001 |\n\n### D. 接触奖励（Contact Reward）\n鼓励合理的步态和接触模式\n\n| 奖励项 | 说明 | 典型权重 |\n|--------|------|---------|\n| 步态对称性 | 左右足接触相位差应接近 0.5 | 0.1 |\n| 摆动脚高度 | 摆动相时足端离地 > 阈值 | 0.1 |\n| 双支撑时长 | 限制双支撑比例（行走） | 0.05 |\n| 接触冲击 | 惩罚大的接触力变化率 | 0.1 |\n\n### E. 安全约束（Safety Reward）\n防止关节过载和硬件损坏\n\n| 奖励项 | 公式 | 典型权重 |\n|--------|------|---------|\n| 关节限制接近 | $-\\text{clip}(q - q_{limit}, 0, \\infty)^2$ | 10.0（高惩罚） |\n| 关节速度超限 | 类似 | 5.0 |\n| 躯干碰地 | 碰到则 -100（终止奖励） | -100 |\n\n---\n\n## 奖励权重调参策略\n\n### 1. 分阶段调参\n\n```\n阶段 1：只开任务奖励，调到能行走\n阶段 2：加稳定性奖励，调到步态稳\n阶段 3：加能效惩罚，调到自然省力\n阶段 4：全部开启，微调权重\n```\n\n### 2. 权重量级参考\n\n所有奖励项的总和，在一个 timestep 内大致在 0 ~ 5 之间。\n- 任务奖励：1.0（归一化基准）\n- 稳定性：0.1 ~ 0.5 倍任务奖励\n- 能效：0.001 ~ 0.01 倍（太大会让机器人不敢动）\n- 安全惩罚：10 ~ 100 倍（要让策略\"害怕\"）\n\n### 3. 使用 `exp` 而非线性\n\n```python\n# 推荐（连续、在零点有梯度）\nr_vel = torch.exp(-((v_xy - v_cmd)**2).sum(dim=-1) / 0.25)\n\n# 不推荐（在目标处梯度为零）\nr_vel = -(v_xy - v_cmd).norm(dim=-1)\n```\n\n---\n\n## 常见失败模式与修复\n\n| 失败现象 | 原因 | 修复方法 |\n|---------|------|---------|\n| 机器人原地转圈（spinning） | 角速度奖励权重不足 | 增加 yaw 跟踪奖励 |\n| 机器人爬行而不站立 | 躯干高度奖励缺失 | 增加 `r_base_height` |\n| 关节剧烈抖动 | 动作平滑惩罚太小 | 增加 `r_action_rate` |\n| 步幅过大/不自然 | 能量惩罚不足 | 增加 `r_torques` |\n| 速度达到但姿态崩溃 | 稳定性奖励权重不够 | 平衡任务与稳定性权重 |\n| 跑步而不行走 | 无步态约束 | 加步频/摆动相奖励 |\n| 训练后期性能下降 | 奖励 scale 随课程变化 | 对奖励做 normalize |\n\n---\n\n## legged_gym 标准奖励结构（参考）\n\nlegged_gym 使用 `cfg.rewards.scales` 字典：\n\n```python\nclass rewards:\n    class scales:\n        # 任务\n        lin_vel_z = -2.0\n        ang_vel_xy = -0.05\n        tracking_lin_vel = 1.0\n        tracking_ang_vel = 0.5\n        # 稳定性\n        torques = -0.0002\n        dof_vel = -0.0\n        dof_acc = -2.5e-7\n        action_rate = -0.01\n        # 姿态\n        base_height = -0.0\n        feet_air_time = 1.0\n        collision = -1.0\n        # 安全\n        dof_pos_limits = -10.0\n```\n\n---\n\n## 奖励工程中的 Sim2Real 注意点\n\n- **力矩惩罚尺度**：仿真 vs 真实机器人力矩量级差异需归一化\n- **接触奖励**：仿真接触完美，真实有噪声 → 接触奖励在真实中不可靠\n- **平滑性奖励**：真实机器人需要更强的平滑惩罚（噪声放大问题）\n- **能量惩罚**：过强的能量惩罚可能导致策略在真实机器人上过于保守\n\n---\n\n## 参考来源\n\n- Rudin et al., *Learning to Walk in Minutes* (2022) — legged_gym 奖励设计参考\n- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — PPO + 奖励设计\n- Margolis et al., *Walk These Ways: Tuning Robot Walking to Suit All Humans* (2023) — 多步态奖励设计\n\n---\n\n## 关联页面\n\n- [Reward Design](../concepts/reward-design.md) — 奖励函数设计的通用原则\n- [Locomotion](../tasks/locomotion.md) — 奖励设计的应用场景\n- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 训练框架\n- [Curriculum Learning](../concepts/curriculum-learning.md) — 奖励与课程经常配合使用\n- [Sim2Real](../concepts/sim2real.md) — 奖励设计影响 sim2real 迁移效果\n- [legged_gym](../entities/legged-gym.md) — legged_gym 的具体奖励实现",
+        "tags": [
+          "query",
+          "locomotion",
+          "control",
+          "dynamics",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-concepts-reward-design",
+          "wiki-tasks-locomotion",
+          "wiki-methods-reinforcement-learning",
+          "wiki-concepts-curriculum-learning",
+          "wiki-concepts-sim2real",
+          "entity-legged-gym"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-queries-rl-algorithm-selection": {
         "id": "wiki-queries-rl-algorithm-selection",
         "title": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
@@ -1682,6 +1736,35 @@
           "sources-papers-sim2real"
         ],
         "source_links": [],
+        "status": "active"
+      },
+      "wiki-queries-wbc-implementation-guide": {
+        "id": "wiki-queries-wbc-implementation-guide",
+        "title": "WBC 工程实现指南",
+        "type": "wiki_page",
+        "path": "wiki/queries/wbc-implementation-guide.md",
+        "summary": "title: WBC 工程实现指南。",
+        "content_markdown": "---\ntitle: WBC 工程实现指南\ntype: query\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-14\nsummary: 从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。\n---\n\n> **Query 产物**：本页由以下问题触发：「如何从零搭建一个 WBC 控制器？」\n> 综合来源：[Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[HQP](../concepts/hqp.md)、[MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)\n\n# WBC 工程实现指南\n\n## 实现路线概览\n\n```\nStep 1: 机器人模型准备（URDF/MJCF → Pinocchio）\nStep 2: 动力学计算（M, C, g, J）\nStep 3: 任务/约束定义\nStep 4: QP 构建与求解\nStep 5: 力矩映射与输出\nStep 6: 实机调试\n```\n\n---\n\n## Step 1：机器人模型准备\n\n### 工具选择：Pinocchio（推荐）\n\n```python\nimport pinocchio as pin\n\nmodel = pin.buildModelFromUrdf(\"robot.urdf\")\ndata  = model.createData()\n\n# 加载 meshcat 可视化（可选）\nfrom pinocchio.visualize import MeshcatVisualizer\n```\n\n**关键接口：**\n```python\n# 更新运动学\npin.computeAllTerms(model, data, q, v)\n\n# 获取质量矩阵 M(q)\nM = data.M  # shape: (nv, nv)\n\n# 获取非线性力 h(q,v) = C(q,v)v + g(q)\nh = data.nle  # shape: (nv,)\n\n# 获取末端执行器雅可比 J_ee\nJ = pin.getFrameJacobian(model, data, frame_id, pin.LOCAL_WORLD_ALIGNED)\n```\n\n**模型质量检查清单：**\n- [ ] 质量、惯量、质心位置正确（与 CAD/实体一致）\n- [ ] 关节限制（位置/速度/力矩）已填写\n- [ ] 接触脚的 frame_id 已确认\n- [ ] 无悬空/孤立 link\n\n---\n\n## Step 2：动力学方程\n\nWBC 基于刚体动力学方程求解：\n\n$$M(q)\\ddot{q} + h(q,\\dot{q}) = S^T \\tau + J_c^T f_c$$\n\n其中：\n- $M$：质量矩阵（Pinocchio: `data.M`）\n- $h = C\\dot{q} + g$：科氏力 + 重力（`data.nle`）\n- $S^T$：驱动矩阵（浮基机器人前 6 行为零）\n- $\\tau$：关节力矩（决策变量）\n- $J_c$：接触雅可比（`pin.getFrameJacobian`）\n- $f_c$：接触力（决策变量）\n\n---\n\n## Step 3：任务与约束定义\n\n### 常见任务\n\n| 任务 | 变量 | 参考量 | 权重/优先级 |\n|------|------|--------|------------|\n| 质心位置控制 | $\\ddot{c}$ | CoM 轨迹 | P1（高） |\n| 躯干姿态控制 | 躯干角加速度 | 期望姿态 | P1 |\n| 摆动脚追踪 | 足端加速度 | 步态规划 | P2 |\n| 关节阻尼 | $\\ddot{q}$ | 0 | P3（低） |\n\n### 常见约束\n\n| 约束 | 表达式 |\n|------|--------|\n| 摩擦锥 | $|f_x|, |f_y| \\leq \\mu f_z$，$f_z \\geq 0$ |\n| 关节力矩限制 | $\\tau_{min} \\leq \\tau \\leq \\tau_{max}$ |\n| 接触无滑动 | $J_c \\ddot{q} + \\dot{J}_c \\dot{q} = 0$（刚性接触） |\n| 关节速度限制 | 通常由上层规划保证 |\n\n---\n\n## Step 4：QP 构建与求解\n\n### 决策变量\n\n$$x = [\\ddot{q}^T, \\tau^T, f_c^T]^T$$\n\n### 目标函数（加权任务）\n\n$$\\min_x \\sum_i w_i \\|J_i \\ddot{q} + \\dot{J}_i \\dot{q} - \\ddot{x}_{i,ref}\\|^2 + w_\\tau \\|\\tau\\|^2$$\n\n### QP 标准形式\n\n$$\\min_x \\frac{1}{2} x^T H x + g^T x$$\n$$\\text{s.t.} \\quad A_{eq} x = b_{eq}, \\quad A_{ineq} x \\leq b_{ineq}$$\n\n### 求解器选型\n\n| 求解器 | 类型 | 速度 | 稳定性 | 推荐场景 |\n|-------|------|------|--------|---------|\n| **OSQP** | QP | 极快（50~200μs） | 高 | 实时控制（≥500Hz） |\n| **qpOASES** | QP | 快 | 高 | 活跃集方法，热启动效果好 |\n| **ECOS** | SOCP | 中 | 高 | 需要二阶锥约束（摩擦锥精确） |\n| Gurobi | QP/MIP | 快 | 很高 | 商业，研究用免费 |\n\n```python\nimport osqp\nimport numpy as np\n\nsolver = osqp.OSQP()\nsolver.setup(P=H_sparse, q=g, A=A_sparse, l=lb, u=ub,\n             warm_starting=True, verbose=False, eps_abs=1e-4)\nresult = solver.solve()\ntau = result.x[nv:nv+nu]   # 提取关节力矩\nf_c = result.x[nv+nu:]      # 提取接触力\n```\n\n---\n\n## Step 5：力矩映射与输出\n\n从 WBC 输出到实机执行：\n\n```\nWBC 输出: τ_wbc [关节力矩, Nm]\n↓\n关节摩擦补偿: τ_out = τ_wbc + τ_friction(dq)\n↓\n力矩限幅: τ_out = clip(τ_out, τ_min, τ_max)\n↓\n发送至电机驱动器 (CAN / EtherCAT)\n```\n\n**PD 辅助（可选）：**\n在不确定 WBC 输出正确之前，可叠加弱 PD 控制作为安全网：\n```\nτ_final = τ_wbc + Kp*(q_ref - q) + Kd*(dq_ref - dq)\n```\n调试期 Kp/Kd 设高，收敛后减小至接近 0。\n\n---\n\n## Step 6：实机调试清单\n\n### Phase 1：静止测试（上电，机器人架起来）\n- [ ] 零力矩测试：输出全零，检查机器人自重姿态\n- [ ] 重力补偿：输出 $\\tau = g(q)$，机器人应悬空保持静止\n- [ ] 各关节单独测试：阶跃指令，观察响应\n\n### Phase 2：站立（支撑状态）\n- [ ] 质心高度控制：CoM Z 轴跟踪 ±5cm 阶跃\n- [ ] 躯干姿态：Roll/Pitch ±5° 响应\n- [ ] 接触力可视化：确认支撑力在摩擦锥内\n\n### Phase 3：动态行走\n- [ ] 摆动脚轨迹跟踪误差 < 2cm\n- [ ] 步态相位切换平滑（无冲击力）\n- [ ] 带扰动测试（轻推躯干）\n\n---\n\n## 常见问题诊断\n\n| 症状 | 可能原因 | 排查方向 |\n|------|---------|---------|\n| 机器人上电抖动 | 重力补偿计算错误 | 检查 $g(q)$ 输出大小量级 |\n| QP 无解（infeasible） | 任务冲突或摩擦锥过紧 | 放宽摩擦系数，降低任务权重 |\n| 步态时机器人向前倾 | CoM X 轴跟踪滞后 | 增加前馈，减小 CoM 追踪延迟 |\n| 关节力矩剧烈震荡 | QP 求解数值不稳定 | 检查 H 矩阵条件数，增加正则项 |\n| 仿真正常，实机漂移 | 模型参数不准（SysID） | 进行关节摩擦/惯量辨识 |\n\n---\n\n## 参考来源\n\n- Del Prete et al., *Task Space Inverse Dynamics* (2014) — TSID 参考实现\n- Escande et al., *Hierarchical QP* (2014) — HQP 框架\n- Pinocchio 文档: <https://github.com/stack-of-tasks/pinocchio>\n- OSQP 文档: <https://osqp.org/>\n\n---\n\n## 关联页面\n\n- [Whole-Body Control](../concepts/whole-body-control.md) — WBC 理论基础\n- [TSID](../concepts/tsid.md) — WBC 的典型实现框架\n- [HQP](../concepts/hqp.md) — 层级 QP 任务优先级框架\n- [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — WBC 任务中的 CoM 动力学\n- [Contact Estimation](../concepts/contact-estimation.md) — WBC 需要接触状态作为输入\n- [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — WBC 作为 MPC 下层执行器的架构",
+        "tags": [
+          "query",
+          "control",
+          "optimization",
+          "rl",
+          "il",
+          "tooling"
+        ],
+        "related": [
+          "wiki-concepts-whole-body-control",
+          "wiki-concepts-tsid",
+          "wiki-concepts-hqp",
+          "wiki-concepts-centroidal-dynamics",
+          "wiki-concepts-contact-estimation",
+          "wiki-concepts-mpc-wbc-integration"
+        ],
+        "source_links": [
+          "https://github.com/stack-of-tasks/pinocchio",
+          "https://osqp.org/"
+        ],
         "status": "active"
       },
       "entity-crocoddyl": {
