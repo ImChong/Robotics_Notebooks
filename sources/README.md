@@ -9,12 +9,12 @@
 ### papers/ — 论文来源归档
 | 文件 | 内容 |
 |------|------|
-| [locomotion_rl.md](papers/locomotion_rl.md) | 人形/腿足机器人 RL 论文归档 |
-| [sim2real.md](papers/sim2real.md) | Sim2Real 域随机化/系统辨识论文归档 |
-| [survey_papers.md](papers/survey_papers.md) | 综述论文归档 |
-| [imitation_learning.md](papers/imitation_learning.md) | 模仿学习论文归档 |
-| [whole_body_control.md](papers/whole_body_control.md) | 全身控制/TSID/QP-WBC 论文归档 |
-| [humanoid_hardware.md](papers/humanoid_hardware.md) | 人形机器人硬件论文归档 |
+| [x] [locomotion_rl.md](papers/locomotion_rl.md) | 人形/腿足机器人 RL 论文 ingest 摘要（AMP/ASE/locomotion） |
+| [x] [sim2real.md](papers/sim2real.md) | Sim2Real ingest 摘要（DR/RMA/InEKF） |
+| [ ] [survey_papers.md](papers/survey_papers.md) | 综述论文归档（待提炼） |
+| [x] [imitation_learning.md](papers/imitation_learning.md) | IL ingest 摘要（DAgger/ACT/Diffusion） |
+| [x] [whole_body_control.md](papers/whole_body_control.md) | WBC ingest 摘要（TSID/HQP/Crocoddyl） |
+| [-] [humanoid_hardware.md](papers/humanoid_hardware.md) | 人形机器人硬件论文归档（当前暂缓） |
 
 ### repos/ — 代码仓库来源归档
 | 文件 | 内容 |

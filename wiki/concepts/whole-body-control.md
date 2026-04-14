@@ -76,6 +76,8 @@ WBC 的优势：
 ## 参考来源
 
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文
+- Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作
+- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要
 - [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现
 - [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合
 

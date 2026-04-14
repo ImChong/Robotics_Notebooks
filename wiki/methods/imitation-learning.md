@@ -93,7 +93,9 @@ $$\min_\theta \mathbb{E}_{(s,a) \sim D}[-\log \pi_\theta(a|s)]$$
 ## 参考来源
 
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
-- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis* — IL + RL 融合路线代表
+- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作
+- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要
+- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — ASE 与 locomotion 技能学习补充
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合
 
 ## 关联页面

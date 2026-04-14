@@ -253,6 +253,7 @@ TSID / WBC
 
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID 核心论文
 - Saab et al., *Dynamic whole-body motion generation under rigid contacts and other unilateral constraints* — 约束下全身动作生成
+- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID/HQP 相关论文 ingest 摘要
 - [TSID library](https://github.com/stack-of-tasks/tsid) — 开源实现
 
 ## 和已有页面的关系
