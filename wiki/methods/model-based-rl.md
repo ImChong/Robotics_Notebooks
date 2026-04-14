@@ -160,6 +160,7 @@ Critic: z_t → V(z_t)（在想象中训练）
 - [Optimal Control (OCP)](../concepts/optimal-control.md) — MBRL 的数学基础，动力学模型 + 代价函数
 - [Sim2Real](../concepts/sim2real.md) — MBRL 的样本效率优势直接帮助真实机器人学习
 - [Imitation Learning](./imitation-learning.md) — 可以和 IL 结合：用演示数据初始化模型
+- [Model-Based vs Model-Free 对比](../comparisons/model-based-vs-model-free.md) — 两种范式的多维对比与选型建议
 
 ## 一句话记忆
 

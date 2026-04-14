@@ -102,6 +102,7 @@ status: complete
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Model-Based RL](./model-based-rl.md)（RL 的另一主要范式，利用学习的世界模型提升样本效率）
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）
+- [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习：解决稀疏奖励和训练效率问题的重要训练策略
 
 ## 继续深挖入口
 

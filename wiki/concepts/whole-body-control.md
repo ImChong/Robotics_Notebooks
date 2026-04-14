@@ -87,6 +87,7 @@ WBC 的优势：
 - [Imitation Learning](../methods/imitation-learning.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
+- [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
 
 ## 继续深挖入口
 

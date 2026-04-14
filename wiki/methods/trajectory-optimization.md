@@ -271,6 +271,14 @@ Trajectory Optimization 给出参考轨迹，TSID / WBC 负责把这些参考真
 - Kelly, *An Introduction to Trajectory Optimization: How to Do Your Own Direct Collocation*
 - Posa et al., *Optimization and stabilization of trajectories for constrained dynamical systems*
 
+## 关联页面
+
+- [Optimal Control (OCP)](../concepts/optimal-control.md) — 轨迹优化是 OCP 的数值实现方式
+- [Model Predictive Control (MPC)](./model-predictive-control.md) — MPC 是滚动执行的有限域轨迹优化
+- [LQR / iLQR](../formalizations/lqr.md) — iLQR 是轨迹优化的特殊高效实现
+- [Whole-Body Control](../concepts/whole-body-control.md) — 轨迹优化常作为 WBC 的上层规划器
+- [Drake](../entities/drake.md) — Drake 是轨迹优化的主流工具之一
+
 ## 一句话记忆
 
-> Trajectory Optimization 解决的是“整段动作轨迹怎么设计”，它把机器人运动生成写成一个带动力学和约束的优化问题，是连接最优控制、MPC、步态规划和全身动作生成的核心桥梁。
+> Trajectory Optimization 解决的是”整段动作轨迹怎么设计”，它把机器人运动生成写成一个带动力学和约束的优化问题，是连接最优控制、MPC、步态规划和全身动作生成的核心桥梁。
