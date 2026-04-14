@@ -227,6 +227,8 @@
 
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — legged_gym 原论文
 - 官方仓库：<https://github.com/leggedrobotics/legged_gym>
+- **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Isaac Gym 原论文（legged_gym 的基础平台）
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin et al. 2022 详细摘录
 
 ## 关联页面
 

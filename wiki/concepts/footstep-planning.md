@@ -90,6 +90,8 @@ status: stable
 ## 参考来源
 
 - [sources/papers/mpc.md](../../sources/papers/mpc.md) — ingest 档案（MPC 接触规划相关论文）
+- [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — ingest 档案（Kajita ZMP / Pratt CP / Koolen DCM / Herdt / Deits MICP）
+- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — ingest 档案（MICP / CITO / Tonneau 综述）
 - Pratt et al., *Capture the Flag: Instantaneous Capture Point for Humanoid Push Recovery* (2006) — CP 步位规划基础
 - Bledt et al., *MIT Cheetah 3: Design and Control of a Robust, Dynamic Quadruped Robot* (2018) — 接触序列在线规划
 

@@ -22,6 +22,8 @@
 - **核心贡献：** 在单 GPU 上并行运行 4096 个仿真环境；CPU-GPU 数据拷贝开销降至几乎为零；legged_gym + AnymalC 示例展示 10 分钟 RL 训练；推动了"单机训练真机可用策略"范式
 - **对 wiki 的映射：**
   - [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md)
+  - [legged-gym](../../wiki/entities/legged-gym.md)
+  - [sim2real](../../wiki/concepts/sim2real.md)
 
 ### 3) Isaac Lab: A Unified Modular Platform for Robot Learning（Mittal et al., RAL 2023）
 - **链接：** <https://arxiv.org/abs/2301.04195>
@@ -35,6 +37,8 @@
 - **对 wiki 的映射：**
   - [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md)
   - [mujoco](../../wiki/entities/mujoco.md)
+  - [domain-randomization](../../wiki/concepts/domain-randomization.md)
+  - [sim2real](../../wiki/concepts/sim2real.md)
 
 ## 当前提炼状态
 

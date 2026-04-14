@@ -115,6 +115,7 @@ $$
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Stewart LCP 2000 / Todorov MuJoCo 2012）
+- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — ingest 档案（Posa CITO / Deits MICP / Mordatch CIO）
 - Stewart & Trinkle, *An Implicit Time-Stepping Scheme for Rigid Body Dynamics with Inelastic Collisions and Coulomb Friction* (2000)
 - Posa et al., *A Direct Method for Trajectory Optimization of Rigid Bodies Through Contact* (IJRR 2014) — Contact-Implicit TO 开创性工作
 

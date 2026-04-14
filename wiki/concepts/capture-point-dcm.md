@@ -222,6 +222,7 @@ Capture Point / DCM 是很重要的中间概念。
 - Englsberger et al., *Three-Dimensional Bipedal Walking Control Based on Divergent Component of Motion* (2015) — DCM 三维扩展
 - Koolen et al., *Capturability-based Analysis and Control of Legged Locomotion* (2012) — 可捕获性理论
 - **ingest 档案：** [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)
+- **ingest 档案：** [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — Kajita ZMP / Pratt CP / Koolen DCM 核心论文
 
 ## 推荐继续阅读
 

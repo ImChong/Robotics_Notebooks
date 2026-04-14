@@ -16,6 +16,7 @@
 - **核心贡献：** RSL（ETH）里程碑工作：基于 EKF 融合 IMU + 运动学 + 接触检测，实现 ANYmal 类四足机器人在复杂地形的基座位姿估计；提出接触概率加权以处理打滑
 - **对 wiki 的映射：**
   - [state-estimation](../../wiki/concepts/state-estimation.md)
+  - [locomotion](../../wiki/tasks/locomotion.md)
 
 ### 2) Contact-Aided Invariant Extended Kalman Filtering for Robot State Estimation（Hartley et al., IJRR 2020）
 - **链接：** <https://arxiv.org/abs/1904.09251>
@@ -41,6 +42,8 @@
 - **对 wiki 的映射：**
   - [state-estimation](../../wiki/concepts/state-estimation.md)
   - [whole-body-control](../../wiki/concepts/whole-body-control.md)
+  - [balance-recovery](../../wiki/tasks/balance-recovery.md)
+  - [floating-base-dynamics](../../wiki/concepts/floating-base-dynamics.md)
 
 ## 当前提炼状态
 

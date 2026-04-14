@@ -183,6 +183,7 @@ LIP 太简化，忽略了：
 - Kajita et al., *Introduction to Humanoid Robotics* — LIP/ZMP 理论基础经典教材
 - Kajita et al., *Biped walking pattern generation by using preview control of zero-moment point* — preview control 经典论文
 - Wieber, *Trajectory Free Linear Model Predictive Control for Stable Walking in the Presence of Strong Perturbations* — LIP 与 MPC 的理论连接
+- **ingest 档案：** [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — ZMP / CP / DCM / Herdt 在线步位规划
 
 ## 和已有页面的关系
 

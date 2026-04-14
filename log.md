@@ -280,3 +280,5 @@
 ## [2026-04-14] structural | v6 checklist 新建：Ingest 深度 / TF-IDF 搜索 / Sources 75% 目标 / Marp / link-graph / fetch_to_source
 
 ## [2026-04-14] lint | lint 10 项全绿，2 contextual findings（PPO/MPC 语境性矛盾），覆盖率 53%（31/59）
+
+## [2026-04-14] structural | v6 P0-P6 完成：ingest_coverage / TF-IDF 搜索 / 5 新 sources 文件 / 3 新 wiki 页面 / Marp+link-graph+fetch 工具 / CANONICAL_FACTS 2→6 条 / 覆盖率 53%→73%

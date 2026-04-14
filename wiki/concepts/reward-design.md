@@ -116,6 +116,8 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - Ng et al., *Policy Invariance Under Reward Transformations* (1999) — Potential-based shaping 理论基础
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — locomotion reward 设计工程实践
 - Ma et al., *EUREKA: Human-Level Reward Design via Coding Large Language Models* (2023) — LLM 自动奖励设计
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC locomotion reward 实践
+- **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — Walk These Ways 步态条件化 reward
 
 ## 推荐继续阅读
 

@@ -25,6 +25,7 @@
   - [privileged-training](../../wiki/concepts/privileged-training.md)
   - [sim2real](../../wiki/concepts/sim2real.md)
   - [locomotion](../../wiki/tasks/locomotion.md)
+  - [curriculum-learning](../../wiki/concepts/curriculum-learning.md)
 
 ### 3) Concurrent Training of a Control Policy and a State Estimator（Ji et al., RAL 2022）
 - **链接：** <https://arxiv.org/abs/2202.05738>
@@ -39,6 +40,8 @@
 - **对 wiki 的映射：**
   - [privileged-training](../../wiki/concepts/privileged-training.md)
   - [locomotion](../../wiki/tasks/locomotion.md)
+  - [reward-design](../../wiki/concepts/reward-design.md)
+  - [gait-generation](../../wiki/concepts/gait-generation.md)
 
 ### 5) DreamWaQ: Learning Robust Quadrupedal Locomotion（Nahrendra et al., ICRA 2023）
 - **链接：** <https://arxiv.org/abs/2301.10602>

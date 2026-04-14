@@ -118,6 +118,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - Tobin et al., *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* (2017) — DR 概念提出
 - OpenAI, *Learning Dexterous In-Hand Manipulation* (2019) — DR 大规模应用于操作任务
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络与 actuator DR
+- **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Genesis/Isaac Gym 仿真平台（DR 的执行环境）
 
 ## 关联页面
 

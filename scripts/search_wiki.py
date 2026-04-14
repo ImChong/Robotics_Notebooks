@@ -17,6 +17,7 @@ search_wiki.py — wiki 内容搜索工具
 """
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
@@ -128,15 +129,40 @@ def search(
             # 无关键词时只显示页面标题行
             matched_lines = [(1, [lines[0]] if lines else [""], 0)]
 
+        title_m = re.search(r'^#\s+(.+)', body, re.MULTILINE)
+        page_title = title_m.group(1) if title_m else ""
+        score = compute_score(body, query_words, page_title, case_sensitive)
+
         related_links = extract_related_links(raw, page) if show_related else []
         results.append({
             "path": page.relative_to(REPO_ROOT),
             "fm": fm,
             "matches": matched_lines[:5],  # 最多显示 5 处匹配
             "related": related_links,
+            "score": score,
+            "title": page_title,
         })
 
+    if query_words:
+        results.sort(key=lambda r: r["score"], reverse=True)
     return results
+
+def compute_score(body: str, query_words: list[str], title: str = "",
+                  case_sensitive: bool = False) -> float:
+    """TF × coverage × title_boost 相关度评分（无外部依赖）。"""
+    if not query_words:
+        return 0.0
+    flags = 0 if case_sensitive else re.IGNORECASE
+    n = max(len(body.split()), 1)
+    scores = []
+    for w in query_words:
+        count = len(re.findall(re.escape(w), body, flags))
+        tf = count / n
+        boost = 3.0 if re.search(re.escape(w), title, flags) else 1.0
+        scores.append(tf * boost)
+    coverage = sum(1 for s in scores if s > 0) / len(query_words)
+    return coverage * sum(scores)
+
 
 def highlight(text: str, words: list[str], case_sensitive: bool) -> str:
     """在终端用 ANSI 粗体标亮匹配词。"""
@@ -156,7 +182,8 @@ def print_results(results: list[dict], query_words: list[str], case_sensitive: b
         tags_str = ", ".join(fm.get("tags", [])) or "-"
         status_str = fm.get("status", "?")
 
-        print(f"\n\033[1;36m{r['path']}\033[0m  {type_str}  status={status_str}")
+        score_str = f"  \033[2m[{r['score']:.4f}]\033[0m" if r.get("score", 0) > 0 else ""
+        print(f"\n\033[1;36m{r['path']}\033[0m{score_str}  {type_str}  status={status_str}")
         print(f"  tags: {tags_str}")
 
         for lineno, ctx_lines, match_offset in r["matches"]:
@@ -193,6 +220,7 @@ def main():
     parser.add_argument("--context", type=int, default=1, help="每处匹配显示的上下文行数（默认 1）")
     parser.add_argument("--case", action="store_true", help="区分大小写")
     parser.add_argument("--related", action="store_true", help="同时输出每个匹配页面的关联页面（用于快速找邻居）")
+    parser.add_argument("--json", dest="json_out", action="store_true", help="JSON 格式输出（便于 LLM 处理）")
     args = parser.parse_args()
 
     if not args.query and not args.type_filter and not args.tag_filters:
@@ -207,7 +235,25 @@ def main():
         case_sensitive=args.case,
         show_related=args.related,
     )
-    print_results(results, args.query, args.case)
+
+    if args.json_out:
+        out = []
+        for r in results:
+            snippet = ""
+            if r["matches"]:
+                _, ctx_lines, offset = r["matches"][0]
+                snippet = ctx_lines[offset] if offset < len(ctx_lines) else ""
+            out.append({
+                "path": str(r["path"]),
+                "score": round(r.get("score", 0.0), 6),
+                "type": r["fm"].get("type", ""),
+                "tags": r["fm"].get("tags", []),
+                "title": r.get("title", ""),
+                "snippet": snippet.strip()[:200],
+            })
+        print(json.dumps(out, ensure_ascii=False, indent=2))
+    else:
+        print_results(results, args.query, args.case)
 
 if __name__ == "__main__":
     main()

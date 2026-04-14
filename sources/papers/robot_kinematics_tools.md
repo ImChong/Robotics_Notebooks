@@ -31,12 +31,15 @@
 - **对 wiki 的映射：**
   - [pinocchio](../../wiki/entities/pinocchio.md)
 
-### 4) A Survey of Motion Planning and Control Techniques for Humanoid Robots（Wieber et al., 2016）
+### 4) A Survey of Motion Planning and Control Techniques for Humanoid Robots（Wiebar et al., 2016）
 - **链接：** <https://link.springer.com/chapter/10.1007/978-3-319-29803-8_1>
 - **核心贡献：** 综述人形机器人运动规划全链路：步态生成/ZMP/MPC/全身控制；系统梳理运动学/动力学工具在各层的应用；是学习该领域工具链的权威入门综述
 - **对 wiki 的映射：**
   - [pinocchio](../../wiki/entities/pinocchio.md)
   - [whole-body-control](../../wiki/concepts/whole-body-control.md)
+  - [optimal-control](../../wiki/concepts/optimal-control.md)
+  - [trajectory-optimization](../../wiki/methods/trajectory-optimization.md)
+  - [floating-base-dynamics](../../wiki/concepts/floating-base-dynamics.md)
 
 ## 当前提炼状态
 

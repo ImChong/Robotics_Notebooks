@@ -67,21 +67,56 @@ $$s_t \sim q_\phi(s_t | s_{t-1}, a_{t-1}, o_t), \quad \hat{o}_t \sim p_\theta(\h
 
 **核心思想**：学习一个紧凑的循环世界模型（RSSM），在潜空间中想象未来，用想象轨迹训练 Actor-Critic。
 
+#### RSSM（Recurrent State Space Model）结构
+
+RSSM 将潜状态分为两部分：
+- **确定性状态** $h_t$（循环部分，GRU 输出）：携带历史依赖
+- **随机状态** $z_t$（随机部分）：表示模型不确定性
+
 ```
-感知编码器: o_t → z_t（潜状态）
-世界模型（RSSM）: (z_t, a_t) → z_{t+1}（在潜空间演化）
-奖励模型: z_t → r_t
-Actor: z_t → a_t（在想象中训练）
-Critic: z_t → V(z_t)（在想象中训练）
+# RSSM 前向过程（简化伪代码）
+h_t = GRU(h_{t-1}, z_{t-1}, a_{t-1})      # 确定性状态转移
+z_t ~ p_θ(z_t | h_t)                        # 先验（预测）：从历史预测
+z_t ~ q_φ(z_t | h_t, o_t)                  # 后验（观测更新）：用当前观测修正
+
+# 解码
+o_t_hat = Dec(h_t, z_t)                     # 重建观测（用于训练）
+r_t_hat = Rew(h_t, z_t)                     # 预测奖励
 ```
+
+#### Latent Imagination 训练流程
+
+```
+Phase 1：世界模型学习（真实数据）
+  1. 收集真实 trajectories (o_t, a_t, r_t)
+  2. 编码观测: o_t → z_t（后验）
+  3. 最小化 ELBO = 重建损失 + KL 散度（先验 vs 后验）
+
+Phase 2：Actor-Critic 在潜空间训练（想象数据）
+  1. 从任意状态 (h_t, z_t) 出发
+  2. 用 RSSM 先验 rollout 未来 H 步：
+     (h_{t+1}, z_{t+1}) = RSSM_prior(h_t, z_t, Actor(h_t, z_t))
+  3. 用 Critic 估计每步价值，反向传播更新 Actor
+  4. 无需真实环境交互！
+```
+
+#### DreamerV3 关键改进（Hafner et al., 2023）
+
+| 改进项 | 描述 |
+|--------|------|
+| 对数变换奖励 | $r → \text{symlog}(r)$ 处理稀疏/大量程奖励 |
+| KL 平衡 | 分离 prior/posterior KL 的权重，稳定训练 |
+| Free Nats | 设置 KL 最小值，防止后验过度接近先验 |
+| 固定学习率 | 跨任务无需调参 → 真正的通用性 |
 
 优点：
 - 极高样本效率，几乎在所有任务上优于 Model-Free
-- DreamerV3 实现了真正的通用性（Atari/DMControl/Minecraft 等）
+- DreamerV3 实现了真正的通用性（Atari/DMControl/Minecraft/机器人）
 
 局限：
 - 机器人真实部署的精度要求难以保证（模型误差累积）
-- 高频控制下潜空间动力学不稳定
+- 高频控制（>100Hz）下潜空间动力学不稳定
+- 连续高维观测（点云/深度图）的 RSSM 训练仍不稳定
 
 ### MBPO（Model-Based Policy Optimization, Janner et al. 2019）
 

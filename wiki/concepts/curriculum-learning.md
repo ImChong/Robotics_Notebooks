@@ -101,6 +101,8 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - Bengio et al., *Curriculum Learning* (ICML 2009) — 课程学习原始论文，证明合理样本顺序加速收敛
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — legged_gym 地形课程实现
 - Portelas et al., *Automatic Curriculum Learning for Deep RL: A Short Survey* (2020) — 自动课程学习综述
+- **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — teacher-student 地形课程
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin 地形课程实现
 
 ---
 

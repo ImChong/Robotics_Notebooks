@@ -1,4 +1,4 @@
-.PHONY: lint catalog export search ingest log
+.PHONY: lint catalog export search ingest log coverage graph slides fetch
 
 lint:
 	python3 scripts/lint_wiki.py
@@ -17,3 +17,15 @@ ingest:
 
 log:
 	python3 scripts/append_log.py $(OP) "$(DESC)"
+
+coverage:
+	python3 scripts/ingest_coverage.py $(F)
+
+graph:
+	python3 scripts/generate_link_graph.py
+
+slides:
+	python3 scripts/wiki_to_marp.py $(F)
+
+fetch:
+	python3 scripts/fetch_to_source.py $(URL) --name $(NAME)

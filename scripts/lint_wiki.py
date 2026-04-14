@@ -238,6 +238,26 @@ def lint() -> dict:
             "pos_claims": [r"实时|real.?time|online"],
             "neg_claims": [r"无法实时|not real.?time|计算量.*过大.*实时"],
         },
+        "Domain Randomization 必要性": {
+            "terms": ["domain.randomization", "域随机"],
+            "pos_claims": [r"必须|必要|sim2real.*必|是.*sim2real.*关键"],
+            "neg_claims": [r"降低.*in.distribution|过度随机|随机化.*过度|不一定需要"],
+        },
+        "RL 推理速度": {
+            "terms": ["policy", "RL", "强化学习"],
+            "pos_claims": [r"推理.*快|推理延迟.*低|inference.*fast|low.*latency"],
+            "neg_claims": [r"推理.*慢|推理.*延迟.*高|inference.*slow|latency.*high"],
+        },
+        "WBC 计算复杂度": {
+            "terms": ["WBC", "whole.body"],
+            "pos_claims": [r"实时|real.?time|efficient|高效|fast"],
+            "neg_claims": [r"计算量大|computationally expensive|not real.?time|无法实时"],
+        },
+        "接触力估计精度": {
+            "terms": ["contact", "接触力"],
+            "pos_claims": [r"精确.*估计|accurate.*estimation|高精度"],
+            "neg_claims": [r"估计不准|inaccurate|sim2real.*gap.*contact|接触.*仿真.*差距"],
+        },
     }
     all_pages_content = {p: p.read_text(encoding="utf-8") for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():
