@@ -53,7 +53,7 @@
 
 ### 0.2 schema 更新
 
-- [ ] `schema/ingest-workflow.md`：在每步操作后加入 `追加 log.md 条目` 子步骤（已有内容，待细化）
+- [x] `schema/ingest-workflow.md`：在每步操作后加入 `追加 log.md 条目` 子步骤 + `make ingest/catalog/export/log` Makefile 命令
 - [x] 新建 `schema/log-format.md`：规范 log 格式与可解析前缀约定
 
 ### 完成标准
@@ -94,12 +94,12 @@
 ### 1.3 wiki 参考来源链接化（P0.2 延续）
 
 下列页面现有文字引用，需改为 sources/ 链接：
-- [ ] `wiki/concepts/privileged-training.md` → `sources/papers/privileged_training.md`
-- [ ] `wiki/concepts/system-identification.md` → `sources/papers/system_identification.md`
-- [ ] `wiki/concepts/contact-dynamics.md` → `sources/papers/contact_dynamics.md`
-- [ ] `wiki/concepts/state-estimation.md` → `sources/papers/state_estimation.md`
-- [ ] `wiki/entities/mujoco.md` → `sources/papers/simulation_tools.md`
-- [ ] `wiki/entities/pinocchio.md` → `sources/papers/robot_kinematics_tools.md`
+- [x] `wiki/concepts/privileged-training.md` → `sources/papers/privileged_training.md`
+- [x] `wiki/concepts/system-identification.md` → `sources/papers/system_identification.md`
+- [x] `wiki/concepts/contact-dynamics.md` → `sources/papers/contact_dynamics.md`
+- [x] `wiki/concepts/state-estimation.md` → `sources/papers/state_estimation.md`
+- [x] `wiki/entities/mujoco.md` → `sources/papers/simulation_tools.md`
+- [x] `wiki/entities/pinocchio.md` → `sources/papers/robot_kinematics_tools.md`
 
 ### 完成标准
 - sources/papers/ 文件数：**16+**（+6 新建）
@@ -126,18 +126,17 @@
 
 ### 2.2 现有页面深化
 
-- [ ] `wiki/concepts/floating-base-dynamics.md` → 内容扩充
-  - 当前仅有基础定义；需补充 Featherstone RNEA、空间向量代数、EOM 推导
+- [x] `wiki/concepts/floating-base-dynamics.md` → 内容扩充
+  - 新增 RNEA/CRBA/ABA 算法说明、空间向量代数、浮动基 EOM 约束结构
   
-- [ ] `wiki/comparisons/mpc-vs-rl.md`
+- [x] `wiki/comparisons/mpc-vs-rl.md`
   - 控制领域最核心的对比：MPC（确定性模型+在线规划）vs RL（学习策略+隐式规划）
   - 已有 model-based-vs-model-free，但这个角度更聚焦工程选型
 
 ### 2.3 路线图补全
 
-- [ ] `roadmap/route-b-fullstack.md` → 扩充至完整路线图
-  - 当前仅 13 行占位符，需对标 route-a 的完整度（341 行）
-  - 内容：全栈人形机器人研发路线（感知→规划→控制→部署→测试）
+- [x] `roadmap/route-b-fullstack.md` → 扩充至完整路线图（250+ 行）
+  - L1-L7：感知→规划→ROS2→仿真→硬件→部署→整机集成
 
 ### 完成标准
 - 3 个新 wiki 页面，lint ✅ 0 issues
@@ -151,19 +150,18 @@
 
 ### 3.1 矛盾检测（Contradiction Detection）
 
-- [ ] `lint_wiki.py`：新增 5b 检测 — 关键数字/定义一致性
-  - 检测同一概念在不同页面的不一致描述（e.g. 某算法的样本效率数字相差 10x）
-  - 实现：维护 `CANONICAL_FACTS` dict，对高频数字/定义做跨页面比对
+- [x] `lint_wiki.py`：新增矛盾检测 — `CANONICAL_FACTS` dict，对高频定性描述做跨页面比对
+  - 当前检测 PPO 样本效率、MPC 实时性等（2 个预期 contextual findings）
 
 ### 3.2 陈旧内容检测（Stale Detection）
 
-- [ ] `lint_wiki.py`：新增 6 检测 — sources 文件比对应 wiki 页面更新时，标记需 review
-  - 通过文件 mtime 比对：如果 `sources/papers/xxx.md` 比 `wiki/methods/xxx.md` 新 → ⚠️
+- [x] `lint_wiki.py`：新增陈旧检测 — sources 文件比 wiki 页新 1 天以上时标记
+  - mtime 比对 + 1 天容差（避免同批次误报）
 
 ### 3.3 Sources 孤儿检测
 
-- [ ] `lint_wiki.py`：新增 7 检测 — sources 文件中列出的 wiki 映射目标不存在
-  - 扫描 `sources/papers/*.md` 中 `对 wiki 的映射` 链接，验证目标存在
+- [x] `lint_wiki.py`：新增 sources 孤儿检测 — sources/papers/*.md 中的 wiki 死链
+  - 扫描所有 sources/papers/*.md 链接并验证 wiki 目标存在
 
 ### 3.4 覆盖率报告
 
@@ -200,33 +198,35 @@ Query 产物是 Karpathy 模式的核心价值点：**好答案应该写回 wiki
 
 ---
 
-## P5 · 前端体验提升（持续改进）
+## P5 · 前端体验提升（暂缓）
 
 ### 5.1 搜索体验
 
-- [ ] `index.html` 搜索结果键盘导航：↑↓ 选中条目，Enter 打开详情页
-- [ ] `index.html` 搜索框下方标签云：统计高频 tag，点击直接过滤
+- [-] `index.html` 搜索结果键盘导航：↑↓ 选中条目，Enter 打开详情页
+- [-] `index.html` 搜索框下方标签云：统计高频 tag，点击直接过滤
 
 ### 5.2 detail.html 增强
 
-- [ ] 关联页面列表：当前是文字列表，改为卡片式（显示 summary 片段）
-- [ ] `og:image` 动态设置（基于 page_type 选择预设图标 URL）
+- [-] 关联页面列表：当前是文字列表，改为卡片式（显示 summary 片段）
+- [-] `og:image` 动态设置（基于 page_type 选择预设图标 URL）
 
 ### 5.3 tech-map.html 增强
 
-- [ ] 层级筛选器：多选（目前单选），支持 Ctrl+Click 多层级同时显示
-- [ ] 页面内搜索：在 tech-map 节点中实时过滤匹配节点
+- [-] 层级筛选器：多选（目前单选），支持 Ctrl+Click 多层级同时显示
+- [-] 页面内搜索：在 tech-map 节点中实时过滤匹配节点
+
+> 注：P5 前端改动需要 browser 验证，当前会话无法完成，移入 V6 清单。
 
 ---
 
 ## P6 · 文档与 Schema 补全
 
-- [ ] `schema/ingest-workflow.md` 更新：
+- [x] `schema/ingest-workflow.md` 更新：
   - 加入 `ingest_paper.py` 工具使用说明
   - 加入 `log.md` 追加步骤
   - 更新工具命令（Makefile 版本）
 
-- [ ] `schema/page-types.md` 更新：
+- [x] `schema/page-types.md` 更新：
   - 新增 `query` 类型的详细规范（当前 queries/ 目录规范在 queries/README.md 里，未同步到 schema）
 
 ---

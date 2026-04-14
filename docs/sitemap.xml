@@ -28,6 +28,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-loco-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-locomotion</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-locomotion-reward-design-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-mpc-vs-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-mpc-wbc-integration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-mpc-solver-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

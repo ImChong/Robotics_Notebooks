@@ -25,6 +25,20 @@
 - `repo` — 代码仓库
 - `personal` — 个人理解 / 总结
 
+### 步骤 1.5：使用 `ingest_paper.py` 快速生成模板
+
+对于论文类资料，优先使用工具生成 sources/papers/ 模板，避免手动格式出错：
+
+```bash
+# 生成模板（填写后手动编辑论文摘录）
+make ingest NAME=my_topic TITLE="论文集合标题" DESC="一句话说明"
+
+# 等价命令
+python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
+```
+
+模板生成后，编辑文件填写核心论文摘录（至少 3 条），并在每条下方填写 `对 wiki 的映射`。
+
 ### 步骤 2：进入 `sources/`
 
 原始资料先收录到 `sources/` 对应位置，保留来源信息。
@@ -78,31 +92,37 @@
 每次新增 wiki 页面后，必须重新生成 Page Catalog 更新 index.md：
 
 ```bash
-# 生成最新 Page Catalog 输出到 stdout，手动合并到 index.md 的 Page Catalog 区块
-python3 scripts/generate_page_catalog.py
+make catalog  # 等价于 python3 scripts/generate_page_catalog.py
 ```
-
-或直接替换 index.md 中的 Page Catalog 区块（从 `### Entities` 开始到文件末尾）。
 
 ### 步骤 7：运行导出脚本
 
 如果新增或大幅修改了 wiki 页面，运行导出脚本同步到前端：
 
 ```bash
-python3 scripts/export_minimal.py
+make export  # 等价于 python3 scripts/export_minimal.py
+# 同时更新 exports/index-v1.json、exports/site-data-v1.json、docs/sitemap.xml
 ```
 
-### 步骤 8：记录到 `log.md`
+### 步骤 8：健康检查
 
-每次 ingest 都追加到 `log.md`，格式：
+确认知识库健康状态：
 
-```markdown
-## [YYYY-MM-DD] ingest | <type> | <title>
-
-- <简短说明做了什么事>
-- <影响的其他页面>
-- <任何值得留存的结论>
+```bash
+make lint  # 目标：0 issues
+# 输出包含 Sources 覆盖率报告
 ```
+
+### 步骤 9：记录到 `log.md`
+
+每次 ingest 都追加到 `log.md`：
+
+```bash
+make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
+# 等价于 python3 scripts/append_log.py ingest "sources/papers/xxx.md — 简述"
+```
+
+格式参考 `schema/log-format.md`。
 
 ---
 

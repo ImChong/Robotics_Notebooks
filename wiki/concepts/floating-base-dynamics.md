@@ -168,6 +168,80 @@ floating base 的 6 个自由度通常是 **unactuated**。
 - 通过可控关节和接触力
 - 维持整体姿态、质心与动量稳定
 
+## 核心算法：RNEA / CRBA / ABA
+
+Featherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 Pinocchio/RBDL 等工具的核心：
+
+### RNEA（Recursive Newton-Euler Algorithm）— 逆动力学
+
+**输入**：$q, \dot{q}, \ddot{q}$（广义位置/速度/加速度）  
+**输出**：关节力矩 $\tau$
+
+递推流程（两遍扫描）：
+```
+前向扫描（根→叶）：
+  计算每个链节的空间速度和加速度
+  计算惯性力和科氏力
+
+后向扫描（叶→根）：
+  从叶节点向上累积力
+  输出每个关节处的力矩
+```
+
+浮动基时，base 的 6D 力矩通常不直接对应 actuator，需配合选择矩阵 $S$。
+
+### CRBA（Composite Rigid Body Algorithm）— 惯性矩阵
+
+**计算** $M(q)$，用于后续动力学方程求解：
+
+$$M(q)\ddot{q} + h(q,\dot{q}) = S^T\tau + J_c^T f$$
+
+复杂度 $O(n^2)$，输出惯性矩阵 $M \in \mathbb{R}^{(n+6)\times(n+6)}$。
+
+### ABA（Articulated Body Algorithm）— 正动力学
+
+**输入**：$q, \dot{q}, \tau$  
+**输出**：$\ddot{q}$（关节加速度）
+
+复杂度 $O(n)$，比直接求逆 $M$ 快得多，常用于仿真器时间积分。
+
+---
+
+## 空间向量代数（Spatial Vector Algebra）
+
+Featherstone 的空间向量代数将 3D 力学量统一为 6D 向量，简化推导：
+
+| 空间量 | 维度 | 组成 |
+|--------|------|------|
+| 空间速度（twist）| 6 | $[ω; v]$（角速度 + 线速度） |
+| 空间加速度 | 6 | $[\dot{ω}; \dot{v}]$ |
+| 空间力（wrench）| 6 | $[τ; f]$（力矩 + 力） |
+| 空间惯性 | 6×6 | $I^A = \begin{bmatrix} I_{cm} + mcc^T & mc \\ mc^T & mE \end{bmatrix}$ |
+
+空间运动方程简化为：
+
+$$I^A \dot{V} + v \times^* I^A V = F$$
+
+其中 $v \times^*$ 是空间力的伴随算子。这种表示消除了大量符号混乱，Pinocchio 完全基于此实现。
+
+---
+
+## 浮动基的约束结构
+
+浮动基的 EOM（运动方程）在有接触时展开为：
+
+$$\begin{bmatrix} M_{ff} & M_{fj} \\ M_{jf} & M_{jj} \end{bmatrix} \begin{bmatrix} \ddot{q}_f \\ \ddot{q}_j \end{bmatrix} + \begin{bmatrix} h_f \\ h_j \end{bmatrix} = \begin{bmatrix} 0 \\ \tau \end{bmatrix} + J_c^T f$$
+
+- 左上 $M_{ff}$：base 自身惯性（6×6）
+- 右下 $M_{jj}$：关节惯性（n×n）
+- 耦合块 $M_{fj}$：base-关节交叉耦合
+- $h$ 包含重力、科氏力、离心力
+- 约束 $J_c \ddot{q} = -\dot{J}_c \dot{q}$（接触加速度为零）
+
+WBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配 $\tau$ 和 $f$。
+
+---
+
 ## 和 centroidal dynamics 的关系
 
 Floating Base Dynamics 是更通用、更底层的整机动力学视角。
@@ -270,7 +344,8 @@ floating base 系统还有一个麻烦点：
 
 ## 参考来源
 
-- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考
+- [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）
+- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）
 - Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学
 - Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材
 

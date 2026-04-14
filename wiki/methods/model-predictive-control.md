@@ -168,6 +168,7 @@ IsaacGym /机器人领域常见。
 - [Locomotion](../tasks/locomotion.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Optimal Control (OCP)](../concepts/optimal-control.md)
+- [MPC vs RL](../comparisons/mpc-vs-rl.md) — 控制范式选型对比
 
 ## 推荐继续阅读
 

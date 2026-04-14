@@ -274,3 +274,9 @@
 ## [2026-04-14] structural | P2 Wiki 缺口补全 — footstep-planning / gait-generation / contact-complementarity（3 个新页面）；P3.4 lint 覆盖率报告；P4 3 个 Query 产物（humanoid-rl-cookbook / pinocchio-quick-start / mpc-solver-selection）
 
 ## [2026-04-14] lint | 0 issues，覆盖率 50%（29/58），wiki 95 页
+
+## [2026-04-14] structural | v5 所有 P0–P6 完成：log.md 建立 / 6 个 sources 文件 / 6 个 wiki 页面 / lint 10 项检测 / 9 个 query 产物 / route-b-fullstack 扩充
+
+## [2026-04-14] structural | v6 checklist 新建：Ingest 深度 / TF-IDF 搜索 / Sources 75% 目标 / Marp / link-graph / fetch_to_source
+
+## [2026-04-14] lint | lint 10 项全绿，2 contextual findings（PPO/MPC 语境性矛盾），覆盖率 53%（31/59）

@@ -45,7 +45,7 @@
 - **核心贡献：** 引入 Dreamer（世界模型）到 privileged training 框架；teacher 的隐状态包含地形感知；student 通过 recurrent 网络估计隐状态；提升样本效率
 - **对 wiki 的映射：**
   - [privileged-training](../../wiki/concepts/privileged-training.md)
-  - [model-based-rl](../../wiki/concepts/model-based-rl.md)
+  - [model-based-rl](../../wiki/methods/model-based-rl.md)
 
 ## 当前提炼状态
 
