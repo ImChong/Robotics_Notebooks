@@ -59,10 +59,11 @@
 
 常用操作：
 ```bash
-python3 scripts/lint_wiki.py              # 健康检查
-python3 scripts/search_wiki.py <关键词>  # 搜索
-python3 scripts/generate_page_catalog.py # 刷新 index.md
-python3 scripts/export_minimal.py        # 更新前端 JSON
+make lint                                 # 健康检查（0 issues 为目标）
+make search Q=<关键词>                    # 搜索
+make catalog                             # 刷新 index.md
+make export                              # 更新前端 JSON（81 页）
+python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页面
 ```
 
 维护操作规范见 [schema/ingest-workflow.md](schema/ingest-workflow.md)。
@@ -71,6 +72,6 @@ python3 scripts/export_minimal.py        # 更新前端 JSON
 
 ## 执行清单
 
-[技术栈项目执行清单 v3](docs/tech-stack-next-phase-checklist-v3.md) — 当前阶段目标与待办
+[技术栈项目执行清单 v4](docs/tech-stack-next-phase-checklist-v4.md) — 当前阶段目标与待办
 
-历史版本：[v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[v3](docs/tech-stack-next-phase-checklist-v3.md) · [v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)
