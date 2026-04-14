@@ -139,6 +139,7 @@
 
 - [x] 在 `scripts/search_wiki.py` 中增加 `--related` 选项：输出匹配页面的关联页面（用于 Query 时快速找邻居）
 - [ ] 考虑：是否引入 [qmd](https://github.com/tobi/qmd) 做 BM25/向量混合搜索（Karpathy 推荐工具）
+- [x] 冲突治理：约定导出文件（`exports/*.json` 与 `docs/exports/*.json`）仅在必要时单独提交，避免与内容编辑混在一个 PR 导致高冲突率
 
 ### 3.3 Lint 规则扩展
 
@@ -201,6 +202,7 @@ python3 scripts/export_minimal.py          # 更新 exports/ JSON
 ### P3 工具链推进（2026-04-14）
 - [x] 新建根目录 `Makefile`，提供 `make lint / make catalog / make export / make search Q=` 快捷命令
 - [x] `scripts/search_wiki.py` 新增 `--related` 选项，可在查询结果中输出「关联页面」邻接信息
+- [x] 补充冲突治理约定：导出 JSON 与内容改动尽量拆分提交，降低 PR 冲突概率
 
 ### P1 深挖推进（2026-04-14）
 - [x] `wiki/concepts/sim2real.md` 补充 RMA（Rapid Motor Adaptation）步骤化说明（教师策略→适应器→学生部署→在线更新）

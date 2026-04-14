@@ -263,3 +263,12 @@
 - 新建 `Makefile`：统一 `lint/catalog/export/search` 常用命令入口
 - 更新 `scripts/search_wiki.py`：新增 `--related` 参数，输出匹配页面的「关联页面」列表
 - 同步更新 `docs/tech-stack-next-phase-checklist-v3.md` 的 P3 状态与推进记录
+
+
+---
+
+## [2026-04-14] lint | merge-conflict-check | PR 冲突排查与约定补充
+
+- 排查结果：仓库工作区无冲突标记（未发现 `<<<<<<< / ======= / >>>>>>>`）
+- 风险定位：历史冲突高发点主要在 `exports/*.json` 与 `docs/exports/*.json` 大文件并发改动
+- 处理动作：在 `docs/tech-stack-next-phase-checklist-v3.md` 补充冲突治理约定（导出 JSON 与内容改动尽量拆分提交）
