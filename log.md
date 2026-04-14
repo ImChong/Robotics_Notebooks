@@ -235,3 +235,12 @@
 ### lint 历史对比
 - 改进前：82 个问题（大量断链、孤儿页）
 - 改进后：21 个问题（0 断链，0 孤儿页，0 空壳页；剩余均为"缺失参考来源"可逐步回填）
+
+---
+
+## [2026-04-14] ingest | papers | P0 Sources 层激活（checklist v3 推进）
+
+- 完成 `sources/papers/locomotion_rl.md`、`whole_body_control.md`、`imitation_learning.md`、`sim2real.md` 的 ingest 摘要升级（标题/贡献/wiki 映射）
+- 更新 `sources/README.md`：为 papers 列表增加 `[x]/[ ]/[-]` 提炼状态标记
+- 在 6 个 wiki 页面的 `## 参考来源` 中加入 `sources/papers/*.md` 实体链接（RL/IL/Sim2Real/WBC/TSID/HQP）
+- 同步更新 `docs/tech-stack-next-phase-checklist-v3.md` 的 P0 任务状态与推进记录
