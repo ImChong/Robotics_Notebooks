@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [state-estimation, ekf, kalman, imu, contact]
+status: complete
+---
+
 # State Estimation
 
 **State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。

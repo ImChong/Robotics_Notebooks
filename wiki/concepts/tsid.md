@@ -1,3 +1,9 @@
+---
+type: concept
+tags: [control, wbc, inverse-dynamics, optimization, humanoid]
+status: complete
+---
+
 # TSID
 
 **TSID（Task Space Inverse Dynamics，任务空间逆动力学）** 是一种典型的人形机器人全身控制方法，用来在满足动力学与接触约束的前提下，把任务空间目标转成可执行的关节加速度、力矩和接触力。

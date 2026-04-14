@@ -1,3 +1,9 @@
+---
+type: method
+tags: [il, diffusion, manipulation, generative-model]
+status: complete
+---
+
 # Diffusion Policy
 
 **Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。

@@ -1,3 +1,9 @@
+---
+type: method
+tags: [rl, policy-optimization, ppo, sac, locomotion]
+status: complete
+---
+
 # Policy Optimization
 
 **策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。

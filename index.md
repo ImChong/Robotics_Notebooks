@@ -113,6 +113,7 @@ State Estimation / System Identification / Sim2Real
 ---
 
 
+
 ### Entities（实体页）
 
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
@@ -140,13 +141,16 @@ State Estimation / System Identification / Sim2Real
 
 ### Wiki Methods（方法页）
 
+- [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Imitation Learning (IL)](methods/imitation-learning.md) — 模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
+- [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL)](methods/reinforcement-learning.md) — 强化学习**：通过与环境交互，以最大化累积 reward 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Trajectory Optimization](methods/trajectory-optimization.md) — Trajectory Optimization（轨迹优化）**：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹。 `📅unknown` `[method_page]`
 
 ### Wiki Tasks（任务页）
 
+- [Loco-Manipulation](tasks/loco-manipulation.md) — 移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。 `📅unknown` `[task_page]`
 - [Locomotion](tasks/locomotion.md) — 运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。 `📅unknown` `[task_page]`
 - [Manipulation](tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`

@@ -36,12 +36,22 @@ def extract_frontmatter_date(path: Path) -> str:
         pass
     return "unknown"
 
+def strip_frontmatter(content: str) -> str:
+    """去除 YAML frontmatter（--- ... ---）。"""
+    if not content.startswith("---"):
+        return content
+    end = content.find("\n---", 3)
+    if end == -1:
+        return content
+    return content[end + 4:].lstrip()
+
 def extract_first_sentence(content: str) -> str:
     """取第一段非空、非标题的正文句子作为 summary。"""
+    content = strip_frontmatter(content)
     lines = content.splitlines()
     for line in lines:
         line = line.strip()
-        if not line or line.startswith("#") or line.startswith(">"):
+        if not line or line.startswith("#") or line.startswith(">") or line == "---":
             continue
         # 截断到 100 字符
         s = line[:100].strip("[]()#*`|")

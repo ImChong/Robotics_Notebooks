@@ -1,3 +1,9 @@
+---
+type: task
+tags: [manipulation, il, diffusion-policy, humanoid]
+status: draft
+---
+
 # Manipulation
 
 **操作**：让机器人的手/末端执行器抓取、移动、操作物体。
@@ -54,10 +60,18 @@
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [Diffusion Policy](../methods/diffusion-policy.md)
 
 ## 关联任务
 
 - [Locomotion](./locomotion.md)：loco-manipulation 是两者的结合
+- [Loco-Manipulation](./loco-manipulation.md)：边走边操作，manipulation 的全身协调扩展
+
+## 参考来源
+
+- Zhu et al., *Dexterous Manipulation from Images: Autonomous Grasping, Regrasping, Reorientation* — 视觉操作代表
+- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — IL 操作任务论文集合
+- [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/) — 当前 SOTA IL 方法
 
 ## 推荐继续阅读
 

@@ -2,6 +2,38 @@
 
 本文件定义 `wiki/` 中的页面类型。
 
+---
+
+## YAML Frontmatter 规范
+
+每个 wiki 页面顶部应包含 YAML frontmatter，供 Obsidian Dataview 插件查询：
+
+```yaml
+---
+type: concept        # concept | method | task | comparison | formalization | entity | overview | query
+tags: [locomotion, control, dynamics]
+status: complete     # stub | draft | complete
+---
+```
+
+**字段说明：**
+- `type`：页面类型，对应下方各页面类型定义
+- `tags`：相关主题标签，用于 Dataview 过滤和图谱分析
+- `status`：`stub`（只有骨架）/ `draft`（基本完成但待完善）/ `complete`（满足最低质量标准）
+
+**Dataview 查询示例（在 Obsidian 中）：**
+```dataview
+TABLE type, status, tags
+FROM "wiki"
+WHERE status = "stub"
+SORT type ASC
+```
+
+> 为什么需要 frontmatter：Karpathy LLM Wiki 模式中明确提到，通过 YAML frontmatter + Dataview 可以对 wiki 做动态查询，
+> 避免维护静态目录，让知识库的元数据也保持"活的"状态。
+
+---
+
 ## 1. Overview Page
 回答：一个领域整体是什么。
 

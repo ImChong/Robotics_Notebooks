@@ -1,3 +1,9 @@
+---
+type: task
+tags: [locomotion, bipedal, humanoid, rl, control]
+status: complete
+---
+
 # Locomotion
 
 **运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。
@@ -68,6 +74,7 @@
 ## 关联任务
 
 - [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation
+- [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战
 
 ## 继续深挖入口
 
@@ -88,3 +95,4 @@
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）
 - Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
 - Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）
+- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线
