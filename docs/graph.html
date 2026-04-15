@@ -406,7 +406,7 @@
           <span>排斥力</span>
           <span class="slider-val" id="val-charge">-260</span>
         </div>
-        <input type="range" id="sl-charge" min="50" max="800" value="260" step="10"
+        <input type="range" id="sl-charge" min="50" max="1500" value="260" step="10"
                aria-label="排斥力" />
       </div>
 
@@ -698,7 +698,9 @@
       .on('mousemove', moveTooltip)
       .on('mouseleave', () => {
         node.select('.node-glow').attr('fill-opacity', 0);
-        // 离开时恢复过滤状态（而不是无条件重置），保证筛选不失效
+        // 先把边颜色恢复为基础色（hover 期间被染成节点色）
+        link.attr('stroke', edgeBaseColor());
+        // 再恢复过滤状态（而不是无条件重置），保证筛选不失效
         applyFilters();
         hideTooltip();
       })
@@ -770,7 +772,8 @@
                       (!hasQ || (s._info.title||s.label||'').toLowerCase().includes(searchQuery));
           const tOk = (!hasType || activeTypes.has(t.type)) &&
                       (!hasQ || (t._info.title||t.label||'').toLowerCase().includes(searchQuery));
-          return (sOk && tOk) ? 0.65 : 0.03;  // Bug2: 可见边保留亮度，被过滤边极淡
+          // 可见边保持正常亮度（不额外高亮），被过滤边极淡；高亮仅发生在 hover 期间
+          return (sOk && tOk) ? 1 : 0.03;
         })
         .attr('stroke-width', e => {
           if (!hasType && !hasQ) return linkWidthBase;
@@ -781,7 +784,7 @@
                       (!hasQ || (s._info.title||s.label||'').toLowerCase().includes(searchQuery));
           const tOk = (!hasType || activeTypes.has(t.type)) &&
                       (!hasQ || (t._info.title||t.label||'').toLowerCase().includes(searchQuery));
-          return (sOk && tOk) ? linkWidthBase * 1.2 : linkWidthBase * 0.5;
+          return (sOk && tOk) ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
     }
