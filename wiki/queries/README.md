@@ -60,6 +60,9 @@
 | [mpc-solver-selection](./mpc-solver-selection.md) | 机器人 MPC 求解器怎么选：OSQP vs qpOASES vs Acados vs FORCES Pro？ | MPC、QP Solver、Optimization、Acados |
 | [reward-design-guide](./reward-design-guide.md) | 从零设计 locomotion RL 的 reward 函数？核心原则和常见陷阱？ | Reward、Curriculum、Locomotion、PPO |
 | [sim2real-gap-reduction](./sim2real-gap-reduction.md) | sim2real transfer 失败的根因分类与对应缩减策略？ | Sim2Real、DR、ActuatorNet、Privileged Training |
+| [hardware-comparison](./hardware-comparison.md) | 主流人形机器人平台在硬件能力上有何差异？如何根据任务选择平台？ | Humanoid、Actuator、Locomotion、WBC vs RL |
+| [rl-hyperparameter-guide](./rl-hyperparameter-guide.md) | 训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？ | RL、PPO、SAC、Locomotion、Reward Design |
+| [when-to-use-wbc-vs-rl](./when-to-use-wbc-vs-rl.md) | 面对具体机器人控制任务，应该选择 WBC、RL，还是两者结合？ | WBC、RL、Locomotion、Decision、Architecture |
 
 ---
 

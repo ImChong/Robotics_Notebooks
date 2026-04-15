@@ -1,0 +1,54 @@
+name: Auto Export & Lint
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'sources/**'
+      - 'roadmap/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Lint wiki
+        run: python3 scripts/lint_wiki.py --report
+
+      - name: Update catalog (index.md)
+        run: python3 scripts/generate_page_catalog.py
+
+      - name: Export JSON + sitemap
+        run: python3 scripts/export_minimal.py
+
+      - name: Update link graph
+        run: |
+          python3 scripts/generate_link_graph.py
+          cp exports/link-graph.json docs/exports/link-graph.json
+
+      - name: Commit updated exports
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add exports/ docs/exports/ index.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: auto-export [skip ci]"
+            git push
+          fi
