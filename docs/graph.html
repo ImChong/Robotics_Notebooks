@@ -431,6 +431,17 @@
         <input type="range" id="sl-link" min="2" max="60" value="10" step="1"
                aria-label="连接线粗细" />
       </div>
+
+      <div class="slider-divider"></div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>节点字体大小</span>
+          <span class="slider-val" id="val-font">10px</span>
+        </div>
+        <input type="range" id="sl-font" min="6" max="22" value="10" step="1"
+               aria-label="节点字体大小" />
+      </div>
     </div>
 
     <div id="graph-hint">
@@ -464,6 +475,7 @@
     let chargeStrength = -260;   // 排斥力（负值）
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
+    let labelFontSize  = 10;     // 节点标签字体大小（px）
 
     /* ── 主题辅助（响应 data-theme 切换）── */
     function isDark() {
@@ -578,7 +590,7 @@
       .attr('class', 'node-circle')
       .attr('r', scaledRadius)
       .attr('fill', d => nodeColor(d))
-      .attr('fill-opacity', 0.82)
+      .attr('fill-opacity', 1)
       .attr('stroke', d => nodeColor(d))
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.35);
@@ -656,20 +668,24 @@
     node
       .on('mouseenter', (ev, d) => {
         buildNeighborSet(d);
-        node.select('.node-circle').attr('fill-opacity', n =>
-          neighborSet.has(n.id) ? 1 : 0.15);
+        const hasFilter = activeTypes.size > 0 || searchQuery.length > 0;
+        node.select('.node-circle').attr('fill-opacity', n => {
+          // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
+          if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
+          return neighborSet.has(n.id) ? 1 : 0.15;
+        });
         node.select('.node-glow').attr('fill-opacity', n =>
           n.id === d.id ? 0.18 : 0);
         link
           .attr('stroke', e => {
             const s = typeof e.source === 'object' ? e.source.id : e.source;
             const t = typeof e.target === 'object' ? e.target.id : e.target;
-            return (s === d.id || t === d.id) ? nodeColor(d) : 'rgba(255,255,255,0.04)';
+            const dimColor = isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)';
+            return (s === d.id || t === d.id) ? nodeColor(d) : dimColor;
           })
           .attr('stroke-width', e => {
             const s = typeof e.source === 'object' ? e.source.id : e.source;
             const t = typeof e.target === 'object' ? e.target.id : e.target;
-            // 高亮时用基础粗细的 1.8 倍，非邻居用 0.5 倍
             return (s === d.id || t === d.id) ? linkWidthBase * 1.8 : linkWidthBase * 0.5;
           })
           .attr('stroke-opacity', e => {
@@ -681,12 +697,9 @@
       })
       .on('mousemove', moveTooltip)
       .on('mouseleave', () => {
-        node.select('.node-circle').attr('fill-opacity', 0.82);
         node.select('.node-glow').attr('fill-opacity', 0);
-        link
-          .attr('stroke', edgeBaseColor())
-          .attr('stroke-width', linkWidthBase)
-          .attr('stroke-opacity', 1);
+        // 离开时恢复过滤状态（而不是无条件重置），保证筛选不失效
+        applyFilters();
         hideTooltip();
       })
       .on('click', (ev, d) => {
@@ -729,30 +742,47 @@
       applyFilters();
     });
 
+    /* 当前可见节点 ID 集合（供 hover 检查筛选状态用） */
+    const visibleNodeIds = new Set();
+
     function applyFilters() {
       const hasType = activeTypes.size > 0;
       const hasQ    = searchQuery.length > 0;
+      visibleNodeIds.clear();
       let visible = 0;
       node.each(function(d) {
         const ok = (!hasType || activeTypes.has(d.type)) &&
                    (!hasQ || (d._info.title || d.label || '').toLowerCase().includes(searchQuery)
                            || d.id.toLowerCase().includes(searchQuery));
-        if (ok) visible++;
+        if (ok) { visible++; visibleNodeIds.add(d.id); }
         d3.select(this).select('.node-circle')
-          .attr('fill-opacity', ok ? 0.82 : 0.06)
+          .attr('fill-opacity', ok ? 1 : 0.06)   // Bug3: 不透明节点才能真正盖住连接线
           .attr('stroke-opacity', ok ? 0.35 : 0.05);
         d3.select(this).select('.node-label').style('opacity', ok && hasQ ? 0.9 : null);
       });
-      link.attr('stroke-opacity', e => {
-        if (!hasType && !hasQ) return 1;
-        const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
-        const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-        if (!s || !t) return 0.05;
-        const ok = (!hasType || (activeTypes.has(s.type) && activeTypes.has(t.type))) &&
-                   (!hasQ   || ((s._info.title||s.label||'').toLowerCase().includes(searchQuery)
-                              && (t._info.title||t.label||'').toLowerCase().includes(searchQuery)));
-        return ok ? 0.4 : 0.02;
-      });
+      link
+        .attr('stroke-opacity', e => {
+          if (!hasType && !hasQ) return 1;
+          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
+          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
+          if (!s || !t) return 0.03;
+          const sOk = (!hasType || activeTypes.has(s.type)) &&
+                      (!hasQ || (s._info.title||s.label||'').toLowerCase().includes(searchQuery));
+          const tOk = (!hasType || activeTypes.has(t.type)) &&
+                      (!hasQ || (t._info.title||t.label||'').toLowerCase().includes(searchQuery));
+          return (sOk && tOk) ? 0.65 : 0.03;  // Bug2: 可见边保留亮度，被过滤边极淡
+        })
+        .attr('stroke-width', e => {
+          if (!hasType && !hasQ) return linkWidthBase;
+          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
+          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
+          if (!s || !t) return linkWidthBase * 0.5;
+          const sOk = (!hasType || activeTypes.has(s.type)) &&
+                      (!hasQ || (s._info.title||s.label||'').toLowerCase().includes(searchQuery));
+          const tOk = (!hasType || activeTypes.has(t.type)) &&
+                      (!hasQ || (t._info.title||t.label||'').toLowerCase().includes(searchQuery));
+          return (sOk && tOk) ? linkWidthBase * 1.2 : linkWidthBase * 0.5;
+        });
       updateCount(visible);
     }
 
@@ -815,6 +845,13 @@
       document.getElementById('val-link').textContent = linkWidthBase.toFixed(1) + 'px';
       // 立即更新，无需重启模拟
       link.attr('stroke-width', linkWidthBase);
+    });
+
+    /* 4. 节点字体大小 slider（min=6, max=22, step=1） */
+    document.getElementById('sl-font').addEventListener('input', ev => {
+      labelFontSize = Number(ev.target.value);
+      document.getElementById('val-font').textContent = labelFontSize + 'px';
+      label.attr('font-size', labelFontSize + 'px');
     });
 
   })();
