@@ -126,7 +126,13 @@
       pointer-events: none;
       transition: opacity .12s;
     }
-    #graph-tooltip.hidden { opacity: 0; }
+    #graph-tooltip.hidden { opacity: 0; pointer-events: none !important; }
+    /* 固定卡片（点击后）允许鼠标交互，以便点击链接 */
+    #graph-tooltip.tt-pinned {
+      pointer-events: auto;
+      border-color: rgba(0,212,255,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,255,0.15);
+    }
     .tt-type {
       display: inline-block;
       font-size: .7rem;
@@ -139,7 +145,16 @@
     }
     .tt-title { font-size: .92rem; font-weight: 700; color: #e6edf3; margin-bottom: 5px; line-height: 1.3; }
     .tt-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
-    .tt-hint { font-size: .72rem; color: rgba(0,212,255,0.5); margin-top: 7px; }
+    .tt-link {
+      display: inline-block;
+      font-size: .72rem;
+      color: rgba(0,212,255,0.8);
+      margin-top: 9px;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(0,212,255,0.3);
+      transition: color .12s, border-color .12s;
+    }
+    .tt-link:hover { color: #00d4ff; border-color: rgba(0,212,255,0.7); }
 
     /* ── 图例 ── */
     #graph-legend {
@@ -247,7 +262,12 @@
     }
     [data-theme="light"] .tt-title   { color: #1a1a1a; }
     [data-theme="light"] .tt-summary { color: rgba(0,0,0,0.5); }
-    [data-theme="light"] .tt-hint    { color: rgba(45,116,218,0.6); }
+    [data-theme="light"] .tt-link    { color: rgba(22,90,180,0.85); border-color: rgba(22,90,180,0.3); }
+    [data-theme="light"] .tt-link:hover { color: #1659b4; border-color: rgba(22,90,180,0.7); }
+    [data-theme="light"] #graph-tooltip.tt-pinned {
+      border-color: rgba(22,90,180,0.35);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(22,90,180,0.15);
+    }
     /* 图例 */
     [data-theme="light"] #graph-legend {
       background: rgba(255,255,255,0.94);
@@ -624,18 +644,40 @@
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
 
-    function showTooltip(ev, d) {
+    /* ── 固定卡片状态 ── */
+    let pinnedNode = null;
+    let pinnedLeft = 0, pinnedTop = 0;
+
+    function tooltipHtml(d) {
       const color = nodeColor(d);
       const info = d._info;
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
-      tooltip.innerHTML =
-        `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
-        `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
-        (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
-        `<div class="tt-hint">点击打开详情页 →</div>`;
-      tooltip.classList.remove('hidden');
+      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+      return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
+             `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
+             (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
+             `<a class="tt-link" href="${detailUrl}" target="_blank" rel="noopener noreferrer">打开详情页 →</a>`;
+    }
+
+    function showTooltip(ev, d) {
+      tooltip.innerHTML = tooltipHtml(d);
+      tooltip.classList.remove('hidden', 'tt-pinned');
       moveTooltip(ev);
+    }
+
+    function restorePinned() {
+      tooltip.innerHTML = tooltipHtml(pinnedNode);
+      tooltip.classList.remove('hidden');
+      tooltip.classList.add('tt-pinned');
+      tooltip.style.left = pinnedLeft + 'px';
+      tooltip.style.top  = pinnedTop + 'px';
+    }
+
+    function dismissPinned() {
+      pinnedNode = null;
+      tooltip.classList.remove('tt-pinned');
+      hideTooltip();
     }
 
     function moveTooltip(ev) {
@@ -695,18 +737,31 @@
           });
         showTooltip(ev, d);
       })
-      .on('mousemove', moveTooltip)
+      .on('mousemove', ev => {
+        // 已固定卡片时不跟随鼠标移动
+        if (!pinnedNode) moveTooltip(ev);
+      })
       .on('mouseleave', () => {
         node.select('.node-glow').attr('fill-opacity', 0);
-        // 先把边颜色恢复为基础色（hover 期间被染成节点色）
         link.attr('stroke', edgeBaseColor());
-        // 再恢复过滤状态（而不是无条件重置），保证筛选不失效
         applyFilters();
-        hideTooltip();
+        // 有固定节点时恢复固定卡片，否则隐藏
+        if (pinnedNode) restorePinned(); else hideTooltip();
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        window.open('detail.html?id=' + encodeURIComponent(toDetailId(d.id)), '_blank');
+        if (pinnedNode === d) {
+          // 再次点击同一节点：取消固定
+          dismissPinned();
+        } else {
+          // 固定此节点的卡片
+          pinnedNode = d;
+          showTooltip(ev, d);
+          tooltip.classList.add('tt-pinned');
+          // 记录固定位置，用于 mouseleave 后恢复
+          pinnedLeft = parseFloat(tooltip.style.left);
+          pinnedTop  = parseFloat(tooltip.style.top);
+        }
       });
 
     /* ── 节点计数 ── */
@@ -715,6 +770,12 @@
         `${visible} / ${nodes.length} 节点 · ${edges.length} 边`;
     }
     updateCount(nodes.length);
+
+    /* ── 点击背景 / Escape 关闭固定卡片 ── */
+    svg.on('click', () => { if (pinnedNode) dismissPinned(); });
+    document.addEventListener('keydown', ev => {
+      if (ev.key === 'Escape' && pinnedNode) dismissPinned();
+    });
 
     /* ── 类型过滤 ── */
     let activeTypes = new Set();
