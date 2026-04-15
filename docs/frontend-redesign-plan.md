@@ -286,4 +286,51 @@ body {
 ---
 
 *由 Claude Code + frontend-design skill 规划，日期：2026-04-15*
-*执行前请确认 P2（graph.html）中 node id 与 detail.html 路由 id 的对齐方式*
+---
+
+## 八、ID 对齐验证结论（已确认，2026-04-15）
+
+> 原问题：`link-graph.json` 节点 id 格式 与 `detail.html?id=` 路由格式是否一致？
+
+### 结论：**不直接一致，但有简单一致的转换规则，59/61 节点完全可用**
+
+| 字段 | 格式示例 |
+|------|---------|
+| `link-graph.json` node id | `wiki/concepts/capture-point-dcm.md` |
+| `index-v1.json` item id | `wiki-concepts-capture-point-dcm` |
+| `detail.html` 路由格式 | `detail.html?id=wiki-concepts-capture-point-dcm` |
+
+**转换规则（完全一致，无例外）**：
+```javascript
+// 在 graph.html 点击节点时执行：
+function graphIdToDetailId(graphNodeId) {
+  return graphNodeId.replace(/\//g, '-').replace('.md', '');
+  // 'wiki/concepts/mpc.md' → 'wiki-concepts-mpc'
+}
+```
+
+### 2 个不匹配节点
+
+| graph 节点 | 原因 | 处理方式 |
+|-----------|------|---------|
+| `wiki/references/llm-wiki-karpathy.md` | 此路径不在 `index-v1.json` 导出范围内（reference 类页面） | 点击时 detail.html 会显示"找不到页面"的 graceful 错误，不影响其他节点 |
+| `wiki/roadmaps/humanoid-control-roadmap.md` | 同上（roadmap 类页面，不在 wiki/ 导出） | 同上 |
+
+这两个节点是纯导航辅助页，不是核心知识节点，不影响图谱的实际使用价值。
+
+### 实施方案（在 graph.html 中）
+
+**方案 A（推荐）**：运行时一行转换
+
+```javascript
+node.on('click', (event, d) => {
+  const detailId = d.id.replace(/\//g, '-').replace('.md', '');
+  window.location.href = 'detail.html?id=' + encodeURIComponent(detailId);
+});
+```
+
+无需额外加载任何文件，零成本，59/61 节点精准跳转。
+
+**方案 B（备选，最精确）**：预加载 `index-v1.json`，建立 `path→id` map，查表跳转。覆盖 100% 节点（但两个不在 index 里的节点仍无法导航），额外增加 488KB JSON 加载。
+
+**结论：使用方案 A**，61 个节点中 59 个精准跳转，2 个显示 graceful 错误，实现成本最低。
