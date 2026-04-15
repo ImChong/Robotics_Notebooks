@@ -15,7 +15,7 @@
 
 想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++）和本科数学基础。
 
-不知道从哪开始？直接看 [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)。
+不知道从哪开始？直接看 [运动控制成长路线](roadmap/route-a-motion-control.md)。
 
 ---
 
@@ -31,11 +31,11 @@
 
 | 你的目标 | 入口 |
 |---------|------|
-| 可视化探索知识图谱 | [🕸️ 知识图谱（graph.html）](https://imchong.github.io/Robotics_Notebooks/graph.html) |
-| 有一条路线照着走 | [路线A：运动控制成长路线](roadmap/route-a-motion-control.md) |
-| 用 RL 做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
-| 学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
-| 浏览所有知识页 | [index.md 导航总入口](index.md) |
+| 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
+| 有一条路线照着走 | [运动控制成长路线](roadmap/route-a-motion-control.md) |
+| 用强化学习做运动控制 | [强化学习运动控制路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
+| 学模仿学习与技能迁移 | [模仿学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
+| 浏览所有知识页 | [知识页导航总入口](index.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
 ---
@@ -57,7 +57,7 @@
 
 ## 知识库维护方法论
 
-本项目采用 [Karpathy LLM Wiki 模式](wiki/references/llm-wiki-karpathy.md)：三层架构（sources → wiki → schema），LLM 负责维护和交叉引用，人类负责资料筛选和方向判断。
+本项目采用 [Karpathy 知识库方法论](wiki/references/llm-wiki-karpathy.md)：三层架构（sources → wiki → schema），LLM 负责维护和交叉引用，人类负责资料筛选和方向判断。
 
 常用操作：
 ```bash
@@ -69,7 +69,7 @@ make ingest NAME=<stem> TITLE="..." DESC="..."  # 生成 sources/papers/ 模板
 python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页面
 ```
 
-维护操作规范见 [schema/ingest-workflow.md](schema/ingest-workflow.md)。
+维护操作规范见 [维护操作规范](schema/ingest-workflow.md)。
 
 ---
 
@@ -80,17 +80,19 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 - **61 个节点**：概念、方法、任务、实体、对比、Query 产物
 - **342 条边**：wiki 页面间的内链关系
 - 节点按类型着色，大小反映连接度（入度 + 出度）
-- 悬停显示标题 + 摘要，点击跳转详情页
+- 悬停 / 点击显示浮动卡片，点击卡片内"打开详情页"跳转对应页面
 - 支持按类型过滤、关键词搜索、缩放平移
+- 物理参数调节（排斥力 / 节点大小 / 连接线粗细 / 字体大小）
+- 支持亮色 / 暗色主题切换
 
 更新图谱数据：`make graph`（自动重新生成并同步至 docs/exports/）
 
-前端重设计计划：[docs/frontend-redesign-plan.md](docs/frontend-redesign-plan.md)
+前端重设计计划：[前端重设计计划](docs/frontend-redesign-plan.md)
 
 ---
 
 ## 执行清单
 
-[技术栈项目执行清单 v6](docs/tech-stack-next-phase-checklist-v6.md) — 当前阶段目标与待办（Ingest 深度 / TF-IDF 搜索 / Sources 75% 覆盖率）
+[技术栈项目执行清单 v7](docs/tech-stack-next-phase-checklist-v7.md) — 当前阶段目标与待办（图谱主页集成 / CI/CD 自动化 / Sources 82% 覆盖率）
 
-历史版本：[v5](docs/tech-stack-next-phase-checklist-v5.md) · [v4](docs/tech-stack-next-phase-checklist-v4.md) · [v3](docs/tech-stack-next-phase-checklist-v3.md) · [v2](docs/tech-stack-next-phase-checklist-v2.md) · [v1](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)
