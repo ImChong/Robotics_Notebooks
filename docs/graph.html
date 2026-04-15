@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Robotics Notebooks 知识图谱 — 61 个概念节点、342 条关联边的力导向可视化" />
+  <title>知识图谱 | Robotics Notebooks</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── 图谱页专用样式（不影响其他页面）── */
+    body { overflow: hidden; }
+
+    /* ── 工具栏 ── */
+    #graph-toolbar {
+      position: fixed;
+      top: var(--header-h);
+      left: 0; right: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 20px;
+      background: rgba(13, 17, 23, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-wrap: wrap;
+    }
+    #graph-search {
+      height: 34px;
+      padding: 0 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.06);
+      color: #e6edf3;
+      font-size: .85rem;
+      width: 180px;
+      outline: none;
+      transition: border-color .18s, width .22s;
+    }
+    #graph-search::placeholder { color: rgba(255,255,255,0.3); }
+    #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
+    .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
+    .chip {
+      height: 28px;
+      padding: 0 11px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.5);
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
+    .chip[data-type=""].active           { background: #e6edf3; }
+    .chip[data-type="concept"].active    { background: #60a5fa; }
+    .chip[data-type="method"].active     { background: #34d399; }
+    .chip[data-type="task"].active       { background: #f472b6; }
+    .chip[data-type="entity"].active     { background: #fbbf24; }
+    .chip[data-type="comparison"].active { background: #c084fc; }
+    .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
+    .chip[data-type="formalization"].active { background: #fb923c; }
+    .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+    #graph-node-count {
+      font-size: .78rem;
+      color: rgba(255,255,255,0.3);
+      white-space: nowrap;
+      margin-left: auto;
+    }
+    #graph-back {
+      display: inline-flex; align-items: center; gap: 5px;
+      height: 28px; padding: 0 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.55);
+      font-size: .8rem;
+      text-decoration: none;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    #graph-back:hover { border-color: rgba(255,255,255,0.3); color: #e6edf3; text-decoration: none; }
+
+    /* ── 画布 ── */
+    #graph-wrap {
+      position: fixed;
+      top: calc(var(--header-h) + 46px);
+      left: 0; right: 0; bottom: 0;
+    }
+    #graph-canvas {
+      width: 100%; height: 100%;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96,165,250,.04) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,.04) 0%, transparent 50%),
+        #0d1117;
+      cursor: grab;
+      display: block;
+    }
+    #graph-canvas:active { cursor: grabbing; }
+
+    /* dot-grid overlay (CSS only) */
+    #graph-wrap::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,.05) 1px, transparent 1px);
+      background-size: 30px 30px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── Tooltip ── */
+    #graph-tooltip {
+      position: fixed;
+      z-index: 200;
+      padding: 12px 15px;
+      border-radius: 10px;
+      background: rgba(22, 27, 34, 0.97);
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+      max-width: 280px;
+      pointer-events: none;
+      transition: opacity .12s;
+    }
+    #graph-tooltip.hidden { opacity: 0; }
+    .tt-type {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .tt-title { font-size: .92rem; font-weight: 700; color: #e6edf3; margin-bottom: 5px; line-height: 1.3; }
+    .tt-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+    .tt-hint { font-size: .72rem; color: rgba(0,212,255,0.5); margin-top: 7px; }
+
+    /* ── 图例 ── */
+    #graph-legend {
+      position: absolute;
+      bottom: 20px; left: 20px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 10px 13px;
+      background: rgba(13,17,23,0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      backdrop-filter: blur(6px);
+    }
+    .legend-row { display: flex; align-items: center; gap: 8px; font-size: .72rem; color: rgba(255,255,255,0.5); }
+    .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── 加载状态 ── */
+    #graph-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+      color: rgba(255,255,255,0.4);
+      font-size: .9rem;
+      z-index: 20;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid rgba(255,255,255,0.08);
+      border-top-color: #00d4ff;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── 提示条 ── */
+    #graph-hint {
+      position: absolute;
+      bottom: 20px; right: 20px;
+      z-index: 10;
+      font-size: .72rem;
+      color: rgba(255,255,255,0.2);
+      text-align: right;
+      line-height: 1.7;
+    }
+
+    /* ── SVG 节点动画 ── */
+    .node-circle { transition: r .15s, fill-opacity .15s; }
+    .node-label { transition: opacity .15s; }
+  </style>
+</head>
+<body>
+
+  <!-- ── 共用 Header ── -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-title" aria-label="机器人技术栈地图首页">🗺️ 机器人技术栈地图 | Robotics Notebooks</a>
+      <div class="header-spacer"></div>
+      <div class="header-right">
+        <a href="https://github.com/ImChong/Robotics_Notebooks" class="github-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <button id="themeToggle" class="theme-toggle" aria-label="切换白天黑夜模式">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── 工具栏 ── -->
+  <div id="graph-toolbar">
+    <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
+    <div class="toolbar-sep"></div>
+    <div class="chip-group" id="type-filters" role="group" aria-label="按类型过滤">
+      <button class="chip active" data-type="">全部</button>
+      <button class="chip" data-type="concept">概念</button>
+      <button class="chip" data-type="method">方法</button>
+      <button class="chip" data-type="task">任务</button>
+      <button class="chip" data-type="formalization">形式化</button>
+      <button class="chip" data-type="comparison">对比</button>
+      <button class="chip" data-type="entity">工具</button>
+      <button class="chip" data-type="query">Query</button>
+    </div>
+    <div class="toolbar-sep"></div>
+    <span id="graph-node-count">加载中…</span>
+    <a href="index.html" id="graph-back">← 返回首页</a>
+  </div>
+
+  <!-- ── 图谱容器 ── -->
+  <div id="graph-wrap">
+    <div id="graph-loading">
+      <div class="spinner"></div>
+      <span>正在构建知识图谱…</span>
+    </div>
+    <svg id="graph-canvas"></svg>
+    <div id="graph-tooltip" class="hidden" role="tooltip"></div>
+    <div id="graph-legend">
+      <div class="legend-row"><div class="legend-dot" style="background:#60a5fa"></div>概念 Concept</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#34d399"></div>方法 Method</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#f472b6"></div>任务 Task</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>形式化 Formalization</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#c084fc"></div>对比 Comparison</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#fbbf24"></div>工具 Entity</div>
+      <div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Query 产物</div>
+    </div>
+    <div id="graph-hint">
+      滚轮缩放 · 拖拽平移<br>点击节点打开详情
+    </div>
+  </div>
+
+  <!-- ── D3.js ── -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="main.js"></script>
+  <script>
+  (async function () {
+    /* ── 颜色 & 尺寸 ── */
+    const TYPE_COLOR = {
+      concept:       '#60a5fa',
+      method:        '#34d399',
+      task:          '#f472b6',
+      entity:        '#fbbf24',
+      comparison:    '#c084fc',
+      query:         '#94a3b8',
+      formalization: '#fb923c',
+      '':            '#64748b',
+    };
+    const TYPE_LABEL = {
+      concept: '概念', method: '方法', task: '任务',
+      entity: '工具', comparison: '对比', query: 'Query',
+      formalization: '形式化', '': 'Wiki',
+    };
+
+    function nodeColor(d) { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
+    function nodeRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
+    function toDetailId(path) { return path.replace(/\//g, '-').replace('.md', ''); }
+
+    /* ── 加载数据 ── */
+    let graphData, indexItems;
+    try {
+      [graphData, indexItems] = await Promise.all([
+        fetch('exports/link-graph.json').then(r => r.json()),
+        fetch('exports/index-v1.json').then(r => r.json()).then(d => d.items),
+      ]);
+    } catch (e) {
+      document.getElementById('graph-loading').innerHTML =
+        '<span style="color:#f87171">数据加载失败：' + e.message + '</span>';
+      return;
+    }
+
+    /* ── 建立 path→info 映射 ── */
+    const infoMap = {};
+    for (const item of indexItems) {
+      infoMap[item.path] = { title: item.title, summary: item.summary, pageType: item.page_type };
+    }
+
+    /* ── 计算节点度数 ── */
+    const degreeMap = {};
+    for (const e of graphData.edges) {
+      degreeMap[e.source] = (degreeMap[e.source] || 0) + 1;
+      degreeMap[e.target] = (degreeMap[e.target] || 0) + 1;
+    }
+
+    /* ── 准备节点/边数据（深拷贝，避免 D3 修改原数据） ── */
+    const nodes = graphData.nodes.map(n => ({
+      ...n,
+      _degree: degreeMap[n.id] || 0,
+      _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
+    }));
+    const edges = graphData.edges.map(e => ({ ...e }));
+
+    /* ── SVG 尺寸 ── */
+    const wrap = document.getElementById('graph-wrap');
+    const svg = d3.select('#graph-canvas');
+    let W = wrap.clientWidth, H = wrap.clientHeight;
+
+    svg.attr('width', W).attr('height', H);
+
+    /* ── Zoom ── */
+    const gRoot = svg.append('g');
+    const zoom = d3.zoom()
+      .scaleExtent([0.08, 5])
+      .on('zoom', ev => {
+        gRoot.attr('transform', ev.transform);
+        // 标签在缩放较大时才显示
+        const k = ev.transform.k;
+        label.style('opacity', k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0);
+      });
+    svg.call(zoom);
+
+    /* ── 力模拟 ── */
+    const simulation = d3.forceSimulation(nodes)
+      .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
+      .force('charge', d3.forceManyBody().strength(-260).distanceMax(350))
+      .force('center', d3.forceCenter(W / 2, H / 2).strength(0.05))
+      .force('collision', d3.forceCollide().radius(d => nodeRadius(d) + 5).strength(0.7))
+      .alphaDecay(0.025);
+
+    /* ── 渲染边 ── */
+    const gEdges = gRoot.append('g').attr('class', 'edges');
+    const link = gEdges.selectAll('line')
+      .data(edges)
+      .join('line')
+      .attr('stroke', 'rgba(255,255,255,0.07)')
+      .attr('stroke-width', 1);
+
+    /* ── 渲染节点 ── */
+    const gNodes = gRoot.append('g').attr('class', 'nodes');
+    const node = gNodes.selectAll('g')
+      .data(nodes)
+      .join('g')
+      .attr('class', 'node-g')
+      .style('cursor', 'pointer')
+      .call(d3.drag()
+        .on('start', (ev, d) => {
+          if (!ev.active) simulation.alphaTarget(0.3).restart();
+          d.fx = d.x; d.fy = d.y;
+        })
+        .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
+        .on('end', (ev, d) => {
+          if (!ev.active) simulation.alphaTarget(0);
+          d.fx = null; d.fy = null;
+        })
+      );
+
+    /* 光晕（hover 时可见） */
+    node.append('circle')
+      .attr('class', 'node-glow')
+      .attr('r', d => nodeRadius(d) + 6)
+      .attr('fill', d => nodeColor(d))
+      .attr('fill-opacity', 0)
+      .attr('stroke', 'none');
+
+    /* 主圆 */
+    node.append('circle')
+      .attr('class', 'node-circle')
+      .attr('r', nodeRadius)
+      .attr('fill', d => nodeColor(d))
+      .attr('fill-opacity', 0.82)
+      .attr('stroke', d => nodeColor(d))
+      .attr('stroke-width', 1.5)
+      .attr('stroke-opacity', 0.35);
+
+    /* 标签 */
+    const label = node.append('text')
+      .attr('class', 'node-label')
+      .text(d => d._info.title || d.label)
+      .attr('dy', d => nodeRadius(d) + 13)
+      .attr('text-anchor', 'middle')
+      .attr('font-size', '10px')
+      .attr('fill', 'rgba(255,255,255,0.55)')
+      .attr('pointer-events', 'none')
+      .style('opacity', 0);
+
+    /* ── Tick ── */
+    simulation.on('tick', () => {
+      link
+        .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
+        .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
+      node.attr('transform', d => `translate(${d.x},${d.y})`);
+    });
+
+    /* ── 隐藏加载 ── */
+    simulation.on('end', () => {
+      document.getElementById('graph-loading').style.display = 'none';
+    });
+    // 300ms 后也隐藏（避免卡住）
+    setTimeout(() => {
+      document.getElementById('graph-loading').style.display = 'none';
+    }, 1200);
+
+    /* ── Tooltip ── */
+    const tooltip = document.getElementById('graph-tooltip');
+
+    function showTooltip(ev, d) {
+      const color = nodeColor(d);
+      const info = d._info;
+      const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
+      const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
+      tooltip.innerHTML =
+        `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
+        `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
+        (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
+        `<div class="tt-hint">点击打开详情页 →</div>`;
+      tooltip.classList.remove('hidden');
+      moveTooltip(ev);
+    }
+
+    function moveTooltip(ev) {
+      const x = ev.clientX + 14, y = ev.clientY - 10;
+      const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+      tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
+      tooltip.style.top  = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+    }
+
+    function hideTooltip() {
+      tooltip.classList.add('hidden');
+    }
+
+    function escapeHtml(s) {
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    }
+
+    /* ── 悬停高亮逻辑 ── */
+    const neighborSet = new Set();
+
+    function buildNeighborSet(d) {
+      neighborSet.clear();
+      neighborSet.add(d.id);
+      for (const e of edges) {
+        const srcId = typeof e.source === 'object' ? e.source.id : e.source;
+        const tgtId = typeof e.target === 'object' ? e.target.id : e.target;
+        if (srcId === d.id) neighborSet.add(tgtId);
+        if (tgtId === d.id) neighborSet.add(srcId);
+      }
+    }
+
+    node
+      .on('mouseenter', (ev, d) => {
+        buildNeighborSet(d);
+        node.select('.node-circle').attr('fill-opacity', n =>
+          neighborSet.has(n.id) ? 1 : 0.15);
+        node.select('.node-glow').attr('fill-opacity', n =>
+          n.id === d.id ? 0.18 : 0);
+        link
+          .attr('stroke', e => {
+            const s = typeof e.source === 'object' ? e.source.id : e.source;
+            const t = typeof e.target === 'object' ? e.target.id : e.target;
+            return (s === d.id || t === d.id) ? nodeColor(d) : 'rgba(255,255,255,0.04)';
+          })
+          .attr('stroke-width', e => {
+            const s = typeof e.source === 'object' ? e.source.id : e.source;
+            const t = typeof e.target === 'object' ? e.target.id : e.target;
+            return (s === d.id || t === d.id) ? 1.8 : 0.5;
+          })
+          .attr('stroke-opacity', e => {
+            const s = typeof e.source === 'object' ? e.source.id : e.source;
+            const t = typeof e.target === 'object' ? e.target.id : e.target;
+            return (s === d.id || t === d.id) ? 0.7 : 0.3;
+          });
+        showTooltip(ev, d);
+      })
+      .on('mousemove', moveTooltip)
+      .on('mouseleave', () => {
+        node.select('.node-circle').attr('fill-opacity', 0.82);
+        node.select('.node-glow').attr('fill-opacity', 0);
+        link
+          .attr('stroke', 'rgba(255,255,255,0.07)')
+          .attr('stroke-width', 1)
+          .attr('stroke-opacity', 1);
+        hideTooltip();
+      })
+      .on('click', (ev, d) => {
+        ev.stopPropagation();
+        const detailId = toDetailId(d.id);
+        window.open('detail.html?id=' + encodeURIComponent(detailId), '_blank');
+      });
+
+    /* ── 节点计数 ── */
+    function updateCount(visible) {
+      document.getElementById('graph-node-count').textContent =
+        `${visible} / ${nodes.length} 节点 · ${edges.length} 边`;
+    }
+    updateCount(nodes.length);
+
+    /* ── 类型过滤 ── */
+    let activeTypes = new Set(); // 空 = 显示全部
+
+    document.getElementById('type-filters').addEventListener('click', ev => {
+      const chip = ev.target.closest('.chip');
+      if (!chip) return;
+      const t = chip.dataset.type;
+
+      if (t === '') {
+        // "全部"：清空过滤
+        activeTypes.clear();
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      } else {
+        document.querySelector('.chip[data-type=""]').classList.remove('active');
+        chip.classList.toggle('active');
+        if (chip.classList.contains('active')) {
+          activeTypes.add(t);
+        } else {
+          activeTypes.delete(t);
+        }
+        if (activeTypes.size === 0) {
+          document.querySelector('.chip[data-type=""]').classList.add('active');
+        }
+      }
+      applyFilters();
+    });
+
+    /* ── 搜索 ── */
+    let searchQuery = '';
+    document.getElementById('graph-search').addEventListener('input', ev => {
+      searchQuery = ev.target.value.trim().toLowerCase();
+      applyFilters();
+    });
+
+    function applyFilters() {
+      const hasTypeFilter = activeTypes.size > 0;
+      const hasSearch = searchQuery.length > 0;
+
+      let visibleCount = 0;
+      node.each(function(d) {
+        const typeMatch = !hasTypeFilter || activeTypes.has(d.type);
+        const searchMatch = !hasSearch ||
+          (d._info.title || d.label || '').toLowerCase().includes(searchQuery) ||
+          d.id.toLowerCase().includes(searchQuery);
+        const visible = typeMatch && searchMatch;
+        if (visible) visibleCount++;
+
+        d3.select(this).select('.node-circle')
+          .attr('fill-opacity', visible ? 0.82 : 0.06)
+          .attr('stroke-opacity', visible ? 0.35 : 0.05);
+        d3.select(this).select('.node-label')
+          .style('opacity', visible && hasSearch ? 0.9 : null);
+      });
+
+      link.attr('stroke-opacity', e => {
+        if (!hasTypeFilter && !hasSearch) return 1;
+        const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
+        const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
+        if (!s || !t) return 0.05;
+        const sTypeOk = !hasTypeFilter || activeTypes.has(s.type);
+        const tTypeOk = !hasTypeFilter || activeTypes.has(t.type);
+        const sSearchOk = !hasSearch || (s._info.title || s.label || '').toLowerCase().includes(searchQuery);
+        const tSearchOk = !hasSearch || (t._info.title || t.label || '').toLowerCase().includes(searchQuery);
+        return (sTypeOk && tTypeOk && sSearchOk && tSearchOk) ? 0.4 : 0.02;
+      });
+
+      updateCount(visibleCount);
+    }
+
+    /* ── 窗口 resize ── */
+    window.addEventListener('resize', () => {
+      W = wrap.clientWidth; H = wrap.clientHeight;
+      svg.attr('width', W).attr('height', H);
+      simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+      simulation.alpha(0.1).restart();
+    });
+
+    /* ── 主题 toggle（复用 main.js 的逻辑） ── */
+    // main.js 已处理 themeToggle，无需重复
+
+  })();
+  </script>
+</body>
+</html>

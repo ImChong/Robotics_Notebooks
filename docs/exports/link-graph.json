@@ -1,0 +1,1679 @@
+{
+  "nodes": [
+    {
+      "id": "wiki/comparisons/model-based-vs-model-free.md",
+      "label": "Model-Based vs Model-Free RL 对比",
+      "type": "comparison"
+    },
+    {
+      "id": "wiki/comparisons/mpc-vs-rl.md",
+      "label": "MPC vs RL：控制策略选型对比",
+      "type": "comparison"
+    },
+    {
+      "id": "wiki/comparisons/rl-vs-il.md",
+      "label": "RL vs 模仿学习（Imitation Learning）",
+      "type": "comparison"
+    },
+    {
+      "id": "wiki/comparisons/wbc-vs-rl.md",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
+      "type": "comparison"
+    },
+    {
+      "id": "wiki/concepts/capture-point-dcm.md",
+      "label": "Capture Point / DCM",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/centroidal-dynamics.md",
+      "label": "Centroidal Dynamics",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/contact-dynamics.md",
+      "label": "Contact Dynamics",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/contact-estimation.md",
+      "label": "Contact Estimation（接触估计）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/curriculum-learning.md",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/domain-randomization.md",
+      "label": "Domain Randomization",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/floating-base-dynamics.md",
+      "label": "Floating Base Dynamics",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/footstep-planning.md",
+      "label": "Footstep Planning（步位规划）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/gait-generation.md",
+      "label": "Gait Generation（步态生成）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/hqp.md",
+      "label": "HQP（Hierarchical QP）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/lip-zmp.md",
+      "label": "LIP / ZMP",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/motion-retargeting.md",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/mpc-wbc-integration.md",
+      "label": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/optimal-control.md",
+      "label": "Optimal Control (OCP)",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/privileged-training.md",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/reward-design.md",
+      "label": "Reward Design",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/sim2real.md",
+      "label": "Sim2Real",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/state-estimation.md",
+      "label": "State Estimation",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/system-identification.md",
+      "label": "System Identification",
+      "type": ""
+    },
+    {
+      "id": "wiki/concepts/tsid.md",
+      "label": "TSID",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/whole-body-control.md",
+      "label": "Whole-Body Control (WBC)",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/entities/crocoddyl.md",
+      "label": "Crocoddyl",
+      "type": ""
+    },
+    {
+      "id": "wiki/entities/drake.md",
+      "label": "Drake",
+      "type": "entity"
+    },
+    {
+      "id": "wiki/entities/isaac-gym-isaac-lab.md",
+      "label": "Isaac Gym / Isaac Lab",
+      "type": ""
+    },
+    {
+      "id": "wiki/entities/legged-gym.md",
+      "label": "legged_gym",
+      "type": ""
+    },
+    {
+      "id": "wiki/entities/mujoco.md",
+      "label": "MuJoCo",
+      "type": ""
+    },
+    {
+      "id": "wiki/entities/pinocchio.md",
+      "label": "Pinocchio",
+      "type": ""
+    },
+    {
+      "id": "wiki/entities/unitree.md",
+      "label": "Unitree",
+      "type": ""
+    },
+    {
+      "id": "wiki/formalizations/bellman-equation.md",
+      "label": "Bellman 方程",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/contact-complementarity.md",
+      "label": "Contact Complementarity（接触互补约束）",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/ekf.md",
+      "label": "Extended Kalman Filter (EKF)",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/lqr.md",
+      "label": "LQR / iLQR",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/mdp.md",
+      "label": "Markov Decision Process (MDP)",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/methods/diffusion-policy.md",
+      "label": "Diffusion Policy",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/imitation-learning.md",
+      "label": "Imitation Learning (IL)",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/model-based-rl.md",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/model-predictive-control.md",
+      "label": "Model Predictive Control (MPC)",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/policy-optimization.md",
+      "label": "Policy Optimization",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL)",
+      "type": "method"
+    },
+    {
+      "id": "wiki/methods/trajectory-optimization.md",
+      "label": "Trajectory Optimization",
+      "type": ""
+    },
+    {
+      "id": "wiki/overview/robot-learning-overview.md",
+      "label": "Robot Learning Overview",
+      "type": ""
+    },
+    {
+      "id": "wiki/queries/control-architecture-comparison.md",
+      "label": "人形机器人控制架构综合对比",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/humanoid-hardware-selection.md",
+      "label": "人形机器人硬件选型指南",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/humanoid-rl-cookbook.md",
+      "label": "人形机器人 RL 策略训练完整 Checklist",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/locomotion-reward-design-guide.md",
+      "label": "Locomotion 奖励函数设计指南",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/mpc-solver-selection.md",
+      "label": "MPC 求解器选型指南",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/pinocchio-quick-start.md",
+      "label": "Pinocchio 快速上手：最小可运行动力学示例",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/rl-algorithm-selection.md",
+      "label": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/sim2real-checklist.md",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query"
+    },
+    {
+      "id": "wiki/queries/wbc-implementation-guide.md",
+      "label": "WBC 工程实现指南",
+      "type": "query"
+    },
+    {
+      "id": "wiki/references/llm-wiki-karpathy.md",
+      "label": "LLM Wiki",
+      "type": ""
+    },
+    {
+      "id": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "label": "Humanoid Control Roadmap",
+      "type": ""
+    },
+    {
+      "id": "wiki/tasks/balance-recovery.md",
+      "label": "Balance Recovery（平衡恢复）",
+      "type": "task"
+    },
+    {
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation",
+      "type": "task"
+    },
+    {
+      "id": "wiki/tasks/locomotion.md",
+      "label": "Locomotion",
+      "type": "task"
+    },
+    {
+      "id": "wiki/tasks/manipulation.md",
+      "label": "Manipulation",
+      "type": "task"
+    },
+    {
+      "id": "wiki/tasks/ultra-survey.md",
+      "label": "ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation",
+      "type": ""
+    }
+  ],
+  "edges": [
+    {
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/comparisons/model-based-vs-model-free.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/queries/mpc-solver-selection.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/formalizations/contact-complementarity.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/concepts/domain-randomization.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/domain-randomization.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/domain-randomization.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/domain-randomization.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/concepts/gait-generation.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/concepts/lip-zmp.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/lip-zmp.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/lip-zmp.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/lip-zmp.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/formalizations/ekf.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/concepts/hqp.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/entities/pinocchio.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/entities/mujoco.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/entities/mujoco.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/entities/pinocchio.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-complementarity.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-complementarity.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-complementarity.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-complementarity.md",
+      "target": "wiki/entities/drake.md"
+    },
+    {
+      "source": "wiki/formalizations/ekf.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/formalizations/ekf.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/ekf.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/formalizations/ekf.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/concepts/motion-retargeting.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/comparisons/model-based-vs-model-free.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/comparisons/mpc-vs-rl.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/overview/robot-learning-overview.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/entities/drake.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/references/llm-wiki-karpathy.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/queries/sim2real-checklist.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/queries/rl-algorithm-selection.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/queries/locomotion-reward-design-guide.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/pinocchio-quick-start.md",
+      "target": "wiki/entities/pinocchio.md"
+    },
+    {
+      "source": "wiki/queries/pinocchio-quick-start.md",
+      "target": "wiki/queries/wbc-implementation-guide.md"
+    },
+    {
+      "source": "wiki/queries/pinocchio-quick-start.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/pinocchio-quick-start.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/hqp.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/tasks/ultra-survey.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/gait-generation.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/ultra-survey.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    }
+  ]
+}
