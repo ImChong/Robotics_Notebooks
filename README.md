@@ -2,11 +2,12 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-14 -->
+<!-- Last updated: 2026-04-15 -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-61节点_342边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 
 ---
 
@@ -30,6 +31,7 @@
 
 | 你的目标 | 入口 |
 |---------|------|
+| 可视化探索知识图谱 | [🕸️ 知识图谱（graph.html）](https://imchong.github.io/Robotics_Notebooks/graph.html) |
 | 有一条路线照着走 | [路线A：运动控制成长路线](roadmap/route-a-motion-control.md) |
 | 用 RL 做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
 | 学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
@@ -68,6 +70,22 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 ```
 
 维护操作规范见 [schema/ingest-workflow.md](schema/ingest-workflow.md)。
+
+---
+
+## 知识图谱
+
+`docs/graph.html` 是 Obsidian 风格的知识图谱可视化，由 D3.js 力导向算法驱动：
+
+- **61 个节点**：概念、方法、任务、实体、对比、Query 产物
+- **342 条边**：wiki 页面间的内链关系
+- 节点按类型着色，大小反映连接度（入度 + 出度）
+- 悬停显示标题 + 摘要，点击跳转详情页
+- 支持按类型过滤、关键词搜索、缩放平移
+
+更新图谱数据：`make graph`（自动重新生成并同步至 docs/exports/）
+
+前端重设计计划：[docs/frontend-redesign-plan.md](docs/frontend-redesign-plan.md)
 
 ---
 

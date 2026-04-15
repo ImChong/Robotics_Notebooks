@@ -23,6 +23,7 @@ coverage:
 
 graph:
 	python3 scripts/generate_link_graph.py
+	cp exports/link-graph.json docs/exports/link-graph.json
 
 slides:
 	python3 scripts/wiki_to_marp.py $(F)

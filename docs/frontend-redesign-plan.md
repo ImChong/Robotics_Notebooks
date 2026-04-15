@@ -1,8 +1,41 @@
 # 前端重设计计划 · Frontend Redesign Plan
 
-> 状态：提案阶段（未动任何代码）
+> 状态：**实施中（Phase 0 已完成）**
 > 触发原因：当前首页信息密度过高、视觉层次不清晰；link-graph.json（61 节点 / 342 边）已生成但未被前端消费；用户希望加入 Obsidian 风格的图谱视图作为核心导航入口。
 > 设计准则来源：frontend-design skill（已安装 `~/.claude/skills/frontend-design/SKILL.md`）
+
+---
+
+## 零、执行策略：渐进式接入（"按钮先行"原则）
+
+**核心约束**：在不破坏现有网站任何页面的前提下逐步引入图谱功能。
+
+### 渐进式分阶段策略
+
+```
+Phase 0（已完成）：最小化接入
+  ├── 新建独立页面 docs/graph.html（不影响任何现有页面）
+  ├── 首页英雄区 CTA 加入"🕸️ 知识图谱"按钮（一行改动）
+  └── Makefile make graph 自动同步 link-graph.json → docs/exports/
+
+Phase 1（下一步）：首页视觉升级
+  ├── 英雄区右侧嵌入图谱缩略预览（静态快照，非交互）
+  └── 加入 stats bar（动态统计页面数 / 边数）
+
+Phase 2（后续）：图谱与首页深度整合
+  ├── 首页第一屏改为图谱全屏背景
+  ├── 图谱成为主导航入口
+  └── 传统卡片导航下移为辅助入口
+
+Phase 3（长期）：设计系统整体升级
+  └── 字体 / 颜色 / 动效全面对齐 Technical Blueprint 风格
+```
+
+**为什么"按钮先行"**：
+- graph.html 作为独立页面，任何问题都不影响现有用户体验
+- 可以先收集使用反馈，再决定是否将图谱融入首页核心区域
+- 单一 CTA 按钮改动风险极低（一行 HTML），可随时回滚
+- 避免在设计方向未充分验证时做大规模重写
 
 ---
 
@@ -238,16 +271,19 @@ body {
 
 ## 四、实现优先级总结
 
-| Phase | 内容 | 改动量 | 依赖 | 优先级 |
-|-------|------|--------|------|--------|
-| P1 | 首页重构（英雄区 + stats + graph preview） | 大（重写 index.html） | D3.js CDN | ⭐⭐⭐ 高 |
-| P2 | graph.html（完整图谱交互页） | 大（新建文件 ~300行） | D3.js, link-graph.json | ⭐⭐⭐ 高 |
-| P3 | 设计系统升级（字体 + 颜色 + 动效） | 中（改 style.css + index.html head） | Google Fonts CDN | ⭐⭐ 中 |
-| P4 | detail.html 微调 | 小 | - | ⭐ 低 |
+| Phase | 内容 | 改动量 | 依赖 | 状态 |
+|-------|------|--------|------|------|
+| P0 | graph.html（独立图谱页）+ 首页加按钮 | 中（新建 ~300行 + 1行按钮） | D3.js CDN | ✅ 已完成 |
+| P1 | 首页升级（stats bar + 图谱缩略预览嵌入英雄区） | 中（改 index.html 局部） | D3.js CDN | ⭐⭐⭐ 下一步 |
+| P2 | 图谱与首页深度整合（图谱作为首屏背景/主导航） | 大（重构 index.html） | P1 验证通过后 | ⭐⭐ 中期 |
+| P3 | 设计系统升级（字体 + 颜色 + 动效全面对齐） | 中（改 style.css + head） | Google Fonts CDN | ⭐ 长期 |
+| P4 | detail.html 微调（关联卡片化 + 图谱入口按钮） | 小 | - | ⭐ 低 |
 
-**推荐执行顺序**：P2 → P1 → P3 → P4
-
-理由：先做 graph.html（独立新文件，风险最小），验证效果后再改首页，最后整体升级设计系统。
+**当前完成状态（Phase 0）**：
+- [x] `docs/graph.html` 新建：D3.js 力导向图，61节点/342边，按类型着色，悬停 tooltip，点击跳 detail 页，类型过滤 chip，节点搜索，缩放/平移
+- [x] `docs/index.html` 英雄区加入 `🕸️ 知识图谱` 按钮（btn-primary 样式，首个 CTA）
+- [x] `docs/exports/link-graph.json` 同步（从 exports/ 复制）
+- [x] `Makefile` `make graph` 新增自动同步到 docs/exports/
 
 ---
 
