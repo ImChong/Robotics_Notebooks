@@ -194,6 +194,149 @@
     /* ── SVG 节点动画 ── */
     .node-circle { transition: r .15s, fill-opacity .15s; }
     .node-label { transition: opacity .15s; }
+
+    /* ════════════════════════════════════════════
+       白天模式覆盖（[data-theme="light"]）
+    ════════════════════════════════════════════ */
+    [data-theme="light"] #graph-toolbar {
+      background: rgba(250,249,246,0.96);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] #graph-search {
+      background: rgba(0,0,0,0.04);
+      border-color: rgba(0,0,0,0.12);
+      color: #2f2d29;
+    }
+    [data-theme="light"] #graph-search::placeholder { color: rgba(0,0,0,0.3); }
+    [data-theme="light"] .chip {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.5);
+    }
+    [data-theme="light"] .chip:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.8);
+    }
+    [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
+    [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
+    [data-theme="light"] #graph-back {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.55);
+    }
+    [data-theme="light"] #graph-back:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: #2f2d29;
+    }
+    /* 画布背景 */
+    [data-theme="light"] #graph-canvas {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96,165,250,.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,.07) 0%, transparent 50%),
+        #eef2f7;
+    }
+    /* dot-grid：深色点改为浅色点 */
+    [data-theme="light"] #graph-wrap::before {
+      background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
+    }
+    /* Tooltip */
+    [data-theme="light"] #graph-tooltip {
+      background: rgba(255,255,255,0.98);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .tt-title   { color: #1a1a1a; }
+    [data-theme="light"] .tt-summary { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .tt-hint    { color: rgba(45,116,218,0.6); }
+    /* 图例 */
+    [data-theme="light"] #graph-legend {
+      background: rgba(255,255,255,0.94);
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .legend-row { color: rgba(0,0,0,0.5); }
+    /* 物理参数面板 */
+    [data-theme="light"] .physics-panel {
+      background: rgba(255,255,255,0.97);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    [data-theme="light"] .physics-header {
+      color: rgba(0,0,0,0.62);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .physics-close { color: rgba(0,0,0,0.3); }
+    [data-theme="light"] .physics-close:hover { color: rgba(0,0,0,0.72); }
+    [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
+    [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
+    /* 提示文字 */
+    [data-theme="light"] #graph-hint { color: rgba(0,0,0,0.22); }
+
+    /* ── 物理参数面板 ── */
+    .physics-panel {
+      position: absolute;
+      top: 12px; right: 20px;
+      z-index: 30;
+      width: 230px;
+      background: rgba(13,17,23,0.96);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+    .physics-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px 9px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
+      letter-spacing: .03em;
+    }
+    .physics-close {
+      background: none; border: none;
+      color: rgba(255,255,255,0.3);
+      cursor: pointer; font-size: .9rem; line-height: 1;
+      padding: 2px 4px; border-radius: 4px;
+      transition: color .12s;
+    }
+    .physics-close:hover { color: rgba(255,255,255,0.75); }
+    .slider-row { padding: 11px 14px 5px; }
+    .slider-row:last-child { padding-bottom: 13px; }
+    .slider-label {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 7px;
+      font-size: .74rem; color: rgba(255,255,255,0.4);
+    }
+    .slider-val {
+      color: #00d4ff; font-weight: 700; font-size: .72rem;
+      font-variant-numeric: tabular-nums;
+    }
+    input[type=range] {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 2px; outline: none; cursor: pointer;
+    }
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 15px; height: 15px; border-radius: 50%;
+      background: #00d4ff; cursor: pointer;
+      box-shadow: 0 0 8px rgba(0,212,255,0.55);
+      transition: box-shadow .15s, transform .1s;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 14px rgba(0,212,255,0.85);
+      transform: scale(1.15);
+    }
+    input[type=range]::-moz-range-thumb {
+      width: 15px; height: 15px; border-radius: 50%; border: none;
+      background: #00d4ff; cursor: pointer;
+      box-shadow: 0 0 8px rgba(0,212,255,0.55);
+    }
+    .slider-divider {
+      height: 1px; background: rgba(255,255,255,0.05);
+      margin: 0 14px;
+    }
   </style>
 </head>
 <body>
@@ -228,6 +371,8 @@
       <button class="chip" data-type="query">Query</button>
     </div>
     <div class="toolbar-sep"></div>
+    <button id="physics-toggle" class="chip" title="调整物理参数">⚙ 参数</button>
+    <div class="toolbar-sep"></div>
     <span id="graph-node-count">加载中…</span>
     <a href="index.html" id="graph-back">← 返回首页</a>
   </div>
@@ -249,6 +394,45 @@
       <div class="legend-row"><div class="legend-dot" style="background:#fbbf24"></div>工具 Entity</div>
       <div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Query 产物</div>
     </div>
+    <!-- ── 物理参数面板 ── -->
+    <div id="physics-panel" class="physics-panel" hidden>
+      <div class="physics-header">
+        <span>⚙ 物理参数</span>
+        <button id="physics-close" class="physics-close" aria-label="关闭面板">✕</button>
+      </div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>排斥力</span>
+          <span class="slider-val" id="val-charge">-260</span>
+        </div>
+        <input type="range" id="sl-charge" min="50" max="800" value="260" step="10"
+               aria-label="排斥力" />
+      </div>
+
+      <div class="slider-divider"></div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>节点大小</span>
+          <span class="slider-val" id="val-size">1.0×</span>
+        </div>
+        <input type="range" id="sl-size" min="40" max="280" value="100" step="5"
+               aria-label="节点大小" />
+      </div>
+
+      <div class="slider-divider"></div>
+
+      <div class="slider-row">
+        <div class="slider-label">
+          <span>连接线粗细</span>
+          <span class="slider-val" id="val-link">1.0px</span>
+        </div>
+        <input type="range" id="sl-link" min="2" max="60" value="10" step="1"
+               aria-label="连接线粗细" />
+      </div>
+    </div>
+
     <div id="graph-hint">
       滚轮缩放 · 拖拽平移<br>点击节点打开详情
     </div>
@@ -259,7 +443,7 @@
   <script src="main.js"></script>
   <script>
   (async function () {
-    /* ── 颜色 & 尺寸 ── */
+    /* ── 颜色 & 类型标签 ── */
     const TYPE_COLOR = {
       concept:       '#60a5fa',
       method:        '#34d399',
@@ -276,8 +460,25 @@
       formalization: '形式化', '': 'Wiki',
     };
 
-    function nodeColor(d) { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
-    function nodeRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
+    /* ── 可变物理参数（由滑动块控制）── */
+    let chargeStrength = -260;   // 排斥力（负值）
+    let nodeScale      = 1.0;    // 节点大小倍数
+    let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
+
+    /* ── 主题辅助（响应 data-theme 切换）── */
+    function isDark() {
+      return document.documentElement.getAttribute('data-theme') !== 'light';
+    }
+    function edgeBaseColor() {
+      return isDark() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.1)';
+    }
+    function labelFill() {
+      return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
+    }
+
+    function nodeColor(d)  { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
+    function baseRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
+    function scaledRadius(d) { return baseRadius(d) * nodeScale; }
     function toDetailId(path) { return path.replace(/\//g, '-').replace('.md', ''); }
 
     /* ── 加载数据 ── */
@@ -306,7 +507,7 @@
       degreeMap[e.target] = (degreeMap[e.target] || 0) + 1;
     }
 
-    /* ── 准备节点/边数据（深拷贝，避免 D3 修改原数据） ── */
+    /* ── 准备节点/边数据 ── */
     const nodes = graphData.nodes.map(n => ({
       ...n,
       _degree: degreeMap[n.id] || 0,
@@ -318,7 +519,6 @@
     const wrap = document.getElementById('graph-wrap');
     const svg = d3.select('#graph-canvas');
     let W = wrap.clientWidth, H = wrap.clientHeight;
-
     svg.attr('width', W).attr('height', H);
 
     /* ── Zoom ── */
@@ -327,7 +527,6 @@
       .scaleExtent([0.08, 5])
       .on('zoom', ev => {
         gRoot.attr('transform', ev.transform);
-        // 标签在缩放较大时才显示
         const k = ev.transform.k;
         label.style('opacity', k > 0.6 ? Math.min(1, (k - 0.6) * 2.5) : 0);
       });
@@ -336,9 +535,9 @@
     /* ── 力模拟 ── */
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
-      .force('charge', d3.forceManyBody().strength(-260).distanceMax(350))
+      .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
       .force('center', d3.forceCenter(W / 2, H / 2).strength(0.05))
-      .force('collision', d3.forceCollide().radius(d => nodeRadius(d) + 5).strength(0.7))
+      .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
       .alphaDecay(0.025);
 
     /* ── 渲染边 ── */
@@ -346,8 +545,8 @@
     const link = gEdges.selectAll('line')
       .data(edges)
       .join('line')
-      .attr('stroke', 'rgba(255,255,255,0.07)')
-      .attr('stroke-width', 1);
+      .attr('stroke', edgeBaseColor())
+      .attr('stroke-width', linkWidthBase);
 
     /* ── 渲染节点 ── */
     const gNodes = gRoot.append('g').attr('class', 'nodes');
@@ -368,32 +567,29 @@
         })
       );
 
-    /* 光晕（hover 时可见） */
     node.append('circle')
       .attr('class', 'node-glow')
-      .attr('r', d => nodeRadius(d) + 6)
+      .attr('r', d => scaledRadius(d) + 6)
       .attr('fill', d => nodeColor(d))
       .attr('fill-opacity', 0)
       .attr('stroke', 'none');
 
-    /* 主圆 */
     node.append('circle')
       .attr('class', 'node-circle')
-      .attr('r', nodeRadius)
+      .attr('r', scaledRadius)
       .attr('fill', d => nodeColor(d))
       .attr('fill-opacity', 0.82)
       .attr('stroke', d => nodeColor(d))
       .attr('stroke-width', 1.5)
       .attr('stroke-opacity', 0.35);
 
-    /* 标签 */
     const label = node.append('text')
       .attr('class', 'node-label')
       .text(d => d._info.title || d.label)
-      .attr('dy', d => nodeRadius(d) + 13)
+      .attr('dy', d => scaledRadius(d) + 13)
       .attr('text-anchor', 'middle')
       .attr('font-size', '10px')
-      .attr('fill', 'rgba(255,255,255,0.55)')
+      .attr('fill', labelFill())
       .attr('pointer-events', 'none')
       .style('opacity', 0);
 
@@ -409,7 +605,6 @@
     simulation.on('end', () => {
       document.getElementById('graph-loading').style.display = 'none';
     });
-    // 300ms 后也隐藏（避免卡住）
     setTimeout(() => {
       document.getElementById('graph-loading').style.display = 'none';
     }, 1200);
@@ -438,15 +633,13 @@
       tooltip.style.top  = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
     }
 
-    function hideTooltip() {
-      tooltip.classList.add('hidden');
-    }
+    function hideTooltip() { tooltip.classList.add('hidden'); }
 
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
-    /* ── 悬停高亮逻辑 ── */
+    /* ── 悬停高亮 ── */
     const neighborSet = new Set();
 
     function buildNeighborSet(d) {
@@ -476,7 +669,8 @@
           .attr('stroke-width', e => {
             const s = typeof e.source === 'object' ? e.source.id : e.source;
             const t = typeof e.target === 'object' ? e.target.id : e.target;
-            return (s === d.id || t === d.id) ? 1.8 : 0.5;
+            // 高亮时用基础粗细的 1.8 倍，非邻居用 0.5 倍
+            return (s === d.id || t === d.id) ? linkWidthBase * 1.8 : linkWidthBase * 0.5;
           })
           .attr('stroke-opacity', e => {
             const s = typeof e.source === 'object' ? e.source.id : e.source;
@@ -490,15 +684,14 @@
         node.select('.node-circle').attr('fill-opacity', 0.82);
         node.select('.node-glow').attr('fill-opacity', 0);
         link
-          .attr('stroke', 'rgba(255,255,255,0.07)')
-          .attr('stroke-width', 1)
+          .attr('stroke', edgeBaseColor())
+          .attr('stroke-width', linkWidthBase)
           .attr('stroke-opacity', 1);
         hideTooltip();
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        const detailId = toDetailId(d.id);
-        window.open('detail.html?id=' + encodeURIComponent(detailId), '_blank');
+        window.open('detail.html?id=' + encodeURIComponent(toDetailId(d.id)), '_blank');
       });
 
     /* ── 节点计数 ── */
@@ -509,29 +702,22 @@
     updateCount(nodes.length);
 
     /* ── 类型过滤 ── */
-    let activeTypes = new Set(); // 空 = 显示全部
+    let activeTypes = new Set();
 
     document.getElementById('type-filters').addEventListener('click', ev => {
-      const chip = ev.target.closest('.chip');
+      const chip = ev.target.closest('.chip[data-type]');
       if (!chip) return;
       const t = chip.dataset.type;
-
       if (t === '') {
-        // "全部"：清空过滤
         activeTypes.clear();
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        document.querySelectorAll('.chip[data-type]').forEach(c => c.classList.remove('active'));
         chip.classList.add('active');
       } else {
         document.querySelector('.chip[data-type=""]').classList.remove('active');
         chip.classList.toggle('active');
-        if (chip.classList.contains('active')) {
-          activeTypes.add(t);
-        } else {
-          activeTypes.delete(t);
-        }
-        if (activeTypes.size === 0) {
+        activeTypes[chip.classList.contains('active') ? 'add' : 'delete'](t);
+        if (activeTypes.size === 0)
           document.querySelector('.chip[data-type=""]').classList.add('active');
-        }
       }
       applyFilters();
     });
@@ -544,41 +730,33 @@
     });
 
     function applyFilters() {
-      const hasTypeFilter = activeTypes.size > 0;
-      const hasSearch = searchQuery.length > 0;
-
-      let visibleCount = 0;
+      const hasType = activeTypes.size > 0;
+      const hasQ    = searchQuery.length > 0;
+      let visible = 0;
       node.each(function(d) {
-        const typeMatch = !hasTypeFilter || activeTypes.has(d.type);
-        const searchMatch = !hasSearch ||
-          (d._info.title || d.label || '').toLowerCase().includes(searchQuery) ||
-          d.id.toLowerCase().includes(searchQuery);
-        const visible = typeMatch && searchMatch;
-        if (visible) visibleCount++;
-
+        const ok = (!hasType || activeTypes.has(d.type)) &&
+                   (!hasQ || (d._info.title || d.label || '').toLowerCase().includes(searchQuery)
+                           || d.id.toLowerCase().includes(searchQuery));
+        if (ok) visible++;
         d3.select(this).select('.node-circle')
-          .attr('fill-opacity', visible ? 0.82 : 0.06)
-          .attr('stroke-opacity', visible ? 0.35 : 0.05);
-        d3.select(this).select('.node-label')
-          .style('opacity', visible && hasSearch ? 0.9 : null);
+          .attr('fill-opacity', ok ? 0.82 : 0.06)
+          .attr('stroke-opacity', ok ? 0.35 : 0.05);
+        d3.select(this).select('.node-label').style('opacity', ok && hasQ ? 0.9 : null);
       });
-
       link.attr('stroke-opacity', e => {
-        if (!hasTypeFilter && !hasSearch) return 1;
+        if (!hasType && !hasQ) return 1;
         const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
         const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
         if (!s || !t) return 0.05;
-        const sTypeOk = !hasTypeFilter || activeTypes.has(s.type);
-        const tTypeOk = !hasTypeFilter || activeTypes.has(t.type);
-        const sSearchOk = !hasSearch || (s._info.title || s.label || '').toLowerCase().includes(searchQuery);
-        const tSearchOk = !hasSearch || (t._info.title || t.label || '').toLowerCase().includes(searchQuery);
-        return (sTypeOk && tTypeOk && sSearchOk && tSearchOk) ? 0.4 : 0.02;
+        const ok = (!hasType || (activeTypes.has(s.type) && activeTypes.has(t.type))) &&
+                   (!hasQ   || ((s._info.title||s.label||'').toLowerCase().includes(searchQuery)
+                              && (t._info.title||t.label||'').toLowerCase().includes(searchQuery)));
+        return ok ? 0.4 : 0.02;
       });
-
-      updateCount(visibleCount);
+      updateCount(visible);
     }
 
-    /* ── 窗口 resize ── */
+    /* ── resize ── */
     window.addEventListener('resize', () => {
       W = wrap.clientWidth; H = wrap.clientHeight;
       svg.attr('width', W).attr('height', H);
@@ -586,8 +764,58 @@
       simulation.alpha(0.1).restart();
     });
 
-    /* ── 主题 toggle（复用 main.js 的逻辑） ── */
-    // main.js 已处理 themeToggle，无需重复
+    /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
+    new MutationObserver(() => {
+      link.attr('stroke', edgeBaseColor());
+      label.attr('fill', labelFill());
+    }).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
+    });
+
+    /* ════════════════════════════════════════════
+       物理参数面板（三个滑动块）
+    ════════════════════════════════════════════ */
+
+    /* 面板开关 */
+    document.getElementById('physics-toggle').addEventListener('click', () => {
+      const panel = document.getElementById('physics-panel');
+      panel.hidden = !panel.hidden;
+    });
+    document.getElementById('physics-close').addEventListener('click', () => {
+      document.getElementById('physics-panel').hidden = true;
+    });
+
+    /* 1. 排斥力 slider（min=50, max=800 → 实际 chargeStrength = -value） */
+    document.getElementById('sl-charge').addEventListener('input', ev => {
+      chargeStrength = -Number(ev.target.value);
+      document.getElementById('val-charge').textContent = chargeStrength;
+      simulation
+        .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
+        .alpha(0.45).restart();
+    });
+
+    /* 2. 节点大小 slider（min=40, max=280, value/100 = nodeScale） */
+    document.getElementById('sl-size').addEventListener('input', ev => {
+      nodeScale = Number(ev.target.value) / 100;
+      document.getElementById('val-size').textContent = nodeScale.toFixed(1) + '×';
+      // 更新圆半径 & 标签位置
+      node.select('.node-circle').attr('r', scaledRadius);
+      node.select('.node-glow').attr('r', d => scaledRadius(d) + 6);
+      label.attr('dy', d => scaledRadius(d) + 13);
+      // 更新碰撞半径并重新模拟
+      simulation
+        .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
+        .alpha(0.3).restart();
+    });
+
+    /* 3. 连接线粗细 slider（min=2, max=60, value/10 = linkWidthBase） */
+    document.getElementById('sl-link').addEventListener('input', ev => {
+      linkWidthBase = Number(ev.target.value) / 10;
+      document.getElementById('val-link').textContent = linkWidthBase.toFixed(1) + 'px';
+      // 立即更新，无需重启模拟
+      link.attr('stroke-width', linkWidthBase);
+    });
 
   })();
   </script>
