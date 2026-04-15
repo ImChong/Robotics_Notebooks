@@ -65,6 +65,7 @@
     .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     .chip[data-type="formalization"].active { background: #fb923c; }
     .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
+    .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     #graph-node-count {
       font-size: .78rem;
       color: rgba(255,255,255,0.3);
@@ -390,11 +391,13 @@
       <button class="chip" data-type="entity">工具</button>
       <button class="chip" data-type="query">Query</button>
     </div>
-    <div class="toolbar-sep"></div>
-    <button id="physics-toggle" class="chip" title="调整物理参数">⚙ 参数</button>
-    <div class="toolbar-sep"></div>
-    <span id="graph-node-count">加载中…</span>
-    <a href="index.html" id="graph-back">← 返回首页</a>
+    <div class="toolbar-right">
+      <span id="graph-node-count">加载中…</span>
+      <div class="toolbar-sep"></div>
+      <button id="physics-toggle" class="chip" title="调整物理参数">⚙ 参数</button>
+      <div class="toolbar-sep"></div>
+      <a href="index.html" id="graph-back">← 返回首页</a>
+    </div>
   </div>
 
   <!-- ── 图谱容器 ── -->
@@ -424,9 +427,9 @@
       <div class="slider-row">
         <div class="slider-label">
           <span>排斥力</span>
-          <span class="slider-val" id="val-charge">-260</span>
+          <span class="slider-val" id="val-charge">-400</span>
         </div>
-        <input type="range" id="sl-charge" min="50" max="1500" value="260" step="10"
+        <input type="range" id="sl-charge" min="50" max="1500" value="400" step="10"
                aria-label="排斥力" />
       </div>
 
@@ -492,7 +495,7 @@
     };
 
     /* ── 可变物理参数（由滑动块控制）── */
-    let chargeStrength = -260;   // 排斥力（负值）
+    let chargeStrength = -400;   // 排斥力（负值）
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
     let labelFontSize  = 10;     // 节点标签字体大小（px）
@@ -779,10 +782,32 @@
     }
     updateCount(nodes.length);
 
-    /* ── 点击背景 / Escape 关闭固定卡片 ── */
-    svg.on('click', () => { if (pinnedNode) dismissPinned(); });
+    /* ── 点击背景：关闭固定卡片 + 关闭物理面板 ── */
+    // 用 document 级 click（冒泡）：能捕获点在 tooltip 上的点击（移动端常见），
+    // 解决因 tooltip pointer-events:auto 导致 svg.on('click') 收不到事件的问题。
+    // 节点 click 已调 stopPropagation，不会触发此处。
+    document.addEventListener('click', ev => {
+      const onNode    = ev.target.closest && ev.target.closest('g.node');
+      const onLink    = ev.target.closest && ev.target.closest('.tt-link');
+      const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
+      const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
+      const onToolbar = ev.target.closest && ev.target.closest('#graph-toolbar');
+      if (onNode || onLink) return; // 节点 / 详情链接：不处理
+      if (!onPanel && !onToggle) {
+        // 点击物理面板或切换按钮之外的区域：关闭面板
+        const panel = document.getElementById('physics-panel');
+        if (panel && !panel.hidden) panel.hidden = true;
+      }
+      if (!onToolbar) {
+        // 点击工具栏之外：关闭固定卡片
+        if (pinnedNode) dismissPinned();
+      }
+    });
     document.addEventListener('keydown', ev => {
-      if (ev.key === 'Escape' && pinnedNode) dismissPinned();
+      if (ev.key === 'Escape') {
+        if (pinnedNode) dismissPinned();
+        document.getElementById('physics-panel').hidden = true;
+      }
     });
 
     /* ── 类型过滤 ── */
