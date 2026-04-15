@@ -166,8 +166,8 @@
           "wiki-comparisons-mpc-vs-rl",
           "wiki-comparisons-model-based-vs-model-free",
           "wiki-concepts-privileged-training",
-          "wiki-queries-sim2real-gap-reduction",
-          "wiki-queries-sim2real-checklist"
+          "wiki-queries-rl-hyperparameter-guide",
+          "wiki-queries-sim2real-gap-reduction"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -1955,6 +1955,32 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-queries-rl-hyperparameter-guide": {
+        "id": "wiki-queries-rl-hyperparameter-guide",
+        "title": "RL 超参数调节指南（locomotion 专用）",
+        "type": "wiki_page",
+        "path": "wiki/queries/rl-hyperparameter-guide.md",
+        "summary": "type: query。",
+        "content_markdown": "---\ntype: query\ntags: [rl, ppo, sac, hyperparameter, locomotion, training]\nrelated:\n  - ../methods/policy-optimization.md\n  - ../concepts/reward-design.md\n  - ../concepts/curriculum-learning.md\n  - ../methods/model-predictive-control.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/reward_design.md\n---\n\n# RL 超参数调节指南（locomotion 专用）\n\n> Query 类型：操作指南\n> 生成日期：2026-04-15\n> 问题：训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？\n\n---\n\n## 背景\n\nlocomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并行度高、observation/action 空间维度大、reward 稀疏性问题突出、sim2real gap 要求训练出鲁棒的策略。\n\n---\n\n## PPO 超参数 Checklist\n\n### 核心超参数\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `num_envs` | 2048–8192 | 并行仿真数量，越多越稳定；受显存限制 |\n| `num_steps` | 24–64 | 每次 rollout 的步数（太短 → 高方差，太长 → 过时数据） |\n| `batch_size` | `num_envs × num_steps / num_minibatches` | 典型 4096–16384 |\n| `num_minibatches` | 4–8 | 每批 rollout 的 minibatch 数量 |\n| `update_epochs` | 4–10 | 每批数据的训练轮次 |\n| `clip_range` (ε) | 0.1–0.2 | PPO clip；locomotion 通常用 0.2，精细任务用 0.1 |\n| `value_loss_coef` | 0.5–2.0 | value function 损失权重 |\n| `entropy_coef` | 0.001–0.01 | 探索熵正则化；locomotion 中不宜过大 |\n| `gamma` (折扣因子) | 0.97–0.99 | locomotion 长程任务用 0.99 |\n| `lambda` (GAE) | 0.90–0.97 | bias-variance 折中；0.95 是默认起点 |\n| `lr` (学习率) | 1e-4–3e-4 | Adam 优化器；可用线性 decay |\n| `max_grad_norm` | 0.5–1.0 | 梯度裁剪，稳定训练 |\n\n### 调参优先级\n\n```\n1. num_envs × num_steps → 数据吞吐量（最影响训练速度）\n2. gamma + lambda → reward 传播（最影响收敛方向）\n3. clip_range + update_epochs → 更新稳定性\n4. entropy_coef → 探索 vs 利用\n```\n\n---\n\n## SAC 超参数 Checklist\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `replay_buffer_size` | 1e6–5e6 | 样本重用率高，需要大 buffer |\n| `batch_size` | 256–4096 | SAC 对 batch_size 不敏感，可大 |\n| `lr_actor/critic` | 3e-4–1e-3 | 独立学习率；critic 可稍大 |\n| `tau` (软更新) | 0.005–0.01 | target network 更新速率 |\n| `alpha` (温度) | 自动调节 | 使用自动 entropy tuning（SAC paper 推荐） |\n| `target_entropy` | `-dim(action)` | 通常取 `-action_dim`，即每维约 -1 nats |\n| `update_frequency` | 1–4 | 每步环境交互后的梯度更新次数 |\n\n---\n\n## Reward 函数调参 Checklist\n\n### 常见 reward 项权重范围（locomotion）\n\n| Reward 项 | 推荐权重 | 说明 |\n|----------|---------|------|\n| 前进速度奖励 | 1.0（归一化基准） | 任务核心信号 |\n| 姿态稳定惩罚 | -0.1 ~ -0.5 | 防止躯干倾斜 |\n| 能量/扭矩惩罚 | -0.01 ~ -0.1 | 减少能耗，泛化更好 |\n| 关节速度惩罚 | -0.001 ~ -0.01 | 防止抖动，sim2real 关键 |\n| 接触力惩罚 | -0.01 ~ -0.1 | 防止硬接触；改善地形适应 |\n| 足端滑移惩罚 | -0.1 ~ -1.0 | 防止打滑；sim2real 必须项 |\n| 存活奖励 | 0.1 ~ 1.0 | 防止策略\"坐下\" |\n\n### 调参规则\n\n1. **先调任务奖励，再调正则惩罚**：确认策略能完成任务后再加惩罚项\n2. **惩罚项权重从小开始**：初始设 0.01–0.05，观察是否抑制主任务学习\n3. **能量惩罚 = sim2real 利器**：减少关节抖动和扭矩尖峰，是最廉价的 sim2real 改善手段\n4. **课程学习优先于奖励 shaping**：难以 shape 的任务改用渐进式课程\n\n---\n\n## 常见问题诊断\n\n| 现象 | 可能原因 | 解决方案 |\n|------|---------|---------|\n| 策略不动（reward ≈ 0） | entropy 太低 / reward 太稀疏 | 提高 entropy_coef / 添加进度奖励 |\n| 训练不稳定（reward 剧烈振荡） | lr 过大 / clip_range 过大 | 降低 lr / 降至 0.1 / 增加 max_grad_norm |\n| 策略在真机上抖动 | 关节速度 / 扭矩惩罚不足 | 提高关节速度惩罚权重 |\n| 策略速度快但步态奇怪 | 缺少步态对称性约束 | 添加脚频约束 / air time reward |\n| 训练后期无提升（平台期） | 数据探索不足 | 增加 entropy / 降低课程难度 |\n\n---\n\n## 关联页面\n- [策略优化方法](../methods/policy-optimization.md)\n- [Reward 设计](../concepts/reward-design.md)\n- [课程学习](../concepts/curriculum-learning.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [reward_design.md](../../sources/papers/reward_design.md)",
+        "tags": [
+          "query",
+          "locomotion",
+          "control",
+          "optimization",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-methods-policy-optimization",
+          "wiki-concepts-reward-design",
+          "wiki-concepts-curriculum-learning",
+          "wiki-tasks-locomotion",
+          "sources-papers-policy-optimization",
+          "sources-papers-reward-design"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "tech-node-system-ros2": {
         "id": "tech-node-system-ros2",
         "title": "ROS2",
@@ -2641,6 +2667,31 @@
         ],
         "status": "active"
       },
+      "wiki-queries-hardware-comparison": {
+        "id": "wiki-queries-hardware-comparison",
+        "title": "主流人形机器人硬件对比",
+        "type": "wiki_page",
+        "path": "wiki/queries/hardware-comparison.md",
+        "summary": "type: query。",
+        "content_markdown": "---\ntype: query\ntags: [humanoid, hardware, comparison, actuator]\nrelated:\n  - ../entities/humanoid-robot.md\n  - ../concepts/whole-body-control.md\n  - ../tasks/locomotion.md\n  - ../comparisons/wbc-vs-rl.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n---\n\n# 主流人形机器人硬件对比\n\n> Query 类型：对比分析\n> 生成日期：2026-04-15\n> 问题：主流人形机器人平台在硬件能力上有何差异？如何根据任务选择平台？\n\n---\n\n## 平台速览\n\n| 平台 | 组织 | DOF | 重量 | 执行器 | 状态 |\n|------|------|-----|------|--------|------|\n| Atlas | Boston Dynamics | 28 | ~80kg | 液压 | 研究平台 |\n| Unitree H1 | Unitree | 20 | ~47kg | 刚性电机 | 商业可购 |\n| Unitree G1 | Unitree | 23 | ~35kg | 刚性电机 | 商业可购 |\n| Agility Digit | Agility Robotics | 20 | ~65kg | SEA | 商业部署中 |\n| Fourier GR-1 | Fourier Intelligence | 44 | ~55kg | 力控电机 | 商业可购 |\n| Apptronik Apollo | Apptronik | 22 | ~73kg | 电机 | 预量产 |\n| Figure 02 | Figure AI | 未公开 | ~60kg | 电机 | 研究中 |\n\n---\n\n## 执行器类型与任务适配\n\n### 液压驱动（Atlas）\n- **优势**：高功率密度，适合高动态运动（跑步、跳跃、空翻）\n- **劣势**：重、能效低（~50%）、维护复杂、不适合产品化\n- **适合**：高动态 locomotion 研究、极限运动展示\n\n### 刚性电机（H1/G1）\n- **优势**：轻量、低成本（H1 ~$90k）、易部署、适合 RL 研究\n- **劣势**：无内置力矩传感，力控精度依赖电流估计；接触任务精度有限\n- **适合**：locomotion RL 研究、工业搬运、低成本部署\n\n### 系列弹性执行器 SEA（Digit）\n- **优势**：内置弹性元件提供力矩测量和柔顺性；适合人机交互\n- **劣势**：带宽受限（~20Hz）；高频控制困难\n- **适合**：物流配送、人机协作、接触丰富任务\n\n### 准直驱 QDD（MIT Cheetah 风格）\n- **优势**：高带宽、高透明度、力矩可测\n- **劣势**：峰值力矩受限；热管理要求高\n- **适合**：高频力控、精密接触任务\n\n---\n\n## 按任务选择平台\n\n| 任务目标 | 推荐平台 | 理由 |\n|---------|---------|------|\n| locomotion RL 研究 | Unitree H1/G1 | 低成本、轻量、RL 社区基础好 |\n| 全身操作（loco-manipulation） | Fourier GR-1 / Digit | 高 DOF + 力控 |\n| 高动态运动（跑跳） | Atlas | 液压高功率密度 |\n| 工业搬运部署 | Digit / Apollo | SEA 柔顺性 + 商业就绪 |\n| 科研算法验证（低预算） | Unitree G1 | 最低成本全尺寸人形 |\n\n---\n\n## Sim2Real 难度对比\n\n| 执行器 | 主要 sim2real gap | 难度 |\n|--------|-----------------|------|\n| 液压 | 液压动态建模误差大 | ★★★★★ |\n| 刚性电机 | 摩擦模型、关节刚度 | ★★★ |\n| SEA | 弹性动态、共振 | ★★★★ |\n| QDD | 热效应、非线性摩擦 | ★★★ |\n\n---\n\n## 关联页面\n- [人形机器人总览](../entities/humanoid-robot.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+        "tags": [
+          "query",
+          "humanoid",
+          "locomotion",
+          "control",
+          "dynamics",
+          "rl"
+        ],
+        "related": [
+          "entity-humanoid-robot",
+          "wiki-concepts-whole-body-control",
+          "wiki-tasks-locomotion",
+          "wiki-comparisons-wbc-vs-rl",
+          "sources-papers-humanoid-hardware"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-queries-humanoid-rl-cookbook": {
         "id": "wiki-queries-humanoid-rl-cookbook",
         "title": "人形机器人 RL 策略训练完整 Checklist",
@@ -2722,6 +2773,33 @@
         "source_links": [],
         "status": "active"
       },
+      "entity-humanoid-robot": {
+        "id": "entity-humanoid-robot",
+        "title": "人形机器人（Humanoid Robot）",
+        "type": "entity_page",
+        "path": "wiki/entities/humanoid-robot.md",
+        "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体",
+        "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 为什么重要\n\n人形机器人平台是连接算法研究与真实世界部署的关键桥梁：\n\n> \"人形平台的选择直接决定了你能运行哪些控制算法、能完成哪些任务、以及 sim2real 的难度。\"\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 |\n|------|------|-----|-----------|---------|\n| Atlas | Boston Dynamics | 28 | 液压 | 研究平台 |\n| Unitree H1 | Unitree | 20 | 刚性电机 | 商业可购 |\n| Unitree G1 | Unitree | 23 | 刚性电机 | 商业可购 |\n| Agility Digit | Agility Robotics | 20 | SEA | 商业部署 |\n| Fourier GR-1 | Fourier Intelligence | 44 | 力控电机 | 商业可购 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 执行器类型决定控制策略\n\n- **液压**（Atlas）：高功率密度 → 适合 WBC + 高动态运动，sim2real 最难\n- **刚性电机**（H1/G1）：轻量低成本 → 适合 RL 研究，力控精度有限\n- **SEA**（Digit）：内置柔顺性 → 适合人机协作和接触丰富任务\n- **QDD**（MIT Cheetah 风格）：高带宽力矩透明 → 适合精密接触控制\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+        "tags": [
+          "entities",
+          "entity",
+          "humanoid",
+          "locomotion",
+          "control",
+          "dynamics"
+        ],
+        "related": [
+          "wiki-queries-hardware-comparison",
+          "wiki-tasks-locomotion",
+          "wiki-tasks-loco-manipulation",
+          "wiki-concepts-whole-body-control",
+          "wiki-comparisons-wbc-vs-rl",
+          "entity-unitree",
+          "sources-papers-humanoid-hardware"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "tech-node-overview": {
         "id": "tech-node-overview",
         "title": "全栈技术域总览",
@@ -2750,6 +2828,33 @@
           "wiki-overview-robot-learning-overview",
           "wiki-comparisons-wbc-vs-rl",
           "wiki-concepts-state-estimation"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-queries-when-to-use-wbc-vs-rl": {
+        "id": "wiki-queries-when-to-use-wbc-vs-rl",
+        "title": "决策树：何时使用 WBC vs RL？",
+        "type": "wiki_page",
+        "path": "wiki/queries/when-to-use-wbc-vs-rl.md",
+        "summary": "type: query。",
+        "content_markdown": "---\ntype: query\ntags: [wbc, rl, locomotion, decision, architecture]\nrelated:\n  - ../comparisons/wbc-vs-rl.md\n  - ../concepts/whole-body-control.md\n  - ../methods/policy-optimization.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/whole_body_control.md\n---\n\n# 决策树：何时使用 WBC vs RL？\n\n> Query 类型：决策指南\n> 生成日期：2026-04-15\n> 问题：面对具体机器人控制任务，应该选择全身控制（WBC）、强化学习（RL），还是两者结合？\n\n---\n\n## 快速决策树\n\n```\n任务是否需要精确接触力控制？\n├── 是 → 优先考虑 WBC\n│        任务是否高度重复且有明确数学模型？\n│        ├── 是 → 纯 WBC（如工业抓取、已知地形行走）\n│        └── 否 → WBC + RL（如 loco-manipulation、不规则地形）\n└── 否 → 任务是否在仿真中容易设计 reward？\n          ├── 是 → 优先 RL（如 locomotion、障碍跑、运动技能）\n          └── 否 → 需要演示数据？\n                    ├── 是 → IL（BC / Diffusion Policy）\n                    └── 否 → 重新分解任务\n```\n\n---\n\n## 详细对比\n\n### 选 WBC 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 有精确动力学模型 | URDF + 精确惯量参数，接触约束可数学建模 |\n| 实时力矩/接触力反馈 | SEA 或力矩传感器可用；接触面已知 |\n| 任务有明确约束层级 | 如\"保持平衡 > 完成末端任务 > 关节极限\"的优先级明确 |\n| 需要精确末端轨迹 | 机械臂操作、精密装配 |\n| 计算资源充足 | WBC 的 QP 求解每步约 1–5ms；需要实时算力 |\n\n**典型场景**：Atlas 行走（官方控制器）、ANYmal 地形跟随、工业机械臂装配\n\n---\n\n### 选 RL 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 动力学模型不精确 | 接触摩擦、软体、未知地形难以建模 |\n| 任务 reward 可设计 | 前进速度、能量、存活时间等标量 reward 自然 |\n| 需要探索未知动作空间 | 人形机器人跑跳、翻滚等非结构化运动 |\n| 需要应对大量扰动 | 推力、不规则地形；RL 通过 domain randomization 自然鲁棒化 |\n| 快速原型验证 | 仿真环境下数小时可训出策略，无需建模 |\n\n**典型场景**：Unitree H1 locomotion、ANYmal 野外行走（Learning to Walk in Minutes）、人形跑跳\n\n---\n\n### 选 WBC + RL 结合的信号\n\n| 信号 | 说明 |\n|------|------|\n| 高层目标 + 低层力控 | RL 输出期望速度/接触时序，WBC 执行精确关节指令 |\n| 需要接触多样性 + 鲁棒性 | loco-manipulation 任务：RL 处理探索，WBC 处理力控 |\n| 从仿真迁移到真机 | RL 提供鲁棒性，WBC 减小 sim2real gap（力矩层面精确） |\n| 任务层级明确分离 | 如 MPC（中层轨迹规划）+ WBC（低层力控）+ RL（高层策略） |\n\n**典型场景**：Unitree H1 loco-manipulation、MIT Cheetah 3 跑跳（MPC + WBC 分层）\n\n---\n\n## 实现复杂度 vs 性能权衡\n\n| 方案 | 实现难度 | 峰值性能 | 鲁棒性 | sim2real |\n|------|---------|---------|--------|---------|\n| 纯 WBC | ★★★★ | ★★★★ | ★★★ | ★★★ |\n| 纯 RL | ★★ | ★★★★★ | ★★★★★ | ★★★ |\n| WBC + RL 分层 | ★★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n| MPC + RL | ★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n\n---\n\n## 常见误区\n\n**误区 1**：*\"WBC 太慢，不适合快速运动\"*\n→ 错误。现代 WBC（TSID/HQP）可以 1kHz 运行；瓶颈通常是感知延迟，不是 QP 求解。\n\n**误区 2**：*\"RL 可以完全替代 WBC\"*\n→ 不准确。RL 在接触力精确控制上仍弱于 WBC；高精度操作任务中两者互补。\n\n**误区 3**：*\"有了 RL 不需要建模\"*\n→ 危险。无精确模型的 RL 在真机上可能学到依赖仿真 artifact 的策略；sim2real gap 可能来自未建模的执行器动态。\n\n---\n\n## 关联页面\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [策略优化方法](../methods/policy-optimization.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [whole_body_control.md](../../sources/papers/whole_body_control.md)",
+        "tags": [
+          "query",
+          "humanoid",
+          "locomotion",
+          "control",
+          "optimization",
+          "rl"
+        ],
+        "related": [
+          "wiki-comparisons-wbc-vs-rl",
+          "wiki-concepts-whole-body-control",
+          "wiki-methods-policy-optimization",
+          "wiki-tasks-locomotion",
+          "wiki-tasks-loco-manipulation",
+          "sources-papers-policy-optimization",
+          "sources-papers-whole-body-control"
         ],
         "source_links": [],
         "status": "active"

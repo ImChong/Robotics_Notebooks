@@ -45,6 +45,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-privileged-training</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-rl-vs-il</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-rl-algorithm-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-rl-hyperparameter-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-reinforcement-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-reward-design</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-reward-design-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -63,7 +64,10 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-wbc-implementation-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-whole-body-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-legged-gym</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-hardware-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-humanoid-rl-cookbook</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-control-architecture-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-humanoid-hardware-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-humanoid-robot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-when-to-use-wbc-vs-rl</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

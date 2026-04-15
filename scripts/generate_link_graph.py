@@ -23,6 +23,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
+STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 
 
 def parse_frontmatter_type(content: str) -> str:
@@ -87,6 +88,43 @@ def main() -> None:
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"✅ link-graph.json: {len(nodes)} nodes, {len(edges)} edges → {OUT_PATH.relative_to(REPO_ROOT)}")
+
+    # ── graph-stats.json ──
+    # 计算度中心性、孤儿节点、类型分布
+    in_degree: dict[str, int] = {n["id"]: 0 for n in nodes}
+    out_degree: dict[str, int] = {n["id"]: 0 for n in nodes}
+    for e in edges:
+        out_degree[e["source"]] = out_degree.get(e["source"], 0) + 1
+        in_degree[e["target"]]  = in_degree.get(e["target"], 0) + 1
+
+    total_degree = {n["id"]: in_degree.get(n["id"], 0) + out_degree.get(n["id"], 0)
+                    for n in nodes}
+
+    # Top 10 度中心性
+    top_hubs = sorted(nodes, key=lambda n: total_degree.get(n["id"], 0), reverse=True)[:10]
+    hub_list = [{"id": n["id"], "label": n["label"], "degree": total_degree[n["id"]]}
+                for n in top_hubs]
+
+    # 孤儿节点：入度 = 0（无其他页面指向它）
+    orphans = [{"id": n["id"], "label": n["label"], "out_degree": out_degree.get(n["id"], 0)}
+               for n in nodes if in_degree.get(n["id"], 0) == 0]
+
+    # 按类型分布
+    type_dist: dict[str, int] = {}
+    for n in nodes:
+        t = n.get("type") or "unknown"
+        type_dist[t] = type_dist.get(t, 0) + 1
+
+    stats = {
+        "generated_at": __import__("datetime").date.today().isoformat(),
+        "node_count": len(nodes),
+        "edge_count": len(edges),
+        "top_hubs": hub_list,
+        "orphan_nodes": orphans,
+        "type_distribution": dict(sorted(type_dist.items(), key=lambda x: x[1], reverse=True)),
+    }
+    STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"✅ graph-stats.json: {len(orphans)} orphans, top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}")
 
 
 if __name__ == "__main__":

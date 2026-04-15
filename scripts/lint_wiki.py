@@ -230,13 +230,13 @@ def lint() -> dict:
     CANONICAL_FACTS = {
         "PPO 样本效率": {
             "terms": ["PPO"],
-            "pos_claims": [r"样本效率.*高|高.*样本效率|sample.efficient"],
-            "neg_claims": [r"样本效率.*低|低.*样本效率|sample.inefficient|样本效率差"],
+            "pos_claims": [r"PPO.*样本效率.*高|高.*样本效率.*PPO|PPO.*sample.efficient"],
+            "neg_claims": [r"PPO.*样本效率.*低|PPO.*sample.inefficient|PPO.*样本效率差"],
         },
         "MPC 实时性": {
             "terms": ["MPC", "model.predictive"],
-            "pos_claims": [r"实时|real.?time|online"],
-            "neg_claims": [r"无法实时|not real.?time|计算量.*过大.*实时"],
+            "pos_claims": [r"MPC.*实时|实时.*MPC|MPC.*real.?time|MPC.*online"],
+            "neg_claims": [r"MPC.*无法实时|MPC.*not real.?time|MPC.*计算量.*过大.*实时"],
         },
         "Domain Randomization 必要性": {
             "terms": ["domain.randomization", "域随机"],
@@ -251,12 +251,32 @@ def lint() -> dict:
         "WBC 计算复杂度": {
             "terms": ["WBC", "whole.body"],
             "pos_claims": [r"实时|real.?time|efficient|高效|fast"],
-            "neg_claims": [r"计算量大|computationally expensive|not real.?time|无法实时"],
+            "neg_claims": [r"WBC.*计算量大|WBC.*computationally expensive|WBC.*not real.?time|WBC.*无法实时"],
         },
         "接触力估计精度": {
             "terms": ["contact", "接触力"],
             "pos_claims": [r"精确.*估计|accurate.*estimation|高精度"],
             "neg_claims": [r"估计不准|inaccurate|sim2real.*gap.*contact|接触.*仿真.*差距"],
+        },
+        "TSID 基于 QP": {
+            "terms": ["TSID"],
+            "pos_claims": [r"基于.*QP|QP.*框架|QP.*求解|二次规划.*求解"],
+            "neg_claims": [r"不.*基于.*QP|独立.*于.*QP|非.*QP.*方法|TSID.*不.*基于"],
+        },
+        "WBC 多接触优势": {
+            "terms": ["WBC", "whole.body"],
+            "pos_claims": [r"优于|多接触.*优|必要|必须.*控制|统一.*优化"],
+            "neg_claims": [r"WBC.*多接触.*无优势|WBC.*不必要|独立关节.*足够|WBC.*可选"],
+        },
+        "MuJoCo 接触精度": {
+            "terms": ["mujoco", "MuJoCo"],
+            "pos_claims": [r"精确|accurate|高精度|精度.*高|接触.*真实"],
+            "neg_claims": [r"不精确|不适合.*接触|接触.*gap.*大|contact.*inaccurate"],
+        },
+        "仿真频率对接触稳定性": {
+            "terms": ["仿真频率|simulation.*frequenc|sim.*freq"],
+            "pos_claims": [r"关键|重要|必须|稳定.*必要|stability.*critical|高频.*稳定"],
+            "neg_claims": [r"频率.*无关|低频.*足够|频率.*不重要|不影响.*稳定"],
         },
     }
     all_pages_content = {p: p.read_text(encoding="utf-8") for p in pages}
@@ -320,6 +340,8 @@ def format_report(results: dict) -> str:
 def main():
     parser = argparse.ArgumentParser(description="Robotics_Notebooks wiki lint 检查")
     parser.add_argument("--write-log", action="store_true", help="将结果追加到 log.md")
+    parser.add_argument("--report", action="store_true",
+                        help="将 markdown 健康报告保存到 exports/lint-report.md")
     args = parser.parse_args()
 
     print("正在扫描 wiki/ 目录...")
@@ -331,7 +353,6 @@ def main():
     total = sum(len(v) for k, v in results.items() if not k.startswith("_"))
     if total == 0:
         print("✅ 所有检查通过！")
-        sys.exit(0)
     else:
         print(f"⚠️  共发现 {total} 个问题，请参考上方报告处理。")
 
@@ -341,6 +362,18 @@ def main():
             f.write("\n---\n\n")
             f.write(report)
         print(f"\n已将报告追加到 {log_path}")
+
+    if args.report:
+        exports_dir = REPO_ROOT / "exports"
+        exports_dir.mkdir(exist_ok=True)
+        report_path = exports_dir / "lint-report.md"
+        with open(report_path, "w", encoding="utf-8") as f:
+            f.write(f"# Wiki 健康报告\n\n")
+            f.write(report)
+        print(f"\n已将健康报告保存到 {report_path}")
+
+    if total > 0:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()

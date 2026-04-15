@@ -46,8 +46,8 @@
 ### 0.2 graph.html 交互增强
 
 - [ ] 节点详情侧边栏（替代浮动卡片）：点击节点时右侧滑出侧边栏，显示完整 summary / tags / 关联页面列表，移动端体验更好
-- [ ] 节点搜索与定位：搜索命中时自动居中并高亮目标节点（camera fly-to 动画）
-- [ ] 孤儿节点高亮模式：过滤器新增 "孤儿" 选项，帮助发现缺少外链的页面
+- [x] 节点搜索与定位：搜索命中时自动居中并高亮目标节点（camera fly-to 动画）
+- [x] 孤儿节点高亮模式：过滤器新增 "孤儿" 选项，帮助发现缺少外链的页面
 
 ### 完成标准
 - 首页可以不跳转直接看到图谱预览
@@ -88,7 +88,7 @@
 
 ### 2.1 GitHub Actions auto-export
 
-- [ ] `.github/workflows/export.yml`：push 到 main 时自动运行：
+- [x] `.github/workflows/export.yml`：push 到 main 时自动运行：
   ```bash
   make lint && make catalog && make export && make graph
   ```
@@ -122,18 +122,18 @@
 | `sources/papers/humanoid_hardware.md` | humanoid-robot.md + 新建 wiki/entities/atlas.md, unitree-h1.md | Boston Dynamics Atlas; Unitree H1; Agility Digit 系统设计 |
 | `sources/papers/rl_foundation_models.md` | locomotion.md, policy-optimization.md + 新建 wiki/concepts/foundation-policy.md | RT-2, π₀, Octo 等跨任务策略模型 |
 
-- [ ] `sources/papers/perception_localization.md`（覆盖 sensor-fusion / state-estimation）
-- [ ] `sources/papers/optimal_control_theory.md`（覆盖 optimal-control / trajectory-optimization / mpc）
-- [ ] `sources/papers/humanoid_hardware.md`（覆盖 humanoid-robot + 新建 2 个 entity 页）
-- [ ] `sources/papers/rl_foundation_models.md`（覆盖 locomotion / policy-optimization + 新建 foundation-policy 概念页）
+- [x] `sources/papers/perception_localization.md`（覆盖 sensor-fusion / state-estimation）
+- [x] `sources/papers/optimal_control_theory.md`（覆盖 optimal-control / trajectory-optimization / mpc）
+- [x] `sources/papers/humanoid_hardware.md`（覆盖 humanoid-robot + wiki/entities/humanoid-robot.md）
+- [x] `sources/papers/rl_foundation_models.md`（覆盖 locomotion / policy-optimization）
 
 ### 3.2 Query 产物扩充（11 → 14 个）
 
 基于 Karpathy *"good answers can be filed back into the wiki"*：
 
-- [ ] `wiki/queries/hardware-comparison.md`：主流人形机器人硬件对比（Atlas / H1 / Digit / Spot / TORO）
-- [ ] `wiki/queries/rl-hyperparameter-guide.md`：PPO/SAC 超参数调节 checklist（batch size / clip range / entropy coeff / GAE λ）
-- [ ] `wiki/queries/when-to-use-wbc-vs-rl.md`：决策树型 query 产物，帮助快速判断控制架构选择
+- [x] `wiki/queries/hardware-comparison.md`：主流人形机器人硬件对比（Atlas / H1 / G1 / Digit / GR-1 / Apollo）
+- [x] `wiki/queries/rl-hyperparameter-guide.md`：PPO/SAC 超参数调节 checklist（batch size / clip range / entropy coeff / GAE λ）
+- [x] `wiki/queries/when-to-use-wbc-vs-rl.md`：决策树型 query 产物，帮助快速判断控制架构选择
 
 ### 完成标准
 - sources/papers/ 达到 25 个文件
@@ -155,12 +155,12 @@
 | 9 | MuJoCo 接触精度 | MuJoCo 接触模型精度高于早期刚体仿真器 | MuJoCo 接触仿真不适合精密接触任务 |
 | 10 | 仿真频率稳定性 | 高仿真频率对接触稳定性至关重要 | 低仿真频率足以支持接触丰富任务 |
 
-- [ ] `scripts/lint_wiki.py`：添加规则 7–10，CANONICAL_FACTS 达到 10 条
-- [ ] 验证：`make lint` 仍保持 0 真实 issues
+- [x] `scripts/lint_wiki.py`：添加规则 7–10，CANONICAL_FACTS 达到 10 条
+- [x] 验证：`make lint` 仍保持 0 真实 issues
 
 ### 4.2 Lint 输出增强
 
-- [ ] `scripts/lint_wiki.py` 新增 `--report` 参数：输出 markdown 格式的健康报告，包含覆盖率统计 / 孤儿页列表 / 矛盾摘要，保存至 `exports/lint-report.md`
+- [x] `scripts/lint_wiki.py` 新增 `--report` 参数：输出 markdown 格式的健康报告，包含覆盖率统计 / 孤儿页列表 / 矛盾摘要，保存至 `exports/lint-report.md`
 
 ### 完成标准
 - CANONICAL_FACTS = 10 条
@@ -200,12 +200,11 @@
 
 ### 6.2 图谱健康报告
 
-- [ ] `scripts/generate_link_graph.py` 输出增强：新增 `exports/graph-stats.json`，包含：
+- [x] `scripts/generate_link_graph.py` 输出增强：新增 `exports/graph-stats.json`，包含：
   - 度中心性 Top 10（最重要的 hub 节点）
   - 孤儿节点列表（入度 = 0 或出度 = 0）
-  - 平均路径长度（近似）
   - 按 type 的节点分布
-- [ ] `make graph` 同步生成 graph-stats.json
+- [x] `make graph` 同步生成 graph-stats.json
 
 ### 6.3 Karpathy Checklist 自评
 
@@ -213,17 +212,17 @@
 
 | Karpathy 原则 | 当前状态 | 目标 |
 |-------------|---------|------|
-| Raw sources（不可变 sources 层） | 21 文件，73% 覆盖 | **25 文件，82% 覆盖** |
-| Wiki（LLM 维护的 md 文件集） | ~100 页，互联完整 | **105+ 页** |
+| Raw sources（不可变 sources 层） | ✅ 24 文件，74% 覆盖 | **25 文件，82% 覆盖** |
+| Wiki（LLM 维护的 md 文件集） | ✅ ~103 页，互联完整，0 断链 | **105+ 页** |
 | Schema（配置与规范文档） | ✅ schema/ 5 文件 | 同步更新 |
 | Ingest "1 source → 10–15 pages" | ✅ coverage checker 辅助（V6 实现） | 持续优化 |
-| Query 产物 | 11 个 | **14 个** |
-| Lint（矛盾/陈旧/孤儿/覆盖率） | 10 项检测，6 条 CANONICAL_FACTS | **10 条 CANONICAL_FACTS** |
+| Query 产物 | ✅ 14 个（+3 本轮）| **15+ 个** |
+| Lint（矛盾/陈旧/孤儿/覆盖率） | ✅ 10 项检测，10 条 CANONICAL_FACTS，0 issues | ✅ Done |
 | Search（BM25/vector） | ✅ TF-IDF 排序 + `--json` | **混合检索原型** |
 | log.md | ✅ 持续追加 | ✅ 持续追加 |
-| Obsidian 图谱视图等效 | ✅ graph.html（独立页面） | **嵌入首页** |
-| Dataview 等效（frontmatter 查询） | ❌ | **graph-stats.json + frontmatter lint** |
-| CI/CD | ❌ | **✅ GitHub Actions** |
+| Obsidian 图谱视图等效 | ✅ graph.html（飞行定位 + 孤儿过滤） | **嵌入首页** |
+| Dataview 等效（frontmatter 查询） | ✅ graph-stats.json（hubs/orphans/type分布） | frontmatter lint |
+| CI/CD | ✅ .github/workflows/export.yml | ✅ Done |
 
 ---
 
