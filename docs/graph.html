@@ -647,6 +647,7 @@
     /* ── 固定卡片状态 ── */
     let pinnedNode = null;
     let pinnedLeft = 0, pinnedTop = 0;
+    let _restorePinnedTimer = null;
 
     function tooltipHtml(d) {
       const color = nodeColor(d);
@@ -675,6 +676,7 @@
     }
 
     function dismissPinned() {
+      clearTimeout(_restorePinnedTimer);  // 取消移动端 mouseleave 触发的延迟恢复
       pinnedNode = null;
       tooltip.classList.remove('tt-pinned');
       hideTooltip();
@@ -745,8 +747,14 @@
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
         applyFilters();
-        // 有固定节点时恢复固定卡片，否则隐藏
-        if (pinnedNode) restorePinned(); else hideTooltip();
+        // 有固定节点时延迟恢复（100ms），让 click 事件有机会先取消固定
+        // 解决移动端 synthetic mouseleave 比 click 早触发导致卡片闪回的 bug
+        if (pinnedNode) {
+          clearTimeout(_restorePinnedTimer);
+          _restorePinnedTimer = setTimeout(restorePinned, 100);
+        } else {
+          hideTooltip();
+        }
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
