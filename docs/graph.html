@@ -195,6 +195,83 @@
     .node-circle { transition: r .15s, fill-opacity .15s; }
     .node-label { transition: opacity .15s; }
 
+    /* ════════════════════════════════════════════
+       白天模式覆盖（[data-theme="light"]）
+    ════════════════════════════════════════════ */
+    [data-theme="light"] #graph-toolbar {
+      background: rgba(250,249,246,0.96);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] #graph-search {
+      background: rgba(0,0,0,0.04);
+      border-color: rgba(0,0,0,0.12);
+      color: #2f2d29;
+    }
+    [data-theme="light"] #graph-search::placeholder { color: rgba(0,0,0,0.3); }
+    [data-theme="light"] .chip {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.5);
+    }
+    [data-theme="light"] .chip:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.8);
+    }
+    [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
+    [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
+    [data-theme="light"] #graph-back {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.55);
+    }
+    [data-theme="light"] #graph-back:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: #2f2d29;
+    }
+    /* 画布背景 */
+    [data-theme="light"] #graph-canvas {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96,165,250,.07) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,.07) 0%, transparent 50%),
+        #eef2f7;
+    }
+    /* dot-grid：深色点改为浅色点 */
+    [data-theme="light"] #graph-wrap::before {
+      background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
+    }
+    /* Tooltip */
+    [data-theme="light"] #graph-tooltip {
+      background: rgba(255,255,255,0.98);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+    [data-theme="light"] .tt-title   { color: #1a1a1a; }
+    [data-theme="light"] .tt-summary { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .tt-hint    { color: rgba(45,116,218,0.6); }
+    /* 图例 */
+    [data-theme="light"] #graph-legend {
+      background: rgba(255,255,255,0.94);
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .legend-row { color: rgba(0,0,0,0.5); }
+    /* 物理参数面板 */
+    [data-theme="light"] .physics-panel {
+      background: rgba(255,255,255,0.97);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    [data-theme="light"] .physics-header {
+      color: rgba(0,0,0,0.62);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .physics-close { color: rgba(0,0,0,0.3); }
+    [data-theme="light"] .physics-close:hover { color: rgba(0,0,0,0.72); }
+    [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
+    [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
+    /* 提示文字 */
+    [data-theme="light"] #graph-hint { color: rgba(0,0,0,0.22); }
+
     /* ── 物理参数面板 ── */
     .physics-panel {
       position: absolute;
@@ -388,6 +465,17 @@
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
 
+    /* ── 主题辅助（响应 data-theme 切换）── */
+    function isDark() {
+      return document.documentElement.getAttribute('data-theme') !== 'light';
+    }
+    function edgeBaseColor() {
+      return isDark() ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.1)';
+    }
+    function labelFill() {
+      return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
+    }
+
     function nodeColor(d)  { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
     function baseRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
     function scaledRadius(d) { return baseRadius(d) * nodeScale; }
@@ -457,7 +545,7 @@
     const link = gEdges.selectAll('line')
       .data(edges)
       .join('line')
-      .attr('stroke', 'rgba(255,255,255,0.07)')
+      .attr('stroke', edgeBaseColor())
       .attr('stroke-width', linkWidthBase);
 
     /* ── 渲染节点 ── */
@@ -501,7 +589,7 @@
       .attr('dy', d => scaledRadius(d) + 13)
       .attr('text-anchor', 'middle')
       .attr('font-size', '10px')
-      .attr('fill', 'rgba(255,255,255,0.55)')
+      .attr('fill', labelFill())
       .attr('pointer-events', 'none')
       .style('opacity', 0);
 
@@ -596,7 +684,7 @@
         node.select('.node-circle').attr('fill-opacity', 0.82);
         node.select('.node-glow').attr('fill-opacity', 0);
         link
-          .attr('stroke', 'rgba(255,255,255,0.07)')
+          .attr('stroke', edgeBaseColor())
           .attr('stroke-width', linkWidthBase)
           .attr('stroke-opacity', 1);
         hideTooltip();
@@ -674,6 +762,15 @@
       svg.attr('width', W).attr('height', H);
       simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
       simulation.alpha(0.1).restart();
+    });
+
+    /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
+    new MutationObserver(() => {
+      link.attr('stroke', edgeBaseColor());
+      label.attr('fill', labelFill());
+    }).observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
     });
 
     /* ════════════════════════════════════════════
