@@ -586,9 +586,9 @@
       <div class="slider-row">
         <div class="slider-label">
           <span>节点字体大小</span>
-          <span class="slider-val" id="val-font">×1.0</span>
+          <span class="slider-val" id="val-font">×1.5</span>
         </div>
-        <input type="range" id="sl-font" min="6" max="22" value="10" step="1"
+        <input type="range" id="sl-font" min="6" max="22" value="15" step="1"
                aria-label="节点字体大小" />
       </div>
     </div>
@@ -661,7 +661,7 @@
     let chargeStrength = -400;   // 排斥力（负值）
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
-    let fontSliderVal  = 10;     // 字体滑块值（6-22），作为乘数作用在nodeScale上
+    let fontSliderVal  = 15;     // 字体滑块值（6-22），作为乘数作用在nodeScale上
 
     /* ── 主题辅助（响应 data-theme 切换）── */
     function isDark() {
