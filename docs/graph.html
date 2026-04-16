@@ -128,7 +128,6 @@
       transition: opacity .12s;
     }
     #graph-tooltip.hidden { opacity: 0; pointer-events: none !important; }
-    /* 固定卡片（点击后）允许鼠标交互，以便点击链接 */
     #graph-tooltip.tt-pinned {
       pointer-events: auto;
       border-color: rgba(0,212,255,0.35);
@@ -156,6 +155,12 @@
       transition: color .12s, border-color .12s;
     }
     .tt-link:hover { color: #00d4ff; border-color: rgba(0,212,255,0.7); }
+    .tt-hint {
+      font-size: .7rem;
+      color: rgba(255,255,255,0.28);
+      margin-top: 8px;
+    }
+    [data-theme="light"] .tt-hint { color: rgba(0,0,0,0.28); }
 
     /* ── 图例 ── */
     #graph-legend {
@@ -805,42 +810,21 @@
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
 
-    /* ── 固定卡片状态 ── */
-    let pinnedNode = null;
-    let pinnedLeft = 0, pinnedTop = 0;
-    let _restorePinnedTimer = null;
-
     function tooltipHtml(d) {
       const color = nodeColor(d);
       const info = d._info;
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
-      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
              (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
-             `<a class="tt-link" href="${detailUrl}" target="_blank" rel="noopener noreferrer">打开详情页 →</a>`;
+             `<div class="tt-hint">点击跳转到详情页</div>`;
     }
 
     function showTooltip(ev, d) {
       tooltip.innerHTML = tooltipHtml(d);
-      tooltip.classList.remove('hidden', 'tt-pinned');
-      moveTooltip(ev);
-    }
-
-    function restorePinned() {
-      tooltip.innerHTML = tooltipHtml(pinnedNode);
       tooltip.classList.remove('hidden');
-      tooltip.classList.add('tt-pinned');
-      tooltip.style.left = pinnedLeft + 'px';
-      tooltip.style.top  = pinnedTop + 'px';
-    }
-
-    function dismissPinned() {
-      clearTimeout(_restorePinnedTimer);  // 取消移动端 mouseleave 触发的延迟恢复
-      pinnedNode = null;
-      tooltip.classList.remove('tt-pinned');
-      hideTooltip();
+      moveTooltip(ev);
     }
 
     function moveTooltip(ev) {
@@ -901,36 +885,17 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        // 已固定卡片时不跟随鼠标移动
-        if (!pinnedNode) moveTooltip(ev);
+        moveTooltip(ev);
       })
       .on('mouseleave', () => {
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
         applyFilters();
-        // 有固定节点时延迟恢复（100ms），让 click 事件有机会先取消固定
-        // 解决移动端 synthetic mouseleave 比 click 早触发导致卡片闪回的 bug
-        if (pinnedNode) {
-          clearTimeout(_restorePinnedTimer);
-          _restorePinnedTimer = setTimeout(restorePinned, 100);
-        } else {
-          hideTooltip();
-        }
+        hideTooltip();
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        if (pinnedNode === d) {
-          // 再次点击同一节点：取消固定
-          dismissPinned();
-        } else {
-          // 固定此节点的卡片
-          pinnedNode = d;
-          showTooltip(ev, d);
-          tooltip.classList.add('tt-pinned');
-          // 记录固定位置，用于 mouseleave 后恢复
-          pinnedLeft = parseFloat(tooltip.style.left);
-          pinnedTop  = parseFloat(tooltip.style.top);
-        }
+        window.location.href = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       });
 
     /* ── 节点计数 ── */
@@ -946,31 +911,22 @@
     // 节点 click 已调 stopPropagation，不会触发此处。
     document.addEventListener('click', ev => {
       const onNode    = ev.target.closest && ev.target.closest('g.node');
-      const onLink    = ev.target.closest && ev.target.closest('.tt-link');
       const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
       const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
       const onFilterPanel = ev.target.closest && ev.target.closest('#filter-panel');
       const onFilterToggle = ev.target.closest && ev.target.closest('#filter-toggle');
-      const onToolbar = ev.target.closest && ev.target.closest('#graph-toolbar');
-      if (onNode || onLink) return; // 节点 / 详情链接：不处理
+      if (onNode) return; // 节点：不处理
       if (!onPanel && !onToggle) {
-        // 点击物理面板或切换按钮之外的区域：关闭物理面板
         const panel = document.getElementById('physics-panel');
         if (panel && !panel.hidden) panel.hidden = true;
       }
       if (!onFilterPanel && !onFilterToggle) {
-        // 点击筛选面板或切换按钮之外的区域：关闭筛选面板
         const fpanel = document.getElementById('filter-panel');
         if (fpanel && !fpanel.hidden) fpanel.hidden = true;
-      }
-      if (!onToolbar) {
-        // 点击工具栏之外：关闭固定卡片
-        if (pinnedNode) dismissPinned();
       }
     });
     document.addEventListener('keydown', ev => {
       if (ev.key === 'Escape') {
-        if (pinnedNode) dismissPinned();
         document.getElementById('physics-panel').hidden = true;
         document.getElementById('filter-panel').hidden = true;
       }
