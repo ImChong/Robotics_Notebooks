@@ -889,10 +889,14 @@
       tooltip.classList.remove('hidden');
       if (isMobile) {
         tooltip.classList.add('tt-pinned');
-        // 移动端固定在视口上方居中
-        tooltip.style.left = '50%';
-        tooltip.style.top = '80px';
-        tooltip.style.transform = 'translateX(-50%)';
+        // 移动端固定在视口右下角
+        tooltip.style.left = '';
+        tooltip.style.top = '';
+        tooltip.style.transform = '';
+        tooltip.style.right = '20px';
+        tooltip.style.bottom = '20px';
+        // 立即设置 pinnedNode，防止 mouseleave 在 click 之前把它 hide 掉
+        pinnedNode = d;
       } else {
         tooltip.classList.remove('tt-pinned');
         moveTooltip(ev);
