@@ -995,13 +995,19 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        moveTooltip(ev);
+        // 移动端固定卡片后，mousemove 不移动 tooltip
+        if (!isMobile || !pinnedNode) {
+          moveTooltip(ev);
+        }
       })
       .on('mouseleave', () => {
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
         applyFilters();
-        hideTooltip();
+        // 移动端固定卡片后，mouseleave 不隐藏 tooltip
+        if (!isMobile || !pinnedNode) {
+          hideTooltip();
+        }
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
