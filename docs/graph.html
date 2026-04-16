@@ -132,6 +132,7 @@
     #graph-tooltip.hidden { opacity: 0; pointer-events: none !important; }
     #graph-tooltip.tt-pinned {
       pointer-events: auto;
+      touch-action: manipulation; /* 消除移动端300ms点击延迟 */
       border-color: rgba(0,212,255,0.35);
       box-shadow: 0 8px 32px rgba(0,0,0,0.7), 0 0 0 1px rgba(0,212,255,0.15);
     }
@@ -150,6 +151,7 @@
     .tt-link {
       display: inline-block;
       font-size: .72rem;
+      pointer-events: auto; /* 确保移动端可点击 */
       color: rgba(0,212,255,0.8);
       margin-top: 9px;
       text-decoration: none;
@@ -925,6 +927,18 @@
       tooltip.style.right = '';
       tooltip.style.bottom = '';
     }
+
+    // 移动端 tooltip 链接点击：直接跳转并关闭 tooltip，避免依赖 <a> 的默认行为（touchend→click 延迟可能导致事件链断裂）
+    tooltip.addEventListener('click', ev => {
+      const link = ev.target.closest && ev.target.closest('.tt-link');
+      if (!link) return;
+      ev.preventDefault();
+      const href = link.getAttribute('href');
+      if (!href) return;
+      pinnedNode = null;
+      hideTooltip();
+      window.location.href = href;
+    });
 
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
