@@ -929,14 +929,20 @@
       tooltip.style.bottom = '';
     }
 
-    // 移动端 tooltip 内链接点击：先取 href 跳转，再关闭 tooltip
+    // 移动端 tooltip 内链接点击：先跳转，再关闭 tooltip（避免 pointer-events: none 中断导航）
     tooltip.addEventListener('click', ev => {
       const link = ev.target.closest && ev.target.closest('.tt-link');
       if (link) {
         const href = link.getAttribute('href');
-        pinnedNode = null;
-        hideTooltip();
-        if (href) window.location.href = href;
+        if (href) {
+          // 先导航
+          window.location.href = href;
+          // 然后异步关闭 tooltip（确保导航已开始）
+          setTimeout(() => {
+            pinnedNode = null;
+            hideTooltip();
+          }, 100);
+        }
       }
     });
 
