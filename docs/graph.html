@@ -887,12 +887,10 @@
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
-      const href = detailUrl;
-      const onclick = `pinnedNode=null;hideTooltip();window.location.href='${href}';return true;`;
       return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
              (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
-             `<a class="tt-link" href="${href}" onclick="${onclick}">打开详情页 →</a>`;
+             `<a class="tt-link" href="${detailUrl}" target="_self">打开详情页 →</a>`;
     }
 
     function showTooltip(ev, d) {
@@ -930,6 +928,14 @@
       tooltip.style.right = '';
       tooltip.style.bottom = '';
     }
+
+    // 移动端 tooltip 内链接点击：只关闭 tooltip，让 <a> 自然跳转
+    tooltip.addEventListener('click', ev => {
+      if (ev.target.closest && ev.target.closest('.tt-link')) {
+        pinnedNode = null;
+        hideTooltip();
+      }
+    });
 
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
