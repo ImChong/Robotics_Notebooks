@@ -155,12 +155,6 @@
       transition: color .12s, border-color .12s;
     }
     .tt-link:hover { color: #00d4ff; border-color: rgba(0,212,255,0.7); }
-    .tt-hint {
-      font-size: .7rem;
-      color: rgba(255,255,255,0.28);
-      margin-top: 8px;
-    }
-    [data-theme="light"] .tt-hint { color: rgba(0,0,0,0.28); }
 
     /* ── 图例 ── */
     #graph-legend {
@@ -813,21 +807,37 @@
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
 
+    /* ── 移动端检测 ── */
+    const isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    /* ── 固定卡片状态（仅移动端使用）── */
+    let pinnedNode = null;
+
     function tooltipHtml(d) {
       const color = nodeColor(d);
       const info = d._info;
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
+      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
              (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
-             `<div class="tt-hint">点击跳转到详情页</div>`;
+             `<a class="tt-link" href="${detailUrl}" target="_blank" rel="noopener noreferrer">打开详情页 →</a>`;
     }
 
     function showTooltip(ev, d) {
       tooltip.innerHTML = tooltipHtml(d);
       tooltip.classList.remove('hidden');
-      moveTooltip(ev);
+      if (isMobile) {
+        tooltip.classList.add('tt-pinned');
+        // 移动端固定在视口上方居中
+        tooltip.style.left = '50%';
+        tooltip.style.top = '80px';
+        tooltip.style.transform = 'translateX(-50%)';
+      } else {
+        tooltip.classList.remove('tt-pinned');
+        moveTooltip(ev);
+      }
     }
 
     function moveTooltip(ev) {
@@ -835,9 +845,13 @@
       const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
       tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
       tooltip.style.top  = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+      tooltip.style.transform = '';
     }
 
-    function hideTooltip() { tooltip.classList.add('hidden'); }
+    function hideTooltip() {
+      tooltip.classList.add('hidden');
+      tooltip.style.transform = '';
+    }
 
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -898,7 +912,19 @@
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        window.location.href = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+        if (isMobile) {
+          // 移动端：点击节点显示/关闭固定卡片
+          if (pinnedNode === d) {
+            pinnedNode = null;
+            hideTooltip();
+          } else {
+            pinnedNode = d;
+            showTooltip(ev, d);
+          }
+        } else {
+          // PC：直接跳转详情页
+          window.location.href = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+        }
       });
 
     /* ── 节点计数 ── */
@@ -908,17 +934,16 @@
     }
     updateCount(nodes.length);
 
-    /* ── 点击背景：关闭固定卡片 + 关闭物理面板 ── */
-    // 用 document 级 click（冒泡）：能捕获点在 tooltip 上的点击（移动端常见），
-    // 解决因 tooltip pointer-events:auto 导致 svg.on('click') 收不到事件的问题。
-    // 节点 click 已调 stopPropagation，不会触发此处。
+    /* ── 点击背景：关闭移动端固定卡片 + 关闭面板 ── */
     document.addEventListener('click', ev => {
       const onNode    = ev.target.closest && ev.target.closest('g.node');
+      const onLink    = ev.target.closest && ev.target.closest('.tt-link');
       const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
       const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
       const onFilterPanel = ev.target.closest && ev.target.closest('#filter-panel');
       const onFilterToggle = ev.target.closest && ev.target.closest('#filter-toggle');
-      if (onNode) return; // 节点：不处理
+      if (onLink) return; // 点击卡片内链接：不处理（让它跳转）
+      if (onNode) return; // 点击节点：节点自己的 click handler 处理
       if (!onPanel && !onToggle) {
         const panel = document.getElementById('physics-panel');
         if (panel && !panel.hidden) panel.hidden = true;
@@ -927,11 +952,20 @@
         const fpanel = document.getElementById('filter-panel');
         if (fpanel && !fpanel.hidden) fpanel.hidden = true;
       }
+      // 移动端点击空白处：关闭固定卡片
+      if (isMobile && pinnedNode) {
+        pinnedNode = null;
+        hideTooltip();
+      }
     });
     document.addEventListener('keydown', ev => {
       if (ev.key === 'Escape') {
         document.getElementById('physics-panel').hidden = true;
         document.getElementById('filter-panel').hidden = true;
+        if (isMobile && pinnedNode) {
+          pinnedNode = null;
+          hideTooltip();
+        }
       }
     });
 
