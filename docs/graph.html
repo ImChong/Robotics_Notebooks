@@ -929,11 +929,14 @@
       tooltip.style.bottom = '';
     }
 
-    // 移动端 tooltip 内链接点击：只关闭 tooltip，让 <a> 自然跳转
+    // 移动端 tooltip 内链接点击：先取 href 跳转，再关闭 tooltip
     tooltip.addEventListener('click', ev => {
-      if (ev.target.closest && ev.target.closest('.tt-link')) {
+      const link = ev.target.closest && ev.target.closest('.tt-link');
+      if (link) {
+        const href = link.getAttribute('href');
         pinnedNode = null;
         hideTooltip();
+        if (href) window.location.href = href;
       }
     });
 
