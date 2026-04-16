@@ -195,6 +195,69 @@
     }
     @keyframes spin { to { transform: rotate(360deg); } }
 
+    /* ── 移动端优化 ── */
+    @media (max-width: 768px) {
+      #graph-toolbar {
+        padding: 6px 12px;
+        gap: 6px;
+      }
+      #graph-search {
+        width: 120px;
+        font-size: .8rem;
+        height: 30px;
+      }
+      #graph-search:focus {
+        width: 160px;
+      }
+      .chip {
+        height: 26px;
+        padding: 0 8px;
+        font-size: .72rem;
+      }
+      #filter-label {
+        display: none;
+      }
+      #filter-toggle {
+        padding: 0 6px;
+      }
+      #physics-toggle span:first-child {
+        margin-right: 0;
+      }
+      #physics-toggle span:last-child {
+        display: none;
+      }
+      #graph-node-count {
+        display: none;
+      }
+      .toolbar-sep {
+        display: none;
+      }
+      #graph-back {
+        height: 26px;
+        padding: 0 8px;
+        font-size: .72rem;
+      }
+      #graph-back::before {
+        content: '←';
+        margin-right: 2px;
+      }
+      #graph-back span {
+        display: none;
+      }
+      .toolbar-right {
+        gap: 4px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #graph-search {
+        width: 100px;
+      }
+      #graph-search:focus {
+        width: 140px;
+      }
+    }
+
     /* ── 提示条 ── */
     #graph-hint {
       position: absolute;
@@ -514,7 +577,7 @@
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
-      <button id="physics-toggle" class="chip" title="调整物理参数">⚙ 参数</button>
+      <button id="physics-toggle" class="chip" title="调整物理参数"><span>⚙</span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>
