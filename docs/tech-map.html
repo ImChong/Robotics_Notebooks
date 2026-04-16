@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN"> 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,6 +12,67 @@
   <title>技术栈地图 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧭</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── 筛选浮窗（参照 physics-panel）── */
+    #filter-panel {
+      position: absolute;
+      top: 12px; right: 20px;
+      z-index: 30;
+      width: 220px;
+      background: var(--bg-panel, rgba(13,17,23,0.96));
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+    [data-theme="light"] #filter-panel {
+      background: rgba(255,255,255,0.97);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    .filter-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px 9px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
+      letter-spacing: .03em;
+    }
+    [data-theme="light"] .filter-header {
+      color: rgba(0,0,0,0.6);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    .filter-close {
+      background: none; border: none;
+      color: rgba(255,255,255,0.3);
+      cursor: pointer; font-size: .9rem; line-height: 1;
+      padding: 2px 4px; border-radius: 4px;
+      transition: color .12s;
+    }
+    [data-theme="light"] .filter-close { color: rgba(0,0,0,0.3); }
+    .filter-close:hover { color: rgba(255,255,255,0.75); }
+    [data-theme="light"] .filter-close:hover { color: rgba(0,0,0,0.75); }
+    .filter-body {
+      padding: 10px 12px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .filter-state {
+      font-size: .72rem;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    [data-theme="light"] .filter-state { color: rgba(0,0,0,0.35); }
+
+    /* 按钮上的激活 badge */
+    .filter-badge {
+      font-size: .6rem;
+      color: var(--accent, #00d4ff);
+      margin-left: 2px;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -29,7 +90,28 @@
   </header>
 
   <main>
-    <section class="page-hero detail-hero">
+    <section class="page-hero detail-hero" style="position:relative;">
+      <!-- ── 浮窗入口按钮 ── -->
+      <div style="position:absolute;top:12px;right:20px;z-index:20;">
+        <button id="filter-toggle" class="chip" title="按 layer 筛选节点" style="display:flex;align-items:center;gap:5px;">
+          <span>🔍</span>
+          <span id="filter-toggle-text">筛选</span>
+          <span id="filter-badge" class="filter-badge" style="display:none;"></span>
+        </button>
+      </div>
+
+      <!-- ── 筛选浮窗 ── -->
+      <div id="filter-panel" hidden>
+        <div class="filter-header">
+          <span>🔍 按 Layer 筛选</span>
+          <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
+        </div>
+        <div class="filter-body">
+          <p id="filter-state-text" class="filter-state">当前展示全部 layer</p>
+          <div id="filter-chip-list" class="chip-list" style="gap:6px;"></div>
+        </div>
+      </div>
+
       <div class="container detail-hero-stack">
         <p class="hero-kicker">Data-driven tech-map page</p>
         <div class="detail-hero-top">
@@ -59,14 +141,6 @@
         <h2 class="section-title">Layer 分布</h2>
         <p class="section-subtitle">当前不急着做力导图，先验证 layer / node_kind / summary 是否已经足够支撑第一版技术栈导航页面。</p>
         <div id="techMapLayerList" class="chip-list data-loading"></div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="tech-map-filters">
-      <div class="container">
-        <h2 class="section-title">最小筛选</h2>
-        <p id="techMapFilterState" class="section-subtitle data-loading">正在准备 layer filter…</p>
-        <div id="techMapFilterList" class="chip-list data-loading"></div>
       </div>
     </section>
 

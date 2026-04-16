@@ -293,6 +293,46 @@
     /* 提示文字 */
     [data-theme="light"] #graph-hint { color: rgba(0,0,0,0.22); }
 
+    /* ── 筛选面板（白天模式）── */
+    [data-theme="light"] .filter-panel {
+      background: rgba(255,255,255,0.97);
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    }
+    [data-theme="light"] .filter-header {
+      color: rgba(0,0,0,0.62);
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .filter-close { color: rgba(0,0,0,0.3); }
+    [data-theme="light"] .filter-close:hover { color: rgba(0,0,0,0.72); }
+    [data-theme="light"] .filter-item { color: rgba(0,0,0,0.55); }
+    [data-theme="light"] .filter-item:hover {
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.9);
+    }
+    [data-theme="light"] .filter-item input[type=checkbox] { accent-color: #1659b4; }
+    [data-theme="light"] .filter-footer { border-top-color: rgba(0,0,0,0.07); }
+    [data-theme="light"] .filter-clear {
+      border-color: rgba(0,0,0,0.1);
+      color: rgba(0,0,0,0.4);
+    }
+    [data-theme="light"] .filter-clear:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.8);
+    }
+    [data-theme="light"] .filter-count {
+      background: #1659b4;
+      color: #fff;
+    }
+    [data-theme="light"] .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
+    [data-theme="light"] .chip[data-type="concept"].active    { background: #60a5fa; }
+    [data-theme="light"] .chip[data-type="method"].active     { background: #34d399; }
+    [data-theme="light"] .chip[data-type="task"].active       { background: #f472b6; }
+    [data-theme="light"] .chip[data-type="entity"].active     { background: #fbbf24; }
+    [data-theme="light"] .chip[data-type="comparison"].active { background: #c084fc; }
+    [data-theme="light"] .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
+    [data-theme="light"] .chip[data-type="formalization"].active { background: #fb923c; }
+
     /* ── 物理参数面板 ── */
     .physics-panel {
       position: absolute;
@@ -358,6 +398,92 @@
       height: 1px; background: rgba(255,255,255,0.05);
       margin: 0 14px;
     }
+
+    /* ── 筛选按钮计数徽章 ── */
+    .filter-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      border-radius: 9px;
+      background: #60a5fa;
+      color: #0d1117;
+      font-size: 11px;
+      font-weight: 700;
+      margin-left: 3px;
+      line-height: 1;
+    }
+
+    /* ── 筛选浮窗面板 ── */
+    .filter-panel {
+      position: absolute;
+      top: 12px; right: 76px;
+      z-index: 30;
+      min-width: 170px;
+      background: rgba(13,17,23,0.97);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.55);
+      overflow: hidden;
+    }
+    .filter-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 14px 9px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      font-size: .8rem; font-weight: 700; color: rgba(255,255,255,0.65);
+      letter-spacing: .03em;
+    }
+    .filter-close {
+      background: none; border: none;
+      color: rgba(255,255,255,0.3);
+      cursor: pointer; font-size: .9rem; line-height: 1;
+      padding: 2px 4px; border-radius: 4px;
+      transition: color .12s;
+    }
+    .filter-close:hover { color: rgba(255,255,255,0.75); }
+    .filter-body {
+      padding: 8px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+    .filter-item {
+      display: flex; align-items: center; gap: 9px;
+      padding: 7px 14px;
+      font-size: .78rem; color: rgba(255,255,255,0.6);
+      cursor: pointer;
+      transition: background .12s, color .12s;
+      user-select: none;
+    }
+    .filter-item:hover { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.9); }
+    .filter-item input[type=checkbox] {
+      width: 15px; height: 15px;
+      accent-color: #60a5fa;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .filter-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .filter-footer {
+      padding: 8px 14px 10px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .filter-clear {
+      background: none; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      color: rgba(255,255,255,0.4);
+      font-size: .72rem;
+      padding: 4px 10px;
+      cursor: pointer;
+      transition: all .15s;
+    }
+    .filter-clear:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
   </style>
 </head>
 <body>
@@ -381,17 +507,11 @@
   <div id="graph-toolbar">
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
     <div class="toolbar-sep"></div>
-    <div class="chip-group" id="type-filters" role="group" aria-label="按类型过滤">
-      <button class="chip active" data-type="">全部</button>
-      <button class="chip" data-type="concept">概念</button>
-      <button class="chip" data-type="method">方法</button>
-      <button class="chip" data-type="task">任务</button>
-      <button class="chip" data-type="formalization">形式化</button>
-      <button class="chip" data-type="comparison">对比</button>
-      <button class="chip" data-type="entity">工具</button>
-      <button class="chip" data-type="query">Query</button>
-      <button class="chip" data-type="__orphan__" title="度 ≤ 1 的低连接节点">孤儿</button>
-    </div>
+    <!-- 筛选按钮 -->
+    <button id="filter-toggle" class="chip" title="按类型筛选">
+      <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
+      <span id="filter-count" class="filter-count" style="display:none"></span>
+    </button>
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
@@ -465,6 +585,43 @@
         </div>
         <input type="range" id="sl-font" min="6" max="22" value="10" step="1"
                aria-label="节点字体大小" />
+      </div>
+    </div>
+
+    <!-- ── 筛选浮窗面板 ── -->
+    <div id="filter-panel" class="filter-panel" hidden>
+      <div class="filter-header">
+        <span>🔍 按类型筛选</span>
+        <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
+      </div>
+      <div class="filter-body">
+        <label class="filter-item">
+          <input type="checkbox" value="concept" /> <span class="filter-dot" style="background:#60a5fa"></span>概念
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="method" /> <span class="filter-dot" style="background:#34d399"></span>方法
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="task" /> <span class="filter-dot" style="background:#f472b6"></span>任务
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="formalization" /> <span class="filter-dot" style="background:#fb923c"></span>形式化
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="comparison" /> <span class="filter-dot" style="background:#c084fc"></span>对比
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="entity" /> <span class="filter-dot" style="background:#fbbf24"></span>工具
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="query" /> <span class="filter-dot" style="background:#94a3b8"></span>Query
+        </label>
+        <label class="filter-item">
+          <input type="checkbox" value="__orphan__" /> <span class="filter-dot" style="background:#94a3b8"></span>孤儿（度≤1）
+        </label>
+      </div>
+      <div class="filter-footer">
+        <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
     </div>
 
@@ -792,12 +949,19 @@
       const onLink    = ev.target.closest && ev.target.closest('.tt-link');
       const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
       const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
+      const onFilterPanel = ev.target.closest && ev.target.closest('#filter-panel');
+      const onFilterToggle = ev.target.closest && ev.target.closest('#filter-toggle');
       const onToolbar = ev.target.closest && ev.target.closest('#graph-toolbar');
       if (onNode || onLink) return; // 节点 / 详情链接：不处理
       if (!onPanel && !onToggle) {
-        // 点击物理面板或切换按钮之外的区域：关闭面板
+        // 点击物理面板或切换按钮之外的区域：关闭物理面板
         const panel = document.getElementById('physics-panel');
         if (panel && !panel.hidden) panel.hidden = true;
+      }
+      if (!onFilterPanel && !onFilterToggle) {
+        // 点击筛选面板或切换按钮之外的区域：关闭筛选面板
+        const fpanel = document.getElementById('filter-panel');
+        if (fpanel && !fpanel.hidden) fpanel.hidden = true;
       }
       if (!onToolbar) {
         // 点击工具栏之外：关闭固定卡片
@@ -808,28 +972,48 @@
       if (ev.key === 'Escape') {
         if (pinnedNode) dismissPinned();
         document.getElementById('physics-panel').hidden = true;
+        document.getElementById('filter-panel').hidden = true;
       }
     });
 
-    /* ── 类型过滤 ── */
+    /* ── 筛选面板开关 ── */
     let activeTypes = new Set();
-
-    document.getElementById('type-filters').addEventListener('click', ev => {
-      const chip = ev.target.closest('.chip[data-type]');
-      if (!chip) return;
-      const t = chip.dataset.type;
-      if (t === '') {
-        activeTypes.clear();
-        document.querySelectorAll('.chip[data-type]').forEach(c => c.classList.remove('active'));
-        chip.classList.add('active');
-      } else {
-        document.querySelector('.chip[data-type=""]').classList.remove('active');
-        chip.classList.toggle('active');
-        activeTypes[chip.classList.contains('active') ? 'add' : 'delete'](t);
-        if (activeTypes.size === 0)
-          document.querySelector('.chip[data-type=""]').classList.add('active');
-      }
+    document.getElementById('filter-toggle').addEventListener('click', () => {
+      const panel = document.getElementById('filter-panel');
+      panel.hidden = !panel.hidden;
+    });
+    document.getElementById('filter-close').addEventListener('click', () => {
+      document.getElementById('filter-panel').hidden = true;
+    });
+    document.getElementById('filter-clear').addEventListener('click', () => {
+      document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => cb.checked = false);
+      activeTypes.clear();
       applyFilters();
+      updateFilterCount();
+    });
+
+    /* ── checkbox 筛选 ── */
+    function updateFilterCount() {
+      const count = activeTypes.size;
+      const countEl = document.getElementById('filter-count');
+      if (count > 0) {
+        countEl.textContent = count;
+        countEl.style.display = 'inline-flex';
+      } else {
+        countEl.style.display = 'none';
+      }
+    }
+
+    document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        if (cb.checked) {
+          activeTypes.add(cb.value);
+        } else {
+          activeTypes.delete(cb.value);
+        }
+        applyFilters();
+        updateFilterCount();
+      });
     });
 
     /* ── 搜索 ── */

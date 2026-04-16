@@ -921,28 +921,50 @@
   }
 
   function renderTechMapFilters(layerCounts, activeLayer, onSelect) {
-    const filterList = document.getElementById('techMapFilterList');
-    const filterState = document.getElementById('techMapFilterState');
-    if (!filterList || !filterState) return;
+    const chipList = document.getElementById('filter-chip-list');
+    const stateText = document.getElementById('filter-state-text');
+    const toggleText = document.getElementById('filter-toggle-text');
+    const badge = document.getElementById('filter-badge');
+    if (!chipList) return;
 
     const layers = ['all'].concat(Object.keys(layerCounts));
-    filterState.innerHTML = activeLayer === 'all'
-      ? '当前展示 <strong>全部 layer</strong>。点击下方 chip 可只看单个 layer；回到 all 时会自动清掉 URL 里的筛选参数。'
-      : '当前仅展示 <strong>' + escapeHtml(activeLayer) + '</strong> layer。这个状态会同步到 URL，刷新或分享链接后仍可保留。';
-    removeLoadingState(filterState);
 
-    filterList.innerHTML = layers.map(function (layer) {
+    // 更新浮窗内的状态文字
+    if (stateText) {
+      stateText.textContent = activeLayer === 'all'
+        ? '当前展示全部 layer'
+        : '当前展示 ' + activeLayer + ' layer';
+    }
+
+    // 更新按钮文字 + badge
+    if (toggleText) {
+      toggleText.textContent = activeLayer === 'all' ? '筛选' : activeLayer;
+    }
+    if (badge) {
+      if (activeLayer === 'all') {
+        badge.style.display = 'none';
+        badge.textContent = '';
+      } else {
+        badge.style.display = 'inline';
+        badge.textContent = '●';
+      }
+    }
+
+    // 渲染 layer chips 到浮窗
+    chipList.innerHTML = layers.map(function (layer) {
       const count = layer === 'all'
         ? Object.keys(layerCounts).reduce(function (sum, key) { return sum + layerCounts[key]; }, 0)
         : layerCounts[layer];
       const activeClass = layer === activeLayer ? ' data-chip-active' : '';
       return '<button type="button" class="data-chip data-chip-button' + activeClass + '" data-layer="' + escapeHtml(layer) + '">' + escapeHtml(layer) + ' · ' + escapeHtml(count) + '</button>';
     }).join('');
-    removeLoadingState(filterList);
 
-    Array.from(filterList.querySelectorAll('[data-layer]')).forEach(function (button) {
+    Array.from(chipList.querySelectorAll('[data-layer]')).forEach(function (button) {
       button.addEventListener('click', function () {
         onSelect(button.getAttribute('data-layer'));
+        // 选完后关闭浮窗
+        var panel = document.getElementById('filter-panel');
+        if (panel) panel.hidden = true;
       });
     });
   }
@@ -1008,6 +1030,35 @@
     }
 
     updateTechMapLayer(currentLayer);
+
+    /* ── 筛选浮窗交互（参照 physics-panel 模式）── */
+    var filterToggle = document.getElementById('filter-toggle');
+    var filterPanel = document.getElementById('filter-panel');
+    var filterClose = document.getElementById('filter-close');
+
+    if (filterToggle && filterPanel) {
+      filterToggle.addEventListener('click', function () {
+        filterPanel.hidden = !filterPanel.hidden;
+      });
+    }
+    if (filterClose) {
+      filterClose.addEventListener('click', function () {
+        filterPanel.hidden = true;
+      });
+    }
+    document.addEventListener('click', function (ev) {
+      if (!filterPanel || filterPanel.hidden) return;
+      var onToggle = ev.target.closest && ev.target.closest('#filter-toggle');
+      var onPanel = ev.target.closest && ev.target.closest('#filter-panel');
+      if (!onToggle && !onPanel) {
+        filterPanel.hidden = true;
+      }
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && filterPanel && !filterPanel.hidden) {
+        filterPanel.hidden = true;
+      }
+    });
   }
 
   function renderPreviewPage(siteData) {
