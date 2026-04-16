@@ -861,12 +861,15 @@
       node.attr('transform', d => `translate(${d.x},${d.y})`);
     });
 
-    /* ── 隐藏加载 ── */
+    /* ── 隐藏加载 & 标签渐显 ── */
     simulation.on('end', () => {
       document.getElementById('graph-loading').style.display = 'none';
+      // 仿真稳定后让所有标签渐显
+      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
     });
     setTimeout(() => {
       document.getElementById('graph-loading').style.display = 'none';
+      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
     }, 1200);
 
     /* ── Tooltip ── */
