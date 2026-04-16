@@ -828,13 +828,16 @@
     function showTooltip(ev, d) {
       tooltip.innerHTML = tooltipHtml(d);
       tooltip.classList.remove('hidden');
-      tooltip.classList.add('tt-pinned');
-      tooltip.style.left = '';
-      tooltip.style.top = '';
-      tooltip.style.transform = '';
-      // 统一固定在右下角
-      tooltip.style.right = '20px';
-      tooltip.style.bottom = '20px';
+      if (isMobile) {
+        tooltip.classList.add('tt-pinned');
+        // 移动端固定在视口上方居中
+        tooltip.style.left = '50%';
+        tooltip.style.top = '80px';
+        tooltip.style.transform = 'translateX(-50%)';
+      } else {
+        tooltip.classList.remove('tt-pinned');
+        moveTooltip(ev);
+      }
     }
 
     function moveTooltip(ev) {
@@ -899,14 +902,13 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
-        if (!isMobile) moveTooltip(ev);
+        moveTooltip(ev);
       })
       .on('mouseleave', () => {
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
         applyFilters();
-        // 隐藏非 pinned 的悬浮 tooltip；pinned 卡片由点击空白处负责关闭
-        if (!isMobile) hideTooltip();
+        hideTooltip();
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
