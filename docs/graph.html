@@ -586,7 +586,7 @@
       <div class="slider-row">
         <div class="slider-label">
           <span>节点字体大小</span>
-          <span class="slider-val" id="val-font">10px</span>
+          <span class="slider-val" id="val-font">×1.0</span>
         </div>
         <input type="range" id="sl-font" min="6" max="22" value="10" step="1"
                aria-label="节点字体大小" />
@@ -661,7 +661,7 @@
     let chargeStrength = -400;   // 排斥力（负值）
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
-    let labelFontSize  = 10;     // 节点标签字体大小（px）
+    let fontSliderVal  = 10;     // 字体滑块值（6-22），作为乘数作用在nodeScale上
 
     /* ── 主题辅助（响应 data-theme 切换）── */
     function isDark() {
@@ -677,6 +677,9 @@
     function nodeColor(d)  { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
     function baseRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
     function scaledRadius(d) { return baseRadius(d) * nodeScale; }
+    // 最终字号 = baseRadius × nodeScale × 0.4 × (fontSliderVal/10)
+    // 0.4 让 baseRadius=10 的节点在 nodeScale=1, fontSliderVal=10 时字体≈10px
+    function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
     function toDetailId(path) { return path.replace(/\//g, '-').replace('.md', ''); }
 
     /* ── 加载数据 ── */
@@ -786,7 +789,7 @@
       .text(d => d._info.title || d.label)
       .attr('dy', d => scaledRadius(d) + 13)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '10px')
+      .attr('font-size', d => scaledFontSize(d) + 'px')
       .attr('fill', labelFill())
       .attr('pointer-events', 'none')
       .style('opacity', 0);
@@ -1111,11 +1114,11 @@
       link.attr('stroke-width', linkWidthBase);
     });
 
-    /* 4. 节点字体大小 slider（min=6, max=22, step=1） */
+    /* 4. 节点字体大小 slider（min=6, max=22, step=1）—— 在 nodeScale 基础上再缩放 */
     document.getElementById('sl-font').addEventListener('input', ev => {
-      labelFontSize = Number(ev.target.value);
-      document.getElementById('val-font').textContent = labelFontSize + 'px';
-      label.attr('font-size', labelFontSize + 'px');
+      fontSliderVal = Number(ev.target.value);
+      document.getElementById('val-font').textContent = '×' + (fontSliderVal / 10).toFixed(1);
+      label.attr('font-size', d => scaledFontSize(d) + 'px');
     });
 
   })();
