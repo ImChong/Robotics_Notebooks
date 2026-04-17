@@ -2,7 +2,7 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-17 -->
+<!-- Last updated: 2026-04-17 (V9) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
@@ -93,6 +93,6 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 
 ## 执行清单
 
-[技术栈项目执行清单 v8](docs/tech-stack-next-phase-checklist-v8.md) — 当前阶段目标（孤儿双向链接 / 缺失概念页 / lint 完善 / 首页图谱 / BM25 搜索）
+[技术栈项目执行清单 v9](docs/tech-stack-next-phase-checklist-v9.md) — 当前阶段目标（frontmatter 完整性 / 向量搜索 / 启发式重排 / lint 增强 / 周报 Action / Marp UX）
 
-历史版本：[第七版](docs/tech-stack-next-phase-checklist-v7.md) · [第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[第八版](docs/tech-stack-next-phase-checklist-v8.md) · [第七版](docs/tech-stack-next-phase-checklist-v7.md) · [第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)
