@@ -1,6 +1,126 @@
 {
   "entries": [
     {
+      "key": "{\"q\": [\"policy optimization\"], \"t\": \"\", \"tags\": []}",
+      "ts": "2026-04-17T10:27:19",
+      "results": [
+        {
+          "path": "wiki/methods/policy-optimization.md",
+          "score": 7.187062,
+          "title": "Policy Optimization",
+          "type": "method",
+          "tags": [
+            "rl",
+            "policy-optimization",
+            "ppo",
+            "sac",
+            "locomotion"
+          ]
+        },
+        {
+          "path": "wiki/formalizations/gae.md",
+          "score": 1.022733,
+          "title": "GAE（广义优势估计）",
+          "type": "formalization",
+          "tags": [
+            "gae",
+            "rl",
+            "advantage-function",
+            "policy-gradient",
+            "ppo",
+            "variance-reduction"
+          ]
+        },
+        {
+          "path": "wiki/roadmaps/humanoid-control-roadmap.md",
+          "score": 0.94231,
+          "title": "Humanoid Control Roadmap",
+          "type": "",
+          "tags": []
+        },
+        {
+          "path": "wiki/methods/model-based-rl.md",
+          "score": 0.884985,
+          "title": "Model-Based RL（基于模型的强化学习）",
+          "type": "method",
+          "tags": [
+            "rl",
+            "model-based",
+            "planning",
+            "locomotion",
+            "sample-efficiency"
+          ]
+        },
+        {
+          "path": "wiki/queries/rl-algorithm-selection.md",
+          "score": 0.884632,
+          "title": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
+          "type": "query",
+          "tags": [
+            "rl",
+            "locomotion",
+            "policy-optimization",
+            "humanoid"
+          ]
+        },
+        {
+          "path": "wiki/comparisons/model-based-vs-model-free.md",
+          "score": 0.883312,
+          "title": "Model-Based vs Model-Free RL 对比",
+          "type": "comparison",
+          "tags": []
+        },
+        {
+          "path": "wiki/concepts/foundation-policy.md",
+          "score": 0.875719,
+          "title": "Foundation Policy（基础策略模型）",
+          "type": "concept",
+          "tags": [
+            "foundation-policy",
+            "vla",
+            "rt1",
+            "rt2",
+            "pi0",
+            "octo",
+            "generalist",
+            "pretraining",
+            "manipulation"
+          ]
+        },
+        {
+          "path": "wiki/queries/README.md",
+          "score": 0.842303,
+          "title": "wiki/queries/",
+          "type": "",
+          "tags": []
+        },
+        {
+          "path": "wiki/methods/reinforcement-learning.md",
+          "score": 0.797601,
+          "title": "Reinforcement Learning (RL)",
+          "type": "method",
+          "tags": [
+            "rl",
+            "locomotion",
+            "policy-optimization",
+            "model-free"
+          ]
+        },
+        {
+          "path": "wiki/methods/diffusion-policy.md",
+          "score": 0.768111,
+          "title": "Diffusion Policy",
+          "type": "method",
+          "tags": [
+            "il",
+            "diffusion",
+            "manipulation",
+            "generative-model"
+          ]
+        }
+      ]
+    },
+    {
       "key": "{\"q\": [\"sim2real\"], \"t\": \"\", \"tags\": []}",
       "ts": "2026-04-17T05:32:21",
       "results": [

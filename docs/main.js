@@ -1460,10 +1460,15 @@
 
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+        var stem = (item.id || '').split('/').pop().replace(/\.md$/, '');
+        var slidesUrl = 'slides/' + stem + '.html';
         var typeLabel = item.page_type || (item.type === 'entity_page' ? 'entity' : '') || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+        var slidesIcon = '<a href="' + slidesUrl + '" class="card-slides-icon" title="幻灯片版（需本地生成）" '
+          + 'onclick="event.stopPropagation()" style="font-size:.72rem;opacity:.45;margin-left:6px;text-decoration:none" '
+          + 'tabindex="-1">📊</a>';
         return '<article class="card" data-result-url="' + detailUrl + '">'
           + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + '</p>'
-          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a></h3>'
+          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + slidesIcon + '</h3>'
           + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
           + '</article>';
       }).join('');

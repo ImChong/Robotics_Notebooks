@@ -164,13 +164,14 @@ def compute_score(body: str, query_words: list[str], title: str = "",
                   case_sensitive: bool = False,
                   avgdl: float = 0.0, k1: float = 1.5, b: float = 0.75,
                   fm: dict | None = None, page_type: str = "") -> float:
-    """BM25 + 启发式重排序评分。
+    """BM25 + 启发式重排序评分（P4 全部规则）。
 
     BM25: score = Σ IDF(q) * tf(q,D)*(k1+1) / (tf(q,D) + k1*(1-b+b*|D|/avgdl))
-    重排规则（P4）：
-      - 标题精确匹配 × 5（取代原来的 × 3）
-      - frontmatter summary/description 命中 × 2
-      - query 页面降权 × 0.7（避免 query 产物占据 concept 搜索前位）
+    重排规则：
+      1. 标题精确匹配 × 5
+      2. frontmatter summary/description 命中 × 2
+      3. frontmatter updated: 距今 ≤ 30 天 × 1.2（freshness boost）
+      4. query 页面降权 × 0.7
     """
     if not query_words:
         return 0.0
@@ -192,15 +193,26 @@ def compute_score(body: str, query_words: list[str], title: str = "",
         numerator = tf * (k1 + 1)
         denominator = tf + k1 * (1 - b + b * dl / avgdl)
         term_score = idf * numerator / denominator
-        # 标题精确命中 × 5
+        # 规则 1：标题精确命中 × 5
         if re.search(re.escape(w), title, flags):
             term_score *= 5.0
-        # frontmatter summary 命中 × 2
+        # 规则 2：frontmatter summary 命中 × 2
         elif summary and re.search(re.escape(w), summary, flags):
             term_score *= 2.0
         score += term_score
 
-    # query 页面降权（避免占据 concept 搜索前位）
+    # 规则 3：最近 30 天更新的页面 freshness boost × 1.2
+    updated_str = fm.get("updated", fm.get("created", ""))
+    if updated_str:
+        try:
+            from datetime import date as _date
+            upd = _date.fromisoformat(str(updated_str)[:10])
+            if (_date.today() - upd).days <= 30:
+                score *= 1.2
+        except (ValueError, TypeError):
+            pass
+
+    # 规则 4：query 页面降权（避免占据 concept 搜索前位）
     if page_type == "query":
         score *= 0.7
 
@@ -332,6 +344,7 @@ def main():
             out.append({
                 "path": str(r["path"]),
                 "score": round(r.get("score", 0.0), 6),
+                "rerank_score": round(r.get("score", 0.0), 6),
                 "type": r["fm"].get("type", ""),
                 "tags": r["fm"].get("tags", []),
                 "title": r.get("title", ""),

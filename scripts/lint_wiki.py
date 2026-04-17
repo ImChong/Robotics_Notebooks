@@ -109,6 +109,7 @@ def lint() -> dict:
         "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
         "sources_orphans": [],        # P3.3: sources/papers 中的死链（wiki 目标不存在）
         "stale_pages": [],            # P3.2: wiki 页面比对应 sources 文件旧
+        "outdated_pages": [],         # V9: frontmatter updated: 字段距今 > 180 天
         "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
         "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
         "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
@@ -365,6 +366,27 @@ def lint() -> dict:
         else:
             results["missing_type"].append(str(rel))
 
+    # V9: frontmatter updated: 字段过期检测（距今 > 180 天）
+    today_for_stale = date.today()
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            continue
+        upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+        if not upd_m:
+            continue
+        try:
+            upd_dt = date.fromisoformat(upd_m.group(1))
+            days_old = (today_for_stale - upd_dt).days
+            if days_old > 180:
+                results["outdated_pages"].append(
+                    f"{rel} （updated: {upd_m.group(1)}，已 {days_old} 天）"
+                )
+        except ValueError:
+            pass
+
     # V8: log.md 活跃度检查（最近 30 天内是否有操作记录）
     log_path = REPO_ROOT / "log.md"
     if log_path.exists():
@@ -406,6 +428,7 @@ def format_report(results: dict) -> str:
         ("broken_source_refs", "引用了不存在的 sources/ 文件",                "❌"),
         ("sources_orphans",    "Sources 孤儿（sources/papers 死链）",         "❌"),
         ("stale_pages",        "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
+        ("outdated_pages",     "可能过期（updated: 距今 > 180 天）",          "⚠️"),
         ("contradictions",     "潜在矛盾（跨页面相反定性描述）",              "⚠️"),
         ("stub_pages",         "空壳页面（< 200 字）",                       "⚠️"),
         ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),

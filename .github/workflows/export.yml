@@ -41,14 +41,17 @@ jobs:
           python3 scripts/generate_link_graph.py
           cp exports/link-graph.json docs/exports/link-graph.json
 
+      - name: Update sources coverage badge
+        run: python3 scripts/update_badge.py
+
       - name: Commit updated exports
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add exports/ docs/exports/ index.md
+          git add exports/ docs/exports/ index.md README.md
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: auto-export [skip ci]"
+            git commit -m "chore: auto-export + badge [skip ci]"
             git push
           fi
