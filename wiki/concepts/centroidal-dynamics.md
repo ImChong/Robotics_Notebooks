@@ -2,6 +2,14 @@
 type: concept
 tags: [dynamics, locomotion, control, mpc, wbc]
 status: complete
+related:
+  - ./floating-base-dynamics.md
+  - ./whole-body-control.md
+  - ./lip-zmp.md
+  - ../methods/model-predictive-control.md
+sources:
+  - ../../sources/papers/mpc.md
+  - ../../sources/papers/whole_body_control.md
 ---
 
 # Centroidal Dynamics

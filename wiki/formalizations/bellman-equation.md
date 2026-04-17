@@ -2,6 +2,12 @@
 type: formalization
 tags: [rl, bellman, value-function, dynamic-programming]
 status: complete
+related:
+  - ./mdp.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/policy-optimization.md
+sources:
+  - ../../sources/papers/policy_optimization.md
 ---
 
 # Bellman 方程

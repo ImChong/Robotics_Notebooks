@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # Pinocchio
 
 **Pinocchio** 是机器人领域最主流的刚体运动学与动力学计算库之一，长期由 **Stack-of-Tasks / INRIA / LAAS-CNRS** 这条学术与开源路线推动。

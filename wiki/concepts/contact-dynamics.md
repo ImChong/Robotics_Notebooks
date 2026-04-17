@@ -1,3 +1,7 @@
+---
+type: concept
+---
+
 # Contact Dynamics
 
 **Contact Dynamics（接触动力学）**：研究机器人与地面、物体、墙面等环境发生接触时，接触力、约束和系统运动之间关系的动力学框架。

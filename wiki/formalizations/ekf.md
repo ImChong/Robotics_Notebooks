@@ -2,6 +2,13 @@
 type: formalization
 tags: [state-estimation, kalman-filter, ekf, filtering, locomotion]
 status: complete
+related:
+  - ../concepts/state-estimation.md
+  - ../concepts/sensor-fusion.md
+  - ../concepts/contact-estimation.md
+sources:
+  - ../../sources/papers/state_estimation.md
+  - ../../sources/papers/perception_localization.md
 ---
 
 # Extended Kalman Filter (EKF)

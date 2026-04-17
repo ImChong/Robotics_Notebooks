@@ -1,3 +1,7 @@
+---
+type: concept
+---
+
 # System Identification
 
 **System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。

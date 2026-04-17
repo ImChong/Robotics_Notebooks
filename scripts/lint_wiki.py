@@ -10,10 +10,13 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   6. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
   7. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
   8. 矛盾检测（同一概念在不同页面有相反描述）
+  9. Frontmatter 缺少 type 字段（V8 新增）
+ 10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
 
 用法：
   python3 scripts/lint_wiki.py
   python3 scripts/lint_wiki.py --write-log   # 同时追加报告到 log.md
+  python3 scripts/lint_wiki.py --report      # 保存 markdown 报告到 exports/lint-report.md
 """
 
 import argparse
@@ -107,6 +110,8 @@ def lint() -> dict:
         "sources_orphans": [],        # P3.3: sources/papers 中的死链（wiki 目标不存在）
         "stale_pages": [],            # P3.2: wiki 页面比对应 sources 文件旧
         "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
+        "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
+        "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -296,6 +301,48 @@ def lint() -> dict:
                 f"「{fact_id}」正面描述({', '.join(pos_pages)}) vs 负面描述({', '.join(neg_pages)})"
             )
 
+    # V8: Frontmatter type 字段一致性检查
+    # 豁免：references/、roadmaps/、tech-map/、overview/ 目录及 README/index 文件
+    fm_exempt_dirs = {"references", "roadmaps", "tech-map", "overview", "schema", "queries"}
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if page.name.lower() in ("readme.md", "index.md"):
+            continue
+        if any(d in parts for d in fm_exempt_dirs):
+            continue
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if fm_match:
+            fm_text = fm_match.group(1)
+            if not re.search(r"^type\s*:", fm_text, re.MULTILINE):
+                results["missing_type"].append(str(rel))
+        else:
+            results["missing_type"].append(str(rel))
+
+    # V8: log.md 活跃度检查（最近 30 天内是否有操作记录）
+    log_path = REPO_ROOT / "log.md"
+    if log_path.exists():
+        log_content = log_path.read_text(encoding="utf-8")
+        today_dt = date.today()
+        # 解析所有 ## [YYYY-MM-DD] 条目
+        date_matches = re.findall(r"^## \[(\d{4}-\d{2}-\d{2})\]", log_content, re.MULTILINE)
+        if date_matches:
+            latest = max(date_matches)
+            try:
+                latest_dt = date.fromisoformat(latest)
+                days_since = (today_dt - latest_dt).days
+                if days_since > 30:
+                    results["log_inactive"].append(
+                        f"log.md 最后操作于 {latest}（已 {days_since} 天未更新，知识库可能停止维护）"
+                    )
+            except ValueError:
+                pass
+        else:
+            results["log_inactive"].append("log.md 中未找到符合格式的操作记录（格式：## [YYYY-MM-DD] ...）")
+    else:
+        results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
+
     return results
 
 def format_report(results: dict) -> str:
@@ -317,6 +364,8 @@ def format_report(results: dict) -> str:
         ("contradictions",     "潜在矛盾（跨页面相反定性描述）",              "⚠️"),
         ("stub_pages",         "空壳页面（< 200 字）",                       "⚠️"),
         ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),
+        ("missing_type",       "Frontmatter 缺少 type 字段",                 "⚠️"),
+        ("log_inactive",       "log.md 活跃度警告",                          "⚠️"),
     ]
 
     for key, label, icon in sections:

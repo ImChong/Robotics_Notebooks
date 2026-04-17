@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # Crocoddyl
 
 **Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线推动。

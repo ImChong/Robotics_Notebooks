@@ -19,6 +19,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-ekf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-floating-base-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-footstep-planning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-foundation-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-gait-generation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-hqp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-imitation-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -69,5 +70,6 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-control-architecture-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-humanoid-hardware-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-humanoid-robot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-sensor-fusion</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-when-to-use-wbc-vs-rl</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

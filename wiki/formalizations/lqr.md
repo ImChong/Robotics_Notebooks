@@ -2,6 +2,13 @@
 type: formalization
 tags: [control, lqr, optimal-control, linear-systems, locomotion]
 status: complete
+related:
+  - ../concepts/optimal-control.md
+  - ../methods/model-predictive-control.md
+  - ../methods/trajectory-optimization.md
+sources:
+  - ../../sources/papers/optimal_control_theory.md
+  - ../../sources/papers/optimal_control.md
 ---
 
 # LQR / iLQR

@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # legged_gym
 
 **legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。

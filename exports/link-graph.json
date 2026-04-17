@@ -23,7 +23,7 @@
     {
       "id": "wiki/concepts/capture-point-dcm.md",
       "label": "Capture Point / DCM",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/centroidal-dynamics.md",
@@ -33,7 +33,7 @@
     {
       "id": "wiki/concepts/contact-dynamics.md",
       "label": "Contact Dynamics",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/contact-estimation.md",
@@ -48,16 +48,21 @@
     {
       "id": "wiki/concepts/domain-randomization.md",
       "label": "Domain Randomization",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/floating-base-dynamics.md",
       "label": "Floating Base Dynamics",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/footstep-planning.md",
       "label": "Footstep Planning（步位规划）",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/foundation-policy.md",
+      "label": "Foundation Policy（基础策略模型）",
       "type": "concept"
     },
     {
@@ -83,12 +88,12 @@
     {
       "id": "wiki/concepts/mpc-wbc-integration.md",
       "label": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/privileged-training.md",
@@ -98,6 +103,11 @@
     {
       "id": "wiki/concepts/reward-design.md",
       "label": "Reward Design",
+      "type": "concept"
+    },
+    {
+      "id": "wiki/concepts/sensor-fusion.md",
+      "label": "传感器融合（Sensor Fusion）",
       "type": "concept"
     },
     {
@@ -113,7 +123,7 @@
     {
       "id": "wiki/concepts/system-identification.md",
       "label": "System Identification",
-      "type": ""
+      "type": "concept"
     },
     {
       "id": "wiki/concepts/tsid.md",
@@ -128,7 +138,7 @@
     {
       "id": "wiki/entities/crocoddyl.md",
       "label": "Crocoddyl",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/entities/drake.md",
@@ -143,27 +153,27 @@
     {
       "id": "wiki/entities/isaac-gym-isaac-lab.md",
       "label": "Isaac Gym / Isaac Lab",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/entities/legged-gym.md",
       "label": "legged_gym",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/entities/mujoco.md",
       "label": "MuJoCo",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/entities/pinocchio.md",
       "label": "Pinocchio",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/entities/unitree.md",
       "label": "Unitree",
-      "type": ""
+      "type": "entity"
     },
     {
       "id": "wiki/formalizations/bellman-equation.md",
@@ -223,7 +233,7 @@
     {
       "id": "wiki/methods/trajectory-optimization.md",
       "label": "Trajectory Optimization",
-      "type": ""
+      "type": "method"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -338,7 +348,7 @@
     {
       "id": "wiki/tasks/ultra-survey.md",
       "label": "ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation",
-      "type": ""
+      "type": "task"
     }
   ],
   "edges": [
@@ -619,6 +629,34 @@
       "target": "wiki/concepts/gait-generation.md"
     },
     {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
       "source": "wiki/concepts/gait-generation.md",
       "target": "wiki/tasks/locomotion.md"
     },
@@ -791,6 +829,30 @@
       "target": "wiki/queries/reward-design-guide.md"
     },
     {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
       "source": "wiki/concepts/sim2real.md",
       "target": "wiki/concepts/privileged-training.md"
     },
@@ -841,6 +903,10 @@
     {
       "source": "wiki/concepts/state-estimation.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/sensor-fusion.md"
     },
     {
       "source": "wiki/concepts/system-identification.md",
@@ -1217,6 +1283,10 @@
     {
       "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
