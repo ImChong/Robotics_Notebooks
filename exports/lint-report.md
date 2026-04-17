@@ -46,4 +46,4 @@
 ### ⚠️ 缺少摘要字段（summary/description）（0 个）
 - 无
 
-📊 Sources 覆盖率：81/81 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：82/82 (100%) wiki/entity 页有 ingest 来源
