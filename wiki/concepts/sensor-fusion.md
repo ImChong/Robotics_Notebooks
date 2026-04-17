@@ -11,6 +11,7 @@ related:
 sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/papers/state_estimation.md
+summary: "Sensor Fusion 通过融合 IMU、编码器、视觉等多源信息提升状态估计鲁棒性。"
 ---
 
 # 传感器融合（Sensor Fusion）

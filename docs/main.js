@@ -1392,6 +1392,10 @@
     var _indexData = null;
     var _selectedIndex = -1;  // 键盘导航当前选中项
 
+    var _searchIndex = null;
+    var _searchIndexPromise = null;
+    var _searchIndexFailed = false;
+
     fetch('exports/index-v1.json')
       .then(function(r) { return r.json(); })
       .then(function(data) {
@@ -1399,6 +1403,39 @@
         renderTagCloud(_indexData);
       })
       .catch(function() {});
+
+    function ensureSearchIndex() {
+      if (_searchIndex) return Promise.resolve(_searchIndex);
+      if (_searchIndexFailed) return Promise.reject(new Error('search-index.json unavailable'));
+      if (_searchIndexPromise) return _searchIndexPromise;
+      _searchIndexPromise = fetch('search-index.json')
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          _searchIndex = data;
+          return data;
+        })
+        .catch(function(error) {
+          _searchIndexFailed = true;
+          throw error;
+        });
+      return _searchIndexPromise;
+    }
+
+    function tokenizeQuery(text) {
+      var matches = String(text || '').toLowerCase().match(/[a-z0-9_+\-.]+|[\u4e00-\u9fff]+/g) || [];
+      var out = [];
+      matches.forEach(function(token) {
+        out.push(token);
+        if (/^[\u4e00-\u9fff]+$/.test(token) && token.length > 1) {
+          for (var i = 0; i < token.length - 1; i += 1) out.push(token.slice(i, i + 2));
+          token.split('').forEach(function(char) { out.push(char); });
+        }
+      });
+      return out;
+    }
 
     // ── 标签云 ──────────────────────────────────────────────────────────────
     function renderTagCloud(items) {
@@ -1433,36 +1470,19 @@
       });
     }
 
-    function renderSearchResults(query) {
-      if (!_indexData) return;
-      _selectedIndex = -1;
-      var q = query.trim().toLowerCase();
-      var typeVal = typeFilter ? typeFilter.value : '';
-      if (!q && !typeVal) { searchResults.innerHTML = ''; return; }
-
-      var words = q ? q.split(/\s+/) : [];
-      var matched = _indexData.filter(function(item) {
-        if (typeVal) {
-          var eff = item.page_type || (item.type === 'entity_page' ? 'entity' : item.type);
-          if (eff !== typeVal) return false;
-        }
-        if (words.length) {
-          var haystack = ((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content_markdown || '')).toLowerCase();
-          if (!words.every(function(w) { return haystack.indexOf(w) !== -1; })) return false;
-        }
-        return true;
-      }).slice(0, 12);
-
+    function renderCards(matched) {
       if (!matched.length) {
         searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">未找到匹配结果。</p>';
         return;
       }
-
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
-        var stem = (item.id || '').split('/').pop().replace(/\.md$/, '');
+        var stem = String(item.path || item.id || '').split('/').pop().replace(/\.md$/, '');
         var slidesUrl = 'slides/' + stem + '.html';
-        var typeLabel = item.page_type || (item.type === 'entity_page' ? 'entity' : '') || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+        var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+        var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
+          return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+        }).join('');
         var slidesIcon = '<a href="' + slidesUrl + '" class="card-slides-icon" title="幻灯片版（需本地生成）" '
           + 'onclick="event.stopPropagation()" style="font-size:.72rem;opacity:.45;margin-left:6px;text-decoration:none" '
           + 'tabindex="-1">📊</a>';
@@ -1470,8 +1490,59 @@
           + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + '</p>'
           + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + slidesIcon + '</h3>'
           + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
+          + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
           + '</article>';
       }).join('');
+    }
+
+    function bm25Score(doc, queryTokens, indexData) {
+      var meta = (indexData && indexData.meta) || {};
+      var avgdl = meta.avgdl || 1;
+      var k1 = meta.k1 || 1.5;
+      var b = meta.b || 0.75;
+      var score = 0;
+      queryTokens.forEach(function(token) {
+        var tf = ((doc.tokens || {})[token]) || 0;
+        if (!tf) return;
+        var idf = ((indexData.idf || {})[token]) || 0;
+        score += idf * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * ((doc.dl || 1) / avgdl)));
+      });
+      return score;
+    }
+
+    function renderSearchResults(query) {
+      _selectedIndex = -1;
+      var q = query.trim();
+      var typeVal = typeFilter ? typeFilter.value : '';
+      if (!q && !typeVal) { searchResults.innerHTML = ''; return; }
+      searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
+      ensureSearchIndex()
+        .then(function(indexData) {
+          var docs = (indexData && indexData.docs) || [];
+          var queryTokens = tokenizeQuery(q);
+          var matched = docs.filter(function(doc) {
+            if (typeVal && doc.page_type !== typeVal) return false;
+            if (!queryTokens.length) return true;
+            return queryTokens.some(function(token) { return ((doc.tokens || {})[token]) > 0; });
+          }).map(function(doc) {
+            return {
+              id: doc.id,
+              path: doc.path,
+              title: doc.title,
+              summary: doc.summary,
+              page_type: doc.page_type,
+              tags: doc.tags || [],
+              _score: queryTokens.length ? bm25Score(doc, queryTokens, indexData) : 0
+            };
+          }).sort(function(a, b) {
+            if (queryTokens.length && b._score !== a._score) return b._score - a._score;
+            return String(a.title || '').localeCompare(String(b.title || ''));
+          }).slice(0, 10);
+          renderCards(matched);
+        })
+        .catch(function() {
+          searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">离线搜索索引加载失败，请使用命令行搜索：<code>python3 scripts/search_wiki.py "关键词"</code></p>';
+        });
     }
 
     function escapeHtml(s) {
@@ -1511,13 +1582,12 @@
     var _searchTimer;
     searchInput.addEventListener('input', function() {
       clearTimeout(_searchTimer);
-      _searchTimer = setTimeout(triggerSearch, 200);
+      _searchTimer = setTimeout(triggerSearch, 120);
     });
     if (typeFilter) {
       typeFilter.addEventListener('change', triggerSearch);
     }
 
-    // Tag click: populate search input and trigger search
     document.addEventListener('click', function(e) {
       var tag = e.target.closest('[data-wiki-tag]');
       if (!tag) return;

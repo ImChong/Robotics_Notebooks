@@ -1,32 +1,33 @@
 {
   "generated_at": "2026-04-17",
-  "node_count": 75,
-  "edge_count": 429,
+  "node_count": 83,
+  "edge_count": 486,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 54
-    },
-    {
-      "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL)",
-      "degree": 44
+      "degree": 58
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 43
+      "degree": 45
+    },
+    {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL)",
+      "degree": 45
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 37
+      "degree": 38
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "degree": 28
+      "degree": 34
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -34,36 +35,45 @@
       "degree": 25
     },
     {
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation",
+      "degree": 23
+    },
+    {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
+      "degree": 22
+    },
+    {
+      "id": "wiki/tasks/manipulation.md",
+      "label": "Manipulation",
       "degree": 21
     },
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
       "degree": 20
-    },
-    {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
-      "degree": 19
-    },
-    {
-      "id": "wiki/comparisons/wbc-vs-rl.md",
-      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
-      "degree": 18
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "concept": 23,
-    "query": 14,
+    "concept": 25,
+    "query": 16,
+    "method": 10,
+    "formalization": 9,
     "entity": 8,
-    "formalization": 8,
-    "method": 7,
     "comparison": 6,
     "task": 6,
     "unknown": 2,
     "overview": 1
+  },
+  "community_distribution": {
+    "Whole-Body Control (WBC) 社区": 33,
+    "Locomotion 社区": 31,
+    "Imitation Learning (IL) 社区": 14,
+    "Bellman 方程 社区": 2,
+    "MPC vs RL：控制策略选型对比 社区": 1,
+    "主流人形机器人硬件对比 社区": 1,
+    "LLM Wiki 社区": 1
   }
 }

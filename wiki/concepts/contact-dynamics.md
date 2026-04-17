@@ -1,5 +1,6 @@
 ---
 type: concept
+summary: "Contact Dynamics 研究接触力、摩擦和约束如何改变机器人动力学，是 locomotion 与操作控制的物理基础。"
 ---
 
 # Contact Dynamics
@@ -198,6 +199,12 @@ TSID / WBC 常常在做：
 见：[TSID](./tsid.md)
 
 见：[Whole-Body Control](./whole-body-control.md)
+
+## 和 Contact-Rich Manipulation 的关系
+
+接触丰富型操作同样依赖接触力、摩擦锥和接触切换建模，只是接触对象从地面扩展到门把手、插孔、箱体和双手协同物体。
+
+见：[Contact-Rich Manipulation](./contact-rich-manipulation.md)
 
 ## 和 Locomotion 的关系
 

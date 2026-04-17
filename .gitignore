@@ -7,3 +7,9 @@ __pycache__/
 .mypy_cache/
 test-results/
 playwright-report/
+
+# Local vector artifacts
+exports/vector-index.npz
+
+# Local search cache
+exports/search-cache.json

@@ -2,6 +2,7 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
+summary: "Balance Recovery 研究机器人在受扰动后如何通过步位、姿态和接触调整重新稳定下来。"
 ---
 
 # Balance Recovery（平衡恢复）

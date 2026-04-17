@@ -1,4 +1,4 @@
-.PHONY: lint catalog export search ingest log coverage graph slides fetch badge
+.PHONY: lint catalog export search ingest log coverage graph anki slides fetch badge vectors
 
 lint:
 	python3 scripts/lint_wiki.py
@@ -8,6 +8,9 @@ catalog:
 
 export:
 	python3 scripts/export_minimal.py
+
+vectors:
+	python3 scripts/build_vector_index.py
 
 search:
 	python3 scripts/search_wiki.py $(Q)
@@ -25,6 +28,9 @@ graph:
 	python3 scripts/generate_link_graph.py
 	cp exports/link-graph.json docs/exports/link-graph.json
 	cp exports/graph-stats.json docs/exports/graph-stats.json 2>/dev/null || true
+
+anki:
+	python3 scripts/export_anki.py
 
 slides:
 	python3 scripts/wiki_to_marp.py $(F)

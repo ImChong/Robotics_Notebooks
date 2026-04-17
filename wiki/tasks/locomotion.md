@@ -20,6 +20,7 @@ related:
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md
+summary: "Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。"
 ---
 
 # Locomotion
@@ -88,8 +89,10 @@ sources:
 - [Imitation Learning](../methods/imitation-learning.md)
 - [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）
 - [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）
+- [Lyapunov 稳定性](../formalizations/lyapunov.md)（分析闭环步态稳定性、扰动恢复和误差收敛的统一语言）
 - [Gait Generation](../concepts/gait-generation.md)（步态时序编排：CPG / 参数化 / MPC 联合优化）
 - [Footstep Planning](../concepts/footstep-planning.md)（接触序列规划：每步踩哪里、踩多久）
+- [Terrain Adaptation](../concepts/terrain-adaptation.md)（把高度图 / 点云转成可执行的落脚点与姿态调整）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
 

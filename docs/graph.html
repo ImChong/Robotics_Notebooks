@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Robotics Notebooks 知识图谱 — 61 个概念节点、342 条关联边的力导向可视化" />
+  <meta name="description" content="Robotics Notebooks 知识图谱 — 75 个概念节点、429 条关联边、8 个社区的力导向可视化" />
   <title>知识图谱 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
   <link rel="stylesheet" href="style.css" />
@@ -64,6 +64,13 @@
     .chip[data-type="comparison"].active { background: #c084fc; }
     .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     .chip[data-type="formalization"].active { background: #fb923c; }
+    .view-toggle { display: inline-flex; gap: 6px; }
+    .mode-chip.active-mode {
+      background: #00d4ff;
+      color: #0d1117;
+      border-color: transparent;
+      font-weight: 700;
+    }
     .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
     .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     #graph-node-count {
@@ -173,6 +180,7 @@
       backdrop-filter: blur(6px);
     }
     .legend-row { display: flex; align-items: center; gap: 8px; font-size: .72rem; color: rgba(255,255,255,0.5); }
+    .legend-title { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
     .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
     /* ── 加载状态 ── */
@@ -396,6 +404,10 @@
     [data-theme="light"] .chip[data-type="comparison"].active { background: #c084fc; }
     [data-theme="light"] .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     [data-theme="light"] .chip[data-type="formalization"].active { background: #fb923c; }
+    [data-theme="light"] .mode-chip.active-mode {
+      background: #1659b4;
+      color: #fff;
+    }
 
     /* ── 物理参数面板 ── */
     .physics-panel {
@@ -590,6 +602,23 @@
       background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
     }
     .sb-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.55; margin-bottom: 12px; }
+    .sb-meta-block { margin-bottom: 12px; }
+    .sb-community-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .72rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      color: rgba(255,255,255,0.72);
+    }
+    .sb-community-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
     .sb-section-title {
       font-size: .7rem; font-weight: 700; color: rgba(255,255,255,0.3);
       text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px;
@@ -622,6 +651,7 @@
     [data-theme="light"] .sb-title { color: #1a1a1a; }
     [data-theme="light"] .sb-summary { color: rgba(0,0,0,0.5); }
     [data-theme="light"] .sb-tag { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .sb-community-badge { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.62); }
     [data-theme="light"] .sb-section-title { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close:hover { color: rgba(0,0,0,0.8); }
@@ -652,6 +682,10 @@
   <!-- ── 工具栏 ── -->
   <div id="graph-toolbar">
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
+    <div class="view-toggle" aria-label="节点着色模式">
+      <button id="color-by-type" class="chip mode-chip active-mode" type="button">按类型</button>
+      <button id="color-by-community" class="chip mode-chip" type="button">按社区</button>
+    </div>
     <div class="toolbar-sep"></div>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按类型筛选">
@@ -677,15 +711,7 @@
     </div>
     <svg id="graph-canvas"></svg>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
-    <div id="graph-legend">
-      <div class="legend-row"><div class="legend-dot" style="background:#60a5fa"></div>概念 Concept</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#34d399"></div>方法 Method</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#f472b6"></div>任务 Task</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>形式化 Formalization</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#c084fc"></div>对比 Comparison</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#fbbf24"></div>工具 Entity</div>
-      <div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Query 产物</div>
-    </div>
+    <div id="graph-legend"></div>
     <!-- ── 物理参数面板 ── -->
     <div id="physics-panel" class="physics-panel" hidden>
       <div class="physics-header">
@@ -790,6 +816,13 @@
     <div class="sb-body">
       <div class="sb-tags" id="sb-tags"></div>
       <p class="sb-summary" id="sb-summary"></p>
+      <div class="sb-meta-block" id="sb-community-block" hidden>
+        <div class="sb-section-title">所属社区</div>
+        <div class="sb-community-badge" id="sb-community-badge">
+          <span class="sb-community-dot" id="sb-community-dot"></span>
+          <span id="sb-community-label"></span>
+        </div>
+      </div>
       <div id="sb-related-section" hidden>
         <div class="sb-section-title">关联页面</div>
         <ul class="sb-related-list" id="sb-related-list"></ul>
@@ -824,6 +857,11 @@
       entity: '工具', comparison: '对比', query: 'Query',
       formalization: '形式化', '': 'Wiki',
     };
+    const COMMUNITY_COLORS = d3.schemeTableau10;
+    const graphLegend = document.getElementById('graph-legend');
+    let colorMode = 'type';
+    let communityColorMap = new Map();
+    let communityLabelMap = new Map();
 
     /* ── 可变物理参数（由滑动块控制）── */
     let chargeStrength = -400;   // 排斥力（负值）
@@ -842,13 +880,38 @@
       return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
     }
 
-    function nodeColor(d)  { return TYPE_COLOR[d.type] || TYPE_COLOR['']; }
+    function nodeColor(d)  {
+      if (colorMode === 'community') {
+        return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
+      }
+      return TYPE_COLOR[d.type] || TYPE_COLOR[''];
+    }
     function baseRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
     function scaledRadius(d) { return baseRadius(d) * nodeScale; }
     // 最终字号 = baseRadius × nodeScale × 0.4 × (fontSliderVal/10)
     // 0.4 让 baseRadius=10 的节点在 nodeScale=1, fontSliderVal=10 时字体≈10px
     function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
     function toDetailId(path) { return path.replace(/\//g, '-').replace('.md', ''); }
+    function renderLegend() {
+      const rows = [];
+      if (colorMode === 'community') {
+        rows.push('<div class="legend-title">按社区着色</div>');
+        for (const [communityId, label] of communityLabelMap.entries()) {
+          const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
+          rows.push(`<div class="legend-row"><div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}</div>`);
+        }
+      } else {
+        rows.push('<div class="legend-title">按类型着色</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#60a5fa"></div>概念 Concept</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#34d399"></div>方法 Method</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#f472b6"></div>任务 Task</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>形式化 Formalization</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#c084fc"></div>对比 Comparison</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fbbf24"></div>工具 Entity</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Query 产物</div>');
+      }
+      graphLegend.innerHTML = rows.join('');
+    }
 
     /* ── 加载数据 ── */
     let graphData, indexItems;
@@ -862,6 +925,12 @@
         '<span style="color:#f87171">数据加载失败：' + e.message + '</span>';
       return;
     }
+
+    (graphData.communities || []).forEach((community, idx) => {
+      communityColorMap.set(community.id, COMMUNITY_COLORS[idx % COMMUNITY_COLORS.length]);
+      communityLabelMap.set(community.id, community.label || community.id);
+    });
+    renderLegend();
 
     /* ── 建立 path→info 映射 ── */
     const infoMap = {};
@@ -962,6 +1031,25 @@
       .attr('pointer-events', 'none')
       .style('opacity', 0);
 
+    function refreshNodeColors() {
+      node.select('.node-glow').attr('fill', d => nodeColor(d));
+      node.select('.node-circle')
+        .attr('fill', d => nodeColor(d))
+        .attr('stroke', d => nodeColor(d));
+      renderLegend();
+    }
+
+    const colorByTypeBtn = document.getElementById('color-by-type');
+    const colorByCommunityBtn = document.getElementById('color-by-community');
+    function setColorMode(mode) {
+      colorMode = mode;
+      colorByTypeBtn.classList.toggle('active-mode', mode === 'type');
+      colorByCommunityBtn.classList.toggle('active-mode', mode === 'community');
+      refreshNodeColors();
+    }
+    colorByTypeBtn.addEventListener('click', () => setColorMode('type'));
+    colorByCommunityBtn.addEventListener('click', () => setColorMode('community'));
+
     /* ── Tick ── */
     simulation.on('tick', () => {
       link
@@ -998,9 +1086,13 @@
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+      const community = d.community_label
+        ? `<div class="tt-summary">社区：${escapeHtml(d.community_label)}</div>`
+        : '';
       return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
              (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
+             community +
              `<a class="tt-link" href="${detailUrl}" target="_self">打开详情页 →</a>`;
     }
 
@@ -1391,13 +1483,16 @@
        右侧详情侧边栏
     ════════════════════════════════════════════ */
 
-    const sidebar     = document.getElementById('graph-sidebar');
-    const sbTypeBadge = document.getElementById('sb-type-badge');
-    const sbTitle     = document.getElementById('sb-title');
-    const sbTags      = document.getElementById('sb-tags');
-    const sbSummary   = document.getElementById('sb-summary');
-    const sbRelSec    = document.getElementById('sb-related-section');
-    const sbRelList   = document.getElementById('sb-related-list');
+    const sidebar      = document.getElementById('graph-sidebar');
+    const sbTypeBadge  = document.getElementById('sb-type-badge');
+    const sbTitle      = document.getElementById('sb-title');
+    const sbTags       = document.getElementById('sb-tags');
+    const sbSummary    = document.getElementById('sb-summary');
+    const sbCommunityBlock = document.getElementById('sb-community-block');
+    const sbCommunityDot   = document.getElementById('sb-community-dot');
+    const sbCommunityLabel = document.getElementById('sb-community-label');
+    const sbRelSec     = document.getElementById('sb-related-section');
+    const sbRelList    = document.getElementById('sb-related-list');
     const sbOpenLink   = document.getElementById('sb-open-link');
     const sbSlidesLink = document.getElementById('sb-slides-link');
     const sbClose      = document.getElementById('sb-close');
@@ -1414,6 +1509,13 @@
       sbTypeBadge.textContent = typeLabel;
       sbTitle.textContent = info.title || d.label;
       sbSummary.textContent = summary;
+      if (d.community_label) {
+        sbCommunityBlock.hidden = false;
+        sbCommunityDot.style.background = communityColorMap.get(d.community) || color;
+        sbCommunityLabel.textContent = d.community_label;
+      } else {
+        sbCommunityBlock.hidden = true;
+      }
 
       // tags from index
       const item = indexItems.find(it => it.path === d.id);

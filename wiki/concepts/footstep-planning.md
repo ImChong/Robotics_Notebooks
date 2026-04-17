@@ -2,6 +2,7 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: stable
+summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 ---
 
 # Footstep Planning（步位规划）
@@ -73,7 +74,7 @@ status: stable
    关节力矩输出
 ```
 
-- **上游**：地形估计（高度图）、导航路点、步态模式选择（Gait Generation）
+- **上游**：地形估计（高度图）、导航路点、步态模式选择（Gait Generation）、[Terrain Adaptation](./terrain-adaptation.md)
 - **下游**：质心轨迹优化（LIP / VHIP）、WBC 接触约束设置
 
 ---
@@ -104,6 +105,7 @@ status: stable
 - [Model Predictive Control](../methods/model-predictive-control.md) — MPC 框架实现多步预测规划
 - [Balance Recovery](../tasks/balance-recovery.md) — 扰动后的紧急步位更新
 - [Gait Generation](./gait-generation.md) — 步态模式是步位规划的上游输入
+- [Terrain Adaptation](./terrain-adaptation.md) — 把地形感知转成可落脚区域与在线重规划
 
 ---
 

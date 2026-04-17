@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-17 (V9 完成 → V10 启动) -->
+<!-- Last updated: 2026-04-17 (V10 P4/P5/P6 已落地) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
 [![Knowledge Graph](https://img.shields.io/badge/知识图谱-75节点_429边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v10.md)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v9.md)
 
 ---
 
@@ -84,8 +84,9 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 - **75 个节点**：概念、方法、任务、实体、对比、Query 产物
 - **429 条边**：wiki 页面间的内链关系
-- 节点按类型着色，大小反映连接度（入度 + 出度）
+- 节点支持按类型 / 按社区着色，大小反映连接度（入度 + 出度）
 - 悬停 / 点击显示浮动卡片，点击卡片内"打开详情页"跳转对应页面
+- 社区模式会在 legend 与右侧详情侧边栏显示社区名称（按社区 hub 命名）
 - 支持按类型过滤（含"孤儿"模式）、关键词搜索 + fly-to 定位、缩放平移
 - 物理参数调节（排斥力 / 节点大小 / 连接线粗细 / 字体大小）
 - 支持亮色 / 暗色主题切换，移动端触控优化

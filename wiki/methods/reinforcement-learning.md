@@ -12,6 +12,7 @@ related:
   - ../comparisons/rl-vs-il.md
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
+summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
 # Reinforcement Learning (RL)

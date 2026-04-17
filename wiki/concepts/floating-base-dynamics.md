@@ -1,5 +1,6 @@
 ---
 type: concept
+summary: "Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。"
 ---
 
 # Floating Base Dynamics

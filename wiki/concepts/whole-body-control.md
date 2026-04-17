@@ -9,6 +9,7 @@ related:
   - ./sim2real.md
   - ./contact-estimation.md
   - ../queries/when-to-use-wbc-vs-rl.md
+summary: "Whole-Body Control 在全身动力学和任务优先级约束下统一求解关节力矩，是 humanoid 控制主干。"
 ---
 
 # Whole-Body Control (WBC)

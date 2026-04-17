@@ -282,3 +282,9 @@
 ## [2026-04-14] lint | lint 10 项全绿，2 contextual findings（PPO/MPC 语境性矛盾），覆盖率 53%（31/59）
 
 ## [2026-04-14] structural | v6 P0-P6 完成：ingest_coverage / TF-IDF 搜索 / 5 新 sources 文件 / 3 新 wiki 页面 / Marp+link-graph+fetch 工具 / CANONICAL_FACTS 2→6 条 / 覆盖率 53%→73%
+
+## [2026-04-17] query | manipulation/vla guides | wiki/queries/il-for-manipulation.md + wiki/queries/vla-deployment-guide.md
+
+## [2026-04-17] structural | v10-p1-p2 | 新增 methods/concepts/query 页面，补 summary frontmatter，并扩展 lint_wiki.py 到 14 项检查/30 canonical facts
+
+## [2026-04-17] structural | V10 全量完成：向量搜索/内容扩充/lint增强/前端离线搜索/图谱社区/Anki导出/README与清单同步

@@ -3,6 +3,7 @@ type: task
 sources:
   - ../../sources/papers/survey_papers.md
   - ../../sources/papers/locomotion_rl.md
+summary: "ULTRA survey 汇总统一多模态 loco-manipulation 控制器的关键设计，是移动操作前沿路线的综述入口。"
 ---
 
 # ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation

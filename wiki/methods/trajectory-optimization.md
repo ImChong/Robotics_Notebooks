@@ -1,5 +1,6 @@
 ---
 type: method
+summary: "Trajectory Optimization 通过直接优化状态和控制序列生成可行运动，是控制与规划的桥梁。"
 ---
 
 # Trajectory Optimization

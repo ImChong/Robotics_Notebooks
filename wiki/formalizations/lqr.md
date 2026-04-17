@@ -130,6 +130,7 @@ MPC 在某种意义上是"在线、有约束、有限时域的 LQR"。
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — iLQR 是 TO 的核心算法
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — MPC 是 LQR 的有限时域、在线、带约束版本
 - [Bellman 方程](./bellman-equation.md) — Riccati 方程是 Bellman 最优方程在线性二次问题上的解析形式
+- [Lyapunov 稳定性](./lyapunov.md) — LQR 的闭环稳定性可通过 Lyapunov 视角理解
 - [Crocoddyl](../entities/crocoddyl.md) — iLQR/FDDP 的开源实现
 
 ## 参考来源

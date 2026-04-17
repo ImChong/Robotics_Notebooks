@@ -2,6 +2,7 @@
 type: method
 tags: [rl, model-based, planning, locomotion, sample-efficiency]
 status: complete
+summary: "Model-Based RL 借助环境模型提升样本效率，在机器人控制中常与规划和世界模型结合。"
 ---
 
 # Model-Based RL（基于模型的强化学习）

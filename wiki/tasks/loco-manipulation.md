@@ -2,6 +2,7 @@
 type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
+summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题，是 locomotion 与 manipulation 的耦合任务。"
 ---
 
 # Loco-Manipulation
@@ -104,6 +105,7 @@ status: complete
 
 - [Locomotion](./locomotion.md)
 - [Manipulation](./manipulation.md)
+- [VLA](../methods/vla.md) — 移动操作中的语义任务条件与 action chunk 生成新路线
 - [Teleoperation](./teleoperation.md) — 遥操作是 loco-manipulation 数据采集的主要方式
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)

@@ -2,6 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
+summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
 # Imitation Learning (IL)
@@ -105,6 +106,9 @@ $$\min_\theta \mathbb{E}_{(s,a) \sim D}[-\log \pi_\theta(a|s)]$$
 - [Locomotion](../tasks/locomotion.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
+- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
+- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
+- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹
 

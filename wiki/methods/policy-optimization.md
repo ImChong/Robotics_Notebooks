@@ -10,6 +10,7 @@ related:
   - ../formalizations/mdp.md
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
+summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
 ---
 
 # Policy Optimization

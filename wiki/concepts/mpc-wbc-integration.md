@@ -3,6 +3,7 @@ type: concept
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/whole_body_control.md
+summary: "MPC-WBC integration 说明高层预测规划与低层全身控制如何分层协同完成稳定运动。"
 ---
 
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构

@@ -6,6 +6,8 @@ import re
 from pathlib import Path
 from typing import Dict, List
 
+from build_search_index import generate_search_index
+
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
 SITE_OUTPUT = ROOT / "exports" / "site-data-v1.json"
@@ -66,6 +68,11 @@ def rel(path: Path) -> str:
 
 def read_text(path: Path) -> str:
     return path.read_text(encoding="utf-8")
+
+
+def write_json(path: Path, payload: Dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def extract_title(text: str, fallback: str) -> str:
@@ -591,53 +598,14 @@ def main() -> None:
     SITEMAP_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     SITEMAP_OUTPUT.write_text(sitemap_content, encoding="utf-8")
 
+    search_payload = generate_search_index()
+
     print(f"Wrote {OUTPUT} with {len(items)} items")
     print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
     print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
     print(f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page','entity_page'})} wiki/entity URLs")
+    print(f"Wrote docs/search-index.json with {len(search_payload['docs'])} docs")
 
 
 if __name__ == "__main__":
-    import sys
-    base_url = sys.argv[1] if len(sys.argv) > 1 else "https://ImChong.github.io/Robotics_Notebooks"
-
-    _INGEST_INDEX = build_ingest_index()
-    paths = collect_paths()
-    items = sort_items([build_item(p) for p in paths])
-
-    # index-v1.json
-    index_items = []
-    for item in items:
-        index_items.append({
-            "id": item["id"],
-            "title": item["title"],
-            "path": item["path"],
-            "summary": item.get("summary", ""),
-            "tags": item.get("tags", []),
-            "type": item.get("type"),
-            "page_type": item.get("page_type"),
-            "entity_kind": item.get("entity_kind"),
-            "reference_kind": item.get("reference_kind"),
-            "content_markdown": item.get("content_markdown", ""),
-            "has_ingest": item.get("has_ingest", False),
-            "ingest_source": item.get("ingest_source", ""),
-        })
-
-    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    SITE_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    DOCS_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-    DOCS_SITE_OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-
-    OUTPUT.write_text(json.dumps({"items": index_items}, ensure_ascii=False, indent=2), encoding="utf-8")
-    SITE_OUTPUT.write_text(json.dumps(build_site_data(items), ensure_ascii=False, indent=2), encoding="utf-8")
-    DOCS_OUTPUT.write_text(json.dumps({"items": index_items}, ensure_ascii=False, indent=2), encoding="utf-8")
-    DOCS_SITE_OUTPUT.write_text(json.dumps(build_site_data(items), ensure_ascii=False, indent=2), encoding="utf-8")
-
-    # sitemap.xml
-    sitemap = generate_sitemap(items, base_url)
-    sitemap_path = ROOT / "docs" / "sitemap.xml"
-    sitemap_path.write_text(sitemap, encoding="utf-8")
-
-    print(f"index-v1.json: {OUTPUT} ({len(index_items)} items)")
-    print(f"site-data-v1.json: {SITE_OUTPUT}")
-    print(f"sitemap.xml: {sitemap_path} ({len(sitemap)} bytes)")
+    main()

@@ -2,6 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
+summary: "Model Predictive Control 通过在线滚动优化未来轨迹，在约束控制和机器人运动规划中广泛使用。"
 ---
 
 # Model Predictive Control (MPC)

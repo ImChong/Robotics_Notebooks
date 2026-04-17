@@ -12,6 +12,7 @@ related:
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/imitation_learning.md
+summary: "Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。"
 ---
 
 # Foundation Policy（基础策略模型）
@@ -98,6 +99,7 @@ sources:
 ## 关联页面
 - [模仿学习（Imitation Learning）](../methods/imitation-learning.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
+- [VLA](../methods/vla.md)
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)

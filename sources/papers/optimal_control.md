@@ -33,6 +33,7 @@
 - **核心贡献：** 将最优控制理论系统化为工程可用的方法集合，包括 LQR、LQG、共轭梯度法等，是机器人控制工程师的标准参考。
 - **对 wiki 的映射：**
   - [LQR / iLQR](../../wiki/formalizations/lqr.md)
+  - [Lyapunov 稳定性](../../wiki/formalizations/lyapunov.md)
   - [Optimal Control (OCP)](../../wiki/concepts/optimal-control.md)
 
 ### 4) Differential Dynamic Programming (Mayne, 1966 / Jacobson & Mayne, 1970)

@@ -63,6 +63,8 @@
 | [hardware-comparison](./hardware-comparison.md) | 主流人形机器人平台在硬件能力上有何差异？如何根据任务选择平台？ | Humanoid、Actuator、Locomotion、WBC vs RL |
 | [rl-hyperparameter-guide](./rl-hyperparameter-guide.md) | 训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？ | RL、PPO、SAC、Locomotion、Reward Design |
 | [when-to-use-wbc-vs-rl](./when-to-use-wbc-vs-rl.md) | 面对具体机器人控制任务，应该选择 WBC、RL，还是两者结合？ | WBC、RL、Locomotion、Decision、Architecture |
+| [il-for-manipulation](./il-for-manipulation.md) | 做机器人操作用模仿学习还是 RL？怎么收集数据？ | Manipulation、Imitation Learning、Behavior Cloning、DAgger、RL |
+| [vla-deployment-guide](./vla-deployment-guide.md) | 如何在真机上部署 VLA 策略？推理延迟怎么控制？ | VLA、Foundation Policy、Manipulation、Loco-Manipulation、Deployment |
 
 ---
 

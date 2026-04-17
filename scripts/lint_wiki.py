@@ -12,6 +12,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   8. 矛盾检测（同一概念在不同页面有相反描述）
   9. Frontmatter 缺少 type 字段（V8 新增）
  10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
+ 11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
 
 用法：
   python3 scripts/lint_wiki.py
@@ -72,6 +73,28 @@ def word_count(content: str) -> int:
     english = len(re.findall(r'\b[a-zA-Z]+\b', content))
     return chinese + english
 
+
+def strip_misconception_sections(content: str) -> str:
+    """移除“常见误区/误区”区块，避免把辟谣内容误判为事实矛盾。"""
+    lines = content.splitlines()
+    kept = []
+    skip_level = None
+    heading_re = re.compile(r'^(#{2,6})\s+(.*)$')
+    for line in lines:
+        m = heading_re.match(line)
+        if m:
+            level = len(m.group(1))
+            title = m.group(2).strip().lower()
+            if skip_level is not None and level <= skip_level:
+                skip_level = None
+            if any(key in title for key in ["常见误区", "误区", "misconception", "pitfall"]):
+                skip_level = level
+                continue
+        if skip_level is None:
+            kept.append(line)
+    return "\n".join(kept)
+
+
 def lint() -> dict:
     pages = get_wiki_pages()
     page_set = {p.resolve() for p in pages}
@@ -113,6 +136,7 @@ def lint() -> dict:
         "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
         "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
         "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
+        "missing_summary": [],        # V10: concepts/methods/tasks 缺少 summary/description
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -329,8 +353,63 @@ def lint() -> dict:
             "pos_claims": [r"φ.*≥.*0|λ.*≥.*0|非负|non.negative|互补.*约束"],
             "neg_claims": [r"接触.*无约束|contact.*unconstrained|互补.*不必要"],
         },
+        "DAgger 数据效率": {
+            "terms": ["DAgger"],
+            "pos_claims": [r"比.*BC.*数据效率.*高|解决.*分布漂移|处理.*covariate shift|缓解.*covariate shift"],
+            "neg_claims": [r"与.*BC.*等价|不处理.*covariate shift|不处理.*分布漂移"],
+        },
+        "VLA 推理延迟": {
+            "terms": ["VLA|Vision.Language.Action|RT-2|π₀|pi0"],
+            "pos_claims": [r"50ms\+|50ms以上|推理延迟.*高|控制频率.*低|latency.*50"],
+            "neg_claims": [r"实时性.*传统控制器相当|与.*传统控制器相当|低延迟.*1kHz|高频闭环.*无需缓冲"],
+        },
+        "行为克隆 compounding error": {
+            "terms": ["Behavior Cloning|行为克隆|\bBC\b"],
+            "pos_claims": [r"compounding error|错误累积|累积误差|covariate shift"],
+            "neg_claims": [r"累积误差.*无关|序列长度.*无关|不会.*错误累积"],
+        },
+        "接触力摩擦约束": {
+            "terms": ["接触|contact|摩擦锥|friction cone"],
+            "pos_claims": [r"\|f_\{?xy\}?\|.*<=.*(μ|mu).*f_z|\|f_t\|.*<=.*mu.*f_n|摩擦锥.*约束|friction cone"],
+            "neg_claims": [r"无需.*摩擦锥|不需要.*摩擦锥|contact force.*unconstrained"],
+        },
+        "腿足地形感知": {
+            "terms": ["地形|terrain|腿足|locomotion|高度图|point cloud"],
+            "pos_claims": [r"高度图|点云|height map|point cloud|地形感知"],
+            "neg_claims": [r"不需要.*地形感知|无需.*高度图|无需.*点云"],
+        },
+        "MiniLM 向量维度": {
+            "terms": ["MiniLM|all-MiniLM-L6-v2"],
+            "pos_claims": [r"384.*维|384-dim|384维"],
+            "neg_claims": [r"768.*维|768-dim|768维"],
+        },
+        "Marp 幻灯片格式": {
+            "terms": ["Marp"],
+            "pos_claims": [r"Markdown.*frontmatter|frontmatter.*Markdown|生成.*幻灯片"],
+            "neg_claims": [r"需要.*LaTeX|需要.*Beamer|必须.*LaTeX"],
+        },
+        "sentence-transformers CPU": {
+            "terms": ["sentence-transformers|SentenceTransformer"],
+            "pos_claims": [r"CPU.*运行|可在.*CPU.*运行|无需.*GPU|without GPU"],
+            "neg_claims": [r"必须.*GPU|only.*GPU|cannot.*CPU"],
+        },
+        "VLA 训练数据规模": {
+            "terms": ["VLA|RT-1|RT-2|π₀|pi0"],
+            "pos_claims": [r"大量.*演示|数千\+|130k\+|大规模.*数据|多样化.*演示"],
+            "neg_claims": [r"十条.*演示|10条.*演示|少量.*演示.*收敛"],
+        },
+        "BM25 参数含义": {
+            "terms": ["BM25|k1|\bb\b"],
+            "pos_claims": [r"k1.*词频.*饱和|b.*长度归一化|长度归一化.*b|词频饱和.*k1"],
+            "neg_claims": [r"b.*与词频无关|b.*控制词频|k1.*长度归一化"],
+        },
+        "π₀ Flow Matching": {
+            "terms": ["π₀|pi0|Flow Matching|flow matching"],
+            "pos_claims": [r"Flow Matching|flow matching|连续动作.*生成"],
+            "neg_claims": [r"不.*用.*Flow Matching|仅.*Transformer.*直接回归|without.*flow matching"],
+        },
     }
-    all_pages_content = {p: p.read_text(encoding="utf-8") for p in pages}
+    all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():
         pos_pages, neg_pages = [], []
         for page, content in all_pages_content.items():
@@ -410,6 +489,22 @@ def lint() -> dict:
     else:
         results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
 
+    # V10: concepts/methods/tasks frontmatter 摘要字段完整性检查
+    summary_dirs = {"concepts", "methods", "tasks"}
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] not in summary_dirs:
+            continue
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            results["missing_summary"].append(str(rel))
+            continue
+        fm_text = fm_match.group(1)
+        if not re.search(r"^(summary|description)\s*:", fm_text, re.MULTILINE):
+            results["missing_summary"].append(str(rel))
+
     return results
 
 def format_report(results: dict) -> str:
@@ -434,6 +529,7 @@ def format_report(results: dict) -> str:
         ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),
         ("missing_type",       "Frontmatter 缺少 type 字段",                 "⚠️"),
         ("log_inactive",       "log.md 活跃度警告",                          "⚠️"),
+        ("missing_summary",    "缺少摘要字段（summary/description）",         "⚠️"),
     ]
 
     for key, label, icon in sections:

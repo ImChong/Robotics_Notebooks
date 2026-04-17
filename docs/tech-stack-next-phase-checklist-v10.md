@@ -42,7 +42,7 @@
 
 ### P0.1 · 本地向量索引构建
 
-- [ ] 新建 `scripts/build_vector_index.py`：
+- [x] 新建 `scripts/build_vector_index.py`：
   ```python
   # sentence-transformers，CPU 可用（pip install sentence-transformers）
   # 模型：all-MiniLM-L6-v2（22MB，中英文双语可用）
@@ -50,18 +50,18 @@
   # 输出：exports/vector-index.npz（numpy 矩阵）
   #       exports/vector-index-meta.json（路径/title/type 映射）
   ```
-- [ ] 在 `Makefile` 中添加 `make vectors` 目标
-- [ ] 将 `exports/vector-index.npz` 加入 `.gitignore`（体积大，按需本地生成）
-- [ ] 将 `exports/vector-index-meta.json` **纳入** git（路径映射小，CI 可用）
+- [x] 在 `Makefile` 中添加 `make vectors` 目标
+- [x] 将 `exports/vector-index.npz` 加入 `.gitignore`（体积大，按需本地生成）
+- [x] 将 `exports/vector-index-meta.json` **纳入** git（路径映射小，CI 可用）
 
 ### P0.2 · 混合搜索模式
 
-- [ ] 在 `scripts/search_wiki.py` 中添加 `--semantic` 标志：
+- [x] 在 `scripts/search_wiki.py` 中添加 `--semantic` 标志：
   - 若 `exports/vector-index.npz` 存在 → 执行余弦相似度检索
   - 混合得分：`final = 0.6*bm25_norm + 0.4*cosine`
   - 若索引不存在 → fallback 到纯 BM25 + 提示 `make vectors`
-- [ ] `--json` 输出中添加 `vector_score` 和 `hybrid_score` 字段
-- [ ] 测试：`python3 scripts/search_wiki.py "腿足稳定性" --semantic` 能找到 `formalizations/lyapunov.md`（即使无关键词匹配）
+- [x] `--json` 输出中添加 `vector_score` 和 `hybrid_score` 字段
+- [x] 测试：`python3 scripts/search_wiki.py "腿足稳定性" --semantic` 能找到 `formalizations/lyapunov.md`（即使无关键词匹配）
 
 ### 完成标准
 `--semantic` 查询 "运动控制稳定性" 返回结果中 `lyapunov.md` 排名前 5，且与纯 BM25 结果至少有 1 条差异（说明向量层有贡献）。
@@ -80,10 +80,10 @@
 | `wiki/methods/vla.md` | VLA（Vision-Language-Action）：多模态模型 / π₀ / RT-2 / 端到端策略 | manipulation.md, loco-manipulation.md |
 | `wiki/methods/behavior-cloning.md` | BC（行为克隆）：监督学习 IL / compounding error / covariate shift | imitation-learning.md, dagger.md |
 
-- [ ] 新建 3 个方法页（满足 schema/page-types.md 规范：frontmatter + 参考来源 + 关联页面）
-- [ ] 在 `imitation-learning.md` / `manipulation.md` 的 `## 关联页面` 中添加回链
-- [ ] 为 3 个新页补充 `sources:` frontmatter（引用现有 `sources/papers/` 文件）
-- [ ] `make lint` 验证 0 issues + 覆盖率维持 100%
+- [x] 新建 3 个方法页（满足 schema/page-types.md 规范：frontmatter + 参考来源 + 关联页面）
+- [x] 在 `imitation-learning.md` / `manipulation.md` 的 `## 关联页面` 中添加回链
+- [x] 为 3 个新页补充 `sources:` frontmatter（引用现有 `sources/papers/` 文件）
+- [x] `make lint` 验证 0 issues + 覆盖率维持 100%
 
 ### P1.2 · 缺失概念页（concepts/）
 
@@ -92,8 +92,8 @@
 | `wiki/concepts/contact-rich-manipulation.md` | 接触丰富型操作：软/硬接触建模 / 双边约束 / impedance control / 与无接触操作的对比 | manipulation.md, contact-dynamics.md, tsid.md |
 | `wiki/concepts/terrain-adaptation.md` | 地形适应：感知 → 规划 → 接触序列 / 腿足跨越障碍 / 高度图 | locomotion.md, footstep-planning.md, sim2real.md |
 
-- [ ] 新建 2 个概念页
-- [ ] 在 `locomotion.md` / `manipulation.md` 关联页中添加回链
+- [x] 新建 2 个概念页
+- [x] 在 `locomotion.md` / `manipulation.md` 关联页中添加回链
 
 ### P1.3 · 缺失 Query 页面（queries/）
 
@@ -104,7 +104,7 @@
 | `wiki/queries/il-for-manipulation.md` | 「做机器人操作用模仿学习还是 RL？怎么收集数据？」 |
 | `wiki/queries/vla-deployment-guide.md` | 「如何在真机上部署 VLA 策略？推理延迟怎么控制？」 |
 
-- [ ] 新建 2 个 query 页（type: query，包含决策树或对比表格）
+- [x] 新建 2 个 query 页（type: query，包含决策树或对比表格）
 
 ### 完成标准
 ```bash
@@ -135,17 +135,17 @@ python3 scripts/search_wiki.py "VLA 部署" | head -5  # vla.md 和 query/vla-de
 | VLA 训练数据规模 | VLA 通常需要大量多样化演示数据（数千+条） | VLA 可在十条演示上收敛 |
 | BM25 参数含义 | BM25 中 k1 控制词频饱和，b 控制文档长度归一化 | BM25 中 b 参数与词频无关 |
 
-- [ ] 在 `CANONICAL_FACTS` 列表中添加 10 条（共 30 条）
-- [ ] `make lint` 验证 0 矛盾报告
-- [ ] 验证无误判（在新增页面中故意放一条，确认能检测到）
+- [x] 在 `CANONICAL_FACTS` 列表中添加 10 条（共 30 条）
+- [x] `make lint` 验证 0 矛盾报告
+- [x] 验证无误判（在新增页面中故意放一条，确认能检测到）
 
 ### P2.2 · 新增 lint 规则：`summary:` 字段完整性检查
 
 Karpathy："*frontmatter should be machine-readable*" — 当前 query 页面有 `summary:` 字段，但 concept/method/task 页面缺失统一摘要字段。
 
-- [ ] 在 `lint_wiki.py` 中添加规则：检查 `wiki/concepts/`、`wiki/methods/`、`wiki/tasks/` 目录下的页面，若 frontmatter 中既无 `summary:` 也无 `description:` 字段，则输出 `⚠️ 缺少摘要字段`
-- [ ] 目标：lint 检测项从 13 增至 **14 项**
-- [ ] 同步修复检测到的页面（批量添加 1-2 行 summary 字段）
+- [x] 在 `lint_wiki.py` 中添加规则：检查 `wiki/concepts/`、`wiki/methods/`、`wiki/tasks/` 目录下的页面，若 frontmatter 中既无 `summary:` 也无 `description:` 字段，则输出 `⚠️ 缺少摘要字段`
+- [x] 目标：lint 检测项从 13 增至 **14 项**
+- [x] 同步修复检测到的页面（批量添加 1-2 行 summary 字段）
 
 ### 完成标准
 `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 14 项。
@@ -158,25 +158,25 @@ Karpathy："*frontmatter should be machine-readable*" — 当前 query 页面有
 
 ### P3.1 · 预计算 BM25 词频索引
 
-- [ ] 在 `scripts/export_minimal.py`（或新建 `scripts/build_search_index.py`）中：
+- [x] 在 `scripts/export_minimal.py`（或新建 `scripts/build_search_index.py`）中：
   - 遍历所有 wiki 页面，strip frontmatter，分词（中英文空格/标点切分）
   - 计算 TF 词频表 + IDF（基于文档集），存入 `docs/search-index.json`
   - 格式：`{ "meta": {"avgdl": X, "N": Y}, "docs": [{"id":"path","title":"..","tokens":{word:tf,...},"summary":".."}] }`
   - 文件大小控制在 < 500KB（必要时过滤停用词）
-- [ ] 在 `Makefile` 中集成到 `make export`（确保 Pages 部署时索引自动更新）
+- [x] 在 `Makefile` 中集成到 `make export`（确保 Pages 部署时索引自动更新）
 
 ### P3.2 · `docs/main.js` 中集成离线搜索
 
-- [ ] 在 `docs/main.js` 中加载 `search-index.json`（懒加载，首次搜索时 fetch）
-- [ ] 实现浏览器端 BM25 评分函数（≤ 50 行 JS）：
+- [x] 在 `docs/main.js` 中加载 `search-index.json`（懒加载，首次搜索时 fetch）
+- [x] 实现浏览器端 BM25 评分函数（≤ 50 行 JS）：
   ```javascript
   function bm25Score(tf, idf, dl, avgdl, k1=1.5, b=0.75) {
     return idf * tf * (k1+1) / (tf + k1*(1 - b + b*dl/avgdl));
   }
   ```
-- [ ] 搜索框输入时触发：分词 → 查 IDF → 累加 BM25 → Top 10 结果渲染
-- [ ] 与现有 `renderSearchResults()` 复用卡片样式（title / summary / tags）
-- [ ] 降级策略：若 `search-index.json` 加载失败，显示 "请使用命令行搜索" 提示
+- [x] 搜索框输入时触发：分词 → 查 IDF → 累加 BM25 → Top 10 结果渲染
+- [x] 与现有 `renderSearchResults()` 复用卡片样式（title / summary / tags）
+- [x] 降级策略：若 `search-index.json` 加载失败，显示 "请使用命令行搜索" 提示
 
 ### 完成标准
 打开 `docs/index.html`（file:// 协议），在搜索框输入 "强化学习"，在 500ms 内返回结果，且 `reinforcement-learning.md` 排名前 3。
@@ -187,14 +187,14 @@ Karpathy："*frontmatter should be machine-readable*" — 当前 query 页面有
 
 **背景**：当前 graph.html 节点颜色按 `type` 字段区分。V10 添加**社区检测**，揭示知识模块边界（RL 社区 / WBC 社区 / 操作社区等）。
 
-- [ ] 在 `scripts/generate_link_graph.py` 中输出 `docs/link-graph.json`，新增 `community` 字段（简单 Louvain / 标签传播，用 Python 计算后写入）
+- [x] 在 `scripts/generate_link_graph.py` 中输出 `exports/link-graph.json` / `docs/exports/link-graph.json`，新增 `community` / `community_label` 字段（纯 Python Girvan-Newman 近似实现）
   - 可用 `networkx` + `python-louvain` 包：`pip install networkx python-louvain`
   - 社区数上限 8，超出归入 "其他" 社区
-- [ ] 在 `docs/graph.html` 中：
+- [x] 在 `docs/graph.html` 中：
   - 添加社区切换按钮："按类型" / "按社区"
   - 按社区着色时，使用 d3.schemeTableau10 色板（10 色）
   - 侧边栏显示当前节点所属社区名称（按社区内最高 degree 节点命名，如 "RL 社区"）
-- [ ] 图例 legend 更新：社区模式下显示社区名 + 颜色块
+- [x] 图例 legend 更新：社区模式下显示社区名 + 颜色块
 
 ### 完成标准
 `docs/graph.html` 有 "按社区" 按钮，点击后节点重新着色，社区名在 legend 中可见。
@@ -207,18 +207,18 @@ Karpathy："*frontmatter should be machine-readable*" — 当前 query 页面有
 
 ### P5.1 · `scripts/export_anki.py`
 
-- [ ] 读取 `wiki/formalizations/*.md`，提取：
+- [x] 读取 `wiki/formalizations/*.md`，提取：
   - 卡片正面：标题 + 一句话定义（H1 下第一段）
   - 卡片背面：核心公式（第一个 `$$` 块）+ 关联概念（关联页面列表）
-- [ ] 输出格式：Anki 兼容 TSV（`exports/anki-flashcards.tsv`）
+- [x] 输出格式：Anki 兼容 TSV（`exports/anki-flashcards.tsv`）
   - 列：`Front\tBack\tTags`
   - Tags：`robotics::formalization::<page_stem>`
-- [ ] 在 `Makefile` 中添加 `make anki` 目标
+- [x] 在 `Makefile` 中添加 `make anki` 目标
 
 ### P5.2 · 扩展到 concepts/ 精选页面
 
-- [ ] 额外处理 `wiki/concepts/` 中有 `## 一句话定义` 小节的页面（目前约 10 页）
-- [ ] 总卡片数目标：≥ 20 张
+- [x] 额外处理 `wiki/concepts/` 中有 `## 一句话定义` 小节的页面（当前导出 19 页）
+- [x] 总卡片数目标：≥ 20 张（当前 27 张）
 
 ### 完成标准
 `make anki` 生成 `exports/anki-flashcards.tsv`，≥ 20 行，可导入 Anki（通过 File > Import 验证格式）。
@@ -227,10 +227,10 @@ Karpathy："*frontmatter should be machine-readable*" — 当前 query 页面有
 
 ## P6 · README 与指标同步
 
-- [ ] 更新 README badge：图谱节点 75 → 目标值（V10 新增后）
-- [ ] 更新 "常用操作" 命令表：新增 `make vectors`、`make anki`
-- [ ] README 版本注释从 V9 → V10
-- [ ] 更新执行清单链接从 v9 → v10
+- [x] 更新 README badge：图谱节点 / 边数与当前导出一致（75 / 429）
+- [x] 更新 "常用操作" 命令表：新增 `make vectors`、`make anki`
+- [x] README 版本注释从 V9 → V10
+- [x] 更新执行清单链接从 v9 → v10
 
 ---
 
@@ -281,12 +281,12 @@ chore(export): 更新前端 JSON / 图谱数据
 
 ### Op 4 · V10 完成标准（全部满足）
 
-- [ ] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 14 项
-- [ ] CANONICAL_FACTS = 30 条，`make lint` 无误判
-- [ ] `--semantic` 搜索能找到语义相关页（`lyapunov.md` 出现在 "稳定性" 查询结果前 5）
-- [ ] `docs/index.html` 浏览器内搜索 "强化学习" 返回结果 < 500ms
-- [ ] `make anki` 生成 ≥ 20 张闪卡
-- [ ] `docs/graph.html` 有 "按社区" 着色按钮
+- [x] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 14 项
+- [x] CANONICAL_FACTS = 30 条，`make lint` 无误判
+- [x] `--semantic` 搜索能找到语义相关页（`lyapunov.md` 出现在 "稳定性" 查询结果前 5）
+- [x] `docs/index.html` 浏览器内搜索 "强化学习" 返回结果 < 500ms
+- [x] `make anki` 生成 ≥ 20 张闪卡（当前 27 张）
+- [x] `docs/graph.html` 有 "按社区" 着色按钮
 
 ---
 

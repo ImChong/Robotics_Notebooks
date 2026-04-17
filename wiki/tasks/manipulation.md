@@ -5,6 +5,7 @@ status: draft
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
+summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
 # Manipulation
@@ -64,6 +65,10 @@ sources:
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
+- [Behavior Cloning](../methods/behavior-cloning.md)
+- [DAgger](../methods/dagger.md)
+- [VLA](../methods/vla.md)
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 
 ## 关联任务
 

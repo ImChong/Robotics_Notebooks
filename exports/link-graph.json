@@ -3,377 +3,583 @@
     {
       "id": "wiki/comparisons/model-based-vs-model-free.md",
       "label": "Model-Based vs Model-Free RL 对比",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/mpc-vs-rl.md",
       "label": "MPC vs RL：控制策略选型对比",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-4",
+      "community_label": "MPC vs RL：控制策略选型对比 社区"
     },
     {
       "id": "wiki/comparisons/online-vs-offline-rl.md",
       "label": "Online RL vs Offline RL",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/rl-vs-il.md",
       "label": "RL vs 模仿学习（Imitation Learning）",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/comparisons/sim2real-approaches.md",
       "label": "Sim2Real 方法横向对比",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/wbc-vs-rl.md",
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
-      "type": "comparison"
+      "type": "comparison",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
       "label": "Capture Point / DCM",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/centroidal-dynamics.md",
       "label": "Centroidal Dynamics",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/contact-dynamics.md",
       "label": "Contact Dynamics",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/contact-estimation.md",
       "label": "Contact Estimation（接触估计）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/concepts/contact-rich-manipulation.md",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/curriculum-learning.md",
       "label": "Curriculum Learning（课程学习）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/domain-randomization.md",
       "label": "Domain Randomization",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/floating-base-dynamics.md",
       "label": "Floating Base Dynamics",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/footstep-planning.md",
       "label": "Footstep Planning（步位规划）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
       "label": "Foundation Policy（基础策略模型）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
       "label": "Gait Generation（步态生成）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/hqp.md",
       "label": "HQP（Hierarchical QP）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/lip-zmp.md",
       "label": "LIP / ZMP",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/motion-retargeting.md",
       "label": "Motion Retargeting（动作重定向）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/concepts/mpc-wbc-integration.md",
       "label": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/privileged-training.md",
       "label": "Privileged Training（特权信息训练）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/reward-design.md",
       "label": "Reward Design",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
       "label": "传感器融合（Sensor Fusion）",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/state-estimation.md",
       "label": "State Estimation",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/system-identification.md",
       "label": "System Identification",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/concepts/terrain-adaptation.md",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "type": "concept"
+      "type": "concept",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/crocoddyl.md",
       "label": "Crocoddyl",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/drake.md",
       "label": "Drake",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/humanoid-robot.md",
       "label": "人形机器人（Humanoid Robot）",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/entities/isaac-gym-isaac-lab.md",
       "label": "Isaac Gym / Isaac Lab",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/entities/legged-gym.md",
       "label": "legged_gym",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/entities/mujoco.md",
       "label": "MuJoCo",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/pinocchio.md",
       "label": "Pinocchio",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/unitree.md",
       "label": "Unitree",
-      "type": "entity"
+      "type": "entity",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/formalizations/bellman-equation.md",
       "label": "Bellman 方程",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-3",
+      "community_label": "Bellman 方程 社区"
     },
     {
       "id": "wiki/formalizations/contact-complementarity.md",
       "label": "Contact Complementarity（接触互补约束）",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/ekf.md",
       "label": "Extended Kalman Filter (EKF)",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/gae.md",
       "label": "GAE（广义优势估计）",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-3",
+      "community_label": "Bellman 方程 社区"
     },
     {
       "id": "wiki/formalizations/hjb.md",
       "label": "HJB 方程（Hamilton-Jacobi-Bellman）",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/lqr.md",
       "label": "LQR / iLQR",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/formalizations/lyapunov.md",
+      "label": "Lyapunov 稳定性",
+      "type": "formalization",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/mdp.md",
       "label": "Markov Decision Process (MDP)",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/formalizations/pomdp.md",
       "label": "POMDP（部分可观测马尔可夫决策过程）",
-      "type": "formalization"
+      "type": "formalization",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/methods/behavior-cloning.md",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
+    },
+    {
+      "id": "wiki/methods/dagger.md",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
       "label": "Diffusion Policy",
-      "type": "method"
+      "type": "method",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "type": "method"
+      "type": "method",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/methods/model-based-rl.md",
       "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method"
+      "type": "method",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
-      "type": "method"
+      "type": "method",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/methods/policy-optimization.md",
       "label": "Policy Optimization",
-      "type": "method"
+      "type": "method",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL)",
-      "type": "method"
+      "type": "method",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/trajectory-optimization.md",
       "label": "Trajectory Optimization",
-      "type": "method"
+      "type": "method",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/methods/vla.md",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
       "label": "Robot Learning Overview",
-      "type": "overview"
+      "type": "overview",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
       "label": "人形机器人控制架构综合对比",
-      "type": "query"
+      "type": "query",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
       "label": "主流人形机器人硬件对比",
-      "type": "query"
+      "type": "query",
+      "community": "community-5",
+      "community_label": "主流人形机器人硬件对比 社区"
     },
     {
       "id": "wiki/queries/humanoid-hardware-selection.md",
       "label": "人形机器人硬件选型指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/humanoid-rl-cookbook.md",
       "label": "人形机器人 RL 策略训练完整 Checklist",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/queries/il-for-manipulation.md",
+      "label": "Query：机器人操作任务该优先用 IL 还是 RL？",
+      "type": "query",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/queries/locomotion-reward-design-guide.md",
       "label": "Locomotion 奖励函数设计指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/mpc-solver-selection.md",
       "label": "MPC 求解器选型指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/pinocchio-quick-start.md",
       "label": "Pinocchio 快速上手：最小可运行动力学示例",
-      "type": "query"
+      "type": "query",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/reward-design-guide.md",
       "label": "Reward Design 实战指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/rl-algorithm-selection.md",
       "label": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/rl-hyperparameter-guide.md",
       "label": "RL 超参数调节指南（locomotion 专用）",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/sim2real-checklist.md",
       "label": "Sim2Real 工程 Checklist",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/sim2real-gap-reduction.md",
       "label": "Sim2Real Gap 缩减实战指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/queries/vla-deployment-guide.md",
+      "label": "Query：VLA 真机部署指南",
+      "type": "query",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
       "label": "WBC 工程实现指南",
-      "type": "query"
+      "type": "query",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/when-to-use-wbc-vs-rl.md",
       "label": "决策树：何时使用 WBC vs RL？",
-      "type": "query"
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/references/llm-wiki-karpathy.md",
       "label": "LLM Wiki",
-      "type": ""
+      "type": "",
+      "community": "community-6",
+      "community_label": "LLM Wiki 社区"
     },
     {
       "id": "wiki/roadmaps/humanoid-control-roadmap.md",
       "label": "Humanoid Control Roadmap",
-      "type": ""
+      "type": "",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/balance-recovery.md",
       "label": "Balance Recovery（平衡恢复）",
-      "type": "task"
+      "type": "task",
+      "community": "community-0",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
-      "type": "task"
+      "type": "task",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "type": "task"
+      "type": "task",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
-      "type": "task"
+      "type": "task",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/tasks/teleoperation.md",
       "label": "Teleoperation（遥操作）",
-      "type": "task"
+      "type": "task",
+      "community": "community-2",
+      "community_label": "Imitation Learning (IL) 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
       "label": "ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation",
-      "type": "task"
+      "type": "task",
+      "community": "community-1",
+      "community_label": "Locomotion 社区"
     }
   ],
   "edges": [
@@ -575,6 +781,10 @@
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {
@@ -608,6 +818,30 @@
     {
       "source": "wiki/concepts/contact-estimation.md",
       "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/queries/il-for-manipulation.md"
     },
     {
       "source": "wiki/concepts/curriculum-learning.md",
@@ -671,6 +905,10 @@
     },
     {
       "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/concepts/terrain-adaptation.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
       "target": "wiki/concepts/capture-point-dcm.md"
     },
     {
@@ -696,6 +934,10 @@
     {
       "source": "wiki/concepts/foundation-policy.md",
       "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
@@ -992,6 +1234,30 @@
     {
       "source": "wiki/concepts/system-identification.md",
       "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
     },
     {
       "source": "wiki/concepts/tsid.md",
@@ -1335,11 +1601,35 @@
     },
     {
       "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/formalizations/lyapunov.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
       "target": "wiki/entities/crocoddyl.md"
     },
     {
       "source": "wiki/formalizations/lqr.md",
       "target": "wiki/formalizations/hjb.md"
+    },
+    {
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
     },
     {
       "source": "wiki/formalizations/mdp.md",
@@ -1372,6 +1662,46 @@
     {
       "source": "wiki/formalizations/pomdp.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/methods/dagger.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/tasks/ultra-survey.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
     },
     {
       "source": "wiki/methods/diffusion-policy.md",
@@ -1412,6 +1742,18 @@
     {
       "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/dagger.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -1570,6 +1912,30 @@
       "target": "wiki/entities/drake.md"
     },
     {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/queries/vla-deployment-guide.md"
+    },
+    {
       "source": "wiki/overview/robot-learning-overview.md",
       "target": "wiki/references/llm-wiki-karpathy.md"
     },
@@ -1676,6 +2042,26 @@
     {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
       "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/dagger.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/queries/locomotion-reward-design-guide.md",
@@ -1834,6 +2220,26 @@
       "target": "wiki/queries/sim2real-checklist.md"
     },
     {
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
       "source": "wiki/queries/wbc-implementation-guide.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
@@ -1931,6 +2337,10 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/tasks/teleoperation.md"
     },
     {
@@ -1979,11 +2389,19 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/formalizations/lyapunov.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
       "target": "wiki/concepts/gait-generation.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
       "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/terrain-adaptation.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -2032,6 +2450,22 @@
     {
       "source": "wiki/tasks/manipulation.md",
       "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/dagger.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -2092,6 +2526,50 @@
     {
       "source": "wiki/tasks/ultra-survey.md",
       "target": "wiki/tasks/loco-manipulation.md"
+    }
+  ],
+  "communities": [
+    {
+      "id": "community-0",
+      "label": "Whole-Body Control (WBC) 社区",
+      "size": 33,
+      "hub_id": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "id": "community-1",
+      "label": "Locomotion 社区",
+      "size": 31,
+      "hub_id": "wiki/tasks/locomotion.md"
+    },
+    {
+      "id": "community-2",
+      "label": "Imitation Learning (IL) 社区",
+      "size": 14,
+      "hub_id": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "id": "community-3",
+      "label": "Bellman 方程 社区",
+      "size": 2,
+      "hub_id": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "id": "community-6",
+      "label": "LLM Wiki 社区",
+      "size": 1,
+      "hub_id": "wiki/references/llm-wiki-karpathy.md"
+    },
+    {
+      "id": "community-4",
+      "label": "MPC vs RL：控制策略选型对比 社区",
+      "size": 1,
+      "hub_id": "wiki/comparisons/mpc-vs-rl.md"
+    },
+    {
+      "id": "community-5",
+      "label": "主流人形机器人硬件对比 社区",
+      "size": 1,
+      "hub_id": "wiki/queries/hardware-comparison.md"
     }
   ]
 }
