@@ -1,0 +1,215 @@
+{
+  "entries": [
+    {
+      "key": "{\"q\": [\"sim2real\"], \"t\": \"\", \"tags\": []}",
+      "ts": "2026-04-17T05:32:21",
+      "results": [
+        {
+          "path": "wiki/concepts/sim2real.md",
+          "score": 4.890163,
+          "title": "Sim2Real",
+          "type": "concept",
+          "tags": [
+            "sim2real",
+            "rl",
+            "domain-randomization",
+            "deployment"
+          ]
+        },
+        {
+          "path": "wiki/queries/sim2real-gap-reduction.md",
+          "score": 4.829686,
+          "title": "Sim2Real Gap 缩减实战指南",
+          "type": "query",
+          "tags": [
+            "sim2real",
+            "domain-randomization",
+            "locomotion",
+            "deployment",
+            "training"
+          ]
+        },
+        {
+          "path": "wiki/queries/sim2real-checklist.md",
+          "score": 4.426791,
+          "title": "Sim2Real 工程 Checklist",
+          "type": "query",
+          "tags": [
+            "sim2real",
+            "deployment",
+            "locomotion",
+            "humanoid",
+            "rl"
+          ]
+        },
+        {
+          "path": "wiki/entities/unitree.md",
+          "score": 1.568275,
+          "title": "Unitree",
+          "type": "entity",
+          "tags": []
+        },
+        {
+          "path": "wiki/queries/README.md",
+          "score": 1.567109,
+          "title": "wiki/queries/",
+          "type": "",
+          "tags": []
+        },
+        {
+          "path": "wiki/concepts/privileged-training.md",
+          "score": 1.501683,
+          "title": "Privileged Training（特权信息训练）",
+          "type": "concept",
+          "tags": [
+            "rl",
+            "sim2real",
+            "training",
+            "humanoid",
+            "policy-optimization"
+          ]
+        },
+        {
+          "path": "wiki/entities/legged-gym.md",
+          "score": 1.482133,
+          "title": "legged_gym",
+          "type": "entity",
+          "tags": []
+        },
+        {
+          "path": "wiki/concepts/system-identification.md",
+          "score": 1.478194,
+          "title": "System Identification",
+          "type": "concept",
+          "tags": []
+        },
+        {
+          "path": "wiki/concepts/domain-randomization.md",
+          "score": 1.469264,
+          "title": "Domain Randomization",
+          "type": "concept",
+          "tags": []
+        },
+        {
+          "path": "wiki/methods/reinforcement-learning.md",
+          "score": 1.449706,
+          "title": "Reinforcement Learning (RL)",
+          "type": "method",
+          "tags": [
+            "rl",
+            "locomotion",
+            "policy-optimization",
+            "model-free"
+          ]
+        }
+      ]
+    },
+    {
+      "key": "{\"q\": [\"model predictive control\"], \"t\": \"\", \"tags\": []}",
+      "ts": "2026-04-17T05:30:05",
+      "results": [
+        {
+          "path": "wiki/methods/model-predictive-control.md",
+          "score": 3.533536,
+          "title": "Model Predictive Control (MPC)",
+          "type": "method",
+          "tags": [
+            "control",
+            "mpc",
+            "optimization",
+            "locomotion",
+            "humanoid"
+          ]
+        },
+        {
+          "path": "wiki/concepts/lip-zmp.md",
+          "score": 1.127205,
+          "title": "LIP / ZMP",
+          "type": "concept",
+          "tags": [
+            "locomotion",
+            "control",
+            "dynamics",
+            "bipedal"
+          ]
+        },
+        {
+          "path": "wiki/methods/model-based-rl.md",
+          "score": 1.058123,
+          "title": "Model-Based RL（基于模型的强化学习）",
+          "type": "method",
+          "tags": [
+            "rl",
+            "model-based",
+            "planning",
+            "locomotion",
+            "sample-efficiency"
+          ]
+        },
+        {
+          "path": "wiki/concepts/optimal-control.md",
+          "score": 1.01824,
+          "title": "Optimal Control (OCP)",
+          "type": "concept",
+          "tags": []
+        },
+        {
+          "path": "wiki/methods/trajectory-optimization.md",
+          "score": 0.895825,
+          "title": "Trajectory Optimization",
+          "type": "method",
+          "tags": []
+        },
+        {
+          "path": "wiki/entities/pinocchio.md",
+          "score": 0.887402,
+          "title": "Pinocchio",
+          "type": "entity",
+          "tags": []
+        },
+        {
+          "path": "wiki/concepts/footstep-planning.md",
+          "score": 0.797333,
+          "title": "Footstep Planning（步位规划）",
+          "type": "concept",
+          "tags": [
+            "locomotion",
+            "planning",
+            "footstep",
+            "contact-sequence",
+            "dcm",
+            "mpc"
+          ]
+        },
+        {
+          "path": "wiki/concepts/gait-generation.md",
+          "score": 0.772112,
+          "title": "Gait Generation（步态生成）",
+          "type": "concept",
+          "tags": [
+            "locomotion",
+            "gait",
+            "CPG",
+            "rhythm",
+            "legged-robots",
+            "mpc"
+          ]
+        },
+        {
+          "path": "wiki/entities/unitree.md",
+          "score": 0.733699,
+          "title": "Unitree",
+          "type": "entity",
+          "tags": []
+        },
+        {
+          "path": "wiki/entities/drake.md",
+          "score": 0.731425,
+          "title": "Drake",
+          "type": "entity",
+          "tags": []
+        }
+      ]
+    }
+  ]
+}
