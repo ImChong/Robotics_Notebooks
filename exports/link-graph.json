@@ -439,6 +439,14 @@
       "target": "wiki/comparisons/rl-vs-il.md"
     },
     {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
       "source": "wiki/concepts/capture-point-dcm.md",
       "target": "wiki/concepts/lip-zmp.md"
     },
@@ -707,6 +715,10 @@
       "target": "wiki/concepts/optimal-control.md"
     },
     {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
       "source": "wiki/concepts/optimal-control.md",
       "target": "wiki/methods/model-predictive-control.md"
     },
@@ -775,6 +787,10 @@
       "target": "wiki/methods/policy-optimization.md"
     },
     {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/queries/reward-design-guide.md"
+    },
+    {
       "source": "wiki/concepts/sim2real.md",
       "target": "wiki/concepts/privileged-training.md"
     },
@@ -793,6 +809,10 @@
     {
       "source": "wiki/concepts/sim2real.md",
       "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/queries/sim2real-gap-reduction.md"
     },
     {
       "source": "wiki/concepts/state-estimation.md",
@@ -887,6 +907,10 @@
       "target": "wiki/concepts/contact-estimation.md"
     },
     {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
       "source": "wiki/entities/crocoddyl.md",
       "target": "wiki/methods/trajectory-optimization.md"
     },
@@ -957,6 +981,10 @@
     {
       "source": "wiki/entities/humanoid-robot.md",
       "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/queries/humanoid-hardware-selection.md"
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
@@ -1049,6 +1077,10 @@
     {
       "source": "wiki/entities/pinocchio.md",
       "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/queries/pinocchio-quick-start.md"
     },
     {
       "source": "wiki/entities/pinocchio.md",
@@ -1267,6 +1299,10 @@
       "target": "wiki/formalizations/bellman-equation.md"
     },
     {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/queries/rl-hyperparameter-guide.md"
+    },
+    {
       "source": "wiki/methods/reinforcement-learning.md",
       "target": "wiki/comparisons/rl-vs-il.md"
     },
@@ -1297,6 +1333,10 @@
     {
       "source": "wiki/methods/reinforcement-learning.md",
       "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
@@ -1769,6 +1809,14 @@
     {
       "source": "wiki/tasks/locomotion.md",
       "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/humanoid-hardware-selection.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",

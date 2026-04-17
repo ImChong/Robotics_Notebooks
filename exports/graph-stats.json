@@ -1,27 +1,27 @@
 {
-  "generated_at": "2026-04-16",
+  "generated_at": "2026-04-17",
   "node_count": 68,
-  "edge_count": 376,
+  "edge_count": 388,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 50
+      "degree": 52
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 41
+      "degree": 42
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL)",
-      "degree": 39
+      "degree": 40
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 32
+      "degree": 33
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -44,58 +44,17 @@
       "degree": 19
     },
     {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
+      "id": "wiki/comparisons/wbc-vs-rl.md",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "degree": 18
     },
     {
-      "id": "wiki/comparisons/wbc-vs-rl.md",
-      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
-      "degree": 16
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation",
+      "degree": 18
     }
   ],
-  "orphan_nodes": [
-    {
-      "id": "wiki/queries/control-architecture-comparison.md",
-      "label": "人形机器人控制架构综合对比",
-      "out_degree": 7
-    },
-    {
-      "id": "wiki/queries/humanoid-hardware-selection.md",
-      "label": "人形机器人硬件选型指南",
-      "out_degree": 5
-    },
-    {
-      "id": "wiki/queries/humanoid-rl-cookbook.md",
-      "label": "人形机器人 RL 策略训练完整 Checklist",
-      "out_degree": 5
-    },
-    {
-      "id": "wiki/queries/pinocchio-quick-start.md",
-      "label": "Pinocchio 快速上手：最小可运行动力学示例",
-      "out_degree": 4
-    },
-    {
-      "id": "wiki/queries/reward-design-guide.md",
-      "label": "Reward Design 实战指南",
-      "out_degree": 5
-    },
-    {
-      "id": "wiki/queries/rl-hyperparameter-guide.md",
-      "label": "RL 超参数调节指南（locomotion 专用）",
-      "out_degree": 4
-    },
-    {
-      "id": "wiki/queries/sim2real-gap-reduction.md",
-      "label": "Sim2Real Gap 缩减实战指南",
-      "out_degree": 4
-    },
-    {
-      "id": "wiki/queries/when-to-use-wbc-vs-rl.md",
-      "label": "决策树：何时使用 WBC vs RL？",
-      "out_degree": 5
-    }
-  ],
+  "orphan_nodes": [],
   "type_distribution": {
     "unknown": 18,
     "concept": 14,
