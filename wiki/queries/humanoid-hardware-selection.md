@@ -5,6 +5,8 @@ status: complete
 created: 2026-04-14
 updated: 2026-04-14
 summary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。
+sources:
+  - ../../sources/papers/humanoid_hardware.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「做人形机器人运动控制研究，该选哪个硬件平台？」

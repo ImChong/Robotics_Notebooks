@@ -141,6 +141,7 @@ SAC 常用于：
 - [Sim2Real](../concepts/sim2real.md)
 - [Formalizations: MDP](../formalizations/mdp.md)
 - [Formalizations: Bellman 方程](../formalizations/bellman-equation.md)
+- [Formalizations: GAE](../formalizations/gae.md) — PPO 使用 GAE 作为优势估计标准实现
 - [Query：RL 超参数调参指南](../queries/rl-hyperparameter-guide.md)
 
 ## 推荐继续阅读

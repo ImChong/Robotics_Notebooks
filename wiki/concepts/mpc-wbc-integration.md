@@ -1,5 +1,8 @@
 ---
 type: concept
+sources:
+  - ../../sources/papers/mpc.md
+  - ../../sources/papers/whole_body_control.md
 ---
 
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构

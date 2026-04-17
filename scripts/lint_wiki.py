@@ -109,6 +109,7 @@ def lint() -> dict:
         "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
         "sources_orphans": [],        # P3.3: sources/papers 中的死链（wiki 目标不存在）
         "stale_pages": [],            # P3.2: wiki 页面比对应 sources 文件旧
+        "outdated_pages": [],         # V9: frontmatter updated: 字段距今 > 180 天
         "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
         "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
         "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
@@ -246,7 +247,7 @@ def lint() -> dict:
         "Domain Randomization 必要性": {
             "terms": ["domain.randomization", "域随机"],
             "pos_claims": [r"必须|必要|sim2real.*必|是.*sim2real.*关键"],
-            "neg_claims": [r"降低.*in.distribution|过度随机|随机化.*过度|不一定需要"],
+            "neg_claims": [r"降低.*in.distribution|DR.*不.*必要|不需要.*domain.*random|domain.*random.*unnecessary"],
         },
         "RL 推理速度": {
             "terms": ["policy", "RL", "强化学习"],
@@ -282,6 +283,51 @@ def lint() -> dict:
             "terms": ["仿真频率|simulation.*frequenc|sim.*freq"],
             "pos_claims": [r"关键|重要|必须|稳定.*必要|stability.*critical|高频.*稳定"],
             "neg_claims": [r"频率.*无关|低频.*足够|频率.*不重要|不影响.*稳定"],
+        },
+        "GAE λ 范围": {
+            "terms": ["GAE", "广义优势"],
+            "pos_claims": [r"λ.*\(0.*1\)|lambda.*0.*1|λ.*介于|0.*<.*λ.*<.*1"],
+            "neg_claims": [r"λ.*>.*1|λ.*<.*0|GAE.*无.*λ|GAE.*不.*用.*lambda"],
+        },
+        "EKF 线性化误差": {
+            "terms": ["EKF", "Extended Kalman"],
+            "pos_claims": [r"线性化|lineariz|一阶近似|first.order"],
+            "neg_claims": [r"EKF.*精确非线性|EKF.*无线性化误差|EKF.*exact"],
+        },
+        "Model-Based RL 样本效率": {
+            "terms": ["model.based.*rl|model.based.*reinforcement|基于模型.*强化"],
+            "pos_claims": [r"样本效率.*高|sample.*efficient|数据效率.*高|更.*efficient"],
+            "neg_claims": [r"model.based.*样本效率.*低|model.based.*inefficient|数据效率.*差"],
+        },
+        "Diffusion Policy 推理延迟": {
+            "terms": ["diffusion.policy", "扩散策略"],
+            "pos_claims": [r"去噪.*步数|denoising.*step|推理.*多步|multi.*step.*inference"],
+            "neg_claims": [r"diffusion.*单步|diffusion.*instant|扩散.*无延迟|denoising.*free"],
+        },
+        "WBC 优先级约束": {
+            "terms": ["WBC", "whole.body"],
+            "pos_claims": [r"优先级|priority|层次|hierarchy|安全.*约束.*首"],
+            "neg_claims": [r"WBC.*无优先级|WBC.*等权|WBC.*flat.*weight"],
+        },
+        "Sim2Real 主流手段": {
+            "terms": ["sim2real", "sim.to.real"],
+            "pos_claims": [r"domain.*randomization|域随机|DR.*|adaptive.*domain"],
+            "neg_claims": [r"sim2real.*无需随机|sim2real.*only.*real.*data"],
+        },
+        "Retargeting 运动学约束": {
+            "terms": ["retarget", "重定向"],
+            "pos_claims": [r"运动学.*约束|kinematic.*constraint|关节.*限制.*重定向|需要.*匹配.*运动学"],
+            "neg_claims": [r"重定向.*仅.*角度|retarget.*just.*angle|retarget.*no.*constraint"],
+        },
+        "PPO Clip 范围": {
+            "terms": ["PPO", "clip"],
+            "pos_claims": [r"clip.*ratio|ε.*=.*0\.[12]|epsilon.*clip|裁剪.*比率"],
+            "neg_claims": [r"PPO.*无.*clip|PPO.*不.*裁剪|clip.*unnecessary"],
+        },
+        "接触互补性条件": {
+            "terms": ["complementarity|互补性|接触.*互补"],
+            "pos_claims": [r"φ.*≥.*0|λ.*≥.*0|非负|non.negative|互补.*约束"],
+            "neg_claims": [r"接触.*无约束|contact.*unconstrained|互补.*不必要"],
         },
     }
     all_pages_content = {p: p.read_text(encoding="utf-8") for p in pages}
@@ -319,6 +365,27 @@ def lint() -> dict:
                 results["missing_type"].append(str(rel))
         else:
             results["missing_type"].append(str(rel))
+
+    # V9: frontmatter updated: 字段过期检测（距今 > 180 天）
+    today_for_stale = date.today()
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        if not fm_match:
+            continue
+        upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+        if not upd_m:
+            continue
+        try:
+            upd_dt = date.fromisoformat(upd_m.group(1))
+            days_old = (today_for_stale - upd_dt).days
+            if days_old > 180:
+                results["outdated_pages"].append(
+                    f"{rel} （updated: {upd_m.group(1)}，已 {days_old} 天）"
+                )
+        except ValueError:
+            pass
 
     # V8: log.md 活跃度检查（最近 30 天内是否有操作记录）
     log_path = REPO_ROOT / "log.md"
@@ -361,6 +428,7 @@ def format_report(results: dict) -> str:
         ("broken_source_refs", "引用了不存在的 sources/ 文件",                "❌"),
         ("sources_orphans",    "Sources 孤儿（sources/papers 死链）",         "❌"),
         ("stale_pages",        "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
+        ("outdated_pages",     "可能过期（updated: 距今 > 180 天）",          "⚠️"),
         ("contradictions",     "潜在矛盾（跨页面相反定性描述）",              "⚠️"),
         ("stub_pages",         "空壳页面（< 200 字）",                       "⚠️"),
         ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),

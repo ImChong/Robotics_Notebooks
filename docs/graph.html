@@ -794,7 +794,12 @@
         <div class="sb-section-title">关联页面</div>
         <ul class="sb-related-list" id="sb-related-list"></ul>
       </div>
-      <a id="sb-open-link" class="sb-open-link" href="#" target="_self">打开详情页 →</a>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
+        <a id="sb-open-link" class="sb-open-link" href="#" target="_self">打开详情页 →</a>
+        <a id="sb-slides-link" class="sb-open-link sb-slides-btn" href="#" target="_self"
+           title="本地运行 make slides F=&lt;stem&gt; 生成" style="opacity:.45;cursor:default"
+           onclick="return false;">📊 幻灯片</a>
+      </div>
     </div>
   </aside>
 
@@ -1393,8 +1398,9 @@
     const sbSummary   = document.getElementById('sb-summary');
     const sbRelSec    = document.getElementById('sb-related-section');
     const sbRelList   = document.getElementById('sb-related-list');
-    const sbOpenLink  = document.getElementById('sb-open-link');
-    const sbClose     = document.getElementById('sb-close');
+    const sbOpenLink   = document.getElementById('sb-open-link');
+    const sbSlidesLink = document.getElementById('sb-slides-link');
+    const sbClose      = document.getElementById('sb-close');
 
     function openSidebar(d) {
       const color = nodeColor(d);
@@ -1429,6 +1435,25 @@
       }
 
       sbOpenLink.href = detailUrl;
+
+      // slides button — derive stem from path (e.g. wiki/concepts/foo.md → foo)
+      const stem = (d.id || '').split('/').pop().replace(/\.md$/, '');
+      const slidesUrl = 'slides/' + stem + '.html';
+      // Try to detect if slides file exists via a HEAD fetch (async, non-blocking)
+      sbSlidesLink.style.opacity = '0.45';
+      sbSlidesLink.style.cursor = 'default';
+      sbSlidesLink.onclick = () => false;
+      sbSlidesLink.title = '本地运行 make slides F=' + stem + ' 生成';
+      fetch(slidesUrl, { method: 'HEAD' }).then(r => {
+        if (r.ok) {
+          sbSlidesLink.href = slidesUrl;
+          sbSlidesLink.style.opacity = '1';
+          sbSlidesLink.style.cursor = 'pointer';
+          sbSlidesLink.onclick = null;
+          sbSlidesLink.title = '查看幻灯片版';
+        }
+      }).catch(() => {});
+
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
     }

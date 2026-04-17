@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-17 -->
+<!-- Last updated: 2026-04-17 (V9) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-68节点_376边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-82%25-green)](docs/tech-stack-next-phase-checklist-v8.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-75节点_429边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v9.md)
 
 ---
 
@@ -65,7 +65,7 @@
 make lint                                 # 健康检查（0 issues 为目标）
 make search Q=<关键词>                    # 搜索
 make catalog                             # 刷新 index.md
-make export                              # 更新前端 JSON（103 页）
+make export                              # 更新前端 JSON（110 页）
 make graph                               # 更新知识图谱 + graph-stats.json
 make ingest NAME=<stem> TITLE="..." DESC="..."  # 生成 sources/papers/ 模板
 python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页面
@@ -79,8 +79,8 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 
 `docs/graph.html` 是 Obsidian 风格的知识图谱可视化，由 D3.js 力导向算法驱动：
 
-- **68 个节点**：概念、方法、任务、实体、对比、Query 产物
-- **376 条边**：wiki 页面间的内链关系
+- **75 个节点**：概念、方法、任务、实体、对比、Query 产物
+- **429 条边**：wiki 页面间的内链关系
 - 节点按类型着色，大小反映连接度（入度 + 出度）
 - 悬停 / 点击显示浮动卡片，点击卡片内"打开详情页"跳转对应页面
 - 支持按类型过滤（含"孤儿"模式）、关键词搜索 + fly-to 定位、缩放平移
@@ -93,6 +93,6 @@ python3 scripts/search_wiki.py <关键词> --related  # 搜索 + 显示关联页
 
 ## 执行清单
 
-[技术栈项目执行清单 v8](docs/tech-stack-next-phase-checklist-v8.md) — 当前阶段目标（孤儿双向链接 / 缺失概念页 / lint 完善 / 首页图谱 / BM25 搜索）
+[技术栈项目执行清单 v9](docs/tech-stack-next-phase-checklist-v9.md) — 当前阶段目标（frontmatter 完整性 / 向量搜索 / 启发式重排 / lint 增强 / 周报 Action / Marp UX）
 
-历史版本：[第七版](docs/tech-stack-next-phase-checklist-v7.md) · [第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[第八版](docs/tech-stack-next-phase-checklist-v8.md) · [第七版](docs/tech-stack-next-phase-checklist-v7.md) · [第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)

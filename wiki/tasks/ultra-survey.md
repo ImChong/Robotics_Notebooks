@@ -1,5 +1,8 @@
 ---
 type: task
+sources:
+  - ../../sources/papers/survey_papers.md
+  - ../../sources/papers/locomotion_rl.md
 ---
 
 # ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation

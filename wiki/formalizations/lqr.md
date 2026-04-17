@@ -143,6 +143,7 @@ MPC 在某种意义上是"在线、有约束、有限时域的 LQR"。
 - [Optimal Control (OCP)](../concepts/optimal-control.md)
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 - [Crocoddyl](../entities/crocoddyl.md)（iLQR/FDDP 的工程实现）
+- [HJB](./hjb.md) — LQR 是 HJB 方程在线性二次系统上的解析特例
 
 ## 一句话记忆
 

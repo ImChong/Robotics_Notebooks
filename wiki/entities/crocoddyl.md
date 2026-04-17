@@ -1,5 +1,7 @@
 ---
 type: entity
+sources:
+  - ../../sources/papers/optimal_control.md
 ---
 
 # Crocoddyl
