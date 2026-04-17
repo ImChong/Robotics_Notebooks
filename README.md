@@ -98,4 +98,4 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 [技术栈项目执行清单 v10](docs/tech-stack-next-phase-checklist-v10.md) — 当前阶段目标（向量搜索 / 新方法页 DAgger-VLA / 前端离线 BM25 / 图谱社区检测 / Anki 导出 / CANONICAL_FACTS 30 条）
 
-历史版本：[第九版](docs/tech-stack-next-phase-checklist-v9.md) · [第八版](docs/tech-stack-next-phase-checklist-v8.md) · [第七版](docs/tech-stack-next-phase-checklist-v7.md) · [第六版](docs/tech-stack-next-phase-checklist-v6.md) · [第五版](docs/tech-stack-next-phase-checklist-v5.md) · [第四版](docs/tech-stack-next-phase-checklist-v4.md) · [第三版](docs/tech-stack-next-phase-checklist-v3.md) · [第二版](docs/tech-stack-next-phase-checklist-v2.md) · [第一版](docs/tech-stack-next-phase-checklist-v1.md)
+历史版本：[v1–v9 归档](docs/checklists/)
