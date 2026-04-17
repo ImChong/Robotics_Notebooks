@@ -2,6 +2,16 @@
 type: comparison
 tags: [wbc, rl, control, locomotion, humanoid]
 status: complete
+related:
+  - ../concepts/whole-body-control.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/imitation-learning.md
+  - ../concepts/sim2real.md
+  - ../concepts/mpc-wbc-integration.md
+  - ../concepts/tsid.md
+  - ./rl-vs-il.md
+  - ../queries/control-architecture-comparison.md
+  - ../queries/when-to-use-wbc-vs-rl.md
 ---
 
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning
@@ -182,6 +192,8 @@ WBC（TSID/HQP）
 - [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md)（融合架构的核心实现）
 - [TSID](../concepts/tsid.md)（WBC 最典型的执行层实现）
 - [RL vs IL](./rl-vs-il.md)（另一角度的控制策略对比）
+- [Query：控制架构选型对比](../queries/control-architecture-comparison.md)
+- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 
 ## 一句话记忆
 

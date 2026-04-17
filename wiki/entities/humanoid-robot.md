@@ -7,6 +7,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../concepts/whole-body-control.md
   - ../comparisons/wbc-vs-rl.md
+  - ../queries/humanoid-hardware-selection.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
 ---
@@ -49,6 +50,7 @@ sources:
 - [全身运动控制](../concepts/whole-body-control.md)
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
 - [Unitree](./unitree.md)
+- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

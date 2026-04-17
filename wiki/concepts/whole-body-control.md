@@ -2,6 +2,13 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
+related:
+  - ../tasks/locomotion.md
+  - ../methods/imitation-learning.md
+  - ../comparisons/wbc-vs-rl.md
+  - ./sim2real.md
+  - ./contact-estimation.md
+  - ../queries/when-to-use-wbc-vs-rl.md
 ---
 
 # Whole-Body Control (WBC)
@@ -88,6 +95,7 @@ WBC 的优势：
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
 - [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
+- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 
 ## 继续深挖入口
 

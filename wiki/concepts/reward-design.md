@@ -2,6 +2,12 @@
 type: concept
 tags: [rl, reward, locomotion, humanoid, policy-optimization]
 status: complete
+related:
+  - ../formalizations/mdp.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/imitation-learning.md
+  - ./domain-randomization.md
+  - ../queries/reward-design-guide.md
 ---
 
 # Reward Design
@@ -124,6 +130,7 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - [Markov Decision Process](../formalizations/mdp.md)
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）
+- [Query：Reward Design 实战指南](../queries/reward-design-guide.md)
 
 ## 一句话记忆
 

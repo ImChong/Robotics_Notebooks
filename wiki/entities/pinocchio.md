@@ -218,6 +218,15 @@ WBC 框架虽然站在更高层，但它背后常常离不开：
 ### Pinocchio
 更偏：
 - 模型计算
+
+## 关联页面
+
+- [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
+- [TSID](../concepts/tsid.md)
+- [Whole-Body Control](../concepts/whole-body-control.md)
+- [Trajectory Optimization](../methods/trajectory-optimization.md)
+- [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
+- [Query：Pinocchio 快速上手](../queries/pinocchio-quick-start.md)
 - 运动学 / 动力学内核
 - 控制与优化底座
 

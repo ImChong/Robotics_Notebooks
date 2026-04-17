@@ -139,3 +139,4 @@ QP 优化层：
 - [Centroidal Dynamics](./centroidal-dynamics.md) — MPC 常用的人形简化动力学模型
 - [Locomotion](../tasks/locomotion.md) — locomotion 任务层
 - [Optimal Control (OCP)](./optimal-control.md) — 理论层，MPC 是 OCP 的在线求解
+- [Query：控制架构选型对比](../queries/control-architecture-comparison.md)

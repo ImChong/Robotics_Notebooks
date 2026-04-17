@@ -2,6 +2,24 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
+related:
+  - ../concepts/whole-body-control.md
+  - ../concepts/sim2real.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/imitation-learning.md
+  - ../concepts/capture-point-dcm.md
+  - ../concepts/gait-generation.md
+  - ../concepts/footstep-planning.md
+  - ../entities/unitree.md
+  - ./ultra-survey.md
+  - ./manipulation.md
+  - ./loco-manipulation.md
+  - ./balance-recovery.md
+  - ../queries/humanoid-hardware-selection.md
+  - ../queries/humanoid-rl-cookbook.md
+sources:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/state_estimation.md
 ---
 
 # Locomotion
@@ -101,3 +119,5 @@ status: complete
 - Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）
 - Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线
+- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
+- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)

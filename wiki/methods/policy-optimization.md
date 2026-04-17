@@ -2,6 +2,14 @@
 type: method
 tags: [rl, policy-optimization, ppo, sac, locomotion]
 status: complete
+related:
+  - ./reinforcement-learning.md
+  - ./imitation-learning.md
+  - ../tasks/locomotion.md
+  - ../concepts/sim2real.md
+  - ../formalizations/mdp.md
+  - ../formalizations/bellman-equation.md
+  - ../queries/rl-hyperparameter-guide.md
 ---
 
 # Policy Optimization
@@ -133,6 +141,7 @@ SAC 常用于：
 - [Sim2Real](../concepts/sim2real.md)
 - [Formalizations: MDP](../formalizations/mdp.md)
 - [Formalizations: Bellman 方程](../formalizations/bellman-equation.md)
+- [Query：RL 超参数调参指南](../queries/rl-hyperparameter-guide.md)
 
 ## 推荐继续阅读
 

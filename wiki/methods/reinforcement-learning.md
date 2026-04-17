@@ -2,6 +2,16 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
+related:
+  - ./imitation-learning.md
+  - ../concepts/sim2real.md
+  - ../concepts/whole-body-control.md
+  - ../tasks/locomotion.md
+  - ../comparisons/wbc-vs-rl.md
+  - ./model-based-rl.md
+  - ../comparisons/rl-vs-il.md
+  - ../concepts/curriculum-learning.md
+  - ../queries/humanoid-rl-cookbook.md
 ---
 
 # Reinforcement Learning (RL)
@@ -103,6 +113,7 @@ status: complete
 - [Model-Based RL](./model-based-rl.md)（RL 的另一主要范式，利用学习的世界模型提升样本效率）
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习：解决稀疏奖励和训练效率问题的重要训练策略
+- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)
 
 ## 继续深挖入口
 

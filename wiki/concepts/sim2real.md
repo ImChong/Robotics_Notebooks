@@ -2,6 +2,13 @@
 type: concept
 tags: [sim2real, rl, domain-randomization, deployment]
 status: complete
+related:
+  - ../methods/reinforcement-learning.md
+  - ./whole-body-control.md
+  - ../tasks/locomotion.md
+  - ./system-identification.md
+  - ./privileged-training.md
+  - ../queries/sim2real-gap-reduction.md
 ---
 
 # Sim2Real
@@ -123,3 +130,4 @@ status: complete
 
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
 - [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)
+- [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)
