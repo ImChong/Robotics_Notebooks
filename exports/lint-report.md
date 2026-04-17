@@ -34,4 +34,10 @@
 ### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
 - 无
 
-📊 Sources 覆盖率：49/66 (74%) wiki/entity 页有 ingest 来源
+### ⚠️ Frontmatter 缺少 type 字段（0 个）
+- 无
+
+### ⚠️ log.md 活跃度警告（0 个）
+- 无
+
+📊 Sources 覆盖率：56/68 (82%) wiki/entity 页有 ingest 来源
