@@ -292,3 +292,9 @@
 ## [2026-04-17] structural | 建立 V11 执行清单并同步 README 到 V11 入口
 
 ## [2026-04-17] structural | 将 V10/V11 执行清单移动到 docs/checklists/ 并同步更新 README
+
+## [2026-04-18] lint | ultra-survey follow-up | 回写 2026-04-13 历史日志状态
+
+- 核对确认 `wiki/tasks/ultra-survey.md` 已存在，`wiki/tasks/locomotion.md` 已包含 ULTRA 关联链接
+- 说明 2026-04-13 的“计划但未执行”条目已被后续同日 ingest 实际完成，当前不构成积压
+- 保留原历史日志不改写，仅通过 follow-up 追加状态说明，符合 append-only 约束
