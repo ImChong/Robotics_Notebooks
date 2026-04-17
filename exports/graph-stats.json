@@ -1,13 +1,18 @@
 {
-  "generated_at": "2026-04-17",
-  "node_count": 84,
-  "edge_count": 498,
-  "community_count": 8,
+  "generated_at": "2026-04-18",
+  "node_count": 85,
+  "edge_count": 510,
+  "community_count": 5,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 59
+      "degree": 60
+    },
+    {
+      "id": "wiki/concepts/whole-body-control.md",
+      "label": "Whole-Body Control (WBC)",
+      "degree": 46
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -15,14 +20,9 @@
       "degree": 46
     },
     {
-      "id": "wiki/concepts/whole-body-control.md",
-      "label": "Whole-Body Control (WBC)",
-      "degree": 45
-    },
-    {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 39
+      "degree": 40
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -42,7 +42,7 @@
     {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
-      "degree": 22
+      "degree": 23
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -52,10 +52,15 @@
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
-      "degree": 20
+      "degree": 21
     }
   ],
   "orphan_nodes": [
+    {
+      "id": "wiki/queries/humanoid-motion-control-know-how.md",
+      "label": "人形机器人运动控制 Know-How 结构化摘要",
+      "out_degree": 12
+    },
     {
       "id": "wiki/queries/open-source-motion-control-projects.md",
       "label": "开源运动控制项目结构化摘要",
@@ -64,7 +69,7 @@
   ],
   "type_distribution": {
     "concept": 25,
-    "query": 17,
+    "query": 18,
     "method": 10,
     "formalization": 9,
     "entity": 8,
@@ -74,13 +79,10 @@
     "overview": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 37,
-    "Whole-Body Control (WBC) 社区": 32,
-    "Manipulation 社区": 10,
-    "MPC vs RL：控制策略选型对比 社区": 1,
+    "Locomotion 社区": 49,
+    "Whole-Body Control (WBC) 社区": 33,
     "Contact-Rich Manipulation（接触丰富型操作） 社区": 1,
     "GAE（广义优势估计） 社区": 1,
-    "主流人形机器人硬件对比 社区": 1,
     "LLM Wiki 社区": 1
   }
 }

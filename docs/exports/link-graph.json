@@ -11,8 +11,8 @@
       "id": "wiki/comparisons/mpc-vs-rl.md",
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
-      "community": "community-3",
-      "community_label": "MPC vs RL：控制策略选型对比 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/online-vs-offline-rl.md",
@@ -25,8 +25,8 @@
       "id": "wiki/comparisons/rl-vs-il.md",
       "label": "RL vs 模仿学习（Imitation Learning）",
       "type": "comparison",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/sim2real-approaches.md",
@@ -74,7 +74,7 @@
       "id": "wiki/concepts/contact-rich-manipulation.md",
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
       "type": "concept",
-      "community": "community-4",
+      "community": "community-2",
       "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
@@ -109,8 +109,8 @@
       "id": "wiki/concepts/foundation-policy.md",
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -298,7 +298,7 @@
       "id": "wiki/formalizations/gae.md",
       "label": "GAE（广义优势估计）",
       "type": "formalization",
-      "community": "community-5",
+      "community": "community-3",
       "community_label": "GAE（广义优势估计） 社区"
     },
     {
@@ -340,22 +340,22 @@
       "id": "wiki/methods/behavior-cloning.md",
       "label": "Behavior Cloning（行为克隆）",
       "type": "method",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/dagger.md",
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
       "label": "Diffusion Policy",
       "type": "method",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -403,8 +403,8 @@
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -417,15 +417,15 @@
       "id": "wiki/queries/control-architecture-comparison.md",
       "label": "人形机器人控制架构综合对比",
       "type": "query",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
       "label": "主流人形机器人硬件对比",
       "type": "query",
-      "community": "community-6",
-      "community_label": "主流人形机器人硬件对比 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/humanoid-hardware-selection.md",
@@ -433,6 +433,13 @@
       "type": "query",
       "community": "community-0",
       "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/queries/humanoid-motion-control-know-how.md",
+      "label": "人形机器人运动控制 Know-How 结构化摘要",
+      "type": "query",
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/humanoid-rl-cookbook.md",
@@ -445,8 +452,8 @@
       "id": "wiki/queries/il-for-manipulation.md",
       "label": "Query：机器人操作任务该优先用 IL 还是 RL？",
       "type": "query",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/locomotion-reward-design-guide.md",
@@ -515,8 +522,8 @@
       "id": "wiki/queries/vla-deployment-guide.md",
       "label": "Query：VLA 真机部署指南",
       "type": "query",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
@@ -536,7 +543,7 @@
       "id": "wiki/references/llm-wiki-karpathy.md",
       "label": "LLM Wiki",
       "type": "",
-      "community": "community-7",
+      "community": "community-4",
       "community_label": "LLM Wiki 社区"
     },
     {
@@ -571,8 +578,8 @@
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
       "type": "task",
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/teleoperation.md",
@@ -2031,6 +2038,54 @@
       "target": "wiki/entities/legged-gym.md"
     },
     {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
       "target": "wiki/queries/sim2real-checklist.md"
     },
@@ -2587,50 +2642,32 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 37,
+      "size": 49,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 32,
+      "size": 33,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
-      "label": "Manipulation 社区",
-      "size": 10,
-      "hub_id": "wiki/tasks/manipulation.md"
-    },
-    {
-      "id": "community-4",
       "label": "Contact-Rich Manipulation（接触丰富型操作） 社区",
       "size": 1,
       "hub_id": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
-      "id": "community-5",
+      "id": "community-3",
       "label": "GAE（广义优势估计） 社区",
       "size": 1,
       "hub_id": "wiki/formalizations/gae.md"
     },
     {
-      "id": "community-7",
+      "id": "community-4",
       "label": "LLM Wiki 社区",
       "size": 1,
       "hub_id": "wiki/references/llm-wiki-karpathy.md"
-    },
-    {
-      "id": "community-3",
-      "label": "MPC vs RL：控制策略选型对比 社区",
-      "size": 1,
-      "hub_id": "wiki/comparisons/mpc-vs-rl.md"
-    },
-    {
-      "id": "community-6",
-      "label": "主流人形机器人硬件对比 社区",
-      "size": 1,
-      "hub_id": "wiki/queries/hardware-comparison.md"
     }
   ]
 }

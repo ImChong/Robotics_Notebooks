@@ -313,3 +313,10 @@
 - 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引
 - 回填 `contact-estimation.md`、`curriculum-learning.md`、`motion-retargeting.md` 的来源与更新时间，消除 sources 比 wiki 更新的陈旧提示
 - 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 82/82（100%），知识图谱更新为 84 节点 / 498 边
+
+## [2026-04-18] query | humanoid-motion-control-know-how | 飞书 Know-How 结构化摘要入库
+
+- 新建 `sources/papers/humanoid_motion_control_know_how.md`：把飞书公开文档《人形机器人运动控制 Know-How》整理为 sources 输入，提炼趋势 / 路线 / 问题框架 / 传统控制主线
+- 新建 `wiki/queries/humanoid-motion-control-know-how.md`：提炼成适合 `Robotics_Notebooks` 的结构化摘要，强调路线层、问题层、方法层三层组织
+- 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引；保留 `sources/notes/know-how.md` 作为旧资源树归档
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱更新为 85 节点 / 510 边
