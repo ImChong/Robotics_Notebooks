@@ -64,17 +64,17 @@
 ```
 同时在该目标页的 YAML frontmatter `related:` 列表中补充对应路径。
 
-- [ ] 修复 `comparisons/wbc-vs-rl.md` → 添加 2 条 query 回链
-- [ ] 修复 `concepts/mpc-wbc-integration.md` → 添加 1 条 query 回链
-- [ ] 修复 `entities/humanoid-robot.md` → 添加 1 条 query 回链
-- [ ] 修复 `tasks/locomotion.md` → 添加 2 条 query 回链
-- [ ] 修复 `methods/reinforcement-learning.md` → 添加 1 条 query 回链
-- [ ] 修复 `entities/pinocchio.md` → 添加 1 条 query 回链
-- [ ] 修复 `concepts/reward-design.md` → 添加 1 条 query 回链
-- [ ] 修复 `methods/policy-optimization.md` → 添加 1 条 query 回链
-- [ ] 修复 `concepts/sim2real.md` → 添加 1 条 query 回链
-- [ ] 修复 `concepts/whole-body-control.md` → 添加 1 条 query 回链
-- [ ] 运行 `make lint` 验证孤儿节点降为 0
+- [x] 修复 `comparisons/wbc-vs-rl.md` → 添加 2 条 query 回链
+- [x] 修复 `concepts/mpc-wbc-integration.md` → 添加 1 条 query 回链
+- [x] 修复 `entities/humanoid-robot.md` → 添加 1 条 query 回链
+- [x] 修复 `tasks/locomotion.md` → 添加 2 条 query 回链
+- [x] 修复 `methods/reinforcement-learning.md` → 添加 1 条 query 回链
+- [x] 修复 `entities/pinocchio.md` → 添加 1 条 query 回链
+- [x] 修复 `concepts/reward-design.md` → 添加 1 条 query 回链
+- [x] 修复 `methods/policy-optimization.md` → 添加 1 条 query 回链
+- [x] 修复 `concepts/sim2real.md` → 添加 1 条 query 回链
+- [x] 修复 `concepts/whole-body-control.md` → 添加 1 条 query 回链
+- [x] 运行 `make lint` 验证孤儿节点降为 0
 
 ### 完成标准
 - `graph-stats.json` 中 `orphan_nodes` 数量 = 0（或仅剩非 query 类型的合理孤儿）
