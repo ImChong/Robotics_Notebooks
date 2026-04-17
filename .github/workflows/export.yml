@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install lightweight dependencies
+        run: pip install pyyaml
+
       - name: Lint wiki
         run: python3 scripts/lint_wiki.py --report
 
@@ -40,6 +43,7 @@ jobs:
         run: |
           python3 scripts/generate_link_graph.py
           cp exports/link-graph.json docs/exports/link-graph.json
+          cp exports/graph-stats.json docs/exports/graph-stats.json
 
       - name: Update sources coverage badge
         run: python3 scripts/update_badge.py
@@ -48,7 +52,7 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add exports/ docs/exports/ index.md README.md
+          git add exports/ docs/exports/ docs/search-index.json docs/sitemap.xml index.md README.md
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

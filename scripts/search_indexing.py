@@ -8,8 +8,6 @@ from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterable, List
 
-import numpy as np
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WIKI_DIR = REPO_ROOT / "wiki"
 
@@ -196,7 +194,9 @@ def _hash_index(token: str, dim: int) -> tuple[int, float]:
     return index, sign
 
 
-def hash_embed_text(text: str, dim: int = 256) -> np.ndarray:
+def hash_embed_text(text: str, dim: int = 256):
+    import numpy as np
+
     vec = np.zeros(dim, dtype=np.float32)
     counts = token_counts(text)
     if not counts:
@@ -210,7 +210,9 @@ def hash_embed_text(text: str, dim: int = 256) -> np.ndarray:
     return vec
 
 
-def hash_embed_texts(texts: Iterable[str], dim: int = 256) -> np.ndarray:
+def hash_embed_texts(texts: Iterable[str], dim: int = 256):
+    import numpy as np
+
     vectors = [hash_embed_text(text, dim=dim) for text in texts]
     if not vectors:
         return np.zeros((0, dim), dtype=np.float32)
