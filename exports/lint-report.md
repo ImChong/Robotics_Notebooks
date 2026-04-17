@@ -43,4 +43,7 @@
 ### ⚠️ log.md 活跃度警告（0 个）
 - 无
 
-📊 Sources 覆盖率：73/73 (100%) wiki/entity 页有 ingest 来源
+### ⚠️ 缺少摘要字段（summary/description）（0 个）
+- 无
+
+📊 Sources 覆盖率：81/81 (100%) wiki/entity 页有 ingest 来源
