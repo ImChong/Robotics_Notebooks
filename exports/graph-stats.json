@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-04-17",
-  "node_count": 83,
-  "edge_count": 486,
+  "node_count": 90,
+  "edge_count": 521,
   "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 58
+      "degree": 60
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 45
+      "degree": 50
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 38
+      "degree": 39
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -30,24 +30,24 @@
       "degree": 34
     },
     {
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation",
+      "degree": 26
+    },
+    {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
       "degree": 25
     },
     {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
-      "degree": 23
-    },
-    {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
-      "degree": 22
+      "degree": 23
     },
     {
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
-      "degree": 21
+      "degree": 23
     },
     {
       "id": "wiki/concepts/optimal-control.md",
@@ -55,25 +55,39 @@
       "degree": 20
     }
   ],
-  "orphan_nodes": [],
+  "orphan_nodes": [
+    {
+      "id": "wiki/queries/sim2real-deployment-checklist.md",
+      "label": "Sim2Real 真机部署清单",
+      "out_degree": 4
+    }
+  ],
   "type_distribution": {
-    "concept": 25,
-    "query": 16,
+    "concept": 27,
+    "query": 18,
+    "formalization": 10,
     "method": 10,
-    "formalization": 9,
     "entity": 8,
-    "comparison": 6,
-    "task": 6,
+    "comparison": 7,
+    "task": 7,
     "unknown": 2,
     "overview": 1
   },
   "community_distribution": {
-    "Whole-Body Control (WBC) 社区": 33,
     "Locomotion 社区": 31,
-    "Imitation Learning (IL) 社区": 14,
+    "Whole-Body Control (WBC) 社区": 31,
+    "Imitation Learning (IL) 社区": 16,
+    "LQR / iLQR 社区": 5,
+    "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区": 4,
     "Bellman 方程 社区": 2,
-    "MPC vs RL：控制策略选型对比 社区": 1,
-    "主流人形机器人硬件对比 社区": 1,
     "LLM Wiki 社区": 1
+  },
+  "community_quality": {
+    "singleton_communities": [
+      "Bellman 方程 社区",
+      "LLM Wiki 社区"
+    ],
+    "largest_community_ratio": 0.344,
+    "community_quality_warning": false
   }
 }

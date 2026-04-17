@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -45,6 +46,8 @@ def build_vector_index(vector_output: Path = VECTOR_OUTPUT, meta_output: Path = 
 
     payload = {
         "version": "v1",
+        "generated_at": date.today().isoformat(),
+        "doc_count": len(docs),
         "count": len(docs),
         "embedding": meta,
         "documents": [
@@ -72,7 +75,9 @@ def main() -> None:
     print(f"Wrote {vector_path} ({payload['count']} docs, backend={backend})")
     print(f"Wrote {meta_path}")
     if payload["embedding"].get("fallback_reason"):
-        print("Warning: sentence-transformers unavailable, used builtin hashed-token fallback")
+        print("\033[33m⚠️  WARNING: sentence-transformers 不可用，使用了 hashed-token-projection fallback。\n"
+              "   语义搜索质量将低于真实向量索引。\n"
+              "   安装依赖：pip install sentence-transformers\033[0m")
 
 
 if __name__ == "__main__":

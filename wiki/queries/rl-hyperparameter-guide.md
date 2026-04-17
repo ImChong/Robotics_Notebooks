@@ -14,6 +14,7 @@ sources:
 
 # RL 超参数调节指南（locomotion 专用）
 
+> **Query 产物**：本页由问题「locomotion RL 训练超参数如何选择和调节？」触发。
 > Query 类型：操作指南
 > 生成日期：2026-04-15
 > 问题：训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？
