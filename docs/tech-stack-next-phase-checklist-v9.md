@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v9
 
-最后更新：2026-04-17（V9 推进中）
+最后更新：2026-04-17（V9 P0-P2/P4-P6 完成，P3 向量搜索待选做）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`docs/tech-stack-next-phase-checklist-v8.md`](tech-stack-next-phase-checklist-v8.md)
 方法论参考：[Karpathy LLM Wiki](../wiki/references/llm-wiki-karpathy.md)
@@ -115,10 +115,10 @@ python3 scripts/lint_wiki.py 2>&1 | grep "缺少 ingest 来源"
 
 Karpathy："*stale claims*" — 如果 sources 文件比 wiki 页面旧很多，或者 wiki 页面长期未更新，应发出警告。
 
-- [~] 在 `lint_wiki.py` 中添加 `check_staleness()` 函数：
-  - [x] sources 文件 mtime 比 wiki 页 mtime 新 > 30 天检测（V7 已实现，"陈旧页面"检测项）
-  - [ ] 读取 frontmatter `updated:` 字段，若距今 > 180 天输出 `⚠️ 可能过期` 警告（待补充）
-- [ ] `make lint` 输出新增一个检测项（共 13 项，当前已有 12 项）
+- [x] 在 `lint_wiki.py` 中添加 `updated:` 字段过期检测：
+  - [x] sources 文件 mtime 比 wiki 页 mtime 新 > 30 天检测（V7 已实现）
+  - [x] 读取 frontmatter `updated:` 字段，若距今 > 180 天输出 `⚠️ 可能过期` 警告
+- [x] `make lint` 输出新增 "可能过期" 检测项（共 **13 项**）
 
 ---
 
@@ -161,13 +161,13 @@ Karpathy："*stale claims*" — 如果 sources 文件比 wiki 页面旧很多，
 3. **最近更新页面优先**（若 frontmatter 有 `updated:`，30 天内更新的加权 × 1.2）
 4. **Query 页面降权** × 0.7（query 产物不应占据 concept 搜索的前位）
 
-- [~] 在 `compute_score()` 中实现规则 1-4：
+- [x] 在 `compute_score()` 中实现规则 1-4：
   - [x] 规则 1：标题精确匹配 × 5
   - [x] 规则 2：frontmatter summary 命中 × 2
-  - [ ] 规则 3：最近更新页面 × 1.2（`updated:` 字段 30 天内）
+  - [x] 规则 3：最近更新页面 × 1.2（`updated:`/`created:` 字段 ≤ 30 天）
   - [x] 规则 4：query 页面降权 × 0.7
-- [ ] 测试：搜索 "policy optimization" 时，`methods/policy-optimization.md` 应排在 query 页前面
-- [ ] `--json` 输出中添加 `rerank_score` 字段（便于调试）
+- [x] 测试："policy optimization" 搜索 `policy-optimization.md` 得分 7.19 vs query 页 0.88 ✅
+- [x] `--json` 输出中添加 `rerank_score` 字段
 
 ---
 
@@ -176,13 +176,13 @@ Karpathy："*stale claims*" — 如果 sources 文件比 wiki 页面旧很多，
 ### P5.1 · 每周 lint 报告 Action
 
 - [x] 新建 `.github/workflows/weekly-lint.yml`（每周一 02:00 UTC，`--report` 输出 + badge 更新，`workflow_dispatch` 支持手动触发）
-- [ ] 首次手动触发（`workflow_dispatch`）验证报告格式正确（需 GitHub 执行，待触发）
-- [ ] `exports/weekly-report.md` 加入 `.gitignore` 中的排除白名单（允许提交）
+- [−] 首次手动触发验证（需 GitHub 环境执行，本地无法模拟，暂跳过）
+- [−] `exports/weekly-report.md` `.gitignore` 白名单（lint 使用 `--report` 写入 exports/lint-report.md，与 weekly-report.md 不同，暂不需要）
 
 ### P5.2 · Badge 自动更新集成到 export.yml
 
-- [ ] 在现有 `export.yml` 的 steps 末尾添加 `python3 scripts/update_badge.py` + commit
-- [ ] 这样每次 push main 时，README badge 自动同步最新覆盖率
+- [x] 在现有 `export.yml` 的 steps 末尾添加 `python3 scripts/update_badge.py` + commit
+- [x] 这样每次 push main 时，README badge 自动同步最新覆盖率
 
 
 
@@ -192,29 +192,29 @@ Karpathy："*stale claims*" — 如果 sources 文件比 wiki 页面旧很多，
 
 **背景**：`make slides F=<stem>` 已可生成幻灯片，但用户需手动在命令行调用。Karpathy 强调知识再利用的低摩擦。
 
-- [ ] 在 `docs/graph.html` 侧边栏底部添加"📊 幻灯片版"按钮：
-  - 按钮 href = `slides/<stem>.html`（相对路径）
-  - 若该文件不存在，灰化按钮并 tooltip 提示"本地运行 `make slides F=<stem>` 生成"
-- [ ] 在 `docs/index.html` 的每个搜索结果卡片添加可选的幻灯片图标链接（小图标，不破坏现有布局）
+- [x] 在 `docs/graph.html` 侧边栏底部添加"📊 幻灯片"按钮：
+  - 灰化态默认显示，通过 `fetch HEAD` 检测 `slides/<stem>.html` 是否存在
+  - 若存在：激活（opacity:1，可点击）；若不存在：保持灰化 + tooltip 提示生成命令
+- [x] 在 `docs/main.js` 搜索结果卡片 h3 末尾追加 📊 图标链接（opacity:0.45，stopPropagation 防止触发键盘导航）
 
 ---
 
 ## Karpathy 方法论自我评估（V9 目标）
 
-| Karpathy 原则 | V8 末状态 | V9 目标 |
+| Karpathy 原则 | V8 末状态 | V9 末状态 |
 |--------------|----------|---------|
 | Three-layer architecture (sources → wiki → schema) | ✅ | ✅ 维持 |
-| "Cross-references already there" (0 orphans) | ✅ 0 孤儿 | ✅ 维持 |
-| "Good answers filed back" (query products) | ✅ 14 query 页 | ✅ + 每周自动报告 |
-| Lint: contradictions / stale / orphans / frontmatter | ✅ 10 项 | ✅ 11 项（+staleness） |
+| "Cross-references already there" (0 orphans) | ✅ 0 孤儿 | ✅ 0 孤儿，75 节点 429 边 |
+| "Good answers filed back" (query products) | ✅ 14 query 页 | ✅ + GitHub Actions 周报 |
+| Lint: contradictions / stale / orphans / frontmatter | ✅ 10 项 | ✅ **13 项**（+outdated/P2.2） |
 | Frontmatter 完整性 | ⚠️ 4 页缺 type | ✅ 0 缺 type |
 | Index.md content-oriented | ✅ | ✅ 维持 |
-| Hybrid BM25 / vector search | ⚠️ BM25 only | ✅ BM25 + 可选向量 |
-| LLM re-ranking | ❌ | ✅ 启发式重排 |
-| Marp slides per-page button | ❌ | ✅ sidebar 按钮 |
-| Automated nightly / weekly reports | ❌ | ✅ GitHub Actions 周报 |
-| Sources coverage ≥ 90% | ⚠️ 82% | ✅ ≥ 90% |
-| CANONICAL_FACTS ≥ 20 | ⚠️ 10 条 | ✅ 20 条 |
+| Hybrid BM25 / vector search | ⚠️ BM25 only | ⚠️ BM25 + 向量层待实现（P3） |
+| LLM re-ranking | ❌ | ✅ 启发式重排（4 规则） |
+| Marp slides per-page button | ❌ | ✅ sidebar + 搜索卡片 📊 按钮 |
+| Automated nightly / weekly reports | ❌ | ✅ GitHub Actions weekly-lint.yml |
+| Sources coverage ≥ 90% | ⚠️ 82% | ✅ **100%**（73/73） |
+| CANONICAL_FACTS ≥ 20 | ⚠️ 10 条 | ✅ **20 条** |
 
 ---
 
@@ -246,7 +246,7 @@ chore(export): 更新前端 JSON / 图谱数据
 
 ### Op 4 · V9 完成标准（全部满足）
 
-- [x] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 11 项（实际 12 项）
+- [x] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 11 项（实际 **13 项**）
 - [x] `python3 scripts/lint_wiki.py` 无 MISSING type
 - [x] Sources 覆盖率 ≥ 90%（实际 100%）
 - [ ] `--semantic` 搜索能找到语义相关页（向量索引构建成功）
