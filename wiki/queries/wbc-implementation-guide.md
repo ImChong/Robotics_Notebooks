@@ -5,6 +5,8 @@ status: complete
 created: 2026-04-14
 updated: 2026-04-14
 summary: 从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。
+sources:
+  - ../../sources/papers/whole_body_control.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「如何从零搭建一个 WBC 控制器？」

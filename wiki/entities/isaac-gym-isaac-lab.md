@@ -1,5 +1,7 @@
 ---
 type: entity
+sources:
+  - ../../sources/papers/simulation_tools.md
 ---
 
 # Isaac Gym / Isaac Lab

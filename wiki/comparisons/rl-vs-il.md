@@ -2,6 +2,9 @@
 type: comparison
 tags: [rl, il, imitation-learning, policy-optimization, locomotion, manipulation]
 status: complete
+sources:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/policy_optimization.md
 ---
 
 # RL vs 模仿学习（Imitation Learning）
@@ -146,6 +149,7 @@ RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略
 - [WBC vs RL](./wbc-vs-rl.md) — 另一个控制方法对比视角
 - [Reward Design](../concepts/reward-design.md) — RL 选择时 reward 设计是核心挑战
 - [Sim2Real](../concepts/sim2real.md) — 两种方法的 sim2real 挑战不同
+- [Online vs Offline RL](./online-vs-offline-rl.md) — RL 内部的数据范式对比
 
 ## 一句话记忆
 

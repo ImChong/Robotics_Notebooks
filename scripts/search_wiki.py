@@ -143,7 +143,8 @@ def search(
 
         title_m = re.search(r'^#\s+(.+)', body, re.MULTILINE)
         page_title = title_m.group(1) if title_m else ""
-        score = compute_score(body, query_words, page_title, case_sensitive, avgdl=avgdl)
+        score = compute_score(body, query_words, page_title, case_sensitive, avgdl=avgdl,
+                              fm=fm, page_type=fm.get("type", ""))
 
         related_links = extract_related_links(raw, page) if show_related else []
         results.append({
@@ -161,10 +162,15 @@ def search(
 
 def compute_score(body: str, query_words: list[str], title: str = "",
                   case_sensitive: bool = False,
-                  avgdl: float = 0.0, k1: float = 1.5, b: float = 0.75) -> float:
-    """BM25 相关度评分（无外部依赖）。IDF 使用简化近似，df=1。
+                  avgdl: float = 0.0, k1: float = 1.5, b: float = 0.75,
+                  fm: dict | None = None, page_type: str = "") -> float:
+    """BM25 + 启发式重排序评分。
 
-    BM25 公式：score = Σ IDF(q) * tf(q,D)*(k1+1) / (tf(q,D) + k1*(1-b+b*|D|/avgdl))
+    BM25: score = Σ IDF(q) * tf(q,D)*(k1+1) / (tf(q,D) + k1*(1-b+b*|D|/avgdl))
+    重排规则（P4）：
+      - 标题精确匹配 × 5（取代原来的 × 3）
+      - frontmatter summary/description 命中 × 2
+      - query 页面降权 × 0.7（避免 query 产物占据 concept 搜索前位）
     """
     if not query_words:
         return 0.0
@@ -172,22 +178,32 @@ def compute_score(body: str, query_words: list[str], title: str = "",
     tokens = len(body.split())
     dl = max(tokens, 1)
     if avgdl <= 0:
-        avgdl = dl  # 单文档时 avgdl = dl → 归一化为 1
+        avgdl = dl
 
     score = 0.0
+    fm = fm or {}
+    summary = fm.get("summary", fm.get("description", ""))
+
     for w in query_words:
         tf = len(re.findall(re.escape(w), body, flags))
         if tf == 0:
             continue
-        # 简化 IDF：log(1 + 1/1) ≈ 0.693（单调正数，不影响排序）
         idf = 0.693
         numerator = tf * (k1 + 1)
         denominator = tf + k1 * (1 - b + b * dl / avgdl)
         term_score = idf * numerator / denominator
-        # 标题命中加权
+        # 标题精确命中 × 5
         if re.search(re.escape(w), title, flags):
-            term_score *= 3.0
+            term_score *= 5.0
+        # frontmatter summary 命中 × 2
+        elif summary and re.search(re.escape(w), summary, flags):
+            term_score *= 2.0
         score += term_score
+
+    # query 页面降权（避免占据 concept 搜索前位）
+    if page_type == "query":
+        score *= 0.7
+
     return score
 
 

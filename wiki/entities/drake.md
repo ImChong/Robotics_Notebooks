@@ -5,6 +5,9 @@ status: complete
 created: 2026-04-14
 updated: 2026-04-14
 summary: MIT 开发的机器人动力学仿真、优化与控制框架，以严格的数学基础和符号计算著称，常用于轨迹优化、MPC 和接触力学研究。
+sources:
+  - ../../sources/papers/optimal_control.md
+  - ../../sources/papers/robot_kinematics_tools.md
 ---
 
 # Drake

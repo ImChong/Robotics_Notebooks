@@ -131,3 +131,4 @@ related:
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
 - [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)
 - [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)
+- [Comparison：Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)

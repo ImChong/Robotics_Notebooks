@@ -20,7 +20,9 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-floating-base-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-footstep-planning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-foundation-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-gae</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-gait-generation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-hjb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-hqp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-imitation-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-isaac-gym-isaac-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -39,7 +41,9 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-model-based-vs-model-free</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-motion-retargeting</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mujoco</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-online-vs-offline-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-optimal-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-pomdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-pinocchio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-pinocchio-quick-start</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-policy-optimization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -54,6 +58,7 @@
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-sim2real</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-sim2real-gap-reduction</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-sim2real-checklist</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-sim2real-approaches</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-state-estimation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-system-identification</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://ImChong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-tsid</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

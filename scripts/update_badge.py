@@ -19,7 +19,7 @@ if not m:
 
 pct = int(m.group(2))
 color = "green" if pct >= 80 else "yellow" if pct >= 60 else "red"
-badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{pct}%25-{color})](docs/tech-stack-next-phase-checklist-v8.md)"
+badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{pct}%25-{color})](docs/tech-stack-next-phase-checklist-v9.md)"
 
 content = README.read_text(encoding="utf-8")
 new_content = re.sub(

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-17",
-  "node_count": 70,
-  "edge_count": 403,
+  "node_count": 75,
+  "edge_count": 429,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -9,24 +9,24 @@
       "degree": 54
     },
     {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL)",
+      "degree": 44
+    },
+    {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
       "degree": 43
     },
     {
-      "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL)",
-      "degree": 40
-    },
-    {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 33
+      "degree": 37
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "degree": 27
+      "degree": 28
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -41,7 +41,7 @@
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
-      "degree": 19
+      "degree": 20
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
@@ -59,10 +59,11 @@
     "concept": 23,
     "query": 14,
     "entity": 8,
+    "formalization": 8,
     "method": 7,
+    "comparison": 6,
     "task": 6,
-    "formalization": 5,
-    "comparison": 4,
-    "unknown": 3
+    "unknown": 2,
+    "overview": 1
   }
 }

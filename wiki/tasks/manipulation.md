@@ -2,6 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
+sources:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/survey_papers.md
 ---
 
 # Manipulation

@@ -5,6 +5,9 @@ status: complete
 created: 2026-04-14
 updated: 2026-04-14
 summary: 系统整理 RL 训练足式/人形机器人 locomotion 的奖励函数设计原则、常用奖励项分类、调参策略和常见失败模式。
+sources:
+  - ../../sources/papers/reward_design.md
+  - ../../sources/papers/locomotion_rl.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「怎么设计 locomotion RL 的奖励函数？」

@@ -11,8 +11,18 @@
       "type": "comparison"
     },
     {
+      "id": "wiki/comparisons/online-vs-offline-rl.md",
+      "label": "Online RL vs Offline RL",
+      "type": "comparison"
+    },
+    {
       "id": "wiki/comparisons/rl-vs-il.md",
       "label": "RL vs 模仿学习（Imitation Learning）",
+      "type": "comparison"
+    },
+    {
+      "id": "wiki/comparisons/sim2real-approaches.md",
+      "label": "Sim2Real 方法横向对比",
       "type": "comparison"
     },
     {
@@ -191,6 +201,16 @@
       "type": "formalization"
     },
     {
+      "id": "wiki/formalizations/gae.md",
+      "label": "GAE（广义优势估计）",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/hjb.md",
+      "label": "HJB 方程（Hamilton-Jacobi-Bellman）",
+      "type": "formalization"
+    },
+    {
       "id": "wiki/formalizations/lqr.md",
       "label": "LQR / iLQR",
       "type": "formalization"
@@ -198,6 +218,11 @@
     {
       "id": "wiki/formalizations/mdp.md",
       "label": "Markov Decision Process (MDP)",
+      "type": "formalization"
+    },
+    {
+      "id": "wiki/formalizations/pomdp.md",
+      "label": "POMDP（部分可观测马尔可夫决策过程）",
       "type": "formalization"
     },
     {
@@ -238,7 +263,7 @@
     {
       "id": "wiki/overview/robot-learning-overview.md",
       "label": "Robot Learning Overview",
-      "type": ""
+      "type": "overview"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
@@ -393,6 +418,22 @@
       "target": "wiki/queries/mpc-solver-selection.md"
     },
     {
+      "source": "wiki/comparisons/online-vs-offline-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/online-vs-offline-rl.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/online-vs-offline-rl.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/online-vs-offline-rl.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
       "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -419,6 +460,26 @@
     {
       "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/comparisons/online-vs-offline-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/sim2real-approaches.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/sim2real-approaches.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/sim2real-approaches.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/comparisons/sim2real-approaches.md",
+      "target": "wiki/comparisons/online-vs-offline-rl.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
@@ -877,6 +938,10 @@
       "target": "wiki/queries/sim2real-gap-reduction.md"
     },
     {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/comparisons/sim2real-approaches.md"
+    },
+    {
       "source": "wiki/concepts/state-estimation.md",
       "target": "wiki/concepts/system-identification.md"
     },
@@ -1185,6 +1250,14 @@
       "target": "wiki/concepts/optimal-control.md"
     },
     {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/formalizations/gae.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/formalizations/hjb.md"
+    },
+    {
       "source": "wiki/formalizations/contact-complementarity.md",
       "target": "wiki/concepts/contact-dynamics.md"
     },
@@ -1217,6 +1290,34 @@
       "target": "wiki/formalizations/lqr.md"
     },
     {
+      "source": "wiki/formalizations/gae.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/formalizations/gae.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/gae.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/formalizations/hjb.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/formalizations/hjb.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/formalizations/hjb.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/hjb.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
       "source": "wiki/formalizations/lqr.md",
       "target": "wiki/concepts/optimal-control.md"
     },
@@ -1237,6 +1338,10 @@
       "target": "wiki/entities/crocoddyl.md"
     },
     {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/formalizations/hjb.md"
+    },
+    {
       "source": "wiki/formalizations/mdp.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -1247,6 +1352,26 @@
     {
       "source": "wiki/formalizations/mdp.md",
       "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/formalizations/pomdp.md"
+    },
+    {
+      "source": "wiki/formalizations/pomdp.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/formalizations/pomdp.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/formalizations/pomdp.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/formalizations/pomdp.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/diffusion-policy.md",
@@ -1367,6 +1492,10 @@
     {
       "source": "wiki/methods/policy-optimization.md",
       "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/formalizations/gae.md"
     },
     {
       "source": "wiki/methods/policy-optimization.md",

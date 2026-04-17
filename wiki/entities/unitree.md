@@ -1,5 +1,7 @@
 ---
 type: entity
+sources:
+  - ../../sources/papers/humanoid_hardware.md
 ---
 
 # Unitree
