@@ -2,6 +2,14 @@
 type: formalization
 tags: [contact, lcp, complementarity, simulation, optimization, contact-dynamics]
 status: stable
+related:
+  - ../concepts/contact-dynamics.md
+  - ../concepts/whole-body-control.md
+  - ../methods/trajectory-optimization.md
+  - ../entities/drake.md
+sources:
+  - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/contact_planning.md
 ---
 
 # Contact Complementarity（接触互补约束）

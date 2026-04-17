@@ -20,10 +20,13 @@ import argparse
 import json
 import re
 import sys
+from datetime import datetime
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
+CACHE_FILE = REPO_ROOT / "exports" / "search-cache.json"
+CACHE_MAX = 30
 
 # ── YAML frontmatter 解析 ─────────────────────────────────────────────────────
 
@@ -94,8 +97,17 @@ def search(
     results = []
     pages = sorted(WIKI_DIR.rglob("*.md"))
 
+    # 计算 avgdl（BM25 文档长度归一化参数）
+    doc_lengths = []
+    page_contents = {}
     for page in pages:
         raw = page.read_text(encoding="utf-8")
+        page_contents[page] = raw
+        doc_lengths.append(max(len(strip_frontmatter(raw).split()), 1))
+    avgdl = sum(doc_lengths) / max(len(doc_lengths), 1)
+
+    for page in pages:
+        raw = page_contents[page]
         fm = parse_frontmatter(raw)
         body = strip_frontmatter(raw)
 
@@ -131,7 +143,7 @@ def search(
 
         title_m = re.search(r'^#\s+(.+)', body, re.MULTILINE)
         page_title = title_m.group(1) if title_m else ""
-        score = compute_score(body, query_words, page_title, case_sensitive)
+        score = compute_score(body, query_words, page_title, case_sensitive, avgdl=avgdl)
 
         related_links = extract_related_links(raw, page) if show_related else []
         results.append({
@@ -148,21 +160,71 @@ def search(
     return results
 
 def compute_score(body: str, query_words: list[str], title: str = "",
-                  case_sensitive: bool = False) -> float:
-    """TF × coverage × title_boost 相关度评分（无外部依赖）。"""
+                  case_sensitive: bool = False,
+                  avgdl: float = 0.0, k1: float = 1.5, b: float = 0.75) -> float:
+    """BM25 相关度评分（无外部依赖）。IDF 使用简化近似，df=1。
+
+    BM25 公式：score = Σ IDF(q) * tf(q,D)*(k1+1) / (tf(q,D) + k1*(1-b+b*|D|/avgdl))
+    """
     if not query_words:
         return 0.0
     flags = 0 if case_sensitive else re.IGNORECASE
-    n = max(len(body.split()), 1)
-    scores = []
-    for w in query_words:
-        count = len(re.findall(re.escape(w), body, flags))
-        tf = count / n
-        boost = 3.0 if re.search(re.escape(w), title, flags) else 1.0
-        scores.append(tf * boost)
-    coverage = sum(1 for s in scores if s > 0) / len(query_words)
-    return coverage * sum(scores)
+    tokens = len(body.split())
+    dl = max(tokens, 1)
+    if avgdl <= 0:
+        avgdl = dl  # 单文档时 avgdl = dl → 归一化为 1
 
+    score = 0.0
+    for w in query_words:
+        tf = len(re.findall(re.escape(w), body, flags))
+        if tf == 0:
+            continue
+        # 简化 IDF：log(1 + 1/1) ≈ 0.693（单调正数，不影响排序）
+        idf = 0.693
+        numerator = tf * (k1 + 1)
+        denominator = tf + k1 * (1 - b + b * dl / avgdl)
+        term_score = idf * numerator / denominator
+        # 标题命中加权
+        if re.search(re.escape(w), title, flags):
+            term_score *= 3.0
+        score += term_score
+    return score
+
+
+# ── 搜索缓存（最近 30 次查询）─────────────────────────────────────────────────
+
+def _cache_key(query_words: list[str], type_filter: str | None, tag_filters: list[str]) -> str:
+    return json.dumps({"q": sorted(query_words), "t": type_filter or "", "tags": sorted(tag_filters)},
+                      sort_keys=True, ensure_ascii=False)
+
+def load_cache() -> dict:
+    if CACHE_FILE.exists():
+        try:
+            return json.loads(CACHE_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            pass
+    return {"entries": []}
+
+def save_cache(cache: dict, key: str, results: list[dict]) -> None:
+    serializable = []
+    for r in results[:10]:  # 只缓存前 10 条
+        serializable.append({
+            "path": str(r["path"]),
+            "score": round(r.get("score", 0.0), 6),
+            "title": r.get("title", ""),
+            "type": r["fm"].get("type", ""),
+            "tags": r["fm"].get("tags", []),
+        })
+    entry = {"key": key, "ts": datetime.now().isoformat()[:19], "results": serializable}
+    entries = cache.get("entries", [])
+    entries = [e for e in entries if e.get("key") != key]  # 去重
+    entries.insert(0, entry)
+    cache["entries"] = entries[:CACHE_MAX]
+    try:
+        CACHE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        CACHE_FILE.write_text(json.dumps(cache, ensure_ascii=False, indent=2), encoding="utf-8")
+    except Exception:
+        pass
 
 def highlight(text: str, words: list[str], case_sensitive: bool) -> str:
     """在终端用 ANSI 粗体标亮匹配词。"""
@@ -227,6 +289,12 @@ def main():
         parser.print_help()
         sys.exit(0)
 
+    cache = load_cache()
+    cache_key = _cache_key(args.query, args.type_filter, args.tag_filters)
+    cached_entry = next((e for e in cache.get("entries", []) if e.get("key") == cache_key), None)
+    if cached_entry and not args.json_out:
+        print(f"\033[2m[缓存命中：{cached_entry['ts']}]\033[0m")
+
     results = search(
         query_words=args.query,
         type_filter=args.type_filter,
@@ -235,6 +303,8 @@ def main():
         case_sensitive=args.case,
         show_related=args.related,
     )
+    if args.query:
+        save_cache(cache, cache_key, results)
 
     if args.json_out:
         out = []

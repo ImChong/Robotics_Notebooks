@@ -1,3 +1,7 @@
+---
+type: concept
+---
+
 # MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构
 
 > **Query op 产物** · 2026-04-13

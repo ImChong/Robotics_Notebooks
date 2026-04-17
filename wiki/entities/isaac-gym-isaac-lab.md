@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # Isaac Gym / Isaac Lab
 
 **Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。

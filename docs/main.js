@@ -1387,28 +1387,65 @@
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
   var typeFilter = document.getElementById('wikiTypeFilter');
+  var tagCloudEl = document.getElementById('wikiTagCloud');
   if (searchInput && searchResults) {
     var _indexData = null;
+    var _selectedIndex = -1;  // 键盘导航当前选中项
 
     fetch('exports/index-v1.json')
       .then(function(r) { return r.json(); })
-      .then(function(data) { _indexData = data.items || []; })
+      .then(function(data) {
+        _indexData = data.items || [];
+        renderTagCloud(_indexData);
+      })
       .catch(function() {});
+
+    // ── 标签云 ──────────────────────────────────────────────────────────────
+    function renderTagCloud(items) {
+      if (!tagCloudEl) return;
+      var freq = {};
+      items.forEach(function(item) {
+        (item.tags || []).forEach(function(tag) {
+          if (tag) freq[tag] = (freq[tag] || 0) + 1;
+        });
+      });
+      var sorted = Object.entries(freq).sort(function(a,b){ return b[1]-a[1]; }).slice(0,20);
+      tagCloudEl.innerHTML = sorted.map(function(entry) {
+        var tag = entry[0], count = entry[1];
+        return '<button class="tag-chip" data-wiki-tag="' + escapeHtml(tag) + '" title="' + count + ' 页面">'
+          + escapeHtml(tag) + '</button>';
+      }).join('');
+    }
+
+    function getResultCards() {
+      return Array.from(searchResults.querySelectorAll('article.card[data-result-url]'));
+    }
+
+    function setSelectedIndex(idx) {
+      var cards = getResultCards();
+      if (!cards.length) return;
+      if (idx < -1) idx = cards.length - 1;
+      if (idx >= cards.length) idx = -1;
+      _selectedIndex = idx;
+      cards.forEach(function(card, i) {
+        card.classList.toggle('search-result-selected', i === idx);
+        if (i === idx) card.scrollIntoView({ block: 'nearest' });
+      });
+    }
 
     function renderSearchResults(query) {
       if (!_indexData) return;
+      _selectedIndex = -1;
       var q = query.trim().toLowerCase();
       var typeVal = typeFilter ? typeFilter.value : '';
       if (!q && !typeVal) { searchResults.innerHTML = ''; return; }
 
       var words = q ? q.split(/\s+/) : [];
       var matched = _indexData.filter(function(item) {
-        // type filter (check page_type for wiki pages, entity_page for entities)
         if (typeVal) {
           var eff = item.page_type || (item.type === 'entity_page' ? 'entity' : item.type);
           if (eff !== typeVal) return false;
         }
-        // text filter
         if (words.length) {
           var haystack = ((item.title || '') + ' ' + (item.summary || '') + ' ' + (item.content_markdown || '')).toLowerCase();
           if (!words.every(function(w) { return haystack.indexOf(w) !== -1; })) return false;
@@ -1424,7 +1461,7 @@
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
         var typeLabel = item.page_type || (item.type === 'entity_page' ? 'entity' : '') || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
-        return '<article class="card">'
+        return '<article class="card" data-result-url="' + detailUrl + '">'
           + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + '</p>'
           + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a></h3>'
           + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
@@ -1439,6 +1476,32 @@
     function triggerSearch() {
       renderSearchResults(searchInput.value);
     }
+
+    // ── 键盘导航（↑↓ 选中 / Enter 打开 / Esc 清空）────────────────────────
+    searchInput.addEventListener('keydown', function(ev) {
+      var cards = getResultCards();
+      if (ev.key === 'ArrowDown') {
+        ev.preventDefault();
+        setSelectedIndex(_selectedIndex + 1);
+      } else if (ev.key === 'ArrowUp') {
+        ev.preventDefault();
+        setSelectedIndex(_selectedIndex - 1);
+      } else if (ev.key === 'Enter') {
+        ev.preventDefault();
+        var target;
+        if (_selectedIndex >= 0 && cards[_selectedIndex]) {
+          target = cards[_selectedIndex].getAttribute('data-result-url');
+        } else if (cards.length > 0) {
+          target = cards[0].getAttribute('data-result-url');
+        }
+        if (target) window.location.href = target;
+      } else if (ev.key === 'Escape') {
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+        _selectedIndex = -1;
+        if (typeFilter) typeFilter.value = '';
+      }
+    });
 
     var _searchTimer;
     searchInput.addEventListener('input', function() {

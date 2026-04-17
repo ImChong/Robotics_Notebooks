@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-04-17",
-  "node_count": 68,
-  "edge_count": 388,
+  "node_count": 70,
+  "edge_count": 403,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 52
+      "degree": 54
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 42
+      "degree": 43
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -26,12 +26,12 @@
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "degree": 25
+      "degree": 27
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
-      "degree": 24
+      "degree": 25
     },
     {
       "id": "wiki/concepts/tsid.md",
@@ -44,25 +44,25 @@
       "degree": 19
     },
     {
-      "id": "wiki/comparisons/wbc-vs-rl.md",
-      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
-      "degree": 18
-    },
-    {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
+      "degree": 19
+    },
+    {
+      "id": "wiki/comparisons/wbc-vs-rl.md",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "degree": 18
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "unknown": 18,
-    "concept": 14,
+    "concept": 23,
     "query": 14,
-    "method": 6,
+    "entity": 8,
+    "method": 7,
+    "task": 6,
     "formalization": 5,
-    "task": 5,
     "comparison": 4,
-    "entity": 2
+    "unknown": 3
   }
 }

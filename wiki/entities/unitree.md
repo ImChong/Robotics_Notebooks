@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # Unitree
 
 **Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。

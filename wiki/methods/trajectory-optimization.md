@@ -1,3 +1,7 @@
+---
+type: method
+---
+
 # Trajectory Optimization
 
 **Trajectory Optimization（轨迹优化）**：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹。

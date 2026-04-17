@@ -1,3 +1,7 @@
+---
+type: task
+---
+
 # ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation
 
 **统一多模态控制：实现人形机器人自主全身移动操作**

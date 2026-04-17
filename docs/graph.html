@@ -548,6 +548,88 @@
       transition: all .15s;
     }
     .filter-clear:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+
+    /* ── 右侧详情侧边栏 ── */
+    #graph-sidebar {
+      position: fixed;
+      top: calc(var(--header-h) + 46px);
+      right: -320px;
+      width: 300px;
+      bottom: 0;
+      z-index: 60;
+      background: rgba(13, 17, 23, 0.97);
+      border-left: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      overflow-y: auto;
+      transition: right .22s cubic-bezier(.4,0,.2,1);
+      padding: 0;
+    }
+    #graph-sidebar.open { right: 0; }
+    .sb-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      gap: 10px;
+    }
+    .sb-type-badge {
+      display: inline-block; font-size: .68rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
+      letter-spacing: .04em; margin-bottom: 6px; flex-shrink: 0;
+    }
+    .sb-title { font-size: .92rem; font-weight: 700; color: #e6edf3; line-height: 1.3; }
+    .sb-close {
+      background: none; border: none; color: rgba(255,255,255,0.35);
+      font-size: 1rem; cursor: pointer; padding: 2px 4px; border-radius: 4px;
+      flex-shrink: 0; transition: color .12s;
+    }
+    .sb-close:hover { color: rgba(255,255,255,0.8); }
+    .sb-body { padding: 12px 16px; }
+    .sb-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .sb-tag {
+      font-size: .68rem; padding: 2px 8px; border-radius: 12px;
+      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
+    }
+    .sb-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.55; margin-bottom: 12px; }
+    .sb-section-title {
+      font-size: .7rem; font-weight: 700; color: rgba(255,255,255,0.3);
+      text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px;
+    }
+    .sb-related-list { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-direction: column; gap: 4px; }
+    .sb-related-list li a {
+      font-size: .76rem; color: rgba(0,212,255,0.75);
+      text-decoration: none; display: block;
+      padding: 4px 8px; border-radius: 6px;
+      transition: background .12s, color .12s;
+    }
+    .sb-related-list li a:hover { background: rgba(0,212,255,0.08); color: #00d4ff; }
+    .sb-open-link {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: .78rem; color: rgba(0,212,255,0.8);
+      text-decoration: none;
+      border: 1px solid rgba(0,212,255,0.25); border-radius: 7px;
+      padding: 6px 14px; transition: all .15s; margin-top: 4px;
+    }
+    .sb-open-link:hover { background: rgba(0,212,255,0.08); border-color: rgba(0,212,255,0.6); color: #00d4ff; }
+
+    /* 当侧边栏打开时，缩小图谱画布右边界 */
+    #graph-wrap.sidebar-open { right: 300px; }
+
+    /* ── 侧边栏白天模式 ── */
+    [data-theme="light"] #graph-sidebar {
+      background: rgba(255,255,255,0.98);
+      border-left-color: rgba(0,0,0,0.1);
+    }
+    [data-theme="light"] .sb-title { color: #1a1a1a; }
+    [data-theme="light"] .sb-summary { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .sb-tag { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .sb-section-title { color: rgba(0,0,0,0.35); }
+    [data-theme="light"] .sb-close { color: rgba(0,0,0,0.35); }
+    [data-theme="light"] .sb-close:hover { color: rgba(0,0,0,0.8); }
+    [data-theme="light"] .sb-related-list li a { color: #1659b4; }
+    [data-theme="light"] .sb-related-list li a:hover { background: rgba(22,89,180,0.06); }
+    [data-theme="light"] .sb-open-link { color: #1659b4; border-color: rgba(22,89,180,0.3); }
+    [data-theme="light"] .sb-open-link:hover { background: rgba(22,89,180,0.06); border-color: rgba(22,89,180,0.6); }
+    [data-theme="light"] #graph-sidebar .sb-header { border-bottom-color: rgba(0,0,0,0.08); }
   </style>
 </head>
 <body>
@@ -692,9 +774,29 @@
     </div>
 
     <div id="graph-hint">
-      滚轮缩放 · 拖拽平移<br>点击节点打开详情
+      滚轮缩放 · 拖拽平移<br>点击节点查看详情
     </div>
   </div>
+
+  <!-- ── 右侧详情侧边栏 ── -->
+  <aside id="graph-sidebar" aria-label="节点详情">
+    <div class="sb-header">
+      <div>
+        <span class="sb-type-badge" id="sb-type-badge"></span>
+        <div class="sb-title" id="sb-title">选择节点查看详情</div>
+      </div>
+      <button id="sb-close" class="sb-close" aria-label="关闭侧边栏">✕</button>
+    </div>
+    <div class="sb-body">
+      <div class="sb-tags" id="sb-tags"></div>
+      <p class="sb-summary" id="sb-summary"></p>
+      <div id="sb-related-section" hidden>
+        <div class="sb-section-title">关联页面</div>
+        <ul class="sb-related-list" id="sb-related-list"></ul>
+      </div>
+      <a id="sb-open-link" class="sb-open-link" href="#" target="_self">打开详情页 →</a>
+    </div>
+  </aside>
 
   <!-- ── D3.js ── -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
@@ -1279,6 +1381,116 @@
       document.getElementById('val-font').textContent = '×' + (fontSliderVal / 10).toFixed(1);
       label.attr('font-size', d => scaledFontSize(d) + 'px');
     });
+
+    /* ════════════════════════════════════════════
+       右侧详情侧边栏
+    ════════════════════════════════════════════ */
+
+    const sidebar     = document.getElementById('graph-sidebar');
+    const sbTypeBadge = document.getElementById('sb-type-badge');
+    const sbTitle     = document.getElementById('sb-title');
+    const sbTags      = document.getElementById('sb-tags');
+    const sbSummary   = document.getElementById('sb-summary');
+    const sbRelSec    = document.getElementById('sb-related-section');
+    const sbRelList   = document.getElementById('sb-related-list');
+    const sbOpenLink  = document.getElementById('sb-open-link');
+    const sbClose     = document.getElementById('sb-close');
+
+    function openSidebar(d) {
+      const color = nodeColor(d);
+      const info  = d._info;
+      const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
+      const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+      const summary = (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
+
+      sbTypeBadge.style.background = color;
+      sbTypeBadge.style.color = '#0d1117';
+      sbTypeBadge.textContent = typeLabel;
+      sbTitle.textContent = info.title || d.label;
+      sbSummary.textContent = summary;
+
+      // tags from index
+      const item = indexItems.find(it => it.path === d.id);
+      const tags = item?.tags || [];
+      sbTags.innerHTML = tags.map(t => `<span class="sb-tag">${escapeHtml(t)}</span>`).join('');
+
+      // related from index
+      const related = item?.related || [];
+      if (related.length) {
+        sbRelList.innerHTML = related.slice(0, 8).map(r => {
+          const relId = r.replace(/\//g,'-').replace('.md','');
+          const relItem = indexItems.find(it => it.path === r || it.id === relId);
+          const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
+          return `<li><a href="detail.html?id=${encodeURIComponent(relId)}">${escapeHtml(relTitle)}</a></li>`;
+        }).join('');
+        sbRelSec.hidden = false;
+      } else {
+        sbRelSec.hidden = true;
+      }
+
+      sbOpenLink.href = detailUrl;
+      sidebar.classList.add('open');
+      wrap.classList.add('sidebar-open');
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('open');
+      wrap.classList.remove('sidebar-open');
+      simulation.force('center', d3.forceCenter(
+        (wrap.clientWidth || W) / 2, H / 2
+      ).strength(0.05)).alpha(0.1).restart();
+    }
+
+    sbClose.addEventListener('click', closeSidebar);
+
+    // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
+    node.on('click', (ev, d) => {
+      ev.stopPropagation();
+      if (isMobile) {
+        if (pinnedNode === d) {
+          pinnedNode = null;
+          hideTooltip();
+        } else {
+          pinnedNode = d;
+          showTooltip(ev, d);
+        }
+      } else {
+        openSidebar(d);
+      }
+    });
+
+    // Esc 也关闭侧边栏
+    document.addEventListener('keydown', ev => {
+      if (ev.key === 'Escape') {
+        closeSidebar();
+      }
+    }, true);  // 用 capture 覆盖前面的 Esc handler
+
+    /* ════════════════════════════════════════════
+       ?focus=<id> URL 参数：页面加载后飞行定位
+    ════════════════════════════════════════════ */
+
+    const focusId = new URLSearchParams(location.search).get('focus');
+    if (focusId) {
+      const focusNode = nodes.find(n => n.id === focusId ||
+        n.id === decodeURIComponent(focusId));
+      if (focusNode) {
+        const flyToFocus = () => {
+          if (focusNode.x == null) return;
+          const scale = 2.2;
+          svg.transition().duration(700).call(
+            zoom.transform,
+            d3.zoomIdentity
+              .translate(W / 2 - scale * focusNode.x, H / 2 - scale * focusNode.y)
+              .scale(scale)
+          );
+          openSidebar(focusNode);
+        };
+        // 等仿真稳定后飞行
+        simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
+        setTimeout(flyToFocus, 1400);  // fallback: 1.4s 后强制执行
+      }
+    }
 
   })();
   </script>

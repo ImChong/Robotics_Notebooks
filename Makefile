@@ -1,4 +1,4 @@
-.PHONY: lint catalog export search ingest log coverage graph slides fetch
+.PHONY: lint catalog export search ingest log coverage graph slides fetch badge
 
 lint:
 	python3 scripts/lint_wiki.py
@@ -31,3 +31,6 @@ slides:
 
 fetch:
 	python3 scripts/fetch_to_source.py $(URL) --name $(NAME)
+
+badge:
+	python3 scripts/update_badge.py

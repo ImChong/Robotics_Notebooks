@@ -2,6 +2,12 @@
 type: formalization
 tags: [rl, mdp, markov, decision-process]
 status: complete
+related:
+  - ./bellman-equation.md
+  - ../methods/reinforcement-learning.md
+  - ../methods/policy-optimization.md
+sources:
+  - ../../sources/papers/policy_optimization.md
 ---
 
 # Markov Decision Process (MDP)

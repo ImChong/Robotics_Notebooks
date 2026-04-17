@@ -1,3 +1,7 @@
+---
+type: concept
+---
+
 # Floating Base Dynamics
 
 **Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。

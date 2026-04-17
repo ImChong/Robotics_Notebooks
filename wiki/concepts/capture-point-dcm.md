@@ -1,3 +1,7 @@
+---
+type: concept
+---
+
 # Capture Point / DCM
 
 **Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描述系统“往哪里倒”以及“该踩到哪里才能救回来”。

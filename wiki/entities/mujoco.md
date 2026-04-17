@@ -1,3 +1,7 @@
+---
+type: entity
+---
+
 # MuJoCo
 
 **MuJoCo（Multi-Joint dynamics with Contact）** 是机器人与控制领域最经典的物理引擎之一，现在由 **Google DeepMind** 维护并开源。
