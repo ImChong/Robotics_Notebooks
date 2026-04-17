@@ -288,3 +288,5 @@
 ## [2026-04-17] structural | v10-p1-p2 | 新增 methods/concepts/query 页面，补 summary frontmatter，并扩展 lint_wiki.py 到 14 项检查/30 canonical facts
 
 ## [2026-04-17] structural | V10 全量完成：向量搜索/内容扩充/lint增强/前端离线搜索/图谱社区/Anki导出/README与清单同步
+
+## [2026-04-17] structural | 建立 V11 执行清单并同步 README 到 V11 入口

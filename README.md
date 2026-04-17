@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-17 (V10 P4/P5/P6 已落地) -->
+<!-- Last updated: 2026-04-17 (V11 清单已建立，基于 V10 完整交付) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-75节点_429边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v9.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-83节点_486边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v11.md)
 
 ---
 
@@ -97,6 +97,6 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 ## 执行清单
 
-[技术栈项目执行清单 v10](docs/tech-stack-next-phase-checklist-v10.md) — 当前阶段目标（向量搜索 / 新方法页 DAgger-VLA / 前端离线 BM25 / 图谱社区检测 / Anki 导出 / CANONICAL_FACTS 30 条）
+[技术栈项目执行清单 v11](docs/tech-stack-next-phase-checklist-v11.md) — 当前阶段目标（真实 sentence-transformers 语义搜索 / 搜索回归测试 / 稳定性与部署知识补深 / 图谱质量指标 / QA 与 CI 补强）
 
-历史版本：[v1–v9 归档](docs/checklists/)
+历史版本：[v1–v10 归档](docs/checklists/) + [v10](docs/tech-stack-next-phase-checklist-v10.md)
