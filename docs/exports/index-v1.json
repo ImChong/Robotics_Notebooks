@@ -1026,7 +1026,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/optimal_control.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-methods-trajectory-optimization",
