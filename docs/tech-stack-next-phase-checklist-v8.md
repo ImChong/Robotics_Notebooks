@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v8
 
-最后更新：2026-04-16
+最后更新：2026-04-17
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`docs/tech-stack-next-phase-checklist-v7.md`](tech-stack-next-phase-checklist-v7.md)
 方法论参考：[Karpathy LLM Wiki](../wiki/references/llm-wiki-karpathy.md)
@@ -94,8 +94,8 @@
 | `wiki/concepts/foundation-policy.md` | `rl_foundation_models.md` | RT-1/RT-2/π₀/Octo；大模型 → 机器人控制 |
 | `wiki/concepts/contact-complementarity.md` | 已有同名页面 | 检查是否已完整，补充与 WBC/MPC 的关联 |
 
-- [ ] 新建 `wiki/concepts/sensor-fusion.md`（YAML + 内容 + 关联页面 + 参考来源）
-- [ ] 新建 `wiki/concepts/foundation-policy.md`（YAML + 内容 + 关联页面 + 参考来源）
+- [x] 新建 `wiki/concepts/sensor-fusion.md`（YAML + 内容 + 关联页面 + 参考来源）
+- [x] 新建 `wiki/concepts/foundation-policy.md`（YAML + 内容 + 关联页面 + 参考来源）
 - [ ] 验证 `wiki/formalizations/contact-complementarity.md` 已充分链接
 
 ### 1.2 Sources 覆盖率提升（74% → 80%+）
@@ -112,13 +112,13 @@
 | `sources/papers/contact_control.md` | contact-dynamics.md、contact-estimation.md、contact-complementarity.md |
 | `sources/papers/legged_robot_design.md` | balance-recovery.md、footstep-planning.md、gait-generation.md、capture-point-dcm.md |
 
-- [ ] 策略 A：审计并补全 5+ 个现有页面的 `sources:` 字段
+- [x] 策略 A：审计并补全 5+ 个现有页面的 `sources:` 字段（bellman/mdp/ekf/lqr/centroidal-dynamics）
 - [ ] 策略 B（可选）：新建 `sources/papers/contact_control.md`
-- [ ] `make lint` 覆盖率达到 ≥ 80%
+- [x] `make lint` 覆盖率达到 ≥ 80%（实际：82% = 56/68）
 
 ### 完成标准
-- 新增 2 个概念页，lint ✅
-- Sources 覆盖率 ≥ 80%
+- 新增 2 个概念页，lint ✅ ✅ 已完成
+- Sources 覆盖率 ≥ 80% ✅ 82%
 
 ---
 
@@ -128,14 +128,14 @@
 
 ### 2.1 Frontmatter 一致性检查
 
-- [ ] `scripts/lint_wiki.py` 新增检查：wiki 页面缺少 `type` 字段时 warning（排除 references/、roadmap/、tech-map/ 目录）
+- [x] `scripts/lint_wiki.py` 新增检查：wiki 页面缺少 `type` 字段时 warning（排除 references/、roadmap/、tech-map/ 目录）
 - [ ] `scripts/lint_wiki.py` 新增检查：wiki 页面缺少 `related:` 字段（且不是 README）时 warning
-- [ ] 运行后审计并修复现有 warning
+- [x] 运行后审计并修复现有 warning（批量补全 15 个页面的 frontmatter type）
 
 ### 2.2 Log.md 活跃度检查
 
-- [ ] `scripts/lint_wiki.py` 新增检查：`log.md` 最近 30 天内是否有条目（如无，提示"知识库可能已停止维护"）
-- [ ] 验证 `grep "^## \[" log.md | tail -5` 输出格式正确
+- [x] `scripts/lint_wiki.py` 新增检查：`log.md` 最近 30 天内是否有条目（如无，提示"知识库可能已停止维护"）
+- [x] 验证 `grep "^## \[" log.md | tail -5` 输出格式正确
 
 ### 2.3 Sources 覆盖率 Badge（V7 P2.2 延续）
 
