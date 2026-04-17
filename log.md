@@ -290,3 +290,5 @@
 ## [2026-04-17] structural | V10 全量完成：向量搜索/内容扩充/lint增强/前端离线搜索/图谱社区/Anki导出/README与清单同步
 
 ## [2026-04-17] structural | 建立 V11 执行清单并同步 README 到 V11 入口
+
+## [2026-04-17] structural | 将 V10/V11 执行清单移动到 docs/checklists/ 并同步更新 README
