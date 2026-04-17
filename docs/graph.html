@@ -581,6 +581,8 @@
       <div class="toolbar-sep"></div>
       <button id="physics-toggle" class="chip" title="调整物理参数"><span>⚙</span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
+      <button id="fit-to-screen" class="chip" title="适配屏幕"><span>🔍</span><span> 适配屏幕</span></button>
+      <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>
   </div>
@@ -1178,7 +1180,7 @@
       const y0 = Math.min(...ys), y1 = Math.max(...ys);
       const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
       const pad = 120;
-      const scale = Math.min(5, Math.max(0.3,
+      const scale = Math.min(5, Math.max(0.5,
         Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
       svg.transition().duration(650).call(
         zoom.transform,
@@ -1214,6 +1216,11 @@
     });
     document.getElementById('physics-close').addEventListener('click', () => {
       document.getElementById('physics-panel').hidden = true;
+    });
+
+    /* 适配屏幕按钮 */
+    document.getElementById('fit-to-screen').addEventListener('click', () => {
+      flyToVisible();
     });
 
     /* 1. 排斥力 slider（min=50, max=800 → 实际 chargeStrength = -value） */
