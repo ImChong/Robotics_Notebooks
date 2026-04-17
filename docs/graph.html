@@ -868,6 +868,8 @@
       document.getElementById('graph-loading').style.display = 'none';
       // 仿真稳定后让所有标签渐显
       node.select('.node-label').transition().duration(400).style('opacity', 0.85);
+      // 仿真稳定后自动适配屏幕
+      setTimeout(() => fitToScreen(), 100);
     });
     setTimeout(() => {
       document.getElementById('graph-loading').style.display = 'none';
@@ -1171,6 +1173,23 @@
       if (searchQuery) flyToVisible();
     }
 
+    /* ── 适配屏幕到所有节点 ── */
+    function fitToScreen() {
+      const allNodes = nodes.filter(n => n.x != null);
+      if (allNodes.length === 0) return;
+      const xs = allNodes.map(n => n.x), ys = allNodes.map(n => n.y);
+      const x0 = Math.min(...xs), x1 = Math.max(...xs);
+      const y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+      const pad = 120;
+      const scale = Math.min(5, Math.max(0.5,
+        Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
+      svg.transition().duration(650).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
+      );
+    }
+
     /* ── 搜索飞行定位 ── */
     function flyToVisible() {
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
@@ -1220,7 +1239,7 @@
 
     /* 适配屏幕按钮 */
     document.getElementById('fit-to-screen').addEventListener('click', () => {
-      flyToVisible();
+      fitToScreen();
     });
 
     /* 1. 排斥力 slider（min=50, max=800 → 实际 chargeStrength = -value） */
