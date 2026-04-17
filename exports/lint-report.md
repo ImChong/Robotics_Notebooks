@@ -25,6 +25,9 @@
 ### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
 - 无
 
+### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
+- 无
+
 ### ⚠️ 潜在矛盾（跨页面相反定性描述）（0 个）
 - 无
 
@@ -40,4 +43,4 @@
 ### ⚠️ log.md 活跃度警告（0 个）
 - 无
 
-📊 Sources 覆盖率：56/68 (82%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：73/73 (100%) wiki/entity 页有 ingest 来源
