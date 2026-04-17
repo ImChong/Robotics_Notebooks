@@ -344,6 +344,8 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
 }
 .card p, .simple-card p, .simple-card li { font-size: .93rem; color: var(--text); }
 .route-list, .structure-list, .boundary-list { display: grid; gap: 14px; }
+.route-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.route-card { min-height: 100%; }
 .simple-card {
   padding: 18px 20px;
   background: linear-gradient(180deg, rgba(255,255,255,.8), rgba(255,255,255,.94));
@@ -754,7 +756,7 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   .section {
     padding: 30px 0;
   }
-  .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top { grid-template-columns: 1fr; }
+  .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
   .hero-stat-row { gap: 10px; }
   .hero-stat-card { flex: 1 1 calc(50% - 10px); min-width: 0; }
