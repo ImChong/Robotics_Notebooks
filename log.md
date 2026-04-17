@@ -305,3 +305,11 @@
 - 证据一：同日后续已有 `## [2026-04-14] lint | 0 issues，覆盖率 50%（29/58），wiki 95 页` 条目，说明缺失参考来源问题已清零
 - 证据二：当前再次运行 `python3 scripts/lint_wiki.py`，结果仍为 0 issues，且“缺少参考来源区块”为 0、Sources 覆盖率为 81/81（100%）
 - 保留原历史日志不改写，仅通过 follow-up 追加状态说明，符合 append-only 约束
+
+## [2026-04-18] query | motion-control-projects | 飞书公开文档结构化摘要 + PDF Sources 入库
+
+- 新建 `sources/papers/motion_control_projects.md`：将飞书公开文档《【开源】小而美的运动控制项目》中可见的 14 个 PDF 附件统一归档为 sources
+- 新建 `wiki/queries/open-source-motion-control-projects.md`：按训练机制优化 / Parkour / 动作模仿 / 物体交互 / 动作重定向五条主线整理结构化摘要
+- 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引
+- 回填 `contact-estimation.md`、`curriculum-learning.md`、`motion-retargeting.md` 的来源与更新时间，消除 sources 比 wiki 更新的陈旧提示
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 82/82（100%），知识图谱更新为 84 节点 / 498 边

@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-18
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -44,6 +44,7 @@ Stage 4: 复杂地形（台阶 0.2m, 石堆）
 根据策略当前表现动态调整难度：
 - **成功率阈值**：当前 stage 成功率 > 80% → 提升难度
 - **ALP-GMM**（Absolute Learning Progress）：追踪每个难度区域的学习进度，主动采样最有提升空间的区域
+- **失败驱动采样**：像 Beyondmimic 这类模仿学习框架会按片段失败率重新分配 reset 起点，让训练更多落在高失败片段而不是总从第 0 帧开始
 
 ### 3. 地形课程（Terrain Curriculum for Locomotion）
 legged_gym / Isaac Lab 的标准做法：
@@ -103,6 +104,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - Portelas et al., *Automatic Curriculum Learning for Deep RL: A Short Survey* (2020) — 自动课程学习综述
 - **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — teacher-student 地形课程
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin 地形课程实现
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — Beyondmimic 的失败驱动采样说明了课程不只体现在地形难度，也体现在 reset 片段分布
 
 ---
 

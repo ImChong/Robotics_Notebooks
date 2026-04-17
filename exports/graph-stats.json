@@ -1,13 +1,18 @@
 {
-  "generated_at": "2026-04-17",
-  "node_count": 83,
-  "edge_count": 486,
-  "community_count": 7,
+  "generated_at": "2026-04-18",
+  "node_count": 84,
+  "edge_count": 498,
+  "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 58
+      "degree": 59
+    },
+    {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL)",
+      "degree": 46
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -15,19 +20,14 @@
       "degree": 45
     },
     {
-      "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL)",
-      "degree": 45
-    },
-    {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 38
+      "degree": 39
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "degree": 34
+      "degree": 35
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -37,7 +37,7 @@
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
-      "degree": 23
+      "degree": 24
     },
     {
       "id": "wiki/concepts/tsid.md",
@@ -47,7 +47,7 @@
     {
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
-      "degree": 21
+      "degree": 22
     },
     {
       "id": "wiki/concepts/optimal-control.md",
@@ -55,10 +55,16 @@
       "degree": 20
     }
   ],
-  "orphan_nodes": [],
+  "orphan_nodes": [
+    {
+      "id": "wiki/queries/open-source-motion-control-projects.md",
+      "label": "开源运动控制项目结构化摘要",
+      "out_degree": 12
+    }
+  ],
   "type_distribution": {
     "concept": 25,
-    "query": 16,
+    "query": 17,
     "method": 10,
     "formalization": 9,
     "entity": 8,
@@ -68,11 +74,12 @@
     "overview": 1
   },
   "community_distribution": {
-    "Whole-Body Control (WBC) 社区": 33,
-    "Locomotion 社区": 31,
-    "Imitation Learning (IL) 社区": 14,
-    "Bellman 方程 社区": 2,
+    "Locomotion 社区": 37,
+    "Whole-Body Control (WBC) 社区": 32,
+    "Manipulation 社区": 10,
     "MPC vs RL：控制策略选型对比 社区": 1,
+    "Contact-Rich Manipulation（接触丰富型操作） 社区": 1,
+    "GAE（广义优势估计） 社区": 1,
     "主流人形机器人硬件对比 社区": 1,
     "LLM Wiki 社区": 1
   }
