@@ -341,3 +341,5 @@
 ## [2026-04-18] structural | 修正 Graph View 筛选逻辑：按类型模式筛类型，按社区模式筛社区
 
 ## [2026-04-18] structural | Graph View 默认排斥力从 400 调整为 800
+
+## [2026-04-18] structural | 修复 Graph View PC 端 hover 卡片失效：筛选逻辑重构后残留 activeTypes 引用导致 mouseenter 报错

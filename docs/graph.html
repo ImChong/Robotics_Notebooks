@@ -1206,7 +1206,7 @@
     node
       .on('mouseenter', (ev, d) => {
         buildNeighborSet(d);
-        const hasFilter = activeTypes.size > 0 || searchQuery.length > 0;
+        const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
           if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
