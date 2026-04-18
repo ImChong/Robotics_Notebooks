@@ -327,3 +327,9 @@
 - 更新 `wiki/concepts/optimal-control.md`、`lip-zmp.md`、`whole-body-control.md` 与 `wiki/methods/model-predictive-control.md`
 - 为上述方法页补入统一的“最小代码骨架 / 方法局限性”结构，使其更符合“原理 → 最小代码 → 局限性”的学习模板
 - 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱维持 85 节点 / 510 边
+
+## [2026-04-18] structural | control-chain-template-phase-2 | 补齐传统控制主线剩余方法模板
+
+- 更新 `wiki/concepts/centroidal-dynamics.md`、`tsid.md`、`state-estimation.md`
+- 为三页补入统一的“最小代码骨架 / 方法局限性 / 学这个方法时最该盯住的点”模板，使传统控制主线从 OCP → LIP/ZMP → Centroidal Dynamics → MPC → TSID/WBC → State Estimation 的页面风格更一致
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱维持 85 节点 / 510 边

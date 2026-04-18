@@ -256,6 +256,37 @@ Centroidal Dynamics 比 LIP 强，但它依然不是全刚体动力学。
 
 Centroidal 模型没有魔法，只是让问题更可控，不是让问题消失。
 
+## 最小代码骨架
+
+这段代码只保留 centroidal level 最核心的量：
+- 质心线动量变化由接触力和重力决定
+- 不去管每个关节怎么动
+- 先建立“整体怎么被地面推着走”的直觉
+
+```python
+import numpy as np
+
+m = 40.0
+g = np.array([0.0, 0.0, -9.81])
+forces = [
+    np.array([20.0, 0.0, 220.0]),
+    np.array([-15.0, 0.0, 210.0]),
+]
+
+l_dot = sum(forces) + m * g
+com_acc = l_dot / m
+print("centroidal linear momentum rate:", l_dot)
+print("com acceleration:", com_acc)
+```
+
+如果你把这里的 `forces` 当作优化变量，再加上摩擦锥、支撑约束和预测时域，基本就走到了 centroidal MPC 的入口。
+
+## 学这个方法时最应该盯住的三件事
+
+1. **原理**：它研究的是整体线动量 / 角动量，不是每个关节的细节动力学
+2. **最小代码**：你至少要能自己写出“接触力 → 线动量变化 → 质心加速度”的最小推演
+3. **局限性**：它是中层模型，不会自动保证关节可达、姿态自然、接触切换平滑，所以下一层通常必须接 WBC / TSID
+
 ## 参考来源
 
 - Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot* — centroidal dynamics 系统性阐述

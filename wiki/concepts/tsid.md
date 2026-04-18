@@ -250,6 +250,35 @@ TSID / WBC
 ### 4. 接触切换仍然麻烦
 脚抬起、落地那一下最容易出幺蛾子，TSID 也得配合状态机、接触估计和过渡策略。
 
+## 最小代码骨架
+
+下面这段代码把 TSID 的最小味道抽出来：
+- 先在任务空间定义一个期望加速度
+- 再通过雅可比把任务落到广义加速度变量上
+- 最后解一个最小二乘问题得到关节加速度命令
+
+```python
+import numpy as np
+
+J = np.array([[1.0, 0.5], [0.0, 1.0]])
+Jdot_qdot = np.array([0.0, 0.0])
+acc_task_des = np.array([0.2, -0.1])
+
+qdd_star, *_ = np.linalg.lstsq(J, acc_task_des - Jdot_qdot, rcond=None)
+print("joint acceleration command:", qdd_star)
+```
+
+真实 TSID 会再加上：
+- 动力学等式约束 `M(q) qdd + h = S^T tau + J_c^T f`
+- 接触约束 `J_c qdd + Jdot_c qdot = 0`
+- 力矩边界、摩擦锥、任务优先级
+
+## 学这个方法时最应该盯住的三件事
+
+1. **原理**：TSID 不是几何 IK，而是带动力学和接触约束的任务空间逆动力学
+2. **最小代码**：你至少要能把 `xdd*`、`J qdd + Jdot qdot` 这层关系写成一个小例子
+3. **局限性**：一旦模型、接触状态、任务权重不准，TSID 就会从“优雅协调”迅速退化成“数学上能解、机器人上难用”
+
 ## 参考来源
 
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID 核心论文
