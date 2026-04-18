@@ -1,0 +1,59 @@
+name: Search & Export Quality Check
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'wiki/**'
+      - 'scripts/**'
+      - 'schema/**'
+      - 'sources/**'
+  pull_request:
+    paths:
+      - 'wiki/**'
+      - 'scripts/**'
+      - 'schema/**'
+  workflow_dispatch:
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install numpy
+
+      - name: Lint wiki
+        run: python3 scripts/lint_wiki.py
+
+      - name: Export wiki data
+        run: python3 scripts/export_minimal.py
+
+      - name: Search regression test
+        run: python3 scripts/eval_search_quality.py
+
+      - name: Export quality check
+        run: python3 scripts/check_export_quality.py
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Quality Check Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
+          python3 scripts/lint_wiki.py 2>&1 | grep -q "✅ 所有检查通过" \
+            && echo "| Lint | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
+            || echo "| Lint | ❌ 有问题 |" >> $GITHUB_STEP_SUMMARY
+          python3 scripts/eval_search_quality.py 2>&1 | grep -q "通过率 ≥ 80%" \
+            && echo "| Search Regression | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
+            || echo "| Search Regression | ❌ 未达标 |" >> $GITHUB_STEP_SUMMARY
+          python3 scripts/check_export_quality.py 2>&1 | grep -q "所有导出质量检查通过" \
+            && echo "| Export Quality | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
+            || echo "| Export Quality | ❌ 有问题 |" >> $GITHUB_STEP_SUMMARY

@@ -137,6 +137,9 @@ def lint() -> dict:
         "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
         "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
         "missing_summary": [],        # V10: concepts/methods/tasks 缺少 summary/description
+        "query_format": [],           # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
+        "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
+        "readme_badge": [],           # V11: README checklist 链接版本不一致
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -505,6 +508,51 @@ def lint() -> dict:
         if not re.search(r"^(summary|description)\s*:", fm_text, re.MULTILINE):
             results["missing_summary"].append(str(rel))
 
+    # V11: queries/ 页面必须包含 Query 产物说明 + 参考来源 + 关联页面
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "queries" or page.name == "README.md":
+            continue
+        content = page.read_text(encoding="utf-8")
+        missing_parts = []
+        if "**Query 产物**" not in content:
+            missing_parts.append("缺 'Query 产物' 说明")
+        if "## 参考来源" not in content:
+            missing_parts.append("缺 '## 参考来源' 区块")
+        if "## 关联页面" not in content:
+            missing_parts.append("缺 '## 关联页面' 区块")
+        if missing_parts:
+            results["query_format"].append(f"{rel}（{', '.join(missing_parts)}）")
+
+    # V11: formalizations/ 页面必须包含至少一个公式块
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
+            continue
+        content = page.read_text(encoding="utf-8")
+        if "$$" not in content and "$`" not in content and "`$" not in content:
+            results["formalization_no_formula"].append(str(rel))
+
+    # V11: README.md 中 checklist 链接应指向最新版本
+    readme_path = REPO_ROOT / "README.md"
+    if readme_path.exists():
+        readme_content = readme_path.read_text(encoding="utf-8")
+        # 找所有 checklist 链接版本号
+        versions = re.findall(r"tech-stack-next-phase-checklist-v(\d+)", readme_content)
+        if versions:
+            max_ver = max(int(v) for v in versions)
+            main_link_versions = re.findall(
+                r"\[技术栈项目执行清单 v(\d+)\]", readme_content
+            )
+            if main_link_versions:
+                main_ver = int(main_link_versions[0])
+                if main_ver < max_ver:
+                    results["readme_badge"].append(
+                        f"README 当前清单指向 v{main_ver}，但存在 v{max_ver}，请更新"
+                    )
+
     return results
 
 def format_report(results: dict) -> str:
@@ -530,6 +578,9 @@ def format_report(results: dict) -> str:
         ("missing_type",       "Frontmatter 缺少 type 字段",                 "⚠️"),
         ("log_inactive",       "log.md 活跃度警告",                          "⚠️"),
         ("missing_summary",    "缺少摘要字段（summary/description）",         "⚠️"),
+        ("query_format",       "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
+        ("formalization_no_formula", "Formalization 页面缺少公式块",              "⚠️"),
+        ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
     ]
 
     for key, label, icon in sections:

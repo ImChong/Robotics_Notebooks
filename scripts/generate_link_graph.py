@@ -296,6 +296,15 @@ def main() -> None:
         for meta in sorted(community_meta.values(), key=lambda item: -int(item["size"]))
     }
 
+    # 社区质量指标
+    community_sizes = [int(meta["size"]) for meta in community_meta.values()
+                       if meta["id"] != OTHER_COMMUNITY_ID]
+    singleton_communities = [meta["label"] for meta in community_meta.values()
+                              if int(meta["size"]) < 3 and meta["id"] != OTHER_COMMUNITY_ID]
+    largest_size = max(community_sizes, default=0)
+    largest_ratio = round(largest_size / max(len(nodes), 1), 3)
+    community_quality_warning = largest_ratio > 0.45
+
     stats = {
         "generated_at": date.today().isoformat(),
         "node_count": len(nodes),
@@ -305,6 +314,11 @@ def main() -> None:
         "orphan_nodes": orphans,
         "type_distribution": dict(sorted(type_dist.items(), key=lambda x: x[1], reverse=True)),
         "community_distribution": community_dist,
+        "community_quality": {
+            "singleton_communities": singleton_communities,
+            "largest_community_ratio": largest_ratio,
+            "community_quality_warning": community_quality_warning,
+        },
     }
     STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
     print(

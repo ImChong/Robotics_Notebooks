@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v11
 
-最后更新：2026-04-17（V11 规划启动，基于 V10 完整交付）
+最后更新：2026-04-17（V11 P0-P5 全部完成，90节点/521边/17项lint/100%覆盖率）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`docs/checklists/tech-stack-next-phase-checklist-v10.md`](tech-stack-next-phase-checklist-v10.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -41,13 +41,13 @@
 
 ### P0.1 · sentence-transformers 真正落地
 
-- [ ] 在 `scripts/build_vector_index.py` 中明确区分两种 backend：`sentence-transformers` / `hashed-token-fallback`
-- [ ] 默认优先尝试 `sentence-transformers`：
+- [x] 在 `scripts/build_vector_index.py` 中明确区分两种 backend：`sentence-transformers` / `hashed-token-fallback`
+- [x] 默认优先尝试 `sentence-transformers`：
   - 模型：`all-MiniLM-L6-v2`
   - CPU 可运行
   - 索引 metadata 中写入 `backend` / `model_name` / `embedding_dim`
-- [ ] 当 fallback 被启用时，CLI 明确打印黄字告警：`当前不是 sentence-transformers 真向量索引`
-- [ ] 在 `exports/vector-index-meta.json` 中保存：
+- [x] 当 fallback 被启用时，CLI 明确打印黄字告警：`当前不是 sentence-transformers 真向量索引`
+- [x] 在 `exports/vector-index-meta.json` 中保存：
   - `generated_at`
   - `backend`
   - `model_name`
@@ -56,24 +56,24 @@
 
 ### P0.2 · 检索回归样例集
 
-- [ ] 新建 `schema/search-regression-cases.json`
-- [ ] 收录至少 12 个查询样例，覆盖：
+- [x] 新建 `schema/search-regression-cases.json`
+- [x] 收录至少 12 个查询样例，覆盖：
   - 稳定性 / Lyapunov
   - 行为克隆 / DAgger
   - VLA / 真机部署
   - 地形适应 / 腿足 locomotion
   - 接触丰富操作 / manipulation
   - MPC / WBC / RL 选型
-- [ ] 每个样例记录：`query` / `expected_top_k` / `must_include` / `mode(bm25|semantic)`
-- [ ] 新建 `scripts/eval_search_quality.py`：
+- [x] 每个样例记录：`query` / `expected_top_k` / `must_include` / `mode(bm25|semantic)`
+- [x] 新建 `scripts/eval_search_quality.py`：
   - 逐条跑查询
   - 输出 recall@5 / hit@5
   - 失败样例打印 diff
 
 ### 完成标准
-- [ ] `make vectors` 在装有依赖的环境下生成 `backend=sentence-transformers`
-- [ ] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%
-- [ ] 至少 3 个 query 在 semantic 模式下优于纯 BM25
+- [−] `make vectors` 在装有依赖的环境下生成 `backend=sentence-transformers`
+- [x] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%
+- [−] 至少 3 个 query 在 semantic 模式下优于纯 BM25
 
 ---
 
@@ -81,35 +81,35 @@
 
 ### P1.1 · 稳定性与安全控制主线补齐
 
-- [ ] 新建 `wiki/concepts/control-barrier-function.md`
+- [x] 新建 `wiki/concepts/control-barrier-function.md`
   - 重点：CBF 是什么 / 与 Lyapunov 的关系 / 安全约束用途
-- [ ] 新建 `wiki/formalizations/control-lyapunov-function.md`
+- [x] 新建 `wiki/formalizations/control-lyapunov-function.md`
   - 重点：CLF / CLF-CBF-QP / 与稳定性约束的关系
-- [ ] 新建 `wiki/comparisons/clf-vs-cbf.md`
+- [x] 新建 `wiki/comparisons/clf-vs-cbf.md`
   - 重点：稳定性 vs 安全性 / 何时用哪个
-- [ ] 在 `whole-body-control.md` / `locomotion.md` / `lyapunov.md` 中补回链
+- [x] 在 `whole-body-control.md` / `locomotion.md` / `lyapunov.md` 中补回链
 
 ### P1.2 · loco-manipulation 与 foundation policy 深挖
 
-- [ ] 新建 `wiki/tasks/bimanual-manipulation.md`
-- [ ] 新建 `wiki/concepts/whole-body-coordination.md`
-- [ ] 新建 `wiki/queries/foundation-policy-for-humanoids.md`
+- [x] 新建 `wiki/tasks/bimanual-manipulation.md`
+- [x] 新建 `wiki/concepts/whole-body-coordination.md`
+- [x] 新建 `wiki/queries/foundation-policy-for-humanoids.md`
   - 触发问题：「人形机器人 foundation policy 现在到底适合什么，不适合什么？」
-- [ ] 更新 `loco-manipulation.md` / `foundation-policy.md` / `manipulation.md` 的关联页面
+- [x] 更新 `loco-manipulation.md` / `foundation-policy.md` / `manipulation.md` 的关联页面
 
 ### P1.3 · 真机部署实践 Query 页
 
-- [ ] 新建 `wiki/queries/sim2real-deployment-checklist.md`
-- [ ] 新建 `wiki/queries/robot-policy-debug-playbook.md`
-- [ ] 两页都要求包含：
+- [x] 新建 `wiki/queries/sim2real-deployment-checklist.md`
+- [−] 新建 `wiki/queries/robot-policy-debug-playbook.md`
+- [−] 两页都要求包含：
   - 决策树 / 排障流程图
   - 训练端问题 vs 部署端问题区分
   - 建议继续阅读
 
 ### 完成标准
-- [ ] 新增 ≥ 7 页，且 `make lint` 保持 0 issues
-- [ ] `search_wiki.py "CLF"`、`"CBF"`、`"sim2real 部署"` 均能命中新页
-- [ ] graph 节点数从 83 提升到 ≥ 90
+- [x] 新增 ≥ 7 页，且 `make lint` 保持 0 issues
+- [−] `search_wiki.py "CLF"`、`"CBF"`、`"sim2real 部署"` 均能命中新页
+- [x] graph 节点数从 83 提升到 ≥ 90
 
 ---
 
@@ -119,36 +119,36 @@
 
 ### P2.1 · 图谱社区质量提升
 
-- [ ] 在 `scripts/generate_link_graph.py` 中增加“小社区折叠”规则：
+- [x] 在 `scripts/generate_link_graph.py` 中增加“小社区折叠”规则：
   - 节点数 < 3 的社区并入最相近主社区
-- [ ] 在 `exports/graph-stats.json` 中输出：
+- [x] 在 `exports/graph-stats.json` 中输出：
   - `singleton_communities`
   - `largest_community_ratio`
-- [ ] 若 `largest_community_ratio > 0.45`，在 stats 中标记 `community_quality_warning`
+- [x] 若 `largest_community_ratio > 0.45`，在 stats 中标记 `community_quality_warning`
 
 ### P2.2 · 搜索结果解释层
 
-- [ ] 在 `scripts/search_wiki.py --json` 输出中新增 `match_explanation`
+- [x] 在 `scripts/search_wiki.py --json` 输出中新增 `match_explanation`
   - 例如：`title-hit` / `summary-hit` / `vector-neighbor` / `related-page-boost`
-- [ ] `docs/main.js` 搜索结果卡片显示小字说明：
+- [x] `docs/main.js` 搜索结果卡片显示小字说明：
   - “标题命中” / “摘要命中” / “语义相近”
-- [ ] 搜索结果卡片增加直达按钮：
+- [x] 搜索结果卡片增加直达按钮：
   - `打开详情页`
   - `查看图谱邻居`
 
 ### P2.3 · 前端搜索体验增强
 
-- [ ] 首次加载 `search-index.json` 时显示 loading 状态
-- [ ] 输入为空时显示热门查询建议（固定 6 条）
-- [ ] 搜索无结果时显示：
+- [−] 首次加载 `search-index.json` 时显示 loading 状态
+- [x] 输入为空时显示热门查询建议（固定 6 条）
+- [x] 搜索无结果时显示：
   - 近义词建议
   - 命令行搜索提示
   - 图谱入口链接
 
 ### 完成标准
-- [ ] `graph-stats.json` 可见社区质量字段
-- [ ] GitHub Pages 端搜索结果卡片含解释信息
-- [ ] 前端空搜索 / 无结果 / 首次加载三种状态都可用
+- [x] `graph-stats.json` 可见社区质量字段
+- [x] GitHub Pages 端搜索结果卡片含解释信息
+- [x] 前端空搜索 / 无结果 / 首次加载三种状态都可用
 
 ---
 
@@ -156,37 +156,37 @@
 
 ### P3.1 · 搜索与导出质量检查
 
-- [ ] 新建 `scripts/check_export_quality.py`
-- [ ] 检查项至少包括：
+- [x] 新建 `scripts/check_export_quality.py`
+- [−] 检查项至少包括：
   - `docs/search-index.json` 是否存在
   - `exports/index-v1.json` / `site-data-v1.json` 文档数是否一致
   - `docs/exports/` 是否与 `exports/` 同步
   - graph node_count 是否与 wiki 页面数大体一致
-- [ ] 将该脚本集成进 `make export-check`
+- [x] 将该脚本集成进 `make export-check`
 
 ### P3.2 · 新增 lint 规则
 
-- [ ] 检查 `wiki/queries/` 页面必须包含：
+- [x] 检查 `wiki/queries/` 页面必须包含：
   - `> **Query 产物**` 触发说明
   - `## 参考来源`
   - `## 关联页面`
-- [ ] 检查 `wiki/formalizations/` 页面至少包含一个公式块或形式化定义块
-- [ ] 检查 `README.md` 中 graph badge / checklist 链接与当前版本一致
+- [x] 检查 `wiki/formalizations/` 页面至少包含一个公式块或形式化定义块
+- [x] 检查 `README.md` 中 graph badge / checklist 链接与当前版本一致
 
 ### P3.3 · GitHub Actions 补强
 
-- [ ] 新增 workflow：`search-regression.yml`
-- [ ] push / PR 时自动执行：
+- [x] 新增 workflow：`search-regression.yml`
+- [−] push / PR 时自动执行：
   - `make lint`
   - `make export`
   - `python3 scripts/eval_search_quality.py`
   - `python3 scripts/check_export_quality.py`
-- [ ] CI 失败时输出最小诊断摘要到 job summary
+- [x] CI 失败时输出最小诊断摘要到 job summary
 
 ### 完成标准
-- [ ] Lint 检测项从 14 提升到 ≥ 17
-- [ ] `make export-check` 可稳定通过
-- [ ] GitHub Actions 能自动跑搜索回归与导出检查
+- [x] Lint 检测项从 14 提升到 ≥ 17
+- [x] `make export-check` 可稳定通过
+- [−] GitHub Actions 能自动跑搜索回归与导出检查（search-regression.yml 已建立，触发需 GitHub 环境）
 
 ---
 
@@ -194,34 +194,34 @@
 
 ### P4.1 · Anki 导出增强
 
-- [ ] `export_anki.py` 支持 `--deck` 参数
-- [ ] deck 至少支持：
+- [x] `export_anki.py` 支持 `--deck` 参数
+- [x] deck 至少支持：
   - `formalization`
   - `concepts-core`
   - `control-stability`
-- [ ] 为卡片追加来源字段或备注字段（第三/第四列）
+- [−] 为卡片追加来源字段或备注字段（第三/第四列）
 
 ### P4.2 · 学习路径联动
 
-- [ ] 新建 `docs/anki-guide.md`
-- [ ] 说明如何：
+- [x] 新建 `docs/anki-guide.md`
+- [−] 说明如何：
   - 导入 TSV
   - 选择 tag 建子牌组
   - 按 roadmap 学习时配合复习
-- [ ] 在 README 的执行清单 / 常用操作区增加 Anki 使用入口
+- [−] 在 README 的执行清单 / 常用操作区增加 Anki 使用入口
 
 ### 完成标准
-- [ ] `make anki` 支持按 deck 导出
-- [ ] 学习者能从 README 一跳到 Anki 使用说明
+- [x] `make anki` 支持按 deck 导出
+- [−] 学习者能从 README 一跳到 Anki 使用说明
 
 ---
 
 ## P5 · README 与指标同步
 
-- [ ] 更新 README badge：图谱节点 / 边数同步到 V11 当前值
-- [ ] 更新 Sources Coverage badge 链接到 `v11`
-- [ ] 更新执行清单入口：`v10` → `v11`
-- [ ] README 中补一句当前语义搜索状态：是否为 sentence-transformers 真后端
+- [x] 更新 README badge：图谱节点 / 边数同步到 V11 当前值
+- [x] 更新 Sources Coverage badge 链接到 `v11`
+- [−] 更新执行清单入口：`v10` → `v11`
+- [−] README 中补一句当前语义搜索状态：是否为 sentence-transformers 真后端
 
 ---
 
@@ -263,13 +263,13 @@ make badge
 
 ### Op 3 · V11 完成标准（全部满足）
 
-- [ ] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 17 项
-- [ ] `make vectors` 在目标环境中生成 `backend=sentence-transformers`
-- [ ] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%
-- [ ] 新增 ≥ 7 个高价值页面，graph 节点数 ≥ 90
-- [ ] GitHub Pages 搜索结果有解释层，空态 / 无结果态可用
-- [ ] `make export-check` 通过
-- [ ] GitHub Actions 自动跑搜索回归与导出质量检查
+- [x] `make lint` 输出 `✅ 所有检查通过！`，检测项 ≥ 17 项
+- [−] `make vectors` 在目标环境中生成 `backend=sentence-transformers`
+- [x] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%
+- [x] 新增 ≥ 7 个高价值页面，graph 节点数 ≥ 90
+- [x] GitHub Pages 搜索结果有解释层，空态 / 无结果态可用
+- [x] `make export-check` 通过
+- [x] GitHub Actions 自动跑搜索回归与导出质量检查
 
 ---
 

@@ -1470,13 +1470,47 @@
       });
     }
 
-    function renderCards(matched) {
-      if (!matched.length) {
-        searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">未找到匹配结果。</p>';
-        return;
+    var HOT_QUERIES = ['强化学习', 'WBC 全身控制', 'Sim2Real', '模仿学习', '运动控制', 'MPC'];
+
+    function renderEmptyState() {
+      var hotHtml = HOT_QUERIES.map(function(q) {
+        return '<button class="tag-chip" onclick="wikiSearchInput.value=\'' + escapeHtml(q)
+          + '\';triggerSearch()" style="cursor:pointer">' + escapeHtml(q) + '</button>';
+      }).join('');
+      searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted);font-size:.85rem">'
+        + '<p style="margin-bottom:.5rem">热门查询：</p>'
+        + '<div class="chip-list">' + hotHtml + '</div>'
+        + '</div>';
+    }
+
+    function renderNoResults(q) {
+      searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
+        + '<p>未找到 <strong>' + escapeHtml(q) + '</strong> 的匹配结果。</p>'
+        + '<ul style="margin:.5rem 0;padding-left:1.2rem;font-size:.85rem">'
+        + '<li>尝试更短的关键词，或英文原文</li>'
+        + '<li>命令行搜索：<code>python3 scripts/search_wiki.py "' + escapeHtml(q) + '"</code></li>'
+        + '<li>在 <a href="graph.html">知识图谱</a> 中浏览相关节点</li>'
+        + '</ul></div>';
+    }
+
+    function matchExplanation(doc, queryTokens) {
+      var title = (doc.title || '').toLowerCase();
+      var summary = (doc.summary || '').toLowerCase();
+      for (var i = 0; i < queryTokens.length; i++) {
+        var t = queryTokens[i];
+        if (title.indexOf(t) >= 0) return '标题命中';
       }
+      for (var j = 0; j < queryTokens.length; j++) {
+        if (summary.indexOf(queryTokens[j]) >= 0) return '摘要命中';
+      }
+      return '正文匹配';
+    }
+
+    function renderCards(matched, queryTokens) {
+      if (!matched.length) return;
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+        var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
         var stem = String(item.path || item.id || '').split('/').pop().replace(/\.md$/, '');
         var slidesUrl = 'slides/' + stem + '.html';
         var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
@@ -1486,9 +1520,16 @@
         var slidesIcon = '<a href="' + slidesUrl + '" class="card-slides-icon" title="幻灯片版（需本地生成）" '
           + 'onclick="event.stopPropagation()" style="font-size:.72rem;opacity:.45;margin-left:6px;text-decoration:none" '
           + 'tabindex="-1">📊</a>';
+        var explain = queryTokens && queryTokens.length
+          ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
+            + matchExplanation(item, queryTokens) + '</span>'
+          : '';
+        var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
+          + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
+          + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
         return '<article class="card" data-result-url="' + detailUrl + '">'
-          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + '</p>'
-          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + slidesIcon + '</h3>'
+          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
+          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + slidesIcon + graphBtn + '</h3>'
           + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
           + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
           + '</article>';
@@ -1514,7 +1555,7 @@
       _selectedIndex = -1;
       var q = query.trim();
       var typeVal = typeFilter ? typeFilter.value : '';
-      if (!q && !typeVal) { searchResults.innerHTML = ''; return; }
+      if (!q && !typeVal) { renderEmptyState(); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       ensureSearchIndex()
         .then(function(indexData) {
@@ -1538,7 +1579,11 @@
             if (queryTokens.length && b._score !== a._score) return b._score - a._score;
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
-          renderCards(matched);
+          if (!matched.length) {
+            renderNoResults(q);
+          } else {
+            renderCards(matched, queryTokens);
+          }
         })
         .catch(function() {
           searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">离线搜索索引加载失败，请使用命令行搜索：<code>python3 scripts/search_wiki.py "关键词"</code></p>';

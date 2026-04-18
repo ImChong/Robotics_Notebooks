@@ -1,0 +1,31 @@
+Front	Back	Tags
+"<strong>Bellman 方程</strong><br><br>Bellman 方程：值函数的递归关系，揭示了""未来奖励""与""当前决策""之间的数学联系，是几乎所有强化学习算法的理论基础。"	"<strong>核心公式</strong><pre>$$
+V^\pi(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma V^\pi(s') \right]
+$$</pre><br><br><strong>关联概念</strong><ul><li>MDP</li><li>Reinforcement Learning</li><li>Optimal Control</li><li>GAE</li><li>HJB</li></ul>"	robotics::formalization::bellman-equation
+<strong>Contact Complementarity（接触互补约束）</strong><br><br>接触互补约束（Contact Complementarity Conditions） 是描述刚体与环境接触物理行为的数学框架：接触力与接触间隙必须互补为零——要么接触面有力（接触中），要么接触面有间隙（不接触），二者不能同时非零。这个约束是 LCP（线性互补问题）建模的核心，也是仿真器接触求解的数学基础。	"<strong>核心公式</strong><pre>$$
+\phi_i \geq 0, \quad f_i^n \geq 0, \quad \phi_i \cdot f_i^n = 0
+$$</pre><br><br><strong>关联概念</strong><ul><li>Contact Dynamics</li><li>Whole-Body Control</li><li>Trajectory Optimization</li><li>Drake</li></ul>"	robotics::formalization::contact-complementarity
+<strong>Control Lyapunov Function（控制李雅普诺夫函数）</strong><br><br>Control Lyapunov Function（CLF）：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\dot{V}(x)$ 严格为负，从而保证系统状态最终收敛到目标状态。	"<strong>核心公式</strong><pre>$$
+\dot{V}(x) = \frac{\partial V}{\partial x} f(x) &lt; 0 \quad \forall x \neq 0
+$$</pre><br><br><strong>关联概念</strong><ul><li>Control Barrier Function（CBF）</li><li>CLF vs CBF</li><li>Lyapunov 稳定性</li><li>LQR</li><li>Whole-Body Control</li></ul>"	robotics::formalization::control-lyapunov-function
+<strong>Extended Kalman Filter (EKF)</strong><br><br>扩展卡尔曼滤波（EKF）：将标准卡尔曼滤波推广到非线性系统的经典状态估计方法，通过每步线性化（一阶 Taylor 展开）在非线性系统上近似应用 Kalman 递推公式。	"<strong>核心公式</strong><pre>$$
+x_{k+1} = A x_k + B u_k + w_k, \quad w_k \sim \mathcal{N}(0, Q)
+$$</pre><br><br><strong>关联概念</strong><ul><li>State Estimation</li><li>Floating Base Dynamics</li><li>Sim2Real</li><li>LQR / iLQR</li></ul>"	robotics::formalization::ekf
+<strong>GAE（广义优势估计）</strong><br><br>GAE（Generalized Advantage Estimation） 是估计策略梯度中优势函数 $A(s,a)$ 的标准方法，通过参数 $\lambda \in [0,1]$ 在偏差（bias）和方差（variance）之间平滑权衡。	"<strong>核心公式</strong><pre>$$
+\nabla_\theta J(\theta) = \mathbb{E}\left[ \nabla_\theta \log \pi_\theta(a \mid s) \cdot A^\pi(s, a) \right]
+$$</pre><br><br><strong>关联概念</strong><ul><li>Bellman Equation</li><li>Policy Optimization</li><li>Reinforcement Learning</li></ul>"	robotics::formalization::gae
+<strong>HJB 方程（Hamilton-Jacobi-Bellman）</strong><br><br>HJB 方程是连续时间最优控制的基本方程，给出了最优值函数 $V^*(x,t)$ 满足的偏微分方程（PDE）。它是 Bellman 最优方程在连续时间域的推广。	"<strong>核心公式</strong><pre>$$
+V^*(x, t) = \min_{u(\cdot)} \left[ \int_t^T \ell(x(\tau), u(\tau))\, d\tau + \Phi(x(T)) \right]
+$$</pre><br><br><strong>关联概念</strong><ul><li>Bellman Equation</li><li>LQR</li><li>Trajectory Optimization</li><li>Optimal Control</li></ul>"	robotics::formalization::hjb
+<strong>LQR / iLQR</strong><br><br>LQR（Linear Quadratic Regulator，线性二次调节器）：最优控制中最经典的解析解，针对线性系统 + 二次代价函数，给出最优状态反馈增益的闭式解。iLQR（iterative LQR）是其非线性扩展，通过迭代线性化求解非线性轨迹优化。	"<strong>核心公式</strong><pre>$$
+x_{t+1} = A x_t + B u_t
+$$</pre><br><br><strong>关联概念</strong><ul><li>Optimal Control (OCP)</li><li>Trajectory Optimization</li><li>Model Predictive Control (MPC)</li><li>Bellman 方程</li><li>Lyapunov 稳定性</li><li>Crocoddyl</li></ul>"	robotics::formalization::lqr
+"<strong>Lyapunov 稳定性</strong><br><br>Lyapunov 稳定性：通过构造一个随系统状态变化的标量函数 $V(x)$ 来判断平衡点附近的误差是否收敛。对机器人控制来说，它回答的是：""这个控制器不仅能把误差压小，而且能持续保持稳定吗？"""	"<strong>核心公式</strong><pre>$$
+\dot{x} = f(x)
+$$</pre><br><br><strong>关联概念</strong><ul><li>LQR / iLQR</li><li>Whole-Body Control</li><li>Locomotion</li><li>Centroidal Dynamics</li><li>Capture Point / DCM</li></ul>"	robotics::formalization::lyapunov
+<strong>Markov Decision Process (MDP)</strong><br><br>马尔可夫决策过程：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。	"<strong>核心公式</strong><pre>$$
+M = (S, A, P, R, \gamma)
+$$</pre><br><br><strong>关联概念</strong><ul><li>Reinforcement Learning</li><li>Optimal Control</li><li>Reward Design</li><li>POMDP</li></ul>"	robotics::formalization::mdp
+<strong>POMDP（部分可观测马尔可夫决策过程）</strong><br><br>POMDP 是 MDP 的扩展，适用于智能体无法直接观测完整系统状态的场景——几乎所有真实机器人系统都是 POMDP。	"<strong>核心公式</strong><pre>$$
+\mathcal{M} = (S, A, T, R, \Omega, O, \gamma)
+$$</pre><br><br><strong>关联概念</strong><ul><li>MDP</li><li>State Estimation</li><li>Reinforcement Learning</li><li>Sim2Real</li></ul>"	robotics::formalization::pomdp

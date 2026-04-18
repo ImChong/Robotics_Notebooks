@@ -1,0 +1,86 @@
+[
+  {
+    "query": "Lyapunov stability",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/lyapunov.md"],
+    "expected_top_k": 5,
+    "note": "稳定性基础页面必须命中"
+  },
+  {
+    "query": "稳定性 控制",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/lyapunov.md"],
+    "expected_top_k": 5,
+    "note": "中文稳定性查询"
+  },
+  {
+    "query": "DAgger 行为克隆",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/imitation-learning.md"],
+    "expected_top_k": 5,
+    "note": "DAgger 关联到模仿学习页"
+  },
+  {
+    "query": "behavior cloning compounding error",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/behavior-cloning.md"],
+    "expected_top_k": 5,
+    "note": "BC 累积误差 → behavior-cloning 专页"
+  },
+  {
+    "query": "VLA foundation policy manipulation",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/vla.md"],
+    "expected_top_k": 5,
+    "note": "VLA 专页必须命中"
+  },
+  {
+    "query": "sim2real 域随机化",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/sim2real.md"],
+    "expected_top_k": 5,
+    "note": "sim2real 核心页必须命中"
+  },
+  {
+    "query": "地形适应 terrain",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/terrain-adaptation.md"],
+    "expected_top_k": 5,
+    "note": "地形适应概念页"
+  },
+  {
+    "query": "接触力 摩擦锥",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/contact-dynamics.md"],
+    "expected_top_k": 5,
+    "note": "接触动力学关键词"
+  },
+  {
+    "query": "WBC 全身控制 QP",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/whole-body-control.md"],
+    "expected_top_k": 3,
+    "note": "WBC 核心页必须前三"
+  },
+  {
+    "query": "MPC 模型预测控制",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/model-predictive-control.md"],
+    "expected_top_k": 3,
+    "note": "MPC 核心页必须前三"
+  },
+  {
+    "query": "RL IL 模仿学习 对比",
+    "mode": "bm25",
+    "must_include": ["wiki/comparisons/rl-vs-il.md"],
+    "expected_top_k": 5,
+    "note": "RL vs IL 对比页"
+  },
+  {
+    "query": "PPO policy gradient 强化学习",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/reinforcement-learning.md"],
+    "expected_top_k": 5,
+    "note": "RL 核心方法页必须命中"
+  }
+]

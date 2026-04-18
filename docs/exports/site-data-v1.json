@@ -49,17 +49,17 @@
         "tag": "control",
         "entry_items": [
           "wiki-tasks-balance-recovery",
+          "wiki-tasks-bimanual-manipulation",
+          "wiki-comparisons-clf-vs-cbf",
           "wiki-concepts-capture-point-dcm",
           "wiki-concepts-centroidal-dynamics",
           "wiki-formalizations-contact-complementarity",
           "wiki-concepts-contact-dynamics",
           "wiki-concepts-contact-estimation",
           "wiki-concepts-contact-rich-manipulation",
-          "entity-crocoddyl",
-          "wiki-concepts-curriculum-learning",
-          "wiki-methods-dagger",
-          "wiki-concepts-domain-randomization",
-          "entity-drake"
+          "wiki-concepts-control-barrier-function",
+          "wiki-formalizations-control-lyapunov-function",
+          "entity-crocoddyl"
         ],
         "references": [
           "reference-papers-sim2real",
@@ -85,6 +85,7 @@
         "entry_items": [
           "wiki-methods-behavior-cloning",
           "wiki-formalizations-bellman-equation",
+          "wiki-comparisons-clf-vs-cbf",
           "wiki-concepts-contact-dynamics",
           "wiki-concepts-contact-estimation",
           "wiki-concepts-curriculum-learning",
@@ -93,8 +94,7 @@
           "wiki-concepts-footstep-planning",
           "wiki-concepts-foundation-policy",
           "wiki-formalizations-gae",
-          "wiki-concepts-gait-generation",
-          "wiki-formalizations-hjb"
+          "wiki-concepts-gait-generation"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -121,16 +121,16 @@
         "entry_items": [
           "wiki-tasks-balance-recovery",
           "wiki-methods-behavior-cloning",
+          "wiki-tasks-bimanual-manipulation",
+          "wiki-comparisons-clf-vs-cbf",
           "wiki-concepts-centroidal-dynamics",
           "wiki-concepts-contact-dynamics",
           "wiki-concepts-contact-estimation",
           "wiki-concepts-contact-rich-manipulation",
+          "wiki-concepts-control-barrier-function",
           "wiki-methods-dagger",
           "wiki-methods-diffusion-policy",
-          "wiki-concepts-floating-base-dynamics",
-          "wiki-concepts-foundation-policy",
-          "wiki-concepts-hqp",
-          "wiki-methods-imitation-learning"
+          "wiki-concepts-floating-base-dynamics"
         ],
         "references": [
           "reference-papers-imitation-learning",
@@ -710,6 +710,34 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-concepts-control-barrier-function": {
+        "id": "wiki-concepts-control-barrier-function",
+        "title": "Control Barrier Function（控制屏障函数）",
+        "type": "wiki_page",
+        "path": "wiki/concepts/control-barrier-function.md",
+        "summary": "CBF 回答的是：\"给定一个当前控制律，如何在最小修改的前提下，保证系统状态永远不进入危险区域？\" 其核心是把安全性转化为对控制输入的线性约束，进而通过 QP（二次规划）实时求解",
+        "content_markdown": "---\ntype: concept\ntags: [control, safety, cbf, qp, optimization, humanoid, whole-body-control]\nstatus: stub\nsummary: \"Control Barrier Function（控制屏障函数）通过维持 h(x)≥0 来为机器人系统提供可证明的安全保证，常与 QP 结合嵌入实时控制回路。\"\nsources:\n  - ../../sources/papers/optimal_control_theory.md\nrelated:\n  - ./whole-body-control.md\n  - ./contact-dynamics.md\n  - ../formalizations/lqr.md\n  - ../formalizations/control-lyapunov-function.md\n  - ../comparisons/clf-vs-cbf.md\n---\n\n# Control Barrier Function（控制屏障函数）\n\n**控制屏障函数（Control Barrier Function，CBF）**：一种将系统安全约束转化为可在控制层实时强制执行的数学工具。通过定义一个标量函数 $h(x)$，使得 $h(x) \\geq 0$ 对应\"安全集\"，并构造使系统始终保持在安全集内的控制条件。\n\n## 一句话定义\n\nCBF 回答的是：**\"给定一个当前控制律，如何在最小修改的前提下，保证系统状态永远不进入危险区域？\"** 其核心是把安全性转化为对控制输入的线性约束，进而通过 QP（二次规划）实时求解。\n\n## 为什么重要\n\n在机器人控制中，稳定性与安全性是两个不同的问题：\n\n- **稳定性**：系统能否收敛到目标状态（CLF 负责）\n- **安全性**：系统是否避免了某些危险配置（CBF 负责）\n\n传统方法把安全约束编码为惩罚项（软约束），无法提供可证明保证。CBF 的优势在于：\n\n1. **可证明的安全性**：在 CBF 条件满足时，安全集的不变性可以用 Lyapunov 理论严格证明\n2. **计算高效**：安全约束被线性化为 QP 约束，求解速度足以满足实时控制（1kHz+）\n3. **可与任意上层控制器结合**：作为\"安全过滤器\"叠加在 WBC、MPC 或学习策略之上\n4. **与物理约束天然对接**：接触力锥约束、关节限位、碰撞避免都可建模为 CBF\n\n## 核心定义\n\n### 安全集与屏障函数\n\n给定一个连续时间仿射控制系统：\n\n$$\\dot{x} = f(x) + g(x)u$$\n\n定义**安全集** $\\mathcal{C}$ 为：\n\n$$\\mathcal{C} = \\{x \\in \\mathbb{R}^n \\mid h(x) \\geq 0\\}$$\n\n其中 $h: \\mathbb{R}^n \\to \\mathbb{R}$ 是一个连续可微函数。$h(x) \\geq 0$ 对应安全区域，$h(x) < 0$ 对应危险区域。\n\n### CBF 条件（一阶 CBF）\n\n$h$ 是一个**控制屏障函数**，当且仅当存在一个扩展类 $\\mathcal{K}$ 函数 $\\alpha$，使得对所有 $x \\in \\mathcal{C}$ 存在控制输入 $u$，满足：\n\n$$\\dot{h}(x, u) = \\frac{\\partial h}{\\partial x} [f(x) + g(x)u] \\geq -\\alpha(h(x))$$\n\n直觉解释：$h$ 的时间导数下界由 $-\\alpha(h(x))$ 控制。当 $h(x)$ 接近 0（接近边界）时，$-\\alpha(h(x))$ 也接近 0，强迫系统减慢\"撞墙\"的速度。一旦 $h(x) > 0$（深处），$-\\alpha(h(x))$ 可以较大，允许系统自由运动。\n\n常见选择：$\\alpha(h) = \\gamma h$（线性类 K 函数），则条件变为：\n\n$$\\dot{h}(x, u) \\geq -\\gamma h(x)$$\n\n### 集合不变性证明\n\n若上述 CBF 条件在所有时刻成立，则 $\\mathcal{C}$ 是前向不变集（forward invariant set）：若初始状态 $x(0) \\in \\mathcal{C}$，则对所有 $t \\geq 0$ 有 $x(t) \\in \\mathcal{C}$。这由比较引理（Comparison Lemma）直接给出。\n\n## CBF-QP：实时安全过滤器\n\n### 基本形式\n\n给定一个\"名义控制律\" $u_{nom}$（来自 WBC、MPC 或学习策略），CBF-QP 对其做最小修改，使安全约束满足：\n\n$$\\min_{u} \\quad \\frac{1}{2} \\|u - u_{nom}\\|^2$$\n$$\\text{s.t.} \\quad \\frac{\\partial h}{\\partial x} g(x) u \\geq -\\frac{\\partial h}{\\partial x} f(x) - \\gamma h(x)$$\n\n这是一个含线性约束的 QP，可在微秒级内求解。CBF 约束对控制输入 $u$ 是线性的（因为系统对 $u$ 是仿射的），这是 CBF 方法能实时化的关键。\n\n### 多约束扩展\n\n实际系统往往有多个安全约束（关节限位、碰撞避免、接触力锥等），每个约束对应一个 $h_i(x)$：\n\n$$\\min_{u} \\quad \\frac{1}{2} \\|u - u_{nom}\\|^2 + \\lambda \\xi$$\n$$\\text{s.t.} \\quad \\dot{h}_i(x, u) \\geq -\\gamma_i h_i(x) - \\xi, \\quad \\forall i$$\n\n引入松弛变量 $\\xi \\geq 0$ 处理约束冲突（feasibility relaxation），代价函数中用权重 $\\lambda$ 惩罚松弛量。\n\n## CBF 在人形机器人中的应用\n\n### 接触力安全约束\n\n脚与地面的接触力必须在摩擦锥内，否则脚会打滑：\n\n$$h_{friction}(f) = \\mu f_z - \\sqrt{f_x^2 + f_y^2} \\geq 0$$\n\n其中 $\\mu$ 是摩擦系数，$f_z$ 是法向力，$f_x, f_y$ 是切向力。用 CBF-QP 在 WBC 力分配时强制这一约束。\n\n### 关节限位约束\n\n关节角度 $q_i$ 必须保持在 $[q_{min}, q_{max}]$ 内：\n\n$$h_{joint}^+(q_i) = q_{max} - q_i \\geq 0$$\n$$h_{joint}^-(q_i) = q_i - q_{min} \\geq 0$$\n\n### 碰撞避免\n\n定义机器人与障碍物之间的最小距离为 $d(x)$，令：\n\n$$h_{coll}(x) = d(x) - d_{safe}$$\n\n当 $d(x) \\to d_{safe}$ 时，CBF 自动减小接近速度，实现软减速。\n\n## 高阶 CBF（HOCBF）\n\n当系统的相对阶（relative degree）大于 1 时（即控制输入需要经过多次微分才能出现在 $\\dot{h}$ 中），需要用**高阶 CBF**。对于机器人动力学（位置约束的相对阶通常为 2），定义中间量：\n\n$$\\psi_0(x) = h(x)$$\n$$\\psi_1(x) = \\dot{\\psi}_0 + \\alpha_1(\\psi_0)$$\n\n约束条件变为 $\\dot{\\psi}_1(x, u) \\geq -\\alpha_2(\\psi_1(x))$，其对控制输入 $u$ 仍然是线性的。\n\n## 常见误区\n\n1. **CBF 不等于稳定性**：CBF 只保证安全集的不变性，不保证系统收敛到目标状态——这是 CLF 的工作。两者需要联合使用（CLF-CBF-QP）。\n\n2. **CBF 条件可能无解**：当多个 CBF 约束互相冲突时，QP 可能无可行解（infeasible）。需要引入松弛变量或调整约束优先级。\n\n3. **$h(x)$ 的设计是关键**：$h$ 需要满足一定的正则性条件，且 $\\partial h / \\partial x \\cdot g(x) \\neq 0$（否则约束退化）。设计不当的 $h$ 会导致保守性过高或约束失效。\n\n4. **离散时间系统需要特殊处理**：上述分析基于连续时间，离散时间版本需要用离散 CBF（DCBF），约束形式有所不同。\n\n## 参考来源\n\n- Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CBF-QP 奠基论文\n- Ames et al., *Control Barrier Functions: Theory and Applications* (ECC, 2019) — 综述\n- [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与安全约束背景\n\n## 关联页面\n\n- [Whole-Body Control](./whole-body-control.md) — CBF 作为安全过滤器叠加在 WBC 之上\n- [Contact Dynamics](./contact-dynamics.md) — 接触力锥约束是 CBF 在机器人中的主要应用场景\n- [LQR](../formalizations/lqr.md) — CBF-QP 与 LQR 都是基于 QP 的实时优化，可结合使用\n- [Control Lyapunov Function](../formalizations/control-lyapunov-function.md) — CLF 负责稳定性，CBF 负责安全性，联合形成 CLF-CBF-QP\n- [CLF vs CBF](../comparisons/clf-vs-cbf.md) — 两者的详细对比与选型指南\n\n## 推荐继续阅读\n\n- Ames et al., [*Control Barrier Functions: Theory and Applications*](https://arxiv.org/abs/1903.11199)\n- Wei et al., *Safe Control with Learning-Based CBF Estimation* — 学习 CBF 方向\n- [CLF vs CBF 对比](../comparisons/clf-vs-cbf.md)\n\n## 一句话记忆\n\n> CBF 把安全约束变成 QP 里的线性不等式，让机器人控制器在保持名义性能的同时，以可证明的方式永远不进入危险区域。",
+        "tags": [
+          "concept",
+          "humanoid",
+          "control",
+          "dynamics",
+          "optimization",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-whole-body-control",
+          "wiki-concepts-contact-dynamics",
+          "wiki-formalizations-lqr",
+          "wiki-formalizations-control-lyapunov-function",
+          "wiki-comparisons-clf-vs-cbf",
+          "sources-papers-optimal-control-theory"
+        ],
+        "source_links": [
+          "https://arxiv.org/abs/1903.11199"
+        ],
+        "status": "active"
+      },
       "wiki-concepts-curriculum-learning": {
         "id": "wiki-concepts-curriculum-learning",
         "title": "Curriculum Learning（课程学习）",
@@ -828,7 +856,7 @@
         "type": "wiki_page",
         "path": "wiki/concepts/foundation-policy.md",
         "summary": "Foundation Policy（基础策略模型）：在大规模多任务、多机器人形态演示数据上预训练的通用机器人策略，通过\"规模化预训练 + 任务微调\"范式，将跨任务泛化能力迁移到新场景——是 NLP 基础模型范式向物理控制的延伸",
-        "content_markdown": "---\ntype: concept\ntags: [foundation-policy, vla, rt1, rt2, pi0, octo, generalist, pretraining, manipulation]\nrelated:\n  - ../methods/imitation-learning.md\n  - ../methods/diffusion-policy.md\n  - ../methods/policy-optimization.md\n  - ../methods/model-based-rl.md\n  - ../tasks/loco-manipulation.md\n  - ../tasks/locomotion.md\n  - ../tasks/manipulation.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/imitation_learning.md\nsummary: \"Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。\"\n---\n\n# Foundation Policy（基础策略模型）\n\n## 一句话定义\n\n**Foundation Policy（基础策略模型）**：在大规模多任务、多机器人形态演示数据上预训练的通用机器人策略，通过\"规模化预训练 + 任务微调\"范式，将跨任务泛化能力迁移到新场景——是 NLP 基础模型范式向物理控制的延伸。\n\n## 为什么重要\n\n> \"规模化数据 + Transformer 架构 → 跨任务泛化\" — RT-1 的核心命题，开创了机器人基础模型方向。\n\n传统机器人策略学习每个任务独立训练，无法复用跨任务知识。基础策略模型试图从根本上解决这一问题：训练一次，泛化到数百乃至数千个任务。\n\n---\n\n## 代表模型\n\n### RT-1（Brohan et al., 2022）\n- **数据**：130k+ 真实机器人操作演示，覆盖 700+ 技能\n- **架构**：Transformer + EfficientNet 视觉编码器，直接输出 token 化动作\n- **意义**：首个在大规模真实数据上证明泛化能力的机器人 Transformer 模型\n\n### RT-2（Brohan et al., 2023）\n- **架构**：VLA（Vision-Language-Action）模型；基于 PaLM-E 视觉-语言大模型微调\n- **创新**：Web 知识（语言常识、视觉语义）直接迁移到物理控制\n- **结果**：泛化能力显著超过 RT-1；可通过自然语言指令驱动低级动作\n\n### π₀（Black et al., 2024）\n- **架构**：VLA + Flow Matching 连续动作生成\n- **意义**：Physical Intelligence 核心模型；统一了 IL、RL 和 VLA 三类方法\n- **优势**：Flow Matching 生成连续动作分布，质量优于 Transformer 直接回归；适合人形操作任务\n\n### Octo（2023）\n- **数据**：Open X-Embodiment 800k 演示，跨 22 种机器人形态\n- **意义**：第一个开源通用机器人策略；多形态预训练 + fine-tune 范式被广泛采用\n\n### TD-MPC2（Hansen et al., 2024）\n- **架构**：隐空间世界模型 + Temporal Difference Learning\n- **创新**：单一模型在 80+ 任务上统一训练；model-based RL 在样本效率上的突破\n\n---\n\n## 核心架构范式\n\n```\n视觉输入（摄像头）\n语言指令（目标描述）\n        ↓\n  视觉-语言编码器\n（CLIP / PaLM-E / Flamingo）\n        ↓\n  动作解码器\n  （Transformer / Diffusion / Flow Matching）\n        ↓\n  低级关节动作 / 末端位姿\n```\n\n**VLA（Vision-Language-Action）** 是当前主流架构：语言作为任务规范，视觉作为状态输入，输出低级机器人控制指令。\n\n---\n\n## 与传统方法的对比\n\n| 维度 | 传统 BC / RL | Foundation Policy |\n|------|------------|-------------------|\n| 训练数据 | 单任务演示（百~千条） | 多任务大规模（10万~百万条） |\n| 泛化方式 | 任务特定 | 零样本 / 少样本迁移 |\n| 新任务适应 | 重新训练 | Fine-tune 或 Prompt |\n| 计算成本 | 低 | 极高（预训练阶段） |\n| 控制精度 | 高（专用策略） | 中（通用策略代价） |\n\n---\n\n## 当前局限\n\n1. **数据规模是瓶颈**：RT-1 需要 130k+ 真实演示；数据采集成本极高，异构性大\n2. **Locomotion 基础模型尚未出现**：当前基础模型主要针对操作（pick-place）；跨地形、跨形态的 locomotion 基础模型是下一个前沿\n3. **低级控制精度不足**：通用模型在精细操作（螺丝拧紧、接线）上仍弱于专用策略\n4. **实时性**：大模型推理延迟与机器人控制高频需求（100Hz+）之间仍有矛盾\n\n---\n\n## 关联页面\n- [模仿学习（Imitation Learning）](../methods/imitation-learning.md)\n- [Diffusion Policy](../methods/diffusion-policy.md)\n- [VLA](../methods/vla.md)\n- [Policy Optimization](../methods/policy-optimization.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [操作任务（Manipulation）](../tasks/manipulation.md)\n\n## 参考来源\n- [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)\n- [imitation_learning.md](../../sources/papers/imitation_learning.md)",
+        "content_markdown": "---\ntype: concept\ntags: [foundation-policy, vla, rt1, rt2, pi0, octo, generalist, pretraining, manipulation]\nrelated:\n  - ../methods/imitation-learning.md\n  - ../methods/diffusion-policy.md\n  - ../methods/policy-optimization.md\n  - ../methods/model-based-rl.md\n  - ../tasks/loco-manipulation.md\n  - ../tasks/locomotion.md\n  - ../tasks/manipulation.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/imitation_learning.md\nsummary: \"Foundation Policy 指在大规模多任务机器人数据上预训练的通用策略模型，是 VLA 和通用操作策略的抽象母类。\"\n---\n\n# Foundation Policy（基础策略模型）\n\n## 一句话定义\n\n**Foundation Policy（基础策略模型）**：在大规模多任务、多机器人形态演示数据上预训练的通用机器人策略，通过\"规模化预训练 + 任务微调\"范式，将跨任务泛化能力迁移到新场景——是 NLP 基础模型范式向物理控制的延伸。\n\n## 为什么重要\n\n> \"规模化数据 + Transformer 架构 → 跨任务泛化\" — RT-1 的核心命题，开创了机器人基础模型方向。\n\n传统机器人策略学习每个任务独立训练，无法复用跨任务知识。基础策略模型试图从根本上解决这一问题：训练一次，泛化到数百乃至数千个任务。\n\n---\n\n## 代表模型\n\n### RT-1（Brohan et al., 2022）\n- **数据**：130k+ 真实机器人操作演示，覆盖 700+ 技能\n- **架构**：Transformer + EfficientNet 视觉编码器，直接输出 token 化动作\n- **意义**：首个在大规模真实数据上证明泛化能力的机器人 Transformer 模型\n\n### RT-2（Brohan et al., 2023）\n- **架构**：VLA（Vision-Language-Action）模型；基于 PaLM-E 视觉-语言大模型微调\n- **创新**：Web 知识（语言常识、视觉语义）直接迁移到物理控制\n- **结果**：泛化能力显著超过 RT-1；可通过自然语言指令驱动低级动作\n\n### π₀（Black et al., 2024）\n- **架构**：VLA + Flow Matching 连续动作生成\n- **意义**：Physical Intelligence 核心模型；统一了 IL、RL 和 VLA 三类方法\n- **优势**：Flow Matching 生成连续动作分布，质量优于 Transformer 直接回归；适合人形操作任务\n\n### Octo（2023）\n- **数据**：Open X-Embodiment 800k 演示，跨 22 种机器人形态\n- **意义**：第一个开源通用机器人策略；多形态预训练 + fine-tune 范式被广泛采用\n\n### TD-MPC2（Hansen et al., 2024）\n- **架构**：隐空间世界模型 + Temporal Difference Learning\n- **创新**：单一模型在 80+ 任务上统一训练；model-based RL 在样本效率上的突破\n\n---\n\n## 核心架构范式\n\n```\n视觉输入（摄像头）\n语言指令（目标描述）\n        ↓\n  视觉-语言编码器\n（CLIP / PaLM-E / Flamingo）\n        ↓\n  动作解码器\n  （Transformer / Diffusion / Flow Matching）\n        ↓\n  低级关节动作 / 末端位姿\n```\n\n**VLA（Vision-Language-Action）** 是当前主流架构：语言作为任务规范，视觉作为状态输入，输出低级机器人控制指令。\n\n---\n\n## 与传统方法的对比\n\n| 维度 | 传统 BC / RL | Foundation Policy |\n|------|------------|-------------------|\n| 训练数据 | 单任务演示（百~千条） | 多任务大规模（10万~百万条） |\n| 泛化方式 | 任务特定 | 零样本 / 少样本迁移 |\n| 新任务适应 | 重新训练 | Fine-tune 或 Prompt |\n| 计算成本 | 低 | 极高（预训练阶段） |\n| 控制精度 | 高（专用策略） | 中（通用策略代价） |\n\n---\n\n## 当前局限\n\n1. **数据规模是瓶颈**：RT-1 需要 130k+ 真实演示；数据采集成本极高，异构性大\n2. **Locomotion 基础模型尚未出现**：当前基础模型主要针对操作（pick-place）；跨地形、跨形态的 locomotion 基础模型是下一个前沿\n3. **低级控制精度不足**：通用模型在精细操作（螺丝拧紧、接线）上仍弱于专用策略\n4. **实时性**：大模型推理延迟与机器人控制高频需求（100Hz+）之间仍有矛盾\n\n---\n\n## 关联页面\n- [模仿学习（Imitation Learning）](../methods/imitation-learning.md)\n- [Diffusion Policy](../methods/diffusion-policy.md)\n- [VLA](../methods/vla.md)\n- [Foundation Policy for Humanoids（Query 实践指南）](../queries/foundation-policy-for-humanoids.md)\n- [Policy Optimization](../methods/policy-optimization.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [操作任务（Manipulation）](../tasks/manipulation.md)\n\n## 参考来源\n- [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)\n- [imitation_learning.md](../../sources/papers/imitation_learning.md)",
         "tags": [
           "concept",
           "locomotion",
@@ -841,6 +869,7 @@
           "wiki-methods-imitation-learning",
           "wiki-methods-diffusion-policy",
           "wiki-methods-vla",
+          "wiki-queries-foundation-policy-for-humanoids",
           "wiki-methods-policy-optimization",
           "wiki-methods-model-based-rl",
           "wiki-tasks-loco-manipulation",
@@ -1282,6 +1311,35 @@
         ],
         "status": "active"
       },
+      "wiki-concepts-whole-body-coordination": {
+        "id": "wiki-concepts-whole-body-coordination",
+        "title": "Whole-Body Coordination（全身协调控制）",
+        "type": "wiki_page",
+        "path": "wiki/concepts/whole-body-coordination.md",
+        "summary": "全身协调控制关注的是\"让整个身体作为一个整体工作\"——不仅仅是让每个关节独立运动，而是确保腿部、躯干、手臂的运动在动力学上相互协调、在任务层面相互支持、在时序上精准配合",
+        "content_markdown": "---\ntype: concept\ntags: [whole-body, coordination, humanoid, locomotion, manipulation, loco-manipulation, control]\nstatus: stub\nsummary: \"全身协调控制（Whole-Body Coordination）关注多肢体、多链接系统在运动和操作中的时空同步问题，是 WBC 的上层概念，在 loco-manipulation 中尤为关键。\"\nsources:\n  - ../../sources/papers/whole_body_control.md\nrelated:\n  - ./whole-body-control.md\n  - ../tasks/loco-manipulation.md\n  - ../tasks/bimanual-manipulation.md\n  - ./centroidal-dynamics.md\n  - ./contact-dynamics.md\n---\n\n# Whole-Body Coordination（全身协调控制）\n\n**全身协调控制（Whole-Body Coordination）**：研究高自由度机器人系统（尤其是人形机器人）如何将全身多个肢体、链接的运动在时间和空间上进行统一协调，使不同子系统的运动相互配合，共同实现全身层面的任务目标。\n\n## 一句话定义\n\n全身协调控制关注的是\"**让整个身体作为一个整体工作**\"——不仅仅是让每个关节独立运动，而是确保腿部、躯干、手臂的运动在动力学上相互协调、在任务层面相互支持、在时序上精准配合。\n\n## 为什么重要\n\n### 从生物学视角\n\n人类的全身协调能力来自数百万年的进化：行走时手臂自然摆动（平衡角动量），投掷时全身旋转（传递动量），搬重物时躯干前倾（调整质心）。这些协调模式深植于神经系统，不需要有意识控制。\n\n机器人缺乏这种内置协调机制——每一种协调行为都需要被明确建模和控制。\n\n### 从工程视角\n\n人形机器人的协调问题在以下方面特别突出：\n\n1. **动力学耦合**：手臂运动改变全身质心位置和角动量，直接影响下肢平衡。若不考虑这种耦合，单独优化手臂和腿的运动会导致整体不稳定。\n\n2. **冗余度利用**：30+ 自由度的人形机器人有大量冗余。全身协调需要有目的地利用冗余（如用躯干运动辅助手臂到达更远目标）而非随意化解。\n\n3. **多目标冲突的调解**：行走任务（保持平衡、跟踪速度）和操作任务（追踪目标、精确抓取）可能对质心轨迹和接触力提出相互冲突的需求，协调控制需要系统地解决这些冲突。\n\n4. **接触拓扑变化**：行走时接触点不断切换（双支撑→单支撑→飞行），每次切换都改变了系统的约束结构，全身协调必须适应这种动态变化。\n\n## 核心概念\n\n### 1. 运动层级（Motion Hierarchy）\n\n全身协调通常通过任务优先级框架实现：\n\n```\n层级 1（最高优先级）：重心/质心控制（保持平衡）\n层级 2：接触力/步态控制（维持稳定接触）\n层级 3：任务空间运动（末端执行器轨迹）\n层级 4：关节姿态保持（避免奇异配置）\n```\n\n高优先级任务的零空间（null space）被低优先级任务用来完成次要目标，互不干扰。\n\n### 2. 角动量管理（Angular Momentum Regulation）\n\n手臂运动会产生角动量，干扰躯干姿态和行走稳定性。全身协调的关键之一是**主动管理全身角动量**：\n\n$$\\dot{H}_{CoM} = \\sum_i (r_i - r_{CoM}) \\times f_i^{contact}$$\n\n机器人可以通过手臂运动产生\"反向\"角动量来补偿腿部步态引起的扰动（如人类行走时手臂自然前后摆动的原理）。\n\n### 3. 冗余度解析（Redundancy Resolution）\n\n当任务约束不足以完全确定全身运动时，冗余度提供了额外自由度。全身协调通过以下方式利用冗余：\n\n- **次要任务（Secondary Tasks）**：在主任务零空间内最小化关节运动、避免奇异构型、优化灵活性\n- **能量优化**：选择最小化关节力矩的全身配置\n- **预整姿（Pre-shaping）**：提前调整躯干和肢体配置，为下一步操作做准备\n\n### 4. 全身质心协调\n\n全身协调的最基础约束来自质心动力学：\n\n$$m\\ddot{r}_{CoM} = \\sum_i f_i^{contact} + mg$$\n\n$$\\dot{H}_{CoM} = \\sum_i \\tau_i^{contact}$$\n\n无论执行什么上层任务，全身运动必须满足这个质心动力学方程，这是全身协调的物理底线。\n\n## 全身协调 vs Whole-Body Control (WBC)\n\n**WBC 和全身协调是什么关系？**\n\n| 维度 | WBC | 全身协调 |\n|------|-----|---------|\n| 层级 | 控制实现层 | 概念/目标层 |\n| 关注点 | 如何求解关节力矩（优化/QP） | 多肢体运动的时空配合原则 |\n| 输出 | 具体的关节命令 | 设计原则和架构指导 |\n| 典型工具 | TSID、HQP、Crocoddyl | 概念框架，无固定实现 |\n\nWBC 是实现全身协调的**具体技术手段**；全身协调是 WBC 需要达到的**目标语义**。一个 WBC 控制器可能存在技术上可行但\"协调感\"很差的解（如不自然的手臂摆动），全身协调研究关注的正是这类\"自然性\"和\"效率性\"。\n\n## 在 Loco-Manipulation 中的作用\n\nLoco-Manipulation（边走边操作）是全身协调最复杂的场景：\n\n### 动力学耦合的具体体现\n\n```\n[操作任务] → 手臂需要施力 → 手臂运动/接触力 \n         → 改变全身角动量 → 影响步态稳定性\n         → 需要腿部补偿   → 影响行走速度和轨迹\n         → 反馈到操作精度（行走抖动影响手臂末端）\n```\n\n这个耦合循环说明，在 loco-manipulation 中，操作精度和行走稳定性是**相互制约**的，不能独立优化。\n\n### 协调策略\n\n**策略1：独立控制 + 前馈补偿**\n- 行走控制器 + 操作控制器独立运行\n- 操作控制器通过前馈将手臂运动引起的质心扰动补偿给行走控制器\n- 简单但补偿精度有限\n\n**策略2：统一优化（Unified WBC）**\n- 将行走任务和操作任务纳入同一 QP 优化\n- 质心约束自动调解两者的冲突\n- 理论最优但计算复杂\n\n**策略3：分层协调**\n- 质心层：维持全身平衡（高优先级）\n- 步态层：执行行走规划（中优先级）\n- 操作层：执行末端轨迹（低优先级，在零空间内）\n\n## 学习方法中的全身协调\n\n传统方法通过显式建模实现协调，学习方法则试图从数据中隐式学习：\n\n### 模仿学习路线\n\n- **全身动作捕获**：记录人类在操作时的完整全身运动（含行走和双臂动作）\n- **运动重定向（Motion Retargeting）**：将人类运动映射到机器人关节空间，保留协调结构\n- **策略学习**：从重定向后的演示数据中学习全身协调策略\n\n挑战：人机形态差异（比例、关节范围、质量分布）使运动重定向精度有限，协调结构可能在重定向中扭曲。\n\n### 强化学习路线\n\n- 设计奖励函数同时激励行走质量和操作精度\n- 自动发现协调策略，但训练困难、协调行为可能不自然\n- 可以通过参考运动（reference motion）引导协调姿态\n\n## 常见误区\n\n1. **协调 ≠ 同步**：全身协调不是让所有关节同时运动，而是让不同关节在**各自适当的时机**运动，并相互配合。\n\n2. **高自由度不等于高协调**：自由度多提供了更多可能性，但不自动产生协调——协调需要显式设计或学习。\n\n3. **局部优化的陷阱**：独立优化手臂轨迹和腿部步态，再把结果叠加，几乎总是次优的。真正的全身协调需要全局考量。\n\n## 参考来源\n\n- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — 全身协调层级控制奠基工作\n- Cheng et al., *Expressive Whole-Body Control for Humanoid Robots* (2024) — 学习方法实现全身协调\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — WBC / TSID / HQP 技术实现背景\n\n## 关联页面\n\n- [Whole-Body Control (WBC)](./whole-body-control.md) — 全身协调的核心实现工具\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身协调最复杂的应用场景\n- [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调是全身协调的子问题\n- [Centroidal Dynamics](./centroidal-dynamics.md) — 全身协调的物理基础\n- [Contact Dynamics](./contact-dynamics.md) — 接触力管理是全身协调的关键约束\n\n## 推荐继续阅读\n\n- Cheng et al., [*Expressive Whole-Body Control for Humanoid Robots*](https://arxiv.org/abs/2402.16796)\n- [TSID](./tsid.md) — 全身协调控制的核心实现框架\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身协调的终极挑战\n\n## 一句话记忆\n\n> 全身协调控制不是让每个关节独立跑，而是让整个身体像一个有机体一样运作——腿走路时手臂自然摆动，手臂操作时躯干自动补偿，所有运动在动力学层面互相支持而非互相干扰。",
+        "tags": [
+          "concept",
+          "humanoid",
+          "locomotion",
+          "control",
+          "dynamics",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-whole-body-control",
+          "wiki-tasks-loco-manipulation",
+          "wiki-tasks-bimanual-manipulation",
+          "wiki-concepts-centroidal-dynamics",
+          "wiki-concepts-contact-dynamics",
+          "sources-papers-whole-body-control",
+          "wiki-concepts-tsid"
+        ],
+        "source_links": [
+          "https://arxiv.org/abs/2402.16796"
+        ],
+        "status": "active"
+      },
       "wiki-methods-behavior-cloning": {
         "id": "wiki-methods-behavior-cloning",
         "title": "Behavior Cloning（行为克隆）",
@@ -1599,6 +1657,33 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-tasks-bimanual-manipulation": {
+        "id": "wiki-tasks-bimanual-manipulation",
+        "title": "Bimanual Manipulation（双臂协调操作）",
+        "type": "wiki_page",
+        "path": "wiki/tasks/bimanual-manipulation.md",
+        "summary": "双臂操作不是\"两个单臂任务的叠加\"，而是两臂之间存在刚性耦合（共同操持物体）或协调约束（时序配合）的整体任务，需要将两臂建模为一个统一系统来规划和控制",
+        "content_markdown": "---\ntype: task\ntags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]\nstatus: stub\nsummary: \"双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。\"\nsources:\n  - ../../sources/papers/imitation_learning.md\nrelated:\n  - ./manipulation.md\n  - ./loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../concepts/whole-body-coordination.md\n  - ./teleoperation.md\n---\n\n# Bimanual Manipulation（双臂协调操作）\n\n**双臂协调操作（Bimanual Manipulation）**：同时使用两只手臂协同完成一个任务，两臂之间存在物理或时序上的依赖关系——典型任务包括双手递接、拧瓶盖、折叠衣服、组装零件。单臂独立控制无法完成这类任务。\n\n## 一句话定义\n\n双臂操作不是\"两个单臂任务的叠加\"，而是两臂之间存在**刚性耦合（共同操持物体）**或**协调约束（时序配合）**的整体任务，需要将两臂建模为一个统一系统来规划和控制。\n\n## 为什么重要\n\n人类日常操作任务中，约 70% 需要双手协作：\n\n- 开瓶盖（一手固定，一手旋转）\n- 折叠衣物（两手协同对折）\n- 端盘子（双手平衡托举）\n- 组装 IKEA 家具（一手固定，一手拧螺丝）\n- 打包装箱（双手压住箱盖，同时封胶带）\n\n人形机器人的设计初衷就是替代人类完成这类任务，因此双臂操作能力直接决定了人形机器人在实际场景中的可用性。\n\n目前单臂操作（pick-and-place）已相对成熟（ACT、Diffusion Policy 等方法成功率较高），但双臂操作仍是开放挑战：数据采集难、约束建模复杂、策略泛化差。\n\n## 关键挑战\n\n### 1. 双臂闭链约束（Closed-Loop Kinematics）\n\n当两臂同时操持同一物体时，两个末端执行器和物体之间形成**闭合运动链**：\n\n$${}^A T_{obj} \\cdot {}^{obj} T_B = {}^A T_B$$\n\n其中 ${}^A T_{obj}$ 是左臂末端到物体的变换，${}^{obj} T_B$ 是物体到右臂末端的变换。这个等式约束两臂不能独立运动——任何一臂的移动都必须由另一臂补偿，否则物体被拉扯变形（或损坏）。\n\n处理这个约束的方式：\n- **主从控制（Leader-Follower）**：一臂（主）设定轨迹，另一臂（从）用约束计算随动轨迹\n- **混合力/位置控制（Hybrid Force-Position）**：一臂位置控制主导运动，另一臂力控制维持抓持力\n- **虚拟物体坐标（Virtual Object Frame）**：以物体坐标系为参考，统一规划两臂在物体空间中的运动\n\n### 2. 内力（Internal Force）管理\n\n即使两臂末端位置满足约束，两臂也可能对物体施加相互抵消的\"内力\"（internal wrench）。内力不产生净运动，但会造成物体变形、抓持不稳，甚至损坏被操作物。\n\n理想情况：内力最小化（通过优化抓持力分配）\n实际情况：内力的测量和控制需要精确的力/力矩传感器\n\n### 3. 协调时序与同步\n\n许多双臂任务要求精确的时序协调，而非同时动作：\n- 折叠毛巾：一手翻折，另一手固定，交替进行\n- 拧瓶盖：一手的旋转速度必须与另一手的抓紧力同步\n\n学习这类时序依赖关系需要能够捕捉**跨臂时间相关性**的模型架构（如双头 Transformer 或对称 diffusion policy）。\n\n### 4. 数据采集的固有难度\n\n双臂遥操作（bimanual teleoperation）是目前主要的数据来源，但：\n- **双手 VR 手套/外骨骼**：设备昂贵，标定复杂，延迟和人因误差累积\n- **ALOHA 式双手领导者机器人**：成本低但操作精度受限，依赖操作员技能\n- **单机器人遥操作双臂**：认知负载高，人难以自然协调双手\n- **MoCap 数据迁移**：运动重定向（motion retargeting）到机器人双臂仍是研究课题\n\n### 5. 策略架构的设计挑战\n\n双臂操作的策略需要处理：\n- **高维动作空间**：双臂动作空间维度是单臂的两倍（通常 12~28 维）\n- **跨臂依赖**：两臂动作不独立，需要建模它们之间的相互依赖\n- **多模态动作分布**：同一任务可以有多种双手配合方式（无唯一最优）\n\n## 常见方法路线\n\n### 路线 A：模仿学习（IL）\n\n**ACT（Action Chunked Transformers）**（Zhao et al., 2023）是目前双臂操作的主流基线：\n- 双臂关节状态 + 视觉输入 → Transformer → 动作序列（action chunk）\n- 使用 Conditional VAE（CVAE）处理多模态演示数据\n- 在 ALOHA 双臂平台上验证，成功率显著优于单步预测方法\n\n**Diffusion Policy（双臂版）**：\n- 双臂动作联合建模为扩散过程，自然捕捉多模态分布\n- 适合对称或周期性双臂任务\n\n### 路线 B：WBC + 任务空间规划\n\n适合需要精确力控制的工业任务：\n- 上层：规划双臂在任务空间的协调运动轨迹（考虑闭链约束）\n- 中层：TSID/WBC 将任务空间轨迹转化为关节力矩，同时处理内力优化\n- 下层：力/阻抗控制维持接触\n\n**优势**：动力学一致，可精确控制内力\n**劣势**：需要精确建模，对未知物体泛化差\n\n### 路线 C：端到端 RL\n\n从仿真中训练双臂 RL 策略：\n- 奖励设计极为困难（如何量化\"协调\"？）\n- 真实物体接触建模在仿真中不准确，sim2real gap 严重\n- 目前主要在玩具任务（如双臂接球、双臂开门）上有结果\n\n### 近期代表工作\n\n| 工作 | 方法 | 平台 | 关键贡献 |\n|------|------|------|---------|\n| ALOHA / ACT（2023） | IL + CVAE | ALOHA 双臂 | 定义了双臂 IL 的基线范式 |\n| Mobile ALOHA（2024） | IL + 移动底盘 | ALOHA + 底盘 | 双臂 + 移动的融合 |\n| π₀（2024） | VLA + Flow Matching | 人形/桌面 | 统一 loco-manip 的双臂策略 |\n| GELLO（2023） | 低成本遥操作 | 各类机械臂 | 降低双臂数据采集门槛 |\n\n## 与 Loco-Manipulation 的区别\n\n| 维度 | 双臂操作（Bimanual） | 移动操作（Loco-Manip） |\n|------|-------------------|--------------------|\n| 底盘 | 固定或移动底盘 | 必须移动（行走） |\n| 核心挑战 | 双臂协调约束 / 内力 | 全身协调 / 行走稳定性 |\n| 数据采集 | 双臂遥操作 | 全身动作捕获 |\n| 控制复杂度 | 双臂耦合 | 腿+臂耦合（更高） |\n| 当前成熟度 | 有较多研究基线 | 仍是前沿开放问题 |\n\n双臂操作是 loco-manipulation 的子集：一旦机器人开始行走，双臂操作的所有挑战都会叠加上行走稳定性的额外复杂度。\n\n## 评价指标\n\n- **任务成功率**：完成整个双臂任务的比率（而非单臂子步骤）\n- **操作精度**：末端位置误差、物体损坏率\n- **协调性**：两臂时序一致性、内力大小\n- **泛化能力**：对新物体、新摆放位置的适应率\n- **数据效率**：完成任务所需演示数量\n\n## 关联系统/方法\n\n- [Manipulation](./manipulation.md) — 双臂操作的理论基础\n- [Loco-Manipulation](./loco-manipulation.md) — 双臂操作 + 移动的扩展\n- [Whole-Body Control](../concepts/whole-body-control.md) — 处理双臂闭链约束的控制框架\n- [Whole-Body Coordination](../concepts/whole-body-coordination.md) — 多肢体协调的概念框架\n- [Teleoperation](./teleoperation.md) — 双臂数据采集的主要手段\n\n## 参考来源\n\n- Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (RSS, 2023) — ALOHA + ACT 奠基工作\n- Fu et al., *Mobile ALOHA* (2024) — 移动双臂操作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — ACT / ALOHA / Diffusion Policy 摘要\n\n## 推荐继续阅读\n\n- Zhao et al., [*ACT: Action Chunked Transformers*](https://arxiv.org/abs/2304.13705)\n- [ALOHA](https://tonyzhaozh.github.io/aloha/) — 低成本双臂遥操作平台\n- [Whole-Body Coordination](../concepts/whole-body-coordination.md)\n\n## 一句话记忆\n\n> 双臂操作的核心不是\"两个手各做各的\"，而是建模两臂之间的物理耦合和时序协调约束，用统一框架让两只手真正\"合作\"而非\"各自为政\"。",
+        "tags": [
+          "task",
+          "humanoid",
+          "control",
+          "il"
+        ],
+        "related": [
+          "wiki-tasks-manipulation",
+          "wiki-tasks-loco-manipulation",
+          "wiki-concepts-whole-body-control",
+          "wiki-concepts-whole-body-coordination",
+          "wiki-tasks-teleoperation",
+          "sources-papers-imitation-learning"
+        ],
+        "source_links": [
+          "https://arxiv.org/abs/2304.13705",
+          "https://tonyzhaozh.github.io/aloha/"
+        ],
+        "status": "active"
+      },
       "wiki-tasks-loco-manipulation": {
         "id": "wiki-tasks-loco-manipulation",
         "title": "Loco-Manipulation",
@@ -1762,6 +1847,33 @@
           "https://arxiv.org/abs/2603.03279",
           "https://ultra-humanoid.github.io/",
           "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks"
+        ],
+        "status": "active"
+      },
+      "wiki-comparisons-clf-vs-cbf": {
+        "id": "wiki-comparisons-clf-vs-cbf",
+        "title": "CLF vs CBF：稳定性与安全性的对偶工具",
+        "type": "wiki_page",
+        "path": "wiki/comparisons/clf-vs-cbf.md",
+        "summary": "type: comparison。",
+        "content_markdown": "---\ntype: comparison\ntags: [control, safety, clf, cbf, qp, stability, optimization, humanoid]\nstatus: stub\nsummary: \"CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。\"\nsources:\n  - ../../sources/papers/optimal_control_theory.md\nrelated:\n  - ../concepts/control-barrier-function.md\n  - ../formalizations/control-lyapunov-function.md\n  - ../concepts/whole-body-control.md\n  - ../formalizations/lqr.md\n---\n\n# CLF vs CBF：稳定性与安全性的对偶工具\n\n## 比较对象\n\n| 工具 | 全称 | 核心角色 |\n|------|------|---------|\n| **CLF** | Control Lyapunov Function（控制李雅普诺夫函数） | 驱动系统到达目标状态（**稳定性**） |\n| **CBF** | Control Barrier Function（控制屏障函数） | 阻止系统进入危险区域（**安全性**） |\n\n两者均将各自的条件转化为对控制输入的线性约束，嵌入 QP 实时求解——但解决的是完全不同的问题。\n\n## 一句话定义对比\n\n- **CLF**：找一个\"能量函数\" $V(x)$，要求控制输入使其持续下降，直到系统到达目标\n- **CBF**：找一个\"边界函数\" $h(x)$，要求控制输入使其保持非负，从而系统永不越过安全边界\n\n## 核心差异\n\n### 数学条件对比\n\n| 维度 | CLF | CBF |\n|------|-----|-----|\n| 函数类型 | 正定函数 $V(x) > 0$（$V(0) = 0$） | 符号函数 $h(x)$（$h \\geq 0$ 为安全） |\n| 约束方向 | $\\dot{V}(x, u) \\leq -\\alpha(V(x))$ | $\\dot{h}(x, u) \\geq -\\gamma h(x)$ |\n| 约束语义 | $V$ 必须衰减（收敛到 0） | $h$ 不能从正变负（保持安全集） |\n| 控制目标 | 驱动状态到达目标 | 阻止状态离开安全区 |\n| 强制执行方式 | 软约束（通常带松弛 $\\delta$） | 硬约束（不允许违反） |\n| 失效时的处理 | 允许适当放松（牺牲收敛速度） | 不允许放松（安全性绝对优先） |\n\n### 系统行为对比\n\n```\nCLF 视角（稳定性）：\n  状态 x(t) ---CLF驱动---> 目标 x* = 0\n  V(x) 单调递减，指数收敛\n\nCBF 视角（安全性）：\n  状态 x(t) ---CBF保持---> 始终在 {x | h(x)≥0} 内\n  h(x) 保持非负，不越过安全边界\n```\n\n### 约束冲突时的行为\n\n当 CLF 条件（要求快速靠近目标）和 CBF 条件（要求远离危险边界）发生冲突时：\n\n- **CBF 优先**：系统会减慢靠近目标的速度（CLF 松弛），而不是穿越安全边界\n- **结果**：系统可能\"绕路\"抵达目标，或在安全边界附近暂时停留\n\n这种优先级设计反映了一个工程哲学：**安全是硬约束，性能是软目标**。\n\n## 各自适用场景\n\n### 只用 CLF 的场景\n\n**适用条件**：\n- 任务空间中没有障碍物或安全约束\n- 重点是保证跟踪精度和收敛速度\n- 系统工作在安全范围内远离边界\n\n**典型应用**：\n- 机械臂末端轨迹跟踪（无碰撞担忧）\n- 闭环步态稳定（期望步态在吸引子附近）\n- 基于 Energy Shaping 的平衡控制\n\n### 只用 CBF 的场景\n\n**适用条件**：\n- 已有成熟的名义控制律，只需要在其上叠加安全过滤\n- 安全约束是主要设计目标，收敛性由名义控制律保证\n- 需要快速验证一个\"黑盒\"控制器的安全性\n\n**典型应用**：\n- 在 RL 策略上叠加碰撞避免约束（Safe RL）\n- 在 WBC 力分配中强制接触力锥约束\n- 关节限位保护（保护硬件不受损坏）\n\n### CLF-CBF-QP 联合使用的场景\n\n**适用条件**：\n- 需要同时保证到达目标（稳定性）和避免危险（安全性）\n- 约束的冲突需要被系统地解决（QP 自动处理优先级）\n- 要求可证明的稳定性与安全性，而非仅靠启发式调参\n\n**典型应用**：\n- 人形机器人在有障碍物的环境中导航到目标位置\n- 双足行走时的足端安全区约束 + 步态稳定\n- 机械臂操作中的工作空间限制 + 末端轨迹跟踪\n- 与 WBC 集成：CLF 驱动任务完成，CBF 保证接触力和关节安全\n\n## CLF-CBF-QP 联合框架\n\n$$\\min_{u, \\delta} \\quad \\frac{1}{2} \\|u - u_{nom}\\|^2 + p \\delta^2$$\n\n$$\\text{s.t.} \\quad \\dot{V}(x, u) \\leq -c \\cdot V(x) + \\delta \\quad \\text{（CLF 软约束）}$$\n$$\\qquad\\quad \\dot{h}(x, u) \\geq -\\gamma h(x) \\quad \\text{（CBF 硬约束）}$$\n$$\\qquad\\quad u \\in \\mathcal{U}, \\quad \\delta \\geq 0$$\n\n**变量说明**：\n- $u_{nom}$：来自高层控制器（MPC / WBC / RL）的名义控制输入\n- $\\delta$：CLF 松弛变量，$p$ 是惩罚权重\n- $c, \\gamma$：分别控制收敛速率和安全衰减速率的调参数\n- $\\mathcal{U}$：物理约束集（关节限位、力矩上限等）\n\n## 选型决策树\n\n```\n你的主要控制问题是什么？\n│\n├── 主要是\"让系统到达目标\"？\n│   ├── 有安全约束需要强制执行？ → 用 CLF-CBF-QP\n│   └── 无安全约束？ → 用 CLF-QP（或直接 LQR/MPC）\n│\n├── 主要是\"保证安全\"，已有名义控制律？\n│   ├── 需要理论保证？ → 用 CBF-QP（安全过滤器）\n│   └── 只需工程近似？ → 用势能场 / 惩罚项\n│\n└── 既要到达目标，又要保证安全？ → 用 CLF-CBF-QP\n```\n\n## 常见误判\n\n### 误判1：CLF 能保证安全\n\nCLF 只保证系统**收敛**，不阻止系统经过危险区域。在靠近目标的过程中，系统完全可能穿越障碍物（如果没有 CBF 约束）。\n\n### 误判2：CBF 能保证到达目标\n\nCBF 保证系统**留在安全集内**，但安全集内的行为完全取决于名义控制律。如果名义控制律不稳定，CBF 无法让系统到达目标——反而可能在安全边界附近徘徊。\n\n### 误判3：CLF-CBF-QP 总是有可行解\n\n当 CBF 约束非常紧（系统靠近多个安全边界的交叉点），且 CLF 约束与之冲突时，QP 可能无可行解。需要：\n- 软化 CLF 约束（引入松弛）\n- 调整 $\\gamma$ 参数使约束不那么保守\n- 设计 CBF 使安全集的交集非空\n\n### 误判4：两者都适合离散时间系统\n\n连续时间 CLF/CBF 理论不能直接应用于离散时间系统。离散时间需要专门的 DCLF/DCBF，约束形式是差分而非微分。\n\n## 结论\n\n| 问题类型 | 推荐工具 |\n|---------|---------|\n| 只需稳定性，无安全约束 | CLF-QP 或 LQR |\n| 只需安全过滤，名义控制器已有 | CBF-QP |\n| 同时需要稳定性 + 安全性 | CLF-CBF-QP |\n| 系统已用 MPC，只需安全过滤 | 在 MPC 约束中加入 CBF 约束 |\n| RL 策略的安全保证 | CBF-QP 作为后处理层 |\n\n在人形机器人实际工程中，最常见的模式是：**WBC/MPC 提供名义控制律，CBF-QP 作为安全过滤器**，而 CLF 则被\"内化\"到 WBC 的任务空间跟踪误差代价函数中（隐式 CLF）。\n\n## 参考来源\n\n- Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CLF-CBF-QP 奠基论文\n- Sontag, *A universal construction of Artstein's theorem on nonlinear stabilization* (1989) — CLF 理论基础\n- [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与 Lyapunov 方法背景\n\n## 关联页面\n\n- [Control Barrier Function（CBF）](../concepts/control-barrier-function.md) — CBF 详细介绍\n- [Control Lyapunov Function（CLF）](../formalizations/control-lyapunov-function.md) — CLF 详细介绍\n- [Whole-Body Control](../concepts/whole-body-control.md) — CLF-CBF-QP 在全身控制中的应用\n- [LQR](../formalizations/lqr.md) — CLF 的线性系统特例\n\n## 推荐继续阅读\n\n- Ames et al., [*Control Barrier Functions: Theory and Applications*](https://arxiv.org/abs/1903.11199)\n- [CLF 详解](../formalizations/control-lyapunov-function.md)\n- [CBF 详解](../concepts/control-barrier-function.md)\n\n## 一句话记忆\n\n> CLF 是油门（推向目标），CBF 是刹车（不越安全边界）；CLF-CBF-QP 是同时踩油门和刹车——让系统在最快到达目标的同时，永远不越过安全红线。",
+        "tags": [
+          "comparison",
+          "humanoid",
+          "control",
+          "optimization",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-control-barrier-function",
+          "wiki-formalizations-control-lyapunov-function",
+          "wiki-concepts-whole-body-control",
+          "wiki-formalizations-lqr",
+          "sources-papers-optimal-control-theory"
+        ],
+        "source_links": [
+          "https://arxiv.org/abs/1903.11199"
         ],
         "status": "active"
       },
@@ -2001,6 +2113,31 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-formalizations-control-lyapunov-function": {
+        "id": "wiki-formalizations-control-lyapunov-function",
+        "title": "Control Lyapunov Function（控制李雅普诺夫函数）",
+        "type": "wiki_page",
+        "path": "wiki/formalizations/control-lyapunov-function.md",
+        "summary": "CLF 回答的是：\"存在哪个控制输入，能让系统'能量'（Lyapunov 函数）单调递减，直到状态到达目标？\" 它将稳定性设计问题转化为寻找一个满足特定衰减条件的控制律，并可嵌入 QP 实时在线求解",
+        "content_markdown": "---\ntype: formalization\ntags: [control, lyapunov, clf, stability, qp, optimization, safety]\nstatus: stub\nsummary: \"Control Lyapunov Function（控制李雅普诺夫函数）通过构造满足 V̇(x)≤-αV(x) 的标量函数，为控制系统提供可证明的渐近稳定性保证，是 CLF-CBF-QP 框架的稳定性核心。\"\nsources:\n  - ../../sources/papers/optimal_control_theory.md\nrelated:\n  - ../concepts/control-barrier-function.md\n  - ../comparisons/clf-vs-cbf.md\n  - ./lyapunov.md\n  - ./lqr.md\n  - ../concepts/whole-body-control.md\n---\n\n# Control Lyapunov Function（控制李雅普诺夫函数）\n\n**Control Lyapunov Function（CLF）**：一种用于设计使系统渐近稳定的控制律的数学工具。通过找到一个正定标量函数 $V(x)$，使得在某个控制输入下 $\\dot{V}(x)$ 严格为负，从而保证系统状态最终收敛到目标状态。\n\n## 一句话定义\n\n> CLF 回答的是：**\"存在哪个控制输入，能让系统'能量'（Lyapunov 函数）单调递减，直到状态到达目标？\"** 它将稳定性设计问题转化为寻找一个满足特定衰减条件的控制律，并可嵌入 QP 实时在线求解。\n\n## 为什么重要\n\nLyapunov 稳定性分析是控制理论的核心工具，但传统 Lyapunov 方法主要用于**分析**给定控制律的稳定性，而非**综合**使系统稳定的控制律。CLF 弥补了这一鸿沟：\n\n1. **从分析到综合**：CLF 不仅分析稳定性，还直接给出使系统稳定的控制条件（CLF 条件），进而通过 QP 求解满足该条件的控制输入\n2. **与 CBF 的互补性**：CLF 负责驱动系统到达目标（稳定性/性能），CBF 负责保持系统在安全集内（安全性）——两者组合构成 CLF-CBF-QP 框架\n3. **实时控制中的应用**：CLF 条件对控制输入是线性的，可以直接作为 QP 约束，适合嵌入高频控制回路\n4. **理论严谨性**：CLF 提供渐近稳定性的严格数学保证，比单纯的代价函数优化更可靠\n\n## 核心定义\n\n### Lyapunov 稳定性回顾\n\n对于自治系统 $\\dot{x} = f(x)$，若存在正定函数 $V(x)$（$V(0) = 0$，$V(x) > 0 \\; \\forall x \\neq 0$）满足：\n\n$$\\dot{V}(x) = \\frac{\\partial V}{\\partial x} f(x) < 0 \\quad \\forall x \\neq 0$$\n\n则原点全局渐近稳定（GAS）。\n\n### Control Lyapunov Function 定义\n\n对于仿射控制系统 $\\dot{x} = f(x) + g(x)u$，若存在正定函数 $V(x)$ 和扩展类 $\\mathcal{K}$ 函数 $\\alpha$，使得对所有 $x \\neq 0$，**存在**控制输入 $u$，满足：\n\n$$\\dot{V}(x, u) = \\frac{\\partial V}{\\partial x}[f(x) + g(x)u] \\leq -\\alpha(V(x))$$\n\n则称 $V$ 为系统的 **Control Lyapunov Function**。\n\n常见选择 $\\alpha(V) = c \\cdot V$（线性衰减），则条件变为：\n\n$$\\dot{V}(x) \\leq -c \\cdot V(x), \\quad c > 0$$\n\n这保证 $V(x(t)) \\leq V(x(0)) e^{-ct}$，即指数收敛。\n\n### 存在性与充分条件\n\nCLF 的关键性质：**存在 CLF 当且仅当系统可以被渐近稳定化**（在连续时间、非线性系统中，这由 Artstein 定理保证）。因此，CLF 不仅是稳定性工具，也是系统是否能被稳定的等价刻画。\n\n## CLF 条件作为 QP 约束\n\n### 标准 CLF-QP\n\n将 CLF 条件写为对控制输入 $u$ 的线性约束，构建 QP：\n\n$$\\min_{u} \\quad \\frac{1}{2} \\|u - u_{nom}\\|^2 + \\frac{p}{2} \\delta^2$$\n\n$$\\text{s.t.} \\quad \\underbrace{\\frac{\\partial V}{\\partial x} g(x)}_{\\text{行向量}} \\cdot u \\leq -\\frac{\\partial V}{\\partial x} f(x) - c \\cdot V(x) + \\delta$$\n\n其中 $u_{nom}$ 是名义控制律（如 PD 控制），$\\delta \\geq 0$ 是松弛变量，$p$ 是惩罚权重。\n\n注意：CLF 约束要求 $\\dot{V}$ **足够小**（即约束是 $\\leq$ 方向），而 CBF 约束要求 $\\dot{h}$ **足够大**（$\\geq$ 方向）——方向相反。\n\n### CLF 约束的线性性\n\n关键观察：$\\dot{V} = \\frac{\\partial V}{\\partial x}[f(x) + g(x)u]$ 对 $u$ 是仿射的，所以 CLF 约束对 $u$ 是线性的，QP 可高效求解。\n\n## CLF-CBF-QP：联合框架\n\n在实际机器人控制中，往往需要同时保证稳定性（到达目标）和安全性（避免危险区域）。CLF-CBF-QP 将两个约束纳入统一的 QP：\n\n$$\\min_{u, \\delta} \\quad \\frac{1}{2} \\|u - u_{nom}\\|^2 + p \\delta^2$$\n\n$$\\text{s.t.} \\quad \\underbrace{\\dot{V}(x, u) \\leq -c \\cdot V(x) + \\delta}_{\\text{CLF 约束（软）}}$$\n\n$$\\quad\\quad\\quad \\underbrace{\\dot{h}(x, u) \\geq -\\gamma h(x)}_{\\text{CBF 约束（硬）}}$$\n\n$$\\quad\\quad\\quad u \\in \\mathcal{U}, \\quad \\delta \\geq 0$$\n\n**设计决策说明：**\n- CLF 约束通常做**软约束**（引入松弛 $\\delta$）：允许在安全约束紧张时适当牺牲收敛速度\n- CBF 约束通常做**硬约束**：安全性必须绝对保证，不允许松弛\n- 当 CLF 与 CBF 约束发生冲突时，CBF 优先（系统会减速靠近目标，而不是穿越安全边界）\n\n### 可行性分析\n\nCLF-CBF-QP 的可行性取决于：\n1. CBF 约束集 $\\mathcal{C}$ 内存在满足 CBF 条件的控制输入（CBF 本身的条件）\n2. CLF 约束与 CBF 约束不完全冲突（在某些边界情况下可能发生）\n\n当 CLF 约束被软化（引入松弛）时，只要 CBF 约束可行，整个 QP 一定有可行解。\n\n## CLF 在机器人控制中的应用\n\n### 1. 平衡控制中的 CLF 设计\n\n对人形机器人的质心（CoM）高度控制，定义：\n\n$$V(x) = \\frac{1}{2}(h_{CoM} - h_{ref})^2 + \\frac{1}{2}\\dot{h}_{CoM}^2$$\n\n这是一个关于 CoM 位置偏差和速度的二次 Lyapunov 函数，CLF 条件驱动 CoM 回到参考高度。\n\n### 2. 步态稳定中的 CLF\n\n对于双足行走的步态稳定，可以定义 CLF 基于轨道能量（orbital energy）或步态误差，使步态在扰动后能收敛回稳定周期轨道。\n\n### 3. 与 WBC 的集成\n\n在 Whole-Body Control 框架中，CLF 可以作为任务空间轨迹跟踪的稳定性保证：\n\n- 上层：轨迹生成（给出参考状态 $x_{ref}(t)$）\n- 中层：CLF-CBF-QP（求解满足稳定性和安全性的关节加速度）\n- 下层：逆动力学（将加速度转化为关节力矩）\n\n## CLF 与 LQR 的关系\n\nLQR 的代价函数 $V(x) = x^T P x$（其中 $P$ 是 Riccati 方程的解）本身就是一个 CLF：\n\n$$\\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \\leq -\\lambda_{min}(Q) \\|x\\|^2$$\n\n因此 LQR 是 CLF 理论在线性系统上的特例，LQR 的最优代价函数自然满足 CLF 条件。\n\n## 常见误区\n\n1. **CLF 不保证安全性**：CLF 只驱动系统到达目标，不阻止系统经过危险区域。需要 CBF 共同工作才能同时保证稳定性和安全性。\n\n2. **CLF 的存在不等于好找**：虽然 CLF 存在性与可稳定性等价，但对于复杂非线性系统，构造一个有效的 CLF 仍然是开放问题。常用方法：Energy-based CLF、SOS（平方和）优化、学习 CLF。\n\n3. **指数衰减 vs 渐近衰减**：$\\dot{V} \\leq -c V$ 保证指数收敛（更强），而 $\\dot{V} < 0$ 只保证渐近收敛。实际中通常选指数衰减以获得更快的响应和更好的扰动抑制。\n\n4. **离散时间系统**：连续时间 CLF 的理论在离散时间需要修改（条件变为 $V(x_{t+1}) - V(x_t) \\leq -c V(x_t)$），不能直接套用。\n\n## 参考来源\n\n- Sontag, *A universal construction of Artstein's theorem on nonlinear stabilization* (1989) — CLF 奠基理论（Artstein-Sontag 公式）\n- Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CLF-CBF-QP 联合框架\n- [sources/papers/optimal_control_theory.md](../../sources/papers/optimal_control_theory.md) — 最优控制与 Lyapunov 方法背景\n\n## 关联页面\n\n- [Control Barrier Function（CBF）](../concepts/control-barrier-function.md) — 安全性对偶工具，CLF 的搭档\n- [CLF vs CBF](../comparisons/clf-vs-cbf.md) — 两者详细对比与联合使用场景\n- [Lyapunov 稳定性](./lyapunov.md) — CLF 的理论基础\n- [LQR](./lqr.md) — LQR 最优代价函数是线性系统上的 CLF 特例\n- [Whole-Body Control](../concepts/whole-body-control.md) — CLF-CBF-QP 在 WBC 中的实际应用\n\n## 推荐继续阅读\n\n- Ames et al., [*Control Barrier Functions: Theory and Applications*](https://arxiv.org/abs/1903.11199)\n- Galloway et al., *Torque Saturation in Bipedal Robotic Walking through Control Lyapunov Function Based Quadratic Programs*\n- [Control Barrier Function（CBF）](../concepts/control-barrier-function.md)\n\n## 一句话记忆\n\n> CLF 把\"系统稳定性\"转化为\"Lyapunov 函数需以速率 $c$ 指数衰减\"的控制约束，与 CBF 安全约束一起嵌入 QP，构成可证明安全且稳定的实时控制框架。",
+        "tags": [
+          "formalization",
+          "control",
+          "optimization"
+        ],
+        "related": [
+          "wiki-concepts-control-barrier-function",
+          "wiki-comparisons-clf-vs-cbf",
+          "wiki-formalizations-lyapunov",
+          "wiki-formalizations-lqr",
+          "wiki-concepts-whole-body-control",
+          "sources-papers-optimal-control-theory"
+        ],
+        "source_links": [
+          "https://arxiv.org/abs/1903.11199"
+        ],
+        "status": "active"
+      },
       "wiki-formalizations-ekf": {
         "id": "wiki-formalizations-ekf",
         "title": "Extended Kalman Filter (EKF)",
@@ -2195,13 +2332,39 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-queries-foundation-policy-for-humanoids": {
+        "id": "wiki-queries-foundation-policy-for-humanoids",
+        "title": "人形机器人 Foundation Policy 适用边界分析",
+        "type": "wiki_page",
+        "path": "wiki/queries/foundation-policy-for-humanoids.md",
+        "summary": "type: query。",
+        "content_markdown": "---\ntype: query\ntags: [foundation-policy, humanoid, vla, locomotion, manipulation, loco-manipulation, generalization]\nstatus: stub\nsummary: \"综合分析人形机器人 foundation policy 的当前适用边界：操作任务已有初步可用，运动控制尚不成熟，loco-manipulation 仍是前沿。\"\nsources:\n  - ../../sources/papers/rl_foundation_models.md\nrelated:\n  - ../concepts/foundation-policy.md\n  - ../methods/vla.md\n  - ../tasks/loco-manipulation.md\n  - ../tasks/manipulation.md\n  - ../tasks/locomotion.md\n---\n\n> **Query 产物**：本页由以下问题触发：「人形机器人 foundation policy 现在适合什么，不适合什么？」\n> 综合来源：[Foundation Policy](../concepts/foundation-policy.md)、[VLA](../methods/vla.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)、[Manipulation](../tasks/manipulation.md)、[Locomotion](../tasks/locomotion.md)\n\n# 人形机器人 Foundation Policy 适用边界分析\n\n## TL;DR 决策路径\n\n```\n你的任务是什么？\n│\n├── 桌面/固定底盘操作（抓取、排列、简单装配）\n│   └── 已有大量演示数据？\n│       ├── 是 → Foundation Policy 可以用，推荐 ACT / π₀ / RT-2 微调\n│       └── 否 → 先收集数据（ALOHA 遥操作），数据量 < 50 条谨慎使用\n│\n├── 人形全身行走 / Locomotion\n│   ├── 无语义任务，只是走路？ → 用 RL（PPO/SAC），foundation policy 目前无优势\n│   └── 需要语言指令导航？ → 可以用 VLA 做高层规划 + 底层 RL 控制器\n│\n├── Loco-Manipulation（边走边操作）\n│   ├── 操作是主体，行走是辅助（固定位置后操作）→ Foundation Policy 有一定可用性\n│   └── 真正的同步行走+操作 → 目前 foundation policy 效果有限，建议 WBC/RL 混合\n│\n└── 精细操作（螺丝、接线、精密装配）\n    └── 当前所有 foundation policy 精度不足 → 专用策略 + 力控\n```\n\n## 详细分析\n\n### 当前 Foundation Policy 的能力边界\n\n| 任务类型 | 代表模型 | 当前状态 | 适合程度 |\n|---------|---------|---------|---------|\n| 桌面 pick-and-place | RT-1, RT-2, Octo | 成熟，成功率 70-90% | ✅ 适合 |\n| 语言条件操作（开放词汇） | RT-2, π₀ | 可用，泛化有限 | ✅ 适合（受限） |\n| 多步骤操作任务 | π₀, ACT | 初步可用，链式失败率高 | ⚠️ 谨慎使用 |\n| 双臂协调操作 | ACT, π₀ | 有基线，但泛化差 | ⚠️ 有限适用 |\n| 双足行走 / Locomotion | 无成熟 foundation | 研究阶段 | ❌ 暂不适合 |\n| 全地形行走 | 无 | 无成熟工作 | ❌ 暂不适合 |\n| Loco-Manipulation（同步） | π₀（部分） | 非常早期 | ❌ 不成熟 |\n| 精细力控操作 | 无 | 未解决 | ❌ 暂不适合 |\n\n### Foundation Policy 适合的场景（Why it works）\n\n**1. 操作任务中的语义理解**\n\nFoundation Policy 的核心优势来自预训练的视觉-语言知识：理解\"把红色杯子放到托盘右边\"不需要从零学习，而是调用预训练的语义知识。这在操作任务（固定底盘，主要是上肢运动）中效果显著。\n\n**2. 跨任务泛化**\n\n经过大规模多任务预训练后（RT-2 使用 Web 数据，Octo 使用 Open X-Embodiment），模型对新任务的零样本/少样本适应能力明显优于单任务策略。\n\n**3. 多模态指令理解**\n\n\"把那个蓝色的东西（视觉指向）放到左边\"——同时处理视觉指代和语言指令是 VLA 的强项，传统 WBC/MPC 框架无法直接处理。\n\n### Foundation Policy 不适合的场景（Why it fails）\n\n**1. Locomotion 的根本性挑战**\n\n当前 foundation policy 主要基于 Transformer 自回归生成动作序列，对**实时物理反馈**的敏感性不足：\n- 行走需要 100Hz+ 的控制频率，foundation policy 推理延迟通常 10-50ms\n- 步态稳定性对状态误差极度敏感，\"大模型决策-小模型执行\"的分层才是正确范式\n- 没有足够的 locomotion 真机数据：桌面操作数据量级是行走数据的 100 倍以上\n\n**2. 接触丰富场景的精度不足**\n\nFoundation Policy 通常输出末端位姿或关节位置目标，对力/力矩缺乏精细控制。拧螺丝、插接头等精细接触任务需要毫米级精度和牛顿级力控，这是当前 foundation policy 的盲区。\n\n**3. 真正的 Loco-Manipulation（同步运行）**\n\n边走边操作需要两件事同时发生：\n- 行走控制：实时响应地面变化，频率高\n- 操作控制：精细感知和动作，频率适中\n\n当前 foundation policy 无法同时在两个频率尺度上可靠工作。π₀ 等工作在固定位置后的操作任务上有效，但不能在行走过程中稳定操作。\n\n**4. 数据分布外的泛化**\n\nFoundation Policy 的泛化能力仍受训练数据分布约束：\n- 在家居环境操作的模型部署到工厂环境会显著退化\n- 在 6-DOF 机械臂训练的模型无法直接用于人形机器人\n- 形态差异（embodiment gap）是跨平台泛化的主要障碍\n\n### 最佳实践：Foundation Policy 与经典控制的结合\n\n**分层架构（推荐）**：\n\n```\n[Foundation Policy / VLA]  ← 语言指令 + 视觉输入\n         ↓ 高层动作目标（末端轨迹 / 接触目标）\n[中层运动规划]            ← 任务空间规划\n         ↓ 关节加速度 / 力分配\n[底层控制器（WBC / RL）]  ← 精确执行 + 安全保证\n         ↓ 关节力矩\n[真机]\n```\n\n这种分层设计让每一层专注自己擅长的事：\n- Foundation Policy：语义理解、任务规划、跨场景泛化\n- WBC/RL：高频控制、接触力管理、物理安全保证\n\n### 何时考虑 Foundation Policy（检查清单）\n\n使用 Foundation Policy 的前提条件：\n\n- [ ] 任务是操作为主（而非 locomotion）\n- [ ] 有 ≥ 30 条高质量人类演示（少于此量微调效果不稳定）\n- [ ] 任务语义多样（需要语言条件指定目标）\n- [ ] 控制频率要求 ≤ 30Hz（否则推理延迟成为瓶颈）\n- [ ] 精度要求 ≥ 5mm（精细操作不适合）\n- [ ] 底盘相对固定（或行走是简单导航）\n\n## 未来趋势（2025-2027 预判）\n\n**近期可能突破**：\n1. **Locomotion Foundation Model**：随着 OpenAI、DeepMind 等机构投入，全地形行走的 foundation policy 可能在 2025-2026 出现早期成果\n2. **更快推理**：流式 diffusion / flow matching 将推理延迟压缩到 5ms 以下，使高频控制成为可能\n3. **力控感知**：集成触觉传感器的 foundation policy 可能改善精细操作\n\n**长期挑战（仍未解决）**：\n1. 真正的 loco-manipulation foundation policy（统一行走+操作）\n2. 实时世界模型（5ms 内的物理预测）\n3. 跨形态泛化（一个模型适配多种机器人）\n\n## 参考来源\n\n- Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control* (2023)\n- Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control* (2024)\n- [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — foundation model 全面技术摘要\n\n## 关联页面\n\n- [Foundation Policy](../concepts/foundation-policy.md) — 技术详解\n- [VLA](../methods/vla.md) — Vision-Language-Action 模型架构\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — foundation policy 的前沿挑战场景\n- [Manipulation](../tasks/manipulation.md) — foundation policy 当前的主战场\n- [Locomotion](../tasks/locomotion.md) — 尚未被 foundation policy 攻克的任务\n\n## 一句话记忆\n\n> 人形机器人 foundation policy 目前是\"上肢好手、下肢菜鸟\"——在固定底盘的操作任务中已可用，在行走控制和真正的 loco-manipulation 中仍是前沿研究，分层架构是桥接两者的实用范式。",
+        "tags": [
+          "query",
+          "humanoid",
+          "locomotion",
+          "control",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-foundation-policy",
+          "wiki-methods-vla",
+          "wiki-tasks-loco-manipulation",
+          "wiki-tasks-manipulation",
+          "wiki-tasks-locomotion",
+          "sources-papers-rl-foundation-models"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-queries-hardware-comparison": {
         "id": "wiki-queries-hardware-comparison",
         "title": "主流人形机器人硬件对比",
         "type": "wiki_page",
         "path": "wiki/queries/hardware-comparison.md",
         "summary": "type: query。",
-        "content_markdown": "---\ntype: query\ntags: [humanoid, hardware, comparison, actuator]\nrelated:\n  - ../entities/humanoid-robot.md\n  - ../concepts/whole-body-control.md\n  - ../tasks/locomotion.md\n  - ../comparisons/wbc-vs-rl.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n---\n\n# 主流人形机器人硬件对比\n\n> Query 类型：对比分析\n> 生成日期：2026-04-15\n> 问题：主流人形机器人平台在硬件能力上有何差异？如何根据任务选择平台？\n\n---\n\n## 平台速览\n\n| 平台 | 组织 | DOF | 重量 | 执行器 | 状态 |\n|------|------|-----|------|--------|------|\n| Atlas | Boston Dynamics | 28 | ~80kg | 液压 | 研究平台 |\n| Unitree H1 | Unitree | 20 | ~47kg | 刚性电机 | 商业可购 |\n| Unitree G1 | Unitree | 23 | ~35kg | 刚性电机 | 商业可购 |\n| Agility Digit | Agility Robotics | 20 | ~65kg | SEA | 商业部署中 |\n| Fourier GR-1 | Fourier Intelligence | 44 | ~55kg | 力控电机 | 商业可购 |\n| Apptronik Apollo | Apptronik | 22 | ~73kg | 电机 | 预量产 |\n| Figure 02 | Figure AI | 未公开 | ~60kg | 电机 | 研究中 |\n\n---\n\n## 执行器类型与任务适配\n\n### 液压驱动（Atlas）\n- **优势**：高功率密度，适合高动态运动（跑步、跳跃、空翻）\n- **劣势**：重、能效低（~50%）、维护复杂、不适合产品化\n- **适合**：高动态 locomotion 研究、极限运动展示\n\n### 刚性电机（H1/G1）\n- **优势**：轻量、低成本（H1 ~$90k）、易部署、适合 RL 研究\n- **劣势**：无内置力矩传感，力控精度依赖电流估计；接触任务精度有限\n- **适合**：locomotion RL 研究、工业搬运、低成本部署\n\n### 系列弹性执行器 SEA（Digit）\n- **优势**：内置弹性元件提供力矩测量和柔顺性；适合人机交互\n- **劣势**：带宽受限（~20Hz）；高频控制困难\n- **适合**：物流配送、人机协作、接触丰富任务\n\n### 准直驱 QDD（MIT Cheetah 风格）\n- **优势**：高带宽、高透明度、力矩可测\n- **劣势**：峰值力矩受限；热管理要求高\n- **适合**：高频力控、精密接触任务\n\n---\n\n## 按任务选择平台\n\n| 任务目标 | 推荐平台 | 理由 |\n|---------|---------|------|\n| locomotion RL 研究 | Unitree H1/G1 | 低成本、轻量、RL 社区基础好 |\n| 全身操作（loco-manipulation） | Fourier GR-1 / Digit | 高 DOF + 力控 |\n| 高动态运动（跑跳） | Atlas | 液压高功率密度 |\n| 工业搬运部署 | Digit / Apollo | SEA 柔顺性 + 商业就绪 |\n| 科研算法验证（低预算） | Unitree G1 | 最低成本全尺寸人形 |\n\n---\n\n## Sim2Real 难度对比\n\n| 执行器 | 主要 sim2real gap | 难度 |\n|--------|-----------------|------|\n| 液压 | 液压动态建模误差大 | ★★★★★ |\n| 刚性电机 | 摩擦模型、关节刚度 | ★★★ |\n| SEA | 弹性动态、共振 | ★★★★ |\n| QDD | 热效应、非线性摩擦 | ★★★ |\n\n---\n\n## 关联页面\n- [人形机器人总览](../entities/humanoid-robot.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+        "content_markdown": "---\ntype: query\ntags: [humanoid, hardware, comparison, actuator]\nrelated:\n  - ../entities/humanoid-robot.md\n  - ../concepts/whole-body-control.md\n  - ../tasks/locomotion.md\n  - ../comparisons/wbc-vs-rl.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n---\n\n# 主流人形机器人硬件对比\n\n> **Query 产物**：本页由问题「主流人形机器人硬件平台横向对比」触发。\n> Query 类型：对比分析\n> 生成日期：2026-04-15\n> 问题：主流人形机器人平台在硬件能力上有何差异？如何根据任务选择平台？\n\n---\n\n## 平台速览\n\n| 平台 | 组织 | DOF | 重量 | 执行器 | 状态 |\n|------|------|-----|------|--------|------|\n| Atlas | Boston Dynamics | 28 | ~80kg | 液压 | 研究平台 |\n| Unitree H1 | Unitree | 20 | ~47kg | 刚性电机 | 商业可购 |\n| Unitree G1 | Unitree | 23 | ~35kg | 刚性电机 | 商业可购 |\n| Agility Digit | Agility Robotics | 20 | ~65kg | SEA | 商业部署中 |\n| Fourier GR-1 | Fourier Intelligence | 44 | ~55kg | 力控电机 | 商业可购 |\n| Apptronik Apollo | Apptronik | 22 | ~73kg | 电机 | 预量产 |\n| Figure 02 | Figure AI | 未公开 | ~60kg | 电机 | 研究中 |\n\n---\n\n## 执行器类型与任务适配\n\n### 液压驱动（Atlas）\n- **优势**：高功率密度，适合高动态运动（跑步、跳跃、空翻）\n- **劣势**：重、能效低（~50%）、维护复杂、不适合产品化\n- **适合**：高动态 locomotion 研究、极限运动展示\n\n### 刚性电机（H1/G1）\n- **优势**：轻量、低成本（H1 ~$90k）、易部署、适合 RL 研究\n- **劣势**：无内置力矩传感，力控精度依赖电流估计；接触任务精度有限\n- **适合**：locomotion RL 研究、工业搬运、低成本部署\n\n### 系列弹性执行器 SEA（Digit）\n- **优势**：内置弹性元件提供力矩测量和柔顺性；适合人机交互\n- **劣势**：带宽受限（~20Hz）；高频控制困难\n- **适合**：物流配送、人机协作、接触丰富任务\n\n### 准直驱 QDD（MIT Cheetah 风格）\n- **优势**：高带宽、高透明度、力矩可测\n- **劣势**：峰值力矩受限；热管理要求高\n- **适合**：高频力控、精密接触任务\n\n---\n\n## 按任务选择平台\n\n| 任务目标 | 推荐平台 | 理由 |\n|---------|---------|------|\n| locomotion RL 研究 | Unitree H1/G1 | 低成本、轻量、RL 社区基础好 |\n| 全身操作（loco-manipulation） | Fourier GR-1 / Digit | 高 DOF + 力控 |\n| 高动态运动（跑跳） | Atlas | 液压高功率密度 |\n| 工业搬运部署 | Digit / Apollo | SEA 柔顺性 + 商业就绪 |\n| 科研算法验证（低预算） | Unitree G1 | 最低成本全尺寸人形 |\n\n---\n\n## Sim2Real 难度对比\n\n| 执行器 | 主要 sim2real gap | 难度 |\n|--------|-----------------|------|\n| 液压 | 液压动态建模误差大 | ★★★★★ |\n| 刚性电机 | 摩擦模型、关节刚度 | ★★★ |\n| SEA | 弹性动态、共振 | ★★★★ |\n| QDD | 热效应、非线性摩擦 | ★★★ |\n\n---\n\n## 关联页面\n- [人形机器人总览](../entities/humanoid-robot.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
         "tags": [
           "query",
           "humanoid",
@@ -2499,7 +2662,7 @@
         "type": "wiki_page",
         "path": "wiki/queries/rl-hyperparameter-guide.md",
         "summary": "type: query。",
-        "content_markdown": "---\ntype: query\ntags: [rl, ppo, sac, hyperparameter, locomotion, training]\nrelated:\n  - ../methods/policy-optimization.md\n  - ../concepts/reward-design.md\n  - ../concepts/curriculum-learning.md\n  - ../methods/model-predictive-control.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/reward_design.md\n---\n\n# RL 超参数调节指南（locomotion 专用）\n\n> Query 类型：操作指南\n> 生成日期：2026-04-15\n> 问题：训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？\n\n---\n\n## 背景\n\nlocomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并行度高、observation/action 空间维度大、reward 稀疏性问题突出、sim2real gap 要求训练出鲁棒的策略。\n\n---\n\n## PPO 超参数 Checklist\n\n### 核心超参数\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `num_envs` | 2048–8192 | 并行仿真数量，越多越稳定；受显存限制 |\n| `num_steps` | 24–64 | 每次 rollout 的步数（太短 → 高方差，太长 → 过时数据） |\n| `batch_size` | `num_envs × num_steps / num_minibatches` | 典型 4096–16384 |\n| `num_minibatches` | 4–8 | 每批 rollout 的 minibatch 数量 |\n| `update_epochs` | 4–10 | 每批数据的训练轮次 |\n| `clip_range` (ε) | 0.1–0.2 | PPO clip；locomotion 通常用 0.2，精细任务用 0.1 |\n| `value_loss_coef` | 0.5–2.0 | value function 损失权重 |\n| `entropy_coef` | 0.001–0.01 | 探索熵正则化；locomotion 中不宜过大 |\n| `gamma` (折扣因子) | 0.97–0.99 | locomotion 长程任务用 0.99 |\n| `lambda` (GAE) | 0.90–0.97 | bias-variance 折中；0.95 是默认起点 |\n| `lr` (学习率) | 1e-4–3e-4 | Adam 优化器；可用线性 decay |\n| `max_grad_norm` | 0.5–1.0 | 梯度裁剪，稳定训练 |\n\n### 调参优先级\n\n```\n1. num_envs × num_steps → 数据吞吐量（最影响训练速度）\n2. gamma + lambda → reward 传播（最影响收敛方向）\n3. clip_range + update_epochs → 更新稳定性\n4. entropy_coef → 探索 vs 利用\n```\n\n---\n\n## SAC 超参数 Checklist\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `replay_buffer_size` | 1e6–5e6 | 样本重用率高，需要大 buffer |\n| `batch_size` | 256–4096 | SAC 对 batch_size 不敏感，可大 |\n| `lr_actor/critic` | 3e-4–1e-3 | 独立学习率；critic 可稍大 |\n| `tau` (软更新) | 0.005–0.01 | target network 更新速率 |\n| `alpha` (温度) | 自动调节 | 使用自动 entropy tuning（SAC paper 推荐） |\n| `target_entropy` | `-dim(action)` | 通常取 `-action_dim`，即每维约 -1 nats |\n| `update_frequency` | 1–4 | 每步环境交互后的梯度更新次数 |\n\n---\n\n## Reward 函数调参 Checklist\n\n### 常见 reward 项权重范围（locomotion）\n\n| Reward 项 | 推荐权重 | 说明 |\n|----------|---------|------|\n| 前进速度奖励 | 1.0（归一化基准） | 任务核心信号 |\n| 姿态稳定惩罚 | -0.1 ~ -0.5 | 防止躯干倾斜 |\n| 能量/扭矩惩罚 | -0.01 ~ -0.1 | 减少能耗，泛化更好 |\n| 关节速度惩罚 | -0.001 ~ -0.01 | 防止抖动，sim2real 关键 |\n| 接触力惩罚 | -0.01 ~ -0.1 | 防止硬接触；改善地形适应 |\n| 足端滑移惩罚 | -0.1 ~ -1.0 | 防止打滑；sim2real 必须项 |\n| 存活奖励 | 0.1 ~ 1.0 | 防止策略\"坐下\" |\n\n### 调参规则\n\n1. **先调任务奖励，再调正则惩罚**：确认策略能完成任务后再加惩罚项\n2. **惩罚项权重从小开始**：初始设 0.01–0.05，观察是否抑制主任务学习\n3. **能量惩罚 = sim2real 利器**：减少关节抖动和扭矩尖峰，是最廉价的 sim2real 改善手段\n4. **课程学习优先于奖励 shaping**：难以 shape 的任务改用渐进式课程\n\n---\n\n## 常见问题诊断\n\n| 现象 | 可能原因 | 解决方案 |\n|------|---------|---------|\n| 策略不动（reward ≈ 0） | entropy 太低 / reward 太稀疏 | 提高 entropy_coef / 添加进度奖励 |\n| 训练不稳定（reward 剧烈振荡） | lr 过大 / clip_range 过大 | 降低 lr / 降至 0.1 / 增加 max_grad_norm |\n| 策略在真机上抖动 | 关节速度 / 扭矩惩罚不足 | 提高关节速度惩罚权重 |\n| 策略速度快但步态奇怪 | 缺少步态对称性约束 | 添加脚频约束 / air time reward |\n| 训练后期无提升（平台期） | 数据探索不足 | 增加 entropy / 降低课程难度 |\n\n---\n\n## 关联页面\n- [策略优化方法](../methods/policy-optimization.md)\n- [Reward 设计](../concepts/reward-design.md)\n- [课程学习](../concepts/curriculum-learning.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [reward_design.md](../../sources/papers/reward_design.md)",
+        "content_markdown": "---\ntype: query\ntags: [rl, ppo, sac, hyperparameter, locomotion, training]\nrelated:\n  - ../methods/policy-optimization.md\n  - ../concepts/reward-design.md\n  - ../concepts/curriculum-learning.md\n  - ../methods/model-predictive-control.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/reward_design.md\n---\n\n# RL 超参数调节指南（locomotion 专用）\n\n> **Query 产物**：本页由问题「locomotion RL 训练超参数如何选择和调节？」触发。\n> Query 类型：操作指南\n> 生成日期：2026-04-15\n> 问题：训练腿式机器人 locomotion 策略时，PPO/SAC 的关键超参数如何调节？\n\n---\n\n## 背景\n\nlocomotion RL 的超参数调节与标准游戏 RL 有显著差异：仿真并行度高、observation/action 空间维度大、reward 稀疏性问题突出、sim2real gap 要求训练出鲁棒的策略。\n\n---\n\n## PPO 超参数 Checklist\n\n### 核心超参数\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `num_envs` | 2048–8192 | 并行仿真数量，越多越稳定；受显存限制 |\n| `num_steps` | 24–64 | 每次 rollout 的步数（太短 → 高方差，太长 → 过时数据） |\n| `batch_size` | `num_envs × num_steps / num_minibatches` | 典型 4096–16384 |\n| `num_minibatches` | 4–8 | 每批 rollout 的 minibatch 数量 |\n| `update_epochs` | 4–10 | 每批数据的训练轮次 |\n| `clip_range` (ε) | 0.1–0.2 | PPO clip；locomotion 通常用 0.2，精细任务用 0.1 |\n| `value_loss_coef` | 0.5–2.0 | value function 损失权重 |\n| `entropy_coef` | 0.001–0.01 | 探索熵正则化；locomotion 中不宜过大 |\n| `gamma` (折扣因子) | 0.97–0.99 | locomotion 长程任务用 0.99 |\n| `lambda` (GAE) | 0.90–0.97 | bias-variance 折中；0.95 是默认起点 |\n| `lr` (学习率) | 1e-4–3e-4 | Adam 优化器；可用线性 decay |\n| `max_grad_norm` | 0.5–1.0 | 梯度裁剪，稳定训练 |\n\n### 调参优先级\n\n```\n1. num_envs × num_steps → 数据吞吐量（最影响训练速度）\n2. gamma + lambda → reward 传播（最影响收敛方向）\n3. clip_range + update_epochs → 更新稳定性\n4. entropy_coef → 探索 vs 利用\n```\n\n---\n\n## SAC 超参数 Checklist\n\n| 参数 | locomotion 推荐范围 | 说明 |\n|------|------------------|------|\n| `replay_buffer_size` | 1e6–5e6 | 样本重用率高，需要大 buffer |\n| `batch_size` | 256–4096 | SAC 对 batch_size 不敏感，可大 |\n| `lr_actor/critic` | 3e-4–1e-3 | 独立学习率；critic 可稍大 |\n| `tau` (软更新) | 0.005–0.01 | target network 更新速率 |\n| `alpha` (温度) | 自动调节 | 使用自动 entropy tuning（SAC paper 推荐） |\n| `target_entropy` | `-dim(action)` | 通常取 `-action_dim`，即每维约 -1 nats |\n| `update_frequency` | 1–4 | 每步环境交互后的梯度更新次数 |\n\n---\n\n## Reward 函数调参 Checklist\n\n### 常见 reward 项权重范围（locomotion）\n\n| Reward 项 | 推荐权重 | 说明 |\n|----------|---------|------|\n| 前进速度奖励 | 1.0（归一化基准） | 任务核心信号 |\n| 姿态稳定惩罚 | -0.1 ~ -0.5 | 防止躯干倾斜 |\n| 能量/扭矩惩罚 | -0.01 ~ -0.1 | 减少能耗，泛化更好 |\n| 关节速度惩罚 | -0.001 ~ -0.01 | 防止抖动，sim2real 关键 |\n| 接触力惩罚 | -0.01 ~ -0.1 | 防止硬接触；改善地形适应 |\n| 足端滑移惩罚 | -0.1 ~ -1.0 | 防止打滑；sim2real 必须项 |\n| 存活奖励 | 0.1 ~ 1.0 | 防止策略\"坐下\" |\n\n### 调参规则\n\n1. **先调任务奖励，再调正则惩罚**：确认策略能完成任务后再加惩罚项\n2. **惩罚项权重从小开始**：初始设 0.01–0.05，观察是否抑制主任务学习\n3. **能量惩罚 = sim2real 利器**：减少关节抖动和扭矩尖峰，是最廉价的 sim2real 改善手段\n4. **课程学习优先于奖励 shaping**：难以 shape 的任务改用渐进式课程\n\n---\n\n## 常见问题诊断\n\n| 现象 | 可能原因 | 解决方案 |\n|------|---------|---------|\n| 策略不动（reward ≈ 0） | entropy 太低 / reward 太稀疏 | 提高 entropy_coef / 添加进度奖励 |\n| 训练不稳定（reward 剧烈振荡） | lr 过大 / clip_range 过大 | 降低 lr / 降至 0.1 / 增加 max_grad_norm |\n| 策略在真机上抖动 | 关节速度 / 扭矩惩罚不足 | 提高关节速度惩罚权重 |\n| 策略速度快但步态奇怪 | 缺少步态对称性约束 | 添加脚频约束 / air time reward |\n| 训练后期无提升（平台期） | 数据探索不足 | 增加 entropy / 降低课程难度 |\n\n---\n\n## 关联页面\n- [策略优化方法](../methods/policy-optimization.md)\n- [Reward 设计](../concepts/reward-design.md)\n- [课程学习](../concepts/curriculum-learning.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [reward_design.md](../../sources/papers/reward_design.md)",
         "tags": [
           "query",
           "locomotion",
@@ -2542,6 +2705,28 @@
           "wiki-tasks-balance-recovery",
           "wiki-tasks-locomotion",
           "sources-papers-sim2real"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-queries-sim2real-deployment-checklist": {
+        "id": "wiki-queries-sim2real-deployment-checklist",
+        "title": "Sim2Real 真机部署清单",
+        "type": "wiki_page",
+        "path": "wiki/queries/sim2real-deployment-checklist.md",
+        "summary": "把仿真训练好的策略部署到真机，需要在训练端、部署端、调试端三个阶段依次排查问题，避免策略在真机上失效或损坏硬件",
+        "content_markdown": "---\ntype: query\ntags: [sim2real, deployment, checklist, real-robot, debugging, locomotion]\nstatus: complete\nsummary: 真机部署 RL 策略前后的完整检查清单，覆盖训练端、部署端、调试端三个阶段。\nsources:\n  - ../../sources/papers/sim2real.md\nrelated:\n  - ../concepts/sim2real.md\n  - ../concepts/domain-randomization.md\n  - ../tasks/locomotion.md\n  - ../comparisons/sim2real-approaches.md\n---\n\n# Sim2Real 真机部署清单\n\n> **Query 产物**：本页由问题「真机部署 RL 策略前后要检查什么？」触发。\n> 综合来源：[Sim2Real](../concepts/sim2real.md)、[Domain Randomization](../concepts/domain-randomization.md)\n\n## 一句话定义\n\n把仿真训练好的策略部署到真机，需要在**训练端、部署端、调试端**三个阶段依次排查问题，避免策略在真机上失效或损坏硬件。\n\n---\n\n## 阶段一：训练端准备\n\n| 检查项 | 典型范围 | 通过标准 |\n|-------|---------|---------|\n| 质量/惯量随机化 | ±20% | 仿真中性能稳定 |\n| 关节摩擦/阻尼随机化 | ±30% | 无明显策略退化 |\n| 延迟随机化 | 0~40ms | 覆盖真实延迟上限 |\n| 观测噪声 | 参照真机规格 | 噪声量级与真机一致 |\n\n- [ ] 关节力矩限制在仿真中强制执行（与真机规格一致）\n- [ ] 策略输出频率与真机控制频率匹配（50Hz 或 100Hz）\n- [ ] 观测归一化参数在导出时固定（不依赖运行时统计）\n\n## 阶段二：部署端检查\n\n- [ ] 模型文件版本与训练代码一致\n- [ ] 观测空间维度和顺序与真机接口匹配（逐字段核对）\n- [ ] 动作空间映射：仿真关节顺序 ↔ 真机 CAN ID 顺序\n- [ ] 推理延迟测试 < 5ms\n- [ ] 初始姿态与仿真初始化姿态一致（误差 < 5°）\n\n## 阶段三：调试端常见问题\n\n| 现象 | 可能原因 | 排查方向 |\n|-----|---------|---------|\n| 上机立刻摔倒 | 观测顺序错误 | 核对 obs/action 映射 |\n| 原地抖动 | 控制频率不匹配 | 检查 PD 增益 |\n| 向一侧漂移 | IMU 安装偏差 | 校准 IMU offset |\n| 步伐极小 | 命令归一化错误 | 打印原始策略输入 |\n| 关节力矩饱和 | 力矩映射错误 | 核查 scale 因子 |\n\n## 参考来源\n\n- Kumar et al., *RMA: Rapid Motor Adaptation* (2021)\n- [Sim2Real 概念页](../concepts/sim2real.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n\n## 关联页面\n\n- [Sim2Real](../concepts/sim2real.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real 方法对比](../comparisons/sim2real-approaches.md)",
+        "tags": [
+          "query",
+          "locomotion",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-concepts-sim2real",
+          "wiki-concepts-domain-randomization",
+          "wiki-tasks-locomotion",
+          "wiki-comparisons-sim2real-approaches"
         ],
         "source_links": [],
         "status": "active"
@@ -2636,7 +2821,7 @@
         "type": "wiki_page",
         "path": "wiki/queries/when-to-use-wbc-vs-rl.md",
         "summary": "type: query。",
-        "content_markdown": "---\ntype: query\ntags: [wbc, rl, locomotion, decision, architecture]\nrelated:\n  - ../comparisons/wbc-vs-rl.md\n  - ../concepts/whole-body-control.md\n  - ../methods/policy-optimization.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/whole_body_control.md\n---\n\n# 决策树：何时使用 WBC vs RL？\n\n> Query 类型：决策指南\n> 生成日期：2026-04-15\n> 问题：面对具体机器人控制任务，应该选择全身控制（WBC）、强化学习（RL），还是两者结合？\n\n---\n\n## 快速决策树\n\n```\n任务是否需要精确接触力控制？\n├── 是 → 优先考虑 WBC\n│        任务是否高度重复且有明确数学模型？\n│        ├── 是 → 纯 WBC（如工业抓取、已知地形行走）\n│        └── 否 → WBC + RL（如 loco-manipulation、不规则地形）\n└── 否 → 任务是否在仿真中容易设计 reward？\n          ├── 是 → 优先 RL（如 locomotion、障碍跑、运动技能）\n          └── 否 → 需要演示数据？\n                    ├── 是 → IL（BC / Diffusion Policy）\n                    └── 否 → 重新分解任务\n```\n\n---\n\n## 详细对比\n\n### 选 WBC 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 有精确动力学模型 | URDF + 精确惯量参数，接触约束可数学建模 |\n| 实时力矩/接触力反馈 | SEA 或力矩传感器可用；接触面已知 |\n| 任务有明确约束层级 | 如\"保持平衡 > 完成末端任务 > 关节极限\"的优先级明确 |\n| 需要精确末端轨迹 | 机械臂操作、精密装配 |\n| 计算资源充足 | WBC 的 QP 求解每步约 1–5ms；需要实时算力 |\n\n**典型场景**：Atlas 行走（官方控制器）、ANYmal 地形跟随、工业机械臂装配\n\n---\n\n### 选 RL 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 动力学模型不精确 | 接触摩擦、软体、未知地形难以建模 |\n| 任务 reward 可设计 | 前进速度、能量、存活时间等标量 reward 自然 |\n| 需要探索未知动作空间 | 人形机器人跑跳、翻滚等非结构化运动 |\n| 需要应对大量扰动 | 推力、不规则地形；RL 通过 domain randomization 自然鲁棒化 |\n| 快速原型验证 | 仿真环境下数小时可训出策略，无需建模 |\n\n**典型场景**：Unitree H1 locomotion、ANYmal 野外行走（Learning to Walk in Minutes）、人形跑跳\n\n---\n\n### 选 WBC + RL 结合的信号\n\n| 信号 | 说明 |\n|------|------|\n| 高层目标 + 低层力控 | RL 输出期望速度/接触时序，WBC 执行精确关节指令 |\n| 需要接触多样性 + 鲁棒性 | loco-manipulation 任务：RL 处理探索，WBC 处理力控 |\n| 从仿真迁移到真机 | RL 提供鲁棒性，WBC 减小 sim2real gap（力矩层面精确） |\n| 任务层级明确分离 | 如 MPC（中层轨迹规划）+ WBC（低层力控）+ RL（高层策略） |\n\n**典型场景**：Unitree H1 loco-manipulation、MIT Cheetah 3 跑跳（MPC + WBC 分层）\n\n---\n\n## 实现复杂度 vs 性能权衡\n\n| 方案 | 实现难度 | 峰值性能 | 鲁棒性 | sim2real |\n|------|---------|---------|--------|---------|\n| 纯 WBC | ★★★★ | ★★★★ | ★★★ | ★★★ |\n| 纯 RL | ★★ | ★★★★★ | ★★★★★ | ★★★ |\n| WBC + RL 分层 | ★★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n| MPC + RL | ★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n\n---\n\n## 常见误区\n\n**误区 1**：*\"WBC 太慢，不适合快速运动\"*\n→ 错误。现代 WBC（TSID/HQP）可以 1kHz 运行；瓶颈通常是感知延迟，不是 QP 求解。\n\n**误区 2**：*\"RL 可以完全替代 WBC\"*\n→ 不准确。RL 在接触力精确控制上仍弱于 WBC；高精度操作任务中两者互补。\n\n**误区 3**：*\"有了 RL 不需要建模\"*\n→ 危险。无精确模型的 RL 在真机上可能学到依赖仿真 artifact 的策略；sim2real gap 可能来自未建模的执行器动态。\n\n---\n\n## 关联页面\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [策略优化方法](../methods/policy-optimization.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [whole_body_control.md](../../sources/papers/whole_body_control.md)",
+        "content_markdown": "---\ntype: query\ntags: [wbc, rl, locomotion, decision, architecture]\nrelated:\n  - ../comparisons/wbc-vs-rl.md\n  - ../concepts/whole-body-control.md\n  - ../methods/policy-optimization.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/whole_body_control.md\n---\n\n# 决策树：何时使用 WBC vs RL？\n\n> **Query 产物**：本页由问题「做腿足/人形机器人控制，什么场景下用 WBC，什么时候用 RL？」触发。\n> Query 类型：决策指南\n> 生成日期：2026-04-15\n> 问题：面对具体机器人控制任务，应该选择全身控制（WBC）、强化学习（RL），还是两者结合？\n\n---\n\n## 快速决策树\n\n```\n任务是否需要精确接触力控制？\n├── 是 → 优先考虑 WBC\n│        任务是否高度重复且有明确数学模型？\n│        ├── 是 → 纯 WBC（如工业抓取、已知地形行走）\n│        └── 否 → WBC + RL（如 loco-manipulation、不规则地形）\n└── 否 → 任务是否在仿真中容易设计 reward？\n          ├── 是 → 优先 RL（如 locomotion、障碍跑、运动技能）\n          └── 否 → 需要演示数据？\n                    ├── 是 → IL（BC / Diffusion Policy）\n                    └── 否 → 重新分解任务\n```\n\n---\n\n## 详细对比\n\n### 选 WBC 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 有精确动力学模型 | URDF + 精确惯量参数，接触约束可数学建模 |\n| 实时力矩/接触力反馈 | SEA 或力矩传感器可用；接触面已知 |\n| 任务有明确约束层级 | 如\"保持平衡 > 完成末端任务 > 关节极限\"的优先级明确 |\n| 需要精确末端轨迹 | 机械臂操作、精密装配 |\n| 计算资源充足 | WBC 的 QP 求解每步约 1–5ms；需要实时算力 |\n\n**典型场景**：Atlas 行走（官方控制器）、ANYmal 地形跟随、工业机械臂装配\n\n---\n\n### 选 RL 的信号\n\n| 信号 | 说明 |\n|------|------|\n| 动力学模型不精确 | 接触摩擦、软体、未知地形难以建模 |\n| 任务 reward 可设计 | 前进速度、能量、存活时间等标量 reward 自然 |\n| 需要探索未知动作空间 | 人形机器人跑跳、翻滚等非结构化运动 |\n| 需要应对大量扰动 | 推力、不规则地形；RL 通过 domain randomization 自然鲁棒化 |\n| 快速原型验证 | 仿真环境下数小时可训出策略，无需建模 |\n\n**典型场景**：Unitree H1 locomotion、ANYmal 野外行走（Learning to Walk in Minutes）、人形跑跳\n\n---\n\n### 选 WBC + RL 结合的信号\n\n| 信号 | 说明 |\n|------|------|\n| 高层目标 + 低层力控 | RL 输出期望速度/接触时序，WBC 执行精确关节指令 |\n| 需要接触多样性 + 鲁棒性 | loco-manipulation 任务：RL 处理探索，WBC 处理力控 |\n| 从仿真迁移到真机 | RL 提供鲁棒性，WBC 减小 sim2real gap（力矩层面精确） |\n| 任务层级明确分离 | 如 MPC（中层轨迹规划）+ WBC（低层力控）+ RL（高层策略） |\n\n**典型场景**：Unitree H1 loco-manipulation、MIT Cheetah 3 跑跳（MPC + WBC 分层）\n\n---\n\n## 实现复杂度 vs 性能权衡\n\n| 方案 | 实现难度 | 峰值性能 | 鲁棒性 | sim2real |\n|------|---------|---------|--------|---------|\n| 纯 WBC | ★★★★ | ★★★★ | ★★★ | ★★★ |\n| 纯 RL | ★★ | ★★★★★ | ★★★★★ | ★★★ |\n| WBC + RL 分层 | ★★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n| MPC + RL | ★★★★ | ★★★★★ | ★★★★ | ★★★★ |\n\n---\n\n## 常见误区\n\n**误区 1**：*\"WBC 太慢，不适合快速运动\"*\n→ 错误。现代 WBC（TSID/HQP）可以 1kHz 运行；瓶颈通常是感知延迟，不是 QP 求解。\n\n**误区 2**：*\"RL 可以完全替代 WBC\"*\n→ 不准确。RL 在接触力精确控制上仍弱于 WBC；高精度操作任务中两者互补。\n\n**误区 3**：*\"有了 RL 不需要建模\"*\n→ 危险。无精确模型的 RL 在真机上可能学到依赖仿真 artifact 的策略；sim2real gap 可能来自未建模的执行器动态。\n\n---\n\n## 关联页面\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [策略优化方法](../methods/policy-optimization.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n\n## 参考来源\n- [policy_optimization.md](../../sources/papers/policy_optimization.md)\n- [whole_body_control.md](../../sources/papers/whole_body_control.md)",
         "tags": [
           "query",
           "humanoid",

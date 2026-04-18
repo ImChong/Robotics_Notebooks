@@ -65,6 +65,8 @@
 | [when-to-use-wbc-vs-rl](./when-to-use-wbc-vs-rl.md) | 面对具体机器人控制任务，应该选择 WBC、RL，还是两者结合？ | WBC、RL、Locomotion、Decision、Architecture |
 | [il-for-manipulation](./il-for-manipulation.md) | 做机器人操作用模仿学习还是 RL？怎么收集数据？ | Manipulation、Imitation Learning、Behavior Cloning、DAgger、RL |
 | [vla-deployment-guide](./vla-deployment-guide.md) | 如何在真机上部署 VLA 策略？推理延迟怎么控制？ | VLA、Foundation Policy、Manipulation、Loco-Manipulation、Deployment |
+| [foundation-policy-for-humanoids](./foundation-policy-for-humanoids.md) | 人形机器人 foundation policy 现在适合什么，不适合什么？ | Foundation Policy、VLA、Loco-Manipulation、Manipulation、Locomotion |
+| [sim2real-deployment-checklist](./sim2real-deployment-checklist.md) | 真机部署 RL 策略前后要检查什么？ | Sim2Real、Domain Randomization、Privileged Training、SysID、Locomotion |
 | [open-source-motion-control-projects](./open-source-motion-control-projects.md) | 飞书公开文档《开源运动控制项目》里抽出了哪些可复用的方法模式？ | RL、IL、Model-Based RL、Locomotion、Manipulation、Motion Retargeting |
 | [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md) | 飞书公开文档《人形机器人运动控制 Know-How》对技术栈项目最有价值的结构是什么？ | OCP、LIP/ZMP、WBC、TSID、State Estimation、Sim2Real |
 

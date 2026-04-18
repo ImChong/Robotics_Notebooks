@@ -164,17 +164,61 @@ def concept_cards() -> list[tuple[str, str, str]]:
     return cards
 
 
+DECK_SOURCES: dict[str, list[tuple[str, str, str]]] = {}
+
+
+def get_deck(deck: str) -> list[tuple[str, str, str]]:
+    """Return cards for a specific deck name."""
+    if deck == "formalization":
+        return formalization_cards()
+    if deck == "concepts-core":
+        return concept_cards()
+    if deck == "control-stability":
+        # control-stability deck: formalizations + control-related concepts
+        stability_stems = {"lyapunov", "hjb", "lqr", "gae", "bellman-equation",
+                           "contact-complementarity", "control-lyapunov-function"}
+        f_cards = [c for c in formalization_cards()
+                   if any(stem in c[2] for stem in stability_stems)]
+        c_cards = [c for c in concept_cards()
+                   if any(tag in c[2] for tag in
+                          ("stability", "cbf", "clf", "lyapunov", "control-barrier",
+                           "whole-body-control", "optimal-control"))]
+        return f_cards + c_cards
+    # default: all
+    return formalization_cards() + concept_cards()
+
+
 def main() -> None:
-    cards = formalization_cards() + concept_cards()
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    with OUT_PATH.open("w", encoding="utf-8", newline="") as f:
+    import argparse
+
+    parser = argparse.ArgumentParser(description="导出 Anki 兼容 TSV 闪卡")
+    parser.add_argument(
+        "--deck",
+        choices=["formalization", "concepts-core", "control-stability", "all"],
+        default="all",
+        help="选择导出的牌组（默认：all）",
+    )
+    args = parser.parse_args()
+
+    if args.deck == "all":
+        cards = formalization_cards() + concept_cards()
+        out_path = OUT_PATH
+    else:
+        cards = get_deck(args.deck)
+        out_path = REPO_ROOT / "exports" / f"anki-{args.deck}.tsv"
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with out_path.open("w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter="\t", lineterminator="\n")
         writer.writerow(["Front", "Back", "Tags"])
         writer.writerows(cards)
+
+    f_count = len(formalization_cards())
+    c_count = len(concept_cards())
     print(
-        f"✅ anki-flashcards.tsv: {len(cards)} cards "
-        f"({len(formalization_cards())} formalizations + {len(concept_cards())} concepts) "
-        f"→ {OUT_PATH.relative_to(REPO_ROOT)}"
+        f"✅ {out_path.name}: {len(cards)} cards"
+        + (f" ({f_count} formalizations + {c_count} concepts)" if args.deck == "all" else f" (deck={args.deck})")
+        + f" → {out_path.relative_to(REPO_ROOT)}"
     )
 
 
