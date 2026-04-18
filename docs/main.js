@@ -59,6 +59,25 @@
     if (element) element.classList.remove('data-loading');
   }
 
+  function renderHomeStats(graphStats, coverageText) {
+    var heroNodeCount = document.getElementById('heroNodeCount');
+    var heroEdgeCount = document.getElementById('heroEdgeCount');
+    var heroCoverageCount = document.getElementById('heroCoverageCount');
+    var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
+    if (!heroNodeCount && !heroEdgeCount && !heroCoverageCount && !wikiSearchSubtitle) return;
+
+    var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
+    var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
+    var coverageCount = String(coverageText || '').trim();
+
+    if (heroNodeCount && nodeCount !== null) heroNodeCount.textContent = String(nodeCount);
+    if (heroEdgeCount && edgeCount !== null) heroEdgeCount.textContent = String(edgeCount);
+    if (heroCoverageCount && coverageCount) heroCoverageCount.textContent = coverageCount;
+    if (wikiSearchSubtitle && nodeCount !== null) {
+      wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
+    }
+  }
+
   function detailHref(id) {
     return 'detail.html?id=' + encodeURIComponent(id);
   }
@@ -1307,6 +1326,7 @@
   const techMapRoot = document.getElementById('techMapNodeGrid');
   const moduleRoot = document.getElementById('moduleEntryList');
   const roadmapRoot = document.getElementById('roadmapStageList');
+  const homeStatsRoot = document.getElementById('heroNodeCount') || document.getElementById('wikiSearchSubtitle');
 
   if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapRoot) {
     fetch('exports/site-data-v1.json')
@@ -1380,6 +1400,20 @@
             'roadmapSourceList'
           ]);
         }
+      });
+  }
+
+  if (homeStatsRoot) {
+    fetch('exports/home-stats.json')
+      .then(function (response) {
+        if (!response.ok) throw new Error('HTTP ' + response.status);
+        return response.json();
+      })
+      .then(function (stats) {
+        renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
+      })
+      .catch(function (error) {
+        console.warn('Home stats sync failed:', error);
       });
   }
 

@@ -32,8 +32,10 @@ coverage:
 
 graph:
 	python3 scripts/generate_link_graph.py
+	python3 scripts/generate_home_stats.py
 	cp exports/link-graph.json docs/exports/link-graph.json
 	cp exports/graph-stats.json docs/exports/graph-stats.json 2>/dev/null || true
+	cp exports/home-stats.json docs/exports/home-stats.json 2>/dev/null || true
 
 anki:
 	python3 scripts/export_anki.py
