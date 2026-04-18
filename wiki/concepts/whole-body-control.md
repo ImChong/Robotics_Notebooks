@@ -70,6 +70,42 @@ WBC 的优势：
 
 代表：DeepMimic, ASE, CALM, MimicKit
 
+## 最小代码骨架
+
+这段代码不是完整 WBC，而是 WBC 最核心的味道：
+- 把多个任务写成误差项
+- 在同一个 QP 里一起求一个关节加速度 / 力矩解
+- 再把解交给底层执行器
+
+```python
+import numpy as np
+
+# 关节加速度变量 qdd，示例只写成最小二乘形式
+J_com = np.array([[1.0, 0.0], [0.0, 1.0]])
+J_foot = np.array([[1.0, -1.0]])
+acc_com_des = np.array([0.0, 0.2])
+acc_foot_des = np.array([0.0])
+
+A = np.vstack([J_com, J_foot])
+b = np.concatenate([acc_com_des, acc_foot_des])
+
+qdd_star, *_ = np.linalg.lstsq(A, b, rcond=None)
+print("joint acceleration command:", qdd_star)
+```
+
+真实 WBC 会再加入：
+- 动力学等式约束
+- 接触力变量
+- 摩擦锥、力矩限位、任务优先级
+- 从 `qdd` 到 `tau` 的映射
+
+## 方法局限性
+
+- **强依赖模型与接触状态**：动力学模型不准、接触集合错了，整个 QP 都会偏
+- **接口复杂**：上层 MPC / planner 和下层 WBC 的目标格式对齐很麻烦
+- **调参成本高**：任务权重、优先级、阻抗参数经常比公式本身更难调
+- **不直接提供高层策略**：WBC 擅长“怎么执行”，不天然回答“下一步想做什么”
+
 ## 关键概念
 
 ### Floating Base

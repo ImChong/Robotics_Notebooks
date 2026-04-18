@@ -110,6 +110,47 @@ $$u_k^* = \arg\min_u [g(x_k, u) + V_{k+1}(f(x_k, u))]$$
 
 关系：RL 可以看成"model-free 的最优控制"，DP 是 RL 的理论基础。
 
+## 最小代码骨架
+
+下面这段代码不是通用求解器，而是把 OCP 的最小结构写清楚：**状态、控制、动力学、代价、滚动优化**。
+
+```python
+import numpy as np
+
+A = np.array([[1.0, 0.1], [0.0, 1.0]])
+B = np.array([[0.0], [0.1]])
+Q = np.diag([10.0, 1.0])
+R = np.diag([0.1])
+
+
+def rollout_cost(x0, U):
+    x = x0.copy()
+    cost = 0.0
+    for u in U:
+        cost += x.T @ Q @ x + u.T @ R @ u
+        x = A @ x + B @ u
+    cost += x.T @ Q @ x
+    return float(cost)
+
+
+x0 = np.array([[0.3], [0.0]])
+candidates = [np.zeros((20, 1)), 0.2 * np.ones((20, 1)), -0.2 * np.ones((20, 1))]
+best_U = min(candidates, key=lambda U: rollout_cost(x0, U))
+u0 = best_U[0]
+print("first control:", u0.ravel())
+```
+
+这段代码对应的学习目标是：
+- 你知道 OCP 不是“一个神秘公式”，而是**在约束动力学下比较不同控制序列的总代价**
+- 你知道 MPC / trajectory optimization 只是把这个过程做得更系统、更高效
+
+## 方法局限性
+
+- **模型依赖强**：动力学模型错了，最优解也可能是错的
+- **计算量可能很大**：状态维度、约束数量、预测时域一上来就爆炸
+- **非凸问题难解**：人形机器人很多 OCP 只能找到局部最优
+- **很难直接表达高层语义目标**：例如“动作自然”“像人走路”这类目标更常借助 IL / RL / motion prior
+
 ## 在机器人中的典型应用
 
 ### 轨迹优化

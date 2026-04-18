@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-18
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -60,6 +60,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
 - 可跨模态（视频 → 机器人关节）
+- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”
 
 ---
 
@@ -119,6 +120,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
 
 ---
 

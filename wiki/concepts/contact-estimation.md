@@ -3,7 +3,7 @@ title: Contact Estimation（接触估计）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-04-18
 summary: 在无直接力传感器时，从关节力矩/速度信号推断足端或末端执行器的接触状态，是步态规划和 WBC 的重要感知前提。
 ---
 
@@ -107,6 +107,7 @@ J^T · f = τ_gravity_compensation - τ_actuator
 - Bledt et al., *Contact Model Fusion for Event-Based Locomotion in Unstructured Terrains* (ICRA 2018) — MIT Cheetah 接触估计
 - Bloesch et al., *State Estimation for Legged Robots - Consistent Fusion of Leg Kinematics and IMU* (RSS 2013) — 腿式机器人状态与接触估计
 - Camurri et al., *Probabilistic Contact Estimation and Impact Detection for State Estimation of Quadruped Robots* (RA-L 2017) — 概率接触检测
+- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — HumanX 说明了接触图模仿奖励与仅靠本体感知历史进行外力估计的做法
 
 ---
 

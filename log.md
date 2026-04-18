@@ -305,3 +305,31 @@
 - 证据一：同日后续已有 `## [2026-04-14] lint | 0 issues，覆盖率 50%（29/58），wiki 95 页` 条目，说明缺失参考来源问题已清零
 - 证据二：当前再次运行 `python3 scripts/lint_wiki.py`，结果仍为 0 issues，且“缺少参考来源区块”为 0、Sources 覆盖率为 81/81（100%）
 - 保留原历史日志不改写，仅通过 follow-up 追加状态说明，符合 append-only 约束
+
+## [2026-04-18] query | motion-control-projects | 飞书公开文档结构化摘要 + PDF Sources 入库
+
+- 新建 `sources/papers/motion_control_projects.md`：将飞书公开文档《【开源】小而美的运动控制项目》中可见的 14 个 PDF 附件统一归档为 sources
+- 新建 `wiki/queries/open-source-motion-control-projects.md`：按训练机制优化 / Parkour / 动作模仿 / 物体交互 / 动作重定向五条主线整理结构化摘要
+- 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引
+- 回填 `contact-estimation.md`、`curriculum-learning.md`、`motion-retargeting.md` 的来源与更新时间，消除 sources 比 wiki 更新的陈旧提示
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 82/82（100%），知识图谱更新为 84 节点 / 498 边
+
+## [2026-04-18] query | humanoid-motion-control-know-how | 飞书 Know-How 结构化摘要入库
+
+- 新建 `sources/papers/humanoid_motion_control_know_how.md`：把飞书公开文档《人形机器人运动控制 Know-How》整理为 sources 输入，提炼趋势 / 路线 / 问题框架 / 传统控制主线
+- 新建 `wiki/queries/humanoid-motion-control-know-how.md`：提炼成适合 `Robotics_Notebooks` 的结构化摘要，强调路线层、问题层、方法层三层组织
+- 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引；保留 `sources/notes/know-how.md` 作为旧资源树归档
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱更新为 85 节点 / 510 边
+
+## [2026-04-18] structural | route-a-and-method-templates | 路线页增强 + 方法骨架补齐
+
+- 更新 `roadmap/route-a-motion-control.md`：显式加入 Know-How 的读法，强调路线层 / 问题层 / 方法层三层阅读顺序，并把传统控制主线与 learning-based 主线更明确拆开
+- 更新 `wiki/concepts/optimal-control.md`、`lip-zmp.md`、`whole-body-control.md` 与 `wiki/methods/model-predictive-control.md`
+- 为上述方法页补入统一的“最小代码骨架 / 方法局限性”结构，使其更符合“原理 → 最小代码 → 局限性”的学习模板
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱维持 85 节点 / 510 边
+
+## [2026-04-18] structural | control-chain-template-phase-2 | 补齐传统控制主线剩余方法模板
+
+- 更新 `wiki/concepts/centroidal-dynamics.md`、`tsid.md`、`state-estimation.md`
+- 为三页补入统一的“最小代码骨架 / 方法局限性 / 学这个方法时最该盯住的点”模板，使传统控制主线从 OCP → LIP/ZMP → Centroidal Dynamics → MPC → TSID/WBC → State Estimation 的页面风格更一致
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱维持 85 节点 / 510 边

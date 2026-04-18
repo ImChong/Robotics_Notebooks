@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-17 (V11 执行中：P0-P4 完成，图谱 90 节点 521 边) -->
+<!-- Last updated: 2026-04-17 (V11 清单已建立，基于 V10 完整交付) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-90节点_521边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v11.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-85节点_510边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/tech-stack-next-phase-checklist-v9.md)
 
 ---
 
@@ -82,8 +82,8 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 `docs/graph.html` 是 Obsidian 风格的知识图谱可视化，由 D3.js 力导向算法驱动：
 
-- **90 个节点**：概念、方法、任务、实体、对比、Query 产物、形式化定义
-- **521 条边**：wiki 页面间的内链关系
+- **83 个节点**：概念、方法、任务、实体、对比、Query 产物
+- **486 条边**：wiki 页面间的内链关系
 - 节点支持按类型 / 按社区着色，大小反映连接度（入度 + 出度）
 - 悬停 / 点击显示浮动卡片，点击卡片内"打开详情页"跳转对应页面
 - 社区模式会在 legend 与右侧详情侧边栏显示社区名称（按社区 hub 命名）
