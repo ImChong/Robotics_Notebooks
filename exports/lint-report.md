@@ -46,4 +46,13 @@
 ### ⚠️ 缺少摘要字段（summary/description）（0 个）
 - 无
 
-📊 Sources 覆盖率：83/83 (100%) wiki/entity 页有 ingest 来源
+### ⚠️ Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）（0 个）
+- 无
+
+### ⚠️ Formalization 页面缺少公式块（0 个）
+- 无
+
+### ⚠️ README checklist 链接版本不一致（0 个）
+- 无
+
+📊 Sources 覆盖率：90/90 (100%) wiki/entity 页有 ingest 来源
