@@ -339,3 +339,5 @@
 ## [2026-04-18] structural | 首页 Hero 节点/边/coverage 统计改为读取导出 JSON 自动同步，避免手写数值过期
 
 ## [2026-04-18] structural | 修正 Graph View 筛选逻辑：按类型模式筛类型，按社区模式筛社区
+
+## [2026-04-18] structural | Graph View 默认排斥力从 400 调整为 800
