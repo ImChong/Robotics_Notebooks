@@ -156,6 +156,51 @@ IsaacGym /机器人领域常见。
 - **RL 训练低层策略 + MPC 做高层规划**
 - **RL 训练一个 "policy prior" + MPC 在其中做优化**
 
+## 最小代码骨架
+
+下面这段代码把 MPC 的最小闭环写清楚：
+- 每个控制周期枚举几组候选控制序列
+- 用模型前向 rollout
+- 计算有限时域代价
+- 只执行当前第一步控制
+
+```python
+import numpy as np
+
+A = np.array([[1.0, 0.1], [0.0, 1.0]])
+B = np.array([[0.0], [0.1]])
+Q = np.diag([5.0, 0.5])
+R = np.diag([0.1])
+
+
+def mpc_step(x0, candidates):
+    def cost(U):
+        x = x0.copy()
+        total = 0.0
+        for u in U:
+            total += x.T @ Q @ x + u.T @ R @ u
+            x = A @ x + B @ u
+        return float(total)
+
+    best_U = min(candidates, key=cost)
+    return best_U[0]
+
+
+x = np.array([[0.2], [0.0]])
+candidates = [np.zeros((10, 1)), 0.1 * np.ones((10, 1)), -0.1 * np.ones((10, 1))]
+u = mpc_step(x, candidates)
+print("apply control:", u.ravel())
+```
+
+真正的机器人 MPC 会把这里的候选序列枚举换成 QP / NLP 求解器，并显式加入接触、摩擦锥、力矩限位等约束。
+
+## 方法局限性
+
+- **对计算资源敏感**：预测时域一长、模型一复杂，实时性马上成为瓶颈
+- **对模型质量敏感**：特别是人形机器人接触切换和摩擦建模不准时，预测会漂
+- **约束设计很考经验**：硬约束和软约束怎么取舍，直接决定求解器稳定性
+- **通常还要下层控制器配合**：MPC 负责规划得漂亮，但最后还得靠 WBC / impedance / PD 把它落到关节上
+
 ## 参考来源
 
 - Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文

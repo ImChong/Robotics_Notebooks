@@ -179,6 +179,41 @@ LIP 太简化，忽略了：
 
 所以别把 ZMP 神化。它很经典，但不是终点。
 
+## 最小代码骨架
+
+这段代码展示了 LIP / ZMP 的最小闭环：
+- 先给一个目标 ZMP
+- 再用简化动力学前向积分 CoM 状态
+- 观察 CoM 是否被拉回支撑区附近
+
+```python
+import numpy as np
+
+z_c = 0.8
+g = 9.81
+omega = np.sqrt(g / z_c)
+dt = 0.01
+x, dx = 0.05, 0.0   # CoM 位置与速度
+x_zmp = 0.0         # 目标 ZMP 设在脚掌中心
+
+traj = []
+for _ in range(200):
+    ddx = omega**2 * (x - x_zmp)
+    dx += ddx * dt
+    x += dx * dt
+    traj.append((x, dx, x_zmp))
+
+print("final com state:", traj[-1])
+```
+
+真正做步态规划时，通常会把 `x_zmp` 设计成随时间变化的参考轨迹，再反推出一条更平滑的 CoM 轨迹。
+
+## 学这个方法时最应该盯住的三件事
+
+1. **原理**：LIP 是简化动力学，ZMP 是稳定性约束，不要把两者混成一个东西
+2. **最小代码**：你至少要能自己写出 `ddot{x} = ω²(x - x_zmp)` 的仿真 loop
+3. **局限性**：一旦涉及高动态动作、显著质心起伏、复杂接触，就该往 centroidal dynamics / MPC / WBC 升级
+
 ## 参考来源
 
 - Kajita et al., *Introduction to Humanoid Robotics* — LIP/ZMP 理论基础经典教材

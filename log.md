@@ -320,3 +320,10 @@
 - 新建 `wiki/queries/humanoid-motion-control-know-how.md`：提炼成适合 `Robotics_Notebooks` 的结构化摘要，强调路线层、问题层、方法层三层组织
 - 更新 `wiki/queries/README.md` 与 `sources/README.md` 索引；保留 `sources/notes/know-how.md` 作为旧资源树归档
 - 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱更新为 85 节点 / 510 边
+
+## [2026-04-18] structural | route-a-and-method-templates | 路线页增强 + 方法骨架补齐
+
+- 更新 `roadmap/route-a-motion-control.md`：显式加入 Know-How 的读法，强调路线层 / 问题层 / 方法层三层阅读顺序，并把传统控制主线与 learning-based 主线更明确拆开
+- 更新 `wiki/concepts/optimal-control.md`、`lip-zmp.md`、`whole-body-control.md` 与 `wiki/methods/model-predictive-control.md`
+- 为上述方法页补入统一的“最小代码骨架 / 方法局限性”结构，使其更符合“原理 → 最小代码 → 局限性”的学习模板
+- 运行 `make lint && make export && make graph && make badge`，结果：lint 0 issues，Sources 覆盖率 83/83（100%），知识图谱维持 85 节点 / 510 边
