@@ -21,6 +21,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
 """
 
 import argparse
+import json
 import os
 import re
 import sys
@@ -535,22 +536,61 @@ def lint() -> dict:
         if "$$" not in content and "$`" not in content and "`$" not in content:
             results["formalization_no_formula"].append(str(rel))
 
-    # V11: README.md 中 checklist 链接应指向最新版本
+    # V11: README.md 中 badges / checklist 链接应与当前仓库状态一致
     readme_path = REPO_ROOT / "README.md"
     if readme_path.exists():
         readme_content = readme_path.read_text(encoding="utf-8")
-        # 找所有 checklist 链接版本号
-        versions = re.findall(r"tech-stack-next-phase-checklist-v(\d+)", readme_content)
-        if versions:
-            max_ver = max(int(v) for v in versions)
+
+        checklist_files = sorted((REPO_ROOT / "docs" / "checklists").glob("tech-stack-next-phase-checklist-v*.md"))
+        if checklist_files:
+            latest_checklist = max(
+                checklist_files,
+                key=lambda p: int(re.search(r"v(\d+)", p.stem).group(1))
+            )
+            latest_ver = int(re.search(r"v(\d+)", latest_checklist.stem).group(1))
+
             main_link_versions = re.findall(
                 r"\[技术栈项目执行清单 v(\d+)\]", readme_content
             )
             if main_link_versions:
                 main_ver = int(main_link_versions[0])
-                if main_ver < max_ver:
+                if main_ver < latest_ver:
                     results["readme_badge"].append(
-                        f"README 当前清单指向 v{main_ver}，但存在 v{max_ver}，请更新"
+                        f"README 主执行清单标题仍是 v{main_ver}，但最新为 v{latest_ver}，请更新"
+                    )
+
+            source_badge_match = re.search(
+                r"\[!\[Sources Coverage\]\([^)]+\)\]\(([^)]+tech-stack-next-phase-checklist-v(\d+)\.md)\)",
+                readme_content,
+            )
+            if not source_badge_match:
+                results["readme_badge"].append("README 缺少 Sources Coverage badge 或链接格式异常")
+            else:
+                badge_link = source_badge_match.group(1)
+                badge_ver = int(source_badge_match.group(2))
+                expected_link = str(latest_checklist.relative_to(REPO_ROOT))
+                if badge_ver < latest_ver or badge_link != expected_link:
+                    results["readme_badge"].append(
+                        f"README Sources badge 指向 {badge_link}，但最新应为 {expected_link}"
+                    )
+
+        graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
+        if graph_stats_path.exists():
+            graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
+            node_count = graph_stats.get("node_count")
+            edge_count = graph_stats.get("edge_count")
+            graph_badge_match = re.search(
+                r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/badge/知识图谱-(\d+)节点_(\d+)边-blue\?logo=d3\.js\)\]\([^)]+\)",
+                readme_content,
+            )
+            if not graph_badge_match:
+                results["readme_badge"].append("README 缺少 Knowledge Graph badge 或格式异常")
+            else:
+                badge_nodes = int(graph_badge_match.group(1))
+                badge_edges = int(graph_badge_match.group(2))
+                if badge_nodes != node_count or badge_edges != edge_count:
+                    results["readme_badge"].append(
+                        f"README Knowledge Graph badge 为 {badge_nodes}节点/{badge_edges}边，但实际为 {node_count}节点/{edge_count}边"
                     )
 
     return results
