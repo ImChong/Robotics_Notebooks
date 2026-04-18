@@ -337,3 +337,5 @@
 ## [2026-04-18] structural | 同步 README 顶部 badge 到实际仓库统计，并补强 lint 对 README badge/checklist 漏报检测
 
 ## [2026-04-18] structural | 首页 Hero 节点/边/coverage 统计改为读取导出 JSON 自动同步，避免手写数值过期
+
+## [2026-04-18] structural | 修正 Graph View 筛选逻辑：按类型模式筛类型，按社区模式筛社区

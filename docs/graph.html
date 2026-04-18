@@ -765,35 +765,10 @@
     <!-- ── 筛选浮窗面板 ── -->
     <div id="filter-panel" class="filter-panel" hidden>
       <div class="filter-header">
-        <span>🔍 按类型筛选</span>
+        <span id="filter-panel-title">🔍 按类型筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
-      <div class="filter-body">
-        <label class="filter-item">
-          <input type="checkbox" value="concept" /> <span class="filter-dot" style="background:#60a5fa"></span>概念
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="method" /> <span class="filter-dot" style="background:#34d399"></span>方法
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="task" /> <span class="filter-dot" style="background:#f472b6"></span>任务
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="formalization" /> <span class="filter-dot" style="background:#fb923c"></span>形式化
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="comparison" /> <span class="filter-dot" style="background:#c084fc"></span>对比
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="entity" /> <span class="filter-dot" style="background:#fbbf24"></span>工具
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="query" /> <span class="filter-dot" style="background:#94a3b8"></span>Query
-        </label>
-        <label class="filter-item">
-          <input type="checkbox" value="__orphan__" /> <span class="filter-dot" style="background:#94a3b8"></span>孤儿（度≤1）
-        </label>
-      </div>
+      <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
@@ -857,9 +832,25 @@
       entity: '工具', comparison: '对比', query: 'Query',
       formalization: '形式化', '': 'Wiki',
     };
+    const TYPE_FILTER_OPTIONS = [
+      { value: 'concept', label: '概念', color: '#60a5fa' },
+      { value: 'method', label: '方法', color: '#34d399' },
+      { value: 'task', label: '任务', color: '#f472b6' },
+      { value: 'formalization', label: '形式化', color: '#fb923c' },
+      { value: 'comparison', label: '对比', color: '#c084fc' },
+      { value: 'entity', label: '工具', color: '#fbbf24' },
+      { value: 'query', label: 'Query', color: '#94a3b8' },
+      { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' }
+    ];
     const COMMUNITY_COLORS = d3.schemeTableau10;
     const graphLegend = document.getElementById('graph-legend');
+    const filterToggle = document.getElementById('filter-toggle');
+    const filterLabel = document.getElementById('filter-label');
+    const filterPanel = document.getElementById('filter-panel');
+    const filterPanelTitle = document.getElementById('filter-panel-title');
+    const filterPanelBody = document.getElementById('filter-panel-body');
     let colorMode = 'type';
+    let activeFilters = new Set();
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
 
@@ -1031,21 +1022,66 @@
       .attr('pointer-events', 'none')
       .style('opacity', 0);
 
+    function getFilterOptions() {
+      if (colorMode === 'community') {
+        return Array.from(communityLabelMap.entries()).map(([communityId, label]) => ({
+          value: communityId,
+          label: label,
+          color: communityColorMap.get(communityId) || COMMUNITY_COLORS[9]
+        }));
+      }
+      return TYPE_FILTER_OPTIONS;
+    }
+
+    function renderFilterPanel() {
+      const title = colorMode === 'community' ? '🔍 按社区筛选' : '🔍 按类型筛选';
+      if (filterToggle) filterToggle.title = title.replace('🔍 ', '');
+      if (filterPanelTitle) filterPanelTitle.textContent = title;
+      if (filterLabel) filterLabel.textContent = '筛选';
+      if (!filterPanelBody) return;
+      const options = getFilterOptions();
+      filterPanelBody.innerHTML = options.map(option => {
+        const checked = activeFilters.has(option.value) ? ' checked' : '';
+        return '<label class="filter-item">'
+          + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
+          + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
+          + escapeHtml(option.label)
+          + '</label>';
+      }).join('');
+
+      filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', () => {
+          if (cb.checked) {
+            activeFilters.add(cb.value);
+          } else {
+            activeFilters.delete(cb.value);
+          }
+          applyFilters();
+          updateFilterCount();
+        });
+      });
+    }
+
     function refreshNodeColors() {
       node.select('.node-glow').attr('fill', d => nodeColor(d));
       node.select('.node-circle')
         .attr('fill', d => nodeColor(d))
         .attr('stroke', d => nodeColor(d));
       renderLegend();
+      renderFilterPanel();
     }
 
     const colorByTypeBtn = document.getElementById('color-by-type');
     const colorByCommunityBtn = document.getElementById('color-by-community');
     function setColorMode(mode) {
+      if (colorMode === mode) return;
       colorMode = mode;
+      activeFilters.clear();
       colorByTypeBtn.classList.toggle('active-mode', mode === 'type');
       colorByCommunityBtn.classList.toggle('active-mode', mode === 'community');
+      updateFilterCount();
       refreshNodeColors();
+      applyFilters();
     }
     colorByTypeBtn.addEventListener('click', () => setColorMode('type'));
     colorByCommunityBtn.addEventListener('click', () => setColorMode('community'));
@@ -1272,24 +1308,23 @@
     });
 
     /* ── 筛选面板开关 ── */
-    let activeTypes = new Set();
-    document.getElementById('filter-toggle').addEventListener('click', () => {
-      const panel = document.getElementById('filter-panel');
-      panel.hidden = !panel.hidden;
+    filterToggle.addEventListener('click', () => {
+      filterPanel.hidden = !filterPanel.hidden;
     });
     document.getElementById('filter-close').addEventListener('click', () => {
-      document.getElementById('filter-panel').hidden = true;
+      filterPanel.hidden = true;
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
-      document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => cb.checked = false);
-      activeTypes.clear();
+      activeFilters.clear();
+      renderFilterPanel();
       applyFilters();
       updateFilterCount();
     });
+    renderFilterPanel();
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeTypes.size;
+      const count = activeFilters.size;
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -1298,18 +1333,6 @@
         countEl.style.display = 'none';
       }
     }
-
-    document.querySelectorAll('#filter-panel input[type=checkbox]').forEach(cb => {
-      cb.addEventListener('change', () => {
-        if (cb.checked) {
-          activeTypes.add(cb.value);
-        } else {
-          activeTypes.delete(cb.value);
-        }
-        applyFilters();
-        updateFilterCount();
-      });
-    });
 
     /* ── 搜索 ── */
     let searchQuery = '';
@@ -1321,15 +1344,20 @@
     /* 当前可见节点 ID 集合（供 hover 检查筛选状态用） */
     const visibleNodeIds = new Set();
 
-    function nodeMatchesType(d) {
-      if (!activeTypes.size) return true;
-      // __orphan__ 是特殊过滤：度 ≤ 1 的低连接节点
-      return activeTypes.has(d.type) || (activeTypes.has('__orphan__') && d._degree <= 1);
+    function nodeMatchesCurrentFilter(d) {
+      if (!activeFilters.size) return true;
+      if (colorMode === 'community') {
+        return activeFilters.has(d.community);
+      }
+      return activeFilters.has(d.type) || (activeFilters.has('__orphan__') && d._degree <= 1);
     }
 
-    function edgeMatchesType(n) {
-      if (!activeTypes.size) return true;
-      return activeTypes.has(n.type) || (activeTypes.has('__orphan__') && n._degree <= 1);
+    function edgeMatchesCurrentFilter(n) {
+      if (!activeFilters.size) return true;
+      if (colorMode === 'community') {
+        return activeFilters.has(n.community);
+      }
+      return activeFilters.has(n.type) || (activeFilters.has('__orphan__') && n._degree <= 1);
     }
 
     function nodeMatchesSearch(d) {
@@ -1339,11 +1367,11 @@
     }
 
     function applyFilters() {
-      const hasFilter = activeTypes.size > 0 || searchQuery.length > 0;
+      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
       visibleNodeIds.clear();
       let visible = 0;
       node.each(function(d) {
-        const ok = nodeMatchesType(d) && nodeMatchesSearch(d);
+        const ok = nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
         d3.select(this).select('.node-circle')
           .attr('fill-opacity', ok ? 1 : 0.06)
@@ -1356,16 +1384,16 @@
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.03;
-          return (edgeMatchesType(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesType(t) && nodeMatchesSearch(t)) ? 1 : 0.03;
+          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
+                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.03;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
-          return (edgeMatchesType(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesType(t) && nodeMatchesSearch(t)) ? linkWidthBase : linkWidthBase * 0.5;
+          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
+                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
       // 搜索时若命中节点 ≤ 15 个，自动飞行定位到目标区域
