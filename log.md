@@ -343,3 +343,5 @@
 ## [2026-04-18] structural | Graph View 默认排斥力从 400 调整为 800
 
 ## [2026-04-18] structural | 修复 Graph View PC 端 hover 卡片失效：筛选逻辑重构后残留 activeTypes 引用导致 mouseenter 报错
+
+## [2026-04-18] structural | 首页知识图谱预览改为跟随全局白天/黑夜主题切换

@@ -127,10 +127,10 @@
       <div class="container">
         <h2 class="section-title">知识图谱预览</h2>
         <p class="section-subtitle">Top-40 高连接节点 · 点击节点进入完整图谱</p>
-        <div id="mini-graph-wrap" style="position:relative;width:100%;height:320px;border-radius:12px;overflow:hidden;background:#0d1117;">
+        <div id="mini-graph-wrap" style="position:relative;width:100%;height:320px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
-          <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;color:rgba(255,255,255,0.35);line-height:1.8;pointer-events:none"></div>
-          <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;color:rgba(0,212,255,0.7);text-decoration:none;border-bottom:1px solid rgba(0,212,255,0.3);">打开完整图谱 →</a>
+          <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
+          <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;">打开完整图谱 →</a>
         </div>
       </div>
     </section>
@@ -251,7 +251,20 @@
     var miniWrap = document.getElementById('mini-graph-wrap');
     var miniSvg  = document.getElementById('mini-graph-svg');
     var statsEl  = document.getElementById('mini-graph-stats');
+    var expandEl = document.getElementById('mini-graph-expand');
     if (!miniWrap || !miniSvg) return;
+
+    function miniGraphTheme() {
+      var dark = document.documentElement.getAttribute('data-theme') !== 'light';
+      return {
+        background: dark ? '#0d1117' : '#eef2f7',
+        edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
+        label: dark ? 'rgba(255,255,255,0.45)' : 'rgba(0,0,0,0.50)',
+        stats: dark ? 'rgba(255,255,255,0.35)' : 'rgba(0,0,0,0.42)',
+        link: dark ? 'rgba(0,212,255,0.70)' : 'rgba(22,89,180,0.82)',
+        linkBorder: dark ? 'rgba(0,212,255,0.30)' : 'rgba(22,89,180,0.30)'
+      };
+    }
 
     var TYPE_COLOR = {
       concept:'#60a5fa', method:'#34d399', task:'#f472b6',
@@ -287,6 +300,20 @@
 
         var svg = d3.select(miniSvg);
         var g = svg.append('g');
+        var lineLayer = g.append('g');
+        var nodeLayer = g.append('g');
+
+        function applyMiniGraphTheme() {
+          var theme = miniGraphTheme();
+          miniWrap.style.background = theme.background;
+          if (statsEl) statsEl.style.color = theme.stats;
+          if (expandEl) {
+            expandEl.style.color = theme.link;
+            expandEl.style.borderBottom = '1px solid ' + theme.linkBorder;
+          }
+          if (line) line.attr('stroke', theme.edge);
+          if (label) label.attr('fill', theme.label);
+        }
 
         var zoom = d3.zoom().scaleExtent([0.3,4]).on('zoom',function(ev){ g.attr('transform',ev.transform); });
         svg.call(zoom).on('dblclick.zoom',null);
@@ -298,10 +325,10 @@
           .force('collision', d3.forceCollide().radius(12).strength(0.6))
           .alphaDecay(0.03);
 
-        g.append('g').selectAll('line').data(edges).join('line')
-          .attr('stroke','rgba(255,255,255,0.07)').attr('stroke-width',1);
+        var line = lineLayer.selectAll('line').data(edges).join('line')
+          .attr('stroke-width',1);
 
-        var nodeG = g.append('g').selectAll('g').data(nodes).join('g')
+        var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
           .style('cursor','pointer')
           .on('click', function(ev, d) {
             window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
@@ -321,17 +348,23 @@
           .attr('fill', function(d){ return TYPE_COLOR[d.type]||TYPE_COLOR['']; })
           .attr('fill-opacity', 0.9);
 
-        nodeG.append('text')
+        var label = nodeG.append('text')
           .text(function(d){ return d.label.length>12 ? d.label.slice(0,12)+'…' : d.label; })
           .attr('dy', function(d){ return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2))+11; })
           .attr('text-anchor','middle')
           .attr('font-size','8px')
-          .attr('fill','rgba(255,255,255,0.45)')
           .attr('pointer-events','none');
 
-        var line = g.select('g').selectAll('line');
+        applyMiniGraphTheme();
+        new MutationObserver(function() {
+          applyMiniGraphTheme();
+        }).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ['data-theme']
+        });
+
         sim.on('tick', function() {
-          g.select('g').selectAll('line')
+          line
             .attr('x1',function(d){ return d.source.x; }).attr('y1',function(d){ return d.source.y; })
             .attr('x2',function(d){ return d.target.x; }).attr('y2',function(d){ return d.target.y; });
           nodeG.attr('transform', function(d){ return 'translate('+d.x+','+d.y+')'; });
