@@ -1,13 +1,18 @@
 {
   "generated_at": "2026-04-19",
-  "node_count": 92,
-  "edge_count": 560,
+  "node_count": 98,
+  "edge_count": 596,
   "community_count": 4,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 62
+      "degree": 68
+    },
+    {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL)",
+      "degree": 54
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -15,19 +20,14 @@
       "degree": 51
     },
     {
-      "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL)",
-      "degree": 49
-    },
-    {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 41
+      "degree": 44
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
-      "degree": 35
+      "degree": 36
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
@@ -57,6 +57,11 @@
   ],
   "orphan_nodes": [
     {
+      "id": "wiki/queries/demo-data-collection-guide.md",
+      "label": "操作任务演示数据收集指南",
+      "out_degree": 4
+    },
+    {
       "id": "wiki/queries/humanoid-motion-control-know-how.md",
       "label": "人形机器人运动控制 Know-How 结构化摘要",
       "out_degree": 12
@@ -67,31 +72,31 @@
       "out_degree": 12
     },
     {
-      "id": "wiki/queries/sim2real-deployment-checklist.md",
-      "label": "Sim2Real 真机部署清单",
-      "out_degree": 4
+      "id": "wiki/queries/robot-policy-debug-playbook.md",
+      "label": "RL 策略真机调试 Playbook",
+      "out_degree": 5
     }
   ],
   "type_distribution": {
     "concept": 27,
-    "query": 20,
+    "query": 24,
     "formalization": 10,
     "method": 10,
+    "comparison": 9,
     "entity": 8,
-    "comparison": 7,
     "task": 7,
     "unknown": 2,
     "overview": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 39,
-    "Whole-Body Control (WBC) 社区": 35,
-    "Loco-Manipulation 社区": 13,
+    "Locomotion 社区": 41,
+    "Whole-Body Control (WBC) 社区": 34,
+    "Imitation Learning (IL) 社区": 18,
     "LQR / iLQR 社区": 5
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.424,
+    "largest_community_ratio": 0.418,
     "community_quality_warning": false
   }
 }

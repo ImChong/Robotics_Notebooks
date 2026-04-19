@@ -55,4 +55,4 @@
 ### ⚠️ README checklist 链接版本不一致（0 个）
 - 无
 
-📊 Sources 覆盖率：90/90 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：96/96 (100%) wiki/entity 页有 ingest 来源
