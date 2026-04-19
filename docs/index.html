@@ -12,6 +12,8 @@
   <title>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
 </head>
 <body>
   <header class="site-header">
@@ -405,5 +407,13 @@
       outline-offset:2px;
     }
   </style>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+          .catch(() => {});
+      });
+    }
+  </script>
 </body>
 </html>

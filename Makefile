@@ -22,7 +22,7 @@ search:
 	python3 scripts/search_wiki.py $(Q)
 
 ingest:
-	python3 scripts/ingest_paper.py $(NAME) --title "$(TITLE)" --desc "$(DESC)"
+	python3 scripts/ingest_paper.py $(NAME) --title "$(TITLE)" --desc "$(DESC)" --suggest-updates
 
 log:
 	python3 scripts/append_log.py $(OP) "$(DESC)"

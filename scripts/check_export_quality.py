@@ -107,6 +107,20 @@ def main() -> None:
     lr = EXPORTS / "lint-report.md"
     results.append(check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）"))
 
+    # 7. index.md 同步检查（Karpathy: LLM updates index on every ingest）
+    index_md = REPO_ROOT / "index.md"
+    index_json = EXPORTS / "index-v1.json"
+    if index_md.exists() and index_json.exists():
+        md_mtime = index_md.stat().st_mtime
+        json_mtime = index_json.stat().st_mtime
+        # lag_days > 0: json 比 index.md 新；可能 index.md 未及时更新
+        lag_days = (json_mtime - md_mtime) / 86400
+        # 允许 7 天内的偏差（硬失败阈值），超过则提示但不阻止 CI
+        in_sync = lag_days <= 7.0
+        detail = (f"⚠️ index-v1.json 比 index.md 新了 {lag_days:.1f} 天（建议 make catalog | head -200 >> index.md）"
+                  if not in_sync else f"同步正常（差 {lag_days:.1f} 天）")
+        results.append(check("index.md 与 exports/index-v1.json 同步（7 天内）", in_sync, detail))
+
     print("=" * 55)
     passed = sum(results)
     total = len(results)
