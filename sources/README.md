@@ -29,7 +29,9 @@
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
 
 ### blogs/ — 博客来源归档
-（待填充）
+| 文件 | 内容 |
+|------|------|
+| [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
 
 ### notes/ — 原始笔记归档
 | 文件 | 内容 |
