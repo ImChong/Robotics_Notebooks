@@ -272,6 +272,8 @@ locomotion 本质上可以看成是：
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Featherstone 2008 / Stewart LCP 2000 / Todorov MuJoCo 2012）
+- [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 对 upper-body multi-link contact / compliance 的原始资料摘录
+- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 - Featherstone, *Rigid Body Dynamics Algorithms* — 刚体接触动力学核心算法参考
 - Murray et al., *A Mathematical Introduction to Robotic Manipulation* — 接触约束与闭链建模
 - Mirtich & Canny, *Impulse-based Simulation of Rigid Bodies* (1995) — 冲量接触建模基础
