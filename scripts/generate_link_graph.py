@@ -42,6 +42,32 @@ OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
 
 
+def compute_health_score(content: str) -> int:
+    """计算节点健康度（0-3）：+1 有 summary，+1 有非空 sources，+1 updated 在 365 天内。"""
+    if not content.startswith("---"):
+        return 0
+    end = content.find("\n---", 3)
+    if end == -1:
+        return 0
+    fm = content[3:end]
+    score = 0
+    if re.search(r"^summary\s*:", fm, re.MULTILINE):
+        score += 1
+    sources_match = re.search(r"^sources\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
+    if sources_match and sources_match.group(1).strip():
+        score += 1
+    updated_match = re.search(r"^updated\s*:\s*(\S+)", fm, re.MULTILINE)
+    if updated_match:
+        try:
+            from datetime import date
+            updated_date = date.fromisoformat(updated_match.group(1).strip())
+            if (date.today() - updated_date).days <= 365:
+                score += 1
+        except ValueError:
+            pass
+    return score
+
+
 def parse_frontmatter_type(content: str) -> str:
     if not content.startswith("---"):
         return ""
@@ -244,6 +270,7 @@ def main() -> None:
                 "id": page_id,
                 "label": extract_title(content) or page.stem,
                 "type": parse_frontmatter_type(content),
+                "health_score": compute_health_score(content),
             }
         )
 

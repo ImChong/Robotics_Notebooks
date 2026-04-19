@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-19",
   "node_count": 92,
-  "edge_count": 545,
-  "community_count": 7,
+  "edge_count": 560,
+  "community_count": 4,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -17,7 +17,7 @@
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL)",
-      "degree": 46
+      "degree": 49
     },
     {
       "id": "wiki/concepts/sim2real.md",
@@ -32,7 +32,7 @@
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
-      "degree": 27
+      "degree": 28
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -84,21 +84,14 @@
     "overview": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 37,
+    "Locomotion 社区": 39,
     "Whole-Body Control (WBC) 社区": 35,
-    "Loco-Manipulation 社区": 11,
-    "LQR / iLQR 社区": 5,
-    "Bellman 方程 社区": 2,
-    "Contact-Rich Manipulation（接触丰富型操作） 社区": 1,
-    "LLM Wiki 社区": 1
+    "Loco-Manipulation 社区": 13,
+    "LQR / iLQR 社区": 5
   },
   "community_quality": {
-    "singleton_communities": [
-      "Bellman 方程 社区",
-      "Contact-Rich Manipulation（接触丰富型操作） 社区",
-      "LLM Wiki 社区"
-    ],
-    "largest_community_ratio": 0.402,
+    "singleton_communities": [],
+    "largest_community_ratio": 0.424,
     "community_quality_warning": false
   }
 }

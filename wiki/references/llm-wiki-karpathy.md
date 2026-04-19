@@ -74,3 +74,10 @@ The idea is related in spirit to Vannevar Bush's Memex (1945) — a personal, cu
 ## Note
 
 This document is intentionally abstract. It describes the idea, not a specific implementation. The exact directory structure, the schema conventions, the page formats, the tooling — all of that will depend on your domain, your preferences, and your LLM of choice. Everything mentioned above is optional and modular — pick what's useful, ignore what isn't. For example: your sources might be text-only, so you don't need image handling at all. Your wiki might be small enough that the index file is all you need, no search engine required. You might not care about slide decks and just want markdown pages. You might want a completely different set of output formats. The right way to use this is to share it with your LLM agent and work together to instantiate a version that fits your needs. The document's only job is to communicate the pattern. Your LLM can figure out the rest.
+
+## 关联页面
+
+- [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
+- [Ingest Workflow](../../schema/ingest-workflow.md) — Karpathy 循环在本项目中的具体实现
+- [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则
+- [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型代表机器人领域对 LLM 范式的借鉴

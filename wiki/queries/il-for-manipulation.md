@@ -116,3 +116,4 @@ sources:
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 模仿学习在接触丰富型操作任务中的关键应用场景
