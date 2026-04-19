@@ -802,6 +802,10 @@
         <div class="sb-section-title">关联页面</div>
         <ul class="sb-related-list" id="sb-related-list"></ul>
       </div>
+      <div id="sb-paper-section" hidden>
+        <div class="sb-section-title">论文阅读笔记</div>
+        <ul class="sb-related-list" id="sb-paper-list"></ul>
+      </div>
       <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;">
         <a id="sb-open-link" class="sb-open-link" href="#" target="_self">打开详情页 →</a>
         <a id="sb-slides-link" class="sb-open-link sb-slides-btn" href="#" target="_self"
@@ -1521,6 +1525,8 @@
     const sbCommunityLabel = document.getElementById('sb-community-label');
     const sbRelSec     = document.getElementById('sb-related-section');
     const sbRelList    = document.getElementById('sb-related-list');
+    const sbPaperSec   = document.getElementById('sb-paper-section');
+    const sbPaperList  = document.getElementById('sb-paper-list');
     const sbOpenLink   = document.getElementById('sb-open-link');
     const sbSlidesLink = document.getElementById('sb-slides-link');
     const sbClose      = document.getElementById('sb-close');
@@ -1562,6 +1568,20 @@
         sbRelSec.hidden = false;
       } else {
         sbRelSec.hidden = true;
+      }
+
+      const paperLinks = (item?.source_links || []).filter(url =>
+        String(url).includes('Humanoid_Robot_Learning_Paper_Notebooks')
+      );
+      if (paperLinks.length) {
+        sbPaperList.innerHTML = paperLinks.slice(0, 6).map((url, idx) => {
+          const stem = decodeURIComponent(String(url).split('/').pop().replace(/\.html$/, ''));
+          const label = stem.replace(/[_-]+/g, ' ').trim() || `论文阅读笔记 ${idx + 1}`;
+          return `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`;
+        }).join('');
+        sbPaperSec.hidden = false;
+      } else {
+        sbPaperSec.hidden = true;
       }
 
       sbOpenLink.href = detailUrl;
