@@ -152,3 +152,4 @@ related:
 - [Humanoid Robot](../entities/humanoid-robot.md) — 人形机器人平台概览
 - [Isaac Lab / Isaac Gym](../entities/isaac-gym-isaac-lab.md) — Isaac Lab 实体页
 - [MuJoCo](../entities/mujoco.md) — MuJoCo 仿真器实体页
+- [MuJoCo vs Isaac Lab 对比](../comparisons/mujoco-vs-isaac-lab.md) — 仿真器系统性对比页

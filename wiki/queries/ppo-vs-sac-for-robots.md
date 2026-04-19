@@ -135,3 +135,4 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t)\sim\rho_\pi}\left[r(s_t, a_t) + \alpha\
 - [Locomotion](../tasks/locomotion.md) — 足式任务中 PPO 的典型应用
 - [GAE](../formalizations/gae.md) — PPO 优势估计基础：Generalized Advantage Estimation
 - [RL 算法选型指南](./rl-algorithm-selection.md) — 扩展版选型指南，含 TD3 对比
+- [PPO vs SAC 对比页](../comparisons/ppo-vs-sac.md) — 系统性对比：9 个维度 + 伪代码 + 超参数表
