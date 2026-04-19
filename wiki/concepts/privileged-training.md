@@ -151,6 +151,8 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
+- [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
+- [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 
 ## 一句话记忆
 

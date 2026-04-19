@@ -61,6 +61,7 @@ sources:
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 
 ## 推荐继续阅读
 

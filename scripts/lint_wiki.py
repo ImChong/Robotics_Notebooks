@@ -412,6 +412,51 @@ def lint() -> dict:
             "pos_claims": [r"Flow Matching|flow matching|连续动作.*生成"],
             "neg_claims": [r"不.*用.*Flow Matching|仅.*Transformer.*直接回归|without.*flow matching"],
         },
+        "CBF 安全集条件": {
+            "terms": ["CBF|Control Barrier Function|控制障碍函数"],
+            "pos_claims": [r"h\(x\).*≥.*0|安全集.*h.*≥|维持.*安全集|超平面.*h.*≥.*0"],
+            "neg_claims": [r"CBF.*直接优化.*性能|CBF.*最大化.*奖励|CBF.*优化.*目标函数"],
+        },
+        "CLF 指数衰减条件": {
+            "terms": ["CLF|Control Lyapunov Function|控制李雅普诺夫"],
+            "pos_claims": [r"V̇.*≤.*-.*α.*V|衰减.*条件|指数.*衰减|dot.*V.*≤.*-.*alpha"],
+            "neg_claims": [r"CLF.*无需.*衰减|Lyapunov.*无衰减条件|CLF.*不要求.*导数.*负"],
+        },
+        "双臂闭链约束": {
+            "terms": ["双臂|bimanual|dual.arm"],
+            "pos_claims": [r"闭链|closed.loop.*kinematic|closed-loop.*kinematic|闭环运动学|闭链约束"],
+            "neg_claims": [r"双臂.*独立.*单臂|bimanual.*two.*independent|双臂.*各自独立"],
+        },
+        "Anki TSV 字段分隔符": {
+            "terms": ["Anki|anki", "TSV|tsv"],
+            "pos_claims": [r"制表符|Tab.*分隔|tab.separated|\t.*分隔符"],
+            "neg_claims": [r"逗号.*分隔|comma.*separated|CSV.*Anki|Anki.*CSV"],
+        },
+        "WBC QP 求解时间": {
+            "terms": ["WBC|whole.body", "QP|二次规划"],
+            "pos_claims": [r"50.*200.*μs|OSQP.*微秒|QP.*求解.*50|QP.*μs"],
+            "neg_claims": [r"WBC.*QP.*秒级|WBC.*求解.*几秒|QP.*second.*WBC"],
+        },
+        "特权训练非对称 Actor": {
+            "terms": ["特权训练|privileged.*training|teacher.student|asymmetric.*actor"],
+            "pos_claims": [r"非对称|asymmetric.*actor|Teacher.*有.*特权|Student.*无.*特权|训练时.*额外"],
+            "neg_claims": [r"特权训练.*对称|teacher.*student.*相同.*观测|privileged.*symmetric"],
+        },
+        "Foundation Policy 预训练数据规模": {
+            "terms": ["foundation.*policy|基础策略模型|RT-1|Octo"],
+            "pos_claims": [r"130k\+|大规模.*演示|多机器人.*形态|800k|跨.*任务.*预训练"],
+            "neg_claims": [r"RT-1.*少量.*数据|foundation.*policy.*百条|基础策略.*低数据"],
+        },
+        "模仿学习分布外泛化": {
+            "terms": ["imitation.*learning|模仿学习|behavior.*cloning|行为克隆"],
+            "pos_claims": [r"分布外.*失败|out.*of.*distribution|分布偏移|covariate shift|compounding"],
+            "neg_claims": [r"模仿学习.*分布外.*稳定|BC.*不受.*分布偏移.*影响|IL.*robust.*distribution"],
+        },
+        "HQP 优先级层次": {
+            "terms": ["HQP|Hierarchical.*QP|层次化.*QP"],
+            "pos_claims": [r"优先级|priority|层次|hierarchy|高优先级.*先满足"],
+            "neg_claims": [r"HQP.*无优先级|HQP.*等权.*优化|hierarchical.*no.*priority"],
+        },
     }
     all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():

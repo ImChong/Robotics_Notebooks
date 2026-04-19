@@ -69,6 +69,10 @@
 | [sim2real-deployment-checklist](./sim2real-deployment-checklist.md) | 真机部署 RL 策略前后要检查什么？ | Sim2Real、Domain Randomization、Privileged Training、SysID、Locomotion |
 | [open-source-motion-control-projects](./open-source-motion-control-projects.md) | 飞书公开文档《开源运动控制项目》里抽出了哪些可复用的方法模式？ | RL、IL、Model-Based RL、Locomotion、Manipulation、Motion Retargeting |
 | [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md) | 飞书公开文档《人形机器人运动控制 Know-How》对技术栈项目最有价值的结构是什么？ | OCP、LIP/ZMP、WBC、TSID、State Estimation、Sim2Real |
+| [robot-policy-debug-playbook](./robot-policy-debug-playbook.md) | RL 策略在仿真中好但真机差，如何系统排查？ | Sim2Real、Domain Randomization、Privileged Training、Deployment |
+| [simulator-selection-guide](./simulator-selection-guide.md) | MuJoCo vs Isaac Lab vs Genesis，做 locomotion RL 选哪个？ | Locomotion、Sim2Real、RL、Humanoid Robot |
+| [demo-data-collection-guide](./demo-data-collection-guide.md) | 用模仿学习做操作，怎么高效收集人类演示数据？ | Teleoperation、Imitation Learning、Behavior Cloning、Bimanual Manipulation |
+| [ppo-vs-sac-for-robots](./ppo-vs-sac-for-robots.md) | 机器人 RL 用 PPO 还是 SAC？有什么实践区别？ | Policy Optimization、RL、Locomotion、GAE |
 
 ---
 

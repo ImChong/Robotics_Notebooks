@@ -129,6 +129,7 @@ MDP（数学框架）
 - [Optimal Control](../concepts/optimal-control.md) — OCP 和 MDP 的关系：OCP 是确定性的，RL 是随机性的；两者都是"最优决策"问题
 - [Reward Design](../concepts/reward-design.md) — MDP 中奖励函数的设计直接决定学到的策略
 - [POMDP](./pomdp.md) — MDP 加观测模型的扩展，真实机器人系统的更准确框架
+- [Bellman 方程](./bellman-equation.md) — MDP 最优策略通过 Bellman 最优方程表达
 
 ## 推荐继续阅读
 

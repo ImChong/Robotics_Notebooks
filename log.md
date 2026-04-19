@@ -345,3 +345,13 @@
 ## [2026-04-18] structural | 修复 Graph View PC 端 hover 卡片失效：筛选逻辑重构后残留 activeTypes 引用导致 mouseenter 报错
 
 ## [2026-04-18] structural | 首页知识图谱预览改为跟随全局白天/黑夜主题切换
+
+## [2026-04-19] feat | v12-execution | P0-P5 推进中
+
+- P0: 消除 3 个孤立社区（singleton_communities=[]），图谱社区从 6 → 4；节点健康着色（health_score 0-3）加入 graph.html
+- P1: robot-policy-debug-playbook + simulator-selection-guide + demo-data-collection-guide + ppo-vs-sac-for-robots 四个新 Query 页（学习路径在 main 分支已存在）
+- P2: CANONICAL_FACTS 30 → 40 条，搜索回归 12 → 18 条（100% 通过）
+- P3: ingest_paper.py 新增 --suggest-updates，check_export_quality.py 新增 index.md 同步检测（11 项全通过）
+- P4: PWA manifest.json + sw.js 创建，index.html/graph.html 注册 Service Worker
+- P5: mujoco-vs-isaac-lab + ppo-vs-sac 对比页（新建中）
+- 运行 make lint: 0 errors（7 陈旧警告来自 main branch sources 更新），sources 覆盖率 100%，图谱 92 节点 560 边

@@ -661,6 +661,15 @@
     [data-theme="light"] .sb-open-link:hover { background: rgba(22,89,180,0.06); border-color: rgba(22,89,180,0.6); }
     [data-theme="light"] #graph-sidebar .sb-header { border-bottom-color: rgba(0,0,0,0.08); }
   </style>
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#3b82f6" />
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {});
+      });
+    }
+  </script>
 </head>
 <body>
 
@@ -685,6 +694,7 @@
     <div class="view-toggle" aria-label="节点着色模式">
       <button id="color-by-type" class="chip mode-chip active-mode" type="button">按类型</button>
       <button id="color-by-community" class="chip mode-chip" type="button">按社区</button>
+      <button id="color-by-health" class="chip mode-chip" type="button">按健康度</button>
     </div>
     <div class="toolbar-sep"></div>
     <!-- 筛选按钮 -->
@@ -875,9 +885,13 @@
       return isDark() ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.5)';
     }
 
+    const HEALTH_COLORS = ['#f87171', '#fb923c', '#facc15', '#4ade80'];
     function nodeColor(d)  {
       if (colorMode === 'community') {
         return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
+      }
+      if (colorMode === 'health') {
+        return HEALTH_COLORS[d.health_score != null ? Math.min(d.health_score, 3) : 0];
       }
       return TYPE_COLOR[d.type] || TYPE_COLOR[''];
     }
@@ -895,6 +909,12 @@
           const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
           rows.push(`<div class="legend-row"><div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}</div>`);
         }
+      } else if (colorMode === 'health') {
+        rows.push('<div class="legend-title">按健康度着色</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#f87171"></div>0分 — 缺 summary/sources</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>1分 — 基础信息不完整</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#facc15"></div>2分 — summary + sources 齐全</div>');
+        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#4ade80"></div>3分 — 完整且近期更新</div>');
       } else {
         rows.push('<div class="legend-title">按类型着色</div>');
         rows.push('<div class="legend-row"><div class="legend-dot" style="background:#60a5fa"></div>概念 Concept</div>');
@@ -1038,7 +1058,7 @@
     }
 
     function renderFilterPanel() {
-      const title = colorMode === 'community' ? '🔍 按社区筛选' : '🔍 按类型筛选';
+      const title = colorMode === 'community' ? '🔍 按社区筛选' : colorMode === 'health' ? '🔍 按健康度筛选' : '🔍 按类型筛选';
       if (filterToggle) filterToggle.title = title.replace('🔍 ', '');
       if (filterPanelTitle) filterPanelTitle.textContent = title;
       if (filterLabel) filterLabel.textContent = '筛选';
@@ -1077,18 +1097,21 @@
 
     const colorByTypeBtn = document.getElementById('color-by-type');
     const colorByCommunityBtn = document.getElementById('color-by-community');
+    const colorByHealthBtn = document.getElementById('color-by-health');
     function setColorMode(mode) {
       if (colorMode === mode) return;
       colorMode = mode;
       activeFilters.clear();
       colorByTypeBtn.classList.toggle('active-mode', mode === 'type');
       colorByCommunityBtn.classList.toggle('active-mode', mode === 'community');
+      colorByHealthBtn.classList.toggle('active-mode', mode === 'health');
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
     }
     colorByTypeBtn.addEventListener('click', () => setColorMode('type'));
     colorByCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    colorByHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     /* ── Tick ── */
     simulation.on('tick', () => {
@@ -1352,6 +1375,9 @@
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
+      }
+      if (colorMode === 'health') {
+        return activeFilters.has(String(d.health_score != null ? d.health_score : 0));
       }
       return activeFilters.has(d.type) || (activeFilters.has('__orphan__') && d._degree <= 1);
     }

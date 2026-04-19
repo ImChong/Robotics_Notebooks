@@ -82,5 +82,47 @@
     "must_include": ["wiki/methods/reinforcement-learning.md"],
     "expected_top_k": 5,
     "note": "RL 核心方法页必须命中"
+  },
+  {
+    "query": "CBF 安全集 barrier",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/control-barrier-function.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增 CBF 页面必须命中"
+  },
+  {
+    "query": "CLF Lyapunov 衰减 稳定性",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/control-lyapunov-function.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增 CLF 形式化页面必须命中"
+  },
+  {
+    "query": "双臂操作 bimanual 闭链",
+    "mode": "bm25",
+    "must_include": ["wiki/tasks/bimanual-manipulation.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增双臂操作任务页"
+  },
+  {
+    "query": "真机部署 sim2real 调试",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/sim2real-deployment-checklist.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增部署检查清单 Query 页"
+  },
+  {
+    "query": "humanoid foundation policy VLA",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/foundation-policy-for-humanoids.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增人形基础策略 Query 页"
+  },
+  {
+    "query": "特权训练 teacher student",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/privileged-training.md"],
+    "expected_top_k": 5,
+    "note": "V11 新增特权训练概念页"
   }
 ]

@@ -146,6 +146,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Whole-Body Control](../concepts/whole-body-control.md) — 处理双臂闭链约束的控制框架
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md) — 多肢体协调的概念框架
 - [Teleoperation](./teleoperation.md) — 双臂数据采集的主要手段
+- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 双臂操作大量涉及接触丰富型场景（组装、插拔、折叠）
 
 ## 参考来源
 
