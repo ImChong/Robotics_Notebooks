@@ -4,12 +4,14 @@ on:
   push:
     branches: [main]
     paths:
+      - '.github/workflows/search-regression.yml'
       - 'wiki/**'
       - 'scripts/**'
       - 'schema/**'
       - 'sources/**'
   pull_request:
     paths:
+      - '.github/workflows/search-regression.yml'
       - 'wiki/**'
       - 'scripts/**'
       - 'schema/**'
