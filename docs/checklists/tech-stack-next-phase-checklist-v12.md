@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v12
 
-最后更新：2026-04-20（V12 全部完成，P0-P5 交付；P4.2 搜索 loading 状态延至 V13）
+最后更新：2026-04-20（V12 全部完成，P0-P5 全部交付，含 P4.2 搜索 loading 状态）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v11.md`](tech-stack-next-phase-checklist-v11.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -194,8 +194,8 @@ Karpathy："*LLM updates index on every ingest*"
 
 V11 P2.3 延期项：
 
-- [ ] 搜索框获得焦点时，若索引未加载，显示 `加载中…` spinner 替代空白
-- [ ] 加载完成后自动触发已有输入内容的搜索（无需用户重新输入）
+- [x] 搜索框获得焦点时，若索引未加载，显示 `加载中…` spinner 替代空白
+- [x] 加载完成后自动触发已有输入内容的搜索（无需用户重新输入）
 
 ### P4.3 · 知识图谱快照 Badge
 
@@ -245,7 +245,7 @@ V11 P2.3 延期项：
 | CANONICAL_FACTS | ✅ 30 条 | ✅ **40 条** | ✅ **40 条** |
 | Sources 覆盖率 100% | ✅ | ✅ 维持 | ✅ 维持 |
 | Hybrid BM25/vector | ⚠️ hashed fallback | ⚠️ 维持（环境限制）| ⚠️ 维持（环境限制） |
-| 浏览器端搜索 | ✅ + 解释层 | ✅ + loading 状态 + PWA | ✅ PWA ✅ / loading 状态 ❌ 延至 V13 |
+| 浏览器端搜索 | ✅ + 解释层 | ✅ + loading 状态 + PWA | ✅ PWA + loading 状态（focus 预热）|
 | 知识图谱节点健康 | ❌ | ✅ health_score 着色 | ✅ health_score 着色（红/橙/黄/绿） |
 | 孤立社区 | ⚠️ 2 个 | ✅ 0 个 | ✅ **0 个** |
 | Ingest → suggest updates | ❌ | ✅ `--suggest-updates` | ✅ `--suggest-updates` |

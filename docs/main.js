@@ -1658,6 +1658,20 @@
       }
     });
 
+    searchInput.addEventListener('focus', function() {
+      if (_searchIndex || _searchIndexFailed || _searchIndexPromise) return;
+      searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载中…</p>';
+      ensureSearchIndex().then(function() {
+        if (searchInput.value.trim()) {
+          triggerSearch();
+        } else {
+          searchResults.innerHTML = '';
+        }
+      }).catch(function() {
+        searchResults.innerHTML = '';
+      });
+    });
+
     var _searchTimer;
     searchInput.addEventListener('input', function() {
       clearTimeout(_searchTimer);
