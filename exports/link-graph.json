@@ -21,8 +21,8 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 0,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-4",
+      "community_label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -53,8 +53,8 @@
       "label": "RL vs 模仿学习（Imitation Learning）",
       "type": "comparison",
       "health_score": 1,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/sim2real-approaches.md",
@@ -69,8 +69,8 @@
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 0,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-4",
+      "community_label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -110,7 +110,7 @@
       "type": "concept",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
@@ -158,7 +158,7 @@
       "type": "concept",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -189,8 +189,8 @@
       "label": "Motion Retargeting（动作重定向）",
       "type": "concept",
       "health_score": 2,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/mpc-wbc-integration.md",
@@ -438,7 +438,7 @@
       "type": "method",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/dagger.md",
@@ -446,7 +446,7 @@
       "type": "method",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
@@ -454,15 +454,15 @@
       "type": "method",
       "health_score": 1,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
       "type": "method",
       "health_score": 1,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/model-based-rl.md",
@@ -510,7 +510,7 @@
       "type": "method",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -525,8 +525,8 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 0,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-5",
+      "community_label": "人形机器人控制架构综合对比 社区"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -534,7 +534,7 @@
       "type": "query",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/foundation-policy-for-humanoids.md",
@@ -542,15 +542,15 @@
       "type": "query",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
       "label": "主流人形机器人硬件对比",
       "type": "query",
       "health_score": 1,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-4",
+      "community_label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区"
     },
     {
       "id": "wiki/queries/humanoid-hardware-selection.md",
@@ -582,7 +582,7 @@
       "type": "query",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/locomotion-reward-design-guide.md",
@@ -693,8 +693,8 @@
       "label": "Query：VLA 真机部署指南",
       "type": "query",
       "health_score": 2,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-5",
+      "community_label": "人形机器人控制架构综合对比 社区"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
@@ -709,22 +709,22 @@
       "label": "决策树：何时使用 WBC vs RL？",
       "type": "query",
       "health_score": 1,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-4",
+      "community_label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区"
     },
     {
       "id": "wiki/references/llm-wiki-karpathy.md",
       "label": "LLM Wiki",
-      "type": "",
-      "health_score": 0,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "type": "reference",
+      "health_score": 1,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/roadmaps/humanoid-control-roadmap.md",
       "label": "Humanoid Control Roadmap",
-      "type": "",
-      "health_score": 0,
+      "type": "roadmap_page",
+      "health_score": 1,
       "community": "community-0",
       "community_label": "Locomotion 社区"
     },
@@ -742,15 +742,15 @@
       "type": "task",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
       "type": "task",
       "health_score": 1,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/locomotion.md",
@@ -766,7 +766,7 @@
       "type": "task",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/teleoperation.md",
@@ -774,7 +774,7 @@
       "type": "task",
       "health_score": 1,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1473,6 +1473,10 @@
     {
       "source": "wiki/concepts/sim2real.md",
       "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
@@ -2319,6 +2323,10 @@
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/queries/humanoid-motion-control-know-how.md"
+    },
+    {
       "source": "wiki/queries/control-architecture-comparison.md",
       "target": "wiki/comparisons/wbc-vs-rl.md"
     },
@@ -2775,6 +2783,10 @@
       "target": "wiki/comparisons/sim2real-approaches.md"
     },
     {
+      "source": "wiki/queries/sim2real-deployment-checklist.md",
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
+    },
+    {
       "source": "wiki/queries/sim2real-gap-reduction.md",
       "target": "wiki/concepts/sim2real.md"
     },
@@ -3068,6 +3080,14 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/humanoid-motion-control-know-how.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/open-source-motion-control-projects.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
       "target": "wiki/roadmaps/humanoid-control-roadmap.md"
     },
     {
@@ -3119,6 +3139,14 @@
       "target": "wiki/tasks/loco-manipulation.md"
     },
     {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/tasks/teleoperation.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
+    },
+    {
       "source": "wiki/tasks/teleoperation.md",
       "target": "wiki/tasks/loco-manipulation.md"
     },
@@ -3137,6 +3165,10 @@
     {
       "source": "wiki/tasks/teleoperation.md",
       "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
     },
     {
       "source": "wiki/tasks/ultra-survey.md",
@@ -3175,26 +3207,38 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 41,
+      "size": 43,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 34,
+      "size": 31,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
-      "label": "Imitation Learning (IL) 社区",
-      "size": 18,
-      "hub_id": "wiki/methods/imitation-learning.md"
+      "label": "Manipulation 社区",
+      "size": 13,
+      "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-3",
       "label": "LQR / iLQR 社区",
       "size": 5,
       "hub_id": "wiki/formalizations/lqr.md"
+    },
+    {
+      "id": "community-4",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区",
+      "size": 4,
+      "hub_id": "wiki/comparisons/wbc-vs-rl.md"
+    },
+    {
+      "id": "community-5",
+      "label": "人形机器人控制架构综合对比 社区",
+      "size": 2,
+      "hub_id": "wiki/queries/control-architecture-comparison.md"
     }
   ]
 }

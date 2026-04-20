@@ -7,7 +7,7 @@
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-98节点_596边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-98节点_604边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v13.md)
 
 ---
@@ -36,6 +36,8 @@
 | 有一条路线照着走 | [运动控制成长路线](roadmap/route-a-motion-control.md) |
 | 用强化学习做运动控制 | [强化学习运动控制路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
 | 学模仿学习与技能迁移 | [模仿学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
+| 学安全控制（CLF/CBF）| [安全控制路径](roadmap/learning-paths/if-goal-safe-control.md) |
+| 做接触丰富的操作任务 | [接触操作路径](roadmap/learning-paths/if-goal-contact-manipulation.md) |
 | 浏览所有知识页 | [知识页导航总入口](index.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 

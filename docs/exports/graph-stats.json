@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-04-19",
+  "generated_at": "2026-04-20",
   "node_count": 98,
-  "edge_count": 596,
-  "community_count": 4,
+  "edge_count": 604,
+  "community_count": 6,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 68
+      "degree": 70
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 44
+      "degree": 45
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -35,6 +35,11 @@
       "degree": 28
     },
     {
+      "id": "wiki/tasks/manipulation.md",
+      "label": "Manipulation",
+      "degree": 26
+    },
+    {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
       "degree": 25
@@ -45,38 +50,12 @@
       "degree": 24
     },
     {
-      "id": "wiki/tasks/manipulation.md",
-      "label": "Manipulation",
-      "degree": 24
-    },
-    {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
       "degree": 21
     }
   ],
-  "orphan_nodes": [
-    {
-      "id": "wiki/queries/demo-data-collection-guide.md",
-      "label": "操作任务演示数据收集指南",
-      "out_degree": 4
-    },
-    {
-      "id": "wiki/queries/humanoid-motion-control-know-how.md",
-      "label": "人形机器人运动控制 Know-How 结构化摘要",
-      "out_degree": 12
-    },
-    {
-      "id": "wiki/queries/open-source-motion-control-projects.md",
-      "label": "开源运动控制项目结构化摘要",
-      "out_degree": 12
-    },
-    {
-      "id": "wiki/queries/robot-policy-debug-playbook.md",
-      "label": "RL 策略真机调试 Playbook",
-      "out_degree": 5
-    }
-  ],
+  "orphan_nodes": [],
   "type_distribution": {
     "concept": 27,
     "query": 24,
@@ -85,18 +64,23 @@
     "comparison": 9,
     "entity": 8,
     "task": 7,
-    "unknown": 2,
-    "overview": 1
+    "overview": 1,
+    "reference": 1,
+    "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 41,
-    "Whole-Body Control (WBC) 社区": 34,
-    "Imitation Learning (IL) 社区": 18,
-    "LQR / iLQR 社区": 5
+    "Locomotion 社区": 43,
+    "Whole-Body Control (WBC) 社区": 31,
+    "Manipulation 社区": 13,
+    "LQR / iLQR 社区": 5,
+    "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区": 4,
+    "人形机器人控制架构综合对比 社区": 2
   },
   "community_quality": {
-    "singleton_communities": [],
-    "largest_community_ratio": 0.418,
+    "singleton_communities": [
+      "人形机器人控制架构综合对比 社区"
+    ],
+    "largest_community_ratio": 0.439,
     "community_quality_warning": false
   }
 }

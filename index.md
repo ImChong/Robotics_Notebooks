@@ -13,6 +13,8 @@
 | 想有一条学习路线照着走 | [路线A：运动控制成长路线](roadmap/route-a-motion-control.md) |
 | 想用强化学习做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
 | 想学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
+| 想学安全控制（CLF/CBF）| [安全控制学习路径](roadmap/learning-paths/if-goal-safe-control.md) |
+| 想做接触丰富的操作任务 | [接触操作学习路径](roadmap/learning-paths/if-goal-contact-manipulation.md) |
 | 想看知识概念和方法 | 直接翻下面的 wiki 目录 |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 
@@ -57,6 +59,8 @@
 - [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)
 - [RL Locomotion 路径](roadmap/learning-paths/if-goal-locomotion-rl.md)
 - [IL 技能迁移路径](roadmap/learning-paths/if-goal-imitation-learning.md)
+- [安全控制路径](roadmap/learning-paths/if-goal-safe-control.md)
+- [接触操作路径](roadmap/learning-paths/if-goal-contact-manipulation.md)
 
 ### tech-map/ — 技术栈地图
 回答"模块之间是什么关系"。
@@ -206,6 +210,8 @@ SORT type ASC
 - [学习路径：如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是人形 RL 运动控制](learning-paths/if-goal-locomotion-rl.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md) — 推荐顺序： `📅unknown` `[roadmap_page]`
+- [学习路径：如果目标是安全控制（CLF/CBF）](roadmap/learning-paths/if-goal-safe-control.md) — CLF/CBF/Safe RL 四阶段路径 `📅2026-04-20` `[roadmap_page]`
+- [学习路径：如果目标是接触丰富的操作任务](roadmap/learning-paths/if-goal-contact-manipulation.md) — contact model/IL/contact-rich policy 四阶段路径 `📅2026-04-20` `[roadmap_page]`
 - [路线A：运动控制算法工程师成长路线](route-a-motion-control.md) — 这条路线怎么用： `📅unknown` `[wiki_page]`
 - [路线B：机器人全栈工程师扩展路线](route-b-fullstack.md) — 1. 感知与视觉 `📅unknown` `[wiki_page]`
 

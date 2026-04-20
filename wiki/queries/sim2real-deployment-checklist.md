@@ -66,3 +66,4 @@ related:
 - [Domain Randomization](../concepts/domain-randomization.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Sim2Real 方法对比](../comparisons/sim2real-approaches.md)
+- [Query：RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 系统排障流程的完整版本

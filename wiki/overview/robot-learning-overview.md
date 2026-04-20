@@ -62,6 +62,7 @@ sources:
 - [Locomotion](../tasks/locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
+- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
 
 ## 推荐继续阅读
 

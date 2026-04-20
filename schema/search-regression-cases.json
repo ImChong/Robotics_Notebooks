@@ -124,5 +124,61 @@
     "must_include": ["wiki/concepts/privileged-training.md"],
     "expected_top_k": 5,
     "note": "V11 新增特权训练概念页"
+  },
+  {
+    "query": "domain randomization 参数分布 sim2real",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/domain-randomization-guide.md"],
+    "expected_top_k": 5,
+    "note": "V13 P3 新增 domain randomization 实践指南 Query 页"
+  },
+  {
+    "query": "CLF CBF 联合使用 安全稳定 WBC",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/clf-cbf-in-wbc.md"],
+    "expected_top_k": 5,
+    "note": "V13 P3 新增 CLF+CBF 联合使用 Query 页"
+  },
+  {
+    "query": "VLA 低级控制器 MPC WBC 融合架构",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/vla-with-low-level-controller.md"],
+    "expected_top_k": 5,
+    "note": "V13 P3 新增 VLA 与低级控制器融合 Query 页"
+  },
+  {
+    "query": "接触丰富 操作 装配 拧螺丝 实践",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/contact-rich-manipulation-guide.md"],
+    "expected_top_k": 5,
+    "note": "V13 P3 新增 contact-rich manipulation 实践指南 Query 页"
+  },
+  {
+    "query": "传感器融合 IMU 状态估计 卡尔曼",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/sensor-fusion.md"],
+    "expected_top_k": 5,
+    "note": "V13 P2 加深页面：传感器融合"
+  },
+  {
+    "query": "behavior cloning covariate shift 分布偏移",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/behavior-cloning.md"],
+    "expected_top_k": 5,
+    "note": "V13 P2 加深页面：行为克隆 covariate shift"
+  },
+  {
+    "query": "contact rich manipulation 顺应控制 接触力",
+    "mode": "bm25",
+    "must_include": ["wiki/concepts/contact-rich-manipulation.md"],
+    "expected_top_k": 5,
+    "note": "V13 P2 加深页面：接触丰富操作概念"
+  },
+  {
+    "query": "VLA 推理延迟 action chunk 异步执行",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/vla.md"],
+    "expected_top_k": 5,
+    "note": "V13 P2 加深页面：VLA 延迟与异步执行"
   }
 ]

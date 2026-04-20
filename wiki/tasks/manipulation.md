@@ -81,6 +81,13 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — IL 操作任务论文集合
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/) — 当前 SOTA IL 方法
 
+## 关联页面
+
+- [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
+- [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
+- [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段
+- [Query：操作演示数据采集指南](../queries/demo-data-collection-guide.md) — 如何高效采集人类演示数据
+
 ## 推荐继续阅读
 
 - [Imitation Learning](../methods/imitation-learning.md)
