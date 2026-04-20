@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v13
 
-最后更新：2026-04-20（V13 启动，基于 V12 全部交付）
+最后更新：2026-04-20（V13 完成）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v12.md`](tech-stack-next-phase-checklist-v12.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -53,24 +53,24 @@
 
 ### P0.1 · 为孤儿页面补充入链
 
-- [ ] 在 `wiki/tasks/manipulation.md` 关联页面中添加 `demo-data-collection-guide.md`
-- [ ] 在 `wiki/tasks/teleoperation.md` 关联页面中添加 `demo-data-collection-guide.md`
-- [ ] 在 `wiki/tasks/locomotion.md` 关联页面中添加 `humanoid-motion-control-know-how.md`
-- [ ] 在 `wiki/overview/robot-learning-overview.md` 关联页面中添加 `humanoid-motion-control-know-how.md`
-- [ ] 在 `wiki/tasks/locomotion.md` 关联页面中添加 `open-source-motion-control-projects.md`
-- [ ] 在 `wiki/concepts/sim2real.md` 关联页面中添加 `robot-policy-debug-playbook.md`
-- [ ] 在 `wiki/queries/sim2real-deployment-checklist.md` 关联页面中添加 `robot-policy-debug-playbook.md`
+- [x] 在 `wiki/tasks/manipulation.md` 关联页面中添加 `demo-data-collection-guide.md`
+- [x] 在 `wiki/tasks/teleoperation.md` 关联页面中添加 `demo-data-collection-guide.md`
+- [x] 在 `wiki/tasks/locomotion.md` 关联页面中添加 `humanoid-motion-control-know-how.md`
+- [x] 在 `wiki/overview/robot-learning-overview.md` 关联页面中添加 `humanoid-motion-control-know-how.md`
+- [x] 在 `wiki/tasks/locomotion.md` 关联页面中添加 `open-source-motion-control-projects.md`
+- [x] 在 `wiki/concepts/sim2real.md` 关联页面中添加 `robot-policy-debug-playbook.md`
+- [x] 在 `wiki/queries/sim2real-deployment-checklist.md` 关联页面中添加 `robot-policy-debug-playbook.md`
 
 ### P0.2 · 修复缺失 type 字段的页面
 
-- [ ] 在 `wiki/roadmaps/humanoid-control-roadmap.md` frontmatter 中添加 `type: roadmap_page`
-- [ ] 在 `wiki/references/llm-wiki-karpathy.md` frontmatter 中添加 `type: reference`
-- [ ] 运行 `make lint`，确认 `type_distribution` 中 `unknown` 降为 0
+- [x] 在 `wiki/roadmaps/humanoid-control-roadmap.md` frontmatter 中添加 `type: roadmap_page`
+- [x] 在 `wiki/references/llm-wiki-karpathy.md` frontmatter 中添加 `type: reference`
+- [x] 运行 `make lint`，确认 `type_distribution` 中 `unknown` 降为 0
 
 ### 完成标准
 
-- [ ] `graph-stats.json` 中 `orphan_nodes` 列表为空
-- [ ] `graph-stats.json` 中 `type_distribution.unknown` 为 0
+- [x] `graph-stats.json` 中 `orphan_nodes` 列表为空
+- [x] `graph-stats.json` 中 `type_distribution.unknown` 为 0
 
 ---
 
@@ -94,13 +94,13 @@
 | Diffusion Policy 多模态 | Diffusion Policy 天然处理多模态动作分布，适合复杂操作任务 | Diffusion Policy 只能生成单峰动作分布 |
 | VLA 推理延迟 | VLA 推理延迟通常 100ms 以上，需要异步执行框架 | VLA 可实时同步控制高频关节 |
 
-- [ ] 添加 11 条，总计 **50 条** CANONICAL_FACTS
-- [ ] `make lint` 0 矛盾报告，无误判
+- [x] 添加 11 条，总计 **50 条** CANONICAL_FACTS
+- [x] `make lint` 0 矛盾报告，无误判
 
 ### 完成标准
 
-- [ ] `scripts/lint_wiki.py` 中 CANONICAL_FACTS 条目数 = 50
-- [ ] `make lint` 全通过
+- [x] `scripts/lint_wiki.py` 中 CANONICAL_FACTS 条目数 = 50
+- [x] `make lint` 全通过
 
 ---
 
@@ -125,15 +125,15 @@
 | `wiki/methods/behavior-cloning.md` | ~249 | Covariate shift 问题 / compounding error / 与 DAgger 对比 / 实践建议 |
 | `wiki/methods/vla.md` | ~242 | VLA 架构（Vision-Language-Action）/ RT-1 / RT-2 / 低频动作输出 / 与传统 IL 区别 |
 
-- [ ] 加深 P2.1 中 4 个 stub 页面，每页 ≥ 400 字
-- [ ] 加深 P2.2 中 3 个薄弱页面，每页 ≥ 400 字
-- [ ] 每个更新页面保持 frontmatter `updated:` 字段为当前日期
-- [ ] `make lint` 0 issues
+- [x] 加深 P2.1 中 4 个 stub 页面，每页 ≥ 400 字
+- [x] 加深 P2.2 中 3 个薄弱页面，每页 ≥ 400 字
+- [x] 每个更新页面保持 frontmatter `updated:` 字段为当前日期
+- [x] `make lint` 0 issues
 
 ### 完成标准
 
-- [ ] 上述 7 个页面字数均 ≥ 400 字
-- [ ] `graph-stats.json` 中各节点 `health_score` 分布：score=3 比例 ≥ 60%
+- [x] 上述 7 个页面字数均 ≥ 400 字
+- [x] `graph-stats.json` 中各节点 `health_score` 分布：score=3 比例 ≥ 60%
 
 ---
 
@@ -148,16 +148,16 @@
 | `wiki/queries/vla-with-low-level-controller.md` | 「VLA 如何与低级关节控制器（MPC/WBC）融合？有哪些架构？」 |
 | `wiki/queries/contact-rich-manipulation-guide.md` | 「做接触丰富的操作任务（装配/拧螺丝），有哪些实践要点？」 |
 
-- [ ] 新建以上 4 个 query 页
+- [x] 新建以上 4 个 query 页
   - 格式：`> **Query 产物**` 说明 + 对比表或决策树 + `## 参考来源` + `## 关联页面`
   - 每个 query 页在至少 2 个现有 wiki 页的 `## 关联页面` 中添加回链（防孤儿）
-- [ ] `make lint` 0 issues
+- [x] `make lint` 0 issues
 
 ### 完成标准
 
-- [ ] 4 个 query 页均通过 lint，无孤儿
-- [ ] `python3 scripts/search_wiki.py "domain randomization"` 返回 `domain-randomization-guide.md` 前 3
-- [ ] graph 节点数 ≥ 106
+- [x] 4 个 query 页均通过 lint，无孤儿
+- [x] `python3 scripts/search_wiki.py "domain randomization"` 返回 `domain-randomization-guide.md` 前 3
+- [x] graph 节点数 ≥ 106
 
 ---
 
@@ -167,24 +167,24 @@
 
 ### P4.1 · 孤儿节点数量 Lint 检测项
 
-- [ ] 在 `scripts/lint_wiki.py` 中添加检测项 `orphan_count`：
+- [x] 在 `scripts/lint_wiki.py` 中添加检测项 `orphan_count`：
   - 读取 `exports/graph-stats.json` 中 `orphan_nodes` 列表
   - 若 `orphan_nodes` 非空，输出 `⚠️ 发现 N 个孤儿节点（无入链）：[列表]`
   - 纳入 lint 检测项计数（18 项）
-- [ ] 更新 `check_export_quality.py`：若 `orphan_count` 非零则标记 ⚠️
+- [x] 更新 `check_export_quality.py`：若 `orphan_count` 非零则标记 ⚠️
 
 ### P4.2 · 搜索回归用例扩展至 26 条
 
 当前 18 条，V12/V13 新增页面（CLF/CBF/contact-rich/VLA 融合/domain-randomization 等）尚无覆盖：
 
-- [ ] 在 `schema/search-regression-cases.json` 中新增 8 条用例（覆盖 P3 新增 query 页 + P2 加深页面）
-- [ ] `python3 scripts/eval_search_quality.py` 通过率维持 ≥ 80%
+- [x] 在 `schema/search-regression-cases.json` 中新增 8 条用例（覆盖 P3 新增 query 页 + P2 加深页面）
+- [x] `python3 scripts/eval_search_quality.py` 通过率维持 ≥ 80%
 
 ### 完成标准
 
-- [ ] `make lint` 检测项升至 **18 项**
-- [ ] 搜索回归 26/26 通过（或 ≥ 80%）
-- [ ] `make lint` 对孤儿节点自动报警正常工作
+- [x] `make lint` 检测项升至 **18 项**
+- [x] 搜索回归 26/26 通过（或 ≥ 80%）
+- [x] `make lint` 对孤儿节点自动报警正常工作
 
 ---
 
@@ -194,27 +194,27 @@
 
 V12 新增了 4 条学习路径，但尚未覆盖"安全控制"和"接触丰富操作"方向：
 
-- [ ] 新建 `roadmap/learning-paths/if-goal-safe-control.md`（从 CLF/CBF → WBC → safe RL 的路径）
-- [ ] 新建 `roadmap/learning-paths/if-goal-contact-manipulation.md`（从 contact model → IL → contact-rich policy 路径）
-- [ ] 在 `index.md` 和 README 的"从哪里开始"表格中添加新路径入口
+- [x] 新建 `roadmap/learning-paths/if-goal-safe-control.md`（从 CLF/CBF → WBC → safe RL 的路径）
+- [x] 新建 `roadmap/learning-paths/if-goal-contact-manipulation.md`（从 contact model → IL → contact-rich policy 路径）
+- [x] 在 `index.md` 和 README 的"从哪里开始"表格中添加新路径入口
 
 ### P5.2 · Overview 页面更新
 
 `wiki/overview/robot-learning-overview.md`（118 词）严重偏短，是知识库入口页：
 
-- [ ] 加深 `robot-learning-overview.md`（补充：三层架构说明 / 五大主题导航 / 各 community 简介 / 学习建议）
-- [ ] 字数 ≥ 600 字
+- [x] 加深 `robot-learning-overview.md`（补充：三层架构说明 / 五大主题导航 / 各 community 简介 / 学习建议）
+- [x] 字数 ≥ 600 字
 
 ### P5.3 · log.md 追加 V13 启动记录
 
-- [ ] 追加 `## [2026-04-20] structural | v13-execution | V13 启动，P0-P5 规划`
-- [ ] 格式符合 `grep "^## \["` 可解析规范
+- [x] 追加 `## [2026-04-20] structural | v13-execution | V13 启动，P0-P5 规划`
+- [x] 格式符合 `grep "^## \["` 可解析规范
 
 ### 完成标准
 
-- [ ] `roadmap/learning-paths/` 下有 ≥ 6 个路径页
-- [ ] `robot-learning-overview.md` 字数 ≥ 600 字
-- [ ] `log.md` 最近记录距今 ≤ 7 天
+- [x] `roadmap/learning-paths/` 下有 ≥ 6 个路径页
+- [x] `robot-learning-overview.md` 字数 ≥ 600 字
+- [x] `log.md` 最近记录距今 ≤ 7 天
 
 ---
 
@@ -261,14 +261,14 @@ make badge
 
 ### Op 3 · V13 完成标准（全部满足）
 
-- [ ] `make lint` 0 issues，CANONICAL_FACTS = 50 条，检测项 = 18 项
-- [ ] `graph-stats.json` 孤儿节点列表为空，`type_distribution.unknown` = 0
-- [ ] graph 节点数 ≥ 106
-- [ ] `make export-check` 11 项全通过
-- [ ] `roadmap/learning-paths/` 下有 ≥ 6 个路径页
-- [ ] 搜索回归 26/26 通过（或 ≥ 80%）
-- [ ] `log.md` 最近记录距今 ≤ 7 天
-- [ ] `robot-learning-overview.md` 字数 ≥ 600 字
+- [x] `make lint` 0 issues，CANONICAL_FACTS = 50 条，检测项 = 18 项
+- [x] `graph-stats.json` 孤儿节点列表为空，`type_distribution.unknown` = 0
+- [x] graph 节点数 ≥ 106
+- [x] `make export-check` 11 项全通过
+- [x] `roadmap/learning-paths/` 下有 ≥ 6 个路径页
+- [x] 搜索回归 26/26 通过（或 ≥ 80%）
+- [x] `log.md` 最近记录距今 ≤ 7 天
+- [x] `robot-learning-overview.md` 字数 ≥ 600 字
 
 ---
 

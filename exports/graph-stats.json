@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-20",
-  "node_count": 98,
-  "edge_count": 604,
-  "community_count": 6,
+  "node_count": 106,
+  "edge_count": 675,
+  "community_count": 4,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -10,19 +10,19 @@
       "degree": 70
     },
     {
+      "id": "wiki/concepts/whole-body-control.md",
+      "label": "Whole-Body Control (WBC)",
+      "degree": 56
+    },
+    {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL)",
       "degree": 54
     },
     {
-      "id": "wiki/concepts/whole-body-control.md",
-      "label": "Whole-Body Control (WBC)",
-      "degree": 51
-    },
-    {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 45
+      "degree": 47
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -30,37 +30,37 @@
       "degree": 36
     },
     {
+      "id": "wiki/tasks/manipulation.md",
+      "label": "Manipulation",
+      "degree": 32
+    },
+    {
+      "id": "wiki/overview/robot-learning-overview.md",
+      "label": "Robot Learning Overview",
+      "degree": 28
+    },
+    {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
       "degree": 28
     },
     {
-      "id": "wiki/tasks/manipulation.md",
-      "label": "Manipulation",
-      "degree": 26
-    },
-    {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
-      "degree": 25
+      "degree": 27
     },
     {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
-      "degree": 24
-    },
-    {
-      "id": "wiki/concepts/optimal-control.md",
-      "label": "Optimal Control (OCP)",
-      "degree": 21
+      "degree": 26
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "concept": 27,
-    "query": 24,
+    "concept": 30,
+    "query": 28,
+    "method": 11,
     "formalization": 10,
-    "method": 10,
     "comparison": 9,
     "entity": 8,
     "task": 7,
@@ -69,18 +69,14 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 43,
-    "Whole-Body Control (WBC) 社区": 31,
-    "Manipulation 社区": 13,
-    "LQR / iLQR 社区": 5,
-    "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区": 4,
-    "人形机器人控制架构综合对比 社区": 2
+    "Locomotion 社区": 40,
+    "Whole-Body Control (WBC) 社区": 37,
+    "Imitation Learning (IL) 社区": 24,
+    "Control Lyapunov Function（控制李雅普诺夫函数） 社区": 5
   },
   "community_quality": {
-    "singleton_communities": [
-      "人形机器人控制架构综合对比 社区"
-    ],
-    "largest_community_ratio": 0.439,
+    "singleton_communities": [],
+    "largest_community_ratio": 0.377,
     "community_quality_warning": false
   }
 }
