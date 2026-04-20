@@ -12,8 +12,6 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
-import numpy as np
-
 from search_indexing import (
     REPO_ROOT,
     WIKI_DIR,
@@ -119,6 +117,7 @@ def normalize_scores(scores: list[float]) -> list[float]:
 def load_vector_resources() -> tuple[np.ndarray, dict] | tuple[None, None]:
     if not VECTOR_INDEX_FILE.exists() or not VECTOR_META_FILE.exists():
         return None, None
+    import numpy as np
     matrix = np.load(VECTOR_INDEX_FILE)["embeddings"]
     meta = json.loads(VECTOR_META_FILE.read_text(encoding="utf-8"))
     return matrix, meta
@@ -129,6 +128,7 @@ def encode_query_vector(query: str, meta: dict) -> np.ndarray | None:
     backend = embedding_meta.get("backend")
     if backend == "sentence-transformers":
         try:
+            import numpy as np
             from sentence_transformers import SentenceTransformer
 
             model = SentenceTransformer(embedding_meta.get("model"))
@@ -235,6 +235,7 @@ def search(
             semantic_notice = "向量编码器不可用，已回退到纯 BM25。请安装 sentence-transformers 或重建索引。"
             semantic = False
         else:
+            import numpy as np
             bm25_norm = normalize_scores([item["bm25_score"] for item in prepared])
             vector_scores = []
             for item in prepared:
