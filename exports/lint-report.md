@@ -55,4 +55,7 @@
 ### ⚠️ README checklist 链接版本不一致（0 个）
 - 无
 
-📊 Sources 覆盖率：96/96 (100%) wiki/entity 页有 ingest 来源
+### ⚠️ 图谱孤儿节点预警（graph-stats.json）（0 个）
+- 无
+
+📊 Sources 覆盖率：104/104 (100%) wiki/entity 页有 ingest 来源
