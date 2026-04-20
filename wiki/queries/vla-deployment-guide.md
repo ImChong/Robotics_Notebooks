@@ -112,4 +112,6 @@ VLA 每次输出未来 4~16 步动作或一个短时技能段，让控制器在 
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
+- [Action Chunking（动作块输出）](../methods/action-chunking.md) — 缓解推理延迟和执行线程时域错配的常见手段
+- [Query：VLA 与低级关节控制器融合架构](./vla-with-low-level-controller.md) — 中高层 VLA 如何接入 WBC / MPC / impedance
 - [控制架构综合对比](./control-architecture-comparison.md)

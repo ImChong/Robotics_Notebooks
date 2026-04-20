@@ -186,11 +186,6 @@ def search(
         raw = (REPO_ROOT / doc["path"]).read_text(encoding="utf-8")
         body = strip_frontmatter(raw)
         token_counts = __import__("collections").Counter(tokenize_text(body))
-        query_match = True
-        if query_set and not semantic:
-            query_match = all(token in token_counts for token in query_set)
-        if not query_match:
-            continue
 
         score = compute_score(
             token_counts=token_counts,
@@ -200,6 +195,8 @@ def search(
             fm=fm,
             page_type=doc["page_type"],
         )
+        if query_tokens and not semantic and score <= 0:
+            continue
 
         lines = body.splitlines()
         matched_lines = []

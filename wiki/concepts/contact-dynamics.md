@@ -1,6 +1,7 @@
 ---
 type: concept
 summary: "Contact Dynamics 研究接触力、摩擦和约束如何改变机器人动力学，是 locomotion 与操作控制的物理基础。"
+updated: 2026-04-20
 ---
 
 # Contact Dynamics

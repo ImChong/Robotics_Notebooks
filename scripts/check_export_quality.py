@@ -103,11 +103,21 @@ def main() -> None:
     else:
         results.append(check("graph-stats.json 存在", False, "文件缺失"))
 
-    # 6. lint-report.md 存在（weekly action 已生成过）
+    # 6. graph-stats.json 中孤儿节点应为空
+    if gs.exists():
+        gs_data = json.loads(gs.read_text(encoding="utf-8"))
+        orphan_nodes = gs_data.get("orphan_nodes", [])
+        orphan_free = len(orphan_nodes) == 0
+        detail = "0 个孤儿节点" if orphan_free else f"⚠️ 发现 {len(orphan_nodes)} 个孤儿节点"
+        results.append(check("graph-stats.json 无孤儿节点", orphan_free, detail))
+    else:
+        results.append(check("graph-stats.json 无孤儿节点", False, "文件缺失"))
+
+    # 7. lint-report.md 存在（weekly action 已生成过）
     lr = EXPORTS / "lint-report.md"
     results.append(check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）"))
 
-    # 7. index.md 同步检查（Karpathy: LLM updates index on every ingest）
+    # 8. index.md 同步检查（Karpathy: LLM updates index on every ingest）
     index_md = REPO_ROOT / "index.md"
     index_json = EXPORTS / "index-v1.json"
     if index_md.exists() and index_json.exists():
