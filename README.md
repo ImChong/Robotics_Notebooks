@@ -8,7 +8,7 @@
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
 [![Knowledge Graph](https://img.shields.io/badge/知识图谱-98节点_596边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v12.md)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v13.md)
 
 ---
 
@@ -97,6 +97,6 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 ## 执行清单
 
-[技术栈项目执行清单 v12](docs/checklists/tech-stack-next-phase-checklist-v12.md) — 当前阶段目标（孤立社区整合 / 节点健康着色 / Debug Playbook / 学习路径骨架 / CANONICAL_FACTS 40 条 / PWA 离线支持）
+[技术栈项目执行清单 v13](docs/checklists/tech-stack-next-phase-checklist-v13.md) — 当前阶段目标（孤儿节点修复 / CANONICAL_FACTS 50 条 / 薄弱页面加深 / 4 个新 Query 页 / Lint 18 项）
 
-历史版本：[执行清单归档目录（v1–v11）](docs/checklists/)
+历史版本：[执行清单归档目录（v1–v12）](docs/checklists/)
