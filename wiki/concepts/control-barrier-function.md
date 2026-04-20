@@ -8,6 +8,7 @@ sources:
 related:
   - ./whole-body-control.md
   - ./contact-dynamics.md
+  - ./safety-filter.md
   - ../formalizations/lqr.md
   - ../formalizations/control-lyapunov-function.md
   - ../comparisons/clf-vs-cbf.md
@@ -139,6 +140,7 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 - [Whole-Body Control](./whole-body-control.md) — CBF 作为安全过滤器叠加在 WBC 之上
 - [Contact Dynamics](./contact-dynamics.md) — 接触力锥约束是 CBF 在机器人中的主要应用场景
+- [Safety Filter](./safety-filter.md) — CBF-QP 是最常见的安全过滤器实现方式
 - [LQR](../formalizations/lqr.md) — CBF-QP 与 LQR 都是基于 QP 的实时优化，可结合使用
 - [Control Lyapunov Function](../formalizations/control-lyapunov-function.md) — CLF 负责稳定性，CBF 负责安全性，联合形成 CLF-CBF-QP
 - [CLF vs CBF](../comparisons/clf-vs-cbf.md) — 两者的详细对比与选型指南

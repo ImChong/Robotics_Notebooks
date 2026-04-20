@@ -2,6 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
+updated: 2026-04-20
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -9,7 +10,7 @@ related:
   - ./sim2real.md
   - ./contact-estimation.md
   - ../queries/when-to-use-wbc-vs-rl.md
-summary: "Whole-Body Control 在全身动力学和任务优先级约束下统一求解关节力矩，是 humanoid 控制主干。"
+summary: "Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。"
 ---
 
 # Whole-Body Control (WBC)

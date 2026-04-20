@@ -26,12 +26,10 @@ def load_cases() -> list[dict]:
 
 def run_bm25_search(query: str, top_k: int) -> list[str]:
     """返回 BM25 搜索结果的 wiki 页面路径列表（最多 top_k 条）。"""
-    from search_indexing import tokenize_text
     from search_wiki import search as _search
 
-    query_words = tokenize_text(query)
     results, _ = _search(
-        query_words=query_words,
+        query_words=[query],
         type_filter=None,
         tag_filters=[],
         context_lines=0,

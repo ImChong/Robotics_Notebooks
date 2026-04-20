@@ -141,6 +141,7 @@ def lint() -> dict:
         "query_format": [],           # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
         "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
         "readme_badge": [],           # V11: README checklist 链接版本不一致
+        "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -457,6 +458,61 @@ def lint() -> dict:
             "pos_claims": [r"优先级|priority|层次|hierarchy|高优先级.*先满足"],
             "neg_claims": [r"HQP.*无优先级|HQP.*等权.*优化|hierarchical.*no.*priority"],
         },
+        "PPO on-policy 特性": {
+            "terms": ["PPO"],
+            "pos_claims": [r"PPO.*on.policy|PPO.*每次.*更新.*丢弃|PPO.*不.*复用.*历史数据"],
+            "neg_claims": [r"PPO 是 off.policy|PPO 属于 off.policy|PPO 本质上.*off.policy|PPO.*replay buffer.*来.*复用"],
+        },
+        "Contact-rich 接触力建模": {
+            "terms": ["contact.rich|接触丰富|接触.*丰富"],
+            "pos_claims": [r"显式.*建模.*接触|接触力.*建模|force.*model|顺应性.*控制|impedance"],
+            "neg_claims": [r"contact.rich.*忽略.*接触|接触丰富.*不需要.*力控|contact.*force.*ignored"],
+        },
+        "CLF 收敛驱动目标": {
+            "terms": ["CLF|Control Lyapunov|控制李雅普诺夫"],
+            "pos_claims": [r"CLF.*收敛.*平衡|CLF.*驱动.*收敛|CLF.*渐近稳定|Control Lyapunov.*stabiliz"],
+            "neg_claims": [r"CLF 用于安全边界|CLF 就是 CBF|CLF 等同于 CBF|CLF.*safety barrier function"],
+        },
+        "CBF vs CLF 功能区别": {
+            "terms": ["CBF|CBF.*CLF|CLF.*CBF"],
+            "pos_claims": [r"CBF.*安全.*CLF.*收敛|安全集.*CBF.*稳定性.*CLF|CBF.*维持.*CLF.*驱动"],
+            "neg_claims": [r"CBF.*CLF.*功能相同|CBF.*与.*CLF.*等价|CBF.*替代.*CLF"],
+        },
+        "VLA 输出空间": {
+            "terms": ["VLA|Vision.Language.Action"],
+            "pos_claims": [r"末端执行器.*位姿|end.effector.*pose|EE.*pose|目标位姿.*输出"],
+            "neg_claims": [r"VLA.*直接.*关节.*力矩|VLA.*joint.*torque.*direct|VLA.*关节级.*指令"],
+        },
+        "双臂内力协调": {
+            "terms": ["双臂|bimanual|dual.arm"],
+            "pos_claims": [r"协调规划|内力.*避免|avoid.*internal.*force|closed.loop.*coordination|协调.*内力"],
+            "neg_claims": [r"双臂.*各自.*独立.*规划|bimanual.*no.*coordination|双臂.*内力.*无需处理"],
+        },
+        "Isaac Lab GPU 并行规模": {
+            "terms": ["Isaac Lab|IsaacLab|isaac.*lab"],
+            "pos_claims": [r"GPU.*并行|并行.*环境|数千.*环境|thousands.*enviro|massive.*parallel"],
+            "neg_claims": [r"Isaac Lab.*不.*并行|Isaac Lab.*单环境|IsaacLab.*no.*GPU"],
+        },
+        "Domain Randomization 随机扰动方式": {
+            "terms": ["domain.randomization|域随机|DR.*参数|随机化.*参数"],
+            "pos_claims": [r"随机.*扰动|随机化.*参数|参数.*分布|parameter.*distribution|uniform.*range"],
+            "neg_claims": [r"DR.*固定.*参数|domain.*random.*fixed.*param|随机化.*无效"],
+        },
+        "Diffusion Policy 多模态能力": {
+            "terms": ["diffusion.policy|扩散策略"],
+            "pos_claims": [r"多模态|multimodal|复杂.*操作|multi.modal.*action|多峰.*分布"],
+            "neg_claims": [r"diffusion.*单模态|diffusion.*unimodal|扩散.*单峰.*分布"],
+        },
+        "VLA 高延迟异步执行": {
+            "terms": ["VLA|Vision.Language.Action"],
+            "pos_claims": [r"100ms|异步.*执行|async.*execution|action.*chunk|动作.*块.*缓冲"],
+            "neg_claims": [r"VLA.*无需异步|VLA.*同步.*控制|VLA.*低延迟.*同步"],
+        },
+        "接触丰富顺应性控制": {
+            "terms": ["contact.rich|接触丰富", "force.*control|impedance|力控|阻抗"],
+            "pos_claims": [r"力控|阻抗控制|impedance.*control|force.*control|顺应性.*控制|compliance"],
+            "neg_claims": [r"contact.rich.*纯位置控制|接触丰富.*位置控制.*足够|contact.*pure.*position.*control"],
+        },
     }
     all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():
@@ -638,6 +694,16 @@ def lint() -> dict:
                         f"README Knowledge Graph badge 为 {badge_nodes}节点/{badge_edges}边，但实际为 {node_count}节点/{edge_count}边"
                     )
 
+    # V13: 孤儿节点计数检测（读取 graph-stats.json）
+    graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
+    if graph_stats_path.exists():
+        graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
+        orphan_nodes = graph_stats.get("orphan_nodes", [])
+        if orphan_nodes:
+            results["orphan_count"].append(
+                f"发现 {len(orphan_nodes)} 个孤儿节点（无入链）：{orphan_nodes}"
+            )
+
     return results
 
 def format_report(results: dict) -> str:
@@ -666,6 +732,7 @@ def format_report(results: dict) -> str:
         ("query_format",       "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
         ("formalization_no_formula", "Formalization 页面缺少公式块",              "⚠️"),
         ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
+        ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
     ]
 
     for key, label, icon in sections:

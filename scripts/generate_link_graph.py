@@ -43,18 +43,24 @@ OTHER_COMMUNITY_LABEL = "其他社区"
 
 
 def compute_health_score(content: str) -> int:
-    """计算节点健康度（0-3）：+1 有 summary，+1 有非空 sources，+1 updated 在 365 天内。"""
+    """计算节点健康度（0-3）。
+
+    +1: 有 summary frontmatter
+    +1: 有 frontmatter sources 或正文含参考来源区块
+    +1: 有 updated frontmatter，或至少包含关联页面区块（说明已纳入交叉引用网络）
+    """
     if not content.startswith("---"):
         return 0
     end = content.find("\n---", 3)
     if end == -1:
         return 0
     fm = content[3:end]
+    body = content[end + 4:]
     score = 0
     if re.search(r"^summary\s*:", fm, re.MULTILINE):
         score += 1
     sources_match = re.search(r"^sources\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
-    if sources_match and sources_match.group(1).strip():
+    if (sources_match and sources_match.group(1).strip()) or "## 参考来源" in body:
         score += 1
     updated_match = re.search(r"^updated\s*:\s*(\S+)", fm, re.MULTILINE)
     if updated_match:
@@ -65,6 +71,8 @@ def compute_health_score(content: str) -> int:
                 score += 1
         except ValueError:
             pass
+    elif "## 关联页面" in body:
+        score += 1
     return score
 
 

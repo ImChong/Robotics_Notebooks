@@ -154,6 +154,7 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 - [Lyapunov 稳定性](./lyapunov.md) — CLF 的理论基础
 - [LQR](./lqr.md) — LQR 最优代价函数是线性系统上的 CLF 特例
 - [Whole-Body Control](../concepts/whole-body-control.md) — CLF-CBF-QP 在 WBC 中的实际应用
+- [Safety Filter](../concepts/safety-filter.md) — CLF 常与 CBF 组合成在线安全过滤层
 
 ## 推荐继续阅读
 
