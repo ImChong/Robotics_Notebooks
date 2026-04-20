@@ -382,6 +382,26 @@
       background: rgba(0,0,0,0.04);
       color: rgba(0,0,0,0.9);
     }
+    [data-theme="light"] .filter-mode-tabs {
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .filter-mode-chip {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.5);
+    }
+    [data-theme="light"] .filter-mode-chip:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.8);
+    }
+    [data-theme="light"] .filter-mode-chip.active-mode {
+      background: #1659b4;
+      color: #fff;
+      border-color: transparent;
+    }
+    [data-theme="light"] .filter-section-title {
+      color: rgba(0,0,0,0.35);
+    }
     [data-theme="light"] .filter-item input[type=checkbox] { accent-color: #1659b4; }
     [data-theme="light"] .filter-footer { border-top-color: rgba(0,0,0,0.07); }
     [data-theme="light"] .filter-clear {
@@ -404,10 +424,6 @@
     [data-theme="light"] .chip[data-type="comparison"].active { background: #c084fc; }
     [data-theme="light"] .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     [data-theme="light"] .chip[data-type="formalization"].active { background: #fb923c; }
-    [data-theme="light"] .mode-chip.active-mode {
-      background: #1659b4;
-      color: #fff;
-    }
 
     /* ── 物理参数面板 ── */
     .physics-panel {
@@ -520,11 +536,49 @@
       transition: color .12s;
     }
     .filter-close:hover { color: rgba(255,255,255,0.75); }
+    .filter-mode-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+    .filter-mode-chip {
+      height: 28px;
+      padding: 0 11px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.5);
+      font-size: .75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .filter-mode-chip:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.82);
+    }
+    .filter-mode-chip.active-mode {
+      background: #00d4ff;
+      color: #0d1117;
+      border-color: transparent;
+      font-weight: 700;
+    }
     .filter-body {
       padding: 8px 0;
       display: flex;
       flex-direction: column;
       gap: 1px;
+    }
+    .filter-section-title {
+      padding: 8px 14px 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.34);
+      text-transform: uppercase;
+      letter-spacing: .06em;
     }
     .filter-item {
       display: flex; align-items: center; gap: 9px;
@@ -560,6 +614,11 @@
       transition: all .15s;
     }
     .filter-clear:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .filter-empty {
+      padding: 10px 14px 14px;
+      font-size: .74rem;
+      color: rgba(255,255,255,0.4);
+    }
 
     /* ── 右侧详情侧边栏 ── */
     #graph-sidebar {
@@ -691,12 +750,6 @@
   <!-- ── 工具栏 ── -->
   <div id="graph-toolbar">
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
-    <div class="view-toggle" aria-label="节点着色模式">
-      <button id="color-by-type" class="chip mode-chip active-mode" type="button">按类型</button>
-      <button id="color-by-community" class="chip mode-chip" type="button">按社区</button>
-      <button id="color-by-health" class="chip mode-chip" type="button">按健康度</button>
-    </div>
-    <div class="toolbar-sep"></div>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按类型筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
@@ -775,9 +828,15 @@
     <!-- ── 筛选浮窗面板 ── -->
     <div id="filter-panel" class="filter-panel" hidden>
       <div class="filter-header">
-        <span id="filter-panel-title">🔍 按类型筛选</span>
+        <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
+      <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
+        <button id="filter-mode-type" class="filter-mode-tab active" type="button">按类型</button>
+        <button id="filter-mode-community" class="filter-mode-tab" type="button">按社区</button>
+        <button id="filter-mode-health" class="filter-mode-tab" type="button">按健康度</button>
+      </div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按类型着色与筛选</div>
       <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
@@ -856,12 +915,22 @@
       { value: 'query', label: 'Query', color: '#94a3b8' },
       { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' }
     ];
+    const HEALTH_FILTER_OPTIONS = [
+      { value: '0', label: '0 分', color: '#f87171' },
+      { value: '1', label: '1 分', color: '#fb923c' },
+      { value: '2', label: '2 分', color: '#facc15' },
+      { value: '3', label: '3 分', color: '#4ade80' }
+    ];
     const COMMUNITY_COLORS = d3.schemeTableau10;
     const graphLegend = document.getElementById('graph-legend');
     const filterToggle = document.getElementById('filter-toggle');
     const filterLabel = document.getElementById('filter-label');
     const filterPanel = document.getElementById('filter-panel');
     const filterPanelTitle = document.getElementById('filter-panel-title');
+    const filterSubtitle = document.getElementById('filter-subtitle');
+    const filterModeTypeBtn = document.getElementById('filter-mode-type');
+    const filterModeCommunityBtn = document.getElementById('filter-mode-community');
+    const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
     let colorMode = 'type';
     let activeFilters = new Set();
@@ -1054,24 +1123,43 @@
           color: communityColorMap.get(communityId) || COMMUNITY_COLORS[9]
         }));
       }
+      if (colorMode === 'health') {
+        return HEALTH_FILTER_OPTIONS;
+      }
       return TYPE_FILTER_OPTIONS;
     }
 
+    function getColorModeLabel(mode) {
+      if (mode === 'community') return '按社区';
+      if (mode === 'health') return '按健康度';
+      return '按类型';
+    }
+
     function renderFilterPanel() {
-      const title = colorMode === 'community' ? '🔍 按社区筛选' : colorMode === 'health' ? '🔍 按健康度筛选' : '🔍 按类型筛选';
-      if (filterToggle) filterToggle.title = title.replace('🔍 ', '');
+      const title = '🔍 图谱筛选';
+      if (filterToggle) filterToggle.title = '图谱筛选（当前' + getColorModeLabel(colorMode) + '）';
       if (filterPanelTitle) filterPanelTitle.textContent = title;
       if (filterLabel) filterLabel.textContent = '筛选';
+      if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
+      if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active-mode', colorMode === 'type');
+      if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active-mode', colorMode === 'community');
+      if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active-mode', colorMode === 'health');
       if (!filterPanelBody) return;
       const options = getFilterOptions();
-      filterPanelBody.innerHTML = options.map(option => {
-        const checked = activeFilters.has(option.value) ? ' checked' : '';
-        return '<label class="filter-item">'
-          + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
-          + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
-          + escapeHtml(option.label)
-          + '</label>';
-      }).join('');
+      if (!options.length) {
+        filterPanelBody.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
+      } else {
+        filterPanelBody.innerHTML =
+          '<div class="filter-group-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
+          + options.map(option => {
+              const checked = activeFilters.has(option.value) ? ' checked' : '';
+              return '<label class="filter-item">'
+                + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
+                + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
+                + escapeHtml(option.label)
+                + '</label>';
+            }).join('');
+      }
 
       filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', () => {
@@ -1095,23 +1183,18 @@
       renderFilterPanel();
     }
 
-    const colorByTypeBtn = document.getElementById('color-by-type');
-    const colorByCommunityBtn = document.getElementById('color-by-community');
-    const colorByHealthBtn = document.getElementById('color-by-health');
     function setColorMode(mode) {
       if (colorMode === mode) return;
       colorMode = mode;
       activeFilters.clear();
-      colorByTypeBtn.classList.toggle('active-mode', mode === 'type');
-      colorByCommunityBtn.classList.toggle('active-mode', mode === 'community');
-      colorByHealthBtn.classList.toggle('active-mode', mode === 'health');
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
     }
-    colorByTypeBtn.addEventListener('click', () => setColorMode('type'));
-    colorByCommunityBtn.addEventListener('click', () => setColorMode('community'));
-    colorByHealthBtn.addEventListener('click', () => setColorMode('health'));
+
+    if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
+    if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     /* ── Tick ── */
     simulation.on('tick', () => {
@@ -1386,6 +1469,9 @@
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
+      }
+      if (colorMode === 'health') {
+        return activeFilters.has(String(n.health_score != null ? n.health_score : 0));
       }
       return activeFilters.has(n.type) || (activeFilters.has('__orphan__') && n._degree <= 1);
     }
