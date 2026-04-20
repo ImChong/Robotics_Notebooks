@@ -355,3 +355,13 @@
 - P4: PWA manifest.json + sw.js 创建，index.html/graph.html 注册 Service Worker
 - P5: mujoco-vs-isaac-lab + ppo-vs-sac 对比页（新建中）
 - 运行 make lint: 0 errors（7 陈旧警告来自 main branch sources 更新），sources 覆盖率 100%，图谱 92 节点 560 边
+
+## [2026-04-20] structural | v13-execution | V13 启动，P0-P5 规划
+
+- 基于 V12 完成交付启动 V13：目标聚焦图谱健康、知识积累与检索质量三条主线
+- P0：补齐孤儿节点入链，修复 `roadmap/reference` 页面缺失 `type:`，把 `unknown` 降到 0
+- P1：扩展 `CANONICAL_FACTS` 到 50 条，覆盖 PPO on-policy、CLF/CBF、VLA、contact-rich manipulation、Isaac Lab 并行训练等事实
+- P2：加深 manipulation / contact-rich / terrain / bimanual / sensor-fusion / behavior-cloning / VLA 等薄弱页面
+- P3：规划新增 4 个高价值 Query 页（domain-randomization / clf-cbf / vla-low-level / contact-rich manipulation）
+- P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
+- P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新

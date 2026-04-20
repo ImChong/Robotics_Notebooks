@@ -147,6 +147,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md) — 多肢体协调的概念框架
 - [Teleoperation](./teleoperation.md) — 双臂数据采集的主要手段
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 双臂操作大量涉及接触丰富型场景（组装、插拔、折叠）
+- [Action Chunking](../methods/action-chunking.md) — 双臂协调常依赖动作块输出保持短时同步
 
 ## 参考来源
 
@@ -159,6 +160,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - Zhao et al., [*ACT: Action Chunked Transformers*](https://arxiv.org/abs/2304.13705)
 - [ALOHA](https://tonyzhaozh.github.io/aloha/) — 低成本双臂遥操作平台
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md)
+- [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md) — 双臂装配与内力协调的实践排障思路
 
 ## 一句话记忆
 
