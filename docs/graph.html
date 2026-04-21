@@ -1558,20 +1558,27 @@
       const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId;
       visibleNodeIds.clear();
       let visible = 0;
+      
       node.each(function(d) {
         const ok = nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
+        
+        // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
+        d3.select(this).style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+
         d3.select(this).select('.node-circle')
           .attr('fill-opacity', ok ? 1 : 0.06)
           .attr('stroke-opacity', ok ? 0.35 : 0.05);
         d3.select(this).select('.node-label').style('opacity', ok && searchQuery ? 0.9 : null);
       });
+
       link
+        .style('opacity', null) // V21 修复：清除 openSidebar 的内联 style 干扰
         .attr('stroke-opacity', e => {
           if (!hasFilter) return 1;
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return 0.2; // 进一步提升背景线清晰度 (原 0.1)
+          if (!s || !t) return 0.2;
           return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
                   edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
         })
@@ -1584,7 +1591,6 @@
                   edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
-      // 搜索时若命中节点 ≤ 15 个，自动飞行定位到目标区域
       if (searchQuery) flyToVisible();
     }
 
@@ -1827,6 +1833,7 @@
     }
     function closeSidebar() {
       sidebar.classList.remove('open');
+      pinnedNode = null; // V21 修复：清除固定节点状态
       applyFilters(); // 恢复筛选/搜索状态下的透明度
       wrap.classList.remove('sidebar-open');
       simulation.force('center', d3.forceCenter(
@@ -1838,8 +1845,8 @@
 
     // V21: 点击背景退出高亮聚焦模式
     svg.on('click', (ev) => {
-      // 只有点击 SVG 本身（背景）才触发
-      if (ev.target === svg.node()) {
+      // 如果点击的不是节点，则视为点击背景
+      if (!ev.target.closest('.node-g')) {
         closeSidebar();
       }
     });
