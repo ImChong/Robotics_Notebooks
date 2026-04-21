@@ -124,7 +124,7 @@ IsaacGym /机器人领域常见。
 - MIT Cheetah 的凸 MPC
 - Unitree 的 NMPC 控制器
 
-## 关键参数
+## 关键参数 (详见 [MPC 调参指南](../queries/mpc-tuning-guide.md))
 
 ### 预测时域 $N$
 - $N$ 太短：来不及规划，响应快但可能不稳定

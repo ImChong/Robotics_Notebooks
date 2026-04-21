@@ -771,6 +771,81 @@ def lint() -> dict:
             "pos_claims": [r"时序对齐|剔除.*无效动作|修复.*重定向误差|动作分段"],
             "neg_claims": [r"原始数据.*完美|无需清洗"],
         },
+        "CLF vs CBF 目标区别": {
+            "terms": ["CLF", "CBF"],
+            "pos_claims": [r"CLF.*负责稳定性", r"CBF.*负责安全性", r"CLF.*旨在.*目标状态", r"CBF.*旨在.*安全集"],
+            "neg_claims": [r"CLF.*旨在.*安全性", r"CBF.*旨在.*稳定性", r"两者.*逻辑完全相同"],
+        },
+        "数据手套 vs 视觉遥控": {
+            "terms": ["数据手套|Data.*Glove", "视觉.*遥操作|Vision.*Teleop"],
+            "pos_claims": [r"手套.*免疫遮挡", r"视觉.*低成本", r"手套.*稳定", r"视觉.*自然"],
+            "neg_claims": [r"视觉.*免疫遮挡", r"手套.*低成本", r"两者.*精度相同"],
+        },
+        "InEKF 适用层级": {
+            "terms": ["InEKF", "Invariant.*EKF"],
+            "pos_claims": [r"InEKF.*(底层|1kHz|1000Hz|脊髓级)"],
+            "neg_claims": [r"InEKF.*(大脑级|30Hz|高延迟)"],
+        },
+        "优化派估计优势": {
+            "terms": ["滑窗优化|Factor.*Graph|因子图"],
+            "pos_claims": [r"非线性拟合.*准|纠正.*漂移|闭环检测|Loop.*Closure|异步.*传感器"],
+            "neg_claims": [r"优化.*不如.*EKF.*准|优化.*无法处理.*非线性"],
+        },
+        "Model-Free 样本要求": {
+            "terms": ["Model-Free", "无模型"],
+            "pos_claims": [r"样本效率.*低|需.*大量交互|依赖.*仿真训练|数百M步"],
+            "neg_claims": [r"Model-Free.*样本效率.*高|无需.*大规模.*仿真"],
+        },
+        "Model-Based 规划能力": {
+            "terms": ["Model-Based", "有模型"],
+            "pos_claims": [r"推理未来|具备规划能力|虚拟.*rollout|样本效率.*高"],
+            "neg_claims": [r"Model-Based.*无规划|Model-Based.*样本效率.*低"],
+        },
+        "Scaling Law 跨形态": {
+            "terms": ["Scaling.*Law|规模法则", "跨形态|不同机器人"],
+            "pos_claims": [r"混合数据.*优于.*单一|多样性.*关键|数据.*多样性|规模.*临界点"],
+            "neg_claims": [r"单一形态.*更佳|多样性.*有害|规模.*无关"],
+        },
+        "Auto-labeling 技术实现": {
+            "terms": ["自动化标注|Auto-labeling"],
+            "pos_claims": [r"VLM.*驱动|Teacher-Student|自动.*指令生成|API.*成本低"],
+            "neg_claims": [r"必须.*人工标注|VLM.*无法标注"],
+        },
+        "Foundation Policy 对齐目标": {
+            "terms": ["策略对齐|Alignment"],
+            "pos_claims": [r"统一.*隐空间|映射到.*z|跨形态.*迁移|共享表示"],
+            "neg_claims": [r"形态间.*必须独立|无需对齐"],
+        },
+        "统一 Token 优势": {
+            "terms": ["统一.*Token|Unified.*Token"],
+            "pos_claims": [r"摒弃.*专用分支|通用.*Transformer|灵活性|自回归"],
+            "neg_claims": [r"必须.*专用分支|Transformer.*不适合多模态"],
+        },
+        "EtherCAT DC 同步": {
+            "terms": ["分布式时钟|DC", "EtherCAT"],
+            "pos_claims": [r"时钟对齐|对齐.*从站|消除.*抖动|Sync0"],
+            "neg_claims": [r"DC.*增加抖动|DC.*无关紧要"],
+        },
+        "HAL 设计职责": {
+            "terms": ["硬件抽象层|HAL"],
+            "pos_claims": [r"屏蔽.*总线差异|解耦|统一接口|逻辑.*API"],
+            "neg_claims": [r"HAL.*必须绑定.*CAN|HAL.*增加.*耦合"],
+        },
+        "运控对 CPU 要求": {
+            "terms": ["主控|大脑", "CPU|GPU", "运控"],
+            "pos_claims": [r"单核主频.*关键|依赖.*单核|QR分解.*难并行|主频.*重要"],
+            "neg_claims": [r"运控.*主要靠.*GPU|单核性能.*不重要"],
+        },
+        "生成式增强路径": {
+            "terms": ["生成式数据增强|Generative.*Data.*Augmentation"],
+            "pos_claims": [r"场景编辑|语义编辑|长尾合成|物体变幻|多样化"],
+            "neg_claims": [r"仅限.*旋转裁剪|增强.*无语义"],
+        },
+        "6D 姿态表示优点": {
+            "terms": ["6D.*表示|6D.*Rep"],
+            "pos_claims": [r"连续性|姿态空间连续|适合神经网络回归|梯度平滑"],
+            "neg_claims": [r"6D.*表示.*不连续|不如.*四元数.*平滑"],
+        },
         "MuJoCo 选型理由": {
             "terms": ["MuJoCo|mjcf"],
             "pos_claims": [r"基于模型.*控制|Model.based.*Control|推导动力学|MPC|iLQR|轨迹优化"],

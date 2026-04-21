@@ -2,13 +2,14 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-21 (V19 启动：图谱 147 节点 842 边) -->
+<!-- Last updated: 2026-04-21 (V21 启动：图谱 170 节点 941 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-147节点_842边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-99%25-green)](docs/checklists/tech-stack-next-phase-checklist-v20.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-170节点_941边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v21.md)
+
 
 
 ---
@@ -100,6 +101,7 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 ## 执行清单
 
-[技术栈项目执行清单 v20](docs/checklists/tech-stack-next-phase-checklist-v20.md) — 当前阶段目标（具身 Scaling Law 与数据引擎 / 工业中间件深化 / 智能搜索提升）
+[技术栈项目执行清单 v21](docs/checklists/tech-stack-next-phase-checklist-v21.md) — 当前阶段目标（触觉力觉闭环 / 通信链路形式化 / 详情页微地图）
 
 历史版本：[执行清单归档目录](docs/checklists/)
+cs/checklists/)

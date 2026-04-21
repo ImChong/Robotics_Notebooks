@@ -89,6 +89,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)
+- [Force Control Basics (力控制基础)](./force-control-basics.md) — 阻抗控制的理论背景
 - [TSID](./tsid.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)

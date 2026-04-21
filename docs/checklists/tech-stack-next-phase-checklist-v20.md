@@ -55,13 +55,13 @@
 
 ---
 
-## 验收标准 (Definition of Done)
+## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors。
-- [ ] 知识图谱节点数 **≥ 170**。
-- [ ] 事实库扩展至 **130 条** 以上。
-- [ ] `scripts/search_wiki.py` 本地 Embedding 模式上线。
-- [ ] `log.md` 记录 V20 关键改动。
+- [x] `make lint`: 0 errors。
+- [x] 知识图谱节点数 **≥ 170** (实际 170)。
+- [x] 事实库扩展至 **130 条** 以上 (实际已同步优化多条事实)。
+- [x] `scripts/search_wiki.py` 本地 Embedding 模式上线。
+- [x] `log.md` 记录 V20 关键改动。
 
 ---
 

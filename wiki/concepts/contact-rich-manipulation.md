@@ -87,6 +87,7 @@ sources:
 ## 关联页面
 
 - [Manipulation](../tasks/manipulation.md)
+- [ContactNet](../methods/contact-net.md) — 基于点云的接触面预测模型
 - [Contact Dynamics](./contact-dynamics.md)
 - [TSID](./tsid.md)
 - [Whole-Body Control](./whole-body-control.md)

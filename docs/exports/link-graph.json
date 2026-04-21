@@ -5,7 +5,7 @@
       "label": "CLF vs CBF：稳定性与安全性的对偶工具",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -15,6 +15,14 @@
       "health_score": 3,
       "community": "community-2",
       "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "label": "Kalman Filter vs. Optimization-based Estimation (状态估计选型)",
+      "type": "comparison",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/comparisons/model-based-vs-model-free.md",
@@ -77,8 +85,8 @@
       "label": "ROS 2 vs LCM (机器人中间件选型)",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Sim2Real 真机部署清单 社区"
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
     },
     {
       "id": "wiki/comparisons/sim2real-approaches.md",
@@ -149,7 +157,7 @@
       "label": "Control Barrier Function（控制屏障函数）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -185,6 +193,22 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/concepts/embodied-scaling-laws.md",
+      "label": "Embodied Scaling Laws (具身规模法则)",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/concepts/ethercat-protocol.md",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/concepts/floating-base-dynamics.md",
       "label": "Floating Base Dynamics",
       "type": "concept",
@@ -199,6 +223,14 @@
       "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/concepts/force-control-basics.md",
+      "label": "Force Control Basics (力控制基础)",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
@@ -245,8 +277,16 @@
       "label": "Latent Imagination (潜空间想象)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
+    },
+    {
+      "id": "wiki/concepts/lcm-basics.md",
+      "label": "LCM (Lightweight Communications and Marshalling) 基础",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
     },
     {
       "id": "wiki/concepts/lip-zmp.md",
@@ -297,11 +337,19 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/concepts/ros2-basics.md",
+      "label": "ROS 2 (Robot Operating System 2) 基础",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/concepts/safety-filter.md",
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -365,8 +413,8 @@
       "label": "Video-as-Simulation (视频即仿真)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5",
-      "community_label": "Generative World Models (生成式世界模型) 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -473,6 +521,14 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/entities/open-source-humanoid-brains.md",
+      "label": "开源人形机器人“大脑” (主控电脑) 选型",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/entities/open-source-humanoid-hardware.md",
       "label": "开源人形机器人硬件方案对比",
       "type": "entity",
@@ -487,6 +543,22 @@
       "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/entities/shadow-hand.md",
+      "label": "Shadow Hand (灵巧手)",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/entities/unitree-g1.md",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/entities/unitree.md",
@@ -533,7 +605,7 @@
       "label": "Control Lyapunov Function（控制李雅普诺夫函数）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -551,6 +623,14 @@
       "health_score": 2,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/formalizations/foundation-policy-alignment.md",
+      "label": "Foundation Policy Alignment (基础策略对齐)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/formalizations/friction-cone.md",
@@ -602,19 +682,19 @@
     },
     {
       "id": "wiki/formalizations/pomdp.md",
-      "label": "POMDP（部分可观测马尔可夫决策过程）",
+      "label": "Partially Observable MDP (POMDP)",
       "type": "formalization",
-      "health_score": 2,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/probability-flow.md",
       "label": "Probability Flow (概率流形式化)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-5",
-      "community_label": "Generative World Models (生成式世界模型) 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
     },
     {
       "id": "wiki/formalizations/se3-representation.md",
@@ -625,12 +705,20 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/formalizations/tsid-formulation.md",
+      "label": "Task Space Inverse Dynamics (TSID) 形式化",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/formalizations/variational-objective.md",
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
     },
     {
       "id": "wiki/formalizations/vla-tokenization.md",
@@ -665,12 +753,36 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/methods/auto-labeling-pipelines.md",
+      "label": "Auto-labeling Pipelines (自动化标注流水线)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/methods/bc-with-transformer.md",
+      "label": "Behavior Cloning with Transformer",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
       "id": "wiki/methods/behavior-cloning.md",
       "label": "Behavior Cloning（行为克隆）",
       "type": "method",
       "health_score": 3,
       "community": "community-2",
       "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/methods/contact-net.md",
+      "label": "ContactNet",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/methods/dagger.md",
@@ -689,6 +801,22 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/methods/dmp.md",
+      "label": "Dynamic Movement Primitives (DMP)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/methods/gae.md",
+      "label": "Generalized Advantage Estimation (GAE)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
       "id": "wiki/methods/generative-data-augmentation.md",
       "label": "Generative Data Augmentation (生成式数据增强)",
       "type": "method",
@@ -701,8 +829,16 @@
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "health_score": 3,
-      "community": "community-5",
-      "community_label": "Generative World Models (生成式世界模型) 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
+    },
+    {
+      "id": "wiki/methods/her.md",
+      "label": "Hindsight Experience Replay (HER)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-7",
+      "community_label": "Hindsight Experience Replay (HER) 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -721,12 +857,20 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/methods/marl.md",
+      "label": "Multi-Agent Reinforcement Learning (MARL)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/methods/model-based-rl.md",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -735,6 +879,14 @@
       "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/methods/mppi.md",
+      "label": "Model Predictive Path Integral (MPPI)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-4",
+      "community_label": "Model-Based RL（基于模型的强化学习） 社区"
     },
     {
       "id": "wiki/methods/policy-optimization.md",
@@ -757,7 +909,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -767,6 +919,14 @@
       "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/methods/unified-multimodal-tokens.md",
+      "label": "Unified Multimodal Tokens (统一多模态 Token)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/visual-servoing.md",
@@ -797,8 +957,8 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Sim2Real 真机部署清单 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -813,7 +973,7 @@
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-5",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -857,6 +1017,14 @@
       "community_label": "VLA 真机部署指南：延迟、异步与加速 社区"
     },
     {
+      "id": "wiki/queries/ethercat-master-optimization.md",
+      "label": "EtherCAT 主站优化指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/queries/field-robotics-troubleshooting.md",
       "label": "野外机器人排障指南",
       "type": "query",
@@ -873,6 +1041,14 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/queries/hardware-abstraction-layer.md",
+      "label": "机器人硬件抽象层 (HAL) 设计指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
       "id": "wiki/queries/hardware-comparison.md",
       "label": "主流人形机器人硬件对比",
       "type": "query",
@@ -885,8 +1061,8 @@
       "label": "人形机器人电池与热管理指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Sim2Real 真机部署清单 社区"
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
     },
     {
       "id": "wiki/queries/humanoid-hardware-selection.md",
@@ -945,6 +1121,14 @@
       "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
+      "id": "wiki/queries/mpc-tuning-guide.md",
+      "label": "Model Predictive Control (MPC) 调参指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/queries/multimodal-fusion-tricks.md",
       "label": "机器人感知中的多模态融合技巧",
       "type": "query",
@@ -981,8 +1165,8 @@
       "label": "实时运控中间件配置指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Sim2Real 真机部署清单 社区"
+      "community": "community-3",
+      "community_label": "实时运控中间件配置指南 社区"
     },
     {
       "id": "wiki/queries/reward-design-guide.md",
@@ -1037,8 +1221,8 @@
       "label": "Sim2Real 真机部署清单",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Sim2Real 真机部署清单 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/sim2real-gap-reduction.md",
@@ -1207,6 +1391,18 @@
       "target": "wiki/methods/behavior-cloning.md"
     },
     {
+      "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
       "source": "wiki/comparisons/model-based-vs-model-free.md",
       "target": "wiki/methods/model-based-rl.md"
     },
@@ -1353,6 +1549,18 @@
     {
       "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/comparisons/online-vs-offline-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/queries/ethercat-master-optimization.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/concepts/ros2-basics.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/concepts/lcm-basics.md"
     },
     {
       "source": "wiki/comparisons/ros2-vs-lcm.md",
@@ -1544,6 +1752,10 @@
     },
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/methods/contact-net.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
       "target": "wiki/tasks/loco-manipulation.md"
     },
     {
@@ -1655,6 +1867,30 @@
       "target": "wiki/methods/behavior-cloning.md"
     },
     {
+      "source": "wiki/concepts/embodied-scaling-laws.md",
+      "target": "wiki/methods/generative-data-augmentation.md"
+    },
+    {
+      "source": "wiki/concepts/embodied-scaling-laws.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/concepts/embodied-scaling-laws.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/concepts/embodied-scaling-laws.md",
+      "target": "wiki/formalizations/foundation-policy-alignment.md"
+    },
+    {
+      "source": "wiki/concepts/ethercat-protocol.md",
+      "target": "wiki/queries/ethercat-master-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/ethercat-protocol.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
       "source": "wiki/concepts/floating-base-dynamics.md",
       "target": "wiki/concepts/centroidal-dynamics.md"
     },
@@ -1697,6 +1933,18 @@
     {
       "source": "wiki/concepts/footstep-planning.md",
       "target": "wiki/concepts/gait-generation.md"
+    },
+    {
+      "source": "wiki/concepts/force-control-basics.md",
+      "target": "wiki/concepts/impedance-control.md"
+    },
+    {
+      "source": "wiki/concepts/force-control-basics.md",
+      "target": "wiki/concepts/hybrid-force-position-control.md"
+    },
+    {
+      "source": "wiki/concepts/force-control-basics.md",
+      "target": "wiki/methods/actuator-network.md"
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
@@ -1804,6 +2052,10 @@
     },
     {
       "source": "wiki/concepts/impedance-control.md",
+      "target": "wiki/concepts/force-control-basics.md"
+    },
+    {
+      "source": "wiki/concepts/impedance-control.md",
       "target": "wiki/concepts/tsid.md"
     },
     {
@@ -1825,6 +2077,14 @@
     {
       "source": "wiki/concepts/latent-imagination.md",
       "target": "wiki/formalizations/variational-objective.md"
+    },
+    {
+      "source": "wiki/concepts/lcm-basics.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/concepts/lcm-basics.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
     },
     {
       "source": "wiki/concepts/lip-zmp.md",
@@ -1967,6 +2227,14 @@
       "target": "wiki/queries/reward-design-guide.md"
     },
     {
+      "source": "wiki/concepts/ros2-basics.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/concepts/ros2-basics.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
       "source": "wiki/concepts/safety-filter.md",
       "target": "wiki/concepts/control-barrier-function.md"
     },
@@ -2045,6 +2313,10 @@
     {
       "source": "wiki/concepts/sim2real.md",
       "target": "wiki/comparisons/sim2real-approaches.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md"
     },
     {
       "source": "wiki/concepts/state-estimation.md",
@@ -2148,6 +2420,10 @@
     },
     {
       "source": "wiki/concepts/tsid.md",
+      "target": "wiki/formalizations/tsid-formulation.md"
+    },
+    {
+      "source": "wiki/concepts/tsid.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -2229,6 +2505,10 @@
     {
       "source": "wiki/concepts/whole-body-coordination.md",
       "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/entities/shadow-hand.md"
     },
     {
       "source": "wiki/entities/allegro-hand.md",
@@ -2356,6 +2636,14 @@
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/entities/open-source-humanoid-brains.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/queries/hardware-abstraction-layer.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
       "target": "wiki/queries/humanoid-battery-thermal-management.md"
     },
     {
@@ -2455,6 +2743,26 @@
       "target": "wiki/tasks/manipulation.md"
     },
     {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
       "source": "wiki/entities/open-source-humanoid-hardware.md",
       "target": "wiki/entities/humanoid-robot.md"
     },
@@ -2481,6 +2789,54 @@
     {
       "source": "wiki/entities/pinocchio.md",
       "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/shadow-hand.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/shadow-hand.md",
+      "target": "wiki/entities/allegro-hand.md"
+    },
+    {
+      "source": "wiki/entities/shadow-hand.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/entities/shadow-hand.md",
+      "target": "wiki/methods/in-hand-reorientation.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/concepts/terrain-adaptation.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/entities/nvidia-omniverse.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/entities/unitree-g1.md"
     },
     {
       "source": "wiki/entities/unitree.md",
@@ -2627,6 +2983,18 @@
       "target": "wiki/formalizations/lqr.md"
     },
     {
+      "source": "wiki/formalizations/foundation-policy-alignment.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/formalizations/foundation-policy-alignment.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/formalizations/foundation-policy-alignment.md",
+      "target": "wiki/concepts/embodied-scaling-laws.md"
+    },
+    {
       "source": "wiki/formalizations/friction-cone.md",
       "target": "wiki/concepts/contact-dynamics.md"
     },
@@ -2751,14 +3119,6 @@
       "target": "wiki/concepts/state-estimation.md"
     },
     {
-      "source": "wiki/formalizations/pomdp.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/formalizations/pomdp.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
       "source": "wiki/formalizations/probability-flow.md",
       "target": "wiki/methods/π0-policy.md"
     },
@@ -2781,6 +3141,18 @@
     {
       "source": "wiki/formalizations/se3-representation.md",
       "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/formalizations/tsid-formulation.md",
+      "target": "wiki/formalizations/friction-cone.md"
+    },
+    {
+      "source": "wiki/formalizations/tsid-formulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/tsid-formulation.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
       "source": "wiki/formalizations/variational-objective.md",
@@ -2863,6 +3235,38 @@
       "target": "wiki/concepts/system-identification.md"
     },
     {
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/methods/action-chunking.md"
+    },
+    {
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/concepts/embodied-scaling-laws.md"
+    },
+    {
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/methods/action-chunking.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
       "source": "wiki/methods/behavior-cloning.md",
       "target": "wiki/methods/imitation-learning.md"
     },
@@ -2885,6 +3289,14 @@
     {
       "source": "wiki/methods/behavior-cloning.md",
       "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/contact-net.md",
+      "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/methods/contact-net.md",
+      "target": "wiki/concepts/terrain-adaptation.md"
     },
     {
       "source": "wiki/methods/dagger.md",
@@ -2931,6 +3343,30 @@
       "target": "wiki/concepts/sim2real.md"
     },
     {
+      "source": "wiki/methods/dmp.md",
+      "target": "wiki/concepts/whole-body-coordination.md"
+    },
+    {
+      "source": "wiki/methods/dmp.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/dmp.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/gae.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/methods/gae.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/gae.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
       "source": "wiki/methods/generative-data-augmentation.md",
       "target": "wiki/concepts/embodied-data-cleaning.md"
     },
@@ -2957,6 +3393,22 @@
     {
       "source": "wiki/methods/generative-world-models.md",
       "target": "wiki/entities/nvidia-omniverse.md"
+    },
+    {
+      "source": "wiki/methods/her.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/her.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/bc-with-transformer.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/dmp.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -3015,6 +3467,18 @@
       "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
+      "source": "wiki/methods/marl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/marl.md",
+      "target": "wiki/concepts/whole-body-coordination.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/mppi.md"
+    },
+    {
       "source": "wiki/methods/model-based-rl.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -3044,6 +3508,10 @@
     },
     {
       "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/queries/mpc-tuning-guide.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -3061,6 +3529,22 @@
     {
       "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/comparisons/mpc-vs-rl.md"
+    },
+    {
+      "source": "wiki/methods/mppi.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/methods/mppi.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/mppi.md",
+      "target": "wiki/formalizations/variational-objective.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/methods/gae.md"
     },
     {
       "source": "wiki/methods/policy-optimization.md",
@@ -3121,6 +3605,22 @@
     {
       "source": "wiki/methods/reinforcement-learning.md",
       "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/her.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/marl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/gae.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/safe-rl.md"
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
@@ -3187,6 +3687,18 @@
       "target": "wiki/comparisons/trajectory-opt-vs-rl.md"
     },
     {
+      "source": "wiki/methods/unified-multimodal-tokens.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/unified-multimodal-tokens.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
+    },
+    {
+      "source": "wiki/methods/unified-multimodal-tokens.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
       "source": "wiki/methods/visual-servoing.md",
       "target": "wiki/concepts/tactile-sensing.md"
     },
@@ -3217,6 +3729,22 @@
     {
       "source": "wiki/methods/vla.md",
       "target": "wiki/methods/π0-policy.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/concepts/embodied-scaling-laws.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/formalizations/foundation-policy-alignment.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/unified-multimodal-tokens.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -3511,6 +4039,26 @@
       "target": "wiki/queries/sim2real-deployment-checklist.md"
     },
     {
+      "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/overview/humanoid-motion-control-know-how.md"
+    },
+    {
+      "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/queries/vla-deployment-guide.md"
+    },
+    {
+      "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/concepts/ethercat-protocol.md"
+    },
+    {
+      "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
       "source": "wiki/queries/field-robotics-troubleshooting.md",
       "target": "wiki/overview/humanoid-motion-control-know-how.md"
     },
@@ -3557,6 +4105,18 @@
     {
       "source": "wiki/queries/foundation-policy-for-humanoids.md",
       "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/hardware-abstraction-layer.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/queries/hardware-abstraction-layer.md",
+      "target": "wiki/overview/humanoid-motion-control-know-how.md"
+    },
+    {
+      "source": "wiki/queries/hardware-abstraction-layer.md",
+      "target": "wiki/queries/ethercat-master-optimization.md"
     },
     {
       "source": "wiki/queries/hardware-comparison.md",
@@ -3769,6 +4329,18 @@
     {
       "source": "wiki/queries/mpc-solver-selection.md",
       "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/mpc-tuning-guide.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/queries/mpc-tuning-guide.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/queries/mpc-tuning-guide.md",
+      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/queries/multimodal-fusion-tricks.md",
@@ -4448,6 +5020,14 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/concepts/embodied-scaling-laws.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
       "target": "wiki/formalizations/vla-tokenization.md"
     },
     {
@@ -4551,44 +5131,50 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 63,
+      "size": 66,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 35,
+      "size": 42,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 32,
+      "size": 37,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-3",
-      "label": "Control Barrier Function（控制屏障函数） 社区",
-      "size": 6,
-      "hub_id": "wiki/concepts/control-barrier-function.md"
+      "label": "实时运控中间件配置指南 社区",
+      "size": 8,
+      "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "id": "community-4",
-      "label": "Sim2Real 真机部署清单 社区",
-      "size": 5,
-      "hub_id": "wiki/queries/sim2real-deployment-checklist.md"
+      "label": "Model-Based RL（基于模型的强化学习） 社区",
+      "size": 7,
+      "hub_id": "wiki/methods/model-based-rl.md"
     },
     {
       "id": "community-5",
-      "label": "Generative World Models (生成式世界模型) 社区",
-      "size": 3,
-      "hub_id": "wiki/methods/generative-world-models.md"
+      "label": "Control Barrier Function（控制屏障函数） 社区",
+      "size": 6,
+      "hub_id": "wiki/concepts/control-barrier-function.md"
     },
     {
       "id": "community-6",
       "label": "VLA 真机部署指南：延迟、异步与加速 社区",
       "size": 3,
       "hub_id": "wiki/queries/vla-deployment-guide.md"
+    },
+    {
+      "id": "community-7",
+      "label": "Hindsight Experience Replay (HER) 社区",
+      "size": 1,
+      "hub_id": "wiki/methods/her.md"
     }
   ]
 }

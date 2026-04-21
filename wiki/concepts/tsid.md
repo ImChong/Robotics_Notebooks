@@ -294,7 +294,7 @@ print("joint acceleration command:", qdd_star)
 见：[HQP（Hierarchical QP）](./hqp.md)
 
 ### 和 Whole-Body Control 的关系
-TSID 是 WBC 最经典的实现路线之一，可以理解为”动力学一致的全身任务控制”。
+TSID 是 WBC 最经典的实现路线之一，可以理解为”动力学一致的全身任务控制”。数学定义见 [Task Space Inverse Dynamics (TSID) 形式化](../formalizations/tsid-formulation.md)。
 
 见：[Whole-Body Control](./whole-body-control.md)
 

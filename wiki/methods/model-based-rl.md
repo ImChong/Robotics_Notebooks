@@ -144,7 +144,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 **核心思想**：结合 Temporal Difference（TD）价值学习和 Model Predictive Control。
 
 - 学习隐空间动力学模型 + 价值函数
-- 规划时用 MPPI 在潜空间搜索，用价值函数截断规划 horizon
+- 规划时用 [MPPI](./mppi.md) 在潜空间搜索，用价值函数截断规划 horizon
 - 在机器人操作和 locomotion 上都有强结果
 
 ---

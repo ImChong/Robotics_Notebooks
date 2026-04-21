@@ -51,7 +51,7 @@ $$\nabla_\theta J(\pi_\theta) = \mathbb{E}_{\tau \sim \pi_\theta} \left[ \sum_t 
 
 $$A(s,a) = Q(s,a) - V(s)$$
 
-> "这个动作比平均水平好多少？"——而不是它的绝对回报。
+> "这个动作比平均水平好多少？"——而不是它的绝对回报。估计方法见 [Generalized Advantage Estimation (GAE)](./gae.md)，它通过 λ 权衡偏差与方差。
 
 ## 主要分类
 
