@@ -58,4 +58,4 @@
 ### ⚠️ 图谱孤儿节点预警（graph-stats.json）（0 个）
 - 无
 
-📊 Sources 覆盖率：104/104 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：114/114 (100%) wiki/entity 页有 ingest 来源

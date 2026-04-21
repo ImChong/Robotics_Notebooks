@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 143,
+  "item_count": 153,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -410,7 +410,7 @@
       "title": "Hybrid Force-Position Control（力位混合控制）",
       "path": "wiki/concepts/hybrid-force-position-control.md",
       "summary": "它不是在同一方向同时强行控位置又控力，而是先决定哪些自由度听位置，哪些自由度听力",
-      "content_markdown": "---\ntype: concept\ntags: [control, manipulation, force-control, position-control, contact-rich, assembly]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。\"\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\nrelated:\n  - ./impedance-control.md\n  - ./contact-rich-manipulation.md\n  - ./whole-body-control.md\n  - ../tasks/manipulation.md\n  - ../queries/contact-rich-manipulation-guide.md\n---\n\n# Hybrid Force-Position Control（力位混合控制）\n\n**力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。\n\n## 一句话定义\n\n它不是在同一方向同时强行控位置又控力，而是先决定**哪些自由度听位置，哪些自由度听力**。\n\n## 为什么重要\n\n很多接触任务如果只做位置跟踪，会把环境误差直接转换成过大接触力；如果只做力控，又会失去几何精度。力位混合控制提供了一个更实用的折中：\n\n- 法向方向控力，避免撞击过猛\n- 切向方向控位置，沿着目标轨迹移动\n- 适合装配、拧紧、擦拭、沿边探索等任务\n\n## 典型例子\n\n### 1. 插孔\n\n- 插入方向：控力或低刚度\n- 横向方向：控位置\n- 目标是边接触边纠偏，而不是生硬把末端塞进去\n\n### 2. 擦拭\n\n- 法向：维持稳定压力\n- 平面内：沿轨迹移动\n\n### 3. 旋钮/螺丝\n\n- 轴向：施加预紧力\n- 旋转自由度：控角度或速度\n\n## 基本形式\n\n设任务空间误差为 $e_x$，接触力误差为 $e_f$，通常构造两个选择矩阵：\n\n$$\nS_p + S_f = I\n$$\n\n其中：\n\n- $S_p$ 选出做位置控制的方向\n- $S_f$ 选出做力控制的方向\n\n控制律常写成：\n\n$$\nu = S_p u_{pos} + S_f u_{force}\n$$\n\n核心不是公式复杂，而是**任务拆分是否合理**。如果拆分错了，系统就会在接触边界反复打架。\n\n## 与阻抗控制的关系\n\n- **阻抗控制**更像让系统表现成“有弹簧阻尼的柔顺体”\n- **力位混合控制**更强调任务方向拆分和目标分配\n\n很多工程系统会把两者结合起来：位置子空间里做阻抗跟踪，力子空间里做显式力反馈。\n\n## 何时使用\n\n适合：\n\n- 接触方向明确的任务\n- 需要稳定法向压力但仍需几何跟踪的任务\n- 环境表面法向可以可靠估计的场景\n\n不太适合：\n\n- 接触法向经常变化且难以实时估计\n- 任务需要非常复杂的多点接触切换\n- 双臂闭链里同时存在强耦合内力约束但没有统一优化层\n\n## 常见误区\n\n- **误区 1：所有方向都能同时做高精度力控和位置控。**  \n  真实系统里通常必须做方向拆分，否则会出现约束冲突。\n- **误区 2：一旦用了力位混合控制就不需要阻抗。**  \n  在噪声和延迟存在时，柔顺性仍然很重要。\n- **误区 3：法向方向永远固定。**  \n  接触几何一变，选择矩阵也可能需要重新定义。\n\n## 参考来源\n\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、约束与摩擦锥基础\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触阶段和任务空间约束组织\n- Raibert & Craig, *Hybrid Position/Force Control of Manipulators*\n\n## 关联页面\n\n- [Impedance Control](./impedance-control.md)\n- [Contact-Rich Manipulation](./contact-rich-manipulation.md)\n- [Whole-Body Control](./whole-body-control.md)\n- [Manipulation](../tasks/manipulation.md)\n- [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)",
+      "content_markdown": "---\ntype: concept\ntags: [control, manipulation, force-control, position-control, contact-rich, assembly]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。\"\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\nrelated:\n  - ./impedance-control.md\n  - ./contact-rich-manipulation.md\n  - ./whole-body-control.md\n  - ../tasks/manipulation.md\n  - ../queries/contact-rich-manipulation-guide.md\n---\n\n# Hybrid Force-Position Control（力位混合控制）\n\n**力位混合控制**：把任务空间拆成“该控位置的方向”和“该控力的方向”，让机器人在一个子空间内严格跟踪几何目标，在另一个子空间内稳定施加期望接触力。\n\n## 一句话定义\n\n它不是在同一方向同时强行控位置又控力，而是先决定**哪些自由度听位置，哪些自由度听力**。\n\n## 为什么重要\n\n在复杂的接触任务中，如果仅使用位置控制，即使极小的几何误差（如环境位置估计偏差 1mm）也可能产生巨大的接触力，导致工件损坏或机器人保护性停机。如果仅使用力控制，机器人则会失去对末端位姿的精确约束。\n\n力位混合控制（Hybrid Control）通过 **任务空间的正交分解**，在不同的物理维度上分别满足位置约束和力约束。它是工业装配（插拔、打磨）、协作机器人交互以及人形机器人精细操作的基础。\n\n## 核心原理：任务框架（Task Frame）\n\n力位混合控制的核心在于 **Mason 提出的任务框架（Task Frame）** 概念。在接触发生时，任务空间被划分为两个正交的子空间：\n\n1. **位置子空间（Position Subspace）**：机器人可以自由移动或需要精确跟踪轨迹的方向（通常是切线方向）。\n2. **力子空间（Force Subspace）**：机器人受到环境约束，无法自由移动，但需要维持特定压力的方向（通常是法线方向）。\n\n### 数学表达：选择矩阵\n\n通过定义一个对角阵 **选择矩阵 $S$**，我们可以显式地将任务目标分开。$S$ 的对角元素为 1 或 0：\n- $S_{ii} = 1$ 表示第 $i$ 个自由度受位置控制。\n- $S_{ii} = 0$ 表示第 $i$ 个自由度受力控制。\n\n定义互补矩阵 $\\bar{S} = I - S$，则 $\\bar{S}$ 选出了所有受力控制的方向。\n\n控制律通常具有以下形式：\n$$ \\tau = J^T ( S f_{pos} + \\bar{S} f_{force} ) $$\n其中：\n- $f_{pos}$ 是位置控制器计算的虚功力（如 PID 产生的力）。\n- $f_{force}$ 是力控制器计算的期望反馈力。\n\n## 典型应用场景\n\n### 1. 工业打磨与擦拭\n- **法向方向**：使用力控维持恒定的下压力，确保打磨质量均一，不因表面起伏而忽轻忽重。\n- **切向方向**：使用位置控制跟踪预设的打磨路径，确保覆盖整个作业面。\n\n### 2. 精密插拔（Peg-in-Hole）\n- **轴向方向**：使用位置控制执行插入动作。\n- **径向/转动方向**：使用力控制或柔顺控制，允许末端在遇到阻碍时产生位移，实现自主寻孔和对齐。\n\n### 3. 旋拧螺丝\n- **进给方向**：维持恒定的预紧力，防止起子打滑。\n- **旋转方向**：控制转速或转矩，直到达到预设的拧紧力矩。\n\n## 与阻抗控制（Impedance Control）的区别\n\n虽然两者都处理接触力，但哲学不同：\n\n| 特性 | 力位混合控制 | 阻抗控制 |\n|------|------------|---------|\n| **核心思路** | 任务空间正交分解 | 模拟弹簧-阻尼系统 |\n| **控制目标** | 显式跟踪力值 $F_d$ | 控制动态关系 $M, B, K$ |\n| **环境要求** | 需要明确知道接触面法向 | 对环境几何不敏感，更通用 |\n| **稳定性** | 在刚性接触中可能存在切换震荡 | 物理本质上更稳定（Passive） |\n| **适用场景** | 高精度力跟踪（如称重、恒压打磨） | 碰撞处理、人机协作、不确定地形步行 |\n\n## 实施中的挑战\n\n1. **选择矩阵的实时更新**：当接触面几何形状复杂或发生变化时，任务框架的方向必须实时重定位（例如擦拭一个球体表面），这对感知系统提出了高要求。\n2. **接触切换的瞬态性能**：从自由运动切换到接触运动时，由于系统刚度的突变，容易产生冲击力或受力方向的逻辑冲突。\n3. **传感器噪声与延迟**：末端力传感器（六维力/力矩传感器）的噪声和控制环路的延迟会限制力控的带宽，可能导致高频震荡。\n\n## 何时使用\n\n- **选择混合控制**：当你明确知道任务在哪些维度需要力，哪些维度需要位（如平面作业、已知几何体的装配）。\n- **选择阻抗控制**：当环境非常不确定，或者任务目标是保持整体柔顺性（如在人群中行走、抓取位置未知的物体）。\n\n## 参考来源\n\n- Raibert, M. H., & Craig, J. J. (1981). *Hybrid position/force control of manipulators*. Journal of Dynamic Systems, Measurement, and Control.\n- Khatib, O. (1987). *A unified approach for motion and force control of robot manipulators: The operational space formulation*. IEEE Journal on Robotics and Automation.\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力基础\n\n## 关联页面\n\n- [Impedance Control](./impedance-control.md)\n- [Contact-Rich Manipulation](./contact-rich-manipulation.md)\n- [Whole-Body Control](./whole-body-control.md)\n- [Manipulation](../tasks/manipulation.md)\n- [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)",
       "tags": [
         "concept",
         "control",
@@ -422,8 +422,7 @@
         "wiki-concepts-whole-body-control",
         "wiki-tasks-manipulation",
         "wiki-queries-contact-rich-manipulation-guide",
-        "sources-papers-contact-dynamics",
-        "sources-papers-contact-planning"
+        "sources-papers-contact-dynamics"
       ],
       "source_links": [],
       "status": "active",
@@ -434,13 +433,12 @@
       "id": "wiki-concepts-impedance-control",
       "title": "Impedance Control（阻抗控制）",
       "path": "wiki/concepts/impedance-control.md",
-      "summary": "阻抗控制的核心不是把误差压到零，而是把“误差会产生什么力、以多快衰减”设计清楚",
-      "content_markdown": "---\ntype: concept\ntags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。\"\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\nrelated:\n  - ./contact-rich-manipulation.md\n  - ./whole-body-control.md\n  - ./tsid.md\n  - ../tasks/manipulation.md\n  - ../queries/contact-rich-manipulation-guide.md\n---\n\n# Impedance Control（阻抗控制）\n\n**阻抗控制**：不直接要求机器人“精确走到某个位姿”，而是规定当机器人与环境之间出现位置误差或接触力时，系统应该表现出怎样的弹簧-阻尼响应。\n\n## 一句话定义\n\n阻抗控制的核心不是把误差压到零，而是把“误差会产生什么力、以多快衰减”设计清楚。\n\n## 为什么重要\n\n在自由空间轨迹跟踪中，纯位置控制通常足够；但一旦进入插拔、擦拭、装配、拧紧等接触丰富任务，位置误差会被直接放大成碰撞和冲击。阻抗控制通过给末端加入可调柔顺性，让机器人在碰到环境后不是“硬顶”，而是按预期的刚度和阻尼去吸收误差。\n\n这使它成为 contact-rich manipulation、双臂装配、以及 VLA 输出末端位姿目标时最常见的低层执行接口。\n\n## 基本形式\n\n典型任务空间阻抗控制会把末端行为写成：\n\n$$\nF = K(x_{des} - x) + D(\\dot{x}_{des} - \\dot{x})\n$$\n\n其中：\n\n- $x_{des}$ 是目标末端位姿\n- $x$ 是当前末端位姿\n- $K$ 是刚度矩阵，决定“偏了多少要推回去”\n- $D$ 是阻尼矩阵，决定“回去时会不会振荡”\n\n再通过雅可比转置或逆动力学把任务空间力映射到关节力矩。\n\n## 什么时候适合用\n\n- 插孔、擦拭、沿表面滑动等需要柔顺接触的任务\n- 视觉误差难以完全消除的操作任务\n- VLA / BC / Diffusion Policy 输出末端目标位姿，需要低层控制器安全接住\n- 双臂共同操持物体，需要吸收微小几何不一致\n\n## 和其他方法的关系\n\n- 相比**纯位置控制**，阻抗控制更适合处理接触误差。\n- 相比**纯力控制**，阻抗控制更容易同时保持运动目标和接触柔顺性。\n- 在人形系统里，它经常作为 WBC / TSID 中某个任务空间层的执行语义出现。\n\n## 常见误区\n\n- **误区 1：刚度越大越稳定。**  \n  刚度太高时，模型误差会直接转成冲击力，反而更容易振荡或损坏硬件。\n- **误区 2：阻抗控制只适用于机械臂。**  \n  人形上肢、双臂协同甚至全身接触任务都常用阻抗思路。\n- **误区 3：有了阻抗控制就不需要接触建模。**  \n  阻抗只提供柔顺执行，摩擦锥、法向力和接触切换问题仍需显式考虑。\n\n## 参考来源\n\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力、摩擦与柔顺执行基础\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层与接触阶段组织\n- Hogan, *Impedance Control: An Approach to Manipulation* — 阻抗控制经典工作\n\n## 关联页面\n\n- [Contact-Rich Manipulation](./contact-rich-manipulation.md)\n- [Whole-Body Control](./whole-body-control.md)\n- [TSID](./tsid.md)\n- [Manipulation](../tasks/manipulation.md)\n- [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)",
+      "summary": "阻抗控制的核心不是把误差压到零，而是预先设计好“误差会产生什么力、以多快速度衰减”",
+      "content_markdown": "---\ntype: concept\ntags: [control, manipulation, impedance-control, force-control, contact-rich, whole-body-control]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。\"\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\nrelated:\n  - ./contact-rich-manipulation.md\n  - ./whole-body-control.md\n  - ./tsid.md\n  - ../tasks/manipulation.md\n  - ../queries/contact-rich-manipulation-guide.md\n---\n\n# Impedance Control（阻抗控制）\n\n**阻抗控制**：不直接要求机器人“精确走到某个位姿”，而是规定当机器人与环境之间出现位置误差或接触力时，系统应该表现出怎样的 **质量-弹簧-阻尼（Mass-Spring-Damper）** 响应。\n\n## 一句话定义\n\n阻抗控制的核心不是把误差压到零，而是预先设计好“**误差会产生什么力、以多快速度衰减**”。\n\n## 为什么重要\n\n在机器人与物理环境发生交互（如插拔、装配、抛光）时，纯位置控制极其危险：即使是 1mm 的示教误差，在刚性环境下也会产生巨大的接触力，导致硬件损坏。\n\n阻抗控制通过将机器人末端建模为一个虚拟的物理系统，赋予了机器人 **主动柔顺性（Active Compliance）**。这使得机器人在碰到障碍物时不是“硬顶”，而是像弹簧一样退让，并在撤去外力后恢复目标位置。它是当前具身智能（VLA/IL）输出动作指令后，底层执行器最稳健的接口。\n\n## 核心数学模型\n\n在任务空间（Task Space）中，期望的阻抗行为通常描述为：\n$$ M_d (\\ddot{x} - \\ddot{x}_d) + B_d (\\dot{x} - \\dot{x}_d) + K_d (x - x_d) = f_{ext} $$\n其中：\n- $x, x_d$：当前位姿与期望位姿。\n- $M_d, B_d, K_d$：**期望的质量、阻尼、刚度矩阵**。这是控制器的核心参数。\n- $f_{ext}$：机器人末端受到的外部环境力。\n\n### 简化形式（准静态）\n在低速操作中，通常忽略质量项，阻抗控制简化为力映射：\n$$ f = K_d (x_d - x) + B_d (\\dot{x}_d - \\dot{x}) $$\n然后通过雅可比转置映射到关节力矩：$\\tau = J^T f$。\n\n## 阻抗控制 vs. 导纳控制（Admittance Control）\n\n两者都是为了实现阻抗行为，但实现路径相反：\n\n- **阻抗控制（Impedance Control）**：\n  - **输入**：位移误差（Position/Velocity）。\n  - **输出**：力/力矩（Force/Torque）。\n  - **实现**：通常需要机器人支持力矩控制（Torque-controlled），直接调节电机输出。\n  - **优点**：响应极快，可以处理高频碰撞。\n\n- **导纳控制（Admittance Control）**：\n  - **输入**：外部力（Force/Torque）。\n  - **输出**：修正后的位移目标（Modified Position）。\n  - **实现**：在标准位置控制机器人上通过外接力传感器实现。\n  - **优点**：适合大负载、刚性强的工业机器人，实现简单。\n\n## 在人形机器人中的应用\n\n1. **足端阻抗**：在步行过程中，足端阻抗控制可以吸收地形不平带来的冲击力，起到虚拟减震器的作用，提高平衡鲁棒性。\n2. **双臂协同操作**：当两只手共同搬运一个刚性物体时，两臂的阻抗控制可以吸收相互之间的挤压力，防止因几何闭链约束过紧而导致的电机过热或保护停机。\n3. **安全人机交互**：当人类推搡机器人时，阻抗控制允许机器人顺着外力方向移动，确保不会对人造成二次伤害。\n\n## 调参建议（Tuning Tips）\n\n- **刚度 $K_d$**：决定了机器人的“硬度”。\n  - 任务需要高精度（如搬运）时调高。\n  - 任务涉及未知接触（如摸索孔位）时调低。\n- **阻尼 $B_d$**：决定了运动的平稳性。\n  - 通常设置为 **临界阻尼** 状态（$B_d \\approx 2\\sqrt{M_d K_d}$），以防止系统在受到扰动后产生长久的往复振荡。\n- **奇异点处理**：在接近机构奇异点时，雅可比转置映射可能失效，需要增加正则项或限制最大输出力。\n\n## 常见误区\n\n- **误区 1：刚度越大越稳。** 事实上，环境越硬，机器人刚度必须越低，否则系统闭环特征值会移向不稳定区。\n- **误区 2：阻抗控制需要精确环境模型。** 阻抗控制的初衷就是为了应对环境的不确定性，它不需要知道环境的具体几何信息。\n\n## 参考来源\n\n- Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*. Journal of Dynamic Systems, Measurement, and Control.\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织\n\n## 关联页面\n\n- [Contact-Rich Manipulation](./contact-rich-manipulation.md)\n- [Whole-Body Control](./whole-body-control.md)\n- [TSID](./tsid.md)\n- [Manipulation](../tasks/manipulation.md)\n- [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)",
       "tags": [
         "concept",
         "control",
-        "dynamics",
-        "il"
+        "dynamics"
       ],
       "related": [
         "wiki-concepts-contact-rich-manipulation",
@@ -1220,31 +1218,51 @@
       "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
-      "id": "wiki-methods-trajectory-optimization",
-      "title": "Trajectory Optimization",
-      "path": "wiki/methods/trajectory-optimization.md",
-      "summary": "Trajectory Optimization（轨迹优化）：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹",
-      "content_markdown": "---\ntype: method\nsummary: \"Trajectory Optimization 通过直接优化状态和控制序列生成可行运动，是控制与规划的桥梁。\"\n---\n\n# Trajectory Optimization\n\n**Trajectory Optimization（轨迹优化）**：把机器人“从哪里出发、怎么运动、最终到哪里去”写成一个带动力学和约束的优化问题，求一条满足目标且代价尽量小的轨迹。\n\n## 一句话定义\n\n如果说控制在回答“这一刻该怎么做”，那 **Trajectory Optimization** 更像是在回答：\n\n> 接下来一段时间，整条运动轨迹应该怎么安排，才又稳、又合理、又满足约束。\n\n## 为什么重要\n\n机器人很多问题都不是单步决策，而是整段过程设计。\n\n比如：\n- 机械臂从 A 到 B 怎么绕开障碍\n- 双足机器人下一串落脚点怎么安排\n- 起身、下蹲、跨步、跑跳的整体动作怎么生成\n- 质心和接触力轨迹如何规划\n\n这类问题如果只看当前一步，往往会很蠢。\n\nTrajectory Optimization 重要就在于：\n- 它能自然处理长时域目标\n- 它能显式纳入动力学和约束\n- 它是 OCP 在机器人运动生成里的核心落地形式\n- 它是 MPC、motion planning、legged locomotion、whole-body motion generation 的重要基础\n\n一句话，**它解决的是“整段动作怎么设计”而不是“这一拍怎么补救”。**\n\n## 核心问题长什么样\n\n轨迹优化通常会同时优化：\n- 状态轨迹 \\(x_0, x_1, ..., x_N\\)\n- 控制轨迹 \\(u_0, u_1, ..., u_{N-1}\\)\n- 有时还包括接触时序、落脚点、相位变量等\n\n标准形式通常写成：\n\n$$\n\\min_{x_{0:N}, u_{0:N-1}} \\sum_{k=0}^{N-1} l(x_k, u_k) + l_f(x_N)\n$$\n\n满足：\n\n$$\nx_{k+1} = f(x_k, u_k)\n$$\n\n以及各种约束：\n- 状态约束\n- 控制约束\n- 碰撞约束\n- 接触约束\n- 终端约束\n\n这和 OCP 本质一致，但机器人里更强调“轨迹”这件事本身。\n\n## 它到底在优化什么\n\n### 1. State Trajectory\n状态怎么随时间演化。\n\n比如：\n- 关节角轨迹\n- 质心轨迹\n- base pose 轨迹\n- 末端轨迹\n\n### 2. Control Trajectory\n控制输入怎么随时间变化。\n\n比如：\n- 力矩序列\n- 加速度序列\n- 接触力序列\n\n### 3. Event / Contact Variables\n在人形和足式机器人里，经常还要优化：\n- 落脚点位置\n- 接触时序\n- 步长 / 步频\n- 相位切换时刻\n\n这也是它比普通轨迹插值高级很多的地方。\n\n## 常见求解路线\n\n### 1. Direct Shooting\n只把控制序列当变量：\n- 给一组 \\(u\\)\n- 用动力学前向 rollout 出整条轨迹\n- 然后优化 \\(u\\)\n\n优点：\n- 结构简单\n- 变量少\n\n缺点：\n- 数值容易不稳定\n- 对初值敏感\n- 长时域问题容易炸\n\n### 2. Multiple Shooting\n把中间状态也当变量，同时加动态一致性约束。\n\n优点：\n- 比单纯 shooting 更稳\n- 更适合长时域与复杂约束\n\n缺点：\n- 变量更多\n\n### 3. Direct Collocation\n把状态和控制在离散节点上一起优化，并通过 collocation 约束逼近连续动力学。\n\n这是机器人里非常经典的一条路线。\n\n优点：\n- 数值稳定性好\n- 容易加复杂约束\n- 很适合 whole-body motion / legged planning\n\n缺点：\n- 问题规模大\n- 实时性通常不如简化方法\n\n## 常见算法 / 家族\n\n### 1. iLQR / DDP\n适合有连续动力学、想高效求局部最优解的场景。\n\n特点：\n- 利用二次近似\n- 对轨迹优化很常见\n- 在控制和运动生成里都很有影响力\n\n### 2. SQP（Sequential Quadratic Programming）\n把非线性优化问题迭代近似成一系列 QP。\n\n适合：\n- 非线性约束多\n- 精度要求高\n\n### 3. NLP Solvers\n把轨迹优化问题直接交给非线性规划求解器。\n\n常见工具：\n- IPOPT\n- SNOPT\n- KNITRO\n- CasADi（建模层）\n\n### 4. Convex Relaxation / Convexification\n对部分问题可做凸化，换取更好的实时性与鲁棒性。\n\n在人形 / 四足 locomotion 里很常见，尤其是 centroidal-level planning。\n\n## 在机器人中的典型应用\n\n### 1. 机械臂运动生成\n规划一条平滑、无碰撞、满足动力学或速度约束的末端运动轨迹。\n\n### 2. 双足 / 四足步态规划\n优化：\n- CoM 轨迹\n- 接触力\n- 落脚点\n- 接触时序\n\n这在人形 locomotion 里非常核心。\n\n### 3. 起身、跳跃、翻越等动态动作\n这些动作高度非线性、约束多，通常需要 trajectory optimization 才能写清楚。\n\n### 4. 作为 MPC 的离线先验\n离线先用 trajectory optimization 找一条高质量参考轨迹，在线再由 MPC / TSID / WBC 跟踪。\n\n## 和 MPC 的关系\n\n这两个最容易混。\n\n### Trajectory Optimization\n更偏：\n- 离线 / 中低频\n- 整段动作设计\n- 求一条完整参考轨迹\n\n### MPC\n更偏：\n- 在线 / 高频\n- 每时刻滚动优化\n- 根据当前状态不断修正\n\n关系可以理解成：\n\n```text\nTrajectory Optimization：先把大致整段路设计好\nMPC：走的时候随时修正\n```\n\n很多系统里两者是组合关系，不是二选一。\n\n## 和已有页面的关系\n\n### 和 Optimal Control 的关系\nTrajectory Optimization 本质上是最优控制在机器人运动生成问题上的直接落地。\n\n见：[Optimal Control (OCP)](../concepts/optimal-control.md)\n\n### 和 LQR / iLQR 的关系\niLQR 是轨迹优化的核心算法之一，Crocoddyl 中的 FDDP solver 本质上是 iLQR 的扩展。\n\n见：[LQR / iLQR](../formalizations/lqr.md)\n\n### 和 MPC 的关系\nMPC 可以看作 trajectory optimization 的在线滚动版本之一。\n\n见：[Model Predictive Control (MPC)](./model-predictive-control.md)\n\n### 和 Centroidal Dynamics 的关系\n在足式 / 人形机器人里，trajectory optimization 常常在 centroidal level 上规划 CoM、momentum、contact force 和 footstep。\n\n见：[Centroidal Dynamics](../concepts/centroidal-dynamics.md)\n\n### 和 TSID / WBC 的关系\nTrajectory Optimization 给出参考轨迹，TSID / WBC 负责把这些参考真正执行到关节层。\n\n见：[TSID](../concepts/tsid.md)\n\n见：[Whole-Body Control](../concepts/whole-body-control.md)\n\n## 常见坑\n\n### 1. 初值依赖严重\n很多非凸问题很容易卡在局部最优，没有好初值就很痛苦。\n\n### 2. 模型不准\n优化出来的轨迹在仿真里很美，真机一上就垮，根源常常是模型偏差。\n\n### 3. 约束太多导致求解困难\n尤其接触切换、碰撞、摩擦锥这些加进去后，问题会迅速变重。\n\n### 4. 只追求数学最优，不顾可执行性\n轨迹优化给出的解不一定容易跟踪，所以常常要兼顾：\n- 动态可行性\n- 控制可跟踪性\n- 对扰动的鲁棒性\n\n## 继续深挖入口\n\n如果你想沿着 trajectory optimization 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Survey Papers](../../references/papers/survey-papers.md)\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)\n\n### 工具 / Repo 入口\n- [Utilities](../../references/repos/utilities.md)\n- [Humanoid Projects](../../references/repos/humanoid-projects.md)\n\n## 参考来源\n\n- Tedrake, *Underactuated Robotics* — trajectory optimization 入门（MIT 课程，Chapter 10）\n- Kelly, *An Introduction to Trajectory Optimization: How to Do Your Own Direct Collocation* (2017) — 直接配置法综述\n- Posa et al., *Optimization and stabilization of trajectories for constrained dynamical systems* (2014) — 接触轨迹优化\n- **ingest 档案：** [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — Crocoddyl（多接触 TO 求解器）\n\n## 推荐继续阅读\n\n- Tedrake, *Underactuated Robotics*（trajectory optimization 章节）\n- Kelly, *An Introduction to Trajectory Optimization: How to Do Your Own Direct Collocation*\n- Posa et al., *Optimization and stabilization of trajectories for constrained dynamical systems*\n\n## 关联页面\n\n- [Optimal Control (OCP)](../concepts/optimal-control.md) — 轨迹优化是 OCP 的数值实现方式\n- [Model Predictive Control (MPC)](./model-predictive-control.md) — MPC 是滚动执行的有限域轨迹优化\n- [LQR / iLQR](../formalizations/lqr.md) — iLQR 是轨迹优化的特殊高效实现\n- [Whole-Body Control](../concepts/whole-body-control.md) — 轨迹优化常作为 WBC 的上层规划器\n- [Drake](../entities/drake.md) — Drake 是轨迹优化的主流工具之一\n\n## 一句话记忆\n\n> Trajectory Optimization 解决的是”整段动作轨迹怎么设计”，它把机器人运动生成写成一个带动力学和约束的优化问题，是连接最优控制、MPC、步态规划和全身动作生成的核心桥梁。",
+      "id": "wiki-methods-safe-rl",
+      "title": "Safe RL（安全强化学习）",
+      "path": "wiki/methods/safe-rl.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [rl, safety, control, cmdp, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ./reinforcement-learning.md\n  - ../concepts/control-barrier-function.md\n  - ../concepts/safety-filter.md\n  - ../formalizations/cmdp.md\n  - ../queries/robot-policy-debug-playbook.md\nsources:\n  - ../../sources/papers/privileged_training.md\nsummary: \"安全强化学习（Safe RL）旨在满足显式安全约束的前提下优化策略，常用方法包括 Lagrangian 优化、受限策略投影和安全层屏蔽。\"\n---\n\n# Safe RL（安全强化学习）\n\n**安全强化学习（Safe Reinforcement Learning）** 是强化学习的一个分支，其核心目标是在训练和执行过程中，确保智能体满足特定的安全约束（如不发生碰撞、不超过关节限位、不跌倒），而不仅仅是追求累积奖励的最大化。\n\n## 为什么需要 Safe RL？\n\n标准强化学习（Vanilla RL）通常通过 **Reward Shaping**（在奖励函数中加入惩罚项）来诱导安全行为。然而，这种做法存在显著弊端：\n- **权重难调**：惩罚太轻会导致机器人冒险，惩罚太重会导致机器人为了躲避惩罚而选择“摆烂”（如原地不动）。\n- **无法提供硬保证**：即使奖励很高，也无法严格证明机器人在所有情况下都不会违反安全边界。\n- **训练期间的危险**：在真实机器人上训练时，早期的随机探索极易导致硬件损坏。\n\n## 核心形式化：CMDP\n\nSafe RL 最常用的数学框架是 **Constrained MDP (CMDP)**。与标准 MDP 相比，它引入了额外的成本函数 $C(s, a)$ 和阈值 $\\hat{c}$，目标是在满足 $E[\\sum c_t] \\leq \\hat{c}$ 的前提下最大化 $E[\\sum r_t]$。\n\n详见：[Constrained MDP](../formalizations/cmdp.md)\n\n## 主要技术路线\n\n### 1. 基于拉格朗日的方法 (Lagrangian-based)\n将约束转化为惩罚项，并动态调整其权重（拉格朗日乘子 $\\lambda$）：\n$$ \\max_{\\theta} \\min_{\\lambda \\geq 0} \\mathcal{L}(\\theta, \\lambda) = J_R(\\pi_\\theta) - \\lambda (J_C(\\pi_\\theta) - \\hat{c}) $$\n- **优点**：实现简单，可直接适配 PPO/SAC。\n- **缺点**：收敛较慢，容易出现奖励与约束的剧烈震荡。\n\n### 2. 受限策略优化 (Constrained Policy Optimization, CPO)\n在策略更新步骤中直接施加约束，确保每一步更新后的策略都位于安全集合内。通常涉及求解一个受限的二次规划问题（Trust Region 策略）。\n\n### 3. 安全层与屏蔽器 (Safety Layers & Shielding)\n在 RL 策略输出后，添加一个基于解析模型（如 CBF）的过滤层：\n- 如果原始动作安全，则直接执行。\n- 如果原始动作危险，则将其投影到安全区域内的最近动作。\n这种方法通常被称为 **Safety Filter**。\n\n### 4. 恢复策略 (Recovery RL)\n学习两个策略：一个负责完成任务（Task Policy），另一个负责在即将进入危险区域时接管机器人（Recovery Policy）。\n\n## 在机器人中的典型应用\n\n- **人形机器人平衡**：限制质心（CoM）必须留在支撑多边形内。\n- **协作机器人操作**：在保证工作效率的同时，确保末端速度或力度不超过人体承受上限。\n- **自动驾驶**：在变道或跟车时，确保与障碍物保持最小安全距离。\n\n## 关联页面\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Control Barrier Function](../concepts/control-barrier-function.md)\n- [Safety Filter](../concepts/safety-filter.md)\n- [Constrained MDP](../formalizations/cmdp.md)\n- [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)\n\n## 参考来源\n- Achiam, J., et al. (2017). *Constrained Policy Optimization*.\n- Ray, A., et al. (2019). *Benchmarking Safe Deep Reinforcement Learning*.\n- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md)",
       "tags": [
         "method",
-        "locomotion",
         "control",
-        "dynamics",
-        "optimization"
+        "optimization",
+        "rl"
       ],
       "related": [
-        "wiki-concepts-optimal-control",
+        "wiki-methods-reinforcement-learning",
+        "wiki-concepts-control-barrier-function",
+        "wiki-concepts-safety-filter",
+        "wiki-formalizations-cmdp",
+        "wiki-queries-robot-policy-debug-playbook",
+        "sources-papers-privileged-training"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method"
+    },
+    {
+      "id": "wiki-methods-trajectory-optimization",
+      "title": "Trajectory Optimization（轨迹优化）",
+      "path": "wiki/methods/trajectory-optimization.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ./model-predictive-control.md\n  - ../concepts/optimal-control.md\n  - ../concepts/whole-body-control.md\n  - ../formalizations/zmp-lip.md\n  - ../comparisons/trajectory-opt-vs-rl.md\nsources:\n  - ../../sources/papers/optimal_control.md\n  - ../../sources/papers/mpc.md\nsummary: \"轨迹优化（Trajectory Optimization）通过数值优化方法求解开环最优控制序列，是 MPC 的理论核心和离线运动规划的主力工具。\"\n---\n\n# Trajectory Optimization（轨迹优化）\n\n**轨迹优化（Trajectory Optimization）** 是一种通过数值方法求解最优控制问题（OCP）的技术。它的目标是找到一条最优的状态轨迹 $\\mathbf{x}(t)$ 和控制序列 $\\mathbf{u}(t)$，使得在满足系统动力学、物理约束和任务约束的前提下，最小化给定的代价函数。\n\n## 核心思想\n\n将连续时间的控制问题转化为有限维度的非线性规划（NLP）问题。\n\n- **输入**：系统模型（动力学）、初值、目标状态、代价函数、硬约束。\n- **输出**：一条完整的时空一致的运动轨迹。\n\n## 与 MPC 的关系\n\n轨迹优化是 **MPC（模型预测控制）** 的算法内核。\n- **轨迹优化**：通常关注于长时域的开环求解（离线规划）。\n- **MPC**：在每个控制周期内运行一个短时域的轨迹优化，并仅执行第一步动作，利用反馈消除误差。\n\n## 主要技术路线\n\n### 1. 直接法 (Direct Methods)\n将状态和控制离散化，直接作为优化变量。\n- **直接打靶法 (Direct Shooting)**：仅优化控制变量 $\\mathbf{u}$，状态由前向仿真得到。\n- **直接配点法 (Direct Collocation)**：同时优化状态 $\\mathbf{x}$ 和控制 $\\mathbf{u}$，将动力学方程作为等式约束施加在相邻点之间。适合处理高维、多约束问题（如人形机器人接触规划）。\n\n### 2. 差分动态规划 (DDP / iLQR)\n利用 Bellman 最优性原理，通过二阶（DDP）或一阶（iLQR）泰勒展开局部逼近代价函数和动力学。\n- **优点**：计算效率极高，复杂度随时间步长线性增长。\n- **代表框架**：Crocoddyl。\n\n## 在机器人中的典型应用\n\n1. **人形机器人离线动捕模仿**：将人类动捕数据作为参考，通过 TO 产生符合物理规律的平衡步态。\n2. **高动态动作发现**：如翻跟头、跳跃、跑酷。这类动作涉及复杂的非线性动力学和接触切换。\n3. **接触隐式优化 (Contact-Implicit Optimization)**：同时优化接触发生的时刻和力度，而不需要预设步态模式。\n\n## 方法局限性\n\n- **局部最优**：TO 通常只能找到局部最优解，对初始值的依赖非常强。\n- **实时性挑战**：全动力学的轨迹优化计算量巨大，往往难以达到 1kHz 的闭环控制需求（因此通常需要简化模型或结合 WBC）。\n- **模型依赖**：高度依赖精确的刚体动力学模型和接触参数。\n\n## 关联页面\n- [Model Predictive Control](./model-predictive-control.md)\n- [Optimal Control (OCP) 概念](../concepts/optimal-control.md)\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)\n- [ZMP + LIP 形式化](../formalizations/zmp-lip.md)\n- [对比：轨迹优化 vs RL](../comparisons/trajectory-opt-vs-rl.md)\n\n## 参考来源\n- Betts, J. T. (2010). *Practical Methods for Optimal Control and Estimation Using Nonlinear Programming*.\n- Posa, M., et al. (2014). *A direct method for trajectory optimization of rigid bodies through contact*.\n- [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)",
+      "tags": [
+        "method",
+        "humanoid",
+        "control",
+        "dynamics",
+        "optimization",
+        "rl"
+      ],
+      "related": [
         "wiki-methods-model-predictive-control",
-        "wiki-formalizations-lqr",
+        "wiki-concepts-optimal-control",
         "wiki-concepts-whole-body-control",
-        "entity-drake",
-        "wiki-concepts-centroidal-dynamics",
-        "wiki-concepts-tsid",
-        "reference-papers-survey-papers",
-        "reference-papers-whole-body-control",
-        "reference-repos-utilities",
-        "reference-repos-humanoid-projects",
-        "sources-papers-robot-kinematics-tools"
+        "wiki-formalizations-zmp-lip",
+        "wiki-comparisons-trajectory-opt-vs-rl",
+        "sources-papers-optimal-control"
       ],
       "source_links": [],
       "status": "active",
@@ -1744,6 +1762,32 @@
       "page_type": "comparison"
     },
     {
+      "id": "wiki-comparisons-trajectory-opt-vs-rl",
+      "title": "Trajectory Optimization vs Reinforcement Learning",
+      "path": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "summary": "type: comparison。",
+      "content_markdown": "---\ntype: comparison\ntags: [control, optimization, rl, trajectory-optimization, decision-making]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../methods/trajectory-optimization.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/model-predictive-control.md\n  - ../queries/when-to-use-wbc-vs-rl.md\nsummary: \"轨迹优化（Trajectory Optimization）与强化学习（RL）的对比：前者依赖精确动力学模型求解开环最优解，后者通过数据驱动学习具有鲁棒性的闭环策略。\"\n---\n\n# Trajectory Optimization vs Reinforcement Learning\n\n在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但又互补的技术路线。\n\n## 核心对比\n\n| 维度 | Trajectory Optimization (TO) | Reinforcement Learning (RL) |\n|------|------------------------------|-----------------------------|\n| **理论基础** | 最优控制理论 (Optimal Control) | 马尔可夫决策过程 (MDP) |\n| **依赖项** | 精确的解析动力学模型 | 仿真环境或真实交互数据 |\n| **计算时机** | 通常在线实时求解 (MPC) 或离线规划 | 离线训练，在线极速推理 |\n| **反馈形式** | 依赖外层反馈 (MPC) 或解析梯度 | 天然的闭环神经网络策略 |\n| **泛化性** | 依赖模型准确度，对未知扰动敏感 | 通过域随机化 (DR) 具有极强鲁棒性 |\n| **物理一致性** | ✅ 严格满足动力学约束 | ⚠️ 依赖奖励函数诱导，可能违反约束 |\n\n## 轨迹优化的优势与局限\n\n- **优势**：\n  - 物理意义明确，动作精确可控。\n  - 不需要冗长的训练过程，只要模型对，立刻能用。\n  - 能够处理极其复杂的硬约束（如避障、接触力限位）。\n- **局限**：\n  - 容易陷入局部最优，需要良好的初始猜测。\n  - 对“模型误差”（如非线性摩擦、电机非线性）非常敏感。\n\n## 强化学习的优势与局限\n\n- **优势**：\n  - 能够发现人类难以设计的奇异步态（如通过摔倒恢复平衡）。\n  - 在大时延、高噪声环境下表现更鲁棒。\n  - 推理速度极快，适合部署在低算力嵌入式端。\n- **局限**：\n  - “黑盒”特性，安全性难以解释和证明。\n  - 奖励函数（Reward Design）的设计非常主观，容易出现薅羊毛行为。\n\n## 融合趋势：Learning to Optimize\n\n现代前沿研究（如 ANYmal, Atlas 的最新版本）正在将两者融合：\n1. **RL 辅助 TO**：用 RL 学习一个良好的初始轨迹值或价值函数，作为 TO 的热启动。\n2. **TO 引导 RL**：利用 TO 产生的最优轨迹作为模仿学习的专家数据，加速 RL 训练。\n3. **WBC + RL**：上层用 RL 产生任务目标，下层用 WBC (基于 QP 的 TO) 保证物理安全性。\n\n## 关联页面\n- [Trajectory Optimization (TO)](../methods/trajectory-optimization.md)\n- [Reinforcement Learning (RL)](../methods/reinforcement-learning.md)\n- [Model Predictive Control (MPC)](../methods/model-predictive-control.md)\n- [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md)\n\n## 参考来源\n- [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)\n- Siciliano, B., et al. (2009). *Robotics: Modelling, Planning and Control*.",
+      "tags": [
+        "comparison",
+        "control",
+        "optimization",
+        "rl",
+        "il"
+      ],
+      "related": [
+        "wiki-methods-trajectory-optimization",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-model-predictive-control",
+        "wiki-queries-when-to-use-wbc-vs-rl",
+        "sources-papers-optimal-control",
+        "sources-papers-policy-optimization"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "comparison"
+    },
+    {
       "id": "wiki-comparisons-wbc-vs-rl",
       "title": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "path": "wiki/comparisons/wbc-vs-rl.md",
@@ -1841,6 +1885,30 @@
       "ingest_source": "sources/papers/optimal_control.md"
     },
     {
+      "id": "wiki-formalizations-cmdp",
+      "title": "Constrained MDP (CMDP)",
+      "path": "wiki/formalizations/cmdp.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [rl, safety, control, optimization, math]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/safety-filter.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/safe-rl.md\n  - ./mdp.md\n  - ./bellman-equation.md\nsources:\n  - ../../sources/papers/privileged_training.md\nsummary: \"Constrained MDP（CMDP）在标准 MDP 基础上增加了显式约束项，要求在满足约束代价阈值的前提下最大化累积奖励。\"\n---\n\n# Constrained MDP (CMDP)\n\n**CMDP（Constrained Markov Decision Process）** 是一种强化学习的形式化框架，旨在解决在某些预定义约束（如安全性、能量消耗、物理限制）下寻找最优策略的问题。\n\n## 数学定义\n\n一个 CMDP 通常由一个七元组 $(S, A, P, R, C, \\hat{c}, \\gamma)$ 定义：\n\n- $S, A, P, R, \\gamma$：与标准 MDP 相同，分别代表状态空间、动作空间、转移概率、奖励函数和折扣因子。\n- $C = \\{c_1, ..., c_k\\}$：**约束代价函数（Cost Functions）**，$c_i: S \\times A \\to \\mathbb{R}$ 描述了每个动作带来的“成本”（如碰撞风险）。\n- $\\hat{c} = \\{\\hat{c}_1, ..., \\hat{c}_k\\}$：**约束阈值（Cost Thresholds）**。\n\n### 优化目标\n\nCMDP 的目标是找到一个策略 $\\pi$，使得在期望累积成本满足阈值的前提下，最大化累积奖励：\n\n$$\n\\begin{aligned}\n\\max_{\\pi} \\quad & E_{\\pi} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t R(s_t, a_t) \\right] \\\\\n\\text{s.t.} \\quad & E_{\\pi} \\left[ \\sum_{t=0}^{\\infty} \\gamma^t c_i(s_t, a_t) \\right] \\leq \\hat{c}_i, \\quad \\forall i\n\\end{aligned}\n$$\n\n## 为什么重要\n\n在机器人应用中，单纯的 MDP 往往无法保证安全性：\n- **奖励工程的局限**：如果仅在奖励函数中加入惩罚项（Reward Shaping），通常很难找到平衡权重，导致机器人要么太激进（撞坏），要么太保守（不动）。\n- **硬性安全要求**：在真实硬件部署中，某些约束（如温度上限、关节限位、不跌倒）是必须严格遵守的。\n\nCMDP 提供了一种**数学上完备**的方式来处理这些冲突。\n\n## 常用求解方法\n\n1. **拉格朗日乘子法（Lagrangian Methods）**：\n   将约束问题转化为无约束问题：\n   $$ L(\\pi, \\lambda) = J_R(\\pi) - \\sum \\lambda_i (J_{c_i}(\\pi) - \\hat{c}_i) $$\n   交替更新策略参数 $\\theta$ 和拉格朗日乘子 $\\lambda$。\n2. **约束策略优化（CPO, Constrained Policy Optimization）**：\n   在每一步更新中，直接求解一个带线性约束的二次规划问题，确保策略更新始终留在安全集内。\n3. **安全层（Safety Layers）**：\n   在策略输出后添加一个投影层，强制将违反约束的动作映射回安全区域。\n\n## 关联页面\n- [Safety Filter](../concepts/safety-filter.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Safe RL](../methods/safe-rl.md)\n- [MDP 形式化](./mdp.md)\n- [Bellman 方程](./bellman-equation.md)\n\n## 参考来源\n- Altman, E. (1999). *Constrained Markov Decision Processes*.\n- Achiam et al. (2017). *Constrained Policy Optimization*.",
+      "tags": [
+        "formalization",
+        "control",
+        "optimization",
+        "rl"
+      ],
+      "related": [
+        "wiki-concepts-safety-filter",
+        "wiki-methods-reinforcement-learning",
+        "wiki-methods-safe-rl",
+        "wiki-formalizations-mdp",
+        "wiki-formalizations-bellman-equation"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
       "id": "wiki-formalizations-contact-complementarity",
       "title": "Contact Complementarity（接触互补约束）",
       "path": "wiki/formalizations/contact-complementarity.md",
@@ -1919,6 +1987,32 @@
       "page_type": "formalization",
       "has_ingest": true,
       "ingest_source": "sources/papers/sim2real.md"
+    },
+    {
+      "id": "wiki-formalizations-friction-cone",
+      "title": "摩擦锥 (Friction Cone)",
+      "path": "wiki/formalizations/friction-cone.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [dynamics, contact, physics, control, math]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/contact-dynamics.md\n  - ../concepts/centroidal-dynamics.md\n  - ../concepts/whole-body-control.md\n  - ./zmp-lip.md\n  - ../queries/wbc-tuning-guide.md\nsources:\n  - ../../sources/papers/contact_dynamics.md\nsummary: \"摩擦锥（Friction Cone）描述了接触力在接触面上不发生相对滑动的物理约束条件，是 WBC 和轨迹优化中最重要的不等式约束。\"\n---\n\n# 摩擦锥 (Friction Cone)\n\n**摩擦锥** 是机器人学中描述接触力物理约束的核心数学模型。它规定了接触力 $\\mathbf{f}$ 必须满足的范围，以确保机器人脚部或手部与支撑环境之间不发生滑动。\n\n## 库仑摩擦模型 (Coulomb Friction)\n\n根据库仑摩擦定律，静态摩擦力 $f_t$（切向）与正向压力 $f_n$（法向）的关系如下：\n\n$$\n\\| \\mathbf{f}_t \\| \\leq \\mu f_n, \\quad f_n \\geq 0\n$$\n\n其中：\n- $\\mu$ 是静摩擦系数。\n- $\\mathbf{f}_n = (\\mathbf{f} \\cdot \\mathbf{n}) \\mathbf{n}$ 是正向分量。\n- $\\mathbf{f}_t = \\mathbf{f} - \\mathbf{f}_n$ 是切向分量。\n\n这个不等式在三维空间中定义了一个以 $\\mathbf{n}$ 为中心轴、顶角为 $2\\arctan(\\mu)$ 的**圆锥体**。这就是“摩擦锥”名称的由来。\n\n## 二次锥约束 (SOC)\n\n在优化问题中，上述关系可以写成 **二阶锥约束（Second-Order Cone, SOC）** 的形式：\n\n$$\n\\sqrt{f_x^2 + f_y^2} \\leq \\mu f_z, \\quad f_z \\geq 0\n$$\n\n虽然 SOC 描述最精确，但通用的 QP（二次规划）求解器（如 OSQP, qpOASES）通常不支持直接处理 SOC 约束。\n\n## 线性化摩擦锥 (Linearized Friction Cone)\n\n为了在实时控制器（如 WBC 或 MPC）中利用高效的 QP 求解器，通常将圆锥体通过其内切或外接的 **多面体（Polyhedral Cone）** 进行线性化逼近。\n\n### 四棱锥近似\n\n最常见的做法是使用四棱锥（4-sided pyramid）来近似圆锥。这意味着在切线 $x$ 和 $y$ 方向上分别满足：\n\n$$\n|f_x| \\leq \\frac{\\mu}{\\sqrt{2}} f_z, \\quad |f_y| \\leq \\frac{\\mu}{\\sqrt{2}} f_z, \\quad f_z \\geq 0\n$$\n\n这可以展开为 4-5 个线性不等式：\n1. $f_z \\geq f_{min}$\n2. $f_x - \\frac{\\mu}{\\sqrt{2}} f_z \\leq 0$\n3. $-f_x - \\frac{\\mu}{\\sqrt{2}} f_z \\leq 0$\n4. $f_y - \\frac{\\mu}{\\sqrt{2}} f_z \\leq 0$\n5. $-f_y - \\frac{\\mu}{\\sqrt{2}} f_z \\leq 0$\n\n## 在控制中的应用\n\n1. **WBC 中的 QP 约束**：在求解关节力矩时，必须确保计算出的接触力 $\\mathbf{f}$ 位于摩擦锥内。\n2. **质心动力学优化**：在规划 CoM 轨迹时，外部合力必须由摩擦锥内的力合成。\n3. **抓取规划**：在操纵物体时，指尖力必须位于接触面的摩擦锥内以防止物体滑脱。\n\n## 关联页面\n- [Contact Dynamics](../concepts/contact-dynamics.md)\n- [Centroidal Dynamics](../concepts/centroidal-dynamics.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [ZMP + LIP 形式化](./zmp-lip.md)\n- [WBC 调参指南](../queries/wbc-tuning-guide.md)\n\n## 参考来源\n- [contact_dynamics.md](../../sources/papers/contact_dynamics.md)\n- Siciliano, B., et al. (2009). *Robotics: Modelling, Planning and Control*.",
+      "tags": [
+        "formalization",
+        "control",
+        "dynamics",
+        "optimization",
+        "il"
+      ],
+      "related": [
+        "wiki-concepts-contact-dynamics",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-whole-body-control",
+        "wiki-formalizations-zmp-lip",
+        "wiki-queries-wbc-tuning-guide",
+        "sources-papers-contact-dynamics"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
     },
     {
       "id": "wiki-formalizations-gae",
@@ -2071,6 +2165,32 @@
         "wiki-concepts-state-estimation",
         "wiki-methods-reinforcement-learning",
         "wiki-concepts-sim2real"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
+      "id": "wiki-formalizations-zmp-lip",
+      "title": "ZMP + LIP 形式化",
+      "path": "wiki/formalizations/zmp-lip.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [locomotion, control, dynamics, humanoid, math]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/lip-zmp.md\n  - ../concepts/centroidal-dynamics.md\n  - ../methods/model-predictive-control.md\n  - ../tasks/locomotion.md\n  - ./friction-cone.md\nsources:\n  - ../../sources/papers/mpc.md\nsummary: \"ZMP + LIP（Linear Inverted Pendulum）模型通过简化质心高度和角动量，将人形机器人平衡问题转化为可解析的线性动力学方程。\"\n---\n\n# ZMP + LIP 形式化\n\n**LIP (Linear Inverted Pendulum)** 模型是将人形机器人简化为在固定高度平面内运动的质点，而 **ZMP (Zero Moment Point)** 则是判断该系统是否平衡的关键指标。\n\n## 核心假设\n\n1. **质心高度恒定**：质心（CoM）在 $z$ 方向上的位置固定为 $z_c$。\n2. **忽略角动量**：忽略由于躯干摆动产生的角动量变化 $\\dot{L}_G \\approx 0$。\n3. **单支撑脚点接触**：假设支撑脚为理想点接触或刚性平面接触。\n\n## LIP 动力学方程\n\n在这些假设下，质心在水平面（$x, y$ 方向）上的运动方程变得完全解耦且线性：\n\n$$\n\\ddot{x} = \\omega^2 (x - x_{zmp})\n$$\n$$\n\\ddot{y} = \\omega^2 (y - y_{zmp})\n$$\n\n其中：\n- $\\omega = \\sqrt{g / z_c}$ 是倒立摆的固有频率。\n- $g$ 是重力加速度。\n- $(x, y)$ 是质心位置。\n- $(x_{zmp}, y_{zmp})$ 是零力矩点（ZMP）位置。\n\n## ZMP 稳定性条件\n\nZMP 是地面对机器人反作用力合力作用点。机器人保持动态平衡的**充分必要条件**（在 LIP 假设下）是：\n\n$$\n\\mathbf{p}_{zmp} \\in \\mathcal{S}_{support\\_polygon}\n$$\n\n即 ZMP 必须落在支撑多边形（Support Polygon）内。如果 ZMP 移动到边缘，系统将面临翻倒。\n\n## 捕获点（Capture Point, CP）\n\n基于 LIP 方程，可以导出**捕获点（Capture Point）**。CP 是机器人必须跨步才能停止的位置：\n\n$$\n\\mathbf{\\xi} = \\mathbf{x} + \\frac{1}{\\omega} \\dot{\\mathbf{x}}\n$$\n\n当 CP 位于支撑多边形外时，机器人如果不跨步，即使 ZMP 落在支撑区内也无法最终停止，必然会跌倒。\n\n## 在控制中的应用\n\n1. **预览控制（Preview Control）**：通过给定的足迹序列预先规划 ZMP 轨迹，再通过求解上述线性差分方程获得最优 CoM 轨迹。\n2. **DCM 控制（Divergent Component of Motion）**：将 CoM 运动分解为稳定分量和不稳定分量（即 CP），通过控制 CP 的运动来实现实时平衡。\n3. **线性 MPC**：将上述方程作为预测模型，在 QP 求解器中施加 ZMP 边界约束，实现鲁棒步行。\n\n## 关联页面\n- [LIP / ZMP 概念](../concepts/lip-zmp.md)\n- [Centroidal Dynamics](../concepts/centroidal-dynamics.md)\n- [Model Predictive Control](../methods/model-predictive-control.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Friction Cone](./friction-cone.md)\n\n## 参考来源\n- Kajita, S., et al. (2001). *The 3D Linear Inverted Pendulum Mode: A simple modeling for a biped robot*.\n- Wieber, P.-B. (2006). *Trajectory Free Linear Model Predictive Control for Stable Walking*.",
+      "tags": [
+        "formalization",
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization"
+      ],
+      "related": [
+        "wiki-concepts-lip-zmp",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-methods-model-predictive-control",
+        "wiki-tasks-locomotion",
+        "wiki-formalizations-friction-cone"
       ],
       "source_links": [],
       "status": "active",
@@ -2378,6 +2498,32 @@
       "page_type": "query"
     },
     {
+      "id": "wiki-queries-locomotion-failure-modes",
+      "title": "Locomotion RL 训练失败模式分析",
+      "path": "wiki/queries/locomotion-failure-modes.md",
+      "summary": "type: query。",
+      "content_markdown": "---\ntype: query\ntags: [rl, locomotion, debugging, training, simulation]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ./robot-policy-debug-playbook.md\n  - ./reward-shaping-guide.md\n  - ../concepts/sim2real.md\n  - ../entities/legged-gym.md\nsources:\n  - ../../sources/papers/policy_optimization.md\nsummary: \"Locomotion RL 常见失败模式分析：通过识别原地踏步、关节振荡、双脚起跳和策略崩溃等典型现象，快速定位训练与奖励设计问题。\"\n---\n\n# Locomotion RL 训练失败模式分析\n\n> **Query 产物**：本页由以下问题触发：「locomotion RL 训练时常见的失败模式有哪些？怎么诊断？」\n> 综合来源：[Reward Shaping Guide](./reward-shaping-guide.md)、[Robot Policy Debug Playbook](./robot-policy-debug-playbook.md)、[Legged Gym](../entities/legged-gym.md)\n\n---\n\n## 典型失败现象与诊断\n\n### 1. 原地踏步 (The \"Stationary Trot\")\n- **症状**：机器人能够维持平衡并有明显的踏步动作，但拒绝向前移动，或者仅在原地微幅抖动。\n- **原因**：\n  - **前进奖励太低**：前进带来的正奖励无法抵消前进过程中产生的关节功耗惩罚或碰撞惩罚。\n  - **惩罚项过重**：例如 `action_rate` 或 `energy` 惩罚太大，导致机器人认为“不动”是最优解。\n- **对策**：增加 `lin_vel_xy` 权重，或引入 **Curriculum**（先训平衡，再加初速度命令）。\n\n### 2. 双脚起跳 (The \"Bunny Hop\")\n- **症状**：机器人不交替迈步，而是像兔子一样双脚（或四足同时）跳跃前进。\n- **原因**：\n  - **Air Time 奖励滥用**：给摆动脚在空中的时间给奖励，但没有限制单次只能有一只脚在空中。\n  - **缺少步态约束**：奖励函数没有诱导交替性（例如惩罚双脚同时离地）。\n- **对策**：限制 `feet_air_time` 的最大值，或者加入对角步态（Trot）的显式引导。\n\n### 3. 关节高频抖动 (The \"High-frequency Jitter\")\n- **症状**：步态整体正确，但观察到执行器在高频振荡，甚至在仿真中发出异响。\n- **原因**：\n  - **缺少平滑惩罚**：没有对 `action_rate`（动作变化率）或关节加速度进行惩罚。\n  - **控制频率与 PD 参数不匹配**：仿真频率太低而 PD 增益过高。\n- **对策**：增加 `action_rate` 惩罚权重；减小 PD 增益；检查仿真步长。\n\n### 4. 躯干下蹲/内八字 (The \"Squatting/Pigeon-toed\")\n- **症状**：为了不跌倒，机器人学会了极低重心的蹲行，或者足尖向内扣。\n- **原因**：\n  - **过度追求稳定性**：蹲得越低越难倒，机器人通过“钻漏洞”来最大化不跌倒奖励。\n  - **缺少基准姿态约束**：没有对默认关节角度 $q_{default}$ 的偏离进行惩罚。\n- **对策**：加入 `base_height` 奖励（维持特定高度）；加入 `joint_regularization` 惩罚（偏离默认姿态）。\n\n### 5. 策略崩溃 (Policy Collapse)\n- **症状**：训练过程中 Reward 突然断崖式下跌，且无法恢复。\n- **原因**：\n  - **学习率过大**：导致 PPO 更新跳出了信任区域。\n  - **环境随机性太大**：域随机化（DR）范围在初期开得太广，模型无法收敛。\n- **对策**：减小学习率；使用学习率衰减；逐步开启域随机化范围。\n\n---\n\n## 诊断工具 Checklist\n\n- [ ] **可视化检查**：在仿真器中慢速观察失败瞬间，看是哪一个关节先失控。\n- [ ] **奖励分量分析**：在 TensorBoard 中单独绘制每项 Reward 的曲线。如果某项惩罚（Negative Reward）数值远大于正奖励，机器人必然会停止运动。\n- [ ] **动作分布检查**：检查策略输出的均值和标准差。如果均值始终在 Limit 边界上，说明控制量已饱和。\n\n---\n\n## 关联页面\n- [机器人策略排障手册](./robot-policy-debug-playbook.md)\n- [奖励函数设计指南](./reward-shaping-guide.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n- [Legged Gym 实体](../entities/legged-gym.md)\n\n## 参考来源\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)\n- Rudin et al., *Learning to Walk in Minutes* (2022).",
+      "tags": [
+        "query",
+        "locomotion",
+        "optimization",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "wiki-queries-robot-policy-debug-playbook",
+        "wiki-queries-reward-shaping-guide",
+        "wiki-concepts-sim2real",
+        "entity-legged-gym",
+        "sources-papers-policy-optimization"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "query"
+    },
+    {
       "id": "wiki-queries-locomotion-reward-design-guide",
       "title": "Locomotion 奖励函数设计指南",
       "path": "wiki/queries/locomotion-reward-design-guide.md",
@@ -2540,6 +2686,32 @@
         "wiki-queries-rl-algorithm-selection",
         "sources-papers-reward-design",
         "wiki-queries-locomotion-reward-design-guide"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "query"
+    },
+    {
+      "id": "wiki-queries-reward-shaping-guide",
+      "title": "Locomotion RL 奖励函数设计指南",
+      "path": "wiki/queries/reward-shaping-guide.md",
+      "summary": "type: query。",
+      "content_markdown": "---\ntype: query\ntags: [rl, reward-shaping, locomotion, training, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../methods/reinforcement-learning.md\n  - ../concepts/reward-design.md\n  - ../queries/humanoid-rl-cookbook.md\n  - ../queries/locomotion-failure-modes.md\nsources:\n  - ../../sources/papers/policy_optimization.md\nsummary: \"Locomotion RL 奖励函数设计指南：通过将任务目标拆分为正向推进项、平滑惩罚项与安全性约束项，实现鲁棒且自然步态的技巧。\"\n---\n\n# Locomotion RL 奖励函数设计指南\n\n> **Query 产物**：本页由以下问题触发：「训练 locomotion RL 策略时，奖励函数怎么设计？有哪些调教技巧？」\n> 综合来源：[Reward Design](../concepts/reward-design.md)、[Humanoid RL Cookbook](./humanoid-rl-cookbook.md)、[Legged Gym](../entities/legged-gym.md)\n\n---\n\n## 核心框架：奖励项拆解\n\n一个成熟看足式机器人奖励函数通常由三部分组成：**任务目标（Task）**、**运动质量（Smoothness）** 和 **安全性/约束（Safety）**。\n\n### 1. 任务目标项 (The \"Goal\") — 引导机器人动起来\n这些项通常是正奖励，或者是对目标速度的跟踪项。\n- **速度跟踪**：$r_{vel} = \\exp(-\\frac{(v - v_{cmd})^2}{\\sigma})$。使用指数核比均方误差（MSE）收敛更平滑。\n- **角速度跟踪**：$r_{yaw} = \\exp(-\\frac{(\\omega_z - \\omega_{cmd})^2}{\\sigma})$。\n\n### 2. 运动质量项 (The \"Style\") — 引导步态看起来像个机器人\n如果不加这些惩罚，机器人可能会出现高频振荡、内八字或疯狂抖动关节的情况。\n- **关节功耗（Energy）**：惩罚 $\\tau \\cdot \\dot{q}$，防止过度用力。\n- **关节加速度（Action Rate）**：惩罚 $\\|a_t - a_{t-1}\\|^2$，确保动作连续性。\n- **足端平滑度**：惩罚足端接地时的冲击力（Air Time 奖励的对立面）。\n\n### 3. 安全性项 (The \"Boundary\") — 引导机器人不坏掉\n- **跌倒惩罚**：检测到躯干高度过低或非足端部位接地时给一个巨大的负值。\n- **关节限位惩罚**：当 $q$ 接近 $q_{min}/q_{max}$ 时施加非线性惩罚。\n- **力矩限位惩罚**：防止电机过载。\n\n---\n\n## 避坑与进阶技巧\n\n### 1. 不要滥用正奖励\n过多的正奖励会导致机器人学会“薅羊毛”（例如原地疯狂踩步而不前进以赚取 Air Time 奖励）。**原则是：除了速度跟踪，尽量使用惩罚项（负奖励）来约束行为。**\n\n### 2. Air Time 奖励的艺术\n`Feet Air Time` 是让机器人从“走”变“跑”的关键。\n- 给摆动脚在空中的时间给正奖励。\n- 注意：必须配合“落地后才结算奖励”的逻辑，否则机器人会学会双脚离地跳跃。\n\n### 3. 奖励缩放 (Scaling)\n- 不要让单项奖励完全支配总和。\n- 典型的权重比例：速度跟踪占 50%，平滑项占 30%，安全性约束占 20%。\n\n### 4. Curriculum（课程学习）\n如果任务太难（如跑酷），不要一上来就加所有奖励。\n- 先只奖励“不跌倒”。\n- 稳定后再引入“速度跟踪”。\n- 最后再优化“姿态平滑”。\n\n---\n\n## 典型奖励配置表 (参考 Legged Gym)\n\n| 奖励项 | 类型 | 典型权重 | 目的 |\n|--------|------|----------|------|\n| `lin_vel_xy` | Positive | 1.0 - 2.0 | 跟踪前进速度 |\n| `ang_vel_z` | Positive | 0.5 - 1.0 | 跟踪转弯速度 |\n| `orientation` | Negative | -0.2 | 保持躯干水平 |\n| `torques` | Negative | -0.0001 | 节能、保护电机 |\n| `action_rate` | Negative | -0.01 | 动作平滑，防抖 |\n| `feet_air_time` | Positive | 1.0 | 诱导产生节奏性步态 |\n| `collision` | Negative | -1.0 | 防碰撞 |\n\n---\n\n## 关联页面\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Reward Design 概念](../concepts/reward-design.md)\n- [Humanoid RL Cookbook](./humanoid-rl-cookbook.md)\n- [Locomotion RL 失败模式分析](./locomotion-failure-modes.md)\n\n## 参考来源\n- Rudin, N., et al. (2022). *Learning to Walk in Minutes*.\n- Margolis, G., et al. (2023). *Walk These Ways*.\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)",
+      "tags": [
+        "query",
+        "humanoid",
+        "locomotion",
+        "optimization",
+        "rl"
+      ],
+      "related": [
+        "wiki-methods-reinforcement-learning",
+        "wiki-concepts-reward-design",
+        "wiki-queries-humanoid-rl-cookbook",
+        "wiki-queries-locomotion-failure-modes",
+        "entity-legged-gym",
+        "sources-papers-policy-optimization"
       ],
       "source_links": [],
       "status": "active",
@@ -2831,6 +3003,32 @@
       "page_type": "query"
     },
     {
+      "id": "wiki-queries-wbc-tuning-guide",
+      "title": "WBC 调参指南：从公式到实机表现",
+      "path": "wiki/queries/wbc-tuning-guide.md",
+      "summary": "type: query。",
+      "content_markdown": "---\ntype: query\ntags: [wbc, control, optimization, tuning, humanoid, qp]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/whole-body-control.md\n  - ../concepts/tsid.md\n  - ./wbc-implementation-guide.md\n  - ../formalizations/friction-cone.md\nsources:\n  - ../../sources/papers/whole_body_control.md\nsummary: \"WBC 调参指南：通过合理的任务权重分配、约束松弛、正则化技巧与求解器热启动配置，实现高性能全身控制的实践经验。\"\n---\n\n# WBC 调参指南：从公式到实机表现\n\n> **Query 产物**：本页由以下问题触发：「WBC QP 求解器怎么调参？权重矩阵、约束松弛、热启动有哪些技巧？」\n> 综合来源：[Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[WBC Implementation Guide](./wbc-implementation-guide.md)\n\n---\n\n## 1. 权重矩阵的设计 (The \"Art of Weights\")\n\nWBC 通常是一个多目标优化问题 $\\min \\|Ax - b\\|_W^2$。权重 $W$ 决定了任务的优先级。\n\n### 调参顺序\n1. **主优先级任务 (High Priority)**：\n   - **躯干姿态 (Floating Base Orientation)**：这是平衡的核心。如果不稳，机器人会迅速侧翻。\n   - **支撑足加速度 (Support Foot Consistency)**：必须设为极高权重或作为硬等式约束，否则脚会滑移。\n2. **次优先级任务**：\n   - **质心轨迹 (CoM Tracking)**：决定了运动的总体走向。\n   - **摆动足轨迹 (Swing Foot Tracking)**：确保迈步准确。\n3. **低优先级任务 (Regularization)**：\n   - **关节姿态正则化 (Joint Posture)**：给出一个倾向的“基础姿势”（如微蹲），防止奇异点。\n\n### 权重比例技巧\n- 不要使用绝对值，使用**相对比例**。\n- 典型的比例：`Orientation : Support_Foot : CoM : Swing_Foot : Joint_Reg = 1000 : 1000 : 100 : 100 : 1`。\n\n---\n\n## 2. 约束松弛与惩罚 (Relaxation)\n\n硬约束（如 $Ax=b$）在实际物理碰撞中容易导致 QP 无解（Infeasible）。\n\n### 处理技巧\n- **等式约束转化为惩罚项**：将 $Ax=b$ 变为 $\\min \\lambda \\|Ax - b\\|^2$。\n- **引入松弛变量 (Slack Variables)**：对于摩擦锥约束 $\\sqrt{f_x^2 + f_y^2} \\leq \\mu f_z$，如果一定要违反，引入 $\\xi \\geq 0$：$\\sqrt{f_x^2 + f_y^2} \\leq \\mu f_z + \\xi$。\n- **权重策略**：对松弛变量 $\\xi$ 施加极大的线性惩罚权重。\n\n---\n\n## 3. 正则化 (Regularization)\n\n为了提高数值稳定性，尤其是当雅可比矩阵 $J$ 接近奇异时。\n\n- **力矩正则化**：惩罚 $\\|\\tau\\|^2$。防止 QP 求解器为了微小的跟踪精度提升而输出巨大的瞬时力矩。\n- **阻尼项**：在 $A^T A$ 中加入 $\\epsilon I$。这能保证 Hessian 矩阵始终正定。\n\n---\n\n## 4. 求解器热启动 (Hot Start)\n\n对于 1kHz 的控制环，每一微秒都很珍贵。\n\n- **重复利用上一时刻解**：将 $t-1$ 时刻的解 $x^*$ 作为 $t$ 时刻的初始猜测。\n- **求解器策略**：\n  - **OSQP**：开启 `warm_starting=True`，能显著减少 ADMM 迭代次数。\n  - **qpOASES**：非常适合热启动，因为它基于 Active Set 策略，相邻帧的有效约束集往往变化很小。\n\n---\n\n## 5. 实机调试排障\n\n| 症状 | 可能原因 | 解决对策 |\n|------|----------|----------|\n| **关节高频震荡** | PD 增益太高或力矩正则化太弱 | 增加 $\\|\\tau\\|^2$ 权重，减小任务空间 $K_p$ |\n| **支撑脚打滑** | 摩擦系数 $\\mu$ 设得太高或摩擦锥约束被违反 | 调低 $\\mu$（保守估计），加强摩擦锥惩罚 |\n| **Base 姿态下沉** | CoM 权重太低，无法克服重力 | 增加 CoM 任务权重，检查动力学 $g(q)$ 补偿是否正确 |\n| **QP 频繁无解** | 任务冲突严重或硬约束太多 | 检查是否有相互排斥的等式约束，增加松弛变量 |\n\n---\n\n## 关联页面\n- [Whole-Body Control 概念](../concepts/whole-body-control.md)\n- [TSID 方法](../concepts/tsid.md)\n- [WBC 实现指南](./wbc-implementation-guide.md)\n- [Friction Cone 形式化](../formalizations/friction-cone.md)\n\n## 参考来源\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)\n- Kim et al., *Highly Dynamic Quadrupedal Locomotion via Whole-Body Impulse Control* (2019).",
+      "tags": [
+        "query",
+        "humanoid",
+        "control",
+        "optimization",
+        "rl",
+        "il"
+      ],
+      "related": [
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-tsid",
+        "wiki-queries-wbc-implementation-guide",
+        "wiki-formalizations-friction-cone",
+        "sources-papers-whole-body-control"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "query"
+    },
+    {
       "id": "wiki-queries-when-to-use-wbc-vs-rl",
       "title": "决策树：何时使用 WBC vs RL？",
       "path": "wiki/queries/when-to-use-wbc-vs-rl.md",
@@ -2857,6 +3055,58 @@
       "status": "active",
       "type": "wiki_page",
       "page_type": "query"
+    },
+    {
+      "id": "entity-anymal",
+      "title": "ANYmal 四足机器人",
+      "path": "wiki/entities/anymal.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [robot, quadruped, hardware, platform, eth]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ./humanoid-robot.md\n  - ../tasks/locomotion.md\n  - ../entities/legged-gym.md\n  - ../concepts/sim2real.md\nsources:\n  - ../../sources/papers/locomotion_rl.md\nsummary: \"ANYmal 是由 ETH Zurich 和 ANYbotics 开发的高性能四足机器人平台，是机器人强化学习（RMA、ANYmal C）研究的标志性载体。\"\n---\n\n# ANYmal 四足机器人\n\n**ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（RSL）研发，并由衍生公司 ANYbotics 商业化的高性能四足机器人。它在学术界（特别是足式机器人强化学习领域）和工业巡检领域具有极高的影响力。\n\n## 核心特征\n\n1. **高度集成与鲁棒性**：ANYmal 设计用于极端的工业环境（如矿井、海上油气平台）。其外壳具备高等级的防水防尘能力（IP67）。\n2. **力控执行器**：ANYmal 使用专门开发的 **串联弹性执行器 (SEA)**。相比于刚性驱动，SEA 提供了天然的碰撞缓冲和更精确的力矩反馈，非常适合处理不确定地形的接触。\n3. **顶尖的算法载体**：它是许多里程碑式论文的实验平台，包括：\n   - **RMA (Rapid Motor Adaptation)**：实现了极强的越野与地形自适应能力。\n   - **Learning Agile Locomotion**：展示了四足机器人如何通过 RL 学会类似动物的翻越动作。\n   - **ANYmal C/D 系列**：集成了先进的感知（LiDAR, 深度相机）和全自主导航能力。\n\n## 与 Unitree 的区别\n\n| 维度 | ANYmal | Unitree (A1/Go1/B2) |\n|------|--------|---------------------|\n| **定位** | 高端巡检 / 顶尖科研 | 极高性价比 / 普及科研 |\n| **驱动方式** | 串联弹性执行器 (SEA) | 准直接驱动 (QDD) |\n| **重量/负载** | 较重，负载能力强 | 较轻，运动速度快 |\n| **软件生态** | 开源 raisimGym / OCS2 | 开源 Unitree SDK / legged_gym |\n\n## 对机器人研究的贡献\n\nANYmal 系列是“**数据驱动足式控制**”路线的先驱。ETH RSL 团队通过 ANYmal 证明了在仿真（Raisim/Isaac Gym）中大规模训练的策略，通过合理的域随机化和状态估计，可以无缝迁移到极端复杂的真实户外地形。\n\n## 关联页面\n- [人形机器人](./humanoid-robot.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Legged Gym](../entities/legged-gym.md)\n- [Sim2Real](../concepts/sim2real.md)\n\n## 参考来源\n- Hutter, M., et al. (2016). *ANYmal - a highly mobile and dynamic quadrupedal robot*.\n- Lee, J., et al. (2020). *Learning quadrupedal locomotion over challenging terrain*.\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "rl",
+        "sim2real"
+      ],
+      "related": [
+        "entity-humanoid-robot",
+        "wiki-tasks-locomotion",
+        "entity-legged-gym",
+        "wiki-concepts-sim2real",
+        "sources-papers-locomotion-rl"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-boston-dynamics",
+      "title": "Boston Dynamics（波士顿动力）",
+      "path": "wiki/entities/boston-dynamics.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [robot, hardware, humanoid, quadruped, industry]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ./humanoid-robot.md\n  - ../tasks/locomotion.md\n  - ../concepts/whole-body-control.md\n  - ../methods/model-predictive-control.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Boston Dynamics 是全球足式机器人的领军企业，旗下的 Atlas 和 Spot 分别定义了人形与四足机器人的最高动态性能标准。\"\n---\n\n# Boston Dynamics（波士顿动力）\n\n**Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 独立至今，它先后推出了 BigDog, Cheetah, LS3, Atlas 和 Spot 等一系列划时代的机器人。\n\n## 代表性产品\n\n### 1. Atlas (人形机器人)\n- **液压版 (Legacy)**：28 个液压关节，以极高的功率密度实现了跑酷、后空翻等人类级别的灵巧动作。它采用了先进的 **全身控制 (WBC)** 和 **模型预测控制 (MPC)**。\n- **全电版 (All-Electric)**：2024 年发布，弃用了复杂的液压系统，转向高转矩电机驱动。设计更极简，关节旋转范围更大，预示着人形机器人从“实验室原型”向“通用工具”的转型。\n\n### 2. Spot (四足机器人)\n- 全球最成功的商业化足式机器人。其核心竞争力在于极强的环境适应性（AutoWalk）和稳定的步态控制。它证明了四足机器人可以在工厂、矿区、变电站等复杂真实场景中稳定工作。\n\n### 3. Stretch (仓储机器人)\n- 针对物流搬运设计的非类人机器人，拥有巨大的机械臂和移动底座，展示了波士顿动力将足式控制技术迁移到工业垂直领域的商业能力。\n\n## 核心技术路线\n\n1. **基于优化的控制 (Optimization-based)**：Boston Dynamics 的长项在于基于动力学模型的优化算法。Atlas 的平稳运动很大程度上归功于其对 WBC 和接触力优化的极致压榨。\n2. **高功率密度执行器**：无论是早期的液压技术还是现在的定制电机，其硬件性能始终处于行业第一梯队。\n3. **感知与规划集成**：其机器人具备极强的实时感知能力，能够动态识别地形并自主规划足迹。\n\n## 行业地位\n\n如果说 Unitree 推动了足式机器人的“平民化”，那么 Boston Dynamics 则始终在探索“**动态性能的物理极限**”。虽然在人工智能（特别是大模型集成）方面相对低调，但其底层的运控算法至今仍是行业标杆。\n\n## 关联页面\n- [人形机器人](./humanoid-robot.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)\n- [Model Predictive Control (MPC)](../methods/model-predictive-control.md)\n\n## 参考来源\n- Boston Dynamics Official Website & Blog.\n- Kuindersma, S., et al. (2016). *Optimization-based locomotion planning, estimation, and control design for the atlas humanoid*.\n- [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics"
+      ],
+      "related": [
+        "entity-humanoid-robot",
+        "wiki-tasks-locomotion",
+        "wiki-concepts-whole-body-control",
+        "wiki-methods-model-predictive-control",
+        "sources-papers-humanoid-hardware"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
     },
     {
       "id": "entity-crocoddyl",
@@ -2924,7 +3174,7 @@
       "title": "人形机器人（Humanoid Robot）",
       "path": "wiki/entities/humanoid-robot.md",
       "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 为什么重要\n\n人形机器人平台是连接算法研究与真实世界部署的关键桥梁：\n\n> \"人形平台的选择直接决定了你能运行哪些控制算法、能完成哪些任务、以及 sim2real 的难度。\"\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 |\n|------|------|-----|-----------|---------|\n| Atlas | Boston Dynamics | 28 | 液压 | 研究平台 |\n| Unitree H1 | Unitree | 20 | 刚性电机 | 商业可购 |\n| Unitree G1 | Unitree | 23 | 刚性电机 | 商业可购 |\n| Agility Digit | Agility Robotics | 20 | SEA | 商业部署 |\n| Fourier GR-1 | Fourier Intelligence | 44 | 力控电机 | 商业可购 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 执行器类型决定控制策略\n\n- **液压**（Atlas）：高功率密度 → 适合 WBC + 高动态运动，sim2real 最难\n- **刚性电机**（H1/G1）：轻量低成本 → 适合 RL 研究，力控精度有限\n- **SEA**（Digit）：内置柔顺性 → 适合人机协作和接触丰富任务\n- **QDD**（MIT Cheetah 风格）：高带宽力矩透明 → 适合精密接触控制\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./unitree.md\n  - ./anymal.md\n  - ./boston-dynamics.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。\"\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 核心特征\n\n人形机器人之所以成为机器人研究的“明珠”，是因为它具备以下核心特征：\n\n1. **多自由度（High DOFs）**：通常具有 20 到 50 个以上的自由度，涵盖颈部、躯干、手臂（含手掌）和腿部。这使得它能够模拟人类的复杂动作，并在人类设计的环境中（如楼梯、狭窄通道）灵活穿梭。\n2. **非稳定平衡（Unstable Equilibrium）**：与轮式或四足机器人不同，双足支撑面较小且重心较高。这要求控制器必须实时处理动态平衡，防止倾跌。\n3. **接触丰富性（Contact Richness）**：人形机器人的任务通常涉及频繁的接触切换（足端接地、手部操作、身体靠墙等），这在物理建模和控制算法上提出了极高要求。\n4. **具身智能载体**：它的类人形态使其能够直接复用大量人类演示数据（MoCap, Video），是端到端具身智能（VLA, Foundation Models）训练的最佳平台。\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |\n|------|------|-----|-----------|---------|------|\n| **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |\n| **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |\n| **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |\n| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |\n| **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |\n| **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 与四足机器人的区别\n\n虽然两者都属于腿足机器人（Legged Robots），但人形机器人面临的挑战更为严苛：\n\n- **重心高度**：人形机器人重心更高，支撑区域更窄，扰动容忍度极低。四足机器人天然具备静态稳定性，而人形机器人必须通过主动控制维持动态平衡。\n- **操作能力**：四足机器人主要侧重于移动（Locomotion），而人形机器人必须兼顾操作（Manipulation）。这种“动中稳”的操作（Loco-manipulation）是目前最前沿的挑战。\n- **自由度冗余**：人形机器人的双臂和躯干提供了极高的运动冗余度，如何有效地协调全身（Whole-body Coordination）以完成多任务，是传统控制与 RL 算法的核心差异点。\n\n## 核心挑战\n\n1. **动态平衡与回收**：在剧烈扰动或复杂地形下不倒地，或在倒地后自主站起。\n2. **Sim2Real Gap**：复杂的传动链、执行器非线性、接触动力学误差，导致仿真策略难以直接在实机运行。\n3. **高频控制与延迟**：人形机器人通常需要 500Hz-1000Hz 的控制频率，对算力和中间件（ROS2/FastDDS）提出了极高要求。\n4. **能源与续航**：在高自由度高功率输出下，如何维持超过 2 小时的有效工作时间是制约商业化的瓶颈。\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）\n- [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)",
       "tags": [
         "entities",
         "entity",
@@ -2940,8 +3190,11 @@
         "wiki-concepts-whole-body-control",
         "wiki-comparisons-wbc-vs-rl",
         "entity-unitree",
+        "entity-anymal",
+        "entity-boston-dynamics",
         "wiki-queries-humanoid-hardware-selection",
-        "sources-papers-humanoid-hardware"
+        "sources-papers-humanoid-hardware",
+        "sources-papers-humanoid-motion-control-know-how"
       ],
       "source_links": [],
       "status": "active",
