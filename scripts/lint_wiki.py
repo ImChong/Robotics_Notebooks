@@ -144,6 +144,7 @@ def lint() -> dict:
         "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
         "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
         "method_missing_sections": [], # V17: methods/ 页面缺少标准区块
+        "entity_missing_outgoing": [], # V20: entities/ 页面缺少指向 methods/ 或 tasks/ 的出边
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -1054,6 +1055,19 @@ def lint() -> dict:
         if not re.search(r"##\s+(主要方法路线|核心技术路线|主要分类|主要技术路线)", content):
             results["method_missing_sections"].append(str(rel))
 
+        # V20: entities/ 页面必须包含至少 2 个指向 methods/ 或 tasks/ 的出边
+        if len(parts) >= 2 and parts[0] == "wiki" and parts[1] == "entities":
+            links = extract_internal_links(content, page)
+            out_count = 0
+            for target in links:
+                if not target.is_relative_to(REPO_ROOT):
+                    continue
+                t_parts = target.relative_to(REPO_ROOT).parts
+                if len(t_parts) >= 2 and t_parts[0] == "wiki" and t_parts[1] in ("methods", "tasks"):
+                    out_count += 1
+            if out_count < 2:
+                results["entity_missing_outgoing"].append(f"{rel} (当前出边: {out_count})")
+
     return results
 
 def format_report(results: dict) -> str:
@@ -1085,6 +1099,7 @@ def format_report(results: dict) -> str:
         ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
         ("method_missing_link","Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
         ("method_missing_sections","Methods 页面缺少主要路线区块", "⚠️"),
+        ("entity_missing_outgoing","Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
     ]
 
     for key, label, icon in sections:

@@ -12,7 +12,7 @@ from search_indexing import REPO_ROOT, hash_embed_texts, iter_wiki_documents, tr
 
 VECTOR_OUTPUT = REPO_ROOT / "exports" / "vector-index.npz"
 META_OUTPUT = REPO_ROOT / "exports" / "vector-index-meta.json"
-DEFAULT_MODEL = "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+DEFAULT_MODEL = "BAAI/bge-small-zh-v1.5"
 
 
 def encode_texts(texts: list[str], model_name: str = DEFAULT_MODEL) -> tuple[np.ndarray, dict]:

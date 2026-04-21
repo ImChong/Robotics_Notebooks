@@ -21,12 +21,12 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **多模态搜索增强 (Vector + Semantic)**：
-    - [ ] `scripts/search_wiki.py` 实现多模态 Embedding 的无感切换，支持基于 `bge-small-zh` 的本地极速语义检索。
-- [ ] **自动化内链推荐补全**：
-    - [ ] 优化 `scripts/discover_facts.py`，支持根据页面间的 Tag 重合度自动生成 `related` 区块补全建议。
-- [ ] **图谱元数据一致性 Lint**：
-    - [ ] `scripts/lint_wiki.py` 新增检测：`entities/` 页面必须包含至少 2 个指向 `methods/` 或 `tasks/` 的出边。
+- [x] **多模态搜索增强 (Vector + Semantic)**：
+    - [x] `scripts/search_wiki.py` 实现多模态 Embedding 的无感切换，支持基于 `bge-small-zh` 的本地极速语义检索。
+- [x] **自动化内链推荐补全**：
+    - [x] 优化 `scripts/discover_facts.py`，支持根据页面间的 Tag 重合度自动生成 `related` 区块补全建议。
+- [x] **图谱元数据一致性 Lint**：
+    - [x] `scripts/lint_wiki.py` 新增检测：`entities/` 页面必须包含至少 2 个指向 `methods/` 或 `tasks/` 的出边。
 
 ## P1: 具身 Scaling Law 与数据引擎专题 (Quality)
 
