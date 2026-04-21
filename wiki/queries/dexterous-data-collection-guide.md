@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../entities/allegro-hand.md
+  - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
 sources:
@@ -19,7 +20,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 
 ---
 
-灵巧手（Dexterous Hand）的操作数据采集难度远高于普通的二指夹爪。由于自由度极高（通常 16-24 个），传统的中置式示教或简单的轨迹规划很难生成自然、丝滑的专家演示。目前主流的采集方案分为以下三类：
+灵巧手（Dexterous Hand）的操作数据采集难度远高于普通的二指夹爪。由于自由度极高（通常 16-24 个），传统的中置式示教或简单的轨迹规划很难生成自然、丝滑的专家演示。目前主流的采集方案分为以下三类（详见 [数据手套 vs 视觉遥操作选型对比](../comparisons/data-gloves-vs-vision-teleop.md)）：
 
 ## 1. 基于视觉的动捕遥操作 (Vision-based Teleop)
 

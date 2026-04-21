@@ -8,6 +8,8 @@ sources:
   - ../../sources/papers/teleoperation.md
 related:
   - ../tasks/teleoperation.md
+  - ../entities/oculust-quest-teleop.md
+  - ../concepts/embodied-data-cleaning.md
   - ../methods/imitation-learning.md
   - ../methods/behavior-cloning.md
   - ../tasks/bimanual-manipulation.md
@@ -31,7 +33,7 @@ related:
 | 系统 | 自由度 | 延迟 | 成本 | 适用任务 | 优缺点 |
 |------|-------|------|------|---------|--------|
 | **ALOHA**（领导者-跟随者） | 14DoF（双臂各 7DoF） | 极低（直接关节映射） | 中（~15k USD DIY） | 双臂精细操作、桌面任务 | 沉浸感高、延迟低；需要专用硬件 |
-| **VR 手柄**（Quest / Vive） | 6DoF + 手指 | 低–中（20–50ms） | 低（~500 USD） | 远程操作、大范围运动 | 灵活通用；手指细节难捕捉 |
+| **[VR 手柄](../entities/oculust-quest-teleop.md)**（Quest / Vive） | 6DoF + 手指 | 低–中（20–50ms） | 低（~500 USD） | 远程操作、大范围运动 | 灵活通用；手指细节难捕捉 |
 | **SpaceMouse** | 6DoF 末端速度控制 | 低 | 低（~150 USD） | 单臂、简单拾取放置 | 设置简单；不直观，学习曲线高 |
 | **动觉示教**（Kinesthetic） | 全关节直接引导 | 零（直接物理接触） | 无额外硬件 | 精细任务、接触丰富操作 | 最直觉；需要机器人支持反向驱动 |
 | **手套 / 手部追踪**（Leap / MediaPipe） | 手指 + 手腕 | 中 | 低–中 | 灵巧手操作 | 手指精度高；腕部绝对位置漂移 |
@@ -60,7 +62,7 @@ related:
 - [ ] 任务完成时间标准差 < 20%（过高说明示教者操作不稳定）
 - [ ] 关键节点动作清晰（抓取、插入等关键帧动作要明确，避免犹豫）
 
-### 演示后验收
+### 演示后验收 (详见 [具身数据清洗](../concepts/embodied-data-cleaning.md))
 
 - [ ] 可视化回放：用 `rerun.io` 或 `rviz` 逐帧检查轨迹
 - [ ] 剔除异常轨迹（关节速度突变、force/torque 异常峰值）

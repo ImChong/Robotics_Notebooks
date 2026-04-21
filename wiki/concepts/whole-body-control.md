@@ -9,6 +9,7 @@ related:
   - ../comparisons/wbc-vs-rl.md
   - ./sim2real.md
   - ./contact-estimation.md
+  - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
 summary: "Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。"
 ---
@@ -137,6 +138,7 @@ print("joint acceleration command:", qdd_star)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
 - [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
+- [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 
 ## 继续深挖入口

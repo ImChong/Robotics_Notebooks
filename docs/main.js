@@ -705,6 +705,9 @@
     });
     renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
 
+    // V17: 记录并渲染阅读足迹
+    updateRecentVisits(detailPage);
+
     if (recommendedEl) {
       var recommendedIds = findRelatedByTags(detailId, detailPage.tags, detailPages, 5);
       if (recommendedIds.length) {
@@ -1726,5 +1729,37 @@
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
     });
+  }
+
+  function updateRecentVisits(page) {
+    if (!page || !page.id) return;
+    const container = document.getElementById('recentVisitList');
+    if (!container) return;
+
+    let recent = [];
+    try {
+      recent = JSON.parse(sessionStorage.getItem('recent_visits') || '[]');
+    } catch (e) {
+      recent = [];
+    }
+
+    // 移除已存在的当前页，并推入头部
+    recent = recent.filter(item => item.id !== page.id);
+    recent.unshift({ id: page.id, title: page.title });
+    
+    // 仅保留最近 10 个
+    recent = recent.slice(0, 10);
+    sessionStorage.setItem('recent_visits', JSON.stringify(recent));
+
+    // 渲染，排除当前页
+    const others = recent.filter(item => item.id !== page.id);
+    if (!others.length) {
+      container.innerHTML = '<p class="data-meta">暂无更多最近访问记录</p>';
+      return;
+    }
+
+    container.innerHTML = others.map(item => {
+      return '<a href="detail.html?id=' + encodeURIComponent(item.id) + '" class="data-chip">' + escapeHtml(item.title || item.id) + '</a>';
+    }).join('');
   }
 })();

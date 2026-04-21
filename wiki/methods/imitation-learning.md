@@ -5,42 +5,42 @@ status: complete
 summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
-# Imitation Learning (IL)
+# Imitation Learning (IL, 模仿学习)
 
-**模仿学习**：通过专家演示数据，让机器人学会从状态到动作的映射，核心是“抄”。
+**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。
 
 ## 一句话定义
 
-让机器人看人类/专家怎么做，它就模仿着做。
+让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。
 
 ## 为什么重要
 
-- 纯 RL sample efficiency 低，训练慢
-- 很多任务难以定义 reward
-- 专家演示提供了高质量数据，可以快速初始化策略
+- 纯 RL sample efficiency 低，训练慢。
+- 很多任务难以定义 reward。
+- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。
 
-## 核心方法
+## 主要分类
 
-### 1. 行为克隆（Behavior Cloning, BC）
+### 1. 行为克隆 (Behavior Cloning, BC)
 
-最简单的 IL：把专家数据当监督学习做。
+最简单的模仿学习 (IL)：把专家数据当监督学习做。
 
 $$\min_\theta \mathbb{E}_{(s,a) \sim D}[-\log \pi_\theta(a|s)]$$
 
 问题：
-- 分布偏移（covariate shift）：训练和测试时状态分布不同
-- 错误累积：早期的小错误会不断放大
+- 分布偏移 (covariate shift)：训练和测试时状态分布不同。
+- 错误累积：早期的小错误会不断放大。
 
-### 2. DAgger（Dataset Aggregation）
+### 2. DAgger (Dataset Aggregation)
 
-迭代式数据收集：
+迭代式模仿学习数据收集：
 
-1. 用当前策略收集数据
-2. 让专家标注这些数据
-3. 合并到训练集
-4. 重复
+1. 用当前策略收集数据。
+2. 让专家标注这些数据。
+3. 合并到训练集（行为克隆）。
+4. 重复。
 
-有效缓解 BC 的分布偏移问题。
+有效缓解行为克隆的分布偏移问题。
 
 ### 3. GAIL（Generative Adversarial Imitation Learning）
 

@@ -32,7 +32,7 @@ related:
 
 这也是 ACT、部分 diffusion policy，以及 VLA 真机部署里经常出现 chunk / horizon / buffer 设计的原因。
 
-## 基本形式
+## 主要技术路线
 
 与标准行为克隆只预测当前动作 $a_t$ 不同，动作块方法预测：
 

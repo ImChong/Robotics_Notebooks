@@ -835,3 +835,47 @@ a:hover { color: var(--accent-hover); text-decoration: underline; }
   color: var(--text-muted);
   font-weight: 400;
 }
+
+/* Tables */
+.table-wrapper {
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+th, td {
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+  text-align: left;
+}
+th:not(:last-child), td:not(:last-child) {
+  border-right: 1px solid var(--border);
+}
+th {
+  background: var(--bg-alt);
+  font-weight: 600;
+}
+
+/* Horizontal scroll hint for tables */
+@media (max-width: 768px) {
+  .table-wrapper {
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+  .table-wrapper::after {
+    content: '↔ 左右滑动查看更多';
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}

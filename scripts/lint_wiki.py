@@ -143,6 +143,7 @@ def lint() -> dict:
         "readme_badge": [],           # V11: README checklist 链接版本不一致
         "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
         "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
+        "method_missing_sections": [], # V17: methods/ 页面缺少标准区块
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -684,6 +685,76 @@ def lint() -> dict:
             "pos_claims": [r"数万.*演示|数十万|数据集|Open.*X.Embodiment|大规模"],
             "neg_claims": [r"VLA.*十条.*示教|少量数据.*足够|VLA.*无需数据"],
         },
+        "MuJoCo 选型理由": {
+            "terms": ["MuJoCo|mjcf"],
+            "pos_claims": [r"基于模型.*控制|Model.based.*Control|推导动力学|MPC|iLQR|轨迹优化"],
+            "neg_claims": [r"MuJoCo.*只适合.*Model.free|MuJoCo.*不支持.*MPC"],
+        },
+        "Isaac Sim 选型理由": {
+            "terms": ["Isaac.*Sim|Isaac.*Gym"],
+            "pos_claims": [r"千万级并行|千万.*机器人|GPU.*采样|经验采样速度|光线追踪|RTX"],
+            "neg_claims": [r"Isaac.*Sim.*采样慢|Isaac.*Sim.*仅限 CPU|Isaac.*Sim.*无渲染"],
+        },
+        "Single Shooting 缺点": {
+            "terms": ["Single.*Shooting|单重打靶"],
+            "pos_claims": [r"高度非线性|容易陷入.*局部最优|蝴蝶效应|难以处理.*中间.*状态.*约束"],
+            "neg_claims": [r"单重打靶.*线性|单重打靶.*处理约束.*极佳"],
+        },
+        "Direct Collocation 优点": {
+            "terms": ["Direct.*Collocation|直接配点"],
+            "pos_claims": [r"处理.*极多.*状态约束|初始猜测.*物理不可行.*依然收敛|隐式.*动力学"],
+            "neg_claims": [r"直接配点.*无法处理约束|初始猜测.*必须.*可行"],
+        },
+        "Contact-Implicit 核心": {
+            "terms": ["Contact.Implicit|接触隐式"],
+            "pos_claims": [r"互补.*约束|complementarity|无需.*手工.*编排.*时序|自主发现.*步态"],
+            "neg_claims": [r"接触隐式.*需要.*预设.*时序|手动编排.*落地"],
+        },
+        "VLA 真机分层": {
+            "terms": ["VLA|Vision.Language.Action", "真机|部署"],
+            "pos_claims": [r"中高层策略|不要直接.*驱动.*执行器|低频.*高频.*分层|action.*chunk"],
+            "neg_claims": [r"VLA.*直接.*1kHz.*闭环|VLA.*控制.*脊髓"],
+        },
+        "SCHED_FIFO 风险": {
+            "terms": ["SCHED_FIFO|实时线程"],
+            "pos_claims": [r"死循环.*卡死|忘记.*sleep|优先级|拔电源"],
+            "neg_claims": [r"SCHED_FIFO.*绝对安全|系统.*自动.*恢复"],
+        },
+        "CPU Isolation 配置": {
+            "terms": ["isolcpus|nohz_full"],
+            "pos_claims": [r"GRUB|屏蔽.*tick|RCU.*回调|屏蔽.*中断"],
+            "neg_claims": [r"isolcpus.*无法屏蔽中断|isolcpus.*内核级.*无关"],
+        },
+        "RT-1 动作分词": {
+            "terms": ["RT-1|Action.*Tokenization"],
+            "pos_claims": [r"标量分箱|Scalar.*Binning|256.*bin|独立量化"],
+            "neg_claims": [r"RT-1.*连续回归|RT-1.*不分词"],
+        },
+        "In-hand Reorientation 挑战": {
+            "terms": ["In.hand.*Reorientation|手内重定向"],
+            "pos_claims": [r"频繁.*接触切换|感知遮挡|滑移|Slip|离散非线性"],
+            "neg_claims": [r"重定向.*无遮挡|接触.*恒定|重定向.*是线性系统"],
+        },
+        "π₀ 核心技术": {
+            "terms": ["π₀|Pi-zero"],
+            "pos_claims": [r"流匹配|Flow.*Matching|Scaling.*Law|规模法则|后训练"],
+            "neg_claims": [r"π₀.*基于.*DQN|π₀.*无预训练"],
+        },
+        "Allegro Hand 优势": {
+            "terms": ["Allegro.*Hand|灵巧手"],
+            "pos_claims": [r"结构精简|4指|易于集成触觉|HandLib|DexDex"],
+            "neg_claims": [r"Allegro.*太复杂|Allegro.*无法加触觉"],
+        },
+        "Embodied Data Cleaning 重点": {
+            "terms": ["Data.*Cleaning|数据清洗"],
+            "pos_claims": [r"时序对齐|剔除.*异常|重定向误差|插值|重新采样"],
+            "neg_claims": [r"数据.*无需清洗|脏数据.*直接训练"],
+        },
+        "Actuator Network 作用": {
+            "terms": ["Actuator.*Network|执行器网络"],
+            "pos_claims": [r"拟合.*真实电机|非线性特性|反向电动势|摩擦|延迟特性|TorchScript"],
+            "neg_claims": [r"执行器网络.*拟合传感器|执行器网络.*代替策略"],
+        },
     }
     all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():
@@ -894,6 +965,10 @@ def lint() -> dict:
         if not has_required_link:
             results["method_missing_link"].append(str(rel))
 
+        # V17: methods/ 页面必须包含主要方法路线区块
+        if not re.search(r"##\s+(主要方法路线|核心技术路线|主要分类|主要技术路线)", content):
+            results["method_missing_sections"].append(str(rel))
+
     return results
 
 def format_report(results: dict) -> str:
@@ -924,6 +999,7 @@ def format_report(results: dict) -> str:
         ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
         ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
         ("method_missing_link","Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
+        ("method_missing_sections","Methods 页面缺少主要路线区块", "⚠️"),
     ]
 
     for key, label, icon in sections:

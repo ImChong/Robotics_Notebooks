@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../comparisons/mujoco-vs-isaac-sim.md
+  - ./nvidia-omniverse.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 sources:
@@ -42,6 +43,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 ## 关联页面
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
+- [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 

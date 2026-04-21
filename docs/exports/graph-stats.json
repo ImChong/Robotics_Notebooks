@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-21",
-  "node_count": 131,
-  "edge_count": 772,
-  "community_count": 6,
+  "node_count": 137,
+  "edge_count": 798,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -12,26 +12,26 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 59
+      "degree": 60
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL)",
-      "degree": 59
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "degree": 60
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 52
+      "degree": 54
     },
     {
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
-      "degree": 41
+      "degree": 42
     },
     {
       "id": "wiki/methods/imitation-learning.md",
-      "label": "Imitation Learning (IL)",
+      "label": "Imitation Learning (IL, 模仿学习)",
       "degree": 35
     },
     {
@@ -40,13 +40,13 @@
       "degree": 28
     },
     {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
-      "degree": 28
-    },
-    {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
+      "degree": 27
+    },
+    {
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation",
       "degree": 27
     },
     {
@@ -57,42 +57,47 @@
   ],
   "orphan_nodes": [
     {
-      "id": "wiki/concepts/dexterous-kinematics.md",
-      "label": "Dexterous Kinematics (灵巧手运动学)",
-      "out_degree": 4
+      "id": "wiki/entities/nvidia-omniverse.md",
+      "label": "NVIDIA Omniverse (具身仿真底座)",
+      "out_degree": 5
     },
     {
-      "id": "wiki/methods/π0-policy.md",
-      "label": "π₀ (Pi-zero) 策略模型",
-      "out_degree": 2
+      "id": "wiki/formalizations/se3-representation.md",
+      "label": "SE(3) Representation (位姿表示形式化)",
+      "out_degree": 3
+    },
+    {
+      "id": "wiki/methods/actuator-network.md",
+      "label": "Actuator Network (执行器网络)",
+      "out_degree": 3
     }
   ],
   "type_distribution": {
     "query": 35,
-    "concept": 32,
-    "formalization": 16,
-    "method": 15,
-    "comparison": 12,
-    "entity": 11,
+    "concept": 33,
+    "formalization": 17,
+    "method": 16,
+    "comparison": 13,
+    "entity": 13,
     "task": 7,
     "overview": 1,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 63,
-    "Whole-Body Control (WBC) 社区": 41,
-    "Manipulation 社区": 16,
-    "Tactile Sensing（触觉感知） 社区": 7,
-    "实时运控中间件配置指南 社区": 2,
-    "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区": 2
+    "Locomotion 社区": 58,
+    "Whole-Body Control (WBC) 社区": 38,
+    "Manipulation 社区": 28,
+    "Control Barrier Function（控制屏障函数） 社区": 6,
+    "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区": 3,
+    "VLA 真机部署指南：延迟、异步与加速 社区": 3,
+    "Actuator Network (执行器网络) 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
-      "实时运控中间件配置指南 社区",
-      "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
+      "Actuator Network (执行器网络) 社区"
     ],
-    "largest_community_ratio": 0.481,
-    "community_quality_warning": true
+    "largest_community_ratio": 0.423,
+    "community_quality_warning": false
   }
 }

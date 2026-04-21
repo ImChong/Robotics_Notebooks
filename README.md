@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-21 (V17 启动：图谱 131 节点 776 边) -->
+<!-- Last updated: 2026-04-21 (V18 启动：图谱 137 节点 801 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-131节点_776边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v17.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-137节点_801边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v18.md)
 
 ---
 
@@ -99,6 +99,6 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 ## 执行清单
 
-[技术栈项目执行清单 v16](docs/checklists/tech-stack-next-phase-checklist-v16.md) — 当前阶段目标（具身大模型深度化 / 灵巧操作补完 / 自动化事实发现）
+[技术栈项目执行清单 v18](docs/checklists/tech-stack-next-phase-checklist-v18.md) — 当前阶段目标（世界模型与生成式控制 / 真机部署实战 / 交互层沉浸感提升）
 
 历史版本：[执行清单归档目录](docs/checklists/)

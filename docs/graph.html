@@ -185,7 +185,19 @@
       border-radius: 10px;
       backdrop-filter: blur(6px);
     }
-    .legend-row { display: flex; align-items: center; gap: 8px; font-size: .72rem; color: rgba(255,255,255,0.5); }
+    .legend-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: .72rem;
+      color: rgba(255,255,255,0.5);
+      cursor: pointer;
+      padding: 3px 6px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .legend-row:hover { background: rgba(255,255,255,0.05); color: #fff; }
+    .legend-row.active { background: rgba(0,212,255,0.15); color: #00d4ff; font-weight: 700; }
     .legend-title { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
     .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 
@@ -353,6 +365,8 @@
       border-color: rgba(0,0,0,0.08);
     }
     [data-theme="light"] .legend-row { color: rgba(0,0,0,0.5); }
+    [data-theme="light"] .legend-row:hover { background: rgba(0,0,0,0.04); }
+    [data-theme="light"] .legend-row.active { background: #e6f7ff; color: #1659b4; }
     /* 物理参数面板 */
     [data-theme="light"] .physics-panel {
       background: rgba(255,255,255,0.97);
@@ -921,6 +935,7 @@
     let activeFilters = new Set();
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
+    let focusedCommunityId = null;
 
     /* ── 可变物理参数（由滑动块控制）── */
     let chargeStrength = -800;   // 排斥力（负值）
@@ -961,7 +976,10 @@
         rows.push('<div class="legend-title">按社区着色</div>');
         for (const [communityId, label] of communityLabelMap.entries()) {
           const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
-          rows.push(`<div class="legend-row"><div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}</div>`);
+          const isActive = (focusedCommunityId === communityId);
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${communityId}">
+            <div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}
+          </div>`);
         }
       } else if (colorMode === 'health') {
         rows.push('<div class="legend-title">按健康度着色</div>');
@@ -1412,6 +1430,22 @@
     filterToggle.addEventListener('click', () => {
       filterPanel.hidden = !filterPanel.hidden;
     });
+
+    // V17: 社区高亮功能
+    graphLegend.addEventListener('click', (ev) => {
+      const row = ev.target.closest('.legend-row');
+      if (!row) return;
+      const cid = row.getAttribute('data-community-id');
+      if (!cid) return;
+
+      if (focusedCommunityId === cid) {
+        focusedCommunityId = null;
+      } else {
+        focusedCommunityId = cid;
+      }
+      renderLegend();
+      applyFilters();
+    });
     document.getElementById('filter-close').addEventListener('click', () => {
       filterPanel.hidden = true;
     });
@@ -1446,6 +1480,7 @@
     const visibleNodeIds = new Set();
 
     function nodeMatchesCurrentFilter(d) {
+      if (focusedCommunityId) return d.community === focusedCommunityId;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
@@ -1457,6 +1492,7 @@
     }
 
     function edgeMatchesCurrentFilter(n) {
+      if (focusedCommunityId) return n.community === focusedCommunityId;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
@@ -1474,7 +1510,7 @@
     }
 
     function applyFilters() {
-      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
+      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId;
       visibleNodeIds.clear();
       let visible = 0;
       node.each(function(d) {

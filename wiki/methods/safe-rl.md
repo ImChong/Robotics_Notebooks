@@ -33,7 +33,7 @@ $$ \max_{\pi} J_R(\pi) \quad \text{s.t.} \quad J_{C_i}(\pi) \leq \hat{c}_i \quad
 
 详情请参阅：[Constrained MDP 形式化](../formalizations/cmdp.md)
 
-## 四大主流技术范式
+## 主要分类
 
 为了求解 CMDP 并实现实机部署，学术界和工业界沉淀了以下四条核心技术路线：
 
