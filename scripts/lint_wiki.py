@@ -698,7 +698,7 @@ def lint() -> dict:
         "Single Shooting 缺点": {
             "terms": ["Single.*Shooting|单重打靶"],
             "pos_claims": [r"高度非线性|容易陷入.*局部最优|蝴蝶效应|难以处理.*中间.*状态.*约束"],
-            "neg_claims": [r"单重打靶.*线性|单重打靶.*处理约束.*极佳"],
+            "neg_claims": [r"单重打靶.*处理约束.*极佳|单重打靶.*是线性系统"],
         },
         "Direct Collocation 优点": {
             "terms": ["Direct.*Collocation|直接配点"],
