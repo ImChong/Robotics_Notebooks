@@ -64,8 +64,12 @@
       white-space: nowrap;
     }
     .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
-    .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
-    .chip[data-type=""].active           { background: #e6edf3; }
+    .chip.active {
+      background: #00d4ff;
+      color: #0d1117;
+      border-color: transparent;
+      font-weight: 700;
+    }
     .chip[data-type="concept"].active    { background: #60a5fa; }
     .chip[data-type="method"].active     { background: #34d399; }
     .chip[data-type="task"].active       { background: #f472b6; }
@@ -73,13 +77,6 @@
     .chip[data-type="comparison"].active { background: #c084fc; }
     .chip[data-type="query"].active      { background: #94a3b8; color: #fff; }
     .chip[data-type="formalization"].active { background: #fb923c; }
-    .view-toggle { display: inline-flex; gap: 6px; }
-    .mode-chip.active-mode {
-      background: #00d4ff;
-      color: #0d1117;
-      border-color: transparent;
-      font-weight: 700;
-    }
     .toolbar-sep { width: 1px; height: 24px; background: rgba(255,255,255,0.1); flex-shrink: 0; }
     .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     #graph-node-count {
@@ -394,20 +391,6 @@
     [data-theme="light"] .filter-mode-tabs {
       border-bottom-color: rgba(0,0,0,0.07);
     }
-    [data-theme="light"] .filter-mode-chip {
-      border-color: rgba(0,0,0,0.1);
-      background: rgba(0,0,0,0.04);
-      color: rgba(0,0,0,0.5);
-    }
-    [data-theme="light"] .filter-mode-chip:hover {
-      border-color: rgba(0,0,0,0.28);
-      color: rgba(0,0,0,0.8);
-    }
-    [data-theme="light"] .filter-mode-chip.active-mode {
-      background: #1659b4;
-      color: #fff;
-      border-color: transparent;
-    }
     [data-theme="light"] .filter-subtitle {
       color: rgba(0,0,0,0.35);
     }
@@ -556,29 +539,6 @@
       padding: 10px 14px 8px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       flex-wrap: wrap;
-    }
-    .filter-mode-chip {
-      height: 28px;
-      padding: 0 11px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.5);
-      font-size: .75rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all .15s;
-      white-space: nowrap;
-    }
-    .filter-mode-chip:hover {
-      border-color: rgba(255,255,255,0.3);
-      color: rgba(255,255,255,0.82);
-    }
-    .filter-mode-chip.active-mode {
-      background: #00d4ff;
-      color: #0d1117;
-      border-color: transparent;
-      font-weight: 700;
     }
     .filter-subtitle {
       padding: 10px 14px 2px;
@@ -856,9 +816,9 @@
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
-        <button id="filter-mode-type" class="filter-mode-tab active" type="button">按类型</button>
-        <button id="filter-mode-community" class="filter-mode-tab" type="button">按社区</button>
-        <button id="filter-mode-health" class="filter-mode-tab" type="button">按健康度</button>
+        <button id="filter-mode-type" class="chip active" type="button">按类型</button>
+        <button id="filter-mode-community" class="chip" type="button">按社区</button>
+        <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按类型着色与筛选</div>
       <div id="filter-panel-body" class="filter-body"></div>
@@ -1165,9 +1125,9 @@
       if (filterPanelTitle) filterPanelTitle.textContent = title;
       if (filterLabel) filterLabel.textContent = '筛选';
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
-      if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active-mode', colorMode === 'type');
-      if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active-mode', colorMode === 'community');
-      if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active-mode', colorMode === 'health');
+      if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
+      if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
+      if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
       if (!filterPanelBody) return;
       const options = getFilterOptions();
       if (!options.length) {
