@@ -9,7 +9,15 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── 图谱页专用样式（不影响其他页面）── */
-    body { overflow: hidden; }
+    body { 
+      overflow: hidden; 
+      font-family: var(--font-sans);
+    }
+
+    /* 显式声明字体以防部分浏览器组件继承失效 */
+    #graph-toolbar, .filter-panel, .physics-panel, #graph-tooltip, #graph-sidebar, #graph-legend, .chip, .mode-chip, .filter-mode-chip {
+      font-family: var(--font-sans);
+    }
 
     /* ── 工具栏 ── */
     #graph-toolbar {
@@ -34,6 +42,7 @@
       background: rgba(255,255,255,0.06);
       color: #e6edf3;
       font-size: .85rem;
+      font-family: inherit;
       width: 180px;
       outline: none;
       transition: border-color .18s, width .22s;
@@ -449,6 +458,7 @@
       background: none; border: none;
       color: rgba(255,255,255,0.3);
       cursor: pointer; font-size: .9rem; line-height: 1;
+      font-family: inherit;
       padding: 2px 4px; border-radius: 4px;
       transition: color .12s;
     }
@@ -532,6 +542,7 @@
       background: none; border: none;
       color: rgba(255,255,255,0.3);
       cursor: pointer; font-size: .9rem; line-height: 1;
+      font-family: inherit;
       padding: 2px 4px; border-radius: 4px;
       transition: color .12s;
     }
@@ -584,6 +595,7 @@
       display: flex; align-items: center; gap: 9px;
       padding: 7px 14px;
       font-size: .78rem; color: rgba(255,255,255,0.6);
+      font-family: inherit;
       cursor: pointer;
       transition: background .12s, color .12s;
       user-select: none;
@@ -609,6 +621,7 @@
       border-radius: 6px;
       color: rgba(255,255,255,0.4);
       font-size: .72rem;
+      font-family: inherit;
       padding: 4px 10px;
       cursor: pointer;
       transition: all .15s;
@@ -651,6 +664,7 @@
     .sb-close {
       background: none; border: none; color: rgba(255,255,255,0.35);
       font-size: 1rem; cursor: pointer; padding: 2px 4px; border-radius: 4px;
+      font-family: inherit;
       flex-shrink: 0; transition: color .12s;
     }
     .sb-close:hover { color: rgba(255,255,255,0.8); }
@@ -693,6 +707,7 @@
     .sb-open-link {
       display: inline-flex; align-items: center; gap: 5px;
       font-size: .78rem; color: rgba(0,212,255,0.8);
+      font-family: inherit;
       text-decoration: none;
       border: 1px solid rgba(0,212,255,0.25); border-radius: 7px;
       padding: 6px 14px; transition: all .15s; margin-top: 4px;
@@ -1150,7 +1165,7 @@
         filterPanelBody.innerHTML = '<div class="filter-empty">当前暂无可筛选项</div>';
       } else {
         filterPanelBody.innerHTML =
-          '<div class="filter-group-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
+          '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
           + options.map(option => {
               const checked = activeFilters.has(option.value) ? ' checked' : '';
               return '<label class="filter-item">'
