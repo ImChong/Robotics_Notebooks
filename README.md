@@ -101,4 +101,4 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 [技术栈项目执行清单 v16](docs/checklists/tech-stack-next-phase-checklist-v16.md) — 当前阶段目标（具身大模型深度化 / 灵巧操作补完 / 自动化事实发现）
 
-历史版本：[执行清单归档目录（v1–v13）](docs/checklists/)
+历史版本：[执行清单归档目录](docs/checklists/)
