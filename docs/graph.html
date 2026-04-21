@@ -1836,6 +1836,14 @@
 
     sbClose.addEventListener('click', closeSidebar);
 
+    // V21: 点击背景退出高亮聚焦模式
+    svg.on('click', (ev) => {
+      // 只有点击 SVG 本身（背景）才触发
+      if (ev.target === svg.node()) {
+        closeSidebar();
+      }
+    });
+
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
