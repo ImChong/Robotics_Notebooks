@@ -61,4 +61,7 @@
 ### ⚠️ Methods 页面缺少 Formalization/Concept 链接（0 个）
 - 无
 
-📊 Sources 覆盖率：121/121 (100%) wiki/entity 页有 ingest 来源
+### ⚠️ Methods 页面缺少主要路线区块（0 个）
+- 无
+
+📊 Sources 覆盖率：135/135 (100%) wiki/entity 页有 ingest 来源

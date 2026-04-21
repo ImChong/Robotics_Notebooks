@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-21",
   "node_count": 137,
-  "edge_count": 798,
+  "edge_count": 801,
   "community_count": 7,
   "top_hubs": [
     {
@@ -12,7 +12,7 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 60
+      "degree": 61
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 54
+      "degree": 55
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -55,23 +55,7 @@
       "degree": 25
     }
   ],
-  "orphan_nodes": [
-    {
-      "id": "wiki/entities/nvidia-omniverse.md",
-      "label": "NVIDIA Omniverse (具身仿真底座)",
-      "out_degree": 5
-    },
-    {
-      "id": "wiki/formalizations/se3-representation.md",
-      "label": "SE(3) Representation (位姿表示形式化)",
-      "out_degree": 3
-    },
-    {
-      "id": "wiki/methods/actuator-network.md",
-      "label": "Actuator Network (执行器网络)",
-      "out_degree": 3
-    }
-  ],
+  "orphan_nodes": [],
   "type_distribution": {
     "query": 35,
     "concept": 33,

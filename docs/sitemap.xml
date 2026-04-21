@@ -11,7 +11,9 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-contact-rich-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-control-barrier-function</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-curriculum-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-dexterous-kinematics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-domain-randomization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-embodied-data-cleaning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-floating-base-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-footstep-planning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-foundation-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -36,10 +38,12 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-whole-body-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-whole-body-coordination</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-action-chunking</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-actuator-network</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-behavior-cloning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-dagger</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-diffusion-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-imitation-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-in-hand-reorientation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-model-based-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-model-predictive-control</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-policy-optimization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -48,6 +52,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-trajectory-optimization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-visual-servoing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-vla</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-π0-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-balance-recovery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-bimanual-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-loco-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -56,6 +61,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-teleoperation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-ultra-survey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-clf-vs-cbf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-data-gloves-vs-vision-teleop</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-model-based-vs-model-free</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-mpc-vs-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-mujoco-vs-isaac-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -73,6 +79,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-cmdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-contact-complementarity</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-control-lyapunov-function</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-cross-modal-attention</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-ekf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-friction-cone</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-gae</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -81,11 +88,14 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-lyapunov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-mdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-pomdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-se3-representation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-vla-tokenization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-zmp-lip</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-clf-cbf-in-wbc</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-contact-rich-manipulation-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-control-architecture-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-demo-data-collection-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-dexterous-data-collection-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-domain-randomization-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-foundation-policy-for-humanoids</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-hardware-comparison</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -96,6 +106,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-locomotion-failure-modes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-locomotion-reward-design-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-mpc-solver-selection</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-multimodal-fusion-tricks</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-open-source-motion-control-projects</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-pinocchio-quick-start</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-ppo-vs-sac-for-robots</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
@@ -115,6 +126,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-wbc-implementation-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-wbc-tuning-guide</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-queries-when-to-use-wbc-vs-rl</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-allegro-hand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-anymal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-boston-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-crocoddyl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -123,6 +135,8 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-isaac-gym-isaac-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-legged-gym</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mujoco</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-nvidia-omniverse</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-oculust-quest-teleop</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-pinocchio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-unitree</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
