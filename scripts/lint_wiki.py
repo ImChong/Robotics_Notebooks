@@ -680,10 +680,95 @@ def lint() -> dict:
             "pos_claims": [r"协变量偏移|Covariate.*Shift|错误累积|Compounding.*Error"],
             "neg_claims": [r"BC.*无偏移|BC.*绝对鲁棒|数据越多越好"],
         },
-        "VLA 数据集规模": {
-            "terms": ["VLA|Vision.Language.Action", "Open.*X.Embodiment"],
-            "pos_claims": [r"数万.*演示|数十万|数据集|Open.*X.Embodiment|大规模"],
-            "neg_claims": [r"VLA.*十条.*示教|少量数据.*足够|VLA.*无需数据"],
+        "概率流 ODE 效率": {
+            "terms": ["概率流", "Probability.Flow"],
+            "pos_claims": [r"1-3.*步|加速|确定性|ODE.*求解器|实时性"],
+            "neg_claims": [r"概率流.*慢于.*扩散|概率流.*需要.*100.*步"],
+        },
+        "流匹配目标函数": {
+            "terms": ["流匹配|Flow.*Matching"],
+            "pos_claims": [r"回归.*速度场|velocity.*field|最小化.*速度.*差异|线性插值"],
+            "neg_claims": [r"流匹配.*最小化.*Q值|流匹配.*是.*分类任务"],
+        },
+        "潜空间想象优势": {
+            "terms": ["潜空间想象|Latent.*Imagination|Dreamer"],
+            "pos_claims": [r"无需.*真实.*交互|快.*100-1000.*倍|过滤.*背景.*噪声|脑海.*预演"],
+            "neg_claims": [r"想象.*必须.*真实采样|潜空间.*比.*物理仿真.*慢"],
+        },
+        "RSSM 构成": {
+            "terms": ["RSSM|Recurrent.*State.*Space.*Model"],
+            "pos_claims": [r"Transition|Observation|Reward|确定性.*随机.*状态"],
+            "neg_claims": [r"RSSM.*无随机项|RSSM.*仅包含.*卷积"],
+        },
+        "生成式世界模型定义": {
+            "terms": ["生成式世界模型|Generative.*World.*Models"],
+            "pos_claims": [r"以生成代替计算|海量视频数据|模拟.*运动规律|反事实推演"],
+            "neg_claims": [r"底层.*基于.*力学方程|必须.*解析.*计算.*接触力"],
+        },
+        "Video-as-Simulation 差异": {
+            "terms": ["Video.as.Simulation"],
+            "pos_claims": [r"算像素|Next-frame.*Prediction|无鸿沟|无需.*手工.*建模"],
+            "neg_claims": [r"必须.*建模.*几何体|Video.as.Simulation.*计算.*冲量"],
+        },
+        "电池压降风险": {
+            "terms": ["电池.*压降|Voltage.*Sag"],
+            "pos_claims": [r"瞬时.*掉电|主板.*重启|欠压|独立.*供电"],
+            "neg_claims": [r"压降.*无影响|电池.*电压.*恒定"],
+        },
+        "关节过热对策": {
+            "terms": ["关节.*过热|散热|Thermal"],
+            "pos_claims": [r"能效项|主动散热|导热硅脂|减少.*对抗.*出力"],
+            "neg_claims": [r"过热.*必须.*停机|散热.*无关.*控制"],
+        },
+        "野外感知失效": {
+            "terms": ["野外|草地|户外", "感知|LiDAR|相机"],
+            "pos_claims": [r"过曝|镜面反射|点云.*嘈杂|强度过滤"],
+            "neg_claims": [r"户外.*感知.*更准|感知.*无需.*增强"],
+        },
+        "地面硬度不匹配": {
+            "terms": ["地面硬度|草地|刚性地面"],
+            "pos_claims": [r"阻尼.*弹性|深陷泥潭|降低.*Kp|刚度随机化"],
+            "neg_claims": [r"草地.*等同.*硬地|Kp.*越高越好"],
+        },
+        "SE(3) 6D 表示优点": {
+            "terms": ["6D.*连续表示|6D.*Rep"],
+            "pos_claims": [r"姿态空间连续|适合.*回归|平滑.*梯度"],
+            "neg_claims": [r"6D.*表示.*不连续|不如.*欧拉角"],
+        },
+        "Oculus Quest 遥操作": {
+            "terms": ["Quest|VR.*遥操作"],
+            "pos_claims": [r"低成本|Inside-out.*Tracking|沉浸式|6D.*位姿"],
+            "neg_claims": [r"Quest.*极其昂贵|Quest.*不支持.*手部追踪"],
+        },
+        "Omniverse 核心底座": {
+            "terms": ["Omniverse|USD"],
+            "pos_claims": [r"实时协作|数字化孪生|OpenUSD|高保真.*渲染"],
+            "neg_claims": [r"Omniverse.*仅限游戏|Omniverse.*不支持.*物理"],
+        },
+        "生成式数据增强重点": {
+            "terms": ["生成式数据增强|Generative.*Data.*Augmentation"],
+            "pos_claims": [r"长尾合成|物体变幻|场景编辑|解决.*瓶颈"],
+            "neg_claims": [r"仅限.*裁剪翻转|增强.*无效"],
+        },
+        "ELBO 目标": {
+            "terms": ["ELBO|证据下界|变分"],
+            "pos_claims": [r"重建项|正则项|最小化.*KL散度|一致性"],
+            "neg_claims": [r"ELBO.*最大化.*误差|ELBO.*不含.*KL"],
+        },
+        "开源人形硬件方案": {
+            "terms": ["Berkeley.*Humanoid|Roboto.*Origin|ODRI"],
+            "pos_claims": [r"低成本|验证.*算法|QDD.*电机|12-14.*自由度"],
+            "neg_claims": [r"开源硬件.*昂贵|仅限.*工业.*应用"],
+        },
+        "WBC 奇异点保护": {
+            "terms": ["奇异点|Singularity"],
+            "pos_claims": [r"膝关节.*伸直|虚拟弹簧力|雅可比.*退化|力矩.*爆炸"],
+            "neg_claims": [r"奇异点.*无需保护|奇异点.*力矩.*最小"],
+        },
+        "具身数据清洗": {
+            "terms": ["数据清洗|Data.*Cleaning"],
+            "pos_claims": [r"时序对齐|剔除.*无效动作|修复.*重定向误差|动作分段"],
+            "neg_claims": [r"原始数据.*完美|无需清洗"],
         },
         "MuJoCo 选型理由": {
             "terms": ["MuJoCo|mjcf"],

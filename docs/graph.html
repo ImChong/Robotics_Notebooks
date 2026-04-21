@@ -1671,6 +1671,30 @@
     const sbClose      = document.getElementById('sb-close');
 
     function openSidebar(d) {
+      // V19: 高亮当前节点及 2-hop 邻居
+      const direct = new Set();
+      const secondary = new Set();
+      edges.forEach(e => {
+        const sId = typeof e.source === 'object' ? e.source.id : e.source;
+        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        if (sId === d.id) direct.add(tId);
+        if (tId === d.id) direct.add(sId);
+      });
+      edges.forEach(e => {
+        const sId = typeof e.source === 'object' ? e.source.id : e.source;
+        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        if (direct.has(sId) && tId !== d.id) secondary.add(tId);
+        if (direct.has(tId) && sId !== d.id) secondary.add(sId);
+      });
+
+      node.style('opacity', n => (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05));
+      link.style('opacity', e => {
+        const sId = typeof e.source === 'object' ? e.source.id : e.source;
+        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        const involved = (sId === d.id || tId === d.id);
+        return involved ? 0.8 : 0.02;
+      });
+
       const color = nodeColor(d);
       const info  = d._info;
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
@@ -1746,9 +1770,9 @@
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
     }
-
     function closeSidebar() {
       sidebar.classList.remove('open');
+      applyFilters(); // 恢复筛选/搜索状态下的透明度
       wrap.classList.remove('sidebar-open');
       simulation.force('center', d3.forceCenter(
         (wrap.clientWidth || W) / 2, H / 2

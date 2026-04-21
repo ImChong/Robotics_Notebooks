@@ -128,4 +128,5 @@ related:
 - [Teleoperation](../tasks/teleoperation.md) — 遥操作任务定义与系统设计
 - [Imitation Learning](../methods/imitation-learning.md) — 模仿学习方法全景
 - [Behavior Cloning](../methods/behavior-cloning.md) — BC 算法与局限
+- [Generative Data Augmentation](../methods/generative-data-augmentation.md) — 利用生成式 AI 扩充长尾数据
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂操作任务挑战

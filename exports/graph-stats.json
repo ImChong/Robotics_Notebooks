@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-21",
-  "node_count": 144,
-  "edge_count": 830,
-  "community_count": 8,
+  "node_count": 147,
+  "edge_count": 842,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 55
+      "degree": 56
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -58,9 +58,9 @@
   "orphan_nodes": [],
   "type_distribution": {
     "query": 37,
-    "concept": 34,
-    "formalization": 18,
-    "method": 17,
+    "concept": 35,
+    "formalization": 19,
+    "method": 18,
     "entity": 14,
     "comparison": 13,
     "task": 7,
@@ -69,20 +69,17 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 97,
-    "Manipulation 社区": 14,
-    "Tactile Sensing（触觉感知） 社区": 13,
+    "Locomotion 社区": 63,
+    "Whole-Body Control (WBC) 社区": 35,
+    "Manipulation 社区": 32,
     "Control Barrier Function（控制屏障函数） 社区": 6,
     "Sim2Real 真机部署清单 社区": 5,
-    "VLA（Vision-Language-Action） 社区": 5,
-    "Latent Imagination (潜空间想象) 社区": 3,
-    "Query：sim2real Domain Randomization 参数设计指南 社区": 1
+    "Generative World Models (生成式世界模型) 社区": 3,
+    "VLA 真机部署指南：延迟、异步与加速 社区": 3
   },
   "community_quality": {
-    "singleton_communities": [
-      "Query：sim2real Domain Randomization 参数设计指南 社区"
-    ],
-    "largest_community_ratio": 0.674,
-    "community_quality_warning": true
+    "singleton_communities": [],
+    "largest_community_ratio": 0.429,
+    "community_quality_warning": false
   }
 }
