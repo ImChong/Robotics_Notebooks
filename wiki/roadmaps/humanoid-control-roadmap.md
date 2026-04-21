@@ -61,4 +61,5 @@ updated: "2026-04-20"
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
+- [开源人形机器人硬件方案对比](../entities/open-source-humanoid-hardware.md) — 低成本入门硬件选型
 - **完整路线 → [[roadmap/route-a-motion-control]]**

@@ -1,13 +1,13 @@
 {
   "generated_at": "2026-04-21",
-  "node_count": 137,
-  "edge_count": 801,
-  "community_count": 7,
+  "node_count": 144,
+  "edge_count": 830,
+  "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 74
+      "degree": 75
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -57,31 +57,32 @@
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "query": 35,
-    "concept": 33,
-    "formalization": 17,
-    "method": 16,
+    "query": 37,
+    "concept": 34,
+    "formalization": 18,
+    "method": 17,
+    "entity": 14,
     "comparison": 13,
-    "entity": 13,
     "task": 7,
-    "overview": 1,
+    "overview": 2,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 58,
-    "Whole-Body Control (WBC) 社区": 38,
-    "Manipulation 社区": 28,
+    "Locomotion 社区": 97,
+    "Manipulation 社区": 14,
+    "Tactile Sensing（触觉感知） 社区": 13,
     "Control Barrier Function（控制屏障函数） 社区": 6,
-    "WBC vs RL: Whole-Body Control vs Reinforcement Learning 社区": 3,
-    "VLA 真机部署指南：延迟、异步与加速 社区": 3,
-    "Actuator Network (执行器网络) 社区": 1
+    "Sim2Real 真机部署清单 社区": 5,
+    "VLA（Vision-Language-Action） 社区": 5,
+    "Latent Imagination (潜空间想象) 社区": 3,
+    "Query：sim2real Domain Randomization 参数设计指南 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
-      "Actuator Network (执行器网络) 社区"
+      "Query：sim2real Domain Randomization 参数设计指南 社区"
     ],
-    "largest_community_ratio": 0.423,
-    "community_quality_warning": false
+    "largest_community_ratio": 0.674,
+    "community_quality_warning": true
   }
 }

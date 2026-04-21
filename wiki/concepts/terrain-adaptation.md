@@ -90,6 +90,7 @@ sources:
 
 - [Locomotion](../tasks/locomotion.md)
 - [Footstep Planning](./footstep-planning.md)
+- [野外机器人排障指南](../queries/field-robotics-troubleshooting.md) — 应对非结构化地形下的感知与平衡失效
 - [Privileged Training](./privileged-training.md)
 - [Sim2Real](./sim2real.md)
 - [Balance Recovery](../tasks/balance-recovery.md)

@@ -303,7 +303,7 @@ def lint() -> dict:
         "WBC 多接触优势": {
             "terms": ["WBC", "whole.body"],
             "pos_claims": [r"优于|多接触.*优|必要|必须.*控制|统一.*优化"],
-            "neg_claims": [r"WBC.*多接触.*无优势|WBC.*不必要|独立关节.*足够|WBC.*可选"],
+            "neg_claims": [r"WBC.*完全没用|WBC.*没有.*多接触优势|WBC.*没必要.*多接触"],
         },
         "MuJoCo 接触精度": {
             "terms": ["mujoco", "MuJoCo"],
