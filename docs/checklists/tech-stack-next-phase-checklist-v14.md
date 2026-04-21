@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v14
 
-最后更新：2026-04-20（V14 启动，基于 V13 全部交付）
+最后更新：2026-04-20（V14 启动 + P0 搜索回归修复完成 26/26）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v13.md`](tech-stack-next-phase-checklist-v13.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -48,14 +48,14 @@
 
 ### P0.1 · numpy 改为延迟导入
 
-- [ ] 在 `scripts/search_wiki.py` 中，将 `import numpy as np` 移出 module 顶部，改为在 `load_vector_resources()` 和 `encode_query_vector()` 函数内部延迟导入
-- [ ] 修改后运行 `python3 scripts/search_wiki.py PPO`，确认无 numpy 报错
-- [ ] 运行 `python3 scripts/eval_search_quality.py`，确认 BM25 模式 ≥ 80% 通过
+- [x] 在 `scripts/search_wiki.py` 中，将 `import numpy as np` 移出 module 顶部，改为在 `load_vector_resources()` 和 `encode_query_vector()` 函数内部延迟导入
+- [x] 修改后运行 `python3 scripts/search_wiki.py PPO`，确认无 numpy 报错
+- [x] 运行 `python3 scripts/eval_search_quality.py`，确认 BM25 模式 ≥ 80% 通过
 
 ### 完成标准
 
-- [ ] `python3 scripts/search_wiki.py PPO` 无任何 import error
-- [ ] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%（≥ 21/26）
+- [x] `python3 scripts/search_wiki.py PPO` 无任何 import error
+- [x] `python3 scripts/eval_search_quality.py` 通过率 ≥ 80%（≥ 21/26）— 实测 **26/26 (100%)**
 
 ---
 

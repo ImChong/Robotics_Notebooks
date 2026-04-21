@@ -365,3 +365,10 @@
 - P3：规划新增 4 个高价值 Query 页（domain-randomization / clf-cbf / vla-low-level / contact-rich manipulation）
 - P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
 - P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新
+
+## [2026-04-20] fix | v14-execution | P0 搜索回归修复：numpy 延迟导入
+
+- V14 P0 完成：`scripts/search_wiki.py` 移除 module 顶部 `import numpy as np`，改为在 `load_vector_resources` / `encode_query_vector` / `search` 内部使用 numpy 的分支做延迟导入
+- 修复前：`python3 scripts/search_wiki.py PPO` 直接 `ModuleNotFoundError: No module named 'numpy'`，回归测试 0/26
+- 修复后：`python3 scripts/eval_search_quality.py` 通过率 **26/26 (100%)**，BM25 路径不再依赖 numpy
+- 无新增依赖、无行为变更；向量搜索分支在 numpy 可用时保持原逻辑
