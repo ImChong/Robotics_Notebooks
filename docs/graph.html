@@ -1571,9 +1571,9 @@
           if (!hasFilter) return 1;
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return 0.03;
+          if (!s || !t) return 0.2; // 进一步提升背景线清晰度 (原 0.1)
           return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.03;
+                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
@@ -1737,12 +1737,18 @@
       });
 
       node.style('opacity', n => (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05));
-      link.style('opacity', e => {
-        const sId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tId = typeof e.target === 'object' ? e.target.id : e.target;
-        const involved = (sId === d.id || tId === d.id);
-        return involved ? 0.8 : 0.02;
-      });
+      link
+        .style('opacity', e => {
+          const sId = typeof e.source === 'object' ? e.source.id : e.source;
+          const tId = typeof e.target === 'object' ? e.target.id : e.target;
+          const involved = (sId === d.id || tId === d.id);
+          return involved ? 1.0 : 0.25; // 进一步提升背景线 (原 0.15) 和高亮线 (原 0.9)
+        })
+        .style('stroke-width', e => {
+          const sId = typeof e.source === 'object' ? e.source.id : e.source;
+          const tId = typeof e.target === 'object' ? e.target.id : e.target;
+          return (sId === d.id || tId === d.id) ? linkWidthBase * 1.5 : linkWidthBase;
+        });
 
       const color = nodeColor(d);
       const info  = d._info;
