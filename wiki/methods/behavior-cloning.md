@@ -108,6 +108,7 @@ $$
 ## 关联页面
 
 - [Imitation Learning](./imitation-learning.md)
+- [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — BC 在不同动作空间下的数学形式化定义
 - [DAgger](./dagger.md)
 - [Diffusion Policy](./diffusion-policy.md)
 - [Manipulation](../tasks/manipulation.md)

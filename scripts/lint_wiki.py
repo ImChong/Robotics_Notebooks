@@ -142,6 +142,7 @@ def lint() -> dict:
         "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
         "readme_badge": [],           # V11: README checklist 链接版本不一致
         "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
+        "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -513,6 +514,106 @@ def lint() -> dict:
             "pos_claims": [r"力控|阻抗控制|impedance.*control|force.*control|顺应性.*控制|compliance"],
             "neg_claims": [r"contact.rich.*纯位置控制|接触丰富.*位置控制.*足够|contact.*pure.*position.*control"],
         },
+        "Impedance Control 模型": {
+            "terms": ["impedance.*control|阻抗控制"],
+            "pos_claims": [r"质量.*弹簧.*阻尼|mass.*spring.*damper|M_d.*B_d.*K_d|虚拟.*物理系统"],
+            "neg_claims": [r"阻抗控制.*无阻尼|阻抗控制.*纯刚性|阻抗控制.*等同PID"],
+        },
+        "Impedance vs Admittance": {
+            "terms": ["impedance|阻抗", "admittance|导纳"],
+            "pos_claims": [r"阻抗.*位移.*力|导纳.*力.*位移|输入.*误差.*输出.*力矩"],
+            "neg_claims": [r"阻抗.*导纳.*相同|阻抗控制.*输入力|导纳控制.*输出力"],
+        },
+        "Impedance 柔顺性": {
+            "terms": ["impedance.*control|阻抗控制"],
+            "pos_claims": [r"主动柔顺|active.*compliance|接触力.*安全|退让"],
+            "neg_claims": [r"阻抗控制.*位置.*绝对|阻抗控制.*不具备柔顺|缺乏柔顺"],
+        },
+        "Impedance 阻尼调参": {
+            "terms": ["impedance.*control|阻抗控制", "阻尼|damper|B_d"],
+            "pos_claims": [r"临界阻尼|critical.*damping|防止.*震荡|往复振荡"],
+            "neg_claims": [r"阻尼.*越大越好|阻尼.*无需调整|阻尼.*导致.*震荡"],
+        },
+        "Trajectory Optimization 离线": {
+            "terms": ["trajectory.*optimization|轨迹优化"],
+            "pos_claims": [r"离线规划|offline|长时域|开环|非线性规划|NLP"],
+            "neg_claims": [r"轨迹优化.*必须在线|轨迹优化.*等于.*MPC|完全实时"],
+        },
+        "Direct Collocation 约束": {
+            "terms": ["direct.*collocation|直接配点"],
+            "pos_claims": [r"状态.*控制.*同时优化|动力学.*等式约束|隐式.*接触"],
+            "neg_claims": [r"只优化控制|只优化状态|无动力学约束"],
+        },
+        "ANYmal SEA": {
+            "terms": ["ANYmal|anymal"],
+            "pos_claims": [r"串联弹性执行器|SEA|力控执行器|碰撞缓冲"],
+            "neg_claims": [r"ANYmal.*纯刚性电机|ANYmal.*准直接驱动|ANYmal.*QDD"],
+        },
+        "ANYmal 鲁棒性": {
+            "terms": ["ANYmal|anymal"],
+            "pos_claims": [r"防水防尘|IP67|工业环境|极端.*地形|RMA|ANYmal.*C"],
+            "neg_claims": [r"ANYmal.*仅限室内|ANYmal.*实验室.*环境|ANYmal.*无感知"],
+        },
+        "WBC 权重分配": {
+            "terms": ["WBC|whole.body.control"],
+            "pos_claims": [r"躯干姿态.*高优先级|相对比例|支撑足.*硬约束|Orientation.*Support"],
+            "neg_claims": [r"WBC.*所有任务.*等权|躯干姿态.*低优先级|权重.*绝对值"],
+        },
+        "WBC 约束松弛": {
+            "terms": ["WBC|whole.body.control", "约束|constraint"],
+            "pos_claims": [r"松弛变量|slack.*variable|惩罚项|软约束"],
+            "neg_claims": [r"WBC.*必须硬约束|WBC.*不可松弛|松弛变量.*无用"],
+        },
+        "WBC 力矩正则化": {
+            "terms": ["WBC|whole.body.control", "正则|regularization"],
+            "pos_claims": [r"惩罚.*力矩|稳定.*数值|Hessian.*正定|阻尼项"],
+            "neg_claims": [r"WBC.*无需正则化|力矩正则化.*有害|雅可比.*永远满秩"],
+        },
+        "Boston Dynamics 控制": {
+            "terms": ["boston.*dynamics|波士顿动力|Atlas"],
+            "pos_claims": [r"基于优化|optimization.*based|WBC.*MPC|全身控制"],
+            "neg_claims": [r"纯.*强化学习|完全弃用.*控制|波士顿动力.*只用.*RL"],
+        },
+        "Boston Dynamics 硬件": {
+            "terms": ["boston.*dynamics|波士顿动力|Atlas"],
+            "pos_claims": [r"高功率密度|液压.*全电|定制电机"],
+            "neg_claims": [r"Atlas.*一直液压|全电版.*未发布|低成本电机"],
+        },
+        "Reward Shaping 平滑": {
+            "terms": ["reward.*shaping|奖励函数", "smoothness|平滑|抖动"],
+            "pos_claims": [r"惩罚.*功耗|惩罚.*加速度|action.*rate|防止.*振荡"],
+            "neg_claims": [r"平滑项.*不重要|只需.*正奖励|无需惩罚.*加速度"],
+        },
+        "Reward Shaping Air Time": {
+            "terms": ["air.*time|腾空时间"],
+            "pos_claims": [r"落地后.*结算|诱导.*迈步|产生.*节奏"],
+            "neg_claims": [r"Air Time.*随时给|Air Time.*导致.*站立|不需要.*落地结算"],
+        },
+        "Locomotion 原地踏步": {
+            "terms": ["locomotion.*failure|失败模式|原地踏步"],
+            "pos_claims": [r"前进奖励.*低|惩罚.*过重|curriculum|增加.*速度权重"],
+            "neg_claims": [r"原地踏步.*是好现象|无需.*调整奖励|惩罚.*越重越好"],
+        },
+        "Locomotion 策略崩溃": {
+            "terms": ["locomotion.*failure|策略崩溃|policy.*collapse"],
+            "pos_claims": [r"学习率.*过大|随机性.*太大|DR.*范围|减小.*学习率"],
+            "neg_claims": [r"策略崩溃.*学习率.*太小|DR.*范围.*必须.*最大|无需.*衰减"],
+        },
+        "Locomotion 双脚起跳": {
+            "terms": ["locomotion.*failure|失败模式|双脚起跳|Bunny.*Hop"],
+            "pos_claims": [r"Air Time.*滥用|缺少.*步态约束|限制.*最大值|对角步态"],
+            "neg_claims": [r"双脚起跳.*正常|增加.*Air Time|不需要.*约束"],
+        },
+        "ZMP 稳定性": {
+            "terms": ["ZMP|Zero.*Moment.*Point"],
+            "pos_claims": [r"支撑多边形|support.*polygon|落在.*内|不翻倒"],
+            "neg_claims": [r"ZMP.*可以.*外|支撑多边形.*无关|落在边缘.*安全"],
+        },
+        "CMDP 拉格朗日法": {
+            "terms": ["CMDP|Constrained.*MDP|Lagrangian|拉格朗日"],
+            "pos_claims": [r"转化为.*惩罚项|交替更新|权重|乘子"],
+            "neg_claims": [r"不使用.*乘子|拉格朗日.*无效|只.*CPO"],
+        },
     }
     all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():
@@ -704,6 +805,25 @@ def lint() -> dict:
                 f"发现 {len(orphan_nodes)} 个孤儿节点（无入链）：{orphan_nodes}"
             )
 
+    # V15: methods/ 页面必须包含指向 formalizations/ 或 concepts/ 的链接
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
+            continue
+        content = page.read_text(encoding="utf-8")
+        links = extract_internal_links(content, page)
+        has_required_link = False
+        for target in links:
+            if not target.is_relative_to(REPO_ROOT):
+                continue
+            target_parts = target.relative_to(REPO_ROOT).parts
+            if len(target_parts) >= 2 and target_parts[0] == "wiki" and target_parts[1] in ("formalizations", "concepts"):
+                has_required_link = True
+                break
+        if not has_required_link:
+            results["method_missing_link"].append(str(rel))
+
     return results
 
 def format_report(results: dict) -> str:
@@ -733,6 +853,7 @@ def format_report(results: dict) -> str:
         ("formalization_no_formula", "Formalization 页面缺少公式块",              "⚠️"),
         ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
         ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
+        ("method_missing_link","Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
     ]
 
     for key, label, icon in sections:

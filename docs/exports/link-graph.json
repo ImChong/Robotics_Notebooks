@@ -5,8 +5,8 @@
       "label": "CLF vs CBF：稳定性与安全性的对偶工具",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/comparisons/model-based-vs-model-free.md",
@@ -21,12 +21,20 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
       "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
+      "type": "comparison",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "label": "MuJoCo vs Isaac Sim (物理引擎选型)",
       "type": "comparison",
       "health_score": 3,
       "community": "community-0",
@@ -57,6 +65,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/comparisons/ros2-vs-lcm.md",
+      "label": "ROS 2 vs LCM (机器人中间件选型)",
+      "type": "comparison",
+      "health_score": 3,
+      "community": "community-6",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/comparisons/sim2real-approaches.md",
       "label": "Sim2Real 方法横向对比",
       "type": "comparison",
@@ -77,8 +93,8 @@
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -125,8 +141,8 @@
       "label": "Control Barrier Function（控制屏障函数）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/concepts/curriculum-learning.md",
@@ -165,8 +181,8 @@
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-3",
+      "community_label": "VLA（Vision-Language-Action） 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -253,8 +269,8 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-4",
+      "community_label": "Safety Filter（安全过滤器） 社区"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
@@ -287,6 +303,14 @@
       "health_score": 2,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/concepts/tactile-sensing.md",
+      "label": "Tactile Sensing（触觉感知）",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/terrain-adaptation.md",
@@ -333,8 +357,8 @@
       "label": "Boston Dynamics（波士顿动力）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-7",
+      "community_label": "Boston Dynamics（波士顿动力） 社区"
     },
     {
       "id": "wiki/entities/crocoddyl.md",
@@ -346,7 +370,7 @@
     },
     {
       "id": "wiki/entities/drake.md",
-      "label": "Drake",
+      "label": "Drake (机器人工具箱)",
       "type": "entity",
       "health_score": 3,
       "community": "community-1",
@@ -378,17 +402,17 @@
     },
     {
       "id": "wiki/entities/mujoco.md",
-      "label": "MuJoCo",
+      "label": "MuJoCo (物理引擎)",
       "type": "entity",
-      "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/entities/pinocchio.md",
-      "label": "Pinocchio",
+      "label": "Pinocchio (刚体动力学库)",
       "type": "entity",
-      "health_score": 2,
+      "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
     },
@@ -399,6 +423,14 @@
       "health_score": 2,
       "community": "community-0",
       "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/formalizations/behavior-cloning-loss.md",
+      "label": "Behavior Cloning Loss (行为克隆损失函数)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/formalizations/bellman-equation.md",
@@ -413,8 +445,8 @@
       "label": "Constrained MDP (CMDP)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-4",
+      "community_label": "Safety Filter（安全过滤器） 社区"
     },
     {
       "id": "wiki/formalizations/contact-complementarity.md",
@@ -429,8 +461,8 @@
       "label": "Control Lyapunov Function（控制李雅普诺夫函数）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/ekf.md",
@@ -469,16 +501,16 @@
       "label": "LQR / iLQR",
       "type": "formalization",
       "health_score": 2,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/lyapunov.md",
       "label": "Lyapunov 稳定性",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/formalizations/mdp.md",
@@ -525,16 +557,16 @@
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
       "label": "Diffusion Policy",
       "type": "method",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -581,8 +613,8 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-4",
+      "community_label": "Safety Filter（安全过滤器） 社区"
     },
     {
       "id": "wiki/methods/trajectory-optimization.md",
@@ -593,28 +625,36 @@
       "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
-      "id": "wiki/methods/vla.md",
-      "label": "VLA（Vision-Language-Action）",
+      "id": "wiki/methods/visual-servoing.md",
+      "label": "Visual Servoing（视觉伺服控制）",
       "type": "method",
       "health_score": 3,
       "community": "community-2",
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/methods/vla.md",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "VLA（Vision-Language-Action） 社区"
+    },
+    {
       "id": "wiki/overview/robot-learning-overview.md",
       "label": "Robot Learning Overview",
       "type": "overview",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/clf-cbf-in-wbc.md",
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "LQR / iLQR 社区"
+      "community": "community-5",
+      "community_label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     },
     {
       "id": "wiki/queries/contact-rich-manipulation-guide.md",
@@ -629,8 +669,8 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 2,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -645,24 +685,24 @@
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-5",
+      "community_label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     },
     {
       "id": "wiki/queries/foundation-policy-for-humanoids.md",
       "label": "人形机器人 Foundation Policy 适用边界分析",
       "type": "query",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-3",
+      "community_label": "VLA（Vision-Language-Action） 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
       "label": "主流人形机器人硬件对比",
       "type": "query",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/humanoid-hardware-selection.md",
@@ -745,6 +785,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/queries/real-time-control-middleware-guide.md",
+      "label": "实时运控中间件配置指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-6",
+      "community_label": "实时运控中间件配置指南 社区"
+    },
+    {
       "id": "wiki/queries/reward-design-guide.md",
       "label": "Reward Design 实战指南",
       "type": "query",
@@ -817,20 +865,28 @@
       "community_label": "Locomotion 社区"
     },
     {
-      "id": "wiki/queries/vla-deployment-guide.md",
-      "label": "Query：VLA 真机部署指南",
+      "id": "wiki/queries/tactile-feedback-in-rl.md",
+      "label": "在 RL 中利用触觉反馈提升操作鲁棒性",
       "type": "query",
       "health_score": 3,
       "community": "community-2",
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/queries/vla-deployment-guide.md",
+      "label": "Query：VLA 真机部署指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "VLA（Vision-Language-Action） 社区"
+    },
+    {
       "id": "wiki/queries/vla-with-low-level-controller.md",
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
       "type": "query",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
@@ -861,8 +917,8 @@
       "label": "LLM Wiki",
       "type": "reference",
       "health_score": 1,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-3",
+      "community_label": "VLA（Vision-Language-Action） 社区"
     },
     {
       "id": "wiki/roadmaps/humanoid-control-roadmap.md",
@@ -917,8 +973,8 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1015,6 +1071,18 @@
       "target": "wiki/queries/simulator-selection-guide.md"
     },
     {
+      "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "target": "wiki/entities/mujoco.md"
+    },
+    {
+      "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/comparisons/online-vs-offline-rl.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -1081,6 +1149,14 @@
     {
       "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/comparisons/online-vs-offline-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/comparisons/sim2real-approaches.md",
@@ -1775,6 +1851,22 @@
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
+      "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/methods/visual-servoing.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/formalizations/friction-cone.md"
+    },
+    {
       "source": "wiki/concepts/terrain-adaptation.md",
       "target": "wiki/concepts/footstep-planning.md"
     },
@@ -1932,23 +2024,15 @@
     },
     {
       "source": "wiki/entities/drake.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/entities/drake.md",
-      "target": "wiki/concepts/optimal-control.md"
-    },
-    {
-      "source": "wiki/entities/drake.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/entities/drake.md",
-      "target": "wiki/entities/crocoddyl.md"
+      "target": "wiki/entities/mujoco.md"
     },
     {
       "source": "wiki/entities/drake.md",
-      "target": "wiki/entities/mujoco.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
@@ -2032,7 +2116,7 @@
     },
     {
       "source": "wiki/entities/mujoco.md",
-      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+      "target": "wiki/comparisons/mujoco-vs-isaac-sim.md"
     },
     {
       "source": "wiki/entities/mujoco.md",
@@ -2040,43 +2124,7 @@
     },
     {
       "source": "wiki/entities/mujoco.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/entities/mujoco.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/entities/mujoco.md",
-      "target": "wiki/methods/trajectory-optimization.md"
-    },
-    {
-      "source": "wiki/entities/mujoco.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/entities/mujoco.md",
-      "target": "wiki/entities/pinocchio.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/methods/trajectory-optimization.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/entities/pinocchio.md",
@@ -2084,7 +2132,15 @@
     },
     {
       "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/entities/crocoddyl.md"
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
       "source": "wiki/entities/unitree.md",
@@ -2105,6 +2161,22 @@
     {
       "source": "wiki/entities/unitree.md",
       "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/formalizations/behavior-cloning-loss.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/formalizations/behavior-cloning-loss.md",
+      "target": "wiki/methods/dagger.md"
+    },
+    {
+      "source": "wiki/formalizations/behavior-cloning-loss.md",
+      "target": "wiki/methods/action-chunking.md"
+    },
+    {
+      "source": "wiki/formalizations/behavior-cloning-loss.md",
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/formalizations/bellman-equation.md",
@@ -2360,6 +2432,10 @@
     },
     {
       "source": "wiki/methods/action-chunking.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/action-chunking.md",
       "target": "wiki/methods/vla.md"
     },
     {
@@ -2380,6 +2456,10 @@
     },
     {
       "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
       "target": "wiki/methods/dagger.md"
     },
     {
@@ -2397,6 +2477,10 @@
     {
       "source": "wiki/methods/dagger.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/methods/dagger.md",
@@ -2645,6 +2729,22 @@
     {
       "source": "wiki/methods/trajectory-optimization.md",
       "target": "wiki/comparisons/trajectory-opt-vs-rl.md"
+    },
+    {
+      "source": "wiki/methods/visual-servoing.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/methods/visual-servoing.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/visual-servoing.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/methods/visual-servoing.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -3183,6 +3283,18 @@
       "target": "wiki/comparisons/ppo-vs-sac.md"
     },
     {
+      "source": "wiki/queries/real-time-control-middleware-guide.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/queries/real-time-control-middleware-guide.md",
+      "target": "wiki/queries/sim2real-deployment-checklist.md"
+    },
+    {
+      "source": "wiki/queries/real-time-control-middleware-guide.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/queries/reward-design-guide.md",
       "target": "wiki/concepts/reward-design.md"
     },
@@ -3373,6 +3485,22 @@
     {
       "source": "wiki/queries/simulator-selection-guide.md",
       "target": "wiki/comparisons/mujoco-vs-isaac-lab.md"
+    },
+    {
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
@@ -3752,6 +3880,10 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/queries/tactile-feedback-in-rl.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
       "target": "wiki/concepts/impedance-control.md"
     },
     {
@@ -3815,7 +3947,7 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 49,
+      "size": 55,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
@@ -3827,14 +3959,38 @@
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 20,
+      "size": 15,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-3",
-      "label": "LQR / iLQR 社区",
-      "size": 8,
-      "hub_id": "wiki/formalizations/lqr.md"
+      "label": "VLA（Vision-Language-Action） 社区",
+      "size": 5,
+      "hub_id": "wiki/methods/vla.md"
+    },
+    {
+      "id": "community-5",
+      "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区",
+      "size": 3,
+      "hub_id": "wiki/queries/vla-with-low-level-controller.md"
+    },
+    {
+      "id": "community-4",
+      "label": "Safety Filter（安全过滤器） 社区",
+      "size": 3,
+      "hub_id": "wiki/concepts/safety-filter.md"
+    },
+    {
+      "id": "community-6",
+      "label": "实时运控中间件配置指南 社区",
+      "size": 2,
+      "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "id": "community-7",
+      "label": "Boston Dynamics（波士顿动力） 社区",
+      "size": 1,
+      "hub_id": "wiki/entities/boston-dynamics.md"
     }
   ]
 }

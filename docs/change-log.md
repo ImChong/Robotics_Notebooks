@@ -14,6 +14,34 @@
 
 ---
 
+## 2026-04-21 — V15 技术栈项目执行清单完整交付
+
+### 完成内容
+
+**自动化与质量控制 (Engineering)**
+- `scripts/eval_search_quality.py` 新增 10 条针对 V14 新页面的测试用例，并将其集成到 `make lint` 流程中自动执行。
+- `scripts/lint_wiki.py` 中的 `CANONICAL_FACTS` 事实一致性库深度扩展至 71 条，重点覆盖了阻抗控制、轨迹优化家族及 WBC 调参经验。
+- 新增内链检查约束：强制要求 `methods/` 页面必须包含指向其对应 `formalizations/` 或 `concepts/` 的底层概念链接。
+
+**社区深度强化 (Quality)**
+- 彻底消灭了所有字数少于 200 字的“空壳/薄弱页面”，深度扩充了 Boston Dynamics、ANYmal、轨迹优化、Safe RL 及 CMDP 页面（各扩充至 ≥ 400 字）。
+- **建立操作 (Manipulation) 知识子链**：新增触觉感知 (Tactile Sensing)、行为克隆损失函数 (BC Loss) 及视觉伺服控制 (Visual Servoing)。
+
+**知识图谱软件栈生长 (Quantity)**
+- **软件栈实体层建立**：引入了三大底层软件库实体（Drake, Pinocchio, MuJoCo）。
+- 新增横向选型对比页：`MuJoCo vs Isaac Sim` 与 `ROS 2 vs LCM`。
+- 新增部署实践指南：实时运控中间件配置指南、RL 中的触觉反馈应用。
+
+**UI/UX 深度优化 (Frontend)**
+- **图谱搜索联想**：在知识图谱页面的搜索框中引入原生 `<datalist>` 自动联想支持，提升节点查询体验。
+- **Markdown 表格渲染增强**：重写了 `docs/main.js` 的渲染逻辑，现已支持标准 Markdown 表格的生成，并在移动端添加了横向滚动与专属样式。
+- **详情页体验闭环**：在 `detail.html` 的侧边栏导航中新增了“🕸️ 关联图谱节点”快捷入口，方便读者随时切回图谱宏观视角。
+
+### 项目阶段变化
+- 随着软件栈（Software Stack）实体的引入以及控制中间件的探讨，项目内容正式打通了“**理论公式 ↔ 算法实现 ↔ 物理引擎仿真 ↔ 真机部署中间件**”的完整上下游链路。
+
+---
+
 ## 2026-04-21 — V14 技术栈项目执行清单完整交付
 
 ### 完成内容

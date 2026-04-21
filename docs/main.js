@@ -334,6 +334,7 @@
     let listTag = '';
     let quoteLines = [];
     let codeLines = [];
+    let tableLines = [];
     let inCodeBlock = false;
 
     function flushParagraph() {
@@ -374,6 +375,22 @@
       codeLines = [];
     }
 
+    function flushTable() {
+      if (!tableLines.length) return;
+      const htmlRows = tableLines.map(function (row, i) {
+        const isHeader = i === 0;
+        const isSeparator = row.replace(/\|/g, '').replace(/-/g, '').replace(/:/g, '').trim().length === 0;
+        if (isSeparator) return '';
+        let cells = row.split('|').map(function (c) { return c.trim(); });
+        if (cells.length > 0 && cells[0] === '') cells.shift();
+        if (cells.length > 0 && cells[cells.length - 1] === '') cells.pop();
+        const tag = isHeader ? 'th' : 'td';
+        return '<tr>' + cells.map(function (c) { return '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(c, context)) + '</' + tag + '>'; }).join('') + '</tr>';
+      }).join('');
+      blocks.push('<div class="table-wrapper"><table>' + htmlRows + '</table></div>');
+      tableLines = [];
+    }
+
     lines.forEach(function (line) {
       const trimmed = line.trim();
 
@@ -385,6 +402,7 @@
           flushParagraph();
           flushList();
           flushQuote();
+          flushTable();
           inCodeBlock = true;
         }
         return;
@@ -394,6 +412,16 @@
         codeLines.push(line);
         return;
       }
+
+      if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        tableLines.push(trimmed);
+        return;
+      }
+
+      if (tableLines.length) flushTable();
 
       if (!trimmed) {
         flushParagraph();
@@ -452,6 +480,7 @@
     flushParagraph();
     flushList();
     flushQuote();
+    flushTable();
 
     return blocks.join('');
   }
@@ -605,6 +634,11 @@
 
     if (emptyState) emptyState.hidden = true;
     document.title = (detailPage.title || detailId) + ' | Robotics Notebooks';
+
+    const graphLink = document.getElementById('detailGraphLink');
+    if (graphLink) {
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(detailPage.id || detailId);
+    }
     var ogTitle = document.getElementById('ogTitleMeta');
     var ogDesc = document.getElementById('ogDescMeta');
     var pageDesc = detailPage.summary || '当前页面暂无摘要，可先通过 tags / related / source links 继续导航。';

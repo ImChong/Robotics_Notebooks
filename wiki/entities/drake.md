@@ -1,140 +1,43 @@
 ---
-title: Drake（机器人仿真与控制工具链）
 type: entity
+tags: [software, simulation, optimization, trajectory-optimization, c++]
 status: complete
-created: 2026-04-14
-updated: 2026-04-14
-summary: MIT 开发的机器人动力学仿真、优化与控制框架，以严格的数学基础和符号计算著称，常用于轨迹优化、MPC 和接触力学研究。
+updated: 2026-04-21
+related:
+  - ../methods/trajectory-optimization.md
+  - ../concepts/whole-body-control.md
+  - ../tasks/locomotion.md
+  - ./mujoco.md
 sources:
-  - ../../sources/papers/optimal_control.md
-  - ../../sources/papers/robot_kinematics_tools.md
+  - ../../sources/papers/simulation.md
+summary: "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器人工具箱，以其在轨迹优化（直接配点法）和严谨动力学建模方面的统治力而闻名。"
 ---
 
-# Drake
+# Drake (机器人工具箱)
 
-## 是什么
+**Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的物理引擎，而是一个包含了动力学计算、系统仿真、控制设计、尤其是**轨迹优化（Trajectory Optimization）**的庞大 C++ 工具箱。
 
-Drake 是由 MIT Robotics (Russ Tedrake 团队) 开发的开源机器人工程平台，提供：
-- **多体动力学仿真**（刚体 + 接触）
-- **轨迹优化工具**（SNOPT, IPOPT, OSQP 后端）
-- **系统级控制框架**（diagram/system 层级）
-- **符号自动微分**（与 MathematicalProgram 集成）
+## 核心特性
 
-GitHub: [RobotLocomotion/drake](https://github.com/RobotLocomotion/drake)
+1. **为优化而生 (Optimization-first)**：
+   Drake 最为学界推崇的功能是它的非线性规划（NLP）构建能力。它提供了极其优雅的 C++（和 Python）API 来将动力学方程自动转换为优化约束。它是执行**直接配点法 (Direct Collocation)** 和**接触隐式优化 (Contact-Implicit Optimization)** 的首选框架。
+2. **严谨的多体动力学**：
+   相比于许多为了游戏或渲染而生的引擎，Drake 的多体动力学建模具有极高的学术严谨性，严格区分广义坐标、速度和加速度，非常适合推导解析雅可比和海森矩阵。
+3. **系统架构 (Systems Framework)**：
+   它受到 Simulink 的启发，提供了一套积木式的 System API。你可以将控制器、传感器、环境动力学封装为一个个独立的 System 模块，连线闭环后再统一进行仿真或优化。
 
----
+## 适用场景
 
-## 核心模块
-
-### 1. MultibodyPlant
-Drake 的动力学核心：
-
-```python
-from pydrake.multibody.plant import MultibodyPlant
-plant = MultibodyPlant(time_step=0.001)
-parser = Parser(plant)
-parser.AddModelFromFile("robot.urdf")
-plant.Finalize()
-```
-
-- 支持 URDF / SDF / SDFormat
-- 刚体接触：HydroElastic Contact（连续接触模型），更物理真实
-- 可输出质量矩阵 M(q)、科氏矩阵 C(q,v)、重力 g(q)
-
-### 2. MathematicalProgram（优化）
-统一的数学规划接口，支持：
-- LP / QP / SOCP / SDP / NLP
-- 后端：OSQP, SNOPT, IPOPT, Gurobi, MOSEK
-
-```python
-prog = MathematicalProgram()
-x = prog.NewContinuousVariables(4, "x")
-prog.AddQuadraticCost(x.dot(Q).dot(x))
-prog.AddLinearConstraint(A @ x <= b)
-result = Solve(prog)
-```
-
-### 3. 轨迹优化（DirectCollocation / DIRCOL）
-全身轨迹优化的主要工具：
-
-```python
-dirtran = DirectTranscription(plant, context, num_time_samples=21)
-dirtran.AddRunningCost(u.dot(u))
-dirtran.AddFinalCost(...)
-result = Solve(dirtran.prog())
-```
-
-### 4. LCM 通信
-Drake 使用 LCM（Lightweight Communications and Marshalling）作为进程间通信协议，配合 `drake-ros` 可接入 ROS2。
-
----
-
-## Drake vs 其他仿真器
-
-| 特性 | Drake | MuJoCo | Isaac Sim | Gazebo |
-|------|-------|--------|-----------|--------|
-| **接触模型** | HydroElastic（更精确） | 柔性接触 | GPU 刚性接触 | ODE/Bullet |
-| **优化集成** | 内置，一流 | 需外部 | 无 | 无 |
-| **并行仿真** | 不支持 GPU 并行 | 支持（有限） | 支持，万级 | 不支持 |
-| **数学严格性** | 极高（符号微分） | 中 | 低 | 低 |
-| **RL 训练速度** | 慢（非 GPU） | 中 | 极快 | 慢 |
-| **轨迹优化** | 极强 | 弱 | 无 | 无 |
-| **适用场景** | 轨迹优化 / MPC / 研究 | RL 训练 / 学术 | 大规模并行 RL | ROS 集成 |
-
----
-
-## 典型使用场景
-
-### 1. 轨迹优化 + WBC
-- 用 DirectCollocation 优化 humanoid 的跳跃/上楼轨迹
-- 生成参考轨迹给 WBC 执行
-
-### 2. MPC 控制器设计
-- MultibodyPlant 提供精确动力学，作为 MPC 的预测模型
-- 配合 OSQP 实时求解
-
-### 3. 系统辨识（SysID）
-- Drake 的符号动力学可用于参数辨识（关节摩擦、质量）
-- 生成辨识实验的最优激励轨迹
-
-### 4. 教学 / 研究
-- MIT 6.832（Underactuated Robotics）课程的官方工具
-- Russ Tedrake 的《Underactuated Robotics》教材配套
-
----
-
-## 安装与快速开始
-
-```bash
-pip install drake
-```
-
-或使用 Docker：
-```bash
-docker pull robotlocomotion/drake:latest
-```
-
-与 Python 接口（pydrake）：
-```python
-import pydrake
-from pydrake.all import *
-```
-
----
-
-## 参考来源
-
-- Tedrake et al., *Drake: Model-Based Design and Verification for Robotics* (2019) — Drake 系统论文
-- Tedrake, *Underactuated Robotics* (MIT 6.832 课程教材) — 最佳学习资源
-- Mastalli et al., *Crocoddyl* (2020) — 类似工具，对比参考
-
----
+- 双足/四足机器人翻跟头、跑酷等极限动作的离线轨迹优化。
+- 机械臂运动规划与闭环控制算法原型的开发。
+- 对物理接触精度和优化可导性有极高要求的学术研究。
 
 ## 关联页面
+- [Trajectory Optimization](../methods/trajectory-optimization.md)
+- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
+- [MuJoCo 物理引擎](./mujoco.md)
+- [Locomotion](../tasks/locomotion.md)
 
-- [Trajectory Optimization](../methods/trajectory-optimization.md) — Drake 的核心应用场景
-- [Model Predictive Control (MPC)](../methods/model-predictive-control.md) — Drake 常用于 MPC 的预测模型和求解器
-- [Optimal Control (OCP)](../concepts/optimal-control.md) — Drake 实现的核心理论基础
-- [Whole-Body Control](../concepts/whole-body-control.md) — Drake 生成的轨迹供 WBC 追踪
-- [Crocoddyl](./crocoddyl.md) — 功能类似的另一个轨迹优化框架（更偏 DDP/iLQR）
-- [MuJoCo](./mujoco.md) — 互补工具，Drake 用于优化，MuJoCo 用于 RL 训练
+## 参考来源
+- Drake 官方文档 (drake.mit.edu).
+- Tedrake, R. *Underactuated Robotics*.

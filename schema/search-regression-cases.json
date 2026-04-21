@@ -180,5 +180,82 @@
     "must_include": ["wiki/methods/vla.md"],
     "expected_top_k": 5,
     "note": "V13 P2 加深页面：VLA 延迟与异步执行"
+  },
+  {
+    "query": "CMDP 约束代价阈值 安全",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/cmdp.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 CMDP 形式化页必须命中"
+  },
+  {
+    "query": "ZMP LIP 线性倒立摆 捕获点",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/zmp-lip.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 ZMP LIP 形式化页必须命中"
+  },
+  {
+    "query": "摩擦锥 Coulomb friction 线性化 四棱锥",
+    "mode": "bm25",
+    "must_include": ["wiki/formalizations/friction-cone.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增摩擦锥形式化页必须命中"
+  },
+  {
+    "query": "Safe RL 安全强化学习 Lagrangian",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/safe-rl.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 Safe RL 页面必须命中"
+  },
+  {
+    "query": "轨迹优化 trajectory optimization iLQR",
+    "mode": "bm25",
+    "must_include": ["wiki/methods/trajectory-optimization.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增轨迹优化页必须命中"
+  },
+  {
+    "query": "ANYmal 四足机器人 ETH SEA",
+    "mode": "bm25",
+    "must_include": ["wiki/entities/anymal.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 ANYmal 实体页必须命中"
+  },
+  {
+    "query": "Boston Dynamics 波士顿动力 Atlas",
+    "mode": "bm25",
+    "must_include": ["wiki/entities/boston-dynamics.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 Boston Dynamics 实体页必须命中"
+  },
+  {
+    "query": "Locomotion RL 奖励函数 feet air time",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/reward-shaping-guide.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增奖励函数设计指南必须命中"
+  },
+  {
+    "query": "RL 训练 原地踏步 关节抖动",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/locomotion-failure-modes.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增训练失败模式分析必须命中"
+  },
+  {
+    "query": "WBC 调参 热启动 松弛变量",
+    "mode": "bm25",
+    "must_include": ["wiki/queries/wbc-tuning-guide.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增 WBC 调参指南必须命中"
+  },
+  {
+    "query": "轨迹优化 RL 对比 Trajectory Optimization",
+    "mode": "bm25",
+    "must_include": ["wiki/comparisons/trajectory-opt-vs-rl.md"],
+    "expected_top_k": 5,
+    "note": "V14 新增轨迹优化与 RL 对比页必须命中"
   }
 ]

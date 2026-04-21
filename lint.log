@@ -1,0 +1,111 @@
+python3 scripts/eval_search_quality.py
+============================================================
+搜索质量回归评估
+============================================================
+✅ [bm25] "Lyapunov stability" — 稳定性基础页面必须命中
+✅ [bm25] "稳定性 控制" — 中文稳定性查询
+✅ [bm25] "DAgger 行为克隆" — DAgger 关联到模仿学习页
+✅ [bm25] "behavior cloning compounding error" — BC 累积误差 → behavior-cloning 专页
+✅ [bm25] "VLA foundation policy manipulation" — VLA 专页必须命中
+✅ [bm25] "sim2real 域随机化" — sim2real 核心页必须命中
+✅ [bm25] "地形适应 terrain" — 地形适应概念页
+✅ [bm25] "接触力 摩擦锥" — 接触动力学关键词
+✅ [bm25] "WBC 全身控制 QP" — WBC 核心页必须前三
+✅ [bm25] "MPC 模型预测控制" — MPC 核心页必须前三
+✅ [bm25] "RL IL 模仿学习 对比" — RL vs IL 对比页
+❌ [bm25] "PPO policy gradient 强化学习" — RL 核心方法页必须命中
+   必须命中：['wiki/methods/reinforcement-learning.md']
+   实际前5：['wiki-methods-safe-rl', 'wiki-methods-model-based-rl', 'wiki-comparisons-rl-vs-il', 'wiki-concepts-curriculum-learning', 'wiki-comparisons-trajectory-opt-vs-rl']
+✅ [bm25] "CBF 安全集 barrier" — V11 新增 CBF 页面必须命中
+✅ [bm25] "CLF Lyapunov 衰减 稳定性" — V11 新增 CLF 形式化页面必须命中
+✅ [bm25] "双臂操作 bimanual 闭链" — V11 新增双臂操作任务页
+✅ [bm25] "真机部署 sim2real 调试" — V11 新增部署检查清单 Query 页
+✅ [bm25] "humanoid foundation policy VLA" — V11 新增人形基础策略 Query 页
+✅ [bm25] "特权训练 teacher student" — V11 新增特权训练概念页
+✅ [bm25] "domain randomization 参数分布 sim2real" — V13 P3 新增 domain randomization 实践指南 Query 页
+✅ [bm25] "CLF CBF 联合使用 安全稳定 WBC" — V13 P3 新增 CLF+CBF 联合使用 Query 页
+✅ [bm25] "VLA 低级控制器 MPC WBC 融合架构" — V13 P3 新增 VLA 与低级控制器融合 Query 页
+✅ [bm25] "接触丰富 操作 装配 拧螺丝 实践" — V13 P3 新增 contact-rich manipulation 实践指南 Query 页
+✅ [bm25] "传感器融合 IMU 状态估计 卡尔曼" — V13 P2 加深页面：传感器融合
+✅ [bm25] "behavior cloning covariate shift 分布偏移" — V13 P2 加深页面：行为克隆 covariate shift
+✅ [bm25] "contact rich manipulation 顺应控制 接触力" — V13 P2 加深页面：接触丰富操作概念
+✅ [bm25] "VLA 推理延迟 action chunk 异步执行" — V13 P2 加深页面：VLA 延迟与异步执行
+✅ [bm25] "CMDP 约束代价阈值 安全" — V14 新增 CMDP 形式化页必须命中
+✅ [bm25] "ZMP LIP 线性倒立摆 捕获点" — V14 新增 ZMP LIP 形式化页必须命中
+✅ [bm25] "摩擦锥 Coulomb friction 线性化 四棱锥" — V14 新增摩擦锥形式化页必须命中
+✅ [bm25] "Safe RL 安全强化学习 Lagrangian" — V14 新增 Safe RL 页面必须命中
+✅ [bm25] "轨迹优化 trajectory optimization iLQR" — V14 新增轨迹优化页必须命中
+✅ [bm25] "ANYmal 四足机器人 ETH SEA" — V14 新增 ANYmal 实体页必须命中
+✅ [bm25] "Boston Dynamics 波士顿动力 Atlas" — V14 新增 Boston Dynamics 实体页必须命中
+✅ [bm25] "Locomotion RL 奖励函数 feet air time" — V14 新增奖励函数设计指南必须命中
+✅ [bm25] "RL 训练 原地踏步 关节抖动" — V14 新增训练失败模式分析必须命中
+✅ [bm25] "WBC 调参 热启动 松弛变量" — V14 新增 WBC 调参指南必须命中
+✅ [bm25] "轨迹优化 RL 对比 Trajectory Optimization" — V14 新增轨迹优化与 RL 对比页必须命中
+============================================================
+
+通过率：36/37 (97%)
+✅ 通过率 ≥ 80%，回归测试通过。
+python3 scripts/lint_wiki.py
+正在扫描 wiki/ 目录...
+## [2026-04-21] lint | health-check | 自动化 wiki 健康检查
+
+共发现 **4** 个问题：
+
+### ⚠️ 孤儿页（无入链）（0 个）
+- 无
+
+### ⚠️ 缺少关联页面区块（0 个）
+- 无
+
+### ⚠️ 缺少参考来源区块（0 个）
+- 无
+
+### ❌ 断链（内链目标不存在）（0 个）
+- 无
+
+### ❌ 引用了不存在的 sources/ 文件（0 个）
+- 无
+
+### ❌ Sources 孤儿（sources/papers 死链）（0 个）
+- 无
+
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
+
+### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
+- 无
+
+### ⚠️ 潜在矛盾（跨页面相反定性描述）（1 个）
+- 「Impedance 柔顺性」正面描述(impedance-control) vs 负面描述(impedance-control)
+
+### ⚠️ 空壳页面（< 200 字）（0 个）
+- 无
+
+### 💡 频繁提及但缺少 wiki 页面的概念（0 个）
+- 无
+
+### ⚠️ Frontmatter 缺少 type 字段（0 个）
+- 无
+
+### ⚠️ log.md 活跃度警告（0 个）
+- 无
+
+### ⚠️ 缺少摘要字段（summary/description）（0 个）
+- 无
+
+### ⚠️ Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）（0 个）
+- 无
+
+### ⚠️ Formalization 页面缺少公式块（0 个）
+- 无
+
+### ⚠️ README checklist 链接版本不一致（0 个）
+- 无
+
+### ⚠️ 图谱孤儿节点预警（graph-stats.json）（0 个）
+- 无
+
+📊 Sources 覆盖率：114/114 (100%) wiki/entity 页有 ingest 来源
+
+⚠️  共发现 4 个问题，请参考上方报告处理。
+make: *** [Makefile:5: lint] Error 1

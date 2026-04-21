@@ -733,7 +733,8 @@
 
   <!-- ── 工具栏 ── -->
   <div id="graph-toolbar">
-    <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" />
+    <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" list="graph-search-list" />
+    <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按类型筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
@@ -1020,6 +1021,12 @@
       _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+
+    /* ── 初始化搜索自动联想 ── */
+    const searchList = document.getElementById('graph-search-list');
+    if (searchList) {
+      searchList.innerHTML = nodes.map(n => '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>').join('');
+    }
 
     /* ── SVG 尺寸 ── */
     const wrap = document.getElementById('graph-wrap');

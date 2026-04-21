@@ -1,6 +1,7 @@
 .PHONY: lint catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search
 
 lint:
+	python3 scripts/eval_search_quality.py
 	python3 scripts/lint_wiki.py
 
 catalog:
