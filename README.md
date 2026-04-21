@@ -99,6 +99,6 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 ## 执行清单
 
-[技术栈项目执行清单 v14](docs/checklists/tech-stack-next-phase-checklist-v14.md) — 当前阶段目标（搜索回归修复 / 图谱 ≥116 节点 / CANONICAL_FACTS 60 条 / Lint 20 项）
+[技术栈项目执行清单 v15](docs/checklists/tech-stack-next-phase-checklist-v15.md) — 当前阶段目标（强化操作社区 / 补全软件栈实体 / 搜索质量基准扩展）
 
 历史版本：[执行清单归档目录（v1–v13）](docs/checklists/)
