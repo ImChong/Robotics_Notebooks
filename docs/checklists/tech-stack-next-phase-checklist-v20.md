@@ -30,12 +30,12 @@
 
 ## P1: 具身 Scaling Law 与数据引擎专题 (Quality)
 
-- [ ] **建立数据规模化知识链 (+3)**：
-    - [ ] `wiki/concepts/embodied-scaling-laws.md` (具身规模法则：数据量、模型参数与泛化能力的幂律关系)。
-    - [ ] `wiki/methods/auto-labeling-pipelines.md` (自动化标注流水线：利用 VLM 进行轨迹描述与成功率判定)。
-    - [ ] `wiki/formalizations/foundation-policy-alignment.md` (基础策略对齐：从人类演示到大规模混合数据的特征空间映射)。
-- [ ] **深化多模态 Transformer 结构**：
-    - [ ] `wiki/methods/unified-multimodal-tokens.md` (统一多模态 Token：视、语、控在同一个感知器中的量化与位置编码技巧)。
+- [x] **建立数据规模化知识链 (+3)**：
+    - [x] `wiki/concepts/embodied-scaling-laws.md` (具身规模法则：数据量、模型参数与泛化能力的幂律关系)。
+    - [x] `wiki/methods/auto-labeling-pipelines.md` (自动化标注流水线：利用 VLM 进行轨迹描述与成功率判定)。
+    - [x] `wiki/formalizations/foundation-policy-alignment.md` (基础策略对齐：从人类演示到大规模混合数据的特征空间映射)。
+- [x] **深化多模态 Transformer 结构**：
+    - [x] `wiki/methods/unified-multimodal-tokens.md` (统一多模态 Token：视、语、控在同一个感知器中的量化与位置编码技巧)。
 
 ## P2: 硬件控制与工业中间件深化 (Quantity)
 
