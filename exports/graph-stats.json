@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-21",
-  "node_count": 123,
-  "edge_count": 739,
+  "node_count": 131,
+  "edge_count": 776,
   "community_count": 8,
   "top_hubs": [
     {
@@ -27,7 +27,7 @@
     {
       "id": "wiki/tasks/manipulation.md",
       "label": "Manipulation",
-      "degree": 36
+      "degree": 41
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -57,33 +57,33 @@
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "query": 33,
-    "concept": 31,
-    "formalization": 14,
-    "method": 13,
+    "query": 35,
+    "concept": 32,
+    "formalization": 16,
+    "method": 15,
     "comparison": 12,
-    "entity": 10,
+    "entity": 11,
     "task": 7,
     "overview": 1,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 55,
-    "Whole-Body Control (WBC) 社区": 39,
+    "Locomotion 社区": 49,
+    "Whole-Body Control (WBC) 社区": 36,
     "Manipulation 社区": 15,
-    "VLA（Vision-Language-Action） 社区": 5,
-    "Safety Filter（安全过滤器） 社区": 3,
-    "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区": 3,
+    "Robot Learning Overview 社区": 13,
+    "Tactile Sensing（触觉感知） 社区": 9,
+    "VLA（Vision-Language-Action） 社区": 6,
     "实时运控中间件配置指南 社区": 2,
-    "Boston Dynamics（波士顿动力） 社区": 1
+    "π₀ (Pi-zero) 策略模型 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
       "实时运控中间件配置指南 社区",
-      "Boston Dynamics（波士顿动力） 社区"
+      "π₀ (Pi-zero) 策略模型 社区"
     ],
-    "largest_community_ratio": 0.447,
+    "largest_community_ratio": 0.374,
     "community_quality_warning": false
   }
 }

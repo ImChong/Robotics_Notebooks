@@ -2,13 +2,13 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-21 (V16 启动：图谱 123 节点 739 边) -->
+<!-- Last updated: 2026-04-21 (V17 启动：图谱 131 节点 776 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-123节点_739边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v16.md)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-131节点_776边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v17.md)
 
 ---
 

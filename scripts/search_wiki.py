@@ -99,6 +99,11 @@ def compute_score(
 
     if page_type == "query":
         score *= 0.7
+    
+    # V16: 提权 comparison 类型页面，鼓励用户查看对比总结
+    if page_type == "comparison":
+        score *= 1.3
+        
     return score
 
 

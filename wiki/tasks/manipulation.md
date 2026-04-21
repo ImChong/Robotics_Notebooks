@@ -69,7 +69,13 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [DAgger](../methods/dagger.md)
 - [VLA](../methods/vla.md)
+- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — 操作模型中常见的动作表示
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
+- [In-hand Reorientation (手内重定向)](../methods/in-hand-reorientation.md) — 极致的灵巧操作
+
+## 关联实体
+
+- [Allegro Hand](../entities/allegro-hand.md) — 主流灵巧操作研究硬件
 
 ## 关联任务
 

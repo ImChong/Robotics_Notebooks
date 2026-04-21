@@ -22,31 +22,31 @@
 
 ## P0: 自动化与工具链进化 (Engineering)
 
-- [ ] **语义搜索排序算法优化**：
-    - [ ] `scripts/search_wiki.py` 支持按 **Tag 权重** 提权（例如查询中含“对比”时，`comparison` 类型页面排名显著提升）。
+- [x] **语义搜索排序算法优化**：
+    - [x] `scripts/search_wiki.py` 支持按 **Tag 权重** 提权（例如查询中含“对比”时，`comparison` 类型页面排名显著提升）。
 - [ ] **自动化事实推荐 (Auto-Lint Expansion)**：
     - [ ] 编写一个实验性脚本 `scripts/discover_facts.py`，通过扫描 wiki 页面中的“一句话定义”或“核心假设”区块，自动提取潜在的新 `CANONICAL_FACTS` 条目供审核。
-- [ ] **Lint 规则补全**：
-    - [ ] `scripts/lint_wiki.py` 新增检测：`comparison` 页面必须包含 `<table>` 渲染块（V15 已支持表格渲染，需强制约束）。
+- [x] **Lint 规则补全**：
+    - [x] `scripts/lint_wiki.py` 新增检测：`comparison` 页面必须包含 `<table>` 渲染块（V15 已支持表格渲染，需强制约束）。
 
 ## P1: 具身大模型 (VLA) 深度化 (Quality)
 
-- [ ] **新增 VLA 形式化数学定义 (+2)**：
-    - [ ] `wiki/formalizations/vla-tokenization.md` (动作分词与量化：从连续空间到离散 Token 的映射)。
-    - [ ] `wiki/formalizations/cross-modal-attention.md` (具身模型中的视-语-控交叉注意力机制)。
-- [ ] **扩充 Foundation Policy 核心页**：
-    - [ ] `wiki/methods/vla.md` (扩充至 600 字以上，涵盖 Open X-Embodiment 数据集的影响)。
-    - [ ] `wiki/methods/π0-policy.md` (DeepMind 最新 π₀ 策略的底层原理剖析)。
+- [x] **新增 VLA 形式化数学定义 (+2)**：
+    - [x] `wiki/formalizations/vla-tokenization.md` (动作分词与量化：从连续空间到离散 Token 的映射)。
+    - [x] `wiki/formalizations/cross-modal-attention.md` (具身模型中的视-语-控交叉注意力机制)。
+- [x] **扩充 Foundation Policy 核心页**：
+    - [x] `wiki/methods/vla.md` (扩充至 600 字以上，涵盖 Open X-Embodiment 数据集的影响)。
+    - [x] `wiki/methods/π0-policy.md` (DeepMind 最新 π₀ 策略的底层原理剖析)。
 
 ## P2: 灵巧操作 (Dexterity) 社区补完 (Quantity)
 
-- [ ] **建立灵巧手知识链 (Dexterous Manipulation, +3)**:
-    - [ ] `wiki/entities/allegro-hand.md` (科研级灵巧手标杆)。
-    - [ ] `wiki/concepts/dexterous-kinematics.md` (灵巧手运动学：多指闭链约束与工作空间)。
-    - [ ] `wiki/methods/in-hand-reorientation.md` (手内重定向：物体在掌心的灵巧翻转算法)。
-- [ ] **新增实践指南 (Query, +2)**:
-    - [ ] `wiki/queries/dexterous-data-collection-guide.md` (如何使用 Shadow Hand 或灵巧手遥控采集高质量数据)。
-    - [ ] `wiki/queries/multimodal-fusion-tricks.md` (视、触、本体感受多模态融合的权重分配技巧)。
+- [x] **建立灵巧手知识链 (Dexterous Manipulation, +3)**:
+    - [x] `wiki/entities/allegro-hand.md` (科研级灵巧手标杆)。
+    - [x] `wiki/concepts/dexterous-kinematics.md` (灵巧手运动学：多指闭链约束与工作空间)。
+    - [x] `wiki/methods/in-hand-reorientation.md` (手内重定向：物体在掌心的灵巧翻转算法)。
+- [x] **新增实践指南 (Query, +2)**:
+    - [x] `wiki/queries/dexterous-data-collection-guide.md` (如何使用 Shadow Hand 或灵巧手遥控采集高质量数据)。
+    - [x] `wiki/queries/multimodal-fusion-tricks.md` (视、触、本体感受多模态融合的权重分配技巧)。
 
 ## P3: 前端交互与沉浸式阅读 (UX)
 

@@ -614,6 +614,76 @@ def lint() -> dict:
             "pos_claims": [r"转化为.*惩罚项|交替更新|权重|乘子"],
             "neg_claims": [r"不使用.*乘子|拉格朗日.*无效|只.*CPO"],
         },
+        "VLA Action Tokenization": {
+            "terms": ["VLA|Vision.Language.Action", "分词|tokeniz"],
+            "pos_claims": [r"离散.*Token|映射|Scalar.*Binning|分箱|Codebook|量化"],
+            "neg_claims": [r"VLA.*不使用.*Token|VLA.*纯连续输出|无需量化"],
+        },
+        "Cross-modal Attention 作用": {
+            "terms": ["Cross.modal.*Attention|跨模态.*注意力"],
+            "pos_claims": [r"关联|视.*语.*控| RGB.*指令|对齐|拼接到.*序列"],
+            "neg_claims": [r"模态间.*独立|注意力.*无关|无需关注指令"],
+        },
+        "Allegro Hand 自由度": {
+            "terms": ["Allegro.*Hand|灵巧手"],
+            "pos_claims": [r"16.*自由度|16.*DOFs|4.*指|4.*fingers"],
+            "neg_claims": [r"Allegro.*拥有.*20.*自由度|Allegro.*具备.*5.*指"],
+        },
+        "In-hand Reorientation 定义": {
+            "terms": ["In.hand.*Reorientation|手内重定向"],
+            "pos_claims": [r"不借助于.*外部环境|不利用.*桌面|手指间的协同|改变.*位姿"],
+            "neg_claims": [r"依赖.*桌面|必须放回桌面|非手内"],
+        },
+        "Preempt_RT 实时性": {
+            "terms": ["PREEMPT_RT|硬实时"],
+            "pos_claims": [r"补丁|内核源码|SCHED_FIFO|消除.*抖动|消除.*Jitter"],
+            "neg_claims": [r"普通.*Ubuntu.*足够|无需内核补丁|实时性.*无关"],
+        },
+        "CPU Isolation 效果": {
+            "terms": ["isolcpus|核心隔离"],
+            "pos_claims": [r"GRUB|预留.*核心|屏蔽.*中断|零中断|独占"],
+            "neg_claims": [r"CPU.*自动平衡|隔离.*无用|无需隔离核心"],
+        },
+        "LCM 协议特征": {
+            "terms": ["LCM|UDP.*组播|组播"],
+            "pos_claims": [r"UDP.*组播|Multicast|极低延迟|1000Hz|无.*重传"],
+            "neg_claims": [r"LCM.*基于.*TCP|LCM.*高开销|保证.*重传"],
+        },
+        "Pinocchio 核心优势": {
+            "terms": ["Pinocchio|刚体动力学库"],
+            "pos_claims": [r"解析导数|Analytical.*Derivatives|模板元编程|Eigen|Featherstone"],
+            "neg_claims": [r"Pinocchio.*无法.*计算.*导数|Pinocchio.*严重依赖.*动态内存分配"],
+        },
+        "MuJoCo 接触模型": {
+            "terms": ["MuJoCo|mjcf"],
+            "pos_claims": [r"凸优化|convex.*optimization|稳定|平滑.*离散化|解析.*求导"],
+            "neg_claims": [r"MuJoCo.*底层.*是.*惩罚冲量|MuJoCo.*接触.*极不稳定|MuJoCo.*不支持.*解析.*求导"],
+        },
+        "Drake 轨迹优化": {
+            "terms": ["Drake|Tedrake"],
+            "pos_claims": [r"为优化而生|直接配点|Direct.*Collocation|NLP.*构建|TRI"],
+            "neg_claims": [r"Drake.*仅仿真|Drake.*无优化|不支持.*OCP"],
+        },
+        "混合中间件架构": {
+            "terms": ["ROS.*2", "LCM"],
+            "pos_claims": [r"分层|ROS.*2.*大脑|LCM.*小脑|ROS.*2.*中高层|LCM.*底层"],
+            "neg_claims": [r"底层.*必须.*ROS.*2|LCM.*负责感知|LCM.*和.*ROS.*2.*竞争"],
+        },
+        "GelSight 触觉原理": {
+            "terms": ["GelSight|视觉.*触觉"],
+            "pos_claims": [r"摄像头|硅胶|形变图像|分辨率|千万像素"],
+            "neg_claims": [r"GelSight.*电阻|GelSight.*无摄像头|仅测量压力"],
+        },
+        "BC Loss 协变量偏移": {
+            "terms": ["Behavior.*Cloning|BC.*Loss", "偏移|shift"],
+            "pos_claims": [r"协变量偏移|Covariate.*Shift|错误累积|Compounding.*Error"],
+            "neg_claims": [r"BC.*无偏移|BC.*绝对鲁棒|数据越多越好"],
+        },
+        "VLA 数据集规模": {
+            "terms": ["VLA|Vision.Language.Action", "Open.*X.Embodiment"],
+            "pos_claims": [r"数万.*演示|数十万|数据集|Open.*X.Embodiment|大规模"],
+            "neg_claims": [r"VLA.*十条.*示教|少量数据.*足够|VLA.*无需数据"],
+        },
     }
     all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
     for fact_id, fact in CANONICAL_FACTS.items():

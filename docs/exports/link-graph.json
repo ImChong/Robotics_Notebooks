@@ -69,7 +69,7 @@
       "label": "ROS 2 vs LCM (机器人中间件选型)",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-6",
+      "community": "community-4",
       "community_label": "实时运控中间件配置指南 社区"
     },
     {
@@ -153,6 +153,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/concepts/dexterous-kinematics.md",
+      "label": "Dexterous Kinematics (灵巧手运动学)",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
+    },
+    {
       "id": "wiki/concepts/domain-randomization.md",
       "label": "Domain Randomization",
       "type": "concept",
@@ -181,8 +189,8 @@
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "VLA（Vision-Language-Action） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -269,8 +277,8 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Safety Filter（安全过滤器） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
@@ -309,8 +317,8 @@
       "label": "Tactile Sensing（触觉感知）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Manipulation 社区"
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
     },
     {
       "id": "wiki/concepts/terrain-adaptation.md",
@@ -345,6 +353,14 @@
       "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
+      "id": "wiki/entities/allegro-hand.md",
+      "label": "Allegro Hand (灵巧手)",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
+    },
+    {
       "id": "wiki/entities/anymal.md",
       "label": "ANYmal 四足机器人",
       "type": "entity",
@@ -357,8 +373,8 @@
       "label": "Boston Dynamics（波士顿动力）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-7",
-      "community_label": "Boston Dynamics（波士顿动力） 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/entities/crocoddyl.md",
@@ -445,8 +461,8 @@
       "label": "Constrained MDP (CMDP)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Safety Filter（安全过滤器） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/formalizations/contact-complementarity.md",
@@ -463,6 +479,14 @@
       "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/formalizations/cross-modal-attention.md",
+      "label": "Cross-modal Attention (跨模态注意力)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
     },
     {
       "id": "wiki/formalizations/ekf.md",
@@ -529,6 +553,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/formalizations/vla-tokenization.md",
+      "label": "Action Tokenization (动作分词)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
       "id": "wiki/formalizations/zmp-lip.md",
       "label": "ZMP + LIP 形式化",
       "type": "formalization",
@@ -577,6 +609,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/methods/in-hand-reorientation.md",
+      "label": "In-hand Reorientation (手内重定向)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
+    },
+    {
       "id": "wiki/methods/model-based-rl.md",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
@@ -613,8 +653,8 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-4",
-      "community_label": "Safety Filter（安全过滤器） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/trajectory-optimization.md",
@@ -637,8 +677,16 @@
       "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "VLA（Vision-Language-Action） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/methods/π0-policy.md",
+      "label": "π₀ (Pi-zero) 策略模型",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -653,8 +701,8 @@
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-5",
-      "community_label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/contact-rich-manipulation-guide.md",
@@ -681,6 +729,14 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/queries/dexterous-data-collection-guide.md",
+      "label": "灵巧操作数据采集指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
+    },
+    {
       "id": "wiki/queries/domain-randomization-guide.md",
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
@@ -693,8 +749,8 @@
       "label": "人形机器人 Foundation Policy 适用边界分析",
       "type": "query",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "VLA（Vision-Language-Action） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -761,6 +817,14 @@
       "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
+      "id": "wiki/queries/multimodal-fusion-tricks.md",
+      "label": "机器人感知中的多模态融合技巧",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Tactile Sensing（触觉感知） 社区"
+    },
+    {
       "id": "wiki/queries/open-source-motion-control-projects.md",
       "label": "开源运动控制项目结构化摘要",
       "type": "query",
@@ -789,7 +853,7 @@
       "label": "实时运控中间件配置指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-6",
+      "community": "community-4",
       "community_label": "实时运控中间件配置指南 社区"
     },
     {
@@ -877,8 +941,8 @@
       "label": "Query：VLA 真机部署指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-3",
-      "community_label": "VLA（Vision-Language-Action） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/vla-with-low-level-controller.md",
@@ -917,8 +981,8 @@
       "label": "LLM Wiki",
       "type": "reference",
       "health_score": 1,
-      "community": "community-3",
-      "community_label": "VLA（Vision-Language-Action） 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/roadmaps/humanoid-control-roadmap.md",
@@ -973,8 +1037,8 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1405,6 +1469,22 @@
     {
       "source": "wiki/concepts/curriculum-learning.md",
       "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/concepts/dexterous-kinematics.md",
+      "target": "wiki/formalizations/friction-cone.md"
+    },
+    {
+      "source": "wiki/concepts/dexterous-kinematics.md",
+      "target": "wiki/entities/allegro-hand.md"
+    },
+    {
+      "source": "wiki/concepts/dexterous-kinematics.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/concepts/dexterous-kinematics.md",
+      "target": "wiki/methods/in-hand-reorientation.md"
     },
     {
       "source": "wiki/concepts/domain-randomization.md",
@@ -1963,6 +2043,22 @@
       "target": "wiki/concepts/tsid.md"
     },
     {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/methods/in-hand-reorientation.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/queries/dexterous-data-collection-guide.md"
+    },
+    {
       "source": "wiki/entities/anymal.md",
       "target": "wiki/entities/humanoid-robot.md"
     },
@@ -2259,6 +2355,18 @@
       "target": "wiki/concepts/safety-filter.md"
     },
     {
+      "source": "wiki/formalizations/cross-modal-attention.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/formalizations/cross-modal-attention.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/formalizations/cross-modal-attention.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
       "source": "wiki/formalizations/ekf.md",
       "target": "wiki/concepts/state-estimation.md"
     },
@@ -2405,6 +2513,18 @@
     {
       "source": "wiki/formalizations/pomdp.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/formalizations/vla-tokenization.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/formalizations/vla-tokenization.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/formalizations/vla-tokenization.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
@@ -2557,6 +2677,22 @@
     {
       "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/concepts/motion-retargeting.md"
+    },
+    {
+      "source": "wiki/methods/in-hand-reorientation.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/methods/in-hand-reorientation.md",
+      "target": "wiki/entities/allegro-hand.md"
+    },
+    {
+      "source": "wiki/methods/in-hand-reorientation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/methods/in-hand-reorientation.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/methods/model-based-rl.md",
@@ -2760,6 +2896,14 @@
     },
     {
       "source": "wiki/methods/vla.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
       "target": "wiki/tasks/manipulation.md"
     },
     {
@@ -2781,6 +2925,14 @@
     {
       "source": "wiki/methods/vla.md",
       "target": "wiki/queries/vla-with-low-level-controller.md"
+    },
+    {
+      "source": "wiki/methods/π0-policy.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/π0-policy.md",
+      "target": "wiki/methods/diffusion-policy.md"
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
@@ -2965,6 +3117,22 @@
     {
       "source": "wiki/queries/demo-data-collection-guide.md",
       "target": "wiki/tasks/bimanual-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/dexterous-data-collection-guide.md",
+      "target": "wiki/entities/allegro-hand.md"
+    },
+    {
+      "source": "wiki/queries/dexterous-data-collection-guide.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
+    },
+    {
+      "source": "wiki/queries/dexterous-data-collection-guide.md",
+      "target": "wiki/queries/multimodal-fusion-tricks.md"
+    },
+    {
+      "source": "wiki/queries/dexterous-data-collection-guide.md",
+      "target": "wiki/methods/behavior-cloning.md"
     },
     {
       "source": "wiki/queries/domain-randomization-guide.md",
@@ -3193,6 +3361,22 @@
     {
       "source": "wiki/queries/mpc-solver-selection.md",
       "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/queries/dexterous-data-collection-guide.md"
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
@@ -3856,7 +4040,19 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
       "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/in-hand-reorientation.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/entities/allegro-hand.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -3947,50 +4143,38 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 55,
+      "size": 63,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 39,
+      "size": 41,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 15,
+      "size": 16,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-3",
-      "label": "VLA（Vision-Language-Action） 社区",
-      "size": 5,
-      "hub_id": "wiki/methods/vla.md"
+      "label": "Tactile Sensing（触觉感知） 社区",
+      "size": 7,
+      "hub_id": "wiki/concepts/tactile-sensing.md"
     },
     {
       "id": "community-5",
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区",
-      "size": 3,
+      "size": 2,
       "hub_id": "wiki/queries/vla-with-low-level-controller.md"
     },
     {
       "id": "community-4",
-      "label": "Safety Filter（安全过滤器） 社区",
-      "size": 3,
-      "hub_id": "wiki/concepts/safety-filter.md"
-    },
-    {
-      "id": "community-6",
       "label": "实时运控中间件配置指南 社区",
       "size": 2,
       "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
-    },
-    {
-      "id": "community-7",
-      "label": "Boston Dynamics（波士顿动力） 社区",
-      "size": 1,
-      "hub_id": "wiki/entities/boston-dynamics.md"
     }
   ]
 }
