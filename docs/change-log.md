@@ -14,6 +14,34 @@
 
 ---
 
+## 2026-04-21 — V14 技术栈项目执行清单完整交付
+
+### 完成内容
+
+**核心脚本与性能修复**
+- 优化 `scripts/search_wiki.py`，将 `numpy` 改为 **Lazy Import**，解决无 numpy 环境下执行 BM25 搜索时的报错问题。
+- 完善向量索引缺失时的优雅降级逻辑，确保基础搜索功能始终可用。
+
+**薄弱页面深度扩充 (Quality)**
+- `wiki/entities/humanoid-robot.md`：增加核心特征、主流平台、与四足区别、核心挑战等深度内容。
+- `wiki/concepts/hybrid-force-position-control.md`：补充 Task Frame 形式化、选择矩阵定义及与阻抗控制对比。
+- `wiki/concepts/impedance-control.md`：补充质量-弹簧-阻尼模型公式、导纳 vs 阻抗对比及调参建议。
+
+**知识图谱横向生长 (Quantity)**
+- **新增 11 个核心页面**，涵盖形式化（CMDP, ZMP+LIP, Friction Cone）、方法论（Safe RL, Trajectory Optimization）、实体（ANYmal, Boston Dynamics）、实践指南（Reward Shaping, Failure Modes, WBC Tuning）及对比页（TO vs RL）。
+- 运行 `make graph` 与 `make badge`，知识图谱增长至 **115 节点 / 723 边**。
+
+**自动化 Lint 与规范增强**
+- `scripts/lint_wiki.py` 新增 **CANONICAL_FACTS** 事实一致性检测，涵盖 CMDP、LIP、摩擦锥等核心概念。
+- 新增 `formalizations/` 目录公式块检测，确保数学定义页面的严谨性。
+
+### 项目阶段变化
+
+- 项目从“补齐基础 wiki 页面”推进到“**核心概念深度化 + 形式化数学闭环 + 实践指南工程化**”的新阶段。
+- 自动化维护体系进一步强化，实现了从事实一致性到 README 统计 badge 的全链路闭环。
+
+---
+
 ## 2026-04-13 — Detail page 锚点深链闭环补齐
 
 ### 完成内容

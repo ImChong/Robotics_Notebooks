@@ -6,7 +6,7 @@
       "type": "comparison",
       "health_score": 3,
       "community": "community-3",
-      "community_label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区"
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/comparisons/model-based-vs-model-free.md",
@@ -65,6 +65,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "label": "Trajectory Optimization vs Reinforcement Learning",
+      "type": "comparison",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/comparisons/wbc-vs-rl.md",
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
@@ -110,7 +118,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
@@ -118,7 +126,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-3",
-      "community_label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区"
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/concepts/curriculum-learning.md",
@@ -158,7 +166,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -182,7 +190,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/impedance-control.md",
@@ -190,7 +198,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/lip-zmp.md",
@@ -205,8 +213,8 @@
       "label": "Motion Retargeting（动作重定向）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/mpc-wbc-integration.md",
@@ -246,7 +254,7 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-3",
-      "community_label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区"
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
@@ -313,6 +321,22 @@
       "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
+      "id": "wiki/entities/anymal.md",
+      "label": "ANYmal 四足机器人",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/entities/boston-dynamics.md",
+      "label": "Boston Dynamics（波士顿动力）",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/entities/crocoddyl.md",
       "label": "Crocoddyl",
       "type": "entity",
@@ -332,7 +356,7 @@
       "id": "wiki/entities/humanoid-robot.md",
       "label": "人形机器人（Humanoid Robot）",
       "type": "entity",
-      "health_score": 2,
+      "health_score": 3,
       "community": "community-0",
       "community_label": "Locomotion 社区"
     },
@@ -385,6 +409,14 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/formalizations/cmdp.md",
+      "label": "Constrained MDP (CMDP)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
       "id": "wiki/formalizations/contact-complementarity.md",
       "label": "Contact Complementarity（接触互补约束）",
       "type": "formalization",
@@ -398,13 +430,21 @@
       "type": "formalization",
       "health_score": 3,
       "community": "community-3",
-      "community_label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区"
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/formalizations/ekf.md",
       "label": "Extended Kalman Filter (EKF)",
       "type": "formalization",
       "health_score": 2,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/formalizations/friction-cone.md",
+      "label": "摩擦锥 (Friction Cone)",
+      "type": "formalization",
+      "health_score": 3,
       "community": "community-1",
       "community_label": "Whole-Body Control (WBC) 社区"
     },
@@ -429,16 +469,16 @@
       "label": "LQR / iLQR",
       "type": "formalization",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-3",
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/formalizations/lyapunov.md",
       "label": "Lyapunov 稳定性",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-3",
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/formalizations/mdp.md",
@@ -457,12 +497,20 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/formalizations/zmp-lip.md",
+      "label": "ZMP + LIP 形式化",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/methods/action-chunking.md",
       "label": "Action Chunking（动作块输出）",
       "type": "method",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/behavior-cloning.md",
@@ -470,15 +518,15 @@
       "type": "method",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/dagger.md",
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
@@ -486,23 +534,23 @@
       "type": "method",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL)",
       "type": "method",
       "health_score": 3,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/model-based-rl.md",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -529,8 +577,16 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/methods/safe-rl.md",
+      "label": "Safe RL（安全强化学习）",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "LQR / iLQR 社区"
+    },
+    {
       "id": "wiki/methods/trajectory-optimization.md",
-      "label": "Trajectory Optimization",
+      "label": "Trajectory Optimization（轨迹优化）",
       "type": "method",
       "health_score": 3,
       "community": "community-1",
@@ -542,7 +598,7 @@
       "type": "method",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -550,7 +606,7 @@
       "type": "overview",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/clf-cbf-in-wbc.md",
@@ -558,7 +614,7 @@
       "type": "query",
       "health_score": 3,
       "community": "community-3",
-      "community_label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区"
+      "community_label": "LQR / iLQR 社区"
     },
     {
       "id": "wiki/queries/contact-rich-manipulation-guide.md",
@@ -566,7 +622,7 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
@@ -574,7 +630,7 @@
       "type": "query",
       "health_score": 2,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -582,7 +638,7 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/domain-randomization-guide.md",
@@ -598,7 +654,7 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -638,7 +694,15 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
+    },
+    {
+      "id": "wiki/queries/locomotion-failure-modes.md",
+      "label": "Locomotion RL 训练失败模式分析",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/locomotion-reward-design-guide.md",
@@ -685,6 +749,14 @@
       "label": "Reward Design 实战指南",
       "type": "query",
       "health_score": 2,
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
+    },
+    {
+      "id": "wiki/queries/reward-shaping-guide.md",
+      "label": "Locomotion RL 奖励函数设计指南",
+      "type": "query",
+      "health_score": 3,
       "community": "community-0",
       "community_label": "Locomotion 社区"
     },
@@ -750,7 +822,7 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/vla-with-low-level-controller.md",
@@ -758,11 +830,19 @@
       "type": "query",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
       "label": "WBC 工程实现指南",
+      "type": "query",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
+      "id": "wiki/queries/wbc-tuning-guide.md",
+      "label": "WBC 调参指南：从公式到实机表现",
       "type": "query",
       "health_score": 3,
       "community": "community-1",
@@ -782,7 +862,7 @@
       "type": "reference",
       "health_score": 1,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/roadmaps/humanoid-control-roadmap.md",
@@ -806,15 +886,15 @@
       "type": "task",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation",
       "type": "task",
       "health_score": 2,
-      "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/locomotion.md",
@@ -830,7 +910,7 @@
       "type": "task",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/teleoperation.md",
@@ -838,7 +918,7 @@
       "type": "task",
       "health_score": 3,
       "community": "community-2",
-      "community_label": "Imitation Learning (IL) 社区"
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1017,6 +1097,22 @@
     {
       "source": "wiki/comparisons/sim2real-approaches.md",
       "target": "wiki/comparisons/online-vs-offline-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
@@ -1775,6 +1871,38 @@
       "target": "wiki/concepts/tsid.md"
     },
     {
+      "source": "wiki/entities/anymal.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/anymal.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/anymal.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/entities/anymal.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
       "source": "wiki/entities/crocoddyl.md",
       "target": "wiki/methods/trajectory-optimization.md"
     },
@@ -1845,6 +1973,14 @@
     {
       "source": "wiki/entities/humanoid-robot.md",
       "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/entities/anymal.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/entities/boston-dynamics.md"
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
@@ -1991,6 +2127,26 @@
       "target": "wiki/formalizations/hjb.md"
     },
     {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/concepts/safety-filter.md"
+    },
+    {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/methods/safe-rl.md"
+    },
+    {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
       "source": "wiki/formalizations/contact-complementarity.md",
       "target": "wiki/concepts/contact-dynamics.md"
     },
@@ -2045,6 +2201,26 @@
     {
       "source": "wiki/formalizations/ekf.md",
       "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/formalizations/zmp-lip.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/queries/wbc-tuning-guide.md"
     },
     {
       "source": "wiki/formalizations/gae.md",
@@ -2157,6 +2333,26 @@
     {
       "source": "wiki/formalizations/pomdp.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/formalizations/zmp-lip.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/formalizations/zmp-lip.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/zmp-lip.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/formalizations/zmp-lip.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/formalizations/zmp-lip.md",
+      "target": "wiki/formalizations/friction-cone.md"
     },
     {
       "source": "wiki/methods/action-chunking.md",
@@ -2411,12 +2607,24 @@
       "target": "wiki/overview/robot-learning-overview.md"
     },
     {
-      "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/concepts/optimal-control.md"
+      "source": "wiki/methods/safe-rl.md",
+      "target": "wiki/formalizations/cmdp.md"
     },
     {
-      "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/formalizations/lqr.md"
+      "source": "wiki/methods/safe-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/safe-rl.md",
+      "target": "wiki/concepts/control-barrier-function.md"
+    },
+    {
+      "source": "wiki/methods/safe-rl.md",
+      "target": "wiki/concepts/safety-filter.md"
+    },
+    {
+      "source": "wiki/methods/safe-rl.md",
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
@@ -2424,11 +2632,7 @@
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/concepts/tsid.md"
+      "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
@@ -2436,7 +2640,11 @@
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/entities/drake.md"
+      "target": "wiki/formalizations/zmp-lip.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/comparisons/trajectory-opt-vs-rl.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -2827,6 +3035,22 @@
       "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
+      "source": "wiki/queries/locomotion-failure-modes.md",
+      "target": "wiki/queries/reward-shaping-guide.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-failure-modes.md",
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-failure-modes.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-failure-modes.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/queries/locomotion-reward-design-guide.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -2977,6 +3201,26 @@
     {
       "source": "wiki/queries/reward-design-guide.md",
       "target": "wiki/queries/locomotion-reward-design-guide.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/queries/locomotion-failure-modes.md"
     },
     {
       "source": "wiki/queries/rl-algorithm-selection.md",
@@ -3205,6 +3449,22 @@
     {
       "source": "wiki/queries/wbc-implementation-guide.md",
       "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/queries/wbc-implementation-guide.md"
+    },
+    {
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/formalizations/friction-cone.md"
     },
     {
       "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
@@ -3555,26 +3815,26 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 40,
+      "size": 49,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 37,
+      "size": 39,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
-      "label": "Imitation Learning (IL) 社区",
-      "size": 24,
-      "hub_id": "wiki/methods/imitation-learning.md"
+      "label": "Manipulation 社区",
+      "size": 20,
+      "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-3",
-      "label": "Control Lyapunov Function（控制李雅普诺夫函数） 社区",
-      "size": 5,
-      "hub_id": "wiki/formalizations/control-lyapunov-function.md"
+      "label": "LQR / iLQR 社区",
+      "size": 8,
+      "hub_id": "wiki/formalizations/lqr.md"
     }
   ]
 }

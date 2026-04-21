@@ -1,28 +1,28 @@
 {
   "generated_at": "2026-04-21",
-  "node_count": 106,
-  "edge_count": 675,
+  "node_count": 116,
+  "edge_count": 720,
   "community_count": 4,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 70
+      "degree": 73
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 56
+      "degree": 59
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL)",
-      "degree": 54
+      "degree": 58
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 47
+      "degree": 49
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -35,6 +35,11 @@
       "degree": 32
     },
     {
+      "id": "wiki/methods/model-predictive-control.md",
+      "label": "Model Predictive Control (MPC)",
+      "degree": 30
+    },
+    {
       "id": "wiki/overview/robot-learning-overview.md",
       "label": "Robot Learning Overview",
       "degree": 28
@@ -45,11 +50,6 @@
       "degree": 28
     },
     {
-      "id": "wiki/methods/model-predictive-control.md",
-      "label": "Model Predictive Control (MPC)",
-      "degree": 27
-    },
-    {
       "id": "wiki/concepts/tsid.md",
       "label": "TSID",
       "degree": 26
@@ -57,26 +57,26 @@
   ],
   "orphan_nodes": [],
   "type_distribution": {
+    "query": 31,
     "concept": 30,
-    "query": 28,
-    "method": 11,
-    "formalization": 10,
-    "comparison": 9,
-    "entity": 8,
+    "formalization": 13,
+    "method": 12,
+    "comparison": 10,
+    "entity": 10,
     "task": 7,
     "overview": 1,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 40,
-    "Whole-Body Control (WBC) 社区": 37,
-    "Imitation Learning (IL) 社区": 24,
-    "Control Lyapunov Function（控制李雅普诺夫函数） 社区": 5
+    "Locomotion 社区": 49,
+    "Whole-Body Control (WBC) 社区": 39,
+    "Manipulation 社区": 20,
+    "LQR / iLQR 社区": 8
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.377,
+    "largest_community_ratio": 0.422,
     "community_quality_warning": false
   }
 }

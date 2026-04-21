@@ -114,22 +114,23 @@ def normalize_scores(scores: list[float]) -> list[float]:
     return [(score - min_score) / (max_score - min_score) for score in scores]
 
 
-def load_vector_resources() -> tuple[np.ndarray, dict] | tuple[None, None]:
+def load_vector_resources() -> tuple["np.ndarray", dict] | tuple[None, None]:
     if not VECTOR_INDEX_FILE.exists() or not VECTOR_META_FILE.exists():
         return None, None
     import numpy as np
+
     matrix = np.load(VECTOR_INDEX_FILE)["embeddings"]
     meta = json.loads(VECTOR_META_FILE.read_text(encoding="utf-8"))
     return matrix, meta
 
 
-def encode_query_vector(query: str, meta: dict) -> np.ndarray | None:
+def encode_query_vector(query: str, meta: dict) -> "np.ndarray" | None:
     embedding_meta = (meta or {}).get("embedding", {})
     backend = embedding_meta.get("backend")
     if backend == "sentence-transformers":
         try:
-            import numpy as np
             from sentence_transformers import SentenceTransformer
+            import numpy as np
 
             model = SentenceTransformer(embedding_meta.get("model"))
             vec = model.encode([truncate_for_embedding(query)], normalize_embeddings=True, show_progress_bar=False)[0]
@@ -235,8 +236,9 @@ def search(
             semantic_notice = "向量编码器不可用，已回退到纯 BM25。请安装 sentence-transformers 或重建索引。"
             semantic = False
         else:
-            import numpy as np
             bm25_norm = normalize_scores([item["bm25_score"] for item in prepared])
+            import numpy as np
+
             vector_scores = []
             for item in prepared:
                 doc_idx = doc_order.get(item["path"].as_posix())
