@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 174,
+  "item_count": 184,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -499,6 +499,27 @@
       "page_type": "concept"
     },
     {
+      "id": "wiki-concepts-latent-imagination",
+      "title": "Latent Imagination (潜空间想象)",
+      "path": "wiki/concepts/latent-imagination.md",
+      "summary": "type: concept。",
+      "content_markdown": "---\ntype: concept\ntags: [world-models, reinforcement-learning, machine-learning, model-based-rl]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../methods/model-based-rl.md\n  - ../methods/generative-world-models.md\n  - ../formalizations/variational-objective.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\nsummary: \"潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。\"\n---\n\n# Latent Imagination (潜空间想象)\n\n**潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉重的物理仿真器中反复试错，而是在一个完全由数据学出来的“脑内模型”中进行极其高速的并行进化。\n\n## 核心工作原理\n\n潜空间想象通常建立在 **RSSM (Recurrent State Space Model)** 之上。其流程分为“梦境构建”和“梦中训练”两个阶段：\n\n### 1. 构建世界模型（学习“梦境”的法则）\n智能体通过真实的交互数据训练一个世界模型，包含：\n- **Transition Model**：预测下一步的潜状态 $z_{t+1}$。\n- **Observation Model**：从潜状态重建图像或感知。\n- **Reward Model**：预测每一步的即时奖励。\n\n### 2. 潜空间展开（在“梦境”中航行）\n一旦模型训练完成，智能体就可以从任意起始状态出发，完全脱离外部环境输入，利用 Transition Model 在潜空间中向未来展开 $H$ 步（Horizon）：\n$$ \\hat{z}_{t+1}, \\hat{z}_{t+2}, \\dots, \\hat{z}_{t+H} $$\n\n### 3. 策略优化（在“梦境”中进化）\nActor-Critic 策略直接在这条“想象轨迹”上运行：\n- **Actor** 输出动作，使模型预测的奖励最大化。\n- **Critic** 学习评估想象状态的长期价值。\n- 由于一切都在向量化的潜空间进行，其速度比物理仿真快 100-1000 倍。\n\n## 为什么它对机器人至关重要\n\n1. **样本效率 (Sample Efficiency)**：真实机器人交互极其昂贵（硬件损耗、时间）。潜空间想象将 1 小时的真实数据“压榨”出相当于数千小时的虚拟训练经验。\n2. **处理高维观测**：直接在像素级预测未来极其困难且不平滑。在紧凑的潜空间（Latent Space）中想象，可以自动过滤掉背景噪声，只保留对任务关键的物理特征。\n3. **安全避障**：智能体可以在脑海中预演“如果我这样跨步会跌倒”，从而在真实动作执行前规避高风险行为。\n\n## 代表算法\n- **Dreamer V1-V3**：将潜空间想象推向通用人工智能（Atari 到机器人控制）的巅峰。\n- **DayDreamer**：证明了该技术可以直接在真实机械臂上几小时内从零学出抓取，无需任何仿真。\n\n## 关联页面\n- [Model-Based RL](../methods/model-based-rl.md)\n- [Generative World Models](../methods/generative-world-models.md)\n- [变分目标函数 (ELBO)](../formalizations/variational-objective.md)\n\n## 参考来源\n- Hafner, D., et al. (2019). *Dream to Control: Learning Behaviors by Latent Imagination*.\n- Hafner, D., et al. (2023). *Mastering Diverse Domains through World Models (DreamerV3)*.",
+      "tags": [
+        "concept",
+        "control",
+        "rl"
+      ],
+      "related": [
+        "wiki-methods-model-based-rl",
+        "wiki-methods-generative-world-models",
+        "wiki-formalizations-variational-objective"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "concept"
+    },
+    {
       "id": "wiki-concepts-lip-zmp",
       "title": "LIP / ZMP",
       "path": "wiki/concepts/lip-zmp.md",
@@ -872,7 +893,7 @@
       "title": "Terrain Adaptation（地形适应）",
       "path": "wiki/concepts/terrain-adaptation.md",
       "summary": "地形适应不是“看见地面”，而是把看见的地形真正转成可执行的接触决策",
-      "content_markdown": "---\ntype: concept\ntags: [locomotion, terrain, perception, footstep-planning, sim2real]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。\"\nrelated:\n  - ../tasks/locomotion.md\n  - ./footstep-planning.md\n  - ./sim2real.md\n  - ./privileged-training.md\n  - ../tasks/balance-recovery.md\nsources:\n  - ../../sources/papers/footstep_and_balance.md\n  - ../../sources/papers/privileged_training.md\n  - ../../sources/papers/contact_planning.md\n---\n\n# Terrain Adaptation（地形适应）\n\n**Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。\n\n## 一句话定义\n\n地形适应不是“看见地面”，而是把看见的地形真正转成可执行的接触决策。\n\n## 为什么重要\n\n平地 locomotion 可以依赖固定步态和简化模型，但一旦进入真实世界：\n- 可落脚区域离散且不规则\n- 摩擦和高度变化引入失稳风险\n- 感知误差会直接转化为踩空或绊倒\n\n因此地形适应是 locomotion 从实验室走向真实环境的关键门槛。\n\n## 典型闭环\n\n```text\n高度图 / 点云 / 触觉估计\n        ↓\n   可行落脚区域提取\n        ↓\n   步位 / 接触序列规划\n        ↓\n  MPC / RL / WBC 执行调整\n```\n\n## 常见信息来源\n\n### 1. 高度图（Height Map）\n最常见的结构化表示。把局部地形编码成栅格高度，可直接供 teacher policy、MPC 或步位规划器使用。\n\n### 2. 点云 / 深度图\n信息更丰富，但噪声更大、实时处理代价更高，常需先转成局部可行接触区域。\n\n### 3. 接触反馈\n足端是否滑动、接触是否建立、法向力是否异常，都是补救感知误差的重要信号。\n\n## 主要策略路线\n\n| 路线 | 做法 | 优点 | 局限 |\n|------|------|------|------|\n| 传统规划 | 感知 + footstep planning + MPC/WBC | 可解释、约束清晰 | 感知和规划耦合复杂 |\n| 特权训练 | teacher 用高度图，student 蒸馏到本体感知 | sim2real 友好 | teacher/student 设计复杂 |\n| 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |\n\n## 与其他页面的关系\n\n- [Footstep Planning](./footstep-planning.md) 决定“下一步踩哪里”。\n- [Locomotion](../tasks/locomotion.md) 关注更完整的移动任务。\n- [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。\n- [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。\n\n## 常见误区\n\n- **误区 1：腿足机器人不需要地形感知。**\n  在结构化平地上也许可勉强成立，但在户外和障碍环境里通常不现实。\n- **误区 2：有高度图就自动等于稳定行走。**\n  还需要把感知结果转成步位、姿态和接触约束。\n- **误区 3：地形适应只属于高层规划。**\n  实际上它影响从 perception 到控制执行的全链路。\n\n## 参考来源\n\n- [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — 步位规划、DCM 与不平地形步行基础\n- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ANYmal 高度图 teacher / proprioception student 经典路线\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Footstep Planning](./footstep-planning.md)\n- [Privileged Training](./privileged-training.md)\n- [Sim2Real](./sim2real.md)\n- [Balance Recovery](../tasks/balance-recovery.md)\n\n## 推荐继续阅读\n\n- Lee et al., *Learning to Walk in Difficult Terrain*\n- Deits & Tedrake, *Footstep Planning on Uneven Terrain with MICP*\n- [Query：从零训练人形机器人 RL 策略的完整 checklist？](../queries/humanoid-rl-cookbook.md)",
+      "content_markdown": "---\ntype: concept\ntags: [locomotion, terrain, perception, footstep-planning, sim2real]\nstatus: complete\nupdated: 2026-04-20\nsummary: \"Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。\"\nrelated:\n  - ../tasks/locomotion.md\n  - ./footstep-planning.md\n  - ./sim2real.md\n  - ./privileged-training.md\n  - ../tasks/balance-recovery.md\nsources:\n  - ../../sources/papers/footstep_and_balance.md\n  - ../../sources/papers/privileged_training.md\n  - ../../sources/papers/contact_planning.md\n---\n\n# Terrain Adaptation（地形适应）\n\n**Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。\n\n## 一句话定义\n\n地形适应不是“看见地面”，而是把看见的地形真正转成可执行的接触决策。\n\n## 为什么重要\n\n平地 locomotion 可以依赖固定步态和简化模型，但一旦进入真实世界：\n- 可落脚区域离散且不规则\n- 摩擦和高度变化引入失稳风险\n- 感知误差会直接转化为踩空或绊倒\n\n因此地形适应是 locomotion 从实验室走向真实环境的关键门槛。\n\n## 典型闭环\n\n```text\n高度图 / 点云 / 触觉估计\n        ↓\n   可行落脚区域提取\n        ↓\n   步位 / 接触序列规划\n        ↓\n  MPC / RL / WBC 执行调整\n```\n\n## 常见信息来源\n\n### 1. 高度图（Height Map）\n最常见的结构化表示。把局部地形编码成栅格高度，可直接供 teacher policy、MPC 或步位规划器使用。\n\n### 2. 点云 / 深度图\n信息更丰富，但噪声更大、实时处理代价更高，常需先转成局部可行接触区域。\n\n### 3. 接触反馈\n足端是否滑动、接触是否建立、法向力是否异常，都是补救感知误差的重要信号。\n\n## 主要策略路线\n\n| 路线 | 做法 | 优点 | 局限 |\n|------|------|------|------|\n| 传统规划 | 感知 + footstep planning + MPC/WBC | 可解释、约束清晰 | 感知和规划耦合复杂 |\n| 特权训练 | teacher 用高度图，student 蒸馏到本体感知 | sim2real 友好 | teacher/student 设计复杂 |\n| 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |\n\n## 与其他页面的关系\n\n- [Footstep Planning](./footstep-planning.md) 决定“下一步踩哪里”。\n- [Locomotion](../tasks/locomotion.md) 关注更完整的移动任务。\n- [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。\n- [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。\n\n## 常见误区\n\n- **误区 1：腿足机器人不需要地形感知。**\n  在结构化平地上也许可勉强成立，但在户外和障碍环境里通常不现实。\n- **误区 2：有高度图就自动等于稳定行走。**\n  还需要把感知结果转成步位、姿态和接触约束。\n- **误区 3：地形适应只属于高层规划。**\n  实际上它影响从 perception 到控制执行的全链路。\n\n## 参考来源\n\n- [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — 步位规划、DCM 与不平地形步行基础\n- [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ANYmal 高度图 teacher / proprioception student 经典路线\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Footstep Planning](./footstep-planning.md)\n- [野外机器人排障指南](../queries/field-robotics-troubleshooting.md) — 应对非结构化地形下的感知与平衡失效\n- [Privileged Training](./privileged-training.md)\n- [Sim2Real](./sim2real.md)\n- [Balance Recovery](../tasks/balance-recovery.md)\n\n## 推荐继续阅读\n\n- Lee et al., *Learning to Walk in Difficult Terrain*\n- Deits & Tedrake, *Footstep Planning on Uneven Terrain with MICP*\n- [Query：从零训练人形机器人 RL 策略的完整 checklist？](../queries/humanoid-rl-cookbook.md)",
       "tags": [
         "concept",
         "locomotion",
@@ -884,6 +905,7 @@
       "related": [
         "wiki-tasks-locomotion",
         "wiki-concepts-footstep-planning",
+        "wiki-queries-field-robotics-troubleshooting",
         "wiki-concepts-privileged-training",
         "wiki-concepts-sim2real",
         "wiki-tasks-balance-recovery",
@@ -931,6 +953,30 @@
       "page_type": "concept",
       "has_ingest": true,
       "ingest_source": "sources/papers/robot_kinematics_tools.md"
+    },
+    {
+      "id": "wiki-concepts-video-as-simulation",
+      "title": "Video-as-Simulation (视频即仿真)",
+      "path": "wiki/concepts/video-as-simulation.md",
+      "summary": "type: concept。",
+      "content_markdown": "---\ntype: concept\ntags: [simulation, video-generation, deepmind, computer-vision, robotics]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../methods/generative-world-models.md\n  - ../concepts/sim2real.md\n  - ../methods/model-based-rl.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。\"\n---\n\n# Video-as-Simulation (视频即仿真)\n\n**视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。\n\n## 核心差异：从“算力矩”到“算像素”\n\n| 维度 | 传统物理仿真 (如 MuJoCo) | 视频即仿真 (如 UniSim) |\n|------|------------------------|-----------------------|\n| **建模对象** | 几何体、力学常数、接触点 | 原始像素、时空关联、视觉语义 |\n| **真实度** | 受限于手工调参的数学模型 | 无限趋近于真实视频录像 |\n| **交互方式** | 求解动力学 ODE | 预测视频下一帧 (Next-frame Prediction) |\n| **泛化性** | 仅限于建立好模型的物体 | 见过视频的所有场景均可模拟 |\n\n## 关键技术：交互式视频预测器\n\n实现“视频即仿真”的核心是一个**条件生成模型**。给定当前的 RGB 观测 $O_t$ 和机器人预期的控制动作 $A_t$，模型输出预测的下一帧 $\\hat{O}_{t+1}$：\n\n$$ \\hat{O}_{t+1} = \\mathcal{G}(O_t, A_t, \\text{Instruction}) $$\n\n### 代表性工作：UniSim (Google DeepMind)\nUniSim 证明了通过将“大量无人干预的人类视频”与“少量机器人交互视频”混合训练，可以构建出一个可交互的模拟器。用户可以像玩电子游戏一样输入指令（如“打开微波炉”），并在生成的视频中看到机器人的执行反馈。\n\n## 为什么这一范式能够成功？\n\n1. **Sim2Real 的终极解**：在“视频”中训练的策略，其观测空间与真实摄像头完全一致，不存在视觉层面的鸿沟。\n2. **解决“建模难题”**：对于折衣服、液体倾倒等柔体/流体任务，传统仿真极难精准建模，而视频模型可以从海量互联网视频中自发习得这些复杂的物理常识。\n3. **数据 Scaling**：它允许机器人利用 YouTube 等非结构化视频进行“离线学习”，极大地提升了数据的利用率。\n\n## 当前局限\n\n- **因果偏差**：模型可能会产生“动作未到，物体先动”的逻辑错误。\n- **长程发散**：随着预测步数增加，生成的视频细节会逐渐模糊，导致策略在长时域任务中失效。\n- **无法闭环力控**：由于缺乏接触力反馈，它更适合训练视觉策略，而非底层高频关节控制。\n\n## 关联页面\n- [Generative World Models](../methods/generative-world-models.md)\n- [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n\n## 参考来源\n- Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.\n- [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).",
+      "tags": [
+        "concept",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "wiki-methods-generative-world-models",
+        "wiki-concepts-sim2real",
+        "wiki-methods-model-based-rl"
+      ],
+      "source_links": [
+        "https://deepmind.google/discover/blog/unisim/"
+      ],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "concept"
     },
     {
       "id": "wiki-concepts-whole-body-control",
@@ -1137,6 +1183,52 @@
       "page_type": "method",
       "has_ingest": true,
       "ingest_source": "sources/papers/diffusion_and_gen.md"
+    },
+    {
+      "id": "wiki-methods-generative-data-augmentation",
+      "title": "Generative Data Augmentation (生成式数据增强)",
+      "path": "wiki/methods/generative-data-augmentation.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [data, generative-ai, simulation, long-tail, manipulation]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/embodied-data-cleaning.md\n  - ../methods/generative-world-models.md\n  - ../queries/demo-data-collection-guide.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"生成式数据增强（Generative Data Augmentation）利用扩散模型或视频编辑技术，针对性地合成长尾失败场景或罕见物理交互数据，以低成本扩充具身智能的专家演示库。\"\n---\n\n# Generative Data Augmentation (生成式数据增强)\n\n在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖动”或“光影极端暗淡”等失败或罕见场景的数据却极难获取。\n\n## 核心机制：AI 驱动的样本扩充\n\n生成式增强不再仅仅是简单的裁剪或翻转图像，而是利用生成式大模型在语义和物理层面改写数据。\n\n### 主要技术路线\n\n1. **场景编辑 (Semantic Editing)**：\n   利用视频编辑模型（如 Stable Video Diffusion），将原始背景中的“实验室”替换为“厨房”、“办公室”或“户外草地”。这极大地提升了策略的视觉泛化能力。\n2. **长尾合成 (Counterfactual Synthesis)**：\n   针对特定的失败模式进行合成。例如，通过修改轨迹参数并使用生成模型，渲染出机器人“抓取失败”并触发“重新对齐”动作的虚拟轨迹。\n3. **物体变幻 (Object Swapping)**：\n   在保持抓取动作不变的前提下，将手中的“马克杯”生成式替换为“易拉罐”、“玻璃杯”或“不规则容器”，训练模型对不同材质和几何形状的适应性。\n\n## 为什么对具身智能重要\n\n- **打破 10x 数据瓶颈**：获取真实机器人演示的成本是每小时数百美金。生成式增强允许我们以计算成本（每小时数美金）将 100 条真实轨迹扩增为 10,000 条高质量的多样化样本。\n- **提升边缘案例安全性**：通过大量合成“接近失败”的数据，模型可以学会更稳健的闭环纠错（Recovery）策略，而不是一旦发生微小偏移就陷入崩溃。\n\n## 局限性与风控\n\n- **物理伪影**：如果生成的视频中物体运动违反牛顿定律，模型可能会学到错误的物理直觉。\n- **模式崩坏 (Mode Collapse)**：过度依赖生成的增强样本可能导致模型对真实世界细节的钝化。\n\n## 主要路线\n- **控制扩散 (ControlNet)**：通过机器人位姿骨架（Skeleton）约束扩散模型的生成过程，确保视频动作与物理指令对齐。\n- **潜空间插值**：在世界模型的潜空间内进行特征混合，生成介于两个已知样本之间的中间状态。\n\n## 关联页面\n- [具身数据清洗 (Data Cleaning)](../concepts/embodied-data-cleaning.md)\n- [Generative World Models](../methods/generative-world-models.md)\n- [演示数据采集指南](../queries/demo-data-collection-guide.md)\n\n## 参考来源\n- Yu, T., et al. (2023). *Scaling Robot Learning with Semantically Imagined Experience*.\n- [Google DeepMind ROSS 项目摘要](../../sources/papers/diffusion_and_gen.md)。",
+      "tags": [
+        "method",
+        "control",
+        "rl",
+        "tooling"
+      ],
+      "related": [
+        "wiki-concepts-embodied-data-cleaning",
+        "wiki-methods-generative-world-models",
+        "wiki-queries-demo-data-collection-guide",
+        "sources-papers-diffusion-and-gen"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method"
+    },
+    {
+      "id": "wiki-methods-generative-world-models",
+      "title": "Generative World Models (生成式世界模型)",
+      "path": "wiki/methods/generative-world-models.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [world-models, generative-ai, simulation, video-generation, driving]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/latent-imagination.md\n  - ../methods/model-based-rl.md\n  - ../entities/nvidia-omniverse.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。\"\n---\n\n# Generative World Models (生成式世界模型)\n\n**生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI (Generative AI)** 的能力，通过海量视频数据学习世界的运动规律。\n\n## 核心理念：以生成代替计算\n\n在传统仿真中，我们需要手动编写复杂的接触力方程；而在生成式世界模型中，模型学会了“如果机器人向左打方向盘，画面应该如何平滑变化”。\n\n### 主要架构\n1. **视频生成器 (Video Diffusion/Autoregressive)**：如 GAIA-1 或 UniSim。给定当前画面和动作序列，生成一段长达数秒甚至数分钟的未来预测视频。\n2. **反事实推演 (Counterfactual Reasoning)**：允许用户输入“如果没有躲避障碍物会怎样？”，模型会生成相应的碰撞视频，作为强化学习的负样本。\n\n## 典型代表作\n\n### 1. GAIA-1 (Wayve)\n针对自动驾驶设计的世界模型。它不仅能生成真实的驾驶场景，还能根据文本描述（如“突然下起大雨”）动态改变天气和光影。\n\n### 2. UniSim (Google DeepMind)\n一个通用的具身智能世界模型。它将现实世界的视频数据和仿真数据结合，允许机器人在“视频”中练习开橱柜、拿杯子等精细操作，并将学到的技能无缝迁移到真实物理世界。\n\n## 优势与挑战\n\n### 优势\n- **视觉真实度极致**：彻底解决了 Sim2Real 在感知层面的 Gap。\n- **无需手动建模**：对于复杂的流体、软体（如折衣服、揉面团），生成式模型比物理引擎更容易捕捉其动态特性。\n\n### 挑战\n- **物理一致性缺失**：模型有时会产生违反物理常识的幻觉（如物体凭空消失）。\n- **推理开销大**：目前生成一帧高质量视频的速度远低于物理引擎的 1000Hz 要求。\n- **交互精度低**：很难通过生成的视频反推精确到毫米级的接触力。\n\n## 主要技术路线\n- **视频即仿真 (Video-as-Simulation)**：利用交互式视频预测器代替解析引擎，详见 [Video-as-Simulation](../concepts/video-as-simulation.md)。\n- **扩散模型 (Diffusion-based)**：利用 DDPM 逐步去噪生成未来帧，代表：UniSim。\n- **离散 Token 流 (Discrete Token flow)**：将图像量化为 Token，利用 Transformer 预测序列，代表：π₀ 的动作建模部分。\n\n## 关联页面\n- [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [NVIDIA Omniverse](../entities/nvidia-omniverse.md)\n\n## 参考来源\n- Hu, A., et al. (2023). *GAIA-1: A Generative AI for Embodied AI*.\n- Yang, S., et al. (2023). *Learning Interactive Real-World Simulators (UniSim)*.",
+      "tags": [
+        "method",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "wiki-concepts-latent-imagination",
+        "wiki-methods-model-based-rl",
+        "entity-nvidia-omniverse",
+        "wiki-concepts-video-as-simulation"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method"
     },
     {
       "id": "wiki-methods-imitation-learning",
@@ -1452,7 +1544,7 @@
       "title": "π₀ (Pi-zero) 策略模型",
       "path": "wiki/methods/π0-policy.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [vla, foundation-policy, deepmind, flow-matching, manipulation]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./vla.md\n  - ./diffusion-policy.md\n  - ../formalizations/vla-tokenization.md\n  - ../formalizations/cross-modal-attention.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。\"\n---\n\n# π₀ (Pi-zero) 策略模型\n\n**π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的大型神经网络同时掌控不同形态（如双臂机械臂、灵巧手、移动底座）的机器人执行多样化的复杂任务。\n\n## 主要技术路线\n\nπ₀ 的设计融合了语言模型的大规模预训练优势与生成式动作建模的精确性：\n\n1. **流匹配 (Flow Matching) 骨干**：\n   有别于 RT-1 等采用的标量离散化路线，π₀ 在动作输出层使用了**流匹配（Flow Matching）**。这是一种比扩散模型（Diffusion）更高效的生成式建模方法，能够以更少的推理步数生成高质量、连续且多模态的动作分布。\n2. **视觉语言对齐**：\n   π₀ 借用了预训练多模态大模型（如 VLM）的权重，使其天然具备理解自然语言指令（如“把弄脏的毛巾放进篮子里”）并识别图像中复杂物体的能力。\n3. **后训练 (Post-training) 范式**：\n   类似于 LLM 的指令微调，π₀ 首先在海量的多源机器人数据集上进行基础预训练（Pre-training），随后通过特定任务的高质量演示数据进行对齐微调。\n\n## 为什么是“π₀”？\n\n“π”在强化学习中代表策略（Policy），而“0”则隐喻“从零开始的通用基础”。它的出现标志着机器人控制正经历从“特征工程”到“**Scaling Law (规模法则)**”的范式转移。\n\n## 性能优势\n\n- **多任务泛化**：能够处理从折衣服到整理餐具等完全不同的任务。\n- **跨平台通用**：同一模型可以无缝适配不同厂商的机械臂，证明了动作表征的普适性。\n- **鲁棒性**：面对视觉背景的变化和物体的轻微位移，展现出了极强的闭环纠错能力。\n\n## 关联页面\n- [VLA (Vision-Language-Action Models)](./vla.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)\n\n## 参考来源\n- Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.\n- [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).",
+      "content_markdown": "---\ntype: method\ntags: [vla, foundation-policy, deepmind, flow-matching, manipulation]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./vla.md\n  - ./diffusion-policy.md\n  - ../formalizations/vla-tokenization.md\n  - ../formalizations/cross-modal-attention.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。\"\n---\n\n# π₀ (Pi-zero) 策略模型\n\n**π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的大型神经网络同时掌控不同形态（如双臂机械臂、灵巧手、移动底座）的机器人执行多样化的复杂任务。\n\n## 主要技术路线\n\nπ₀ 的设计融合了语言模型的大规模预训练优势与生成式动作建模的精确性：\n\n1. **流匹配 (Flow Matching) 骨干**：\n   有别于 RT-1 等采用的标量离散化路线，π₀ 在动作输出层使用了**流匹配（Flow Matching）**。这是一种基于 [概率流形式化](../formalizations/probability-flow.md) 的高效生成式建模方法，能够以更少的推理步数生成高质量、连续且多模态的动作分布。\n2. **视觉语言对齐**：\n   π₀ 借用了预训练多模态大模型（如 VLM）的权重，使其天然具备理解自然语言指令（如“把弄脏的毛巾放进篮子里”）并识别图像中复杂物体的能力。\n3. **后训练 (Post-training) 范式**：\n   类似于 LLM 的指令微调，π₀ 首先在海量的多源机器人数据集上进行基础预训练（Pre-training），随后通过特定任务的高质量演示数据进行对齐微调。\n\n## 为什么是“π₀”？\n\n“π”在强化学习中代表策略（Policy），而“0”则隐喻“从零开始的通用基础”。它的出现标志着机器人控制正经历从“特征工程”到“**Scaling Law (规模法则)**”的范式转移。\n\n## 性能优势\n\n- **多任务泛化**：能够处理从折衣服到整理餐具等完全不同的任务。\n- **跨平台通用**：同一模型可以无缝适配不同厂商的机械臂，证明了动作表征的普适性。\n- **鲁棒性**：面对视觉背景的变化和物体的轻微位移，展现出了极强的闭环纠错能力。\n\n## 关联页面\n- [VLA (Vision-Language-Action Models)](./vla.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)\n\n## 参考来源\n- Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.\n- [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).",
       "tags": [
         "method",
         "control"
@@ -1461,7 +1553,8 @@
         "wiki-methods-vla",
         "wiki-methods-diffusion-policy",
         "wiki-formalizations-vla-tokenization",
-        "wiki-formalizations-cross-modal-attention"
+        "wiki-formalizations-cross-modal-attention",
+        "wiki-formalizations-probability-flow"
       ],
       "source_links": [
         "https://www.physicalintelligence.company/blog/pi0"
@@ -2062,6 +2155,32 @@
       "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
+      "id": "wiki-overview-humanoid-motion-control-know-how",
+      "title": "人形机器人运动控制 Know-How",
+      "path": "wiki/overview/humanoid-motion-control-know-how.md",
+      "summary": "type: overview。",
+      "content_markdown": "---\ntype: overview\ntags: [humanoid, control, know-how, engineering, deployment]\nstatus: complete\nupdated: 2026-04-21\nsummary: \"人形机器人运动控制工程实践经验汇总：涵盖了从传感器噪声处理、电机热管理到非结构化地形适应的闭坑指南。\"\n---\n\n# 人形机器人运动控制 Know-How\n\n> **说明**：本文档沉淀了在真实人形机器人研发与调试过程中的硬核工程经验。不同于教科书上的理论，这里的每一条建议往往都对应着一次“炸机”或烧毁电机的惨痛教训。\n\n## 1. 传感器与状态估计\n\n### 1.1 IMU 的“幻觉”\n- **高频振动**：足端撞击地面的瞬时振动会通过骨架传导至 IMU。如果固定不牢，加速度计会因共振产生巨大偏置。\n- **解决**：使用硅胶减震垫；在软件层使用 200Hz 以上的采样率并配合 Butterworth 低通滤波。\n\n### 1.2 接触估计 (Contact Estimation)\n- **阈值陷阱**：仅靠足底压力传感器（Force Sensor）判断触地极不靠谱，因为地面的反弹和草地的虚位会产生误报。\n- **融合逻辑**：结合关节编码器的速度突变和高度图信息进行多源判定。\n\n## 2. 动力学与控制 (WBC/RL)\n\n### 2.1 摩擦锥的线性化\n- 在 QP 求解器中，摩擦锥通常被线性化为四棱锥。**注意**：摩擦系数 $\\mu$ 在实机上通常比仿真里要小（建议取 0.4-0.6 进行保守估计），以防止脚底打滑。\n\n### 2.2 奇异点保护\n- 当腿部完全伸直（膝关节奇异点）时，雅可比矩阵会退化，导致控制力矩瞬间爆炸。\n- **对策**：在控制律中加入虚拟弹簧力，阻止关节进入极限位置前 2-5 度的区域。\n\n## 3. 硬件与电气工程\n\n### 3.1 电池压降\n- 高动态动作（如跳跃）会导致母线电压从 48V 瞬间降至 40V 以下。\n- 必须确保逻辑计算板（IPC）拥有独立的稳定供电，否则主控会因欠压重启，导致机器人失去平衡。\n\n### 3.2 热管理\n- 连续行走 15 分钟后，膝关节电机通常会达到 70°C 以上。\n- **经验**：在 WBC 中加入能效项，减少不必要的对抗出力。\n\n## 关联页面\n- [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md)\n- [野外机器人排障指南](../queries/field-robotics-troubleshooting.md) — 应对非结构化地形下的感知与平衡失效\n- [Sim2Real 真机部署检查清单](../queries/sim2real-deployment-checklist.md)\n\n## 参考来源\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)",
+      "tags": [
+        "overview",
+        "humanoid",
+        "control",
+        "dynamics",
+        "optimization",
+        "rl"
+      ],
+      "related": [
+        "wiki-queries-humanoid-battery-thermal-management",
+        "wiki-queries-field-robotics-troubleshooting",
+        "wiki-queries-sim2real-deployment-checklist",
+        "sources-papers-sim2real",
+        "sources-papers-whole-body-control"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "overview"
+    },
+    {
       "id": "wiki-overview-robot-learning-overview",
       "title": "Robot Learning Overview",
       "path": "wiki/overview/robot-learning-overview.md",
@@ -2454,6 +2573,28 @@
       "page_type": "formalization"
     },
     {
+      "id": "wiki-formalizations-probability-flow",
+      "title": "Probability Flow (概率流形式化)",
+      "path": "wiki/formalizations/probability-flow.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [math, probability, generative-ai, flow-matching, diffusion]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../methods/π0-policy.md\n  - ../methods/diffusion-policy.md\n  - ../methods/generative-world-models.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"概率流（Probability Flow）提供了一个统一的数学框架来描述扩散模型与流匹配，通过将离散的去噪步转化为连续的可微常微分方程（ODE），实现了生成过程的极致加速与可控性。\"\n---\n\n# Probability Flow (概率流形式化)\n\n在具身智能的生成式动作建模（如 **π₀** 或 **Diffusion Policy**）中，**概率流 (Probability Flow)** 是连接噪声分布与真实动作分布的数学“传送带”。它将生成过程描述为一种连续的动力学系统。\n\n## 数学定义：ODE 视角\n\n给定从简单噪声分布 $p_0$ 到复杂动作分布 $p_1$ 的变换。概率流通过一个常微分方程 (ODE) 描述样本 $x_t$ 随时间 $t \\in [0, 1]$ 的演化：\n\n$$ dx_t = v(x_t, t) dt $$\n\n其中 $v(x, t)$ 是 **速度场 (Velocity Field)**。\n\n### 1. 与扩散模型 (Diffusion) 的关系\n在扩散模型中，概率流 ODE (PF-ODE) 能够以确定性的方式复现随机微分方程 (SDE) 的边际分布。通过得分匹配 (Score Matching)，速度场可表示为：\n$$ v(x_t, t) = f(x_t, t) - \\frac{1}{2} g(t)^2 \\nabla_x \\log p_t(x_t) $$\n其中 $\\nabla_x \\log p_t(x_t)$ 即为得分函数 (Score Function)。\n\n### 2. 流匹配 (Flow Matching, FM)\n流匹配是 π₀ 等最新 VLA 模型采用的技术。它不再通过复杂的扩散/去噪链条，而是直接回归一个最优的速度场。\n- **目标函数**：直接最小化预测速度与理想线性插值速度之间的差异：\n  $$ \\mathcal{L}_{FM}(\\theta) = \\mathbb{E}_{t, x_0, x_1} [ \\| v_\\theta(x_t, t) - (x_1 - x_0) \\|^2 ] $$\n\n## 为什么对机器人重要\n\n1. **推理速度**：传统的扩散模型需要 50-100 步迭代；概率流 ODE 可以通过高级求解器（如 RK45）在 1-3 步内生成动作，满足机器人的实时性需求。\n2. **时域平滑性**：由于动作生成被建模为连续流，输出的轨迹序列 $a_{t:t+k}$ 在数学上具有更好的 C¹ 连续性，减少了电机的冲击。\n3. **少样本适应**：通过微调（Fine-tuning）速度场，模型可以极快地学习新环境下的动作偏好。\n\n## 关联页面\n- [π₀ (Pi-zero) 策略模型](../methods/π0-policy.md)\n- [Diffusion Policy](../methods/diffusion-policy.md)\n- [Generative World Models](../methods/generative-world-models.md)\n\n## 参考来源\n- Lipman, Y., et al. (2022). *Flow Matching for Scalable Simulation*.\n- Song, Y., et al. (2020). *Score-Based Generative Modeling through Stochastic Differential Equations*.",
+      "tags": [
+        "formalization",
+        "control",
+        "rl",
+        "tooling"
+      ],
+      "related": [
+        "wiki-methods-π0-policy",
+        "wiki-methods-diffusion-policy",
+        "wiki-methods-generative-world-models"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
       "id": "wiki-formalizations-se3-representation",
       "title": "SE(3) Representation (位姿表示形式化)",
       "path": "wiki/formalizations/se3-representation.md",
@@ -2469,6 +2610,27 @@
         "wiki-methods-visual-servoing",
         "wiki-formalizations-vla-tokenization",
         "sources-papers-perception"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
+      "id": "wiki-formalizations-variational-objective",
+      "title": "Variational Objective (变分目标函数)",
+      "path": "wiki/formalizations/variational-objective.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [math, machine-learning, reinforcement-learning, world-models, information-theory]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/latent-imagination.md\n  - ../methods/model-based-rl.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\nsummary: \"变分目标函数（Variational Objective）通过最小化证据下界（ELBO），实现了对复杂高维状态分布的有效近似，是世界模型中 RSSM 训练的核心数学基础。\"\n---\n\n# Variational Objective (变分目标函数)\n\n在构建具身智能的世界模型（World Models）时，我们面临的核心数学挑战是如何从高维、嘈杂的观测（图像）中提取紧凑的、具有预测性的隐变量表示。**变分目标函数 (Variational Objective)**，特别是其核心 **ELBO (Evidence Lower Bound)**，为这一过程提供了坚实的概率论基础。\n\n## 数学定义：ELBO\n\n假设观测为 $x$，隐变量为 $z$。我们希望最大化对数似然 $\\log p(x)$，但这通常是不可计算的。通过引入近似后验分布 $q_\\phi(z|x)$，我们可以推导出证据下界：\n\n$$ \\log p(x) \\geq \\mathbb{E}_{q_\\phi(z|x)} [ \\log p_\\theta(x|z) ] - D_{KL} (q_\\phi(z|x) \\| p(z)) $$\n\n其中：\n- **重建项 (Reconstruction Term)**：期望模型能从隐变量 $z$ 中完美还原观测 $x$。\n- **正则项 (KL Divergence)**：强制近似后验分布不要偏离先验分布 $p(z)$ 太远。\n\n## 在 RSSM / Dreamer 中的形式化\n\n在时序预测模型中，变分目标函数扩展为：\n\n$$ \\mathcal{L}(\\theta, \\phi) = \\sum_{t=1}^T \\left( \\underbrace{\\mathbb{E}_{q_\\phi} [ \\log p_\\theta(o_t | \\hat{s}_t) ]}_{\\text{观测重建}} + \\underbrace{\\mathbb{E}_{q_\\phi} [ \\log p_\\theta(r_t | \\hat{s}_t) ]}_{\\text{奖励预测}} - \\beta \\underbrace{D_{KL} (q_\\phi(s_t | s_{t-1}, a_{t-1}, o_t) \\| p_\\theta(s_t | s_{t-1}, a_{t-1}))}_{\\text{跨时域一致性}} \\right) $$\n\n### 核心机制：\n- **后验 (Posterior)**：看到了真实观测 $o_t$ 后的状态估计。\n- **先验 (Prior)**：仅根据历史和动作进行的“盲目”预测。\n- **KL 散度最小化**：强制“梦境（先验）”尽可能地逼近“现实（后验）”。这就是为什么智能体在梦中（潜空间展开）训练出的策略能迁移到现实的原因。\n\n## 信息论视角\n\n变分目标函数本质上是在执行 **信息瓶颈 (Information Bottleneck)** 原则：压缩掉与预测未来无关的背景干扰（如环境光影、墙壁颜色），只保留对任务有用的物理规律。\n\n## 关联页面\n- [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [Action Tokenization](./vla-tokenization.md)\n\n## 参考来源\n- Kingma, D. P., & Welling, M. (2013). *Auto-Encoding Variational Bayes*.\n- Hafner, D., et al. (2019). *Dream to Control*.",
+      "tags": [
+        "formalization",
+        "control",
+        "rl"
+      ],
+      "related": [
+        "wiki-concepts-latent-imagination",
+        "wiki-methods-model-based-rl",
+        "wiki-formalizations-vla-tokenization"
       ],
       "source_links": [],
       "status": "active",
@@ -2607,7 +2769,7 @@
       "title": "操作任务演示数据收集指南",
       "path": "wiki/queries/demo-data-collection-guide.md",
       "summary": "type: query。",
-      "content_markdown": "---\ntype: query\ntags: [imitation-learning, teleoperation, data-collection, manipulation, behavior-cloning]\nstatus: complete\nsummary: 用模仿学习做操作任务时，高效收集高质量人类演示数据的完整指南，覆盖硬件选型、数据质量保障和常见陷阱。\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/teleoperation.md\nrelated:\n  - ../tasks/teleoperation.md\n  - ../entities/oculust-quest-teleop.md\n  - ../concepts/embodied-data-cleaning.md\n  - ../methods/imitation-learning.md\n  - ../methods/behavior-cloning.md\n  - ../tasks/bimanual-manipulation.md\n---\n\n# 操作任务演示数据收集指南\n\n> **Query 产物**：本页由以下问题触发：「用模仿学习做操作，怎么高效收集人类演示数据？」\n> 综合来源：[Teleoperation](../tasks/teleoperation.md)、[Imitation Learning](../methods/imitation-learning.md)、[Behavior Cloning](../methods/behavior-cloning.md)、[Bimanual Manipulation](../tasks/bimanual-manipulation.md)\n\n## TL;DR 快速结论\n\n- **首选系统**：ALOHA / ACT 系统（双臂、低延迟、开源）适合多数操作任务\n- **数据量基准**：简单抓取 ~50 条，复杂双臂任务 ~200–500 条，精细操作可能需要 1000+\n- **最重要原则**：宁可少而精，不要多而杂——一条高质量演示胜过五条不稳定演示\n\n---\n\n## 硬件选项对比\n\n| 系统 | 自由度 | 延迟 | 成本 | 适用任务 | 优缺点 |\n|------|-------|------|------|---------|--------|\n| **ALOHA**（领导者-跟随者） | 14DoF（双臂各 7DoF） | 极低（直接关节映射） | 中（~15k USD DIY） | 双臂精细操作、桌面任务 | 沉浸感高、延迟低；需要专用硬件 |\n| **[VR 手柄](../entities/oculust-quest-teleop.md)**（Quest / Vive） | 6DoF + 手指 | 低–中（20–50ms） | 低（~500 USD） | 远程操作、大范围运动 | 灵活通用；手指细节难捕捉 |\n| **SpaceMouse** | 6DoF 末端速度控制 | 低 | 低（~150 USD） | 单臂、简单拾取放置 | 设置简单；不直观，学习曲线高 |\n| **动觉示教**（Kinesthetic） | 全关节直接引导 | 零（直接物理接触） | 无额外硬件 | 精细任务、接触丰富操作 | 最直觉；需要机器人支持反向驱动 |\n| **手套 / 手部追踪**（Leap / MediaPipe） | 手指 + 手腕 | 中 | 低–中 | 灵巧手操作 | 手指精度高；腕部绝对位置漂移 |\n\n**选型原则：**\n- 任务需要双手协调 → ALOHA 或双臂 VR 方案\n- 资源有限、快速验证 → SpaceMouse（单臂）或动觉示教\n- 灵巧手操作（多指） → 手部追踪 + 专用末端执行器\n\n---\n\n## 数据质量检查清单\n\n### 演示前检查\n\n- [ ] 机器人标定（末端执行器位置误差 < 2mm）\n- [ ] 相机位置固定，确保任务执行过程中目标物体始终在视野内\n- [ ] 物体初始位置设定方式一致（使用固定夹具或标记，而非目测）\n- [ ] 录制系统时间戳同步（RGB 相机、深度相机、关节状态）\n- [ ] 数据格式确认：`action`（关节位置/末端姿态）、`obs`（图像 + 本体感知）对齐\n\n### 演示中标准\n\n- [ ] 每条演示使用**相同策略**（避免在同一数据集里混入不同操作风格）\n- [ ] 演示成功率 > 90%（失败演示原则上剔除，除非训练 DAgger）\n- [ ] 任务完成时间标准差 < 20%（过高说明示教者操作不稳定）\n- [ ] 关键节点动作清晰（抓取、插入等关键帧动作要明确，避免犹豫）\n\n### 演示后验收 (详见 [具身数据清洗](../concepts/embodied-data-cleaning.md))\n\n- [ ] 可视化回放：用 `rerun.io` 或 `rviz` 逐帧检查轨迹\n- [ ] 剔除异常轨迹（关节速度突变、force/torque 异常峰值）\n- [ ] 数据分布检查：用 PCA 或 t-SNE 可视化 action 分布，确认无明显离群簇\n- [ ] 分辨率确认：图像分辨率、关节采样频率满足算法要求（通常 ≥ 50Hz）\n\n---\n\n## 提升数据效率的实践技巧\n\n### 1. 任务分解（Task Segmentation）\n\n将复杂任务拆分为子任务，分段收集演示，再用层次策略或子目标条件策略训练。每段复杂度低，示教者更容易保持一致性。\n\n### 2. 数据增强（Augmentation）\n\n- **颜色抖动**：对 RGB 图像做颜色扰动，提升对光照变化的鲁棒性\n- **随机裁剪**：对图像做随机裁剪，提升对相机轻微偏移的鲁棒性\n- **镜像翻转**：对左右对称任务使用翻转增强（需同时翻转 action）\n- 注意：**不要**对接触状态敏感的动作序列做过强增强\n\n### 3. 示教者筛选与训练\n\n- 首次演示前给示教者看成功案例视频，统一操作策略\n- 用前 10–20 条演示做成功率统计，不达标的示教者需重新培训\n- 多个示教者数据混用时，用 `demonstrator_id` 标记，便于后续分析\n\n### 4. 在线数据收集（DAgger 风格）\n\n策略训练一轮后，让策略尝试执行，在策略失败处（分布外状态）补充人类修正演示，逐轮迭代改善分布覆盖。\n\n---\n\n## 常见陷阱\n\n| 陷阱 | 后果 | 规避方法 |\n|------|------|---------|\n| 演示风格不统一（有时慢慢放，有时快速放） | BC 策略学到均值，两种风格都做不好 | 固定操作节奏，或用多模态策略（Diffusion Policy） |\n| 物体初始位置随意放置 | 策略只学到特定初始位置 | 使用夹具或在固定范围内随机化初始位置 |\n| 数据量不足就开始训练调参 | 浪费调参时间，最终发现是数据问题 | 先用 50 条验证 BC 能过拟合，再扩充数据 |\n| 时间戳不对齐 | action 和 obs 不对应，策略学到错误映射 | 用硬件触发同步或统一 NTP 时钟 |\n| 忘记记录末端执行器状态（open/close） | 策略无法学习抓取时机 | 确保 gripper 状态在 obs 和 action 中都有记录 |\n| 演示过于依赖特定颜色/纹理的物体 | 换物体后策略失效 | 用多种颜色/纹理的同类物体收集演示 |\n\n---\n\n## 一句话记忆\n\n> 「数据质量 > 数量；先保证成功率 > 90%，再追求多样性——脏数据用再多也训不好 BC。」\n\n---\n\n## 参考来源\n\n- [Imitation Learning 源文档](../../sources/papers/imitation_learning.md)\n- [Teleoperation 源文档](../../sources/papers/teleoperation.md)\n- Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT/ALOHA, 2023)\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023)\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (DAgger, 2011)\n\n## 关联页面\n\n- [Teleoperation](../tasks/teleoperation.md) — 遥操作任务定义与系统设计\n- [Imitation Learning](../methods/imitation-learning.md) — 模仿学习方法全景\n- [Behavior Cloning](../methods/behavior-cloning.md) — BC 算法与局限\n- [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂操作任务挑战",
+      "content_markdown": "---\ntype: query\ntags: [imitation-learning, teleoperation, data-collection, manipulation, behavior-cloning]\nstatus: complete\nsummary: 用模仿学习做操作任务时，高效收集高质量人类演示数据的完整指南，覆盖硬件选型、数据质量保障和常见陷阱。\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/teleoperation.md\nrelated:\n  - ../tasks/teleoperation.md\n  - ../entities/oculust-quest-teleop.md\n  - ../concepts/embodied-data-cleaning.md\n  - ../methods/imitation-learning.md\n  - ../methods/behavior-cloning.md\n  - ../tasks/bimanual-manipulation.md\n---\n\n# 操作任务演示数据收集指南\n\n> **Query 产物**：本页由以下问题触发：「用模仿学习做操作，怎么高效收集人类演示数据？」\n> 综合来源：[Teleoperation](../tasks/teleoperation.md)、[Imitation Learning](../methods/imitation-learning.md)、[Behavior Cloning](../methods/behavior-cloning.md)、[Bimanual Manipulation](../tasks/bimanual-manipulation.md)\n\n## TL;DR 快速结论\n\n- **首选系统**：ALOHA / ACT 系统（双臂、低延迟、开源）适合多数操作任务\n- **数据量基准**：简单抓取 ~50 条，复杂双臂任务 ~200–500 条，精细操作可能需要 1000+\n- **最重要原则**：宁可少而精，不要多而杂——一条高质量演示胜过五条不稳定演示\n\n---\n\n## 硬件选项对比\n\n| 系统 | 自由度 | 延迟 | 成本 | 适用任务 | 优缺点 |\n|------|-------|------|------|---------|--------|\n| **ALOHA**（领导者-跟随者） | 14DoF（双臂各 7DoF） | 极低（直接关节映射） | 中（~15k USD DIY） | 双臂精细操作、桌面任务 | 沉浸感高、延迟低；需要专用硬件 |\n| **[VR 手柄](../entities/oculust-quest-teleop.md)**（Quest / Vive） | 6DoF + 手指 | 低–中（20–50ms） | 低（~500 USD） | 远程操作、大范围运动 | 灵活通用；手指细节难捕捉 |\n| **SpaceMouse** | 6DoF 末端速度控制 | 低 | 低（~150 USD） | 单臂、简单拾取放置 | 设置简单；不直观，学习曲线高 |\n| **动觉示教**（Kinesthetic） | 全关节直接引导 | 零（直接物理接触） | 无额外硬件 | 精细任务、接触丰富操作 | 最直觉；需要机器人支持反向驱动 |\n| **手套 / 手部追踪**（Leap / MediaPipe） | 手指 + 手腕 | 中 | 低–中 | 灵巧手操作 | 手指精度高；腕部绝对位置漂移 |\n\n**选型原则：**\n- 任务需要双手协调 → ALOHA 或双臂 VR 方案\n- 资源有限、快速验证 → SpaceMouse（单臂）或动觉示教\n- 灵巧手操作（多指） → 手部追踪 + 专用末端执行器\n\n---\n\n## 数据质量检查清单\n\n### 演示前检查\n\n- [ ] 机器人标定（末端执行器位置误差 < 2mm）\n- [ ] 相机位置固定，确保任务执行过程中目标物体始终在视野内\n- [ ] 物体初始位置设定方式一致（使用固定夹具或标记，而非目测）\n- [ ] 录制系统时间戳同步（RGB 相机、深度相机、关节状态）\n- [ ] 数据格式确认：`action`（关节位置/末端姿态）、`obs`（图像 + 本体感知）对齐\n\n### 演示中标准\n\n- [ ] 每条演示使用**相同策略**（避免在同一数据集里混入不同操作风格）\n- [ ] 演示成功率 > 90%（失败演示原则上剔除，除非训练 DAgger）\n- [ ] 任务完成时间标准差 < 20%（过高说明示教者操作不稳定）\n- [ ] 关键节点动作清晰（抓取、插入等关键帧动作要明确，避免犹豫）\n\n### 演示后验收 (详见 [具身数据清洗](../concepts/embodied-data-cleaning.md))\n\n- [ ] 可视化回放：用 `rerun.io` 或 `rviz` 逐帧检查轨迹\n- [ ] 剔除异常轨迹（关节速度突变、force/torque 异常峰值）\n- [ ] 数据分布检查：用 PCA 或 t-SNE 可视化 action 分布，确认无明显离群簇\n- [ ] 分辨率确认：图像分辨率、关节采样频率满足算法要求（通常 ≥ 50Hz）\n\n---\n\n## 提升数据效率的实践技巧\n\n### 1. 任务分解（Task Segmentation）\n\n将复杂任务拆分为子任务，分段收集演示，再用层次策略或子目标条件策略训练。每段复杂度低，示教者更容易保持一致性。\n\n### 2. 数据增强（Augmentation）\n\n- **颜色抖动**：对 RGB 图像做颜色扰动，提升对光照变化的鲁棒性\n- **随机裁剪**：对图像做随机裁剪，提升对相机轻微偏移的鲁棒性\n- **镜像翻转**：对左右对称任务使用翻转增强（需同时翻转 action）\n- 注意：**不要**对接触状态敏感的动作序列做过强增强\n\n### 3. 示教者筛选与训练\n\n- 首次演示前给示教者看成功案例视频，统一操作策略\n- 用前 10–20 条演示做成功率统计，不达标的示教者需重新培训\n- 多个示教者数据混用时，用 `demonstrator_id` 标记，便于后续分析\n\n### 4. 在线数据收集（DAgger 风格）\n\n策略训练一轮后，让策略尝试执行，在策略失败处（分布外状态）补充人类修正演示，逐轮迭代改善分布覆盖。\n\n---\n\n## 常见陷阱\n\n| 陷阱 | 后果 | 规避方法 |\n|------|------|---------|\n| 演示风格不统一（有时慢慢放，有时快速放） | BC 策略学到均值，两种风格都做不好 | 固定操作节奏，或用多模态策略（Diffusion Policy） |\n| 物体初始位置随意放置 | 策略只学到特定初始位置 | 使用夹具或在固定范围内随机化初始位置 |\n| 数据量不足就开始训练调参 | 浪费调参时间，最终发现是数据问题 | 先用 50 条验证 BC 能过拟合，再扩充数据 |\n| 时间戳不对齐 | action 和 obs 不对应，策略学到错误映射 | 用硬件触发同步或统一 NTP 时钟 |\n| 忘记记录末端执行器状态（open/close） | 策略无法学习抓取时机 | 确保 gripper 状态在 obs 和 action 中都有记录 |\n| 演示过于依赖特定颜色/纹理的物体 | 换物体后策略失效 | 用多种颜色/纹理的同类物体收集演示 |\n\n---\n\n## 一句话记忆\n\n> 「数据质量 > 数量；先保证成功率 > 90%，再追求多样性——脏数据用再多也训不好 BC。」\n\n---\n\n## 参考来源\n\n- [Imitation Learning 源文档](../../sources/papers/imitation_learning.md)\n- [Teleoperation 源文档](../../sources/papers/teleoperation.md)\n- Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT/ALOHA, 2023)\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* (2023)\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* (DAgger, 2011)\n\n## 关联页面\n\n- [Teleoperation](../tasks/teleoperation.md) — 遥操作任务定义与系统设计\n- [Imitation Learning](../methods/imitation-learning.md) — 模仿学习方法全景\n- [Behavior Cloning](../methods/behavior-cloning.md) — BC 算法与局限\n- [Generative Data Augmentation](../methods/generative-data-augmentation.md) — 利用生成式 AI 扩充长尾数据\n- [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂操作任务挑战",
       "tags": [
         "query",
         "il"
@@ -2616,6 +2778,7 @@
         "wiki-tasks-teleoperation",
         "wiki-methods-imitation-learning",
         "wiki-methods-behavior-cloning",
+        "wiki-methods-generative-data-augmentation",
         "wiki-tasks-bimanual-manipulation",
         "entity-oculust-quest-teleop",
         "wiki-concepts-embodied-data-cleaning",
@@ -2677,6 +2840,34 @@
       "page_type": "query"
     },
     {
+      "id": "wiki-queries-field-robotics-troubleshooting",
+      "title": "野外机器人排障指南",
+      "path": "wiki/queries/field-robotics-troubleshooting.md",
+      "summary": "type: query。",
+      "content_markdown": "---\ntype: query\ntags: [humanoid, quadruped, deployment, troubleshooting, field-robotics]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../overview/humanoid-motion-control-know-how.md\n  - ./robot-policy-debug-playbook.md\n  - ./real-time-control-middleware-guide.md\n  - ../concepts/terrain-adaptation.md\nsources:\n  - ../overview/humanoid-motion-control-know-how.md\nsummary: \"野外机器人排障指南：总结了机器人在非结构化地形、极端光照及不确定天气下常见的失效模式，如激光雷达过曝、IMU 累计漂移及接触估计误报。\"\n---\n\n# 野外机器人排障指南\n\n> **Query 产物**：本页由以下问题触发：「机器人在实验室跑得很稳，一带到户外草地或碎石路就各种摔，传感器也频繁报错，怎么排查？」\n> 综合来源：[Know-how](../overview/humanoid-motion-control-know-how.md)、[System ID](../concepts/system-identification.md)\n\n---\n\n实验室环境是“匀质”的，而野外环境具有高随机性和干扰。\n\n## 1. 感知层：当“眼睛”失效时\n\n### 激光雷达 (LiDAR)\n- **失效模式**：草地、积水产生的镜面反射或漫反射会导致点云极度嘈杂。\n- **排障**：\n  - 检查强度 (Intensity) 过滤。\n  - 在 [Terrain Adaptation](../concepts/terrain-adaptation.md) 中增加地平面拟合的鲁棒性（如 RANSAC 算法）。\n\n### 摄像头\n- **失效模式**：户外强光直射导致图像过曝，物体检测失败。\n- **排障**：\n  - 启用硬件级的自动曝光 (Auto-exposure) 与自动白平衡。\n  - 训练 VLA 或感知模型时必须加入大量的亮度增强（Data Augmentation）。\n\n## 2. 状态估计层：当“平衡感”产生幻觉\n\n### IMU 累积漂移\n- **现象**：机器人走着走着，Base 姿态开始向一边倾斜，最终摔倒。\n- **原因**：电机大电流产生的电磁干扰（EMI）或机身剧烈振动导致的加速度计饱和。\n- **对策**：\n  - 使用双 IMU 冗余校验。\n  - 在卡尔曼滤波中动态调高振动状态下的 R（观测噪声）矩阵。\n\n### 接触估计误报 (False Contact)\n- **现象**：踩到深草或软泥时，足端压力传感器未达到阈值，但控制层认为已触地。\n- **对策**：\n  - 结合关节电流（扭矩）进行多源融合判定。\n  - 引入 [Contact Estimation](../concepts/contact-estimation.md) 概率模型，而不是简单的阈值判定。\n\n## 3. 动力学层：Sim2Real 的野外显现\n\n### 地面硬度不匹配\n- **现象**：机器人在实验室硬地走得很干脆，在草地表现得像“深陷泥潭”。\n- **原因**：草地具有阻尼 and 弹性，而仿真通常假设刚性地面。\n- **调教技巧**：\n  - 在 WBC 或 RL 中降低足端 PD 的 $K_p$。\n  - 在 [Domain Randomization](./domain-randomization-guide.md) 中加入地面刚度随机化。\n\n## 关联页面\n- [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)\n- [机器人策略排障手册](./robot-policy-debug-playbook.md)\n- [实时运控中间件配置指南](./real-time-control-middleware-guide.md)\n- [地形自适应 (Terrain Adaptation)](../concepts/terrain-adaptation.md)\n\n## 参考来源\n- [humanoid-motion-control-know-how.md](../overview/humanoid-motion-control-know-how.md)\n- ETH Zurich RSL, *Learning to Walk in Minutes* 户外测试部分。",
+      "tags": [
+        "query",
+        "humanoid",
+        "control",
+        "dynamics",
+        "rl",
+        "il"
+      ],
+      "related": [
+        "wiki-overview-humanoid-motion-control-know-how",
+        "wiki-queries-robot-policy-debug-playbook",
+        "wiki-queries-real-time-control-middleware-guide",
+        "wiki-concepts-terrain-adaptation",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-contact-estimation",
+        "wiki-queries-domain-randomization-guide"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "query"
+    },
+    {
       "id": "wiki-queries-foundation-policy-for-humanoids",
       "title": "人形机器人 Foundation Policy 适用边界分析",
       "path": "wiki/queries/foundation-policy-for-humanoids.md",
@@ -2723,6 +2914,31 @@
         "wiki-tasks-locomotion",
         "wiki-comparisons-wbc-vs-rl",
         "sources-papers-humanoid-hardware"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "query"
+    },
+    {
+      "id": "wiki-queries-humanoid-battery-thermal-management",
+      "title": "人形机器人电池与热管理指南",
+      "path": "wiki/queries/humanoid-battery-thermal-management.md",
+      "summary": "type: query。",
+      "content_markdown": "---\ntype: query\ntags: [humanoid, hardware, battery, thermal, engineering]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../overview/humanoid-motion-control-know-how.md\n  - ../entities/humanoid-robot.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ../tasks/locomotion.md\nsources:\n  - ../overview/humanoid-motion-control-know-how.md\nsummary: \"人形机器人电池与热管理指南：探讨了在大功率电机输出下的电池放电倍率策略、电芯温度监控以及主动/被动散热设计，以保障真机运行的安全性与续航。\"\n---\n\n# 人形机器人电池与热管理指南\n\n> **Query 产物**：本页由以下问题触发：「人形机器人在做高动态动作时电池掉电极快，且关节电机经常过热停机，怎么排查和优化？」\n> 综合来源：[Know-how](../overview/humanoid-motion-control-know-how.md)、[Humanoid Hardware](../entities/humanoid-robot.md)\n\n---\n\n人形机器人的能量密度要求极高。一个具有 20-40 个关节的系统，在执行跳跃或快速行走时，瞬时峰值功率可能达到数千瓦。\n\n## 1. 电池系统 (Battery Management)\n\n### C 速率与放电曲线\n- **需求**：普通的航模电池可能无法支撑人形机器人的持续高动态输出。必须选择 **高 C 速率 (20C+)** 的锂聚合物 (LiPo) 或半固态电池。\n- **压降 (Voltage Sag) 处理**：当电机全力启动时，电池端电压会瞬间骤降，可能导致主板（IPC）掉电。\n  - **硬件对策**：IPC 必须使用独立的降压稳压模块或带有超级电容的 UPS。\n  - **软件对策**：在控制层限制瞬时扭矩总和，防止触发 BMS 的过流保护。\n\n### 监控重点\n- **电芯一致性**：人形机器人重心敏感，不平衡的电芯可能导致电池局部过热甚至起火。\n- **实时 SOC 估算**：不能只看电压，必须结合库仑计进行精确计算。\n\n## 2. 热管理 (Thermal Management)\n\n关节电机通常 be 封装在狭小的连杆内，散热条件极差。\n\n### 关节过热排障流程\n1. **检查力矩分配 (WBC Tuning)**：如果机器人静止站立时某个关节温度持续升高，说明 WBC 分配的静态力矩过大。尝试优化质心位置（CoM），让重力更均衡地分布在支撑腿上。\n2. **降低减速比依赖**：过高的减速比（如谐波减速器）会产生巨大的内部摩擦热。\n3. **主动散热**：对于大功率髋关节和膝关节，加装微型离心风扇进行强迫对流是必要的。\n\n### 保护逻辑\n- **两级警告**：\n  - **Warn** (60°C)：策略限速，减少动作幅度。\n  - **Critical** (80°C)：系统切入“重力补偿”或“紧急坐下”模式，断开大电流。\n\n## 3. 工程最佳实践\n\n- **母线电容设计**：在每个关节驱动器端并联高耐压电容，吸收电机刹车时的反向感应电动势（Regenerative Braking），防止烧毁 BMS。\n- **导热路径**：利用铝合金机身作为巨大的散热片，确保电机外壳与结构件之间有良好的导热硅脂连接。\n\n## 关联页面\n- [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)\n- [人形机器人 (Humanoid Robot)](../entities/humanoid-robot.md)\n- [实时运控中间件配置指南](./real-time-control-middleware-guide.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n\n## 参考来源\n- [humanoid-motion-control-know-how.md](../overview/humanoid-motion-control-know-how.md)\n- Unitree / Boston Dynamics 公开技术博客摘要。",
+      "tags": [
+        "query",
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "il"
+      ],
+      "related": [
+        "wiki-overview-humanoid-motion-control-know-how",
+        "entity-humanoid-robot",
+        "wiki-queries-real-time-control-middleware-guide",
+        "wiki-tasks-locomotion"
       ],
       "source_links": [],
       "status": "active",
@@ -3615,7 +3831,7 @@
       "title": "人形机器人（Humanoid Robot）",
       "path": "wiki/entities/humanoid-robot.md",
       "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./unitree.md\n  - ./anymal.md\n  - ./boston-dynamics.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。\"\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 核心特征\n\n人形机器人之所以成为机器人研究的“明珠”，是因为它具备以下核心特征：\n\n1. **多自由度（High DOFs）**：通常具有 20 到 50 个以上的自由度，涵盖颈部、躯干、手臂（含手掌）和腿部。这使得它能够模拟人类的复杂动作，并在人类设计的环境中（如楼梯、狭窄通道）灵活穿梭。\n2. **非稳定平衡（Unstable Equilibrium）**：与轮式或四足机器人不同，双足支撑面较小且重心较高。这要求控制器必须实时处理动态平衡，防止倾跌。\n3. **接触丰富性（Contact Richness）**：人形机器人的任务通常涉及频繁的接触切换（足端接地、手部操作、身体靠墙等），这在物理建模和控制算法上提出了极高要求。\n4. **具身智能载体**：它的类人形态使其能够直接复用大量人类演示数据（MoCap, Video），是端到端具身智能（VLA, Foundation Models）训练的最佳平台。\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |\n|------|------|-----|-----------|---------|------|\n| **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |\n| **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |\n| **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |\n| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |\n| **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |\n| **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 与四足机器人的区别\n\n虽然两者都属于腿足机器人（Legged Robots），但人形机器人面临的挑战更为严苛：\n\n- **重心高度**：人形机器人重心更高，支撑区域更窄，扰动容忍度极低。四足机器人天然具备静态稳定性，而人形机器人必须通过主动控制维持动态平衡。\n- **操作能力**：四足机器人主要侧重于移动（Locomotion），而人形机器人必须兼顾操作（Manipulation）。这种“动中稳”的操作（Loco-manipulation）是目前最前沿的挑战。\n- **自由度冗余**：人形机器人的双臂和躯干提供了极高的运动冗余度，如何有效地协调全身（Whole-body Coordination）以完成多任务，是传统控制与 RL 算法的核心差异点。\n\n## 核心挑战\n\n1. **动态平衡与回收**：在剧烈扰动或复杂地形下不倒地，或在倒地后自主站起。\n2. **Sim2Real Gap**：复杂的传动链、执行器非线性、接触动力学误差，导致仿真策略难以直接在实机运行。\n3. **高频控制与延迟**：人形机器人通常需要 500Hz-1000Hz 的控制频率，对算力和中间件（ROS2/FastDDS）提出了极高要求。\n4. **能源与续航**：在高自由度高功率输出下，如何维持超过 2 小时的有效工作时间是制约商业化的瓶颈。\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）\n- [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./unitree.md\n  - ./anymal.md\n  - ./boston-dynamics.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。\"\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 核心特征\n\n人形机器人之所以成为机器人研究的“明珠”，是因为它具备以下核心特征：\n\n1. **多自由度（High DOFs）**：通常具有 20 到 50 个以上的自由度，涵盖颈部、躯干、手臂（含手掌）和腿部。这使得它能够模拟人类的复杂动作，并在人类设计的环境中（如楼梯、狭窄通道）灵活穿梭。\n2. **非稳定平衡（Unstable Equilibrium）**：与轮式或四足机器人不同，双足支撑面较小且重心较高。这要求控制器必须实时处理动态平衡，防止倾跌。\n3. **接触丰富性（Contact Richness）**：人形机器人的任务通常涉及频繁的接触切换（足端接地、手部操作、身体靠墙等），这在物理建模和控制算法上提出了极高要求。\n4. **具身智能载体**：它的类人形态使其能够直接复用大量人类演示数据（MoCap, Video），是端到端具身智能（VLA, Foundation Models）训练的最佳平台。\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |\n|------|------|-----|-----------|---------|------|\n| **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |\n| **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |\n| **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |\n| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |\n| **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |\n| **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 与四足机器人的区别\n\n虽然两者都属于腿足机器人（Legged Robots），但人形机器人面临的挑战更为严苛：\n\n- **重心高度**：人形机器人重心更高，支撑区域更窄，扰动容忍度极低。四足机器人天然具备静态稳定性，而人形机器人必须通过主动控制维持动态平衡。\n- **操作能力**：四足机器人主要侧重于移动（Locomotion），而人形机器人必须兼顾操作（Manipulation）。这种“动中稳”的操作（Loco-manipulation）是目前最前沿的挑战。\n- **自由度冗余**：人形机器人的双臂和躯干提供了极高的运动冗余度，如何有效地协调全身（Whole-body Coordination）以完成多任务，是传统控制与 RL 算法的核心差异点。\n\n## 核心挑战\n\n1. **动态平衡与回收**：在剧烈扰动或复杂地形下不倒地，或在倒地后自主站起。\n2. **Sim2Real Gap**：复杂的传动链、执行器非线性、接触动力学误差，导致仿真策略难以直接在实机运行。\n3. **高频控制与延迟**：人形机器人通常需要 500Hz-1000Hz 的控制频率，对算力和中间件（ROS2/FastDDS）提出了极高要求。\n4. **能源与续航**：在高自由度高功率输出下，如何维持超过 2 小时的有效工作时间是制约商业化的瓶颈。\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）\n- [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）\n- [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md) — 硬件部署中的动力与散热闭坑\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)",
       "tags": [
         "entities",
         "entity",
@@ -3633,6 +3849,7 @@
         "entity-unitree",
         "entity-anymal",
         "entity-boston-dynamics",
+        "wiki-queries-humanoid-battery-thermal-management",
         "wiki-queries-humanoid-hardware-selection",
         "sources-papers-humanoid-hardware",
         "sources-papers-humanoid-motion-control-know-how"
@@ -3779,6 +3996,31 @@
         "wiki-queries-dexterous-data-collection-guide",
         "wiki-tasks-manipulation",
         "sources-papers-imitation-learning"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-open-source-humanoid-hardware",
+      "title": "开源人形机器人硬件方案对比",
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, robotics, research]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ../queries/humanoid-hardware-selection.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。\"\n---\n\n# 开源人形机器人硬件方案对比\n\n随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。\n\n## 核心方案对比\n\n| 方案名称 | 主导机构 | 自由度 (DOF) | 核心执行器 | 成本估算 | 软件生态 |\n|------|------|-----|-----------|---------|---------|\n| **Berkeley Humanoid** | UC Berkeley | 12-14 | 准直接驱动 (QDD) | < 5,000 USD | 基于 Python/C++ 的简易控制框架 |\n| **Roboto Origin** | Roboparty | 20+ | QDD + 舵机混合 | < 3,000 USD | ROS2 支持，兼容简单平衡算法 |\n| **ODRI (Bolt/Solo)** | Max Planck | 6-12 (双腿/四足) | 基于 T-Motor 改造 | 中等 | OCS2 / Pinocchio 深度支持 |\n| **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |\n\n## 1. Berkeley Humanoid (准直接驱动派)\n- **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。\n- **优点**：动力学透明度高，非常适合做强化学习的 Sim2Real 验证。\n\n## 2. Roboto Origin (科普与原型派)\n- **特点**：由国内开源社区驱动，旨在打造人人都能拥有的“第一台人形机器人”。\n- **优点**：文档详尽，组装门槛低。\n\n## 3. ODRI 架构 (学术严谨派)\n- **特点**：Open Dynamic Robot Initiative。虽然其人形版本较少，但其开源的执行器模块（Actuator Modules）被广泛借鉴。\n- **优点**：力控精度极高，代码质量达工业级。\n\n## 选型建议\n\n- **如果你想验证 RL 算法**：首选 **Berkeley Humanoid** 类方案，因为其 QDD 电机的动力学建模最为简单。\n- **如果你想研究全身协调 (WBC)**：建议寻找支持更高自由度的平台，或者在仿真中使用 **ODRI** 模型进行先行验证。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- 各开源项目 GitHub Readme 与 Wiki。",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl"
+      ],
+      "related": [
+        "entity-humanoid-robot",
+        "wiki-queries-humanoid-hardware-selection",
+        "wiki-roadmaps-humanoid-control-roadmap",
+        "sources-papers-humanoid-hardware"
       ],
       "source_links": [],
       "status": "active",
