@@ -173,7 +173,7 @@ $$
 - 计算更重
 
 ### 5. Optimization-based Estimation
-把状态估计写成滑窗优化或 MAP 问题。
+把状态估计写成滑窗优化或 MAP 问题。详见 [Kalman Filter vs. Optimization-based Estimation 选型对比](../comparisons/kalman-filter-vs-optimization-based-estimation.md)。
 
 常见于：
 - VIO / SLAM

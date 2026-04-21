@@ -39,12 +39,12 @@
 
 ## P2: 硬件控制与工业中间件深化 (Quantity)
 
-- [ ] **发布工业级部署指南 (+3)**:
-    - [ ] `wiki/queries/ethercat-master-optimization.md` (如何基于 SOEM/IGH 实现 2kHz 以上的硬实时 EtherCAT 主站优化)。
-    - [ ] `wiki/queries/hardware-abstraction-layer.md` (硬件抽象层 HAL 设计：实现控制代码与不同执行器（QDD/SEA/液压）的彻底解耦)。
-    - [ ] `wiki/entities/open-source-humanoid-brains.md` (开源人形大脑选型：基于 Jetson Orin 与高性能 X86 工控机的算力平衡)。
-- [ ] **新增对比页 (+1)**:
-    - [ ] `wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md` (状态估计：经典的 EKF/UKF 与基于优化的滑窗估计（VIO/WIO）选型对比)。
+- [x] **发布工业级部署指南 (+3)**:
+    - [x] `wiki/queries/ethercat-master-optimization.md` (如何基于 SOEM/IGH 实现 2kHz 以上的硬实时 EtherCAT 主站优化)。
+    - [x] `wiki/queries/hardware-abstraction-layer.md` (硬件抽象层 HAL 设计：实现控制代码与不同执行器（QDD/SEA/液压）的彻底解耦)。
+    - [x] `wiki/entities/open-source-humanoid-brains.md` (开源人形大脑选型：基于 Jetson Orin 与高性能 X86 工控机的算力平衡)。
+- [x] **新增对比页 (+1)**:
+    - [x] `wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md` (状态估计：经典的 EKF/UKF 与基于优化的滑窗估计（VIO/WIO）选型对比)。
 
 ## P3: 交互层“智能搜索”提升 (UX/UI)
 
