@@ -822,6 +822,13 @@
         <input type="range" id="sl-font" min="6" max="22" value="15" step="1"
                aria-label="节点字体大小" />
       </div>
+
+      <div class="slider-divider"></div>
+
+      <div class="slider-row" style="flex-direction:row; justify-content:space-between; align-items:center;">
+        <span class="slider-label" style="margin-bottom:0">🧲 磁吸模式</span>
+        <input type="checkbox" id="check-magnetic" style="width:18px; height:18px; cursor:pointer;" />
+      </div>
     </div>
 
     <!-- ── 筛选浮窗面板 ── -->
@@ -942,6 +949,7 @@
     let nodeScale      = 1.0;    // 节点大小倍数
     let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
     let fontSliderVal  = 15;     // 字体滑块值（6-22），作为乘数作用在nodeScale上
+    let isMagnetic     = false;
 
     /* ── 主题辅助（响应 data-theme 切换）── */
     function isDark() {
@@ -1071,6 +1079,42 @@
       .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
       .alphaDecay(0.025);
 
+    function updateForces() {
+      simulation.force('charge').strength(chargeStrength);
+      
+      if (isMagnetic) {
+        const categories = (colorMode === 'community') 
+          ? Array.from(communityLabelMap.keys())
+          : Array.from(new Set(nodes.map(n => n.type)));
+          
+        const angleStep = (2 * Math.PI) / (categories.length || 1);
+        const radius = Math.min(W, H) * 0.25;
+        const centers = {};
+        categories.forEach((cat, i) => {
+          centers[cat] = {
+            x: W/2 + radius * Math.cos(i * angleStep),
+            y: H/2 + radius * Math.sin(i * angleStep)
+          };
+        });
+
+        const getTargetX = d => {
+          const key = (colorMode === 'community') ? d.community : d.type;
+          return centers[key]?.x || W/2;
+        };
+        const getTargetY = d => {
+          const key = (colorMode === 'community') ? d.community : d.type;
+          return centers[key]?.y || H/2;
+        };
+
+        simulation.force('x', d3.forceX(getTargetX).strength(0.18));
+        simulation.force('y', d3.forceY(getTargetY).strength(0.18));
+      } else {
+        simulation.force('x', null);
+        simulation.force('y', null);
+      }
+      simulation.alpha(0.3).restart();
+    }
+
     /* ── 渲染边 ── */
     const gEdges = gRoot.append('g').attr('class', 'edges');
     const link = gEdges.selectAll('line')
@@ -1199,6 +1243,7 @@
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
+      if (isMagnetic) updateForces();
     }
 
     if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
@@ -1616,9 +1661,13 @@
     document.getElementById('sl-charge').addEventListener('input', ev => {
       chargeStrength = -Number(ev.target.value);
       document.getElementById('val-charge').textContent = chargeStrength;
-      simulation
-        .force('charge', d3.forceManyBody().strength(chargeStrength).distanceMax(400))
-        .alpha(0.45).restart();
+      updateForces();
+    });
+
+    /* 4. 磁吸模式 checkbox */
+    document.getElementById('check-magnetic').addEventListener('change', ev => {
+      isMagnetic = ev.target.checked;
+      updateForces();
     });
 
     /* 2. 节点大小 slider（min=40, max=280, value/100 = nodeScale） */

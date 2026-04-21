@@ -1564,18 +1564,31 @@
         + '</ul></div>';
     }
 
-    function matchExplanation(doc, queryTokens) {
-      var title = (doc.title || '').toLowerCase();
-      var summary = (doc.summary || '').toLowerCase();
+    function matchExplanation(item, queryTokens) {
+      if (!queryTokens || !queryTokens.length) return '';
+      var title = (item.title || '').toLowerCase();
+      var summary = (item.summary || '').toLowerCase();
+      var tags = (item.tags || []).map(function(t) { return t.toLowerCase(); });
+
+      // 检查标签命中 (V20 增强)
+      for (var k = 0; k < tags.length; k++) {
+        for (var l = 0; l < queryTokens.length; l++) {
+          if (tags[k].indexOf(queryTokens[l]) >= 0) {
+            return '核心标签命中: ' + tags[k];
+          }
+        }
+      }
+
       for (var i = 0; i < queryTokens.length; i++) {
         var t = queryTokens[i];
-        if (title.indexOf(t) >= 0) return '标题命中';
+        if (title.indexOf(t) >= 0) return '标题命中: ' + t;
       }
       for (var j = 0; j < queryTokens.length; j++) {
         if (summary.indexOf(queryTokens[j]) >= 0) return '摘要命中';
       }
       return '正文匹配';
     }
+
 
     function renderCards(matched, queryTokens) {
       if (!matched.length) return;
