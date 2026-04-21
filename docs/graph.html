@@ -15,7 +15,7 @@
     }
 
     /* 显式声明字体以防部分浏览器组件继承失效 */
-    #graph-toolbar, .filter-panel, .physics-panel, #graph-tooltip, #graph-sidebar, #graph-legend, .chip, .mode-chip, .filter-mode-chip {
+    #graph-toolbar, .filter-panel, .physics-panel, #graph-tooltip, #graph-sidebar, #graph-legend, .chip, .mode-chip, .filter-mode-chip, .filter-subtitle {
       font-family: var(--font-sans);
     }
 
@@ -408,6 +408,9 @@
       color: #fff;
       border-color: transparent;
     }
+    [data-theme="light"] .filter-subtitle {
+      color: rgba(0,0,0,0.35);
+    }
     [data-theme="light"] .filter-section-title {
       color: rgba(0,0,0,0.35);
     }
@@ -576,6 +579,12 @@
       color: #0d1117;
       border-color: transparent;
       font-weight: 700;
+    }
+    .filter-subtitle {
+      padding: 10px 14px 2px;
+      font-size: .72rem;
+      color: rgba(255,255,255,0.4);
+      font-family: inherit;
     }
     .filter-body {
       padding: 8px 0;
