@@ -675,10 +675,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   display: none;
 }
 .footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 0 50px;
+  border-top: 1px solid var(--header-border);
+  padding: 24px 0;
   color: var(--text-muted);
-  font-size: .88rem;
+  font-size: 0.85rem;
 }
 .footer .container {
   display: flex;

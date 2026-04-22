@@ -81,7 +81,7 @@
     <section class="section section-alt" id="mini-graph-section">
       <div class="container">
         <h2 class="section-title">知识图谱预览</h2>
-        <div id="mini-graph-wrap" style="position:relative;width:100%;height:320px;border-radius:12px;overflow:hidden;">
+        <div id="mini-graph-wrap" style="position:relative;width:100%;height:480px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
           <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
           <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;">打开完整图谱 →</a>
@@ -147,7 +147,7 @@
           return nodeIdSet.has(e.source) && nodeIdSet.has(e.target);
         }).map(function(e){ return {source:e.source, target:e.target}; });
 
-        var W = miniWrap.clientWidth || 700, H = 320;
+        var W = miniWrap.clientWidth || 700, H = 480;
         miniSvg.setAttribute('viewBox','0 0 '+W+' '+H);
 
         var svg = d3.select(miniSvg);
