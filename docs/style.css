@@ -128,7 +128,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 [data-theme="dark"] .icon-sun { display: inline; }
 [data-theme="dark"] .icon-moon { display: none; }
 
-.hero { padding: 80px 0 40px; }
+.hero { padding: 40px 0 40px; }
 .hero-kicker {
   font-size: 0.85rem;
   color: var(--text-muted);
