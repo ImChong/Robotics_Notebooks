@@ -43,9 +43,9 @@
 - [x] 修改 `index.html`：删除冗余 Section，保留搜索和核心 Entry。
 - [x] 将搜索框上移，Stats Bar 缩小。
 
-### Phase 2: 视觉焕新 (Aesthetics)
-- [ ] 更新 `style.css`：引入网格背景、新字体和组件阴影优化。
-- [ ] 重构 Hero 区布局，引入 D3 动态背景。
+### Phase 2: 视觉焕新 (Aesthetics) - [x] *已完成*
+- [x] 更新 `style.css`：引入网格背景、新字体和组件阴影优化。
+- [x] 重构 Hero 区布局，引入 D3 动态背景。
 
 ### Phase 3: 体验打磨 (UX)
 - [ ] 搜索结果列表优化：支持卡片式快速预览。
