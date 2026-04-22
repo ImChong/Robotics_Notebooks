@@ -103,5 +103,7 @@ python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜
 
 [技术栈项目执行清单 v21](docs/checklists/tech-stack-next-phase-checklist-v21.md) — 当前阶段目标（触觉力觉闭环 / 通信链路形式化 / 详情页微地图）
 
+[前端体验优化清单 v1](docs/checklists/frontend-optimization-v1.md) — 专项目标：首页极简化重构（搜索即首页 / 图谱即背景 / 视觉降噪）
+
 历史版本：[执行清单归档目录](docs/checklists/)
 cs/checklists/)
