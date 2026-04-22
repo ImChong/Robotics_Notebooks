@@ -64,6 +64,8 @@
 
 本项目采用 [Karpathy 知识库方法论](wiki/references/llm-wiki-karpathy.md)：三层架构（sources → wiki → schema），LLM 负责维护和交叉引用，人类负责资料筛选和方向判断。
 
+在执行维护和开发任务时，遵循 [CLAUDE.md](CLAUDE.md) 行为准则：**先思后码 (Think First)**、**极简优先 (Simplicity First)** 以及 **外科手术式改动 (Surgical Changes)**，确保知识库的纯净与高效。
+
 常用操作：
 ```bash
 make lint                                 # 健康检查（0 issues 为目标）
