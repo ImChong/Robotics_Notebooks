@@ -1369,6 +1369,9 @@
 
     node
       .on('mouseenter', (ev, d) => {
+        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑
+        if (sidebar.classList.contains('open')) return;
+        
         buildNeighborSet(d);
         const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
         node.select('.node-circle').attr('fill-opacity', n => {
@@ -1404,6 +1407,9 @@
         }
       })
       .on('mouseleave', () => {
+        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑
+        if (sidebar.classList.contains('open')) return;
+
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
         applyFilters();
