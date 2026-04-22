@@ -540,7 +540,6 @@ def generate_sitemap(items: List[Dict], base_url: str = "https://ImChong.github.
     urls = [
         {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
         {"loc": base_url + "/docs/index.html", "priority": "0.9", "changefreq": "weekly"},
-        {"loc": base_url + "/docs/site-data-preview.html", "priority": "0.8", "changefreq": "daily"},
         {"loc": base_url + "/docs/tech-map.html", "priority": "0.8", "changefreq": "weekly"},
     ]
 

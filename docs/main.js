@@ -667,8 +667,6 @@
       breadcrumb.innerHTML = [
         '<a href="index.html">首页</a>',
         '<span>/</span>',
-        '<a href="site-data-preview.html">页面级导出预览</a>',
-        '<span>/</span>',
         '<span>' + escapeHtml(detailPage.title || detailId) + '</span>'
       ].join('');
       removeLoadingState(breadcrumb);
