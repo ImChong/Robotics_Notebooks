@@ -34,79 +34,32 @@
     <section id="hero" class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="hero-kicker">Robotics Notebooks · 面向人形机器人运动控制 / RL / IL 的知识入口</p>
-          <h1 class="hero-title">如果你想系统学人形机器人运动控制，这里告诉你先看什么、再学什么</h1>
-          <p class="hero-subtitle">不是资料堆，而是把 <strong>路线、知识图谱、技术模块、论文入口</strong> 串成同一套导航系统。</p>
-          <p class="hero-desc">
-            你可以把它当成一个长期使用的机器人技术地图：先明确自己处在哪个阶段，再决定该补 <strong>控制、强化学习、模仿学习、Sim2Real</strong> 里的哪一块。
-          </p>
-          <div class="hero-stat-row" aria-label="知识库当前规模">
-            <div class="hero-stat-card">
-              <strong id="heroNodeCount">92</strong>
-              <span>知识节点</span>
-            </div>
-            <div class="hero-stat-card">
-              <strong id="heroEdgeCount">545</strong>
-              <span>图谱连接</span>
-            </div>
-            <div class="hero-stat-card">
-              <strong id="heroCoverageCount">90/90</strong>
-              <span>Sources 覆盖</span>
-            </div>
+          <p class="hero-kicker">Robotics Notebooks · 面向人形机器人运动控制的知识入口</p>
+          <h1 class="hero-title">系统学习人形机器人运动控制</h1>
+          <p class="hero-subtitle">把 <strong>路线、图谱、模块、论文</strong> 串成一套极简导航系统。</p>
+          
+          <div class="hero-stat-row-mini" aria-label="知识库当前规模">
+            <span id="heroNodeCount">92</span> Nodes · 
+            <span id="heroEdgeCount">545</span> Links · 
+            <span id="heroCoverageCount">90/90</span> Sources
           </div>
+
           <div class="cta-row">
-            <a class="btn-primary" href="roadmap.html?id=roadmap-route-a-motion-control">🚀 按路线开始</a>
-            <a class="btn-secondary" href="graph.html">🕸️ 看全局图谱</a>
-            <a class="btn-secondary" href="#wiki-search">🔎 搜索概念</a>
+            <a class="btn-primary" href="roadmap.html?id=roadmap-route-a-motion-control">🚀 开始路径</a>
+            <a class="btn-secondary" href="graph.html">🕸️ 知识图谱</a>
             <a class="btn-secondary" href="references.html">📚 论文入口</a>
           </div>
-        </div>
-        <aside class="hero-panel">
-          <h3>你现在更适合从哪进？</h3>
-          <ul>
-            <li><strong>完全没主线：</strong>先看「成长路线」，确定先补数学 / 动力学 / 控制还是学习。</li>
-            <li><strong>已有一些基础：</strong>看「技术栈地图」和「知识图谱」，建立模块依赖感。</li>
-            <li><strong>已经在做项目：</strong>直接用下面的搜索区和关系页，快速定位 MPC / WBC / RL / IL / Sim2Real。</li>
-            <li><strong>准备读论文：</strong>从「论文导航」进入，不要从零散收藏夹开始。</li>
-          </ul>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section" id="modules">
-      <div class="container">
-        <h2 class="section-title">这个项目是做什么的？</h2>
-        <p class="section-subtitle">不是资源堆砌，也不是单纯的思维导图展示，而是一个面向长期成长的技术导航系统。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>看清模块</h3>
-            <p>帮助你看清机器人领域的核心模块，不再在零散名词和碎片链接里打转。</p>
-          </article>
-          <article class="card">
-            <h3>理解依赖</h3>
-            <p>把数学、机器人学、控制、学习算法、系统工程之间的依赖关系讲清楚。</p>
-          </article>
-          <article class="card">
-            <h3>形成路径</h3>
-            <p>告诉你当前该学什么、下一步该补什么，而不是只给一堆“看起来很全”的目录。</p>
-          </article>
-          <article class="card">
-            <h3>连接行动</h3>
-            <p>把知识页、路线图、论文导航、开源生态串起来，最终服务研究与工程落地。</p>
-          </article>
         </div>
       </div>
     </section>
 
     <section class="section" id="wiki-search">
       <div class="container">
-        <h2 class="section-title">知识库搜索</h2>
-        <p id="wikiSearchSubtitle" class="section-subtitle">在知识库中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。</p>
         <div class="search-bar-wrap">
           <input
             id="wikiSearchInput"
             type="search"
-            placeholder="搜索：MPC、sim2real、PPO、diffusion policy…"
+            placeholder="搜索概念、方法或任务：MPC、PPO、Diffusion Policy…"
             aria-label="搜索知识页面"
             autocomplete="off"
           />
@@ -128,113 +81,10 @@
     <section class="section section-alt" id="mini-graph-section">
       <div class="container">
         <h2 class="section-title">知识图谱预览</h2>
-        <p class="section-subtitle">Top-40 高连接节点 · 点击节点进入完整图谱</p>
         <div id="mini-graph-wrap" style="position:relative;width:100%;height:320px;border-radius:12px;overflow:hidden;">
           <svg id="mini-graph-svg" style="width:100%;height:100%"></svg>
           <div id="mini-graph-stats" style="position:absolute;bottom:12px;left:16px;font-size:.72rem;line-height:1.8;pointer-events:none"></div>
           <a href="graph.html" id="mini-graph-expand" style="position:absolute;bottom:12px;right:16px;font-size:.72rem;text-decoration:none;">打开完整图谱 →</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="routes">
-      <div class="container">
-        <h2 class="section-title">两条成长路线</h2>
-        <p class="section-subtitle">先建立清晰主线，再沿着控制、学习与机器人系统逐层扩展。</p>
-        <div class="route-list route-card-grid">
-          <article class="card route-card">
-            <h3>路线 A：控制与学习主线</h3>
-            <p class="card-meta">数学基础 · 动力学 · 控制 · 强化学习 · 模仿学习</p>
-            <p>从数学基础、刚体运动、运动学、动力学出发，进入控制、优化、人形 locomotion，再扩展到强化学习与模仿学习。</p>
-          </article>
-          <article class="card route-card">
-            <h3>路线 B：系统能力扩展主线</h3>
-            <p class="card-meta">感知 · 规划 · ROS2 · 部署调试 · 系统集成</p>
-            <p>在控制与学习的基础上，继续补齐感知、规划、ROS2 / 中间件、部署调试、硬件认知与系统集成能力。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="tech-map">
-      <div class="container">
-        <h2 class="section-title">当前技术栈主干</h2>
-        <p class="section-subtitle">先把关键主干打清楚，再逐步补齐周边模块。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3><a href="module.html?id=control">运动控制</a></h3>
-            <p class="card-meta">刚体运动 · 运动学 · 动力学 · 状态估计 · MPC · WBC</p>
-            <p>这是理解 humanoid locomotion、sim2real 和真实部署问题的核心骨架之一。</p>
-          </article>
-          <article class="card">
-            <h3><a href="module.html?id=rl">强化学习</a></h3>
-            <p class="card-meta">PPO · SAC · Reward Design · Domain Randomization · Sim2Real</p>
-            <p>重点不是泛泛谈算法，而是围绕机器人运动控制的实际问题去组织 RL 知识。</p>
-          </article>
-          <article class="card">
-            <h3><a href="module.html?id=il">模仿学习</a></h3>
-            <p class="card-meta">Behavior Cloning · DAgger · Motion Retarget · Diffusion Policy</p>
-            <p>连接人类动作数据、技能迁移与人形机器人行为学习，是后续高价值方向。</p>
-          </article>
-          <article class="card">
-            <h3>全栈扩展</h3>
-            <p class="card-meta">Perception · Planning · ROS2 · Deployment · Integration</p>
-            <p>先把主要结构整理清楚，后续再逐步扩展到感知、规划、部署与系统集成。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="relations">
-      <div class="container">
-        <h2 class="section-title">关系页</h2>
-        <p class="section-subtitle">模块之间的关系，比模块本身更重要。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3><a href="relations/wbc-vs-rl.html">WBC vs RL</a></h3>
-            <p class="card-meta">传统控制 vs 强化学习</p>
-            <p>理解两者各自的能力边界，以及为什么融合才是人形机器人的真实方向。</p>
-          </article>
-          <article class="card">
-            <h3><a href="relations/rl-vs-il.html">RL vs IL</a></h3>
-            <p class="card-meta">强化学习 vs 模仿学习</p>
-            <p>理解两者为什么是互补关系，以及最强人形系统如何组合使用两者。</p>
-          </article>
-          <article class="card">
-            <h3><a href="relations/sim2real-pipeline.html">Sim2Real Pipeline</a></h3>
-            <p class="card-meta">仿真到真机的完整路径</p>
-            <p>这是人形机器人 RL 能否落地的核心 pipeline，每个环节都可能让你在真机上付出惨重代价。</p>
-          </article>
-          <article class="card">
-            <h3><a href="relations/retargeting-pipeline.html">Motion Retargeting Pipeline</a></h3>
-            <p class="card-meta">动作迁移的完整路径</p>
-            <p>把人类动作迁移到机器人最难的部分，往往不是策略训练，而是 retargeting 这条 pipeline。</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-alt" id="references">
-      <div class="container">
-        <h2 class="section-title">论文导航与开源生态</h2>
-        <p class="section-subtitle">把论文、代码、benchmark 和知识模块挂钩，避免“读完就散”。</p>
-        <div class="card-grid">
-          <article class="card">
-            <h3>论文导航</h3>
-            <p>按 locomotion RL、模仿学习、WBC、sim2real、人形硬件和综述论文组织入口。</p>
-          </article>
-          <article class="card">
-            <h3>开源生态</h3>
-            <p>按 simulation、RL frameworks、humanoid projects、retarget tools 和通用 utilities 分类整理。</p>
-          </article>
-          <article class="card">
-            <h3>Benchmark</h3>
-            <p>逐步沉淀 locomotion benchmark、人形环境、训练场景与评测任务的结构化索引。</p>
-          </article>
-          <article class="card">
-            <h3>知识反哺</h3>
-            <p>最终让论文和开源项目不是“收藏夹”，而是能回流到路线图和技术地图里的知识资产。</p>
-          </article>
         </div>
       </div>
     </section>

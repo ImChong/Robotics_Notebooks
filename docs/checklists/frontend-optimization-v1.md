@@ -39,9 +39,9 @@
 
 ## 执行节奏 (Implementation Phases)
 
-### Phase 1: 结构手术 (Structure) - *立即开始*
-- [ ] 修改 `index.html`：删除冗余 Section，保留搜索和核心 Entry。
-- [ ] 将搜索框上移，Stats Bar 缩小。
+### Phase 1: 结构手术 (Structure) - [x] *已完成*
+- [x] 修改 `index.html`：删除冗余 Section，保留搜索和核心 Entry。
+- [x] 将搜索框上移，Stats Bar 缩小。
 
 ### Phase 2: 视觉焕新 (Aesthetics)
 - [ ] 更新 `style.css`：引入网格背景、新字体和组件阴影优化。
