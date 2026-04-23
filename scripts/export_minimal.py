@@ -328,6 +328,7 @@ def collect_paths() -> List[Path]:
         "wiki/formalizations/*.md",
         "wiki/queries/*.md",
         "wiki/entities/*.md",
+        "wiki/references/*.md",
         "roadmap/*.md",
         "roadmap/learning-paths/*.md",
         "references/papers/*.md",
