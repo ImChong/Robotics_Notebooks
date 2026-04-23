@@ -93,7 +93,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -217,7 +217,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -365,7 +365,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -397,7 +397,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -726,7 +726,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -788,7 +788,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -906,7 +906,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -939,7 +939,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -971,7 +971,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1063,7 +1063,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1127,7 +1127,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1288,7 +1288,7 @@
       "title": "CLAW (宇树 G1 全身动作数据生成管线)",
       "path": "wiki/methods/claw.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/motion-retargeting.md\n  - ../concepts/foundation-policy.md\n  - ../tasks/loco-manipulation.md\n  - ./auto-labeling-pipelines.md\nsources:\n  - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md\nsummary: \"CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。\"\n---\n\n# CLAW (宇树 G1 全身动作数据生成管线)\n\n**CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将复杂的全身运动拆解为可组合的原子动作，并利用底层物理引擎 (MuJoCo) 进行轨迹生成，从而绕过了传统动捕影棚的高昂成本和重定向带来的滑步/穿模问题。\n\n## 核心设计思路\n\nCLAW 的核心理念是：**将数据采集问题转化为算力密集的数据生成问题。**\n\n1. **组合式动作基元**：将行走、下蹲、匍匐、拳击等基础运动模式定义为“原子”，操作者通过简单的网页端键盘交互或时间轴编辑器即可组合出复杂的全身轨迹。\n2. **物理一致性校验**：所有生成的关节轨迹都在 MuJoCo 中经过底层规划器校验。这保证了导出的 50Hz 关节序列不仅视觉流畅，且符合机器人的动力学约束。\n3. **自动语言标注**：系统内置了一套基于模板的语言注释引擎。它根据当前执行的原子动作模式、运动速度和时间戳，自动生成精准的文本描述（如“加速向左侧走三步并出右拳”）。\n\n## 为什么这一技术重要\n\n在具身基础策略（Foundation Policies）的训练中，**“动作轨迹 + 精准语言标签”** 的配对数据是极度稀缺的。CLAW 提供了以下价值：\n- **消除重定向误差**：由于直接在机器人原生资产上生成动作，完全避免了从人类骨骼到机器人骨骼重定向带来的误差。\n- **高质量标注**：自动生成的语言标签比人工后期标注更准确、粒度更细，特别适合训练视觉-语言-动作 (VLA) 模型。\n- **极佳的可扩展性**：通过增加原子动作库，可以无限扩充数据的多样性（Long-tail Distribution）。\n\n## 在本项目中的角色\n\nCLAW 代表了“数据引擎（Data Engine）”的最新趋势，即利用**合成数据**来解决真实世界数据获取困难的问题。它特别适合为 [Unitree G1](../entities/unitree-g1.md) 平台提供大规模的高质量预训练数据。\n\n## 关联页面\n- [模仿学习 (Imitation Learning)](./imitation-learning.md)\n- [动作重定向 (Motion Retargeting)](../concepts/motion-retargeting.md)\n- [基础策略模型 (Foundation Policy)](../concepts/foundation-policy.md)\n- [自动化标注流水线 (Auto-labeling Pipelines)](./auto-labeling-pipelines.md)\n- [Unitree G1](../entities/unitree-g1.md)\n\n## 参考来源\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md)\n- [CLAW 项目主页（GitHub / Paper）](https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw)",
+      "content_markdown": "---\ntype: method\ntags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/motion-retargeting.md\n  - ../concepts/foundation-policy.md\n  - ../tasks/loco-manipulation.md\n  - ./auto-labeling-pipelines.md\nsources:\n  - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md\nsummary: \"CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。\"\n---\n\n# CLAW (宇树 G1 全身动作数据生成管线)\n\n**CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将复杂的全身运动拆解为可组合的原子动作，并利用底层物理引擎 (MuJoCo) 进行轨迹生成，从而绕过了传统动捕影棚的高昂成本和重定向带来的滑步/穿模问题。\n\n## 主要技术路线\n\nCLAW 的工作流程可以概括为以下三个核心阶段：\n\n1. **动作基元定义（Atomic Motion Primitives）**：通过分析机器人（如 G1）的物理极限，预定义一组基础运动单元。\n2. **交互式合成（Interactive Synthesis）**：用户通过网页界面实时调度基元，并在 MuJoCo 仿真中生成符合物理规律的全身轨迹。\n3. **自动标注引擎（Auto-annotation Engine）**：基于动作状态的确定性，自动生成与轨迹对齐的语言描述，产出高质量的 (Instruction, Image, Action) 数据对。\n\n## 为什么这一技术重要\n\n在具身基础策略（Foundation Policies）的训练中，**“动作轨迹 + 精准语言标签”** 的配对数据是极度稀缺的。CLAW 提供了以下价值：\n- **消除重定向误差**：由于直接在机器人原生资产上生成动作，完全避免了从人类骨骼到机器人骨骼重定向带来的误差。\n- **高质量标注**：自动生成的语言标签比人工后期标注更准确、粒度更细，特别适合训练视觉-语言-动作 (VLA) 模型。\n- **极佳的可扩展性**：通过增加原子动作库，可以无限扩充数据的多样性（Long-tail Distribution）。\n\n## 在本项目中的角色\n\nCLAW 代表了“数据引擎（Data Engine）”的最新趋势，即利用**合成数据**来解决真实世界数据获取困难的问题。它特别适合为 [Unitree G1](../entities/unitree-g1.md) 平台提供大规模的高质量预训练数据。\n\n## 关联页面\n- [模仿学习 (Imitation Learning)](./imitation-learning.md)\n- [动作重定向 (Motion Retargeting)](../concepts/motion-retargeting.md)\n- [基础策略模型 (Foundation Policy)](../concepts/foundation-policy.md)\n- [自动化标注流水线 (Auto-labeling Pipelines)](./auto-labeling-pipelines.md)\n- [Unitree G1](../entities/unitree-g1.md)\n\n## 参考来源\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md)\n- [CLAW 项目主页（GitHub / Paper）](https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw)",
       "tags": [
         "method",
         "humanoid",
@@ -1610,7 +1610,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -1644,7 +1644,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-mppi",
@@ -1742,7 +1742,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -1925,7 +1925,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -1996,7 +1996,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2033,7 +2033,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -4404,7 +4404,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "entity-mujoco",
