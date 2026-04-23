@@ -859,3 +859,19 @@ th {
     pointer-events: none;
   }
 }
+
+/* --- Search Tag Cloud (Moved from index.html for Optimization) --- */
+.tag-cloud { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 16px; }
+.tag-chip {
+  padding:3px 11px; border-radius:20px;
+  border:1px solid var(--border-color, rgba(0,0,0,0.1));
+  background:transparent; color:var(--text-muted, rgba(0,0,0,0.5));
+  font-size:.76rem; cursor:pointer; transition:all .15s;
+}
+.tag-chip:hover { border-color:var(--accent, #1659b4); color:var(--accent, #1659b4); }
+
+/* --- Search Result Keyboard Selection --- */
+.card.search-result-selected {
+  outline:2px solid var(--accent, #1659b4);
+  outline-offset:2px;
+}
