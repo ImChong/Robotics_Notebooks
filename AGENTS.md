@@ -131,3 +131,18 @@
 - 每次 query 有好结果都要写回 wiki
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
+
+### Git 提交规范 (Git Commit Convention)
+
+为保持仓库历史清晰，所有提交必须使用 **中文** 描述，并遵循以下格式：
+
+1. **知识入库提交 (Ingest)**：
+   格式：`[YYYY-MM-DD] ingest | <源文件路径> — <中文描述内容>`
+   示例：`[2026-04-23] ingest | sources/repos/robot_lab.md — 接入 IsaacLab 扩展框架并同步全站索引`
+
+2. **结构/功能/修复提交**：
+   格式：`<类型>(范围): <中文描述内容>`
+   - 类型 (type)：feat, fix, chore, docs, refactor, style, test。
+   - 范围 (scope)：可选（如 ux, actions, wiki）。
+   示例：`fix(actions): 修复 CLAW 页面格式缺失主要技术路线的问题`
+   示例：`chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`

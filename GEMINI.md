@@ -52,6 +52,23 @@ Every interaction must adhere to the workflows defined in `schema/ingest-workflo
 
 ---
 
+## Git Commit Standards
+
+All commits must follow the project's historical style and use **Chinese** for descriptions.
+
+### 1. Ingest Commits (Knowledge Addition)
+Format: `[YYYY-MM-DD] ingest | <source_path> — <Chinese_description>`
+Example: `[2026-04-23] ingest | sources/repos/robot_lab.md — 接入 IsaacLab 扩展框架并更新全站索引`
+
+### 2. Structural & Functional Commits
+Format: `<type>(<scope>): <Chinese_description>`
+- **type**: feat, fix, chore, docs, refactor, style, test.
+- **scope**: Optional (e.g., ux, actions, wiki).
+Example: `fix(actions): 修复 CLAW 页面格式缺失主要技术路线的问题`
+Example: `chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
+
+---
+
 ## Key Automation Commands
 
 | Command | Action |
