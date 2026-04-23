@@ -695,12 +695,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   align-items: center;
 }
 
-@media (max-width: 980px) {
-  .detail-content-layout {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 1200px) {
   .detail-toc-panel {
-    position: static;
+    display: none;
+  }
+  .detail-content-layout {
+    display: block;
+  }
+  .detail-content-main {
+    max-width: 100%;
   }
 }
 
