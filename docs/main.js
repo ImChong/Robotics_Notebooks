@@ -150,9 +150,33 @@
 
   function renderInlineMarkdown(text, markdownContext) {
     markdownContext = markdownContext || {};
-    const tokenPrefix = '@@MDLINKTOKEN';
+    const source = String(text || '');
+
+    // 1. Math protection: Extract all math formulas before they get mangled by Markdown parsing
+    const mathTokens = [];
+    const mathPrefix = '@@MDMATHTOKEN';
+    const withMathTokens = source
+      .replace(/\$\$([\s\S]+?)\$\$/g, function (match, expr) {
+        const token = mathPrefix + mathTokens.length + '@@';
+        mathTokens.push({ token: token, html: '$$' + expr + '$$' });
+        return token;
+      })
+      .replace(/\\\(([\s\S]+?)\\\)/g, function (match, expr) {
+        const token = mathPrefix + mathTokens.length + '@@';
+        mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
+        return token;
+      })
+      .replace(/\$([^\$\s](?:[^\$]*[^\$\s])?)\$/g, function (match, expr) {
+        const token = mathPrefix + mathTokens.length + '@@';
+        // Normalize $...$ to \(...\) so downstream renderMathBlocks can catch it
+        mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
+        return token;
+      });
+
+    // 2. Link protection (existing logic)
     const linkTokens = [];
-    const withLinkTokens = String(text || '').replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
+    const linkPrefix = '@@MDLINKTOKEN';
+    const withLinkTokens = withMathTokens.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
       let html = '';
       if (/^https?:\/\//i.test(target)) {
         html = '<a href="' + escapeHtml(target) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
@@ -163,18 +187,27 @@
         }
       }
       if (!html) return match;
-      const token = tokenPrefix + linkTokens.length + '@@';
+      const token = linkPrefix + linkTokens.length + '@@';
       linkTokens.push({ token: token, html: html });
       return token;
     });
 
+    // 3. Apply standard escapes and basic Markdown styles
     let rendered = escapeHtml(withLinkTokens)
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
 
+    // 4. Restore Links
     linkTokens.forEach(function (entry) {
       rendered = rendered.replace(entry.token, entry.html);
+    });
+
+    // 5. Restore Protected Math (safely escaped)
+    mathTokens.forEach(function (entry) {
+      // The math content must be escaped because it will be part of innerHTML
+      // but it should NOT be processed by other markdown rules (already protected).
+      rendered = rendered.replace(entry.token, escapeHtml(entry.html));
     });
 
     return rendered;
