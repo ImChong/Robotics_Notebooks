@@ -28,6 +28,9 @@ ingest:
 log:
 	python3 scripts/append_log.py $(OP) "$(DESC)"
 
+sync:
+	./scripts/sync_wiki.sh "$(DESC)"
+
 coverage:
 	python3 scripts/ingest_coverage.py $(F)
 
