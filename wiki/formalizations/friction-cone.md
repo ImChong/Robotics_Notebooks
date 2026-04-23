@@ -73,6 +73,7 @@ $$
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [ZMP + LIP 形式化](./zmp-lip.md)
+- [Contact Wrench Cone（接触力旋量锥）](./contact-wrench-cone.md)
 - [WBC 调参指南](../queries/wbc-tuning-guide.md)
 
 ## 参考来源

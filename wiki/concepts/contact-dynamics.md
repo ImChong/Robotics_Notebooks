@@ -286,6 +286,7 @@ locomotion 本质上可以看成是：
 - [Centroidal Dynamics](./centroidal-dynamics.md)
 - [TSID](./tsid.md)
 - [Contact Complementarity](../formalizations/contact-complementarity.md) — 接触动力学的 LCP 数学框架
+- [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) — 面接触可行 wrench 集合的凸锥形式化
 
 ## 一句话记忆
 
