@@ -320,7 +320,19 @@
   }
 
   function renderMarkdownContent(markdown, headings, markdownContext) {
-    const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
+    let source = String(markdown || '').replace(/\r\n/g, '\n').trim();
+    if (!source) {
+      return '<p>当前 detail page 暂无可同步正文。</p>';
+    }
+
+    // 剔除 YAML Front Matter (--- ... ---)
+    if (source.startsWith('---')) {
+      const secondDashIndex = source.indexOf('---', 3);
+      if (secondDashIndex !== -1) {
+        source = source.slice(secondDashIndex + 3).trim();
+      }
+    }
+
     if (!source) {
       return '<p>当前 detail page 暂无可同步正文。</p>';
     }
