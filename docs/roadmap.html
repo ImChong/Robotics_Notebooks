@@ -71,32 +71,42 @@
       </div>
     </section>
 
-    <section class="section" id="roadmap-stages">
-      <div class="container">
-        <h2 class="section-title">阶段</h2>
-        <p class="section-subtitle">先把路线阶段可视化，让路线页真正具备“照着走”的基本能力。</p>
-        <div id="roadmapStageList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取路线阶段…</p></article>
-        </div>
-      </div>
-    </section>
+    <section class="section">
+      <div class="container detail-content-layout">
+        <aside class="detail-toc-panel">
+          <h2 class="section-title">路线导航</h2>
+          <nav class="detail-toc-list">
+            <ol>
+              <li><a href="#roadmap-stages">阶段</a></li>
+              <li><a href="#roadmap-related">相关项</a></li>
+              <li><a href="#roadmap-sources">来源链接</a></li>
+            </ol>
+          </nav>
+        </aside>
 
-    <section class="section section-alt" id="roadmap-related">
-      <div class="container">
-        <h2 class="section-title">相关项</h2>
-        <p class="section-subtitle">当前阶段先统一跳到 detail route，后续如果关系页/模块页更稳定，再继续细化。</p>
-        <div id="roadmapRelatedList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取相关项…</p></article>
-        </div>
-      </div>
-    </section>
+        <div class="detail-content-main">
+          <section id="roadmap-stages">
+            <h2 class="section-title">阶段</h2>
+            <p class="section-subtitle">先把路线阶段可视化。</p>
+            <div id="roadmapStageList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取路线阶段…</p></article>
+            </div>
+          </section>
 
-    <section class="section" id="roadmap-sources">
-      <div class="container">
-        <h2 class="section-title">来源链接</h2>
-        <p class="section-subtitle">这里先展示路线页显式引用的外部来源。</p>
-        <div id="roadmapSourceList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
+          <section class="section section-alt" id="roadmap-related" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+            <h2 class="section-title">相关项</h2>
+            <p class="section-subtitle">通往 detail route 的关联项。</p>
+            <div id="roadmapRelatedList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取相关项…</p></article>
+            </div>
+          </section>
+
+          <section class="section" id="roadmap-sources" style="padding: 40px 0;">
+            <h2 class="section-title">来源链接</h2>
+            <div id="roadmapSourceList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -104,7 +114,6 @@
   <footer class="footer">
     <div class="container footer-stack">
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
-      <p class="footer-note">当前页是 roadmap page 的第一阶段实现：先把 preview 中的路线页升级为真实页面。</p>
     </div>
   </footer>
   <script src="main.js"></script>

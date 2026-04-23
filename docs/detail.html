@@ -80,7 +80,7 @@
       <div class="container detail-content-layout">
         <aside id="detailTocSection" class="detail-toc-panel" aria-labelledby="detail-toc" hidden>
           <h2 class="section-title" id="detail-toc">目录导航</h2>
-          <p class="section-subtitle">长文先看结构，再决定往哪一段钻。</p>
+          <p class="section-subtitle">快速导航。</p>
           <div style="margin-bottom: 1.2rem;">
             <a id="detailGraphLink" href="graph.html" class="btn-secondary" style="display:flex; align-items:center; gap:6px; justify-content:center; padding:8px; border-color:rgba(0,212,255,0.3); color:var(--text);">
               <span>🕸️</span> 关联图谱节点
@@ -88,57 +88,45 @@
           </div>
           <nav id="detailTocList" class="detail-toc-list data-loading" aria-label="正文目录导航"></nav>
         </aside>
-        <section id="detailContentSection" class="detail-content-main">
-          <h2 class="section-title" id="detail-content">正文同步内容</h2>
-          <p class="section-subtitle">现在直接把导出的 markdown 渲染成基础可读版，先解决可读性，再逐步补更完整排版；正文里的站内 markdown 内链会统一回流到 detail / roadmap 路由，并支持带锚点的精确跳转。</p>
-          <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
-        </section>
-      </div>
-    </section>
+        <div class="detail-content-main">
+          <section id="detail-content-body">
+            <h2 class="section-title">正文同步内容</h2>
+            <p class="section-subtitle">现在直接把导出的 markdown 渲染成基础可读版。</p>
+            <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
+          </section>
 
-    <section class="section" id="detail-tags">
-      <div class="container">
-        <h2 class="section-title">标签</h2>
-        <p class="section-subtitle">第一阶段先验证 tags 是否已经足够支撑 detail page 的聚合视图与二次导航。</p>
-        <div id="detailTagList" class="chip-list data-loading"></div>
-      </div>
-    </section>
+          <section class="section" id="detail-tags" style="padding: 40px 0;">
+            <h2 class="section-title">标签</h2>
+            <div id="detailTagList" class="chip-list data-loading"></div>
+          </section>
 
-    <section class="section section-alt" id="detail-related">
-      <div class="container">
-        <h2 class="section-title">关联项</h2>
-        <p class="section-subtitle">这里优先展示 <code>related</code>，并直接跳回同一套 detail page 路由。</p>
-        <div id="detailRelatedList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取关联项…</p></article>
-        </div>
-      </div>
-    </section>
+          <section class="section section-alt" id="detail-related" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+            <h2 class="section-title">关联项</h2>
+            <div id="detailRelatedList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取关联项…</p></article>
+            </div>
+          </section>
 
-    <section class="section" id="detail-recommended">
-      <div class="container">
-        <h2 class="section-title">相关推荐</h2>
-        <p class="section-subtitle">基于当前页面标签自动匹配，展示 tag 重合度最高的其他页面，帮助你拓展阅读路径。</p>
-        <div id="detailRecommendedList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在计算相关推荐…</p></article>
-        </div>
-      </div>
-    </section>
+          <section class="section" id="detail-recommended" style="padding: 40px 0;">
+            <h2 class="section-title">相关推荐</h2>
+            <div id="detailRecommendedList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在计算相关推荐…</p></article>
+            </div>
+          </section>
 
-    <section class="section" id="detail-sources">
-      <div class="container">
-        <h2 class="section-title">来源链接</h2>
-        <p class="section-subtitle">当前阶段只展示结构化外链入口，不直接渲染 markdown 正文。</p>
-        <div id="detailSourceList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
-        </div>
-      </div>
-    </section>
-    <section class="section" id="detail-recent">
-      <div class="container">
-        <h2 class="section-title">最近访问</h2>
-        <p class="section-subtitle">基于你的阅读足迹，快速跳回最近阅读的内容。</p>
-        <div id="recentVisitList" class="chip-list">
-          <p class="data-meta">暂无最近访问记录</p>
+          <section class="section" id="detail-sources" style="padding: 40px 0;">
+            <h2 class="section-title">来源链接</h2>
+            <div id="detailSourceList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取来源链接…</p></article>
+            </div>
+          </section>
+
+          <section class="section" id="detail-recent" style="padding: 40px 0;">
+            <h2 class="section-title">最近访问</h2>
+            <div id="recentVisitList" class="chip-list">
+              <p class="data-meta">暂无最近访问记录</p>
+            </div>
+          </section>
         </div>
       </div>
     </section>
@@ -147,7 +135,6 @@
   <footer class="footer">
     <div class="container footer-stack">
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
-      <p class="footer-note">当前页已从最小 detail page 继续推进到 content-backed 版本：正文、目录、公式与站内内链都已经接入统一路由。</p>
     </div>
   </footer>
 

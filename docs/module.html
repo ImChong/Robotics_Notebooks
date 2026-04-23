@@ -73,41 +73,49 @@
       </div>
     </section>
 
-    <section class="section" id="module-entries">
-      <div class="container">
-        <h2 class="section-title">入口项</h2>
-        <p class="section-subtitle">当前模块最值得先点进去的 detail pages，会统一跳转到 <code>detail.html?id=...</code>。</p>
-        <div id="moduleEntryList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取模块入口项…</p></article>
-        </div>
-      </div>
-    </section>
+    <section class="section">
+      <div class="container detail-content-layout">
+        <aside class="detail-toc-panel">
+          <h2 class="section-title">模块导航</h2>
+          <nav class="detail-toc-list">
+            <ol>
+              <li><a href="#module-entries">入口项</a></li>
+              <li><a href="#module-references">深挖入口</a></li>
+              <li><a href="#module-roadmaps">相关路线</a></li>
+              <li><a href="#module-related-modules">相关模块</a></li>
+            </ol>
+          </nav>
+        </aside>
 
-    <section class="section section-alt" id="module-references">
-      <div class="container">
-        <h2 class="section-title">深挖入口</h2>
-        <p class="section-subtitle">这里展示 references 层入口，让模块页不只是解释概念，而是继续通向论文、repo、benchmark。</p>
-        <div id="moduleReferenceList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取 references…</p></article>
-        </div>
-      </div>
-    </section>
+        <div class="detail-content-main">
+          <section id="module-entries">
+            <h2 class="section-title">入口项</h2>
+            <p class="section-subtitle">当前模块最值得先点进去的 detail pages。</p>
+            <div id="moduleEntryList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取模块入口项…</p></article>
+            </div>
+          </section>
 
-    <section class="section" id="module-roadmaps">
-      <div class="container">
-        <h2 class="section-title">相关路线</h2>
-        <p class="section-subtitle">当前阶段先统一跳到 detail route；后续如果 roadmap page 独立，再切到真实路线页。</p>
-        <div id="moduleRoadmapList" class="card-grid data-loading">
-          <article class="card skeleton-card"><p>正在读取 roadmap 入口…</p></article>
-        </div>
-      </div>
-    </section>
+          <section class="section section-alt" id="module-references" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+            <h2 class="section-title">深挖入口</h2>
+            <p class="section-subtitle">让模块页通向论文、repo、benchmark。</p>
+            <div id="moduleReferenceList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取 references…</p></article>
+            </div>
+          </section>
 
-    <section class="section section-alt" id="module-related-modules">
-      <div class="container">
-        <h2 class="section-title">相关模块</h2>
-        <p class="section-subtitle">模块之间先用统一 <code>module.html?id=...</code> 路由互相连接。</p>
-        <div id="moduleRelatedModules" class="chip-list data-loading"></div>
+          <section class="section" id="module-roadmaps" style="padding: 40px 0;">
+            <h2 class="section-title">相关路线</h2>
+            <div id="moduleRoadmapList" class="card-grid data-loading">
+              <article class="card skeleton-card"><p>正在读取 roadmap 入口…</p></article>
+            </div>
+          </section>
+
+          <section class="section section-alt" id="module-related-modules" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+            <h2 class="section-title">相关模块</h2>
+            <div id="moduleRelatedModules" class="chip-list data-loading"></div>
+          </section>
+        </div>
       </div>
     </section>
   </main>
@@ -115,7 +123,6 @@
   <footer class="footer">
     <div class="container footer-stack">
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
-      <p class="footer-note">当前页是 module page 的第一阶段实现：先把 preview 中的模块页升级为真实页面。</p>
     </div>
   </footer>
 
