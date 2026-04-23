@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 208,
+  "item_count": 210,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -1215,7 +1215,7 @@
       "title": "Auto-labeling Pipelines (自动化标注流水线)",
       "path": "wiki/methods/auto-labeling-pipelines.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [data-engine, vlm, labeling, data-collection, machine-learning]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/embodied-scaling-laws.md\n  - ../methods/vla.md\n  - ../queries/demo-data-collection-guide.md\nsources:\n  - ../../sources/papers/perception.md\nsummary: \"自动化标注流水线（Auto-labeling Pipelines）利用大视觉语言模型（VLM）自动为海量机器人原始轨迹生成文本描述和成功率标签，极大地降低了具身基础模型的数据准备成本。\"\n---\n\n# Auto-labeling Pipelines (自动化标注流水线)\n\n**自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。\n\n## 核心任务\n\n在海量的机器人交互数据（来自遥操作、自主探索或仿真）中，流水线需要自动完成以下标注：\n\n1. **指令生成**：根据视频序列，反向推导出该动作对应的语言指令（如“把红色的球放进篮子里”）。\n2. **成功率判定**：自动识别轨迹是否完成了既定目标，作为强化学习的稀疏奖励。\n3. **关键帧提取**：识别轨迹中的接触点、转折点，用于训练 [Action Chunking](./action-chunking.md)。\n\n## 主要技术路线\n\n现代流水线通常采用 **Teacher-Student 架构**：\n\n- **VLM Teacher**：使用顶尖的多模态大模型（如 GPT-4V, Gemini 1.5 Pro），输入轨迹视频。\n- **Prompt Engineering**：设计精细的提示词，要求模型输出标准化的 JSON 描述。\n- **后处理**：将 VLM 输出的文本描述与物理传感器数据（关节力矩、IMU）进行对齐校验。\n\n## 代表性项目\n\n- **Auto-RT (DeepMind)**：利用 VLM 在真实的办公环境中自主选择任务、自主执行并自动生成训练数据。\n- **ROSS (Robot Open-world Success Supervision)**：利用视觉语言模型作为通用的奖励函数。\n\n## 带来的优势\n\n- **极低的标注成本**：相比于昂贵的人工标注，API 调用的成本几乎可以忽略不计。\n- **数据多样性**：模型可以自动描述轨迹中的环境细节（如“在昏暗的光线下推开木门”），丰富了预训练分布。\n\n## 关联页面\n- [具身规模法则 (Scaling Laws)](../concepts/embodied-scaling-laws.md)\n- [VLA (Vision-Language-Action Models)](./vla.md)\n- [演示数据采集指南](../queries/demo-data-collection-guide.md)\n\n## 参考来源\n- Ahn, M., et al. (2024). *Auto-RT: Embodied AI with Foundation Models*.\n- [Google DeepMind Blog on Scaling Robot Learning](https://deepmind.google/discover/blog/scaling-robot-learning-with-auto-rt/).",
+      "content_markdown": "---\ntype: method\ntags: [data-engine, vlm, labeling, data-collection, machine-learning]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/embodied-scaling-laws.md\n  - ../methods/vla.md\n  - ../queries/demo-data-collection-guide.md\nsources:\n  - ../../sources/papers/perception.md\nsummary: \"自动化标注流水线（Auto-labeling Pipelines）利用大视觉语言模型（VLM）自动为海量机器人原始轨迹生成文本描述和成功率标签，极大地降低了具身基础模型的数据准备成本。\"\n---\n\n# Auto-labeling Pipelines (自动化标注流水线)\n\n**自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。\n\n## 核心任务\n\n在海量的机器人交互数据（来自遥操作、自主探索或仿真）中，流水线需要自动完成以下标注：\n\n1. **指令生成**：根据视频序列，反向推导出该动作对应的语言指令（如“把红色的球放进篮子里”）。\n2. **成功率判定**：自动识别轨迹是否完成了既定目标，作为强化学习的稀疏奖励。\n3. **关键帧提取**：识别轨迹中的接触点、转折点，用于训练 [Action Chunking](./action-chunking.md)。\n\n## 主要技术路线\n\n现代流水线通常采用 **Teacher-Student 架构**：\n\n- **VLM Teacher**：使用顶尖的多模态大模型（如 GPT-4V, Gemini 1.5 Pro），输入轨迹视频。\n- **Prompt Engineering**：设计精细的提示词，要求模型输出标准化的 JSON 描述。\n- **后处理**：将 VLM 输出的文本描述与物理传感器数据（关节力矩、IMU）进行对齐校验。\n\n## 代表性项目\n\n- **Auto-RT (DeepMind)**：利用 VLM 在真实的办公环境中自主选择任务、自主执行并自动生成训练数据。\n- **CLAW (宇树 G1 数据管线)**：通过物理仿真和组合原子动作，自动生成带精准语言标签的全身运动轨迹。见 [CLAW](./claw.md)。\n- **ROSS (Robot Open-world Success Supervision)**：利用视觉语言模型作为通用的奖励函数。\n\n## 带来的优势\n\n- **极低的标注成本**：相比于昂贵的人工标注，API 调用的成本几乎可以忽略不计。\n- **数据多样性**：模型可以自动描述轨迹中的环境细节（如“在昏暗的光线下推开木门”），丰富了预训练分布。\n\n## 关联页面\n- [具身规模法则 (Scaling Laws)](../concepts/embodied-scaling-laws.md)\n- [VLA (Vision-Language-Action Models)](./vla.md)\n- [演示数据采集指南](../queries/demo-data-collection-guide.md)\n\n## 参考来源\n- Ahn, M., et al. (2024). *Auto-RT: Embodied AI with Foundation Models*.\n- [Google DeepMind Blog on Scaling Robot Learning](https://deepmind.google/discover/blog/scaling-robot-learning-with-auto-rt/).",
       "tags": [
         "method",
         "rl"
@@ -1224,7 +1224,8 @@
         "wiki-concepts-embodied-scaling-laws",
         "wiki-methods-vla",
         "wiki-queries-demo-data-collection-guide",
-        "wiki-methods-action-chunking"
+        "wiki-methods-action-chunking",
+        "wiki-methods-claw"
       ],
       "source_links": [
         "https://deepmind.google/discover/blog/scaling-robot-learning-with-auto-rt/"
@@ -1278,6 +1279,34 @@
         "sources-papers-diffusion-and-gen"
       ],
       "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method"
+    },
+    {
+      "id": "wiki-methods-claw",
+      "title": "CLAW (宇树 G1 全身动作数据生成管线)",
+      "path": "wiki/methods/claw.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/motion-retargeting.md\n  - ../concepts/foundation-policy.md\n  - ../tasks/loco-manipulation.md\n  - ./auto-labeling-pipelines.md\nsources:\n  - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md\nsummary: \"CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。\"\n---\n\n# CLAW (宇树 G1 全身动作数据生成管线)\n\n**CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将复杂的全身运动拆解为可组合的原子动作，并利用底层物理引擎 (MuJoCo) 进行轨迹生成，从而绕过了传统动捕影棚的高昂成本和重定向带来的滑步/穿模问题。\n\n## 核心设计思路\n\nCLAW 的核心理念是：**将数据采集问题转化为算力密集的数据生成问题。**\n\n1. **组合式动作基元**：将行走、下蹲、匍匐、拳击等基础运动模式定义为“原子”，操作者通过简单的网页端键盘交互或时间轴编辑器即可组合出复杂的全身轨迹。\n2. **物理一致性校验**：所有生成的关节轨迹都在 MuJoCo 中经过底层规划器校验。这保证了导出的 50Hz 关节序列不仅视觉流畅，且符合机器人的动力学约束。\n3. **自动语言标注**：系统内置了一套基于模板的语言注释引擎。它根据当前执行的原子动作模式、运动速度和时间戳，自动生成精准的文本描述（如“加速向左侧走三步并出右拳”）。\n\n## 为什么这一技术重要\n\n在具身基础策略（Foundation Policies）的训练中，**“动作轨迹 + 精准语言标签”** 的配对数据是极度稀缺的。CLAW 提供了以下价值：\n- **消除重定向误差**：由于直接在机器人原生资产上生成动作，完全避免了从人类骨骼到机器人骨骼重定向带来的误差。\n- **高质量标注**：自动生成的语言标签比人工后期标注更准确、粒度更细，特别适合训练视觉-语言-动作 (VLA) 模型。\n- **极佳的可扩展性**：通过增加原子动作库，可以无限扩充数据的多样性（Long-tail Distribution）。\n\n## 在本项目中的角色\n\nCLAW 代表了“数据引擎（Data Engine）”的最新趋势，即利用**合成数据**来解决真实世界数据获取困难的问题。它特别适合为 [Unitree G1](../entities/unitree-g1.md) 平台提供大规模的高质量预训练数据。\n\n## 关联页面\n- [模仿学习 (Imitation Learning)](./imitation-learning.md)\n- [动作重定向 (Motion Retargeting)](../concepts/motion-retargeting.md)\n- [基础策略模型 (Foundation Policy)](../concepts/foundation-policy.md)\n- [自动化标注流水线 (Auto-labeling Pipelines)](./auto-labeling-pipelines.md)\n- [Unitree G1](../entities/unitree-g1.md)\n\n## 参考来源\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md)\n- [CLAW 项目主页（GitHub / Paper）](https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw)",
+      "tags": [
+        "method",
+        "humanoid",
+        "il",
+        "tooling",
+        "hardware"
+      ],
+      "related": [
+        "wiki-methods-imitation-learning",
+        "wiki-concepts-motion-retargeting",
+        "wiki-concepts-foundation-policy",
+        "wiki-methods-auto-labeling-pipelines",
+        "entity-unitree-g1",
+        "sources-blogs-claw-unitree-g1-language-annotated-motion-data"
+      ],
+      "source_links": [
+        "https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw"
+      ],
       "status": "active",
       "type": "wiki_page",
       "page_type": "method"
@@ -1473,9 +1502,10 @@
       "title": "Imitation Learning (IL, 模仿学习)",
       "path": "wiki/methods/imitation-learning.md",
       "summary": "模仿学习 (Imitation Learning)：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”",
-      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nsummary: \"Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控）→ 动作重定向（Retarget）→ 模仿学习训练 → Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- MimicKit：j提炼 encoder-decoder 框架\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — ASE 与 locomotion 技能学习补充\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
+      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nsummary: \"Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- MimicKit：j提炼 encoder-decoder 框架\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
       "tags": [
         "method",
+        "humanoid",
         "locomotion",
         "rl",
         "il",
@@ -1488,12 +1518,12 @@
         "wiki-concepts-sim2real",
         "wiki-concepts-foundation-policy",
         "wiki-methods-behavior-cloning",
+        "wiki-methods-claw",
+        "entity-robot-lab",
         "wiki-methods-dagger",
         "wiki-methods-vla",
         "wiki-comparisons-rl-vs-il",
-        "wiki-concepts-motion-retargeting",
-        "wiki-methods-bc-with-transformer",
-        "wiki-methods-dmp"
+        "wiki-concepts-motion-retargeting"
       ],
       "source_links": [
         "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html",
@@ -4532,6 +4562,34 @@
       "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
+      "id": "entity-robot-lab",
+      "title": "robot_lab (IsaacLab 扩展框架)",
+      "path": "wiki/entities/robot-lab.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [repo, framework, reinforcement-learning, isaac-lab, unitree]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./isaac-gym-isaac-lab.md\n  - ./legged-gym.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/robot_lab.md\nsummary: \"robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练框架，支持 26+ 机器人型号，旨在通过模块化解耦简化机器人学习任务的开发。\"\n---\n\n# robot_lab (IsaacLab 扩展框架)\n\n**robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和任务，而不必直接修改 IsaacLab 的核心代码，极大地提高了开发效率和代码的可维护性。\n\n## 核心定位\n\n在机器人学习的工具链中，robot_lab 扮演了“生态适配层”的角色：\n- **IsaacLab 核心** 提供物理仿真、传感器模拟和基础环境接口。\n- **robot_lab** 提供具体的机器人 URDF/USD 资产配置、特定任务（如速度跟踪、动作模仿）的定义以及训练脚本。\n\n## 关键特性\n\n1. **广泛的硬件支持**：原生支持 26+ 种机器人，包括四足（Anymal D, Go2, A1）、轮足（Go2W, Tita）以及主流人形机器人（Unitree G1/H1, GR1, Xbot）。\n2. **模块化任务开发**：采用 `manager_based` 任务流，支持 locomotion 和复杂的动作模仿。\n3. **RL 框架集成**：深度集成 `RSL-RL` 作为主训练器，同时实验性支持 `CusRL` 和 `SKRL`。\n4. **特殊任务支持**：\n   - **AMP Dance**：利用 SKRL 驱动的动作风格迁移。\n   - **BeyondMimic**：人形机器人的高性能动作模仿框架。\n\n## 仓库结构规范\n\nrobot_lab 遵循 IsaacLab 的扩展规范：\n- `assets/`：存放机器人描述文件（URDF/USD）及对应的配置。\n- `tasks/`：包含 `manager_based` 和 `direct` 两类 RL 任务实现。\n- `scripts/`：提供统一的训练 (`train.py`)、评估 (`play.py`) 和导出入口。\n\n## 关联页面\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)\n- [legged_gym](./legged-gym.md)\n- [Unitree 品牌主页](./unitree.md)\n- [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)\n\n## 参考来源\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md)\n- [fan-ziqi/robot_lab GitHub Repo](https://github.com/fan-ziqi/robot_lab)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "rl",
+        "tooling"
+      ],
+      "related": [
+        "entity-isaac-gym-isaac-lab",
+        "entity-legged-gym",
+        "entity-unitree",
+        "wiki-methods-reinforcement-learning",
+        "sources-repos-robot-lab"
+      ],
+      "source_links": [
+        "https://github.com/fan-ziqi/robot_lab"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "simulator"
+    },
+    {
       "id": "entity-shadow-hand",
       "title": "Shadow Hand (灵巧手)",
       "path": "wiki/entities/shadow-hand.md",
@@ -4560,7 +4618,7 @@
       "title": "Unitree G1 (人形机器人)",
       "path": "wiki/entities/unitree-g1.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md) 和 `legged_gym`，研究者可以快速在仿真中训练策略并部署。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- Unitree G1 官方规格书。",
+      "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md)、[robot_lab](../entities/robot-lab.md) 和 `legged_gym`，研究者可以快速在仿真中训练策略并部署。\n5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- Unitree G1 官方规格书。",
       "tags": [
         "entities",
         "entity",
@@ -4572,6 +4630,8 @@
       "related": [
         "entity-humanoid-robot",
         "entity-unitree",
+        "entity-robot-lab",
+        "wiki-methods-claw",
         "wiki-roadmaps-humanoid-control-roadmap",
         "wiki-concepts-terrain-adaptation",
         "wiki-concepts-whole-body-control",

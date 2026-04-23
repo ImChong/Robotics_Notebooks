@@ -1,3 +1,9 @@
+---
+type: reference_page
+summary: "按主题整理机器人学（locomotion, manipulation, learning control）主线核心论文入口。"
+updated: 2026-04-23
+---
+
 # 论文导航 / Papers
 
 这里不是论文全文仓库，也不是逐篇精读笔记区。
