@@ -67,7 +67,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 典型 pipeline：
 
 ```
-专家演示（MoCap/遥控）→ 动作重定向（Retarget）→ 模仿学习训练 → Sim2Real部署
+专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署
 ```
 
 代表工作：
@@ -75,6 +75,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - MimicKit：j提炼 encoder-decoder 框架
 - ASE：对抗技能嵌入
 - CALM：latent 方向控制
+- CLAW：宇树 G1 的模块化语言-动作数据生成管线
 
 ## 常见问题
 
@@ -87,7 +88,8 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要
-- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — ASE 与 locomotion 技能学习补充
+- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
+- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合
 - [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)
 - [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
@@ -102,6 +104,8 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [Sim2Real](../concepts/sim2real.md)
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
+- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
+- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架
 - [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）

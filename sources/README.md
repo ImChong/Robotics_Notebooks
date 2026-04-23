@@ -28,12 +28,12 @@
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
 | [unitree.md](repos/unitree.md) | Unitree 硬件与 SDK |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
-| [robot_lab.md](repos/robot_lab.md) | robot_lab：基于 IsaacLab 的 RL 扩展框架，支持 26+ 机器人（四足 / 轮足 / 人形） |
+| [x] [robot_lab.md](repos/robot_lab.md) | robot_lab：基于 IsaacLab 的 RL 扩展框架，支持 26+ 机器人（四足 / 轮足 / 人形） |
 
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
 |------|------|
-| [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
+| [x] [claw_unitree_g1_language_annotated_motion_data.md](blogs/claw_unitree_g1_language_annotated_motion_data.md) | 微信公众号文章：CLAW 为宇树 G1 生成带语言标签的物理仿真全身运动数据 |
 
 ### notes/ — 原始笔记归档
 | 文件 | 内容 |
