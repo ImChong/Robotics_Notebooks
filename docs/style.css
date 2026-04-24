@@ -49,6 +49,7 @@ body {
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
+.hero .container { max-width: 960px; }
 
 .site-header {
   position: sticky;
@@ -748,6 +749,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   }
   .hero {
     padding: 28px 0 28px;
+  }
+  .hero .container {
+    padding-left: 12px;
+    padding-right: 12px;
   }
   .page-hero {
     padding: 34px 0 12px;
