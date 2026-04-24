@@ -1731,34 +1731,46 @@
     const sbSlidesLink = document.getElementById('sb-slides-link');
     const sbClose      = document.getElementById('sb-close');
 
+    function edgeNodeIds(e) {
+      return {
+        sourceId: typeof e.source === 'object' ? e.source.id : e.source,
+        targetId: typeof e.target === 'object' ? e.target.id : e.target,
+      };
+    }
+
     function openSidebar(d) {
       // V19: 高亮当前节点及 2-hop 邻居
       const direct = new Set();
       const secondary = new Set();
       edges.forEach(e => {
-        const sId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
         if (sId === d.id) direct.add(tId);
         if (tId === d.id) direct.add(sId);
       });
       edges.forEach(e => {
-        const sId = typeof e.source === 'object' ? e.source.id : e.source;
-        const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
         if (direct.has(sId) && tId !== d.id) secondary.add(tId);
         if (direct.has(tId) && sId !== d.id) secondary.add(sId);
       });
 
+      hideTooltip();
+      node.select('.node-glow').attr('fill-opacity', n => n.id === d.id ? 0.2 : 0);
+      node.select('.node-circle').attr('fill-opacity', 1);
       node.style('opacity', n => (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05));
       link
-        .style('opacity', e => {
-          const sId = typeof e.source === 'object' ? e.source.id : e.source;
-          const tId = typeof e.target === 'object' ? e.target.id : e.target;
-          const involved = (sId === d.id || tId === d.id);
-          return involved ? 1.0 : 0.25; // 进一步提升背景线 (原 0.15) 和高亮线 (原 0.9)
+        .style('opacity', null)
+        .style('stroke-width', null)
+        .attr('stroke', e => {
+          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
+          return (sId === d.id || tId === d.id) ? nodeColor(d) : edgeBaseColor();
         })
-        .style('stroke-width', e => {
-          const sId = typeof e.source === 'object' ? e.source.id : e.source;
-          const tId = typeof e.target === 'object' ? e.target.id : e.target;
+        .attr('stroke-opacity', e => {
+          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
+          const involved = (sId === d.id || tId === d.id);
+          return involved ? 0.85 : 0.18;
+        })
+        .attr('stroke-width', e => {
+          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
           return (sId === d.id || tId === d.id) ? linkWidthBase * 1.5 : linkWidthBase;
         });
 
@@ -1840,6 +1852,11 @@
     function closeSidebar() {
       sidebar.classList.remove('open');
       pinnedNode = null; // V21 修复：清除固定节点状态
+      node.select('.node-glow').attr('fill-opacity', 0);
+      link
+        .style('opacity', null)
+        .style('stroke-width', null)
+        .attr('stroke', edgeBaseColor());
       applyFilters(); // 恢复筛选/搜索状态下的透明度
       wrap.classList.remove('sidebar-open');
       simulation.force('center', d3.forceCenter(
