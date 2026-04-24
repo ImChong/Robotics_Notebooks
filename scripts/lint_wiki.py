@@ -75,6 +75,15 @@ def word_count(content: str) -> int:
     return chinese + english
 
 
+def has_source_reference(content: str) -> bool:
+    """检查页面是否引用了 sources/ 下的原始资料。
+
+    覆盖率统计关心的是 wiki 页是否能追溯到原始资料，而不是资料是否一定来自
+    sources/papers/。repo、blog、note 等来源同样是有效 ingest 来源。
+    """
+    return bool(re.search(r'(?:\.\./)*sources/[^)\s]+\.md\b', content))
+
+
 def strip_misconception_sections(content: str) -> str:
     """移除“常见误区/误区”区块，避免把辟谣内容误判为事实矛盾。"""
     lines = content.splitlines()
@@ -186,10 +195,10 @@ def lint() -> dict:
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
 
-        # Ingest coverage: count non-meta wiki pages and those with sources/papers/ links
+        # Ingest coverage: count non-meta wiki pages with any sources/ raw-material link
         if not is_meta_page:
             results["_ingest_total"] += 1
-            if "sources/papers/" in content:
+            if has_source_reference(content):
                 results["_ingest_covered"] += 1
 
         # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
