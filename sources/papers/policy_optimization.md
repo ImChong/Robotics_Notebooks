@@ -6,7 +6,7 @@
 - **类型：** paper
 - **来源：** arXiv / NeurIPS / ICLR / ICML
 - **入库日期：** 2026-04-14
-- **最后更新：** 2026-04-14
+- **最后更新：** 2026-04-24
 - **一句话说明：** 覆盖 model-free 策略优化核心算法，支撑 policy-optimization.md、reinforcement-learning.md 和 locomotion RL 应用页面。
 
 ## 核心论文摘录（MVP）
@@ -51,7 +51,19 @@
   - [curriculum-learning](../../wiki/concepts/curriculum-learning.md)
   - [reward-design](../../wiki/concepts/reward-design.md)
 
+### 6) Bounded Ratio Reinforcement Learning (Ao et al., 2026)
+- **链接：** <https://arxiv.org/abs/2604.18578>
+- **项目页：** <https://bounded-ratio-rl.github.io/brrl/>
+- **代码：** <https://github.com/bounded-ratio-rl/bounded_ratio_rl>
+- **核心贡献：** 提出 BRRL（Bounded Ratio RL）框架，在有界 ratio 约束下给出解析最优策略，并据此构造 BPO（Bounded Policy Optimization）损失；论文给出单调改进理论保证，并在 MuJoCo / Atari / IsaacLab（含人形 locomotion）中报告了相对 PPO 的稳定性和性能优势。
+- **关键机制：** 将 PPO 中启发式 clip 目标重新解释为“朝向有界 ratio 最优解”的近似优化，并建立 BRRL 与 trust region 方法、CEM 的联系。
+- **对 wiki 的映射：**
+  - [Policy Optimization](../../wiki/methods/policy-optimization.md)
+  - [Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
+  - [PPO vs SAC](../../wiki/comparisons/ppo-vs-sac.md)
+  - [Locomotion](../../wiki/tasks/locomotion.md)
+
 ## 当前提炼状态
 
-- [x] PPO / SAC / TD3 / TRPO / Rudin et al. 五条核心摘要
+- [x] PPO / SAC / TD3 / TRPO / Rudin et al. / BRRL 六条核心摘要
 - [ ] 后续补：在不同机器人任务上三种算法的实测对比数据
