@@ -111,6 +111,14 @@
 - 若是新外部资料，先进入 `sources/`，再决定是否沉淀到 `wiki/`
 - 若会影响学习路径，应同步更新 `index.md` 或相关 roadmap 页面
 
+### 浏览器验证工具
+
+后续 agent 如果需要修改或验证 `docs/` 下的前端页面，尤其是 `graph.html` 这类交互页面，应优先安装并使用 Chrome DevTools MCP：
+
+- 项目地址：<https://github.com/ChromeDevTools/chrome-devtools-mcp>
+- Codex CLI 可用示例：`codex mcp add chrome-devtools -- npx -y chrome-devtools-mcp@latest`
+- 用途：打开本地页面、检查 console/network、模拟点击/键盘交互、截图或验证图谱节点状态。
+
 ### LLM Wiki Ops 规范（必须遵守）
 
 本知识库采用 **Karpathy LLM Wiki 模式**：LLM 是维护者，人类是 curator。
