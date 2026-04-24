@@ -49,7 +49,6 @@ body {
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .container { max-width: 800px; margin: 0 auto; padding: 0 24px; }
-.hero .container { max-width: 960px; }
 
 .site-header {
   position: sticky;
