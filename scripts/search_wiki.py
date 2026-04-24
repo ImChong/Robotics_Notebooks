@@ -107,6 +107,57 @@ def compute_score(
     return score
 
 
+def levenshtein_distance(a: str, b: str) -> int:
+    """计算两个字符串的 Levenshtein 编辑距离（迭代版本，O(len(a)*len(b))）。"""
+    if a == b:
+        return 0
+    if not a:
+        return len(b)
+    if not b:
+        return len(a)
+    prev = list(range(len(b) + 1))
+    for i, ca in enumerate(a, 1):
+        curr = [i]
+        for j, cb in enumerate(b, 1):
+            cost = 0 if ca == cb else 1
+            curr.append(min(prev[j] + 1, curr[j - 1] + 1, prev[j - 1] + cost))
+        prev = curr
+    return prev[-1]
+
+
+def collect_known_terms(docs: list[dict]) -> dict[str, str]:
+    """收集 wiki 中所有 title 与 tag，返回 {小写形式: 原始展示形式}。"""
+    terms: dict[str, str] = {}
+    for doc in docs:
+        title = (doc.get("title") or "").strip()
+        if title:
+            terms.setdefault(title.lower(), title)
+        for tag in doc.get("tags", []) or []:
+            tag_str = str(tag).strip()
+            if tag_str:
+                terms.setdefault(tag_str.lower(), tag_str)
+    return terms
+
+
+def suggest_terms(query: str, terms: dict[str, str], top_k: int = 5) -> list[tuple[str, int]]:
+    """给定查询，返回距离最近的 top_k 个 (display_term, distance)。
+
+    阈值：距离不超过 max(2, ceil(len(query)/2))，避免无意义的远距离推荐。
+    """
+    query_norm = query.strip().lower()
+    if not query_norm:
+        return []
+    max_dist = max(2, (len(query_norm) + 1) // 2)
+    candidates: list[tuple[str, int]] = []
+    for key, display in terms.items():
+        d = levenshtein_distance(query_norm, key)
+        if d == 0 or d > max_dist:
+            continue
+        candidates.append((display, d))
+    candidates.sort(key=lambda item: (item[1], item[0]))
+    return candidates[:top_k]
+
+
 def normalize_scores(scores: list[float]) -> list[float]:
     if not scores:
         return []
@@ -309,11 +360,21 @@ def highlight(text: str, words: list[str], case_sensitive: bool) -> str:
     return text
 
 
-def print_results(results: list[dict], query_words: list[str], case_sensitive: bool, semantic_notice: str | None = None) -> None:
+def print_results(
+    results: list[dict],
+    query_words: list[str],
+    case_sensitive: bool,
+    semantic_notice: str | None = None,
+    suggestions: list[tuple[str, int]] | None = None,
+) -> None:
     if semantic_notice:
         print(f"\033[2m[提示] {semantic_notice}\033[0m")
     if not results:
         print("未找到匹配结果。")
+        if suggestions:
+            print("您是否想搜索：")
+            for term, dist in suggestions:
+                print(f"  \033[2m·\033[0m {term} \033[2m(编辑距离 {dist})\033[0m")
         return
 
     for r in results:
@@ -386,6 +447,12 @@ def main() -> None:
     if args.query:
         save_cache(cache, cache_key, results)
 
+    suggestions: list[tuple[str, int]] = []
+    if not results and args.query:
+        from search_indexing import iter_wiki_documents
+
+        suggestions = suggest_terms(" ".join(args.query), collect_known_terms(iter_wiki_documents()))
+
     if args.json_out:
         out = []
         for r in results:
@@ -406,10 +473,20 @@ def main() -> None:
                     "snippet": snippet.strip()[:200],
                 }
             )
-        payload = {"notice": semantic_notice, "results": out} if semantic_notice else out
+        suggestion_payload = [{"term": term, "distance": dist} for term, dist in suggestions]
+        if semantic_notice or suggestion_payload:
+            payload = {"notice": semantic_notice, "suggestions": suggestion_payload, "results": out}
+        else:
+            payload = out
         print(json.dumps(payload, ensure_ascii=False, indent=2))
     else:
-        print_results(results, args.query, args.case, semantic_notice=semantic_notice)
+        print_results(
+            results,
+            args.query,
+            args.case,
+            semantic_notice=semantic_notice,
+            suggestions=suggestions,
+        )
 
 
 if __name__ == "__main__":
