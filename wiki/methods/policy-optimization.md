@@ -108,6 +108,19 @@ SAC 常用于：
 
 先用 BC / AWR 从演示数据初始化策略，再用 PPO / SAC 在线优化，兼顾样本效率和最终性能。
 
+## 新进展：BRRL / BPO（2026）
+
+**Bounded Ratio Reinforcement Learning (BRRL)** 给 PPO 的 clip 目标提供了一个更“可解释”的理论视角：  
+在有界重要性比约束下，先定义解析形式的最优策略，再通过 **BPO（Bounded Policy Optimization）** 损失逼近该最优策略。
+
+对工程实践的价值：
+- 为 “为什么 PPO 通常有效” 提供了更明确的解释框架（不仅是经验现象）
+- 在 MuJoCo / Atari / IsaacLab 报告了与 PPO 对比下更平滑或更高的收敛表现
+- 对机器人 RL 来说，尤其适合关注 **训练稳定性** 与 **可解释策略更新** 的场景
+
+当前可将其视为 PPO 家族的一个值得跟踪的新方向：  
+**默认 baseline 仍可用 PPO，但在不稳定任务上可以把 BPO 作为对照实验项。**
+
 ## 常见问题和调参技巧
 
 ### Reward Shaping
@@ -132,6 +145,7 @@ SAC 常用于：
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 原论文
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning* (2018) — SAC 原论文
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — locomotion + PPO 代表
+- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL/BPO，新近策略优化理论与算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)
 
 ## 关联页面
@@ -150,6 +164,7 @@ SAC 常用于：
 - Schulman et al., [*Proximal Policy Optimization Algorithms*](https://arxiv.org/abs/1707.06347) — PPO 原论文
 - Haarnoja et al., [*Soft Actor-Critic*](https://arxiv.org/abs/1801.01290) — SAC 原论文
 - Andrychowicz et al., [*Learning dexterous in-hand manipulation*](https://arxiv.org/abs/1808.00177) — 灵巧手操作 PPO 经典
+- Ao et al., [*Bounded Ratio Reinforcement Learning*](https://arxiv.org/abs/2604.18578) — BRRL / BPO 原论文
 
 ## 一句话记忆
 

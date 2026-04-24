@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-23",
-  "node_count": 173,
-  "edge_count": 964,
+  "generated_at": "2026-04-24",
+  "node_count": 172,
+  "edge_count": 955,
   "community_count": 7,
   "top_hubs": [
     {
@@ -17,7 +17,7 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 66
+      "degree": 65
     },
     {
       "id": "wiki/concepts/sim2real.md",
@@ -60,7 +60,7 @@
     "concept": 40,
     "query": 40,
     "method": 28,
-    "formalization": 22,
+    "formalization": 21,
     "entity": 18,
     "comparison": 14,
     "task": 7,
@@ -69,19 +69,19 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 65,
-    "Whole-Body Control (WBC) 社区": 47,
-    "Manipulation 社区": 42,
+    "Locomotion 社区": 109,
+    "Manipulation 社区": 37,
     "实时运控中间件配置指南 社区": 8,
+    "Model-Based RL（基于模型的强化学习） 社区": 7,
     "Control Barrier Function（控制屏障函数） 社区": 6,
     "VLA 真机部署指南：延迟、异步与加速 社区": 3,
-    "Variational Objective (变分目标函数) 社区": 2
+    "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "Variational Objective (变分目标函数) 社区"
+      "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.376,
-    "community_quality_warning": false
+    "largest_community_ratio": 0.634,
+    "community_quality_warning": true
   }
 }
