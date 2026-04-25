@@ -398,6 +398,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   font-size: .84rem;
 }
 .detail-hero {
+  padding-top: 40px;
   padding-bottom: 14px;
 }
 .detail-hero-stack {
