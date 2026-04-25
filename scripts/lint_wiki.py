@@ -13,6 +13,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   9. Frontmatter 缺少 type 字段（V8 新增）
  10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
  11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
+ 12. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
 
 用法：
   python3 scripts/lint_wiki.py
@@ -149,6 +150,7 @@ def lint() -> dict:
         "missing_summary": [],        # V10: concepts/methods/tasks 缺少 summary/description
         "query_format": [],           # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
         "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
+        "formalization_unexplained_vars": [],  # V21: formalizations/ 公式变量缺少正文物理含义解释
         "readme_badge": [],           # V11: README checklist 链接版本不一致
         "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
         "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
@@ -1050,6 +1052,50 @@ def lint() -> dict:
         if "$$" not in content and "$`" not in content and "`$" not in content:
             results["formalization_no_formula"].append(str(rel))
 
+    # V21: formalizations/ 公式变量必须有物理含义解释
+    # 启发式：从 $$...$$ 显示公式抽取“单字母拉丁大写变量”，排除函数调用形式（X(...)）。
+    # 对每个变量，检查正文是否含有定义/解释模式（动词、表格行、条目冒号、其中子句、等式定义等）。
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
+            continue
+        content = page.read_text(encoding="utf-8")
+        display_blocks = re.findall(r'\$\$(.*?)\$\$', content, re.DOTALL)
+        if not display_blocks:
+            continue
+        candidate_vars: set[str] = set()
+        for block in display_blocks:
+            for v in re.findall(r'(?<![A-Za-z\\_^{])([A-Z])(?![A-Za-z_(])', block):
+                candidate_vars.add(v)
+        if not candidate_vars:
+            continue
+        unexplained: list[str] = []
+        for v in sorted(candidate_vars):
+            esc = re.escape(v)
+            patterns = [
+                # 列表条目： - $X$（可带下标/上标）：含义
+                rf'-\s*\$\\?{esc}[^$]*\$[^|\n]*?[:：]',
+                # 行内冒号定义： $X$：含义
+                rf'\$\\?{esc}[^$]*\$\s*[:：]\s*\S',
+                # 表格行 | $X...$ |
+                rf'\|\s*\$\\?{esc}[^$]*\$\s*\|',
+                # 动词解释： $X...$ 是/为/表示/代表/指/denote/含义/定义
+                rf'\$\\?{esc}[^$]*\$[^.\n]{{0,80}}(?:是|为|表示|代表|指|denote|denotes|含义|定义)',
+                # “其中 $X$” / “where $X$”
+                rf'(?:其中|where).{{0,100}}\$\\?{esc}[^$]*\$',
+                # 等式/集合/序关系定义： $X = / \in / \succeq / \succ / \equiv / \triangleq
+                rf'\$\\?{esc}\s*(?:=|\\in|\\succeq|\\succ|\\equiv|\\triangleq)',
+                # 粗体段落中带变量： **... $X$ ...**
+                rf'\*\*[^*]*\$\\?{esc}[^$]*\$[^*]*\*\*',
+            ]
+            if not any(re.search(p, content, re.MULTILINE | re.IGNORECASE) for p in patterns):
+                unexplained.append(v)
+        if unexplained:
+            results["formalization_unexplained_vars"].append(
+                f"{rel}（变量缺解释：{', '.join(unexplained)}）"
+            )
+
     # V11: README.md 中 badges / checklist 链接应与当前仓库状态一致
     readme_path = REPO_ROOT / "README.md"
     if readme_path.exists():
@@ -1180,6 +1226,7 @@ def format_report(results: dict) -> str:
         ("missing_summary",    "缺少摘要字段（summary/description）",         "⚠️"),
         ("query_format",       "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
         ("formalization_no_formula", "Formalization 页面缺少公式块",              "⚠️"),
+        ("formalization_unexplained_vars", "Formalization 公式变量缺少正文物理含义解释", "⚠️"),
         ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
         ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
         ("method_missing_link","Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
