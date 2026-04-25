@@ -5073,14 +5073,19 @@
       "id": "reference-papers-humanoid-hardware",
       "title": "Humanoid Hardware",
       "path": "references/papers/humanoid-hardware.md",
-      "summary": "聚焦人形机器人硬件架构、执行器、传感器与系统设计相关论文",
-      "content_markdown": "聚焦人形机器人硬件架构、执行器、传感器与系统设计相关论文。",
+      "summary": "聚焦人形机器人硬件架构、执行器设计、传感器集成与系统工程",
+      "content_markdown": "聚焦人形机器人硬件架构、执行器设计、传感器集成与系统工程。\n\n## 关注问题\n\n- 如何平衡高功率密度与结构紧凑性？\n- 不同类型的执行器（如准直驱、行星减速器、SEA）的优缺点？\n- 全身关节布置与自由度（DoF）优化如何影响运动能力？\n- 硬件层面的鲁棒性如何提升（如散热、防震）？\n\n## 代表性平台与论文\n\n### 经典与先进执行器\n\n- **Unitree G1/H1** — 展示了量产级人形机器人的硬件集成方案。\n- **Digit (Agility Robotics)** — 腿部联动机构与执行器设计的代表作。\n\n### 硬件综述与系统\n\n- **Open-source Humanoid Hardware** — 各类开源人形机器人项目（如 Reachy, IronBoy）的硬件对比。\n\n## 关联页面\n\n- [人形机器人 (Entity)](../../wiki/entities/humanoid-robot.md)\n- [Unitree (Entity)](../../wiki/entities/unitree.md)\n- [执行器网络 (Method)](../../wiki/methods/actuator-network.md)\n- [开源人形硬件对比 (Entity)](../../wiki/entities/open-source-humanoid-hardware.md)",
       "tags": [
         "papers",
         "humanoid",
         "hardware"
       ],
-      "related": [],
+      "related": [
+        "entity-humanoid-robot",
+        "entity-unitree",
+        "wiki-methods-actuator-network",
+        "entity-open-source-humanoid-hardware"
+      ],
       "source_links": [],
       "status": "active",
       "type": "reference_page",
@@ -5090,13 +5095,20 @@
       "id": "reference-papers-imitation-learning",
       "title": "Imitation Learning",
       "path": "references/papers/imitation-learning.md",
-      "summary": "聚焦行为克隆、DAgger、Diffusion Policy、Motion Prior、Motion Retarget 等方向",
-      "content_markdown": "聚焦行为克隆、DAgger、Diffusion Policy、Motion Prior、Motion Retarget 等方向。",
+      "summary": "聚焦行为克隆、DAgger、Diffusion Policy、动作块输出与技能嵌入相关论文",
+      "content_markdown": "聚焦行为克隆、DAgger、Diffusion Policy、动作块输出与技能嵌入相关论文。\n\n## 关注问题\n\n- 如何解决行为克隆（BC）中的协变量偏移（Covariate Shift）问题？\n- 如何通过生成式模型（如 Diffusion）建模多模态专家数据？\n- 如何有效压缩长时序动作序列以提升操作稳定性？\n- 如何将动捕数据或专家演示转化为可重用的技能先验？\n\n## 代表性论文\n\n### 基础算法\n\n- **DAgger** (Ross et al., 2011) — *A Reduction of Imitation Learning to No-Regret Online Learning*. 系统解决了 BC 的累计误差问题。\n- **Diffusion Policy** (Chi et al., 2023) — *Visuomotor Policy Learning via Action Diffusion*. 将扩散模型引入策略建模，显著提升了复杂操作任务的成功率。\n\n### 动作表达与架构\n\n- **ACT** (Zhao et al., 2023) — *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*. 提出了 Action Chunking，改善了长时序稳定性。\n\n### 技能嵌入\n\n- **ASE** (Peng et al., 2022) — *Adversarial Skill Embeddings for Hierarchical RL*. 学习可组合的隐空间技能表征。\n\n## 关联页面\n\n- [Imitation Learning (Method)](../../wiki/methods/imitation-learning.md)\n- [Diffusion Policy (Method)](../../wiki/methods/diffusion-policy.md)\n- [Action Chunking (Method)](../../wiki/methods/action-chunking.md)\n- [Behavior Cloning (Method)](../../wiki/methods/behavior-cloning.md)",
       "tags": [
         "papers",
-        "il"
+        "rl",
+        "il",
+        "hardware"
       ],
-      "related": [],
+      "related": [
+        "wiki-methods-imitation-learning",
+        "wiki-methods-diffusion-policy",
+        "wiki-methods-action-chunking",
+        "wiki-methods-behavior-cloning"
+      ],
       "source_links": [],
       "status": "active",
       "type": "reference_page",
@@ -5213,21 +5225,23 @@
       "id": "reference-papers-sim2real",
       "title": "Sim2Real",
       "path": "references/papers/sim2real.md",
-      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移",
-      "content_markdown": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移。\n\n## 关注问题\n\n- 如何弥合仿真和现实的物理参数差异？\n- 如何选择正确的随机化维度？\n- 如何判断策略已经具备零样本迁移能力？\n\n## 代表性论文\n\n- **Sim-to-Real Transfer of Robotic Control with Dynamics Randomization** (Tobio et al., 2018) — 物理参数 DR 经典，[Paper](https://arxiv.org/abs/1710.06537)\n- **Domain Randomization for RL** (OpenAI, 2017) — 视觉/物理 DR 基础\n- **SAGE** — Sim-to-Real Actuator Gap Estimator，[Code](https://github.com/isaac-sim2real/sage)\n- **Learning Robust Perceptual Priors for Sim-to-Real** — 视觉域随机化\n\n## 关联页面\n\n- [[wiki/concepts/sim2real]] — 深度概念页\n- [[wiki/concepts/domain-randomization]] — 域随机化核心方法\n- [[wiki/concepts/system-identification]] — 系统辨识（另一种 DR 思路）",
+      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移相关论文",
+      "content_markdown": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移相关论文。\n\n## 关注问题\n\n- 如何弥合仿真和现实的物理参数差异？\n- 如何通过随机化（DR）提升策略的鲁棒性？\n- 如何在部署时实时感知并适应环境变化？\n- 如何建立具有物理一致性的状态估计器？\n\n## 代表性论文\n\n### 域随机化 (Domain Randomization)\n\n- **Tobin et al. (2017)** — *Domain Randomization for Transferring Deep Neural Networks*. 提出了视觉与物理参数随机化的基础范式。\n- **Peng et al. (2018)** — *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization*. 动力学随机化在腿式机器人控制中的应用。\n\n### 在线自适应\n\n- **RMA (Kumar et al., 2021)** — *Rapid Motor Adaptation for Legged Robots*. 提出了通过环境编码器实现快速在线自适应。\n\n### 鲁棒状态估计\n\n- **InEKF (Barrau & Bonnabel, 2017)** — *The Invariant Extended Kalman Filter as a Stable Observer*. 提供了基于李群的一致性状态估计理论。\n\n## 关联页面\n\n- [Sim2Real (Concept)](../../wiki/concepts/sim2real.md)\n- [Domain Randomization (Concept)](../../wiki/concepts/domain-randomization.md)\n- [System Identification (Concept)](../../wiki/concepts/system-identification.md)\n- [Privileged Training (Concept)](../../wiki/concepts/privileged-training.md)\n- [State Estimation (Concept)](../../wiki/concepts/state-estimation.md)",
       "tags": [
         "papers",
+        "locomotion",
         "control",
         "dynamics",
-        "rl",
-        "sim2real",
-        "tooling"
+        "sim2real"
       ],
-      "related": [],
-      "source_links": [
-        "https://arxiv.org/abs/1710.06537",
-        "https://github.com/isaac-sim2real/sage"
+      "related": [
+        "wiki-concepts-sim2real",
+        "wiki-concepts-domain-randomization",
+        "wiki-concepts-system-identification",
+        "wiki-concepts-privileged-training",
+        "wiki-concepts-state-estimation"
       ],
+      "source_links": [],
       "status": "active",
       "type": "reference_page",
       "reference_kind": "papers"
@@ -5236,12 +5250,19 @@
       "id": "reference-papers-survey-papers",
       "title": "Survey Papers",
       "path": "references/papers/survey-papers.md",
-      "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的综述论文",
-      "content_markdown": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的综述论文。",
+      "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）",
+      "content_markdown": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。\n\n## 关注问题\n\n- 机器人强化学习领域的整体发展脉络？\n- 人形机器人控制中传统方法与学习方法的交集？\n- 大规模具身智能（VLA）的技术演进？\n- 仿真平台与数据集的现状对比？\n\n## 代表性综述\n\n### 机器人学习与强化学习\n\n- **Ibarz et al. (2021)** — *How to Train Your Robot with Deep Reinforcement Learning: Lessons We Have Learned*. 提供了大量机器人 RL 的实战经验总结。\n- **Zhu et al. (2023)** — *A Survey on Deep Reinforcement Learning for Control*. 聚焦于控制层面的深度 RL 综述。\n\n### 人形机器人与运动控制\n\n- **Humanoid Control Roadmap** — 涵盖了从早期 ZMP 至今的运控路线综述。\n\n## 关联页面\n\n- [Robot Learning Overview (Overview)](../../wiki/overview/robot-learning-overview.md)\n- [VLA (Method)](../../wiki/methods/vla.md)\n- [RL Algorithm Selection (Query)](../../wiki/queries/rl-algorithm-selection.md)",
       "tags": [
-        "papers"
+        "papers",
+        "humanoid",
+        "control",
+        "rl"
       ],
-      "related": [],
+      "related": [
+        "wiki-overview-robot-learning-overview",
+        "wiki-methods-vla",
+        "wiki-queries-rl-algorithm-selection"
+      ],
       "source_links": [],
       "status": "active",
       "type": "reference_page",
@@ -5277,14 +5298,23 @@
       "title": "Whole-Body Control",
       "path": "references/papers/whole-body-control.md",
       "summary": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文",
-      "content_markdown": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。",
+      "content_markdown": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。\n\n## 关注问题\n\n- 如何在多任务（平衡、跟踪、避障）之间设置优先级？\n- 如何在保持动力学一致性的前提下实时求解关节力矩？\n- 如何处理多接触状态下的约束（非穿地、摩擦锥）？\n- 如何在高性能硬件上实现 kHz 级别的实时闭环？\n\n## 代表性论文\n\n### 核心方法论\n\n- **Task Space Inverse Dynamics (TSID)** (Del Prete et al.) — 提出在接触约束下的 prioritized motion-force 控制框架，统一求解加速度与接触力。\n- **Hierarchical Quadratic Programming (HQP)** (Escande et al., 2014) — 系统化了 HQP 的实时求解框架，奠定了人形机器人运动生成的工程基础。\n- **Sentis & Khatib (2005)** — *Synthesis of Whole-Body Behaviors Through Hierarchical Control*. 奠定了全身行为层级控制范式。\n\n### 工程框架与工具\n\n- **Mastalli et al. (2020)** — *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*. 为 WBC 与轨迹优化提供高效求解器。\n\n### 稳定性与平衡分析\n\n- **Koolen et al. (2012)** — *Capturability-based Analysis and Control of Legged Locomotion*. 提出了 N-step Capturable 概念，为平衡恢复提供可行性判定。\n\n## 关联页面\n\n- [Whole-Body Control (WBC) (Concept)](../../wiki/concepts/whole-body-control.md)\n- [TSID (Concept)](../../wiki/concepts/tsid.md)\n- [HQP (Concept)](../../wiki/concepts/hqp.md)\n- [Capture Point / DCM (Concept)](../../wiki/concepts/capture-point-dcm.md)\n- [Crocoddyl (Entity)](../../wiki/entities/crocoddyl.md)\n- [MPC 与 WBC 集成 (Concept)](../../wiki/concepts/mpc-wbc-integration.md)",
       "tags": [
         "papers",
+        "locomotion",
         "control",
+        "dynamics",
         "optimization",
         "il"
       ],
-      "related": [],
+      "related": [
+        "wiki-concepts-whole-body-control",
+        "wiki-concepts-tsid",
+        "wiki-concepts-hqp",
+        "wiki-concepts-capture-point-dcm",
+        "entity-crocoddyl",
+        "wiki-concepts-mpc-wbc-integration"
+      ],
       "source_links": [],
       "status": "active",
       "type": "reference_page",
