@@ -20,11 +20,14 @@ lint_result = subprocess.run(
     cwd=REPO_ROOT,
     capture_output=True,
     text=True,
+    check=False, # We want to continue even if lint fails
 )
-coverage_match = re.search(r"Sources 覆盖率：(\d+)/(\d+) \((\d+)%\)", lint_result.stdout)
+all_output = lint_result.stdout + lint_result.stderr
+coverage_match = re.search(r"Sources 覆盖率：(\d+)/(\d+) \((\d+)%\)", all_output)
 if not coverage_match:
     print("Failed to parse Sources coverage from lint_wiki.py output", file=sys.stderr)
-    print(lint_result.stdout[-500:], file=sys.stderr)
+    print("Full output:", file=sys.stderr)
+    print(all_output[-1000:], file=sys.stderr)
     sys.exit(1)
 
 payload = {

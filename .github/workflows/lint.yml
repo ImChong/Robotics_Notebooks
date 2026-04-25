@@ -18,5 +18,8 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install dependencies
+        run: pip install pyyaml numpy
+
       - name: Run wiki lint
-        run: python3 scripts/lint_wiki.py
+        run: python3 scripts/lint_wiki.py --report

@@ -63,6 +63,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 
 ## 关联页面
 - [Model Predictive Control](./model-predictive-control.md)
+- [LQR / iLQR 算法详解](./lqr-ilqr.md)
 - [Optimal Control (OCP) 概念](../concepts/optimal-control.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [ZMP + LIP 形式化](../formalizations/zmp-lip.md)

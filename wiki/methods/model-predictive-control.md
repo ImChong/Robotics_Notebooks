@@ -214,6 +214,7 @@ print("apply control:", u.ravel())
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
+- [LQR / iLQR 算法详解](./lqr-ilqr.md)
 - [Optimal Control (OCP)](../concepts/optimal-control.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 控制范式选型对比
 

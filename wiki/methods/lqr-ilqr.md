@@ -77,6 +77,15 @@ iLQR 常被称为“DDP 的简化版”。
 
 ---
 
+## 主要分类
+
+- **理论底座**：[最优控制 (OCP)](../concepts/optimal-control.md) / [Bellman 方程](../formalizations/bellman-equation.md) / [HJB 方程](../formalizations/hjb.md)
+- **数值核心**：Riccati 递归 (LQR) / 迭代线性化 (iLQR)
+- **工程实现**：[Crocoddyl](../entities/crocoddyl.md) (iLQR/FDDP) / [Drake](../entities/drake.md) (Direct Collocation/LQR)
+- **上层形态**：[MPC 模型预测控制](./model-predictive-control.md) / [轨迹优化](./trajectory-optimization.md)
+
+---
+
 ## 4. 实践中的 Trick (Engineering Know-How)
 
 ### 正则化 (Regularization)

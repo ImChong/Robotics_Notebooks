@@ -252,7 +252,8 @@ def lint() -> dict:
                     )
 
     # P3.2: 陈旧页面检测 — sources 文件比对应 wiki 页更新时，标记需 review
-    if sources_papers_dir.exists():
+    # 注意：在 GitHub Actions 中 mtime 不可靠（checkout 会重置 mtime），故跳过
+    if sources_papers_dir.exists() and os.environ.get("GITHUB_ACTIONS") != "true":
         seen_stale = set()
         for src_file in sorted(sources_papers_dir.glob("*.md")):
             src_content = src_file.read_text(encoding="utf-8")
