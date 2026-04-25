@@ -52,3 +52,6 @@ fetch:
 
 badge:
 	python3 scripts/update_badge.py
+
+sync-stats:
+	python3 scripts/sync_all_stats.py
