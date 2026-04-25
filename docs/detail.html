@@ -98,7 +98,7 @@
             <div id="detailTagList" class="chip-list data-loading"></div>
           </section>
 
-          <section class="section section-alt" id="detail-related" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+          <section class="section section-alt" id="detail-related" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
             <h2 class="section-title">关联项</h2>
             <div id="detailRelatedList" class="card-grid data-loading">
               <article class="card skeleton-card"><p>正在读取关联项…</p></article>
@@ -149,7 +149,9 @@
       toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
       if (overlay) overlay.addEventListener('click', close);
       sidebar.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A' || e.target.closest('a')) setTimeout(close, 100);
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          close(); // Close immediately to allow hash jump
+        }
       });
     })();
   </script>

@@ -96,7 +96,7 @@
             </div>
           </section>
 
-          <section class="section section-alt" id="module-references" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+          <section class="section section-alt" id="module-references" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
             <h2 class="section-title">深挖入口</h2>
             <p class="section-subtitle">让模块页通向论文、repo、benchmark。</p>
             <div id="moduleReferenceList" class="card-grid data-loading">
@@ -111,7 +111,7 @@
             </div>
           </section>
 
-          <section class="section section-alt" id="module-related-modules" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+          <section class="section section-alt" id="module-related-modules" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
             <h2 class="section-title">相关模块</h2>
             <div id="moduleRelatedModules" class="chip-list data-loading"></div>
           </section>
@@ -136,7 +136,9 @@
       toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
       if (overlay) overlay.addEventListener('click', close);
       sidebar.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A' || e.target.closest('a')) setTimeout(close, 100);
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          close(); // Close immediately to allow hash jump
+        }
       });
     })();
   </script>

@@ -93,7 +93,7 @@
             </div>
           </section>
 
-          <section class="section section-alt" id="roadmap-related" style="margin: 20px -20px; padding: 20px; border-radius: 12px;">
+          <section class="section section-alt" id="roadmap-related" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
             <h2 class="section-title">相关项</h2>
             <p class="section-subtitle">通往 detail route 的关联项。</p>
             <div id="roadmapRelatedList" class="card-grid data-loading">
@@ -128,7 +128,9 @@
       toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
       if (overlay) overlay.addEventListener('click', close);
       sidebar.addEventListener('click', function(e) {
-        if (e.target.tagName === 'A' || e.target.closest('a')) setTimeout(close, 100);
+        if (e.target.tagName === 'A' || e.target.closest('a')) {
+          close(); // Close immediately to allow hash jump
+        }
       });
     })();
   </script>

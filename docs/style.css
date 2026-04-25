@@ -45,6 +45,7 @@ body {
   line-height: 1.5;
   transition: background var(--transition), color var(--transition);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Fix horizontal scrollbar */
 }
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
@@ -826,10 +827,11 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 @media (max-width: 1200px) {
   .detail-toc-panel {
     position: fixed;
-    top: 0;
+    top: 16px;
+    bottom: 96px; /* Avoid overlapping sidebar-toggle button */
     left: -300px;
     width: 280px;
-    height: 100%;
+    height: auto;
     margin: 0;
     padding: 20px;
     background: var(--bg);
