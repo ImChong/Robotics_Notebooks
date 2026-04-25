@@ -8,6 +8,11 @@ related:
   - ./humanoid-robot.md
   - ./robot-lab.md
   - ./unitree.md
+  - ./atom01-hardware.md
+  - ./atom01-description.md
+  - ./atom01-train.md
+  - ./atom01-deploy.md
+  - ./atom01-firmware.md
 sources:
   - ../../sources/repos/roboto_origin.md
   - ../../sources/repos/atom01_hardware.md
@@ -54,6 +59,11 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 - [人形机器人（Humanoid Robot）](./humanoid-robot.md)
 - [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)
 - [Unitree](./unitree.md)
+- [Atom01 Hardware](./atom01-hardware.md)
+- [Atom01 Description](./atom01-description.md)
+- [Atom01 Train](./atom01-train.md)
+- [Atom01 Deploy](./atom01-deploy.md)
+- [Atom01 Firmware](./atom01-firmware.md)
 
 ## 推荐继续阅读
 

@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-25",
-  "node_count": 176,
-  "edge_count": 984,
+  "node_count": 181,
+  "edge_count": 1012,
   "community_count": 8,
   "top_hubs": [
     {
@@ -12,7 +12,7 @@
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL, 强化学习)",
-      "degree": 67
+      "degree": 68
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 56
+      "degree": 57
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -60,8 +60,8 @@
     "concept": 40,
     "query": 40,
     "method": 30,
+    "entity": 24,
     "formalization": 22,
-    "entity": 19,
     "comparison": 14,
     "task": 7,
     "overview": 2,
@@ -69,22 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 110,
-    "Manipulation 社区": 44,
-    "实时运控中间件配置指南 社区": 8,
+    "Locomotion 社区": 112,
+    "Manipulation 社区": 36,
+    "实时运控中间件配置指南 社区": 9,
+    "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Control Barrier Function（控制屏障函数） 社区": 6,
+    "Contact-Rich Manipulation（接触丰富型操作） 社区": 6,
     "VLA 真机部署指南：延迟、异步与加速 社区": 3,
-    "Variational Objective (变分目标函数) 社区": 2,
-    "人形机器人运动控制 Know-How 社区": 2,
-    "Hindsight Experience Replay (HER) 社区": 1
+    "Variational Objective (变分目标函数) 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "Variational Objective (变分目标函数) 社区",
-      "人形机器人运动控制 Know-How 社区",
-      "Hindsight Experience Replay (HER) 社区"
+      "Variational Objective (变分目标函数) 社区"
     ],
-    "largest_community_ratio": 0.625,
+    "largest_community_ratio": 0.619,
     "community_quality_warning": true
   }
 }

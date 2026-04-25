@@ -5,7 +5,7 @@
       "label": "CLF vs CBF：稳定性与安全性的对偶工具",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -149,15 +149,15 @@
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
       "label": "Control Barrier Function（控制屏障函数）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -229,16 +229,16 @@
       "label": "Force Control Basics (力控制基础)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -261,16 +261,16 @@
       "label": "Hybrid Force-Position Control（力位混合控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/concepts/impedance-control.md",
       "label": "Impedance Control（阻抗控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/concepts/latent-imagination.md",
@@ -349,7 +349,7 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -449,6 +449,46 @@
       "community_label": "Locomotion 社区"
     },
     {
+      "id": "wiki/entities/atom01-deploy.md",
+      "label": "Atom01 Deploy",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
+    },
+    {
+      "id": "wiki/entities/atom01-description.md",
+      "label": "Atom01 Description",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
+    },
+    {
+      "id": "wiki/entities/atom01-firmware.md",
+      "label": "Atom01 Firmware",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
+    },
+    {
+      "id": "wiki/entities/atom01-hardware.md",
+      "label": "Atom01 Hardware",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
+    },
+    {
+      "id": "wiki/entities/atom01-train.md",
+      "label": "Atom01 Train",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
+    },
+    {
       "id": "wiki/entities/boston-dynamics.md",
       "label": "Boston Dynamics（波士顿动力）",
       "type": "entity",
@@ -533,8 +573,8 @@
       "label": "开源人形机器人硬件方案对比",
       "type": "entity",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
     },
     {
       "id": "wiki/entities/pinocchio.md",
@@ -557,8 +597,8 @@
       "label": "Roboto Origin（开源人形机器人基线）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-3",
+      "community_label": "Roboto Origin（开源人形机器人基线） 社区"
     },
     {
       "id": "wiki/entities/shadow-hand.md",
@@ -621,15 +661,15 @@
       "label": "接触力旋量锥 (Contact Wrench Cone)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/formalizations/control-lyapunov-function.md",
       "label": "Control Lyapunov Function（控制李雅普诺夫函数）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -741,7 +781,7 @@
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-5",
+      "community": "community-7",
       "community_label": "Variational Objective (变分目标函数) 社区"
     },
     {
@@ -821,8 +861,8 @@
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-1",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
@@ -869,8 +909,8 @@
       "label": "Hindsight Experience Replay (HER)",
       "type": "method",
       "health_score": 3,
-      "community": "community-7",
-      "community_label": "Hindsight Experience Replay (HER) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -925,7 +965,7 @@
       "label": "Model Predictive Path Integral (MPPI)",
       "type": "method",
       "health_score": 3,
-      "community": "community-5",
+      "community": "community-7",
       "community_label": "Variational Objective (变分目标函数) 社区"
     },
     {
@@ -949,7 +989,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -1005,8 +1045,8 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-6",
-      "community_label": "人形机器人运动控制 Know-How 社区"
+      "community": "community-2",
+      "community_label": "实时运控中间件配置指南 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -1021,7 +1061,7 @@
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-3",
+      "community": "community-4",
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
@@ -1029,8 +1069,8 @@
       "label": "Query：接触丰富操作实践指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
@@ -1061,7 +1101,7 @@
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
+      "community": "community-6",
       "community_label": "VLA 真机部署指南：延迟、异步与加速 社区"
     },
     {
@@ -1093,8 +1133,8 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-6",
-      "community_label": "人形机器人运动控制 Know-How 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -1301,7 +1341,7 @@
       "label": "VLA 真机部署指南：延迟、异步与加速",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
+      "community": "community-6",
       "community_label": "VLA 真机部署指南：延迟、异步与加速 社区"
     },
     {
@@ -1309,7 +1349,7 @@
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
       "type": "query",
       "health_score": 3,
-      "community": "community-4",
+      "community": "community-6",
       "community_label": "VLA 真机部署指南：延迟、异步与加速 社区"
     },
     {
@@ -1365,8 +1405,8 @@
       "label": "Bimanual Manipulation（双臂协调操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-5",
+      "community_label": "Contact-Rich Manipulation（接触丰富型操作） 社区"
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
@@ -1397,8 +1437,8 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-1",
-      "community_label": "Manipulation 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -2603,6 +2643,98 @@
       "target": "wiki/concepts/sim2real.md"
     },
     {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/entities/atom01-train.md"
+    },
+    {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/entities/atom01-firmware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/atom01-description.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-description.md",
+      "target": "wiki/entities/atom01-hardware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-description.md",
+      "target": "wiki/entities/atom01-train.md"
+    },
+    {
+      "source": "wiki/entities/atom01-description.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/entities/atom01-hardware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/concepts/contact-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/open-source-humanoid-hardware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/atom01-description.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/atom01-firmware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/entities/robot-lab.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
       "source": "wiki/entities/boston-dynamics.md",
       "target": "wiki/entities/humanoid-robot.md"
     },
@@ -2881,6 +3013,26 @@
     {
       "source": "wiki/entities/roboto-origin.md",
       "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/atom01-hardware.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/atom01-description.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/atom01-train.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/atom01-firmware.md"
     },
     {
       "source": "wiki/entities/shadow-hand.md",
@@ -5351,50 +5503,50 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 110,
+      "size": 112,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Manipulation 社区",
-      "size": 44,
+      "size": 36,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-2",
       "label": "实时运控中间件配置指南 社区",
-      "size": 8,
+      "size": 9,
       "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "id": "community-3",
+      "label": "Roboto Origin（开源人形机器人基线） 社区",
+      "size": 7,
+      "hub_id": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "id": "community-5",
+      "label": "Contact-Rich Manipulation（接触丰富型操作） 社区",
+      "size": 6,
+      "hub_id": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "id": "community-4",
       "label": "Control Barrier Function（控制屏障函数） 社区",
       "size": 6,
       "hub_id": "wiki/concepts/control-barrier-function.md"
     },
     {
-      "id": "community-4",
+      "id": "community-6",
       "label": "VLA 真机部署指南：延迟、异步与加速 社区",
       "size": 3,
       "hub_id": "wiki/queries/vla-deployment-guide.md"
     },
     {
-      "id": "community-5",
+      "id": "community-7",
       "label": "Variational Objective (变分目标函数) 社区",
       "size": 2,
       "hub_id": "wiki/formalizations/variational-objective.md"
-    },
-    {
-      "id": "community-6",
-      "label": "人形机器人运动控制 Know-How 社区",
-      "size": 2,
-      "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
-    },
-    {
-      "id": "community-7",
-      "label": "Hindsight Experience Replay (HER) 社区",
-      "size": 1,
-      "hub_id": "wiki/methods/her.md"
     }
   ]
 }
