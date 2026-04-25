@@ -756,9 +756,11 @@
     const recommendedEl = document.getElementById('detailRecommendedList');
     const sourceEl = document.getElementById('detailSourceList');
     const emptyState = document.getElementById('detailEmptyState');
+    const emptySection = document.getElementById('detail-empty-section');
     const breadcrumb = document.getElementById('detailBreadcrumb');
 
     if (!detailPage) {
+      if (emptySection) emptySection.hidden = false;
       if (emptyState) emptyState.hidden = false;
       if (titleEl) titleEl.textContent = '未找到对应 detail page';
       if (summaryEl) {
@@ -790,6 +792,7 @@
       return;
     }
 
+    if (emptySection) emptySection.hidden = true;
     if (emptyState) emptyState.hidden = true;
     document.title = (detailPage.title || detailId) + ' | Robotics Notebooks';
 
