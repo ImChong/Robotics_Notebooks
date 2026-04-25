@@ -223,6 +223,118 @@
       });
   }
 
+  function normalizeCodeLang(lang) {
+    const value = String(lang || '').trim().toLowerCase();
+    if (!value) return 'text';
+    if (['py', 'python3'].includes(value)) return 'python';
+    if (['sh', 'shell', 'zsh'].includes(value)) return 'bash';
+    if (['yml'].includes(value)) return 'yaml';
+    if (['js'].includes(value)) return 'javascript';
+    if (['txt', 'plain', 'plaintext'].includes(value)) return 'text';
+    return value.replace(/[^\w-]/g, '') || 'text';
+  }
+
+  function highlightGenericLine(line) {
+    return escapeHtml(line);
+  }
+
+  function highlightPythonLine(line) {
+    const keywords = new Set([
+      'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue',
+      'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
+      'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
+      'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
+    ]);
+    const builtins = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
+    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*\/<>!%]+|[()[\]{}.,:])/g;
+    let out = '';
+    let lastIndex = 0;
+    let afterKeyword = '';
+    line.replace(tokenRe, function (token, _whole, offset) {
+      out += escapeHtml(line.slice(lastIndex, offset));
+      if (token.startsWith('#')) {
+        out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
+      } else if (/^['"]/.test(token)) {
+        out += '<span class="tok-string">' + escapeHtml(token) + '</span>';
+      } else if (/^\d/.test(token)) {
+        out += '<span class="tok-number">' + escapeHtml(token) + '</span>';
+      } else if (/^[=+\-*\/<>!%]+$/.test(token)) {
+        out += '<span class="tok-operator">' + escapeHtml(token) + '</span>';
+      } else if (/^[()[\]{}.,:]$/.test(token)) {
+        out += '<span class="tok-punctuation">' + escapeHtml(token) + '</span>';
+      } else if (afterKeyword === 'class') {
+        out += '<span class="tok-class">' + escapeHtml(token) + '</span>';
+        afterKeyword = '';
+      } else if (afterKeyword === 'def') {
+        out += '<span class="tok-function">' + escapeHtml(token) + '</span>';
+        afterKeyword = '';
+      } else if (keywords.has(token)) {
+        out += '<span class="tok-keyword">' + escapeHtml(token) + '</span>';
+        afterKeyword = token === 'class' || token === 'def' ? token : '';
+      } else if (builtins.has(token)) {
+        out += '<span class="tok-builtin">' + escapeHtml(token) + '</span>';
+      } else {
+        out += '<span class="tok-name">' + escapeHtml(token) + '</span>';
+      }
+      lastIndex = offset + token.length;
+      return token;
+    });
+    out += escapeHtml(line.slice(lastIndex));
+    return out;
+  }
+
+  function highlightBashLine(line) {
+    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:cd|cp|echo|export|git|make|mkdir|mv|pip|python|python3|rm|uv|source|test|then|fi|do|done|for|if|in)\b|\b\d+(?:\.\d+)?\b|[=|&;<>]+)/g;
+    let out = '';
+    let lastIndex = 0;
+    line.replace(tokenRe, function (token, _whole, offset) {
+      out += escapeHtml(line.slice(lastIndex, offset));
+      if (token.startsWith('#')) out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
+      else if (/^['"]/.test(token)) out += '<span class="tok-string">' + escapeHtml(token) + '</span>';
+      else if (/^\d/.test(token)) out += '<span class="tok-number">' + escapeHtml(token) + '</span>';
+      else if (/^[=|&;<>]+$/.test(token)) out += '<span class="tok-operator">' + escapeHtml(token) + '</span>';
+      else out += '<span class="tok-keyword">' + escapeHtml(token) + '</span>';
+      lastIndex = offset + token.length;
+      return token;
+    });
+    out += escapeHtml(line.slice(lastIndex));
+    return out;
+  }
+
+  function highlightYamlLine(line) {
+    const commentIndex = line.indexOf('#');
+    const codePart = commentIndex >= 0 ? line.slice(0, commentIndex) : line;
+    const commentPart = commentIndex >= 0 ? line.slice(commentIndex) : '';
+    const renderedCode = escapeHtml(codePart).replace(/^(\s*)([A-Za-z0-9_.-]+)(\s*:)/, function (_, lead, key, sep) {
+      return lead + '<span class="tok-attr">' + key + '</span>' + sep;
+    }).replace(/(:\s*)([-+]?\d+(?:\.\d+)?|true|false|null)\b/gi, function (_, sep, value) {
+      return sep + '<span class="tok-number">' + value + '</span>';
+    });
+    return renderedCode + (commentPart ? '<span class="tok-comment">' + escapeHtml(commentPart) + '</span>' : '');
+  }
+
+  function highlightCodeLine(line, lang) {
+    if (lang === 'python') return highlightPythonLine(line);
+    if (lang === 'bash') return highlightBashLine(line);
+    if (lang === 'yaml') return highlightYamlLine(line);
+    return highlightGenericLine(line);
+  }
+
+  function renderCodeBlock(code, lang) {
+    const normalizedLang = normalizeCodeLang(lang);
+    const rawCode = String(code || '').endsWith('\n') ? String(code || '').slice(0, -1) : String(code || '');
+    const lines = rawCode.split('\n');
+    const rows = lines.map(function (line, index) {
+      return '<div class="code-row">'
+        + '<span class="code-ln">' + (index + 1) + '</span>'
+        + '<span class="code-cell">' + highlightCodeLine(line, normalizedLang) + '</span>'
+        + '</div>';
+    }).join('');
+    return '<div class="detail-code-block highlight language-' + escapeHtml(normalizedLang) + '">'
+      + rows
+      + '</div>';
+  }
+
   function renderDetailMath(container) {
     if (!container || typeof window.renderMathInElement !== 'function') return;
     window.renderMathInElement(container, {
@@ -379,6 +491,7 @@
     let listTag = '';
     let quoteLines = [];
     let codeLines = [];
+    let codeLang = '';
     let tableLines = [];
     let inCodeBlock = false;
 
@@ -414,10 +527,9 @@
 
     function flushCodeBlock() {
       if (!codeLines.length) return;
-      blocks.push((function () {
-        return '<pre><code>';
-      })() + escapeHtml(codeLines.join('\n')) + '</code></pre>');
+      blocks.push(renderCodeBlock(codeLines.join('\n'), codeLang));
       codeLines = [];
+      codeLang = '';
     }
 
     function flushTable() {
@@ -449,6 +561,7 @@
           flushQuote();
           flushTable();
           inCodeBlock = true;
+          codeLang = normalizeCodeLang(trimmed.replace(/^```+/, '').trim().split(/\s+/)[0] || '');
         }
         return;
       }
