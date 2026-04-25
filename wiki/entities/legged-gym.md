@@ -146,6 +146,12 @@ type: entity
 
 `legged_gym` 在 terrain generation 和 curriculum 组织上很有代表性。
 
+## 算法兼容性与演进
+
+虽然 `legged_gym` 诞生时与 PPO 深度绑定（通常使用 `rl-games` 或内部实现的 PPO），但其定义的环境接口、Reward 结构和 Domain Randomization 逻辑具有通用性。
+
+新一代算法如 **BRRL / BPO (2026)** 在研究中常借用 `legged_gym` 的环境定义作为 Baseline 对比，或者直接在 `legged_gym` 框架内替换优化器。这证明了其作为“足式机器人训练标准环境定义”的持久生命力。
+
 ## 它和 Isaac Gym / Isaac Lab 的关系
 
 ### 和 Isaac Gym 的关系

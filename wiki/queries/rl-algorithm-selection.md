@@ -10,10 +10,10 @@ status: complete
 # RL 算法选型指南：足式机器人中的 PPO / SAC / TD3
 
 ## 核心结论（先看这里）
-
 | 场景 | 首选 | 备选 |
 |------|------|------|
-| 仿真 locomotion（legged_gym / Isaac Lab） | **PPO** | AWR |
+| 仿真 locomotion（legged_gym / Isaac Lab） | **PPO** | **BRRL/BPO** |
+| 需要极高训练稳定性与理论保证 | **BPO** | PPO |
 | 真实机器人少样本学习 | **SAC** | TD3 |
 | 确定性连续控制、操作任务 | **TD3** | SAC |
 | 模仿人类运动风格 | **AMP（PPO 变体）** | SAC+GAIL |
@@ -22,7 +22,7 @@ status: complete
 
 ---
 
-## 三大算法对比
+## 算法对比
 
 ### PPO（Proximal Policy Optimization）
 
@@ -42,8 +42,26 @@ $$L^{CLIP} = \mathbb{E}_t \left[\min\left(r_t(\theta)\hat{A}_t,\ \text{clip}(r_t
 - 样本效率低（on-policy，数据不复用）
 - 不适合真实机器人少样本场景
 
-**关键超参数**：
-- `clip_range`: 0.2（标准）
+---
+
+### BRRL / BPO（Bounded Policy Optimization, 2026）
+
+**类型**：On-policy / Off-policy 兼容，有界 Ratio 框架
+
+**原理**：将 PPO 的启发式 clip 解释为对“有界重要性比最优策略”的逼近。通过 BPO 损失函数，在保证单调改进的前提下实现更平滑的策略更新。
+
+**适合足式机器人的原因**：
+- **稳定性**：在 Isaac Lab 人形行走等复杂任务中，比 PPO 更不易出现性能骤降
+- **理论完备**：提供单调改进保证，减少了对 PPO 启发式 clip 的盲目依赖
+- **性能**：在多个 benchmark 中报告了优于 PPO 的最终性能和收敛速度
+
+**缺点**：
+- 作为新算法（2026），生态支持（如 Stable Baselines3）可能尚不如 PPO 成熟
+- 引入了有界比率参数，虽有理论指导，仍需微调
+
+---
+
+### SAC（Soft Actor-Critic）
 - `n_steps`: 24（Isaac Lab 默认）
 - `num_envs`: 4096~8192（足式任务常用）
 - `entropy_coef`: 0.01（适度探索）
@@ -142,4 +160,5 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning* (2018) — SAC 原论文
 - Fujimoto et al., *Addressing Function Approximation Error in Actor-Critic Methods* (TD3, 2018)
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021)
-- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC/TD3/TRPO 核心论文摘录
+- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO 原论文
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC/TD3/TRPO/BRRL 核心论文摘录

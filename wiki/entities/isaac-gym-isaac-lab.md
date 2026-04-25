@@ -86,7 +86,7 @@ Isaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 rob
 
 它建立在 Isaac Sim 之上，目标是：
 - 提供现代化 robot learning workflow
-- 接住旧的 IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户
+- 接住旧 of IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户
 - 支持训练、迁移、任务定义、环境注册、仿真管理
 
 ### 它的典型特征
@@ -96,6 +96,7 @@ Isaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 rob
 - 提供从旧框架迁移的官方文档
 - 有更清晰的任务组织与环境注册方式
 - 是 NVIDIA 现在推荐的主线
+- **算法兼容性**：新一代算法如 **BRRL / BPO (2026)** 优先在 Isaac Lab 环境下进行了人形机器人行走等任务的验证，显示了其对现代 RL 研究的良好支撑。
 
 ### 什么时候优先用 Isaac Lab
 
@@ -230,6 +231,8 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 
 - Makoviychuk et al., *Isaac Gym: High Performance GPU Based Physics Simulation For Robot Learning* (2021) — Isaac Gym 原论文
 - 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
+- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
+- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
 
 ## 关联页面
 

@@ -11,14 +11,13 @@ related:
   - ../tasks/locomotion.md
   - ../formalizations/gae.md
 ---
+# PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型
 
-# PPO vs SAC：机器人 RL 算法选型
-
-**背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得成功，但底层训练范式截然不同：PPO 是 on-policy 算法，依赖大批量并行采样；SAC 是 off-policy 最大熵算法，依赖经验回放提升样本效率。工程选型需根据任务类型、硬件资源和训练环境综合判断。
+**背景**：PPO（Proximal Policy Optimization）和 SAC（Soft Actor-Critic）是机器人 RL 领域最主流的两种连续控制算法。两者都已在真实机器人上取得成功，但底层训练范式截然不同：PPO 是 on-policy 算法，依赖大批量并行采样；SAC 是 off-policy 最大熵算法，依赖经验回放提升样本效率。**BRRL / BPO (2026)** 作为新出现的算法，通过有界重要性比率（Bounded Ratio）为 PPO 提供了理论改进，在稳定性上具有更强表现。
 
 ## 一句话定位
 
-> PPO 是"稳定、易调、并行友好"的 on-policy 主力；SAC 是"样本高效、探索充分"的 off-policy 精兵——前者适合仿真大规模 locomotion，后者适合样本受限的精细操作。
+> PPO 是"稳定、易调"的 on-policy 主力；SAC 是"样本高效"的 off-policy 精兵；**BRRL/BPO** 是 PPO 的进化版，兼具单调改进理论与更强的训练平滑度。
 
 ---
 
@@ -30,6 +29,11 @@ PPO 的核心是 **clip 机制**，防止每次梯度更新步子过大导致策
 
 $$L^{\text{CLIP}}(\theta) = \mathbb{E}_t \left[ \min\left( r_t(\theta)\, A_t,\; \text{clip}(r_t(\theta), 1-\varepsilon, 1+\varepsilon)\, A_t \right) \right]$$
 
+### BRRL / BPO：有界策略优化 (2026)
+
+BRRL（Bounded Ratio RL）给 PPO 的启发式 clip 目标提供了一个解析最优解的解释。其对应的 **BPO 损失函数** 通过强制限制重要性采样比率在理论界限内，实现了比 PPO 更平滑的收敛过程。
+
+### SAC：软演员-评论家
 其中 $r_t(\theta) = \dfrac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$ 是重要性采样比，$\varepsilon$ 通常取 0.1–0.2。
 
 关键思路：**每次 rollout 后做多个 mini-batch 更新，但通过 clip 约束更新幅度**——既充分利用采样数据，又不破坏策略稳定性。PPO 配合 **GAE（广义优势估计）** 做优势函数估计，进一步降低梯度方差。
@@ -48,17 +52,25 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 
 ## 核心维度对比
 
-| 维度 | PPO | SAC | 备注 |
-|------|-----|-----|------|
-| **策略类型** | On-policy（需要新数据） | Off-policy（经验回放） | 决定训练架构的根本差异 |
-| **样本效率** | 低（每条数据只用 K 次后丢弃） | 高（Replay Buffer 数据反复复用） | SAC 比 PPO 高 10–100x |
-| **训练稳定性** | 高（clip 防止崩溃，曲线平滑） | 中（Q 过估计 / 温度调节不当时不稳） | PPO 在早期调试中更可靠 |
-| **超参数敏感度** | 低（`clip_range`、`lr` 不敏感） | 中（`alpha`、网络结构、Buffer 大小均有影响） | PPO 更易上手 |
-| **并行仿真适配** | 极好（on-policy 天然适合大批量并行） | 一般（Buffer 与并行采样结合工程复杂） | PPO 是 Isaac Lab / legged_gym 的默认选择 |
-| **真机 fine-tune** | 差（需要大量新数据，样本消耗高） | 好（少量真实数据即可有效更新） | SAC 在真机 fine-tune 阶段有明显优势 |
-| **连续动作空间** | 好（高斯策略输出，天然连续） | 极好（最大熵框架对连续控制探索更充分） | 两者均支持高维连续动作 |
-| **离散动作空间** | 支持（Softmax 策略） | 不推荐（最大熵在离散空间优势弱） | 离散场景 PPO 更合适 |
-| **典型应用场景** | Locomotion（仿真大规模训练） | Manipulation、精细操作、真机 RL | 见下方决策指南 |
+| 维度 | PPO | SAC | BRRL / BPO |
+|------|-----|-----|------------|
+| **策略类型** | On-policy | Off-policy | On-policy / Off-policy 兼容 |
+| **样本效率** | 低 | 高 | 中 ~ 高 |
+| **训练稳定性** | 高 | 中 | **极高**（理论单调改进保证） |
+| **超参数敏感度** | 低 | 中 | 中（新增有界比率参数） |
+| **并行仿真适配** | 极好 | 一般 | 极好 |
+| **真机 fine-tune** | 差 | 好 | 中 |
+| **典型应用场景** | Locomotion（仿真大规模） | Manipulation、真机 RL | Locomotion、追求平滑收敛 |
+
+---
+
+## 何时选 BRRL / BPO
+
+**适合场景**：
+
+1. **复杂足式 locomotion**：在 Isaac Lab 等高并行环境中，BPO 报告了比 PPO 更少的训练崩溃（divergence）。
+2. **需要可解释性与理论保证**：当需要证明策略更新的安全性与单调性时，BPO 提供比 PPO 更坚实的数学底座。
+3. **PPO 性能瓶颈时**：在某些 PPO 无法收敛到最优或在训练后期振荡的任务中，BPO 往往能提供更平滑的收敛。
 
 ---
 
@@ -164,13 +176,14 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 你的训练环境是什么？
 │
 ├── 仿真 + 大规模 GPU 并行（>1000 个环境）
-│     └── → PPO（on-policy 并行采样效率无可比拟）
+│     ├── 追求成熟生态与快速 Baseline → PPO
+│     └── 追求最高稳定性与平滑收敛 → BRRL / BPO
 │
 ├── 真实机器人 / 样本成本高（<10K 次交互预算）
 │     └── → SAC（off-policy 样本效率高 10–100x）
 │
 ├── 任务类型是 locomotion（行走 / 奔跑 / 跳跃）
-│     └── → PPO（社区标准，baseline 丰富，收敛稳定）
+│     └── → PPO 或 BPO（社区标准，收敛稳定）
 │
 ├── 任务类型是操作（抓取 / 装配 / 灵巧手）
 │     └── → SAC（最大熵框架对精细操作探索更充分）
@@ -178,11 +191,8 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 ├── 首次实验 / 需要快速验证 reward 设计
 │     └── → PPO（超参数少，曲线好读，出问题容易定位）
 │
-├── 需要运动参考 / 自然步态（AMP 框架）
-│     └── → PPO + AMP（判别器 reward 驱动，底层优化器用 PPO）
-│
 └── 仿真预训练 → 真机迁移（两阶段）
-      └── → 第一阶段 PPO（仿真大规模） + 第二阶段 SAC（真机 fine-tune）
+      └── → 第一阶段 PPO/BPO（仿真大规模） + 第二阶段 SAC（真机 fine-tune）
 ```
 
 ---
