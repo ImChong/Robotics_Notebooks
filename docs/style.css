@@ -1,5 +1,5 @@
 :root {
-  /* Light Mode (imchong.github.io style) */
+  /* Light Mode (Humanoid Paper Notebooks 风格：白底 + 深红强调 + 暖米引用块) */
   --bg: #ffffff;
   --bg-alt: #f5f5f7;
   --surface: rgba(255, 255, 255, 0.85);
@@ -8,8 +8,9 @@
   --border-strong: #86868b;
   --text: #1d1d1f;
   --text-muted: #86868b;
-  --accent: #0066cc;
-  --accent-hover: #004499;
+  --accent: #b91c1c;
+  --accent-hover: #991b1b;
+  --quote-bg: #fef7f5;
   --header-bg: rgba(255, 255, 255, 0.8);
   --header-border: rgba(0, 0, 0, 0.1);
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -21,19 +22,20 @@
 }
 
 [data-theme="dark"] {
-  /* Dark Mode (imchong.github.io style) */
-  --bg: #000000;
-  --bg-alt: #1c1c1e;
-  --surface: rgba(28, 28, 30, 0.85);
-  --surface-strong: #1c1c1e;
-  --border: #424245;
-  --border-strong: #a1a1a6;
+  /* Dark Mode (Humanoid Paper Notebooks 风格：柔和深灰 + 淡蓝点缀) */
+  --bg: #1c1c1e;
+  --bg-alt: #2c2c2e;
+  --surface: rgba(44, 44, 46, 0.85);
+  --surface-strong: #2c2c2e;
+  --border: #3a3a3c;
+  --border-strong: #6e6e73;
   --text: #f5f5f7;
-  --text-muted: #a1a1a6;
-  --accent: #2997ff;
-  --accent-hover: #66b2ff;
-  --header-bg: rgba(0, 0, 0, 0.8);
-  --header-border: rgba(255, 255, 255, 0.1);
+  --text-muted: #9b9ba0;
+  --accent: #5ea0eb;
+  --accent-hover: #7fb6f0;
+  --quote-bg: rgba(94, 160, 235, 0.08);
+  --header-bg: rgba(28, 28, 30, 0.85);
+  --header-border: rgba(255, 255, 255, 0.08);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -685,8 +687,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 [data-theme="dark"] .detail-markdown-body .tok-attr { color: #8be9fd; }
 .detail-markdown-body blockquote {
   margin-left: 0;
-  padding: .2em 0 .2em 1em;
+  padding: .8em 1em .8em 1.2em;
   border-left: 4px solid var(--accent);
+  background: var(--quote-bg);
+  border-radius: 0 8px 8px 0;
   color: var(--text-muted);
 }
 .detail-markdown-body .math-inline {
