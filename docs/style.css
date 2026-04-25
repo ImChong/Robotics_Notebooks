@@ -429,9 +429,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .detail-meta-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 8px 14px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
   font-size: .88rem;
+}
+.detail-meta-list p {
+  min-width: 0;
+  margin: 0;
 }
 .detail-meta-list code,
 .empty-state code {
@@ -440,6 +444,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   background: var(--bg-alt);
   border: 1px solid var(--border);
   font-size: .92em;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .empty-state {
   display: grid;
