@@ -37,8 +37,8 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -66,7 +66,7 @@
     },
     {
       "id": "wiki/comparisons/ppo-vs-sac.md",
-      "label": "PPO vs SAC：机器人 RL 算法选型",
+      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
       "type": "comparison",
       "health_score": 3,
       "community": "community-0",
@@ -109,8 +109,8 @@
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -881,6 +881,14 @@
       "community_label": "Manipulation 社区"
     },
     {
+      "id": "wiki/methods/lqr-ilqr.md",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
+    },
+    {
       "id": "wiki/methods/marl.md",
       "label": "Multi-Agent Reinforcement Learning (MARL)",
       "type": "method",
@@ -981,8 +989,8 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-7",
+      "community_label": "人形机器人运动控制 Know-How 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -1013,8 +1021,8 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -1069,8 +1077,8 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-7",
+      "community_label": "人形机器人运动控制 Know-How 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -1309,8 +1317,8 @@
       "label": "决策树：何时使用 WBC vs RL？",
       "type": "query",
       "health_score": 2,
-      "community": "community-1",
-      "community_label": "Whole-Body Control (WBC) 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/references/llm-wiki-karpathy.md",
@@ -3583,6 +3591,38 @@
       "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/formalizations/hjb.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/entities/drake.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
       "source": "wiki/methods/marl.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -3637,6 +3677,10 @@
     {
       "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/methods/lqr-ilqr.md"
     },
     {
       "source": "wiki/methods/model-predictive-control.md",
@@ -3785,6 +3829,10 @@
     {
       "source": "wiki/methods/trajectory-optimization.md",
       "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/methods/lqr-ilqr.md"
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
@@ -5247,13 +5295,13 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 65,
+      "size": 67,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 47,
+      "size": 44,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -5285,6 +5333,12 @@
       "label": "Variational Objective (变分目标函数) 社区",
       "size": 2,
       "hub_id": "wiki/formalizations/variational-objective.md"
+    },
+    {
+      "id": "community-7",
+      "label": "人形机器人运动控制 Know-How 社区",
+      "size": 2,
+      "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
     }
   ]
 }
