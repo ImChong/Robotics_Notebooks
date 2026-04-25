@@ -1765,15 +1765,10 @@
       searchResults.innerHTML = matched.map(function(item) {
         var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
         var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
-        var stem = String(item.path || item.id || '').split('/').pop().replace(/\.md$/, '');
-        var slidesUrl = 'slides/' + stem + '.html';
         var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
         var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
           return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
         }).join('');
-        var slidesIcon = '<a href="' + slidesUrl + '" class="card-slides-icon" title="幻灯片版（需本地生成）" '
-          + 'onclick="event.stopPropagation()" style="font-size:.72rem;opacity:.45;margin-left:6px;text-decoration:none" '
-          + 'tabindex="-1">📊</a>';
         var explain = queryTokens && queryTokens.length
           ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
             + matchExplanation(item, queryTokens) + '</span>'
@@ -1783,7 +1778,7 @@
           + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
         return '<article class="card" data-result-url="' + detailUrl + '">'
           + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
-          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + slidesIcon + graphBtn + '</h3>'
+          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
           + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
           + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
           + '</article>';
