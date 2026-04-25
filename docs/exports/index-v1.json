@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 217,
+  "item_count": 218,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -27,7 +27,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -94,7 +94,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -125,7 +125,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -218,7 +218,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -271,7 +271,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -366,7 +366,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -487,7 +487,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -638,7 +638,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -698,7 +698,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -730,7 +730,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -792,7 +792,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -910,7 +910,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -943,7 +943,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1132,7 +1132,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1391,7 +1391,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1541,7 +1541,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -1645,7 +1645,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -1680,7 +1680,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-mppi",
@@ -1779,7 +1779,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -1857,7 +1857,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/optimal_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -1989,7 +1989,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2097,7 +2097,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2135,7 +2135,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -4469,7 +4469,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -4501,7 +4501,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-mujoco",
@@ -4611,7 +4611,7 @@
       "title": "开源人形机器人硬件方案对比",
       "path": "wiki/entities/open-source-humanoid-hardware.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, robotics, research]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ../queries/humanoid-hardware-selection.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。\"\n---\n\n# 开源人形机器人硬件方案对比\n\n随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。\n\n## 核心方案对比\n\n| 方案名称 | 主导机构 | 自由度 (DOF) | 核心执行器 | 成本估算 | 软件生态 |\n|------|------|-----|-----------|---------|---------|\n| **Berkeley Humanoid** | UC Berkeley | 12-14 | 准直接驱动 (QDD) | < 5,000 USD | 基于 Python/C++ 的简易控制框架 |\n| **Roboto Origin** | Roboparty | 20+ | QDD + 舵机混合 | < 3,000 USD | ROS2 支持，兼容简单平衡算法 |\n| **ODRI (Bolt/Solo)** | Max Planck | 6-12 (双腿/四足) | 基于 T-Motor 改造 | 中等 | OCS2 / Pinocchio 深度支持 |\n| **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |\n\n## 1. Berkeley Humanoid (准直接驱动派)\n- **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。\n- **优点**：动力学透明度高，非常适合做强化学习的 Sim2Real 验证。\n\n## 2. Roboto Origin (科普与原型派)\n- **特点**：由国内开源社区驱动，旨在打造人人都能拥有的“第一台人形机器人”。\n- **优点**：文档详尽，组装门槛低。\n\n## 3. ODRI 架构 (学术严谨派)\n- **特点**：Open Dynamic Robot Initiative。虽然其人形版本较少，但其开源的执行器模块（Actuator Modules）被广泛借鉴。\n- **优点**：力控精度极高，代码质量达工业级。\n\n## 选型建议\n\n- **如果你想验证 RL 算法**：首选 **Berkeley Humanoid** 类方案，因为其 QDD 电机的动力学建模最为简单。\n- **如果你想研究全身协调 (WBC)**：建议寻找支持更高自由度的平台，或者在仿真中使用 **ODRI** 模型进行先行验证。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- 各开源项目 GitHub Readme 与 Wiki。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, robotics, research]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./humanoid-robot.md\n  - ./roboto-origin.md\n  - ../queries/humanoid-hardware-selection.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\n  - ../../sources/repos/roboto_origin.md\nsummary: \"主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。\"\n---\n\n# 开源人形机器人硬件方案对比\n\n随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。\n\n## 核心方案对比\n\n| 方案名称 | 主导机构 | 自由度 (DOF) | 核心执行器 | 成本估算 | 软件生态 |\n|------|------|-----|-----------|---------|---------|\n| **Berkeley Humanoid** | UC Berkeley | 12-14 | 准直接驱动 (QDD) | < 5,000 USD | 基于 Python/C++ 的简易控制框架 |\n| **Roboto Origin** | Roboparty | 20+ | QDD + 舵机混合 | < 3,000 USD | ROS2 支持，兼容简单平衡算法 |\n| **ODRI (Bolt/Solo)** | Max Planck | 6-12 (双腿/四足) | 基于 T-Motor 改造 | 中等 | OCS2 / Pinocchio 深度支持 |\n| **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |\n\n## 1. Berkeley Humanoid (准直接驱动派)\n- **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。\n- **优点**：动力学透明度高，非常适合做强化学习的 Sim2Real 验证。\n\n## 2. Roboto Origin (科普与原型派)\n- **特点**：由国内开源社区驱动，旨在打造人人都能拥有的“第一台人形机器人”。\n- **优点**：文档详尽，组装门槛低。\n\n## 3. ODRI 架构 (学术严谨派)\n- **特点**：Open Dynamic Robot Initiative。虽然其人形版本较少，但其开源的执行器模块（Actuator Modules）被广泛借鉴。\n- **优点**：力控精度极高，代码质量达工业级。\n\n## 选型建议\n\n- **如果你想验证 RL 算法**：首选 **Berkeley Humanoid** 类方案，因为其 QDD 电机的动力学建模最为简单。\n- **如果你想研究全身协调 (WBC)**：建议寻找支持更高自由度的平台，或者在仿真中使用 **ODRI** 模型进行先行验证。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [roboto_origin.md](../../sources/repos/roboto_origin.md)\n- 各开源项目 GitHub Readme 与 Wiki。",
       "tags": [
         "entities",
         "entity",
@@ -4622,9 +4622,11 @@
       ],
       "related": [
         "entity-humanoid-robot",
+        "entity-roboto-origin",
         "wiki-queries-humanoid-hardware-selection",
         "wiki-roadmaps-humanoid-control-roadmap",
-        "sources-papers-humanoid-hardware"
+        "sources-papers-humanoid-hardware",
+        "sources-repos-roboto-origin"
       ],
       "source_links": [],
       "status": "active",
@@ -4685,6 +4687,35 @@
       "status": "active",
       "type": "entity_page",
       "entity_kind": "simulator"
+    },
+    {
+      "id": "entity-roboto-origin",
+      "title": "Roboto Origin（开源人形机器人基线）",
+      "path": "wiki/entities/roboto-origin.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, ros2, isaac-lab]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\n  - ./robot-lab.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/roboto_origin.md\nsummary: \"Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。\"\n---\n\n# Roboto Origin（开源人形机器人基线）\n\n**Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。\n\n## 为什么重要\n\n1. **低门槛复现路径**：将 DIY 人形机器人的关键模块显式拆分，降低单人/小团队上手门槛。\n2. **工程边界清晰**：官方明确聚合仓库用于导航，贡献回流到子仓库，避免 monorepo 混乱。\n3. **覆盖全栈闭环**：硬件设计、URDF 描述、RL 训练、ROS2 部署、固件链路全部公开。\n\n## 核心结构\n\nRoboto Origin 的仓库体系可理解为“五段流水线”：\n\n- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM）\n- **atom01_description**：机器人模型描述（URDF + 网格）\n- **atom01_train**：IsaacLab 训练与 Sim2Sim\n- **atom01_deploy**：ROS2 真机驱动与部署\n- **atom01_firmware**：底层固件与板端支持\n\n这种拆分方式适合把“研究迭代”和“工程落地”分离维护。\n\n## 常见误区 / 局限\n\n- **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**\n  实际上它更像索引入口，真正开发需进入各模块仓库。\n- **误区 2：认为开源即开箱即用。**\n  项目仍需要较强的 Linux/ROS2/硬件调试能力。\n- **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。\n\n## 关联页面\n\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [人形机器人（Humanoid Robot）](./humanoid-robot.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Unitree](./unitree.md)\n\n## 推荐继续阅读\n\n- [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)\n- [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)\n\n## 参考来源\n\n- [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)\n- [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "rl",
+        "tooling",
+        "hardware"
+      ],
+      "related": [
+        "entity-open-source-humanoid-hardware",
+        "entity-humanoid-robot",
+        "entity-robot-lab",
+        "entity-unitree",
+        "sources-repos-roboto-origin"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/roboto_origin",
+        "https://roboparty.com/roboto_origin/doc"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
     },
     {
       "id": "entity-shadow-hand",
