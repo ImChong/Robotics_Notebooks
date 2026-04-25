@@ -5,6 +5,8 @@ status: complete
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/policy_optimization.md
+summary: "RL vs 模仿学习（Imitation Learning）"
+updated: 2026-04-25
 ---
 
 # RL vs 模仿学习（Imitation Learning）

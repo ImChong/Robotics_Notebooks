@@ -2,6 +2,12 @@
 type: query
 tags: [locomotion, rl, sim2real, humanoid, cookbook, training]
 status: stable
+summary: "人形机器人 RL 策略训练完整 Checklist"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/sim2real.md
 ---
 
 # 人形机器人 RL 策略训练完整 Checklist

@@ -2,6 +2,13 @@
 type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
+summary: "Sim2Real Gap 缩减实战指南"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/sim2real.md
+  - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/simulation_tools.md
+  - ../../sources/papers/system_identification.md
 ---
 
 # Sim2Real Gap 缩减实战指南

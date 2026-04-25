@@ -2,6 +2,10 @@
 type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
+summary: "> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/sim2real.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」

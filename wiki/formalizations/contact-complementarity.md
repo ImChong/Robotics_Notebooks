@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
+summary: "Contact Complementarity（接触互补约束）"
+updated: 2026-04-25
 ---
 
 # Contact Complementarity（接触互补约束）

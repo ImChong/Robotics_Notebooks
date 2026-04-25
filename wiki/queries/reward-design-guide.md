@@ -2,6 +2,10 @@
 type: query
 tags: [reward, rl, locomotion, training, curriculum]
 status: complete
+summary: "Reward Design 实战指南"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/reward_design.md
 ---
 
 # Reward Design 实战指南

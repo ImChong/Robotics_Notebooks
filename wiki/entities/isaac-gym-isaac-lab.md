@@ -2,6 +2,8 @@
 type: entity
 sources:
   - ../../sources/papers/simulation_tools.md
+summary: "Isaac Gym / Isaac Lab"
+updated: 2026-04-25
 ---
 
 # Isaac Gym / Isaac Lab

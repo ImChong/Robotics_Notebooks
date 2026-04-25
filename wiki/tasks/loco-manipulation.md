@@ -3,6 +3,11 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题，是 locomotion 与 manipulation 的耦合任务。"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/teleoperation.md
+  - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/papers/gentlehumanoid_upper_body_compliance.md
 ---
 
 # Loco-Manipulation

@@ -2,6 +2,8 @@
 type: entity
 sources:
   - ../../sources/papers/optimal_control.md
+summary: "Crocoddyl"
+updated: 2026-04-25
 ---
 
 # Crocoddyl

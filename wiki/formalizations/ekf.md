@@ -9,6 +9,8 @@ related:
 sources:
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/perception_localization.md
+summary: "Extended Kalman Filter (EKF)"
+updated: 2026-04-25
 ---
 
 # Extended Kalman Filter (EKF)

@@ -9,6 +9,10 @@ related:
   - ./domain-randomization.md
   - ../queries/reward-design-guide.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/privileged_training.md
 ---
 
 # Reward Design

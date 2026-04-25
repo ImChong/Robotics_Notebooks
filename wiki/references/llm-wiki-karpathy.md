@@ -2,13 +2,20 @@
 type: reference
 tags: [methodology, llm, wiki, karpathy, knowledge-base]
 status: active
+sources:
+  - "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: "2026-04-20"
+updated: 2026-04-20
 ---
 
 # LLM Wiki
 
 > Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13
+
+## 参考来源
+
+- [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — Original Gist
+- [Robotics_Notebooks Methodology](../../AGENTS.md) — How this project applies the pattern
 
 A pattern for building personal knowledge bases using LLMs.
 

@@ -2,6 +2,10 @@
 type: query
 tags: [mpc, solver, osqp, qpoases, acados, optimization, legged-robots]
 status: stable
+summary: "MPC 求解器选型指南"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/mpc.md
 ---
 
 # MPC 求解器选型指南

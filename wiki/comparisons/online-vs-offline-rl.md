@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/policy_optimization.md
+summary: "Online RL vs Offline RL"
+updated: 2026-04-25
 ---
 
 # Online RL vs Offline RL

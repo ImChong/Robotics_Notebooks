@@ -8,6 +8,8 @@ related:
   - ../methods/policy-optimization.md
 sources:
   - ../../sources/papers/policy_optimization.md
+summary: "Bellman 方程"
+updated: 2026-04-25
 ---
 
 # Bellman 方程

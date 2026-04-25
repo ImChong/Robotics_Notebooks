@@ -8,6 +8,8 @@ related:
   - ../methods/policy-optimization.md
 sources:
   - ../../sources/papers/policy_optimization.md
+summary: "Markov Decision Process (MDP)"
+updated: 2026-04-25
 ---
 
 # Markov Decision Process (MDP)

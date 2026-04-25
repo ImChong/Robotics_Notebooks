@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/reward_design.md
+summary: "RL 超参数调节指南（locomotion 专用）"
+updated: 2026-04-25
 ---
 
 # RL 超参数调节指南（locomotion 专用）

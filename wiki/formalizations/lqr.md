@@ -9,6 +9,8 @@ related:
 sources:
   - ../../sources/papers/optimal_control_theory.md
   - ../../sources/papers/optimal_control.md
+summary: "LQR / iLQR"
+updated: 2026-04-25
 ---
 
 # LQR / iLQR

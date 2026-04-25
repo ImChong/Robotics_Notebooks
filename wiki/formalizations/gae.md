@@ -8,6 +8,8 @@ related:
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/policy_optimization.md
+summary: "GAE（广义优势估计）"
+updated: 2026-04-25
 ---
 
 # GAE（广义优势估计）

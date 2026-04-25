@@ -2,6 +2,8 @@
 type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
+summary: "Unitree"
+updated: 2026-04-25
 ---
 
 # Unitree

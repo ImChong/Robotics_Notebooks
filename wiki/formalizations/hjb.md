@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/optimal_control_theory.md
+summary: "HJB 方程（Hamilton-Jacobi-Bellman）"
+updated: 2026-04-25
 ---
 
 # HJB 方程（Hamilton-Jacobi-Bellman）

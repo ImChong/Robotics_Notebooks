@@ -8,6 +8,8 @@ related:
   - ../comparisons/wbc-vs-rl.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+summary: "主流人形机器人硬件对比"
+updated: 2026-04-25
 ---
 
 # 主流人形机器人硬件对比

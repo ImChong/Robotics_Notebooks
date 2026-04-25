@@ -1,6 +1,9 @@
 ---
 type: concept
 summary: "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/system_identification.md
 ---
 
 # System Identification

@@ -3,7 +3,7 @@ type: roadmap_page
 tags: [roadmap, locomotion, humanoid, rl, sim2real]
 status: active
 summary: "面向人形机器人运动控制算法工程师的四阶段学习路线：建模控制 → 仿真训练 → Sim2Real → 进阶专题。"
-updated: "2026-04-20"
+updated: 2026-04-20
 ---
 
 # Humanoid Control Roadmap

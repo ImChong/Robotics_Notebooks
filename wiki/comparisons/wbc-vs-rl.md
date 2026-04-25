@@ -12,6 +12,10 @@ related:
   - ./rl-vs-il.md
   - ../queries/control-architecture-comparison.md
   - ../queries/when-to-use-wbc-vs-rl.md
+summary: "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/whole_body_control.md
 ---
 
 # WBC vs RL: Whole-Body Control vs Reinforcement Learning

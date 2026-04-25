@@ -2,6 +2,10 @@
 type: query
 tags: [wbc, rl, mpc, locomotion, humanoid, control]
 status: complete
+summary: "> **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」"
+updated: 2026-04-25
+sources:
+  - ../../sources/papers/whole_body_control.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」
