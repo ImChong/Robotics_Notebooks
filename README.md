@@ -2,12 +2,12 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-04-25 (V21 自动更新：图谱 174 节点 974 边) -->
+<!-- Last updated: 2026-04-25 (V21 自动更新：图谱 175 节点 979 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
-[![Knowledge Graph](https://img.shields.io/badge/知识图谱-174节点_974边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Knowledge Graph](https://img.shields.io/badge/知识图谱-175节点_979边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v21.md)
 
 
@@ -16,7 +16,7 @@
 
 ## 适合谁
 
-想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++）和本科数学基础。
+想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++） and 本科数学基础。
 
 不知道从哪开始？直接看 [运动控制成长路线](roadmap/route-a-motion-control.md)。
 
@@ -49,63 +49,24 @@
 
 | 目录 | 用途 |
 |------|------|
-| `wiki/` | 结构化知识页（概念 / 方法 / 任务 / 对比 / 实体） |
-| `roadmap/` | 成长路线与学习路径 |
-| `tech-map/` | 技术栈模块依赖关系图 |
-| `sources/` | 原始资料输入层（论文 / 博客 / 课程） |
-| `references/` | 深挖入口（按主题整理的论文 / repo / benchmark） |
-| `schema/` | 知识库维护规则（ingest 流程 / 页面类型规范） |
-| `scripts/` | 自动化工具（lint / search / catalog / export） |
-| `docs/` | 网站前端 + 执行清单 + 变更记录 |
+| `wiki/` | **结构化知识库**。包含 Concepts, Methods, Tasks 等核心页面。 |
+| `roadmap/` | **成长路线**。规划了从基础到进阶的系统学习路径。 |
+| `tech-map/` | **技术地图**。展示模块间依赖关系与技术栈全景。 |
+| `sources/` | **原始资料**。Ingest 之前的原始论文摘录、GitHub 仓库导航。 |
+| `references/` | **论文/Repo 索引**。按主题分类的深度阅读资源。 |
+| `scripts/` | **维护工具**。用于 lint、搜索、索引生成和统计更新。 |
+| `docs/` | **展示层**。GitHub Pages 托管的 D3.js 交互式图谱与详情页。 |
 
 ---
 
-## 知识库维护方法论
+## 如何贡献
 
-本项目采用 [Karpathy 知识库方法论](wiki/references/llm-wiki-karpathy.md)：三层架构（sources → wiki → schema），LLM 负责维护和交叉引用，人类负责资料筛选和方向判断。
-
-在执行维护和开发任务时，遵循 [CLAUDE.md](CLAUDE.md) 行为准则：**先思后码 (Think First)**、**极简优先 (Simplicity First)** 以及 **外科手术式改动 (Surgical Changes)**，确保知识库的纯净与高效。
-
-常用操作：
-```bash
-make lint                                 # 健康检查（0 issues 为目标）
-make search Q=<关键词>                    # 搜索
-make catalog                             # 刷新 index.md
-make export                              # 更新前端 JSON（110 页）
-make graph                               # 更新知识图谱 + graph-stats.json
-make vectors                             # 构建向量索引（V10，需 sentence-transformers）
-make anki                                # 导出 Anki 闪卡（V10，exports/anki-flashcards.tsv）
-make ingest NAME=<stem> TITLE="..." DESC="..."  # 生成 sources/papers/ 模板
-python3 scripts/search_wiki.py <关键词> --related   # 搜索 + 显示关联页面
-python3 scripts/search_wiki.py <关键词> --semantic  # 混合 BM25 + 向量搜索（V10）
-```
-
-维护操作规范见 [维护操作规范](schema/ingest-workflow.md)。
+1.  **Ingest 模式**：如果你发现好的论文或 Repo，按照 `schema/ingest-workflow.md` 加入 `sources/`。
+2.  **Wiki 完善**：将 `sources/` 提炼为 `wiki/` 页面，并建立 [Link](schema/linking.md)。
+3.  **Lint 检查**：运行 `make lint` 确保没有断链或孤儿页。
 
 ---
 
-## 知识图谱
+## 许可证
 
-`docs/graph.html` 是 Obsidian 风格的知识图谱可视化，由 D3.js 力导向算法驱动：
-
-- **147 个节点**：概念、方法、任务、实体、对比、Query 产物、形式化定义
-- **842 条边**：wiki 页面间的内链关系
-- 节点支持按类型 / 按社区着色，大小反映连接度（入度 + 出度）
-- 悬停 / 点击显示浮动卡片，点击卡片内"打开详情页"跳转对应页面
-- 社区模式会在 legend 与右侧详情侧边栏显示社区名称（按社区 hub 命名）
-- 支持按类型过滤（含"孤儿"模式）、关键词搜索 + fly-to 定位、缩放平移
-- 物理参数调节（排斥力 / 节点大小 / 连接线粗细 / 字体大小）
-- 支持亮色 / 暗色主题切换，移动端触控优化
-
-更新图谱数据：`make graph`（自动重新生成并同步至 docs/exports/，含 graph-stats.json）
-
----
-
-## 执行清单
-
-[技术栈项目执行清单 v21](docs/checklists/tech-stack-next-phase-checklist-v21.md) — 当前阶段目标（触觉力觉闭环 / 通信链路形式化 / 详情页微地图）
-
-[前端体验优化清单 v1](docs/checklists/frontend-optimization-v1.md) — 专项目标：首页极简化重构（搜索即首页 / 图谱即背景 / 视觉降噪）
-
-历史版本：[执行清单归档目录](docs/checklists/)
-cs/checklists/)
+本项目采用 [MIT License](LICENSE)。

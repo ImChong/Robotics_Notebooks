@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-25",
-  "node_count": 174,
-  "edge_count": 974,
+  "node_count": 175,
+  "edge_count": 979,
   "community_count": 8,
   "top_hubs": [
     {
@@ -37,7 +37,7 @@
     {
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
-      "degree": 34
+      "degree": 36
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -59,7 +59,7 @@
   "type_distribution": {
     "concept": 40,
     "query": 40,
-    "method": 29,
+    "method": 30,
     "formalization": 22,
     "entity": 18,
     "comparison": 14,
@@ -69,21 +69,21 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 67,
-    "Whole-Body Control (WBC) 社区": 44,
-    "Manipulation 社区": 42,
+    "Locomotion 社区": 66,
+    "Whole-Body Control (WBC) 社区": 45,
+    "Manipulation 社区": 44,
     "实时运控中间件配置指南 社区": 8,
     "Control Barrier Function（控制屏障函数） 社区": 6,
     "VLA 真机部署指南：延迟、异步与加速 社区": 3,
     "Variational Objective (变分目标函数) 社区": 2,
-    "人形机器人运动控制 Know-How 社区": 2
+    "Hindsight Experience Replay (HER) 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
       "Variational Objective (变分目标函数) 社区",
-      "人形机器人运动控制 Know-How 社区"
+      "Hindsight Experience Replay (HER) 社区"
     ],
-    "largest_community_ratio": 0.385,
+    "largest_community_ratio": 0.377,
     "community_quality_warning": false
   }
 }

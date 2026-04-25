@@ -237,8 +237,8 @@
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -861,8 +861,8 @@
       "label": "Hindsight Experience Replay (HER)",
       "type": "method",
       "health_score": 3,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-7",
+      "community_label": "Hindsight Experience Replay (HER) 社区"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -945,6 +945,14 @@
       "community_label": "Control Barrier Function（控制屏障函数） 社区"
     },
     {
+      "id": "wiki/methods/star-vla.md",
+      "label": "StarVLA",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-2",
+      "community_label": "Manipulation 社区"
+    },
+    {
       "id": "wiki/methods/trajectory-optimization.md",
       "label": "Trajectory Optimization（轨迹优化）",
       "type": "method",
@@ -989,8 +997,8 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-7",
-      "community_label": "人形机器人运动控制 Know-How 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -1021,8 +1029,8 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 2,
-      "community": "community-0",
-      "community_label": "Locomotion 社区"
+      "community": "community-1",
+      "community_label": "Whole-Body Control (WBC) 社区"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -1077,8 +1085,8 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-7",
-      "community_label": "人形机器人运动控制 Know-How 社区"
+      "community": "community-0",
+      "community_label": "Locomotion 社区"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -3827,6 +3835,22 @@
       "target": "wiki/queries/robot-policy-debug-playbook.md"
     },
     {
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
       "source": "wiki/methods/trajectory-optimization.md",
       "target": "wiki/methods/model-predictive-control.md"
     },
@@ -3893,6 +3917,10 @@
     {
       "source": "wiki/methods/vla.md",
       "target": "wiki/methods/π0-policy.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/star-vla.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -5295,19 +5323,19 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 67,
+      "size": 66,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 44,
+      "size": 45,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 42,
+      "size": 44,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
@@ -5336,9 +5364,9 @@
     },
     {
       "id": "community-7",
-      "label": "人形机器人运动控制 Know-How 社区",
-      "size": 2,
-      "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
+      "label": "Hindsight Experience Replay (HER) 社区",
+      "size": 1,
+      "hub_id": "wiki/methods/her.md"
     }
   ]
 }
