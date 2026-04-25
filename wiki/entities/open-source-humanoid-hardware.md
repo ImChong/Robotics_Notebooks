@@ -2,13 +2,15 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research]
 status: complete
-updated: 2026-04-21
+updated: 2026-04-25
 related:
   - ./humanoid-robot.md
+  - ./roboto-origin.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/repos/roboto_origin.md
 summary: "主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
 ---
 
@@ -44,9 +46,11 @@ summary: "主流开源人形机器人硬件方案对比：详细梳理了 Roboto
 
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
+- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
+- [roboto_origin.md](../../sources/repos/roboto_origin.md)
 - 各开源项目 GitHub Readme 与 Wiki。
