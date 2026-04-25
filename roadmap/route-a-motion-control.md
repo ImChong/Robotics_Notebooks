@@ -2,6 +2,20 @@
 
 > 目标：从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。
 
+## 三句话先懂这条路线（极简版）
+
+1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。  
+2. **再把学习方法接上去**：RL/IL 用来补能力，不是替代控制结构。  
+3. **每一层都要有可运行输出**：代码、实验记录、失败复盘，缺一不可。  
+
+## 先看哪里（导航）
+
+- 想看 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。  
+- 想看 **完整路线**：按 L0 → L6 依次阅读。  
+- 想走分支：  
+  - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)  
+  - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)  
+
 **这条路线怎么用：**
 - 每个阶段都有：前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么
 - 不只是“学了哪些东西”，而是“学完能做什么”
@@ -16,6 +30,20 @@
 - **传统控制主线：** OCP → LIP/ZMP → Centroidal Dynamics → MPC → TSID/WBC → State Estimation
 - **Learning-based 主线：** RL 基础 → locomotion RL → imitation learning / motion prior → sim2real / teacher-student
 - 建议优先把传统主线学通，再把 RL / IL 当作扩展层接上去；否则容易只会调超参数，不理解控制结构为什么这样设计
+
+---
+
+## 最小可执行学习路径（90 天版本）
+
+如果你希望“少而精、尽快跑起来”，可以先只做这 5 件事：
+
+1. 跑通一个 [Locomotion](../wiki/tasks/locomotion.md) 仿真环境（站立 + 前进）。  
+2. 实现一个倒立摆 [LQR](../wiki/formalizations/lqr.md) 或简单 [MPC](../wiki/methods/model-predictive-control.md)。  
+3. 跑通一个最小 [Whole-Body Control](../wiki/concepts/whole-body-control.md) / [TSID](../wiki/concepts/tsid.md) 示例。  
+4. 用 PPO 训练一个基础策略，并阅读 [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md) 做方法取舍。  
+5. 完成一次最小 [Sim2Real](../wiki/concepts/sim2real.md) checklist（哪怕只在仿真内做 domain randomization 对比）。  
+
+> 完成这 5 件事后，再回到 L0-L6 补理论，会更快理解“为什么要学这些”。
 
 ---
 
@@ -123,6 +151,9 @@
 ### 推荐读什么
 - [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
+- [LQR](../wiki/formalizations/lqr.md)（本仓库）
+- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
+- [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
 
 ### 学完输出什么
 - 能解释 LQR 和 MPC 的区别
@@ -283,6 +314,8 @@ TSID / WBC
 - "DeepMimic" (Peng et al.)
 - "AMP: Adversarial Motion Priors"
 - legged_gym / IsaacGymEnvs
+- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)（本仓库）
+- [Query：开源运动控制项目导航](../wiki/queries/open-source-motion-control-projects.md)（本仓库）
 
 **学完输出什么：**
 - 能在仿真里训练一个人形行走 RL 策略
@@ -304,6 +337,7 @@ TSID / WBC
 - "ASE: Adversarial Skill Embeddings"
 - "DeepMimic"
 - [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
+- [Behavior Cloning](../wiki/methods/behavior-cloning.md)（本仓库）
 
 **学完输出什么：**
 - 能把一段 MoCap 数据迁移到人形机器人上
@@ -361,6 +395,7 @@ TSID / WBC
 
 - 本路线是 `Robotics_Notebooks` 当前最核心的执行入口
 - 更详细的阶段参考：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
+- 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
 - 学习路径快速入口：
   - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)
   - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)
