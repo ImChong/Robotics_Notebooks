@@ -10,6 +10,11 @@ related:
   - ./unitree.md
 sources:
   - ../../sources/repos/roboto_origin.md
+  - ../../sources/repos/atom01_hardware.md
+  - ../../sources/repos/atom01_deploy.md
+  - ../../sources/repos/atom01_train.md
+  - ../../sources/repos/atom01_description.md
+  - ../../sources/repos/atom01_firmware.md
 summary: "Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。"
 ---
 
@@ -27,11 +32,11 @@ summary: "Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目
 
 Roboto Origin 的仓库体系可理解为“五段流水线”：
 
-- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM）
-- **atom01_description**：机器人模型描述（URDF + 网格）
-- **atom01_train**：IsaacLab 训练与 Sim2Sim
-- **atom01_deploy**：ROS2 真机驱动与部署
-- **atom01_firmware**：底层固件与板端支持
+- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM），见 [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)
+- **atom01_description**：机器人模型描述（URDF + 网格），见 [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)
+- **atom01_train**：IsaacLab 训练与 Sim2Sim，见 [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)
+- **atom01_deploy**：ROS2 真机驱动与部署，见 [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)
+- **atom01_firmware**：底层固件与板端支持，见 [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)
 
 这种拆分方式适合把“研究迭代”和“工程落地”分离维护。
 
@@ -58,4 +63,9 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 ## 参考来源
 
 - [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)
+- [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)
+- [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)
+- [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)
+- [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)
+- [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)
 - [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)

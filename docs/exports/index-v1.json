@@ -94,7 +94,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -218,7 +218,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -271,7 +271,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -366,7 +366,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -487,7 +487,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -669,7 +669,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -792,7 +792,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -910,7 +910,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -943,7 +943,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -975,7 +975,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1132,7 +1132,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1391,7 +1391,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1541,7 +1541,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -1645,7 +1645,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -1779,7 +1779,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2060,7 +2060,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2097,7 +2097,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -4469,7 +4469,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-legged-gym",
@@ -4501,7 +4501,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-mujoco",
@@ -4693,7 +4693,7 @@
       "title": "Roboto Origin（开源人形机器人基线）",
       "path": "wiki/entities/roboto-origin.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, ros2, isaac-lab]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\n  - ./robot-lab.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/roboto_origin.md\nsummary: \"Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。\"\n---\n\n# Roboto Origin（开源人形机器人基线）\n\n**Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。\n\n## 为什么重要\n\n1. **低门槛复现路径**：将 DIY 人形机器人的关键模块显式拆分，降低单人/小团队上手门槛。\n2. **工程边界清晰**：官方明确聚合仓库用于导航，贡献回流到子仓库，避免 monorepo 混乱。\n3. **覆盖全栈闭环**：硬件设计、URDF 描述、RL 训练、ROS2 部署、固件链路全部公开。\n\n## 核心结构\n\nRoboto Origin 的仓库体系可理解为“五段流水线”：\n\n- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM）\n- **atom01_description**：机器人模型描述（URDF + 网格）\n- **atom01_train**：IsaacLab 训练与 Sim2Sim\n- **atom01_deploy**：ROS2 真机驱动与部署\n- **atom01_firmware**：底层固件与板端支持\n\n这种拆分方式适合把“研究迭代”和“工程落地”分离维护。\n\n## 常见误区 / 局限\n\n- **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**\n  实际上它更像索引入口，真正开发需进入各模块仓库。\n- **误区 2：认为开源即开箱即用。**\n  项目仍需要较强的 Linux/ROS2/硬件调试能力。\n- **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。\n\n## 关联页面\n\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [人形机器人（Humanoid Robot）](./humanoid-robot.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Unitree](./unitree.md)\n\n## 推荐继续阅读\n\n- [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)\n- [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)\n\n## 参考来源\n\n- [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)\n- [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, ros2, isaac-lab]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\n  - ./robot-lab.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/roboto_origin.md\n  - ../../sources/repos/atom01_hardware.md\n  - ../../sources/repos/atom01_deploy.md\n  - ../../sources/repos/atom01_train.md\n  - ../../sources/repos/atom01_description.md\n  - ../../sources/repos/atom01_firmware.md\nsummary: \"Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。\"\n---\n\n# Roboto Origin（开源人形机器人基线）\n\n**Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。\n\n## 为什么重要\n\n1. **低门槛复现路径**：将 DIY 人形机器人的关键模块显式拆分，降低单人/小团队上手门槛。\n2. **工程边界清晰**：官方明确聚合仓库用于导航，贡献回流到子仓库，避免 monorepo 混乱。\n3. **覆盖全栈闭环**：硬件设计、URDF 描述、RL 训练、ROS2 部署、固件链路全部公开。\n\n## 核心结构\n\nRoboto Origin 的仓库体系可理解为“五段流水线”：\n\n- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM），见 [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)\n- **atom01_description**：机器人模型描述（URDF + 网格），见 [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)\n- **atom01_train**：IsaacLab 训练与 Sim2Sim，见 [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)\n- **atom01_deploy**：ROS2 真机驱动与部署，见 [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)\n- **atom01_firmware**：底层固件与板端支持，见 [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)\n\n这种拆分方式适合把“研究迭代”和“工程落地”分离维护。\n\n## 常见误区 / 局限\n\n- **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**\n  实际上它更像索引入口，真正开发需进入各模块仓库。\n- **误区 2：认为开源即开箱即用。**\n  项目仍需要较强的 Linux/ROS2/硬件调试能力。\n- **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。\n\n## 关联页面\n\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [人形机器人（Humanoid Robot）](./humanoid-robot.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Unitree](./unitree.md)\n\n## 推荐继续阅读\n\n- [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)\n- [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)\n\n## 参考来源\n\n- [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)\n- [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)\n- [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)\n- [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)\n- [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)\n- [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)\n- [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)",
       "tags": [
         "entities",
         "entity",
@@ -4707,6 +4707,11 @@
         "entity-humanoid-robot",
         "entity-robot-lab",
         "entity-unitree",
+        "sources-repos-atom01-hardware",
+        "sources-repos-atom01-description",
+        "sources-repos-atom01-train",
+        "sources-repos-atom01-deploy",
+        "sources-repos-atom01-firmware",
         "sources-repos-roboto-origin"
       ],
       "source_links": [
