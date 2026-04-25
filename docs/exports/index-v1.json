@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 218,
+  "item_count": 223,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -94,7 +94,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -218,7 +218,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -271,7 +271,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -366,7 +366,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -487,7 +487,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -669,7 +669,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -792,7 +792,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -910,7 +910,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -943,7 +943,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -975,7 +975,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1132,7 +1132,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1391,7 +1391,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1541,7 +1541,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -1645,7 +1645,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -1779,7 +1779,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2060,7 +2060,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2097,7 +2097,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -4320,6 +4320,146 @@
       "entity_kind": "framework"
     },
     {
+      "id": "entity-atom01-deploy",
+      "title": "Atom01 Deploy",
+      "path": "wiki/entities/atom01-deploy.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, deployment, ros2, middleware, sim2real, roboparty]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./roboto-origin.md\n  - ./atom01-train.md\n  - ./atom01-firmware.md\nsources:\n  - ../../sources/repos/atom01_deploy.md\nsummary: \"atom01_deploy 是 Atom01 的上机部署仓库，覆盖 ROS2 驱动、中间件接入与真机执行流程。\"\n---\n\n# Atom01 Deploy\n\n**atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。\n\n## 为什么重要\n\n- 打通策略输出到硬件执行器的最后一公里。\n- 管理 ROS2 通信、设备接入与运行配置。\n- 决定真机稳定性、可调试性与上线效率。\n\n## 核心结构/机制\n\n- **驱动与中间件**：ROS2 节点、消息流与设备桥接。\n- **系统集成**：IMU/电机等关键设备配置。\n- **运行部署**：启动流程、参数管理与环境依赖。\n\n## 常见误区或局限\n\n- 误区：部署问题只是“脚本没写好”。很多问题来自时序、同步、硬件状态与网络抖动。\n- 局限：部署仓库不直接改进策略能力，但会显著影响策略实用性。\n\n## 参考来源\n\n- [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)\n- [Roboparty/atom01_deploy](https://github.com/Roboparty/atom01_deploy)\n\n## 关联页面\n\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [Atom01 Train](./atom01-train.md)\n- [Atom01 Firmware](./atom01-firmware.md)\n\n## 推荐继续阅读\n\n- [Sim2Real](../concepts/sim2real.md)\n- [sources/sim2real.md](../../sources/sim2real.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "sim2real"
+      ],
+      "related": [
+        "entity-roboto-origin",
+        "entity-atom01-train",
+        "entity-atom01-firmware",
+        "sources-repos-atom01-deploy",
+        "wiki-concepts-sim2real",
+        "sources-sim2real"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/atom01_deploy"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-atom01-description",
+      "title": "Atom01 Description",
+      "path": "wiki/entities/atom01-description.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, urdf, model, kinematics, roboparty]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./roboto-origin.md\n  - ./atom01-hardware.md\n  - ./atom01-train.md\nsources:\n  - ../../sources/repos/atom01_description.md\nsummary: \"Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是仿真、控制与可视化共享的统一模型基线。\"\n---\n\n# Atom01 Description\n\n**atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。\n\n## 为什么重要\n\n- 训练、仿真、部署共用同一模型描述可降低系统不一致。\n- 为动力学建模、碰撞模型和可视化提供统一基准。\n- 是 Sim2Sim/Sim2Real 问题定位的重要锚点。\n\n## 核心结构/机制\n\n- **URDF 模型**：关节拓扑、链接参数、惯性与约束。\n- **网格资源**：可视化与碰撞几何。\n- **模型配置**：供训练与部署管线读取。\n\n## 常见误区或局限\n\n- 误区：URDF 正确就等于真机可控。实际上还受摩擦、延迟、驱动器参数误差影响。\n- 局限：仅描述静态模型结构，无法单独覆盖固件时序与执行器非线性。\n\n## 参考来源\n\n- [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)\n- [Roboparty/atom01_description](https://github.com/Roboparty/atom01_description)\n\n## 关联页面\n\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [Atom01 Hardware](./atom01-hardware.md)\n- [Atom01 Train](./atom01-train.md)\n\n## 推荐继续阅读\n\n- [sources/urdf.md](../../sources/urdf.md)\n- [Atom01 Deploy](./atom01-deploy.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "sim2real",
+        "hardware"
+      ],
+      "related": [
+        "entity-roboto-origin",
+        "entity-atom01-hardware",
+        "entity-atom01-train",
+        "sources-repos-atom01-description",
+        "sources-urdf",
+        "entity-atom01-deploy"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/atom01_description"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-atom01-firmware",
+      "title": "Atom01 Firmware",
+      "path": "wiki/entities/atom01-firmware.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, firmware, can, real-time, control-stack, roboparty]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./roboto-origin.md\n  - ./atom01-deploy.md\n  - ./atom01-hardware.md\nsources:\n  - ../../sources/repos/atom01_firmware.md\nsummary: \"atom01_firmware 是 Atom01 的底层固件仓库，覆盖板端构建、通信链路与执行守护，是控制栈最底层支撑。\"\n---\n\n# Atom01 Firmware\n\n**atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。\n\n## 为什么重要\n\n- 固件层决定控制指令能否稳定、低延迟地落到执行器。\n- 是部署层（ROS2）与硬件层（电机/控制板）之间的关键桥梁。\n- 直接影响安全性与故障恢复能力。\n\n## 核心结构/机制\n\n- **通信链路**：例如 USB2CAN 等总线通信。\n- **板端构建**：嵌入式环境编译与运行部署。\n- **守护逻辑**：基础监控、重连与容错机制。\n\n## 常见误区或局限\n\n- 误区：只要高层策略好，底层固件影响不大。实际中固件稳定性往往是系统可用性的硬约束。\n- 局限：固件细节强依赖硬件版本，跨平台复用成本可能较高。\n\n## 参考来源\n\n- [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)\n- [Roboparty/atom01_firmware](https://github.com/Roboparty/atom01_firmware)\n\n## 关联页面\n\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [Atom01 Deploy](./atom01-deploy.md)\n- [Atom01 Hardware](./atom01-hardware.md)\n\n## 推荐继续阅读\n\n- [Contact Dynamics](../concepts/contact-dynamics.md)\n- [State Estimation](../concepts/state-estimation.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "control",
+        "dynamics",
+        "hardware"
+      ],
+      "related": [
+        "entity-roboto-origin",
+        "entity-atom01-deploy",
+        "entity-atom01-hardware",
+        "sources-repos-atom01-firmware",
+        "wiki-concepts-contact-dynamics",
+        "wiki-concepts-state-estimation"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/atom01_firmware"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-atom01-hardware",
+      "title": "Atom01 Hardware",
+      "path": "wiki/entities/atom01-hardware.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, cad, pcb, bom, roboparty]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./roboto-origin.md\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\nsources:\n  - ../../sources/repos/atom01_hardware.md\nsummary: \"Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，包含 CAD/PCB/BOM 等复现机器人本体的关键资料。\"\n---\n\n# Atom01 Hardware\n\n**Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。\n\n## 为什么重要\n\n- 它定义了 Atom01 实体平台的“物理边界条件”（尺寸、质量、关节布局、执行器装配）。\n- 是 `atom01_description`（URDF）与 `atom01_firmware`（底层执行）的上游基础。\n- 对 DIY 人形平台的成本评估、维护难度评估、可替代器件选型有直接意义。\n\n## 核心结构/机制\n\n- **结构设计层**：CAD 与装配结构文件。\n- **电子设计层**：PCB 与接口布局。\n- **供应链层**：BOM 与采购映射。\n\n## 常见误区或局限\n\n- 误区：有了硬件仓库就能直接跑策略。实际上还需要 `atom01_deploy`、`atom01_firmware` 与训练模型闭环。\n- 局限：开源硬件文档通常偏原型阶段，工业级可靠性验证仍需大量自测。\n\n## 参考来源\n\n- [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)\n- [Roboparty/Atom01_hardware](https://github.com/Roboparty/Atom01_hardware)\n\n## 关联页面\n\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [Humanoid Robot](./humanoid-robot.md)\n\n## 推荐继续阅读\n\n- [Atom01 Description](./atom01-description.md)\n- [Atom01 Firmware](./atom01-firmware.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "hardware"
+      ],
+      "related": [
+        "entity-roboto-origin",
+        "entity-open-source-humanoid-hardware",
+        "entity-humanoid-robot",
+        "sources-repos-atom01-hardware",
+        "entity-atom01-description",
+        "entity-atom01-firmware"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/Atom01_hardware"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-atom01-train",
+      "title": "Atom01 Train",
+      "path": "wiki/entities/atom01-train.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, isaac-lab, rl, sim2sim, sim2real, roboparty]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./roboto-origin.md\n  - ./robot-lab.md\n  - ./isaac-gym-isaac-lab.md\nsources:\n  - ../../sources/repos/atom01_train.md\nsummary: \"atom01_train 是 Atom01 的训练仓库，围绕 IsaacLab 训练配置、策略学习与仿真迁移流程构建。\"\n---\n\n# Atom01 Train\n\n**atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。\n\n## 为什么重要\n\n- 是 Atom01 从模型到策略的训练入口。\n- 将硬件平台约束映射到训练环境，帮助减少部署落差。\n- 与 `atom01_deploy` 联合构成训练→部署闭环。\n\n## 核心结构/机制\n\n- **训练配置**：任务参数、奖励项与训练超参数。\n- **仿真迁移**：支持 Sim2Sim/Sim2Real 工作流。\n- **工程接口**：与模型描述与部署链路对齐。\n\n## 常见误区或局限\n\n- 误区：只要训练收敛就能真机稳定。真机仍受通信、校准、硬件误差影响。\n- 局限：训练仓库往往强调算法迭代，部署鲁棒性要靠额外工程补齐。\n\n## 参考来源\n\n- [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)\n- [Roboparty/atom01_train](https://github.com/Roboparty/atom01_train)\n\n## 关联页面\n\n- [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)\n\n## 推荐继续阅读\n\n- [Atom01 Deploy](./atom01-deploy.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "entity-roboto-origin",
+        "entity-robot-lab",
+        "entity-isaac-gym-isaac-lab",
+        "sources-repos-atom01-train",
+        "entity-atom01-deploy",
+        "wiki-methods-reinforcement-learning"
+      ],
+      "source_links": [
+        "https://github.com/Roboparty/atom01_train"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
       "id": "entity-boston-dynamics",
       "title": "Boston Dynamics（波士顿动力）",
       "path": "wiki/entities/boston-dynamics.md",
@@ -4469,7 +4609,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-legged-gym",
@@ -4501,7 +4641,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-mujoco",
@@ -4693,7 +4833,7 @@
       "title": "Roboto Origin（开源人形机器人基线）",
       "path": "wiki/entities/roboto-origin.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, ros2, isaac-lab]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\n  - ./robot-lab.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/roboto_origin.md\nsummary: \"Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。\"\n---\n\n# Roboto Origin（开源人形机器人基线）\n\n**Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。\n\n## 为什么重要\n\n1. **低门槛复现路径**：将 DIY 人形机器人的关键模块显式拆分，降低单人/小团队上手门槛。\n2. **工程边界清晰**：官方明确聚合仓库用于导航，贡献回流到子仓库，避免 monorepo 混乱。\n3. **覆盖全栈闭环**：硬件设计、URDF 描述、RL 训练、ROS2 部署、固件链路全部公开。\n\n## 核心结构\n\nRoboto Origin 的仓库体系可理解为“五段流水线”：\n\n- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM）\n- **atom01_description**：机器人模型描述（URDF + 网格）\n- **atom01_train**：IsaacLab 训练与 Sim2Sim\n- **atom01_deploy**：ROS2 真机驱动与部署\n- **atom01_firmware**：底层固件与板端支持\n\n这种拆分方式适合把“研究迭代”和“工程落地”分离维护。\n\n## 常见误区 / 局限\n\n- **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**\n  实际上它更像索引入口，真正开发需进入各模块仓库。\n- **误区 2：认为开源即开箱即用。**\n  项目仍需要较强的 Linux/ROS2/硬件调试能力。\n- **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。\n\n## 关联页面\n\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [人形机器人（Humanoid Robot）](./humanoid-robot.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Unitree](./unitree.md)\n\n## 推荐继续阅读\n\n- [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)\n- [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)\n\n## 参考来源\n\n- [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)\n- [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, open-source, ros2, isaac-lab]\nstatus: complete\nupdated: 2026-04-25\nrelated:\n  - ./open-source-humanoid-hardware.md\n  - ./humanoid-robot.md\n  - ./robot-lab.md\n  - ./unitree.md\n  - ./atom01-hardware.md\n  - ./atom01-description.md\n  - ./atom01-train.md\n  - ./atom01-deploy.md\n  - ./atom01-firmware.md\nsources:\n  - ../../sources/repos/roboto_origin.md\n  - ../../sources/repos/atom01_hardware.md\n  - ../../sources/repos/atom01_deploy.md\n  - ../../sources/repos/atom01_train.md\n  - ../../sources/repos/atom01_description.md\n  - ../../sources/repos/atom01_firmware.md\nsummary: \"Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。\"\n---\n\n# Roboto Origin（开源人形机器人基线）\n\n**Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。\n\n## 为什么重要\n\n1. **低门槛复现路径**：将 DIY 人形机器人的关键模块显式拆分，降低单人/小团队上手门槛。\n2. **工程边界清晰**：官方明确聚合仓库用于导航，贡献回流到子仓库，避免 monorepo 混乱。\n3. **覆盖全栈闭环**：硬件设计、URDF 描述、RL 训练、ROS2 部署、固件链路全部公开。\n\n## 核心结构\n\nRoboto Origin 的仓库体系可理解为“五段流水线”：\n\n- **Atom01_hardware**：机械与电子设计（CAD/PCB/BOM），见 [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)\n- **atom01_description**：机器人模型描述（URDF + 网格），见 [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)\n- **atom01_train**：IsaacLab 训练与 Sim2Sim，见 [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)\n- **atom01_deploy**：ROS2 真机驱动与部署，见 [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)\n- **atom01_firmware**：底层固件与板端支持，见 [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)\n\n这种拆分方式适合把“研究迭代”和“工程落地”分离维护。\n\n## 常见误区 / 局限\n\n- **误区 1：把 `roboto_origin` 当成可直接开发主仓库。**\n  实际上它更像索引入口，真正开发需进入各模块仓库。\n- **误区 2：认为开源即开箱即用。**\n  项目仍需要较强的 Linux/ROS2/硬件调试能力。\n- **局限：** 当前公开资料更偏“原型复现与社区协作”，对工业级可靠性（长期运行、认证、安全冗余）覆盖有限。\n\n## 关联页面\n\n- [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)\n- [人形机器人（Humanoid Robot）](./humanoid-robot.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [Unitree](./unitree.md)\n- [Atom01 Hardware](./atom01-hardware.md)\n- [Atom01 Description](./atom01-description.md)\n- [Atom01 Train](./atom01-train.md)\n- [Atom01 Deploy](./atom01-deploy.md)\n- [Atom01 Firmware](./atom01-firmware.md)\n\n## 推荐继续阅读\n\n- [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)\n- [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)\n\n## 参考来源\n\n- [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)\n- [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)\n- [sources/repos/atom01_deploy.md](../../sources/repos/atom01_deploy.md)\n- [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)\n- [sources/repos/atom01_description.md](../../sources/repos/atom01_description.md)\n- [sources/repos/atom01_firmware.md](../../sources/repos/atom01_firmware.md)\n- [Roboparty/roboto_origin README](https://github.com/Roboparty/roboto_origin)",
       "tags": [
         "entities",
         "entity",
@@ -4707,7 +4847,14 @@
         "entity-humanoid-robot",
         "entity-robot-lab",
         "entity-unitree",
-        "sources-repos-roboto-origin"
+        "entity-atom01-hardware",
+        "entity-atom01-description",
+        "entity-atom01-train",
+        "entity-atom01-deploy",
+        "entity-atom01-firmware",
+        "sources-repos-atom01-hardware",
+        "sources-repos-atom01-description",
+        "sources-repos-atom01-train"
       ],
       "source_links": [
         "https://github.com/Roboparty/roboto_origin",
