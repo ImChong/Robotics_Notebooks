@@ -406,8 +406,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .detail-hero-top {
   display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, .8fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
   align-items: start;
 }
 .detail-breadcrumb {
@@ -423,12 +423,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   font-size: .98rem;
 }
 .detail-meta-panel {
-  min-height: 100%;
+  min-height: 0;
+  max-width: 100%;
+  padding: 14px 16px;
 }
 .detail-meta-list {
   display: grid;
-  gap: 10px;
-  font-size: .92rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 8px 14px;
+  font-size: .88rem;
 }
 .detail-meta-list code,
 .empty-state code {

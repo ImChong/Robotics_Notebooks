@@ -810,9 +810,20 @@
       metaDesc.setAttribute('content', detailPage.summary.slice(0, 160));
     }
 
+    function isMetadataOnlySummary(summary) {
+      return /^type:\s*[\w-]+[。.]?$/i.test(String(summary || '').trim());
+    }
+
     if (titleEl) titleEl.textContent = detailPage.title || detailId;
     if (summaryEl) {
-      summaryEl.innerHTML = escapeHtml(detailPage.summary || '当前页面暂无摘要，可先通过 tags / related / source links 继续导航。');
+      const summaryText = detailPage.summary || '';
+      if (summaryText && !isMetadataOnlySummary(summaryText)) {
+        summaryEl.hidden = false;
+        summaryEl.innerHTML = escapeHtml(summaryText);
+      } else {
+        summaryEl.hidden = true;
+        summaryEl.textContent = '';
+      }
       removeLoadingState(summaryEl);
     }
     if (metaEl) {
