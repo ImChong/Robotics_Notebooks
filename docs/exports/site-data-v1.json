@@ -62,7 +62,9 @@
           "wiki-concepts-contact-dynamics"
         ],
         "references": [
+          "reference-papers-optimal-control",
           "reference-papers-sim2real",
+          "reference-papers-system-identification",
           "reference-papers-whole-body-control"
         ],
         "roadmaps": [
@@ -176,7 +178,8 @@
         ],
         "references": [
           "reference-papers-locomotion-rl",
-          "reference-papers-sim2real"
+          "reference-papers-sim2real",
+          "reference-papers-system-identification"
         ],
         "roadmaps": [
           "roadmap-if-goal-contact-manipulation"
@@ -209,7 +212,8 @@
         "references": [
           "reference-benchmarks-locomotion-benchmarks",
           "reference-papers-locomotion-rl",
-          "reference-repos-rl-frameworks"
+          "reference-repos-rl-frameworks",
+          "reference-papers-system-identification"
         ],
         "roadmaps": [
           "roadmap-if-goal-locomotion-rl",
@@ -5406,6 +5410,28 @@
         ],
         "status": "active"
       },
+      "reference-papers-optimal-control": {
+        "id": "reference-papers-optimal-control",
+        "title": "Optimal Control",
+        "type": "reference_page",
+        "path": "references/papers/optimal-control.md",
+        "summary": "最优控制理论基础、动态规划与轨迹优化奠基工作",
+        "content_markdown": "最优控制理论基础、动态规划与轨迹优化奠基工作。\n\n## 关注问题\n\n- 如何求解具有动力学约束的最优控制序列？\n- 离散时间与连续时间最优性的差异？\n- 动态规划（DP）与极大值原理（PMP）的联系？\n- 如何在非线性系统上高效迭代求解？\n\n## 代表性著作与论文\n\n### 理论奠基\n\n- **Richard Bellman (1957)** — *Dynamic Programming*. 提出了最优子结构与 Bellman 方程。\n- **Pontryagin et al. (1962)** — *A Pontryagin Minimum Principle*. 建立了基于 Hamiltonian 的连续时间最优控制必要条件。\n\n### 工程方法\n\n- **Bryson & Ho (1975)** — *Applied Optimal Control*. 将最优控制系统化为 LQR/LQG 等工程方法。\n- **Mayne / Jacobson (1966/1970)** — *Differential Dynamic Programming*. 提出了 **DDP** 算法，是现代轨迹优化的核心算法基础。\n\n### 统一框架\n\n- **Bertsekas (2019)** — *Reinforcement Learning and Optimal Control*. 建立了强化学习与最优控制的统一数学框架。\n\n## 关联页面\n\n- [Optimal Control (OCP) (Concept)](../../wiki/concepts/optimal-control.md)\n- [Bellman 方程 (Formalization)](../../wiki/formalizations/bellman-equation.md)\n- [HJB 方程 (Formalization)](../../wiki/formalizations/hjb.md)\n- [LQR / iLQR (Formalization)](../../wiki/formalizations/lqr.md)\n- [Trajectory Optimization (Method)](../../wiki/methods/trajectory-optimization.md)",
+        "tags": [
+          "papers",
+          "control",
+          "optimization"
+        ],
+        "related": [
+          "wiki-concepts-optimal-control",
+          "wiki-formalizations-bellman-equation",
+          "wiki-formalizations-hjb",
+          "wiki-formalizations-lqr",
+          "wiki-methods-trajectory-optimization"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "reference-papers-sim2real": {
         "id": "reference-papers-sim2real",
         "title": "Sim2Real",
@@ -5439,6 +5465,30 @@
           "papers"
         ],
         "related": [],
+        "source_links": [],
+        "status": "active"
+      },
+      "reference-papers-system-identification": {
+        "id": "reference-papers-system-identification",
+        "title": "System Identification",
+        "type": "reference_page",
+        "path": "references/papers/system-identification.md",
+        "summary": "聚焦机器人动力学辨识、执行器建模与在线参数估计论文",
+        "content_markdown": "聚焦机器人动力学辨识、执行器建模与在线参数估计论文。\n\n## 关注问题\n\n- 如何精确获取连杆质量与惯性参数？\n- 如何建立高保真的电机/驱动器动力学模型？\n- 如何在运动过程中实时辨识地形与负载？\n- 如何设计最优激励轨迹以提升辨识精度？\n\n## 代表性论文\n\n### 离线动力学辨识\n\n- ** Nguyen & Park (IJRR 2011)** — *Physically Consistent State Estimation and System Identification for Contacts*. 解决了惯性参数辨识中的物理一致性约束。\n- ** Gautier & Khalil (1992)** — *Exciting Trajectories for Identification*. 提出了如何设计激励轨迹来优化辨识矩阵的条件数。\n\n### 执行器建模 (Actuator Dynamics)\n\n- ** Hwangbo et al. (Science Robotics 2019)** — *Learning Agile and Dynamic Motor Skills for Legged Robots*. 提出了 **ActuatorNet**，用神经网络拟合驱动器特性，显著提升 sim2real 成功率。\n\n### 在线系统辨识\n\n- ** Grandia et al. (IROS 2019)** — *Online System Identification for Legged Robots*. 在 ANYmal 上实现了地面刚度与摩擦的实时辨识。\n\n## 关联页面\n\n- [System Identification (Concept)](../../wiki/concepts/system-identification.md)\n- [Sim2Real (Concept)](../../wiki/concepts/sim2real.md)\n- [Actuator Network (Method)](../../wiki/methods/actuator-network.md)\n- [Model Predictive Control (Method)](../../wiki/methods/model-predictive-control.md)",
+        "tags": [
+          "papers",
+          "locomotion",
+          "control",
+          "dynamics",
+          "sim2real",
+          "hardware"
+        ],
+        "related": [
+          "wiki-concepts-system-identification",
+          "wiki-concepts-sim2real",
+          "wiki-methods-actuator-network",
+          "wiki-methods-model-predictive-control"
+        ],
         "source_links": [],
         "status": "active"
       },
