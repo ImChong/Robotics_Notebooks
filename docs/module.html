@@ -120,6 +120,27 @@
     </section>
   </main>
 
+  <button class="sidebar-toggle" id="sidebarToggle" aria-label="切换目录侧边栏">
+    <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+  </button>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <script>
+    (function() {
+      var toggle = document.getElementById('sidebarToggle');
+      var overlay = document.getElementById('sidebarOverlay');
+      var sidebar = document.querySelector('.detail-toc-panel');
+      if (!toggle || !sidebar) { if (toggle) toggle.style.display = 'none'; return; }
+      function open() { sidebar.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
+      function close() { sidebar.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
+      toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
+      if (overlay) overlay.addEventListener('click', close);
+      sidebar.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A' || e.target.closest('a')) setTimeout(close, 100);
+      });
+    })();
+  </script>
+
   <footer class="footer">
     <div class="container footer-stack">
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
