@@ -397,6 +397,12 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--accent);
   text-decoration: none;
 }
+#roadmap-empty-section {
+  padding: 0;
+}
+.roadmap-content-section {
+  padding-top: 12px;
+}
 .toc-card { padding: 18px 20px; }
 .toc-card ul { padding-left: 18px; }
 .toc-card li + li { margin-top: 6px; }
