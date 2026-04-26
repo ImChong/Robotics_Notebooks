@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-04-25] lint | health-check | 自动化 wiki 健康检查
+## [2026-04-26] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题：
 
@@ -50,6 +50,9 @@
 - 无
 
 ### ⚠️ Formalization 页面缺少公式块（0 个）
+- 无
+
+### ⚠️ Formalization 公式变量缺少正文物理含义解释（0 个）
 - 无
 
 ### ⚠️ README checklist 链接版本不一致（0 个）
