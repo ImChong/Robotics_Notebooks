@@ -234,7 +234,7 @@ def assign_communities(
 
     node_map = {node["id"]: node for node in nodes}
     community_meta: dict[str, dict[str, object]] = {}
-    node_to_community: dict[str, tuple[str, str]] = {}
+    node_to_community: dict[str, str] = {}
 
     for idx, members in enumerate(sorted_groups):
         if idx < MAX_COMMUNITIES:
@@ -249,12 +249,10 @@ def assign_communities(
         if community_meta[community_id]["hub_id"] is None and community_id != OTHER_COMMUNITY_ID:
             community_meta[community_id]["hub_id"] = hub_id
         for node_id in members:
-            node_to_community[node_id] = (community_id, label)
+            node_to_community[node_id] = community_id
 
     for node in nodes:
-        community_id, label = node_to_community.get(node["id"], (OTHER_COMMUNITY_ID, OTHER_COMMUNITY_LABEL))
-        node["community"] = community_id
-        node["community_label"] = label
+        node["community"] = node_to_community.get(node["id"], OTHER_COMMUNITY_ID)
 
     community_list = sorted(
         community_meta.values(),
