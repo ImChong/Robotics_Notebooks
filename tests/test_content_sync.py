@@ -36,9 +36,11 @@ class DetailContentSyncTests(unittest.TestCase):
     def test_main_js_contains_markdown_renderer_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
+            'function stripYamlFrontmatter(markdown)',
             'function renderMarkdownContent(markdown, headings, markdownContext)',
             'contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {',
-            "return '<pre><code>'",
+            "blocks.push('<hr>');",
+            'function renderCodeBlock(code, lang)',
             "return '<blockquote>'",
             "return '<ul>'",
         ]
@@ -145,6 +147,7 @@ class DetailContentSyncTests(unittest.TestCase):
             '.detail-markdown-body h2:hover .heading-anchor-link',
             '.detail-toc-list a.active',
             '.detail-hash-target',
+            '.detail-markdown-body hr',
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, style_content)

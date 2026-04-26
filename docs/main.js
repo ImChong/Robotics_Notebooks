@@ -59,6 +59,15 @@
     if (element) element.classList.remove('data-loading');
   }
 
+  function stripYamlFrontmatter(markdown) {
+    const source = String(markdown || '').replace(/\r\n/g, '\n').trim();
+    if (!source.startsWith('---\n')) return source;
+
+    const endMatch = source.match(/\n---\s*(?:\n|$)/);
+    if (!endMatch || typeof endMatch.index !== 'number') return source;
+    return source.slice(endMatch.index + endMatch[0].length).trim();
+  }
+
   function renderHomeStats(graphStats, coverageText) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
@@ -465,19 +474,7 @@
   }
 
   function renderMarkdownContent(markdown, headings, markdownContext) {
-    let source = String(markdown || '').replace(/\r\n/g, '\n').trim();
-    if (!source) {
-      return '<p>当前 detail page 暂无可同步正文。</p>';
-    }
-
-    // 剔除 YAML Front Matter (--- ... ---)
-    if (source.startsWith('---')) {
-      const secondDashIndex = source.indexOf('---', 3);
-      if (secondDashIndex !== -1) {
-        source = source.slice(secondDashIndex + 3).trim();
-      }
-    }
-
+    let source = stripYamlFrontmatter(markdown);
     if (!source) {
       return '<p>当前 detail page 暂无可同步正文。</p>';
     }
@@ -585,6 +582,15 @@
         flushParagraph();
         flushList();
         flushQuote();
+        return;
+      }
+
+      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        flushTable();
+        blocks.push('<hr>');
         return;
       }
 
