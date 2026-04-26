@@ -1,3 +1,15 @@
+# Docs 目录说明
+
+`docs/` 是 GitHub Pages 展示层和历史资料暂存区。当前前端页面、导出数据镜像、执行清单都在这里维护。
+
+常用入口：
+- [当前技术栈执行清单 v21](checklists/tech-stack-next-phase-checklist-v21.md)
+- [前端体验优化清单 v1](checklists/frontend-optimization-v1.md)
+- [历史执行清单索引](checklists/README.md)
+- [展示层变更记录](change-log.md)
+
+---
+
 - Know-How
     - [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)
         - [ROBOTO_ORIGIN - Fully Open-Source DIY Humanoid Robot](https://github.com/Roboparty/roboto_origin?tab=readme-ov-file)

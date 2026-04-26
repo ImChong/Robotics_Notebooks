@@ -56,6 +56,15 @@
 | `references/` | **论文/Repo 索引**。按主题分类的深度阅读资源。 |
 | `scripts/` | **维护工具**。用于 lint、搜索、索引生成和统计更新。 |
 | `docs/` | **展示层**。GitHub Pages 托管的 D3.js 交互式图谱与详情页。 |
+| `docs/checklists/` | **执行清单归档**。当前技术栈推进、前端优化与历史阶段清单。 |
+
+---
+
+## 维护看板
+
+- 当前技术栈执行清单：[V21](docs/checklists/tech-stack-next-phase-checklist-v21.md)
+- 前端体验优化清单：[frontend-optimization-v1](docs/checklists/frontend-optimization-v1.md)
+- 历史执行清单索引：[docs/checklists/README.md](docs/checklists/README.md)
 
 ---
 

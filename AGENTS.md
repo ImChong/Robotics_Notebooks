@@ -44,6 +44,16 @@
 
 当前先占位，后续再把 `wiki/` 映射到导图数据。
 
+### 5. `docs/checklists/`
+项目执行清单与阶段性维护看板。
+
+包括：
+- 当前技术栈执行清单：[`docs/checklists/tech-stack-next-phase-checklist-v21.md`](docs/checklists/tech-stack-next-phase-checklist-v21.md)
+- 前端体验优化清单：[`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
+- 历史执行清单索引：[`docs/checklists/README.md`](docs/checklists/README.md)
+
+这些文件用于记录阶段性工程计划、验收标准和历史推进过程；不要把它们当作 wiki 知识页。若修改前端体验、导出链路或阶段性目标，应同步更新对应 checklist。
+
 ## 写作原则
 
 1. **原始资料和知识归纳分开**
