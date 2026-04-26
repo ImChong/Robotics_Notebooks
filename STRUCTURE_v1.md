@@ -174,12 +174,9 @@ wiki/ (continued)
 roadmap/
 ├── README.md                        # 路线总览
 │
-├── route-a-motion-control.md        # 路线A：运动控制算法工程师成长路线 ⭐
+├── route-a-motion-control.md        # 主路线：运动控制算法工程师成长路线 ⭐
 │   # 按学习阶段排列，从数学基础到人形机器人RL
 │   # 每阶段含：目标 + 核心模块 + 最小落地任务 + 推荐资源
-│
-├── route-b-fullstack.md            # 路线B：机器人全栈工程师扩展路线
-│   # 在路线A基础上继续扩展至感知/规划/系统集成
 │
 └── learning-paths/                  # 按目标分支的学习路径
     ├── if-goal-locomotion-rl.md     # 目标：人形RL运动控制
@@ -188,7 +185,7 @@ roadmap/
     └── if-goal-generalist.md       # 目标：全栈通用能力
 ```
 
-**路线A（运动控制切入口）学习阶段：**
+**主路线（运动控制切入口）学习阶段：**
 
 | 阶段 | 主题 | 核心模块 | 最小落地任务 |
 |------|------|----------|--------------|
@@ -374,7 +371,7 @@ docs/
 ## 五、执行优先级（v1 阶段）
 
 ### 第一批（核心，切入口相关）
-1. 创建 `roadmap/` 目录及路线A/B
+1. 创建 `roadmap/` 目录及单一主路线
 2. 创建 `tech-map/dependency-graph.md`
 3. 创建 `wiki/control/humanoid-locomotion/` 相关页面
 4. 创建 `wiki/reinforcement-learning/rl-for-robotics/sim2real.md`

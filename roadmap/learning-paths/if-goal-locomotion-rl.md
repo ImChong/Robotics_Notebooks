@@ -8,8 +8,8 @@
 - 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
 
 **和主路线的关系：**
-- 本路径是路线A的“快速分支版本”
-- 如果你在某个阶段遇到理论卡点，回到 [路线A：运动控制成长路线](../route-a-motion-control.md) 查对应章节
+- 本路径是主路线的“快速分支版本”
+- 如果你在某个阶段遇到理论卡点，回到 [主路线：运动控制成长路线](../route-a-motion-control.md) 查对应章节
 
 ---
 
@@ -193,6 +193,6 @@
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[路线A：运动控制算法工程师成长路线](../route-a-motion-control.md)
+- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](../route-a-motion-control.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../../tech-map/dependency-graph.md)

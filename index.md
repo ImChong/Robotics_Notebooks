@@ -10,7 +10,7 @@
 
 | 你的目标 | 从这里进入 |
 |---------|-----------|
-| 想有一条学习路线照着走 | [路线A：运动控制成长路线](roadmap/route-a-motion-control.md) |
+| 想有一条学习路线照着走 | [主路线：运动控制成长路线](roadmap/route-a-motion-control.md) |
 | 想用强化学习做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
 | 想学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
 | 想学安全控制（CLF/CBF）| [安全控制学习路径](roadmap/learning-paths/if-goal-safe-control.md) |
@@ -56,7 +56,7 @@
 回答"应该先学什么、再学什么、学完输出什么"。
 
 核心路线：
-- [路线A：运动控制成长路线](roadmap/route-a-motion-control.md)
+- [主路线：运动控制成长路线](roadmap/route-a-motion-control.md)
 - [RL Locomotion 路径](roadmap/learning-paths/if-goal-locomotion-rl.md)
 - [IL 技能迁移路径](roadmap/learning-paths/if-goal-imitation-learning.md)
 - [安全控制路径](roadmap/learning-paths/if-goal-safe-control.md)
@@ -297,7 +297,7 @@ SORT type ASC
 - [人形机器人运动控制 Know-How](overview/humanoid-motion-control-know-how.md) — - **高频振动**：足端撞击地面的瞬时振动会通过骨架传导至 IMU。如果固定不牢，加速度计会因共振产生巨大偏置。 `📅unknown` `[overview_page]`
 - [Robot Learning Overview](overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转 向从经验中学习。 `📅unknown` `[overview_page]`
 
-### Roadmaps（路线页）（9页）
+### Roadmaps（路线页）（8页）
 
 - [成长路线总览](README.md) — 本目录用于承载 `Robotics_Notebooks` 的成长路线设计。 `📅unknown` `[wiki_page]`
 - [学习路径：如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
@@ -306,8 +306,7 @@ SORT type ASC
 - [学习路径：如果目标是人形 RL运动控制](learning-paths/if-goal-locomotion-rl.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是安全控制（CLF / CBF / Safe RL）](learning-paths/if-goal-safe-control.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md) — 推荐顺序： `📅unknown` `[roadmap_page]`
-- [路线A：运动控制算法工程师成长路线](route-a-motion-control.md) — 这条路线怎么用： `📅unknown` `[wiki_page]`
-- [路线B：机器人全栈工程师扩展路线](route-b-fullstack.md) — L0  运动控制基础（路线A前置） `📅unknown` `[wiki_page]`
+- [主路线：运动控制算法工程师成长路线](route-a-motion-control.md) — 本仓库只维护这一条主路线；RL、IL、WBC、安全控制、接触操作等页面是围绕主路线展开的目标分支，不再并列成第二条主路线。 `📅unknown` `[wiki_page]`
 
 ### Tech-map Nodes（技术栈节点）（21页）
 

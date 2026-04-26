@@ -123,7 +123,6 @@
 
 用于导出：
 - route-a-motion-control
-- route-b-fullstack
 - learning-paths 下各页面
 
 最小字段：
@@ -132,7 +131,7 @@
 {
   "id": "roadmap-route-a-motion-control",
   "type": "roadmap_page",
-  "title": "路线A：运动控制算法工程师成长路线",
+  "title": "主路线：运动控制算法工程师成长路线",
   "path": "roadmap/route-a-motion-control.md",
   "summary": "从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
   "tags": ["roadmap", "motion-control", "humanoid"],

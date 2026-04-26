@@ -251,12 +251,30 @@ def collect_external_links(text: str) -> List[str]:
     return out
 
 
-def parse_roadmap_stages(text: str) -> List[Dict[str, str]]:
+def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, object]]:
     stages = []
+    current = None
+    section_lines: List[str] = []
+
+    def flush_current() -> None:
+        if not current:
+            return
+        section_text = "\n".join(section_lines)
+        current["related_items"] = collect_markdown_links(section_text, current_path)[:10]
+        current["source_links"] = collect_external_links(section_text)[:5]
+        stages.append(current)
+
     for line in text.splitlines():
         m = re.match(r"##\s+(L\d+(?:\.\d+)?)\s+(.+)", line.strip())
         if m:
-            stages.append({"id": m.group(1).lower(), "title": m.group(2).strip()})
+            flush_current()
+            current = {"id": m.group(1).lower(), "title": m.group(2).strip()}
+            section_lines = []
+            continue
+        if current:
+            section_lines.append(line)
+
+    flush_current()
     return stages
 
 
@@ -298,7 +316,7 @@ def build_item(path: Path) -> Dict:
             item["ingest_source"] = src_file
     elif parts[0] == "roadmap":
         item["type"] = "roadmap_page"
-        item["stages"] = parse_roadmap_stages(text)
+        item["stages"] = parse_roadmap_stages(text, path)
     elif parts[0] == "references":
         item["type"] = "reference_page"
         item["reference_kind"] = parts[1] if parts[1] in REFERENCE_KINDS else "unknown"

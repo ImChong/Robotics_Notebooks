@@ -668,16 +668,18 @@
 
     container.innerHTML = ids.map(function (id) {
       const page = detailPages[id] || {};
+      const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
+      const buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
       return [
         '<article class="card data-card">',
         '  <div>',
-        '    <h3><a href="' + escapeHtml(detailHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
+        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(page.title || id) + '</a></h3>',
         '    <p class="card-meta">' + escapeHtml(page.type || 'detail_page') + '</p>',
         '    <p>' + escapeHtml(page.summary || '当前关联项暂无摘要') + '</p>',
         '  </div>',
         '  <div class="chip-list">',
         '    <span class="data-chip"><code>' + escapeHtml(id) + '</code></span>',
-        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(id)) + '">打开详情页</a>',
+        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
         '  </div>',
         '</article>'
       ].join('');
@@ -1072,11 +1074,25 @@
     if (stageEl) {
       const stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
       stageEl.innerHTML = stages.length ? stages.map(function (stage) {
+        const related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
+        const linksHtml = related.length ? [
+          '    <div class="chip-list stage-link-list">',
+               related.map(function (id) {
+                 const page = detailPages[id] || {};
+                 const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
+                 return '<a class="data-chip" href="' + escapeHtml(href) + '" title="' + escapeHtml(id) + '">' + escapeHtml(page.title || id) + '</a>';
+               }).join(''),
+          '    </div>'
+        ].join('') : '    <p class="data-meta">当前阶段暂无内部链接。</p>';
         return [
           '<article class="card data-card">',
           '  <div>',
           '    <h3>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</h3>',
           '    <p class="card-meta">阶段 ID：' + escapeHtml(stage.id || '-') + '</p>',
+          '    <p class="card-meta">关联入口：' + escapeHtml(related.length) + '</p>',
+          '  </div>',
+          '  <div>',
+          linksHtml,
           '  </div>',
           '</article>'
         ].join('');

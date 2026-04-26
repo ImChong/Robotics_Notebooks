@@ -1,6 +1,8 @@
-# 路线A：运动控制算法工程师成长路线
+# 主路线：运动控制算法工程师成长路线
 
 > 目标：从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。
+>
+> 本仓库只维护这一条主路线；RL、IL、WBC、安全控制、接触操作等页面是围绕主路线展开的目标分支，不再并列成第二条主路线。
 
 ## 三句话先懂这条路线（极简版）
 
@@ -15,6 +17,9 @@
 - 想走分支：  
   - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)  
   - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)  
+  - [如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md)
+  - [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
+  - [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)
 
 **这条路线怎么用：**
 - 每个阶段都有：前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么
@@ -51,6 +56,8 @@
 
 **这条不需要深入，但不能跳过。**
 
+**本阶段入口：** [SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)。
+
 ### 前置知识
 - 高中数学 + 一点微积分直觉
 - 会写 Python（能读、能改、能跑通）
@@ -66,6 +73,8 @@
 ### 推荐读什么
 - 《Linear Algebra Done Right》（不用全看，只看核心直觉）
 - 3Blue1Brown 的线性代数视频（强烈推荐）
+- [SE(3) 表示](../wiki/formalizations/se3-representation.md)（本仓库）
+- [Pinocchio](../wiki/entities/pinocchio.md)（本仓库）
 
 ### 学完输出什么
 - 能用 NumPy 写简单矩阵运算
@@ -76,6 +85,8 @@
 ## L1 机器人学骨架
 
 **这条是所有后续内容的基座，跳过后面一定会补。**
+
+**本阶段入口：** [Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
 
 ### 前置知识
 - L0 内容
@@ -94,6 +105,8 @@
 ### 推荐读什么
 - [斯坦福《机器人学导论》(B站)](https://www.bilibili.com/video/BV17T421k78T/)
 - 跑通 Pinocchio 官方 Tutorial
+- [Humanoid Robot](../wiki/entities/humanoid-robot.md)（本仓库）
+- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
 
 ### 学完输出什么
 - 能自己建模一个简单机器人并计算正逆运动学
@@ -104,6 +117,8 @@
 ## L2 动力学与刚体建模
 
 **从运动学到动力学，是控制机器人最重要的跳跃。**
+
+**本阶段入口：** [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
 
 ### 前置知识
 - L1 内容（运动学）
@@ -122,6 +137,9 @@
 ### 推荐读什么
 - Featherstone 《Robot Dynamics》相关章节
 - Pinocchio 文档的 Centroidal 部分
+- [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
+- [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)（本仓库）
+- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)（本仓库）
 
 ### 学完输出什么
 - 能解释正逆动力学在机器人控制里的作用
@@ -133,6 +151,8 @@
 ## L3 控制基础与最优化
 
 **没有控制理论，后面的 MPC / WBC / RL 全都接不上。**
+
+**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
 
 ### 前置知识
 - L2 内容（动力学）
@@ -152,6 +172,7 @@
 - [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
 - [LQR](../wiki/formalizations/lqr.md)（本仓库）
+- [Optimal Control](../wiki/concepts/optimal-control.md)（本仓库）
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
 
@@ -165,6 +186,8 @@
 ## L4 人形运动控制主干
 
 **这是本路线的核心，也是当前项目的技术栈主干。**
+
+**本阶段入口：** [LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
 
 这一阶段要建立的不是“我看过多少算法名词”，而是一条稳定的方法链：
 - **先学简化模型**：LIP / ZMP 帮你建立步行和平衡直觉
@@ -191,7 +214,7 @@ TSID / WBC
 
 ### L4.1 LIP / ZMP
 
-**前置知识：** L2 + L3 内容
+**前置知识：** [L2 动力学与刚体建模](#l2-动力学与刚体建模) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
 **核心问题：** 双足机器人怎么在地上走而不倒
 
@@ -202,6 +225,8 @@ TSID / WBC
 **推荐读什么：**
 - Kajita et al., "Biped walking pattern generation by using preview control of zero-moment point"
 - [LIP / ZMP](../wiki/concepts/lip-zmp.md)（本仓库）
+- [Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)（本仓库）
+- [ZMP / LIP 形式化](../wiki/formalizations/zmp-lip.md)（本仓库）
 
 **学完输出什么：**
 - 能解释 ZMP 和支撑多边形的关系
@@ -211,7 +236,7 @@ TSID / WBC
 
 ### L4.2 Centroidal Dynamics
 
-**前置知识：** L4.1
+**前置知识：** [L4.1 LIP / ZMP](#l41-lip--zmp)
 
 **核心问题：** LIP 简化太狠了，真实人形平衡和接触力怎么描述
 
@@ -222,6 +247,7 @@ TSID / WBC
 **推荐读什么：**
 - Orin et al., "Centroidal dynamics of a humanoid robot"
 - [Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)（本仓库）
+- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)（本仓库）
 
 **学完输出什么：**
 - 能解释 centroidal dynamics 和 LIP 的区别
@@ -231,7 +257,7 @@ TSID / WBC
 
 ### L4.3 Trajectory Optimization / MPC
 
-**前置知识：** L4.2 + L3 最优控制内容
+**前置知识：** [L4.2 Centroidal Dynamics](#l42-centroidal-dynamics) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
 **核心问题：** 整段质心轨迹和接触力怎么规划，MPC 在线怎么做
 
@@ -243,6 +269,8 @@ TSID / WBC
 - "Convex MPC for Bipedal Locomotion" (Bellicoso et al.)
 - [Trajectory Optimization](../wiki/methods/trajectory-optimization.md)（本仓库）
 - [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
+- [MPC 调参指南](../wiki/queries/mpc-tuning-guide.md)（本仓库）
+- [MPC 求解器选型](../wiki/queries/mpc-solver-selection.md)（本仓库）
 
 **学完输出什么：**
 - 能实现一个简化版的 centroidal MPC
@@ -252,7 +280,7 @@ TSID / WBC
 
 ### L4.4 TSID / Whole-Body Control
 
-**前置知识：** L4.3
+**前置知识：** [L4.3 Trajectory Optimization / MPC](#l43-trajectory-optimization--mpc)
 
 **核心问题：** 上层规划出来的参考轨迹，怎么变成每个关节该出的力
 
@@ -263,7 +291,10 @@ TSID / WBC
 **推荐读什么：**
 - Del Prete et al., "Prioritized motion-force control of constrained fully-actuated robots"
 - [TSID](../wiki/concepts/tsid.md)（本仓库）
+- [TSID Formulation](../wiki/formalizations/tsid-formulation.md)（本仓库）
 - [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
+- [WBC 实现指南](../wiki/queries/wbc-implementation-guide.md)（本仓库）
+- [WBC 调参指南](../wiki/queries/wbc-tuning-guide.md)（本仓库）
 
 **学完输出什么：**
 - 能用 TSID 框架实现一个多层优先级 WBC
@@ -274,6 +305,8 @@ TSID / WBC
 ## L5 强化学习与模仿学习
 
 **学完 L4 后，你应该已经对 model-based control 有了完整理解。L5 是另一条路：learning-based。**
+
+**本阶段入口：** [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)、[Policy Optimization](../wiki/methods/policy-optimization.md)、[PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)、[Imitation Learning](../wiki/methods/imitation-learning.md)、[Behavior Cloning](../wiki/methods/behavior-cloning.md)、[DAgger](../wiki/methods/dagger.md)、[Motion Retargeting](../wiki/concepts/motion-retargeting.md)。
 
 这一阶段最容易踩的坑，是把 RL / IL 当成“跳过建模”的捷径。更稳的学习方式是：
 - 把 RL / IL 看成**能力扩展层**，不是替代所有控制结构的万能钥匙
@@ -293,6 +326,8 @@ TSID / WBC
 **推荐读什么：**
 - Spinning Up (OpenAI)
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
+- [Policy Optimization](../wiki/methods/policy-optimization.md)（本仓库）
+- [PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)（本仓库）
 
 **学完输出什么：**
 - 能解释 PPO 的核心思路
@@ -314,7 +349,10 @@ TSID / WBC
 - "DeepMimic" (Peng et al.)
 - "AMP: Adversarial Motion Priors"
 - legged_gym / IsaacGymEnvs
+- [legged_gym](../wiki/entities/legged-gym.md)（本仓库）
+- [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)（本仓库）
 - [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)（本仓库）
+- [MPC vs RL](../wiki/comparisons/mpc-vs-rl.md)（本仓库）
 - [Query：开源运动控制项目导航](../wiki/queries/open-source-motion-control-projects.md)（本仓库）
 
 **学完输出什么：**
@@ -338,6 +376,8 @@ TSID / WBC
 - "DeepMimic"
 - [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
 - [Behavior Cloning](../wiki/methods/behavior-cloning.md)（本仓库）
+- [DAgger](../wiki/methods/dagger.md)（本仓库）
+- [Motion Retargeting](../wiki/concepts/motion-retargeting.md)（本仓库）
 
 **学完输出什么：**
 - 能把一段 MoCap 数据迁移到人形机器人上
@@ -348,6 +388,8 @@ TSID / WBC
 ## L6 综合实战
 
 **到这里，你应该已经对运动控制和学习两条路都有理解了。最后一步是让它们真正串起来。**
+
+**本阶段入口：** [Sim2Real](../wiki/concepts/sim2real.md)、[System Identification](../wiki/concepts/system-identification.md)、[Domain Randomization](../wiki/concepts/domain-randomization.md)、[Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)、[部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)、[机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)。
 
 ### 前置知识
 - L4 全流程
@@ -367,6 +409,9 @@ TSID / WBC
 - [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
 - [System Identification](../wiki/concepts/system-identification.md)（本仓库）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
+- [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)（本仓库）
+- [Sim2Real 部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)（本仓库）
+- [机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)（本仓库）
 
 ### 学完输出什么
 - 一个能跑的人形 RL 策略（仿真内）
@@ -399,4 +444,7 @@ TSID / WBC
 - 学习路径快速入口：
   - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)
   - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)
+  - [如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md)
+  - [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
+  - [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)
 - 技术栈地图参考：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)

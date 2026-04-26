@@ -215,7 +215,7 @@
 
 ## 和其他页面的关系
 
-- 完整成长路线参考：[路线A：运动控制算法工程师成长路线](../route-a-motion-control.md)
+- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](../route-a-motion-control.md)
 - RL 路径对比参考：[如果目标是 RL 运动控制](if-goal-locomotion-rl.md)
 - 人形控制全景图：[Humanoid Control Roadmap](../../wiki/roadmaps/humanoid-control-roadmap.md)
 - 技术栈地图：[tech-map/dependency-graph.md](../../tech-map/dependency-graph.md)
