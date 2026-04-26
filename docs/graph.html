@@ -1283,8 +1283,9 @@
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
-      const community = d.community_label
-        ? `<div class="tt-summary">社区：${escapeHtml(d.community_label)}</div>`
+      const communityLabel = communityLabelMap.get(d.community);
+      const community = communityLabel
+        ? `<div class="tt-summary">社区：${escapeHtml(communityLabel)}</div>`
         : '';
       return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
@@ -1781,10 +1782,11 @@
       sbTypeBadge.textContent = typeLabel;
       sbTitle.textContent = info.title || d.label;
       sbSummary.textContent = summary;
-      if (d.community_label) {
+      const sbCommunityText = communityLabelMap.get(d.community);
+      if (sbCommunityText) {
         sbCommunityBlock.hidden = false;
         sbCommunityDot.style.background = communityColorMap.get(d.community) || color;
-        sbCommunityLabel.textContent = d.community_label;
+        sbCommunityLabel.textContent = sbCommunityText;
       } else {
         sbCommunityBlock.hidden = true;
       }
