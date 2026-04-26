@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import Dict, Iterable, List
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-WIKI_DIR = REPO_ROOT / "wiki"
 
 ASCII_TOKEN_RE = re.compile(r"[a-z0-9_+\-.]+")
 MIXED_TOKEN_RE = re.compile(r"[A-Za-z0-9_+\-.]+|[\u4e00-\u9fff]+")
@@ -132,6 +131,16 @@ def path_to_id(path: Path) -> str:
         if parts[1] == "entities":
             return f"entity-{stem}"
         return f"wiki-{parts[1]}-{stem}"
+    if parts[0] == "roadmap":
+        return f"roadmap-{stem}"
+    if parts[0] == "references":
+        return f"reference-{parts[1]}-{stem}"
+    if parts[0] == "tech-map":
+        if len(parts) >= 3 and parts[1] == "modules":
+            return f"tech-node-{parts[2]}-{stem}"
+        if len(parts) >= 3 and parts[1] == "research-directions":
+            return f"tech-node-research-{stem}"
+        return f"tech-node-{stem}"
     return stem
 
 
@@ -153,17 +162,66 @@ def page_type_for_path(path: Path, fm: dict) -> str:
             "references": "reference",
         }
         return mapping.get(parts[1], parts[1])
+    if parts[0] == "roadmap":
+        return "roadmap"
+    if parts[0] == "references":
+        return "reference"
+    if parts[0] == "tech-map":
+        return "tech_map_node"
     return ""
+
+
+def infer_path_tags(path: Path, fm: dict) -> List[str]:
+    tags = fm.get("tags", [])
+    if isinstance(tags, str):
+        tags = [tags]
+    parts = path.relative_to(REPO_ROOT).parts
+    if parts[0] == "tech-map":
+        tags = list(tags) + ["tech-map"]
+        if len(parts) >= 3 and parts[1] == "modules":
+            tags.append(parts[2])
+    elif parts[0] == "roadmap":
+        tags = list(tags) + ["roadmap"]
+    elif parts[0] == "references" and len(parts) >= 2:
+        tags = list(tags) + [parts[1]]
+    seen = set()
+    out = []
+    for tag in tags:
+        value = str(tag).strip()
+        if value and value not in seen:
+            seen.add(value)
+            out.append(value)
+    return out
+
+
+def iter_searchable_paths() -> List[Path]:
+    patterns = [
+        "wiki/**/*.md",
+        "roadmap/*.md",
+        "roadmap/learning-paths/*.md",
+        "references/papers/*.md",
+        "references/repos/*.md",
+        "references/benchmarks/*.md",
+        "tech-map/overview.md",
+        "tech-map/dependency-graph.md",
+        "tech-map/modules/*/*.md",
+        "tech-map/research-directions/*.md",
+    ]
+    paths: List[Path] = []
+    for pattern in patterns:
+        paths.extend(sorted(REPO_ROOT.glob(pattern)))
+    return sorted({path for path in paths if path.name != "README.md"})
 
 
 def iter_wiki_documents() -> List[Dict]:
     docs: List[Dict] = []
-    for path in sorted(WIKI_DIR.rglob("*.md")):
+    for path in iter_searchable_paths():
         raw = path.read_text(encoding="utf-8")
         fm = parse_frontmatter(raw)
         body = strip_frontmatter(raw)
         title = extract_title(body, path.stem)
         summary = extract_summary(body, fm)
+        tags = infer_path_tags(path, fm)
         docs.append(
             {
                 "id": path_to_id(path),
@@ -173,7 +231,7 @@ def iter_wiki_documents() -> List[Dict]:
                 "body": body,
                 "frontmatter": fm,
                 "page_type": page_type_for_path(path, fm),
-                "tags": fm.get("tags", []),
+                "tags": tags,
             }
         )
     return docs

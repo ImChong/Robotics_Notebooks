@@ -18,7 +18,13 @@ def generate_search_index(output_path: Path = OUTPUT) -> dict:
     total_length = 0
 
     for doc in docs:
-        text = "\n".join([doc["title"], doc["summary"], doc["body"]])
+        text = "\n".join([
+            doc["title"],
+            doc["summary"],
+            doc["path"],
+            " ".join(doc.get("tags", [])),
+            doc["body"],
+        ])
         counts = token_counts(text)
         dl = sum(counts.values())
         total_length += dl

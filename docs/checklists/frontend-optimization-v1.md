@@ -51,6 +51,7 @@
 - [ ] 搜索结果列表优化：支持卡片式快速预览。
 - [ ] 详情页浮窗联动。
 - [x] 详情页 Markdown 渲染修复：正文独立 `---` 行渲染为分隔线，并按整行分隔符剥离 YAML frontmatter。
+- [x] 首页搜索索引修复：将 `tech-map/`、roadmap 与 references 纳入 `search-index.json`，支持搜索 `tech-map`。
 
 ---
 
