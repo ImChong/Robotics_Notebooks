@@ -1013,7 +1013,11 @@
     const roadmapPages = pages.roadmap_pages || {};
     const detailPages = pages.detail_pages || {};
     const params = new URLSearchParams(window.location.search);
-    const roadmapId = params.get('id') || '';
+    const legacyRoadmapIds = {
+      'roadmap-route-a-motion-control': 'roadmap-motion-control'
+    };
+    const requestedRoadmapId = params.get('id') || '';
+    const roadmapId = legacyRoadmapIds[requestedRoadmapId] || requestedRoadmapId;
     const roadmapPage = roadmapId ? roadmapPages[roadmapId] : null;
 
     const titleEl = document.getElementById('roadmapTitle');
@@ -1029,7 +1033,7 @@
       if (emptyState) emptyState.hidden = false;
       if (titleEl) titleEl.textContent = '未找到对应 roadmap page';
       if (summaryEl) {
-        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>roadmap.html?id=roadmap-route-a-motion-control</code>。';
+        summaryEl.innerHTML = '请在 URL 里传入合法的 <code>?id=...</code>，例如 <code>roadmap.html?id=roadmap-motion-control</code>。';
         removeLoadingState(summaryEl);
       }
       if (metaEl) {

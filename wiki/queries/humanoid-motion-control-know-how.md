@@ -84,7 +84,7 @@ OCP
 
 ## 1. 它强化了“路线页”的必要性
 `Robotics_Notebooks` 里已经有：
-- [主路线：运动控制成长路线](../../roadmap/route-a-motion-control.md)
+- [主路线：运动控制成长路线](../../roadmap/motion-control.md)
 - RL / IL learning paths
 
 而这份 Know-How 文档再次证明：
@@ -175,7 +175,7 @@ OCP
 - [Locomotion](../tasks/locomotion.md)
 
 ### 3. 路线与架构层
-- [主路线：运动控制成长路线](../../roadmap/route-a-motion-control.md)
+- [主路线：运动控制成长路线](../../roadmap/motion-control.md)
 - [控制架构综合对比](./control-architecture-comparison.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 
@@ -213,7 +213,7 @@ OCP
 基于这份文档，后续最值得继续做的不是“整页搬运”，而是把里面的组织思路转成你仓库里的几个增量：
 
 1. **路线层**
-   - 强化 `roadmap/route-a-motion-control.md` 与两条学习路径之间的衔接
+   - 强化 `roadmap/motion-control.md` 与两条学习路径之间的衔接
 
 2. **方法模板层**
    - 让 OCP / LIP-ZMP / WBC / MPC 等页面逐步补“最小代码”和“局限性”小节
@@ -233,7 +233,7 @@ OCP
 
 ## 关联页面
 
-- [主路线：运动控制成长路线](../../roadmap/route-a-motion-control.md) — 这份文档最接近的仓库内对应物
+- [主路线：运动控制成长路线](../../roadmap/motion-control.md) — 这份文档最接近的仓库内对应物
 - [控制架构综合对比](./control-architecture-comparison.md) — 传统控制、RL、融合架构的横向对比
 - [WBC vs RL](../comparisons/wbc-vs-rl.md) — 两条主线的典型分叉点
 - [State Estimation](../concepts/state-estimation.md) — 文档中明确单列的重要模块

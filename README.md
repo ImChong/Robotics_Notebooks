@@ -18,7 +18,7 @@
 
 想系统学人形机器人运动控制 / 强化学习 / 模仿学习，有一定编程基础（Python / C++） and 本科数学基础。
 
-不知道从哪开始？直接看 [运动控制成长路线](roadmap/route-a-motion-control.md)。
+不知道从哪开始？直接看 [运动控制成长路线](roadmap/motion-control.md)。
 
 ---
 
@@ -35,7 +35,7 @@
 | 你的目标 | 入口 |
 |---------|------|
 | 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
-| 有一条路线照着走 | [运动控制成长路线](roadmap/route-a-motion-control.md) |
+| 有一条路线照着走 | [运动控制成长路线](roadmap/motion-control.md) |
 | 用强化学习做运动控制 | [强化学习运动控制路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
 | 学模仿学习与技能迁移 | [模仿学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
 | 学安全控制（CLF/CBF）| [安全控制路径](roadmap/learning-paths/if-goal-safe-control.md) |

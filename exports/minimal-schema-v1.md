@@ -122,17 +122,17 @@
 ## 2. roadmap_page
 
 用于导出：
-- route-a-motion-control
+- motion-control
 - learning-paths 下各页面
 
 最小字段：
 
 ```json
 {
-  "id": "roadmap-route-a-motion-control",
+  "id": "roadmap-motion-control",
   "type": "roadmap_page",
   "title": "主路线：运动控制算法工程师成长路线",
-  "path": "roadmap/route-a-motion-control.md",
+  "path": "roadmap/motion-control.md",
   "summary": "从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
   "tags": ["roadmap", "motion-control", "humanoid"],
   "related": ["wiki-roadmaps-humanoid-control-roadmap"],
@@ -306,8 +306,8 @@ wiki/methods/trajectory-optimization.md
 wiki/entities/mujoco.md
 → entity-mujoco
 
-roadmap/route-a-motion-control.md
-→ roadmap-route-a-motion-control
+roadmap/motion-control.md
+→ roadmap-motion-control
 
 references/papers/locomotion-rl.md
 → reference-papers-locomotion-rl

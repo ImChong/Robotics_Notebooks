@@ -68,7 +68,7 @@
     "subtitle": "机器人技术栈知识库 / Robotics research and engineering wiki."
   },
   "quick_entries": [
-    {"title": "主路线：运动控制成长路线", "id": "roadmap-route-a-motion-control"},
+    {"title": "主路线：运动控制成长路线", "id": "roadmap-motion-control"},
     {"title": "RL Locomotion 学习路径", "id": "roadmap-if-goal-locomotion-rl"}
   ],
   "featured_chain": [
@@ -99,7 +99,7 @@
 ### 首页当前最适合展示的内容来源
 - `README.md`
 - `index.md`
-- `roadmap/route-a-motion-control.md`
+- `roadmap/motion-control.md`
 - `tech-map/overview.md`
 
 ---
@@ -167,7 +167,7 @@
 
 ```json
 {
-  "id": "roadmap-route-a-motion-control",
+  "id": "roadmap-motion-control",
   "title": "主路线：运动控制算法工程师成长路线",
   "summary": "从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。",
   "stages": [

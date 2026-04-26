@@ -9,7 +9,7 @@ updated: 2026-04-20
 # Humanoid Control Roadmap
 
 > 本页是 [[wiki/roadmaps/humanoid-control-roadmap]] 的简短版摘要。
-> **完整版路线请看 → [[roadmap/route-a-motion-control]]**
+> **完整版路线请看 → [[roadmap/motion-control]]**
 
 面向人形机器人运动控制算法工程师的学习研究路线。
 
@@ -62,4 +62,4 @@ updated: 2026-04-20
 - [Sim2Real](../concepts/sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
 - [开源人形机器人硬件方案对比](../entities/open-source-humanoid-hardware.md) — 低成本入门硬件选型
-- **完整路线 → [[roadmap/route-a-motion-control]]**
+- **完整路线 → [[roadmap/motion-control]]**

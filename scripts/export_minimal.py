@@ -458,7 +458,7 @@ def build_site_data(items: List[Dict]) -> Dict:
 
     quick_entries = pick_existing(
         [
-            "roadmap-route-a-motion-control",
+            "roadmap-motion-control",
             "roadmap-if-goal-locomotion-rl",
             "roadmap-if-goal-imitation-learning",
         ],

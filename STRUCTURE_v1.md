@@ -174,7 +174,7 @@ wiki/ (continued)
 roadmap/
 ├── README.md                        # 路线总览
 │
-├── route-a-motion-control.md        # 主路线：运动控制算法工程师成长路线 ⭐
+├── motion-control.md        # 主路线：运动控制算法工程师成长路线 ⭐
 │   # 按学习阶段排列，从数学基础到人形机器人RL
 │   # 每阶段含：目标 + 核心模块 + 最小落地任务 + 推荐资源
 │
