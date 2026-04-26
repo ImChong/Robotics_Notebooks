@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Dict, Iterable, List
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+WIKI_DIR = REPO_ROOT / "wiki"
 
 ASCII_TOKEN_RE = re.compile(r"[a-z0-9_+\-.]+")
 MIXED_TOKEN_RE = re.compile(r"[A-Za-z0-9_+\-.]+|[\u4e00-\u9fff]+")
