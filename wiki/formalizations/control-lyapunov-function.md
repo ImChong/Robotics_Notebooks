@@ -129,7 +129,7 @@ LQR 的代价函数 $V(x) = x^T P x$（其中 $P$ 是 Riccati 方程的解）本
 
 $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{min}(Q) \|x\|^2$$
 
-因此 LQR 是 CLF 理论在线性系统上的特例，LQR 的最优代价函数自然满足 CLF 条件。
+其中 $A$ 是线性系统的状态矩阵，$B$ 是控制输入矩阵（即 $\dot{x} = Ax + Bu$ 中的 $A, B$），$Q, R$ 分别为状态和控制代价权重。因此 LQR 是 CLF 理论在线性系统上的特例，LQR 的最优代价函数自然满足 CLF 条件。
 
 ## 常见误区
 

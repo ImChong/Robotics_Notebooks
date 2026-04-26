@@ -23,8 +23,8 @@
 
 - [x] **语义搜索“智能拼写纠错”**：
     - [x] `scripts/search_wiki.py` 集成基础的编辑距离算法，当查询无结果时自动推荐最接近的 Tag 或 标题。
-- [ ] **自动化背链一致性 Lint**：
-    - [ ] `scripts/lint_wiki.py` 新增检测：`formalizations/` 中的公式变量（如 $J, M, q$）在正文描述中必须有对应的物理含义解释。
+- [x] **自动化背链一致性 Lint**：
+    - [x] `scripts/lint_wiki.py` 新增检测：`formalizations/` 中的公式变量（如 $J, M, q$）在正文描述中必须有对应的物理含义解释。
 - [ ] **图谱导出数据精简**：
     - [ ] 优化 `scripts/generate_link_graph.py`，移除 `link-graph.json` 中的冗余 body 文本，减小前端加载压力。
 

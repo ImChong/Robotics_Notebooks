@@ -422,3 +422,17 @@
 ## [2026-04-25] ingest | wiki/entities/roboto-origin.md — 回链 Atom01 五个 sources 条目并重新导出图谱索引，确保 sources 节点可见
 
 ## [2026-04-25] ingest | wiki/entities/atom01-*.md — 新增 Atom01 五个实体页并同步导出图谱（181 nodes / 1012 edges）
+
+## [2026-04-25] feat | v21-execution | P0 自动化背链一致性 Lint（公式变量物理含义检测）
+
+- V21 P0 第三项推进：`scripts/lint_wiki.py` 新增 `formalization_unexplained_vars` 检查；从 `wiki/formalizations/*.md` 的 `$$...$$` 显示公式中抽取单字母拉丁大写变量，逐一验证正文是否给出物理含义解释
+- 启发式定义匹配：列表条目冒号、表格行、动词解释（是/为/表示/代表/denote）、其中/where 子句、等式或集合定义（=、\in、\succeq、\succ、\equiv、\triangleq）；并用 `(?![A-Za-z_(])` 排除函数调用形式（如 `R(s,a,s')`）以避免误报
+- 修复 6 个被新规则命中的页面，补齐变量物理含义说明：
+  - `wiki/formalizations/bellman-equation.md`：Q-learning 更新中的 $R$ 标量
+  - `wiki/formalizations/control-lyapunov-function.md`：LQR-CLF 关系中的 $A, B$
+  - `wiki/formalizations/ekf.md`：补全 $A, B, C, Q, R, P, K, I$ 整套矩阵物理含义
+  - `wiki/formalizations/hjb.md`：LQR 特例段补 $A, B, Q, R, T$
+  - `wiki/formalizations/lqr.md`：线性系统模型段补 $A, B, x, u$
+  - `wiki/formalizations/tsid-formulation.md`：浮动基座动力学段补执行选择矩阵 $S$
+- 验证：`make lint` 0 errors（所有检查通过）；`python3 scripts/eval_search_quality.py` 通过率 **37/37 (100%)**
+- V21 checklist 对应条目已勾选

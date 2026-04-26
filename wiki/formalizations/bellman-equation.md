@@ -90,7 +90,7 @@ $$V_{k+1}(s) = \max_a \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma V_k(s') \rig
 
 $$Q(s,a) \leftarrow Q(s,a) + \alpha \left[ R + \gamma \max_{a'} Q(s',a') - Q(s,a) \right]$$
 
-这就是 TD(0) 的 off-policy 版本，Q-learning 的核心更新。
+其中 $R$ 是当前转移采样到的**即时奖励标量**（即 $R(s,a,s')$ 的一次实现），$\alpha$ 是学习率。这就是 TD(0) 的 off-policy 版本，Q-learning 的核心更新。
 
 ### 4. TD Learning（时序差分）
 

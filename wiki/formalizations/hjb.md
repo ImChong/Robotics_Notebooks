@@ -69,6 +69,8 @@ $$u^*(x,t) = \arg\min_u \left[ \ell(x,u) + \nabla_x V^*(x,t)^\top f(x,u) \right]
 
 线性系统 $\dot{x} = Ax + Bu$，二次代价 $\ell(x,u) = x^\top Q x + u^\top R u$：
 
+其中 $A$ 是状态矩阵（无控漂移），$B$ 是控制输入矩阵（执行器到状态的映射），$Q \succeq 0$ 是状态偏差权重，$R \succ 0$ 是控制能耗权重，$T$ 是有限时域的终止时刻。
+
 HJB 的解是二次型：$V^*(x) = x^\top P x$
 
 其中 $P$ 满足**代数 Riccati 方程（ARE）**：

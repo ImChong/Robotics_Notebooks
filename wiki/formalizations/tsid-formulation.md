@@ -27,6 +27,7 @@ $$ \mathcal{X} = [\ddot{q}^T, \mathbf{f}_{ext}^T, \tau^T]^T $$
 ### 2. 硬约束 (Hard Constraints)
 - **浮动基座动力学**：
   $$ M(q)\ddot{q} + C(q, \dot{q})\dot{q} + g(q) = S^T \tau + \sum J_i^T \mathbf{f}_{ext, i} $$
+  其中 $M(q)$ 是惯性矩阵，$C(q,\dot q)$ 表示科氏/离心项，$g(q)$ 是重力项，$J_i$ 是第 $i$ 个接触点的雅可比；$S$ 是**执行选择矩阵 (selection / actuation matrix)**，把可控的关节力矩 $\tau$ 投影到完整的 $n$ 维广义坐标上（前 6 维浮动基座对应位置全为 0，因此浮动基不可直接驱动）。
 - **接触一致性**（支撑脚不滑移）：
   $$ J_i \ddot{q} + \dot{J}_i \dot{q} = 0 $$
 - **摩擦锥约束**：详见 [Friction Cone](./friction-cone.md)。
