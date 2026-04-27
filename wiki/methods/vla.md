@@ -9,6 +9,7 @@ related:
   - ./behavior-cloning.md
   - ./action-chunking.md
   - ./diffusion-policy.md
+  - ./lingbot-map.md
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
 sources:
@@ -110,6 +111,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破
 - [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准
+- [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型
 - [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md)
  — 数据规模与模型性能的关系
 - [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石

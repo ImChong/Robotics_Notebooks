@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-27",
   "node_count": 182,
-  "edge_count": 1012,
+  "edge_count": 1019,
   "community_count": 8,
   "top_hubs": [
     {
@@ -37,7 +37,7 @@
     {
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
-      "degree": 36
+      "degree": 38
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -55,13 +55,7 @@
       "degree": 27
     }
   ],
-  "orphan_nodes": [
-    {
-      "id": "wiki/methods/lingbot-map.md",
-      "label": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
-      "out_degree": 0
-    }
-  ],
+  "orphan_nodes": [],
   "type_distribution": {
     "concept": 40,
     "query": 40,
@@ -75,21 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 118,
-    "Manipulation 社区": 36,
+    "Locomotion 社区": 112,
+    "Manipulation 社区": 39,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Contact-Rich Manipulation（接触丰富型操作） 社区": 6,
+    "Control Barrier Function（控制屏障函数） 社区": 6,
+    "Contact-Rich Manipulation（接触丰富型操作） 社区": 5,
     "VLA 真机部署指南：延迟、异步与加速 社区": 3,
-    "Variational Objective (变分目标函数) 社区": 2,
-    "LingBot-Map (Streaming 3D Reconstruction Foundation Model) 社区": 1
+    "Hindsight Experience Replay (HER) 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
-      "Variational Objective (变分目标函数) 社区",
-      "LingBot-Map (Streaming 3D Reconstruction Foundation Model) 社区"
+      "Hindsight Experience Replay (HER) 社区"
     ],
-    "largest_community_ratio": 0.648,
+    "largest_community_ratio": 0.615,
     "community_quality_warning": true
   }
 }
