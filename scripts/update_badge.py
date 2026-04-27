@@ -9,6 +9,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 README = REPO_ROOT / "README.md"
 GRAPH_STATS = REPO_ROOT / "exports" / "graph-stats.json"
+HOME_STATS = REPO_ROOT / "exports" / "home-stats.json"
 CHECKLIST_DIR = REPO_ROOT / "docs" / "checklists"
 
 
@@ -50,6 +51,17 @@ graph_badge = (
     f"(https://imchong.github.io/Robotics_Notebooks/graph.html)"
 )
 
+notes_count = 0
+if HOME_STATS.exists():
+    try:
+        notes_count = int((json.loads(HOME_STATS.read_text(encoding="utf-8")).get("paper_notes") or {}).get("count", 0))
+    except Exception:
+        notes_count = 0
+notes_badge = (
+    f"[![Paper Notes](https://img.shields.io/badge/paper_notes-{notes_count}-blueviolet)]"
+    f"(https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/)"
+)
+
 content = README.read_text(encoding="utf-8")
 content = re.sub(
     r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)",
@@ -61,5 +73,17 @@ content = re.sub(
     graph_badge,
     content,
 )
+if re.search(r"\[!\[Paper Notes\]\([^)]+\)\]\([^)]+\)", content):
+    content = re.sub(
+        r"\[!\[Paper Notes\]\([^)]+\)\]\([^)]+\)",
+        notes_badge,
+        content,
+    )
+else:
+    content = re.sub(
+        r"(\[!\[Knowledge Graph\]\([^)]+\)\]\([^)]+\)\n)",
+        r"\1" + notes_badge + "\n",
+        content
+    )
 README.write_text(content, encoding="utf-8")
-print(f"Badges updated: graph={node_count}节点/{edge_count}边, coverage={pct}% ({color})")
+print(f"Badges updated: graph={node_count}节点/{edge_count}边, coverage={pct}% ({color}), paper_notes={notes_count}")

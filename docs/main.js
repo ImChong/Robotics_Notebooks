@@ -72,16 +72,21 @@
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
     var heroCoverageCount = document.getElementById('heroCoverageCount');
+    var heroNotesCount = document.getElementById('heroNotesCount');
     var wikiSearchSubtitle = document.getElementById('wikiSearchSubtitle');
-    if (!heroNodeCount && !heroEdgeCount && !heroCoverageCount && !wikiSearchSubtitle) return;
+    if (!heroNodeCount && !heroEdgeCount && !heroCoverageCount && !heroNotesCount && !wikiSearchSubtitle) return;
 
     var nodeCount = graphStats && typeof graphStats.node_count === 'number' ? graphStats.node_count : null;
     var edgeCount = graphStats && typeof graphStats.edge_count === 'number' ? graphStats.edge_count : null;
     var coverageCount = String(coverageText || '').trim();
+    var notesCount = graphStats && graphStats.paper_notes && typeof graphStats.paper_notes.count === 'number'
+      ? graphStats.paper_notes.count
+      : null;
 
     if (heroNodeCount && nodeCount !== null) heroNodeCount.textContent = String(nodeCount);
     if (heroEdgeCount && edgeCount !== null) heroEdgeCount.textContent = String(edgeCount);
     if (heroCoverageCount && coverageCount) heroCoverageCount.textContent = coverageCount;
+    if (heroNotesCount && notesCount !== null) heroNotesCount.textContent = String(notesCount);
     if (wikiSearchSubtitle && nodeCount !== null) {
       wikiSearchSubtitle.textContent = '在 ' + nodeCount + ' 个知识节点中快速定位概念、方法或任务。↑↓ 键导航，Enter 打开，Esc 清空。';
     }

@@ -6,5 +6,10 @@
     "covered": 179,
     "total": 179,
     "percent": 100
+  },
+  "paper_notes": {
+    "count": 49,
+    "source": "fallback: previous home-stats.json",
+    "definition": "Humanoid_Paper_Notebooks sitemap 中 /papers/ 下 .html 页面唯一计数"
   }
 }

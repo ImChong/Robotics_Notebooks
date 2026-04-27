@@ -8,6 +8,7 @@
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)
 [![License](https://img.shields.io/github/license/ImChong/Robotics_Notebooks)](./LICENSE)
 [![Knowledge Graph](https://img.shields.io/badge/知识图谱-181节点_1012边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
+[![Paper Notes](https://img.shields.io/badge/paper_notes-49-blueviolet)](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/)
 [![Sources Coverage](https://img.shields.io/badge/sources覆盖率-100%25-green)](docs/checklists/tech-stack-next-phase-checklist-v21.md)
 
 

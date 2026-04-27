@@ -65,6 +65,7 @@ def main():
     cov_done = stats["coverage"]["covered"]
     cov_total = stats["coverage"]["total"]
     cov_pct = stats["coverage"]["percent"]
+    notes_count = int((stats.get("paper_notes") or {}).get("count", 0))
 
     # 4. 更新 README.md
     if README_MD.exists():
@@ -78,6 +79,17 @@ def main():
         cov_color = "green" if cov_pct >= 90 else "yellow"
         cov_badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{cov_pct}%25-{cov_color})]"
         content = re.sub(r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)", f"{cov_badge}(docs/checklists/tech-stack-next-phase-checklist-v21.md)", content)
+
+        notes_badge = f"[![Paper Notes](https://img.shields.io/badge/paper_notes-{notes_count}-blueviolet)]"
+        notes_badge_link = f"{notes_badge}(https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/)"
+        if re.search(r"\[!\[Paper Notes\]\([^)]+\)\]\([^)]+\)", content):
+            content = re.sub(r"\[!\[Paper Notes\]\([^)]+\)\]\([^)]+\)", notes_badge_link, content)
+        else:
+            content = re.sub(
+                r"(\[!\[Knowledge Graph\]\([^)]+\)\]\([^)]+\)\n)",
+                r"\1" + notes_badge_link + "\n",
+                content
+            )
 
         # 更新时间戳注释
         today_str = date.today().isoformat()
@@ -100,7 +112,8 @@ def main():
             f'<div class="hero-stat-row-mini" aria-label="知识库当前规模">\n'
             f'            <span id="heroNodeCount">{nodes}</span> Nodes · \n'
             f'            <span id="heroEdgeCount">{edges}</span> Links · \n'
-            f'            <span id="heroCoverageCount">{cov_done}/{cov_total}</span> Sources\n'
+            f'            <span id="heroCoverageCount">{cov_done}/{cov_total}</span> Sources ·\n'
+            f'            <span id="heroNotesCount">{notes_count}</span> Paper Notes\n'
             f'          </div>'
         )
 
@@ -114,7 +127,10 @@ def main():
         INDEX_HTML.write_text(content, encoding="utf-8")
         print("✅ docs/index.html 更新完成")
 
-    print(f"\n✨ 所有统计数据同步完成！当前状态: {nodes} Nodes, {edges} Edges, Coverage {cov_done}/{cov_total}")
+    print(
+        f"\n✨ 所有统计数据同步完成！当前状态: {nodes} Nodes, {edges} Edges, "
+        f"Coverage {cov_done}/{cov_total}, Paper Notes {notes_count}"
+    )
 
 
 if __name__ == "__main__":
