@@ -6,6 +6,7 @@ updated: 2026-04-21
 related:
   - ../concepts/tactile-sensing.md
   - ../concepts/contact-rich-manipulation.md
+  - ../concepts/visuo-tactile-fusion.md
   - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/contact_dynamics.md
@@ -55,6 +56,7 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 ## 关联页面
 - [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)
 - [Contact-Rich Manipulation (接触丰富操作)](../concepts/contact-rich-manipulation.md)
+- [视触觉融合 (Visuo-Tactile Fusion)](../concepts/visuo-tactile-fusion.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
 

@@ -6,6 +6,7 @@ updated: 2026-04-21
 related:
   - ../formalizations/cross-modal-attention.md
   - ../concepts/tactile-sensing.md
+  - ../concepts/visuo-tactile-fusion.md
   - ../methods/vla.md
   - ./dexterous-data-collection-guide.md
 sources:
@@ -51,6 +52,7 @@ summary: "多模态融合技巧：探讨了在具身智能模型中如何高效�
 ## 关联页面
 - [Cross-modal Attention 形式化](../formalizations/cross-modal-attention.md)
 - [触觉感知 (Tactile Sensing)](../concepts/tactile-sensing.md)
+- [视触觉融合 (Visuo-Tactile Fusion)](../concepts/visuo-tactile-fusion.md)
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [灵巧操作数据采集指南](./dexterous-data-collection-guide.md)
 

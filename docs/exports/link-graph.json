@@ -103,7 +103,7 @@
       "label": "Armature Modeling（电枢惯量建模）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -138,7 +138,7 @@
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
@@ -208,7 +208,7 @@
       "label": "Force Control Basics (力控制基础)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
@@ -222,7 +222,7 @@
       "label": "Gait Generation（步态生成）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/hqp.md",
@@ -236,14 +236,14 @@
       "label": "Hybrid Force-Position Control（力位混合控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/impedance-control.md",
       "label": "Impedance Control（阻抗控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/latent-imagination.md",
@@ -370,6 +370,13 @@
       "type": "concept",
       "health_score": 3,
       "community": "community-0"
+    },
+    {
+      "id": "wiki/concepts/visuo-tactile-fusion.md",
+      "label": "视触觉融合（Visuo-Tactile Fusion）",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -572,14 +579,14 @@
       "label": "Bellman 方程",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/cmdp.md",
       "label": "Constrained MDP (CMDP)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/contact-complementarity.md",
@@ -593,7 +600,7 @@
       "label": "接触力旋量锥 (Contact Wrench Cone)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-2"
     },
     {
       "id": "wiki/formalizations/control-lyapunov-function.md",
@@ -698,7 +705,7 @@
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-5"
     },
     {
       "id": "wiki/formalizations/vla-tokenization.md",
@@ -726,7 +733,7 @@
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/amp-reward.md",
@@ -796,7 +803,7 @@
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
@@ -887,7 +894,7 @@
       "label": "Multi-Agent Reinforcement Learning (MARL)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-7"
     },
     {
       "id": "wiki/methods/model-based-rl.md",
@@ -915,7 +922,7 @@
       "label": "Model Predictive Path Integral (MPPI)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/methods/paid-framework.md",
@@ -943,7 +950,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/star-vla.md",
@@ -1013,7 +1020,7 @@
       "label": "Query：接触丰富操作实践指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-2"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
@@ -1342,7 +1349,7 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1772,6 +1779,10 @@
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
       "target": "wiki/concepts/hybrid-force-position-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/visuo-tactile-fusion.md"
     },
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
@@ -2407,6 +2418,10 @@
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/concepts/visuo-tactile-fusion.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
       "target": "wiki/tasks/manipulation.md"
     },
     {
@@ -2488,6 +2503,46 @@
     {
       "source": "wiki/concepts/video-as-simulation.md",
       "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/queries/multimodal-fusion-tricks.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/concepts/sensor-fusion.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/queries/dexterous-data-collection-guide.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/concepts/tactile-sensing.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/formalizations/contact-wrench-cone.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/queries/tactile-feedback-in-rl.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/concepts/whole-body-control.md",
@@ -4855,6 +4910,10 @@
     },
     {
       "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/concepts/visuo-tactile-fusion.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
       "target": "wiki/methods/vla.md"
     },
     {
@@ -5160,6 +5219,10 @@
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
       "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/concepts/visuo-tactile-fusion.md"
     },
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
@@ -5658,19 +5721,19 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 77,
+      "size": 75,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 55,
+      "size": 52,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 38,
+      "size": 46,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
@@ -5687,15 +5750,21 @@
     },
     {
       "id": "community-5",
-      "label": "Contact-Rich Manipulation（接触丰富型操作） 社区",
-      "size": 5,
-      "hub_id": "wiki/concepts/contact-rich-manipulation.md"
+      "label": "Variational Objective (变分目标函数) 社区",
+      "size": 2,
+      "hub_id": "wiki/formalizations/variational-objective.md"
     },
     {
       "id": "community-6",
       "label": "人形机器人运动控制 Know-How 社区",
       "size": 2,
       "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
+    },
+    {
+      "id": "community-7",
+      "label": "Multi-Agent Reinforcement Learning (MARL) 社区",
+      "size": 1,
+      "hub_id": "wiki/methods/marl.md"
     }
   ]
 }
