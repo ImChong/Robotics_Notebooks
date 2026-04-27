@@ -99,6 +99,13 @@
       "community": "community-0"
     },
     {
+      "id": "wiki/concepts/armature-modeling.md",
+      "label": "Armature Modeling（电枢惯量建模）",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-1"
+    },
+    {
       "id": "wiki/concepts/capture-point-dcm.md",
       "label": "Capture Point / DCM",
       "type": "concept",
@@ -509,7 +516,7 @@
       "label": "开源人形机器人硬件方案对比",
       "type": "entity",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/pinocchio.md",
@@ -565,14 +572,14 @@
       "label": "Bellman 方程",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/cmdp.md",
       "label": "Constrained MDP (CMDP)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/contact-complementarity.md",
@@ -719,6 +726,27 @@
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
+      "community": "community-1"
+    },
+    {
+      "id": "wiki/methods/amp-reward.md",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
+    },
+    {
+      "id": "wiki/methods/ams.md",
+      "label": "AMS: 物理可行性过滤与混合奖励",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
+    },
+    {
+      "id": "wiki/methods/any2track.md",
+      "label": "Any2Track & RGMT: 增强型自适应与时序建模",
+      "type": "method",
+      "health_score": 3,
       "community": "community-0"
     },
     {
@@ -741,6 +769,13 @@
       "type": "method",
       "health_score": 3,
       "community": "community-2"
+    },
+    {
+      "id": "wiki/methods/beyondmimic.md",
+      "label": "BeyondMimic",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/claw.md",
@@ -797,6 +832,13 @@
       "type": "method",
       "health_score": 3,
       "community": "community-2"
+    },
+    {
+      "id": "wiki/methods/haic.md",
+      "label": "HAIC: 基于世界模型的教师-学生训练",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/her.md",
@@ -862,6 +904,13 @@
       "community": "community-1"
     },
     {
+      "id": "wiki/methods/motion-retargeting-gmr.md",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
+    },
+    {
       "id": "wiki/methods/mppi.md",
       "label": "Model Predictive Path Integral (MPPI)",
       "type": "method",
@@ -894,7 +943,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/star-vla.md",
@@ -1293,7 +1342,7 @@
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-0"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -1579,6 +1628,18 @@
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
       "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/concepts/armature-modeling.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/concepts/armature-modeling.md",
+      "target": "wiki/methods/actuator-network.md"
+    },
+    {
+      "source": "wiki/concepts/armature-modeling.md",
+      "target": "wiki/concepts/system-identification.md"
     },
     {
       "source": "wiki/concepts/capture-point-dcm.md",
@@ -2050,6 +2111,10 @@
     },
     {
       "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/methods/motion-retargeting-gmr.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
       "target": "wiki/methods/imitation-learning.md"
     },
     {
@@ -2167,6 +2232,18 @@
     {
       "source": "wiki/concepts/reward-design.md",
       "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/amp-reward.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/ams.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/beyondmimic.md"
     },
     {
       "source": "wiki/concepts/reward-design.md",
@@ -3409,6 +3486,42 @@
       "target": "wiki/concepts/system-identification.md"
     },
     {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/ams.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/methods/ams.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/ams.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/any2track.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/methods/any2track.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/any2track.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
       "source": "wiki/methods/auto-labeling-pipelines.md",
       "target": "wiki/methods/action-chunking.md"
     },
@@ -3467,6 +3580,18 @@
     {
       "source": "wiki/methods/behavior-cloning.md",
       "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/beyondmimic.md",
+      "target": "wiki/concepts/armature-modeling.md"
+    },
+    {
+      "source": "wiki/methods/beyondmimic.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/beyondmimic.md",
+      "target": "wiki/concepts/curriculum-learning.md"
     },
     {
       "source": "wiki/methods/claw.md",
@@ -3593,6 +3718,18 @@
       "target": "wiki/entities/nvidia-omniverse.md"
     },
     {
+      "source": "wiki/methods/haic.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/methods/haic.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/methods/haic.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/methods/her.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
@@ -3679,6 +3816,26 @@
     {
       "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/concepts/motion-retargeting.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/any2track.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/amp-reward.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/ams.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/haic.md"
     },
     {
       "source": "wiki/methods/in-hand-reorientation.md",
@@ -3815,6 +3972,14 @@
     {
       "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/comparisons/mpc-vs-rl.md"
+    },
+    {
+      "source": "wiki/methods/motion-retargeting-gmr.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/motion-retargeting-gmr.md",
+      "target": "wiki/concepts/motion-retargeting.md"
     },
     {
       "source": "wiki/methods/mppi.md",
@@ -5493,19 +5658,19 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 69,
+      "size": 77,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 56,
+      "size": 55,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 39,
+      "size": 38,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
@@ -5517,7 +5682,7 @@
     {
       "id": "community-4",
       "label": "Roboto Origin（开源人形机器人基线） 社区",
-      "size": 6,
+      "size": 7,
       "hub_id": "wiki/entities/roboto-origin.md"
     },
     {
