@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-04-27",
-  "node_count": 183,
-  "edge_count": 1024,
-  "community_count": 6,
+  "node_count": 186,
+  "edge_count": 1046,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 75
+      "degree": 76
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL, 强化学习)",
-      "degree": 68
+      "degree": 71
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 57
+      "degree": 58
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -32,7 +32,7 @@
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "degree": 41
+      "degree": 43
     },
     {
       "id": "wiki/methods/vla.md",
@@ -59,20 +59,21 @@
   "type_distribution": {
     "concept": 40,
     "query": 40,
-    "method": 31,
+    "method": 33,
     "entity": 25,
     "formalization": 22,
     "comparison": 14,
-    "task": 7,
+    "task": 8,
     "overview": 2,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 120,
-    "Manipulation 社区": 40,
+    "Locomotion 社区": 69,
+    "Whole-Body Control (WBC) 社区": 56,
+    "Manipulation 社区": 39,
     "实时运控中间件配置指南 社区": 9,
-    "Roboto Origin（开源人形机器人基线） 社区": 7,
+    "Roboto Origin（开源人形机器人基线） 社区": 6,
     "Contact-Rich Manipulation（接触丰富型操作） 社区": 5,
     "人形机器人运动控制 Know-How 社区": 2
   },
@@ -80,7 +81,7 @@
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.656,
-    "community_quality_warning": true
+    "largest_community_ratio": 0.371,
+    "community_quality_warning": false
   }
 }
