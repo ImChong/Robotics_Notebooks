@@ -97,6 +97,25 @@ $$R'(s, a, s') = R(s, a, s') + \gamma \Phi(s') - \Phi(s)$$
 
 理论保证：只要 $\Phi$ 是状态函数，最优策略不变（Ng et al. 1999）。
 
+## 近期趋势与先进奖励模式 (2024-2026)
+
+随着人形机器人任务复杂度的提升，奖励函数的设计正在从静态加权走向动态自适应与硬件感知：
+
+### 1. 速度自适应平滑惩罚 (OmniTrack)
+在高速奔跑或跳跃时，为了追求跟踪性能，需要放松对动作抖动的惩罚；而在静止或慢速行走时，则需要极高的平滑度以维持平衡。
+- **机制**：根据参考轨迹的关节速度或目标速度，动态缩放（Scale）平滑惩罚项。
+- **作用**：在高动态阶段释放机器人爆发力，在稳态阶段抑制抖动。
+
+### 2. 功率安全正则化 (OmniXtreme)
+传统能耗奖励（如 $\tau^2$）只能限制总功耗，不能预防瞬时硬件过载。
+- **机制**：针对膝关节等高风险执行器，实时检测**负功率**（电机被反拖制动产生的再生功率）。当制动功率超过预设死区（Deadband）时，施加二次惩罚。
+- **作用**：防止高动态落地或剧烈制动时产生的高电压损坏驱动器硬件。
+
+### 3. 接触图模仿奖励 (HumanX)
+不仅模仿关节姿态，还通过“接触图（Contact Graph）”模仿机器人身体各部位与环境的接触关系。
+- **机制**：计算仿真中的接触状态向量与专家数据的绝对误差。
+- **作用**：在搬运、攀爬等接触密集型任务中，强制机器人学习到正确的交互逻辑。
+
 ## 自动化奖励设计方向
 
 ### Adversarial Motion Priors (AMP)
@@ -140,6 +159,9 @@ DR 改变的是环境的物理参数分布；Reward Design 改变的是优化目
 - [Markov Decision Process](../formalizations/mdp.md)
 - [Policy Optimization](../methods/policy-optimization.md)
 - [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）
+- [AMP Reward (HumanX)](../methods/amp-reward.md) — 判别器风格奖励与接触图监督
+- [AMS](../methods/ams.md) — 物理可行性过滤与混合奖励机制
+- [BeyondMimic](../methods/beyondmimic.md) — 统一的任务空间跟踪奖励
 - [Query：Reward Design 实战指南](../queries/reward-design-guide.md)
 
 ## 一句话记忆

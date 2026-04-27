@@ -145,6 +145,7 @@ SORT type ASC
 
 
 
+
 ### Entities（实体页）
 
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
@@ -175,6 +176,7 @@ SORT type ASC
 
 ### Wiki Concepts（概念页）
 
+- [Armature Modeling（电枢惯量建模）](concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
 - [Capture Point / DCM](concepts/capture-point-dcm.md) — Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描 `📅unknown` `[wiki_page]`
 - [Centroidal Dynamics](concepts/centroidal-dynamics.md) — Centroidal Dynamics（质心动力学）**：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。 `📅unknown` `[wiki_page]`
 - [Contact Dynamics](concepts/contact-dynamics.md) — Contact Dynamics（接触动力学）**：研究机器人与地面、物体、墙面等环境发生接触时，接触力、约束和系统运动之间关系的动力学框架。 `📅unknown` `[wiki_page]`
@@ -220,9 +222,13 @@ SORT type ASC
 
 - [Action Chunking（动作块输出）](methods/action-chunking.md) — Action Chunking**：让策略一次预测未来连续若干步动作，而不是每个控制周期只吐一帧动作。它最早在模仿学习和双臂操作场景里被广泛采用，现在也成为 VLA 与低层控制器结合时处理推理延迟 `📅unknown` `[method_page]`
 - [Actuator Network (执行器网络)](methods/actuator-network.md) — 执行器网络 (Actuator Network)** 是一种在机器人仿真中用于模拟物理驱动器（如电控伺服电机、SEA 驱动器）真实物理行为的深度学习模型。它是解决**足式机器人 Sim2Real  `📅unknown` `[method_page]`
+- [AMP & HumanX: 判别器驱动的风格学习](methods/amp-reward.md) — 在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了 `📅unknown` `[method_page]`
+- [AMS: 物理可行性过滤与混合奖励](methods/ams.md) — 在人形机器人动作合成与学习中，很多参考动捕数据（MoCap）由于人体与机器人的动力学差异，直接模仿会导致物理不可行。**AMS** 提供了一套系统化的数据清洗与奖励设计方法。 `📅unknown` `[method_page]`
+- [Any2Track & RGMT: 增强型自适应与时序建模](methods/any2track.md) — 在复杂的人形机器人控制任务（如多步动作模仿或动态越障）中，传统的单帧马尔可夫决策过程 (MDP) 往往不足以捕捉环境的非平稳性（如地面滑移、外力扰动）。**Any2Track** 与 **RGMT `📅unknown` `[method_page]`
 - [Auto-labeling Pipelines (自动化标注流水线)](methods/auto-labeling-pipelines.md) — 自动化标注流水线** 是构建具身基础模型（Foundation Models）的关键基础设施。它解决了具身智能中最昂贵的环节：**让数据具备语义（Semantic Grounding）**。 `📅unknown` `[method_page]`
 - [Behavior Cloning with Transformer](methods/bc-with-transformer.md) — 在模仿学习（IL）中，传统的基于 MLP 或 CNN 的行为克隆往往难以处理**多模态动作**（例如专家有时左绕，有时右绕）和**长时间依赖**。将 **Transformer** 引入 BC 架构， `📅unknown` `[method_page]`
 - [Behavior Cloning（行为克隆）](methods/behavior-cloning.md) — Behavior Cloning, BC**：把专家演示数据当作监督学习数据集，直接学习从观测到动作的映射，是模仿学习最直接的做法。 `📅unknown` `[method_page]`
+- [BeyondMimic](methods/beyondmimic.md) — BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
 - [ContactNet](methods/contact-net.md) — ContactNet** 解决了“在杂乱无章的堆叠物中，手手该按在哪”的问题。它直接输入原始点云，输出稠密的接触成功概率图。 `📅unknown` `[method_page]`
 - [DAgger（Dataset Aggregation）](methods/dagger.md) — DAgger**：一种交互式模仿学习方法，让当前策略先去“自己跑”，再由专家为这些真实访问到的状态打标签，并把新数据持续并入训练集。 `📅unknown` `[method_page]`
@@ -231,6 +237,7 @@ SORT type ASC
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
+- [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
@@ -240,6 +247,7 @@ SORT type ASC
 - [Multi-Agent Reinforcement Learning (MARL)](methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
+- [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`

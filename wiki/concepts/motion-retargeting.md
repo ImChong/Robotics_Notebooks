@@ -64,6 +64,26 @@ subject to: FK(θ) = p_target (末端位置约束)
 
 ---
 
+---
+
+## 重定向不等于控制策略：两层架构模式
+
+在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。
+
+### 1. 运动学重定向层 (Kinematic Layer)
+- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。
+- **作用**：解决姿态、角度、关键点坐标的映射。
+- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。
+
+### 2. 动力学一致化层 (Dynamical Layer)
+- **作用**：在重定向轨迹的基础上，补足物理约束。
+- **实现手段**：
+    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。
+    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。
+    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。
+
+---
+
 ## 关键技术问题
 
 ### 1. 骨架拓扑匹配
@@ -131,3 +151,4 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向
 - [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹
 - [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性
+- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现

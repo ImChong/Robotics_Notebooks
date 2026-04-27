@@ -72,7 +72,11 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 
 代表工作：
 - DeepMimic：BC + RL 改进
-- MimicKit：j提炼 encoder-decoder 框架
+- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座
+- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计
+- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿
+- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作
+- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务
 - ASE：对抗技能嵌入
 - CALM：latent 方向控制
 - CLAW：宇树 G1 的模块化语言-动作数据生成管线
@@ -110,6 +114,11 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹
+- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架
+- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿
+- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿
+- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
+- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
 
 ## 推荐继续阅读
 

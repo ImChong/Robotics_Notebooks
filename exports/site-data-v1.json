@@ -2061,6 +2061,27 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-methods-htwk-gym": {
+        "id": "wiki-methods-htwk-gym",
+        "title": "htwk-gym",
+        "type": "wiki_page",
+        "path": "wiki/methods/htwk-gym.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, isaac-gym, booster-t1, soccer, locomotion]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/booster-robocup-demo.md\n  - ./reinforcement-learning.md\n  - ../entities/isaac-gym-isaac-lab.md\nsources:\n  - ../../sources/repos/htwk_gym.md\nsummary: \"htwk-gym 是由 HTWK Leipzig 开发的人形机器人足球 RL 框架，专注于 Booster T1/K1 平台的参数化步行与踢球技能训练。\"\n---\n\n# htwk-gym\n\n**htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **Booster T1/K1** 平台上经过了广泛的验证。\n\n## 核心组件\n\n### 1. 参数化步行 (Parameterized Walking)\nhtwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制器**。\n- **控制输入**：步频、脚部偏航角、身体姿态参数。\n- **优势**：允许上层决策系统（如 ROS 2 状态机）根据球场局势动态调整行走风格，实现灵巧的变向和截球。\n\n### 2. 足球专项任务环境\n- **`T1/Kicking`**：包含球感知奖励、碰撞惩罚以及目标速度引导，用于训练精准的踢球动作。\n- **`T1/Walking`**：侧重于高速平滑移动。\n\n### 3. 多端导出与部署 (Deployment Pipeline)\n- **PyTorch JIT**：用于仿真评估和高性能 PC 部署。\n- **TFLite 量化**：通过 TensorFlow Lite 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。\n\n## 技术细节\n\n- **基础引擎**：使用 NVIDIA **Isaac Gym** 实现大规模并行训练，可在数分钟内完成基础步态学习。\n- **跨仿真验证**：支持将训练好的模型在 **MuJoCo** 环境中进行独立验证，以减少 Sim-to-Real 的鸿沟。\n- **Streamlit 调试工具**：提供了一个名为 `obs_editor` 的 Web 界面，开发者可以实时拉动滑块调整训练参数或观察策略表现。\n\n## 在项目中的角色\n\nhtwk-gym 作为底层“技能工厂”，为 [Booster RoboCup Demo](../entities/booster-robocup-demo.md) 提供高性能的原子技能（如 `RLVisionKick`）。\n\n## 参考来源\n\n- [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md)\n- HTWK Leipzig RoboCup Team Documentation",
+        "tags": [
+          "method",
+          "humanoid",
+          "locomotion",
+          "rl",
+          "tooling"
+        ],
+        "related": [
+          "entity-booster-robocup-demo",
+          "sources-repos-htwk-gym"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-methods-imitation-learning": {
         "id": "wiki-methods-imitation-learning",
         "title": "Imitation Learning (IL, 模仿学习)",
@@ -2270,6 +2291,27 @@
           "wiki-methods-model-based-rl",
           "wiki-methods-model-predictive-control",
           "wiki-formalizations-variational-objective"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-methods-paid-framework": {
+        "id": "wiki-methods-paid-framework",
+        "title": "PAiD Framework",
+        "type": "wiki_page",
+        "path": "wiki/methods/paid-framework.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/unitree-g1.md\n  - ./reinforcement-learning.md\n  - ./imitation-learning.md\nsources:\n  - ../../sources/repos/humanoid_soccer.md\nsummary: \"PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。\"\n---\n\n# PAiD Framework\n\n**PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核心思想是将复杂的感知-动作任务分解为多个阶段，逐步增加系统复杂度，以解决端到端学习中常见的收敛难与泛化差的问题。\n\n## 三阶段渐进式训练流程\n\nPAiD 的成功关键在于其结构化的训练方案：\n\n### 1. 动作技能习得 (Skill Acquisition)\n- **目标**：获取基础的踢球肢体协调能力。\n- **方法**：使用**模仿学习 (Imitation Learning)**。从人类动作捕捉数据中提取关键特征，通过 RL 训练机器人跟踪这些动作。\n- **输出**：一个能够执行自然摆腿动作的基准策略（Motion Policy）。\n\n### 2. 感知集成 (Perception Integration)\n- **目标**：赋予机器人“看球”并调整动作的能力。\n- **方法**：将视觉感知特征（如球的位置、速度）引入状态空间。训练策略根据感知输入动态调整第一阶段习得的动作。\n- **输出**：一个能够在不同足球初始位姿下完成踢球的感知-动作策略。\n\n### 3. 物理感知 Sim-to-Real (Physics-aware Transfer)\n- **目标**：确保策略在真实物理环境（如 Unitree G1）中的有效性。\n- **方法**：\n    - **领域随机化**：对质量、摩擦力、视觉噪声进行大规模扰动。\n    - **时延模拟**：在仿真中引入控制环路的时延，增强鲁棒性。\n- **输出**：可直接部署到 Unitree G1 上的部署策略。\n\n## 技术特色\n\n- **类人化 (Human-like)**：通过第一阶段的约束，机器人表现出更符合人类生物力学的踢球动作，而非仅仅是简单的肢体碰撞。\n- **RNN 网络架构**：使用循环神经网络处理感知序列，能够更好地利用历史信息应对视觉遮挡或足球滚动。\n- **高泛化性**：支持多种地形（室内地板、室外草坪）以及静止/滚动的足球。\n\n## 应用案例\n\n在 **Unitree G1** 机器人上的实验证明，PAiD 框架能够实现：\n- 高达 90% 以上的稳健踢球成功率。\n- 动态调整踢球方向和力度以射门或传球。\n- 在受到轻微外部扰动时仍能维持平衡并完成动作。\n\n## 参考来源\n\n- [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)\n- *Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework* (Paper)",
+        "tags": [
+          "method",
+          "humanoid",
+          "rl",
+          "il",
+          "tooling",
+          "hardware"
+        ],
+        "related": [
+          "sources-repos-humanoid-soccer"
         ],
         "source_links": [],
         "status": "active"
@@ -2566,6 +2608,34 @@
           "https://arxiv.org/abs/2304.13705",
           "https://tonyzhaozh.github.io/aloha/"
         ],
+        "status": "active"
+      },
+      "wiki-tasks-humanoid-soccer": {
+        "id": "wiki-tasks-humanoid-soccer",
+        "title": "Humanoid Soccer",
+        "type": "wiki_page",
+        "path": "wiki/tasks/humanoid-soccer.md",
+        "summary": "让两队人形机器人在足球场上像人类一样踢球，不摔倒、能进球、懂配合",
+        "content_markdown": "---\ntype: task\ntags: [humanoid, soccer, robocup, rl, perception, kicking]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ./locomotion.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/imitation-learning.md\n  - ../methods/paid-framework.md\n  - ../methods/htwk-gym.md\n  - ../entities/booster-robocup-demo.md\n  - ../entities/unitree-g1.md\nsources:\n  - ../../sources/repos/htwk_gym.md\n  - ../../sources/repos/humanoid_soccer.md\n  - ../../sources/repos/booster-robocup-demo.md\nsummary: \"Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。\"\n---\n\n# Humanoid Soccer\n\n**人形机器人足球**：人形机器人在动态、竞争性环境下的综合表现。作为 RoboCup 的核心项目，它被认为是衡量人形机器人自主能力的重要基准。\n\n## 一句话定义\n\n让两队人形机器人在足球场上像人类一样踢球，不摔倒、能进球、懂配合。\n\n## 核心挑战\n\n### 1. 动态感知与定位\n机器人必须在快速移动中识别高速滚动的足球、对手机器人、场地边线和球门，并实时更新自身位姿。\n\n### 2. 闭环踢球 (Closed-loop Kicking)\n不同于预设轨迹的踢球，竞技环境要求：\n- **实时修正**：在接近球的过程中根据球的微小移动动态调整步态与出脚位置。\n- **力度控制**：根据目标距离与角度调整踢球强度。\n\n### 3. 参数化全向行走 (Omni-directional Walking)\n需要具备在任意时刻改变速度、频率和航向的能力，以便进行防守、截球和过人。\n\n### 4. 复杂环境稳定性\n真实的草地（或人工草坪）往往不平整，且存在碰撞干扰，对 locomotion 的鲁棒性要求极高。\n\n## 主要技术路线\n\n### 强化学习 (RL) 驱动\n通过在大规模并行仿真（如 Isaac Gym/Lab）中训练，直接获取端到端的运动与技能。\n- **HTWK-Gym**：针对 Booster T1/K1 平台的足球任务优化框架。\n- **PAiD (Perception-Action Integrated Decision-making)**：将感知与动作解耦并渐进式融合，实现更稳健的踢球。\n\n### 分层状态机 + 技能库\n将比赛逻辑划分为多个状态（寻球、追球、对齐、踢球），每个状态对应一个底层控制器。\n- 代表项目：[Booster RoboCup Demo](../entities/booster-robocup-demo.md)\n\n## 关键技能 (Skills)\n\n| 技能 | 技术难点 | 典型实现 |\n|------|----------|---------|\n| **寻球 (Search)** | 广域视觉扫描、头部关节协同 | YOLOv8 + 分级搜索策略 |\n| **接近与对齐 (Chase & Align)** | 全向步态、动态 ZMP 调节 | 参数化行走 (htwk-gym) |\n| **踢球 (Kick)** | 单脚支撑平衡、摆腿轨迹规划 | RLVisionKick / PAiD |\n| **跌倒恢复 (Get up)** | 接触力反馈、全身协同规划 | 预设 Keyframe / RL Getup |\n\n## 参考来源\n\n- [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md) — 针对 Booster T1/K1 的足球 RL 框架\n- [TeleHuman/HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md) — 针对 Unitree G1 的渐进式足球学习\n- [Booster Robotics RoboCup Demo](../../wiki/entities/booster-robocup-demo.md) — 完整的足球比赛软件方案\n\n## 关联系统/方法\n\n- [Locomotion](./locomotion.md) — 足球任务的基础\n- [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习\n- [HTWK-Gym](../methods/htwk-gym.md) — 足球专项 RL 训练环境\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)",
+        "tags": [
+          "task",
+          "humanoid",
+          "locomotion",
+          "control",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "entity-booster-robocup-demo",
+          "sources-repos-htwk-gym",
+          "sources-repos-humanoid-soccer",
+          "wiki-tasks-locomotion",
+          "wiki-methods-paid-framework",
+          "wiki-methods-htwk-gym",
+          "wiki-methods-reinforcement-learning",
+          "wiki-methods-imitation-learning"
+        ],
+        "source_links": [],
         "status": "active"
       },
       "wiki-tasks-loco-manipulation": {
@@ -4897,7 +4967,7 @@
         "type": "entity_page",
         "path": "wiki/entities/booster-robocup-demo.md",
         "summary": "type: entity。",
-        "content_markdown": "---\ntype: entity\ntags: [humanoid, robocup, ros2, booster-robotics, perception, rl]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ./robot-lab.md\n  - ../concepts/ros2-basics.md\n  - ../methods/auto-labeling-pipelines.md\nsources:\n  - ../../sources/repos/booster-robocup-demo.md\nsummary: \"Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。\"\n---\n\n# Booster Robotics RoboCup Demo\n\n**Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项目，旨在为其人形机器人（尤其是 **Booster K1**）提供参加 RoboCup 足球比赛的完整自主软件方案。\n\n## 系统架构\n\n该系统基于 **ROS 2 Humble** 构建，采用了典型的感知-决策-执行分层架构：\n\n### 1. 感知层 (`vision`)\n- **目标检测**: 使用 **YOLOv8** 模型实时识别足球、机器人对手/队友及场地边线。\n- **坐标变换**: 将 2D 图像坐标通过相机外参及地面约束转换为机器人坐标系下的 3D 位姿。\n- **推理优化**: 在真机端（NVIDIA Orin）使用 **TensorRT** 加速，仿真端支持 ONNX Runtime。\n\n### 2. 决策层 (`brain`)\n- **逻辑控制**: 采用分层状态机，管理机器人的比赛状态（Search, Chase, Align, Kick）。\n- **通信对接**: 集成了 RoboCup 官方的 GameController 协议，监听裁判机的比赛指令（如 Start, Ready, Set, Finish）。\n- **踢球控制**: 包含基础踢球逻辑和高级的 **`RLVisionKick`**（基于强化学习的视觉引导踢球），后者能够根据实时视觉反馈动态调整步态，实现更精准的击球。\n\n### 3. 通信层 (`game_controller`)\n- 负责将裁判机的网络广播包转换为 ROS 2 话题，实现比赛状态的自动化流转。\n\n## 硬件与软件需求\n\n- **硬件**: \n    - 官方支持：Booster K1 (固件 v1.5.2+), Booster T1。\n    - 计算平台：支持 NVIDIA Jetpack 6.2。\n- **软件**: \n    - 操作系统：Ubuntu 22.04 + ROS 2 Humble。\n    - 核心依赖：Booster Robotics SDK。\n\n## 技术特色：RLVisionKick\n\n该框架的一个亮点是集成了强化学习（RL）踢球模块。相比传统的基于预设轨迹的踢球（Keyframe-based），RL 踢球能够：\n1. **闭环调节**: 在接近足球的过程中，根据视觉偏差实时修正脚部位置。\n2. **高成功率**: 在不平整草地或足球微小移动时表现出更好的鲁棒性。\n\n## 开发与仿真\n\n该项目支持在 **Booster Studio** 仿真器中运行，允许开发者在没有真机的情况下：\n- 验证视觉算法的有效性。\n- 调试状态机逻辑与协作策略。\n- 模拟不同的比赛地形与光照条件。\n\n## 关联页面\n\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md) — 了解 Booster T1 在仿真环境中的适配。\n- [ROS 2 基础](../concepts/ros2-basics.md) — 该项目的通信底座。\n- [自动化标注流水线](../methods/auto-labeling-pipelines.md) — 针对比赛环境定制 YOLO 模型的关键。\n\n## 参考来源\n\n- [BoosterRobotics/robocup_demo 源码仓库](../../sources/repos/booster-robocup-demo.md)\n- Booster Robotics 官方文档",
+        "content_markdown": "---\ntype: entity\ntags: [humanoid, robocup, ros2, booster-robotics, perception, rl]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ./robot-lab.md\n  - ../concepts/ros2-basics.md\n  - ../methods/auto-labeling-pipelines.md\nsources:\n  - ../../sources/repos/booster-robocup-demo.md\nsummary: \"Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。\"\n---\n\n# Booster Robotics RoboCup Demo\n\n**Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项目，旨在为其人形机器人（尤其是 **Booster K1**）提供参加 RoboCup 足球比赛的完整自主软件方案。\n\n## 系统架构\n\n该系统基于 **ROS 2 Humble** 构建，采用了典型的感知-决策-执行分层架构：\n\n### 1. 感知层 (`vision`)\n- **目标检测**: 使用 **YOLOv8** 模型实时识别足球、机器人对手/队友及场地边线。\n- **坐标变换**: 将 2D 图像坐标通过相机外参及地面约束转换为机器人坐标系下的 3D 位姿。\n- **推理优化**: 在真机端（NVIDIA Orin）使用 **TensorRT** 加速，仿真端支持 ONNX Runtime。\n\n### 2. 决策层 (`brain`)\n- **逻辑控制**: 采用分层状态机，管理机器人的比赛状态（Search, Chase, Align, Kick）。\n- **通信对接**: 集成了 RoboCup 官方的 GameController 协议，监听裁判机的比赛指令（如 Start, Ready, Set, Finish）。\n- **踢球控制**: 包含基础踢球逻辑和高级的 **`RLVisionKick`**（基于强化学习的视觉引导踢球），后者能够根据实时视觉反馈动态调整步态，实现更精准的击球。这些强化学习策略通常使用 [htwk-gym](../methods/htwk-gym.md) 框架训练而成。\n\n### 3. 通信层 (`game_controller`)\n\n- 负责将裁判机的网络广播包转换为 ROS 2 话题，实现比赛状态的自动化流转。\n\n## 硬件与软件需求\n\n- **硬件**: \n    - 官方支持：Booster K1 (固件 v1.5.2+), Booster T1。\n    - 计算平台：支持 NVIDIA Jetpack 6.2。\n- **软件**: \n    - 操作系统：Ubuntu 22.04 + ROS 2 Humble。\n    - 核心依赖：Booster Robotics SDK。\n\n## 技术特色：RLVisionKick\n\n该框架的一个亮点是集成了强化学习（RL）踢球模块。相比传统的基于预设轨迹的踢球（Keyframe-based），RL 踢球能够：\n1. **闭环调节**: 在接近足球的过程中，根据视觉偏差实时修正脚部位置。\n2. **高成功率**: 在不平整草地或足球微小移动时表现出更好的鲁棒性。\n\n## 开发与仿真\n\n该项目支持在 **Booster Studio** 仿真器中运行，允许开发者在没有真机的情况下：\n- 验证视觉算法的有效性。\n- 调试状态机逻辑与协作策略。\n- 模拟不同的比赛地形与光照条件。\n\n## 关联页面\n\n- [htwk-gym (足球 RL 训练框架)](../methods/htwk-gym.md) — 为该项目提供底层技能支持。\n- [Humanoid Soccer (足球任务)](../tasks/humanoid-soccer.md) — 了解综合任务背景。\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md) — 了解 Booster T1 在仿真环境中的适配。\n- [ROS 2 基础](../concepts/ros2-basics.md) — 该项目的通信底座。\n- [自动化标注流水线](../methods/auto-labeling-pipelines.md) — 针对比赛环境定制 YOLO 模型的关键。\n\n## 参考来源\n\n- [BoosterRobotics/robocup_demo 源码仓库](../../sources/repos/booster-robocup-demo.md)\n- Booster Robotics 官方文档",
         "tags": [
           "entities",
           "entity",
@@ -4907,6 +4977,8 @@
           "tooling"
         ],
         "related": [
+          "wiki-methods-htwk-gym",
+          "wiki-tasks-humanoid-soccer",
           "entity-robot-lab",
           "wiki-concepts-ros2-basics",
           "wiki-methods-auto-labeling-pipelines",
@@ -5328,7 +5400,7 @@
         "type": "entity_page",
         "path": "wiki/entities/unitree-g1.md",
         "summary": "type: entity。",
-        "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md)、[robot_lab](../entities/robot-lab.md) 和 `legged_gym`，研究者可以快速在仿真中训练策略并部署。\n5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- Unitree G1 官方规格书。",
+        "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md)、[robot_lab](../entities/robot-lab.md) 和 `legged_gym`，研究者可以快速在仿真中训练策略并部署。\n5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。\n6. **足球技能研究**：作为 [PAiD](../methods/paid-framework.md) 框架的主要实验平台，证明了其在执行类人化踢球动作方面的卓越物理特性。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [PAiD Framework (足球技能学习)](../methods/paid-framework.md)\n- [Humanoid Soccer (足球任务)](../tasks/humanoid-soccer.md)\n- [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- Unitree G1 官方规格书。",
         "tags": [
           "entities",
           "entity",
@@ -5341,6 +5413,8 @@
           "entity-humanoid-robot",
           "entity-unitree",
           "entity-robot-lab",
+          "wiki-methods-paid-framework",
+          "wiki-tasks-humanoid-soccer",
           "wiki-methods-claw",
           "wiki-roadmaps-humanoid-control-roadmap",
           "wiki-concepts-terrain-adaptation",
