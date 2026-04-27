@@ -144,6 +144,7 @@ SORT type ASC
 
 
 
+
 ### Entities（实体页）
 
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
@@ -153,6 +154,7 @@ SORT type ASC
 - [Atom01 Firmware](entities/atom01-firmware.md) — atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。 `📅unknown` `[entity_page]`
 - [Atom01 Hardware](entities/atom01-hardware.md) — Atom01_hardware** 是 Roboparty Atom01 机器人的硬件主仓库，负责承载机械结构、电子设计与物料清单等“实体可复现”资产。 `📅unknown` `[entity_page]`
 - [Atom01 Train](entities/atom01-train.md) — atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。 `📅unknown` `[entity_page]`
+- [Booster Robotics RoboCup Demo](entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
@@ -230,6 +232,7 @@ SORT type ASC
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
+- [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [In-hand Reorientation (手内重定向)](methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
 - [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](methods/lingbot-map.md) — LingBot-Map** 是一种新型的 3D 基础模型，旨在解决从连续视频流中进行高效、鲁棒的**流式 3D 重建**问题。 `📅unknown` `[method_page]`
@@ -238,6 +241,7 @@ SORT type ASC
 - [Model-Based RL（基于模型的强化学习）](methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
+- [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
@@ -252,6 +256,7 @@ SORT type ASC
 
 - [Balance Recovery（平衡恢复）](tasks/balance-recovery.md) — 平衡恢复**（Balance Recovery / Push Recovery）：机器人在受到外部扰动（推力、地形突变、碰撞等）后，从失衡状态恢复到稳定姿态并继续任务的能力。 `📅unknown` `[task_page]`
 - [Bimanual Manipulation（双臂协调操作）](tasks/bimanual-manipulation.md) — 双臂协调操作（Bimanual Manipulation）**：同时使用两只手臂协同完成一个任务，两臂之间存在物理或时序上的依赖关系——典型任务包括双手递接、拧瓶盖、折叠衣服、组装零件。单臂独立控 `📅unknown` `[task_page]`
+- [Humanoid Soccer](tasks/humanoid-soccer.md) — 人形机器人足球**：人形机器人在动态、竞争性环境下的综合表现。作为 RoboCup 的核心项目，它被认为是衡量人形机器人自主能力的重要基准。 `📅unknown` `[task_page]`
 - [Loco-Manipulation](tasks/loco-manipulation.md) — 移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。 `📅unknown` `[task_page]`
 - [Locomotion](tasks/locomotion.md) — 运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。 `📅unknown` `[task_page]`
 - [Manipulation](tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
