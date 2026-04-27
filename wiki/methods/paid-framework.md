@@ -38,6 +38,14 @@ PAiD 的成功关键在于其结构化的训练方案：
     - **时延模拟**：在仿真中引入控制环路的时延，增强鲁棒性。
 - **输出**：可直接部署到 Unitree G1 上的部署策略。
 
+## 主要技术路线
+
+| 阶段 | 核心方法 | 关键技术 |
+|------|---------|---------|
+| **1. 动作习得** | 模仿学习 (IL) | 基于 MoCap 数据的 [Behavior Cloning](../formalizations/behavior-cloning-loss.md) |
+| **2. 感知集成** | 强化学习 (RL) | 紧耦合视觉特征的 PPO 算法 |
+| **3. 真机迁移** | Sim-to-Real | [领域随机化](../concepts/domain-randomization.md) + 时延反馈补偿 |
+
 ## 技术特色
 
 - **类人化 (Human-like)**：通过第一阶段的约束，机器人表现出更符合人类生物力学的踢球动作，而非仅仅是简单的肢体碰撞。
@@ -55,3 +63,12 @@ PAiD 的成功关键在于其结构化的训练方案：
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)
 - *Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework* (Paper)
+
+## 关联页面
+
+- [Humanoid Soccer](../tasks/humanoid-soccer.md)
+- [Imitation Learning](./imitation-learning.md)
+- [Reinforcement Learning](./reinforcement-learning.md)
+- [Domain Randomization](../concepts/domain-randomization.md)
+- [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
+- [Unitree G1](../entities/unitree-g1.md)

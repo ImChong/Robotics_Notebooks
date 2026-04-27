@@ -32,6 +32,15 @@ htwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制
 - **PyTorch JIT**：用于仿真评估和高性能 PC 部署。
 - **TFLite 量化**：通过 TensorFlow Lite 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。
 
+## 主要技术路线
+
+| 模块 | 实现方案 | 优势 |
+|------|---------|------|
+| **运动控制** | 参数化步态策略 (Parameterized Gait) | 允许上层逻辑动态调节速度与步频 |
+| **训练环境** | Isaac Gym 并行仿真 | 极高的样本采集效率，缩短训练时间 |
+| **Sim-to-Real** | 领域随机化 + 跨仿真验证 (MuJoCo) | 提高策略在真实不平整草地上的鲁棒性 |
+| **部署优化** | TFLite 量化导出 | 适配机器人端侧 ARM/Orin 算力平台 |
+
 ## 技术细节
 
 - **基础引擎**：使用 NVIDIA **Isaac Gym** 实现大规模并行训练，可在数分钟内完成基础步态学习。
@@ -46,3 +55,13 @@ htwk-gym 作为底层“技能工厂”，为 [Booster RoboCup Demo](../entities
 
 - [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md)
 - HTWK Leipzig RoboCup Team Documentation
+
+## 关联页面
+
+- [Humanoid Soccer](../tasks/humanoid-soccer.md)
+- [Reinforcement Learning](./reinforcement-learning.md)
+- [Sim2Real](../concepts/sim2real.md)
+- [Domain Randomization](../concepts/domain-randomization.md)
+- [Booster Robotics RoboCup Demo](../entities/booster-robocup-demo.md)
+- [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md)
+
