@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-27",
-  "node_count": 182,
-  "edge_count": 1019,
-  "community_count": 8,
+  "node_count": 183,
+  "edge_count": 1024,
+  "community_count": 6,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -60,7 +60,7 @@
     "concept": 40,
     "query": 40,
     "method": 31,
-    "entity": 24,
+    "entity": 25,
     "formalization": 22,
     "comparison": 14,
     "task": 7,
@@ -69,20 +69,18 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 112,
-    "Manipulation 社区": 39,
+    "Locomotion 社区": 120,
+    "Manipulation 社区": 40,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Control Barrier Function（控制屏障函数） 社区": 6,
     "Contact-Rich Manipulation（接触丰富型操作） 社区": 5,
-    "VLA 真机部署指南：延迟、异步与加速 社区": 3,
-    "Hindsight Experience Replay (HER) 社区": 1
+    "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "Hindsight Experience Replay (HER) 社区"
+      "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.615,
+    "largest_community_ratio": 0.656,
     "community_quality_warning": true
   }
 }

@@ -457,3 +457,5 @@
 - V21 checklist P0 全部完成，进入 P1 触觉与力觉闭环专题阶段。
 
 ## [2026-04-27] ingest | sources/repos/lingbot-map.md — 接入 LingBot-Map 流式 3D 重建基础模型方法页
+
+## [2026-04-27] ingest | sources/repos/booster-robocup-demo.md — 接入 Booster Robotics RoboCup 演示框架

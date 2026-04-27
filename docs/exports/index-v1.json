@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 223,
+  "item_count": 224,
   "items": [
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -27,7 +27,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -94,7 +94,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -218,7 +218,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -487,7 +487,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -638,7 +638,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -669,7 +669,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -792,14 +792,14 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
       "title": "ROS 2 (Robot Operating System 2) 基础",
       "path": "wiki/concepts/ros2-basics.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [middleware, software, ros2, architecture, deployment]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"ROS 2（Robot Operating System 2）是机器人开发的事实标准中间件，基于 DDS 协议实现了高可靠、模块化的分布式通信与丰富的算法生态支持。\"\n---\n\n# ROS 2 (Robot Operating System 2) 基础\n\n**ROS 2** 是全球机器人社区中最广泛使用的开源框架。它并非真正的操作系统，而是一套运行在 Linux 之上的**中间件 (Middleware)**，提供了标准化的通信协议、开发工具和海量的算法库。\n\n## 核心架构：DDS 驱动\n\n相比于 ROS 1，ROS 2 最核心的进化是采用了 **DDS (Data Distribution Service)** 作为底层通信。\n- **去中心化**：不再依赖一个中心化的 Master 节点，单点故障不会导致全系统崩溃。\n- **服务质量 (QoS)**：允许开发者针对每个 Topic 设置实时性要求（如“丢弃旧数据”或“必须送达”）。\n\n## 核心组件\n\n1. **节点 (Nodes)**：执行特定任务的独立进程。\n2. **话题 (Topics)**：基于发布/订阅（Pub/Sub）模式的异步数据流。\n3. **服务 (Services)**：基于请求/响应（Request/Response）模式的同步通信。\n4. **动作 (Actions)**：用于长时运行的任务（如“移动到 B 点”），支持进度反馈和中途取消。\n\n## 在运控中的地位\n\n尽管 ROS 2 在处理 [1000Hz 底层环路](../comparisons/ros2-vs-lcm.md) 时可能存在延迟抖动，但它是**高层感知、路径规划和多传感器标定**的不二之选。\n\n## 关联页面\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n- ROS 2 官方文档 (docs.ros.org).",
+      "content_markdown": "---\ntype: concept\ntags: [middleware, software, ros2, architecture, deployment]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"ROS 2（Robot Operating System 2）是机器人开发的事实标准中间件，基于 DDS 协议实现了高可靠、模块化的分布式通信与丰富的算法生态支持。\"\n---\n\n# ROS 2 (Robot Operating System 2) 基础\n\n**ROS 2** 是全球机器人社区中最广泛使用的开源框架。它并非真正的操作系统，而是一套运行在 Linux 之上的**中间件 (Middleware)**，提供了标准化的通信协议、开发工具和海量的算法库。\n\n## 核心架构：DDS 驱动\n\n相比于 ROS 1，ROS 2 最核心的进化是采用了 **DDS (Data Distribution Service)** 作为底层通信。\n- **去中心化**：不再依赖一个中心化的 Master 节点，单点故障不会导致全系统崩溃。\n- **服务质量 (QoS)**：允许开发者针对每个 Topic 设置实时性要求（如“丢弃旧数据”或“必须送达”）。\n\n## 核心组件\n\n1. **节点 (Nodes)**：执行特定任务的独立进程。\n2. **话题 (Topics)**：基于发布/订阅（Pub/Sub）模式的异步数据流。\n3. **服务 (Services)**：基于请求/响应（Request/Response）模式的同步通信。\n4. **动作 (Actions)**：用于长时运行的任务（如“移动到 B 点”），支持进度反馈和中途取消。\n\n## 在运控中的地位\n\n尽管 ROS 2 在处理 [1000Hz 底层环路](../comparisons/ros2-vs-lcm.md) 时可能存在延迟抖动，但它是**高层感知、路径规划和多传感器标定**的不二之选。\n\n## 典型应用案例\n\n- **感知与决策闭环**：在 [Booster Robotics RoboCup Demo](../entities/booster-robocup-demo.md) 中，ROS 2 Humble 用于集成 YOLOv8 视觉检测与状态机决策，实现了足球比赛任务的端到端控制。\n\n## 关联页面\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n- ROS 2 官方文档 (docs.ros.org).",
       "tags": [
         "concept",
         "control",
@@ -807,7 +807,8 @@
       ],
       "related": [
         "wiki-comparisons-ros2-vs-lcm",
-        "wiki-queries-real-time-control-middleware-guide"
+        "wiki-queries-real-time-control-middleware-guide",
+        "entity-booster-robocup-demo"
       ],
       "source_links": [],
       "status": "active",
@@ -910,7 +911,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -944,7 +945,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -976,7 +977,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1392,7 +1393,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1542,7 +1543,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -1671,7 +1672,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -1805,7 +1806,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2014,7 +2015,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2085,7 +2086,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2122,7 +2123,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -4485,6 +4486,33 @@
       "entity_kind": "framework"
     },
     {
+      "id": "entity-booster-robocup-demo",
+      "title": "Booster Robotics RoboCup Demo",
+      "path": "wiki/entities/booster-robocup-demo.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, robocup, ros2, booster-robotics, perception, rl]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ./robot-lab.md\n  - ../concepts/ros2-basics.md\n  - ../methods/auto-labeling-pipelines.md\nsources:\n  - ../../sources/repos/booster-robocup-demo.md\nsummary: \"Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。\"\n---\n\n# Booster Robotics RoboCup Demo\n\n**Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项目，旨在为其人形机器人（尤其是 **Booster K1**）提供参加 RoboCup 足球比赛的完整自主软件方案。\n\n## 系统架构\n\n该系统基于 **ROS 2 Humble** 构建，采用了典型的感知-决策-执行分层架构：\n\n### 1. 感知层 (`vision`)\n- **目标检测**: 使用 **YOLOv8** 模型实时识别足球、机器人对手/队友及场地边线。\n- **坐标变换**: 将 2D 图像坐标通过相机外参及地面约束转换为机器人坐标系下的 3D 位姿。\n- **推理优化**: 在真机端（NVIDIA Orin）使用 **TensorRT** 加速，仿真端支持 ONNX Runtime。\n\n### 2. 决策层 (`brain`)\n- **逻辑控制**: 采用分层状态机，管理机器人的比赛状态（Search, Chase, Align, Kick）。\n- **通信对接**: 集成了 RoboCup 官方的 GameController 协议，监听裁判机的比赛指令（如 Start, Ready, Set, Finish）。\n- **踢球控制**: 包含基础踢球逻辑和高级的 **`RLVisionKick`**（基于强化学习的视觉引导踢球），后者能够根据实时视觉反馈动态调整步态，实现更精准的击球。\n\n### 3. 通信层 (`game_controller`)\n- 负责将裁判机的网络广播包转换为 ROS 2 话题，实现比赛状态的自动化流转。\n\n## 硬件与软件需求\n\n- **硬件**: \n    - 官方支持：Booster K1 (固件 v1.5.2+), Booster T1。\n    - 计算平台：支持 NVIDIA Jetpack 6.2。\n- **软件**: \n    - 操作系统：Ubuntu 22.04 + ROS 2 Humble。\n    - 核心依赖：Booster Robotics SDK。\n\n## 技术特色：RLVisionKick\n\n该框架的一个亮点是集成了强化学习（RL）踢球模块。相比传统的基于预设轨迹的踢球（Keyframe-based），RL 踢球能够：\n1. **闭环调节**: 在接近足球的过程中，根据视觉偏差实时修正脚部位置。\n2. **高成功率**: 在不平整草地或足球微小移动时表现出更好的鲁棒性。\n\n## 开发与仿真\n\n该项目支持在 **Booster Studio** 仿真器中运行，允许开发者在没有真机的情况下：\n- 验证视觉算法的有效性。\n- 调试状态机逻辑与协作策略。\n- 模拟不同的比赛地形与光照条件。\n\n## 关联页面\n\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md) — 了解 Booster T1 在仿真环境中的适配。\n- [ROS 2 基础](../concepts/ros2-basics.md) — 该项目的通信底座。\n- [自动化标注流水线](../methods/auto-labeling-pipelines.md) — 针对比赛环境定制 YOLO 模型的关键。\n\n## 参考来源\n\n- [BoosterRobotics/robocup_demo 源码仓库](../../sources/repos/booster-robocup-demo.md)\n- Booster Robotics 官方文档",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "control",
+        "rl",
+        "tooling"
+      ],
+      "related": [
+        "entity-robot-lab",
+        "wiki-concepts-ros2-basics",
+        "wiki-methods-auto-labeling-pipelines",
+        "sources-repos-booster-robocup-demo"
+      ],
+      "source_links": [
+        "https://github.com/BoosterRobotics"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
       "id": "entity-boston-dynamics",
       "title": "Boston Dynamics（波士顿动力）",
       "path": "wiki/entities/boston-dynamics.md",
@@ -4634,7 +4662,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -4666,7 +4694,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-mujoco",
@@ -4830,7 +4858,7 @@
       "title": "robot_lab (IsaacLab 扩展框架)",
       "path": "wiki/entities/robot-lab.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [repo, framework, reinforcement-learning, isaac-lab, unitree]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./isaac-gym-isaac-lab.md\n  - ./legged-gym.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/robot_lab.md\nsummary: \"robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练框架，支持 26+ 机器人型号，旨在通过模块化解耦简化机器人学习任务的开发。\"\n---\n\n# robot_lab (IsaacLab 扩展框架)\n\n**robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和任务，而不必直接修改 IsaacLab 的核心代码，极大地提高了开发效率和代码的可维护性。\n\n## 核心定位\n\n在机器人学习的工具链中，robot_lab 扮演了“生态适配层”的角色：\n- **IsaacLab 核心** 提供物理仿真、传感器模拟和基础环境接口。\n- **robot_lab** 提供具体的机器人 URDF/USD 资产配置、特定任务（如速度跟踪、动作模仿）的定义以及训练脚本。\n\n## 关键特性\n\n1. **广泛的硬件支持**：原生支持 26+ 种机器人，包括四足（Anymal D, Go2, A1）、轮足（Go2W, Tita）以及主流人形机器人（Unitree G1/H1, GR1, Xbot）。\n2. **模块化任务开发**：采用 `manager_based` 任务流，支持 locomotion 和复杂的动作模仿。\n3. **RL 框架集成**：深度集成 `RSL-RL` 作为主训练器，同时实验性支持 `CusRL` 和 `SKRL`。\n4. **特殊任务支持**：\n   - **AMP Dance**：利用 SKRL 驱动的动作风格迁移。\n   - **BeyondMimic**：人形机器人的高性能动作模仿框架。\n\n## 仓库结构规范\n\nrobot_lab 遵循 IsaacLab 的扩展规范：\n- `assets/`：存放机器人描述文件（URDF/USD）及对应的配置。\n- `tasks/`：包含 `manager_based` 和 `direct` 两类 RL 任务实现。\n- `scripts/`：提供统一的训练 (`train.py`)、评估 (`play.py`) 和导出入口。\n\n## 关联页面\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)\n- [legged_gym](./legged-gym.md)\n- [Unitree 品牌主页](./unitree.md)\n- [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)\n\n## 参考来源\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md)\n- [fan-ziqi/robot_lab GitHub Repo](https://github.com/fan-ziqi/robot_lab)",
+      "content_markdown": "---\ntype: entity\ntags: [repo, framework, reinforcement-learning, isaac-lab, unitree]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./isaac-gym-isaac-lab.md\n  - ./legged-gym.md\n  - ./unitree.md\nsources:\n  - ../../sources/repos/robot_lab.md\nsummary: \"robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练框架，支持 26+ 机器人型号，旨在通过模块化解耦简化机器人学习任务的开发。\"\n---\n\n# robot_lab (IsaacLab 扩展框架)\n\n**robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和任务，而不必直接修改 IsaacLab 的核心代码，极大地提高了开发效率和代码的可维护性。\n\n## 核心定位\n\n在机器人学习的工具链中，robot_lab 扮演了“生态适配层”的角色：\n- **IsaacLab 核心** 提供物理仿真、传感器模拟和基础环境接口。\n- **robot_lab** 提供具体的机器人 URDF/USD 资产配置、特定任务（如速度跟踪、动作模仿）的定义以及训练脚本。\n\n## 关键特性\n\n1. **广泛的硬件支持**：原生支持 26+ 种机器人，包括四足（Anymal D, Go2, A1）、轮足（Go2W, Tita）以及主流人形机器人（Unitree G1/H1, GR1, Xbot, [Booster T1](./booster-robocup-demo.md)）。\n2. **模块化任务开发**：采用 `manager_based` 任务流，支持 locomotion 和复杂的动作模仿。\n3. **RL 框架集成**：深度集成 `RSL-RL` 作为主训练器，同时实验性支持 `CusRL` 和 `SKRL`。\n4. **特殊任务支持**：\n   - **AMP Dance**：利用 SKRL 驱动的动作风格迁移。\n   - **BeyondMimic**：人形机器人的高性能动作模仿框架。\n\n## 仓库结构规范\n\nrobot_lab 遵循 IsaacLab 的扩展规范：\n- `assets/`：存放机器人描述文件（URDF/USD）及对应的配置。\n- `tasks/`：包含 `manager_based` 和 `direct` 两类 RL 任务实现。\n- `scripts/`：提供统一的训练 (`train.py`)、评估 (`play.py`) 和导出入口。\n\n## 关联页面\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)\n- [legged_gym](./legged-gym.md)\n- [Unitree 品牌主页](./unitree.md)\n- [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)\n\n## 参考来源\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md)\n- [fan-ziqi/robot_lab GitHub Repo](https://github.com/fan-ziqi/robot_lab)",
       "tags": [
         "entities",
         "entity",
@@ -4844,6 +4872,7 @@
         "entity-legged-gym",
         "entity-unitree",
         "wiki-methods-reinforcement-learning",
+        "entity-booster-robocup-demo",
         "sources-repos-robot-lab"
       ],
       "source_links": [

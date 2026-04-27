@@ -5,7 +5,7 @@
       "label": "CLF vs CBF：稳定性与安全性的对偶工具",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
@@ -131,14 +131,14 @@
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
       "label": "Control Barrier Function（控制屏障函数）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/curriculum-learning.md",
@@ -201,7 +201,7 @@
       "label": "Force Control Basics (力控制基础)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
@@ -229,14 +229,14 @@
       "label": "Hybrid Force-Position Control（力位混合控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/concepts/impedance-control.md",
       "label": "Impedance Control（阻抗控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/concepts/latent-imagination.md",
@@ -306,7 +306,7 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
@@ -426,6 +426,13 @@
       "type": "entity",
       "health_score": 3,
       "community": "community-3"
+    },
+    {
+      "id": "wiki/entities/booster-robocup-demo.md",
+      "label": "Booster Robotics RoboCup Demo",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/boston-dynamics.md",
@@ -586,7 +593,7 @@
       "label": "Control Lyapunov Function（控制李雅普诺夫函数）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/cross-modal-attention.md",
@@ -796,7 +803,7 @@
       "label": "Hindsight Experience Replay (HER)",
       "type": "method",
       "health_score": 3,
-      "community": "community-7"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -873,7 +880,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/star-vla.md",
@@ -922,7 +929,7 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-5"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -936,14 +943,14 @@
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/contact-rich-manipulation-guide.md",
       "label": "Query：接触丰富操作实践指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
@@ -971,7 +978,7 @@
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/ethercat-master-optimization.md",
@@ -999,7 +1006,7 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-5"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -1181,14 +1188,14 @@
       "label": "VLA 真机部署指南：延迟、异步与加速",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-2"
     },
     {
       "id": "wiki/queries/vla-with-low-level-controller.md",
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
@@ -2150,6 +2157,10 @@
     },
     {
       "source": "wiki/concepts/ros2-basics.md",
+      "target": "wiki/entities/booster-robocup-demo.md"
+    },
+    {
+      "source": "wiki/concepts/ros2-basics.md",
       "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
@@ -2565,6 +2576,18 @@
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
+      "source": "wiki/entities/booster-robocup-demo.md",
+      "target": "wiki/entities/robot-lab.md"
+    },
+    {
+      "source": "wiki/entities/booster-robocup-demo.md",
+      "target": "wiki/concepts/ros2-basics.md"
+    },
+    {
+      "source": "wiki/entities/booster-robocup-demo.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
       "source": "wiki/entities/boston-dynamics.md",
       "target": "wiki/entities/humanoid-robot.md"
     },
@@ -2811,6 +2834,10 @@
     {
       "source": "wiki/entities/pinocchio.md",
       "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/robot-lab.md",
+      "target": "wiki/entities/booster-robocup-demo.md"
     },
     {
       "source": "wiki/entities/robot-lab.md",
@@ -5357,13 +5384,13 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 112,
+      "size": 120,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Manipulation 社区",
-      "size": 39,
+      "size": 40,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
@@ -5380,27 +5407,15 @@
     },
     {
       "id": "community-4",
-      "label": "Control Barrier Function（控制屏障函数） 社区",
-      "size": 6,
-      "hub_id": "wiki/concepts/control-barrier-function.md"
-    },
-    {
-      "id": "community-5",
       "label": "Contact-Rich Manipulation（接触丰富型操作） 社区",
       "size": 5,
       "hub_id": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
-      "id": "community-6",
-      "label": "VLA 真机部署指南：延迟、异步与加速 社区",
-      "size": 3,
-      "hub_id": "wiki/queries/vla-deployment-guide.md"
-    },
-    {
-      "id": "community-7",
-      "label": "Hindsight Experience Replay (HER) 社区",
-      "size": 1,
-      "hub_id": "wiki/methods/her.md"
+      "id": "community-5",
+      "label": "人形机器人运动控制 Know-How 社区",
+      "size": 2,
+      "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
     }
   ]
 }
