@@ -48,18 +48,18 @@
         "summary": "从 LIP / ZMP、Centroidal Dynamics 到 MPC、TSID、WBC 的控制主干。",
         "tag": "control",
         "entry_items": [
+          "wiki-methods-amp-reward",
+          "wiki-methods-ams",
           "entity-anymal",
           "wiki-methods-action-chunking",
           "wiki-methods-actuator-network",
+          "wiki-methods-any2track",
+          "wiki-concepts-armature-modeling",
           "entity-atom01-firmware",
           "entity-atom01-train",
           "wiki-tasks-balance-recovery",
-          "wiki-tasks-bimanual-manipulation",
-          "entity-booster-robocup-demo",
-          "entity-boston-dynamics",
-          "wiki-comparisons-clf-vs-cbf",
-          "wiki-concepts-capture-point-dcm",
-          "wiki-concepts-centroidal-dynamics"
+          "wiki-methods-beyondmimic",
+          "wiki-tasks-bimanual-manipulation"
         ],
         "references": [
           "reference-papers-latent-skill-prior",
@@ -89,18 +89,18 @@
         "summary": "围绕 PPO、策略优化、人形运动控制训练与仿真平台的学习路径。",
         "tag": "rl",
         "entry_items": [
+          "wiki-methods-amp-reward",
+          "wiki-methods-ams",
           "entity-anymal",
           "wiki-methods-actuator-network",
+          "wiki-methods-any2track",
           "wiki-methods-auto-labeling-pipelines",
           "wiki-methods-behavior-cloning",
           "wiki-formalizations-bellman-equation",
+          "wiki-methods-beyondmimic",
           "entity-booster-robocup-demo",
           "wiki-comparisons-clf-vs-cbf",
-          "wiki-formalizations-cmdp",
-          "wiki-concepts-contact-dynamics",
-          "wiki-concepts-contact-estimation",
-          "wiki-concepts-curriculum-learning",
-          "wiki-methods-dagger"
+          "wiki-formalizations-cmdp"
         ],
         "references": [
           "reference-papers-imitation-learning",
@@ -129,18 +129,18 @@
         "summary": "从行为克隆到技能迁移，连接动作数据、策略表示与人形技能学习。",
         "tag": "il",
         "entry_items": [
+          "wiki-methods-amp-reward",
+          "wiki-methods-ams",
           "wiki-methods-action-chunking",
           "wiki-tasks-balance-recovery",
           "wiki-formalizations-behavior-cloning-loss",
           "wiki-methods-bc-with-transformer",
           "wiki-methods-behavior-cloning",
+          "wiki-methods-beyondmimic",
           "wiki-tasks-bimanual-manipulation",
           "wiki-methods-claw",
           "wiki-comparisons-clf-vs-cbf",
-          "wiki-concepts-centroidal-dynamics",
-          "wiki-concepts-contact-dynamics",
-          "wiki-concepts-contact-estimation",
-          "wiki-concepts-contact-rich-manipulation"
+          "wiki-concepts-centroidal-dynamics"
         ],
         "references": [
           "reference-papers-imitation-learning",
@@ -170,6 +170,8 @@
         "tag": "sim2real",
         "entry_items": [
           "wiki-methods-actuator-network",
+          "wiki-methods-any2track",
+          "wiki-concepts-armature-modeling",
           "entity-atom01-deploy",
           "entity-atom01-description",
           "wiki-concepts-contact-estimation",
@@ -178,9 +180,7 @@
           "wiki-concepts-domain-randomization",
           "wiki-concepts-embodied-scaling-laws",
           "wiki-queries-ethercat-master-optimization",
-          "wiki-concepts-ethercat-protocol",
-          "wiki-methods-generative-world-models",
-          "wiki-methods-imitation-learning"
+          "wiki-concepts-ethercat-protocol"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -204,16 +204,16 @@
         "entry_items": [
           "entity-anymal",
           "wiki-methods-actuator-network",
+          "wiki-methods-any2track",
           "entity-atom01-train",
           "wiki-tasks-balance-recovery",
           "wiki-methods-behavior-cloning",
+          "wiki-methods-beyondmimic",
           "entity-boston-dynamics",
           "wiki-concepts-centroidal-dynamics",
           "wiki-concepts-contact-dynamics",
           "entity-crocoddyl",
-          "wiki-concepts-curriculum-learning",
-          "wiki-methods-dagger",
-          "entity-drake"
+          "wiki-concepts-curriculum-learning"
         ],
         "references": [
           "reference-papers-latent-skill-prior",
@@ -244,6 +244,7 @@
         "entry_items": [
           "wiki-methods-actuator-network",
           "entity-allegro-hand",
+          "wiki-concepts-armature-modeling",
           "entity-booster-robocup-demo",
           "wiki-methods-claw",
           "wiki-formalizations-contact-complementarity",
@@ -252,8 +253,7 @@
           "wiki-formalizations-gae",
           "wiki-methods-generative-data-augmentation",
           "wiki-methods-generative-world-models",
-          "wiki-formalizations-hjb",
-          "entity-isaac-gym-isaac-lab"
+          "wiki-formalizations-hjb"
         ],
         "references": [
           "reference-papers-locomotion-rl",
@@ -660,6 +660,30 @@
       ]
     },
     "detail_pages": {
+      "wiki-concepts-armature-modeling": {
+        "id": "wiki-concepts-armature-modeling",
+        "title": "Armature Modeling（电枢惯量建模）",
+        "type": "wiki_page",
+        "path": "wiki/concepts/armature-modeling.md",
+        "summary": "type: concept。",
+        "content_markdown": "---\ntype: concept\ntags: [robotics, dynamics, simulation, sim2real, actuator]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../methods/beyondmimic.md\n  - ../methods/actuator-network.md\n  - ./system-identification.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"Armature（电枢惯量 / 反射惯量）是电机转子经过减速器反射到关节侧的等效转动惯量，是机器人高频动态特性建模中不可忽视的项。\"\n---\n\n# Armature Modeling（电枢惯量建模）\n\n在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。\n\n## 为什么重要\n\n在传统的刚体动力学（如 Pinocchio, Drake 默认配置）中，往往只考虑连杆的质量 and 惯量。但在使用高减速比（如 1:10 以上）的机器人中，电机的转子惯量在关节侧会被放大 **$G^2$** 倍（$G$ 为减速比），甚至可能超过连杆自身的惯量。\n\n- **动态响应**：忽略 Armature 会导致仿真中的关节比现实中表现得更“轻”、响应更“脆”。\n- **控制稳定性**：如果仿真中没有建模 Armature，但现实中存在巨大的反射惯量，训练出的策略在真机上容易产生高频振荡。\n- **PD 增益设计**：合理的 PD 增益应与关节的总惯量（连杆惯量 + Armature）成比例。\n\n## 物理定义与计算\n\n对于一个典型的执行器系统：\n- $J_r$：电机转子的转动惯量。\n- $g_1, g_2, \\dots$：各级减速比。\n- $J_1, J_2, \\dots$：中间各级齿轮的转动惯量。\n\n### 单驱动关节\n反射到关节端的总等效惯量（Armature）计算公式：\n\n$$\nI_{arm} = J_r \\cdot (\\prod g_i)^2 + \\sum (J_k \\cdot (\\prod_{i>k} g_i)^2)\n$$\n\n在大多数工程实践中，简化为：\n$$\nI_{arm} \\approx J_r \\cdot G^2\n$$\n\n### 双驱动关节（如交叉轴或并联机构）\n如果一个自由度由两个完全相同的执行器共同驱动：\n$$\nI_{arm, total} = 2 \\cdot I_{arm, single}\n$$\n\n## 在仿真器中的实现\n\n### MuJoCo\n在 MJCF 文件中，可以通过 `armature` 属性直接设置：\n```xml\n<joint name=\"knee_joint\" armature=\"0.012\" ... />\n```\n\n### Isaac Gym / Isaac Lab\n在 `ArticulatedView` 或机器人描述配置中，可以手动计算并补偿到关节的动态参数中，或者在 `SimConfig` 中通过 `armature` 属性全局或局部设置。\n\n## BeyondMimic 的工程实践\n\n[BeyondMimic](../methods/beyondmimic.md) 强调了精确建模 Armature 是减少 Sim2Real 差距的核心手段：\n1. **精确计算**：不再将 armature 视为仿真调参的旋钮，而是通过电机手册数据严格计算。\n2. **PD 增益关联**：\n   - 设定自然频率 $\\omega = 2\\pi \\times 10$ Hz。\n   - 设定阻尼比 $\\zeta = 2.0$。\n   - 则：$k_p = I_{arm} \\cdot \\omega^2$, $k_d = 2 \\cdot I_{arm} \\cdot \\zeta \\cdot \\omega$。\n\n## 关联页面\n\n- [BeyondMimic](../methods/beyondmimic.md) — 强调 armature 精确建模的代表性模仿学习框架。\n- [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。\n- [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- BeyondMimic 技术报告关于物理建模的部分。",
+        "tags": [
+          "concept",
+          "control",
+          "dynamics",
+          "sim2real",
+          "tooling",
+          "hardware"
+        ],
+        "related": [
+          "wiki-methods-beyondmimic",
+          "wiki-methods-actuator-network",
+          "wiki-concepts-system-identification",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-concepts-capture-point-dcm": {
         "id": "wiki-concepts-capture-point-dcm",
         "title": "Capture Point / DCM",
@@ -1256,14 +1280,14 @@
         "type": "wiki_page",
         "path": "wiki/concepts/motion-retargeting.md",
         "summary": "title: Motion Retargeting（动作重定向）。",
-        "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n\n---\n\n## 关联页面\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性",
+        "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n---\n\n## 重定向不等于控制策略：两层架构模式\n\n在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。\n\n### 1. 运动学重定向层 (Kinematic Layer)\n- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。\n- **作用**：解决姿态、角度、关键点坐标的映射。\n- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。\n\n### 2. 动力学一致化层 (Dynamical Layer)\n- **作用**：在重定向轨迹的基础上，补足物理约束。\n- **实现手段**：\n    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。\n    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。\n    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n\n---\n\n## 关联页面\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性\n- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现",
         "tags": [
           "concept",
-          "humanoid",
           "control",
-          "dynamics",
           "optimization",
-          "rl"
+          "rl",
+          "il",
+          "tooling"
         ],
         "related": [
           "wiki-methods-imitation-learning",
@@ -1271,6 +1295,7 @@
           "wiki-tasks-loco-manipulation",
           "wiki-concepts-whole-body-control",
           "wiki-concepts-sim2real",
+          "wiki-methods-motion-retargeting-gmr",
           "sources-papers-teleoperation",
           "sources-papers-diffusion-and-gen",
           "sources-papers-motion-control-projects"
@@ -1367,7 +1392,7 @@
         "type": "wiki_page",
         "path": "wiki/concepts/reward-design.md",
         "summary": "奖励函数就是\"你告诉机器人什么是好、什么是坏\"的语言。设计得好，机器人学出你想要的；设计得差，机器人找到 reward hacking 的漏洞，表面指标满分，实际行为一塌糊涂",
-        "content_markdown": "---\ntype: concept\ntags: [rl, reward, locomotion, humanoid, policy-optimization]\nstatus: complete\nrelated:\n  - ../formalizations/mdp.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/imitation-learning.md\n  - ./domain-randomization.md\n  - ../queries/reward-design-guide.md\nsummary: \"Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。\"\nupdated: 2026-04-25\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/privileged_training.md\n---\n\n# Reward Design\n\n**奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。\n\n## 一句话定义\n\n> 奖励函数就是\"你告诉机器人什么是好、什么是坏\"的语言。设计得好，机器人学出你想要的；设计得差，机器人找到 reward hacking 的漏洞，表面指标满分，实际行为一塌糊涂。\n\n## 为什么重要\n\nMDP 框架的核心之一就是奖励函数 $R(s, a, s')$。理论上，只要奖励函数正确，RL 能找到最优策略。实践中：\n\n- 奖励函数很难完全表达人类意图\n- 策略会找到人类未预期的\"钻空子\"路径（reward hacking）\n- 奖励项太稀疏 → 探索困难\n- 奖励项太密集 → 过度约束，策略僵化\n\n对于人形机器人 locomotion，奖励函数几乎是决定行为质量的最关键设计变量。\n\n## 人形机器人 locomotion 中的典型奖励组成\n\n| 奖励项 | 类型 | 作用 |\n|--------|------|------|\n| 线速度跟踪 | 正向 | 让机器人向目标方向走 |\n| 角速度跟踪 | 正向 | 控制转向 |\n| 直立惩罚 | 负向 | 防止躯干倾斜 |\n| 关节力矩惩罚 | 负向 | 减少能耗和硬件磨损 |\n| 接触力惩罚 | 负向 | 避免脚落地过猛 |\n| 动作平滑性 | 负向 | 减少抖动和高频振荡 |\n| 关节速度惩罚 | 负向 | 避免关节过快运动 |\n| 摔倒终止惩罚 | 负向 | 重度惩罚摔倒行为 |\n| 对称性奖励 | 正向 | 鼓励双足对称步态 |\n\n典型加权组合形式：\n\n$$R = \\sum_i w_i r_i(s, a, s')$$\n\n权重 $w_i$ 的调整决定了行为的优先级——是更重视速度还是稳定性，是更重视能耗还是动作幅度。\n\n## 常见问题与反模式\n\n### 1. Reward Hacking（奖励破解）\n\n策略找到了满足奖励但违背真实意图的行为：\n\n- 例子：关节速度惩罚太重 → 策略干脆不动（速度=0，奖励最高）\n- 例子：高度奖励太强 → 策略保持半蹲站姿（重心低，最安全）\n- 例子：速度奖励不考虑方向 → 策略倒着走也能得分\n\n**应对方法**：人工测试边界情况；用 adversarial rollouts 检查漏洞；加入足够多的约束项。\n\n### 2. 奖励项冲突\n\n多个奖励项在某些状态下对动作的梯度方向相反：\n\n- 快速行走 vs. 平稳接触\n- 大步幅 vs. 关节力矩限制\n\n**应对方法**：调整权重，优先保证硬约束（稳定、不摔），再优化软指标（速度、能耗）。\n\n### 3. 稀疏奖励与密集奖励的权衡\n\n- **稀疏**：只在任务成功时给奖励，探索极困难（机器人自然走到目标地点的概率极低）\n- **密集**：每步都有反馈，探索容易但容易过度约束行为\n\n**实践建议**：locomotion 一般用密集奖励，但保留少量稀疏项（如成功完成某段距离）。\n\n### 算法对奖励的敏感度\n\n- **PPO**：对奖励幅值和 Shaping 比较敏感，需要较细致的奖励项权重调优。\n- **BRRL / BPO (2026)**：由于其“有界 Ratio”的约束特性，在处理带有剧烈变化奖励或稀疏项的任务时表现出更强的数值稳定性，能一定程度上缓解因奖励设计不当导致的策略发散。\n\n## Potential-Based Reward Shaping\n\n一种理论上不改变最优策略但改善训练效率的技术：\n\n$$R'(s, a, s') = R(s, a, s') + \\gamma \\Phi(s') - \\Phi(s)$$\n\n其中 $\\Phi(s)$ 是势函数（potential function），可以用于引导探索。\n\n理论保证：只要 $\\Phi$ 是状态函数，最优策略不变（Ng et al. 1999）。\n\n## 自动化奖励设计方向\n\n### Adversarial Motion Priors (AMP)\n用判别器代替手工奖励：从参考动作数据中学一个\"行为真实性\"鉴别器，作为奖励信号。好处是不需要手工设计 style 奖励项，行为自然美观。\n\n### LLM-based Reward Design\n近期趋势：用 LLM 自动生成初始奖励函数，再通过迭代 RL 训练+人工反馈修正。代表：EUREKA (Ma et al. 2023)。\n\n## 与其他页面的关系\n\n### 和 MDP 的关系\nReward Design 是 MDP 五元组中 $R(s, a, s')$ 的工程化实现。\n\n见：[Markov Decision Process](../formalizations/mdp.md)\n\n### 和 RL 方法的关系\n奖励函数是所有 RL 算法的优化目标，PPO/SAC 的策略梯度方向完全由奖励决定。\n\n见：[Reinforcement Learning](../methods/reinforcement-learning.md)\n\n### 和 Imitation Learning 的关系\nIL 的核心动机之一就是\"奖励函数太难设计\"——让 IL 从示范数据中绕过这个问题。\n\n见：[Imitation Learning](../methods/imitation-learning.md)\n\n### 和 Domain Randomization 的关系\nDR 改变的是环境的物理参数分布；Reward Design 改变的是优化目标。两者都影响策略，但影响的层次不同。\n\n见：[Domain Randomization](./domain-randomization.md)\n\n## 参考来源\n\n- Ng et al., *Policy Invariance Under Reward Transformations* (1999) — Potential-based shaping 理论基础\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — locomotion reward 设计工程实践\n- Ma et al., *EUREKA: Human-Level Reward Design via Coding Large Language Models* (2023) — LLM 自动奖励设计\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC locomotion reward 实践\n- **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — Walk These Ways 步态条件化 reward\n\n## 推荐继续阅读\n\n- [Markov Decision Process](../formalizations/mdp.md)\n- [Policy Optimization](../methods/policy-optimization.md)\n- [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）\n- [Query：Reward Design 实战指南](../queries/reward-design-guide.md)\n\n## 一句话记忆\n\n> 奖励函数是\"你告诉机器人什么算成功\"的唯一语言——设计得好，RL 帮你把行为做出来；设计得差，RL 帮你把漏洞钻透。",
+        "content_markdown": "---\ntype: concept\ntags: [rl, reward, locomotion, humanoid, policy-optimization]\nstatus: complete\nrelated:\n  - ../formalizations/mdp.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/imitation-learning.md\n  - ./domain-randomization.md\n  - ../queries/reward-design-guide.md\nsummary: \"Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。\"\nupdated: 2026-04-25\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/privileged_training.md\n---\n\n# Reward Design\n\n**奖励函数设计（Reward Design）**：强化学习中定义智能体优化目标的核心环节。奖励函数的好坏直接决定策略能不能学出来、学出来后的行为是否符合预期。\n\n## 一句话定义\n\n> 奖励函数就是\"你告诉机器人什么是好、什么是坏\"的语言。设计得好，机器人学出你想要的；设计得差，机器人找到 reward hacking 的漏洞，表面指标满分，实际行为一塌糊涂。\n\n## 为什么重要\n\nMDP 框架的核心之一就是奖励函数 $R(s, a, s')$。理论上，只要奖励函数正确，RL 能找到最优策略。实践中：\n\n- 奖励函数很难完全表达人类意图\n- 策略会找到人类未预期的\"钻空子\"路径（reward hacking）\n- 奖励项太稀疏 → 探索困难\n- 奖励项太密集 → 过度约束，策略僵化\n\n对于人形机器人 locomotion，奖励函数几乎是决定行为质量的最关键设计变量。\n\n## 人形机器人 locomotion 中的典型奖励组成\n\n| 奖励项 | 类型 | 作用 |\n|--------|------|------|\n| 线速度跟踪 | 正向 | 让机器人向目标方向走 |\n| 角速度跟踪 | 正向 | 控制转向 |\n| 直立惩罚 | 负向 | 防止躯干倾斜 |\n| 关节力矩惩罚 | 负向 | 减少能耗和硬件磨损 |\n| 接触力惩罚 | 负向 | 避免脚落地过猛 |\n| 动作平滑性 | 负向 | 减少抖动和高频振荡 |\n| 关节速度惩罚 | 负向 | 避免关节过快运动 |\n| 摔倒终止惩罚 | 负向 | 重度惩罚摔倒行为 |\n| 对称性奖励 | 正向 | 鼓励双足对称步态 |\n\n典型加权组合形式：\n\n$$R = \\sum_i w_i r_i(s, a, s')$$\n\n权重 $w_i$ 的调整决定了行为的优先级——是更重视速度还是稳定性，是更重视能耗还是动作幅度。\n\n## 常见问题与反模式\n\n### 1. Reward Hacking（奖励破解）\n\n策略找到了满足奖励但违背真实意图的行为：\n\n- 例子：关节速度惩罚太重 → 策略干脆不动（速度=0，奖励最高）\n- 例子：高度奖励太强 → 策略保持半蹲站姿（重心低，最安全）\n- 例子：速度奖励不考虑方向 → 策略倒着走也能得分\n\n**应对方法**：人工测试边界情况；用 adversarial rollouts 检查漏洞；加入足够多的约束项。\n\n### 2. 奖励项冲突\n\n多个奖励项在某些状态下对动作的梯度方向相反：\n\n- 快速行走 vs. 平稳接触\n- 大步幅 vs. 关节力矩限制\n\n**应对方法**：调整权重，优先保证硬约束（稳定、不摔），再优化软指标（速度、能耗）。\n\n### 3. 稀疏奖励与密集奖励的权衡\n\n- **稀疏**：只在任务成功时给奖励，探索极困难（机器人自然走到目标地点的概率极低）\n- **密集**：每步都有反馈，探索容易但容易过度约束行为\n\n**实践建议**：locomotion 一般用密集奖励，但保留少量稀疏项（如成功完成某段距离）。\n\n### 算法对奖励的敏感度\n\n- **PPO**：对奖励幅值和 Shaping 比较敏感，需要较细致的奖励项权重调优。\n- **BRRL / BPO (2026)**：由于其“有界 Ratio”的约束特性，在处理带有剧烈变化奖励或稀疏项的任务时表现出更强的数值稳定性，能一定程度上缓解因奖励设计不当导致的策略发散。\n\n## Potential-Based Reward Shaping\n\n一种理论上不改变最优策略但改善训练效率的技术：\n\n$$R'(s, a, s') = R(s, a, s') + \\gamma \\Phi(s') - \\Phi(s)$$\n\n其中 $\\Phi(s)$ 是势函数（potential function），可以用于引导探索。\n\n理论保证：只要 $\\Phi$ 是状态函数，最优策略不变（Ng et al. 1999）。\n\n## 近期趋势与先进奖励模式 (2024-2026)\n\n随着人形机器人任务复杂度的提升，奖励函数的设计正在从静态加权走向动态自适应与硬件感知：\n\n### 1. 速度自适应平滑惩罚 (OmniTrack)\n在高速奔跑或跳跃时，为了追求跟踪性能，需要放松对动作抖动的惩罚；而在静止或慢速行走时，则需要极高的平滑度以维持平衡。\n- **机制**：根据参考轨迹的关节速度或目标速度，动态缩放（Scale）平滑惩罚项。\n- **作用**：在高动态阶段释放机器人爆发力，在稳态阶段抑制抖动。\n\n### 2. 功率安全正则化 (OmniXtreme)\n传统能耗奖励（如 $\\tau^2$）只能限制总功耗，不能预防瞬时硬件过载。\n- **机制**：针对膝关节等高风险执行器，实时检测**负功率**（电机被反拖制动产生的再生功率）。当制动功率超过预设死区（Deadband）时，施加二次惩罚。\n- **作用**：防止高动态落地或剧烈制动时产生的高电压损坏驱动器硬件。\n\n### 3. 接触图模仿奖励 (HumanX)\n不仅模仿关节姿态，还通过“接触图（Contact Graph）”模仿机器人身体各部位与环境的接触关系。\n- **机制**：计算仿真中的接触状态向量与专家数据的绝对误差。\n- **作用**：在搬运、攀爬等接触密集型任务中，强制机器人学习到正确的交互逻辑。\n\n## 自动化奖励设计方向\n\n### Adversarial Motion Priors (AMP)\n用判别器代替手工奖励：从参考动作数据中学一个\"行为真实性\"鉴别器，作为奖励信号。好处是不需要手工设计 style 奖励项，行为自然美观。\n\n### LLM-based Reward Design\n近期趋势：用 LLM 自动生成初始奖励函数，再通过迭代 RL 训练+人工反馈修正。代表：EUREKA (Ma et al. 2023)。\n\n## 与其他页面的关系\n\n### 和 MDP 的关系\nReward Design 是 MDP 五元组中 $R(s, a, s')$ 的工程化实现。\n\n见：[Markov Decision Process](../formalizations/mdp.md)\n\n### 和 RL 方法的关系\n奖励函数是所有 RL 算法的优化目标，PPO/SAC 的策略梯度方向完全由奖励决定。\n\n见：[Reinforcement Learning](../methods/reinforcement-learning.md)\n\n### 和 Imitation Learning 的关系\nIL 的核心动机之一就是\"奖励函数太难设计\"——让 IL 从示范数据中绕过这个问题。\n\n见：[Imitation Learning](../methods/imitation-learning.md)\n\n### 和 Domain Randomization 的关系\nDR 改变的是环境的物理参数分布；Reward Design 改变的是优化目标。两者都影响策略，但影响的层次不同。\n\n见：[Domain Randomization](./domain-randomization.md)\n\n## 参考来源\n\n- Ng et al., *Policy Invariance Under Reward Transformations* (1999) — Potential-based shaping 理论基础\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2021) — locomotion reward 设计工程实践\n- Ma et al., *EUREKA: Human-Level Reward Design via Coding Large Language Models* (2023) — LLM 自动奖励设计\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC locomotion reward 实践\n- **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — Walk These Ways 步态条件化 reward\n\n## 推荐继续阅读\n\n- [Markov Decision Process](../formalizations/mdp.md)\n- [Policy Optimization](../methods/policy-optimization.md)\n- [Imitation Learning](../methods/imitation-learning.md)（AMP 路线：绕过手工奖励）\n- [AMP Reward (HumanX)](../methods/amp-reward.md) — 判别器风格奖励与接触图监督\n- [AMS](../methods/ams.md) — 物理可行性过滤与混合奖励机制\n- [BeyondMimic](../methods/beyondmimic.md) — 统一的任务空间跟踪奖励\n- [Query：Reward Design 实战指南](../queries/reward-design-guide.md)\n\n## 一句话记忆\n\n> 奖励函数是\"你告诉机器人什么算成功\"的唯一语言——设计得好，RL 帮你把行为做出来；设计得差，RL 帮你把漏洞钻透。",
         "tags": [
           "concept",
           "humanoid",
@@ -1384,6 +1409,9 @@
           "sources-papers-policy-optimization",
           "sources-papers-privileged-training",
           "wiki-methods-policy-optimization",
+          "wiki-methods-amp-reward",
+          "wiki-methods-ams",
+          "wiki-methods-beyondmimic",
           "wiki-queries-reward-design-guide"
         ],
         "source_links": [],
@@ -1788,6 +1816,83 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-methods-amp-reward": {
+        "id": "wiki-methods-amp-reward",
+        "title": "AMP & HumanX: 判别器驱动的风格学习",
+        "type": "wiki_page",
+        "path": "wiki/methods/amp-reward.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, gan, motion-prior, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./imitation-learning.md\n  - ./beyondmimic.md\n  - ../tasks/humanoid-soccer.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。\"\n---\n\n# AMP & HumanX: 判别器驱动的风格学习\n\n在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了包含接触关系的物体交互场景。\n\n## AMP: 对抗性动作先验\n\n**AMP (Adversarial Motion Prior)** 的核心在于不显式定义“什么是好动作”，而是让神经网络去“悟”。\n\n### 1. 核心架构\n- **判别器 (Discriminator)**：输入一段运动片段（当前状态与历史状态），尝试区分它是来自“参考动作数据集”还是“仿真中策略生成的动作”。\n- **策略 (Policy)**：作为生成器，除了最大化任务奖励外，还要最大化判别器的误判率（即让判别器认为自己生成的动作是真实的）。\n\n### 2. 优势\n- **自然度**：判别器能捕捉到人类动作中微妙的时序特征和协调性。\n- **无需繁琐调参**：减少了对关节速度惩罚、平滑惩罚等启发式奖励的依赖。\n\n## HumanX: 扩展到物体交互与接触图\n\n**HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。\n\n### 1. 接触图 (Contact Graph)\nHumanX 引入了接触图的概念：\n- 这是一个二进制向量，标记身体各部位（左右手、左右脚、头、躯干）是否与环境或物体接触。\n- **接触模仿奖励**：计算仿真接触状态与参考数据中接触状态的一致性。\n\n### 2. 多教师蒸馏 (Multi-teacher Distillation)\nHumanX 证明了学生策略可以仅仅通过**本体感知历史**（Joint angles, velocities, IMU）来隐式估计外力：\n- 训练多个专注于不同技能的特权教师（使用外力、物体位姿等特权信息）。\n- 学生策略通过 RL + 行为克隆 (BC) 联合训练，在没有外力传感器的情况下学会应对推力和负载。\n\n## 主要技术路线\n\n| 模块 | 实现方案 | 目的 |\n|------|---------|------|\n| **风格判别** | AMP Discriminator | 学习参考动作的自然风格，减少抖动 |\n| **接触监督** | 接触图 (Contact Graph) | 确保交互任务中肢体与物体的物理一致性 |\n| **技能习得** | 特权教师蒸馏 | 将外部感知能力转化为纯本体感知策略 |\n\n## 典型奖励设计：HumanX 接触奖励\n\n$$\nr_c = \\exp\\left(-\\sum_j \\lambda_j |c_j^{sim} - c_j^{ref}|\\right)\n$$\n其中 $c_j$ 是第 $j$ 个身体部位的接触状态（0 或 1）。该项强制机器人在特定的动作阶段（如搬箱子的抓取瞬间）保持与专家一致的物理接触。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.\n- [HumanX 项目主页](https://github.com/wyhuai/human-x)\n\n## 关联页面\n\n- [Imitation Learning](./imitation-learning.md)\n- [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。\n- [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。",
+        "tags": [
+          "method",
+          "humanoid",
+          "control",
+          "dynamics",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-methods-imitation-learning",
+          "wiki-formalizations-behavior-cloning-loss",
+          "wiki-methods-beyondmimic",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [
+          "https://github.com/wyhuai/human-x"
+        ],
+        "status": "active"
+      },
+      "wiki-methods-ams": {
+        "id": "wiki-methods-ams",
+        "title": "AMS: 物理可行性过滤与混合奖励",
+        "type": "wiki_page",
+        "path": "wiki/methods/ams.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, sampling, data-generation, humanoid, physics-feasibility]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./imitation-learning.md\n  - ./beyondmimic.md\n  - ../concepts/reward-design.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"AMS (Adaptive Motion Synthesis) 提出了一种物理可行性过滤与混合奖励机制，通过在极端动作处引入先验来提升复杂平衡任务的训练成功率。\"\n---\n\n# AMS: 物理可行性过滤与混合奖励\n\n在人形机器人动作合成与学习中，很多参考动捕数据（MoCap）由于人体与机器人的动力学差异，直接模仿会导致物理不可行。**AMS** 提供了一套系统化的数据清洗与奖励设计方法。\n\n## 核心挑战：物理不一致性\n\n人体的质量分布、接触面积和平衡策略与金属构成的机器人截然不同。直接将人类“金鸡独立”或“大跨步”的轨迹映射到机器人上，往往会导致机器人因质心 (CoM) 偏移而不可避免地摔倒。\n\n## 技术方案\n\n### 1. 物理可行性过滤 (Physics Feasibility Filtering)\nAMS 并不信任所有的参考动作。它通过两阶段过滤确保进入训练集的数据是“能站稳”的：\n- **第一阶段：运动学修正**。确保关节角度满足限位，姿态自然。\n- **第二阶段：平衡约束惩罚**。强制要求参考运动在整个周期内的**质心投影 (CoM Projection)** 必须始终位于支撑足形成的支撑多边形内。\n- **结果**：剔除所有在物理上注定会失稳的数据片段。\n\n### 2. 混合奖励机制 (Hybrid Reward Mechanism)\nAMS 提出了一个极具工程参考价值的原则：**不要在简单动作上过度约束**。\n\n- **通用奖励**：涵盖关节误差、末端位姿、速度匹配等基础项。\n- **平衡先验奖励**：**按需激活**。\n    - 仅在“极端平衡动作”、“稳定性容差小”或“历史成功率低”的片段上，激活质心约束、脚底滑动惩罚等强力约束。\n    - 作用：既保留了机器人在简单动作中的运动灵活性，又保证了在难动作下的稳定性。\n\n## 主要技术路线\n\n| 环节 | 实现方案 | 作用 |\n|------|---------|------|\n| **数据筛选** | 质心投影 (CoM) 多边形过滤 | 剔除物理上不可行的参考动作片段 |\n| **奖励机制** | 混合/条件激活先验奖励 | 只在极端平衡需求下施加约束，保持灵活性 |\n| **管线构建** | 运动学修正 + 物理一致性验证 | 自动生成大规模高质量合成平衡数据 |\n\n## 工程模式：数据生成管线\n\nAMS 实际上定义了一个自动化的合成数据生成流程：\n1. **随机采样**：随机采样摆动足位姿、骨盆高度和初始姿态。\n2. **轨迹插值**：构造连续的参考运动轨迹。\n3. **优化过滤**：通过上述的平衡约束进行物理校验。\n4. **高质量池**：形成一个物理可行的、多样化的专家动作数据库。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [AMS 项目主页 (OpenDriveLab)](https://opendrivelab.com/AMS/)\n\n## 关联页面\n\n- [Reward Design](../concepts/reward-design.md) — AMS 是“条件奖励（Conditional Reward）”设计的典型案例。\n- [Imitation Learning](./imitation-learning.md)\n- [BeyondMimic](./beyondmimic.md) — BeyondMimic 强调自适应采样，AMS 强调物理过滤。",
+        "tags": [
+          "method",
+          "humanoid",
+          "control",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-reward-design",
+          "wiki-methods-imitation-learning",
+          "wiki-methods-beyondmimic",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [
+          "https://opendrivelab.com/AMS/"
+        ],
+        "status": "active"
+      },
+      "wiki-methods-any2track": {
+        "id": "wiki-methods-any2track",
+        "title": "Any2Track & RGMT: 增强型自适应与时序建模",
+        "type": "wiki_page",
+        "path": "wiki/methods/any2track.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, adaptation, world-model, transformer, locomotion]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./model-based-rl.md\n  - ./beyondmimic.md\n  - ../concepts/domain-randomization.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"Any2Track 与 RGMT 代表了基于 Transformer 和世界模型的自适应运动控制范式，通过显式建模历史扰动与未来指令来实现鲁棒的轨迹跟踪。\"\n---\n\n# Any2Track & RGMT: 增强型自适应与时序建模\n\n在复杂的人形机器人控制任务（如多步动作模仿或动态越障）中，传统的单帧马尔可夫决策过程 (MDP) 往往不足以捕捉环境的非平稳性（如地面滑移、外力扰动）。**Any2Track** 与 **RGMT** 代表了通过引入 Transformer 和世界模型来增强策略自适应能力的先进技术路线。\n\n## RGMT: 基于 Transformer 的 Actor 网络\n\n**RGMT** (Real-to-Game Motion Tracking) 强调了对历史信息和未来指令的重新编码。\n\n### 1. 核心架构\n- **历史编码器 (History Encoder)**：使用**因果 Transformer (Causal Transformer)** 处理最近 $K$ 步的本体感知数据。\n    - **位置编码**：加入正弦位置编码以保留时间顺序。\n    - **自注意力**：提取运动趋势和接触状态特征。\n    - **池化**：通过最大池化得到固定长度的“动态特征向量”。\n- **指令编码器 (Instruction Encoder)**：\n    - **交叉注意力 (Cross-Attention)**：以动态特征向量作为查询 (Query)，从未来的指令窗口（参考关节位置等）中有选择地聚合信息。\n    - **作用**：根据机器人当前的物理状态，自动筛选出最相关、最可行的指令片段。\n\n### 2. 动作输出 (Action Output)\n不同于传统的绝对角度预测，RGMT 预测**残差关节位置指令**：\n$$\nq_{target} = q_{ref} + \\text{actor}(\\text{obs}, \\text{instruction\\_feat})\n$$\n\n## Any2Track: 世界模型驱动的两阶段自适应\n\n**Any2Track** 进一步将“识别扰动”与“调整动作”在架构上进行了解耦。\n\n### 1. 两阶段训练流程\n1. **第一阶段：基础技能学习**\n   - 在理想/标准环境下训练一个基础动作策略。\n2. **第二阶段：适配器与世界模型训练**\n   - **冻结**基础动作策略。\n   - **历史编码器**：观察长时序历史，输出扰动特征（Latent Representation）。\n   - **世界模型 (World Model)**：辅助任务。利用扰动特征预测未来 $N$ 步的状态。预测越准，说明扰动特征提取越有效。\n   - **适配器 (Adapter)**：根据扰动特征调整基础策略的输出。\n\n### 2. 部署优势\n在实际部署时，**世界模型被丢弃**，仅保留轻量级的历史编码器和适配器。这种架构使得机器人能够在不改变核心技能逻辑的情况下，通过“外挂”适配层快速适应滑移地面或负载变化。\n\n## 主要技术路线\n\n| 模块 | 关键技术 | 优势 |\n|------|---------|------|\n| **时序特征提取** | 历史编码器 (History Encoder) | 从长历史序列中识别隐式物理参数与扰动 |\n| **自适应机制** | 世界模型 (World Model) 辅助训练 | 通过预测任务强制模型理解环境交互规律 |\n| **策略调节** | 冻结基座 + 残差适配器 (Adapter) | 保持核心技能不变的同时快速适应新工况 |\n| **输入增强** | Transformer 交叉注意力 | 实现“当前状态”与“未来指令”的最优匹配 |\n\n## 关键技术总结：Any2Track 的残差映射\n\nAny2Track 采用了一种自适应缩放的残差映射方式，提高动作的准确性：\n1. **Tanh 映射**：将策略输出映射到 $[-1, 1]$。\n2. **关节自适应缩放**：引入超参数向量 $\\alpha$，为髋、膝、踝等不同关节设置不同的活动范围缩放因子。\n3. **指令偏移**：$q_{target} = q_{ref} + \\alpha \\cdot \\tanh(\\text{action})$。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [RGMT 项目主页](https://zeonsunlightyu.github.io/RGMT.github.io/)\n- [Any2Track 项目主页](https://zzk273.github.io/Any2Track/)\n\n## 关联页面\n\n- [Model-Based RL](./model-based-rl.md) — 世界模型在 Any2Track 中的辅助作用。\n- [BeyondMimic](./beyondmimic.md) — 同样强调参考轨迹跟踪。\n- [Domain Randomization](../concepts/domain-randomization.md) — 历史编码器本质上是在线识别被随机化的环境参数。",
+        "tags": [
+          "method",
+          "locomotion",
+          "control",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-methods-model-based-rl",
+          "wiki-methods-beyondmimic",
+          "wiki-concepts-domain-randomization",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [
+          "https://zeonsunlightyu.github.io/RGMT.github.io/",
+          "https://zzk273.github.io/Any2Track/"
+        ],
+        "status": "active"
+      },
       "wiki-methods-auto-labeling-pipelines": {
         "id": "wiki-methods-auto-labeling-pipelines",
         "title": "Auto-labeling Pipelines (自动化标注流水线)",
@@ -1854,6 +1959,31 @@
           "wiki-comparisons-rl-vs-il",
           "sources-papers-imitation-learning",
           "sources-papers-diffusion-and-gen"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
+      "wiki-methods-beyondmimic": {
+        "id": "wiki-methods-beyondmimic",
+        "title": "BeyondMimic",
+        "type": "wiki_page",
+        "path": "wiki/methods/beyondmimic.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, locomotion, humanoid, sampling]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/armature-modeling.md\n  - ../concepts/curriculum-learning.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架，其核心在于精确的物理建模与失败率驱动的自适应采样机制。\"\n---\n\n# BeyondMimic\n\n**BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理世界的无缝迁移，并在 **Isaac Lab** (IsaacLab) 环境中得到了广泛验证。\n\n## 核心设计理念\n\nBeyondMimic 提出一个核心观点：**精确的物理建模可以替代大量盲目的域随机化 (Domain Randomization)**。通过缩小仿真与现实在确定性物理量上的差距，策略能更有效地学习到稳健的运动模式。\n\n## 关键技术点\n\n### 1. 精确的物理建模 (Accurate Physical Modeling)\nBeyondMimic 强调必须对机器人执行器的反射惯量（[Armature](../concepts/armature-modeling.md)）进行精确计算，并据此设计 PD 增益。\n\n- **Armature 计算**：$I_{arm} = J_{rotor} \\cdot G^2$。\n- **PD 增益设计**：基于反射惯量计算临界阻尼增益，确保在轻载工况下不振荡，重载下保持柔顺。\n\n### 2. 失败率驱动的自适应采样 (Failure-driven Adaptive Sampling)\n在训练长序列动作（如长距离行走或跳舞）时，随机从序列中任意位置 reset 往往效率低下。BeyondMimic 引入了自适应采样：\n- **实时评估**：记录每个动作片段（Segment）的训练失败率。\n- **权重分配**：失败率越高、难度越大的片段，被采样作为起始位置的概率越大。\n- **前瞻卷积**：采样权重考虑当前片段及其后续片段的累计难度，防止机器人卡在“断点”处。\n\n### 3. 统一的任务空间奖励 (Unified Task-space Rewards)\nBeyondMimic 并不针对特定关节设计复杂的 reward，而是采用统一的任务空间跟踪项：\n- 身体各部位的位置误差与朝向误差。\n- 线速度与角速度匹配。\n- 支持对特定关键身体部位（如 Pelvis）进行加权优化。\n\n## 主要技术路线\n\n| 模块 | 核心方案 | 目的 |\n|------|---------|------|\n| **物理建模** | 精确 armature + 关联 PD 增益 | 缩小动力学 Gap，提升部署稳定性 |\n| **采样策略** | 失败率驱动的自适应重采样 | 提高对困难动作片段的训练效率 |\n| **观测空间** | 历史本体感知观测堆叠 | 利用时序上下文记忆仿真特定模式 |\n| **奖励函数** | 统一的任务空间跟踪项 | 简化奖励设计，保持动作自然度 |\n\n## 训练机制：大道至简\n\nBeyondMimic 证明了只要满足以下三点，简单的 PPO 就能学到极强的动作模仿能力：\n1. **精确的 Armature 补偿**。\n2. **时序历史观测的堆叠**（让策略学会记忆仿真特有的模式）。\n3. **针对性的失败重采样**。\n\n## 评价与影响\n\nBeyondMimic 已经成为许多人形机器人项目的底层基座：\n- **RobotEra (宇树春晚爆款等)**：其技术路线中大量参考了 BeyondMimic 的物理建模思想。\n- **SONIC (NVIDIA/CMU)**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [BeyondMimic 源码仓库](../../sources/repos/robot_lab.md)（集成在 robot_lab 中）。\n\n## 关联页面\n\n- [Imitation Learning (模仿学习)](./imitation-learning.md)\n- [Armature Modeling (电枢惯量建模)](../concepts/armature-modeling.md)\n- [Curriculum Learning (课程学习)](../concepts/curriculum-learning.md) — 失败驱动采样是课程学习的一种高级形式。",
+        "tags": [
+          "method",
+          "humanoid",
+          "locomotion",
+          "control",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-methods-imitation-learning",
+          "wiki-concepts-armature-modeling",
+          "wiki-concepts-curriculum-learning",
+          "sources-papers-motion-control-projects",
+          "sources-repos-robot-lab"
         ],
         "source_links": [],
         "status": "active"
@@ -2042,6 +2172,29 @@
         "source_links": [],
         "status": "active"
       },
+      "wiki-methods-haic": {
+        "id": "wiki-methods-haic",
+        "title": "HAIC: 基于世界模型的教师-学生训练",
+        "type": "wiki_page",
+        "path": "wiki/methods/haic.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [rl, world-model, teacher-student, imitation-learning, sim2real]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./model-based-rl.md\n  - ./amp-reward.md\n  - ../concepts/privileged-training.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"HAIC (Hierarchical AI Controller) 提出了一种结合世界模型的两阶段教师-学生训练范式，用于解决物体交互任务中的感知-动作协调难题。\"\n---\n\n# HAIC: 基于世界模型的教师-学生训练\n\n在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Privileged Info）有效地转化为可部署的学生策略。\n\n## 两阶段训练范式\n\nHAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅靠观测”的学生。\n\n### 第一阶段：联合预训练 (Joint Pre-training)\n- **教师策略 (Teacher Policy)**：输入特权信息（物体精确位姿、外力、质量等），输出专家动作和价值估计。\n- **世界模型 (World Model)**：**关键枢纽**。它的目标是输入可观测的本体感知历史，预测特权特征。\n- **学生策略 (Student Policy)**：输入包括世界模型预测的特征、本体感知历史和参考运动。\n- **目标**：三者同步更新。通过蒸馏损失让学生策略模仿教师的动作。\n\n### 第二阶段：策略微调与对齐 (Fine-tuning & Alignment)\n- **教师冻结**：教师策略的 Actor 部分被冻结，仅 Critic 部分继续提供价值信号（Advantage）。\n- **世界模型对齐**：通过指数移动平均 (EMA) 更新，继续精细化对特权特征的预测。\n- **学生进化**：学生策略使用教师 Critic 提供的信号进行强化学习更新。\n- **结果**：学生策略学会了在没有真特权信息的情况下，利用世界模型的预测能力完成任务。\n\n## 主要技术路线\n\n| 模块 | 角色 | 训练方法 |\n|------|-----|---------|\n| **教师策略** | 专家提供者 | 使用特权信息进行标准 RL 训练 |\n| **世界模型** | 桥梁/感知层 | 监督学习：利用本体观测预测特权特征 |\n| **学生策略** | 部署模型 | 模仿教师动作 + 世界模型预测特征输入 |\n| **训练范式** | 两阶段蒸馏 | 从“联合训练”过渡到“固定教师、强化学生” |\n\n## 技术特色\n\n- **特权特征预测**：世界模型不只是预测图像，而是预测对任务关键的物理特征（如“物体现在是否倾斜”）。\n- **解耦设计**：感知预测（世界模型）与动作执行（学生 Actor）相互独立又紧密配合。\n- **真机鲁棒性**：由于在训练中模拟了预测误差，学生策略在真机部署时对感知噪声具有极强的免疫力。\n\n## 典型应用场景\n\n- **物体搬运**：在不知道物体准确重量的情况下，通过世界模型感知负重并调整姿态。\n- **协作任务**：预测合作伙伴的意图或外力变化。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [HAIC 技术报告相关 PDF](../../sources/papers/motion_control_projects.md)\n\n## 关联页面\n\n- [Model-Based RL](./model-based-rl.md) — 世界模型在 HAIC 中作为特征提取器。\n- [Privileged Training (特权信息训练)](../concepts/privileged-training.md)\n- [Sim2Real](../concepts/sim2real.md) — 教师-学生蒸馏是解决 Sim2Real 差距的标准模式。",
+        "tags": [
+          "method",
+          "control",
+          "rl",
+          "il",
+          "sim2real"
+        ],
+        "related": [
+          "wiki-methods-model-based-rl",
+          "wiki-concepts-privileged-training",
+          "wiki-concepts-sim2real",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [],
+        "status": "active"
+      },
       "wiki-methods-her": {
         "id": "wiki-methods-her",
         "title": "Hindsight Experience Replay (HER)",
@@ -2067,16 +2220,22 @@
         "type": "wiki_page",
         "path": "wiki/methods/htwk-gym.md",
         "summary": "type: method。",
-        "content_markdown": "---\ntype: method\ntags: [rl, isaac-gym, booster-t1, soccer, locomotion]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/booster-robocup-demo.md\n  - ./reinforcement-learning.md\n  - ../entities/isaac-gym-isaac-lab.md\nsources:\n  - ../../sources/repos/htwk_gym.md\nsummary: \"htwk-gym 是由 HTWK Leipzig 开发的人形机器人足球 RL 框架，专注于 Booster T1/K1 平台的参数化步行与踢球技能训练。\"\n---\n\n# htwk-gym\n\n**htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **Booster T1/K1** 平台上经过了广泛的验证。\n\n## 核心组件\n\n### 1. 参数化步行 (Parameterized Walking)\nhtwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制器**。\n- **控制输入**：步频、脚部偏航角、身体姿态参数。\n- **优势**：允许上层决策系统（如 ROS 2 状态机）根据球场局势动态调整行走风格，实现灵巧的变向和截球。\n\n### 2. 足球专项任务环境\n- **`T1/Kicking`**：包含球感知奖励、碰撞惩罚以及目标速度引导，用于训练精准的踢球动作。\n- **`T1/Walking`**：侧重于高速平滑移动。\n\n### 3. 多端导出与部署 (Deployment Pipeline)\n- **PyTorch JIT**：用于仿真评估和高性能 PC 部署。\n- **TFLite 量化**：通过 TensorFlow Lite 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。\n\n## 技术细节\n\n- **基础引擎**：使用 NVIDIA **Isaac Gym** 实现大规模并行训练，可在数分钟内完成基础步态学习。\n- **跨仿真验证**：支持将训练好的模型在 **MuJoCo** 环境中进行独立验证，以减少 Sim-to-Real 的鸿沟。\n- **Streamlit 调试工具**：提供了一个名为 `obs_editor` 的 Web 界面，开发者可以实时拉动滑块调整训练参数或观察策略表现。\n\n## 在项目中的角色\n\nhtwk-gym 作为底层“技能工厂”，为 [Booster RoboCup Demo](../entities/booster-robocup-demo.md) 提供高性能的原子技能（如 `RLVisionKick`）。\n\n## 参考来源\n\n- [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md)\n- HTWK Leipzig RoboCup Team Documentation",
+        "content_markdown": "---\ntype: method\ntags: [rl, isaac-gym, booster-t1, soccer, locomotion]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/booster-robocup-demo.md\n  - ./reinforcement-learning.md\n  - ../entities/isaac-gym-isaac-lab.md\nsources:\n  - ../../sources/repos/htwk_gym.md\nsummary: \"htwk-gym 是由 HTWK Leipzig 开发的人形机器人足球 RL 框架，专注于 Booster T1/K1 平台的参数化步行与踢球技能训练。\"\n---\n\n# htwk-gym\n\n**htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **Booster T1/K1** 平台上经过了广泛的验证。\n\n## 核心组件\n\n### 1. 参数化步行 (Parameterized Walking)\nhtwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制器**。\n- **控制输入**：步频、脚部偏航角、身体姿态参数。\n- **优势**：允许上层决策系统（如 ROS 2 状态机）根据球场局势动态调整行走风格，实现灵巧的变向和截球。\n\n### 2. 足球专项任务环境\n- **`T1/Kicking`**：包含球感知奖励、碰撞惩罚以及目标速度引导，用于训练精准的踢球动作。\n- **`T1/Walking`**：侧重于高速平滑移动。\n\n### 3. 多端导出与部署 (Deployment Pipeline)\n- **PyTorch JIT**：用于仿真评估和高性能 PC 部署。\n- **TFLite 量化**：通过 TensorFlow Lite 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。\n\n## 主要技术路线\n\n| 模块 | 实现方案 | 优势 |\n|------|---------|------|\n| **运动控制** | 参数化步态策略 (Parameterized Gait) | 允许上层逻辑动态调节速度与步频 |\n| **训练环境** | Isaac Gym 并行仿真 | 极高的样本采集效率，缩短训练时间 |\n| **Sim-to-Real** | 领域随机化 + 跨仿真验证 (MuJoCo) | 提高策略在真实不平整草地上的鲁棒性 |\n| **部署优化** | TFLite 量化导出 | 适配机器人端侧 ARM/Orin 算力平台 |\n\n## 技术细节\n\n- **基础引擎**：使用 NVIDIA **Isaac Gym** 实现大规模并行训练，可在数分钟内完成基础步态学习。\n- **跨仿真验证**：支持将训练好的模型在 **MuJoCo** 环境中进行独立验证，以减少 Sim-to-Real 的鸿沟。\n- **Streamlit 调试工具**：提供了一个名为 `obs_editor` 的 Web 界面，开发者可以实时拉动滑块调整训练参数或观察策略表现。\n\n## 在项目中的角色\n\nhtwk-gym 作为底层“技能工厂”，为 [Booster RoboCup Demo](../entities/booster-robocup-demo.md) 提供高性能的原子技能（如 `RLVisionKick`）。\n\n## 参考来源\n\n- [NaoHTWK/htwk-gym 源码仓库](../../sources/repos/htwk_gym.md)\n- HTWK Leipzig RoboCup Team Documentation\n\n## 关联页面\n\n- [Humanoid Soccer](../tasks/humanoid-soccer.md)\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n- [Booster Robotics RoboCup Demo](../entities/booster-robocup-demo.md)\n- [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md)",
         "tags": [
           "method",
           "humanoid",
           "locomotion",
           "rl",
+          "sim2real",
           "tooling"
         ],
         "related": [
+          "wiki-tasks-humanoid-soccer",
+          "wiki-methods-reinforcement-learning",
+          "wiki-concepts-sim2real",
+          "wiki-concepts-domain-randomization",
           "entity-booster-robocup-demo",
+          "entity-isaac-gym-isaac-lab",
           "sources-repos-htwk-gym"
         ],
         "source_links": [],
@@ -2088,11 +2247,11 @@
         "type": "wiki_page",
         "path": "wiki/methods/imitation-learning.md",
         "summary": "模仿学习 (Imitation Learning)：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”",
-        "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nsummary: \"Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- MimicKit：j提炼 encoder-decoder 框架\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
+        "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nsummary: \"Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- DeepMimic：BC + RL 改进\n- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座\n- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计\n- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿\n- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作\n- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务\n- ASE：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架\n- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿\n- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿\n- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制\n- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
         "tags": [
           "method",
-          "humanoid",
           "locomotion",
+          "dynamics",
           "rl",
           "il",
           "sim2real"
@@ -2274,6 +2433,31 @@
         ],
         "status": "active"
       },
+      "wiki-methods-motion-retargeting-gmr": {
+        "id": "wiki-methods-motion-retargeting-gmr",
+        "title": "GMR: 通用动作重定向",
+        "type": "wiki_page",
+        "path": "wiki/methods/motion-retargeting-gmr.md",
+        "summary": "type: method。",
+        "content_markdown": "---\ntype: method\ntags: [robotics, kinematics, retargeting, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../concepts/motion-retargeting.md\n  - ./beyondmimic.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。\"\n---\n\n# GMR: 通用动作重定向\n\n**GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。\n\n## 核心原理\n\nGMR 主要基于**运动学 (Kinematics)** 优化。它不考虑力学项，而是通过最小化几何误差来实现姿态复现。\n\n### 优化目标\n1. **关键点位置匹配**：让机器人的手掌、脚掌、肘部等关键点位置尽可能贴近参考轨迹。\n2. **关节限位约束**：确保生成的角度不超出机器人的物理极限。\n3. **平滑性约束**：减少相邻帧之间的角度突变。\n\n## 主要技术路线\n\n| 模块 | 核心方法 | 关键约束 |\n|------|---------|---------|\n| **骨架映射** | 关节树匹配 / 重排 | 处理人机自由度不一致 |\n| **几何对齐** | 关键点 IK (Inverse Kinematics) | 最小化手/足位置与参考轨迹误差 |\n| **数值求解** | 基于 QP 的优化器 | 满足关节限位与角速度连续性 |\n| **后处理** | 时间平滑 + 静态稳定性筛选 | 减少高频噪声，剔除极度失稳片段 |\n\n## 关键局限与避坑指南\n\n根据《开源运动控制项目》文档的点评，GMR 的使用必须注意其“非物理性”：\n\n### 1. 缺乏动力学一致性\nGMR 只管姿态“像不像”，不管“能不能站稳”。\n- **表现**：重定向后的轨迹可能出现脚悬空、质心超出支撑多边形的情况。\n- **后果**：直接把 GMR 输出给底层 PD 控制器，机器人极大概率摔倒。\n\n### 2. 接触不连续性\n由于没有建模接触力，GMR 输出的轨迹在脚触地瞬间可能存在穿透或虚位。\n\n### 3. 速度与加速度跳变\n几何最优不代表导数最优。\n\n## 工业界最佳实践\n\n**GMR 只是起点，不是终点。** \n\n一个完整的重定向流水线应为：\n$$\n\\text{Raw MoCap} \\xrightarrow{GMR} \\text{Kinematic Trajectory} \\xrightarrow{\\text{Dynamic Filter}} \\text{Feasible Trajectory}\n$$\n\n- **动力学过滤层**：通过 QP 优化（如 HALO 方式）或全动力学优化，补上质量、惯性和接触力约束。\n- **RL 细化**：将 GMR 轨迹作为参考，通过 [BeyondMimic](./beyondmimic.md) 等框架训练具有鲁棒性的 RL 策略。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [GMR 源码仓库](https://github.com/YanjieZe/GMR)\n\n## 关联页面\n\n- [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。\n- [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。",
+        "tags": [
+          "method",
+          "humanoid",
+          "control",
+          "optimization",
+          "rl",
+          "il"
+        ],
+        "related": [
+          "wiki-concepts-motion-retargeting",
+          "wiki-methods-beyondmimic",
+          "sources-papers-motion-control-projects"
+        ],
+        "source_links": [
+          "https://github.com/YanjieZe/GMR"
+        ],
+        "status": "active"
+      },
       "wiki-methods-mppi": {
         "id": "wiki-methods-mppi",
         "title": "Model Predictive Path Integral (MPPI)",
@@ -2301,16 +2485,22 @@
         "type": "wiki_page",
         "path": "wiki/methods/paid-framework.md",
         "summary": "type: method。",
-        "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/unitree-g1.md\n  - ./reinforcement-learning.md\n  - ./imitation-learning.md\nsources:\n  - ../../sources/repos/humanoid_soccer.md\nsummary: \"PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。\"\n---\n\n# PAiD Framework\n\n**PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核心思想是将复杂的感知-动作任务分解为多个阶段，逐步增加系统复杂度，以解决端到端学习中常见的收敛难与泛化差的问题。\n\n## 三阶段渐进式训练流程\n\nPAiD 的成功关键在于其结构化的训练方案：\n\n### 1. 动作技能习得 (Skill Acquisition)\n- **目标**：获取基础的踢球肢体协调能力。\n- **方法**：使用**模仿学习 (Imitation Learning)**。从人类动作捕捉数据中提取关键特征，通过 RL 训练机器人跟踪这些动作。\n- **输出**：一个能够执行自然摆腿动作的基准策略（Motion Policy）。\n\n### 2. 感知集成 (Perception Integration)\n- **目标**：赋予机器人“看球”并调整动作的能力。\n- **方法**：将视觉感知特征（如球的位置、速度）引入状态空间。训练策略根据感知输入动态调整第一阶段习得的动作。\n- **输出**：一个能够在不同足球初始位姿下完成踢球的感知-动作策略。\n\n### 3. 物理感知 Sim-to-Real (Physics-aware Transfer)\n- **目标**：确保策略在真实物理环境（如 Unitree G1）中的有效性。\n- **方法**：\n    - **领域随机化**：对质量、摩擦力、视觉噪声进行大规模扰动。\n    - **时延模拟**：在仿真中引入控制环路的时延，增强鲁棒性。\n- **输出**：可直接部署到 Unitree G1 上的部署策略。\n\n## 技术特色\n\n- **类人化 (Human-like)**：通过第一阶段的约束，机器人表现出更符合人类生物力学的踢球动作，而非仅仅是简单的肢体碰撞。\n- **RNN 网络架构**：使用循环神经网络处理感知序列，能够更好地利用历史信息应对视觉遮挡或足球滚动。\n- **高泛化性**：支持多种地形（室内地板、室外草坪）以及静止/滚动的足球。\n\n## 应用案例\n\n在 **Unitree G1** 机器人上的实验证明，PAiD 框架能够实现：\n- 高达 90% 以上的稳健踢球成功率。\n- 动态调整踢球方向和力度以射门或传球。\n- 在受到轻微外部扰动时仍能维持平衡并完成动作。\n\n## 参考来源\n\n- [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)\n- *Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework* (Paper)",
+        "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]\nstatus: drafting\nupdated: 2026-04-27\nrelated:\n  - ../tasks/humanoid-soccer.md\n  - ../entities/unitree-g1.md\n  - ./reinforcement-learning.md\n  - ./imitation-learning.md\nsources:\n  - ../../sources/repos/humanoid_soccer.md\nsummary: \"PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。\"\n---\n\n# PAiD Framework\n\n**PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核心思想是将复杂的感知-动作任务分解为多个阶段，逐步增加系统复杂度，以解决端到端学习中常见的收敛难与泛化差的问题。\n\n## 三阶段渐进式训练流程\n\nPAiD 的成功关键在于其结构化的训练方案：\n\n### 1. 动作技能习得 (Skill Acquisition)\n- **目标**：获取基础的踢球肢体协调能力。\n- **方法**：使用**模仿学习 (Imitation Learning)**。从人类动作捕捉数据中提取关键特征，通过 RL 训练机器人跟踪这些动作。\n- **输出**：一个能够执行自然摆腿动作的基准策略（Motion Policy）。\n\n### 2. 感知集成 (Perception Integration)\n- **目标**：赋予机器人“看球”并调整动作的能力。\n- **方法**：将视觉感知特征（如球的位置、速度）引入状态空间。训练策略根据感知输入动态调整第一阶段习得的动作。\n- **输出**：一个能够在不同足球初始位姿下完成踢球的感知-动作策略。\n\n### 3. 物理感知 Sim-to-Real (Physics-aware Transfer)\n- **目标**：确保策略在真实物理环境（如 Unitree G1）中的有效性。\n- **方法**：\n    - **领域随机化**：对质量、摩擦力、视觉噪声进行大规模扰动。\n    - **时延模拟**：在仿真中引入控制环路的时延，增强鲁棒性。\n- **输出**：可直接部署到 Unitree G1 上的部署策略。\n\n## 主要技术路线\n\n| 阶段 | 核心方法 | 关键技术 |\n|------|---------|---------|\n| **1. 动作习得** | 模仿学习 (IL) | 基于 MoCap 数据的 [Behavior Cloning](../formalizations/behavior-cloning-loss.md) |\n| **2. 感知集成** | 强化学习 (RL) | 紧耦合视觉特征的 PPO 算法 |\n| **3. 真机迁移** | Sim-to-Real | [领域随机化](../concepts/domain-randomization.md) + 时延反馈补偿 |\n\n## 技术特色\n\n- **类人化 (Human-like)**：通过第一阶段的约束，机器人表现出更符合人类生物力学的踢球动作，而非仅仅是简单的肢体碰撞。\n- **RNN 网络架构**：使用循环神经网络处理感知序列，能够更好地利用历史信息应对视觉遮挡或足球滚动。\n- **高泛化性**：支持多种地形（室内地板、室外草坪）以及静止/滚动的足球。\n\n## 应用案例\n\n在 **Unitree G1** 机器人上的实验证明，PAiD 框架能够实现：\n- 高达 90% 以上的稳健踢球成功率。\n- 动态调整踢球方向和力度以射门或传球。\n- 在受到轻微外部扰动时仍能维持平衡并完成动作。\n\n## 参考来源\n\n- [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)\n- *Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework* (Paper)\n\n## 关联页面\n\n- [Humanoid Soccer](../tasks/humanoid-soccer.md)\n- [Imitation Learning](./imitation-learning.md)\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n- [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)\n- [Unitree G1](../entities/unitree-g1.md)",
         "tags": [
           "method",
           "humanoid",
           "rl",
           "il",
-          "tooling",
-          "hardware"
+          "sim2real",
+          "tooling"
         ],
         "related": [
+          "wiki-tasks-humanoid-soccer",
+          "wiki-methods-imitation-learning",
+          "wiki-methods-reinforcement-learning",
+          "wiki-concepts-domain-randomization",
+          "wiki-formalizations-behavior-cloning-loss",
+          "entity-unitree-g1",
           "sources-repos-humanoid-soccer"
         ],
         "source_links": [],
