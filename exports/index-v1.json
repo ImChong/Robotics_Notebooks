@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -243,7 +243,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -296,7 +296,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -391,7 +391,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -663,7 +663,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -724,7 +724,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -756,7 +756,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -821,7 +821,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -940,7 +940,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -974,7 +974,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1006,7 +1006,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1194,7 +1194,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_planning.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1868,7 +1868,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2018,7 +2018,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/model_based_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2053,7 +2053,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-motion-retargeting-gmr",
@@ -2206,7 +2206,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2442,7 +2442,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2563,7 +2563,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2600,7 +2600,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -5049,7 +5049,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "entity-drake",
@@ -5175,7 +5175,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "entity-mimickit",
