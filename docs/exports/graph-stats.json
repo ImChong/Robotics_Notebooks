@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-28",
   "node_count": 203,
-  "edge_count": 1107,
+  "edge_count": 1117,
   "community_count": 8,
   "top_hubs": [
     {
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 59
+      "degree": 60
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -69,21 +69,21 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 122,
-    "Manipulation 社区": 46,
-    "Imitation Learning (IL, 模仿学习) 社区": 13,
+    "Locomotion 社区": 80,
+    "Whole-Body Control (WBC) 社区": 57,
+    "Manipulation 社区": 42,
     "实时运控中间件配置指南 社区": 8,
-    "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Humanoid Soccer 社区": 3,
-    "Motion Retargeting（动作重定向） 社区": 2,
+    "Model-Based RL（基于模型的强化学习） 社区": 6,
+    "Roboto Origin（开源人形机器人基线） 社区": 6,
+    "Actuator Network (执行器网络) 社区": 2,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "Motion Retargeting（动作重定向） 社区",
+      "Actuator Network (执行器网络) 社区",
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.601,
-    "community_quality_warning": true
+    "largest_community_ratio": 0.394,
+    "community_quality_warning": false
   }
 }
