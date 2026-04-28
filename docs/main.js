@@ -1835,6 +1835,26 @@
       return score;
     }
 
+    function substringScore(doc, queryTokens) {
+      if (!queryTokens || !queryTokens.length) return 0;
+      var title = String(doc.title || '').toLowerCase();
+      var path = String(doc.path || '').toLowerCase();
+      var summary = String(doc.summary || '').toLowerCase();
+      var tags = (doc.tags || []).map(function(tag) { return String(tag || '').toLowerCase(); });
+      var tokenKeys = Object.keys(doc.tokens || {});
+      var score = 0;
+      queryTokens.forEach(function(token) {
+        if (!token || token.length < 2) return;
+        if (title.indexOf(token) >= 0) score += 8;
+        if (title.indexOf(token) === 0) score += 8;
+        if (path.indexOf(token) >= 0) score += 5;
+        if (tags.some(function(tag) { return tag.indexOf(token) >= 0; })) score += 4;
+        if (summary.indexOf(token) >= 0) score += 2;
+        if (tokenKeys.some(function(key) { return key.indexOf(token) >= 0; })) score += 1;
+      });
+      return score;
+    }
+
     function renderSearchResults(query) {
       _selectedIndex = -1;
       var q = query.trim();
@@ -1848,8 +1868,11 @@
           var matched = docs.filter(function(doc) {
             if (typeVal && doc.page_type !== typeVal) return false;
             if (!queryTokens.length) return true;
-            return queryTokens.some(function(token) { return ((doc.tokens || {})[token]) > 0; });
+            return queryTokens.some(function(token) { return ((doc.tokens || {})[token]) > 0; })
+              || substringScore(doc, queryTokens) > 0;
           }).map(function(doc) {
+            var bm25 = queryTokens.length ? bm25Score(doc, queryTokens, indexData) : 0;
+            var partial = queryTokens.length ? substringScore(doc, queryTokens) : 0;
             return {
               id: doc.id,
               path: doc.path,
@@ -1857,7 +1880,7 @@
               summary: doc.summary,
               page_type: doc.page_type,
               tags: doc.tags || [],
-              _score: queryTokens.length ? bm25Score(doc, queryTokens, indexData) : 0
+              _score: bm25 + partial
             };
           }).sort(function(a, b) {
             if (queryTokens.length && b._score !== a._score) return b._score - a._score;
