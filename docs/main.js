@@ -742,6 +742,15 @@
     return scored.slice(0, maxResults).map(function (item) { return item.id; });
   }
 
+  function resolveDetailPage(detailId, detailPages) {
+    if (!detailId) return null;
+    if (detailPages[detailId]) return detailPages[detailId];
+    if (detailId.indexOf('wiki-entities-') === 0) {
+      return detailPages['entity-' + detailId.slice('wiki-entities-'.length)] || null;
+    }
+    return null;
+  }
+
   function renderDetailPage(siteData) {
     if (!siteData || !siteData.pages) return;
 
@@ -750,7 +759,7 @@
     const markdownRouteIndex = buildMarkdownRouteIndex(siteData);
     const params = new URLSearchParams(window.location.search);
     const detailId = params.get('id') || '';
-    const detailPage = detailId ? detailPages[detailId] : null;
+    const detailPage = resolveDetailPage(detailId, detailPages);
 
     const titleEl = document.getElementById('detailTitle');
     const summaryEl = document.getElementById('detailSummary');
