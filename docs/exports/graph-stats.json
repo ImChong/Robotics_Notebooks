@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-04-28",
-  "node_count": 196,
+  "node_count": 203,
   "edge_count": 1099,
   "community_count": 8,
   "top_hubs": [
@@ -55,12 +55,48 @@
       "degree": 25
     }
   ],
-  "orphan_nodes": [],
+  "orphan_nodes": [
+    {
+      "id": "wiki/entities/mimickit.md",
+      "label": "MimicKit: 运动模仿与控制研究套件",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/add.md",
+      "label": "ADD: 对抗性微分判别器",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/ase.md",
+      "label": "ASE: 对抗性技能嵌入",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/awr.md",
+      "label": "AWR: 优势加权回归",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/deepmimic.md",
+      "label": "DeepMimic: 示例引导的技能学习",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/lcp.md",
+      "label": "LCP: Lipschitz 约束策略",
+      "out_degree": 0
+    },
+    {
+      "id": "wiki/methods/smp.md",
+      "label": "SMP: 得分匹配运动先验",
+      "out_degree": 0
+    }
+  ],
   "type_distribution": {
+    "method": 46,
     "concept": 42,
-    "method": 40,
     "query": 40,
-    "entity": 25,
+    "entity": 26,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -69,20 +105,26 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 70,
-    "Whole-Body Control (WBC) 社区": 56,
-    "Manipulation 社区": 41,
-    "实时运控中间件配置指南 社区": 9,
-    "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Model-Based RL（基于模型的强化学习） 社区": 6,
-    "Diffusion Policy 社区": 5,
-    "人形机器人运动控制 Know-How 社区": 2
+    "Locomotion 社区": 196,
+    "MimicKit: 运动模仿与控制研究套件 社区": 1,
+    "ADD: 对抗性微分判别器 社区": 1,
+    "ASE: 对抗性技能嵌入 社区": 1,
+    "AWR: 优势加权回归 社区": 1,
+    "DeepMimic: 示例引导的技能学习 社区": 1,
+    "LCP: Lipschitz 约束策略 社区": 1,
+    "SMP: 得分匹配运动先验 社区": 1
   },
   "community_quality": {
     "singleton_communities": [
-      "人形机器人运动控制 Know-How 社区"
+      "MimicKit: 运动模仿与控制研究套件 社区",
+      "ADD: 对抗性微分判别器 社区",
+      "ASE: 对抗性技能嵌入 社区",
+      "AWR: 优势加权回归 社区",
+      "DeepMimic: 示例引导的技能学习 社区",
+      "LCP: Lipschitz 约束策略 社区",
+      "SMP: 得分匹配运动先验 社区"
     ],
-    "largest_community_ratio": 0.357,
-    "community_quality_warning": false
+    "largest_community_ratio": 0.966,
+    "community_quality_warning": true
   }
 }

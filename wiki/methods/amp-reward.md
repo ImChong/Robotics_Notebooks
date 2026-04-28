@@ -68,3 +68,9 @@ $$
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
+
+## 进阶：MimicKit 与 ADD
+
+在 **[[mimickit]]** 框架中，AMP 得到了进一步的扩展和优化：
+- **[[add]] (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。
+- **[[smp]] (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。
