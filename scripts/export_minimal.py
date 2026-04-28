@@ -230,6 +230,13 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
         except ValueError:
             continue
         general.append(path_to_id(resolved))
+    if current_path.parts and "wiki" in current_path.parts:
+        wiki_dir = ROOT / "wiki"
+        stem_to_path = {p.stem: p for p in wiki_dir.rglob("*.md")}
+        for target in re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", text):
+            linked_path = stem_to_path.get(target.strip())
+            if linked_path:
+                general.append(path_to_id(linked_path))
     ordered = []
     seen = set()
     for item in priority + general:

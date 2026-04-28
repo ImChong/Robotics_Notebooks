@@ -974,7 +974,10 @@
     // 最终字号 = baseRadius × nodeScale × 0.4 × (fontSliderVal/10)
     // 0.4 让 baseRadius=10 的节点在 nodeScale=1, fontSliderVal=10 时字体≈10px
     function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
-    function toDetailId(path) { return path.replace(/\//g, '-').replace('.md', ''); }
+    function toDetailId(path) {
+      const item = indexItems && indexItems.find(it => it.path === path || it.id === path);
+      return item?.id || path.replace(/\//g, '-').replace('.md', '');
+    }
     function renderLegend() {
       const rows = [];
       if (colorMode === 'community') {
@@ -1800,7 +1803,7 @@
       const related = item?.related || [];
       if (related.length) {
         sbRelList.innerHTML = related.slice(0, 8).map(r => {
-          const relId = r.replace(/\//g,'-').replace('.md','');
+          const relId = toDetailId(r);
           const relItem = indexItems.find(it => it.path === r || it.id === relId);
           const relTitle = relItem?.title || r.split('/').pop().replace('.md','');
           return `<li><a href="detail.html?id=${encodeURIComponent(relId)}">${escapeHtml(relTitle)}</a></li>`;
