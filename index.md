@@ -215,6 +215,7 @@ SORT type ASC
 - [Terrain Adaptation（地形适应）](concepts/terrain-adaptation.md) — Terrain Adaptation**：让腿式或人形机器人根据地形感知结果，动态调整落脚点、身体姿态、接触时序和控制参数，从而在楼梯、碎石、草地、台阶和坡面上稳定行走。 `📅unknown` `[wiki_page]`
 - [TSID](concepts/tsid.md) — TSID（Task Space Inverse Dynamics，任务空间逆动力学）** 是一种典型的人形机器人全身控制方法，用来在满足动力学与接触约束的前提下，把任务空间目标转成可执行的关节加速 `📅unknown` `[wiki_page]`
 - [Video-as-Simulation (视频即仿真)](concepts/video-as-simulation.md) — 视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个 `📅unknown` `[wiki_page]`
+- [视触觉融合（Visuo-Tactile Fusion）](concepts/visuo-tactile-fusion.md) — 视触觉融合 (Visuo-Tactile Fusion)** 研究如何在一次操作的不同阶段，让机器人在「视觉全局信息」与「触觉局部信息」之间动态切换权重，特别关注**接触瞬间**这一最难的窗口期。 `📅unknown` `[wiki_page]`
 - [Whole-Body Control (WBC)](concepts/whole-body-control.md) — 全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。 `📅unknown` `[wiki_page]`
 - [Whole-Body Coordination（全身协调控制）](concepts/whole-body-coordination.md) — 全身协调控制（Whole-Body Coordination）**：研究高自由度机器人系统（尤其是人形机器人）如何将全身多个肢体、链接的运动在时间和空间上进行统一协调，使不同子系统的运动相互配合， `📅unknown` `[wiki_page]`
 

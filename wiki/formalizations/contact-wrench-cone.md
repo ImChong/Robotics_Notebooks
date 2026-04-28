@@ -9,6 +9,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/contact-rich-manipulation.md
   - ../concepts/tactile-sensing.md
+  - ../concepts/visuo-tactile-fusion.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/whole_body_control.md
