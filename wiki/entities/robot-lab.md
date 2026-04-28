@@ -30,6 +30,7 @@ summary: "robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练
 4. **特殊任务支持**：
    - **AMP Dance**：利用 SKRL 驱动的动作风格迁移。
    - **BeyondMimic**：人形机器人的高性能动作模仿框架。
+   - **[[mimickit]]**：由 Xue Bin Peng 开发的下一代动作控制研究套件，与 robot_lab 在 Isaac Lab 生态中高度互补。
 
 ## 仓库结构规范
 
@@ -42,6 +43,7 @@ robot_lab 遵循 IsaacLab 的扩展规范：
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [legged_gym](./legged-gym.md)
 - [Unitree 品牌主页](./unitree.md)
+- [MimicKit (运动模仿套件)](./mimickit.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
 
 ## 参考来源

@@ -8,25 +8,26 @@ related:
   - ../entities/mimickit.md
 sources:
   - ../../sources/papers/deepmimic.md
-summary: "DeepMimic 是基于物理的特征技能学习的基石工作，通过 RL 实现对参考运动轨迹的精确跟踪。"
+summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹跟踪奖励实现复杂的运动模仿。"
 ---
 
 # DeepMimic: 示例引导的技能学习
 
-**DeepMimic** 证明了复杂的物理技能（如后空翻、踢腿、舞蹈）可以通过强化学习对单一或多个参考剪辑（Reference Clips）进行模仿来获得。
+**DeepMimic** 是第一个能够让物理仿真智能体高保重模仿后空翻、武术等高难度动作的深度 RL 算法。
 
-## 核心机制：跟踪奖励 (Tracking Reward)
+## 核心：显式跟踪 (Explicit Tracking)
+不同于后来的 AMP 靠判别器“悟”，DeepMimic 靠“盯”。它要求机器人的每一个关节在每一时刻都要尽可能贴合参考轨迹。
 
-DeepMimic 使用一个显式的复合奖励函数来引导策略：
-280870r_t = w_p r_p + w_v r_v + w_e r_e + w_c r_c280870
-- **Pose ($)**: 关节角度的 MSE。
-- **Velocity ($)**: 关节速度的 MSE。
-- **End-Effector ($)**: 末端执行器位置的 MSE。
-- **Center of Mass ($)**: 质心位置偏差。
+## 主要技术路线
+| 模块 | 方案 | 作用 |
+|------|-----|------|
+| **奖励函数** | [奖励函数设计](../concepts/reward-design.md) Multi-term Reward | 综合位置、速度、末端位姿和质心偏差 |
+| **初始化** | RSI (Reference State Initialization) | 在轨迹的任意点开始训练，增加样本多样性 |
+| **早期终止** | Early Exit | 如果跌倒或偏离过大则重置，提高训练效率 |
 
-## 局限性
-- **阶段依赖**：需要显式的相位变量 (Phase Variable) 来同步参考动作。
-- **奖励工程**：需要为不同动作精细调整各项权重。
+## 关联页面
+- [[amp-reward]] — 后续的“无奖励设计”版本。
+- [[mimickit]] — 现代化的实现框架。
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)

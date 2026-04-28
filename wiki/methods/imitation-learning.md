@@ -2,6 +2,15 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
+related:
+  - ./reinforcement-learning.md
+  - ../concepts/sim2real.md
+  - ../entities/mimickit.md
+  - ./amp-reward.md
+  - ./smp.md
+sources:
+  - ../../sources/papers/imitation_learning.md
+  - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
@@ -114,12 +123,14 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹
-- [[mimickit]] (Xue Bin Peng 团队开发的模块化运动控制框架)
+- [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)
 - [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架
-- [[smp]] (基于得分匹配的运动先验)
-- [[add]] (对抗性微分判别器，消除运动伪影)
-- [[lcp]] (Lipschitz 约束策略，提升控制鲁棒性)
-- [[awr]] (优势加权回归，简单高效的离策学习)
+- [SMP](./smp.md) (基于得分匹配的运动先验)
+- [ADD](./add.md) (对抗性微分判别器，消除运动伪影)
+- [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)
+- [AWR](./awr.md) (优势加权回归，简单高效的离策学习)
+- [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)
+- [ASE](./ase.md) (对抗性技能嵌入)
 - [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿
 - [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿
 - [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
