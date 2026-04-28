@@ -146,6 +146,7 @@ SORT type ASC
 
 
 
+
 ### Entities（实体页）
 
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
@@ -233,6 +234,7 @@ SORT type ASC
 - [CLAW (宇树 G1 全身动作数据生成管线)](methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
 - [ContactNet](methods/contact-net.md) — ContactNet** 解决了“在杂乱无章的堆叠物中，手手该按在哪”的问题。它直接输入原始点云，输出稠密的接触成功概率图。 `📅unknown` `[method_page]`
 - [DAgger（Dataset Aggregation）](methods/dagger.md) — DAgger**：一种交互式模仿学习方法，让当前策略先去“自己跑”，再由专家为这些真实访问到的状态打标签，并把新数据持续并入训练集。 `📅unknown` `[method_page]`
+- [Diffusion-based Motion Generation (基于扩散模型的运动生成)](methods/diffusion-motion-generation.md) — Diffusion-based Motion Generation**：利用扩散概率模型（Diffusion Probabilistic Models）生成机器人关节空间或笛卡尔空间的连续运动序列 `📅unknown` `[method_page]`
 - [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
@@ -265,6 +267,7 @@ SORT type ASC
 
 - [Balance Recovery（平衡恢复）](tasks/balance-recovery.md) — 平衡恢复**（Balance Recovery / Push Recovery）：机器人在受到外部扰动（推力、地形突变、碰撞等）后，从失衡状态恢复到稳定姿态并继续任务的能力。 `📅unknown` `[task_page]`
 - [Bimanual Manipulation（双臂协调操作）](tasks/bimanual-manipulation.md) — 双臂协调操作（Bimanual Manipulation）**：同时使用两只手臂协同完成一个任务，两臂之间存在物理或时序上的依赖关系——典型任务包括双手递接、拧瓶盖、折叠衣服、组装零件。单臂独立控 `📅unknown` `[task_page]`
+- [Humanoid Locomotion (人形机器人移动)](tasks/humanoid-locomotion.md) — Humanoid Locomotion**：使双足类人机器人能够在复杂、非结构化的地形中，保持平衡的同时实现高效、鲁棒的位移，并具备全身协调（Whole-body Coordination）能力。 `📅unknown` `[task_page]`
 - [Humanoid Soccer](tasks/humanoid-soccer.md) — 人形机器人足球**：人形机器人在动态、竞争性环境下的综合表现。作为 RoboCup 的核心项目，它被认为是衡量人形机器人自主能力的重要基准。 `📅unknown` `[task_page]`
 - [Loco-Manipulation](tasks/loco-manipulation.md) — 移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。 `📅unknown` `[task_page]`
 - [Locomotion](tasks/locomotion.md) — 运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。 `📅unknown` `[task_page]`
