@@ -4,6 +4,7 @@ tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
 updated: 2026-04-27
 related:
+  - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ./imitation-learning.md
   - ./beyondmimic.md

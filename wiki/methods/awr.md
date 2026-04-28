@@ -4,6 +4,7 @@ tags: [rl, off-policy, regression, xbpeng]
 status: complete
 updated: 2026-04-28
 related:
+  - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ./reinforcement-learning.md
   - ./policy-optimization.md

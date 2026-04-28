@@ -94,20 +94,55 @@ def extract_title(content: str) -> str:
 
 
 def extract_internal_links(content: str, source_path: Path) -> list[Path]:
-    """提取页面中所有指向 wiki/ 目录内部的相对链接。"""
+    """提取页面中所有指向 wiki/ 目录内部的相对链接。
+    支持：
+    1. 标准 Markdown: [label](path.md)
+    2. Frontmatter related: - path.md
+    3. Wikilinks: [[name]]
+    """
     targets = []
+    
+    def is_wiki_path(p: Path) -> bool:
+        try:
+            p.relative_to(WIKI_DIR)
+            return p.exists()
+        except ValueError:
+            return False
+
+    # 1. 标准 Markdown 链接
     for match in re.finditer(r"\]\(([^)]+\.md)\)", content):
         href = match.group(1).split("#")[0]
         if href.startswith("http"):
             continue
         resolved = (source_path.parent / href).resolve()
-        try:
-            resolved.relative_to(WIKI_DIR)
-            if resolved.exists():
-                targets.append(resolved)
-        except ValueError:
-            pass
-    return targets
+        if is_wiki_path(resolved):
+            targets.append(resolved)
+
+    # 2. Frontmatter 'related' 列表
+    if content.startswith("---"):
+        end = content.find("\n---", 3)
+        if end != -1:
+            fm = content[3:end]
+            related_match = re.search(r"^related\s*:(.*?)(?=^\w|\Z)", fm, re.MULTILINE | re.DOTALL)
+            if related_match:
+                for line in related_match.group(1).splitlines():
+                    line = line.strip().strip("- ")
+                    if line.endswith(".md"):
+                        resolved = (source_path.parent / line).resolve()
+                        if is_wiki_path(resolved):
+                            targets.append(resolved)
+
+    # 3. Wikilinks [[name]]
+    global _stem_to_path
+    if "_stem_to_path" not in globals():
+        _stem_to_path = {p.stem: p for p in WIKI_DIR.rglob("*.md")}
+
+    for match in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", content):
+        stem = match.group(1).strip()
+        if stem in _stem_to_path:
+            targets.append(_stem_to_path[stem])
+
+    return list(set(targets))
 
 
 def build_undirected_adjacency(node_ids: list[str], edges: list[dict[str, str]]) -> dict[str, set[str]]:

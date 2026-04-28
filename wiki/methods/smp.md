@@ -4,6 +4,7 @@ tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1]
 status: complete
 updated: 2026-04-28
 related:
+  - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ./amp-reward.md
   - ./ase.md
