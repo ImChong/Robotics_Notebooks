@@ -1,13 +1,13 @@
 {
   "generated_at": "2026-04-28",
-  "node_count": 194,
-  "edge_count": 1089,
-  "community_count": 8,
+  "node_count": 196,
+  "edge_count": 1102,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 76
+      "degree": 79
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -42,7 +42,7 @@
     {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
-      "degree": 32
+      "degree": 33
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -58,33 +58,30 @@
   "orphan_nodes": [],
   "type_distribution": {
     "concept": 42,
+    "method": 40,
     "query": 40,
-    "method": 39,
     "entity": 25,
     "formalization": 22,
     "comparison": 14,
-    "task": 8,
+    "task": 9,
     "overview": 2,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 75,
-    "Whole-Body Control (WBC) 社区": 52,
-    "Manipulation 社区": 46,
+    "Locomotion 社区": 72,
+    "Whole-Body Control (WBC) 社区": 58,
+    "Manipulation 社区": 41,
     "实时运控中间件配置指南 社区": 9,
+    "Model-Based RL（基于模型的强化学习） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Variational Objective (变分目标函数) 社区": 2,
-    "人形机器人运动控制 Know-How 社区": 2,
-    "Multi-Agent Reinforcement Learning (MARL) 社区": 1
+    "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "Variational Objective (变分目标函数) 社区",
-      "人形机器人运动控制 Know-How 社区",
-      "Multi-Agent Reinforcement Learning (MARL) 社区"
+      "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.387,
+    "largest_community_ratio": 0.367,
     "community_quality_warning": false
   }
 }
