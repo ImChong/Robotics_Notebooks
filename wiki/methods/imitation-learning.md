@@ -124,6 +124,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹
 - [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)
+- [ProtoMotions](../entities/protomotions.md) (NVIDIA 开发的高性能仿真与控制框架，支持超大规模并行训练)
 - [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架
 - [SMP](./smp.md) (基于得分匹配的运动先验)
 - [ADD](./add.md) (对抗性微分判别器，消除运动伪影)

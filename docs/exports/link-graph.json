@@ -33,7 +33,7 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -96,14 +96,14 @@
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/armature-modeling.md",
       "label": "Armature Modeling（电枢惯量建模）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -222,7 +222,7 @@
       "label": "Gait Generation（步态生成）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/hqp.md",
@@ -453,7 +453,7 @@
       "label": "Boston Dynamics（波士顿动力）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/crocoddyl.md",
@@ -538,6 +538,13 @@
       "type": "entity",
       "health_score": 3,
       "community": "community-1"
+    },
+    {
+      "id": "wiki/entities/protomotions.md",
+      "label": "ProtoMotions: 大规模人形机器人仿真框架",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/robot-lab.md",
@@ -740,7 +747,7 @@
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/add.md",
@@ -999,7 +1006,7 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/smp.md",
@@ -1055,7 +1062,7 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-7"
+      "community": "community-6"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -1083,7 +1090,7 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -1132,7 +1139,7 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-7"
+      "community": "community-6"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -3985,6 +3992,10 @@
     },
     {
       "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/methods/beyondmimic.md"
     },
     {
@@ -5896,13 +5907,13 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 80,
+      "size": 87,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 57,
+      "size": 53,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -5931,12 +5942,6 @@
     },
     {
       "id": "community-6",
-      "label": "Actuator Network (执行器网络) 社区",
-      "size": 2,
-      "hub_id": "wiki/methods/actuator-network.md"
-    },
-    {
-      "id": "community-7",
       "label": "人形机器人运动控制 Know-How 社区",
       "size": 2,
       "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"

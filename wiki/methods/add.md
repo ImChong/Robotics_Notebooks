@@ -4,6 +4,7 @@ tags: [gan, discriminator, artifacts, xbpeng]
 status: complete
 updated: 2026-04-28
 related:
+  - ../entities/protomotions.md
   - ./amp-reward.md
   - ./smp.md
   - ../entities/mimickit.md
@@ -36,9 +37,10 @@ ADD 的核心思想是将判别器的输入从绝对状态 $ 转变为状态的*
 - **细节增强**：能够捕捉到人类动作中微小的、具有表现力的动态特征。
 
 ## 关联页面
+- [[protomotions]] — 提供大规模并行训练支持。
 - [[amp-reward]] — ADD 的基础框架。
 - [[smp]] — 另一种通过得分匹配解决稳定性的方案。
-- [[mimickit]] — ADD 的官方实现套件。
+- [[mimickit]] — ADD 的官方实现框架（集成于 [[mimickit]] 与 [[protomotions]]）。
 
 ## 参考来源
 - [sources/papers/add.md](../../sources/papers/add.md)

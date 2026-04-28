@@ -4,6 +4,7 @@ tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1]
 status: complete
 updated: 2026-04-28
 related:
+  - ../entities/protomotions.md
   - ./amp-reward.md
   - ./ase.md
   - ../entities/unitree-g1.md
@@ -40,6 +41,7 @@ SMP 借鉴了文本转图像领域的 SDS 技术：
 | **初始化** | GSI (Generative State Initialization) | 利用生成模型代替传统 RSI 数据集采样 |
 
 ## 关联页面
+- [[protomotions]] — 提供大规模并行训练支持。
 - [概率流形式化](../formalizations/probability-flow.md)
 - [AMP](./amp-reward.md) — 传统的判别器路线。
 - [Unitree G1](../entities/unitree-g1.md) — SMP 已在此硬件上完成真机验证。

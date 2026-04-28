@@ -4,6 +4,7 @@ tags: [robustness, stability, lipschitz, xbpeng]
 status: complete
 updated: 2026-04-28
 related:
+  - ../entities/protomotions.md
   - ./reinforcement-learning.md
   - ../concepts/safety-filter.md
   - ../entities/mimickit.md
@@ -36,6 +37,7 @@ LCP 通过限制神经网络的 Lipschitz 常数 $，确保：
 - **抗扰动**：对传感器噪声和外部推力具有天然的抑制作用。
 
 ## 关联页面
+- [[protomotions]] — 提供大规模并行训练支持。
 - [[reinforcement-learning]] — LCP 是对标准 RL 策略的一种约束增强。
 - [[safety-filter]] — 类似的初衷，但 LCP 是在策略内部实现的。
 - [[mimickit]] — LCP 已集成至此研究套件。

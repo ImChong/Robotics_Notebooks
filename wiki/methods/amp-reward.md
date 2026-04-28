@@ -4,6 +4,7 @@ tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
 updated: 2026-04-27
 related:
+  - ../entities/protomotions.md
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ../tasks/humanoid-soccer.md
@@ -64,6 +65,7 @@ $$
 - [HumanX 项目主页](https://github.com/wyhuai/human-x)
 
 ## 关联页面
+- [[protomotions]] — 提供大规模并行训练支持。
 
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
