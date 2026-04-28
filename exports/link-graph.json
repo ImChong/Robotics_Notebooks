@@ -33,7 +33,7 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -250,7 +250,7 @@
       "label": "Latent Imagination (潜空间想象)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/concepts/lcm-basics.md",
@@ -369,7 +369,7 @@
       "label": "Video-as-Simulation (视频即仿真)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/concepts/visuo-tactile-fusion.md",
@@ -411,35 +411,35 @@
       "label": "Atom01 Deploy",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-description.md",
       "label": "Atom01 Description",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-firmware.md",
       "label": "Atom01 Firmware",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-hardware.md",
       "label": "Atom01 Hardware",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-train.md",
       "label": "Atom01 Train",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/booster-robocup-demo.md",
@@ -523,7 +523,7 @@
       "label": "开源人形机器人硬件方案对比",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/pinocchio.md",
@@ -544,7 +544,7 @@
       "label": "Roboto Origin（开源人形机器人基线）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/shadow-hand.md",
@@ -684,7 +684,7 @@
       "label": "Probability Flow (概率流形式化)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-6"
     },
     {
       "id": "wiki/formalizations/se3-representation.md",
@@ -705,7 +705,7 @@
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/formalizations/vla-tokenization.md",
@@ -810,14 +810,14 @@
       "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-6"
     },
     {
       "id": "wiki/methods/diffusion-policy.md",
       "label": "Diffusion Policy",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-6"
     },
     {
       "id": "wiki/methods/dmp.md",
@@ -845,7 +845,7 @@
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/methods/haic.md",
@@ -908,7 +908,7 @@
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -929,7 +929,7 @@
       "label": "Model Predictive Path Integral (MPPI)",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-5"
     },
     {
       "id": "wiki/methods/paid-framework.md",
@@ -1006,7 +1006,7 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-7"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
@@ -1034,7 +1034,7 @@
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
@@ -1083,7 +1083,7 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-7"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -1328,7 +1328,7 @@
       "label": "Humanoid Locomotion (人形机器人移动)",
       "type": "task",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-6"
     },
     {
       "id": "wiki/tasks/humanoid-soccer.md",
@@ -1339,7 +1339,7 @@
     },
     {
       "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
+      "label": "Loco-Manipulation (移动操作)",
       "type": "task",
       "health_score": 3,
       "community": "community-0"
@@ -5516,11 +5516,19 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/tasks/humanoid-locomotion.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/diffusion-motion-generation.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
@@ -5532,31 +5540,11 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/tasks/ultra-survey.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -5787,13 +5775,13 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 72,
+      "size": 70,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 58,
+      "size": 56,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -5810,18 +5798,24 @@
     },
     {
       "id": "community-4",
-      "label": "Model-Based RL（基于模型的强化学习） 社区",
-      "size": 7,
-      "hub_id": "wiki/methods/model-based-rl.md"
-    },
-    {
-      "id": "community-5",
       "label": "Roboto Origin（开源人形机器人基线） 社区",
       "size": 7,
       "hub_id": "wiki/entities/roboto-origin.md"
     },
     {
+      "id": "community-5",
+      "label": "Model-Based RL（基于模型的强化学习） 社区",
+      "size": 6,
+      "hub_id": "wiki/methods/model-based-rl.md"
+    },
+    {
       "id": "community-6",
+      "label": "Diffusion Policy 社区",
+      "size": 5,
+      "hub_id": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "id": "community-7",
       "label": "人形机器人运动控制 Know-How 社区",
       "size": 2,
       "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"

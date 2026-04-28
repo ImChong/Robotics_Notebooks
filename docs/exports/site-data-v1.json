@@ -2911,38 +2911,33 @@
       },
       "wiki-tasks-loco-manipulation": {
         "id": "wiki-tasks-loco-manipulation",
-        "title": "Loco-Manipulation",
+        "title": "Loco-Manipulation (移动操作)",
         "type": "wiki_page",
         "path": "wiki/tasks/loco-manipulation.md",
-        "summary": "让机器人边走边动手——不是先停下来再操作，而是行走和操作同时发生、相互协调",
-        "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题，是 locomotion 与 manipulation 的耦合任务。\"\nupdated: 2026-04-25\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/gentlehumanoid_upper_body_compliance.md\n---\n\n# Loco-Manipulation\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作同时发生、相互协调。\n\n## 为什么重要\n\n真实世界的很多任务，**不允许机器人停下来再操作**：\n- 从移动的传送带上取物\n- 在行走时打开门或按电梯\n- 在非结构化环境中拿递物品\n- 和人交互时保持跟随并执行任务\n\n人形机器人的终极目标是在复杂环境中替代人类完成通用任务，loco-manipulation 是走向这一目标必须解决的核心能力。\n\n它也是当前人形机器人最难的开放问题之一：\n- **行走**和**操作**各自都很难\n- 两者同时做，会在动力学、控制、感知层面产生强耦合\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂的运动会影响质心位置和角动量，从而影响行走稳定性。\n反过来，行走时的步态节律和地面力也会传导到手臂末端，影响操作精度。\n\n这意味着：**独立优化行走和操作，合并起来通常是不对的。**\n\n### 2. 高自由度全身协调\n人形机器人 30+ 自由度：\n- 下肢负责行走和平衡\n- 上肢负责操作\n- 躯干需要在两者之间协调\n- 没有全身协调控制器，很难保证稳定性\n\n### 3. 接触丰富（Contact-Rich）\n操作本质上是**接触任务**：\n- 手和物体的接触\n- 脚和地面的接触\n- 两类接触同时变化，需要同时管理\n\n### 4. 感知与规划\n- 需要同时感知环境（地形 + 操作对象）\n- 需要规划行走路径 + 操作动作\n- 实时性要求高\n\n### 5. Sim2Real Gap 更严峻\n比纯 locomotion 或纯 manipulation 更难做 sim2real：\n- 两类 gap 叠加\n- 物体交互的接触模型更难精确建模\n- 视觉感知在运动中更不稳定\n\n## 常见方法路线\n\n### 路线 A：全身 WBC + MPC\n- 用 centroidal dynamics MPC 做高层规划\n- 用 TSID / WBC 统一处理腿部和手臂的力分配\n- 优势：动力学一致，理论扎实\n- 劣势：建模和调参复杂，难以泛化\n\n### 路线 B：分层控制（Hierarchical）\n- 上层：操作策略（给出末端轨迹/接触计划）\n- 下层：locomotion controller（执行行走 + 接触力）\n- 优势：模块化，可复用已有 locomotion controller\n- 劣势：层间接口设计复杂，耦合处理不够优雅\n\n### 路线 C：端到端 RL\n- 直接用 RL 训练一个统一的全身策略\n- 输入：视觉 + 状态；输出：全身关节动作\n- 优势：自动发现耦合动作\n- 劣势：训练极难，奖励设计复杂，sim2real 挑战大\n\n### 路线 D：IL（模仿学习）+ 全身控制\n- 用人类遥操作或 MoCap 数据收集全身动作演示\n- 用 Diffusion Policy / ACT 等方法训练策略\n- 结合 WBC 做执行\n- 优势：数据驱动，可以捕获自然的人类协调模式\n\n### 近期代表工作（2024-2026）\n\n| 工作 | 路线 | 核心思路 |\n|------|------|---------|\n| ULTRA (UIUC, 2026) | RL + 统一控制 | 多模态统一 loco-manipulation 控制器 |\n| Mobile ALOHA (Stanford, 2024) | 遥操作 + BC | 在移动底盘上做双手操作 |\n| HumanoidBench (2024) | benchmark | 标准化评测 loco-manipulation 任务 |\n\n## 评价指标\n\n- **任务成功率**：在目标操作任务上的成功率\n- **行走稳定性**：操作过程中摔倒频率、步态质量\n- **操作精度**：末端定位精度、抓取成功率\n- **泛化能力**：对新地形、新物体的适应能力\n- **实时性**：控制频率能否满足实际部署要求\n\n## 关联系统/方法\n\n- [Locomotion](./locomotion.md)\n- [Manipulation](./manipulation.md)\n- [VLA](../methods/vla.md) — 移动操作中的语义任务条件与 action chunk 生成新路线\n- [Teleoperation](./teleoperation.md) — 遥操作是 loco-manipulation 数据采集的主要方式\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Centroidal Dynamics](../concepts/centroidal-dynamics.md)\n- [TSID](../concepts/tsid.md)\n- [Diffusion Policy](../methods/diffusion-policy.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [ULTRA Survey](./ultra-survey.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 接触丰富型操作是 loco-manip 上肢控制的核心子问题\n\n## 参考来源\n\n- Cheng et al., *Expressive Whole-Body Control for Humanoid Robots* (2024) — 全身运动控制与操作\n- Fu et al., *Mobile ALOHA: Learning Bimanual Mobile Manipulation with Low-Cost Whole-Body Teleoperation* (2024) — 移动双手操作代表\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述（2026）\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT / Diffusion Policy / π₀（loco-manip 策略学习）\n- **ingest 档案：** [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid：上半身柔顺与 contact-rich human/object interaction\n- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)\n\n## 推荐继续阅读\n\n- Cheng et al., [*Expressive Whole-Body Control*](https://arxiv.org/abs/2402.16796)\n- Fu et al., [*Mobile ALOHA*](https://mobile-aloha.github.io/)\n- Duan et al., [*Humanoid Locomotion as Next Token Prediction*](https://arxiv.org/abs/2402.19469) — 统一行走与操作的 token 预测路线\n\n## 一句话记忆\n\n> Loco-Manipulation 要机器人边走边动手，是行走和操作能力的叠加，也是比两者单独都难一个量级的全身协调控制问题，是当前人形机器人最前沿的开放挑战之一。",
+        "summary": "让机器人边走边动手——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调",
+        "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制转向基于生成模型（Diffusion/Flow）和 VLA 的统一全身感知控制。\"\nupdated: 2026-04-28\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n\n## 参考来源\n\n- [[sources/repos/awesome-humanoid-robot-learning]] — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型和 VLA 的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
         "tags": [
           "task",
           "humanoid",
           "locomotion",
           "control",
-          "dynamics",
-          "rl"
+          "rl",
+          "il"
         ],
         "related": [
-          "wiki-tasks-locomotion",
+          "wiki-tasks-humanoid-locomotion",
           "wiki-tasks-manipulation",
+          "wiki-methods-diffusion-motion-generation",
+          "wiki-concepts-whole-body-control",
           "wiki-methods-vla",
           "wiki-tasks-teleoperation",
-          "wiki-concepts-whole-body-control",
-          "wiki-concepts-centroidal-dynamics",
-          "wiki-concepts-tsid",
-          "wiki-methods-diffusion-policy",
-          "wiki-methods-imitation-learning",
-          "wiki-tasks-ultra-survey",
           "wiki-concepts-contact-rich-manipulation",
+          "wiki-tasks-ultra-survey",
+          "sources-papers-diffusion-and-gen",
           "sources-papers-teleoperation"
         ],
         "source_links": [
-          "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html",
-          "https://arxiv.org/abs/2402.16796",
-          "https://mobile-aloha.github.io/",
-          "https://arxiv.org/abs/2402.19469"
+          "https://arxiv.org/abs/2603.23983"
         ],
         "status": "active"
       },

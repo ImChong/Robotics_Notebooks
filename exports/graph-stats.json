@@ -1,13 +1,13 @@
 {
   "generated_at": "2026-04-28",
   "node_count": 196,
-  "edge_count": 1102,
-  "community_count": 7,
+  "edge_count": 1099,
+  "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 79
+      "degree": 78
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -27,7 +27,7 @@
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "degree": 51
+      "degree": 50
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -50,9 +50,9 @@
       "degree": 28
     },
     {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation",
-      "degree": 27
+      "id": "wiki/concepts/tsid.md",
+      "label": "TSID",
+      "degree": 25
     }
   ],
   "orphan_nodes": [],
@@ -69,19 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 72,
-    "Whole-Body Control (WBC) 社区": 58,
+    "Locomotion 社区": 70,
+    "Whole-Body Control (WBC) 社区": 56,
     "Manipulation 社区": 41,
     "实时运控中间件配置指南 社区": 9,
-    "Model-Based RL（基于模型的强化学习） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
+    "Model-Based RL（基于模型的强化学习） 社区": 6,
+    "Diffusion Policy 社区": 5,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.367,
+    "largest_community_ratio": 0.357,
     "community_quality_warning": false
   }
 }
