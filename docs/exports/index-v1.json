@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -245,14 +245,14 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
       "title": "Data Flywheel (具身数据飞轮)",
       "path": "wiki/concepts/data-flywheel.md",
       "summary": "具身数据飞轮 (Data Flywheel) 指的是机器人学习中通过自动化闭环实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → 自动化的数据清洗与标注 → 进一步强化模型",
-      "content_markdown": "---\ntype: concept\ntitle: Data Flywheel (具身数据飞轮)\ntags: [data-cycle, robot-learning, scaling, automation]\n---\n\n# Data Flywheel (具身数据飞轮)\n\n**具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → 自动化的数据清洗与标注 → 进一步强化模型。\n\n## 为什么重要？\n\n具身智能的最终落地依赖于 [[embodied-scaling-laws]]。数据飞轮是实现规模效应的核心手段：\n- **突破“人力”瓶颈**：传统的遥操作（Teleoperation）数据采集昂贵且低效，飞轮效应通过仿真（[[robotwin]]）或自监督学习减少对人的依赖。\n- **长尾场景覆盖**：通过策略在真机或仿真中失败的案例，自动触发针对性的数据补全（[[generative-data-augmentation]]），从而攻克边缘情况（Edge Cases）。\n\n## 核心闭环\n\n1. **采集 (Collection)**：利用 [[lerobot]] 等框架在仿真或实物中生成初始轨迹。\n2. **清洗与标注 (Cleaning & Labeling)**：利用 [[auto-labeling-pipelines]] 自动剔除低质数据并添加语义标签。\n3. **训练 (Training)**：在海量异构数据上进行大规模预训练。\n4. **验证与反馈 (Eval & Feedback)**：模型在实测中发现弱点，反馈给采集端进行针对性补全。\n\n## 与其他系统的关系\n\n- **实战路径**：[[xbotics-embodied-guide]] 将数据飞轮视为从 0 到 1 落地具身智能项目的核心目标。\n- **基础设施**：飞轮的转动需要强大的仿真底座（如 [[isaac-gym-isaac-lab]]、[[genesis-sim]]）和自动化标注工具支撑。\n\n## 参考来源\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)\n- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)",
+      "content_markdown": "---\ntype: concept\ntitle: Data Flywheel (具身数据飞轮)\ntags: [data-cycle, robot-learning, scaling, automation]\nsummary: \"数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。\"\n---\n\n# Data Flywheel (具身数据飞轮)\n\n**具身数据飞轮 (Data Flywheel)** 指的是机器人学习中通过**自动化闭环**实现数据规模化与性能持续提升的机制。它的核心逻辑是：更强的模型吸引更多场景使用 → 产生更多样化的数据 → 自动化的数据清洗与标注 → 进一步强化模型。\n\n## 为什么重要？\n\n具身智能的最终落地依赖于 [[embodied-scaling-laws]]。数据飞轮是实现规模效应的核心手段：\n- **突破“人力”瓶颈**：传统的遥操作（Teleoperation）数据采集昂贵且低效，飞轮效应通过仿真（[[robotwin]]）或自监督学习减少对人的依赖。\n- **长尾场景覆盖**：通过策略在真机或仿真中失败的案例，自动触发针对性的数据补全（[[generative-data-augmentation]]），从而攻克边缘情况（Edge Cases）。\n\n## 核心闭环\n\n1. **采集 (Collection)**：利用 [[lerobot]] 等框架在仿真或实物中生成初始轨迹。\n2. **清洗与标注 (Cleaning & Labeling)**：利用 [[auto-labeling-pipelines]] 自动剔除低质数据并添加语义标签。\n3. **训练 (Training)**：在海量异构数据上进行大规模预训练。\n4. **验证与反馈 (Eval & Feedback)**：模型在实测中发现弱点，反馈给采集端进行针对性补全。\n\n## 与其他系统的关系\n\n- **实战路径**：[[xbotics-embodied-guide]] 将数据飞轮视为从 0 到 1 落地具身智能项目的核心目标。\n- **基础设施**：飞轮的转动需要强大的仿真底座（如 [[isaac-gym-isaac-lab]]、[[genesis-sim]]）和自动化标注工具支撑。\n\n## 参考来源\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)\n- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)",
       "tags": [
         "concept",
         "tooling"
@@ -323,7 +323,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -418,7 +418,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -450,7 +450,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_planning.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -539,7 +539,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -690,7 +690,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -722,7 +722,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/teleoperation.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -752,7 +752,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -849,7 +849,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -968,7 +968,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1002,7 +1002,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1133,7 +1133,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1230,7 +1230,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_planning.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1733,7 +1733,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/imitation_learning.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1971,7 +1971,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_touch_dream.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2125,7 +2125,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/model_based_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2313,7 +2313,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2397,19 +2397,25 @@
       "title": "Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)",
       "path": "wiki/methods/sumo.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntitle: Sumo (MPC-over-RL 层级控制)\ntags: [robot-learning, mpc, loco-manipulation, whole-body-control, spot, g1]\n---\n\n# Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)\n\n**Sumo** 是一种由 RAI Institute 提出的层级化机器人控制框架，专门用于解决**动态全身移动操作 (Whole-Body Loco-Manipulation)** 问题。它打破了传统的“高层学习 + 低层模型控制”范式，采用了一种**“高层 MPC 驱动底层 RL”**的反向层级架构，使机器人能够操纵比自身更重、更大或几何形状复杂的物体。\n\n## 核心架构：MPC-over-RL\n\nSumo 的创新在于其分工明确的双层结构：\n\n### 1. 底层：通用 RL WBC 策略\n- **角色**：负责高频（50Hz）的全身稳定与基础移动。\n- **作用**：底层是一个预训练的通用全身控制（WBC）策略（如 *Relic*）。它将高度不稳定、非线性的足式机器人动力学抽象化，转化为一个稳定的**命令空间 (Command Space)**，如基座线速度/角速度、机械臂末端目标位姿。\n- **优势**：利用了强化学习在处理复杂接触和鲁棒控制方面的天然优势。\n\n### 2. 高层：基于采样的在线 MPC\n- **角色**：负责中频（20Hz）的任务规划与长时程协调。\n- **方法**：使用交叉熵方法 (CEM) 进行在线轨迹采样。\n- **机制**：MPC 不直接输出电机力矩，而是在底层 RL 策略的“命令空间”内进行搜索。\n- **Policy-in-the-Loop**：在前向模拟（Rollouts）时，MPC 将底层 RL 策略作为动力学的一部分进行并行模拟（通常使用 MuJoCo）。\n\n## 主要优势\n\n- **零样本任务泛化**：由于 RL 策略是通用的，只需在部署时更换 MPC 的代价函数 (Cost Function) 或物体模型，即可让机器人执行全新的操作任务（如从推桌子切换到抬轮胎），无需任何重新训练。\n- **处理超限载荷**：通过全身各部位（躯干、四肢）的协同接触，Sumo 能够操纵超过机械臂额定载荷的物体（例如让 Spot 扶起 15kg 的轮胎）。\n- **极简工程代价**：相比端到端 RL 需要数十个精调的 Reward 项，Sumo 只需 3-5 个简单的几何代价项即可完成任务。\n\n## 硬件验证\n\n- **Spot (四足)**：在真实世界中完成了 8 项极具挑战性的任务，包括拖拽大型路障和堆叠重物。\n- **G1 (人形)**：在仿真中证明了该架构在双足人形平台上的通用性，成功执行了开门和推重物等全身协调动作。\n\n## 与其他系统的关系\n\n- **对比 [[whole-body-control]] (WBC)**：Sumo 将 WBC 的实现交给了鲁棒的 RL 策略，而将全局约束和物体动力学交给 MPC 处理。\n- **对比 [[vla]]**：Sumo 的层级架构为未来接入 VLA 模型提供了接口——VLA 可以作为更高层的推理器，动态生成 MPC 所需的 Cost Function。\n- **算法依赖**：依赖于高性能并行仿真器（如 [[mujoco]]）进行实时轨迹评估。\n\n## 参考来源\n- [Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation](../../sources/papers/sumo.md)\n- [RAI Institute Project Page](https://rai-institute.github.io/sumo/)",
+      "content_markdown": "---\ntype: method\ntitle: Sumo (MPC-over-RL 层级控制)\ntags: [robot-learning, mpc, loco-manipulation, whole-body-control, spot, g1]\nsummary: \"Sumo 采用反向层级架构（MPC 驱动底层 RL），通过将通用策略纳入规划循环，实现腿式机器人对超限重物的零样本动态操纵。\"\n---\n\n# Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)\n\n**Sumo** 是一种由 RAI Institute 提出的层级化机器人控制框架，专门用于解决**动态全身移动操作 (Whole-Body Loco-Manipulation)** 问题。它打破了传统的“高层学习 + 低层模型控制”范式，采用了一种**“高层 MPC 驱动底层 RL”**的反向层级架构，使机器人能够操纵比自身更重、更大或几何形状复杂的物体。\n\n## 核心架构：MPC-over-RL\n\nSumo 的创新在于其分工明确的双层结构：\n\n### 1. 底层：通用 RL WBC 策略\n- **角色**：负责高频（50Hz）的全身稳定与基础移动。\n- **作用**：底层是一个预训练的通用全身控制（WBC）策略（如 *Relic*）。它将高度不稳定、非线性的足式机器人动力学抽象化，转化为一个稳定的**命令空间 (Command Space)**，如基座线速度/角速度、机械臂末端目标位姿。\n- **优势**：利用了强化学习在处理复杂接触和鲁棒控制方面的天然优势。\n\n### 2. 高层：基于采样的在线 MPC\n- **角色**：负责中频（20Hz）的任务规划与长时程协调。\n- **方法**：使用交叉熵方法 (CEM) 进行在线轨迹采样。\n- **机制**：MPC 不直接输出电机力矩，而是在底层 RL 策略的“命令空间”内进行搜索。\n- **Policy-in-the-Loop**：在前向模拟（Rollouts）时，MPC 将底层 RL 策略作为动力学的一部分进行并行模拟（通常使用 MuJoCo）。\n\n## 主要技术路线\n\n```text\n任务代价函数 + 环境模型\n          ↓\n  CEM 采样规划 (High-Level MPC)\n          ↓  命令空间信号 (Cmds)\n  通用 WBC 策略 (Low-Level RL Policy)\n          ↓  关节指令 (PD/Torque)\n     复杂物体动态操纵 (Tires/Barriers)\n```\n\n## 主要优势\n\n- **零样本任务泛化**：由于 RL 策略是通用的，只需在部署时更换 MPC 的代价函数 (Cost Function) 或物体模型，即可让机器人执行全新的操作任务（如从推桌子切换到抬轮胎），无需任何重新训练。\n- **处理超限载荷**：通过全身各部位（躯干、四肢）的协同接触，Sumo 能够操纵超过机械臂额定载荷的物体（例如让 Spot 扶起 15kg 的轮胎）。\n- **极简工程代价**：相比端到端 RL 需要数十个精调的 Reward 项，Sumo 只需 3-5 个简单的几何代价项即可完成任务。\n\n## 硬件验证\n\n- **Spot (四足)**：在真实世界中完成了 8 项极具挑战性的任务，包括拖拽大型路障和堆叠重物。\n- **G1 (人形)**：在仿真中证明了该架构在双足人形平台上的通用性，成功执行了开门和推重物等全身协调动作。\n\n## 关联页面\n\n- [MPC 与 WBC 集成](../concepts/mpc-wbc-integration.md) — Sumo 采用的反向层级架构基础\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — Sumo 解决的核心任务领域\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — 被 Sumo 底层 RL 策略替代的模块\n- [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — MPC 层常用的物理模型\n- [Optimal Control (OCP)](../concepts/optimal-control.md) — MPC 的理论源头\n- [MuJoCo (物理引擎)](../entities/mujoco.md) — Sumo 运行并行 Rollouts 的引擎\n- [Unitree G1](../entities/unitree-g1.md) — Sumo 验证的人形平台\n- [VLA](./vla.md) — 未来可能的更高层指令提供者\n\n## 参考来源\n- [Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation](../../sources/papers/sumo.md)\n- [RAI Institute Project Page](https://rai-institute.github.io/sumo/)",
       "tags": [
         "method",
+        "humanoid",
         "control",
-        "rl",
-        "il",
-        "tooling"
+        "dynamics",
+        "optimization",
+        "rl"
       ],
       "related": [
-        "sources-papers-sumo",
+        "wiki-concepts-mpc-wbc-integration",
+        "wiki-tasks-loco-manipulation",
         "wiki-concepts-whole-body-control",
+        "wiki-concepts-centroidal-dynamics",
+        "wiki-concepts-optimal-control",
+        "entity-mujoco",
+        "entity-unitree-g1",
         "wiki-methods-vla",
-        "entity-mujoco"
+        "sources-papers-sumo"
       ],
       "source_links": [
         "https://rai-institute.github.io/sumo/"
@@ -2496,7 +2502,7 @@
       "title": "VLA（Vision-Language-Action）",
       "path": "wiki/methods/vla.md",
       "summary": "VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”",
-      "content_markdown": "---\ntype: method\ntags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0]\nstatus: complete\nupdated: 2026-04-29\nsummary: \"VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。\"\nrelated:\n  - ../concepts/foundation-policy.md\n  - ./behavior-cloning.md\n  - ./action-chunking.md\n  - ./diffusion-policy.md\n  - ./lingbot-map.md\n  - ../tasks/manipulation.md\n  - ../tasks/loco-manipulation.md\n  - ../entities/lerobot.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/repos/embodied-ai-guide.md\n  - ../../sources/repos/xbotics-embodied-guide.md\n---\n\n# VLA（Vision-Language-Action）\n\n**VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。\n\n## 一句话定义\n\nVLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。\n\n## 为什么重要\n\n- 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。\n- 它是 RT-2、π₀、OpenVLA、Octo 一类通用操作策略的共同抽象。\n- 它让一个模型处理多任务成为可能，但代价是更大的数据需求、更高推理延迟，以及更复杂的部署链路。\n\n## 主要技术路线\n\n```text\n语言指令 + 图像 / proprioception\n          ↓\n  多模态编码器（VLM / Transformer）\n          ↓\n  动作解码器（token / chunk / flow / diffusion）\n          ↓\n     末端位姿 / 关节动作\n```\n\n常见实现：\n- **RT-2**：把 web-scale VLM 能力迁移到机器人控制\n- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列\n- **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程\n- **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线\n\n## VLA 与传统策略的区别\n\n| 维度 | 传统 BC / RL 策略 | VLA |\n|------|-------------------|-----|\n| 任务输入 | 预定义 observation / goal | 自然语言 + 视觉 + 状态 |\n| 泛化方式 | task-specific | 多任务/零样本/少样本 |\n| 数据规模 | 百到千级演示 | 通常需要数千到数十万演示 |\n| 推理开销 | 低，适合高频控制 | 高，常见 50ms+，需异步部署 |\n| 适合任务 | 单任务控制 | 通用操作、多任务调度 |\n\n## 核心优势\n\n### 1. 语言条件化\n可以直接用“把红色杯子放到左边托盘”之类的任务描述驱动策略，而不是单独写状态机。\n\n### 2. 多任务统一\nVLA 常把抓取、放置、开关门、抽屉操作等任务放进一个统一模型，而非每项任务单训一个 policy。\n\n### 3. 语义泛化\nWeb 知识和视觉语义可以帮助机器人处理训练集中稀疏出现的物体、关系和指令表述。\n\n## 算法能力栈 (Algorithm Capability Stack)\n\n根据 [[embodied-ai-guide]] 与 [[xbotics-embodied-guide]] 的总结，具身智能的完整算法栈包含：\n- **感知层 (Vision & Perception)**: 2D/3D/4D 视觉、视觉提示 (Visual Prompting)、Affordance 学习。\n- **规划层 (Planning)**: 基于 LLM 的任务拆解与逻辑推理。\n- **策略层 (Policy)**: VLA 基础模型，通常采用分层双系统架构（慢速高层语义 + 快速低层反应）。**SFT (Supervised Fine-Tuning)** 是将通用 VLM 适配到机器人特定任务的关键步骤。\n- **执行层 (Action)**: [[action-chunking]]、[[diffusion-policy]] 或关节控制。\n\n## 实战路径建议\n\n根据 [[xbotics-embodied-guide]] 的路线图，VLA 的落地建议分为四个阶段：\n1. **基础掌握**：熟悉 [[lerobot]] 框架与基础 [[imitation-learning]] 算法。\n2. **数据飞轮**：建立自动化数据采集与标注流水线（[[auto-labeling-pipelines]]）。\n3. **模型微调**：对 OpenVLA 或 Octo 等开源模型进行针对性 SFT。\n4. **真机闭环**：结合 [[action-chunking]] 解决推理延迟，完成实物部署。\n\n## 工程瓶颈\n\n### 1. 推理延迟\nVLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟，因此更适合输出 action chunk、目标位姿 or 中频命令，再由低层控制器执行。\n\n### 2. 数据规模要求高\n想要稳健泛化，通常需要大量多样化演示数据。十几条示教可以做 task-specific BC，但远不足以支撑通用 VLA。\n\n### 3. 部署链路复杂\n摄像头时间同步、图像预处理、prompt 模板、动作反归一化、GPU 推理和安全 fallback，任何一步都可能拖垮真机体验。\n\n## 适合放在系统中的哪一层\n\n- **高层任务规划 / 中层动作生成**：适合\n- **1kHz 力矩闭环控制**：通常不适合\n- **和 WBC / impedance / skill library 结合**：当前更现实的真机方案\n- **常见落地方式**：输出 [Action Chunking](./action-chunking.md) 或末端目标，再交给低层控制器和 [Safety Filter](../concepts/safety-filter.md) 执行\n\n## 常见误区\n\n- **误区 1：VLA 的实时性和传统控制器相当。**\n  通常并非如此，必须认真处理推理频率和动作缓冲。\n- **误区 2：VLA 可以在十条演示上学成通用能力。**\n  通用能力依赖大规模、异构、多任务数据。\n- **误区 3：VLA = 直接替代所有控制模块。**\n  当前更可靠的工程做法仍是“VLA 负责语义与任务层，传统控制负责执行层”。\n\n## 参考来源\n\n- [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述\n- [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 工程实践导向，包含 VLA 实战路线图与数据飞轮建设\n- Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*\n- Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control*\n- Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026)\n- [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — StarVLA 极简基准模型\n\n## 关联页面\n\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破\n- [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准\n- [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型\n- [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系\n- [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石\n- [Foundation Policy Alignment (策略对齐)](../formalizations/foundation-policy-alignment.md) — 跨形态知识共享的形式化\n- [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md) — 现代 VLA 的架构趋势\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — VLA 将动作离散化的数学过程\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制\n- [Manipulation](../tasks/manipulation.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Action Chunking](./action-chunking.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Behavior Cloning](./behavior-cloning.md)\n- [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台\n- [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架\n- [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)\n- [Safety Filter](../concepts/safety-filter.md)\n\n## 推荐继续阅读\n\n- RT-2 / π₀ 原论文或项目博客\n- OpenVLA / Octo 开源实现\n- [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)",
+      "content_markdown": "---\ntype: method\ntags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0]\nstatus: complete\nupdated: 2026-04-29\nsummary: \"VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。\"\nrelated:\n  - ../concepts/foundation-policy.md\n  - ./behavior-cloning.md\n  - ./action-chunking.md\n  - ./diffusion-policy.md\n  - ./lingbot-map.md\n  - ../tasks/manipulation.md\n  - ../tasks/loco-manipulation.md\n  - ../entities/lerobot.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/repos/embodied-ai-guide.md\n  - ../../sources/repos/xbotics-embodied-guide.md\n---\n\n# VLA（Vision-Language-Action）\n\n**VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。\n\n## 一句话定义\n\nVLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。\n\n## 为什么重要\n\n- 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。\n- 它是 RT-2、π₀、OpenVLA、Octo 一类通用操作策略的共同抽象。\n- 它让一个模型处理多任务成为可能，但代价是更大的数据需求、更高推理延迟，以及更复杂的部署链路。\n\n## 主要技术路线\n\n```text\n语言指令 + 图像 / proprioception\n          ↓\n  多模态编码器（VLM / Transformer）\n          ↓\n  动作解码器（token / chunk / flow / diffusion）\n          ↓\n     末端位姿 / 关节动作\n```\n\n常见实现：\n- **RT-2**：把 web-scale VLM 能力迁移到机器人控制\n- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列\n- **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程\n- **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线\n\n## VLA 与传统策略的区别\n\n| 维度 | 传统 BC / RL 策略 | VLA |\n|------|-------------------|-----|\n| 任务输入 | 预定义 observation / goal | 自然语言 + 视觉 + 状态 |\n| 泛化方式 | task-specific | 多任务/零样本/少样本 |\n| 数据规模 | 百到千级演示 | 通常需要数千到数十万演示 |\n| 推理开销 | 低，适合高频控制 | 高，常见 50ms+，需异步部署 |\n| 适合任务 | 单任务控制 | 通用操作、多任务调度 |\n\n## 核心优势\n\n### 1. 语言条件化\n可以直接用“把红色杯子放到左边托盘”之类的任务描述驱动策略，而不是单独写状态机。\n\n### 2. 多任务统一\nVLA 常把抓取、放置、开关门、抽屉操作等任务放进一个统一模型，而非每项任务单训一个 policy。\n\n### 3. 语义泛化\nWeb 知识和视觉语义可以帮助机器人处理训练集中稀疏出现的物体、关系和指令表述。这通常配合 [Data Flywheel](../concepts/data-flywheel.md) 来实现闭环性能提升。\n\n## 算法能力栈 (Algorithm Capability Stack)\n\n根据 [[embodied-ai-guide]] 与 [[xbotics-embodied-guide]] 的总结，具身智能的完整算法栈包含：\n- **感知层 (Vision & Perception)**: 2D/3D/4D 视觉、视觉提示 (Visual Prompting)、Affordance 学习。\n- **规划层 (Planning)**: 基于 LLM 的任务拆解与逻辑推理。\n- **策略层 (Policy)**: VLA 基础模型，通常采用分层双系统架构（慢速高层语义 + 快速低层反应）。**SFT (Supervised Fine-Tuning)** 是将通用 VLM 适配到机器人特定任务的关键步骤。\n- **执行层 (Action)**: [[action-chunking]]、[[diffusion-policy]] 或关节控制。\n\n## 实战路径建议\n\n根据 [[xbotics-embodied-guide]] 的路线图，VLA 的落地建议分为四个阶段：\n1. **基础掌握**：熟悉 [[lerobot]] 框架与基础 [[imitation-learning]] 算法。\n2. **数据飞轮**：建立自动化数据采集与标注流水线（[[auto-labeling-pipelines]]）。\n3. **模型微调**：对 OpenVLA 或 Octo 等开源模型进行针对性 SFT。\n4. **真机闭环**：结合 [[action-chunking]] 解决推理延迟，完成实物部署。\n\n## 工程瓶颈\n\n### 1. 推理延迟\nVLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟，因此更适合输出 action chunk、目标位姿 or 中频命令，再由低层控制器执行。\n\n### 2. 数据规模要求高\n想要稳健泛化，通常需要大量多样化演示数据。十几条示教可以做 task-specific BC，但远不足以支撑通用 VLA。\n\n### 3. 部署链路复杂\n摄像头时间同步、图像预处理、prompt 模板、动作反归一化、GPU 推理和安全 fallback，任何一步都可能拖垮真机体验。\n\n## 适合放在系统中的哪一层\n\n- **高层任务规划 / 中层动作生成**：适合\n- **1kHz 力矩闭环控制**：通常不适合\n- **和 WBC / impedance / skill library 结合**：当前更现实的真机方案\n- **常见落地方式**：输出 [Action Chunking](./action-chunking.md) 或末端目标，再交给低层控制器和 [Safety Filter](../concepts/safety-filter.md) 执行\n\n## 常见误区\n\n- **误区 1：VLA 的实时性和传统控制器相当。**\n  通常并非如此，必须认真处理推理频率和动作缓冲。\n- **误区 2：VLA 可以在十条演示上学成通用能力。**\n  通用能力依赖大规模、异构、多任务数据。\n- **误区 3：VLA = 直接替代所有控制模块。**\n  当前更可靠的工程做法仍是“VLA 负责语义与任务层，传统控制负责执行层”。\n\n## 参考来源\n\n- [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述\n- [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 工程实践导向，包含 VLA 实战路线图与数据飞轮建设\n- Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*\n- Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control*\n- Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026)\n- [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — StarVLA 极简基准模型\n\n## 关联页面\n\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破\n- [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准\n- [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型\n- [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系\n- [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石\n- [Foundation Policy Alignment (策略对齐)](../formalizations/foundation-policy-alignment.md) — 跨形态知识共享的形式化\n- [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md) — 现代 VLA 的架构趋势\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — VLA 将动作离散化的数学过程\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制\n- [Manipulation](../tasks/manipulation.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Action Chunking](./action-chunking.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Behavior Cloning](./behavior-cloning.md)\n- [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台\n- [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架\n- [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)\n- [Safety Filter](../concepts/safety-filter.md)\n\n## 推荐继续阅读\n\n- RT-2 / π₀ 原论文或项目博客\n- OpenVLA / Octo 开源实现\n- [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)",
       "tags": [
         "method",
         "rl",
@@ -2528,7 +2534,7 @@
       "title": "ZEST (Zero-shot Embodied Skill Transfer)",
       "path": "wiki/methods/zest.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntitle: ZEST (Zero-shot Embodied Skill Transfer)\ntags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]\n---\n\n# ZEST (Zero-shot Embodied Skill Transfer)\n\n**ZEST** 是由 Boston Dynamics 团队开发的一套统一的具身技能学习与迁移框架。它通过强化学习（RL）将多样化的、异构的人类运动数据（如动捕、视频、动画）转化为机器人的高动态、多接触运动技能，并实现了在全尺寸人形机器人（Atlas）及多种机器人形态上的**零样本（Zero-shot）**真机部署。\n\n## 核心理念\n\nZEST 的核心在于将运动数据视为物理正则化项，在不需要显式判别器（Discriminator）或复杂接触计划的前提下，学习如何平衡“模仿精度”与“物理鲁棒性”。它证明了即使是带噪声的单目视频数据，也可以转化为机器人极其稳健的运动技能。\n\n## 关键技术\n\n### 1. 自适应采样 (Adaptive Sampling)\n在处理大规模异构运动片段时，传统随机采样容易导致“灾难性遗忘”（模型在学习难动作时忘记了简单动作）。\n- **EMA 失败率跟踪**：为数据集中的每个片段维护一个失败率的指数移动平均（EMA）。\n- **难度感知采样**：采样器偏向于失败率高的“难点”片段，确保训练资源集中在尚未掌握的动作上。\n\n### 2. 虚拟辅助扳手 (Virtual Assistive Wrench)\n为了让机器人学会空翻等极高动态动作，ZEST 引入了一种自动课程学习机制：\n- 在训练初期，在机器人基座上施加一个虚拟的外部辅助力，帮助其维持平衡。\n- 该力随训练进度的提升（或通过固定计划）自动衰减至零。\n\n### 3. 极简部署架构 (Minimalist MDP)\n与大多数依赖观测历史或未来窗口的 RL 策略不同，ZEST 的策略输入被极度精简：\n- **输入**：当前本体感知信号 + 下一步参考状态 + 上一步动作。\n- **动作空间**：输出关节目标的残差（Residuals）并叠加在参考动作上。\n这种设计最大限度地减少了仿真与现实之间的时域和观测差异。\n\n## 性能表现\n\n- **多接触能力**：成功实现了战术爬行、地板舞、翻滚等涉及膝盖、肘部、躯干多点接触的动作，这在传统 MPC 框架下极难建模。\n- **跨形态部署**：在 Atlas、Unitree G1 和 Spot 上均实现了成功部署，且不需要针对特定硬件进行算法结构的修改。\n- **高动态性**：实现了连续后空翻、侧手翻等接近人类极限的体育（Athletic）动作。\n\n## 与其他系统的关系\n\n- **对比 [[deepmimic]]/[[ase]]**：ZEST 不再依赖对抗训练（判别器），而是通过自适应采样解决数据不均衡问题。\n- **对比 [[whole-body-control]] (WBC)**：ZEST 能够处理 WBC 难以定义的复杂接触序列，且在动态性上更胜一筹。\n- **底座支持**：通常在 [[mujoco]] 等高性能物理引擎中完成训练，并依赖 [[sim2real]] 技术进行部署。\n\n## 参考来源\n- [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)\n- [Boston Dynamics Technical Blog](https://bostondynamics.com/)",
+      "content_markdown": "---\ntype: method\ntitle: ZEST (Zero-shot Embodied Skill Transfer)\ntags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]\nsummary: \"ZEST 是波士顿动力开发的统一框架，通过自适应采样与自动课程学习，将异构动捕/视频数据直接转化为机器人的零样本高动态运动技能。\"\n---\n\n# ZEST (Zero-shot Embodied Skill Transfer)\n\n**ZEST** 是由 Boston Dynamics 团队开发的一套统一的具身技能学习与迁移框架。它通过强化学习（RL）将多样化的、异构的人类运动数据（如动捕、视频、动画）转化为机器人的高动态、多接触运动技能，并实现了在全尺寸人形机器人（Atlas）及多种机器人形态上的**零样本（Zero-shot）**真机部署。\n\n## 核心理念\n\nZEST 的核心在于将运动数据视为物理正则化项，在不需要显式判别器（Discriminator）或复杂接触计划的前提下，学习如何平衡“模仿精度”与“物理鲁棒性”。它证明了即使是带噪声的单目视频数据，也可以转化为机器人极其稳健的运动技能。\n\n## 主要技术路线\n\n```text\n异构运动数据 (MoCap/ViCap/Animation)\n          ↓\n  物理正则化强化学习 (Adaptive Sampling)\n          ↓\n  自动课程学习 (Assistive Wrench)\n          ↓\n  极简部署策略 (No History/No Preview)\n          ↓\n     零样本跨形态部署 (Atlas/G1/Spot)\n```\n\n## 关键技术\n\n### 1. 自适应采样 (Adaptive Sampling)\n在处理大规模异构运动片段时，传统随机采样容易导致“灾难性遗忘”（模型在学习难动作时忘记了简单动作）。\n- **EMA 失败率跟踪**：为数据集中的每个片段维护一个失败率的指数移动平均（EMA）。\n- **难度感知采样**：采样器偏向于失败率高的“难点”片段，确保训练资源集中在尚未掌握的动作上。\n\n### 2. 虚拟辅助扳手 (Virtual Assistive Wrench)\n为了让机器人学会空翻等极高动态动作，ZEST 引入了一种自动课程学习机制：\n- 在训练初期，在机器人基座上施加一个虚拟的外部辅助力，帮助其维持平衡。\n- 该力随训练进度的提升（或通过固定计划）自动衰减至零。\n\n### 3. 极简部署架构 (Minimalist MDP)\n与大多数依赖观测历史或未来窗口的 RL 策略不同，ZEST 的策略输入被极度精简：\n- **输入**：当前本体感知信号 + 下一步参考状态 + 上一步动作。\n- **动作空间**：输出关节目标的残差（Residuals）并叠加在参考动作上。\n这种设计最大限度地减少了仿真与现实之间的时域和观测差异。\n\n## 性能表现\n\n- **多接触能力**：成功实现了战术爬行、地板舞、翻滚等涉及膝盖、肘部、躯干多点接触的动作，这在传统 MPC 框架下极难建模。\n- **跨形态部署**：在 Atlas、Unitree G1 和 Spot 上均实现了成功部署，且不需要针对特定硬件进行算法结构的修改。\n- **高动态性**：实现了连续后空翻、侧手翻等接近人类极限的体育（Athletic）动作。\n\n## 关联页面\n\n- [Curriculum Learning（课程学习）](../concepts/curriculum-learning.md) — 虚拟辅助力的核心理论\n- [Sim2Real](../concepts/sim2real.md) — 零样本迁移的实现基础\n- [Behavior Cloning](./behavior-cloning.md)\n- [DeepMimic](./deepmimic.md)\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)\n- [Mujoco (物理引擎)](../entities/mujoco.md)\n- [Atlas (机器人)](../entities/boston-dynamics.md)\n- [G1 (机器人)](../entities/unitree-g1.md)\n- [Spot (机器人)](../entities/boston-dynamics.md)\n\n## 参考来源\n- [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)\n- [Boston Dynamics Technical Blog](https://bostondynamics.com/)",
       "tags": [
         "method",
         "humanoid",
@@ -2538,12 +2544,15 @@
         "rl"
       ],
       "related": [
-        "sources-papers-zest",
+        "wiki-concepts-curriculum-learning",
+        "wiki-concepts-sim2real",
+        "wiki-methods-behavior-cloning",
         "wiki-methods-deepmimic",
-        "wiki-methods-ase",
         "wiki-concepts-whole-body-control",
         "entity-mujoco",
-        "wiki-concepts-sim2real"
+        "entity-boston-dynamics",
+        "entity-unitree-g1",
+        "sources-papers-zest"
       ],
       "source_links": [
         "https://bostondynamics.com/"
@@ -2605,7 +2614,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2702,7 +2711,7 @@
       "title": "Loco-Manipulation (移动操作)",
       "path": "wiki/tasks/loco-manipulation.md",
       "summary": "让机器人边走边动手——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调",
-      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[[sumo]] (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n\n## 参考来源\n\n- [[sources/repos/awesome-humanoid-robot-learning]] — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
+      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n\n## 参考来源\n\n- [[sources/repos/awesome-humanoid-robot-learning]] — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
       "tags": [
         "task",
         "humanoid",
@@ -2720,10 +2729,10 @@
         "wiki-tasks-teleoperation",
         "wiki-concepts-contact-rich-manipulation",
         "wiki-methods-humanoid-transformer-touch-dreaming",
+        "wiki-methods-sumo",
         "wiki-tasks-ultra-survey",
         "sources-papers-diffusion-and-gen",
-        "sources-papers-teleoperation",
-        "sources-papers-humanoid-touch-dream"
+        "sources-papers-teleoperation"
       ],
       "source_links": [
         "https://arxiv.org/abs/2603.23983"
@@ -2732,7 +2741,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_touch_dream.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2769,7 +2778,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -5247,7 +5256,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "entity-drake",
@@ -5304,7 +5313,7 @@
       "title": "人形机器人（Humanoid Robot）",
       "path": "wiki/entities/humanoid-robot.md",
       "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体",
-      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./unitree.md\n  - ./anymal.md\n  - ./boston-dynamics.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。\"\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 核心特征\n\n人形机器人之所以成为机器人研究的“明珠”，是因为它具备以下核心特征：\n\n1. **多自由度（High DOFs）**：通常具有 20 到 50 个以上的自由度，涵盖颈部、躯干、手臂（含手掌）和腿部。这使得它能够模拟人类的复杂动作，并在人类设计的环境中（如楼梯、狭窄通道）灵活穿梭。\n2. **非稳定平衡（Unstable Equilibrium）**：与轮式或四足机器人不同，双足支撑面较小且重心较高。这要求控制器必须实时处理动态平衡，防止倾跌。\n3. **接触丰富性（Contact Richness）**：人形机器人的任务通常涉及频繁的接触切换（足端接地、手部操作、身体靠墙等），这在物理建模和控制算法上提出了极高要求。\n4. **具身智能载体**：它的类人形态使其能够直接复用大量人类演示数据（MoCap, Video），是端到端具身智能（VLA, Foundation Models）训练的最佳平台。\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |\n|------|------|-----|-----------|---------|------|\n| **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |\n| **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |\n| **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |\n| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |\n| **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |\n| **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 与四足机器人的区别\n\n虽然两者都属于腿足机器人（Legged Robots），但人形机器人面临的挑战更为严苛：\n\n- **重心高度**：人形机器人重心更高，支撑区域更窄，扰动容忍度极低。四足机器人天然具备静态稳定性，而人形机器人必须通过主动控制维持动态平衡。\n- **操作能力**：四足机器人主要侧重于移动（Locomotion），而人形机器人必须兼顾操作（Manipulation）。这种“动中稳”的操作（Loco-manipulation）是目前最前沿的挑战。\n- **自由度冗余**：人形机器人的双臂和躯干提供了极高的运动冗余度，如何有效地协调全身（Whole-body Coordination）以完成多任务，是传统控制与 RL 算法的核心差异点。\n\n## 核心挑战\n\n1. **动态平衡与回收**：在剧烈扰动或复杂地形下不倒地，或在倒地后自主站起。\n2. **Sim2Real Gap**：复杂的传动链、执行器非线性、接触动力学误差，导致仿真策略难以直接在实机运行。\n3. **高频控制与延迟**：人形机器人通常需要 500Hz-1000Hz 的控制频率，对算力和中间件（ROS2/FastDDS）提出了极高要求。\n4. **能源与续航**：在高自由度高功率输出下，如何维持超过 2 小时的有效工作时间是制约商业化的瓶颈。\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）\n- [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）\n- [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 算力平衡与硬件底座\n- [机器人硬件抽象层 (HAL) 设计指南](../queries/hardware-abstraction-layer.md) — 屏蔽硬件差异的工程实践\n- [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md) — 硬件部署中的动力与散热闭坑\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)",
+      "content_markdown": "---\ntype: entity\ntags: [humanoid, hardware, platform, actuator]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../queries/hardware-comparison.md\n  - ../tasks/locomotion.md\n  - ../tasks/loco-manipulation.md\n  - ../concepts/whole-body-control.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./unitree.md\n  - ./anymal.md\n  - ./boston-dynamics.md\n  - ../queries/humanoid-hardware-selection.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。\"\n---\n\n# 人形机器人（Humanoid Robot）\n\n## 一句话定义\n\n人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。\n\n## 核心特征\n\n人形机器人之所以成为机器人研究的“明珠”，是因为它具备以下核心特征：\n\n1. **多自由度（High DOFs）**：通常具有 20 到 50 个以上的自由度，涵盖颈部、躯干、手臂（含手掌）和腿部。这使得它能够模拟人类的复杂动作，并在人类设计的环境中（如楼梯、狭窄通道）灵活穿梭。\n2. **非稳定平衡（Unstable Equilibrium）**：与轮式或四足机器人不同，双足支撑面较小且重心较高。这要求控制器必须实时处理动态平衡，防止倾跌。\n3. **接触丰富性（Contact Richness）**：人形机器人的任务通常涉及频繁的接触切换（足端接地、手部操作、身体靠墙等），这在物理建模和控制算法上提出了极高要求。\n4. **具身智能载体**：它的类人形态使其能够直接复用大量人类演示数据（MoCap, Video），是端到端具身智能（VLA, Foundation Models）训练的最佳平台。\n\n## 主流平台速览\n\n| 平台 | 组织 | DOF | 执行器类型 | 当前状态 | 备注 |\n|------|------|-----|-----------|---------|------|\n| **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |\n| **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |\n| **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |\n| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |\n| **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |\n| **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |\n\n详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)\n\n## 与四足机器人的区别\n\n虽然两者都属于腿足机器人（Legged Robots），但人形机器人面临的挑战更为严苛：\n\n- **重心高度**：人形机器人重心更高，支撑区域更窄，扰动容忍度极低。四足机器人天然具备静态稳定性，而人形机器人必须通过主动控制维持动态平衡。\n- **操作能力**：四足机器人主要侧重于移动（Locomotion），而人形机器人必须兼顾操作（Manipulation）。这种“动中稳”的操作（Loco-manipulation）是目前最前沿的挑战。\n- **自由度冗余**：人形机器人的双臂和躯干提供了极高的运动冗余度，如何有效地协调全身（Whole-body Coordination）以完成多任务，是传统控制与 RL 算法的核心差异点。\n\n## 核心挑战\n\n1. **动态平衡与回收**：在剧烈扰动或复杂地形下不倒地，或在倒地后自主站起。\n2. **Sim2Real Gap**：复杂的传动链、执行器非线性、接触动力学误差，导致仿真策略难以直接在实机运行。\n3. **高频控制与延迟**：人形机器人通常需要 500Hz-1000Hz 的控制频率，对算力和中间件（ROS2/FastDDS）提出了极高要求。\n4. **能源与续航**：在高自由度高功率输出下，如何维持超过 2 小时的有效工作时间是制约商业化的瓶颈。\n\n## 相关工具链\n\n- **设计与分析**：[URDF-Studio](./urdf-studio.md) (专业设计工作站)、[Robot Explorer](./robot-explorer.md) (动力学分析)\n- **仿真平台**：[[isaac-gym-isaac-lab]] (NVIDIA)、[[mujoco]] (DeepMind)、[Motrix](./motrix.md) (Motphys)\n- **模型预览**：[Robot Viewer](./robot-viewer.md)\n- **数据集**：Open X-Embodied, Droid\n\n## 关联页面\n- [主流人形机器人硬件对比](../queries/hardware-comparison.md)\n- [Locomotion 任务](../tasks/locomotion.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [全身运动控制](../concepts/whole-body-control.md)\n- [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)\n- [Unitree](./unitree.md)\n- [ANYmal](./anymal.md)（高性能四足机器人，足式 RL 研究标杆）\n- [Boston Dynamics](./boston-dynamics.md)（足式机器人技术巅峰，Atlas 与 Spot 开发商）\n- [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 算力平衡与硬件底座\n- [机器人硬件抽象层 (HAL) 设计指南](../queries/hardware-abstraction-layer.md) — 屏蔽硬件差异的工程实践\n- [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md) — 硬件部署中的动力与散热闭坑\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n\n## 参考来源\n- [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)\n- [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)",
       "tags": [
         "entities",
         "entity",
@@ -5337,7 +5346,7 @@
       "title": "Isaac Gym / Isaac Lab",
       "path": "wiki/entities/isaac-gym-isaac-lab.md",
       "summary": "Isaac Gym：NVIDIA 早期的 GPU 加速机器人 RL 仿真框架，主打大规模并行训练",
-      "content_markdown": "---\ntype: entity\nsources:\n  - ../../sources/papers/simulation_tools.md\nsummary: \"Isaac Gym / Isaac Lab\"\nupdated: 2026-04-25\n---\n\n# Isaac Gym / Isaac Lab\n\n**Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。\n\n## 一句话定义\n\n- **Isaac Gym**：NVIDIA 早期的 GPU 加速机器人 RL 仿真框架，主打大规模并行训练。\n- **Isaac Lab**：当前 NVIDIA 官方主推的机器人学习框架，建立在 Isaac Sim 之上，用于 robot learning、locomotion、manipulation 和 sim2real 研究。\n\n一句话说白了：\n\n> 如果你在看老论文和老开源项目，会不断遇到 Isaac Gym；如果你要搭现在的新实验栈，应该优先看 Isaac Lab。\n\n## 先说结论\n\n这是最容易把人带偏的地方：\n\n- **Isaac Gym 现在已经是 deprecated / legacy software**\n- **NVIDIA 官方建议迁移到 Isaac Lab**\n- 但大量 2021–2024 的机器人 RL 项目、代码库、论文 baseline 仍然基于 Isaac Gym / IsaacGymEnvs\n\n所以正确心态不是“Gym 已死不用看”，也不是“继续把 Gym 当主线”，而是：\n\n> **理解 Isaac Gym 的历史地位，实际项目优先使用 Isaac Lab。**\n\n## 为什么它们重要\n\n在人形 / 足式机器人 RL 里，训练成本一直是大问题。\n\n传统 CPU 仿真慢，机器人状态维度高，接触计算复杂，训练一个可用策略很耗时。\n\nIsaac Gym 当年为什么火：\n- PhysX 仿真 + GPU tensor API\n- 大规模并行环境 rollout\n- 很适合 PPO 这类 on-policy 训练\n- 一下把“几千到几万个环境同时跑”这件事变得工程上可行\n\nIsaac Lab 为什么重要：\n- 它接住了 Isaac Gym 这条线\n- 建立在更完整的 Isaac Sim 生态之上\n- 官方持续维护、文档更系统、迁移路径更明确\n- 对 robot learning / manipulation / locomotion 的支持更现代\n\n## Isaac Gym 是什么\n\n### 它解决什么问题\n\nIsaac Gym 的核心价值在于：\n\n- 快速并行仿真机器人环境\n- 在 GPU 上直接处理观测、动作和物理状态\n- 让 RL 训练速度足够快，适合足式 / 人形机器人训练\n\n这套框架在很多机器人 RL 工作里几乎是默认训练底座。\n\n### 它的典型特征\n\n- GPU 加速物理仿真\n- GPU tensor API\n- 支持 URDF / MJCF 导入\n- 支持位置、速度、力矩等传感器观测\n- 支持 runtime domain randomization\n- 和 `IsaacGymEnvs`、`legged_gym` 等代码库一起构成经典研究栈\n\n### 它的问题\n\nIsaac Gym 虽然强，但它现在有三个现实问题：\n\n1. **官方已停止支持**\n2. **文档和生态会越来越偏向迁移**\n3. **新项目如果还把 Gym 当主线，后面维护成本会变高**\n\n所以你现在看它，更像是在理解“旧主流基线”。\n\n## Isaac Lab 是什么\n\n### 它解决什么问题\n\nIsaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 robot learning 的官方主线框架。\n\n它建立在 Isaac Sim 之上，目标是：\n- 提供现代化 robot learning workflow\n- 接住旧 of IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户\n- 支持训练、迁移、任务定义、环境注册、仿真管理\n\n### 它的典型特征\n\n- 建立在 **Isaac Sim** 上\n- 支持强化学习、模仿学习、locomotion、manipulation\n- 提供从旧框架迁移的官方文档\n- 有更清晰的任务组织与环境注册方式\n- 是 NVIDIA 现在推荐的主线\n- **算法兼容性**：新一代算法如 **BRRL / BPO (2026)** 优先在 Isaac Lab 环境下进行了人形机器人行走等任务的验证，显示了其对现代 RL 研究的良好支撑。\n\n### 什么时候优先用 Isaac Lab\n\n如果你：\n- 正在搭建新的人形 / 足式 RL 项目\n- 想用 NVIDIA 官方当前支持的方案\n- 想减少以后迁移成本\n\n那就直接优先 Isaac Lab。\n\n## Isaac Gym 和 Isaac Lab 的关系\n\n最容易混的点在这里。\n\n### 不是简单的“新版本号关系”\n它们不是“Isaac Gym 2.0 = Isaac Lab”。\n\n更准确地说：\n- Isaac Gym 是早期独立 GPU RL 仿真框架\n- Isaac Lab 是后续基于 Isaac Sim 的新主线 robot learning 框架\n\n### 研究语境里的关系\n\n如果你在读论文或开源项目：\n- 2021–2024 很多足式 / 人形 RL baseline 还在用 Isaac Gym\n- 现在新项目越来越往 Isaac Lab 迁移\n\n所以你需要能“读得懂 Gym 论文与代码”，但“新实验优先用 Lab”。\n\n## Isaac Gym / Isaac Lab 在人形机器人里的作用\n\n### 1. 人形 locomotion RL 训练底座\n最典型用途：\n- PPO 训练 humanoid locomotion\n- domain randomization\n- 大规模 parallel rollout\n\n### 2. 操作与 loco-manipulation 研究\n新一代框架（特别是 Isaac Lab）更适合接 manipulation 和复杂任务。\n\n### 3. sim2real 的仿真前端\n虽然 sim2real 不只取决于仿真器，但：\n- 仿真器决定环境 fidelity\n- 环境定义决定训练流程\n- domain randomization 和 observation pipeline 也深受框架影响\n\n## 常见搭配关系\n\n### 经典旧栈\n\n```text\nIsaac Gym\n  + IsaacGymEnvs\n  + legged_gym\n  + PPO / rl-games\n```\n\n### 当前推荐新栈\n\n```text\nIsaac Sim\n  + Isaac Lab\n  + 任务定义 / 环境注册\n  + RL / IL / manipulation / locomotion\n```\n\n## 它和当前项目主线的关系\n\n### 和 Reinforcement Learning 的关系\nIsaac Gym / Isaac Lab 是 RL 训练的“基础设施层”，不是 RL 算法本身。\n\n见：[Reinforcement Learning](../methods/reinforcement-learning.md)\n\n### 和 Locomotion 的关系\n在人形和足式 locomotion 研究里，它们常常是训练环境和 benchmark 平台。\n\n见：[Locomotion](../tasks/locomotion.md)\n\n### 和 Sim2Real 的关系\n它们提供仿真训练和 domain randomization 的主要工作台，但 sim2real 成功与否还取决于状态估计、系统辨识、观测设计等。\n\n见：[Sim2Real](../concepts/sim2real.md)\n\n### 和 Domain Randomization 的关系\nIsaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 也延续了这条能力路线。\n\n见：[Domain Randomization](../concepts/domain-randomization.md)\n\n## 常见误区\n\n### 1. 以为 Isaac Gym 还是官方主线\n不是，它现在是 legacy。\n\n### 2. 以为看老论文就没必要学 Isaac Lab\n错。读老论文要懂 Gym，新实验要优先 Lab。\n\n### 3. 以为换成 Isaac Lab，旧经验都作废\n也不对。训练逻辑、任务构造、reward 设计、DR 思路很多是继承下来的。\n\n### 4. 以为仿真器选对了，sim2real 就稳了\n远远不够。状态估计、系统辨识、执行器建模、观测延迟同样关键。\n\n## 推荐使用建议\n\n### 如果你是初学者\n- 先理解 Isaac Gym 在机器人 RL 里的历史地位\n- 真正开始新项目时优先直接上 Isaac Lab\n\n### 如果你是复现旧工作\n- 大概率还要会看 Isaac Gym / IsaacGymEnvs / legged_gym\n- 但最好顺手了解一下迁移思路\n\n### 如果你是做新项目\n- 直接优先 Isaac Lab\n- 把 Gym 当成旧基线和历史语境\n\n## 继续深挖入口\n\n如果你想沿着仿真与训练平台继续往下挖，建议从这里进入：\n\n### Repo / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- NVIDIA Isaac Gym 页面：<https://developer.nvidia.com/isaac-gym>\n- Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>\n- Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>\n\n## 参考来源\n\n- Makoviychuk et al., *Isaac Gym: High Performance GPU Based Physics Simulation For Robot Learning* (2021) — Isaac Gym 原论文\n- 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>\n- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用\n\n## 关联页面\n\n- [legged_gym](./legged-gym.md)\n- [MuJoCo](./mujoco.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 一句话记忆\n\n> Isaac Gym 是旧一代高性能机器人 RL 仿真框架，Isaac Lab 是当前 NVIDIA 官方推荐的新主线。读旧工作要懂 Gym，做新项目优先 Lab。",
+      "content_markdown": "---\ntype: entity\nsources:\n  - ../../sources/papers/simulation_tools.md\nsummary: \"Isaac Gym / Isaac Lab\"\nupdated: 2026-04-25\n---\n\n# Isaac Gym / Isaac Lab\n\n**Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。\n\n## 一句话定义\n\n- **Isaac Gym**：NVIDIA 早期的 GPU 加速机器人 RL 仿真框架，主打大规模并行训练。\n- **Isaac Lab**：当前 NVIDIA 官方主推的机器人学习框架，建立在 Isaac Sim 之上，用于 robot learning、locomotion、manipulation 和 sim2real 研究。\n\n一句话说白了：\n\n> 如果你在看老论文和老开源项目，会不断遇到 Isaac Gym；如果你要搭现在的新实验栈，应该优先看 Isaac Lab。\n\n## 先说结论\n\n这是最容易把人带偏的地方：\n\n- **Isaac Gym 现在已经是 deprecated / legacy software**\n- **NVIDIA 官方建议迁移到 Isaac Lab**\n- 但大量 2021–2024 的机器人 RL 项目、代码库、论文 baseline 仍然基于 Isaac Gym / IsaacGymEnvs\n\n所以正确心态不是“Gym 已死不用看”，也不是“继续把 Gym 当主线”，而是：\n\n> **理解 Isaac Gym 的历史地位，实际项目优先使用 Isaac Lab。**\n\n## 为什么它们重要\n\n在人形 / 足式机器人 RL 里，训练成本一直是大问题。\n\n传统 CPU 仿真慢，机器人状态维度高，接触计算复杂，训练一个可用策略很耗时。\n\nIsaac Gym 当年为什么火：\n- PhysX 仿真 + GPU tensor API\n- 大规模并行环境 rollout\n- 很适合 PPO 这类 on-policy 训练\n- 一下把“几千到几万个环境同时跑”这件事变得工程上可行\n\nIsaac Lab 为什么重要：\n- 它接住了 Isaac Gym 这条线\n- 建立在更完整的 Isaac Sim 生态之上\n- 官方持续维护、文档更系统、迁移路径更明确\n- 对 robot learning / manipulation / locomotion 的支持更现代\n\n## Isaac Gym 是什么\n\n### 它解决什么问题\n\nIsaac Gym 的核心价值在于：\n\n- 快速并行仿真机器人环境\n- 在 GPU 上直接处理观测、动作和物理状态\n- 让 RL 训练速度足够快，适合足式 / 人形机器人训练\n\n这套框架在很多机器人 RL 工作里几乎是默认训练底座。\n\n### 它的典型特征\n\n- GPU 加速物理仿真\n- GPU tensor API\n- 支持 URDF / MJCF 导入\n- 支持位置、速度、力矩等传感器观测\n- 支持 runtime domain randomization\n- 和 `IsaacGymEnvs`、`legged_gym` 等代码库一起构成经典研究栈\n\n### 它的问题\n\nIsaac Gym 虽然强，但它现在有三个现实问题：\n\n1. **官方已停止支持**\n2. **文档和生态会越来越偏向迁移**\n3. **新项目如果还把 Gym 当主线，后面维护成本会变高**\n\n所以你现在看它，更像是在理解“旧主流基线”。\n\n## Isaac Lab 是什么\n\n### 它解决什么问题\n\nIsaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 robot learning 的官方主线框架。\n\n它建立在 Isaac Sim 之上，目标是：\n- 提供现代化 robot learning workflow\n- 接住旧 of IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户\n- 支持训练、迁移、任务定义、环境注册、仿真管理\n\n### 它的典型特征\n\n- 建立在 **Isaac Sim** 上\n- 支持强化学习、模仿学习、locomotion、manipulation\n- 提供从旧框架迁移的官方文档\n- 有更清晰的任务组织与环境注册方式\n- 是 NVIDIA 现在推荐的主线\n- **算法兼容性**：新一代算法如 **BRRL / BPO (2026)** 优先在 Isaac Lab 环境下进行了人形机器人行走等任务的验证，显示了其对现代 RL 研究的良好支撑。\n\n### 什么时候优先用 Isaac Lab\n\n如果你：\n- 正在搭建新的人形 / 足式 RL 项目\n- 想用 NVIDIA 官方当前支持的方案\n- 想减少以后迁移成本\n\n那就直接优先 Isaac Lab。\n\n## Isaac Gym 和 Isaac Lab 的关系\n\n最容易混的点在这里。\n\n### 不是简单的“新版本号关系”\n它们不是“Isaac Gym 2.0 = Isaac Lab”。\n\n更准确地说：\n- Isaac Gym 是早期独立 GPU RL 仿真框架\n- Isaac Lab 是后续基于 Isaac Sim 的新主线 robot learning 框架\n\n### 研究语境里的关系\n\n如果你在读论文或开源项目：\n- 2021–2024 很多足式 / 人形 RL baseline 还在用 Isaac Gym\n- 现在新项目越来越往 Isaac Lab 迁移\n\n所以你需要能“读得懂 Gym 论文与代码”，但“新实验优先用 Lab”。\n\n## Isaac Gym / Isaac Lab 在人形机器人里的作用\n\n### 1. 人形 locomotion RL 训练底座\n最典型用途：\n- PPO 训练 humanoid locomotion\n- domain randomization\n- 大规模 parallel rollout\n\n### 2. 操作与 loco-manipulation 研究\n新一代框架（特别是 Isaac Lab）更适合接 manipulation 和复杂任务。\n\n### 3. sim2real 的仿真前端\n虽然 sim2real 不只取决于仿真器，但：\n- 仿真器决定环境 fidelity\n- 环境定义决定训练流程\n- domain randomization 和 observation pipeline 也深受框架影响\n\n## 常见搭配关系\n\n### 经典旧栈\n\n```text\nIsaac Gym\n  + IsaacGymEnvs\n  + legged_gym\n  + PPO / rl-games\n```\n\n### 当前推荐新栈\n\n```text\nIsaac Sim\n  + Isaac Lab\n  + 任务定义 / 环境注册\n  + RL / IL / manipulation / locomotion\n```\n\n## 它和当前项目主线的关系\n\n### 和 Reinforcement Learning 的关系\nIsaac Gym / Isaac Lab 是 RL 训练的“基础设施层”，不是 RL 算法本身。\n\n见：[Reinforcement Learning](../methods/reinforcement-learning.md)\n\n### 和 Locomotion 的关系\n在人形和足式 locomotion 研究里，它们常常是训练环境和 benchmark 平台。\n\n见：[Locomotion](../tasks/locomotion.md)\n\n### 和 Sim2Real 的关系\n它们提供仿真训练和 domain randomization 的主要工作台，但 sim2real 成功与否还取决于状态估计、系统辨识、观测设计等。\n\n见：[Sim2Real](../concepts/sim2real.md)\n\n### 和 Domain Randomization 的关系\nIsaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 也延续了这条能力路线。\n\n见：[Domain Randomization](../concepts/domain-randomization.md)\n\n## 常见误区\n\n### 1. 以为 Isaac Gym 还是官方主线\n不是，它现在是 legacy。\n\n### 2. 以为看老论文就没必要学 Isaac Lab\n错。读老论文要懂 Gym，新实验要优先 Lab。\n\n### 3. 以为换成 Isaac Lab，旧经验都作废\n也不对。训练逻辑、任务构造、reward 设计、DR 思路很多是继承下来的。\n\n### 4. 以为仿真器选对了，sim2real 就稳了\n远远不够。状态估计、系统辨识、执行器建模、观测延迟同样关键。\n\n## 推荐使用建议\n\n### 如果你是初学者\n- 先理解 Isaac Gym 在机器人 RL 里的历史地位\n- 真正开始新项目时优先直接上 Isaac Lab\n\n### 如果你是复现旧工作\n- 大概率还要会看 Isaac Gym / IsaacGymEnvs / legged_gym\n- 但最好顺手了解一下迁移思路\n\n### 如果你是做新项目\n- 直接优先 Isaac Lab\n- 把 Gym 当成旧基线和历史语境\n\n## 继续深挖入口\n\n如果你想沿着仿真与训练平台继续往下挖，建议从这里进入：\n\n### Repo / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- NVIDIA Isaac Gym 页面：<https://developer.nvidia.com/isaac-gym>\n- Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>\n- Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>\n\n## 参考来源\n\n- Makoviychuk et al., *Isaac Gym: High Performance GPU Based Physics Simulation For Robot Learning* (2021) — Isaac Gym 原论文\n- 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>\n- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用\n\n## 关联页面\n\n- [legged_gym](./legged-gym.md)\n- [MuJoCo](./mujoco.md)\n- [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 一句话记忆\n\n> Isaac Gym 是旧一代高性能机器人 RL 仿真框架，Isaac Lab 是当前 NVIDIA 官方推荐的新主线。读旧工作要懂 Gym，做新项目优先 Lab。",
       "tags": [
         "entities",
         "entity",
@@ -5349,6 +5358,7 @@
       "related": [
         "entity-legged-gym",
         "entity-mujoco",
+        "entity-genesis-sim",
         "reference-repos-rl-frameworks",
         "wiki-methods-reinforcement-learning",
         "wiki-tasks-locomotion",
@@ -5366,7 +5376,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5398,7 +5408,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/policy_optimization.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "entity-lerobot",
@@ -5489,7 +5499,7 @@
       "title": "MuJoCo (物理引擎)",
       "path": "wiki/entities/mujoco.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [software, simulation, physics-engine, reinforcement-learning, deepmind]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/mujoco-vs-isaac-sim.md\n  - ./nvidia-omniverse.md\n  - ../methods/reinforcement-learning.md\n  - ../concepts/sim2real.md\nsources:\n  - ../../sources/papers/simulation.md\nsummary: \"MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。\"\n---\n\n# MuJoCo (物理引擎)\n\n**MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apache 2.0）以来，它已成为机器人强化学习（RL）和控制社区无可争议的基石工具。\n\n## 核心设计理念\n\n不同于面向游戏或视觉特效的引擎（如 PhysX, Havok, Bullet），MuJoCo 是为**严格的控制理论**而生的：\n\n1. **连续时间动力学的精确离散化**：\n   MuJoCo 并不使用传统的基于“惩罚冲量”的方法解决碰撞。相反，它将接触和摩擦建模为一个平滑的凸优化问题。这使得即使在极大的时间步长下，系统的能量守恒和接触稳定性依然极佳。\n2. **极易求导**：\n   其内部状态可以极其方便地进行有限差分求导甚至解析求导，这对于基于梯度的轨迹优化（Trajectory Optimization）和 iLQR 等算法极度友好。\n\n## 对机器人研究的统治力\n\n- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。\n- **Sim2Real 的证明**：诸多成功的 Sim2Real 论文（尤其是四足机器人和灵巧手操作领域）都证明了：只要系统辨识和域随机化做得好，在 MuJoCo 中训练的策略可以直接无缝迁移到物理硬件上。\n\n## 优势与局限\n\n- **优势**：\n  - 单线程计算性能极高（千赫兹级的闭环仿真毫无压力）。\n  - 接触模型非常稳定，很少发生“穿模”或无理的反弹（Explosion）。\n  - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。\n- **局限**：\n  - 原生 MuJoCo 在单机多 GPU 大规模并行能力上，逊色于专为此设计的 Isaac Gym（不过 DeepMind 推出的 MuJoCo XLA 正在弥补这一短板）。\n  - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。\n\n## 关联页面\n- [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)\n- [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n\n## 参考来源\n- Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.",
+      "content_markdown": "---\ntype: entity\ntags: [software, simulation, physics-engine, reinforcement-learning, deepmind]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/mujoco-vs-isaac-sim.md\n  - ./nvidia-omniverse.md\n  - ../methods/reinforcement-learning.md\n  - ../concepts/sim2real.md\nsources:\n  - ../../sources/papers/simulation.md\nsummary: \"MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。\"\n---\n\n# MuJoCo (物理引擎)\n\n**MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apache 2.0）以来，它已成为机器人强化学习（RL）和控制社区无可争议的基石工具。\n\n## 核心设计理念\n\n不同于面向游戏或视觉特效的引擎（如 PhysX, Havok, Bullet），MuJoCo 是为**严格的控制理论**而生的：\n\n1. **连续时间动力学的精确离散化**：\n   MuJoCo 并不使用传统的基于“惩罚冲量”的方法解决碰撞。相反，它将接触和摩擦建模为一个平滑的凸优化问题。这使得即使在极大的时间步长下，系统的能量守恒和接触稳定性依然极佳。\n2. **极易求导**：\n   其内部状态可以极其方便地进行有限差分求导甚至解析求导，这对于基于梯度的轨迹优化（Trajectory Optimization）和 iLQR 等算法极度友好。\n\n## 对机器人研究的统治力\n\n- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。\n- **Sim2Real 的证明**：诸多成功的 Sim2Real 论文（尤其是四足机器人和灵巧手操作领域）都证明了：只要系统辨识和域随机化做得好，在 MuJoCo 中训练的策略可以直接无缝迁移到物理硬件上。\n\n## 优势与局限\n\n- **优势**：\n  - 单线程计算性能极高（千赫兹级的闭环仿真毫无压力）。\n  - 接触模型非常稳定，很少发生“穿模”或无理的反弹（Explosion）。\n  - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。\n- **局限**：\n  - 原生 MuJoCo 在单机多 GPU 大规模并行能力上，逊色于专为此设计的 Isaac Gym（不过 DeepMind 推出的 MuJoCo XLA 正在弥补这一短板）。\n  - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。\n\n## 关联页面\n- [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)\n- [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎\n- [SAPIEN (仿真引擎)](./sapien.md) — 侧重关节体交互\n- [Robot Viewer](./robot-viewer.md) — 支持 MJCF 格式的 Web 查看器\n- [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n\n## 参考来源\n- Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.",
       "tags": [
         "entities",
         "entity",
@@ -5500,6 +5510,9 @@
       ],
       "related": [
         "wiki-comparisons-mujoco-vs-isaac-sim",
+        "entity-motrix",
+        "entity-sapien",
+        "entity-robot-viewer",
         "entity-nvidia-omniverse",
         "wiki-methods-reinforcement-learning",
         "wiki-concepts-sim2real"
@@ -5783,16 +5796,16 @@
       "title": "RoboTwin 2.0",
       "path": "wiki/entities/robotwin.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntitle: RoboTwin 2.0\ntags: [simulation, data-generation, dual-arm, dataset]\n---\n\n# RoboTwin 2.0\n\n**RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 [[sapien]] 仿真引擎之上，旨在解决具身智能（Embodied AI）中高质量专家数据获取昂贵且难以规模化的问题。\n\n## 为什么重要？\n\n在具身智能的训练中，**数据规模化（Scaling）** 是核心瓶颈。RoboTwin 通过以下方式提供解决方案：\n- **自动数据合成**：不再依赖人类遥操作，通过脚本或预定义策略生成海量专家轨迹。\n- **双臂任务聚焦**：针对当前最热门的双臂操作（如 [[aloha]] 任务）提供深度支持。\n- **低门槛上手**：作为 Lumina 社区《具身智能百科全书》推荐的实践平台，提供了从数据采集到模型训练的全链路工具。\n\n## 核心特性\n\n- **基于 SAPIEN 引擎**：利用其优秀的物理仿真能力和对 PartNet-Mobility 数据集的支持。\n- **任务库**：内置了 50+ 个双臂自动化任务，覆盖了常见的家庭和工业操作场景。\n- **真机对齐**：强调 Sim-to-Real 的一致性，生成的轨迹可以直接用于训练并在真机上验证。\n\n## 与其他系统的关系\n\n- **底层驱动**：依赖 [[sapien]] 进行物理模拟。\n- **任务目标**：通常用于生成 [[behavior-cloning]] 或 [[action-chunking]] (ACT) 所需的训练数据。\n- **硬件对应**：其仿真场景常模拟 [[aloha]] 或类似的双臂遥操作设备。\n\n## 参考来源\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)\n- [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)",
+      "content_markdown": "---\ntype: entity\ntitle: RoboTwin 2.0\ntags: [simulation, data-generation, dual-arm, dataset]\n---\n\n# RoboTwin 2.0\n\n**RoboTwin 2.0** 是一个专为双臂机器人操作设计的**自动数据生成与仿真平台**。它建立在 [SAPIEN (仿真引擎)](./sapien.md) 仿真引擎之上，旨在解决具身智能（Embodied AI）中高质量专家数据获取昂贵且难以规模化的问题。\n\n## 为什么重要？\n\n在具身智能的训练中，**数据规模化（Scaling）** 是核心瓶颈。RoboTwin 通过以下方式提供解决方案：\n- **自动数据合成**：不再依赖人类遥操作，通过脚本或预定义策略生成海量专家轨迹。\n- **双臂任务聚焦**：针对当前最热门的双臂操作（如 [ALOHA](./aloha.md) 任务）提供深度支持。\n- **低门槛上手**：作为 Lumina 社区《具身智能百科全书》推荐的实践平台，提供了从数据采集到模型训练的全链路工具。\n\n## 核心特性\n\n- **基于 SAPIEN 引擎**：利用其优秀的物理仿真能力和对 PartNet-Mobility 数据集的支持。\n- **任务库**：内置了 50+ 个双臂自动化任务，覆盖了常见的家庭和工业操作场景。\n- **真机对齐**：强调 Sim-to-Real 的一致性，生成的轨迹可以直接用于训练并在真机上验证。\n\n## 与其他系统的关系\n\n- **底层驱动**：依赖 [SAPIEN (仿真引擎)](./sapien.md) 进行物理模拟。\n- **任务目标**：通常用于生成 [[behavior-cloning]] 或 [[action-chunking]] (ACT) 所需的训练数据。\n- **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。\n\n## 参考来源\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)\n- [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)",
       "tags": [
         "entities",
         "entity",
         "tooling"
       ],
       "related": [
-        "sources-repos-embodied-ai-guide",
         "entity-sapien",
         "entity-aloha",
+        "sources-repos-embodied-ai-guide",
         "wiki-methods-behavior-cloning",
         "wiki-methods-action-chunking"
       ],
