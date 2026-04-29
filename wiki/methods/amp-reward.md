@@ -64,6 +64,7 @@ $$
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.
 - [HumanX 项目主页](https://github.com/wyhuai/human-x)
+- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
 
 ## 关联页面
 - [[protomotions]] — 提供大规模并行训练支持。
@@ -71,6 +72,7 @@ $$
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
+- [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
 
 ## 进阶：MimicKit 与 ADD
 

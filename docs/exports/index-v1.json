@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 258,
+  "item_count": 260,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -323,7 +323,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -418,7 +418,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -539,7 +539,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -722,7 +722,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -752,7 +752,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -849,7 +849,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1002,7 +1002,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1133,7 +1133,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1230,7 +1230,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1350,7 +1350,7 @@
       "title": "AMP & HumanX: 判别器驱动的风格学习",
       "path": "wiki/methods/amp-reward.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, gan, motion-prior, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../entities/mimickit.md\n  - ../entities/protomotions.md\n  - ./imitation-learning.md\n  - ./beyondmimic.md\n  - ../tasks/humanoid-soccer.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。\"\n---\n\n# AMP & HumanX: 判别器驱动的风格学习\n\n在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了包含接触关系的物体交互场景。\n\n## AMP: 对抗性动作先验\n\n**AMP (Adversarial Motion Prior)** 的核心在于不显式定义“什么是好动作”，而是让神经网络去“悟”。\n\n### 1. 核心架构\n- **判别器 (Discriminator)**：输入一段运动片段（当前状态与历史状态），尝试区分它是来自“参考动作数据集”还是“仿真中策略生成的动作”。\n- **策略 (Policy)**：作为生成器，除了最大化任务奖励外，还要最大化判别器的误判率（即让判别器认为自己生成的动作是真实的）。\n\n### 2. 优势\n- **自然度**：判别器能捕捉到人类动作中微妙的时序特征和协调性。\n- **无需繁琐调参**：减少了对关节速度惩罚、平滑惩罚等启发式奖励的依赖。\n\n## HumanX: 扩展到物体交互与接触图\n\n**HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。\n\n### 1. 接触图 (Contact Graph)\nHumanX 引入了接触图的概念：\n- 这是一个二进制向量，标记身体各部位（左右手、左右脚、头、躯干）是否与环境或物体接触。\n- **接触模仿奖励**：计算仿真接触状态与参考数据中接触状态的一致性。\n\n### 2. 多教师蒸馏 (Multi-teacher Distillation)\nHumanX 证明了学生策略可以仅仅通过**本体感知历史**（Joint angles, velocities, IMU）来隐式估计外力：\n- 训练多个专注于不同技能的特权教师（使用外力、物体位姿等特权信息）。\n- 学生策略通过 RL + 行为克隆 (BC) 联合训练，在没有外力传感器的情况下学会应对推力和负载。\n\n## 主要技术路线\n\n| 模块 | 实现方案 | 目的 |\n|------|---------|------|\n| **风格判别** | AMP Discriminator | 学习参考动作的自然风格，减少抖动 |\n| **接触监督** | 接触图 (Contact Graph) | 确保交互任务中肢体与物体的物理一致性 |\n| **技能习得** | 特权教师蒸馏 | 将外部感知能力转化为纯本体感知策略 |\n\n## 典型奖励设计：HumanX 接触奖励\n\n$$\nr_c = \\exp\\left(-\\sum_j \\lambda_j |c_j^{sim} - c_j^{ref}|\\right)\n$$\n其中 $c_j$ 是第 $j$ 个身体部位的接触状态（0 或 1）。该项强制机器人在特定的动作阶段（如搬箱子的抓取瞬间）保持与专家一致的物理接触。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.\n- [HumanX 项目主页](https://github.com/wyhuai/human-x)\n\n## 关联页面\n- [[protomotions]] — 提供大规模并行训练支持。\n\n- [Imitation Learning](./imitation-learning.md)\n- [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。\n- [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。\n\n## 进阶：MimicKit 与 ADD\n\n在 **[[mimickit]]** 框架中，AMP 得到了进一步的扩展和优化：\n- **[[add]] (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。\n- **[[smp]] (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。",
+      "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, gan, motion-prior, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../entities/mimickit.md\n  - ../entities/protomotions.md\n  - ./imitation-learning.md\n  - ./beyondmimic.md\n  - ../tasks/humanoid-soccer.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。\"\n---\n\n# AMP & HumanX: 判别器驱动的风格学习\n\n在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了包含接触关系的物体交互场景。\n\n## AMP: 对抗性动作先验\n\n**AMP (Adversarial Motion Prior)** 的核心在于不显式定义“什么是好动作”，而是让神经网络去“悟”。\n\n### 1. 核心架构\n- **判别器 (Discriminator)**：输入一段运动片段（当前状态与历史状态），尝试区分它是来自“参考动作数据集”还是“仿真中策略生成的动作”。\n- **策略 (Policy)**：作为生成器，除了最大化任务奖励外，还要最大化判别器的误判率（即让判别器认为自己生成的动作是真实的）。\n\n### 2. 优势\n- **自然度**：判别器能捕捉到人类动作中微妙的时序特征和协调性。\n- **无需繁琐调参**：减少了对关节速度惩罚、平滑惩罚等启发式奖励的依赖。\n\n## HumanX: 扩展到物体交互与接触图\n\n**HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。\n\n### 1. 接触图 (Contact Graph)\nHumanX 引入了接触图的概念：\n- 这是一个二进制向量，标记身体各部位（左右手、左右脚、头、躯干）是否与环境或物体接触。\n- **接触模仿奖励**：计算仿真接触状态与参考数据中接触状态的一致性。\n\n### 2. 多教师蒸馏 (Multi-teacher Distillation)\nHumanX 证明了学生策略可以仅仅通过**本体感知历史**（Joint angles, velocities, IMU）来隐式估计外力：\n- 训练多个专注于不同技能的特权教师（使用外力、物体位姿等特权信息）。\n- 学生策略通过 RL + 行为克隆 (BC) 联合训练，在没有外力传感器的情况下学会应对推力和负载。\n\n## 主要技术路线\n\n| 模块 | 实现方案 | 目的 |\n|------|---------|------|\n| **风格判别** | AMP Discriminator | 学习参考动作的自然风格，减少抖动 |\n| **接触监督** | 接触图 (Contact Graph) | 确保交互任务中肢体与物体的物理一致性 |\n| **技能习得** | 特权教师蒸馏 | 将外部感知能力转化为纯本体感知策略 |\n\n## 典型奖励设计：HumanX 接触奖励\n\n$$\nr_c = \\exp\\left(-\\sum_j \\lambda_j |c_j^{sim} - c_j^{ref}|\\right)\n$$\n其中 $c_j$ 是第 $j$ 个身体部位的接触状态（0 或 1）。该项强制机器人在特定的动作阶段（如搬箱子的抓取瞬间）保持与专家一致的物理接触。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.\n- [HumanX 项目主页](https://github.com/wyhuai/human-x)\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。\n\n## 关联页面\n- [[protomotions]] — 提供大规模并行训练支持。\n\n- [Imitation Learning](./imitation-learning.md)\n- [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。\n- [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。\n- [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。\n\n## 进阶：MimicKit 与 ADD\n\n在 **[[mimickit]]** 框架中，AMP 得到了进一步的扩展和优化：\n- **[[add]] (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。\n- **[[smp]] (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。",
       "tags": [
         "method",
         "humanoid",
@@ -1363,7 +1363,9 @@
         "wiki-methods-imitation-learning",
         "wiki-formalizations-behavior-cloning-loss",
         "wiki-methods-beyondmimic",
+        "entity-amp-mjlab",
         "sources-papers-motion-control-projects",
+        "sources-repos-amp-mjlab",
         "entity-protomotions",
         "entity-mimickit",
         "wiki-methods-add",
@@ -1733,7 +1735,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1971,7 +1973,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2313,7 +2315,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2451,7 +2453,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2741,7 +2743,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2778,7 +2780,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2816,7 +2818,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5006,6 +5008,35 @@
       "entity_kind": "framework"
     },
     {
+      "id": "entity-amp-mjlab",
+      "title": "AMP_mjlab (G1 统一 AMP 策略)",
+      "path": "wiki/entities/amp-mjlab.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../methods/amp-reward.md\n  - ./unitree-g1.md\n  - ./legged-gym.md\n  - ../methods/imitation-learning.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/amp_mjlab.md\nsummary: \"AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。\"\n---\n\n# AMP_mjlab (G1 统一 AMP 策略)\n\n**AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。\n\n## 为什么重要？\n\n传统做法需要维护独立的 \"locomotion 策略\" 和 \"recovery 策略\"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。\n\n## 核心架构\n\n```\nAMP_mjlab 统一训练\n├── Actor-Critic 网络（单一策略）\n│   ├── 速度跟踪奖励（locomotion 目标）\n│   └── AMP 风格奖励（自然度）\n├── AMP Discriminator\n│   ├── 参考数据：WalkandRun clip\n│   └── 参考数据：Recovery clip（跌倒恢复）\n└── Delayed Termination\n    └── 部分 env 在 reset 前给 recovery 窗口\n```\n\n**关键机制：Delayed Termination**——不立即 reset 跌倒的 env，而是给策略一个时间窗口尝试自主恢复，迫使策略学习爬起行为。\n\n## 训练特征\n\n- **规模**：4096 并行环境\n- **收敛特征**：约 2 万步时 recovery 行为突然涌现，loss 指标跳变属正常\n- **任务**：`Unitree-G1-AMP-Rough` / `Unitree-G1-AMP-Flat`\n- **部署**：ONNX export，训练与推理 pipeline 一致\n\n## 与 AMP 方法的关系\n\nAMP_mjlab 是 [AMP & HumanX](../methods/amp-reward.md) 方法的一个具体实现，区别在于：\n\n| 维度 | AMP 原论文 | AMP_mjlab |\n|------|-----------|-----------|\n| 硬件目标 | 角色控制（通用） | Unitree G1（人形） |\n| 仿真框架 | IsaacGym / PhysX | mjlab（MuJoCo） |\n| 任务范围 | 单一风格 | Locomotion + Recovery 统一 |\n| 训练库 | 各异 | rsl_rl (PPO) |\n\n## 关联页面\n\n- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体\n- [Unitree G1](./unitree-g1.md) — 目标硬件\n- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym\n- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)\n- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl"
+      ],
+      "related": [
+        "wiki-methods-amp-reward",
+        "entity-unitree-g1",
+        "entity-legged-gym",
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-locomotion",
+        "sources-repos-amp-mjlab"
+      ],
+      "source_links": [
+        "https://github.com/ccrpRepo/AMP_mjlab"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
       "id": "entity-anymal",
       "title": "ANYmal 四足机器人",
       "path": "wiki/entities/anymal.md",
@@ -5256,7 +5287,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -5288,7 +5319,7 @@
       "title": "Genesis (仿真器)",
       "path": "wiki/entities/genesis-sim.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntitle: Genesis (仿真器)\ntags: [simulation, physics-engine, robot-learning, differentiable]\n---\n\n# Genesis (仿真器)\n\n**Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [[isaac-gym-isaac-lab]] 并列，作为新一代大规模并行仿真的代表，特别强调在处理柔性体、流体以及多物理场耦合方面的能力。\n\n## 为什么重要？\n\n随着具身智能向复杂环境渗透，传统的刚体仿真已显不足。Genesis 的核心价值在于：\n- **万物可仿**：不仅支持刚体（Rigid Body），还支持流体、布料、软体等多种物理实体的统一建模。\n- **微分仿真**：支持自动微分（Differentiable Simulation），允许直接对物理过程进行梯度下降优化。\n- **极致并行**：充分利用 GPU 并行能力，单机可支持数万个智能体同时训练。\n\n## 核心特性\n\n- **多物理场耦合**：能够处理复杂的交互场景，如机器人切菜、倒水或穿衣。\n- **高效率渲染**：内置高性能渲染器，为视觉策略训练提供逼真且高效的合成数据。\n- **现代 API**：采用更符合现代 AI 开发者习惯的 Pythonic 接口，降低了环境搭建的复杂度。\n\n## 与其他系统的关系\n\n- **推荐背景**：[[xbotics-embodied-guide]] 将 Genesis 推荐为实战路线图中的核心工具之一。\n- **对比**：相比 [[mujoco]]，Genesis 的并行化程度更高；相比传统的 [[sapien]]，它在非刚体仿真方面具有显著优势。\n\n## 参考来源\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)\n- [Genesis Project Page](https://genesis-world.github.io/)",
+      "content_markdown": "---\ntype: entity\ntitle: Genesis (仿真器)\ntags: [simulation, physics-engine, robot-learning, differentiable]\n---\n\n# Genesis (仿真器)\n\n**Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [[isaac-gym-isaac-lab]] 并列，作为新一代大规模并行仿真的代表，特别强调在处理柔性体、流体以及多物理场耦合方面的能力。\n\n## 为什么重要？\n\n随着具身智能向复杂环境渗透，传统的刚体仿真已显不足。Genesis 的核心价值在于：\n- **万物可仿**：不仅支持刚体（Rigid Body），还支持流体、布料、软体等多种物理实体的统一建模。\n- **微分仿真**：支持自动微分（Differentiable Simulation），允许直接对物理过程进行梯度下降优化。\n- **极致并行**：充分利用 GPU 并行能力，单机可支持数万个智能体同时训练。\n\n## 核心特性\n\n- **多物理场耦合**：能够处理复杂的交互场景，如机器人切菜、倒水或穿衣。\n- **高效率渲染**：内置高性能渲染器，为视觉策略训练提供逼真且高效的合成数据。\n- **现代 API**：采用更符合现代 AI 开发者习惯的 Pythonic 接口，降低了环境搭建的复杂度。\n\n## 与其他系统的关系\n\n- **推荐背景**：[[xbotics-embodied-guide]] 将 Genesis 推荐为实战路线图中的核心工具之一。\n- **对比**：相比 [[mujoco]]，Genesis 的并行化程度更高；相比传统的 [[sapien]]，它在非刚体仿真方面具有显著优势。\n\n## 关联页面\n\n- [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）\n\n## 参考来源\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)\n- [Genesis Project Page](https://genesis-world.github.io/)",
       "tags": [
         "entities",
         "entity",
@@ -5296,6 +5327,7 @@
         "tooling"
       ],
       "related": [
+        "entity-gs-playground",
         "sources-repos-xbotics-embodied-guide",
         "entity-isaac-gym-isaac-lab",
         "entity-mujoco",
@@ -5303,6 +5335,34 @@
       ],
       "source_links": [
         "https://genesis-world.github.io/"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-gs-playground",
+      "title": "GS-Playground (3DGS 光真实感仿真)",
+      "path": "wiki/entities/gs-playground.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./genesis-sim.md\n  - ./isaac-gym-isaac-lab.md\n  - ./mujoco.md\n  - ../concepts/sim2real.md\nsources:\n  - ../../sources/repos/gs_playground.md\nsummary: \"GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。\"\n---\n\n# GS-Playground (3DGS 光真实感仿真)\n\n**GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting (3DGS) 渲染** 耦合，在保持极高帧率的同时提供光真实感的视觉观测。已被 **RSS 2026** 收录。\n\n## 为什么重要？\n\n视觉 RL 训练面临两个长期矛盾：\n\n1. **吞吐量 vs 真实感**：传统渲染（OpenGL 光栅化）速度可接受，但外观失真严重；光线追踪真实感高但速度极慢。3DGS 渲染打破了这个 trade-off。\n2. **Sim-to-Real 外观 gap**：用 3DGS 从真实场景重建的仿真环境，天然缩小 visual domain gap，减少 domain randomization 的负担。\n\n## 核心技术\n\n### 批量 3D Gaussian Splatting 渲染\n\n| 指标 | 数值 |\n|------|------|\n| 渲染分辨率 | 640×480 |\n| 峰值吞吐量 | **10,000 FPS** |\n| 输出观测 | RGB + Depth |\n\n**原理**：3DGS 将场景表示为数百万个各向异性高斯椭球，GPU 并行将其溅射（splat）到像素平面，速度远高于 NeRF 的 ray marching，质量远高于光栅化。\n\n### Rigid-Link Gaussian Kinematics\n\n将高斯团簇绑定到物理刚体上：当物理引擎更新关节角度时，对应的高斯团簇跟随刚体变换，保证视觉与物理状态严格同步，不出现 \"身体穿模\" 等伪影。\n\n### Real2Sim 工作流\n\n```\n真实场景采集（相机矩阵）\n    ↓\n3DGS 重建（外观建模）\n    ↓\n导入 GS-Playground（物理 + 渲染耦合）\n    ↓\n视觉 RL 训练\n```\n\n外观直接来自真实世界，zero-shot 迁移时视觉分布对齐已内建。\n\n### 物理引擎\n\n- **速度冲量求解器（Velocity-Impulse Solver）**：适合接触丰富任务（manipulator、locomotion）\n- 支持四足（Go1、Go2）、人形（G1）、机械臂（Franka、Robotiq）\n\n## 与其他仿真框架的对比\n\n| 维度 | GS-Playground | Isaac Lab | Genesis | MuJoCo |\n|------|--------------|-----------|---------|--------|\n| 渲染方式 | 批量 3DGS | 光栅化 | 内置渲染器 | 无 / 基础 |\n| 视觉真实感 | ★★★★★ | ★★★ | ★★★★ | ★ |\n| 吞吐量 | 10^4 FPS | 高（GPU 并行） | 高 | 中 |\n| Real2Sim | 原生支持 | 有限 | 有限 | 无 |\n| 成熟度 | 早期预览 | 成熟 | 成熟 | 成熟 |\n\n## 当前状态（早期预览）\n\n已发布：\n- 批量渲染 Benchmark notebook\n- Franka / Robotiq replay demo\n- Go1 / Go2 / G1 locomotion demo\n\n规划中（未发布）：\n- 核心 Simulator API\n- Real2Sim 工具链\n- 训练 pipeline\n- 完整 benchmark 套件\n\n## 关联页面\n\n- [Genesis 仿真器](./genesis-sim.md) — 同为新一代高吞吐仿真，侧重多物理场\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 主流并行仿真平台，视觉质量较低\n- [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器\n- [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real\n\n## 参考来源\n\n- [sources/repos/gs_playground.md](../../sources/repos/gs_playground.md)\n- [discoverse-dev/gs_playground GitHub Repo](https://github.com/discoverse-dev/gs_playground)",
+      "tags": [
+        "entities",
+        "entity",
+        "locomotion",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "entity-genesis-sim",
+        "entity-isaac-gym-isaac-lab",
+        "entity-mujoco",
+        "wiki-concepts-sim2real",
+        "sources-repos-gs-playground"
+      ],
+      "source_links": [
+        "https://github.com/discoverse-dev/gs_playground"
       ],
       "status": "active",
       "type": "entity_page",
@@ -5376,7 +5436,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-legged-gym",
