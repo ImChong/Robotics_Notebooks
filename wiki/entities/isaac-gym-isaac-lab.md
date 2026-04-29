@@ -240,6 +240,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
+- [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 
 ## 一句话记忆

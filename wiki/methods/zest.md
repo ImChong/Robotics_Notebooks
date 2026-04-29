@@ -2,6 +2,7 @@
 type: method
 title: ZEST (Zero-shot Embodied Skill Transfer)
 tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]
+summary: "ZEST 是波士顿动力开发的统一框架，通过自适应采样与自动课程学习，将异构动捕/视频数据直接转化为机器人的零样本高动态运动技能。"
 ---
 
 # ZEST (Zero-shot Embodied Skill Transfer)
@@ -11,6 +12,20 @@ tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]
 ## 核心理念
 
 ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式判别器（Discriminator）或复杂接触计划的前提下，学习如何平衡“模仿精度”与“物理鲁棒性”。它证明了即使是带噪声的单目视频数据，也可以转化为机器人极其稳健的运动技能。
+
+## 主要技术路线
+
+```text
+异构运动数据 (MoCap/ViCap/Animation)
+          ↓
+  物理正则化强化学习 (Adaptive Sampling)
+          ↓
+  自动课程学习 (Assistive Wrench)
+          ↓
+  极简部署策略 (No History/No Preview)
+          ↓
+     零样本跨形态部署 (Atlas/G1/Spot)
+```
 
 ## 关键技术
 
@@ -36,11 +51,17 @@ ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式
 - **跨形态部署**：在 Atlas、Unitree G1 和 Spot 上均实现了成功部署，且不需要针对特定硬件进行算法结构的修改。
 - **高动态性**：实现了连续后空翻、侧手翻等接近人类极限的体育（Athletic）动作。
 
-## 与其他系统的关系
+## 关联页面
 
-- **对比 [[deepmimic]]/[[ase]]**：ZEST 不再依赖对抗训练（判别器），而是通过自适应采样解决数据不均衡问题。
-- **对比 [[whole-body-control]] (WBC)**：ZEST 能够处理 WBC 难以定义的复杂接触序列，且在动态性上更胜一筹。
-- **底座支持**：通常在 [[mujoco]] 等高性能物理引擎中完成训练，并依赖 [[sim2real]] 技术进行部署。
+- [Curriculum Learning（课程学习）](../concepts/curriculum-learning.md) — 虚拟辅助力的核心理论
+- [Sim2Real](../concepts/sim2real.md) — 零样本迁移的实现基础
+- [Behavior Cloning](./behavior-cloning.md)
+- [DeepMimic](./deepmimic.md)
+- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
+- [Mujoco (物理引擎)](../entities/mujoco.md)
+- [Atlas (机器人)](../entities/boston-dynamics.md)
+- [G1 (机器人)](../entities/unitree-g1.md)
+- [Spot (机器人)](../entities/boston-dynamics.md)
 
 ## 参考来源
 - [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)
