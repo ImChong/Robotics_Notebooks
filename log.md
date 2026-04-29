@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-04-29] checklist-v21 | wiki/methods/tactile-impedance-control.md — 推进 V21 P1 触觉与力觉闭环专题
+
+- 新增 `wiki/methods/tactile-impedance-control.md`：把阻抗控制推广为变参数形式，按 $s_{\text{tac}} = (f_n, \tau_t, c, \dot{c}, A)$ 在线调度 $K_d, B_d, x_d$
+- 覆盖：规则化 / 学习式 / 优化型 / 教师-学生四条主要技术路线，时间尺度匹配、滑移检测、摩擦锥安全约束、多指协同四类实现要点，以及四个常见误区
+- 在 `wiki/concepts/impedance-control.md`、`wiki/concepts/tactile-sensing.md`、`wiki/concepts/contact-rich-manipulation.md` 建立入链
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P1「tactile-impedance-control.md」一项
+- `make lint` 全绿（0 errors），P1 子专题剩 `wiki/entities/gel-slim.md` 待补
+
 ## [2026-04-29] ingest | sources/repos/amp_mjlab.md — 接入 ccrpRepo/AMP_mjlab，沉淀 wiki/entities/amp-mjlab.md，更新 wiki/methods/amp-reward.md 交叉引用
 
 - 仓库：https://github.com/ccrpRepo/AMP_mjlab
