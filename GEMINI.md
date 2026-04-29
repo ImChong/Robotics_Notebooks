@@ -105,5 +105,5 @@ Example: `chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
 
 ## Maintenance Targets (Current Phase)
 - **Sources Coverage:** >99%
-- **Knowledge Graph:** 212+ nodes, 1236+ edges.
+- **Knowledge Graph:** 213+ nodes, 1241+ edges.
 - **Focus Areas:** Contact-rich manipulation, tactile/force feedback, and formalization of communication links.
