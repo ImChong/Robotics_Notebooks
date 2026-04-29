@@ -63,6 +63,7 @@ summary: "触觉感知（Tactile Sensing）使机器人能够测量接触面上�
 - [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)
 - [Tactile Impedance Control (基于触觉的阻抗控制)](../methods/tactile-impedance-control.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
+- [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)

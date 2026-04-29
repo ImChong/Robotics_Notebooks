@@ -14,6 +14,7 @@ related:
   - ../formalizations/friction-cone.md
   - ../queries/tactile-feedback-in-rl.md
   - ../tasks/manipulation.md
+  - ../entities/gel-slim.md
 sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
@@ -170,6 +171,7 @@ $$
 - [Friction Cone](../formalizations/friction-cone.md)
 - [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)
 - [In-hand Reorientation](./in-hand-reorientation.md)
+- [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 
 ## 参考来源

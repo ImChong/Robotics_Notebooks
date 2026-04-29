@@ -30,12 +30,12 @@
 
 ## P1: 触觉与力觉闭环 (Haptics) 专题 (Quality)
 
-- [ ] **建立触觉学习知识链 (+3)**：
+- [x] **建立触觉学习知识链 (+3)**：
     - [x] `wiki/concepts/visuo-tactile-fusion.md` (视触觉融合：在接触瞬间如何平衡视觉全局与触觉局部信息)。
     - [x] `wiki/methods/tactile-impedance-control.md` (基于触觉反馈的阻抗控制：实现自适应力度的灵巧抓取)。
     - [x] `wiki/formalizations/contact-wrench-cone.md` (接触力旋量锥：处理多点接触与力矩平衡的数学形式化)。
-- [ ] **深化灵巧手感知**：
-    - [ ] `wiki/entities/gel-slim.md` (下一代超薄视觉触觉传感器：硬件特性与仿真建模)。
+- [x] **深化灵巧手感知**：
+    - [x] `wiki/entities/gel-slim.md` (下一代超薄视觉触觉传感器：硬件特性与仿真建模)。
 
 ## P2: 硬件通信与底层实时链路形式化 (Quantity)
 

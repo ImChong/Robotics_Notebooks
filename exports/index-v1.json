@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 261,
+  "item_count": 262,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -418,7 +418,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -450,7 +450,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -691,7 +691,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -723,7 +723,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -753,7 +753,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -785,7 +785,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -850,7 +850,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -969,7 +969,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1003,7 +1003,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1042,7 +1042,7 @@
       "title": "Tactile Sensing（触觉感知）",
       "path": "wiki/concepts/tactile-sensing.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [perception, manipulation, contact-rich, hardware, sensing]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./contact-rich-manipulation.md\n  - ./visuo-tactile-fusion.md\n  - ../methods/humanoid-transformer-touch-dreaming.md\n  - ../tasks/manipulation.md\n  - ../methods/visual-servoing.md\n  - ../queries/tactile-feedback-in-rl.md\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/humanoid_touch_dream.md\nsummary: \"触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。\"\n---\n\n# Tactile Sensing（触觉感知）\n\n**触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交互**时的“兜底”防线。对于接触丰富（Contact-rich）的操作任务，如插拔、灵巧抓取、装配和盲索，触觉感知是不可或缺的。\n\n## 核心感知维度\n\n触觉传感器通常用来测量和估计以下物理量：\n\n1. **三维接触力 (3D Contact Force)**：接触点处的法向压力（Normal Force）和切向摩擦力（Shear Force）。\n2. **接触几何分布 (Contact Geometry)**：物体在传感器表面的接触面积、形状和压力分布图。\n3. **滑移检测 (Slip Detection)**：通过高频振动或压力中心的快速移动，检测抓取物是否正在滑脱。\n4. **材质纹理 (Texture/Compliance)**：通过拖动传感器表面，感知物体的粗糙度和软硬程度。\n\n## 主流传感器技术路线\n\n随着机器人灵巧手的普及，触觉传感器的形态也迎来了爆发：\n\n### 1. 基于视觉的触觉传感器 (Vision-based Tactile Sensors)\n- **代表**：GelSight, DIGIT.\n- **原理**：在弹性硅胶体内部嵌入一个微型摄像头。当硅胶表面与物体接触发生形变时，摄像头捕捉其内表面的形变图像。\n- **优点**：极高的空间分辨率（千万像素级），能捕捉极其精细的纹理和法向深度分布。非常适合直接与端到端（End-to-End）基于视觉的强化学习策略结合。\n- **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区。\n\n### 2. 电阻/电容式阵列 (Piezoresistive / Capacitive Arrays)\n- **代表**：BioTac, 各种柔性薄膜阵列。\n- **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。\n- **优点**：易于做成柔性贴片包裹在机械手上，成本较低。\n- **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。\n\n### 3. 多轴力矩传感器 (Multi-axis Force/Torque Sensors, F/T)\n- **原理**：通常安装在机械臂的手腕处（Wrist F/T）或指尖内部（如应变片构成的六维力传感器）。\n- **优点**：测量极其精准，带宽极高（可达 1000Hz+），是工业阻抗控制（Impedance Control）的标配。\n- **缺点**：只能提供一个合力/合力矩点，无法提供接触面上的空间分布信息。\n\n## 在机器人学习中的应用\n\n在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：\n\n- **跨模态融合 (Cross-modal Fusion)**：将视觉 RGB 特征与 GelSight 图像特征在 Transformer 晚期融合，使得模型在“手遮挡了目标”时，依然能依靠触觉完成插入孔位的微调。\n- **作为奖励信号 (Reward Signal)**：在强化学习中，将“维持特定的法向压力范围”且“切向力不超过摩擦锥（Friction Cone）”作为稠密奖励，引导策略学会稳定的抓取。\n- **作为预测式辅助目标 (Predictive Auxiliary Target)**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) 在人形机器人行为克隆中预测未来手部力和触觉 latent，使触觉信号不只是输入，而是塑造接触感知表示的训练目标。\n\n## 关联页面\n- [接触丰富操作 (Contact-Rich Manipulation)](./contact-rich-manipulation.md)\n- [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)\n- [Tactile Impedance Control (基于触觉的阻抗控制)](../methods/tactile-impedance-control.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n- [Manipulation 任务](../tasks/manipulation.md)\n- [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)\n- [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)\n- [Contact Wrench Cone (接触力旋量锥) 形式化](../formalizations/contact-wrench-cone.md)\n\n## 参考来源\n- Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)",
+      "content_markdown": "---\ntype: concept\ntags: [perception, manipulation, contact-rich, hardware, sensing]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./contact-rich-manipulation.md\n  - ./visuo-tactile-fusion.md\n  - ../methods/humanoid-transformer-touch-dreaming.md\n  - ../tasks/manipulation.md\n  - ../methods/visual-servoing.md\n  - ../queries/tactile-feedback-in-rl.md\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/humanoid_touch_dream.md\nsummary: \"触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。\"\n---\n\n# Tactile Sensing（触觉感知）\n\n**触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交互**时的“兜底”防线。对于接触丰富（Contact-rich）的操作任务，如插拔、灵巧抓取、装配和盲索，触觉感知是不可或缺的。\n\n## 核心感知维度\n\n触觉传感器通常用来测量和估计以下物理量：\n\n1. **三维接触力 (3D Contact Force)**：接触点处的法向压力（Normal Force）和切向摩擦力（Shear Force）。\n2. **接触几何分布 (Contact Geometry)**：物体在传感器表面的接触面积、形状和压力分布图。\n3. **滑移检测 (Slip Detection)**：通过高频振动或压力中心的快速移动，检测抓取物是否正在滑脱。\n4. **材质纹理 (Texture/Compliance)**：通过拖动传感器表面，感知物体的粗糙度和软硬程度。\n\n## 主流传感器技术路线\n\n随着机器人灵巧手的普及，触觉传感器的形态也迎来了爆发：\n\n### 1. 基于视觉的触觉传感器 (Vision-based Tactile Sensors)\n- **代表**：GelSight, DIGIT.\n- **原理**：在弹性硅胶体内部嵌入一个微型摄像头。当硅胶表面与物体接触发生形变时，摄像头捕捉其内表面的形变图像。\n- **优点**：极高的空间分辨率（千万像素级），能捕捉极其精细的纹理和法向深度分布。非常适合直接与端到端（End-to-End）基于视觉的强化学习策略结合。\n- **缺点**：体积较大（难以塞入指尖），帧率受限于摄像头（通常在 30-60Hz），存在盲区。\n\n### 2. 电阻/电容式阵列 (Piezoresistive / Capacitive Arrays)\n- **代表**：BioTac, 各种柔性薄膜阵列。\n- **原理**：利用导电聚合物或电容器阵列，当受到压力时，电阻或电容值发生变化。\n- **优点**：易于做成柔性贴片包裹在机械手上，成本较低。\n- **缺点**：存在迟滞现象（Hysteresis），容易受到温度干扰，长期使用会老化漂移。\n\n### 3. 多轴力矩传感器 (Multi-axis Force/Torque Sensors, F/T)\n- **原理**：通常安装在机械臂的手腕处（Wrist F/T）或指尖内部（如应变片构成的六维力传感器）。\n- **优点**：测量极其精准，带宽极高（可达 1000Hz+），是工业阻抗控制（Impedance Control）的标配。\n- **缺点**：只能提供一个合力/合力矩点，无法提供接触面上的空间分布信息。\n\n## 在机器人学习中的应用\n\n在最新的 Robot Learning 研究中，触觉反馈正在成为突破视觉遮挡（Occlusion）瓶颈的关键：\n\n- **跨模态融合 (Cross-modal Fusion)**：将视觉 RGB 特征与 GelSight 图像特征在 Transformer 晚期融合，使得模型在“手遮挡了目标”时，依然能依靠触觉完成插入孔位的微调。\n- **作为奖励信号 (Reward Signal)**：在强化学习中，将“维持特定的法向压力范围”且“切向力不超过摩擦锥（Friction Cone）”作为稠密奖励，引导策略学会稳定的抓取。\n- **作为预测式辅助目标 (Predictive Auxiliary Target)**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) 在人形机器人行为克隆中预测未来手部力和触觉 latent，使触觉信号不只是输入，而是塑造接触感知表示的训练目标。\n\n## 关联页面\n- [接触丰富操作 (Contact-Rich Manipulation)](./contact-rich-manipulation.md)\n- [视触觉融合 (Visuo-Tactile Fusion)](./visuo-tactile-fusion.md)\n- [Tactile Impedance Control (基于触觉的阻抗控制)](../methods/tactile-impedance-control.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n- [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)\n- [Manipulation 任务](../tasks/manipulation.md)\n- [Visual Servoing (视觉伺服)](../methods/visual-servoing.md)\n- [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)\n- [Contact Wrench Cone (接触力旋量锥) 形式化](../formalizations/contact-wrench-cone.md)\n\n## 参考来源\n- Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)",
       "tags": [
         "concept",
         "humanoid",
@@ -1056,6 +1056,7 @@
         "wiki-concepts-visuo-tactile-fusion",
         "wiki-methods-tactile-impedance-control",
         "wiki-methods-humanoid-transformer-touch-dreaming",
+        "entity-gel-slim",
         "wiki-tasks-manipulation",
         "wiki-methods-visual-servoing",
         "wiki-formalizations-friction-cone",
@@ -1135,7 +1136,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1232,7 +1233,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2129,7 +2130,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2164,7 +2165,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-motion-retargeting-gmr",
@@ -2317,7 +2318,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2433,7 +2434,7 @@
       "title": "Tactile Impedance Control（基于触觉反馈的阻抗控制）",
       "path": "wiki/methods/tactile-impedance-control.md",
       "summary": "不是只让机器人“像弹簧一样”柔顺，而是让弹簧的软硬本身随接触压力分布、滑移与法向力实时改变",
-      "content_markdown": "---\ntype: method\ntags: [control, manipulation, contact-rich, tactile-sensing, impedance-control, force-control, dexterity]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../concepts/impedance-control.md\n  - ../concepts/force-control-basics.md\n  - ../concepts/hybrid-force-position-control.md\n  - ../concepts/tactile-sensing.md\n  - ../concepts/visuo-tactile-fusion.md\n  - ../concepts/contact-rich-manipulation.md\n  - ../formalizations/contact-wrench-cone.md\n  - ../formalizations/friction-cone.md\n  - ../queries/tactile-feedback-in-rl.md\n  - ../tasks/manipulation.md\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\n  - ../../sources/papers/humanoid_touch_dream.md\nsummary: \"基于触觉的阻抗控制（Tactile Impedance Control）把指尖触觉读数实时回馈到阻抗参数中：让等效刚度、阻尼乃至期望位置随接触状态在线调整，从而在灵巧抓取与精细装配中实现自适应力度。\"\n---\n\n# Tactile Impedance Control（基于触觉反馈的阻抗控制）\n\n**Tactile Impedance Control** 在标准 [阻抗控制](../concepts/impedance-control.md) 的「质量-弹簧-阻尼」框架之上，把指尖触觉传感器（如 GelSight、BioTac、电容阵列、F/T 内置传感器）测得的接触状态作为闭环反馈，在线调整 $K_d, B_d$ 以及虚拟平衡点 $x_d$，从而在灵巧抓取、插拔、装配等任务中实现**自适应力度**（adaptive grasp force）。\n\n## 一句话定义\n\n不是只让机器人“像弹簧一样”柔顺，而是让弹簧的**软硬本身**随接触压力分布、滑移与法向力实时改变。\n\n## 为什么仅靠固定参数阻抗不够\n\n经典 [阻抗控制](../concepts/impedance-control.md) 把末端动力学写成：\n\n$$\nM_d (\\ddot{x} - \\ddot{x}_d) + B_d (\\dot{x} - \\dot{x}_d) + K_d (x - x_d) = f_{\\text{ext}}\n$$\n\n固定 $K_d, B_d$ 在 **单一刚度的环境** 下表现良好，但灵巧操作的现实是：\n\n- 同一只手在 1 秒内会经历 **接近 → 接触 → 滑动 → 稳定夹持 → 松开** 五个相位，每个相位想要的虚拟刚度差一个数量级；\n- 抓住「水豆腐」与「螺栓」的最大法向力相差至少 50×，而手只有一个；\n- 接触面积、摩擦系数、物体软硬都是事先未知的，无法离线把 $K_d$ 调好。\n\n固定参数等价于事先押注一种环境硬度，押错了就不是「过软抓不稳」就是「过硬把物体捏坏」。Tactile Impedance Control 的思路是：**让触觉信号承担在线辨识的角色**，把阻抗参数变成接触状态的函数 $K_d(s_{\\text{tac}}), B_d(s_{\\text{tac}})$。\n\n## 主要技术路线\n\n1. **规则化变阻抗**：用人写的映射 $K_d = f(s_{\\text{tac}})$，可解释、参数少。\n2. **学习式变阻抗**：策略网络输出 $\\Delta K, \\Delta B, \\Delta x_d$，与 RL/IL 联合训练。\n3. **优化型变阻抗**：把刚度调度写成 QP 子问题，受 [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 等约束保护。\n4. **教师-学生迁移**：仿真里教师可见真实接触力，学生只看噪声触觉，行为克隆出可部署的变阻抗策略。\n\n## 核心数学结构\n\n把触觉读数抽象成低维状态 $s_{\\text{tac}} = (f_n, \\tau_t, c, \\dot{c}, A)$：\n\n- $f_n$：法向力估计（来自 F/T 或 GelSight 形变深度积分）\n- $\\tau_t$：切向力 / 力矩估计\n- $c$：压力中心 (Center of Pressure)\n- $\\dot{c}$：压力中心位移速度，用于 **滑移检测 (slip)**\n- $A$：接触面积\n\n阻抗参数化为：\n\n$$\nK_d(t) = K_0 + \\Delta K\\big(s_{\\text{tac}}(t)\\big), \\quad B_d(t) = 2 \\zeta \\sqrt{M_d K_d(t)}\n$$\n\n其中阻尼按 [临界阻尼](../concepts/impedance-control.md) 关系自动跟随刚度，避免手动调两个参数。$\\Delta K$ 的形式有两种主流路线：\n\n### 1. 规则化映射（Rule-based）\n\n直接写人类先验，例如：\n\n$$\n\\Delta K = \\alpha\\, [f_n^* - f_n]_+ - \\beta\\, \\mathbb{1}[\\|\\dot{c}\\| > \\dot{c}_{\\text{slip}}]\n$$\n\n- 法向力低于目标 $f_n^*$ 时增加刚度（夹紧）；\n- 检测到滑移阈值 $\\dot{c}_{\\text{slip}}$ 时降低刚度并临时增大期望夹合位移；\n- 简单、可解释，适合工业部署。\n\n### 2. 学习式映射（Learned Variable Impedance）\n\n把 $\\Delta K, \\Delta x_d$ 作为策略网络输出的一部分：\n\n$$\n(\\Delta K, \\Delta B, \\Delta x_d) = \\pi_\\theta\\big(s_{\\text{tac}}, s_{\\text{prop}}, z_{\\text{vis}}\\big)\n$$\n\n最常见的训练范式是 [强化学习](./reinforcement-learning.md) 与 [模仿学习](./imitation-learning.md)：\n\n- RL：奖励项里同时鼓励「法向力贴近目标」「切向力不越摩擦锥」「能量消耗低」；\n- IL：用人类遥操作 + 触觉手套数据，监督网络复现「人在打滑前会下意识捏紧」的策略。\n\n不论哪种路线，**输出端必须做安全裁剪**：$K_d \\in [K_{\\min}, K_{\\max}]$，否则学习初期容易出现刚度发散导致的硬碰撞。\n\n## 与近邻方法的边界\n\n| 方法 | 关注点 | 与本页关系 |\n|------|--------|-----------|\n| [Impedance Control](../concepts/impedance-control.md) | 设计虚拟质量-弹簧-阻尼，$K_d, B_d$ 通常固定 | 本页是其**变参数推广**：让 $K_d, B_d$ 跟随 $s_{\\text{tac}}$ |\n| [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md) | 在不同方向**显式分配**力控 / 位控通道 | 本页不切换通道，而是在同一阻抗框架内连续调权重 |\n| [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) | 接触瞬间视觉与触觉**信息**如何融合 | 本页处理的是融合后的触觉信号如何**驱动控制器** |\n| [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md) | 触觉作为 RL 的状态 / 奖励 | 本页是 RL 输出动作的一种具体形式：变阻抗参数 |\n\n## 实现要点\n\n### 1. 时间尺度匹配\n\n触觉传感器原始带宽差异巨大：F/T 可达 1 kHz，视觉触觉传感器只有 30–60 Hz。阻抗控制内环至少要 500 Hz 才能稳定地与刚性物体接触。常见做法：\n\n- 高频环：F/T 直接进入 $K_d$ 调节回路（1 kHz）；\n- 低频环：GelSight 提取 latent，仅更新「目标法向力 $f_n^*$」与「松开/夹紧」阶段标志（30 Hz）。\n\n零阶保持在两层之间，避免低频信号穿到高频回路引起跳变。\n\n### 2. 滑移检测的最低成本实现\n\n不需要全套 GelSight：\n\n- 单点 F/T 上观察切向力 $|f_t|$ 与法向力 $f_n$ 的比值，超过经验阈值（通常 $0.6\\mu_{\\text{est}}$）就视为「即将滑移」；\n- 关节扭矩残差出现高频窄带振荡（200–400 Hz 的微小颤动）也是滑移先兆；\n- 对应的控制响应是**先降刚度防止过冲，再小幅增大法向力夹紧**。\n\n### 3. 摩擦锥安全约束\n\n把切向力上界 $\\|f_t\\| \\le \\mu f_n$（参见 [Friction Cone](../formalizations/friction-cone.md)）写成阻抗参数的硬约束：当估计的 $\\mu$ 较低（光滑物体）时，$K_d$ 的最大值要相应下调，否则一旦控制器试图增大切向位移误差就会越过摩擦锥导致打滑。这一步等价于把摩擦学先验「焊」进控制器的可达集合，比单纯加奖励项稳得多。\n\n### 4. 多指协同\n\n灵巧手有多个接触点，每个手指各自做 Tactile Impedance 时容易陷入「内力对抗」（两根手指都在加力捏，但合力在物体内部抵消）。常见的合并方式是用 [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 把多指阻抗投影到「物体六维力旋量」空间，再做整体调度，而不是各指独立闭环。\n\n## 在人形 / 灵巧手上的典型场景\n\n1. **灵巧抓取**：抓鸡蛋、瓶装水、海绵——同一段策略代码，靠 $f_n^*$ 自适应到完全不同的硬度。\n2. **插拔装配**：插孔时遇到对位偏差，触觉显示切向力骤增，立即降低对应方向的刚度允许「让位」，避免锁死。\n3. **手内重定向 (In-hand Reorientation)**：参考 [In-hand Reorientation](./in-hand-reorientation.md)，在指间「支撑-滑动-再接触」切换中，每个相位需要不同的阻抗——一根手指要硬支撑，另一根要软滑过去。\n4. **人机协作**：当人去推机器人手上的物体时，触觉先于视觉感知到外力，立即降刚度让出位置，再恢复，避免人手被夹。\n\n## 训练 / 调参建议\n\n- **从位置控制开始**：先调出能抓住一种典型硬度物体的固定 $K_d$，再以此为 $K_0$ 学习 $\\Delta K$。直接从零学变阻抗几乎一定不收敛。\n- **域随机化要包含「接触刚度」而不是只随机摩擦**：仿真中把环境弹性模量、接触阻尼一并随机化，否则学到的策略到真机会过分自信。\n- **数据里必须含「失败的滑移片段」**：只示范成功抓取的数据集会让模型不知道滑移是什么，部署时一旦打滑就完全不会收紧。\n- **报警优先于优化**：当 $f_n$ 异常飙高（接近硬件极限）时，立即切到「最低刚度 + 释放」的安全策略，而不是继续按学习的策略行动。\n\n## 常见误区\n\n- **误区 1：把 $K_d$ 当作越大越快越好的「响应速度」参数。**\n  对硬质环境，刚度上限由稳定性约束（环境刚度 × 控制延迟）决定，越大越易振荡。\n- **误区 2：用平均压力代替压力分布。**\n  抓鸡蛋失败往往是因为压力集中在一两个点而非均布；只看 $f_n$ 看不出来，需要 GelSight 提供面分布。\n- **误区 3：把变阻抗策略训练在「环境刚度固定」的仿真里。**\n  这会让网络记住环境的刚度而不是从触觉中读出来，迁移到不同物体时立刻失效。\n- **误区 4：忽略阻尼随刚度的耦合。**\n  只让网络改 $K_d$ 不改 $B_d$，瞬态响应会从过阻尼变成欠阻尼，落到真机就是抓取末段持续震荡。\n\n## 关联页面\n\n- [Impedance Control（阻抗控制）](../concepts/impedance-control.md)\n- [Force Control Basics（力控制基础）](../concepts/force-control-basics.md)\n- [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md)\n- [Tactile Sensing（触觉感知）](../concepts/tactile-sensing.md)\n- [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Contact Wrench Cone](../formalizations/contact-wrench-cone.md)\n- [Friction Cone](../formalizations/friction-cone.md)\n- [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)\n- [In-hand Reorientation](./in-hand-reorientation.md)\n- [Manipulation 任务](../tasks/manipulation.md)\n\n## 参考来源\n\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力建模与摩擦锥\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触阶段切换与执行层组织\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — 触觉 latent 在 humanoid 操作中的实践\n- Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*.\n- Buchli, J., Stulp, F., Theodorou, E., Schaal, S. (2011). *Learning Variable Impedance Control*.\n- Khansari-Zadeh, S. M., Kronander, K., Billard, A. (2014). *Learning to Play Minigolf: A Dynamical System-based Approach* — 变阻抗与触觉反馈结合的早期实证.\n- Calandra, R., et al. (2018). *More than a feeling: Learning to grasp and regrasp using vision and touch*.\n- Lambeta, M., et al. (2020). *DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor*.",
+      "content_markdown": "---\ntype: method\ntags: [control, manipulation, contact-rich, tactile-sensing, impedance-control, force-control, dexterity]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../concepts/impedance-control.md\n  - ../concepts/force-control-basics.md\n  - ../concepts/hybrid-force-position-control.md\n  - ../concepts/tactile-sensing.md\n  - ../concepts/visuo-tactile-fusion.md\n  - ../concepts/contact-rich-manipulation.md\n  - ../formalizations/contact-wrench-cone.md\n  - ../formalizations/friction-cone.md\n  - ../queries/tactile-feedback-in-rl.md\n  - ../tasks/manipulation.md\n  - ../entities/gel-slim.md\nsources:\n  - ../../sources/papers/contact_dynamics.md\n  - ../../sources/papers/contact_planning.md\n  - ../../sources/papers/humanoid_touch_dream.md\nsummary: \"基于触觉的阻抗控制（Tactile Impedance Control）把指尖触觉读数实时回馈到阻抗参数中：让等效刚度、阻尼乃至期望位置随接触状态在线调整，从而在灵巧抓取与精细装配中实现自适应力度。\"\n---\n\n# Tactile Impedance Control（基于触觉反馈的阻抗控制）\n\n**Tactile Impedance Control** 在标准 [阻抗控制](../concepts/impedance-control.md) 的「质量-弹簧-阻尼」框架之上，把指尖触觉传感器（如 GelSight、BioTac、电容阵列、F/T 内置传感器）测得的接触状态作为闭环反馈，在线调整 $K_d, B_d$ 以及虚拟平衡点 $x_d$，从而在灵巧抓取、插拔、装配等任务中实现**自适应力度**（adaptive grasp force）。\n\n## 一句话定义\n\n不是只让机器人“像弹簧一样”柔顺，而是让弹簧的**软硬本身**随接触压力分布、滑移与法向力实时改变。\n\n## 为什么仅靠固定参数阻抗不够\n\n经典 [阻抗控制](../concepts/impedance-control.md) 把末端动力学写成：\n\n$$\nM_d (\\ddot{x} - \\ddot{x}_d) + B_d (\\dot{x} - \\dot{x}_d) + K_d (x - x_d) = f_{\\text{ext}}\n$$\n\n固定 $K_d, B_d$ 在 **单一刚度的环境** 下表现良好，但灵巧操作的现实是：\n\n- 同一只手在 1 秒内会经历 **接近 → 接触 → 滑动 → 稳定夹持 → 松开** 五个相位，每个相位想要的虚拟刚度差一个数量级；\n- 抓住「水豆腐」与「螺栓」的最大法向力相差至少 50×，而手只有一个；\n- 接触面积、摩擦系数、物体软硬都是事先未知的，无法离线把 $K_d$ 调好。\n\n固定参数等价于事先押注一种环境硬度，押错了就不是「过软抓不稳」就是「过硬把物体捏坏」。Tactile Impedance Control 的思路是：**让触觉信号承担在线辨识的角色**，把阻抗参数变成接触状态的函数 $K_d(s_{\\text{tac}}), B_d(s_{\\text{tac}})$。\n\n## 主要技术路线\n\n1. **规则化变阻抗**：用人写的映射 $K_d = f(s_{\\text{tac}})$，可解释、参数少。\n2. **学习式变阻抗**：策略网络输出 $\\Delta K, \\Delta B, \\Delta x_d$，与 RL/IL 联合训练。\n3. **优化型变阻抗**：把刚度调度写成 QP 子问题，受 [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 等约束保护。\n4. **教师-学生迁移**：仿真里教师可见真实接触力，学生只看噪声触觉，行为克隆出可部署的变阻抗策略。\n\n## 核心数学结构\n\n把触觉读数抽象成低维状态 $s_{\\text{tac}} = (f_n, \\tau_t, c, \\dot{c}, A)$：\n\n- $f_n$：法向力估计（来自 F/T 或 GelSight 形变深度积分）\n- $\\tau_t$：切向力 / 力矩估计\n- $c$：压力中心 (Center of Pressure)\n- $\\dot{c}$：压力中心位移速度，用于 **滑移检测 (slip)**\n- $A$：接触面积\n\n阻抗参数化为：\n\n$$\nK_d(t) = K_0 + \\Delta K\\big(s_{\\text{tac}}(t)\\big), \\quad B_d(t) = 2 \\zeta \\sqrt{M_d K_d(t)}\n$$\n\n其中阻尼按 [临界阻尼](../concepts/impedance-control.md) 关系自动跟随刚度，避免手动调两个参数。$\\Delta K$ 的形式有两种主流路线：\n\n### 1. 规则化映射（Rule-based）\n\n直接写人类先验，例如：\n\n$$\n\\Delta K = \\alpha\\, [f_n^* - f_n]_+ - \\beta\\, \\mathbb{1}[\\|\\dot{c}\\| > \\dot{c}_{\\text{slip}}]\n$$\n\n- 法向力低于目标 $f_n^*$ 时增加刚度（夹紧）；\n- 检测到滑移阈值 $\\dot{c}_{\\text{slip}}$ 时降低刚度并临时增大期望夹合位移；\n- 简单、可解释，适合工业部署。\n\n### 2. 学习式映射（Learned Variable Impedance）\n\n把 $\\Delta K, \\Delta x_d$ 作为策略网络输出的一部分：\n\n$$\n(\\Delta K, \\Delta B, \\Delta x_d) = \\pi_\\theta\\big(s_{\\text{tac}}, s_{\\text{prop}}, z_{\\text{vis}}\\big)\n$$\n\n最常见的训练范式是 [强化学习](./reinforcement-learning.md) 与 [模仿学习](./imitation-learning.md)：\n\n- RL：奖励项里同时鼓励「法向力贴近目标」「切向力不越摩擦锥」「能量消耗低」；\n- IL：用人类遥操作 + 触觉手套数据，监督网络复现「人在打滑前会下意识捏紧」的策略。\n\n不论哪种路线，**输出端必须做安全裁剪**：$K_d \\in [K_{\\min}, K_{\\max}]$，否则学习初期容易出现刚度发散导致的硬碰撞。\n\n## 与近邻方法的边界\n\n| 方法 | 关注点 | 与本页关系 |\n|------|--------|-----------|\n| [Impedance Control](../concepts/impedance-control.md) | 设计虚拟质量-弹簧-阻尼，$K_d, B_d$ 通常固定 | 本页是其**变参数推广**：让 $K_d, B_d$ 跟随 $s_{\\text{tac}}$ |\n| [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md) | 在不同方向**显式分配**力控 / 位控通道 | 本页不切换通道，而是在同一阻抗框架内连续调权重 |\n| [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) | 接触瞬间视觉与触觉**信息**如何融合 | 本页处理的是融合后的触觉信号如何**驱动控制器** |\n| [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md) | 触觉作为 RL 的状态 / 奖励 | 本页是 RL 输出动作的一种具体形式：变阻抗参数 |\n\n## 实现要点\n\n### 1. 时间尺度匹配\n\n触觉传感器原始带宽差异巨大：F/T 可达 1 kHz，视觉触觉传感器只有 30–60 Hz。阻抗控制内环至少要 500 Hz 才能稳定地与刚性物体接触。常见做法：\n\n- 高频环：F/T 直接进入 $K_d$ 调节回路（1 kHz）；\n- 低频环：GelSight 提取 latent，仅更新「目标法向力 $f_n^*$」与「松开/夹紧」阶段标志（30 Hz）。\n\n零阶保持在两层之间，避免低频信号穿到高频回路引起跳变。\n\n### 2. 滑移检测的最低成本实现\n\n不需要全套 GelSight：\n\n- 单点 F/T 上观察切向力 $|f_t|$ 与法向力 $f_n$ 的比值，超过经验阈值（通常 $0.6\\mu_{\\text{est}}$）就视为「即将滑移」；\n- 关节扭矩残差出现高频窄带振荡（200–400 Hz 的微小颤动）也是滑移先兆；\n- 对应的控制响应是**先降刚度防止过冲，再小幅增大法向力夹紧**。\n\n### 3. 摩擦锥安全约束\n\n把切向力上界 $\\|f_t\\| \\le \\mu f_n$（参见 [Friction Cone](../formalizations/friction-cone.md)）写成阻抗参数的硬约束：当估计的 $\\mu$ 较低（光滑物体）时，$K_d$ 的最大值要相应下调，否则一旦控制器试图增大切向位移误差就会越过摩擦锥导致打滑。这一步等价于把摩擦学先验「焊」进控制器的可达集合，比单纯加奖励项稳得多。\n\n### 4. 多指协同\n\n灵巧手有多个接触点，每个手指各自做 Tactile Impedance 时容易陷入「内力对抗」（两根手指都在加力捏，但合力在物体内部抵消）。常见的合并方式是用 [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 把多指阻抗投影到「物体六维力旋量」空间，再做整体调度，而不是各指独立闭环。\n\n## 在人形 / 灵巧手上的典型场景\n\n1. **灵巧抓取**：抓鸡蛋、瓶装水、海绵——同一段策略代码，靠 $f_n^*$ 自适应到完全不同的硬度。\n2. **插拔装配**：插孔时遇到对位偏差，触觉显示切向力骤增，立即降低对应方向的刚度允许「让位」，避免锁死。\n3. **手内重定向 (In-hand Reorientation)**：参考 [In-hand Reorientation](./in-hand-reorientation.md)，在指间「支撑-滑动-再接触」切换中，每个相位需要不同的阻抗——一根手指要硬支撑，另一根要软滑过去。\n4. **人机协作**：当人去推机器人手上的物体时，触觉先于视觉感知到外力，立即降刚度让出位置，再恢复，避免人手被夹。\n\n## 训练 / 调参建议\n\n- **从位置控制开始**：先调出能抓住一种典型硬度物体的固定 $K_d$，再以此为 $K_0$ 学习 $\\Delta K$。直接从零学变阻抗几乎一定不收敛。\n- **域随机化要包含「接触刚度」而不是只随机摩擦**：仿真中把环境弹性模量、接触阻尼一并随机化，否则学到的策略到真机会过分自信。\n- **数据里必须含「失败的滑移片段」**：只示范成功抓取的数据集会让模型不知道滑移是什么，部署时一旦打滑就完全不会收紧。\n- **报警优先于优化**：当 $f_n$ 异常飙高（接近硬件极限）时，立即切到「最低刚度 + 释放」的安全策略，而不是继续按学习的策略行动。\n\n## 常见误区\n\n- **误区 1：把 $K_d$ 当作越大越快越好的「响应速度」参数。**\n  对硬质环境，刚度上限由稳定性约束（环境刚度 × 控制延迟）决定，越大越易振荡。\n- **误区 2：用平均压力代替压力分布。**\n  抓鸡蛋失败往往是因为压力集中在一两个点而非均布；只看 $f_n$ 看不出来，需要 GelSight 提供面分布。\n- **误区 3：把变阻抗策略训练在「环境刚度固定」的仿真里。**\n  这会让网络记住环境的刚度而不是从触觉中读出来，迁移到不同物体时立刻失效。\n- **误区 4：忽略阻尼随刚度的耦合。**\n  只让网络改 $K_d$ 不改 $B_d$，瞬态响应会从过阻尼变成欠阻尼，落到真机就是抓取末段持续震荡。\n\n## 关联页面\n\n- [Impedance Control（阻抗控制）](../concepts/impedance-control.md)\n- [Force Control Basics（力控制基础）](../concepts/force-control-basics.md)\n- [Hybrid Force-Position Control](../concepts/hybrid-force-position-control.md)\n- [Tactile Sensing（触觉感知）](../concepts/tactile-sensing.md)\n- [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Contact Wrench Cone](../formalizations/contact-wrench-cone.md)\n- [Friction Cone](../formalizations/friction-cone.md)\n- [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)\n- [In-hand Reorientation](./in-hand-reorientation.md)\n- [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)\n- [Manipulation 任务](../tasks/manipulation.md)\n\n## 参考来源\n\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力建模与摩擦锥\n- [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触阶段切换与执行层组织\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — 触觉 latent 在 humanoid 操作中的实践\n- Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*.\n- Buchli, J., Stulp, F., Theodorou, E., Schaal, S. (2011). *Learning Variable Impedance Control*.\n- Khansari-Zadeh, S. M., Kronander, K., Billard, A. (2014). *Learning to Play Minigolf: A Dynamical System-based Approach* — 变阻抗与触觉反馈结合的早期实证.\n- Calandra, R., et al. (2018). *More than a feeling: Learning to grasp and regrasp using vision and touch*.\n- Lambeta, M., et al. (2020). *DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor*.",
       "tags": [
         "method",
         "humanoid",
@@ -2453,8 +2454,8 @@
         "wiki-formalizations-friction-cone",
         "wiki-queries-tactile-feedback-in-rl",
         "wiki-methods-in-hand-reorientation",
-        "wiki-tasks-manipulation",
-        "wiki-methods-reinforcement-learning"
+        "entity-gel-slim",
+        "wiki-tasks-manipulation"
       ],
       "source_links": [],
       "status": "active",
@@ -2651,7 +2652,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2778,7 +2779,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2815,7 +2816,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2853,7 +2854,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -4995,7 +4996,7 @@
       "title": "Allegro Hand (灵巧手)",
       "path": "wiki/entities/allegro-hand.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [hardware, dexterity, manipulation, robot-hand, research]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../tasks/manipulation.md\n  - ../concepts/tactile-sensing.md\n  - ../methods/in-hand-reorientation.md\n  - ../queries/dexterous-data-collection-guide.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 个自由度，因其结构简单、API 友好且性价比高而成为机器人学习与灵巧操作研究的主流科研平台。\"\n---\n\n# Allegro Hand (灵巧手)\n\n**Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视为研究灵巧操作、手内重定向和多指触觉反馈的标准硬件平台。\n\n## 硬件规格\n\n- **手指数量**：4 指（3 个主要手指 + 1 个对向拇指）。\n- **自由度 (DOFs)**：16 个（每根手指 4 个主动驱动关节）。\n- **负载能力**：约 5kg。\n- **通讯方式**：CAN 总线，支持高频（> 300Hz）控制。\n- **兼容性**：提供官方 ROS/ROS2 驱动及 Python API，易于与主流仿真器（MuJoCo, Isaac Gym）集成。\n\n## 为什么在科研中流行\n\n1. **结构精简**：相比于拥有 20+ 自由度的 Shadow Hand，Allegro Hand 放弃了无名指和小指，将复杂性降到了“足以模拟人类大部分抓取动作”的临界点。\n2. **易于建模**：它的运动学结构规整，DH 参数稳定，非常适合进行精确的运动学求逆和动力学仿真。\n3. **开源友好**：社区贡献了大量的 URDF 模型和强化学习环境（如 DexDex, HandLib），研究者可以实现“算法跨实验室迁移”。\n4. **易于集成触觉**：其指尖和指节位置预留了空间，方便安装 GelSight 或 Xela 等第三方触觉传感器。\n\n## 代表性研究工作\n\n- **Dexterous Manipulation from Vision**：利用 Allegro Hand 在 MuJoCo 中通过强化学习训练大规模灵巧操作技能。\n- **Haptics-based Grasping**：在 Allegro Hand 上安装触觉阵列，实现对形状不规则物体的盲抓（Blind Grasping）。\n- **In-hand Reorientation**：展示如何通过协调 16 个关节，让手中的魔方或笔在不掉落的前提下实现 360 度翻转。\n\n## 关联页面\n- [Shadow Hand (灵巧手)](./shadow-hand.md) — 仿生程度更高的五指方案\n- [Manipulation 任务](../tasks/manipulation.md)\n- [Dexterous Kinematics (灵巧手运动学)](../concepts/dexterous-kinematics.md) — 灵巧操作的数学基础\n- [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)\n- [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)\n- [Query: 灵巧手数据采集指南](../queries/dexterous-data-collection-guide.md)\n\n## 参考来源\n- Wonik Robotics Official Documentation.\n- [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
+      "content_markdown": "---\ntype: entity\ntags: [hardware, dexterity, manipulation, robot-hand, research]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../tasks/manipulation.md\n  - ../concepts/tactile-sensing.md\n  - ../methods/in-hand-reorientation.md\n  - ../queries/dexterous-data-collection-guide.md\n  - ./gel-slim.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 个自由度，因其结构简单、API 友好且性价比高而成为机器人学习与灵巧操作研究的主流科研平台。\"\n---\n\n# Allegro Hand (灵巧手)\n\n**Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视为研究灵巧操作、手内重定向和多指触觉反馈的标准硬件平台。\n\n## 硬件规格\n\n- **手指数量**：4 指（3 个主要手指 + 1 个对向拇指）。\n- **自由度 (DOFs)**：16 个（每根手指 4 个主动驱动关节）。\n- **负载能力**：约 5kg。\n- **通讯方式**：CAN 总线，支持高频（> 300Hz）控制。\n- **兼容性**：提供官方 ROS/ROS2 驱动及 Python API，易于与主流仿真器（MuJoCo, Isaac Gym）集成。\n\n## 为什么在科研中流行\n\n1. **结构精简**：相比于拥有 20+ 自由度的 Shadow Hand，Allegro Hand 放弃了无名指和小指，将复杂性降到了“足以模拟人类大部分抓取动作”的临界点。\n2. **易于建模**：它的运动学结构规整，DH 参数稳定，非常适合进行精确的运动学求逆和动力学仿真。\n3. **开源友好**：社区贡献了大量的 URDF 模型和强化学习环境（如 DexDex, HandLib），研究者可以实现“算法跨实验室迁移”。\n4. **易于集成触觉**：其指尖和指节位置预留了空间，方便安装 GelSight 或 Xela 等第三方触觉传感器。\n\n## 代表性研究工作\n\n- **Dexterous Manipulation from Vision**：利用 Allegro Hand 在 MuJoCo 中通过强化学习训练大规模灵巧操作技能。\n- **Haptics-based Grasping**：在 Allegro Hand 上安装触觉阵列，实现对形状不规则物体的盲抓（Blind Grasping）。\n- **In-hand Reorientation**：展示如何通过协调 16 个关节，让手中的魔方或笔在不掉落的前提下实现 360 度翻转。\n\n## 关联页面\n- [Shadow Hand (灵巧手)](./shadow-hand.md) — 仿生程度更高的五指方案\n- [Manipulation 任务](../tasks/manipulation.md)\n- [Dexterous Kinematics (灵巧手运动学)](../concepts/dexterous-kinematics.md) — 灵巧操作的数学基础\n- [Tactile Sensing (触觉感知)](../concepts/tactile-sensing.md)\n- [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)\n- [GelSlim 实体（薄片化视觉触觉传感器）](./gel-slim.md) — 可装到指尖的视觉触觉传感器\n- [Query: 灵巧手数据采集指南](../queries/dexterous-data-collection-guide.md)\n\n## 参考来源\n- Wonik Robotics Official Documentation.\n- [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)",
       "tags": [
         "entities",
         "entity",
@@ -5009,6 +5010,7 @@
         "wiki-concepts-dexterous-kinematics",
         "wiki-concepts-tactile-sensing",
         "wiki-methods-in-hand-reorientation",
+        "entity-gel-slim",
         "wiki-queries-dexterous-data-collection-guide",
         "sources-papers-humanoid-hardware"
       ],
@@ -5322,7 +5324,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -5343,6 +5345,39 @@
         "wiki-concepts-whole-body-control",
         "entity-mujoco",
         "wiki-tasks-locomotion"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-gel-slim",
+      "title": "GelSlim（薄片化视觉触觉传感器）",
+      "path": "wiki/entities/gel-slim.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [hardware, perception, tactile-sensing, vision-based-tactile, manipulation, dexterity, sensor]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../concepts/tactile-sensing.md\n  - ../concepts/visuo-tactile-fusion.md\n  - ../concepts/contact-rich-manipulation.md\n  - ../methods/tactile-impedance-control.md\n  - ../formalizations/contact-wrench-cone.md\n  - ../formalizations/friction-cone.md\n  - ../queries/tactile-feedback-in-rl.md\n  - ./allegro-hand.md\n  - ./shadow-hand.md\n  - ../tasks/manipulation.md\nsources:\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/papers/contact_dynamics.md\nsummary: \"GelSlim 是 MIT 等团队提出的“薄片化”视觉触觉传感器系列，把 GelSight 的高分辨率接触成像压缩进可装到平行夹爪与灵巧手指节上的扁平外形，是当前接触丰富型操作的主流硬件之一。\"\n---\n\n# GelSlim（薄片化视觉触觉传感器）\n\n**GelSlim** 是以 MIT 为主线的视觉触觉传感器（vision-based tactile sensor）家族，目标是把 [GelSight](../concepts/tactile-sensing.md) 那种\"硅胶 + 内嵌相机\"的高分辨率接触成像方案，压缩到**够薄、够窄、够鲁棒**的指节形态，从而能直接装到平行夹爪、Allegro/Shadow 等灵巧手以及人形末端执行器上。GelSlim 1.0 由 Donlon 等人于 2018 年提出，此后迭代到 GelSlim 2.0/3.0/4.0，已经成为 [Tactile Impedance Control](../methods/tactile-impedance-control.md)、[Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md) 与 [HTD](../methods/humanoid-transformer-touch-dreaming.md) 等接触丰富型策略的标准实验硬件之一。\n\n## 一句话定位\n\nGelSlim 不是一种新的触觉物理原理，而是 GelSight 思路的**几何瘦身**：保住\"高密度形变成像\"的核心，砍掉传统 GelSight 那块挡在指尖前方的厚镜组与漫反射体，让传感器**能塞进真正会发生抓取的位置**。\n\n## 硬件特性\n\n| 维度 | 典型规格（GelSlim 3.0 / 4.0 量级） | 备注 |\n|------|-----------------------------------|------|\n| 整体外形 | 指节状扁平模块，厚度约 20–28 mm | 1.0 偏厚，3.0/4.0 通过侧投光与折反射进一步变薄 |\n| 接触面 | 硅胶弹性垫 + 涂层（Lambertian / 标记点阵） | 标记点版本可读取剪切位移 |\n| 成像单元 | 单目 RGB / Mono 微型相机 | 帧率 30–90 Hz |\n| 空间分辨率 | 亚毫米级（每像素 < 0.1 mm） | 取决于相机与镜头映射 |\n| 主要输出 | 形变深度图、接触面积、压力分布、剪切场 | 通过形变光度立体或学习模型从 RGB 反推 |\n| 接口 | USB / MIPI 摄像头协议 | 与 ROS / Python 生态兼容 |\n\n> 不同迭代之间最大的差异是**光路**：1.0 用前置 LED 直射，2.0 加入侧向多色照明，3.0/4.0 引入折反射与一体化外壳，使指尖更薄、装配更稳定。\n\n## 相对其他触觉方案的位置\n\n| 类别 | 代表 | 与 GelSlim 的差别 |\n|------|------|-------------------|\n| 厚体视觉触觉 | GelSight Mini, GelSight Wedge | 接触面更大、深度估计更准，但**装不到指尖**，常作为桌面级研究用 |\n| 微型视觉触觉 | DIGIT | 与 GelSlim 同代竞品，更小巧；GelSlim 优势在于**接触面更长、便于覆盖完整指腹** |\n| 阵列式电容/压阻 | BioTac, Xela | 帧率高、易做曲面包覆，但**没有空间分布图像**，无法直接接 CNN |\n| 腕式 F/T | ATI Mini40 等 | 给的是合力 / 合力矩单点，无空间信息，与 GelSlim 互补而非替代 |\n\nGelSlim 把\"高分辨率\"这一格放到了指节级硬件上，是目前**唯一能在不显著增大手部体积的前提下提供接触图像**的主流方案，参见 [Tactile Sensing](../concepts/tactile-sensing.md) 中的传感器路线对比。\n\n## 仿真建模思路\n\nGelSlim 在策略学习里最大的难题是**仿真**——硅胶的非线性弹性 + 光学成像几乎不可能在 MuJoCo / Isaac 里 1:1 复现。常见的工程折中包括：\n\n1. **形变近似**：把硅胶简化为线性弹性体，用 FEM 离线仿出\"压痕深度图 → 力\" 映射表，运行时查表代替实时 FEM。\n2. **图像级数据增强**：在真机采集少量 GelSlim 接触图，对其做光照、纹理、噪声随机化（参见 [Domain Randomization](../concepts/sim2real.md)），获得\"大致像 GelSlim\"的合成数据。\n3. **Latent 替代 raw**：参考 [HTD](../methods/humanoid-transformer-touch-dreaming.md) 的做法，仿真中只重建一个**触觉 latent 维度**，让策略学到的是接触结构而非具体像素。\n4. **延迟与带宽匹配**：仿真里把 GelSlim 视作 30 Hz 异步传感器，避免训练时被 1 kHz 物理步长\"骗\"出过低延迟假设；在 [Tactile Impedance Control](../methods/tactile-impedance-control.md) 中的高频/低频双环结构下尤为重要。\n\n> 实践经验：**不要在仿真里追求\"逼真的 GelSlim 像素\"**。一旦把目标定到像素层面，sim-to-real gap 就很难收敛；把目标降级为\"接触面积、剪切方向、压力中心\"这几个标量/低维量，迁移性会显著好转。\n\n## 在策略学习中的典型用法\n\n- **作为 RL 状态**：把 GelSlim 的低维统计量（接触面积、压力中心 $c$、剪切大小 $|\\dot c|$）拼到 proprioception 中，参见 [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)。\n- **作为 BC 输入**：把 GelSlim 图像与 RGB 主相机一起送入 Transformer，做时间维上的 [Visuo-Tactile Fusion](../concepts/visuo-tactile-fusion.md)。\n- **作为辅助预测目标**：未来 GelSlim latent 预测可作为 BC 的 auxiliary loss（HTD 思路的轻量化版本）。\n- **作为安全监控**：当压力分布出现\"单点尖刺\"或剪切超出 [Friction Cone](../formalizations/friction-cone.md) 边界时，立即触发松开/降刚度策略。\n\n## 工程坑与建议\n\n- **硅胶老化**：GelSlim 的硅胶垫在长时间高温/高频接触下会发硬，标定模型一两个月就要重做；上线前评估更换周期。\n- **光照受装配影响**：组装时 LED 与相机的角度公差极小，建议每次更换硅胶后跑一组**自检图像**对比基线，再决定是否重新标定。\n- **不要泡水**：硅胶和外壳并非完全密封，演示前用酒精棉**擦表面而非冲洗**。\n- **指尖几何**：装到 [Allegro Hand](./allegro-hand.md) / [Shadow Hand](./shadow-hand.md) 时，要重新计算指尖坐标系到 TCP 的变换；GelSlim 的硅胶面与原指尖外壳并不重合，否则 IK 与触觉读数会\"错位\"几毫米。\n\n## 关联页面\n\n- [Tactile Sensing（触觉感知）](../concepts/tactile-sensing.md)\n- [Visuo-Tactile Fusion（视触觉融合）](../concepts/visuo-tactile-fusion.md)\n- [Contact-Rich Manipulation（接触丰富型操作）](../concepts/contact-rich-manipulation.md)\n- [Tactile Impedance Control（基于触觉反馈的阻抗控制）](../methods/tactile-impedance-control.md)\n- [Contact Wrench Cone（接触力旋量锥）](../formalizations/contact-wrench-cone.md)\n- [Friction Cone（摩擦锥）](../formalizations/friction-cone.md)\n- [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)\n- [Allegro Hand 实体](./allegro-hand.md)\n- [Shadow Hand 实体](./shadow-hand.md)\n- [Manipulation 任务](../tasks/manipulation.md)\n\n## 参考来源\n\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)\n- [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)\n- Donlon, E., Dong, S., Liu, M., Li, J., Adelson, E., Rodriguez, A. (2018). *GelSlim: A High-Resolution, Compact, Robust, and Calibrated Tactile-sensing Finger*. IROS.\n- Taylor, I. H., Dong, S., Rodriguez, A. (2022). *GelSlim 3.0: High-Resolution Measurement of Shape, Force and Slip in a Compact Tactile-Sensing Finger*. ICRA.\n- Ma, D., Donlon, E., Dong, S., Rodriguez, A. (2019). *Dense Tactile Force Estimation Using GelSlim and Inverse FEM*. ICRA.\n- Yuan, W., Dong, S., Adelson, E. (2017). *GelSight: High-Resolution Robot Tactile Sensors for Estimating Geometry and Force*. Sensors.",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "control",
+        "dynamics",
+        "rl"
+      ],
+      "related": [
+        "wiki-concepts-tactile-sensing",
+        "wiki-concepts-visuo-tactile-fusion",
+        "wiki-concepts-contact-rich-manipulation",
+        "wiki-methods-tactile-impedance-control",
+        "wiki-formalizations-contact-wrench-cone",
+        "wiki-formalizations-friction-cone",
+        "wiki-queries-tactile-feedback-in-rl",
+        "entity-allegro-hand",
+        "entity-shadow-hand",
+        "wiki-tasks-manipulation",
+        "wiki-methods-humanoid-transformer-touch-dreaming",
+        "wiki-concepts-sim2real"
       ],
       "source_links": [],
       "status": "active",
@@ -5503,7 +5538,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",

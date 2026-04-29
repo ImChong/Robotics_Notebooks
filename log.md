@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-04-29] checklist-v21 | wiki/entities/gel-slim.md — 推进 V21 P1「深化灵巧手感知」
+
+- 新增 `wiki/entities/gel-slim.md`：覆盖硬件特性、迭代脉络、与 GelSight/DIGIT/F-T 等方案的横向对位、仿真建模四种工程折中、在策略学习中的四类用法以及上线工程坑
+- 在 `wiki/concepts/tactile-sensing.md`、`wiki/methods/tactile-impedance-control.md`、`wiki/entities/allegro-hand.md` 建立入链，使 GelSlim 成为触觉学习子图的硬件锚点
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P1「深化灵巧手感知」整组及其子项
+- `make lint` 0 errors；`make graph` 后图谱：221 节点 / 1316 边 / 8 communities，coverage 维持 217/219
+- V21 P1 触觉专题至此全部交付，下一步推进 P2 通信层形式化或 P3 微地图组件
+
 ## [2026-04-29] checklist-v21 | wiki/methods/tactile-impedance-control.md — 推进 V21 P1 触觉与力觉闭环专题
 
 - 新增 `wiki/methods/tactile-impedance-control.md`：把阻抗控制推广为变参数形式，按 $s_{\text{tac}} = (f_n, \tau_t, c, \dot{c}, A)$ 在线调度 $K_d, B_d, x_d$
