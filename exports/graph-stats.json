@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-29",
-  "node_count": 216,
-  "edge_count": 1252,
-  "community_count": 7,
+  "node_count": 217,
+  "edge_count": 1255,
+  "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -55,12 +55,18 @@
       "degree": 28
     }
   ],
-  "orphan_nodes": [],
+  "orphan_nodes": [
+    {
+      "id": "wiki/entities/motrix.md",
+      "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "out_degree": 3
+    }
+  ],
   "type_distribution": {
     "method": 49,
     "concept": 43,
     "query": 40,
-    "entity": 35,
+    "entity": 36,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -69,17 +75,18 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 90,
-    "Whole-Body Control (WBC) 社区": 58,
-    "Manipulation 社区": 43,
+    "Reinforcement Learning (RL, 强化学习) 社区": 70,
+    "Locomotion 社区": 65,
+    "Manipulation 社区": 46,
+    "人形机器人（Humanoid Robot） 社区": 12,
     "实时运控中间件配置指南 社区": 9,
-    "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
+    "Roboto Origin（开源人形机器人基线） 社区": 6,
     "URDF-Studio 社区": 3
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.417,
+    "largest_community_ratio": 0.323,
     "community_quality_warning": false
   }
 }

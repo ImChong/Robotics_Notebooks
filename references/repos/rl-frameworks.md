@@ -27,8 +27,15 @@
 - 支持 MoCap 数据导入和重定向
 - [Stanford HAI Lab](https://motion.stanford.edu/research/mimickit)
 
+### MotrixLab
+
+- **MotrixLab** — 基于 MotrixSim (Rust) 的通用机器人训练平台
+- 支持 JAX 和 PyTorch，兼容 MJCF
+- [Motphys/MotrixLab](https://github.com/Motphys/MotrixLab)
+
 ## 关联页面
 
 - [[wiki/entities/isaac-gym-isaac-lab]] — Isaac Gym 实体页
 - [[wiki/entities/legged-gym]] — legged_gym 实体页
+- [[wiki/entities/motrix]] — Motrix 实体页
 - [[references/repos/simulation]] — 仿真平台层
