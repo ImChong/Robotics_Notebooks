@@ -26,6 +26,10 @@ tags: [simulation, physics-engine, robot-learning, differentiable]
 - **推荐背景**：[[xbotics-embodied-guide]] 将 Genesis 推荐为实战路线图中的核心工具之一。
 - **对比**：相比 [[mujoco]]，Genesis 的并行化程度更高；相比传统的 [[sapien]]，它在非刚体仿真方面具有显著优势。
 
+## 关联页面
+
+- [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
+
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [Genesis Project Page](https://genesis-world.github.io/)

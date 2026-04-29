@@ -10,6 +10,20 @@
 
 ---
 
+## [2026-04-29] ingest | sources/repos/amp_mjlab.md — 接入 ccrpRepo/AMP_mjlab，沉淀 wiki/entities/amp-mjlab.md，更新 wiki/methods/amp-reward.md 交叉引用
+
+- 仓库：https://github.com/ccrpRepo/AMP_mjlab
+- 核心：mjlab + rsl_rl 实现的 Unitree G1 统一 AMP 策略（locomotion + fall-recovery 同一网络）
+- Delayed Termination 机制让策略学会自主爬起
+- 沉淀：新增 wiki/entities/amp-mjlab.md，更新 wiki/methods/amp-reward.md 参考来源与关联页面
+
+## [2026-04-29] ingest | sources/repos/gs_playground.md — 接入 discoverse-dev/gs_playground，沉淀 wiki/entities/gs-playground.md
+
+- 仓库：https://github.com/discoverse-dev/gs_playground
+- 核心：批量 3DGS 渲染耦合并行物理仿真，10^4 FPS，RGB+Depth 观测，Real2Sim 工作流，RSS 2026
+- 沉淀：新增 wiki/entities/gs-playground.md，从 wiki/entities/genesis-sim.md 建立入链
+- 图谱更新：219 节点 / 1285 边
+
 ## [2026-04-13] ingest | paper | ULTRA: Survey 完成
 
 - 新建 `wiki/tasks/ultra-survey.md`（ULTRA 统一多模态 loco-manipulation 控制器笔记）
