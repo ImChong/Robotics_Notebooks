@@ -93,6 +93,7 @@ sources:
 - [Whole-Body Control](./whole-body-control.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Impedance Control](./impedance-control.md)
+- [Tactile Impedance Control](../methods/tactile-impedance-control.md)
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md)
 - [Visuo-Tactile Fusion](./visuo-tactile-fusion.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
