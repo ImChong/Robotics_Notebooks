@@ -1439,15 +1439,15 @@
   "edges": [
     {
       "source": "wiki/comparisons/clf-vs-cbf.md",
+      "target": "wiki/formalizations/control-lyapunov-function.md"
+    },
+    {
+      "source": "wiki/comparisons/clf-vs-cbf.md",
       "target": "wiki/concepts/control-barrier-function.md"
     },
     {
       "source": "wiki/comparisons/clf-vs-cbf.md",
       "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/comparisons/clf-vs-cbf.md",
-      "target": "wiki/formalizations/control-lyapunov-function.md"
     },
     {
       "source": "wiki/comparisons/clf-vs-cbf.md",
@@ -1467,6 +1467,10 @@
     },
     {
       "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
       "target": "wiki/concepts/state-estimation.md"
     },
     {
@@ -1474,8 +1478,8 @@
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
-      "target": "wiki/formalizations/mdp.md"
+      "source": "wiki/comparisons/model-based-vs-model-free.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/comparisons/model-based-vs-model-free.md",
@@ -1483,7 +1487,7 @@
     },
     {
       "source": "wiki/comparisons/model-based-vs-model-free.md",
-      "target": "wiki/comparisons/rl-vs-il.md"
+      "target": "wiki/methods/policy-optimization.md"
     },
     {
       "source": "wiki/comparisons/model-based-vs-model-free.md",
@@ -1491,15 +1495,7 @@
     },
     {
       "source": "wiki/comparisons/model-based-vs-model-free.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/comparisons/model-based-vs-model-free.md",
-      "target": "wiki/methods/policy-optimization.md"
-    },
-    {
-      "source": "wiki/comparisons/mpc-vs-rl.md",
-      "target": "wiki/comparisons/model-based-vs-model-free.md"
+      "target": "wiki/comparisons/rl-vs-il.md"
     },
     {
       "source": "wiki/comparisons/mpc-vs-rl.md",
@@ -1507,7 +1503,11 @@
     },
     {
       "source": "wiki/comparisons/mpc-vs-rl.md",
-      "target": "wiki/queries/mpc-solver-selection.md"
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/mpc-vs-rl.md",
+      "target": "wiki/comparisons/model-based-vs-model-free.md"
     },
     {
       "source": "wiki/comparisons/mpc-vs-rl.md",
@@ -1515,15 +1515,7 @@
     },
     {
       "source": "wiki/comparisons/mpc-vs-rl.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "target": "wiki/entities/humanoid-robot.md"
-    },
-    {
-      "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/queries/mpc-solver-selection.md"
     },
     {
       "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -1535,7 +1527,15 @@
     },
     {
       "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "target": "wiki/entities/humanoid-robot.md"
     },
     {
       "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -1543,11 +1543,7 @@
     },
     {
       "source": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
@@ -1558,8 +1554,8 @@
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
-      "source": "wiki/comparisons/online-vs-offline-rl.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "source": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/comparisons/online-vs-offline-rl.md",
@@ -1567,11 +1563,15 @@
     },
     {
       "source": "wiki/comparisons/online-vs-offline-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/online-vs-offline-rl.md",
       "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/comparisons/online-vs-offline-rl.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/comparisons/ppo-vs-sac.md",
@@ -1579,11 +1579,7 @@
     },
     {
       "source": "wiki/comparisons/ppo-vs-sac.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/comparisons/ppo-vs-sac.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "target": "wiki/formalizations/gae.md"
     },
     {
       "source": "wiki/comparisons/ppo-vs-sac.md",
@@ -1591,19 +1587,11 @@
     },
     {
       "source": "wiki/comparisons/ppo-vs-sac.md",
-      "target": "wiki/formalizations/gae.md"
+      "target": "wiki/methods/policy-optimization.md"
     },
     {
-      "source": "wiki/comparisons/rl-vs-il.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/comparisons/rl-vs-il.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/comparisons/rl-vs-il.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "source": "wiki/comparisons/ppo-vs-sac.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/comparisons/rl-vs-il.md",
@@ -1611,23 +1599,39 @@
     },
     {
       "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/comparisons/online-vs-offline-rl.md"
     },
     {
       "source": "wiki/comparisons/rl-vs-il.md",
-      "target": "wiki/concepts/reward-design.md"
-    },
-    {
-      "source": "wiki/comparisons/rl-vs-il.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/comparisons/rl-vs-il.md",
       "target": "wiki/methods/policy-optimization.md"
     },
     {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/comparisons/rl-vs-il.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
       "source": "wiki/comparisons/ros2-vs-lcm.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/queries/ethercat-master-optimization.md"
     },
     {
       "source": "wiki/comparisons/ros2-vs-lcm.md",
@@ -1639,15 +1643,7 @@
     },
     {
       "source": "wiki/comparisons/ros2-vs-lcm.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
-    },
-    {
-      "source": "wiki/comparisons/ros2-vs-lcm.md",
-      "target": "wiki/queries/ethercat-master-optimization.md"
-    },
-    {
-      "source": "wiki/comparisons/sim2real-approaches.md",
-      "target": "wiki/comparisons/online-vs-offline-rl.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/comparisons/sim2real-approaches.md",
@@ -1655,15 +1651,19 @@
     },
     {
       "source": "wiki/comparisons/sim2real-approaches.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/comparisons/online-vs-offline-rl.md"
     },
     {
       "source": "wiki/comparisons/sim2real-approaches.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
+      "source": "wiki/comparisons/sim2real-approaches.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
@@ -1671,15 +1671,15 @@
     },
     {
       "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/comparisons/trajectory-opt-vs-rl.md",
-      "target": "wiki/methods/trajectory-optimization.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
-      "target": "wiki/concepts/tsid.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
@@ -1687,7 +1687,15 @@
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
-      "target": "wiki/concepts/mpc-wbc-integration.md"
+      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
+      "source": "wiki/comparisons/wbc-vs-rl.md",
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
@@ -1699,19 +1707,15 @@
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
-      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+      "target": "wiki/concepts/mpc-wbc-integration.md"
     },
     {
       "source": "wiki/comparisons/wbc-vs-rl.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/comparisons/wbc-vs-rl.md",
-      "target": "wiki/queries/control-architecture-comparison.md"
-    },
-    {
-      "source": "wiki/comparisons/wbc-vs-rl.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "source": "wiki/concepts/armature-modeling.md",
+      "target": "wiki/methods/actuator-network.md"
     },
     {
       "source": "wiki/concepts/armature-modeling.md",
@@ -1722,12 +1726,16 @@
       "target": "wiki/methods/beyondmimic.md"
     },
     {
-      "source": "wiki/concepts/armature-modeling.md",
-      "target": "wiki/methods/actuator-network.md"
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/concepts/capture-point-dcm.md",
       "target": "wiki/concepts/footstep-planning.md"
+    },
+    {
+      "source": "wiki/concepts/capture-point-dcm.md",
+      "target": "wiki/concepts/lip-zmp.md"
     },
     {
       "source": "wiki/concepts/capture-point-dcm.md",
@@ -1738,28 +1746,12 @@
       "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
-      "source": "wiki/concepts/capture-point-dcm.md",
-      "target": "wiki/concepts/lip-zmp.md"
-    },
-    {
-      "source": "wiki/concepts/capture-point-dcm.md",
-      "target": "wiki/concepts/contact-dynamics.md"
-    },
-    {
       "source": "wiki/concepts/centroidal-dynamics.md",
-      "target": "wiki/concepts/floating-base-dynamics.md"
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/concepts/centroidal-dynamics.md",
       "target": "wiki/concepts/lip-zmp.md"
-    },
-    {
-      "source": "wiki/concepts/centroidal-dynamics.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/centroidal-dynamics.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/centroidal-dynamics.md",
@@ -1767,11 +1759,15 @@
     },
     {
       "source": "wiki/concepts/centroidal-dynamics.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/concepts/tsid.md"
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/centroidal-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
@@ -1783,19 +1779,11 @@
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/concepts/floating-base-dynamics.md"
+      "target": "wiki/concepts/state-estimation.md"
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
@@ -1803,7 +1791,23 @@
     },
     {
       "source": "wiki/concepts/contact-dynamics.md",
-      "target": "wiki/concepts/state-estimation.md"
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/concepts/contact-estimation.md",
@@ -1811,7 +1815,11 @@
     },
     {
       "source": "wiki/concepts/contact-estimation.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/contact-estimation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/contact-estimation.md",
@@ -1822,44 +1830,8 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/concepts/contact-estimation.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/contact-estimation.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/methods/contact-net.md"
-    },
-    {
       "source": "wiki/concepts/contact-rich-manipulation.md",
       "target": "wiki/concepts/visuo-tactile-fusion.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/concepts/hybrid-force-position-control.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/concepts/impedance-control.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/concepts/contact-dynamics.md"
-    },
-    {
-      "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
@@ -1867,15 +1839,39 @@
     },
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
-      "target": "wiki/queries/contact-rich-manipulation-guide.md"
+      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/concepts/contact-rich-manipulation.md",
       "target": "wiki/queries/il-for-manipulation.md"
     },
     {
-      "source": "wiki/concepts/control-barrier-function.md",
-      "target": "wiki/formalizations/lqr.md"
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/impedance-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/hybrid-force-position-control.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/queries/contact-rich-manipulation-guide.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/methods/contact-net.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/contact-rich-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/control-barrier-function.md",
@@ -1883,35 +1879,23 @@
     },
     {
       "source": "wiki/concepts/control-barrier-function.md",
-      "target": "wiki/concepts/contact-dynamics.md"
-    },
-    {
-      "source": "wiki/concepts/control-barrier-function.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/control-barrier-function.md",
       "target": "wiki/comparisons/clf-vs-cbf.md"
+    },
+    {
+      "source": "wiki/concepts/control-barrier-function.md",
+      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/concepts/control-barrier-function.md",
       "target": "wiki/concepts/safety-filter.md"
     },
     {
-      "source": "wiki/concepts/curriculum-learning.md",
-      "target": "wiki/concepts/privileged-training.md"
+      "source": "wiki/concepts/control-barrier-function.md",
+      "target": "wiki/formalizations/lqr.md"
     },
     {
-      "source": "wiki/concepts/curriculum-learning.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/concepts/curriculum-learning.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/curriculum-learning.md",
-      "target": "wiki/concepts/reward-design.md"
+      "source": "wiki/concepts/control-barrier-function.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/curriculum-learning.md",
@@ -1919,7 +1903,23 @@
     },
     {
       "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
       "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/concepts/curriculum-learning.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/dexterous-kinematics.md",
@@ -1939,11 +1939,11 @@
     },
     {
       "source": "wiki/concepts/domain-randomization.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/domain-randomization.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/concepts/domain-randomization.md",
@@ -1951,7 +1951,7 @@
     },
     {
       "source": "wiki/concepts/domain-randomization.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/embodied-data-cleaning.md",
@@ -1959,15 +1959,11 @@
     },
     {
       "source": "wiki/concepts/embodied-data-cleaning.md",
-      "target": "wiki/queries/demo-data-collection-guide.md"
-    },
-    {
-      "source": "wiki/concepts/embodied-data-cleaning.md",
       "target": "wiki/methods/behavior-cloning.md"
     },
     {
-      "source": "wiki/concepts/embodied-scaling-laws.md",
-      "target": "wiki/formalizations/foundation-policy-alignment.md"
+      "source": "wiki/concepts/embodied-data-cleaning.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
     },
     {
       "source": "wiki/concepts/embodied-scaling-laws.md",
@@ -1982,12 +1978,20 @@
       "target": "wiki/methods/generative-data-augmentation.md"
     },
     {
+      "source": "wiki/concepts/embodied-scaling-laws.md",
+      "target": "wiki/formalizations/foundation-policy-alignment.md"
+    },
+    {
       "source": "wiki/concepts/ethercat-protocol.md",
       "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/concepts/ethercat-protocol.md",
       "target": "wiki/queries/ethercat-master-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/floating-base-dynamics.md",
+      "target": "wiki/concepts/state-estimation.md"
     },
     {
       "source": "wiki/concepts/floating-base-dynamics.md",
@@ -1999,19 +2003,27 @@
     },
     {
       "source": "wiki/concepts/floating-base-dynamics.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/floating-base-dynamics.md",
       "target": "wiki/concepts/centroidal-dynamics.md"
     },
     {
       "source": "wiki/concepts/floating-base-dynamics.md",
-      "target": "wiki/concepts/state-estimation.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/footstep-planning.md",
       "target": "wiki/concepts/terrain-adaptation.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/footstep-planning.md",
+      "target": "wiki/concepts/gait-generation.md"
     },
     {
       "source": "wiki/concepts/footstep-planning.md",
@@ -2022,16 +2034,8 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/concepts/footstep-planning.md",
-      "target": "wiki/concepts/capture-point-dcm.md"
-    },
-    {
-      "source": "wiki/concepts/footstep-planning.md",
-      "target": "wiki/concepts/gait-generation.md"
-    },
-    {
-      "source": "wiki/concepts/footstep-planning.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "source": "wiki/concepts/force-control-basics.md",
+      "target": "wiki/methods/actuator-network.md"
     },
     {
       "source": "wiki/concepts/force-control-basics.md",
@@ -2039,11 +2043,19 @@
     },
     {
       "source": "wiki/concepts/force-control-basics.md",
-      "target": "wiki/methods/actuator-network.md"
+      "target": "wiki/concepts/impedance-control.md"
     },
     {
-      "source": "wiki/concepts/force-control-basics.md",
-      "target": "wiki/concepts/impedance-control.md"
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/foundation-policy.md",
+      "target": "wiki/methods/policy-optimization.md"
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
@@ -2055,10 +2067,6 @@
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/concepts/foundation-policy.md",
       "target": "wiki/methods/model-based-rl.md"
     },
     {
@@ -2067,19 +2075,15 @@
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/foundation-policy.md",
-      "target": "wiki/tasks/loco-manipulation.md"
-    },
-    {
-      "source": "wiki/concepts/foundation-policy.md",
       "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/concepts/foundation-policy.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
     },
     {
       "source": "wiki/concepts/gait-generation.md",
@@ -2091,19 +2095,19 @@
     },
     {
       "source": "wiki/concepts/gait-generation.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/gait-generation.md",
-      "target": "wiki/concepts/capture-point-dcm.md"
-    },
-    {
-      "source": "wiki/concepts/gait-generation.md",
       "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/concepts/gait-generation.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/hqp.md",
       "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/hqp.md",
+      "target": "wiki/entities/crocoddyl.md"
     },
     {
       "source": "wiki/concepts/hqp.md",
@@ -2118,8 +2122,8 @@
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/concepts/hqp.md",
-      "target": "wiki/entities/crocoddyl.md"
+      "source": "wiki/concepts/hybrid-force-position-control.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/concepts/hybrid-force-position-control.md",
@@ -2127,11 +2131,7 @@
     },
     {
       "source": "wiki/concepts/hybrid-force-position-control.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/concepts/hybrid-force-position-control.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/queries/contact-rich-manipulation-guide.md"
     },
     {
       "source": "wiki/concepts/hybrid-force-position-control.md",
@@ -2139,11 +2139,11 @@
     },
     {
       "source": "wiki/concepts/hybrid-force-position-control.md",
-      "target": "wiki/queries/contact-rich-manipulation-guide.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/impedance-control.md",
-      "target": "wiki/concepts/tsid.md"
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/concepts/impedance-control.md",
@@ -2151,11 +2151,11 @@
     },
     {
       "source": "wiki/concepts/impedance-control.md",
-      "target": "wiki/tasks/manipulation.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/concepts/impedance-control.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/queries/contact-rich-manipulation-guide.md"
     },
     {
       "source": "wiki/concepts/impedance-control.md",
@@ -2163,11 +2163,11 @@
     },
     {
       "source": "wiki/concepts/impedance-control.md",
-      "target": "wiki/queries/contact-rich-manipulation-guide.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/latent-imagination.md",
-      "target": "wiki/methods/generative-world-models.md"
+      "target": "wiki/formalizations/variational-objective.md"
     },
     {
       "source": "wiki/concepts/latent-imagination.md",
@@ -2175,7 +2175,7 @@
     },
     {
       "source": "wiki/concepts/latent-imagination.md",
-      "target": "wiki/formalizations/variational-objective.md"
+      "target": "wiki/methods/generative-world-models.md"
     },
     {
       "source": "wiki/concepts/lcm-basics.md",
@@ -2184,10 +2184,6 @@
     {
       "source": "wiki/concepts/lcm-basics.md",
       "target": "wiki/comparisons/ros2-vs-lcm.md"
-    },
-    {
-      "source": "wiki/concepts/lip-zmp.md",
-      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/lip-zmp.md",
@@ -2202,6 +2198,14 @@
       "target": "wiki/concepts/optimal-control.md"
     },
     {
+      "source": "wiki/concepts/lip-zmp.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
       "source": "wiki/concepts/motion-retargeting.md",
       "target": "wiki/concepts/sim2real.md"
     },
@@ -2211,27 +2215,23 @@
     },
     {
       "source": "wiki/concepts/motion-retargeting.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/motion-retargeting.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/motion-retargeting.md",
-      "target": "wiki/tasks/loco-manipulation.md"
-    },
-    {
-      "source": "wiki/concepts/motion-retargeting.md",
       "target": "wiki/methods/motion-retargeting-gmr.md"
     },
     {
-      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/mpc-wbc-integration.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/queries/control-architecture-comparison.md"
+    },
+    {
+      "source": "wiki/concepts/mpc-wbc-integration.md",
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/concepts/mpc-wbc-integration.md",
@@ -2243,11 +2243,19 @@
     },
     {
       "source": "wiki/concepts/mpc-wbc-integration.md",
-      "target": "wiki/queries/control-architecture-comparison.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/mpc-wbc-integration.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/concepts/optimal-control.md",
@@ -2255,19 +2263,7 @@
     },
     {
       "source": "wiki/concepts/optimal-control.md",
-      "target": "wiki/formalizations/mdp.md"
-    },
-    {
-      "source": "wiki/concepts/optimal-control.md",
       "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/concepts/optimal-control.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/optimal-control.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/optimal-control.md",
@@ -2275,19 +2271,19 @@
     },
     {
       "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/optimal-control.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/formalizations/gae.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
       "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/concepts/privileged-training.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/concepts/privileged-training.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/concepts/privileged-training.md",
-      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/concepts/privileged-training.md",
@@ -2295,15 +2291,23 @@
     },
     {
       "source": "wiki/concepts/privileged-training.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/privileged-training.md",
       "target": "wiki/concepts/domain-randomization.md"
     },
     {
       "source": "wiki/concepts/privileged-training.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/concepts/privileged-training.md",
-      "target": "wiki/formalizations/gae.md"
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/concepts/reward-design.md",
@@ -2311,23 +2315,7 @@
     },
     {
       "source": "wiki/concepts/reward-design.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/concepts/reward-design.md",
-      "target": "wiki/formalizations/mdp.md"
-    },
-    {
-      "source": "wiki/concepts/reward-design.md",
-      "target": "wiki/queries/reward-design-guide.md"
-    },
-    {
-      "source": "wiki/concepts/reward-design.md",
       "target": "wiki/concepts/domain-randomization.md"
-    },
-    {
-      "source": "wiki/concepts/reward-design.md",
-      "target": "wiki/methods/amp-reward.md"
     },
     {
       "source": "wiki/concepts/reward-design.md",
@@ -2335,11 +2323,23 @@
     },
     {
       "source": "wiki/concepts/reward-design.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/concepts/reward-design.md",
       "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/queries/reward-design-guide.md"
+    },
+    {
+      "source": "wiki/concepts/reward-design.md",
+      "target": "wiki/methods/amp-reward.md"
     },
     {
       "source": "wiki/concepts/ros2-basics.md",
@@ -2347,15 +2347,11 @@
     },
     {
       "source": "wiki/concepts/ros2-basics.md",
-      "target": "wiki/comparisons/ros2-vs-lcm.md"
-    },
-    {
-      "source": "wiki/concepts/ros2-basics.md",
       "target": "wiki/entities/booster-robocup-demo.md"
     },
     {
-      "source": "wiki/concepts/safety-filter.md",
-      "target": "wiki/concepts/control-barrier-function.md"
+      "source": "wiki/concepts/ros2-basics.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
     },
     {
       "source": "wiki/concepts/safety-filter.md",
@@ -2363,19 +2359,35 @@
     },
     {
       "source": "wiki/concepts/safety-filter.md",
-      "target": "wiki/queries/robot-policy-debug-playbook.md"
+      "target": "wiki/concepts/control-barrier-function.md"
     },
     {
       "source": "wiki/concepts/safety-filter.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
     },
     {
       "source": "wiki/concepts/safety-filter.md",
       "target": "wiki/queries/clf-cbf-in-wbc.md"
     },
     {
+      "source": "wiki/concepts/safety-filter.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
       "source": "wiki/concepts/sensor-fusion.md",
       "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/concepts/sensor-fusion.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/sensor-fusion.md",
@@ -2386,20 +2398,12 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/concepts/sensor-fusion.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/concepts/sensor-fusion.md",
-      "target": "wiki/concepts/state-estimation.md"
-    },
-    {
-      "source": "wiki/concepts/sensor-fusion.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/methods/actuator-network.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
-      "target": "wiki/queries/sim2real-gap-reduction.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
@@ -2411,7 +2415,7 @@
     },
     {
       "source": "wiki/concepts/sim2real.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
@@ -2419,27 +2423,19 @@
     },
     {
       "source": "wiki/concepts/sim2real.md",
-      "target": "wiki/queries/robot-policy-debug-playbook.md"
-    },
-    {
-      "source": "wiki/concepts/sim2real.md",
       "target": "wiki/comparisons/sim2real-approaches.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
-      "target": "wiki/methods/actuator-network.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/sim2real.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/queries/sim2real-gap-reduction.md"
     },
     {
       "source": "wiki/concepts/state-estimation.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/concepts/state-estimation.md",
-      "target": "wiki/concepts/system-identification.md"
+      "target": "wiki/methods/lingbot-map.md"
     },
     {
       "source": "wiki/concepts/state-estimation.md",
@@ -2451,15 +2447,15 @@
     },
     {
       "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/concepts/state-estimation.md",
       "target": "wiki/concepts/sensor-fusion.md"
-    },
-    {
-      "source": "wiki/concepts/state-estimation.md",
-      "target": "wiki/concepts/floating-base-dynamics.md"
-    },
-    {
-      "source": "wiki/concepts/state-estimation.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/state-estimation.md",
@@ -2471,11 +2467,11 @@
     },
     {
       "source": "wiki/concepts/state-estimation.md",
-      "target": "wiki/methods/lingbot-map.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/concepts/system-identification.md",
-      "target": "wiki/concepts/tsid.md"
+      "source": "wiki/concepts/state-estimation.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
       "source": "wiki/concepts/system-identification.md",
@@ -2483,23 +2479,19 @@
     },
     {
       "source": "wiki/concepts/system-identification.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/concepts/state-estimation.md"
     },
     {
       "source": "wiki/concepts/system-identification.md",
-      "target": "wiki/concepts/state-estimation.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/concepts/system-identification.md",
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
-      "source": "wiki/concepts/tactile-sensing.md",
-      "target": "wiki/queries/tactile-feedback-in-rl.md"
-    },
-    {
-      "source": "wiki/concepts/tactile-sensing.md",
-      "target": "wiki/concepts/visuo-tactile-fusion.md"
+      "source": "wiki/concepts/system-identification.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
@@ -2507,15 +2499,23 @@
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/queries/tactile-feedback-in-rl.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
       "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
+      "target": "wiki/concepts/visuo-tactile-fusion.md"
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
       "target": "wiki/formalizations/contact-wrench-cone.md"
+    },
+    {
+      "source": "wiki/concepts/tactile-sensing.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
       "source": "wiki/concepts/tactile-sensing.md",
@@ -2527,11 +2527,11 @@
     },
     {
       "source": "wiki/concepts/terrain-adaptation.md",
-      "target": "wiki/concepts/privileged-training.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/concepts/terrain-adaptation.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/concepts/privileged-training.md"
     },
     {
       "source": "wiki/concepts/terrain-adaptation.md",
@@ -2543,6 +2543,10 @@
     },
     {
       "source": "wiki/concepts/terrain-adaptation.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
+    },
+    {
+      "source": "wiki/concepts/terrain-adaptation.md",
       "target": "wiki/tasks/balance-recovery.md"
     },
     {
@@ -2550,8 +2554,8 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/concepts/terrain-adaptation.md",
-      "target": "wiki/queries/humanoid-rl-cookbook.md"
+      "source": "wiki/concepts/tsid.md",
+      "target": "wiki/formalizations/tsid-formulation.md"
     },
     {
       "source": "wiki/concepts/tsid.md",
@@ -2559,11 +2563,7 @@
     },
     {
       "source": "wiki/concepts/tsid.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/concepts/tsid.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/concepts/tsid.md",
@@ -2575,15 +2575,15 @@
     },
     {
       "source": "wiki/concepts/tsid.md",
-      "target": "wiki/formalizations/tsid-formulation.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/concepts/tsid.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/concepts/video-as-simulation.md",
-      "target": "wiki/methods/generative-world-models.md"
+      "target": "wiki/methods/model-based-rl.md"
     },
     {
       "source": "wiki/concepts/video-as-simulation.md",
@@ -2591,7 +2591,7 @@
     },
     {
       "source": "wiki/concepts/video-as-simulation.md",
-      "target": "wiki/methods/model-based-rl.md"
+      "target": "wiki/methods/generative-world-models.md"
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
@@ -2599,7 +2599,19 @@
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/concepts/contact-estimation.md"
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/formalizations/contact-wrench-cone.md"
+    },
+    {
+      "source": "wiki/concepts/visuo-tactile-fusion.md",
+      "target": "wiki/concepts/tactile-sensing.md"
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
@@ -2607,7 +2619,7 @@
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/formalizations/cross-modal-attention.md"
+      "target": "wiki/concepts/contact-estimation.md"
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
@@ -2619,39 +2631,11 @@
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
-    },
-    {
-      "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/concepts/tactile-sensing.md"
-    },
-    {
-      "source": "wiki/concepts/visuo-tactile-fusion.md",
       "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
       "source": "wiki/concepts/visuo-tactile-fusion.md",
-      "target": "wiki/formalizations/contact-wrench-cone.md"
-    },
-    {
-      "source": "wiki/concepts/whole-body-control.md",
-      "target": "wiki/concepts/contact-estimation.md"
-    },
-    {
-      "source": "wiki/concepts/whole-body-control.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/concepts/whole-body-control.md",
-      "target": "wiki/formalizations/se3-representation.md"
-    },
-    {
-      "source": "wiki/concepts/whole-body-control.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/concepts/whole-body-control.md",
@@ -2659,7 +2643,23 @@
     },
     {
       "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/formalizations/se3-representation.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
       "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/concepts/whole-body-control.md",
+      "target": "wiki/concepts/contact-estimation.md"
     },
     {
       "source": "wiki/concepts/whole-body-control.md",
@@ -2667,7 +2667,7 @@
     },
     {
       "source": "wiki/concepts/whole-body-coordination.md",
-      "target": "wiki/concepts/tsid.md"
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/concepts/whole-body-coordination.md",
@@ -2679,7 +2679,7 @@
     },
     {
       "source": "wiki/concepts/whole-body-coordination.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/concepts/whole-body-coordination.md",
@@ -2687,7 +2687,15 @@
     },
     {
       "source": "wiki/concepts/whole-body-coordination.md",
-      "target": "wiki/tasks/loco-manipulation.md"
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/methods/in-hand-reorientation.md"
+    },
+    {
+      "source": "wiki/entities/allegro-hand.md",
+      "target": "wiki/concepts/tactile-sensing.md"
     },
     {
       "source": "wiki/entities/allegro-hand.md",
@@ -2699,23 +2707,11 @@
     },
     {
       "source": "wiki/entities/allegro-hand.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/entities/allegro-hand.md",
       "target": "wiki/concepts/dexterous-kinematics.md"
     },
     {
       "source": "wiki/entities/allegro-hand.md",
-      "target": "wiki/concepts/tactile-sensing.md"
-    },
-    {
-      "source": "wiki/entities/allegro-hand.md",
-      "target": "wiki/methods/in-hand-reorientation.md"
-    },
-    {
-      "source": "wiki/entities/anymal.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/entities/anymal.md",
@@ -2723,54 +2719,46 @@
     },
     {
       "source": "wiki/entities/anymal.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/entities/anymal.md",
       "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/entities/anymal.md",
-      "target": "wiki/entities/legged-gym.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/atom01-deploy.md",
       "target": "wiki/entities/atom01-train.md"
-    },
-    {
-      "source": "wiki/entities/atom01-deploy.md",
-      "target": "wiki/entities/roboto-origin.md"
-    },
-    {
-      "source": "wiki/entities/atom01-deploy.md",
-      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/entities/atom01-deploy.md",
       "target": "wiki/entities/atom01-firmware.md"
     },
     {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/entities/roboto-origin.md"
+    },
+    {
+      "source": "wiki/entities/atom01-deploy.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
       "source": "wiki/entities/atom01-description.md",
       "target": "wiki/entities/atom01-train.md"
     },
     {
       "source": "wiki/entities/atom01-description.md",
-      "target": "wiki/entities/roboto-origin.md"
-    },
-    {
-      "source": "wiki/entities/atom01-description.md",
       "target": "wiki/entities/atom01-hardware.md"
     },
     {
       "source": "wiki/entities/atom01-description.md",
-      "target": "wiki/entities/atom01-deploy.md"
-    },
-    {
-      "source": "wiki/entities/atom01-firmware.md",
       "target": "wiki/entities/roboto-origin.md"
     },
     {
-      "source": "wiki/entities/atom01-firmware.md",
-      "target": "wiki/entities/atom01-hardware.md"
-    },
-    {
-      "source": "wiki/entities/atom01-firmware.md",
+      "source": "wiki/entities/atom01-description.md",
       "target": "wiki/entities/atom01-deploy.md"
     },
     {
@@ -2782,16 +2770,16 @@
       "target": "wiki/concepts/state-estimation.md"
     },
     {
-      "source": "wiki/entities/atom01-hardware.md",
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/entities/atom01-hardware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/atom01-firmware.md",
       "target": "wiki/entities/roboto-origin.md"
-    },
-    {
-      "source": "wiki/entities/atom01-hardware.md",
-      "target": "wiki/entities/humanoid-robot.md"
-    },
-    {
-      "source": "wiki/entities/atom01-hardware.md",
-      "target": "wiki/entities/atom01-firmware.md"
     },
     {
       "source": "wiki/entities/atom01-hardware.md",
@@ -2799,15 +2787,23 @@
     },
     {
       "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
       "target": "wiki/entities/atom01-description.md"
     },
     {
-      "source": "wiki/entities/atom01-train.md",
+      "source": "wiki/entities/atom01-hardware.md",
+      "target": "wiki/entities/atom01-firmware.md"
+    },
+    {
+      "source": "wiki/entities/atom01-hardware.md",
       "target": "wiki/entities/roboto-origin.md"
     },
     {
       "source": "wiki/entities/atom01-train.md",
-      "target": "wiki/entities/atom01-deploy.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/entities/atom01-train.md",
@@ -2815,19 +2811,19 @@
     },
     {
       "source": "wiki/entities/atom01-train.md",
+      "target": "wiki/entities/atom01-deploy.md"
+    },
+    {
+      "source": "wiki/entities/atom01-train.md",
       "target": "wiki/entities/isaac-gym-isaac-lab.md"
     },
     {
       "source": "wiki/entities/atom01-train.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/entities/roboto-origin.md"
     },
     {
       "source": "wiki/entities/booster-robocup-demo.md",
-      "target": "wiki/methods/htwk-gym.md"
-    },
-    {
-      "source": "wiki/entities/booster-robocup-demo.md",
-      "target": "wiki/methods/auto-labeling-pipelines.md"
+      "target": "wiki/entities/robot-lab.md"
     },
     {
       "source": "wiki/entities/booster-robocup-demo.md",
@@ -2839,15 +2835,11 @@
     },
     {
       "source": "wiki/entities/booster-robocup-demo.md",
-      "target": "wiki/entities/robot-lab.md"
+      "target": "wiki/methods/htwk-gym.md"
     },
     {
-      "source": "wiki/entities/boston-dynamics.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/entities/boston-dynamics.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "source": "wiki/entities/booster-robocup-demo.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
     },
     {
       "source": "wiki/entities/boston-dynamics.md",
@@ -2858,8 +2850,12 @@
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
-      "source": "wiki/entities/crocoddyl.md",
-      "target": "wiki/methods/trajectory-optimization.md"
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/boston-dynamics.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/crocoddyl.md",
@@ -2867,27 +2863,23 @@
     },
     {
       "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
       "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/crocoddyl.md",
       "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/entities/crocoddyl.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/entities/crocoddyl.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/entities/drake.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/entities/drake.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/entities/drake.md",
@@ -2898,8 +2890,12 @@
       "target": "wiki/methods/trajectory-optimization.md"
     },
     {
-      "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/queries/hardware-comparison.md"
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/drake.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
@@ -2907,23 +2903,19 @@
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/entities/unitree.md"
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/queries/hardware-comparison.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/entities/open-source-humanoid-brains.md"
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
       "target": "wiki/queries/humanoid-battery-thermal-management.md"
-    },
-    {
-      "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
@@ -2935,10 +2927,6 @@
     },
     {
       "source": "wiki/entities/humanoid-robot.md",
-      "target": "wiki/entities/open-source-humanoid-brains.md"
-    },
-    {
-      "source": "wiki/entities/humanoid-robot.md",
       "target": "wiki/entities/anymal.md"
     },
     {
@@ -2946,8 +2934,16 @@
       "target": "wiki/queries/humanoid-hardware-selection.md"
     },
     {
-      "source": "wiki/entities/isaac-gym-isaac-lab.md",
-      "target": "wiki/concepts/sim2real.md"
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/humanoid-robot.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
@@ -2955,7 +2951,11 @@
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/isaac-gym-isaac-lab.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
@@ -2963,19 +2963,19 @@
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/entities/legged-gym.md"
     },
     {
       "source": "wiki/entities/isaac-gym-isaac-lab.md",
-      "target": "wiki/entities/legged-gym.md"
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/legged-gym.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/entities/legged-gym.md",
       "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/entities/legged-gym.md",
-      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/entities/legged-gym.md",
@@ -2987,7 +2987,15 @@
     },
     {
       "source": "wiki/entities/legged-gym.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/entities/mimickit.md",
+      "target": "wiki/methods/smp.md"
+    },
+    {
+      "source": "wiki/entities/mimickit.md",
+      "target": "wiki/methods/ase.md"
     },
     {
       "source": "wiki/entities/mimickit.md",
@@ -2995,15 +3003,7 @@
     },
     {
       "source": "wiki/entities/mimickit.md",
-      "target": "wiki/entities/protomotions.md"
-    },
-    {
-      "source": "wiki/entities/mimickit.md",
       "target": "wiki/methods/deepmimic.md"
-    },
-    {
-      "source": "wiki/entities/mimickit.md",
-      "target": "wiki/methods/add.md"
     },
     {
       "source": "wiki/entities/mimickit.md",
@@ -3015,7 +3015,7 @@
     },
     {
       "source": "wiki/entities/mimickit.md",
-      "target": "wiki/methods/smp.md"
+      "target": "wiki/methods/awr.md"
     },
     {
       "source": "wiki/entities/mimickit.md",
@@ -3023,11 +3023,15 @@
     },
     {
       "source": "wiki/entities/mimickit.md",
-      "target": "wiki/methods/awr.md"
+      "target": "wiki/methods/add.md"
     },
     {
       "source": "wiki/entities/mimickit.md",
-      "target": "wiki/methods/ase.md"
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/entities/mujoco.md",
+      "target": "wiki/entities/nvidia-omniverse.md"
     },
     {
       "source": "wiki/entities/mujoco.md",
@@ -3042,16 +3046,16 @@
       "target": "wiki/comparisons/mujoco-vs-isaac-sim.md"
     },
     {
-      "source": "wiki/entities/mujoco.md",
-      "target": "wiki/entities/nvidia-omniverse.md"
+      "source": "wiki/entities/nvidia-omniverse.md",
+      "target": "wiki/entities/mujoco.md"
+    },
+    {
+      "source": "wiki/entities/nvidia-omniverse.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/entities/nvidia-omniverse.md",
       "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/entities/nvidia-omniverse.md",
-      "target": "wiki/entities/mujoco.md"
     },
     {
       "source": "wiki/entities/nvidia-omniverse.md",
@@ -3062,32 +3066,24 @@
       "target": "wiki/methods/visual-servoing.md"
     },
     {
-      "source": "wiki/entities/nvidia-omniverse.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
       "source": "wiki/entities/oculust-quest-teleop.md",
       "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/entities/oculust-quest-teleop.md",
-      "target": "wiki/queries/demo-data-collection-guide.md"
     },
     {
       "source": "wiki/entities/oculust-quest-teleop.md",
       "target": "wiki/queries/dexterous-data-collection-guide.md"
     },
     {
+      "source": "wiki/entities/oculust-quest-teleop.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
+    },
+    {
       "source": "wiki/entities/open-source-humanoid-brains.md",
-      "target": "wiki/entities/humanoid-robot.md"
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/entities/open-source-humanoid-brains.md",
       "target": "wiki/roadmaps/humanoid-control-roadmap.md"
-    },
-    {
-      "source": "wiki/entities/open-source-humanoid-brains.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/entities/open-source-humanoid-brains.md",
@@ -3095,7 +3091,11 @@
     },
     {
       "source": "wiki/entities/open-source-humanoid-brains.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/open-source-humanoid-brains.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/entities/open-source-humanoid-hardware.md",
@@ -3103,7 +3103,7 @@
     },
     {
       "source": "wiki/entities/open-source-humanoid-hardware.md",
-      "target": "wiki/queries/humanoid-hardware-selection.md"
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
     },
     {
       "source": "wiki/entities/open-source-humanoid-hardware.md",
@@ -3111,15 +3111,7 @@
     },
     {
       "source": "wiki/entities/open-source-humanoid-hardware.md",
-      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/entities/pinocchio.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
+      "target": "wiki/queries/humanoid-hardware-selection.md"
     },
     {
       "source": "wiki/entities/pinocchio.md",
@@ -3127,15 +3119,23 @@
     },
     {
       "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/pinocchio.md",
       "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
       "source": "wiki/entities/protomotions.md",
-      "target": "wiki/entities/mimickit.md"
+      "target": "wiki/methods/smp.md"
     },
     {
       "source": "wiki/entities/protomotions.md",
-      "target": "wiki/methods/smp.md"
+      "target": "wiki/entities/mimickit.md"
     },
     {
       "source": "wiki/entities/protomotions.md",
@@ -3147,19 +3147,15 @@
     },
     {
       "source": "wiki/entities/robot-lab.md",
-      "target": "wiki/entities/unitree.md"
-    },
-    {
-      "source": "wiki/entities/robot-lab.md",
-      "target": "wiki/entities/booster-robocup-demo.md"
-    },
-    {
-      "source": "wiki/entities/robot-lab.md",
       "target": "wiki/entities/mimickit.md"
     },
     {
       "source": "wiki/entities/robot-lab.md",
       "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/entities/robot-lab.md",
+      "target": "wiki/entities/booster-robocup-demo.md"
     },
     {
       "source": "wiki/entities/robot-lab.md",
@@ -3170,12 +3166,8 @@
       "target": "wiki/entities/legged-gym.md"
     },
     {
-      "source": "wiki/entities/roboto-origin.md",
-      "target": "wiki/entities/humanoid-robot.md"
-    },
-    {
-      "source": "wiki/entities/roboto-origin.md",
-      "target": "wiki/entities/atom01-firmware.md"
+      "source": "wiki/entities/robot-lab.md",
+      "target": "wiki/entities/unitree.md"
     },
     {
       "source": "wiki/entities/roboto-origin.md",
@@ -3183,7 +3175,11 @@
     },
     {
       "source": "wiki/entities/roboto-origin.md",
-      "target": "wiki/entities/unitree.md"
+      "target": "wiki/entities/atom01-train.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/robot-lab.md"
     },
     {
       "source": "wiki/entities/roboto-origin.md",
@@ -3195,7 +3191,7 @@
     },
     {
       "source": "wiki/entities/roboto-origin.md",
-      "target": "wiki/entities/atom01-train.md"
+      "target": "wiki/entities/humanoid-robot.md"
     },
     {
       "source": "wiki/entities/roboto-origin.md",
@@ -3203,7 +3199,11 @@
     },
     {
       "source": "wiki/entities/roboto-origin.md",
-      "target": "wiki/entities/robot-lab.md"
+      "target": "wiki/entities/atom01-firmware.md"
+    },
+    {
+      "source": "wiki/entities/roboto-origin.md",
+      "target": "wiki/entities/unitree.md"
     },
     {
       "source": "wiki/entities/shadow-hand.md",
@@ -3227,7 +3227,7 @@
     },
     {
       "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/entities/humanoid-robot.md"
+      "target": "wiki/methods/smp.md"
     },
     {
       "source": "wiki/entities/unitree-g1.md",
@@ -3235,27 +3235,11 @@
     },
     {
       "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/methods/auto-labeling-pipelines.md"
-    },
-    {
-      "source": "wiki/entities/unitree-g1.md",
       "target": "wiki/roadmaps/humanoid-control-roadmap.md"
     },
     {
       "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/entities/unitree.md"
-    },
-    {
-      "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/methods/smp.md"
-    },
-    {
-      "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/methods/claw.md"
-    },
-    {
-      "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/entities/robot-lab.md"
     },
     {
       "source": "wiki/entities/unitree-g1.md",
@@ -3267,7 +3251,27 @@
     },
     {
       "source": "wiki/entities/unitree-g1.md",
-      "target": "wiki/entities/robot-lab.md"
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/methods/claw.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/entities/unitree.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/entities/unitree.md",
@@ -3275,15 +3279,11 @@
     },
     {
       "source": "wiki/entities/unitree.md",
-      "target": "wiki/entities/legged-gym.md"
-    },
-    {
-      "source": "wiki/entities/unitree.md",
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/entities/unitree.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/entities/legged-gym.md"
     },
     {
       "source": "wiki/entities/unitree.md",
@@ -3291,15 +3291,15 @@
     },
     {
       "source": "wiki/entities/unitree.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/formalizations/behavior-cloning-loss.md",
-      "target": "wiki/formalizations/mdp.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/formalizations/behavior-cloning-loss.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/formalizations/behavior-cloning-loss.md",
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/formalizations/behavior-cloning-loss.md",
@@ -3311,19 +3311,7 @@
     },
     {
       "source": "wiki/formalizations/bellman-equation.md",
-      "target": "wiki/formalizations/mdp.md"
-    },
-    {
-      "source": "wiki/formalizations/bellman-equation.md",
-      "target": "wiki/formalizations/hjb.md"
-    },
-    {
-      "source": "wiki/formalizations/bellman-equation.md",
-      "target": "wiki/concepts/optimal-control.md"
-    },
-    {
-      "source": "wiki/formalizations/bellman-equation.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "target": "wiki/formalizations/gae.md"
     },
     {
       "source": "wiki/formalizations/bellman-equation.md",
@@ -3331,15 +3319,31 @@
     },
     {
       "source": "wiki/formalizations/bellman-equation.md",
-      "target": "wiki/formalizations/gae.md"
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/formalizations/bellman-equation.md",
+      "target": "wiki/formalizations/hjb.md"
     },
     {
       "source": "wiki/formalizations/cmdp.md",
-      "target": "wiki/formalizations/mdp.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/formalizations/cmdp.md",
       "target": "wiki/methods/safe-rl.md"
+    },
+    {
+      "source": "wiki/formalizations/cmdp.md",
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/formalizations/cmdp.md",
@@ -3350,12 +3354,12 @@
       "target": "wiki/formalizations/bellman-equation.md"
     },
     {
-      "source": "wiki/formalizations/cmdp.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "source": "wiki/formalizations/contact-complementarity.md",
+      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/formalizations/contact-complementarity.md",
-      "target": "wiki/concepts/contact-dynamics.md"
+      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/formalizations/contact-complementarity.md",
@@ -3364,10 +3368,6 @@
     {
       "source": "wiki/formalizations/contact-complementarity.md",
       "target": "wiki/entities/drake.md"
-    },
-    {
-      "source": "wiki/formalizations/contact-complementarity.md",
-      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/formalizations/contact-wrench-cone.md",
@@ -3379,14 +3379,6 @@
     },
     {
       "source": "wiki/formalizations/contact-wrench-cone.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/formalizations/contact-wrench-cone.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
-    },
-    {
-      "source": "wiki/formalizations/contact-wrench-cone.md",
       "target": "wiki/concepts/tactile-sensing.md"
     },
     {
@@ -3395,15 +3387,19 @@
     },
     {
       "source": "wiki/formalizations/contact-wrench-cone.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-wrench-cone.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/contact-wrench-cone.md",
       "target": "wiki/formalizations/friction-cone.md"
     },
     {
       "source": "wiki/formalizations/control-lyapunov-function.md",
-      "target": "wiki/formalizations/lqr.md"
-    },
-    {
-      "source": "wiki/formalizations/control-lyapunov-function.md",
-      "target": "wiki/concepts/control-barrier-function.md"
+      "target": "wiki/formalizations/lyapunov.md"
     },
     {
       "source": "wiki/formalizations/control-lyapunov-function.md",
@@ -3411,7 +3407,7 @@
     },
     {
       "source": "wiki/formalizations/control-lyapunov-function.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/concepts/control-barrier-function.md"
     },
     {
       "source": "wiki/formalizations/control-lyapunov-function.md",
@@ -3419,7 +3415,11 @@
     },
     {
       "source": "wiki/formalizations/control-lyapunov-function.md",
-      "target": "wiki/formalizations/lyapunov.md"
+      "target": "wiki/formalizations/lqr.md"
+    },
+    {
+      "source": "wiki/formalizations/control-lyapunov-function.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/formalizations/cross-modal-attention.md",
@@ -3435,11 +3435,15 @@
     },
     {
       "source": "wiki/formalizations/ekf.md",
-      "target": "wiki/concepts/contact-estimation.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/formalizations/ekf.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/formalizations/ekf.md",
+      "target": "wiki/concepts/contact-estimation.md"
     },
     {
       "source": "wiki/formalizations/ekf.md",
@@ -3454,10 +3458,6 @@
       "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
-      "source": "wiki/formalizations/ekf.md",
-      "target": "wiki/concepts/state-estimation.md"
-    },
-    {
       "source": "wiki/formalizations/foundation-policy-alignment.md",
       "target": "wiki/formalizations/vla-tokenization.md"
     },
@@ -3471,15 +3471,7 @@
     },
     {
       "source": "wiki/formalizations/friction-cone.md",
-      "target": "wiki/formalizations/zmp-lip.md"
-    },
-    {
-      "source": "wiki/formalizations/friction-cone.md",
       "target": "wiki/concepts/contact-dynamics.md"
-    },
-    {
-      "source": "wiki/formalizations/friction-cone.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/formalizations/friction-cone.md",
@@ -3487,11 +3479,23 @@
     },
     {
       "source": "wiki/formalizations/friction-cone.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
+      "target": "wiki/formalizations/zmp-lip.md"
     },
     {
       "source": "wiki/formalizations/friction-cone.md",
       "target": "wiki/formalizations/contact-wrench-cone.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/friction-cone.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/formalizations/gae.md",
+      "target": "wiki/methods/policy-optimization.md"
     },
     {
       "source": "wiki/formalizations/gae.md",
@@ -3502,16 +3506,8 @@
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
-      "source": "wiki/formalizations/gae.md",
-      "target": "wiki/methods/policy-optimization.md"
-    },
-    {
       "source": "wiki/formalizations/hjb.md",
-      "target": "wiki/concepts/optimal-control.md"
-    },
-    {
-      "source": "wiki/formalizations/hjb.md",
-      "target": "wiki/formalizations/bellman-equation.md"
+      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/formalizations/hjb.md",
@@ -3519,7 +3515,31 @@
     },
     {
       "source": "wiki/formalizations/hjb.md",
-      "target": "wiki/methods/trajectory-optimization.md"
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/formalizations/hjb.md",
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/formalizations/lyapunov.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/formalizations/lqr.md",
+      "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/formalizations/lqr.md",
@@ -3530,24 +3550,8 @@
       "target": "wiki/formalizations/hjb.md"
     },
     {
-      "source": "wiki/formalizations/lqr.md",
-      "target": "wiki/concepts/optimal-control.md"
-    },
-    {
-      "source": "wiki/formalizations/lqr.md",
-      "target": "wiki/entities/crocoddyl.md"
-    },
-    {
-      "source": "wiki/formalizations/lqr.md",
-      "target": "wiki/formalizations/lyapunov.md"
-    },
-    {
-      "source": "wiki/formalizations/lqr.md",
-      "target": "wiki/formalizations/bellman-equation.md"
-    },
-    {
-      "source": "wiki/formalizations/lqr.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "source": "wiki/formalizations/lyapunov.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
     },
     {
       "source": "wiki/formalizations/lyapunov.md",
@@ -3555,7 +3559,7 @@
     },
     {
       "source": "wiki/formalizations/lyapunov.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/concepts/centroidal-dynamics.md"
     },
     {
       "source": "wiki/formalizations/lyapunov.md",
@@ -3563,15 +3567,23 @@
     },
     {
       "source": "wiki/formalizations/lyapunov.md",
-      "target": "wiki/concepts/capture-point-dcm.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/formalizations/lyapunov.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/formalizations/mdp.md",
       "target": "wiki/formalizations/pomdp.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/formalizations/mdp.md",
+      "target": "wiki/formalizations/bellman-equation.md"
     },
     {
       "source": "wiki/formalizations/mdp.md",
@@ -3582,28 +3594,16 @@
       "target": "wiki/concepts/reward-design.md"
     },
     {
-      "source": "wiki/formalizations/mdp.md",
-      "target": "wiki/formalizations/bellman-equation.md"
-    },
-    {
-      "source": "wiki/formalizations/mdp.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/formalizations/mdp.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "source": "wiki/formalizations/pomdp.md",
+      "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/formalizations/pomdp.md",
       "target": "wiki/concepts/state-estimation.md"
     },
     {
-      "source": "wiki/formalizations/pomdp.md",
-      "target": "wiki/formalizations/mdp.md"
-    },
-    {
       "source": "wiki/formalizations/probability-flow.md",
-      "target": "wiki/methods/generative-world-models.md"
+      "target": "wiki/methods/diffusion-policy.md"
     },
     {
       "source": "wiki/formalizations/probability-flow.md",
@@ -3611,15 +3611,7 @@
     },
     {
       "source": "wiki/formalizations/probability-flow.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/formalizations/se3-representation.md",
-      "target": "wiki/formalizations/vla-tokenization.md"
-    },
-    {
-      "source": "wiki/formalizations/se3-representation.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/methods/generative-world-models.md"
     },
     {
       "source": "wiki/formalizations/se3-representation.md",
@@ -3627,7 +3619,15 @@
     },
     {
       "source": "wiki/formalizations/se3-representation.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/formalizations/se3-representation.md",
       "target": "wiki/methods/visual-servoing.md"
+    },
+    {
+      "source": "wiki/formalizations/se3-representation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/formalizations/tsid-formulation.md",
@@ -3635,11 +3635,11 @@
     },
     {
       "source": "wiki/formalizations/tsid-formulation.md",
-      "target": "wiki/formalizations/friction-cone.md"
+      "target": "wiki/concepts/floating-base-dynamics.md"
     },
     {
       "source": "wiki/formalizations/tsid-formulation.md",
-      "target": "wiki/concepts/floating-base-dynamics.md"
+      "target": "wiki/formalizations/friction-cone.md"
     },
     {
       "source": "wiki/formalizations/variational-objective.md",
@@ -3655,7 +3655,7 @@
     },
     {
       "source": "wiki/formalizations/vla-tokenization.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
+      "target": "wiki/methods/behavior-cloning.md"
     },
     {
       "source": "wiki/formalizations/vla-tokenization.md",
@@ -3663,11 +3663,11 @@
     },
     {
       "source": "wiki/formalizations/vla-tokenization.md",
-      "target": "wiki/methods/behavior-cloning.md"
+      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/formalizations/vla-tokenization.md",
-      "target": "wiki/formalizations/cross-modal-attention.md"
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
@@ -3675,7 +3675,7 @@
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
@@ -3683,27 +3683,11 @@
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
-      "target": "wiki/formalizations/friction-cone.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/formalizations/zmp-lip.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/methods/action-chunking.md",
-      "target": "wiki/tasks/bimanual-manipulation.md"
-    },
-    {
-      "source": "wiki/methods/action-chunking.md",
-      "target": "wiki/queries/vla-deployment-guide.md"
-    },
-    {
-      "source": "wiki/methods/action-chunking.md",
-      "target": "wiki/queries/vla-with-low-level-controller.md"
-    },
-    {
-      "source": "wiki/methods/action-chunking.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
+      "target": "wiki/formalizations/friction-cone.md"
     },
     {
       "source": "wiki/methods/action-chunking.md",
@@ -3711,15 +3695,27 @@
     },
     {
       "source": "wiki/methods/action-chunking.md",
+      "target": "wiki/queries/vla-with-low-level-controller.md"
+    },
+    {
+      "source": "wiki/methods/action-chunking.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/action-chunking.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/action-chunking.md",
+      "target": "wiki/queries/vla-deployment-guide.md"
     },
     {
       "source": "wiki/methods/action-chunking.md",
       "target": "wiki/methods/vla.md"
     },
     {
-      "source": "wiki/methods/actuator-network.md",
-      "target": "wiki/entities/anymal.md"
+      "source": "wiki/methods/action-chunking.md",
+      "target": "wiki/tasks/bimanual-manipulation.md"
     },
     {
       "source": "wiki/methods/actuator-network.md",
@@ -3730,8 +3726,8 @@
       "target": "wiki/concepts/sim2real.md"
     },
     {
-      "source": "wiki/methods/add.md",
-      "target": "wiki/entities/protomotions.md"
+      "source": "wiki/methods/actuator-network.md",
+      "target": "wiki/entities/anymal.md"
     },
     {
       "source": "wiki/methods/add.md",
@@ -3750,20 +3746,8 @@
       "target": "wiki/methods/amp-reward.md"
     },
     {
-      "source": "wiki/methods/amp-reward.md",
+      "source": "wiki/methods/add.md",
       "target": "wiki/entities/protomotions.md"
-    },
-    {
-      "source": "wiki/methods/amp-reward.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/amp-reward.md",
-      "target": "wiki/methods/add.md"
-    },
-    {
-      "source": "wiki/methods/amp-reward.md",
-      "target": "wiki/methods/smp.md"
     },
     {
       "source": "wiki/methods/amp-reward.md",
@@ -3771,7 +3755,15 @@
     },
     {
       "source": "wiki/methods/amp-reward.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
+      "target": "wiki/methods/smp.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/methods/amp-reward.md",
@@ -3779,6 +3771,22 @@
     },
     {
       "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/methods/add.md"
+    },
+    {
+      "source": "wiki/methods/amp-reward.md",
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/ams.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/methods/ams.md",
       "target": "wiki/methods/beyondmimic.md"
     },
     {
@@ -3786,12 +3794,8 @@
       "target": "wiki/methods/imitation-learning.md"
     },
     {
-      "source": "wiki/methods/ams.md",
-      "target": "wiki/methods/beyondmimic.md"
-    },
-    {
-      "source": "wiki/methods/ams.md",
-      "target": "wiki/concepts/reward-design.md"
+      "source": "wiki/methods/any2track.md",
+      "target": "wiki/concepts/domain-randomization.md"
     },
     {
       "source": "wiki/methods/any2track.md",
@@ -3799,19 +3803,7 @@
     },
     {
       "source": "wiki/methods/any2track.md",
-      "target": "wiki/concepts/domain-randomization.md"
-    },
-    {
-      "source": "wiki/methods/any2track.md",
       "target": "wiki/methods/beyondmimic.md"
-    },
-    {
-      "source": "wiki/methods/ase.md",
-      "target": "wiki/entities/protomotions.md"
-    },
-    {
-      "source": "wiki/methods/ase.md",
-      "target": "wiki/formalizations/se3-representation.md"
     },
     {
       "source": "wiki/methods/ase.md",
@@ -3823,7 +3815,15 @@
     },
     {
       "source": "wiki/methods/ase.md",
+      "target": "wiki/formalizations/se3-representation.md"
+    },
+    {
+      "source": "wiki/methods/ase.md",
       "target": "wiki/methods/amp-reward.md"
+    },
+    {
+      "source": "wiki/methods/ase.md",
+      "target": "wiki/entities/protomotions.md"
     },
     {
       "source": "wiki/methods/auto-labeling-pipelines.md",
@@ -3831,31 +3831,23 @@
     },
     {
       "source": "wiki/methods/auto-labeling-pipelines.md",
-      "target": "wiki/methods/claw.md"
-    },
-    {
-      "source": "wiki/methods/auto-labeling-pipelines.md",
-      "target": "wiki/methods/action-chunking.md"
-    },
-    {
-      "source": "wiki/methods/auto-labeling-pipelines.md",
       "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/methods/claw.md"
     },
     {
       "source": "wiki/methods/auto-labeling-pipelines.md",
       "target": "wiki/concepts/embodied-scaling-laws.md"
     },
     {
-      "source": "wiki/methods/awr.md",
-      "target": "wiki/entities/protomotions.md"
+      "source": "wiki/methods/auto-labeling-pipelines.md",
+      "target": "wiki/methods/action-chunking.md"
     },
     {
       "source": "wiki/methods/awr.md",
       "target": "wiki/entities/mimickit.md"
-    },
-    {
-      "source": "wiki/methods/awr.md",
-      "target": "wiki/formalizations/bellman-equation.md"
     },
     {
       "source": "wiki/methods/awr.md",
@@ -3866,8 +3858,12 @@
       "target": "wiki/methods/policy-optimization.md"
     },
     {
-      "source": "wiki/methods/bc-with-transformer.md",
-      "target": "wiki/formalizations/vla-tokenization.md"
+      "source": "wiki/methods/awr.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/awr.md",
+      "target": "wiki/entities/protomotions.md"
     },
     {
       "source": "wiki/methods/bc-with-transformer.md",
@@ -3875,15 +3871,27 @@
     },
     {
       "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/bc-with-transformer.md",
+      "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/methods/bc-with-transformer.md",
       "target": "wiki/methods/action-chunking.md"
     },
     {
-      "source": "wiki/methods/bc-with-transformer.md",
-      "target": "wiki/methods/vla.md"
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/behavior-cloning.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/methods/behavior-cloning.md",
@@ -3891,7 +3899,7 @@
     },
     {
       "source": "wiki/methods/behavior-cloning.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/methods/behavior-cloning.md",
@@ -3902,18 +3910,6 @@
       "target": "wiki/methods/dagger.md"
     },
     {
-      "source": "wiki/methods/behavior-cloning.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/methods/behavior-cloning.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
-    },
-    {
-      "source": "wiki/methods/beyondmimic.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
       "source": "wiki/methods/beyondmimic.md",
       "target": "wiki/concepts/curriculum-learning.md"
     },
@@ -3922,12 +3918,16 @@
       "target": "wiki/concepts/armature-modeling.md"
     },
     {
+      "source": "wiki/methods/beyondmimic.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
       "source": "wiki/methods/claw.md",
       "target": "wiki/concepts/motion-retargeting.md"
     },
     {
       "source": "wiki/methods/claw.md",
-      "target": "wiki/methods/auto-labeling-pipelines.md"
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/methods/claw.md",
@@ -3935,15 +3935,15 @@
     },
     {
       "source": "wiki/methods/claw.md",
-      "target": "wiki/concepts/foundation-policy.md"
-    },
-    {
-      "source": "wiki/methods/claw.md",
       "target": "wiki/entities/unitree-g1.md"
     },
     {
       "source": "wiki/methods/claw.md",
-      "target": "wiki/tasks/loco-manipulation.md"
+      "target": "wiki/methods/auto-labeling-pipelines.md"
+    },
+    {
+      "source": "wiki/methods/claw.md",
+      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/contact-net.md",
@@ -3955,19 +3955,11 @@
     },
     {
       "source": "wiki/methods/dagger.md",
+      "target": "wiki/tasks/ultra-survey.md"
+    },
+    {
+      "source": "wiki/methods/dagger.md",
       "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/dagger.md",
-      "target": "wiki/comparisons/rl-vs-il.md"
-    },
-    {
-      "source": "wiki/methods/dagger.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/methods/dagger.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
       "source": "wiki/methods/dagger.md",
@@ -3975,15 +3967,15 @@
     },
     {
       "source": "wiki/methods/dagger.md",
-      "target": "wiki/tasks/ultra-survey.md"
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
     },
     {
-      "source": "wiki/methods/deepmimic.md",
-      "target": "wiki/entities/mimickit.md"
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
-      "source": "wiki/methods/deepmimic.md",
-      "target": "wiki/entities/protomotions.md"
+      "source": "wiki/methods/dagger.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
     },
     {
       "source": "wiki/methods/deepmimic.md",
@@ -3991,15 +3983,15 @@
     },
     {
       "source": "wiki/methods/deepmimic.md",
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/deepmimic.md",
+      "target": "wiki/entities/mimickit.md"
+    },
+    {
+      "source": "wiki/methods/deepmimic.md",
       "target": "wiki/methods/amp-reward.md"
-    },
-    {
-      "source": "wiki/methods/diffusion-motion-generation.md",
-      "target": "wiki/formalizations/probability-flow.md"
-    },
-    {
-      "source": "wiki/methods/diffusion-motion-generation.md",
-      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/methods/diffusion-motion-generation.md",
@@ -4007,27 +3999,19 @@
     },
     {
       "source": "wiki/methods/diffusion-motion-generation.md",
-      "target": "wiki/methods/motion-retargeting-gmr.md"
+      "target": "wiki/concepts/contact-dynamics.md"
     },
     {
       "source": "wiki/methods/diffusion-motion-generation.md",
       "target": "wiki/methods/policy-optimization.md"
     },
     {
-      "source": "wiki/methods/diffusion-policy.md",
-      "target": "wiki/concepts/sim2real.md"
+      "source": "wiki/methods/diffusion-motion-generation.md",
+      "target": "wiki/methods/motion-retargeting-gmr.md"
     },
     {
-      "source": "wiki/methods/diffusion-policy.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/diffusion-policy.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/methods/diffusion-policy.md",
-      "target": "wiki/methods/diffusion-motion-generation.md"
+      "source": "wiki/methods/diffusion-motion-generation.md",
+      "target": "wiki/formalizations/probability-flow.md"
     },
     {
       "source": "wiki/methods/diffusion-policy.md",
@@ -4035,11 +4019,23 @@
     },
     {
       "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/methods/diffusion-motion-generation.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-policy.md",
       "target": "wiki/methods/policy-optimization.md"
     },
     {
-      "source": "wiki/methods/dmp.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "source": "wiki/methods/diffusion-policy.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/methods/dmp.md",
@@ -4050,6 +4046,14 @@
       "target": "wiki/concepts/whole-body-coordination.md"
     },
     {
+      "source": "wiki/methods/dmp.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/gae.md",
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
       "source": "wiki/methods/gae.md",
       "target": "wiki/formalizations/bellman-equation.md"
     },
@@ -4058,12 +4062,8 @@
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
-      "source": "wiki/methods/gae.md",
-      "target": "wiki/methods/policy-optimization.md"
-    },
-    {
       "source": "wiki/methods/generative-data-augmentation.md",
-      "target": "wiki/methods/generative-world-models.md"
+      "target": "wiki/concepts/embodied-data-cleaning.md"
     },
     {
       "source": "wiki/methods/generative-data-augmentation.md",
@@ -4071,7 +4071,11 @@
     },
     {
       "source": "wiki/methods/generative-data-augmentation.md",
-      "target": "wiki/concepts/embodied-data-cleaning.md"
+      "target": "wiki/methods/generative-world-models.md"
+    },
+    {
+      "source": "wiki/methods/generative-world-models.md",
+      "target": "wiki/entities/nvidia-omniverse.md"
     },
     {
       "source": "wiki/methods/generative-world-models.md",
@@ -4079,23 +4083,19 @@
     },
     {
       "source": "wiki/methods/generative-world-models.md",
-      "target": "wiki/concepts/video-as-simulation.md"
-    },
-    {
-      "source": "wiki/methods/generative-world-models.md",
       "target": "wiki/methods/model-based-rl.md"
     },
     {
       "source": "wiki/methods/generative-world-models.md",
-      "target": "wiki/entities/nvidia-omniverse.md"
-    },
-    {
-      "source": "wiki/methods/haic.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/concepts/video-as-simulation.md"
     },
     {
       "source": "wiki/methods/haic.md",
       "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/methods/haic.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/haic.md",
@@ -4115,7 +4115,15 @@
     },
     {
       "source": "wiki/methods/htwk-gym.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/htwk-gym.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/htwk-gym.md",
+      "target": "wiki/concepts/domain-randomization.md"
     },
     {
       "source": "wiki/methods/htwk-gym.md",
@@ -4127,19 +4135,7 @@
     },
     {
       "source": "wiki/methods/htwk-gym.md",
-      "target": "wiki/concepts/domain-randomization.md"
-    },
-    {
-      "source": "wiki/methods/htwk-gym.md",
       "target": "wiki/entities/isaac-gym-isaac-lab.md"
-    },
-    {
-      "source": "wiki/methods/htwk-gym.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/methods/humanoid-transformer-touch-dreaming.md",
-      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/methods/humanoid-transformer-touch-dreaming.md",
@@ -4159,7 +4155,7 @@
     },
     {
       "source": "wiki/methods/humanoid-transformer-touch-dreaming.md",
-      "target": "wiki/methods/action-chunking.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/methods/humanoid-transformer-touch-dreaming.md",
@@ -4170,36 +4166,8 @@
       "target": "wiki/tasks/teleoperation.md"
     },
     {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/deepmimic.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/ams.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/concepts/foundation-policy.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/comparisons/rl-vs-il.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/claw.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/vla.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/ase.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/dmp.md"
+      "source": "wiki/methods/humanoid-transformer-touch-dreaming.md",
+      "target": "wiki/methods/action-chunking.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -4207,43 +4175,7 @@
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/any2track.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/add.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/smp.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/awr.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/amp-reward.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/beyondmimic.md"
-    },
-    {
-      "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/entities/protomotions.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -4251,11 +4183,11 @@
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/methods/haic.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/haic.md"
+      "target": "wiki/methods/deepmimic.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -4263,15 +4195,23 @@
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/dagger.md"
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/entities/mimickit.md"
+      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
-      "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
+      "target": "wiki/methods/ams.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/ase.md"
     },
     {
       "source": "wiki/methods/imitation-learning.md",
@@ -4279,7 +4219,67 @@
     },
     {
       "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/dmp.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/awr.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/entities/mimickit.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/smp.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/any2track.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
       "target": "wiki/entities/robot-lab.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/add.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/amp-reward.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/claw.md"
+    },
+    {
+      "source": "wiki/methods/imitation-learning.md",
+      "target": "wiki/methods/dagger.md"
     },
     {
       "source": "wiki/methods/in-hand-reorientation.md",
@@ -4291,19 +4291,19 @@
     },
     {
       "source": "wiki/methods/in-hand-reorientation.md",
-      "target": "wiki/entities/allegro-hand.md"
-    },
-    {
-      "source": "wiki/methods/in-hand-reorientation.md",
       "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
-      "source": "wiki/methods/lcp.md",
-      "target": "wiki/entities/protomotions.md"
+      "source": "wiki/methods/in-hand-reorientation.md",
+      "target": "wiki/entities/allegro-hand.md"
     },
     {
       "source": "wiki/methods/lcp.md",
       "target": "wiki/entities/mimickit.md"
+    },
+    {
+      "source": "wiki/methods/lcp.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/methods/lcp.md",
@@ -4315,7 +4315,11 @@
     },
     {
       "source": "wiki/methods/lcp.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/lingbot-map.md",
+      "target": "wiki/methods/unified-multimodal-tokens.md"
     },
     {
       "source": "wiki/methods/lingbot-map.md",
@@ -4327,15 +4331,31 @@
     },
     {
       "source": "wiki/methods/lingbot-map.md",
-      "target": "wiki/methods/unified-multimodal-tokens.md"
-    },
-    {
-      "source": "wiki/methods/lingbot-map.md",
       "target": "wiki/concepts/state-estimation.md"
     },
     {
       "source": "wiki/methods/lingbot-map.md",
       "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/entities/drake.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/entities/crocoddyl.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/lqr-ilqr.md",
+      "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/methods/lqr-ilqr.md",
@@ -4350,26 +4370,6 @@
       "target": "wiki/formalizations/hjb.md"
     },
     {
-      "source": "wiki/methods/lqr-ilqr.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/methods/lqr-ilqr.md",
-      "target": "wiki/concepts/optimal-control.md"
-    },
-    {
-      "source": "wiki/methods/lqr-ilqr.md",
-      "target": "wiki/entities/crocoddyl.md"
-    },
-    {
-      "source": "wiki/methods/lqr-ilqr.md",
-      "target": "wiki/formalizations/bellman-equation.md"
-    },
-    {
-      "source": "wiki/methods/lqr-ilqr.md",
-      "target": "wiki/entities/drake.md"
-    },
-    {
       "source": "wiki/methods/marl.md",
       "target": "wiki/concepts/whole-body-coordination.md"
     },
@@ -4379,19 +4379,19 @@
     },
     {
       "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/methods/model-based-rl.md",
       "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/model-based-rl.md",
-      "target": "wiki/methods/trajectory-optimization.md"
+      "target": "wiki/comparisons/model-based-vs-model-free.md"
     },
     {
       "source": "wiki/methods/model-based-rl.md",
       "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/model-based-rl.md",
-      "target": "wiki/comparisons/model-based-vs-model-free.md"
     },
     {
       "source": "wiki/methods/model-based-rl.md",
@@ -4407,23 +4407,11 @@
     },
     {
       "source": "wiki/methods/model-based-rl.md",
+      "target": "wiki/methods/trajectory-optimization.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/methods/model-predictive-control.md",
-      "target": "wiki/methods/lqr-ilqr.md"
-    },
-    {
-      "source": "wiki/methods/model-predictive-control.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/methods/model-predictive-control.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/methods/model-predictive-control.md",
-      "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/methods/model-predictive-control.md",
@@ -4431,11 +4419,23 @@
     },
     {
       "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/methods/lqr-ilqr.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
       "target": "wiki/queries/mpc-tuning-guide.md"
     },
     {
       "source": "wiki/methods/model-predictive-control.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/model-predictive-control.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/methods/motion-retargeting-gmr.md",
@@ -4447,6 +4447,10 @@
     },
     {
       "source": "wiki/methods/mppi.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/methods/mppi.md",
       "target": "wiki/formalizations/variational-objective.md"
     },
     {
@@ -4454,24 +4458,8 @@
       "target": "wiki/methods/model-based-rl.md"
     },
     {
-      "source": "wiki/methods/mppi.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
       "source": "wiki/methods/paid-framework.md",
-      "target": "wiki/entities/unitree-g1.md"
-    },
-    {
-      "source": "wiki/methods/paid-framework.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/paid-framework.md",
-      "target": "wiki/formalizations/behavior-cloning-loss.md"
-    },
-    {
-      "source": "wiki/methods/paid-framework.md",
-      "target": "wiki/tasks/humanoid-soccer.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/methods/paid-framework.md",
@@ -4479,6 +4467,26 @@
     },
     {
       "source": "wiki/methods/paid-framework.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/paid-framework.md",
+      "target": "wiki/tasks/humanoid-soccer.md"
+    },
+    {
+      "source": "wiki/methods/paid-framework.md",
+      "target": "wiki/formalizations/behavior-cloning-loss.md"
+    },
+    {
+      "source": "wiki/methods/paid-framework.md",
+      "target": "wiki/entities/unitree-g1.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/formalizations/gae.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
@@ -4487,15 +4495,15 @@
     },
     {
       "source": "wiki/methods/policy-optimization.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/policy-optimization.md",
       "target": "wiki/formalizations/mdp.md"
     },
     {
       "source": "wiki/methods/policy-optimization.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/policy-optimization.md",
+      "target": "wiki/formalizations/bellman-equation.md"
     },
     {
       "source": "wiki/methods/policy-optimization.md",
@@ -4507,79 +4515,7 @@
     },
     {
       "source": "wiki/methods/policy-optimization.md",
-      "target": "wiki/formalizations/bellman-equation.md"
-    },
-    {
-      "source": "wiki/methods/policy-optimization.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/methods/policy-optimization.md",
-      "target": "wiki/formalizations/gae.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/deepmimic.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/comparisons/rl-vs-il.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/queries/humanoid-rl-cookbook.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/ase.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/safe-rl.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
       "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/gae.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/her.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/overview/robot-learning-overview.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/formalizations/mdp.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/marl.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/smp.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/amp-reward.md"
-    },
-    {
-      "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
@@ -4587,11 +4523,27 @@
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/methods/model-based-rl.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/concepts/curriculum-learning.md"
+      "target": "wiki/methods/deepmimic.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/formalizations/bellman-equation.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/gae.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
@@ -4599,11 +4551,59 @@
     },
     {
       "source": "wiki/methods/reinforcement-learning.md",
-      "target": "wiki/formalizations/bellman-equation.md"
+      "target": "wiki/methods/safe-rl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/ase.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/overview/robot-learning-overview.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/marl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/comparisons/rl-vs-il.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/smp.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/formalizations/mdp.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/model-based-rl.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/her.md"
+    },
+    {
+      "source": "wiki/methods/reinforcement-learning.md",
+      "target": "wiki/methods/amp-reward.md"
     },
     {
       "source": "wiki/methods/safe-rl.md",
-      "target": "wiki/formalizations/cmdp.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/methods/safe-rl.md",
@@ -4615,19 +4615,23 @@
     },
     {
       "source": "wiki/methods/safe-rl.md",
-      "target": "wiki/concepts/safety-filter.md"
+      "target": "wiki/formalizations/cmdp.md"
     },
     {
       "source": "wiki/methods/safe-rl.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/concepts/safety-filter.md"
     },
     {
       "source": "wiki/methods/smp.md",
-      "target": "wiki/entities/protomotions.md"
+      "target": "wiki/entities/mimickit.md"
     },
     {
       "source": "wiki/methods/smp.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/methods/smp.md",
+      "target": "wiki/methods/ase.md"
     },
     {
       "source": "wiki/methods/smp.md",
@@ -4639,19 +4643,15 @@
     },
     {
       "source": "wiki/methods/smp.md",
-      "target": "wiki/formalizations/probability-flow.md"
-    },
-    {
-      "source": "wiki/methods/smp.md",
-      "target": "wiki/entities/mimickit.md"
-    },
-    {
-      "source": "wiki/methods/smp.md",
       "target": "wiki/methods/amp-reward.md"
     },
     {
       "source": "wiki/methods/smp.md",
-      "target": "wiki/methods/ase.md"
+      "target": "wiki/entities/protomotions.md"
+    },
+    {
+      "source": "wiki/methods/smp.md",
+      "target": "wiki/formalizations/probability-flow.md"
     },
     {
       "source": "wiki/methods/star-vla.md",
@@ -4659,27 +4659,19 @@
     },
     {
       "source": "wiki/methods/star-vla.md",
-      "target": "wiki/entities/nvidia-omniverse.md"
-    },
-    {
-      "source": "wiki/methods/star-vla.md",
       "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/methods/star-vla.md",
-      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/star-vla.md",
       "target": "wiki/methods/vla.md"
     },
     {
-      "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/formalizations/zmp-lip.md"
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/entities/nvidia-omniverse.md"
     },
     {
-      "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/comparisons/trajectory-opt-vs-rl.md"
+      "source": "wiki/methods/star-vla.md",
+      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
@@ -4687,7 +4679,7 @@
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/methods/model-predictive-control.md"
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
@@ -4695,7 +4687,15 @@
     },
     {
       "source": "wiki/methods/trajectory-optimization.md",
-      "target": "wiki/methods/model-predictive-control.md"
+      "target": "wiki/formalizations/zmp-lip.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/methods/trajectory-optimization.md",
+      "target": "wiki/comparisons/trajectory-opt-vs-rl.md"
     },
     {
       "source": "wiki/methods/unified-multimodal-tokens.md",
@@ -4727,11 +4727,23 @@
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/formalizations/vla-tokenization.md"
+      "target": "wiki/methods/action-chunking.md"
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/queries/vla-deployment-guide.md"
+      "target": "wiki/methods/unified-multimodal-tokens.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/lingbot-map.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/formalizations/foundation-policy-alignment.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -4739,15 +4751,23 @@
     },
     {
       "source": "wiki/methods/vla.md",
+      "target": "wiki/formalizations/vla-tokenization.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/queries/vla-with-low-level-controller.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
+      "target": "wiki/concepts/safety-filter.md"
+    },
+    {
+      "source": "wiki/methods/vla.md",
       "target": "wiki/methods/auto-labeling-pipelines.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/concepts/foundation-policy.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -4759,15 +4779,7 @@
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/methods/unified-multimodal-tokens.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/concepts/embodied-scaling-laws.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/queries/vla-with-low-level-controller.md"
+      "target": "wiki/queries/vla-deployment-guide.md"
     },
     {
       "source": "wiki/methods/vla.md",
@@ -4775,27 +4787,15 @@
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/methods/behavior-cloning.md"
+      "target": "wiki/concepts/embodied-scaling-laws.md"
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/tasks/loco-manipulation.md"
+      "target": "wiki/formalizations/cross-modal-attention.md"
     },
     {
       "source": "wiki/methods/vla.md",
-      "target": "wiki/methods/action-chunking.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/concepts/safety-filter.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/methods/lingbot-map.md"
-    },
-    {
-      "source": "wiki/methods/vla.md",
-      "target": "wiki/formalizations/foundation-policy-alignment.md"
+      "target": "wiki/concepts/foundation-policy.md"
     },
     {
       "source": "wiki/methods/π0-policy.md",
@@ -4811,107 +4811,23 @@
     },
     {
       "source": "wiki/methods/π0-policy.md",
-      "target": "wiki/formalizations/probability-flow.md"
+      "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/methods/π0-policy.md",
-      "target": "wiki/methods/vla.md"
+      "target": "wiki/formalizations/probability-flow.md"
     },
     {
       "source": "wiki/overview/humanoid-motion-control-know-how.md",
       "target": "wiki/queries/sim2real-deployment-checklist.md"
-    },
-    {
-      "source": "wiki/overview/humanoid-motion-control-know-how.md",
-      "target": "wiki/queries/field-robotics-troubleshooting.md"
     },
     {
       "source": "wiki/overview/humanoid-motion-control-know-how.md",
       "target": "wiki/queries/humanoid-battery-thermal-management.md"
     },
     {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/control-barrier-function.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/queries/robot-policy-debug-playbook.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/queries/humanoid-motion-control-know-how.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/methods/vla.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/sensor-fusion.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/impedance-control.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/domain-randomization.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/references/llm-wiki-karpathy.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/queries/clf-cbf-in-wbc.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/queries/sim2real-deployment-checklist.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/tasks/bimanual-manipulation.md"
-    },
-    {
-      "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/system-identification.md"
+      "source": "wiki/overview/humanoid-motion-control-know-how.md",
+      "target": "wiki/queries/field-robotics-troubleshooting.md"
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
@@ -4919,11 +4835,23 @@
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/concepts/terrain-adaptation.md"
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
-      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+      "target": "wiki/queries/robot-policy-debug-playbook.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/sensor-fusion.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
@@ -4931,7 +4859,83 @@
     },
     {
       "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/queries/humanoid-motion-control-know-how.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/queries/sim2real-deployment-checklist.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/control-barrier-function.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/impedance-control.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/queries/clf-cbf-in-wbc.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/references/llm-wiki-karpathy.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/terrain-adaptation.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/overview/robot-learning-overview.md",
+      "target": "wiki/tasks/bimanual-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/clf-cbf-in-wbc.md",
+      "target": "wiki/formalizations/control-lyapunov-function.md"
     },
     {
       "source": "wiki/queries/clf-cbf-in-wbc.md",
@@ -4939,23 +4943,11 @@
     },
     {
       "source": "wiki/queries/clf-cbf-in-wbc.md",
-      "target": "wiki/comparisons/clf-vs-cbf.md"
-    },
-    {
-      "source": "wiki/queries/clf-cbf-in-wbc.md",
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/queries/clf-cbf-in-wbc.md",
-      "target": "wiki/formalizations/control-lyapunov-function.md"
-    },
-    {
-      "source": "wiki/queries/contact-rich-manipulation-guide.md",
-      "target": "wiki/tasks/bimanual-manipulation.md"
-    },
-    {
-      "source": "wiki/queries/contact-rich-manipulation-guide.md",
-      "target": "wiki/concepts/hybrid-force-position-control.md"
+      "target": "wiki/comparisons/clf-vs-cbf.md"
     },
     {
       "source": "wiki/queries/contact-rich-manipulation-guide.md",
@@ -4963,23 +4955,19 @@
     },
     {
       "source": "wiki/queries/contact-rich-manipulation-guide.md",
-      "target": "wiki/tasks/manipulation.md"
+      "target": "wiki/concepts/hybrid-force-position-control.md"
     },
     {
       "source": "wiki/queries/contact-rich-manipulation-guide.md",
       "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
-      "source": "wiki/queries/control-architecture-comparison.md",
-      "target": "wiki/concepts/tsid.md"
+      "source": "wiki/queries/contact-rich-manipulation-guide.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
-      "source": "wiki/queries/control-architecture-comparison.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/queries/control-architecture-comparison.md",
-      "target": "wiki/concepts/mpc-wbc-integration.md"
+      "source": "wiki/queries/contact-rich-manipulation-guide.md",
+      "target": "wiki/tasks/bimanual-manipulation.md"
     },
     {
       "source": "wiki/queries/control-architecture-comparison.md",
@@ -4987,7 +4975,19 @@
     },
     {
       "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
       "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/queries/control-architecture-comparison.md",
+      "target": "wiki/methods/diffusion-policy.md"
     },
     {
       "source": "wiki/queries/control-architecture-comparison.md",
@@ -4995,19 +4995,7 @@
     },
     {
       "source": "wiki/queries/control-architecture-comparison.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/queries/demo-data-collection-guide.md",
-      "target": "wiki/tasks/bimanual-manipulation.md"
-    },
-    {
-      "source": "wiki/queries/demo-data-collection-guide.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/queries/demo-data-collection-guide.md",
-      "target": "wiki/entities/oculust-quest-teleop.md"
+      "target": "wiki/concepts/mpc-wbc-integration.md"
     },
     {
       "source": "wiki/queries/demo-data-collection-guide.md",
@@ -5015,11 +5003,23 @@
     },
     {
       "source": "wiki/queries/demo-data-collection-guide.md",
-      "target": "wiki/methods/generative-data-augmentation.md"
+      "target": "wiki/entities/oculust-quest-teleop.md"
+    },
+    {
+      "source": "wiki/queries/demo-data-collection-guide.md",
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/queries/demo-data-collection-guide.md",
       "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/queries/demo-data-collection-guide.md",
+      "target": "wiki/methods/generative-data-augmentation.md"
+    },
+    {
+      "source": "wiki/queries/demo-data-collection-guide.md",
+      "target": "wiki/tasks/bimanual-manipulation.md"
     },
     {
       "source": "wiki/queries/demo-data-collection-guide.md",
@@ -5035,7 +5035,7 @@
     },
     {
       "source": "wiki/queries/dexterous-data-collection-guide.md",
-      "target": "wiki/queries/multimodal-fusion-tricks.md"
+      "target": "wiki/entities/allegro-hand.md"
     },
     {
       "source": "wiki/queries/dexterous-data-collection-guide.md",
@@ -5043,7 +5043,7 @@
     },
     {
       "source": "wiki/queries/dexterous-data-collection-guide.md",
-      "target": "wiki/entities/allegro-hand.md"
+      "target": "wiki/queries/multimodal-fusion-tricks.md"
     },
     {
       "source": "wiki/queries/domain-randomization-guide.md",
@@ -5059,11 +5059,11 @@
     },
     {
       "source": "wiki/queries/ethercat-master-optimization.md",
-      "target": "wiki/overview/humanoid-motion-control-know-how.md"
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/queries/ethercat-master-optimization.md",
-      "target": "wiki/queries/vla-deployment-guide.md"
+      "target": "wiki/overview/humanoid-motion-control-know-how.md"
     },
     {
       "source": "wiki/queries/ethercat-master-optimization.md",
@@ -5075,19 +5075,7 @@
     },
     {
       "source": "wiki/queries/ethercat-master-optimization.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
-    },
-    {
-      "source": "wiki/queries/field-robotics-troubleshooting.md",
-      "target": "wiki/overview/humanoid-motion-control-know-how.md"
-    },
-    {
-      "source": "wiki/queries/field-robotics-troubleshooting.md",
-      "target": "wiki/concepts/system-identification.md"
-    },
-    {
-      "source": "wiki/queries/field-robotics-troubleshooting.md",
-      "target": "wiki/concepts/contact-estimation.md"
+      "target": "wiki/queries/vla-deployment-guide.md"
     },
     {
       "source": "wiki/queries/field-robotics-troubleshooting.md",
@@ -5095,7 +5083,15 @@
     },
     {
       "source": "wiki/queries/field-robotics-troubleshooting.md",
-      "target": "wiki/queries/domain-randomization-guide.md"
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
+      "source": "wiki/queries/field-robotics-troubleshooting.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/queries/field-robotics-troubleshooting.md",
+      "target": "wiki/overview/humanoid-motion-control-know-how.md"
     },
     {
       "source": "wiki/queries/field-robotics-troubleshooting.md",
@@ -5103,19 +5099,11 @@
     },
     {
       "source": "wiki/queries/field-robotics-troubleshooting.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
+      "target": "wiki/concepts/contact-estimation.md"
     },
     {
-      "source": "wiki/queries/foundation-policy-for-humanoids.md",
-      "target": "wiki/concepts/foundation-policy.md"
-    },
-    {
-      "source": "wiki/queries/foundation-policy-for-humanoids.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/queries/foundation-policy-for-humanoids.md",
-      "target": "wiki/tasks/locomotion.md"
+      "source": "wiki/queries/field-robotics-troubleshooting.md",
+      "target": "wiki/queries/domain-randomization-guide.md"
     },
     {
       "source": "wiki/queries/foundation-policy-for-humanoids.md",
@@ -5123,7 +5111,23 @@
     },
     {
       "source": "wiki/queries/foundation-policy-for-humanoids.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/queries/foundation-policy-for-humanoids.md",
       "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/queries/foundation-policy-for-humanoids.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/foundation-policy-for-humanoids.md",
+      "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/queries/hardware-abstraction-layer.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
     },
     {
       "source": "wiki/queries/hardware-abstraction-layer.md",
@@ -5134,18 +5138,6 @@
       "target": "wiki/queries/ethercat-master-optimization.md"
     },
     {
-      "source": "wiki/queries/hardware-abstraction-layer.md",
-      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
-    },
-    {
-      "source": "wiki/queries/hardware-comparison.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/queries/hardware-comparison.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
       "source": "wiki/queries/hardware-comparison.md",
       "target": "wiki/entities/humanoid-robot.md"
     },
@@ -5154,12 +5146,20 @@
       "target": "wiki/comparisons/wbc-vs-rl.md"
     },
     {
-      "source": "wiki/queries/humanoid-battery-thermal-management.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
+      "source": "wiki/queries/hardware-comparison.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/hardware-comparison.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/humanoid-battery-thermal-management.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-battery-thermal-management.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/queries/humanoid-battery-thermal-management.md",
@@ -5167,19 +5167,15 @@
     },
     {
       "source": "wiki/queries/humanoid-battery-thermal-management.md",
-      "target": "wiki/entities/humanoid-robot.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-hardware-selection.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-hardware-selection.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/humanoid-hardware-selection.md",
       "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/queries/humanoid-hardware-selection.md",
@@ -5190,16 +5186,8 @@
       "target": "wiki/entities/legged-gym.md"
     },
     {
-      "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/mpc-wbc-integration.md"
+      "source": "wiki/queries/humanoid-hardware-selection.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
@@ -5207,11 +5195,11 @@
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/floating-base-dynamics.md"
+      "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/lip-zmp.md"
+      "target": "wiki/queries/control-architecture-comparison.md"
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
@@ -5219,7 +5207,23 @@
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/lip-zmp.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
       "target": "wiki/concepts/optimal-control.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/mpc-wbc-integration.md"
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
@@ -5227,15 +5231,19 @@
     },
     {
       "source": "wiki/queries/humanoid-motion-control-know-how.md",
+      "target": "wiki/concepts/floating-base-dynamics.md"
+    },
+    {
+      "source": "wiki/queries/humanoid-motion-control-know-how.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/concepts/state-estimation.md"
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/formalizations/gae.md"
     },
     {
-      "source": "wiki/queries/humanoid-motion-control-know-how.md",
-      "target": "wiki/queries/control-architecture-comparison.md"
+      "source": "wiki/queries/humanoid-rl-cookbook.md",
+      "target": "wiki/queries/sim2real-checklist.md"
     },
     {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
@@ -5243,7 +5251,7 @@
     },
     {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
-      "target": "wiki/queries/sim2real-checklist.md"
+      "target": "wiki/formalizations/bellman-equation.md"
     },
     {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
@@ -5255,27 +5263,15 @@
     },
     {
       "source": "wiki/queries/humanoid-rl-cookbook.md",
-      "target": "wiki/formalizations/gae.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-rl-cookbook.md",
-      "target": "wiki/formalizations/bellman-equation.md"
-    },
-    {
-      "source": "wiki/queries/humanoid-rl-cookbook.md",
       "target": "wiki/queries/locomotion-reward-design-guide.md"
     },
     {
       "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
       "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/queries/il-for-manipulation.md",
-      "target": "wiki/methods/dagger.md"
-    },
-    {
-      "source": "wiki/queries/il-for-manipulation.md",
-      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/queries/il-for-manipulation.md",
@@ -5287,7 +5283,11 @@
     },
     {
       "source": "wiki/queries/il-for-manipulation.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/queries/il-for-manipulation.md",
+      "target": "wiki/methods/dagger.md"
     },
     {
       "source": "wiki/queries/locomotion-failure-modes.md",
@@ -5295,7 +5295,7 @@
     },
     {
       "source": "wiki/queries/locomotion-failure-modes.md",
-      "target": "wiki/concepts/sim2real.md"
+      "target": "wiki/entities/legged-gym.md"
     },
     {
       "source": "wiki/queries/locomotion-failure-modes.md",
@@ -5303,11 +5303,19 @@
     },
     {
       "source": "wiki/queries/locomotion-failure-modes.md",
-      "target": "wiki/entities/legged-gym.md"
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/queries/locomotion-reward-design-guide.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/locomotion-reward-design-guide.md",
+      "target": "wiki/concepts/reward-design.md"
     },
     {
       "source": "wiki/queries/locomotion-reward-design-guide.md",
@@ -5322,24 +5330,12 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/locomotion-reward-design-guide.md",
-      "target": "wiki/concepts/reward-design.md"
-    },
-    {
-      "source": "wiki/queries/locomotion-reward-design-guide.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/queries/mpc-solver-selection.md",
-      "target": "wiki/concepts/tsid.md"
-    },
-    {
       "source": "wiki/queries/mpc-solver-selection.md",
       "target": "wiki/comparisons/wbc-vs-rl.md"
     },
     {
       "source": "wiki/queries/mpc-solver-selection.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/queries/mpc-solver-selection.md",
@@ -5350,8 +5346,12 @@
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
+      "source": "wiki/queries/mpc-solver-selection.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
       "source": "wiki/queries/mpc-tuning-guide.md",
-      "target": "wiki/concepts/optimal-control.md"
+      "target": "wiki/methods/trajectory-optimization.md"
     },
     {
       "source": "wiki/queries/mpc-tuning-guide.md",
@@ -5359,15 +5359,7 @@
     },
     {
       "source": "wiki/queries/mpc-tuning-guide.md",
-      "target": "wiki/methods/trajectory-optimization.md"
-    },
-    {
-      "source": "wiki/queries/multimodal-fusion-tricks.md",
-      "target": "wiki/queries/dexterous-data-collection-guide.md"
-    },
-    {
-      "source": "wiki/queries/multimodal-fusion-tricks.md",
-      "target": "wiki/formalizations/cross-modal-attention.md"
+      "target": "wiki/concepts/optimal-control.md"
     },
     {
       "source": "wiki/queries/multimodal-fusion-tricks.md",
@@ -5379,11 +5371,19 @@
     },
     {
       "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/queries/dexterous-data-collection-guide.md"
+    },
+    {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
       "target": "wiki/methods/vla.md"
     },
     {
+      "source": "wiki/queries/multimodal-fusion-tricks.md",
+      "target": "wiki/formalizations/cross-modal-attention.md"
+    },
+    {
       "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/concepts/contact-estimation.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
@@ -5391,7 +5391,7 @@
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/concepts/system-identification.md"
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
@@ -5399,7 +5399,19 @@
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
+      "target": "wiki/concepts/system-identification.md"
+    },
+    {
+      "source": "wiki/queries/open-source-motion-control-projects.md",
+      "target": "wiki/concepts/state-estimation.md"
+    },
+    {
+      "source": "wiki/queries/open-source-motion-control-projects.md",
       "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/queries/open-source-motion-control-projects.md",
+      "target": "wiki/concepts/contact-estimation.md"
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
@@ -5411,27 +5423,15 @@
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/tasks/loco-manipulation.md"
-    },
-    {
-      "source": "wiki/queries/open-source-motion-control-projects.md",
       "target": "wiki/concepts/reward-design.md"
     },
     {
       "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/concepts/state-estimation.md"
-    },
-    {
-      "source": "wiki/queries/open-source-motion-control-projects.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/pinocchio-quick-start.md",
-      "target": "wiki/concepts/tsid.md"
+      "target": "wiki/queries/wbc-implementation-guide.md"
     },
     {
       "source": "wiki/queries/pinocchio-quick-start.md",
@@ -5443,23 +5443,11 @@
     },
     {
       "source": "wiki/queries/pinocchio-quick-start.md",
-      "target": "wiki/queries/wbc-implementation-guide.md"
+      "target": "wiki/concepts/tsid.md"
     },
     {
       "source": "wiki/queries/ppo-vs-sac-for-robots.md",
-      "target": "wiki/queries/rl-algorithm-selection.md"
-    },
-    {
-      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
-      "target": "wiki/comparisons/ppo-vs-sac.md"
-    },
-    {
-      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "target": "wiki/formalizations/gae.md"
     },
     {
       "source": "wiki/queries/ppo-vs-sac-for-robots.md",
@@ -5467,7 +5455,19 @@
     },
     {
       "source": "wiki/queries/ppo-vs-sac-for-robots.md",
-      "target": "wiki/formalizations/gae.md"
+      "target": "wiki/methods/policy-optimization.md"
+    },
+    {
+      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
+      "target": "wiki/queries/rl-algorithm-selection.md"
+    },
+    {
+      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
+      "target": "wiki/comparisons/ppo-vs-sac.md"
+    },
+    {
+      "source": "wiki/queries/ppo-vs-sac-for-robots.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/real-time-control-middleware-guide.md",
@@ -5483,6 +5483,10 @@
     },
     {
       "source": "wiki/queries/reward-design-guide.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/reward-design-guide.md",
       "target": "wiki/concepts/curriculum-learning.md"
     },
     {
@@ -5495,15 +5499,7 @@
     },
     {
       "source": "wiki/queries/reward-design-guide.md",
-      "target": "wiki/concepts/reward-design.md"
-    },
-    {
-      "source": "wiki/queries/reward-design-guide.md",
       "target": "wiki/queries/locomotion-reward-design-guide.md"
-    },
-    {
-      "source": "wiki/queries/reward-shaping-guide.md",
-      "target": "wiki/entities/legged-gym.md"
     },
     {
       "source": "wiki/queries/reward-shaping-guide.md",
@@ -5511,7 +5507,7 @@
     },
     {
       "source": "wiki/queries/reward-shaping-guide.md",
-      "target": "wiki/concepts/reward-design.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/queries/reward-shaping-guide.md",
@@ -5519,6 +5515,14 @@
     },
     {
       "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/reward-shaping-guide.md",
+      "target": "wiki/entities/legged-gym.md"
+    },
+    {
+      "source": "wiki/queries/rl-algorithm-selection.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
@@ -5527,7 +5531,7 @@
     },
     {
       "source": "wiki/queries/rl-algorithm-selection.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/policy-optimization.md"
     },
     {
       "source": "wiki/queries/rl-algorithm-selection.md",
@@ -5535,27 +5539,15 @@
     },
     {
       "source": "wiki/queries/rl-algorithm-selection.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/rl-algorithm-selection.md",
-      "target": "wiki/methods/policy-optimization.md"
+      "source": "wiki/queries/rl-hyperparameter-guide.md",
+      "target": "wiki/formalizations/gae.md"
     },
     {
       "source": "wiki/queries/rl-hyperparameter-guide.md",
       "target": "wiki/formalizations/mdp.md"
-    },
-    {
-      "source": "wiki/queries/rl-hyperparameter-guide.md",
-      "target": "wiki/concepts/curriculum-learning.md"
-    },
-    {
-      "source": "wiki/queries/rl-hyperparameter-guide.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/queries/rl-hyperparameter-guide.md",
-      "target": "wiki/concepts/reward-design.md"
     },
     {
       "source": "wiki/queries/rl-hyperparameter-guide.md",
@@ -5567,7 +5559,23 @@
     },
     {
       "source": "wiki/queries/rl-hyperparameter-guide.md",
-      "target": "wiki/formalizations/gae.md"
+      "target": "wiki/concepts/reward-design.md"
+    },
+    {
+      "source": "wiki/queries/rl-hyperparameter-guide.md",
+      "target": "wiki/concepts/curriculum-learning.md"
+    },
+    {
+      "source": "wiki/queries/rl-hyperparameter-guide.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/queries/robot-policy-debug-playbook.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/robot-policy-debug-playbook.md",
+      "target": "wiki/concepts/domain-randomization.md"
     },
     {
       "source": "wiki/queries/robot-policy-debug-playbook.md",
@@ -5579,14 +5587,14 @@
     },
     {
       "source": "wiki/queries/robot-policy-debug-playbook.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/queries/robot-policy-debug-playbook.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/robot-policy-debug-playbook.md",
+      "source": "wiki/queries/sim2real-checklist.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/queries/sim2real-checklist.md",
       "target": "wiki/concepts/domain-randomization.md"
     },
     {
@@ -5599,10 +5607,6 @@
     },
     {
       "source": "wiki/queries/sim2real-checklist.md",
-      "target": "wiki/concepts/sim2real.md"
-    },
-    {
-      "source": "wiki/queries/sim2real-checklist.md",
       "target": "wiki/tasks/balance-recovery.md"
     },
     {
@@ -5610,16 +5614,12 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/sim2real-checklist.md",
-      "target": "wiki/concepts/domain-randomization.md"
-    },
-    {
       "source": "wiki/queries/sim2real-deployment-checklist.md",
       "target": "wiki/concepts/sim2real.md"
     },
     {
       "source": "wiki/queries/sim2real-deployment-checklist.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/concepts/domain-randomization.md"
     },
     {
       "source": "wiki/queries/sim2real-deployment-checklist.md",
@@ -5627,11 +5627,11 @@
     },
     {
       "source": "wiki/queries/sim2real-deployment-checklist.md",
-      "target": "wiki/concepts/domain-randomization.md"
+      "target": "wiki/comparisons/sim2real-approaches.md"
     },
     {
       "source": "wiki/queries/sim2real-deployment-checklist.md",
-      "target": "wiki/comparisons/sim2real-approaches.md"
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/queries/sim2real-gap-reduction.md",
@@ -5651,7 +5651,11 @@
     },
     {
       "source": "wiki/queries/simulator-selection-guide.md",
-      "target": "wiki/entities/humanoid-robot.md"
+      "target": "wiki/entities/mujoco.md"
+    },
+    {
+      "source": "wiki/queries/simulator-selection-guide.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/queries/simulator-selection-guide.md",
@@ -5659,7 +5663,11 @@
     },
     {
       "source": "wiki/queries/simulator-selection-guide.md",
-      "target": "wiki/entities/mujoco.md"
+      "target": "wiki/entities/humanoid-robot.md"
+    },
+    {
+      "source": "wiki/queries/simulator-selection-guide.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
     },
     {
       "source": "wiki/queries/simulator-selection-guide.md",
@@ -5670,12 +5678,8 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
-      "source": "wiki/queries/simulator-selection-guide.md",
-      "target": "wiki/entities/isaac-gym-isaac-lab.md"
-    },
-    {
-      "source": "wiki/queries/simulator-selection-guide.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "source": "wiki/queries/tactile-feedback-in-rl.md",
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
@@ -5683,7 +5687,7 @@
     },
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
-      "target": "wiki/tasks/manipulation.md"
+      "target": "wiki/concepts/tactile-sensing.md"
     },
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
@@ -5691,11 +5695,11 @@
     },
     {
       "source": "wiki/queries/tactile-feedback-in-rl.md",
-      "target": "wiki/concepts/tactile-sensing.md"
+      "target": "wiki/concepts/contact-rich-manipulation.md"
     },
     {
-      "source": "wiki/queries/tactile-feedback-in-rl.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
+      "source": "wiki/queries/vla-deployment-guide.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
@@ -5707,19 +5711,15 @@
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/queries/vla-deployment-guide.md",
       "target": "wiki/comparisons/ros2-vs-lcm.md"
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
-      "target": "wiki/methods/action-chunking.md"
+      "target": "wiki/concepts/safety-filter.md"
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
-      "target": "wiki/queries/real-time-control-middleware-guide.md"
+      "target": "wiki/tasks/manipulation.md"
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
@@ -5727,11 +5727,7 @@
     },
     {
       "source": "wiki/queries/vla-deployment-guide.md",
-      "target": "wiki/concepts/safety-filter.md"
-    },
-    {
-      "source": "wiki/queries/vla-with-low-level-controller.md",
-      "target": "wiki/queries/vla-deployment-guide.md"
+      "target": "wiki/methods/action-chunking.md"
     },
     {
       "source": "wiki/queries/vla-with-low-level-controller.md",
@@ -5739,11 +5735,7 @@
     },
     {
       "source": "wiki/queries/vla-with-low-level-controller.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/queries/vla-with-low-level-controller.md",
-      "target": "wiki/methods/vla.md"
+      "target": "wiki/queries/clf-cbf-in-wbc.md"
     },
     {
       "source": "wiki/queries/vla-with-low-level-controller.md",
@@ -5751,11 +5743,15 @@
     },
     {
       "source": "wiki/queries/vla-with-low-level-controller.md",
-      "target": "wiki/queries/clf-cbf-in-wbc.md"
+      "target": "wiki/queries/vla-deployment-guide.md"
     },
     {
-      "source": "wiki/queries/wbc-implementation-guide.md",
-      "target": "wiki/concepts/tsid.md"
+      "source": "wiki/queries/vla-with-low-level-controller.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/queries/vla-with-low-level-controller.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/queries/wbc-implementation-guide.md",
@@ -5763,7 +5759,15 @@
     },
     {
       "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/tsid.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
       "target": "wiki/concepts/contact-estimation.md"
+    },
+    {
+      "source": "wiki/queries/wbc-implementation-guide.md",
+      "target": "wiki/concepts/centroidal-dynamics.md"
     },
     {
       "source": "wiki/queries/wbc-implementation-guide.md",
@@ -5774,8 +5778,12 @@
       "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/queries/wbc-implementation-guide.md",
-      "target": "wiki/concepts/centroidal-dynamics.md"
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/queries/wbc-implementation-guide.md"
+    },
+    {
+      "source": "wiki/queries/wbc-tuning-guide.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/queries/wbc-tuning-guide.md",
@@ -5783,27 +5791,11 @@
     },
     {
       "source": "wiki/queries/wbc-tuning-guide.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/queries/wbc-tuning-guide.md",
       "target": "wiki/formalizations/friction-cone.md"
-    },
-    {
-      "source": "wiki/queries/wbc-tuning-guide.md",
-      "target": "wiki/queries/wbc-implementation-guide.md"
     },
     {
       "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
       "target": "wiki/comparisons/wbc-vs-rl.md"
-    },
-    {
-      "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
-      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
@@ -5814,8 +5806,16 @@
       "target": "wiki/methods/policy-optimization.md"
     },
     {
+      "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/queries/when-to-use-wbc-vs-rl.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
       "source": "wiki/references/llm-wiki-karpathy.md",
-      "target": "wiki/concepts/foundation-policy.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/references/llm-wiki-karpathy.md",
@@ -5823,6 +5823,10 @@
     },
     {
       "source": "wiki/references/llm-wiki-karpathy.md",
+      "target": "wiki/concepts/foundation-policy.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
@@ -5831,15 +5835,11 @@
     },
     {
       "source": "wiki/roadmaps/humanoid-control-roadmap.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
       "target": "wiki/entities/open-source-humanoid-hardware.md"
     },
     {
       "source": "wiki/roadmaps/humanoid-control-roadmap.md",
-      "target": "wiki/tasks/locomotion.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/roadmaps/humanoid-control-roadmap.md",
@@ -5847,6 +5847,10 @@
     },
     {
       "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/balance-recovery.md",
       "target": "wiki/methods/reinforcement-learning.md"
     },
     {
@@ -5855,31 +5859,19 @@
     },
     {
       "source": "wiki/tasks/balance-recovery.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/balance-recovery.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/tasks/balance-recovery.md",
       "target": "wiki/concepts/capture-point-dcm.md"
-    },
-    {
-      "source": "wiki/tasks/balance-recovery.md",
-      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/tasks/balance-recovery.md",
       "target": "wiki/methods/model-predictive-control.md"
     },
     {
-      "source": "wiki/tasks/bimanual-manipulation.md",
-      "target": "wiki/tasks/manipulation.md"
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
-      "source": "wiki/tasks/bimanual-manipulation.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "source": "wiki/tasks/balance-recovery.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/tasks/bimanual-manipulation.md",
@@ -5895,19 +5887,23 @@
     },
     {
       "source": "wiki/tasks/bimanual-manipulation.md",
-      "target": "wiki/methods/action-chunking.md"
+      "target": "wiki/queries/contact-rich-manipulation-guide.md"
     },
     {
       "source": "wiki/tasks/bimanual-manipulation.md",
-      "target": "wiki/queries/contact-rich-manipulation-guide.md"
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/bimanual-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/tasks/bimanual-manipulation.md",
       "target": "wiki/tasks/teleoperation.md"
     },
     {
-      "source": "wiki/tasks/humanoid-locomotion.md",
-      "target": "wiki/tasks/locomotion.md"
+      "source": "wiki/tasks/bimanual-manipulation.md",
+      "target": "wiki/methods/action-chunking.md"
     },
     {
       "source": "wiki/tasks/humanoid-locomotion.md",
@@ -5926,16 +5922,12 @@
       "target": "wiki/methods/policy-optimization.md"
     },
     {
-      "source": "wiki/tasks/humanoid-soccer.md",
-      "target": "wiki/methods/htwk-gym.md"
+      "source": "wiki/tasks/humanoid-locomotion.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/tasks/humanoid-soccer.md",
-      "target": "wiki/entities/unitree-g1.md"
-    },
-    {
-      "source": "wiki/tasks/humanoid-soccer.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/tasks/humanoid-soccer.md",
@@ -5943,23 +5935,23 @@
     },
     {
       "source": "wiki/tasks/humanoid-soccer.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/humanoid-soccer.md",
       "target": "wiki/methods/paid-framework.md"
     },
     {
       "source": "wiki/tasks/humanoid-soccer.md",
-      "target": "wiki/methods/reinforcement-learning.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/tasks/manipulation.md"
+      "source": "wiki/tasks/humanoid-soccer.md",
+      "target": "wiki/entities/unitree-g1.md"
     },
     {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/whole-body-control.md"
+      "source": "wiki/tasks/humanoid-soccer.md",
+      "target": "wiki/methods/htwk-gym.md"
+    },
+    {
+      "source": "wiki/tasks/humanoid-soccer.md",
+      "target": "wiki/tasks/locomotion.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
@@ -5967,15 +5959,11 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
+      "target": "wiki/tasks/ultra-survey.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/tasks/humanoid-locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/methods/vla.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
@@ -5983,7 +5971,19 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
-      "target": "wiki/tasks/ultra-survey.md"
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
@@ -5991,63 +5991,7 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/tasks/balance-recovery.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/tasks/manipulation.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/queries/humanoid-motion-control-know-how.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/tasks/humanoid-locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/queries/humanoid-rl-cookbook.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/methods/model-predictive-control.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/tasks/loco-manipulation.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
       "target": "wiki/formalizations/lyapunov.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/entities/unitree.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/tasks/ultra-survey.md"
-    },
-    {
-      "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/concepts/terrain-adaptation.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -6055,7 +5999,15 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/open-source-motion-control-projects.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
       "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -6063,7 +6015,39 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/concepts/capture-point-dcm.md"
+      "target": "wiki/queries/humanoid-hardware-selection.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/balance-recovery.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/ultra-survey.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/when-to-use-wbc-vs-rl.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/humanoid-locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/methods/model-predictive-control.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/humanoid-rl-cookbook.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/queries/humanoid-motion-control-know-how.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -6071,11 +6055,31 @@
     },
     {
       "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/queries/humanoid-hardware-selection.md"
+      "target": "wiki/concepts/terrain-adaptation.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
-      "target": "wiki/queries/open-source-motion-control-projects.md"
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/concepts/capture-point-dcm.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/entities/unitree.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/queries/tactile-feedback-in-rl.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -6083,27 +6087,7 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/diffusion-policy.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/concepts/contact-rich-manipulation.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/vla.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/tasks/loco-manipulation.md"
+      "target": "wiki/methods/imitation-learning.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -6115,19 +6099,27 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/entities/allegro-hand.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/behavior-cloning.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
       "target": "wiki/tasks/teleoperation.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/reinforcement-learning.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/queries/tactile-feedback-in-rl.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/imitation-learning.md"
+      "target": "wiki/methods/in-hand-reorientation.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -6135,7 +6127,19 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/in-hand-reorientation.md"
+      "target": "wiki/concepts/contact-rich-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/reinforcement-learning.md"
+    },
+    {
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/tasks/manipulation.md",
@@ -6147,35 +6151,11 @@
     },
     {
       "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/dagger.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/methods/behavior-cloning.md"
-    },
-    {
-      "source": "wiki/tasks/manipulation.md",
-      "target": "wiki/entities/allegro-hand.md"
-    },
-    {
-      "source": "wiki/tasks/teleoperation.md",
-      "target": "wiki/concepts/motion-retargeting.md"
-    },
-    {
-      "source": "wiki/tasks/teleoperation.md",
-      "target": "wiki/queries/demo-data-collection-guide.md"
-    },
-    {
-      "source": "wiki/tasks/teleoperation.md",
       "target": "wiki/methods/diffusion-policy.md"
     },
     {
-      "source": "wiki/tasks/teleoperation.md",
-      "target": "wiki/methods/imitation-learning.md"
-    },
-    {
-      "source": "wiki/tasks/teleoperation.md",
-      "target": "wiki/tasks/manipulation.md"
+      "source": "wiki/tasks/manipulation.md",
+      "target": "wiki/methods/dagger.md"
     },
     {
       "source": "wiki/tasks/teleoperation.md",
@@ -6183,7 +6163,31 @@
     },
     {
       "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/concepts/motion-retargeting.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
       "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/queries/demo-data-collection-guide.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/tasks/teleoperation.md",
+      "target": "wiki/tasks/manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/methods/reinforcement-learning.md"
     },
     {
       "source": "wiki/tasks/ultra-survey.md",
@@ -6191,7 +6195,19 @@
     },
     {
       "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
       "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/tasks/ultra-survey.md",
+      "target": "wiki/concepts/whole-body-control.md"
     },
     {
       "source": "wiki/tasks/ultra-survey.md",
@@ -6200,22 +6216,6 @@
     {
       "source": "wiki/tasks/ultra-survey.md",
       "target": "wiki/tasks/locomotion.md"
-    },
-    {
-      "source": "wiki/tasks/ultra-survey.md",
-      "target": "wiki/concepts/whole-body-control.md"
-    },
-    {
-      "source": "wiki/tasks/ultra-survey.md",
-      "target": "wiki/tasks/loco-manipulation.md"
-    },
-    {
-      "source": "wiki/tasks/ultra-survey.md",
-      "target": "wiki/entities/isaac-gym-isaac-lab.md"
-    },
-    {
-      "source": "wiki/tasks/ultra-survey.md",
-      "target": "wiki/methods/reinforcement-learning.md"
     }
   ],
   "communities": [
