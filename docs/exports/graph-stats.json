@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-29",
-  "node_count": 213,
-  "edge_count": 1241,
+  "node_count": 216,
+  "edge_count": 1252,
   "community_count": 7,
   "top_hubs": [
     {
@@ -60,7 +60,7 @@
     "method": 49,
     "concept": 43,
     "query": 40,
-    "entity": 32,
+    "entity": 35,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -69,17 +69,17 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 86,
-    "Whole-Body Control (WBC) 社区": 56,
-    "Manipulation 社区": 46,
+    "Locomotion 社区": 90,
+    "Whole-Body Control (WBC) 社区": 58,
+    "Manipulation 社区": 43,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
-    "Whole-Body Coordination（全身协调控制） 社区": 3
+    "URDF-Studio 社区": 3
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.404,
+    "largest_community_ratio": 0.417,
     "community_quality_warning": false
   }
 }

@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 254,
+  "item_count": 257,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -5637,6 +5637,31 @@
       "entity_kind": "framework"
     },
     {
+      "id": "entity-robot-explorer",
+      "title": "Robot Explorer",
+      "path": "wiki/entities/robot-explorer.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntitle: Robot Explorer\ntags: [utility, kinematics, visualization, education]\n---\n\n# Robot Explorer\n\n**Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控数十种主流机器人模型。\n\n## 核心功能\n\n- **交互式运动学**：支持实时正向 (FK) 和逆向运动学 (IK)。其 IK 引擎支持多末端全身控制，并能自动避开关节限位及零空间约束。\n- **可操纵性分析**：可视化机器人在当前位姿下的**可操纵性椭球 (Manipulability Ellipsoids)**，直观展示机器人在速度、加速度和力维度上的性能潜力。\n- **工作空间评估**：通过蒙特卡洛采样生成机器人的**可达性点云**，帮助工程师评估任务可行性。\n- **力多胞体可视化**：基于 URDF 中定义的关节力矩限制，计算并展示末端执行器在不同方向上的输出力极限。\n\n## 教育与工程价值\n\n- **数学背景说明**：工具内置了详细的数学面板，解释了 IK 求解、雅可比矩阵以及椭球体计算的底层逻辑。\n- **广泛的模型支持**：内置了来自 KUKA, ABB, Universal Robots, Franka Emika 等 35+ 品牌的 81+ 机器人 URDF 模型。\n- **运动录制**：支持记录关键帧并导出，适合快速原型设计和教学课件制作。\n\n## 技术架构\n\n- **前端**：TypeScript, Vite, **Three.js**。\n- **URDF 解析**：使用 `urdf-loader` 加载模型。\n- **公式渲染**：集成 KaTeX 提供高质量数学符号展示。\n\n## 关联页面\n\n- [[urdf-studio]] (专业设计工作站)\n- [[robot-viewer]] (多格式仿真预览)\n- [[pinocchio]] (后端动力学计算库)\n\n## 参考来源\n- [Robot Explorer 原始资料](../../sources/repos/robot-explorer.md)\n- [Robot Explorer GitHub](https://github.com/ferrolho/robot-explorer)",
+      "tags": [
+        "entities",
+        "entity",
+        "control",
+        "tooling"
+      ],
+      "related": [
+        "sources-repos-robot-explorer",
+        "entity-urdf-studio",
+        "entity-robot-viewer",
+        "entity-pinocchio"
+      ],
+      "source_links": [
+        "https://github.com/ferrolho/robot-explorer"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
       "id": "entity-robot-lab",
       "title": "robot_lab (IsaacLab 扩展框架)",
       "path": "wiki/entities/robot-lab.md",
@@ -5665,6 +5690,30 @@
       "status": "active",
       "type": "entity_page",
       "entity_kind": "simulator"
+    },
+    {
+      "id": "entity-robot-viewer",
+      "title": "Robot Viewer",
+      "path": "wiki/entities/robot-viewer.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntitle: Robot Viewer\ntags: [utility, simulation, mujoco, xacro]\n---\n\n# Robot Viewer\n\n**Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。\n\n## 核心功能\n\n- **多格式支持**：\n    - **URDF**: 标准机器人描述。\n    - **Xacro**: 支持原生 Xacro 宏展开，无需 ROS 环境即可解析复杂的参数化模型。\n    - **MJCF**: 支持 MuJoCo 模型文件。\n    - **USD**: 支持 NVIDIA Omniverse 的标准格式。\n- **集成 MuJoCo 仿真**：利用 MuJoCo WASM 技术，支持一键将 MJCF 模型转换为可交互的动力学仿真环境。\n- **实时代码编辑**：集成 CodeMirror 编辑器，允许用户实时修改模型源码并立即查看 3D 渲染效果。\n- **测量工具**：提供精确的测距仪，用于测量关节中心距离、链接长度以及相对于地面的高度。\n\n## 独特优势\n\n- **轻量级 Xacro 处理**：它是目前少数几个能够在 Web 端独立完成 Xacro 逻辑（宏、条件判断、数学运算）解析的工具。\n- **调试利器**：非常适合算法工程师快速检查模型结构、碰撞体定义以及惯性参数是否正确。\n\n## 技术架构\n\n- **核心引擎**：Three.js (渲染), MuJoCo WASM (物理)。\n- **工具链**：Vite, JavaScript, `xacro-parser`。\n\n## 关联页面\n\n- [[robot-explorer]] (动力学分析工具)\n- [[urdf-studio]] (机器人组装工作站)\n- [[mujoco]] (底层仿真引擎)\n\n## 参考来源\n- [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)\n- [Robot Viewer GitHub](https://github.com/fan-ziqi/robot_viewer)",
+      "tags": [
+        "entities",
+        "entity",
+        "tooling"
+      ],
+      "related": [
+        "sources-repos-robot-viewer",
+        "entity-robot-explorer",
+        "entity-urdf-studio",
+        "entity-mujoco"
+      ],
+      "source_links": [
+        "https://github.com/fan-ziqi/robot_viewer"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
     },
     {
       "id": "entity-roboto-origin",
@@ -5841,6 +5890,35 @@
       "status": "active",
       "type": "entity_page",
       "entity_kind": "hardware"
+    },
+    {
+      "id": "entity-urdf-studio",
+      "title": "URDF-Studio",
+      "path": "wiki/entities/urdf-studio.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntitle: URDF-Studio\ntags: [utility, design, workstation, hardware, ai]\n---\n\n# URDF-Studio\n\n**URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工具。\n\n## 核心功能\n\n- **模块化设计流**：\n    - **Skeleton 模式**：可视化编辑机器人的运动树和关节层级。\n    - **Detail 模式**：调整碰撞体、视觉模型、惯性张量及网格路径。\n    - **Hardware 模式**：关联具体的执行器（电机）元数据，支持生成物料清单。\n- **多机器人组装**：支持在同一个工作空间内通过“桥接关节”将多个独立的机器人或附件（如灵巧手、传感器）组合在一起。\n- **AI 辅助建模**：集成 AI 能力，支持通过自然语言生成初步机器人结构、检查模型一致性并自动生成分析报告。\n- **全生态导出**：支持导出为 URDF, MJCF, USD, SDF, Xacro 等格式，满足不同仿真引擎的需求。\n\n## 工程应用场景\n\n- **硬件原型开发**：通过其 Hardware 模式管理电机选型，并一键生成 CSV/PDF 格式的 BOM 清单供采购使用。\n- **快速仿真适配**：将复杂的机器人设计快速转换为适合 [[isaac-gym-isaac-lab]] 或 [[mujoco]] 的描述文件。\n- **团队协作**：提供项目级的工作区管理，方便分享和复用机器人资产。\n\n## 技术架构\n\n- **前端**：React 19, TypeScript, Vite。\n- **3D 渲染**：**React Three Fiber** (R3F)。\n- **状态管理**：Zustand, Tailwind CSS。\n\n## 关联页面\n\n- [[robot-viewer]] (模型快速预览)\n- [[robot-explorer]] (运动学分析)\n- [[open-source-humanoid-hardware]] (开源硬件参考)\n\n## 参考来源\n- [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)\n- [URDF-Studio GitHub](https://github.com/OpenLegged/URDF-Studio)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "tooling",
+        "hardware"
+      ],
+      "related": [
+        "sources-repos-urdf-studio",
+        "entity-isaac-gym-isaac-lab",
+        "entity-mujoco",
+        "entity-robot-viewer",
+        "entity-robot-explorer",
+        "entity-open-source-humanoid-hardware"
+      ],
+      "source_links": [
+        "https://github.com/OpenLegged/URDF-Studio"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
     },
     {
       "id": "wiki-references-llm-wiki-karpathy",
@@ -6477,13 +6555,14 @@
     },
     {
       "id": "reference-repos-utilities",
-      "title": "Utilities",
+      "title": "Utilities (通用机器人工具链)",
       "path": "references/repos/utilities.md",
-      "summary": "收录 Pinocchio、RBDL、Drake、curobo 等通用工具链",
-      "content_markdown": "收录 Pinocchio、RBDL、Drake、curobo 等通用工具链。",
+      "summary": "收录动力学计算、模型可视化、设计组装等通用工具链",
+      "content_markdown": "收录动力学计算、模型可视化、设计组装等通用工具链。\n\n## 动力学与控制计算\n- **Pinocchio**: 高性能刚体动力学库，支持分析导数。\n- **RBDL**: 刚体动力学库。\n- **Drake**: 专注于控制、仿真和分析。\n- **curobo**: NVIDIA 开发的高速避障与运动规划库。\n\n## Web 端可视化与分析\n- **[[robot-explorer]]**: 交互式 3D 机器人探索工具，支持运动学分析与可操纵性椭球可视化。\n- **[[robot-viewer]]**: 多格式（URDF/Xacro/MJCF/USD）查看器，集成 MuJoCo WASM 仿真与实时编辑。\n\n## 机器人设计工作站\n- **[[urdf-studio]]**: 专业级 Web 机器人设计与组装平台，支持 Skeleton/Detail/Hardware 全流程管理与 AI 辅助。",
       "tags": [
         "repos",
-        "tooling"
+        "tooling",
+        "hardware"
       ],
       "related": [],
       "source_links": [],
