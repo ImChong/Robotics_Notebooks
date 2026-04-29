@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-04-29",
-  "node_count": 205,
-  "edge_count": 1195,
-  "community_count": 6,
+  "node_count": 208,
+  "edge_count": 1210,
+  "community_count": 7,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "degree": 62
+      "degree": 63
     },
     {
       "id": "wiki/concepts/sim2real.md",
@@ -37,7 +37,7 @@
     {
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
-      "degree": 38
+      "degree": 39
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -60,7 +60,7 @@
     "method": 47,
     "concept": 42,
     "query": 40,
-    "entity": 27,
+    "entity": 30,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -70,15 +70,16 @@
   },
   "community_distribution": {
     "Locomotion 社区": 84,
-    "Whole-Body Control (WBC) 社区": 56,
-    "Manipulation 社区": 43,
+    "Whole-Body Control (WBC) 社区": 55,
+    "Manipulation 社区": 44,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Model-Based RL（基于模型的强化学习） 社区": 6
+    "Model-Based RL（基于模型的强化学习） 社区": 6,
+    "Whole-Body Coordination（全身协调控制） 社区": 3
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.41,
+    "largest_community_ratio": 0.404,
     "community_quality_warning": false
   }
 }

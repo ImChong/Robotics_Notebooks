@@ -34,7 +34,7 @@ related:
 
 人形机器人的设计初衷就是替代人类完成这类任务，因此双臂操作能力直接决定了人形机器人在实际场景中的可用性。
 
-目前单臂操作（pick-and-place）已相对成熟（ACT、Diffusion Policy 等方法成功率较高），但双臂操作仍是开放挑战：数据采集难、约束建模复杂、策略泛化差。
+目前单臂操作（pick-and-place）已相对成熟（ACT、Diffusion Policy 等方法成功率较高），但双臂操作仍是开放挑战：数据采集难、约束建模复杂、策略泛化差。**[[aloha]]** 硬件与 **[[robotwin]]** 仿真平台的出现，极大地推动了该领域的数据规模化。
 
 ## 关键挑战
 
@@ -149,11 +149,14 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Teleoperation](./teleoperation.md) — 双臂数据采集的主要手段
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 双臂操作大量涉及接触丰富型场景（组装、插拔、折叠）
 - [Action Chunking](../methods/action-chunking.md) — 双臂协调常依赖动作块输出保持短时同步
+- [ALOHA](../entities/aloha.md) — 开源双臂遥操作硬件标准
+- [RoboTwin 2.0](../entities/robotwin.md) — 双臂自动化数据生成与仿真平台
 
 ## 参考来源
 
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (RSS, 2023) — ALOHA + ACT 奠基工作
 - Fu et al., *Mobile ALOHA* (2024) — 移动双臂操作
+- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — 具身智能能力栈与硬件选型
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — ACT / ALOHA / Diffusion Policy 摘要
 
 ## 推荐继续阅读

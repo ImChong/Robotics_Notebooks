@@ -101,6 +101,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线
+- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线
 - Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*
 - Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control*
 - Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026)
@@ -124,9 +125,18 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Action Chunking](./action-chunking.md)
 - [Diffusion Policy](./diffusion-policy.md)
 - [Behavior Cloning](./behavior-cloning.md)
+- [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
 - [Safety Filter](../concepts/safety-filter.md)
+
+## 推荐继续阅读
+
+- RT-2 / π₀ 原论文或项目博客
+- OpenVLA / Octo 开源实现
+- [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)
+- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)
+concepts/safety-filter.md)
 
 ## 推荐继续阅读
 

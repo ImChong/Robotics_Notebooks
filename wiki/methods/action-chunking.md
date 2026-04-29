@@ -125,6 +125,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — ACT / ALOHA / action chunking 的核心背景
 - [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 生成式动作序列与长时域输出方式
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD 在人形接触丰富型操作中结合 action chunks 和 touch dreaming
+- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — 具身智能能力栈与执行策略
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
 
 ## 关联页面
@@ -133,6 +134,8 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — action chunks + 未来触觉 latent 预测的人形操作实例
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md) — 动作块模型（如 ACT）所优化的底层损失函数形式
 - [VLA](./vla.md) — VLA 在真机部署时常结合 action chunking
+- [ALOHA](../entities/aloha.md) — 经典的双臂遥操作硬件标杆
+- [RoboTwin 2.0](../entities/robotwin.md) — 自动化数据生成平台
 - [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md) — 动作缓冲与异步执行
 - [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md) — VLA + WBC 的 action buffer 设计
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂协调任务中常见 chunk 输出

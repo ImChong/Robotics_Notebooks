@@ -482,3 +482,5 @@
 ## [2026-04-29] ingest | sources/papers/humanoid_touch_dream.md — 消化 HTD / Touch Dreaming 论文并更新触觉增强人形移动操作知识节点
 
 ## [2026-04-29] structural | 更新待办列表与主页统计数据 (205 nodes, 1195 edges)
+
+## [2026-04-29] ingest | sources/repos/embodied-ai-guide.md — 接入具身智能全栈百科并补全 RoboTwin/SAPIEN/ALOHA 实体
