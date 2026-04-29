@@ -2,11 +2,12 @@
 type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
-summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制转向基于生成模型（Diffusion/Flow）和 VLA 的统一全身感知控制。"
-updated: 2026-04-28
+summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
+updated: 2026-04-29
 sources:
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/awesome-humanoid-robot-learning.md
 ---
 
@@ -50,6 +51,10 @@ sources:
 - **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。
 - **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。
 
+### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)
+- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
+- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -68,6 +73,7 @@ sources:
 - [VLA](../methods/vla.md)
 - [Teleoperation](./teleoperation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
+- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 
 ## 参考来源
 
@@ -76,7 +82,8 @@ sources:
 - [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O 
+- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作
 
 ## 一句话记忆
 
-> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型和 VLA 的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。
+> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。

@@ -2,14 +2,17 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
+updated: 2026-04-29
 related:
   - ./reinforcement-learning.md
   - ../concepts/sim2real.md
+  - ./humanoid-transformer-touch-dreaming.md
   - ../entities/mimickit.md
   - ./amp-reward.md
   - ./smp.md
 sources:
   - ../../sources/papers/imitation_learning.md
+  - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
 ---
@@ -89,6 +92,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [[ase]]：对抗技能嵌入
 - CALM：latent 方向控制
 - CLAW：宇树 G1 的模块化语言-动作数据生成管线
+- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
 
 ## 常见问题
 
@@ -101,6 +105,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要
+- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合
@@ -118,6 +123,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)
 - [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
+- [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架
 - [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线

@@ -7,6 +7,7 @@ related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
   - ./contact-estimation.md
+  - ../methods/humanoid-transformer-touch-dreaming.md
   - ../formalizations/cross-modal-attention.md
   - ../formalizations/contact-wrench-cone.md
   - ../queries/multimodal-fusion-tricks.md
@@ -15,6 +16,7 @@ related:
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/humanoid_touch_dream.md
 summary: "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
 ---
 
@@ -87,6 +89,8 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - 适合 VLA / Diffusion Policy 这类已经是 token-序列的策略骨架。
 - 注意：纯端到端训练时，触觉 token 数量远小于视觉 token，容易被「淹没」。常用做法是给触觉 token 加一个固定大小的 learnable bias，或者在 loss 中加一项「触觉注意力下界」正则。
 
+2026 年的 [HTD](../methods/humanoid-transformer-touch-dreaming.md) 说明了另一种实用做法：不要只靠注意力自动发现触觉重要性，而是在行为克隆训练中加入未来手部力与未来触觉 latent 预测。这样触觉路径会被接触时序目标持续监督，部署时仍只保留动作输出。
+
 ## 接触瞬间为什么难
 
 把这一阶段单独拎出来，是因为常见的几个坑都集中在这里：
@@ -123,6 +127,7 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - 上游任务定义 → [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - 与一般传感器融合的区别 → [Sensor Fusion](./sensor-fusion.md)（侧重 IMU / 视觉 / 腿部运动学，用于状态估计；本页侧重操作策略）
 - 与一般多模态技巧的区别 → [Multimodal Fusion Tricks](../queries/multimodal-fusion-tricks.md)（涵盖语言 / 视觉 / 本体感受；本页只聚焦视-触这一对，且强调时间相位）
+- 代表方法 → [HTD](../methods/humanoid-transformer-touch-dreaming.md) 把触觉 latent 预测作为 humanoid loco-manipulation 行为克隆的辅助目标
 - 数学约束 → [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) 给出的力学边界，是触觉信号判断「是否稳定接触」的物理依据
 - RL 视角的具体实现 → [在 RL 中利用触觉反馈](../queries/tactile-feedback-in-rl.md)
 
@@ -131,6 +136,7 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - [Tactile Sensing](./tactile-sensing.md)
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Contact Estimation](./contact-estimation.md)
+- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 - [Cross-modal Attention](../formalizations/cross-modal-attention.md)
 - [Contact Wrench Cone](../formalizations/contact-wrench-cone.md)
 - [Multimodal Fusion Tricks](../queries/multimodal-fusion-tricks.md)
@@ -141,6 +147,7 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)
+- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md)
 - Calandra, R., et al. (2018). *More than a feeling: Learning to grasp and regrasp using vision and touch*.
 - Lee, M. A., et al. (2019). *Making sense of vision and touch: Self-supervised learning of multimodal representations for contact-rich tasks*.
 - Lambeta, M., et al. (2020). *DIGIT: A Novel Design for a Low-Cost Compact High-Resolution Tactile Sensor*.
