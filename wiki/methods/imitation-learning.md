@@ -108,6 +108,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
+- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用
 - [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合
 - [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)
 - [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
@@ -125,6 +126,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据
 - [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略
 - [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架
+- [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架
 - [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）

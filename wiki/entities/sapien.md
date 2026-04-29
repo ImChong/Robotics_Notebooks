@@ -24,7 +24,7 @@ tags: [simulation, physics-engine, manipulation, sapien]
 ## 与其他系统的关系
 
 - **上层应用**：[[robotwin]] 2.0 建立在 SAPIEN 之上，用于自动化数据生成。
-- **同类对比**：相比 [[mujoco]]，SAPIEN 更侧重于物体交互和视觉感知；相比 [[isaac-gym-isaac-lab]]，它在处理部件级关节体模型方面具有独特的生态优势。
+- **同类对比**：相比 [[mujoco]]，SAPIEN 更侧重于物体交互和视觉感知；相比 [[isaac-gym-isaac-lab]]，它在处理部件级关节体模型方面具有独特的生态优势；相比 [[genesis-sim]]，后者在多物理场（流体、柔性体）耦合方面更为先进。
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)

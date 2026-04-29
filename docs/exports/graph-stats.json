@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-29",
-  "node_count": 208,
-  "edge_count": 1210,
+  "node_count": 211,
+  "edge_count": 1229,
   "community_count": 7,
   "top_hubs": [
     {
@@ -22,12 +22,12 @@
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "degree": 63
+      "degree": 65
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 60
+      "degree": 63
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -37,7 +37,7 @@
     {
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
-      "degree": 39
+      "degree": 41
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -58,9 +58,9 @@
   "orphan_nodes": [],
   "type_distribution": {
     "method": 47,
-    "concept": 42,
+    "concept": 43,
     "query": 40,
-    "entity": 30,
+    "entity": 32,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -69,9 +69,9 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 84,
+    "Locomotion 社区": 85,
     "Whole-Body Control (WBC) 社区": 55,
-    "Manipulation 社区": 44,
+    "Manipulation 社区": 46,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
@@ -79,7 +79,7 @@
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.404,
+    "largest_community_ratio": 0.403,
     "community_quality_warning": false
   }
 }
