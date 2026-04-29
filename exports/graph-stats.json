@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-28",
-  "node_count": 204,
-  "edge_count": 1180,
+  "generated_at": "2026-04-29",
+  "node_count": 205,
+  "edge_count": 1195,
   "community_count": 6,
   "top_hubs": [
     {
@@ -20,13 +20,13 @@
       "degree": 66
     },
     {
-      "id": "wiki/concepts/sim2real.md",
-      "label": "Sim2Real",
-      "degree": 60
-    },
-    {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
+      "degree": 62
+    },
+    {
+      "id": "wiki/concepts/sim2real.md",
+      "label": "Sim2Real",
       "degree": 60
     },
     {
@@ -50,14 +50,14 @@
       "degree": 28
     },
     {
-      "id": "wiki/methods/policy-optimization.md",
-      "label": "Policy Optimization",
-      "degree": 26
+      "id": "wiki/tasks/loco-manipulation.md",
+      "label": "Loco-Manipulation (移动操作)",
+      "degree": 27
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "method": 46,
+    "method": 47,
     "concept": 42,
     "query": 40,
     "entity": 27,
@@ -69,8 +69,8 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 82,
-    "Whole-Body Control (WBC) 社区": 57,
+    "Locomotion 社区": 84,
+    "Whole-Body Control (WBC) 社区": 56,
     "Manipulation 社区": 43,
     "实时运控中间件配置指南 社区": 9,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
@@ -78,7 +78,7 @@
   },
   "community_quality": {
     "singleton_communities": [],
-    "largest_community_ratio": 0.402,
+    "largest_community_ratio": 0.41,
     "community_quality_warning": false
   }
 }
