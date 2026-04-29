@@ -59,6 +59,7 @@
 
 | 待办 | 位置 | 说明 |
 |------|------|------|
+| `Search Weight Optimization` | scripts/ | 优化 BM25 权重，确保 DAgger、摩擦锥等核心关键词精准命中主页 |
 | `Policy Optimization Methods (PPO/SAC/TD3)` | wiki/methods/ | 当前主流机器人 RL 算法 |
 | `Diffusion Policy` | wiki/methods/ | 机器人操作领域最活跃方向之一 |
 | `Model-Based RL` | wiki/methods/ | 补全 RL 方法论中 model-based 这块 |
