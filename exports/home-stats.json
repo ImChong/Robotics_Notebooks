@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-04-30",
-  "node_count": 225,
-  "edge_count": 1348,
+  "node_count": 226,
+  "edge_count": 1359,
   "coverage": {
-    "covered": 221,
-    "total": 223,
+    "covered": 222,
+    "total": 224,
     "percent": 99
   }
 }

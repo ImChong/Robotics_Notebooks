@@ -50,7 +50,10 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Visual Servoing](../methods/visual-servoing.md)
 - [Action Tokenization](./vla-tokenization.md)
+- [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 用李群 / 螺旋理论系统建立 SO(3)/SE(3) 与 twist/wrench 的物理与数学语言
 
 ## 参考来源
 - Zhou, Y., et al. (2019). *On the continuity of rotation representations in neural networks*. (CVPR 最佳论文候选，提出了 6D 表示)
+- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。
 - [sources/papers/perception.md](../../sources/papers/perception.md)
+- [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)

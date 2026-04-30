@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 266,
+  "item_count": 267,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -396,7 +396,7 @@
       "title": "Floating Base Dynamics",
       "path": "wiki/concepts/floating-base-dynamics.md",
       "summary": "Floating Base Dynamics（浮动基动力学）：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架",
-      "content_markdown": "---\ntype: concept\nsummary: \"Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。\"\nupdated: 2026-04-20\n---\n\n# Floating Base Dynamics\n\n**Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。\n\n## 一句话定义\n\n如果说固定底座机械臂的基座是“焊死在地上”的，那人形、四足、无人机这类机器人就不是这样。\n\n它们的躯干 / base 会随系统整体运动，因此：\n\n> **Floating Base Dynamics** 研究的就是：当机器人“根部不固定”时，整机动力学该怎么建模、怎么理解、怎么控制。\n\n## 为什么重要\n\n这页看起来像基础概念，但其实是人形控制里最容易被跳过、又最不能跳过的一页。\n\n原因很简单：\n\n- 人形机器人不是机械臂\n- 机械臂的 base 固定在地上\n- 人形机器人的躯干位置和姿态会随接触与动作一起变化\n- 所以你不能直接把它当普通关节链来做控制\n\n一句话：\n\n> 只要你研究人形、四足、双足 locomotion、全身控制、centroidal dynamics、TSID / WBC，这一层都绕不过去。\n\n## 什么叫 floating base\n\n### 固定底座（fixed base）\n比如桌面机械臂：\n- 机器人底盘固定在世界坐标系\n- base 的位置和姿态已知且不变\n- 只需要考虑关节自由度\n\n典型状态：\n\n$$\nq = [q_1, q_2, ..., q_n]\n$$\n\n### 浮动底座（floating base）\n比如：\n- 人形机器人\n- 四足机器人\n- 双足机器人\n- 无人机机械臂系统\n\n这类系统中：\n- 躯干 / 根节点本身可以平移和旋转\n- base 不是直接被 actuator 驱动的关节\n- 它通过接触力、关节运动和整体动力学间接变化\n\n所以状态通常写成：\n\n$$\nq = [q_b, q_j]\n$$\n\n其中：\n- \\( q_b \\)：floating base 的位姿（通常 6 自由度）\n- \\( q_j \\)：关节自由度\n\n## 为什么它和固定底座完全不是一回事\n\n### 1. base 不是直接可控量\n在人形机器人里，你不能像控制一个关节那样直接“给 base 一个电机命令”。\n\nbase 的运动是通过：\n- 关节动作\n- 接触力\n- 地面反力\n- 整体动力学耦合\n\n共同产生的。\n\n### 2. 整体动力学会强耦合\n固定底座系统里，很多事情更局部。\n\nfloating base 系统里：\n- 摆腿会影响躯干\n- 接触力会改变整体动量\n- 手臂摆动也会反过来影响平衡\n\n这就是为什么人形控制天然更难。\n\n### 3. 接触决定可控性\n机器人 base 能不能稳住，不只是看关节控制器，而是看：\n- 当前有没有接触\n- 接触在哪里\n- 接触力够不够\n- 摩擦是否允许\n\n所以 floating base 系统的控制几乎天然和 contact dynamics 绑在一起。\n\n## 典型状态表示\n\n在浮动基机器人里，常见广义坐标表示为：\n\n$$\nq = [x_b, y_b, z_b, \\phi_b, \\theta_b, \\psi_b, q_1, ..., q_n]\n$$\n\n也就是：\n- 基座位置（3）\n- 基座姿态（3）\n- 关节角（n）\n\n广义速度常见写法：\n\n$$\n\\dot{q} = [v_b, \\omega_b, \\dot{q}_j]\n$$\n\n其中：\n- \\( v_b \\)：base 线速度\n- \\( \\omega_b \\)：base 角速度\n- \\( \\dot{q}_j \\)：关节速度\n\n## 动力学方程长什么样\n\n浮动基机器人的经典动力学通常写成：\n\n$$\nM(q) \\ddot{q} + h(q, \\dot{q}) = S^T \\tau + J_c^T f\n$$\n\n这里：\n- \\( M(q) \\)：质量矩阵\n- \\( h(q, \\dot{q}) \\)：重力、科里奥利、离心项\n- \\( \\tau \\)：关节力矩\n- \\( S \\)：选择矩阵（只对 actuated joints 有控制输入）\n- \\( J_c \\)：接触雅可比\n- \\( f \\)：接触力\n\n这个式子和固定底座最不一样的点在于：\n\n> **不是所有自由度都直接有 actuator。**\n\nfloating base 的 6 个自由度通常是 **unactuated**。\n\n这也是为什么要引入选择矩阵 \\( S \\)。\n\n## 这意味着什么\n\n### 1. 你不能直接命令 base 加速度\n你不能说：\n- “base 往前加速一点”\n- 然后就像关节那样直接实现\n\n你必须通过：\n- 关节运动\n- 接触力分配\n- 整体动量调整\n\n来间接产生这个效果。\n\n### 2. 接触力是控制链的一部分\n对机械臂来说，很多时候末端接触只是任务场景。\n\n对人形来说：\n- 接触力本身就是系统动力学的核心变量\n- 地面反力不是“环境反馈”，而是 base motion 的关键来源\n\n### 3. 平衡控制本质上是浮动基控制\n很多“平衡问题”其实就是：\n- 如何在 unactuated base 的前提下\n- 通过可控关节和接触力\n- 维持整体姿态、质心与动量稳定\n\n## 核心算法：RNEA / CRBA / ABA\n\nFeatherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 Pinocchio/RBDL 等工具的核心：\n\n### RNEA（Recursive Newton-Euler Algorithm）— 逆动力学\n\n**输入**：$q, \\dot{q}, \\ddot{q}$（广义位置/速度/加速度）  \n**输出**：关节力矩 $\\tau$\n\n递推流程（两遍扫描）：\n```\n前向扫描（根→叶）：\n  计算每个链节的空间速度和加速度\n  计算惯性力和科氏力\n\n后向扫描（叶→根）：\n  从叶节点向上累积力\n  输出每个关节处的力矩\n```\n\n浮动基时，base 的 6D 力矩通常不直接对应 actuator，需配合选择矩阵 $S$。\n\n### CRBA（Composite Rigid Body Algorithm）— 惯性矩阵\n\n**计算** $M(q)$，用于后续动力学方程求解：\n\n$$M(q)\\ddot{q} + h(q,\\dot{q}) = S^T\\tau + J_c^T f$$\n\n复杂度 $O(n^2)$，输出惯性矩阵 $M \\in \\mathbb{R}^{(n+6)\\times(n+6)}$。\n\n### ABA（Articulated Body Algorithm）— 正动力学\n\n**输入**：$q, \\dot{q}, \\tau$  \n**输出**：$\\ddot{q}$（关节加速度）\n\n复杂度 $O(n)$，比直接求逆 $M$ 快得多，常用于仿真器时间积分。\n\n---\n\n## 空间向量代数（Spatial Vector Algebra）\n\nFeatherstone 的空间向量代数将 3D 力学量统一为 6D 向量，简化推导：\n\n| 空间量 | 维度 | 组成 |\n|--------|------|------|\n| 空间速度（twist）| 6 | $[ω; v]$（角速度 + 线速度） |\n| 空间加速度 | 6 | $[\\dot{ω}; \\dot{v}]$ |\n| 空间力（wrench）| 6 | $[τ; f]$（力矩 + 力） |\n| 空间惯性 | 6×6 | $I^A = \\begin{bmatrix} I_{cm} + mcc^T & mc \\\\ mc^T & mE \\end{bmatrix}$ |\n\n空间运动方程简化为：\n\n$$I^A \\dot{V} + v \\times^* I^A V = F$$\n\n其中 $v \\times^*$ 是空间力的伴随算子。这种表示消除了大量符号混乱，Pinocchio 完全基于此实现。\n\n---\n\n## 浮动基的约束结构\n\n浮动基的 EOM（运动方程）在有接触时展开为：\n\n$$\\begin{bmatrix} M_{ff} & M_{fj} \\\\ M_{jf} & M_{jj} \\end{bmatrix} \\begin{bmatrix} \\ddot{q}_f \\\\ \\ddot{q}_j \\end{bmatrix} + \\begin{bmatrix} h_f \\\\ h_j \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ \\tau \\end{bmatrix} + J_c^T f$$\n\n- 左上 $M_{ff}$：base 自身惯性（6×6）\n- 右下 $M_{jj}$：关节惯性（n×n）\n- 耦合块 $M_{fj}$：base-关节交叉耦合\n- $h$ 包含重力、科氏力、离心力\n- 约束 $J_c \\ddot{q} = -\\dot{J}_c \\dot{q}$（接触加速度为零）\n\nWBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配 $\\tau$ 和 $f$。\n\n---\n\n## 和 centroidal dynamics 的关系\n\nFloating Base Dynamics 是更通用、更底层的整机动力学视角。\n\nCentroidal Dynamics 可以看作：\n- 从 full-body floating base dynamics 里抽取出\n- 对质心和整体动量最关键的一层中间模型\n\n所以关系大概是：\n\n```text\nFloating Base Full-Body Dynamics\n    ↓（抽取与平衡最相关的量）\nCentroidal Dynamics\n    ↓（进一步简化）\nLIP / ZMP\n```\n\n见：[Centroidal Dynamics](./centroidal-dynamics.md)\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 TSID / WBC 的关系\n\nTSID / WBC 其实很多时候就是在处理 floating base 系统的控制问题。\n\n它们在做的事情是：\n- 接受任务空间目标\n- 满足 floating base 动力学一致性\n- 同时满足接触约束\n- 输出关节加速度 / 力矩 / 接触力\n\n所以你可以把这页理解成：\n\n> TSID / WBC 的动力学前置。\n\n见：[TSID](./tsid.md)\n\n见：[Whole-Body Control](./whole-body-control.md)\n\n## 和 State Estimation 的关系\n\nfloating base 系统还有一个麻烦点：\n\n- base pose 和 base velocity 常常不能直接测\n- 需要靠 IMU、编码器、接触信息去估计\n\n所以：\n- fixed-base 机械臂的状态估计往往比较简单\n- floating-base 人形机器人里，状态估计是核心难点之一\n\n见：[State Estimation](./state-estimation.md)\n\n## 在机器人中的典型应用\n\n### 1. 人形机器人 locomotion\n只要你研究：\n- 单脚支撑\n- 双脚支撑\n- 摆腿\n- 扰动恢复\n\n本质上都在处理 floating base dynamics。\n\n### 2. 四足机器人\n四足虽然不是人形，但同样是 floating base 系统。\n\n### 3. 全身操作\n如果机器人一边站着、一边用手操作，那 floating base dynamics 和接触约束都会一起上来。\n\n### 4. 高动态动作\n跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。\n\n## 常见误区\n\n### 1. 以为只是在状态里多了 6 个自由度\n不止。真正难的是：\n- 这 6 个自由度不是直接可控的\n- 它们和关节、接触、整体动量耦合得非常强\n\n### 2. 以为人形控制只是“大一点的机械臂控制”\n完全不是。floating base + contact 才是本质区别。\n\n### 3. 以为只要会 WBC / TSID 就不用懂 floating base dynamics\n不行。你可以不天天手推公式，但得知道这些方法到底在解决什么动力学结构问题。\n\n### 4. 低估 contact 的重要性\n在 floating base 系统里，contact 不是附加项，而是系统动力学的一部分。\n\n## 推荐使用建议\n\n### 如果你做人形控制\n这页必须懂。\n\n### 如果你做 RL locomotion\n哪怕你不直接写动力学方程，也建议理解 floating base 和 fixed base 的根本差异，不然很多 reward / observation / action 设计会很模糊。\n\n### 如果你做 WBC / TSID / MPC\n这页其实就是你的前置数学语境。\n\n## 参考来源\n\n- [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）\n- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）\n- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学\n- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材\n\n## 推荐继续阅读\n\n- Featherstone, *Rigid Body Dynamics Algorithms*\n- [Centroidal Dynamics](./centroidal-dynamics.md)\n- [TSID](./tsid.md)\n- [State Estimation](./state-estimation.md)\n\n## 一句话记忆\n\n> Floating Base Dynamics 研究的是“机器人基座不固定时，整机动力学怎么建模和控制”，它是人形、四足、WBC、centroidal dynamics 和状态估计的共同前置。",
+      "content_markdown": "---\ntype: concept\nsummary: \"Floating Base Dynamics 描述底座不固定机器人在自由空间和接触条件下的整体动力学组织方式。\"\nupdated: 2026-04-20\n---\n\n# Floating Base Dynamics\n\n**Floating Base Dynamics（浮动基动力学）**：描述机器人在基座不固定于世界坐标系时，其整体动力学如何建模与控制的框架。\n\n## 一句话定义\n\n如果说固定底座机械臂的基座是“焊死在地上”的，那人形、四足、无人机这类机器人就不是这样。\n\n它们的躯干 / base 会随系统整体运动，因此：\n\n> **Floating Base Dynamics** 研究的就是：当机器人“根部不固定”时，整机动力学该怎么建模、怎么理解、怎么控制。\n\n## 为什么重要\n\n这页看起来像基础概念，但其实是人形控制里最容易被跳过、又最不能跳过的一页。\n\n原因很简单：\n\n- 人形机器人不是机械臂\n- 机械臂的 base 固定在地上\n- 人形机器人的躯干位置和姿态会随接触与动作一起变化\n- 所以你不能直接把它当普通关节链来做控制\n\n一句话：\n\n> 只要你研究人形、四足、双足 locomotion、全身控制、centroidal dynamics、TSID / WBC，这一层都绕不过去。\n\n## 什么叫 floating base\n\n### 固定底座（fixed base）\n比如桌面机械臂：\n- 机器人底盘固定在世界坐标系\n- base 的位置和姿态已知且不变\n- 只需要考虑关节自由度\n\n典型状态：\n\n$$\nq = [q_1, q_2, ..., q_n]\n$$\n\n### 浮动底座（floating base）\n比如：\n- 人形机器人\n- 四足机器人\n- 双足机器人\n- 无人机机械臂系统\n\n这类系统中：\n- 躯干 / 根节点本身可以平移和旋转\n- base 不是直接被 actuator 驱动的关节\n- 它通过接触力、关节运动和整体动力学间接变化\n\n所以状态通常写成：\n\n$$\nq = [q_b, q_j]\n$$\n\n其中：\n- \\( q_b \\)：floating base 的位姿（通常 6 自由度）\n- \\( q_j \\)：关节自由度\n\n## 为什么它和固定底座完全不是一回事\n\n### 1. base 不是直接可控量\n在人形机器人里，你不能像控制一个关节那样直接“给 base 一个电机命令”。\n\nbase 的运动是通过：\n- 关节动作\n- 接触力\n- 地面反力\n- 整体动力学耦合\n\n共同产生的。\n\n### 2. 整体动力学会强耦合\n固定底座系统里，很多事情更局部。\n\nfloating base 系统里：\n- 摆腿会影响躯干\n- 接触力会改变整体动量\n- 手臂摆动也会反过来影响平衡\n\n这就是为什么人形控制天然更难。\n\n### 3. 接触决定可控性\n机器人 base 能不能稳住，不只是看关节控制器，而是看：\n- 当前有没有接触\n- 接触在哪里\n- 接触力够不够\n- 摩擦是否允许\n\n所以 floating base 系统的控制几乎天然和 contact dynamics 绑在一起。\n\n## 典型状态表示\n\n在浮动基机器人里，常见广义坐标表示为：\n\n$$\nq = [x_b, y_b, z_b, \\phi_b, \\theta_b, \\psi_b, q_1, ..., q_n]\n$$\n\n也就是：\n- 基座位置（3）\n- 基座姿态（3）\n- 关节角（n）\n\n广义速度常见写法：\n\n$$\n\\dot{q} = [v_b, \\omega_b, \\dot{q}_j]\n$$\n\n其中：\n- \\( v_b \\)：base 线速度\n- \\( \\omega_b \\)：base 角速度\n- \\( \\dot{q}_j \\)：关节速度\n\n## 动力学方程长什么样\n\n浮动基机器人的经典动力学通常写成：\n\n$$\nM(q) \\ddot{q} + h(q, \\dot{q}) = S^T \\tau + J_c^T f\n$$\n\n这里：\n- \\( M(q) \\)：质量矩阵\n- \\( h(q, \\dot{q}) \\)：重力、科里奥利、离心项\n- \\( \\tau \\)：关节力矩\n- \\( S \\)：选择矩阵（只对 actuated joints 有控制输入）\n- \\( J_c \\)：接触雅可比\n- \\( f \\)：接触力\n\n这个式子和固定底座最不一样的点在于：\n\n> **不是所有自由度都直接有 actuator。**\n\nfloating base 的 6 个自由度通常是 **unactuated**。\n\n这也是为什么要引入选择矩阵 \\( S \\)。\n\n## 这意味着什么\n\n### 1. 你不能直接命令 base 加速度\n你不能说：\n- “base 往前加速一点”\n- 然后就像关节那样直接实现\n\n你必须通过：\n- 关节运动\n- 接触力分配\n- 整体动量调整\n\n来间接产生这个效果。\n\n### 2. 接触力是控制链的一部分\n对机械臂来说，很多时候末端接触只是任务场景。\n\n对人形来说：\n- 接触力本身就是系统动力学的核心变量\n- 地面反力不是“环境反馈”，而是 base motion 的关键来源\n\n### 3. 平衡控制本质上是浮动基控制\n很多“平衡问题”其实就是：\n- 如何在 unactuated base 的前提下\n- 通过可控关节和接触力\n- 维持整体姿态、质心与动量稳定\n\n## 核心算法：RNEA / CRBA / ABA\n\nFeatherstone（2008）给出了浮动基系统的三个 O(n) 递推算法，是 Pinocchio/RBDL 等工具的核心：\n\n### RNEA（Recursive Newton-Euler Algorithm）— 逆动力学\n\n**输入**：$q, \\dot{q}, \\ddot{q}$（广义位置/速度/加速度）  \n**输出**：关节力矩 $\\tau$\n\n递推流程（两遍扫描）：\n```\n前向扫描（根→叶）：\n  计算每个链节的空间速度和加速度\n  计算惯性力和科氏力\n\n后向扫描（叶→根）：\n  从叶节点向上累积力\n  输出每个关节处的力矩\n```\n\n浮动基时，base 的 6D 力矩通常不直接对应 actuator，需配合选择矩阵 $S$。\n\n### CRBA（Composite Rigid Body Algorithm）— 惯性矩阵\n\n**计算** $M(q)$，用于后续动力学方程求解：\n\n$$M(q)\\ddot{q} + h(q,\\dot{q}) = S^T\\tau + J_c^T f$$\n\n复杂度 $O(n^2)$，输出惯性矩阵 $M \\in \\mathbb{R}^{(n+6)\\times(n+6)}$。\n\n### ABA（Articulated Body Algorithm）— 正动力学\n\n**输入**：$q, \\dot{q}, \\tau$  \n**输出**：$\\ddot{q}$（关节加速度）\n\n复杂度 $O(n)$，比直接求逆 $M$ 快得多，常用于仿真器时间积分。\n\n---\n\n## 空间向量代数（Spatial Vector Algebra）\n\nFeatherstone 的空间向量代数将 3D 力学量统一为 6D 向量，简化推导：\n\n| 空间量 | 维度 | 组成 |\n|--------|------|------|\n| 空间速度（twist）| 6 | $[ω; v]$（角速度 + 线速度） |\n| 空间加速度 | 6 | $[\\dot{ω}; \\dot{v}]$ |\n| 空间力（wrench）| 6 | $[τ; f]$（力矩 + 力） |\n| 空间惯性 | 6×6 | $I^A = \\begin{bmatrix} I_{cm} + mcc^T & mc \\\\ mc^T & mE \\end{bmatrix}$ |\n\n空间运动方程简化为：\n\n$$I^A \\dot{V} + v \\times^* I^A V = F$$\n\n其中 $v \\times^*$ 是空间力的伴随算子。这种表示消除了大量符号混乱，Pinocchio 完全基于此实现。\n\n---\n\n## 浮动基的约束结构\n\n浮动基的 EOM（运动方程）在有接触时展开为：\n\n$$\\begin{bmatrix} M_{ff} & M_{fj} \\\\ M_{jf} & M_{jj} \\end{bmatrix} \\begin{bmatrix} \\ddot{q}_f \\\\ \\ddot{q}_j \\end{bmatrix} + \\begin{bmatrix} h_f \\\\ h_j \\end{bmatrix} = \\begin{bmatrix} 0 \\\\ \\tau \\end{bmatrix} + J_c^T f$$\n\n- 左上 $M_{ff}$：base 自身惯性（6×6）\n- 右下 $M_{jj}$：关节惯性（n×n）\n- 耦合块 $M_{fj}$：base-关节交叉耦合\n- $h$ 包含重力、科氏力、离心力\n- 约束 $J_c \\ddot{q} = -\\dot{J}_c \\dot{q}$（接触加速度为零）\n\nWBC/TSID 的核心任务就是在满足此 EOM 和接触约束的前提下分配 $\\tau$ 和 $f$。\n\n---\n\n## 和 centroidal dynamics 的关系\n\nFloating Base Dynamics 是更通用、更底层的整机动力学视角。\n\nCentroidal Dynamics 可以看作：\n- 从 full-body floating base dynamics 里抽取出\n- 对质心和整体动量最关键的一层中间模型\n\n所以关系大概是：\n\n```text\nFloating Base Full-Body Dynamics\n    ↓（抽取与平衡最相关的量）\nCentroidal Dynamics\n    ↓（进一步简化）\nLIP / ZMP\n```\n\n见：[Centroidal Dynamics](./centroidal-dynamics.md)\n\n见：[LIP / ZMP](./lip-zmp.md)\n\n## 和 TSID / WBC 的关系\n\nTSID / WBC 其实很多时候就是在处理 floating base 系统的控制问题。\n\n它们在做的事情是：\n- 接受任务空间目标\n- 满足 floating base 动力学一致性\n- 同时满足接触约束\n- 输出关节加速度 / 力矩 / 接触力\n\n所以你可以把这页理解成：\n\n> TSID / WBC 的动力学前置。\n\n见：[TSID](./tsid.md)\n\n见：[Whole-Body Control](./whole-body-control.md)\n\n## 和 State Estimation 的关系\n\nfloating base 系统还有一个麻烦点：\n\n- base pose 和 base velocity 常常不能直接测\n- 需要靠 IMU、编码器、接触信息去估计\n\n所以：\n- fixed-base 机械臂的状态估计往往比较简单\n- floating-base 人形机器人里，状态估计是核心难点之一\n\n见：[State Estimation](./state-estimation.md)\n\n## 在机器人中的典型应用\n\n### 1. 人形机器人 locomotion\n只要你研究：\n- 单脚支撑\n- 双脚支撑\n- 摆腿\n- 扰动恢复\n\n本质上都在处理 floating base dynamics。\n\n### 2. 四足机器人\n四足虽然不是人形，但同样是 floating base 系统。\n\n### 3. 全身操作\n如果机器人一边站着、一边用手操作，那 floating base dynamics 和接触约束都会一起上来。\n\n### 4. 高动态动作\n跳跃、跑动、翻越等动作里，floating base dynamics 的影响会更强。\n\n## 常见误区\n\n### 1. 以为只是在状态里多了 6 个自由度\n不止。真正难的是：\n- 这 6 个自由度不是直接可控的\n- 它们和关节、接触、整体动量耦合得非常强\n\n### 2. 以为人形控制只是“大一点的机械臂控制”\n完全不是。floating base + contact 才是本质区别。\n\n### 3. 以为只要会 WBC / TSID 就不用懂 floating base dynamics\n不行。你可以不天天手推公式，但得知道这些方法到底在解决什么动力学结构问题。\n\n### 4. 低估 contact 的重要性\n在 floating base 系统里，contact 不是附加项，而是系统动力学的一部分。\n\n## 推荐使用建议\n\n### 如果你做人形控制\n这页必须懂。\n\n### 如果你做 RL locomotion\n哪怕你不直接写动力学方程，也建议理解 floating base 和 fixed base 的根本差异，不然很多 reward / observation / action 设计会很模糊。\n\n### 如果你做 WBC / TSID / MPC\n这页其实就是你的前置数学语境。\n\n## 参考来源\n\n- [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / RBDL / Crocoddyl，均基于浮动基 RNEA/CRBA/ABA）\n- Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）\n- Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学\n- Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材\n- Lynch & Park (2017), *Modern Robotics*. Ch 8 *Dynamics of Open Chains* — 用李群 / 螺旋理论给出 Lagrange 与 Newton-Euler 形式的统一推导，本科级入口\n- [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)\n\n## 推荐继续阅读\n\n- Featherstone, *Rigid Body Dynamics Algorithms*\n- [Modern Robotics 教材](../entities/modern-robotics-book.md)\n- [Centroidal Dynamics](./centroidal-dynamics.md)\n- [TSID](./tsid.md)\n- [State Estimation](./state-estimation.md)\n\n## 一句话记忆\n\n> Floating Base Dynamics 研究的是“机器人基座不固定时，整机动力学怎么建模和控制”，它是人形、四足、WBC、centroidal dynamics 和状态估计的共同前置。",
       "tags": [
         "concept",
         "locomotion",
@@ -411,14 +411,16 @@
         "wiki-concepts-tsid",
         "wiki-concepts-whole-body-control",
         "wiki-concepts-state-estimation",
-        "sources-papers-robot-kinematics-tools"
+        "sources-papers-robot-kinematics-tools",
+        "sources-papers-modern-robotics-textbook",
+        "entity-modern-robotics-book"
       ],
       "source_links": [],
       "status": "active",
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -539,7 +541,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -691,7 +693,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -723,7 +725,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -753,7 +755,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -785,7 +787,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -850,7 +852,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -969,7 +971,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1003,7 +1005,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1136,7 +1138,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1234,7 +1236,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1740,7 +1742,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -1978,7 +1980,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2132,7 +2134,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2351,7 +2353,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2550,7 +2552,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2713,7 +2715,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2877,7 +2879,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -3856,7 +3858,7 @@
       "title": "SE(3) Representation (位姿表示形式化)",
       "path": "wiki/formalizations/se3-representation.md",
       "summary": "type: formalization。",
-      "content_markdown": "---\ntype: formalization\ntags: [kinematics, math, deep-learning, rotation]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/whole-body-control.md\n  - ../methods/visual-servoing.md\n  - ../formalizations/mdp.md\nsources:\n  - ../../sources/papers/perception.md\nsummary: \"SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。\"\n---\n\n# SE(3) Representation (位姿表示形式化)\n\n在机器人学与具身智能中，如何表示物体的**位姿（Pose）**——即位置与姿态的组合，是感知与控制的基础。**SE(3)** (Special Euclidean Group) 描述了三维空间中的刚体运动。\n\n## 数学定义\n\n一个 SE(3) 元素通常由两部分组成：\n- **位置 (Translation)**：$t \\in \\mathbb{R}^3$。\n- **姿态 (Rotation)**：属于 SO(3) 组，$R \\in SO(3)$。\n\n$$ T = \\begin{bmatrix} R & t \\\\ 0 & 1 \\end{bmatrix} \\in \\mathbb{R}^{4 \\times 4} $$\n\n## 主流表示法对比（面向神经网络）\n\n在深度学习模型（如 VLA 或 Pose Estimation）中，选择姿态表示法至关重要，因为它直接影响梯度的平滑性和损失函数的收敛。\n\n| 表示法 | 维度 | 优势 | 劣势 | 推荐场景 |\n|------|-----|-----|-----|---------|\n| **欧拉角 (Euler Angles)** | 3 | 直观，最省空间 | 存在万向节死锁 (Gimbal Lock)；不连续 | 简单的 UI 显示 |\n| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态 |\n| **旋转矩阵 (Rotation Matrix)** | 9 | 线性，无死锁，唯一 | 自由度冗余 (9D 表示 3D)；需要正交化 | 坐标变换计算 |\n| **6D 连续表示 (6D Rep)** | 6 | **姿态空间连续**；适合神经网络回归 | 需要格拉姆-施密特正交化 | **Deep Learning 姿态估计** |\n\n### 1. 为什么 6D 表示法更适合 DL？\n传统的四元数和欧拉角在 $\\mathbb{R}^n$ 到 $SO(3)$ 的映射过程中存在**不连续点**。这意味着当网络预测值发生微小连续变化时，映射出的旋转可能发生突变。\n6D 表示法通过取旋转矩阵的前两列 $(a_1, a_2)$，并利用正交化重建第三列，实现了全空间的连续映射。\n\n## 损失函数 (Loss Functions)\n\n对于 SE(3) 位姿回归，常见的损失函数包括：\n- **L2 距离**：分别计算位置和姿态分量的均方误差。\n- **测地线距离 (Geodesic Distance)**：姿态误差最真实的物理描述：\n  $$ \\mathcal{L}_{rot} = \\arccos\\left( \\frac{\\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \\right) $$\n\n## 关联页面\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)\n- [Visual Servoing](../methods/visual-servoing.md)\n- [Action Tokenization](./vla-tokenization.md)\n\n## 参考来源\n- Zhou, Y., et al. (2019). *On the continuity of rotation representations in neural networks*. (CVPR 最佳论文候选，提出了 6D 表示)\n- [sources/papers/perception.md](../../sources/papers/perception.md)",
+      "content_markdown": "---\ntype: formalization\ntags: [kinematics, math, deep-learning, rotation]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/whole-body-control.md\n  - ../methods/visual-servoing.md\n  - ../formalizations/mdp.md\nsources:\n  - ../../sources/papers/perception.md\nsummary: \"SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。\"\n---\n\n# SE(3) Representation (位姿表示形式化)\n\n在机器人学与具身智能中，如何表示物体的**位姿（Pose）**——即位置与姿态的组合，是感知与控制的基础。**SE(3)** (Special Euclidean Group) 描述了三维空间中的刚体运动。\n\n## 数学定义\n\n一个 SE(3) 元素通常由两部分组成：\n- **位置 (Translation)**：$t \\in \\mathbb{R}^3$。\n- **姿态 (Rotation)**：属于 SO(3) 组，$R \\in SO(3)$。\n\n$$ T = \\begin{bmatrix} R & t \\\\ 0 & 1 \\end{bmatrix} \\in \\mathbb{R}^{4 \\times 4} $$\n\n## 主流表示法对比（面向神经网络）\n\n在深度学习模型（如 VLA 或 Pose Estimation）中，选择姿态表示法至关重要，因为它直接影响梯度的平滑性和损失函数的收敛。\n\n| 表示法 | 维度 | 优势 | 劣势 | 推荐场景 |\n|------|-----|-----|-----|---------|\n| **欧拉角 (Euler Angles)** | 3 | 直观，最省空间 | 存在万向节死锁 (Gimbal Lock)；不连续 | 简单的 UI 显示 |\n| **四元数 (Quaternions)** | 4 | 紧凑，无死锁，插值平滑 | 存在双倍覆盖 ($q = -q$)；单位化约束 | 控制器内部状态 |\n| **旋转矩阵 (Rotation Matrix)** | 9 | 线性，无死锁，唯一 | 自由度冗余 (9D 表示 3D)；需要正交化 | 坐标变换计算 |\n| **6D 连续表示 (6D Rep)** | 6 | **姿态空间连续**；适合神经网络回归 | 需要格拉姆-施密特正交化 | **Deep Learning 姿态估计** |\n\n### 1. 为什么 6D 表示法更适合 DL？\n传统的四元数和欧拉角在 $\\mathbb{R}^n$ 到 $SO(3)$ 的映射过程中存在**不连续点**。这意味着当网络预测值发生微小连续变化时，映射出的旋转可能发生突变。\n6D 表示法通过取旋转矩阵的前两列 $(a_1, a_2)$，并利用正交化重建第三列，实现了全空间的连续映射。\n\n## 损失函数 (Loss Functions)\n\n对于 SE(3) 位姿回归，常见的损失函数包括：\n- **L2 距离**：分别计算位置和姿态分量的均方误差。\n- **测地线距离 (Geodesic Distance)**：姿态误差最真实的物理描述：\n  $$ \\mathcal{L}_{rot} = \\arccos\\left( \\frac{\\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \\right) $$\n\n## 关联页面\n- [Whole-Body Control (WBC)](../concepts/whole-body-control.md)\n- [Visual Servoing](../methods/visual-servoing.md)\n- [Action Tokenization](./vla-tokenization.md)\n- [Modern Robotics 教材](../entities/modern-robotics-book.md) — Ch 3 用李群 / 螺旋理论系统建立 SO(3)/SE(3) 与 twist/wrench 的物理与数学语言\n\n## 参考来源\n- Zhou, Y., et al. (2019). *On the continuity of rotation representations in neural networks*. (CVPR 最佳论文候选，提出了 6D 表示)\n- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。\n- [sources/papers/perception.md](../../sources/papers/perception.md)\n- [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)",
       "tags": [
         "formalization",
         "control",
@@ -3866,7 +3868,9 @@
         "wiki-concepts-whole-body-control",
         "wiki-methods-visual-servoing",
         "wiki-formalizations-vla-tokenization",
-        "sources-papers-perception"
+        "entity-modern-robotics-book",
+        "sources-papers-perception",
+        "sources-papers-modern-robotics-textbook"
       ],
       "source_links": [],
       "status": "active",
@@ -5386,7 +5390,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -5568,7 +5572,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5600,7 +5604,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-lerobot",
@@ -5688,6 +5692,42 @@
       "status": "active",
       "type": "entity_page",
       "entity_kind": "framework"
+    },
+    {
+      "id": "entity-modern-robotics-book",
+      "title": "Modern Robotics (Lynch-Park 教材)",
+      "path": "wiki/entities/modern-robotics-book.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational]\nstatus: complete\nupdated: 2026-04-30\nrelated:\n  - ../formalizations/se3-representation.md\n  - ../concepts/floating-base-dynamics.md\n  - ../concepts/whole-body-control.md\n  - ../methods/trajectory-optimization.md\n  - ./pinocchio.md\nsources:\n  - ../../sources/papers/modern_robotics_textbook.md\nsummary: \"Lynch & Park 的现代机器人学经典教材，独特之处是全程使用李群 / 螺旋理论作为统一数学语言，覆盖配置空间到全身控制、抓取、移动机器人的完整体系，是本知识库传统机器人学部分的主要参考底座。\"\n---\n\n# Modern Robotics (Lynch-Park 教材)\n\n**Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（SNU）2017 年由 Cambridge University Press 出版的本科级机器人学教材。它在传统教材（Craig、Spong、Siciliano）之外提供了**用李群 / 螺旋理论统一描述刚体运动、运动学与动力学**的视角，配套 Coursera 6 门专项课程与开源库，是本知识库传统机器人学部分的主要参考底座。\n\n## 为什么重要？\n\n1. **语言上的统一**：传统教材用 D-H 参数 + 旋转矩阵 + 欧拉角，每章独立；Lynch-Park 全程用 SE(3)、twist、PoE，链条干净。\n2. **本科可读但仍是研究语言**：用的就是 Pinocchio / Crocoddyl / TSID 等现代库的底层数学，学完直接接得上工业代码。\n3. **覆盖广度对齐\"传统机器人栈\"**：13 章覆盖了从最底层（C-space）到最上层（grasping、wheeled mobile）的完整传统机器人学，是 RL/LLM 时代之前「人形/四足/机械臂控制」的最大公约数。\n\n## 章节地图（与本知识库的对应）\n\n| 章节 | 教材主题 | 对应已有页面 |\n|------|---------|------------|\n| Ch 2 | Configuration Space | （未直接覆盖，可补） |\n| Ch 3 | Rigid-Body Motions | [SE(3) Representation](../formalizations/se3-representation.md) |\n| Ch 4 | Forward Kinematics (PoE) | （部分隐含在 [pinocchio](./pinocchio.md)） |\n| Ch 5 | Velocity Kinematics & Statics | （隐含在 [whole-body-control](../concepts/whole-body-control.md) 的 Jacobian 部分） |\n| Ch 6 | Inverse Kinematics | （未直接覆盖） |\n| Ch 7 | Closed Chains | （未直接覆盖） |\n| Ch 8 | Dynamics of Open Chains | [Floating Base Dynamics](../concepts/floating-base-dynamics.md) |\n| Ch 9 | Trajectory Generation | [Trajectory Optimization](../methods/trajectory-optimization.md) |\n| Ch 10 | Motion Planning | （RRT/PRM 未直接覆盖） |\n| Ch 11 | Robot Control | [WBC](../concepts/whole-body-control.md), [TSID](../concepts/tsid.md), [Impedance Control](../concepts/impedance-control.md) |\n| Ch 12 | Grasping & Manipulation | [Friction Cone](../formalizations/friction-cone.md), [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) |\n| Ch 13 | Wheeled Mobile Robots | （未直接覆盖） |\n\n## 核心数学语言：李群 / 螺旋理论\n\nLynch-Park 将下面这些贯穿全书：\n\n- **SO(3) / SE(3)**：刚体姿态与位姿的群结构\n- **so(3) / se(3)**：对应李代数（角速度、空间速度向量空间）\n- **Twist $\\mathcal{V} \\in \\mathbb{R}^6$**：空间速度（角速度 + 线速度）\n- **Wrench $\\mathcal{F} \\in \\mathbb{R}^6$**：空间力（力矩 + 力）\n- **PoE 公式**：正运动学写成 $T(\\theta) = e^{[\\mathcal{S}_1]\\theta_1} e^{[\\mathcal{S}_2]\\theta_2} \\cdots e^{[\\mathcal{S}_n]\\theta_n} M$\n- **空间 vs 物体雅可比**：两种坐标系下的 Jacobian 表示\n\n这套语言是 Pinocchio、Crocoddyl、TSID、Drake 这些现代机器人库的内部实现语言，不是新东西，但教材级清晰阐述较少。\n\n## 局限\n\n- **不覆盖 RL / IL**：本书是 2017 年传统机器人学视角，不涉及深度强化学习、模仿学习、VLA\n- **不覆盖 sim2real / 真机部署工程**：纯理论 + 仿真层\n- **接触动力学浅尝辄止**：Ch 12 抓取讲了静态接触，但完整的接触动力学（complementarity、impulse-based）需要 Featherstone 等更专的资料\n\n## 推荐使用方式\n\n| 你想做什么 | 建议读哪些章节 |\n|-----------|--------------|\n| 入门人形/四足控制的数学语言 | Ch 3 → Ch 5 → Ch 8 → Ch 11 |\n| 实现 IK 求解器 | Ch 6（数值法部分）+ 配套 Python 库 |\n| 理解 Pinocchio / TSID 的内部实现 | Ch 3, 4, 5, 8（PoE + Spatial Vectors） |\n| 写传统采样规划（RRT/PRM） | Ch 10 |\n| 学抓取力学 | Ch 12 + [friction-cone.md](../formalizations/friction-cone.md) |\n\n## 关联页面\n\n- [SE(3) Representation](../formalizations/se3-representation.md) — 教材 Ch 3 对应的形式化\n- [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 教材 Ch 8 在浮基系统上的延伸\n- [Whole-Body Control](../concepts/whole-body-control.md) — 教材 Ch 11 控制章节的现代延伸\n- [Pinocchio](./pinocchio.md) — 直接使用本教材数学语言的现代机器人库\n- [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本\n\n## 参考来源\n\n- [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)\n- Lynch, K. M., & Park, F. C. (2017). *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press.\n- [Northwestern Mechatronics Wiki — Modern Robotics](https://hades.mech.northwestern.edu/index.php/Modern_Robotics)\n- [PDF (官方免费)](https://hades.mech.northwestern.edu/images/7/7f/MR.pdf)",
+      "tags": [
+        "entities",
+        "entity",
+        "control",
+        "dynamics",
+        "optimization",
+        "rl"
+      ],
+      "related": [
+        "wiki-formalizations-se3-representation",
+        "wiki-concepts-floating-base-dynamics",
+        "wiki-concepts-whole-body-control",
+        "entity-pinocchio",
+        "wiki-methods-trajectory-optimization",
+        "wiki-concepts-tsid",
+        "wiki-concepts-impedance-control",
+        "wiki-formalizations-friction-cone",
+        "wiki-formalizations-contact-wrench-cone",
+        "sources-papers-modern-robotics-textbook"
+      ],
+      "source_links": [
+        "https://hades.mech.northwestern.edu/index.php/Modern_Robotics",
+        "https://hades.mech.northwestern.edu/images/7/7f/MR.pdf"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/modern_robotics_textbook.md"
     },
     {
       "id": "entity-motrix",
