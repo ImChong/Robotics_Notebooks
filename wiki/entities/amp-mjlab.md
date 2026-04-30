@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-29
 related:
   - ../methods/amp-reward.md
+  - ./mjlab.md
   - ./unitree-g1.md
   - ./legged-gym.md
   - ../methods/imitation-learning.md
@@ -59,6 +60,7 @@ AMP_mjlab 是 [AMP & HumanX](../methods/amp-reward.md) 方法的一个具体实�
 ## 关联页面
 
 - [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体
+- [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）
 - [Unitree G1](./unitree-g1.md) — 目标硬件
 - [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym
 - [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式

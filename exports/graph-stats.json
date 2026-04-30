@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-04-29",
-  "node_count": 219,
-  "edge_count": 1285,
+  "generated_at": "2026-04-30",
+  "node_count": 221,
+  "edge_count": 1298,
   "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 79
+      "degree": 80
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL, 强化学习)",
-      "degree": 77
+      "degree": 78
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -59,8 +59,8 @@
   "type_distribution": {
     "method": 49,
     "concept": 43,
+    "entity": 40,
     "query": 40,
-    "entity": 38,
     "formalization": 22,
     "comparison": 14,
     "task": 9,
@@ -69,20 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 79,
-    "Whole-Body Control (WBC) 社区": 59,
-    "Manipulation 社区": 45,
-    "人形机器人（Humanoid Robot） 社区": 13,
+    "Locomotion 社区": 93,
+    "Whole-Body Control (WBC) 社区": 61,
+    "Manipulation 社区": 39,
     "实时运控中间件配置指南 社区": 8,
-    "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
+    "Roboto Origin（开源人形机器人基线） 社区": 6,
+    "Action Tokenization (动作分词) 社区": 6,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.361,
+    "largest_community_ratio": 0.421,
     "community_quality_warning": false
   }
 }

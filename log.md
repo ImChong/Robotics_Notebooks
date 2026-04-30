@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-04-30] ingest | sources/repos/mjlab.md + unitree_rl_mjlab.md — 接入 mjlab 框架及 Unitree 官方 RL 实现
+
+- mjlab (mujocolab/mjlab)：Isaac Lab API + MuJoCo Warp 轻量 RL 框架，2.2k stars，论文 arXiv:2601.22074
+- unitree_rl_mjlab (unitreerobotics)：Unitree 官方基于 mjlab 的 RL 框架，支持 Go2/G1/H1_2/H2 等 7 款机型
+- 沉淀：新增 wiki/entities/mjlab.md 与 wiki/entities/unitree-rl-mjlab.md
+- 更新 wiki/entities/amp-mjlab.md 补充 mjlab 关联链接
+- 图谱更新：221 节点 / 1298 边
+
 ## [2026-04-29] ingest | sources/repos/amp_mjlab.md — 接入 ccrpRepo/AMP_mjlab，沉淀 wiki/entities/amp-mjlab.md，更新 wiki/methods/amp-reward.md 交叉引用
 
 - 仓库：https://github.com/ccrpRepo/AMP_mjlab

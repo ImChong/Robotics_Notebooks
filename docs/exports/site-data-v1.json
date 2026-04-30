@@ -5387,7 +5387,7 @@
         "type": "entity_page",
         "path": "wiki/entities/amp-mjlab.md",
         "summary": "type: entity。",
-        "content_markdown": "---\ntype: entity\ntags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../methods/amp-reward.md\n  - ./unitree-g1.md\n  - ./legged-gym.md\n  - ../methods/imitation-learning.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/amp_mjlab.md\nsummary: \"AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。\"\n---\n\n# AMP_mjlab (G1 统一 AMP 策略)\n\n**AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。\n\n## 为什么重要？\n\n传统做法需要维护独立的 \"locomotion 策略\" 和 \"recovery 策略\"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。\n\n## 核心架构\n\n```\nAMP_mjlab 统一训练\n├── Actor-Critic 网络（单一策略）\n│   ├── 速度跟踪奖励（locomotion 目标）\n│   └── AMP 风格奖励（自然度）\n├── AMP Discriminator\n│   ├── 参考数据：WalkandRun clip\n│   └── 参考数据：Recovery clip（跌倒恢复）\n└── Delayed Termination\n    └── 部分 env 在 reset 前给 recovery 窗口\n```\n\n**关键机制：Delayed Termination**——不立即 reset 跌倒的 env，而是给策略一个时间窗口尝试自主恢复，迫使策略学习爬起行为。\n\n## 训练特征\n\n- **规模**：4096 并行环境\n- **收敛特征**：约 2 万步时 recovery 行为突然涌现，loss 指标跳变属正常\n- **任务**：`Unitree-G1-AMP-Rough` / `Unitree-G1-AMP-Flat`\n- **部署**：ONNX export，训练与推理 pipeline 一致\n\n## 与 AMP 方法的关系\n\nAMP_mjlab 是 [AMP & HumanX](../methods/amp-reward.md) 方法的一个具体实现，区别在于：\n\n| 维度 | AMP 原论文 | AMP_mjlab |\n|------|-----------|-----------|\n| 硬件目标 | 角色控制（通用） | Unitree G1（人形） |\n| 仿真框架 | IsaacGym / PhysX | mjlab（MuJoCo） |\n| 任务范围 | 单一风格 | Locomotion + Recovery 统一 |\n| 训练库 | 各异 | rsl_rl (PPO) |\n\n## 关联页面\n\n- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体\n- [Unitree G1](./unitree-g1.md) — 目标硬件\n- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym\n- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)\n- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)",
+        "content_markdown": "---\ntype: entity\ntags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ../methods/amp-reward.md\n  - ./mjlab.md\n  - ./unitree-g1.md\n  - ./legged-gym.md\n  - ../methods/imitation-learning.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/amp_mjlab.md\nsummary: \"AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。\"\n---\n\n# AMP_mjlab (G1 统一 AMP 策略)\n\n**AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。\n\n## 为什么重要？\n\n传统做法需要维护独立的 \"locomotion 策略\" 和 \"recovery 策略\"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。\n\n## 核心架构\n\n```\nAMP_mjlab 统一训练\n├── Actor-Critic 网络（单一策略）\n│   ├── 速度跟踪奖励（locomotion 目标）\n│   └── AMP 风格奖励（自然度）\n├── AMP Discriminator\n│   ├── 参考数据：WalkandRun clip\n│   └── 参考数据：Recovery clip（跌倒恢复）\n└── Delayed Termination\n    └── 部分 env 在 reset 前给 recovery 窗口\n```\n\n**关键机制：Delayed Termination**——不立即 reset 跌倒的 env，而是给策略一个时间窗口尝试自主恢复，迫使策略学习爬起行为。\n\n## 训练特征\n\n- **规模**：4096 并行环境\n- **收敛特征**：约 2 万步时 recovery 行为突然涌现，loss 指标跳变属正常\n- **任务**：`Unitree-G1-AMP-Rough` / `Unitree-G1-AMP-Flat`\n- **部署**：ONNX export，训练与推理 pipeline 一致\n\n## 与 AMP 方法的关系\n\nAMP_mjlab 是 [AMP & HumanX](../methods/amp-reward.md) 方法的一个具体实现，区别在于：\n\n| 维度 | AMP 原论文 | AMP_mjlab |\n|------|-----------|-----------|\n| 硬件目标 | 角色控制（通用） | Unitree G1（人形） |\n| 仿真框架 | IsaacGym / PhysX | mjlab（MuJoCo） |\n| 任务范围 | 单一风格 | Locomotion + Recovery 统一 |\n| 训练库 | 各异 | rsl_rl (PPO) |\n\n## 关联页面\n\n- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体\n- [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）\n- [Unitree G1](./unitree-g1.md) — 目标硬件\n- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym\n- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)\n- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)",
         "tags": [
           "entities",
           "entity",
@@ -5398,6 +5398,7 @@
         ],
         "related": [
           "wiki-methods-amp-reward",
+          "entity-mjlab",
           "entity-unitree-g1",
           "entity-legged-gym",
           "wiki-methods-imitation-learning",
@@ -5877,6 +5878,35 @@
         "source_links": [],
         "status": "active"
       },
+      "entity-mjlab": {
+        "id": "entity-mjlab",
+        "title": "mjlab (轻量 GPU 加速 RL 框架)",
+        "type": "entity_page",
+        "path": "wiki/entities/mjlab.md",
+        "summary": "type: entity。",
+        "content_markdown": "---\ntype: entity\ntags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./mujoco.md\n  - ./isaac-gym-isaac-lab.md\n  - ./legged-gym.md\n  - ./amp-mjlab.md\n  - ./unitree-rl-mjlab.md\n  - ../methods/reinforcement-learning.md\nsources:\n  - ../../sources/repos/mjlab.md\nsummary: \"mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU 加速物理）融合，是一个不依赖 Isaac Sim 的轻量 RL 框架，也是 AMP_mjlab 和 unitree_rl_mjlab 的底层依赖。\"\n---\n\n# mjlab (轻量 GPU 加速 RL 框架)\n\n**mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp**（GPU 并行物理）结合，在不依赖 NVIDIA Isaac Sim 的前提下提供与 Isaac Lab 相似的开发体验。\n\n有对应研究论文：Zakka et al. (2026) arXiv:2601.22074。\n\n## 为什么重要？\n\nIsaac Lab API 是当前 RL 机器人训练的优秀抽象，但它绑定了 Isaac Sim——部署重、商业授权复杂。mjlab 将这套 API 移植到 MuJoCo Warp 之上：\n\n- 保留熟悉的任务管理器 / 奖励管理器 / 观测管理器接口\n- 替换底层为开源、轻量的 MuJoCo Warp\n- 安装极简（PyPI 包 + `uv sync`）\n- 对 macOS 提供有限评估支持（无 GPU 训练）\n\n## 架构\n\n```\nmjlab 架构\n├── API 层（Isaac Lab manager-based 设计）\n│   ├── SceneManager       # 场景/资产管理\n│   ├── ActionManager      # 动作空间\n│   ├── ObservationManager # 观测空间\n│   └── RewardManager      # 奖励函数组合\n└── 物理层\n    └── MuJoCo Warp        # GPU 并行刚体仿真\n```\n\n## 核心能力\n\n| 能力 | 说明 |\n|------|------|\n| 速度跟踪 | humanoid / 四足速度指令跟踪，flat / rough terrain |\n| 动作模仿 | 参考运动数据驱动的 motion imitation |\n| 多 GPU 训练 | 分布式 multi-GPU scaling |\n| 实验追踪 | 集成 Weights & Biases |\n| Dummy agent | 零动作 / 随机动作快速 sanity check |\n\n## 与其他仿真框架的定位\n\n| 维度 | mjlab | Isaac Lab | legged_gym | Genesis |\n|------|-------|-----------|------------|---------|\n| 物理后端 | MuJoCo Warp | Isaac Sim (PhysX) | Isaac Gym | 自研多物理 |\n| API 风格 | Isaac Lab（移植） | 原生 Isaac Lab | 简单脚本 | Pythonic |\n| 依赖重量 | 轻（pip 安装） | 重（Isaac Sim） | 重（IsaacGym） | 中 |\n| 开源授权 | Apache 2.0 | BSD-3 | BSD-3 | Apache 2.0 |\n| 上层框架 | AMP_mjlab、unitree_rl_mjlab | robot_lab | legged_gym 生态 | — |\n\n## 关联页面\n\n- [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 MuJoCo Warp）\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — API 设计来源\n- [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym\n- [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现\n- [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架\n- [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式\n\n## 参考来源\n\n- [sources/repos/mjlab.md](../../sources/repos/mjlab.md)\n- [mujocolab/mjlab GitHub Repo](https://github.com/mujocolab/mjlab)\n- Zakka et al. (2026), arXiv:2601.22074",
+        "tags": [
+          "entities",
+          "entity",
+          "humanoid",
+          "locomotion",
+          "rl",
+          "tooling"
+        ],
+        "related": [
+          "entity-mujoco",
+          "entity-isaac-gym-isaac-lab",
+          "entity-legged-gym",
+          "entity-amp-mjlab",
+          "entity-unitree-rl-mjlab",
+          "wiki-methods-reinforcement-learning",
+          "sources-repos-mjlab"
+        ],
+        "source_links": [
+          "https://github.com/mujocolab/mjlab"
+        ],
+        "status": "active"
+      },
       "entity-motrix": {
         "id": "entity-motrix",
         "title": "Motrix (Motphys 机器人仿真与训练平台)",
@@ -6286,6 +6316,35 @@
           "wiki-methods-smp"
         ],
         "source_links": [],
+        "status": "active"
+      },
+      "entity-unitree-rl-mjlab": {
+        "id": "entity-unitree-rl-mjlab",
+        "title": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+        "type": "entity_page",
+        "path": "wiki/entities/unitree-rl-mjlab.md",
+        "summary": "type: entity。",
+        "content_markdown": "---\ntype: entity\ntags: [repo, framework, unitree, mjlab, mujoco, reinforcement-learning, sim2real, humanoid, locomotion]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./mjlab.md\n  - ./unitree.md\n  - ./unitree-g1.md\n  - ./amp-mjlab.md\n  - ./legged-gym.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/unitree_rl_mjlab.md\nsummary: \"unitree_rl_mjlab 是 Unitree 官方基于 mjlab 的 RL 训练框架，支持 Go2/G1/H1_2 等 7 款机型，覆盖速度跟踪与动作模仿，内建 ONNX 导出到 C++ 真机部署的完整链路。\"\n---\n\n# unitree_rl_mjlab (Unitree 官方 RL 框架)\n\n**unitree_rl_mjlab** 是由 Unitree Robotics 官方维护的强化学习训练框架，以 **mjlab**（Isaac Lab API + MuJoCo Warp）为底层，覆盖旗下 7 款机器人型号，提供从仿真训练到真机部署的完整 pipeline。\n\n## 为什么重要？\n\n这是 Unitree 的**官方推荐**训练路线之一，与社区框架（legged_gym、AMP_mjlab）的关键区别：\n\n- **官方维护**：与 Unitree SDK、ONNX 部署链路深度整合\n- **多机型覆盖**：单框架支持四足（Go2）和人形（G1、H1_2、H2 等）\n- **完整 Sim2Real 链路**：训练 → ONNX 导出 → C++ 编译 → 真机部署，有明确的操作步骤\n\n## 支持机器人\n\nGo2、A2、As2、**G1**、R1、**H1_2**、**H2**（共 7 款，含主流人形）\n\n## 训练任务\n\n| 任务类型 | 示例环境 |\n|---------|---------|\n| 速度跟踪（Velocity Tracking） | `Unitree-G1-Flat` |\n| 动作模仿（Motion Imitation） | `Unitree-G1-Tracking-No-State-Estimation` |\n\n训练规模：支持 4096 个并行环境（GPU 加速）。\n\n## Sim2Real 部署链路\n\n```\nMuJoCo 并行训练\n    ↓ ONNX 导出\nC++ 控制程序编译\n（cyclonedds + unitree_sdk2）\n    ↓\nunitree_mujoco 仿真验证\n    ↓\n真机部署\n（以太网 192.168.123.222，调试模式）\n```\n\n关键依赖：**cyclonedds**（DDS 通信）、**unitree_sdk2**（机器人接口）。\n\n## 与相关框架的对比\n\n| 维度 | unitree_rl_mjlab | AMP_mjlab | legged_gym | robot_lab |\n|------|-----------------|-----------|------------|-----------|\n| 维护方 | Unitree 官方 | 社区 | ETH RSL | 个人 |\n| 底层仿真 | mjlab（MuJoCo Warp） | mjlab | IsaacGym | IsaacLab |\n| 支持机型 | Unitree 7 款 | G1 | 通用 | 26+ |\n| 核心任务 | 速度跟踪 + 动作模仿 | AMP + recovery | 速度跟踪 | 速度跟踪 + AMP Dance |\n| 部署链路 | ONNX → C++（官方） | ONNX | 各异 | 各异 |\n\n## 关联页面\n\n- [mjlab](./mjlab.md) — 底层框架（Isaac Lab API + MuJoCo Warp）\n- [Unitree](./unitree.md) — 品牌主页\n- [Unitree G1](./unitree-g1.md) — 主要人形目标机型\n- [AMP_mjlab](./amp-mjlab.md) — 同基于 mjlab 的社区 AMP 实现\n- [legged_gym](./legged-gym.md) — 同类框架，基于 IsaacGym\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/unitree_rl_mjlab.md](../../sources/repos/unitree_rl_mjlab.md)\n- [unitreerobotics/unitree_rl_mjlab GitHub Repo](https://github.com/unitreerobotics/unitree_rl_mjlab)",
+        "tags": [
+          "entities",
+          "entity",
+          "humanoid",
+          "locomotion",
+          "rl",
+          "sim2real"
+        ],
+        "related": [
+          "entity-mjlab",
+          "entity-unitree",
+          "entity-unitree-g1",
+          "entity-amp-mjlab",
+          "entity-legged-gym",
+          "wiki-tasks-locomotion",
+          "sources-repos-unitree-rl-mjlab"
+        ],
+        "source_links": [
+          "https://github.com/unitreerobotics/unitree_rl_mjlab"
+        ],
         "status": "active"
       },
       "entity-unitree": {
