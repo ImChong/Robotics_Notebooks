@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-04-30",
-  "node_count": 225,
-  "edge_count": 1348,
+  "node_count": 226,
+  "edge_count": 1359,
   "community_count": 8,
   "top_hubs": [
     {
@@ -17,7 +17,7 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 71
+      "degree": 72
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -59,7 +59,7 @@
   "type_distribution": {
     "method": 52,
     "concept": 43,
-    "entity": 41,
+    "entity": 42,
     "query": 40,
     "formalization": 22,
     "comparison": 14,
@@ -69,9 +69,9 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 95,
-    "Whole-Body Control (WBC) 社区": 58,
-    "Manipulation 社区": 46,
+    "Locomotion 社区": 97,
+    "Whole-Body Control (WBC) 社区": 56,
+    "Manipulation 社区": 47,
     "实时运控中间件配置指南 社区": 8,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
@@ -82,7 +82,7 @@
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.422,
+    "largest_community_ratio": 0.429,
     "community_quality_warning": false
   }
 }

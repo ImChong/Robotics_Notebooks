@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-04-30] ingest | sources/papers/modern_robotics_textbook.md — 接入 Lynch & Park《Modern Robotics》经典教材
+
+- 来源：https://hades.mech.northwestern.edu/images/7/7f/MR.pdf
+- 内容：13 章覆盖 C-space → 刚体运动 → 运动学 → 动力学 → 轨迹 → 规划 → 控制 → 抓取 → 移动机器人，全程使用李群 / 螺旋理论统一语言
+- 沉淀：新增 `wiki/entities/modern-robotics-book.md`（章节地图与本知识库的对应关系）
+- 在 `wiki/formalizations/se3-representation.md` 与 `wiki/concepts/floating-base-dynamics.md` 补充本教材作为参考来源
+- 图谱更新：226 节点 / 1359 边
+
 ## [2026-04-30] ingest | sources/repos/mjlab.md + unitree_rl_mjlab.md — 接入 mjlab 框架及 Unitree 官方 RL 实现
 
 - mjlab (mujocolab/mjlab)：Isaac Lab API + MuJoCo Warp 轻量 RL 框架，2.2k stars，论文 arXiv:2601.22074

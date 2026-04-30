@@ -354,10 +354,13 @@ floating base 系统还有一个麻烦点：
 - Featherstone, *Rigid Body Dynamics Algorithms* — 浮基动力学核心算法参考（RNEA/CRBA/ABA/空间向量代数）
 - Orin et al., *Centroidal Dynamics of a Humanoid Robot* (2013) — 人形浮基系统质心动力学
 - Siciliano et al., *Robotics: Modelling, Planning and Control* — 机器人动力学建模教材
+- Lynch & Park (2017), *Modern Robotics*. Ch 8 *Dynamics of Open Chains* — 用李群 / 螺旋理论给出 Lagrange 与 Newton-Euler 形式的统一推导，本科级入口
+- [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
 
 ## 推荐继续阅读
 
 - Featherstone, *Rigid Body Dynamics Algorithms*
+- [Modern Robotics 教材](../entities/modern-robotics-book.md)
 - [Centroidal Dynamics](./centroidal-dynamics.md)
 - [TSID](./tsid.md)
 - [State Estimation](./state-estimation.md)
