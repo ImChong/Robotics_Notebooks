@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 267,
+  "item_count": 268,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -374,7 +374,7 @@
       "title": "EtherCAT 协议基础",
       "path": "wiki/concepts/ethercat-protocol.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [middleware, hardware, protocol, ethercat, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../queries/ethercat-master-optimization.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。\"\n---\n\n# EtherCAT 协议基础\n\n**EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而无法保证实时性的问题，将带宽利用率发挥到了物理极限。\n\n## 核心机制：On-the-fly 处理\n\n不同于普通网络每个节点都要接收并解析报文，在 EtherCAT 中：\n1. 主站发出的以太网帧像一列火车一样穿过所有从站。\n2. 每个从站（电机驱动器）在报文经过的瞬间，**“在运行中”** 提取属于自己的指令，并把自己当前的位置/扭矩数据塞入报文对应的位置。\n3. 报文到达链尾后原路折返。\n\n这使得 100 个轴的刷新周期可以轻松突破 **250微秒**。\n\n## 关键特性\n\n- **分布式时钟 (DC)**：支持多轴之间纳秒级的同步精度。\n- **拓扑灵活**：支持线型、树型、星型拓扑，对人形机器人布线极其友好。\n- **协议栈**：\n  - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。\n\n## 关联页面\n- [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n- EtherCAT Technology Group (ETG) 官方白皮书。",
+      "content_markdown": "---\ntype: concept\ntags: [middleware, hardware, protocol, ethercat, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../queries/ethercat-master-optimization.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ../formalizations/control-loop-latency-modeling.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。\"\n---\n\n# EtherCAT 协议基础\n\n**EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而无法保证实时性的问题，将带宽利用率发挥到了物理极限。\n\n## 核心机制：On-the-fly 处理\n\n不同于普通网络每个节点都要接收并解析报文，在 EtherCAT 中：\n1. 主站发出的以太网帧像一列火车一样穿过所有从站。\n2. 每个从站（电机驱动器）在报文经过的瞬间，**“在运行中”** 提取属于自己的指令，并把自己当前的位置/扭矩数据塞入报文对应的位置。\n3. 报文到达链尾后原路折返。\n\n这使得 100 个轴的刷新周期可以轻松突破 **250微秒**。\n\n## 关键特性\n\n- **分布式时钟 (DC)**：支持多轴之间纳秒级的同步精度。\n- **拓扑灵活**：支持线型、树型、星型拓扑，对人形机器人布线极其友好。\n- **协议栈**：\n  - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。\n\n## 关联页面\n- [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n\n## 参考来源\n- EtherCAT Technology Group (ETG) 官方白皮书。",
       "tags": [
         "concept",
         "control",
@@ -384,7 +384,8 @@
       ],
       "related": [
         "wiki-queries-ethercat-master-optimization",
-        "wiki-queries-real-time-control-middleware-guide"
+        "wiki-queries-real-time-control-middleware-guide",
+        "wiki-formalizations-control-loop-latency-modeling"
       ],
       "source_links": [],
       "status": "active",
@@ -420,7 +421,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -452,7 +453,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -652,7 +653,7 @@
       "title": "LCM (Lightweight Communications and Marshalling) 基础",
       "path": "wiki/concepts/lcm-basics.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [middleware, software, lcm, communication, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"LCM（Lightweight Communications and Marshalling）是一款极致轻量的机器人中间件，以低延迟 UDP 组播为核心，是高性能足式机器人底层运控的事实标准。\"\n---\n\n# LCM (Lightweight Communications and Marshalling) 基础\n\n**LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。\n\n## 核心设计哲学\n\n1. **UDP 组播 (Multicast)**：数据像无线电广播一样发出去，谁需要谁就收。没有 TCP 的握手和重传，保证了**最新数据**的绝对实时性。\n2. ** मार्शल (Marshalling)**：提供了一套类似 JSON 但更紧凑的 IDL（接口描述语言），自动生成 C++/Python/Java 的强类型代码。\n3. **零配置**：不需要后台进程（Daemon），只要在同一个局域网内，程序跑起来就能互相通信。\n\n## 为什么高性能运控选 LCM？\n\n在 [1kHz 的实时控制环路](../queries/real-time-control-middleware-guide.md)中：\n- ROS 2/DDS 的复杂 QoS 检查会带来 2-5ms 的随机抖动（Jitter）。\n- LCM 的延迟通常稳定在 **< 100微秒**。\n\n## 关联页面\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n- Huang, A. S., et al. (2010). *LCM: Lightweight Communications and Marshalling*.",
+      "content_markdown": "---\ntype: concept\ntags: [middleware, software, lcm, communication, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ../formalizations/control-loop-latency-modeling.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"LCM（Lightweight Communications and Marshalling）是一款极致轻量的机器人中间件，以低延迟 UDP 组播为核心，是高性能足式机器人底层运控的事实标准。\"\n---\n\n# LCM (Lightweight Communications and Marshalling) 基础\n\n**LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。\n\n## 核心设计哲学\n\n1. **UDP 组播 (Multicast)**：数据像无线电广播一样发出去，谁需要谁就收。没有 TCP 的握手和重传，保证了**最新数据**的绝对实时性。\n2. ** मार्शल (Marshalling)**：提供了一套类似 JSON 但更紧凑的 IDL（接口描述语言），自动生成 C++/Python/Java 的强类型代码。\n3. **零配置**：不需要后台进程（Daemon），只要在同一个局域网内，程序跑起来就能互相通信。\n\n## 为什么高性能运控选 LCM？\n\n在 [1kHz 的实时控制环路](../queries/real-time-control-middleware-guide.md)中：\n- ROS 2/DDS 的复杂 QoS 检查会带来 2-5ms 的随机抖动（Jitter）。\n- LCM 的延迟通常稳定在 **< 100微秒**。\n\n## 关联页面\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n\n## 参考来源\n- Huang, A. S., et al. (2010). *LCM: Lightweight Communications and Marshalling*.",
       "tags": [
         "concept",
         "control",
@@ -660,7 +661,8 @@
       ],
       "related": [
         "wiki-comparisons-ros2-vs-lcm",
-        "wiki-queries-real-time-control-middleware-guide"
+        "wiki-queries-real-time-control-middleware-guide",
+        "wiki-formalizations-control-loop-latency-modeling"
       ],
       "source_links": [],
       "status": "active",
@@ -693,7 +695,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -725,7 +727,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -755,7 +757,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -787,7 +789,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -852,7 +854,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -971,7 +973,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1005,7 +1007,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1138,7 +1140,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1236,7 +1238,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2134,7 +2136,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2169,7 +2171,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-motion-retargeting-gmr",
@@ -2353,7 +2355,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2715,7 +2717,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/state_estimation.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2842,7 +2844,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2879,7 +2881,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2917,7 +2919,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -3552,6 +3554,33 @@
         "wiki-concepts-centroidal-dynamics",
         "sources-papers-contact-dynamics",
         "sources-papers-whole-body-control"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
+      "id": "wiki-formalizations-control-loop-latency-modeling",
+      "title": "控制环路延迟建模 (Control Loop Latency Modeling)",
+      "path": "wiki/formalizations/control-loop-latency-modeling.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ntags: [real-time, control, hardware, latency, middleware, math]\nstatus: complete\nupdated: 2026-04-30\nrelated:\n  - ../concepts/ethercat-protocol.md\n  - ../concepts/lcm-basics.md\n  - ../concepts/ros2-basics.md\n  - ../concepts/sim2real.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。\"\n---\n\n# 控制环路延迟建模 (Control Loop Latency Modeling)\n\n**控制环路延迟建模** 把一次「读传感 → 算策略 → 写力矩」的闭环拆解成若干段独立的延迟分量，用随机变量与卷积刻画端到端时延及抖动，从而把\"机器人为什么在真机上抽搐\"这种工程现象变成一个可定量分析、可优化的数学问题。\n\n## 为什么要形式化\n\n在仿真里，控制器假设当前观测 $o_t$ 和下一时刻的力矩指令 $\\tau_{t+1}$ 之间没有延迟。但在真机上：\n\n- 传感数据通过总线到达 CPU 需要时间；\n- 策略推理本身要 $\\sim\\!\\text{ms}$ 级算力；\n- 内核调度可能让控制线程被抢占；\n- 力矩指令再经过一次总线才能到达驱动器。\n\n如果不把这条链路写成一个公式，工程师就只能凭\"感觉\"调控制频率；写下来之后，**最坏情况延迟 $T_{\\max}$、控制带宽 $\\omega_c$、抖动方差 $\\sigma^2$** 之间的换算关系就一目了然。\n\n## 端到端延迟的加性分解\n\n设一次控制环路的总延迟为 $T_{\\text{loop}}$，按物理路径分解为 5 段：\n\n$$\nT_{\\text{loop}} = T_{\\text{sense}} + T_{\\text{bus,up}} + T_{\\text{compute}} + T_{\\text{sched}} + T_{\\text{bus,dn}}\n$$\n\n| 分量 | 含义 | 典型量级 |\n|------|------|---------|\n| $T_{\\text{sense}}$ | 传感器自身的采样、滤波、ADC 转换 | $50\\ \\mu s\\sim 1\\ ms$ |\n| $T_{\\text{bus,up}}$ | 从驱动器/IMU 经 EtherCAT/CAN 到 CPU | $0.25\\sim 2\\ ms$ |\n| $T_{\\text{compute}}$ | 策略前向 / WBC QP / 状态估计 | $0.5\\sim 10\\ ms$ |\n| $T_{\\text{sched}}$ | 内核调度抖动 + 上下文切换 | $0.05\\sim 5\\ ms$ |\n| $T_{\\text{bus,dn}}$ | 力矩指令从 CPU 经总线写回驱动器 | $0.25\\sim 2\\ ms$ |\n\n每一项都是随机变量，其分布通常**右偏**（minor 多数样本接近均值，少数长尾）。把它们近似为相互独立，则总延迟分布是各分量分布的卷积：\n\n$$\np_{T_{\\text{loop}}}(t) = \\big(p_{\\text{sense}} \\ast p_{\\text{bus,up}} \\ast p_{\\text{compute}} \\ast p_{\\text{sched}} \\ast p_{\\text{bus,dn}}\\big)(t)\n$$\n\n期望和方差可加：\n\n$$\n\\mathbb{E}[T_{\\text{loop}}] = \\sum_i \\mu_i, \\qquad \\mathrm{Var}[T_{\\text{loop}}] = \\sum_i \\sigma_i^2\n$$\n\n实时系统真正关心的是 99% 或 99.9% 分位 $T_{\\text{loop}}^{(p)}$，它必须严格小于一个控制周期 $T_{\\text{ctrl}} = 1/f_{\\text{ctrl}}$，否则就会发生 **deadline miss**。\n\n## 总线延迟：报文长度模型\n\nEtherCAT、CAN、UDP 等总线的单段延迟可以写成\n\n$$\nT_{\\text{bus}} = T_{\\text{access}} + \\frac{L_{\\text{frame}}}{B} + T_{\\text{prop}}\n$$\n\n其中 $T_{\\text{access}}$ 是介质访问等待（CSMA、DC 同步窗等），$L_{\\text{frame}}$ 是报文长度（bit），$B$ 是链路带宽（bit/s），$T_{\\text{prop}}$ 是物理传播延迟。对于一台 100 关节人形机器人，$L_{\\text{frame}}$ 在 EtherCAT 下约 $1500$ 字节，100 Mbit/s 链路上传输部分约 $120\\ \\mu s$，再加上 $T_{\\text{access}}$ 与从站处理才得到 [EtherCAT 协议](../concepts/ethercat-protocol.md) 实测 $250\\ \\mu s$ 的循环。\n\n## 计算延迟：批量与缓存命中\n\n策略推理的计算延迟近似为\n\n$$\nT_{\\text{compute}} = \\alpha N_{\\text{ops}} + \\beta(1 - h_{\\text{cache}}) + T_{\\text{kernel-launch}}\n$$\n\n- $N_{\\text{ops}}$：网络浮点操作数；$\\alpha$ 与 GPU 实际算力相关；\n- $h_{\\text{cache}} \\in [0, 1]$：缓存命中率；缓存抖动会把均值抬高 $\\beta$；\n- $T_{\\text{kernel-launch}}$：每次 CUDA / NPU 启动的固定开销，对小模型主导。\n\n这个公式直接说明了为什么在真机上\"小网络 + 高频推理\"通常优于\"大网络 + 低频推理\"：$T_{\\text{kernel-launch}}$ 被强行摊到每帧，与 $N_{\\text{ops}}$ 不可加。\n\n## 调度抖动：PREEMPT_RT 的形式化角色\n\n在标准 Linux 中，$T_{\\text{sched}}$ 的尾部由非自愿上下文切换、SoftIRQ、ksoftirqd 等支配，呈现重尾分布。开 [PREEMPT_RT](../queries/real-time-control-middleware-guide.md) 后，调度延迟近似为：\n\n$$\nT_{\\text{sched}}^{(p)} \\approx T_{\\text{wcl}} = \\max\\Big( \\text{IRQ-off windows} \\Big) + T_{\\text{wakeup}}\n$$\n\n其中 $T_{\\text{wcl}}$（worst-case latency）可由 `cyclictest` 长时间运行测得。CPU 隔离 (`isolcpus`, `nohz_full`, `rcu_nocbs`) 的目标就是把上式中 IRQ-off 窗口压到只剩硬件中断必经的几十微秒。\n\n## 端到端延迟与控制带宽的关系\n\n把控制环路看作一个采样系统，**延迟 $T_{\\text{loop}}$ 在频域上等效为一个全通相位滞后**：\n\n$$\nH_{\\text{delay}}(j\\omega) = e^{-j\\omega T_{\\text{loop}}}\n$$\n\n要保证闭环稳定，常用经验法则是相位裕度 $\\geq 60^\\circ$，即\n\n$$\n\\omega_c \\cdot T_{\\text{loop}} \\leq \\tfrac{\\pi}{6} \\quad\\Longleftrightarrow\\quad \\omega_c \\leq \\frac{\\pi}{6\\, T_{\\text{loop}}}\n$$\n\n也就是说，端到端延迟 $5\\ ms$ 对应的可用控制带宽上限约 $\\omega_c \\approx 105\\ \\text{rad/s} \\approx 17\\ \\text{Hz}$。**抖动 $\\sigma$ 也必须计入**：把 $T_{\\text{loop}}$ 替换为 $\\mathbb{E}[T_{\\text{loop}}] + 3\\sigma$ 即可拿到一个保守的可用带宽估计。\n\n## 与采样定理的连接\n\n控制周期 $T_{\\text{ctrl}}$ 与端到端延迟必须满足：\n\n$$\nT_{\\text{loop}}^{(p)} < T_{\\text{ctrl}} < \\frac{1}{2 \\omega_c / (2\\pi)}\n$$\n\n左半部分保证不丢周期（实时约束），右半部分保证不混叠（Nyquist）。这两个不等式结合在一起就给出了\"控制频率不是越高越好\"的形式化解释：当 $T_{\\text{ctrl}}$ 接近 $T_{\\text{loop}}^{(p)}$ 时，deadline miss 概率指数级增长，反而不如降一档频率换取低抖动。\n\n## 工程检查清单\n\n把上述形式化落到实物上，最终通常归结为四组测量：\n\n1. 用示波器或 DC 时间戳测量 $\\mathbb{E}[T_{\\text{bus}}]$ 与最坏情况；\n2. 在控制循环里打 `clock_gettime(CLOCK_MONOTONIC_RAW)` 时间戳，统计 $T_{\\text{compute}}$ 的 99 分位；\n3. 用 `cyclictest --priority=98 --duration=1h` 测 $T_{\\text{sched}}$ 长尾；\n4. 把上面三组分布做卷积或直接把对应时间戳相加，得到 $T_{\\text{loop}}$ 的经验分布并和 $T_{\\text{ctrl}}$ 对比。\n\n## 方法局限性\n\n- **独立性假设过强**：真实系统中计算延迟与调度延迟会强相关（高负载同时拖累两者），卷积只是一阶近似。\n- **加性分解漏掉了反馈耦合**：一些 OS 调度策略会在丢周期后追赶下一帧，使得短期内\"看起来正常\"但相位仍偏。\n- **频域线性近似**：$e^{-j\\omega T}$ 假设 $T$ 是常数，对显著抖动的系统可能要走 LMI / 时变系统稳定性分析。\n\n## 学这个方法时最该盯住的点\n\n1. **延迟必须按物理段拆**：抖动来自哪一段，对应的工程对策完全不同（总线、内核、模型）。\n2. **均值不重要，分位数才重要**：硬实时只看 $T^{(99.9\\%)}$，看均值会被尾部坑死。\n3. **延迟 ↔ 带宽 ↔ 频率三角**：先固定能容忍的延迟，再反推可用带宽与控制周期，不要反过来定频率。\n\n## 关联页面\n\n- [EtherCAT 协议基础](../concepts/ethercat-protocol.md)\n- [LCM 基础](../concepts/lcm-basics.md)\n- [ROS 2 基础](../concepts/ros2-basics.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- Liu, J., *Real-Time Systems*, Prentice Hall, 2000.\n- Buttazzo, G. C., *Hard Real-Time Computing Systems*, Springer, 2011.\n- Khalil, H. K., *Nonlinear Systems* (Sec. 时间延迟系统稳定性), 3rd ed.",
+      "tags": [
+        "formalization",
+        "control",
+        "optimization",
+        "rl",
+        "il",
+        "sim2real"
+      ],
+      "related": [
+        "wiki-concepts-ethercat-protocol",
+        "wiki-concepts-lcm-basics",
+        "wiki-concepts-ros2-basics",
+        "wiki-concepts-sim2real",
+        "wiki-queries-real-time-control-middleware-guide",
+        "sources-papers-sim2real"
       ],
       "source_links": [],
       "status": "active",
@@ -4625,7 +4654,7 @@
       "title": "实时运控中间件配置指南",
       "path": "wiki/queries/real-time-control-middleware-guide.md",
       "summary": "type: query。",
-      "content_markdown": "---\ntype: query\ntags: [real-time, middleware, deployment, linux, ros2, lcm]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/sim2real-deployment-checklist.md\n  - ../concepts/sim2real.md\nsummary: \"实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。\"\n---\n\n# 实时运控中间件配置指南\n\n> **Query 产物**：本页由以下问题触发：「为什么我的机器人策略在仿真里很完美，上了真机却经常疯狂抽搐？Linux 实时性怎么配置？」\n> 综合来源：[ROS 2 vs LCM 对比](../comparisons/ros2-vs-lcm.md)、[Sim2Real 部署清单](./sim2real-deployment-checklist.md)\n\n---\n\n当你把 RL 或 WBC 控制器部署到真实机器狗或人形机器人上，并且要求控制频率在 500Hz 甚至 1000Hz 时，普通的 Ubuntu 系统已经无法胜任了。系统内核的进程调度、中断处理会产生毫秒级的**抖动 (Jitter)**，导致期望周期的力矩指令迟到，从而在物理世界中转化为机器人的高频“抽搐”甚至失控。\n\n本指南提供了彻底消除这些抖动的底层配置技巧。\n\n## 1. 操作系统层的硬实时：PREEMPT_RT\n\n普通的 Linux 内核是“分时共享”的，一个低优先级的进程或系统中断随时可能抢占你的运控进程。为了实现“硬实时 (Hard Real-time)”，你必须给内核打补丁。\n\n**核心步骤**：\n1. 下载带有 `PREEMPT_RT` 补丁的 Linux 内核源码。\n2. 编译并替换现有内核。\n3. 启动后，在代码中将你的控制线程（如执行策略推理的 while 循环）调度策略设置为 `SCHED_FIFO`，并拉高优先级（例如 `priority = 98`）。\n\n> **提醒**：一旦设置为 `SCHED_FIFO`，如果你的控制循环里写了死循环（忘加 sleep 或 yield），整个系统将卡死，只能拔电源重启。\n\n## 2. 极致性能：CPU 核心隔离 (CPU Isolation)\n\n即便打了 RT 补丁，内核的后台任务（如网络中断、驱动响应）依然可能跑到你的实时核心上捣乱。解决办法是在系统启动层（GRUB）将特定 CPU 核心完全隔离开来。\n\n**GRUB 配置参数示例**：\n`isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3`\n这意味着把 CPU 的核心 2 和 3 完全预留出来，不仅隔离了普通进程，连内核的滴答定时器（tick）和 RCU 回调都屏蔽掉了。\n\n然后在启动你的控制程序时，使用 `taskset -c 2,3 ./my_controller`，强制你的进程“独占”这两颗核心，享受零中断的极致宁静。\n\n## 3. 进程间通信的避坑指南 (Middleware)\n\n即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。\n\n### 避坑 ROS 2 的 DDS\nROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。\n- **后果**：你会在示波器里看到原本应是 1ms 间隔的指令，经常聚集成一坨，然后空窗 3ms。\n\n### 采用共享内存 (Shared Memory) 或 LCM\n- **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。\n- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。\n\n详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n\n## 4. C/C++ 代码本身的禁忌\n\n当线程运行在硬实时核心上时，你所写的每一行代码都不能触发系统调用（System Call）导致线程被挂起。\n\n**绝对禁止的动作**：\n1. **运行时动态内存分配**：禁止使用 `new`、`malloc`，禁止在控制循环里 push_back 到 `std::vector`。所有所需内存必须在进入死循环前预先分配（Reserve）并锁定（`mlockall`）。\n2. **文件 I/O 与终端打印**：禁止在控制循环里 `printf` 或写入 Log 文件。I/O 阻塞是实时的最大杀手。如果要打印，把数据丢进无锁队列，让另一个非实时进程去负责落盘。\n3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。\n\n## 关联页面\n- [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)\n- [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n\n## 参考来源\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)",
+      "content_markdown": "---\ntype: query\ntags: [real-time, middleware, deployment, linux, ros2, lcm]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/sim2real-deployment-checklist.md\n  - ../concepts/sim2real.md\n  - ../formalizations/control-loop-latency-modeling.md\nsummary: \"实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。\"\n---\n\n# 实时运控中间件配置指南\n\n> **Query 产物**：本页由以下问题触发：「为什么我的机器人策略在仿真里很完美，上了真机却经常疯狂抽搐？Linux 实时性怎么配置？」\n> 综合来源：[ROS 2 vs LCM 对比](../comparisons/ros2-vs-lcm.md)、[Sim2Real 部署清单](./sim2real-deployment-checklist.md)\n\n---\n\n当你把 RL 或 WBC 控制器部署到真实机器狗或人形机器人上，并且要求控制频率在 500Hz 甚至 1000Hz 时，普通的 Ubuntu 系统已经无法胜任了。系统内核的进程调度、中断处理会产生毫秒级的**抖动 (Jitter)**，导致期望周期的力矩指令迟到，从而在物理世界中转化为机器人的高频“抽搐”甚至失控。\n\n本指南提供了彻底消除这些抖动的底层配置技巧。\n\n## 1. 操作系统层的硬实时：PREEMPT_RT\n\n普通的 Linux 内核是“分时共享”的，一个低优先级的进程或系统中断随时可能抢占你的运控进程。为了实现“硬实时 (Hard Real-time)”，你必须给内核打补丁。\n\n**核心步骤**：\n1. 下载带有 `PREEMPT_RT` 补丁的 Linux 内核源码。\n2. 编译并替换现有内核。\n3. 启动后，在代码中将你的控制线程（如执行策略推理的 while 循环）调度策略设置为 `SCHED_FIFO`，并拉高优先级（例如 `priority = 98`）。\n\n> **提醒**：一旦设置为 `SCHED_FIFO`，如果你的控制循环里写了死循环（忘加 sleep 或 yield），整个系统将卡死，只能拔电源重启。\n\n## 2. 极致性能：CPU 核心隔离 (CPU Isolation)\n\n即便打了 RT 补丁，内核的后台任务（如网络中断、驱动响应）依然可能跑到你的实时核心上捣乱。解决办法是在系统启动层（GRUB）将特定 CPU 核心完全隔离开来。\n\n**GRUB 配置参数示例**：\n`isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3`\n这意味着把 CPU 的核心 2 和 3 完全预留出来，不仅隔离了普通进程，连内核的滴答定时器（tick）和 RCU 回调都屏蔽掉了。\n\n然后在启动你的控制程序时，使用 `taskset -c 2,3 ./my_controller`，强制你的进程“独占”这两颗核心，享受零中断的极致宁静。\n\n## 3. 进程间通信的避坑指南 (Middleware)\n\n即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。\n\n### 避坑 ROS 2 的 DDS\nROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。\n- **后果**：你会在示波器里看到原本应是 1ms 间隔的指令，经常聚集成一坨，然后空窗 3ms。\n\n### 采用共享内存 (Shared Memory) 或 LCM\n- **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。\n- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。\n\n详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n\n## 4. C/C++ 代码本身的禁忌\n\n当线程运行在硬实时核心上时，你所写的每一行代码都不能触发系统调用（System Call）导致线程被挂起。\n\n**绝对禁止的动作**：\n1. **运行时动态内存分配**：禁止使用 `new`、`malloc`，禁止在控制循环里 push_back 到 `std::vector`。所有所需内存必须在进入死循环前预先分配（Reserve）并锁定（`mlockall`）。\n2. **文件 I/O 与终端打印**：禁止在控制循环里 `printf` 或写入 Log 文件。I/O 阻塞是实时的最大杀手。如果要打印，把数据丢进无锁队列，让另一个非实时进程去负责落盘。\n3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。\n\n## 关联页面\n- [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)\n- [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n\n## 参考来源\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)",
       "tags": [
         "query",
         "control",
@@ -4637,6 +4666,7 @@
         "wiki-comparisons-ros2-vs-lcm",
         "wiki-queries-sim2real-deployment-checklist",
         "wiki-concepts-sim2real",
+        "wiki-formalizations-control-loop-latency-modeling",
         "sources-papers-sim2real"
       ],
       "source_links": [],
@@ -5399,7 +5429,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -5613,7 +5643,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",
