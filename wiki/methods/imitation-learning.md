@@ -88,6 +88,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计
 - Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿
 - AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作
+- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换
 - HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务
 - [[ase]]：对抗技能嵌入
 - CALM：latent 方向控制
