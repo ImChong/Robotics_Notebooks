@@ -67,10 +67,10 @@ WBC 的优势：
 
 代表框架：Openuhan / tsid / exotica
 
-### 3. Learning-based WBC
-用 RL 或 IL 学习全身策略，不依赖精确建模。
+### 3. Learning-based & Generative WBC
+用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。
 
-代表：DeepMimic, ASE, CALM, MimicKit
+代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)
 
 ## 最小代码骨架
 

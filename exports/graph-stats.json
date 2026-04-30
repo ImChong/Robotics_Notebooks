@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-04-29",
-  "node_count": 221,
-  "edge_count": 1316,
+  "generated_at": "2026-04-30",
+  "node_count": 222,
+  "edge_count": 1326,
   "community_count": 8,
   "top_hubs": [
     {
@@ -17,16 +17,16 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
+      "degree": 70
+    },
+    {
+      "id": "wiki/methods/imitation-learning.md",
+      "label": "Imitation Learning (IL, 模仿学习)",
       "degree": 68
     },
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 67
-    },
-    {
-      "id": "wiki/methods/imitation-learning.md",
-      "label": "Imitation Learning (IL, 模仿学习)",
       "degree": 67
     },
     {
@@ -57,7 +57,7 @@
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "method": 50,
+    "method": 51,
     "concept": 43,
     "query": 40,
     "entity": 39,
@@ -69,20 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 138,
-    "Manipulation 社区": 45,
-    "人形机器人（Humanoid Robot） 社区": 12,
+    "Locomotion 社区": 86,
+    "Whole-Body Control (WBC) 社区": 56,
+    "Manipulation 社区": 44,
+    "人形机器人（Humanoid Robot） 社区": 13,
     "实时运控中间件配置指南 社区": 8,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
     "Model-Based RL（基于模型的强化学习） 社区": 6,
-    "VLA 真机部署指南：延迟、异步与加速 社区": 3,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.624,
-    "community_quality_warning": true
+    "largest_community_ratio": 0.387,
+    "community_quality_warning": false
   }
 }
