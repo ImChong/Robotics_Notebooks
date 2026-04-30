@@ -10,12 +10,18 @@
 
 ---
 
+## [2026-04-30] ingest | sources/repos/mjlab.md + unitree_rl_mjlab.md — 接入 mjlab 框架及 Unitree 官方 RL 实现
+
+- mjlab (mujocolab/mjlab)：Isaac Lab API + MuJoCo Warp 轻量 RL 框架，2.2k stars，论文 arXiv:2601.22074
+- unitree_rl_mjlab (unitreerobotics)：Unitree 官方基于 mjlab 的 RL 框架，支持 Go2/G1/H1_2/H2 等 7 款机型
+- 沉淀：新增 wiki/entities/mjlab.md 与 wiki/entities/unitree-rl-mjlab.md
+- 更新 wiki/entities/amp-mjlab.md 补充 mjlab 关联链接
+
 ## [2026-04-29] checklist-v21 | wiki/entities/gel-slim.md — 推进 V21 P1「深化灵巧手感知」
 
 - 新增 `wiki/entities/gel-slim.md`：覆盖硬件特性、迭代脉络、与 GelSight/DIGIT/F-T 等方案的横向对位、仿真建模四种工程折中、在策略学习中的四类用法以及上线工程坑
 - 在 `wiki/concepts/tactile-sensing.md`、`wiki/methods/tactile-impedance-control.md`、`wiki/entities/allegro-hand.md` 建立入链，使 GelSlim 成为触觉学习子图的硬件锚点
 - 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P1「深化灵巧手感知」整组及其子项
-- `make lint` 0 errors；`make graph` 后图谱：221 节点 / 1316 边 / 8 communities，coverage 维持 217/219
 - V21 P1 触觉专题至此全部交付，下一步推进 P2 通信层形式化或 P3 微地图组件
 
 ## [2026-04-29] checklist-v21 | wiki/methods/tactile-impedance-control.md — 推进 V21 P1 触觉与力觉闭环专题
@@ -24,7 +30,6 @@
 - 覆盖：规则化 / 学习式 / 优化型 / 教师-学生四条主要技术路线，时间尺度匹配、滑移检测、摩擦锥安全约束、多指协同四类实现要点，以及四个常见误区
 - 在 `wiki/concepts/impedance-control.md`、`wiki/concepts/tactile-sensing.md`、`wiki/concepts/contact-rich-manipulation.md` 建立入链
 - 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P1「tactile-impedance-control.md」一项
-- `make lint` 全绿（0 errors），P1 子专题剩 `wiki/entities/gel-slim.md` 待补
 
 ## [2026-04-29] ingest | sources/repos/amp_mjlab.md — 接入 ccrpRepo/AMP_mjlab，沉淀 wiki/entities/amp-mjlab.md，更新 wiki/methods/amp-reward.md 交叉引用
 

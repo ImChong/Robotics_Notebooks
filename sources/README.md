@@ -37,6 +37,8 @@
 | [x] [atom01_firmware.md](repos/atom01_firmware.md) | Atom01 固件仓库（板端构建与通信链路） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
 | [x] [gs_playground.md](repos/gs_playground.md) | GS-Playground：批量 3DGS 光真实感并行仿真框架，RSS 2026，10^4 FPS |
+| [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
+| [x] [unitree_rl_mjlab.md](repos/unitree_rl_mjlab.md) | unitree_rl_mjlab：Unitree 官方基于 mjlab 的 RL 训练框架，支持 7 款机型，含 Sim2Real 链路 |
 
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |
