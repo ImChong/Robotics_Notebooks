@@ -31,20 +31,8 @@ jobs:
       - name: Install dependencies
         run: pip install numpy pyyaml
 
-      - name: Lint wiki
-        run: python3 scripts/lint_wiki.py
-
-      - name: Export wiki data
-        run: python3 scripts/export_minimal.py
-
-      - name: Regenerate graph exports
-        run: make graph
-
-      - name: Search regression test
-        run: python3 scripts/eval_search_quality.py
-
-      - name: Export quality check
-        run: python3 scripts/check_export_quality.py
+      - name: Run CI preflight
+        run: python3 scripts/ci_preflight.py
 
       - name: Summary
         if: always()

@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-04-29] lint | health-check | 自动化 wiki 健康检查
+## [2026-04-30] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题：
 
@@ -70,4 +70,4 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-📊 Sources 覆盖率：217/219 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：219/221 (99%) wiki/entity 页有 ingest 来源

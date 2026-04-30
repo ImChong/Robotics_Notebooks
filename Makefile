@@ -1,4 +1,4 @@
-.PHONY: lint catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search
+.PHONY: lint catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
 
 lint:
 	python3 scripts/eval_search_quality.py
@@ -55,3 +55,9 @@ badge:
 
 sync-stats:
 	python3 scripts/sync_all_stats.py
+
+ci-preflight:
+	python3 scripts/ci_preflight.py
+
+ci-check:
+	python3 scripts/ci_preflight.py --check-generated-clean

@@ -150,9 +150,11 @@
 - **每个 wiki 页面必须包含 `## 参考来源` 区块**，标注该页知识编译自哪些原始资料
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
 - **CI 质量网关（必须通过）**：
-  - 提交前必须本地运行 `make lint`，确保 0 issues。
+  - 提交前必须本地运行 `make ci-preflight`，它会按固定顺序同步 `index.md`、`exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 与 `docs/index.html`，然后执行 lint/search/export 检查。
+  - 若只想确认派生文件是否已经全部提交，运行 `make ci-check`；该命令会在重新生成后发现未提交的统计/导出差异并失败。
+  - 不要只手动运行 `make catalog`、`make graph` 或 `make export` 其中一部分；最近的 GitHub Actions 问题主要来自这些派生文件不同步。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
-  - **同步统计数据**：若新增/删除了 wiki 页面，必须按顺序运行 `make catalog`、`make graph` 和 `make export`，并手动更新 `README.md` 与 `docs/index.html` 中的节点/边统计数值，否则 GitHub Actions 会因数据不一致而报错。
+  - **同步统计数据**：若新增/删除了 wiki 页面，必须通过 `make ci-preflight` 同步统计与导出文件，并把本次任务相关的派生文件一起 stage，否则 GitHub Actions 会因数据不一致而报错。
 
 ### Git 提交规范 (Git Commit Convention)
 

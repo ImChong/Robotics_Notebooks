@@ -28,20 +28,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install lightweight dependencies
-        run: pip install pyyaml
+        run: pip install numpy pyyaml
 
-      - name: Lint wiki
-        run: python3 scripts/lint_wiki.py --report
-
-      - name: Update catalog (index.md)
-        run: python3 scripts/generate_page_catalog.py
-
-      - name: Export JSON + sitemap
-        run: python3 scripts/export_minimal.py
-
-      - name: Update link graph and statistics
-        run: |
-          make sync-stats
+      - name: Run CI preflight
+        run: python3 scripts/ci_preflight.py
 
       - name: Commit updated exports
         run: |

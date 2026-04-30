@@ -43,6 +43,17 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 | **Smart Object** | 意图关键帧 + 局部绑定 | 与物体交互（攀爬、坐下、开门），无需特定任务训练 |
 | **Smart Interaction** | 时空锚点 (S-T Anchors) | 人-机/机-机协同动作生成的时序同步 |
 
+## 主要技术路线
+
+```text
+多源运动数据
+  -> Root / Pose / Contact 分解式 Tokenizer
+  -> 模块化潜空间生成骨干
+  -> Smart Primitive 条件控制
+  -> Refinement Decoder 生成全身轨迹
+  -> WBC / 仿真或真机控制器执行
+```
+
 ## 在 GR00T Whole-Body Control 中的角色
 
 在 NVIDIA [GR00T](../concepts/foundation-policy.md) 体系中，MotionBricks 扮演着**「运动意图层」**的角色：

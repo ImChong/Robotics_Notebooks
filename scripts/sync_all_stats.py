@@ -98,8 +98,8 @@ def main():
         # 匹配 <span id="heroNodeCount">...</span> 等
         new_stats_html = (
             f'<div class="hero-stat-row-mini" aria-label="知识库当前规模">\n'
-            f'            <span id="heroNodeCount">{nodes}</span> Nodes · \n'
-            f'            <span id="heroEdgeCount">{edges}</span> Links · \n'
+            f'            <span id="heroNodeCount">{nodes}</span> Nodes ·\n'
+            f'            <span id="heroEdgeCount">{edges}</span> Links ·\n'
             f'            <span id="heroCoverageCount">{cov_done}/{cov_total}</span> Sources\n'
             f'          </div>'
         )
