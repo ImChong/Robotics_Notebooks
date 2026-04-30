@@ -2,6 +2,8 @@
 type: entity
 title: Robot Viewer
 tags: [utility, simulation, mujoco, xacro]
+summary: "Robot Viewer 是支持多格式（URDF/MJCF/USD/Xacro）的 Web 机器人模型查看器，集成 MuJoCo WASM 支持浏览器内物理仿真。"
+updated: 2026-05-01
 ---
 
 # Robot Viewer

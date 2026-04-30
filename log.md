@@ -541,3 +541,5 @@
 ## [2026-04-30] ingest | 接入 NVIDIA MotionBricks (GR00T WBC 核心生成式框架)
 
 ## [2026-04-30] ingest | 接入 HKUST Switch 框架 (敏捷技能切换与图搜索)
+
+## [2026-05-01] ingest | 修复 10 个低健康度 Wiki 节点，并优化 Imitation Learning 与 Contact Dynamics 的搜索关键词以通过质量回归测试。

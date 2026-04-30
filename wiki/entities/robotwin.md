@@ -2,6 +2,8 @@
 type: entity
 title: RoboTwin 2.0
 tags: [simulation, data-generation, dual-arm, dataset]
+summary: "RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。"
+updated: 2026-05-01
 ---
 
 # RoboTwin 2.0
