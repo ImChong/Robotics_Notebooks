@@ -541,3 +541,5 @@
 ## [2026-04-30] ingest | 接入 NVIDIA MotionBricks (GR00T WBC 核心生成式框架)
 
 ## [2026-04-30] ingest | 接入 HKUST Switch 框架 (敏捷技能切换与图搜索)
+
+## [2026-05-01] ingest | sources/papers/universal_skeleton.md — Universal Skeleton HOVL 异构骨架开放词汇动作识别，沉淀到 wiki/methods/skeleton-action-recognition.md
