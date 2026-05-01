@@ -554,3 +554,5 @@
 ## [2026-05-01] ingest | sources/books/udl_book.md — 接入 Understanding Deep Learning 教材基础理论，新增 Deep Learning Foundations 和 Generative Foundations wiki 页面
 
 ## [2026-05-01] ingest | 扩充 AMP_mjlab 训练命令、指标分析及部署指南
+
+## [2026-05-01] ingest | sources/repos/amp_mjlab.md — 扩充 AMP_mjlab 训练曲线、ONNX 导出与部署检查要点
