@@ -56,7 +56,7 @@
 
 **这条不需要深入，但不能跳过。**
 
-**本阶段入口：** [SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)。
+**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)。
 
 ### 前置知识
 - 高中数学 + 一点微积分直觉
@@ -69,10 +69,12 @@
 ### 推荐做什么
 - 把 Python / NumPy / Pinocchio 环境的代码跑通一套
 - 不用刷题，但要有手感和直觉
+- 用 Modern Robotics 配套 Python 库跑通 `MatrixExp3`、`MatrixExp6`、`FKinSpace` 这类最小函数，确认自己能把矩阵指数和刚体位姿变换连起来
 
 ### 推荐读什么
 - 《Linear Algebra Done Right》（不用全看，只看核心直觉）
 - 3Blue1Brown 的线性代数视频（强烈推荐）
+- [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 2-3：Configuration Space、Rigid-Body Motions
 - [SE(3) 表示](../wiki/formalizations/se3-representation.md)（本仓库）
 - [Pinocchio](../wiki/entities/pinocchio.md)（本仓库）
 
@@ -86,7 +88,7 @@
 
 **这条是所有后续内容的基座，跳过后面一定会补。**
 
-**本阶段入口：** [Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
+**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
 
 ### 前置知识
 - L0 内容
@@ -96,13 +98,16 @@
 - 机器人每个关节的角度和末端执行器位置是什么关系
 - 怎么用数学描述这件事
 - 正逆运动学是什么
+- 为什么 twist、screw axis、PoE 比只记 D-H 参数更适合接后面的 Pinocchio / TSID / WBC
 
 ### 推荐做什么
 - 用 Pinocchio 或 Robotics Toolbox 建模一个简单机械臂
 - 写出正运动学和逆运动学代码
 - 理解雅可比矩阵是什么
+- 用 Modern Robotics 的 PoE 公式手写一个 2-3 自由度机械臂的 `FKinSpace` / `JacobianSpace`，再和 Pinocchio 输出对齐
 
 ### 推荐读什么
+- [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 4-6：Forward Kinematics、Velocity Kinematics、Inverse Kinematics
 - [斯坦福《机器人学导论》(B站)](https://www.bilibili.com/video/BV17T421k78T/)
 - 跑通 Pinocchio 官方 Tutorial
 - [Humanoid Robot](../wiki/entities/humanoid-robot.md)（本仓库）
@@ -111,6 +116,7 @@
 ### 学完输出什么
 - 能自己建模一个简单机器人并计算正逆运动学
 - 能解释雅可比矩阵在机器人里是什么、有什么用
+- 能区分 space Jacobian 与 body Jacobian，并知道它们在任务空间控制里如何进入速度/力映射
 
 ---
 
@@ -118,7 +124,7 @@
 
 **从运动学到动力学，是控制机器人最重要的跳跃。**
 
-**本阶段入口：** [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
+**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
 
 ### 前置知识
 - L1 内容（运动学）
@@ -128,13 +134,16 @@
 - 关节力矩怎么驱动机器人运动
 - 质量矩阵、重力项、科里奥利项是什么
 - 浮动基系统（人形机器人的躯干）为什么不能用固定基方法
+- wrench、Jacobian transpose、虚功原理如何把任务空间力映射到关节力矩
 
 ### 推荐做什么
 - 用 Pinocchio 写一个单刚体动力学正逆动力学 Demo
 - 理解 centroidal dynamics 的基本形式
 - 理解浮动基系统的状态表示问题
+- 用 Modern Robotics Ch 8 的开链动力学接口跑一遍 `InverseDynamics` / `MassMatrix` / `ForwardDynamics`，再对照 Pinocchio 的 RNEA / CRBA / ABA
 
 ### 推荐读什么
+- [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 5、Ch 8：Statics、Dynamics of Open Chains
 - Featherstone 《Robot Dynamics》相关章节
 - Pinocchio 文档的 Centroidal 部分
 - [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)（本仓库）
@@ -145,6 +154,7 @@
 - 能解释正逆动力学在机器人控制里的作用
 - 能理解 centroidal dynamics 为什么重要
 - 对“这个力矩能让机器人产生什么运动”有直觉
+- 能把“任务空间力 / 接触 wrench → 关节力矩”的关系写成 Jacobian transpose 形式
 
 ---
 
@@ -152,7 +162,7 @@
 
 **没有控制理论，后面的 MPC / WBC / RL 全都接不上。**
 
-**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
+**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
 
 ### 前置知识
 - L2 内容（动力学）
@@ -162,13 +172,16 @@
 - PID / LQR / MPC 分别在解决什么问题
 - QP（二次规划）是什么，为什么在机器人控制里到处都是
 - 最优控制的核心思想是什么
+- 轨迹生成、反馈控制和约束优化分别处在控制栈的哪一层
 
 ### 推荐做什么
 - 用 Python 写一个倒立摆的 LQR 控制器
 - 用 qpOASES 或 OSQP 跑一个简单 QP
 - 理解 MPC 的滚动时域思想
+- 复现 Modern Robotics Ch 9 的三次/五次时间缩放轨迹，并给一个机械臂末端轨迹加 PD / computed torque tracking
 
 ### 推荐读什么
+- [Modern Robotics](../wiki/entities/modern-robotics-book.md) Ch 9、Ch 11：Trajectory Generation、Robot Control
 - [Underactuated Robotics](https://arxiv.org/abs/1709.10219)（TEDRAKE）
 - 《Robotics: Modelling, Planning and Control》- Siciliano 相关章节
 - [LQR](../wiki/formalizations/lqr.md)（本仓库）
@@ -180,6 +193,7 @@
 - 能解释 LQR 和 MPC 的区别
 - 能理解 QP 在 WBC 里是解决什么问题的
 - 能自己搭一个简单模型的 MPC
+- 能说明 computed torque、PD、阻抗控制与后续 WBC 任务控制之间的关系
 
 ---
 
@@ -187,7 +201,7 @@
 
 **这是本路线的核心，也是当前项目的技术栈主干。**
 
-**本阶段入口：** [LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
 
 这一阶段要建立的不是“我看过多少算法名词”，而是一条稳定的方法链：
 - **先学简化模型**：LIP / ZMP 帮你建立步行和平衡直觉
@@ -211,6 +225,14 @@ Trajectory Optimization / MPC
   ↓
 TSID / WBC
 ```
+
+**Modern Robotics 在 L4 的位置：**
+- Ch 3-5 提供任务空间位姿、twist、Jacobian、wrench 的统一语言
+- Ch 8 解释开链动力学，帮助理解 Pinocchio / TSID 中的逆动力学项
+- Ch 9 解释轨迹生成，是 MPC / trajectory optimization 的低维入口
+- Ch 11 解释 computed torque、motion control、force control，是理解 WBC 任务层的前置材料
+
+注意：Modern Robotics 本身不是人形 locomotion 教材，不会直接教 LIP/ZMP、centroidal MPC 或浮动基接触切换；它更像是这条主路线的“语法书”。学 L4 时遇到坐标变换、Jacobian、wrench、逆动力学不清楚，就回到对应章节补。
 
 ### L4.1 LIP / ZMP
 
@@ -434,11 +456,15 @@ TSID / WBC
 ### 4. Sim2Real 差距太大
 解决思路：先做好 System Identification，再用 Domain Randomization 扩大扰动范围，最后考虑在线自适应。
 
+### 5. Modern Robotics 看完了，但不知道和人形控制怎么接
+解决思路：把它当作数学语言和固定基机器人基础。Ch 3-6 接 L0/L1 的 SE(3)、PoE、Jacobian；Ch 8 接 L2 的动力学和 Pinocchio；Ch 9/11 接 L3 的轨迹生成和控制；真正进入人形后，还要补 [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md) 和 [Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+
 ---
 
 ## 和其他页面的关系
 
 - 本路线是 `Robotics_Notebooks` 当前最核心的执行入口
+- 传统机器人学主教材：[Modern Robotics](../wiki/entities/modern-robotics-book.md)
 - 更详细的阶段参考：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
 - 学习路径快速入口：
