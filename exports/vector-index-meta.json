@@ -1,6 +1,8 @@
 {
   "version": "v1",
-  "count": 84,
+  "generated_at": "2026-05-01",
+  "doc_count": 271,
+  "count": 271,
   "embedding": {
     "backend": "hashed-token-projection",
     "model": "builtin-v1",
@@ -8,6 +10,321 @@
     "fallback_reason": "No module named 'sentence_transformers'"
   },
   "documents": [
+    {
+      "id": "reference-benchmarks-humanoid-environments",
+      "path": "references/benchmarks/humanoid-environments.md",
+      "title": "Humanoid Environments",
+      "page_type": "reference",
+      "summary": "用于整理人形机器人常用训练环境与评测场景。"
+    },
+    {
+      "id": "reference-benchmarks-locomotion-benchmarks",
+      "path": "references/benchmarks/locomotion-benchmarks.md",
+      "title": "Locomotion Benchmarks",
+      "page_type": "reference",
+      "summary": "用于整理平地行走、越障、跑酷、复杂地形运动等 benchmark。"
+    },
+    {
+      "id": "reference-papers-humanoid-hardware",
+      "path": "references/papers/humanoid-hardware.md",
+      "title": "Humanoid Hardware",
+      "page_type": "reference",
+      "summary": "聚焦人形机器人硬件架构、执行器设计、传感器集成与系统工程。"
+    },
+    {
+      "id": "reference-papers-imitation-learning",
+      "path": "references/papers/imitation-learning.md",
+      "title": "Imitation Learning",
+      "page_type": "reference",
+      "summary": "聚焦行为克隆、DAgger、Diffusion Policy、动作块输出与技能嵌入相关论文。"
+    },
+    {
+      "id": "reference-papers-latent-skill-prior",
+      "path": "references/papers/latent-skill-prior.md",
+      "title": "Latent Skill Prior",
+      "page_type": "reference",
+      "summary": "聚焦如何将运动技能压缩到隐空间（Latent Space），并通过先验（Prior）引导强化学习生成既稳定又自然的行为。"
+    },
+    {
+      "id": "reference-papers-locomotion-rl",
+      "path": "references/papers/locomotion-rl.md",
+      "title": "Locomotion RL",
+      "page_type": "reference",
+      "summary": "聚焦人形/腿足机器人 locomotion 中的强化学习论文。"
+    },
+    {
+      "id": "reference-papers-mpc",
+      "path": "references/papers/mpc.md",
+      "title": "MPC (Model Predictive Control)",
+      "page_type": "reference",
+      "summary": "聚焦模型预测控制在机器人（特别是腿式/人形）中的理论、工程实现与应用论文。"
+    },
+    {
+      "id": "reference-papers-optimal-control",
+      "path": "references/papers/optimal-control.md",
+      "title": "Optimal Control",
+      "page_type": "reference",
+      "summary": "最优控制理论基础、动态规划与轨迹优化奠基工作。"
+    },
+    {
+      "id": "reference-papers-sim2real",
+      "path": "references/papers/sim2real.md",
+      "title": "Sim2Real",
+      "page_type": "reference",
+      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移相关论文。"
+    },
+    {
+      "id": "reference-papers-survey-papers",
+      "path": "references/papers/survey-papers.md",
+      "title": "Survey Papers",
+      "page_type": "reference",
+      "summary": "用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。"
+    },
+    {
+      "id": "reference-papers-system-identification",
+      "path": "references/papers/system-identification.md",
+      "title": "System Identification",
+      "page_type": "reference",
+      "summary": "聚焦机器人动力学辨识、执行器建模与在线参数估计论文。"
+    },
+    {
+      "id": "reference-papers-whole-body-control",
+      "path": "references/papers/whole-body-control.md",
+      "title": "Whole-Body Control",
+      "page_type": "reference",
+      "summary": "聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。"
+    },
+    {
+      "id": "reference-repos-humanoid-projects",
+      "path": "references/repos/humanoid-projects.md",
+      "title": "Humanoid Projects",
+      "page_type": "reference",
+      "summary": "聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目。"
+    },
+    {
+      "id": "reference-repos-retarget-tools",
+      "path": "references/repos/retarget-tools.md",
+      "title": "Retarget Tools",
+      "page_type": "reference",
+      "summary": "聚焦人体动作到机器人动作的重定向工具与项目。"
+    },
+    {
+      "id": "reference-repos-rl-frameworks",
+      "path": "references/repos/rl-frameworks.md",
+      "title": "RL Frameworks",
+      "page_type": "reference",
+      "summary": "人形/腿足机器人 RL 训练常用开源框架。"
+    },
+    {
+      "id": "reference-repos-simulation",
+      "path": "references/repos/simulation.md",
+      "title": "Simulation",
+      "page_type": "reference",
+      "summary": "当前重点平台："
+    },
+    {
+      "id": "reference-repos-utilities",
+      "path": "references/repos/utilities.md",
+      "title": "Utilities (通用机器人工具链)",
+      "page_type": "reference",
+      "summary": "收录动力学计算、模型可视化、设计组装等通用工具链。"
+    },
+    {
+      "id": "roadmap-if-goal-contact-manipulation",
+      "path": "roadmap/learning-paths/if-goal-contact-manipulation.md",
+      "title": "学习路径：如果目标是接触丰富的操作任务",
+      "page_type": "roadmap",
+      "summary": "> 如果你想让机器人完成装配、拧螺丝、插拔等需要精细接触的任务，从这里切入。"
+    },
+    {
+      "id": "roadmap-if-goal-generalist",
+      "path": "roadmap/learning-paths/if-goal-generalist.md",
+      "title": "学习路径：如果目标是全栈通用能力",
+      "page_type": "roadmap",
+      "summary": "推荐顺序："
+    },
+    {
+      "id": "roadmap-if-goal-imitation-learning",
+      "path": "roadmap/learning-paths/if-goal-imitation-learning.md",
+      "title": "学习路径：如果目标是模仿学习与技能迁移",
+      "page_type": "roadmap",
+      "summary": "> 如果你更感兴趣的是怎么把人类的动作迁移到机器人上，从这里切入。"
+    },
+    {
+      "id": "roadmap-if-goal-locomotion-rl",
+      "path": "roadmap/learning-paths/if-goal-locomotion-rl.md",
+      "title": "学习路径：如果目标是人形 RL 运动控制",
+      "page_type": "roadmap",
+      "summary": "> 如果你已经明确想用强化学习路线来做人形机器人运动控制，从这里切入。"
+    },
+    {
+      "id": "roadmap-if-goal-safe-control",
+      "path": "roadmap/learning-paths/if-goal-safe-control.md",
+      "title": "学习路径：如果目标是安全控制（CLF / CBF / Safe RL）",
+      "page_type": "roadmap",
+      "summary": "> 如果你想让机器人在满足安全约束的前提下运动，从这里切入。"
+    },
+    {
+      "id": "roadmap-if-goal-whole-body-control",
+      "path": "roadmap/learning-paths/if-goal-whole-body-control.md",
+      "title": "学习路径：如果目标是全身控制与优化",
+      "page_type": "roadmap",
+      "summary": "推荐顺序："
+    },
+    {
+      "id": "roadmap-motion-control",
+      "path": "roadmap/motion-control.md",
+      "title": "主路线：运动控制算法工程师成长路线",
+      "page_type": "roadmap",
+      "summary": "> 目标：从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。"
+    },
+    {
+      "id": "tech-node-dependency-graph",
+      "path": "tech-map/dependency-graph.md",
+      "title": "模块依赖关系图",
+      "page_type": "tech_map_node",
+      "summary": "本页的目标不是做花哨图，而是先把 `Robotics_Notebooks` 当前最重要的依赖关系讲清楚。"
+    },
+    {
+      "id": "tech-node-control-humanoid-locomotion",
+      "path": "tech-map/modules/control/humanoid-locomotion.md",
+      "title": "Humanoid Locomotion",
+      "page_type": "tech_map_node",
+      "summary": "人形双足步行、平衡与扰动恢复是当前主攻方向之一。"
+    },
+    {
+      "id": "tech-node-control-mpc",
+      "path": "tech-map/modules/control/mpc.md",
+      "title": "MPC",
+      "page_type": "tech_map_node",
+      "summary": "模型预测控制是连接模型、约束与优化求解的重要方法。"
+    },
+    {
+      "id": "tech-node-control-whole-body-control",
+      "path": "tech-map/modules/control/whole-body-control.md",
+      "title": "Whole-Body Control",
+      "page_type": "tech_map_node",
+      "summary": "全身控制是人形机器人运动控制的重要枢纽。"
+    },
+    {
+      "id": "tech-node-il-behavior-cloning",
+      "path": "tech-map/modules/il/behavior-cloning.md",
+      "title": "Behavior Cloning",
+      "page_type": "tech_map_node",
+      "summary": "模仿学习最基础的切入口。"
+    },
+    {
+      "id": "tech-node-il-diffusion-policy",
+      "path": "tech-map/modules/il/diffusion-policy.md",
+      "title": "Diffusion Policy",
+      "page_type": "tech_map_node",
+      "summary": "当前模仿学习中的重要生成式方法之一。"
+    },
+    {
+      "id": "tech-node-il-motion-retarget",
+      "path": "tech-map/modules/il/motion-retarget.md",
+      "title": "Motion Retarget",
+      "page_type": "tech_map_node",
+      "summary": "连接人体动作数据与人形机器人技能迁移的关键模块。"
+    },
+    {
+      "id": "tech-node-math-linear-algebra",
+      "path": "tech-map/modules/math/linear-algebra.md",
+      "title": "线性代数",
+      "page_type": "tech_map_node",
+      "summary": "机器人场景重点：向量空间、矩阵变换、特征值分解、最小二乘、雅可比相关计算。"
+    },
+    {
+      "id": "tech-node-rl-humanoid-rl",
+      "path": "tech-map/modules/rl/humanoid-rl.md",
+      "title": "Humanoid RL",
+      "page_type": "tech_map_node",
+      "summary": "聚焦人形机器人 locomotion 与 skill learning 中的强化学习问题。"
+    },
+    {
+      "id": "tech-node-rl-ppo",
+      "path": "tech-map/modules/rl/ppo.md",
+      "title": "PPO",
+      "page_type": "tech_map_node",
+      "summary": "PPO 是机器人强化学习中最常见、最实用的基础算法之一。"
+    },
+    {
+      "id": "tech-node-rl-sim2real",
+      "path": "tech-map/modules/rl/sim2real.md",
+      "title": "Sim2Real",
+      "page_type": "tech_map_node",
+      "summary": "重点关注域随机化、系统辨识、鲁棒训练与部署闭环。"
+    },
+    {
+      "id": "tech-node-robotics-dynamics",
+      "path": "tech-map/modules/robotics/dynamics.md",
+      "title": "动力学",
+      "page_type": "tech_map_node",
+      "summary": "重点包括牛顿欧拉法、拉格朗日法、浮动基动力学、接触建模。"
+    },
+    {
+      "id": "tech-node-robotics-kinematics",
+      "path": "tech-map/modules/robotics/kinematics.md",
+      "title": "运动学",
+      "page_type": "tech_map_node",
+      "summary": "重点包括正逆运动学、雅可比、微分运动学。"
+    },
+    {
+      "id": "tech-node-robotics-rigid-body-motion",
+      "path": "tech-map/modules/robotics/rigid-body-motion.md",
+      "title": "刚体运动",
+      "page_type": "tech_map_node",
+      "summary": "重点包括旋转表示、坐标变换、SE(3)、Twist/Wrench。"
+    },
+    {
+      "id": "tech-node-system-deployment",
+      "path": "tech-map/modules/system/deployment.md",
+      "title": "Deployment",
+      "page_type": "tech_map_node",
+      "summary": "部署阶段关注控制频率、硬件接口、安全性与调试闭环。"
+    },
+    {
+      "id": "tech-node-system-ros2",
+      "path": "tech-map/modules/system/ros2.md",
+      "title": "ROS2",
+      "page_type": "tech_map_node",
+      "summary": "机器人系统工程和集成阶段的重要基础设施。"
+    },
+    {
+      "id": "tech-node-system-simulation",
+      "path": "tech-map/modules/system/simulation.md",
+      "title": "Simulation",
+      "page_type": "tech_map_node",
+      "summary": "仿真是控制、学习与部署之间的中介层。"
+    },
+    {
+      "id": "tech-node-overview",
+      "path": "tech-map/overview.md",
+      "title": "全栈技术域总览",
+      "page_type": "tech_map_node",
+      "summary": "本页不是单纯列方向，而是 `Robotics_Notebooks` 的技术栈模块入口页。"
+    },
+    {
+      "id": "wiki-comparisons-clf-vs-cbf",
+      "path": "wiki/comparisons/clf-vs-cbf.md",
+      "title": "CLF vs CBF：稳定性与安全性的对偶工具",
+      "page_type": "comparison",
+      "summary": "CLF 负责稳定性（驱动系统到达目标），CBF 负责安全性（阻止系统进入危险区域），两者互补，联合构成 CLF-CBF-QP 实时安全控制框架。"
+    },
+    {
+      "id": "wiki-comparisons-data-gloves-vs-vision-teleop",
+      "path": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
+      "title": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
+      "page_type": "comparison",
+      "summary": "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
+    },
+    {
+      "id": "wiki-comparisons-kalman-filter-vs-optimization-based-estimation",
+      "path": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
+      "title": "Kalman Filter vs. Optimization-based Estimation (状态估计选型)",
+      "page_type": "comparison",
+      "summary": "状态估计方法对比：探讨了经典的卡尔曼滤波（EKF/UKF）与新兴的基于优化的估计（Batch Optimization / VIO）在延迟、精度、鲁棒性及计算资源上的差异。"
+    },
     {
       "id": "wiki-comparisons-model-based-vs-model-free",
       "path": "wiki/comparisons/model-based-vs-model-free.md",
@@ -20,35 +337,77 @@
       "path": "wiki/comparisons/mpc-vs-rl.md",
       "title": "MPC vs RL：控制策略选型对比",
       "page_type": "comparison",
-      "summary": "**背景**：MPC（模型预测控制）和 RL（强化学习）是当前机器人运动控制领域的两大主流范式。MPC 基于显式动力学模型在线求解最优控制，RL 离线学习隐式策略。两者在假设、计算模式和适用场景上都有本质差异。"
+      "summary": "MPC vs RL：控制策略选型对比"
+    },
+    {
+      "id": "wiki-comparisons-mujoco-vs-isaac-lab",
+      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "title": "MuJoCo vs Isaac Lab：仿真器选型对比",
+      "page_type": "comparison",
+      "summary": "MuJoCo 与 Isaac Lab 在仿真精度、并行效率、sim2real gap 方面的系统性对比，帮助选择适合 locomotion RL 项目的仿真平台。"
+    },
+    {
+      "id": "wiki-comparisons-mujoco-vs-isaac-sim",
+      "path": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "title": "MuJoCo vs Isaac Sim (物理引擎选型)",
+      "page_type": "comparison",
+      "summary": "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理论背景称王；而 Isaac Sim / Gym 凭借 GPU 千万级并行霸占现代 RL 训练管线。"
     },
     {
       "id": "wiki-comparisons-online-vs-offline-rl",
       "path": "wiki/comparisons/online-vs-offline-rl.md",
       "title": "Online RL vs Offline RL",
       "page_type": "comparison",
-      "summary": "Online RL 和 Offline RL 是两种根本不同的学习范式。两者都在优化同一个目标（累积奖励），但对**数据来源**的要求截然不同，导致适用场景和瓶颈完全不同。"
+      "summary": "Online RL vs Offline RL"
+    },
+    {
+      "id": "wiki-comparisons-ppo-vs-sac",
+      "path": "wiki/comparisons/ppo-vs-sac.md",
+      "title": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
+      "page_type": "comparison",
+      "summary": "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景。"
     },
     {
       "id": "wiki-comparisons-rl-vs-il",
       "path": "wiki/comparisons/rl-vs-il.md",
       "title": "RL vs 模仿学习（Imitation Learning）",
       "page_type": "comparison",
-      "summary": "RL 和 IL 是机器人策略学习的两条主干路线。两者都在学\"策略 $\\pi(a|s)$\"，但监督信号、数据需求、能达到的行为质量完全不同。"
+      "summary": "RL vs 模仿学习（Imitation Learning）"
+    },
+    {
+      "id": "wiki-comparisons-ros2-vs-lcm",
+      "path": "wiki/comparisons/ros2-vs-lcm.md",
+      "title": "ROS 2 vs LCM (机器人中间件选型)",
+      "page_type": "comparison",
+      "summary": "机器人中间件选型：ROS 2 提供了庞大的生态与强大的工具链；LCM 则以极致的轻量、低延迟和高频控制场景的统治力成为底层运控的首选。"
     },
     {
       "id": "wiki-comparisons-sim2real-approaches",
       "path": "wiki/comparisons/sim2real-approaches.md",
       "title": "Sim2Real 方法横向对比",
       "page_type": "comparison",
-      "summary": "Sim2Real gap 的应对策略有三大类：**Domain Randomization（仿真端随机化）**、**Domain Adaptation（领域自适应）**、**Real-World Fine-tuning（真实环境微调）**。三者可单独使用也可组合，选择取决于 gap 大小、真实数据成本和任务类型。"
+      "summary": "Sim2Real 方法横向对比"
+    },
+    {
+      "id": "wiki-comparisons-trajectory-opt-vs-rl",
+      "path": "wiki/comparisons/trajectory-opt-vs-rl.md",
+      "title": "Trajectory Optimization vs Reinforcement Learning",
+      "page_type": "comparison",
+      "summary": "轨迹优化（Trajectory Optimization）与强化学习（RL）的对比：前者依赖精确动力学模型求解开环最优解，后者通过数据驱动学习具有鲁棒性的闭环策略。"
     },
     {
       "id": "wiki-comparisons-wbc-vs-rl",
       "path": "wiki/comparisons/wbc-vs-rl.md",
       "title": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "page_type": "comparison",
-      "summary": "人形机器人运动控制领域最常见的两种路线对比。"
+      "summary": "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
+    },
+    {
+      "id": "wiki-concepts-armature-modeling",
+      "path": "wiki/concepts/armature-modeling.md",
+      "title": "Armature Modeling（电枢惯量建模）",
+      "page_type": "concept",
+      "summary": "Armature（电枢惯量 / 反射惯量）是电机转子经过减速器反射到关节侧的等效转动惯量，是机器人高频动态特性建模中不可忽视的项。"
     },
     {
       "id": "wiki-concepts-capture-point-dcm",
@@ -69,7 +428,7 @@
       "path": "wiki/concepts/contact-dynamics.md",
       "title": "Contact Dynamics",
       "page_type": "concept",
-      "summary": "Contact Dynamics 研究接触力、摩擦和约束如何改变机器人动力学，是 locomotion 与操作控制的物理基础。"
+      "summary": "Contact Dynamics 研究接触力 (Contact Force)、摩擦锥 (Friction Cone) 和物理约束如何改变机器人动力学，是 locomotion 与操作控制的核心物理基础。"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -86,6 +445,13 @@
       "summary": "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
     },
     {
+      "id": "wiki-concepts-control-barrier-function",
+      "path": "wiki/concepts/control-barrier-function.md",
+      "title": "Control Barrier Function（控制屏障函数）",
+      "page_type": "concept",
+      "summary": "Control Barrier Function（控制屏障函数）通过维持 h(x)≥0 来为机器人系统提供可证明的安全保证，常与 QP 结合嵌入实时控制回路。"
+    },
+    {
       "id": "wiki-concepts-curriculum-learning",
       "path": "wiki/concepts/curriculum-learning.md",
       "title": "Curriculum Learning（课程学习）",
@@ -93,11 +459,53 @@
       "summary": "从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。"
     },
     {
+      "id": "wiki-concepts-data-flywheel",
+      "path": "wiki/concepts/data-flywheel.md",
+      "title": "Data Flywheel (具身数据飞轮)",
+      "page_type": "concept",
+      "summary": "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
+    },
+    {
+      "id": "wiki-concepts-deep-learning-foundations",
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "title": "深度学习基础 (Deep Learning Foundations)",
+      "page_type": "concept",
+      "summary": "深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。"
+    },
+    {
+      "id": "wiki-concepts-dexterous-kinematics",
+      "path": "wiki/concepts/dexterous-kinematics.md",
+      "title": "Dexterous Kinematics (灵巧手运动学)",
+      "page_type": "concept",
+      "summary": "灵巧手运动学（Dexterous Kinematics）研究多指末端执行器与被操作物体之间的运动映射关系，其核心在于处理多点接触形成的闭链约束。"
+    },
+    {
       "id": "wiki-concepts-domain-randomization",
       "path": "wiki/concepts/domain-randomization.md",
       "title": "Domain Randomization",
       "page_type": "concept",
       "summary": "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
+    },
+    {
+      "id": "wiki-concepts-embodied-data-cleaning",
+      "path": "wiki/concepts/embodied-data-cleaning.md",
+      "title": "Embodied Data Cleaning (具身数据清洗)",
+      "page_type": "concept",
+      "summary": "具身数据清洗（Embodied Data Cleaning）是指对采集到的原始机器人操作演示数据进行质量过滤、时序对齐和误差补偿的过程，是保证模仿学习策略不学偏的关键步骤。"
+    },
+    {
+      "id": "wiki-concepts-embodied-scaling-laws",
+      "path": "wiki/concepts/embodied-scaling-laws.md",
+      "title": "Embodied Scaling Laws (具身规模法则)",
+      "page_type": "concept",
+      "summary": "具身规模法则（Embodied Scaling Laws）探讨了具身智能模型中数据规模、模型参数量与下游任务泛化能力之间的幂律关系，是指导大规模具身预训练的核心理论。"
+    },
+    {
+      "id": "wiki-concepts-ethercat-protocol",
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "title": "EtherCAT 协议基础",
+      "page_type": "concept",
+      "summary": "EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。"
     },
     {
       "id": "wiki-concepts-floating-base-dynamics",
@@ -112,6 +520,13 @@
       "title": "Footstep Planning（步位规划）",
       "page_type": "concept",
       "summary": "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
+    },
+    {
+      "id": "wiki-concepts-force-control-basics",
+      "path": "wiki/concepts/force-control-basics.md",
+      "title": "Force Control Basics (力控制基础)",
+      "page_type": "concept",
+      "summary": "力控制基础（Force Control Basics）介绍了机器人如何通过直接控制执行器扭矩或利用末端力传感器反馈，实现与环境的柔顺物理交互。"
     },
     {
       "id": "wiki-concepts-foundation-policy",
@@ -133,6 +548,34 @@
       "title": "HQP（Hierarchical QP）",
       "page_type": "concept",
       "summary": "HQP 用层次化二次规划表达任务优先级，是现代 WBC / TSID 控制器的常见求解框架。"
+    },
+    {
+      "id": "wiki-concepts-hybrid-force-position-control",
+      "path": "wiki/concepts/hybrid-force-position-control.md",
+      "title": "Hybrid Force-Position Control（力位混合控制）",
+      "page_type": "concept",
+      "summary": "力位混合控制把不同方向上的控制目标拆分为位置跟踪与力跟踪两类，是接触丰富操作中最常见的执行层结构之一。"
+    },
+    {
+      "id": "wiki-concepts-impedance-control",
+      "path": "wiki/concepts/impedance-control.md",
+      "title": "Impedance Control（阻抗控制）",
+      "page_type": "concept",
+      "summary": "Impedance Control 通过把末端行为写成质量-弹簧-阻尼关系，让机器人在接触任务中既能跟踪目标又能保持柔顺。"
+    },
+    {
+      "id": "wiki-concepts-latent-imagination",
+      "path": "wiki/concepts/latent-imagination.md",
+      "title": "Latent Imagination (潜空间想象)",
+      "page_type": "concept",
+      "summary": "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。"
+    },
+    {
+      "id": "wiki-concepts-lcm-basics",
+      "path": "wiki/concepts/lcm-basics.md",
+      "title": "LCM (Lightweight Communications and Marshalling) 基础",
+      "page_type": "concept",
+      "summary": "LCM（Lightweight Communications and Marshalling）是一款极致轻量的机器人中间件，以低延迟 UDP 组播为核心，是高性能足式机器人底层运控的事实标准。"
     },
     {
       "id": "wiki-concepts-lip-zmp",
@@ -177,6 +620,20 @@
       "summary": "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
     },
     {
+      "id": "wiki-concepts-ros2-basics",
+      "path": "wiki/concepts/ros2-basics.md",
+      "title": "ROS 2 (Robot Operating System 2) 基础",
+      "page_type": "concept",
+      "summary": "ROS 2（Robot Operating System 2）是机器人开发的事实标准中间件，基于 DDS 协议实现了高可靠、模块化的分布式通信与丰富的算法生态支持。"
+    },
+    {
+      "id": "wiki-concepts-safety-filter",
+      "path": "wiki/concepts/safety-filter.md",
+      "title": "Safety Filter（安全过滤器）",
+      "page_type": "concept",
+      "summary": "Safety Filter 指位于高层策略与低层执行器之间的安全过滤层，用最小修改把名义动作投影回可执行安全集。"
+    },
+    {
       "id": "wiki-concepts-sensor-fusion",
       "path": "wiki/concepts/sensor-fusion.md",
       "title": "传感器融合（Sensor Fusion）",
@@ -205,6 +662,13 @@
       "summary": "System Identification 通过估计动力学和执行器参数缩小模型误差，是高性能控制和 sim2real 的关键支撑。"
     },
     {
+      "id": "wiki-concepts-tactile-sensing",
+      "path": "wiki/concepts/tactile-sensing.md",
+      "title": "Tactile Sensing（触觉感知）",
+      "page_type": "concept",
+      "summary": "触觉感知（Tactile Sensing）使机器人能够测量接触面上的法向力和切向力、滑动分布及材质纹理，是实现接触丰富操作和高精度抓取的核心感官。"
+    },
+    {
       "id": "wiki-concepts-terrain-adaptation",
       "path": "wiki/concepts/terrain-adaptation.md",
       "title": "Terrain Adaptation（地形适应）",
@@ -219,109 +683,431 @@
       "summary": "TSID 用任务空间逆动力学统一处理多任务和接触约束，是全身控制的重要方法页。"
     },
     {
+      "id": "wiki-concepts-video-as-simulation",
+      "path": "wiki/concepts/video-as-simulation.md",
+      "title": "Video-as-Simulation (视频即仿真)",
+      "page_type": "concept",
+      "summary": "视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。"
+    },
+    {
+      "id": "wiki-concepts-visuo-tactile-fusion",
+      "path": "wiki/concepts/visuo-tactile-fusion.md",
+      "title": "视触觉融合（Visuo-Tactile Fusion）",
+      "page_type": "concept",
+      "summary": "视触觉融合（Visuo-Tactile Fusion）研究如何在接触瞬间动态切换视觉的全局先验与触觉的局部反馈：视觉提供宏观语义和粗对位，触觉补足遮挡区的微对位与力学闭环。"
+    },
+    {
       "id": "wiki-concepts-whole-body-control",
       "path": "wiki/concepts/whole-body-control.md",
       "title": "Whole-Body Control (WBC)",
       "page_type": "concept",
-      "summary": "Whole-Body Control 在全身动力学和任务优先级约束下统一求解关节力矩，是 humanoid 控制主干。"
+      "summary": "Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。"
+    },
+    {
+      "id": "wiki-concepts-whole-body-coordination",
+      "path": "wiki/concepts/whole-body-coordination.md",
+      "title": "Whole-Body Coordination（全身协调控制）",
+      "page_type": "concept",
+      "summary": "全身协调控制（Whole-Body Coordination）关注多肢体、多链接系统在运动和操作中的时空同步问题，是 WBC 的上层概念，在 loco-manipulation 中尤为关键。"
+    },
+    {
+      "id": "entity-allegro-hand",
+      "path": "wiki/entities/allegro-hand.md",
+      "title": "Allegro Hand (灵巧手)",
+      "page_type": "entity",
+      "summary": "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 个自由度，因其结构简单、API 友好且性价比高而成为机器人学习与灵巧操作研究的主流科研平台。"
+    },
+    {
+      "id": "entity-aloha",
+      "path": "wiki/entities/aloha.md",
+      "title": "ALOHA (双臂遥操作硬件)",
+      "page_type": "entity",
+      "summary": "ALOHA 是由 Google DeepMind 开发的低成本、开源双臂遥操作硬件系统，是获取精细操作演示数据的事实标准。"
+    },
+    {
+      "id": "entity-amp-mjlab",
+      "path": "wiki/entities/amp-mjlab.md",
+      "title": "AMP_mjlab (G1 统一 AMP 策略)",
+      "page_type": "entity",
+      "summary": "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。"
+    },
+    {
+      "id": "entity-anymal",
+      "path": "wiki/entities/anymal.md",
+      "title": "ANYmal 四足机器人",
+      "page_type": "entity",
+      "summary": "ANYmal 是由 ETH Zurich 和 ANYbotics 开发的高性能四足机器人平台。它以 SEA 力控执行器和极高的防护等级著称，是机器人强化学习与 Sim2Real 技术研究的标志性载体。"
+    },
+    {
+      "id": "entity-atom01-deploy",
+      "path": "wiki/entities/atom01-deploy.md",
+      "title": "Atom01 Deploy",
+      "page_type": "entity",
+      "summary": "atom01_deploy 是 Atom01 的上机部署仓库，覆盖 ROS2 驱动、中间件接入与真机执行流程。"
+    },
+    {
+      "id": "entity-atom01-description",
+      "path": "wiki/entities/atom01-description.md",
+      "title": "Atom01 Description",
+      "page_type": "entity",
+      "summary": "Atom01_description 提供 Atom01 的 URDF 与网格模型资源，是仿真、控制与可视化共享的统一模型基线。"
+    },
+    {
+      "id": "entity-atom01-firmware",
+      "path": "wiki/entities/atom01-firmware.md",
+      "title": "Atom01 Firmware",
+      "page_type": "entity",
+      "summary": "atom01_firmware 是 Atom01 的底层固件仓库，覆盖板端构建、通信链路与执行守护，是控制栈最底层支撑。"
+    },
+    {
+      "id": "entity-atom01-hardware",
+      "path": "wiki/entities/atom01-hardware.md",
+      "title": "Atom01 Hardware",
+      "page_type": "entity",
+      "summary": "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，包含 CAD/PCB/BOM 等复现机器人本体的关键资料。"
+    },
+    {
+      "id": "entity-atom01-train",
+      "path": "wiki/entities/atom01-train.md",
+      "title": "Atom01 Train",
+      "page_type": "entity",
+      "summary": "atom01_train 是 Atom01 的训练仓库，围绕 IsaacLab 训练配置、策略学习与仿真迁移流程构建。"
+    },
+    {
+      "id": "entity-booster-robocup-demo",
+      "path": "wiki/entities/booster-robocup-demo.md",
+      "title": "Booster Robotics RoboCup Demo",
+      "page_type": "entity",
+      "summary": "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。"
+    },
+    {
+      "id": "entity-boston-dynamics",
+      "path": "wiki/entities/boston-dynamics.md",
+      "title": "Boston Dynamics（波士顿动力）",
+      "page_type": "entity",
+      "summary": "Boston Dynamics 是全球足式机器人的领军企业，旗下的 Atlas 和 Spot 分别定义了人形与四足机器人的最高动态性能标准。其基于解析动力学的模型预测控制（MPC）与全身控制（WBC）技术栈至今仍是行业标杆。"
     },
     {
       "id": "entity-crocoddyl",
       "path": "wiki/entities/crocoddyl.md",
       "title": "Crocoddyl",
       "page_type": "entity",
-      "summary": "**Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线推动。"
+      "summary": "Crocoddyl"
     },
     {
       "id": "entity-drake",
       "path": "wiki/entities/drake.md",
-      "title": "Drake",
+      "title": "Drake (机器人工具箱)",
       "page_type": "entity",
-      "summary": "MIT 开发的机器人动力学仿真、优化与控制框架，以严格的数学基础和符号计算著称，常用于轨迹优化、MPC 和接触力学研究。"
+      "summary": "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器人工具箱，以其在轨迹优化（直接配点法）和严谨动力学建模方面的统治力而闻名。"
+    },
+    {
+      "id": "entity-gel-slim",
+      "path": "wiki/entities/gel-slim.md",
+      "title": "GelSlim（薄片化视觉触觉传感器）",
+      "page_type": "entity",
+      "summary": "GelSlim 是 MIT 等团队提出的“薄片化”视觉触觉传感器系列，把 GelSight 的高分辨率接触成像压缩进可装到平行夹爪与灵巧手指节上的扁平外形，是当前接触丰富型操作的主流硬件之一。"
+    },
+    {
+      "id": "entity-genesis-sim",
+      "path": "wiki/entities/genesis-sim.md",
+      "title": "Genesis (仿真器)",
+      "page_type": "entity",
+      "summary": "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
+    },
+    {
+      "id": "entity-gs-playground",
+      "path": "wiki/entities/gs-playground.md",
+      "title": "GS-Playground (3DGS 光真实感仿真)",
+      "page_type": "entity",
+      "summary": "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。"
     },
     {
       "id": "entity-humanoid-robot",
       "path": "wiki/entities/humanoid-robot.md",
       "title": "人形机器人（Humanoid Robot）",
       "page_type": "entity",
-      "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。"
+      "summary": "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。"
     },
     {
       "id": "entity-isaac-gym-isaac-lab",
       "path": "wiki/entities/isaac-gym-isaac-lab.md",
       "title": "Isaac Gym / Isaac Lab",
       "page_type": "entity",
-      "summary": "**Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。"
+      "summary": "Isaac Gym / Isaac Lab"
     },
     {
       "id": "entity-legged-gym",
       "path": "wiki/entities/legged-gym.md",
       "title": "legged_gym",
       "page_type": "entity",
-      "summary": "**legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。"
+      "summary": "legged_gym"
+    },
+    {
+      "id": "entity-lerobot",
+      "path": "wiki/entities/lerobot.md",
+      "title": "LeRobot (Hugging Face)",
+      "page_type": "entity",
+      "summary": "LeRobot 是 Hugging Face 开发的具身智能全栈框架，旨在将 Transformers 生态迁移到机器人领域，支持高效数据采集与策略训练。"
+    },
+    {
+      "id": "entity-mimickit",
+      "path": "wiki/entities/mimickit.md",
+      "title": "MimicKit: 运动模仿与控制研究套件",
+      "page_type": "entity",
+      "summary": "MimicKit 是由 Xue Bin Peng 开发的模块化强化学习框架，集成了 DeepMimic、AMP、AWR、ASE、LCP、ADD、SMP 等运动模仿与物理控制算法。"
+    },
+    {
+      "id": "entity-mjlab",
+      "path": "wiki/entities/mjlab.md",
+      "title": "mjlab (轻量 GPU 加速 RL 框架)",
+      "page_type": "entity",
+      "summary": "mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU 加速物理）融合，是一个不依赖 Isaac Sim 的轻量 RL 框架，也是 AMP_mjlab 和 unitree_rl_mjlab 的底层依赖。"
+    },
+    {
+      "id": "entity-modern-robotics-book",
+      "path": "wiki/entities/modern-robotics-book.md",
+      "title": "Modern Robotics (Lynch-Park 教材)",
+      "page_type": "entity",
+      "summary": "Lynch & Park 的现代机器人学经典教材，独特之处是全程使用李群 / 螺旋理论作为统一数学语言，覆盖配置空间到全身控制、抓取、移动机器人的完整体系，是本知识库传统机器人学部分的主要参考底座。"
+    },
+    {
+      "id": "entity-motrix",
+      "path": "wiki/entities/motrix.md",
+      "title": "Motrix (Motphys 机器人仿真与训练平台)",
+      "page_type": "entity",
+      "summary": "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，专注于高频控制与强化学习训练。"
     },
     {
       "id": "entity-mujoco",
       "path": "wiki/entities/mujoco.md",
-      "title": "MuJoCo",
+      "title": "MuJoCo (物理引擎)",
       "page_type": "entity",
-      "summary": "**MuJoCo（Multi-Joint dynamics with Contact）** 是机器人与控制领域最经典的物理引擎之一，现在由 **Google DeepMind** 维护并开源。"
+      "summary": "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
+    },
+    {
+      "id": "entity-nvidia-omniverse",
+      "path": "wiki/entities/nvidia-omniverse.md",
+      "title": "NVIDIA Omniverse (具身仿真底座)",
+      "page_type": "entity",
+      "summary": "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于 USD 格式、工业级的实时三维协作与仿真引擎，旨在为具身智能提供高保真的数字化孪生环境。"
+    },
+    {
+      "id": "entity-oculust-quest-teleop",
+      "path": "wiki/entities/oculust-quest-teleop.md",
+      "title": "Meta Quest (Oculus) 遥操作",
+      "page_type": "entity",
+      "summary": "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成本最低、效率最高的数据采集手段之一，通过 VR 头显的手部追踪技术直接映射人类动作到机器人。"
+    },
+    {
+      "id": "entity-open-source-humanoid-brains",
+      "path": "wiki/entities/open-source-humanoid-brains.md",
+      "title": "开源人形机器人“大脑” (主控电脑) 选型",
+      "page_type": "entity",
+      "summary": "主流开源人形机器人“大脑”（主控电脑）选型：对比了 NVIDIA Jetson Orin、高性能 X86 工控机及国产边缘算力平台的性能边界与适用场景。"
+    },
+    {
+      "id": "entity-open-source-humanoid-hardware",
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "title": "开源人形机器人硬件方案对比",
+      "page_type": "entity",
+      "summary": "主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
     },
     {
       "id": "entity-pinocchio",
       "path": "wiki/entities/pinocchio.md",
-      "title": "Pinocchio",
+      "title": "Pinocchio (刚体动力学库)",
       "page_type": "entity",
-      "summary": "**Pinocchio** 是机器人领域最主流的刚体运动学与动力学计算库之一，长期由 **Stack-of-Tasks / INRIA / LAAS-CNRS** 这条学术与开源路线推动。"
+      "summary": "Pinocchio 是一个基于 C++ 的极致高性能刚体动力学库，是目前各类腿足机器人 WBC 和基于优化的控制器背后的核心计算引擎。"
+    },
+    {
+      "id": "entity-protomotions",
+      "path": "wiki/entities/protomotions.md",
+      "title": "ProtoMotions: 大规模人形机器人仿真框架",
+      "page_type": "entity",
+      "summary": "ProtoMotions 是 NVIDIA 开发的高性能 GPU 加速的人形机器人仿真与控制框架，是 MimicKit 的姊妹项目。"
+    },
+    {
+      "id": "entity-robot-explorer",
+      "path": "wiki/entities/robot-explorer.md",
+      "title": "Robot Explorer",
+      "page_type": "entity",
+      "summary": "Robot Explorer 是基于 Web 的交互式 3D 机器人探索工具，支持运动学可视化、可操纵性分析及力多胞体展示。"
+    },
+    {
+      "id": "entity-robot-lab",
+      "path": "wiki/entities/robot-lab.md",
+      "title": "robot_lab (IsaacLab 扩展框架)",
+      "page_type": "entity",
+      "summary": "robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练框架，支持 26+ 机器人型号，旨在通过模块化解耦简化机器人学习任务的开发。"
+    },
+    {
+      "id": "entity-robot-viewer",
+      "path": "wiki/entities/robot-viewer.md",
+      "title": "Robot Viewer",
+      "page_type": "entity",
+      "summary": "Robot Viewer 是支持多格式（URDF/MJCF/USD/Xacro）的 Web 机器人模型查看器，集成 MuJoCo WASM 支持浏览器内物理仿真。"
+    },
+    {
+      "id": "entity-roboto-origin",
+      "path": "wiki/entities/roboto-origin.md",
+      "title": "Roboto Origin（开源人形机器人基线）",
+      "page_type": "entity",
+      "summary": "Roboto Origin 是 Roboparty 发布的开源人形机器人基线项目，通过聚合 hardware/deploy/train/description/firmware 五个子仓库，提供可复现的 DIY 人形机器人研发路径。"
+    },
+    {
+      "id": "entity-robotwin",
+      "path": "wiki/entities/robotwin.md",
+      "title": "RoboTwin 2.0",
+      "page_type": "entity",
+      "summary": "RoboTwin 2.0 是专为双臂机器人设计的自动数据生成与仿真平台，基于 SAPIEN 引擎，支持大规模高质量专家数据合成。"
+    },
+    {
+      "id": "entity-sapien",
+      "path": "wiki/entities/sapien.md",
+      "title": "SAPIEN (仿真引擎)",
+      "page_type": "entity",
+      "summary": "SAPIEN 是针对关节体交互与机器人操作设计的高性能仿真引擎，支持大规模 PartNet-Mobility 数据集，适用于细粒度操作任务。"
+    },
+    {
+      "id": "entity-shadow-hand",
+      "path": "wiki/entities/shadow-hand.md",
+      "title": "Shadow Hand (灵巧手)",
+      "page_type": "entity",
+      "summary": "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 个主动驱动自由度，是研究拟人化灵巧操作与复杂手内重定向的标杆性硬件。"
+    },
+    {
+      "id": "entity-unitree-g1",
+      "path": "wiki/entities/unitree-g1.md",
+      "title": "Unitree G1 (人形机器人)",
+      "page_type": "entity",
+      "summary": "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
+    },
+    {
+      "id": "entity-unitree-rl-mjlab",
+      "path": "wiki/entities/unitree-rl-mjlab.md",
+      "title": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+      "page_type": "entity",
+      "summary": "unitree_rl_mjlab 是 Unitree 官方基于 mjlab 的 RL 训练框架，支持 Go2/G1/H1_2 等 7 款机型，覆盖速度跟踪与动作模仿，内建 ONNX 导出到 C++ 真机部署的完整链路。"
     },
     {
       "id": "entity-unitree",
       "path": "wiki/entities/unitree.md",
       "title": "Unitree",
       "page_type": "entity",
-      "summary": "**Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。"
+      "summary": "Unitree"
+    },
+    {
+      "id": "entity-urdf-studio",
+      "path": "wiki/entities/urdf-studio.md",
+      "title": "URDF-Studio",
+      "page_type": "entity",
+      "summary": "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
+    },
+    {
+      "id": "wiki-formalizations-behavior-cloning-loss",
+      "path": "wiki/formalizations/behavior-cloning-loss.md",
+      "title": "Behavior Cloning Loss (行为克隆损失函数)",
+      "page_type": "formalization",
+      "summary": "行为克隆损失函数（BC Loss）将马尔可夫决策过程中的策略学习简化为监督学习中的极大似然估计，是最基础的模仿学习优化目标。"
     },
     {
       "id": "wiki-formalizations-bellman-equation",
       "path": "wiki/formalizations/bellman-equation.md",
       "title": "Bellman 方程",
       "page_type": "formalization",
-      "summary": "**Bellman 方程**：值函数的递归关系，揭示了\"未来奖励\"与\"当前决策\"之间的数学联系，是几乎所有强化学习算法的理论基础。"
+      "summary": "Bellman 方程"
+    },
+    {
+      "id": "wiki-formalizations-cmdp",
+      "path": "wiki/formalizations/cmdp.md",
+      "title": "Constrained MDP (CMDP)",
+      "page_type": "formalization",
+      "summary": "Constrained MDP（CMDP）是安全强化学习的数学地基，在标准 MDP 基础上增加了显式约束项，要求在满足严格代价阈值的前提下最大化累积奖励。"
     },
     {
       "id": "wiki-formalizations-contact-complementarity",
       "path": "wiki/formalizations/contact-complementarity.md",
       "title": "Contact Complementarity（接触互补约束）",
       "page_type": "formalization",
-      "summary": "**接触互补约束（Contact Complementarity Conditions）** 是描述刚体与环境接触物理行为的数学框架：**接触力与接触间隙必须互补为零**——要么接触面有力（接触中），要么接触面有间隙（不接触），二者不能同时非零。这个约束是 LCP（线性互补问题）建模的核心，也是仿真器接触求解的数学基础。"
+      "summary": "Contact Complementarity（接触互补约束）"
+    },
+    {
+      "id": "wiki-formalizations-contact-wrench-cone",
+      "path": "wiki/formalizations/contact-wrench-cone.md",
+      "title": "接触力旋量锥 (Contact Wrench Cone)",
+      "page_type": "formalization",
+      "summary": "接触力旋量锥（Contact Wrench Cone, CWC）把摩擦锥从单点三维力推广到包含力与力矩的六维力旋量，是多点面接触下判断支撑可行性、CoM 可行区域与抓取稳定性的核心凸约束。"
+    },
+    {
+      "id": "wiki-formalizations-control-loop-latency-modeling",
+      "path": "wiki/formalizations/control-loop-latency-modeling.md",
+      "title": "控制环路延迟建模 (Control Loop Latency Modeling)",
+      "page_type": "formalization",
+      "summary": "控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。"
+    },
+    {
+      "id": "wiki-formalizations-control-lyapunov-function",
+      "path": "wiki/formalizations/control-lyapunov-function.md",
+      "title": "Control Lyapunov Function（控制李雅普诺夫函数）",
+      "page_type": "formalization",
+      "summary": "Control Lyapunov Function（控制李雅普诺夫函数）通过构造满足 V̇(x)≤-αV(x) 的标量函数，为控制系统提供可证明的渐近稳定性保证，是 CLF-CBF-QP 框架的稳定性核心。"
+    },
+    {
+      "id": "wiki-formalizations-cross-modal-attention",
+      "path": "wiki/formalizations/cross-modal-attention.md",
+      "title": "Cross-modal Attention (跨模态注意力)",
+      "page_type": "formalization",
+      "summary": "跨模态注意力机制（Cross-modal Attention）允许 VLA 模型在统一的 Transformer 架构中动态关联视觉特征、自然语言指令与机器人本体状态，是具身智能语义理解的核心。"
     },
     {
       "id": "wiki-formalizations-ekf",
       "path": "wiki/formalizations/ekf.md",
       "title": "Extended Kalman Filter (EKF)",
       "page_type": "formalization",
-      "summary": "**扩展卡尔曼滤波（EKF）**：将标准卡尔曼滤波推广到非线性系统的经典状态估计方法，通过每步线性化（一阶 Taylor 展开）在非线性系统上近似应用 Kalman 递推公式。"
+      "summary": "Extended Kalman Filter (EKF)"
+    },
+    {
+      "id": "wiki-formalizations-foundation-policy-alignment",
+      "path": "wiki/formalizations/foundation-policy-alignment.md",
+      "title": "Foundation Policy Alignment (基础策略对齐)",
+      "page_type": "formalization",
+      "summary": "基础策略对齐（Foundation Policy Alignment）形式化描述了如何通过对比学习或交叉熵优化，将多源、异构的机器人演示数据映射到统一的语义-动作隐空间，实现跨形态的知识共享。"
+    },
+    {
+      "id": "wiki-formalizations-friction-cone",
+      "path": "wiki/formalizations/friction-cone.md",
+      "title": "摩擦锥 (Friction Cone)",
+      "page_type": "formalization",
+      "summary": "摩擦锥（Friction Cone）描述了接触力在接触面上不发生相对滑动的物理约束条件，是 WBC 和轨迹优化中最重要的不等式约束。"
     },
     {
       "id": "wiki-formalizations-gae",
       "path": "wiki/formalizations/gae.md",
       "title": "GAE（广义优势估计）",
       "page_type": "formalization",
-      "summary": "**GAE（Generalized Advantage Estimation）** 是估计策略梯度中优势函数 $A(s,a)$ 的标准方法，通过参数 $\\lambda \\in [0,1]$ 在**偏差（bias）和方差（variance）**之间平滑权衡。"
+      "summary": "GAE（广义优势估计）"
+    },
+    {
+      "id": "wiki-formalizations-generative-foundations",
+      "path": "wiki/formalizations/generative-foundations.md",
+      "title": "生成式模型基础 (Generative Foundations)",
+      "page_type": "formalization",
+      "summary": "通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。"
     },
     {
       "id": "wiki-formalizations-hjb",
       "path": "wiki/formalizations/hjb.md",
       "title": "HJB 方程（Hamilton-Jacobi-Bellman）",
       "page_type": "formalization",
-      "summary": "**HJB 方程**是连续时间最优控制的基本方程，给出了最优值函数 $V^*(x,t)$ 满足的偏微分方程（PDE）。它是 Bellman 最优方程在连续时间域的推广。"
+      "summary": "HJB 方程（Hamilton-Jacobi-Bellman）"
     },
     {
       "id": "wiki-formalizations-lqr",
       "path": "wiki/formalizations/lqr.md",
       "title": "LQR / iLQR",
       "page_type": "formalization",
-      "summary": "**LQR（Linear Quadratic Regulator，线性二次调节器）**：最优控制中最经典的解析解，针对线性系统 + 二次代价函数，给出最优状态反馈增益的闭式解。**iLQR（iterative LQR）**是其非线性扩展，通过迭代线性化求解非线性轨迹优化。"
+      "summary": "LQR / iLQR"
     },
     {
       "id": "wiki-formalizations-lyapunov",
@@ -335,14 +1121,126 @@
       "path": "wiki/formalizations/mdp.md",
       "title": "Markov Decision Process (MDP)",
       "page_type": "formalization",
-      "summary": "**马尔可夫决策过程**：在离散时间步中，智能体根据当前状态选择动作，环境根据转移概率回应新状态和奖励的数学框架，是强化学习的理论基础。"
+      "summary": "Markov Decision Process (MDP)"
     },
     {
       "id": "wiki-formalizations-pomdp",
       "path": "wiki/formalizations/pomdp.md",
-      "title": "POMDP（部分可观测马尔可夫决策过程）",
+      "title": "Partially Observable MDP (POMDP)",
       "page_type": "formalization",
-      "summary": "**POMDP** 是 MDP 的扩展，适用于智能体**无法直接观测完整系统状态**的场景——几乎所有真实机器人系统都是 POMDP。"
+      "summary": "部分可观测马尔可夫决策过程（POMDP）描述了机器人无法获取完整状态信息，只能通过嘈杂观测进行概率推理的决策框架，是状态估计与鲁棒控制的理论基石。"
+    },
+    {
+      "id": "wiki-formalizations-probability-flow",
+      "path": "wiki/formalizations/probability-flow.md",
+      "title": "Probability Flow (概率流形式化)",
+      "page_type": "formalization",
+      "summary": "概率流（Probability Flow）提供了一个统一的数学框架来描述扩散模型与流匹配，通过将离散的去噪步转化为连续的可微常微分方程（ODE），实现了生成过程的极致加速与可控性。"
+    },
+    {
+      "id": "wiki-formalizations-se3-representation",
+      "path": "wiki/formalizations/se3-representation.md",
+      "title": "SE(3) Representation (位姿表示形式化)",
+      "page_type": "formalization",
+      "summary": "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
+    },
+    {
+      "id": "wiki-formalizations-tsid-formulation",
+      "path": "wiki/formalizations/tsid-formulation.md",
+      "title": "Task Space Inverse Dynamics (TSID) 形式化",
+      "page_type": "formalization",
+      "summary": "任务空间逆动力学（TSID）形式化：描述了如何在浮动基座动力学约束下，将多个并行的任务空间加速度映射为一致的关节力矩输出，是 WBC 最主流的数学实现方式。"
+    },
+    {
+      "id": "wiki-formalizations-variational-objective",
+      "path": "wiki/formalizations/variational-objective.md",
+      "title": "Variational Objective (变分目标函数)",
+      "page_type": "formalization",
+      "summary": "变分目标函数（Variational Objective）通过最小化证据下界（ELBO），实现了对复杂高维状态分布的有效近似，是世界模型中 RSSM 训练的核心数学基础。"
+    },
+    {
+      "id": "wiki-formalizations-vla-tokenization",
+      "path": "wiki/formalizations/vla-tokenization.md",
+      "title": "Action Tokenization (动作分词)",
+      "page_type": "formalization",
+      "summary": "动作分词（Action Tokenization）是将机器人的高维连续动作空间映射为有限离散 Token 序列的过程，是使大语言模型架构能够直接预测物理动作的关键桥梁。"
+    },
+    {
+      "id": "wiki-formalizations-zmp-lip",
+      "path": "wiki/formalizations/zmp-lip.md",
+      "title": "ZMP + LIP 形式化",
+      "page_type": "formalization",
+      "summary": "ZMP + LIP（Linear Inverted Pendulum）模型通过简化质心高度和角动量，将人形机器人平衡问题转化为可解析的线性动力学方程。"
+    },
+    {
+      "id": "wiki-methods-action-chunking",
+      "path": "wiki/methods/action-chunking.md",
+      "title": "Action Chunking（动作块输出）",
+      "page_type": "method",
+      "summary": "Action Chunking 让策略一次输出未来多步动作序列，以降低长时序误差并缓解高延迟模型与高频控制器之间的时域错配。"
+    },
+    {
+      "id": "wiki-methods-actuator-network",
+      "path": "wiki/methods/actuator-network.md",
+      "title": "Actuator Network (执行器网络)",
+      "page_type": "method",
+      "summary": "执行器网络（Actuator Network）通过神经网络在仿真中拟合真实电机的非线性动力学、摩擦和延迟特性，是实现高精度足式机器人 Sim2Real 迁移的核心技术。"
+    },
+    {
+      "id": "wiki-methods-add",
+      "path": "wiki/methods/add.md",
+      "title": "ADD: 对抗性微分判别器",
+      "page_type": "method",
+      "summary": "ADD (Adversarial Differential Discriminator) 通过微分判别器结构消除对抗模仿学习中的运动伪影，提升动作的物理真实感。"
+    },
+    {
+      "id": "wiki-methods-amp-reward",
+      "path": "wiki/methods/amp-reward.md",
+      "title": "AMP & HumanX: 判别器驱动的风格学习",
+      "page_type": "method",
+      "summary": "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。"
+    },
+    {
+      "id": "wiki-methods-ams",
+      "path": "wiki/methods/ams.md",
+      "title": "AMS: 物理可行性过滤与混合奖励",
+      "page_type": "method",
+      "summary": "AMS (Adaptive Motion Synthesis) 提出了一种物理可行性过滤与混合奖励机制，通过在极端动作处引入先验来提升复杂平衡任务的训练成功率。"
+    },
+    {
+      "id": "wiki-methods-any2track",
+      "path": "wiki/methods/any2track.md",
+      "title": "Any2Track & RGMT: 增强型自适应与时序建模",
+      "page_type": "method",
+      "summary": "Any2Track 与 RGMT 代表了基于 Transformer 和世界模型的自适应运动控制范式，通过显式建模历史扰动与未来指令来实现鲁棒的轨迹跟踪。"
+    },
+    {
+      "id": "wiki-methods-ase",
+      "path": "wiki/methods/ase.md",
+      "title": "ASE: 对抗性技能嵌入",
+      "page_type": "method",
+      "summary": "ASE (Adversarial Skill Embeddings) 通过对抗学习在潜空间中压缩动作风格，实现层次化控制与复杂任务组合。"
+    },
+    {
+      "id": "wiki-methods-auto-labeling-pipelines",
+      "path": "wiki/methods/auto-labeling-pipelines.md",
+      "title": "Auto-labeling Pipelines (自动化标注流水线)",
+      "page_type": "method",
+      "summary": "自动化标注流水线（Auto-labeling Pipelines）利用大视觉语言模型（VLM）自动为海量机器人原始轨迹生成文本描述和成功率标签，极大地降低了具身基础模型的数据准备成本。"
+    },
+    {
+      "id": "wiki-methods-awr",
+      "path": "wiki/methods/awr.md",
+      "title": "AWR: 优势加权回归",
+      "page_type": "method",
+      "summary": "AWR 是一种简单的离策 RL 算法，通过优势加权回归将策略优化转化为监督学习，避开了策略梯度的不稳定性。"
+    },
+    {
+      "id": "wiki-methods-bc-with-transformer",
+      "path": "wiki/methods/bc-with-transformer.md",
+      "title": "Behavior Cloning with Transformer",
+      "page_type": "method",
+      "summary": "基于 Transformer 的行为克隆（BC with Transformer）利用自注意力机制捕获长时序观测中的多峰分布与因果关系，是目前 ACT、RT 系列算法的核心骨干架构。"
     },
     {
       "id": "wiki-methods-behavior-cloning",
@@ -352,11 +1250,46 @@
       "summary": "Behavior Cloning 把专家演示转成监督学习问题，是机器人模仿学习最简单也最常用的基线。"
     },
     {
+      "id": "wiki-methods-beyondmimic",
+      "path": "wiki/methods/beyondmimic.md",
+      "title": "BeyondMimic",
+      "page_type": "method",
+      "summary": "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架，其核心在于精确的物理建模与失败率驱动的自适应采样机制。"
+    },
+    {
+      "id": "wiki-methods-claw",
+      "path": "wiki/methods/claw.md",
+      "title": "CLAW (宇树 G1 全身动作数据生成管线)",
+      "page_type": "method",
+      "summary": "CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。"
+    },
+    {
+      "id": "wiki-methods-contact-net",
+      "path": "wiki/methods/contact-net.md",
+      "title": "ContactNet",
+      "page_type": "method",
+      "summary": "ContactNet 是一种基于点云的深度学习模型，专门用于预测物体的接触面与抓取概率，是实现凌乱场景下稳健操作的核心感知技术。"
+    },
+    {
       "id": "wiki-methods-dagger",
       "path": "wiki/methods/dagger.md",
       "title": "DAgger（Dataset Aggregation）",
       "page_type": "method",
       "summary": "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
+    },
+    {
+      "id": "wiki-methods-deepmimic",
+      "path": "wiki/methods/deepmimic.md",
+      "title": "DeepMimic: 示例引导的技能学习",
+      "page_type": "method",
+      "summary": "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹跟踪奖励实现复杂的运动模仿。"
+    },
+    {
+      "id": "wiki-methods-diffusion-motion-generation",
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "title": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "page_type": "method",
+      "summary": "利用扩散模型生成机器人全身运动序列，通过闭环微调解决分布偏移，实现复杂地形下的实时运动规划。"
     },
     {
       "id": "wiki-methods-diffusion-policy",
@@ -366,11 +1299,102 @@
       "summary": "Diffusion Policy 用多步去噪生成动作序列，擅长处理多模态和长时序的机器人操作行为。"
     },
     {
+      "id": "wiki-methods-dmp",
+      "path": "wiki/methods/dmp.md",
+      "title": "Dynamic Movement Primitives (DMP)",
+      "page_type": "method",
+      "summary": "动态运动基元（DMP）通过二阶微分方程描述运动轨迹，具有空间伸缩不变性和时域缩放特性，是轨迹级模仿学习的经典工具。"
+    },
+    {
+      "id": "wiki-methods-gae",
+      "path": "wiki/methods/gae.md",
+      "title": "Generalized Advantage Estimation (GAE)",
+      "page_type": "method",
+      "summary": "广义优势估计（GAE）通过引入衰减因子 λ 在偏差与方差之间进行权衡，是目前 PPO 等主流 Policy Gradient 算法中计算优势函数的标准方法。"
+    },
+    {
+      "id": "wiki-methods-generative-data-augmentation",
+      "path": "wiki/methods/generative-data-augmentation.md",
+      "title": "Generative Data Augmentation (生成式数据增强)",
+      "page_type": "method",
+      "summary": "生成式数据增强（Generative Data Augmentation）利用扩散模型或视频编辑技术，针对性地合成长尾失败场景或罕见物理交互数据，以低成本扩充具身智能的专家演示库。"
+    },
+    {
+      "id": "wiki-methods-generative-world-models",
+      "path": "wiki/methods/generative-world-models.md",
+      "title": "Generative World Models (生成式世界模型)",
+      "page_type": "method",
+      "summary": "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
+    },
+    {
+      "id": "wiki-methods-haic",
+      "path": "wiki/methods/haic.md",
+      "title": "HAIC: 基于世界模型的教师-学生训练",
+      "page_type": "method",
+      "summary": "HAIC (Hierarchical AI Controller) 提出了一种结合世界模型的两阶段教师-学生训练范式，用于解决物体交互任务中的感知-动作协调难题。"
+    },
+    {
+      "id": "wiki-methods-her",
+      "path": "wiki/methods/her.md",
+      "title": "Hindsight Experience Replay (HER)",
+      "page_type": "method",
+      "summary": "事后经验回放（HER）通过将失败的轨迹重新标记为指向实际到达位置的成功轨迹，有效解决了操作任务中稀疏奖励难以训练的问题。"
+    },
+    {
+      "id": "wiki-methods-htwk-gym",
+      "path": "wiki/methods/htwk-gym.md",
+      "title": "htwk-gym",
+      "page_type": "method",
+      "summary": "htwk-gym 是由 HTWK Leipzig 开发的人形机器人足球 RL 框架，专注于 Booster T1/K1 平台的参数化步行与踢球技能训练。"
+    },
+    {
+      "id": "wiki-methods-humanoid-transformer-touch-dreaming",
+      "path": "wiki/methods/humanoid-transformer-touch-dreaming.md",
+      "title": "Humanoid Transformer with Touch Dreaming (HTD)",
+      "page_type": "method",
+      "summary": "Humanoid Transformer with Touch Dreaming (HTD) 是一种面向人形机器人接触丰富型移动操作的多模态模仿学习策略，通过未来手部力和触觉 latent 预测，让 Transformer 在行为克隆中学到接触感知表征。"
+    },
+    {
       "id": "wiki-methods-imitation-learning",
       "path": "wiki/methods/imitation-learning.md",
-      "title": "Imitation Learning (IL)",
+      "title": "Imitation Learning (IL, 模仿学习)",
       "page_type": "method",
-      "summary": "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
+      "summary": "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
+    },
+    {
+      "id": "wiki-methods-in-hand-reorientation",
+      "path": "wiki/methods/in-hand-reorientation.md",
+      "title": "In-hand Reorientation (手内重定向)",
+      "page_type": "method",
+      "summary": "手内重定向（In-hand Reorientation）是指机器人灵巧手在不借助于外部环境（如桌面）的前提下，通过手指间的协同动作改变掌心中物体位姿的技术。"
+    },
+    {
+      "id": "wiki-methods-lcp",
+      "path": "wiki/methods/lcp.md",
+      "title": "LCP: Lipschitz 约束策略",
+      "page_type": "method",
+      "summary": "LCP 通过对策略网络施加 Lipschitz 连续性约束，增强了物理控制器的鲁棒性和平滑度，防止微小扰动导致系统失稳。"
+    },
+    {
+      "id": "wiki-methods-lingbot-map",
+      "path": "wiki/methods/lingbot-map.md",
+      "title": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
+      "page_type": "method",
+      "summary": "LingBot-Map 是一个专为流式 3D 重建设计的前馈式 3D 基础模型，利用 Geometric Context Transformer (GCT) 实现长序列稳定推理与实时漂移校正。"
+    },
+    {
+      "id": "wiki-methods-lqr-ilqr",
+      "path": "wiki/methods/lqr-ilqr.md",
+      "title": "LQR / iLQR 算法详解",
+      "page_type": "method",
+      "summary": "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 Riccati 递归高效求解线性及非线性轨迹优化问题。"
+    },
+    {
+      "id": "wiki-methods-marl",
+      "path": "wiki/methods/marl.md",
+      "title": "Multi-Agent Reinforcement Learning (MARL)",
+      "page_type": "method",
+      "summary": "多智能体强化学习（MARL）研究多个自主智能体在共享环境中的交互与进化，涵盖了竞争、协作及纳什均衡等复杂博弈动力学。"
     },
     {
       "id": "wiki-methods-model-based-rl",
@@ -384,7 +1408,35 @@
       "path": "wiki/methods/model-predictive-control.md",
       "title": "Model Predictive Control (MPC)",
       "page_type": "method",
-      "summary": "Model Predictive Control 通过在线滚动优化未来轨迹，在约束控制和机器人运动规划中广泛使用。"
+      "summary": "Model Predictive Control（MPC，模型预测控制）通过在线滚动优化未来轨迹，在约束控制和机器人运动规划中广泛使用。"
+    },
+    {
+      "id": "wiki-methods-motion-retargeting-gmr",
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "title": "GMR: 通用动作重定向",
+      "page_type": "method",
+      "summary": "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
+    },
+    {
+      "id": "wiki-methods-motionbricks",
+      "path": "wiki/methods/motionbricks.md",
+      "title": "MotionBricks: 模块化生成式运动合成框架",
+      "page_type": "method",
+      "summary": "MotionBricks 是 NVIDIA 开发的高性能运动生成框架，通过模块化潜空间底座与智能基元（Smart Primitives）实现了超大规模技能库的实时、高精度合成，是 GR00T 全身控制栈的关键层。"
+    },
+    {
+      "id": "wiki-methods-mppi",
+      "path": "wiki/methods/mppi.md",
+      "title": "Model Predictive Path Integral (MPPI)",
+      "page_type": "method",
+      "summary": "模型预测路径积分（MPPI）是一种基于样本的概率模型预测控制方法，通过海量并行轨迹采样与加权平均，实现了对非凸、非平滑动力学系统的高效控制。"
+    },
+    {
+      "id": "wiki-methods-paid-framework",
+      "path": "wiki/methods/paid-framework.md",
+      "title": "PAiD Framework",
+      "page_type": "method",
+      "summary": "PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。"
     },
     {
       "id": "wiki-methods-policy-optimization",
@@ -396,16 +1448,72 @@
     {
       "id": "wiki-methods-reinforcement-learning",
       "path": "wiki/methods/reinforcement-learning.md",
-      "title": "Reinforcement Learning (RL)",
+      "title": "Reinforcement Learning (RL, 强化学习)",
       "page_type": "method",
       "summary": "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
     },
     {
+      "id": "wiki-methods-safe-rl",
+      "path": "wiki/methods/safe-rl.md",
+      "title": "Safe RL（安全强化学习）",
+      "page_type": "method",
+      "summary": "安全强化学习（Safe RL）旨在满足显式安全约束的前提下优化策略，常用方法包括 Lagrangian 优化、受限策略投影和安全层屏蔽。它是机器人部署至物理世界的必经之路。"
+    },
+    {
+      "id": "wiki-methods-smp",
+      "path": "wiki/methods/smp.md",
+      "title": "SMP: 基于得分匹配的可复用运动先验",
+      "page_type": "method",
+      "summary": "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为“冻结奖励器”，实现了高效、可组合且无需原始数据的运动模仿学习。"
+    },
+    {
+      "id": "wiki-methods-star-vla",
+      "path": "wiki/methods/star-vla.md",
+      "title": "StarVLA",
+      "page_type": "method",
+      "summary": "StarVLA 是具身智能领域的极简基准模型，证明了强 VLM 底座（如 Qwen3-VL）配合简单 MLP 动作头即可实现最先进的控制性能。"
+    },
+    {
+      "id": "wiki-methods-sumo",
+      "path": "wiki/methods/sumo.md",
+      "title": "Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)",
+      "page_type": "method",
+      "summary": "Sumo 采用反向层级架构（MPC 驱动底层 RL），通过将通用策略纳入规划循环，实现腿式机器人对超限重物的零样本动态操纵。"
+    },
+    {
+      "id": "wiki-methods-switch-framework",
+      "path": "wiki/methods/switch-framework.md",
+      "title": "Switch: 敏捷技能切换框架",
+      "page_type": "method",
+      "summary": "Switch 是一种分层人形机器人控制框架，通过「增强技能图」与「缓冲节点」设计，实现了多样化敏捷技能之间的 100% 成功切换与极强的扰动鲁棒性。"
+    },
+    {
+      "id": "wiki-methods-tactile-impedance-control",
+      "path": "wiki/methods/tactile-impedance-control.md",
+      "title": "Tactile Impedance Control（基于触觉反馈的阻抗控制）",
+      "page_type": "method",
+      "summary": "基于触觉的阻抗控制（Tactile Impedance Control）把指尖触觉读数实时回馈到阻抗参数中：让等效刚度、阻尼乃至期望位置随接触状态在线调整，从而在灵巧抓取与精细装配中实现自适应力度。"
+    },
+    {
       "id": "wiki-methods-trajectory-optimization",
       "path": "wiki/methods/trajectory-optimization.md",
-      "title": "Trajectory Optimization",
+      "title": "Trajectory Optimization（轨迹优化）",
       "page_type": "method",
-      "summary": "Trajectory Optimization 通过直接优化状态和控制序列生成可行运动，是控制与规划的桥梁。"
+      "summary": "轨迹优化（Trajectory Optimization）通过数值优化方法求解开环最优控制序列，是 MPC 的理论核心和机器狗/人形机器人离线运动规划的主力工具。"
+    },
+    {
+      "id": "wiki-methods-unified-multimodal-tokens",
+      "path": "wiki/methods/unified-multimodal-tokens.md",
+      "title": "Unified Multimodal Tokens (统一多模态 Token)",
+      "page_type": "method",
+      "summary": "统一多模态 Token（Unified Multimodal Tokens）是现代 VLA 模型的架构趋势，通过将视觉 Patch、自然语言词向量和量化动作编码进同一个嵌入空间，实现了纯粹的序列建模。"
+    },
+    {
+      "id": "wiki-methods-visual-servoing",
+      "path": "wiki/methods/visual-servoing.md",
+      "title": "Visual Servoing（视觉伺服控制）",
+      "page_type": "method",
+      "summary": "视觉伺服（Visual Servoing）将相机图像特征的误差直接反馈到机器人运动控制器中，形成闭环视觉控制，有效克服了传统“查表式”抓取的开环误差。"
     },
     {
       "id": "wiki-methods-vla",
@@ -415,18 +1523,46 @@
       "summary": "VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。"
     },
     {
+      "id": "wiki-methods-zest",
+      "path": "wiki/methods/zest.md",
+      "title": "ZEST (Zero-shot Embodied Skill Transfer)",
+      "page_type": "method",
+      "summary": "ZEST 是波士顿动力开发的统一框架，通过自适应采样与自动课程学习，将异构动捕/视频数据直接转化为机器人的零样本高动态运动技能。"
+    },
+    {
+      "id": "wiki-methods-π0-policy",
+      "path": "wiki/methods/π0-policy.md",
+      "title": "π₀ (Pi-zero) 策略模型",
+      "page_type": "method",
+      "summary": "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。"
+    },
+    {
+      "id": "wiki-overview-humanoid-motion-control-know-how",
+      "path": "wiki/overview/humanoid-motion-control-know-how.md",
+      "title": "人形机器人运动控制 Know-How",
+      "page_type": "overview",
+      "summary": "人形机器人运动控制工程实践经验汇总：涵盖了从传感器噪声处理、电机热管理到非结构化地形适应的闭坑指南。"
+    },
+    {
       "id": "wiki-overview-robot-learning-overview",
       "path": "wiki/overview/robot-learning-overview.md",
       "title": "Robot Learning Overview",
       "page_type": "overview",
-      "summary": "**机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。"
+      "summary": "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
     },
     {
-      "id": "wiki-queries-README",
-      "path": "wiki/queries/README.md",
-      "title": "wiki/queries/",
+      "id": "wiki-queries-clf-cbf-in-wbc",
+      "path": "wiki/queries/clf-cbf-in-wbc.md",
+      "title": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "page_type": "query",
-      "summary": "`wiki/queries/` 存放 **Query 操作的独立产物**。"
+      "summary": "CLF 与 CBF 如何在 WBC/MPC 中联合使用：通过 CLF-CBF-QP 框架同时保证系统收敛到目标（CLF）和维持安全集（CBF），本页梳理公式、冲突处理策略与实际工程实现要点。"
+    },
+    {
+      "id": "wiki-queries-contact-rich-manipulation-guide",
+      "path": "wiki/queries/contact-rich-manipulation-guide.md",
+      "title": "Query：接触丰富操作实践指南",
+      "page_type": "query",
+      "summary": "接触丰富操作实践指南：聚焦装配、插拔、拧紧、擦拭等任务中最关键的接触建模、柔顺执行、数据采集与调试策略。"
     },
     {
       "id": "wiki-queries-control-architecture-comparison",
@@ -436,11 +1572,67 @@
       "summary": "> **Query 产物**：本页由以下问题触发：「人形机器人的主流控制架构有哪些，各有什么优劣和适用场景？」"
     },
     {
+      "id": "wiki-queries-demo-data-collection-guide",
+      "path": "wiki/queries/demo-data-collection-guide.md",
+      "title": "操作任务演示数据收集指南",
+      "page_type": "query",
+      "summary": "用模仿学习做操作任务时，高效收集高质量人类演示数据的完整指南，覆盖硬件选型、数据质量保障和常见陷阱。"
+    },
+    {
+      "id": "wiki-queries-dexterous-data-collection-guide",
+      "path": "wiki/queries/dexterous-data-collection-guide.md",
+      "title": "灵巧操作数据采集指南",
+      "page_type": "query",
+      "summary": "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、Allegro Hand 或低成本遥操作装置采集高质量、多模态的灵巧抓取与操作演示数据。"
+    },
+    {
+      "id": "wiki-queries-domain-randomization-guide",
+      "path": "wiki/queries/domain-randomization-guide.md",
+      "title": "Query：sim2real Domain Randomization 参数设计指南",
+      "page_type": "query",
+      "summary": "如何为 sim2real 任务设计 domain randomization 参数与分布范围：涵盖物理参数、延迟、感知噪声和几何随机化的完整指导手册。"
+    },
+    {
+      "id": "wiki-queries-ethercat-master-optimization",
+      "path": "wiki/queries/ethercat-master-optimization.md",
+      "title": "EtherCAT 主站优化指南",
+      "page_type": "query",
+      "summary": "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux 环境下通过内核优化和周期同步（DC），实现 2kHz 以上、高确定性的工业级伺服控制闭环。"
+    },
+    {
+      "id": "wiki-queries-field-robotics-troubleshooting",
+      "path": "wiki/queries/field-robotics-troubleshooting.md",
+      "title": "野外机器人排障指南",
+      "page_type": "query",
+      "summary": "野外机器人排障指南：总结了机器人在非结构化地形、极端光照及不确定天气下常见的失效模式，如激光雷达过曝、IMU 累计漂移及接触估计误报。"
+    },
+    {
+      "id": "wiki-queries-foundation-policy-for-humanoids",
+      "path": "wiki/queries/foundation-policy-for-humanoids.md",
+      "title": "人形机器人 Foundation Policy 适用边界分析",
+      "page_type": "query",
+      "summary": "综合分析人形机器人 foundation policy 的当前适用边界：操作任务已有初步可用，运动控制尚不成熟，loco-manipulation 仍是前沿。"
+    },
+    {
+      "id": "wiki-queries-hardware-abstraction-layer",
+      "path": "wiki/queries/hardware-abstraction-layer.md",
+      "title": "机器人硬件抽象层 (HAL) 设计指南",
+      "page_type": "query",
+      "summary": "硬件抽象层（HAL）设计指南：探讨了在机器人软件栈中如何通过 C++ 虚基类、数据结构对齐及跨总线统一接口，实现算法逻辑与不同关节驱动硬件（QDD/SEA/液压）的彻底解耦。"
+    },
+    {
       "id": "wiki-queries-hardware-comparison",
       "path": "wiki/queries/hardware-comparison.md",
       "title": "主流人形机器人硬件对比",
       "page_type": "query",
-      "summary": "> Query 类型：对比分析"
+      "summary": "主流人形机器人硬件对比"
+    },
+    {
+      "id": "wiki-queries-humanoid-battery-thermal-management",
+      "path": "wiki/queries/humanoid-battery-thermal-management.md",
+      "title": "人形机器人电池与热管理指南",
+      "page_type": "query",
+      "summary": "人形机器人电池与热管理指南：探讨了在大功率电机输出下的电池放电倍率策略、电芯温度监控以及主动/被动散热设计，以保障真机运行的安全性与续航。"
     },
     {
       "id": "wiki-queries-humanoid-hardware-selection",
@@ -450,11 +1642,18 @@
       "summary": "对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。"
     },
     {
+      "id": "wiki-queries-humanoid-motion-control-know-how",
+      "path": "wiki/queries/humanoid-motion-control-know-how.md",
+      "title": "人形机器人运动控制 Know-How 结构化摘要",
+      "page_type": "query",
+      "summary": "将飞书公开文档《人形机器人运动控制 Know-How》提炼为适合 Robotics_Notebooks 的结构化摘要，聚焦学习路线、问题框架与传统控制主干。"
+    },
+    {
       "id": "wiki-queries-humanoid-rl-cookbook",
       "path": "wiki/queries/humanoid-rl-cookbook.md",
       "title": "人形机器人 RL 策略训练完整 Checklist",
       "page_type": "query",
-      "summary": "> **Query 产物**：本页由以下问题触发：「从零开始训练一个能在真机上走路的人形机器人 RL 策略，完整 checklist？」"
+      "summary": "人形机器人 RL 策略训练完整 Checklist"
     },
     {
       "id": "wiki-queries-il-for-manipulation",
@@ -462,6 +1661,13 @@
       "title": "Query：机器人操作任务该优先用 IL 还是 RL？",
       "page_type": "query",
       "summary": "面向机器人操作任务的选型指南：何时优先模仿学习、何时需要 RL，以及演示数据该如何收集和扩展。"
+    },
+    {
+      "id": "wiki-queries-locomotion-failure-modes",
+      "path": "wiki/queries/locomotion-failure-modes.md",
+      "title": "Locomotion RL 训练失败模式分析",
+      "page_type": "query",
+      "summary": "Locomotion RL 常见失败模式分析：通过识别原地踏步、关节振荡、双脚起跳和策略崩溃等典型现象，快速定位训练与奖励设计问题。"
     },
     {
       "id": "wiki-queries-locomotion-reward-design-guide",
@@ -475,21 +1681,63 @@
       "path": "wiki/queries/mpc-solver-selection.md",
       "title": "MPC 求解器选型指南",
       "page_type": "query",
-      "summary": "> **Query 产物**：本页由以下问题触发：「机器人 MPC 求解器怎么选：OSQP vs qpOASES vs Acados vs FORCES Pro？」"
+      "summary": "MPC 求解器选型指南"
+    },
+    {
+      "id": "wiki-queries-mpc-tuning-guide",
+      "path": "wiki/queries/mpc-tuning-guide.md",
+      "title": "Model Predictive Control (MPC) 调参指南",
+      "page_type": "query",
+      "summary": "MPC 调参指南：系统梳理了预测时域、代价函数权重 Q/R 矩阵、以及状态偏差惩罚对机器人稳定性的影响，并提供了实用的工程调试顺序。"
+    },
+    {
+      "id": "wiki-queries-multimodal-fusion-tricks",
+      "path": "wiki/queries/multimodal-fusion-tricks.md",
+      "title": "机器人感知中的多模态融合技巧",
+      "page_type": "query",
+      "summary": "多模态融合技巧：探讨了在具身智能模型中如何高效整合视觉、语言、本体感受和触觉信号，涵盖了早期融合、晚期融合及基于交叉注意力的特征对齐方法。"
+    },
+    {
+      "id": "wiki-queries-open-source-motion-control-projects",
+      "path": "wiki/queries/open-source-motion-control-projects.md",
+      "title": "开源运动控制项目结构化摘要",
+      "page_type": "query",
+      "summary": "将飞书公开文档《【开源】小而美的运动控制项目》整理为适合 Robotics_Notebooks 的方法地图，抽出训练机制优化、模仿学习、世界模型、交互与重定向五条主线。"
     },
     {
       "id": "wiki-queries-pinocchio-quick-start",
       "path": "wiki/queries/pinocchio-quick-start.md",
       "title": "Pinocchio 快速上手：最小可运行动力学示例",
       "page_type": "query",
-      "summary": "> **Query 产物**：本页由以下问题触发：「用 Pinocchio 做机器人动力学计算的最小可运行示例？」"
+      "summary": "Pinocchio 快速上手：最小可运行动力学示例"
+    },
+    {
+      "id": "wiki-queries-ppo-vs-sac-for-robots",
+      "path": "wiki/queries/ppo-vs-sac-for-robots.md",
+      "title": "PPO vs SAC：机器人 RL 实践对比",
+      "page_type": "query",
+      "summary": "PPO 与 SAC 在机器人 RL 中的实践对比，覆盖 on-policy vs off-policy 核心差异、适用场景与调参要点。"
+    },
+    {
+      "id": "wiki-queries-real-time-control-middleware-guide",
+      "path": "wiki/queries/real-time-control-middleware-guide.md",
+      "title": "实时运控中间件配置指南",
+      "page_type": "query",
+      "summary": "实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。"
     },
     {
       "id": "wiki-queries-reward-design-guide",
       "path": "wiki/queries/reward-design-guide.md",
       "title": "Reward Design 实战指南",
       "page_type": "query",
-      "summary": "> **Query 产物**：本页由以下问题触发：「从零设计 locomotion RL 的 reward 函数，有哪些核心原则和常见陷阱？」"
+      "summary": "Reward Design 实战指南"
+    },
+    {
+      "id": "wiki-queries-reward-shaping-guide",
+      "path": "wiki/queries/reward-shaping-guide.md",
+      "title": "Locomotion RL 奖励函数设计指南",
+      "page_type": "query",
+      "summary": "Locomotion RL 奖励函数设计指南：通过将任务目标拆分为正向推进项、平滑惩罚项与安全性约束项，实现鲁棒且自然步态的技巧。"
     },
     {
       "id": "wiki-queries-rl-algorithm-selection",
@@ -503,7 +1751,14 @@
       "path": "wiki/queries/rl-hyperparameter-guide.md",
       "title": "RL 超参数调节指南（locomotion 专用）",
       "page_type": "query",
-      "summary": "> Query 类型：操作指南"
+      "summary": "RL 超参数调节指南（locomotion 专用）"
+    },
+    {
+      "id": "wiki-queries-robot-policy-debug-playbook",
+      "path": "wiki/queries/robot-policy-debug-playbook.md",
+      "title": "RL 策略真机调试 Playbook",
+      "page_type": "query",
+      "summary": "RL 策略仿真中表现良好但真机失效时的系统排查手册，覆盖训练问题、部署问题、硬件问题三条排查路径。"
     },
     {
       "id": "wiki-queries-sim2real-checklist",
@@ -513,18 +1768,46 @@
       "summary": "> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」"
     },
     {
+      "id": "wiki-queries-sim2real-deployment-checklist",
+      "path": "wiki/queries/sim2real-deployment-checklist.md",
+      "title": "Sim2Real 真机部署清单",
+      "page_type": "query",
+      "summary": "真机部署 RL 策略前后的完整检查清单，覆盖训练端、部署端、调试端三个阶段。"
+    },
+    {
       "id": "wiki-queries-sim2real-gap-reduction",
       "path": "wiki/queries/sim2real-gap-reduction.md",
       "title": "Sim2Real Gap 缩减实战指南",
       "page_type": "query",
-      "summary": "> **Query 产物**：本页由以下问题触发：「sim2real transfer 失败的根因分类，以及对应的缩减策略？」"
+      "summary": "Sim2Real Gap 缩减实战指南"
+    },
+    {
+      "id": "wiki-queries-simulator-selection-guide",
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "title": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "page_type": "query",
+      "summary": "MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景。"
+    },
+    {
+      "id": "wiki-queries-tactile-feedback-in-rl",
+      "path": "wiki/queries/tactile-feedback-in-rl.md",
+      "title": "在 RL 中利用触觉反馈提升操作鲁棒性",
+      "page_type": "query",
+      "summary": "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多模态状态表征融合、作为稠密奖励塑形以及处理触觉 Sim2Real Gap 的关键技巧。"
     },
     {
       "id": "wiki-queries-vla-deployment-guide",
       "path": "wiki/queries/vla-deployment-guide.md",
-      "title": "Query：VLA 真机部署指南",
+      "title": "VLA 真机部署指南：延迟、异步与加速",
       "page_type": "query",
-      "summary": "面向真机部署的 VLA 指南：如何处理推理延迟、动作缓冲、安全回退和数据回流。"
+      "summary": "面向真机部署的 VLA 指南：深入探讨了如何利用 TensorRT 加速、异步推理架构、Action Chunking 以及安全回退机制解决大模型部署中的延迟与抖动问题。"
+    },
+    {
+      "id": "wiki-queries-vla-with-low-level-controller",
+      "path": "wiki/queries/vla-with-low-level-controller.md",
+      "title": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
+      "page_type": "query",
+      "summary": "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理3种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步）、输出格式选择、action chunking 缓冲策略与实践挑战。"
     },
     {
       "id": "wiki-queries-wbc-implementation-guide",
@@ -534,25 +1817,32 @@
       "summary": "从零实现 Whole-Body Control 的工程步骤：URDF 建模 → 动力学计算 → QP 求解 → 任务配置 → 实机调试，附工具链选型和常见问题。"
     },
     {
+      "id": "wiki-queries-wbc-tuning-guide",
+      "path": "wiki/queries/wbc-tuning-guide.md",
+      "title": "WBC 调参指南：从公式到实机表现",
+      "page_type": "query",
+      "summary": "WBC 调参指南：通过合理的任务权重分配、约束松弛、正则化技巧与求解器热启动配置，实现高性能全身控制的实践经验。"
+    },
+    {
       "id": "wiki-queries-when-to-use-wbc-vs-rl",
       "path": "wiki/queries/when-to-use-wbc-vs-rl.md",
       "title": "决策树：何时使用 WBC vs RL？",
       "page_type": "query",
-      "summary": "> Query 类型：决策指南"
+      "summary": "决策树：何时使用 WBC vs RL？"
     },
     {
       "id": "wiki-references-llm-wiki-karpathy",
       "path": "wiki/references/llm-wiki-karpathy.md",
       "title": "LLM Wiki",
       "page_type": "reference",
-      "summary": "> Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13"
+      "summary": "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
     },
     {
       "id": "wiki-roadmaps-humanoid-control-roadmap",
       "path": "wiki/roadmaps/humanoid-control-roadmap.md",
       "title": "Humanoid Control Roadmap",
-      "page_type": "roadmap",
-      "summary": "> 本页是 [[wiki/roadmaps/humanoid-control-roadmap]] 的简短版摘要。"
+      "page_type": "roadmap_page",
+      "summary": "面向人形机器人运动控制算法工程师的四阶段学习路线：建模控制 → 仿真训练 → Sim2Real → 进阶专题。"
     },
     {
       "id": "wiki-tasks-balance-recovery",
@@ -562,11 +1852,32 @@
       "summary": "Balance Recovery 研究机器人在受扰动后如何通过步位、姿态和接触调整重新稳定下来。"
     },
     {
+      "id": "wiki-tasks-bimanual-manipulation",
+      "path": "wiki/tasks/bimanual-manipulation.md",
+      "title": "Bimanual Manipulation（双臂协调操作）",
+      "page_type": "task",
+      "summary": "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
+    },
+    {
+      "id": "wiki-tasks-humanoid-locomotion",
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "title": "Humanoid Locomotion (人形机器人移动)",
+      "page_type": "task",
+      "summary": "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
+    },
+    {
+      "id": "wiki-tasks-humanoid-soccer",
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "title": "Humanoid Soccer",
+      "page_type": "task",
+      "summary": "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
+    },
+    {
       "id": "wiki-tasks-loco-manipulation",
       "path": "wiki/tasks/loco-manipulation.md",
-      "title": "Loco-Manipulation",
+      "title": "Loco-Manipulation (移动操作)",
       "page_type": "task",
-      "summary": "Loco-Manipulation 关注机器人边移动边操作的全身协调问题，是 locomotion 与 manipulation 的耦合任务。"
+      "summary": "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
     },
     {
       "id": "wiki-tasks-locomotion",
