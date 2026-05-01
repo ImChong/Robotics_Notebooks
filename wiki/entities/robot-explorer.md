@@ -2,6 +2,8 @@
 type: entity
 title: Robot Explorer
 tags: [utility, kinematics, visualization, education]
+summary: "Robot Explorer 是基于 Web 的交互式 3D 机器人探索工具，支持运动学可视化、可操纵性分析及力多胞体展示。"
+updated: 2026-05-01
 ---
 
 # Robot Explorer

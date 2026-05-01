@@ -142,7 +142,7 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
         if stem in _stem_to_path:
             targets.append(_stem_to_path[stem])
 
-    return list(set(targets))
+    return sorted(set(targets), key=lambda path: str(path.relative_to(REPO_ROOT)))
 
 
 def build_undirected_adjacency(node_ids: list[str], edges: list[dict[str, str]]) -> dict[str, set[str]]:

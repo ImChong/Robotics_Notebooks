@@ -2,6 +2,8 @@
 type: entity
 title: ALOHA (双臂遥操作硬件)
 tags: [hardware, teleoperation, dual-arm, dataset-collection]
+summary: "ALOHA 是由 Google DeepMind 开发的低成本、开源双臂遥操作硬件系统，是获取精细操作演示数据的事实标准。"
+updated: 2026-05-01
 ---
 
 # ALOHA (双臂遥操作硬件)

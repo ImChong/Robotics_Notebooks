@@ -39,8 +39,8 @@
 
 ## P2: 硬件通信与底层实时链路形式化 (Quantity)
 
-- [ ] **发布通信层形式化定义 (+3)**:
-    - [ ] `wiki/formalizations/control-loop-latency-modeling.md` (控制环路延迟建模：总线、计算与内核调度延迟的数学求和)。
+- [~] **发布通信层形式化定义 (+3)**:
+    - [x] `wiki/formalizations/control-loop-latency-modeling.md` (控制环路延迟建模：总线、计算与内核调度延迟的数学求和)。
     - [ ] `wiki/formalizations/udp-multicast-dynamics.md` (UDP 组播动力学：在 LCM 等中间件中的数据包丢失与一致性形式化)。
     - [ ] `wiki/concepts/clock-synchronization-algorithms.md` (时钟同步算法：PTP/DC 协议在多板卡运控中的实现原理)。
 - [ ] **新增对比页 (+1)**:

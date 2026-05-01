@@ -10,6 +10,13 @@
 
 ---
 
+## [2026-04-30] checklist-v21 | wiki/formalizations/control-loop-latency-modeling.md — 推进 V21 P2「通信层形式化定义」
+
+- 新增 `wiki/formalizations/control-loop-latency-modeling.md`：把一次力矩闭环拆成 5 段独立随机变量（$T_{\text{sense}}, T_{\text{bus,up}}, T_{\text{compute}}, T_{\text{sched}}, T_{\text{bus,dn}}$），用卷积刻画端到端延迟分布
+- 给出总线报文长度模型、计算延迟与缓存命中率/launch overhead 的关系、PREEMPT_RT 下调度延迟的形式化角色，以及延迟 → 控制带宽（$\omega_c \leq \pi/(6 T_{\text{loop}})$）→ 采样定理三者的链式约束
+- 在 `wiki/concepts/ethercat-protocol.md`、`wiki/concepts/lcm-basics.md`、`wiki/queries/real-time-control-middleware-guide.md` 建立入链
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P2「control-loop-latency-modeling.md」一项；P2 通信层形式化 3 项中已完成 1 项
+
 ## [2026-04-30] ingest | sources/papers/modern_robotics_textbook.md — 接入 Lynch & Park《Modern Robotics》经典教材
 
 - 来源：https://hades.mech.northwestern.edu/images/7/7f/MR.pdf
@@ -543,3 +550,13 @@
 ## [2026-04-30] ingest | 接入 HKUST Switch 框架 (敏捷技能切换与图搜索)
 
 ## [2026-05-01] ingest | sources/papers/universal_skeleton.md — Universal Skeleton HOVL 异构骨架开放词汇动作识别，沉淀到 wiki/methods/skeleton-action-recognition.md
+
+## [2026-05-01] ingest | 修复 10 个低健康度 Wiki 节点，并优化 Imitation Learning 与 Contact Dynamics 的搜索关键词以通过质量回归测试。
+
+## [2026-05-01] ingest | sources/books/udl_book.md — 接入 Understanding Deep Learning 教材基础理论，新增 Deep Learning Foundations 和 Generative Foundations wiki 页面
+
+## [2026-05-01] ingest | 扩充 AMP_mjlab 训练命令、指标分析及部署指南
+
+## [2026-05-01] ingest | sources/repos/amp_mjlab.md — 扩充 AMP_mjlab 训练曲线、ONNX 导出与部署检查要点
+
+## [2026-05-01] structural | roadmap/motion-control.md — 在主路线补入 Modern Robotics 章节映射与练习

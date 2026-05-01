@@ -1,18 +1,18 @@
 ---
 type: concept
-summary: "Contact Dynamics 研究接触力、摩擦和约束如何改变机器人动力学，是 locomotion 与操作控制的物理基础。"
-updated: 2026-04-20
+summary: "Contact Dynamics 研究接触力 (Contact Force)、摩擦锥 (Friction Cone) 和物理约束如何改变机器人动力学，是 locomotion 与操作控制的核心物理基础。"
+updated: 2026-05-01
 ---
 
 # Contact Dynamics
 
-**Contact Dynamics（接触动力学）**：研究机器人与地面、物体、墙面等环境发生接触时，接触力、约束和系统运动之间关系的动力学框架。
+**Contact Dynamics（接触动力学）**：研究机器人与环境交互时，**接触力 (Contact Force)**、**摩擦锥 (Friction Cone)** 约束和系统运动之间关系的动力学框架。
 
 ## 一句话定义
 
 如果说 Floating Base Dynamics 研究的是“机器人底座不固定时整机怎么动”，那 **Contact Dynamics** 研究的就是：
 
-> 机器人一旦和环境发生接触，这些接触力和接触约束会怎样改变系统动力学。
+> 机器人一旦和环境发生接触，这些**接触力**和**摩擦锥**等接触约束会怎样改变系统动力学。
 
 一句话说白了：
 

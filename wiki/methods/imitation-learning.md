@@ -14,16 +14,16 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/repos/robot_lab.md
-summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义任务中最直接的数据驱动路线。"
+summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
 
 # Imitation Learning (IL, 模仿学习)
 
-**模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。
+**模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。
 
 ## 一句话定义
 
-让机器人看人类/专家怎么做，它就模仿着做。常用的算法包括 DAgger、行为克隆 (Behavior Cloning) 等。
+让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 **DAgger (Dataset Aggregation)**、**行为克隆 (Behavior Cloning, BC)** 等。
 
 ## 为什么重要
 
@@ -117,6 +117,7 @@ summary: "Imitation Learning 通过专家演示学习策略，是奖励难定义
 - [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
 
 ## 关联页面
+- [深度学习基础](../concepts/deep-learning-foundations.md)
 
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
