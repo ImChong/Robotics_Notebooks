@@ -1523,7 +1523,9 @@
         return;
       }
       renderLegend();
+      renderFilterPanel();
       applyFilters();
+      updateFilterCount();
     });
     document.getElementById('filter-close').addEventListener('click', () => {
       filterPanel.hidden = true;
