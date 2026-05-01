@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-04-30",
-  "node_count": 227,
-  "edge_count": 1367,
-  "community_count": 8,
+  "generated_at": "2026-05-01",
+  "node_count": 229,
+  "edge_count": 1378,
+  "community_count": 7,
   "top_hubs": [
+    {
+      "id": "wiki/methods/reinforcement-learning.md",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "degree": 81
+    },
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
       "degree": 80
-    },
-    {
-      "id": "wiki/methods/reinforcement-learning.md",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "degree": 79
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -22,12 +22,12 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 69
+      "degree": 70
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "degree": 69
+      "degree": 70
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -37,7 +37,7 @@
     {
       "id": "wiki/methods/vla.md",
       "label": "VLA（Vision-Language-Action）",
-      "degree": 43
+      "degree": 45
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
@@ -50,18 +50,18 @@
       "degree": 29
     },
     {
-      "id": "wiki/tasks/loco-manipulation.md",
-      "label": "Loco-Manipulation (移动操作)",
+      "id": "wiki/overview/robot-learning-overview.md",
+      "label": "Robot Learning Overview",
       "degree": 29
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
     "method": 52,
-    "concept": 43,
+    "concept": 44,
     "entity": 42,
     "query": 40,
-    "formalization": 23,
+    "formalization": 24,
     "comparison": 14,
     "task": 9,
     "overview": 2,
@@ -69,20 +69,19 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 95,
-    "Whole-Body Control (WBC) 社区": 49,
+    "Reinforcement Learning (RL, 强化学习) 社区": 100,
+    "Whole-Body Control (WBC) 社区": 57,
     "Manipulation 社区": 47,
-    "Robot Learning Overview 社区": 13,
     "实时运控中间件配置指南 社区": 9,
-    "Model-Based RL（基于模型的强化学习） 社区": 6,
-    "Roboto Origin（开源人形机器人基线） 社区": 6,
+    "Model-Based RL（基于模型的强化学习） 社区": 7,
+    "Roboto Origin（开源人形机器人基线） 社区": 7,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.419,
+    "largest_community_ratio": 0.437,
     "community_quality_warning": false
   }
 }

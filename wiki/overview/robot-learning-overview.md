@@ -137,7 +137,7 @@ sources:
 - **Locomotion 社区**：从 LIP/ZMP、Centroidal Dynamics、MPC、WBC 一路连到 locomotion 与 sim2real，适合走传统运动控制主线
 - **WBC / Safe Control 社区**：围绕 TSID、HQP、CLF、CBF、接触约束和安全过滤，适合想做可证明稳定/安全控制的人
 - **IL / Manipulation 社区**：围绕遥操作、行为克隆、Diffusion Policy、VLA、操作与双臂任务，适合想做操作与多模态策略的人
-- **LQR / Formalization 社区**：围绕 Lyapunov、LQR、MDP、Bellman 等基础形式化页面，适合补理论地基
+- **DL / Formalization 社区**：围绕 [深度学习基础](../concepts/deep-learning-foundations.md)、Lyapunov、LQR、MDP、Bellman 等基础形式化页面，适合补理论地基
 
 这些社区之间并不是割裂的。一个成熟的机器人系统往往同时跨过多个社区：例如 VLA 提供高层语义目标，WBC 负责高频执行，Sim2Real 负责部署闭环。
 

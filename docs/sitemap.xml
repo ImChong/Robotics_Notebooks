@@ -12,6 +12,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-control-barrier-function</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-curriculum-learning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-data-flywheel</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-deep-learning-foundations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-dexterous-kinematics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-domain-randomization</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-embodied-data-cleaning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -135,6 +136,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-foundation-policy-alignment</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-friction-cone</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-gae</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-generative-foundations</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-hjb</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-lqr</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-lyapunov</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

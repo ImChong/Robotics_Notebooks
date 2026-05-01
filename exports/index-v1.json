@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 268,
+  "item_count": 270,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -268,6 +268,33 @@
         "entity-genesis-sim"
       ],
       "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "concept"
+    },
+    {
+      "id": "wiki-concepts-deep-learning-foundations",
+      "title": "深度学习基础 (Deep Learning Foundations)",
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "summary": "type: concept。",
+      "content_markdown": "---\ntype: concept\ndescription: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。\n---\n\n# 深度学习基础 (Deep Learning Foundations)\n\n> **一句话定义**: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。\n\n## 为什么重要\n\n深度学习是现代机器人感知与控制（如 Foundation Policy, Visual Servoing）的核心底层技术。理解其数学原理有助于优化模型收敛速度、提升鲁棒性并解释复杂决策行为。\n\n## 核心架构与机制\n\n### 1. 神经网络组合性 (Compositionality)\n深度神经网络通过多个非线性层（ReLU, Sigmoid 等）的组合，能够逼近复杂的连续函数。其核心在于：\n- **浅层网络 (Shallow Networks)**: 基础的仿射变换与激活。\n- **深层网络 (Deep Networks)**: 通过组合增加表达能力。\n\n### 2. 优化与训练 (Optimization)\n- **损失函数 (Loss Functions)**: 定义了模型预测与真实值之间的距离（如 MSE, Cross-Entropy）。\n- **随机梯度下降 (SGD)**: 通过反向传播（Backpropagation）计算梯度并更新参数。\n- **初始化与残差连接 (Residual Connections)**: 缓解梯度消失/爆炸问题，使极深网络（如 ResNet）的训练成为可能。\n\n### 3. 泛化理论 (Generalization)\n深度学习的成功在很大程度上取决于其在未见数据上的表现。\n- **偏差-方差权衡 (Bias-Variance Tradeoff)**: 模型复杂度与泛化能力的关系。\n- **正则化 (Regularization)**: 通过 Dropout、权重衰减等技术防止过拟合。\n\n## 与机器人技术的联系\n\n- **感知 (Perception)**: 卷积神经网络 (CNN) 和 Transformer 用于处理图像、点云和触觉信号。\n- **控制 (Control)**: 强化学习 (RL) 中的策略网络（Policy Network）通过深度学习进行函数逼近。\n- **生成 (Generation)**: [生成式模型基础](../formalizations/generative-foundations.md) 为动作轨迹生成提供数学底座。\n\n## 关联页面\n- [强化学习基础](../methods/reinforcement-learning.md)\n- [生成式模型基础](../formalizations/generative-foundations.md)\n- [Sim2Real](../concepts/sim2real.md)\n\n## 参考来源\n- [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)\n\n## 推荐继续阅读\n- [Deep Learning Book (Goodfellow et al.)](https://www.deeplearningbook.org/)\n- [PyTorch Tutorials](https://pytorch.org/tutorials/)",
+      "tags": [
+        "concept",
+        "control",
+        "optimization",
+        "rl",
+        "sim2real"
+      ],
+      "related": [
+        "wiki-methods-reinforcement-learning",
+        "wiki-formalizations-generative-foundations",
+        "wiki-concepts-sim2real",
+        "sources-books-udl-book"
+      ],
+      "source_links": [
+        "https://www.deeplearningbook.org/",
+        "https://pytorch.org/tutorials/"
+      ],
       "status": "active",
       "type": "wiki_page",
       "page_type": "concept"
@@ -323,7 +350,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -421,7 +448,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -542,7 +569,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -695,7 +722,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -789,7 +816,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -854,7 +881,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -973,7 +1000,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1007,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1039,7 +1066,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1140,7 +1167,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1238,7 +1265,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1948,7 +1975,7 @@
       "title": "Imitation Learning (IL, 模仿学习)",
       "path": "wiki/methods/imitation-learning.md",
       "summary": "让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 DAgger (Dataset Aggregation)、行为克隆 (Behavior Cloning, BC) 等",
-      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./reinforcement-learning.md\n  - ../concepts/sim2real.md\n  - ./humanoid-transformer-touch-dreaming.md\n  - ../entities/mimickit.md\n  - ./amp-reward.md\n  - ./smp.md\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/robot_lab.md\nsummary: \"Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 **DAgger (Dataset Aggregation)**、**行为克隆 (Behavior Cloning, BC)** 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- [[deepmimic]]：基于轨迹跟踪的显式模仿\n- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座\n- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计\n- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿\n- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作\n- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换\n- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务\n- [[ase]]：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n- [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)\n- [ProtoMotions](../entities/protomotions.md) (NVIDIA 开发的高性能仿真与控制框架，支持超大规模并行训练)\n- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架\n- [SMP](./smp.md) (基于得分匹配的运动先验)\n- [ADD](./add.md) (对抗性微分判别器，消除运动伪影)\n- [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)\n- [AWR](./awr.md) (优势加权回归，简单高效的离策学习)\n- [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)\n- [ASE](./ase.md) (对抗性技能嵌入)\n- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿\n- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿\n- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制\n- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
+      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./reinforcement-learning.md\n  - ../concepts/sim2real.md\n  - ./humanoid-transformer-touch-dreaming.md\n  - ../entities/mimickit.md\n  - ./amp-reward.md\n  - ./smp.md\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/robot_lab.md\nsummary: \"Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 **DAgger (Dataset Aggregation)**、**行为克隆 (Behavior Cloning, BC)** 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- [[deepmimic]]：基于轨迹跟踪的显式模仿\n- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座\n- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计\n- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿\n- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作\n- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换\n- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务\n- [[ase]]：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n- [深度学习基础](../concepts/deep-learning-foundations.md)\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n- [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)\n- [ProtoMotions](../entities/protomotions.md) (NVIDIA 开发的高性能仿真与控制框架，支持超大规模并行训练)\n- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架\n- [SMP](./smp.md) (基于得分匹配的运动先验)\n- [ADD](./add.md) (对抗性微分判别器，消除运动伪影)\n- [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)\n- [AWR](./awr.md) (优势加权回归，简单高效的离策学习)\n- [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)\n- [ASE](./ase.md) (对抗性技能嵌入)\n- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿\n- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿\n- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制\n- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
       "tags": [
         "method",
         "humanoid",
@@ -1958,6 +1985,7 @@
         "il"
       ],
       "related": [
+        "wiki-concepts-deep-learning-foundations",
         "wiki-methods-reinforcement-learning",
         "wiki-concepts-whole-body-control",
         "wiki-tasks-locomotion",
@@ -1968,8 +1996,7 @@
         "wiki-methods-humanoid-transformer-touch-dreaming",
         "entity-robot-lab",
         "entity-lerobot",
-        "wiki-methods-dagger",
-        "wiki-methods-vla"
+        "wiki-methods-dagger"
       ],
       "source_links": [
         "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html",
@@ -1982,7 +2009,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2136,7 +2163,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2323,7 +2350,7 @@
       "title": "Reinforcement Learning (RL, 强化学习)",
       "path": "wiki/methods/reinforcement-learning.md",
       "summary": "不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己从 PPO 等算法中摸索出最优动作序列",
-      "content_markdown": "---\ntype: method\ntags: [rl, locomotion, policy-optimization, model-free]\nstatus: complete\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/sim2real.md\n  - ../concepts/whole-body-control.md\n  - ../tasks/locomotion.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./model-based-rl.md\n  - ../comparisons/rl-vs-il.md\n  - ../concepts/curriculum-learning.md\n  - ../queries/humanoid-rl-cookbook.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/locomotion_rl.md\nsummary: \"Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。\"\n---\n\n# Reinforcement Learning (RL, 强化学习)\n\n**强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。\n\n## 一句话定义\n\n不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己从 PPO 等算法中摸索出最优动作序列。\n\n## 核心框架：MDP\n\n强化学习问题通常建模为马尔可夫决策过程 (MDP)：\n\n- **状态** $s$：机器人当前感知到的环境信息\n- **动作** $a$：机器人可以采取的行动\n- **奖励** $r$：环境给机器人的反馈信号\n- **策略** $\\pi(a|s)$：在每个状态下选择动作的规则\n- **折扣因子** $\\gamma$：未来奖励的重要性\n\n目标：找到最优策略 $\\pi^*$ 最大化期望累积折扣奖励。\n\n## 主要分类\n\n### 无模型（Model-Free RL）\n不学习环境模型，直接从交互数据学习策略。这是目前人形机器人 Locomotion 最主流的方法。\n\n代表算法：\n- **Policy Gradient (策略梯度)**：直接优化策略。\n    - **PPO (Proximal Policy Optimization)**：目前工业界和学术界最稳健、最常用的策略梯度算法。\n    - **[[deepmimic]]**：经典的显式轨迹跟踪模仿学习。\n    - **[[amp-reward]]**：基于判别器的对抗性动作先验学习。\n    - **[[ase]] / [[smp]]**：更先进的层次化技能嵌入与生成式动作先验。\n    - **BRRL / BPO (2026)**：有界重要性比强化学习，为 PPO 提供理论支撑并提升训练稳定性。\n    - **REINFORCE**：最基础的策略梯度方法。\n- **Q-Learning**：学习状态-动作价值函数 (Q-function)。\n    - **DQN**：深度 Q 网络，适用于离散动作。\n- **Actor-Critic (行动者-评论家)**：结合两者优势。\n    - **PPO**：通常以 Actor-Critic 架构实现。\n    - **SAC (Soft Actor-Critic)**：样本效率极高的 Off-policy 算法。\n    - **TD3**：改进的 DDPG。\n\n### 有模型（Model-Based）\n先学习环境动态模型，再用模型做 planning。\n\n代表：\n- Dreamer, MuZero, PETS, MBRL\n\n### 离线强化学习（Offline RL）\n从固定数据集中学习，不允许和环境交互。\n\n代表：CQL, IQL, Decision Transformer\n\n## 在机器人控制中的典型应用\n\n- 四足/双足行走\n- 人形机器人全身控制\n- 机械臂操作\n- 多指灵巧手操作\n\n## 优势\n\n- 能处理高维状态/动作空间\n- 不需要精确建模\n- 能发现人工难以设计的复杂策略\n\n## 局限\n\n- Sample efficiency 低（需要大量交互）\n- Reward 设计困难\n- 安全性难以保证（尤其是真实机器人上）\n- 训练不稳定\n\n## Model-Free vs Model-Based 对比\n\n| 维度 | Model-Free RL | Model-Based RL |\n|------|--------------|----------------|\n| **代表算法** | PPO, SAC, TD3 | Dreamer, MBPO, PETS, TD-MPC |\n| **样本效率** | 低（需大量真实交互） | 高（模型生成虚拟经验） |\n| **渐近性能** | ✅ 理论上最优 | ⚠️ 受模型精度限制 |\n| **实现复杂度** | ✅ 低 | ❌ 高（学模型 + 策略） |\n| **计算开销** | ✅ 推理直接 | ❌ 推理时需规划 |\n| **机器人应用** | Locomotion（高频控制） | 操作任务、真实机器人少样本 |\n| **Sim2Real** | 依赖域随机化 | 适配模块（RMA 类） |\n\n两者不互斥：Model-Based 方法（如 RMA Adaptation Module）常与 Model-Free 策略结合。\n\n## 和其他方法的关系\n\n- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。见 [RL vs IL 对比](../comparisons/rl-vs-il.md)。\n- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。\n- **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础\n- Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法\n- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合\n- [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)\n- [机器人论文阅读笔记：AMP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n\n## 关联页面\n\n- [Imitation Learning](./imitation-learning.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Model-Based RL](./model-based-rl.md) — 利用世界模型提升样本效率\n- [Hindsight Experience Replay (HER)](./her.md) — 解决稀疏奖励任务的技巧\n- [Multi-Agent RL (MARL)](./marl.md) — 多机器人协同与竞争\n- [Generalized Advantage Estimation (GAE)](./gae.md) — 优势函数估计标准方法\n- [Safe RL](../methods/safe-rl.md) — 满足硬安全约束的 RL 训练\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）\n- [PPO vs SAC](../comparisons/ppo-vs-sac.md)（on-policy vs off-policy 算法的系统性对比）\n- [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习：解决稀疏奖励和训练效率问题的重要训练策略\n- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)\n- [Bellman 方程](../formalizations/bellman-equation.md) — 所有 RL 算法的数学根基：最优值函数满足 Bellman 最优方程\n- [MDP](../formalizations/mdp.md) — RL 的形式化框架，Bellman 方程定义在 MDP 上\n\n## 继续深挖入口\n\n如果你想沿着 RL 继续往下挖，建议从这里进入：\n\n- [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n- [Survey Papers](../../references/papers/survey-papers.md)\n\n### 开源框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)",
+      "content_markdown": "---\ntype: method\ntags: [rl, locomotion, policy-optimization, model-free]\nstatus: complete\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/sim2real.md\n  - ../concepts/whole-body-control.md\n  - ../tasks/locomotion.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./model-based-rl.md\n  - ../comparisons/rl-vs-il.md\n  - ../concepts/curriculum-learning.md\n  - ../queries/humanoid-rl-cookbook.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/locomotion_rl.md\nsummary: \"Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。\"\n---\n\n# Reinforcement Learning (RL, 强化学习)\n\n**强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。\n\n## 一句话定义\n\n不需要告诉机器人“怎么做”，只需要告诉它“做得好不好”，让它自己从 PPO 等算法中摸索出最优动作序列。\n\n## 核心框架：MDP\n\n强化学习问题通常建模为马尔可夫决策过程 (MDP)：\n\n- **状态** $s$：机器人当前感知到的环境信息\n- **动作** $a$：机器人可以采取的行动\n- **奖励** $r$：环境给机器人的反馈信号\n- **策略** $\\pi(a|s)$：在每个状态下选择动作的规则\n- **折扣因子** $\\gamma$：未来奖励的重要性\n\n目标：找到最优策略 $\\pi^*$ 最大化期望累积折扣奖励。\n\n## 主要分类\n\n### 无模型（Model-Free RL）\n不学习环境模型，直接从交互数据学习策略。这是目前人形机器人 Locomotion 最主流的方法。\n\n代表算法：\n- **Policy Gradient (策略梯度)**：直接优化策略。\n    - **PPO (Proximal Policy Optimization)**：目前工业界和学术界最稳健、最常用的策略梯度算法。\n    - **[[deepmimic]]**：经典的显式轨迹跟踪模仿学习。\n    - **[[amp-reward]]**：基于判别器的对抗性动作先验学习。\n    - **[[ase]] / [[smp]]**：更先进的层次化技能嵌入与生成式动作先验。\n    - **BRRL / BPO (2026)**：有界重要性比强化学习，为 PPO 提供理论支撑并提升训练稳定性。\n    - **REINFORCE**：最基础的策略梯度方法。\n- **Q-Learning**：学习状态-动作价值函数 (Q-function)。\n    - **DQN**：深度 Q 网络，适用于离散动作。\n- **Actor-Critic (行动者-评论家)**：结合两者优势。\n    - **PPO**：通常以 Actor-Critic 架构实现。\n    - **SAC (Soft Actor-Critic)**：样本效率极高的 Off-policy 算法。\n    - **TD3**：改进的 DDPG。\n\n### 有模型（Model-Based）\n先学习环境动态模型，再用模型做 planning。\n\n代表：\n- Dreamer, MuZero, PETS, MBRL\n\n### 离线强化学习（Offline RL）\n从固定数据集中学习，不允许和环境交互。\n\n代表：CQL, IQL, Decision Transformer\n\n## 在机器人控制中的典型应用\n\n- 四足/双足行走\n- 人形机器人全身控制\n- 机械臂操作\n- 多指灵巧手操作\n\n## 优势\n\n- 能处理高维状态/动作空间\n- 不需要精确建模\n- 能发现人工难以设计的复杂策略\n\n## 局限\n\n- Sample efficiency 低（需要大量交互）\n- Reward 设计困难\n- 安全性难以保证（尤其是真实机器人上）\n- 训练不稳定\n\n## Model-Free vs Model-Based 对比\n\n| 维度 | Model-Free RL | Model-Based RL |\n|------|--------------|----------------|\n| **代表算法** | PPO, SAC, TD3 | Dreamer, MBPO, PETS, TD-MPC |\n| **样本效率** | 低（需大量真实交互） | 高（模型生成虚拟经验） |\n| **渐近性能** | ✅ 理论上最优 | ⚠️ 受模型精度限制 |\n| **实现复杂度** | ✅ 低 | ❌ 高（学模型 + 策略） |\n| **计算开销** | ✅ 推理直接 | ❌ 推理时需规划 |\n| **机器人应用** | Locomotion（高频控制） | 操作任务、真实机器人少样本 |\n| **Sim2Real** | 依赖域随机化 | 适配模块（RMA 类） |\n\n两者不互斥：Model-Based 方法（如 RMA Adaptation Module）常与 Model-Free 策略结合。\n\n## 和其他方法的关系\n\n- **vs 模仿学习**：RL 自己探索，IL 跟随专家。IL 样本效率高但依赖专家数据；RL 可超越专家但训练难。见 [RL vs IL 对比](../comparisons/rl-vs-il.md)。\n- **vs 最优控制**：RL model-free，最优控制 model-based。两者在 [Model-Based RL](./model-based-rl.md) 中逐渐融合。\n- **vs 深度学习**：现代机器人 RL 通常用 [深度学习基础](../concepts/deep-learning-foundations.md) 中的神经网络做策略/价值函数逼近。\n- **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础\n- Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法\n- Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展\n- [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案\n- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合\n- [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)\n- [机器人论文阅读笔记：AMP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n\n## 关联页面\n- [深度学习基础](../concepts/deep-learning-foundations.md)\n\n- [Imitation Learning](./imitation-learning.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Model-Based RL](./model-based-rl.md) — 利用世界模型提升样本效率\n- [Hindsight Experience Replay (HER)](./her.md) — 解决稀疏奖励任务的技巧\n- [Multi-Agent RL (MARL)](./marl.md) — 多机器人协同与竞争\n- [Generalized Advantage Estimation (GAE)](./gae.md) — 优势函数估计标准方法\n- [Safe RL](../methods/safe-rl.md) — 满足硬安全约束的 RL 训练\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）\n- [PPO vs SAC](../comparisons/ppo-vs-sac.md)（on-policy vs off-policy 算法的系统性对比）\n- [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习：解决稀疏奖励和训练效率问题的重要训练策略\n- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)\n- [Bellman 方程](../formalizations/bellman-equation.md) — 所有 RL 算法的数学根基：最优值函数满足 Bellman 最优方程\n- [MDP](../formalizations/mdp.md) — RL 的形式化框架，Bellman 方程定义在 MDP 上\n\n## 继续深挖入口\n\n如果你想沿着 RL 继续往下挖，建议从这里进入：\n\n- [Robot Learning Overview](../overview/robot-learning-overview.md) — 机器人学习全景\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n- [Survey Papers](../../references/papers/survey-papers.md)\n\n### 开源框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)",
       "tags": [
         "method",
         "humanoid",
@@ -2333,6 +2360,7 @@
         "rl"
       ],
       "related": [
+        "wiki-concepts-deep-learning-foundations",
         "wiki-methods-imitation-learning",
         "wiki-concepts-sim2real",
         "wiki-concepts-whole-body-control",
@@ -2343,8 +2371,7 @@
         "wiki-methods-marl",
         "wiki-methods-gae",
         "wiki-methods-safe-rl",
-        "wiki-comparisons-rl-vs-il",
-        "wiki-comparisons-ppo-vs-sac"
+        "wiki-comparisons-rl-vs-il"
       ],
       "source_links": [
         "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html",
@@ -2355,7 +2382,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2554,7 +2581,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2605,13 +2632,14 @@
       "title": "VLA（Vision-Language-Action）",
       "path": "wiki/methods/vla.md",
       "summary": "VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”",
-      "content_markdown": "---\ntype: method\ntags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0]\nstatus: complete\nupdated: 2026-04-29\nsummary: \"VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。\"\nrelated:\n  - ../concepts/foundation-policy.md\n  - ./behavior-cloning.md\n  - ./action-chunking.md\n  - ./diffusion-policy.md\n  - ./lingbot-map.md\n  - ../tasks/manipulation.md\n  - ../tasks/loco-manipulation.md\n  - ../entities/lerobot.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/repos/embodied-ai-guide.md\n  - ../../sources/repos/xbotics-embodied-guide.md\n---\n\n# VLA（Vision-Language-Action）\n\n**VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。\n\n## 一句话定义\n\nVLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。\n\n## 为什么重要\n\n- 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。\n- 它是 RT-2、π₀、OpenVLA、Octo 一类通用操作策略的共同抽象。\n- 它让一个模型处理多任务成为可能，但代价是更大的数据需求、更高推理延迟，以及更复杂的部署链路。\n\n## 主要技术路线\n\n```text\n语言指令 + 图像 / proprioception\n          ↓\n  多模态编码器（VLM / Transformer）\n          ↓\n  动作解码器（token / chunk / flow / diffusion）\n          ↓\n     末端位姿 / 关节动作\n```\n\n常见实现：\n- **RT-2**：把 web-scale VLM 能力迁移到机器人控制\n- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列\n- **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程\n- **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线\n\n## VLA 与传统策略的区别\n\n| 维度 | 传统 BC / RL 策略 | VLA |\n|------|-------------------|-----|\n| 任务输入 | 预定义 observation / goal | 自然语言 + 视觉 + 状态 |\n| 泛化方式 | task-specific | 多任务/零样本/少样本 |\n| 数据规模 | 百到千级演示 | 通常需要数千到数十万演示 |\n| 推理开销 | 低，适合高频控制 | 高，常见 50ms+，需异步部署 |\n| 适合任务 | 单任务控制 | 通用操作、多任务调度 |\n\n## 核心优势\n\n### 1. 语言条件化\n可以直接用“把红色杯子放到左边托盘”之类的任务描述驱动策略，而不是单独写状态机。\n\n### 2. 多任务统一\nVLA 常把抓取、放置、开关门、抽屉操作等任务放进一个统一模型，而非每项任务单训一个 policy。\n\n### 3. 语义泛化\nWeb 知识和视觉语义可以帮助机器人处理训练集中稀疏出现的物体、关系和指令表述。这通常配合 [Data Flywheel](../concepts/data-flywheel.md) 来实现闭环性能提升。\n\n## 算法能力栈 (Algorithm Capability Stack)\n\n根据 [[embodied-ai-guide]] 与 [[xbotics-embodied-guide]] 的总结，具身智能的完整算法栈包含：\n- **感知层 (Vision & Perception)**: 2D/3D/4D 视觉、视觉提示 (Visual Prompting)、Affordance 学习。\n- **规划层 (Planning)**: 基于 LLM 的任务拆解与逻辑推理。\n- **策略层 (Policy)**: VLA 基础模型，通常采用分层双系统架构（慢速高层语义 + 快速低层反应）。**SFT (Supervised Fine-Tuning)** 是将通用 VLM 适配到机器人特定任务的关键步骤。\n- **执行层 (Action)**: [[action-chunking]]、[[diffusion-policy]] 或关节控制。\n\n## 实战路径建议\n\n根据 [[xbotics-embodied-guide]] 的路线图，VLA 的落地建议分为四个阶段：\n1. **基础掌握**：熟悉 [[lerobot]] 框架与基础 [[imitation-learning]] 算法。\n2. **数据飞轮**：建立自动化数据采集与标注流水线（[[auto-labeling-pipelines]]）。\n3. **模型微调**：对 OpenVLA 或 Octo 等开源模型进行针对性 SFT。\n4. **真机闭环**：结合 [[action-chunking]] 解决推理延迟，完成实物部署。\n\n## 工程瓶颈\n\n### 1. 推理延迟\nVLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟，因此更适合输出 action chunk、目标位姿 or 中频命令，再由低层控制器执行。\n\n### 2. 数据规模要求高\n想要稳健泛化，通常需要大量多样化演示数据。十几条示教可以做 task-specific BC，但远不足以支撑通用 VLA。\n\n### 3. 部署链路复杂\n摄像头时间同步、图像预处理、prompt 模板、动作反归一化、GPU 推理和安全 fallback，任何一步都可能拖垮真机体验。\n\n## 适合放在系统中的哪一层\n\n- **高层任务规划 / 中层动作生成**：适合\n- **1kHz 力矩闭环控制**：通常不适合\n- **和 WBC / impedance / skill library 结合**：当前更现实的真机方案\n- **常见落地方式**：输出 [Action Chunking](./action-chunking.md) 或末端目标，再交给低层控制器和 [Safety Filter](../concepts/safety-filter.md) 执行\n\n## 常见误区\n\n- **误区 1：VLA 的实时性和传统控制器相当。**\n  通常并非如此，必须认真处理推理频率和动作缓冲。\n- **误区 2：VLA 可以在十条演示上学成通用能力。**\n  通用能力依赖大规模、异构、多任务数据。\n- **误区 3：VLA = 直接替代所有控制模块。**\n  当前更可靠的工程做法仍是“VLA 负责语义与任务层，传统控制负责执行层”。\n\n## 参考来源\n\n- [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述\n- [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 工程实践导向，包含 VLA 实战路线图与数据飞轮建设\n- Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*\n- Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control*\n- Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026)\n- [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — StarVLA 极简基准模型\n\n## 关联页面\n\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破\n- [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准\n- [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型\n- [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系\n- [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石\n- [Foundation Policy Alignment (策略对齐)](../formalizations/foundation-policy-alignment.md) — 跨形态知识共享的形式化\n- [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md) — 现代 VLA 的架构趋势\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — VLA 将动作离散化的数学过程\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制\n- [Manipulation](../tasks/manipulation.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Action Chunking](./action-chunking.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Behavior Cloning](./behavior-cloning.md)\n- [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台\n- [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架\n- [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)\n- [Safety Filter](../concepts/safety-filter.md)\n\n## 推荐继续阅读\n\n- RT-2 / π₀ 原论文或项目博客\n- OpenVLA / Octo 开源实现\n- [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)",
+      "content_markdown": "---\ntype: method\ntags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0]\nstatus: complete\nupdated: 2026-04-29\nsummary: \"VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。\"\nrelated:\n  - ../concepts/foundation-policy.md\n  - ./behavior-cloning.md\n  - ./action-chunking.md\n  - ./diffusion-policy.md\n  - ./lingbot-map.md\n  - ../tasks/manipulation.md\n  - ../tasks/loco-manipulation.md\n  - ../entities/lerobot.md\nsources:\n  - ../../sources/papers/rl_foundation_models.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/repos/embodied-ai-guide.md\n  - ../../sources/repos/xbotics-embodied-guide.md\n---\n\n# VLA（Vision-Language-Action）\n\n**VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。\n\n## 一句话定义\n\nVLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。\n\n## 为什么重要\n\n- 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。\n- 它是 RT-2、π₀、OpenVLA、Octo 一类通用操作策略的共同抽象。\n- 它让一个模型处理多任务成为可能，但代价是更大的数据需求、更高推理延迟，以及更复杂的部署链路。\n\n## 主要技术路线\n\n```text\n语言指令 + 图像 / proprioception\n          ↓\n  多模态编码器（VLM / Transformer）\n          ↓\n  动作解码器（token / chunk / flow / diffusion）\n          ↓\n     末端位姿 / 关节动作\n```\n\n常见实现：\n- **RT-2**：把 web-scale VLM 能力迁移到机器人控制\n- **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列\n- **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程\n- **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线\n\n## VLA 与传统策略的区别\n\n| 维度 | 传统 BC / RL 策略 | VLA |\n|------|-------------------|-----|\n| 任务输入 | 预定义 observation / goal | 自然语言 + 视觉 + 状态 |\n| 泛化方式 | task-specific | 多任务/零样本/少样本 |\n| 数据规模 | 百到千级演示 | 通常需要数千到数十万演示 |\n| 推理开销 | 低，适合高频控制 | 高，常见 50ms+，需异步部署 |\n| 适合任务 | 单任务控制 | 通用操作、多任务调度 |\n\n## 核心优势\n\n### 1. 语言条件化\n可以直接用“把红色杯子放到左边托盘”之类的任务描述驱动策略，而不是单独写状态机。\n\n### 2. 多任务统一\nVLA 常把抓取、放置、开关门、抽屉操作等任务放进一个统一模型，而非每项任务单训一个 policy。\n\n### 3. 语义泛化\nWeb 知识和视觉语义可以帮助机器人处理训练集中稀疏出现的物体、关系和指令表述。这通常配合 [Data Flywheel](../concepts/data-flywheel.md) 来实现闭环性能提升。\n\n## 算法能力栈 (Algorithm Capability Stack)\n\n根据 [[embodied-ai-guide]] 与 [[xbotics-embodied-guide]] 的总结，具身智能的完整算法栈包含：\n- **感知层 (Vision & Perception)**: 2D/3D/4D 视觉、视觉提示 (Visual Prompting)、Affordance 学习。\n- **规划层 (Planning)**: 基于 LLM 的任务拆解与逻辑推理。\n- **策略层 (Policy)**: VLA 基础模型，通常采用分层双系统架构（慢速高层语义 + 快速低层反应）。**SFT (Supervised Fine-Tuning)** 是将通用 VLM 适配到机器人特定任务的关键步骤。\n- **执行层 (Action)**: [[action-chunking]]、[[diffusion-policy]] 或关节控制。\n\n## 实战路径建议\n\n根据 [[xbotics-embodied-guide]] 的路线图，VLA 的落地建议分为四个阶段：\n1. **基础掌握**：熟悉 [[lerobot]] 框架与基础 [[imitation-learning]] 算法。\n2. **数据飞轮**：建立自动化数据采集与标注流水线（[[auto-labeling-pipelines]]）。\n3. **模型微调**：对 OpenVLA 或 Octo 等开源模型进行针对性 SFT。\n4. **真机闭环**：结合 [[action-chunking]] 解决推理延迟，完成实物部署。VLA 的动作头也常借助 [生成式模型基础](../formalizations/generative-foundations.md) 中的 diffusion / flow / latent variable 视角理解。\n\n## 工程瓶颈\n\n### 1. 推理延迟\nVLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟，因此更适合输出 action chunk、目标位姿 or 中频命令，再由低层控制器执行。\n\n### 2. 数据规模要求高\n想要稳健泛化，通常需要大量多样化演示数据。十几条示教可以做 task-specific BC，但远不足以支撑通用 VLA。\n\n### 3. 部署链路复杂\n摄像头时间同步、图像预处理、prompt 模板、动作反归一化、GPU 推理和安全 fallback，任何一步都可能拖垮真机体验。\n\n## 适合放在系统中的哪一层\n\n- **高层任务规划 / 中层动作生成**：适合\n- **1kHz 力矩闭环控制**：通常不适合\n- **和 WBC / impedance / skill library 结合**：当前更现实的真机方案\n- **常见落地方式**：输出 [Action Chunking](./action-chunking.md) 或末端目标，再交给低层控制器和 [Safety Filter](../concepts/safety-filter.md) 执行\n\n## 常见误区\n\n- **误区 1：VLA 的实时性和传统控制器相当。**\n  通常并非如此，必须认真处理推理频率和动作缓冲。\n- **误区 2：VLA 可以在十条演示上学成通用能力。**\n  通用能力依赖大规模、异构、多任务数据。\n- **误区 3：VLA = 直接替代所有控制模块。**\n  当前更可靠的工程做法仍是“VLA 负责语义与任务层，传统控制负责执行层”。\n\n## 参考来源\n\n- [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md) — RT-1 / RT-2 / π₀ / Octo / TD-MPC2 综述\n- [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — π₀ 与生成式动作建模路线\n- [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — Lumina 社区具身智能百科全书，涵盖能力栈与仿真管线\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 工程实践导向，包含 VLA 实战路线图与数据飞轮建设\n- Brohan et al., *RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control*\n- Black et al., *π₀: A Vision-Language-Action Flow Model for General Robot Control*\n- Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026)\n- [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — StarVLA 极简基准模型\n\n## 关联页面\n- [深度学习基础](../concepts/deep-learning-foundations.md)\n\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [π₀ (Pi-zero) 策略模型](./π0-policy.md) — 结合 Flow Matching 的最新 VLA 突破\n- [StarVLA](./star-vla.md) — 基于 Qwen3-VL 的极简 VLA 基准\n- [LingBot-Map](./lingbot-map.md) — 为 VLA 提供几何背景的流式 3D 基础模型\n- [Embodied Scaling Laws (具身规模法则)](../concepts/embodied-scaling-laws.md) — 数据规模与模型性能的关系\n- [Auto-labeling Pipelines (自动化标注)](./auto-labeling-pipelines.md) — 构建大规模 VLA 数据集的基石\n- [Foundation Policy Alignment (策略对齐)](../formalizations/foundation-policy-alignment.md) — 跨形态知识共享的形式化\n- [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md) — 现代 VLA 的架构趋势\n- [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md) — VLA 将动作离散化的数学过程\n- [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md) — VLA 实现视-语-控对齐的底层机制\n- [Manipulation](../tasks/manipulation.md)\n- [Loco-Manipulation](../tasks/loco-manipulation.md)\n- [Action Chunking](./action-chunking.md)\n- [Diffusion Policy](./diffusion-policy.md)\n- [Behavior Cloning](./behavior-cloning.md)\n- [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台\n- [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架\n- [Query：VLA 真机部署指南](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)\n- [Safety Filter](../concepts/safety-filter.md)\n\n## 推荐继续阅读\n\n- RT-2 / π₀ 原论文或项目博客\n- OpenVLA / Octo 开源实现\n- [Query：如何在真机上部署 VLA 策略？](../queries/vla-deployment-guide.md)\n- [Query：VLA 与低级关节控制器融合架构](../queries/vla-with-low-level-controller.md)",
       "tags": [
         "method",
         "rl",
         "il"
       ],
       "related": [
+        "wiki-concepts-deep-learning-foundations",
         "wiki-concepts-foundation-policy",
         "wiki-methods-π0-policy",
         "wiki-methods-star-vla",
@@ -2622,8 +2650,7 @@
         "wiki-methods-unified-multimodal-tokens",
         "wiki-formalizations-vla-tokenization",
         "wiki-formalizations-cross-modal-attention",
-        "wiki-tasks-manipulation",
-        "wiki-tasks-loco-manipulation"
+        "wiki-tasks-manipulation"
       ],
       "source_links": [],
       "status": "active",
@@ -2717,7 +2744,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2844,7 +2871,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/teleoperation.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2881,7 +2908,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -3400,7 +3427,7 @@
       "title": "Robot Learning Overview",
       "path": "wiki/overview/robot-learning-overview.md",
       "summary": "type: overview。",
-      "content_markdown": "---\ntype: overview\nupdated: 2026-04-20\nsummary: \"Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。\"\nsources:\n  - ../../sources/papers/survey_papers.md\n---\n\n# Robot Learning Overview\n\n**机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。\n\n## 为什么重要\n\n传统机器人依赖精确建模和手工控制，缺点：\n\n- 对复杂环境建模困难\n- 手工调参成本高\n- 泛化能力差\n\n机器人学习的优势：\n\n- 从数据中自动提取有效策略\n- 能处理高维状态/动作空间\n- 在仿真中训练，迁移到真实机器人\n\n## 核心组成\n\n### 1. 强化学习（RL）\n从环境交互中学习最优策略。核心是 reward signal。\n\n### 2. 模仿学习（IL）\n从专家演示中学习策略。核心是 demonstration。\n\n### 3. 预测模型\n学习环境动态模型，用于 planning 或 model-based RL。\n\n### 4. 感知-动作联合学习\n端到端学习直接从 raw sensor 到 action 的映射。\n\n## 三层架构：从策略到系统\n\n如果把机器人学习只理解成“用一个神经网络输出动作”，就很容易在真实机器人上踩坑。更实用的理解方式是把它拆成三层：\n\n### 1. 任务与策略层\n\n这一层回答“机器人要做什么、策略学什么”：\n\n- 强化学习：适合从交互中学习长期回报\n- 模仿学习：适合从人类示范中快速学到可用行为\n- VLA / Foundation Policy：把语言、视觉和动作统一起来，适合多任务操作\n\n这层的难点是数据、奖励和泛化，而不是高频执行本身。\n\n### 2. 控制与执行层\n\n这一层回答“高层策略给出的目标，怎么安全稳定地变成机器人动作”：\n\n- 对人形机器人，常见执行层包括 [Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[Model Predictive Control](../methods/model-predictive-control.md)\n- 对操作任务，常见执行层包括 [Impedance Control](../concepts/impedance-control.md)、力位混合控制和任务空间控制\n- 对带安全约束的系统，还会加入 [Control Barrier Function](../concepts/control-barrier-function.md) 或 safety filter\n\n很多“学习失败”其实发生在这里：策略输出没问题，但执行层接不住，或者真机频率、延迟和约束根本不匹配。\n\n### 3. 系统与部署层\n\n这一层回答“训练好的东西如何真实跑起来”：\n\n- 感知和状态估计是否稳定\n- 训练分布和真机分布是否一致\n- 控制频率、通信延迟、动作限幅是否处理妥当\n- 数据能否从失败部署里回流继续改进\n\n这也是 [Sim2Real](../concepts/sim2real.md)、[Sensor Fusion](../concepts/sensor-fusion.md)、[System Identification](../concepts/system-identification.md) 变得关键的原因。\n\n## 五大主题导航\n\n当前知识库里的机器人学习主线，基本可以归成五个主题：\n\n### 1. Locomotion\n\n研究机器人如何稳定移动，包括平地行走、地形适应、扰动恢复和全身平衡。它通常和 RL、MPC、WBC 紧密相关，是人形机器人最核心的能力底座。\n\n入口页：\n\n- [Locomotion](../tasks/locomotion.md)\n- [Terrain Adaptation](../concepts/terrain-adaptation.md)\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md)\n\n### 2. Manipulation\n\n研究机器人如何抓取、装配、双臂协同和执行接触丰富任务。它是模仿学习、遥操作、VLA 和 Foundation Policy 最集中的应用场景。\n\n入口页：\n\n- [Manipulation](../tasks/manipulation.md)\n- [Bimanual Manipulation](../tasks/bimanual-manipulation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n\n### 3. Learning Methods\n\n研究机器人策略本身如何从数据中学出来，包括 RL、IL、Behavior Cloning、Diffusion Policy、VLA 等。它们不是互斥路线，而是经常组合使用：例如 BC 预训练 + RL 微调，或 VLA 负责语义层、传统控制负责执行层。\n\n入口页：\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [Behavior Cloning](../methods/behavior-cloning.md)\n- [VLA](../methods/vla.md)\n\n### 4. Safe / Structured Control\n\n研究如何在有物理约束和安全约束的情况下，让系统既稳定又可部署。这里会自然连到 Lyapunov、CLF、CBF、WBC 与 MPC。\n\n入口页：\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Control Lyapunov Function](../formalizations/control-lyapunov-function.md)\n- [Control Barrier Function](../concepts/control-barrier-function.md)\n- [Query：CLF 与 CBF 在 WBC/MPC 中的联合使用](../queries/clf-cbf-in-wbc.md)\n\n### 5. Sim2Real 与系统落地\n\n研究如何把仿真中的学习结果迁移到真实机器人上，包括域随机化、系统辨识、状态估计、调试和部署流程。对于真实机器人项目，这一主题往往决定一个策略能不能真正落地。\n\n入口页：\n\n- [Sim2Real](../concepts/sim2real.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n- [Query：Sim2Real 真机部署清单](../queries/sim2real-deployment-checklist.md)\n- [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)\n\n## 当前图谱里的几个 community 应该怎么读\n\n图谱社区并不是严格学科分类，而更像“在链接上天然靠得近的一组页面”。当前最值得关注的几组主干通常是：\n\n- **Locomotion 社区**：从 LIP/ZMP、Centroidal Dynamics、MPC、WBC 一路连到 locomotion 与 sim2real，适合走传统运动控制主线\n- **WBC / Safe Control 社区**：围绕 TSID、HQP、CLF、CBF、接触约束和安全过滤，适合想做可证明稳定/安全控制的人\n- **IL / Manipulation 社区**：围绕遥操作、行为克隆、Diffusion Policy、VLA、操作与双臂任务，适合想做操作与多模态策略的人\n- **LQR / Formalization 社区**：围绕 Lyapunov、LQR、MDP、Bellman 等基础形式化页面，适合补理论地基\n\n这些社区之间并不是割裂的。一个成熟的机器人系统往往同时跨过多个社区：例如 VLA 提供高层语义目标，WBC 负责高频执行，Sim2Real 负责部署闭环。\n\n## 如果你准备系统学习，推荐怎么进入\n\n### 路线 A：先把控制主干学通\n\n如果你想做人形运动控制、MPC、WBC、状态估计，建议从 [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) 或 [Locomotion](../tasks/locomotion.md) 一路往下读。这样能先建立“机器人为什么需要这些结构”的系统直觉。\n\n### 路线 B：从数据驱动方法切入\n\n如果你已经在做操作或模仿学习，建议从 [Manipulation](../tasks/manipulation.md) → [Behavior Cloning](../methods/behavior-cloning.md) → [Diffusion Policy](../methods/diffusion-policy.md) → [VLA](../methods/vla.md) 这条线进入，再回头补执行层和 sim2real。\n\n### 路线 C：以 query 页做问题驱动阅读\n\n如果你不是线性系统学习，而是带着明确问题来，例如：\n\n- “做 sim2real 部署先查什么？”\n- “VLA 怎么和低层控制器接？”\n- “接触丰富操作常见失败怎么修？”\n\n那就直接先读对应 query 页，再顺着 `## 关联页面` 回到概念页和方法页。这也是知识库目前最符合工程问题驱动的一种读法。\n\n## 学习建议\n\n- **先建立主干，再看花样。** 没搞清楚 WBC、MPC、状态估计，就很容易把 RL/VLA 当黑盒 magic。\n- **把 query 页当“高价值经验回写”。** 它们不是附录，而是从具体问题反推知识结构的最好入口。\n- **注意任务层和执行层的边界。** 很多模型文章写的是“高层表现”，但真实落地成败取决于执行层与部署层。\n- **尽量沿着相关页面跳转阅读。** 这个仓库最核心的价值不是某一页写得多，而是页面之间已经形成了交叉引用的图结构。\n\n## 和其他领域的关系\n\n- **控制理论**：提供稳定性、收敛性理论支撑\n- **优化**：RL 训练本质是优化问题\n- **计算机视觉**：感知模块的基础\n- **运动控制**：具体执行层面的基础\n\n## 知识库维护方法论\n\n本知识库采用 Karpathy LLM Wiki 模式构建：LLM 作为维护者，人类作为 curator，通过 Ingest / Query / Lint 三类操作持续积累知识。\n\n- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 知识库构建模式来源\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人控制的学习路线\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材\n- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐\n\n## 推荐继续阅读\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction*\n- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com)",
+      "content_markdown": "---\ntype: overview\nupdated: 2026-04-20\nsummary: \"Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。\"\nsources:\n  - ../../sources/papers/survey_papers.md\n---\n\n# Robot Learning Overview\n\n**机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。\n\n## 为什么重要\n\n传统机器人依赖精确建模和手工控制，缺点：\n\n- 对复杂环境建模困难\n- 手工调参成本高\n- 泛化能力差\n\n机器人学习的优势：\n\n- 从数据中自动提取有效策略\n- 能处理高维状态/动作空间\n- 在仿真中训练，迁移到真实机器人\n\n## 核心组成\n\n### 1. 强化学习（RL）\n从环境交互中学习最优策略。核心是 reward signal。\n\n### 2. 模仿学习（IL）\n从专家演示中学习策略。核心是 demonstration。\n\n### 3. 预测模型\n学习环境动态模型，用于 planning 或 model-based RL。\n\n### 4. 感知-动作联合学习\n端到端学习直接从 raw sensor 到 action 的映射。\n\n## 三层架构：从策略到系统\n\n如果把机器人学习只理解成“用一个神经网络输出动作”，就很容易在真实机器人上踩坑。更实用的理解方式是把它拆成三层：\n\n### 1. 任务与策略层\n\n这一层回答“机器人要做什么、策略学什么”：\n\n- 强化学习：适合从交互中学习长期回报\n- 模仿学习：适合从人类示范中快速学到可用行为\n- VLA / Foundation Policy：把语言、视觉和动作统一起来，适合多任务操作\n\n这层的难点是数据、奖励和泛化，而不是高频执行本身。\n\n### 2. 控制与执行层\n\n这一层回答“高层策略给出的目标，怎么安全稳定地变成机器人动作”：\n\n- 对人形机器人，常见执行层包括 [Whole-Body Control](../concepts/whole-body-control.md)、[TSID](../concepts/tsid.md)、[Model Predictive Control](../methods/model-predictive-control.md)\n- 对操作任务，常见执行层包括 [Impedance Control](../concepts/impedance-control.md)、力位混合控制和任务空间控制\n- 对带安全约束的系统，还会加入 [Control Barrier Function](../concepts/control-barrier-function.md) 或 safety filter\n\n很多“学习失败”其实发生在这里：策略输出没问题，但执行层接不住，或者真机频率、延迟和约束根本不匹配。\n\n### 3. 系统与部署层\n\n这一层回答“训练好的东西如何真实跑起来”：\n\n- 感知和状态估计是否稳定\n- 训练分布和真机分布是否一致\n- 控制频率、通信延迟、动作限幅是否处理妥当\n- 数据能否从失败部署里回流继续改进\n\n这也是 [Sim2Real](../concepts/sim2real.md)、[Sensor Fusion](../concepts/sensor-fusion.md)、[System Identification](../concepts/system-identification.md) 变得关键的原因。\n\n## 五大主题导航\n\n当前知识库里的机器人学习主线，基本可以归成五个主题：\n\n### 1. Locomotion\n\n研究机器人如何稳定移动，包括平地行走、地形适应、扰动恢复和全身平衡。它通常和 RL、MPC、WBC 紧密相关，是人形机器人最核心的能力底座。\n\n入口页：\n\n- [Locomotion](../tasks/locomotion.md)\n- [Terrain Adaptation](../concepts/terrain-adaptation.md)\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md)\n\n### 2. Manipulation\n\n研究机器人如何抓取、装配、双臂协同和执行接触丰富任务。它是模仿学习、遥操作、VLA 和 Foundation Policy 最集中的应用场景。\n\n入口页：\n\n- [Manipulation](../tasks/manipulation.md)\n- [Bimanual Manipulation](../tasks/bimanual-manipulation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n\n### 3. Learning Methods\n\n研究机器人策略本身如何从数据中学出来，包括 RL、IL、Behavior Cloning、Diffusion Policy、VLA 等。它们不是互斥路线，而是经常组合使用：例如 BC 预训练 + RL 微调，或 VLA 负责语义层、传统控制负责执行层。\n\n入口页：\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [Behavior Cloning](../methods/behavior-cloning.md)\n- [VLA](../methods/vla.md)\n\n### 4. Safe / Structured Control\n\n研究如何在有物理约束和安全约束的情况下，让系统既稳定又可部署。这里会自然连到 Lyapunov、CLF、CBF、WBC 与 MPC。\n\n入口页：\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Control Lyapunov Function](../formalizations/control-lyapunov-function.md)\n- [Control Barrier Function](../concepts/control-barrier-function.md)\n- [Query：CLF 与 CBF 在 WBC/MPC 中的联合使用](../queries/clf-cbf-in-wbc.md)\n\n### 5. Sim2Real 与系统落地\n\n研究如何把仿真中的学习结果迁移到真实机器人上，包括域随机化、系统辨识、状态估计、调试和部署流程。对于真实机器人项目，这一主题往往决定一个策略能不能真正落地。\n\n入口页：\n\n- [Sim2Real](../concepts/sim2real.md)\n- [Domain Randomization](../concepts/domain-randomization.md)\n- [Query：Sim2Real 真机部署清单](../queries/sim2real-deployment-checklist.md)\n- [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)\n\n## 当前图谱里的几个 community 应该怎么读\n\n图谱社区并不是严格学科分类，而更像“在链接上天然靠得近的一组页面”。当前最值得关注的几组主干通常是：\n\n- **Locomotion 社区**：从 LIP/ZMP、Centroidal Dynamics、MPC、WBC 一路连到 locomotion 与 sim2real，适合走传统运动控制主线\n- **WBC / Safe Control 社区**：围绕 TSID、HQP、CLF、CBF、接触约束和安全过滤，适合想做可证明稳定/安全控制的人\n- **IL / Manipulation 社区**：围绕遥操作、行为克隆、Diffusion Policy、VLA、操作与双臂任务，适合想做操作与多模态策略的人\n- **DL / Formalization 社区**：围绕 [深度学习基础](../concepts/deep-learning-foundations.md)、Lyapunov、LQR、MDP、Bellman 等基础形式化页面，适合补理论地基\n\n这些社区之间并不是割裂的。一个成熟的机器人系统往往同时跨过多个社区：例如 VLA 提供高层语义目标，WBC 负责高频执行，Sim2Real 负责部署闭环。\n\n## 如果你准备系统学习，推荐怎么进入\n\n### 路线 A：先把控制主干学通\n\n如果你想做人形运动控制、MPC、WBC、状态估计，建议从 [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) 或 [Locomotion](../tasks/locomotion.md) 一路往下读。这样能先建立“机器人为什么需要这些结构”的系统直觉。\n\n### 路线 B：从数据驱动方法切入\n\n如果你已经在做操作或模仿学习，建议从 [Manipulation](../tasks/manipulation.md) → [Behavior Cloning](../methods/behavior-cloning.md) → [Diffusion Policy](../methods/diffusion-policy.md) → [VLA](../methods/vla.md) 这条线进入，再回头补执行层和 sim2real。\n\n### 路线 C：以 query 页做问题驱动阅读\n\n如果你不是线性系统学习，而是带着明确问题来，例如：\n\n- “做 sim2real 部署先查什么？”\n- “VLA 怎么和低层控制器接？”\n- “接触丰富操作常见失败怎么修？”\n\n那就直接先读对应 query 页，再顺着 `## 关联页面` 回到概念页和方法页。这也是知识库目前最符合工程问题驱动的一种读法。\n\n## 学习建议\n\n- **先建立主干，再看花样。** 没搞清楚 WBC、MPC、状态估计，就很容易把 RL/VLA 当黑盒 magic。\n- **把 query 页当“高价值经验回写”。** 它们不是附录，而是从具体问题反推知识结构的最好入口。\n- **注意任务层和执行层的边界。** 很多模型文章写的是“高层表现”，但真实落地成败取决于执行层与部署层。\n- **尽量沿着相关页面跳转阅读。** 这个仓库最核心的价值不是某一页写得多，而是页面之间已经形成了交叉引用的图结构。\n\n## 和其他领域的关系\n\n- **控制理论**：提供稳定性、收敛性理论支撑\n- **优化**：RL 训练本质是优化问题\n- **计算机视觉**：感知模块的基础\n- **运动控制**：具体执行层面的基础\n\n## 知识库维护方法论\n\n本知识库采用 Karpathy LLM Wiki 模式构建：LLM 作为维护者，人类作为 curator，通过 Ingest / Query / Lint 三类操作持续积累知识。\n\n- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 知识库构建模式来源\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人控制的学习路线\n\n## 参考来源\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材\n- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐\n\n## 推荐继续阅读\n\n- Sutton & Barto, *Reinforcement Learning: An Introduction*\n- [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com)",
       "tags": [
         "overview",
         "humanoid",
@@ -3726,6 +3753,31 @@
         "wiki-methods-reinforcement-learning"
       ],
       "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "formalization"
+    },
+    {
+      "id": "wiki-formalizations-generative-foundations",
+      "title": "生成式模型基础 (Generative Foundations)",
+      "path": "wiki/formalizations/generative-foundations.md",
+      "summary": "type: formalization。",
+      "content_markdown": "---\ntype: formalization\ndescription: 通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。\n---\n\n# 生成式模型基础 (Generative Foundations)\n\n> **一句话定义**: 通过学习数据的底层分布来生成新样本的一类概率模型，包括 GANs, VAEs, Normalizing Flows 和 Diffusion Models。\n\n## 数学表达\n\n生成式模型的目标是学习或近似真实数据分布 $p_{data}(\\mathbf{x})$。\n\n对于潜变量模型（如 VAE），其变分下界（ELBO）为：\n$$\\mathcal{L}(\\theta, \\phi; \\mathbf{x}) = \\mathbb{E}_{q_\\phi(\\mathbf{z}|\\mathbf{x})}[\\log p_\\theta(\\mathbf{x}|\\mathbf{z})] - D_{KL}(q_\\phi(\\mathbf{z}|\\mathbf{x}) || p(\\mathbf{z}))$$\n\n对于扩散模型，其逆向过程可建模为：\n$$p_\\theta(\\mathbf{x}_{t-1}|\\mathbf{x}_t) = \\mathcal{N}(\\mathbf{x}_{t-1}; \\mu_\\theta(\\mathbf{x}_t, t), \\Sigma_\\theta(\\mathbf{x}_t, t))$$\n\n## 核心模型类别\n\n### 1. 变分自编码器 (VAEs)\n通过变分推断学习潜空间（Latent Space）分布。\n- **核心**: 证据下界 (ELBO) 的最大化。\n- **优点**: 潜空间连续且可解释，适合表征学习。\n\n### 2. 生成对抗网络 (GANs)\n通过博弈论的方法，生成器与判别器相互对抗。\n- **核心**: 极小极大博弈 (Minimax Game)。\n- **应用**: 高质量图像生成、Sim2Real 中的视觉迁移。\n\n### 3. 扩散模型 (Diffusion Models)\n通过向数据添加噪声并学习逆向去噪过程来生成数据。\n- **核心**: 迭代去噪分数匹配 (Iterative Denoising Score Matching)。\n- **应用**: [Diffusion Policy](../methods/diffusion-policy.md) 已成为目前机器人操作（Manipulation）领域的主流方法。\n\n## 在机器人中的应用\n\n- **轨迹生成 (Trajectory Generation)**: 利用扩散模型生成平滑且多样的动作序列。\n- **环境建模 (World Models)**: 利用 VAE 或 GANs 学习环境的潜空间表征，在潜空间内进行规划（如 Dreamer）。\n- **触觉模拟 (Tactile Simulation)**: 生成逼真触觉传感器数据。\n\n## 关联页面\n- [Diffusion Policy](../methods/diffusion-policy.md)\n- [潜空间想象 (Latent Imagination)](../concepts/latent-imagination.md)\n- [生成式世界模型](../methods/generative-world-models.md)\n\n## 参考来源\n- [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)\n\n## 推荐继续阅读\n- [Generative Deep Learning (David Foster)](https://www.oreilly.com/library/view/generative-deep-learning/9781098134174/)",
+      "tags": [
+        "formalization",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "related": [
+        "wiki-methods-diffusion-policy",
+        "wiki-concepts-latent-imagination",
+        "wiki-methods-generative-world-models",
+        "sources-books-udl-book"
+      ],
+      "source_links": [
+        "https://www.oreilly.com/library/view/generative-deep-learning/9781098134174/"
+      ],
       "status": "active",
       "type": "wiki_page",
       "page_type": "formalization"
@@ -5429,7 +5481,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -5611,7 +5663,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "entity-legged-gym",

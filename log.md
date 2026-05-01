@@ -550,3 +550,5 @@
 ## [2026-04-30] ingest | 接入 HKUST Switch 框架 (敏捷技能切换与图搜索)
 
 ## [2026-05-01] ingest | 修复 10 个低健康度 Wiki 节点，并优化 Imitation Learning 与 Contact Dynamics 的搜索关键词以通过质量回归测试。
+
+## [2026-05-01] ingest | sources/books/udl_book.md — 接入 Understanding Deep Learning 教材基础理论，新增 Deep Learning Foundations 和 Generative Foundations wiki 页面
