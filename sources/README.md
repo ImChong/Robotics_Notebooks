@@ -41,6 +41,7 @@
 | [x] [gs_playground.md](repos/gs_playground.md) | GS-Playground：批量 3DGS 光真实感并行仿真框架，RSS 2026，10^4 FPS |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
 | [x] [unitree_rl_mjlab.md](repos/unitree_rl_mjlab.md) | unitree_rl_mjlab：Unitree 官方基于 mjlab 的 RL 训练框架，支持 7 款机型，含 Sim2Real 链路 |
+| [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
 
 ### blogs/ — 博客来源归档
 | 文件 | 内容 |

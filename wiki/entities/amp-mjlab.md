@@ -8,6 +8,7 @@ related:
   - ./mjlab.md
   - ./unitree-g1.md
   - ./legged-gym.md
+  - ./wbc-fsm.md
   - ../methods/imitation-learning.md
   - ../tasks/locomotion.md
 sources:

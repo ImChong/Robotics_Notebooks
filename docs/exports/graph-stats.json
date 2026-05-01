@@ -1,33 +1,33 @@
 {
   "generated_at": "2026-05-01",
-  "node_count": 230,
-  "edge_count": 1388,
+  "node_count": 231,
+  "edge_count": 1397,
   "community_count": 8,
   "top_hubs": [
+    {
+      "id": "wiki/tasks/locomotion.md",
+      "label": "Locomotion",
+      "degree": 82
+    },
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL, 强化学习)",
       "degree": 81
     },
     {
-      "id": "wiki/tasks/locomotion.md",
-      "label": "Locomotion",
-      "degree": 81
-    },
-    {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 72
+      "degree": 74
+    },
+    {
+      "id": "wiki/concepts/sim2real.md",
+      "label": "Sim2Real",
+      "degree": 71
     },
     {
       "id": "wiki/methods/imitation-learning.md",
       "label": "Imitation Learning (IL, 模仿学习)",
       "degree": 71
-    },
-    {
-      "id": "wiki/concepts/sim2real.md",
-      "label": "Sim2Real",
-      "degree": 70
     },
     {
       "id": "wiki/tasks/manipulation.md",
@@ -59,7 +59,7 @@
   "type_distribution": {
     "method": 53,
     "concept": 44,
-    "entity": 42,
+    "entity": 43,
     "query": 40,
     "formalization": 24,
     "comparison": 14,
@@ -69,20 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Reinforcement Learning (RL, 强化学习) 社区": 101,
-    "Whole-Body Control (WBC) 社区": 62,
-    "Manipulation 社区": 33,
-    "VLA（Vision-Language-Action） 社区": 12,
+    "Locomotion 社区": 104,
+    "Whole-Body Control (WBC) 社区": 53,
+    "Manipulation 社区": 46,
     "实时运控中间件配置指南 社区": 9,
-    "Roboto Origin（开源人形机器人基线） 社区": 6,
-    "Generative World Models (生成式世界模型) 社区": 5,
+    "Model-Based RL（基于模型的强化学习） 社区": 7,
+    "Roboto Origin（开源人形机器人基线） 社区": 7,
+    "VLA 真机部署指南：延迟、异步与加速 社区": 3,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.439,
+    "largest_community_ratio": 0.45,
     "community_quality_warning": false
   }
 }
