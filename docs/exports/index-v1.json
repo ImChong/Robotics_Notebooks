@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 272,
+  "item_count": 273,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -150,7 +150,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -448,7 +448,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -480,7 +480,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -754,7 +754,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -816,7 +816,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -881,7 +881,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -966,7 +966,7 @@
       "title": "Sim2Real",
       "path": "wiki/concepts/sim2real.md",
       "summary": "在仿真里学会，在现实中生效",
-      "content_markdown": "---\ntype: concept\ntags: [sim2real, rl, domain-randomization, deployment]\nstatus: complete\nrelated:\n  - ../methods/reinforcement-learning.md\n  - ./whole-body-control.md\n  - ../tasks/locomotion.md\n  - ./system-identification.md\n  - ../methods/actuator-network.md\n  - ./privileged-training.md\n  - ../entities/genesis-sim.md\n  - ./data-flywheel.md\n  - ../queries/sim2real-gap-reduction.md\nsummary: \"Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。\"\n---\n\n# Sim2Real\n\n**Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。\n\n## 一句话定义\n\n在仿真里学会，在现实中生效。\n\n## 为什么重要\n\n- 真实机器人训练成本高、速度慢、容易损坏\n- 仿真可以并行加速、任意重置、无硬件损耗\n- 但仿真和现实有 domain gap，必须解决迁移问题\n\n## 核心问题：Domain Gap\n\n仿真和现实的主要差异：\n\n- **物理参数差异**：质量、摩擦力、延迟等参数不准\n- **传感器差异**：相机噪声、IMU 漂移、触觉反馈\n- **动作执行差异**：电机响应延迟、控制频率限制\n- **视觉差异**：纹理、光照、背景\n\n## 主要方法\n\n### 1. Domain Randomization\n在仿真中随机化物理参数，强制策略适应多样化环境。\n\n代表工作：Tobio et al. 2018, \"Sim-to-Real Transfer of Robotic Control with Dynamics Randomization\"\n\n### 2. System Identification\n精确测量真实机器人参数，减少仿真-现实差距。\n\n### 3. Domain Adaptation\n用视觉/感知层面的 domain adaptation 减少感知差异。\n\n### 4. Curriculum Learning\n从简单环境逐步过渡到复杂/真实环境。\n\n### 5. Privileged Information / Teacher-Student\n训练时用额外信息（如 true state、环境参数），推理时只用可观测信息。见 [Privileged Training](./privileged-training.md)。\n\n### 6. RMA（Rapid Motor Adaptation）\n\n**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student 框架之一（Kumar et al. 2021）。\n\n**两阶段流程：**\n\n```\n阶段 1：训练 Base Policy（仿真中）\n  输入：机器人本体感知状态 s_t + 环境特权参数 e_t（质量/摩擦/电机参数）\n  算法：PPO\n  产出：Base Policy π(a | s_t, e_t)\n\n阶段 2：训练 Adaptation Module（仿真中，模拟真机条件）\n  输入：过去 k 步的关节状态历史 {s_{t-k}, ..., s_{t-1}}\n  目标：从历史轨迹中隐式估计 e_t 的压缩表示 ê_t\n  损失：||ê_t - φ(e_t)||²（对齐 Base Policy 所用的特权嵌入）\n\n部署（真实机器人）：\n  Base Policy + Adaptation Module（无需特权参数 e_t）\n```\n\n**为什么有效**：机器人与地面的历史交互隐含了地形/摩擦/质量等信息，Adaptation Module 从行为历史中隐式重建这些信息。\n\n**在 Unitree A1 上实测**：复杂地形（草地/碎石/台阶）零样本迁移成功。\n\n### 7. Sim2Real SOP (标准作业程序)\n\n根据 [[xbotics-embodied-guide]] 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：\n- **前置阶段**：精确的 URDF 建模与动力学参数初步对齐。\n- **仿真验证**：在 [[isaac-gym-isaac-lab]] 或 [[genesis-sim]] 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。\n- **中间件对齐**：统一仿真与真机的控制频率（如 50Hz 策略 + 200Hz 关节 PD）与动作/状态归一化标准。\n- **实物测试**：采用“吊架测试 -> 空转测试 -> 落地测试”的渐进式 SOP。\n\n### 8. 高保真执行器对齐 (Actuator Alignment)\n\n根据 [[zest]] 的实践，缩小动力学差距的关键在于精确处理闭链执行器（如膝盖、脚踝）的物理特性。通过基于电枢（Armature）分析值的增益选择程序，可以在不使用反馈补偿器的情况下，实现高动态动作的零样本迁移。\n\n## 常见误区\n\n- **以为仿真越逼真越好**：太精确的仿真不一定更好，domain randomization 可能更 robust\n- **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟\n- **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件\n\n## 在人形机器人中的应用\n\n人形机器人 sim2real 的特殊挑战：\n\n- 高维状态空间（30+ 自由度）\n- 接触力难以精确建模\n- 视觉感知差异大\n- 足式接触的不确定性\n\n典型 pipeline：\n\n```\n仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）\n```\n\n## 参考来源\n\n- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文\n- Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要\n- [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践\n- [机器人论文阅读笔记：Domain Randomization](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)\n- [机器人论文阅读笔记：LCP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)\n- [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）\n- [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性\n- [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）\n- [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南\n\n## 继续深挖入口\n\n如果你想沿着 sim2real 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Sim2Real 论文导航](../../references/papers/sim2real.md)\n\n### 仿真 / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)\n- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)\n- [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)\n- [Comparison：Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)",
+      "content_markdown": "---\ntype: concept\ntags: [sim2real, rl, domain-randomization, deployment]\nstatus: complete\nrelated:\n  - ../methods/reinforcement-learning.md\n  - ./whole-body-control.md\n  - ../tasks/locomotion.md\n  - ./system-identification.md\n  - ../methods/actuator-network.md\n  - ./privileged-training.md\n  - ../entities/genesis-sim.md\n  - ./data-flywheel.md\n  - ../queries/sim2real-gap-reduction.md\n  - ../entities/gr00t-visual-sim2real.md\nsummary: \"Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。\"\n---\n\n# Sim2Real\n\n**Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。\n\n## 一句话定义\n\n在仿真里学会，在现实中生效。\n\n## 为什么重要\n\n- 真实机器人训练成本高、速度慢、容易损坏\n- 仿真可以并行加速、任意重置、无硬件损耗\n- 但仿真和现实有 domain gap，必须解决迁移问题\n\n## 核心问题：Domain Gap\n\n仿真和现实的主要差异：\n\n- **物理参数差异**：质量、摩擦力、延迟等参数不准\n- **传感器差异**：相机噪声、IMU 漂移、触觉反馈\n- **动作执行差异**：电机响应延迟、控制频率限制\n- **视觉差异**：纹理、光照、背景\n\n## 主要方法\n\n### 1. Domain Randomization\n在仿真中随机化物理参数，强制策略适应多样化环境。\n\n代表工作：Tobio et al. 2018, \"Sim-to-Real Transfer of Robotic Control with Dynamics Randomization\"\n\n### 2. System Identification\n精确测量真实机器人参数，减少仿真-现实差距。\n\n### 3. Domain Adaptation\n用视觉/感知层面的 domain adaptation 减少感知差异。\n\n### 4. Curriculum Learning\n从简单环境逐步过渡到复杂/真实环境。\n\n### 5. Privileged Information / Teacher-Student\n训练时用额外信息（如 true state、环境参数），推理时只用可观测信息。见 [Privileged Training](./privileged-training.md)。\n\n### 6. RMA（Rapid Motor Adaptation）\n\n**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student 框架之一（Kumar et al. 2021）。\n\n**两阶段流程：**\n\n```\n阶段 1：训练 Base Policy（仿真中）\n  输入：机器人本体感知状态 s_t + 环境特权参数 e_t（质量/摩擦/电机参数）\n  算法：PPO\n  产出：Base Policy π(a | s_t, e_t)\n\n阶段 2：训练 Adaptation Module（仿真中，模拟真机条件）\n  输入：过去 k 步的关节状态历史 {s_{t-k}, ..., s_{t-1}}\n  目标：从历史轨迹中隐式估计 e_t 的压缩表示 ê_t\n  损失：||ê_t - φ(e_t)||²（对齐 Base Policy 所用的特权嵌入）\n\n部署（真实机器人）：\n  Base Policy + Adaptation Module（无需特权参数 e_t）\n```\n\n**为什么有效**：机器人与地面的历史交互隐含了地形/摩擦/质量等信息，Adaptation Module 从行为历史中隐式重建这些信息。\n\n**在 Unitree A1 上实测**：复杂地形（草地/碎石/台阶）零样本迁移成功。\n\n### 7. Sim2Real SOP (标准作业程序)\n\n根据 [[xbotics-embodied-guide]] 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：\n- **前置阶段**：精确的 URDF 建模与动力学参数初步对齐。\n- **仿真验证**：在 [[isaac-gym-isaac-lab]] 或 [[genesis-sim]] 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。\n- **中间件对齐**：统一仿真与真机的控制频率（如 50Hz 策略 + 200Hz 关节 PD）与动作/状态归一化标准。\n- **实物测试**：采用“吊架测试 -> 空转测试 -> 落地测试”的渐进式 SOP。\n\n### 8. 高保真执行器对齐 (Actuator Alignment)\n\n根据 [[zest]] 的实践，缩小动力学差距的关键在于精确处理闭链执行器（如膝盖、脚踝）的物理特性。通过基于电枢（Armature）分析值的增益选择程序，可以在不使用反馈补偿器的情况下，实现高动态动作的零样本迁移。\n\n## 常见误区\n\n- **以为仿真越逼真越好**：太精确的仿真不一定更好，domain randomization 可能更 robust\n- **忽略动作延迟**：仿真中动作瞬时执行，现实中有延迟\n- **只看 reward 不看安全性**：sim2real 部署初期容易损坏硬件\n\n## 在人形机器人中的应用\n\n人形机器人 sim2real 的特殊挑战：\n\n- 高维状态空间（30+ 自由度）\n- 接触力难以精确建模\n- 视觉感知差异大\n- 足式接触的不确定性\n\n典型 pipeline：\n\n```\n仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）\n```\n\n## 参考来源\n\n- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文\n- Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要\n- [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践\n- [机器人论文阅读笔记：Domain Randomization](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)\n- [机器人论文阅读笔记：LCP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)\n- [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)\n\n## 关联页面\n\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）\n- [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性\n- [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）\n- [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南\n- [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）\n\n## 继续深挖入口\n\n如果你想沿着 sim2real 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Sim2Real 论文导航](../../references/papers/sim2real.md)\n\n### 仿真 / 平台入口\n- [Simulation](../../references/repos/simulation.md)\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n\n## 推荐继续阅读\n\n- [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)\n- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)\n- [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)\n- [Comparison：Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)",
       "tags": [
         "concept",
         "humanoid",
@@ -983,11 +983,11 @@
         "wiki-methods-actuator-network",
         "wiki-concepts-privileged-training",
         "wiki-queries-robot-policy-debug-playbook",
+        "entity-gr00t-visual-sim2real",
         "sources-papers-sim2real",
         "reference-papers-sim2real",
         "reference-repos-simulation",
-        "reference-repos-rl-frameworks",
-        "wiki-queries-sim2real-gap-reduction"
+        "reference-repos-rl-frameworks"
       ],
       "source_links": [
         "https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/",
@@ -1000,7 +1000,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1066,7 +1066,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1167,7 +1167,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1265,7 +1265,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2166,7 +2166,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2617,7 +2617,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2909,7 +2909,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2946,7 +2946,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2984,7 +2984,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5606,6 +5606,43 @@
       "entity_kind": "framework"
     },
     {
+      "id": "entity-gr00t-visual-sim2real",
+      "title": "GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)",
+      "path": "wiki/entities/gr00t-visual-sim2real.md",
+      "summary": "type: entity。",
+      "content_markdown": "---\ntype: entity\ntags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ../concepts/sim2real.md\n  - ../concepts/privileged-training.md\n  - ../concepts/domain-randomization.md\n  - ../entities/unitree-g1.md\n  - ../entities/isaac-gym-isaac-lab.md\n  - ../entities/gs-playground.md\n  - ../methods/imitation-learning.md\n  - ../tasks/loco-manipulation.md\nsources:\n  - ../../sources/repos/gr00t_visual_sim2real.md\nsummary: \"GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。\"\n---\n\n# GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)\n\n**GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规模化视觉 Sim2Real）和 **DoorMan**（像素到动作的策略迁移）。核心方法是 **PPO Teacher（特权状态）→ DAgger Student（RGB 蒸馏）** 的两阶段 pipeline，最终以 ONNX 格式部署到 Unitree G1 真机。\n\n## 为什么重要\n\n视觉 Sim2Real 长期面临三重矛盾：\n\n1. **样本效率**：直接用 RGB 做 RL 的样本效率极低，但真机不能无限试错\n2. **视觉 domain gap**：仿真渲染与真实相机图像存在外观差异\n3. **接触任务复杂性**：loco-manipulation 需同时控制平衡、抓取和力交互\n\nGR00T-VisualSim2Real 用 **Teacher-Student 蒸馏** 解耦了这两个问题：Teacher 在仿真中用特权状态高效学习任务策略，Student 只需从 RGB 模仿 Teacher 的行为，避免了从像素直接训练 RL 的困难。\n\n## 两个研究项目\n\n### VIRAL — Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation\n\n- **论文**：arXiv:2511.15200，CVPR 2026\n- **目标**：人形机器人规模化 loco-manipulation 的视觉 Sim2Real\n- **特点**：Isaac Lab 并行仿真，大规模采样，DAgger 蒸馏后零样本迁移\n\n### DoorMan — Pixel-to-Action Policy Transfer for Door Opening\n\n- **论文**：arXiv:2512.01061，CVPR 2026\n- **目标**：像素到动作（Pixel-to-Action）策略迁移，专注重型门开门\n- **难点**：接触丰富（需要对抗门铰链阻力），仅靠 RGB 隐式推断接触力\n\n## 核心方法：Teacher-Student Distillation\n\n```\n阶段 1：Teacher 训练（Isaac Sim + PPO）\n  观测：特权状态（完整位姿、物体状态、接触力）\n  算法：PPO\n  产出：高性能状态策略 π_teacher\n\n阶段 2：Student 蒸馏（DAgger）\n  观测：RGB 相机 + 本体感知（关节角、IMU）\n  目标：从 RGB 模仿 π_teacher 的动作分布\n  产出：视觉策略 π_student（可零样本部署）\n\n阶段 3：真机部署（Unitree G1）\n  导出：ONNX 自动导出（eval 时触发）\n  运行：实时 RGB + 本体感知 → 关节指令\n```\n\n### 为什么用 DAgger 而不是 BC？\n\nDAgger（Dataset Aggregation）在学生执行过程中持续查询教师策略，避免了纯 BC 中的 **covariate shift** 问题——学生进入从未见过的状态时不会崩溃。\n\n### DoorMan 的第三阶段：GRPO 微调\n\nDoorMan 在 DAgger Student 之后额外增加了 **GRPO（Group Relative Policy Optimization）** 微调阶段，以二值成功信号在线强化，解决 RGB-only 下接触力隐式推断的偏差。\n\n### Reference State Initialization (RSI)\n\nTeacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间状态，而不是固定从初始状态开始。RSI 让策略能直接从难状态探索，加速长时序任务的收敛。\n\n## 技术栈\n\n| 组件 | 选型 |\n|------|------|\n| 仿真 | Isaac Sim 5.1 + Isaac Lab |\n| RL 框架 | TRL（HuggingFace） + Hydra |\n| Teacher 算法 | PPO（特权状态观测） |\n| Student 算法 | DAgger 蒸馏（RGB 观测） |\n| 实验追踪 | Weights & Biases |\n| 域随机化 | Isaac Lab 配置化 DR |\n| 部署格式 | ONNX |\n| 目标机器人 | Unitree G1（43-DOF） |\n\n## 与同类框架对比\n\n| 框架 | 视觉输入 | 方法 | 任务类型 | 部署机器人 |\n|------|---------|------|---------|-----------|\n| **GR00T-VisualSim2Real** | RGB 相机 | PPO + DAgger 蒸馏 | Loco-manipulation | Unitree G1 |\n| [wbc_fsm](./wbc-fsm.md) | 无（本体感知） | WBC + FSM | Locomotion | Unitree G1 |\n| [unitree_rl_mjlab](./unitree-rl-mjlab.md) | 无（本体感知） | PPO / AMP | Locomotion | Unitree 系列 |\n| [GS-Playground](./gs-playground.md) | 3DGS 光真实感 | 视觉 RL | 操作 + 行走 | Go1/G1/Franka |\n\n**核心差异**：GR00T-VisualSim2Real 是目前在 Unitree G1 上做 **真实 RGB 视觉 loco-manipulation** 的最完整 NVIDIA 官方框架，而 wbc_fsm / unitree_rl_mjlab 侧重状态空间 locomotion。\n\n## 实测结果\n\n| 项目 | 结果 |\n|------|------|\n| VIRAL 真机成功率 | **91.5%**（59 次连续真机试验，54/59） |\n| DoorMan | 零样本泛化到多种真实门型；任务完成时间优于人类遥操作 **31.7%** |\n\n## 工程要点\n\n- **ONNX 导出**：在 `eval_agent_trl.py` 中使用 `--num_envs 1` 时自动触发导出，便于真机集成\n- **域随机化**：通过 Isaac Lab 的 Hydra YAML 配置，可方便地调整 DR 参数（光照、纹理、动力学参数）\n- **并行训练**：Isaac Lab 并行环境，大规模采样提升 Teacher 的策略质量\n- **模块化配置**：Hydra 支持命令行覆盖，方便调整任务、DR 强度和超参\n\n## 关联页面\n\n- [Sim2Real](../concepts/sim2real.md) — 本框架是视觉 Sim2Real 的典型落地案例\n- [Privileged Training](../concepts/privileged-training.md) — Teacher 阶段用的核心机制\n- [Domain Randomization](../concepts/domain-randomization.md) — 视觉 domain gap 的主要应对手段\n- [Unitree G1](./unitree-g1.md) — 目标部署平台\n- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 训练仿真平台\n- [GS-Playground](./gs-playground.md) — 另一种缩小视觉 domain gap 的方案（3DGS Real2Sim）\n- [Imitation Learning](../methods/imitation-learning.md) — DAgger 是 IL 核心算法之一\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 本框架的主要任务方向\n\n## 参考来源\n\n- [sources/repos/gr00t_visual_sim2real.md](../../sources/repos/gr00t_visual_sim2real.md) — 原始资料归档\n- [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real) — GitHub 仓库（135 stars，Apache-2.0）\n- VIRAL: *Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation*, arXiv:2511.15200, CVPR 2026. 作者：Tairan He, Zi Wang, Haoru Xue et al.（CMU / NVIDIA GEAR Lab / UC Berkeley）\n- DoorMan: *Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer*, arXiv:2512.01061, CVPR 2026. 作者：Haoru Xue, Tairan He, Zi Wang et al.（NVIDIA GEAR Lab / CMU / UC Berkeley）\n\n## 推荐继续阅读\n\n- [VIRAL 项目页](https://viral-humanoid.github.io/)\n- [DoorMan 项目页](https://doorman-humanoid.github.io/)\n- [Isaac Lab 文档](https://isaac-sim.github.io/IsaacLab/)",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "rl",
+        "il",
+        "sim2real"
+      ],
+      "related": [
+        "wiki-concepts-sim2real",
+        "wiki-concepts-privileged-training",
+        "wiki-concepts-domain-randomization",
+        "entity-unitree-g1",
+        "entity-isaac-gym-isaac-lab",
+        "entity-gs-playground",
+        "wiki-methods-imitation-learning",
+        "wiki-tasks-loco-manipulation",
+        "entity-wbc-fsm",
+        "entity-unitree-rl-mjlab",
+        "sources-repos-gr00t-visual-sim2real"
+      ],
+      "source_links": [
+        "https://github.com/NVlabs/GR00T-VisualSim2Real",
+        "https://viral-humanoid.github.io/",
+        "https://doorman-humanoid.github.io/",
+        "https://isaac-sim.github.io/IsaacLab/"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
       "id": "entity-gs-playground",
       "title": "GS-Playground (3DGS 光真实感仿真)",
       "path": "wiki/entities/gs-playground.md",
@@ -5733,7 +5770,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",
