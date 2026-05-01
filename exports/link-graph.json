@@ -862,6 +862,13 @@
       "community": "community-1"
     },
     {
+      "id": "wiki/formalizations/udp-multicast-dynamics.md",
+      "label": "UDP 组播动力学 (UDP Multicast Dynamics)",
+      "type": "formalization",
+      "health_score": 3,
+      "community": "community-3"
+    },
+    {
       "id": "wiki/formalizations/variational-objective.md",
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
@@ -1824,6 +1831,10 @@
     },
     {
       "source": "wiki/comparisons/ros2-vs-lcm.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
+    },
+    {
+      "source": "wiki/comparisons/ros2-vs-lcm.md",
       "target": "wiki/queries/ethercat-master-optimization.md"
     },
     {
@@ -2433,6 +2444,10 @@
     {
       "source": "wiki/concepts/lcm-basics.md",
       "target": "wiki/formalizations/control-loop-latency-modeling.md"
+    },
+    {
+      "source": "wiki/concepts/lcm-basics.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
     },
     {
       "source": "wiki/concepts/lcm-basics.md",
@@ -4128,6 +4143,10 @@
     },
     {
       "source": "wiki/formalizations/control-loop-latency-modeling.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
+    },
+    {
+      "source": "wiki/formalizations/control-loop-latency-modeling.md",
       "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
@@ -4389,6 +4408,26 @@
     {
       "source": "wiki/formalizations/tsid-formulation.md",
       "target": "wiki/formalizations/friction-cone.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/concepts/lcm-basics.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/concepts/ros2-basics.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/formalizations/control-loop-latency-modeling.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
       "source": "wiki/formalizations/variational-objective.md",
@@ -6504,6 +6543,10 @@
     },
     {
       "source": "wiki/queries/real-time-control-middleware-guide.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
+    },
+    {
+      "source": "wiki/queries/real-time-control-middleware-guide.md",
       "target": "wiki/queries/sim2real-deployment-checklist.md"
     },
     {
@@ -7281,7 +7324,7 @@
     {
       "id": "community-3",
       "label": "实时运控中间件配置指南 社区",
-      "size": 9,
+      "size": 10,
       "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {

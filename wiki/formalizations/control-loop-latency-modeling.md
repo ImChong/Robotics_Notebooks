@@ -9,6 +9,7 @@ related:
   - ../concepts/ros2-basics.md
   - ../concepts/sim2real.md
   - ../queries/real-time-control-middleware-guide.md
+  - ./udp-multicast-dynamics.md
 sources:
   - ../../sources/papers/sim2real.md
 summary: "控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。"
@@ -147,6 +148,7 @@ $$
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
+- [UDP 组播动力学](./udp-multicast-dynamics.md)
 
 ## 参考来源
 

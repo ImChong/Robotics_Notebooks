@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-05-01] checklist-v21 | wiki/formalizations/udp-multicast-dynamics.md — 推进 V21 P2「通信层形式化定义」
+
+- 新增 `wiki/formalizations/udp-multicast-dynamics.md`：把 LCM 等 UDP 多播中间件抽象成「成功 / 丢包 / 迟到 / 乱序」四类指示变量 $S_{i,k}, L_{i,k}, T_{i,k}, R_{i,k}$ 的随机过程
+- 给出 Gilbert-Elliott 两态突发丢包模型、单接收方延迟卷积分解 $T_{i,k} = T_{\text{send}} + T_{\text{switch}} + T_{\text{recv}} + T_{\text{stack}}$、组内最大一致性偏差 $\Delta_k^{\max}$ 的极值分布近似，以及数据年龄 $A(\tau)$ 与控制带宽的相位裕度耦合
+- 在 `wiki/concepts/lcm-basics.md`、`wiki/comparisons/ros2-vs-lcm.md`、`wiki/queries/real-time-control-middleware-guide.md`、`wiki/formalizations/control-loop-latency-modeling.md` 建立入链
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P2「udp-multicast-dynamics.md」一项；P2 通信层形式化 3 项中已完成 2 项
+- 图谱更新：233 节点 / 1417 边
+
 ## [2026-04-30] checklist-v21 | wiki/formalizations/control-loop-latency-modeling.md — 推进 V21 P2「通信层形式化定义」
 
 - 新增 `wiki/formalizations/control-loop-latency-modeling.md`：把一次力矩闭环拆成 5 段独立随机变量（$T_{\text{sense}}, T_{\text{bus,up}}, T_{\text{compute}}, T_{\text{sched}}, T_{\text{bus,dn}}$），用卷积刻画端到端延迟分布
