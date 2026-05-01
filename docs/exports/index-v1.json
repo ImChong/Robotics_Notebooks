@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 270,
+  "item_count": 271,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -150,7 +150,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -448,7 +448,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -480,7 +480,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -754,7 +754,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -816,7 +816,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -881,7 +881,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1000,7 +1000,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1066,7 +1066,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1167,7 +1167,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1265,7 +1265,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1623,7 +1623,7 @@
       "title": "CLAW (宇树 G1 全身动作数据生成管线)",
       "path": "wiki/methods/claw.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/motion-retargeting.md\n  - ../concepts/foundation-policy.md\n  - ../tasks/loco-manipulation.md\n  - ./auto-labeling-pipelines.md\nsources:\n  - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md\nsummary: \"CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。\"\n---\n\n# CLAW (宇树 G1 全身动作数据生成管线)\n\n**CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将复杂的全身运动拆解为可组合的原子动作，并利用底层物理引擎 (MuJoCo) 进行轨迹生成，从而绕过了传统动捕影棚的高昂成本和重定向带来的滑步/穿模问题。\n\n## 主要技术路线\n\nCLAW 的工作流程可以概括为以下三个核心阶段：\n\n1. **动作基元定义（Atomic Motion Primitives）**：通过分析机器人（如 G1）的物理极限，预定义一组基础运动单元。\n2. **交互式合成（Interactive Synthesis）**：用户通过网页界面实时调度基元，并在 MuJoCo 仿真中生成符合物理规律的全身轨迹。\n3. **自动标注引擎（Auto-annotation Engine）**：基于动作状态的确定性，自动生成与轨迹对齐的语言描述，产出高质量的 (Instruction, Image, Action) 数据对。\n\n## 为什么这一技术重要\n\n在具身基础策略（Foundation Policies）的训练中，**“动作轨迹 + 精准语言标签”** 的配对数据是极度稀缺的。CLAW 提供了以下价值：\n- **消除重定向误差**：由于直接在机器人原生资产上生成动作，完全避免了从人类骨骼到机器人骨骼重定向带来的误差。\n- **高质量标注**：自动生成的语言标签比人工后期标注更准确、粒度更细，特别适合训练视觉-语言-动作 (VLA) 模型。\n- **极佳的可扩展性**：通过增加原子动作库，可以无限扩充数据的多样性（Long-tail Distribution）。\n\n## 在本项目中的角色\n\nCLAW 代表了“数据引擎（Data Engine）”的最新趋势，即利用**合成数据**来解决真实世界数据获取困难的问题。它特别适合为 [Unitree G1](../entities/unitree-g1.md) 平台提供大规模的高质量预训练数据。\n\n## 关联页面\n- [模仿学习 (Imitation Learning)](./imitation-learning.md)\n- [动作重定向 (Motion Retargeting)](../concepts/motion-retargeting.md)\n- [基础策略模型 (Foundation Policy)](../concepts/foundation-policy.md)\n- [自动化标注流水线 (Auto-labeling Pipelines)](./auto-labeling-pipelines.md)\n- [Unitree G1](../entities/unitree-g1.md)\n\n## 参考来源\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md)\n- [CLAW 项目主页（GitHub / Paper）](https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw)",
+      "content_markdown": "---\ntype: method\ntags: [data-generation, data-engine, simulation, mujoco, humanoid, unitree-g1, language-alignment]\nstatus: complete\nupdated: 2026-04-23\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/motion-retargeting.md\n  - ../concepts/foundation-policy.md\n  - ../tasks/loco-manipulation.md\n  - ./auto-labeling-pipelines.md\nsources:\n  - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md\nsummary: \"CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。\"\n---\n\n# CLAW (宇树 G1 全身动作数据生成管线)\n\n**CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将复杂的全身运动拆解为可组合的原子动作，并利用底层物理引擎 (MuJoCo) 进行轨迹生成，从而绕过了传统动捕影棚的高昂成本和重定向带来的滑步/穿模问题。\n\n## 主要技术路线\n\nCLAW 的工作流程可以概括为以下三个核心阶段：\n\n1. **动作基元定义（Atomic Motion Primitives）**：通过分析机器人（如 G1）的物理极限，预定义一组基础运动单元。\n2. **交互式合成（Interactive Synthesis）**：用户通过网页界面实时调度基元，并在 MuJoCo 仿真中生成符合物理规律的全身轨迹。\n3. **自动标注引擎（Auto-annotation Engine）**：基于动作状态的确定性，自动生成与轨迹对齐的语言描述，产出高质量的 (Instruction, Image, Action) 数据对。\n\n## 为什么这一技术重要\n\n在具身基础策略（Foundation Policies）的训练中，**“动作轨迹 + 精准语言标签”** 的配对数据是极度稀缺的。CLAW 提供了以下价值：\n- **消除重定向误差**：由于直接在机器人原生资产上生成动作，完全避免了从人类骨骼到机器人骨骼重定向带来的误差。\n- **高质量标注**：自动生成的语言标签比人工后期标注更准确、粒度更细，特别适合训练视觉-语言-动作 (VLA) 模型。\n- **极佳的可扩展性**：通过增加原子动作库，可以无限扩充数据的多样性（Long-tail Distribution）。\n\n## 在本项目中的角色\n\nCLAW 代表了“数据引擎（Data Engine）”的最新趋势，即利用**合成数据**来解决真实世界数据获取困难的问题。它特别适合为 [Unitree G1](../entities/unitree-g1.md) 平台提供大规模的高质量预训练数据。\n\n## 关联页面\n- [模仿学习 (Imitation Learning)](./imitation-learning.md)\n- [动作重定向 (Motion Retargeting)](../concepts/motion-retargeting.md)\n- [基础策略模型 (Foundation Policy)](../concepts/foundation-policy.md)\n- [自动化标注流水线 (Auto-labeling Pipelines)](./auto-labeling-pipelines.md)\n- [骨架动作识别 (Skeleton Action Recognition)](./skeleton-action-recognition.md)\n- [Unitree G1](../entities/unitree-g1.md)\n\n## 参考来源\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md)\n- [CLAW 项目主页（GitHub / Paper）](https://mp.weixin.qq.com/s/MNwq3k8MiNHMLuleDyFiHw)",
       "tags": [
         "method",
         "humanoid",
@@ -1636,6 +1636,7 @@
         "wiki-concepts-motion-retargeting",
         "wiki-concepts-foundation-policy",
         "wiki-methods-auto-labeling-pipelines",
+        "wiki-methods-skeleton-action-recognition",
         "entity-unitree-g1",
         "sources-blogs-claw-unitree-g1-language-annotated-motion-data"
       ],
@@ -2165,7 +2166,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2412,6 +2413,39 @@
       "page_type": "method"
     },
     {
+      "id": "wiki-methods-skeleton-action-recognition",
+      "title": "骨架动作识别（Skeleton-Based Action Recognition）",
+      "path": "wiki/methods/skeleton-action-recognition.md",
+      "summary": "输入一段骨架关节序列，输出动作类别标签或自然语言描述——在机器人场景中尤指能跨不同机器人形态和未见动作类别泛化的统一识别能力",
+      "content_markdown": "---\ntype: method\ntags: [skeleton, action-recognition, open-vocabulary, language-alignment, heterogeneous, contrastive-learning, transformer]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ./imitation-learning.md\n  - ./claw.md\n  - ./vla.md\n  - ./motion-retargeting-gmr.md\n  - ./diffusion-motion-generation.md\n  - ../concepts/foundation-policy.md\n  - ../concepts/data-flywheel.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/papers/universal_skeleton.md\nsummary: \"骨架动作识别通过对关节序列建模来理解人体/机器人动作；HOVL 进一步解决了异构骨架和开放词汇两大难题，是跨形态动作理解的关键方法。\"\n---\n\n# 骨架动作识别（Skeleton-Based Action Recognition）\n\n**骨架动作识别**：以关节坐标序列（3D/2D 骨架）为输入，识别或描述人体 / 机器人正在执行的动作类别，是模仿学习数据质量和跨形态泛化的重要支撑技术。\n\n## 一句话定义\n\n输入一段骨架关节序列，输出动作类别标签或自然语言描述——在机器人场景中尤指能跨不同机器人形态和未见动作类别泛化的统一识别能力。\n\n## 为什么重要\n\n- **数据标注流水线**：自动识别演示数据中的动作类别，直接服务于模仿学习（IL）数据引擎\n- **跨形态迁移**：人形机器人种类繁多（宇树 G1、ALOHA、Atom01 等），骨架拓扑各异；统一表示是跨机器人知识迁移的基础\n- **语言对齐**：将动作与自然语言绑定，使 VLA / CLAW 这类数据生成管线能生产语义准确的配对数据\n- **开放词汇泛化**：真实部署场景动作类别无限，模型需识别训练集外的新动作\n\n## 主要技术路线\n\n骨架动作识别方法演化经历三个阶段：\n\n**路线 1：基于图卷积（GCN）**\n- 将骨架建模为图（节点=关节，边=骨骼连接），用时空图卷积提取动作特征\n- 代表：ST-GCN（AAAI 2018）、CTR-GCN、MS-G3D\n- 局限：骨架拓扑固定、仅支持封闭词汇\n\n**路线 2：基于 Transformer**\n- 用自注意力机制全局建模关节间关系，取代局部图卷积\n- 代表：PoseConv3D、Skeleton-MAE\n- 局限：仍受固定词汇限制，跨数据集泛化差\n\n**路线 3：语言对齐 + 异构统一（当前前沿）**\n- 引入 CLIP 等视觉-语言预训练模型，将动作与文本联合嵌入\n- 同时处理不同骨架拓扑（异构统一表示）\n- 代表：HOVL（2026）\n- 面向 [基础策略](../concepts/foundation-policy.md) 和 [数据飞轮](../concepts/data-flywheel.md) 场景设计\n\n## 传统方法 vs 现代方法\n\n| 维度 | 传统方法 | 现代方法（HOVL 等） |\n|------|---------|----------------|\n| 骨架格式 | 单一固定拓扑（如 NTU 25 关节） | 异构多拓扑统一表示 |\n| 词汇范围 | 封闭集（固定 N 类） | 开放词汇（零样本新类别） |\n| 文本利用 | 无 | CLIP 对比学习对齐 |\n| 跨数据集 | 几乎不支持 | HOV Dataset 多源整合 |\n| 代表方法 | ST-GCN、CTR-GCN、PoseConv3D | HOVL（2026） |\n\n## HOVL：异构开放词汇学习\n\n**HOVL（Heterogeneous Open-Vocabulary Learning）** 是目前最系统解决上述两大限制的方法，出自 Kuang et al.（2026）：\n\n### 架构三组件\n\n```\n骨架序列（异构）\n     ↓\n[统一骨架表示模块]      ← 消除拓扑异构性\n     ↓\n[多流时空动作编码器]    ← Transformer，提取多模态骨架嵌入\n     ↓\n[多粒度动作-文本对齐]   ← 基于 CLIP 的三层对比学习\n     ↓\n动作类别 / 自然语言描述\n```\n\n### 多粒度对齐：三层对比学习\n\n**层 1 — 全局实例对齐**\n- 整段动作序列嵌入 ↔ 动作类别文本嵌入\n- 对应传统 CLIP 图像-文本全局匹配\n\n**层 2 — 流级对齐**\n- 各骨架流（3D 位置流、2D 姿态流等）分别与文本模态对齐\n- 保留各流细节，避免信息在全局融合时损失\n\n**层 3 — 细粒度对齐**\n- 帧级 / token 级精细对应\n- 捕捉\"抬腿\"对应\"leg lift\"、\"挥手\"对应\"wave\"等局部语义\n\n### HOV 数据集\n\n整合 NTU RGB+D 120（3D + 2D 双格式）与 HumanML3D，构建大规模异构基准：\n- 覆盖 120+ 动作类别\n- 长尾多标签评测设置，贴近真实分布\n- 同时包含人体骨架与运动描述文本\n\n## 与机器人技术栈的连接\n\n### 1. 模仿学习数据质量\n演示数据中的动作分割 + 自动标注依赖骨架动作识别精度。HOVL 的开放词汇能力使得数据引擎能处理任意新动作类型，直接提升 [模仿学习](./imitation-learning.md) 数据集质量。\n\n### 2. CLAW 数据引擎\n[CLAW](./claw.md) 通过语言描述标注全身动作数据；骨架动作识别提供反向验证：确认生成动作与语言标签的语义一致性。两者互补。\n\n### 3. VLA 语言对齐\n[VLA](./vla.md) 需要精准的动作-语言对应数据。HOVL 的多粒度对齐产生了帧级动作-文本配对，可作为 VLA 训练的高质量输入。\n\n### 4. 跨形态迁移\n骨架统一表示思路与 [运动重定向](./motion-retargeting-gmr.md) 高度互补：重定向解决关节运动的几何映射，统一骨架表示解决特征空间的语义对齐。\n\n## 局限性\n\n- **计算开销**：三层对比学习的多流 Transformer 比单流 GCN 计算量高\n- **3D 骨架质量依赖**：真实机器人上需要可靠的关节估计（IMU / 编码器），精度直接影响识别效果\n- **机器人场景验证**：当前工作主要在人体骨架数据集上验证，直接应用于机器人骨架需要进一步适配\n\n## 参考来源\n\n- [sources/papers/universal_skeleton.md](../../sources/papers/universal_skeleton.md) — Kuang et al. (2026) HOVL 原论文 ingest 归档\n- Kuang et al., *Universal Skeleton-Based Action Recognition: Heterogeneous Open-Vocabulary Learning via Multi-Grained Motion-Text Alignment*, arXiv:2604.17013\n- Yan et al., *Spatial Temporal Graph Convolutional Networks for Skeleton-Based Action Recognition* (ST-GCN, AAAI 2018) — 传统 GCN 路线代表\n- Radford et al., *Learning Transferable Visual Models From Natural Language Supervision* (CLIP, ICML 2021) — 语言对齐基础\n\n## 关联页面\n\n- [Imitation Learning](./imitation-learning.md) — 骨架动作识别是 IL 数据标注的上游技术\n- [CLAW](./claw.md) — 语言标注动作数据生成管线，与 HOVL 互补\n- [VLA](./vla.md) — 语言-动作对齐的下游应用场景\n- [Motion Retargeting GMR](./motion-retargeting-gmr.md) — 跨骨架形态运动映射\n- [Diffusion Motion Generation](./diffusion-motion-generation.md) — 动作生成的下游应用\n\n## 推荐继续阅读\n\n- [Universal-Skeleton GitHub](https://github.com/jidongkuang/Universal-Skeleton)\n- [arXiv:2604.17013](https://arxiv.org/abs/2604.17013)\n- [ST-GCN (AAAI 2018)](https://arxiv.org/abs/1801.07455) — 骨架 GCN 经典基线",
+      "tags": [
+        "method",
+        "locomotion",
+        "control",
+        "il"
+      ],
+      "related": [
+        "wiki-methods-imitation-learning",
+        "wiki-methods-claw",
+        "wiki-methods-vla",
+        "wiki-methods-motion-retargeting-gmr",
+        "wiki-methods-diffusion-motion-generation",
+        "wiki-concepts-foundation-policy",
+        "wiki-concepts-data-flywheel",
+        "sources-papers-universal-skeleton"
+      ],
+      "source_links": [
+        "https://github.com/jidongkuang/Universal-Skeleton",
+        "https://arxiv.org/abs/2604.17013",
+        "https://arxiv.org/abs/1801.07455"
+      ],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/universal_skeleton.md"
+    },
+    {
       "id": "wiki-methods-smp",
       "title": "SMP: 基于得分匹配的可复用运动先验",
       "path": "wiki/methods/smp.md",
@@ -2583,7 +2617,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2875,7 +2909,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2912,7 +2946,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2950,7 +2984,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5699,7 +5733,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",
