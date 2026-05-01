@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 271,
+  "item_count": 272,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -150,7 +150,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -350,7 +350,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/sim2real.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -448,7 +448,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -480,7 +480,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -569,7 +569,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -722,7 +722,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -754,7 +754,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -816,7 +816,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -881,7 +881,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1000,7 +1000,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1167,7 +1167,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1231,7 +1231,7 @@
       "title": "Whole-Body Control (WBC)",
       "path": "wiki/concepts/whole-body-control.md",
       "summary": "不单独控制每个关节，而是把整个身体当成一个整体来协调控制",
-      "content_markdown": "---\ntype: concept\ntags: [control, wbc, humanoid, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../tasks/locomotion.md\n  - ../methods/imitation-learning.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./sim2real.md\n  - ./contact-estimation.md\n  - ../formalizations/se3-representation.md\n  - ../queries/when-to-use-wbc-vs-rl.md\nsummary: \"Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。\"\n---\n\n# Whole-Body Control (WBC)\n\n**全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。\n\n## 一句话定义\n\n不单独控制每个关节，而是把整个身体当成一个整体来协调控制。\n\n## 为什么重要\n\n人形机器人的特点：\n\n- 30+ 自由度\n- 多个末端执行器（手、脚）\n- 浮动基（身体位置和朝向不可控）\n- 必须保持平衡\n\n传统独立关节控制的局限：\n\n- 各关节互相耦合，单独优化会冲突\n- 没有全身协调意识\n- 难以处理接触切换和约束\n\nWBC 的优势：\n\n- 通过优化或 hierarchical control 实现全身协调\n- 能同时处理接触力、平衡、末端执行器任务\n- 自然处理多接触场景\n\n## 核心框架\n\n### 1. Hierarchical WBC\n多层结构：\n\n```\n任务空间控制器（末端执行器轨迹）\n        ↓\n全身QP优化（关节力矩分配）\n        ↓\n电机驱动\n```\n\n代表：Whole-Body Impedance / TSID (Task Space Inverse Dynamics)\n\n### 2. Optimization-based WBC\n用 QP 或非线性优化直接求解：\n\n- 给定任务目标（末端位置/姿态/力）\n- 满足约束（关节限位、接触力、力矩平衡）\n- 最小化某个代价函数\n\n代表框架：Openuhan / tsid / exotica\n\n### 3. Learning-based & Generative WBC\n用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。\n\n代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)\n\n## 最小代码骨架\n\n这段代码不是完整 WBC，而是 WBC 最核心的味道：\n- 把多个任务写成误差项\n- 在同一个 QP 里一起求一个关节加速度 / 力矩解\n- 再把解交给底层执行器\n\n```python\nimport numpy as np\n\n# 关节加速度变量 qdd，示例只写成最小二乘形式\nJ_com = np.array([[1.0, 0.0], [0.0, 1.0]])\nJ_foot = np.array([[1.0, -1.0]])\nacc_com_des = np.array([0.0, 0.2])\nacc_foot_des = np.array([0.0])\n\nA = np.vstack([J_com, J_foot])\nb = np.concatenate([acc_com_des, acc_foot_des])\n\nqdd_star, *_ = np.linalg.lstsq(A, b, rcond=None)\nprint(\"joint acceleration command:\", qdd_star)\n```\n\n真实 WBC 会再加入：\n- 动力学等式约束\n- 接触力变量\n- 摩擦锥、力矩限位、任务优先级\n- 从 `qdd` 到 `tau` 的映射\n\n## 方法局限性\n\n- **强依赖模型与接触状态**：动力学模型不准、接触集合错了，整个 QP 都会偏\n- **接口复杂**：上层 MPC / planner 和下层 WBC 的目标格式对齐很麻烦\n- **调参成本高**：任务权重、优先级、阻抗参数经常比公式本身更难调\n- **不直接提供高层策略**：WBC 擅长“怎么执行”，不天然回答“下一步想做什么”\n\n## 关键概念\n\n### Floating Base\n人形机器人在空中时，base（躯干）的位置和朝向不在控制输入的直接控制下，需要通过接触力来驱动。\n\n### Contact Schedule\n什么时候哪只脚/手在接触地面，决定了可用力和平衡策略。\n\n### Centroidal Dynamics\n用质心动力学代替全关节动力学，更高效但精度略低。\n\n## 参考来源\n\n- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文\n- Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合\n- [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)\n- [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)\n- [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）\n- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Sim2Real](./sim2real.md)\n- [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵\n- [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础\n- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)\n\n## 继续深挖入口\n\n如果你想沿着 WBC 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)\n\n### 工具 / Repo 入口\n- [Utilities / Tooling](../../references/repos/utilities.md)\n\n## 推荐继续阅读\n\n- [ATOM01-Train](https://github.com/Roboparty/atom01_train)\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid)",
+      "content_markdown": "---\ntype: concept\ntags: [control, wbc, humanoid, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../tasks/locomotion.md\n  - ../methods/imitation-learning.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./sim2real.md\n  - ./contact-estimation.md\n  - ../formalizations/se3-representation.md\n  - ../queries/when-to-use-wbc-vs-rl.md\nsummary: \"Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。\"\n---\n\n# Whole-Body Control (WBC)\n\n**全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。\n\n## 一句话定义\n\n不单独控制每个关节，而是把整个身体当成一个整体来协调控制。\n\n## 为什么重要\n\n人形机器人的特点：\n\n- 30+ 自由度\n- 多个末端执行器（手、脚）\n- 浮动基（身体位置和朝向不可控）\n- 必须保持平衡\n\n传统独立关节控制的局限：\n\n- 各关节互相耦合，单独优化会冲突\n- 没有全身协调意识\n- 难以处理接触切换和约束\n\nWBC 的优势：\n\n- 通过优化或 hierarchical control 实现全身协调\n- 能同时处理接触力、平衡、末端执行器任务\n- 自然处理多接触场景\n\n## 核心框架\n\n### 1. Hierarchical WBC\n多层结构：\n\n```\n任务空间控制器（末端执行器轨迹）\n        ↓\n全身QP优化（关节力矩分配）\n        ↓\n电机驱动\n```\n\n代表：Whole-Body Impedance / TSID (Task Space Inverse Dynamics)\n\n### 2. Optimization-based WBC\n用 QP 或非线性优化直接求解：\n\n- 给定任务目标（末端位置/姿态/力）\n- 满足约束（关节限位、接触力、力矩平衡）\n- 最小化某个代价函数\n\n代表框架：Openuhan / tsid / exotica\n\n### 3. Learning-based & Generative WBC\n用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。\n\n代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)\n\n## 最小代码骨架\n\n这段代码不是完整 WBC，而是 WBC 最核心的味道：\n- 把多个任务写成误差项\n- 在同一个 QP 里一起求一个关节加速度 / 力矩解\n- 再把解交给底层执行器\n\n```python\nimport numpy as np\n\n# 关节加速度变量 qdd，示例只写成最小二乘形式\nJ_com = np.array([[1.0, 0.0], [0.0, 1.0]])\nJ_foot = np.array([[1.0, -1.0]])\nacc_com_des = np.array([0.0, 0.2])\nacc_foot_des = np.array([0.0])\n\nA = np.vstack([J_com, J_foot])\nb = np.concatenate([acc_com_des, acc_foot_des])\n\nqdd_star, *_ = np.linalg.lstsq(A, b, rcond=None)\nprint(\"joint acceleration command:\", qdd_star)\n```\n\n真实 WBC 会再加入：\n- 动力学等式约束\n- 接触力变量\n- 摩擦锥、力矩限位、任务优先级\n- 从 `qdd` 到 `tau` 的映射\n\n## 方法局限性\n\n- **强依赖模型与接触状态**：动力学模型不准、接触集合错了，整个 QP 都会偏\n- **接口复杂**：上层 MPC / planner 和下层 WBC 的目标格式对齐很麻烦\n- **调参成本高**：任务权重、优先级、阻抗参数经常比公式本身更难调\n- **不直接提供高层策略**：WBC 擅长“怎么执行”，不天然回答“下一步想做什么”\n\n## 关键概念\n\n### Floating Base\n人形机器人在空中时，base（躯干）的位置和朝向不在控制输入的直接控制下，需要通过接触力来驱动。\n\n### Contact Schedule\n什么时候哪只脚/手在接触地面，决定了可用力和平衡策略。\n\n### Centroidal Dynamics\n用质心动力学代替全关节动力学，更高效但精度略低。\n\n## 参考来源\n\n- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文\n- Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合\n- [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)\n- [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)\n- [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）\n- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Sim2Real](./sim2real.md)\n- [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵\n- [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础\n- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)\n- [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现\n\n## 继续深挖入口\n\n如果你想沿着 WBC 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)\n\n### 工具 / Repo 入口\n- [Utilities / Tooling](../../references/repos/utilities.md)\n\n## 推荐继续阅读\n\n- [ATOM01-Train](https://github.com/Roboparty/atom01_train)\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid)",
       "tags": [
         "concept",
         "humanoid",
@@ -1248,11 +1248,11 @@
         "wiki-concepts-contact-estimation",
         "wiki-formalizations-se3-representation",
         "wiki-queries-when-to-use-wbc-vs-rl",
+        "entity-wbc-fsm",
         "wiki-methods-motionbricks",
         "sources-papers-whole-body-control",
         "reference-papers-whole-body-control",
-        "sources-papers-gentlehumanoid-upper-body-compliance",
-        "reference-repos-utilities"
+        "sources-papers-gentlehumanoid-upper-body-compliance"
       ],
       "source_links": [
         "https://github.com/stack-of-tasks/tsid",
@@ -1265,7 +1265,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2012,7 +2012,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_touch_dream.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2166,7 +2166,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2385,7 +2385,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2780,7 +2780,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2909,7 +2909,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2946,7 +2946,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2984,7 +2984,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5234,14 +5234,14 @@
       "title": "AMP_mjlab (G1 统一 AMP 策略)",
       "path": "wiki/entities/amp-mjlab.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ../methods/amp-reward.md\n  - ./mjlab.md\n  - ./unitree-g1.md\n  - ./legged-gym.md\n  - ../methods/imitation-learning.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/amp_mjlab.md\nsummary: \"AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。\"\n---\n\n# AMP_mjlab (G1 统一 AMP 策略)\n\n**AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。\n\n## 为什么重要？\n\n传统做法需要维护独立的 \"locomotion 策略\" 和 \"recovery 策略\"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。\n\n## 从零理解 AMP_mjlab\n\n下面用**从零理解**的方式讲解这个项目。\n\n### 1. 这个项目一句话是什么？\n\n`AMP_mjlab` 是一个基于 **mjlab + rsl_rl + AMP** 的 Unitree G1 人形机器人强化学习项目。目标是训练一个 policy，让 G1 同时学会：\n1. **走路 / 跑步 / 跟踪速度指令**\n2. **跌倒后的恢复 / 起身**\n3. **动作风格尽量接近参考动作数据**\n\n它不是单独训练“走路策略”和“起身策略”，而是把两种能力放进**同一个 policy** 里训练，减少策略切换带来的不连续问题。([GitHub][1])\n\n### 2. AMP 是什么？先用直觉理解\n\nAMP = **Adversarial Motion Priors**，可以简单理解成：**让机器人一边完成任务，一边模仿人类/参考动作的风格。**\n\n它有两个网络：\n- **Policy / Actor-Critic**：负责真正控制机器人。输入机器人状态 + 速度指令，输出关节动作。\n- **AMP Discriminator**：像一个“动作裁判”。它会看真实参考动作数据（如走、跑、起身）和 policy 生成的动作，判断“像不像真实动作”。如果像，Policy 就会得到额外奖励。\n\n### 3. 仓库核心结构\n\n```text\nAMP_mjlab/\n├── scripts/\n│   ├── train.py          # 训练入口\n│   ├── play.py           # 回放 / 测试 / 导出 ONNX\n│   ├── list_envs.py      # 查看可用任务\n│   └── csv_to_npz.py     # 动作数据 CSV 转 NPZ\n├── src/\n│   ├── assets/\n│   │   ├── robots/       # G1 机器人模型配置\n│   │   └── motions/g1/amp/\n│   │       ├── WalkandRun # 走/跑参考动作\n│   │       └── Recovery   # 起身/恢复参考动作\n│   └── tasks/\n│       └── amp_loco/\n│           ├── amp_env_cfg.py       # 环境、观测、动作、奖励配置\n│           ├── ampmotion_loader.py  # 加载参考动作数据\n│           ├── config/g1/\n│           │   ├── env_cfgs.py      # G1 Flat / Rough 环境配置\n│           │   ├── rl_cfg.py        # PPO + AMP 训练参数\n│           └── mdp/\n│               ├── observations.py  # 观测项\n│               ├── rewards.py       # 奖励项\n│               ├── events.py        # reset / 推扰 / 随机化\n│               └── terminations.py  # 终止条件\n```\n\n### 4. 模型输入与输出\n\n#### 输入 (Actor Observation)\nPolicy 真正用的输入包含 4 帧历史，单帧约 96 维（384 维合计）：\n- 机身角速度、重力方向、速度指令\n- 关节位置、关节速度（G1 共 29 个关节）\n- 上一次输出动作\n\n#### 输出 (Action)\n输出是 29 维的**关节位置控制目标**（`JointPositionActionCfg`），经 scale 后转换为目标位置偏移，由底层 PD 负责跟踪。([GitHub][2])\n\n### 5. 奖励函数与判别器\n\n- **AMP 判别器**：观察 Pelvis、髋、膝、踝、肩、肘、腕等关键部位的相对位置、姿态和速度，判断是否符合参考动作风格。([GitHub][4])\n- **奖励组合**：\n    - 速度跟踪：`track_anchor_linear_velocity` / `angular_velocity`\n    - 恢复奖励：`track_root_height`（鼓励回到正常高度）\n    - 惩罚项：身体乱晃、关节加速度、打滑、自碰撞、撞限位等。\n\n### 6. 训练与回放\n\n- **开始训练**：`python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096`\n- **收敛特征**：约 20k iterations 附近，recovery 行为可能突然涌现，指标跳变属正常。([GitHub][1])\n- **回放测试**：`python scripts/play.py Unitree-G1-AMP-Flat --checkpoint-file logs/rsl_rl/.../model_<iter>.pt`\n- **ONNX 导出**：训练和回放默认启用导出。ONNX 输入名为 `obs`，输出名为 `actions`，且内置了 normalizer。([GitHub][8])\n\n### 7. 源码阅读建议顺序\n\n1. `README.md`\n2. `src/tasks/amp_loco/config/g1/__init__.py`\n3. `src/tasks/amp_loco/config/g1/env_cfgs.py`\n4. `src/tasks/amp_loco/amp_env_cfg.py`\n5. `src/tasks/amp_loco/config/g1/rl_cfg.py`\n6. `scripts/train.py` & `play.py`\n## 操作指南\n\n### 1. 训练启动命令\n\n该项目基于 `rsl_rl` 框架，使用 `mjlab` 进行并行仿真。\n\n```bash\n# 安装后先确认任务已注册\npython scripts/list_envs.py --keyword AMP\n\n# 基础训练（G1 在平地上练习 AMP 风格行走与起身）\npython scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096\n\n# 崎岖地形训练（推荐用于鲁棒性测试）\npython scripts/train.py Unitree-G1-AMP-Rough --env.scene.num-envs=4096\n\n# 多卡机器上可显式选择 GPU；脚本会通过 torchrunx 启动多进程\npython scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=8192 --gpu-ids 0 1\n```\n\n- `--env.scene.num-envs`：指定并行环境数量。单卡常用 4096；显存和仿真吞吐足够时可提高到 8192。\n- `--gpu-ids`：训练脚本会根据该参数设置 `CUDA_VISIBLE_DEVICES`；多卡时用 `torchrunx` 分布式启动。\n- `--video`、`--video-interval`、`--video-length`：训练中录制 rollouts，用于排查“奖励上升但动作异常”的情况。\n- 任务列表可通过 `python scripts/list_envs.py --keyword AMP` 查看。\n- 日志默认写入 `logs/rsl_rl/g1_amp_locomotion/<time_stamp_run>/`，同时保存 `params/env.yaml` 与 `params/agent.yaml` 以便复现实验配置。\n\n### 2. 训练监控与曲线分析\n\n使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程。\n\n| 曲线 / 指标 | 含义 | 好走势 | 异常信号 |\n| :--- | :--- | :--- |\n| `Train/mean_reward`、`rew_total` 或 episode reward | 平均总奖励，混合了速度跟踪、高度恢复、AMP 风格奖励与惩罚项。 | 前期有噪声但总体上升；约 20k iterations 附近可能出现阶跃式上升。 | 长时间横盘或下降，通常说明动作先验、reset 分布或奖励权重没有形成有效课程。 |\n| `Train/mean_episode_length` 或 `episode_length` | 平均回合长度，反映策略是否能避免 bad orientation / bad base height 终止。 | 与总奖励同步上升；在学会 fall-recovery 后会明显变长。 | 2.5w iterations 后仍很短，通常表示 recovery 没被诱导出来。 |\n| `Episode/rew_track_anchor_linear_velocity` | 躯干/anchor 线速度跟踪奖励，对应 x/y 方向速度指令。 | 逐步升高并趋稳，说明 locomotion 能跟上指令。 | 高度恢复很好但该项低，可能是策略偏向“站稳/起身”而不会走。 |\n| `Episode/rew_track_anchor_angular_velocity` | yaw 角速度跟踪奖励。 | 随着前进速度跟踪一起改善，不应长期接近 0。 | 转向时摔倒或该项长期低，需检查 command range、摩擦随机化和足端打滑。 |\n| `Episode/rew_track_root_height` | root 高度恢复奖励，是 recovery 是否站回正常高度的重要信号。 | recovery 涌现阶段通常会明显跳升。 | 高度奖励低且 episode length 短，说明起身过程失败或 reset 太早。 |\n| `Episode/rew_is_terminated` | 终止惩罚，触发 bad orientation / bad base height 时会显著拉低总奖励。 | 绝对惩罚占比下降，终止次数减少。 | 惩罚长期很大，说明策略经常摔倒或 delayed reset 窗口不足。 |\n| `Episode/rew_joint_acc_l2`、`rew_action_rate_l2` | 关节加速度与动作变化惩罚，衡量动作是否抖动。 | 总体保持较低，随策略收敛更平滑。 | 奖励高但这些惩罚同步变大，部署时容易出现电机发热、冲击或高频震荡。 |\n| `Episode/rew_foot_slip`、`rew_self_collisions`、`rew_joint_pos_limits` | 足端打滑、自碰撞、关节限位惩罚。 | 负项逐渐减小，偶发尖峰可以接受。 | 长期大幅负值，说明 gait 不物理、地面接触不稳或姿态解空间被关节限位卡住。 |\n| `Loss/value_function`、`Loss/surrogate` | PPO critic value loss 与 policy surrogate loss。 | 有波动但不持续发散；学习率自适应后应保持在可训练区间。 | value loss 持续爆炸或 surrogate 大幅震荡，优先降低学习率、环境数或检查 reward scale。 |\n| `Policy/mean_noise_std` | 高斯策略的平均探索标准差。 | 从初始化值逐步下降，但不要过早塌到很低。 | 过早接近最小标准差会导致探索不足，recovery 很难涌现。 |\n| AMP 判别器 loss / `disc_loss` / `amp_loss` | 判别器区分参考 motion 与 policy motion 的训练损失。 | 初期快速变化，随后进入对抗平衡；不追求单调下降。 | 判别器过强时 policy 获得不了风格奖励；过弱时动作会“骗过”判别器但不自然。 |\n| AMP 风格奖励 / `disc_reward` / `amp_reward` | 判别器给 policy 的动作风格奖励。 | 随训练提高并震荡趋稳，和任务奖励共同上升最好。 | 风格奖励高但速度/高度奖励低，说明只学到 motion prior 外观，任务目标没有完成。 |\n| `Metrics/mean_action_acc` | 环境自定义动作加速度指标。 | 越低越适合部署，但不能以牺牲速度跟踪为代价。 | 回放中出现抖腿、膝关节抽动时通常会同步升高。 |\n| `Metrics/mean_delay_steps` | delayed termination / recovery 窗口相关指标，反映环境在终止后延迟 reset 的步数。 | recovery 学会后不应持续堆高。 | 长期很高且 episode length 不提升，说明环境给了恢复窗口但策略没恢复成功。 |\n\n**关键判断标准**：README 明确提示约 `2w` iterations 附近可能出现多个指标突变，这是 recovery 行为突然涌现的正常现象。判断训练好坏时不要只看总奖励，至少同时看 `episode_length`、`track_root_height`、速度跟踪奖励、终止惩罚和动作平滑指标；只有“能站起、能跟踪速度、动作不抖、终止减少”同时成立，才适合进入部署验证。\n\n### 3. 模型导出\n\n- **训练自动导出**：AMP runner 覆盖了 `save()`；每次保存 `model_<ITER>.pt` 后，会在同一 run 目录导出 `policy.onnx`，并附加环境 metadata。\n- **回放验证并导出**：`play.py` 的 `export_onnx=True` 默认开启，会把指定 checkpoint 导出为 `export/<task>_<checkpoint>.onnx`。\n  ```bash\n  python scripts/play.py Unitree-G1-AMP-Flat \\\n    --checkpoint-file logs/rsl_rl/g1_amp_locomotion/<RUN_DIR>/model_<ITER>.pt\n  ```\n- **导出模型接口**：ONNX 输入名为 `obs`，输出名为 `actions`；batch 维是动态轴；导出 wrapper 已包含 empirical observation normalizer，因此部署端应输入训练同分布的 raw observation，而不是再手动做一遍同样的归一化。\n- **选择 checkpoint**：优先选择 `episode_length`、速度跟踪、root height 和动作平滑指标同时稳定后的 checkpoint，不要只选总奖励最高的瞬间点。\n\n### 4. 部署注意事项\n\n在真机部署（如 Unitree G1）或集成到 `wbc_fsm` 时，需注意以下一致性问题：\n\n- **mjlab 补丁**：训练端使用 `history_ordering=\"time\"`；必须确保 `mjlab_patch/mjlab/managers/observation_manager.py` 已覆盖到当前环境。如果不打补丁，则需要从代码里移除 `history_ordering` 配置，否则训练/部署观测顺序会不一致。\n- **观测历史（History）**：actor 输入是 4 帧历史，单帧包含 base angular velocity、projected gravity、velocity command、joint position、joint velocity、last action。部署端缓存顺序必须是按时间展开，且 last action 要使用上一控制周期真正下发的动作。\n- **归一化边界**：ONNX 已包含 obs normalizer；C++/部署端不要重复套训练时的 normalizer，但要保证传入的物理量单位、关节顺序、符号方向与训练配置一致。\n- **动作语义**：policy 输出 `actions`，训练环境中由 `JointPositionActionCfg(scale=0.25, use_default_offset=True)` 转成关节位置目标偏移；部署端必须复现“默认关节位置 + 0.25 * action”的语义，再交给底层 PD / WBC。\n- **控制频率**：仿真 `timestep=0.005`、`decimation=4`，策略控制周期约 20 ms（50 Hz）。真机部署时推理频率、状态估计延迟和低层控制频率要与这一节奏匹配。\n- **安全壳**：统一策略减少了 locomotion/recovery 的模式切换，但真机仍应放在 `wbc_fsm` 的 `MJAmpState` 之类状态内，外层保留急停、限幅、姿态保护、接触异常处理和低电量/过热保护。\n- **上线顺序**：先用 `play.py` 回放目标 checkpoint，再做仿真扰动和 rough terrain 验证；上真机时先限速、限幅、吊挂或保护架测试，逐步开放速度 command 与 recovery 场景。\n\n## 关联页面\n\n- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体\n- [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）\n- [Unitree G1](./unitree-g1.md) — 目标硬件\n- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym\n- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)\n- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)\n\n## 源码阅读建议顺序\n[1]: https://github.com/ccrpRepo/AMP_mjlab \"GitHub - ccrpRepo/AMP_mjlab · GitHub\"\n[2]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/amp_env_cfg.py \"amp_env_cfg.py\"\n[3]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/scripts/csv_to_npz.py \"csv_to_npz.py\"\n[4]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/rl_cfg.py \"rl_cfg.py\"\n[5]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/ampmotion_loader.py \"ampmotion_loader.py\"\n[6]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/README_zh.md \"README_zh.md\"\n[7]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/scripts/train.py \"train.py\"\n[8]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/rl/runner.py \"runner.py\"\n[9]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/__init__.py \"__init__.py\"\n[10]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/env_cfgs.py \"env_cfgs.py\"",
+      "content_markdown": "---\ntype: entity\ntags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ../methods/amp-reward.md\n  - ./mjlab.md\n  - ./unitree-g1.md\n  - ./legged-gym.md\n  - ./wbc-fsm.md\n  - ../methods/imitation-learning.md\n  - ../tasks/locomotion.md\nsources:\n  - ../../sources/repos/amp_mjlab.md\nsummary: \"AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。\"\n---\n\n# AMP_mjlab (G1 统一 AMP 策略)\n\n**AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。\n\n## 为什么重要？\n\n传统做法需要维护独立的 \"locomotion 策略\" 和 \"recovery 策略\"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。\n\n## 从零理解 AMP_mjlab\n\n下面用**从零理解**的方式讲解这个项目。\n\n### 1. 这个项目一句话是什么？\n\n`AMP_mjlab` 是一个基于 **mjlab + rsl_rl + AMP** 的 Unitree G1 人形机器人强化学习项目。目标是训练一个 policy，让 G1 同时学会：\n1. **走路 / 跑步 / 跟踪速度指令**\n2. **跌倒后的恢复 / 起身**\n3. **动作风格尽量接近参考动作数据**\n\n它不是单独训练“走路策略”和“起身策略”，而是把两种能力放进**同一个 policy** 里训练，减少策略切换带来的不连续问题。([GitHub][1])\n\n### 2. AMP 是什么？先用直觉理解\n\nAMP = **Adversarial Motion Priors**，可以简单理解成：**让机器人一边完成任务，一边模仿人类/参考动作的风格。**\n\n它有两个网络：\n- **Policy / Actor-Critic**：负责真正控制机器人。输入机器人状态 + 速度指令，输出关节动作。\n- **AMP Discriminator**：像一个“动作裁判”。它会看真实参考动作数据（如走、跑、起身）和 policy 生成的动作，判断“像不像真实动作”。如果像，Policy 就会得到额外奖励。\n\n### 3. 仓库核心结构\n\n```text\nAMP_mjlab/\n├── scripts/\n│   ├── train.py          # 训练入口\n│   ├── play.py           # 回放 / 测试 / 导出 ONNX\n│   ├── list_envs.py      # 查看可用任务\n│   └── csv_to_npz.py     # 动作数据 CSV 转 NPZ\n├── src/\n│   ├── assets/\n│   │   ├── robots/       # G1 机器人模型配置\n│   │   └── motions/g1/amp/\n│   │       ├── WalkandRun # 走/跑参考动作\n│   │       └── Recovery   # 起身/恢复参考动作\n│   └── tasks/\n│       └── amp_loco/\n│           ├── amp_env_cfg.py       # 环境、观测、动作、奖励配置\n│           ├── ampmotion_loader.py  # 加载参考动作数据\n│           ├── config/g1/\n│           │   ├── env_cfgs.py      # G1 Flat / Rough 环境配置\n│           │   ├── rl_cfg.py        # PPO + AMP 训练参数\n│           └── mdp/\n│               ├── observations.py  # 观测项\n│               ├── rewards.py       # 奖励项\n│               ├── events.py        # reset / 推扰 / 随机化\n│               └── terminations.py  # 终止条件\n```\n\n### 4. 模型输入与输出\n\n#### 输入 (Actor Observation)\nPolicy 真正用的输入包含 4 帧历史，单帧约 96 维（384 维合计）：\n- 机身角速度、重力方向、速度指令\n- 关节位置、关节速度（G1 共 29 个关节）\n- 上一次输出动作\n\n#### 输出 (Action)\n输出是 29 维的**关节位置控制目标**（`JointPositionActionCfg`），经 scale 后转换为目标位置偏移，由底层 PD 负责跟踪。([GitHub][2])\n\n### 5. 奖励函数与判别器\n\n- **AMP 判别器**：观察 Pelvis、髋、膝、踝、肩、肘、腕等关键部位的相对位置、姿态和速度，判断是否符合参考动作风格。([GitHub][4])\n- **奖励组合**：\n    - 速度跟踪：`track_anchor_linear_velocity` / `angular_velocity`\n    - 恢复奖励：`track_root_height`（鼓励回到正常高度）\n    - 惩罚项：身体乱晃、关节加速度、打滑、自碰撞、撞限位等。\n\n### 6. 训练与回放\n\n- **开始训练**：`python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096`\n- **收敛特征**：约 20k iterations 附近，recovery 行为可能突然涌现，指标跳变属正常。([GitHub][1])\n- **回放测试**：`python scripts/play.py Unitree-G1-AMP-Flat --checkpoint-file logs/rsl_rl/.../model_<iter>.pt`\n- **ONNX 导出**：训练和回放默认启用导出。ONNX 输入名为 `obs`，输出名为 `actions`，且内置了 normalizer。([GitHub][8])\n\n### 7. 源码阅读建议顺序\n\n1. `README.md`\n2. `src/tasks/amp_loco/config/g1/__init__.py`\n3. `src/tasks/amp_loco/config/g1/env_cfgs.py`\n4. `src/tasks/amp_loco/amp_env_cfg.py`\n5. `src/tasks/amp_loco/config/g1/rl_cfg.py`\n6. `scripts/train.py` & `play.py`\n## 操作指南\n\n### 1. 训练启动命令\n\n该项目基于 `rsl_rl` 框架，使用 `mjlab` 进行并行仿真。\n\n```bash\n# 安装后先确认任务已注册\npython scripts/list_envs.py --keyword AMP\n\n# 基础训练（G1 在平地上练习 AMP 风格行走与起身）\npython scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096\n\n# 崎岖地形训练（推荐用于鲁棒性测试）\npython scripts/train.py Unitree-G1-AMP-Rough --env.scene.num-envs=4096\n\n# 多卡机器上可显式选择 GPU；脚本会通过 torchrunx 启动多进程\npython scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=8192 --gpu-ids 0 1\n```\n\n- `--env.scene.num-envs`：指定并行环境数量。单卡常用 4096；显存和仿真吞吐足够时可提高到 8192。\n- `--gpu-ids`：训练脚本会根据该参数设置 `CUDA_VISIBLE_DEVICES`；多卡时用 `torchrunx` 分布式启动。\n- `--video`、`--video-interval`、`--video-length`：训练中录制 rollouts，用于排查“奖励上升但动作异常”的情况。\n- 任务列表可通过 `python scripts/list_envs.py --keyword AMP` 查看。\n- 日志默认写入 `logs/rsl_rl/g1_amp_locomotion/<time_stamp_run>/`，同时保存 `params/env.yaml` 与 `params/agent.yaml` 以便复现实验配置。\n\n### 2. 训练监控与曲线分析\n\n使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程。\n\n| 曲线 / 指标 | 含义 | 好走势 | 异常信号 |\n| :--- | :--- | :--- |\n| `Train/mean_reward`、`rew_total` 或 episode reward | 平均总奖励，混合了速度跟踪、高度恢复、AMP 风格奖励与惩罚项。 | 前期有噪声但总体上升；约 20k iterations 附近可能出现阶跃式上升。 | 长时间横盘或下降，通常说明动作先验、reset 分布或奖励权重没有形成有效课程。 |\n| `Train/mean_episode_length` 或 `episode_length` | 平均回合长度，反映策略是否能避免 bad orientation / bad base height 终止。 | 与总奖励同步上升；在学会 fall-recovery 后会明显变长。 | 2.5w iterations 后仍很短，通常表示 recovery 没被诱导出来。 |\n| `Episode/rew_track_anchor_linear_velocity` | 躯干/anchor 线速度跟踪奖励，对应 x/y 方向速度指令。 | 逐步升高并趋稳，说明 locomotion 能跟上指令。 | 高度恢复很好但该项低，可能是策略偏向“站稳/起身”而不会走。 |\n| `Episode/rew_track_anchor_angular_velocity` | yaw 角速度跟踪奖励。 | 随着前进速度跟踪一起改善，不应长期接近 0。 | 转向时摔倒或该项长期低，需检查 command range、摩擦随机化和足端打滑。 |\n| `Episode/rew_track_root_height` | root 高度恢复奖励，是 recovery 是否站回正常高度的重要信号。 | recovery 涌现阶段通常会明显跳升。 | 高度奖励低且 episode length 短，说明起身过程失败或 reset 太早。 |\n| `Episode/rew_is_terminated` | 终止惩罚，触发 bad orientation / bad base height 时会显著拉低总奖励。 | 绝对惩罚占比下降，终止次数减少。 | 惩罚长期很大，说明策略经常摔倒或 delayed reset 窗口不足。 |\n| `Episode/rew_joint_acc_l2`、`rew_action_rate_l2` | 关节加速度与动作变化惩罚，衡量动作是否抖动。 | 总体保持较低，随策略收敛更平滑。 | 奖励高但这些惩罚同步变大，部署时容易出现电机发热、冲击或高频震荡。 |\n| `Episode/rew_foot_slip`、`rew_self_collisions`、`rew_joint_pos_limits` | 足端打滑、自碰撞、关节限位惩罚。 | 负项逐渐减小，偶发尖峰可以接受。 | 长期大幅负值，说明 gait 不物理、地面接触不稳或姿态解空间被关节限位卡住。 |\n| `Loss/value_function`、`Loss/surrogate` | PPO critic value loss 与 policy surrogate loss。 | 有波动但不持续发散；学习率自适应后应保持在可训练区间。 | value loss 持续爆炸或 surrogate 大幅震荡，优先降低学习率、环境数或检查 reward scale。 |\n| `Policy/mean_noise_std` | 高斯策略的平均探索标准差。 | 从初始化值逐步下降，但不要过早塌到很低。 | 过早接近最小标准差会导致探索不足，recovery 很难涌现。 |\n| AMP 判别器 loss / `disc_loss` / `amp_loss` | 判别器区分参考 motion 与 policy motion 的训练损失。 | 初期快速变化，随后进入对抗平衡；不追求单调下降。 | 判别器过强时 policy 获得不了风格奖励；过弱时动作会“骗过”判别器但不自然。 |\n| AMP 风格奖励 / `disc_reward` / `amp_reward` | 判别器给 policy 的动作风格奖励。 | 随训练提高并震荡趋稳，和任务奖励共同上升最好。 | 风格奖励高但速度/高度奖励低，说明只学到 motion prior 外观，任务目标没有完成。 |\n| `Metrics/mean_action_acc` | 环境自定义动作加速度指标。 | 越低越适合部署，但不能以牺牲速度跟踪为代价。 | 回放中出现抖腿、膝关节抽动时通常会同步升高。 |\n| `Metrics/mean_delay_steps` | delayed termination / recovery 窗口相关指标，反映环境在终止后延迟 reset 的步数。 | recovery 学会后不应持续堆高。 | 长期很高且 episode length 不提升，说明环境给了恢复窗口但策略没恢复成功。 |\n\n**关键判断标准**：README 明确提示约 `2w` iterations 附近可能出现多个指标突变，这是 recovery 行为突然涌现的正常现象。判断训练好坏时不要只看总奖励，至少同时看 `episode_length`、`track_root_height`、速度跟踪奖励、终止惩罚和动作平滑指标；只有“能站起、能跟踪速度、动作不抖、终止减少”同时成立，才适合进入部署验证。\n\n### 3. 模型导出\n\n- **训练自动导出**：AMP runner 覆盖了 `save()`；每次保存 `model_<ITER>.pt` 后，会在同一 run 目录导出 `policy.onnx`，并附加环境 metadata。\n- **回放验证并导出**：`play.py` 的 `export_onnx=True` 默认开启，会把指定 checkpoint 导出为 `export/<task>_<checkpoint>.onnx`。\n  ```bash\n  python scripts/play.py Unitree-G1-AMP-Flat \\\n    --checkpoint-file logs/rsl_rl/g1_amp_locomotion/<RUN_DIR>/model_<ITER>.pt\n  ```\n- **导出模型接口**：ONNX 输入名为 `obs`，输出名为 `actions`；batch 维是动态轴；导出 wrapper 已包含 empirical observation normalizer，因此部署端应输入训练同分布的 raw observation，而不是再手动做一遍同样的归一化。\n- **选择 checkpoint**：优先选择 `episode_length`、速度跟踪、root height 和动作平滑指标同时稳定后的 checkpoint，不要只选总奖励最高的瞬间点。\n\n### 4. 部署注意事项\n\n在真机部署（如 Unitree G1）或集成到 `wbc_fsm` 时，需注意以下一致性问题：\n\n- **mjlab 补丁**：训练端使用 `history_ordering=\"time\"`；必须确保 `mjlab_patch/mjlab/managers/observation_manager.py` 已覆盖到当前环境。如果不打补丁，则需要从代码里移除 `history_ordering` 配置，否则训练/部署观测顺序会不一致。\n- **观测历史（History）**：actor 输入是 4 帧历史，单帧包含 base angular velocity、projected gravity、velocity command、joint position、joint velocity、last action。部署端缓存顺序必须是按时间展开，且 last action 要使用上一控制周期真正下发的动作。\n- **归一化边界**：ONNX 已包含 obs normalizer；C++/部署端不要重复套训练时的 normalizer，但要保证传入的物理量单位、关节顺序、符号方向与训练配置一致。\n- **动作语义**：policy 输出 `actions`，训练环境中由 `JointPositionActionCfg(scale=0.25, use_default_offset=True)` 转成关节位置目标偏移；部署端必须复现“默认关节位置 + 0.25 * action”的语义，再交给底层 PD / WBC。\n- **控制频率**：仿真 `timestep=0.005`、`decimation=4`，策略控制周期约 20 ms（50 Hz）。真机部署时推理频率、状态估计延迟和低层控制频率要与这一节奏匹配。\n- **安全壳**：统一策略减少了 locomotion/recovery 的模式切换，但真机仍应放在 `wbc_fsm` 的 `MJAmpState` 之类状态内，外层保留急停、限幅、姿态保护、接触异常处理和低电量/过热保护。\n- **上线顺序**：先用 `play.py` 回放目标 checkpoint，再做仿真扰动和 rough terrain 验证；上真机时先限速、限幅、吊挂或保护架测试，逐步开放速度 command 与 recovery 场景。\n\n## 关联页面\n\n- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体\n- [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）\n- [Unitree G1](./unitree-g1.md) — 目标硬件\n- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym\n- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式\n- [Locomotion](../tasks/locomotion.md) — 任务方向\n\n## 参考来源\n\n- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)\n- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)\n\n## 源码阅读建议顺序\n[1]: https://github.com/ccrpRepo/AMP_mjlab \"GitHub - ccrpRepo/AMP_mjlab · GitHub\"\n[2]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/amp_env_cfg.py \"amp_env_cfg.py\"\n[3]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/scripts/csv_to_npz.py \"csv_to_npz.py\"\n[4]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/rl_cfg.py \"rl_cfg.py\"\n[5]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/ampmotion_loader.py \"ampmotion_loader.py\"\n[6]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/README_zh.md \"README_zh.md\"\n[7]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/scripts/train.py \"train.py\"\n[8]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/rl/runner.py \"runner.py\"\n[9]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/__init__.py \"__init__.py\"\n[10]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/config/g1/env_cfgs.py \"env_cfgs.py\"",
       "tags": [
         "entities",
         "entity",
         "humanoid",
         "locomotion",
-        "rl",
-        "il"
+        "control",
+        "rl"
       ],
       "related": [
         "wiki-methods-amp-reward",
@@ -5519,7 +5519,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "entity-drake",
@@ -5701,7 +5701,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/simulation_tools.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5733,7 +5733,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",
@@ -6376,6 +6376,36 @@
       ],
       "source_links": [
         "https://github.com/OpenLegged/URDF-Studio"
+      ],
+      "status": "active",
+      "type": "entity_page",
+      "entity_kind": "framework"
+    },
+    {
+      "id": "entity-wbc-fsm",
+      "title": "wbc_fsm (G1 全身控制 FSM 部署框架)",
+      "path": "wiki/entities/wbc-fsm.md",
+      "summary": "用有限状态机统一管理人形机器人的安全保护、行走、全身动作追踪三种模式，内置预训练 ONNX 策略，C++ 原生部署，无 ROS 依赖",
+      "content_markdown": "---\ntype: entity\ntags: [repo, wbc, fsm, humanoid, unitree-g1, deployment, onnx, cpp, motion-tracking, whole-body-control]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ./amp-mjlab.md\n  - ./unitree-g1.md\n  - ./unitree-rl-mjlab.md\n  - ../concepts/whole-body-control.md\n  - ../methods/motion-retargeting-gmr.md\n  - ../tasks/locomotion.md\n  - ../concepts/sim2real.md\nsources:\n  - ../../sources/repos/wbc_fsm.md\nsummary: \"wbc_fsm 是针对 Unitree G1 的 C++ 全身控制部署框架，用有限状态机管理 Passive/Loco/WBC 三种模式，内嵌 LAFAN1 动捕训练的 ONNX 策略，无 ROS 依赖，支持仿真与真机双端部署。\"\n---\n\n# wbc_fsm (G1 全身控制 FSM 部署框架)\n\n**wbc_fsm** 是 **ccrpRepo / ZSTU Robotics** 针对 **Unitree G1** 人形机器人开发的 C++ 部署框架，以**有限状态机（FSM）**组织多种控制模式，核心是一个基于 LAFAN1 动捕数据训练的 ONNX 全身运动追踪策略。\n\n## 一句话定义\n\n用有限状态机统一管理人形机器人的安全保护、行走、全身动作追踪三种模式，内置预训练 ONNX 策略，C++ 原生部署，无 ROS 依赖。\n\n## 为什么重要\n\n- **FSM 作为运动控制运行时架构**：多种控制模式（安全 / 行走 / 全身控制）在真机上的组织方式是工程实践的重要范式，wbc_fsm 提供了一个干净的 C++ 参考实现\n- **ONNX C++ 推理闭环**：展示从训练（Python/ONNX 导出）→ 真机推理（C++ ONNX Runtime）的完整 Sim2Real 链路\n- **与 AMP_mjlab 形成配对**：同属 ccrpRepo，AMP_mjlab 负责策略训练（Python + mjlab），wbc_fsm 负责策略部署（C++ + Unitree SDK2）\n\n## FSM 状态机设计\n\nwbc_fsm 的核心是三态状态机：\n\n```\n上电\n ↓\n[Passive 阻尼保护]  ← 默认安全态，关节阻尼制动\n ↓ START\n[Loco 行走模式]     ← locomotion 控制\n ↓ R1+Up\n[WBC 全身控制]      ← ONNX 策略驱动，跟踪 LAFAN1 动捕参考\n```\n\n**设计原则**：\n- 从安全态 → 运动态单向升级，不跳跃；\n- 每个状态独立 JSON 配置，解耦参数；\n- 手柄触发模式切换，保证操作员可随时中止。\n\n## 主要技术路线\n\n**路线：MoCap 重定向 → RL 训练 → ONNX 导出 → C++ 部署**\n\n1. **动捕数据**：LAFAN1 MoCap 数据集 → 重定向到 G1 骨架关节空间\n2. **策略训练**：RL（AMP 风格）学习跟踪动捕参考动作（训练侧由 AMP_mjlab 等框架完成）\n3. **ONNX 导出**：策略网络序列化为 `lafan1_0128_1.onnx`\n4. **C++ 推理**：ONNX Runtime 1.22.0 在 G1 PC2（aarch64）上实时推理，驱动全身关节\n\n## 部署架构\n\n```\nG1 板端 (PC2 / aarch64)\n├── wbc_fsm 主进程\n│   ├── FSM 控制器          ← 状态转换逻辑\n│   ├── ONNX Runtime        ← lafan1_0128_1.onnx 策略推理\n│   ├── 运动参考播放器       ← motion_data/lafan1/ 参考序列\n│   └── Unitree SDK2 接口   ← 关节指令下发 / 传感器读取\n└── 手柄输入               ← 模式切换触发\n```\n\n**关键参数**：\n- 推理引擎：ONNX Runtime 1.22.0（aarch64 / x64 双版本）\n- 通信接口：真机 `eth0` / 仿真 `lo`\n- 构建：CMake ≥ 3.14，C++ 17，`-O3 -pthread`\n\n## 与 AMP_mjlab 的互补关系\n\n| 维度 | AMP_mjlab | wbc_fsm |\n|------|-----------|---------|\n| 语言 | Python | C++ |\n| 阶段 | 策略训练（仿真） | 策略部署（真机） |\n| 框架 | mjlab + rsl_rl | Unitree SDK2 |\n| 输出 | ONNX 模型文件 | 关节指令流 |\n| 同组织 | ✅ ccrpRepo | ✅ ccrpRepo |\n\n## 局限性\n\n- **仅部署，无训练代码**：策略改进需依赖外部训练框架（如 AMP_mjlab）\n- **硬绑 G1 + Unitree SDK2**：移植到其他机器人平台需大幅重写接口层\n- **动作类型受限**：当前 ONNX 模型仅覆盖 LAFAN1 dance12 动作，扩展需重新训练\n\n## 参考来源\n\n- [sources/repos/wbc_fsm.md](../../sources/repos/wbc_fsm.md) — 仓库原始归档\n- [ccrpRepo/wbc_fsm GitHub](https://github.com/ccrpRepo/wbc_fsm) — 代码仓库\n- Harvey et al., *Robust Motion In-Betweening*, SIGGRAPH 2020 — LAFAN1 数据集来源论文\n\n## 关联页面\n\n- [AMP_mjlab](./amp-mjlab.md) — 同组织，策略训练侧对应物\n- [Unitree G1](./unitree-g1.md) — 目标硬件平台\n- [unitree_rl_mjlab](./unitree-rl-mjlab.md) — Unitree 官方 RL+ONNX 部署参考\n- [Whole-Body Control](../concepts/whole-body-control.md) — WBC 理论概念页\n- [Motion Retargeting GMR](../methods/motion-retargeting-gmr.md) — LAFAN1 → G1 重定向方法\n- [Locomotion](../tasks/locomotion.md) — 上层任务场景",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl"
+      ],
+      "related": [
+        "entity-amp-mjlab",
+        "entity-unitree-g1",
+        "entity-unitree-rl-mjlab",
+        "wiki-concepts-whole-body-control",
+        "wiki-methods-motion-retargeting-gmr",
+        "wiki-tasks-locomotion",
+        "sources-repos-wbc-fsm"
+      ],
+      "source_links": [
+        "https://github.com/ccrpRepo/wbc_fsm"
       ],
       "status": "active",
       "type": "entity_page",
