@@ -25,7 +25,28 @@ AMP_mjlab 在足式机器人 RL 中解决了一个实际问题：传统做法需
 
 ## 技术实现要点
 
-### 1. 统一 AMP 训练
+### 1. 训练命令与任务
+
+- **主训练命令**：
+  ```bash
+  python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=4096
+  ```
+- **任务列表**：
+  - `Unitree-G1-AMP-Flat`：平地任务
+  - `Unitree-G1-AMP-Rough`：崎岖地形任务
+- **数据准备**：使用 `scripts/csv_to_npz.py` 将 CSV 动作数据转换为判别器所需的 NPZ 格式。
+
+### 2. 核心指标与曲线含义
+
+在 `rsl_rl` 记录的 Tensorboard 中，需重点关注：
+- `rew_total`：总奖励。在 20k iterations 左右会出现陡增。
+- `episode_length`：回合长度。同样会在 20k 左右跳变，标志着机器人学会了在跌倒后不 reset 而是自主爬起。
+- `disc_loss`：判别器损失。应逐渐下降并维持在 0.5 左右（对抗平衡）。
+- `disc_reward`：判别器给出的风格奖励。值越高说明动作越接近参考数据。
+
+**走势判断**：2w iteration 的指标跳变（"The Recovery Jump"）是成功的关键信号，不应视为不稳定。
+
+### 3. 统一 AMP 训练
 
 | 组件 | 说明 |
 |------|------|
@@ -34,16 +55,17 @@ AMP_mjlab 在足式机器人 RL 中解决了一个实际问题：传统做法需
 | 动作数据集 | `WalkandRun`（步行/跑步）+ `Recovery`（跌倒恢复）两套 clip |
 | Delayed Termination | 部分环境在 reset 前给予 recovery 窗口，逼迫策略学习爬起 |
 
-### 2. 训练特征
+### 4. 导出与部署
 
-- 并行规模：4096 个并行环境
-- 收敛特征：约 2 万步时 recovery 行为突然涌现，指标会跳变，属于正常学习现象
-- 任务：`Unitree-G1-AMP-Rough` / `Unitree-G1-AMP-Flat`
-
-### 3. 部署
-
-- 支持 ONNX export，直接导出用于真实机器人部署
-- 训练与推理 pipeline 一致
+- **自动导出**：`train.py` 和 `play.py` 默认会导出 `model.onnx`。
+- **手动验证与导出**：
+  ```bash
+  python scripts/play.py Unitree-G1-AMP-Flat --checkpoint-file logs/rsl_rl/.../model_<iter>.pt
+  ```
+- **部署要点**：
+  - **补丁安装**：必须应用 `mjlab_patch/` 下的 `observation_manager.py` 修改，确保观测历史按时间顺序（time）而非 term 排序。
+  - **FSM 集成**：部署逻辑见 `ccrpRepo/wbc_fsm` 中的 `MJAmp State`。
+  - **观测一致性**：输入为 4 帧历史（包含角速度、重力矢量、指令、关节状态等）。
 
 ---
 
