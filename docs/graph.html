@@ -940,6 +940,8 @@
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
     let focusedCommunityId = null;
+    let focusedType = null;
+    let focusedHealth = null;
 
     /* ── 可变物理参数（由滑动块控制）── */
     let chargeStrength = -800;   // 排斥力（负值）
@@ -991,19 +993,35 @@
         }
       } else if (colorMode === 'health') {
         rows.push('<div class="legend-title">按健康度着色</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#f87171"></div>0分 — 缺 summary/sources</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>1分 — 基础信息不完整</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#facc15"></div>2分 — summary + sources 齐全</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#4ade80"></div>3分 — 完整且近期更新</div>');
+        const healthRows = [
+          { score: '0', color: '#f87171', label: '0分 — 缺 summary/sources' },
+          { score: '1', color: '#fb923c', label: '1分 — 基础信息不完整' },
+          { score: '2', color: '#facc15', label: '2分 — summary + sources 齐全' },
+          { score: '3', color: '#4ade80', label: '3分 — 完整且近期更新' },
+        ];
+        for (const h of healthRows) {
+          const isActive = (focusedHealth === h.score);
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${h.score}">
+            <div class="legend-dot" style="background:${h.color}"></div>${h.label}
+          </div>`);
+        }
       } else {
         rows.push('<div class="legend-title">按类型着色</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#60a5fa"></div>概念 Concept</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#34d399"></div>方法 Method</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#f472b6"></div>任务 Task</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fb923c"></div>形式化 Formalization</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#c084fc"></div>对比 Comparison</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#fbbf24"></div>工具 Entity</div>');
-        rows.push('<div class="legend-row"><div class="legend-dot" style="background:#94a3b8"></div>Query 产物</div>');
+        const typeRows = [
+          { type: 'concept',       color: '#60a5fa', label: '概念 Concept' },
+          { type: 'method',        color: '#34d399', label: '方法 Method' },
+          { type: 'task',          color: '#f472b6', label: '任务 Task' },
+          { type: 'formalization', color: '#fb923c', label: '形式化 Formalization' },
+          { type: 'comparison',    color: '#c084fc', label: '对比 Comparison' },
+          { type: 'entity',        color: '#fbbf24', label: '工具 Entity' },
+          { type: 'query',         color: '#94a3b8', label: 'Query 产物' },
+        ];
+        for (const t of typeRows) {
+          const isActive = (focusedType === t.type);
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-type="${t.type}">
+            <div class="legend-dot" style="background:${t.color}"></div>${t.label}
+          </div>`);
+        }
       }
       graphLegend.innerHTML = rows.join('');
     }
@@ -1240,6 +1258,9 @@
       if (colorMode === mode) return;
       colorMode = mode;
       activeFilters.clear();
+      focusedCommunityId = null;
+      focusedType = null;
+      focusedHealth = null;
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
@@ -1483,17 +1504,23 @@
       filterPanel.hidden = !filterPanel.hidden;
     });
 
-    // V17: 社区高亮功能
+    // V17: 社区高亮功能 / V22: 扩展支持类型与健康度筛选
     graphLegend.addEventListener('click', (ev) => {
       const row = ev.target.closest('.legend-row');
       if (!row) return;
-      const cid = row.getAttribute('data-community-id');
-      if (!cid) return;
 
-      if (focusedCommunityId === cid) {
-        focusedCommunityId = null;
+      const cid = row.getAttribute('data-community-id');
+      const type = row.getAttribute('data-type');
+      const health = row.getAttribute('data-health');
+
+      if (cid) {
+        focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
+      } else if (type) {
+        focusedType = (focusedType === type) ? null : type;
+      } else if (health !== null) {
+        focusedHealth = (focusedHealth === health) ? null : health;
       } else {
-        focusedCommunityId = cid;
+        return;
       }
       renderLegend();
       applyFilters();
@@ -1533,6 +1560,8 @@
 
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;
+      if (focusedType) return d.type === focusedType;
+      if (focusedHealth !== null) return String(d.health_score != null ? d.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
@@ -1545,6 +1574,8 @@
 
     function edgeMatchesCurrentFilter(n) {
       if (focusedCommunityId) return n.community === focusedCommunityId;
+      if (focusedType) return n.type === focusedType;
+      if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
@@ -1562,7 +1593,7 @@
     }
 
     function applyFilters() {
-      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId;
+      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId || focusedType || focusedHealth !== null;
       visibleNodeIds.clear();
       let visible = 0;
       
