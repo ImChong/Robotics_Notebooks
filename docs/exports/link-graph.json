@@ -103,7 +103,7 @@
       "label": "Armature Modeling（电枢惯量建模）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -215,7 +215,7 @@
       "label": "Footstep Planning（步位规划）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/force-control-basics.md",
@@ -327,7 +327,7 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
@@ -355,7 +355,7 @@
       "label": "System Identification",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/concepts/tactile-sensing.md",
@@ -507,6 +507,13 @@
     {
       "id": "wiki/entities/genesis-sim.md",
       "label": "Genesis (仿真器)",
+      "type": "entity",
+      "health_score": 3,
+      "community": "community-0"
+    },
+    {
+      "id": "wiki/entities/gr00t-visual-sim2real.md",
+      "label": "GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)",
       "type": "entity",
       "health_score": 3,
       "community": "community-0"
@@ -887,7 +894,7 @@
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/methods/add.md",
@@ -1006,7 +1013,7 @@
       "label": "Dynamic Movement Primitives (DMP)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/gae.md",
@@ -1300,7 +1307,7 @@
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/ethercat-master-optimization.md",
@@ -1510,14 +1517,14 @@
       "label": "VLA 真机部署指南：延迟、异步与加速",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/vla-with-low-level-controller.md",
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
@@ -2673,6 +2680,10 @@
     },
     {
       "source": "wiki/concepts/sim2real.md",
+      "target": "wiki/entities/gr00t-visual-sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/sim2real.md",
       "target": "wiki/entities/isaac-gym-isaac-lab.md"
     },
     {
@@ -3286,6 +3297,46 @@
     {
       "source": "wiki/entities/genesis-sim.md",
       "target": "wiki/entities/sapien.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/concepts/domain-randomization.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/concepts/privileged-training.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/entities/gs-playground.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/entities/isaac-gym-isaac-lab.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/entities/unitree-g1.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/entities/unitree-rl-mjlab.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/entities/wbc-fsm.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/methods/imitation-learning.md"
+    },
+    {
+      "source": "wiki/entities/gr00t-visual-sim2real.md",
+      "target": "wiki/tasks/loco-manipulation.md"
     },
     {
       "source": "wiki/entities/gs-playground.md",
@@ -7224,7 +7275,7 @@
     {
       "id": "community-2",
       "label": "Manipulation 社区",
-      "size": 46,
+      "size": 47,
       "hub_id": "wiki/tasks/manipulation.md"
     },
     {
@@ -7247,9 +7298,9 @@
     },
     {
       "id": "community-6",
-      "label": "VLA 真机部署指南：延迟、异步与加速 社区",
+      "label": "System Identification 社区",
       "size": 3,
-      "hub_id": "wiki/queries/vla-deployment-guide.md"
+      "hub_id": "wiki/concepts/system-identification.md"
     },
     {
       "id": "community-7",
