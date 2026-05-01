@@ -156,6 +156,20 @@ python scripts/train.py Unitree-G1-AMP-Rough --env.scene.num-envs=4096
 - **动作缩放（Action Scaling）**：ONNX 导出时已包含 Normalizer，但输出的关节目标位置偏移仍需乘以训练配置中的 `action_scale`（通常为 0.25）。
 - **FSM 切换**：虽然是统一策略，但在真机部署时，通常仍需通过 `wbc_fsm` 将其封装在 `MJAmpState` 下，以便管理安全急停和模式初速初始化。
 
+## 关联页面
+
+- [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体
+- [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）
+- [Unitree G1](./unitree-g1.md) — 目标硬件
+- [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym
+- [Imitation Learning](../methods/imitation-learning.md) — AMP 属于模仿学习范式
+- [Locomotion](../tasks/locomotion.md) — 任务方向
+
+## 参考来源
+
+- [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)
+- [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)
+
 ## 源码阅读建议顺序
 [1]: https://github.com/ccrpRepo/AMP_mjlab "GitHub - ccrpRepo/AMP_mjlab · GitHub"
 [2]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/amp_env_cfg.py "amp_env_cfg.py"
