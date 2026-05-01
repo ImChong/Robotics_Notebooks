@@ -4667,6 +4667,10 @@
     },
     {
       "source": "wiki/methods/diffusion-motion-generation.md",
+      "target": "wiki/methods/diffusion-policy.md"
+    },
+    {
+      "source": "wiki/methods/diffusion-motion-generation.md",
       "target": "wiki/methods/motion-retargeting-gmr.md"
     },
     {
