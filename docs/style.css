@@ -39,7 +39,14 @@
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 18px); }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 18px);
+  /* 防止移动端横向溢出时 layout viewport 被撑大导致主列右侧出现空白
+     （body 的 overflow-x: hidden 不阻止 documentElement.scrollWidth 增长） */
+  overflow-x: hidden;
+  overflow-x: clip;
+}
 body {
   font-family: var(--font-sans);
   background: var(--bg);
