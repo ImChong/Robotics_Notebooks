@@ -144,8 +144,8 @@
       function syncToggle() { toggle.hidden = sidebar.hasAttribute('hidden'); }
       syncToggle();
       new MutationObserver(syncToggle).observe(sidebar, { attributes: true, attributeFilter: ['hidden'] });
-      function open() { sidebar.classList.add('open'); overlay.classList.add('show'); document.body.style.overflow = 'hidden'; }
-      function close() { sidebar.classList.remove('open'); overlay.classList.remove('show'); document.body.style.overflow = ''; }
+      function open() { sidebar.classList.add('open'); overlay.classList.add('show'); }
+      function close() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
       toggle.addEventListener('click', function(e) { e.stopPropagation(); sidebar.classList.contains('open') ? close() : open(); });
       if (overlay) overlay.addEventListener('click', close);
       sidebar.addEventListener('click', function(e) {
