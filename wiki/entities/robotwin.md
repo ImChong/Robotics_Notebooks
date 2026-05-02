@@ -26,7 +26,7 @@ updated: 2026-05-01
 ## 与其他系统的关系
 
 - **底层驱动**：依赖 [SAPIEN (仿真引擎)](./sapien.md) 进行物理模拟。
-- **任务目标**：通常用于生成 [[behavior-cloning]] 或 [[action-chunking]] (ACT) 所需的训练数据。
+- **任务目标**：通常用于生成 [behavior-cloning](../methods/behavior-cloning.md) 或 [action-chunking](../methods/action-chunking.md) (ACT) 所需的训练数据。
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
 
 ## 参考来源

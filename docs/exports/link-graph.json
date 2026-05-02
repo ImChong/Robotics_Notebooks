@@ -6915,6 +6915,10 @@
     },
     {
       "source": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "target": "wiki/roadmaps/humanoid-control-roadmap.md"
+    },
+    {
+      "source": "wiki/roadmaps/humanoid-control-roadmap.md",
       "target": "wiki/tasks/locomotion.md"
     },
     {

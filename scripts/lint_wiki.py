@@ -156,6 +156,7 @@ def lint() -> dict:
         "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
         "method_missing_sections": [], # V17: methods/ 页面缺少标准区块
         "entity_missing_outgoing": [], # V20: entities/ 页面缺少指向 methods/ 或 tasks/ 的出边
+        "wikilink_syntax": [],        # V22: 禁止使用 [[...]] Obsidian wikilink，必须用标准 Markdown 内链
         "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
         "_ingest_total": 0,           # 内部统计：扫描的页面总数
     }
@@ -202,6 +203,16 @@ def lint() -> dict:
             results["_ingest_total"] += 1
             if has_source_reference(content):
                 results["_ingest_covered"] += 1
+
+        # 5a. 禁止使用 Obsidian [[wikilink]] 语法（AGENTS.md 第 156 行规定）
+        #     代码块和行内代码内的 [[...]] 是合法的（如 numpy 矩阵字面量），跳过
+        wl_stripped = strip_code_blocks(content)
+        for m in re.finditer(r'\[\[([^\]|]+)(?:\|[^\]]+)?\]\]', wl_stripped):
+            token = m.group(1).strip()
+            # 过滤数字/矩阵字面量残留（理论上 strip_code_blocks 已处理，双保险）
+            if re.match(r'^[\d\.\-\s,]+$', token):
+                continue
+            results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
 
         # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
         stripped = strip_code_blocks(content)
@@ -1214,6 +1225,7 @@ def format_report(results: dict) -> str:
         ("missing_related",    "缺少关联页面区块",                           "⚠️"),
         ("missing_sources",    "缺少参考来源区块",                           "⚠️"),
         ("broken_links",       "断链（内链目标不存在）",                      "❌"),
+        ("wikilink_syntax",    "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
         ("broken_source_refs", "引用了不存在的 sources/ 文件",                "❌"),
         ("sources_orphans",    "Sources 孤儿（sources/papers 死链）",         "❌"),
         ("stale_pages",        "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),

@@ -34,7 +34,7 @@ related:
 
 人形机器人的设计初衷就是替代人类完成这类任务，因此双臂操作能力直接决定了人形机器人在实际场景中的可用性。
 
-目前单臂操作（pick-and-place）已相对成熟（ACT、Diffusion Policy 等方法成功率较高），但双臂操作仍是开放挑战：数据采集难、约束建模复杂、策略泛化差。**[[aloha]]** 硬件与 **[[robotwin]]** 仿真平台的出现，极大地推动了该领域的数据规模化。
+目前单臂操作（pick-and-place）已相对成熟（ACT、Diffusion Policy 等方法成功率较高），但双臂操作仍是开放挑战：数据采集难、约束建模复杂、策略泛化差。**[aloha](../entities/aloha.md)** 硬件与 **[robotwin](../entities/robotwin.md)** 仿真平台的出现，极大地推动了该领域的数据规模化。
 
 ## 关键挑战
 

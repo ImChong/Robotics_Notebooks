@@ -33,9 +33,9 @@ updated: 2026-05-01
 
 ## 关联页面
 
-- [[robot-explorer]] (动力学分析工具)
-- [[urdf-studio]] (机器人组装工作站)
-- [[mujoco]] (底层仿真引擎)
+- [robot-explorer](robot-explorer.md) (动力学分析工具)
+- [urdf-studio](urdf-studio.md) (机器人组装工作站)
+- [mujoco](mujoco.md) (底层仿真引擎)
 
 ## 参考来源
 - [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)

@@ -27,9 +27,9 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 | **早期终止** | Early Exit | 如果跌倒或偏离过大则重置，提高训练效率 |
 
 ## 关联页面
-- [[protomotions]] — 提供大规模并行训练支持。
-- [[amp-reward]] — 后续的“无奖励设计”版本。
-- [[mimickit]] — 现代化的实现框架。
+- [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
+- [amp-reward](amp-reward.md) — 后续的“无奖励设计”版本。
+- [mimickit](../entities/mimickit.md) — 现代化的实现框架。
 
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)

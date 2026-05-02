@@ -25,21 +25,21 @@ updated: 2026-05-01
 
 ## 为什么选择 Motrix？
 
-- **高性能 CPU 后端**：相比过度依赖 GPU 的 [[isaac-gym-isaac-lab]]，Motrix 的 Rust CPU 后端在 CPU 资源环境下提供了卓越的并行仿真能力，适合需要高确定性或 GPU 资源受限的工业场景。
+- **高性能 CPU 后端**：相比过度依赖 GPU 的 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md)，Motrix 的 Rust CPU 后端在 CPU 资源环境下提供了卓越的并行仿真能力，适合需要高确定性或 GPU 资源受限的工业场景。
 - **极致的 RL 吞吐量**：针对大规模并行采样进行了优化，缩短了从算法定义到策略收敛的迭代周期。
 - **现代化的生态**：使用 `uv` 管理依赖，支持 TensorBoard 实时监控，提供 Pythonic 的 API 交互。
 
 ## 与其他系统的关系
 
-- **对比 [[mujoco]]**：MotrixSim 是 MuJoCo 的现代化、高性能替代方案，保持了 MJCF 兼容性，但在并行化和系统稳定性上做了更多工作。
-- **对比 [[isaac-gym-isaac-lab]]**：Motrix 提供了更轻量、更灵活的 CPU 并行方案，而非强制绑定特定的 NVIDIA 驱动与硬件。
-- **对比 [[genesis-sim]]**：Genesis 更强调多物理场（流体、柔性体），而 Motrix 更专注于刚体关节型机器人的高频控制与 RL 训练。
+- **对比 [mujoco](mujoco.md)**：MotrixSim 是 MuJoCo 的现代化、高性能替代方案，保持了 MJCF 兼容性，但在并行化和系统稳定性上做了更多工作。
+- **对比 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md)**：Motrix 提供了更轻量、更灵活的 CPU 并行方案，而非强制绑定特定的 NVIDIA 驱动与硬件。
+- **对比 [genesis-sim](genesis-sim.md)**：Genesis 更强调多物理场（流体、柔性体），而 Motrix 更专注于刚体关节型机器人的高频控制与 RL 训练。
 
 ## 关联页面
 
-- [[references/repos/simulation]] (仿真平台导航)
-- [[references/repos/rl-frameworks]] (RL 框架导航)
-- [[mujoco]] (底层物理引擎参考)
+- [simulation](../../references/repos/simulation.md) (仿真平台导航)
+- [rl-frameworks](../../references/repos/rl-frameworks.md) (RL 框架导航)
+- [mujoco](mujoco.md) (底层物理引擎参考)
 
 ## 参考来源
 - [Motrix 原始资料](../../sources/repos/motphys-motrix.md)
