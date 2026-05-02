@@ -395,18 +395,18 @@
       fontFamily: 'inherit'
     };
     var darkThemeVars = {
-      primaryColor: '#3a3360',
-      primaryTextColor: '#e8e6f7',
-      primaryBorderColor: '#9B89C7',
-      lineColor: '#bbb',
-      secondaryColor: '#2c2547',
-      tertiaryColor: '#1e1e2e',
-      mainBkg: '#3a3360',
-      nodeBorder: '#9B89C7',
-      clusterBkg: '#2c2547',
-      clusterBorder: '#9B89C7',
-      edgeLabelBackground: '#1e1e2e',
-      titleColor: '#e8e6f7',
+      primaryColor: '#0d0d0d',
+      primaryTextColor: '#ffffff',
+      primaryBorderColor: '#ffffff',
+      lineColor: '#cccccc',
+      secondaryColor: '#161616',
+      tertiaryColor: '#0d0d0d',
+      mainBkg: '#0d0d0d',
+      nodeBorder: '#ffffff',
+      clusterBkg: '#161616',
+      clusterBorder: '#ffffff',
+      edgeLabelBackground: '#0d0d0d',
+      titleColor: '#ffffff',
       fontFamily: 'inherit'
     };
     window.mermaid.initialize({
