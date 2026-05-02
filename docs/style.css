@@ -54,7 +54,8 @@ body {
   line-height: 1.5;
   transition: background var(--transition), color var(--transition);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden; /* Fix horizontal scrollbar */
+  /* 用 clip 而非 hidden：避免 body 成为 sticky 的滚动容器导致 .site-header 不吸顶 */
+  overflow-x: clip;
 }
 a { color: var(--accent); text-decoration: none; transition: all var(--transition); }
 a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
