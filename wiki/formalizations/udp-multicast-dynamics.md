@@ -7,6 +7,7 @@ related:
   - ./control-loop-latency-modeling.md
   - ../concepts/lcm-basics.md
   - ../concepts/ros2-basics.md
+  - ../concepts/clock-synchronization-algorithms.md
   - ../comparisons/ros2-vs-lcm.md
   - ../queries/real-time-control-middleware-guide.md
 sources:
@@ -157,6 +158,7 @@ $$
 - [ROS 2 基础](../concepts/ros2-basics.md)
 - [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
+- [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 
 ## 参考来源
 

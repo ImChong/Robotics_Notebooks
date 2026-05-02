@@ -120,6 +120,13 @@
       "community": "community-1"
     },
     {
+      "id": "wiki/concepts/clock-synchronization-algorithms.md",
+      "label": "时钟同步算法 (Clock Synchronization Algorithms)",
+      "type": "concept",
+      "health_score": 3,
+      "community": "community-3"
+    },
+    {
       "id": "wiki/concepts/contact-dynamics.md",
       "label": "Contact Dynamics",
       "type": "concept",
@@ -1970,6 +1977,30 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/concepts/ethercat-protocol.md"
+    },
+    {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/concepts/lcm-basics.md"
+    },
+    {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/concepts/ros2-basics.md"
+    },
+    {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/formalizations/control-loop-latency-modeling.md"
+    },
+    {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
+    },
+    {
+      "source": "wiki/concepts/clock-synchronization-algorithms.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
       "source": "wiki/concepts/contact-dynamics.md",
       "target": "wiki/concepts/centroidal-dynamics.md"
     },
@@ -2224,6 +2255,10 @@
     {
       "source": "wiki/concepts/embodied-scaling-laws.md",
       "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/concepts/ethercat-protocol.md",
+      "target": "wiki/concepts/clock-synchronization-algorithms.md"
     },
     {
       "source": "wiki/concepts/ethercat-protocol.md",
@@ -4127,6 +4162,10 @@
     },
     {
       "source": "wiki/formalizations/control-loop-latency-modeling.md",
+      "target": "wiki/concepts/clock-synchronization-algorithms.md"
+    },
+    {
+      "source": "wiki/formalizations/control-loop-latency-modeling.md",
       "target": "wiki/concepts/ethercat-protocol.md"
     },
     {
@@ -4412,6 +4451,10 @@
     {
       "source": "wiki/formalizations/udp-multicast-dynamics.md",
       "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/formalizations/udp-multicast-dynamics.md",
+      "target": "wiki/concepts/clock-synchronization-algorithms.md"
     },
     {
       "source": "wiki/formalizations/udp-multicast-dynamics.md",
@@ -6535,6 +6578,10 @@
     },
     {
       "source": "wiki/queries/real-time-control-middleware-guide.md",
+      "target": "wiki/concepts/clock-synchronization-algorithms.md"
+    },
+    {
+      "source": "wiki/queries/real-time-control-middleware-guide.md",
       "target": "wiki/concepts/sim2real.md"
     },
     {
@@ -7328,7 +7375,7 @@
     {
       "id": "community-3",
       "label": "实时运控中间件配置指南 社区",
-      "size": 10,
+      "size": 11,
       "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {
