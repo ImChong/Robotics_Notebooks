@@ -22,6 +22,8 @@
       root.setAttribute('data-theme', isDark ? 'light' : 'dark');
       localStorage.setItem(key, isDark ? 'light' : 'dark');
       updateThemeToggle();
+      const detailContentEl = document.getElementById('detailContent');
+      if (detailContentEl) renderDetailMermaid(detailContentEl);
     });
   }
 
@@ -378,6 +380,15 @@
     if (!container || typeof window.mermaid === 'undefined') return;
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return;
+    nodes.forEach(function (node) {
+      var saved = node.getAttribute('data-mermaid-source');
+      if (saved === null) {
+        node.setAttribute('data-mermaid-source', node.textContent || '');
+      } else {
+        node.removeAttribute('data-processed');
+        node.textContent = saved;
+      }
+    });
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     var lightThemeVars = {
       primaryColor: '#ECE8F8',
