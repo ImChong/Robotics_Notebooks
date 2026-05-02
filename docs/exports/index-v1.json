@@ -119,7 +119,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -150,7 +150,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -245,7 +245,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -448,7 +448,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -480,7 +480,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -756,7 +756,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -786,7 +786,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -818,7 +818,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -883,7 +883,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1002,7 +1002,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1036,7 +1036,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1068,7 +1068,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1169,7 +1169,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1267,7 +1267,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2168,7 +2168,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/model_based_rl.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2619,7 +2619,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2911,7 +2911,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2948,7 +2948,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2986,7 +2986,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5802,7 +5802,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "entity-lerobot",

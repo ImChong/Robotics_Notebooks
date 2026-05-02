@@ -212,8 +212,24 @@
       return token;
     });
 
+    // 2b. Reference-style links: [text][ref] 或 [ref][]
+    const linkRefs = (markdownContext && markdownContext.linkRefs) || {};
+    const withRefLinks = withLinkTokens.replace(/\[([^\]]+)\]\[([^\]]*)\]/g, function (match, label, ref) {
+      const key = (ref.trim() || label).toLowerCase();
+      const def = linkRefs[key];
+      if (!def || !def.url) return match;
+      const url = def.url;
+      const titleAttr = def.title ? ' title="' + escapeHtml(def.title) + '"' : '';
+      const isExternal = /^https?:\/\//i.test(url);
+      const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+      const html = '<a href="' + escapeHtml(url) + '"' + targetAttr + titleAttr + '>' + escapeHtml(label) + '</a>';
+      const token = linkPrefix + linkTokens.length + '@@';
+      linkTokens.push({ token: token, html: html });
+      return token;
+    });
+
     // 3. Apply standard escapes and basic Markdown styles
-    let rendered = escapeHtml(withLinkTokens)
+    let rendered = escapeHtml(withRefLinks)
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
@@ -490,7 +506,18 @@
       return '<p>当前 detail page 暂无可同步正文。</p>';
     }
 
-    const context = markdownContext || {};
+    const baseContext = markdownContext || {};
+
+    // 预扫描引用式链接定义：[ref]: url "title"
+    // 抽取后从 source 中移除，并把 ref→{url, title} 注入 context.linkRefs
+    const linkRefs = Object.assign({}, baseContext.linkRefs || {});
+    const refDefRe = /^[ \t]{0,3}\[([^\]]+)\]:[ \t]+(\S+?)(?:[ \t]+["'(]([^"')]*)["')])?[ \t]*$/gm;
+    source = source.replace(refDefRe, function (_, ref, url, title) {
+      linkRefs[ref.trim().toLowerCase()] = { url: url, title: title || '' };
+      return '';
+    });
+    const context = Object.assign({}, baseContext, { linkRefs: linkRefs });
+
     const lines = source.split('\n');
     const blocks = [];
     const headingQueue = Array.isArray(headings) ? headings.slice() : collectMarkdownHeadings(source);
