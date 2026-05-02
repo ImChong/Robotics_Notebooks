@@ -379,7 +379,42 @@
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
     if (!nodes.length) return;
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    window.mermaid.initialize({ startOnLoad: false, theme: isDark ? 'dark' : 'default', securityLevel: 'loose' });
+    var lightThemeVars = {
+      primaryColor: '#ECE8F8',
+      primaryTextColor: '#1a1a2e',
+      primaryBorderColor: '#9B89C7',
+      lineColor: '#444',
+      secondaryColor: '#F5F0FF',
+      tertiaryColor: '#FFFFFF',
+      mainBkg: '#ECE8F8',
+      nodeBorder: '#9B89C7',
+      clusterBkg: '#F5F0FF',
+      clusterBorder: '#9B89C7',
+      edgeLabelBackground: '#FFFFFF',
+      titleColor: '#1a1a2e',
+      fontFamily: 'inherit'
+    };
+    var darkThemeVars = {
+      primaryColor: '#3a3360',
+      primaryTextColor: '#e8e6f7',
+      primaryBorderColor: '#9B89C7',
+      lineColor: '#bbb',
+      secondaryColor: '#2c2547',
+      tertiaryColor: '#1e1e2e',
+      mainBkg: '#3a3360',
+      nodeBorder: '#9B89C7',
+      clusterBkg: '#2c2547',
+      clusterBorder: '#9B89C7',
+      edgeLabelBackground: '#1e1e2e',
+      titleColor: '#e8e6f7',
+      fontFamily: 'inherit'
+    };
+    window.mermaid.initialize({
+      startOnLoad: false,
+      theme: 'base',
+      themeVariables: isDark ? darkThemeVars : lightThemeVars,
+      securityLevel: 'loose'
+    });
     window.mermaid.run({ nodes: nodes }).catch(function () {});
   }
 
