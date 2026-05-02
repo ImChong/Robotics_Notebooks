@@ -212,6 +212,19 @@ python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=8192 --gpu-ids 
 - [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)
 
 ## 源码阅读建议顺序
+
+按以下顺序阅读源码，可以最快理解项目结构与训练逻辑：
+
+1. [README_zh.md](https://github.com/ccrpRepo/AMP_mjlab/blob/main/README_zh.md) — 中文 README，整体动机与命令一览
+2. [src/tasks/amp_loco/config/g1/__init__.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/config/g1/__init__.py) — 任务注册，看清 `Unitree-G1-AMP-Flat/Rough` 怎么被注册到 gym
+3. [src/tasks/amp_loco/config/g1/env_cfgs.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/config/g1/env_cfgs.py) — Flat / Rough 环境配置，含 reset、随机化、speed command range
+4. [src/tasks/amp_loco/amp_env_cfg.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/amp_env_cfg.py) — 环境基类：观测/动作/奖励/终止条件的定义入口
+5. [src/tasks/amp_loco/config/g1/rl_cfg.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/config/g1/rl_cfg.py) — PPO + AMP discriminator 训练超参与判别器观测
+6. [src/tasks/amp_loco/ampmotion_loader.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/ampmotion_loader.py) — 参考动作加载逻辑（NPZ 格式）
+7. [src/tasks/amp_loco/rl/runner.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/src/tasks/amp_loco/rl/runner.py) — AMP runner，覆盖 `save()` 实现自动 ONNX 导出
+8. [scripts/train.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/scripts/train.py) & [scripts/play.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/scripts/play.py) — 训练 / 回放 / 导出入口
+9. [scripts/csv_to_npz.py](https://github.com/ccrpRepo/AMP_mjlab/blob/main/scripts/csv_to_npz.py) — 自定义参考动作时的 CSV → NPZ 转换工具
+
 [1]: https://github.com/ccrpRepo/AMP_mjlab "GitHub - ccrpRepo/AMP_mjlab · GitHub"
 [2]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/src/tasks/amp_loco/amp_env_cfg.py "amp_env_cfg.py"
 [3]: https://raw.githubusercontent.com/ccrpRepo/AMP_mjlab/main/scripts/csv_to_npz.py "csv_to_npz.py"
