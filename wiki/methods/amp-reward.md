@@ -67,7 +67,7 @@ $$
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
 
 ## 关联页面
-- [[protomotions]] — 提供大规模并行训练支持。
+- [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 
 - [Imitation Learning](./imitation-learning.md)
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
@@ -76,6 +76,6 @@ $$
 
 ## 进阶：MimicKit 与 ADD
 
-在 **[[mimickit]]** 框架中，AMP 得到了进一步的扩展和优化：
-- **[[add]] (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。
-- **[[smp]] (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。
+在 **[mimickit](../entities/mimickit.md)** 框架中，AMP 得到了进一步的扩展和优化：
+- **[add](add.md) (Adversarial Differential Discriminator)**：通过引入差分判别器，解决了 AMP 在某些场景下的滑步和运动伪影问题。
+- **[smp](smp.md) (Score-Matching Motion Priors)**：使用生成式梯度场代替传统的判别器奖励，提供了更稳定的训练信号。

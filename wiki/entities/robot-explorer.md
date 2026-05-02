@@ -31,9 +31,9 @@ updated: 2026-05-01
 
 ## 关联页面
 
-- [[urdf-studio]] (专业设计工作站)
-- [[robot-viewer]] (多格式仿真预览)
-- [[pinocchio]] (后端动力学计算库)
+- [urdf-studio](urdf-studio.md) (专业设计工作站)
+- [robot-viewer](robot-viewer.md) (多格式仿真预览)
+- [pinocchio](pinocchio.md) (后端动力学计算库)
 
 ## 参考来源
 - [Robot Explorer 原始资料](../../sources/repos/robot-explorer.md)

@@ -12,10 +12,10 @@ updated: 2026-05-01
 
 ## 为什么重要？
 
-在 [[imitation-learning]] 中，演示数据的质量决定了策略的上限。ALOHA 的贡献在于：
+在 [imitation-learning](../methods/imitation-learning.md) 中，演示数据的质量决定了策略的上限。ALOHA 的贡献在于：
 - **民主化硬件**：通过使用低成本的电机（ViperX 机械臂），将双臂遥操作系统的成本降低到了数万美元量级。
 - **开源生态**：提供了从机械设计图纸到控制代码的全套开源方案。
-- **高频交互**：配合 [[action-chunking]] (ACT) 算法，ALOHA 证明了即使是低成本硬件也能完成拉拉链、炒菜等极高难度的动作。
+- **高频交互**：配合 [action-chunking](../methods/action-chunking.md) (ACT) 算法，ALOHA 证明了即使是低成本硬件也能完成拉拉链、炒菜等极高难度的动作。
 
 ## 核心组成
 
@@ -25,8 +25,8 @@ updated: 2026-05-01
 
 ## 与其他系统的关系
 
-- **算法搭档**：它是 [[action-chunking]] (ACT) 算法的官方硬件底座。
-- **仿真对应**：[[robotwin]] 2.0 等平台常提供 ALOHA 的仿真版本以进行数据增强。
+- **算法搭档**：它是 [action-chunking](../methods/action-chunking.md) (ACT) 算法的官方硬件底座。
+- **仿真对应**：[robotwin](robotwin.md) 2.0 等平台常提供 ALOHA 的仿真版本以进行数据增强。
 - **进阶版本**：后续发展出了 Mobile ALOHA (具备移动底盘版本) 和更加紧凑的方案。
 
 ## 参考来源

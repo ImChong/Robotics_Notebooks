@@ -13,7 +13,7 @@ updated: 2026-05-01
 ## 为什么重要？
 
 在具身智能的爆发期，LeRobot 扮演了“机器人届的 Transformers”角色：
-- **生态对齐**：通过与 Hugging Face 模型库和数据集库打通，极大降低了开发者共享和复用机器人策略（如 [[diffusion-policy]]）的门槛。
+- **生态对齐**：通过与 Hugging Face 模型库和数据集库打通，极大降低了开发者共享和复用机器人策略（如 [diffusion-policy](../methods/diffusion-policy.md)）的门槛。
 - **开源硬件支持**：原生支持低成本开源硬件（如 Koch 机械臂），推动了“人人皆可机器人”的普及。
 - **标准化数据格式**：定义了一套高效、可扩展的具身智能数据存储标准，方便不同团队之间的数据交换。
 
@@ -25,8 +25,8 @@ updated: 2026-05-01
 
 ## 与其他系统的关系
 
-- **上层应用**：[[xbotics-embodied-guide]] 将 LeRobot 推荐为实现开源实物部署的核心框架。
-- **对比**：相比传统的 [[ros2-basics]]，LeRobot 更侧重于“数据驱动型”的端到端学习，而非复杂的分布式中间件逻辑。
+- **上层应用**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 LeRobot 推荐为实现开源实物部署的核心框架。
+- **对比**：相比传统的 [ros2-basics](../concepts/ros2-basics.md)，LeRobot 更侧重于“数据驱动型”的端到端学习，而非复杂的分布式中间件逻辑。
 
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)

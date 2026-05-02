@@ -23,7 +23,7 @@ updated: 2026-05-01
 ## 工程应用场景
 
 - **硬件原型开发**：通过其 Hardware 模式管理电机选型，并一键生成 CSV/PDF 格式的 BOM 清单供采购使用。
-- **快速仿真适配**：将复杂的机器人设计快速转换为适合 [[isaac-gym-isaac-lab]] 或 [[mujoco]] 的描述文件。
+- **快速仿真适配**：将复杂的机器人设计快速转换为适合 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 或 [mujoco](mujoco.md) 的描述文件。
 - **团队协作**：提供项目级的工作区管理，方便分享和复用机器人资产。
 
 ## 技术架构
@@ -34,9 +34,9 @@ updated: 2026-05-01
 
 ## 关联页面
 
-- [[robot-viewer]] (模型快速预览)
-- [[robot-explorer]] (运动学分析)
-- [[open-source-humanoid-hardware]] (开源硬件参考)
+- [robot-viewer](robot-viewer.md) (模型快速预览)
+- [robot-explorer](robot-explorer.md) (运动学分析)
+- [open-source-humanoid-hardware](open-source-humanoid-hardware.md) (开源硬件参考)
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

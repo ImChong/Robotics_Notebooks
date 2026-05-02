@@ -8,7 +8,7 @@ updated: 2026-05-01
 
 # Genesis (仿真器)
 
-**Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [[isaac-gym-isaac-lab]] 并列，作为新一代大规模并行仿真的代表，特别强调在处理柔性体、流体以及多物理场耦合方面的能力。
+**Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 并列，作为新一代大规模并行仿真的代表，特别强调在处理柔性体、流体以及多物理场耦合方面的能力。
 
 ## 为什么重要？
 
@@ -25,8 +25,8 @@ updated: 2026-05-01
 
 ## 与其他系统的关系
 
-- **推荐背景**：[[xbotics-embodied-guide]] 将 Genesis 推荐为实战路线图中的核心工具之一。
-- **对比**：相比 [[mujoco]]，Genesis 的并行化程度更高；相比传统的 [[sapien]]，它在非刚体仿真方面具有显著优势。
+- **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。
+- **对比**：相比 [mujoco](mujoco.md)，Genesis 的并行化程度更高；相比传统的 [sapien](sapien.md)，它在非刚体仿真方面具有显著优势。
 
 ## 关联页面
 

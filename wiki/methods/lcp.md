@@ -37,10 +37,10 @@ LCP 通过限制神经网络的 Lipschitz 常数 $，确保：
 - **抗扰动**：对传感器噪声和外部推力具有天然的抑制作用。
 
 ## 关联页面
-- [[protomotions]] — 提供大规模并行训练支持。
-- [[reinforcement-learning]] — LCP 是对标准 RL 策略的一种约束增强。
-- [[safety-filter]] — 类似的初衷，但 LCP 是在策略内部实现的。
-- [[mimickit]] — LCP 已集成至此研究套件。
+- [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
+- [reinforcement-learning](reinforcement-learning.md) — LCP 是对标准 RL 策略的一种约束增强。
+- [safety-filter](../concepts/safety-filter.md) — 类似的初衷，但 LCP 是在策略内部实现的。
+- [mimickit](../entities/mimickit.md) — LCP 已集成至此研究套件。
 
 ## 参考来源
 - [sources/papers/lcp.md](../../sources/papers/lcp.md)
