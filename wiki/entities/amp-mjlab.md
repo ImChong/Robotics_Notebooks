@@ -24,6 +24,23 @@ summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实
 
 传统做法需要维护独立的 "locomotion 策略" 和 "recovery 策略"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。
 
+## 训练到部署流程图
+
+```mermaid
+flowchart TD
+    A["训练准备\nG1 URDF/MuJoCo 模型\n参考动作数据 (WalkRun + Recovery .npz)"] --> B
+    B["mjlab 并行仿真\n4096 并行环境 / 50 Hz 控制频率\n随机化: 质量 / 摩擦 / 地形"] --> C
+    B --> D
+    C["Actor-Critic\n输入: 4 帧历史观测 (384 维)\n输出: 29 维关节位置目标 (scale=0.25)"] --> E
+    D["AMP Discriminator\n参考动作 vs 生成动作\n→ 风格奖励 disc_reward"] --> E
+    E["奖励组合\n速度跟踪 + root height 恢复\n+ AMP 风格 - 动作抖动惩罚"] --> F
+    F["PPO 更新 (rsl_rl)\n约 20k iterations\nRecovery 行为约在 2w 步涌现"] -->|"未收敛"| B
+    F -->|"收敛"| G
+    G["回放验证 play.py\n仿真 rough terrain 测试\n同步观测 episode_length / track_root_height"] --> H
+    H["ONNX 导出\n输入 obs: 384 维 (含内置 normalizer)\n输出 actions: 29 维\ndynamic batch 轴"] --> I
+    I["真机部署 Unitree G1\nwbc_fsm / MJAmpState 集成 (50 Hz)\n语义: default_pos + 0.25 × action → PD\n上线顺序: 吊架 → 限速 → 全速"]
+```
+
 ## 从零理解 AMP_mjlab
 
 下面用**从零理解**的方式讲解这个项目。

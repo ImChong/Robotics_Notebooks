@@ -358,6 +358,9 @@
 
   function renderCodeBlock(code, lang) {
     const normalizedLang = normalizeCodeLang(lang);
+    if (normalizedLang === 'mermaid') {
+      return '<div class="mermaid">' + String(code || '').trim() + '</div>';
+    }
     const rawCode = String(code || '').endsWith('\n') ? String(code || '').slice(0, -1) : String(code || '');
     const lines = rawCode.split('\n');
     const rows = lines.map(function (line, index) {
@@ -369,6 +372,15 @@
     return '<div class="detail-code-block highlight language-' + escapeHtml(normalizedLang) + '">'
       + rows
       + '</div>';
+  }
+
+  function renderDetailMermaid(container) {
+    if (!container || typeof window.mermaid === 'undefined') return;
+    var nodes = Array.from(container.querySelectorAll('.mermaid'));
+    if (!nodes.length) return;
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    window.mermaid.initialize({ startOnLoad: false, theme: isDark ? 'dark' : 'default', securityLevel: 'loose' });
+    window.mermaid.run({ nodes: nodes }).catch(function () {});
   }
 
   function renderDetailMath(container) {
@@ -916,6 +928,7 @@
         routeIndex: markdownRouteIndex
       }) : '<p>当前 detail page 暂无可同步正文。</p>';
       renderDetailMath(contentEl);
+      renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
