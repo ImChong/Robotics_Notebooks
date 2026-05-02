@@ -185,6 +185,7 @@
     // 2. Link protection (existing logic)
     const linkTokens = [];
     const linkPrefix = '@@MDLINKTOKEN';
+    const GITHUB_BLOB_BASE = 'https://github.com/ImChong/Robotics_Notebooks/blob/main/';
     const withLinkTokens = withMathTokens.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
       let html = '';
       if (/^https?:\/\//i.test(target)) {
@@ -195,7 +196,17 @@
           html = '<a href="' + escapeHtml(internalHref) + '">' + escapeHtml(label) + '</a>';
         }
       }
-      if (!html) return match;
+      if (!html) {
+        // routeIndex 中无对应页（sources/、references/ 等非 detail 文件）：
+        // 解析绝对 repo 路径，生成 GitHub blob 链接；纯锚点或无法解析则降级为纯文本
+        const normalizedPath = normalizeInternalMarkdownTarget(target, markdownContext.currentPath);
+        if (normalizedPath && !normalizedPath.startsWith('#') && /\.md$/i.test(normalizedPath)) {
+          html = '<a href="' + escapeHtml(GITHUB_BLOB_BASE + normalizedPath) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+        } else {
+          // 无法解析：渲染 label 纯文本，避免原始 Markdown 语法泄漏到页面
+          return escapeHtml(label);
+        }
+      }
       const token = linkPrefix + linkTokens.length + '@@';
       linkTokens.push({ token: token, html: html });
       return token;
