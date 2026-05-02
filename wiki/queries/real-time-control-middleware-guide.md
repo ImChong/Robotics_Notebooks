@@ -8,6 +8,7 @@ related:
   - ../queries/sim2real-deployment-checklist.md
   - ../concepts/sim2real.md
   - ../formalizations/control-loop-latency-modeling.md
+  - ../formalizations/udp-multicast-dynamics.md
 summary: "实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。"
 ---
 
@@ -71,6 +72,7 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 - [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
+- [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)
 
 ## 参考来源
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)

@@ -6,6 +6,7 @@ updated: 2026-04-21
 related:
   - ../queries/real-time-control-middleware-guide.md
   - ../tasks/locomotion.md
+  - ../formalizations/udp-multicast-dynamics.md
 summary: "机器人中间件选型：ROS 2 提供了庞大的生态与强大的工具链；LCM 则以极致的轻量、低延迟和高频控制场景的统治力成为底层运控的首选。"
 ---
 
@@ -52,6 +53,7 @@ summary: "机器人中间件选型：ROS 2 提供了庞大的生态与强大的�
 - [LCM (Lightweight Communications and Marshalling) 基础](../concepts/lcm-basics.md)
 - [Query: 实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [Locomotion 任务](../tasks/locomotion.md)
+- [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)
 
 ## 参考来源
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)
