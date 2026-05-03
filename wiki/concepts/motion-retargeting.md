@@ -134,6 +134,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 ---
 
 ## 参考来源
+- [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 
 - Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用
 - Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型
