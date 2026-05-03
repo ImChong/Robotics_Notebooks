@@ -23,9 +23,10 @@ PATTERNS = [
     r"## 核心假设\n\n(.*?)(?=\n\n##|\Z)"
 ]
 
-def discover():
+def discover(docs=None):
     candidates = []
-    docs = iter_wiki_documents()
+    if docs is None:
+        docs = iter_wiki_documents()
     
     for doc in docs:
         content = doc["body"]
@@ -50,54 +51,59 @@ def discover():
     
     return candidates
 
-def suggest_related_links(min_overlap=2):
+def suggest_related_links(min_overlap=2, docs=None):
     suggestions = []
-    docs = iter_wiki_documents()
+    if docs is None:
+        docs = iter_wiki_documents()
     
-    # 建立 tag 到 路径 的索引
-    tag_map = {}
+    # 预先计算所有文档的 tag 集合和已存在的相关链接 stem
+    doc_metadata = []
     for doc in docs:
-        tags = doc.get("tags") or []
-        for tag in tags:
-            tag_map.setdefault(tag.lower(), []).append(doc["path"])
-
-    for i, doc_a in enumerate(docs):
-        path_a = doc_a["path"]
-        tags_a = set(t.lower() for t in (doc_a.get("tags") or []))
-        existing_related = set(doc_a.get("frontmatter", {}).get("related") or [])
-        
-        # 简化处理：将相对路径转为绝对/标准路径比较
-        # 这里仅做粗略建议，基于 stem 匹配
+        tags = set(t.lower() for t in (doc.get("tags") or []))
+        existing_related = doc.get("frontmatter", {}).get("related") or []
         existing_stems = set(Path(r).stem for r in existing_related)
+        doc_metadata.append({
+            "tags": tags,
+            "existing_stems": existing_stems,
+            "path": doc["path"],
+            "title": doc["title"]
+        })
+
+    for i, meta_a in enumerate(doc_metadata):
+        path_a = meta_a["path"]
+        tags_a = meta_a["tags"]
+        existing_stems_a = meta_a["existing_stems"]
 
         doc_suggestions = []
-        for j, doc_b in enumerate(docs):
+        for j, meta_b in enumerate(doc_metadata):
             if i == j: continue
-            path_b = doc_b["path"]
-            tags_b = set(t.lower() for t in (doc_b.get("tags") or []))
             
-            overlap = tags_a.intersection(tags_b)
+            overlap = tags_a.intersection(meta_b["tags"])
             if len(overlap) >= min_overlap:
+                path_b = meta_b["path"]
                 stem_b = Path(path_b).stem
-                if stem_b not in existing_stems:
+                if stem_b not in existing_stems_a:
                     doc_suggestions.append({
                         "path": path_b,
-                        "title": doc_b["title"],
+                        "title": meta_b["title"],
                         "overlap": list(overlap)
                     })
         
         if doc_suggestions:
             suggestions.append({
                 "source": path_a,
-                "title": doc_a["title"],
+                "title": meta_a["title"],
                 "targets": sorted(doc_suggestions, key=lambda x: len(x["overlap"]), reverse=True)[:5]
             })
             
     return suggestions
 
 def main():
+    print("🔍 正在读取 Wiki 文档...")
+    docs = iter_wiki_documents()
+
     print("🔍 正在扫描 Wiki 以挖掘新事实...")
-    candidates = discover()
+    candidates = discover(docs=docs)
     
     print(f"✅ 发现 {len(candidates)} 条潜在事实候选：")
     for i, c in enumerate(candidates[:20], 1):
@@ -107,7 +113,7 @@ def main():
         print(f"... 以及另外 {len(candidates)-20} 条候选。\n")
     
     print("🔗 正在分析 Tag 重合度以推荐内链补全...")
-    related_suggestions = suggest_related_links()
+    related_suggestions = suggest_related_links(docs=docs)
     print(f"✅ 发现 {len(related_suggestions)} 个页面有内链补全潜力：")
     for s in related_suggestions[:10]:
         print(f"📄 {s['title']} ({s['source']}) 建议增加：")

@@ -57,6 +57,14 @@
       .replace(/'/g, '&#39;');
   }
 
+  function isSafeUrl(url) {
+    if (!url) return false;
+    const s = String(url).trim();
+    if (/^(?:https?|mailto|tel):/i.test(s)) return true;
+    if (/:/i.test(s)) return false;
+    return true;
+  }
+
   function removeLoadingState(element) {
     if (element) element.classList.remove('data-loading');
   }
@@ -191,6 +199,7 @@
     const withLinkTokens = withMathTokens.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
       let html = '';
       if (/^https?:\/\//i.test(target)) {
+        if (!isSafeUrl(target)) return escapeHtml(label);
         html = '<a href="' + escapeHtml(target) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
       } else {
         const internalHref = resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex);
@@ -221,6 +230,7 @@
       const def = linkRefs[key];
       if (!def || !def.url) return match;
       const url = def.url;
+      if (!isSafeUrl(url)) return escapeHtml(label);
       const titleAttr = def.title ? ' title="' + escapeHtml(def.title) + '"' : '';
       const isExternal = /^https?:\/\//i.test(url);
       const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
@@ -798,10 +808,14 @@
     }
 
     container.innerHTML = links.map(function (url) {
+      const safe = isSafeUrl(url);
+      const linkHtml = safe
+        ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">打开来源</a>'
+        : '<span class="data-meta">来源链接无效或不安全</span>';
       return [
         '<article class="card data-card">',
         '  <div>',
-        '    <h3><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">打开来源</a></h3>',
+        '    <h3>' + linkHtml + '</h3>',
         '    <p class="data-submeta"><code>' + escapeHtml(url) + '</code></p>',
         '  </div>',
         '</article>'
@@ -1590,7 +1604,10 @@
             '  </div>',
             '  <div>',
             '    <h4>来源链接</h4>',
-            '    <ul>' + (sources.length ? sources.map(function (url) { return '<li><a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a></li>'; }).join('') : '<li>暂无来源链接</li>') + '</ul>',
+            '    <ul>' + (sources.length ? sources.map(function (url) {
+                   const safe = isSafeUrl(url);
+                   return '<li>' + (safe ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>' : '<code>' + escapeHtml(url) + '</code> (unsafe)') + '</li>';
+                 }).join('') : '<li>暂无来源链接</li>') + '</ul>',
             '  </div>',
             '  <div class="chip-list">',
             '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>',
