@@ -1,1 +1,1 @@
-[[IsaacGym]]
+[IsaacGym](../../wiki/entities/isaac-gym-isaac-lab.md)

@@ -35,7 +35,7 @@
 
 ## 关联页面
 
-- [[wiki/entities/isaac-gym-isaac-lab]] — Isaac Gym 实体页
-- [[wiki/entities/legged-gym]] — legged_gym 实体页
-- [[wiki/entities/motrix]] — Motrix 实体页
-- [[references/repos/simulation]] — 仿真平台层
+- [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym 实体页
+- [legged-gym](../../wiki/entities/legged-gym.md) — legged_gym 实体页
+- [motrix](../../wiki/entities/motrix.md) — Motrix 实体页
+- [simulation](simulation.md) — 仿真平台层

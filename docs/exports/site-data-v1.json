@@ -7159,7 +7159,7 @@
         "type": "reference_page",
         "path": "references/papers/locomotion-rl.md",
         "summary": "聚焦人形/腿足机器人 locomotion 中的强化学习论文",
-        "content_markdown": "聚焦人形/腿足机器人 locomotion 中的强化学习论文。\n\n## 关注问题\n\n- 如何让机器人走得更稳？\n- 如何提升速度与能效？\n- 如何提高扰动恢复能力？\n- 如何增强 sim2real 可迁移性？\n\n## 代表性论文\n\n### 基础算法\n\n- **PPO** (Schulman et al., 2017) — Humanoid locomotion RL 最常用基线，[arXiv](https://arxiv.org/abs/1707.06347)\n- **SAC** (Haarnoja et al., 2018) — 连续控制常用 off-policy 算法，[arXiv](https://arxiv.org/abs/1801.01290)\n\n### 人形/足式 Locomotion\n\n- **AMP** — Adversarial Motion Priors (Peng et al., 2021)，用对抗方式嵌入技能，[Code](https://github.com/google-deepmind/deepmind-research/tree/master/adversarial_motion_priors)\n- **ASE** — Adversarial Skill Embeddings (Peng et al., 2022)，对抗训练 latent 技能先验，[Code](https://github.com/google-deepmind/ase)\n- **RMA** — Rapid Motor Adaptation (Kumar et al., 2021)，四足快速自适应，[arXiv](https://arxiv.org/abs/2107.04034)\n\n### 人形全身控制\n\n- **CALM** — Conditioned Latent Action Models (Tessler et al., 2023)，latent 空间控制，[Code](https://github.com/irlet/calm)\n- **MimicKit** — 模仿学习 + 技能迁移 framework，[Project Page](https://motion.stanford.edu/research/mimickit)\n\n## 关联页面\n\n- [[wiki/concepts/sim2real]] — Sim2Real 是 locomotion RL 的核心挑战\n- [[wiki/concepts/domain-randomization]] — DR 是当前主流 sim2real 方法\n- [[wiki/concepts/locomotion]] — locomotion 任务层",
+        "content_markdown": "聚焦人形/腿足机器人 locomotion 中的强化学习论文。\n\n## 关注问题\n\n- 如何让机器人走得更稳？\n- 如何提升速度与能效？\n- 如何提高扰动恢复能力？\n- 如何增强 sim2real 可迁移性？\n\n## 代表性论文\n\n### 基础算法\n\n- **PPO** (Schulman et al., 2017) — Humanoid locomotion RL 最常用基线，[arXiv](https://arxiv.org/abs/1707.06347)\n- **SAC** (Haarnoja et al., 2018) — 连续控制常用 off-policy 算法，[arXiv](https://arxiv.org/abs/1801.01290)\n\n### 人形/足式 Locomotion\n\n- **AMP** — Adversarial Motion Priors (Peng et al., 2021)，用对抗方式嵌入技能，[Code](https://github.com/google-deepmind/deepmind-research/tree/master/adversarial_motion_priors)\n- **ASE** — Adversarial Skill Embeddings (Peng et al., 2022)，对抗训练 latent 技能先验，[Code](https://github.com/google-deepmind/ase)\n- **RMA** — Rapid Motor Adaptation (Kumar et al., 2021)，四足快速自适应，[arXiv](https://arxiv.org/abs/2107.04034)\n\n### 人形全身控制\n\n- **CALM** — Conditioned Latent Action Models (Tessler et al., 2023)，latent 空间控制，[Code](https://github.com/irlet/calm)\n- **MimicKit** — 模仿学习 + 技能迁移 framework，[Project Page](https://motion.stanford.edu/research/mimickit)\n\n## 关联页面\n\n- [sim2real](../../wiki/concepts/sim2real.md) — Sim2Real 是 locomotion RL 的核心挑战\n- [domain-randomization](../../wiki/concepts/domain-randomization.md) — DR 是当前主流 sim2real 方法\n- [locomotion](../../wiki/concepts/locomotion.md) — locomotion 任务层",
         "tags": [
           "papers",
           "humanoid",
@@ -7168,7 +7168,11 @@
           "sim2real",
           "tooling"
         ],
-        "related": [],
+        "related": [
+          "wiki-concepts-sim2real",
+          "wiki-concepts-domain-randomization",
+          "wiki-concepts-locomotion"
+        ],
         "source_links": [
           "https://arxiv.org/abs/1707.06347",
           "https://arxiv.org/abs/1801.01290",
@@ -7358,7 +7362,7 @@
         "type": "reference_page",
         "path": "references/repos/rl-frameworks.md",
         "summary": "人形/腿足机器人 RL 训练常用开源框架",
-        "content_markdown": "人形/腿足机器人 RL 训练常用开源框架。\n\n## 核心框架\n\n### IsaacGym + IsaacLab\n\n- **IsaacGymEnvs** — NVIDIA GPU 并行 RL 训练底座，适合大规模并行仿真\n- **IsaacLab** — IsaacGym 的下一代，支持更复杂场景和人形机器人\n- [NVIDIA Isaac Gym](https://developer.nvidia.com/isaac-gym)\n\n### legged_gym\n\n- 四足/人形腿式机器人 RL 训练框架，基于 IsaacGym\n- 学走路、跑、越障的标准起点\n- [leggedrobotics/legged_gym](https://github.com/leggedrobotics/legged_gym)\n\n### humanoid-gym\n\n- 人形机器人 RL 专用，基于 IsaacGym\n- 聚焦双足步行、站起、扰动恢复\n\n### MimicKit\n\n- 模仿学习 + 技能迁移框架\n- 支持 MoCap 数据导入和重定向\n- [Stanford HAI Lab](https://motion.stanford.edu/research/mimickit)\n\n### MotrixLab\n\n- **MotrixLab** — 基于 MotrixSim (Rust) 的通用机器人训练平台\n- 支持 JAX 和 PyTorch，兼容 MJCF\n- [Motphys/MotrixLab](https://github.com/Motphys/MotrixLab)\n\n## 关联页面\n\n- [[wiki/entities/isaac-gym-isaac-lab]] — Isaac Gym 实体页\n- [[wiki/entities/legged-gym]] — legged_gym 实体页\n- [[wiki/entities/motrix]] — Motrix 实体页\n- [[references/repos/simulation]] — 仿真平台层",
+        "content_markdown": "人形/腿足机器人 RL 训练常用开源框架。\n\n## 核心框架\n\n### IsaacGym + IsaacLab\n\n- **IsaacGymEnvs** — NVIDIA GPU 并行 RL 训练底座，适合大规模并行仿真\n- **IsaacLab** — IsaacGym 的下一代，支持更复杂场景和人形机器人\n- [NVIDIA Isaac Gym](https://developer.nvidia.com/isaac-gym)\n\n### legged_gym\n\n- 四足/人形腿式机器人 RL 训练框架，基于 IsaacGym\n- 学走路、跑、越障的标准起点\n- [leggedrobotics/legged_gym](https://github.com/leggedrobotics/legged_gym)\n\n### humanoid-gym\n\n- 人形机器人 RL 专用，基于 IsaacGym\n- 聚焦双足步行、站起、扰动恢复\n\n### MimicKit\n\n- 模仿学习 + 技能迁移框架\n- 支持 MoCap 数据导入和重定向\n- [Stanford HAI Lab](https://motion.stanford.edu/research/mimickit)\n\n### MotrixLab\n\n- **MotrixLab** — 基于 MotrixSim (Rust) 的通用机器人训练平台\n- 支持 JAX 和 PyTorch，兼容 MJCF\n- [Motphys/MotrixLab](https://github.com/Motphys/MotrixLab)\n\n## 关联页面\n\n- [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym 实体页\n- [legged-gym](../../wiki/entities/legged-gym.md) — legged_gym 实体页\n- [motrix](../../wiki/entities/motrix.md) — Motrix 实体页\n- [simulation](simulation.md) — 仿真平台层",
         "tags": [
           "repos",
           "humanoid",
@@ -7366,7 +7370,12 @@
           "rl",
           "tooling"
         ],
-        "related": [],
+        "related": [
+          "entity-isaac-gym-isaac-lab",
+          "entity-legged-gym",
+          "entity-motrix",
+          "reference-repos-simulation"
+        ],
         "source_links": [
           "https://developer.nvidia.com/isaac-gym",
           "https://github.com/leggedrobotics/legged_gym",
@@ -7381,12 +7390,14 @@
         "type": "reference_page",
         "path": "references/repos/simulation.md",
         "summary": "当前重点平台。",
-        "content_markdown": "当前重点平台：\n- MuJoCo\n- Isaac Gym\n- Isaac Lab\n- Isaac Sim\n- **[[wiki/entities/motrix]]** — Motphys 开发的高性能 Rust CPU 仿真引擎，兼容 MJCF\n- Gazebo / GZ",
+        "content_markdown": "当前重点平台：\n- MuJoCo\n- Isaac Gym\n- Isaac Lab\n- Isaac Sim\n- **[motrix](../../wiki/entities/motrix.md)** — Motphys 开发的高性能 Rust CPU 仿真引擎，兼容 MJCF\n- Gazebo / GZ",
         "tags": [
           "repos",
           "tooling"
         ],
-        "related": [],
+        "related": [
+          "entity-motrix"
+        ],
         "source_links": [],
         "status": "active"
       },
@@ -7396,13 +7407,17 @@
         "type": "reference_page",
         "path": "references/repos/utilities.md",
         "summary": "收录动力学计算、模型可视化、设计组装等通用工具链",
-        "content_markdown": "收录动力学计算、模型可视化、设计组装等通用工具链。\n\n## 动力学与控制计算\n- **Pinocchio**: 高性能刚体动力学库，支持分析导数。\n- **RBDL**: 刚体动力学库。\n- **Drake**: 专注于控制、仿真和分析。\n- **curobo**: NVIDIA 开发的高速避障与运动规划库。\n\n## Web 端可视化与分析\n- **[[robot-explorer]]**: 交互式 3D 机器人探索工具，支持运动学分析与可操纵性椭球可视化。\n- **[[robot-viewer]]**: 多格式（URDF/Xacro/MJCF/USD）查看器，集成 MuJoCo WASM 仿真与实时编辑。\n\n## 机器人设计工作站\n- **[[urdf-studio]]**: 专业级 Web 机器人设计与组装平台，支持 Skeleton/Detail/Hardware 全流程管理与 AI 辅助。",
+        "content_markdown": "收录动力学计算、模型可视化、设计组装等通用工具链。\n\n## 动力学与控制计算\n- **Pinocchio**: 高性能刚体动力学库，支持分析导数。\n- **RBDL**: 刚体动力学库。\n- **Drake**: 专注于控制、仿真和分析。\n- **curobo**: NVIDIA 开发的高速避障与运动规划库。\n\n## Web 端可视化与分析\n- **[robot-explorer](../../wiki/entities/robot-explorer.md)**: 交互式 3D 机器人探索工具，支持运动学分析与可操纵性椭球可视化。\n- **[robot-viewer](../../wiki/entities/robot-viewer.md)**: 多格式（URDF/Xacro/MJCF/USD）查看器，集成 MuJoCo WASM 仿真与实时编辑。\n\n## 机器人设计工作站\n- **[urdf-studio](../../wiki/entities/urdf-studio.md)**: 专业级 Web 机器人设计与组装平台，支持 Skeleton/Detail/Hardware 全流程管理与 AI 辅助。",
         "tags": [
           "repos",
           "tooling",
           "hardware"
         ],
-        "related": [],
+        "related": [
+          "entity-robot-explorer",
+          "entity-robot-viewer",
+          "entity-urdf-studio"
+        ],
         "source_links": [],
         "status": "active"
       },
