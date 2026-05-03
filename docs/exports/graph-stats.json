@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-03",
-  "node_count": 234,
-  "edge_count": 1428,
+  "node_count": 235,
+  "edge_count": 1442,
   "community_count": 8,
   "top_hubs": [
     {
@@ -47,7 +47,7 @@
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation (移动操作)",
-      "degree": 30
+      "degree": 32
     },
     {
       "id": "wiki/entities/humanoid-robot.md",
@@ -57,7 +57,7 @@
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "method": 53,
+    "method": 54,
     "concept": 45,
     "entity": 44,
     "query": 40,
@@ -69,20 +69,20 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 104,
-    "Whole-Body Control (WBC) 社区": 53,
+    "Locomotion 社区": 101,
+    "Whole-Body Control (WBC) 社区": 57,
     "Manipulation 社区": 47,
     "实时运控中间件配置指南 社区": 11,
     "Model-Based RL（基于模型的强化学习） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "System Identification 社区": 3,
+    "摩擦锥 (Friction Cone) 社区": 3,
     "人形机器人运动控制 Know-How 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
       "人形机器人运动控制 Know-How 社区"
     ],
-    "largest_community_ratio": 0.444,
+    "largest_community_ratio": 0.43,
     "community_quality_warning": false
   }
 }

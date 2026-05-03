@@ -103,7 +103,7 @@
       "label": "Armature Modeling（电枢惯量建模）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
@@ -362,7 +362,7 @@
       "label": "System Identification",
       "type": "concept",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/tactile-sensing.md",
@@ -796,7 +796,7 @@
       "label": "摩擦锥 (Friction Cone)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-6"
     },
     {
       "id": "wiki/formalizations/gae.md",
@@ -859,14 +859,14 @@
       "label": "SE(3) Representation (位姿表示形式化)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/tsid-formulation.md",
       "label": "Task Space Inverse Dynamics (TSID) 形式化",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/formalizations/udp-multicast-dynamics.md",
@@ -908,7 +908,7 @@
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/add.md",
@@ -1027,7 +1027,14 @@
       "label": "Dynamic Movement Primitives (DMP)",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
+    },
+    {
+      "id": "wiki/methods/exoactor.md",
+      "label": "ExoActor (视频生成驱动的交互式人形控制)",
+      "type": "method",
+      "health_score": 3,
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/gae.md",
@@ -1202,7 +1209,7 @@
       "label": "StarVLA",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/sumo.md",
@@ -1279,7 +1286,7 @@
       "label": "Robot Learning Overview",
       "type": "overview",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/clf-cbf-in-wbc.md",
@@ -1342,7 +1349,7 @@
       "label": "人形机器人 Foundation Policy 适用边界分析",
       "type": "query",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/queries/hardware-abstraction-layer.md",
@@ -1552,7 +1559,7 @@
       "label": "WBC 调参指南：从公式到实机表现",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-6"
     },
     {
       "id": "wiki/queries/when-to-use-wbc-vs-rl.md",
@@ -2514,6 +2521,10 @@
     },
     {
       "source": "wiki/concepts/motion-retargeting.md",
+      "target": "wiki/methods/exoactor.md"
+    },
+    {
+      "source": "wiki/concepts/motion-retargeting.md",
       "target": "wiki/methods/imitation-learning.md"
     },
     {
@@ -2919,6 +2930,10 @@
     {
       "source": "wiki/concepts/video-as-simulation.md",
       "target": "wiki/concepts/sim2real.md"
+    },
+    {
+      "source": "wiki/concepts/video-as-simulation.md",
+      "target": "wiki/methods/exoactor.md"
     },
     {
       "source": "wiki/concepts/video-as-simulation.md",
@@ -3938,6 +3953,10 @@
     },
     {
       "source": "wiki/entities/unitree-g1.md",
+      "target": "wiki/methods/exoactor.md"
+    },
+    {
+      "source": "wiki/entities/unitree-g1.md",
       "target": "wiki/methods/motionbricks.md"
     },
     {
@@ -4766,6 +4785,10 @@
     },
     {
       "source": "wiki/methods/beyondmimic.md",
+      "target": "wiki/methods/exoactor.md"
+    },
+    {
+      "source": "wiki/methods/beyondmimic.md",
       "target": "wiki/methods/imitation-learning.md"
     },
     {
@@ -4905,6 +4928,34 @@
       "target": "wiki/methods/imitation-learning.md"
     },
     {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/concepts/motion-retargeting.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/concepts/video-as-simulation.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/entities/unitree-g1.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/methods/generative-world-models.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/methods/motion-retargeting-gmr.md"
+    },
+    {
+      "source": "wiki/methods/exoactor.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
       "source": "wiki/methods/gae.md",
       "target": "wiki/formalizations/bellman-equation.md"
     },
@@ -4939,6 +4990,10 @@
     {
       "source": "wiki/methods/generative-world-models.md",
       "target": "wiki/entities/nvidia-omniverse.md"
+    },
+    {
+      "source": "wiki/methods/generative-world-models.md",
+      "target": "wiki/methods/exoactor.md"
     },
     {
       "source": "wiki/methods/generative-world-models.md",
@@ -5307,6 +5362,10 @@
     {
       "source": "wiki/methods/motion-retargeting-gmr.md",
       "target": "wiki/methods/beyondmimic.md"
+    },
+    {
+      "source": "wiki/methods/motion-retargeting-gmr.md",
+      "target": "wiki/methods/exoactor.md"
     },
     {
       "source": "wiki/methods/motionbricks.md",
@@ -7098,6 +7157,10 @@
     },
     {
       "source": "wiki/tasks/loco-manipulation.md",
+      "target": "wiki/methods/exoactor.md"
+    },
+    {
+      "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/methods/humanoid-transformer-touch-dreaming.md"
     },
     {
@@ -7357,13 +7420,13 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 104,
+      "size": 101,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
       "label": "Whole-Body Control (WBC) 社区",
-      "size": 53,
+      "size": 57,
       "hub_id": "wiki/concepts/whole-body-control.md"
     },
     {
@@ -7392,9 +7455,9 @@
     },
     {
       "id": "community-6",
-      "label": "System Identification 社区",
+      "label": "摩擦锥 (Friction Cone) 社区",
       "size": 3,
-      "hub_id": "wiki/concepts/system-identification.md"
+      "hub_id": "wiki/formalizations/friction-cone.md"
     },
     {
       "id": "community-7",
