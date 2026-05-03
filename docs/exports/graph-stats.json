@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-03",
-  "node_count": 236,
-  "edge_count": 1446,
+  "node_count": 237,
+  "edge_count": 1454,
   "community_count": 8,
   "top_hubs": [
     {
@@ -12,7 +12,7 @@
     {
       "id": "wiki/methods/reinforcement-learning.md",
       "label": "Reinforcement Learning (RL, 强化学习)",
-      "degree": 81
+      "degree": 82
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
@@ -22,7 +22,7 @@
     {
       "id": "wiki/concepts/sim2real.md",
       "label": "Sim2Real",
-      "degree": 73
+      "degree": 74
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -50,14 +50,14 @@
       "degree": 33
     },
     {
-      "id": "wiki/entities/humanoid-robot.md",
-      "label": "人形机器人（Humanoid Robot）",
-      "degree": 29
+      "id": "wiki/entities/unitree-g1.md",
+      "label": "Unitree G1 (人形机器人)",
+      "degree": 30
     }
   ],
   "orphan_nodes": [],
   "type_distribution": {
-    "method": 54,
+    "method": 55,
     "concept": 45,
     "entity": 44,
     "query": 40,
@@ -69,12 +69,12 @@
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 151,
+    "Locomotion 社区": 150,
     "Manipulation 社区": 35,
-    "VLA（Vision-Language-Action） 社区": 22,
+    "VLA（Vision-Language-Action） 社区": 23,
     "实时运控中间件配置指南 社区": 11,
+    "Safety Filter（安全过滤器） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "Safety Filter（安全过滤器） 社区": 6,
     "人形机器人运动控制 Know-How 社区": 2,
     "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区": 2
   },
@@ -83,7 +83,7 @@
       "人形机器人运动控制 Know-How 社区",
       "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     ],
-    "largest_community_ratio": 0.64,
+    "largest_community_ratio": 0.633,
     "community_quality_warning": true
   }
 }

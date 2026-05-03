@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 277,
+  "item_count": 278,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -177,7 +177,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -272,7 +272,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -377,7 +377,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -508,7 +508,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -597,7 +597,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -752,14 +752,14 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
       "title": "Motion Retargeting（动作重定向）",
       "path": "wiki/concepts/motion-retargeting.md",
       "summary": "title: Motion Retargeting（动作重定向）。",
-      "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n---\n\n## 重定向不等于控制策略：两层架构模式\n\n在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。\n\n### 1. 运动学重定向层 (Kinematic Layer)\n- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。\n- **作用**：解决姿态、角度、关键点坐标的映射。\n- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。\n\n### 2. 动力学一致化层 (Dynamical Layer)\n- **作用**：在重定向轨迹的基础上，补足物理约束。\n- **实现手段**：\n    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。\n    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。\n    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供\"视频生成→动作估计→tracking\"链路下不引入中间重定向反而更稳的反例\n\n---\n\n## 关联页面\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性\n- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供\"中间重定向并非永远收益项\"的反例",
+      "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n---\n\n## 重定向不等于控制策略：两层架构模式\n\n在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。\n\n### 1. 运动学重定向层 (Kinematic Layer)\n- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。\n- **作用**：解决姿态、角度、关键点坐标的映射。\n- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。\n\n### 2. 动力学一致化层 (Dynamical Layer)\n- **作用**：在重定向轨迹的基础上，补足物理约束。\n- **实现手段**：\n    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。\n    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。\n    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n- [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供\"视频生成→动作估计→tracking\"链路下不引入中间重定向反而更稳的反例\n\n---\n\n## 关联页面\n- [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 利用带硬约束的动态重定向来生成改进参考库的框架\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性\n- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供\"中间重定向并非永远收益项\"的反例",
       "tags": [
         "concept",
         "control",
@@ -769,6 +769,7 @@
         "tooling"
       ],
       "related": [
+        "wiki-methods-chasing-autonomy-pipeline",
         "wiki-methods-imitation-learning",
         "wiki-tasks-locomotion",
         "wiki-tasks-loco-manipulation",
@@ -776,17 +777,17 @@
         "wiki-concepts-sim2real",
         "wiki-methods-motion-retargeting-gmr",
         "wiki-methods-exoactor",
+        "sources-papers-chasing-autonomy",
         "sources-papers-teleoperation",
         "sources-papers-diffusion-and-gen",
-        "sources-papers-motion-control-projects",
-        "sources-papers-exoactor"
+        "sources-papers-motion-control-projects"
       ],
       "source_links": [],
       "status": "active",
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/exoactor.md"
+      "ingest_source": "sources/papers/chasing_autonomy.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -848,7 +849,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -913,7 +914,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1032,7 +1033,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1066,7 +1067,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1303,7 +1304,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1663,6 +1664,34 @@
       "page_type": "method"
     },
     {
+      "id": "wiki-methods-chasing-autonomy-pipeline",
+      "title": "Chasing Autonomy Pipeline",
+      "path": "wiki/methods/chasing-autonomy-pipeline.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntitle: Chasing Autonomy Pipeline\ntags: [robot-learning, humanoid, locomotion, reinforcement-learning, sim2real, motion-retargeting]\nsummary: \"一种结合硬约束动态重定向与控制引导强化学习的流水线，利用单一人类演示实现高性能的人形机器人跑步与避障。\"\n---\n\n# Chasing Autonomy Pipeline\n\n**Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了人体动作重定向（Motion Retargeting）与强化学习（RL），利用单一的人类演示动作生成高质量的参考库，并在真实世界上实现了快速、具有环境避障能力的跑步。\n\n## 核心理念\n\n该框架的核心洞见是：通过**带有硬约束的动态优化**处理人体动作数据，比直接进行运动学重定向能提供更好的 RL 训练参考（Reference Library）；在强化学习阶段，**目标条件（Goal-conditioned）和控制引导（Control-guided）的奖励结构**对于在真实环境中实现稳定的高动态运动（如跑步）至关重要。\n\n## 主要技术路线\n\n该系统包含三个核心阶段：\n\n```text\n单一人类运动演示 (Single Human Demonstration)\n          ↓\n阶段1：带硬约束的动态优化重定向 (Dynamic Retargeting with Hard Constraints)\n       - 生成考虑机器人动力学和物理约束的改进周期性参考库\n          ↓\n阶段2：控制引导的强化学习 (Control Guided RL)\n       - 目标条件与控制引导奖励\n       - 追踪动态优化的参考数据\n          ↓\n阶段3：全感知与规划的自主栈集成 (Full Perception and Planning Autonomy Stack)\n       - 室外环境避障\n       - 真机部署 (Unitree G1)\n```\n\n## 关键技术\n\n### 1. 带硬约束的动态重定向 (Dynamic Retargeting)\n传统的人体动作重定向往往只考虑运动学映射，导致生成的动作对机器人而言可能不符合物理规律或动力学约束。该方法使用带有硬约束的优化例程，不仅完成运动学映射，还确保生成的周期性参考库符合机器人的硬件限制和动力学可行性。\n\n### 2. 控制引导与目标条件奖励 (Control Guided Reward)\n研究表明，不仅参考动作的质量重要，奖励函数的结构也直接影响速度追踪的效果。通过在 RL 训练中引入目标条件和控制层面的引导，策略不仅能更好地模仿参考动作，还能更稳健地响应上层速度指令。\n\n### 3. 可控性与自主感知集成 (Controllability & Autonomy)\n该控制策略不仅用于回放单一动作，还能无缝接入上层的感知与规划栈中。在硬件部署中，机器人能够根据 LiDAR 或视觉感知生成的实时目标，动态调整运行速度和方向，实现室外环境中的自主避障奔跑。\n\n## 性能表现\n\n- **高速度**：在 Unitree G1 硬件上实现了高达 3.3 m/s 的奔跑速度。\n- **高耐力与鲁棒性**：成功在现实室外环境中穿越数百米。\n- **完全自主的避障奔跑**：在全感知与规划栈的支持下，机器人能够实时避障并保持高速移动。\n\n## 关联页面\n\n- [Motion Retargeting (运动重定向)](../concepts/motion-retargeting.md)\n- [Humanoid Locomotion (人形移动)](../tasks/humanoid-locomotion.md)\n- [Reinforcement Learning (强化学习)](./reinforcement-learning.md)\n- [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)\n- [Reward Design (奖励设计)](../concepts/reward-design.md)\n- [Unitree G1 (机器人实体)](../entities/unitree-g1.md)\n\n## 参考来源\n- [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)",
+      "tags": [
+        "method",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl",
+        "il"
+      ],
+      "related": [
+        "wiki-concepts-motion-retargeting",
+        "wiki-tasks-humanoid-locomotion",
+        "wiki-methods-reinforcement-learning",
+        "wiki-concepts-sim2real",
+        "wiki-concepts-reward-design",
+        "entity-unitree-g1",
+        "sources-papers-chasing-autonomy"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method"
+    },
+    {
       "id": "wiki-methods-claw",
       "title": "CLAW (宇树 G1 全身动作数据生成管线)",
       "path": "wiki/methods/claw.md",
@@ -1818,7 +1847,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/eth-g1-diffusion.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -2095,7 +2124,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2249,7 +2278,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2433,7 +2462,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/eth-g1-diffusion.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-methods-reinforcement-learning",
@@ -2472,7 +2501,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2704,7 +2733,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2867,7 +2896,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2908,7 +2937,7 @@
       "title": "Humanoid Locomotion (人形机器人移动)",
       "path": "wiki/tasks/humanoid-locomotion.md",
       "summary": "Humanoid Locomotion：使双足类人机器人能够在复杂、非结构化的地形中，保持平衡的同时实现高效、鲁棒的位移，并具备全身协调（Whole-body Coordination）能力",
-      "content_markdown": "---\ntype: task\ntags: [humanoid, locomotion, whole-body-control]\nstatus: complete\nsummary: \"人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。\"\n---\n\n# Humanoid Locomotion (人形机器人移动)\n\n**Humanoid Locomotion**：使双足类人机器人能够在复杂、非结构化的地形中，保持平衡的同时实现高效、鲁棒的位移，并具备全身协调（Whole-body Coordination）能力。\n\n## 一句话定义\n\n让两条腿（甚至加上手和膝盖）在各种烂路上走稳、走远、走得像人。\n\n## 核心挑战\n\n1. **高维非线性动力学**：人形机器人具有数十个自由度，其动力学模型高度复杂且存在欠驱动（Under-actuated）阶段。\n2. **接触力学建模**：涉及足端、手部或膝盖与地形的断续接触，传统的基于模型的控制（如 MPC）在处理多点接触时计算量巨大。\n3. **环境感知与反应**：需要将高程图（Elevation Maps）或点云信息实时转化为运动规划，以应对楼梯、斜坡和障碍物。\n\n## 主流技术路线\n\n### 1. 基于模型的控制 (Model-based Control)\n- **核心**：利用简化模型（如 单质点模型 CoM, 线性倒立摆 LIP）进行轨迹规划，配合全身控制（WBC）进行任务分解。\n- **代表作**：MIT Cheetah 系列的变体，IHMC 的双足控制。\n\n### 2. 层级强化学习 (Hierarchical RL)\n- **核心**：分层架构，高层负责技能规划（Skill Planning），底层负责电机指令跟踪。\n- **趋势**：通过奖励函数让机器人自主探索步态，解决非线性接触问题。\n\n### 3. 生成式运动模型 (Generative Motion Models)\n- **核心**：利用扩散模型（Diffusion Models）从人类数据中学习自然的运动先验。\n- **进展**：ETH Zurich 的工作证明了扩散模型可以作为高效的实时全身运动生成器。\n\n## 全身移动 (Whole-body Locomotion)\n\n现代研究强调利用全身各个部位进行移动：\n- **接触辅助**：在攀爬高箱时使用手臂辅助。\n- **重心调节**：通过挥动手臂来补偿角动量。\n- **环境自适应**：利用膝盖或身体侧面在狭窄空间支撑。\n\n## 参考来源\n- [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — 基于扩散模型与 RL 的全身移动框架。\n- [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md) — 人形机器人硬件平台综述。\n\n## 关联页面\n- [Locomotion](./locomotion.md)\n- [ZEST](../methods/zest.md) — Boston Dynamics 的跨形态高动态技能迁移框架\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)\n- [PPO](../methods/policy-optimization.md)\n- [Whole-Body Coordination](../concepts/whole-body-coordination.md)\n- [Contact Dynamics](../concepts/contact-dynamics.md)",
+      "content_markdown": "---\ntype: task\ntags: [humanoid, locomotion, whole-body-control]\nstatus: complete\nsummary: \"人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。\"\n---\n\n# Humanoid Locomotion (人形机器人移动)\n\n**Humanoid Locomotion**：使双足类人机器人能够在复杂、非结构化的地形中，保持平衡的同时实现高效、鲁棒的位移，并具备全身协调（Whole-body Coordination）能力。\n\n## 一句话定义\n\n让两条腿（甚至加上手和膝盖）在各种烂路上走稳、走远、走得像人。\n\n## 核心挑战\n\n1. **高维非线性动力学**：人形机器人具有数十个自由度，其动力学模型高度复杂且存在欠驱动（Under-actuated）阶段。\n2. **接触力学建模**：涉及足端、手部或膝盖与地形的断续接触，传统的基于模型的控制（如 MPC）在处理多点接触时计算量巨大。\n3. **环境感知与反应**：需要将高程图（Elevation Maps）或点云信息实时转化为运动规划，以应对楼梯、斜坡和障碍物。\n\n## 主流技术路线\n\n### 1. 基于模型的控制 (Model-based Control)\n- **核心**：利用简化模型（如 单质点模型 CoM, 线性倒立摆 LIP）进行轨迹规划，配合全身控制（WBC）进行任务分解。\n- **代表作**：MIT Cheetah 系列的变体，IHMC 的双足控制。\n\n### 2. 层级强化学习 (Hierarchical RL)\n- **核心**：分层架构，高层负责技能规划（Skill Planning），底层负责电机指令跟踪。\n- **趋势**：通过奖励函数让机器人自主探索步态，解决非线性接触问题。\n\n### 3. 生成式运动模型 (Generative Motion Models)\n- **核心**：利用扩散模型（Diffusion Models）从人类数据中学习自然的运动先验。\n- **进展**：ETH Zurich 的工作证明了扩散模型可以作为高效的实时全身运动生成器。\n\n## 全身移动 (Whole-body Locomotion)\n\n现代研究强调利用全身各个部位进行移动：\n- **接触辅助**：在攀爬高箱时使用手臂辅助。\n- **重心调节**：通过挥动手臂来补偿角动量。\n- **环境自适应**：利用膝盖或身体侧面在狭窄空间支撑。\n\n## 参考来源\n- [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)\n- [sources/papers/eth-g1-diffusion.md](../../sources/papers/eth-g1-diffusion.md) — 基于扩散模型与 RL 的全身移动框架。\n- [sources/papers/humanoid_hardware.md](../../sources/papers/humanoid_hardware.md) — 人形机器人硬件平台综述。\n\n## 关联页面\n- [Chasing Autonomy Pipeline](../methods/chasing-autonomy-pipeline.md) — 结合重定向与控制引导的 RL 实现高性能奔跑\n- [Locomotion](./locomotion.md)\n- [ZEST](../methods/zest.md) — Boston Dynamics 的跨形态高动态技能迁移框架\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md)\n- [PPO](../methods/policy-optimization.md)\n- [Whole-Body Coordination](../concepts/whole-body-coordination.md)\n- [Contact Dynamics](../concepts/contact-dynamics.md)",
       "tags": [
         "task",
         "humanoid",
@@ -2918,12 +2947,14 @@
         "optimization"
       ],
       "related": [
+        "wiki-methods-chasing-autonomy-pipeline",
         "wiki-tasks-locomotion",
         "wiki-methods-zest",
         "wiki-methods-diffusion-motion-generation",
         "wiki-methods-policy-optimization",
         "wiki-concepts-whole-body-coordination",
         "wiki-concepts-contact-dynamics",
+        "sources-papers-chasing-autonomy",
         "sources-papers-eth-g1-diffusion",
         "sources-papers-humanoid-hardware"
       ],
@@ -3025,7 +3056,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/x2n_transformable.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -3062,7 +3093,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -5896,7 +5927,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5928,7 +5959,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-lerobot",
