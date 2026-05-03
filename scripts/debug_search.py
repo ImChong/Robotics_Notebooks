@@ -5,7 +5,6 @@ debug_search.py — 搜索权重调试工具
 """
 
 import sys
-import json
 from pathlib import Path
 from search_wiki import search, tokenize_text
 
