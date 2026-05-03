@@ -15,6 +15,13 @@
       "community": "community-1"
     },
     {
+      "id": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "label": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
+      "type": "comparison",
+      "health_score": 3,
+      "community": "community-3"
+    },
+    {
       "id": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
       "label": "Kalman Filter vs. Optimization-based Estimation (状态估计选型)",
       "type": "comparison",
@@ -1690,6 +1697,34 @@
       "target": "wiki/queries/dexterous-data-collection-guide.md"
     },
     {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/comparisons/ros2-vs-lcm.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/concepts/clock-synchronization-algorithms.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/concepts/ethercat-protocol.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/formalizations/control-loop-latency-modeling.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/formalizations/udp-multicast-dynamics.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/queries/ethercat-master-optimization.md"
+    },
+    {
+      "source": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "target": "wiki/queries/real-time-control-middleware-guide.md"
+    },
+    {
       "source": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
       "target": "wiki/concepts/state-estimation.md"
     },
@@ -2276,6 +2311,10 @@
     {
       "source": "wiki/concepts/embodied-scaling-laws.md",
       "target": "wiki/methods/vla.md"
+    },
+    {
+      "source": "wiki/concepts/ethercat-protocol.md",
+      "target": "wiki/comparisons/ethercat-vs-ethernet-ip.md"
     },
     {
       "source": "wiki/concepts/ethercat-protocol.md",
@@ -6263,6 +6302,10 @@
     },
     {
       "source": "wiki/queries/ethercat-master-optimization.md",
+      "target": "wiki/comparisons/ethercat-vs-ethernet-ip.md"
+    },
+    {
+      "source": "wiki/queries/ethercat-master-optimization.md",
       "target": "wiki/comparisons/ros2-vs-lcm.md"
     },
     {
@@ -7500,7 +7543,7 @@
     {
       "id": "community-3",
       "label": "实时运控中间件配置指南 社区",
-      "size": 11,
+      "size": 12,
       "hub_id": "wiki/queries/real-time-control-middleware-guide.md"
     },
     {

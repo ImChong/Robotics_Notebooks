@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../queries/ethercat-master-optimization.md
+  - ../comparisons/ethercat-vs-ethernet-ip.md
   - ../queries/real-time-control-middleware-guide.md
   - ../formalizations/control-loop-latency-modeling.md
   - ./clock-synchronization-algorithms.md
@@ -35,6 +36,7 @@ summary: "EtherCAT 协议基础：介绍了这款基于以太网的高性能工�
 
 ## 关联页面
 - [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)
+- [EtherCAT vs EtherNet/IP（工业总线选型对比）](../comparisons/ethercat-vs-ethernet-ip.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [时钟同步算法](./clock-synchronization-algorithms.md)
