@@ -30,6 +30,12 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 - **自然度**：判别器能捕捉到人类动作中微妙的时序特征和协调性。
 - **无需繁琐调参**：减少了对关节速度惩罚、平滑惩罚等启发式奖励的依赖。
 
+### 3. 选择性 AMP (Selective AMP)
+在多步态学习 (Multi-Gait Learning) 中，AMP 的作用并非总是正面的。研究表明：
+- **周期性、稳定性要求的步态**（如 walking, goose-stepping, stair climbing）：应用 AMP 可加速收敛，抑制不规律动作，提升动作质量。
+- **高动态步态**（如 running, jumping）：故意省略 AMP。因为在高度动态的过程中，AMP 的正则化会过度约束运动，反而阻碍动作的学习。
+这种**选择性应用 AMP** 的策略，可以在统一的 RL 框架下实现多样化步态的控制。
+
 ## HumanX: 扩展到物体交互与接触图
 
 **HumanX** 是对 AMP 范式的重大增强，它认为“姿态像”是不够的，“接触像”才关键。
@@ -65,6 +71,7 @@ $$
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control*.
 - [HumanX 项目主页](https://github.com/wyhuai/human-x)
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
+- [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 提出了 Selective AMP 以应对多步态学习中的正则化权衡。
 
 ## 关联页面
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
