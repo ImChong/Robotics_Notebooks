@@ -1,13 +1,13 @@
 {
   "generated_at": "2026-05-03",
-  "node_count": 235,
-  "edge_count": 1442,
+  "node_count": 236,
+  "edge_count": 1446,
   "community_count": 8,
   "top_hubs": [
     {
       "id": "wiki/tasks/locomotion.md",
       "label": "Locomotion",
-      "degree": 82
+      "degree": 84
     },
     {
       "id": "wiki/methods/reinforcement-learning.md",
@@ -17,7 +17,7 @@
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
-      "degree": 74
+      "degree": 75
     },
     {
       "id": "wiki/concepts/sim2real.md",
@@ -47,7 +47,7 @@
     {
       "id": "wiki/tasks/loco-manipulation.md",
       "label": "Loco-Manipulation (移动操作)",
-      "degree": 32
+      "degree": 33
     },
     {
       "id": "wiki/entities/humanoid-robot.md",
@@ -63,26 +63,27 @@
     "query": 40,
     "formalization": 25,
     "comparison": 14,
-    "task": 9,
+    "task": 10,
     "overview": 2,
     "reference": 1,
     "roadmap_page": 1
   },
   "community_distribution": {
-    "Locomotion 社区": 101,
-    "Whole-Body Control (WBC) 社区": 57,
-    "Manipulation 社区": 47,
+    "Locomotion 社区": 151,
+    "Manipulation 社区": 35,
+    "VLA（Vision-Language-Action） 社区": 22,
     "实时运控中间件配置指南 社区": 11,
-    "Model-Based RL（基于模型的强化学习） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
-    "摩擦锥 (Friction Cone) 社区": 3,
-    "人形机器人运动控制 Know-How 社区": 2
+    "Safety Filter（安全过滤器） 社区": 6,
+    "人形机器人运动控制 Know-How 社区": 2,
+    "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区": 2
   },
   "community_quality": {
     "singleton_communities": [
-      "人形机器人运动控制 Know-How 社区"
+      "人形机器人运动控制 Know-How 社区",
+      "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     ],
-    "largest_community_ratio": 0.43,
-    "community_quality_warning": false
+    "largest_community_ratio": 0.64,
+    "community_quality_warning": true
   }
 }

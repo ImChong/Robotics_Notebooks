@@ -5,21 +5,21 @@
       "label": "CLF vs CBF：稳定性与安全性的对偶工具",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/comparisons/data-gloves-vs-vision-teleop.md",
       "label": "数据手套 vs 视觉遥操作 (灵巧数据采集选型)",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
       "label": "Kalman Filter vs. Optimization-based Estimation (状态估计选型)",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/model-based-vs-model-free.md",
@@ -33,7 +33,7 @@
       "label": "MPC vs RL：控制策略选型对比",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/mujoco-vs-isaac-lab.md",
@@ -89,35 +89,35 @@
       "label": "Trajectory Optimization vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/comparisons/wbc-vs-rl.md",
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/armature-modeling.md",
       "label": "Armature Modeling（电枢惯量建模）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/capture-point-dcm.md",
       "label": "Capture Point / DCM",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/centroidal-dynamics.md",
       "label": "Centroidal Dynamics",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/clock-synchronization-algorithms.md",
@@ -131,28 +131,28 @@
       "label": "Contact Dynamics",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/contact-estimation.md",
       "label": "Contact Estimation（接触估计）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/contact-rich-manipulation.md",
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/control-barrier-function.md",
       "label": "Control Barrier Function（控制屏障函数）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/concepts/curriculum-learning.md",
@@ -180,7 +180,7 @@
       "label": "Dexterous Kinematics (灵巧手运动学)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/domain-randomization.md",
@@ -194,7 +194,7 @@
       "label": "Embodied Data Cleaning (具身数据清洗)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/embodied-scaling-laws.md",
@@ -215,28 +215,28 @@
       "label": "Floating Base Dynamics",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/footstep-planning.md",
       "label": "Footstep Planning（步位规划）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/force-control-basics.md",
       "label": "Force Control Basics (力控制基础)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/foundation-policy.md",
       "label": "Foundation Policy（基础策略模型）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/gait-generation.md",
@@ -250,28 +250,28 @@
       "label": "HQP（Hierarchical QP）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/hybrid-force-position-control.md",
       "label": "Hybrid Force-Position Control（力位混合控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/impedance-control.md",
       "label": "Impedance Control（阻抗控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/latent-imagination.md",
       "label": "Latent Imagination (潜空间想象)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-2"
     },
     {
       "id": "wiki/concepts/lcm-basics.md",
@@ -285,7 +285,7 @@
       "label": "LIP / ZMP",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/motion-retargeting.md",
@@ -299,14 +299,14 @@
       "label": "MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/optimal-control.md",
       "label": "Optimal Control (OCP)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/privileged-training.md",
@@ -334,14 +334,14 @@
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/concepts/sensor-fusion.md",
       "label": "传感器融合（Sensor Fusion）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/sim2real.md",
@@ -355,21 +355,21 @@
       "label": "State Estimation",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/system-identification.md",
       "label": "System Identification",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/tactile-sensing.md",
       "label": "Tactile Sensing（触觉感知）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/terrain-adaptation.md",
@@ -383,49 +383,49 @@
       "label": "TSID",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/video-as-simulation.md",
       "label": "Video-as-Simulation (视频即仿真)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/visuo-tactile-fusion.md",
       "label": "视触觉融合（Visuo-Tactile Fusion）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/concepts/whole-body-control.md",
       "label": "Whole-Body Control (WBC)",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/concepts/whole-body-coordination.md",
       "label": "Whole-Body Coordination（全身协调控制）",
       "type": "concept",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/allegro-hand.md",
       "label": "Allegro Hand (灵巧手)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/aloha.md",
       "label": "ALOHA (双臂遥操作硬件)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/amp-mjlab.md",
@@ -446,35 +446,35 @@
       "label": "Atom01 Deploy",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-description.md",
       "label": "Atom01 Description",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-firmware.md",
       "label": "Atom01 Firmware",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-hardware.md",
       "label": "Atom01 Hardware",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/atom01-train.md",
       "label": "Atom01 Train",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/booster-robocup-demo.md",
@@ -495,21 +495,21 @@
       "label": "Crocoddyl",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/drake.md",
       "label": "Drake (机器人工具箱)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/gel-slim.md",
       "label": "GelSlim（薄片化视觉触觉传感器）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/genesis-sim.md",
@@ -579,7 +579,7 @@
       "label": "Modern Robotics (Lynch-Park 教材)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/motrix.md",
@@ -607,7 +607,7 @@
       "label": "Meta Quest (Oculus) 遥操作",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/open-source-humanoid-brains.md",
@@ -621,14 +621,14 @@
       "label": "开源人形机器人硬件方案对比",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/pinocchio.md",
       "label": "Pinocchio (刚体动力学库)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/entities/protomotions.md",
@@ -663,14 +663,14 @@
       "label": "Roboto Origin（开源人形机器人基线）",
       "type": "entity",
       "health_score": 3,
-      "community": "community-5"
+      "community": "community-4"
     },
     {
       "id": "wiki/entities/robotwin.md",
       "label": "RoboTwin 2.0",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/sapien.md",
@@ -684,7 +684,7 @@
       "label": "Shadow Hand (灵巧手)",
       "type": "entity",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/entities/unitree-g1.md",
@@ -726,7 +726,7 @@
       "label": "Behavior Cloning Loss (行为克隆损失函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/bellman-equation.md",
@@ -747,14 +747,14 @@
       "label": "Contact Complementarity（接触互补约束）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/contact-wrench-cone.md",
       "label": "接触力旋量锥 (Contact Wrench Cone)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/control-loop-latency-modeling.md",
@@ -768,21 +768,21 @@
       "label": "Control Lyapunov Function（控制李雅普诺夫函数）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/formalizations/cross-modal-attention.md",
       "label": "Cross-modal Attention (跨模态注意力)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/ekf.md",
       "label": "Extended Kalman Filter (EKF)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/foundation-policy-alignment.md",
@@ -796,7 +796,7 @@
       "label": "摩擦锥 (Friction Cone)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-1"
     },
     {
       "id": "wiki/formalizations/gae.md",
@@ -810,28 +810,28 @@
       "label": "生成式模型基础 (Generative Foundations)",
       "type": "formalization",
       "health_score": 2,
-      "community": "community-4"
+      "community": "community-2"
     },
     {
       "id": "wiki/formalizations/hjb.md",
       "label": "HJB 方程（Hamilton-Jacobi-Bellman）",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/lqr.md",
       "label": "LQR / iLQR",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/lyapunov.md",
       "label": "Lyapunov 稳定性",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/mdp.md",
@@ -845,28 +845,28 @@
       "label": "Partially Observable MDP (POMDP)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/probability-flow.md",
       "label": "Probability Flow (概率流形式化)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/formalizations/se3-representation.md",
       "label": "SE(3) Representation (位姿表示形式化)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/tsid-formulation.md",
       "label": "Task Space Inverse Dynamics (TSID) 形式化",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/formalizations/udp-multicast-dynamics.md",
@@ -880,7 +880,7 @@
       "label": "Variational Objective (变分目标函数)",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-2"
     },
     {
       "id": "wiki/formalizations/vla-tokenization.md",
@@ -894,21 +894,21 @@
       "label": "ZMP + LIP 形式化",
       "type": "formalization",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/action-chunking.md",
       "label": "Action Chunking（动作块输出）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/actuator-network.md",
       "label": "Actuator Network (执行器网络)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/add.md",
@@ -964,14 +964,14 @@
       "label": "Behavior Cloning with Transformer",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/behavior-cloning.md",
       "label": "Behavior Cloning（行为克隆）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/beyondmimic.md",
@@ -992,14 +992,14 @@
       "label": "ContactNet",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/dagger.md",
       "label": "DAgger（Dataset Aggregation）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/deepmimic.md",
@@ -1020,14 +1020,14 @@
       "label": "Diffusion Policy",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/dmp.md",
       "label": "Dynamic Movement Primitives (DMP)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/exoactor.md",
@@ -1055,7 +1055,7 @@
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/haic.md",
@@ -1083,7 +1083,7 @@
       "label": "Humanoid Transformer with Touch Dreaming (HTD)",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/imitation-learning.md",
@@ -1097,7 +1097,7 @@
       "label": "In-hand Reorientation (手内重定向)",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/lcp.md",
@@ -1111,35 +1111,35 @@
       "label": "LingBot-Map (Streaming 3D Reconstruction Foundation Model)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/lqr-ilqr.md",
       "label": "LQR / iLQR 算法详解",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/marl.md",
       "label": "Multi-Agent Reinforcement Learning (MARL)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/model-based-rl.md",
       "label": "Model-Based RL（基于模型的强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/model-predictive-control.md",
       "label": "Model Predictive Control (MPC)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/motion-retargeting-gmr.md",
@@ -1160,7 +1160,7 @@
       "label": "Model Predictive Path Integral (MPPI)",
       "type": "method",
       "health_score": 3,
-      "community": "community-4"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/paid-framework.md",
@@ -1188,14 +1188,14 @@
       "label": "Safe RL（安全强化学习）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-5"
     },
     {
       "id": "wiki/methods/skeleton-action-recognition.md",
       "label": "骨架动作识别（Skeleton-Based Action Recognition）",
       "type": "method",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-2"
     },
     {
       "id": "wiki/methods/smp.md",
@@ -1216,7 +1216,7 @@
       "label": "Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/switch-framework.md",
@@ -1230,14 +1230,14 @@
       "label": "Tactile Impedance Control（基于触觉反馈的阻抗控制）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/methods/trajectory-optimization.md",
       "label": "Trajectory Optimization（轨迹优化）",
       "type": "method",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/unified-multimodal-tokens.md",
@@ -1251,7 +1251,7 @@
       "label": "Visual Servoing（视觉伺服控制）",
       "type": "method",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-0"
     },
     {
       "id": "wiki/methods/vla.md",
@@ -1279,56 +1279,56 @@
       "label": "人形机器人运动控制 Know-How",
       "type": "overview",
       "health_score": 3,
-      "community": "community-7"
+      "community": "community-6"
     },
     {
       "id": "wiki/overview/robot-learning-overview.md",
       "label": "Robot Learning Overview",
       "type": "overview",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/clf-cbf-in-wbc.md",
       "label": "Query：CLF 与 CBF 在 WBC/MPC 中的联合使用",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-5"
     },
     {
       "id": "wiki/queries/contact-rich-manipulation-guide.md",
       "label": "Query：接触丰富操作实践指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/control-architecture-comparison.md",
       "label": "人形机器人控制架构综合对比",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/demo-data-collection-guide.md",
       "label": "操作任务演示数据收集指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/dexterous-data-collection-guide.md",
       "label": "灵巧操作数据采集指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/domain-randomization-guide.md",
       "label": "Query：sim2real Domain Randomization 参数设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-0"
+      "community": "community-7"
     },
     {
       "id": "wiki/queries/ethercat-master-optimization.md",
@@ -1356,7 +1356,7 @@
       "label": "机器人硬件抽象层 (HAL) 设计指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-7"
+      "community": "community-6"
     },
     {
       "id": "wiki/queries/hardware-comparison.md",
@@ -1384,7 +1384,7 @@
       "label": "人形机器人运动控制 Know-How 结构化摘要",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/humanoid-rl-cookbook.md",
@@ -1398,7 +1398,7 @@
       "label": "Query：机器人操作任务该优先用 IL 还是 RL？",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/locomotion-failure-modes.md",
@@ -1419,21 +1419,21 @@
       "label": "MPC 求解器选型指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/mpc-tuning-guide.md",
       "label": "Model Predictive Control (MPC) 调参指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/multimodal-fusion-tricks.md",
       "label": "机器人感知中的多模态融合技巧",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/open-source-motion-control-projects.md",
@@ -1447,7 +1447,7 @@
       "label": "Pinocchio 快速上手：最小可运行动力学示例",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/ppo-vs-sac-for-robots.md",
@@ -1531,35 +1531,35 @@
       "label": "在 RL 中利用触觉反馈提升操作鲁棒性",
       "type": "query",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/queries/vla-deployment-guide.md",
       "label": "VLA 真机部署指南：延迟、异步与加速",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-2"
     },
     {
       "id": "wiki/queries/vla-with-low-level-controller.md",
       "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-7"
     },
     {
       "id": "wiki/queries/wbc-implementation-guide.md",
       "label": "WBC 工程实现指南",
       "type": "query",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/wbc-tuning-guide.md",
       "label": "WBC 调参指南：从公式到实机表现",
       "type": "query",
       "health_score": 3,
-      "community": "community-6"
+      "community": "community-0"
     },
     {
       "id": "wiki/queries/when-to-use-wbc-vs-rl.md",
@@ -1587,14 +1587,14 @@
       "label": "Balance Recovery（平衡恢复）",
       "type": "task",
       "health_score": 3,
-      "community": "community-1"
+      "community": "community-0"
     },
     {
       "id": "wiki/tasks/bimanual-manipulation.md",
       "label": "Bimanual Manipulation（双臂协调操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/tasks/humanoid-locomotion.md",
@@ -1606,6 +1606,13 @@
     {
       "id": "wiki/tasks/humanoid-soccer.md",
       "label": "Humanoid Soccer",
+      "type": "task",
+      "health_score": 3,
+      "community": "community-0"
+    },
+    {
+      "id": "wiki/tasks/hybrid-locomotion.md",
+      "label": "Hybrid Locomotion (混合运动)",
       "type": "task",
       "health_score": 3,
       "community": "community-0"
@@ -1629,14 +1636,14 @@
       "label": "Manipulation",
       "type": "task",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/tasks/teleoperation.md",
       "label": "Teleoperation（遥操作）",
       "type": "task",
       "health_score": 3,
-      "community": "community-2"
+      "community": "community-1"
     },
     {
       "id": "wiki/tasks/ultra-survey.md",
@@ -7144,6 +7151,18 @@
       "target": "wiki/tasks/locomotion.md"
     },
     {
+      "source": "wiki/tasks/hybrid-locomotion.md",
+      "target": "wiki/concepts/whole-body-control.md"
+    },
+    {
+      "source": "wiki/tasks/hybrid-locomotion.md",
+      "target": "wiki/tasks/loco-manipulation.md"
+    },
+    {
+      "source": "wiki/tasks/hybrid-locomotion.md",
+      "target": "wiki/tasks/locomotion.md"
+    },
+    {
       "source": "wiki/tasks/loco-manipulation.md",
       "target": "wiki/concepts/contact-rich-manipulation.md"
     },
@@ -7262,6 +7281,10 @@
     {
       "source": "wiki/tasks/locomotion.md",
       "target": "wiki/tasks/humanoid-locomotion.md"
+    },
+    {
+      "source": "wiki/tasks/locomotion.md",
+      "target": "wiki/tasks/hybrid-locomotion.md"
     },
     {
       "source": "wiki/tasks/locomotion.md",
@@ -7420,20 +7443,20 @@
     {
       "id": "community-0",
       "label": "Locomotion 社区",
-      "size": 101,
+      "size": 151,
       "hub_id": "wiki/tasks/locomotion.md"
     },
     {
       "id": "community-1",
-      "label": "Whole-Body Control (WBC) 社区",
-      "size": 57,
-      "hub_id": "wiki/concepts/whole-body-control.md"
+      "label": "Manipulation 社区",
+      "size": 35,
+      "hub_id": "wiki/tasks/manipulation.md"
     },
     {
       "id": "community-2",
-      "label": "Manipulation 社区",
-      "size": 47,
-      "hub_id": "wiki/tasks/manipulation.md"
+      "label": "VLA（Vision-Language-Action） 社区",
+      "size": 22,
+      "hub_id": "wiki/methods/vla.md"
     },
     {
       "id": "community-3",
@@ -7443,24 +7466,24 @@
     },
     {
       "id": "community-4",
-      "label": "Model-Based RL（基于模型的强化学习） 社区",
-      "size": 7,
-      "hub_id": "wiki/methods/model-based-rl.md"
-    },
-    {
-      "id": "community-5",
       "label": "Roboto Origin（开源人形机器人基线） 社区",
       "size": 7,
       "hub_id": "wiki/entities/roboto-origin.md"
     },
     {
-      "id": "community-6",
-      "label": "摩擦锥 (Friction Cone) 社区",
-      "size": 3,
-      "hub_id": "wiki/formalizations/friction-cone.md"
+      "id": "community-5",
+      "label": "Safety Filter（安全过滤器） 社区",
+      "size": 6,
+      "hub_id": "wiki/concepts/safety-filter.md"
     },
     {
       "id": "community-7",
+      "label": "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区",
+      "size": 2,
+      "hub_id": "wiki/queries/vla-with-low-level-controller.md"
+    },
+    {
+      "id": "community-6",
       "label": "人形机器人运动控制 Know-How 社区",
       "size": 2,
       "hub_id": "wiki/overview/humanoid-motion-control-know-how.md"
