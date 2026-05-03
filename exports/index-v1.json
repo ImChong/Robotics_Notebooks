@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 274,
+  "item_count": 275,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -86,6 +86,33 @@
       "ingest_source": "sources/papers/mpc.md"
     },
     {
+      "id": "wiki-concepts-clock-synchronization-algorithms",
+      "title": "时钟同步算法 (Clock Synchronization Algorithms)",
+      "path": "wiki/concepts/clock-synchronization-algorithms.md",
+      "summary": "type: concept。",
+      "content_markdown": "---\ntype: concept\ntags: [real-time, clock-sync, ptp, ethercat, hardware, networking]\nstatus: complete\nupdated: 2026-05-02\nrelated:\n  - ./ethercat-protocol.md\n  - ./lcm-basics.md\n  - ./ros2-basics.md\n  - ../formalizations/control-loop-latency-modeling.md\n  - ../formalizations/udp-multicast-dynamics.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时钟（DC）抽象成一套主时钟选举 + 偏置/漂移估计 + 周期校正的统一框架，解释多板卡运控中如何把跨节点抖动压到亚微秒级。\"\n---\n\n# 时钟同步算法 (Clock Synchronization Algorithms)\n\n**时钟同步算法** 解决一个看似简单、却在多板卡运控里反复折腾人的问题：**两台机器的时间到底差多少，怎么把这个差距持续压到与控制环路相比可忽略的水平？** 在人形机器人里，IMU 在一块板、关节驱动器在另一条总线、视觉感知挂在第三个 NUC，如果时钟不同步，融合出来的状态就会带上一个\"网络抖动\"形状的虚假项，直接污染 [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) 与 [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md) 中的所有测量。\n\n## 为什么单靠 NTP 不够\n\n家用与服务器场景常用的 **NTP** 在跨广域网下精度约 $\\sim 1\\sim 10\\ ms$，最好的 LAN 配置也只能到 $\\sim 100\\ \\mu s$。这个量级对**视频通话**够用，对 **1 kHz 力矩闭环**完全失格——它本身已经接近一个控制周期。机器人需要的是**亚微秒到纳秒级**的同步，于是引出两套主流方案：\n\n- **PTP (IEEE 1588)**：跑在普通以太网上的软/硬件协议，常见精度 $100\\ ns\\sim 1\\ \\mu s$。\n- **EtherCAT 分布式时钟 (DC)**：跑在 EtherCAT 总线上的特化方案，精度通常 $< 100\\ ns$。\n\n两者在数学结构上**高度同构**，理解了一边，另一边就是工程参数差异。\n\n## 共同的三段式抽象\n\n任何实用的时钟同步算法都可以拆成三个阶段：\n\n1. **主时钟选举 (Master Selection)**：决定整个域里谁是时间基准。PTP 用 **BMCA**（Best Master Clock Algorithm），按 priority1 → class → accuracy → variance → priority2 → clockIdentity 的字典序投票；EtherCAT DC 默认把第一个有 DC 能力的从站当作参考时钟（Reference Clock），由主站显式指定。\n2. **偏置与漂移估计 (Offset & Skew Estimation)**：周期性交换时间戳，估出本地时钟与主时钟的瞬时偏差 $\\theta(t)$ 与频率比 $\\gamma(t)$。\n3. **校正注入 (Discipline)**：把 $\\theta, \\gamma$ 反馈给本地振荡器或软件钟，通常用 **PI 控制律** 调整频率，避免硬跳变。\n\n这三段对应工程现场最常见的三类故障：选主抖动（频繁切换 GM）、估计噪声（链路非对称）、校正过冲（PI 增益太大引起振荡）。\n\n## PTP 的两次握手时间戳\n\nPTP 通过四个时间戳估计单跳偏置（**delay request-response** 机制）：\n\n- 主站在 $t_1$ 发出 `Sync`，从站在 $t_2$ 收到；\n- 从站在 $t_3$ 发 `Delay_Req`，主站在 $t_4$ 收到；\n- 主站把 $t_4$ 通过 `Delay_Resp` 告诉从站。\n\n在**链路对称**假设下，单向传播延迟与时钟偏置分别为：\n\n$$\nd = \\frac{(t_2 - t_1) + (t_4 - t_3)}{2}, \\qquad \\theta = \\frac{(t_2 - t_1) - (t_4 - t_3)}{2}\n$$\n\n工程上的关键改进：\n\n- **One-step Sync**：把 $t_1$ 直接写在 `Sync` 帧里，省去 `Follow_Up`，减少抖动；\n- **硬件时间戳 (HWTS)**：把 $t_1\\sim t_4$ 在 PHY 层打戳，去掉协议栈抖动；\n- **Transparent Clock (TC)**：交换机在转发时把驻留时间累加到帧里，消除多跳路径的抖动累积；\n- **Boundary Clock (BC)**：交换机本身做一次同步、再以主时钟身份向下游发 Sync，限制误差线性累积。\n\n实测同步精度近似为\n\n$$\n\\sigma_\\theta \\approx \\sqrt{\\sigma_{\\text{HWTS}}^2 + \\tfrac{1}{2}\\sigma_{\\Delta d}^2}\n$$\n\n其中 $\\sigma_{\\Delta d}$ 是上下行延迟非对称性的标准差——它是 PTP 的真正天花板，对 PHY 与交换机选型最敏感。\n\n## EtherCAT DC：把同步放在总线物理层\n\nEtherCAT 走另一条路：既然总线是确定性环网，不如让所有从站在 ASIC 里维护一个 64 位 DC 时钟，由主站做一次性测量后下发偏置。其工作流程：\n\n1. 主站发出一帧 `BRW(0x900)`，途经每个 DC 从站时打两个时间戳（来时、去时）；\n2. 报文绕环回来，主站读出每段 **传播延迟差**，计算每个从站相对参考从站的偏置 $\\theta_i$；\n3. 主站通过 `FPWR` 把 $\\theta_i$ 写回从站的 `0x920` 寄存器，从此本地 DC 时钟在硬件层补偿；\n4. 主站周期性发 **DC Sync 报文** 维护漂移，带宽几乎可忽略。\n\n由于偏置是用**同一帧的来回时间戳**算的，链路非对称在这里几乎被消去；又因为补偿做在 ASIC 里，软件抖动完全不参与。这两点合起来解释了为什么 EtherCAT DC 在 100 个轴的人形机器人上仍能稳定到 $< 100\\ ns$，而同样数量的 PTP 节点在普通交换机上只能做到 $\\sim 1\\ \\mu s$。\n\n## gPTP / 802.1AS：汽车与机器人共用的子集\n\n**gPTP (IEEE 802.1AS)** 是 PTP 的严格子集，强制使用：\n\n- 单一同步域、单一 BMCA；\n- 必须开启 peer-to-peer Path Delay 机制（`Pdelay_Req/Resp`），逐跳测延迟；\n- 全网交换机都必须是 TC 或 BC，不允许\"哑交换\"穿透。\n\n它牺牲了 PTP 的灵活性，换来**确定性最坏情况误差**，被 TSN（Time-Sensitive Networking）做基础。机器人侧一旦上 TSN 交换机，gPTP 就成为默认选项。\n\n## 工程对比表\n\n| 方案 | 典型精度 | 硬件依赖 | 适用场景 |\n|------|---------|---------|---------|\n| NTP | $1\\sim 100\\ ms$ | 无 | 日志时间戳、跨广域网 |\n| PTP (软件 TS) | $10\\sim 100\\ \\mu s$ | 普通网卡 | 一般感知融合 |\n| PTP (硬件 TS + BC/TC) | $100\\ ns\\sim 1\\ \\mu s$ | 1588 网卡 + 1588 交换机 | 跨板卡视觉/IMU 融合 |\n| gPTP / 802.1AS | $100\\ ns$ 量级 | TSN 交换机 | 车规、TSN 总线 |\n| EtherCAT DC | $< 100\\ ns$ | EtherCAT ASIC | 人形 / 工业关节运控 |\n\n实际部署里，一台人形机器人常常**同时跑两套**：关节驱动走 EtherCAT DC、上层感知节点走硬件 PTP，两者再通过主站板卡的 `phc2sys` 做一次跨域桥接。\n\n## 与控制环路的耦合\n\n时钟同步质量直接进入两个上层模型：\n\n- **延迟测量去偏**：[控制环路延迟建模](../formalizations/control-loop-latency-modeling.md) 中的 $T_{\\text{bus}}$、$T_{\\text{compute}}$ 都依赖跨节点时间戳相减，$\\sigma_\\theta$ 会以加性方差形式直接抬高总抖动；\n- **多订阅者一致性**：[UDP 组播动力学](../formalizations/udp-multicast-dynamics.md) 里 $\\Delta_{ij,k}$ 的极值分布只有在跨节点时钟同步好之后才有物理意义，否则把时钟漂移当成网络抖动。\n\n工程经验法则：**$\\sigma_\\theta$ 必须 $< T_{\\text{ctrl}} / 100$**，否则同步误差会成为闭环带宽的隐形上限。\n\n## 常见误区\n\n- **误把 NTP 当作\"够用\"**：在 1 ms 控制周期下，NTP 的 100 µs 精度已等价于一次完整环路抖动，会污染所有 deadline 统计。\n- **忘记关闭 Linux NTP/chrony**：开了 PTP 又留着 NTP，两个守护进程会互相打架，时钟出现锯齿状跳变。\n- **不开 HWTS**：软件时间戳的抖动至少是 microsecond 级，PTP 的硬件优势全部归零。\n- **跨域桥接精度损失**：`phc2sys` 单方向的同步精度通常只有 $\\sim 1\\ \\mu s$，把 EtherCAT 的 ns 级精度桥到 PTP 域时务必注意。\n- **链路非对称未补偿**：单模 / 多模光纤、不同长度双绞线都会引入恒定偏置，PTP 算出来的 $\\theta$ 会带上系统误差，需要离线测量后填到 `asymmetry` 寄存器。\n\n## 学这个方法时最该盯住的点\n\n1. **同步是\"估计 + 控制\"两步走**：先估偏置/漂移，再用 PI 把振荡器拉过去，光估不控会漂回去。\n2. **链路对称是 PTP 的隐含信仰**：一旦不成立（光纤不等长、上下行队列不同），精度立刻退化到 $\\sigma_{\\Delta d}$ 主导。\n3. **EtherCAT DC 的强项在物理层**：抖动主要来自 ASIC 时钟稳定度，与软件几乎无关。\n4. **跨域永远是最弱一环**：把 PTP 桥到 DC，或把 ROS 2 节点接到 PTP 域，都要单独测最终精度。\n\n## 关联页面\n\n- [EtherCAT 协议基础](./ethercat-protocol.md)\n- [LCM 基础](./lcm-basics.md)\n- [ROS 2 基础](./ros2-basics.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n- [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- IEEE Std 1588-2019, *Standard for a Precision Clock Synchronization Protocol for Networked Measurement and Control Systems*.\n- IEEE Std 802.1AS-2020, *Timing and Synchronization for Time-Sensitive Applications*.\n- EtherCAT Technology Group, *EtherCAT Distributed Clocks: System Description*.\n- Mills, D. L., *Computer Network Time Synchronization: The Network Time Protocol on Earth and in Space*, 2nd ed., CRC Press, 2010.\n\n## 推荐继续阅读\n\n- linuxptp 项目文档（`ptp4l`, `phc2sys` 配置示例）\n- IgH EtherCAT Master 手册：DC 配置与 `ec_slave_config_dc()` API",
+      "tags": [
+        "concept",
+        "control",
+        "dynamics",
+        "sim2real",
+        "hardware"
+      ],
+      "related": [
+        "wiki-concepts-ethercat-protocol",
+        "wiki-concepts-lcm-basics",
+        "wiki-concepts-ros2-basics",
+        "wiki-formalizations-control-loop-latency-modeling",
+        "wiki-formalizations-udp-multicast-dynamics",
+        "wiki-queries-real-time-control-middleware-guide",
+        "sources-papers-sim2real"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "concept"
+    },
+    {
       "id": "wiki-concepts-contact-dynamics",
       "title": "Contact Dynamics",
       "path": "wiki/concepts/contact-dynamics.md",
@@ -119,7 +146,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_dynamics.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -150,7 +177,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_dynamics.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -245,7 +272,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -401,7 +428,7 @@
       "title": "EtherCAT 协议基础",
       "path": "wiki/concepts/ethercat-protocol.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [middleware, hardware, protocol, ethercat, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../queries/ethercat-master-optimization.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ../formalizations/control-loop-latency-modeling.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。\"\n---\n\n# EtherCAT 协议基础\n\n**EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而无法保证实时性的问题，将带宽利用率发挥到了物理极限。\n\n## 核心机制：On-the-fly 处理\n\n不同于普通网络每个节点都要接收并解析报文，在 EtherCAT 中：\n1. 主站发出的以太网帧像一列火车一样穿过所有从站。\n2. 每个从站（电机驱动器）在报文经过的瞬间，**“在运行中”** 提取属于自己的指令，并把自己当前的位置/扭矩数据塞入报文对应的位置。\n3. 报文到达链尾后原路折返。\n\n这使得 100 个轴的刷新周期可以轻松突破 **250微秒**。\n\n## 关键特性\n\n- **分布式时钟 (DC)**：支持多轴之间纳秒级的同步精度。\n- **拓扑灵活**：支持线型、树型、星型拓扑，对人形机器人布线极其友好。\n- **协议栈**：\n  - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。\n\n## 关联页面\n- [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n\n## 参考来源\n- EtherCAT Technology Group (ETG) 官方白皮书。",
+      "content_markdown": "---\ntype: concept\ntags: [middleware, hardware, protocol, ethercat, realtime]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../queries/ethercat-master-optimization.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ../formalizations/control-loop-latency-modeling.md\n  - ./clock-synchronization-algorithms.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"EtherCAT 协议基础：介绍了这款基于以太网的高性能工业现场总线协议，重点讲解了其“运行中处理”机制与分布式时钟（DC）如何支撑起人形机器人的硬实时控制。\"\n---\n\n# EtherCAT 协议基础\n\n**EtherCAT (Ethernet for Control Automation Technology)** 是目前人形机器人底层总线的首选协议。它解决了标准以太网因冲突检测（CSMA/CD）而无法保证实时性的问题，将带宽利用率发挥到了物理极限。\n\n## 核心机制：On-the-fly 处理\n\n不同于普通网络每个节点都要接收并解析报文，在 EtherCAT 中：\n1. 主站发出的以太网帧像一列火车一样穿过所有从站。\n2. 每个从站（电机驱动器）在报文经过的瞬间，**“在运行中”** 提取属于自己的指令，并把自己当前的位置/扭矩数据塞入报文对应的位置。\n3. 报文到达链尾后原路折返。\n\n这使得 100 个轴的刷新周期可以轻松突破 **250微秒**。\n\n## 关键特性\n\n- **分布式时钟 (DC)**：支持多轴之间纳秒级的同步精度。\n- **拓扑灵活**：支持线型、树型、星型拓扑，对人形机器人布线极其友好。\n- **协议栈**：\n  - **CoE (CANopen over EtherCAT)**：最主流的应用层协议。\n\n## 关联页面\n- [EtherCAT 主站优化指南](../queries/ethercat-master-optimization.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n- [时钟同步算法](./clock-synchronization-algorithms.md)\n\n## 参考来源\n- EtherCAT Technology Group (ETG) 官方白皮书。",
       "tags": [
         "concept",
         "control",
@@ -412,7 +439,8 @@
       "related": [
         "wiki-queries-ethercat-master-optimization",
         "wiki-queries-real-time-control-middleware-guide",
-        "wiki-formalizations-control-loop-latency-modeling"
+        "wiki-formalizations-control-loop-latency-modeling",
+        "wiki-concepts-clock-synchronization-algorithms"
       ],
       "source_links": [],
       "status": "active",
@@ -448,7 +476,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_dynamics.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -480,7 +508,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_planning.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -756,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/teleoperation.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -786,7 +814,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -818,7 +846,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -883,7 +911,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1002,7 +1030,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_dynamics.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1036,7 +1064,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1068,7 +1096,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-concepts-tactile-sensing",
@@ -1169,7 +1197,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1267,7 +1295,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_dynamics.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2168,7 +2196,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/model_based_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2619,7 +2647,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/optimal_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2911,7 +2939,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2948,7 +2976,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -2986,7 +3014,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/imitation_learning.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -3634,7 +3662,7 @@
       "title": "控制环路延迟建模 (Control Loop Latency Modeling)",
       "path": "wiki/formalizations/control-loop-latency-modeling.md",
       "summary": "type: formalization。",
-      "content_markdown": "---\ntype: formalization\ntags: [real-time, control, hardware, latency, middleware, math]\nstatus: complete\nupdated: 2026-04-30\nrelated:\n  - ../concepts/ethercat-protocol.md\n  - ../concepts/lcm-basics.md\n  - ../concepts/ros2-basics.md\n  - ../concepts/sim2real.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ./udp-multicast-dynamics.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。\"\n---\n\n# 控制环路延迟建模 (Control Loop Latency Modeling)\n\n**控制环路延迟建模** 把一次「读传感 → 算策略 → 写力矩」的闭环拆解成若干段独立的延迟分量，用随机变量与卷积刻画端到端时延及抖动，从而把\"机器人为什么在真机上抽搐\"这种工程现象变成一个可定量分析、可优化的数学问题。\n\n## 为什么要形式化\n\n在仿真里，控制器假设当前观测 $o_t$ 和下一时刻的力矩指令 $\\tau_{t+1}$ 之间没有延迟。但在真机上：\n\n- 传感数据通过总线到达 CPU 需要时间；\n- 策略推理本身要 $\\sim\\!\\text{ms}$ 级算力；\n- 内核调度可能让控制线程被抢占；\n- 力矩指令再经过一次总线才能到达驱动器。\n\n如果不把这条链路写成一个公式，工程师就只能凭\"感觉\"调控制频率；写下来之后，**最坏情况延迟 $T_{\\max}$、控制带宽 $\\omega_c$、抖动方差 $\\sigma^2$** 之间的换算关系就一目了然。\n\n## 端到端延迟的加性分解\n\n设一次控制环路的总延迟为 $T_{\\text{loop}}$，按物理路径分解为 5 段：\n\n$$\nT_{\\text{loop}} = T_{\\text{sense}} + T_{\\text{bus,up}} + T_{\\text{compute}} + T_{\\text{sched}} + T_{\\text{bus,dn}}\n$$\n\n| 分量 | 含义 | 典型量级 |\n|------|------|---------|\n| $T_{\\text{sense}}$ | 传感器自身的采样、滤波、ADC 转换 | $50\\ \\mu s\\sim 1\\ ms$ |\n| $T_{\\text{bus,up}}$ | 从驱动器/IMU 经 EtherCAT/CAN 到 CPU | $0.25\\sim 2\\ ms$ |\n| $T_{\\text{compute}}$ | 策略前向 / WBC QP / 状态估计 | $0.5\\sim 10\\ ms$ |\n| $T_{\\text{sched}}$ | 内核调度抖动 + 上下文切换 | $0.05\\sim 5\\ ms$ |\n| $T_{\\text{bus,dn}}$ | 力矩指令从 CPU 经总线写回驱动器 | $0.25\\sim 2\\ ms$ |\n\n每一项都是随机变量，其分布通常**右偏**（minor 多数样本接近均值，少数长尾）。把它们近似为相互独立，则总延迟分布是各分量分布的卷积：\n\n$$\np_{T_{\\text{loop}}}(t) = \\big(p_{\\text{sense}} \\ast p_{\\text{bus,up}} \\ast p_{\\text{compute}} \\ast p_{\\text{sched}} \\ast p_{\\text{bus,dn}}\\big)(t)\n$$\n\n期望和方差可加：\n\n$$\n\\mathbb{E}[T_{\\text{loop}}] = \\sum_i \\mu_i, \\qquad \\mathrm{Var}[T_{\\text{loop}}] = \\sum_i \\sigma_i^2\n$$\n\n实时系统真正关心的是 99% 或 99.9% 分位 $T_{\\text{loop}}^{(p)}$，它必须严格小于一个控制周期 $T_{\\text{ctrl}} = 1/f_{\\text{ctrl}}$，否则就会发生 **deadline miss**。\n\n## 总线延迟：报文长度模型\n\nEtherCAT、CAN、UDP 等总线的单段延迟可以写成\n\n$$\nT_{\\text{bus}} = T_{\\text{access}} + \\frac{L_{\\text{frame}}}{B} + T_{\\text{prop}}\n$$\n\n其中 $T_{\\text{access}}$ 是介质访问等待（CSMA、DC 同步窗等），$L_{\\text{frame}}$ 是报文长度（bit），$B$ 是链路带宽（bit/s），$T_{\\text{prop}}$ 是物理传播延迟。对于一台 100 关节人形机器人，$L_{\\text{frame}}$ 在 EtherCAT 下约 $1500$ 字节，100 Mbit/s 链路上传输部分约 $120\\ \\mu s$，再加上 $T_{\\text{access}}$ 与从站处理才得到 [EtherCAT 协议](../concepts/ethercat-protocol.md) 实测 $250\\ \\mu s$ 的循环。\n\n## 计算延迟：批量与缓存命中\n\n策略推理的计算延迟近似为\n\n$$\nT_{\\text{compute}} = \\alpha N_{\\text{ops}} + \\beta(1 - h_{\\text{cache}}) + T_{\\text{kernel-launch}}\n$$\n\n- $N_{\\text{ops}}$：网络浮点操作数；$\\alpha$ 与 GPU 实际算力相关；\n- $h_{\\text{cache}} \\in [0, 1]$：缓存命中率；缓存抖动会把均值抬高 $\\beta$；\n- $T_{\\text{kernel-launch}}$：每次 CUDA / NPU 启动的固定开销，对小模型主导。\n\n这个公式直接说明了为什么在真机上\"小网络 + 高频推理\"通常优于\"大网络 + 低频推理\"：$T_{\\text{kernel-launch}}$ 被强行摊到每帧，与 $N_{\\text{ops}}$ 不可加。\n\n## 调度抖动：PREEMPT_RT 的形式化角色\n\n在标准 Linux 中，$T_{\\text{sched}}$ 的尾部由非自愿上下文切换、SoftIRQ、ksoftirqd 等支配，呈现重尾分布。开 [PREEMPT_RT](../queries/real-time-control-middleware-guide.md) 后，调度延迟近似为：\n\n$$\nT_{\\text{sched}}^{(p)} \\approx T_{\\text{wcl}} = \\max\\Big( \\text{IRQ-off windows} \\Big) + T_{\\text{wakeup}}\n$$\n\n其中 $T_{\\text{wcl}}$（worst-case latency）可由 `cyclictest` 长时间运行测得。CPU 隔离 (`isolcpus`, `nohz_full`, `rcu_nocbs`) 的目标就是把上式中 IRQ-off 窗口压到只剩硬件中断必经的几十微秒。\n\n## 端到端延迟与控制带宽的关系\n\n把控制环路看作一个采样系统，**延迟 $T_{\\text{loop}}$ 在频域上等效为一个全通相位滞后**：\n\n$$\nH_{\\text{delay}}(j\\omega) = e^{-j\\omega T_{\\text{loop}}}\n$$\n\n要保证闭环稳定，常用经验法则是相位裕度 $\\geq 60^\\circ$，即\n\n$$\n\\omega_c \\cdot T_{\\text{loop}} \\leq \\tfrac{\\pi}{6} \\quad\\Longleftrightarrow\\quad \\omega_c \\leq \\frac{\\pi}{6\\, T_{\\text{loop}}}\n$$\n\n也就是说，端到端延迟 $5\\ ms$ 对应的可用控制带宽上限约 $\\omega_c \\approx 105\\ \\text{rad/s} \\approx 17\\ \\text{Hz}$。**抖动 $\\sigma$ 也必须计入**：把 $T_{\\text{loop}}$ 替换为 $\\mathbb{E}[T_{\\text{loop}}] + 3\\sigma$ 即可拿到一个保守的可用带宽估计。\n\n## 与采样定理的连接\n\n控制周期 $T_{\\text{ctrl}}$ 与端到端延迟必须满足：\n\n$$\nT_{\\text{loop}}^{(p)} < T_{\\text{ctrl}} < \\frac{1}{2 \\omega_c / (2\\pi)}\n$$\n\n左半部分保证不丢周期（实时约束），右半部分保证不混叠（Nyquist）。这两个不等式结合在一起就给出了\"控制频率不是越高越好\"的形式化解释：当 $T_{\\text{ctrl}}$ 接近 $T_{\\text{loop}}^{(p)}$ 时，deadline miss 概率指数级增长，反而不如降一档频率换取低抖动。\n\n## 工程检查清单\n\n把上述形式化落到实物上，最终通常归结为四组测量：\n\n1. 用示波器或 DC 时间戳测量 $\\mathbb{E}[T_{\\text{bus}}]$ 与最坏情况；\n2. 在控制循环里打 `clock_gettime(CLOCK_MONOTONIC_RAW)` 时间戳，统计 $T_{\\text{compute}}$ 的 99 分位；\n3. 用 `cyclictest --priority=98 --duration=1h` 测 $T_{\\text{sched}}$ 长尾；\n4. 把上面三组分布做卷积或直接把对应时间戳相加，得到 $T_{\\text{loop}}$ 的经验分布并和 $T_{\\text{ctrl}}$ 对比。\n\n## 方法局限性\n\n- **独立性假设过强**：真实系统中计算延迟与调度延迟会强相关（高负载同时拖累两者），卷积只是一阶近似。\n- **加性分解漏掉了反馈耦合**：一些 OS 调度策略会在丢周期后追赶下一帧，使得短期内\"看起来正常\"但相位仍偏。\n- **频域线性近似**：$e^{-j\\omega T}$ 假设 $T$ 是常数，对显著抖动的系统可能要走 LMI / 时变系统稳定性分析。\n\n## 学这个方法时最该盯住的点\n\n1. **延迟必须按物理段拆**：抖动来自哪一段，对应的工程对策完全不同（总线、内核、模型）。\n2. **均值不重要，分位数才重要**：硬实时只看 $T^{(99.9\\%)}$，看均值会被尾部坑死。\n3. **延迟 ↔ 带宽 ↔ 频率三角**：先固定能容忍的延迟，再反推可用带宽与控制周期，不要反过来定频率。\n\n## 关联页面\n\n- [EtherCAT 协议基础](../concepts/ethercat-protocol.md)\n- [LCM 基础](../concepts/lcm-basics.md)\n- [ROS 2 基础](../concepts/ros2-basics.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [UDP 组播动力学](./udp-multicast-dynamics.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- Liu, J., *Real-Time Systems*, Prentice Hall, 2000.\n- Buttazzo, G. C., *Hard Real-Time Computing Systems*, Springer, 2011.\n- Khalil, H. K., *Nonlinear Systems* (Sec. 时间延迟系统稳定性), 3rd ed.",
+      "content_markdown": "---\ntype: formalization\ntags: [real-time, control, hardware, latency, middleware, math]\nstatus: complete\nupdated: 2026-04-30\nrelated:\n  - ../concepts/ethercat-protocol.md\n  - ../concepts/lcm-basics.md\n  - ../concepts/ros2-basics.md\n  - ../concepts/sim2real.md\n  - ../concepts/clock-synchronization-algorithms.md\n  - ../queries/real-time-control-middleware-guide.md\n  - ./udp-multicast-dynamics.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"控制环路延迟建模：把一次力矩闭环拆成传感、总线、计算、调度、执行五段独立随机变量的累加，并给出端到端延迟分布、抖动与控制带宽之间的可计算约束。\"\n---\n\n# 控制环路延迟建模 (Control Loop Latency Modeling)\n\n**控制环路延迟建模** 把一次「读传感 → 算策略 → 写力矩」的闭环拆解成若干段独立的延迟分量，用随机变量与卷积刻画端到端时延及抖动，从而把\"机器人为什么在真机上抽搐\"这种工程现象变成一个可定量分析、可优化的数学问题。\n\n## 为什么要形式化\n\n在仿真里，控制器假设当前观测 $o_t$ 和下一时刻的力矩指令 $\\tau_{t+1}$ 之间没有延迟。但在真机上：\n\n- 传感数据通过总线到达 CPU 需要时间；\n- 策略推理本身要 $\\sim\\!\\text{ms}$ 级算力；\n- 内核调度可能让控制线程被抢占；\n- 力矩指令再经过一次总线才能到达驱动器。\n\n如果不把这条链路写成一个公式，工程师就只能凭\"感觉\"调控制频率；写下来之后，**最坏情况延迟 $T_{\\max}$、控制带宽 $\\omega_c$、抖动方差 $\\sigma^2$** 之间的换算关系就一目了然。\n\n## 端到端延迟的加性分解\n\n设一次控制环路的总延迟为 $T_{\\text{loop}}$，按物理路径分解为 5 段：\n\n$$\nT_{\\text{loop}} = T_{\\text{sense}} + T_{\\text{bus,up}} + T_{\\text{compute}} + T_{\\text{sched}} + T_{\\text{bus,dn}}\n$$\n\n| 分量 | 含义 | 典型量级 |\n|------|------|---------|\n| $T_{\\text{sense}}$ | 传感器自身的采样、滤波、ADC 转换 | $50\\ \\mu s\\sim 1\\ ms$ |\n| $T_{\\text{bus,up}}$ | 从驱动器/IMU 经 EtherCAT/CAN 到 CPU | $0.25\\sim 2\\ ms$ |\n| $T_{\\text{compute}}$ | 策略前向 / WBC QP / 状态估计 | $0.5\\sim 10\\ ms$ |\n| $T_{\\text{sched}}$ | 内核调度抖动 + 上下文切换 | $0.05\\sim 5\\ ms$ |\n| $T_{\\text{bus,dn}}$ | 力矩指令从 CPU 经总线写回驱动器 | $0.25\\sim 2\\ ms$ |\n\n每一项都是随机变量，其分布通常**右偏**（minor 多数样本接近均值，少数长尾）。把它们近似为相互独立，则总延迟分布是各分量分布的卷积：\n\n$$\np_{T_{\\text{loop}}}(t) = \\big(p_{\\text{sense}} \\ast p_{\\text{bus,up}} \\ast p_{\\text{compute}} \\ast p_{\\text{sched}} \\ast p_{\\text{bus,dn}}\\big)(t)\n$$\n\n期望和方差可加：\n\n$$\n\\mathbb{E}[T_{\\text{loop}}] = \\sum_i \\mu_i, \\qquad \\mathrm{Var}[T_{\\text{loop}}] = \\sum_i \\sigma_i^2\n$$\n\n实时系统真正关心的是 99% 或 99.9% 分位 $T_{\\text{loop}}^{(p)}$，它必须严格小于一个控制周期 $T_{\\text{ctrl}} = 1/f_{\\text{ctrl}}$，否则就会发生 **deadline miss**。\n\n## 总线延迟：报文长度模型\n\nEtherCAT、CAN、UDP 等总线的单段延迟可以写成\n\n$$\nT_{\\text{bus}} = T_{\\text{access}} + \\frac{L_{\\text{frame}}}{B} + T_{\\text{prop}}\n$$\n\n其中 $T_{\\text{access}}$ 是介质访问等待（CSMA、DC 同步窗等），$L_{\\text{frame}}$ 是报文长度（bit），$B$ 是链路带宽（bit/s），$T_{\\text{prop}}$ 是物理传播延迟。对于一台 100 关节人形机器人，$L_{\\text{frame}}$ 在 EtherCAT 下约 $1500$ 字节，100 Mbit/s 链路上传输部分约 $120\\ \\mu s$，再加上 $T_{\\text{access}}$ 与从站处理才得到 [EtherCAT 协议](../concepts/ethercat-protocol.md) 实测 $250\\ \\mu s$ 的循环。\n\n## 计算延迟：批量与缓存命中\n\n策略推理的计算延迟近似为\n\n$$\nT_{\\text{compute}} = \\alpha N_{\\text{ops}} + \\beta(1 - h_{\\text{cache}}) + T_{\\text{kernel-launch}}\n$$\n\n- $N_{\\text{ops}}$：网络浮点操作数；$\\alpha$ 与 GPU 实际算力相关；\n- $h_{\\text{cache}} \\in [0, 1]$：缓存命中率；缓存抖动会把均值抬高 $\\beta$；\n- $T_{\\text{kernel-launch}}$：每次 CUDA / NPU 启动的固定开销，对小模型主导。\n\n这个公式直接说明了为什么在真机上\"小网络 + 高频推理\"通常优于\"大网络 + 低频推理\"：$T_{\\text{kernel-launch}}$ 被强行摊到每帧，与 $N_{\\text{ops}}$ 不可加。\n\n## 调度抖动：PREEMPT_RT 的形式化角色\n\n在标准 Linux 中，$T_{\\text{sched}}$ 的尾部由非自愿上下文切换、SoftIRQ、ksoftirqd 等支配，呈现重尾分布。开 [PREEMPT_RT](../queries/real-time-control-middleware-guide.md) 后，调度延迟近似为：\n\n$$\nT_{\\text{sched}}^{(p)} \\approx T_{\\text{wcl}} = \\max\\Big( \\text{IRQ-off windows} \\Big) + T_{\\text{wakeup}}\n$$\n\n其中 $T_{\\text{wcl}}$（worst-case latency）可由 `cyclictest` 长时间运行测得。CPU 隔离 (`isolcpus`, `nohz_full`, `rcu_nocbs`) 的目标就是把上式中 IRQ-off 窗口压到只剩硬件中断必经的几十微秒。\n\n## 端到端延迟与控制带宽的关系\n\n把控制环路看作一个采样系统，**延迟 $T_{\\text{loop}}$ 在频域上等效为一个全通相位滞后**：\n\n$$\nH_{\\text{delay}}(j\\omega) = e^{-j\\omega T_{\\text{loop}}}\n$$\n\n要保证闭环稳定，常用经验法则是相位裕度 $\\geq 60^\\circ$，即\n\n$$\n\\omega_c \\cdot T_{\\text{loop}} \\leq \\tfrac{\\pi}{6} \\quad\\Longleftrightarrow\\quad \\omega_c \\leq \\frac{\\pi}{6\\, T_{\\text{loop}}}\n$$\n\n也就是说，端到端延迟 $5\\ ms$ 对应的可用控制带宽上限约 $\\omega_c \\approx 105\\ \\text{rad/s} \\approx 17\\ \\text{Hz}$。**抖动 $\\sigma$ 也必须计入**：把 $T_{\\text{loop}}$ 替换为 $\\mathbb{E}[T_{\\text{loop}}] + 3\\sigma$ 即可拿到一个保守的可用带宽估计。\n\n## 与采样定理的连接\n\n控制周期 $T_{\\text{ctrl}}$ 与端到端延迟必须满足：\n\n$$\nT_{\\text{loop}}^{(p)} < T_{\\text{ctrl}} < \\frac{1}{2 \\omega_c / (2\\pi)}\n$$\n\n左半部分保证不丢周期（实时约束），右半部分保证不混叠（Nyquist）。这两个不等式结合在一起就给出了\"控制频率不是越高越好\"的形式化解释：当 $T_{\\text{ctrl}}$ 接近 $T_{\\text{loop}}^{(p)}$ 时，deadline miss 概率指数级增长，反而不如降一档频率换取低抖动。\n\n## 工程检查清单\n\n把上述形式化落到实物上，最终通常归结为四组测量：\n\n1. 用示波器或 DC 时间戳测量 $\\mathbb{E}[T_{\\text{bus}}]$ 与最坏情况；\n2. 在控制循环里打 `clock_gettime(CLOCK_MONOTONIC_RAW)` 时间戳，统计 $T_{\\text{compute}}$ 的 99 分位；\n3. 用 `cyclictest --priority=98 --duration=1h` 测 $T_{\\text{sched}}$ 长尾；\n4. 把上面三组分布做卷积或直接把对应时间戳相加，得到 $T_{\\text{loop}}$ 的经验分布并和 $T_{\\text{ctrl}}$ 对比。\n\n## 方法局限性\n\n- **独立性假设过强**：真实系统中计算延迟与调度延迟会强相关（高负载同时拖累两者），卷积只是一阶近似。\n- **加性分解漏掉了反馈耦合**：一些 OS 调度策略会在丢周期后追赶下一帧，使得短期内\"看起来正常\"但相位仍偏。\n- **频域线性近似**：$e^{-j\\omega T}$ 假设 $T$ 是常数，对显著抖动的系统可能要走 LMI / 时变系统稳定性分析。\n\n## 学这个方法时最该盯住的点\n\n1. **延迟必须按物理段拆**：抖动来自哪一段，对应的工程对策完全不同（总线、内核、模型）。\n2. **均值不重要，分位数才重要**：硬实时只看 $T^{(99.9\\%)}$，看均值会被尾部坑死。\n3. **延迟 ↔ 带宽 ↔ 频率三角**：先固定能容忍的延迟，再反推可用带宽与控制周期，不要反过来定频率。\n\n## 关联页面\n\n- [EtherCAT 协议基础](../concepts/ethercat-protocol.md)\n- [LCM 基础](../concepts/lcm-basics.md)\n- [ROS 2 基础](../concepts/ros2-basics.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [UDP 组播动力学](./udp-multicast-dynamics.md)\n- [时钟同步算法](../concepts/clock-synchronization-algorithms.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- Liu, J., *Real-Time Systems*, Prentice Hall, 2000.\n- Buttazzo, G. C., *Hard Real-Time Computing Systems*, Springer, 2011.\n- Khalil, H. K., *Nonlinear Systems* (Sec. 时间延迟系统稳定性), 3rd ed.",
       "tags": [
         "formalization",
         "control",
@@ -3650,6 +3678,7 @@
         "wiki-concepts-sim2real",
         "wiki-queries-real-time-control-middleware-guide",
         "wiki-formalizations-udp-multicast-dynamics",
+        "wiki-concepts-clock-synchronization-algorithms",
         "sources-papers-sim2real"
       ],
       "source_links": [],
@@ -4030,7 +4059,7 @@
       "title": "UDP 组播动力学 (UDP Multicast Dynamics)",
       "path": "wiki/formalizations/udp-multicast-dynamics.md",
       "summary": "type: formalization。",
-      "content_markdown": "---\ntype: formalization\ntags: [real-time, communication, middleware, lcm, networking, math]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ./control-loop-latency-modeling.md\n  - ../concepts/lcm-basics.md\n  - ../concepts/ros2-basics.md\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"UDP 组播动力学：把 LCM 等基于 UDP 多播的中间件抽象成丢包-迟到-乱序-不一致四类随机过程，给出丢包率、订阅者间一致性偏差与控制端可用观测窗口之间的可计算约束。\"\n---\n\n# UDP 组播动力学 (UDP Multicast Dynamics)\n\n**UDP 组播动力学** 把 [LCM](../concepts/lcm-basics.md) 这类“即发即弃”的多播中间件，抽象成一个发送方 → 多个接收方的随机过程网络。它不研究单条消息怎么走，而是回答四个工程问题：**丢多少包？谁先收到？大家收到的内容是否一致？数据老化到什么程度还能拿来闭环？** 把这些问题写成公式，意味着抖动不再只是“真机感觉卡”，而是可以套到 [控制环路延迟建模](./control-loop-latency-modeling.md) 里去定量预算。\n\n## 为什么要形式化\n\nUDP 没有重传，没有 ACK。LCM 的设计哲学就是“最新一帧最重要，丢了就丢了”。但当一台人形机器人挂着 IMU、关节编码器、力矩驱动器、视觉感知，全部以 1 kHz 走 UDP 多播时，几个问题马上跳出来：\n\n- 同一条 IMU 报文，控制进程和日志进程谁先收到？差多少？\n- 多播交换机带宽打满时丢包率会从 $10^{-5}$ 突变到 $10^{-2}$，控制器是否还稳？\n- 状态估计器在 1 ms 内没收到新一帧编码器，是该外推还是该退化？\n\n不写下来，就只能凭经验调 socket buffer。写下来之后，**丢包率 $p$、抖动 $\\sigma$、订阅者一致性偏差 $\\Delta$、控制可用窗口 $W$** 之间的换算就是几个不等式。\n\n## 多播信道的四类随机事件\n\n设发送方在 $t_k$ 时刻发出第 $k$ 条报文。对接收方 $i \\in \\{1, \\dots, N\\}$，把每条报文映射到四个互斥事件：\n\n| 事件 | 含义 | 标记 |\n|------|------|------|\n| **成功 (delivered)** | 在截止时间 $t_k + D$ 前收到 | $S_{i,k} = 1$ |\n| **丢包 (lost)** | 永远未收到 | $L_{i,k} = 1$ |\n| **迟到 (late)** | 收到但超过 $D$，按业务相当于丢 | $T_{i,k} = 1$ |\n| **乱序 (reordered)** | 收到，但发生在第 $k+1$ 条之后 | $R_{i,k} = 1$ |\n\n满足 $S_{i,k} + L_{i,k} + T_{i,k} + R_{i,k} = 1$（迟到与乱序可重叠时按业务最严格的那类计）。所有形式化都围绕这四个指示变量的分布展开。\n\n## 丢包率：Gilbert-Elliott 两态模型\n\nUDP 丢包通常**不是独立同分布**，而是“突发性”——交换机短时拥塞会一连丢十几帧。最简也最常用的模型是 **Gilbert-Elliott** 两态马尔可夫链，状态 $X_k \\in \\{G, B\\}$，其中：\n\n- $G$：表示链路处于「畅通」状态（Good），丢包率极低；\n- $B$：表示链路处于「拥塞 / 突发丢包」状态（Bad），丢包率显著抬高。\n\n\n$$\nP = \\begin{bmatrix} 1 - p_{GB} & p_{GB} \\\\ p_{BG} & 1 - p_{BG} \\end{bmatrix}, \\qquad\n\\Pr(L_{i,k} = 1 \\mid X_k) = \\begin{cases} \\varepsilon_G & X_k = G \\\\ \\varepsilon_B & X_k = B \\end{cases}\n$$\n\n其中 $\\varepsilon_G \\ll \\varepsilon_B$。稳态丢包率为\n\n$$\n\\bar{p} = \\pi_G \\varepsilon_G + \\pi_B \\varepsilon_B, \\qquad \\pi_B = \\frac{p_{GB}}{p_{GB} + p_{BG}}\n$$\n\n平均突发长度 $\\mathbb{E}[B] = 1/p_{BG}$。这是工程上选择**冗余间隔**的关键量：状态估计器要能跨越 $\\sim 3 \\mathbb{E}[B]$ 个连续丢包窗口，否则会出现“估计断片”。\n\n## 端到端延迟：迟到的尾部分布\n\n成功送达的一条报文，单接收方延迟可分解为\n\n$$\nT_{i,k} = T_{\\text{send}} + T_{\\text{switch}} + T_{\\text{recv}} + T_{\\text{stack}}\n$$\n\n- $T_{\\text{send}}$：发送方内核协议栈到网卡；\n- $T_{\\text{switch}}$：交换机存储转发 + 多播复制 ($\\propto N$ 订阅者数量)；\n- $T_{\\text{recv}}$：接收方网卡 → socket buffer；\n- $T_{\\text{stack}}$：用户态 `recvmsg` + 反序列化。\n\n每段都右偏，整体仍是各分量的卷积。**业务上的“迟到”** 是 $T_{i,k} > D$，其概率\n\n$$\np_{\\text{late}}(D) = \\Pr(T_{i,k} > D) = 1 - F_T(D)\n$$\n\n可以由经验直方图直接读出。把 $p_{\\text{late}}(D)$ 加到丢包率上，就是控制器实际“看不到第 k 帧”的总概率：\n\n$$\np_{\\text{miss}}(D) = \\bar{p} + (1 - \\bar{p}) p_{\\text{late}}(D)\n$$\n\n## 多订阅者一致性偏差\n\n多播的真正价值在于“一发多收”，但不同接收方的栈延迟不同，于是出现**一致性偏差**。定义订阅者 $i, j$ 在第 $k$ 条报文上的偏差\n\n$$\n\\Delta_{ij,k} = T_{i,k} - T_{j,k}\n$$\n\n最关心的是组内最大偏差\n\n$$\n\\Delta_k^{\\max} = \\max_{i,j} |T_{i,k} - T_{j,k}|\n$$\n\n经验上 $\\Delta_k^{\\max}$ 服从 Gumbel 型极值分布，其期望随订阅者数 $N$ 缓慢增长 $\\sim \\sigma\\sqrt{2\\ln N}$。这意味着：把日志、可视化、状态估计三类订阅者放在同一组播组上，调度抖动会被“最慢那个”放大。**工程对策**：把硬实时订阅者（控制环）单独走一个组播组或共享内存，绝不和 GUI/日志混播。\n\n## 数据老化与控制可用窗口\n\n控制器在 $\\tau$ 时刻拿到的最新观测时间戳为 $t_{\\text{last}}(\\tau)$，定义**数据年龄 (Age of Information, AoI)**：\n\n$$\nA(\\tau) = \\tau - t_{\\text{last}}(\\tau)\n$$\n\n在 UDP 多播下 $A(\\tau)$ 是一个分段线性的锯齿过程：每来一帧瞬时跌到 $T_{\\text{stack}}$，无新帧时以斜率 1 累加。稳态平均年龄\n\n$$\n\\mathbb{E}[A] = \\frac{1}{f_{\\text{ctrl}}} \\cdot \\frac{1}{1 - p_{\\text{miss}}} \\cdot \\tfrac{1}{2} + \\mathbb{E}[T_{\\text{stack}}]\n$$\n\n控制器可用观测窗口 $W$ 是 $A(\\tau) \\leq A_{\\max}$ 的时间占比，要求\n\n$$\n\\Pr(A(\\tau) > A_{\\max}) \\leq \\delta\n$$\n\n把它代回 [控制环路延迟建模](./control-loop-latency-modeling.md) 中的相位裕度约束 $\\omega_c \\cdot (T_{\\text{loop}} + A_{\\max}) \\leq \\pi/6$，就把“多播丢包率”和“可用控制带宽”串起来了。\n\n## 工程可观测量\n\n落地这套形式化，通常归结为四组测量：\n\n1. 在每条报文里写入发送时间戳，接收侧用 `clock_gettime(CLOCK_MONOTONIC_RAW)` 算 $T_{i,k}$，按窗口统计 99 / 99.9 分位；\n2. 用序列号检测漏号，估计稳态丢包率 $\\bar{p}$ 与突发长度分布；\n3. 双订阅者交叉日志，计算 $\\Delta_{ij,k}$ 的极值分布；\n4. 控制环里持续记录 AoI，绘 $A(\\tau)$ 锯齿曲线，找 deadline miss 的根因。\n\n`lcm-spy`、`tcpdump -G` 与 `ss -mu` 是这套测量的最低成本工具组合。\n\n## 方法局限性\n\n- **Gilbert-Elliott 是二阶近似**：实际交换机拥塞往往涉及多状态 / 自相似，长尾比两态模型重；\n- **独立性假设过强**：发送方阻塞时四类事件高度耦合（一旦 socket buffer 溢出，丢包与延迟同时爆涨）；\n- **不刻画时钟漂移**：跨板卡的 $\\Delta_{ij,k}$ 测量必须先做 PTP 同步，否则把时钟偏移当成网络抖动；\n- **未考虑应用层去重**：状态估计器若做了 hold-last-sample，等价改变了 $A_{\\max}$ 的物理含义。\n\n## 学这个方法时最该盯住的点\n\n1. **丢包是突发的**：用 $\\bar{p}$ 看不出风险，必须看突发长度分布；\n2. **迟到等于丢包**：硬实时里 $D$ 之后到达的帧已经没用，全算入 $p_{\\text{miss}}$；\n3. **AoI 比延迟更接近控制语义**：控制器关心“手里这条数据多老”，而不是“这条数据走了多久”；\n4. **订阅者越多，最慢者主导**：组播组的设计要和实时性等级对齐，不能图方便混播。\n\n## 关联页面\n\n- [控制环路延迟建模](./control-loop-latency-modeling.md)\n- [LCM 基础](../concepts/lcm-basics.md)\n- [ROS 2 基础](../concepts/ros2-basics.md)\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- Huang, A. S., Olson, E., Moore, D. C., *LCM: Lightweight Communications and Marshalling*, IROS 2010.\n- Gilbert, E. N., *Capacity of a Burst-Noise Channel*, Bell System Technical Journal, 1960.\n- Kaul, S., Yates, R., Gruteser, M., *Real-Time Status: How Often Should One Update?*, INFOCOM 2012.\n\n## 推荐继续阅读\n\n- RFC 1112 / 4604 (IGMP 与 SSM 多播)\n- Tanenbaum, *Computer Networks* (5th ed.) 第 4 章：多址访问与多播",
+      "content_markdown": "---\ntype: formalization\ntags: [real-time, communication, middleware, lcm, networking, math]\nstatus: complete\nupdated: 2026-05-01\nrelated:\n  - ./control-loop-latency-modeling.md\n  - ../concepts/lcm-basics.md\n  - ../concepts/ros2-basics.md\n  - ../concepts/clock-synchronization-algorithms.md\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/real-time-control-middleware-guide.md\nsources:\n  - ../../sources/papers/sim2real.md\nsummary: \"UDP 组播动力学：把 LCM 等基于 UDP 多播的中间件抽象成丢包-迟到-乱序-不一致四类随机过程，给出丢包率、订阅者间一致性偏差与控制端可用观测窗口之间的可计算约束。\"\n---\n\n# UDP 组播动力学 (UDP Multicast Dynamics)\n\n**UDP 组播动力学** 把 [LCM](../concepts/lcm-basics.md) 这类“即发即弃”的多播中间件，抽象成一个发送方 → 多个接收方的随机过程网络。它不研究单条消息怎么走，而是回答四个工程问题：**丢多少包？谁先收到？大家收到的内容是否一致？数据老化到什么程度还能拿来闭环？** 把这些问题写成公式，意味着抖动不再只是“真机感觉卡”，而是可以套到 [控制环路延迟建模](./control-loop-latency-modeling.md) 里去定量预算。\n\n## 为什么要形式化\n\nUDP 没有重传，没有 ACK。LCM 的设计哲学就是“最新一帧最重要，丢了就丢了”。但当一台人形机器人挂着 IMU、关节编码器、力矩驱动器、视觉感知，全部以 1 kHz 走 UDP 多播时，几个问题马上跳出来：\n\n- 同一条 IMU 报文，控制进程和日志进程谁先收到？差多少？\n- 多播交换机带宽打满时丢包率会从 $10^{-5}$ 突变到 $10^{-2}$，控制器是否还稳？\n- 状态估计器在 1 ms 内没收到新一帧编码器，是该外推还是该退化？\n\n不写下来，就只能凭经验调 socket buffer。写下来之后，**丢包率 $p$、抖动 $\\sigma$、订阅者一致性偏差 $\\Delta$、控制可用窗口 $W$** 之间的换算就是几个不等式。\n\n## 多播信道的四类随机事件\n\n设发送方在 $t_k$ 时刻发出第 $k$ 条报文。对接收方 $i \\in \\{1, \\dots, N\\}$，把每条报文映射到四个互斥事件：\n\n| 事件 | 含义 | 标记 |\n|------|------|------|\n| **成功 (delivered)** | 在截止时间 $t_k + D$ 前收到 | $S_{i,k} = 1$ |\n| **丢包 (lost)** | 永远未收到 | $L_{i,k} = 1$ |\n| **迟到 (late)** | 收到但超过 $D$，按业务相当于丢 | $T_{i,k} = 1$ |\n| **乱序 (reordered)** | 收到，但发生在第 $k+1$ 条之后 | $R_{i,k} = 1$ |\n\n满足 $S_{i,k} + L_{i,k} + T_{i,k} + R_{i,k} = 1$（迟到与乱序可重叠时按业务最严格的那类计）。所有形式化都围绕这四个指示变量的分布展开。\n\n## 丢包率：Gilbert-Elliott 两态模型\n\nUDP 丢包通常**不是独立同分布**，而是“突发性”——交换机短时拥塞会一连丢十几帧。最简也最常用的模型是 **Gilbert-Elliott** 两态马尔可夫链，状态 $X_k \\in \\{G, B\\}$，其中：\n\n- $G$：表示链路处于「畅通」状态（Good），丢包率极低；\n- $B$：表示链路处于「拥塞 / 突发丢包」状态（Bad），丢包率显著抬高。\n\n\n$$\nP = \\begin{bmatrix} 1 - p_{GB} & p_{GB} \\\\ p_{BG} & 1 - p_{BG} \\end{bmatrix}, \\qquad\n\\Pr(L_{i,k} = 1 \\mid X_k) = \\begin{cases} \\varepsilon_G & X_k = G \\\\ \\varepsilon_B & X_k = B \\end{cases}\n$$\n\n其中 $\\varepsilon_G \\ll \\varepsilon_B$。稳态丢包率为\n\n$$\n\\bar{p} = \\pi_G \\varepsilon_G + \\pi_B \\varepsilon_B, \\qquad \\pi_B = \\frac{p_{GB}}{p_{GB} + p_{BG}}\n$$\n\n平均突发长度 $\\mathbb{E}[B] = 1/p_{BG}$。这是工程上选择**冗余间隔**的关键量：状态估计器要能跨越 $\\sim 3 \\mathbb{E}[B]$ 个连续丢包窗口，否则会出现“估计断片”。\n\n## 端到端延迟：迟到的尾部分布\n\n成功送达的一条报文，单接收方延迟可分解为\n\n$$\nT_{i,k} = T_{\\text{send}} + T_{\\text{switch}} + T_{\\text{recv}} + T_{\\text{stack}}\n$$\n\n- $T_{\\text{send}}$：发送方内核协议栈到网卡；\n- $T_{\\text{switch}}$：交换机存储转发 + 多播复制 ($\\propto N$ 订阅者数量)；\n- $T_{\\text{recv}}$：接收方网卡 → socket buffer；\n- $T_{\\text{stack}}$：用户态 `recvmsg` + 反序列化。\n\n每段都右偏，整体仍是各分量的卷积。**业务上的“迟到”** 是 $T_{i,k} > D$，其概率\n\n$$\np_{\\text{late}}(D) = \\Pr(T_{i,k} > D) = 1 - F_T(D)\n$$\n\n可以由经验直方图直接读出。把 $p_{\\text{late}}(D)$ 加到丢包率上，就是控制器实际“看不到第 k 帧”的总概率：\n\n$$\np_{\\text{miss}}(D) = \\bar{p} + (1 - \\bar{p}) p_{\\text{late}}(D)\n$$\n\n## 多订阅者一致性偏差\n\n多播的真正价值在于“一发多收”，但不同接收方的栈延迟不同，于是出现**一致性偏差**。定义订阅者 $i, j$ 在第 $k$ 条报文上的偏差\n\n$$\n\\Delta_{ij,k} = T_{i,k} - T_{j,k}\n$$\n\n最关心的是组内最大偏差\n\n$$\n\\Delta_k^{\\max} = \\max_{i,j} |T_{i,k} - T_{j,k}|\n$$\n\n经验上 $\\Delta_k^{\\max}$ 服从 Gumbel 型极值分布，其期望随订阅者数 $N$ 缓慢增长 $\\sim \\sigma\\sqrt{2\\ln N}$。这意味着：把日志、可视化、状态估计三类订阅者放在同一组播组上，调度抖动会被“最慢那个”放大。**工程对策**：把硬实时订阅者（控制环）单独走一个组播组或共享内存，绝不和 GUI/日志混播。\n\n## 数据老化与控制可用窗口\n\n控制器在 $\\tau$ 时刻拿到的最新观测时间戳为 $t_{\\text{last}}(\\tau)$，定义**数据年龄 (Age of Information, AoI)**：\n\n$$\nA(\\tau) = \\tau - t_{\\text{last}}(\\tau)\n$$\n\n在 UDP 多播下 $A(\\tau)$ 是一个分段线性的锯齿过程：每来一帧瞬时跌到 $T_{\\text{stack}}$，无新帧时以斜率 1 累加。稳态平均年龄\n\n$$\n\\mathbb{E}[A] = \\frac{1}{f_{\\text{ctrl}}} \\cdot \\frac{1}{1 - p_{\\text{miss}}} \\cdot \\tfrac{1}{2} + \\mathbb{E}[T_{\\text{stack}}]\n$$\n\n控制器可用观测窗口 $W$ 是 $A(\\tau) \\leq A_{\\max}$ 的时间占比，要求\n\n$$\n\\Pr(A(\\tau) > A_{\\max}) \\leq \\delta\n$$\n\n把它代回 [控制环路延迟建模](./control-loop-latency-modeling.md) 中的相位裕度约束 $\\omega_c \\cdot (T_{\\text{loop}} + A_{\\max}) \\leq \\pi/6$，就把“多播丢包率”和“可用控制带宽”串起来了。\n\n## 工程可观测量\n\n落地这套形式化，通常归结为四组测量：\n\n1. 在每条报文里写入发送时间戳，接收侧用 `clock_gettime(CLOCK_MONOTONIC_RAW)` 算 $T_{i,k}$，按窗口统计 99 / 99.9 分位；\n2. 用序列号检测漏号，估计稳态丢包率 $\\bar{p}$ 与突发长度分布；\n3. 双订阅者交叉日志，计算 $\\Delta_{ij,k}$ 的极值分布；\n4. 控制环里持续记录 AoI，绘 $A(\\tau)$ 锯齿曲线，找 deadline miss 的根因。\n\n`lcm-spy`、`tcpdump -G` 与 `ss -mu` 是这套测量的最低成本工具组合。\n\n## 方法局限性\n\n- **Gilbert-Elliott 是二阶近似**：实际交换机拥塞往往涉及多状态 / 自相似，长尾比两态模型重；\n- **独立性假设过强**：发送方阻塞时四类事件高度耦合（一旦 socket buffer 溢出，丢包与延迟同时爆涨）；\n- **不刻画时钟漂移**：跨板卡的 $\\Delta_{ij,k}$ 测量必须先做 PTP 同步，否则把时钟偏移当成网络抖动；\n- **未考虑应用层去重**：状态估计器若做了 hold-last-sample，等价改变了 $A_{\\max}$ 的物理含义。\n\n## 学这个方法时最该盯住的点\n\n1. **丢包是突发的**：用 $\\bar{p}$ 看不出风险，必须看突发长度分布；\n2. **迟到等于丢包**：硬实时里 $D$ 之后到达的帧已经没用，全算入 $p_{\\text{miss}}$；\n3. **AoI 比延迟更接近控制语义**：控制器关心“手里这条数据多老”，而不是“这条数据走了多久”；\n4. **订阅者越多，最慢者主导**：组播组的设计要和实时性等级对齐，不能图方便混播。\n\n## 关联页面\n\n- [控制环路延迟建模](./control-loop-latency-modeling.md)\n- [LCM 基础](../concepts/lcm-basics.md)\n- [ROS 2 基础](../concepts/ros2-basics.md)\n- [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n- [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)\n- [时钟同步算法](../concepts/clock-synchronization-algorithms.md)\n\n## 参考来源\n\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)\n- Huang, A. S., Olson, E., Moore, D. C., *LCM: Lightweight Communications and Marshalling*, IROS 2010.\n- Gilbert, E. N., *Capacity of a Burst-Noise Channel*, Bell System Technical Journal, 1960.\n- Kaul, S., Yates, R., Gruteser, M., *Real-Time Status: How Often Should One Update?*, INFOCOM 2012.\n\n## 推荐继续阅读\n\n- RFC 1112 / 4604 (IGMP 与 SSM 多播)\n- Tanenbaum, *Computer Networks* (5th ed.) 第 4 章：多址访问与多播",
       "tags": [
         "formalization",
         "control",
@@ -4043,6 +4072,7 @@
         "wiki-concepts-ros2-basics",
         "wiki-comparisons-ros2-vs-lcm",
         "wiki-queries-real-time-control-middleware-guide",
+        "wiki-concepts-clock-synchronization-algorithms",
         "sources-papers-sim2real"
       ],
       "source_links": [],
@@ -4774,7 +4804,7 @@
       "title": "实时运控中间件配置指南",
       "path": "wiki/queries/real-time-control-middleware-guide.md",
       "summary": "type: query。",
-      "content_markdown": "---\ntype: query\ntags: [real-time, middleware, deployment, linux, ros2, lcm]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/sim2real-deployment-checklist.md\n  - ../concepts/sim2real.md\n  - ../formalizations/control-loop-latency-modeling.md\n  - ../formalizations/udp-multicast-dynamics.md\nsummary: \"实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。\"\n---\n\n# 实时运控中间件配置指南\n\n> **Query 产物**：本页由以下问题触发：「为什么我的机器人策略在仿真里很完美，上了真机却经常疯狂抽搐？Linux 实时性怎么配置？」\n> 综合来源：[ROS 2 vs LCM 对比](../comparisons/ros2-vs-lcm.md)、[Sim2Real 部署清单](./sim2real-deployment-checklist.md)\n\n---\n\n当你把 RL 或 WBC 控制器部署到真实机器狗或人形机器人上，并且要求控制频率在 500Hz 甚至 1000Hz 时，普通的 Ubuntu 系统已经无法胜任了。系统内核的进程调度、中断处理会产生毫秒级的**抖动 (Jitter)**，导致期望周期的力矩指令迟到，从而在物理世界中转化为机器人的高频“抽搐”甚至失控。\n\n本指南提供了彻底消除这些抖动的底层配置技巧。\n\n## 1. 操作系统层的硬实时：PREEMPT_RT\n\n普通的 Linux 内核是“分时共享”的，一个低优先级的进程或系统中断随时可能抢占你的运控进程。为了实现“硬实时 (Hard Real-time)”，你必须给内核打补丁。\n\n**核心步骤**：\n1. 下载带有 `PREEMPT_RT` 补丁的 Linux 内核源码。\n2. 编译并替换现有内核。\n3. 启动后，在代码中将你的控制线程（如执行策略推理的 while 循环）调度策略设置为 `SCHED_FIFO`，并拉高优先级（例如 `priority = 98`）。\n\n> **提醒**：一旦设置为 `SCHED_FIFO`，如果你的控制循环里写了死循环（忘加 sleep 或 yield），整个系统将卡死，只能拔电源重启。\n\n## 2. 极致性能：CPU 核心隔离 (CPU Isolation)\n\n即便打了 RT 补丁，内核的后台任务（如网络中断、驱动响应）依然可能跑到你的实时核心上捣乱。解决办法是在系统启动层（GRUB）将特定 CPU 核心完全隔离开来。\n\n**GRUB 配置参数示例**：\n`isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3`\n这意味着把 CPU 的核心 2 和 3 完全预留出来，不仅隔离了普通进程，连内核的滴答定时器（tick）和 RCU 回调都屏蔽掉了。\n\n然后在启动你的控制程序时，使用 `taskset -c 2,3 ./my_controller`，强制你的进程“独占”这两颗核心，享受零中断的极致宁静。\n\n## 3. 进程间通信的避坑指南 (Middleware)\n\n即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。\n\n### 避坑 ROS 2 的 DDS\nROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。\n- **后果**：你会在示波器里看到原本应是 1ms 间隔的指令，经常聚集成一坨，然后空窗 3ms。\n\n### 采用共享内存 (Shared Memory) 或 LCM\n- **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。\n- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。\n\n详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n\n## 4. C/C++ 代码本身的禁忌\n\n当线程运行在硬实时核心上时，你所写的每一行代码都不能触发系统调用（System Call）导致线程被挂起。\n\n**绝对禁止的动作**：\n1. **运行时动态内存分配**：禁止使用 `new`、`malloc`，禁止在控制循环里 push_back 到 `std::vector`。所有所需内存必须在进入死循环前预先分配（Reserve）并锁定（`mlockall`）。\n2. **文件 I/O 与终端打印**：禁止在控制循环里 `printf` 或写入 Log 文件。I/O 阻塞是实时的最大杀手。如果要打印，把数据丢进无锁队列，让另一个非实时进程去负责落盘。\n3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。\n\n## 关联页面\n- [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)\n- [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n- [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)\n\n## 参考来源\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)",
+      "content_markdown": "---\ntype: query\ntags: [real-time, middleware, deployment, linux, ros2, lcm]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../comparisons/ros2-vs-lcm.md\n  - ../queries/sim2real-deployment-checklist.md\n  - ../concepts/sim2real.md\n  - ../formalizations/control-loop-latency-modeling.md\n  - ../formalizations/udp-multicast-dynamics.md\n  - ../concepts/clock-synchronization-algorithms.md\nsummary: \"实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。\"\n---\n\n# 实时运控中间件配置指南\n\n> **Query 产物**：本页由以下问题触发：「为什么我的机器人策略在仿真里很完美，上了真机却经常疯狂抽搐？Linux 实时性怎么配置？」\n> 综合来源：[ROS 2 vs LCM 对比](../comparisons/ros2-vs-lcm.md)、[Sim2Real 部署清单](./sim2real-deployment-checklist.md)\n\n---\n\n当你把 RL 或 WBC 控制器部署到真实机器狗或人形机器人上，并且要求控制频率在 500Hz 甚至 1000Hz 时，普通的 Ubuntu 系统已经无法胜任了。系统内核的进程调度、中断处理会产生毫秒级的**抖动 (Jitter)**，导致期望周期的力矩指令迟到，从而在物理世界中转化为机器人的高频“抽搐”甚至失控。\n\n本指南提供了彻底消除这些抖动的底层配置技巧。\n\n## 1. 操作系统层的硬实时：PREEMPT_RT\n\n普通的 Linux 内核是“分时共享”的，一个低优先级的进程或系统中断随时可能抢占你的运控进程。为了实现“硬实时 (Hard Real-time)”，你必须给内核打补丁。\n\n**核心步骤**：\n1. 下载带有 `PREEMPT_RT` 补丁的 Linux 内核源码。\n2. 编译并替换现有内核。\n3. 启动后，在代码中将你的控制线程（如执行策略推理的 while 循环）调度策略设置为 `SCHED_FIFO`，并拉高优先级（例如 `priority = 98`）。\n\n> **提醒**：一旦设置为 `SCHED_FIFO`，如果你的控制循环里写了死循环（忘加 sleep 或 yield），整个系统将卡死，只能拔电源重启。\n\n## 2. 极致性能：CPU 核心隔离 (CPU Isolation)\n\n即便打了 RT 补丁，内核的后台任务（如网络中断、驱动响应）依然可能跑到你的实时核心上捣乱。解决办法是在系统启动层（GRUB）将特定 CPU 核心完全隔离开来。\n\n**GRUB 配置参数示例**：\n`isolcpus=2,3 nohz_full=2,3 rcu_nocbs=2,3`\n这意味着把 CPU 的核心 2 和 3 完全预留出来，不仅隔离了普通进程，连内核的滴答定时器（tick）和 RCU 回调都屏蔽掉了。\n\n然后在启动你的控制程序时，使用 `taskset -c 2,3 ./my_controller`，强制你的进程“独占”这两颗核心，享受零中断的极致宁静。\n\n## 3. 进程间通信的避坑指南 (Middleware)\n\n即使你的进程是实时的，如果你的进程间通信（IPC）机制拉胯，整个系统依然会卡顿。\n\n### 避坑 ROS 2 的 DDS\nROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程动态内存分配、TCP 握手和 QoS 确认机制。**绝不要把 1000Hz 的底层关节反馈和力矩指令发在 ROS 2 上**。\n- **后果**：你会在示波器里看到原本应是 1ms 间隔的指令，经常聚集成一坨，然后空窗 3ms。\n\n### 采用共享内存 (Shared Memory) 或 LCM\n- **最高优解**：如果在同一台物理机内，感知进程和控制进程最好通过**共享内存**直接交互。无锁队列（Lock-free ring buffer）是极限性能的首选。\n- **跨板通信**：如果需要在控制器和计算主板间跨网线通信，首选 **LCM (UDP 组播)**。它几乎没有开销，即发即弃，完全满足底层“只要最新鲜的数据，丢包无所谓”的逻辑。\n\n详见：[ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)\n\n## 4. C/C++ 代码本身的禁忌\n\n当线程运行在硬实时核心上时，你所写的每一行代码都不能触发系统调用（System Call）导致线程被挂起。\n\n**绝对禁止的动作**：\n1. **运行时动态内存分配**：禁止使用 `new`、`malloc`，禁止在控制循环里 push_back 到 `std::vector`。所有所需内存必须在进入死循环前预先分配（Reserve）并锁定（`mlockall`）。\n2. **文件 I/O 与终端打印**：禁止在控制循环里 `printf` 或写入 Log 文件。I/O 阻塞是实时的最大杀手。如果要打印，把数据丢进无锁队列，让另一个非实时进程去负责落盘。\n3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。\n\n## 关联页面\n- [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)\n- [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)\n- [Sim2Real 概念](../concepts/sim2real.md)\n- [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)\n- [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)\n\n## 参考来源\n- [sources/papers/sim2real.md](../../sources/papers/sim2real.md)",
       "tags": [
         "query",
         "control",
@@ -5812,7 +5842,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "entity-lerobot",

@@ -8,6 +8,7 @@ related:
   - ../concepts/lcm-basics.md
   - ../concepts/ros2-basics.md
   - ../concepts/sim2real.md
+  - ../concepts/clock-synchronization-algorithms.md
   - ../queries/real-time-control-middleware-guide.md
   - ./udp-multicast-dynamics.md
 sources:
@@ -149,6 +150,7 @@ $$
 - [Sim2Real](../concepts/sim2real.md)
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [UDP 组播动力学](./udp-multicast-dynamics.md)
+- [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 
 ## 参考来源
 

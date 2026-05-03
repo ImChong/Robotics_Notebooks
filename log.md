@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-05-02] checklist-v21 | wiki/concepts/clock-synchronization-algorithms.md — 收官 V21 P2「通信层形式化定义」
+
+- 新增 `wiki/concepts/clock-synchronization-algorithms.md`：把 PTP（IEEE 1588）与 EtherCAT 分布式时钟（DC）抽象成「主时钟选举 → 偏置/漂移估计 → PI 校正」三段式统一框架
+- PTP 部分推导单跳偏置 $\theta = \tfrac{1}{2}[(t_2 - t_1) - (t_4 - t_3)]$ 与精度天花板 $\sigma_\theta \approx \sqrt{\sigma_{\text{HWTS}}^2 + \tfrac{1}{2}\sigma_{\Delta d}^2}$；EtherCAT DC 部分梳理一次性 BRW 测量 + ASIC 层补偿如何把抖动压到 $< 100\ ns$；并给出 NTP / PTP / gPTP / DC 的工程对比表
+- 与 [控制环路延迟建模](wiki/formalizations/control-loop-latency-modeling.md)、[UDP 组播动力学](wiki/formalizations/udp-multicast-dynamics.md) 的耦合：$\sigma_\theta$ 以加性方差直接进入 $T_{\text{loop}}$ 抖动预算，并给出工程经验法则 $\sigma_\theta < T_{\text{ctrl}} / 100$
+- 在 `wiki/concepts/ethercat-protocol.md`、`wiki/formalizations/control-loop-latency-modeling.md`、`wiki/formalizations/udp-multicast-dynamics.md`、`wiki/queries/real-time-control-middleware-guide.md` 建立入链
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P2「clock-synchronization-algorithms.md」一项；P2 通信层形式化 3 项已全部完成
+
 ## [2026-05-01] checklist-v21 | wiki/formalizations/udp-multicast-dynamics.md — 推进 V21 P2「通信层形式化定义」
 
 - 新增 `wiki/formalizations/udp-multicast-dynamics.md`：把 LCM 等 UDP 多播中间件抽象成「成功 / 丢包 / 迟到 / 乱序」四类指示变量 $S_{i,k}, L_{i,k}, T_{i,k}, R_{i,k}$ 的随机过程

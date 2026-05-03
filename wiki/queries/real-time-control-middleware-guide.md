@@ -9,6 +9,7 @@ related:
   - ../concepts/sim2real.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../formalizations/udp-multicast-dynamics.md
+  - ../concepts/clock-synchronization-algorithms.md
 summary: "实时运控中间件配置指南：详细解答在真机部署中如何配置 Linux PREEMPT_RT 补丁、隔离 CPU 核心以及合理选择中间件，以彻底消除系统抖动。"
 ---
 
