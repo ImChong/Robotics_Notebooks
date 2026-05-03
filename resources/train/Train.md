@@ -1,1 +1,1 @@
-[[Simulator]]
+[Simulator](Simulator.md)

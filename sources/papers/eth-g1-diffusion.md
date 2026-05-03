@@ -25,6 +25,6 @@
 - **Whole-body Coordination**: 利用全身各部位（非仅足部）进行移动。
 
 ## 相关引用
-- [[wiki/methods/diffusion-policy]]
-- [[wiki/methods/ppo]]
-- [[wiki/tasks/humanoid-locomotion]]
+- [diffusion-policy](../../wiki/methods/diffusion-policy.md)
+- [ppo](../../wiki/methods/policy-optimization.md)
+- [humanoid-locomotion](../../wiki/tasks/humanoid-locomotion.md)

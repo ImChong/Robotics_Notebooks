@@ -29,6 +29,6 @@
 
 ## 关联页面
 
-- [[wiki/concepts/sim2real]] — Sim2Real 是 locomotion RL 的核心挑战
-- [[wiki/concepts/domain-randomization]] — DR 是当前主流 sim2real 方法
-- [[wiki/concepts/locomotion]] — locomotion 任务层
+- [sim2real](../../wiki/concepts/sim2real.md) — Sim2Real 是 locomotion RL 的核心挑战
+- [domain-randomization](../../wiki/concepts/domain-randomization.md) — DR 是当前主流 sim2real 方法
+- [locomotion](../../wiki/concepts/locomotion.md) — locomotion 任务层
