@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-05-03] checklist-v21 | wiki/comparisons/ethercat-vs-ethernet-ip.md — 收官 V21 P2「工业总线对比」
+
+- 新增 `wiki/comparisons/ethercat-vs-ethernet-ip.md`：对照 EtherCAT 与 EtherNet/IP 在底层链路、报文模型、典型循环周期、确定性来源、拓扑能力、物理布线、从站芯片、主站实现、生态与应用层协议十个维度的差异，给出"机身内 EtherCAT、整机对外 EtherNet/IP"的混合方案与决策树
+- 关键论点：EtherCAT 通过 ESC ASIC + DC 在硬件层把抖动压到 100 ns 级，是 1 kHz+ 关节闭环的默认解；EtherNet/IP 必须叠加 CIP Sync + TSN 才能逼近同等确定性，但凭借 CIP 生态成为产线 / PLC 集成的事实标准
+- 在 `wiki/concepts/ethercat-protocol.md`、`wiki/queries/ethercat-master-optimization.md` 建立入链；与 [控制环路延迟建模](wiki/formalizations/control-loop-latency-modeling.md)、[时钟同步算法](wiki/concepts/clock-synchronization-algorithms.md)、[ROS 2 vs LCM](wiki/comparisons/ros2-vs-lcm.md) 形成"协议 → 形式化 → 中间件"完整链路
+- 勾选 `docs/checklists/tech-stack-next-phase-checklist-v21.md` 中 P2「ethercat-vs-ethernet-ip.md」一项；至此 V21 P2 硬件通信与底层实时链路 4 项已全部完成
+- 图谱更新：238 节点 / 1463 边
+
 ## [2026-05-03] ingest | sources/papers/exoactor.md — 接入 ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control
 
 - 来源：<https://arxiv.org/abs/2604.27711> 与 <https://arxiv.org/html/2604.27711v1>（BAAI 团队）

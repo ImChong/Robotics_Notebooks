@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-03",
-  "node_count": 237,
-  "edge_count": 1454,
+  "node_count": 238,
+  "edge_count": 1463,
   "community_count": 8,
   "top_hubs": [
     {
@@ -62,7 +62,7 @@
     "entity": 44,
     "query": 40,
     "formalization": 25,
-    "comparison": 14,
+    "comparison": 15,
     "task": 10,
     "overview": 2,
     "reference": 1,
@@ -72,7 +72,7 @@
     "Locomotion 社区": 150,
     "Manipulation 社区": 35,
     "VLA（Vision-Language-Action） 社区": 23,
-    "实时运控中间件配置指南 社区": 11,
+    "实时运控中间件配置指南 社区": 12,
     "Safety Filter（安全过滤器） 社区": 7,
     "Roboto Origin（开源人形机器人基线） 社区": 7,
     "人形机器人运动控制 Know-How 社区": 2,
@@ -83,7 +83,7 @@
       "人形机器人运动控制 Know-How 社区",
       "Query：VLA 与低级关节控制器（MPC/WBC）融合架构 社区"
     ],
-    "largest_community_ratio": 0.633,
+    "largest_community_ratio": 0.63,
     "community_quality_warning": true
   }
 }

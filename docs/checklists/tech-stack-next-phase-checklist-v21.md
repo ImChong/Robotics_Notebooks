@@ -43,8 +43,8 @@
     - [x] `wiki/formalizations/control-loop-latency-modeling.md` (控制环路延迟建模：总线、计算与内核调度延迟的数学求和)。
     - [x] `wiki/formalizations/udp-multicast-dynamics.md` (UDP 组播动力学：在 LCM 等中间件中的数据包丢失与一致性形式化)。
     - [x] `wiki/concepts/clock-synchronization-algorithms.md` (时钟同步算法：PTP/DC 协议在多板卡运控中的实现原理)。
-- [ ] **新增对比页 (+1)**:
-    - [ ] `wiki/comparisons/ethercat-vs-ethernet-ip.md` (工业总线对比：确定性、拓扑能力与机器人实时控制适配度)。
+- [x] **新增对比页 (+1)**:
+    - [x] `wiki/comparisons/ethercat-vs-ethernet-ip.md` (工业总线对比：确定性、拓扑能力与机器人实时控制适配度)。
 
 ## P3: 交互层“情境化”导航优化 (UX/UI)
 
