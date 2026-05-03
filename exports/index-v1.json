@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -476,7 +476,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/state_estimation.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-footstep-planning",
@@ -508,7 +508,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/contact_planning.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -752,7 +752,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -784,7 +784,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/teleoperation.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -814,7 +814,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -846,7 +846,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -911,7 +911,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1030,7 +1030,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1064,7 +1064,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1197,7 +1197,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
@@ -1295,7 +1295,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -2196,7 +2196,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/model_based_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2231,7 +2231,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/system_identification.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-motion-retargeting-gmr",
@@ -2415,7 +2415,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2810,7 +2810,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/state_estimation.md"
+      "ingest_source": "sources/papers/footstep_and_balance.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2939,7 +2939,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2976,7 +2976,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/privileged_training.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -3014,7 +3014,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/imitation_learning.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5591,7 +5591,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/whole_body_control.md"
+      "ingest_source": "sources/papers/robot_kinematics_tools.md"
     },
     {
       "id": "entity-drake",
@@ -5842,7 +5842,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "entity-lerobot",
