@@ -10,6 +10,14 @@
 
 ---
 
+## [2026-05-03] ingest | sources/papers/exoactor.md — 接入 ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control
+
+- 来源：<https://arxiv.org/abs/2604.27711> 与 <https://arxiv.org/html/2604.27711v1>（BAAI 团队）
+- 内容：把第三人称视频生成当作交互动力学统一接口；流水线 = embodiment transfer (Nano Banana Pro) + 任务到动作链分解 (GPT-5.4 Thinking) + 视频生成 (Kling 3) + 动作估计 (GENMO + WiLoR) + 通用动作跟踪 (SONIC) → Unitree G1 零样本执行
+- 沉淀：新增 `wiki/methods/exoactor.md`（含三阶段流水线、B/A/S 难度分级、视频生成模型与重定向消融、失败模式溯源）
+- 在 `wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`wiki/methods/motion-retargeting-gmr.md`、`wiki/concepts/motion-retargeting.md`、`wiki/tasks/loco-manipulation.md`、`wiki/entities/unitree-g1.md`、`wiki/methods/beyondmimic.md` 建立入链
+- 重点知识连接：把"视频即仿真 / 生成式世界模型"思想推进到真实人形机器人控制层；为 GMR 类重定向提供"视频→估计→tracking 链路下中间重定向并非永远收益项"的反例
+
 ## [2026-05-02] checklist-v21 | wiki/concepts/clock-synchronization-algorithms.md — 收官 V21 P2「通信层形式化定义」
 
 - 新增 `wiki/concepts/clock-synchronization-algorithms.md`：把 PTP（IEEE 1588）与 EtherCAT 分布式时钟（DC）抽象成「主时钟选举 → 偏置/漂移估计 → PI 校正」三段式统一框架

@@ -141,6 +141,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
+- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
 
 ---
 
@@ -152,3 +153,4 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹
 - [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性
 - [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现
+- [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例

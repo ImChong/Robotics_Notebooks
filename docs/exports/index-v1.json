@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 275,
+  "item_count": 276,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -146,7 +146,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-contact-estimation",
@@ -272,7 +272,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -377,7 +377,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -508,7 +508,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -597,7 +597,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -752,14 +752,14 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
       "title": "Motion Retargeting（动作重定向）",
       "path": "wiki/concepts/motion-retargeting.md",
       "summary": "title: Motion Retargeting（动作重定向）。",
-      "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n---\n\n## 重定向不等于控制策略：两层架构模式\n\n在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。\n\n### 1. 运动学重定向层 (Kinematic Layer)\n- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。\n- **作用**：解决姿态、角度、关键点坐标的映射。\n- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。\n\n### 2. 动力学一致化层 (Dynamical Layer)\n- **作用**：在重定向轨迹的基础上，补足物理约束。\n- **实现手段**：\n    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。\n    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。\n    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n\n---\n\n## 关联页面\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性\n- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现",
+      "content_markdown": "---\ntitle: Motion Retargeting（动作重定向）\ntype: concept\nstatus: complete\ncreated: 2026-04-14\nupdated: 2026-04-18\nsummary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。\n---\n\n# Motion Retargeting（动作重定向）\n\n## 是什么\n\nMotion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。\n\n核心挑战：源（人/动物）和目标（机器人）往往有不同的：\n- 骨架拓扑（关节数量/连接方式）\n- 肢体比例\n- 关节限制\n- 质量分布与动力学\n\n---\n\n## 为什么重要\n\n| 应用场景 | 重定向的作用 |\n|---------|------------|\n| 模仿学习参考轨迹 | 将 MoCap 数据转为机器人可执行轨迹，作为 RL 奖励或 BC 数据 |\n| 全身遥操（Teleoperation） | 实时将人类动作映射到人形机器人 |\n| AMP / ASE 风格先验 | 为 RL 策略提供运动风格参考 |\n| 技能库建立 | 一次录制，多种机器人复用 |\n\n---\n\n## 主要方法\n\n### 1. 基于关节角度映射（Joint-Space Retargeting）\n最简单的方法：对每个关节直接建立角度映射（scale + offset）：\n```python\nθ_robot[i] = scale[i] * θ_human[i] + offset[i]\n```\n**优点**：实时，无优化；**缺点**：不考虑运动学差异，可能末端位置偏差大\n\n### 2. 基于任务空间的优化（Task-Space IK）\n以末端执行器（手、脚）的目标位置为约束，求解机器人的关节角：\n```\nminimize  ‖θ - θ_ref‖²\nsubject to: FK(θ) = p_target (末端位置约束)\n            θ_min ≤ θ ≤ θ_max\n            接触约束\n```\n工具：Pinocchio + TSID / Crocoddyl\n\n### 3. 基于物理的重定向（Physics-Based Retargeting）\n用物理仿真器验证重定向后的动作是否可执行（不摔倒）：\n- 先在仿真中播放参考动作，用 PD 控制器追踪\n- 收集可行段，过滤摔倒片段\n- 可结合 RL 做后续精修（AMP 风格）\n\n### 4. 深度学习重定向（Learning-Based）\n- Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人\n- 可跨模态（视频 → 机器人关节）\n- 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”\n\n---\n\n---\n\n## 重定向不等于控制策略：两层架构模式\n\n在实际的人形机器人工程中，**重定向只是起点**。单纯的几何映射往往无法直接上机。\n\n### 1. 运动学重定向层 (Kinematic Layer)\n- **代表方法**：[GMR (General Motion Retargeting)](../methods/motion-retargeting-gmr.md)。\n- **作用**：解决姿态、角度、关键点坐标的映射。\n- **局限**：不能保证质心平衡、加速度连续性、接触力可行性以及力矩安全。容易出现脚部滑动或自碰撞。\n\n### 2. 动力学一致化层 (Dynamical Layer)\n- **作用**：在重定向轨迹的基础上，补足物理约束。\n- **实现手段**：\n    - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。\n    - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。\n    - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。\n\n---\n\n## 关键技术问题\n\n### 1. 骨架拓扑匹配\n人类有 23 个主要关节，大多数人形机器人有 40-70 个（含手指）或更少（G1 = 43 DoF，无手指）。\n\n匹配策略：\n- **子树对齐**：人类骨架子树 ↔ 机器人骨架子树\n- **忽略细节关节**：将人类手指聚合为\"手端点\"\n\n### 2. 比例缩放（Scale）\n人类（1.7m）vs 机器人（0.8m ~ 1.9m）体型不同：\n- 末端轨迹按比例缩放：`p_robot = (L_robot / L_human) * p_human`\n- 注意脚到地面的高度归一化\n\n### 3. 接触保真度（Contact Consistency）\n- 重定向时需要保留\"哪只脚在地面\"的接触相位\n- 否则物理仿真下机器人会穿地或飞起\n\n### 4. 关节限制满足\n人类关节活动度（ROM）与机器人关节限制可能不同，需 clip + 后处理优化\n\n---\n\n## 工具与数据集\n\n| 工具/数据集 | 用途 |\n|------------|------|\n| CMU MoCap Database | 大量人类动作捕捉数据 |\n| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |\n| SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |\n| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |\n| OmniH2O | 人形机器人遥操+重定向框架 |\n\n---\n\n## 与 AMP / ASE 的关系\n\nAMP 和 ASE 的核心是：从 MoCap 数据中提取运动风格先验，引导 RL 策略。\n\n流程：\n```\nMoCap 数据 → Motion Retargeting → 机器人参考轨迹\n→ 判别器训练（是否像参考） → RL 策略风格约束\n```\n\nMotion Retargeting 的质量直接决定 AMP 能学到多自然的动作。\n\n---\n\n## 参考来源\n\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用\n- Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型\n- Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供\"视频生成→动作估计→tracking\"链路下不引入中间重定向反而更稳的反例\n\n---\n\n## 关联页面\n\n- [Imitation Learning](../methods/imitation-learning.md) — 重定向后的轨迹常作为模仿学习的参考数据\n- [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向\n- [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹\n- [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性\n- [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供\"中间重定向并非永远收益项\"的反例",
       "tags": [
         "concept",
         "control",
@@ -775,16 +775,18 @@
         "wiki-concepts-whole-body-control",
         "wiki-concepts-sim2real",
         "wiki-methods-motion-retargeting-gmr",
+        "wiki-methods-exoactor",
         "sources-papers-teleoperation",
         "sources-papers-diffusion-and-gen",
-        "sources-papers-motion-control-projects"
+        "sources-papers-motion-control-projects",
+        "sources-papers-exoactor"
       ],
       "source_links": [],
       "status": "active",
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/teleoperation.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -814,7 +816,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-optimal-control",
@@ -911,7 +913,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1030,7 +1032,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1064,7 +1066,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1197,31 +1199,37 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-video-as-simulation",
       "title": "Video-as-Simulation (视频即仿真)",
       "path": "wiki/concepts/video-as-simulation.md",
       "summary": "type: concept。",
-      "content_markdown": "---\ntype: concept\ntags: [simulation, video-generation, deepmind, computer-vision, robotics]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../methods/generative-world-models.md\n  - ../concepts/sim2real.md\n  - ../methods/model-based-rl.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。\"\n---\n\n# Video-as-Simulation (视频即仿真)\n\n**视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。\n\n## 核心差异：从“算力矩”到“算像素”\n\n| 维度 | 传统物理仿真 (如 MuJoCo) | 视频即仿真 (如 UniSim) |\n|------|------------------------|-----------------------|\n| **建模对象** | 几何体、力学常数、接触点 | 原始像素、时空关联、视觉语义 |\n| **真实度** | 受限于手工调参的数学模型 | 无限趋近于真实视频录像 |\n| **交互方式** | 求解动力学 ODE | 预测视频下一帧 (Next-frame Prediction) |\n| **泛化性** | 仅限于建立好模型的物体 | 见过视频的所有场景均可模拟 |\n\n## 关键技术：交互式视频预测器\n\n实现“视频即仿真”的核心是一个**条件生成模型**。给定当前的 RGB 观测 $O_t$ 和机器人预期的控制动作 $A_t$，模型输出预测的下一帧 $\\hat{O}_{t+1}$：\n\n$$ \\hat{O}_{t+1} = \\mathcal{G}(O_t, A_t, \\text{Instruction}) $$\n\n### 代表性工作：UniSim (Google DeepMind)\nUniSim 证明了通过将“大量无人干预的人类视频”与“少量机器人交互视频”混合训练，可以构建出一个可交互的模拟器。用户可以像玩电子游戏一样输入指令（如“打开微波炉”），并在生成的视频中看到机器人的执行反馈。\n\n## 为什么这一范式能够成功？\n\n1. **Sim2Real 的终极解**：在“视频”中训练的策略，其观测空间与真实摄像头完全一致，不存在视觉层面的鸿沟。\n2. **解决“建模难题”**：对于折衣服、液体倾倒等柔体/流体任务，传统仿真极难精准建模，而视频模型可以从海量互联网视频中自发习得这些复杂的物理常识。\n3. **数据 Scaling**：它允许机器人利用 YouTube 等非结构化视频进行“离线学习”，极大地提升了数据的利用率。\n\n## 当前局限\n\n- **因果偏差**：模型可能会产生“动作未到，物体先动”的逻辑错误。\n- **长程发散**：随着预测步数增加，生成的视频细节会逐渐模糊，导致策略在长时域任务中失效。\n- **无法闭环力控**：由于缺乏接触力反馈，它更适合训练视觉策略，而非底层高频关节控制。\n\n## 关联页面\n- [Generative World Models](../methods/generative-world-models.md)\n- [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n\n## 参考来源\n- Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.\n- [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).",
+      "content_markdown": "---\ntype: concept\ntags: [simulation, video-generation, deepmind, computer-vision, robotics]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../methods/generative-world-models.md\n  - ../concepts/sim2real.md\n  - ../methods/model-based-rl.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/exoactor.md\nsummary: \"视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。\"\n---\n\n# Video-as-Simulation (视频即仿真)\n\n**视频即仿真 (Video-as-Simulation)** 是具身智能领域最激进也最前沿的技术范式。它的核心假设是：如果一个生成模型能够完美预测“给定当前动作后，下一帧图像应该长什么样”，那么这个模型本身就可以充当一个端到端的、像素级的物理引擎。\n\n## 核心差异：从“算力矩”到“算像素”\n\n| 维度 | 传统物理仿真 (如 MuJoCo) | 视频即仿真 (如 UniSim) |\n|------|------------------------|-----------------------|\n| **建模对象** | 几何体、力学常数、接触点 | 原始像素、时空关联、视觉语义 |\n| **真实度** | 受限于手工调参的数学模型 | 无限趋近于真实视频录像 |\n| **交互方式** | 求解动力学 ODE | 预测视频下一帧 (Next-frame Prediction) |\n| **泛化性** | 仅限于建立好模型的物体 | 见过视频的所有场景均可模拟 |\n\n## 关键技术：交互式视频预测器\n\n实现“视频即仿真”的核心是一个**条件生成模型**。给定当前的 RGB 观测 $O_t$ 和机器人预期的控制动作 $A_t$，模型输出预测的下一帧 $\\hat{O}_{t+1}$：\n\n$$ \\hat{O}_{t+1} = \\mathcal{G}(O_t, A_t, \\text{Instruction}) $$\n\n### 代表性工作：UniSim (Google DeepMind)\nUniSim 证明了通过将“大量无人干预的人类视频”与“少量机器人交互视频”混合训练，可以构建出一个可交互的模拟器。用户可以像玩电子游戏一样输入指令（如“打开微波炉”），并在生成的视频中看到机器人的执行反馈。\n\n## 为什么这一范式能够成功？\n\n1. **Sim2Real 的终极解**：在“视频”中训练的策略，其观测空间与真实摄像头完全一致，不存在视觉层面的鸿沟。\n2. **解决“建模难题”**：对于折衣服、液体倾倒等柔体/流体任务，传统仿真极难精准建模，而视频模型可以从海量互联网视频中自发习得这些复杂的物理常识。\n3. **数据 Scaling**：它允许机器人利用 YouTube 等非结构化视频进行“离线学习”，极大地提升了数据的利用率。\n\n## 当前局限\n\n- **因果偏差**：模型可能会产生“动作未到，物体先动”的逻辑错误。\n- **长程发散**：随着预测步数增加，生成的视频细节会逐渐模糊，导致策略在长时域任务中失效。\n- **无法闭环力控**：由于缺乏接触力反馈，它更适合训练视觉策略，而非底层高频关节控制。\n\n## 在人形控制上的延伸：[ExoActor](../methods/exoactor.md)\n\nUniSim 把视频生成模型当作可交互的物理引擎来训练视觉策略，而 [ExoActor (BAAI, 2026)](../methods/exoactor.md) 把同一思想推到了**真实物理人形机器人控制**层：用第三人称视频生成模型生成\"想象的示教\"，再通过 GENMO/WiLoR 估计 SMPL 全身 + 双手动作，并直接喂给 SONIC 这种通用 motion tracking 控制器在 Unitree G1 上执行。这给\"视频即仿真\"提供了一个无需真实数据采集的端到端落地实例。\n\n## 关联页面\n- [Generative World Models](../methods/generative-world-models.md)\n- [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [ExoActor](../methods/exoactor.md) — 把视频即仿真思想用到人形机器人交互行为生成上。\n\n## 参考来源\n- Yang, S., et al. (2023). *UniSim: Learning Interactive Real-World Simulators*.\n- [Google DeepMind Blog on UniSim](https://deepmind.google/discover/blog/unisim/).\n- Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。",
       "tags": [
         "concept",
+        "humanoid",
         "rl",
         "sim2real",
-        "tooling"
+        "tooling",
+        "hardware"
       ],
       "related": [
         "wiki-methods-generative-world-models",
         "wiki-concepts-sim2real",
-        "wiki-methods-model-based-rl"
+        "wiki-methods-model-based-rl",
+        "wiki-methods-exoactor",
+        "sources-papers-exoactor"
       ],
       "source_links": [
         "https://deepmind.google/discover/blog/unisim/"
       ],
       "status": "active",
       "type": "wiki_page",
-      "page_type": "concept"
+      "page_type": "concept",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
     },
     {
       "id": "wiki-concepts-visuo-tactile-fusion",
@@ -1295,7 +1303,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1325,7 +1333,9 @@
       ],
       "status": "active",
       "type": "wiki_page",
-      "page_type": "concept"
+      "page_type": "concept",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
     },
     {
       "id": "wiki-methods-action-chunking",
@@ -1627,7 +1637,7 @@
       "title": "BeyondMimic",
       "path": "wiki/methods/beyondmimic.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, locomotion, humanoid, sampling]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/armature-modeling.md\n  - ../concepts/curriculum-learning.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架，其核心在于精确的物理建模与失败率驱动的自适应采样机制。\"\n---\n\n# BeyondMimic\n\n**BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理世界的无缝迁移，并在 **Isaac Lab** (IsaacLab) 环境中得到了广泛验证。\n\n## 核心设计理念\n\nBeyondMimic 提出一个核心观点：**精确的物理建模可以替代大量盲目的域随机化 (Domain Randomization)**。通过缩小仿真与现实在确定性物理量上的差距，策略能更有效地学习到稳健的运动模式。\n\n## 关键技术点\n\n### 1. 精确的物理建模 (Accurate Physical Modeling)\nBeyondMimic 强调必须对机器人执行器的反射惯量（[Armature](../concepts/armature-modeling.md)）进行精确计算，并据此设计 PD 增益。\n\n- **Armature 计算**：$I_{arm} = J_{rotor} \\cdot G^2$。\n- **PD 增益设计**：基于反射惯量计算临界阻尼增益，确保在轻载工况下不振荡，重载下保持柔顺。\n\n### 2. 失败率驱动的自适应采样 (Failure-driven Adaptive Sampling)\n在训练长序列动作（如长距离行走或跳舞）时，随机从序列中任意位置 reset 往往效率低下。BeyondMimic 引入了自适应采样：\n- **实时评估**：记录每个动作片段（Segment）的训练失败率。\n- **权重分配**：失败率越高、难度越大的片段，被采样作为起始位置的概率越大。\n- **前瞻卷积**：采样权重考虑当前片段及其后续片段的累计难度，防止机器人卡在“断点”处。\n\n### 3. 统一的任务空间奖励 (Unified Task-space Rewards)\nBeyondMimic 并不针对特定关节设计复杂的 reward，而是采用统一的任务空间跟踪项：\n- 身体各部位的位置误差与朝向误差。\n- 线速度与角速度匹配。\n- 支持对特定关键身体部位（如 Pelvis）进行加权优化。\n\n## 主要技术路线\n\n| 模块 | 核心方案 | 目的 |\n|------|---------|------|\n| **物理建模** | 精确 armature + 关联 PD 增益 | 缩小动力学 Gap，提升部署稳定性 |\n| **采样策略** | 失败率驱动的自适应重采样 | 提高对困难动作片段的训练效率 |\n| **观测空间** | 历史本体感知观测堆叠 | 利用时序上下文记忆仿真特定模式 |\n| **奖励函数** | 统一的任务空间跟踪项 | 简化奖励设计，保持动作自然度 |\n\n## 训练机制：大道至简\n\nBeyondMimic 证明了只要满足以下三点，简单的 PPO 就能学到极强的动作模仿能力：\n1. **精确的 Armature 补偿**。\n2. **时序历史观测的堆叠**（让策略学会记忆仿真特有的模式）。\n3. **针对性的失败重采样**。\n\n## 评价与影响\n\nBeyondMimic 已经成为许多人形机器人项目的底层基座：\n- **RobotEra (宇树春晚爆款等)**：其技术路线中大量参考了 BeyondMimic 的物理建模思想。\n- **SONIC (NVIDIA/CMU)**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [BeyondMimic 源码仓库](../../sources/repos/robot_lab.md)（集成在 robot_lab 中）。\n\n## 关联页面\n\n- [Imitation Learning (模仿学习)](./imitation-learning.md)\n- [Armature Modeling (电枢惯量建模)](../concepts/armature-modeling.md)\n- [Curriculum Learning (课程学习)](../concepts/curriculum-learning.md) — 失败驱动采样是课程学习的一种高级形式。",
+      "content_markdown": "---\ntype: method\ntags: [rl, imitation-learning, locomotion, humanoid, sampling]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ./imitation-learning.md\n  - ../concepts/armature-modeling.md\n  - ../concepts/curriculum-learning.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架，其核心在于精确的物理建模与失败率驱动的自适应采样机制。\"\n---\n\n# BeyondMimic\n\n**BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理世界的无缝迁移，并在 **Isaac Lab** (IsaacLab) 环境中得到了广泛验证。\n\n## 核心设计理念\n\nBeyondMimic 提出一个核心观点：**精确的物理建模可以替代大量盲目的域随机化 (Domain Randomization)**。通过缩小仿真与现实在确定性物理量上的差距，策略能更有效地学习到稳健的运动模式。\n\n## 关键技术点\n\n### 1. 精确的物理建模 (Accurate Physical Modeling)\nBeyondMimic 强调必须对机器人执行器的反射惯量（[Armature](../concepts/armature-modeling.md)）进行精确计算，并据此设计 PD 增益。\n\n- **Armature 计算**：$I_{arm} = J_{rotor} \\cdot G^2$。\n- **PD 增益设计**：基于反射惯量计算临界阻尼增益，确保在轻载工况下不振荡，重载下保持柔顺。\n\n### 2. 失败率驱动的自适应采样 (Failure-driven Adaptive Sampling)\n在训练长序列动作（如长距离行走或跳舞）时，随机从序列中任意位置 reset 往往效率低下。BeyondMimic 引入了自适应采样：\n- **实时评估**：记录每个动作片段（Segment）的训练失败率。\n- **权重分配**：失败率越高、难度越大的片段，被采样作为起始位置的概率越大。\n- **前瞻卷积**：采样权重考虑当前片段及其后续片段的累计难度，防止机器人卡在“断点”处。\n\n### 3. 统一的任务空间奖励 (Unified Task-space Rewards)\nBeyondMimic 并不针对特定关节设计复杂的 reward，而是采用统一的任务空间跟踪项：\n- 身体各部位的位置误差与朝向误差。\n- 线速度与角速度匹配。\n- 支持对特定关键身体部位（如 Pelvis）进行加权优化。\n\n## 主要技术路线\n\n| 模块 | 核心方案 | 目的 |\n|------|---------|------|\n| **物理建模** | 精确 armature + 关联 PD 增益 | 缩小动力学 Gap，提升部署稳定性 |\n| **采样策略** | 失败率驱动的自适应重采样 | 提高对困难动作片段的训练效率 |\n| **观测空间** | 历史本体感知观测堆叠 | 利用时序上下文记忆仿真特定模式 |\n| **奖励函数** | 统一的任务空间跟踪项 | 简化奖励设计，保持动作自然度 |\n\n## 训练机制：大道至简\n\nBeyondMimic 证明了只要满足以下三点，简单的 PPO 就能学到极强的动作模仿能力：\n1. **精确的 Armature 补偿**。\n2. **时序历史观测的堆叠**（让策略学会记忆仿真特有的模式）。\n3. **针对性的失败重采样**。\n\n## 评价与影响\n\nBeyondMimic 已经成为许多人形机器人项目的底层基座：\n- **RobotEra (宇树春晚爆款等)**：其技术路线中大量参考了 BeyondMimic 的物理建模思想。\n- **SONIC (NVIDIA/CMU)**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作\"视频生成 → 动作估计 → 通用动作跟踪\"流水线中的物理过滤器。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [BeyondMimic 源码仓库](../../sources/repos/robot_lab.md)（集成在 robot_lab 中）。\n\n## 关联页面\n\n- [Imitation Learning (模仿学习)](./imitation-learning.md)\n- [Armature Modeling (电枢惯量建模)](../concepts/armature-modeling.md)\n- [Curriculum Learning (课程学习)](../concepts/curriculum-learning.md) — 失败驱动采样是课程学习的一种高级形式。",
       "tags": [
         "method",
         "humanoid",
@@ -1640,6 +1650,7 @@
         "wiki-methods-imitation-learning",
         "wiki-concepts-armature-modeling",
         "wiki-concepts-curriculum-learning",
+        "wiki-methods-exoactor",
         "sources-papers-motion-control-projects",
         "sources-repos-robot-lab"
       ],
@@ -1828,6 +1839,41 @@
       "page_type": "method"
     },
     {
+      "id": "wiki-methods-exoactor",
+      "title": "ExoActor (视频生成驱动的交互式人形控制)",
+      "path": "wiki/methods/exoactor.md",
+      "summary": "type: method。",
+      "content_markdown": "---\ntype: method\ntags: [video-generation, world-models, humanoid, motion-tracking, loco-manipulation, baai]\nstatus: complete\nupdated: 2026-05-03\nrelated:\n  - ./generative-world-models.md\n  - ../concepts/video-as-simulation.md\n  - ./motion-retargeting-gmr.md\n  - ../concepts/motion-retargeting.md\n  - ../tasks/loco-manipulation.md\n  - ../entities/unitree-g1.md\nsources:\n  - ../../sources/papers/exoactor.md\nsummary: \"ExoActor 是 BAAI 提出的视频生成驱动的人形控制框架：把第三人称视频生成当作交互动力学的统一接口，通过 embodiment transfer + 动作链分解 + Kling 3 视频生成，再用 GENMO/WiLoR 做动作估计、SONIC 做通用动作跟踪，最终把 Unitree G1 在零真实数据下泛化到多难度交互任务。\"\n---\n\n# ExoActor (视频生成驱动的交互式人形控制)\n\n**ExoActor** 把\"第三人称（exocentric）视频生成\"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型\"想象\"出一段任务执行视频，再把视频翻译为可执行的人形动作。它是 [Generative World Models](./generative-world-models.md) 与 [Video-as-Simulation](../concepts/video-as-simulation.md) 在人形控制层的一次具体落地。\n\n## 核心思想：让视频生成模型当 demo 源\n\n传统人形控制要么依赖显式仿真器，要么依赖大量真实采集的示教数据。ExoActor 把这两条路线绕开：\n\n> **任务的\"想象过程\"由视频生成模型给出，机器人只负责把视频里的人体动作物理化执行。**\n\n这种解耦带来三个特性：\n- **零任务级真实数据**：只需要任务指令和一张第三人称初始观测，就可以零样本泛化到新场景。\n- **天然支持长时序、富交互**：视频天然能表达走过去 → 蹲下 → 抓取 → 站起这种连贯过程。\n- **模块独立可演进**：视频生成、动作估计、动作跟踪三段都可以独立升级。\n\n## 主要技术路线\n\n| 模块 | 关键技术 | 选型与说明 |\n|------|---------|-----------|\n| **Robot-to-Human Embodiment Transfer** | 提示驱动的图像编辑 | Nano Banana Pro / Gemini 3.1 Pro，把 G1 替换为姿态/朝向严格保持的人体 |\n| **任务到动作链分解** | LLM 推理 | GPT-5.4 Thinking 输出原子动作链 $C=\\{a_1,\\ldots,a_T\\}$ |\n| **第三人称视频生成** | 大型视频生成模型 | 主用 Kling 3，相比 Veo 3.1 / Wan 2.6 物理合理性与 prompt 跟随更稳 |\n| **全身动作估计** | 扩散式约束生成 | GENMO 输出 SMPL $(q_t, p_t)$ |\n| **双手姿态估计** | 单图像手部姿态网络 | WiLoR + {open/half-open/closed} 三态 |\n| **通用动作跟踪** | 大规模 motion tracking 控制器 | SONIC 作为\"物理过滤器\"，免除任务级 reward 工程；不接 GMR 等中间重定向 |\n| **手部下发** | 关节级映射 | Unitree Dex3-1 兼容 7-DoF 关节 + event queue 同步 |\n\n## 三阶段流水线\n\n```\n任务指令 + 第三人称初始观测\n        │\n        ▼\n1. Video Generation\n   ├─ Robot-to-Human Embodiment Transfer (Nano Banana Pro / Gemini 3.1 Pro)\n   ├─ Task-to-Action 分解 + 结构化 Prompt (GPT-5.4 Thinking)\n   └─ 第三人称定相机视频生成 (Kling 3 主用)\n        │\n        ▼\n2. Interaction-aware Motion Estimation\n   ├─ 全身动作: GENMO → SMPL 参数 (q_t, p_t)\n   └─ 双手姿态: WiLoR + {open, half-open, closed} 三态\n        │\n        ▼\n3. General Motion Tracking Deployment\n   ├─ SONIC 大规模 motion tracking 控制器作为\"物理过滤器\"\n   └─ 手部映射到 Unitree Dex3-1 兼容 7-DoF 关节\n        │\n        ▼\nUnitree G1 物理执行\n```\n\n### Stage 1：第三人称视频-动作生成\n\n直接让视频生成模型\"画机器人\"会因人形机器人外观与人类视觉先验不匹配而出现严重幻觉。ExoActor 用三个手段稳住这一阶段：\n\n1. **Robot-to-Human Embodiment Transfer**：用基于提示的图像编辑（Nano Banana Pro / Gemini 3.1 Pro），在严格保持场景布局、相机视角、姿态、朝向、尺度、机器人本体比例的前提下，把图像中的 G1 替换成对应姿态的人。这一步把输入投影回视频生成模型擅长的\"人类先验域\"。\n2. **任务到动作链分解**：用 GPT-5.4 Thinking 把高层指令 $G$ 拆成原子化、可视化、物理可执行的动作链 $C=\\{a_1,a_2,\\ldots,a_T\\}$，例如 *Pick up the brown box and stand up* → *approach → bend down → grasp → lift → stand upright*。\n3. **结构化 Prompt 模板**：把\"动作链 + 初始观测\"组织成 Shot / Scene / Motion / Execution / End State 五段式 prompt，固定相机、约束场景几何、强化\"机器人风格\"的运动模式。\n4. **模型选型**：实测 Veo 3.1 / Kling 3 / Wan 2.6 后，**Kling 3** 在物理合理性、动作稳定性、prompt 跟随上整体最优，被选为默认。\n\n### Stage 2：交互感知的动作估计\n\n视频生成的产物是像素，机器人需要的是结构化运动。这一阶段同时关注全身和双手：\n\n- **全身动作（GENMO）**：扩散式约束生成模型，以视频特征 + 2D 关键点为条件，输出时序一致、物理合理的 SMPL 参数序列 $\\mathcal{M}=\\{q_t, p_t\\}_{t=1}^T$，并对部分遮挡帧做时序填补。\n- **双手动作（WiLoR）**：逐帧估计双手 3D 姿态 $\\mathcal{H}=\\{h_t^l, h_t^r\\}$，并把每只手映射为 {open, half-open, closed} 三态 $\\mathcal{S}$。视点（正面 / 背面）会决定左右手的语义对应方式，避免手性歧义。\n\n最终拼成联合表示：\n\n$$ \\tilde{\\mathcal{M}}=\\{q_t,\\,p_t,\\,h_t^l,\\,h_t^r,\\,s_t^l,\\,s_t^r\\}_{t=1}^{T} $$\n\n这一步关键是**保持交互语义**——估计的轨迹中已经隐含了视频里的接触、空间约束和任务相关的运动模式，而不是单纯的关节角时间序列。\n\n### Stage 3：通用动作跟踪部署\n\n估计到的是高质量的\"运动学参考\"，但还缺少接触力、扭矩限制、平衡约束等动力学一致性。ExoActor 直接复用 [SONIC (Luo et al., 2025)](./beyondmimic.md) 这种规模化 motion tracking 控制器：\n\n- **物理过滤器 (physics-filter) 视角**：让 SONIC 把\"想象出来\"的人体运动映射到 G1 的可行控制空间，即使是视频里出现的 parkour 风格大动作也能保持稳定。\n- **不需要重定向**：作者有意省略 SMPLX → robot 的中间 retargeting 阶段（详见下文消融）。\n- **手部部署**：把估计的双手三态映射到 Unitree Dex3-1 兼容的 7-DoF 关节目标，与 SMPL 主体轨迹通过 event queue 同步下发到机器人侧控制器。\n\n## 任务难度分级与系统能力\n\nExoActor 按\"导航/交互\"复杂度把零样本任务分成三级：\n\n| 难度 | 代表任务 | 主要考察 |\n|------|---------|---------|\n| **B (Easy)** | 走向桌上的瓶子 / 篮子；绕开椅子 | 稳定 locomotion + 空间一致的目标到达 |\n| **A (Moderate)** | 把瓶子扫到一旁 / 走到椅子坐下 / 抬起箱子站起 / 钻过或跨过障碍 / 擦桌面 | 全身协调 + 粗粒度交互 |\n| **S (Challenging)** | 多步操作：拾取物体放入篮子或垃圾桶；瓶子直立放进篮子 | 精细手物协调 + 空间精度 |\n\n在 S 级任务上，由于动作估计在手部高度上仍有残余误差，作者会在目标物下垫支撑底座作为工程权宜方案，相关局限在论文 §4 单独讨论。\n\n## 关键消融与失败模式\n\n### 视频生成模型选型\nKling 3 vs Veo 3.1 vs Wan 2.6：Kling 3 在物理合理性、动作稳定性、prompt 跟随上整体更优；Veo / Wan 更易出现运动漂移、人-物交互不一致、突发性错误生成、末态不稳定。\n\n### 重定向消融（与传统直觉相反）\n对估计出来的 SMPLX 轨迹接 [GMR](./motion-retargeting-gmr.md) 或 OmniRetarget 等 [Motion Retargeting](../concepts/motion-retargeting.md) 模块：\n- **能带来什么**：更平滑的全身运动，更少的高频抖动。\n- **同时引入了什么**：明显的空间偏差。原因是估计动作本身就有全局位置漂移和脚滑，重定向尝试\"修正\"这些伪影时反而会破坏整体轨迹；同时人机体型/肢长差异会导致步长和位置积累误差。\n- **结论**：在该流水线下，**直接把人体动作喂给 SONIC 比经过重定向再喂更稳**。这给\"重定向永远是收益项\"的传统假设提供了一个有意思的反例。\n\n### 失败模式溯源\n- **视频生成端**：物体幻觉（小伞被画成大伞）、动作序列错误、不真实的环境配置、末态姿势物理不合理。\n- **动作估计端**：手腕方向错误（视频里在垂直抓瓶子，估计成水平腕）；遮挡和后视角时全身姿态恢复不完整；快速动作下精度下降。\n- **执行端**：手部高度误差和步距误差导致够不到目标，需要工程补偿。\n\n## 在本知识库中的定位\n\nExoActor 是一篇典型的\"桥接型\"论文，把好几条看似独立的技术线串在一起：\n\n- 把 [Video-as-Simulation](../concepts/video-as-simulation.md) / [Generative World Models](./generative-world-models.md) 的\"视频生成当世界模型\"思想，从视觉策略训练扩展到**物理人形机器人控制**。\n- 把 [Motion Retargeting](../concepts/motion-retargeting.md) 与 [GMR](./motion-retargeting-gmr.md) 放进消融，提示\"重定向不是免费的\"。\n- 把 [BeyondMimic](./beyondmimic.md) / SONIC 风格的 motion tracking 大模型作为通用执行层，而不再为每个任务单独 reward 工程。\n- 在 [Unitree G1](../entities/unitree-g1.md) 上端到端验证，是当前 G1 平台上\"video → motion → tracking\"系统的代表实现。\n\n## 参考来源\n\n- [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — 本仓库 ingest 档案。\n- Zhou Y., Ma J., Peng Y., Sun Z., Bai Y., Karlsson B. F. *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control.* arXiv:2604.27711, BAAI, 2026. <https://arxiv.org/abs/2604.27711> / <https://arxiv.org/html/2604.27711v1>\n- 项目主页：<https://baai-agents.github.io/ExoActor/>\n- 相关基础工作：GENMO (Li et al., 2025)、WiLoR (Potamias et al., 2025)、SONIC (Luo et al., 2025)、Kling 3 (Kling Team, 2025)、SMPL (Loper et al., 2015)。\n\n## 关联页面\n\n- [Generative World Models](./generative-world-models.md) — ExoActor 把视频生成模型当成隐式世界模型来用。\n- [Video-as-Simulation](../concepts/video-as-simulation.md) — 视频即仿真范式在人形控制上的具体实例化。\n- [GMR (通用动作重定向)](./motion-retargeting-gmr.md) — ExoActor 的消融提供了\"什么时候不该用重定向\"的反例。\n- [Motion Retargeting](../concepts/motion-retargeting.md) — 流水线中\"是否需要中间重定向\"的决策点。\n- [BeyondMimic](./beyondmimic.md) — SONIC 是 BeyondMimic 路线的规模化延伸，被 ExoActor 直接当通用执行器。\n- [Loco-Manipulation](../tasks/loco-manipulation.md) — ExoActor 在 G1 上验证的 A/S 级任务大部分属于 loco-manipulation。\n- [Unitree G1](../entities/unitree-g1.md) — 端到端验证平台。",
+      "tags": [
+        "method",
+        "humanoid",
+        "rl",
+        "il",
+        "tooling",
+        "hardware"
+      ],
+      "related": [
+        "wiki-methods-generative-world-models",
+        "wiki-concepts-video-as-simulation",
+        "wiki-methods-motion-retargeting-gmr",
+        "wiki-concepts-motion-retargeting",
+        "wiki-methods-beyondmimic",
+        "wiki-tasks-loco-manipulation",
+        "entity-unitree-g1",
+        "sources-papers-exoactor"
+      ],
+      "source_links": [
+        "https://arxiv.org/abs/2604.27711",
+        "https://arxiv.org/html/2604.27711v1",
+        "https://baai-agents.github.io/ExoActor/"
+      ],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "method",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
+    },
+    {
       "id": "wiki-methods-gae",
       "title": "Generalized Advantage Estimation (GAE)",
       "path": "wiki/methods/gae.md",
@@ -1877,7 +1923,7 @@
       "title": "Generative World Models (生成式世界模型)",
       "path": "wiki/methods/generative-world-models.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [world-models, generative-ai, simulation, video-generation, driving]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/latent-imagination.md\n  - ../methods/model-based-rl.md\n  - ../entities/nvidia-omniverse.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\nsummary: \"生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。\"\n---\n\n# Generative World Models (生成式世界模型)\n\n**生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI (Generative AI)** 的能力，通过海量视频数据学习世界的运动规律。\n\n## 核心理念：以生成代替计算\n\n在传统仿真中，我们需要手动编写复杂的接触力方程；而在生成式世界模型中，模型学会了“如果机器人向左打方向盘，画面应该如何平滑变化”。\n\n### 主要架构\n1. **视频生成器 (Video Diffusion/Autoregressive)**：如 GAIA-1 或 UniSim。给定当前画面和动作序列，生成一段长达数秒甚至数分钟的未来预测视频。\n2. **反事实推演 (Counterfactual Reasoning)**：允许用户输入“如果没有躲避障碍物会怎样？”，模型会生成相应的碰撞视频，作为强化学习的负样本。\n\n## 典型代表作\n\n### 1. GAIA-1 (Wayve)\n针对自动驾驶设计的世界模型。它不仅能生成真实的驾驶场景，还能根据文本描述（如“突然下起大雨”）动态改变天气和光影。\n\n### 2. UniSim (Google DeepMind)\n一个通用的具身智能世界模型。它将现实世界的视频数据和仿真数据结合，允许机器人在“视频”中练习开橱柜、拿杯子等精细操作，并将学到的技能无缝迁移到真实物理世界。\n\n## 优势与挑战\n\n### 优势\n- **视觉真实度极致**：彻底解决了 Sim2Real 在感知层面的 Gap。\n- **无需手动建模**：对于复杂的流体、软体（如折衣服、揉面团），生成式模型比物理引擎更容易捕捉其动态特性。\n\n### 挑战\n- **物理一致性缺失**：模型有时会产生违反物理常识的幻觉（如物体凭空消失）。\n- **推理开销大**：目前生成一帧高质量视频的速度远低于物理引擎的 1000Hz 要求。\n- **交互精度低**：很难通过生成的视频反推精确到毫米级的接触力。\n\n## 主要技术路线\n- **视频即仿真 (Video-as-Simulation)**：利用交互式视频预测器代替解析引擎，详见 [Video-as-Simulation](../concepts/video-as-simulation.md)。\n- **扩散模型 (Diffusion-based)**：利用 DDPM 逐步去噪生成未来帧，代表：UniSim。\n- **离散 Token 流 (Discrete Token flow)**：将图像量化为 Token，利用 Transformer 预测序列，代表：π₀ 的动作建模部分。\n\n## 关联页面\n- [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [NVIDIA Omniverse](../entities/nvidia-omniverse.md)\n\n## 参考来源\n- Hu, A., et al. (2023). *GAIA-1: A Generative AI for Embodied AI*.\n- Yang, S., et al. (2023). *Learning Interactive Real-World Simulators (UniSim)*.",
+      "content_markdown": "---\ntype: method\ntags: [world-models, generative-ai, simulation, video-generation, driving]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ../concepts/latent-imagination.md\n  - ../methods/model-based-rl.md\n  - ../entities/nvidia-omniverse.md\nsources:\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/exoactor.md\nsummary: \"生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。\"\n---\n\n# Generative World Models (生成式世界模型)\n\n**生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI (Generative AI)** 的能力，通过海量视频数据学习世界的运动规律。\n\n## 核心理念：以生成代替计算\n\n在传统仿真中，我们需要手动编写复杂的接触力方程；而在生成式世界模型中，模型学会了“如果机器人向左打方向盘，画面应该如何平滑变化”。\n\n### 主要架构\n1. **视频生成器 (Video Diffusion/Autoregressive)**：如 GAIA-1 或 UniSim。给定当前画面和动作序列，生成一段长达数秒甚至数分钟的未来预测视频。\n2. **反事实推演 (Counterfactual Reasoning)**：允许用户输入“如果没有躲避障碍物会怎样？”，模型会生成相应的碰撞视频，作为强化学习的负样本。\n\n## 典型代表作\n\n### 1. GAIA-1 (Wayve)\n针对自动驾驶设计的世界模型。它不仅能生成真实的驾驶场景，还能根据文本描述（如“突然下起大雨”）动态改变天气和光影。\n\n### 2. UniSim (Google DeepMind)\n一个通用的具身智能世界模型。它将现实世界的视频数据和仿真数据结合，允许机器人在“视频”中练习开橱柜、拿杯子等精细操作，并将学到的技能无缝迁移到真实物理世界。\n\n## 优势与挑战\n\n### 优势\n- **视觉真实度极致**：彻底解决了 Sim2Real 在感知层面的 Gap。\n- **无需手动建模**：对于复杂的流体、软体（如折衣服、揉面团），生成式模型比物理引擎更容易捕捉其动态特性。\n\n### 挑战\n- **物理一致性缺失**：模型有时会产生违反物理常识的幻觉（如物体凭空消失）。\n- **推理开销大**：目前生成一帧高质量视频的速度远低于物理引擎的 1000Hz 要求。\n- **交互精度低**：很难通过生成的视频反推精确到毫米级的接触力。\n\n## 主要技术路线\n- **视频即仿真 (Video-as-Simulation)**：利用交互式视频预测器代替解析引擎，详见 [Video-as-Simulation](../concepts/video-as-simulation.md)。\n- **扩散模型 (Diffusion-based)**：利用 DDPM 逐步去噪生成未来帧，代表：UniSim。\n- **离散 Token 流 (Discrete Token flow)**：将图像量化为 Token，利用 Transformer 预测序列，代表：π₀ 的动作建模部分。\n- **生成视频作为人形控制 demo 源**：把第三人称视频生成当成\"想象出来的示教\"，再用动作估计 + 通用动作跟踪把视频翻译为机器人动作，代表：[ExoActor](./exoactor.md)。\n\n## 关联页面\n- [Latent Imagination (潜空间想象)](../concepts/latent-imagination.md)\n- [Model-Based RL](../methods/model-based-rl.md)\n- [NVIDIA Omniverse](../entities/nvidia-omniverse.md)\n- [ExoActor](./exoactor.md) — 视频生成驱动的交互式人形控制。\n\n## 参考来源\n- Hu, A., et al. (2023). *GAIA-1: A Generative AI for Embodied AI*.\n- Yang, S., et al. (2023). *Learning Interactive Real-World Simulators (UniSim)*.\n- Zhou Y., et al. (2026). *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control* — 见 [sources/papers/exoactor.md](../../sources/papers/exoactor.md)。",
       "tags": [
         "method",
         "rl",
@@ -1888,12 +1934,16 @@
         "wiki-concepts-latent-imagination",
         "wiki-methods-model-based-rl",
         "entity-nvidia-omniverse",
-        "wiki-concepts-video-as-simulation"
+        "wiki-methods-exoactor",
+        "wiki-concepts-video-as-simulation",
+        "sources-papers-exoactor"
       ],
       "source_links": [],
       "status": "active",
       "type": "wiki_page",
-      "page_type": "method"
+      "page_type": "method",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
     },
     {
       "id": "wiki-methods-haic",
@@ -2042,7 +2092,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2196,7 +2246,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/motion_control_projects.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2231,14 +2281,14 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/system_identification.md"
     },
     {
       "id": "wiki-methods-motion-retargeting-gmr",
       "title": "GMR: 通用动作重定向",
       "path": "wiki/methods/motion-retargeting-gmr.md",
       "summary": "type: method。",
-      "content_markdown": "---\ntype: method\ntags: [robotics, kinematics, retargeting, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../concepts/motion-retargeting.md\n  - ./beyondmimic.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\nsummary: \"GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。\"\n---\n\n# GMR: 通用动作重定向\n\n**GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。\n\n## 核心原理\n\nGMR 主要基于**运动学 (Kinematics)** 优化。它不考虑力学项，而是通过最小化几何误差来实现姿态复现。\n\n### 优化目标\n1. **关键点位置匹配**：让机器人的手掌、脚掌、肘部等关键点位置尽可能贴近参考轨迹。\n2. **关节限位约束**：确保生成的角度不超出机器人的物理极限。\n3. **平滑性约束**：减少相邻帧之间的角度突变。\n\n## 主要技术路线\n\n| 模块 | 核心方法 | 关键约束 |\n|------|---------|---------|\n| **骨架映射** | 关节树匹配 / 重排 | 处理人机自由度不一致 |\n| **几何对齐** | 关键点 IK (Inverse Kinematics) | 最小化手/足位置与参考轨迹误差 |\n| **数值求解** | 基于 QP 的优化器 | 满足关节限位与角速度连续性 |\n| **后处理** | 时间平滑 + 静态稳定性筛选 | 减少高频噪声，剔除极度失稳片段 |\n\n## 关键局限与避坑指南\n\n根据《开源运动控制项目》文档的点评，GMR 的使用必须注意其“非物理性”：\n\n### 1. 缺乏动力学一致性\nGMR 只管姿态“像不像”，不管“能不能站稳”。\n- **表现**：重定向后的轨迹可能出现脚悬空、质心超出支撑多边形的情况。\n- **后果**：直接把 GMR 输出给底层 PD 控制器，机器人极大概率摔倒。\n\n### 2. 接触不连续性\n由于没有建模接触力，GMR 输出的轨迹在脚触地瞬间可能存在穿透或虚位。\n\n### 3. 速度与加速度跳变\n几何最优不代表导数最优。\n\n## 工业界最佳实践\n\n**GMR 只是起点，不是终点。** \n\n一个完整的重定向流水线应为：\n$$\n\\text{Raw MoCap} \\xrightarrow{GMR} \\text{Kinematic Trajectory} \\xrightarrow{\\text{Dynamic Filter}} \\text{Feasible Trajectory}\n$$\n\n- **动力学过滤层**：通过 QP 优化（如 HALO 方式）或全动力学优化，补上质量、惯性和接触力约束。\n- **RL 细化**：将 GMR 轨迹作为参考，通过 [BeyondMimic](./beyondmimic.md) 等框架训练具有鲁棒性的 RL 策略。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [GMR 源码仓库](https://github.com/YanjieZe/GMR)\n\n## 关联页面\n\n- [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。\n- [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。",
+      "content_markdown": "---\ntype: method\ntags: [robotics, kinematics, retargeting, humanoid]\nstatus: complete\nupdated: 2026-04-27\nrelated:\n  - ../concepts/motion-retargeting.md\n  - ./beyondmimic.md\nsources:\n  - ../../sources/papers/motion_control_projects.md\n  - ../../sources/papers/exoactor.md\nsummary: \"GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。\"\n---\n\n# GMR: 通用动作重定向\n\n**GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。\n\n## 核心原理\n\nGMR 主要基于**运动学 (Kinematics)** 优化。它不考虑力学项，而是通过最小化几何误差来实现姿态复现。\n\n### 优化目标\n1. **关键点位置匹配**：让机器人的手掌、脚掌、肘部等关键点位置尽可能贴近参考轨迹。\n2. **关节限位约束**：确保生成的角度不超出机器人的物理极限。\n3. **平滑性约束**：减少相邻帧之间的角度突变。\n\n## 主要技术路线\n\n| 模块 | 核心方法 | 关键约束 |\n|------|---------|---------|\n| **骨架映射** | 关节树匹配 / 重排 | 处理人机自由度不一致 |\n| **几何对齐** | 关键点 IK (Inverse Kinematics) | 最小化手/足位置与参考轨迹误差 |\n| **数值求解** | 基于 QP 的优化器 | 满足关节限位与角速度连续性 |\n| **后处理** | 时间平滑 + 静态稳定性筛选 | 减少高频噪声，剔除极度失稳片段 |\n\n## 关键局限与避坑指南\n\n根据《开源运动控制项目》文档的点评，GMR 的使用必须注意其“非物理性”：\n\n### 1. 缺乏动力学一致性\nGMR 只管姿态“像不像”，不管“能不能站稳”。\n- **表现**：重定向后的轨迹可能出现脚悬空、质心超出支撑多边形的情况。\n- **后果**：直接把 GMR 输出给底层 PD 控制器，机器人极大概率摔倒。\n\n### 2. 接触不连续性\n由于没有建模接触力，GMR 输出的轨迹在脚触地瞬间可能存在穿透或虚位。\n\n### 3. 速度与加速度跳变\n几何最优不代表导数最优。\n\n## 工业界最佳实践\n\n**GMR 只是起点，不是终点。** \n\n一个完整的重定向流水线应为：\n$$\n\\text{Raw MoCap} \\xrightarrow{GMR} \\text{Kinematic Trajectory} \\xrightarrow{\\text{Dynamic Filter}} \\text{Feasible Trajectory}\n$$\n\n- **动力学过滤层**：通过 QP 优化（如 HALO 方式）或全动力学优化，补上质量、惯性和接触力约束。\n- **RL 细化**：将 GMR 轨迹作为参考，通过 [BeyondMimic](./beyondmimic.md) 等框架训练具有鲁棒性的 RL 策略。\n\n## 反例：什么时候不该用 GMR\n\n并非所有流水线都从重定向获益。[ExoActor (BAAI, 2026)](./exoactor.md) 在视频生成 → 动作估计 → 动作跟踪的流水线上做了消融：\n\n- **现象**：在估计出来的 SMPLX 轨迹上叠加 GMR / OmniRetarget 后，全身运动确实更平滑、抖动更少，但同时引入了明显的全局空间偏差。\n- **原因**：上游动作估计本身有全局位置漂移和脚滑，重定向尝试\"修正\"这些伪影时反而破坏了原本的轨迹；同时人机肢长比例差异会放大步长与位置积累误差。\n- **结论**：在该流水线下，作者选择**直接把人体动作喂给 SONIC**，跳过中间重定向阶段。\n\n这说明 GMR 在 MoCap → 机器人这种\"源动作干净\"的链路上是收益项，但在\"源动作本身就来自上游估计/生成模型\"的链路上，需要额外评估它是否会放大上游噪声。\n\n## 参考来源\n\n- [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。\n- [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的重定向消融提供\"什么时候不该用 GMR\"的反例。\n- [GMR 源码仓库](https://github.com/YanjieZe/GMR)\n\n## 关联页面\n\n- [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。\n- [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。\n- [ExoActor](./exoactor.md) — 视频生成驱动的人形控制流水线，给出\"何时跳过 GMR\"的反例。",
       "tags": [
         "method",
         "humanoid",
@@ -2250,14 +2300,18 @@
       "related": [
         "wiki-concepts-motion-retargeting",
         "wiki-methods-beyondmimic",
-        "sources-papers-motion-control-projects"
+        "wiki-methods-exoactor",
+        "sources-papers-motion-control-projects",
+        "sources-papers-exoactor"
       ],
       "source_links": [
         "https://github.com/YanjieZe/GMR"
       ],
       "status": "active",
       "type": "wiki_page",
-      "page_type": "method"
+      "page_type": "method",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
     },
     {
       "id": "wiki-methods-motionbricks",
@@ -2415,7 +2469,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2810,7 +2864,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2909,7 +2963,7 @@
       "title": "Loco-Manipulation (移动操作)",
       "path": "wiki/tasks/loco-manipulation.md",
       "summary": "让机器人边走边动手——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调",
-      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n\n## 参考来源\n\n- [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
+      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/papers/exoactor.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n### 7. 视频生成驱动路线 (Video-Generation-Driven)\n- **核心**：把第三人称视频生成模型当成\"想象出来的示教源\"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。\n- **代表作**：[ExoActor](../methods/exoactor.md) (BAAI, 2026) — 在 Unitree G1 上做零样本任务的 B/A/S 三级评测，覆盖从基础导航到精细多步操作（如把瓶子直立放进篮子）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成\n\n## 参考来源\n\n- [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
       "tags": [
         "task",
         "humanoid",
@@ -2927,10 +2981,10 @@
         "wiki-tasks-teleoperation",
         "wiki-concepts-contact-rich-manipulation",
         "wiki-methods-humanoid-transformer-touch-dreaming",
+        "wiki-methods-exoactor",
         "wiki-methods-sumo",
         "sources-repos-awesome-humanoid-robot-learning",
-        "wiki-tasks-ultra-survey",
-        "sources-papers-diffusion-and-gen"
+        "wiki-tasks-ultra-survey"
       ],
       "source_links": [
         "https://arxiv.org/abs/2603.23983"
@@ -2939,7 +2993,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -2976,7 +3030,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -3014,7 +3068,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/imitation_learning.md"
     },
     {
       "id": "wiki-tasks-teleoperation",
@@ -5591,7 +5645,7 @@
       "type": "entity_page",
       "entity_kind": "library",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "entity-drake",
@@ -6372,7 +6426,7 @@
       "title": "Unitree G1 (人形机器人)",
       "path": "wiki/entities/unitree-g1.md",
       "summary": "type: entity。",
-      "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md)、[robot_lab](../entities/robot-lab.md) 和 `legged_gym`；同时作为 NVIDIA [MotionBricks](../methods/motionbricks.md) 生成式运动框架的首批验证硬件。\n5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。\n6. **足球技能研究**：作为 [PAiD](../methods/paid-framework.md) 框架的主要实验平台，证明了其在执行类人化踢球动作方面的卓越物理特性。\n7. **敏捷技能切换**：[Switch](../methods/switch-framework.md) 框架在 G1 上实现了 100% 的跨技能切换成功率与极强的抗扰动能力。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [PAiD Framework (足球技能学习)](../methods/paid-framework.md)\n- [Humanoid Soccer (足球任务)](../tasks/humanoid-soccer.md)\n- [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n\n## 参考来源\n- Unitree G1 官方规格书。",
+      "content_markdown": "---\ntype: entity\ntags: [hardware, humanoid, platform, unitree]\nstatus: complete\nupdated: 2026-04-21\nrelated:\n  - ./humanoid-robot.md\n  - ./unitree.md\n  - ../roadmaps/humanoid-control-roadmap.md\nsources:\n  - ../../sources/papers/humanoid_hardware.md\nsummary: \"Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。\"\n---\n\n# Unitree G1 (人形机器人)\n\n**Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。\n\n## 核心特性\n\n1. **高集成度与便携性**：G1 的体型较 H1 更小，支持折叠收纳，单人即可搬运和部署。\n2. **丰富的感知方案**：集成了 3D 激光雷达 (LiDAR) 和深度相机，原生支持 [地形自适应](../concepts/terrain-adaptation.md)。\n3. **力控能力**：全关节支持高带宽力控，极其适配 [WBC](../concepts/whole-body-control.md) 与强化学习。\n4. **生态支持**：完美适配 [Isaac Lab](../entities/nvidia-omniverse.md)、[robot_lab](../entities/robot-lab.md) 和 `legged_gym`；同时作为 NVIDIA [MotionBricks](../methods/motionbricks.md) 生成式运动框架的首批验证硬件。\n5. **高效数据生成**：支持 [CLAW](../methods/claw.md) 等合成数据管线，通过网页交互快速生成带语言标签的全身动作数据。\n6. **足球技能研究**：作为 [PAiD](../methods/paid-framework.md) 框架的主要实验平台，证明了其在执行类人化踢球动作方面的卓越物理特性。\n7. **敏捷技能切换**：[Switch](../methods/switch-framework.md) 框架在 G1 上实现了 100% 的跨技能切换成功率与极强的抗扰动能力。\n8. **视频生成驱动的零样本控制**：作为 [ExoActor](../methods/exoactor.md)（BAAI, 2026）的端到端验证平台，把第三人称视频生成 + 通用动作跟踪整合为零真实数据的交互行为生成系统。\n\n## 在具身智能中的作用\n\nG1 的出现极大地加速了大规模数据的采集。由于其成本低廉，研究者可以构建“机器人机房（Robot Farms）”，利用海量实体机器人通过 [自动化标注](../methods/auto-labeling-pipelines.md) 或利用 [CLAW](../methods/claw.md) 等仿真合成手段快速生成训练基础策略（Foundation Policies）所需的真实数据。\n\n## 关联页面\n- [smp](../methods/smp.md) (基于得分匹配的运动先验，已在 G1 完成验证)\n- [人形机器人 (Humanoid Robot)](./humanoid-robot.md)\n- [Unitree 品牌主页](./unitree.md)\n- [robot_lab (IsaacLab 扩展框架)](./robot-lab.md)\n- [PAiD Framework (足球技能学习)](../methods/paid-framework.md)\n- [Humanoid Soccer (足球任务)](../tasks/humanoid-soccer.md)\n- [CLAW (宇树 G1 全身动作数据生成管线)](../methods/claw.md)\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)\n- [ExoActor](../methods/exoactor.md) — G1 上的视频生成驱动的零样本交互控制系统。\n\n## 参考来源\n- Unitree G1 官方规格书。\n- [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 在 G1 上的端到端实现。",
       "tags": [
         "entities",
         "entity",
@@ -6390,15 +6444,17 @@
         "wiki-tasks-humanoid-soccer",
         "wiki-methods-claw",
         "wiki-roadmaps-humanoid-control-roadmap",
+        "wiki-methods-exoactor",
         "wiki-concepts-terrain-adaptation",
         "wiki-concepts-whole-body-control",
-        "entity-nvidia-omniverse",
-        "wiki-methods-motionbricks"
+        "entity-nvidia-omniverse"
       ],
       "source_links": [],
       "status": "active",
       "type": "entity_page",
-      "entity_kind": "hardware"
+      "entity_kind": "hardware",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/exoactor.md"
     },
     {
       "id": "entity-unitree-rl-mjlab",

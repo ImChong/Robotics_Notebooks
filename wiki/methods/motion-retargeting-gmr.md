@@ -8,6 +8,7 @@ related:
   - ./beyondmimic.md
 sources:
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/papers/exoactor.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 
@@ -60,12 +61,24 @@ $$
 - **动力学过滤层**：通过 QP 优化（如 HALO 方式）或全动力学优化，补上质量、惯性和接触力约束。
 - **RL 细化**：将 GMR 轨迹作为参考，通过 [BeyondMimic](./beyondmimic.md) 等框架训练具有鲁棒性的 RL 策略。
 
+## 反例：什么时候不该用 GMR
+
+并非所有流水线都从重定向获益。[ExoActor (BAAI, 2026)](./exoactor.md) 在视频生成 → 动作估计 → 动作跟踪的流水线上做了消融：
+
+- **现象**：在估计出来的 SMPLX 轨迹上叠加 GMR / OmniRetarget 后，全身运动确实更平滑、抖动更少，但同时引入了明显的全局空间偏差。
+- **原因**：上游动作估计本身有全局位置漂移和脚滑，重定向尝试"修正"这些伪影时反而破坏了原本的轨迹；同时人机肢长比例差异会放大步长与位置积累误差。
+- **结论**：在该流水线下，作者选择**直接把人体动作喂给 SONIC**，跳过中间重定向阶段。
+
+这说明 GMR 在 MoCap → 机器人这种"源动作干净"的链路上是收益项，但在"源动作本身就来自上游估计/生成模型"的链路上，需要额外评估它是否会放大上游噪声。
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
+- [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的重定向消融提供"什么时候不该用 GMR"的反例。
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR)
 
 ## 关联页面
 
 - [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。
 - [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。
+- [ExoActor](./exoactor.md) — 视频生成驱动的人形控制流水线，给出"何时跳过 GMR"的反例。
