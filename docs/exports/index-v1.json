@@ -1,7 +1,7 @@
 {
   "version": "v1",
   "generated_mode": "script",
-  "item_count": 276,
+  "item_count": 277,
   "items": [
     {
       "id": "wiki-concepts-armature-modeling",
@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -177,7 +177,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -272,7 +272,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -377,7 +377,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -508,7 +508,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -597,7 +597,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -752,7 +752,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -786,7 +786,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/exoactor.md"
+      "ingest_source": "sources/papers/diffusion_and_gen.md"
     },
     {
       "id": "wiki-concepts-mpc-wbc-integration",
@@ -848,7 +848,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -913,7 +913,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1032,7 +1032,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1066,7 +1066,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1303,7 +1303,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1818,7 +1818,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/eth-g1-diffusion.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -2095,7 +2095,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2249,7 +2249,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2433,7 +2433,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/eth-g1-diffusion.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-methods-reinforcement-learning",
@@ -2472,7 +2472,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2704,7 +2704,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2867,7 +2867,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2964,11 +2964,38 @@
       "page_type": "task"
     },
     {
+      "id": "wiki-tasks-hybrid-locomotion",
+      "title": "Hybrid Locomotion (混合运动)",
+      "path": "wiki/tasks/hybrid-locomotion.md",
+      "summary": "type: task。",
+      "content_markdown": "---\ntype: task\ntags: [locomotion, hybrid, wheel-legged, transformable, whole-body]\nstatus: in-progress\nsummary: \"Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。\"\nupdated: 2026-05-03\nsources:\n  - ../../sources/papers/x2n_transformable.md\n---\n\n# Hybrid Locomotion (混合运动)\n\n**混合运动（Hybrid Locomotion）**：机器人系统能通过不同的机械模式进行运动，最常见的是轮腿混合（Wheel-legged）以及形态可变（Transformable）的设计。\n\n## 核心挑战\n\n1. **模态切换（Mode Transition / Transformation）：** 如何在不同结构形态或运动模式（例如，双足行走模式切换到带轮滑行模式）之间实现平稳和高效的转换。\n2. **全身协调（Whole-body Coordination）：** 在特定的形态下（特别是包含上肢和双腿的完整平台），如何实现下肢移动与上肢操作的协调。\n3. **混合控制框架（Hybrid Control Framework）：** 传统控制中需要分别针对不同模态设计控制器并处理切换逻辑，现代趋势逐渐使用强化学习（RL）来提供统一的策略。\n\n## 技术路线\n\n- **基于强化学习的统一控制（RL-based Unified Control）：** 采用 RL 学习统一的全身控制（Whole-body control）策略，通过端到端的方式处理变形态、轮式移动、步行以及操作等多任务并发的需求。\n\n## 代表系统\n\n### X2-N (Transformable Wheel-legged Humanoid)\n- 结合了类人（humanoid）形态和轮腿（wheel-legged）形态的高自由度可变形机器人。\n- 采用基于 RL 的控制框架统一处理 locomotion（运动）、transformation（变形）和 manipulation（操作）。\n- 展示了出色的动态滑行、爬楼梯和包裹配送等 Loco-manipulation 能力。\n\n## 关联页面\n\n- [Locomotion](./locomotion.md)\n- [Loco-Manipulation](./loco-manipulation.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n\n## 参考来源\n\n- [X2-N: A Transformable Wheel-legged Humanoid Robot with Dual-mode Locomotion and Manipulation](../../sources/papers/x2n_transformable.md)",
+      "tags": [
+        "task",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl",
+        "tooling"
+      ],
+      "related": [
+        "wiki-tasks-locomotion",
+        "wiki-tasks-loco-manipulation",
+        "wiki-concepts-whole-body-control",
+        "sources-papers-x2n-transformable"
+      ],
+      "source_links": [],
+      "status": "active",
+      "type": "wiki_page",
+      "page_type": "task",
+      "has_ingest": true,
+      "ingest_source": "sources/papers/x2n_transformable.md"
+    },
+    {
       "id": "wiki-tasks-loco-manipulation",
       "title": "Loco-Manipulation (移动操作)",
       "path": "wiki/tasks/loco-manipulation.md",
       "summary": "让机器人边走边动手——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调",
-      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/papers/exoactor.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n### 7. 视频生成驱动路线 (Video-Generation-Driven)\n- **核心**：把第三人称视频生成模型当成\"想象出来的示教源\"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。\n- **代表作**：[ExoActor](../methods/exoactor.md) (BAAI, 2026) — 在 Unitree G1 上做零样本任务的 B/A/S 三级评测，覆盖从基础导航到精细多步操作（如把瓶子直立放进篮子）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成\n\n## 参考来源\n\n- [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
+      "content_markdown": "---\ntype: task\ntags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]\nstatus: complete\nsummary: \"Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。\"\nupdated: 2026-04-29\nsources:\n  - ../../sources/papers/teleoperation.md\n  - ../../sources/papers/diffusion_and_gen.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/papers/exoactor.md\n  - ../../sources/repos/awesome-humanoid-robot-learning.md\n---\n\n# Loco-Manipulation (移动操作)\n\n**移动操作（Loco-Manipulation）**：机器人在运动（行走/移动）的同时执行操作任务（抓取/推动/交互），要求同时具备行走能力和上肢操作能力。\n\n## 一句话定义\n\n让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。\n\n## 核心挑战\n\n### 1. 全身动力学耦合\n手臂运动会干扰质心平衡，步态振动会干扰操作精度。**独立优化行走和操作再简单合并通常无法实现复杂动作。**\n\n### 2. 接触丰富与多约束\n涉及足端地形接触与末端物体接触的并发管理，接触序列的规划空间巨大。\n\n### 3. 高动态与精细度平衡\n在进行跑酷或球类运动（高动态）的同时，需要保持末端对物体（球拍、托盘）的精密控制。\n\n## 技术路线演进 (2024-2026)\n\n### 1. 经典分层路线 (Modular/Hierarchical)\n- **HLC (高层控制)**：VLA 或 RL 给出末端轨迹目标。\n- **LLC (底层控制)**：WBC + MPC 负责全身执行。\n- **代表作**：Humanoid Hanoi (2026), HiWET (2026)。\n\n### 2. 统一生成式路线 (Unified Generative)\n- **核心**：利用扩散模型（Diffusion）或概率流（Flow Matching）生成物理可行的全身运动序列。\n- **特点**：天然支持多模态，能够生成极其自然的全身协调动作。\n- **代表作**：SafeFlow (2026), DreamControl (2025), BeyondMimic (2025)。\n\n### 3. 基础模型路线 (Foundation Models / VLA)\n- **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。\n- **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。\n- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。\n\n### 4. 残差与自适应学习 (Residual & Adaptive)\n- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。\n- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。\n\n### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)\n- **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。\n- **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。\n\n### 6. 反向层级架构 (MPC-over-RL)\n- **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。\n- **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。\n\n### 7. 视频生成驱动路线 (Video-Generation-Driven)\n- **核心**：把第三人称视频生成模型当成\"想象出来的示教源\"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。\n- **代表作**：[ExoActor](../methods/exoactor.md) (BAAI, 2026) — 在 Unitree G1 上做零样本任务的 B/A/S 三级评测，覆盖从基础导航到精细多步操作（如把瓶子直立放进篮子）。\n\n## 重点应用领域\n\n| 领域 | 典型任务 | 代表研究 |\n|------|---------|---------|\n| **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |\n| **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |\n| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |\n| **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md)\n- [Manipulation](./manipulation.md)\n- [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [VLA](../methods/vla.md)\n- [Teleoperation](./teleoperation.md)\n- [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)\n- [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)\n- [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成\n\n## 参考来源\nn- **ingest 档案：** [sources/papers/x2n_transformable.md](../../sources/papers/x2n_transformable.md) — 具有轮足混合双模态与上肢操作能力的可变形人形机器人，用于展示强化学习的统一控制。\n\n- [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集\n- [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)\n- [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)\n- **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — 包含 ACT / Diffusion Policy 等基础\n- **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O \n- **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作\n- **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制\n\n## 一句话记忆\n\n> Loco-Manipulation 正在从“行走 + 操作”的简单叠加，演变为基于生成式模型、VLA 与触觉增强行为克隆的全身统一感知控制，是实现人形机器人从实验室走向通用场景的关键瓶颈。",
       "tags": [
         "task",
         "humanoid",
@@ -2988,8 +3015,8 @@
         "wiki-methods-humanoid-transformer-touch-dreaming",
         "wiki-methods-exoactor",
         "wiki-methods-sumo",
-        "sources-repos-awesome-humanoid-robot-learning",
-        "wiki-tasks-ultra-survey"
+        "sources-papers-x2n-transformable",
+        "sources-repos-awesome-humanoid-robot-learning"
       ],
       "source_links": [
         "https://arxiv.org/abs/2603.23983"
@@ -2998,14 +3025,14 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/mpc.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-tasks-locomotion",
       "title": "Locomotion",
       "path": "wiki/tasks/locomotion.md",
       "summary": "让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然",
-      "content_markdown": "---\ntype: task\ntags: [locomotion, bipedal, humanoid, rl, control]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/whole-body-control.md\n  - ../concepts/sim2real.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/imitation-learning.md\n  - ../concepts/capture-point-dcm.md\n  - ../concepts/gait-generation.md\n  - ../concepts/footstep-planning.md\n  - ../entities/unitree.md\n  - ./ultra-survey.md\n  - ./manipulation.md\n  - ./loco-manipulation.md\n  - ./balance-recovery.md\n  - ../queries/humanoid-hardware-selection.md\n  - ../queries/humanoid-rl-cookbook.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/state_estimation.md\nsummary: \"Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。\"\n---\n\n# Locomotion\n\n**运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。\n\n## 一句话定义\n\n让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。\n\n## 核心挑战\n\n### 1. 平衡\n人形机器人是天然不稳定的系统，必须主动维持平衡。\n\n- 静态平衡：重心在支撑多边形内\n- 动态平衡：ZMP（Zero Moment Point）条件\n- 接触力分配：多接触时的力分配问题\n\n### 2. 接触切换\n行走本质是不断在单脚支撑和双脚支撑之间切换，每次切换都容易失稳。\n\n### 3. 高维动作空间\n30+ 自由度，每次决策都要协调所有关节。\n\n### 4. 地形变化\n平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。\n\n## 主要方法路线\n\n### 传统控制路线\n- **ZMP + 预观控制**：经典人形行走（Honda ASIMO）\n- **LIP + 步长调节**：简单高效的行走控制\n- **Hybrid Zero Dynamics**：考虑机器人动力学结构的步态生成\n\n### 学习路线\n- **RL from scratch**：直接在仿真里训，不需要人工步态设计。\n  - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）。\n  - 新趋势：**BRRL / BPO (2026)** 在 IsaacLab 环境下报告了比 PPO 更稳健的 locomotion 训练表现。\n- **IL + RL**：用 MoCap 数据初始化，再用 RL 提升。\n  - 代表：DeepMimic, AMP\n- **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。\n  - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。\n- **世界模型**：学习环境模型，在模型里规划。\n  - 代表：Dreamer, LIFT\n\n## 评价指标\n\n- **行走速度**：m/s\n- **能耗效率**：J/kg/m 或 Cost of Transport (CoT)\n- **地形适应能力**：是否能处理楼梯、不平整地面\n- **稳定性**：摔倒频率\n- **运动自然性**：和人类步态的相似度\n- **泛化能力**：能否迁移到未见过的地形\n\n## 参考来源\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文\n- Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC/TD3 + Rudin legged_gym\n- **ingest 档案：** [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — EKF/InEKF 状态估计\n- **ingest 档案：** [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 多步态学习中的 Selective AMP 策略\n\n## 关联系统/方法\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）\n- [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）\n- [Lyapunov 稳定性](../formalizations/lyapunov.md)（分析闭环步态稳定性、扰动恢复和误差收敛的统一语言）\n- [Gait Generation](../concepts/gait-generation.md)（步态时序编排：CPG / 参数化 / MPC 联合优化）\n- [Footstep Planning](../concepts/footstep-planning.md)（接触序列规划：每步踩哪里、踩多久）\n- [Terrain Adaptation](../concepts/terrain-adaptation.md)（把高度图 / 点云转成可执行的落脚点与姿态调整）\n- [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）\n- [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）\n- [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md) — 实践决策指南\n\n## 关联任务\n\n- [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation\n- [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战\n- [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — locomotion 实战经验结构化摘要\n- [Query：开源运动控制项目导航](../queries/open-source-motion-control-projects.md) — 主流开源框架与项目概览\n\n## 继续深挖入口\n\n如果你想沿着 locomotion 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n\n### Benchmark 入口\n- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)\n\n### 开源项目 / 框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [MPC](../methods/model-predictive-control.md)\n\n## 推荐继续阅读\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）\n- Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）\n- Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)",
+      "content_markdown": "---\ntype: task\ntags: [locomotion, bipedal, humanoid, rl, control]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../concepts/whole-body-control.md\n  - ../concepts/sim2real.md\n  - ../methods/reinforcement-learning.md\n  - ../methods/imitation-learning.md\n  - ../concepts/capture-point-dcm.md\n  - ../concepts/gait-generation.md\n  - ../concepts/footstep-planning.md\n  - ../entities/unitree.md\n  - ./ultra-survey.md\n  - ./manipulation.md\n  - ./loco-manipulation.md\n  - ./balance-recovery.md\n  - ../queries/humanoid-hardware-selection.md\n  - ../queries/humanoid-rl-cookbook.md\nsources:\n  - ../../sources/papers/policy_optimization.md\n  - ../../sources/papers/state_estimation.md\nsummary: \"Locomotion 研究机器人如何稳定、高效地在不同地形上移动，是腿式与人形控制的核心任务页。\"\n---\n\n# Locomotion\n\n**运动/行走**：让机器人（尤其人形/足式）实现稳定、高效、多地形移动的能力。\n\n## 一句话定义\n\n让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然。\n\n## 核心挑战\n\n### 1. 平衡\n人形机器人是天然不稳定的系统，必须主动维持平衡。\n\n- 静态平衡：重心在支撑多边形内\n- 动态平衡：ZMP（Zero Moment Point）条件\n- 接触力分配：多接触时的力分配问题\n\n### 2. 接触切换\n行走本质是不断在单脚支撑和双脚支撑之间切换，每次切换都容易失稳。\n\n### 3. 高维动作空间\n30+ 自由度，每次决策都要协调所有关节。\n\n### 4. 地形变化\n平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。\n\n## 主要方法路线\n\n### 传统控制路线\n- **ZMP + 预观控制**：经典人形行走（Honda ASIMO）\n- **LIP + 步长调节**：简单高效的行走控制\n- **Hybrid Zero Dynamics**：考虑机器人动力学结构的步态生成\n\n### 学习路线\n- **RL from scratch**：直接在仿真里训，不需要人工步态设计。\n  - 代表：PPO 训四足/双足行走（Legged Gym, IsaacGymEnvs）。\n  - 新趋势：**BRRL / BPO (2026)** 在 IsaacLab 环境下报告了比 PPO 更稳健的 locomotion 训练表现。\n- **IL + RL**：用 MoCap 数据初始化，再用 RL 提升。\n  - 代表：DeepMimic, AMP\n- **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。\n  - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。\n- **世界模型**：学习环境模型，在模型里规划。\n  - 代表：Dreamer, LIFT\n\n## 评价指标\n\n- **行走速度**：m/s\n- **能耗效率**：J/kg/m 或 Cost of Transport (CoT)\n- **地形适应能力**：是否能处理楼梯、不平整地面\n- **稳定性**：摔倒频率\n- **运动自然性**：和人类步态的相似度\n- **泛化能力**：能否迁移到未见过的地形\n\n## 参考来源\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* — legged_gym 路线奠基论文\n- Peng et al., *DeepMimic: Example-Guided Deep Reinforcement Learning of Physics-Based Character Skills* — IL+RL 融合代表\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 论文集合\n- **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/SAC/TD3 + Rudin legged_gym\n- **ingest 档案：** [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — EKF/InEKF 状态估计\n- **ingest 档案：** [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 多步态学习中的 Selective AMP 策略\n\n## 关联系统/方法\n\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Reinforcement Learning](../methods/reinforcement-learning.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [MPC](https://en.wikipedia.org/wiki/Model_predictive_control)（在行走中常用于步态预览）\n- [Capture Point / DCM](../concepts/capture-point-dcm.md)（步行平衡与扰动恢复的核心方法）\n- [Lyapunov 稳定性](../formalizations/lyapunov.md)（分析闭环步态稳定性、扰动恢复和误差收敛的统一语言）\n- [Gait Generation](../concepts/gait-generation.md)（步态时序编排：CPG / 参数化 / MPC 联合优化）\n- [Footstep Planning](../concepts/footstep-planning.md)（接触序列规划：每步踩哪里、踩多久）\n- [Terrain Adaptation](../concepts/terrain-adaptation.md)（把高度图 / 点云转成可执行的落脚点与姿态调整）\n- [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）\n- [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）\n- [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md) — 实践决策指南\n\n## 关联任务\n\n- [Manipulation](./manipulation.md)：行走+操作 = loco-manipulation\n- [Loco-Manipulation](./loco-manipulation.md)：全身移动操作的统一挑战\n- [Balance Recovery](./balance-recovery.md)：扰动恢复，鲁棒 locomotion 的核心子能力\n- [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — locomotion 实战经验结构化摘要\n- [Query：开源运动控制项目导航](../queries/open-source-motion-control-projects.md) — 主流开源框架与项目概览\n\n## 继续深挖入口\n\n如果你想沿着 locomotion 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)\n\n### Benchmark 入口\n- [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)\n\n### 开源项目 / 框架入口\n- [RL Frameworks](../../references/repos/rl-frameworks.md)\n- [Simulation](../../references/repos/simulation.md)\n\n## 关联页面\n\n- [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务\n- [Hybrid Locomotion](./hybrid-locomotion.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [MPC](../methods/model-predictive-control.md)\n\n## 推荐继续阅读\n\n- Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*（legged_gym 原论文）\n- Won et al., *Perpetual Robot Control: Designing Robot Agility and Recovery*（CPI + RL 路线）\n- Jin et al., *Rapid and Scalable Reinforcement Learning for Legged Robots*（Isaac Lab 路线）\n- [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人运控的学习成长路线\n- [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)\n- [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)",
       "tags": [
         "task",
         "humanoid",
@@ -3021,12 +3048,12 @@
         "wiki-queries-humanoid-motion-control-know-how",
         "wiki-queries-open-source-motion-control-projects",
         "wiki-tasks-humanoid-locomotion",
+        "wiki-tasks-hybrid-locomotion",
         "wiki-concepts-whole-body-control",
         "wiki-methods-model-predictive-control",
         "reference-papers-locomotion-rl",
         "sources-papers-policy-optimization",
-        "sources-papers-state-estimation",
-        "sources-papers-multi-gait-learning"
+        "sources-papers-state-estimation"
       ],
       "source_links": [
         "https://en.wikipedia.org/wiki/Model_predictive_control"
@@ -3035,7 +3062,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -5869,7 +5896,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5901,7 +5928,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-lerobot",
