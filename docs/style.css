@@ -64,9 +64,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .site-header {
   position: sticky;
   top: 0;
-  /* z-index 950: 高于 sidebar-overlay (900) 让 site-header 在侧边栏打开时仍然可见，
-     但低于 sidebar (1000) 让侧边栏滑入时显示在 header 上层 */
-  z-index: 950;
+  z-index: 100;
   height: var(--header-h);
   background: var(--header-bg);
   border-bottom: 1px solid var(--header-border);
