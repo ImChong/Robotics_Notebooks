@@ -111,6 +111,7 @@ summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅�
 - **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
 
 ## 参考来源
+- [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法
