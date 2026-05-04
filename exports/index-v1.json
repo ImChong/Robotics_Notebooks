@@ -52,7 +52,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-centroidal-dynamics",
@@ -177,7 +177,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/motion_control_projects.md"
+      "ingest_source": "sources/papers/contact_dynamics.md"
     },
     {
       "id": "wiki-concepts-contact-rich-manipulation",
@@ -272,7 +272,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-data-flywheel",
@@ -377,7 +377,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/sim2real.md"
+      "ingest_source": "sources/papers/simulation_tools.md"
     },
     {
       "id": "wiki-concepts-embodied-data-cleaning",
@@ -509,7 +509,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/contact_planning.md"
     },
     {
       "id": "wiki-concepts-force-control-basics",
@@ -598,7 +598,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/reward_design.md"
     },
     {
       "id": "wiki-concepts-hqp",
@@ -753,7 +753,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-concepts-motion-retargeting",
@@ -850,7 +850,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-concepts-privileged-training",
@@ -915,7 +915,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-concepts-ros2-basics",
@@ -1034,7 +1034,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/locomotion_rl.md"
     },
     {
       "id": "wiki-concepts-state-estimation",
@@ -1068,7 +1068,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
     },
     {
       "id": "wiki-concepts-system-identification",
@@ -1271,7 +1271,7 @@
       "title": "Whole-Body Control (WBC)",
       "path": "wiki/concepts/whole-body-control.md",
       "summary": "不单独控制每个关节，而是把整个身体当成一个整体来协调控制",
-      "content_markdown": "---\ntype: concept\ntags: [control, wbc, humanoid, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../tasks/locomotion.md\n  - ../methods/imitation-learning.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./sim2real.md\n  - ./contact-estimation.md\n  - ../formalizations/se3-representation.md\n  - ../queries/when-to-use-wbc-vs-rl.md\nsummary: \"Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。\"\n---\n\n# Whole-Body Control (WBC)\n\n**全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。\n\n## 一句话定义\n\n不单独控制每个关节，而是把整个身体当成一个整体来协调控制。\n\n## 为什么重要\n\n人形机器人的特点：\n\n- 30+ 自由度\n- 多个末端执行器（手、脚）\n- 浮动基（身体位置和朝向不可控）\n- 必须保持平衡\n\n传统独立关节控制的局限：\n\n- 各关节互相耦合，单独优化会冲突\n- 没有全身协调意识\n- 难以处理接触切换和约束\n\nWBC 的优势：\n\n- 通过优化或 hierarchical control 实现全身协调\n- 能同时处理接触力、平衡、末端执行器任务\n- 自然处理多接触场景\n\n## 核心框架\n\n### 1. Hierarchical WBC\n多层结构：\n\n```\n任务空间控制器（末端执行器轨迹）\n        ↓\n全身QP优化（关节力矩分配）\n        ↓\n电机驱动\n```\n\n代表：Whole-Body Impedance / TSID (Task Space Inverse Dynamics)\n\n### 2. Optimization-based WBC\n用 QP 或非线性优化直接求解：\n\n- 给定任务目标（末端位置/姿态/力）\n- 满足约束（关节限位、接触力、力矩平衡）\n- 最小化某个代价函数\n\n代表框架：Openuhan / tsid / exotica\n\n### 3. Learning-based & Generative WBC\n用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。\n\n代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)\n\n## 最小代码骨架\n\n这段代码不是完整 WBC，而是 WBC 最核心的味道：\n- 把多个任务写成误差项\n- 在同一个 QP 里一起求一个关节加速度 / 力矩解\n- 再把解交给底层执行器\n\n```python\nimport numpy as np\n\n# 关节加速度变量 qdd，示例只写成最小二乘形式\nJ_com = np.array([[1.0, 0.0], [0.0, 1.0]])\nJ_foot = np.array([[1.0, -1.0]])\nacc_com_des = np.array([0.0, 0.2])\nacc_foot_des = np.array([0.0])\n\nA = np.vstack([J_com, J_foot])\nb = np.concatenate([acc_com_des, acc_foot_des])\n\nqdd_star, *_ = np.linalg.lstsq(A, b, rcond=None)\nprint(\"joint acceleration command:\", qdd_star)\n```\n\n真实 WBC 会再加入：\n- 动力学等式约束\n- 接触力变量\n- 摩擦锥、力矩限位、任务优先级\n- 从 `qdd` 到 `tau` 的映射\n\n## 方法局限性\n\n- **强依赖模型与接触状态**：动力学模型不准、接触集合错了，整个 QP 都会偏\n- **接口复杂**：上层 MPC / planner 和下层 WBC 的目标格式对齐很麻烦\n- **调参成本高**：任务权重、优先级、阻抗参数经常比公式本身更难调\n- **不直接提供高层策略**：WBC 擅长“怎么执行”，不天然回答“下一步想做什么”\n\n## 关键概念\n\n### Floating Base\n人形机器人在空中时，base（躯干）的位置和朝向不在控制输入的直接控制下，需要通过接触力来驱动。\n\n### Contact Schedule\n什么时候哪只脚/手在接触地面，决定了可用力和平衡策略。\n\n### Centroidal Dynamics\n用质心动力学代替全关节动力学，更高效但精度略低。\n\n## 参考来源\n\n- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文\n- Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合\n- [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)\n- [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)\n- [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）\n- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Sim2Real](./sim2real.md)\n- [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵\n- [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础\n- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)\n- [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现\n\n## 继续深挖入口\n\n如果你想沿着 WBC 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)\n\n### 工具 / Repo 入口\n- [Utilities / Tooling](../../references/repos/utilities.md)\n\n## 推荐继续阅读\n\n- [ATOM01-Train](https://github.com/Roboparty/atom01_train)\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid)",
+      "content_markdown": "---\ntype: concept\ntags: [control, wbc, humanoid, optimization]\nstatus: complete\nupdated: 2026-04-20\nrelated:\n  - ../tasks/locomotion.md\n  - ../methods/imitation-learning.md\n  - ../comparisons/wbc-vs-rl.md\n  - ./sim2real.md\n  - ./contact-estimation.md\n  - ../formalizations/se3-representation.md\n  - ../queries/when-to-use-wbc-vs-rl.md\nsummary: \"Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。\"\n---\n\n# Whole-Body Control (WBC)\n\n**全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。\n\n## 一句话定义\n\n不单独控制每个关节，而是把整个身体当成一个整体来协调控制。\n\n## 为什么重要\n\n人形机器人的特点：\n\n- 30+ 自由度\n- 多个末端执行器（手、脚）\n- 浮动基（身体位置和朝向不可控）\n- 必须保持平衡\n\n传统独立关节控制的局限：\n\n- 各关节互相耦合，单独优化会冲突\n- 没有全身协调意识\n- 难以处理接触切换和约束\n\nWBC 的优势：\n\n- 通过优化或 hierarchical control 实现全身协调\n- 能同时处理接触力、平衡、末端执行器任务\n- 自然处理多接触场景\n\n## 核心框架\n\n### 1. Hierarchical WBC\n多层结构：\n\n```\n任务空间控制器（末端执行器轨迹）\n        ↓\n全身QP优化（关节力矩分配）\n        ↓\n电机驱动\n```\n\n代表：Whole-Body Impedance / TSID (Task Space Inverse Dynamics)\n\n### 2. Optimization-based WBC\n用 QP 或非线性优化直接求解：\n\n- 给定任务目标（末端位置/姿态/力）\n- 满足约束（关节限位、接触力、力矩平衡）\n- 最小化某个代价函数\n\n代表框架：Openuhan / tsid / exotica\n\n### 3. Learning-based & Generative WBC\n用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。\n\n代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)\n\n## 最小代码骨架\n\n这段代码不是完整 WBC，而是 WBC 最核心的味道：\n- 把多个任务写成误差项\n- 在同一个 QP 里一起求一个关节加速度 / 力矩解\n- 再把解交给底层执行器\n\n```python\nimport numpy as np\n\n# 关节加速度变量 qdd，示例只写成最小二乘形式\nJ_com = np.array([[1.0, 0.0], [0.0, 1.0]])\nJ_foot = np.array([[1.0, -1.0]])\nacc_com_des = np.array([0.0, 0.2])\nacc_foot_des = np.array([0.0])\n\nA = np.vstack([J_com, J_foot])\nb = np.concatenate([acc_com_des, acc_foot_des])\n\nqdd_star, *_ = np.linalg.lstsq(A, b, rcond=None)\nprint(\"joint acceleration command:\", qdd_star)\n```\n\n真实 WBC 会再加入：\n- 动力学等式约束\n- 接触力变量\n- 摩擦锥、力矩限位、任务优先级\n- 从 `qdd` 到 `tau` 的映射\n\n## 方法局限性\n\n- **强依赖模型与接触状态**：动力学模型不准、接触集合错了，整个 QP 都会偏\n- **接口复杂**：上层 MPC / planner 和下层 WBC 的目标格式对齐很麻烦\n- **调参成本高**：任务权重、优先级、阻抗参数经常比公式本身更难调\n- **不直接提供高层策略**：WBC 擅长“怎么执行”，不天然回答“下一步想做什么”\n\n## 关键概念\n\n### Floating Base\n人形机器人在空中时，base（躯干）的位置和朝向不在控制输入的直接控制下，需要通过接触力来驱动。\n\n### Contact Schedule\n什么时候哪只脚/手在接触地面，决定了可用力和平衡策略。\n\n### Centroidal Dynamics\n用质心动力学代替全关节动力学，更高效但精度略低。\n\n## 参考来源\n\n- Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — WBC 早期基础论文\n- Del Prete et al., *Task Space Inverse Dynamics* — WBC 动力学一致控制核心工作\n- [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — TSID / HQP / Crocoddyl ingest 摘要\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid) — 开源 WBC 实现\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md) — 论文集合\n- [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)\n- [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)\n- [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）\n- [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要\n- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)\n\n## 关联页面\n\n- [Locomotion](../tasks/locomotion.md)\n- [Imitation Learning](../methods/imitation-learning.md)\n- [WBC vs RL](../comparisons/wbc-vs-rl.md)\n- [Sim2Real](./sim2real.md)\n- [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵\n- [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础\n- [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)\n- [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现\n\n## 继续深挖入口\n\n如果你想沿着 WBC 继续往下挖，建议从这里进入：\n\n### 论文入口\n- [Whole-Body Control 论文导航](../../references/papers/whole-body-control.md)\n\n### 工具 / Repo 入口\n- [Utilities / Tooling](../../references/repos/utilities.md)\n\n## 推荐继续阅读\n\n- [ATOM01-Train](https://github.com/Roboparty/atom01_train)\n- [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid)\n\n## 处理非自稳定运动与失重\n\n传统的 WBC 通常强加严格的轨迹跟踪和自稳定约束，这在处理如坐下、躺下或靠墙等非自稳定（non-self-stabilizing, NSS）运动时显得局限。在这些任务中，机器人需要与环境建立安全的接触以完成动作。**Learn Weightlessness** (Xin et al., 2026) 提出通过学习人类的“失重”机制（即选择性地放松特定关节），允许身体与环境产生被动接触并稳定。这种思路通过引入动态放松增益调节网络，提供了一种从严格 WBC 轨迹跟踪向生物启发的环境适应性过渡的有效方案。",
       "tags": [
         "concept",
         "humanoid",
@@ -1305,7 +1305,7 @@
       "type": "wiki_page",
       "page_type": "concept",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-concepts-whole-body-coordination",
@@ -1848,7 +1848,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/eth-g1-diffusion.md"
     },
     {
       "id": "wiki-methods-dmp",
@@ -2091,7 +2091,7 @@
       "title": "Imitation Learning (IL, 模仿学习)",
       "path": "wiki/methods/imitation-learning.md",
       "summary": "让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 DAgger (Dataset Aggregation)、行为克隆 (Behavior Cloning, BC) 等",
-      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./reinforcement-learning.md\n  - ../concepts/sim2real.md\n  - ./humanoid-transformer-touch-dreaming.md\n  - ../entities/mimickit.md\n  - ./amp-reward.md\n  - ./smp.md\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/robot_lab.md\nsummary: \"Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 **DAgger (Dataset Aggregation)**、**行为克隆 (Behavior Cloning, BC)** 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- [deepmimic](deepmimic.md)：基于轨迹跟踪的显式模仿\n- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座\n- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计\n- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿\n- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作\n- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换\n- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务\n- [ase](ase.md)：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n- [深度学习基础](../concepts/deep-learning-foundations.md)\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n- [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)\n- [ProtoMotions](../entities/protomotions.md) (NVIDIA 开发的高性能仿真与控制框架，支持超大规模并行训练)\n- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架\n- [SMP](./smp.md) (基于得分匹配的运动先验)\n- [ADD](./add.md) (对抗性微分判别器，消除运动伪影)\n- [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)\n- [AWR](./awr.md) (优势加权回归，简单高效的离策学习)\n- [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)\n- [ASE](./ase.md) (对抗性技能嵌入)\n- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿\n- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿\n- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制\n- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）",
+      "content_markdown": "---\ntype: method\ntags: [il, behavior-cloning, diffusion-policy, sim2real]\nstatus: complete\nupdated: 2026-04-29\nrelated:\n  - ./reinforcement-learning.md\n  - ../concepts/sim2real.md\n  - ./humanoid-transformer-touch-dreaming.md\n  - ../entities/mimickit.md\n  - ./amp-reward.md\n  - ./smp.md\nsources:\n  - ../../sources/papers/imitation_learning.md\n  - ../../sources/papers/humanoid_touch_dream.md\n  - ../../sources/repos/robot_lab.md\nsummary: \"Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。\"\n---\n\n# Imitation Learning (IL, 模仿学习)\n\n**模仿学习 (Imitation Learning)**：通过专家演示数据（**行为克隆**、**DAgger** 等），让机器人学会从状态到动作的映射，核心是“抄”。\n\n## 一句话定义\n\n让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 **DAgger (Dataset Aggregation)**、**行为克隆 (Behavior Cloning, BC)** 等。\n\n## 为什么重要\n\n- 纯 RL sample efficiency 低，训练慢。\n- 很多任务难以定义 reward。\n- 专家演示（行为克隆）提供了高质量数据，可以快速初始化策略。\n\n## 主要分类\n\n### 1. 行为克隆 (Behavior Cloning, BC)\n\n最简单的模仿学习 (IL)：把专家数据当监督学习做。参见 [Behavior Cloning with Transformer](./bc-with-transformer.md)。\n\n### 2. DAgger (Dataset Aggregation)\n...\n有效缓解行为克隆的分布偏移问题。\n\n### 3. DMP (Dynamic Movement Primitives)\n\n轨迹级模仿学习的经典工具，见 [Dynamic Movement Primitives (DMP)](./dmp.md)。它通过二阶微分方程描述运动，具有良好的自适应性。\n\n### 3. GAIL（Generative Adversarial Imitation Learning）\n\n用 GAN 思想：\n\n- 判别器：区分专家数据 vs 策略数据\n- 生成器（策略）：试图骗过判别器\n\n让策略在 reward signal 上接近专家，不需要显式 reward。\n\n### 4. 基于重建的方法\n\n先从演示中提取隐表示或技能 latent，再用于控制。\n\n代表：ASE, CALM, Motion Encoder\n\n## 和强化学习的关系\n\n| | 模仿学习 | 强化学习 |\n|--|---------|---------|\n| 数据来源 | 专家演示 | 环境交互 |\n| 样本效率 | 高 | 低 |\n| 可超越专家 | 难 | 可以 |\n| Reward 设计 | 不需要 | 需要 |\n| 适用范围 | 有专家数据的任务 | 任意可定义 reward |\n\n常见组合策略：\n- **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家\n- **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合\n\n## 在人形机器人中的应用\n\n典型 pipeline：\n\n```\n专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署\n```\n\n代表工作：\n- [deepmimic](deepmimic.md)：基于轨迹跟踪的显式模仿\n- BeyondMimic：强调精确物理建模与失败驱动采样的模仿学习基座\n- HumanX：引入接触图 (Contact Graph) 与多教师蒸馏，解决风格模仿与外力估计\n- Any2Track：结合历史编码器与世界模型，实现对动态扰动的自适应动作模仿\n- AMS (Adaptive Motion Synthesis)：通过物理可行性过滤与混合奖励机制，生成并学习平衡动作\n- Switch：引入增强技能图与缓冲节点，实现敏捷技能间的 100% 稳健切换\n- HAIC：引入世界模型的教师-学生两阶段训练，用于物体交互任务\n- [ase](ase.md)：对抗技能嵌入\n- CALM：latent 方向控制\n- CLAW：宇树 G1 的模块化语言-动作数据生成管线\n- HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题\n\n## 常见问题\n\n- **Retarget 误差**：MoCap 动作不一定适配机器人身体结构\n- **分布偏移**：训练分布和真实部署差异\n- **技能组合**：如何把多个独立技能串成复杂长序列\n\n## 参考来源\n\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文\n- Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作\n- [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要\n- [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要\n- [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要\n- [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料\n- [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料\n- [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md) — 论文集合\n- [机器人论文阅读笔记：DeepMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)\n- [机器人论文阅读笔记：ASE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)\n- [机器人论文阅读笔记：CALM](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)\n- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)\n\n## 关联页面\n- [深度学习基础](../concepts/deep-learning-foundations.md)\n\n- [Reinforcement Learning](./reinforcement-learning.md)\n- [Whole-Body Control](../concepts/whole-body-control.md)\n- [Locomotion](../tasks/locomotion.md)\n- [Sim2Real](../concepts/sim2real.md)\n- [Foundation Policy（基础策略模型）](../concepts/foundation-policy.md)\n- [Behavior Cloning](./behavior-cloning.md) — 最基础的离线监督式 IL 基线\n- [CLAW (宇树 G1 全身动作数据生成管线)](./claw.md) — 通过 MuJoCo 仿真和组合原子动作快速生成带语言标签的专家数据\n- [Humanoid Transformer with Touch Dreaming](./humanoid-transformer-touch-dreaming.md) — 用未来触觉 latent 预测增强人形接触丰富型操作的行为克隆策略\n- [robot_lab](../entities/robot-lab.md) — 提供高效 IL/RL 任务开发环境的扩展框架\n- [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架\n- [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift\n- [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线\n- [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）\n- [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹\n- [MimicKit](../entities/mimickit.md) (Xue Bin Peng 团队开发的模块化运动控制框架)\n- [ProtoMotions](../entities/protomotions.md) (NVIDIA 开发的高性能仿真与控制框架，支持超大规模并行训练)\n- [BeyondMimic](./beyondmimic.md) — 强调精确物理建模的人形动作模仿框架\n- [SMP](./smp.md) (基于得分匹配的运动先验)\n- [ADD](./add.md) (对抗性微分判别器，消除运动伪影)\n- [LCP](./lcp.md) (Lipschitz 约束策略，提升控制鲁棒性)\n- [AWR](./awr.md) (优势加权回归，简单高效的离策学习)\n- [DeepMimic](./deepmimic.md) (经典的显式轨迹跟踪模仿学习)\n- [Learn Weightlessness](../../sources/papers/learn_weightlessness.md) — 针对非自稳定运动的失重模仿机制\n- [ASE](./ase.md) (对抗性技能嵌入)\n- [Any2Track](./any2track.md) — 结合历史编码器与世界模型的自适应动作模仿\n- [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿\n- [AMS](./ams.md) — 物理可行性过滤与混合奖励机制\n- [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式\n\n## 推荐继续阅读\n\n- [Imitation Learning 论文导航](../../references/papers/imitation-learning.md)\n- [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前 IL 方向最活跃的生成式路线）\n- Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning*（DAgger 原论文）\n- Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Humanoid Motion Synthesis*（IL + RL 融合路线）\n\n## Weightlessness Mechanism (WM)\n\n针对非自稳定（non-self-stabilizing, NSS）运动（如坐下、躺下、靠墙），研究表明，过度严格的轨迹跟踪会阻碍机器人与环境建立稳定的接触。**Learn Weightlessness** (Xin et al., 2026) 提出通过模仿人类在 NSS 运动中的“失重”状态——选择性地放松特定关节，从而允许被动的身体-环境接触，最终实现运动的稳定。\n\n该方法设计了：\n1. **失重状态自动标注策略**：从单演示数据中自动标注“失重”标签。\n2. **失重机制 (Weightlessness Mechanism, WM)**：通过网络输出动态决定哪些关节需要放松以及放松的程度（即输出 PD 增益的调节系数），从而在执行目标运动时实现有效的环境交互。\n\nWM 无需针对特定任务进行微调，且能在不同环境配置（如不同高度的椅子、不同倾角的床）中展现出强泛化能力。",
       "tags": [
         "method",
         "humanoid",
@@ -2125,7 +2125,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/diffusion_and_gen.md"
+      "ingest_source": "sources/papers/humanoid_touch_dream.md"
     },
     {
       "id": "wiki-methods-in-hand-reorientation",
@@ -2279,7 +2279,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/mpc.md"
     },
     {
       "id": "wiki-methods-model-predictive-control",
@@ -2463,7 +2463,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/eth-g1-diffusion.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-methods-reinforcement-learning",
@@ -2502,7 +2502,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/humanoid_motion_control_know_how.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -2734,7 +2734,7 @@
       "type": "wiki_page",
       "page_type": "method",
       "has_ingest": true,
-      "ingest_source": "sources/papers/robot_kinematics_tools.md"
+      "ingest_source": "sources/papers/optimal_control.md"
     },
     {
       "id": "wiki-methods-unified-multimodal-tokens",
@@ -2897,7 +2897,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/footstep_and_balance.md"
+      "ingest_source": "sources/papers/whole_body_control.md"
     },
     {
       "id": "wiki-tasks-bimanual-manipulation",
@@ -2964,7 +2964,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/chasing_autonomy.md"
+      "ingest_source": "sources/papers/eth-g1-diffusion.md"
     },
     {
       "id": "wiki-tasks-humanoid-soccer",
@@ -3057,7 +3057,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/x2n_transformable.md"
+      "ingest_source": "sources/papers/gentlehumanoid_upper_body_compliance.md"
     },
     {
       "id": "wiki-tasks-locomotion",
@@ -3094,7 +3094,7 @@
       "type": "wiki_page",
       "page_type": "task",
       "has_ingest": true,
-      "ingest_source": "sources/papers/privileged_training.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "wiki-tasks-manipulation",
@@ -5957,7 +5957,7 @@
       "type": "entity_page",
       "entity_kind": "simulator",
       "has_ingest": true,
-      "ingest_source": "sources/papers/locomotion_rl.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-legged-gym",
@@ -5989,7 +5989,7 @@
       "type": "entity_page",
       "entity_kind": "framework",
       "has_ingest": true,
-      "ingest_source": "sources/papers/reward_design.md"
+      "ingest_source": "sources/papers/policy_optimization.md"
     },
     {
       "id": "entity-lerobot",

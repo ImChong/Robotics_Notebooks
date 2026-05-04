@@ -1293,8 +1293,8 @@
   }
 
   function renderTechMapFilters(layerCounts, activeLayer, onSelect) {
-    const chipList = document.getElementById('filter-chip-list');
-    const stateText = document.getElementById('filter-state-text');
+    const chipList = document.getElementById('techMapFilterList');
+    const stateText = document.getElementById('techMapFilterState');
     const toggleText = document.getElementById('filter-toggle-text');
     const badge = document.getElementById('filter-badge');
     if (!chipList) return;
