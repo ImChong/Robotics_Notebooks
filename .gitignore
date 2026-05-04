@@ -13,3 +13,4 @@ exports/vector-index.npz
 
 # Local search cache
 exports/search-cache.json
+docs/search-index.json

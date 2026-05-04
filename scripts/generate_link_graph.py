@@ -325,7 +325,7 @@ def main() -> None:
     communities, community_meta = assign_communities(nodes, edges)
     graph = {"nodes": nodes, "edges": edges, "communities": communities}
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(graph, ensure_ascii=False, indent=2), encoding="utf-8")
+    OUT_PATH.write_text(json.dumps(graph, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
     print(
         f"✅ link-graph.json: {len(nodes)} nodes, {len(edges)} edges, "
         f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
@@ -388,7 +388,7 @@ def main() -> None:
             "community_quality_warning": community_quality_warning,
         },
     }
-    STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, indent=2), encoding="utf-8")
+    STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
     print(
         f"✅ graph-stats.json: {len(orphans)} orphans, "
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"
