@@ -198,6 +198,52 @@ def encode_query_vector(query: str, meta: dict) -> "np.ndarray" | None:
     return None
 
 
+def _filter_doc(doc: dict, type_filter: str | None, tag_filters: list[str] | None) -> bool:
+    if type_filter and str(doc["page_type"]).lower() != type_filter.lower():
+        return False
+    page_tags = [str(tag).lower() for tag in doc.get("tags", [])]
+    if tag_filters and not all(tag.lower() in page_tags for tag in tag_filters):
+        return False
+    return True
+
+
+def _find_matched_lines(lines: list[str], query_words: list[str], context_lines: int) -> list[tuple[int, list[str], int]]:
+    matched_lines = []
+    if query_words:
+        lowered_words = [word.lower() for word in query_words if word.strip()]
+        for i, line in enumerate(lines):
+            if lowered_words and any(word in line.lower() for word in lowered_words):
+                start = max(0, i - context_lines)
+                end = min(len(lines), i + context_lines + 1)
+                matched_lines.append((i + 1, lines[start:end], i - start))
+    return matched_lines
+
+
+def _apply_vector_scores(
+    prepared: list[dict], query_text: str, vector_matrix: "np.ndarray", vector_meta: dict
+) -> str | None:
+    doc_order = {str(item["path"]): idx for idx, item in enumerate((vector_meta or {}).get("documents", []))}
+    query_vector = encode_query_vector(query_text, vector_meta)
+    if query_vector is None:
+        return "向量编码器不可用，已回退到纯 BM25。请安装 sentence-transformers 或重建索引。"
+
+    bm25_norm = normalize_scores([item["bm25_score"] for item in prepared])
+    import numpy as np
+
+    vector_scores = []
+    for item in prepared:
+        doc_idx = doc_order.get(item["path"].as_posix())
+        cosine = float(np.dot(vector_matrix[doc_idx], query_vector)) if doc_idx is not None else 0.0
+        item["vector_score"] = cosine
+        vector_scores.append(cosine)
+    vector_norm = normalize_scores(vector_scores)
+    for item, bm25_n, vector_n in zip(prepared, bm25_norm, vector_norm):
+        item["hybrid_score"] = 0.6 * bm25_n + 0.4 * vector_n
+        item["score"] = item["hybrid_score"]
+    prepared.sort(key=lambda r: r["hybrid_score"], reverse=True)
+    return None
+
+
 def search(
     query_words: list[str],
     type_filter: str | None,
@@ -223,7 +269,6 @@ def search(
     semantic_notice = None
     query_text = " ".join(query_words).strip()
     query_tokens = tokenize_text(query_text)
-    query_set = set(query_tokens)
 
     if semantic:
         vector_matrix, vector_meta = load_vector_resources()
@@ -233,16 +278,13 @@ def search(
 
     prepared = []
     for doc in docs:
-        fm = doc["frontmatter"]
-        if type_filter and str(doc["page_type"]).lower() != type_filter.lower():
-            continue
-        page_tags = [str(tag).lower() for tag in doc.get("tags", [])]
-        if tag_filters and not all(tag.lower() in page_tags for tag in tag_filters):
+        if not _filter_doc(doc, type_filter, tag_filters):
             continue
 
         raw = (REPO_ROOT / doc["path"]).read_text(encoding="utf-8")
         body = strip_frontmatter(raw)
         token_counts = __import__("collections").Counter(tokenize_text(body))
+        fm = doc["frontmatter"]
 
         score = compute_score(
             token_counts=token_counts,
@@ -256,14 +298,7 @@ def search(
             continue
 
         lines = body.splitlines()
-        matched_lines = []
-        if query_words:
-            lowered_words = [word.lower() for word in query_words if word.strip()]
-            for i, line in enumerate(lines):
-                if lowered_words and any(word in line.lower() for word in lowered_words):
-                    start = max(0, i - context_lines)
-                    end = min(len(lines), i + context_lines + 1)
-                    matched_lines.append((i + 1, lines[start:end], i - start))
+        matched_lines = _find_matched_lines(lines, query_words, context_lines)
         if not matched_lines:
             summary_line = doc["summary"] or (lines[0] if lines else "")
             matched_lines = [(1, [summary_line], 0)]
@@ -286,26 +321,10 @@ def search(
         )
 
     if semantic and prepared:
-        doc_order = {str(item["path"]): idx for idx, item in enumerate((vector_meta or {}).get("documents", []))}
-        query_vector = encode_query_vector(query_text, vector_meta)
-        if query_vector is None:
-            semantic_notice = "向量编码器不可用，已回退到纯 BM25。请安装 sentence-transformers 或重建索引。"
-            semantic = False
-        else:
-            bm25_norm = normalize_scores([item["bm25_score"] for item in prepared])
-            import numpy as np
-
-            vector_scores = []
-            for item in prepared:
-                doc_idx = doc_order.get(item["path"].as_posix())
-                cosine = float(np.dot(vector_matrix[doc_idx], query_vector)) if doc_idx is not None else 0.0
-                item["vector_score"] = cosine
-                vector_scores.append(cosine)
-            vector_norm = normalize_scores(vector_scores)
-            for item, bm25_n, vector_n in zip(prepared, bm25_norm, vector_norm):
-                item["hybrid_score"] = 0.6 * bm25_n + 0.4 * vector_n
-                item["score"] = item["hybrid_score"]
-            prepared.sort(key=lambda r: r["hybrid_score"], reverse=True)
+        new_notice = _apply_vector_scores(prepared, query_text, vector_matrix, vector_meta)
+        if new_notice:
+            semantic_notice = new_notice
+            prepared.sort(key=lambda r: r["score"], reverse=True)
     else:
         prepared.sort(key=lambda r: r["score"], reverse=True)
 
