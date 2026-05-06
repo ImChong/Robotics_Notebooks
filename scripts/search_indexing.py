@@ -99,25 +99,37 @@ def _expand_cjk_segment(segment: str) -> List[str]:
 
 
 def tokenize_text(text: str) -> List[str]:
+    # ⚡ Bolt: Inline normalization and expansion for performance
+    # Avoid re.fullmatch by checking the first character range since MIXED_TOKEN_RE extracts CJK sequences alone
     tokens: List[str] = []
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        if re.fullmatch(r"[\u4e00-\u9fff]+", raw):
-            tokens.extend(_expand_cjk_segment(raw))
-        else:
-            normalized = normalize_token(raw)
-            if normalized:
-                tokens.append(normalized)
+        normalized = raw.strip().lower()
+        if not normalized:
+            continue
+
+        tokens.append(normalized)
+
+        if '\u4e00' <= raw[0] <= '\u9fff':
+            length = len(normalized)
+            if length > 1:
+                tokens.extend(list(normalized))
+            if length > 2:
+                tokens.extend(normalized[i : i + 2] for i in range(length - 1))
+
     enriched: List[str] = []
+    # ⚡ Bolt: Cache lookup and avoid .get(token, []) which creates temporary lists
+    synonyms = TOKEN_SYNONYMS
     for token in tokens:
         enriched.append(token)
-        enriched.extend(TOKEN_SYNONYMS.get(token, []))
+        if token in synonyms:
+            enriched.extend(synonyms[token])
     return enriched
 
 
 def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
     tokens: List[str] = []
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        if re.fullmatch(r"[\u4e00-\u9fff]+", raw):
+        if raw and '\u4e00' <= raw[0] <= '\u9fff':
             tokens.extend(list(raw))
         else:
             tokens.append(raw)
