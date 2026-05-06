@@ -1,0 +1,4 @@
+# 轻量 CI 依赖（Wiki lint、导出预检、搜索回归等 workflow 共用）
+# Tests 工作流仍使用 requirements-dev.txt
+numpy>=1.24
+pyyaml>=6.0

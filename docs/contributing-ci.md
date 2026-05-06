@@ -29,6 +29,8 @@ make ci-test
 
 说明：`make ci-preflight` 会按固定顺序再生目录统计、导出 JSON、图谱统计与 README badge，并执行搜索回归与 wiki lint；变更 wiki/导出链时请以此为准。
 
+轻量 Python 工作流（`lint.yml`、`search-regression.yml`、`export.yml`、`weekly-lint.yml`）共用依赖声明文件 [`requirements-ci-lite.txt`](../requirements-ci-lite.txt)（与 `requirements-dev.txt` 区分），便于 Actions **pip 缓存**命中。
+
 ## 依赖安装
 
 ```bash
