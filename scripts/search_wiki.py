@@ -11,13 +11,15 @@ import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import numpy as np  # 仅用于类型注解；运行时按需局部 import
 
 from search_indexing import (
     REPO_ROOT,
-    WIKI_DIR,
     hash_embed_text,
     iter_wiki_documents,
-    parse_frontmatter,
     strip_frontmatter,
     tokenize_text,
     truncate_for_embedding,

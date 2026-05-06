@@ -18,8 +18,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
-        run: pip install pytest pyyaml numpy
+      - name: Install dev dependencies
+        run: pip install -r requirements-dev.txt
+
+      - name: Run ruff
+        run: ruff check scripts/ tests/
 
       - name: Run pytest
         run: python3 -m pytest tests/ -q

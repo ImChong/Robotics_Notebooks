@@ -5,7 +5,6 @@ generate_page_catalog.py
 生成符合 index.md Page Catalog 格式的 markdown，输出到 stdout。
 用法：python generate_page_catalog.py >> ../index.md
 """
-import os
 import re
 from pathlib import Path
 

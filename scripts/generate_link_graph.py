@@ -222,7 +222,6 @@ def modularity(partition: list[list[str]], adjacency: dict[str, set[str]]) -> fl
     degree = {node: len(neighbors) for node, neighbors in adjacency.items()}
     score = 0.0
     for community in partition:
-        community_set = set(community)
         for i in community:
             for j in community:
                 a_ij = 1.0 if j in adjacency[i] else 0.0

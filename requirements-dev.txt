@@ -1,0 +1,8 @@
+# Development dependencies for Robotics_Notebooks tooling.
+# Runtime scripts only need pyyaml + numpy (installed by CI workflows).
+# These are extras for local development and CI quality gates.
+
+pytest>=8.0
+ruff>=0.5
+pyyaml>=6.0
+numpy>=1.24

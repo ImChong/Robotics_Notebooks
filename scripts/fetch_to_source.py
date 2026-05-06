@@ -118,7 +118,7 @@ def main() -> None:
     print(f"✅ 生成模板: {out_path.relative_to(REPO_ROOT)}")
     print(f"   标题：{title}")
     print(f"   摘要：{description[:80]}{'...' if len(description) > 80 else ''}")
-    print(f"\n下一步：编辑模板，填写核心要点和 wiki 映射，然后运行 make lint && make catalog")
+    print("\n下一步：编辑模板，填写核心要点和 wiki 映射，然后运行 make lint && make catalog")
 
 
 if __name__ == "__main__":

@@ -78,7 +78,7 @@ def suggest_wiki_updates(title: str, desc: str, repo_root: Path) -> None:
             matches[rel] = hit_kw[:5]
 
     if matches:
-        print(f"\n💡 --suggest-updates: 以下 wiki 页面可能需要根据新来源更新（匹配关键词 ≥ 2）：")
+        print("\n💡 --suggest-updates: 以下 wiki 页面可能需要根据新来源更新（匹配关键词 ≥ 2）：")
         for path, kws in sorted(matches.items())[:10]:
             print(f"   • {path}  （命中: {', '.join(kws)}）")
         if len(matches) > 10:
@@ -116,7 +116,7 @@ def main():
     out_path.write_text(content, encoding="utf-8")
 
     print(f"✅ 已生成：{out_path}")
-    print(f"   请编辑文件，填写论文摘录后运行 make lint 验证")
+    print("   请编辑文件，填写论文摘录后运行 make lint 验证")
 
     if args.suggest_updates:
         suggest_wiki_updates(title, args.desc, repo_root)
