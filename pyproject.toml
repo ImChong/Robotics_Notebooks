@@ -1,0 +1,19 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = [
+    "docs/exports/",
+    "exports/",
+]
+
+[tool.ruff.lint]
+# 保守起点：只启用 pyflakes (F)，专门捕获真实 bug：
+#   F401 未使用 import / F541 空 f-string / F811 重复定义
+#   F821 未定义名称 / F841 未使用变量
+# 不启用 E/W（pycodestyle 风格）/ I（import 排序）/ B（bugbear）/ UP（pyupgrade），
+# 后续按需要逐步开启，避免一次性产生大规模风格 diff。
+select = ["F"]
+
+[tool.ruff.lint.per-file-ignores]
+# scripts/utils/__init__.py 是 re-export，import 即接口
+"scripts/utils/__init__.py" = ["F401"]
