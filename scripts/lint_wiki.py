@@ -948,6 +948,10 @@ def lint() -> dict:
                 continue
             has_pos = any(re.search(p, content, re.IGNORECASE) for p in fact["pos_claims"])
             has_neg = any(re.search(p, content, re.IGNORECASE) for p in fact["neg_claims"])
+            # 同一页面同时命中正反模式时，多半是比较/讨论页或正则重叠，
+            # 而非真矛盾。跳过该页避免 self-vs-self 误报（如「Impedance 柔顺性」）。
+            if has_pos and has_neg:
+                continue
             if has_pos:
                 pos_pages.append(page.stem)
             if has_neg:
