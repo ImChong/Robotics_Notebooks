@@ -7,6 +7,7 @@ import re
 from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterable, List
+from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -125,26 +126,6 @@ def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
     return " ".join(tokens[:max_tokens])
 
 
-def path_to_id(path: Path) -> str:
-    parts = path.relative_to(REPO_ROOT).parts
-    stem = path.stem
-    if parts[0] == "wiki":
-        if parts[1] == "entities":
-            return f"entity-{stem}"
-        return f"wiki-{parts[1]}-{stem}"
-    if parts[0] == "roadmap":
-        return f"roadmap-{stem}"
-    if parts[0] == "references":
-        return f"reference-{parts[1]}-{stem}"
-    if parts[0] == "tech-map":
-        if len(parts) >= 3 and parts[1] == "modules":
-            return f"tech-node-{parts[2]}-{stem}"
-        if len(parts) >= 3 and parts[1] == "research-directions":
-            return f"tech-node-research-{stem}"
-        return f"tech-node-{stem}"
-    return stem
-
-
 def page_type_for_path(path: Path, fm: dict) -> str:
     if fm.get("type"):
         return str(fm["type"])
@@ -225,7 +206,7 @@ def iter_wiki_documents() -> List[Dict]:
         tags = infer_path_tags(path, fm)
         docs.append(
             {
-                "id": path_to_id(path),
+                "id": path_to_id(path, REPO_ROOT),
                 "path": path.relative_to(REPO_ROOT).as_posix(),
                 "title": title,
                 "summary": summary,
