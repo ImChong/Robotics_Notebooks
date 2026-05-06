@@ -1,8 +1,11 @@
-.PHONY: lint catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
+.PHONY: lint test catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
 
 lint:
 	python3 scripts/eval_search_quality.py
 	python3 scripts/lint_wiki.py
+
+test:
+	python3 -m pytest tests/ -q
 
 catalog:
 	python3 scripts/generate_page_catalog.py
