@@ -1,0 +1,22 @@
+name: 知识库 / Wiki 与 ingest
+description: 新增 sources、补充或修订 wiki 页面、交叉引用与 ingest 流程相关讨论
+title: "[wiki] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请先阅读仓库内 `schema/ingest-workflow.md`；原始资料进 `sources/`，归纳内容进 `wiki/`。
+  - type: textarea
+    id: goal
+    attributes:
+      label: 目标 / 背景
+      description: 要解决什么问题、面向谁（读者画像可简述）
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 范围与计划
+      description: 涉及路径（如 `sources/papers/…`、`wiki/concepts/…`）、是否需同步 exports / `make ci-preflight`
+    validations:
+      required: false
