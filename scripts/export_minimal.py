@@ -19,13 +19,18 @@ BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
 
 
 def build_ingest_index() -> Dict[str, str]:
-    """Return {wiki_stem: sources_file_rel} for all wiki pages mentioned in sources/papers/*.md."""
+    """Return {wiki_stem: sources_file_rel} for all wiki pages mentioned in sources/papers/*.md.
+
+    Sources files are iterated in sorted order so that wiki pages with multiple
+    ingest references get a deterministic single source (the alphabetically first
+    one), avoiding spurious diffs in exports/index-v1.json across machines/runs.
+    """
     index: Dict[str, str] = {}
     sources_dir = ROOT / "sources" / "papers"
     if not sources_dir.exists():
         return index
     wiki_link_re = re.compile(r'\]\(\S*wiki/[^)]+/([^/)]+)\.md\)')
-    for src in sources_dir.glob("*.md"):
+    for src in sorted(sources_dir.glob("*.md")):
         text = src.read_text(encoding="utf-8")
         for m in wiki_link_re.finditer(text):
             stem = m.group(1)
