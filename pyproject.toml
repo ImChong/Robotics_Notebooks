@@ -23,7 +23,7 @@ addopts = [
     "--cov=search_wiki",
     "--cov=utils",
     "--cov-report=term-missing",
-    "--cov-fail-under=37",
+    "--cov-fail-under=52",
 ]
 
 [tool.coverage.run]

@@ -1,4 +1,14 @@
-.PHONY: lint test format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
+.PHONY: lint test ci-test format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
+
+# 与 .github/workflows/tests.yml 步骤顺序一致（不含 Wiki lint）
+ci-test:
+	ruff check scripts tests
+	ruff format --check scripts tests
+	PYTHONPATH=scripts mypy scripts
+	python3 -m pip_audit -r requirements-dev.txt
+	npm ci
+	npm run lint:js
+	PYTHONPATH=scripts python3 -m pytest
 
 lint:
 	python3 scripts/eval_search_quality.py
