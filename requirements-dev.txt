@@ -2,7 +2,7 @@
 # Runtime CI lint workflows install pyyaml + numpy only; full gates need this file.
 pytest>=8.0
 pytest-cov>=5.0
-ruff>=0.5
+ruff>=0.15.12
 mypy>=1.8
 types-PyYAML>=6.0
 pyyaml>=6.0
