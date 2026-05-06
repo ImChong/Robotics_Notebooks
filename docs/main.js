@@ -44,7 +44,18 @@
   }
 
   if (sections.length) {
-    window.addEventListener('scroll', updateActive);
+    let ticking = false;
+    // ⚡ Bolt Optimization: Throttle scroll event using requestAnimationFrame
+    // Expected impact: Prevents excessive layout recalculations during scrolling, reducing main thread jank.
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          updateActive();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
     updateActive();
   }
 
@@ -537,7 +548,18 @@
       });
     }
 
-    window.addEventListener('scroll', updateActiveTocLink, { passive: true });
+    let tocTicking = false;
+    // ⚡ Bolt Optimization: Throttle TOC scroll spy using requestAnimationFrame
+    // Expected impact: Mitigates performance degradation on long pages by avoiding rapid `getBoundingClientRect()` calls per scroll tick.
+    window.addEventListener('scroll', function() {
+      if (!tocTicking) {
+        window.requestAnimationFrame(function() {
+          updateActiveTocLink();
+          tocTicking = false;
+        });
+        tocTicking = true;
+      }
+    }, { passive: true });
     window.addEventListener('hashchange', updateActiveTocLink);
     updateActiveTocLink();
   }
