@@ -32,6 +32,7 @@ import re
 from collections import Counter, defaultdict
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -40,6 +41,16 @@ STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 MAX_COMMUNITIES = 8
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
+
+# Wikilink [[stem]] 解析缓存（wiki 文件集合不变时可复用）
+_STEM_TO_PATH: dict[str, Path] | None = None
+
+
+def _wiki_stem_index() -> dict[str, Path]:
+    global _STEM_TO_PATH
+    if _STEM_TO_PATH is None:
+        _STEM_TO_PATH = {p.stem: p for p in WIKI_DIR.rglob("*.md")}
+    return _STEM_TO_PATH
 
 
 def compute_health_score(content: str) -> int:
@@ -55,7 +66,7 @@ def compute_health_score(content: str) -> int:
     if end == -1:
         return 0
     fm = content[3:end]
-    body = content[end + 4:]
+    body = content[end + 4 :]
     score = 0
     if re.search(r"^summary\s*:", fm, re.MULTILINE):
         score += 1
@@ -66,6 +77,7 @@ def compute_health_score(content: str) -> int:
     if updated_match:
         try:
             from datetime import date
+
             updated_date = date.fromisoformat(updated_match.group(1).strip())
             if (date.today() - updated_date).days <= 365:
                 score += 1
@@ -101,7 +113,7 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     3. Wikilinks: [[name]]
     """
     targets = []
-    
+
     def is_wiki_path(p: Path) -> bool:
         try:
             p.relative_to(WIKI_DIR)
@@ -133,19 +145,18 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
                             targets.append(resolved)
 
     # 3. Wikilinks [[name]]
-    global _stem_to_path
-    if "_stem_to_path" not in globals():
-        _stem_to_path = {p.stem: p for p in WIKI_DIR.rglob("*.md")}
-
+    stem_map = _wiki_stem_index()
     for match in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", content):
         stem = match.group(1).strip()
-        if stem in _stem_to_path:
-            targets.append(_stem_to_path[stem])
+        if stem in stem_map:
+            targets.append(stem_map[stem])
 
     return sorted(set(targets), key=lambda path: str(path.relative_to(REPO_ROOT)))
 
 
-def build_undirected_adjacency(node_ids: list[str], edges: list[dict[str, str]]) -> dict[str, set[str]]:
+def build_undirected_adjacency(
+    node_ids: list[str], edges: list[dict[str, str]]
+) -> dict[str, set[str]]:
     adjacency: dict[str, set[str]] = {node_id: set() for node_id in node_ids}
     for edge in edges:
         source = edge["source"]
@@ -206,7 +217,8 @@ def edge_betweenness(adjacency: dict[str, set[str]]) -> dict[tuple[str, str], fl
                 continue
             for predecessor in predecessors[vertex]:
                 contribution = (sigma[predecessor] / sigma[vertex]) * (1.0 + dependency[vertex])
-                edge = tuple(sorted((predecessor, vertex)))
+                a, b = predecessor, vertex
+                edge: tuple[str, str] = (a, b) if a < b else (b, a)
                 betweenness[edge] += contribution
                 dependency[predecessor] += contribution
 
@@ -254,11 +266,11 @@ def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
 
 
 def assign_communities(
-    nodes: list[dict[str, str]],
+    nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
-) -> tuple[list[dict[str, object]], dict[str, dict[str, object]]]:
+) -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]]]:
     node_ids = [node["id"] for node in nodes]
-    degree_map = Counter()
+    degree_map: Counter[str] = Counter()
     for edge in edges:
         degree_map[edge["source"]] += 1
         degree_map[edge["target"]] += 1
@@ -267,19 +279,25 @@ def assign_communities(
     sorted_groups = detect_communities(adjacency)
 
     node_map = {node["id"]: node for node in nodes}
-    community_meta: dict[str, dict[str, object]] = {}
+    community_meta: dict[str, dict[str, Any]] = {}
     node_to_community: dict[str, str] = {}
 
     for idx, members in enumerate(sorted_groups):
         if idx < MAX_COMMUNITIES:
             community_id = f"community-{idx}"
-            hub_id = max(members, key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]))
+            hub_id = max(
+                members,
+                key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
+            )
             label = f"{node_map[hub_id]['label']} 社区"
         else:
             community_id = OTHER_COMMUNITY_ID
             label = OTHER_COMMUNITY_LABEL
-        community_meta.setdefault(community_id, {"id": community_id, "label": label, "size": 0, "hub_id": None})
-        community_meta[community_id]["size"] += len(members)
+        community_meta.setdefault(
+            community_id, {"id": community_id, "label": label, "size": 0, "hub_id": None}
+        )
+        cm_entry = community_meta[community_id]
+        cm_entry["size"] = int(cm_entry["size"]) + len(members)
         if community_meta[community_id]["hub_id"] is None and community_id != OTHER_COMMUNITY_ID:
             community_meta[community_id]["hub_id"] = hub_id
         for node_id in members:
@@ -290,13 +308,17 @@ def assign_communities(
 
     community_list = sorted(
         community_meta.values(),
-        key=lambda item: (item["id"] == OTHER_COMMUNITY_ID, -int(item["size"]), str(item["label"])),
+        key=lambda item: (
+            item["id"] == OTHER_COMMUNITY_ID,
+            -int(item["size"]),
+            str(item["label"]),
+        ),
     )
     return community_list, community_meta
 
 
 def main() -> None:
-    nodes: list[dict[str, str]] = []
+    nodes: list[dict[str, Any]] = []
     edges: list[dict[str, str]] = []
     seen_edges: set[tuple[str, str]] = set()
 
@@ -324,7 +346,9 @@ def main() -> None:
     communities, community_meta = assign_communities(nodes, edges)
     graph = {"nodes": nodes, "edges": edges, "communities": communities}
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(json.dumps(graph, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+    OUT_PATH.write_text(
+        json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
     print(
         f"✅ link-graph.json: {len(nodes)} nodes, {len(edges)} edges, "
         f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
@@ -337,8 +361,7 @@ def main() -> None:
         in_degree[edge["target"]] = in_degree.get(edge["target"], 0) + 1
 
     total_degree = {
-        node["id"]: in_degree.get(node["id"], 0) + out_degree.get(node["id"], 0)
-        for node in nodes
+        node["id"]: in_degree.get(node["id"], 0) + out_degree.get(node["id"], 0) for node in nodes
     }
 
     top_hubs = sorted(nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True)[:10]
@@ -364,10 +387,14 @@ def main() -> None:
     }
 
     # 社区质量指标
-    community_sizes = [int(meta["size"]) for meta in community_meta.values()
-                       if meta["id"] != OTHER_COMMUNITY_ID]
-    singleton_communities = [meta["label"] for meta in community_meta.values()
-                              if int(meta["size"]) < 3 and meta["id"] != OTHER_COMMUNITY_ID]
+    community_sizes = [
+        int(meta["size"]) for meta in community_meta.values() if meta["id"] != OTHER_COMMUNITY_ID
+    ]
+    singleton_communities = [
+        meta["label"]
+        for meta in community_meta.values()
+        if int(meta["size"]) < 3 and meta["id"] != OTHER_COMMUNITY_ID
+    ]
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
     community_quality_warning = largest_ratio > 0.45
@@ -387,7 +414,9 @@ def main() -> None:
             "community_quality_warning": community_quality_warning,
         },
     }
-    STATS_PATH.write_text(json.dumps(stats, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+    STATS_PATH.write_text(
+        json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
     print(
         f"✅ graph-stats.json: {len(orphans)} orphans, "
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"

@@ -4,10 +4,10 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from typing import Dict, List
-from utils.paths import path_to_id
+from typing import Any, Dict, List
 
 from build_search_index import generate_search_index
+from utils.paths import path_to_id
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
@@ -29,7 +29,7 @@ def build_ingest_index() -> Dict[str, str]:
     sources_dir = ROOT / "sources" / "papers"
     if not sources_dir.exists():
         return index
-    wiki_link_re = re.compile(r'\]\(\S*wiki/[^)]+/([^/)]+)\.md\)')
+    wiki_link_re = re.compile(r"\]\(\S*wiki/[^)]+/([^/)]+)\.md\)")
     for src in sorted(sources_dir.glob("*.md")):
         text = src.read_text(encoding="utf-8")
         for m in wiki_link_re.finditer(text):
@@ -78,7 +78,9 @@ def read_text(path: Path) -> str:
 
 def write_json(path: Path, payload: Dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, separators=(',', ':')), encoding="utf-8")
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
 
 
 def extract_title(text: str, fallback: str) -> str:
@@ -94,7 +96,9 @@ def clean_summary(text: str) -> str:
     text = re.sub(r">\s*", "", text)
     text = text.replace("**", "")
     text = re.sub(r"\s+", " ", text)
-    return text.strip(" ：:，,。") + ("。" if text and not text.endswith(("。", "!", "?", ".")) else "")
+    return text.strip(" ：:，,。") + (
+        "。" if text and not text.endswith(("。", "!", "?", ".")) else ""
+    )
 
 
 def extract_summary(text: str) -> str:
@@ -230,16 +234,16 @@ def collect_external_links(text: str) -> List[str]:
     seen = set()
     out = []
     for link in links:
-        link = link.rstrip('.,')
+        link = link.rstrip(".,")
         if link not in seen:
             seen.add(link)
             out.append(link)
     return out
 
 
-def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, object]]:
-    stages = []
-    current = None
+def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
+    stages: List[Dict[str, Any]] = []
+    current: Dict[str, Any] | None = None
     section_lines: List[str] = []
 
     def flush_current() -> None:
@@ -264,10 +268,10 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, object
     return stages
 
 
-def build_item(path: Path) -> Dict:
+def build_item(path: Path) -> dict[str, Any]:
     text = read_text(path)
     title = extract_title(text, path.stem)
-    item = {
+    item: dict[str, Any] = {
         "id": path_to_id(path, ROOT),
         "title": title,
         "path": rel(path),
@@ -363,19 +367,35 @@ def pick_existing(ids: List[str], item_map: Dict[str, Dict]) -> List[str]:
     return out
 
 
-def build_module_page(module_id: str, title: str, summary: str, tag: str, related_modules: List[str], item_map: Dict[str, Dict]) -> Dict:
-    entry_items = sort_items([
-        item for item in item_map.values()
-        if item.get("type") in {"wiki_page", "entity_page"} and tag in item.get("tags", [])
-    ])
-    references = sort_items([
-        item for item in item_map.values()
-        if item.get("type") == "reference_page" and tag in item.get("tags", [])
-    ])
-    roadmaps = sort_items([
-        item for item in item_map.values()
-        if item.get("type") == "roadmap_page" and tag in item.get("tags", [])
-    ])
+def build_module_page(
+    module_id: str,
+    title: str,
+    summary: str,
+    tag: str,
+    related_modules: List[str],
+    item_map: Dict[str, Dict],
+) -> Dict:
+    entry_items = sort_items(
+        [
+            item
+            for item in item_map.values()
+            if item.get("type") in {"wiki_page", "entity_page"} and tag in item.get("tags", [])
+        ]
+    )
+    references = sort_items(
+        [
+            item
+            for item in item_map.values()
+            if item.get("type") == "reference_page" and tag in item.get("tags", [])
+        ]
+    )
+    roadmaps = sort_items(
+        [
+            item
+            for item in item_map.values()
+            if item.get("type") == "roadmap_page" and tag in item.get("tags", [])
+        ]
+    )
     return {
         "module_id": module_id,
         "title": title,
@@ -391,7 +411,7 @@ def build_module_page(module_id: str, title: str, summary: str, tag: str, relate
 def build_site_data(items: List[Dict]) -> Dict:
     item_map = {item["id"]: item for item in items}
 
-    module_specs = [
+    module_specs: list[dict[str, Any]] = [
         {
             "module_id": "control",
             "title": "控制与优化主链",
@@ -437,7 +457,12 @@ def build_site_data(items: List[Dict]) -> Dict:
     ]
     module_pages = {
         spec["module_id"]: build_module_page(
-            spec["module_id"], spec["title"], spec["summary"], spec["tag"], spec["related_modules"], item_map
+            spec["module_id"],
+            spec["title"],
+            spec["summary"],
+            spec["tag"],
+            spec["related_modules"],
+            item_map,
         )
         for spec in module_specs
     }
@@ -465,7 +490,9 @@ def build_site_data(items: List[Dict]) -> Dict:
         ],
         item_map,
     )
-    featured_modules = [spec["module_id"] for spec in module_specs if module_pages[spec["module_id"]]["entry_items"]]
+    featured_modules = [
+        spec["module_id"] for spec in module_specs if module_pages[spec["module_id"]]["entry_items"]
+    ]
 
     roadmap_items = sort_items([item for item in items if item.get("type") == "roadmap_page"])
     roadmap_pages = {
@@ -540,7 +567,9 @@ def build_site_data(items: List[Dict]) -> Dict:
     }
 
 
-def generate_sitemap(items: List[Dict], base_url: str = "https://ImChong.github.io/Robotics_Notebooks") -> str:
+def generate_sitemap(
+    items: List[Dict], base_url: str = "https://ImChong.github.io/Robotics_Notebooks"
+) -> str:
     """生成 sitemap.xml，包含首页、预览页和所有 detail_pages。"""
     urls = [
         {"loc": base_url + "/", "priority": "1.0", "changefreq": "weekly"},
@@ -559,25 +588,28 @@ def generate_sitemap(items: List[Dict], base_url: str = "https://ImChong.github.
             priority = "0.7"
         elif page_type == "query":
             priority = "0.6"
-        urls.append({
-            "loc": f"{base_url}/docs/detail.html?id={item_id}",
-            "priority": priority,
-            "changefreq": "monthly",
-            "lastmod": None,
-        })
+        urls.append(
+            {
+                "loc": f"{base_url}/docs/detail.html?id={item_id}",
+                "priority": priority,
+                "changefreq": "monthly",
+            }
+        )
 
-    sitemap_lines = ['<?xml version="1.0" encoding="UTF-8"?>',
-                     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    sitemap_lines = [
+        '<?xml version="1.0" encoding="UTF-8"?>',
+        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ]
     for url in urls:
-        line = '  <url>'
-        line += f'<loc>{url["loc"]}</loc>'
-        line += f'<changefreq>{url["changefreq"]}</changefreq>'
-        line += f'<priority>{url["priority"]}</priority>'
+        line = "  <url>"
+        line += f"<loc>{url['loc']}</loc>"
+        line += f"<changefreq>{url['changefreq']}</changefreq>"
+        line += f"<priority>{url['priority']}</priority>"
         if url.get("lastmod"):
-            line += f'<lastmod>{url["lastmod"]}</lastmod>'
-        line += '</url>'
+            line += f"<lastmod>{url['lastmod']}</lastmod>"
+        line += "</url>"
         sitemap_lines.append(line)
-    sitemap_lines.append('</urlset>')
+    sitemap_lines.append("</urlset>")
     return "\n".join(sitemap_lines) + "\n"
 
 
@@ -607,7 +639,9 @@ def main() -> None:
     print(f"Wrote {OUTPUT} with {len(items)} items")
     print(f"Wrote {SITE_OUTPUT} with {len(site_payload['pages']['detail_pages'])} detail pages")
     print(f"Mirrored exports to {DOCS_OUTPUT.parent}")
-    print(f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page','entity_page'})} wiki/entity URLs")
+    print(
+        f"Wrote {SITEMAP_OUTPUT} with {sum(1 for i in items if i.get('type') in {'wiki_page', 'entity_page'})} wiki/entity URLs"
+    )
     print(f"Wrote docs/search-index.json with {len(search_payload['docs'])} docs")
 
 

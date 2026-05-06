@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """generate_home_stats.py — 生成首页 Hero 统计所需的轻量 JSON。"""
+
 import json
 import re
 import subprocess
@@ -20,7 +21,7 @@ lint_result = subprocess.run(
     cwd=REPO_ROOT,
     capture_output=True,
     text=True,
-    check=False, # We want to continue even if lint fails
+    check=False,  # We want to continue even if lint fails
 )
 all_output = lint_result.stdout + lint_result.stderr
 coverage_match = re.search(r"Sources 覆盖率：(\d+)/(\d+) \((\d+)%\)", all_output)
@@ -41,4 +42,6 @@ payload = {
     },
 }
 OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
-print(f"Wrote {OUT_PATH} with graph={payload['node_count']} nodes/{payload['edge_count']} edges, coverage={payload['coverage']['covered']}/{payload['coverage']['total']}")
+print(
+    f"Wrote {OUT_PATH} with graph={payload['node_count']} nodes/{payload['edge_count']} edges, coverage={payload['coverage']['covered']}/{payload['coverage']['total']}"
+)

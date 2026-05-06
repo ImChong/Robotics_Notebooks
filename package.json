@@ -1,0 +1,13 @@
+{
+  "name": "robotics-notebooks",
+  "private": true,
+  "description": "Dev tooling only (ESLint for docs/main.js)",
+  "scripts": {
+    "lint:js": "eslint docs/main.js"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "eslint": "^9.15.0",
+    "globals": "^15.12.0"
+  }
+}

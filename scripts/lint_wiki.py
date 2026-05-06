@@ -28,6 +28,7 @@ import re
 import sys
 from datetime import date
 from pathlib import Path
+from typing import Any
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -50,20 +51,22 @@ def load_canonical_facts() -> dict:
 def get_wiki_pages() -> list[Path]:
     return sorted(WIKI_DIR.rglob("*.md"))
 
+
 # 移除代码块（``` ... ``` 和 ` ... `），避免提取代码示例中的假链接
 def strip_code_blocks(content: str) -> str:
     # 移除围栏代码块
-    content = re.sub(r'```.*?```', '', content, flags=re.DOTALL)
+    content = re.sub(r"```.*?```", "", content, flags=re.DOTALL)
     # 移除行内代码
-    content = re.sub(r'`[^`]+`', '', content)
+    content = re.sub(r"`[^`]+`", "", content)
     return content
+
 
 # 从文件中提取所有内部链接目标（相对路径 .md 文件）
 def extract_internal_links(content: str, source_path: Path) -> list[Path]:
     targets = []
     content = strip_code_blocks(content)
     # 匹配 markdown 链接 [text](path)，只取 .md 文件且不是 http
-    for match in re.finditer(r'\[([^\]]*)\]\(([^)]+)\)', content):
+    for match in re.finditer(r"\[([^\]]*)\]\(([^)]+)\)", content):
         href = match.group(2).strip()
         if href.startswith("http") or href.startswith("#"):
             continue
@@ -75,18 +78,20 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
         targets.append(resolved)
     return targets
 
+
 def has_section(content: str, patterns: list[str]) -> bool:
     """检查是否存在某个 ## 级别的区块（匹配关键词）"""
     for pat in patterns:
-        if re.search(rf'^##\s+.*{pat}', content, re.MULTILINE | re.IGNORECASE):
+        if re.search(rf"^##\s+.*{pat}", content, re.MULTILINE | re.IGNORECASE):
             return True
     return False
+
 
 def word_count(content: str) -> int:
     """简单估算字数（中英文混合）"""
     # 中文字符 + 英文单词
-    chinese = len(re.findall(r'[\u4e00-\u9fff]', content))
-    english = len(re.findall(r'\b[a-zA-Z]+\b', content))
+    chinese = len(re.findall(r"[\u4e00-\u9fff]", content))
+    english = len(re.findall(r"\b[a-zA-Z]+\b", content))
     return chinese + english
 
 
@@ -96,7 +101,7 @@ def has_source_reference(content: str) -> bool:
     覆盖率统计关心的是 wiki 页是否能追溯到原始资料，而不是资料是否一定来自
     sources/papers/。repo、blog、note 等来源同样是有效 ingest 来源。
     """
-    return bool(re.search(r'(?:\.\./)*sources/[^)\s]+\.md\b', content))
+    return bool(re.search(r"(?:\.\./)*sources/[^)\s]+\.md\b", content))
 
 
 def strip_misconception_sections(content: str) -> str:
@@ -104,7 +109,7 @@ def strip_misconception_sections(content: str) -> str:
     lines = content.splitlines()
     kept = []
     skip_level = None
-    heading_re = re.compile(r'^(#{2,6})\s+(.*)$')
+    heading_re = re.compile(r"^(#{2,6})\s+(.*)$")
     for line in lines:
         m = heading_re.match(line)
         if m:
@@ -120,7 +125,7 @@ def strip_misconception_sections(content: str) -> str:
     return "\n".join(kept)
 
 
-def lint() -> dict:
+def lint() -> dict[str, Any]:
     pages = get_wiki_pages()
     page_set = {p.resolve() for p in pages}
 
@@ -141,38 +146,40 @@ def lint() -> dict:
                 pass
             else:
                 broken_links.setdefault(page.resolve(), []).append(
-                    str(target.relative_to(REPO_ROOT)) if target.is_relative_to(REPO_ROOT) else str(target)
+                    str(target.relative_to(REPO_ROOT))
+                    if target.is_relative_to(REPO_ROOT)
+                    else str(target)
                 )
 
     # 已有 wiki 页面的 stem 集合（用于"提及但缺页"检测）
     existing_stems = {p.stem.lower() for p in pages}
 
-    results = {
+    results: dict[str, Any] = {
         "orphan_pages": [],
         "missing_related": [],
         "missing_sources": [],
         "broken_links": [],
         "stub_pages": [],
-        "missing_pages": [],          # 提及但缺少对应 wiki 页面的技术概念
-        "broken_source_refs": [],     # 引用了不存在的 sources/ 文件
-        "sources_orphans": [],        # P3.3: sources/papers 中的死链（wiki 目标不存在）
-        "stale_pages": [],            # P3.2: wiki 页面比对应 sources 文件旧
-        "outdated_pages": [],         # V9: frontmatter updated: 字段距今 > 180 天
-        "contradictions": [],         # P3.1: 同一概念跨页面矛盾描述
-        "missing_type": [],           # V8: wiki 页面缺少 frontmatter type 字段
-        "log_inactive": [],           # V8: log.md 最近 30 天无操作记录
-        "missing_summary": [],        # V10: concepts/methods/tasks 缺少 summary/description
-        "query_format": [],           # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
+        "missing_pages": [],  # 提及但缺少对应 wiki 页面的技术概念
+        "broken_source_refs": [],  # 引用了不存在的 sources/ 文件
+        "sources_orphans": [],  # P3.3: sources/papers 中的死链（wiki 目标不存在）
+        "stale_pages": [],  # P3.2: wiki 页面比对应 sources 文件旧
+        "outdated_pages": [],  # V9: frontmatter updated: 字段距今 > 180 天
+        "contradictions": [],  # P3.1: 同一概念跨页面矛盾描述
+        "missing_type": [],  # V8: wiki 页面缺少 frontmatter type 字段
+        "log_inactive": [],  # V8: log.md 最近 30 天无操作记录
+        "missing_summary": [],  # V10: concepts/methods/tasks 缺少 summary/description
+        "query_format": [],  # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
         "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
         "formalization_unexplained_vars": [],  # V21: formalizations/ 公式变量缺少正文物理含义解释
-        "readme_badge": [],           # V11: README checklist 链接版本不一致
-        "orphan_count": [],           # V13: graph-stats.json 中孤儿节点（无入链）预警
-        "method_missing_link": [],    # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
-        "method_missing_sections": [], # V17: methods/ 页面缺少标准区块
-        "entity_missing_outgoing": [], # V20: entities/ 页面缺少指向 methods/ 或 tasks/ 的出边
-        "wikilink_syntax": [],        # V22: 禁止使用 [[...]] Obsidian wikilink，必须用标准 Markdown 内链
-        "_ingest_covered": 0,         # 内部统计：有 ingest 来源的页面数
-        "_ingest_total": 0,           # 内部统计：扫描的页面总数
+        "readme_badge": [],  # V11: README checklist 链接版本不一致
+        "orphan_count": [],  # V13: graph-stats.json 中孤儿节点（无入链）预警
+        "method_missing_link": [],  # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
+        "method_missing_sections": [],  # V17: methods/ 页面缺少标准区块
+        "entity_missing_outgoing": [],  # V20: entities/ 页面缺少指向 methods/ 或 tasks/ 的出边
+        "wikilink_syntax": [],  # V22: 禁止使用 [[...]] Obsidian wikilink，必须用标准 Markdown 内链
+        "_ingest_covered": 0,  # 内部统计：有 ingest 来源的页面数
+        "_ingest_total": 0,  # 内部统计：扫描的页面总数
     }
 
     for page in pages:
@@ -196,9 +203,8 @@ def lint() -> dict:
             results["missing_related"].append(str(rel))
 
         # 3. 缺少参考来源区块（README、references/ 元页面豁免）
-        is_meta_sources = (
-            page.name.lower() in ("readme.md", "index.md")
-            or "references/" in str(rel)
+        is_meta_sources = page.name.lower() in ("readme.md", "index.md") or "references/" in str(
+            rel
         )
         if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
@@ -221,35 +227,33 @@ def lint() -> dict:
         # 5a. 禁止使用 Obsidian [[wikilink]] 语法（AGENTS.md 第 156 行规定）
         #     代码块和行内代码内的 [[...]] 是合法的（如 numpy 矩阵字面量），跳过
         wl_stripped = strip_code_blocks(content)
-        for m in re.finditer(r'\[\[([^\]|]+)(?:\|[^\]]+)?\]\]', wl_stripped):
+        for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", wl_stripped):
             token = m.group(1).strip()
             # 过滤数字/矩阵字面量残留（理论上 strip_code_blocks 已处理，双保险）
-            if re.match(r'^[\d\.\-\s,]+$', token):
+            if re.match(r"^[\d\.\-\s,]+$", token):
                 continue
             results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
 
         # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
         stripped = strip_code_blocks(content)
-        for m in re.finditer(r'\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)', stripped):
+        for m in re.finditer(r"\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)", stripped):
             href = m.group(2).split("#")[0]
             resolved_src = (page.parent / href).resolve()
             if not resolved_src.exists():
-                results["broken_source_refs"].append(
-                    f"{rel} → {href}"
-                )
+                results["broken_source_refs"].append(f"{rel} → {href}")
 
     # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
     WATCH_TERMS = {
         # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
         # 已有覆盖的术语不在此列（EKF→ekf.md, HQP→hqp.md, SAC→policy-optimization.md,
         #   InEKF→ekf.md, LQR→lqr.md, NMPC→model-predictive-control.md）
-        "MPPI": "model-based-rl",   # 已在 model-based-rl.md 中覆盖
+        "MPPI": "model-based-rl",  # 已在 model-based-rl.md 中覆盖
         "DMP": "dmp",
         "GAE": "gae",
         "HER": "her",
         "POMDP": "pomdp",
         "Pontryagin": "optimal-control",  # 已在 optimal-control.md 有专节
-        "DDPG": "policy-optimization",    # 已在 policy-optimization.md 提及
+        "DDPG": "policy-optimization",  # 已在 policy-optimization.md 提及
         "MARL": "marl",
         "ContactNet": "contact-net",
     }
@@ -258,25 +262,25 @@ def lint() -> dict:
     for page in pages:
         all_content += page.read_text(encoding="utf-8")
     for term in WATCH_TERMS:
-        count = len(re.findall(rf'\b{re.escape(term)}\b', all_content))
+        count = len(re.findall(rf"\b{re.escape(term)}\b", all_content))
         slug = WATCH_TERMS[term]
         if count >= 2 and slug not in existing_stems:
             term_counts[term] = count
     for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
-        results["missing_pages"].append(f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）")
+        results["missing_pages"].append(
+            f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）"
+        )
 
     # P3.3: Sources 孤儿检测 — sources/papers/*.md 中链接到不存在的 wiki 页
     sources_papers_dir = REPO_ROOT / "sources" / "papers"
     if sources_papers_dir.exists():
         for src_file in sorted(sources_papers_dir.glob("*.md")):
             src_content = src_file.read_text(encoding="utf-8")
-            for m in re.finditer(r'\]\(([^)]*wiki/[^)]+\.md)\)', src_content):
+            for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
                 href = m.group(1).split("#")[0]
                 target = (src_file.parent / href).resolve()
                 if not target.exists():
-                    results["sources_orphans"].append(
-                        f"sources/papers/{src_file.name} → {href}"
-                    )
+                    results["sources_orphans"].append(f"sources/papers/{src_file.name} → {href}")
 
     # P3.2: 陈旧页面检测 — sources 文件比对应 wiki 页更新时，标记需 review
     # 注意：在 GitHub Actions 中 mtime 不可靠（checkout 会重置 mtime），故跳过
@@ -285,7 +289,7 @@ def lint() -> dict:
         for src_file in sorted(sources_papers_dir.glob("*.md")):
             src_content = src_file.read_text(encoding="utf-8")
             src_mtime = src_file.stat().st_mtime
-            for m in re.finditer(r'\]\(([^)]*wiki/[^)]+\.md)\)', src_content):
+            for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
                 href = m.group(1).split("#")[0]
                 wiki_target = (src_file.parent / href).resolve()
                 if wiki_target.exists() and wiki_target not in seen_stale:
@@ -303,7 +307,9 @@ def lint() -> dict:
     # CANONICAL_FACTS: {fact_id: {terms, pos_claims, neg_claims}}
     # 当 pos_claims 和 neg_claims 同时出现在不同页面时，报告潜在矛盾
     CANONICAL_FACTS = load_canonical_facts()
-    all_pages_content = {p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages}
+    all_pages_content = {
+        p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages
+    }
     for fact_id, fact in CANONICAL_FACTS.items():
         pos_pages, neg_pages = [], []
         for page, content in all_pages_content.items():
@@ -383,7 +389,9 @@ def lint() -> dict:
             except ValueError:
                 pass
         else:
-            results["log_inactive"].append("log.md 中未找到符合格式的操作记录（格式：## [YYYY-MM-DD] ...）")
+            results["log_inactive"].append(
+                "log.md 中未找到符合格式的操作记录（格式：## [YYYY-MM-DD] ...）"
+            )
     else:
         results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
 
@@ -407,7 +415,12 @@ def lint() -> dict:
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
-        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "queries" or page.name == "README.md":
+        if (
+            len(parts) < 2
+            or parts[0] != "wiki"
+            or parts[1] != "queries"
+            or page.name == "README.md"
+        ):
             continue
         content = page.read_text(encoding="utf-8")
         missing_parts = []
@@ -439,12 +452,12 @@ def lint() -> dict:
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
             continue
         content = page.read_text(encoding="utf-8")
-        display_blocks = re.findall(r'\$\$(.*?)\$\$', content, re.DOTALL)
+        display_blocks = re.findall(r"\$\$(.*?)\$\$", content, re.DOTALL)
         if not display_blocks:
             continue
         candidate_vars: set[str] = set()
         for block in display_blocks:
-            for v in re.findall(r'(?<![A-Za-z\\_^{])([A-Z])(?![A-Za-z_(])', block):
+            for v in re.findall(r"(?<![A-Za-z\\_^{])([A-Z])(?![A-Za-z_(])", block):
                 candidate_vars.add(v)
         if not candidate_vars:
             continue
@@ -453,19 +466,19 @@ def lint() -> dict:
             esc = re.escape(v)
             patterns = [
                 # 列表条目： - $X$（可带下标/上标）：含义
-                rf'-\s*\$\\?{esc}[^$]*\$[^|\n]*?[:：]',
+                rf"-\s*\$\\?{esc}[^$]*\$[^|\n]*?[:：]",
                 # 行内冒号定义： $X$：含义
-                rf'\$\\?{esc}[^$]*\$\s*[:：]\s*\S',
+                rf"\$\\?{esc}[^$]*\$\s*[:：]\s*\S",
                 # 表格行 | $X...$ |
-                rf'\|\s*\$\\?{esc}[^$]*\$\s*\|',
+                rf"\|\s*\$\\?{esc}[^$]*\$\s*\|",
                 # 动词解释： $X...$ 是/为/表示/代表/指/denote/含义/定义
-                rf'\$\\?{esc}[^$]*\$[^.\n]{{0,80}}(?:是|为|表示|代表|指|denote|denotes|含义|定义)',
+                rf"\$\\?{esc}[^$]*\$[^.\n]{{0,80}}(?:是|为|表示|代表|指|denote|denotes|含义|定义)",
                 # “其中 $X$” / “where $X$”
-                rf'(?:其中|where).{{0,100}}\$\\?{esc}[^$]*\$',
+                rf"(?:其中|where).{{0,100}}\$\\?{esc}[^$]*\$",
                 # 等式/集合/序关系定义： $X = / \in / \succeq / \succ / \equiv / \triangleq
-                rf'\$\\?{esc}\s*(?:=|\\in|\\succeq|\\succ|\\equiv|\\triangleq)',
+                rf"\$\\?{esc}\s*(?:=|\\in|\\succeq|\\succ|\\equiv|\\triangleq)",
                 # 粗体段落中带变量： **... $X$ ...**
-                rf'\*\*[^*]*\$\\?{esc}[^$]*\$[^*]*\*\*',
+                rf"\*\*[^*]*\$\\?{esc}[^$]*\$[^*]*\*\*",
             ]
             if not any(re.search(p, content, re.MULTILINE | re.IGNORECASE) for p in patterns):
                 unexplained.append(v)
@@ -479,17 +492,19 @@ def lint() -> dict:
     if readme_path.exists():
         readme_content = readme_path.read_text(encoding="utf-8")
 
-        checklist_files = sorted((REPO_ROOT / "docs" / "checklists").glob("tech-stack-next-phase-checklist-v*.md"))
+        checklist_files = sorted(
+            (REPO_ROOT / "docs" / "checklists").glob("tech-stack-next-phase-checklist-v*.md")
+        )
         if checklist_files:
-            latest_checklist = max(
-                checklist_files,
-                key=lambda p: int(re.search(r"v(\d+)", p.stem).group(1))
-            )
-            latest_ver = int(re.search(r"v(\d+)", latest_checklist.stem).group(1))
 
-            main_link_versions = re.findall(
-                r"\[技术栈项目执行清单 v(\d+)\]", readme_content
-            )
+            def _checklist_version_num(path: Path) -> int:
+                m = re.search(r"v(\d+)", path.stem)
+                return int(m.group(1)) if m else -1
+
+            latest_checklist = max(checklist_files, key=_checklist_version_num)
+            latest_ver = _checklist_version_num(latest_checklist)
+
+            main_link_versions = re.findall(r"\[技术栈项目执行清单 v(\d+)\]", readme_content)
             if main_link_versions:
                 main_ver = int(main_link_versions[0])
                 if main_ver < latest_ver:
@@ -554,7 +569,11 @@ def lint() -> dict:
             if not target.is_relative_to(REPO_ROOT):
                 continue
             target_parts = target.relative_to(REPO_ROOT).parts
-            if len(target_parts) >= 2 and target_parts[0] == "wiki" and target_parts[1] in ("formalizations", "concepts"):
+            if (
+                len(target_parts) >= 2
+                and target_parts[0] == "wiki"
+                and target_parts[1] in ("formalizations", "concepts")
+            ):
                 has_required_link = True
                 break
         if not has_required_link:
@@ -572,14 +591,19 @@ def lint() -> dict:
                 if not target.is_relative_to(REPO_ROOT):
                     continue
                 t_parts = target.relative_to(REPO_ROOT).parts
-                if len(t_parts) >= 2 and t_parts[0] == "wiki" and t_parts[1] in ("methods", "tasks"):
+                if (
+                    len(t_parts) >= 2
+                    and t_parts[0] == "wiki"
+                    and t_parts[1] in ("methods", "tasks")
+                ):
                     out_count += 1
             if out_count < 2:
                 results["entity_missing_outgoing"].append(f"{rel} (当前出边: {out_count})")
 
     return results
 
-def format_report(results: dict) -> str:
+
+def format_report(results: dict[str, Any]) -> str:
     today = date.today().isoformat()
     lines = [f"## [{today}] lint | health-check | 自动化 wiki 健康检查", ""]
 
@@ -588,29 +612,29 @@ def format_report(results: dict) -> str:
     lines.append("")
 
     sections = [
-        ("orphan_pages",       "孤儿页（无入链）",                           "⚠️"),
-        ("missing_related",    "缺少关联页面区块",                           "⚠️"),
-        ("missing_sources",    "缺少参考来源区块",                           "⚠️"),
-        ("broken_links",       "断链（内链目标不存在）",                      "❌"),
-        ("wikilink_syntax",    "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
-        ("broken_source_refs", "引用了不存在的 sources/ 文件",                "❌"),
-        ("sources_orphans",    "Sources 孤儿（sources/papers 死链）",         "❌"),
-        ("stale_pages",        "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
-        ("outdated_pages",     "可能过期（updated: 距今 > 180 天）",          "⚠️"),
-        ("contradictions",     "潜在矛盾（跨页面相反定性描述）",              "⚠️"),
-        ("stub_pages",         "空壳页面（< 200 字）",                       "⚠️"),
-        ("missing_pages",      "频繁提及但缺少 wiki 页面的概念",              "💡"),
-        ("missing_type",       "Frontmatter 缺少 type 字段",                 "⚠️"),
-        ("log_inactive",       "log.md 活跃度警告",                          "⚠️"),
-        ("missing_summary",    "缺少摘要字段（summary/description）",         "⚠️"),
-        ("query_format",       "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
-        ("formalization_no_formula", "Formalization 页面缺少公式块",              "⚠️"),
+        ("orphan_pages", "孤儿页（无入链）", "⚠️"),
+        ("missing_related", "缺少关联页面区块", "⚠️"),
+        ("missing_sources", "缺少参考来源区块", "⚠️"),
+        ("broken_links", "断链（内链目标不存在）", "❌"),
+        ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
+        ("broken_source_refs", "引用了不存在的 sources/ 文件", "❌"),
+        ("sources_orphans", "Sources 孤儿（sources/papers 死链）", "❌"),
+        ("stale_pages", "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),
+        ("outdated_pages", "可能过期（updated: 距今 > 180 天）", "⚠️"),
+        ("contradictions", "潜在矛盾（跨页面相反定性描述）", "⚠️"),
+        ("stub_pages", "空壳页面（< 200 字）", "⚠️"),
+        ("missing_pages", "频繁提及但缺少 wiki 页面的概念", "💡"),
+        ("missing_type", "Frontmatter 缺少 type 字段", "⚠️"),
+        ("log_inactive", "log.md 活跃度警告", "⚠️"),
+        ("missing_summary", "缺少摘要字段（summary/description）", "⚠️"),
+        ("query_format", "Query 页面格式不完整（缺 Query 产物/参考来源/关联页面）", "⚠️"),
+        ("formalization_no_formula", "Formalization 页面缺少公式块", "⚠️"),
         ("formalization_unexplained_vars", "Formalization 公式变量缺少正文物理含义解释", "⚠️"),
-        ("readme_badge",       "README checklist 链接版本不一致",               "⚠️"),
-        ("orphan_count",       "图谱孤儿节点预警（graph-stats.json）",           "⚠️"),
-        ("method_missing_link","Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
-        ("method_missing_sections","Methods 页面缺少主要路线区块", "⚠️"),
-        ("entity_missing_outgoing","Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
+        ("readme_badge", "README checklist 链接版本不一致", "⚠️"),
+        ("orphan_count", "图谱孤儿节点预警（graph-stats.json）", "⚠️"),
+        ("method_missing_link", "Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
+        ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
+        ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
     ]
 
     for key, label, icon in sections:
@@ -631,11 +655,13 @@ def format_report(results: dict) -> str:
 
     return "\n".join(lines)
 
+
 def main():
     parser = argparse.ArgumentParser(description="Robotics_Notebooks wiki lint 检查")
     parser.add_argument("--write-log", action="store_true", help="将结果追加到 log.md")
-    parser.add_argument("--report", action="store_true",
-                        help="将 markdown 健康报告保存到 exports/lint-report.md")
+    parser.add_argument(
+        "--report", action="store_true", help="将 markdown 健康报告保存到 exports/lint-report.md"
+    )
     args = parser.parse_args()
 
     print("正在扫描 wiki/ 目录...")
@@ -668,6 +694,7 @@ def main():
 
     if total > 0:
         sys.exit(1)
+
 
 if __name__ == "__main__":
     main()

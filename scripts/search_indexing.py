@@ -7,6 +7,7 @@ import re
 from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterable, List
+
 from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -31,8 +32,8 @@ TOKEN_SYNONYMS = {
 }
 
 
-def parse_frontmatter(content: str) -> dict:
-    fm = {}
+def parse_frontmatter(content: str) -> dict[str, str | list[str]]:
+    fm: dict[str, str | list[str]] = {}
     if not content.startswith("---"):
         return fm
     end = content.find("\n---", 3)
@@ -47,10 +48,10 @@ def parse_frontmatter(content: str) -> dict:
         key = key.strip()
         val = val.strip()
         if val.startswith("[") and val.endswith("]"):
-            items = [v.strip().strip('"\'') for v in val[1:-1].split(",") if v.strip()]
+            items = [v.strip().strip("\"'") for v in val[1:-1].split(",") if v.strip()]
             fm[key] = items
         else:
-            fm[key] = val.strip('"\'')
+            fm[key] = val.strip("\"'")
     return fm
 
 
@@ -109,7 +110,7 @@ def tokenize_text(text: str) -> List[str]:
 
         tokens.append(normalized)
 
-        if '\u4e00' <= raw[0] <= '\u9fff':
+        if "\u4e00" <= raw[0] <= "\u9fff":
             length = len(normalized)
             if length > 1:
                 tokens.extend(list(normalized))
@@ -129,7 +130,7 @@ def tokenize_text(text: str) -> List[str]:
 def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
     tokens: List[str] = []
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        if raw and '\u4e00' <= raw[0] <= '\u9fff':
+        if raw and "\u4e00" <= raw[0] <= "\u9fff":
             tokens.extend(list(raw))
         else:
             tokens.append(raw)

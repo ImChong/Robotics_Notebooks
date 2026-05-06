@@ -21,8 +21,32 @@ jobs:
       - name: Install dev dependencies
         run: pip install -r requirements-dev.txt
 
-      - name: Run ruff
+      - name: Ruff check
         run: ruff check scripts/ tests/
 
-      - name: Run pytest
-        run: python3 -m pytest tests/ -q
+      - name: Ruff format (check)
+        run: ruff format --check scripts tests
+
+      - name: Mypy
+        env:
+          PYTHONPATH: scripts
+        run: mypy scripts
+
+      - name: pip-audit (requirements-dev)
+        run: python3 -m pip_audit -r requirements-dev.txt
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: npm ci (ESLint)
+        run: npm ci
+
+      - name: ESLint docs/main.js
+        run: npm run lint:js
+
+      - name: Pytest with coverage
+        env:
+          PYTHONPATH: scripts
+        run: python3 -m pytest

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """update_badge.py — 根据当前仓库真实统计更新 README.md 顶部 badges。"""
+
 import json
 import re
 import subprocess
@@ -12,18 +13,22 @@ GRAPH_STATS = REPO_ROOT / "exports" / "graph-stats.json"
 CHECKLIST_DIR = REPO_ROOT / "docs" / "checklists"
 
 
+def _stem_version(path: Path) -> int:
+    m = re.search(r"v(\d+)", path.stem)
+    return int(m.group(1)) if m else -1
+
+
 def latest_checklist_path() -> str:
     candidates = sorted(CHECKLIST_DIR.glob("tech-stack-next-phase-checklist-v*.md"))
     if not candidates:
         print("No checklist files found under docs/checklists", file=sys.stderr)
         sys.exit(1)
-    latest = max(candidates, key=lambda p: int(re.search(r"v(\d+)", p.stem).group(1)))
+    latest = max(candidates, key=_stem_version)
     return str(latest.relative_to(REPO_ROOT))
 
 
 result = subprocess.run(
-    ["python3", "scripts/lint_wiki.py"],
-    capture_output=True, text=True, cwd=REPO_ROOT
+    ["python3", "scripts/lint_wiki.py"], capture_output=True, text=True, cwd=REPO_ROOT
 )
 m = re.search(r"(\d+)/(\d+) \((\d+)%\)", result.stdout)
 if not m:

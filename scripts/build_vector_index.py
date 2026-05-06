@@ -7,7 +7,6 @@ from datetime import date
 from pathlib import Path
 
 import numpy as np
-
 from search_indexing import REPO_ROOT, hash_embed_texts, iter_wiki_documents, truncate_for_embedding
 
 VECTOR_OUTPUT = REPO_ROOT / "exports" / "vector-index.npz"
@@ -17,7 +16,7 @@ DEFAULT_MODEL = "BAAI/bge-small-zh-v1.5"
 
 def encode_texts(texts: list[str], model_name: str = DEFAULT_MODEL) -> tuple[np.ndarray, dict]:
     try:
-        from sentence_transformers import SentenceTransformer
+        from sentence_transformers import SentenceTransformer  # type: ignore[import-not-found]
 
         model = SentenceTransformer(model_name)
         embeddings = model.encode(texts, normalize_embeddings=True, show_progress_bar=False)
@@ -36,9 +35,16 @@ def encode_texts(texts: list[str], model_name: str = DEFAULT_MODEL) -> tuple[np.
         }
 
 
-def build_vector_index(vector_output: Path = VECTOR_OUTPUT, meta_output: Path = META_OUTPUT, model_name: str = DEFAULT_MODEL) -> tuple[Path, Path, dict]:
+def build_vector_index(
+    vector_output: Path = VECTOR_OUTPUT,
+    meta_output: Path = META_OUTPUT,
+    model_name: str = DEFAULT_MODEL,
+) -> tuple[Path, Path, dict]:
     docs = iter_wiki_documents()
-    texts = [truncate_for_embedding("\n".join([doc["title"], doc["summary"], doc["body"]])) for doc in docs]
+    texts = [
+        truncate_for_embedding("\n".join([doc["title"], doc["summary"], doc["body"]]))
+        for doc in docs
+    ]
     embeddings, meta = encode_texts(texts, model_name=model_name)
 
     vector_output.parent.mkdir(parents=True, exist_ok=True)
@@ -66,8 +72,14 @@ def build_vector_index(vector_output: Path = VECTOR_OUTPUT, meta_output: Path = 
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Build local vector index for wiki semantic search")
-    parser.add_argument("--model", default=DEFAULT_MODEL, help=f"sentence-transformers model name (default: {DEFAULT_MODEL})")
+    parser = argparse.ArgumentParser(
+        description="Build local vector index for wiki semantic search"
+    )
+    parser.add_argument(
+        "--model",
+        default=DEFAULT_MODEL,
+        help=f"sentence-transformers model name (default: {DEFAULT_MODEL})",
+    )
     args = parser.parse_args()
 
     vector_path, meta_path, payload = build_vector_index(model_name=args.model)
@@ -75,9 +87,11 @@ def main() -> None:
     print(f"Wrote {vector_path} ({payload['count']} docs, backend={backend})")
     print(f"Wrote {meta_path}")
     if payload["embedding"].get("fallback_reason"):
-        print("\033[33m⚠️  WARNING: sentence-transformers 不可用，使用了 hashed-token-projection fallback。\n"
-              "   语义搜索质量将低于真实向量索引。\n"
-              "   安装依赖：pip install sentence-transformers\033[0m")
+        print(
+            "\033[33m⚠️  WARNING: sentence-transformers 不可用，使用了 hashed-token-projection fallback。\n"
+            "   语义搜索质量将低于真实向量索引。\n"
+            "   安装依赖：pip install sentence-transformers\033[0m"
+        )
 
 
 if __name__ == "__main__":

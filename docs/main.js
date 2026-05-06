@@ -196,7 +196,7 @@
         mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
         return token;
       })
-      .replace(/\$([^\$\s](?:[^\$]*[^\$\s])?)\$/g, function (match, expr) {
+      .replace(/\$([^$\s](?:[^$]*[^$\s])?)\$/g, function (match, expr) {
         const token = mathPrefix + mathTokens.length + '@@';
         // Normalize $...$ to \(...\) so downstream renderMathBlocks can catch it
         mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
@@ -305,7 +305,7 @@
       'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
     ]);
     const builtins = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
-    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*\/<>!%]+|[()[\]{}.,:])/g;
+    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*/<>!%]+|[()[\]{}.,:])/g;
     let out = '';
     let lastIndex = 0;
     let afterKeyword = '';
@@ -317,7 +317,7 @@
         out += '<span class="tok-string">' + escapeHtml(token) + '</span>';
       } else if (/^\d/.test(token)) {
         out += '<span class="tok-number">' + escapeHtml(token) + '</span>';
-      } else if (/^[=+\-*\/<>!%]+$/.test(token)) {
+      } else if (/^[=+\-*/<>!%]+$/.test(token)) {
         out += '<span class="tok-operator">' + escapeHtml(token) + '</span>';
       } else if (/^[()[\]{}.,:]$/.test(token)) {
         out += '<span class="tok-punctuation">' + escapeHtml(token) + '</span>';
@@ -572,7 +572,9 @@
     let decodedHash = rawHash;
     try {
       decodedHash = decodeURIComponent(rawHash);
-    } catch (_) {}
+    } catch {
+      decodedHash = rawHash;
+    }
 
     const safeHash = typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function'
       ? window.CSS.escape(decodedHash)
@@ -2111,7 +2113,7 @@
     let recent = [];
     try {
       recent = JSON.parse(sessionStorage.getItem('recent_visits') || '[]');
-    } catch (e) {
+    } catch {
       recent = [];
     }
 

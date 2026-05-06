@@ -3,7 +3,6 @@ import tempfile
 import unittest
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
@@ -18,7 +17,9 @@ class SearchIndexTests(unittest.TestCase):
             output_path = Path(tmp) / "search-index.json"
             payload = generate_search_index(output_path)
 
-            self.assertTrue(output_path.exists(), "generate_search_index should write to the provided path")
+            self.assertTrue(
+                output_path.exists(), "generate_search_index should write to the provided path"
+            )
 
         docs = payload["docs"]
         tech_docs = [doc for doc in docs if doc["path"].startswith("tech-map/")]

@@ -1,6 +1,5 @@
-from pathlib import Path
 import unittest
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DETAIL_HTML = ROOT / "docs" / "detail.html"
@@ -27,8 +26,8 @@ class DetailPageScaffoldTests(unittest.TestCase):
     def test_main_js_contains_detail_page_renderer(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            'function renderDetailPage',
-            'new URLSearchParams(window.location.search)',
+            "function renderDetailPage",
+            "new URLSearchParams(window.location.search)",
             "document.getElementById('detailTitle')",
             "document.getElementById('detailTagList')",
             "document.getElementById('detailRelatedList')",
@@ -38,5 +37,5 @@ class DetailPageScaffoldTests(unittest.TestCase):
             self.assertIn(snippet, content)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

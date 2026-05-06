@@ -15,8 +15,8 @@ ingest_paper.py — 快速生成 sources/papers/ 新条目模板
 import argparse
 import re
 import sys
-from pathlib import Path
 from datetime import date
+from pathlib import Path
 
 TEMPLATE = """\
 # {stem}
@@ -55,13 +55,42 @@ TEMPLATE = """\
 def suggest_wiki_updates(title: str, desc: str, repo_root: Path) -> None:
     """分析标题/描述关键词，输出 wiki/ 中可能需要更新的页面。"""
     # 从标题和描述中提取关键词（去停用词）
-    STOP = {'the', 'a', 'an', 'for', 'of', 'in', 'on', 'with', 'and', 'or',
-            'to', 'from', 'is', 'are', 'by', 'at', 'as', 'its', 'via',
-            '的', '了', '和', '与', '或', '在', '中', '上', '下', '对', '等'}
+    STOP = {
+        "the",
+        "a",
+        "an",
+        "for",
+        "of",
+        "in",
+        "on",
+        "with",
+        "and",
+        "or",
+        "to",
+        "from",
+        "is",
+        "are",
+        "by",
+        "at",
+        "as",
+        "its",
+        "via",
+        "的",
+        "了",
+        "和",
+        "与",
+        "或",
+        "在",
+        "中",
+        "上",
+        "下",
+        "对",
+        "等",
+    }
     combined = (title + " " + desc).lower()
     # 提取英文单词和中文词
-    en_words = re.findall(r'\b[a-z]{3,}\b', combined)
-    zh_words = re.findall(r'[\u4e00-\u9fff]{2,}', combined)
+    en_words = re.findall(r"\b[a-z]{3,}\b", combined)
+    zh_words = re.findall(r"[\u4e00-\u9fff]{2,}", combined)
     keywords = set(en_words + zh_words) - STOP
 
     if not keywords:
@@ -92,8 +121,11 @@ def main():
     parser.add_argument("stem", help="文件名（不含 .md），例如 diffusion_policy")
     parser.add_argument("--title", default="", help="论文集合标题")
     parser.add_argument("--desc", default="TODO — 请填写一句话说明", help="一句话说明")
-    parser.add_argument("--suggest-updates", action="store_true",
-                        help="分析关键词，输出可能需要更新的 wiki 页面列表")
+    parser.add_argument(
+        "--suggest-updates",
+        action="store_true",
+        help="分析关键词，输出可能需要更新的 wiki 页面列表",
+    )
     args = parser.parse_args()
 
     stem = args.stem.strip()
