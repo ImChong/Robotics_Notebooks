@@ -6,7 +6,7 @@
     "lint:js": "eslint docs/main.js"
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
+    "@eslint/js": "^10.0.1",
     "eslint": "^9.15.0",
     "globals": "^15.12.0"
   }
