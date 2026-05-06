@@ -24,7 +24,7 @@ LOG_PATH = Path(__file__).resolve().parent.parent / "log.md"
 
 def main() -> None:
     if len(sys.argv) < 3:
-        print("用法: python3 scripts/append_log.py <op> \"<描述>\"", file=sys.stderr)
+        print('用法: python3 scripts/append_log.py <op> "<描述>"', file=sys.stderr)
         print(f"  op 可选值: {', '.join(sorted(VALID_OPS))}", file=sys.stderr)
         sys.exit(1)
 

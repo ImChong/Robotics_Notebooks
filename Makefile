@@ -1,11 +1,31 @@
-.PHONY: lint test catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
+.PHONY: lint test format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check
 
 lint:
 	python3 scripts/eval_search_quality.py
 	python3 scripts/lint_wiki.py
 
+# 与 CI tests job 对齐：pytest（含覆盖率阈值）、ruff、mypy、pip-audit 见下方目标
 test:
-	python3 -m pytest tests/ -q
+	PYTHONPATH=scripts python3 -m pytest
+
+format:
+	ruff format scripts tests
+
+lint-py:
+	ruff check scripts tests
+	ruff format --check scripts tests
+
+lint-js:
+	npx --yes eslint docs/main.js
+
+typecheck:
+	PYTHONPATH=scripts mypy scripts
+
+complexity:
+	radon cc scripts -a -nc | tail -30
+
+audit-dev:
+	pip-audit -r requirements-dev.txt
 
 catalog:
 	python3 scripts/generate_page_catalog.py

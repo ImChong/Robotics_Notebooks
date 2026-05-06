@@ -71,6 +71,8 @@
 
 ## 如何贡献
 
+详见 **[CONTRIBUTING.md](CONTRIBUTING.md)**（流程与本地/CI 命令）。简述：
+
 1.  **Ingest 模式**：如果你发现好的论文或 Repo，按照 `schema/ingest-workflow.md` 加入 `sources/`。
 2.  **Wiki 完善**：将 `sources/` 提炼为 `wiki/` 页面，并建立 [Link](schema/linking.md)。
 3.  **Lint 检查**：运行 `make lint` 确保没有断链或孤儿页。

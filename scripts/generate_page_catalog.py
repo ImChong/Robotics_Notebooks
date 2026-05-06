@@ -5,8 +5,10 @@ generate_page_catalog.py
 生成符合 index.md Page Catalog 格式的 markdown，输出到 stdout。
 用法：python generate_page_catalog.py >> ../index.md
 """
+
 import re
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).parent.parent
 WIKI = ROOT / "wiki"
@@ -19,6 +21,7 @@ SECTION_TEMPLATE = """### {section_name}（{count}页）
 
 PAGE_TEMPLATE = """- [{title}]({path}) — {summary} `📅{date}` `{page_type}`
 """
+
 
 def extract_frontmatter_date(path: Path) -> str:
     try:
@@ -35,6 +38,7 @@ def extract_frontmatter_date(path: Path) -> str:
         pass
     return "unknown"
 
+
 def strip_frontmatter(content: str) -> str:
     """去除 YAML frontmatter（--- ... ---）。"""
     if not content.startswith("---"):
@@ -42,7 +46,8 @@ def strip_frontmatter(content: str) -> str:
     end = content.find("\n---", 3)
     if end == -1:
         return content
-    return content[end + 4:].lstrip()
+    return content[end + 4 :].lstrip()
+
 
 def extract_first_sentence(content: str) -> str:
     """取第一段非空、非标题的正文句子作为 summary。"""
@@ -57,6 +62,7 @@ def extract_first_sentence(content: str) -> str:
         if s:
             return s
     return "—"
+
 
 def get_type(path: Path, relative: Path) -> tuple:
     rel_str = str(relative)
@@ -82,8 +88,9 @@ def get_type(path: Path, relative: Path) -> tuple:
         return "[overview_page]", "overview"
     return "[wiki_page]", "unknown"
 
-def collect_pages(dir_path: Path, base_path: Path) -> list:
-    pages = []
+
+def collect_pages(dir_path: Path, base_path: Path) -> list[dict[str, Any]]:
+    pages: list[dict[str, Any]] = []
     if not dir_path.exists():
         return pages
     for md in sorted(dir_path.rglob("*.md")):
@@ -97,14 +104,17 @@ def collect_pages(dir_path: Path, base_path: Path) -> list:
         date = extract_frontmatter_date(md)
         page_type, _ = get_type(md, rel)
 
-        pages.append({
-            "title": title,
-            "path": str(rel).replace("\\", "/"),
-            "summary": summary,
-            "date": date,
-            "page_type": page_type,
-        })
+        pages.append(
+            {
+                "title": title,
+                "path": str(rel).replace("\\", "/"),
+                "summary": summary,
+                "date": date,
+                "page_type": page_type,
+            }
+        )
     return pages
+
 
 def main():
     sections = [
@@ -127,7 +137,10 @@ def main():
         print(f"\n### {sec_name}")
         print()
         for p in pages:
-            print(f"- [{p['title']}]({p['path']}) — {p['summary']} `📅{p['date']}` `{p['page_type']}`")
+            print(
+                f"- [{p['title']}]({p['path']}) — {p['summary']} `📅{p['date']}` `{p['page_type']}`"
+            )
+
 
 if __name__ == "__main__":
     main()

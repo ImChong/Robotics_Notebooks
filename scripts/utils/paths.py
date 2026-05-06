@@ -1,12 +1,14 @@
 import re
 from pathlib import Path
 
+
 def slugify(value: str) -> str:
     """Convert a string to a URL-friendly slug."""
     value = value.lower()
     value = re.sub(r"[^a-z0-9]+", "-", value)
     value = re.sub(r"-+", "-", value).strip("-")
     return value
+
 
 def path_to_id(path: Path, repo_root: Path) -> str:
     """Generate a unique ID from a file path."""

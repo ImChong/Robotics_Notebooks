@@ -36,11 +36,15 @@ def fetch_page(url: str, timeout: int = 10) -> str:
 def extract_title(html_text: str, url: str) -> str:
     """从 HTML 中提取标题。"""
     # 优先 og:title
-    m = re.search(r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)', html_text, re.IGNORECASE)
+    m = re.search(
+        r'<meta[^>]+property=["\']og:title["\'][^>]+content=["\']([^"\']+)',
+        html_text,
+        re.IGNORECASE,
+    )
     if m:
         return html.unescape(m.group(1).strip())
     # 次选 <title>
-    m = re.search(r'<title[^>]*>([^<]+)</title>', html_text, re.IGNORECASE)
+    m = re.search(r"<title[^>]*>([^<]+)</title>", html_text, re.IGNORECASE)
     if m:
         return html.unescape(m.group(1).strip())
     return url
@@ -49,14 +53,16 @@ def extract_title(html_text: str, url: str) -> str:
 def extract_description(html_text: str) -> str:
     """从 meta description 或首段提取摘要。"""
     m = re.search(
-        r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']{10,})', html_text, re.IGNORECASE
+        r'<meta[^>]+name=["\']description["\'][^>]+content=["\']([^"\']{10,})',
+        html_text,
+        re.IGNORECASE,
     )
     if m:
         return html.unescape(m.group(1).strip()[:200])
     # fallback: 第一个 <p> 段
-    m = re.search(r'<p[^>]*>([^<]{20,})</p>', html_text, re.IGNORECASE)
+    m = re.search(r"<p[^>]*>([^<]{20,})</p>", html_text, re.IGNORECASE)
     if m:
-        return html.unescape(re.sub(r'<[^>]+>', '', m.group(1)).strip()[:200])
+        return html.unescape(re.sub(r"<[^>]+>", "", m.group(1)).strip()[:200])
     return ""
 
 

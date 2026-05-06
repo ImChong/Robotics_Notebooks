@@ -2,8 +2,12 @@
 __pycache__/
 *.py[cod]
 
+# Node (ESLint)
+node_modules/
+
 # Test / tool caches
 .pytest_cache/
+.coverage
 .mypy_cache/
 test-results/
 playwright-report/

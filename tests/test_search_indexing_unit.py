@@ -1,5 +1,5 @@
-import unittest
 import sys
+import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -7,6 +7,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from search_indexing import parse_frontmatter
 from search_wiki import _filter_doc, _find_matched_lines
+
 
 class TestSearchIndexingUnit(unittest.TestCase):
     def test_parse_frontmatter_empty(self):
@@ -50,7 +51,6 @@ key: value
         self.assertEqual(parse_frontmatter(content), expected)
 
 
-
 class TestSearchWikiHelpers(unittest.TestCase):
     def test_filter_doc_type(self):
         doc = {"page_type": "concept", "tags": ["rl"]}
@@ -78,7 +78,7 @@ class TestSearchWikiHelpers(unittest.TestCase):
         matches = _find_matched_lines(lines, ["hello"], 1)
         # Expect [(line_num_1_based, [context_lines], match_offset_in_context)]
         self.assertEqual(len(matches), 1)
-        self.assertEqual(matches[0][0], 2) # line index 1 is line 2
+        self.assertEqual(matches[0][0], 2)  # line index 1 is line 2
         self.assertEqual(matches[0][1], ["line 1", "hello world", "line 3"])
         self.assertEqual(matches[0][2], 1)
 
@@ -89,6 +89,7 @@ class TestSearchWikiHelpers(unittest.TestCase):
         self.assertEqual(matches[0][0], 2)
         self.assertEqual(matches[0][1], ["line 1", "HELLO WORLD", "line 3"])
         self.assertEqual(matches[0][2], 1)
+
 
 if __name__ == "__main__":
     unittest.main()
