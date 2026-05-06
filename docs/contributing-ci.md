@@ -37,3 +37,5 @@ make ci-test
 pip install -r requirements-dev.txt
 npm ci   # 前端 ESLint（见 package-lock.json）
 ```
+
+可选：安装 [`pre-commit`](https://pre-commit.com/) 钩子（`pre-commit install`，配置见仓库根目录 `.pre-commit-config.yaml`），提交前自动跑 Ruff。

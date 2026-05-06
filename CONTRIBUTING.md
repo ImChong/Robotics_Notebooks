@@ -18,4 +18,10 @@
 ## 代码风格
 
 - Python：`ruff check` / `ruff format`（配置见 `pyproject.toml`）。
-- `docs/main.js`：`npx eslint docs/main.js`（配置见 `eslint.config.js`）。
+- `docs/main.js`：`npx eslint docs/main.js`（配置见 `eslint.config.mjs`）。
+
+## 提交前钩子（可选）
+
+安装：`pip install -r requirements-dev.txt`，然后 **`make install-hooks`**（即 `pre-commit install`）。提交时将自动运行 **Ruff**（与 CI 对齐）。
+
+一次性检查整个仓库：`pre-commit run --all-files`。
