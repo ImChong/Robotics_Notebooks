@@ -5,6 +5,7 @@ import json
 import re
 from pathlib import Path
 from typing import Dict, List
+from utils.paths import path_to_id, slugify
 
 from build_search_index import generate_search_index
 
@@ -130,33 +131,6 @@ def extract_body_markdown(text: str) -> str:
     return "\n".join(lines)
 
 
-def slugify(value: str) -> str:
-    value = value.lower()
-    value = re.sub(r"[^a-z0-9]+", "-", value)
-    value = re.sub(r"-+", "-", value).strip("-")
-    return value
-
-
-def path_to_id(path: Path) -> str:
-    parts = path.relative_to(ROOT).parts
-    stem = path.stem
-    if parts[0] == "wiki":
-        if parts[1] == "entities":
-            return f"entity-{stem}"
-        return f"wiki-{parts[1]}-{stem}"
-    if parts[0] == "roadmap":
-        return f"roadmap-{stem}"
-    if parts[0] == "references":
-        return f"reference-{parts[1]}-{stem}"
-    if parts[0] == "tech-map":
-        if len(parts) >= 3 and parts[1] == "modules":
-            return f"tech-node-{parts[2]}-{stem}"
-        if len(parts) >= 3 and parts[1] == "research-directions":
-            return f"tech-node-research-{stem}"
-        return f"tech-node-{stem}"
-    return slugify("-".join(parts)).removesuffix("-md")
-
-
 def infer_tags(path: Path, title: str, text: str) -> List[str]:
     tags: List[str] = []
     parts = path.relative_to(ROOT).parts
@@ -211,7 +185,7 @@ def extract_section_links(text: str, current_path: Path, headings: List[str]) ->
                 resolved.relative_to(ROOT)
             except ValueError:
                 continue
-            results.append(path_to_id(resolved))
+            results.append(path_to_id(resolved, ROOT))
     return results
 
 
@@ -229,14 +203,14 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
             resolved.relative_to(ROOT)
         except ValueError:
             continue
-        general.append(path_to_id(resolved))
+        general.append(path_to_id(resolved, ROOT))
     if current_path.parts and "wiki" in current_path.parts:
         wiki_dir = ROOT / "wiki"
         stem_to_path = {p.stem: p for p in wiki_dir.rglob("*.md")}
         for target in re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", text):
             linked_path = stem_to_path.get(target.strip())
             if linked_path:
-                general.append(path_to_id(linked_path))
+                general.append(path_to_id(linked_path, ROOT))
     ordered = []
     seen = set()
     for item in priority + general:
@@ -289,7 +263,7 @@ def build_item(path: Path) -> Dict:
     text = read_text(path)
     title = extract_title(text, path.stem)
     item = {
-        "id": path_to_id(path),
+        "id": path_to_id(path, ROOT),
         "title": title,
         "path": rel(path),
         "summary": extract_summary(text),
