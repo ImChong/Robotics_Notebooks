@@ -43,6 +43,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [Diffusion Policy](./diffusion-policy.md)
 - [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)
+- [LWD（Learning while Deploying）](./lwd.md) — 其 QAM 组件正是为 flow-based 动作头（如 π₀）设计的策略抽取方法
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
