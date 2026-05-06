@@ -1933,29 +1933,72 @@
     }
 
 
+    function classifyTier(item, queryTokens) {
+      // V21 P3：精确匹配 = 命中标签 / 标题 / 路径；其它（仅摘要或正文 token 命中）为潜在关联
+      if (!queryTokens || !queryTokens.length) return 'exact';
+      var title = String(item.title || '').toLowerCase();
+      var path = String(item.path || '').toLowerCase();
+      var tags = (item.tags || []).map(function(t) { return String(t || '').toLowerCase(); });
+      for (var k = 0; k < tags.length; k++) {
+        for (var l = 0; l < queryTokens.length; l++) {
+          if (tags[k].indexOf(queryTokens[l]) >= 0) return 'exact';
+        }
+      }
+      for (var i = 0; i < queryTokens.length; i++) {
+        var t = queryTokens[i];
+        if (title.indexOf(t) >= 0) return 'exact';
+        if (path.indexOf(t) >= 0) return 'exact';
+      }
+      return 'potential';
+    }
+
+    function buildResultCardHtml(item, queryTokens) {
+      var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+      var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
+      var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+      var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
+        return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+      }).join('');
+      var explain = queryTokens && queryTokens.length
+        ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
+          + matchExplanation(item, queryTokens) + '</span>'
+        : '';
+      var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
+        + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
+        + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+      return '<article class="card" data-result-url="' + detailUrl + '">'
+        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
+        + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
+        + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
+        + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
+        + '</article>';
+    }
+
     function renderCards(matched, queryTokens) {
       if (!matched.length) return;
-      searchResults.innerHTML = matched.map(function(item) {
-        var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
-        var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
-        var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
-        var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
-          return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+      if (!queryTokens || !queryTokens.length) {
+        searchResults.innerHTML = matched.map(function(item) {
+          return buildResultCardHtml(item, queryTokens);
         }).join('');
-        var explain = queryTokens && queryTokens.length
-          ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
-            + matchExplanation(item, queryTokens) + '</span>'
-          : '';
-        var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
-          + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
-          + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
-        return '<article class="card" data-result-url="' + detailUrl + '">'
-          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
-          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
-          + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
-          + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
-          + '</article>';
-      }).join('');
+        return;
+      }
+      var exact = [], potential = [];
+      matched.forEach(function(item) {
+        if (classifyTier(item, queryTokens) === 'exact') exact.push(item);
+        else potential.push(item);
+      });
+      var html = '';
+      if (exact.length) {
+        html += '<h4 class="search-tier-heading search-tier-exact">精确匹配'
+          + ' <span class="data-meta">· ' + exact.length + ' 项</span></h4>';
+        html += exact.map(function(item) { return buildResultCardHtml(item, queryTokens); }).join('');
+      }
+      if (potential.length) {
+        html += '<h4 class="search-tier-heading search-tier-potential">潜在关联'
+          + ' <span class="data-meta">· ' + potential.length + ' 项</span></h4>';
+        html += potential.map(function(item) { return buildResultCardHtml(item, queryTokens); }).join('');
+      }
+      searchResults.innerHTML = html;
     }
 
     function bm25Score(doc, queryTokens, indexData) {
