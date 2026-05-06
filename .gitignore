@@ -11,6 +11,5 @@ playwright-report/
 # Local vector artifacts
 exports/vector-index.npz
 
-# Local search cache
+# Local search cache (CLI use only — docs/search-index.json is a Pages artifact and must be tracked)
 exports/search-cache.json
-docs/search-index.json
