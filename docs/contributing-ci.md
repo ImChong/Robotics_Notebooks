@@ -11,7 +11,7 @@
 | Ruff 格式 | `ruff format scripts tests`（检查：`ruff format --check scripts tests`） | `tests.yml` |
 | 静态类型（scripts） | `PYTHONPATH=scripts mypy scripts` | `tests.yml` |
 | 单元测试 + 覆盖率阈值 | `make test` 或 `PYTHONPATH=scripts python3 -m pytest` | `tests.yml` |
-| 依赖漏洞审计 | `pip-audit -r requirements-dev.txt` | `tests.yml` |
+| 依赖漏洞审计 | `python3 -m pip_audit -r requirements-dev.txt` | `tests.yml` |
 | 圈复杂度参考 | `make complexity`（仅输出，非硬性门禁） | — |
 | Wiki lint（轻量依赖） | `python3 scripts/lint_wiki.py` | `lint.yml` |
 

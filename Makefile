@@ -25,7 +25,7 @@ complexity:
 	radon cc scripts -a -nc | tail -30
 
 audit-dev:
-	pip-audit -r requirements-dev.txt
+	python3 -m pip_audit -r requirements-dev.txt
 
 catalog:
 	python3 scripts/generate_page_catalog.py

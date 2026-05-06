@@ -33,18 +33,15 @@ jobs:
         run: mypy scripts
 
       - name: pip-audit (requirements-dev)
-        run: |
-          sudo apt-get update -qq
-          sudo apt-get install -y python3-venv
-          pip-audit -r requirements-dev.txt
+        run: python3 -m pip_audit -r requirements-dev.txt
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: npm install (ESLint)
-        run: npm install
+      - name: npm ci (ESLint)
+        run: npm ci
 
       - name: ESLint docs/main.js
         run: npm run lint:js
