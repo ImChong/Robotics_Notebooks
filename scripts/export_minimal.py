@@ -5,7 +5,7 @@ import json
 import re
 from pathlib import Path
 from typing import Dict, List
-from utils.paths import path_to_id, slugify
+from utils.paths import path_to_id
 
 from build_search_index import generate_search_index
 

@@ -122,7 +122,7 @@ def main():
         print()
     
     print("-" * 60)
-    print(f"建议：挑选上述事实加入 scripts/lint_wiki.py，或根据推荐补全页面 related 区块。")
+    print("建议：挑选上述事实加入 scripts/lint_wiki.py，或根据推荐补全页面 related 区块。")
 
 if __name__ == "__main__":
     main()

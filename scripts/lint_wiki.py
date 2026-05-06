@@ -26,7 +26,7 @@ import json
 import os
 import re
 import sys
-from datetime import date, datetime
+from datetime import date
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -1295,7 +1295,7 @@ def main():
         exports_dir.mkdir(exist_ok=True)
         report_path = exports_dir / "lint-report.md"
         with open(report_path, "w", encoding="utf-8") as f:
-            f.write(f"# Wiki 健康报告\n\n")
+            f.write("# Wiki 健康报告\n\n")
             f.write(report)
         print(f"\n已将健康报告保存到 {report_path}")
 

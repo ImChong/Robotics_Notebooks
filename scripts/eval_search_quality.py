@@ -110,7 +110,7 @@ def main() -> None:
     print(f"\n通过率：{passed_count}/{total} ({pass_rate:.0f}%)")
 
     if pass_rate < 80:
-        print(f"⚠️  通过率低于 80%，请检查上方失败样例。")
+        print("⚠️  通过率低于 80%，请检查上方失败样例。")
         sys.exit(1)
     else:
         print("✅ 通过率 ≥ 80%，回归测试通过。")
