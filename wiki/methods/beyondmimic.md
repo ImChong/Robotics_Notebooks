@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-27
 related:
   - ./imitation-learning.md
+  - ./sonic-motion-tracking.md
   - ../concepts/armature-modeling.md
   - ../concepts/curriculum-learning.md
 sources:
@@ -60,7 +61,7 @@ BeyondMimic 证明了只要满足以下三点，简单的 PPO 就能学到极强
 
 BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - **RobotEra (宇树春晚爆款等)**：其技术路线中大量参考了 BeyondMimic 的物理建模思想。
-- **SONIC (NVIDIA/CMU)**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作"视频生成 → 动作估计 → 通用动作跟踪"流水线中的物理过滤器。
+- **[SONIC](./sonic-motion-tracking.md)（NVIDIA/CMU 等）**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作"视频生成 → 动作估计 → 通用动作跟踪"流水线中的物理过滤器。
 
 ## 参考来源
 

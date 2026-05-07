@@ -213,3 +213,5 @@
 ## [2026-05-07] ingest | sources/repos/sceneverse-pp.md — SceneVerse++ 入库并新增实体页与 3D 空间 VQA / VLN 任务页
 
 ## [2026-05-07] docs(wiki): wiki/entities/gene-26-5-genesis-ai.md — 补充 GENE-26.5 官方 YouTube 演示视频链接与参考来源说明
+
+## [2026-05-07] ingest | sources/repos/genmo.md、sonic-humanoid-motion-tracking.md、wilor.md — 入库 GENMO/GEM、SONIC、WiLoR；新增 wiki/methods/genmo、sonic-motion-tracking、wilor；补强 exoactor、beyondmimic、video-as-simulation 与 exoactor 论文映射
