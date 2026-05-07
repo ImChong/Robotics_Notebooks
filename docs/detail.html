@@ -49,6 +49,13 @@
             </div>
           </aside>
         </div>
+        <aside id="detailMiniMapWrap" class="detail-mini-map" aria-label="知识地图局部视图" hidden>
+          <div class="detail-mini-map-head">
+            <h3>知识地图（1-hop 邻居）</h3>
+            <span id="detailMiniMapMeta" class="detail-mini-map-meta">正在读取邻居关系…</span>
+          </div>
+          <svg id="detailMiniMapSvg" class="detail-mini-map-svg" role="img" aria-label="当前节点 1-hop 邻居图"></svg>
+        </aside>
       </div>
     </section>
 
@@ -165,6 +172,7 @@
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script defer src="main.js"></script>
 </body>
 </html>

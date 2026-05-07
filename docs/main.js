@@ -885,6 +885,116 @@
     return null;
   }
 
+  var TYPE_COLOR_DETAIL_MINI = {
+    concept: '#60a5fa', method: '#34d399', task: '#f472b6',
+    entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
+    formalization: '#fb923c', '': '#64748b'
+  };
+
+  function buildPathToDetailIdIndex(detailPages) {
+    var idx = {};
+    Object.keys(detailPages).forEach(function (id) {
+      var p = detailPages[id];
+      if (p && p.path) idx[p.path] = id;
+    });
+    return idx;
+  }
+
+  function renderDetailMiniMap(detailPage, detailPages) {
+    var wrap = document.getElementById('detailMiniMapWrap');
+    var svgEl = document.getElementById('detailMiniMapSvg');
+    var metaEl = document.getElementById('detailMiniMapMeta');
+    if (!wrap || !svgEl || typeof window.d3 === 'undefined') return;
+    var currentPath = (detailPage && detailPage.path) || '';
+    if (!currentPath) return;
+
+    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var nodeMap = {};
+      (gd.nodes || []).forEach(function (n) { nodeMap[n.id] = n; });
+      var current = nodeMap[currentPath];
+      if (!current) return; // 当前节点不在图谱里
+
+      var neighborSet = {};
+      (gd.edges || []).forEach(function (e) {
+        if (e.source === currentPath) neighborSet[e.target] = true;
+        else if (e.target === currentPath) neighborSet[e.source] = true;
+      });
+      var neighborIds = Object.keys(neighborSet).filter(function (id) { return nodeMap[id]; });
+      // 限制最多 12 个邻居，避免拥挤
+      var MAX_NEIGHBORS = 12;
+      if (neighborIds.length > MAX_NEIGHBORS) neighborIds = neighborIds.slice(0, MAX_NEIGHBORS);
+
+      var pathToId = buildPathToDetailIdIndex(detailPages);
+      var nodes = [{
+        id: currentPath, label: current.label || currentPath,
+        type: current.type || '', isCurrent: true
+      }].concat(neighborIds.map(function (id) {
+        var n = nodeMap[id];
+        return { id: id, label: n.label || id, type: n.type || '', isCurrent: false };
+      }));
+      var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
+
+      wrap.hidden = false;
+      var W = wrap.clientWidth || 700;
+      var H = 180;
+      svgEl.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svgEl.innerHTML = '';
+
+      var svg = window.d3.select(svgEl);
+      var g = svg.append('g');
+      var lineLayer = g.append('g');
+      var nodeLayer = g.append('g');
+
+      var sim = window.d3.forceSimulation(nodes)
+        .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
+        .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
+        .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
+        .force('collision', window.d3.forceCollide().radius(14).strength(0.7))
+        .alphaDecay(0.05);
+
+      var line = lineLayer.selectAll('line').data(edges).join('line')
+        .style('stroke', 'var(--border-strong)')
+        .attr('stroke-width', 1);
+
+      var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
+        .attr('class', function (d) { return d.isCurrent ? 'mini-node-current' : 'mini-node'; })
+        .style('cursor', function (d) { return d.isCurrent ? 'default' : 'pointer'; })
+        .on('click', function (ev, d) {
+          if (d.isCurrent) return;
+          var pid = pathToId[d.id];
+          if (pid) window.location.href = detailHref(pid);
+        });
+
+      nodeG.append('title').text(function (d) { return d.label; });
+      nodeG.append('circle')
+        .attr('r', function (d) { return d.isCurrent ? 8 : 6; })
+        .attr('fill', function (d) { return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI['']; })
+        .attr('fill-opacity', 0.9);
+      nodeG.append('text')
+        .text(function (d) { return d.label.length > 10 ? d.label.slice(0, 10) + '…' : d.label; })
+        .attr('dy', function (d) { return (d.isCurrent ? 8 : 6) + 11; })
+        .attr('text-anchor', 'middle')
+        .attr('font-size', '10px')
+        .style('fill', 'var(--text-muted)')
+        .attr('pointer-events', 'none');
+
+      sim.on('tick', function () {
+        line
+          .attr('x1', function (d) { return d.source.x; }).attr('y1', function (d) { return d.source.y; })
+          .attr('x2', function (d) { return d.target.x; }).attr('y2', function (d) { return d.target.y; });
+        nodeG.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')'; });
+      });
+
+      if (metaEl) {
+        var totalDeg = Object.keys(neighborSet).length;
+        var shown = neighborIds.length;
+        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 点击跳转';
+      }
+    }).catch(function () {
+      if (metaEl) metaEl.textContent = '邻居数据加载失败';
+    });
+  }
+
   function renderDetailPage(siteData) {
     if (!siteData || !siteData.pages) return;
 
@@ -1059,6 +1169,8 @@
     }
 
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
+
+    renderDetailMiniMap(detailPage, detailPages);
   }
 
   function renderModulePage(siteData) {
