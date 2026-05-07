@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]
 status: complete
-updated: 2026-05-01
+updated: 2026-05-07
 related:
   - ../methods/amp-reward.md
   - ./mjlab.md
@@ -153,26 +153,76 @@ python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=8192 --gpu-ids 
 
 ### 2. 训练监控与曲线分析
 
-使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程。
+使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程。下表所列 tag 均来自 AMP_mjlab 自带 `rsl_rl/runners/amp_on_policy_runner.py` 与 mjlab `reward_manager` 写入 TensorBoard 的实际命名空间（参考 README 中的 `logs.png` 截图）。
 
-| 曲线 / 指标 | 含义 | 好走势 | 异常信号 |
-| :--- | :--- | :--- |
-| `Train/mean_reward`、`rew_total` 或 episode reward | 平均总奖励，混合了速度跟踪、高度恢复、AMP 风格奖励与惩罚项。 | 前期有噪声但总体上升；约 20k iterations 附近可能出现阶跃式上升。 | 长时间横盘或下降，通常说明动作先验、reset 分布或奖励权重没有形成有效课程。 |
-| `Train/mean_episode_length` 或 `episode_length` | 平均回合长度，反映策略是否能避免 bad orientation / bad base height 终止。 | 与总奖励同步上升；在学会 fall-recovery 后会明显变长。 | 2.5w iterations 后仍很短，通常表示 recovery 没被诱导出来。 |
-| `Episode/rew_track_anchor_linear_velocity` | 躯干/anchor 线速度跟踪奖励，对应 x/y 方向速度指令。 | 逐步升高并趋稳，说明 locomotion 能跟上指令。 | 高度恢复很好但该项低，可能是策略偏向“站稳/起身”而不会走。 |
-| `Episode/rew_track_anchor_angular_velocity` | yaw 角速度跟踪奖励。 | 随着前进速度跟踪一起改善，不应长期接近 0。 | 转向时摔倒或该项长期低，需检查 command range、摩擦随机化和足端打滑。 |
-| `Episode/rew_track_root_height` | root 高度恢复奖励，是 recovery 是否站回正常高度的重要信号。 | recovery 涌现阶段通常会明显跳升。 | 高度奖励低且 episode length 短，说明起身过程失败或 reset 太早。 |
-| `Episode/rew_is_terminated` | 终止惩罚，触发 bad orientation / bad base height 时会显著拉低总奖励。 | 绝对惩罚占比下降，终止次数减少。 | 惩罚长期很大，说明策略经常摔倒或 delayed reset 窗口不足。 |
-| `Episode/rew_joint_acc_l2`、`rew_action_rate_l2` | 关节加速度与动作变化惩罚，衡量动作是否抖动。 | 总体保持较低，随策略收敛更平滑。 | 奖励高但这些惩罚同步变大，部署时容易出现电机发热、冲击或高频震荡。 |
-| `Episode/rew_foot_slip`、`rew_self_collisions`、`rew_joint_pos_limits` | 足端打滑、自碰撞、关节限位惩罚。 | 负项逐渐减小，偶发尖峰可以接受。 | 长期大幅负值，说明 gait 不物理、地面接触不稳或姿态解空间被关节限位卡住。 |
-| `Loss/value_function`、`Loss/surrogate` | PPO critic value loss 与 policy surrogate loss。 | 有波动但不持续发散；学习率自适应后应保持在可训练区间。 | value loss 持续爆炸或 surrogate 大幅震荡，优先降低学习率、环境数或检查 reward scale。 |
-| `Policy/mean_noise_std` | 高斯策略的平均探索标准差。 | 从初始化值逐步下降，但不要过早塌到很低。 | 过早接近最小标准差会导致探索不足，recovery 很难涌现。 |
-| AMP 判别器 loss / `disc_loss` / `amp_loss` | 判别器区分参考 motion 与 policy motion 的训练损失。 | 初期快速变化，随后进入对抗平衡；不追求单调下降。 | 判别器过强时 policy 获得不了风格奖励；过弱时动作会“骗过”判别器但不自然。 |
-| AMP 风格奖励 / `disc_reward` / `amp_reward` | 判别器给 policy 的动作风格奖励。 | 随训练提高并震荡趋稳，和任务奖励共同上升最好。 | 风格奖励高但速度/高度奖励低，说明只学到 motion prior 外观，任务目标没有完成。 |
-| `Metrics/mean_action_acc` | 环境自定义动作加速度指标。 | 越低越适合部署，但不能以牺牲速度跟踪为代价。 | 回放中出现抖腿、膝关节抽动时通常会同步升高。 |
-| `Metrics/mean_delay_steps` | delayed termination / recovery 窗口相关指标，反映环境在终止后延迟 reset 的步数。 | recovery 学会后不应持续堆高。 | 长期很高且 episode length 不提升，说明环境给了恢复窗口但策略没恢复成功。 |
+#### 2.1 训练总览（`Train/`）
 
-**关键判断标准**：README 明确提示约 `2w` iterations 附近可能出现多个指标突变，这是 recovery 行为突然涌现的正常现象。判断训练好坏时不要只看总奖励，至少同时看 `episode_length`、`track_root_height`、速度跟踪奖励、终止惩罚和动作平滑指标；只有“能站起、能跟踪速度、动作不抖、终止减少”同时成立，才适合进入部署验证。
+| Scalar | 含义 | 好走势 | 异常信号 |
+| :--- | :--- | :--- | :--- |
+| `Train/mean_reward` | 滚动 reward buffer 的均值，混合速度跟踪、root 高度、AMP 风格、惩罚项。 | 前期 25 上下震荡，约 20k iterations 附近阶跃式跳到 ~40，之后窄幅在 41 附近震荡（README 配图实测 100k iter ≈ 41.36 平滑值）。 | 长时间横盘在低位或不能跨越 ~30 的台阶，多半是 recovery 行为没被诱导出来。 |
+| `Train/mean_episode_length` | 滚动 episode 长度均值，单位是控制步数（max 通常约 1000）。 | 与 `mean_reward` 同步阶跃；100k iter 时实测达到 ~1000（即长期不被终止，README 配图平滑值 999.99）。 | 25k iter 后仍 < 900，意味着 bad orientation / bad base height 终止仍频繁触发。 |
+| `Train/mean_reward/time`、`Train/mean_episode_length/time` | 同上，但横轴为累计训练时间。 | 用于估算 wall-clock 进度（README 配图 100k iter 约耗时 2 天）。 | — |
+
+> README 配图（`logs.png`）即上述两条曲线，可用作"什么样算训练成功"的官方基准；`Train/mean_reward` 阶跃发生在约 20k iter，对应 fall-recovery 行为涌现（"Recovery Jump"）。
+
+#### 2.2 单项奖励（`Episode_Reward/`）
+
+mjlab 的 `RewardManager` 把每个 reward term 以 `Episode_Reward/<term_name>` 写入 TensorBoard（注意：是 `Episode_Reward/` 前缀，**不是** rsl_rl 默认的 `Episode/rew_*`）。下面所列 term 名称取自 `src/tasks/amp_loco/amp_env_cfg.py` 的 `RewardTermCfg` 注册：
+
+| Scalar | 含义 | 好走势 | 异常信号 |
+| :--- | :--- | :--- | :--- |
+| `Episode_Reward/track_anchor_linear_velocity` | 躯干/anchor 线速度跟踪奖励，对应 x/y 速度指令。 | 跟随 `mean_reward` 上升并稳定。 | 高度恢复好但该项低 → 策略只会"站稳"不会走。 |
+| `Episode_Reward/track_anchor_angular_velocity` | yaw 角速度跟踪奖励。 | 不应长期接近 0；随线速度跟踪一同改善。 | 转向时摔倒或该项长期低 → 检查 command range、摩擦随机化和足端打滑。 |
+| `Episode_Reward/track_root_height` | root 高度恢复奖励，判断起身是否成功的关键。 | recovery 涌现阶段会明显跳升。 | 高度奖励低且 episode length 短 → 起身失败或 reset 太早。 |
+| `Episode_Reward/body_ang_vel_xy_l2` | 躯干 roll/pitch 角速度 L2 惩罚。 | 训练后期收敛到接近 0 的小负值。 | 长期大幅负值 → 躯干乱晃。 |
+| `Episode_Reward/is_terminated` | 终止惩罚（weight = -200）。 | 绝对惩罚占比下降。 | 长期巨负 → 策略反复摔倒或 delayed reset 窗口不足。 |
+| `Episode_Reward/joint_acc_l2`、`Episode_Reward/action_rate_l2` | 关节加速度与动作变化惩罚。 | 数值低且平稳，反映动作平滑。 | 总奖励高但这俩同步变大 → 部署易出现电机发热、高频震荡。 |
+| `Episode_Reward/foot_slip` | 足端打滑惩罚（mdp.foot_slip_l2，scaled by site velocities）。 | 偶发尖峰可接受。 | 持续大负值 → gait 不物理或摩擦随机化范围不合理。 |
+| `Episode_Reward/self_collisions`、`Episode_Reward/joint_pos_limits` | 自碰撞、关节限位惩罚。 | 负项逐步减小。 | 长期大幅负值 → 姿态解空间被关节限位卡住或动作幅度过大。 |
+
+#### 2.3 PPO + AMP 训练损失（`Loss/`）
+
+`amp_ppo` 在每个 update 后把以下 7 个 loss 按 key 写到 `Loss/<key>`（来自 `loss_dict` 字段）：
+
+| Scalar | 含义 | 好走势 | 异常信号 |
+| :--- | :--- | :--- | :--- |
+| `Loss/value_function` | PPO critic value loss。 | 有波动但不持续发散。 | 持续爆炸 → 优先降低 learning rate / num_envs，或检查 reward scale。 |
+| `Loss/surrogate` | PPO policy surrogate loss。 | 在 0 附近小幅震荡。 | 大幅震荡 → KL 失控，检查 desired_kl 和 schedule。 |
+| `Loss/entropy` | 策略熵均值。 | 训练前期较高，随收敛缓慢下降。 | 早期就贴近下限 → 探索不足。 |
+| `Loss/amp` | AMP 判别器对 policy 样本与 expert 样本的 LSGAN loss。 | 初期快速变化，进入对抗平衡。 | 单调下降到 0 → 判别器过强，policy 拿不到风格奖励。 |
+| `Loss/amp_grad_pen` | 判别器对 expert 样本的梯度惩罚（gradient penalty）。 | 数值小且稳定。 | 持续上涨 → 判别器在 expert 样本周围斜率过大，可能要降低 grad pen 系数。 |
+| `Loss/amp_policy_pred` | 判别器对 policy 样本的输出均值。 | 通常 < 0，训练后期向 0 靠拢但不应反超 expert pred。 | 持续 ≈ expert pred → 判别器分不开，policy 只是骗过判别器但风格不自然。 |
+| `Loss/amp_expert_pred` | 判别器对 expert 样本的输出均值。 | 通常 > 0，与 `amp_policy_pred` 保持稳定间距。 | 间距快速收敛到 0 → 同上；若反向（policy > expert）则判别器训练异常。 |
+| `Loss/learning_rate` | 当前 PPO learning rate（adaptive KL 自适应后会变化）。 | 在 1e-3 ~ 1e-5 之间随 KL 调整。 | 长期被钳到上限/下限 → 检查 desired_kl 和 schedule 配置。 |
+
+> AMP 判别器给 policy 的"风格奖励"会被加到 step reward 里，最终融入 `Train/mean_reward`，所以 TensorBoard 没有独立的 `disc_reward` scalar；想直接观察判别器平衡，应看 `Loss/amp_policy_pred` 与 `Loss/amp_expert_pred` 的差。
+
+#### 2.4 策略与性能（`Policy/`、`Perf/`）
+
+| Scalar | 含义 | 好走势 | 异常信号 |
+| :--- | :--- | :--- | :--- |
+| `Policy/mean_noise_std` | 高斯策略的平均探索标准差（actor 的 `action_std.mean()`）。 | 从初始值逐步下降但保留一定噪声。 | 过早塌到接近 0 → 探索不足，recovery 很难涌现。 |
+| `Perf/total_fps` | 每秒采样 + 学习的总样本数。 | 4096 envs 单卡通常稳定（>5w），随机化多时略低。 | 抖动剧烈 → IO/仿真存在间歇瓶颈。 |
+| `Perf/collection time`（注意带空格）、`Perf/learning_time` | 单次 iteration 的采样和学习耗时（秒）。 | learning_time 占比远小于 collection。 | learning_time 飙升 → 检查 batch size 与 GPU 利用率。 |
+
+#### 2.5 自定义指标（`Metrics/`）
+
+| Scalar | 含义 | 好走势 | 异常信号 |
+| :--- | :--- | :--- | :--- |
+| `Metrics/mean_action_acc` | `MetricsTermCfg("mean_action_acc")` 注册的动作加速度指标，反映动作抖动程度。 | 越低越适合部署，但不能以牺牲速度跟踪为代价。 | 回放中抖腿/膝关节抽动时会同步升高。 |
+
+#### 2.6 关键判断标准
+
+README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变，这是 recovery 行为突然涌现的正常现象（README 配图直接展示了 `Train/mean_reward` 与 `Train/mean_episode_length` 的阶跃式跳变）。判断训练好坏时不要只看 `Train/mean_reward`，至少同时看：
+
+1. `Train/mean_episode_length` 是否接近 max（≈1000）；
+2. `Episode_Reward/track_root_height` 在 Recovery Jump 之后是否抬升；
+3. `Episode_Reward/track_anchor_linear_velocity` / `track_anchor_angular_velocity` 是否同步上升；
+4. `Episode_Reward/is_terminated` 的负值是否衰减；
+5. `Episode_Reward/joint_acc_l2`、`action_rate_l2`、`foot_slip` 等动作平滑/物理性惩罚是否在收敛；
+6. `Loss/amp_policy_pred` 与 `Loss/amp_expert_pred` 是否保持稳定的对抗距离。
+
+只有"能站起、能跟踪速度、动作不抖、终止减少、判别器仍在工作"同时成立，才适合进入部署验证。
 
 ### 3. 模型导出
 
