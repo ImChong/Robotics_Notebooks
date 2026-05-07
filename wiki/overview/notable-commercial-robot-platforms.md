@@ -6,6 +6,7 @@ sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
 related:
   - ../entities/humanoid-robot.md
+  - ../entities/motioncode.md
   - ../entities/unitree.md
   - ../entities/boston-dynamics.md
   - ../entities/anymal.md
@@ -52,6 +53,10 @@ related:
 
 更多官网入口见 [原始资料：平台链接索引](../../sources/repos/notable-commercial-robot-platforms.md)。
 
+### 运动数据与训练资产（非整机品牌）
+
+整机厂商之外，产业侧还有专门提供 **人体运动采集、标注与跨管线交付** 的供应商，常与人形 **模仿学习 / RL / 动画** 共用同一套运动资产（通常仍需 [Motion Retargeting](../concepts/motion-retargeting.md)）。例：[MotionCode](../entities/motioncode.md)（官网 [motioncode.ai](https://motioncode.ai/)）。
+
 ## 四足与腿足：常见平台
 
 | 类型 | 代表厂商 / 产品 | 说明 |
@@ -77,6 +82,7 @@ related:
 - [Unitree](../entities/unitree.md)
 - [Boston Dynamics](../entities/boston-dynamics.md)
 - [ANYmal](../entities/anymal.md)
+- [MotionCode](../entities/motioncode.md) — 人体运动数据与 Mind 线人形训练叙事
 
 ## 参考来源
 
