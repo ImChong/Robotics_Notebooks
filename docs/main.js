@@ -434,7 +434,7 @@
       startOnLoad: false,
       theme: 'base',
       themeVariables: isDark ? darkThemeVars : lightThemeVars,
-      securityLevel: 'loose'
+      securityLevel: 'strict'
     });
     window.mermaid.run({ nodes: nodes }).catch(function () {});
   }
