@@ -129,6 +129,7 @@ print("joint acceleration command:", qdd_star)
 - [机器人论文阅读笔记：Expressive Whole-Body Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)
 - [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)
 - [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）
+- [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 
 ## 关联页面
@@ -156,3 +157,7 @@ print("joint acceleration command:", qdd_star)
 
 - [ATOM01-Train](https://github.com/Roboparty/atom01_train)
 - [TSID (Task Space Inverse Dynamics)](https://github.com/stack-of-tasks/tsid)
+
+## 处理非自稳定运动与失重
+
+传统的 WBC 通常强加严格的轨迹跟踪和自稳定约束，这在处理如坐下、躺下或靠墙等非自稳定（non-self-stabilizing, NSS）运动时显得局限。在这些任务中，机器人需要与环境建立安全的接触以完成动作。**Learn Weightlessness** (Xin et al., 2026) 提出通过学习人类的“失重”机制（即选择性地放松特定关节），允许身体与环境产生被动接触并稳定。这种思路通过引入动态放松增益调节网络，提供了一种从严格 WBC 轨迹跟踪向生物启发的环境适应性过渡的有效方案。

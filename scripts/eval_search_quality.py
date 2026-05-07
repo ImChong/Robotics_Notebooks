@@ -4,6 +4,7 @@
 读取 schema/search-regression-cases.json，逐条执行查询，
 计算 hit@k / recall@k，输出通过率，失败时打印 diff。
 """
+
 from __future__ import annotations
 
 import json
@@ -74,10 +75,10 @@ def check_case(case: dict) -> tuple[bool, str]:
     passed = len(misses) == 0
     note = case.get("note", "")
     if passed:
-        diag = f"✅ [{mode}] \"{query}\" — {note}"
+        diag = f'✅ [{mode}] "{query}" — {note}'
     else:
         diag = (
-            f"❌ [{mode}] \"{query}\" — {note}\n"
+            f'❌ [{mode}] "{query}" — {note}\n'
             f"   必须命中：{must_include}\n"
             f"   实际前{top_k}：{results}"
         )
@@ -95,7 +96,7 @@ def main() -> None:
             ok, diag = check_case(case)
         except Exception as exc:
             ok = False
-            diag = f"❌ 执行出错 \"{case.get('query', '?')}\": {exc}"
+            diag = f'❌ 执行出错 "{case.get("query", "?")}": {exc}'
         if ok:
             passed_count += 1
         diags.append(diag)
@@ -110,7 +111,7 @@ def main() -> None:
     print(f"\n通过率：{passed_count}/{total} ({pass_rate:.0f}%)")
 
     if pass_rate < 80:
-        print(f"⚠️  通过率低于 80%，请检查上方失败样例。")
+        print("⚠️  通过率低于 80%，请检查上方失败样例。")
         sys.exit(1)
     else:
         print("✅ 通过率 ≥ 80%，回归测试通过。")

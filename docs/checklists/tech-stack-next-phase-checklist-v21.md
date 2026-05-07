@@ -39,19 +39,19 @@
 
 ## P2: 硬件通信与底层实时链路形式化 (Quantity)
 
-- [~] **发布通信层形式化定义 (+3)**:
+- [x] **发布通信层形式化定义 (+3)**:
     - [x] `wiki/formalizations/control-loop-latency-modeling.md` (控制环路延迟建模：总线、计算与内核调度延迟的数学求和)。
     - [x] `wiki/formalizations/udp-multicast-dynamics.md` (UDP 组播动力学：在 LCM 等中间件中的数据包丢失与一致性形式化)。
     - [x] `wiki/concepts/clock-synchronization-algorithms.md` (时钟同步算法：PTP/DC 协议在多板卡运控中的实现原理)。
-- [ ] **新增对比页 (+1)**:
-    - [ ] `wiki/comparisons/ethercat-vs-ethernet-ip.md` (工业总线对比：确定性、拓扑能力与机器人实时控制适配度)。
+- [x] **新增对比页 (+1)**:
+    - [x] `wiki/comparisons/ethercat-vs-ethernet-ip.md` (工业总线对比：确定性、拓扑能力与机器人实时控制适配度)。
 
 ## P3: 交互层“情境化”导航优化 (UX/UI)
 
-- [ ] **详情页“当前位置”微地图**：
-    - [ ] 修改 `docs/main.js`，在页面顶部显示一个微小的 D3 局部图谱，展示当前节点及其 1-hop 邻居，实现“一叶知秋”的导航体验。
-- [ ] **搜索结果按“置信度”分级**：
-    - [ ] 优化 UI，将搜索结果分为“精确匹配”与“潜在关联”两个区块。
+- [x] **详情页“当前位置”微地图**：
+    - [x] 修改 `docs/main.js`、`docs/detail.html`、`docs/style.css`，在 detail-hero 顶部新增 `#detailMiniMapWrap` D3 局部图谱，展示当前节点及其 1-hop 邻居（最多 12 个），点击邻居节点跳转对应详情页，实现“一叶知秋”的导航体验。
+- [x] **搜索结果按“置信度”分级**：
+    - [x] 优化 UI，将搜索结果分为“精确匹配”与“潜在关联”两个区块。
 
 ---
 
@@ -60,8 +60,8 @@
 - [ ] `make lint`: 0 errors。
 - [ ] 知识图谱节点数 **≥ 190**。
 - [ ] 事实库扩展至 **140 条** 以上。
-- [ ] 详情页“微地图”组件上线并正常工作。
-- [ ] `log.md` 记录 V21 关键改动。
+- [x] 详情页“微地图”组件上线并正常工作。
+- [x] `log.md` 记录 V21 关键改动。
 
 ---
 

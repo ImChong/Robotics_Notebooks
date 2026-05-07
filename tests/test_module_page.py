@@ -1,6 +1,5 @@
-from pathlib import Path
 import unittest
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MODULE_HTML = ROOT / "docs" / "module.html"
@@ -26,14 +25,14 @@ class ModulePageTests(unittest.TestCase):
     def test_main_js_contains_module_page_renderer(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            'function renderModulePage',
+            "function renderModulePage",
             "document.getElementById('moduleEntryList')",
-            'module.html?id=',
-            'module_pages',
+            "module.html?id=",
+            "module_pages",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../comparisons/ros2-vs-lcm.md
+  - ../comparisons/ethercat-vs-ethernet-ip.md
   - ./real-time-control-middleware-guide.md
   - ../overview/humanoid-motion-control-know-how.md
 sources:
@@ -60,6 +61,7 @@ summary: "EtherCAT 主站优化指南：详解如何基于 SOEM/IGH 在 Linux �
 
 ## 关联页面
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
+- [EtherCAT vs EtherNet/IP（工业总线选型对比）](../comparisons/ethercat-vs-ethernet-ip.md)
 - [ROS 2 vs LCM 选型对比](../comparisons/ros2-vs-lcm.md)
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)

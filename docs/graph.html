@@ -1035,7 +1035,7 @@
       ]);
     } catch (e) {
       document.getElementById('graph-loading').innerHTML =
-        '<span style="color:#f87171">数据加载失败：' + String(e.message || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') + '</span>';
+        '<span style="color:#f87171">数据加载失败：' + escapeHtml(e.message) + '</span>';
       return;
     }
 

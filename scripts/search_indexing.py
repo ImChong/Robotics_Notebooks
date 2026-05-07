@@ -8,6 +8,8 @@ from collections import Counter
 from pathlib import Path
 from typing import Dict, Iterable, List
 
+from utils.paths import path_to_id
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WIKI_DIR = REPO_ROOT / "wiki"
 
@@ -30,8 +32,8 @@ TOKEN_SYNONYMS = {
 }
 
 
-def parse_frontmatter(content: str) -> dict:
-    fm = {}
+def parse_frontmatter(content: str) -> dict[str, str | list[str]]:
+    fm: dict[str, str | list[str]] = {}
     if not content.startswith("---"):
         return fm
     end = content.find("\n---", 3)
@@ -46,10 +48,10 @@ def parse_frontmatter(content: str) -> dict:
         key = key.strip()
         val = val.strip()
         if val.startswith("[") and val.endswith("]"):
-            items = [v.strip().strip('"\'') for v in val[1:-1].split(",") if v.strip()]
+            items = [v.strip().strip("\"'") for v in val[1:-1].split(",") if v.strip()]
             fm[key] = items
         else:
-            fm[key] = val.strip('"\'')
+            fm[key] = val.strip("\"'")
     return fm
 
 
@@ -98,51 +100,43 @@ def _expand_cjk_segment(segment: str) -> List[str]:
 
 
 def tokenize_text(text: str) -> List[str]:
+    # ⚡ Bolt: Inline normalization and expansion for performance
+    # Avoid re.fullmatch by checking the first character range since MIXED_TOKEN_RE extracts CJK sequences alone
     tokens: List[str] = []
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        if re.fullmatch(r"[\u4e00-\u9fff]+", raw):
-            tokens.extend(_expand_cjk_segment(raw))
-        else:
-            normalized = normalize_token(raw)
-            if normalized:
-                tokens.append(normalized)
+        normalized = raw.strip().lower()
+        if not normalized:
+            continue
+
+        tokens.append(normalized)
+
+        if "\u4e00" <= raw[0] <= "\u9fff":
+            length = len(normalized)
+            if length > 1:
+                tokens.extend(list(normalized))
+            if length > 2:
+                tokens.extend(normalized[i : i + 2] for i in range(length - 1))
+
     enriched: List[str] = []
+    # ⚡ Bolt: Cache lookup and avoid .get(token, []) which creates temporary lists
+    synonyms = TOKEN_SYNONYMS
     for token in tokens:
         enriched.append(token)
-        enriched.extend(TOKEN_SYNONYMS.get(token, []))
+        if token in synonyms:
+            enriched.extend(synonyms[token])
     return enriched
 
 
 def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
     tokens: List[str] = []
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        if re.fullmatch(r"[\u4e00-\u9fff]+", raw):
+        if raw and "\u4e00" <= raw[0] <= "\u9fff":
             tokens.extend(list(raw))
         else:
             tokens.append(raw)
         if len(tokens) >= max_tokens:
             break
     return " ".join(tokens[:max_tokens])
-
-
-def path_to_id(path: Path) -> str:
-    parts = path.relative_to(REPO_ROOT).parts
-    stem = path.stem
-    if parts[0] == "wiki":
-        if parts[1] == "entities":
-            return f"entity-{stem}"
-        return f"wiki-{parts[1]}-{stem}"
-    if parts[0] == "roadmap":
-        return f"roadmap-{stem}"
-    if parts[0] == "references":
-        return f"reference-{parts[1]}-{stem}"
-    if parts[0] == "tech-map":
-        if len(parts) >= 3 and parts[1] == "modules":
-            return f"tech-node-{parts[2]}-{stem}"
-        if len(parts) >= 3 and parts[1] == "research-directions":
-            return f"tech-node-research-{stem}"
-        return f"tech-node-{stem}"
-    return stem
 
 
 def page_type_for_path(path: Path, fm: dict) -> str:
@@ -225,7 +219,7 @@ def iter_wiki_documents() -> List[Dict]:
         tags = infer_path_tags(path, fm)
         docs.append(
             {
-                "id": path_to_id(path),
+                "id": path_to_id(path, REPO_ROOT),
                 "path": path.relative_to(REPO_ROOT).as_posix(),
                 "title": title,
                 "summary": summary,

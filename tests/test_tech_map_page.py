@@ -1,6 +1,5 @@
-from pathlib import Path
 import unittest
-
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TECH_MAP_HTML = ROOT / "docs" / "tech-map.html"
@@ -22,14 +21,14 @@ class TechMapPageTests(unittest.TestCase):
     def test_main_js_contains_tech_map_renderer(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            'function renderTechMapPage',
+            "function renderTechMapPage",
             "document.getElementById('techMapNodeGrid')",
-            'detail.html?id=',
-            'tech_map_page',
+            "detail.html?id=",
+            "tech_map_page",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

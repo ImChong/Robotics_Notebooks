@@ -40,7 +40,7 @@ def strip_frontmatter(content: str) -> tuple[str, dict]:
         if ":" in line:
             k, _, v = line.partition(":")
             meta[k.strip()] = v.strip()
-    return content[end + 4:].lstrip(), meta
+    return content[end + 4 :].lstrip(), meta
 
 
 def wiki_to_marp(wiki_path: Path) -> str:
@@ -49,7 +49,7 @@ def wiki_to_marp(wiki_path: Path) -> str:
     body, meta = strip_frontmatter(raw)
 
     # H1 = 封面幻灯片
-    h1_m = re.search(r'^# (.+)', body, re.MULTILINE)
+    h1_m = re.search(r"^# (.+)", body, re.MULTILINE)
     cover_title = h1_m.group(1) if h1_m else wiki_path.stem
     page_type = meta.get("type", "")
     tags = meta.get("tags", "").strip("[]")
@@ -62,9 +62,9 @@ def wiki_to_marp(wiki_path: Path) -> str:
 
     # 按 H2 分割，每个 H2 节 → 一张幻灯片
     # 去掉 H1 行
-    body_no_h1 = re.sub(r'^# .+\n?', '', body, count=1, flags=re.MULTILINE)
+    body_no_h1 = re.sub(r"^# .+\n?", "", body, count=1, flags=re.MULTILINE)
 
-    sections = re.split(r'^(?=## )', body_no_h1, flags=re.MULTILINE)
+    sections = re.split(r"^(?=## )", body_no_h1, flags=re.MULTILINE)
     slides = [cover]
     for sec in sections:
         sec = sec.strip()
@@ -72,7 +72,7 @@ def wiki_to_marp(wiki_path: Path) -> str:
             continue
         # 跳过纯链接/导航节（参考来源、关联页面、推荐继续阅读）
         first_line = sec.splitlines()[0] if sec.splitlines() else ""
-        if re.match(r'^## .*(参考来源|关联页面|推荐继续)', first_line):
+        if re.match(r"^## .*(参考来源|关联页面|推荐继续)", first_line):
             continue
         slides.append(sec)
 

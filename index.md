@@ -249,6 +249,7 @@ SORT type ASC
 - [In-hand Reorientation (手内重定向)](methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
 - [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](methods/lingbot-map.md) — LingBot-Map** 是一种新型的 3D 基础模型，旨在解决从连续视频流中进行高效、鲁棒的**流式 3D 重建**问题。 `📅unknown` `[method_page]`
 - [LQR / iLQR 算法详解](methods/lqr-ilqr.md) — LQR (Linear Quadratic Regulator)** 是线性最优控制的解析基石，而 **iLQR (iterative LQR)** 是其在非线性系统上的威力延伸。它们通过贝尔曼最 `📅unknown` `[method_page]`
+- [LWD（Learning while Deploying）](methods/lwd.md) — LWD（Learning while Deploying）** 是 AGIBOT Research 在 2026 年提出的**车队级（fleet-scale）offline-to-online 强化学习后训练框架**，把部署中的成功/失败/人为干预统一喂给同一个 RL 学习器，让单一通用 VLA 策略持续改进。 `📅2026-05-06` `[method_page]`
 - [Multi-Agent Reinforcement Learning (MARL)](methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`

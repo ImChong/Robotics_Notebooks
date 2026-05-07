@@ -1,0 +1,12 @@
+# Development dependencies for Robotics_Notebooks tooling.
+# Runtime CI lint workflows install pyyaml + numpy only; full gates need this file.
+pytest>=9.0.3
+pytest-cov>=7.1.0
+ruff>=0.15.12
+mypy>=2.0.0
+types-PyYAML>=6.0.12.20260408
+pyyaml>=6.0.3
+numpy>=2.4.4
+radon>=6.0.1
+pip-audit>=2.10.0
+pre-commit>=4.6.0

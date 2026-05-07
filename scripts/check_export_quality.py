@@ -3,6 +3,7 @@
 
 检查 exports/ 和 docs/ 目录下的输出文件是否完整、一致。
 """
+
 from __future__ import annotations
 
 import json
@@ -64,11 +65,13 @@ def main() -> None:
         # 允许 ±20% 差异（search-index 只含 wiki pages，index-v1 含全部页面）
         ratio = si_count / max(iv1_count, 1)
         consistent = 0.3 <= ratio <= 1.05
-        results.append(check(
-            "search-index 与 index-v1 数量合理",
-            consistent,
-            f"search={si_count} index={iv1_count} ratio={ratio:.2f}"
-        ))
+        results.append(
+            check(
+                "search-index 与 index-v1 数量合理",
+                consistent,
+                f"search={si_count} index={iv1_count} ratio={ratio:.2f}",
+            )
+        )
 
     # 4. docs/exports/ 与 exports/ 关键文件同步
     key_files = ["link-graph.json", "graph-stats.json", "site-data-v1.json"]
@@ -79,12 +82,18 @@ def main() -> None:
             results.append(check(f"docs/exports/{fname} 同步", False, "源文件不存在"))
             continue
         if not dst.exists():
-            results.append(check(f"docs/exports/{fname} 同步", False, "目标文件不存在，请运行 make graph/export"))
+            results.append(
+                check(
+                    f"docs/exports/{fname} 同步", False, "目标文件不存在，请运行 make graph/export"
+                )
+            )
             continue
         src_size = src.stat().st_size
         dst_size = dst.stat().st_size
         in_sync = abs(src_size - dst_size) <= max(src_size * 0.01, 100)
-        results.append(check(f"docs/exports/{fname} 同步", in_sync, f"src={src_size}B dst={dst_size}B"))
+        results.append(
+            check(f"docs/exports/{fname} 同步", in_sync, f"src={src_size}B dst={dst_size}B")
+        )
 
     # 5. graph-stats.json 节点数与 wiki 页面数大体一致
     gs = EXPORTS / "graph-stats.json"
@@ -95,11 +104,13 @@ def main() -> None:
         node_count = gs_data.get("node_count", 0)
         ratio = node_count / max(wiki_count, 1)
         reasonable = 0.5 <= ratio <= 1.1
-        results.append(check(
-            "graph 节点数与 wiki 页面数合理",
-            reasonable,
-            f"nodes={node_count} wiki_pages={wiki_count} ratio={ratio:.2f}"
-        ))
+        results.append(
+            check(
+                "graph 节点数与 wiki 页面数合理",
+                reasonable,
+                f"nodes={node_count} wiki_pages={wiki_count} ratio={ratio:.2f}",
+            )
+        )
     else:
         results.append(check("graph-stats.json 存在", False, "文件缺失"))
 
@@ -115,7 +126,9 @@ def main() -> None:
 
     # 7. lint-report.md 存在（weekly action 已生成过）
     lr = EXPORTS / "lint-report.md"
-    results.append(check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）"))
+    results.append(
+        check("exports/lint-report.md 存在", lr.exists(), "（首次运行 weekly action 后生成）")
+    )
 
     # 8. index.md 同步检查（Karpathy: LLM updates index on every ingest）
     index_md = REPO_ROOT / "index.md"
@@ -127,8 +140,11 @@ def main() -> None:
         lag_days = (json_mtime - md_mtime) / 86400
         # 允许 7 天内的偏差（硬失败阈值），超过则提示但不阻止 CI
         in_sync = lag_days <= 7.0
-        detail = (f"⚠️ index-v1.json 比 index.md 新了 {lag_days:.1f} 天（建议 make catalog | head -200 >> index.md）"
-                  if not in_sync else f"同步正常（差 {lag_days:.1f} 天）")
+        detail = (
+            f"⚠️ index-v1.json 比 index.md 新了 {lag_days:.1f} 天（建议 make catalog | head -200 >> index.md）"
+            if not in_sync
+            else f"同步正常（差 {lag_days:.1f} 天）"
+        )
         results.append(check("index.md 与 exports/index-v1.json 同步（7 天内）", in_sync, detail))
 
     print("=" * 55)
