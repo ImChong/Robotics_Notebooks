@@ -3,6 +3,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/index.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/tech-map.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-3d-spatial-vqa</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-armature-modeling</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-capture-point-dcm</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-concepts-centroidal-dynamics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -114,6 +115,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-teleoperation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-ultra-survey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-vision-language-navigation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-clf-vs-cbf</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-data-gloves-vs-vision-teleop</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-comparisons-ethercat-vs-ethernet-ip</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -240,6 +242,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-roboto-origin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-robotwin</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-sapien</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-sceneverse-pp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-shadow-hand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-unitree-g1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-unitree-rl-mjlab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

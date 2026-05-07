@@ -181,12 +181,14 @@ SORT type ASC
 - [Pinocchio (刚体动力学库)](entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](entities/roboto-origin.md) — Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。 `📅unknown` `[entity_page]`
+- [SceneVerse++（3D 场景理解数据集）](entities/sceneverse-pp.md) — SceneVerse++ 从互联网无标注视频自动重建与标注大规模真实室内 3D 场景，为检测分割、3D 空间 VQA 与视觉–语言导航等任务提供训练数据，代码与数据开源。 `📅2026-05-07` `[entity_page]`
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Unitree G1 (人形机器人)](entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
 - [Unitree](entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）
 
+- [3D 空间 VQA（3D Spatial Visual Question Answering）](concepts/3d-spatial-vqa.md) — **3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题与数值题。 `📅2026-05-07` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
 - [Capture Point / DCM](concepts/capture-point-dcm.md) — Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描 `📅unknown` `[wiki_page]`
 - [Centroidal Dynamics](concepts/centroidal-dynamics.md) — Centroidal Dynamics（质心动力学）**：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。 `📅unknown` `[wiki_page]`
@@ -286,6 +288,7 @@ SORT type ASC
 - [Manipulation](tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
 - [Teleoperation（遥操作）](tasks/teleoperation.md) — 一句话定义**：操作员通过外部设备实时远程控制机器人完成任务，同时采集高质量示范数据用于后续策略学习。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](tasks/vision-language-navigation.md) — **VLN**：智能体接收 **自然语言导航指令** 与 **第一人称（egocentric）视觉观测**（渲染视图或真实相机图像），在离散或连续动作空间中决策，最终到达指令描述的目标位置或物体。**语言–视觉接地** 与 **路径效率** 是核心评价维度。 `📅2026-05-07` `[task_page]`
 
 ### Wiki Formalizations（形式化基础）
 
