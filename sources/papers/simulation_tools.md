@@ -35,6 +35,7 @@
 - **链接：** <https://arxiv.org/abs/2412.12919>
 - **核心贡献：** 统一多种物理求解器（刚体/弹性体/流体/SPH/FEM）在单框架内；支持可微分仿真；比 Isaac Gym 快 10-80x（CPU 并行）；开源于 2024 年底，预期成为下一代仿真标准
 - **对 wiki 的映射：**
+  - [genesis-sim](../../wiki/entities/genesis-sim.md)
   - [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md)
   - [mujoco](../../wiki/entities/mujoco.md)
   - [domain-randomization](../../wiki/concepts/domain-randomization.md)
