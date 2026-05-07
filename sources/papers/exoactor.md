@@ -41,6 +41,7 @@
   - 在 [GMR (通用动作重定向)](../../wiki/methods/motion-retargeting-gmr.md) 与 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md) 中补充"重定向并非永远收益为正"的反例论据
   - 在 [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md) / [Whole-Body Coordination](../../wiki/concepts/whole-body-coordination.md) 中关联其难度分级评测视角
   - 在 [Unitree G1](../../wiki/entities/unitree-g1.md) 中作为 G1 平台上"video → motion → tracking"系统的范例
+  - 模块级沉淀：[GENMO](../../wiki/methods/genmo.md)、[WiLoR](../../wiki/methods/wilor.md)、[SONIC](../../wiki/methods/sonic-motion-tracking.md)（原始资料分别见 `sources/repos/genmo.md`、`wilor.md`、`sonic-humanoid-motion-tracking.md`）
 
 ## 当前提炼状态
 

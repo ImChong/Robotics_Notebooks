@@ -73,6 +73,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-gae</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-generative-data-augmentation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-generative-world-models</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-genmo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-haic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-her</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-htwk-gym</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -95,6 +96,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-safe-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-skeleton-action-recognition</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-smp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-sonic-motion-tracking</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-star-vla</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-sumo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-switch-framework</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -103,6 +105,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-unified-multimodal-tokens</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-visual-servoing</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-vla</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-wilor</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-zest</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-methods-π0-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-tasks-balance-recovery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

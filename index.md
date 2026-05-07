@@ -253,6 +253,7 @@ SORT type ASC
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
+- [GENMO（统一人体运动估计与生成）](methods/genmo.md) — GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。 `📅2026-05-07` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
@@ -270,10 +271,12 @@ SORT type ASC
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
+- [SONIC（规模化运动跟踪人形控制）](methods/sonic-motion-tracking.md) — SONIC** 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务，支持 VR、人体视频、文本与音乐等多模态指令，并作为真实机器人的通用低层执行器。 `📅2026-05-07` `[method_page]`
 - [StarVLA](methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
 - [Trajectory Optimization（轨迹优化）](methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
+- [WiLoR（野外 3D 手部定位与重建）](methods/wilor.md) — WiLoR** 是端到端的野外手部检测定位 + Transformer 3D 手部网格重建网络，支持单图像与逐帧视频管线，为下游灵巧操作或人形双手轨迹提供单 RGB 估计。 `📅2026-05-07` `[method_page]`
 - [VLA（Vision-Language-Action）](methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [π₀ (Pi-zero) 策略模型](methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的 `📅unknown` `[method_page]`
 
