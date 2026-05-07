@@ -46,6 +46,7 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
@@ -161,6 +162,8 @@ SORT type ASC
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
+- [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5 是 Genesis AI 公司的机器人操作基础模型产品品牌；与开源 Genesis 物理仿真器（Genesis-Embodied-AI）名称相近但主体不同。 `📅2026-05-07` `[entity_page]`
+- [Genesis (仿真器)](entities/genesis-sim.md) — **Genesis** 是具身智能领域新兴的高性能物理仿真与数据生成平台，常与 Isaac Gym / Isaac Lab 并列，强调多物理场与 GPU 大规模并行。 `📅2026-05-07` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
