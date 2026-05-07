@@ -569,7 +569,7 @@
     const rawHash = window.location.hash.replace(/^#/, '');
     if (!rawHash) return;
 
-    let decodedHash = rawHash;
+    let decodedHash;
     try {
       decodedHash = decodeURIComponent(rawHash);
     } catch {
@@ -2265,12 +2265,14 @@
     const container = document.getElementById('recentVisitList');
     if (!container) return;
 
-    let recent = [];
-    try {
-      recent = JSON.parse(sessionStorage.getItem('recent_visits') || '[]');
-    } catch {
-      recent = [];
-    }
+    let recent = (function () {
+      try {
+        const parsed = JSON.parse(sessionStorage.getItem('recent_visits') || '[]');
+        return Array.isArray(parsed) ? parsed : [];
+      } catch {
+        return [];
+      }
+    })();
 
     // 移除已存在的当前页，并推入头部
     recent = recent.filter(item => item.id !== page.id);
