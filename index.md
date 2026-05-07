@@ -153,6 +153,7 @@ SORT type ASC
 
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
+- [Asimov v1（开源人形机器人仓库）](entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Atom01 Deploy](entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`
 - [Atom01 Description](entities/atom01-description.md) — atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。 `📅unknown` `[entity_page]`
 - [Atom01 Firmware](entities/atom01-firmware.md) — atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。 `📅unknown` `[entity_page]`
