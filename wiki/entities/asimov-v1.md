@@ -86,6 +86,7 @@ README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile a
 
 - **12-DOF 双足**（每腿 6 关节：`hip_pitch`、`hip_roll`、`hip_yaw`、`knee`、`ankle_pitch`、`ankle_roll`），从全身 25 主动 DOF 中抽出 **行走子问题**。
 - 几何与约束要点：**45° 前倾的 hip pitch 轴**、**左右不对称关节轴符号**、**窄站姿（README 写约 11.3 cm）**，并据此在训练配置中采用 **更保守的速度上限**、更强的 **`body_ang_vel` 惩罚**、更紧的 **踝部 pose 约束** 等相对 G1 基线的改编说明。
+- **足端子模型**：行走 fork 的 MJCF（[`asimov.xml`（mjlab 资产树）](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/xmls/asimov.xml)）将 **`left_toe_link` / `right_toe_link` 固连在 `ankle_roll` 连杆下且无铰链自由度**，趾端仅提供 **碰撞与惯量**；这与主仓全身模型中带 **弹簧被动趾关节** 的 MJCF **不一致**（对比见下文 **§5**）。
 
 **模仿学习与奖励（README「Training」）**
 
@@ -114,9 +115,42 @@ README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile a
 | 规模化 RL + imitation shaping | [asimov-mjlab](https://github.com/asimovinc/asimov-mjlab) | mjlab 式并行环境、**PPO**、含 **1.25 Hz 参考步态 imitation** 的奖励组合、**无 `base_lin_vel`** 的观测裁剪与 PD 叙述 |
 | 设计叙事与消融动机 | [Menlo 博文](https://menlo.ai/blog/teaching-a-humanoid-to-walk) | 观测合同、CAN 时延建模、非对称 AC、奖励与 **gait clock** 取舍的讨论 |
 
+### 5. 被动脚尖：机械目标、主仓 MuJoCo 与行走 MJCF 的差异
+
+#### 5.1 机械与产品叙事
+
+Menlo 在 [《How we built humanoid legs from the ground up in 100 days》](https://menlo.ai/blog/humanoid-legs-100-days) 中说明：趾部为 **有铰链、无电机、带弹性回中** 的被动结构，用于 **增大有效接触面积**、在 **支撑—蹬伸** 过渡中形成 **rocker**，减轻足缘硬棱上的峰值力并改善推进；文中将其与「电机驱动全趾」对比，强调 **控制负担与质量** 上的取舍。
+
+#### 5.2 主仓全身 MuJoCo：`springref` + `stiffness` 的被动趾关节
+
+主仓 [`sim-model/xmls/asimov.xml`](https://github.com/asimovinc/asimov-v1/blob/main/sim-model/xmls/asimov.xml) 为左右趾各定义 **一个 `hinge` 型 `left_toe_joint` / `right_toe_joint`**，**不在** `<motor>` 列表中，因而 **无主动扭矩通道**。关节上显式配置 **`stiffness` / `springref` / `damping` / `armature` / `frictionloss` 等**（例如刚度约 **2.8**、阻尼约 **0.5**、左右角区间镜像），由 MuJoCo 的 **被动弹簧–阻尼与限位** 在积分步内产生力矩；趾端还挂 **多段 capsule 碰撞** 以细化接地区几何。工程含义：**仿真里趾是低维、无驱动的柔顺自由度**，与「真机有趾但无编码器」共同构成 **观测缺失 + 动力学仍存在** 的 Sim2Real 接口问题。
+
+#### 5.3 `asimov-mjlab` 行走 MJCF：趾链固连的降阶模型
+
+[`asimov-mjlab` 内的 `asimov.xml`](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/xmls/asimov.xml) 中，`left_toe_link` / `right_toe_link` 为 **`ankle_roll_link` 下的子刚体**，**无 `<joint>`**，与 README 宣称的 **12 个受控电机自由度** 一致：策略 **不直接输出趾力矩**，趾–地相互作用通过 **刚体接触** 与 **踝两轴** 间接体现。适合作为 **大规模并行 locomotion** 的简化基线，但若论文声称与主仓 MJCF **逐自由度等价**，需显式声明 **趾被动 DOF 被折叠**。
+
+#### 5.4 训练侧：非对称 Critic 与「无趾编码器」真机
+
+[*Teaching a Humanoid to Walk*](https://menlo.ai/blog/teaching-a-humanoid-to-walk) 描述：真机 **无趾编码器**，故 **Actor 部署时看不到趾状态**；训练期则让 **Critic 读取 `toe_joint_pos` / `toe_joint_vel` 等特权项**，帮助价值函数利用 **仿真里可得的趾动力学**，迫使 Actor 从 **踝、IMU、关节** 等可测信号中间接推断趾行为。该叙述与 **「全身 MJCF 中存在趾铰链」** 自然对齐；若你仅使用 **§5.3 的固连趾 fork**，则需在实现上自行决定 **是否仍向 Critic 喂趾相关特权**（当前公开 fork 的 Python 侧未检索到 `toe` 关键字，**以你本地 fork 为准**）。
+
+### 6. 踝关节：RSU 机构学、公开 MJCF 与工程上的 «解算»
+
+#### 6.1 硬件：并联 RSU 踝在解决什么问题
+
+同一篇 [legs 博文](https://menlo.ai/blog/humanoid-legs-100-days) 将踝部选型概括为 **并联 RSU（Revolute–Spherical–Universal）** 架构：**两路回转驱动在机构上耦合并向足端传递 pitch/roll**，以获得 **扭矩分担**、更利于 **近端布置大质量件** 的刚度，以及更好的 **反驱/接地顺应**；文中引用综述 [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) 作为设计语境。注意：**RSU 是闭链/并联机构学概念**，与「仿真里看到几个 hinge」不是同一抽象层。
+
+#### 6.2 公开 MJCF：等效 **2-DOF 串联踝** 接口
+
+主仓与 `asimov-mjlab` 的公开 MJCF 均在每条腿上暴露 **`ankle_pitch_joint` + `ankle_roll_joint`** 两个 **电机类 hinge**，由执行器施加力矩；**并未**在 XML 中展开 RSU 的 **完整闭链约束或电机–足端雅可比**。因此，在 **仿真与控制接口** 这一层，公开资料提供的是 **「踝 pitch / 踝 roll」关节空间模型**：适合 RL、MPC、WBC 直接消费；若要做 **机构尺度的力分配/弹性背隙建模**，需要回到 **CAD + 机构学推导** 或自行在 MuJoCo 中增补 **equality / 自定义约束**（超出当前公开 MJCF 字面范围）。
+
+#### 6.3 代码与姿态初始化里的「符号与耦合补偿」
+
+[`asimov-mjlab` 的 `asimov_constants.py`](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/asimov_constants.py) 在注释与 `KNEES_BENT_KEYFRAME` 中写明：**左右膝、左右踝 pitch 的关节轴方向与正负号镜像**（例如左膝 `axis=(0,1,0)` 正行程向后折展、右膝取相反轴与负角等价的运动学），并在弯膝姿态下对 **踝 pitch 赋予与膝弯曲相反的符号** 以作 **几何补偿**。这是 **在已知轴约定下把「想要的空间姿态」映射到关节目标** 的 **运动学校准/解算提示**，**不是** RSU 闭链的力雅可比；与 README 中 **「窄站姿 + 紧踝 pose 奖励」** 一起，构成训练侧对 **踝可操作包络** 的工程约束叙事。
+
 ## 常见误区或局限
 
 - **误区：把主仓当成「已内嵌唯一官方训练脚本」**。主仓强调 **制造 + MuJoCo 资产 + 板载软件**；**可复现的并行训练脚本**当前公开在 **asimov-mjlab**，与主仓路线图并行存在。
+- **误区：默认主仓 MJCF 与 `asimov-mjlab` MJCF 在趾部完全等价**。主仓含 **被动趾铰链 + 弹簧参数**；行走 fork 多为 **固连趾刚体** 的 12-DOF 降阶——写 Sim2Real 或对比实验时应 **分别标注所用 XML 路径与版本**。
 - **误区：双板架构下任意进程都可进运控回路**。若不划分 **CPU 隔离、实时中间件与网络负载**，容易出现抖动与延迟尖峰，反而放大 Sim2Real gap。
 - **局限：商业套件与完全自采的 BOM 可能存在批次差异**，惯性参数与摩擦标定仍需以本机辨识为准。
 
@@ -162,6 +196,8 @@ flowchart TD
 
 - [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 双板/异构计算与实时性分工
 - [asimovinc/asimov-mjlab（行走训练 fork）](https://github.com/asimovinc/asimov-mjlab)
+- [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — 被动趾与 **RSU 并联踝** 的产品/机构叙事
+- [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) — 人形踝设计综述语境
 - [Assembly Manual（官方）](https://manual.asimov.inc)
 - [BOM（官方）](https://manual.asimov.inc/v1/bom)
 
@@ -171,4 +207,9 @@ flowchart TD
 - [asimov-mjlab.md](../../sources/repos/asimov-mjlab.md)
 - [asimovinc/asimov-v1 README（main）](https://github.com/asimovinc/asimov-v1/blob/main/README.md)
 - [asimovinc/asimov-mjlab README（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/README.md)
+- [asimovinc/asimov-v1 `sim-model/xmls/asimov.xml`（main）](https://github.com/asimovinc/asimov-v1/blob/main/sim-model/xmls/asimov.xml)
+- [asimovinc/asimov-mjlab `asimov.xml`（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/xmls/asimov.xml)
+- [asimovinc/asimov-mjlab `asimov_constants.py`（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/src/mjlab/asset_zoo/robots/asimov/asimov_constants.py)
 - [Teaching a Humanoid to Walk（Menlo Research 博文）](https://menlo.ai/blog/teaching-a-humanoid-to-walk)
+- [How we built humanoid legs from the ground up in 100 days（Menlo Research 博文）](https://menlo.ai/blog/humanoid-legs-100-days)
+- [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469)

@@ -22,6 +22,10 @@
 - 底层框架见 [`wiki/entities/mjlab.md`](../../wiki/entities/mjlab.md)（Isaac Lab 风格 API + MuJoCo Warp）。
 - 人形硬件总览见 [`wiki/entities/asimov-v1.md`](../../wiki/entities/asimov-v1.md)。
 
+## 建模注意（与主仓 MJCF 的差异）
+
+- 本 fork 用于 **12-DOF 行走** 的 `asimov.xml` 常将 **趾连杆固连在踝 roll 下且无趾铰链**；主仓 `asimov-v1/sim-model/xmls/asimov.xml` 则含 **弹簧被动 `*_toe_joint`**。做 Sim2Real 或论文对比时应 **分别注明所用 XML**。
+
 ## 官方延伸资源（外链）
 
 - [asimovinc/asimov-mjlab README（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/README.md)
