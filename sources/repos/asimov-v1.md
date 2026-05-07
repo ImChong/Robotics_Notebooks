@@ -28,4 +28,5 @@
 
 - 装配与物料：[Assembly Manual](https://manual.asimov.inc)、[BOM](https://manual.asimov.inc/v1/bom)
 - 商业预约：[DIY Kit](https://asimov.inc/diy-kit)
+- 行走训练（mjlab fork）：[asimovinc/asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（详见 [`asimov-mjlab.md`](asimov-mjlab.md)）
 - 社区支持：README 中列出的 Forum / Discord 等（以官方页面为准）
