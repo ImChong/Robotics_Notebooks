@@ -179,3 +179,12 @@
 ## [2026-05-04] ingest | sources/papers/learn_weightlessness.md — 学习失重：人形机器人在非自稳定运动中的模仿机制
 
 ## [2026-05-04] ingest | sources/papers/kung_fu_athlete_bot.md — A Kung Fu Athlete Bot That Can Do It All Day: Highly Dynamic, Balance-Challenging Motion Dataset and Autonomous Fall-Resilient Tracking
+
+## [2026-05-07] feat | v21-execution | P3 搜索结果按"置信度"分级（精确匹配 / 潜在关联）
+
+- V21 P3 推进：`docs/main.js` 新增 `classifyTier`，按"标题/标签命中"判定 `exact`、其余归入 `potential`，将 `renderCards` 拆分为两段式渲染
+- 抽取 `renderCardItem` 单卡片渲染函数与 `renderTierHeader` 分区头渲染函数，保持 BM25 + substring 排序逻辑不变；空查询场景退回原扁平布局
+- `docs/style.css` 新增 `.search-tier-header / .search-tier-count / .search-tier-hint` 样式，`grid-column:1/-1` 跨列展开，"精确匹配" 头使用 accent 色突出
+- 键盘导航不受影响：分区头为 `<h3>`，`getResultCards()` 仍以 `article.card[data-result-url]` 选取
+- 验证：`make lint`（37/37 搜索回归 + 0 errors）、`make ci-preflight`（12/12 通过）、`node -c docs/main.js` 语法正确
+- V21 checklist 对应条目（P3 搜索结果置信度分级）已勾选

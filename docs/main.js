@@ -1931,29 +1931,75 @@
     }
 
 
+    function classifyTier(item, queryTokens) {
+      if (!queryTokens || !queryTokens.length) return 'exact';
+      var title = String(item.title || '').toLowerCase();
+      var tags = (item.tags || []).map(function(tag) { return String(tag || '').toLowerCase(); });
+      for (var i = 0; i < queryTokens.length; i += 1) {
+        var token = queryTokens[i];
+        if (!token) continue;
+        if (title.indexOf(token) >= 0) return 'exact';
+        for (var j = 0; j < tags.length; j += 1) {
+          if (tags[j].indexOf(token) >= 0) return 'exact';
+        }
+      }
+      return 'potential';
+    }
+
+    function renderCardItem(item, queryTokens) {
+      var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
+      var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
+      var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
+      var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
+        return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+      }).join('');
+      var explain = queryTokens && queryTokens.length
+        ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
+          + matchExplanation(item, queryTokens) + '</span>'
+        : '';
+      var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
+        + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
+        + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+      return '<article class="card" data-result-url="' + detailUrl + '">'
+        + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
+        + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
+        + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
+        + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
+        + '</article>';
+    }
+
+    function renderTierHeader(label, count, hint) {
+      return '<h3 class="search-tier-header" data-tier-label="' + escapeHtml(label) + '">'
+        + escapeHtml(label) + ' <span class="search-tier-count">' + count + '</span>'
+        + (hint ? '<span class="search-tier-hint">' + escapeHtml(hint) + '</span>' : '')
+        + '</h3>';
+    }
+
     function renderCards(matched, queryTokens) {
       if (!matched.length) return;
-      searchResults.innerHTML = matched.map(function(item) {
-        var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
-        var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
-        var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
-        var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
-          return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+      var hasQuery = !!(queryTokens && queryTokens.length);
+      if (!hasQuery) {
+        searchResults.innerHTML = matched.map(function(item) {
+          return renderCardItem(item, queryTokens);
         }).join('');
-        var explain = queryTokens && queryTokens.length
-          ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
-            + matchExplanation(item, queryTokens) + '</span>'
-          : '';
-        var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
-          + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
-          + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
-        return '<article class="card" data-result-url="' + detailUrl + '">'
-          + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
-          + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
-          + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
-          + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
-          + '</article>';
-      }).join('');
+        return;
+      }
+      var exact = [];
+      var potential = [];
+      matched.forEach(function(item) {
+        if (classifyTier(item, queryTokens) === 'exact') exact.push(item);
+        else potential.push(item);
+      });
+      var html = '';
+      if (exact.length) {
+        html += renderTierHeader('精确匹配', exact.length, '标题或标签直接命中');
+        html += exact.map(function(item) { return renderCardItem(item, queryTokens); }).join('');
+      }
+      if (potential.length) {
+        html += renderTierHeader('潜在关联', potential.length, '摘要或正文相关');
+        html += potential.map(function(item) { return renderCardItem(item, queryTokens); }).join('');
+      }
+      searchResults.innerHTML = html;
     }
 
     function bm25Score(doc, queryTokens, indexData) {

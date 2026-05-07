@@ -1067,3 +1067,33 @@ th {
   outline:2px solid var(--accent, #1659b4);
   outline-offset:2px;
 }
+
+/* --- Search Result Confidence Tier Headers --- */
+.search-tier-header {
+  grid-column: 1 / -1;
+  margin: 6px 0 2px;
+  padding-bottom: 4px;
+  font-size: .82rem;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: var(--text-muted, rgba(0,0,0,0.55));
+  border-bottom: 1px dashed var(--border-color, rgba(0,0,0,0.12));
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.search-tier-header[data-tier-label="精确匹配"] { color: var(--accent, #1659b4); }
+.search-tier-count {
+  font-size: .72rem;
+  font-weight: 500;
+  padding: 1px 7px;
+  border-radius: 10px;
+  background: var(--border-color, rgba(0,0,0,0.08));
+  color: var(--text-muted, rgba(0,0,0,0.55));
+}
+.search-tier-hint {
+  font-size: .7rem;
+  font-weight: 400;
+  color: var(--text-muted, rgba(0,0,0,0.45));
+  margin-left: auto;
+}
