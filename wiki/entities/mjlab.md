@@ -2,13 +2,14 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation]
 status: complete
-updated: 2026-04-29
+updated: 2026-05-07
 related:
   - ./mujoco.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
   - ./amp-mjlab.md
   - ./unitree-rl-mjlab.md
+  - ./asimov-v1.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/repos/mjlab.md
@@ -61,7 +62,7 @@ mjlab 架构
 | API 风格 | Isaac Lab（移植） | 原生 Isaac Lab | 简单脚本 | Pythonic |
 | 依赖重量 | 轻（pip 安装） | 重（Isaac Sim） | 重（IsaacGym） | 中 |
 | 开源授权 | Apache 2.0 | BSD-3 | BSD-3 | Apache 2.0 |
-| 上层框架 | AMP_mjlab、unitree_rl_mjlab | robot_lab | legged_gym 生态 | — |
+| 上层框架 | AMP_mjlab、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork） | robot_lab | legged_gym 生态 | — |
 
 ## 关联页面
 
@@ -70,6 +71,7 @@ mjlab 架构
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
+- [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式
 
 ## 参考来源
