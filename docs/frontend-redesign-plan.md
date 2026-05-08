@@ -50,7 +50,7 @@ Phase 3（长期）：设计系统整体升级
 | `tech-map.html` | 技术栈节点，按 layer 卡片展示 | 静态卡片，不体现节点间依赖关系 |
 | `roadmap.html` | 学习路径页 | 功能完整，低优先级改动 |
 | `module.html` | 模块聚合页 | 功能完整，低优先级改动 |
-| `references.html` | 论文导航 | 功能完整，低优先级改动 |
+| `references.html` | 重定向到 `roadmap.html?id=roadmap-motion-control#paper-guide`（论文主线已并入路线页） |
 
 ### 1.2 核心问题
 

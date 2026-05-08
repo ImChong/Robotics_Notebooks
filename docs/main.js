@@ -1268,6 +1268,15 @@
     });
   }
 
+  function setRoadmapPaperGuideVisible(show) {
+    const paperGuide = document.getElementById('paper-guide');
+    const paperSubnav = document.getElementById('roadmapSubnavPaper');
+    const paperToc = document.getElementById('roadmapTocPaperItem');
+    if (paperGuide) paperGuide.hidden = !show;
+    if (paperSubnav) paperSubnav.hidden = !show;
+    if (paperToc) paperToc.hidden = !show;
+  }
+
   function renderRoadmapPage(siteData) {
     if (!siteData || !siteData.pages) return;
 
@@ -1309,6 +1318,7 @@
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
       if (breadcrumb) removeLoadingState(breadcrumb);
+      setRoadmapPaperGuideVisible(false);
       return;
     }
 
@@ -1368,6 +1378,7 @@
 
     renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
     renderSourceCards(sourceEl, roadmapPage.source_links, '当前路线暂无来源链接。');
+    setRoadmapPaperGuideVisible(roadmapId === 'roadmap-motion-control');
   }
 
   function renderTechMapNodeCard(node, detailPages) {

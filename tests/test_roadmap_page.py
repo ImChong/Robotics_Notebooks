@@ -16,6 +16,7 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapStageList"',
             'id="roadmapRelatedList"',
             'id="roadmapSourceList"',
+            'id="paper-guide"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
@@ -27,6 +28,7 @@ class RoadmapPageTests(unittest.TestCase):
             "document.getElementById('roadmapStageList')",
             "roadmap.html?id=",
             "roadmap_pages",
+            "setRoadmapPaperGuideVisible",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
