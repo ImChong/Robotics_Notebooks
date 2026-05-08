@@ -1117,3 +1117,52 @@ th {
 .search-tier-heading:first-child { border-top:0; padding-top:0; margin-top:4px; }
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
+
+/* --- Roadmap page: Mermaid flow (expandable <details>) --- */
+.roadmap-flow-section {
+  padding-bottom: 0;
+}
+.roadmap-flow-mermaid-host .mermaid {
+  text-align: center;
+  margin: 0.75rem 0 0;
+  overflow-x: auto;
+}
+.roadmap-flow-mermaid-host .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.roadmap-flow-details,
+.roadmap-stage-flow-details {
+  margin-bottom: 1rem;
+  padding: 0.65rem 1rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong, var(--bg-alt));
+}
+.roadmap-flow-details-secondary {
+  margin-top: 0.75rem;
+}
+.roadmap-flow-details > summary,
+.roadmap-stage-flow-details > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+  list-style-position: outside;
+}
+.roadmap-flow-details > summary::-webkit-details-marker,
+.roadmap-stage-flow-details > summary::-webkit-details-marker {
+  color: var(--accent);
+}
+.roadmap-flow-stage-intro {
+  margin: 1rem 0 0.5rem;
+}
+.roadmap-flow-stage-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+@media (min-width: 900px) {
+  .roadmap-flow-stage-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -24,6 +24,10 @@
       updateThemeToggle();
       const detailContentEl = document.getElementById('detailContent');
       if (detailContentEl) renderDetailMermaid(detailContentEl);
+      const roadmapFlowHost = document.getElementById('roadmapFlowMermaidRoot');
+      if (roadmapFlowHost && roadmapFlowHost.querySelector('.mermaid')) {
+        renderDetailMermaid(roadmapFlowHost);
+      }
     });
   }
 
@@ -448,6 +452,137 @@
       securityLevel: 'strict'
     });
     window.mermaid.run({ nodes: nodes }).catch(function () {});
+  }
+
+  function sanitizeMermaidLabel(text, maxLen) {
+    var max = maxLen == null ? 40 : maxLen;
+    var t = String(text || '')
+      .replace(/\[/g, ' ')
+      .replace(/\]/g, ' ')
+      .replace(/"/g, ' ')
+      .replace(/[()#`]/g, ' ')
+      .replace(/</g, ' ')
+      .replace(/&/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (t.length > max) {
+      t = t.slice(0, Math.max(0, max - 1)) + '…';
+    }
+    return t || '—';
+  }
+
+  function buildRoadmapOverviewMermaidSource(stages) {
+    var lines = ['flowchart TB'];
+    for (var i = 0; i < stages.length; i++) {
+      var st = stages[i];
+      var sid = 'st' + i;
+      var idPart = String(st.id || '').toUpperCase();
+      var titlePart = sanitizeMermaidLabel(st.title, 30);
+      lines.push('  ' + sid + '["' + idPart + '<br/>' + titlePart + '"]');
+    }
+    for (var j = 0; j < stages.length - 1; j++) {
+      lines.push('  st' + j + ' --> st' + (j + 1));
+    }
+    return lines.join('\n');
+  }
+
+  function buildRoadmapStageBranchMermaidSource(stage, stageIndex, detailPages) {
+    var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 6) : [];
+    var centerId = 'c' + stageIndex;
+    var lines = ['flowchart TB'];
+    var centerLabel = sanitizeMermaidLabel(
+      String(stage.id || '').toUpperCase() + ' · ' + String(stage.title || ''),
+      42
+    );
+    lines.push('  ' + centerId + '["' + centerLabel + '"]');
+    if (!related.length) {
+      lines.push('  x' + stageIndex + '["暂无关联详情页"]');
+      lines.push('  ' + centerId + ' --> x' + stageIndex);
+      return lines.join('\n');
+    }
+    related.forEach(function (rid, k) {
+      var page = detailPages[rid] || {};
+      var nid = 'r' + stageIndex + '_' + k;
+      var lbl = sanitizeMermaidLabel(page.title || rid, 34);
+      lines.push('  ' + centerId + ' --> ' + nid + '["' + lbl + '"]');
+    });
+    return lines.join('\n');
+  }
+
+  function roadmapMotionControlDualTrunkMermaidSource() {
+    return [
+      'flowchart TB',
+      '  T["传统控制主干<br/>LIP/ZMP → Centroidal → MPC/TO → TSID/WBC"]',
+      '  L["Learning 扩展层<br/>RL 基础 → Locomotion RL → IL / Motion prior → Sim2Real"]',
+      '  T -->|建议先打牢再叠学习能力| L'
+    ].join('\n');
+  }
+
+  function setRoadmapFlowChromeVisible(show) {
+    var flowSection = document.getElementById('roadmap-flow');
+    var sub = document.getElementById('roadmapSubnavFlow');
+    var tocItem = document.getElementById('roadmapTocFlowItem');
+    if (flowSection) flowSection.hidden = !show;
+    if (sub) sub.hidden = !show;
+    if (tocItem) tocItem.hidden = !show;
+  }
+
+  function scheduleRoadmapMermaidRender(container) {
+    if (!container) return;
+    var attempts = 0;
+    function tryRender() {
+      attempts += 1;
+      if (typeof window.mermaid !== 'undefined') {
+        renderDetailMermaid(container);
+        return;
+      }
+      if (attempts < 100) {
+        window.requestAnimationFrame(tryRender);
+      }
+    }
+    tryRender();
+  }
+
+  function renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages) {
+    var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!flowRoot || stages.length < 2) {
+      setRoadmapFlowChromeVisible(false);
+      if (flowRoot) flowRoot.innerHTML = '';
+      return;
+    }
+    setRoadmapFlowChromeVisible(true);
+    var overviewSrc = buildRoadmapOverviewMermaidSource(stages);
+    var parts = [
+      '<details class="roadmap-flow-details" open>',
+      '  <summary>阶段总览（Mermaid）</summary>',
+      '  <div class="mermaid">' + overviewSrc + '</div>',
+      '</details>'
+    ];
+    if (roadmapId === 'roadmap-motion-control') {
+      parts.push(
+        '<details class="roadmap-flow-details roadmap-flow-details-secondary">',
+        '  <summary>两条主线（与路线正文表述一致）</summary>',
+        '  <div class="mermaid">' + roadmapMotionControlDualTrunkMermaidSource() + '</div>',
+        '</details>'
+      );
+    }
+    parts.push('<p class="roadmap-flow-stage-intro data-meta">按阶段展开：关联网页缩略图（与下方「阶段」卡片入口一致）</p>');
+    parts.push('<div class="roadmap-flow-stage-grid">');
+    stages.forEach(function (stage, idx) {
+      parts.push('<details class="roadmap-stage-flow-details">');
+      parts.push(
+        '  <summary>'
+        + escapeHtml(String(stage.id || '').toUpperCase() + ' · ' + (stage.title || ''))
+        + '</summary>'
+      );
+      parts.push('  <p class="data-meta">节点名为站内页面标题；可结合下方阶段卡片打开详情。</p>');
+      parts.push('  <div class="mermaid">' + buildRoadmapStageBranchMermaidSource(stage, idx, detailPages) + '</div>');
+      parts.push('</details>');
+    });
+    parts.push('</div>');
+    flowRoot.innerHTML = parts.join('');
+    scheduleRoadmapMermaidRender(flowRoot);
   }
 
   function renderDetailMath(container) {
@@ -1318,6 +1453,9 @@
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
       if (breadcrumb) removeLoadingState(breadcrumb);
+      setRoadmapFlowChromeVisible(false);
+      var flowRootEmpty = document.getElementById('roadmapFlowMermaidRoot');
+      if (flowRootEmpty) flowRootEmpty.innerHTML = '';
       setRoadmapPaperGuideVisible(false);
       return;
     }
@@ -1378,6 +1516,7 @@
 
     renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
     renderSourceCards(sourceEl, roadmapPage.source_links, '当前路线暂无来源链接。');
+    renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
     setRoadmapPaperGuideVisible(roadmapId === 'roadmap-motion-control');
   }
 
