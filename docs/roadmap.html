@@ -53,6 +53,7 @@
 
     <section class="page-subnav-wrap">
       <div class="container page-subnav">
+        <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>流程图</a>
         <a href="#roadmap-stages">阶段</a>
         <a href="#roadmap-related">相关项</a>
         <a href="#roadmap-sources">来源链接</a>
@@ -78,6 +79,7 @@
           <h2 class="section-title">路线导航</h2>
           <nav class="detail-toc-list">
             <ol>
+              <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">流程图</a></li>
               <li><a href="#roadmap-stages">阶段</a></li>
               <li><a href="#roadmap-related">相关项</a></li>
               <li><a href="#roadmap-sources">来源链接</a></li>
@@ -87,6 +89,12 @@
         </aside>
 
         <div class="detail-content-main">
+          <section id="roadmap-flow" class="section roadmap-flow-section" hidden>
+            <h2 class="section-title">路线流程图</h2>
+            <p class="section-subtitle">阶段链由导出数据生成（与 <code>roadmap/*.md</code> 中 <code>## L*</code> 标题一致）；可展开查看「传统 vs 学习」双主线示意，以及每一阶段到站内详情页的缩略关系。</p>
+            <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
+          </section>
+
           <section id="roadmap-stages">
             <h2 class="section-title">阶段</h2>
             <p class="section-subtitle">先把路线阶段可视化。</p>
@@ -250,6 +258,7 @@
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
     </div>
   </footer>
-  <script src="main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script defer src="main.js"></script>
 </body>
 </html>
