@@ -1476,5 +1476,115 @@
     "neg_claims": [
       "执行器网络.*拟合传感器|执行器网络.*代替策略"
     ]
+  },
+  "Visuo-Tactile Fusion 接触瞬间": {
+    "terms": [
+      "Visuo.Tactile|视触觉融合"
+    ],
+    "pos_claims": [
+      "接触瞬间.*不可靠|阶段切换|软门控|gated.*fusion|接触前.*视觉|接触后.*触觉"
+    ],
+    "neg_claims": [
+      "视触觉.*等权拼接|视触觉.*整段.*视觉为主|视触觉.*整段.*触觉为主"
+    ]
+  },
+  "Tactile Impedance Control 变阻抗": {
+    "terms": [
+      "Tactile.*Impedance|触觉.*阻抗"
+    ],
+    "pos_claims": [
+      "在线调整|变阻抗|压力中心|滑移|self.adaptive|自适应力度|K_d.*在线|B_d.*在线"
+    ],
+    "neg_claims": [
+      "Tactile.*Impedance.*固定参数|触觉阻抗.*静态.*K_d|触觉阻抗.*与触觉无关"
+    ]
+  },
+  "Contact Wrench Cone 6 维推广": {
+    "terms": [
+      "Contact.*Wrench.*Cone|力旋量锥|CWC"
+    ],
+    "pos_claims": [
+      "六维.*力旋量|6D.*wrench|面接触|ZMP.*支撑|偏航.*摩擦|推广.*摩擦锥"
+    ],
+    "neg_claims": [
+      "Wrench.*Cone.*仅.*力|CWC.*只有.*三维|CWC.*不含.*力矩"
+    ]
+  },
+  "GelSlim 指节级薄型化": {
+    "terms": [
+      "GelSlim"
+    ],
+    "pos_claims": [
+      "薄片|指节|高分辨率.*视觉触觉|压缩.*GelSight|MIT|平行夹爪|形变深度图"
+    ],
+    "neg_claims": [
+      "GelSlim.*体积大|GelSlim.*只能.*桌面|GelSlim.*电容阵列"
+    ]
+  },
+  "控制环路延迟五段分解": {
+    "terms": [
+      "控制环路.*延迟|control.*loop.*latency|端到端.*时延"
+    ],
+    "pos_claims": [
+      "T_sense|T_bus|T_compute|T_sched|总线|内核.*调度|加性|累加"
+    ],
+    "neg_claims": [
+      "控制环路.*单段|延迟.*只算.*推理|延迟.*与总线无关"
+    ]
+  },
+  "UDP 组播四类事件": {
+    "terms": [
+      "UDP.*组播|UDP.*multicast|LCM.*多播"
+    ],
+    "pos_claims": [
+      "丢包|迟到|乱序|成功|Gilbert.Elliott|无重传|无.*ACK|即发即弃"
+    ],
+    "neg_claims": [
+      "UDP.*组播.*支持.*重传|UDP.*多播.*提供.*ACK|组播.*能.*保证.*顺序"
+    ]
+  },
+  "PTP 时钟同步精度": {
+    "terms": [
+      "PTP|IEEE.*1588"
+    ],
+    "pos_claims": [
+      "100.*ns.*1.*[μu]s|亚微秒|主时钟选举|BMCA|偏置.*漂移|delay.*request.*response"
+    ],
+    "neg_claims": [
+      "PTP.*精度.*毫秒|PTP.*与.*NTP.*等价|PTP.*不需要.*主时钟"
+    ]
+  },
+  "EtherCAT DC 同步精度": {
+    "terms": [
+      "EtherCAT.*DC|分布式时钟|EtherCAT.*Distributed.*Clock"
+    ],
+    "pos_claims": [
+      "<.*100.*ns|百纳秒|硬件.*ASIC|参考时钟|从站芯片|ESC"
+    ],
+    "neg_claims": [
+      "EtherCAT.*DC.*微秒.*量级|分布式时钟.*纯软件|EtherCAT.*依赖.*NTP"
+    ]
+  },
+  "EtherCAT vs EtherNet/IP 选型": {
+    "terms": [
+      "EtherCAT.*EtherNet/IP|EtherNet/IP.*EtherCAT|工业.*总线.*选型"
+    ],
+    "pos_claims": [
+      "on.the.fly|火车式|标准.*以太网|CIP|TSN|确定性.*EtherCAT|生态.*EtherNet/IP|1.*kHz.*EtherCAT"
+    ],
+    "neg_claims": [
+      "EtherNet/IP.*确定性.*高于.*EtherCAT|EtherCAT.*生态.*更广|两者.*完全等价"
+    ]
+  },
+  "NMR CEPR 管线": {
+    "terms": [
+      "NMR|Neural.*Motion.*Retargeting"
+    ],
+    "pos_claims": [
+      "CEPR|物理感知筛选|GMR|分簇.*RL|聚类.*专家|仿真.*rollout|非自回归|Transformer|双向"
+    ],
+    "neg_claims": [
+      "NMR.*纯优化|NMR.*仅.*几何|NMR.*自回归.*单步|NMR.*无.*仿真.*监督"
+    ]
   }
 }
