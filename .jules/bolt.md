@@ -9,3 +9,7 @@
 ## 2026-05-07 - Frontend Search Array Iteration
 **Learning:** In `docs/main.js`, chaining array methods like `.filter(...).map(...)` on large arrays (e.g., search indexes with hundreds or thousands of documents) creates unnecessary intermediate arrays and can cause expensive functions (like `substringScore`) to be evaluated redundantly (once in `filter`, once in `map`).
 **Action:** For performance-critical data processing in the frontend, replace chained array methods with a single-pass `for` loop (or `.reduce()`) to minimize array allocations and prevent redundant calculations.
+
+## 2026-05-08 - Garbage Collection and Hot Loop Optimization
+**Learning:** In the client-side search indexing loop (`docs/main.js`), generating arrays continuously with methods like `.map()` and `Object.keys()` on every single search token for every single document created massive garbage collection pressure and CPU overhead, slowing search by ~40x.
+**Action:** When working on critical O(N*M) hot loops in JavaScript, avoid memory allocations where possible. Initialize strings and keys lazily, and use traditional `for` loops instead of `.forEach()` or `.some()`. Pre-calculate constants (like BM25 length normalization) outside inner loops.

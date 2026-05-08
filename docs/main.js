@@ -2130,32 +2130,65 @@
       var k1 = meta.k1 || 1.5;
       var b = meta.b || 0.75;
       var score = 0;
-      queryTokens.forEach(function(token) {
-        var tf = ((doc.tokens || {})[token]) || 0;
-        if (!tf) return;
-        var idf = ((indexData.idf || {})[token]) || 0;
-        score += idf * (tf * (k1 + 1)) / (tf + k1 * (1 - b + b * ((doc.dl || 1) / avgdl)));
-      });
+      var dl = doc.dl || 1;
+      var docTokens = doc.tokens || {};
+      var idfMap = indexData.idf || {};
+      var lenNorm = 1 - b + b * (dl / avgdl);
+      var k1_plus_1 = k1 + 1;
+
+      for (var i = 0; i < queryTokens.length; i++) {
+        var token = queryTokens[i];
+        var tf = docTokens[token] || 0;
+        if (!tf) continue;
+        var idf = idfMap[token] || 0;
+        score += idf * (tf * k1_plus_1) / (tf + k1 * lenNorm);
+      }
       return score;
     }
 
     function substringScore(doc, queryTokens) {
       if (!queryTokens || !queryTokens.length) return 0;
-      var title = String(doc.title || '').toLowerCase();
-      var path = String(doc.path || '').toLowerCase();
-      var summary = String(doc.summary || '').toLowerCase();
-      var tags = (doc.tags || []).map(function(tag) { return String(tag || '').toLowerCase(); });
-      var tokenKeys = Object.keys(doc.tokens || {});
       var score = 0;
-      queryTokens.forEach(function(token) {
-        if (!token || token.length < 2) return;
-        if (title.indexOf(token) >= 0) score += 8;
-        if (title.indexOf(token) === 0) score += 8;
+      var title, path, summary, tags, tokenKeys;
+      var docTokens = doc.tokens || {};
+
+      for (var i = 0; i < queryTokens.length; i++) {
+        var token = queryTokens[i];
+        if (!token || token.length < 2) continue;
+
+        if (title === undefined) title = String(doc.title || '').toLowerCase();
+        var titleIdx = title.indexOf(token);
+        if (titleIdx >= 0) {
+            score += 8;
+            if (titleIdx === 0) score += 8;
+        }
+
+        if (path === undefined) path = String(doc.path || '').toLowerCase();
         if (path.indexOf(token) >= 0) score += 5;
-        if (tags.some(function(tag) { return tag.indexOf(token) >= 0; })) score += 4;
+
+        if (tags === undefined) tags = doc.tags || [];
+        for (var j = 0; j < tags.length; j++) {
+            if (String(tags[j]).toLowerCase().indexOf(token) >= 0) {
+                score += 4;
+                break;
+            }
+        }
+
+        if (summary === undefined) summary = String(doc.summary || '').toLowerCase();
         if (summary.indexOf(token) >= 0) score += 2;
-        if (tokenKeys.some(function(key) { return key.indexOf(token) >= 0; })) score += 1;
-      });
+
+        if (docTokens[token] > 0) {
+            score += 1;
+        } else {
+            if (tokenKeys === undefined) tokenKeys = Object.keys(docTokens);
+            for (var k = 0; k < tokenKeys.length; k++) {
+                if (tokenKeys[k].indexOf(token) >= 0) {
+                    score += 1;
+                    break;
+                }
+            }
+        }
+      }
       return score;
     }
 
