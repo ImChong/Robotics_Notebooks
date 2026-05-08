@@ -218,4 +218,4 @@
 
 ## [2026-05-07] docs(wiki): wiki/entities/gene-26-5-genesis-ai.md — 补充 GENE-26.5 官方 YouTube 演示视频链接与参考来源说明
 
-## [2026-05-07] ingest | sources/repos/genmo.md、sonic-humanoid-motion-tracking.md、wilor.md — 入库 GENMO/GEM、SONIC、WiLoR；新增 wiki/methods/genmo、sonic-motion-tracking、wilor；补强 exoactor、beyondmimic、video-as-simulation 与 exoactor 论文映射
+## [2026-05-08] ingest | sources/papers/neural_motion_retargeting_nmr.md — 入库 NMR 论文并新增 wiki/methods/neural-motion-retargeting-nmr.md（含 Mermaid 流程图）；补强 motion-retargeting / GMR 交叉引用；ingest-workflow 增补 Mermaid 步骤说明
