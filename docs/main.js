@@ -1431,7 +1431,6 @@
     const metaEl = document.getElementById('roadmapMeta');
     const stageEl = document.getElementById('roadmapStageList');
     const relatedEl = document.getElementById('roadmapRelatedList');
-    const sourceEl = document.getElementById('roadmapSourceList');
     const emptyState = document.getElementById('roadmapEmptyState');
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
 
@@ -1451,7 +1450,6 @@
         removeLoadingState(stageEl);
       }
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
-      renderSourceCards(sourceEl, [], '当前无可展示的来源链接。');
       if (breadcrumb) removeLoadingState(breadcrumb);
       setRoadmapFlowChromeVisible(false);
       var flowRootEmpty = document.getElementById('roadmapFlowMermaidRoot');
@@ -1472,8 +1470,7 @@
       metaEl.innerHTML = [
         '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
         '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
-        '<p><strong>相关项：</strong>' + escapeHtml((roadmapPage.related_items || []).length) + '</p>',
-        '<p><strong>来源链接：</strong>' + escapeHtml((roadmapPage.source_links || []).length) + '</p>'
+        '<p><strong>相关项：</strong>' + escapeHtml((roadmapPage.related_items || []).length) + '</p>'
       ].join('');
       removeLoadingState(metaEl);
     }
@@ -1515,7 +1512,6 @@
     }
 
     renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
-    renderSourceCards(sourceEl, roadmapPage.source_links, '当前路线暂无来源链接。');
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
     setRoadmapPaperGuideVisible(roadmapId === 'roadmap-motion-control');
   }
@@ -2038,8 +2034,7 @@
             'roadmapSummary',
             'roadmapMeta',
             'roadmapStageList',
-            'roadmapRelatedList',
-            'roadmapSourceList'
+            'roadmapRelatedList'
           ]);
         }
       });
