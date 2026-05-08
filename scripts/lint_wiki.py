@@ -105,7 +105,7 @@ def has_source_reference(content: str) -> bool:
 
 
 def strip_misconception_sections(content: str) -> str:
-    """移除“常见误区/误区”区块，避免把辟谣内容误判为事实矛盾。"""
+    """移除"常见误区/误区"区块，避免把辟谣内容误判为事实矛盾。"""
     lines = content.splitlines()
     kept = []
     skip_level = None
@@ -125,11 +125,15 @@ def strip_misconception_sections(content: str) -> str:
     return "\n".join(kept)
 
 
-def lint() -> dict[str, Any]:
-    pages = get_wiki_pages()
-    page_set = {p.resolve() for p in pages}
+# ---------------------------------------------------------------------------
+# lint() 子检查函数
+# ---------------------------------------------------------------------------
 
-    # 建立每个页面被哪些其他页面链接的索引
+
+def _build_link_index(
+    pages: list[Path], page_set: set[Path]
+) -> tuple[dict[Path, list[Path]], dict[Path, list[str]]]:
+    """建立每个页面被哪些其他页面链接的索引，并收集断链。"""
     inbound: dict[Path, list[Path]] = {p.resolve(): [] for p in pages}
     broken_links: dict[Path, list[str]] = {}
 
@@ -138,103 +142,96 @@ def lint() -> dict[str, Any]:
         links = extract_internal_links(content, page)
         for target in links:
             if target in page_set:
-                # wiki 内链：记录 inbound
                 inbound[target].append(page.resolve())
-            elif target.exists():
-                # 链接到 references/ 等其他目录，文件存在，不算断链
-                # 但这些页面不在 wiki 内，不参与 inbound 统计
-                pass
-            else:
+            elif not target.exists():
                 broken_links.setdefault(page.resolve(), []).append(
                     str(target.relative_to(REPO_ROOT))
                     if target.is_relative_to(REPO_ROOT)
                     else str(target)
                 )
+    return inbound, broken_links
 
-    # 已有 wiki 页面的 stem 集合（用于"提及但缺页"检测）
-    existing_stems = {p.stem.lower() for p in pages}
 
-    results: dict[str, Any] = {
+def _empty_results() -> dict[str, Any]:
+    """初始化空的检查结果字典。"""
+    return {
         "orphan_pages": [],
         "missing_related": [],
         "missing_sources": [],
         "broken_links": [],
         "stub_pages": [],
-        "missing_pages": [],  # 提及但缺少对应 wiki 页面的技术概念
-        "broken_source_refs": [],  # 引用了不存在的 sources/ 文件
-        "sources_orphans": [],  # P3.3: sources/papers 中的死链（wiki 目标不存在）
-        "stale_pages": [],  # P3.2: wiki 页面比对应 sources 文件旧
-        "outdated_pages": [],  # V9: frontmatter updated: 字段距今 > 180 天
-        "contradictions": [],  # P3.1: 同一概念跨页面矛盾描述
-        "missing_type": [],  # V8: wiki 页面缺少 frontmatter type 字段
-        "log_inactive": [],  # V8: log.md 最近 30 天无操作记录
-        "missing_summary": [],  # V10: concepts/methods/tasks 缺少 summary/description
-        "query_format": [],  # V11: queries/ 缺少 Query 产物说明/参考来源/关联页面
-        "formalization_no_formula": [],  # V11: formalizations/ 缺少公式块
-        "formalization_unexplained_vars": [],  # V21: formalizations/ 公式变量缺少正文物理含义解释
-        "readme_badge": [],  # V11: README checklist 链接版本不一致
-        "orphan_count": [],  # V13: graph-stats.json 中孤儿节点（无入链）预警
-        "method_missing_link": [],  # V15: methods/ 页面缺少指向 formalizations/ 或 concepts/ 的链接
-        "method_missing_sections": [],  # V17: methods/ 页面缺少标准区块
-        "entity_missing_outgoing": [],  # V20: entities/ 页面缺少指向 methods/ 或 tasks/ 的出边
-        "wikilink_syntax": [],  # V22: 禁止使用 [[...]] Obsidian wikilink，必须用标准 Markdown 内链
-        "_ingest_covered": 0,  # 内部统计：有 ingest 来源的页面数
-        "_ingest_total": 0,  # 内部统计：扫描的页面总数
+        "missing_pages": [],
+        "broken_source_refs": [],
+        "sources_orphans": [],
+        "stale_pages": [],
+        "outdated_pages": [],
+        "contradictions": [],
+        "missing_type": [],
+        "log_inactive": [],
+        "missing_summary": [],
+        "query_format": [],
+        "formalization_no_formula": [],
+        "formalization_unexplained_vars": [],
+        "readme_badge": [],
+        "orphan_count": [],
+        "method_missing_link": [],
+        "method_missing_sections": [],
+        "entity_missing_outgoing": [],
+        "wikilink_syntax": [],
+        "_ingest_covered": 0,
+        "_ingest_total": 0,
     }
 
+
+def _check_per_page(
+    pages: list[Path],
+    inbound: dict[Path, list[Path]],
+    broken: dict[Path, list[str]],
+    results: dict[str, Any],
+) -> None:
+    """逐页检查：孤儿、关联区块、参考来源、断链、空壳、wikilink 语法、source 引用。"""
     for page in pages:
         resolved = page.resolve()
         content = page.read_text(encoding="utf-8")
         rel = page.relative_to(REPO_ROOT)
 
-        # 1. 孤儿页（README 和 index 类页面排除）
         if page.name.lower() not in ("readme.md", "index.md"):
             if not inbound.get(resolved):
                 results["orphan_pages"].append(str(rel))
 
-        # 2. 缺少关联页面区块（README、references/、roadmaps/ 元页面豁免）
         is_meta_page = (
             page.name.lower() in ("readme.md", "index.md")
             or "references/" in str(rel)
             or "roadmaps/" in str(rel)
         )
-        related_patterns = ["关联", "related", "已有页面", "关系"]
-        if not is_meta_page and not has_section(content, related_patterns):
+        if not is_meta_page and not has_section(content, ["关联", "related", "已有页面", "关系"]):
             results["missing_related"].append(str(rel))
 
-        # 3. 缺少参考来源区块（README、references/ 元页面豁免）
         is_meta_sources = page.name.lower() in ("readme.md", "index.md") or "references/" in str(
             rel
         )
         if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
 
-        # 4. 断链
-        if resolved in broken_links:
-            for broken in broken_links[resolved]:
-                results["broken_links"].append(f"{rel} → {broken}")
+        if resolved in broken:
+            for b in broken[resolved]:
+                results["broken_links"].append(f"{rel} → {b}")
 
-        # 5. 空壳页面（< 200 字）
         if word_count(content) < 200:
             results["stub_pages"].append(f"{rel} ({word_count(content)} 字)")
 
-        # Ingest coverage: count non-meta wiki pages with any sources/ raw-material link
         if not is_meta_page:
             results["_ingest_total"] += 1
             if has_source_reference(content):
                 results["_ingest_covered"] += 1
 
-        # 5a. 禁止使用 Obsidian [[wikilink]] 语法（AGENTS.md 第 156 行规定）
-        #     代码块和行内代码内的 [[...]] 是合法的（如 numpy 矩阵字面量），跳过
         wl_stripped = strip_code_blocks(content)
         for m in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", wl_stripped):
             token = m.group(1).strip()
-            # 过滤数字/矩阵字面量残留（理论上 strip_code_blocks 已处理，双保险）
             if re.match(r"^[\d\.\-\s,]+$", token):
                 continue
             results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
 
-        # 5b. 引用了不存在的 sources/ 文件（检测 sources/ 路径的内链）
         stripped = strip_code_blocks(content)
         for m in re.finditer(r"\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)", stripped):
             href = m.group(2).split("#")[0]
@@ -242,83 +239,81 @@ def lint() -> dict[str, Any]:
             if not resolved_src.exists():
                 results["broken_source_refs"].append(f"{rel} → {href}")
 
-    # 6. 提及但缺少对应 wiki 页面的技术概念（全局扫描）
-    WATCH_TERMS = {
-        # key: 术语名，value: 期望覆盖该术语的 wiki 页面 stem
-        # 已有覆盖的术语不在此列（EKF→ekf.md, HQP→hqp.md, SAC→policy-optimization.md,
-        #   InEKF→ekf.md, LQR→lqr.md, NMPC→model-predictive-control.md）
-        "MPPI": "model-based-rl",  # 已在 model-based-rl.md 中覆盖
+
+def _check_missing_concepts(pages: list[Path], results: dict[str, Any]) -> None:
+    """全局扫描提及但缺少对应 wiki 页面的技术概念。"""
+    existing_stems = {p.stem.lower() for p in pages}
+    watch_terms = {
+        "MPPI": "model-based-rl",
         "DMP": "dmp",
         "GAE": "gae",
         "HER": "her",
         "POMDP": "pomdp",
-        "Pontryagin": "optimal-control",  # 已在 optimal-control.md 有专节
-        "DDPG": "policy-optimization",  # 已在 policy-optimization.md 提及
+        "Pontryagin": "optimal-control",
+        "DDPG": "policy-optimization",
         "MARL": "marl",
         "ContactNet": "contact-net",
     }
+    all_content = "".join(page.read_text(encoding="utf-8") for page in pages)
     term_counts: dict[str, int] = {}
-    all_content = ""
-    for page in pages:
-        all_content += page.read_text(encoding="utf-8")
-    for term in WATCH_TERMS:
+    for term, slug in watch_terms.items():
         count = len(re.findall(rf"\b{re.escape(term)}\b", all_content))
-        slug = WATCH_TERMS[term]
         if count >= 2 and slug not in existing_stems:
             term_counts[term] = count
     for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
         results["missing_pages"].append(
-            f"{term} （出现 {count} 次，建议新建 wiki/{WATCH_TERMS[term]}.md）"
+            f"{term} （出现 {count} 次，建议新建 wiki/{watch_terms[term]}.md）"
         )
 
-    # P3.3: Sources 孤儿检测 — sources/papers/*.md 中链接到不存在的 wiki 页
+
+def _check_sources_health(results: dict[str, Any]) -> None:
+    """Sources 孤儿检测 + 陈旧页面检测。"""
     sources_papers_dir = REPO_ROOT / "sources" / "papers"
-    if sources_papers_dir.exists():
-        for src_file in sorted(sources_papers_dir.glob("*.md")):
-            src_content = src_file.read_text(encoding="utf-8")
-            for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
-                href = m.group(1).split("#")[0]
-                target = (src_file.parent / href).resolve()
-                if not target.exists():
-                    results["sources_orphans"].append(f"sources/papers/{src_file.name} → {href}")
+    if not sources_papers_dir.exists():
+        return
 
-    # P3.2: 陈旧页面检测 — sources 文件比对应 wiki 页更新时，标记需 review
-    # 注意：在 GitHub Actions 中 mtime 不可靠（checkout 会重置 mtime），故跳过
-    if sources_papers_dir.exists() and os.environ.get("GITHUB_ACTIONS") != "true":
-        seen_stale = set()
-        for src_file in sorted(sources_papers_dir.glob("*.md")):
-            src_content = src_file.read_text(encoding="utf-8")
-            src_mtime = src_file.stat().st_mtime
-            for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
-                href = m.group(1).split("#")[0]
-                wiki_target = (src_file.parent / href).resolve()
-                if wiki_target.exists() and wiki_target not in seen_stale:
-                    wiki_mtime = wiki_target.stat().st_mtime
-                    if src_mtime > wiki_mtime + 86400:  # 1天容差，避免同批次误报
-                        seen_stale.add(wiki_target)
-                        rel_wiki = wiki_target.relative_to(REPO_ROOT)
-                        src_date = date.fromtimestamp(src_mtime).isoformat()
-                        wiki_date = date.fromtimestamp(wiki_mtime).isoformat()
-                        results["stale_pages"].append(
-                            f"{rel_wiki} (wiki:{wiki_date} < sources/{src_file.name}:{src_date})"
-                        )
+    for src_file in sorted(sources_papers_dir.glob("*.md")):
+        src_content = src_file.read_text(encoding="utf-8")
+        for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
+            href = m.group(1).split("#")[0]
+            target = (src_file.parent / href).resolve()
+            if not target.exists():
+                results["sources_orphans"].append(f"sources/papers/{src_file.name} → {href}")
 
-    # P3.1: 矛盾检测 — 检查同一概念在不同页面是否有相反的定性描述
-    # CANONICAL_FACTS: {fact_id: {terms, pos_claims, neg_claims}}
-    # 当 pos_claims 和 neg_claims 同时出现在不同页面时，报告潜在矛盾
-    CANONICAL_FACTS = load_canonical_facts()
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        return
+    seen_stale: set[Path] = set()
+    for src_file in sorted(sources_papers_dir.glob("*.md")):
+        src_content = src_file.read_text(encoding="utf-8")
+        src_mtime = src_file.stat().st_mtime
+        for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
+            href = m.group(1).split("#")[0]
+            wiki_target = (src_file.parent / href).resolve()
+            if wiki_target.exists() and wiki_target not in seen_stale:
+                wiki_mtime = wiki_target.stat().st_mtime
+                if src_mtime > wiki_mtime + 86400:
+                    seen_stale.add(wiki_target)
+                    rel_wiki = wiki_target.relative_to(REPO_ROOT)
+                    src_date = date.fromtimestamp(src_mtime).isoformat()
+                    wiki_date = date.fromtimestamp(wiki_mtime).isoformat()
+                    results["stale_pages"].append(
+                        f"{rel_wiki} (wiki:{wiki_date} < sources/{src_file.name}:{src_date})"
+                    )
+
+
+def _check_contradictions(pages: list[Path], results: dict[str, Any]) -> None:
+    """矛盾检测 — 检查同一概念在不同页面是否有相反的定性描述。"""
+    canonical_facts = load_canonical_facts()
     all_pages_content = {
         p: strip_misconception_sections(p.read_text(encoding="utf-8")) for p in pages
     }
-    for fact_id, fact in CANONICAL_FACTS.items():
+    for fact_id, fact in canonical_facts.items():
         pos_pages, neg_pages = [], []
         for page, content in all_pages_content.items():
             if not all(re.search(t, content, re.IGNORECASE) for t in fact["terms"]):
                 continue
             has_pos = any(re.search(p, content, re.IGNORECASE) for p in fact["pos_claims"])
             has_neg = any(re.search(p, content, re.IGNORECASE) for p in fact["neg_claims"])
-            # 同一页面同时命中正反模式时，多半是比较/讨论页或正则重叠，
-            # 而非真矛盾。跳过该页避免 self-vs-self 误报（如「Impedance 柔顺性」）。
             if has_pos and has_neg:
                 continue
             if has_pos:
@@ -330,88 +325,74 @@ def lint() -> dict[str, Any]:
                 f"「{fact_id}」正面描述({', '.join(pos_pages)}) vs 负面描述({', '.join(neg_pages)})"
             )
 
-    # V8: Frontmatter type 字段一致性检查
-    # 豁免：references/、roadmaps/、tech-map/、overview/ 目录及 README/index 文件
+
+def _check_frontmatter(pages: list[Path], results: dict[str, Any]) -> None:
+    """Frontmatter 检查：type 字段、updated 过期、summary 字段。"""
     fm_exempt_dirs = {"references", "roadmaps", "tech-map", "overview", "schema", "queries"}
-    for page in pages:
-        rel = page.relative_to(REPO_ROOT)
-        parts = rel.parts
-        if page.name.lower() in ("readme.md", "index.md"):
-            continue
-        if any(d in parts for d in fm_exempt_dirs):
-            continue
-        content = page.read_text(encoding="utf-8")
-        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-        if fm_match:
-            fm_text = fm_match.group(1)
-            if not re.search(r"^type\s*:", fm_text, re.MULTILINE):
-                results["missing_type"].append(str(rel))
-        else:
-            results["missing_type"].append(str(rel))
-
-    # V9: frontmatter updated: 字段过期检测（距今 > 180 天）
     today_for_stale = date.today()
-    for page in pages:
-        rel = page.relative_to(REPO_ROOT)
-        content = page.read_text(encoding="utf-8")
-        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-        if not fm_match:
-            continue
-        upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
-        if not upd_m:
-            continue
-        try:
-            upd_dt = date.fromisoformat(upd_m.group(1))
-            days_old = (today_for_stale - upd_dt).days
-            if days_old > 180:
-                results["outdated_pages"].append(
-                    f"{rel} （updated: {upd_m.group(1)}，已 {days_old} 天）"
-                )
-        except ValueError:
-            pass
 
-    # V8: log.md 活跃度检查（最近 30 天内是否有操作记录）
-    log_path = REPO_ROOT / "log.md"
-    if log_path.exists():
-        log_content = log_path.read_text(encoding="utf-8")
-        today_dt = date.today()
-        # 解析所有 ## [YYYY-MM-DD] 条目
-        date_matches = re.findall(r"^## \[(\d{4}-\d{2}-\d{2})\]", log_content, re.MULTILINE)
-        if date_matches:
-            latest = max(date_matches)
-            try:
-                latest_dt = date.fromisoformat(latest)
-                days_since = (today_dt - latest_dt).days
-                if days_since > 30:
-                    results["log_inactive"].append(
-                        f"log.md 最后操作于 {latest}（已 {days_since} 天未更新，知识库可能停止维护）"
-                    )
-            except ValueError:
-                pass
-        else:
-            results["log_inactive"].append(
-                "log.md 中未找到符合格式的操作记录（格式：## [YYYY-MM-DD] ...）"
-            )
-    else:
-        results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
-
-    # V10: concepts/methods/tasks frontmatter 摘要字段完整性检查
-    summary_dirs = {"concepts", "methods", "tasks"}
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
-        if len(parts) < 2 or parts[0] != "wiki" or parts[1] not in summary_dirs:
-            continue
         content = page.read_text(encoding="utf-8")
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
-        if not fm_match:
-            results["missing_summary"].append(str(rel))
-            continue
-        fm_text = fm_match.group(1)
-        if not re.search(r"^(summary|description)\s*:", fm_text, re.MULTILINE):
-            results["missing_summary"].append(str(rel))
 
-    # V11: queries/ 页面必须包含 Query 产物说明 + 参考来源 + 关联页面
+        if page.name.lower() not in ("readme.md", "index.md") and not any(
+            d in parts for d in fm_exempt_dirs
+        ):
+            if fm_match:
+                if not re.search(r"^type\s*:", fm_match.group(1), re.MULTILINE):
+                    results["missing_type"].append(str(rel))
+            else:
+                results["missing_type"].append(str(rel))
+
+        if fm_match:
+            upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+            if upd_m:
+                try:
+                    days_old = (today_for_stale - date.fromisoformat(upd_m.group(1))).days
+                    if days_old > 180:
+                        results["outdated_pages"].append(
+                            f"{rel} （updated: {upd_m.group(1)}，已 {days_old} 天）"
+                        )
+                except ValueError:
+                    pass
+
+        if len(parts) >= 2 and parts[0] == "wiki" and parts[1] in ("concepts", "methods", "tasks"):
+            if not fm_match:
+                results["missing_summary"].append(str(rel))
+            elif not re.search(r"^(summary|description)\s*:", fm_match.group(1), re.MULTILINE):
+                results["missing_summary"].append(str(rel))
+
+
+def _check_log_activity(results: dict[str, Any]) -> None:
+    """log.md 活跃度检查（最近 30 天内是否有操作记录）。"""
+    log_path = REPO_ROOT / "log.md"
+    if not log_path.exists():
+        results["log_inactive"].append("log.md 文件不存在，无法检查知识库活跃度")
+        return
+
+    log_content = log_path.read_text(encoding="utf-8")
+    date_matches = re.findall(r"^## \[(\d{4}-\d{2}-\d{2})\]", log_content, re.MULTILINE)
+    if not date_matches:
+        results["log_inactive"].append(
+            "log.md 中未找到符合格式的操作记录（格式：## [YYYY-MM-DD] ...）"
+        )
+        return
+
+    latest = max(date_matches)
+    try:
+        days_since = (date.today() - date.fromisoformat(latest)).days
+        if days_since > 30:
+            results["log_inactive"].append(
+                f"log.md 最后操作于 {latest}（已 {days_since} 天未更新，知识库可能停止维护）"
+            )
+    except ValueError:
+        pass
+
+
+def _check_query_format(pages: list[Path], results: dict[str, Any]) -> None:
+    """queries/ 页面必须包含 Query 产物说明 + 参考来源 + 关联页面。"""
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
@@ -433,172 +414,219 @@ def lint() -> dict[str, Any]:
         if missing_parts:
             results["query_format"].append(f"{rel}（{', '.join(missing_parts)}）")
 
-    # V11: formalizations/ 页面必须包含至少一个公式块
+
+def _check_formalizations(pages: list[Path], results: dict[str, Any]) -> None:
+    """formalizations/ 公式块和变量解释检查。"""
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
             continue
         content = page.read_text(encoding="utf-8")
+
         if "$$" not in content and "$`" not in content and "`$" not in content:
             results["formalization_no_formula"].append(str(rel))
-
-    # V21: formalizations/ 公式变量必须有物理含义解释
-    # 启发式：从 $$...$$ 显示公式抽取“单字母拉丁大写变量”，排除函数调用形式（X(...)）。
-    # 对每个变量，检查正文是否含有定义/解释模式（动词、表格行、条目冒号、其中子句、等式定义等）。
-    for page in pages:
-        rel = page.relative_to(REPO_ROOT)
-        parts = rel.parts
-        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "formalizations":
             continue
-        content = page.read_text(encoding="utf-8")
-        display_blocks = re.findall(r"\$\$(.*?)\$\$", content, re.DOTALL)
-        if not display_blocks:
-            continue
-        candidate_vars: set[str] = set()
-        for block in display_blocks:
-            for v in re.findall(r"(?<![A-Za-z\\_^{])([A-Z])(?![A-Za-z_(])", block):
-                candidate_vars.add(v)
-        if not candidate_vars:
-            continue
-        unexplained: list[str] = []
-        for v in sorted(candidate_vars):
-            esc = re.escape(v)
-            patterns = [
-                # 列表条目： - $X$（可带下标/上标）：含义
-                rf"-\s*\$\\?{esc}[^$]*\$[^|\n]*?[:：]",
-                # 行内冒号定义： $X$：含义
-                rf"\$\\?{esc}[^$]*\$\s*[:：]\s*\S",
-                # 表格行 | $X...$ |
-                rf"\|\s*\$\\?{esc}[^$]*\$\s*\|",
-                # 动词解释： $X...$ 是/为/表示/代表/指/denote/含义/定义
-                rf"\$\\?{esc}[^$]*\$[^.\n]{{0,80}}(?:是|为|表示|代表|指|denote|denotes|含义|定义)",
-                # “其中 $X$” / “where $X$”
-                rf"(?:其中|where).{{0,100}}\$\\?{esc}[^$]*\$",
-                # 等式/集合/序关系定义： $X = / \in / \succeq / \succ / \equiv / \triangleq
-                rf"\$\\?{esc}\s*(?:=|\\in|\\succeq|\\succ|\\equiv|\\triangleq)",
-                # 粗体段落中带变量： **... $X$ ...**
-                rf"\*\*[^*]*\$\\?{esc}[^$]*\$[^*]*\*\*",
-            ]
-            if not any(re.search(p, content, re.MULTILINE | re.IGNORECASE) for p in patterns):
-                unexplained.append(v)
-        if unexplained:
-            results["formalization_unexplained_vars"].append(
-                f"{rel}（变量缺解释：{', '.join(unexplained)}）"
-            )
 
-    # V11: README.md 中 badges / checklist 链接应与当前仓库状态一致
-    readme_path = REPO_ROOT / "README.md"
-    if readme_path.exists():
-        readme_content = readme_path.read_text(encoding="utf-8")
+        _check_formalization_vars(rel, content, results)
 
-        checklist_files = sorted(
-            (REPO_ROOT / "docs" / "checklists").glob("tech-stack-next-phase-checklist-v*.md")
+
+def _var_is_explained(var: str, content: str) -> bool:
+    """检查单个大写变量是否在正文中有物理含义解释。"""
+    esc = re.escape(var)
+    patterns = [
+        rf"-\s*\$\\?{esc}[^$]*\$[^|\n]*?[:：]",
+        rf"\$\\?{esc}[^$]*\$\s*[:：]\s*\S",
+        rf"\|\s*\$\\?{esc}[^$]*\$\s*\|",
+        rf"\$\\?{esc}[^$]*\$[^.\n]{{0,80}}(?:是|为|表示|代表|指|denote|denotes|含义|定义)",
+        rf"(?:其中|where).{{0,100}}\$\\?{esc}[^$]*\$",
+        rf"\$\\?{esc}\s*(?:=|\\in|\\succeq|\\succ|\\equiv|\\triangleq)",
+        rf"\*\*[^*]*\$\\?{esc}[^$]*\$[^*]*\*\*",
+    ]
+    return any(re.search(p, content, re.MULTILINE | re.IGNORECASE) for p in patterns)
+
+
+def _check_formalization_vars(rel: Path, content: str, results: dict[str, Any]) -> None:
+    """检查 formalization 页面中 $$...$$ 公式变量是否有正文解释。"""
+    display_blocks = re.findall(r"\$\$(.*?)\$\$", content, re.DOTALL)
+    if not display_blocks:
+        return
+    candidate_vars: set[str] = set()
+    for block in display_blocks:
+        for v in re.findall(r"(?<![A-Za-z\\_^{])([A-Z])(?![A-Za-z_(])", block):
+            candidate_vars.add(v)
+    if not candidate_vars:
+        return
+    unexplained: list[str] = []
+    for v in sorted(candidate_vars):
+        if not _var_is_explained(v, content):
+            unexplained.append(v)
+    if unexplained:
+        results["formalization_unexplained_vars"].append(
+            f"{rel}（变量缺解释：{', '.join(unexplained)}）"
         )
-        if checklist_files:
 
-            def _checklist_version_num(path: Path) -> int:
-                m = re.search(r"v(\d+)", path.stem)
-                return int(m.group(1)) if m else -1
 
-            latest_checklist = max(checklist_files, key=_checklist_version_num)
-            latest_ver = _checklist_version_num(latest_checklist)
+def _checklist_version_num(path: Path) -> int:
+    m = re.search(r"v(\d+)", path.stem)
+    return int(m.group(1)) if m else -1
 
-            main_link_versions = re.findall(r"\[技术栈项目执行清单 v(\d+)\]", readme_content)
-            if main_link_versions:
-                main_ver = int(main_link_versions[0])
-                if main_ver < latest_ver:
-                    results["readme_badge"].append(
-                        f"README 主执行清单标题仍是 v{main_ver}，但最新为 v{latest_ver}，请更新"
-                    )
 
-            source_badge_match = re.search(
-                r"\[!\[Sources Coverage\]\([^)]+\)\]\(([^)]+tech-stack-next-phase-checklist-v(\d+)\.md)\)",
-                readme_content,
+def _check_checklist_badge(readme_content: str, results: dict[str, Any]) -> None:
+    """检查 README 中 checklist 链接版本是否与最新文件一致。"""
+    checklist_files = sorted(
+        (REPO_ROOT / "docs" / "checklists").glob("tech-stack-next-phase-checklist-v*.md")
+    )
+    if not checklist_files:
+        return
+    latest_checklist = max(checklist_files, key=_checklist_version_num)
+    latest_ver = _checklist_version_num(latest_checklist)
+
+    main_link_versions = re.findall(r"\[技术栈项目执行清单 v(\d+)\]", readme_content)
+    if main_link_versions and int(main_link_versions[0]) < latest_ver:
+        results["readme_badge"].append(
+            f"README 主执行清单标题仍是 v{main_link_versions[0]}，但最新为 v{latest_ver}，请更新"
+        )
+
+    source_badge_match = re.search(
+        r"\[!\[Sources Coverage\]\([^)]+\)\]\(([^)]+tech-stack-next-phase-checklist-v(\d+)\.md)\)",
+        readme_content,
+    )
+    if not source_badge_match:
+        results["readme_badge"].append("README 缺少 Sources Coverage badge 或链接格式异常")
+    else:
+        badge_link = source_badge_match.group(1)
+        badge_ver = int(source_badge_match.group(2))
+        expected_link = str(latest_checklist.relative_to(REPO_ROOT))
+        if badge_ver < latest_ver or badge_link != expected_link:
+            results["readme_badge"].append(
+                f"README Sources badge 指向 {badge_link}，但最新应为 {expected_link}"
             )
-            if not source_badge_match:
-                results["readme_badge"].append("README 缺少 Sources Coverage badge 或链接格式异常")
-            else:
-                badge_link = source_badge_match.group(1)
-                badge_ver = int(source_badge_match.group(2))
-                expected_link = str(latest_checklist.relative_to(REPO_ROOT))
-                if badge_ver < latest_ver or badge_link != expected_link:
-                    results["readme_badge"].append(
-                        f"README Sources badge 指向 {badge_link}，但最新应为 {expected_link}"
-                    )
 
-        graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
-        if graph_stats_path.exists():
-            graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
-            node_count = graph_stats.get("node_count")
-            edge_count = graph_stats.get("edge_count")
-            graph_badge_match = re.search(
-                r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/badge/知识图谱-(\d+)节点_(\d+)边-blue\?logo=d3\.js\)\]\([^)]+\)",
-                readme_content,
-            )
-            if not graph_badge_match:
-                results["readme_badge"].append("README 缺少 Knowledge Graph badge 或格式异常")
-            else:
-                badge_nodes = int(graph_badge_match.group(1))
-                badge_edges = int(graph_badge_match.group(2))
-                if badge_nodes != node_count or badge_edges != edge_count:
-                    results["readme_badge"].append(
-                        f"README Knowledge Graph badge 为 {badge_nodes}节点/{badge_edges}边，但实际为 {node_count}节点/{edge_count}边"
-                    )
 
-    # V13: 孤儿节点计数检测（读取 graph-stats.json）
+def _check_graph_badge(readme_content: str, results: dict[str, Any]) -> None:
+    """检查 README 中 Knowledge Graph badge 数据是否与 graph-stats.json 一致。"""
     graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
-    if graph_stats_path.exists():
-        graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
-        orphan_nodes = graph_stats.get("orphan_nodes", [])
-        if orphan_nodes:
-            results["orphan_count"].append(
-                f"发现 {len(orphan_nodes)} 个孤儿节点（无入链）：{orphan_nodes}"
+    if not graph_stats_path.exists():
+        return
+    graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
+    node_count = graph_stats.get("node_count")
+    edge_count = graph_stats.get("edge_count")
+    graph_badge_match = re.search(
+        r"\[!\[Knowledge Graph\]\(https://img\.shields\.io/badge/知识图谱-(\d+)节点_(\d+)边-blue\?logo=d3\.js\)\]\([^)]+\)",
+        readme_content,
+    )
+    if not graph_badge_match:
+        results["readme_badge"].append("README 缺少 Knowledge Graph badge 或格式异常")
+    else:
+        badge_nodes = int(graph_badge_match.group(1))
+        badge_edges = int(graph_badge_match.group(2))
+        if badge_nodes != node_count or badge_edges != edge_count:
+            results["readme_badge"].append(
+                f"README Knowledge Graph badge 为 {badge_nodes}节点/{badge_edges}边，但实际为 {node_count}节点/{edge_count}边"
             )
 
-    # V15: methods/ 页面必须包含指向 formalizations/ 或 concepts/ 的链接
+
+def _check_readme_badges(results: dict[str, Any]) -> None:
+    """README.md 中 badges / checklist 链接应与当前仓库状态一致。"""
+    readme_path = REPO_ROOT / "README.md"
+    if not readme_path.exists():
+        return
+    readme_content = readme_path.read_text(encoding="utf-8")
+    _check_checklist_badge(readme_content, results)
+    _check_graph_badge(readme_content, results)
+
+
+def _check_graph_orphans(results: dict[str, Any]) -> None:
+    """graph-stats.json 中孤儿节点预警。"""
+    graph_stats_path = REPO_ROOT / "exports" / "graph-stats.json"
+    if not graph_stats_path.exists():
+        return
+    graph_stats = json.loads(graph_stats_path.read_text(encoding="utf-8"))
+    orphan_nodes = graph_stats.get("orphan_nodes", [])
+    if orphan_nodes:
+        results["orphan_count"].append(
+            f"发现 {len(orphan_nodes)} 个孤儿节点（无入链）：{orphan_nodes}"
+        )
+
+
+def _check_method_page(page: Path, rel: Path, content: str, results: dict[str, Any]) -> None:
+    """单个 methods/ 页面检查：必须链接到 formalizations/concepts，必须含主要路线区块。"""
+    links = extract_internal_links(content, page)
+    has_required_link = False
+    for target in links:
+        if not target.is_relative_to(REPO_ROOT):
+            continue
+        target_parts = target.relative_to(REPO_ROOT).parts
+        if (
+            len(target_parts) >= 2
+            and target_parts[0] == "wiki"
+            and target_parts[1] in ("formalizations", "concepts")
+        ):
+            has_required_link = True
+            break
+    if not has_required_link:
+        results["method_missing_link"].append(str(rel))
+
+    if not re.search(r"##\s+(主要方法路线|核心技术路线|主要分类|主要技术路线)", content):
+        results["method_missing_sections"].append(str(rel))
+
+
+def _check_entity_page(page: Path, rel: Path, content: str, results: dict[str, Any]) -> None:
+    """单个 entities/ 页面检查：必须含至少 2 个指向 methods/tasks 的出边。"""
+    links = extract_internal_links(content, page)
+    out_count = 0
+    for target in links:
+        if not target.is_relative_to(REPO_ROOT):
+            continue
+        t_parts = target.relative_to(REPO_ROOT).parts
+        if len(t_parts) >= 2 and t_parts[0] == "wiki" and t_parts[1] in ("methods", "tasks"):
+            out_count += 1
+    if out_count < 2:
+        results["entity_missing_outgoing"].append(f"{rel} (当前出边: {out_count})")
+
+
+def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
+    """methods/ 页面结构检查 + entities/ 出边检查。
+
+    注意：原始实现中 entities/ 检查写在 methods/ 循环内部，
+    因 ``continue`` 门控导致 entities/ 页面实际不会被扫描。
+    此处保持相同行为——仅在 methods/ 页面上执行两项检查。
+    """
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
         if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
             continue
         content = page.read_text(encoding="utf-8")
-        links = extract_internal_links(content, page)
-        has_required_link = False
-        for target in links:
-            if not target.is_relative_to(REPO_ROOT):
-                continue
-            target_parts = target.relative_to(REPO_ROOT).parts
-            if (
-                len(target_parts) >= 2
-                and target_parts[0] == "wiki"
-                and target_parts[1] in ("formalizations", "concepts")
-            ):
-                has_required_link = True
-                break
-        if not has_required_link:
-            results["method_missing_link"].append(str(rel))
+        _check_method_page(page, rel, content, results)
 
-        # V17: methods/ 页面必须包含主要方法路线区块
-        if not re.search(r"##\s+(主要方法路线|核心技术路线|主要分类|主要技术路线)", content):
-            results["method_missing_sections"].append(str(rel))
+        if parts[1] == "entities":
+            _check_entity_page(page, rel, content, results)
 
-        # V20: entities/ 页面必须包含至少 2 个指向 methods/ 或 tasks/ 的出边
-        if len(parts) >= 2 and parts[0] == "wiki" and parts[1] == "entities":
-            links = extract_internal_links(content, page)
-            out_count = 0
-            for target in links:
-                if not target.is_relative_to(REPO_ROOT):
-                    continue
-                t_parts = target.relative_to(REPO_ROOT).parts
-                if (
-                    len(t_parts) >= 2
-                    and t_parts[0] == "wiki"
-                    and t_parts[1] in ("methods", "tasks")
-                ):
-                    out_count += 1
-            if out_count < 2:
-                results["entity_missing_outgoing"].append(f"{rel} (当前出边: {out_count})")
+
+# ---------------------------------------------------------------------------
+# 主入口
+# ---------------------------------------------------------------------------
+
+
+def lint() -> dict[str, Any]:
+    pages = get_wiki_pages()
+    page_set = {p.resolve() for p in pages}
+    inbound, broken_links = _build_link_index(pages, page_set)
+    results = _empty_results()
+
+    _check_per_page(pages, inbound, broken_links, results)
+    _check_missing_concepts(pages, results)
+    _check_sources_health(results)
+    _check_contradictions(pages, results)
+    _check_frontmatter(pages, results)
+    _check_log_activity(results)
+    _check_query_format(pages, results)
+    _check_formalizations(pages, results)
+    _check_readme_badges(results)
+    _check_graph_orphans(results)
+    _check_methods_entities(pages, results)
 
     return results
 

@@ -317,7 +317,8 @@ def assign_communities(
     return community_list, community_meta
 
 
-def main() -> None:
+def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """扫描所有 wiki 页面，构建节点和边列表。"""
     nodes: list[dict[str, Any]] = []
     edges: list[dict[str, str]] = []
     seen_edges: set[tuple[str, str]] = set()
@@ -343,17 +344,16 @@ def main() -> None:
                 seen_edges.add(key)
                 edges.append({"source": page_id, "target": target_id})
 
-    communities, community_meta = assign_communities(nodes, edges)
-    graph = {"nodes": nodes, "edges": edges, "communities": communities}
-    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUT_PATH.write_text(
-        json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
-    )
-    print(
-        f"✅ link-graph.json: {len(nodes)} nodes, {len(edges)} edges, "
-        f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
-    )
+    return nodes, edges
 
+
+def _compute_graph_stats(
+    nodes: list[dict[str, Any]],
+    edges: list[dict[str, str]],
+    communities: list[dict[str, Any]],
+    community_meta: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    """计算图谱统计数据并写入 graph-stats.json。"""
     in_degree: dict[str, int] = {n["id"]: 0 for n in nodes}
     out_degree: dict[str, int] = {n["id"]: 0 for n in nodes}
     for edge in edges:
@@ -386,7 +386,6 @@ def main() -> None:
         for meta in sorted(community_meta.values(), key=lambda item: -int(item["size"]))
     }
 
-    # 社区质量指标
     community_sizes = [
         int(meta["size"]) for meta in community_meta.values() if meta["id"] != OTHER_COMMUNITY_ID
     ]
@@ -397,7 +396,6 @@ def main() -> None:
     ]
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
-    community_quality_warning = largest_ratio > 0.45
 
     stats = {
         "generated_at": date.today().isoformat(),
@@ -411,12 +409,32 @@ def main() -> None:
         "community_quality": {
             "singleton_communities": singleton_communities,
             "largest_community_ratio": largest_ratio,
-            "community_quality_warning": community_quality_warning,
+            "community_quality_warning": largest_ratio > 0.45,
         },
     }
+    return stats
+
+
+def main() -> None:
+    nodes, edges = _build_graph_data()
+    communities, community_meta = assign_communities(nodes, edges)
+
+    graph = {"nodes": nodes, "edges": edges, "communities": communities}
+    OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    OUT_PATH.write_text(
+        json.dumps(graph, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
+    )
+    print(
+        f"✅ link-graph.json: {len(nodes)} nodes, {len(edges)} edges, "
+        f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
+    )
+
+    stats = _compute_graph_stats(nodes, edges, communities, community_meta)
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )
+    orphans = stats["orphan_nodes"]
+    hub_list = stats["top_hubs"]
     print(
         f"✅ graph-stats.json: {len(orphans)} orphans, "
         f"top hub='{hub_list[0]['label'] if hub_list else '-'}' → {STATS_PATH.relative_to(REPO_ROOT)}"
