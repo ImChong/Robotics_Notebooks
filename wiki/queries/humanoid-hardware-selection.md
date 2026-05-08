@@ -96,7 +96,7 @@ sources:
 **特点：**
 - 面向商业落地，不是学术平台
 - Agility Digit 有较成熟的 locomotion 控制系统（来自 Cassie 积累）
-- Figure 背后有 OpenAI 合作，VLA / 具身智能路线
+- Figure 侧路线已转向 **自研 Helix VLA** 为主（与 OpenAI 模型分工关系请以官网为准），详见 [Figure AI](../entities/figure-ai.md)
 
 ---
 
@@ -133,6 +133,7 @@ sources:
 - Unitree G1 产品页与 SDK 文档
 - Fourier GR1 技术白皮书
 - Rudin et al., *Learning to Walk in Minutes* (2022) — 大规模仿真训练基准
+- [Figure AI](../entities/figure-ai.md) — Figure 与 Helix 路线归纳（2026-05 更新）
 
 ---
 

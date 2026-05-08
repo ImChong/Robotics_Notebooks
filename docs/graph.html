@@ -1372,7 +1372,16 @@
     });
 
     function escapeHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+    }
+
+    function isSafeUrl(url) {
+      if (!url) return false;
+      const s = String(url).trim();
+      if (/^\/\//.test(s)) return false;
+      if (/^(?:https?|mailto|tel):/i.test(s)) return true;
+      if (/:/i.test(s)) return false;
+      return true;
     }
 
     /* ── 悬停高亮 ── */
@@ -1851,6 +1860,7 @@
       );
       if (paperLinks.length) {
         sbPaperList.innerHTML = paperLinks.slice(0, 6).map((url, idx) => {
+          if (!isSafeUrl(url)) return '';
           const stem = decodeURIComponent(String(url).split('/').pop().replace(/\.html$/, ''));
           const label = stem.replace(/[_-]+/g, ' ').trim() || `论文阅读笔记 ${idx + 1}`;
           return `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`;

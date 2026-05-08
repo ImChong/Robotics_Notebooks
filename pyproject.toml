@@ -1,0 +1,40 @@
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+extend-exclude = [
+    "docs/exports/",
+    "exports/",
+]
+
+[tool.ruff.lint]
+# F：Pyflakes；I：import 排序。其余规则后续按需开启，避免一次性巨型 diff。
+select = ["F", "I"]
+
+[tool.ruff.lint.per-file-ignores]
+# scripts/utils/__init__.py 是 re-export，import 即接口
+"scripts/utils/__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = [
+    "-q",
+    "--cov=search_indexing",
+    "--cov=search_wiki_core",
+    "--cov=search_wiki",
+    "--cov=utils",
+    "--cov-report=term-missing",
+    "--cov-fail-under=52",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["scripts"]
+
+[tool.coverage.report]
+omit = ["*/tests/*"]
+
+[tool.mypy]
+python_version = "3.11"
+ignore_missing_imports = true
+explicit_package_bases = true
+mypy_path = "scripts"

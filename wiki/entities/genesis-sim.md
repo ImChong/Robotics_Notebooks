@@ -3,7 +3,7 @@ type: entity
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-05-01
+updated: 2026-05-07
 ---
 
 # Genesis (仿真器)
@@ -28,10 +28,19 @@ updated: 2026-05-01
 - **推荐背景**：[xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 将 Genesis 推荐为实战路线图中的核心工具之一。
 - **对比**：相比 [mujoco](mujoco.md)，Genesis 的并行化程度更高；相比传统的 [sapien](sapien.md)，它在非刚体仿真方面具有显著优势。
 
+## 名称辨析（易混品牌）
+
+英文 **Genesis** 在机器人领域至少对应两条独立线索：本页的 **Genesis-Embodied-AI 开源仿真平台**，以及 **Genesis AI 公司** 与其 **GENE-26.5** 操作基础模型（闭源产品与演示为主）。二者不应在文献或工程选型中混为一谈；参见实体页 [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) 与原始汇编 [genesis_gene_ecosystem](../../sources/papers/genesis_gene_ecosystem.md)。
+
 ## 关联页面
 
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
+- [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
 
 ## 参考来源
+
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
+- [机器人仿真工具核心论文（含 Genesis arXiv 摘录）](../../sources/papers/simulation_tools.md)
+- [genesis_gene_ecosystem（Genesis / GENE 资料总档）](../../sources/papers/genesis_gene_ecosystem.md)
 - [Genesis Project Page](https://genesis-world.github.io/)
+- [Genesis: A Generative and Universal Physics Engine（arXiv）](https://arxiv.org/abs/2412.12919)

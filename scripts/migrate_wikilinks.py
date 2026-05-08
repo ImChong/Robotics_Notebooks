@@ -9,9 +9,10 @@
 - 支持 alias 写法 [[stem|显示文本]]
 - 链接文本：alias > basename
 """
+
+import os
 import re
 from pathlib import Path
-import os
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -44,7 +45,7 @@ def resolve_target(token: str, stem_map: dict[str, Path]) -> Path | None:
     token = token.strip()
     if "/" in token:
         # 按字面路径解析
-        candidate = (REPO_ROOT / (token if token.endswith(".md") else token + ".md"))
+        candidate = REPO_ROOT / (token if token.endswith(".md") else token + ".md")
         if candidate.exists():
             return candidate.resolve()
         return None
@@ -52,7 +53,9 @@ def resolve_target(token: str, stem_map: dict[str, Path]) -> Path | None:
     return stem_map.get(token)
 
 
-def replace_wikilinks_in_text(text: str, source: Path, stem_map: dict[str, Path]) -> tuple[str, list[dict]]:
+def replace_wikilinks_in_text(
+    text: str, source: Path, stem_map: dict[str, Path]
+) -> tuple[str, list[dict]]:
     """跳过代码块/行内代码，替换其余 [[...]]。"""
     # 用占位符把代码块和行内代码暂时替换出来
     placeholders: dict[str, str] = {}
@@ -82,12 +85,14 @@ def replace_wikilinks_in_text(text: str, source: Path, stem_map: dict[str, Path]
         # 链接文本：alias > basename
         text_label = alias.strip() if alias else (token.split("/")[-1])
         new_link = f"[{text_label}]({rel_str})"
-        changes.append({
-            "match": m.group(0),
-            "status": "OK",
-            "new": new_link,
-            "target": str(target.relative_to(REPO_ROOT)),
-        })
+        changes.append(
+            {
+                "match": m.group(0),
+                "status": "OK",
+                "new": new_link,
+                "target": str(target.relative_to(REPO_ROOT)),
+            }
+        )
         return new_link
 
     safe = WIKILINK_RE.sub(replace, safe)
@@ -103,7 +108,7 @@ def main() -> int:
     stem_map = build_stem_map()
     total_changes = 0
     files_modified = 0
-    broken = []
+    broken: list[tuple[str, str]] = []
     for p in sorted(WIKI_DIR.rglob("*.md")):
         text = p.read_text(encoding="utf-8")
         new_text, changes = replace_wikilinks_in_text(text, p, stem_map)

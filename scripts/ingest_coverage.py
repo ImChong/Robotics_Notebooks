@@ -18,25 +18,89 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 
 STOP_WORDS = {
-    "the", "a", "an", "of", "for", "in", "on", "at", "to", "by", "with",
-    "and", "or", "is", "are", "was", "were", "be", "been", "have", "has",
-    "from", "that", "this", "it", "as", "can", "will", "more", "not", "no",
-    "than", "but", "also", "based", "using", "used", "paper", "work",
-    "control", "robot", "learning", "method", "system", "approach",
+    "the",
+    "a",
+    "an",
+    "of",
+    "for",
+    "in",
+    "on",
+    "at",
+    "to",
+    "by",
+    "with",
+    "and",
+    "or",
+    "is",
+    "are",
+    "was",
+    "were",
+    "be",
+    "been",
+    "have",
+    "has",
+    "from",
+    "that",
+    "this",
+    "it",
+    "as",
+    "can",
+    "will",
+    "more",
+    "not",
+    "no",
+    "than",
+    "but",
+    "also",
+    "based",
+    "using",
+    "used",
+    "paper",
+    "work",
+    "control",
+    "robot",
+    "learning",
+    "method",
+    "system",
+    "approach",
 }
 
 VENUE_ABBR = {
-    "RSS", "NeurIPS", "CoRL", "ICRA", "RAL", "IEEE", "IROS", "ICLR",
-    "ICML", "IJRR", "TRO", "DOI", "URL", "API", "CLI", "LLM",
-    "MIT", "ETH", "GPU", "CPU", "DDP", "ODE", "FEM", "SPH", "ACM",
-    "PDF", "TBD", "MVP",
+    "RSS",
+    "NeurIPS",
+    "CoRL",
+    "ICRA",
+    "RAL",
+    "IEEE",
+    "IROS",
+    "ICLR",
+    "ICML",
+    "IJRR",
+    "TRO",
+    "DOI",
+    "URL",
+    "API",
+    "CLI",
+    "LLM",
+    "MIT",
+    "ETH",
+    "GPU",
+    "CPU",
+    "DDP",
+    "ODE",
+    "FEM",
+    "SPH",
+    "ACM",
+    "PDF",
+    "TBD",
+    "MVP",
 }
 
 
 def extract_covered_wiki_paths(content: str, sources_path: Path) -> set[Path]:
     """从 sources 文件中提取已覆盖的 wiki 页面路径（解析 wiki 相对链接）。"""
     covered = set()
-    for m in re.finditer(r'\]\(([^)]*wiki/[^)]+\.md)\)', content):
+    for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", content):
         href = m.group(1).split("#")[0]
         resolved = (sources_path.parent / href).resolve()
         if resolved.exists():
@@ -49,19 +113,19 @@ def extract_key_terms(content: str) -> list[str]:
     terms: set[str] = set()
 
     # 1. 论文标题中的英文词（大写开头，≥4 字符）
-    for m in re.finditer(r'^###\s+\d+\)\s+(.+?)(?:（|\(|$)', content, re.MULTILINE):
-        for w in re.findall(r'\b[A-Z][a-zA-Z]{3,}\b', m.group(1)):
+    for m in re.finditer(r"^###\s+\d+\)\s+(.+?)(?:（|\(|$)", content, re.MULTILINE):
+        for w in re.findall(r"\b[A-Z][a-zA-Z]{3,}\b", m.group(1)):
             if w.lower() not in STOP_WORDS and w not in VENUE_ABBR:
                 terms.add(w)
 
     # 2. wiki 路径中的主题词（kebab-case → 单词）
-    for m in re.finditer(r'wiki/\w+/([\w-]+)\.md', content):
+    for m in re.finditer(r"wiki/\w+/([\w-]+)\.md", content):
         for part in m.group(1).split("-"):
             if len(part) >= 4 and part.lower() not in STOP_WORDS:
                 terms.add(part)
 
     # 3. 全大写技术缩写（2-5 字符，排除场馆/通用词）
-    for m in re.finditer(r'\b([A-Z]{2,5})\b', content):
+    for m in re.finditer(r"\b([A-Z]{2,5})\b", content):
         abbr = m.group(1)
         if abbr not in VENUE_ABBR:
             terms.add(abbr)
@@ -82,16 +146,17 @@ def scan_wiki_for_terms(terms: list[str], covered: set[Path]) -> list[dict]:
         matched = []
         for term in terms:
             # 英文词用词边界，中文缩写直接搜索
-            pat = (rf'\b{re.escape(term)}\b'
-                   if re.match(r'^[A-Za-z]+$', term) else re.escape(term))
+            pat = rf"\b{re.escape(term)}\b" if re.match(r"^[A-Za-z]+$", term) else re.escape(term)
             if re.search(pat, content, flags):
                 matched.append(term)
 
         if matched:
-            suggestions.append({
-                "path": page.relative_to(REPO_ROOT),
-                "matched": matched[:6],
-            })
+            suggestions.append(
+                {
+                    "path": page.relative_to(REPO_ROOT),
+                    "matched": matched[:6],
+                }
+            )
 
     return suggestions
 
@@ -127,8 +192,10 @@ def main() -> None:
     else:
         print("\n✅ 未发现可补充的 wiki 页面")
 
-    print(f"\n合计：当前 {len(covered)} 页 → 建议增补 {len(suggestions)} 页 "
-          f"→ 潜在覆盖 {len(covered) + len(suggestions)} 页")
+    print(
+        f"\n合计：当前 {len(covered)} 页 → 建议增补 {len(suggestions)} 页 "
+        f"→ 潜在覆盖 {len(covered) + len(suggestions)} 页"
+    )
 
 
 if __name__ == "__main__":

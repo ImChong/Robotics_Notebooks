@@ -46,11 +46,14 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
 - [Crocoddyl](wiki/entities/crocoddyl.md)
 - [Unitree](wiki/entities/unitree.md)
+- [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md)（人形 / 四足高频品牌索引）
+- [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
 
 ### roadmap/ — 成长路线
 回答"应该先学什么、再学什么、学完输出什么"。
@@ -150,8 +153,10 @@ SORT type ASC
 
 ### Entities（实体页）
 
+- [1X Technologies](entities/1x-technologies.md) — 1X Technologies（前身为 Halodi Robotics）是一家挪威与美国双总部的通用人形机器人公司，产品覆盖轮式人形 EVE 与面向家庭场景的双足 NEO，强调真实世界部署数据与 AI 能力迭代。 `📅2026-05-07` `[entity_page]`
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [ANYmal 四足机器人](entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
+- [Asimov v1（开源人形机器人仓库）](entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Atom01 Deploy](entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`
 - [Atom01 Description](entities/atom01-description.md) — atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。 `📅unknown` `[entity_page]`
 - [Atom01 Firmware](entities/atom01-firmware.md) — atom01_firmware** 是 Atom01 的底层固件与板端运行仓库，负责通信、设备驱动与基础运行时能力。 `📅unknown` `[entity_page]`
@@ -161,23 +166,29 @@ SORT type ASC
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
+- [Figure AI](entities/figure-ai.md) — Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。 `📅2026-05-07` `[entity_page]`
+- [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5 是 Genesis AI 公司的机器人操作基础模型产品品牌；与开源 Genesis 物理仿真器（Genesis-Embodied-AI）名称相近但主体不同。 `📅2026-05-07` `[entity_page]`
+- [Genesis (仿真器)](entities/genesis-sim.md) — **Genesis** 是具身智能领域新兴的高性能物理仿真与数据生成平台，常与 Isaac Gym / Isaac Lab 并列，强调多物理场与 GPU 大规模并行。 `📅2026-05-07` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪 `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
+- [MotionCode™](entities/motioncode.md) — MotionCode 是宣称专注人体运动数字化的公司，公开分为 Move（采集与标注）、Media（内容）、Mind（机器人与 AI 运动学习）三线，并强调数据可对接 Isaac、MuJoCo 及主流 DCC/实时引擎管线。 `📅2026-05-07` `[entity_page]`
 - [开源人形机器人“大脑” (主控电脑) 选型](entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](entities/roboto-origin.md) — Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。 `📅unknown` `[entity_page]`
+- [SceneVerse++（3D 场景理解数据集）](entities/sceneverse-pp.md) — SceneVerse++ 从互联网无标注视频自动重建与标注大规模真实室内 3D 场景，为检测分割、3D 空间 VQA 与视觉–语言导航等任务提供训练数据，代码与数据开源。 `📅2026-05-07` `[entity_page]`
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Unitree G1 (人形机器人)](entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
 - [Unitree](entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）
 
+- [3D 空间 VQA（3D Spatial Visual Question Answering）](concepts/3d-spatial-vqa.md) — **3D 空间 VQA**：在 **三维室内场景** 条件下，模型需要结合视觉观测与自然语言问题，推理物体间 **几何关系**（远近、相对方位、计数、尺度、路径顺序等）并给出答案——常见形式包括选择题与数值题。 `📅2026-05-07` `[wiki_page]`
 - [Armature Modeling（电枢惯量建模）](concepts/armature-modeling.md) — 在机器人动力学和仿真中，**Armature** 指的是电机内部旋转部件（转子）的转动惯量，经过减速比放大后，对关节端产生的等效惯性效应。 `📅unknown` `[wiki_page]`
 - [Capture Point / DCM](concepts/capture-point-dcm.md) — Capture Point（捕获点）** 和 **DCM（Divergent Component of Motion，发散运动分量）** 是腿式机器人动态平衡与步态控制里两个非常关键的概念，用来描 `📅unknown` `[wiki_page]`
 - [Centroidal Dynamics](concepts/centroidal-dynamics.md) — Centroidal Dynamics（质心动力学）**：用机器人整体质心的线动量和角动量来描述全身动力学的一种中层建模方式。 `📅unknown` `[wiki_page]`
@@ -242,6 +253,7 @@ SORT type ASC
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
 - [Generative World Models (生成式世界模型)](methods/generative-world-models.md) — 生成式世界模型** 是具身智能（Embodied AI）领域的下一代物理引擎替代者。不同于 Drake 或 MuJoCo 等基于严谨几何和力学方程的解析引擎，生成式世界模型直接利用**生成式 AI `📅unknown` `[method_page]`
+- [GENMO（统一人体运动估计与生成）](methods/genmo.md) — GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。 `📅2026-05-07` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
@@ -249,19 +261,23 @@ SORT type ASC
 - [In-hand Reorientation (手内重定向)](methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
 - [LingBot-Map (Streaming 3D Reconstruction Foundation Model)](methods/lingbot-map.md) — LingBot-Map** 是一种新型的 3D 基础模型，旨在解决从连续视频流中进行高效、鲁棒的**流式 3D 重建**问题。 `📅unknown` `[method_page]`
 - [LQR / iLQR 算法详解](methods/lqr-ilqr.md) — LQR (Linear Quadratic Regulator)** 是线性最优控制的解析基石，而 **iLQR (iterative LQR)** 是其在非线性系统上的威力延伸。它们通过贝尔曼最 `📅unknown` `[method_page]`
+- [LWD（Learning while Deploying）](methods/lwd.md) — LWD（Learning while Deploying）** 是 AGIBOT Research 在 2026 年提出的**车队级（fleet-scale）offline-to-online 强化学习后训练框架**，把部署中的成功/失败/人为干预统一喂给同一个 RL 学习器，让单一通用 VLA 策略持续改进。 `📅2026-05-06` `[method_page]`
 - [Multi-Agent Reinforcement Learning (MARL)](methods/marl.md) — MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。 `📅unknown` `[method_page]`
 - [Model-Based RL（基于模型的强化学习）](methods/model-based-rl.md) — Model-Based RL（MBRL）**：在强化学习中，智能体显式学习或利用环境的动力学模型，通过在模型中规划或生成虚拟经验来提升样本效率。 `📅unknown` `[method_page]`
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
+- [NMR（神经运动重定向与人形全身控制）](methods/neural-motion-retargeting-nmr.md) — NMR** 用 CEPR 管线（筛选、GMR、聚类 RL 专家、仿真 rollout）构造物理一致的人机配对监督，训练 CNN–Transformer 将 SMPL 序列映射为 Unitree G1 等平台的全身参考轨迹，缓解优化式重定向的非凸与噪声传播。 `📅2026-05-08` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
+- [SONIC（规模化运动跟踪人形控制）](methods/sonic-motion-tracking.md) — SONIC** 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务，支持 VR、人体视频、文本与音乐等多模态指令，并作为真实机器人的通用低层执行器。 `📅2026-05-07` `[method_page]`
 - [StarVLA](methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
 - [Trajectory Optimization（轨迹优化）](methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`
 - [Visual Servoing（视觉伺服控制）](methods/visual-servoing.md) — 视觉伺服 (Visual Servoing)** 是一门将计算机视觉（Computer Vision）与经典控制理论（Control Theory）深度融合的技术。它不依赖于将图像构建为复杂的 3 `📅unknown` `[method_page]`
+- [WiLoR（野外 3D 手部定位与重建）](methods/wilor.md) — WiLoR** 是端到端的野外手部检测定位 + Transformer 3D 手部网格重建网络，支持单图像与逐帧视频管线，为下游灵巧操作或人形双手轨迹提供单 RGB 估计。 `📅2026-05-07` `[method_page]`
 - [VLA（Vision-Language-Action）](methods/vla.md) — VLA**：把视觉、语言和机器人动作统一到同一个模型里，让策略不只“看见状态后输出动作”，还能够显式理解任务指令和语义约束。 `📅unknown` `[method_page]`
 - [π₀ (Pi-zero) 策略模型](methods/π0-policy.md) — π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的 `📅unknown` `[method_page]`
 
@@ -276,6 +292,7 @@ SORT type ASC
 - [Manipulation](tasks/manipulation.md) — 操作**：让机器人的手/末端执行器抓取、移动、操作物体。 `📅unknown` `[task_page]`
 - [Teleoperation（遥操作）](tasks/teleoperation.md) — 一句话定义**：操作员通过外部设备实时远程控制机器人完成任务，同时采集高质量示范数据用于后续策略学习。 `📅unknown` `[task_page]`
 - [ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation](tasks/ultra-survey.md) — 统一多模态控制：实现人形机器人自主全身移动操作 `📅unknown` `[task_page]`
+- [视觉–语言导航（Vision-and-Language Navigation, VLN）](tasks/vision-language-navigation.md) — **VLN**：智能体接收 **自然语言导航指令** 与 **第一人称（egocentric）视觉观测**（渲染视图或真实相机图像），在离散或连续动作空间中决策，最终到达指令描述的目标位置或物体。**语言–视觉接地** 与 **路径效率** 是核心评价维度。 `📅2026-05-07` `[task_page]`
 
 ### Wiki Formalizations（形式化基础）
 
@@ -322,6 +339,7 @@ SORT type ASC
 ### Wiki Overview（总览）
 
 - [人形机器人运动控制 Know-How](overview/humanoid-motion-control-know-how.md) — - **高频振动**：足端撞击地面的瞬时振动会通过骨架传导至 IMU。如果固定不牢，加速度计会因共振产生巨大偏置。 `📅unknown` `[overview_page]`
+- [市面知名机器人平台纵览](overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅2026-05-07` `[overview_page]`
 - [Robot Learning Overview](overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 
 ### Roadmaps（路线页）

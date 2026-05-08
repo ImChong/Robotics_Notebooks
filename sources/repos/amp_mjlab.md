@@ -38,15 +38,18 @@ AMP_mjlab 在足式机器人 RL 中解决了一个实际问题：传统做法需
 
 ### 2. 核心指标与曲线含义
 
-在 `rsl_rl` 记录的 TensorBoard 中，需重点关注：
-- 总奖励与 `episode_length`：约 20k iterations 附近可能出现阶跃式跳变，通常对应 recovery 行为涌现。
-- 速度跟踪奖励：`track_anchor_linear_velocity` / `track_anchor_angular_velocity` 分别反映平移和转向指令是否被跟上。
-- 高度恢复奖励：`track_root_height` 是判断起身是否成功的关键曲线。
-- 终止惩罚：`is_terminated` 长期过大说明策略仍频繁摔倒或 reset。
-- 平滑与物理性惩罚：`joint_acc_l2`、`action_rate_l2`、`foot_slip`、`self_collisions`、`joint_pos_limits` 用来判断动作是否适合部署。
-- AMP 判别器相关曲线：判别器 loss / AMP reward 应进入对抗平衡；风格奖励不能脱离速度跟踪和高度恢复单独判断。
+实际写入 TensorBoard 的命名空间见 `rsl_rl/runners/amp_on_policy_runner.py` 与 mjlab `reward_manager`：
 
-**走势判断**：2w iteration 的指标跳变（"The Recovery Jump"）是成功的关键信号，不应视为不稳定；但最终 checkpoint 应同时满足“能站起、能跟踪速度、动作不抖、终止减少”。
+- `Train/mean_reward` / `Train/mean_episode_length`：滚动 reward / episode 长度均值，README 配图（`logs.png`）显示约 20k iterations 附近会出现阶跃式跳变（"Recovery Jump"），100k iter 时分别达到 ≈41.36 / ≈1000（平滑值）。
+- `Episode_Reward/track_anchor_linear_velocity`、`Episode_Reward/track_anchor_angular_velocity`：anchor 线速度、yaw 角速度跟踪奖励。
+- `Episode_Reward/track_root_height`：判断起身是否成功的关键曲线。
+- `Episode_Reward/is_terminated`：终止惩罚（weight=-200），长期巨负说明策略仍频繁摔倒或 reset。
+- `Episode_Reward/joint_acc_l2`、`action_rate_l2`、`foot_slip`、`self_collisions`、`joint_pos_limits`：动作平滑/物理性惩罚，是否适合部署的依据。
+- `Loss/amp`、`Loss/amp_grad_pen`、`Loss/amp_policy_pred`、`Loss/amp_expert_pred`：AMP 判别器训练损失、梯度惩罚、对 policy/expert 样本的输出均值；风格奖励直接加到 step reward，没有独立的 `disc_reward` scalar，需要通过这两组 pred 的差判断对抗平衡。
+- `Loss/value_function`、`Loss/surrogate`、`Loss/entropy`、`Loss/learning_rate`、`Policy/mean_noise_std`：PPO 训练健康指标。
+- `Metrics/mean_action_acc`：mjlab MetricsManager 注册的动作加速度指标。
+
+**走势判断**：2w iteration 的指标跳变（"The Recovery Jump"）是成功的关键信号，不应视为不稳定；但最终 checkpoint 应同时满足"能站起、能跟踪速度、动作不抖、终止减少、判别器仍在工作"。
 
 ### 3. 统一 AMP 训练
 

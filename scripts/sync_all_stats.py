@@ -73,18 +73,26 @@ def main():
 
         # 更新 Badge
         graph_badge = f"[![Knowledge Graph](https://img.shields.io/badge/知识图谱-{nodes}节点_{edges}边-blue?logo=d3.js)]"
-        content = re.sub(r"\[!\[Knowledge Graph\]\([^)]+\)\]\([^)]+\)", f"{graph_badge}(https://imchong.github.io/Robotics_Notebooks/graph.html)", content)
+        content = re.sub(
+            r"\[!\[Knowledge Graph\]\([^)]+\)\]\([^)]+\)",
+            f"{graph_badge}(https://imchong.github.io/Robotics_Notebooks/graph.html)",
+            content,
+        )
 
         cov_color = "green" if cov_pct >= 90 else "yellow"
         cov_badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{cov_pct}%25-{cov_color})]"
-        content = re.sub(r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)", f"{cov_badge}(docs/checklists/tech-stack-next-phase-checklist-v21.md)", content)
+        content = re.sub(
+            r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)",
+            f"{cov_badge}(docs/checklists/tech-stack-next-phase-checklist-v21.md)",
+            content,
+        )
 
         # 更新时间戳注释
         today_str = date.today().isoformat()
         content = re.sub(
             r"<!-- Last updated: .* \(V\d+ .*：图谱 \d+ 节点 \d+ 边\) -->",
             f"<!-- Last updated: {today_str} (V21 自动更新：图谱 {nodes} 节点 {edges} 边) -->",
-            content
+            content,
         )
 
         README_MD.write_text(content, encoding="utf-8")
@@ -101,20 +109,22 @@ def main():
             f'            <span id="heroNodeCount">{nodes}</span> Nodes ·\n'
             f'            <span id="heroEdgeCount">{edges}</span> Links ·\n'
             f'            <span id="heroCoverageCount">{cov_done}/{cov_total}</span> Sources\n'
-            f'          </div>'
+            f"          </div>"
         )
 
         content = re.sub(
             r'<div class="hero-stat-row-mini" aria-label="知识库当前规模">.*?</div>',
             new_stats_html,
             content,
-            flags=re.DOTALL
+            flags=re.DOTALL,
         )
 
         INDEX_HTML.write_text(content, encoding="utf-8")
         print("✅ docs/index.html 更新完成")
 
-    print(f"\n✨ 所有统计数据同步完成！当前状态: {nodes} Nodes, {edges} Edges, Coverage {cov_done}/{cov_total}")
+    print(
+        f"\n✨ 所有统计数据同步完成！当前状态: {nodes} Nodes, {edges} Edges, Coverage {cov_done}/{cov_total}"
+    )
 
 
 if __name__ == "__main__":

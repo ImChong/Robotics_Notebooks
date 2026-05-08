@@ -1,0 +1,21 @@
+name: CI / 脚本 / 前端维护
+description: GitHub Actions、Makefile、`scripts/`、`docs/main.js`、测试与质量门禁等相关问题或改进
+title: "[ci] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        本地对齐 CI：见 `docs/contributing-ci.md`；常用命令：`make ci-test`、`make ci-preflight`。
+  - type: textarea
+    id: problem
+    attributes:
+      label: 现象 / 期望
+      description: 失败日志摘要、相关 workflow 名称、复现步骤（若有）
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: 已尝试的排查（可选）
+    validations:
+      required: false

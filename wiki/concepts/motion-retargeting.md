@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-18
+updated: 2026-05-08
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -61,6 +61,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
 - 可跨模态（视频 → 机器人关节）
 - 近年的工程趋势是先做几何重定向，再接一个下游物理一致化或 tracking 层，避免“姿态像但动力学不可执行”
+- **代表工作**：[NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) 用仿真 RL 专家构造物理一致的人机配对数据，再训练 CNN–Transformer 做整段 SMPL→机器人映射，显式针对优化式重定向的非凸与噪声传播问题。
 
 ---
 
@@ -116,6 +117,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |
 | phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |
 | OmniH2O | 人形机器人遥操+重定向框架 |
+| [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
 
 ---
 
@@ -144,6 +146,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
+- **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
 
 ---
 
@@ -156,4 +159,6 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹
 - [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性
 - [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现
+- [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真 RL 修补监督
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
+- [MotionCode](../entities/motioncode.md) — 商业运动数据与「人形/具身 + RL」叙事样本

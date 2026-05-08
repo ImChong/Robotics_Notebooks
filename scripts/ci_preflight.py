@@ -6,6 +6,7 @@ index, graph exports, home stats, README badges, and docs hero stats. Running
 only part of the chain is the common cause of Actions failures, so this script
 keeps the order in one place.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -73,7 +74,9 @@ def main() -> None:
 
     run(["python3", "scripts/generate_page_catalog.py"], "Update page catalog")
     run(["python3", "scripts/export_minimal.py"], "Export wiki JSON, sitemap, and search index")
-    run(["python3", "scripts/sync_all_stats.py"], "Update graph, home stats, badges, and docs stats")
+    run(
+        ["python3", "scripts/sync_all_stats.py"], "Update graph, home stats, badges, and docs stats"
+    )
 
     if not args.skip_quality:
         run(["python3", "scripts/eval_search_quality.py"], "Run search regression")

@@ -6,6 +6,7 @@ updated: 2026-04-27
 related:
   - ../concepts/state-estimation.md
   - ./vla.md
+  - ../entities/sceneverse-pp.md
 sources:
   - ../../sources/repos/lingbot-map.md
 summary: "LingBot-Map 是一个专为流式 3D 重建设计的前馈式 3D 基础模型，利用 Geometric Context Transformer (GCT) 实现长序列稳定推理与实时漂移校正。"

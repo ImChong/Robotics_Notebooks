@@ -123,11 +123,7 @@ def make_related_html(related: Iterable[str]) -> str:
 
 
 def escape_html(text: str) -> str:
-    return (
-        text.replace("&", "&amp;")
-        .replace("<", "&lt;")
-        .replace(">", "&gt;")
-    )
+    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
 
 
 def formalization_cards() -> list[tuple[str, str, str]]:
@@ -175,14 +171,34 @@ def get_deck(deck: str) -> list[tuple[str, str, str]]:
         return concept_cards()
     if deck == "control-stability":
         # control-stability deck: formalizations + control-related concepts
-        stability_stems = {"lyapunov", "hjb", "lqr", "gae", "bellman-equation",
-                           "contact-complementarity", "control-lyapunov-function"}
-        f_cards = [c for c in formalization_cards()
-                   if any(stem in c[2] for stem in stability_stems)]
-        c_cards = [c for c in concept_cards()
-                   if any(tag in c[2] for tag in
-                          ("stability", "cbf", "clf", "lyapunov", "control-barrier",
-                           "whole-body-control", "optimal-control"))]
+        stability_stems = {
+            "lyapunov",
+            "hjb",
+            "lqr",
+            "gae",
+            "bellman-equation",
+            "contact-complementarity",
+            "control-lyapunov-function",
+        }
+        f_cards = [
+            c for c in formalization_cards() if any(stem in c[2] for stem in stability_stems)
+        ]
+        c_cards = [
+            c
+            for c in concept_cards()
+            if any(
+                tag in c[2]
+                for tag in (
+                    "stability",
+                    "cbf",
+                    "clf",
+                    "lyapunov",
+                    "control-barrier",
+                    "whole-body-control",
+                    "optimal-control",
+                )
+            )
+        ]
         return f_cards + c_cards
     # default: all
     return formalization_cards() + concept_cards()
@@ -217,7 +233,11 @@ def main() -> None:
     c_count = len(concept_cards())
     print(
         f"✅ {out_path.name}: {len(cards)} cards"
-        + (f" ({f_count} formalizations + {c_count} concepts)" if args.deck == "all" else f" (deck={args.deck})")
+        + (
+            f" ({f_count} formalizations + {c_count} concepts)"
+            if args.deck == "all"
+            else f" (deck={args.deck})"
+        )
         + f" → {out_path.relative_to(REPO_ROOT)}"
     )
 

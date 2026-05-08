@@ -15,7 +15,12 @@ on:
       - 'wiki/**'
       - 'scripts/**'
       - 'schema/**'
+      - 'sources/**'
   workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   quality-check:
@@ -27,26 +32,21 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: pip
+          cache-dependency-path: requirements-ci-lite.txt
 
       - name: Install dependencies
-        run: pip install numpy pyyaml
+        run: pip install -r requirements-ci-lite.txt
 
       - name: Run CI preflight
+        id: preflight
         run: python3 scripts/ci_preflight.py
 
       - name: Summary
         if: always()
         run: |
-          echo "## Quality Check Results" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
-          echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
-          python3 scripts/lint_wiki.py 2>&1 | grep -q "✅ 所有检查通过" \
-            && echo "| Lint | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
-            || echo "| Lint | ❌ 有问题 |" >> $GITHUB_STEP_SUMMARY
-          python3 scripts/eval_search_quality.py 2>&1 | grep -q "通过率 ≥ 80%" \
-            && echo "| Search Regression | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
-            || echo "| Search Regression | ❌ 未达标 |" >> $GITHUB_STEP_SUMMARY
-          python3 scripts/check_export_quality.py 2>&1 | grep -q "所有导出质量检查通过" \
-            && echo "| Export Quality | ✅ 通过 |" >> $GITHUB_STEP_SUMMARY \
-            || echo "| Export Quality | ❌ 有问题 |" >> $GITHUB_STEP_SUMMARY
+          echo "## CI preflight（搜索回归 / Wiki lint / 导出质量）" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "步骤结果：**${{ steps.preflight.outcome }}**" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "脚本 \`ci_preflight.py\` 依次执行：目录同步与导出、搜索质量回归、\`lint_wiki --report\`、导出一致性检查。详见日志中的各子步骤。" >> "$GITHUB_STEP_SUMMARY"
