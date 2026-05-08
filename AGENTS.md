@@ -175,3 +175,32 @@
    - 范围 (scope)：可选（如 ux, actions, wiki）。
    示例：`fix(actions): 修复 CLAW 页面格式缺失主要技术路线的问题`
    示例：`chore: 更新主页统计数据与图谱 (172 nodes, 955 edges)`
+
+## Cursor Cloud specific instructions
+
+### Environment overview
+
+This is a **pure content + tooling** repo — no backend services, databases, or Docker required. The stack is:
+- **Python 3.12** (scripts, linting, tests) with deps in `requirements-dev.txt`
+- **Node.js 22 + npm** (ESLint for `docs/main.js` only) with deps in `package.json`
+- **GNU Make** as the task runner (see `Makefile` for all targets)
+
+### Gotchas
+
+- `pip-audit` (used in `make ci-test`) requires `python3-venv` to be installed at the system level (`apt install python3-venv`). The update script handles `pip install` but system packages must be pre-installed.
+- Python tools (`ruff`, `mypy`, `pytest`, `pip-audit`, etc.) install to `~/.local/bin`. Ensure `PATH` includes `$HOME/.local/bin` before running Make targets.
+- `PYTHONPATH=scripts` is required for `mypy` and `pytest` (already set in the Makefile targets).
+
+### Key commands
+
+| Task | Command |
+|------|---------|
+| Full CI gate (mirrors GH Actions) | `make ci-test` |
+| Wiki health check | `make lint` |
+| Pre-commit preflight (syncs all derived files + checks) | `make ci-preflight` |
+| Unit tests only | `make test` |
+| Serve static site locally | `cd docs && python3 -m http.server 8080` |
+
+### Before committing wiki changes
+
+Always run `make ci-preflight` — it regenerates derived files (`index.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data.
