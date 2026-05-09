@@ -1,7 +1,4 @@
 (function () {
-  var roadmapCyInstances = [];
-  var roadmapCyResizeBound = false;
-
   const root = document.documentElement;
   const themeToggle = document.getElementById('themeToggle');
   const key = 'robotics-notebooks-theme';
@@ -27,9 +24,9 @@
       updateThemeToggle();
       const detailContentEl = document.getElementById('detailContent');
       if (detailContentEl) renderDetailMermaid(detailContentEl);
-      const roadmapFlowHost = document.getElementById('roadmapFlowGraphRoot');
-      if (roadmapFlowHost && roadmapFlowHost.querySelector('.roadmap-cy-canvas')) {
-        refreshRoadmapCytoscapeStyles();
+      const roadmapFlowHost = document.getElementById('roadmapFlowMermaidRoot');
+      if (roadmapFlowHost && roadmapFlowHost.querySelector('.mermaid')) {
+        renderDetailMermaid(roadmapFlowHost);
       }
     });
   }
@@ -457,204 +454,84 @@
     window.mermaid.run({ nodes: nodes }).catch(function () {});
   }
 
-  function destroyRoadmapCyInstances() {
-    roadmapCyInstances.forEach(function (cy) {
-      try {
-        cy.destroy();
-      } catch {
-        /* ignore */
-      }
-    });
-    roadmapCyInstances = [];
+  function sanitizeMermaidLabel(text, maxLen) {
+    var max = maxLen == null ? 44 : maxLen;
+    var t = String(text || '')
+      .replace(/\[/g, ' ')
+      .replace(/\]/g, ' ')
+      .replace(/"/g, ' ')
+      .replace(/[()#`]/g, ' ')
+      .replace(/</g, ' ')
+      .replace(/&/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (t.length > max) {
+      t = t.slice(0, Math.max(0, max - 1)) + '…';
+    }
+    return t || '—';
   }
 
-  function roadmapCyStylesheet() {
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    var fg = isDark ? '#f5f5f7' : '#1d1d1f';
-    var muted = isDark ? '#9b9ba0' : '#86868b';
-    var fill = isDark ? '#2c2c2e' : '#f5f5f7';
-    var border = isDark ? '#5ea0eb' : '#0066cc';
-    var trunkFill = isDark ? '#1a2d44' : '#e8f2fc';
-    return [
-      {
-        selector: 'node',
-        style: {
-          label: 'data(label)',
-          'text-valign': 'center',
-          'text-halign': 'center',
-          'font-size': '11px',
-          'font-family': 'inherit',
-          color: fg,
-          'background-color': fill,
-          'border-width': 1,
-          'border-color': border,
-          padding: '10px',
-          'text-wrap': 'wrap',
-          'text-max-width': '160px',
-          width: 'label',
-          height: 'label',
-          shape: 'roundrectangle'
-        }
-      },
-      {
-        selector: 'node[kind="trunk"]',
-        style: {
-          'background-color': trunkFill,
-          'border-width': 2,
-          'text-max-width': '200px'
-        }
-      },
-      {
-        selector: 'node[kind="placeholder"]',
-        style: {
-          'border-style': 'dashed',
-          opacity: 0.75
-        }
-      },
-      {
-        selector: 'node[kind="detail"]',
-        style: {
-          cursor: 'pointer',
-          'border-width': 2
-        }
-      },
-      {
-        selector: 'edge[kind = "bridge"]',
-        style: {
-          'line-style': 'dashed',
-          'line-dash-pattern': [8, 4],
-          width: 1.5,
-          opacity: 0.72,
-          'line-color': muted,
-          'target-arrow-color': muted,
-          'target-arrow-shape': 'triangle',
-          'curve-style': 'unbundled-bezier',
-          'control-point-step-size': 40,
-          label: 'data(label)',
-          'font-size': '9px',
-          color: muted,
-          'text-background-color': isDark ? '#1c1c1e' : '#ffffff',
-          'text-background-opacity': 1,
-          'text-background-padding': '2px'
-        }
-      },
-      {
-        selector: 'edge',
-        style: {
-          width: 2,
-          'line-color': muted,
-          'target-arrow-color': muted,
-          'target-arrow-shape': 'triangle',
-          'curve-style': 'bezier',
-          label: 'data(label)',
-          'font-size': '10px',
-          color: muted,
-          'text-background-color': isDark ? '#1c1c1e' : '#ffffff',
-          'text-background-opacity': 1,
-          'text-background-padding': '3px'
+  /**
+   * Single learning-roadmap Mermaid: stage spine OV0→OVn, optional motion-control dual trunk,
+   * each stage fans out to related wiki titles (max 5).
+   */
+  function buildUnifiedRoadmapMermaidSource(stages, roadmapId, detailPages) {
+    var lines = ['flowchart TB'];
+    lines.push('  %% roadmap unified diagram');
+    var n = stages.length;
+    var i;
+    for (i = 0; i < n; i++) {
+      var st = stages[i];
+      var ovLbl = sanitizeMermaidLabel(
+        String(st.id || '').toUpperCase() + ' · ' + String(st.title || ''),
+        46
+      );
+      lines.push('  OV' + i + '["' + ovLbl + '"]');
+    }
+    for (i = 0; i < n - 1; i++) {
+      lines.push('  OV' + i + ' --> OV' + (i + 1));
+    }
+    if (roadmapId === 'roadmap-motion-control') {
+      lines.push('  MC_DT["传统控制主干<br/>LIP/ZMP → Centroidal → MPC/TO → TSID/WBC"]');
+      lines.push('  MC_DL["Learning 扩展层<br/>RL → Locomotion RL → IL / Motion prior → Sim2Real"]');
+      lines.push('  MC_DT -->|建议先打牢再叠学习能力| MC_DL');
+      var mid = Math.min(3, Math.max(0, n - 1));
+      lines.push('  OV' + mid + ' -.->|主线对照| MC_DT');
+    }
+    for (i = 0; i < n; i++) {
+      var stage = stages[i];
+      var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 5) : [];
+      if (!related.length) {
+        lines.push('  EMP' + i + '["暂无关联详情页"]');
+        lines.push('  OV' + i + ' --> EMP' + i);
+      } else {
+        for (var k = 0; k < related.length; k++) {
+          var rid = related[k];
+          var page = detailPages[rid] || {};
+          var nid = 'RX' + i + 'Y' + k;
+          var nlbl = sanitizeMermaidLabel(page.title || rid, 36);
+          lines.push('  ' + nid + '["' + nlbl + '"]');
+          lines.push('  OV' + i + ' --> ' + nid);
         }
       }
-    ];
-  }
-
-  function refreshRoadmapCytoscapeStyles() {
-    var sheet = roadmapCyStylesheet();
-    roadmapCyInstances.forEach(function (cy) {
-      cy.style().fromJson(sheet).update();
-    });
-  }
-
-  function mergeRoadmapFlowElements(fg) {
-    var seen = new Set();
-    var out = [];
-    function pushAll(arr) {
-      if (!Array.isArray(arr)) return;
-      arr.forEach(function (el) {
-        var d = el.data || {};
-        var key = d.id ? String(d.id) : d.source && d.target ? 'e:' + String(d.id || d.source + '>' + d.target) : '';
-        if (!key || seen.has(key)) return;
-        seen.add(key);
-        out.push(el);
-      });
     }
-    pushAll(fg.overview.elements);
-    if (fg.dual_trunk && fg.dual_trunk.elements) pushAll(fg.dual_trunk.elements);
-    (fg.stage_panels || []).forEach(function (panel) {
-      pushAll(panel.elements);
-    });
-    if (fg.bridges && fg.bridges.elements) pushAll(fg.bridges.elements);
-    return out;
+    return lines.join('\n');
   }
 
-  function cytoscapeUnifiedLayout() {
-    return {
-      name: 'cose',
-      animate: false,
-      fit: true,
-      padding: 36,
-      randomize: true,
-      nodeDimensionsIncludeLabels: true,
-      nodeRepulsion: 5500,
-      idealEdgeLength: 85,
-      edgeElasticity: 0.45,
-      nestingFactor: 0.12,
-      gravity: 0.35,
-      numIter: 2800,
-      coolingFactor: 0.95,
-      minTemp: 1.0
-    };
-  }
-
-  function bindRoadmapCyResizeOnce() {
-    if (roadmapCyResizeBound) return;
-    roadmapCyResizeBound = true;
-    window.addEventListener('resize', function () {
-      if (!roadmapCyInstances.length) return;
-      roadmapCyInstances.forEach(function (cy) {
-        cy.resize();
-      });
-    });
-  }
-
-  function initRoadmapUnifiedGraph(container, elements) {
-    if (!container || typeof window.cytoscape === 'undefined' || !Array.isArray(elements) || !elements.length) {
-      return null;
-    }
-    bindRoadmapCyResizeOnce();
-    var cy = window.cytoscape({
-      container: container,
-      elements: elements,
-      layout: cytoscapeUnifiedLayout(),
-      style: roadmapCyStylesheet(),
-      minZoom: 0.15,
-      maxZoom: 3.5,
-      wheelSensitivity: 0.35,
-      userPanningEnabled: true,
-      boxSelectionEnabled: false
-    });
-    cy.on('tap', 'node[kind="detail"]', function (evt) {
-      var id = evt.target.data('detail_id');
-      if (id) window.location.href = detailHref(id);
-    });
-    cy.on('dbltap', function (evt) {
-      if (evt.target === cy) cy.fit(undefined, 24);
-    });
-    cy.fit(undefined, 24);
-    roadmapCyInstances.push(cy);
-    return cy;
-  }
-
-  function scheduleRoadmapCyInit(done) {
+  function scheduleRoadmapMermaidRender(container) {
+    if (!container) return;
     var attempts = 0;
-    function tryInit() {
+    function tryRender() {
       attempts += 1;
-      if (typeof window.cytoscape !== 'undefined') {
-        done();
+      if (typeof window.mermaid !== 'undefined') {
+        renderDetailMermaid(container);
         return;
       }
-      if (attempts < 120) window.requestAnimationFrame(tryInit);
+      if (attempts < 100) {
+        window.requestAnimationFrame(tryRender);
+      }
     }
-    tryInit();
+    tryRender();
   }
 
   function setRoadmapFlowChromeVisible(show) {
@@ -666,52 +543,21 @@
     if (tocItem) tocItem.hidden = !show;
   }
 
-  function renderRoadmapFlowSection(roadmapPage, _roadmapId, _detailPages) {
-    var flowRoot = document.getElementById('roadmapFlowGraphRoot');
-    var fg = roadmapPage.flow_graph;
-    destroyRoadmapCyInstances();
-    if (!flowRoot || !fg || !fg.overview || !Array.isArray(fg.overview.elements)) {
+  function renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages) {
+    var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!flowRoot || stages.length < 2) {
       setRoadmapFlowChromeVisible(false);
       if (flowRoot) flowRoot.innerHTML = '';
       return;
     }
     setRoadmapFlowChromeVisible(true);
-    var merged = mergeRoadmapFlowElements(fg);
-    if (!merged.length) {
-      setRoadmapFlowChromeVisible(false);
-      flowRoot.innerHTML = '';
-      return;
-    }
-    var parts = [
-      '<details class="roadmap-flow-details roadmap-flow-details-unified" open>',
-      '  <summary>路线关系总图（可缩放）</summary>',
-      '  <p class="data-meta roadmap-cy-hint">汇总阶段链、双主线与各阶段关联入口。拖拽平移、滚轮缩放；双击空白处复位。可点击带双边框的关联节点打开站内详情。</p>',
-      '  <div class="roadmap-cy-canvas roadmap-cy-canvas--unified" id="roadmapCyUnified" role="img" aria-label="路线关系总图"></div>',
-      '  <p class="data-meta roadmap-cy-legend">图例：默认节点为阶段链；底色强调为「传统 vs 学习」双主线；其余星形为中心阶段与关联条目。</p>',
-      '</details>'
-    ];
-    flowRoot.innerHTML = parts.join('');
-    var unifiedDetails = flowRoot.querySelector('details');
-    if (unifiedDetails) {
-      unifiedDetails.addEventListener('toggle', function () {
-        if (!unifiedDetails.open) return;
-        window.requestAnimationFrame(function () {
-          roadmapCyInstances.forEach(function (cy) {
-            cy.resize();
-            cy.fit(undefined, 24);
-          });
-        });
-      });
-    }
-    scheduleRoadmapCyInit(function () {
-      initRoadmapUnifiedGraph(document.getElementById('roadmapCyUnified'), merged);
-      window.requestAnimationFrame(function () {
-        roadmapCyInstances.forEach(function (cy) {
-          cy.resize();
-          cy.fit(undefined, 24);
-        });
-      });
-    });
+    var src = buildUnifiedRoadmapMermaidSource(stages, roadmapId, detailPages);
+    flowRoot.innerHTML = [
+      '<p class="data-meta roadmap-mermaid-hint">以下为整张学习路线 Mermaid 图（阶段顺序、双主线示意与各阶段摘录关联）；详细入口以下方「阶段」卡片为准。</p>',
+      '<div class="mermaid roadmap-mermaid-diagram">' + src + '</div>'
+    ].join('');
+    scheduleRoadmapMermaidRender(flowRoot);
   }
 
   function renderDetailMath(container) {
@@ -1581,7 +1427,7 @@
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       if (breadcrumb) removeLoadingState(breadcrumb);
       setRoadmapFlowChromeVisible(false);
-      var flowRootEmpty = document.getElementById('roadmapFlowGraphRoot');
+      var flowRootEmpty = document.getElementById('roadmapFlowMermaidRoot');
       if (flowRootEmpty) flowRootEmpty.innerHTML = '';
       setRoadmapPaperGuideVisible(false);
       return;
