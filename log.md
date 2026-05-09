@@ -19,6 +19,11 @@
 > - P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
 > - P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新
 
+## [2026-05-08] style | docs | 技术路线页 `roadmap.html` emoji 统一为 🚀
+
+- favicon、顶栏站点标题由 🛣️/🧭 改为 🚀；主题切换按钮的 ☀️/🌙 改为 🚀，与首页「技术路线指南」CTA 一致。
+- 同步 `docs/checklists/frontend-optimization-v1.md`。
+
 ## [2026-04-20] fix | v14-execution | P0 搜索回归修复：numpy 延迟导入
 
 - V14 P0 完成：`scripts/search_wiki.py` 移除 module 顶部 `import numpy as np`，改为在 `load_vector_resources` / `encode_query_vector` / `search` 内部使用 numpy 的分支做延迟导入
