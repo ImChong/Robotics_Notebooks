@@ -89,8 +89,8 @@
         <div class="detail-content-main">
           <section id="roadmap-flow" class="section roadmap-flow-section" hidden>
             <h2 class="section-title">路线流程图</h2>
-            <p class="section-subtitle">阶段链由导出数据生成（与 <code>roadmap/*.md</code> 中 <code>## L*</code> 标题一致）；可展开查看「传统 vs 学习」双主线示意，以及每一阶段到站内详情页的缩略关系。</p>
-            <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
+            <p class="section-subtitle">阶段链由导出数据生成（与 <code>roadmap/*.md</code> 中 <code>## L*</code> 标题一致）；可展开查看「传统 vs 学习」双主线示意，以及每一阶段到站内详情页的缩略关系。流程图为 Cytoscape.js，可缩放与拖拽。</p>
+            <div id="roadmapFlowGraphRoot" class="roadmap-flow-graph-host" aria-live="polite"></div>
           </section>
 
           <section id="roadmap-stages">
@@ -249,7 +249,7 @@
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
     </div>
   </footer>
-  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
   <script defer src="main.js"></script>
 </body>
 </html>

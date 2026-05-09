@@ -1118,18 +1118,23 @@ th {
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
-/* --- Roadmap page: Mermaid flow (expandable <details>) --- */
+/* --- Roadmap page: Cytoscape.js flow (expandable <details>) --- */
 .roadmap-flow-section {
   padding-bottom: 0;
 }
-.roadmap-flow-mermaid-host .mermaid {
-  text-align: center;
-  margin: 0.75rem 0 0;
-  overflow-x: auto;
+.roadmap-flow-graph-host .roadmap-cy-hint {
+  margin: 0.35rem 0 0;
 }
-.roadmap-flow-mermaid-host .mermaid svg {
-  max-width: 100%;
-  height: auto;
+.roadmap-flow-graph-host .roadmap-cy-canvas {
+  min-height: 280px;
+  width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+.roadmap-flow-graph-host .roadmap-cy-canvas--compact {
+  min-height: 200px;
 }
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
