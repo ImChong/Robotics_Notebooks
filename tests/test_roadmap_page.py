@@ -13,7 +13,7 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapTitle"',
             'id="roadmapSummary"',
             'id="roadmapMeta"',
-            'id="roadmapStageList"',
+            'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
             'id="paper-guide"',
         ]
@@ -24,7 +24,7 @@ class RoadmapPageTests(unittest.TestCase):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
             "function renderRoadmapPage",
-            "document.getElementById('roadmapStageList')",
+            "document.getElementById('roadmapTitle')",
             "roadmap.html?id=",
             "roadmap_pages",
             "setRoadmapPaperGuideVisible",
