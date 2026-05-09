@@ -30,6 +30,11 @@ class RoadmapFlowGraphTests(unittest.TestCase):
         ids = {el["data"].get("id") for el in dual["elements"] if "id" in el.get("data", {})}
         self.assertIn("mc-dual-T", ids)
         self.assertIn("mc-dual-L", ids)
+        bridges = fg.get("bridges") or {}
+        bel = bridges.get("elements") or []
+        self.assertGreaterEqual(len(bel), 4)
+        bridge_kinds = [el["data"].get("kind") for el in bel if el.get("data", {}).get("source")]
+        self.assertTrue(all(k == "bridge" for k in bridge_kinds))
 
     def test_other_roadmap_has_no_dual_trunk(self):
         item = {
@@ -43,6 +48,11 @@ class RoadmapFlowGraphTests(unittest.TestCase):
         self.assertIsNotNone(fg)
         assert fg is not None
         self.assertIsNone(fg.get("dual_trunk"))
+        bridges = fg.get("bridges") or {}
+        bel = bridges.get("elements") or []
+        self.assertEqual(len(bel), 2)
+        kinds = [el["data"].get("kind") for el in bel if el.get("data", {}).get("source")]
+        self.assertTrue(all(k == "bridge" for k in kinds))
 
 
 if __name__ == "__main__":

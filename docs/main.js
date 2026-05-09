@@ -519,6 +519,26 @@
         }
       },
       {
+        selector: 'edge[kind = "bridge"]',
+        style: {
+          'line-style': 'dashed',
+          'line-dash-pattern': [8, 4],
+          width: 1.5,
+          opacity: 0.72,
+          'line-color': muted,
+          'target-arrow-color': muted,
+          'target-arrow-shape': 'triangle',
+          'curve-style': 'unbundled-bezier',
+          'control-point-step-size': 40,
+          label: 'data(label)',
+          'font-size': '9px',
+          color: muted,
+          'text-background-color': isDark ? '#1c1c1e' : '#ffffff',
+          'text-background-opacity': 1,
+          'text-background-padding': '2px'
+        }
+      },
+      {
         selector: 'edge',
         style: {
           width: 2,
@@ -562,6 +582,7 @@
     (fg.stage_panels || []).forEach(function (panel) {
       pushAll(panel.elements);
     });
+    if (fg.bridges && fg.bridges.elements) pushAll(fg.bridges.elements);
     return out;
   }
 

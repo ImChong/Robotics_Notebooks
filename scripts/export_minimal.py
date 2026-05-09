@@ -275,11 +275,16 @@ def _flow_graph_node(node_id: str, label: str, **extra: Any) -> Dict[str, Any]:
 
 
 def _flow_graph_edge(
-    edge_id: str, source: str, target: str, label: str | None = None
+    edge_id: str,
+    source: str,
+    target: str,
+    label: str | None = None,
+    **extra: Any,
 ) -> Dict[str, Any]:
     data: Dict[str, Any] = {"id": edge_id, "source": source, "target": target}
     if label:
         data["label"] = label
+    data.update(extra)
     return {"data": data}
 
 
@@ -362,11 +367,45 @@ def build_roadmap_flow_graph(
             }
         )
 
+    bridge_elements: List[Dict[str, Any]] = []
+    n_st = len(stages)
+    for i in range(n_st):
+        bridge_elements.append(
+            _flow_graph_edge(
+                f"bridge-ov-stage-{safe}-{i}",
+                f"ov-{safe}-{i}",
+                f"br-{safe}-{i}-c",
+                "阶段展开",
+                kind="bridge",
+            )
+        )
+    if dual_trunk is not None and n_st > 0:
+        mid = max(0, (n_st - 1) // 2)
+        bridge_elements.append(
+            _flow_graph_edge(
+                f"bridge-ov-dualT-{safe}",
+                f"ov-{safe}-{mid}",
+                "mc-dual-T",
+                "主线·传统",
+                kind="bridge",
+            )
+        )
+        bridge_elements.append(
+            _flow_graph_edge(
+                f"bridge-ov-dualL-{safe}",
+                f"ov-{safe}-{mid}",
+                "mc-dual-L",
+                "主线·学习",
+                kind="bridge",
+            )
+        )
+
     return {
         "version": 1,
         "overview": {"elements": overview_elements},
         "dual_trunk": dual_trunk,
         "stage_panels": stage_panels,
+        "bridges": {"elements": bridge_elements},
     }
 
 
