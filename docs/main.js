@@ -544,26 +544,44 @@
     });
   }
 
-  function cytoscapeBreadthfirstLayout(elements) {
-    var incoming = {};
-    elements.forEach(function (el) {
-      var d = el.data || {};
-      if (d.source && d.target) incoming[d.target] = true;
+  function mergeRoadmapFlowElements(fg) {
+    var seen = new Set();
+    var out = [];
+    function pushAll(arr) {
+      if (!Array.isArray(arr)) return;
+      arr.forEach(function (el) {
+        var d = el.data || {};
+        var key = d.id ? String(d.id) : d.source && d.target ? 'e:' + String(d.id || d.source + '>' + d.target) : '';
+        if (!key || seen.has(key)) return;
+        seen.add(key);
+        out.push(el);
+      });
+    }
+    pushAll(fg.overview.elements);
+    if (fg.dual_trunk && fg.dual_trunk.elements) pushAll(fg.dual_trunk.elements);
+    (fg.stage_panels || []).forEach(function (panel) {
+      pushAll(panel.elements);
     });
-    var roots = [];
-    elements.forEach(function (el) {
-      var d = el.data || {};
-      if (d.id && !d.source && !incoming[d.id]) roots.push('#' + d.id);
-    });
-    var layout = {
-      name: 'breadthfirst',
-      directed: true,
-      spacingFactor: 1.25,
-      avoidOverlap: true,
-      circle: false
+    return out;
+  }
+
+  function cytoscapeUnifiedLayout() {
+    return {
+      name: 'cose',
+      animate: false,
+      fit: true,
+      padding: 36,
+      randomize: true,
+      nodeDimensionsIncludeLabels: true,
+      nodeRepulsion: 5500,
+      idealEdgeLength: 85,
+      edgeElasticity: 0.45,
+      nestingFactor: 0.12,
+      gravity: 0.35,
+      numIter: 2800,
+      coolingFactor: 0.95,
+      minTemp: 1.0
     };
-    if (roots.length) layout.roots = roots.join(', ');
-    return layout;
   }
 
   function bindRoadmapCyResizeOnce() {
@@ -577,19 +595,18 @@
     });
   }
 
-  function initRoadmapCy(container, elements) {
+  function initRoadmapUnifiedGraph(container, elements) {
     if (!container || typeof window.cytoscape === 'undefined' || !Array.isArray(elements) || !elements.length) {
       return null;
     }
     bindRoadmapCyResizeOnce();
-    var layout = cytoscapeBreadthfirstLayout(elements);
     var cy = window.cytoscape({
       container: container,
       elements: elements,
-      layout: layout,
+      layout: cytoscapeUnifiedLayout(),
       style: roadmapCyStylesheet(),
-      minZoom: 0.2,
-      maxZoom: 3,
+      minZoom: 0.15,
+      maxZoom: 3.5,
       wheelSensitivity: 0.35,
       userPanningEnabled: true,
       boxSelectionEnabled: false
@@ -638,37 +655,25 @@
       return;
     }
     setRoadmapFlowChromeVisible(true);
+    var merged = mergeRoadmapFlowElements(fg);
+    if (!merged.length) {
+      setRoadmapFlowChromeVisible(false);
+      flowRoot.innerHTML = '';
+      return;
+    }
     var parts = [
-      '<details class="roadmap-flow-details" open>',
-      '  <summary>阶段总览（可缩放）</summary>',
-      '  <p class="data-meta roadmap-cy-hint">拖拽平移、滚轮缩放；双击空白处复位视图。</p>',
-      '  <div class="roadmap-cy-canvas" id="roadmapCyOverview" role="img" aria-label="路线阶段总览图"></div>',
+      '<details class="roadmap-flow-details roadmap-flow-details-unified" open>',
+      '  <summary>路线关系总图（可缩放）</summary>',
+      '  <p class="data-meta roadmap-cy-hint">汇总阶段链、双主线与各阶段关联入口。拖拽平移、滚轮缩放；双击空白处复位。可点击带双边框的关联节点打开站内详情。</p>',
+      '  <div class="roadmap-cy-canvas roadmap-cy-canvas--unified" id="roadmapCyUnified" role="img" aria-label="路线关系总图"></div>',
+      '  <p class="data-meta roadmap-cy-legend">图例：默认节点为阶段链；底色强调为「传统 vs 学习」双主线；其余星形为中心阶段与关联条目。</p>',
       '</details>'
     ];
-    if (fg.dual_trunk && fg.dual_trunk.elements && fg.dual_trunk.elements.length) {
-      parts.push(
-        '<details class="roadmap-flow-details roadmap-flow-details-secondary">',
-        '  <summary>两条主线（与路线正文表述一致）</summary>',
-        '  <div class="roadmap-cy-canvas roadmap-cy-canvas--compact" id="roadmapCyDualTrunk" role="img" aria-label="传统控制与学习扩展两条主线"></div>',
-        '</details>'
-      );
-    }
-    parts.push('<p class="roadmap-flow-stage-intro data-meta">按阶段展开：关联网页缩略图（与下方「阶段」卡片入口一致）</p>');
-    parts.push('<div class="roadmap-flow-stage-grid">');
-    (fg.stage_panels || []).forEach(function (panel, idx) {
-      parts.push('<details class="roadmap-stage-flow-details">');
-      parts.push('  <summary>' + escapeHtml(panel.heading || '') + '</summary>');
-      parts.push('  <p class="data-meta">节点名为站内页面标题；可点击蓝色边框节点打开详情。</p>');
-      parts.push(
-        '  <div class="roadmap-cy-canvas" id="roadmapCyStage-' + idx + '" role="img" aria-label="' + escapeHtml(panel.heading || '') + '"></div>'
-      );
-      parts.push('</details>');
-    });
-    parts.push('</div>');
     flowRoot.innerHTML = parts.join('');
-    Array.prototype.forEach.call(flowRoot.querySelectorAll('details'), function (d) {
-      d.addEventListener('toggle', function () {
-        if (!d.open) return;
+    var unifiedDetails = flowRoot.querySelector('details');
+    if (unifiedDetails) {
+      unifiedDetails.addEventListener('toggle', function () {
+        if (!unifiedDetails.open) return;
         window.requestAnimationFrame(function () {
           roadmapCyInstances.forEach(function (cy) {
             cy.resize();
@@ -676,15 +681,9 @@
           });
         });
       });
-    });
+    }
     scheduleRoadmapCyInit(function () {
-      initRoadmapCy(document.getElementById('roadmapCyOverview'), fg.overview.elements);
-      if (fg.dual_trunk && fg.dual_trunk.elements && fg.dual_trunk.elements.length) {
-        initRoadmapCy(document.getElementById('roadmapCyDualTrunk'), fg.dual_trunk.elements);
-      }
-      (fg.stage_panels || []).forEach(function (panel, idx) {
-        initRoadmapCy(document.getElementById('roadmapCyStage-' + idx), panel.elements);
-      });
+      initRoadmapUnifiedGraph(document.getElementById('roadmapCyUnified'), merged);
       window.requestAnimationFrame(function () {
         roadmapCyInstances.forEach(function (cy) {
           cy.resize();

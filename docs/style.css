@@ -1133,8 +1133,11 @@ th {
   border: 1px solid var(--border);
   background: var(--bg);
 }
-.roadmap-flow-graph-host .roadmap-cy-canvas--compact {
-  min-height: 200px;
+.roadmap-flow-graph-host .roadmap-cy-canvas--unified {
+  min-height: min(520px, 70vh);
+}
+.roadmap-flow-graph-host .roadmap-cy-legend {
+  margin-top: 0.65rem;
 }
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
