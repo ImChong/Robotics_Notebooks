@@ -15,7 +15,6 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapMeta"',
             'id="roadmapStageList"',
             'id="roadmapRelatedList"',
-            'id="roadmapSourceList"',
             'id="paper-guide"',
         ]
         for marker in required_ids:

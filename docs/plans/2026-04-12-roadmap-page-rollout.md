@@ -4,7 +4,7 @@
 
 **Goal:** 把 `roadmap_pages` 从 preview 升级成真实页面，让 `roadmap.html?id=...` 可以直接渲染任一路线页。
 
-**Architecture:** 复用现有 `docs/roadmap.html` 作为统一路线页入口，直接消费 `docs/exports/site-data-v1.json` 的 `roadmap_pages`。先展示标题、摘要、阶段列表、相关项、来源链接，不额外引入路由器。
+**Architecture:** 复用现有 `docs/roadmap.html` 作为统一路线页入口，直接消费 `docs/exports/site-data-v1.json` 的 `roadmap_pages`。先展示标题、摘要、阶段列表、相关项（不在页面上单独展示「来源链接」区块；导出里的 `source_links` 仍可保留供其它用途），不额外引入路由器。
 
 **Tech Stack:** 原生 HTML / CSS / JS、现有导出结构、`unittest`
 
@@ -22,7 +22,6 @@
   - `roadmapMeta`
   - `roadmapStageList`
   - `roadmapRelatedList`
-  - `roadmapSourceList`
 - `docs/main.js` 包含：
   - `function renderRoadmapPage`
   - `document.getElementById('roadmapStageList')`
