@@ -74,6 +74,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 | 场景 | 课程策略 | 代表工作 |
 |------|---------|---------|
 | 四足/双足 locomotion | 地形难度分级 | legged_gym (Rudin 2022) |
+| 局部感知导航 | 沿特权路径的子目标序列逐步稀疏（horizon 扩展） | HiPAN / PGCL (Jeong et al., 2026) |
 | Dexterous manipulation | 物体位置随机化范围扩大 | OpenAI Dactyl (2019) |
 | Humanoid 站立/行走 | 初始姿态随机化幅度 + 地形 | Agility Robotics, HUMA |
 | Sim2Real 迁移 | 域随机化参数范围逐步扩大 | ETH ANYmal 系列 |
@@ -124,3 +125,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [Reward Design](./reward-design.md) — 课程与奖励稀疏性密切相关，配合 reward shaping 使用
 - [legged_gym](../entities/legged-gym.md) — legged_gym 内置地形课程实现
 - [Privileged Training](./privileged-training.md) — teacher-student 框架常与课程学习结合
+- [HiPAN](../methods/hipan.md) — Path-Guided Curriculum Learning：用路径子目标做导航视界课程

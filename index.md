@@ -256,6 +256,7 @@ SORT type ASC
 - [GENMO（统一人体运动估计与生成）](methods/genmo.md) — GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。 `📅2026-05-07` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
+- [HiPAN（Hierarchical Posture-Adaptive Navigation）](methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学习**把“往哪走、身体缩多低”与“关节怎么动”拆开，并用 **Path-Guided Curriculum Learning（PGCL）** 让高层策略从短视界反应式行为过渡到长视界目标导向导航。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
 - [In-hand Reorientation (手内重定向)](methods/in-hand-reorientation.md) — 手内重定向 (In-hand Reorientation)** 是灵巧操作（Dexterous Manipulation）领域中最具挑战性的任务之一。它的目标是让多指灵巧手（如 Allegro H `📅unknown` `[method_page]`
