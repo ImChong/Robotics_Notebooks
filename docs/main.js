@@ -25,7 +25,7 @@
       const detailContentEl = document.getElementById('detailContent');
       if (detailContentEl) renderDetailMermaid(detailContentEl);
       const roadmapFlowHost = document.getElementById('roadmapFlowMermaidRoot');
-      if (roadmapFlowHost && roadmapFlowHost.querySelector('.mermaid')) {
+      if (roadmapFlowHost && roadmapFlowHost.querySelector('.roadmap-mermaid-wrap[open] .mermaid')) {
         renderDetailMermaid(roadmapFlowHost);
       }
     });
@@ -472,6 +472,65 @@
   }
 
   /**
+   * Vertical collapsible tree (details/summary): one stage per row, children = related links.
+   * Primary UI for narrow screens; no extra libraries.
+   */
+  function buildRoadmapVerticalTreeHTML(stages, roadmapId, detailPages) {
+    var parts = [];
+    parts.push('<div class="roadmap-flow-primary">');
+    parts.push(
+      '<p class="data-meta roadmap-vtree-hint">纵向路线：按阶段从上到下；点标题展开站内关联（推荐手机）。下方可展开 Mermaid 总图（适合宽屏）。</p>'
+    );
+    if (roadmapId === 'roadmap-motion-control') {
+      parts.push('<div class="roadmap-vtree-dual" role="region" aria-label="两条主线">');
+      parts.push('  <div class="roadmap-vtree-dual-inner">');
+      parts.push('    <p><strong>传统控制主干：</strong>LIP/ZMP → Centroidal → MPC/TO → TSID/WBC</p>');
+      parts.push('    <p><strong>Learning 扩展层：</strong>RL 基础 → Locomotion RL → IL / Motion prior → Sim2Real</p>');
+      parts.push('    <p class="data-meta">建议先打牢传统主线，再叠学习能力。</p>');
+      parts.push('  </div>');
+      parts.push('</div>');
+    }
+    parts.push('<ol class="roadmap-vtree">');
+    var i;
+    for (i = 0; i < stages.length; i++) {
+      var stage = stages[i];
+      var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
+      var sid = String(stage.id || '');
+      var title = String(stage.title || '');
+      var openAttr = i === 0 ? ' open' : '';
+      parts.push('<li class="roadmap-vtree-item">');
+      parts.push('<details class="roadmap-vtree-stage"' + openAttr + '>');
+      parts.push('<summary class="roadmap-vtree-summary">');
+      parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(i + 1)) + '</span>');
+      parts.push(
+        '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
+      );
+      parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
+      parts.push('</summary>');
+      if (!related.length) {
+        parts.push('<p class="roadmap-vtree-empty data-meta">本阶段正文内暂无抽取到的站内链接。</p>');
+      } else {
+        parts.push('<ul class="roadmap-vtree-links">');
+        for (var k = 0; k < related.length; k++) {
+          var rid = related[k];
+          var page = detailPages[rid] || {};
+          var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+          parts.push('<li class="roadmap-vtree-link-row">');
+          parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
+          parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
+          parts.push('</li>');
+        }
+        parts.push('</ul>');
+      }
+      parts.push('</details>');
+      parts.push('</li>');
+    }
+    parts.push('</ol>');
+    parts.push('</div>');
+    return parts.join('');
+  }
+
+  /**
    * Single learning-roadmap Mermaid: stage spine OV0→OVn, optional motion-control dual trunk,
    * each stage fans out to related wiki titles (max 5).
    */
@@ -552,12 +611,31 @@
       return;
     }
     setRoadmapFlowChromeVisible(true);
+    var treeHtml = buildRoadmapVerticalTreeHTML(stages, roadmapId, detailPages);
     var src = buildUnifiedRoadmapMermaidSource(stages, roadmapId, detailPages);
-    flowRoot.innerHTML = [
-      '<p class="data-meta roadmap-mermaid-hint">以下为整张学习路线 Mermaid 图（阶段顺序、双主线示意与各阶段摘录关联）；详细入口以下方「阶段」卡片为准。</p>',
-      '<div class="mermaid roadmap-mermaid-diagram">' + src + '</div>'
-    ].join('');
-    scheduleRoadmapMermaidRender(flowRoot);
+    flowRoot.innerHTML =
+      treeHtml
+      + '<details class="roadmap-mermaid-wrap">'
+      + '<summary class="roadmap-mermaid-wrap-summary">Mermaid 线框总图（适合宽屏 / 对照结构）</summary>'
+      + '<p class="data-meta roadmap-mermaid-hint">展开后渲染图表；结构信息与上方纵向路线一致。</p>'
+      + '<div class="mermaid roadmap-mermaid-diagram">' + src + '</div>'
+      + '</details>';
+
+    var wrap = flowRoot.querySelector('.roadmap-mermaid-wrap');
+    function renderMermaidBlock() {
+      if (typeof window.mermaid !== 'undefined') {
+        renderDetailMermaid(flowRoot);
+      } else {
+        scheduleRoadmapMermaidRender(flowRoot);
+      }
+    }
+    if (wrap) {
+      wrap.addEventListener('toggle', function onWrapToggle() {
+        if (!wrap.open) return;
+        renderMermaidBlock();
+        wrap.removeEventListener('toggle', onWrapToggle);
+      });
+    }
   }
 
   function renderDetailMath(container) {
