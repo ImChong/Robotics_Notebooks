@@ -147,6 +147,7 @@
 
 ### 额外建议字段
 - `stages`
+- `flow_graph`：`site-data/pages/roadmap_pages` 中可选字段；由 `export_minimal.build_roadmap_flow_graph` 生成，供路线图页的 Cytoscape 流程图使用（含 `overview`、`dual_trunk`（仅 `roadmap-motion-control`）、`stage_panels`）。
 - `target_user`
 - `prerequisites`
 - `outputs`
