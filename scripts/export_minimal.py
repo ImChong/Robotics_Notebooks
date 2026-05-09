@@ -268,147 +268,6 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
     return stages
 
 
-def _flow_graph_node(node_id: str, label: str, **extra: Any) -> Dict[str, Any]:
-    data: Dict[str, Any] = {"id": node_id, "label": label}
-    data.update(extra)
-    return {"data": data}
-
-
-def _flow_graph_edge(
-    edge_id: str,
-    source: str,
-    target: str,
-    label: str | None = None,
-    **extra: Any,
-) -> Dict[str, Any]:
-    data: Dict[str, Any] = {"id": edge_id, "source": source, "target": target}
-    if label:
-        data["label"] = label
-    data.update(extra)
-    return {"data": data}
-
-
-def build_roadmap_flow_graph(
-    item: Dict[str, Any], item_map: Dict[str, Dict[str, Any]]
-) -> Dict[str, Any] | None:
-    """Structured nodes/edges for Cytoscape.js (roadmap flow section)."""
-    stages = item.get("stages") or []
-    if len(stages) < 2:
-        return None
-
-    roadmap_id = item.get("id", "roadmap")
-    safe = re.sub(r"[^a-zA-Z0-9_-]+", "-", roadmap_id).strip("-") or "roadmap"
-
-    overview_elements: List[Dict[str, Any]] = []
-    for i, st in enumerate(stages):
-        sid = str(st.get("id") or f"stage-{i}")
-        nid = f"ov-{safe}-{i}"
-        title = str(st.get("title") or "").strip()
-        lid = f"{sid.upper()} · {title}".strip()
-        if len(lid) > 90:
-            lid = lid[:89] + "…"
-        overview_elements.append(_flow_graph_node(nid, lid, kind="stage_overview", stage_id=sid))
-    for j in range(len(stages) - 1):
-        overview_elements.append(
-            _flow_graph_edge(f"ov-{safe}-e-{j}", f"ov-{safe}-{j}", f"ov-{safe}-{j + 1}")
-        )
-
-    dual_trunk: Dict[str, Any] | None = None
-    if roadmap_id == "roadmap-motion-control":
-        dual_trunk = {
-            "elements": [
-                _flow_graph_node(
-                    "mc-dual-T",
-                    "传统控制主干\nLIP/ZMP → Centroidal → MPC/TO → TSID/WBC",
-                    kind="trunk",
-                ),
-                _flow_graph_node(
-                    "mc-dual-L",
-                    "Learning 扩展层\nRL 基础 → Locomotion RL → IL / Motion prior → Sim2Real",
-                    kind="trunk",
-                ),
-                _flow_graph_edge(
-                    "mc-dual-e",
-                    "mc-dual-T",
-                    "mc-dual-L",
-                    "建议先打牢再叠学习能力",
-                ),
-            ]
-        }
-
-    stage_panels: List[Dict[str, Any]] = []
-    for idx, st in enumerate(stages):
-        related = list(st.get("related_items") or [])[:6]
-        center_id = f"br-{safe}-{idx}-c"
-        sid = str(st.get("id") or "")
-        title = str(st.get("title") or "")
-        heading = f"{sid.upper()} · {title}".strip()
-        elems: List[Dict[str, Any]] = []
-        center_label = heading if len(heading) <= 90 else heading[:89] + "…"
-        elems.append(_flow_graph_node(center_id, center_label, kind="stage_center", stage_id=sid))
-        if not related:
-            pid = f"br-{safe}-{idx}-empty"
-            elems.append(_flow_graph_node(pid, "暂无关联详情页", kind="placeholder"))
-            elems.append(_flow_graph_edge(f"br-{safe}-{idx}-e-empty", center_id, pid))
-        else:
-            for k, wiki_id in enumerate(related):
-                pid = f"br-{safe}-{idx}-r-{k}"
-                page = item_map.get(wiki_id) or {}
-                raw_title = str(page.get("title") or wiki_id)
-                lbl = raw_title if len(raw_title) <= 60 else raw_title[:59] + "…"
-                elems.append(_flow_graph_node(pid, lbl, kind="detail", detail_id=wiki_id))
-                elems.append(_flow_graph_edge(f"br-{safe}-{idx}-e-{k}", center_id, pid))
-
-        stage_panels.append(
-            {
-                "stage_id": sid,
-                "heading": heading,
-                "elements": elems,
-            }
-        )
-
-    bridge_elements: List[Dict[str, Any]] = []
-    n_st = len(stages)
-    for i in range(n_st):
-        bridge_elements.append(
-            _flow_graph_edge(
-                f"bridge-ov-stage-{safe}-{i}",
-                f"ov-{safe}-{i}",
-                f"br-{safe}-{i}-c",
-                "阶段展开",
-                kind="bridge",
-            )
-        )
-    if dual_trunk is not None and n_st > 0:
-        mid = max(0, (n_st - 1) // 2)
-        bridge_elements.append(
-            _flow_graph_edge(
-                f"bridge-ov-dualT-{safe}",
-                f"ov-{safe}-{mid}",
-                "mc-dual-T",
-                "主线·传统",
-                kind="bridge",
-            )
-        )
-        bridge_elements.append(
-            _flow_graph_edge(
-                f"bridge-ov-dualL-{safe}",
-                f"ov-{safe}-{mid}",
-                "mc-dual-L",
-                "主线·学习",
-                kind="bridge",
-            )
-        )
-
-    return {
-        "version": 1,
-        "overview": {"elements": overview_elements},
-        "dual_trunk": dual_trunk,
-        "stage_panels": stage_panels,
-        "bridges": {"elements": bridge_elements},
-    }
-
-
 def build_item(path: Path) -> dict[str, Any]:
     text = read_text(path)
     title = extract_title(text, path.stem)
@@ -636,21 +495,17 @@ def build_site_data(items: List[Dict]) -> Dict:
     ]
 
     roadmap_items = sort_items([item for item in items if item.get("type") == "roadmap_page"])
-    roadmap_pages = {}
-    for item in roadmap_items:
-        rid = item["id"]
-        fg = build_roadmap_flow_graph(item, item_map)
-        entry: Dict[str, Any] = {
-            "id": rid,
+    roadmap_pages = {
+        item["id"]: {
+            "id": item["id"],
             "title": item["title"],
             "summary": item.get("summary", ""),
             "stages": item.get("stages", []),
             "related_items": item.get("related", []),
             "source_links": item.get("source_links", []),
         }
-        if fg is not None:
-            entry["flow_graph"] = fg
-        roadmap_pages[rid] = entry
+        for item in roadmap_items
+    }
 
     tech_nodes = sort_items([item for item in items if item.get("type") == "tech_map_node"])
     tech_map_page = {
