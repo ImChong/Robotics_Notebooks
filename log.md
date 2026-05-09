@@ -21,7 +21,7 @@
 
 ## [2026-05-08] style | docs | 技术路线页 `roadmap.html` emoji 统一为 🚀
 
-- favicon、顶栏站点标题由 🛣️/🧭 改为 🚀；主题切换按钮的 ☀️/🌙 改为 🚀，与首页「技术路线指南」CTA 一致。
+- favicon、顶栏站点标题由 🛣️/🧭 改为 🚀，与首页「技术路线指南」CTA 一致；主题切换仍为 ☀️/🌙。
 - 同步 `docs/checklists/frontend-optimization-v1.md`。
 
 ## [2026-04-20] fix | v14-execution | P0 搜索回归修复：numpy 延迟导入
