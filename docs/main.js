@@ -461,7 +461,7 @@
     roadmapCyInstances.forEach(function (cy) {
       try {
         cy.destroy();
-      } catch (e) {
+      } catch {
         /* ignore */
       }
     });

@@ -274,14 +274,18 @@ def _flow_graph_node(node_id: str, label: str, **extra: Any) -> Dict[str, Any]:
     return {"data": data}
 
 
-def _flow_graph_edge(edge_id: str, source: str, target: str, label: str | None = None) -> Dict[str, Any]:
+def _flow_graph_edge(
+    edge_id: str, source: str, target: str, label: str | None = None
+) -> Dict[str, Any]:
     data: Dict[str, Any] = {"id": edge_id, "source": source, "target": target}
     if label:
         data["label"] = label
     return {"data": data}
 
 
-def build_roadmap_flow_graph(item: Dict[str, Any], item_map: Dict[str, Dict[str, Any]]) -> Dict[str, Any] | None:
+def build_roadmap_flow_graph(
+    item: Dict[str, Any], item_map: Dict[str, Dict[str, Any]]
+) -> Dict[str, Any] | None:
     """Structured nodes/edges for Cytoscape.js (roadmap flow section)."""
     stages = item.get("stages") or []
     if len(stages) < 2:
