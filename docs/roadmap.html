@@ -39,7 +39,7 @@
           <div>
             <p class="hero-kicker">技术路线指南 · 数据驱动</p>
             <h1 id="roadmapTitle">正在读取路线…</h1>
-            <p id="roadmapSummary" class="detail-summary data-loading">当前页面直接消费 <code>roadmap_pages</code>，展示路线摘要、阶段与相关项。</p>
+            <p id="roadmapSummary" class="detail-summary data-loading">当前页面读取 <code>roadmap_pages</code>，展示路线摘要、学习路线与相关项。</p>
           </div>
           <aside class="hero-panel detail-meta-panel">
             <h3>路线元信息</h3>
@@ -53,8 +53,7 @@
 
     <section class="page-subnav-wrap">
       <div class="container page-subnav">
-        <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>流程图</a>
-        <a href="#roadmap-stages">阶段</a>
+        <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>路线</a>
         <a href="#roadmap-related">相关项</a>
         <a href="#paper-guide" id="roadmapSubnavPaper" hidden>论文主线</a>
       </div>
@@ -78,8 +77,7 @@
           <h2 class="section-title">路线导航</h2>
           <nav class="detail-toc-list">
             <ol>
-              <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">流程图</a></li>
-              <li><a href="#roadmap-stages">阶段</a></li>
+              <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">路线</a></li>
               <li><a href="#roadmap-related">相关项</a></li>
               <li id="roadmapTocPaperItem" hidden><a href="#paper-guide">论文主线</a></li>
             </ol>
@@ -88,17 +86,9 @@
 
         <div class="detail-content-main">
           <section id="roadmap-flow" class="section roadmap-flow-section" hidden>
-            <h2 class="section-title">路线流程图</h2>
-            <p class="section-subtitle">上方为<strong>纵向可展开路线</strong>（父节点为阶段，点击展开子链接，适合手机）；下方可展开 <strong>Mermaid</strong> 线框总图作宽屏对照。数据与 <code>roadmap/*.md</code> 中 <code>## L*</code> 一致。</p>
+            <h2 class="section-title">学习路线</h2>
+            <p class="section-subtitle">纵向阶段可展开查看站内关联；底部可展开 <strong>Mermaid</strong> 线框图（宽屏对照）。数据与 <code>roadmap/*.md</code> 中 <code>## L*</code> 一致。</p>
             <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
-          </section>
-
-          <section id="roadmap-stages">
-            <h2 class="section-title">阶段</h2>
-            <p class="section-subtitle">先把路线阶段可视化。</p>
-            <div id="roadmapStageList" class="card-grid roadmap-stage-list data-loading">
-              <article class="card skeleton-card"><p>正在读取路线阶段…</p></article>
-            </div>
           </section>
 
           <section class="section section-alt" id="roadmap-related" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
@@ -115,7 +105,7 @@
     <section id="paper-guide" class="section section-alt" hidden aria-label="论文主线导航">
       <div class="container">
         <h2 class="section-title">论文主线（原论文导航）</h2>
-        <p class="section-subtitle">按问题与主线串联阅读，与上方「阶段 / 相关项」互补：路线定结构，论文定深度。</p>
+        <p class="section-subtitle">按问题与主线串联阅读，与上方「路线 / 相关项」互补：路线定结构，论文定深度。</p>
 
         <section class="section" style="padding-top:0">
           <h3 class="section-title" style="font-size:1.15rem">路线与论文怎么用</h3>

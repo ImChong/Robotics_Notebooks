@@ -479,7 +479,7 @@
     var parts = [];
     parts.push('<div class="roadmap-flow-primary">');
     parts.push(
-      '<p class="data-meta roadmap-vtree-hint">纵向路线：按阶段从上到下；点标题展开站内关联（推荐手机）。下方可展开 Mermaid 总图（适合宽屏）。</p>'
+      '<p class="data-meta roadmap-vtree-hint">点阶段标题展开关联条目。</p>'
     );
     if (roadmapId === 'roadmap-motion-control') {
       parts.push('<div class="roadmap-vtree-dual" role="region" aria-label="两条主线">');
@@ -1482,7 +1482,6 @@
     const titleEl = document.getElementById('roadmapTitle');
     const summaryEl = document.getElementById('roadmapSummary');
     const metaEl = document.getElementById('roadmapMeta');
-    const stageEl = document.getElementById('roadmapStageList');
     const relatedEl = document.getElementById('roadmapRelatedList');
     const emptyState = document.getElementById('roadmapEmptyState');
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
@@ -1497,10 +1496,6 @@
       if (metaEl) {
         metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 roadmap_pages 项。</p>';
         removeLoadingState(metaEl);
-      }
-      if (stageEl) {
-        stageEl.innerHTML = '<article class="card"><p>当前无可展示的阶段。</p></article>';
-        removeLoadingState(stageEl);
       }
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       if (breadcrumb) removeLoadingState(breadcrumb);
@@ -1535,35 +1530,6 @@
       ].join('');
       removeLoadingState(breadcrumb);
     }
-    if (stageEl) {
-      const stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
-      stageEl.innerHTML = stages.length ? stages.map(function (stage) {
-        const related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
-        const linksHtml = related.length ? [
-          '    <div class="chip-list stage-link-list">',
-               related.map(function (id) {
-                 const page = detailPages[id] || {};
-                 const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
-                 return '<a class="data-chip" href="' + escapeHtml(href) + '" title="' + escapeHtml(id) + '">' + escapeHtml(page.title || id) + '</a>';
-               }).join(''),
-          '    </div>'
-        ].join('') : '    <p class="data-meta">当前阶段暂无内部链接。</p>';
-        return [
-          '<article class="card data-card">',
-          '  <div>',
-          '    <h3>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</h3>',
-          '    <p class="card-meta">阶段 ID：' + escapeHtml(stage.id || '-') + '</p>',
-          '    <p class="card-meta">关联入口：' + escapeHtml(related.length) + '</p>',
-          '  </div>',
-          '  <div>',
-          linksHtml,
-          '  </div>',
-          '</article>'
-        ].join('');
-      }).join('') : '<article class="card"><p>当前路线暂无阶段定义。</p></article>';
-      removeLoadingState(stageEl);
-    }
-
     renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
     setRoadmapPaperGuideVisible(roadmapId === 'roadmap-motion-control');
@@ -2016,10 +1982,10 @@
   const detailRoot = document.getElementById('detailTitle');
   const techMapRoot = document.getElementById('techMapNodeGrid');
   const moduleRoot = document.getElementById('moduleEntryList');
-  const roadmapRoot = document.getElementById('roadmapStageList');
+  const roadmapPageMount = document.getElementById('roadmapTitle');
   const homeStatsRoot = document.getElementById('heroNodeCount') || document.getElementById('wikiSearchSubtitle');
 
-  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapRoot) {
+  if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
     fetch('exports/site-data-v1.json')
       .then(function (response) {
         if (!response.ok) {
@@ -2032,7 +1998,7 @@
         if (detailRoot) renderDetailPage(siteData);
         if (techMapRoot) renderTechMapPage(siteData);
         if (moduleRoot) renderModulePage(siteData);
-        if (roadmapRoot) renderRoadmapPage(siteData);
+        if (roadmapPageMount) renderRoadmapPage(siteData);
       })
       .catch(function (error) {
         if (previewRoot) {
@@ -2081,12 +2047,11 @@
             'moduleRelatedModules'
           ]);
         }
-        if (roadmapRoot) {
+        if (roadmapPageMount) {
           handlePageDataError(error, [
             'roadmapBreadcrumb',
             'roadmapSummary',
             'roadmapMeta',
-            'roadmapStageList',
             'roadmapRelatedList'
           ]);
         }
