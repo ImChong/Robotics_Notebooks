@@ -2117,15 +2117,18 @@
     }
 
     function tokenizeQuery(text) {
-      var matches = String(text || '').toLowerCase().match(/[a-z0-9_+\-.]+|[\u4e00-\u9fff]+/g) || [];
+      var str = String(text || '').toLowerCase();
+      var matches = str.match(/[a-z0-9_+\-.]+|[\u4e00-\u9fff]+/g);
+      if (!matches) return [];
       var out = [];
-      matches.forEach(function(token) {
+      for (var j = 0; j < matches.length; j++) {
+        var token = matches[j];
         out.push(token);
-        if (/^[\u4e00-\u9fff]+$/.test(token) && token.length > 1) {
-          for (var i = 0; i < token.length - 1; i += 1) out.push(token.slice(i, i + 2));
-          token.split('').forEach(function(char) { out.push(char); });
+        if (token.length > 1 && token.charCodeAt(0) >= 0x4e00 && token.charCodeAt(0) <= 0x9fff) {
+          for (var i = 0; i < token.length - 1; i++) out.push(token.slice(i, i + 2));
+          for (var k = 0; k < token.length; k++) out.push(token[k]);
         }
-      });
+      }
       return out;
     }
 
@@ -2304,7 +2307,7 @@
     function substringScore(doc, queryTokens) {
       if (!queryTokens || !queryTokens.length) return 0;
       var score = 0;
-      var title, path, summary, tags, tokenKeys;
+      var title, path, summary, tagsStr, tokenKeysStr;
       var docTokens = doc.tokens || {};
 
       for (var i = 0; i < queryTokens.length; i++) {
@@ -2321,13 +2324,8 @@
         if (path === undefined) path = String(doc.path || '').toLowerCase();
         if (path.indexOf(token) >= 0) score += 5;
 
-        if (tags === undefined) tags = doc.tags || [];
-        for (var j = 0; j < tags.length; j++) {
-            if (String(tags[j]).toLowerCase().indexOf(token) >= 0) {
-                score += 4;
-                break;
-            }
-        }
+        if (tagsStr === undefined) tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n';
+        if (tagsStr.indexOf(token) >= 0) score += 4;
 
         if (summary === undefined) summary = String(doc.summary || '').toLowerCase();
         if (summary.indexOf(token) >= 0) score += 2;
@@ -2335,12 +2333,9 @@
         if (docTokens[token] > 0) {
             score += 1;
         } else {
-            if (tokenKeys === undefined) tokenKeys = Object.keys(docTokens);
-            for (var k = 0; k < tokenKeys.length; k++) {
-                if (tokenKeys[k].indexOf(token) >= 0) {
-                    score += 1;
-                    break;
-                }
+            if (tokenKeysStr === undefined) tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n';
+            if (tokenKeysStr.indexOf(token) >= 0) {
+                score += 1;
             }
         }
       }
