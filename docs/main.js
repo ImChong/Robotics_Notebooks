@@ -481,17 +481,10 @@
   function buildRoadmapVerticalTreeHTML(stages, roadmapId, detailPages) {
     var parts = [];
     parts.push('<div class="roadmap-flow-primary">');
-    parts.push(
-      '<p class="data-meta roadmap-vtree-hint">点阶段标题展开关联条目。</p>'
-    );
     if (roadmapId === 'roadmap-motion-control') {
-      parts.push('<div class="roadmap-vtree-dual" role="region" aria-label="两条主线">');
-      parts.push('  <div class="roadmap-vtree-dual-inner">');
-      parts.push('    <p><strong>传统控制主干：</strong>LIP/ZMP → Centroidal → MPC/TO → TSID/WBC</p>');
-      parts.push('    <p><strong>Learning 扩展层：</strong>RL 基础 → Locomotion RL → IL / Motion prior → Sim2Real</p>');
-      parts.push('    <p class="data-meta">建议先打牢传统主线，再叠学习能力。</p>');
-      parts.push('  </div>');
-      parts.push('</div>');
+      parts.push(
+        '<p class="data-meta roadmap-vtree-overview">主干：LIP→Centroidal→MPC→TSID/WBC；扩展：RL→Sim2Real。先通主干。</p>'
+      );
     }
     parts.push('<ol class="roadmap-vtree">');
     var i;
@@ -554,9 +547,9 @@
       lines.push('  OV' + i + ' --> OV' + (i + 1));
     }
     if (roadmapId === 'roadmap-motion-control') {
-      lines.push('  MC_DT["传统控制主干<br/>LIP/ZMP → Centroidal → MPC/TO → TSID/WBC"]');
-      lines.push('  MC_DL["Learning 扩展层<br/>RL → Locomotion RL → IL / Motion prior → Sim2Real"]');
-      lines.push('  MC_DT -->|建议先打牢再叠学习能力| MC_DL');
+      lines.push('  MC_DT["控制主干<br/>LIP→Centroidal→MPC→TSID/WBC"]');
+      lines.push('  MC_DL["学习方法<br/>RL→Loco RL→IL→Sim2Real"]');
+      lines.push('  MC_DT -->|先主干| MC_DL');
       var mid = Math.min(3, Math.max(0, n - 1));
       lines.push('  OV' + mid + ' -.->|主线对照| MC_DT');
     }
@@ -620,7 +613,7 @@
       treeHtml
       + '<details class="roadmap-mermaid-wrap">'
       + '<summary class="roadmap-mermaid-wrap-summary">Mermaid 线框总图（适合宽屏 / 对照结构）</summary>'
-      + '<p class="data-meta roadmap-mermaid-hint">展开后渲染图表；结构信息与上方纵向路线一致。</p>'
+      + '<p class="data-meta roadmap-mermaid-hint">展开后渲染；与上方阶段一致。</p>'
       + '<div class="mermaid roadmap-mermaid-diagram">' + src + '</div>'
       + '</details>';
 
