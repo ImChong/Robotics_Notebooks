@@ -13,3 +13,7 @@
 ## 2026-05-08 - Garbage Collection and Hot Loop Optimization
 **Learning:** In the client-side search indexing loop (`docs/main.js`), generating arrays continuously with methods like `.map()` and `Object.keys()` on every single search token for every single document created massive garbage collection pressure and CPU overhead, slowing search by ~40x.
 **Action:** When working on critical O(N*M) hot loops in JavaScript, avoid memory allocations where possible. Initialize strings and keys lazily, and use traditional `for` loops instead of `.forEach()` or `.some()`. Pre-calculate constants (like BM25 length normalization) outside inner loops.
+
+## 2026-05-10 - Native String Search vs Loop-based Property Matching
+**Learning:** In the client-side search ranking (`substringScore`), checking for partial token matches by repeatedly evaluating `Object.keys()` and nesting a `for` loop with `.indexOf()` over each key is extremely slow in JavaScript. Constructing a single string representation with newline boundaries (e.g., `'\n' + Object.keys(docTokens).join('\n') + '\n'`) and executing a single `.indexOf()` delegates the search to highly optimized native C++ string methods, performing ~30-50% faster in hot O(N*M) ranking loops.
+**Action:** When performing substring or partial matching across arrays or object keys in a critical loop, stringify the keys once with boundary delimiters (to prevent false cross-word matches) and rely on a single native `.indexOf()` call instead of nested JS iterations.
