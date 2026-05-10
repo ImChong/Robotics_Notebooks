@@ -9,7 +9,21 @@ sources:
   - ../../sources/papers/rl_foundation_models.md
 related:
   - ../concepts/foundation-policy.md
+  - ../concepts/deep-rl-game-milestones.md
+  - ../concepts/open-x-embodiment.md
   - ../methods/vla.md
+  - ../methods/qt-opt.md
+  - ../methods/bc-z.md
+  - ../methods/mt-opt.md
+  - ../methods/learning-from-play-lmp.md
+  - ../methods/cyclegan-sim2real.md
+  - ../methods/saycan.md
+  - ../methods/robotics-transformer-rt-series.md
+  - ../methods/dial-instruction-augmentation.md
+  - ../methods/octo-model.md
+  - ../methods/roboarena.md
+  - ../entities/gemini-robotics.md
+  - ../entities/generalist-ai-robotics.md
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../concepts/embodied-scaling-laws.md
@@ -28,9 +42,10 @@ related:
 
 ## 轴线 I — 存在性证明：连续控制里的端到端学习能否落地
 
-- **游戏里的端到端成功后**：真实机器人面对的是连续动作与高维观测；QT-Opt 一类工作把可扩展的异策价值学习与真实机械臂农场数据结合，证明像素输入下的抓取与闭环改进可以规模化（Kalashnikov et al., arXiv:1806.10293）。
-- **并行探索**：BC-Z（语言条件模仿，arXiv:2202.02005）、MT-Opt（多任务 RL，arXiv:2104.08212）、Learning from Play（从非任务化交互中学习结构，arXiv:1903.01973）展示同一时期团队在「任务定义—数据形态—算法」上的分叉尝试。
-- **与后世语言条件模型的接口**：事后重标记思想在 HER（arXiv:1707.01495）中系统化；后在语言指令场景由 DIAL（arXiv:2211.11736，一作 Ted Xiao）用 VLM 作轨迹级指令增强，与 RT-1 训练管线衔接。
+- **游戏侧先例**：[深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)（DQN / AlphaGo）说明离散动作与高维观测下的端到端可行性，但与连续关节控制不可混为一谈。
+- **真实机械臂规模化 RL**：[QT-Opt](../methods/qt-opt.md) 把异策 Q 学习与大规模真实抓取数据结合；视觉域对齐常讨论 [CycleGAN Sim2Real](../methods/cyclegan-sim2real.md)。
+- **并行探索**：[BC-Z](../methods/bc-z.md)、[MT-Opt](../methods/mt-opt.md)、[Learning from Play](../methods/learning-from-play-lmp.md) 覆盖语言条件模仿、多任务 RL 与非结构化玩耍数据。
+- **事后重标记谱系**：[HER](../methods/her.md) 与语言侧的 [DIAL](../methods/dial-instruction-augmentation.md)（VLM 指令增强）形成跨模态对照。
 
 **知识库延伸**：[模仿学习](../methods/imitation-learning.md)、[强化学习](../methods/reinforcement-learning.md)、[Sim2Real](../concepts/sim2real.md)。
 
@@ -38,19 +53,20 @@ related:
 
 ## 轴线 II — 基础模型：把外部多模态智能接入机器人策略
 
-- **规划与落地约束**：SayCan（arXiv:2204.01691）用语言模型生成候选子任务，并用习得的价值估计筛掉当前环境下不可行的步骤。
-- **策略本体 Transformer 化**：RT-1（arXiv:2212.06817）把图像与指令编码为 token，并离散化动作输出；RT-2（arXiv:2307.15818）把大规模 VLM 当作骨干，形成常说的 VLA 范式。
-- **跨本体数据**：Open X-Embodiment（arXiv:2310.08864）把异构机器人数据纳入统一训练叙事，与 [Foundation Policy](../concepts/foundation-policy.md)、[Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) 直接相连。
+- **规划 + affordance**：[SayCan](../methods/saycan.md) 用语言模型生成候选子任务并用价值估计约束可行性。
+- **策略侧 Transformer / VLA**：[Robotics Transformer（RT-1 / RT-2）](../methods/robotics-transformer-rt-series.md) 与总览页 [VLA](../methods/vla.md)。
+- **跨本体数据轴**：[Open X-Embodiment](../concepts/open-x-embodiment.md) 连接 [Foundation Policy](../concepts/foundation-policy.md) 与 [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)。
 
-**知识库延伸**：[VLA](../methods/vla.md)、[foundation policy](../concepts/foundation-policy.md)。
+**知识库延伸**：[Foundation Policy](../concepts/foundation-policy.md)、[VLA](../methods/vla.md)。
 
 ---
 
 ## 轴线 III — Scaling：评测、数据形态与产业侧闭链叙事
 
-- **评测**：RoboArena（arXiv:2506.18123）代表「分布式真实世界、对比式排名」一类评估潮流，用于约束日益宽泛的 generalist policy 声称。
-- **机构模型迭代**：Gemini Robotics / ER / 1.5 系列应以 Google DeepMind 博客与技术报告 PDF 为准（链接见一手索引），不宜把新闻措辞直接写成可引用事实而不附出处。
-- **开源 / 商业 generalist**：Octo（arXiv:2405.12213）、π₀（arXiv:2410.24164）与各类公司博客中的数据规模声明，引用时需区分**同行评审论文**与**市场传播材料**。
+- **分布式真实评测**：[RoboArena](../methods/roboarena.md)。
+- **闭源模型族**：[Gemini Robotics](../entities/gemini-robotics.md)（以官方博客与技术报告为准）。
+- **开源 generalist**：[Octo](../methods/octo-model.md)；**商业数据叙事**：[Generalist AI](../entities/generalist-ai-robotics.md)（以公司博客为准，区分论文与市场宣传）。
+- **世界模型纵览**：仓库内 [Generative World Models](../methods/generative-world-models.md)、[rl_foundation_models](../../sources/papers/rl_foundation_models.md) 索引。
 
 **知识库延伸**：[Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)、[Data Flywheel](../concepts/data-flywheel.md)。
 
@@ -65,10 +81,15 @@ related:
 ## 关联页面
 
 - [Foundation Policy](../concepts/foundation-policy.md)
+- [深度强化学习游戏里程碑](../concepts/deep-rl-game-milestones.md)
+- [Open X-Embodiment](../concepts/open-x-embodiment.md)
 - [VLA](../methods/vla.md)
-- [Imitation Learning](../methods/imitation-learning.md)
-- [Reinforcement Learning](../methods/reinforcement-learning.md)
-- [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
+- [QT-Opt](../methods/qt-opt.md) · [MT-Opt](../methods/mt-opt.md) · [BC-Z](../methods/bc-z.md)
+- [Learning from Play](../methods/learning-from-play-lmp.md) · [HER](../methods/her.md) · [CycleGAN Sim2Real](../methods/cyclegan-sim2real.md)
+- [SayCan](../methods/saycan.md) · [Robotics Transformer](../methods/robotics-transformer-rt-series.md) · [DIAL](../methods/dial-instruction-augmentation.md)
+- [Octo](../methods/octo-model.md) · [RoboArena](../methods/roboarena.md)
+- [Gemini Robotics](../entities/gemini-robotics.md) · [Generalist AI](../entities/generalist-ai-robotics.md)
+- [Imitation Learning](../methods/imitation-learning.md) · [Reinforcement Learning](../methods/reinforcement-learning.md) · [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 
 ## 参考来源
 

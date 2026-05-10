@@ -2,6 +2,11 @@
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, octo, generalist, pretraining, manipulation]
 related:
+  - ../methods/vla.md
+  - ./open-x-embodiment.md
+  - ../methods/octo-model.md
+  - ../methods/robotics-transformer-rt-series.md
+  - ../entities/gemini-robotics.md
   - ../methods/imitation-learning.md
   - ../methods/diffusion-policy.md
   - ../methods/policy-optimization.md

@@ -133,13 +133,31 @@
 
 ## 与 wiki 的映射建议
 
-| 知识库页面 | 理由 |
-|------------|------|
-| [wiki/queries/robot-learning-three-eras-narrative.md](../../wiki/queries/robot-learning-three-eras-narrative.md) | 将「三个时代」仅作为阅读透镜，把本文件当作一手索引 |
-| [wiki/concepts/foundation-policy.md](../../wiki/concepts/foundation-policy.md) | RT / OXE / VLA 总览 |
-| [wiki/methods/vla.md](../../wiki/methods/vla.md) | VLA 定义与代表工作 |
-| [wiki/methods/imitation-learning.md](../../wiki/methods/imitation-learning.md) | BC-Z、DIAL、规模化模仿 |
-| [wiki/methods/reinforcement-learning.md](../../wiki/methods/reinforcement-learning.md) | QT-Opt、MT-Opt、HER |
+| 知识库页面 | 对应技术线 |
+|------------|------------|
+| [wiki/queries/robot-learning-three-eras-narrative.md](../../wiki/queries/robot-learning-three-eras-narrative.md) | 叙事透镜 + 全索引入口 |
+| [wiki/concepts/deep-rl-game-milestones.md](../../wiki/concepts/deep-rl-game-milestones.md) | DQN / AlphaGo |
+| [wiki/methods/qt-opt.md](../../wiki/methods/qt-opt.md) | QT-Opt |
+| [wiki/methods/bc-z.md](../../wiki/methods/bc-z.md) | BC-Z |
+| [wiki/methods/mt-opt.md](../../wiki/methods/mt-opt.md) | MT-Opt |
+| [wiki/methods/learning-from-play-lmp.md](../../wiki/methods/learning-from-play-lmp.md) | Learning from Play |
+| [wiki/methods/her.md](../../wiki/methods/her.md) | HER |
+| [wiki/methods/cyclegan-sim2real.md](../../wiki/methods/cyclegan-sim2real.md) | CycleGAN |
+| [wiki/methods/saycan.md](../../wiki/methods/saycan.md) | SayCan |
+| [wiki/methods/robotics-transformer-rt-series.md](../../wiki/methods/robotics-transformer-rt-series.md) | RT-1 / RT-2 |
+| [wiki/methods/dial-instruction-augmentation.md](../../wiki/methods/dial-instruction-augmentation.md) | DIAL |
+| [wiki/concepts/open-x-embodiment.md](../../wiki/concepts/open-x-embodiment.md) | Open X-Embodiment |
+| [wiki/methods/octo-model.md](../../wiki/methods/octo-model.md) | Octo |
+| [wiki/methods/π0-policy.md](../../wiki/methods/π0-policy.md) | π₀ |
+| [wiki/entities/aloha.md](../../wiki/entities/aloha.md) | ALOHA |
+| [wiki/entities/gemini-robotics.md](../../wiki/entities/gemini-robotics.md) | Gemini Robotics |
+| [wiki/methods/roboarena.md](../../wiki/methods/roboarena.md) | RoboArena |
+| [wiki/entities/generalist-ai-robotics.md](../../wiki/entities/generalist-ai-robotics.md) | Generalist AI |
+| [wiki/methods/generative-world-models.md](../../wiki/methods/generative-world-models.md) | World Models / 视频模型叙事 |
+| [wiki/concepts/foundation-policy.md](../../wiki/concepts/foundation-policy.md) | Foundation Policy 总览 |
+| [wiki/methods/vla.md](../../wiki/methods/vla.md) | VLA |
+| [wiki/methods/imitation-learning.md](../../wiki/methods/imitation-learning.md) | 模仿学习总览 |
+| [wiki/methods/reinforcement-learning.md](../../wiki/methods/reinforcement-learning.md) | 强化学习总览 |
 
 ---
 
