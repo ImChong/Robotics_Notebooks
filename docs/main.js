@@ -263,14 +263,17 @@
 
     // 4. Restore Links
     linkTokens.forEach(function (entry) {
-      rendered = rendered.replace(entry.token, entry.html);
+      // Use a function replacer: entry.html may contain "$" sequences that
+      // String.replace interprets as substitution patterns (e.g. "$$" → "$").
+      rendered = rendered.replace(entry.token, function () { return entry.html; });
     });
 
     // 5. Restore Protected Math (safely escaped)
     mathTokens.forEach(function (entry) {
       // The math content must be escaped because it will be part of innerHTML
       // but it should NOT be processed by other markdown rules (already protected).
-      rendered = rendered.replace(entry.token, escapeHtml(entry.html));
+      const escapedMath = escapeHtml(entry.html);
+      rendered = rendered.replace(entry.token, function () { return escapedMath; });
     });
 
     return rendered;
