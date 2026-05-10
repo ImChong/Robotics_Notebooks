@@ -3,6 +3,7 @@ type: method
 tags: [rl, policy-optimization, ppo, sac, locomotion]
 status: complete
 related:
+  - ./intentional-updates-streaming-rl.md
   - ./reinforcement-learning.md
   - ./imitation-learning.md
   - ../tasks/locomotion.md
@@ -11,6 +12,7 @@ related:
   - ../formalizations/bellman-equation.md
   - ../queries/rl-hyperparameter-guide.md
 summary: "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
+updated: 2026-05-10
 ---
 
 # Policy Optimization
@@ -121,6 +123,12 @@ SAC 常用于：
 当前可将其视为 PPO 家族的一个值得跟踪的新方向：  
 **默认 baseline 仍可用 PPO，但在不稳定任务上可以把 BPO 作为对照实验项。**
 
+## 流式设定：Intentional Policy Gradient（2026）
+
+工业界常见的 PPO 实现依赖 **minibatch 与（可选）replay** 来平均梯度噪声。若策略更新必须在 **batch=1、无 replay** 的严格流式条件下进行，固定学习率往往难以控制「策略在概率意义上这一步改了多少」。
+
+**Intentional Policy Gradient**（Sharifnassab et al., 2026）用采样动作的 **$\Delta\log\pi$ 意图** 反解标量步长，使典型策略位移幅度由超参 $\eta$ 标定，小步下与局部 KL 尺度相关，可视为信任域思想在流式优化器上的轻量实例。细节与 TD($\lambda$) 侧对称构造见 [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) 与 [ingest 档案](../../sources/papers/intentional_streaming_rl.md)。
+
 ## 常见问题和调参技巧
 
 ### Reward Shaping
@@ -146,7 +154,9 @@ SAC 常用于：
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning* (2018) — SAC 原论文
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — locomotion + PPO 代表
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL/BPO，新近策略优化理论与算法
+- Sharifnassab et al., *Intentional Updates for Streaming Reinforcement Learning* (2026) — 流式意图策略梯度与步长反解
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md)
+- **ingest 档案：** [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md)
 
 ## 关联页面
 
@@ -157,6 +167,7 @@ SAC 常用于：
 - [Formalizations: MDP](../formalizations/mdp.md)
 - [Formalizations: Bellman 方程](../formalizations/bellman-equation.md)
 - [Formalizations: GAE](../formalizations/gae.md) — PPO 使用 GAE 作为优势估计标准实现
+- [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — 无 minibatch 时的策略位移控制
 - [Query：RL 超参数调参指南](../queries/rl-hyperparameter-guide.md)
 
 ## 推荐继续阅读
@@ -165,6 +176,7 @@ SAC 常用于：
 - Haarnoja et al., [*Soft Actor-Critic*](https://arxiv.org/abs/1801.01290) — SAC 原论文
 - Andrychowicz et al., [*Learning dexterous in-hand manipulation*](https://arxiv.org/abs/1808.00177) — 灵巧手操作 PPO 经典
 - Ao et al., [*Bounded Ratio Reinforcement Learning*](https://arxiv.org/abs/2604.18578) — BRRL / BPO 原论文
+- Sharifnassab et al., [*Intentional Updates for Streaming Reinforcement Learning*](https://arxiv.org/abs/2604.19033) — 流式意图 TD / Q / Policy Gradient 原论文
 
 ## 一句话记忆
 

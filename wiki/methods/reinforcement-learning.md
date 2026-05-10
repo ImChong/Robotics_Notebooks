@@ -3,6 +3,7 @@ type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 related:
+  - ./intentional-updates-streaming-rl.md
   - ./imitation-learning.md
   - ../concepts/sim2real.md
   - ../concepts/whole-body-control.md
@@ -13,6 +14,7 @@ related:
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
 sources:
+  - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
 summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
@@ -125,6 +127,7 @@ flowchart TD
 - Reward 设计困难
 - 安全性难以保证（尤其是真实机器人上）
 - 训练不稳定
+- **全流式（batch=1、无 replay）** 时，单步梯度尺度噪声无法被 minibatch 平均，价值与策略头易出现过大/过小交替更新；近年工作用 **意图更新（intentional updates）** 在输出空间反解步长以稳定跟踪，见 [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md)。
 
 ## Model-Free vs Model-Based 对比
 
@@ -166,6 +169,7 @@ flowchart LR
 - **vs WBC**：RL 学习型，WBC 优化型。见 [WBC vs RL](../comparisons/wbc-vs-rl.md)。
 
 ## 参考来源
+- [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
 - [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
@@ -182,6 +186,7 @@ flowchart LR
 ## 关联页面
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 
+- [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
