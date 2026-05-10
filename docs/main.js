@@ -2126,7 +2126,7 @@
         out.push(token);
         if (token.length > 1 && token.charCodeAt(0) >= 0x4e00 && token.charCodeAt(0) <= 0x9fff) {
           for (var i = 0; i < token.length - 1; i++) out.push(token.slice(i, i + 2));
-          for (var i = 0; i < token.length; i++) out.push(token[i]);
+          for (var k = 0; k < token.length; k++) out.push(token[k]);
         }
       }
       return out;
