@@ -178,6 +178,14 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   gap: 16px;
   margin-top: 16px;
 }
+
+/* 首页：技术路线/图谱按钮与下方搜索区更紧凑 */
+#hero.hero {
+  padding-bottom: 18px;
+}
+#wiki-search.section {
+  padding-top: 22px;
+}
 .btn-primary, .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -964,6 +972,9 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   .hero {
     padding: 28px 0 28px;
   }
+  #hero.hero {
+    padding-bottom: 12px;
+  }
   .hero .container {
     padding-left: 12px;
     padding-right: 12px;
@@ -983,6 +994,9 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   }
   .section {
     padding: 30px 0;
+  }
+  #wiki-search.section {
+    padding-top: 16px;
   }
   .hero-grid, .card-grid, .preview-home-layout, .preview-split-grid, .detail-hero-top, .route-card-grid { grid-template-columns: 1fr; }
   .hero-title { font-size: 2.15rem; }
