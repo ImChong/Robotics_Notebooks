@@ -4,6 +4,9 @@ tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
 updated: 2026-04-29
 related:
+  - ./bc-z.md
+  - ./learning-from-play-lmp.md
+  - ./dial-instruction-augmentation.md
   - ./reinforcement-learning.md
   - ../concepts/sim2real.md
   - ./humanoid-transformer-touch-dreaming.md

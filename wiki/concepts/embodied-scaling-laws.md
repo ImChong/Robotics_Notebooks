@@ -4,6 +4,7 @@ tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
 updated: 2026-04-21
 related:
+  - ./open-x-embodiment.md
   - ../methods/vla.md
   - ../methods/auto-labeling-pipelines.md
   - ../formalizations/foundation-policy-alignment.md

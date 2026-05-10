@@ -3,6 +3,9 @@ type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 related:
+  - ../concepts/deep-rl-game-milestones.md
+  - ./qt-opt.md
+  - ./mt-opt.md
   - ./intentional-updates-streaming-rl.md
   - ./imitation-learning.md
   - ../concepts/sim2real.md

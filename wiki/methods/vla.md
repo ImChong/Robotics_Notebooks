@@ -6,6 +6,10 @@ updated: 2026-04-29
 summary: "VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../concepts/foundation-policy.md
+  - ./saycan.md
+  - ./robotics-transformer-rt-series.md
+  - ./dial-instruction-augmentation.md
+  - ./octo-model.md
   - ./behavior-cloning.md
   - ./action-chunking.md
   - ./diffusion-policy.md
