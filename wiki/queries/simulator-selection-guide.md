@@ -10,6 +10,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../entities/humanoid-robot.md
+  - ../entities/dm-control.md
 ---
 
 # Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis
@@ -37,7 +38,7 @@ related:
 | **Sim2Real Gap** | 小（接触/摩擦建模准确） | 中（PhysX 与真实存在差异） | 待评估（2024 年以来研究积累中） |
 | **开源 / 商业** | 开源（Apache 2.0，2022 年起） | 开源（但依赖 NVIDIA Omniverse 生态） | 开源（MIT） |
 | **学习曲线** | 低–中（Python API 简洁，文档完善） | 高（Isaac Sim 依赖重，环境配置复杂） | 低（API 设计现代，上手快） |
-| **主流项目支持** | dm_control、MJX、ManiSkill | legged_gym、RSL_rl、OmniIsaacGymEnvs | 持续接入中 |
+| **主流项目支持** | [dm_control](../entities/dm-control.md)、MJX、ManiSkill | legged_gym、RSL_rl、OmniIsaacGymEnvs | 持续接入中 |
 | **硬件要求** | CPU 可用，GPU 可选 | 必须 NVIDIA GPU（RTX 级别） | 必须 NVIDIA GPU |
 
 ---
@@ -48,7 +49,7 @@ related:
 
 **核心优势：**
 - 接触动力学建模是学术界黄金标准，soft contact 模型精度高
-- DeepMind 开源后社区活跃，dm_control / ManiSkill2 均基于 MuJoCo
+- DeepMind 开源后社区活跃，[dm_control](../entities/dm-control.md) / ManiSkill2 均基于 MuJoCo
 - CPU 运行稳定，不依赖 GPU 环境，部署门槛低
 - MJX（JAX 加速版）支持 GPU batch，但生态仍在成熟中
 
