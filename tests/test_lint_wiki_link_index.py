@@ -37,3 +37,20 @@ def test_build_link_index_reports_broken_relative_to_repo_root(tmp_path: Path, m
     broken_paths = next(iter(broken.values()))
     assert len(broken_paths) == 1
     assert broken_paths[0].replace("\\", "/") == "wiki/missing.md"
+
+
+def test_build_link_index_no_broken_when_target_exists_but_outside_page_set(
+    tmp_path: Path, monkeypatch
+) -> None:
+    """链接指向磁盘上存在的 .md，但该页未纳入本次 page_set 时，不计入断链。"""
+    monkeypatch.setattr(lw, "REPO_ROOT", tmp_path)
+    wiki = tmp_path / "wiki"
+    wiki.mkdir()
+    a = wiki / "a.md"
+    c = wiki / "c.md"
+    a.write_text("See [c](c.md).\n", encoding="utf-8")
+    c.write_text("not in lint page list\n", encoding="utf-8")
+    pages = [a]
+    page_set = {a.resolve()}
+    _inbound, broken = lw._build_link_index(pages, page_set)
+    assert not broken
