@@ -1,6 +1,6 @@
 # Linking Rules
 
-与「内容应放进仓库哪个根目录」相关的取舍，见 [content-directories.md](content-directories.md)。
+与「内容应放进仓库哪个根目录」相关的取舍，见 [content-directories.md](content-directories.md)。**Schema 目录总索引**：[README.md](README.md)。
 
 ## 目标
 
