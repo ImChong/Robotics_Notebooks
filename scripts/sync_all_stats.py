@@ -17,6 +17,8 @@ import sys
 from datetime import date
 from pathlib import Path
 
+from graph_exports_sync import copy_graph_exports_to_docs
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INDEX_HTML = REPO_ROOT / "docs" / "index.html"
 README_MD = REPO_ROOT / "README.md"
@@ -42,17 +44,8 @@ def main():
     # 2. 生成首页统计 JSON (内部会调用 lint_wiki.py)
     run_command(["python3", "scripts/generate_home_stats.py"], "生成首页统计 JSON")
 
-    # 3. 确保 docs/exports 目录存在并同步文件
-    docs_exports = REPO_ROOT / "docs" / "exports"
-    docs_exports.mkdir(parents=True, exist_ok=True)
-
-    files_to_sync = ["link-graph.json", "graph-stats.json", "home-stats.json"]
-    for f in files_to_sync:
-        src = REPO_ROOT / "exports" / f
-        dst = docs_exports / f
-        if src.exists():
-            dst.write_bytes(src.read_bytes())
-            print(f"✅ 已同步: {f} -> docs/exports/")
+    # 3. 确保 docs/exports 目录存在并同步图谱相关 JSON（与 make graph 共用逻辑）
+    copy_graph_exports_to_docs()
 
     # 读取最新统计数据
     if not HOME_STATS_JSON.exists():

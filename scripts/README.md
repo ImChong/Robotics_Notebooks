@@ -20,6 +20,7 @@
 | `generate_home_stats.py` | 生成首页 Hero 用轻量统计 JSON | `make graph`；`sync_all_stats` / preflight |
 | `generate_link_graph.py` | 生成知识图谱边数据等 | `make graph`；`sync_all_stats` / preflight |
 | `generate_page_catalog.py` | 生成 `index.md` 页面目录 | `make catalog`；`make ci-preflight` |
+| `graph_exports_sync.py` | 将图谱相关 JSON 从 `exports/` 复制到 `docs/exports/` | `make graph`；`sync_all_stats`；`sync_wiki.sh` |
 | `ingest_coverage.py` | 与覆盖率/ingest 相关的辅助脚本 | `make coverage` |
 | `ingest_paper.py` | 生成 `sources/papers/` 论文 ingest 模板 | `make ingest` |
 | `lint_wiki.py` | Wiki 健康检查（断链、孤儿页、frontmatter 等） | `make lint`；`make ci-preflight`（`--report`） |
