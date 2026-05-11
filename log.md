@@ -19,6 +19,8 @@
 > - P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
 > - P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新
 
+## [2026-05-11] structural | wiki — 新增四足机器人实体页 `wiki/entities/quadruped-robot.md` 并与 humanoid、市面平台纵览、ANYmal、Boston Dynamics、Unitree、locomotion 任务互链
+
 ## [2026-05-11] structural | wiki — 新增轮足四足（四轮足）概念页 `wiki/concepts/wheel-legged-quadruped.md`，互链 Hybrid Locomotion、robot_lab、locomotion、Unitree
 
 ## [2026-05-11] chore | roadmap — 删除两条空分支学习路径
