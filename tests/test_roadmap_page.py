@@ -13,12 +13,12 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapTitle"',
             'id="roadmapSummary"',
             'id="roadmapMeta"',
-            'id="roadmapFlowRoot"',
+            'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
+            'id="paper-guide"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
-        self.assertNotIn("mermaid", content.lower())
 
     def test_main_js_contains_roadmap_page_renderer(self):
         content = MAIN_JS.read_text(encoding="utf-8")
@@ -27,7 +27,7 @@ class RoadmapPageTests(unittest.TestCase):
             "document.getElementById('roadmapTitle')",
             "roadmap.html?id=",
             "roadmap_pages",
-            "roadmapFlowRoot",
+            "setRoadmapPaperGuideVisible",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
