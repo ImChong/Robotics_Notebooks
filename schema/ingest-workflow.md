@@ -68,6 +68,12 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 | 对比分析 | `wiki/comparisons/` |
 | 学习路线 | `roadmap/` 或 `wiki/roadmaps/` |
 
+#### `roadmap/` 与 `wiki/roadmaps/` 怎么选
+
+- **`roadmap/`**：默认放这里。面向读者的**主学习路径**、条件分支路线图（例如「若目标是 X 则走哪条」）、与首页/技术地图强绑定的入口；`README` 与站点导航主要指向本目录。
+- **`wiki/roadmaps/`**：专题或子路线、与 `wiki/concepts` 等方法页**强互链**、且不必占据仓库根级「主路线」展示位时使用。
+- **仍犹豫**：优先 `roadmap/`；若整页几乎只服务某一 `wiki` 子树且读者主要从该主题进入，再考虑 `wiki/roadmaps/`。
+
 ### 步骤 5：更新相关页面
 
 若资料有价值：
