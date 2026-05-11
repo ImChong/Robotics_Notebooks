@@ -4,6 +4,8 @@
 > 基于 Karpathy LLM Wiki 模式：LLM 是维护者，人类是 curator。
 > 四种核心 ops：Ingest（吃进）、Query（查询）、Lint（体检）、Index（索引）。
 
+维护者入口：**[schema 目录索引](README.md)**（本目录各规范与数据文件一览）。
+
 ---
 
 ## Op 1：Ingest — 新资料进入知识库
