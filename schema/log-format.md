@@ -3,6 +3,8 @@
 > 本文件规定 `log.md` 的条目格式与可解析前缀约定。
 > log.md 是 Robotics_Notebooks 的 append-only 操作日志，对应 Karpathy LLM Wiki 模式中的运营层记录。
 
+其它 `schema` 文件索引见 [README.md](README.md)。
+
 ---
 
 ## 基本格式

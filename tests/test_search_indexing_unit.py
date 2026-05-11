@@ -5,7 +5,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
-from search_indexing import parse_frontmatter
+from search_indexing import (
+    extract_summary,
+    extract_title,
+    parse_frontmatter,
+    strip_frontmatter,
+    tokenize_text,
+)
 from search_wiki import _filter_doc, _find_matched_lines
 
 
@@ -49,6 +55,34 @@ key: value
 """
         expected = {"title": "Test", "key": "value"}
         self.assertEqual(parse_frontmatter(content), expected)
+
+
+class TestSearchIndexingText(unittest.TestCase):
+    def test_strip_frontmatter_removes_block(self) -> None:
+        raw = "---\ntitle: X\n---\n\n# Body\n"
+        self.assertTrue(strip_frontmatter(raw).lstrip().startswith("# Body"))
+
+    def test_strip_frontmatter_no_block(self) -> None:
+        self.assertEqual(strip_frontmatter("# Only\n"), "# Only\n")
+
+    def test_extract_title(self) -> None:
+        self.assertEqual(extract_title("# Title Here\n\nx"), "Title Here")
+
+    def test_extract_title_fallback(self) -> None:
+        self.assertEqual(extract_title("no h1", "fb"), "fb")
+
+    def test_extract_summary_from_frontmatter(self) -> None:
+        fm = {"summary": "  from fm  "}
+        self.assertEqual(extract_summary("ignored body", fm), "from fm")
+
+    def test_extract_summary_first_paragraph(self) -> None:
+        body = "# T\n\nHello  world.\n"
+        self.assertEqual(extract_summary(body, {}), "Hello world.")
+
+    def test_tokenize_text_synonym_expansion(self) -> None:
+        toks = tokenize_text("强化学习")
+        self.assertIn("强化学习", toks)
+        self.assertIn("rl", toks)
 
 
 class TestSearchWikiHelpers(unittest.TestCase):
