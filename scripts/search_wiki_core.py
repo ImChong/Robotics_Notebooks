@@ -74,13 +74,17 @@ def compute_score(
     summary = str(fm.get("summary", fm.get("description", ""))).lower()
     title_l = (title or "").lower()
 
+    # Pre-compute document-level constants outside the loop
+    len_norm = 1 - b + b * dl / avgdl
+    k1_plus_1 = k1 + 1
+
     for token in query_tokens:
         tf = token_counts.get(token, 0)
         if tf == 0:
             continue
         idf = 0.693
-        numerator = tf * (k1 + 1)
-        denominator = tf + k1 * (1 - b + b * dl / avgdl)
+        numerator = tf * k1_plus_1
+        denominator = tf + k1 * len_norm
         term_score = idf * numerator / denominator
         if token in title_l:
             term_score *= 5.0
