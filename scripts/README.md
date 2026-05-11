@@ -1,6 +1,6 @@
 # `scripts/` 维护脚本一览
 
-本目录脚本由 `PYTHONPATH=scripts` 调用（见 `Makefile` 与 [贡献指南里的 CI 对照](../docs/contributing-ci.md)）。下表便于快速定位「改什么 / 跑什么」；权威调用方式仍以仓库根目录 **`Makefile`** 为准。
+本目录脚本由 `PYTHONPATH=scripts` 调用（见 `Makefile` 与 [贡献指南里的 CI 对照](../docs/contributing-ci.md)）。维护规范总览见 [schema/README.md](../schema/README.md)。下表便于快速定位「改什么 / 跑什么」；权威调用方式仍以仓库根目录 **`Makefile`** 为准。
 
 ## 入口脚本（按名字母序）
 
