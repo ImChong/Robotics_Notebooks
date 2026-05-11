@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="运动控制技术路线指南：数据驱动的阶段与相关项，并附论文主线（原论文导航），适合入门与工程师速查。" />
+  <meta name="description" content="运动控制技术路线指南：数据驱动的阶段与相关项，适合入门与工程师速查。" />
   <meta name="keywords" content="Robotics Notebooks, roadmap page, roadmap_pages, 成长路线" />
   <meta name="author" content="Chong Liu" />
   <meta property="og:title" content="Robotics Notebooks | 技术路线指南" />
-  <meta property="og:description" content="阶段路线 + 论文主线同一页：面向人形运动控制的学习与速查。" />
+  <meta property="og:description" content="阶段路线与相关项：面向人形运动控制的学习与速查。" />
   <meta property="og:type" content="website" />
   <title>Robotics Notebooks | 技术路线指南</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
@@ -55,7 +55,6 @@
       <div class="container page-subnav">
         <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>路线</a>
         <a href="#roadmap-related">相关项</a>
-        <a href="#paper-guide" id="roadmapSubnavPaper" hidden>论文主线</a>
       </div>
     </section>
 
@@ -79,7 +78,6 @@
             <ol>
               <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">路线</a></li>
               <li><a href="#roadmap-related">相关项</a></li>
-              <li id="roadmapTocPaperItem" hidden><a href="#paper-guide">论文主线</a></li>
             </ol>
           </nav>
         </aside>
@@ -98,114 +96,6 @@
             </div>
           </section>
         </div>
-      </div>
-    </section>
-
-    <section id="paper-guide" class="section section-alt" hidden aria-label="论文主线导航">
-      <div class="container">
-        <h2 class="section-title">论文主线（原论文导航）</h2>
-        <p class="section-subtitle">按问题与主线串联阅读，与上方「路线 / 相关项」互补：路线定结构，论文定深度。</p>
-
-        <section class="section" style="padding-top:0">
-          <h3 class="section-title" style="font-size:1.15rem">路线与论文怎么用</h3>
-          <div class="structure-list">
-            <article class="simple-card">
-              <h3>初学者</h3>
-              <p>先按上方「阶段」搭好控制概念骨架，再在本区每次只跟一条子线读 2–4 篇代表作，读完后回到 <a href="graph.html">知识图谱</a> 把概念挂回全站。</p>
-            </article>
-            <article class="simple-card">
-              <h3>有经验的运动控制工程师</h3>
-              <p>可把本页当速查：阶段区对齐培训与评审话术，论文区按 WBC/MPC、RL、Sim2Real、IL 快速跳到站内整理好的论文列表（detail）。</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="section" style="padding-top:1rem">
-          <h3 class="section-title">1. Motion Control：运动控制主线</h3>
-          <p class="section-subtitle">控制主线越稳，后面看学习方法（RL/IL）越不容易飘。</p>
-          <div class="card-grid">
-            <article class="card">
-              <h3>WBC / QP / TSID</h3>
-              <p>重点看任务优先级、接触力分配与全身协调。这是人形控制论文的基本语法。</p>
-              <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-whole-body-control" class="btn-secondary btn-inline">详细列表 →</a></div>
-            </article>
-            <article class="card">
-              <h3>Model Predictive Control</h3>
-              <p>看如何将动力学约束写成优化问题并在线实时求解。代表作：MIT Cheetah 系列、OCS2 工作。</p>
-              <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-mpc" class="btn-secondary btn-inline">MPC 列表 →</a></div>
-            </article>
-            <article class="card">
-              <h3>Optimal Control Theory</h3>
-              <p>控制理论的数学基石。包括 DP、极大值原理与 DDP/iLQR 的推导。</p>
-              <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-optimal-control" class="btn-secondary btn-inline">理论列表 →</a></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-alt" style="margin-top:1rem;border-radius:12px">
-            <h3 class="section-title">2. RL：机器人强化学习主线</h3>
-            <p class="section-subtitle">适合想真正理解 Humanoid Locomotion、鲁棒训练与策略部署的人。</p>
-            <div class="card-grid">
-              <article class="card">
-                <h3>Locomotion 代表作</h3>
-                <p>PPO 基线、RMA 快速自适应、AMP 对抗运动先验。不仅仅是「走」，更要看如何「稳」。</p>
-                <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-locomotion-rl" class="btn-secondary btn-inline">详细列表 →</a></div>
-              </article>
-              <article class="card">
-                <h3>Latent Skill Prior</h3>
-                <p>ASE, CALM, MimicKit。当你关心「既稳又自然」的行为时，这些技能嵌入工作是核心。</p>
-                <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-latent-skill-prior" class="btn-secondary btn-inline">详细列表 →</a></div>
-              </article>
-            </div>
-        </section>
-
-        <section class="section" style="padding-top:1rem">
-          <h3 class="section-title">3. Sim2Real：从仿真到真机</h3>
-          <p class="section-subtitle">最能体现工程含金量的部分，弥合仿真和现实的物理失配。</p>
-          <div class="card-grid">
-            <article class="card">
-              <h3>Domain Randomization</h3>
-              <p>物理参数随机化 (DR)、视觉域随机化。重点看「随机了什么」以及「为什么有效」。</p>
-              <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-sim2real" class="btn-secondary btn-inline">详细列表 →</a></div>
-            </article>
-            <article class="card">
-              <h3>System Identification</h3>
-              <p>SAGE 执行器建模、延迟建模与参数辨识。工程部署能不能站住，往往就卡在这里。</p>
-              <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-system-identification" class="btn-secondary btn-inline">详细列表 →</a></div>
-            </article>
-          </div>
-        </section>
-
-        <section class="section section-alt" style="margin-top:1rem;border-radius:12px">
-            <h3 class="section-title">4. IL &amp; Humanoid：模仿学习与人形专项</h3>
-            <p class="section-subtitle">连接动捕数据、遥操作与全身技能协调，是后续具身智能的高价值方向。</p>
-            <div class="card-grid">
-              <article class="card">
-                <h3>Imitation Learning</h3>
-                <p>BC / DAgger 基础、Diffusion Policy、动作迁移 (Retargeting) 完整 Pipeline。</p>
-                <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-imitation-learning" class="btn-secondary btn-inline">详细列表 →</a></div>
-              </article>
-              <article class="card">
-                <h3>Hardware &amp; Survey</h3>
-                <p>人形硬件平台演进、机器人学习领域综述。看清行业全景，避免陷入局部最优。</p>
-                <div style="margin-top:12px;"><a href="detail.html?id=reference-papers-survey-papers" class="btn-secondary btn-inline">详细列表 →</a></div>
-              </article>
-            </div>
-        </section>
-
-        <section class="section" style="padding-top:1rem;padding-bottom:0">
-          <h3 class="section-title">阅读建议</h3>
-          <div class="structure-list">
-            <article class="simple-card">
-              <h3>每次只打一条主线</h3>
-              <p>先吃透 2–4 篇奠基代表作，读完后务必回模块页或图谱页同步知识，不要全地图乱跳。</p>
-            </article>
-            <article class="simple-card">
-              <h3>工程细节比模型名字更重要</h3>
-              <p>多看 Deployment Reports 和失败经验，真正的财富往往在 Supplementary 中。</p>
-            </article>
-          </div>
-        </section>
       </div>
     </section>
   </main>
