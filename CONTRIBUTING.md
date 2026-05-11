@@ -10,6 +10,7 @@
 
 请先阅读：
 
+- **Schema 与流程索引**：[`schema/README.md`](schema/README.md)
 - 知识库维护流程：[`schema/ingest-workflow.md`](schema/ingest-workflow.md)
 - **内容进哪个目录**：[`schema/content-directories.md`](schema/content-directories.md)
 - **本地与 CI 命令对照**（提交前防踩坑）：[`docs/contributing-ci.md`](docs/contributing-ci.md)

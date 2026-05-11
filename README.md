@@ -55,6 +55,7 @@
 | `tech-map/` | **技术地图**。展示模块间依赖关系与技术栈全景。 |
 | `sources/` | **原始资料**。Ingest 之前的原始论文摘录、GitHub 仓库导航。 |
 | `references/` | **论文/Repo 索引**。按主题分类的深度阅读资源。 |
+| `schema/` | **维护规范**（ingest、命名、内链、页面类型、log 与 lint 用 JSON）。索引见 [schema/README.md](schema/README.md)。 |
 | `scripts/` | **维护工具**。用于 lint、搜索、索引生成和统计更新；脚本一览见 [scripts/README.md](scripts/README.md)。 |
 | `docs/` | **展示层**。GitHub Pages 托管的 D3.js 交互式图谱与详情页。 |
 | `docs/checklists/` | **执行清单归档**。当前技术栈推进、前端优化与历史阶段清单。 |
