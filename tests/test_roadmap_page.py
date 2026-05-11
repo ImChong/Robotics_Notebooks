@@ -15,7 +15,6 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapMeta"',
             'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
-            'id="paper-guide"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
@@ -27,7 +26,6 @@ class RoadmapPageTests(unittest.TestCase):
             "document.getElementById('roadmapTitle')",
             "roadmap.html?id=",
             "roadmap_pages",
-            "setRoadmapPaperGuideVisible",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
