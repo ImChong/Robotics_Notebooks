@@ -1,7 +1,7 @@
 # Simulation
 
 当前重点平台：
-- MuJoCo
+- MuJoCo；连续控制基准与 Python 工具链见 [dm_control](../../wiki/entities/dm-control.md)
 - Isaac Gym
 - Isaac Lab
 - Isaac Sim

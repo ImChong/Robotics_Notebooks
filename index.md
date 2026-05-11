@@ -48,6 +48,7 @@
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
+- [dm_control / Control Suite](wiki/entities/dm-control.md)
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
 - [Crocoddyl](wiki/entities/crocoddyl.md)

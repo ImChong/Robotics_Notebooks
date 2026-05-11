@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../comparisons/mujoco-vs-isaac-sim.md
+  - ./dm-control.md
   - ./nvidia-omniverse.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
@@ -28,7 +29,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 ## 对机器人研究的统治力
 
-- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。
+- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。DeepMind 的 [dm-control](./dm-control.md) 则在 MuJoCo 上提供另一套广泛使用、约定更统一的连续控制基准（Control Suite）与 Python 工具链。
 - **Sim2Real 的证明**：诸多成功的 Sim2Real 论文（尤其是四足机器人和灵巧手操作领域）都证明了：只要系统辨识和域随机化做得好，在 MuJoCo 中训练的策略可以直接无缝迁移到物理硬件上。
 
 ## 优势与局限
@@ -42,6 +43,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。
 
 ## 关联页面
+- [dm_control / Control Suite](./dm-control.md) — MuJoCo 上的连续控制基准与 Python 栈
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎
 - [SAPIEN (仿真引擎)](./sapien.md) — 侧重关节体交互
