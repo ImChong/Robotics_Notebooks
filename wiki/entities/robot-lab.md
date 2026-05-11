@@ -4,6 +4,7 @@ tags: [repo, framework, reinforcement-learning, isaac-lab, unitree]
 status: complete
 updated: 2026-04-23
 related:
+  - ../concepts/wheel-legged-quadruped.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
   - ./unitree.md
@@ -24,7 +25,7 @@ summary: "robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练
 
 ## 关键特性
 
-1. **广泛的硬件支持**：原生支持 26+ 种机器人，包括四足（Anymal D, Go2, A1）、轮足（Go2W, Tita）以及主流人形机器人（Unitree G1/H1, GR1, Xbot, [Booster T1](./booster-robocup-demo.md)）。
+1. **广泛的硬件支持**：原生支持 26+ 种机器人，包括四足（Anymal D, Go2, A1）、轮足（Go2W, Tita）以及主流人形机器人（Unitree G1/H1, GR1, Xbot, [Booster T1](./booster-robocup-demo.md)）。轮足四足的专题综述见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)。
 2. **模块化任务开发**：采用 `manager_based` 任务流，支持 locomotion 和复杂的动作模仿。
 3. **RL 框架集成**：深度集成 `RSL-RL` 作为主训练器，同时实验性支持 `CusRL` 和 `SKRL`。
 4. **特殊任务支持**：
@@ -43,6 +44,7 @@ robot_lab 遵循 IsaacLab 的扩展规范：
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [legged_gym](./legged-gym.md)
 - [Unitree 品牌主页](./unitree.md)
+- [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
 - [MimicKit (运动模仿套件)](./mimickit.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
 
