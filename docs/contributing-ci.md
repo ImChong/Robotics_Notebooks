@@ -13,6 +13,12 @@ make ci-test
 
 说明：变更 `wiki/` 或导出/索引链时，仍需执行 `make ci-preflight`（见下表）。
 
+## 派生文件与 `exports/`、`docs/` 下的副本
+
+- 维护脚本写入的导出与统计，以仓库根目录为主（例如 **`exports/`** 下的 JSON、以及 **`index.md`**、**`README.md`** 中带自动更新标记的区块等）。[`scripts/ci_preflight.py`](../scripts/ci_preflight.py) 文件内的 **`GENERATED_PATHS`** 列表，是「跑完 `make ci-preflight` 后若仍有 diff，就应提交」的权威清单。
+- **GitHub Pages** 以 [`docs/`](../docs/) 为站点根，因此同一条生成链会把搜索索引、sitemap、部分导出等写到 **`docs/search-index.json`**、**`docs/sitemap.xml`**、**`docs/exports/`** 等路径；它们是供站点读取的派生物，与根目录 `exports/` 等对应，不是第二套手写正文。
+- **实务**：只跑 `make graph` 或 `make export` 之一容易漏掉链上其它步骤；修改 `wiki/` 或导出相关脚本后，请优先 **`make ci-preflight`**，并对照 `GENERATED_PATHS` 把仍有变更的文件全部 stage，避免 Actions 因索引或统计不同步失败。
+
 ## 对照表
 
 | 检查项 | 本地命令 | CI Workflow |
@@ -32,6 +38,8 @@ make ci-test
 轻量 Python 工作流（`lint.yml`、`search-regression.yml`、`export.yml`、`weekly-lint.yml`）共用依赖声明文件 [`requirements-ci-lite.txt`](../requirements-ci-lite.txt)（与 `requirements-dev.txt` 区分），便于 Actions **pip 缓存**命中。
 
 ## 依赖安装
+
+各 Python 工作流使用 **Python 3.12**（见 `.github/workflows/*.yml`）；本地建议与 CI 一致，以减少「本机通过、远端失败」的差异。
 
 ```bash
 pip install -r requirements-dev.txt
