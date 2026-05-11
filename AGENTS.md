@@ -133,7 +133,7 @@
 
 本知识库采用 **Karpathy LLM Wiki 模式**：LLM 是维护者，人类是 curator。
 
-核心操作规范在 `schema/ingest-workflow.md`，每次维护本仓库前必须先读该文件。
+核心操作规范在 `schema/ingest-workflow.md`，每次维护本仓库前必须先读该文件。规范文件总索引见 [schema/README.md](schema/README.md)。
 
 三种核心 Op：
 - **`ingest`** — 新资料进入知识库（先 `sources/`，再判断是否升格 `wiki/`）

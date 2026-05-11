@@ -1,5 +1,7 @@
 # Naming Rules
 
+其它 `schema` 文件索引见 [README.md](README.md)。
+
 ## 总原则
 
 命名追求：

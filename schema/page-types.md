@@ -1,5 +1,7 @@
 # Page Types
 
+其它 `schema` 文件索引见 [README.md](README.md)。
+
 本文件定义 `wiki/` 中的页面类型。
 
 ---

@@ -2,6 +2,8 @@
 
 提交前尽量跑齐与 GitHub Actions 相同的检查，避免 PR 反复红。
 
+规范与数据文件索引：[schema/README.md](../schema/README.md)。
+
 ## 一键对齐 Tests 工作流
 
 与 [`.github/workflows/tests.yml`](../.github/workflows/tests.yml) 中 **Ruff / Mypy / pip-audit / ESLint / Pytest** 顺序一致（不含 Wiki 专项 lint）：
