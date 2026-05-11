@@ -460,11 +460,6 @@
   function buildRoadmapVerticalTreeHTML(stages, roadmapId, detailPages) {
     var parts = [];
     parts.push('<div class="roadmap-flow-primary">');
-    if (roadmapId === 'roadmap-motion-control') {
-      parts.push(
-        '<p class="data-meta roadmap-vtree-overview">主干：LIP→Centroidal→MPC→TSID/WBC；扩展：RL→Sim2Real。先通主干。</p>'
-      );
-    }
     parts.push('<ol class="roadmap-vtree">');
     var i;
     for (i = 0; i < stages.length; i++) {

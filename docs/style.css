@@ -415,6 +415,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-content-section {
   padding-top: 12px;
 }
+/* 路线区展开时：TOC 卡片上边框与「学习路线」标题顶边对齐（抵消 #roadmap-flow.section 的上内边距） */
+.roadmap-content-section .detail-content-layout:has(#roadmap-flow:not([hidden])) .detail-toc-panel {
+  margin-top: 44px;
+}
+.roadmap-content-section .detail-content-layout:has(#roadmap-flow:not([hidden])) #roadmap-flow > h2.section-title:first-of-type {
+  margin-top: 0;
+}
 .toc-card { padding: 18px 20px; }
 .toc-card ul { padding-left: 18px; }
 .toc-card li + li { margin-top: 6px; }
