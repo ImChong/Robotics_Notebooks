@@ -7,6 +7,7 @@ updated: 2026-04-25
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
+  - ../concepts/wheel-legged-quadruped.md
 ---
 
 # Unitree
@@ -75,6 +76,7 @@ Unitree 最早广泛出圈的是四足机器人。
 这一条线的重要性在于：
 - 为 locomotion、强化学习、扰动恢复、sim2real 提供了稳定研究平台
 - 让很多本来只能在论文里看的东西，变成可真实验证的实验系统
+- **延伸形态**：腿末集成驱动轮的 **轮足四足（四轮足）**（如 Go2W / B2W），兼顾平地滚动效率与崎岖越障；专题综述见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)。
 
 ### 2. 人形线
 Unitree 现在已经明显不只是四足公司。
@@ -213,6 +215,7 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人](./humanoid-robot.md)
 - [legged_gym](./legged-gym.md)
+- [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Humanoid Hardware](../../references/papers/humanoid-hardware.md)
 

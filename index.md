@@ -55,6 +55,7 @@
 - [Unitree](wiki/entities/unitree.md)
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md)（人形 / 四足高频品牌索引）
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md)
+- [轮足四足机器人（四轮足）](wiki/concepts/wheel-legged-quadruped.md)（Go2W 类混合滚动–步态）
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
 
 ### roadmap/ — 成长路线
@@ -235,6 +236,7 @@ SORT type ASC
 - [视触觉融合（Visuo-Tactile Fusion）](concepts/visuo-tactile-fusion.md) — 视触觉融合 (Visuo-Tactile Fusion)** 研究如何在一次操作的不同阶段，让机器人在「视觉全局信息」与「触觉局部信息」之间动态切换权重，特别关注**接触瞬间**这一最难的窗口期。 `📅unknown` `[wiki_page]`
 - [Whole-Body Control (WBC)](concepts/whole-body-control.md) — 全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。 `📅unknown` `[wiki_page]`
 - [Whole-Body Coordination（全身协调控制）](concepts/whole-body-coordination.md) — 全身协调控制（Whole-Body Coordination）**：研究高自由度机器人系统（尤其是人形机器人）如何将全身多个肢体、链接的运动在时间和空间上进行统一协调，使不同子系统的运动相互配合， `📅unknown` `[wiki_page]`
+- [轮足四足机器人（四轮足 / Wheel-Legged Quadruped）](concepts/wheel-legged-quadruped.md) — 轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率与能效，崎岖地形仍依赖足式步态；典型量产如 Unitree Go2W / B2W，仿真资产参见 robot_lab。 `📅unknown` `[wiki_page]`
 
 ### Wiki Methods（方法页）
 
