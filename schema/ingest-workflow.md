@@ -43,6 +43,8 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 原始资料先收录到 `sources/` 对应位置，保留来源信息。
 
+若不确定应落在 `sources/`、`references/`、`resources/` 还是直接进 `wiki/`，先看 [内容目录怎么选](content-directories.md) 的决策漏斗。
+
 建议记录：
 - 标题、链接、类型
 - 一句话说明

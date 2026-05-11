@@ -17,9 +17,7 @@ python3 scripts/generate_page_catalog.py
 echo "--- 📊 步骤 2: 生成图谱与主页统计 (make graph) ---"
 python3 scripts/generate_link_graph.py
 python3 scripts/generate_home_stats.py
-cp exports/link-graph.json docs/exports/link-graph.json
-cp exports/graph-stats.json docs/exports/graph-stats.json 2>/dev/null || true
-cp exports/home-stats.json docs/exports/home-stats.json 2>/dev/null || true
+python3 scripts/graph_exports_sync.py
 
 echo "--- 🚀 步骤 3: 导出全站数据 (make export) ---"
 python3 scripts/export_minimal.py

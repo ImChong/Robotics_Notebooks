@@ -59,6 +59,8 @@
 | `docs/` | **展示层**。GitHub Pages 托管的 D3.js 交互式图谱与详情页。 |
 | `docs/checklists/` | **执行清单归档**。当前技术栈推进、前端优化与历史阶段清单。 |
 
+不知道新资料或新页面该进哪个目录？见 [内容目录怎么选](schema/content-directories.md)。
+
 ---
 
 ## 维护看板
