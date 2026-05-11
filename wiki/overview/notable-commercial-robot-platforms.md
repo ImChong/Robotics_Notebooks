@@ -6,6 +6,7 @@ sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
 related:
   - ../entities/humanoid-robot.md
+  - ../entities/quadruped-robot.md
   - ../entities/motioncode.md
   - ../entities/unitree.md
   - ../entities/boston-dynamics.md
@@ -75,6 +76,7 @@ related:
 
 ## 关联页面
 
+- [四足机器人](../entities/quadruped-robot.md)
 - [人形机器人](../entities/humanoid-robot.md)
 - [主流人形机器人硬件对比](../queries/hardware-comparison.md)
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
