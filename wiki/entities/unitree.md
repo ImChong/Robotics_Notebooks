@@ -4,6 +4,9 @@ sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
 updated: 2026-04-25
+related:
+  - ./humanoid-robot.md
+  - ./quadruped-robot.md
 ---
 
 # Unitree
@@ -207,6 +210,8 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 
 ## 关联页面
 
+- [四足机器人](./quadruped-robot.md)
+- [人形机器人](./humanoid-robot.md)
 - [legged_gym](./legged-gym.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Humanoid Hardware](../../references/papers/humanoid-hardware.md)

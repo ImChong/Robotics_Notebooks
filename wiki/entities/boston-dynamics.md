@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ./humanoid-robot.md
+  - ./quadruped-robot.md
   - ../tasks/locomotion.md
   - ../concepts/whole-body-control.md
   - ../methods/model-predictive-control.md
@@ -45,6 +46,7 @@ Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个
 在深度学习和强化学习（RL）爆发的今天，波士顿动力经典的“模型驱动（Model-based）”路线面临着数据驱动（Data-driven）路线的挑战。虽然其在人工智能（特别是大模型和模仿学习端到端控制）方面的 PR 相对低调，但其底层极其扎实的运控算法和硬件平台，仍是当前所有 RL 从业者试图超越的物理标杆。
 
 ## 关联页面
+- [四足机器人](./quadruped-robot.md)
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)

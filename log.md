@@ -19,6 +19,8 @@
 > - P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
 > - P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新
 
+## [2026-05-11] structural | wiki — 新增四足机器人实体页 `wiki/entities/quadruped-robot.md` 并与 humanoid、市面平台纵览、ANYmal、Boston Dynamics、Unitree、locomotion 任务互链
+
 ## [2026-05-11] chore | roadmap — 删除两条空分支学习路径
 
 - 移除 `roadmap/learning-paths/if-goal-generalist.md`、`if-goal-whole-body-control.md`（仅占位列表，无 L 阶段正文）。
