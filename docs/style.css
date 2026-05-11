@@ -1128,11 +1128,11 @@ th {
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
-/* --- Roadmap page: vertical tree --- */
+/* --- Roadmap page: vertical tree + optional folded Mermaid --- */
 .roadmap-flow-section {
   padding-bottom: 0;
 }
-.roadmap-flow-host .roadmap-vtree-hint {
+.roadmap-flow-mermaid-host .roadmap-vtree-hint {
   margin: 0 0 0.75rem;
 }
 .roadmap-vtree-dual {
@@ -1231,6 +1231,35 @@ th {
   margin: 0;
   border-top: 1px solid var(--border);
 }
+.roadmap-mermaid-wrap {
+  margin-top: 1.25rem;
+  padding: 0.65rem 1rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface-strong, var(--bg-alt));
+}
+.roadmap-mermaid-wrap-summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.25rem 0;
+}
+.roadmap-flow-mermaid-host .roadmap-mermaid-hint {
+  margin: 0.5rem 0 0.6rem;
+}
+.roadmap-flow-mermaid-host .mermaid {
+  text-align: center;
+  margin: 0.35rem 0 0;
+  overflow-x: auto;
+}
+.roadmap-flow-mermaid-host .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+.roadmap-flow-mermaid-host .roadmap-mermaid-diagram {
+  padding: 0.5rem 0;
+  min-height: 8rem;
+}
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
   margin-bottom: 1rem;
@@ -1265,48 +1294,4 @@ th {
   .roadmap-flow-stage-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-}
-
-/* --- Roadmap page (minimal layout) --- */
-.roadmap-page .roadmap-page-intro {
-  padding: 1.75rem 0 0.5rem;
-  max-width: 44rem;
-}
-.roadmap-page .roadmap-breadcrumb {
-  font-size: 0.85rem;
-  margin-bottom: 0.75rem;
-}
-.roadmap-page .roadmap-bc-sep {
-  margin: 0 0.35rem;
-  opacity: 0.6;
-}
-.roadmap-page h1 {
-  margin: 0 0 0.5rem;
-  font-size: clamp(1.35rem, 4vw, 1.75rem);
-  line-height: 1.25;
-}
-.roadmap-page .roadmap-summary {
-  margin: 0 0 0.5rem;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-.roadmap-page .roadmap-meta-line {
-  margin: 0 0 1.25rem;
-  font-size: 0.82rem;
-}
-.roadmap-page .roadmap-page-sections {
-  padding-bottom: 2.5rem;
-}
-.roadmap-page .roadmap-page-sections .section-title {
-  margin-top: 0;
-}
-.roadmap-page .roadmap-flow-section {
-  margin-bottom: 1.5rem;
-}
-.roadmap-page .roadmap-related-section {
-  padding-top: 0.25rem;
-}
-.roadmap-page .roadmap-empty h2 {
-  margin-top: 0;
 }
