@@ -19,6 +19,10 @@ make ci-test
 - **GitHub Pages** 以 [`docs/`](../docs/) 为站点根，因此同一条生成链会把搜索索引、sitemap、部分导出等写到 **`docs/search-index.json`**、**`docs/sitemap.xml`**、**`docs/exports/`** 等路径；它们是供站点读取的派生物，与根目录 `exports/` 等对应，不是第二套手写正文。
 - **实务**：只跑 `make graph` 或 `make export` 之一容易漏掉链上其它步骤；修改 `wiki/` 或导出相关脚本后，请优先 **`make ci-preflight`**，并对照 `GENERATED_PATHS` 把仍有变更的文件全部 stage，避免 Actions 因索引或统计不同步失败。
 
+## 正文与资料应落在哪个目录
+
+不确定 `wiki/`、`sources/`、`references/`、`resources/` 或路线类目录如何选时，见 **[schema/content-directories.md](../schema/content-directories.md)**（决策漏斗与常见混淆）。
+
 ## 对照表
 
 | 检查项 | 本地命令 | CI Workflow |

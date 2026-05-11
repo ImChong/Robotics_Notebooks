@@ -1,5 +1,7 @@
 # Linking Rules
 
+与「内容应放进仓库哪个根目录」相关的取舍，见 [content-directories.md](content-directories.md)。
+
 ## 目标
 
 知识库底层应是图结构，而不是单树结构。
