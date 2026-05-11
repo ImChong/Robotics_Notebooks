@@ -15,7 +15,6 @@
 - 想走分支：  
   - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)  
   - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)  
-  - [如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md)
   - [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
   - [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)
 
@@ -468,7 +467,6 @@ TSID / WBC
 - 学习路径快速入口：
   - [如果目标是 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)
   - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)
-  - [如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md)
   - [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
   - [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)
 - 技术栈地图参考：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)

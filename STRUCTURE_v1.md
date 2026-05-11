@@ -181,8 +181,8 @@ roadmap/
 └── learning-paths/                  # 按目标分支的学习路径
     ├── if-goal-locomotion-rl.md     # 目标：人形RL运动控制
     ├── if-goal-imitation-learning.md # 目标：模仿学习与技能迁移
-    ├── if-goal-whole-body-control.md # 目标：全身控制与优化
-    └── if-goal-generalist.md       # 目标：全栈通用能力
+    ├── if-goal-safe-control.md      # 目标：安全控制
+    └── if-goal-contact-manipulation.md # 目标：接触丰富的操作任务
 ```
 
 **主路线（运动控制切入口）学习阶段：**

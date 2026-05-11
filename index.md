@@ -349,11 +349,9 @@ SORT type ASC
 
 - [成长路线总览](README.md) — 本目录用于承载 `Robotics_Notebooks` 的成长路线设计。 `📅unknown` `[wiki_page]`
 - [学习路径：如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
-- [学习路径：如果目标是全栈通用能力](learning-paths/if-goal-generalist.md) — 推荐顺序： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是人形 RL 运动控制](learning-paths/if-goal-locomotion-rl.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [学习路径：如果目标是安全控制（CLF / CBF / Safe RL）](learning-paths/if-goal-safe-control.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
-- [学习路径：如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md) — 推荐顺序： `📅unknown` `[roadmap_page]`
 - [主路线：运动控制算法工程师成长路线](motion-control.md) — 1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。 `📅unknown` `[wiki_page]`
 
 ### Tech-map Nodes（技术栈节点）

@@ -19,6 +19,11 @@
 > - P4：lint 增加孤儿节点计数检测，搜索回归扩展到 26 条
 > - P5：补齐安全控制与接触操作学习路径，扩展 overview / index / README 入口，并保持日志 append-only 更新
 
+## [2026-05-11] chore | roadmap — 删除两条空分支学习路径
+
+- 移除 `roadmap/learning-paths/if-goal-generalist.md`、`if-goal-whole-body-control.md`（仅占位列表，无 L 阶段正文）。
+- 更新 `roadmap/motion-control.md`、`roadmap/README.md`、`STRUCTURE_v1.md` 引用；`make ci-preflight` 同步索引与导出。
+
 ## [2026-05-08] style | docs | 技术路线页 `roadmap.html` emoji 统一为 🚀
 
 - favicon、顶栏站点标题由 🛣️/🧭 改为 🚀，与首页「技术路线指南」CTA 一致；主题切换仍为 ☀️/🌙。
