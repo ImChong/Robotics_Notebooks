@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-04-20
+updated: 2026-05-11
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
@@ -78,6 +78,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 ## 关联实体
 
 - [Allegro Hand](../entities/allegro-hand.md) — 主流灵巧操作研究硬件
+- [RLDX-1](../entities/rldx-1.md) — 灵巧操作向 VLA，可选触觉/力矩条件与低延迟推理栈
 
 ## 关联任务
 

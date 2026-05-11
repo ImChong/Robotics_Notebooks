@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-25
 related:
   - ./vla.md
+  - ../entities/rldx-1.md
   - ../concepts/foundation-policy.md
   - ../entities/nvidia-omniverse.md
   - ./diffusion-policy.md
@@ -74,5 +75,6 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 ## 关联页面
 
 -   [VLA (Vision-Language-Action)](./vla.md) — 具身大模型全景
+-   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念
 -   [Diffusion Policy](./diffusion-policy.md) — 另一种主流的生成式动作头路线
