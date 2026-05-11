@@ -938,6 +938,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   .detail-content-main {
     max-width: 100%;
   }
+  /* 侧栏改为固定抽屉后不再需要与「学习路线」标题对齐的顶距，避免残留空白 */
+  .roadmap-content-section .detail-content-layout:has(#roadmap-flow:not([hidden])) .detail-toc-panel {
+    margin-top: 0;
+  }
 }
 
 @media (max-width: 860px) {
@@ -998,6 +1002,14 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   .page-subnav a {
     padding: 7px 12px;
     font-size: 0.82rem;
+  }
+  /* 路线图页外层与内层都曾套用 .section，移动端会双倍「章节」留白；收紧顶距 */
+  .roadmap-content-section.section {
+    padding-top: 14px;
+    padding-bottom: 28px;
+  }
+  .roadmap-content-section .roadmap-flow-section.section {
+    padding-top: 0;
   }
   .section {
     padding: 30px 0;
