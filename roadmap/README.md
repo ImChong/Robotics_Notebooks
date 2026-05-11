@@ -18,5 +18,5 @@
 
 - [如果目标是人形 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)
 - [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)
-- [如果目标是全身控制与优化](learning-paths/if-goal-whole-body-control.md)
-- [如果目标是全栈通用能力](learning-paths/if-goal-generalist.md)
+- [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
+- [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)

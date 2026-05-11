@@ -1,8 +1,8 @@
 {
   "version": "v1",
-  "generated_at": "2026-05-01",
-  "doc_count": 271,
-  "count": 271,
+  "generated_at": "2026-05-11",
+  "doc_count": 310,
+  "count": 310,
   "embedding": {
     "backend": "hashed-token-projection",
     "model": "builtin-v1",
@@ -137,13 +137,6 @@
       "summary": "> 如果你想让机器人完成装配、拧螺丝、插拔等需要精细接触的任务，从这里切入。"
     },
     {
-      "id": "roadmap-if-goal-generalist",
-      "path": "roadmap/learning-paths/if-goal-generalist.md",
-      "title": "学习路径：如果目标是全栈通用能力",
-      "page_type": "roadmap",
-      "summary": "推荐顺序："
-    },
-    {
       "id": "roadmap-if-goal-imitation-learning",
       "path": "roadmap/learning-paths/if-goal-imitation-learning.md",
       "title": "学习路径：如果目标是模仿学习与技能迁移",
@@ -165,18 +158,11 @@
       "summary": "> 如果你想让机器人在满足安全约束的前提下运动，从这里切入。"
     },
     {
-      "id": "roadmap-if-goal-whole-body-control",
-      "path": "roadmap/learning-paths/if-goal-whole-body-control.md",
-      "title": "学习路径：如果目标是全身控制与优化",
-      "page_type": "roadmap",
-      "summary": "推荐顺序："
-    },
-    {
       "id": "roadmap-motion-control",
       "path": "roadmap/motion-control.md",
       "title": "主路线：运动控制算法工程师成长路线",
       "page_type": "roadmap",
-      "summary": "> 目标：从机器人基础出发，逐步成长为能做人形机器人运动控制、强化学习与模仿学习相关工作的算法工程师。"
+      "summary": "**摘要**：人形运动控制单条主路线：传统控制主干 → 学习方法；按 L 阶段展开，分支按需。"
     },
     {
       "id": "tech-node-dependency-graph",
@@ -319,6 +305,13 @@
       "summary": "灵巧操作数据采集选型：对比了穿戴式数据手套与基于视觉的遥操作方案，涵盖了精度、成本、遮挡鲁棒性及力反馈等关键维度。"
     },
     {
+      "id": "wiki-comparisons-ethercat-vs-ethernet-ip",
+      "path": "wiki/comparisons/ethercat-vs-ethernet-ip.md",
+      "title": "EtherCAT vs EtherNet/IP（工业总线选型对比）",
+      "page_type": "comparison",
+      "summary": "工业以太网双雄选型：EtherCAT 用 on-the-fly 主站帧实现 100 轴 250 µs 级硬实时刷新；EtherNet/IP 走标准 TCP/IP + CIP，生态广但确定性需要 CIP Sync/TSN 才能逼近 EtherCAT。在双足/人形机器人 1 kHz+ 闭环里 EtherCAT 是默认解，EtherNet/IP 更适合产线集成与低频运动协调。"
+    },
+    {
       "id": "wiki-comparisons-kalman-filter-vs-optimization-based-estimation",
       "path": "wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md",
       "title": "Kalman Filter vs. Optimization-based Estimation (状态估计选型)",
@@ -403,6 +396,13 @@
       "summary": "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
     },
     {
+      "id": "wiki-concepts-3d-spatial-vqa",
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "title": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+      "page_type": "concept",
+      "summary": "3D 空间 VQA 要求模型根据多视图或视频观测回答关于物体几何关系、距离、方位与房间尺度等问题，是检验视觉–语言模型空间推理能力的关键任务。"
+    },
+    {
       "id": "wiki-concepts-armature-modeling",
       "path": "wiki/concepts/armature-modeling.md",
       "title": "Armature Modeling（电枢惯量建模）",
@@ -422,6 +422,13 @@
       "title": "Centroidal Dynamics",
       "page_type": "concept",
       "summary": "Centroidal Dynamics 以质心动量为核心描述全身运动，是 MPC、WBC 和多接触规划的重要中间层。"
+    },
+    {
+      "id": "wiki-concepts-clock-synchronization-algorithms",
+      "path": "wiki/concepts/clock-synchronization-algorithms.md",
+      "title": "时钟同步算法 (Clock Synchronization Algorithms)",
+      "page_type": "concept",
+      "summary": "时钟同步算法：把 PTP（IEEE 1588）与 EtherCAT 分布式时钟（DC）抽象成一套主时钟选举 + 偏置/漂移估计 + 周期校正的统一框架，解释多板卡运控中如何把跨节点抖动压到亚微秒级。"
     },
     {
       "id": "wiki-concepts-contact-dynamics",
@@ -471,6 +478,13 @@
       "title": "深度学习基础 (Deep Learning Foundations)",
       "page_type": "concept",
       "summary": "深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。"
+    },
+    {
+      "id": "wiki-concepts-deep-rl-game-milestones",
+      "path": "wiki/concepts/deep-rl-game-milestones.md",
+      "title": "深度强化学习游戏里程碑（DQN / AlphaGo）",
+      "page_type": "concept",
+      "summary": "DQN 与 AlphaGo 等里程碑证明了端到端深度强化学习在高维观测下的普适性，是后来「能否把同类范式搬到真实机器人」讨论的共同起点。"
     },
     {
       "id": "wiki-concepts-dexterous-kinematics",
@@ -599,6 +613,13 @@
       "summary": "MPC-WBC integration 说明高层预测规划与低层全身控制如何分层协同完成稳定运动。"
     },
     {
+      "id": "wiki-concepts-open-x-embodiment",
+      "path": "wiki/concepts/open-x-embodiment.md",
+      "title": "Open X-Embodiment（OXE）",
+      "page_type": "concept",
+      "summary": "Open X-Embodiment（OXE）联合多机构把异构机器人演示数据规范化并开源，支撑跨本体规模化学习与通用策略预训练。"
+    },
+    {
       "id": "wiki-concepts-optimal-control",
       "path": "wiki/concepts/optimal-control.md",
       "title": "Optimal Control (OCP)",
@@ -711,6 +732,13 @@
       "summary": "全身协调控制（Whole-Body Coordination）关注多肢体、多链接系统在运动和操作中的时空同步问题，是 WBC 的上层概念，在 loco-manipulation 中尤为关键。"
     },
     {
+      "id": "entity-1x-technologies",
+      "path": "wiki/entities/1x-technologies.md",
+      "title": "1X Technologies",
+      "page_type": "entity",
+      "summary": "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国双总部的通用人形机器人公司，产品覆盖轮式人形 EVE 与面向家庭场景的双足 NEO，强调真实世界部署数据与 AI 能力迭代。"
+    },
+    {
       "id": "entity-allegro-hand",
       "path": "wiki/entities/allegro-hand.md",
       "title": "Allegro Hand (灵巧手)",
@@ -737,6 +765,13 @@
       "title": "ANYmal 四足机器人",
       "page_type": "entity",
       "summary": "ANYmal 是由 ETH Zurich 和 ANYbotics 开发的高性能四足机器人平台。它以 SEA 力控执行器和极高的防护等级著称，是机器人强化学习与 Sim2Real 技术研究的标志性载体。"
+    },
+    {
+      "id": "entity-asimov-v1",
+      "path": "wiki/entities/asimov-v1.md",
+      "title": "Asimov v1（开源人形机器人仓库）",
+      "page_type": "entity",
+      "summary": "Asimov v1 是 asimovinc 在单仓内开放的人形机器人全栈资料：机械与电气 CAD、MuJoCo 仿真、板载软件与官方手册/BOM；行走策略的公开训练入口在 asimov-mjlab（mjlab fork）中给出 PPO、imitation shaping 与 Sim2Real 取向说明。"
     },
     {
       "id": "entity-atom01-deploy",
@@ -802,6 +837,13 @@
       "summary": "Drake 是由丰田研究院（TRI）主导开发的开源 C++ 机器人工具箱，以其在轨迹优化（直接配点法）和严谨动力学建模方面的统治力而闻名。"
     },
     {
+      "id": "entity-figure-ai",
+      "path": "wiki/entities/figure-ai.md",
+      "title": "Figure AI",
+      "page_type": "entity",
+      "summary": "Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。"
+    },
+    {
       "id": "entity-gel-slim",
       "path": "wiki/entities/gel-slim.md",
       "title": "GelSlim（薄片化视觉触觉传感器）",
@@ -809,11 +851,39 @@
       "summary": "GelSlim 是 MIT 等团队提出的“薄片化”视觉触觉传感器系列，把 GelSight 的高分辨率接触成像压缩进可装到平行夹爪与灵巧手指节上的扁平外形，是当前接触丰富型操作的主流硬件之一。"
     },
     {
+      "id": "entity-gemini-robotics",
+      "path": "wiki/entities/gemini-robotics.md",
+      "title": "Gemini Robotics",
+      "page_type": "entity",
+      "summary": "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈发布的机器人视觉–语言–动作与具身推理模型族（含 ER / 1.5 等迭代），强调泛化、交互与自然语言指令。"
+    },
+    {
+      "id": "entity-gene-26-5-genesis-ai",
+      "path": "wiki/entities/gene-26-5-genesis-ai.md",
+      "title": "GENE-26.5（Genesis AI 操作基础模型）",
+      "page_type": "entity",
+      "summary": "GENE-26.5 是 Genesis AI（公司）公开的机器人操作基础模型品牌，与开源仿真项目 Genesis-Embodied-AI 名称相近但主体不同；当前公开信息以演示与媒体报道为主，尚无同名 arXiv 论文入库。"
+    },
+    {
+      "id": "entity-generalist-ai-robotics",
+      "path": "wiki/entities/generalist-ai-robotics.md",
+      "title": "Generalist AI（机器人方向）",
+      "page_type": "entity",
+      "summary": "Generalist AI 是宣称以超大规模真实交互数据预训练具身基础模型的商业团队之一；公开材料侧重数据规模与 GEN 系列迭代，引用应以官网博客为准。"
+    },
+    {
       "id": "entity-genesis-sim",
       "path": "wiki/entities/genesis-sim.md",
       "title": "Genesis (仿真器)",
       "page_type": "entity",
       "summary": "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
+    },
+    {
+      "id": "entity-gr00t-visual-sim2real",
+      "path": "wiki/entities/gr00t-visual-sim2real.md",
+      "title": "GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)",
+      "page_type": "entity",
+      "summary": "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。"
     },
     {
       "id": "entity-gs-playground",
@@ -872,6 +942,13 @@
       "summary": "Lynch & Park 的现代机器人学经典教材，独特之处是全程使用李群 / 螺旋理论作为统一数学语言，覆盖配置空间到全身控制、抓取、移动机器人的完整体系，是本知识库传统机器人学部分的主要参考底座。"
     },
     {
+      "id": "entity-motioncode",
+      "path": "wiki/entities/motioncode.md",
+      "title": "MotionCode™",
+      "page_type": "entity",
+      "summary": "MotionCode 是宣称专注人体运动数字化的公司，公开分为 Move（采集与标注）、Media（内容）、Mind（机器人与 AI 运动学习）三线，并强调数据可对接 Isaac、MuJoCo 及主流 DCC/实时引擎管线。"
+    },
+    {
       "id": "entity-motrix",
       "path": "wiki/entities/motrix.md",
       "title": "Motrix (Motphys 机器人仿真与训练平台)",
@@ -911,7 +988,7 @@
       "path": "wiki/entities/open-source-humanoid-hardware.md",
       "title": "开源人形机器人硬件方案对比",
       "page_type": "entity",
-      "summary": "主流开源人形机器人硬件方案对比：详细梳理了 Roboto Origin、Berkeley Humanoid (ODRI) 等平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
+      "summary": "主流开源人形机器人硬件方案对比：梳理 Berkeley Humanoid、Roboto Origin、Asimov v1、ODRI 与商业平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
     },
     {
       "id": "entity-pinocchio",
@@ -926,6 +1003,13 @@
       "title": "ProtoMotions: 大规模人形机器人仿真框架",
       "page_type": "entity",
       "summary": "ProtoMotions 是 NVIDIA 开发的高性能 GPU 加速的人形机器人仿真与控制框架，是 MimicKit 的姊妹项目。"
+    },
+    {
+      "id": "entity-rldx-1",
+      "path": "wiki/entities/rldx-1.md",
+      "title": "RLDX-1",
+      "page_type": "entity",
+      "summary": "RLDX-1 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。"
     },
     {
       "id": "entity-robot-explorer",
@@ -970,6 +1054,13 @@
       "summary": "SAPIEN 是针对关节体交互与机器人操作设计的高性能仿真引擎，支持大规模 PartNet-Mobility 数据集，适用于细粒度操作任务。"
     },
     {
+      "id": "entity-sceneverse-pp",
+      "path": "wiki/entities/sceneverse-pp.md",
+      "title": "SceneVerse++",
+      "page_type": "entity",
+      "summary": "SceneVerse++ 从互联网无标注视频自动重建与标注大规模真实室内 3D 场景，为检测分割、3D 空间 VQA 与视觉–语言导航等任务提供训练数据，代码与数据开源。"
+    },
+    {
       "id": "entity-shadow-hand",
       "path": "wiki/entities/shadow-hand.md",
       "title": "Shadow Hand (灵巧手)",
@@ -1003,6 +1094,13 @@
       "title": "URDF-Studio",
       "page_type": "entity",
       "summary": "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
+    },
+    {
+      "id": "entity-wbc-fsm",
+      "path": "wiki/entities/wbc-fsm.md",
+      "title": "wbc_fsm (G1 全身控制 FSM 部署框架)",
+      "page_type": "entity",
+      "summary": "wbc_fsm 是针对 Unitree G1 的 C++ 全身控制部署框架，用有限状态机管理 Passive/Loco/WBC 三种模式，内嵌 LAFAN1 动捕训练的 ONNX 策略，无 ROS 依赖，支持仿真与真机双端部署。"
     },
     {
       "id": "wiki-formalizations-behavior-cloning-loss",
@@ -1152,6 +1250,13 @@
       "summary": "任务空间逆动力学（TSID）形式化：描述了如何在浮动基座动力学约束下，将多个并行的任务空间加速度映射为一致的关节力矩输出，是 WBC 最主流的数学实现方式。"
     },
     {
+      "id": "wiki-formalizations-udp-multicast-dynamics",
+      "path": "wiki/formalizations/udp-multicast-dynamics.md",
+      "title": "UDP 组播动力学 (UDP Multicast Dynamics)",
+      "page_type": "formalization",
+      "summary": "UDP 组播动力学：把 LCM 等基于 UDP 多播的中间件抽象成丢包-迟到-乱序-不一致四类随机过程，给出丢包率、订阅者间一致性偏差与控制端可用观测窗口之间的可计算约束。"
+    },
+    {
       "id": "wiki-formalizations-variational-objective",
       "path": "wiki/formalizations/variational-objective.md",
       "title": "Variational Objective (变分目标函数)",
@@ -1243,6 +1348,13 @@
       "summary": "基于 Transformer 的行为克隆（BC with Transformer）利用自注意力机制捕获长时序观测中的多峰分布与因果关系，是目前 ACT、RT 系列算法的核心骨干架构。"
     },
     {
+      "id": "wiki-methods-bc-z",
+      "path": "wiki/methods/bc-z.md",
+      "title": "BC-Z",
+      "page_type": "method",
+      "summary": "BC-Z 通过大规模真实世界模仿学习与灵活任务条件（语言等），展示桌面操控策略对新任务的零样本泛化潜力。"
+    },
+    {
       "id": "wiki-methods-behavior-cloning",
       "path": "wiki/methods/behavior-cloning.md",
       "title": "Behavior Cloning（行为克隆）",
@@ -1255,6 +1367,13 @@
       "title": "BeyondMimic",
       "page_type": "method",
       "summary": "BeyondMimic 是一个旨在实现通用、稳健的人形动作模仿的学习框架，其核心在于精确的物理建模与失败率驱动的自适应采样机制。"
+    },
+    {
+      "id": "wiki-methods-chasing-autonomy-pipeline",
+      "path": "wiki/methods/chasing-autonomy-pipeline.md",
+      "title": "Chasing Autonomy Pipeline",
+      "page_type": "method",
+      "summary": "一种结合硬约束动态重定向与控制引导强化学习的流水线，利用单一人类演示实现高性能的人形机器人跑步与避障。"
     },
     {
       "id": "wiki-methods-claw",
@@ -1271,6 +1390,13 @@
       "summary": "ContactNet 是一种基于点云的深度学习模型，专门用于预测物体的接触面与抓取概率，是实现凌乱场景下稳健操作的核心感知技术。"
     },
     {
+      "id": "wiki-methods-cyclegan-sim2real",
+      "path": "wiki/methods/cyclegan-sim2real.md",
+      "title": "CycleGAN 与视觉 Sim2Real",
+      "page_type": "method",
+      "summary": "CycleGAN 一类无配对图像翻译可把仿真渲染转成接近真实风格的观测，用于缩小视觉 Sim2Real 域差；常与大规模 RL 数据采集并列讨论。"
+    },
+    {
       "id": "wiki-methods-dagger",
       "path": "wiki/methods/dagger.md",
       "title": "DAgger（Dataset Aggregation）",
@@ -1283,6 +1409,13 @@
       "title": "DeepMimic: 示例引导的技能学习",
       "page_type": "method",
       "summary": "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹跟踪奖励实现复杂的运动模仿。"
+    },
+    {
+      "id": "wiki-methods-dial-instruction-augmentation",
+      "path": "wiki/methods/dial-instruction-augmentation.md",
+      "title": "DIAL（指令增强）",
+      "page_type": "method",
+      "summary": "DIAL 用微调后的视觉语言模型为大规模无详细语言标注的演示轨迹自动生成多样指令，再训练语言条件 BC，扩展语义覆盖与泛化指令。"
     },
     {
       "id": "wiki-methods-diffusion-motion-generation",
@@ -1306,6 +1439,13 @@
       "summary": "动态运动基元（DMP）通过二阶微分方程描述运动轨迹，具有空间伸缩不变性和时域缩放特性，是轨迹级模仿学习的经典工具。"
     },
     {
+      "id": "wiki-methods-exoactor",
+      "path": "wiki/methods/exoactor.md",
+      "title": "ExoActor (视频生成驱动的交互式人形控制)",
+      "page_type": "method",
+      "summary": "ExoActor 是 BAAI 提出的视频生成驱动的人形控制框架：把第三人称视频生成当作交互动力学的统一接口，通过 embodiment transfer + 动作链分解 + Kling 3 视频生成，再用 GENMO/WiLoR 做动作估计、SONIC 做通用动作跟踪，最终把 Unitree G1 在零真实数据下泛化到多难度交互任务。"
+    },
+    {
       "id": "wiki-methods-gae",
       "path": "wiki/methods/gae.md",
       "title": "Generalized Advantage Estimation (GAE)",
@@ -1327,6 +1467,13 @@
       "summary": "生成式世界模型（Generative World Models）利用扩散模型或视频生成技术来模拟物理世界的动态，为机器人提供高保真的视频级仿真和无限的反事实推演能力。"
     },
     {
+      "id": "wiki-methods-genmo",
+      "path": "wiki/methods/genmo.md",
+      "title": "GENMO（统一人体运动估计与生成）",
+      "page_type": "method",
+      "summary": "GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。"
+    },
+    {
       "id": "wiki-methods-haic",
       "path": "wiki/methods/haic.md",
       "title": "HAIC: 基于世界模型的教师-学生训练",
@@ -1339,6 +1486,13 @@
       "title": "Hindsight Experience Replay (HER)",
       "page_type": "method",
       "summary": "事后经验回放（HER）通过将失败的轨迹重新标记为指向实际到达位置的成功轨迹，有效解决了操作任务中稀疏奖励难以训练的问题。"
+    },
+    {
+      "id": "wiki-methods-hipan",
+      "path": "wiki/methods/hipan.md",
+      "title": "HiPAN（Hierarchical Posture-Adaptive Navigation）",
+      "page_type": "method",
+      "summary": "四足在非结构化 3D 场景中的分层导航：高层从深度输出平面速度与体姿态指令，低层做姿态自适应足式跟踪；用路径引导课程缓解短视，teacher–student 蒸馏实现无显式 3D 建图的机载部署。"
     },
     {
       "id": "wiki-methods-htwk-gym",
@@ -1369,11 +1523,25 @@
       "summary": "手内重定向（In-hand Reorientation）是指机器人灵巧手在不借助于外部环境（如桌面）的前提下，通过手指间的协同动作改变掌心中物体位姿的技术。"
     },
     {
+      "id": "wiki-methods-intentional-updates-streaming-rl",
+      "path": "wiki/methods/intentional-updates-streaming-rl.md",
+      "title": "Intentional Updates for Streaming RL（意图更新与流式强化学习）",
+      "page_type": "method",
+      "summary": "意图更新（Intentional Updates）在 batch=1、无 replay 的流式深度 RL 中，用输出空间上的目标变化反解每步步长，稳定 Intentional TD/Q 与策略梯度，常与带 replay 的基线性能接近。"
+    },
+    {
       "id": "wiki-methods-lcp",
       "path": "wiki/methods/lcp.md",
       "title": "LCP: Lipschitz 约束策略",
       "page_type": "method",
       "summary": "LCP 通过对策略网络施加 Lipschitz 连续性约束，增强了物理控制器的鲁棒性和平滑度，防止微小扰动导致系统失稳。"
+    },
+    {
+      "id": "wiki-methods-learning-from-play-lmp",
+      "path": "wiki/methods/learning-from-play-lmp.md",
+      "title": "Learning from Play（Play-LMP）",
+      "page_type": "method",
+      "summary": "Learning from Play（Play-LMP）从非任务化的遥操作『玩耍』轨迹中学习潜在规划结构，再用目标条件策略完成指定任务。"
     },
     {
       "id": "wiki-methods-lingbot-map",
@@ -1388,6 +1556,13 @@
       "title": "LQR / iLQR 算法详解",
       "page_type": "method",
       "summary": "LQR / iLQR 是机器人最优控制与轨迹优化的基石，通过 Riccati 递归高效求解线性及非线性轨迹优化问题。"
+    },
+    {
+      "id": "wiki-methods-lwd",
+      "path": "wiki/methods/lwd.md",
+      "title": "LWD（Learning while Deploying）",
+      "page_type": "method",
+      "summary": "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架，通过 DIVL + QAM 把部署中的异构经验（成功/失败/人为干预）转化为单一 VLA generalist 策略的持续改进。"
     },
     {
       "id": "wiki-methods-marl",
@@ -1432,6 +1607,27 @@
       "summary": "模型预测路径积分（MPPI）是一种基于样本的概率模型预测控制方法，通过海量并行轨迹采样与加权平均，实现了对非凸、非平滑动力学系统的高效控制。"
     },
     {
+      "id": "wiki-methods-mt-opt",
+      "path": "wiki/methods/mt-opt.md",
+      "title": "MT-Opt",
+      "page_type": "method",
+      "summary": "MT-Opt 把多任务机器人强化学习扩展到连续动作与共享数据采集栈，用任务判定与跨任务经验共享提升样本效率。"
+    },
+    {
+      "id": "wiki-methods-neural-motion-retargeting-nmr",
+      "path": "wiki/methods/neural-motion-retargeting-nmr.md",
+      "title": "NMR（神经运动重定向与人形全身控制）",
+      "page_type": "method",
+      "summary": "NMR 将人形运动重定向表述为从人体运动分布到机器人可行流形的学习映射；通过 CEPR 管线（筛选→GMR→聚类 RL 专家→仿真 rollout）构造物理一致的人机配对数据，训练 CNN–Transformer 非自回归网络，缓解传统优化重定向的非凸与噪声传播问题。"
+    },
+    {
+      "id": "wiki-methods-octo-model",
+      "path": "wiki/methods/octo-model.md",
+      "title": "Octo（开源 Generalist Policy）",
+      "page_type": "method",
+      "summary": "Octo 是基于 Open X-Embodiment 等数据训练的开源通用机器人策略，强调少样本适配新相机与动作空间，常与 RT 系列对照。"
+    },
+    {
       "id": "wiki-methods-paid-framework",
       "path": "wiki/methods/paid-framework.md",
       "title": "PAiD Framework",
@@ -1446,11 +1642,32 @@
       "summary": "Policy Optimization 汇总 PPO、SAC、TD3 等主流策略更新方法，是机器人 RL 的算法核心。"
     },
     {
+      "id": "wiki-methods-qt-opt",
+      "path": "wiki/methods/qt-opt.md",
+      "title": "QT-Opt",
+      "page_type": "method",
+      "summary": "QT-Opt 用大规模离线 + 在线真实机器人数据训练视觉条件下的连续动作 Q 学习，是早期证明「像素操控可扩展」的代表系统之一。"
+    },
+    {
       "id": "wiki-methods-reinforcement-learning",
       "path": "wiki/methods/reinforcement-learning.md",
       "title": "Reinforcement Learning (RL, 强化学习)",
       "page_type": "method",
       "summary": "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
+    },
+    {
+      "id": "wiki-methods-roboarena",
+      "path": "wiki/methods/roboarena.md",
+      "title": "RoboArena（评测基准）",
+      "page_type": "method",
+      "summary": "RoboArena 通过多机构分布式真实机器人评测与盲测配对比较，为通用操作策略提供更难『刷榜』的外部验证框架。"
+    },
+    {
+      "id": "wiki-methods-robotics-transformer-rt-series",
+      "path": "wiki/methods/robotics-transformer-rt-series.md",
+      "title": "Robotics Transformer（RT-1 / RT-2）",
+      "page_type": "method",
+      "summary": "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规模视觉语言模型接入同一接口形成 VLA，是通用操作策略的关键基线系列。"
     },
     {
       "id": "wiki-methods-safe-rl",
@@ -1460,11 +1677,32 @@
       "summary": "安全强化学习（Safe RL）旨在满足显式安全约束的前提下优化策略，常用方法包括 Lagrangian 优化、受限策略投影和安全层屏蔽。它是机器人部署至物理世界的必经之路。"
     },
     {
+      "id": "wiki-methods-saycan",
+      "path": "wiki/methods/saycan.md",
+      "title": "SayCan（Do As I Can）",
+      "page_type": "method",
+      "summary": "SayCan 用语言模型生成高层子任务候选，用语义价值函数估计在环境中的可行性，将常识推理与机器人局部可达性结合。"
+    },
+    {
+      "id": "wiki-methods-skeleton-action-recognition",
+      "path": "wiki/methods/skeleton-action-recognition.md",
+      "title": "骨架动作识别（Skeleton-Based Action Recognition）",
+      "page_type": "method",
+      "summary": "骨架动作识别通过对关节序列建模来理解人体/机器人动作；HOVL 进一步解决了异构骨架和开放词汇两大难题，是跨形态动作理解的关键方法。"
+    },
+    {
       "id": "wiki-methods-smp",
       "path": "wiki/methods/smp.md",
       "title": "SMP: 基于得分匹配的可复用运动先验",
       "page_type": "method",
       "summary": "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为“冻结奖励器”，实现了高效、可组合且无需原始数据的运动模仿学习。"
+    },
+    {
+      "id": "wiki-methods-sonic-motion-tracking",
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "title": "SONIC（规模化运动跟踪人形控制）",
+      "page_type": "method",
+      "summary": "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务，支持 VR、人体视频、文本与音乐等多模态指令，并作为真实机器人的通用低层执行器。"
     },
     {
       "id": "wiki-methods-star-vla",
@@ -1523,6 +1761,13 @@
       "summary": "VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。"
     },
     {
+      "id": "wiki-methods-wilor",
+      "path": "wiki/methods/wilor.md",
+      "title": "WiLoR（野外 3D 手部定位与重建）",
+      "page_type": "method",
+      "summary": "WiLoR 是端到端的野外手部检测定位 + Transformer 3D 手部网格重建网络，支持单图像与逐帧视频管线，为下游灵巧操作或人形双手轨迹提供单 RGB 估计。"
+    },
+    {
       "id": "wiki-methods-zest",
       "path": "wiki/methods/zest.md",
       "title": "ZEST (Zero-shot Embodied Skill Transfer)",
@@ -1542,6 +1787,13 @@
       "title": "人形机器人运动控制 Know-How",
       "page_type": "overview",
       "summary": "人形机器人运动控制工程实践经验汇总：涵盖了从传感器噪声处理、电机热管理到非结构化地形适应的闭坑指南。"
+    },
+    {
+      "id": "wiki-overview-notable-commercial-robot-platforms",
+      "path": "wiki/overview/notable-commercial-robot-platforms.md",
+      "title": "市面知名机器人平台纵览",
+      "page_type": "overview",
+      "summary": "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
     },
     {
       "id": "wiki-overview-robot-learning-overview",
@@ -1754,6 +2006,13 @@
       "summary": "RL 超参数调节指南（locomotion 专用）"
     },
     {
+      "id": "wiki-queries-robot-learning-three-eras-narrative",
+      "path": "wiki/queries/robot-learning-three-eras-narrative.md",
+      "title": "机器人学习「三个时代」：叙事透镜与一手文献",
+      "page_type": "query",
+      "summary": "把『存在性证明 / 基础模型 / Scaling』当作阅读透镜：串联 QT-Opt→SayCan/RT/DIAL/OXE→Gemini 与社区评测，事实以论文与官方发布为准；组织叙事单独标注来源。"
+    },
+    {
       "id": "wiki-queries-robot-policy-debug-playbook",
       "path": "wiki/queries/robot-policy-debug-playbook.md",
       "title": "RL 策略真机调试 Playbook",
@@ -1873,6 +2132,13 @@
       "summary": "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一，要求人形机器人集成高速行走、动态视觉、精准踢球与多机协作。"
     },
     {
+      "id": "wiki-tasks-hybrid-locomotion",
+      "path": "wiki/tasks/hybrid-locomotion.md",
+      "title": "Hybrid Locomotion (混合运动)",
+      "page_type": "task",
+      "summary": "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
+    },
+    {
       "id": "wiki-tasks-loco-manipulation",
       "path": "wiki/tasks/loco-manipulation.md",
       "title": "Loco-Manipulation (移动操作)",
@@ -1906,6 +2172,13 @@
       "title": "ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation",
       "page_type": "task",
       "summary": "ULTRA survey 汇总统一多模态 loco-manipulation 控制器的关键设计，是移动操作前沿路线的综述入口。"
+    },
+    {
+      "id": "wiki-tasks-vision-language-navigation",
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "title": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "page_type": "task",
+      "summary": "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
     }
   ]
 }

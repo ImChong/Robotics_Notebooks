@@ -52,7 +52,7 @@
 - [ ] 详情页浮窗联动。
 - [x] 详情页 Markdown 渲染修复：正文独立 `---` 行渲染为分隔线，并按整行分隔符剥离 YAML frontmatter。
 - [x] 首页搜索索引修复：将 `tech-map/`、roadmap 与 references 纳入 `search-index.json`，支持搜索 `tech-map`。
-- [x] 技术路线页 `roadmap.html`：基于导出阶段数据渲染 Mermaid 总览 + `<details>` 可展开子图（含运动控制双主线示意），并与主题切换联动重绘。
+- [x] 技术路线页 `roadmap.html`：基于导出阶段数据渲染可折叠阶段树（垂直 `<details>` 列表）；已移除折叠 Mermaid 线框总图与路线页内 Mermaid CDN。
 - [x] 技术路线页 `roadmap.html`：favicon、顶栏统一为 🚀（与首页「技术路线指南」CTA 一致）；主题切换仍为 ☀️/🌙。
 ---
 

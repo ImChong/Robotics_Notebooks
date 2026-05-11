@@ -415,6 +415,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-content-section {
   padding-top: 12px;
 }
+/* 路线区展开时：TOC 卡片上边框与「学习路线」标题顶边对齐（抵消 #roadmap-flow.section 的上内边距） */
+.roadmap-content-section .detail-content-layout:has(#roadmap-flow:not([hidden])) .detail-toc-panel {
+  margin-top: 44px;
+}
+.roadmap-content-section .detail-content-layout:has(#roadmap-flow:not([hidden])) #roadmap-flow > h2.section-title:first-of-type {
+  margin-top: 0;
+}
 .toc-card { padding: 18px 20px; }
 .toc-card ul { padding-left: 18px; }
 .toc-card li + li { margin-top: 6px; }
@@ -1128,7 +1135,7 @@ th {
 .search-tier-heading.search-tier-exact { color:var(--accent, #1659b4); }
 .search-tier-heading .data-meta { font-weight:400; opacity:.75; margin-left:4px; }
 
-/* --- Roadmap page: vertical tree + optional folded Mermaid --- */
+/* --- Roadmap page: vertical tree --- */
 .roadmap-flow-section {
   padding-bottom: 0;
 }
@@ -1230,35 +1237,6 @@ th {
   padding: 0.45rem 0.85rem 0.65rem 2.45rem;
   margin: 0;
   border-top: 1px solid var(--border);
-}
-.roadmap-mermaid-wrap {
-  margin-top: 1.25rem;
-  padding: 0.65rem 1rem 1rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: var(--surface-strong, var(--bg-alt));
-}
-.roadmap-mermaid-wrap-summary {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 1rem;
-  padding: 0.25rem 0;
-}
-.roadmap-flow-mermaid-host .roadmap-mermaid-hint {
-  margin: 0.5rem 0 0.6rem;
-}
-.roadmap-flow-mermaid-host .mermaid {
-  text-align: center;
-  margin: 0.35rem 0 0;
-  overflow-x: auto;
-}
-.roadmap-flow-mermaid-host .mermaid svg {
-  max-width: 100%;
-  height: auto;
-}
-.roadmap-flow-mermaid-host .roadmap-mermaid-diagram {
-  padding: 0.5rem 0;
-  min-height: 8rem;
 }
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
