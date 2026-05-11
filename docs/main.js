@@ -2177,34 +2177,33 @@
     function substringScore(doc, queryTokens) {
       if (!queryTokens || !queryTokens.length) return 0;
       var score = 0;
-      var title, path, summary, tagsStr, tokenKeysStr;
       var docTokens = doc.tokens || {};
 
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
         if (!token || token.length < 2) continue;
 
-        if (title === undefined) title = String(doc.title || '').toLowerCase();
-        var titleIdx = title.indexOf(token);
+        if (doc._title_l === undefined) doc._title_l = String(doc.title || '').toLowerCase();
+        var titleIdx = doc._title_l.indexOf(token);
         if (titleIdx >= 0) {
             score += 8;
             if (titleIdx === 0) score += 8;
         }
 
-        if (path === undefined) path = String(doc.path || '').toLowerCase();
-        if (path.indexOf(token) >= 0) score += 5;
+        if (doc._path_l === undefined) doc._path_l = String(doc.path || '').toLowerCase();
+        if (doc._path_l.indexOf(token) >= 0) score += 5;
 
-        if (tagsStr === undefined) tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n';
-        if (tagsStr.indexOf(token) >= 0) score += 4;
+        if (doc._tagsStr === undefined) doc._tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n';
+        if (doc._tagsStr.indexOf(token) >= 0) score += 4;
 
-        if (summary === undefined) summary = String(doc.summary || '').toLowerCase();
-        if (summary.indexOf(token) >= 0) score += 2;
+        if (doc._summary_l === undefined) doc._summary_l = String(doc.summary || '').toLowerCase();
+        if (doc._summary_l.indexOf(token) >= 0) score += 2;
 
         if (docTokens[token] > 0) {
             score += 1;
         } else {
-            if (tokenKeysStr === undefined) tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n';
-            if (tokenKeysStr.indexOf(token) >= 0) {
+            if (doc._tokenKeysStr === undefined) doc._tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n';
+            if (doc._tokenKeysStr.indexOf(token) >= 0) {
                 score += 1;
             }
         }
