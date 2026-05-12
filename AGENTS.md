@@ -207,4 +207,4 @@ Always run `make ci-preflight` — it regenerates derived files (`index.md`, `ex
 
 ### Cursor Cloud Agent：PR 与验证截图
 
-Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**（例如 `make lint` / `make ci-check` / `make ci-preflight` 摘要或 GitHub PR 页快照），使用 HTML `<img alt="..." src="<绝对路径>" />` 引用本地生成的图片；详细步骤、目录约定与迭代更新说明见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。
+Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**：默认包含 **静态站点 `docs/detail.html?id=…` 上与本次改动对应的详情页**（本地 `cd docs && python3 -m http.server` 后 headless 截图；合并后可选附 Pages 线上 URL 截图）。可用 HTML `<img alt="..." src="<绝对路径>" />` 引用 `.cursor-artifacts/screenshots/` 等本地生成文件。详细步骤见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。

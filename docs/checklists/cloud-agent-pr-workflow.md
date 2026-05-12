@@ -23,17 +23,41 @@ git push -u origin <branch-name>
 
 ## 4. 验证截图（推荐默认执行）
 
-在将 PR 交给人类 review 前，建议附上**可读的验证证据**，避免「只声称跑过 CI」：
+在将 PR 交给人类 review 前，建议附上**可读的验证证据**。默认应包含 **静态站点上、与本次改动直接对应的页面截图**（读者在 GitHub Pages 上会看到的同一套 `docs/` 渲染），而不是 GitHub PR 列表页或 diff 页的截图。
 
-1. **本地门禁摘要**（至少其一，按改动类型选）  
-   - Wiki / 导出相关：`make ci-preflight` 或 `make ci-check` 成功输出的**末尾若干行**。  
-   - 纯脚本：`make test` 或 `make ci-test` 中与本次改动相关的部分。  
-2. **生成截图的实用做法**  
-   - 将验证输出写入本地 HTML（含通过标识与 `git log -1 --oneline`），用 **Headless Chrome** 对 `file://` 页面截图；或  
-   - 对 GitHub 上本 PR 页面做 headless 截图（需网络；建议加 `--user-data-dir` 避免 profile 冲突）。  
-3. **嵌入 PR 描述**  
-   - 在 PR 正文中增加 **「验证截图」** 小节，使用 HTML：`<img alt="..." src="<绝对路径>" />`。  
-   - Cloud 环境会将此类绝对路径下的图片**上传并重写为稳定 URL**，因此**无需**把截图二进制提交进 Git 历史（见下方路径约定）。  
+### 4.1 站点详情页（wiki / entity 正文）
+
+知识页、实体页在站点上由 **`docs/detail.html`** 渲染，数据来自 `docs/exports/site-data-v1.json`（由 `make ci-preflight` 生成）。截图前应确保本地 `docs/exports/` 与当前分支一致。
+
+1. **启动本地静态服务**（在仓库根目录）  
+   ```bash
+   cd docs && python3 -m http.server 8765
+   ```
+2. **构造 URL**  
+   - 形式：`http://127.0.0.1:8765/detail.html?id=<detail-page-id>`  
+   - **`<detail-page-id>`** 与导出一致：可查 `docs/sitemap.xml` 中的 `detail.html?id=...`，或在 `site-data-v1.json` 的 `pages.detail_pages` 下找键名（例：`wiki-concepts-humanoid-parallel-joint-kinematics`）。  
+3. **Headless Chrome 截图**（示例）  
+   ```bash
+   google-chrome --headless=new --disable-gpu --no-sandbox \
+     --user-data-dir=/tmp/chrome-headless-screenshot \
+     --window-size=1280,2200 --virtual-time-budget=12000 \
+     --screenshot=/path/to/site-detail-<topic>.png \
+     "http://127.0.0.1:8765/detail.html?id=wiki-concepts-..."
+   ```  
+   若外网字体/CSS 加载较慢，可加 `--disable-remote-fonts` 或适当增大 `--virtual-time-budget`。  
+4. **已合并且 Pages 已更新时**（可选）  
+   亦可使用线上等价 URL，例如：  
+   `https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=...`  
+   注意：功能分支在合并前通常**不会**出现在线上，此时必须以本地 `http.server` 为准。
+
+### 4.2 命令行门禁摘要（补充，不能替代站点页）
+
+仍建议在 PR 中用文字或**额外**截图说明 `make ci-preflight` / `make ci-check` / `make lint` 等已通过（可将命令输出写入本地 HTML 再 headless 截图）。**不应**用「仅 PR 页面截图」代替站点详情页验证。
+
+### 4.3 嵌入 PR 描述
+
+- 在 PR 正文中增加 **「验证截图」** 小节，使用 HTML：`<img alt="..." src="<绝对路径>" />`。  
+- Cloud 环境会将此类绝对路径下的图片**上传并重写为稳定 URL**，因此**无需**把截图二进制提交进 Git 历史（见下方路径约定）。  
 
 ### 截图输出路径约定
 
