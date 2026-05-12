@@ -382,10 +382,17 @@
     return highlightGenericLine(line);
   }
 
+  /** Escape & and < only so Mermaid arrows (-->) stay intact while innerHTML cannot close tags. */
+  function escapeMermaidForInnerHtml(text) {
+    return String(text || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;');
+  }
+
   function renderCodeBlock(code, lang) {
     const normalizedLang = normalizeCodeLang(lang);
     if (normalizedLang === 'mermaid') {
-      return '<div class="mermaid">' + String(code || '').trim() + '</div>';
+      return '<div class="mermaid">' + escapeMermaidForInnerHtml(String(code || '').trim()) + '</div>';
     }
     const rawCode = String(code || '').endsWith('\n') ? String(code || '').slice(0, -1) : String(code || '');
     const lines = rawCode.split('\n');
@@ -2068,14 +2075,14 @@
       for (var k = 0; k < tags.length; k++) {
         for (var l = 0; l < queryTokens.length; l++) {
           if (tags[k].indexOf(queryTokens[l]) >= 0) {
-            return '核心标签命中: ' + tags[k];
+            return escapeHtml('核心标签命中: ' + tags[k]);
           }
         }
       }
 
       for (var i = 0; i < queryTokens.length; i++) {
         var t = queryTokens[i];
-        if (title.indexOf(t) >= 0) return '标题命中: ' + t;
+        if (title.indexOf(t) >= 0) return escapeHtml('标题命中: ' + t);
       }
       for (var j = 0; j < queryTokens.length; j++) {
         if (summary.indexOf(queryTokens[j]) >= 0) return '摘要命中';
@@ -2269,10 +2276,6 @@
         .catch(function() {
           searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">离线搜索索引加载失败，请使用命令行搜索：<code>python3 scripts/search_wiki.py "关键词"</code></p>';
         });
-    }
-
-    function escapeHtml(s) {
-      return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     }
 
     function triggerSearch() {

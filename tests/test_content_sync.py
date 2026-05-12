@@ -40,6 +40,8 @@ class DetailContentSyncTests(unittest.TestCase):
             "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {",
             "blocks.push('<hr>');",
             "function renderCodeBlock(code, lang)",
+            "function escapeMermaidForInnerHtml(text)",
+            "return '<div class=\"mermaid\">' + escapeMermaidForInnerHtml(String(code || '').trim()) + '</div>';",
             "return '<blockquote>'",
             "return '<ul>'",
         ]
@@ -138,6 +140,15 @@ class DetailContentSyncTests(unittest.TestCase):
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_main_js_search_match_explanation_escapes_user_facing_strings(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("return escapeHtml('核心标签命中: ' + tags[k]);", content)
+        self.assertIn("return escapeHtml('标题命中: ' + t);", content)
+
+    def test_main_js_defines_escape_html_once(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertEqual(content.count("function escapeHtml"), 1)
 
     def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
         style_content = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
