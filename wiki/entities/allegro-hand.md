@@ -9,6 +9,7 @@ related:
   - ../methods/in-hand-reorientation.md
   - ../queries/dexterous-data-collection-guide.md
   - ./gel-slim.md
+  - ./wuji-robotics.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Allegro Hand 是一款轻量化的四指灵巧手平台，拥有 16 个自由度，因其结构简单、API 友好且性价比高而成为机器人学习与灵巧操作研究的主流科研平台。"

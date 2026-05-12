@@ -38,6 +38,20 @@
 - 公开检索中常见备案域名 **`wujihand.com`**（与「灵巧手」拼音语义一致）；**2026-05-12** 抓取时站点曾返回 **503**，本资料不依赖其正文，仅作后续 curator 核验入口：  
   - <https://www.wujihand.com/>（若恢复可补抓产品页与白皮书链接）
 
+### Wuji Hand 五指灵巧手（官方文档中心，2026-05-12 可访问）
+
+- **文档阅读指引（总入口）**：<https://docs.wuji.tech/docs/zh/wuji-hand/latest/>  
+  - 汇总 **GitHub**（含 [`mujoco-sim`](https://github.com/wuji-technology/mujoco-sim) 等）、**产品介绍**、**SDK（Python/C++）**、**ROS2**、**HMI**、**Retargeting**（文档中出现 Apple Vision Pro 配置）、**URDF/MJCF 描述与 MuJoCo 可视化** 等模块入口。
+- **产品介绍（中文版）**：<https://docs.wuji.tech/docs/zh/wuji-hand/latest/overview/>  
+  - 明确 **Wuji Hand** 为舞肌自研 **20 主动自由度** 仿生灵巧手；官方参数表摘要（以页面为准）：自重 **580 ± 10 g（不含线缆）**，尺寸约 **201 mm × 75 mm × 50 mm**，指尖力 **15 N**，整手抓握最大静载 **10 kg**，控制频率 **1000 Hz × 20 轴**，通信 **USB 2.0**，工作电压 **12–20 V DC** 等。
+- **产品介绍（英文版）**：<https://docs.wuji.tech/docs/en/wuji-hand/latest/overview/>（与中文版同构，便于对照术语）
+- **开源 SDK 仓库（示例）**：<https://github.com/wuji-technology/wujihandpy> — Python 侧 `wujihandpy`（文档与 README 以仓库为准）
+
+### 产业媒体盘点（二手归纳，参数以官方为准）
+
+- **NE 时代 · 灵巧手产业链盘点**：<https://www.ne-time.cn/web/article/37087>  
+  - 文中称舞肌推出 **连杆驱动** 灵巧手 **WUJI Hand**，并提及 **600 g、20 全主动自由度、直驱内置手指、指尖力 15 N、整手负载 10 kg、1 kHz 反馈、约 5 万元级定价** 等；另提到 **压阻触觉手套** 及宣传演示场景。**注意**：与官方文档中的 **自重 580 ± 10 g** 等表述存在细微差别，**工程引用应优先采信 docs.wuji.tech 参数表**。
+
 ### 招聘平台（岗位方向，非产品规格）
 
 - 猎聘等企业页在检索结果中常列出 **深圳 / 北京** 等办公地与算法、触觉等岗位关键词；**具体 JD 以平台实时页面为准**，本库不逐条存档 JD 全文。
@@ -51,3 +65,6 @@
 - 国家大学生就业服务平台企业详情：<https://yazjy.ncss.cn/student/jobs/PkW5wLBq1LsLjuuFFFZhch/corp.html>
 - 网易号投融资稿：<https://www.163.com/dy/article/KELVSCVC051984TV.html>
 - 水滴信用等企业信息页（工商照面）：<https://m.shuidi.cn/company-b307fa62c8a3e1dd67766cb44ef41401.html>
+- Wuji Hand 文档中心（中文）：<https://docs.wuji.tech/docs/zh/wuji-hand/latest/>
+- Wuji Hand 产品介绍（中文）：<https://docs.wuji.tech/docs/zh/wuji-hand/latest/overview/>
+- NE 时代灵巧手盘点（含舞肌段落）：<https://www.ne-time.cn/web/article/37087>
