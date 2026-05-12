@@ -58,6 +58,7 @@
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md)
 - [轮足四足机器人（四轮足）](wiki/concepts/wheel-legged-quadruped.md)（Go2W 类混合滚动–步态）
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
+- [Project Instinct](wiki/entities/project-instinct.md)（人形全身动态控制研究站群：接触丰富 Shadowing、感知跑酷、野外徒步）
 - [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
 
 ### roadmap/ — 成长路线
@@ -185,6 +186,7 @@ SORT type ASC
 - [开源人形机器人“大脑” (主控电脑) 选型](entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
+- [Project Instinct](entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [四足机器人（Quadruped Robot）](entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
 - [RLDX-1](entities/rldx-1.md) — RLDX-1** 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。 `📅2026-05-11` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
