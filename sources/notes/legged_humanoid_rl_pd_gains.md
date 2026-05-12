@@ -8,6 +8,10 @@
 - **一句话说明：** 汇总 Isaac / legged_gym / MuJoCo 等栈里「刚度–阻尼」参数在代码与文档中的定义位置，供 sim2real 与 RL 策略接口设计对照。
 - **沉淀到 wiki：** 是 → [`wiki/queries/legged-humanoid-rl-pd-gain-setting.md`](../../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
 
+## 相关论文索引（Kp/Kd / 动作接口）
+
+- [`sources/papers/rl_pd_action_interface_locomotion.md`](../papers/rl_pd_action_interface_locomotion.md) — 人形 Digit、Cassie 双足、四足 sim2real、可变刚度与扭矩控制等 **10 篇** 代表作链接与「对 wiki 的映射」摘录（2026-05-12 ingest）。
+
 ## 为什么值得保留
 
 腿足与人形 RL 常见接口是「策略输出关节目标（位置或残差）+ 底层 PD 力矩」。此时仿真里的 **stiffness / damping（即 Kp/Kd 量纲的关节阻抗）** 会改变接触动力学、有效带宽与训练难度；与 `sim.dt`、控制 `decimation`、力矩限幅强耦合，不适合只靠口头经验调参。
