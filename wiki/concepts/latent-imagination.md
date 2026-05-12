@@ -2,13 +2,15 @@
 type: concept
 tags: [world-models, reinforcement-learning, machine-learning, model-based-rl]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-12
 related:
   - ../methods/model-based-rl.md
   - ../methods/generative-world-models.md
+  - ../methods/being-h07.md
   - ../formalizations/variational-objective.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
+  - ../../sources/papers/being_h07.md
 summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技术，通过在紧凑的隐变量空间中预测未来状态，使智能体能够在无需真实环境交互的情况下进行无限次自我博弈与策略优化。"
 ---
 
@@ -45,12 +47,15 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 ## 代表算法
 - **Dreamer V1-V3**：将潜空间想象推向通用人工智能（Atari 到机器人控制）的巅峰。
 - **DayDreamer**：证明了该技术可以直接在真实机械臂上几小时内从零学出抓取，无需任何仿真。
+- **Being-H0.7**：面向语言–视觉–操作策略的 **latent world–action** 路线——用 egocentric 人视频与机演示，在训练期用未来观测分支对齐潜空间，部署时不依赖像素 rollout；见 [Being-H0.7](../methods/being-h07.md)。
 
 ## 关联页面
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Generative World Models](../methods/generative-world-models.md)
+- [Being-H0.7](../methods/being-h07.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
 
 ## 参考来源
 - Hafner, D., et al. (2019). *Dream to Control: Learning Behaviors by Latent Imagination*.
 - Hafner, D., et al. (2023). *Mastering Diverse Domains through World Models (DreamerV3)*.
+- Luo, H., et al. (2026). *Being-H0.7: A Latent World-Action Model from Egocentric Videos* — 项目页 <https://research.beingbeyond.com/being-h07>；归档见 [sources/papers/being_h07.md](../../sources/papers/being_h07.md)。
