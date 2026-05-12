@@ -8,6 +8,7 @@ sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/sim2real.md
+  - ../../sources/notes/legged_humanoid_rl_pd_gains.md
 ---
 
 # 人形机器人 RL 策略训练完整 Checklist
@@ -41,7 +42,7 @@ sources:
 
 - [ ] URDF/MJCF 获取：来源于官方 SDK 或 URDF-to-MJCF 转换
 - [ ] 关节参数验证：
-  - PD 增益（kp/kd）对应真实执行器带宽
+  - PD 增益（kp/kd）对应真实执行器带宽（分步流程见 [Legged / Humanoid RL 中 Kp/Kd 设置](./legged-humanoid-rl-pd-gain-setting.md)）
   - 关节限位对齐硬件手册（尤其脚踝/髋关节）
   - 质量/惯性参数：运行 RNEA + 静态平衡测试验证
 - [ ] 接触几何：脚底碰撞形状用简单盒/球代替 mesh（提速 10x+）
