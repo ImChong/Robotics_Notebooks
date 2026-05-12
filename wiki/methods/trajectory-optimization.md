@@ -9,6 +9,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../formalizations/zmp-lip.md
   - ../comparisons/trajectory-opt-vs-rl.md
+  - ../concepts/humanoid-parallel-joint-kinematics.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/mpc.md
@@ -57,7 +58,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 
 ## 轨迹优化的局限与未来
 
-- **模型依赖**：由于 TO 完全是在数学模型上计算，如果真实机器人的电机摩擦、质心分布与模型有偏差（Sim2Real Gap），算出来的轨迹在实机上立刻就会跌倒。
+- **模型依赖**：由于 TO 完全是在数学模型上计算，如果真实机器人的电机摩擦、质心分布与模型有偏差（Sim2Real Gap），算出来的轨迹在实机上立刻就会跌倒。若下肢含**并联踝 / 四杆传动**，在 OCP 中忽略 **Actuation Jacobian** 一类映射，会在极限姿态下系统性低估或高估可用力矩包络；见 [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) 与 arXiv:2503.22459 归纳。
 - **在线与离线的结合**：因此，纯开环的 TO 轨迹必须配合底层的全身反馈控制（WBC），或者直接将 TO 本身以高频运行在滚动的时间窗口内（这就是 MPC）。
 - **Learning to Optimize**：目前最前沿的趋势是利用深度强化学习（RL）来学习 TO 的价值函数（Value Function）或提供极佳的 Initial Guess，从而打破传统求解器的算力瓶颈。
 
@@ -68,6 +69,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [ZMP + LIP 形式化](../formalizations/zmp-lip.md)
 - [对比：轨迹优化 vs RL](../comparisons/trajectory-opt-vs-rl.md)
+- [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链传动在 TO/MPC 中的 \(J_A\) 与电机侧约束
 
 ## 参考来源
 - Betts, J. T. (2010). *Practical Methods for Optimal Control and Estimation Using Nonlinear Programming*.

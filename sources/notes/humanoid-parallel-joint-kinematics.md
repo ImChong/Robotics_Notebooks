@@ -13,6 +13,12 @@
 
 人形下肢常见 **多执行器耦合单任务自由度**（典型为踝 pitch/roll），若只做串联 URDF/MJCF，容易在 **力雅可比、冗余力分配、背隙与弹性** 上产生建模盲区；本索引把分散引用收束到一条 ingest 线，便于后续深挖单篇论文或工具。
 
+## 论文类 ingest 档案（本主题扩展）
+
+并联踝 / 闭链训练—部署链路的 **结构化摘录与 wiki 映射** 见：
+
+- [`sources/papers/humanoid_parallel_ankle_kinematics_ingest.md`](../papers/humanoid_parallel_ankle_kinematics_ingest.md) — ResearchGate 两篇机构学踝部论文 + arXiv:2505.12231 / 2505.12222 / 2503.08349 / 2503.22459
+
 ## 资料清单（按类型）
 
 ### 教材与综述（理论）

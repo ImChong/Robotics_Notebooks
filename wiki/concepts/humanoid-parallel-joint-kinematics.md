@@ -9,8 +9,11 @@ related:
   - ./dexterous-kinematics.md
   - ./armature-modeling.md
   - ../entities/modern-robotics-book.md
+  - ./sim2real.md
+  - ../methods/trajectory-optimization.md
 sources:
   - ../../sources/notes/humanoid-parallel-joint-kinematics.md
+  - ../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md
 summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需闭链运动学与力分配；控制与仿真常暴露为等效串联关节，二者不可混为一谈。"
 ---
 
@@ -33,6 +36,37 @@ summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需
 
 3. **仿真与控制接口（建模折衷）**  
    公开人形 MJCF 常在每条腿只挂 **`ankle_pitch` + `ankle_roll`** 等电机铰链，用低维模型对接策略；**不**等价于已在模型里展开 RSU 的完整闭链雅可比。工程含义见 [Asimov v1](../entities/asimov-v1.md) 中「踝关节：RSU 机构学、公开 MJCF 与工程上的解算」一节。
+
+## 流程总览（机构约束 → 驱动 → 力 → 仿真）
+
+下列流程强调：**同一组足底力旋量或末端运动目标**，在闭链中会先经过几何约束，再进入电机空间与力映射，最后由具体仿真器或优化器消费；省略任一层都会在 Sim2Real 或机构极限附近暴露问题。
+
+```mermaid
+flowchart TB
+  chi["末端或等效关节变量 chi / q_s"]
+  loop["闭链几何 向量环或投影四杆等"]
+  qm["驱动器坐标 q_m"]
+  JA["Actuation Jacobian J_A"]
+  eng["MPC RL 或闭链仿真引擎"]
+  chi --> loop
+  loop --> qm
+  qm --> JA
+  JA -->|"tau_s = J_A^T tau_m"| eng
+  loop --> eng
+```
+
+## 文献锚点（并联踝 × 机构 / 学习 / 控制）
+
+下列条目与 [`sources/papers/humanoid_parallel_ankle_kinematics_ingest.md`](../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md) 一一对应，便于按问题类型跳转原文。
+
+| 侧重点 | 资料 | 与本页「三层解算」的对应关系 |
+|--------|------|------------------------------|
+| 经典机构学分析 | [On the Comprehensive Kinematics Analysis of a Humanoid Parallel Ankle Mechanism（ResearchGate）](https://www.researchgate.net/publication/326528067_On_the_Comprehensive_Kinematics_Analysis_of_a_Humanoid_Parallel_Ankle_Mechanism) | 第 1 层：系统正/逆运动学与工作空间类问题的人形踝实例 |
+| 拓扑命名（2SPRR+1U） | [Kinematic Analysis of a Novel Parallel 2SPRR+1U Ankle Mechanism（ResearchGate）](https://www.researchgate.net/publication/325264356_Kinematic_Analysis_of_a_Novel_Parallel_2SPRR1U_Ankle_Mechanism_in_Humanoid_Robot) | 第 1 层：具体并联拓扑的运动学推导参照 |
+| 硬件闭链踝 + 仿真 pin 约束 | [Design of a 3-DOF Hopping Robot…（arXiv:2505.12231）](https://arxiv.org/abs/2505.12231) | 第 1–3 层：真机并联踝与 RaiSim 闭链建模同一套几何约束 |
+| 冲击下传载再分配 | [Learning Impact-Rich Rotational Maneuvers…（arXiv:2505.12222v2）](https://arxiv.org/abs/2505.12222v2) | 第 2 层：闭链使接触冲量在支路间**重分配**，需传动级指标而非仅足端冲量 |
+| GPU RL 中嵌入闭链踝动力学 | [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) | 第 3 层：训练环境即计算并联分支动力学，缓解「开环 URDF 训练 → 串并联换算部署」缝隙 |
+| 解析驱动映射 + MPC/RL | [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) | 第 1–2 层：\(q_m=f(q_s)\)、\(J_A\) 及导数；在串联主链优化/学习中保留变传动比与电机侧限位 |
 
 ## 与人形其他闭链问题的关系
 
@@ -59,14 +93,19 @@ summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需
 - [Armature Modeling](./armature-modeling.md)
 - [人形机器人](../entities/humanoid-robot.md)
 - [Modern Robotics（教材实体）](../entities/modern-robotics-book.md)
+- [Sim2Real](./sim2real.md)
+- [Trajectory Optimization](../methods/trajectory-optimization.md)
 
 ## 推荐继续阅读
 
 - [closed-chain-ik-js（Garrett Johnson）](https://github.com/gkjohnson/closed-chain-ik-js) — 闭链 IK 与约束求解的可读参考实现
 - [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) — 人形踝设计综述语境
 - [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — RSU 并联踝的产品与机构动机
+- [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) — 大规模 RL 中显式并联踝动力学
+- [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) — 解析 \(J_A\) 嵌入 DDP 与 RL
 
 ## 参考来源
 
 - [sources/notes/humanoid-parallel-joint-kinematics.md](../../sources/notes/humanoid-parallel-joint-kinematics.md) — 本主题资料索引与 ingest 归档
+- [sources/papers/humanoid_parallel_ankle_kinematics_ingest.md](../../sources/papers/humanoid_parallel_ankle_kinematics_ingest.md) — 并联踝机构学与 arXiv 文献包（本批入库）
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md) — *Modern Robotics* 教材元数据与第 7 章指针
