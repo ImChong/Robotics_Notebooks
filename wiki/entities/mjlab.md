@@ -7,6 +7,7 @@ related:
   - ./mujoco.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
+  - ./mjlab-playground.md
   - ./amp-mjlab.md
   - ./unitree-rl-mjlab.md
   - ./asimov-v1.md
