@@ -5,6 +5,16 @@ status: stable
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
 updated: 2026-05-12
 related:
+  - ../entities/paper-digit-humanoid-locomotion-rl.md
+  - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
+  - ../entities/paper-variable-stiffness-locomotion-rl.md
+  - ../entities/paper-cassie-iterative-locomotion-sim2real.md
+  - ../entities/paper-anymal-walk-minutes-parallel-drl.md
+  - ../entities/paper-walk-these-ways-quadruped-mob.md
+  - ../entities/paper-cassie-feedback-control-drl.md
+  - ../entities/paper-quadruped-torque-control-rl.md
+  - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/legged-gym.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/mujoco.md
@@ -51,18 +61,18 @@ sources:
 
 下列论文的 **一手链接与摘录** 见 [RL+PD 动作接口与增益设计论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)。下表只保留「你关心什么 → 读哪篇」的策展顺序（与上表同一批文献）。
 
-| 若你最关心… | 优先读 |
+| 若你最关心… | 知识库子页（含 Mermaid）· 外部一手 |
 |-------------|--------|
-| 全尺寸人形真机里 **PD 怎样嵌进大规模 RL + sim2real 流水线**（含公开增益表锚点） | [Real-World Humanoid Locomotion with RL](https://arxiv.org/abs/2303.03381)（Digit；项目页见索引） |
-| **固定标称增益 vs 随机化**、以及 **策略 Hz 与 PD 内环 Hz 的典型分频** | [RL for Versatile, Dynamic, and Robust Bipedal Locomotion Control](https://arxiv.org/abs/2401.16889)（Cassie；文中约 **33 Hz / 2 kHz** 与 **0.7–1.3×** 增益缩放随机化） |
-| **RL 能否学刚度/增益**、分组 vs 逐关节 | [Variable Stiffness for Robust Locomotion through RL](https://arxiv.org/abs/2502.09436) |
-| **复现落地**：reward / observation / action **多轮迭代** 的真实记录 | [Learning Locomotion Skills for Cassie](https://arxiv.org/abs/1903.09537) |
-| **抄配置、跑消融、扫增益** 的并行仿真入口 | [Learning to Walk in Minutes…](https://arxiv.org/abs/2109.11978) + [legged_gym](../entities/legged-gym.md) |
-| 已能跑通固定 PD，想接 **泛化部署、行为切换与安全** | [Walk These Ways](https://arxiv.org/abs/2212.03238)（**注意**：`2212.03238` 是此文，不是「Walk in Minutes」） |
-| **为何常用 PD 目标空间** 的原始 MDP 叙述 | [Feedback Control For Cassie With Deep RL](https://arxiv.org/abs/1803.05580) |
-| 判断 **是否应弃用 PD、改直驱扭矩** | [Learning Torque Control for Quadrupedal Locomotion](https://arxiv.org/abs/2203.05194) |
-| 四足 **sim2real 历史直觉**（位置/扭矩接口争论的背景） | [Sim-to-Real Agile Locomotion（RSS 2018）](https://www.roboticsproceedings.org/rss14/p10.pdf) |
-| **位置 + 阻抗参数联合输出** 的思想前史（对照可变刚度） | [Learning Variable Impedance Control…](https://arxiv.org/abs/1907.07500) |
+| 全尺寸人形真机里 **PD 怎样嵌进大规模 RL + sim2real 流水线**（含公开增益表锚点） | [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md) · [arXiv:2303.03381](https://arxiv.org/abs/2303.03381) |
+| **固定标称增益 vs 随机化**、以及 **策略 Hz 与 PD 内环 Hz 的典型分频** | [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md) · [arXiv:2401.16889](https://arxiv.org/abs/2401.16889) |
+| **RL 能否学刚度/增益**、分组 vs 逐关节 | [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md) · [arXiv:2502.09436](https://arxiv.org/abs/2502.09436) |
+| **复现落地**：reward / observation / action **多轮迭代** 的真实记录 | [Cassie 迭代式 sim2real](../entities/paper-cassie-iterative-locomotion-sim2real.md) · [arXiv:1903.09537](https://arxiv.org/abs/1903.09537) |
+| **抄配置、跑消融、扫增益** 的并行仿真入口 | [ANYmal 分钟级并行 DRL](../entities/paper-anymal-walk-minutes-parallel-drl.md) · [arXiv:2109.11978](https://arxiv.org/abs/2109.11978) + [legged_gym](../entities/legged-gym.md) |
+| 已能跑通固定 PD，想接 **泛化部署、行为切换与安全** | [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md) · [arXiv:2212.03238](https://arxiv.org/abs/2212.03238)（**非** Walk in Minutes） |
+| **为何常用 PD 目标空间** 的原始 MDP 叙述 | [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md) · [arXiv:1803.05580](https://arxiv.org/abs/1803.05580) |
+| 判断 **是否应弃用 PD、改直驱扭矩** | [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md) · [arXiv:2203.05194](https://arxiv.org/abs/2203.05194) |
+| 四足 **sim2real 历史直觉**（位置/扭矩接口争论的背景） | [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md) · [RSS PDF p10](https://www.roboticsproceedings.org/rss14/p10.pdf) |
+| **位置 + 阻抗参数联合输出** 的思想前史（对照可变刚度） | [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md) · [arXiv:1907.07500](https://arxiv.org/abs/1907.07500) |
 
 ### 阅读与工程分支（Mermaid）
 
@@ -174,6 +184,21 @@ flowchart TB
 ---
 
 ## 关联页面
+
+### 论文实体子页（各含 Mermaid）
+
+- [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md)
+- [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md)
+- [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md)
+- [Cassie 迭代式 sim2real](../entities/paper-cassie-iterative-locomotion-sim2real.md)
+- [ANYmal 分钟级并行 DRL](../entities/paper-anymal-walk-minutes-parallel-drl.md)
+- [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md)
+- [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
+- [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
+- [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
+- [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
+
+### 其他
 
 - [人形机器人 RL 策略训练完整 Checklist](./humanoid-rl-cookbook.md)
 - [Sim2Real Checklist](./sim2real-checklist.md)

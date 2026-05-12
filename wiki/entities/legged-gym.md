@@ -1,10 +1,11 @@
 ---
 type: entity
 summary: "legged_gym"
-updated: 2026-04-25
+updated: 2026-05-12
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/rl_pd_action_interface_locomotion.md
 ---
 
 # legged_gym
@@ -251,6 +252,8 @@ sources:
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
+- [ANYmal 分钟级并行 DRL（原论文实体）](./paper-anymal-walk-minutes-parallel-drl.md)
+- [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 
 ## 一句话记忆
 
