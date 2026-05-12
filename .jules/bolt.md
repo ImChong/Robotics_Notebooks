@@ -24,3 +24,7 @@
 ## 2026-05-11 - Search Scoring Inner Loop Optimization
 **Learning:** In string-matching and BM25 hot loops, redundant allocations (like lowercase strings or `.join()` operations) and constant math computations executed per query token compound to create CPU overhead. Caching derived strings on static `doc` instances (e.g. `doc._title_l`) and hoisting document-level mathematical invariant calculations outside of the query loops drastically reduces unnecessary floating-point ops and GC thrashing.
 **Action:** When optimizing performance-critical loops (`substringScore`, `compute_score`), always identify and pull out calculations that don't depend on the current iteration variable, and lazily cache derived object properties that are re-evaluated frequently.
+
+## 2026-05-12 - Tokenization Caching Optimization
+**Learning:** In the python search ranking code (`scripts/search_wiki_core.py`), computing the document token counts by repeatedly reading files and tokenizing them inside the scoring loop, as well as for the average document length (`compute_avgdl`), results in double the tokenization work.
+**Action:** Always avoid redundant work inside data pipelines. When we already know the set of items that will be operated on multiple times, cache expensive operations (such as tokenizing raw content) either in local data structures or add it to existing pre-calculated dictionaries before iteration.
