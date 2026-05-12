@@ -57,6 +57,7 @@
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md)
 - [轮足四足机器人（四轮足）](wiki/concepts/wheel-legged-quadruped.md)（Go2W 类混合滚动–步态）
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
+- [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
 
 ### roadmap/ — 成长路线
 回答"应该先学什么、再学什么、学完输出什么"。

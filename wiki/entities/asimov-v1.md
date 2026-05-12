@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, hardware, open-source, mujoco, cad, can-bus, sim2real]
 status: complete
-updated: 2026-05-07
+updated: 2026-05-12
 related:
+  - ../concepts/humanoid-parallel-joint-kinematics.md
   - ./open-source-humanoid-hardware.md
   - ./humanoid-robot.md
   - ./mujoco.md
@@ -137,7 +138,7 @@ Menlo 在 [《How we built humanoid legs from the ground up in 100 days》](http
 
 #### 6.1 硬件：并联 RSU 踝在解决什么问题
 
-同一篇 [legs 博文](https://menlo.ai/blog/humanoid-legs-100-days) 将踝部选型概括为 **并联 RSU（Revolute–Spherical–Universal）** 架构：**两路回转驱动在机构上耦合并向足端传递 pitch/roll**，以获得 **扭矩分担**、更利于 **近端布置大质量件** 的刚度，以及更好的 **反驱/接地顺应**；文中引用综述 [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) 作为设计语境。注意：**RSU 是闭链/并联机构学概念**，与「仿真里看到几个 hinge」不是同一抽象层。
+同一篇 [legs 博文](https://menlo.ai/blog/humanoid-legs-100-days) 将踝部选型概括为 **并联 RSU（Revolute–Spherical–Universal）** 架构：**两路回转驱动在机构上耦合并向足端传递 pitch/roll**，以获得 **扭矩分担**、更利于 **近端布置大质量件** 的刚度，以及更好的 **反驱/接地顺应**；文中引用综述 [A Framework for Optimal Ankle Design of Humanoid Robots（arXiv:2509.16469）](https://arxiv.org/abs/2509.16469) 作为设计语境。注意：**RSU 是闭链/并联机构学概念**，与「仿真里看到几个 hinge」不是同一抽象层。概念层归纳见 [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md)。
 
 #### 6.2 公开 MJCF：等效 **2-DOF 串联踝** 接口
 
@@ -191,6 +192,7 @@ flowchart TD
 - [AMP_mjlab](./amp-mjlab.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md)
 
 ## 推荐继续阅读
 

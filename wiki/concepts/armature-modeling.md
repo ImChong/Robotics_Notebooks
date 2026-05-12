@@ -2,8 +2,9 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-04-27
+updated: 2026-05-12
 related:
+  - ./humanoid-parallel-joint-kinematics.md
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
   - ./system-identification.md
@@ -74,6 +75,7 @@ $$
 - [BeyondMimic](../methods/beyondmimic.md) — 强调 armature 精确建模的代表性模仿学习框架。
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
+- [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 双驱动并联路径上的几何/力映射与惯量建模分工
 
 ## 参考来源
 
