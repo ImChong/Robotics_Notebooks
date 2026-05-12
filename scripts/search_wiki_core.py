@@ -14,7 +14,6 @@ from search_indexing import (
     REPO_ROOT,
     hash_embed_text,
     iter_wiki_documents,
-    strip_frontmatter,
     tokenize_text,
     truncate_for_embedding,
 )
@@ -269,7 +268,14 @@ def search(
         case_sensitive
     )  # tokenizer is normalized; keep CLI flag for output highlighting compatibility
     docs = iter_wiki_documents()
-    avgdl = compute_avgdl([{"token_counts": Counter(tokenize_text(doc["body"]))} for doc in docs])
+
+    # ⚡ Bolt Optimization: Cache token counts to avoid redundant tokenization
+    # Tokenizing the body text is expensive. Doing it twice (once for avgdl, once for scoring)
+    # doubles the search latency. We cache it here on the doc objects.
+    for doc in docs:
+        doc["token_counts"] = Counter(tokenize_text(doc["body"]))
+
+    avgdl = compute_avgdl(docs)
 
     vector_matrix = None
     vector_meta = None
@@ -289,8 +295,8 @@ def search(
             continue
 
         raw = (REPO_ROOT / doc["path"]).read_text(encoding="utf-8")
-        body = strip_frontmatter(raw)
-        token_counts = Counter(tokenize_text(body))
+        body = doc["body"]
+        token_counts = doc["token_counts"]
         fm = doc["frontmatter"]
 
         score = compute_score(
