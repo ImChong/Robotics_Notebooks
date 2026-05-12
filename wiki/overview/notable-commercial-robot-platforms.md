@@ -1,10 +1,11 @@
 ---
 type: overview
-updated: 2026-05-07
+updated: 2026-05-12
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
 related:
+  - ../entities/wuji-robotics.md
   - ../entities/humanoid-robot.md
   - ../entities/quadruped-robot.md
   - ../entities/motioncode.md
@@ -57,6 +58,12 @@ related:
 ### 运动数据与训练资产（非整机品牌）
 
 整机厂商之外，产业侧还有专门提供 **人体运动采集、标注与跨管线交付** 的供应商，常与人形 **模仿学习 / RL / 动画** 共用同一套运动资产（通常仍需 [Motion Retargeting](../concepts/motion-retargeting.md)）。例：[MotionCode](../entities/motioncode.md)（官网 [motioncode.ai](https://motioncode.ai/)）。
+
+### 关节动力与执行器 OEM（非整机品牌）
+
+| 厂商（例子） | 典型标签 | 本库延伸阅读 |
+|--------------|-----------|----------------|
+| 舞肌科技（上海舞肌） | F 系列 / Pan Motor 叙事下的 **小型高扭矩关节电机** | [舞肌科技](../entities/wuji-robotics.md) |
 
 ## 四足与腿足：常见平台
 
