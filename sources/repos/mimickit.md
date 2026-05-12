@@ -2,6 +2,8 @@
 
 - **Title**: MimicKit: A Reinforcement Learning Framework for Motion Imitation and Control
 - **URL**: https://github.com/xbpeng/MimicKit
+- **Project page**: https://motion.stanford.edu/research/mimickit
+- **Paper**: https://arxiv.org/abs/2510.13794
 - **Author**: Xue Bin Peng
 - **Year**: 2025
 - **Type**: Codebase / Research Framework
