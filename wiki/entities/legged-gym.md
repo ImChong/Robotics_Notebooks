@@ -250,6 +250,7 @@ sources:
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 
 ## 一句话记忆
 
