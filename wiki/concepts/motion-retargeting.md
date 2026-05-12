@@ -118,6 +118,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |
 | OmniH2O | 人形机器人遥操+重定向框架 |
 | [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
+| [FreeMoCap](../entities/freemocap.md) | 开源多相机 USB 动捕与 GUI 平台，适合作为低成本原始人体轨迹来源（AGPL，集成前需合规评估） |
 
 ---
 
@@ -162,3 +163,4 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真 RL 修补监督
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [MotionCode](../entities/motioncode.md) — 商业运动数据与「人形/具身 + RL」叙事样本
+- [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一

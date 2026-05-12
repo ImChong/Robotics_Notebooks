@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-29
 related:
   - ./mjlab.md
+  - ./mjlab-playground.md
   - ./unitree.md
   - ./unitree-g1.md
   - ./amp-mjlab.md
