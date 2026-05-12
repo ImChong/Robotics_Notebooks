@@ -204,3 +204,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 ### Before committing wiki changes
 
 Always run `make ci-preflight` — it regenerates derived files (`index.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data.
+
+### Cursor Cloud Agent：PR 与验证截图
+
+Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**：默认包含 **静态站点 `docs/detail.html?id=…` 上与本次改动对应的详情页**（本地 `cd docs && python3 -m http.server` 后 headless 截图；合并后可选附 Pages 线上 URL 截图）。可用 HTML `<img alt="..." src="<绝对路径>" />` 引用 `.cursor-artifacts/screenshots/` 等本地生成文件。详细步骤见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。
