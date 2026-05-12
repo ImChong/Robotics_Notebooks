@@ -93,6 +93,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 
 ## 关联页面
 
+- [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段

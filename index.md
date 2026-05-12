@@ -51,6 +51,7 @@
 - [dm_control / Control Suite](wiki/entities/dm-control.md)
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
+- [AprilTag](wiki/entities/april-tag.md)
 - [Crocoddyl](wiki/entities/crocoddyl.md)
 - [Unitree](wiki/entities/unitree.md)
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md)（人形 / 四足高频品牌索引）
