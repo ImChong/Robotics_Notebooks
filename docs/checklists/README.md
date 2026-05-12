@@ -6,6 +6,7 @@
 
 - [技术栈项目执行清单 v21](tech-stack-next-phase-checklist-v21.md) — 当前技术栈、自动化、专题建设与 UX 推进看板。
 - [前端体验优化清单 v1](frontend-optimization-v1.md) — GitHub Pages 首页与交互体验优化计划。
+- [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
 
 ## 历史执行清单
 

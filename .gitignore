@@ -17,3 +17,6 @@ exports/vector-index.npz
 
 # Local search cache (CLI use only — docs/search-index.json is a Pages artifact and must be tracked)
 exports/search-cache.json
+
+# Cloud Agent 本地验证截图与临时 HTML（勿提交）
+.cursor-artifacts/

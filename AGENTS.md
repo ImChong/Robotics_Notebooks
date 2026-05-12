@@ -204,3 +204,7 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 ### Before committing wiki changes
 
 Always run `make ci-preflight` — it regenerates derived files (`index.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data.
+
+### Cursor Cloud Agent：PR 与验证截图
+
+Cloud Agent 在推送 PR 后，应在 PR 正文中附上**验证截图**（例如 `make lint` / `make ci-check` / `make ci-preflight` 摘要或 GitHub PR 页快照），使用 HTML `<img alt="..." src="<绝对路径>" />` 引用本地生成的图片；详细步骤、目录约定与迭代更新说明见 **[`docs/checklists/cloud-agent-pr-workflow.md`](docs/checklists/cloud-agent-pr-workflow.md)**。
