@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-05-11
+updated: 2026-05-13
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
@@ -23,7 +23,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 操作涉及多指接触、摩擦、约束——比纯运动控制复杂。
 
 ### 2. 视觉感知
-需要识别物体、理解姿态、估计空间位置。
+需要识别物体、理解姿态、估计空间位置；抓取子问题中常需要 **6D/7DoF 抓取位姿** 或 **候选集合**（见 [AnyGrasp](../entities/anygrasp.md) 一类检测式管线）。
 
 ### 3. 灵巧操作
 很多操作需要多指协调、精细力控（如插头、拧瓶盖）。
@@ -78,6 +78,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 ## 关联实体
 
 - [Allegro Hand](../entities/allegro-hand.md) — 主流灵巧操作研究硬件
+- [AnyGrasp](../entities/anygrasp.md) — 平行夹爪稠密抓取感知与跨帧跟踪（GraspNet 系 SDK）
 - [RLDX-1](../entities/rldx-1.md) — 灵巧操作向 VLA，可选触觉/力矩条件与低延迟推理栈
 
 ## 关联任务
@@ -94,6 +95,7 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 ## 关联页面
 
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
+- [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法
 - [Loco-Manipulation](./loco-manipulation.md) — 边走边操作的全身协调扩展
 - [Teleoperation](./teleoperation.md) — 操作数据采集的主要手段

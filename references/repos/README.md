@@ -29,6 +29,7 @@
 | 想找 humanoid / legged 项目 | [Humanoid Projects](humanoid-projects.md) |
 | 想找动作重定向工具 | [Retarget Tools](retarget-tools.md) |
 | 想找底层工具与 utilities | [Utilities](utilities.md) |
+| 想找操作 / 抓取感知 SDK 与数据接口 | [Manipulation Perception](manipulation-perception.md) |
 
 ---
 
@@ -72,6 +73,14 @@
 
 建议从这里进入：
 - [Retarget Tools](retarget-tools.md)
+
+### 操作 / 抓取感知主线
+如果你在看：
+- bin picking、平行夹爪抓取位姿估计
+- 深度点云上的稠密抓取与跨帧跟踪
+
+建议从这里进入：
+- [Manipulation Perception](manipulation-perception.md)
 
 ---
 

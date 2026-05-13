@@ -52,6 +52,7 @@
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
 - [AprilTag](wiki/entities/april-tag.md)
+- [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md)
 - [Crocoddyl](wiki/entities/crocoddyl.md)
 - [Unitree](wiki/entities/unitree.md)
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md)（人形 / 四足高频品牌索引）
@@ -158,6 +159,7 @@ SORT type ASC
 
 - [1X Technologies](entities/1x-technologies.md) — 1X Technologies（前身为 Halodi Robotics）是一家挪威与美国双总部的通用人形机器人公司，产品覆盖轮式人形 EVE 与面向家庭场景的双足 NEO，强调真实世界部署数据与 AI 能力迭代。 `📅2026-05-07` `[entity_page]`
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
+- [AnyGrasp（抓取感知 SDK）](entities/anygrasp.md) — AnyGrasp** 是面向平行夹爪的稠密 7-DoF 抓取感知与跨帧跟踪管线：单前向从深度点云预测大量候选并做时空关联，官方以 SDK（预编译库 + License）形式发布。 `📅2026-05-13` `[entity_page]`
 - [ANYmal 四足机器人](entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
 - [Asimov v1（开源人形机器人仓库）](entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Atom01 Deploy](entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`
@@ -406,6 +408,7 @@ SORT type ASC
 - [Whole-Body Control](references/papers/whole-body-control.md) — 聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。 `📅unknown` `[reference_page]`
 - [开源生态 / Repos](references/repos/README.md) — 这里不是代码仓库镜像，而是开源项目与工具链的导航层。 `📅unknown` `[reference_page]`
 - [Humanoid Projects](references/repos/humanoid-projects.md) — 聚焦人形机器人运动控制、模仿学习、感知与部署相关开源项目。 `📅unknown` `[reference_page]`
+- [Manipulation Perception](references/repos/manipulation-perception.md) — bin picking / 平行夹爪抓取位姿与 GraspNet 系数据、SDK 导航。 `📅2026-05-13` `[reference_page]`
 - [Retarget Tools](references/repos/retarget-tools.md) — 聚焦人体动作到机器人动作的重定向工具与项目。 `📅unknown` `[reference_page]`
 - [RL Frameworks](references/repos/rl-frameworks.md) — 人形/腿足机器人 RL 训练常用开源框架。 `📅unknown` `[reference_page]`
 - [Simulation](references/repos/simulation.md) — 当前重点平台： `📅unknown` `[reference_page]`
