@@ -158,7 +158,7 @@ flowchart LR
   end
   subgraph MB["Model-Based"]
     direction TB
-    I2[交互轨迹] --> M[学习模型<br/>ŝ'≈f(s,a)]
+    I2[交互轨迹] --> M["学习模型<br/>ŝ'≈f(s,a)"]
     M --> P[规划 / 想象 rollout]
     P --> Pi[策略或动作选择]
     Pi --> I2
