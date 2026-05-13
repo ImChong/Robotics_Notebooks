@@ -1395,6 +1395,13 @@
       summaryEl.innerHTML = escapeHtml(roadmapPage.summary || '当前路线暂无摘要。');
       removeLoadingState(summaryEl);
     }
+    var roadmapSummaryText = roadmapPage.summary || '';
+    if (roadmapSummaryText) {
+      var metaDescRoadmap = document.getElementById('metaDescription');
+      if (metaDescRoadmap) metaDescRoadmap.setAttribute('content', roadmapSummaryText.slice(0, 160));
+      var ogDescRoadmap = document.getElementById('metaOgDescription');
+      if (ogDescRoadmap) ogDescRoadmap.setAttribute('content', roadmapSummaryText.slice(0, 200));
+    }
     if (metaEl) {
       metaEl.innerHTML = [
         '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
