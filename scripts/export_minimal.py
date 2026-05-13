@@ -338,7 +338,6 @@ def collect_paths() -> List[Path]:
         "wiki/entities/*.md",
         "wiki/references/*.md",
         "roadmap/*.md",
-        "roadmap/learning-paths/*.md",
         "references/papers/*.md",
         "references/repos/*.md",
         "references/benchmarks/*.md",
@@ -470,8 +469,6 @@ def build_site_data(items: List[Dict]) -> Dict:
     quick_entries = pick_existing(
         [
             "roadmap-motion-control",
-            "roadmap-if-goal-locomotion-rl",
-            "roadmap-if-goal-imitation-learning",
         ],
         item_map,
     )

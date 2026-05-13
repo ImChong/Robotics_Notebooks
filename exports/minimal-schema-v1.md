@@ -122,8 +122,7 @@
 ## 2. roadmap_page
 
 用于导出：
-- motion-control
-- learning-paths 下各页面
+- motion-control（唯一 roadmap_page；原 `learning-paths/if-goal-*.md` 已并入该文件「可选纵深」章节）
 
 最小字段：
 

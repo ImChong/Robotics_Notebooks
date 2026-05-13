@@ -193,7 +193,6 @@ def iter_searchable_paths() -> List[Path]:
     patterns = [
         "wiki/**/*.md",
         "roadmap/*.md",
-        "roadmap/learning-paths/*.md",
         "references/papers/*.md",
         "references/repos/*.md",
         "references/benchmarks/*.md",

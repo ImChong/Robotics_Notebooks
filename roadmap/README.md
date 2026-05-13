@@ -8,15 +8,9 @@
 - 当前切入口：机器人运动控制算法工程师
 - 当前重点：运动控制、强化学习、模仿学习、人形机器人
 
-## 主路线
+## 主路线（唯一路线图页）
 
-- [主路线：运动控制算法工程师成长路线](motion-control.md)
+- **[主路线：运动控制算法工程师成长路线](motion-control.md)**  
+  含 L0–L6 完整阶段，以及原先 `learning-paths/if-goal-*.md` 中的四条「如果目标是…」纵深全文（见文内 [可选纵深](motion-control.md#depth-optional-index)）。
 
-说明：本仓库只维护这一条主路线。感知、规划、系统、部署等全栈内容作为主路线后段能力和目标分支补充，不再单独维护“路线B”。
-
-## 分支学习路径
-
-- [如果目标是人形 RL 运动控制](learning-paths/if-goal-locomotion-rl.md)
-- [如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md)
-- [如果目标是安全控制](learning-paths/if-goal-safe-control.md)
-- [如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md)
+说明：本仓库在站点导出中只保留 **一个** `roadmap_page`（`roadmap-motion-control`）。感知、规划、系统、部署等全栈内容在主路线后段与可选纵深中补充，不再维护并列的独立路线图文件。
