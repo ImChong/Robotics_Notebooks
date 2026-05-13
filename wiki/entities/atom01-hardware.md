@@ -7,6 +7,7 @@ related:
   - ./roboto-origin.md
   - ./open-source-humanoid-hardware.md
   - ./humanoid-robot.md
+  - ../concepts/text-to-cad.md
 sources:
   - ../../sources/repos/atom01_hardware.md
 summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，包含 CAD/PCB/BOM 等复现机器人本体的关键资料。"
@@ -43,6 +44,7 @@ summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)
 - [Humanoid Robot](./humanoid-robot.md)
+- [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)
 
 ## 推荐继续阅读
 
