@@ -12,6 +12,7 @@ related:
   - ../formalizations/lqr.md
   - ../formalizations/control-lyapunov-function.md
   - ../comparisons/clf-vs-cbf.md
+  - ../methods/disney-olaf-character-robot.md
 ---
 
 # Control Barrier Function（控制屏障函数）
