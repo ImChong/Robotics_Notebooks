@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-12
+updated: 2026-05-13
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -30,6 +30,7 @@ related:
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-variable-impedance-contact-rl.md
+  - ../methods/disney-olaf-character-robot.md
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/state_estimation.md

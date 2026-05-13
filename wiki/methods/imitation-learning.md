@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-04-29
+updated: 2026-05-13
 related:
   - ./bc-z.md
   - ./learning-from-play-lmp.md
@@ -13,6 +13,7 @@ related:
   - ../entities/mimickit.md
   - ./amp-reward.md
   - ./smp.md
+  - ./disney-olaf-character-robot.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humanoid_touch_dream.md
