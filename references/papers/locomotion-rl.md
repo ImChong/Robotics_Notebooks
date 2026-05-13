@@ -27,6 +27,10 @@
 - **CALM** — Conditioned Latent Action Models (Tessler et al., 2023)，latent 空间控制，[Code](https://github.com/irlet/calm)
 - **MimicKit** — 模仿学习 + 技能迁移 framework，[Project Page](https://motion.stanford.edu/research/mimickit)
 
+### 高动态与课程式物理引导
+
+- **EFGCL** — External Force-Guided Curriculum Learning（Yoneda et al., RA-L 2026）：训练期辅助力 + 成功率衰减课程，四足高动态 sim2real；[wiki 方法页](../../wiki/methods/efgcl.md) · [Project Page](https://keitayoneda.github.io/kleiyn-efgcl/) · [DOI](https://doi.org/10.1109/LRA.2026.3675955)
+
 ## 关联页面
 
 - [sim2real](../../wiki/concepts/sim2real.md) — Sim2Real 是 locomotion RL 的核心挑战

@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-04-18
+updated: 2026-05-13
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
@@ -74,6 +74,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 | 场景 | 课程策略 | 代表工作 |
 |------|---------|---------|
 | 四足/双足 locomotion | 地形难度分级 | legged_gym (Rudin 2022) |
+| 高动态全身动作（跳跃/空翻） | 训练期外部辅助力按成功率衰减 | [EFGCL](../methods/efgcl.md)（Yoneda et al., RA-L 2026） |
 | 局部感知导航 | 沿特权路径的子目标序列逐步稀疏（horizon 扩展） | HiPAN / PGCL (Jeong et al., 2026) |
 | Dexterous manipulation | 物体位置随机化范围扩大 | OpenAI Dactyl (2019) |
 | Humanoid 站立/行走 | 初始姿态随机化幅度 + 地形 | Agility Robotics, HUMA |
@@ -114,6 +115,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - **ingest 档案：** [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — teacher-student 地形课程
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin 地形课程实现
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — Beyondmimic 的失败驱动采样说明了课程不只体现在地形难度，也体现在 reset 片段分布
+- **ingest 档案：** [sources/sites/kleiyn-efgcl.md](../../sources/sites/kleiyn-efgcl.md) — EFGCL：外部力引导课程（体操 spotting 隐喻）
 
 ---
 
@@ -126,3 +128,4 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - [legged_gym](../entities/legged-gym.md) — legged_gym 内置地形课程实现
 - [Privileged Training](./privileged-training.md) — teacher-student 框架常与课程学习结合
 - [HiPAN](../methods/hipan.md) — Path-Guided Curriculum Learning：用路径子目标做导航视界课程
+- [EFGCL](../methods/efgcl.md) — 外部辅助力幅度作为连续课程变量，服务高动态全身 RL

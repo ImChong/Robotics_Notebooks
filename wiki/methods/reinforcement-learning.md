@@ -78,6 +78,7 @@ flowchart TD
     - **[amp-reward](amp-reward.md)**：基于判别器的对抗性动作先验学习。
     - **[ase](ase.md) / [smp](smp.md)**：更先进的层次化技能嵌入与生成式动作先验。
     - **BRRL / BPO (2026)**：有界重要性比强化学习，为 PPO 提供理论支撑并提升训练稳定性。
+    - **[EFGCL](./efgcl.md)**：训练期外部辅助力 + 按成功率衰减的物理引导课程，加速高动态全身动作的稀疏奖励学习。
     - **REINFORCE**：最基础的策略梯度方法。
 - **Q-Learning**：学习状态-动作价值函数 (Q-function)。
     - **DQN**：深度 Q 网络，适用于离散动作。
@@ -203,6 +204,7 @@ flowchart LR
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（与 IL 的系统性对比）
 - [PPO vs SAC](../comparisons/ppo-vs-sac.md)（on-policy vs off-policy 算法的系统性对比）
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 课程学习：解决稀疏奖励和训练效率问题的重要训练策略
+- [EFGCL](./efgcl.md) — 外部力引导课程：用可撤除辅助力提高早期成功体验与 Critic 收敛
 - [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)
 - [Bellman 方程](../formalizations/bellman-equation.md) — 所有 RL 算法的数学根基：最优值函数满足 Bellman 最优方程
 - [MDP](../formalizations/mdp.md) — RL 的形式化框架，Bellman 方程定义在 MDP 上
