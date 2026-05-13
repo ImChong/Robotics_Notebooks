@@ -11,10 +11,10 @@
 | 你的目标 | 从这里进入 |
 |---------|-----------|
 | 想有一条学习路线照着走 | [主路线：运动控制成长路线](roadmap/motion-control.md) |
-| 想用强化学习做 locomotion | [RL Locomotion 学习路径](roadmap/learning-paths/if-goal-locomotion-rl.md) |
-| 想学模仿学习与技能迁移 | [IL 学习路径](roadmap/learning-paths/if-goal-imitation-learning.md) |
-| 想学安全控制（CLF/CBF）| [安全控制学习路径](roadmap/learning-paths/if-goal-safe-control.md) |
-| 想做接触丰富的操作任务 | [接触操作学习路径](roadmap/learning-paths/if-goal-contact-manipulation.md) |
+| 想用强化学习做 locomotion | [主路线 · RL 纵深](roadmap/motion-control.md#depth-rl-locomotion) |
+| 想学模仿学习与技能迁移 | [主路线 · 模仿学习纵深](roadmap/motion-control.md#depth-imitation-learning) |
+| 想学安全控制（CLF/CBF）| [主路线 · 安全控制纵深](roadmap/motion-control.md#depth-safe-control) |
+| 想做接触丰富的操作任务 | [主路线 · 接触操作纵深](roadmap/motion-control.md#depth-contact-manipulation) |
 | 想看知识概念和方法 | 直接翻下面的 wiki 目录 |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 
@@ -65,11 +65,7 @@
 回答"应该先学什么、再学什么、学完输出什么"。
 
 核心路线：
-- [主路线：运动控制成长路线](roadmap/motion-control.md)
-- [RL Locomotion 路径](roadmap/learning-paths/if-goal-locomotion-rl.md)
-- [IL 技能迁移路径](roadmap/learning-paths/if-goal-imitation-learning.md)
-- [安全控制路径](roadmap/learning-paths/if-goal-safe-control.md)
-- [接触操作路径](roadmap/learning-paths/if-goal-contact-manipulation.md)
+- [主路线：运动控制成长路线](roadmap/motion-control.md)（含 RL / IL / 安全 / 接触操作等 [可选纵深](roadmap/motion-control.md#depth-optional-index)）
 
 ### tech-map/ — 技术栈地图
 回答"模块之间是什么关系"。
@@ -360,10 +356,6 @@ SORT type ASC
 ### Roadmaps（路线页）
 
 - [成长路线总览](README.md) — 本目录用于承载 `Robotics_Notebooks` 的成长路线设计。 `📅unknown` `[wiki_page]`
-- [学习路径：如果目标是接触丰富的操作任务](learning-paths/if-goal-contact-manipulation.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
-- [学习路径：如果目标是模仿学习与技能迁移](learning-paths/if-goal-imitation-learning.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
-- [学习路径：如果目标是人形 RL 运动控制](learning-paths/if-goal-locomotion-rl.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
-- [学习路径：如果目标是安全控制（CLF / CBF / Safe RL）](learning-paths/if-goal-safe-control.md) — 这条路径怎么用： `📅unknown` `[roadmap_page]`
 - [主路线：运动控制算法工程师成长路线](motion-control.md) — 1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。 `📅unknown` `[wiki_page]`
 
 ### Tech-map Nodes（技术栈节点）

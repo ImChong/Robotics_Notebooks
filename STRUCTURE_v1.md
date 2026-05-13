@@ -174,15 +174,8 @@ wiki/ (continued)
 roadmap/
 ├── README.md                        # 路线总览
 │
-├── motion-control.md        # 主路线：运动控制算法工程师成长路线 ⭐
-│   # 按学习阶段排列，从数学基础到人形机器人RL
-│   # 每阶段含：目标 + 核心模块 + 最小落地任务 + 推荐资源
-│
-└── learning-paths/                  # 按目标分支的学习路径
-    ├── if-goal-locomotion-rl.md     # 目标：人形RL运动控制
-    ├── if-goal-imitation-learning.md # 目标：模仿学习与技能迁移
-    ├── if-goal-safe-control.md      # 目标：安全控制
-    └── if-goal-contact-manipulation.md # 目标：接触丰富的操作任务
+└── motion-control.md                # 唯一主路线：运动控制算法工程师成长路线 ⭐
+    # L0–L6 阶段 + 文末「可选纵深」（原 learning-paths/if-goal-*.md 全文并入）
 ```
 
 **主路线（运动控制切入口）学习阶段：**

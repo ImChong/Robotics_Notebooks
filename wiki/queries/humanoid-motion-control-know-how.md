@@ -213,7 +213,7 @@ OCP
 基于这份文档，后续最值得继续做的不是“整页搬运”，而是把里面的组织思路转成你仓库里的几个增量：
 
 1. **路线层**
-   - 强化 `roadmap/motion-control.md` 与两条学习路径之间的衔接
+   - 强化 `roadmap/motion-control.md` 内「可选纵深」与 wiki 交叉索引
 
 2. **方法模板层**
    - 让 OCP / LIP-ZMP / WBC / MPC 等页面逐步补“最小代码”和“局限性”小节

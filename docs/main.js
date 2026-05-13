@@ -1358,6 +1358,18 @@
       'roadmap-route-a-motion-control': 'roadmap-motion-control'
     };
     const requestedRoadmapId = params.get('id') || '';
+    const mergedIntoMotionDetail = {
+      'roadmap-if-goal-locomotion-rl': 'depth-rl-locomotion',
+      'roadmap-if-goal-imitation-learning': 'depth-imitation-learning',
+      'roadmap-if-goal-safe-control': 'depth-safe-control',
+      'roadmap-if-goal-contact-manipulation': 'depth-contact-manipulation'
+    };
+    if (mergedIntoMotionDetail[requestedRoadmapId]) {
+      window.location.replace(
+        'detail.html?id=roadmap-motion-control#' + mergedIntoMotionDetail[requestedRoadmapId]
+      );
+      return;
+    }
     const roadmapId = legacyRoadmapIds[requestedRoadmapId] || requestedRoadmapId;
     const roadmapPage = roadmapId ? roadmapPages[roadmapId] : null;
 

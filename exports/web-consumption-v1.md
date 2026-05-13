@@ -69,7 +69,6 @@
   },
   "quick_entries": [
     {"title": "主路线：运动控制成长路线", "id": "roadmap-motion-control"},
-    {"title": "RL Locomotion 学习路径", "id": "roadmap-if-goal-locomotion-rl"}
   ],
   "featured_chain": [
     "wiki-concepts-lip-zmp",
