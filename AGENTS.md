@@ -48,7 +48,7 @@
 项目执行清单与阶段性维护看板。
 
 包括：
-- 当前技术栈执行清单：[`docs/checklists/tech-stack-next-phase-checklist-v21.md`](docs/checklists/tech-stack-next-phase-checklist-v21.md)
+- 当前技术栈执行清单：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md)
 - 前端体验优化清单：[`docs/checklists/frontend-optimization-v1.md`](docs/checklists/frontend-optimization-v1.md)
 - 历史执行清单索引：[`docs/checklists/README.md`](docs/checklists/README.md)
 
