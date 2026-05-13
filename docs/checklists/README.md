@@ -4,13 +4,13 @@
 
 ## 当前入口
 
-- [技术栈项目执行清单 v21](tech-stack-next-phase-checklist-v21.md) — 当前技术栈、自动化、专题建设与 UX 推进看板。
+- [技术栈项目执行清单 v22](tech-stack-next-phase-checklist-v22.md) — 当前技术栈、自动化、专题建设与 UX 推进看板。
 - [前端体验优化清单 v1](frontend-optimization-v1.md) — GitHub Pages 首页与交互体验优化计划。
 - [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
 
 ## 历史执行清单
 
-这些文件记录从 v1 到 v20 的阶段性目标和已完成事项，主要用于追溯决策，不作为当前待办入口。
+这些文件记录从 v1 到 v21 的阶段性目标和已完成事项，主要用于追溯决策，不作为当前待办入口。
 
 - [v1](tech-stack-next-phase-checklist-v1.md)
 - [v2](tech-stack-next-phase-checklist-v2.md)
@@ -32,6 +32,7 @@
 - [v18](tech-stack-next-phase-checklist-v18.md)
 - [v19](tech-stack-next-phase-checklist-v19.md)
 - [v20](tech-stack-next-phase-checklist-v20.md)
+- [v21](tech-stack-next-phase-checklist-v21.md)
 
 ## 维护规则
 
