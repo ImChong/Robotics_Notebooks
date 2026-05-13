@@ -2,16 +2,18 @@
 type: method
 tags: [humanoid, motion-retargeting, imitation-learning, reinforcement-learning, sim2real, unitree-g1]
 status: complete
-updated: 2026-05-08
+updated: 2026-05-13
 related:
   - ../concepts/motion-retargeting.md
   - ./motion-retargeting-gmr.md
+  - ./reactor-physics-aware-motion-retargeting.md
   - ./sonic-motion-tracking.md
   - ../concepts/whole-body-control.md
   - ../entities/unitree-g1.md
   - ./imitation-learning.md
 sources:
   - ../../sources/papers/neural_motion_retargeting_nmr.md
+  - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
 summary: "NMR 将人形运动重定向表述为从人体运动分布到机器人可行流形的学习映射；通过 CEPR 管线（筛选→GMR→聚类 RL 专家→仿真 rollout）构造物理一致的人机配对数据，训练 CNN–Transformer 非自回归网络，缓解传统优化重定向的非凸与噪声传播问题。"
 ---
 
@@ -80,10 +82,20 @@ flowchart TD
 - **聚类与专家数量**：簇数与训练成本折中；分布外动作仍可能超出专家覆盖。
 - **表示与任务范围**：论文以 G1 与全身动态技能为主，上肢细操作、手部灵巧度等需单独评估。
 
+## 与 ReActor（双层 RL 重定向）的对照
+
+两者都把**物理仿真里的 RL 跟踪**当作获得「少伪影、可执行」机器人运动的关键杠杆，但组织方式不同：
+
+- **NMR / CEPR**：先用 GMR 等得到运动学序列，再用**分簇 RL 专家**批量 rollout 构造**静态配对数据集**，最后训练**独立神经网络**做推断；推断阶段不再显式交替优化重定向参数。
+- **ReActor**：用**双层优化**把**参数化参考** \(\mathbf{p}\) 与**单一跟踪策略** \(\phi\) 放在同环更新，上层通过**结构化近似梯度**回传误差，更偏「算法—优化」叙事，并报告四足等强异构形态。
+
+工程选型可粗略按 **部署是否需要毫秒级前向网络**、**数据是否已固定为大规模离线库**、以及**是否要把“参考形变”本身当可微/可优化对象长期联合训练** 来权衡两条路线。
+
 ## 关联页面
 
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md) — 问题定义与常见流水线。
 - [GMR（通用动作重定向）](./motion-retargeting-gmr.md) — NMR 数据管线中的运动学前端。
+- [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略的对照路线。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 另一类「人体/参考 → 人形执行」的大规模跟踪基线视角。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 下游 QP / 分层控制与参考跟踪接口。
 - [Unitree G1](../entities/unitree-g1.md) — 论文实验平台。
@@ -97,3 +109,4 @@ flowchart TD
 ## 参考来源
 
 - [neural_motion_retargeting_nmr（本入库摘录）](../../sources/papers/neural_motion_retargeting_nmr.md)
+- [reactor_rl_physics_aware_motion_retargeting（对照阅读：双层 RL 重定向）](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)

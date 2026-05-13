@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-05-08
+updated: 2026-05-13
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -56,6 +56,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - 先在仿真中播放参考动作，用 PD 控制器追踪
 - 收集可行段，过滤摔倒片段
 - 可结合 RL 做后续精修（AMP 风格）
+- **双层 RL 式（ReActor）**：上层优化**参数化运动学参考**（稀疏语义刚体对应 + 有界偏移），下层用 **RL 跟踪**并在仿真里回传误差；把「造参考」与「跟参考」联立，减少脚滑与自碰等运动学伪影，详见 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
@@ -148,6 +149,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
 - **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
+- **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
 
 ---
 
@@ -161,6 +163,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性
 - [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现
 - [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真 RL 修补监督
+- [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 双层：可学习参考 + 同环 RL 跟踪，近似上层梯度
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [MotionCode](../entities/motioncode.md) — 商业运动数据与「人形/具身 + RL」叙事样本
 - [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一

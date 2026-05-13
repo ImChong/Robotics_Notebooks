@@ -2,16 +2,18 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-05-12
+updated: 2026-05-13
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
+  - ./reactor-physics-aware-motion-retargeting.md
   - ./beyondmimic.md
   - ./sonic-motion-tracking.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
+  - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 
@@ -147,11 +149,14 @@ $$
 
 [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) 仍用 GMR 生成**运动学初轨迹**，再通过 **CEPR**（聚类、并行 RL 跟踪专家、仿真 rollout）得到物理更一致的 **人机配对** 监督，最后训练 CNN–Transformer 做整段推断。可将这条路线理解为：**GMR 负责覆盖与几何对齐，仿真 RL 负责把轨迹拉回可行流形，神经网络负责快速、时序一致的前向重定向**。
 
+[ReActor](./reactor-physics-aware-motion-retargeting.md) 则把「参考形变」与「RL 跟踪」放进**同一双层优化**：上层直接优化参数化参考，下层策略在同一仿真环里更新；不依赖单独的前向重定向网络，而是强调**可计算的上层梯度近似**与跨形态（含四足）的参考生成。可与「GMR 先几何、再在别处补物理」对照阅读。
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的重定向消融提供"什么时候不该用 GMR"的反例。
 - [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR 以 GMR 为 CEPR 前端的神经重定向工作。
+- [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层 RL 重定向与 GMR/NMR 的定位对照。
 - Ze Y., et al. *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)；技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)。
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR) — 功能列表、支持的机器人与数据格式、与 TWIST / MimicKit 等生态链接。
 
@@ -161,4 +166,5 @@ $$
 - [BeyondMimic](./beyondmimic.md) — 动作模仿学习通常以重定向后的轨迹作为输入。
 - [ExoActor](./exoactor.md) — 视频生成驱动的人形控制流水线，给出"何时跳过 GMR"的反例。
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 用 GMR + 仿真 RL 构造监督的学习式重定向。
+- [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。

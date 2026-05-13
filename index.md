@@ -279,6 +279,7 @@ SORT type ASC
 - [Model Predictive Control (MPC)](methods/model-predictive-control.md) — 模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。 `📅unknown` `[method_page]`
 - [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](methods/neural-motion-retargeting-nmr.md) — NMR** 用 CEPR 管线（筛选、GMR、聚类 RL 专家、仿真 rollout）构造物理一致的人机配对监督，训练 CNN–Transformer 将 SMPL 序列映射为 Unitree G1 等平台的全身参考轨迹，缓解优化式重定向的非凸与噪声传播。 `📅2026-05-08` `[method_page]`
+- [ReActor（物理感知 RL 运动重定向）](methods/reactor-physics-aware-motion-retargeting.md) — ReActor** 将跨具身运动重定向建成物理仿真中的双层问题：上层优化稀疏语义刚体对应下的参数化参考，下层用 RL 跟踪；以结构化近似上层梯度避免 Hessian 逆，面向少脚滑/自碰的参考与下游模仿学习（SIGGRAPH 2026 预印本 arXiv:2605.06593）。 `📅2026-05-13` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
