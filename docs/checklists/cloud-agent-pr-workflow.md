@@ -64,6 +64,26 @@ git push -u origin <branch-name>
 - 优先写入可写目录：`<workspace>/.cursor-artifacts/screenshots/`（本仓库 `.gitignore` 已忽略该目录）。  
 - 若运行环境允许写入 `/opt/cursor/artifacts/screenshots/`，亦可使用（与部分内部工具文档中的示例一致）。  
 
+### 4.4 Playwright 兜底方案（当 `google-chrome` 不可用时）
+
+某些 Cloud 容器没有预装完整桌面库，Playwright 可能报错：`error while loading shared libraries: libatk-1.0.so.0`。可先补系统依赖，再截图：
+
+```bash
+sudo apt-get update
+sudo apt-get install -y \
+  libatk1.0-0 libatk-bridge2.0-0 libcups2 libxkbcommon0 \
+  libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
+```
+
+然后用固定版本执行（避免 `npx playwright` 每次临时安装导致浏览器缓存不一致）：
+
+```bash
+npx -y playwright@1.60.0 install chromium
+npx -y playwright@1.60.0 screenshot --device='Desktop Chrome' \
+  'http://127.0.0.1:8765/roadmap.html?id=roadmap-motion-control' \
+  '<workspace>/.cursor-artifacts/screenshots/roadmap-motion-control-fix.png'
+```
+
 ## 5. 迭代中的 PR 更新
 
 若验证或 CI 失败后修复再推送：
