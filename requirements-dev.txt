@@ -3,8 +3,8 @@
 pytest>=9.0.3
 pytest-cov>=7.1.0
 ruff>=0.15.12
-mypy>=2.0.0
-types-PyYAML>=6.0.12.20260408
+mypy>=2.1.0
+types-PyYAML>=6.0.12.20260510
 pyyaml>=6.0.3
 numpy>=2.4.4
 radon>=6.0.1
