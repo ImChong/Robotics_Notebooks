@@ -54,6 +54,7 @@ ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式
 ## 关联页面
 
 - [Curriculum Learning（课程学习）](../concepts/curriculum-learning.md) — 虚拟辅助力的核心理论
+- [EFGCL](./efgcl.md) — 学术侧「外部辅助力 + 课程衰减」与稀疏奖励高动态 RL（RA-L 2026 项目页 ingest）
 - [Sim2Real](../concepts/sim2real.md) — 零样本迁移的实现基础
 - [Behavior Cloning](./behavior-cloning.md)
 - [DeepMimic](./deepmimic.md)
