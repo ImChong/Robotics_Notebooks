@@ -31,6 +31,18 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 ### 4. 开放词汇
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
 
+## 操作闭环流程总览
+
+```mermaid
+flowchart TD
+  perc[感知<br/>物体 / 6D 位姿 / 接触 / 遮挡处理]
+  task[任务与运动表示<br/>抓取序列 / 关键帧 / 技能图]
+  pol[策略或规划器<br/>规则 / IL / RL / VLA / World Model]
+  exec[执行层<br/>阻抗 / WBC / 末端伺服]
+
+  perc --> task --> pol --> exec
+```
+
 ## 主要方法路线
 
 ### 传统路线
