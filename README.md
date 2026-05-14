@@ -2,7 +2,7 @@
 
 机器人技术栈知识库 / Robotics research and engineering wiki.
 
-<!-- Last updated: 2026-05-13 (V22 启动：基于 V21 完整交付，图谱 297 节点 1933 边) -->
+<!-- Last updated: 2026-05-14 (V22 自动更新：图谱 297 节点 1933 边) -->
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen?logo=github)](https://imchong.github.io/Robotics_Notebooks/)
 [![Deploy GitHub Pages](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/pages.yml)

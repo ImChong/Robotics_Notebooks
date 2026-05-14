@@ -23,6 +23,20 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 INDEX_HTML = REPO_ROOT / "docs" / "index.html"
 README_MD = REPO_ROOT / "README.md"
 HOME_STATS_JSON = REPO_ROOT / "exports" / "home-stats.json"
+CHECKLIST_DIR = REPO_ROOT / "docs" / "checklists"
+
+
+def _stem_version(path: Path) -> int:
+    match = re.search(r"v(\d+)", path.stem)
+    return int(match.group(1)) if match else -1
+
+
+def latest_checklist_path() -> Path:
+    candidates = sorted(CHECKLIST_DIR.glob("tech-stack-next-phase-checklist-v*.md"))
+    if not candidates:
+        print(f"❌ 找不到技术栈 checklist: {CHECKLIST_DIR}")
+        sys.exit(1)
+    return max(candidates, key=_stem_version)
 
 
 def run_command(cmd: list[str], description: str):
@@ -74,17 +88,19 @@ def main():
 
         cov_color = "green" if cov_pct >= 90 else "yellow"
         cov_badge = f"[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-{cov_pct}%25-{cov_color})]"
+        checklist_path = latest_checklist_path().relative_to(REPO_ROOT)
         content = re.sub(
             r"\[!\[Sources Coverage\]\([^)]+\)\]\([^)]+\)",
-            f"{cov_badge}(docs/checklists/tech-stack-next-phase-checklist-v21.md)",
+            f"{cov_badge}({checklist_path})",
             content,
         )
 
         # 更新时间戳注释
         today_str = date.today().isoformat()
+        checklist_version = _stem_version(latest_checklist_path())
         content = re.sub(
-            r"<!-- Last updated: .* \(V\d+ .*：图谱 \d+ 节点 \d+ 边\) -->",
-            f"<!-- Last updated: {today_str} (V21 自动更新：图谱 {nodes} 节点 {edges} 边) -->",
+            r"<!-- Last updated: .* -->",
+            f"<!-- Last updated: {today_str} (V{checklist_version} 自动更新：图谱 {nodes} 节点 {edges} 边) -->",
             content,
         )
 
