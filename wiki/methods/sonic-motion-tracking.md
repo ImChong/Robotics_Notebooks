@@ -12,6 +12,7 @@ related:
   - ./vla.md
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
+  - ../entities/zhengyi-luo.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。"
@@ -127,6 +128,7 @@ flowchart LR
 - [Imitation Learning](./imitation-learning.md)：大规模跟踪可视为广义的演示驱动学习。
 - [VLA](./vla.md)：SONIC 可作为低层执行器与 VLA 堆叠时的接口参考。
 - [Teleoperation](../tasks/teleoperation.md)：VR / 视频遥操作与规划器下身的工程组合参考。
+- [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)：论文共同一作与项目核心贡献者之一，主页汇总 SONIC 与相邻人形工作入口。
 
 ## 推荐继续阅读
 
@@ -146,3 +148,4 @@ flowchart LR
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
 - [VLA（Vision-Language-Action）](./vla.md)
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
+- [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)
