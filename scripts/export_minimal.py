@@ -67,9 +67,21 @@ WIKI_PAGE_TYPES = {
 
 REFERENCE_KINDS = {"papers", "repos", "benchmarks"}
 
+# Markdown 链接只有指向这些命名空间下的文件时才会被升格成 detail page id；
+# 其它（典型如 sources/）属于原始资料层，按仓库分层不应该作为站内一等节点出现。
+INDEXED_LINK_ROOTS = {"wiki", "roadmap", "references", "tech-map"}
+
 
 def rel(path: Path) -> str:
     return path.relative_to(ROOT).as_posix()
+
+
+def _is_indexed_link_target(resolved: Path) -> bool:
+    try:
+        parts = resolved.relative_to(ROOT).parts
+    except ValueError:
+        return False
+    return bool(parts) and parts[0] in INDEXED_LINK_ROOTS
 
 
 def read_text(path: Path) -> str:
@@ -190,9 +202,7 @@ def extract_section_links(text: str, current_path: Path, headings: List[str]) ->
             if not target.endswith(".md"):
                 continue
             resolved = (current_path.parent / target).resolve()
-            try:
-                resolved.relative_to(ROOT)
-            except ValueError:
+            if not _is_indexed_link_target(resolved):
                 continue
             results.append(path_to_id(resolved, ROOT))
     return results
@@ -208,9 +218,7 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
         if not target.endswith(".md"):
             continue
         resolved = (current_path.parent / target).resolve()
-        try:
-            resolved.relative_to(ROOT)
-        except ValueError:
+        if not _is_indexed_link_target(resolved):
             continue
         general.append(path_to_id(resolved, ROOT))
     if current_path.parts and "wiki" in current_path.parts:
