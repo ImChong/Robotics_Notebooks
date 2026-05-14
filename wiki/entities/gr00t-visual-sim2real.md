@@ -11,6 +11,7 @@ related:
   - ../entities/unitree-g1.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/gs-playground.md
+  - ./gr00t-wholebodycontrol.md
   - ../methods/imitation-learning.md
   - ../tasks/loco-manipulation.md
 sources:

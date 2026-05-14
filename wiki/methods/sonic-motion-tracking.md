@@ -13,6 +13,7 @@ related:
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
   - ../entities/zhengyi-luo.md
+  - ../entities/gr00t-wholebodycontrol.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
 summary: "SONIC 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务；以统一 token 接口接入 VR、视频、文本、音乐与 VLA（如 GR00T N1.5 演示），并可桥接实时运动学规划器做交互式导航与风格化步态。"

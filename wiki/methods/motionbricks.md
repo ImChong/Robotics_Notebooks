@@ -5,12 +5,15 @@ status: complete
 updated: 2026-04-30
 related:
   - ../concepts/whole-body-control.md
+  - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/kimodo.md
   - ../entities/unitree-g1.md
   - ../entities/isaac-gym-isaac-lab.md
   - ./imitation-learning.md
   - ../concepts/motion-retargeting.md
 sources:
   - ../../sources/papers/motionbricks.md
+  - ../../sources/repos/gr00t_wholebodycontrol.md
 summary: "MotionBricks 是 NVIDIA 开发的高性能运动生成框架，通过模块化潜空间底座与智能基元（Smart Primitives）实现了超大规模技能库的实时、高精度合成，是 GR00T 全身控制栈的关键层。"
 ---
 
@@ -71,6 +74,8 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 ## 关联页面
 
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md) — MotionBricks 为其提供参考轨迹。
+- [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) — 官方单仓中 `motionbricks/` 子项目与一体化文档。
+- [Kimodo](../entities/kimodo.md) — 同生态文生运动与约束式生成（GEAR-SONIC Demo 等场景常与之并列出现）。
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 利用 SOMA Retargeter 处理跨骨骼转换。
 - [Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 训练与验证环境。
 - [Unitree G1](../entities/unitree-g1.md) — 部署验证硬件。
@@ -78,5 +83,6 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 ## 参考来源
 
 - [sources/papers/motionbricks.md](../../sources/papers/motionbricks.md)
+- [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md) — GR00T WBC 单仓中 `motionbricks/` 子项目与训练/部署文档入口
 - [NVIDIA MotionBricks Project Page](https://nvlabs.github.io/motionbricks/)
 - [MotionBricks: Scalable Real-Time Motions with Modular Latent Generative Backbones](https://arxiv.org/abs/2604.24833)
