@@ -12,9 +12,11 @@ related:
   - ./roboto-origin.md
   - ./amp-mjlab.md
   - ../concepts/sim2real.md
+  - ../concepts/processor-in-the-loop-sim2real.md
 sources:
   - ../../sources/repos/asimov-v1.md
   - ../../sources/repos/asimov-mjlab.md
+  - ../../sources/blogs/menlo_noise_is_all_you_need.md
 summary: "Asimov v1 是 asimovinc 在单仓内开放的人形机器人全栈资料：机械与电气 CAD、MuJoCo 仿真、板载软件与官方手册/BOM；行走策略的公开训练入口在 asimov-mjlab（mjlab fork）中给出 PPO、imitation shaping 与 Sim2Real 取向说明。"
 ---
 
@@ -108,13 +110,17 @@ README 中的路线项仍将 **Asimov API**、**Locomotion policy**、**Mobile a
 
 **与 `asimov-mjlab` README 的表述关系**：该文说明其曾 **不采用显式 gait clock**，希望由动力学 **自发形成步频**；而 `asimov-mjlab` README 当前列出 **`gait_clock` 观测项**。二者在公开文字层面 **存在设计取舍差异**，可能对应不同实验迭代或分支；复现与写报告时应 **以所用 Git 提交与配置文件为准**，并将博文视为 **设计动机** 类参考。
 
+### 3.5 Processor-in-the-loop 与总线抖动（Menlo 2026-02）
+
+[Menlo 博文 *Noise is all you need to bridge the sim-to-real locomotion gap*](https://menlo.ai/blog/noise-is-all-you-need) 描述在 MuJoCo 中运行 **生产固件**，通过 **I2C / CAN 外设仿真** 与 **电机响应路径上的随机延迟注入**，把 **线程调度、融合库数值语义、协议解析与策略** 一并纳入训练/CI 闭环；文中以 Asimov 腿足部署为例讨论 **零样本 sim2real** 与真机–仿真关节轨迹对照。概念层归纳见 [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)。
+
 ### 4. 三条线对照表
 
 | 信息层级 | 典型入口 | 你能直接拿到的内容 |
 |----------|----------|---------------------|
 | 资产与单机仿真 | [asimov-v1](https://github.com/asimovinc/asimov-v1) | CAD / 电气 / **MuJoCo 模型** / 板载软件；主仓路线图中的 **Locomotion policy** 仍标「即将到来」 |
 | 规模化 RL + imitation shaping | [asimov-mjlab](https://github.com/asimovinc/asimov-mjlab) | mjlab 式并行环境、**PPO**、含 **1.25 Hz 参考步态 imitation** 的奖励组合、**无 `base_lin_vel`** 的观测裁剪与 PD 叙述 |
-| 设计叙事与消融动机 | [Menlo 博文](https://menlo.ai/blog/teaching-a-humanoid-to-walk) | 观测合同、CAN 时延建模、非对称 AC、奖励与 **gait clock** 取舍的讨论 |
+| 设计叙事与消融动机 | [Menlo 博文](https://menlo.ai/blog/teaching-a-humanoid-to-walk)、[处理器在环 / 抖动注入](https://menlo.ai/blog/noise-is-all-you-need) | 观测合同、CAN 时延建模、非对称 AC、奖励与 **gait clock** 取舍；**固件在环 + 总线噪声** 的工程化 sim2real |
 
 ### 5. 被动脚尖：机械目标、主仓 MuJoCo 与行走 MJCF 的差异
 
@@ -193,9 +199,11 @@ flowchart TD
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md)
+- [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 
 ## 推荐继续阅读
 
+- [Noise is all you need…（Menlo）](https://menlo.ai/blog/noise-is-all-you-need) — 固件在环与 CAN 抖动注入的工程叙事
 - [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 双板/异构计算与实时性分工
 - [asimovinc/asimov-mjlab（行走训练 fork）](https://github.com/asimovinc/asimov-mjlab)
 - [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — 被动趾与 **RSU 并联踝** 的产品/机构叙事
@@ -207,6 +215,7 @@ flowchart TD
 
 - [asimov-v1.md](../../sources/repos/asimov-v1.md)
 - [asimov-mjlab.md](../../sources/repos/asimov-mjlab.md)
+- [menlo_noise_is_all_you_need.md](../../sources/blogs/menlo_noise_is_all_you_need.md)
 - [asimovinc/asimov-v1 README（main）](https://github.com/asimovinc/asimov-v1/blob/main/README.md)
 - [asimovinc/asimov-mjlab README（main）](https://github.com/asimovinc/asimov-mjlab/blob/main/README.md)
 - [asimovinc/asimov-v1 `sim-model/xmls/asimov.xml`（main）](https://github.com/asimovinc/asimov-v1/blob/main/sim-model/xmls/asimov.xml)
