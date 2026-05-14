@@ -62,6 +62,41 @@ def _wiki_stem_index() -> dict[str, Path]:
     return _STEM_TO_PATH
 
 
+def wiki_recency_date(content: str, page: Path) -> date:
+    """用于「最近更新」排序：取 frontmatter 的 updated / created 与文件 mtime 中的最大值。"""
+    candidates: list[date] = []
+    if content.startswith("---"):
+        end = content.find("\n---", 3)
+        if end != -1:
+            fm = content[3:end]
+            for key in ("updated", "created"):
+                match = re.search(rf"^{key}\s*:\s*(\S+)", fm, re.MULTILINE)
+                if not match:
+                    continue
+                raw = match.group(1).strip().strip("'\"")
+                try:
+                    candidates.append(date.fromisoformat(raw[:10]))
+                except ValueError:
+                    continue
+    try:
+        candidates.append(date.fromtimestamp(page.stat().st_mtime))
+    except OSError:
+        pass
+    return max(candidates) if candidates else date.fromtimestamp(0)
+
+
+def _wiki_node_detail_id(page_id: str) -> str:
+    """将 wiki 下的 .md 路径映射为 detail.html 的 id（与 scripts/utils/paths.path_to_id 一致）。"""
+    rel = Path(page_id)
+    parts = rel.parts
+    stem = rel.stem
+    if len(parts) >= 2 and parts[0] == "wiki":
+        if parts[1] == "entities":
+            return f"entity-{stem}"
+        return f"wiki-{parts[1]}-{stem}"
+    return stem
+
+
 def compute_health_score(content: str) -> int:
     """计算节点健康度（0-3）。
 
@@ -442,6 +477,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 "label": extract_title(content) or page.stem,
                 "type": parse_frontmatter_type(content),
                 "health_score": compute_health_score(content),
+                "_recency": wiki_recency_date(content, page).isoformat(),
             }
         )
 
@@ -505,6 +541,20 @@ def _compute_graph_stats(
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
+    latest_wiki_node: dict[str, Any] | None = None
+    if nodes:
+        best = max(
+            nodes,
+            key=lambda n: (date.fromisoformat(str(n["_recency"])), str(n["id"])),
+        )
+        latest_wiki_node = {
+            "path": best["id"],
+            "detail_id": _wiki_node_detail_id(best["id"]),
+            "label": best["label"],
+            "type": best.get("type") or "",
+            "recency": best["_recency"],
+        }
+
     stats = {
         "generated_at": date.today().isoformat(),
         "node_count": len(nodes),
@@ -519,6 +569,7 @@ def _compute_graph_stats(
             "largest_community_ratio": largest_ratio,
             "community_quality_warning": largest_ratio > COMMUNITY_WARNING_RATIO,
         },
+        "latest_wiki_node": latest_wiki_node,
     }
     return stats
 
@@ -526,6 +577,11 @@ def _compute_graph_stats(
 def main() -> None:
     nodes, edges = _build_graph_data()
     communities, community_meta = assign_communities(nodes, edges)
+
+    stats = _compute_graph_stats(nodes, edges, communities, community_meta)
+
+    for node in nodes:
+        node.pop("_recency", None)
 
     graph = {"nodes": nodes, "edges": edges, "communities": communities}
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -537,7 +593,6 @@ def main() -> None:
         f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
     )
 
-    stats = _compute_graph_stats(nodes, edges, communities, community_meta)
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

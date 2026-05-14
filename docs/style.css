@@ -329,6 +329,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)), var(--bg-alt);
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
+#home-latest-wiki-section .home-latest-wiki-mount { max-width: 640px; }
+.home-latest-wiki-card h3 { margin-top: 4px; }
 .section-subtitle { color: var(--text-muted); font-size: .97rem; margin-bottom: 28px; max-width: 72ch; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .card {
