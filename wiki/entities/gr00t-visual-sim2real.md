@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-05-01
+updated: 2026-05-14
 related:
+  - ./tairan-he.md
   - ../concepts/sim2real.md
   - ../concepts/privileged-training.md
   - ../concepts/domain-randomization.md
@@ -123,6 +124,7 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 - [GS-Playground](./gs-playground.md) — 另一种缩小视觉 domain gap 的方案（3DGS Real2Sim）
 - [Imitation Learning](../methods/imitation-learning.md) — DAgger 是 IL 核心算法之一
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 本框架的主要任务方向
+- [Tairan He](./tairan-he.md) — VIRAL / DoorMan 等工作的作者侧论文与项目索引
 
 ## 参考来源
 
