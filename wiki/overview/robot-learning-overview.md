@@ -1,6 +1,6 @@
 ---
 type: overview
-updated: 2026-04-20
+updated: 2026-05-14
 summary: "Robot Learning Overview 是机器人学习知识库入口页，按控制层、学习层与系统层组织主干主题，并给出阅读顺序与问题驱动导航。"
 sources:
   - ../../sources/papers/survey_papers.md
@@ -107,6 +107,7 @@ sources:
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [VLA](../methods/vla.md)
+- [World Action Models（WAM）](../concepts/world-action-models.md) — 世界预测与动作生成耦合的具身基础模型范式（综述与 Awesome-WAM 资源入口）
 
 ### 4. Safe / Structured Control
 
