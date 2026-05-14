@@ -64,17 +64,20 @@ Locomotion 不是单个“会走路的策略”，而是一套闭环运动系统
 ## 闭环流程总览
 
 ```mermaid
-flowchart LR
-  cmd[目标命令<br/>速度/方向/任务] --> obs[传感器与地形观测]
-  obs --> est[状态估计<br/>姿态/速度/接触]
-  est --> plan[步态与落脚规划<br/>CoM/footstep/contact]
-  plan --> ctrl[控制器或策略<br/>MPC/WBC/RL]
-  ctrl --> act[关节接口<br/>扭矩/PD/阻抗]
-  act --> robot[机器人与环境]
-  robot --> obs
-  robot --> metric[评价<br/>速度/能耗/稳定性]
-  metric --> train[训练与调参<br/>reward/DR/curriculum]
-  train --> ctrl
+flowchart TD
+  cmd[目标命令<br/>速度 / 方向 / 任务]
+  obs[传感器与地形观测]
+  est[状态估计<br/>姿态 / 速度 / 接触]
+  plan[步态与落脚规划<br/>CoM / footstep / contact]
+  ctrl[控制器或策略<br/>MPC / WBC / RL]
+  act[关节接口<br/>扭矩 / PD / 阻抗]
+  robot[机器人与环境]
+  metric[评价<br/>速度 / 能耗 / 稳定性]
+  train[训练与调参<br/>reward / DR / curriculum]
+
+  cmd --> obs --> est --> plan --> ctrl --> act --> robot
+  robot -- 机载观测回流 --> obs
+  robot --> metric --> train --> ctrl
 ```
 
 阅读这张图时可以抓住两条主线：
