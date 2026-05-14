@@ -137,9 +137,12 @@
     var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
     var href = detailHref(meta.detail_id);
     var dateStr = meta.recency ? String(meta.recency) : '';
+    var metaLine = typeLabel;
+    if (dateStr) metaLine += ' · ' + dateStr;
+    if (meta.source === 'log.md') metaLine += ' · 维护日志';
     mount.innerHTML =
       '<article class="card home-latest-wiki-card"><p class="card-meta">' +
-      escapeHtml(typeLabel + (dateStr ? ' · ' + dateStr : '')) +
+      escapeHtml(metaLine) +
       '</p><h3><a href="' +
       escapeHtml(href) +
       '">' +

@@ -5,6 +5,9 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 扫描所有 wiki 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
+同时写入 exports/graph-stats.json（含 latest_wiki_node：优先按 log.md 中
+自上而下首个 ingest 条目的 wiki 路径解析，否则回退到 frontmatter / mtime 的 recency）。
+
 输出格式：
   {
     "nodes": [
@@ -38,6 +41,9 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
+LOG_MD_PATH = REPO_ROOT / "log.md"
+# log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
+WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
 # 主社区检测（Girvan-Newman）允许的最大社区数：与历史行为一致。
 PRIMARY_COMMUNITY_CAP = 8
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
@@ -95,6 +101,69 @@ def _wiki_node_detail_id(page_id: str) -> str:
             return f"entity-{stem}"
         return f"wiki-{parts[1]}-{stem}"
     return stem
+
+
+def _normalize_wiki_rel_from_log_match(raw: str) -> str:
+    s = raw.strip().strip("`'\"").rstrip("，。；、）)」』,.;:")
+    if not s.lower().endswith(".md"):
+        s = s + ".md"
+    return s
+
+
+def _log_sections(text: str) -> list[str]:
+    """按 `## [` 切分 log.md，仅保留以日期标题开头的块，顺序为文件自上而下（新记录在上）。"""
+    parts = re.split(r"(?=^## \[)", text, flags=re.MULTILINE)
+    out: list[str] = []
+    for p in parts:
+        p = p.strip()
+        if p.startswith("## ["):
+            out.append(p)
+    return out
+
+
+def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """从 log.md 解析「当前应展示的」最新 wiki 节点。
+
+    规则：自上而下扫描 `## [日期] ...` 块；优先在标题含 **ingest** 的块内取**首次**出现的
+    `wiki/...` 路径；若无命中再扫描其余块。路径须对应仓库内现存文件，且须在图谱节点列表中。
+    """
+    if not LOG_MD_PATH.is_file():
+        return None
+    text = LOG_MD_PATH.read_text(encoding="utf-8")
+    sections = _log_sections(text)
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+
+    def pick(ingest_only: bool) -> dict[str, Any] | None:
+        for chunk in sections:
+            head = chunk.split("\n", 1)[0]
+            if ingest_only and not re.search(r"\bingest\b", head, re.IGNORECASE):
+                continue
+            date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
+            log_date = date_m.group(1) if date_m else ""
+            for m in WIKI_PATH_IN_LOG.finditer(chunk):
+                rel = _normalize_wiki_rel_from_log_match(m.group(0))
+                if not rel.startswith("wiki/"):
+                    continue
+                p = REPO_ROOT / rel
+                if not p.is_file():
+                    continue
+                base = node_by_id.get(rel)
+                if not base:
+                    continue
+                return {
+                    "path": rel,
+                    "detail_id": _wiki_node_detail_id(rel),
+                    "label": str(base.get("label") or Path(rel).stem),
+                    "type": str(base.get("type") or ""),
+                    "recency": log_date,
+                    "source": "log.md",
+                }
+        return None
+
+    hit = pick(ingest_only=True)
+    if hit:
+        return hit
+    return pick(ingest_only=False)
 
 
 def compute_health_score(content: str) -> int:
@@ -541,8 +610,8 @@ def _compute_graph_stats(
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
-    latest_wiki_node: dict[str, Any] | None = None
-    if nodes:
+    latest_wiki_node: dict[str, Any] | None = latest_wiki_node_from_log(nodes)
+    if latest_wiki_node is None and nodes:
         best = max(
             nodes,
             key=lambda n: (date.fromisoformat(str(n["_recency"])), str(n["id"])),
@@ -553,6 +622,7 @@ def _compute_graph_stats(
             "label": best["label"],
             "type": best.get("type") or "",
             "recency": best["_recency"],
+            "source": "recency",
         }
 
     stats = {

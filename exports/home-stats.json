@@ -8,10 +8,11 @@
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/tasks/vision-language-navigation.md",
-    "detail_id": "wiki-tasks-vision-language-navigation",
-    "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-    "type": "task",
-    "recency": "2026-05-14"
+    "path": "wiki/methods/sonic-motion-tracking.md",
+    "detail_id": "wiki-methods-sonic-motion-tracking",
+    "label": "SONIC（规模化运动跟踪人形控制）",
+    "type": "method",
+    "recency": "2026-05-14",
+    "source": "log.md"
   }
 }
