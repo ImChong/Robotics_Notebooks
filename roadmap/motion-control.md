@@ -177,6 +177,14 @@
 
 **本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
 
+**这一层建议分三步走，不要一口气啃完：**
+
+1. **L1.1 SE(3)、旋转与刚体变换** — 把"位姿"用数学描述清楚（旋转矩阵、齐次变换、Twist / Screw Axis、矩阵指数 / PoE）。这是后面所有内容的字母表。
+2. **L1.2 正逆运动学（FK / IK）** — 关节角 ↔ 末端位姿。先用 PoE 公式手写 FK 验证 Pinocchio 的输出再说。
+3. **L1.3 雅可比与速度运动学** — 关节速度 ↔ 末端速度，space Jacobian 与 body Jacobian 的区别；这是 L4 任务空间控制的入门钥匙。
+
+> 上述三步在本文档下方"推荐做什么 / 推荐读什么 / 学完输出什么"里**统一列出**——不必拆三份执行清单，只需在心里按这个顺序推进。
+
 ### 前置知识
 - L0 内容
 - 刚体在三维空间里怎么旋转、怎么描述朝向
@@ -216,6 +224,13 @@
 > **上一层的局限：** L1 运动学只回答"关节角速度 ↔ 末端速度"是怎么映射的，但不能回答"加多大力矩才能让它产生这个加速度"。没有动力学，你只能做位置控制，碰到接触、高速运动、力交互就崩。
 
 **本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
+
+**这一层建议分两步走：**
+
+1. **L2.1 单刚体 / 固定基开链动力学** — 质量矩阵 \(M(q)\)、科里奥利 / 重力项、正逆动力学（RNEA / CRBA / ABA）。先把 Pinocchio 的 API 跑通，对照 Modern Robotics Ch 8 验证。
+2. **L2.2 浮动基与接触动力学** — 把固定基的方法推广到没有固定底座 + 间歇接触的人形机器人。重点：浮动基状态表示、接触约束如何写成 Jacobian、Centroidal Momentum Matrix 的物理意义。
+
+> 重要：进 L4 前 L2.2 必须懂，否则 LIP / Centroidal MPC / WBC 全是"魔法"。
 
 ### 前置知识
 - L1 内容（运动学）
@@ -302,36 +317,42 @@
 
 **本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
 
-这一阶段要建立的不是“我看过多少算法名词”，而是一条稳定的方法链：
-- **先学简化模型**：LIP / ZMP 帮你建立步行和平衡直觉
-- **再学更真实的中层模型**：Centroidal Dynamics 把接触力、线动量、角动量带进来
-- **再学上层规划**：Trajectory Optimization / MPC 负责“未来几步怎么走”
-- **最后学下层执行**：TSID / WBC 负责“每个关节怎么出力”
+### L4.0 桥段：怎么把 L1–L3 串成 L4 的方法链
 
-同时，始终用三件事检查自己是否真的学懂：
+L4 是本路线最陡的台阶。**进入 L4.1 前先建立一个"为什么是这个顺序"的心智模型，比直接看每个子方法重要得多。**
+
+人形控制的核心矛盾是：**全身动力学维度太高、非线性强、接触切换密集**——直接拿 L3 学到的通用 LQR / MPC 套不上去。解决方式不是发明新数学，而是按"模型从粗到细、控制从慢到快"两条轴拆分：
+
+| 轴 | 含义 | 实例 |
+|---|---|---|
+| **模型粒度** | 用多少状态变量描述机器人 | LIP（3 维）→ Centroidal（6 维 momentum + 接触力）→ 全身动力学（n+6 维） |
+| **控制频率** | 在哪个时间尺度上做决策 | Footstep / 高层规划（1–10 Hz）→ MPC（50–200 Hz）→ WBC（1 kHz）|
+
+L4 的方法链就是把这两条轴**串联**起来：
+
+```
++--------------------------+   +--------------------------+   +--------------------------+   +--------------------------+
+| L4.1 LIP / ZMP           |-->| L4.2 Centroidal          |-->| L4.3 TrajOpt / MPC       |-->| L4.4 TSID / WBC          |
+| 粗模型, 直觉 / 解析       |   | 中粒度, 带角动量+接触力   |   | 在线滚动求解最优轨迹      |   | 实时分配每关节力矩        |
+| ~ 离线 / 步态生成         |   | ~ 离线 / 中层规划         |   | ~ 50-200 Hz              |   | ~ 1 kHz                  |
++--------------------------+   +--------------------------+   +--------------------------+   +--------------------------+
+       (建立直觉)                  (引入真实力学)                 (规划"未来怎么走")              (落到"每关节多少力")
+```
+
+学每个子方法时，始终用三件事检查自己是否真的学懂：
+
 1. **原理**：这个方法的状态、约束、目标函数分别是什么
-2. **最小代码**：我能不能用一个小例子把核心 loop 跑通
-3. **局限性**：这个方法在什么情况下会失效，为什么还需要下一层方法接上来
-
-这一整条链路是：
-
-```
-LIP / ZMP
-  ↓
-Centroidal Dynamics
-  ↓
-Trajectory Optimization / MPC
-  ↓
-TSID / WBC
-```
+2. **最小代码**：能不能用一个小例子把核心 loop 跑通
+3. **局限性**：什么情况下会失效，为什么还需要下一层方法接上来
 
 **Modern Robotics 在 L4 的位置：**
-- Ch 3-5 提供任务空间位姿、twist、Jacobian、wrench 的统一语言
+
+- Ch 3–5 提供任务空间位姿、twist、Jacobian、wrench 的统一语言
 - Ch 8 解释开链动力学，帮助理解 Pinocchio / TSID 中的逆动力学项
 - Ch 9 解释轨迹生成，是 MPC / trajectory optimization 的低维入口
 - Ch 11 解释 computed torque、motion control、force control，是理解 WBC 任务层的前置材料
 
-注意：Modern Robotics 本身不是人形 locomotion 教材，不会直接教 LIP/ZMP、centroidal MPC 或浮动基接触切换；它更像是这条主路线的“语法书”。学 L4 时遇到坐标变换、Jacobian、wrench、逆动力学不清楚，就回到对应章节补。
+> Modern Robotics 本身不是人形 locomotion 教材，不会直接教 LIP/ZMP、centroidal MPC 或浮动基接触切换；它更像是这条主路线的"语法书"。学 L4 时遇到坐标变换、Jacobian、wrench、逆动力学不清楚，就回到对应章节补。
 
 ### L4.1 LIP / ZMP
 
