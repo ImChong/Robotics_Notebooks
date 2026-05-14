@@ -1413,15 +1413,15 @@
       'roadmap-route-a-motion-control': 'roadmap-motion-control'
     };
     const requestedRoadmapId = params.get('id') || '';
-    const mergedIntoMotionDetail = {
-      'roadmap-if-goal-locomotion-rl': 'depth-rl-locomotion',
-      'roadmap-if-goal-imitation-learning': 'depth-imitation-learning',
-      'roadmap-if-goal-safe-control': 'depth-safe-control',
-      'roadmap-if-goal-contact-manipulation': 'depth-contact-manipulation'
+    const legacyDepthRedirects = {
+      'roadmap-if-goal-locomotion-rl': 'roadmap-depth-rl-locomotion',
+      'roadmap-if-goal-imitation-learning': 'roadmap-depth-imitation-learning',
+      'roadmap-if-goal-safe-control': 'roadmap-depth-safe-control',
+      'roadmap-if-goal-contact-manipulation': 'roadmap-depth-contact-manipulation'
     };
-    if (mergedIntoMotionDetail[requestedRoadmapId]) {
+    if (legacyDepthRedirects[requestedRoadmapId]) {
       window.location.replace(
-        'detail.html?id=roadmap-motion-control#' + mergedIntoMotionDetail[requestedRoadmapId]
+        'roadmap.html?id=' + encodeURIComponent(legacyDepthRedirects[requestedRoadmapId])
       );
       return;
     }

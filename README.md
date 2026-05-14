@@ -37,10 +37,10 @@
 |---------|------|
 | 可视化探索知识图谱 | [知识图谱](https://imchong.github.io/Robotics_Notebooks/graph.html) |
 | 有一条路线照着走 | [运动控制成长路线](roadmap/motion-control.md) |
-| 用强化学习做运动控制 | [主路线 · RL 纵深](roadmap/motion-control.md#depth-rl-locomotion) |
-| 学模仿学习与技能迁移 | [主路线 · 模仿学习纵深](roadmap/motion-control.md#depth-imitation-learning) |
-| 学安全控制（CLF/CBF）| [主路线 · 安全控制纵深](roadmap/motion-control.md#depth-safe-control) |
-| 做接触丰富的操作任务 | [主路线 · 接触操作纵深](roadmap/motion-control.md#depth-contact-manipulation) |
+| 用强化学习做运动控制 | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
+| 学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
+| 学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
+| 做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
 | 浏览所有知识页 | [知识页导航总入口](index.md) |
 | 搜索特定概念 | `python3 scripts/search_wiki.py <关键词>` |
 
