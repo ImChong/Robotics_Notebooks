@@ -2,6 +2,21 @@
 
 **摘要**：面向"装配、拧螺丝、插拔等需要精细接触"的操作任务的纵深路线，按 Stage 0–3 串通从阻抗控制到 ACT / Diffusion Policy 的核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
 
+## 路线一览
+
+```mermaid
+flowchart LR
+  S0["**Stage 0**<br/>操作基础<br/><em>区分 prehensile / contact-rich</em>"]
+  S1["**Stage 1**<br/>接触力建模与控制<br/><em>Impedance / Admittance</em>"]
+  S2["**Stage 2**<br/>IL 用于操作<br/><em>ACT / Diffusion Policy</em>"]
+  S3["**Stage 3**<br/>Contact-Rich 策略进阶<br/><em>真机 + FT sensor</em>"]
+
+  S0 --> S1 --> S2 --> S3
+
+  classDef stage fill:#142a3a,stroke:#27ae60,stroke-width:2px,color:#fff
+  class S0,S1,S2,S3 stage
+```
+
 ## 这条路径怎么用
 
 - 目标读者是有 RL/IL 基础、想深入操作任务的工程师

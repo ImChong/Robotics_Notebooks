@@ -2,6 +2,24 @@
 
 **摘要**：面向"从人类演示数据让机器人学习技能"的纵深路线，从时序建模基础到 ASE / Diffusion Policy，按 Stage 0–6 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
 
+## 路线一览
+
+```mermaid
+flowchart LR
+  S0["**Stage 0**<br/>时序建模基础<br/><em>LSTM / Transformer</em>"]
+  S1["**Stage 1**<br/>BC / DAgger<br/><em>核心概念</em>"]
+  S2["**Stage 2**<br/>Motion Retargeting<br/><em>MoCap → 机器人</em>"]
+  S3["**Stage 3**<br/>Diffusion Policy<br/><em>生成式动作</em>"]
+  S4["**Stage 4**<br/>Skill Embedding<br/><em>ASE / 对抗式</em>"]
+  S5["**Stage 5**<br/>Sim2Real<br/><em>真机迁移</em>"]
+  S6["**Stage 6**<br/>进阶方向<br/><em>Video / 多模态 / 长时程</em>"]
+
+  S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6
+
+  classDef stage fill:#142a3a,stroke:#9b59b6,stroke-width:2px,color:#fff
+  class S0,S1,S2,S3,S4,S5,S6 stage
+```
+
 ## 这条路径怎么用
 
 - 目标读者是有深度学习基础、想理解如何让机器人从人类演示中学习技能的人

@@ -2,6 +2,23 @@
 
 **摘要**：面向"想用强化学习做人形 locomotion"的快速纵深路线，从 RL 基础到 sim2real，按 Stage 0–5 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
 
+## 路线一览
+
+```mermaid
+flowchart LR
+  S0["**Stage 0**<br/>RL 基础准备<br/><em>PPO / SAC 跑通</em>"]
+  S1["**Stage 1**<br/>locomotion 概念<br/><em>了解平衡 / 接触切换</em>"]
+  S2["**Stage 2**<br/>RL + Locomotion 方法<br/><em>仿真里走起来</em>"]
+  S3["**Stage 3**<br/>MPC / WBC + RL<br/><em>和传统控制结合</em>"]
+  S4["**Stage 4**<br/>Sim2Real 迁移<br/><em>DR / 延迟处理</em>"]
+  S5["**Stage 5**<br/>进阶方向<br/><em>跑酷 / 视觉 / 多平台</em>"]
+
+  S0 --> S1 --> S2 --> S3 --> S4 --> S5
+
+  classDef stage fill:#142a3a,stroke:#00d4ff,stroke-width:2px,color:#fff
+  class S0,S1,S2,S3,S4,S5 stage
+```
+
 ## 这条路径怎么用
 
 - 目标读者是有编程基础、想快速把 RL 和人形 locomotion 串起来的人

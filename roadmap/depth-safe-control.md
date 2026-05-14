@@ -2,6 +2,21 @@
 
 **摘要**：面向"在满足安全约束的前提下控制机器人"的纵深路线，从 Lyapunov 稳定性到 CBF-QP、再到 Safe RL，按 Stage 0–3 串通核心方法；本路线是 [运动控制主路线](motion-control.md) 的一条分支。
 
+## 路线一览
+
+```mermaid
+flowchart LR
+  S0["**Stage 0**<br/>数学基础<br/><em>Lyapunov 稳定性</em>"]
+  S1["**Stage 1**<br/>CLF / CBF 基础<br/><em>CBF-QP 实现</em>"]
+  S2["**Stage 2**<br/>嵌入 WBC / MPC<br/><em>Safety Filter</em>"]
+  S3["**Stage 3**<br/>Safe RL<br/><em>CMDP / Lagrangian</em>"]
+
+  S0 --> S1 --> S2 --> S3
+
+  classDef stage fill:#142a3a,stroke:#e67e22,stroke-width:2px,color:#fff
+  class S0,S1,S2,S3 stage
+```
+
 ## 这条路径怎么用
 
 - 目标读者是有控制理论基础、想加入安全保证的工程师或研究者
