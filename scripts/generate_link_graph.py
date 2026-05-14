@@ -38,9 +38,18 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
-MAX_COMMUNITIES = 8
+# 主社区检测（Girvan-Newman）允许的最大社区数：与历史行为一致。
+PRIMARY_COMMUNITY_CAP = 8
+# 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
+MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
+# V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
+LARGE_COMMUNITY_SPLIT_RATIO = 0.40
+LARGE_COMMUNITY_MIN_SIZE = 30
+# resolution > 1.0 偏好更细粒度社区（Reichardt-Bornholdt 形式的 modularity）。
+LOUVAIN_RESOLUTION = 1.15
+COMMUNITY_WARNING_RATIO = 0.40
 
 # Wikilink [[stem]] 解析缓存（wiki 文件集合不变时可复用）
 _STEM_TO_PATH: dict[str, Path] | None = None
@@ -255,14 +264,109 @@ def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
             working[left].discard(right)
             working[right].discard(left)
         partition = connected_components(working)
-        if len(partition) > MAX_COMMUNITIES:
+        if len(partition) > PRIMARY_COMMUNITY_CAP:
             break
         score = modularity(partition, adjacency)
         if len(partition) > 1 and score >= best_score:
             best_partition = partition
             best_score = score
 
-    return best_partition
+    refined = refine_oversized_communities(best_partition, adjacency)
+    return sorted(refined, key=lambda members: (-len(members), members[0] if members else ""))
+
+
+def refine_oversized_communities(
+    partition: list[list[str]],
+    adjacency: dict[str, set[str]],
+) -> list[list[str]]:
+    """对超出阈值的巨型社区做 Louvain 二级拆分。
+
+    采用 Reichardt-Bornholdt 带 resolution γ 的 modularity，γ>1 偏好更细粒度社区。
+    仅当拆分后子社区个数≥2 且能降低最大社区占比时才采纳。
+    """
+    total_nodes = sum(len(c) for c in partition)
+    if total_nodes == 0:
+        return partition
+
+    refined: list[list[str]] = []
+    for community in partition:
+        ratio = len(community) / total_nodes
+        if ratio <= LARGE_COMMUNITY_SPLIT_RATIO or len(community) < LARGE_COMMUNITY_MIN_SIZE:
+            refined.append(community)
+            continue
+
+        members = set(community)
+        sub_adj = {node: adjacency[node] & members for node in community}
+        sub_groups = louvain_communities(sub_adj, resolution=LOUVAIN_RESOLUTION)
+        if len(sub_groups) >= 2:
+            refined.extend(sub_groups)
+        else:
+            refined.append(community)
+    return refined
+
+
+def louvain_communities(
+    adjacency: dict[str, set[str]],
+    resolution: float = 1.0,
+) -> list[list[str]]:
+    """纯 Python Louvain 单层局部移动，无外部依赖。
+
+    模块度增益（无权图）：ΔQ = k_i_in - γ * Σ_tot * k_i / 2m
+    """
+    nodes = sorted(adjacency.keys())
+    if not nodes:
+        return []
+
+    total_edges = sum(len(neighbors) for neighbors in adjacency.values()) / 2
+    if total_edges == 0:
+        return [[node] for node in nodes]
+
+    m2 = 2 * total_edges
+    degrees = {node: len(adjacency[node]) for node in nodes}
+    node_to_comm = {node: idx for idx, node in enumerate(nodes)}
+    comm_degree: dict[int, float] = {}
+    for node in nodes:
+        comm = node_to_comm[node]
+        comm_degree[comm] = comm_degree.get(comm, 0.0) + degrees[node]
+
+    improved = True
+    iteration = 0
+    max_iterations = 30
+    while improved and iteration < max_iterations:
+        improved = False
+        iteration += 1
+        for node in nodes:
+            current_comm = node_to_comm[node]
+            neighbor_weights: dict[int, int] = {}
+            for neighbor in adjacency[node]:
+                nc = node_to_comm[neighbor]
+                neighbor_weights[nc] = neighbor_weights.get(nc, 0) + 1
+
+            comm_degree[current_comm] -= degrees[node]
+            k_i_in_current = neighbor_weights.get(current_comm, 0)
+            best_comm = current_comm
+            best_gain = k_i_in_current - resolution * comm_degree[current_comm] * degrees[node] / m2
+
+            for candidate, k_i_in in neighbor_weights.items():
+                if candidate == current_comm:
+                    continue
+                gain = k_i_in - resolution * comm_degree.get(candidate, 0.0) * degrees[node] / m2
+                if gain > best_gain + 1e-12:
+                    best_gain = gain
+                    best_comm = candidate
+
+            comm_degree[best_comm] = comm_degree.get(best_comm, 0.0) + degrees[node]
+            node_to_comm[node] = best_comm
+            if best_comm != current_comm:
+                improved = True
+
+    groups: dict[int, list[str]] = {}
+    for node, comm in node_to_comm.items():
+        groups.setdefault(comm, []).append(node)
+    return sorted(
+        (sorted(members) for members in groups.values()),
+        key=lambda members: (-len(members), members[0] if members else ""),
+    )
 
 
 def assign_communities(
@@ -409,7 +513,7 @@ def _compute_graph_stats(
         "community_quality": {
             "singleton_communities": singleton_communities,
             "largest_community_ratio": largest_ratio,
-            "community_quality_warning": largest_ratio > 0.45,
+            "community_quality_warning": largest_ratio > COMMUNITY_WARNING_RATIO,
         },
     }
     return stats

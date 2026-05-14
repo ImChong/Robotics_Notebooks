@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-14] structural | scripts/generate_link_graph.py — V22 P0 社区粒度二级拆分：保留 Girvan-Newman 一级检测（`PRIMARY_COMMUNITY_CAP=8`），新增纯 Python Louvain（`resolution=1.15`，Reichardt-Bornholdt modularity）对占比 > 40% 的巨型社区二级拆分；`MAX_COMMUNITIES` 提升至 16 容纳子社区。`exports/graph-stats.json`：`largest_community_ratio` 0.651 → 0.138，`community_quality_warning` true → false，Locomotion 拆出 WBC/RL/MPC/IL/Sim2Real/Isaac Gym/Humanoid/Unitree G1 等子社区
+
 ## [2026-05-14] structural | wiki — 扩充 `wiki/tasks/locomotion.md`：补充任务边界、闭环 Mermaid、子问题地图、方法选型与工程落地检查
 
 ## [2026-05-14] structural | docs/checklists — 新增 `scripts/screenshot_site_detail.sh`（timeout 包裹 headless Chrome、随机 remote-debugging-port），并更新 cloud-agent-pr-workflow 的截图步骤说明
