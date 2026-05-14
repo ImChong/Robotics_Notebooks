@@ -28,7 +28,7 @@ CMU Robotics Institute 博士（Guanya Shi、Changliu Liu 指导），曾在 NVI
 | 主题侧重 | 代表工作（主页列出） | 项目或论文入口（示例） |
 |----------|----------------------|-------------------------|
 | 视觉 Sim2Real、人形 loco-manipulation | VIRAL；DoorMan（Opening the Sim-to-Real Door…） | <https://viral-humanoid.github.io/>；<https://doorman-humanoid.github.io/> |
-| 规模化运动跟踪 / 通用人形低层控制 | SONIC（合作者一作，共同署名） | <https://nvlabs.github.io/SONIC/> |
+| 规模化运动跟踪 / 通用人形低层控制 | SONIC（合作者一作，共同署名） | <https://nvlabs.github.io/GEAR-SONIC/>（与 `/SONIC/` 为同一项目材料） |
 | 人视频 → 交互全身技能 | HDMI | <https://hdmi-humanoid.github.io/#/> |
 | 力自适应 loco-manipulation | FALCON | <https://lecar-lab.github.io/falcon-humanoid/> |
 | 视觉驱动的全身灵巧（仿真） | PDC | <https://www.zhengyiluo.com/PDC-Site/> |
