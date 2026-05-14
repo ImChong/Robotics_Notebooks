@@ -28,3 +28,7 @@
 ## 2026-05-12 - Tokenization Caching Optimization
 **Learning:** In the python search ranking code (`scripts/search_wiki_core.py`), computing the document token counts by repeatedly reading files and tokenizing them inside the scoring loop, as well as for the average document length (`compute_avgdl`), results in double the tokenization work.
 **Action:** Always avoid redundant work inside data pipelines. When we already know the set of items that will be operated on multiple times, cache expensive operations (such as tokenizing raw content) either in local data structures or add it to existing pre-calculated dictionaries before iteration.
+
+## 2026-05-14 - Python String Search and List Allocation Overhead
+**Learning:** In Python, using `any()` with a generator expression inside a hot loop (like `any(word in line.lower() for word in lowered_words)`) creates massive generator overhead. Additionally, repeated string manipulation (`line.lower()`) and list extension/copying during synonym expansion inside loops adds significant garbage collection pressure.
+**Action:** When performing substring scanning on a large volume of strings, compute invariant transformations (like `line.lower()`) once per target string. Use explicit `for` loops with `break` instead of `any()` to avoid generator allocation. Always strive to perform dictionary lookups and list extensions in-place directly on the target structure rather than creating multiple intermediate lists.

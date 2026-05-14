@@ -217,14 +217,24 @@ def _filter_doc(doc: dict, type_filter: str | None, tag_filters: list[str] | Non
 def _find_matched_lines(
     lines: list[str], query_words: list[str], context_lines: int
 ) -> list[tuple[int, list[str], int]]:
-    matched_lines = []
-    if query_words:
-        lowered_words = [word.lower() for word in query_words if word.strip()]
-        for i, line in enumerate(lines):
-            if lowered_words and any(word in line.lower() for word in lowered_words):
-                start = max(0, i - context_lines)
-                end = min(len(lines), i + context_lines + 1)
-                matched_lines.append((i + 1, lines[start:end], i - start))
+    matched_lines: list[tuple[int, list[str], int]] = []
+    if not query_words:
+        return matched_lines
+    lowered_words = [word.lower() for word in query_words if word.strip()]
+    if not lowered_words:
+        return matched_lines
+
+    for i, line in enumerate(lines):
+        line_lower = line.lower()
+        found = False
+        for word in lowered_words:
+            if word in line_lower:
+                found = True
+                break
+        if found:
+            start = max(0, i - context_lines)
+            end = min(len(lines), i + context_lines + 1)
+            matched_lines.append((i + 1, lines[start:end], i - start))
     return matched_lines
 
 

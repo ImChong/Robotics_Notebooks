@@ -102,29 +102,31 @@ def _expand_cjk_segment(segment: str) -> List[str]:
 def tokenize_text(text: str) -> List[str]:
     # ⚡ Bolt: Inline normalization and expansion for performance
     # Avoid re.fullmatch by checking the first character range since MIXED_TOKEN_RE extracts CJK sequences alone
+    # ⚡ Bolt: Avoid redundant loop allocations by expanding synonyms in-place
     tokens: List[str] = []
+    synonyms = TOKEN_SYNONYMS
     for raw in MIXED_TOKEN_RE.findall(text or ""):
-        normalized = raw.strip().lower()
-        if not normalized:
+        if not raw:
             continue
-
+        normalized = raw.lower()
         tokens.append(normalized)
+        if normalized in synonyms:
+            tokens.extend(synonyms[normalized])
 
         if "\u4e00" <= raw[0] <= "\u9fff":
             length = len(normalized)
             if length > 1:
-                tokens.extend(list(normalized))
+                for char in normalized:
+                    tokens.append(char)
+                    if char in synonyms:
+                        tokens.extend(synonyms[char])
             if length > 2:
-                tokens.extend(normalized[i : i + 2] for i in range(length - 1))
-
-    enriched: List[str] = []
-    # ⚡ Bolt: Cache lookup and avoid .get(token, []) which creates temporary lists
-    synonyms = TOKEN_SYNONYMS
-    for token in tokens:
-        enriched.append(token)
-        if token in synonyms:
-            enriched.extend(synonyms[token])
-    return enriched
+                for i in range(length - 1):
+                    bigram = normalized[i : i + 2]
+                    tokens.append(bigram)
+                    if bigram in synonyms:
+                        tokens.extend(synonyms[bigram])
+    return tokens
 
 
 def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
