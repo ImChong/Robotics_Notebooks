@@ -4,6 +4,7 @@ tags: [framework, simulation, humanoid, sim2real, nvidia]
 status: complete
 updated: 2026-04-28
 related:
+  - ./kimodo.md
   - ./mimickit.md
   - ../methods/imitation-learning.md
   - ../methods/smp.md

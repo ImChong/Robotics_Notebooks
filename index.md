@@ -176,8 +176,10 @@ SORT type ASC
 - [Figure AI](entities/figure-ai.md) — Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。 `📅2026-05-07` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5 是 Genesis AI 公司的机器人操作基础模型产品品牌；与开源 Genesis 物理仿真器（Genesis-Embodied-AI）名称相近但主体不同。 `📅2026-05-07` `[entity_page]`
 - [Genesis (仿真器)](entities/genesis-sim.md) — **Genesis** 是具身智能领域新兴的高性能物理仿真与数据生成平台，常与 Isaac Gym / Isaac Lab 并列，强调多物理场与 GPU 大规模并行。 `📅2026-05-07` `[entity_page]`
+- [GR00T-WholeBodyControl（人形全身控制平台）](entities/gr00t-wholebodycontrol.md) — NVlabs 单仓聚合解耦 WBC、GEAR-SONIC（SONIC）与 MotionBricks 预览的训练/部署/VLA 教程与 C++ 推理栈。 `📅2026-05-14` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
+- [Kimodo（运动扩散模型）](entities/kimodo.md) — NVIDIA nv-tlabs 开源：大规模动捕上训练的运动扩散模型，支持文本与运动学约束生成 SOMA / G1 / SMPL-X 轨迹，附 CLI、时间线 Demo 与公开基准。 `📅2026-05-14` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪 `📅unknown` `[entity_page]`
