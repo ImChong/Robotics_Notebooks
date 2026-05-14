@@ -902,6 +902,52 @@
     removeLoadingState(container);
   }
 
+  /** 路线图页：展示 graph-stats.json 中全站 wiki 互链度数最高的条目（top_hubs）。 */
+  function renderRoadmapGraphHubs(container, topHubs, detailPages) {
+    if (!container) return;
+    var pathToId = buildPathToDetailIdIndex(detailPages);
+    var hubs = Array.isArray(topHubs) ? topHubs : [];
+    var parts = [];
+    for (var i = 0; i < hubs.length; i++) {
+      var hub = hubs[i];
+      var path = hub && hub.id;
+      if (!path) continue;
+      var detailId = pathToId[path];
+      if (!detailId) continue;
+      var page = resolveDetailPage(detailId, detailPages) || detailPages[detailId] || {};
+      var degree = hub.degree != null ? Number(hub.degree) : 0;
+      var title = page.title || hub.label || detailId;
+      var href = page.type === 'roadmap_page' ? roadmapHref(detailId) : detailHref(detailId);
+      var buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
+      parts.push([
+        '<article class="card data-card">',
+        '  <div>',
+        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(title) + '</a></h3>',
+        '    <p class="card-meta">' + escapeHtml(page.type || 'wiki_page') + '</p>',
+        '    <p>' + escapeHtml(page.summary || '当前页面暂无摘要') + '</p>',
+        '  </div>',
+        '  <div class="chip-list">',
+        '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(degree)) + '</span>',
+        '    <span class="data-chip"><code>' + escapeHtml(detailId) + '</code></span>',
+        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
+        '  </div>',
+        '</article>'
+      ].join(''));
+    }
+    if (!parts.length) {
+      container.innerHTML = [
+        '<article class="card"><p>',
+        '无法从链接图统计中匹配到详情页条目。请稍后再试，或前往 ',
+        '<a href="graph.html">知识图谱</a> 浏览全站结构。',
+        '</p></article>'
+      ].join('');
+      removeLoadingState(container);
+      return;
+    }
+    container.innerHTML = parts.join('');
+    removeLoadingState(container);
+  }
+
   function renderSourceCards(container, links, emptyText) {
     if (!container) return;
     if (!Array.isArray(links) || !links.length) {
@@ -1418,7 +1464,7 @@
       metaEl.innerHTML = [
         '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
         '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
-        '<p><strong>相关项：</strong>' + escapeHtml((roadmapPage.related_items || []).length) + '</p>'
+        '<p><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自 <code>graph-stats.json</code>）。</p>'
       ].join('');
       removeLoadingState(metaEl);
     }
@@ -1430,7 +1476,18 @@
       ].join('');
       removeLoadingState(breadcrumb);
     }
-    renderInternalLinks(relatedEl, roadmapPage.related_items, detailPages, { emptyText: '当前路线暂无相关项。' });
+    fetch('exports/graph-stats.json')
+      .then(function (r) {
+        return r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status));
+      })
+      .then(function (stats) {
+        renderRoadmapGraphHubs(relatedEl, (stats && stats.top_hubs) || [], detailPages);
+      })
+      .catch(function () {
+        renderInternalLinks(relatedEl, [], detailPages, {
+          emptyText: '暂时无法加载链接图统计。请刷新页面，或在本地确认已生成 docs/exports/graph-stats.json。'
+        });
+      });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
   }
 
