@@ -23,8 +23,10 @@
 
 - [ ] **缩写/别名归一化检索**：
     - [ ] `scripts/search_wiki.py` 引入轻量缩写表（WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF 等），查询时与全称双向展开，并在 `print_results` 中提示"已展开为 …"。
-- [ ] **社区粒度二级拆分**：
-    - [ ] 优化 `scripts/generate_link_graph.py` 的社区检测：在 Locomotion 单一巨型社区（46.1%）内进一步用 Louvain `resolution > 1.0` 二级拆分，使 `largest_community_ratio ≤ 0.40` 且 `community_quality_warning` 转 `false`。
+- [x] **社区粒度二级拆分**：
+    - [x] 优化 `scripts/generate_link_graph.py` 的社区检测：在 Locomotion 单一巨型社区（46.1%）内进一步用 Louvain `resolution > 1.0` 二级拆分，使 `largest_community_ratio ≤ 0.40` 且 `community_quality_warning` 转 `false`。
+      - 实现：保留 Girvan-Newman 一级检测（`PRIMARY_COMMUNITY_CAP=8`），新增 `refine_oversized_communities` + 纯 Python `louvain_communities`（带 `resolution=1.15` 的 Reichardt-Bornholdt modularity），对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分；`MAX_COMMUNITIES` 提升至 16 容纳子社区命名。
+      - 结果：`exports/graph-stats.json` 中 `community_count=17`、`largest_community_ratio=0.138`（Manipulation 42 / 304）、`community_quality_warning=false`；Locomotion 巨型社区拆出 WBC / RL / MPC / IL / Sim2Real / Isaac Gym / Humanoid / Unitree G1 等子社区。
 - [ ] **方法-Query 闭环 Lint**：
     - [ ] `scripts/lint_wiki.py` 新增 `methods_without_practitioner_query` 检查：被超过 3 个其他页面引用的 `methods/` 必须存在至少一篇 `queries/` 操作指南或 `comparisons/` 对比页对应，否则给出"待落地"预警。
 
