@@ -18,12 +18,14 @@ related:
   - ./asimov-v1.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ./figure-ai.md
+  - ./humannet.md
   - ./1x-technologies.md
   - ./quadruped-robot.md
   - ../queries/humanoid-hardware-selection.md
   - ../overview/notable-commercial-robot-platforms.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/repos/humannet.md
 summary: "人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是具身智能的核心载体。"
 ---
 
@@ -101,7 +103,7 @@ flowchart TD
 - **设计与分析**：[URDF-Studio](./urdf-studio.md) (专业设计工作站)、[Robot Explorer](./robot-explorer.md) (动力学分析)
 - **仿真平台**：[isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) (NVIDIA)、[mujoco](mujoco.md) (DeepMind)、[Motrix](./motrix.md) (Motphys)
 - **模型预览**：[Robot Viewer](./robot-viewer.md)
-- **数据集**：Open X-Embodied, Droid；产业侧人体运动数据供应商例见 [MotionCode](./motioncode.md)（官网宣称对接仿真与 DCC 管线，需单独核实授权与格式）
+- **数据集**：Open X-Embodied, Droid；互联网级人中心视频语料见 [HumanNet](./humannet.md)；产业侧人体运动数据供应商例见 [MotionCode](./motioncode.md)（官网宣称对接仿真与 DCC 管线，需单独核实授权与格式）
 
 ## 关联页面
 - [主流人形机器人硬件对比](../queries/hardware-comparison.md)
@@ -124,9 +126,11 @@ flowchart TD
 - [市面知名机器人平台纵览](../overview/notable-commercial-robot-platforms.md) — 人形 / 四足高频品牌索引
 - [舞肌科技](./wuji-robotics.md) — 关节级高扭矩电机 OEM 叙事（F 系列 / Pan Motor，见原始资料溯源）
 - [MotionCode](./motioncode.md) — 人体运动采集与 Mind 线人形/具身训练叙事（产业数据侧参照）
+- [HumanNet](./humannet.md) — 互联网级人中心视频语料与具身预训练管线参照
 - [Project Instinct](./project-instinct.md) — 清华 IIIS / 期智人形「本能级全身控制」公开研究站群（接触丰富 Shadowing、深度跑酷、野外徒步）
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
+- [humannet.md](../../sources/papers/humannet.md) — 大规模人中心视频语料（与人形数据飞轮对照）
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
 - [notable-commercial-robot-platforms](../../sources/repos/notable-commercial-robot-platforms.md) — 市面知名平台官网索引（2026-05）
