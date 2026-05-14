@@ -45,6 +45,17 @@ WBC 的优势：
 
 ## 核心框架
 
+### 典型分层执行流程
+
+```mermaid
+flowchart TD
+  TS[任务空间控制器<br/>末端轨迹 / 力 / 平衡目标]
+  QP[全身 QP 或 HQP<br/>关节加速度或力矩分配]
+  DRV[电机驱动<br/>阻抗 / PD / 电流环]
+
+  TS --> QP --> DRV
+```
+
 ### 1. Hierarchical WBC
 多层结构：
 
