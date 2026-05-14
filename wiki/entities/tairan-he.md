@@ -6,6 +6,8 @@ updated: 2026-05-14
 related:
   - ./gr00t-visual-sim2real.md
   - ./humanoid-robot.md
+  - ./zhengyi-luo.md
+  - ./xue-bin-peng.md
   - ../concepts/sim2real.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -58,6 +60,8 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
+- [Xue Bin Peng（彭学斌）](./xue-bin-peng.md)
 
 ## 参考来源
 
