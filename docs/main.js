@@ -709,6 +709,9 @@
     let codeLang = '';
     let tableLines = [];
     let inCodeBlock = false;
+    let htmlBlockLines = [];
+    let htmlBlockOpenTag = '';
+    const HTML_BLOCK_TAGS = ['div', 'details', 'summary', 'section', 'aside', 'figure', 'figcaption'];
 
     function flushParagraph() {
       if (!paragraphLines.length) return;
@@ -763,6 +766,20 @@
       tableLines = [];
     }
 
+    function flushHtmlBlock() {
+      if (!htmlBlockLines.length) return;
+      blocks.push(htmlBlockLines.join('\n'));
+      htmlBlockLines = [];
+      htmlBlockOpenTag = '';
+    }
+
+    function startsHtmlBlock(trimmed) {
+      const m = trimmed.match(/^<([a-zA-Z][a-zA-Z0-9]*)(\s|>|\/>)/);
+      if (!m) return '';
+      const tag = m[1].toLowerCase();
+      return HTML_BLOCK_TAGS.indexOf(tag) >= 0 ? tag : '';
+    }
+
     lines.forEach(function (line) {
       const trimmed = line.trim();
 
@@ -775,6 +792,7 @@
           flushList();
           flushQuote();
           flushTable();
+          flushHtmlBlock();
           inCodeBlock = true;
           codeLang = normalizeCodeLang(trimmed.replace(/^```+/, '').trim().split(/\s+/)[0] || '');
         }
@@ -783,6 +801,31 @@
 
       if (inCodeBlock) {
         codeLines.push(line);
+        return;
+      }
+
+      if (htmlBlockOpenTag) {
+        htmlBlockLines.push(line);
+        const closeRe = new RegExp('</' + htmlBlockOpenTag + '\\s*>', 'i');
+        if (closeRe.test(line)) {
+          flushHtmlBlock();
+        }
+        return;
+      }
+
+      const htmlOpenTag = startsHtmlBlock(trimmed);
+      if (htmlOpenTag) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        flushTable();
+        htmlBlockOpenTag = htmlOpenTag;
+        htmlBlockLines.push(line);
+        const selfClose = new RegExp('</' + htmlOpenTag + '\\s*>\\s*$', 'i').test(trimmed) ||
+                          /\/>\s*$/.test(trimmed);
+        if (selfClose) {
+          flushHtmlBlock();
+        }
         return;
       }
 
@@ -863,6 +906,7 @@
     flushList();
     flushQuote();
     flushTable();
+    flushHtmlBlock();
 
     return blocks.join('');
   }
