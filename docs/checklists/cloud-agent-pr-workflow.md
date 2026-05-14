@@ -36,15 +36,24 @@ git push -u origin <branch-name>
 2. **构造 URL**  
    - 形式：`http://127.0.0.1:8765/detail.html?id=<detail-page-id>`  
    - **`<detail-page-id>`** 与导出一致：可查 `docs/sitemap.xml` 中的 `detail.html?id=...`，或在 `site-data-v1.json` 的 `pages.detail_pages` 下找键名（例：`wiki-concepts-humanoid-parallel-joint-kinematics`）。  
-3. **Headless Chrome 截图**（示例）  
+3. **Headless Chrome 截图**（推荐：仓库脚本，避免进程挂死）  
    ```bash
-   google-chrome --headless=new --disable-gpu --no-sandbox \
+   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking
+   # 或指定输出路径:
+   ./scripts/screenshot_site_detail.sh wiki-methods-sonic-motion-tracking /path/to/out.png
+   ```  
+   脚本在 `docs/` 起本地 `http.server`，用 `timeout(1)` 包住 Chrome：部分 Cloud 镜像里 Chrome 在打印 `bytes written` 后**仍不退出**（DevTools 进程常驻），仅靠 `--virtual-time-budget` 不足以结束进程；外层 `timeout` 强杀后**仍以 PNG 已生成且大于若干 KB 为成功判据**（退出码 124 可忽略）。  
+
+   等价手写命令（与脚本一致的核心 flags）：  
+   ```bash
+   timeout 75 google-chrome --headless=new --disable-gpu --no-sandbox --disable-dev-shm-usage \
+     --remote-debugging-port=24321 \
      --user-data-dir=/tmp/chrome-headless-screenshot \
-     --window-size=1280,2200 --virtual-time-budget=12000 \
+     --window-size=1280,2200 --virtual-time-budget=20000 --disable-remote-fonts \
      --screenshot=/path/to/site-detail-<topic>.png \
      "http://127.0.0.1:8765/detail.html?id=wiki-concepts-..."
    ```  
-   若外网字体/CSS 加载较慢，可加 `--disable-remote-fonts` 或适当增大 `--virtual-time-budget`。  
+   若外网字体/CSS 加载较慢，可再增大 `--virtual-time-budget` 或外层 `timeout`。  
 4. **已合并且 Pages 已更新时**（可选）  
    亦可使用线上等价 URL，例如：  
    `https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=...`  
