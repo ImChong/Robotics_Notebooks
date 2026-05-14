@@ -113,6 +113,18 @@ def clean_summary(text: str) -> str:
     )
 
 
+def extract_updated(text: str) -> str:
+    """Frontmatter `updated: YYYY-MM-DD`，缺失时返回空串。"""
+    if not text.startswith("---"):
+        return ""
+    end = text.find("\n---", 3)
+    if end == -1:
+        return ""
+    fm = text[3:end]
+    m = re.search(r"^updated\s*:\s*(\S+)", fm, re.MULTILINE)
+    return m.group(1).strip() if m else ""
+
+
 def extract_summary(text: str) -> str:
     lines = text.splitlines()
 
@@ -290,6 +302,9 @@ def build_item(path: Path) -> dict[str, Any]:
         "source_links": collect_external_links(text),
         "status": "active",
     }
+    updated = extract_updated(text)
+    if updated:
+        item["updated"] = updated
 
     parts = path.relative_to(ROOT).parts
     if parts[0] == "wiki":

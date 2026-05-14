@@ -6,5 +6,179 @@
     "covered": 303,
     "total": 303,
     "percent": 100
-  }
+  },
+  "recent_wiki_nodes": [
+    {
+      "id": "wiki-tasks-teleoperation",
+      "title": "Teleoperation（遥操作）",
+      "summary": "type: task。",
+      "path": "wiki/tasks/teleoperation.md",
+      "tags": [
+        "task",
+        "humanoid",
+        "rl",
+        "il",
+        "hardware"
+      ],
+      "page_type": "task",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-tasks-locomotion",
+      "title": "Locomotion",
+      "summary": "让机器人在不需要轮子的情况下，用腿走路，而且走得稳、走得快、走得自然",
+      "path": "wiki/tasks/locomotion.md",
+      "tags": [
+        "task",
+        "humanoid",
+        "locomotion",
+        "control",
+        "dynamics",
+        "optimization"
+      ],
+      "page_type": "task",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-overview-robot-learning-overview",
+      "title": "Robot Learning Overview",
+      "summary": "type: overview。",
+      "path": "wiki/overview/robot-learning-overview.md",
+      "tags": [
+        "overview",
+        "humanoid",
+        "locomotion",
+        "control",
+        "rl",
+        "il"
+      ],
+      "page_type": "overview",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-methods-vla",
+      "title": "VLA（Vision-Language-Action）",
+      "summary": "VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”",
+      "path": "wiki/methods/vla.md",
+      "tags": [
+        "method",
+        "rl"
+      ],
+      "page_type": "method",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-methods-sonic-motion-tracking",
+      "title": "SONIC（规模化运动跟踪人形控制）",
+      "summary": "type: method。",
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "tags": [
+        "method",
+        "humanoid",
+        "control",
+        "il"
+      ],
+      "page_type": "method",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-methods-imitation-learning",
+      "title": "Imitation Learning (IL, 模仿学习)",
+      "summary": "让机器人看人类/专家怎么做，它就模仿着做。常用的核心算法包括 DAgger (Dataset Aggregation)、行为克隆 (Behavior Cloning, BC) 等",
+      "path": "wiki/methods/imitation-learning.md",
+      "tags": [
+        "method",
+        "humanoid",
+        "rl",
+        "il",
+        "sim2real"
+      ],
+      "page_type": "method",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-methods-generative-world-models",
+      "title": "Generative World Models (生成式世界模型)",
+      "summary": "type: method。",
+      "path": "wiki/methods/generative-world-models.md",
+      "tags": [
+        "method",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "page_type": "method",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-formalizations-generative-foundations",
+      "title": "生成式模型基础 (Generative Foundations)",
+      "summary": "type: formalization。",
+      "path": "wiki/formalizations/generative-foundations.md",
+      "tags": [
+        "formalization",
+        "rl",
+        "sim2real",
+        "tooling"
+      ],
+      "page_type": "formalization",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-concepts-world-action-models",
+      "title": "World Action Models（WAM，世界–动作模型）",
+      "summary": "让模型在生成动作时 必须依托对未来世界的显式前向预测，且该预测与动作在结构与训练目标上 耦合，而不是事后外挂仿真或辅助分支",
+      "path": "wiki/concepts/world-action-models.md",
+      "tags": [
+        "concept",
+        "rl"
+      ],
+      "page_type": "concept",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-concepts-text-to-cad",
+      "title": "文字生成 CAD（Text-to-CAD）",
+      "summary": "type: concept。",
+      "path": "wiki/concepts/text-to-cad.md",
+      "tags": [
+        "concept",
+        "sim2real",
+        "hardware"
+      ],
+      "page_type": "concept",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "wiki-concepts-deep-learning-foundations",
+      "title": "深度学习基础 (Deep Learning Foundations)",
+      "summary": "type: concept。",
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "tags": [
+        "concept",
+        "control",
+        "optimization",
+        "rl",
+        "sim2real"
+      ],
+      "page_type": "concept",
+      "updated": "2026-05-14"
+    },
+    {
+      "id": "entity-zhengyi-luo",
+      "title": "Zhengyi Luo（罗正宜）",
+      "summary": "Zhengyi Luo 的研究把 人形机器人的通用低层控制 与 视觉–语言–动作、Sim2Real 与遥操作数据闭环 串在同一职业轨迹上：博士阶段提出并开源 PHC / PULSE 等「可扩展人形控制与表示」路线，随后在 NVIDIA GEAR 与 LECAR 网络合作者一道推进 HOVER、ASAP、VIRAL、Doorman、SONIC 等面向真机与大规模仿真的系统论文",
+      "path": "wiki/entities/zhengyi-luo.md",
+      "tags": [
+        "entities",
+        "entity",
+        "humanoid",
+        "control",
+        "il",
+        "sim2real"
+      ],
+      "page_type": "",
+      "updated": "2026-05-14"
+    }
+  ]
 }

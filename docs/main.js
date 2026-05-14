@@ -110,6 +110,60 @@
     }
   }
 
+  function buildWikiDetailCardHtml(item) {
+    var detailUrl = detailHref(item.id);
+    var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
+    var typeLabel =
+      item.page_type || (item.path ? String(item.path).split('/').slice(1, 3).join(' / ') : '');
+    var tagLine = (item.tags || []).slice(0, 4).map(function (tag) {
+      return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
+    }).join('');
+    var dateMeta = item.updated
+      ? '<span style="color:var(--text-muted);margin-left:8px">更新 ' + escapeHtml(String(item.updated)) + '</span>'
+      : '';
+    var graphBtn =
+      '<a href="' +
+      graphUrl +
+      '" onclick="event.stopPropagation()" ' +
+      'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" ' +
+      'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
+    return (
+      '<article class="card" data-result-url="' +
+      detailUrl +
+      '">' +
+      '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' +
+      escapeHtml(typeLabel) +
+      dateMeta +
+      '</p>' +
+      '<h3><a href="' +
+      detailUrl +
+      '">' +
+      escapeHtml(item.title || item.id) +
+      '</a>' +
+      graphBtn +
+      '</h3>' +
+      '<p>' +
+      escapeHtml(String(item.summary || '').slice(0, 120)) +
+      '</p>' +
+      (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '') +
+      '</article>'
+    );
+  }
+
+  function renderRecentWikiNodes(stats) {
+    var root = document.getElementById('recentWikiNodesGrid');
+    if (!root) return;
+    var items = stats && stats.recent_wiki_nodes ? stats.recent_wiki_nodes : [];
+    if (!items.length) {
+      root.innerHTML =
+        '<article class="card" style="grid-column:1/-1"><p class="recent-nodes-empty">暂无节点列表；请确认已导出 <code>index-v1.json</code> 并生成 <code>home-stats.json</code>。</p></article>';
+      return;
+    }
+    root.innerHTML = items.map(function (it) {
+      return buildWikiDetailCardHtml(it);
+    }).join('');
+  }
+
   function detailHref(id) {
     return 'detail.html?id=' + encodeURIComponent(id);
   }
@@ -2062,7 +2116,10 @@
   const techMapRoot = document.getElementById('techMapNodeGrid');
   const moduleRoot = document.getElementById('moduleEntryList');
   const roadmapPageMount = document.getElementById('roadmapTitle');
-  const homeStatsRoot = document.getElementById('heroNodeCount') || document.getElementById('wikiSearchSubtitle');
+  const homeStatsRoot =
+    document.getElementById('heroNodeCount') ||
+    document.getElementById('wikiSearchSubtitle') ||
+    document.getElementById('recentWikiNodesGrid');
 
   if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
     fetch('exports/site-data-v1.json')
@@ -2144,7 +2201,8 @@
         return response.json();
       })
       .then(function (stats) {
-        renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
+        renderHomeStats(stats, stats.coverage ? stats.coverage.covered + '/' + stats.coverage.total : '');
+        renderRecentWikiNodes(stats);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);

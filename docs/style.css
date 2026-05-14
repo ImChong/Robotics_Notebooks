@@ -330,6 +330,12 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .section-title { font-size: 1.72rem; font-weight: 820; margin-bottom: 10px; letter-spacing: -.02em; }
 .section-subtitle { color: var(--text-muted); font-size: .97rem; margin-bottom: 28px; max-width: 72ch; }
+
+.recent-nodes-empty {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  margin: 0;
+}
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .card {
   padding: 20px;
