@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-14] structural | roadmap & docs/main.js — 主路线 ASCII 图换 mermaid + skip-to 改交互按钮 + 4 条 depth 加 mermaid pipeline
+
+- `docs/main.js`：`renderMarkdownContent` 新增原始 HTML block 透传（div/details/summary/section/aside/figure/figcaption），让 markdown 可嵌入交互组件。
+- `roadmap/motion-control.md`：L−1 的 4 盒子全景与 L4.0 的方法链 ASCII 图换 mermaid flowchart；资深读者 skip-to 矩阵改为 7 个 grid-style 按钮（auto-fit minmax 260px）。
+- `roadmap/depth-*.md`：4 条独立纵深路线页顶部各加专属 mermaid Stage pipeline（不同 stroke 配色区分主题）。
+
 ## [2026-05-14] structural | roadmap & docs/roadmap.html — 主路线重构 + 网页正文渲染升级
 
 将 `roadmap.html?id=roadmap-motion-control` 从「阶段树 + 互链 Top10」升级为「mini-map + 完整 markdown 正文 + TOC 侧栏」，复用 detail 页 markdown 渲染管线（`docs/main.js` 新增 `renderRoadmapMarkdownBody`，挂载点 `#roadmapContent` / `#roadmapTocList`）。同时把四条 if-goal 纵深从 `roadmap/motion-control.md` 拆为 `roadmap/depth-{rl-locomotion,imitation-learning,safe-control,contact-manipulation}.md` 四个独立 roadmap 页，主线只留摘要 + 衔接表；旧 `roadmap-if-goal-*` id 由跳锚点改为跳新 roadmap 页。
