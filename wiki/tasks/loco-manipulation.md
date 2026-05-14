@@ -80,6 +80,7 @@ sources:
 - [Diffusion-based Motion Generation](../methods/diffusion-motion-generation.md) — 2026 年的主流高层运动生成技术
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [VLA](../methods/vla.md)
+- [World Action Models（WAM）](../concepts/world-action-models.md) — 联合未来–动作建模与 VLA/世界模型分界（综述资源入口）
 - [Teleoperation](./teleoperation.md)
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
