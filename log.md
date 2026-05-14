@@ -1,5 +1,23 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-14] structural | roadmap & docs/main.js — 主路线 ASCII 图换 mermaid + skip-to 改交互按钮 + 4 条 depth 加 mermaid pipeline
+
+- `docs/main.js`：`renderMarkdownContent` 新增原始 HTML block 透传（div/details/summary/section/aside/figure/figcaption），让 markdown 可嵌入交互组件。
+- `roadmap/motion-control.md`：L−1 的 4 盒子全景与 L4.0 的方法链 ASCII 图换 mermaid flowchart；资深读者 skip-to 矩阵改为 7 个 grid-style 按钮（auto-fit minmax 260px）。
+- `roadmap/depth-*.md`：4 条独立纵深路线页顶部各加专属 mermaid Stage pipeline（不同 stroke 配色区分主题）。
+
+## [2026-05-14] structural | roadmap & docs/roadmap.html — 主路线重构 + 网页正文渲染升级
+
+将 `roadmap.html?id=roadmap-motion-control` 从「阶段树 + 互链 Top10」升级为「mini-map + 完整 markdown 正文 + TOC 侧栏」，复用 detail 页 markdown 渲染管线（`docs/main.js` 新增 `renderRoadmapMarkdownBody`，挂载点 `#roadmapContent` / `#roadmapTocList`）。同时把四条 if-goal 纵深从 `roadmap/motion-control.md` 拆为 `roadmap/depth-{rl-locomotion,imitation-learning,safe-control,contact-manipulation}.md` 四个独立 roadmap 页，主线只留摘要 + 衔接表；旧 `roadmap-if-goal-*` id 由跳锚点改为跳新 roadmap 页。
+
+主路线内容侧从 L0–L6 扩为 L−1 → L7 单主线：
+- L−1 序言：感知/规划/控制/执行四盒子全景、为什么人形为主载体、三种读者读法、Modern Robotics 章节映射、25+ 必备术语速查
+- 每个 L 加场景隐喻 + 上一层的局限说明，让"为什么这一层存在"显式可见
+- L1 / L2 增加里程碑分步说明（L1 三步 / L2 两步），L4 新增 L4.0 桥段（模型粒度 × 控制频率二维表 + 方法链 ASCII 流程图），L4 后新增方法谱系对比表（PID→LQR→LIP→DCM→Centroidal→TO→MPC→TSID/WBC→PPO→BC→DAgger→AMP→Diffusion）
+- 每个 L 加 3-4 道自测题，L−1 新增资深读者 skip-to 矩阵
+- L7 出口：感知 / 规划 / 操作 / 系统软件栈扫盲 + 2024–2026 前沿地图（Humanoid FM、VLA、World Model、Teacher-Student、AMP、End-to-End、Loco-Manipulation、Tactile）
+- Modern Robotics 入口去重：L0–L4 五处 "本阶段入口" 不再重复引入，统一在 L−1 介绍
+
 ## [2026-05-14] structural | scripts/generate_link_graph.py — V22 P0 社区粒度二级拆分：保留 Girvan-Newman 一级检测（`PRIMARY_COMMUNITY_CAP=8`），新增纯 Python Louvain（`resolution=1.15`，Reichardt-Bornholdt modularity）对占比 > 40% 的巨型社区二级拆分；`MAX_COMMUNITIES` 提升至 16 容纳子社区。`exports/graph-stats.json`：`largest_community_ratio` 0.651 → 0.138，`community_quality_warning` true → false，Locomotion 拆出 WBC/RL/MPC/IL/Sim2Real/Isaac Gym/Humanoid/Unitree G1 等子社区
 
 ## [2026-05-14] structural | wiki — 扩充 `wiki/tasks/locomotion.md`：补充任务边界、闭环 Mermaid、子问题地图、方法选型与工程落地检查

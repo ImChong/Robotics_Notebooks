@@ -1,39 +1,152 @@
 # 主路线：运动控制算法工程师成长路线
 
-**摘要**：面向人形与双足运动控制的算法工程师成长路线：按 L0–L6 分阶段打通传统控制主干（LIP/ZMP→质心动力学→MPC→TSID/WBC）。
+**摘要**：从 L−1 全景到 L7 出口的单一主线，串通人形 / 双足运动控制：L−1 建立机器人技术栈全景心智地图与必备术语，L0–L3 打底（数学、运动学、动力学、控制基础），L4 拿下传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），L5 接上 RL/IL 扩展层，L6 完成 sim2real 闭环，L7 把全栈视角与 2024–2026 前沿地图交回给你。
 
 ## 三句话先懂这条路线（极简版）
 
-1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。  
-2. **再把学习方法接上去**：RL/IL 用来补能力，不是替代控制结构。  
-3. **每一层都要有可运行输出**：代码、实验记录、失败复盘，缺一不可。  
+1. **先把传统控制主干打通**：LIP/ZMP → Centroidal → MPC → TSID/WBC。
+2. **再把学习方法接上去**：RL/IL 用来补能力，不是替代控制结构。
+3. **每一层都要有可运行输出**：代码、实验记录、失败复盘，缺一不可。
 
 <a id="roadmap-nav-start"></a>
 
 ## 先看哪里（导航）
 
-- 想看 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。  
-- 想看 **完整路线**：按 L0 → L6 依次阅读。  
-- 想走纵深（原文见下方 [可选纵深](#depth-optional-index)）：  
-  - [如果目标是 RL 运动控制](#depth-rl-locomotion)  
-  - [如果目标是模仿学习与技能迁移](#depth-imitation-learning)  
-  - [如果目标是安全控制](#depth-safe-control)
-  - [如果目标是接触丰富的操作任务](#depth-contact-manipulation)
+- 想 **30 秒先理解整个机器人技术栈**：跳到 [L−1 序言](#l1-序言机器人技术栈全景--怎么读这条路线)。
+- 想 **最短可执行路径**：跳到 [最小可执行学习路径（90 天版本）](#最小可执行学习路径90-天版本)。
+- 想 **完整路线**：按 L−1 → L0 → … → L7 依次阅读。
+- 想 **走纵深**（各自独立路线页）：
+  - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
+  - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
+  - [如果目标是安全控制](depth-safe-control.md)
+  - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)
 
-**这条路线怎么用：**
-- 每个阶段都有：前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么
-- 不只是“学了哪些东西”，而是“学完能做什么”
-- 如果某个阶段的前置知识你已经有了，可以跳过，直接从不会的地方开始
+---
 
-**结合 Know-How 的推荐读法：**
-- **先看路线层**：先区分自己当前是在补传统控制主干，还是在补强化学习 / 模仿学习分支
-- **再看问题层**：始终带着四个问题去学——建模 + 求解、Sim2Real、运动学可行 vs 动力学可行、人形机器人与其他机器人的区别
-- **最后看方法层**：每学一个方法，都至少回答三件事——原理是什么、最小代码怎么写、它会在哪些场景失效
+## L−1 序言：机器人技术栈全景 & 怎么读这条路线
+
+**这一节是给完全没看过机器人的读者准备的"软着陆台阶"。** 资深读者可以直接跳到 [L0 数学与编程基础](#l0-数学与编程基础) 或 [最小可执行学习路径](#最小可执行学习路径90-天版本)。
+
+### 30 秒看懂"一台机器人在干嘛"
+
+把任何机器人——扫地机、机械臂、自动驾驶、人形——拆开看，都在循环跑同一个 4 步：
+
+```mermaid
+flowchart LR
+  Sensor["**感知** (Sensor)<br/>摄像头 · IMU · 编码器<br/>力觉 · 雷达"]
+  Plan["**决策 / 规划** (Plan)<br/>任务规划 · 运动规划<br/>SLAM"]
+  Control["**控制** (Control)<br/>把规划翻译成关节指令<br/>★ 本路线主战场 ★"]
+  Body["**执行** (Actuator & Body)<br/>电机 · 减速器 · 关节<br/>本体结构"]
+
+  Sensor --> Plan --> Control --> Body
+  Body -. 反馈 .-> Sensor
+
+  classDef mainFocus fill:#0d4f5c,stroke:#00d4ff,stroke-width:3px,color:#fff
+  classDef other fill:#1a1a1a,stroke:#444,color:#ddd
+  class Control mainFocus
+  class Sensor,Plan,Body other
+```
+
+- **感知**：摄像头 / IMU / 编码器 / 力觉 / 雷达 → 让机器人知道"自己在哪、世界长什么样"。
+- **决策 / 规划**：高层任务规划、运动规划、SLAM → 决定"要去哪、走哪条路"。
+- **控制**：把规划目标变成关节级指令 → 决定"每个关节这一毫秒该出多少力 / 转多少角度"。
+- **执行**：电机、减速器、关节、本体结构 → 把指令变成机械运动。
+
+> **本路线只钻第三个盒子：控制。** 其它三盒在 [L7 出口层](#l7-出口从运动控制看整个机器人技术栈) 集中扫盲，给你进入对应子专题的入口。
+
+### 为什么以"人形 / 双足"为主载体
+
+人形 = **高自由度**（20+ 关节）+ **浮动基**（没固定在地面）+ **接触切换**（脚要轮流着地）+ **强不稳定**（重心永远想往外跑）。
+学会人形控制，迁移到机械臂、四足、轮式底盘几乎都是降难度，反之不成立。所以人形是当下的"最佳教学载体"。
+
+### 三种读者的不同读法
+
+| 你是谁 | 推荐读法 | 不需要做什么 |
+|--------|---------|------------|
+| **完全外行**（想搞懂术语，能和工程师对话）| 只读每一 L 的"场景隐喻 / 学完能做什么 / 推荐读什么"和本节"必备术语速查" | 不需要写一行代码、不需要做练习 |
+| **想入行**（程序员 / 在校生）| 跟 [最小可执行 90 天路径](#最小可执行学习路径90-天版本) → 再按 L0 → L7 全程走，每一层都做"推荐做什么" | 不需要先读完所有论文 |
+| **资深从业者**（有相关经验、查漏补缺）| 直接跳 L4 / L5，重点看每层的"常见误区 / 自测题"；用 [可选纵深](#depth-optional-index) 切入研究方向 | 不需要重读 L0–L2 基础 |
+
+### 怎么用每一层（页面格式说明）
+
+每一个 L（除 L−1 / L7 外）都遵循同一套格式：
+
+1. **场景隐喻** — 一句话比喻，给完全外行用
+2. **为什么存在 / 上一层的局限** — 解释这一层为何不可跳过
+3. **前置知识 → 核心问题 → 推荐做什么 → 推荐读什么 → 学完输出什么** — 工程化执行清单
+4. **常见误区 + 自测题** — 给资深读者快速校准
+
+### 资深读者 skip-to 矩阵
+
+如果你已经在工作中接触过机器人控制，根据你能回答出的问题，可以直接跳到对应 L。**点击下面的按钮直达对应章节：**
+
+<div class="skip-to-buttons" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:12px; margin:18px 0;">
+<a class="btn-secondary" href="#l1-机器人学骨架" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>我会 NumPy，不懂 SE(3)</strong><span style="opacity:0.7; font-size:0.85em;">→ L1 机器人学骨架</span></a>
+<a class="btn-secondary" href="#l2-动力学与刚体建模" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>会 Pinocchio FK / Jacobian，不熟 RNEA / CRBA / ABA</strong><span style="opacity:0.7; font-size:0.85em;">→ L2 动力学与刚体建模</span></a>
+<a class="btn-secondary" href="#l4-人形运动控制主干" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>会固定基逆动力学，浮动基没碰过</strong><span style="opacity:0.7; font-size:0.85em;">→ L4 人形运动控制主干</span></a>
+<a class="btn-secondary" href="#l41-lip--zmp" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>熟 LQR / MPC，没系统学 LIP / Centroidal / WBC</strong><span style="opacity:0.7; font-size:0.85em;">→ L4.1 LIP / ZMP</span></a>
+<a class="btn-secondary" href="#l52-rl-在人形运动控制里的应用" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>会 IsaacLab PPO，不知如何和传统控制结合</strong><span style="opacity:0.7; font-size:0.85em;">→ L5.2 RL 在人形运动控制里的应用</span></a>
+<a class="btn-secondary" href="#l6-综合实战" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>跑通仿真 RL，没做过 sim2real 部署</strong><span style="opacity:0.7; font-size:0.85em;">→ L6 综合实战</span></a>
+<a class="btn-secondary" href="#l7-出口从运动控制看整个机器人技术栈" style="flex-direction:column; padding:14px 18px; text-align:center; border-radius:14px; line-height:1.5;"><strong>做过运动控制，想看当下机器人 AI 全景</strong><span style="opacity:0.7; font-size:0.85em;">→ L7 出口与前沿地图</span></a>
+</div>
 
 **两条主线不要混着学：**
-- **传统控制主线：** OCP → LIP/ZMP → Centroidal Dynamics → MPC → TSID/WBC → State Estimation
-- **Learning-based 主线：** RL 基础 → locomotion RL → imitation learning / motion prior → sim2real / teacher-student
-- 建议优先把传统主线学通，再把 RL / IL 当作扩展层接上去；否则容易只会调超参数，不理解控制结构为什么这样设计
+- **传统控制主线（L0–L4 + L6）：** OCP → LIP/ZMP → Centroidal → MPC → TSID/WBC → State Estimation → Sim2Real
+- **Learning-based 主线（L5）：** RL 基础 → locomotion RL → imitation learning / motion prior → teacher-student
+- 优先把传统主线学通，再把 RL / IL 当作扩展层接上去；否则容易只会调超参数、不理解控制结构为什么这样设计。
+
+### 必备术语速查（外行先建立"听到能对上号"的肌肉记忆）
+
+**控制层：**
+
+- **DOF / 自由度**：机器人能独立运动的方向数。人形 ≈ 25 DOF。
+- **关节力矩**：关节里电机出的"扭力"。控制最终都要变成"每个关节出多少力矩"。
+- **正运动学（FK）/ 逆运动学（IK）**：FK = 知道关节角 → 算末端在哪；IK = 想让末端到哪 → 反推关节角。
+- **雅可比矩阵**：FK 的"微分版"，把关节速度映射到末端速度。
+- **动力学**：研究力 / 力矩与运动的关系；正动力学 = 力 → 加速度，逆动力学 = 加速度 → 力。
+- **浮动基（Floating Base）**：底座不固定。人形躯干就是浮动基。
+- **接触切换（Contact Switch）**：脚什么时候着地、什么时候离地，是人形控制核心难点。
+- **质心（CoM）/ 质心动力学**：机器人整体重心位置和动量，平衡控制的核心变量。
+- **ZMP（零力矩点）/ 支撑多边形**：脚和地面接触区域内的特殊点；ZMP 留在支撑多边形里 → 不摔。
+- **DCM / Capture Point**：从 ZMP 推广出来的平衡判据，回答"我现在踩到哪就能立刻停下来"。
+- **MPC（模型预测控制）**：在线滚动求解未来几秒的最优控制问题。
+- **WBC / TSID（全身控制）**：把上层规划目标同时翻译成所有关节力矩，处理优先级和约束。
+- **PID / LQR**：两种最经典的反馈控制器。
+
+**学习与仿真层：**
+
+- **RL（强化学习）/ PPO**：让机器人在仿真里反复试错 → 学到一个策略；PPO 是当前最常用的 RL 算法。
+- **IL（模仿学习）/ BC（行为克隆）**：让机器人从人类示范数据里学。
+- **Motion Retargeting**：把人类动作重定向到机器人骨架。
+- **Sim2Real**：仿真训练的策略迁移到真机的过程；通常会出现"sim2real gap"。
+- **Domain Randomization (DR)**：仿真里随机化各种参数，提升策略真机鲁棒性。
+- **Isaac Gym / Isaac Lab / MuJoCo**：当下 RL 仿真两大主流引擎。
+- **Pinocchio / Crocoddyl / TSID**：当下传统控制最常用的 C++/Python 库。
+- **URDF / MJCF**：描述机器人结构的标准文件格式。
+
+**系统与前沿层（会反复听到的词）：**
+
+- **ROS / ROS2**：机器人软件的"操作系统"和消息中间件。
+- **SLAM**：同时定位与建图，让机器人知道"我在哪 + 周围长什么样"。
+- **VLA（Vision-Language-Action）**：把视觉、语言、动作统一进一个大模型的最新方向（如 Google RT-2、π0）。
+- **Foundation Model for Robots**：大规模预训练 + 微调的机器人通用模型。
+- **Teacher-Student**：用一个"看得见所有信息"的 teacher 训练只看真实传感器的 student，sim2real 常用技巧。
+
+> 这些术语在后面每一层会反复出现。**外行只需先建立"听到能对上号"的肌肉记忆**，不必现在搞懂细节。
+
+### 一本贯穿全程的教材：Modern Robotics
+
+[Modern Robotics（Lynch & Park）](../wiki/entities/modern-robotics-book.md) 是本路线 L0–L4 的"语法书"。**它不教人形 locomotion，但它把'位姿 / 速度 / 力 / 动力学'用统一的 twist / screw / wrench 语言讲清楚了。** 后面每一层下面的"推荐读什么"里会指给你具体章节，这里先说一遍它在全程的位置，避免每一层重复引用：
+
+| Modern Robotics 章节 | 接到本路线哪一层 |
+|--------------------|----------------|
+| Ch 2–3：Configuration Space / Rigid-Body Motions | L0–L1（SE(3) 字母表） |
+| Ch 4–6：Forward / Velocity / Inverse Kinematics | L1 |
+| Ch 5、Ch 8：Statics / Dynamics of Open Chains | L2 |
+| Ch 9：Trajectory Generation | L3 / L4.3 |
+| Ch 11：Robot Control | L3 / L4.4 |
+
+> Ch 7（Force Control）、Ch 10（Motion Planning）也很有价值，但相对偏离本路线主干，作为可选。
 
 ---
 
@@ -55,7 +168,11 @@
 
 **这条不需要深入，但不能跳过。**
 
-**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)。
+> **场景隐喻：** 你刚拿到一台机器人，但连"它的胳膊指哪个方向"都没法用代码描述——L0 给你"机器人世界的最底层词汇表"：向量、矩阵、旋转、变换。
+
+> **这一层为什么存在：** 之后每一层的公式都把"位姿 / 速度 / 力"当作黑话。没有 L0，每读一行公式都要现场查。
+
+**本阶段入口：** [SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)（Modern Robotics 在 L−1 已介绍，下方"推荐读什么"会指出具体章节）。
 
 ### 前置知识
 - 高中数学 + 一点微积分直觉
@@ -81,13 +198,30 @@
 - 能用 NumPy 写简单矩阵运算
 - 能跑通一个机械臂正运动学 Demo
 
+### 自测题（学完应能答出）
+- 旋转矩阵 \(R\) 为什么不能直接做加法 / 插值？想插值两个朝向你会用什么替代？
+- 给定 SE(3) 元素 \(g = (R, p)\)，向量 \(v\) 在新坐标系下表示是什么形式？
+- 矩阵指数 \(\exp([\omega]_\times)\) 和欧拉角 / 四元数描述旋转，分别的优劣是什么？
+
 ---
 
 ## L1 机器人学骨架
 
 **这条是所有后续内容的基座，跳过后面一定会补。**
 
-**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
+> **场景隐喻：** 你盯着机器人胳膊关节角度的变化，能不能马上脑补出末端走出的轨迹？L1 教你这个翻译器：关节空间 ↔ 任务空间。
+
+> **上一层的局限：** L0 让你能写矩阵运算，但还不知道"机器人的关节角"和"末端位姿"是什么映射；L1 把这个翻译器搭起来。
+
+**本阶段入口：** [Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
+
+**这一层建议分三步走，不要一口气啃完：**
+
+1. **L1.1 SE(3)、旋转与刚体变换** — 把"位姿"用数学描述清楚（旋转矩阵、齐次变换、Twist / Screw Axis、矩阵指数 / PoE）。这是后面所有内容的字母表。
+2. **L1.2 正逆运动学（FK / IK）** — 关节角 ↔ 末端位姿。先用 PoE 公式手写 FK 验证 Pinocchio 的输出再说。
+3. **L1.3 雅可比与速度运动学** — 关节速度 ↔ 末端速度，space Jacobian 与 body Jacobian 的区别；这是 L4 任务空间控制的入门钥匙。
+
+> 上述三步在本文档下方"推荐做什么 / 推荐读什么 / 学完输出什么"里**统一列出**——不必拆三份执行清单，只需在心里按这个顺序推进。
 
 ### 前置知识
 - L0 内容
@@ -117,13 +251,29 @@
 - 能解释雅可比矩阵在机器人里是什么、有什么用
 - 能区分 space Jacobian 与 body Jacobian，并知道它们在任务空间控制里如何进入速度/力映射
 
+### 自测题（学完应能答出）
+- 给定 space Jacobian \(J_s\)，怎么算 body Jacobian \(J_b\)？两者在任务空间速度控制里的应用差别在哪？
+- 6 自由度机械臂的 IK 一般有几组解？"肘部上 / 肘部下"是怎么来的？
+- PoE 公式相比 D-H 参数最大的工程优势是什么？为什么 Pinocchio / TSID 都建立在 twist / screw 上？
+
 ---
 
 ## L2 动力学与刚体建模
 
 **从运动学到动力学，是控制机器人最重要的跳跃。**
 
-**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
+> **场景隐喻：** 你给机器人一个力矩，它会怎么动？L2 把"几何空间"升级成"力学空间"——从描述位姿过渡到描述运动和力的因果关系。
+
+> **上一层的局限：** L1 运动学只回答"关节角速度 ↔ 末端速度"是怎么映射的，但不能回答"加多大力矩才能让它产生这个加速度"。没有动力学，你只能做位置控制，碰到接触、高速运动、力交互就崩。
+
+**本阶段入口：** [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
+
+**这一层建议分两步走：**
+
+1. **L2.1 单刚体 / 固定基开链动力学** — 质量矩阵 \(M(q)\)、科里奥利 / 重力项、正逆动力学（RNEA / CRBA / ABA）。先把 Pinocchio 的 API 跑通，对照 Modern Robotics Ch 8 验证。
+2. **L2.2 浮动基与接触动力学** — 把固定基的方法推广到没有固定底座 + 间歇接触的人形机器人。重点：浮动基状态表示、接触约束如何写成 Jacobian、Centroidal Momentum Matrix 的物理意义。
+
+> 重要：进 L4 前 L2.2 必须懂，否则 LIP / Centroidal MPC / WBC 全是"魔法"。
 
 ### 前置知识
 - L1 内容（运动学）
@@ -152,8 +302,14 @@
 ### 学完输出什么
 - 能解释正逆动力学在机器人控制里的作用
 - 能理解 centroidal dynamics 为什么重要
-- 对“这个力矩能让机器人产生什么运动”有直觉
-- 能把“任务空间力 / 接触 wrench → 关节力矩”的关系写成 Jacobian transpose 形式
+- 对"这个力矩能让机器人产生什么运动"有直觉
+- 能把"任务空间力 / 接触 wrench → 关节力矩"的关系写成 Jacobian transpose 形式
+
+### 自测题（学完应能答出）
+- 写出固定基开链机器人动力学方程标准形式，分别解释 \(M(q)\)、\(C(q,\dot q)\dot q\)、\(g(q)\) 的物理意义。
+- 为什么浮动基系统的状态需要 \((q, \dot q, \text{base pose}, \text{base vel})\) 而不能只用 \((q, \dot q)\)？
+- 给定接触点 Jacobian \(J_c\) 和接触力 \(f_c\)，从接触力到关节力矩的映射是什么？为什么这是 WBC 的核心一步？
+- RNEA / CRBA / ABA 分别求什么、计算复杂度差异在哪？Pinocchio 里典型一个 1 kHz 控制循环你会用哪个？
 
 ---
 
@@ -161,7 +317,11 @@
 
 **没有控制理论，后面的 MPC / WBC / RL 全都接不上。**
 
-**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
+> **场景隐喻：** 你已经能算"力矩 ↔ 加速度"了，但现在的问题是：具体每一时刻该输出多少力矩，机器人才能**按你想的**轨迹运动？L3 把"算力矩"升级成"在线决策力矩"。
+
+> **上一层的局限：** L2 动力学告诉你"输入力矩 → 输出加速度"的物理关系，但不告诉你"现在该输入多少力矩"——这是控制器的工作。L3 是 L4 所有方法（LIP / MPC / WBC）的底层语法。
+
+**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
 
 ### 前置知识
 - L2 内容（动力学）
@@ -194,46 +354,95 @@
 - 能自己搭一个简单模型的 MPC
 - 能说明 computed torque、PD、阻抗控制与后续 WBC 任务控制之间的关系
 
+### 自测题（学完应能答出）
+- LQR 和 MPC 在什么情况下解出来的控制律完全等价？哪些条件破坏后必须用 MPC？
+- 给一个 QP 问题，怎么判断它是不是凸的？为什么 WBC 强烈倾向于凸 QP？
+- HQP（Hierarchical QP）的"优先级"是怎么从数学上实现的（提示：null-space projection）？
+- 阻抗控制和导纳控制的本质区别是什么？什么时候用前者、什么时候用后者？
+
 ---
 
 ## L4 人形运动控制主干
 
 **这是本路线的核心，也是当前项目的技术栈主干。**
 
-**本阶段入口：** [Modern Robotics](../wiki/entities/modern-robotics-book.md)、[LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+> **场景隐喻：** 你已经能给机械臂做位置控制，但人形机器人没有固定底座、还要随时切换支撑脚——L4 教你把"通用控制理论"重新组织成"专门给人形用"的分层方法链。
 
-这一阶段要建立的不是“我看过多少算法名词”，而是一条稳定的方法链：
-- **先学简化模型**：LIP / ZMP 帮你建立步行和平衡直觉
-- **再学更真实的中层模型**：Centroidal Dynamics 把接触力、线动量、角动量带进来
-- **再学上层规划**：Trajectory Optimization / MPC 负责“未来几步怎么走”
-- **最后学下层执行**：TSID / WBC 负责“每个关节怎么出力”
+> **上一层的局限：** L3 的方法（PID / LQR / MPC / QP）在固定基机器人上很直接，但人形是浮动基 + 间歇接触 + 高维欠驱动，不能直接套；需要专门的简化模型（LIP / Centroidal）和分层结构（MPC + WBC）。
 
-同时，始终用三件事检查自己是否真的学懂：
+**本阶段入口：** [LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+
+### L4.0 桥段：怎么把 L1–L3 串成 L4 的方法链
+
+L4 是本路线最陡的台阶。**进入 L4.1 前先建立一个"为什么是这个顺序"的心智模型，比直接看每个子方法重要得多。**
+
+人形控制的核心矛盾是：**全身动力学维度太高、非线性强、接触切换密集**——直接拿 L3 学到的通用 LQR / MPC 套不上去。解决方式不是发明新数学，而是按"模型从粗到细、控制从慢到快"两条轴拆分：
+
+| 轴 | 含义 | 实例 |
+|---|---|---|
+| **模型粒度** | 用多少状态变量描述机器人 | LIP（3 维）→ Centroidal（6 维 momentum + 接触力）→ 全身动力学（n+6 维） |
+| **控制频率** | 在哪个时间尺度上做决策 | Footstep / 高层规划（1–10 Hz）→ MPC（50–200 Hz）→ WBC（1 kHz）|
+
+L4 的方法链就是把这两条轴**串联**起来：
+
+```mermaid
+flowchart LR
+  L41["**L4.1 LIP / ZMP**<br/>粗模型 · 直觉 / 解析<br/>~ 离线步态生成<br/><em>建立直觉</em>"]
+  L42["**L4.2 Centroidal**<br/>中粒度 · 角动量+接触力<br/>~ 离线 / 中层规划<br/><em>引入真实力学</em>"]
+  L43["**L4.3 TrajOpt / MPC**<br/>在线滚动求解最优轨迹<br/>~ 50–200 Hz<br/><em>规划'未来怎么走'</em>"]
+  L44["**L4.4 TSID / WBC**<br/>实时分配每关节力矩<br/>~ 1 kHz<br/><em>落到'每关节多少力'</em>"]
+
+  L41 --> L42 --> L43 --> L44
+
+  classDef stage fill:#142a3a,stroke:#00d4ff,stroke-width:2px,color:#fff
+  class L41,L42,L43,L44 stage
+```
+
+学每个子方法时，始终用三件事检查自己是否真的学懂：
+
 1. **原理**：这个方法的状态、约束、目标函数分别是什么
-2. **最小代码**：我能不能用一个小例子把核心 loop 跑通
-3. **局限性**：这个方法在什么情况下会失效，为什么还需要下一层方法接上来
-
-这一整条链路是：
-
-```
-LIP / ZMP
-  ↓
-Centroidal Dynamics
-  ↓
-Trajectory Optimization / MPC
-  ↓
-TSID / WBC
-```
+2. **最小代码**：能不能用一个小例子把核心 loop 跑通
+3. **局限性**：什么情况下会失效，为什么还需要下一层方法接上来
 
 **Modern Robotics 在 L4 的位置：**
-- Ch 3-5 提供任务空间位姿、twist、Jacobian、wrench 的统一语言
+
+- Ch 3–5 提供任务空间位姿、twist、Jacobian、wrench 的统一语言
 - Ch 8 解释开链动力学，帮助理解 Pinocchio / TSID 中的逆动力学项
 - Ch 9 解释轨迹生成，是 MPC / trajectory optimization 的低维入口
 - Ch 11 解释 computed torque、motion control、force control，是理解 WBC 任务层的前置材料
 
-注意：Modern Robotics 本身不是人形 locomotion 教材，不会直接教 LIP/ZMP、centroidal MPC 或浮动基接触切换；它更像是这条主路线的“语法书”。学 L4 时遇到坐标变换、Jacobian、wrench、逆动力学不清楚，就回到对应章节补。
+> Modern Robotics 本身不是人形 locomotion 教材，不会直接教 LIP/ZMP、centroidal MPC 或浮动基接触切换；它更像是这条主路线的"语法书"。学 L4 时遇到坐标变换、Jacobian、wrench、逆动力学不清楚，就回到对应章节补。
+
+#### 方法谱系对比表（L4 + L5 一览）
+
+这张表回答"这些名词到底是什么关系、各自适用于哪个场景"。**外行能从这里建立第一手心智地图，资深读者能用来核对自己的分类。**
+
+| 方法 | 状态 / 模型粒度 | 主要约束 | 求解器 | 典型频率 | 典型用途 | 典型局限 |
+|------|---------------|---------|--------|---------|---------|---------|
+| **PID** | 关节角误差 | — | 解析 | 1 kHz+ | 单关节闭环、基础保底 | 不能处理耦合 / 多约束 |
+| **LQR** | 线性化状态空间 | — | Riccati 方程 | 100 Hz+ | 平衡控制 baseline、教学 | 模型必须线性化 |
+| **LIP / ZMP** | CoM 3 维 + ZMP | 支撑多边形 | Preview Control / 解析 | 离线 / 100 Hz | 平地步态、平衡判据 | 忽略角动量、忽略高度变化 |
+| **Capture Point / DCM** | CoM + 散度型动量 | 支撑多边形 | 解析 | 100 Hz | 实时平衡判据、足端落点决策 | 同 LIP 假设 |
+| **Centroidal Dynamics** | CoM 动量 6D + 接触力 | 接触力 cone | QP / NLP | 50–200 Hz | 中层 MPC 模型 | 仍非全身，需配 WBC |
+| **Trajectory Optimization** | 全身状态轨迹 | 全动力学 + 接触 | DDP / iLQR / IPOPT | 离线 / 慢 | 离线生成参考轨迹 / 跑酷 | 不实时、初值敏感 |
+| **MPC** | 简化模型 / Centroidal | 全约束 | OSQP / qpOASES / Crocoddyl | 50–500 Hz | 在线步态 + 接触力规划 | 模型简化误差、实时性挑战 |
+| **TSID / WBC** | 全身关节加速度 | 接触 + 关节限位 + 任务优先级 | HQP / 多层 QP | 1 kHz | 把 MPC 参考落到每个关节力矩 | 依赖准确动力学 |
+| **PPO**（RL）| 神经网络策略 | reward + curriculum + DR | 梯度 + 仿真数据 | 训练慢 / 部署快 | 端到端步态、跑酷、复杂地形 | sim2real gap、不可解释 |
+| **BC / IL** | 神经网络策略 | 监督数据 | SGD | 训练慢 / 部署快 | 操作、复杂动作迁移 | compounding error |
+| **DAgger** | BC + 交互式查询 | 同 BC + 在线纠错 | SGD + 仿真查询 | 训练慢 | 缓解 BC compounding | 需要可查询的 expert |
+| **AMP / Motion Prior** | RL + 对抗判别器 | reward + style 判别 | 梯度 + 对抗 | 训练慢 / 部署快 | 风格化动作、模仿 MoCap | 数据采集成本高 |
+| **Diffusion Policy** | 神经网络生成 action 序列 | 监督数据 | 去噪 | 训练慢 / 部署中等 | 多模态操作、抓取 | 推理延迟、训练数据要求高 |
+
+**怎么读这张表**：
+- 上半（PID → WBC）= model-based，从粗到细、从慢到快依次叠
+- 下半（PPO 起）= learning-based，通常补 model-based 难处理的部分（高维、难显式建模、风格化）
+- 实际系统通常 **混合使用**：MPC + WBC + RL 策略 prior + IL 数据初始化
 
 ### L4.1 LIP / ZMP
+
+> **场景隐喻：** 想象你在走钢丝——身体重心必须始终在脚下不大的支撑面内才不会摔倒。LIP/ZMP 就是把这件事数学化。
+
+> **上一层的局限：** L3 给了你 LQR / MPC 这些通用工具，但人形动力学几十个状态变量、非线性强，直接套太重。LIP / ZMP 是一个**极度简化的模型**（把整机当成"会走的倒立摆"），让你用最少假设理解步行和平衡。
 
 **前置知识：** [L2 动力学与刚体建模](#l2-动力学与刚体建模) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
@@ -253,9 +462,18 @@ TSID / WBC
 - 能解释 ZMP 和支撑多边形的关系
 - 能用 LIP 模型生成简单步行轨迹
 
+**自测题：**
+- LIP 模型为什么需要假设 CoM 高度固定？这个假设在跳跃 / 上下楼梯时失效成什么样？
+- 走路过程中 ZMP 何时会离开支撑多边形？工程上你怎么从数据里发现这件事？
+- DCM / Capture Point 相比 ZMP 多解决了什么问题？
+
 ---
 
 ### L4.2 Centroidal Dynamics
+
+> **场景隐喻：** LIP 把人形当成一根"会走路的杆子"。但实际上挥手、扭腰、抬腿都会产生角动量，杆子模型解释不了——L4.2 给你一个"既不太重又不太轻"的中间模型。
+
+> **上一层的局限：** L4.1 的 LIP 简化了角动量、忽略了腿摆动质量、把支撑多边形当静态约束；真机走起来这些都不能忽略。Centroidal Dynamics 把整机投影到 6D 的 CoM 动量空间——比 LIP 更精确，又比全身动力学简单。
 
 **前置知识：** [L4.1 LIP / ZMP](#l41-lip--zmp)
 
@@ -274,9 +492,18 @@ TSID / WBC
 - 能解释 centroidal dynamics 和 LIP 的区别
 - 理解线动量、角动量在平衡控制里的作用
 
+**自测题：**
+- Centroidal Momentum Matrix \(A_g(q)\) 的维度是多少？它的零空间在物理上意味着什么？
+- 为什么 Centroidal Dynamics 是 "model order reduction" 的一种？它损失了原始全身动力学的什么信息？
+- 在 MPC 里使用 Centroidal Dynamics vs 全身动力学，求解延迟会差多少量级？
+
 ---
 
 ### L4.3 Trajectory Optimization / MPC
+
+> **场景隐喻：** 上一秒看见脚滑——能不能预判未来 2 秒该往哪儿踩、并实时改步态？MPC 就是这件事的数学化：把"未来一小段时间窗"做成一个滚动求解的优化问题。
+
+> **上一层的局限：** L4.2 的 Centroidal Dynamics 给了你一组方程，但**用这些方程在线规划 CoM 轨迹和接触力**还需要再加一层优化（Trajectory Optimization 或 MPC）。这就是从"模型"到"控制器"的过渡。
 
 **前置知识：** [L4.2 Centroidal Dynamics](#l42-centroidal-dynamics) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
@@ -297,9 +524,18 @@ TSID / WBC
 - 能实现一个简化版的 centroidal MPC
 - 能解释预测时域、代价函数设计、约束处理的思路
 
+**自测题：**
+- 给一个 MPC 跑不稳的现象（例如步态发抖），你的第一手排查顺序是什么？
+- Trajectory Optimization 和 MPC 的关键区别是什么？为什么人形里这两个名词经常混用？
+- Convex MPC 和 Nonlinear MPC 各适合什么任务？接触切换怎么处理？
+
 ---
 
 ### L4.4 TSID / Whole-Body Control
+
+> **场景隐喻：** MPC 已经告诉你"CoM 要在哪里、足端要到哪里、躯干姿态怎么变"——但人形 25 个关节里，谁先动谁后动？谁让位给安全约束？WBC 是这个仲裁器，每个控制周期都解一个 QP / HQP 来分配每个关节的力矩。
+
+> **上一层的局限：** L4.3 的 MPC 输出的是 CoM / 接触力 / 末端任务参考，**不直接告诉你每个关节出多少力矩**。WBC 就是把上层规划"落到下层执行"的最后一步。
 
 **前置知识：** [L4.3 Trajectory Optimization / MPC](#l43-trajectory-optimization--mpc)
 
@@ -321,11 +557,20 @@ TSID / WBC
 - 能用 TSID 框架实现一个多层优先级 WBC
 - 能解释任务空间目标怎么映射到关节力矩
 
+**自测题：**
+- TSID 的 QP 里典型有哪些约束（等式 / 不等式各写 2 条）？目标函数通常长什么样？
+- 当上层 MPC 输出的 CoM 参考与 WBC 的接触约束冲突时，会发生什么？怎么用任务优先级处理？
+- 阻抗控制为什么常常放在 WBC 任务里的较高优先级层？
+
 ---
 
 ## L5 强化学习与模仿学习
 
 **学完 L4 后，你应该已经对 model-based control 有了完整理解。L5 是另一条路：learning-based。**
+
+> **场景隐喻：** L4 是"我已经知道物理 + 知道目标"去算控制律；L5 反过来——让机器人**自己试出来**（RL）或**模仿人学出来**（IL）一个策略。
+
+> **上一层的局限：** L4 的传统控制需要准确建模 + 显式目标函数；对接触切换密集、目标难写成代价函数的任务（跑、跳、复杂地形、操作），开发周期长。RL / IL 用数据补这一段——但不能替代 L4 的结构理解，否则你只会调超参数。
 
 **本阶段入口：** [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)、[Policy Optimization](../wiki/methods/policy-optimization.md)、[PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)、[Imitation Learning](../wiki/methods/imitation-learning.md)、[Behavior Cloning](../wiki/methods/behavior-cloning.md)、[DAgger](../wiki/methods/dagger.md)、[Motion Retargeting](../wiki/concepts/motion-retargeting.md)。
 
@@ -335,6 +580,10 @@ TSID / WBC
 - 遇到 sim2real、接触切换、可解释性问题时，回到 L4 的模型与约束视角重新审题
 
 ### L5.1 强化学习基础
+
+> **场景隐喻：** 把机器人扔进仿真器，给它定一个奖励规则（"前进 +1，摔倒 -10"），让它反复试错——它能学出一个策略。L5.1 教你这套"试错训练"框架。
+
+> **上一层的局限：** L4 方法都依赖精确动力学 + 显式目标；当模型不准、或目标难写成代价函数时，RL 用数据驱动绕开建模。
 
 **前置知识：** L2 + L3 内容（优化直觉）
 
@@ -354,9 +603,18 @@ TSID / WBC
 - 能解释 PPO 的核心思路
 - 能设计一个简单的 RL reward 并训练
 
+**自测题：**
+- 解释 PPO 的 clipping 机制为什么能避免 policy 更新过大；clip 阈值太大 / 太小分别会出什么问题？
+- 同样数据量下 on-policy（PPO）和 off-policy（SAC）哪个样本效率高？为什么人形 RL 主流仍用 PPO？
+- 给一个 reward 函数（前进项 + 平衡项 + 平滑项），如果机器人学到"小跳着前进"而不是"走路"，你会怎么改 reward？
+
 ---
 
 ### L5.2 RL 在人形运动控制里的应用
+
+> **场景隐喻：** 通用 RL 算法直接套到人形上往往学不会——需要给它"合适的奖励 / 观测 / 动作空间 + 一堆训练 trick"。L5.2 是把 L5.1 的玩具环境落到真人形 locomotion 的工程细节。
+
+> **上一层的局限：** L5.1 让你在 CartPole 上跑通 PPO；人形 25 DOF + 浮动基的状态空间维度高几个量级，需要 reward shaping、curriculum、early termination、特权信息、teacher-student 等专门技巧。
 
 **前置知识：** L5.1 + L4.3/4.4
 
@@ -380,9 +638,18 @@ TSID / WBC
 - 能在仿真里训练一个人形行走 RL 策略
 - 能解释 RL 和 WBC 各自的优势和局限
 
+**自测题：**
+- 人形 RL 通常用 position / velocity / torque 中哪种 action space？为什么 IsaacLab 默认选这种？
+- "Privileged information"（特权信息）在 teacher-student 中具体是什么？为什么 student 拿不到？
+- AMP / DeepMimic 这类 motion prior 方法和纯 PPO 比，最大的工程优势是什么？
+
 ---
 
 ### L5.3 模仿学习
+
+> **场景隐喻：** 与其让机器人反复试错，不如让它"看人怎么做"——MoCap、遥操作数据进来，机器人直接输出相似动作。
+
+> **上一层的局限：** 纯 RL 在复杂动作（跳舞、操作、跑酷）上探索成本极高、reward 极难写。IL 用人类示范数据给一个**好起点**；但 IL 本身有 compounding error，通常要叠 RL 或 DAgger 才稳。
 
 **前置知识：** L5.1
 
@@ -404,11 +671,20 @@ TSID / WBC
 - 能把一段 MoCap 数据迁移到人形机器人上
 - 能解释 DAgger 为什么比纯 BC 更好
 
+**自测题：**
+- BC 的 compounding error 在数学上意味着什么（提示：状态分布漂移）？
+- DAgger 为什么能缓解 compounding error？需要付出什么额外代价？
+- Motion Retargeting 时，骨骼比例不同 + 关节限位不同分别会造成什么问题？工程上如何缓解？
+
 ---
 
 ## L6 综合实战
 
 **到这里，你应该已经对运动控制和学习两条路都有理解了。最后一步是让它们真正串起来。**
+
+> **场景隐喻：** 仿真里走得再好看，真机上摔得最惨——L6 教你怎么填这个"仿真到现实"的鸿沟。
+
+> **上一层的局限：** L4 / L5 都在仿真里假设理想：传感器无噪声、执行器无延迟、动力学完全已知。真机里这三条全都不成立，需要 system identification + domain randomization + teacher-student 等专门桥接技术。
 
 **本阶段入口：** [Sim2Real](../wiki/concepts/sim2real.md)、[System Identification](../wiki/concepts/system-identification.md)、[Domain Randomization](../wiki/concepts/domain-randomization.md)、[Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)、[部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)、[机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)。
 
@@ -439,658 +715,111 @@ TSID / WBC
 - 一次 sim2real 迁移实验记录
 - 对整个 pipeline 的理解文档
 
----
+### 自测题（学完应能答出）
+- 给定一个仿真训好的 PPO 策略，列出真机部署前必须做的 5 件事。
+- Domain Randomization 范围选过大 / 过小分别会出什么问题？你怎么定 DR 边界？
+- 执行器延迟在 sim2real 里为什么对 RL 策略的破坏性比对传统 MPC 更大？
 
 ---
+
+## L7 出口：从运动控制看整个机器人技术栈
+
+**这一层不教你写代码，它的目的是：在你已经看完 L0–L6 后，给你"机器人全栈"的最后一块拼图，让你能和这个领域任何方向的工程师对话。**
+
+读到这里，你已经知道"控制盒子"在做什么。本节给出 [L−1 30 秒全景图](#30-秒看懂一台机器人在干嘛) 里其它三盒，以及当下 2024–2026 真正最活跃的几个方向。每块都不深入，只给：**它是什么 → 和运动控制怎么接 → 推荐 1 个入口页**。
+
+### L7.1 感知层（Perception / SLAM / 状态估计）
+
+**它是什么**：让机器人从摄像头 / IMU / 雷达 / 编码器 / 力觉等传感器中估出"自身位姿 + 世界几何 + 物体属性"。核心子领域：
+- **State Estimation**：融合 IMU + 编码器 + 视觉，估出机器人本体在世界里的 6D 位姿与速度。
+- **SLAM**：同时建图 + 定位，让机器人在未知环境里也知道自己在哪。
+- **3D 感知 / 物体识别 / 语义分割**：把 RGB-D / 点云变成"地上有个箱子、距我 0.5 m"。
+
+**和运动控制怎么接**：
+- 运动控制需要 **准确的本体状态**（关节角、躯干位姿、足端是否着地）。状态估计差一点，下游 WBC / MPC 全乱套。L4 的 TSID / WBC 实际上严重依赖一个低延迟的状态估计器。
+- 真机 sim2real（L6）gap 一大半来自 **执行器模型不准** + **状态估计噪声**。
+
+**入口页**：[State Estimation](../wiki/concepts/state-estimation.md) · [SLAM (本仓库相关)](../wiki/tasks/locomotion.md)
+
+### L7.2 决策与规划层（Motion Planning / Task Planning）
+
+**它是什么**：在感知建好的地图上，回答"先去哪、再去哪、用什么动作过去"。核心子领域：
+- **Motion Planning**：A* / RRT / RRT* / CHOMP / TrajOpt → 给出无碰撞轨迹。
+- **Task Planning / HTN / PDDL**：把"把杯子放到桌上"分解成"接近 → 抓 → 移动 → 放"。
+- **Footstep Planning**（人形特有）：决定下一步落点、步态时序。
+
+**和运动控制怎么接**：
+- 规划层给 **参考轨迹**（足端位置、CoM 轨迹、关节目标），下游 L4 的 MPC / WBC 负责跟踪。
+- L4.3 的 trajectory optimization 跟传统 motion planning 有大量交叠，区别在 **是否带动力学约束** 和 **是否在线求解**。
+
+**入口页**：[Trajectory Optimization](../wiki/methods/trajectory-optimization.md) · [Locomotion 任务地图](../wiki/tasks/locomotion.md)
+
+### L7.3 操作层（Manipulation / Grasping）
+
+**它是什么**：手 / 末端执行器与物体的精细交互，包括抓取、放置、装配、双臂协同、接触丰富的精细操作（拧螺丝、插拔）。
+
+**和运动控制怎么接**：
+- 操作和 locomotion 共享 **同一套阻抗控制 / WBC / 接触建模**基础。
+- 现代 contact-rich manipulation 主流走 **模仿学习路线**（ACT / Diffusion Policy），但底层力控仍来自传统控制；这就是为什么 L4 的 WBC 在操作任务里也是基石。
+
+**入口页**：[Manipulation 任务地图](../wiki/tasks/manipulation.md) · [接触丰富操作纵深路线](depth-contact-manipulation.md)
+
+### L7.4 系统与软件栈（ROS / 中间件 / 部署）
+
+**它是什么**：把上述所有模块连起来跑在一台真机上需要的工程基础设施。
+- **ROS / ROS2**：机器人最常用的消息中间件、节点抽象、launch 系统。
+- **Real-time control loop**：低延迟（1–2 kHz）实时控制循环、与高层规划（10–100 Hz）之间的多速率通信。
+- **仿真器**：MuJoCo / Isaac Sim / Gazebo / Drake，各有适用场景。
+- **硬件抽象**：URDF / MJCF / 真实驱动器接口、CAN / EtherCAT。
+
+**和运动控制怎么接**：
+- L4 的 TSID / WBC 通常运行在 **实时进程**（1 kHz），上层 MPC 跑在 **非实时进程**（50–500 Hz），由 ROS2 / shared memory 通信。理解这层架构才能解释"为什么一个看似能跑的算法上真机就崩"。
+- L6 的 sim2real 整链路依赖 URDF / 控制器 / 通信延迟的对齐。
+
+**入口页**：[Pinocchio](../wiki/entities/pinocchio.md) · [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
+
+### L7.5 2024–2026 前沿地图（你会反复看到的关键词）
+
+近三年机器人 AI 正在快速重塑，下面这几个方向并行推进；它们不是替代 L4 的传统控制，而是 **在传统控制之上叠了一层"通用化 / 端到端"**：
+
+| 方向 | 关键问题 | 代表工作 / 关键词 | 本仓库入口 |
+|------|---------|----------------|-----------|
+| **Humanoid Foundation Model** | 一个大模型驱动多种人形机器人 | GR00T (NVIDIA), Helix (Figure), Astribot | [Locomotion 任务地图](../wiki/tasks/locomotion.md) |
+| **VLA（Vision-Language-Action）** | 用语言指令驱动机器人完成操作 | RT-2, OpenVLA, π0, Pi-0.5 | [Imitation Learning](../wiki/methods/imitation-learning.md) |
+| **World Model for Robotics** | 让机器人在"想象的世界"里训练 | Dreamer-V3, UniSim, GAIA-1 | （扩展阅读） |
+| **大规模 Teacher-Student**| 用特权 teacher 训 student，实现 sim2real | "Learning to Walk in Minutes"、ANYmal、Unitree 等 | [Sim2Real](../wiki/concepts/sim2real.md) |
+| **AMP / Motion Prior** | 用对抗式损失把 MoCap 动作蒸馏到 RL 策略 | AMP, ASE, CALM, PHC | [模仿学习纵深路线](depth-imitation-learning.md) |
+| **End-to-End Locomotion**| 视觉 + 本体观测 → 关节动作的端到端 RL | Extreme Parkour, ANYmal Parkour, DreamWaQ | [RL 纵深路线](depth-rl-locomotion.md) |
+| **Whole-Body Loco-Manipulation** | 走着同时操作（搬箱子、推门）| HumanPlus, OmniH2O, OKAMI | [Manipulation 任务地图](../wiki/tasks/manipulation.md) |
+| **Tactile / 力觉闭环** | 高频触觉反馈用于精细装配 | DIGIT, GelSight 系列 | （扩展阅读） |
+
+> 这一节不展开任何一个方向——它们随便一个都够再开一条主线。读到这里，你已经能 **听懂每一条** 在解决什么问题，这就是 L7 的目的。
+
+### 学完这条路线，你能做到的事
+
+回到 L−1 的"三种读者"视角：
+
+- **外行**：能在饭桌上说出"人形机器人为什么走起来这么难"、"VLA 和 PPO 是不同层的东西"、"sim2real gap 主要来自哪里"。
+- **想入行**：手上至少有一个能在仿真里跑通 PPO + WBC 的项目，可以面试机器人控制 / 仿真岗位。
+- **资深从业者**：把零散经验串成一条心智索引，知道每个新论文该挂在 L0–L7 的哪里、和你已知方法的对接点是哪里。
+
+---
+
 <a id="depth-optional-index"></a>
 
-## 可选纵深（原四条「如果目标是…」学习路径全文并入）
+## 可选纵深（独立路线页）
 
-以下对应原先仓库中的 `roadmap/learning-paths/if-goal-*.md`；与上文 [先看哪里（导航）](#roadmap-nav-start) 中的「想走纵深」互链。
+主路线偏向"先稳住一条主干"，但实际研究方向往往要继续深入某一个子专题。下面四条纵深路径**各自是独立的 roadmap 页面**，从主路线的某个阶段衔接出去：
 
-<a id="depth-rl-locomotion"></a>
+| 纵深路径 | 适合谁 | 主线衔接点 |
+|---------|------|-----------|
+| [如果目标是 RL 运动控制](depth-rl-locomotion.md) | 想用 RL 让人形走起来、不愿从头啃控制理论 | L3 → L5.2 |
+| [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) | 想从人类演示数据驱动机器人技能 | L5.3 之后 |
+| [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) | 想给 WBC / MPC / RL 加可证明的安全约束 | L4.4 / L5 任意 |
+| [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) | 想做装配、插拔、双臂协同等精细接触 | L4.4 / L5.3 之后 |
 
-## 学习路径：如果目标是人形 RL 运动控制
+每条纵深页都有自己的 Stage 0–N 划分，可以独立阅读；遇到理论卡点再回主路线对应章节补。
 
-> 如果你已经明确想用强化学习路线来做人形机器人运动控制，从这里切入。
-
-**这条路径怎么用：**
-- 目标读者是有编程基础、想快速把 RL 和人形 locomotion 串起来的人
-- 不需要从头学完所有控制理论，但 RL 基础和 locomotion 概念必须有
-- 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
-
-**和主路线的关系：**
-- 本路径是主路线的“快速分支版本”
-- 如果你在某个阶段遇到理论卡点，回到 [主路线：运动控制成长路线](motion-control.md) 查对应章节
-
----
-
-### Stage 0 RL 基础准备
-
-**如果已经有 RL 基础，可以跳过这个阶段。**
-
-### 前置知识
-- Python 熟练
-- 深度学习基础（知道 MLP、loss、梯度反向传播是什么）
-- 一点概率统计直觉
-
-### 核心问题
-- RL 在解决什么问题
-- Policy gradient 和 Q-learning 的核心区别是什么
-- PPO 为什么是当前最主流的机器人 RL 算法
-
-### 推荐做什么
-- 用 Stable-Baselines3 或 Spinning Up 跑一个倒立摆或 HalfCheetah 环境
-- 对比 on-policy（PPO）和 off-policy（SAC）的训练曲线
-
-### 推荐读什么
-- Spinning Up (OpenAI) — Part 1: Key Concepts
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
-
-### 学完输出什么
-- 能解释什么是 MDP、policy、value function、return
-- 能在简单环境里用 PPO 训练一个可用的策略
-
----
-
-### Stage 1 人形 locomotion 概念基础
-
-**不做 model-based control 的人形 RL，也需要懂 locomotion 在解决什么问题。**
-
-### 前置知识
-- Stage 0 内容
-- 刚体动力学基本直觉（力、力矩、加速度）
-
-### 核心问题
-- 人形机器人在 locomotion 时面临的核心挑战是什么
-- 为什么平衡、接触切换、高维动作空间是难题
-- RL 在 locomotion 里能解决什么问题、不能解决什么
-
-### 推荐做什么
-- 读 2-3 篇 recent humanoid RL 论文的 related work / introduction（不用全懂，大概知道大家在解决什么问题）
-- 在 IsaacGym 或 Mujoco 里跑通一个人形环境
-
-### 推荐读什么
-- [Locomotion](../wiki/tasks/locomotion.md)（本仓库）
-- [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)（本仓库）
-
-### 学完输出什么
-- 能解释为什么 RL 适合做 locomotion
-- 能在仿真里让一个人形模型站起来走几步
-
----
-
-### Stage 2 RL + Locomotion 核心方法
-
-### 前置知识
-- Stage 0 + Stage 1 内容
-- 理解 reward shaping、termination condition、observation space 设计
-
-### 核心问题
-- 人形 RL 的 reward 怎么设计（平衡 reward + 前进 reward + 平滑 reward）
-- 观测空间怎么构建（关节角、角速度、IMU、接触状态）
-- 动作空间是 position、velocity 还是 torque
-- 训练不稳定的原因是什么（sparse reward、early termination、exploration）
-
-### 推荐做什么
-- 自己设计一个简单人形 RL reward，在 IsaacGym 或 Mujoco Humanoid 里训练
-- 对比不同 action space（position / velocity / torque）的训练效果
-- 调一调 reward weight 看看对步态的影响
-
-### 推荐读什么
-- "Emergence of Locomotion Behaviours in Rich Environments" (Heess et al., 2017)
-- legged_gym README 和代码
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
-
-### 学完输出什么
-- 一个能在平地上稳定行走的人形 RL 策略（仿真内）
-- 对 reward 设计有第一手直觉
-
----
-
-### Stage 3 MPC / WBC + RL 组合框架
-
-**纯 RL 很难直接用到高精度控制场景，需要和传统控制框架结合。**
-
-### 前置知识
-- Stage 2 内容
-- 理解 MPC 和 WBC 是什么（不需要能写，但需要懂基本思想）
-
-### 核心问题
-- RL 策略和 MPC / WBC 怎么组合
-- 常见框架：RL 训练低层策略 + MPC 做高层规划；RL 提供 prior 给优化器
-- 什么时候该用 RL，什么时候该用 MPC
-
-### 推荐做什么
-- 读 1-2 篇 RL + WBC / MPC 结合的论文（推荐：AMP、DeepMimic、MimicKit）
-- 理解"RL 提供动作 prior，QP/WBC 负责实时跟踪"这个模式
-
-### 推荐读什么
-- "AMP: Adversarial Motion Priors" (Peng et al., 2021)
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)（本仓库）
-- [Model Predictive Control (MPC)](../wiki/methods/model-predictive-control.md)（本仓库）
-
-### 学完输出什么
-- 能解释 RL 和 MPC / WBC 各自的适用场景
-- 能判断一个新问题是适合 RL 解还是 MPC 解
-
----
-
-### Stage 4 Sim2Real 迁移
-
-**仿真里能跑是真机部署的前提，但不是全部。**
-
-### 前置知识
-- Stage 3 内容
-- 理解 Domain Randomization 的原理
-
-### 核心问题
-- 为什么 sim2real gap 存在（物理参数不准、执行延迟、传感噪声）
-- Domain Randomization 的正确打开方式（随机化哪些参数、范围怎么定）
-- 动作延迟怎么处理
-- 在线微调什么时候有用、什么时候没用
-
-### 推荐做什么
-- 给 Stage 2 训练好的策略加 DR，再零样本迁移到更难的仿真地形
-- 调 DR 范围，观察策略鲁棒性变化
-
-### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
-- [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
-- [System Identification](../wiki/concepts/system-identification.md)（本仓库）
-
-### 学完输出什么
-- 一次 sim2real 实验记录（哪怕只是仿真内不同地形的迁移）
-- 对 DR 参数设置的直觉
-
----
-
-### Stage 5 进阶方向
-
-### 前置知识
-- Stage 4 内容
-
-根据研究方向选一个深入：
-
-**方向 A：更复杂的 locomotion**
-- 跑、跳、楼梯、崎岖地形
-- 关键词：CPI、NMPC、WBC、RL + sim2real
-
-**方向 B：模仿学习初始化**
-- 用 MoCap 数据初始化 RL 策略
-- 关键词：ASE、CALM、DeepMimic
-
-**方向 C：视觉 + locomotion**
-- 端到端视觉策略
-- 关键词：perception、terrain mapping、learning-based navigation
-
-**方向 D：单位置适配**
-- 一个策略迁移到不同机器人形态
-- 关键词：domain randomization、meta-learning、multi-task RL
-
-### 推荐读什么
-- 参考 [Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md) 的进阶专题部分
-
----
-
-### 快速入口汇总
-
-| 阶段 | 核心问题 | 本仓库入口 |
-|------|---------|-----------|
-| Stage 0 | RL 基础 | [Reinforcement Learning](../wiki/methods/reinforcement-learning.md) |
-| Stage 1 | locomotion 概念 | [Locomotion](../wiki/tasks/locomotion.md) |
-| Stage 2 | RL + locomotion 方法 | [Reinforcement Learning](../wiki/methods/reinforcement-learning.md) |
-| Stage 3 | RL + 控制组合 | [Whole-Body Control](../wiki/concepts/whole-body-control.md) |
-| Stage 4 | Sim2Real | [Sim2Real](../wiki/concepts/sim2real.md) |
-
-### 和其他页面的关系
-
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
-
----
-
-<a id="depth-imitation-learning"></a>
-
-## 学习路径：如果目标是模仿学习与技能迁移
-
-> 如果你更感兴趣的是怎么把人类的动作迁移到机器人上，从这里切入。
-
-**这条路径怎么用：**
-- 目标读者是有深度学习基础、想理解如何让机器人从人类演示中学习技能的人
-- 重点不是理论证明，而是：从数据到策略的完整 pipeline
-- 每个阶段都有前置知识、核心问题、推荐做什么、推荐读什么、学完输出什么
-
-**和主路线的关系：**
-- 模仿学习（IL）和强化学习（RL）在很多实际项目里是组合使用，不是非此即彼
-- 本路径和 RL 路径在 Stage 3 之后有很多交叉
-- 如果你不知道该走哪条，先走 IL 路径，因为它更容易出可感知的结果
-
----
-
-### Stage 0 深度学习与时序建模基础
-
-**如果已经有 PyTorch 熟练度和序列模型基础，可以跳过。**
-
-### 前置知识
-- Python 熟练
-- 理解 MLP、loss、梯度反向传播
-- 知道什么叫监督学习
-
-### 核心问题
-- 序列数据（关节角、MoCap、动作）怎么用神经网络建模
-- RNN / LSTM / Transformer 在时序建模上的核心区别是什么
-- diffusion model 在生成式建模里是什么角色
-
-### 推荐做什么
-- 用 PyTorch 跑一个 LSTM 预测简单时序数据的 Demo
-- 对比 MLP 和 LSTM 在时序任务上的表现差异
-
-### 推荐读什么
-- "Illustrated Guide to LSTM" (Google Blog)
-- 跑通一个 Motion Transformer 官方 Demo（如果能访问）
-
-### 学完输出什么
-- 能解释为什么时序数据需要特殊建模方法
-- 能用 LSTM 对简单序列做预测
-
----
-
-### Stage 1 模仿学习核心概念
-
-### 前置知识
-- Stage 0 内容
-- 理解什么是监督学习
-
-### 核心问题
-- Behavior Cloning 的核心思想是什么
-- 为什么 BC 会有 compounding error（协奏曲错误）
-- DAgger 为什么能缓解 compounding error
-- 模仿学习和强化学习的根本区别是什么
-
-### 推荐做什么
-- 用 BC 训练一个简单机械臂跟随演示轨迹
-- 对比 BC 和 DAgger 在长时程任务上的效果差异
-
-### 推荐读什么
-- "A Reduction of Imitation Learning and Stochastic Gradient Descent to Online Learning" (Ross & Bagnell, 2010)
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
-
-### 学完输出什么
-- 能解释 compounding error 是什么、为什么出现
-- 能在简单任务里用 BC 训练一个可用的策略
-
----
-
-### Stage 2 Motion Retargeting（动作迁移）
-
-**这是人形机器人技能学习的核心技术：从人类动作到机器人动作。**
-
-### 前置知识
-- Stage 1 内容
-- 理解 kinematics 和 inverse kinematics 基础
-
-### 核心问题
-- 为什么不能直接把人类关节角度映射到机器人（骨骼结构不同）
-- 怎么用 IK 或 learning-based 方法做 retargeting
-- 人体动作数据的不同来源（MoCap、VRI、视频）各有什么优缺
-- retargeting 后的数据还需要哪些后处理（时间对齐、重采样、姿态约束）
-
-### 推荐做什么
-- 用一套 MoCap 数据，通过 IK 或 retargeting 方法迁移到人形机器人模型上
-- 观察迁移后动作的可行性（关节限位、自碰撞、地面穿透）
-
-### 推荐读什么
-- "SFV: Surveillance from Videos" / "DensePose" 相关 retargeting 工作
-- "ASE: Adversarial Skill Embeddings" (Peng et al., 2022) — 有 retargeting pipeline 描述
-
-### 学完输出什么
-- 一段成功 retargeting 到人形机器人模型上的人类走路数据
-- 对骨骼结构差异导致的问题有第一手直觉
-
----
-
-### Stage 3 Diffusion Policy 与生成式动作
-
-**Diffusion Policy 是 2023-2024 年在机器人模仿学习里最活跃的方向。**
-
-### 前置知识
-- Stage 2 内容
-- 理解 diffusion model 的基本原理（不需要能写，但需要懂去噪过程）
-
-### 核心问题
-- Diffusion Policy 和传统 BC 的核心区别是什么
-- 为什么 diffusion model 在高维动作空间表现更好
-- 怎么把视觉输入结合进 diffusion policy
-- diffusion 采样时间过长怎么解决
-
-### 推荐做什么
-- 用一个开源 Diffusion Policy 实现（如 RoboDiff、Diffusion Policy 官方）跑一个简单任务
-- 对比 diffusion policy 和 LSTM BC 在同样任务上的效果
-
-### 推荐读什么
-- "Diffusion Policy: Visuomotor Policy Learning via Action Diffusion" (Chi et al., 2023)
-- [Imitation Learning](../wiki/methods/imitation-learning.md)（本仓库）
-
-### 学完输出什么
-- 一个用 Diffusion Policy 训练的动作策略
-- 能解释 diffusion process 在机器人动作生成里的优势
-
----
-
-### Stage 4 技能嵌入与对抗式学习
-
-**单个技能会了，怎么让机器人同时掌握多个技能、并在新场景里组合？**
-
-### 前置知识
-- Stage 3 内容
-
-### 核心问题
-- 什么是 skill embedding，为什么需要把技能压缩到隐空间
-- 对抗式模仿学习（ASE）和普通 BC 的区别是什么
-- 怎么在一个隐空间里做技能插值和组合
-- 为什么 latent variable 能帮助解决 compounding error
-
-### 推荐做什么
-- 读懂 ASE 的方法 pipeline
-- 在能找到的开源代码上跑一个 two-skill interpolation 实验
-
-### 推荐读什么
-- "ASE: Adversarial Skill Embeddings for Hierarchical Reinforcement Learning" (Peng et al., 2022)
-- "Learning Latent Plans from Play" (Lynch et al., 2020)
-
-### 学完输出什么
-- 能解释 skill embedding 的意义
-- 对对抗式学习方法在机器人技能学习里的作用有直观理解
-
----
-
-### Stage 5 仿真到真实迁移
-
-**模仿学习训练的策略，迁移到真实机器人上会遇到哪些问题？**
-
-### 前置知识
-- Stage 4 内容
-- 理解 sim2real gap 的基本概念
-
-### 核心问题
-- IL 训练数据和真实机器人动作空间的差异怎么处理
-- 观测空间不匹配（相机角度、传感器噪声）怎么处理
-- 在线微调（online fine-tuning）对 IL 策略有没有用
-- 怎么判断一个 IL 策略是“真的学会了”还是“在记忆演示”
-
-### 推荐做什么
-- 给 Stage 2/3 训练的策略加动作空间噪声和观测噪声，观察鲁棒性
-- 设计一个简单的 domain randomization 实验
-
-### 推荐读什么
-- [Sim2Real](../wiki/concepts/sim2real.md)（本仓库）
-- [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
-
-### 学完输出什么
-- 对 IL 策略的 sim2real 差距有第一手认识
-- 能设计针对性的 DR 实验来提升策略鲁棒性
-
----
-
-### Stage 6 进阶方向
-
-### 前置知识
-- Stage 5 内容
-
-**方向 A：Video-based IL**
-- 用 RGB 视频而非 MoCap 做动作迁移
-- 关键词：Pose estimation、Video imitation、DensePose
-
-**方向 B：Multi-modal IL**
-- 结合视觉、触觉、力传感器做多模态技能学习
-- 关键词：multimodal、haptic、force feedback
-
-**方向 C：Long-horizon 任务**
-- 把多个技能串成一个长序列
-- 关键词：task planning、skill chaining、HTN
-
-**方向 D：Humanoid 特有技能**
-- 走路、跑步、跳跃、平衡
-- 关键词：locomotion IL、motion retargeting for humanoid
-
----
-
-### 快速入口汇总
-
-| 阶段 | 核心问题 | 本仓库入口 |
-|------|---------|-----------|
-| Stage 0 | 时序建模基础 | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 1 | BC / DAgger | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 2 | Motion Retargeting | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 3 | Diffusion Policy | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 4 | Skill Embedding | [Imitation Learning](../wiki/methods/imitation-learning.md) |
-| Stage 5 | Sim2Real | [Sim2Real](../wiki/concepts/sim2real.md) |
-
-### 和其他页面的关系
-
-- 完整成长路线参考：[主路线：运动控制算法工程师成长路线](motion-control.md)
-- RL 路径对比参考：[如果目标是 RL 运动控制](#depth-rl-locomotion)
-- 人形控制全景图：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
-- 技术栈地图：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)
-
----
-
-<a id="depth-safe-control"></a>
-
-## 学习路径：如果目标是安全控制（CLF / CBF / Safe RL）
-
-> 如果你想让机器人在满足安全约束的前提下运动，从这里切入。
-
-**这条路径怎么用：**
-- 目标读者是有控制理论基础、想加入安全保证的工程师或研究者
-- 需要有基础线性代数和微分方程直觉；RL 基础有助于后期阶段
-- 每个阶段有前置知识、核心问题、推荐做什么、学完输出什么
-
----
-
-### Stage 0 数学基础
-
-### 前置知识
-- 线性代数（矩阵、特征值）
-- 微分方程基础（稳定性直觉）
-- 一点凸优化基础（QP 是什么）
-
-### 核心问题
-- Lyapunov 稳定性是什么意思
-- 为什么 Lyapunov 函数能证明系统收敛
-
-### 推荐读什么
-- [Lyapunov 稳定性形式化](../wiki/formalizations/lyapunov.md)
-- Khalil, *Nonlinear Systems* — Chapter 4（稳定性定义）
-
-### 学完输出什么
-- 能手工验证一个简单系统的 Lyapunov 稳定性
-- 理解正定函数和负半定导数的含义
-
----
-
-### Stage 1 CLF / CBF 基础
-
-### 核心问题
-- CLF 和 CBF 分别解决什么问题（收敛 vs. 安全边界）
-- 两者如何联合放入 QP 优化
-
-### 推荐读什么
-- [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)
-- [Control Barrier Function](../wiki/concepts/control-barrier-function.md)
-- [CLF vs CBF 对比](../wiki/comparisons/clf-vs-cbf.md)
-- Ames et al., *Control Barrier Function based Quadratic Programs* (2017)
-
-### 推荐做什么
-- 用 Python + CVXPY 实现一个 CBF-QP，保证 2D 小车不越过边界
-
-### 学完输出什么
-- 能解释 CLF 和 CBF 的数学定义和功能区别
-- 能写出 CBF-QP 的标准形式
-
----
-
-### Stage 2 CLF+CBF 在 WBC/MPC 中的应用
-
-### 核心问题
-- 如何把 CLF 和 CBF 约束嵌入 WBC 的 QP 层
-- Safety filter 和 MPC safety constraint 有什么区别
-
-### 推荐读什么
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
-- [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
-- Zeng et al., *Safety-Critical Model Predictive Control* (2021)
-
-### 推荐做什么
-- 在一个简单 locomotion 环境中加入 CBF safety filter，观察对步态的影响
-
-### 学完输出什么
-- 能描述 safety filter 的工作方式
-- 能识别 WBC 中哪些约束层可以加 CLF/CBF 项
-
----
-
-### Stage 3 Safe RL
-
-### 核心问题
-- Constrained MDP（CMDP）和标准 MDP 的区别
-- 如何用 Lagrangian 方法或 barrier 方法训练安全策略
-
-### 推荐读什么
-- Garcia & Fernandez, *A Comprehensive Survey on Safe RL* (2015)
-- [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
-
-### 推荐做什么
-- 用 Safety Gym（OpenAI）或 safe-control-gym 跑一个 constrained RL 实验
-
-### 学完输出什么
-- 能解释 CMDP 的形式化定义
-- 能对比 model-based 安全保证 vs. model-free 安全奖励塑形的优劣
-
----
-
-### 关联页面
-
-- [Lyapunov 稳定性](../wiki/formalizations/lyapunov.md)
-- [Control Lyapunov Function](../wiki/formalizations/control-lyapunov-function.md)
-- [Control Barrier Function](../wiki/concepts/control-barrier-function.md)
-- [CLF vs CBF 对比](../wiki/comparisons/clf-vs-cbf.md)
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
-- [Query：CLF+CBF 在 WBC/MPC 中联合使用](../wiki/queries/clf-cbf-in-wbc.md)
-
----
-
-<a id="depth-contact-manipulation"></a>
-
-## 学习路径：如果目标是接触丰富的操作任务
-
-> 如果你想让机器人完成装配、拧螺丝、插拔等需要精细接触的任务，从这里切入。
-
-**这条路径怎么用：**
-- 目标读者是有 RL/IL 基础、想深入操作任务的工程师
-- 需要了解基础动力学和控制，Python 编程熟练
-- 每个阶段有前置知识、核心问题、推荐做什么、学完输出什么
-
----
-
-### Stage 0 操作基础
-
-### 前置知识
-- 机器人运动学基础（正逆运动学）
-- 基础控制理论（PID、阻抗控制概念）
-- Python + ROS 或类似框架
-
-### 核心问题
-- 什么叫"接触丰富"，和 free-space manipulation 有什么区别
-- 刚性抓取和顺应性控制分别适合什么场景
-
-### 推荐读什么
-- [Manipulation](../wiki/tasks/manipulation.md)
-- [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)
-- Mason, *Mechanics of Robotic Manipulation* — Chapter 1-2
-
-### 学完输出什么
-- 能区分 prehensile / non-prehensile / contact-rich 操作
-- 理解阻抗控制（impedance control）的基本原理
-
----
-
-### Stage 1 接触力建模与控制
-
-### 核心问题
-- 怎么建模接触力和摩擦
-- 阻抗控制 vs. 导纳控制 vs. 力控有什么区别
-
-### 推荐读什么
-- [Contact Dynamics](../wiki/concepts/contact-dynamics.md)
-- [Whole-Body Control](../wiki/concepts/whole-body-control.md)
-- Hogan, *Impedance Control* (1985)
-
-### 推荐做什么
-- 在 MuJoCo 或 Isaac Sim 中实现一个 impedance controller，完成推箱子任务
-- 观察接触刚度参数对稳定性的影响
-
-### 学完输出什么
-- 能写出 impedance control 的数学形式
-- 能解释 soft contact 模型（MuJoCo）vs. hard contact 的区别
-
----
-
-### Stage 2 模仿学习用于操作
-
-### 核心问题
-- 为什么 contact-rich 任务适合 IL 而不是 RL
-- ACT 和 Diffusion Policy 各适合什么场景
-
-### 推荐读什么
-- [Imitation Learning](../wiki/methods/imitation-learning.md)
-- [Behavior Cloning](../wiki/methods/behavior-cloning.md)
-- [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
-- Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (ACT, 2023)
-
-### 推荐做什么
-- 用 ACT 框架收集遥操作数据并训练一个抓取策略
-- 对比 chunk size 对 contact-rich 任务成功率的影响
-
-### 学完输出什么
-- 能解释 ACT 的 action chunking 机制和 Diffusion Policy 的多模态优势
-- 能设计一个 contact-rich 任务的数据采集方案
-
----
-
-### Stage 3 Contact-Rich 策略进阶
-
-### 核心问题
-- 如何在 sim2real 中处理 contact-rich 任务的接触不一致问题
-- 有哪些专门针对 contact-rich 的学习方法
-
-### 推荐读什么
-- [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
-- [Demo Data Collection Guide](../wiki/queries/demo-data-collection-guide.md)
-- Luo et al., *DEFT: Dexterous Fine-Grained Manipulation Transformer* (2024)
-
-### 推荐做什么
-- 尝试在真机上部署 ACT 策略，使用 FT sensor 记录接触力
-- 分析失败案例，找出接触力误差模式
-
-### 学完输出什么
-- 能识别 contact-rich sim2real 迁移的主要瓶颈
-- 能设计 FT sensor feedback 的简单修正机制
-
----
-
-### 关联页面
-
-- [Manipulation](../wiki/tasks/manipulation.md)
-- [Contact-Rich Manipulation](../wiki/concepts/contact-rich-manipulation.md)
-- [Bimanual Manipulation](../wiki/tasks/bimanual-manipulation.md)
-- [Imitation Learning](../wiki/methods/imitation-learning.md)
-- [Behavior Cloning](../wiki/methods/behavior-cloning.md)
-- [Query：接触丰富操作实践指南](../wiki/queries/contact-rich-manipulation-guide.md)
-
----
 
 ## 常见卡点
 
@@ -1107,7 +836,7 @@ TSID / WBC
 解决思路：先做好 System Identification，再用 Domain Randomization 扩大扰动范围，最后考虑在线自适应。
 
 ### 5. Modern Robotics 看完了，但不知道和人形控制怎么接
-解决思路：把它当作数学语言和固定基机器人基础。Ch 3-6 接 L0/L1 的 SE(3)、PoE、Jacobian；Ch 8 接 L2 的动力学和 Pinocchio；Ch 9/11 接 L3 的轨迹生成和控制；真正进入人形后，还要补 [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md) 和 [Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+解决思路：参见 [L−1 的"Modern Robotics 在本路线扮演什么角色"](#一本贯穿全程的教材modern-robotics)。MR 是数学语言 + 固定基机器人基础；真正进入人形后还要补 [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md) 和 [Whole-Body Control](../wiki/concepts/whole-body-control.md)。
 
 ---
 
@@ -1117,9 +846,9 @@ TSID / WBC
 - 传统机器人学主教材：[Modern Robotics](../wiki/entities/modern-robotics-book.md)
 - 更详细的阶段参考：[Humanoid Control Roadmap](../wiki/roadmaps/humanoid-control-roadmap.md)
 - 实战经验补充：[Query：人形机器人运动控制 Know-How](../wiki/queries/humanoid-motion-control-know-how.md)
-- 可选纵深快速入口（锚点）：
-  - [如果目标是 RL 运动控制](#depth-rl-locomotion)
-  - [如果目标是模仿学习与技能迁移](#depth-imitation-learning)
-  - [如果目标是安全控制](#depth-safe-control)
-  - [如果目标是接触丰富的操作任务](#depth-contact-manipulation)
+- 可选纵深路线页：
+  - [如果目标是 RL 运动控制](depth-rl-locomotion.md)
+  - [如果目标是模仿学习与技能迁移](depth-imitation-learning.md)
+  - [如果目标是安全控制](depth-safe-control.md)
+  - [如果目标是接触丰富的操作任务](depth-contact-manipulation.md)
 - 技术栈地图参考：[tech-map/dependency-graph.md](../tech-map/dependency-graph.md)

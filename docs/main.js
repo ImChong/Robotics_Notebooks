@@ -24,6 +24,8 @@
       updateThemeToggle();
       const detailContentEl = document.getElementById('detailContent');
       if (detailContentEl) renderDetailMermaid(detailContentEl);
+      const roadmapContentEl = document.getElementById('roadmapContent');
+      if (roadmapContentEl) renderDetailMermaid(roadmapContentEl);
     });
   }
 
@@ -516,6 +518,13 @@
     if (tocItem) tocItem.hidden = !show;
   }
 
+  function setRoadmapContentChromeVisible(show) {
+    var contentSection = document.getElementById('roadmap-content');
+    var sub = document.getElementById('roadmapSubnavContent');
+    if (contentSection) contentSection.hidden = !show;
+    if (sub) sub.hidden = !show;
+  }
+
   function renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages) {
     var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
     var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
@@ -700,6 +709,9 @@
     let codeLang = '';
     let tableLines = [];
     let inCodeBlock = false;
+    let htmlBlockLines = [];
+    let htmlBlockOpenTag = '';
+    const HTML_BLOCK_TAGS = ['div', 'details', 'summary', 'section', 'aside', 'figure', 'figcaption'];
 
     function flushParagraph() {
       if (!paragraphLines.length) return;
@@ -754,6 +766,20 @@
       tableLines = [];
     }
 
+    function flushHtmlBlock() {
+      if (!htmlBlockLines.length) return;
+      blocks.push(htmlBlockLines.join('\n'));
+      htmlBlockLines = [];
+      htmlBlockOpenTag = '';
+    }
+
+    function startsHtmlBlock(trimmed) {
+      const m = trimmed.match(/^<([a-zA-Z][a-zA-Z0-9]*)(\s|>|\/>)/);
+      if (!m) return '';
+      const tag = m[1].toLowerCase();
+      return HTML_BLOCK_TAGS.indexOf(tag) >= 0 ? tag : '';
+    }
+
     lines.forEach(function (line) {
       const trimmed = line.trim();
 
@@ -766,6 +792,7 @@
           flushList();
           flushQuote();
           flushTable();
+          flushHtmlBlock();
           inCodeBlock = true;
           codeLang = normalizeCodeLang(trimmed.replace(/^```+/, '').trim().split(/\s+/)[0] || '');
         }
@@ -774,6 +801,31 @@
 
       if (inCodeBlock) {
         codeLines.push(line);
+        return;
+      }
+
+      if (htmlBlockOpenTag) {
+        htmlBlockLines.push(line);
+        const closeRe = new RegExp('</' + htmlBlockOpenTag + '\\s*>', 'i');
+        if (closeRe.test(line)) {
+          flushHtmlBlock();
+        }
+        return;
+      }
+
+      const htmlOpenTag = startsHtmlBlock(trimmed);
+      if (htmlOpenTag) {
+        flushParagraph();
+        flushList();
+        flushQuote();
+        flushTable();
+        htmlBlockOpenTag = htmlOpenTag;
+        htmlBlockLines.push(line);
+        const selfClose = new RegExp('</' + htmlOpenTag + '\\s*>\\s*$', 'i').test(trimmed) ||
+                          /\/>\s*$/.test(trimmed);
+        if (selfClose) {
+          flushHtmlBlock();
+        }
         return;
       }
 
@@ -854,6 +906,7 @@
     flushList();
     flushQuote();
     flushTable();
+    flushHtmlBlock();
 
     return blocks.join('');
   }
@@ -1404,15 +1457,15 @@
       'roadmap-route-a-motion-control': 'roadmap-motion-control'
     };
     const requestedRoadmapId = params.get('id') || '';
-    const mergedIntoMotionDetail = {
-      'roadmap-if-goal-locomotion-rl': 'depth-rl-locomotion',
-      'roadmap-if-goal-imitation-learning': 'depth-imitation-learning',
-      'roadmap-if-goal-safe-control': 'depth-safe-control',
-      'roadmap-if-goal-contact-manipulation': 'depth-contact-manipulation'
+    const legacyDepthRedirects = {
+      'roadmap-if-goal-locomotion-rl': 'roadmap-depth-rl-locomotion',
+      'roadmap-if-goal-imitation-learning': 'roadmap-depth-imitation-learning',
+      'roadmap-if-goal-safe-control': 'roadmap-depth-safe-control',
+      'roadmap-if-goal-contact-manipulation': 'roadmap-depth-contact-manipulation'
     };
-    if (mergedIntoMotionDetail[requestedRoadmapId]) {
+    if (legacyDepthRedirects[requestedRoadmapId]) {
       window.location.replace(
-        'detail.html?id=roadmap-motion-control#' + mergedIntoMotionDetail[requestedRoadmapId]
+        'roadmap.html?id=' + encodeURIComponent(legacyDepthRedirects[requestedRoadmapId])
       );
       return;
     }
@@ -1440,8 +1493,16 @@
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       if (breadcrumb) removeLoadingState(breadcrumb);
       setRoadmapFlowChromeVisible(false);
+      setRoadmapContentChromeVisible(false);
       var flowRootEmpty = document.getElementById('roadmapFlowMermaidRoot');
       if (flowRootEmpty) flowRootEmpty.innerHTML = '';
+      var contentRootEmpty = document.getElementById('roadmapContent');
+      if (contentRootEmpty) {
+        contentRootEmpty.innerHTML = '';
+        removeLoadingState(contentRootEmpty);
+      }
+      var tocRootEmpty = document.getElementById('roadmapTocList');
+      if (tocRootEmpty) removeLoadingState(tocRootEmpty);
       return;
     }
 
@@ -1489,6 +1550,55 @@
         });
       });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
+    renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages);
+
+    var graphLink = document.getElementById('roadmapGraphLink');
+    if (graphLink) {
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(roadmapPage.id || roadmapId);
+    }
+  }
+
+  function renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages) {
+    var contentEl = document.getElementById('roadmapContent');
+    var tocEl = document.getElementById('roadmapTocList');
+    var contentSection = document.getElementById('roadmap-content');
+    var subnavContent = document.getElementById('roadmapSubnavContent');
+
+    var detail = detailPages[roadmapId] || {};
+    var contentMarkdown = detail.content_markdown || '';
+
+    if (!contentMarkdown) {
+      setRoadmapContentChromeVisible(false);
+      if (contentEl) {
+        contentEl.innerHTML = '';
+        removeLoadingState(contentEl);
+      }
+      if (tocEl) removeLoadingState(tocEl);
+      return;
+    }
+
+    setRoadmapContentChromeVisible(true);
+    if (contentSection) contentSection.hidden = false;
+    if (subnavContent) subnavContent.hidden = false;
+
+    var headings = collectMarkdownHeadings(contentMarkdown);
+    if (tocEl) {
+      renderDetailToc(tocEl, headings);
+    }
+    if (contentEl) {
+      var markdownRouteIndex = buildMarkdownRouteIndex(siteData);
+      contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, {
+        currentPath: detail.path || roadmapPage.path || '',
+        routeIndex: markdownRouteIndex
+      });
+      renderDetailMath(contentEl);
+      renderDetailMermaid(contentEl);
+      enhanceDetailHeadings(contentEl);
+      bindDetailTocSpy(contentEl, tocEl);
+      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
+      scrollToDetailHashTarget(contentEl);
+      removeLoadingState(contentEl);
+    }
   }
 
   function renderTechMapNodeCard(node, detailPages) {

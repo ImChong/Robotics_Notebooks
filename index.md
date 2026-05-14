@@ -11,10 +11,10 @@
 | 你的目标 | 从这里进入 |
 |---------|-----------|
 | 想有一条学习路线照着走 | [主路线：运动控制成长路线](roadmap/motion-control.md) |
-| 想用强化学习做 locomotion | [主路线 · RL 纵深](roadmap/motion-control.md#depth-rl-locomotion) |
-| 想学模仿学习与技能迁移 | [主路线 · 模仿学习纵深](roadmap/motion-control.md#depth-imitation-learning) |
-| 想学安全控制（CLF/CBF）| [主路线 · 安全控制纵深](roadmap/motion-control.md#depth-safe-control) |
-| 想做接触丰富的操作任务 | [主路线 · 接触操作纵深](roadmap/motion-control.md#depth-contact-manipulation) |
+| 想用强化学习做 locomotion | [RL 纵深路线](roadmap/depth-rl-locomotion.md) |
+| 想学模仿学习与技能迁移 | [模仿学习纵深路线](roadmap/depth-imitation-learning.md) |
+| 想学安全控制（CLF/CBF）| [安全控制纵深路线](roadmap/depth-safe-control.md) |
+| 想做接触丰富的操作任务 | [接触操作纵深路线](roadmap/depth-contact-manipulation.md) |
 | 想看知识概念和方法 | 直接翻下面的 wiki 目录 |
 | 想看模块关系和依赖 | [tech-map 总览](tech-map/overview.md) |
 

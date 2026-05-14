@@ -8,9 +8,18 @@
 - 当前切入口：机器人运动控制算法工程师
 - 当前重点：运动控制、强化学习、模仿学习、人形机器人
 
-## 主路线（唯一路线图页）
+## 主路线（核心）
 
 - **[主路线：运动控制算法工程师成长路线](motion-control.md)**  
-  含 L0–L6 完整阶段，以及原先 `learning-paths/if-goal-*.md` 中的四条「如果目标是…」纵深全文（见文内 [可选纵深](motion-control.md#depth-optional-index)）。
+  含 L−1 序言 → L0–L6 主干 → L7 出口的完整阶段。覆盖人形运动控制的传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），以及 RL/IL 扩展与 sim2real 实战。
 
-说明：本仓库在站点导出中只保留 **一个** `roadmap_page`（`roadmap-motion-control`）。感知、规划、系统、部署等全栈内容在主路线后段与可选纵深中补充，不再维护并列的独立路线图文件。
+## 纵深路线（按目标选其一深入）
+
+主路线偏"先打通主干"，下列四条纵深路线**各自独立**，从主路线某个阶段衔接出去，可单独阅读：
+
+- [如果目标是 RL 运动控制](depth-rl-locomotion.md) —— 想用强化学习驱动人形 locomotion
+- [如果目标是模仿学习与技能迁移](depth-imitation-learning.md) —— 想从人类演示数据学习技能
+- [如果目标是安全控制（CLF / CBF / Safe RL）](depth-safe-control.md) —— 想加可证明的安全约束
+- [如果目标是接触丰富的操作任务](depth-contact-manipulation.md) —— 想做装配、插拔、双臂协同等精细接触
+
+说明：感知、规划、系统、部署等更广的全栈知识在主路线的 **L−1 全景层** 和 **L7 出口层** 集中扫盲，提供进入对应子专题的入口，而不在本目录维护并列的独立路线图文件。
