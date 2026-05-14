@@ -26,6 +26,7 @@ class RoadmapPageTests(unittest.TestCase):
             "document.getElementById('roadmapTitle')",
             "roadmap.html?id=",
             "roadmap_pages",
+            "graph-stats.json",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
