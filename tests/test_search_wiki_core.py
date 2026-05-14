@@ -15,6 +15,7 @@ from search_wiki_core import (
     collect_known_terms,
     compute_avgdl,
     compute_score,
+    expand_query_aliases,
     extract_related_links,
     levenshtein_distance,
     normalize_scores,
@@ -132,6 +133,32 @@ class TestExtractRelatedLinks(unittest.TestCase):
         content = "## 关联页面\n\n- [LIP ZMP](lip-zmp.md)\n"
         links = extract_related_links(content, src)
         self.assertTrue(any("lip-zmp.md" in entry for entry in links))
+
+
+class TestExpandQueryAliases(unittest.TestCase):
+    def test_empty_query(self):
+        self.assertEqual(expand_query_aliases([]), ([], []))
+
+    def test_abbreviation_expands_to_full(self):
+        expanded, expansions = expand_query_aliases(["MPC"])
+        self.assertIn("MPC", expanded)
+        self.assertIn("model predictive control", expanded)
+        self.assertTrue(any(src == "MPC" and "model predictive" in dst for src, dst in expansions))
+
+    def test_full_phrase_expands_to_abbreviation(self):
+        expanded, expansions = expand_query_aliases(["model", "predictive", "control"])
+        self.assertIn("MPC", expanded)
+        self.assertEqual(len(expansions), 1)
+        self.assertEqual(expansions[0][1], "MPC")
+
+    def test_no_expansion_for_unknown(self):
+        expanded, expansions = expand_query_aliases(["locomotion"])
+        self.assertEqual(expanded, ["locomotion"])
+        self.assertEqual(expansions, [])
+
+    def test_case_insensitive_match(self):
+        _, expansions = expand_query_aliases(["wbc"])
+        self.assertTrue(any("whole-body control" == dst for _, dst in expansions))
 
 
 if __name__ == "__main__":

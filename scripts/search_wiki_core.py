@@ -23,6 +23,76 @@ CACHE_MAX = 30
 VECTOR_INDEX_FILE = REPO_ROOT / "exports" / "vector-index.npz"
 VECTOR_META_FILE = REPO_ROOT / "exports" / "vector-index-meta.json"
 
+# 缩写/别名归一化表：检索时与全称双向展开，命中后在 print_results 中给出"已展开为 …"提示。
+WIKI_ABBREVIATIONS: dict[str, list[str]] = {
+    "wbc": ["whole-body control"],
+    "vla": ["vision-language-action"],
+    "il": ["imitation learning"],
+    "rl": ["reinforcement learning"],
+    "mpc": ["model predictive control"],
+    "ppo": ["proximal policy optimization"],
+    "sac": ["soft actor-critic"],
+    "hqp": ["hierarchical quadratic program"],
+    "cbf": ["control barrier function"],
+    "clf": ["control lyapunov function"],
+    "bc": ["behavior cloning"],
+    "ik": ["inverse kinematics"],
+    "fk": ["forward kinematics"],
+    "lip": ["linear inverted pendulum"],
+    "zmp": ["zero moment point"],
+    "tsid": ["task-space inverse dynamics"],
+}
+
+
+def _build_alias_indexes() -> tuple[dict[str, list[str]], dict[str, str]]:
+    forward = {k.lower(): list(v) for k, v in WIKI_ABBREVIATIONS.items()}
+    reverse: dict[str, str] = {}
+    for abbrev, fulls in forward.items():
+        for full in fulls:
+            reverse[full.lower()] = abbrev
+    return forward, reverse
+
+
+_ALIAS_FORWARD, _ALIAS_REVERSE = _build_alias_indexes()
+
+
+def expand_query_aliases(
+    query_words: list[str],
+) -> tuple[list[str], list[tuple[str, str]]]:
+    """检索时双向展开缩写与全称。
+
+    返回 ``(expanded_words, expansions)``：``expanded_words`` 在原始 query 之上追加
+    规范化别名（缩写→全称、全称短语→缩写），``expansions`` 记录 ``(原输入, 展开形式)``
+    供 CLI 在结果上方提示"已展开为 …"。
+    """
+    if not query_words:
+        return [], []
+
+    expansions: list[tuple[str, str]] = []
+    expanded: list[str] = list(query_words)
+    seen = {w.lower() for w in expanded}
+
+    joined = " ".join(query_words).strip().lower()
+    if joined and joined in _ALIAS_REVERSE:
+        abbrev = _ALIAS_REVERSE[joined]
+        if abbrev not in seen:
+            expanded.append(abbrev.upper())
+            seen.add(abbrev)
+            expansions.append((" ".join(query_words), abbrev.upper()))
+
+    for word in query_words:
+        key = word.lower()
+        if key not in _ALIAS_FORWARD:
+            continue
+        for full in _ALIAS_FORWARD[key]:
+            if full.lower() in seen:
+                continue
+            expanded.append(full)
+            seen.add(full.lower())
+            expansions.append((word, full))
+
+    return expanded, expansions
+
 
 def extract_related_links(content: str, source_path: Path) -> list[str]:
     related: list[str] = []
@@ -290,13 +360,22 @@ def search(
     vector_matrix = None
     vector_meta = None
     semantic_notice = None
-    query_text = " ".join(query_words).strip()
+
+    effective_query_words, alias_expansions = expand_query_aliases(query_words)
+    if alias_expansions:
+        alias_notice = "缩写归一化：已展开为 " + "；".join(
+            f"'{src}' → '{dst}'" for src, dst in alias_expansions
+        )
+        semantic_notice = alias_notice
+
+    query_text = " ".join(effective_query_words).strip()
     query_tokens = tokenize_text(query_text)
 
     if semantic:
         vector_matrix, vector_meta = load_vector_resources()
         if vector_matrix is None or vector_meta is None:
-            semantic_notice = "语义索引不存在，已回退到纯 BM25。请先运行：make vectors"
+            fallback = "语义索引不存在，已回退到纯 BM25。请先运行：make vectors"
+            semantic_notice = f"{semantic_notice}；{fallback}" if semantic_notice else fallback
             semantic = False
 
     prepared = []
@@ -321,7 +400,7 @@ def search(
             continue
 
         lines = body.splitlines()
-        matched_lines = _find_matched_lines(lines, query_words, context_lines)
+        matched_lines = _find_matched_lines(lines, effective_query_words, context_lines)
         if not matched_lines:
             summary_line = doc["summary"] or (lines[0] if lines else "")
             matched_lines = [(1, [summary_line], 0)]
@@ -349,7 +428,7 @@ def search(
         assert vector_matrix is not None and vector_meta is not None
         new_notice = _apply_vector_scores(prepared, query_text, vector_matrix, vector_meta)
         if new_notice:
-            semantic_notice = new_notice
+            semantic_notice = f"{semantic_notice}；{new_notice}" if semantic_notice else new_notice
             prepared.sort(key=lambda r: r["score"], reverse=True)
     else:
         prepared.sort(key=lambda r: r["score"], reverse=True)

@@ -21,8 +21,10 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **缩写/别名归一化检索**：
-    - [ ] `scripts/search_wiki.py` 引入轻量缩写表（WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF 等），查询时与全称双向展开，并在 `print_results` 中提示"已展开为 …"。
+- [x] **缩写/别名归一化检索**：
+    - [x] `scripts/search_wiki.py` 引入轻量缩写表（WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF 等），查询时与全称双向展开，并在 `print_results` 中提示"已展开为 …"。
+      - 实现：在 `scripts/search_wiki_core.py` 新增 `WIKI_ABBREVIATIONS`（覆盖 WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF/BC/IK/FK/LIP/ZMP/TSID 共 16 条）与 `expand_query_aliases()`：缩写 → 全称（per word）与全称短语 → 缩写（whole-query）双向展开；`search()` 把展开后的词同时喂给 BM25 分词与 `_find_matched_lines`，并将"缩写归一化：已展开为 'X' → 'Y'"挂到 `semantic_notice`，由现有 `print_results` 渲染。
+      - 验证：`pytest tests/test_search_wiki_core.py` 21/21 通过（新增 5 个 `TestExpandQueryAliases` 用例）；CLI 实测 `search_wiki.py MPC` / `search_wiki.py "model predictive control"` / `search_wiki.py WBC --json` 均输出 "已展开为 …" 提示；`eval_search_quality.py` 36/37（与基线一致，未引入新回归）。
 - [x] **社区粒度二级拆分**：
     - [x] 优化 `scripts/generate_link_graph.py` 的社区检测：在 Locomotion 单一巨型社区（46.1%）内进一步用 Louvain `resolution > 1.0` 二级拆分，使 `largest_community_ratio ≤ 0.40` 且 `community_quality_warning` 转 `false`。
       - 实现：保留 Girvan-Newman 一级检测（`PRIMARY_COMMUNITY_CAP=8`），新增 `refine_oversized_communities` + 纯 Python `louvain_communities`（带 `resolution=1.15` 的 Reichardt-Bornholdt modularity），对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分；`MAX_COMMUNITIES` 提升至 16 容纳子社区命名。
