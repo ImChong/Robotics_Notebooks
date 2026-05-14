@@ -114,6 +114,42 @@
     return 'detail.html?id=' + encodeURIComponent(id);
   }
 
+  var WIKI_TYPE_LABEL_HOME = {
+    concept: '概念',
+    method: '方法',
+    task: '任务',
+    comparison: '对比',
+    entity: '工具/平台',
+    query: 'Query',
+    formalization: '形式化',
+    overview: '总览',
+    reference: '参考'
+  };
+
+  function renderLatestWikiNode(meta) {
+    var mount = document.getElementById('homeLatestWikiModule');
+    if (!mount) return;
+    mount.classList.remove('data-loading');
+    if (!meta || !meta.detail_id) {
+      mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
+      return;
+    }
+    var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+    var href = detailHref(meta.detail_id);
+    var dateStr = meta.recency ? String(meta.recency) : '';
+    var metaLine = typeLabel;
+    if (dateStr) metaLine += ' · ' + dateStr;
+    if (meta.source === 'log.md') metaLine += ' · 维护日志';
+    mount.innerHTML =
+      '<article class="card home-latest-wiki-card"><p class="card-meta">' +
+      escapeHtml(metaLine) +
+      '</p><h3><a href="' +
+      escapeHtml(href) +
+      '">' +
+      escapeHtml(meta.label || meta.detail_id) +
+      '</a></h3></article>';
+  }
+
   function moduleHref(id) {
     return 'module.html?id=' + encodeURIComponent(id);
   }
@@ -2062,7 +2098,10 @@
   const techMapRoot = document.getElementById('techMapNodeGrid');
   const moduleRoot = document.getElementById('moduleEntryList');
   const roadmapPageMount = document.getElementById('roadmapTitle');
-  const homeStatsRoot = document.getElementById('heroNodeCount') || document.getElementById('wikiSearchSubtitle');
+  const homeStatsRoot =
+    document.getElementById('heroNodeCount') ||
+    document.getElementById('wikiSearchSubtitle') ||
+    document.getElementById('homeLatestWikiModule');
 
   if (previewRoot || detailRoot || techMapRoot || moduleRoot || roadmapPageMount) {
     fetch('exports/site-data-v1.json')
@@ -2145,9 +2184,15 @@
       })
       .then(function (stats) {
         renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
+        renderLatestWikiNode(stats.latest_wiki_node);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
+        var mount = document.getElementById('homeLatestWikiModule');
+        if (mount) {
+          mount.classList.remove('data-loading');
+          mount.innerHTML = '<p class="data-meta">统计加载失败，请稍后刷新。</p>';
+        }
       });
   }
 

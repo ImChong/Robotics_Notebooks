@@ -5,6 +5,9 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 扫描所有 wiki 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
+同时写入 exports/graph-stats.json（含 latest_wiki_node：优先按 log.md 中
+自上而下首个 ingest 条目的 wiki 路径解析，否则回退到 frontmatter / mtime 的 recency）。
+
 输出格式：
   {
     "nodes": [
@@ -38,6 +41,9 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 OUT_PATH = REPO_ROOT / "exports" / "link-graph.json"
 STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
+LOG_MD_PATH = REPO_ROOT / "log.md"
+# log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
+WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
 # 主社区检测（Girvan-Newman）允许的最大社区数：与历史行为一致。
 PRIMARY_COMMUNITY_CAP = 8
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
@@ -60,6 +66,104 @@ def _wiki_stem_index() -> dict[str, Path]:
     if _STEM_TO_PATH is None:
         _STEM_TO_PATH = {p.stem: p for p in WIKI_DIR.rglob("*.md")}
     return _STEM_TO_PATH
+
+
+def wiki_recency_date(content: str, page: Path) -> date:
+    """用于「最近更新」排序：取 frontmatter 的 updated / created 与文件 mtime 中的最大值。"""
+    candidates: list[date] = []
+    if content.startswith("---"):
+        end = content.find("\n---", 3)
+        if end != -1:
+            fm = content[3:end]
+            for key in ("updated", "created"):
+                match = re.search(rf"^{key}\s*:\s*(\S+)", fm, re.MULTILINE)
+                if not match:
+                    continue
+                raw = match.group(1).strip().strip("'\"")
+                try:
+                    candidates.append(date.fromisoformat(raw[:10]))
+                except ValueError:
+                    continue
+    try:
+        candidates.append(date.fromtimestamp(page.stat().st_mtime))
+    except OSError:
+        pass
+    return max(candidates) if candidates else date.fromtimestamp(0)
+
+
+def _wiki_node_detail_id(page_id: str) -> str:
+    """将 wiki 下的 .md 路径映射为 detail.html 的 id（与 scripts/utils/paths.path_to_id 一致）。"""
+    rel = Path(page_id)
+    parts = rel.parts
+    stem = rel.stem
+    if len(parts) >= 2 and parts[0] == "wiki":
+        if parts[1] == "entities":
+            return f"entity-{stem}"
+        return f"wiki-{parts[1]}-{stem}"
+    return stem
+
+
+def _normalize_wiki_rel_from_log_match(raw: str) -> str:
+    s = raw.strip().strip("`'\"").rstrip("，。；、）)」』,.;:")
+    if not s.lower().endswith(".md"):
+        s = s + ".md"
+    return s
+
+
+def _log_sections(text: str) -> list[str]:
+    """按 `## [` 切分 log.md，仅保留以日期标题开头的块，顺序为文件自上而下（新记录在上）。"""
+    parts = re.split(r"(?=^## \[)", text, flags=re.MULTILINE)
+    out: list[str] = []
+    for p in parts:
+        p = p.strip()
+        if p.startswith("## ["):
+            out.append(p)
+    return out
+
+
+def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | None:
+    """从 log.md 解析「当前应展示的」最新 wiki 节点。
+
+    规则：自上而下扫描 `## [日期] ...` 块；优先在标题含 **ingest** 的块内取**首次**出现的
+    `wiki/...` 路径；若无命中再扫描其余块。路径须对应仓库内现存文件，且须在图谱节点列表中。
+    """
+    if not LOG_MD_PATH.is_file():
+        return None
+    text = LOG_MD_PATH.read_text(encoding="utf-8")
+    sections = _log_sections(text)
+    node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+
+    def pick(ingest_only: bool) -> dict[str, Any] | None:
+        for chunk in sections:
+            head = chunk.split("\n", 1)[0]
+            if ingest_only and not re.search(r"\bingest\b", head, re.IGNORECASE):
+                continue
+            date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
+            log_date = date_m.group(1) if date_m else ""
+            for m in WIKI_PATH_IN_LOG.finditer(chunk):
+                rel = _normalize_wiki_rel_from_log_match(m.group(0))
+                if not rel.startswith("wiki/"):
+                    continue
+                p = REPO_ROOT / rel
+                if not p.is_file():
+                    continue
+                base = node_by_id.get(rel)
+                if not base:
+                    continue
+                return {
+                    "path": rel,
+                    "detail_id": _wiki_node_detail_id(rel),
+                    "label": str(base.get("label") or Path(rel).stem),
+                    "type": str(base.get("type") or ""),
+                    "recency": log_date,
+                    "source": "log.md",
+                }
+        return None
+
+    hit = pick(ingest_only=True)
+    if hit:
+        return hit
+    return pick(ingest_only=False)
 
 
 def compute_health_score(content: str) -> int:
@@ -442,6 +546,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 "label": extract_title(content) or page.stem,
                 "type": parse_frontmatter_type(content),
                 "health_score": compute_health_score(content),
+                "_recency": wiki_recency_date(content, page).isoformat(),
             }
         )
 
@@ -505,6 +610,21 @@ def _compute_graph_stats(
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
+    latest_wiki_node: dict[str, Any] | None = latest_wiki_node_from_log(nodes)
+    if latest_wiki_node is None and nodes:
+        best = max(
+            nodes,
+            key=lambda n: (date.fromisoformat(str(n["_recency"])), str(n["id"])),
+        )
+        latest_wiki_node = {
+            "path": best["id"],
+            "detail_id": _wiki_node_detail_id(best["id"]),
+            "label": best["label"],
+            "type": best.get("type") or "",
+            "recency": best["_recency"],
+            "source": "recency",
+        }
+
     stats = {
         "generated_at": date.today().isoformat(),
         "node_count": len(nodes),
@@ -519,6 +639,7 @@ def _compute_graph_stats(
             "largest_community_ratio": largest_ratio,
             "community_quality_warning": largest_ratio > COMMUNITY_WARNING_RATIO,
         },
+        "latest_wiki_node": latest_wiki_node,
     }
     return stats
 
@@ -526,6 +647,11 @@ def _compute_graph_stats(
 def main() -> None:
     nodes, edges = _build_graph_data()
     communities, community_meta = assign_communities(nodes, edges)
+
+    stats = _compute_graph_stats(nodes, edges, communities, community_meta)
+
+    for node in nodes:
+        node.pop("_recency", None)
 
     graph = {"nodes": nodes, "edges": edges, "communities": communities}
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -537,7 +663,6 @@ def main() -> None:
         f"{len(communities)} communities → {OUT_PATH.relative_to(REPO_ROOT)}"
     )
 
-    stats = _compute_graph_stats(nodes, edges, communities, community_meta)
     STATS_PATH.write_text(
         json.dumps(stats, ensure_ascii=False, separators=(",", ":")), encoding="utf-8"
     )

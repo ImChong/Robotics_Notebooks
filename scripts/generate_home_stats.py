@@ -41,6 +41,9 @@ payload = {
         "percent": int(coverage_match.group(3)),
     },
 }
+latest = graph_stats.get("latest_wiki_node")
+if latest:
+    payload["latest_wiki_node"] = latest
 OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
 print(
     f"Wrote {OUT_PATH} with graph={payload['node_count']} nodes/{payload['edge_count']} edges, coverage={payload['coverage']['covered']}/{payload['coverage']['total']}"
