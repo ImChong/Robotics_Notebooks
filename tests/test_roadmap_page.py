@@ -15,6 +15,8 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapMeta"',
             'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
+            'id="roadmapContent"',
+            'id="roadmapTocList"',
         ]
         for marker in required_ids:
             self.assertIn(marker, content)
@@ -27,6 +29,7 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmap.html?id=",
             "roadmap_pages",
             "graph-stats.json",
+            "renderRoadmapMarkdownBody",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

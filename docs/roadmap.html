@@ -12,6 +12,7 @@
   <title>Robotics Notebooks | 技术路线指南</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous" />
 </head>
 <body>
   <header class="site-header">
@@ -53,7 +54,8 @@
 
     <section class="page-subnav-wrap">
       <div class="container page-subnav">
-        <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>路线</a>
+        <a href="#roadmap-flow" id="roadmapSubnavFlow" hidden>阶段速览</a>
+        <a href="#roadmap-content" id="roadmapSubnavContent" hidden>正文</a>
         <a href="#roadmap-related">互链枢纽</a>
       </div>
     </section>
@@ -72,11 +74,17 @@
 
     <section class="section roadmap-content-section">
       <div class="container detail-content-layout">
-        <aside class="detail-toc-panel">
-          <h2 class="section-title">路线导航</h2>
-          <nav class="detail-toc-list">
+        <aside id="roadmapTocSection" class="detail-toc-panel" aria-labelledby="roadmap-toc">
+          <h2 class="section-title" id="roadmap-toc">路线目录</h2>
+          <p class="section-subtitle">从 L−1 序言到 L7 出口的全程导航。</p>
+          <div style="margin-bottom: 1.2rem;">
+            <a id="roadmapGraphLink" href="graph.html" class="btn-secondary" style="display:flex; align-items:center; gap:6px; justify-content:center; padding:8px; border-color:rgba(0,212,255,0.3); color:var(--text);">
+              <span>🕸️</span> 关联图谱节点
+            </a>
+          </div>
+          <nav id="roadmapTocList" class="detail-toc-list data-loading" aria-label="路线正文目录">
             <ol>
-              <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">路线</a></li>
+              <li id="roadmapTocFlowItem" hidden><a href="#roadmap-flow">阶段速览</a></li>
               <li><a href="#roadmap-related">互链枢纽</a></li>
             </ol>
           </nav>
@@ -84,8 +92,14 @@
 
         <div class="detail-content-main">
           <section id="roadmap-flow" class="section roadmap-flow-section" hidden>
-            <h2 class="section-title">学习路线</h2>
+            <h2 class="section-title">阶段速览（mini-map）</h2>
+            <p class="section-subtitle">展开任一阶段，可直接跳转到下方正文对应章节，或者点开站内相关链接。</p>
             <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
+          </section>
+
+          <section id="roadmap-content" class="section" hidden>
+            <h2 class="section-title">完整学习路线（正文）</h2>
+            <article id="roadmapContent" class="detail-markdown-body data-loading">正在读取路线正文…</article>
           </section>
 
           <section class="section section-alt" id="roadmap-related" style="margin: 20px 0; padding: 20px; border-radius: 12px;">
@@ -128,6 +142,9 @@
       <p>© Chong Liu 2026 · Robotics Notebooks</p>
     </div>
   </footer>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
   <script defer src="main.js"></script>
 </body>
 </html>
