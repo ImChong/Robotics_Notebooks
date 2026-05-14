@@ -713,6 +713,13 @@
     let htmlBlockOpenTag = '';
     const HTML_BLOCK_TAGS = ['div', 'details', 'summary', 'section', 'aside', 'figure', 'figcaption'];
 
+    /** Empty <a id="..."></a> bookmark lines (common in roadmap .md) must bypass paragraph escaping. */
+    function parseStandaloneBookmarkAnchor(trimmed) {
+      const m = trimmed.match(/^<a\s+id="([a-zA-Z][a-zA-Z0-9_-]*)"\s*>\s*<\/a>$/i);
+      if (!m) return '';
+      return '<a id="' + escapeHtml(m[1]) + '"></a>';
+    }
+
     function flushParagraph() {
       if (!paragraphLines.length) return;
       blocks.push('<p>' + renderMathBlocks(renderInlineMarkdown(paragraphLines.join(' '), context)) + '</p>');
@@ -898,6 +905,12 @@
 
       flushList();
       flushQuote();
+      const bookmarkAnchorHtml = parseStandaloneBookmarkAnchor(trimmed);
+      if (bookmarkAnchorHtml) {
+        flushParagraph();
+        blocks.push(bookmarkAnchorHtml);
+        return;
+      }
       paragraphLines.push(trimmed);
     });
 

@@ -178,7 +178,7 @@ def build_undirected_adjacency(
 def connected_components(adjacency: dict[str, set[str]]) -> list[list[str]]:
     seen: set[str] = set()
     components: list[list[str]] = []
-    for start in adjacency:
+    for start in sorted(adjacency):
         if start in seen:
             continue
         stack = [start]
@@ -187,7 +187,7 @@ def connected_components(adjacency: dict[str, set[str]]) -> list[list[str]]:
         while stack:
             node = stack.pop()
             component.append(node)
-            for neighbor in adjacency[node]:
+            for neighbor in sorted(adjacency[node]):
                 if neighbor not in seen:
                     seen.add(neighbor)
                     stack.append(neighbor)
@@ -198,7 +198,7 @@ def connected_components(adjacency: dict[str, set[str]]) -> list[list[str]]:
 def edge_betweenness(adjacency: dict[str, set[str]]) -> dict[tuple[str, str], float]:
     """Brandes edge betweenness for small unweighted graphs."""
     betweenness: dict[tuple[str, str], float] = defaultdict(float)
-    for source in adjacency:
+    for source in sorted(adjacency):
         stack: list[str] = []
         predecessors: dict[str, list[str]] = {node: [] for node in adjacency}
         sigma: dict[str, float] = {node: 0.0 for node in adjacency}
@@ -211,7 +211,7 @@ def edge_betweenness(adjacency: dict[str, set[str]]) -> dict[tuple[str, str], fl
             vertex = queue[head]
             head += 1
             stack.append(vertex)
-            for neighbor in adjacency[vertex]:
+            for neighbor in sorted(adjacency[vertex]):
                 if distance[neighbor] < 0:
                     queue.append(neighbor)
                     distance[neighbor] = distance[vertex] + 1
@@ -260,7 +260,11 @@ def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
         if not betweenness:
             break
         max_value = max(betweenness.values())
-        for left, right in [edge for edge, value in betweenness.items() if value == max_value]:
+        max_edges = sorted(
+            [edge for edge, value in betweenness.items() if value == max_value],
+            key=lambda e: e,
+        )
+        for left, right in max_edges:
             working[left].discard(right)
             working[right].discard(left)
         partition = connected_components(working)
@@ -338,7 +342,7 @@ def louvain_communities(
         for node in nodes:
             current_comm = node_to_comm[node]
             neighbor_weights: dict[int, int] = {}
-            for neighbor in adjacency[node]:
+            for neighbor in sorted(adjacency[node]):
                 nc = node_to_comm[neighbor]
                 neighbor_weights[nc] = neighbor_weights.get(nc, 0) + 1
 
@@ -347,7 +351,7 @@ def louvain_communities(
             best_comm = current_comm
             best_gain = k_i_in_current - resolution * comm_degree[current_comm] * degrees[node] / m2
 
-            for candidate, k_i_in in neighbor_weights.items():
+            for candidate, k_i_in in sorted(neighbor_weights.items(), key=lambda kv: kv[0]):
                 if candidate == current_comm:
                     continue
                 gain = k_i_in - resolution * comm_degree.get(candidate, 0.0) * degrees[node] / m2
