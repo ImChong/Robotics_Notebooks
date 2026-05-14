@@ -295,7 +295,7 @@ SORT type ASC
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
-- [SONIC（规模化运动跟踪人形控制）](methods/sonic-motion-tracking.md) — SONIC** 通过规模化运动跟踪监督训练通用人形策略，把海量 MoCap 帧上的轨迹跟踪当作预训练任务，支持 VR、人体视频、文本与音乐等多模态指令，并作为真实机器人的通用低层执行器。 `📅2026-05-07` `[method_page]`
+- [SONIC（规模化运动跟踪人形控制）](methods/sonic-motion-tracking.md) — SONIC 将规模化运动跟踪作为人形低层控制的统一预训练目标；论文主张网络容量、MoCap 数据与算力三轴 scaling，并以统一 token 接口接入 VR、视频、VLA 等上游。 `📅2026-05-14` `[method_page]`
 - [StarVLA](methods/star-vla.md) — StarVLA**（尤其是其首个技术报告版本 **StarVLA-$\alpha$**）是一个旨在降低 Vision-Language-Action (VLA) 系统复杂性的开源基准模型与框架。 `📅unknown` `[method_page]`
 - [Trajectory Optimization（轨迹优化）](methods/trajectory-optimization.md) — 轨迹优化 (Trajectory Optimization, TO)** 是一种基于动力学模型和约束条件，通过数值非线性规划（NLP）技术来自动搜索最优运动序列的计算方法。在足式机器人领域，不论是 `📅unknown` `[method_page]`
 - [Unified Multimodal Tokens (统一多模态 Token)](methods/unified-multimodal-tokens.md) — 统一多模态 Token** 是一种先进的具身智能架构设计。它摒弃了为每种感官模态设计专用神经网络分支的传统做法，转而将所有输入（图像、语言、状态、动作）全部转换为格式一致的 Token 序列，并在 `📅unknown` `[method_page]`

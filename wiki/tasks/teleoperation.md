@@ -3,7 +3,7 @@ type: task
 tags: [teleoperation, manipulation, loco-manipulation, data-collection, humanoid]
 status: complete
 summary: "Teleoperation 让人类通过远程接口直接操作机器人，是数据采集和复杂任务执行的重要桥梁。"
-updated: 2026-04-29
+updated: 2026-05-14
 sources:
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -62,6 +62,10 @@ sources:
 | UMI（Stanford 2024） | 通用 | GoPro + 夹爪 | 可扩展 | 无需专用机器人，数据可迁移 |
 | AnyTeleop（UCB 2023） | 多平台 | RGB 相机 | 通用 | 无传感器手套，仅视觉输入 |
 | GELLO（Berkeley 2023） | 多 UR/Franka | Leader Arms | 低成本 | 低成本版 ALOHA |
+
+## 全身人形：视频 / VR 条件 + 低层 tracking（工程参考）
+
+NVIDIA **SONIC** 项目页（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)）把遥操作与 **规模化 motion tracking policy** 放在同一套 **统一 token / 控制接口** 下展示：人体视频经 **GEM** 估计姿态后实时跟踪；VR 含 **头 + 双手三点** 驱动上身并由 **运动学规划器** 补全下身，以及 **全身 VR 追踪** 模式。知识库方法页见 [SONIC（规模化运动跟踪人形控制）](../methods/sonic-motion-tracking.md)。
 
 ## 遥操作到策略学习 Pipeline
 
