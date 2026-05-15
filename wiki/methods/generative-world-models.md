@@ -4,6 +4,7 @@ tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
 updated: 2026-05-14
 related:
+  - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/latent-imagination.md
   - ../concepts/world-action-models.md
   - ../methods/model-based-rl.md

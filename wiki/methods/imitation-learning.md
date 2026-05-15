@@ -4,6 +4,7 @@ tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
 updated: 2026-05-14
 related:
+  - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
   - ./learning-from-play-lmp.md
   - ./dial-instruction-augmentation.md
@@ -101,6 +102,8 @@ flowchart TD
 ```
 专家演示（MoCap/遥控/CLAW合成）→ 动作重定向（Retarget）→ 模仿学习训练（robot_lab/legged_gym）→ Sim2Real部署
 ```
+
+网络结构（层数、宽度、是否判别器 / Transformer / chunk）在论文 Method 中通常有明确表格；可按 [人形与腿式策略的网络架构](../concepts/humanoid-policy-network-architecture.md) 对照阅读。
 
 代表工作：
 - [deepmimic](deepmimic.md)：基于轨迹跟踪的显式模仿

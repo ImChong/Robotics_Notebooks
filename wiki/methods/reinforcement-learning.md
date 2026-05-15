@@ -3,6 +3,7 @@ type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
 related:
+  - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
   - ./qt-opt.md
   - ./mt-opt.md
