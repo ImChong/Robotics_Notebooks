@@ -8,9 +8,9 @@
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/robot-io-rio.md",
-    "detail_id": "entity-robot-io-rio",
-    "label": "RIO（Robot I/O）",
+    "path": "wiki/entities/protomotions.md",
+    "detail_id": "entity-protomotions",
+    "label": "ProtoMotions: 大规模人形机器人仿真框架",
     "type": "entity",
     "recency": "2026-05-15",
     "source": "log.md"
