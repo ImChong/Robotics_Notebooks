@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] ingest | sources/repos/xiaomi-robotics-0.md — 小米 Xiaomi-Robotics-0（官网/GitHub/arXiv:2602.12684）；新增 wiki/entities/xiaomi-robotics-0.md；互链 VLA、Action Chunking
+
+- 原始资料：`sources/repos/xiaomi-robotics-0.md`
+- 沉淀页面：`wiki/entities/xiaomi-robotics-0.md`
+
 ## [2026-05-15] ingest | sources/papers/viral-humanoid-visual-sim2real.md — VIRAL arXiv:2511.15200：新增 wiki/entities/paper-viral-humanoid-visual-sim2real.md；GR00T-VisualSim2Real 增补 Mermaid 流程图与论文专档互链
 
 - 原始资料：`sources/papers/viral-humanoid-visual-sim2real.md`
