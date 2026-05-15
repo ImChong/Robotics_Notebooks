@@ -1067,7 +1067,7 @@
         '<article class="card data-card">',
         '  <div>',
         '    <h3>' + linkHtml + '</h3>',
-        '    <p class="data-submeta"><code>' + escapeHtml(url) + '</code></p>',
+        '    <p class="data-submeta detail-source-url" title="' + escapeHtml(url) + '"><code>' + escapeHtml(url) + '</code></p>',
         '  </div>',
         '</article>'
       ].join('');
