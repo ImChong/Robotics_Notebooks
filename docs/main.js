@@ -446,9 +446,9 @@
   }
 
   function renderDetailMermaid(container) {
-    if (!container || typeof window.mermaid === 'undefined') return;
+    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
     var nodes = Array.from(container.querySelectorAll('.mermaid'));
-    if (!nodes.length) return;
+    if (!nodes.length) return Promise.resolve();
     nodes.forEach(function (node) {
       var saved = node.getAttribute('data-mermaid-source');
       if (saved === null) {
@@ -495,7 +495,7 @@
       themeVariables: isDark ? darkThemeVars : lightThemeVars,
       securityLevel: 'strict'
     });
-    window.mermaid.run({ nodes: nodes }).catch(function () {});
+    return window.mermaid.run({ nodes: nodes }).catch(function () {});
   }
 
   /**
@@ -714,6 +714,26 @@
     window.setTimeout(function () {
       target.classList.remove('detail-hash-target');
     }, 1800);
+  }
+
+  /** 正文外的详情页锚点（如 #detail-sources）：异步渲染后需再滚入视口，否则 hash 会落在错误位置。 */
+  function scrollDetailPageLayoutHashIntoView(contentEl) {
+    const rawHash = window.location.hash.replace(/^#/, '');
+    if (!rawHash) return;
+    let decodedHash;
+    try {
+      decodedHash = decodeURIComponent(rawHash);
+    } catch {
+      decodedHash = rawHash;
+    }
+    if (!decodedHash) return;
+    const safeHash = typeof window.CSS !== 'undefined' && typeof window.CSS.escape === 'function'
+      ? window.CSS.escape(decodedHash)
+      : decodedHash.replace(/[^\w-]/g, '\\$&');
+    const target = document.querySelector('#' + safeHash);
+    if (!target) return;
+    if (contentEl && contentEl.contains(target)) return;
+    target.scrollIntoView({ behavior: 'auto', block: 'start' });
   }
 
   function renderMarkdownContent(markdown, headings, markdownContext) {
@@ -1067,7 +1087,7 @@
         '<article class="card data-card">',
         '  <div>',
         '    <h3>' + linkHtml + '</h3>',
-        '    <p class="data-submeta"><code>' + escapeHtml(url) + '</code></p>',
+        '    <p class="data-submeta detail-source-url" title="' + escapeHtml(url) + '"><code>' + escapeHtml(url) + '</code></p>',
         '  </div>',
         '</article>'
       ].join('');
@@ -1333,6 +1353,7 @@
     }
 
     const contentMarkdown = detailPage.content_markdown || '';
+    var detailMermaidPromise = Promise.resolve();
     const detailHeadings = collectMarkdownHeadings(contentMarkdown);
     if (tocSectionEl) {
       tocSectionEl.hidden = !detailHeadings.length;
@@ -1349,10 +1370,13 @@
         routeIndex: markdownRouteIndex
       }) : '<p>当前 detail page 暂无可同步正文。</p>';
       renderDetailMath(contentEl);
-      renderDetailMermaid(contentEl);
+      detailMermaidPromise = renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
-      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
+      window.addEventListener('hashchange', function () {
+        scrollToDetailHashTarget(contentEl);
+        scrollDetailPageLayoutHashIntoView(contentEl);
+      });
       scrollToDetailHashTarget(contentEl);
       removeLoadingState(contentEl);
     }
@@ -1398,6 +1422,24 @@
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
 
     renderDetailMiniMap(detailPage, detailPages);
+
+    var hashForLayoutScroll = window.location.hash.replace(/^#/, '');
+    var emergencyLayoutScrollTimer = null;
+    if (hashForLayoutScroll) {
+      emergencyLayoutScrollTimer = window.setTimeout(function () {
+        scrollDetailPageLayoutHashIntoView(contentEl);
+      }, 5000);
+    }
+    detailMermaidPromise.finally(function () {
+      if (emergencyLayoutScrollTimer) {
+        window.clearTimeout(emergencyLayoutScrollTimer);
+        emergencyLayoutScrollTimer = null;
+      }
+      scrollDetailPageLayoutHashIntoView(contentEl);
+      if (hashForLayoutScroll) {
+        window.setTimeout(function () { scrollDetailPageLayoutHashIntoView(contentEl); }, 450);
+      }
+    });
   }
 
   function renderModulePage(siteData) {

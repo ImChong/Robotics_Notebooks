@@ -549,6 +549,31 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   min-width: 0;
   max-width: var(--content-max-width);
 }
+/* Detail page — 来源链接：超长 URL 单行省略，悬停 title 显示完整地址 */
+#detailSourceList > article.card {
+  min-width: 0;
+}
+/* .data-card 为 grid，子 div 默认 min-width:auto 会被长 URL 撑破省略号容器 */
+#detailSourceList article.data-card > div {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.detail-source-url {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+.detail-source-url code {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
 .detail-toc-panel {
   width: 260px;
   flex-shrink: 0;

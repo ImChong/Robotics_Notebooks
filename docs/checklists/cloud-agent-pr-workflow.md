@@ -44,6 +44,11 @@ git push -u origin <branch-name>
    ```  
    脚本在 `docs/` 起本地 `http.server`，用 `timeout(1)` 包住 Chrome：部分 Cloud 镜像里 Chrome 在打印 `bytes written` 后**仍不退出**（DevTools 进程常驻），仅靠 `--virtual-time-budget` 不足以结束进程；外层 `timeout` 强杀后**仍以 PNG 已生成且大于若干 KB 为成功判据**（退出码 124 可忽略）。  
 
+   若需要截**页面局部**（例如底部「来源链接」区块 `detail-sources`），可传入**第三个参数**为 DOM 元素 `id`（不要写 `#`）。此时脚本使用 Node + **`puppeteer-core`**（仓库根目录需已 `npm install`）等待网络与来源卡片渲染后再 `scrollIntoView` 截图，避免纯 headless 在 Mermaid 等异步撑开正文后视口仍停在页顶。  
+   ```bash
+   ./scripts/screenshot_site_detail.sh wiki-concepts-sim2real /path/to/out.png detail-sources
+   ```
+
    等价手写命令（与脚本一致的核心 flags）：  
    ```bash
    timeout 75 google-chrome --headless=new --disable-gpu --no-sandbox --disable-dev-shm-usage \
