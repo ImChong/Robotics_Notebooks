@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-05-13
+updated: 2026-05-15
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -114,7 +114,9 @@ subject to: FK(θ) = p_target (末端位置约束)
 | 工具/数据集 | 用途 |
 |------------|------|
 | CMU MoCap Database | 大量人类动作捕捉数据 |
-| AMASS | 统一格式的 MoCap 集合（50+ 数据集） |
+| [AMASS](../entities/amass.md) | 多源光学动捕统一到 **SMPL** 序列的大规模档案（注册下载；许可见官方） |
+| [LaFAN1](../entities/lafan1-dataset.md) | Ubisoft 发布的多主题 **BVH** 棚拍动捕（**CC BY-NC-ND**；常用作基准与部署案例数据源） |
+| [Mixamo](../entities/mixamo.md) | Adobe **商业**角色与动画库；快速原型与美术管线友好，**不等同**于可自由再分发的原始 MoCap 研究档案 |
 | SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |
 | phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |
 | OmniH2O | 人形机器人遥操+重定向框架 |
@@ -150,6 +152,9 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
 - **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
 - **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
+- **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
+- **ingest 档案：** [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1：Ubisoft BVH 动捕与评估脚本（SIGGRAPH 2020 论文配套）
+- **ingest 档案：** [sources/sites/mixamo.md](../../sources/sites/mixamo.md) — Mixamo：Adobe 在线角色与动画服务（商业许可与管线说明）
 
 ---
 
@@ -167,3 +172,6 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [MotionCode](../entities/motioncode.md) — 商业运动数据与「人形/具身 + RL」叙事样本
 - [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一
+- [AMASS](../entities/amass.md) — SMPL 系大规模统一动捕档案，常与 AMP / 生成式运动模型一起出现
+- [LaFAN1](../entities/lafan1-dataset.md) — BVH 多主题棚拍数据与过渡任务基准（注意 NC-ND 许可）
+- [Mixamo](../entities/mixamo.md) — 商业动画库，与科研向 MoCap 档案对照阅读
