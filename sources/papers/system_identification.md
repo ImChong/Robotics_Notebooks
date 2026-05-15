@@ -27,6 +27,7 @@
 - **链接：** <https://www.science.org/doi/10.1126/scirobotics.aau5872>
 - **核心贡献：** 提出 ActuatorNet：用神经网络从历史关节误差（位置/速度/力矩序列）预测真实关节力矩；通过真实数据辨识执行器动力学模型，显著减少 sim2real gap
 - **对 wiki 的映射：**
+  - [actuator-network](../../wiki/methods/actuator-network.md)
   - [system-identification](../../wiki/concepts/system-identification.md)
   - [sim2real](../../wiki/concepts/sim2real.md)
 
