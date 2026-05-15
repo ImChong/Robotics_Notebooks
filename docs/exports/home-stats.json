@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-15",
-  "node_count": 308,
-  "edge_count": 2052,
+  "node_count": 309,
+  "edge_count": 2061,
   "coverage": {
-    "covered": 306,
-    "total": 306,
+    "covered": 307,
+    "total": 307,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/methods/actuator-network.md",
-    "detail_id": "wiki-methods-actuator-network",
-    "label": "Actuator Network (执行器网络)",
+    "path": "wiki/methods/pi07-policy.md",
+    "detail_id": "wiki-methods-pi07-policy",
+    "label": "π₀.7（Pi-zero 0.7）通才 VLA",
     "type": "method",
     "recency": "2026-05-15",
     "source": "log.md"
