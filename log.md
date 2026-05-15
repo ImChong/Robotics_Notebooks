@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] ingest | sources/papers/pi07.md — Physical Intelligence π₀.₇（arXiv:2604.15483 + pi.website/blog/pi07），新增 wiki/methods/pi07-policy.md，交叉更新 wiki/methods/π0-policy.md、wiki/methods/vla.md、wiki/concepts/foundation-policy.md
+
+- 原始资料：`sources/papers/pi07.md`
+- 沉淀页面：`wiki/methods/pi07-policy.md`
+
 ## [2026-05-15] structural | wiki/methods/actuator-network.md, sources/papers/system_identification.md — 补充 ActuatorNet 一手论文 DOI / arXiv、RSS 2018 PDF、Isaac Lab 执行器代码链接；修正错误题名；`system_identification` ingest 映射增加 `actuator-network`
 
 ## [2026-05-15] structural | wiki/methods/actuator-network.md — 增加离线辨识训练与仿真步内闭环的 Mermaid 流程图；更新页面 `updated` 元数据

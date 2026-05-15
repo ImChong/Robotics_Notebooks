@@ -2,9 +2,10 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-15
 related:
   - ./vla.md
+  - ./pi07-policy.md
   - ./diffusion-policy.md
   - ../formalizations/vla-tokenization.md
   - ../formalizations/cross-modal-attention.md
@@ -40,6 +41,7 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 
 ## 关联页面
 - [VLA (Vision-Language-Action Models)](./vla.md)
+- [π₀.7（Pi-zero 0.7）通才 VLA](./pi07-policy.md) — 同一 π 系路线在「多模态提示 + 异质数据对齐」上的后继公开版本（2026）
 - [Diffusion Policy](./diffusion-policy.md)
 - [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)
@@ -48,3 +50,4 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.
 - [Physical Intelligence Blog](https://www.physicalintelligence.company/blog/pi0).
+- [sources/papers/pi07.md](../../sources/papers/pi07.md) — π₀.₇ 后继工作与多模态提示条件（若只关心 π₀ 本体的历史语境可略读摘录节）
