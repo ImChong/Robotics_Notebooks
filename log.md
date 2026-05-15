@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] structural | sources/repos/protomotions.md, wiki/entities/protomotions.md — 对照 NVlabs README 与 protomotions.github.io 扩充原始摘录与实体页：能力表、数据—训练—部署与模块化 MDP 双 Mermaid、局限说明；互链 ADD / DeepMimic / xue-bin-peng
+
 ## [2026-05-15] ingest | sources/repos/robot-io-rio.md — 收录 RIO 官网、GitHub、Netlify 文档与 arXiv:2605.11564；新建 `wiki/entities/robot-io-rio.md` 并互链 `wiki/methods/vla.md`、`wiki/entities/lerobot.md`、`wiki/tasks/teleoperation.md`
 
 - 原始资料：`sources/repos/robot-io-rio.md`（注明文档站 `/arXiv` 路径 404，以根路径为准）
