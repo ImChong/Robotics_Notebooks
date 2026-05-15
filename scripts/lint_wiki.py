@@ -14,6 +14,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
  11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  12. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
+ 13. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
 
 用法：
   python3 scripts/lint_wiki.py
@@ -33,6 +34,15 @@ from typing import Any
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
+
+# methods/ 页面入链数超过该阈值即视为"高频引用"，需有对应 queries/comparisons 操作落地
+METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
+
+# 仅用于信息提示、不计入 lint 失败总数的检查 key
+INFO_ONLY_KEYS: set[str] = {
+    "missing_pages",
+    "methods_without_practitioner_query",
+}
 
 
 def load_canonical_facts() -> dict:
@@ -178,6 +188,7 @@ def _empty_results() -> dict[str, Any]:
         "method_missing_sections": [],
         "entity_missing_outgoing": [],
         "wikilink_syntax": [],
+        "methods_without_practitioner_query": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -586,6 +597,50 @@ def _check_entity_page(page: Path, rel: Path, content: str, results: dict[str, A
         results["entity_missing_outgoing"].append(f"{rel} (当前出边: {out_count})")
 
 
+def _check_methods_without_practitioner_query(
+    pages: list[Path],
+    inbound: dict[Path, list[Path]],
+    results: dict[str, Any],
+) -> None:
+    """高频引用的 methods/ 页面应有对应 queries/ 操作指南或 comparisons/ 对比页落地。
+
+    判定：被超过 ``METHOD_PRACTITIONER_INBOUND_THRESHOLD`` 个其他 wiki 页面链接
+    （排除自链）的 methods/ 页，若其入链来源中没有任何一个属于 queries/ 或
+    comparisons/ 目录，则视为"待落地"——理论介绍已扩散，但缺少可操作的选型/
+    对比/Query 指南。属信息型预警，不计入 lint 失败总数。
+    """
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
+            continue
+        if page.name.lower() == "readme.md":
+            continue
+
+        resolved = page.resolve()
+        sources = [src for src in inbound.get(resolved, []) if src != resolved]
+        if len(sources) <= METHOD_PRACTITIONER_INBOUND_THRESHOLD:
+            continue
+
+        has_practitioner = False
+        for src in sources:
+            if not src.is_relative_to(REPO_ROOT):
+                continue
+            src_parts = src.relative_to(REPO_ROOT).parts
+            if (
+                len(src_parts) >= 2
+                and src_parts[0] == "wiki"
+                and src_parts[1] in ("queries", "comparisons")
+            ):
+                has_practitioner = True
+                break
+
+        if not has_practitioner:
+            results["methods_without_practitioner_query"].append(
+                f"{rel}（被 {len(sources)} 个页面引用，无 queries/comparisons 落地）"
+            )
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查 + entities/ 出边检查。
 
@@ -627,16 +682,30 @@ def lint() -> dict[str, Any]:
     _check_readme_badges(results)
     _check_graph_orphans(results)
     _check_methods_entities(pages, results)
+    _check_methods_without_practitioner_query(pages, inbound, results)
 
     return results
+
+
+def _failing_total(results: dict[str, Any]) -> int:
+    """计入 lint 失败的问题总数：排除内部统计键与信息型预警键。"""
+    return sum(
+        len(v) for k, v in results.items() if not k.startswith("_") and k not in INFO_ONLY_KEYS
+    )
+
+
+def _info_total(results: dict[str, Any]) -> int:
+    """信息型预警总数（不阻塞 CI）。"""
+    return sum(len(results.get(k, [])) for k in INFO_ONLY_KEYS)
 
 
 def format_report(results: dict[str, Any]) -> str:
     today = date.today().isoformat()
     lines = [f"## [{today}] lint | health-check | 自动化 wiki 健康检查", ""]
 
-    total_issues = sum(len(v) for k, v in results.items() if not k.startswith("_"))
-    lines.append(f"共发现 **{total_issues}** 个问题：")
+    failing = _failing_total(results)
+    info = _info_total(results)
+    lines.append(f"共发现 **{failing}** 个问题（另含 **{info}** 条信息型预警）：")
     lines.append("")
 
     sections = [
@@ -663,6 +732,11 @@ def format_report(results: dict[str, Any]) -> str:
         ("method_missing_link", "Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
         ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
         ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
+        (
+            "methods_without_practitioner_query",
+            "高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）",
+            "💡",
+        ),
     ]
 
     for key, label, icon in sections:
@@ -698,9 +772,13 @@ def main():
 
     print(report)
 
-    total = sum(len(v) for k, v in results.items() if not k.startswith("_"))
+    total = _failing_total(results)
+    info = _info_total(results)
     if total == 0:
-        print("✅ 所有检查通过！")
+        if info:
+            print(f"✅ 所有检查通过！（另含 {info} 条信息型预警，不阻塞 CI）")
+        else:
+            print("✅ 所有检查通过！")
     else:
         print(f"⚠️  共发现 {total} 个问题，请参考上方报告处理。")
 

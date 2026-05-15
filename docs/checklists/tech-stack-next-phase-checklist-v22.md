@@ -29,8 +29,11 @@
     - [x] 优化 `scripts/generate_link_graph.py` 的社区检测：在 Locomotion 单一巨型社区（46.1%）内进一步用 Louvain `resolution > 1.0` 二级拆分，使 `largest_community_ratio ≤ 0.40` 且 `community_quality_warning` 转 `false`。
       - 实现：保留 Girvan-Newman 一级检测（`PRIMARY_COMMUNITY_CAP=8`），新增 `refine_oversized_communities` + 纯 Python `louvain_communities`（带 `resolution=1.15` 的 Reichardt-Bornholdt modularity），对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分；`MAX_COMMUNITIES` 提升至 16 容纳子社区命名。
       - 结果：`exports/graph-stats.json` 中 `community_count=17`、`largest_community_ratio=0.138`（Manipulation 42 / 304）、`community_quality_warning=false`；Locomotion 巨型社区拆出 WBC / RL / MPC / IL / Sim2Real / Isaac Gym / Humanoid / Unitree G1 等子社区。
-- [ ] **方法-Query 闭环 Lint**：
-    - [ ] `scripts/lint_wiki.py` 新增 `methods_without_practitioner_query` 检查：被超过 3 个其他页面引用的 `methods/` 必须存在至少一篇 `queries/` 操作指南或 `comparisons/` 对比页对应，否则给出"待落地"预警。
+- [x] **方法-Query 闭环 Lint**：
+    - [x] `scripts/lint_wiki.py` 新增 `methods_without_practitioner_query` 检查：被超过 3 个其他页面引用的 `methods/` 必须存在至少一篇 `queries/` 操作指南或 `comparisons/` 对比页对应，否则给出"待落地"预警。
+      - 实现：新增 `_check_methods_without_practitioner_query()`，阈值 `METHOD_PRACTITIONER_INBOUND_THRESHOLD=3`（即 ≥ 4 个入链），排除自链；遍历入链来源，若无 `wiki/queries/*` 或 `wiki/comparisons/*` 命中则附"被 N 个页面引用，无 queries/comparisons 落地"提示。为防止首次落地即破坏 CI（当前 baseline 28 项），定义 `INFO_ONLY_KEYS = {missing_pages, methods_without_practitioner_query}`，新增 `_failing_total/_info_total` 让 main 退出码只统计硬错误，报告中 28 项以 💡 信息型展示。
+      - 验证：`tests/test_lint_wiki_practitioner_query.py` 新增 6 个用例（高入链无 query 命中、queries 命中、comparisons 命中、阈值边界、自链排除、INFO_ONLY 不计失败 total）全通过；`PYTHONPATH=scripts pytest --no-cov` 91/91；`ruff check`、`ruff format --check`、`mypy scripts/lint_wiki.py` 均通过；`python3 scripts/lint_wiki.py` 退出码 0，输出"✅ 所有检查通过！（另含 28 条信息型预警，不阻塞 CI）"。
+      - 后续：28 项预警是 V22 P1/P2 待补 `queries/`、`comparisons/` 的落地基线（动作重定向、抓取、AMP/Beyondmimic/Exoactor 等高频热点），后续按 P1/P2 推进会同步消减。
 
 ## P1: 动作重定向与角色化人形专题 (Quality)
 
