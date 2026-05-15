@@ -5,6 +5,7 @@ status: complete
 updated: 2026-05-14
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
+  - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md

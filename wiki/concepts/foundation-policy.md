@@ -2,6 +2,7 @@
 type: concept
 tags: [foundation-policy, vla, rt1, rt2, pi0, octo, generalist, pretraining, manipulation]
 related:
+  - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/gr00t-wholebodycontrol.md

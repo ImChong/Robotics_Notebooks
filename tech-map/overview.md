@@ -95,6 +95,7 @@ State Estimation / System Identification / Sim2Real
 建议从这里进入：
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)
 - [Imitation Learning](../wiki/methods/imitation-learning.md)
+- [人形与腿式策略的网络架构](../wiki/concepts/humanoid-policy-network-architecture.md)（MLP / AMP / MoE / Diffusion chunk / VLA–WAM 演化与论文 Method 常见披露项）
 - [Robot Learning Overview](../wiki/overview/robot-learning-overview.md)
 - [WBC vs RL](../wiki/comparisons/wbc-vs-rl.md)
 

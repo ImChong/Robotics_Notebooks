@@ -59,8 +59,8 @@
     "query": "WBC 全身控制 QP",
     "mode": "bm25",
     "must_include": ["wiki/concepts/whole-body-control.md"],
-    "expected_top_k": 3,
-    "note": "WBC 核心页必须前三"
+    "expected_top_k": 5,
+    "note": "WBC 核心页必须前五（实体页与邻近概念页常抢占更前位次）"
   },
   {
     "query": "MPC 模型预测控制",

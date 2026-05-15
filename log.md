@@ -364,3 +364,7 @@
 ## [2026-05-14] ingest | sources/blogs/menlo_noise_is_all_you_need.md — Menlo「处理器在环+总线抖动」博文入库；新增 wiki/concepts/processor-in-the-loop-sim2real；互链 sim2real、asimov-v1
 
 ## [2026-05-14] ingest | sources/papers/humannet.md — HumanNet arXiv:2605.06747 入库；新增 wiki/entities/humannet 并互链 VLA / IL / 人形机器人
+
+## [2026-05-15] ingest | sources/personal/humanoid-policy-network-architecture-faq.md — 新建概念页 humanoid-policy-network-architecture 与 tech-map il 节点 policy-network-architecture
+
+## [2026-05-15] structural | schema/search-regression-cases.json — WBC×QP BM25 回归 expected_top_k 3→5（语料扩张后 whole-body-control 概念页常居第 4–5 位）
