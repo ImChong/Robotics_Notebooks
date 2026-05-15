@@ -39,15 +39,49 @@ const executablePath =
       deviceScaleFactor: 1
     });
     await page.goto(pageUrl, { waitUntil: 'networkidle2', timeout: 120000 });
-    await page.waitForSelector('#detailSourceList article.card', { timeout: 90000 });
+    // 骨架屏同样是 article.card，不能用来判断「已写入真实来源」；以去掉 data-loading 为准。
+    await page.waitForSelector('#detailSourceList:not(.data-loading)', { timeout: 90000 });
+    await page.waitForFunction(
+      function () {
+        const root = document.getElementById('detailSourceList');
+        if (!root) return false;
+        return (
+          root.querySelector('.detail-source-url') !== null ||
+          /暂无来源|无可展示/.test(root.textContent || '')
+        );
+      },
+      { timeout: 90000 }
+    );
     await page.waitForSelector('#' + anchorId, { timeout: 10000 });
-    await page.evaluate(function (id) {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
-    }, anchorId);
+
+    async function scrollAnchorIntoView() {
+      await page.evaluate(function (id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+      }, anchorId);
+    }
+
+    await scrollAnchorIntoView();
     await new Promise(function (resolve) {
-      setTimeout(resolve, 500);
+      setTimeout(resolve, 600);
     });
+    await scrollAnchorIntoView();
+
+    const anchorOk = await page.evaluate(function (id) {
+      const el = document.getElementById(id);
+      if (!el) return false;
+      const r = el.getBoundingClientRect();
+      // scrollIntoView(block:start) 在吸顶 header 下常见 top≈200~320，仍算「来源区已进入视口」
+      return r.top >= -80 && r.top < 520 && r.bottom > 120;
+    }, anchorId);
+    if (!anchorOk) {
+      throw new Error(
+        'screenshot_detail_anchor_viewport: 锚点 #' +
+          anchorId +
+          ' 未滚入视口上部，请检查页面 id 或等待条件。'
+      );
+    }
+
     await page.screenshot({ path: outPath, type: 'png' });
   } finally {
     await browser.close();
