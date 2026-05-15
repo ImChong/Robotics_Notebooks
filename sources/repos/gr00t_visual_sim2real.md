@@ -21,6 +21,7 @@ GR00T-VisualSim2Real 是 NVIDIA 开源的 **视觉 Sim2Real 框架**，包含两
 
 ### VIRAL — Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation
 
+- **论文专档（摘录与 wiki 映射）**：[sources/papers/viral-humanoid-visual-sim2real.md](../papers/viral-humanoid-visual-sim2real.md)
 - **论文**：arXiv:2511.15200，CVPR 2026
 - **项目页**：https://viral-humanoid.github.io/
 - **核心问题**：如何让人形机器人在仿真中学到的 loco-manipulation 策略，以仅靠 RGB 相机输入的方式零样本迁移到真机

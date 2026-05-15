@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, sim2real, loco-manipulation, teleoperation, visual-rl, reinforcement-learning, cmu, nvidia]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-15
 related:
+  - ./paper-viral-humanoid-visual-sim2real.md
   - ./gr00t-visual-sim2real.md
   - ./humanoid-robot.md
   - ./zhengyi-luo.md
@@ -54,6 +55,7 @@ flowchart LR
 
 ## 关联页面
 
+- [VIRAL 论文实体](./paper-viral-humanoid-visual-sim2real.md)
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md)
 - [人形机器人](./humanoid-robot.md)
 - [Sim2Real](../concepts/sim2real.md)

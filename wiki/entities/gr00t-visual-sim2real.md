@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-15
 related:
+  - ./paper-viral-humanoid-visual-sim2real.md
   - ./tairan-he.md
   - ../concepts/sim2real.md
   - ../concepts/privileged-training.md
@@ -16,6 +17,7 @@ related:
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/repos/gr00t_visual_sim2real.md
+  - ../../sources/papers/viral-humanoid-visual-sim2real.md
 summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。"
 ---
 
@@ -33,11 +35,47 @@ summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架
 
 GR00T-VisualSim2Real 用 **Teacher-Student 蒸馏** 解耦了这两个问题：Teacher 在仿真中用特权状态高效学习任务策略，Student 只需从 RGB 模仿 Teacher 的行为，避免了从像素直接训练 RL 的困难。
 
+## 流程总览
+
+下列流程图概括仓库默认管线（**VIRAL** 主路径）；**DoorMan** 在学生之后可再接 **GRPO** 微调，见下文专节。
+
+```mermaid
+flowchart TB
+  subgraph p1 [阶段1 Teacher]
+    priv["特权观测\n位姿 / 物体 / 接触等"]
+    ppo["PPO + RSI\n长时域探索"]
+    delta["delta WBC 指令\n速度 + 臂 / 指关节增量"]
+    priv --> ppo --> delta
+  end
+  subgraph wbc [低层全身控制]
+    homie["预训练 WBC\n如 HOMIE"]
+  end
+  subgraph p2 [阶段2 Student]
+    rgb["RGB + 本体\n关节 / IMU 等"]
+    distill["DAgger + BC 混合蒸馏\n大规模并行仿真 · 分块渲染"]
+    rgb --> distill
+  end
+  subgraph s2r [Sim2Real 手段]
+    dr["视觉域随机化\n光照 / 材质 / 画质 / 延迟等"]
+    align["real-to-sim 对齐\n相机外参 · 灵巧手 SysID"]
+  end
+  subgraph p3 [阶段3 部署]
+    onnx["ONNX 导出"]
+    g1["Unitree G1 机载推理\n零样本"]
+  end
+  delta --> homie
+  delta -.->|"MSE 模仿教师指令"| distill
+  dr -.-> distill
+  align -.-> distill
+  distill --> onnx --> g1
+```
+
 ## 两个研究项目
 
 ### VIRAL — Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation
 
 - **论文**：arXiv:2511.15200，CVPR 2026
+- **独立知识节点**：[VIRAL（论文实体）](./paper-viral-humanoid-visual-sim2real.md) — 方法栈、算力 scaling 与消融归纳
 - **目标**：人形机器人规模化 loco-manipulation 的视觉 Sim2Real
 - **特点**：Isaac Lab 并行仿真，大规模采样，DAgger 蒸馏后零样本迁移
 
@@ -47,7 +85,7 @@ GR00T-VisualSim2Real 用 **Teacher-Student 蒸馏** 解耦了这两个问题：T
 - **目标**：像素到动作（Pixel-to-Action）策略迁移，专注重型门开门
 - **难点**：接触丰富（需要对抗门铰链阻力），仅靠 RGB 隐式推断接触力
 
-## 核心方法：Teacher-Student Distillation
+## 核心方法：Teacher-Student Distillation（文字展开）
 
 ```
 阶段 1：Teacher 训练（Isaac Sim + PPO）
@@ -64,6 +102,8 @@ GR00T-VisualSim2Real 用 **Teacher-Student 蒸馏** 解耦了这两个问题：T
   导出：ONNX 自动导出（eval 时触发）
   运行：实时 RGB + 本体感知 → 关节指令
 ```
+
+与上图对应：上图强调 **数据与控制流边界**；本段保留 **分阶段文字说明** 便于检索。
 
 ### 为什么用 DAgger 而不是 BC？
 
@@ -126,10 +166,12 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 - [Imitation Learning](../methods/imitation-learning.md) — DAgger 是 IL 核心算法之一
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 本框架的主要任务方向
 - [Tairan He](./tairan-he.md) — VIRAL / DoorMan 等工作的作者侧论文与项目索引
+- [VIRAL 论文实体](./paper-viral-humanoid-visual-sim2real.md) — arXiv:2511.15200 方法栈专页
 
 ## 参考来源
 
 - [sources/repos/gr00t_visual_sim2real.md](../../sources/repos/gr00t_visual_sim2real.md) — 原始资料归档
+- [sources/papers/viral-humanoid-visual-sim2real.md](../../sources/papers/viral-humanoid-visual-sim2real.md) — VIRAL 论文摘录与 wiki 映射
 - [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real) — GitHub 仓库（135 stars，Apache-2.0）
 - VIRAL: *Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation*, arXiv:2511.15200, CVPR 2026. 作者：Tairan He, Zi Wang, Haoru Xue et al.（CMU / NVIDIA GEAR Lab / UC Berkeley）
 - DoorMan: *Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer*, arXiv:2512.01061, CVPR 2026. 作者：Haoru Xue, Tairan He, Zi Wang et al.（NVIDIA GEAR Lab / CMU / UC Berkeley）

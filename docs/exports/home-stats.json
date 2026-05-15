@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-15",
-  "node_count": 309,
-  "edge_count": 2061,
+  "node_count": 310,
+  "edge_count": 2076,
   "coverage": {
-    "covered": 307,
-    "total": 307,
+    "covered": 308,
+    "total": 308,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/methods/pi07-policy.md",
-    "detail_id": "wiki-methods-pi07-policy",
-    "label": "π₀.7（Pi-zero 0.7）通才 VLA",
-    "type": "method",
+    "path": "wiki/entities/paper-viral-humanoid-visual-sim2real.md",
+    "detail_id": "entity-paper-viral-humanoid-visual-sim2real",
+    "label": "VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）",
+    "type": "entity",
     "recency": "2026-05-15",
     "source": "log.md"
   }
