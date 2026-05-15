@@ -8,6 +8,7 @@ related:
   - ../entities/anymal.md
   - ../concepts/system-identification.md
 sources:
+  - ../../sources/papers/system_identification.md
   - ../../sources/papers/locomotion_rl.md
 summary: "执行器网络（Actuator Network）通过神经网络在仿真中拟合真实电机的非线性动力学、摩擦和延迟特性，是实现高精度足式机器人 Sim2Real 迁移的核心技术。"
 ---
@@ -72,5 +73,9 @@ flowchart LR
 - [System Identification (系统辨识)](../concepts/system-identification.md)
 
 ## 参考来源
-- Hwangbo, J., et al. (2019). *Learning agile robotic locomotion skills by simulating design and control*.
-- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md)
+
+- Hwangbo et al. (2019). *Learning Agile and Dynamic Motor Skills for Legged Robots*（Science Robotics）— 提出 **ActuatorNet**：用神经网络从历史关节误差与力矩序列预测真实关节力矩，显著压缩 sim2real 中的执行器动力学误差；正式出版页：[Science Robotics (DOI)](https://www.science.org/doi/10.1126/scirobotics.aau5872)；开放获取预印本：[arXiv:1901.08652](https://arxiv.org/abs/1901.08652)。
+- Hwangbo et al. (2018). *Sim-to-Real: Learning Agile Locomotion For Quadruped Robots*（RSS）— 同团队早期 **sim2real + 动力学随机化** 路线，为后续执行器级建模问题提供上下文；会议论文 PDF：[RSS 2018 p10](https://www.roboticsproceedings.org/rss14/p10.pdf)。
+- [sources/papers/system_identification.md](../../sources/papers/system_identification.md) — ingest 档案（含 Hwangbo 2019 ActuatorNet 条目与摘要）。
+- [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — 足式 RL 论文索引（ANYmal 等应用背景）。
+- Isaac Lab 执行器栈工程参考（理想/隐式 PD、数据驱动力矩路径等）：[`actuator_pd.py`](https://github.com/isaac-sim/IsaacLab/blob/main/source/isaaclab/isaaclab/actuators/actuator_pd.py)。
