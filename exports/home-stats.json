@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-15",
-  "node_count": 310,
-  "edge_count": 2076,
+  "node_count": 311,
+  "edge_count": 2084,
   "coverage": {
-    "covered": 308,
-    "total": 308,
+    "covered": 309,
+    "total": 309,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-viral-humanoid-visual-sim2real.md",
-    "detail_id": "entity-paper-viral-humanoid-visual-sim2real",
-    "label": "VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）",
+    "path": "wiki/entities/xiaomi-robotics-0.md",
+    "detail_id": "entity-xiaomi-robotics-0",
+    "label": "Xiaomi-Robotics-0",
     "type": "entity",
     "recency": "2026-05-15",
     "source": "log.md"
