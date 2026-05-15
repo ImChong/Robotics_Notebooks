@@ -2,7 +2,7 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-15
 related:
   - ../concepts/sim2real.md
   - ../entities/anymal.md
@@ -33,6 +33,25 @@ $$ \tau = K_p (q_{target} - q) + K_d (\dot{q}_{target} - \dot{q}) $$
 - **输入**：当前位置误差 $(q_d - q)$、关节速度 $\dot{q}$、历史动作序列 $a_{t-k:t}$。
 - **输出**：该时刻真实的驱动力矩 $\tau_{real}$。
 - **训练数据**：通过真机实验采集，输入随机动作指令，测量真实产生的关节响应。
+
+## 流程总览
+
+```mermaid
+flowchart LR
+  subgraph offline["离线：辨识与训练"]
+    R[真机悬空激励] --> D[(q, q_dot, tau, 指令)]
+    D --> T[MLP / LSTM 拟合]
+    T --> W[ActuatorNet 权重 / TorchScript]
+  end
+  subgraph sim["仿真步内闭环"]
+    P[策略或 PD 目标] --> F[误差 / 速度 / 历史动作特征]
+    W --> N[执行器网络前向]
+    F --> N
+    N --> Tau[tau_real]
+    Tau --> Phy[物理仿真一步]
+    Phy --> F
+  end
+```
 
 ## 主要技术路线
 
