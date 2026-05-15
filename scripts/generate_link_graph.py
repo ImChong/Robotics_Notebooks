@@ -5,8 +5,9 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 扫描所有 wiki 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
-同时写入 exports/graph-stats.json（含 latest_wiki_node：优先按 log.md 中
-自上而下首个 ingest 条目的 wiki 路径解析，否则回退到 frontmatter / mtime 的 recency）。
+同时写入 exports/graph-stats.json（含 latest_wiki_node：按 log.md 自上而下
+首个日志块中出现的有效 wiki/... 路径解析（ingest / structural / query 等均可），
+若无则回退到 frontmatter / mtime 的 recency）。
 
 输出格式：
   {
@@ -124,8 +125,9 @@ def _log_sections(text: str) -> list[str]:
 def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | None:
     """从 log.md 解析「当前应展示的」最新 wiki 节点。
 
-    规则：自上而下扫描 `## [日期] ...` 块；优先在标题含 **ingest** 的块内取**首次**出现的
-    `wiki/...` 路径；若无命中再扫描其余块。路径须对应仓库内现存文件，且须在图谱节点列表中。
+    规则：自上而下扫描 `## [日期] ...` 块（新记录在上）；按**文件顺序**取**第一个**
+    在块内出现且对应仓库现存文件、且在图谱节点中的 `wiki/...` 路径。
+    不区分 op 类型：ingest / structural / query 等只要在条目中写出 `wiki/...` 即可驱动首页展示。
     """
     if not LOG_MD_PATH.is_file():
         return None
@@ -133,37 +135,28 @@ def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | N
     sections = _log_sections(text)
     node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
 
-    def pick(ingest_only: bool) -> dict[str, Any] | None:
-        for chunk in sections:
-            head = chunk.split("\n", 1)[0]
-            if ingest_only and not re.search(r"\bingest\b", head, re.IGNORECASE):
+    for chunk in sections:
+        date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
+        log_date = date_m.group(1) if date_m else ""
+        for m in WIKI_PATH_IN_LOG.finditer(chunk):
+            rel = _normalize_wiki_rel_from_log_match(m.group(0))
+            if not rel.startswith("wiki/"):
                 continue
-            date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
-            log_date = date_m.group(1) if date_m else ""
-            for m in WIKI_PATH_IN_LOG.finditer(chunk):
-                rel = _normalize_wiki_rel_from_log_match(m.group(0))
-                if not rel.startswith("wiki/"):
-                    continue
-                p = REPO_ROOT / rel
-                if not p.is_file():
-                    continue
-                base = node_by_id.get(rel)
-                if not base:
-                    continue
-                return {
-                    "path": rel,
-                    "detail_id": _wiki_node_detail_id(rel),
-                    "label": str(base.get("label") or Path(rel).stem),
-                    "type": str(base.get("type") or ""),
-                    "recency": log_date,
-                    "source": "log.md",
-                }
-        return None
-
-    hit = pick(ingest_only=True)
-    if hit:
-        return hit
-    return pick(ingest_only=False)
+            p = REPO_ROOT / rel
+            if not p.is_file():
+                continue
+            base = node_by_id.get(rel)
+            if not base:
+                continue
+            return {
+                "path": rel,
+                "detail_id": _wiki_node_detail_id(rel),
+                "label": str(base.get("label") or Path(rel).stem),
+                "type": str(base.get("type") or ""),
+                "recency": log_date,
+                "source": "log.md",
+            }
+    return None
 
 
 def compute_health_score(content: str) -> int:

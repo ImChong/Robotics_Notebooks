@@ -135,6 +135,8 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 
 格式参考 `schema/log-format.md`。
 
+**首页「最新知识节点」**：静态站 `docs/index.html` 读取 `exports/home-stats.json` 中的 `latest_wiki_node`。该字段由 `make graph`（`scripts/generate_link_graph.py`）写入 `exports/graph-stats.json`，再由 `scripts/generate_home_stats.py` 拷贝到 `home-stats.json`。解析规则为：在 `log.md` 中**自上而下**（新记录在上）扫描 `## [日期] ...` 块，取**第一个**在块正文中出现、且对应现存 wiki 文件的 `wiki/...` 路径（**ingest / structural / query 等任意 op 均可**）。因此：凡是希望读者在首页看到对应更新的 wiki 工作，都应在本次 `log.md` 条目中**显式写出**至少一条 `wiki/...` 路径；仅写 `sources/` 或脚本路径时，会继续向下匹配或最终回退到全库「最近更新」启发式。维护完成后运行 `make ci-preflight` 以同步 `exports/` 与 `docs/exports/`。
+
 ---
 
 ## Op 2：Query — 针对知识库提问
@@ -275,3 +277,4 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 - 不要为了收集而收集 — 优先服务学习与研究主线
 - 不要在 ingest 时一次性做太多事 — 一次一条资料，深度到位再推进
 - 每次 ingest 都要更新 index.md 和 log.md，不要遗漏
+- 子网页优化、纯 wiki 扩写等 **structural** 记录若在 `log.md` 标题或正文中写明 `wiki/...`，首页「最新知识节点」才会与本次工作对齐；提交前务必 `make ci-preflight` 刷新派生 JSON
