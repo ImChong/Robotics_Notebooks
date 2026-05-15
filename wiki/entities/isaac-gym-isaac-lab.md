@@ -3,7 +3,7 @@ type: entity
 sources:
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Lab"
-updated: 2026-04-25
+updated: 2026-05-15
 ---
 
 # Isaac Gym / Isaac Lab
@@ -241,6 +241,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
 - [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真
+- [PyTorch](./pytorch.md) — 常见策略/价值网络与张量并行 rollouts 的默认深度学习后端
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 
 ## 一句话记忆

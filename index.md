@@ -40,6 +40,7 @@
 - [Capture Point / DCM](wiki/concepts/capture-point-dcm.md)
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
+- [PyTorch](wiki/entities/pytorch.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)

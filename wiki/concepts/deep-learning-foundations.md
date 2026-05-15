@@ -2,7 +2,7 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-05-14
+updated: 2026-05-15
 ---
 
 # 深度学习基础 (Deep Learning Foundations)
@@ -40,9 +40,11 @@ updated: 2026-05-14
 - [强化学习基础](../methods/reinforcement-learning.md)
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [PyTorch](../entities/pytorch.md)
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
+- [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
 
 ## 推荐继续阅读
 - [Deep Learning Book (Goodfellow et al.)](https://www.deeplearningbook.org/)
