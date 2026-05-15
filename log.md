@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] ingest | sources/sites/amass-dataset.md, sources/repos/ubisoft-laforge-animation-dataset.md, sources/sites/mixamo.md — AMASS / LaFAN1 / Mixamo 入库；新增 wiki/entities/amass.md、wiki/entities/lafan1-dataset.md、wiki/entities/mixamo.md；互链 motion-retargeting、wbc-fsm、ProtoMotions
+
+- 原始资料：`sources/sites/amass-dataset.md`、`sources/repos/ubisoft-laforge-animation-dataset.md`、`sources/sites/mixamo.md`
+- 沉淀页面：`wiki/entities/amass.md`、`wiki/entities/lafan1-dataset.md`、`wiki/entities/mixamo.md`
+
 ## [2026-05-15] ingest | sources/repos/xiaomi-robotics-0.md — 小米 Xiaomi-Robotics-0（官网/GitHub/arXiv:2602.12684）；新增 wiki/entities/xiaomi-robotics-0.md；互链 VLA、Action Chunking
 
 - 原始资料：`sources/repos/xiaomi-robotics-0.md`

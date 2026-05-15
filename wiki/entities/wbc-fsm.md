@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, wbc, fsm, humanoid, unitree-g1, deployment, onnx, cpp, motion-tracking, whole-body-control]
 status: complete
-updated: 2026-05-01
+updated: 2026-05-15
 related:
+  - ./lafan1-dataset.md
   - ./amp-mjlab.md
   - ./unitree-g1.md
   - ./unitree-rl-mjlab.md
@@ -53,7 +54,7 @@ wbc_fsm 的核心是三态状态机：
 
 **路线：MoCap 重定向 → RL 训练 → ONNX 导出 → C++ 部署**
 
-1. **动捕数据**：LAFAN1 MoCap 数据集 → 重定向到 G1 骨架关节空间
+1. **动捕数据**：[LaFAN1](./lafan1-dataset.md) MoCap 数据集 → 重定向到 G1 骨架关节空间
 2. **策略训练**：RL（AMP 风格）学习跟踪动捕参考动作（训练侧由 AMP_mjlab 等框架完成）
 3. **ONNX 导出**：策略网络序列化为 `lafan1_0128_1.onnx`
 4. **C++ 推理**：ONNX Runtime 1.22.0 在 G1 PC2（aarch64）上实时推理，驱动全身关节
@@ -94,6 +95,8 @@ G1 板端 (PC2 / aarch64)
 ## 参考来源
 
 - [sources/repos/wbc_fsm.md](../../sources/repos/wbc_fsm.md) — 仓库原始归档
+- [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1 数据集与评估脚本一手归档
+- [LaFAN1 动捕数据集](./lafan1-dataset.md) — 许可、规模与工程要点（实体页）
 - [ccrpRepo/wbc_fsm GitHub](https://github.com/ccrpRepo/wbc_fsm) — 代码仓库
 - Harvey et al., *Robust Motion In-Betweening*, SIGGRAPH 2020 — LAFAN1 数据集来源论文
 
@@ -104,4 +107,5 @@ G1 板端 (PC2 / aarch64)
 - [unitree_rl_mjlab](./unitree-rl-mjlab.md) — Unitree 官方 RL+ONNX 部署参考
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 理论概念页
 - [Motion Retargeting GMR](../methods/motion-retargeting-gmr.md) — LAFAN1 → G1 重定向方法
+- [LaFAN1 动捕数据集](./lafan1-dataset.md) — MoCap 源数据与许可边界
 - [Locomotion](../tasks/locomotion.md) — 上层任务场景

@@ -233,6 +233,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-1x-technologies</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-allegro-hand</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-aloha</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-amass</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-amp-mjlab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-anygrasp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-anymal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -263,9 +264,11 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-humanoid-robot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-isaac-gym-isaac-lab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-kimodo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-lafan1-dataset</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-legged-gym</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-lerobot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mimickit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mixamo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mjlab-playground</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-mjlab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-modern-robotics-book</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

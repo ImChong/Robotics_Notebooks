@@ -165,6 +165,7 @@ SORT type ASC
 - [Allegro Hand (灵巧手)](entities/allegro-hand.md) — Allegro Hand** 是由 Wonik Robotics 开发的一款高性能四指灵巧手（Dexterous Hand）。它在机器人科研界（特别是强化学习和模仿学习领域）享有极高的普及率，被视 `📅unknown` `[entity_page]`
 - [AnyGrasp（抓取感知 SDK）](entities/anygrasp.md) — AnyGrasp** 是面向平行夹爪的稠密 7-DoF 抓取感知与跨帧跟踪管线：单前向从深度点云预测大量候选并做时空关联，官方以 SDK（预编译库 + License）形式发布。 `📅2026-05-13` `[entity_page]`
 - [ANYmal 四足机器人](entities/anymal.md) — ANYmal** 是由苏黎世联邦理工学院（ETH Zurich）的机器人系统实验室（Robotic Systems Lab, RSL）研发，并随后由衍生公司 ANYbotics 成功商业化的高性能 `📅unknown` `[entity_page]`
+- [AMASS（统一 SMPL 人体动捕档案）](entities/amass.md) — AMASS 将多份光学标记动捕拟合到 SMPL 参数序列，是动画、可视化与机器人学习里常见的大规模人体参考运动来源之一；下载与引用以 MPI-IS 站点许可为准。 `📅2026-05-15` `[entity_page]`
 - [Asimov v1（开源人形机器人仓库）](entities/asimov-v1.md) — Asimov v1 由 asimovinc 在单仓内开放机械与电气 CAD、MuJoCo 模型及板载软件，配套 DIY Kit 与自采 BOM，适合作为全栈对齐与 Sim2Real 研究的硬件参考平台 `📅unknown` `[entity_page]`
 - [Atom01 Deploy](entities/atom01-deploy.md) — atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。 `📅unknown` `[entity_page]`
 - [Atom01 Description](entities/atom01-description.md) — atom01_description** 是 Atom01 的机器人描述仓库，主要提供 URDF、网格和模型配置，用于连接硬件实体与仿真/控制软件。 `📅unknown` `[entity_page]`
@@ -184,10 +185,12 @@ SORT type ASC
 - [HumanNet](entities/humannet.md) — HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。 `📅2026-05-14` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [Kimodo（运动扩散模型）](entities/kimodo.md) — NVIDIA nv-tlabs 开源：大规模动捕上训练的运动扩散模型，支持文本与运动学约束生成 SOMA / G1 / SMPL-X 轨迹，附 CLI、时间线 Demo 与公开基准。 `📅2026-05-14` `[entity_page]`
+- [LaFAN1（Ubisoft 动捕数据集）](entities/lafan1-dataset.md) — Ubisoft La Forge 发布的 BVH 棚拍动捕与过渡任务基准（SIGGRAPH 2020 配套）；许可为 CC BY-NC-ND 4.0，克隆需 Git LFS。 `📅2026-05-15` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪 `📅unknown` `[entity_page]`
 - [Meta Quest (Oculus) 遥操作](entities/oculust-quest-teleop.md) — 在机器人模仿学习（Imitation Learning）和 VLA 模型训练中，**Meta Quest (原 Oculus Quest)** 系列 VR 头显已成为获取大规模高质量人类演示数据的核心 `📅unknown` `[entity_page]`
+- [Mixamo（Adobe 角色与动画库）](entities/mixamo.md) — Adobe 在线绑定角色与全身动画下载服务；适合美术与原型管线，商业许可以官方为准，与科研向 MoCap 档案在可追溯性与再分发边界上不同。 `📅2026-05-15` `[entity_page]`
 - [MotionCode™](entities/motioncode.md) — MotionCode 是宣称专注人体运动数字化的公司，公开分为 Move（采集与标注）、Media（内容）、Mind（机器人与 AI 运动学习）三线，并强调数据可对接 Isaac、MuJoCo 及主流 DCC/实时引擎管线。 `📅2026-05-07` `[entity_page]`
 - [开源人形机器人“大脑” (主控电脑) 选型](entities/open-source-humanoid-brains.md) — 对于人形机器人，其“大脑”需要承担两类截然不同的计算任务：一是需要极高确定性的底层 **运控循环 (1kHz+)**；二是需要海量算力的 **感知与大模型推理 (5-30Hz)**。 `📅unknown` `[entity_page]`
 - [开源人形机器人硬件方案对比](entities/open-source-humanoid-hardware.md) — 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。 `📅unknown` `[entity_page]`
