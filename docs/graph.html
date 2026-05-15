@@ -987,7 +987,7 @@
         for (const [communityId, label] of communityLabelMap.entries()) {
           const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
           const isActive = (focusedCommunityId === communityId);
-          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${communityId}">
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(communityId)}">
             <div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}
           </div>`);
         }
@@ -1311,7 +1311,7 @@
       const community = communityLabel
         ? `<div class="tt-summary">社区：${escapeHtml(communityLabel)}</div>`
         : '';
-      return `<span class="tt-type" style="background:${color};color:#0d1117">${typeLabel}</span>` +
+      return `<span class="tt-type" style="background:${color};color:#0d1117">${escapeHtml(typeLabel)}</span>` +
              `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
              (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
              community +
