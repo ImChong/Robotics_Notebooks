@@ -1,6 +1,7 @@
 ---
 type: entity
 title: PyTorch
+date: 2026-05-15
 tags: [framework, deep-learning, pytorch, distributed-training, deployment]
 summary: "PyTorch 是以 Python 优先、动态图友好的开源深度学习框架，覆盖从研究训练到服务端与边端部署的完整工具链，是机器人学习与仿真的主流张量后端之一。"
 updated: 2026-05-15
