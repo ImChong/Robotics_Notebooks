@@ -1,18 +1,18 @@
 {
-  "generated_at": "2026-05-14",
-  "node_count": 305,
-  "edge_count": 2015,
+  "generated_at": "2026-05-15",
+  "node_count": 306,
+  "edge_count": 2024,
   "coverage": {
-    "covered": 303,
-    "total": 303,
+    "covered": 304,
+    "total": 304,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/methods/sonic-motion-tracking.md",
-    "detail_id": "wiki-methods-sonic-motion-tracking",
-    "label": "SONIC（规模化运动跟踪人形控制）",
-    "type": "method",
-    "recency": "2026-05-14",
+    "path": "wiki/entities/robot-io-rio.md",
+    "detail_id": "entity-robot-io-rio",
+    "label": "RIO（Robot I/O）",
+    "type": "entity",
+    "recency": "2026-05-15",
     "source": "log.md"
   }
 }

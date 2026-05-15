@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] ingest | sources/repos/robot-io-rio.md — 收录 RIO 官网、GitHub、Netlify 文档与 arXiv:2605.11564；新建 `wiki/entities/robot-io-rio.md` 并互链 `wiki/methods/vla.md`、`wiki/entities/lerobot.md`、`wiki/tasks/teleoperation.md`
+
+- 原始资料：`sources/repos/robot-io-rio.md`（注明文档站 `/arXiv` 路径 404，以根路径为准）
+- 沉淀页面：`wiki/entities/robot-io-rio.md`
+
 ## [2026-05-14] structural | scripts/search_wiki_core.py — V22 P0 缩写/别名归一化检索：新增 `WIKI_ABBREVIATIONS`（16 条：WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF/BC/IK/FK/LIP/ZMP/TSID）与 `expand_query_aliases()`，缩写 ↔ 全称双向展开后同时喂给 BM25 分词与行匹配，并以"缩写归一化：已展开为 …"提示挂到 `semantic_notice`；新增 5 个单测（21/21 通过），`eval_search_quality.py` 36/37 与基线一致
 
 ## [2026-05-14] structural | roadmap & docs/main.js — 主路线 ASCII 图换 mermaid + skip-to 改交互按钮 + 4 条 depth 加 mermaid pipeline
