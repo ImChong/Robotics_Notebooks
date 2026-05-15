@@ -8,10 +8,10 @@
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/protomotions.md",
-    "detail_id": "entity-protomotions",
-    "label": "ProtoMotions: 大规模人形机器人仿真框架",
-    "type": "entity",
+    "path": "wiki/methods/actuator-network.md",
+    "detail_id": "wiki-methods-actuator-network",
+    "label": "Actuator Network (执行器网络)",
+    "type": "method",
     "recency": "2026-05-15",
     "source": "log.md"
   }
