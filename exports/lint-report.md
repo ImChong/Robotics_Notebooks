@@ -73,4 +73,4 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-📊 Sources 覆盖率：305/305 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：306/306 (100%) wiki/entity 页有 ingest 来源
