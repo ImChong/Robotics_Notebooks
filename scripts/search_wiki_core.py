@@ -120,7 +120,7 @@ def extract_related_links(content: str, source_path: Path) -> list[str]:
 
 
 def compute_avgdl(docs: list[dict]) -> float:
-    lengths = [max(sum(doc["token_counts"].values()), 1) for doc in docs]
+    lengths = [doc.get("dl", max(sum(doc.get("token_counts", {}).values()), 1)) for doc in docs]
     return sum(lengths) / max(len(lengths), 1)
 
 
@@ -133,12 +133,12 @@ def compute_score(
     b: float = 0.75,
     fm: dict | None = None,
     page_type: str = "",
+    dl: int = 1,
 ) -> float:
     if not query_tokens:
         return 0.0
     score = 0.0
     fm = fm or {}
-    dl = max(sum(token_counts.values()), 1)
     avgdl = avgdl or dl
     summary = str(fm.get("summary", fm.get("description", ""))).lower()
     title_l = (title or "").lower()
@@ -353,7 +353,9 @@ def search(
     # Tokenizing the body text is expensive. Doing it twice (once for avgdl, once for scoring)
     # doubles the search latency. We cache it here on the doc objects.
     for doc in docs:
-        doc["token_counts"] = Counter(tokenize_text(doc["body"]))
+        counts = Counter(tokenize_text(doc["body"]))
+        doc["token_counts"] = counts
+        doc["dl"] = max(sum(counts.values()), 1)
 
     avgdl = compute_avgdl(docs)
 
@@ -383,7 +385,6 @@ def search(
         if not _filter_doc(doc, type_filter, tag_filters):
             continue
 
-        raw = (REPO_ROOT / doc["path"]).read_text(encoding="utf-8")
         body = doc["body"]
         token_counts = doc["token_counts"]
         fm = doc["frontmatter"]
@@ -395,6 +396,7 @@ def search(
             avgdl=avgdl,
             fm=fm,
             page_type=doc["page_type"],
+            dl=doc.get("dl", 1),
         )
         if query_tokens and not semantic and score <= 0:
             continue
@@ -410,7 +412,7 @@ def search(
                 "path": Path(doc["path"]),
                 "fm": fm,
                 "matches": matched_lines[:5],
-                "related": extract_related_links(raw, REPO_ROOT / doc["path"])
+                "related": extract_related_links(body, REPO_ROOT / doc["path"])
                 if show_related
                 else [],
                 "score": score,
