@@ -26,6 +26,8 @@ sources:
 
 # JackHan-Sdu WalkE3 / HumanoidE3 工具链生态
 
+将 JackHan-Sdu 维护的 WalkE3 数据、MuJoCo 手柄仿真、WalkE3 控制器、LCM 算法模板与两条 FEAP 部署仓组织成一条可读的人形工程工具链。
+
 **本页**把同一作者维护的六条 GitHub 线串成「数据 → 仿真/训练侧载 → 控制栈 → 外接算法 → 论文级部署」的阅读地图；各子页只展开单仓职责与数据流。
 
 ## 为什么重要？

@@ -16,6 +16,8 @@ sources:
 
 # WalkE3-Dataset（E3 运动 CSV 与 MuJoCo 回放）
 
+本仓库提供 E3 人形运动的 CSV 列定义、体坐标速度估计与 JSON 运动导出，并可在 MuJoCo 中回放轨迹。
+
 **定位**：把 **28 列 CSV**（根位置、四元数 x-y-z-w、21 关节）处理为 **55 元/帧** 的 JSON 运动（追加体坐标系根线速度、根角速度、关节速度），并提供 `visualize_txt.py` 在 MuJoCo 中播放。
 
 ## 核心机制（工程切片）

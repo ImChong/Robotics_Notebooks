@@ -17,6 +17,8 @@ sources:
 
 # Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）
 
+本仓库在 MuJoCo 中加载 E3 地形与预训练 PyTorch 策略，用手柄发送速度指令，支持行走、跑步与扰动测试模式。
+
 **定位**：面向「可立即运行」的 MuJoCo 人形演示——仓库内置 **Walker 泰山** 预训练策略（`.pt`）、`e3.yaml` 与手柄标定脚本，强调速度指令跟踪、楼梯与扰动模式切换。
 
 ## 核心机制（工程切片）
