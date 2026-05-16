@@ -72,37 +72,37 @@ summary: "GENMO（官方代码与权重以 GEM 名义发布）把人体运动估
 ```mermaid
 flowchart LR
   subgraph cond["条件集 C 与 mask M（任意组合）"]
-    V[视频特征 / HMR2]
-    K2[2D 关键点 / bbox]
-    Cam[相机运动]
-    M1[音乐片段]
-    T1[多段文本 + 时间窗 Ω_k]
-    KF[3D 关键帧]
+    V["视频特征 / HMR2"]
+    K2["2D 关键点 / bbox"]
+    Cam["相机运动"]
+    M1["音乐片段"]
+    T1["多段文本 + 时间窗 Ω_k"]
+    KF["3D 关键帧"]
   end
 
   subgraph encode["加性融合 + 条件 token"]
-    E[per-modality MLP → token 求和]
+    E["per-modality MLP → token 求和"]
   end
 
   subgraph dual["Dual-mode 训练"]
-    EST[Estimation 模式<br/>输入 z~N(0,I), t=T<br/>MSE + L_geo]
-    GEN3[Generation 模式 (3D)<br/>标准 DDPM + L_geo]
-    GEN2[Generation 模式 (2D 弱监督)<br/>用 est 出伪 x0 → 加噪 → 2D 重投影 loss]
+    EST["Estimation 模式<br/>输入 z~N(0,I), t=T<br/>MSE + L_geo"]
+    GEN3["Generation 模式 (3D)<br/>标准 DDPM + L_geo"]
+    GEN2["Generation 模式 (2D 弱监督)<br/>用 est 出伪 x0 → 加噪 → 2D 重投影 loss"]
   end
 
   subgraph core["GENMO 主干 (L × RoPE block + multi-text 注入)"]
-    DENO[去噪器 G(x_t, t, C, M)<br/>滑窗注意力支持任意长度]
+    DENO["去噪器 G(x_t, t, C, M)<br/>滑窗注意力支持任意长度"]
   end
 
   subgraph out["输出运动 x"]
-    SMPL[Gravity-view 轨迹 + SMPL θβ + 相机 π + 接触 p]
+    SMPL["Gravity-view 轨迹 + SMPL θβ + 相机 π + 接触 p"]
   end
 
   V --> E
   K2 --> E
   Cam --> E
   M1 --> E
-  T1 -.直注入.-> DENO
+  T1 -->|multi-text 注入| DENO
   KF --> E
   E --> DENO
   EST --> DENO
@@ -111,7 +111,7 @@ flowchart LR
   DENO --> SMPL
 ```
 
-图中：text 条件不走加性融合，而是通过 multi-text 注意力按窗注入；三种训练损失共享同一去噪器权重。
+图中：文本条件不走加性融合，而是通过 multi-text 注意力按窗注入；三种训练损失共享同一去噪器权重。节点标签使用 Mermaid 引号形式，避免 `~`、括号等在 `[]` 裸文本中被解析为流程图语法。
 
 ## 实验结论（v1 公开表述）
 

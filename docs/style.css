@@ -506,6 +506,11 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   height: 180px;
   border-radius: 8px;
   background: var(--bg);
+  cursor: grab;
+  touch-action: none;
+}
+.detail-mini-map-svg:active {
+  cursor: grabbing;
 }
 .detail-mini-map-svg text { font-family: var(--font-sans); }
 .detail-mini-map-svg .mini-node-current circle {
