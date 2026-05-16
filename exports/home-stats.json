@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-16",
-  "node_count": 321,
-  "edge_count": 2140,
+  "node_count": 322,
+  "edge_count": 2146,
   "coverage": {
-    "covered": 319,
-    "total": 319,
+    "covered": 320,
+    "total": 320,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/jackhan-walke3-e3-ecosystem.md",
-    "detail_id": "entity-jackhan-walke3-e3-ecosystem",
-    "label": "JackHan-Sdu WalkE3 / HumanoidE3 工具链生态",
+    "path": "wiki/entities/articraft.md",
+    "detail_id": "entity-articraft",
+    "label": "Articraft",
     "type": "entity",
     "recency": "2026-05-16",
     "source": "log.md"
