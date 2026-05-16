@@ -1363,6 +1363,13 @@ th {
   margin: 0;
   border-top: 1px solid var(--border);
 }
+/* 嵌入正文各 L 章节下的单阶段「速览」块（与顶部整块二选一） */
+.roadmap-stage-embed-wrap {
+  margin: 12px 0 22px;
+}
+.roadmap-stage-embed-wrap .roadmap-vtree-item {
+  margin-bottom: 0;
+}
 .roadmap-flow-details,
 .roadmap-stage-flow-details {
   margin-bottom: 1rem;
