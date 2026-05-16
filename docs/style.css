@@ -526,6 +526,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   border: 1px solid var(--border);
   font-size: .92em;
   white-space: normal;
+}
+/* 元信息栏宽度有限：anywhere 会在 graph-stats.json 等标识符中间断行；改为 normal 优先整段 code 换行 */
+.detail-meta-list code {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.empty-state code {
   overflow-wrap: anywhere;
 }
 .empty-state {
