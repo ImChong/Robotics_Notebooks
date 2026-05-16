@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-16] structural | wiki/concepts/motion-retargeting-pipeline.md — V22 P1 动作重定向知识链 (1/3)：新增重定向流水线概念页（8 阶段端到端：源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地）
+
+- 沉淀页面：`wiki/concepts/motion-retargeting-pipeline.md`（含 Mermaid 流程总览、三种工程化形态对比表、常见失败模式表与下游接口契约）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`（关联页面回链流水线页）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 1 项打勾、状态置 `[~]`）
+- 派生再生成：`make ci-preflight` → 327 Nodes / 2197 Edges / Coverage 325/325；`scripts/lint_wiki.py` 通过（29 条信息型预警不阻塞）
+
 ## [2026-05-16] ingest | sources/sites/worldlabs-ai.md — World Labs 官网与 Marble/Spark 归档；新增 wiki/entities/world-labs.md；交叉更新 wiki/methods/generative-world-models.md、wiki/entities/gs-playground.md、index.md
 
 - 原始资料：`sources/sites/worldlabs-ai.md`（<https://www.worldlabs.ai/> 及 About、Marble、Marble Labs、Spark 技术博客等公开链接归档）

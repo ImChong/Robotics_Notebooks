@@ -247,6 +247,7 @@ SORT type ASC
 - [Latent Imagination (潜空间想象)](concepts/latent-imagination.md) — 潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉 `📅unknown` `[wiki_page]`
 - [LCM (Lightweight Communications and Marshalling) 基础](concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
+- [Motion Retargeting Pipeline（动作重定向流水线）](concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
 - [Motion Retargeting（动作重定向）](concepts/motion-retargeting.md) — Motion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。 `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
 - [Optimal Control (OCP)](concepts/optimal-control.md) — 最优控制**：给定一个动力学系统和一个代价函数，求解在有限或无限时域内使得代价最小的控制输入序列的理论框架。 `📅unknown` `[wiki_page]`
