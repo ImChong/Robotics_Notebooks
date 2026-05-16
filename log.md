@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-15] structural | scripts/lint_wiki.py — V22 P0 方法-Query 闭环 Lint：新增 `methods_without_practitioner_query` 检查 + `INFO_ONLY_KEYS` 信息型分类机制
+
+- `scripts/lint_wiki.py`：新增 `_check_methods_without_practitioner_query()`，阈值 `METHOD_PRACTITIONER_INBOUND_THRESHOLD=3`（即 ≥ 4 个 wiki 入链，自链已排除），若入链来源中无任何 `wiki/queries/*` 或 `wiki/comparisons/*` 命中，则标记为"待落地"信息型预警。
+- 失败计数机制：抽出 `_failing_total()` / `_info_total()` 辅助函数，新增 `INFO_ONLY_KEYS = {"missing_pages", "methods_without_practitioner_query"}` 让 main 退出码只统计硬错误，避免首次落地即破坏 CI（baseline 28 项以 💡 信息型展示）。
+- 测试：新增 `tests/test_lint_wiki_practitioner_query.py` 6 个用例（高入链无 query 命中、queries 命中、comparisons 命中、阈值边界、自链排除、INFO_ONLY 不计失败 total），`PYTHONPATH=scripts pytest --no-cov` 91/91 通过；`ruff check`、`ruff format --check`、`mypy scripts/lint_wiki.py` 均通过；`scripts/lint_wiki.py` 退出码 0，报告含 28 条信息型预警。
+- 落地基线：当前 28 条预警覆盖 exoactor / sonic-motion-tracking / amp-reward / beyondmimic / motion-retargeting-gmr / humanoid-transformer-touch-dreaming / deepmimic / auto-labeling-pipelines / pi07-policy / π0-policy 等高频热点，将在 V22 P1（动作重定向）/ P2（抓取）落地 queries 与 comparisons 时同步消减。
+- 清单：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P0 "方法-Query 闭环 Lint" 三项全部勾选。
+
 ## [2026-05-15] ingest | sources/sites/amass-dataset.md, sources/repos/ubisoft-laforge-animation-dataset.md, sources/sites/mixamo.md — AMASS / LaFAN1 / Mixamo 入库；新增 wiki/entities/amass.md、wiki/entities/lafan1-dataset.md、wiki/entities/mixamo.md；互链 motion-retargeting、wbc-fsm、ProtoMotions
 
 - 原始资料：`sources/sites/amass-dataset.md`、`sources/repos/ubisoft-laforge-animation-dataset.md`、`sources/sites/mixamo.md`
