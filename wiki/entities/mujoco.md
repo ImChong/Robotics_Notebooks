@@ -2,10 +2,11 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-16
 related:
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ./dm-control.md
+  - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
