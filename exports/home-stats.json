@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-16",
   "node_count": 323,
-  "edge_count": 2154,
+  "edge_count": 2157,
   "coverage": {
     "covered": 321,
     "total": 321,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/curobo.md",
-    "detail_id": "entity-curobo",
-    "label": "cuRobo",
-    "type": "entity",
+    "path": "wiki/methods/genmo.md",
+    "detail_id": "wiki-methods-genmo",
+    "label": "GENMO（统一人体运动估计与生成）",
+    "type": "method",
     "recency": "2026-05-16",
     "source": "log.md"
   }
