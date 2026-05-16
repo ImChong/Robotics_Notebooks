@@ -135,7 +135,11 @@ class DetailContentSyncTests(unittest.TestCase):
             "decodeURIComponent(rawHash)",
             "container.querySelector('#' +",
             "target.scrollIntoView({ behavior: 'smooth', block: 'start' });",
-            "window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });",
+            "function notifyTocSpyScrollSync()",
+            "window.addEventListener('hashchange', function () {",
+            "scrollToDetailHashTarget(contentEl);",
+            "scrollDetailPageLayoutHashIntoView(contentEl);",
+            "notifyTocSpyScrollSync();",
             "scrollToDetailHashTarget(contentEl);",
         ]
         for snippet in expected_snippets:
