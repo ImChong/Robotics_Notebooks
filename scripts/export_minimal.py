@@ -116,10 +116,32 @@ def clean_summary(text: str) -> str:
 def extract_summary(text: str) -> str:
     lines = text.splitlines()
 
-    for line in lines[1:10]:
-        stripped = line.strip()
+    for i in range(1, min(len(lines), 15)):
+        stripped = lines[i].strip()
         if stripped.startswith("**") and "：" in stripped:
-            return clean_summary(stripped)
+            _label, _sep, tail = stripped.partition("：")
+            if tail.strip():
+                return clean_summary(stripped)
+            # 仅「**摘要**：」占一行、正文在后续列表时：合并列表项为 roadmap_pages 摘要
+            bullets: List[str] = []
+            for j in range(i + 1, min(len(lines), i + 30)):
+                s = lines[j].strip()
+                if not s:
+                    if bullets:
+                        break
+                    continue
+                if s.startswith("## "):
+                    break
+                if s.startswith("- "):
+                    bullets.append(clean_summary(s[2:]))
+                elif bullets:
+                    break
+            if bullets:
+                merged = "；".join(b for b in bullets if b)
+                if len(merged) > 320:
+                    merged = merged[:317] + "…"
+                return merged if merged.endswith(("。", "…", "!", "?", ".")) else merged + "。"
+            continue
 
     in_one_liner = False
     for line in lines:
