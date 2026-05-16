@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-16",
-  "node_count": 325,
-  "edge_count": 2173,
+  "node_count": 326,
+  "edge_count": 2180,
   "coverage": {
-    "covered": 323,
-    "total": 323,
+    "covered": 324,
+    "total": 324,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/methods/pelican-unified-1.md",
-    "detail_id": "wiki-methods-pelican-unified-1",
-    "label": "Pelican-Unified 1.0（统一具身智能 UEI）",
-    "type": "method",
+    "path": "wiki/entities/world-labs.md",
+    "detail_id": "entity-world-labs",
+    "label": "World Labs（空间智能与世界生成）",
+    "type": "entity",
     "recency": "2026-05-16",
     "source": "log.md"
   }

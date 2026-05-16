@@ -69,6 +69,7 @@
 - [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md)（可用早期：概念件 / 脚本参数化 / STEP 衔接；整机装配仍以专业 CAD 为主）
 - [Articraft](wiki/entities/articraft.md)（agent + SDK + harness：可关节 3D 仿真资产与 Articraft-10K；arXiv:2605.15187）
+- [World Labs](wiki/entities/world-labs.md)（空间智能：Marble 生成式 3D 世界 + Spark 流式 3DGS Web 渲染）
 
 ### roadmap/ — 成长路线
 回答"应该先学什么、再学什么、学完输出什么"。
@@ -212,6 +213,7 @@ SORT type ASC
 - [Tairan He（何泰然）](entities/tairan-he.md) — 何泰然（Tairan He）为 CMU RI 博士、NVIDIA GEAR 实习背景，研究聚焦人形规模化学习与视觉 Sim2Real；代表作含 OmniH2O、HOVER、ASAP、VIRAL / DoorMan 等，主页为论文与项目总索引。 `📅2026-05-14` `[entity_page]`
 - [Unitree G1 (人形机器人)](entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
 - [Unitree](entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
+- [World Labs（空间智能与世界生成）](entities/world-labs.md) — World Labs 是公开以「空间智能」与三维世界模型为主线的公司与产品团队：浏览器产品 Marble 从文本/图像/视频/全景生成可编辑的持久 3D 世界，并开源 Spark（Web 端 3DGS 渲染与流式大场景技术栈）支撑交互式展示与管线集成。 `📅2026-05-16` `[entity_page]`
 - [Xiaomi-Robotics-0](entities/xiaomi-robotics-0.md) — 小米开源的约 4.7B 参数 VLA（Qwen3-VL-4B + DiT flow matching），强调跨本体预训练、异步 action chunk 执行与仿真/双臂真机评测。 `📅2026-05-15` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](entities/xue-bin-peng.md) — Xue Bin Peng** 是 SFU 助理教授兼 NVIDIA 研究科学家，博士师从 Levine / Abbeel；以 DeepMimic、AMP、ASE、动力学随机化 Sim2Real 等工作定义了物理角色与腿式机器人 RL 运动控制的一条主干研究线，并通过 MimicKit 统一开源实现。 `📅2026-05-14` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](entities/zhengyi-luo.md) — Zhengyi Luo** 为 NVIDIA GEAR Lab 高级研究科学家、CMU RI 博士（Kris Kitani）；工作横跨人形通用低层控制、人–人形遥操作、视觉 Sim2Real 与交互感知，是 HOVER、ASAP、OmniH2O、PDC 与 SONIC 等社区关键论文的核心作者之一。 `📅2026-05-14` `[entity_page]`
