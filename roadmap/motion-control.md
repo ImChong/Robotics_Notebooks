@@ -33,10 +33,10 @@
 
 ```mermaid
 flowchart LR
-  Sensor["**感知** (Sensor)<br/>摄像头 · IMU · 编码器<br/>力觉 · 雷达"]
-  Plan["**决策 / 规划** (Plan)<br/>任务规划 · 运动规划<br/>SLAM"]
-  Control["**控制** (Control)<br/>把规划翻译成关节指令<br/>★ 本路线主战场 ★"]
-  Body["**执行** (Actuator & Body)<br/>电机 · 减速器 · 关节<br/>本体结构"]
+  Sensor["感知 (Sensor)<br/>摄像头 · IMU · 编码器<br/>力觉 · 雷达"]
+  Plan["决策 / 规划 (Plan)<br/>任务规划 · 运动规划<br/>SLAM"]
+  Control["控制 (Control)<br/>把规划翻译成关节指令<br/>★ 本路线主战场 ★"]
+  Body["执行 (Actuator & Body)<br/>电机 · 减速器 · 关节<br/>本体结构"]
 
   Sensor --> Plan --> Control --> Body
   Body -. 反馈 .-> Sensor
