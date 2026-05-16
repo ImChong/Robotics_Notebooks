@@ -67,6 +67,7 @@
 - [Project Instinct](wiki/entities/project-instinct.md)（人形全身动态控制研究站群：接触丰富 Shadowing、感知跑酷、野外徒步）
 - [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md)（可用早期：概念件 / 脚本参数化 / STEP 衔接；整机装配仍以专业 CAD 为主）
+- [Articraft](wiki/entities/articraft.md)（agent + SDK + harness：可关节 3D 仿真资产与 Articraft-10K；arXiv:2605.15187）
 
 ### roadmap/ — 成长路线
 回答"应该先学什么、再学什么、学完输出什么"。
