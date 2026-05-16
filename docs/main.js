@@ -499,6 +499,46 @@
   }
 
   /**
+   * One roadmap stage row (li > details): related wiki / roadmap links.
+   * Used by the vertical tree and by per-L–chapter embeds on roadmap pages.
+   */
+  function buildRoadmapStageRowHTML(stage, index, roadmapId, detailPages, options) {
+    var opts = options || {};
+    var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
+    var sid = String(stage.id || '');
+    var title = String(stage.title || '');
+    var openAttr = opts.openByDefault ? ' open' : '';
+    var parts = [];
+    parts.push('<li class="roadmap-vtree-item">');
+    parts.push('<details class="roadmap-vtree-stage roadmap-vtree-stage-embed"' + openAttr + '>');
+    parts.push('<summary class="roadmap-vtree-summary">');
+    parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
+    parts.push(
+      '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
+    );
+    parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
+    parts.push('</summary>');
+    if (!related.length) {
+      parts.push('<p class="roadmap-vtree-empty data-meta">本阶段正文内暂无抽取到的站内链接。</p>');
+    } else {
+      parts.push('<ul class="roadmap-vtree-links">');
+      for (var k = 0; k < related.length; k++) {
+        var rid = related[k];
+        var page = detailPages[rid] || {};
+        var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+        parts.push('<li class="roadmap-vtree-link-row">');
+        parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
+        parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
+        parts.push('</li>');
+      }
+      parts.push('</ul>');
+    }
+    parts.push('</details>');
+    parts.push('</li>');
+    return parts.join('');
+  }
+
+  /**
    * Vertical collapsible tree (details/summary): one stage per row, children = related links.
    * Primary UI for narrow screens; no extra libraries.
    */
@@ -508,41 +548,51 @@
     parts.push('<ol class="roadmap-vtree">');
     var i;
     for (i = 0; i < stages.length; i++) {
-      var stage = stages[i];
-      var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
-      var sid = String(stage.id || '');
-      var title = String(stage.title || '');
-      var openAttr = i === 0 ? ' open' : '';
-      parts.push('<li class="roadmap-vtree-item">');
-      parts.push('<details class="roadmap-vtree-stage"' + openAttr + '>');
-      parts.push('<summary class="roadmap-vtree-summary">');
-      parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(i + 1)) + '</span>');
-      parts.push(
-        '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
-      );
-      parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
-      parts.push('</summary>');
-      if (!related.length) {
-        parts.push('<p class="roadmap-vtree-empty data-meta">本阶段正文内暂无抽取到的站内链接。</p>');
-      } else {
-        parts.push('<ul class="roadmap-vtree-links">');
-        for (var k = 0; k < related.length; k++) {
-          var rid = related[k];
-          var page = detailPages[rid] || {};
-          var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
-          parts.push('<li class="roadmap-vtree-link-row">');
-          parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
-          parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
-          parts.push('</li>');
-        }
-        parts.push('</ul>');
-      }
-      parts.push('</details>');
-      parts.push('</li>');
+      parts.push(buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, { openByDefault: i === 0 }));
     }
     parts.push('</ol>');
     parts.push('</div>');
     return parts.join('');
+  }
+
+  /**
+   * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
+   * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
+   */
+  function embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages) {
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!contentEl || stages.length < 2) return false;
+    var targets = [];
+    var i;
+    for (i = 0; i < stages.length; i++) {
+      var sid = String(stages[i].id || '').toLowerCase();
+      if (!sid) return false;
+      var h2 = Array.from(contentEl.querySelectorAll('h2[id]')).find(function (h) {
+        return h.id === sid || h.id.indexOf(sid + '-') === 0;
+      });
+      if (!h2) return false;
+      targets.push(h2);
+    }
+    var seen = new Set();
+    for (i = 0; i < targets.length; i++) {
+      if (seen.has(targets[i])) return false;
+      seen.add(targets[i]);
+    }
+    for (i = 0; i < stages.length; i++) {
+      var row = buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, { openByDefault: i === 0 });
+      var wrap = document.createElement('div');
+      wrap.className = 'roadmap-stage-embed-wrap';
+      wrap.setAttribute('data-roadmap-stage-embed', String(stages[i].id || '').toLowerCase());
+      wrap.innerHTML = '<ol class="roadmap-vtree">' + row + '</ol>';
+      targets[i].insertAdjacentElement('afterend', wrap);
+    }
+    return true;
+  }
+
+  function clearRoadmapStandaloneFlowSection() {
+    var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
+    if (flowRoot) flowRoot.innerHTML = '';
+    setRoadmapFlowChromeVisible(false);
   }
 
   function setRoadmapFlowChromeVisible(show) {
@@ -662,14 +712,27 @@
     const links = Array.from(tocContainer.querySelectorAll('a[href^="#"]'));
     if (!headings.length || !links.length) return;
 
+    let lastActiveHref = '';
+
+    function scrollTocActiveIntoView() {
+      const activeLink = tocContainer.querySelector('a.active');
+      if (!activeLink || typeof activeLink.scrollIntoView !== 'function') return;
+      activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+    }
+
     function updateActiveTocLink() {
       let activeId = headings[0].id;
       headings.forEach(function (heading) {
         if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
       });
+      const activeHref = '#' + activeId;
       links.forEach(function (link) {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+        link.classList.toggle('active', link.getAttribute('href') === activeHref);
       });
+      if (activeHref !== lastActiveHref) {
+        lastActiveHref = activeHref;
+        scrollTocActiveIntoView();
+      }
     }
 
     let tocTicking = false;
@@ -686,6 +749,13 @@
     }, { passive: true });
     window.addEventListener('hashchange', updateActiveTocLink);
     updateActiveTocLink();
+  }
+
+  /** 在程序化改变滚动位置后触发一次 TOC spy，避免初始带 hash 时高亮与侧栏滚动不同步。 */
+  function notifyTocSpyScrollSync() {
+    window.requestAnimationFrame(function () {
+      window.dispatchEvent(new Event('scroll'));
+    });
   }
 
   function scrollToDetailHashTarget(container) {
@@ -1397,8 +1467,10 @@
       window.addEventListener('hashchange', function () {
         scrollToDetailHashTarget(contentEl);
         scrollDetailPageLayoutHashIntoView(contentEl);
+        notifyTocSpyScrollSync();
       });
       scrollToDetailHashTarget(contentEl);
+      notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }
 
@@ -1706,9 +1778,13 @@
       renderDetailMath(contentEl);
       renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
+      if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
+        clearRoadmapStandaloneFlowSection();
+      }
       bindDetailTocSpy(contentEl, tocEl);
-      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
+      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
       scrollToDetailHashTarget(contentEl);
+      notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }
   }
