@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-16",
-  "node_count": 324,
-  "edge_count": 2163,
+  "node_count": 325,
+  "edge_count": 2173,
   "coverage": {
-    "covered": 322,
-    "total": 322,
+    "covered": 323,
+    "total": 323,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/ewmbench.md",
-    "detail_id": "entity-ewmbench",
-    "label": "EWMBench（具身世界模型生成评测）",
-    "type": "entity",
+    "path": "wiki/methods/pelican-unified-1.md",
+    "detail_id": "wiki-methods-pelican-unified-1",
+    "label": "Pelican-Unified 1.0（统一具身智能 UEI）",
+    "type": "method",
     "recency": "2026-05-16",
     "source": "log.md"
   }
