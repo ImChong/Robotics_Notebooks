@@ -525,14 +525,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   background: var(--bg-alt);
   border: 1px solid var(--border);
   font-size: .92em;
-  white-space: normal;
 }
-/* 元信息栏宽度有限：anywhere 会在 graph-stats.json 等标识符中间断行；改为 normal 优先整段 code 换行 */
+/* 元信息栏窄：连字符仍是合法断点，graph-stats.json 会在「graph-」处折断；code 作标识符保持单行 */
 .detail-meta-list code {
+  white-space: nowrap;
   overflow-wrap: normal;
   word-break: normal;
 }
 .empty-state code {
+  white-space: normal;
   overflow-wrap: anywhere;
 }
 .empty-state {
