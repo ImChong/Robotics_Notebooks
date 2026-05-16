@@ -575,7 +575,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   box-sizing: border-box;
 }
 .detail-toc-panel {
-  width: 260px;
+  width: 320px;
   flex-shrink: 0;
   position: sticky;
   top: 92px;
@@ -587,17 +587,33 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 @media (min-width: 1200px) {
   .detail-toc-panel {
-    margin-left: -300px; /* Float to the left of the container */
+    /* width(320) + .detail-content-layout gap(40) — 与主栏对齐且不占横向滚动 */
+    margin-left: -360px;
     display: flex;
     flex-direction: column;
     /* 长目录超出视口时：卡片高度封顶，仅目录列表区域滚动 */
     max-height: calc(100vh - 92px - 20px);
     box-sizing: border-box;
+    overflow-x: hidden;
   }
   .detail-toc-panel .detail-toc-list {
     min-height: 0;
+    min-width: 0;
+    overflow-x: hidden;
     overflow-y: auto;
     overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+  }
+  .detail-toc-panel .detail-toc-list::-webkit-scrollbar {
+    width: 10px;
+  }
+  .detail-toc-panel .detail-toc-list::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .detail-toc-panel .detail-toc-list::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+    border-radius: 999px;
   }
 }
 .detail-toc-panel[hidden] {
@@ -622,6 +638,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   padding: 2px 6px;
   margin-left: -6px;
   transition: color var(--transition), background var(--transition);
+  overflow-wrap: anywhere;
 }
 .detail-toc-list a.active {
   color: var(--accent);
@@ -989,7 +1006,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
     top: 16px;
     bottom: 96px; /* Avoid overlapping sidebar-toggle button */
     left: -300px;
-    width: 280px;
+    width: 300px;
     height: auto;
     margin: 0;
     padding: 20px;
@@ -997,10 +1014,23 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
     box-shadow: 2px 0 12px rgba(0,0,0,0.15);
     border-radius: 0 16px 16px 0;
     z-index: 1000;
+    overflow-x: hidden;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
     max-height: none;
+  }
+  .detail-toc-panel::-webkit-scrollbar {
+    width: 10px;
+  }
+  .detail-toc-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .detail-toc-panel::-webkit-scrollbar-thumb {
+    background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+    border-radius: 999px;
   }
   .detail-toc-panel .detail-toc-list {
     overflow-y: visible;
