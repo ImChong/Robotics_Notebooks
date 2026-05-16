@@ -714,6 +714,12 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .detail-markdown-body ul.contains-task-list {
   padding-left: 0;
 }
+/* 与 GFM 任务项混排的普通 bullet：整体右移，避免圆点落在与 checkbox 同一列造成「打架」 */
+.detail-markdown-body ul.contains-task-list > li:not(.task-list-item) {
+  margin-left: 1.85rem;
+  list-style-position: outside;
+  padding-left: 0.15em;
+}
 .detail-markdown-body li.task-list-item {
   list-style: none;
   margin-left: 0;

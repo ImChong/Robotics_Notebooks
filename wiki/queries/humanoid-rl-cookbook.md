@@ -18,7 +18,7 @@ sources:
 
 ---
 
-## TL;DR 决策路径
+## 快速决策路径
 
 ```mermaid
 flowchart TB
