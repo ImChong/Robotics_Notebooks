@@ -431,6 +431,11 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-content-section #roadmap-content #roadmap-flow.roadmap-flow-in-content > h2.section-title:first-of-type {
   margin-top: 0;
 }
+/* 侧栏 .detail-toc-panel 顶内边距为 18px，而 #roadmap-content 继承全局 .section 的 padding-top:44px，
+   主栏标题会比「路线目录」低约 26px；仅路线页收紧主栏顶距与侧栏卡片对齐 */
+.roadmap-content-section .detail-content-main > #roadmap-content.section {
+  padding-top: 18px;
+}
 .toc-card { padding: 18px 20px; }
 .toc-card ul { padding-left: 18px; }
 .toc-card li + li { margin-top: 6px; }
