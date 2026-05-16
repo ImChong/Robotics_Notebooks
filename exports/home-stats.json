@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-16",
-  "node_count": 323,
-  "edge_count": 2157,
+  "node_count": 324,
+  "edge_count": 2163,
   "coverage": {
-    "covered": 321,
-    "total": 321,
+    "covered": 322,
+    "total": 322,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/methods/genmo.md",
-    "detail_id": "wiki-methods-genmo",
-    "label": "GENMO（统一人体运动估计与生成）",
-    "type": "method",
+    "path": "wiki/entities/ewmbench.md",
+    "detail_id": "entity-ewmbench",
+    "label": "EWMBench（具身世界模型生成评测）",
+    "type": "entity",
     "recency": "2026-05-16",
     "source": "log.md"
   }

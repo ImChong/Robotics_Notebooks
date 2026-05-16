@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-16] ingest | sources/papers/ewmbench.md, sources/repos/ewmbench.md, sources/sites/agibot-world.md — EWMBench（arXiv:2505.09694）与 AgibotTech 仓库及 Agibot-World 关联站点入库；新增 wiki/entities/ewmbench.md；交叉更新 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md
+
+- 原始资料：`sources/papers/ewmbench.md`、`sources/repos/ewmbench.md`、`sources/sites/agibot-world.md`
+- 沉淀页面：`wiki/entities/ewmbench.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`index.md`
+
 ## [2026-05-16] structural | wiki/methods/genmo.md, docs/main.js, docs/style.css — GENMO 详情页 Mermaid：节点标签改为引号形式并修正边语法，避免 `~`/括号在方括号语法中被误解析；详情页迷你知识地图支持 d3.zoom 平移（禁用滚轮缩放以免抢页面滚动）
 
 - 沉淀页面：`wiki/methods/genmo.md`（`detail.html?id=wiki-methods-genmo` 流程图可渲染）
