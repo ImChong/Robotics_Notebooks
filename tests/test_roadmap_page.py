@@ -29,6 +29,7 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmap.html?id=",
             "roadmap_pages",
             "graph-stats.json",
+            "来自\\u00A0<code>",
             "renderRoadmapMarkdownBody",
         ]
         for snippet in expected_snippets:

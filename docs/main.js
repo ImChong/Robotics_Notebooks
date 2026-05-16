@@ -1709,7 +1709,7 @@
       metaEl.innerHTML = [
         '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
         '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
-        '<p><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自 <code>graph-stats.json</code>）。</p>'
+        '<p><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自\u00A0<code>graph-stats.json</code>）。</p>'
       ].join('');
       removeLoadingState(metaEl);
     }
