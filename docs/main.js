@@ -1279,9 +1279,20 @@
       svgEl.innerHTML = '';
 
       var svg = window.d3.select(svgEl);
-      var g = svg.append('g');
-      var lineLayer = g.append('g');
-      var nodeLayer = g.append('g');
+      var panRoot = svg.append('g').attr('class', 'detail-mini-map-pan');
+      var lineLayer = panRoot.append('g');
+      var nodeLayer = panRoot.append('g');
+
+      var zoom = window.d3.zoom()
+        .scaleExtent([1, 1])
+        .filter(function (event) {
+          if (event.type === 'wheel' || event.type === 'dblclick') return false;
+          return !event.button;
+        })
+        .on('zoom', function (ev) {
+          panRoot.attr('transform', ev.transform);
+        });
+      svg.call(zoom).on('dblclick.zoom', null);
 
       var sim = window.d3.forceSimulation(nodes)
         .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
@@ -1326,7 +1337,7 @@
       if (metaEl) {
         var totalDeg = Object.keys(neighborSet).length;
         var shown = neighborIds.length;
-        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 点击跳转';
+        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 拖拽平移 · 点击跳转';
       }
     }).catch(function () {
       if (metaEl) metaEl.textContent = '邻居数据加载失败';
