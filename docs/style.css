@@ -721,6 +721,38 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .detail-markdown-body li + li {
   margin-top: .35em;
 }
+.detail-markdown-body ul.contains-task-list {
+  padding-left: 0;
+}
+/* 与 GFM 任务项混排的普通 bullet：整体右移，避免圆点落在与 checkbox 同一列造成「打架」 */
+.detail-markdown-body ul.contains-task-list > li:not(.task-list-item) {
+  margin-left: 1.85rem;
+  list-style-position: outside;
+  padding-left: 0.15em;
+}
+.detail-markdown-body li.task-list-item {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+.detail-markdown-body li.task-list-item label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  cursor: default;
+  font-weight: inherit;
+}
+.detail-markdown-body li.task-list-item input[type="checkbox"] {
+  flex-shrink: 0;
+  margin: 0.35em 0 0;
+  width: 1.05em;
+  height: 1.05em;
+  accent-color: var(--accent);
+}
+.detail-markdown-body li.task-list-item .task-list-item-body {
+  flex: 1;
+  min-width: 0;
+}
 .detail-markdown-body a {
   color: var(--accent);
 }

@@ -8,11 +8,11 @@
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/amass.md",
-    "detail_id": "entity-amass",
-    "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-    "type": "entity",
-    "recency": "2026-05-15",
+    "path": "wiki/queries/humanoid-rl-cookbook.md",
+    "detail_id": "wiki-queries-humanoid-rl-cookbook",
+    "label": "人形机器人 RL 策略训练完整 Checklist",
+    "type": "query",
+    "recency": "2026-05-16",
     "source": "log.md"
   }
 }

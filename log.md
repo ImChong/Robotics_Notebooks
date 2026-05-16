@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-16] structural | wiki/queries/humanoid-rl-cookbook.md, docs/style.css — Humanoid RL Cookbook：「TL;DR」标题改为「快速决策路径」；任务列表内普通子 bullet 增加左缩进避免与 checkbox 同列重叠
+
+## [2026-05-16] structural | wiki/queries/humanoid-rl-cookbook.md, docs/main.js, docs/style.css — Humanoid RL Cookbook：TL;DR 改为 Mermaid 流程图；详情页支持 `- [ ]` / `- [x]` 任务列表复选框渲染
+
+- `wiki/queries/humanoid-rl-cookbook.md`：用 `flowchart TB` 呈现硬件 / 仿真 / 训练路径分支；更新 `updated` 元数据。
+- `docs/main.js`：`renderMarkdownContent` 在无序列表解析中识别 GFM task list，输出 `<input type="checkbox" disabled>`；`flushList` 统一列表项结构。
+- `docs/style.css`：`.contains-task-list`、`.task-list-item` 与 label 布局，避免与默认列表圆点重叠。
+
 ## [2026-05-15] structural | scripts/lint_wiki.py — V22 P0 方法-Query 闭环 Lint：新增 `methods_without_practitioner_query` 检查 + `INFO_ONLY_KEYS` 信息型分类机制
 
 - `scripts/lint_wiki.py`：新增 `_check_methods_without_practitioner_query()`，阈值 `METHOD_PRACTITIONER_INBOUND_THRESHOLD=3`（即 ≥ 4 个 wiki 入链，自链已排除），若入链来源中无任何 `wiki/queries/*` 或 `wiki/comparisons/*` 命中，则标记为"待落地"信息型预警。
