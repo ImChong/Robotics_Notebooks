@@ -381,6 +381,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   gap: .45rem;
 }
 .page-hero p { color: var(--text-muted); max-width: 76ch; font-size: .98rem; }
+/* 元信息卡片也在 .page-hero 内，勿继承 76ch：否则「互链枢纽」等说明行在宽卡片里提前换行 */
+.page-hero .detail-meta-list p {
+  max-width: none;
+}
 .page-subnav-wrap {
   padding: 0 0 24px;
 }
