@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-16",
-  "node_count": 314,
-  "edge_count": 2105,
+  "node_count": 321,
+  "edge_count": 2140,
   "coverage": {
-    "covered": 312,
-    "total": 312,
+    "covered": 319,
+    "total": 319,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-rl-cookbook.md",
-    "detail_id": "wiki-queries-humanoid-rl-cookbook",
-    "label": "人形机器人 RL 策略训练完整 Checklist",
-    "type": "query",
+    "path": "wiki/entities/jackhan-walke3-e3-ecosystem.md",
+    "detail_id": "entity-jackhan-walke3-e3-ecosystem",
+    "label": "JackHan-Sdu WalkE3 / HumanoidE3 工具链生态",
+    "type": "entity",
     "recency": "2026-05-16",
     "source": "log.md"
   }
