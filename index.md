@@ -43,6 +43,7 @@
 - [PyTorch](wiki/entities/pytorch.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
+- [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
 - [Locomotion](wiki/tasks/locomotion.md)
@@ -309,6 +310,7 @@ SORT type ASC
 - [ReActor（物理感知 RL 运动重定向）](methods/reactor-physics-aware-motion-retargeting.md) — ReActor** 将跨具身运动重定向建成物理仿真中的双层问题：上层优化稀疏语义刚体对应下的参数化参考，下层用 RL 跟踪；以结构化近似上层梯度避免 Hessian 逆，面向少脚滑/自碰的参考与下游模仿学习（SIGGRAPH 2026 预印本 arXiv:2605.06593）。 `📅2026-05-13` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
+- [Pelican-Unified 1.0（统一具身智能 UEI）](methods/pelican-unified-1.md) — Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，与 Wan 系扩散 UFG 耦合，使未来视频与动作块在同一去噪轨迹中联合生成。 `📅2026-05-16` `[method_page]`
 - [Policy Optimization](methods/policy-optimization.md) — 策略优化**：通过直接对策略参数做梯度上升或近似优化，使期望累积奖励最大化的一类强化学习方法。 `📅unknown` `[method_page]`
 - [Reinforcement Learning (RL, 强化学习)](methods/reinforcement-learning.md) — 强化学习 (Reinforcement Learning)**：通过与环境交互，以最大化累积奖励 (Reward) 为目标学习决策策略的机器学习范式。 `📅unknown` `[method_page]`
 - [Safe RL（安全强化学习）](methods/safe-rl.md) — 安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agen `📅unknown` `[method_page]`
