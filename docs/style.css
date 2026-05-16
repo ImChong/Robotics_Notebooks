@@ -533,6 +533,14 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   overflow-wrap: normal;
   word-break: normal;
 }
+/* 括注整段 nowrap：避免汉字间（如「来|自」）与「来自|code」被窄栏拆开；过长时横向滚动 */
+.detail-meta-source-tail {
+  display: inline-block;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow-x: auto;
+  vertical-align: bottom;
+}
 .empty-state code {
   white-space: normal;
   overflow-wrap: anywhere;
