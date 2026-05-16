@@ -93,10 +93,14 @@ sudo apt-get install -y \
 
 ```bash
 npx -y playwright@1.60.0 install chromium
-npx -y playwright@1.60.0 screenshot --device='Desktop Chrome' \
+npx -y playwright@1.60.0 screenshot --browser=chromium --device='Desktop Chrome' \
+  --wait-for-timeout=5000 \
+  --viewport-size='1440,900' \
   'http://127.0.0.1:8765/roadmap.html?id=roadmap-motion-control' \
   '<workspace>/.cursor-artifacts/screenshots/roadmap-motion-control-fix.png'
 ```
+
+`--wait-for-timeout=5000` 表示在导航完成后**再等待 5 秒**再截图，便于 `main.js` 拉取 JSON、`mermaid.run` 等异步渲染落稳（可按页调大）。若仅需 headless Chrome 一行命令，也可在 `--screenshot` 前加更长 `--virtual-time-budget`（见 §4.1），但 roadmap 正文含 Mermaid 时更推荐 Playwright 的显式等待。
 
 ## 5. 迭代中的 PR 更新
 
