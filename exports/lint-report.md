@@ -82,11 +82,11 @@
 - wiki/methods/beyondmimic.md（被 16 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/deepmimic.md（被 11 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/diffusion-motion-generation.md（被 6 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/diffusion-motion-generation.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/efgcl.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/exoactor.md（被 23 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/exoactor.md（被 24 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/gae.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/genmo.md（被 9 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/genmo.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
@@ -96,7 +96,7 @@
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/reactor-physics-aware-motion-retargeting.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/sonic-motion-tracking.md（被 22 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/sonic-motion-tracking.md（被 24 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
