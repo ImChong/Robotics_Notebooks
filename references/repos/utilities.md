@@ -6,7 +6,7 @@
 - **Pinocchio**: 高性能刚体动力学库，支持分析导数。
 - **RBDL**: 刚体动力学库。
 - **Drake**: 专注于控制、仿真和分析。
-- **curobo**: NVIDIA 开发的高速避障与运动规划库。
+- **[cuRobo](../../wiki/entities/curobo.md)**：NVIDIA 开源的 GPU 并行无碰撞运动生成库（初版与 cuRoboV2 论文见实体页）。
 
 ## Web 端可视化与分析
 - **[robot-explorer](../../wiki/entities/robot-explorer.md)**: 交互式 3D 机器人探索工具，支持运动学分析与可操纵性椭球可视化。
