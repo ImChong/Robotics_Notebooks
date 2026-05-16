@@ -785,12 +785,19 @@
     function flushList() {
       if (!listItems.length) return;
       const openTag = listTag === 'ol' ? 'ol' : 'ul';
-      blocks.push((function () {
-        if (openTag === 'ul') return '<ul>';
+      const hasTask = listItems.some(function (it) { return it && it.task; });
+      const listOpen = (function () {
+        if (openTag === 'ul') return hasTask ? '<ul class="contains-task-list">' : '<ul>';
         if (openTag === 'ol') return '<ol>';
         return '<ul>';
-      })() + listItems.map(function (item) {
-        return '<li>' + renderMathBlocks(renderInlineMarkdown(item, context)) + '</li>';
+      })();
+      blocks.push(listOpen + listItems.map(function (item) {
+        const body = renderMathBlocks(renderInlineMarkdown(item.text, context));
+        if (item.task) {
+          const checkedAttr = item.checked ? ' checked' : '';
+          return '<li class="task-list-item"><label><input type="checkbox"' + checkedAttr + ' disabled aria-readonly="true" /> <span class="task-list-item-body">' + body + '</span></label></li>';
+        }
+        return '<li>' + body + '</li>';
       }).join('') + '</' + openTag + '>');
       listItems = [];
       listTag = '';
@@ -939,13 +946,27 @@
         return;
       }
 
+      const taskMatch = trimmed.match(/^[-*]\s+\[([ xX])\]\s*(.*)$/);
+      if (taskMatch) {
+        flushParagraph();
+        flushQuote();
+        if (listTag && listTag !== 'ul') flushList();
+        listTag = 'ul';
+        listItems.push({
+          task: true,
+          checked: String(taskMatch[1] || '').trim().toLowerCase() === 'x',
+          text: String(taskMatch[2] || '').trim()
+        });
+        return;
+      }
+
       const unorderedMatch = trimmed.match(/^[-*]\s+(.*)$/);
       if (unorderedMatch) {
         flushParagraph();
         flushQuote();
         if (listTag && listTag !== 'ul') flushList();
         listTag = 'ul';
-        listItems.push(unorderedMatch[1]);
+        listItems.push({ task: false, checked: false, text: unorderedMatch[1] });
         return;
       }
 
@@ -955,7 +976,7 @@
         flushQuote();
         if (listTag && listTag !== 'ol') flushList();
         listTag = 'ol';
-        listItems.push(orderedMatch[1]);
+        listItems.push({ task: false, checked: false, text: orderedMatch[1] });
         return;
       }
 
