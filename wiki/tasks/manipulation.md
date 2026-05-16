@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-05-13
+updated: 2026-05-16
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
@@ -106,6 +106,7 @@ flowchart TD
 
 ## 关联页面
 
+- [cuRobo（GPU 无碰撞运动生成）](../entities/curobo.md) — 到达、避障与 MoveIt / Isaac ROS 集成路径上的规划–优化参考栈
 - [AprilTag（视觉 fiducial 库）](../entities/april-tag.md) — 工作台基准、手眼与对齐任务中的低成本位姿观测
 - [AnyGrasp](../entities/anygrasp.md) — 深度点云稠密抓取检测与跟踪的工程/SDK 入口
 - [Imitation Learning](../methods/imitation-learning.md) — 操作任务的主流学习方法

@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-16] ingest | sources/repos/nvlabs-curobo.md — CuRobo / cuRoboV2（curobo.org、GitHub、arXiv:2310.17274、2603.05493）入库；沉淀 wiki/entities/curobo.md
+
+- 原始资料：`sources/repos/nvlabs-curobo.md`（归档 https://curobo.org/、https://github.com/NVlabs/curobo、https://arxiv.org/abs/2310.17274、https://arxiv.org/abs/2603.05493 及 Isaac ROS cuMotion 等关联链接）
+- 沉淀页面：`wiki/entities/curobo.md`
+
 ## [2026-05-16] ingest | sources/sites/articraft3d-github-io.md, sources/repos/mattzh72-articraft.md — Articraft 项目页与代码仓；新增 wiki/entities/articraft.md；互链 text-to-cad、URDF-Studio
 
 - 原始资料：`sources/sites/articraft3d-github-io.md`、`sources/repos/mattzh72-articraft.md`
