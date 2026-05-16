@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-05-15] lint | health-check | 自动化 wiki 健康检查
+## [2026-05-16] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题：
+共发现 **0** 个问题（另含 **28** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -72,5 +72,35 @@
 
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
+
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（28 个）
+- wiki/methods/add.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/amp-reward.md（被 16 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/ase.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/auto-labeling-pipelines.md（被 11 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/being-h07.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/beyondmimic.md（被 16 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/deepmimic.md（被 11 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/diffusion-motion-generation.md（被 6 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/efgcl.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/exoactor.md（被 23 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/gae.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/genmo.md（被 9 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/motion-retargeting-gmr.md（被 14 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/motionbricks.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/neural-motion-retargeting-nmr.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/reactor-physics-aware-motion-retargeting.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/sonic-motion-tracking.md（被 22 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
 📊 Sources 覆盖率：312/312 (100%) wiki/entity 页有 ingest 来源
