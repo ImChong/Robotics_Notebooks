@@ -91,14 +91,14 @@
         </aside>
 
         <div class="detail-content-main">
-          <section id="roadmap-flow" class="section roadmap-flow-section" hidden>
-            <h2 class="section-title">阶段速览（mini-map）</h2>
-            <p class="section-subtitle">展开任一阶段，可直接跳转到下方正文对应章节，或者点开站内相关链接。</p>
-            <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
-          </section>
-
           <section id="roadmap-content" class="section" hidden>
             <h2 class="section-title">完整学习路线（正文）</h2>
+            <!-- 阶段速览放在正文区内、主标题之下，使侧栏「路线目录」与主标题顶边对齐 -->
+            <section id="roadmap-flow" class="roadmap-flow-section roadmap-flow-in-content" hidden>
+              <h2 class="section-title">阶段速览（mini-map）</h2>
+              <p class="section-subtitle">展开任一阶段，可直接跳转到下方正文对应章节，或者点开站内相关链接。</p>
+              <div id="roadmapFlowMermaidRoot" class="roadmap-flow-mermaid-host" aria-live="polite"></div>
+            </section>
             <article id="roadmapContent" class="detail-markdown-body data-loading">正在读取路线正文…</article>
           </section>
 
