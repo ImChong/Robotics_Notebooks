@@ -588,6 +588,16 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 @media (min-width: 1200px) {
   .detail-toc-panel {
     margin-left: -300px; /* Float to the left of the container */
+    display: flex;
+    flex-direction: column;
+    /* 长目录超出视口时：卡片高度封顶，仅目录列表区域滚动 */
+    max-height: calc(100vh - 92px - 20px);
+    box-sizing: border-box;
+  }
+  .detail-toc-panel .detail-toc-list {
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
   }
 }
 .detail-toc-panel[hidden] {
@@ -990,6 +1000,11 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
     overflow-y: auto;
     transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
+    max-height: none;
+  }
+  .detail-toc-panel .detail-toc-list {
+    overflow-y: visible;
+    min-height: 0;
   }
   .detail-toc-panel[hidden] {
     display: none;
