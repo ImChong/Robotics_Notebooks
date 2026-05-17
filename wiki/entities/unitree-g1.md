@@ -2,10 +2,11 @@
 type: entity
 tags: [hardware, humanoid, platform, unitree]
 status: complete
-updated: 2026-05-12
+updated: 2026-05-17
 related:
   - ./humanoid-robot.md
   - ./unitree.md
+  - ./unitree-ros.md
   - ./botlab-motioncanvas.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:

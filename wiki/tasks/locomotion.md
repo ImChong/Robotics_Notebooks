@@ -15,6 +15,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../concepts/contact-dynamics.md
   - ../entities/unitree.md
+  - ../entities/unitree-ros.md
   - ./ultra-survey.md
   - ./manipulation.md
   - ./loco-manipulation.md
@@ -225,6 +226,7 @@ flowchart TD
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
+- [unitree_ros（ROS1 / Gazebo）](../entities/unitree-ros.md)（官方 URDF + Gazebo 关节级仿真；高层行走不在 Gazebo 包承诺内）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md) — 实践决策指南
 

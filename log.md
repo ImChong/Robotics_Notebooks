@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/repos/unitree_ros.md、sources/repos/unitree_ros_to_real.md — 官方 ROS1+Gazebo 与真机 ROS 桥入库
+
+- 原始资料：`sources/repos/unitree_ros.md`、`sources/repos/unitree_ros_to_real.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/unitree-ros.md`
+- 交叉更新：`wiki/entities/unitree.md`、`wiki/entities/unitree-rl-mjlab.md`、`wiki/tasks/locomotion.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md、Apollo-Lab-Yale 多仓与 Pages — URDD（arXiv:2512.23135）入库
 
 - 原始资料：`sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md`、`sources/repos/apollo-lab-yale-apollo-resources.md`、`sources/repos/apollo-lab-yale-apollo-rust.md`、`sources/repos/apollo-lab-yale-apollo-three-engine.md`、`sources/repos/apollo-lab-yale-apollo-py.md`、`sources/sites/apollo-lab-yale-apollo-resources-github-io.md`；索引 `sources/README.md`

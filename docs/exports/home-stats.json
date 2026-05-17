@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 337,
-  "edge_count": 2291,
+  "node_count": 338,
+  "edge_count": 2302,
   "coverage": {
-    "covered": 335,
-    "total": 335,
+    "covered": 336,
+    "total": 336,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unitree-ros.md",
+      "detail_id": "entity-unitree-ros",
+      "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-mjlab.md",
+      "detail_id": "entity-unitree-rl-mjlab",
+      "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
       "detail_id": "entity-paper-urdd-universal-robot-description-directory",
@@ -77,14 +109,6 @@
       "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
       "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -282,9 +306,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
-    "detail_id": "entity-paper-urdd-universal-robot-description-directory",
-    "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
+    "path": "wiki/entities/unitree-ros.md",
+    "detail_id": "entity-unitree-ros",
+    "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
