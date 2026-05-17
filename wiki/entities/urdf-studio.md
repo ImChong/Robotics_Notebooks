@@ -36,6 +36,7 @@ updated: 2026-05-16
 
 - [robot-viewer](robot-viewer.md) (模型快速预览)
 - [robot-explorer](robot-explorer.md) (运动学分析)
+- [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md)（把 URDF 派生几何/拓扑落盘的预处理层；与本页「编辑 URDF」上下游衔接）
 - [open-source-humanoid-hardware](open-source-humanoid-hardware.md) (开源硬件参考)
 - [Articraft](./articraft.md)（agent + SDK + harness：可关节 3D 仿真资产生成，与 URDF/网格下游对照）
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)（自然语言 → STEP 等上游几何与机器人描述衔接）

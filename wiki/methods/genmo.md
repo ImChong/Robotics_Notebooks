@@ -4,6 +4,7 @@ tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
 updated: 2026-05-17
 related:
+  - ./hy-motion-1.md
   - ./exoactor.md
   - ./diffusion-motion-generation.md
   - ./sonic-motion-tracking.md
