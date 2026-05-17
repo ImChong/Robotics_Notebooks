@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 339,
-  "edge_count": 2310,
+  "node_count": 340,
+  "edge_count": 2318,
   "coverage": {
-    "covered": 337,
-    "total": 337,
+    "covered": 338,
+    "total": 338,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -105,6 +105,38 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/methods/dwm.md",
+      "detail_id": "wiki-methods-dwm",
+      "label": "DWM（Dexterous World Models，灵巧世界模型）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/robot-motion-keyframe-editors.md",
       "detail_id": "entity-robot-motion-keyframe-editors",
       "label": "机器人关键帧与运动编辑工具（选型入口）",
@@ -117,14 +149,6 @@
       "detail_id": "entity-project-instinct",
       "label": "Project Instinct",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -204,14 +228,6 @@
       "path": "wiki/methods/model-based-rl.md",
       "detail_id": "wiki-methods-model-based-rl",
       "label": "Model-Based RL（基于模型的强化学习）",
-      "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
