@@ -1114,10 +1114,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   #hero.hero {
     padding-bottom: 12px;
   }
-  .hero .container {
-    padding-left: 12px;
-    padding-right: 12px;
-  }
   .page-hero {
     padding: 34px 0 12px;
   }
