@@ -25,17 +25,17 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/egoscale.md",
-      "detail_id": "wiki-methods-egoscale",
-      "label": "EgoScale",
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
       "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
       "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
