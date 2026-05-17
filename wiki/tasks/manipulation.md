@@ -55,7 +55,7 @@ flowchart TD
 - **IL**：从演示中学习操作技能
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀
-- **World Model**：学习操作的世界模型，在模型里 planning
+- **World Model**：学习操作的世界模型，在模型里 planning；像素域上「静态场景 + 手轨迹 → 交互视频」的显式分解路线见 [DWM（Dexterous World Models）](../methods/dwm.md)
 
 ## 在人形机器人中的特殊性
 

@@ -300,6 +300,7 @@ SORT type ASC
 - [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Disney Olaf 角色机器人（实机动画角色）](methods/disney-olaf-character-robot.md) — Disney Research 将动画角色 Olaf 做成实机：非对称腿+泡沫裙隐藏机构、动画参考驱动的 PPO 策略，并把执行器温度与落地噪声显式写进观测与奖励（含 CBF 风格约束项）。 `📅2026-05-13` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
+- [DWM（Dexterous World Models，灵巧世界模型）](methods/dwm.md) — DWM（Dexterous World Models）在已知静态 3D 场景上，用场景–动作条件视频扩散把第一人称相机轨迹与手部网格轨迹转成可信的交互视频，通过修复模型恒等先验学残差动力学，并以合成精确对齐数据混合固定机位真实视频补全物理真实性。 `📅2026-05-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再按**成功率自适应衰减**辅助强度直至为零，使策略在**无参考轨迹、弱奖励塑形**的条件下仍能学会并**迁移到实机**。 `📅2026-05-13` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频， `📅2026-05-03` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
@@ -308,6 +309,7 @@ SORT type ASC
 - [GENMO（统一人体运动估计与生成）](methods/genmo.md) — GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。 `📅2026-05-07` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
+- [HY-Motion 1.0（文本→SMPL-H 流匹配 DiT）](methods/hy-motion-1.md) — HY-Motion 1.0：腾讯混元将 DiT+流匹配的人体文本→3D 运动生成扩至十亿级参数，配套大规模预训练、高质量微调与 DPO/Flow-GRPO 对齐，并开源代码与权重（arXiv:2512.23464）。 `📅2026-05-17` `[method_page]`
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学习**把“往哪走、身体缩多低”与“关节怎么动”拆开，并用 **Path-Guided Curriculum Learning（PGCL）** 让高层策略从短视界反应式行为过渡到长视界目标导向导航。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
@@ -322,6 +324,7 @@ SORT type ASC
 - [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](methods/neural-motion-retargeting-nmr.md) — NMR** 用 CEPR 管线（筛选、GMR、聚类 RL 专家、仿真 rollout）构造物理一致的人机配对监督，训练 CNN–Transformer 将 SMPL 序列映射为 Unitree G1 等平台的全身参考轨迹，缓解优化式重定向的非凸与噪声传播。 `📅2026-05-08` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](methods/reactor-physics-aware-motion-retargeting.md) — ReActor** 将跨具身运动重定向建成物理仿真中的双层问题：上层优化稀疏语义刚体对应下的参数化参考，下层用 RL 跟踪；以结构化近似上层梯度避免 Hessian 逆，面向少脚滑/自碰的参考与下游模仿学习（SIGGRAPH 2026 预印本 arXiv:2605.06593）。 `📅2026-05-13` `[method_page]`
+- [SPIDER（物理感知采样式灵巧重定向）](methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER** 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义（arXiv:2511.09484）。 `📅2026-05-17` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Pelican-Unified 1.0（统一具身智能 UEI）](methods/pelican-unified-1.md) — Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，与 Wan 系扩散 UFG 耦合，使未来视频与动作块在同一去噪轨迹中联合生成。 `📅2026-05-16` `[method_page]`

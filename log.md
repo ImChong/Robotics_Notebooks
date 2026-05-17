@@ -12,6 +12,24 @@
 - 沉淀页面：`wiki/entities/paper-urdd-universal-robot-description-directory.md`
 - 交叉更新：`wiki/entities/robot-viewer.md`、`wiki/entities/urdf-studio.md`、`wiki/entities/mujoco.md`、`sources/urdf.md`、`index.md`（由 `make ci-preflight` 同步）
 
+## [2026-05-17] ingest | sources/papers/hy_motion_arxiv_2512_23464.md、sources/repos/tencent_hunyuan_hy_motion_1_0.md — HY-Motion 1.0（arXiv:2512.23464）与官方仓入库
+
+- 原始资料：`sources/papers/hy_motion_arxiv_2512_23464.md`、`sources/repos/tencent_hunyuan_hy_motion_1_0.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/hy-motion-1.md`
+- 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`wiki/entities/awesome-text-to-motion-zilize.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md、sources/sites/jc-bao-spider-project-github-io.md、sources/repos/jc-bao-spider-project.md — SPIDER（arXiv:2511.09484）与项目页入库
+
+- 原始资料：`sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md`、`sources/sites/jc-bao-spider-project-github-io.md`、`sources/repos/jc-bao-spider-project.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/spider-physics-informed-dexterous-retargeting.md`
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/methods/motion-retargeting-gmr.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/dwm_arxiv_2512_17907.md、sources/sites/snuvclab-dwm-github-io.md、sources/repos/snuvclab_dwm.md — DWM（Dexterous World Models）项目页与论文入库
+
+- 原始资料：`sources/papers/dwm_arxiv_2512_17907.md`、`sources/sites/snuvclab-dwm-github-io.md`、`sources/repos/snuvclab_dwm.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/dwm.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`wiki/tasks/manipulation.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/repos/cyoahs-robot-motion-editor.md、stanford-tml-robot-keyframe-kit.md、project-instinct-robot-motion-editor.md — 机器人关键帧/运动编辑三仓库入库
 
 - 原始资料：`sources/repos/cyoahs-robot-motion-editor.md`、`sources/repos/stanford-tml-robot-keyframe-kit.md`、`sources/repos/project-instinct-robot-motion-editor.md`；索引 `sources/README.md`
