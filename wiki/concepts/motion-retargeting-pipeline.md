@@ -3,10 +3,11 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-05-16
+updated: 2026-05-17
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
+  - ../entities/robot-motion-keyframe-editors.md
   - ../methods/motion-retargeting-gmr.md
   - ../methods/neural-motion-retargeting-nmr.md
   - ../methods/reactor-physics-aware-motion-retargeting.md
@@ -148,6 +149,7 @@ flowchart TD
 - **WBC 侧**：参考 = 末端任务（手/脚 SE(3)）+ 质心轨迹 + 接触切换序列。
 - **RL tracking 侧**：参考 = 全身关节角 + 关键点位姿，奖励通常对齐 [DeepMimic](../methods/deepmimic.md) 风格分项。
 - **遥操作侧**：实时输入流 + 重定向延迟预算（< 20 ms 才能闭环操作）。
+- **示教后处理（离线）**：对 CSV、NPZ 或 MuJoCo keyframe 包做关键帧修正、平滑与重采样时，工具链选型见 [机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)。
 
 ## 评测视角
 
@@ -175,6 +177,7 @@ flowchart TD
 - [Imitation Learning](../methods/imitation-learning.md) — 离线产物的主要下游消费方
 - [Teleoperation](../tasks/teleoperation.md) — 在线产物的实时消费场景
 - [Sim2Real](./sim2real.md) — 重定向伪影会被下游 RL/IL 训练放大，是 sim2real 链路的上游
+- [机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md) — CSV / NPZ / MuJoCo 关键帧的手工修整入口
 
 ## 推荐继续阅读
 

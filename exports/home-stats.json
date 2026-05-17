@@ -1,13 +1,69 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 335,
-  "edge_count": 2274,
+  "node_count": 336,
+  "edge_count": 2283,
   "coverage": {
-    "covered": 333,
-    "total": 333,
+    "covered": 334,
+    "total": 334,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robot-motion-keyframe-editors.md",
+      "detail_id": "entity-robot-motion-keyframe-editors",
+      "label": "机器人关键帧与运动编辑工具（选型入口）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/project-instinct.md",
+      "detail_id": "entity-project-instinct",
+      "label": "Project Instinct",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/superpowers-obra.md",
       "detail_id": "entity-superpowers-obra",
@@ -169,14 +225,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/queries/rl-algorithm-selection.md",
       "detail_id": "wiki-queries-rl-algorithm-selection",
       "label": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
@@ -210,9 +258,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/superpowers-obra.md",
-    "detail_id": "entity-superpowers-obra",
-    "label": "Superpowers（obra）",
+    "path": "wiki/entities/robot-motion-keyframe-editors.md",
+    "detail_id": "entity-robot-motion-keyframe-editors",
+    "label": "机器人关键帧与运动编辑工具（选型入口）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
