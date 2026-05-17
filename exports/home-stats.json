@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 344,
-  "edge_count": 2353,
+  "node_count": 345,
+  "edge_count": 2367,
   "coverage": {
-    "covered": 342,
-    "total": 342,
+    "covered": 343,
+    "total": 343,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/crisp-real2sim.md",
       "detail_id": "wiki-methods-crisp-real2sim",
@@ -209,30 +257,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/robot-motion-keyframe-editors.md",
       "detail_id": "entity-robot-motion-keyframe-editors",
       "label": "机器人关键帧与运动编辑工具（选型入口）",
@@ -285,14 +309,6 @@
       "detail_id": "wiki-tasks-loco-manipulation",
       "label": "Loco-Manipulation (移动操作)",
       "type": "task",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -402,9 +418,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/crisp-real2sim.md",
-    "detail_id": "wiki-methods-crisp-real2sim",
-    "label": "CRISP（Contact-guided Real2Sim）",
+    "path": "wiki/methods/mimic-video.md",
+    "detail_id": "wiki-methods-mimic-video",
+    "label": "mimic-video（Video-Action Model, VAM）",
     "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"

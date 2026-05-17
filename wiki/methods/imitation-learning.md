@@ -14,6 +14,7 @@ related:
   - ../entities/mimickit.md
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
+  - ./mimic-video.md
   - ./amp-reward.md
   - ./smp.md
   - ./disney-olaf-character-robot.md
@@ -22,6 +23,7 @@ sources:
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/humannet.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
+  - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
@@ -136,6 +138,7 @@ flowchart TD
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频与 VLA 受控预训练叙事
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
+- [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照（arXiv:2512.15692）摘录
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
