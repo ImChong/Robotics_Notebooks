@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 342,
-  "edge_count": 2337,
+  "node_count": 343,
+  "edge_count": 2347,
   "coverage": {
-    "covered": 340,
-    "total": 340,
+    "covered": 341,
+    "total": 341,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/beyondmimic.md",
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
       "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
@@ -362,10 +386,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
-    "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
-    "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
-    "type": "entity",
+    "path": "wiki/methods/egm-efficient-general-mimic.md",
+    "detail_id": "wiki-methods-egm-efficient-general-mimic",
+    "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+    "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"
   }
