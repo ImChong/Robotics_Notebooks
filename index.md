@@ -49,6 +49,7 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [SAGE（执行器 Sim2Real 间隙估计）](wiki/entities/sage-sim2real-actuator-gap-estimator.md)（Isaac 重放与真机对齐、关节级 gap 指标与成对数据）
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [dm_control / Control Suite](wiki/entities/dm-control.md)

@@ -3,7 +3,7 @@ type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
 summary: "Sim2Real Gap 缩减实战指南"
-updated: 2026-04-25
+updated: 2026-05-17
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/privileged_training.md
@@ -74,6 +74,8 @@ push_robots: True                   # 随机推力 [0, 150] N
 | 延迟建模 | 在仿真中加入随机延迟 1-5 个控制步 |
 | PD 控制模式 | 用 PD 目标角度代替直接力矩（更鲁棒） |
 | 低通滤波 | 对策略输出的动作做一阶低通滤波 |
+
+在把上述手段「写进训练」之前，可先用 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md) 等对**同一参考轨迹**做仿真重放与真机日志对齐，得到关节级 RMSE / 相关等 **gap 画像**，避免盲调 DR 范围或 ActuatorNet 结构。
 
 ### Gap 3：感知误差
 
