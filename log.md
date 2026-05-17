@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/repos/zilize-awesome-text-to-motion.md — 文本驱动人体运动生成 Awesome 列表入库；新增 wiki/entities/awesome-text-to-motion-zilize.md
+
+- 原始资料：`sources/repos/zilize-awesome-text-to-motion.md`（<https://github.com/Zilize/awesome-text-to-motion>，项目页 <https://zilize.github.io/awesome-text-to-motion/>）
+- 沉淀页面：`wiki/entities/awesome-text-to-motion-zilize.md`
+- 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`sources/README.md`、`index.md`（由 `make ci-preflight` 同步目录统计）
+
 ## [2026-05-17] ingest | DoorMan（arXiv:2512.01061）与 doorman-humanoid 站点、GR00T-VisualSim2Real 归档入库
 
 - 原始资料：`sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md`、`sources/sites/doorman-humanoid-github-io.md`；更新 `sources/repos/gr00t_visual_sim2real.md`
