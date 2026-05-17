@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | DoorMan（arXiv:2512.01061）与 doorman-humanoid 站点、GR00T-VisualSim2Real 归档入库
+
+- 原始资料：`sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md`、`sources/sites/doorman-humanoid-github-io.md`；更新 `sources/repos/gr00t_visual_sim2real.md`
+- 沉淀页面：`wiki/entities/paper-doorman-opening-sim2real-door.md`
+- 交叉更新：`wiki/entities/gr00t-visual-sim2real.md`、`wiki/entities/paper-viral-humanoid-visual-sim2real.md`、`wiki/tasks/loco-manipulation.md`、`sources/README.md`、`index.md`
+
 ## [2026-05-16] structural | wiki/concepts/motion-retargeting-pipeline.md — V22 P1 动作重定向知识链 (1/3)：新增重定向流水线概念页（8 阶段端到端：源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地）
 
 - 沉淀页面：`wiki/concepts/motion-retargeting-pipeline.md`（含 Mermaid 流程总览、三种工程化形态对比表、常见失败模式表与下游接口契约）

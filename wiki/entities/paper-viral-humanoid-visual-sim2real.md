@@ -2,8 +2,9 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu]
 status: complete
-updated: 2026-05-15
+updated: 2026-05-17
 related:
+  - ./paper-doorman-opening-sim2real-door.md
   - ./gr00t-visual-sim2real.md
   - ./tairan-he.md
   - ../concepts/sim2real.md
@@ -29,6 +30,7 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 - **问题对准**：多数工作将 **盲走**、**固定基座操作** 或 **重度遥操作 / 非机载传感** 分开；VIRAL 针对 **机载视觉下的移动操作** 长时域闭环。
 - **算力与可复现性**：论文通过 scaling study 论证 **并行 GPU 数量** 对教师与学生阶段 **成功率与稳定性** 的关键作用（学生训练可达 **64 GPU** 量级与 **分块渲染**）。
 - **工程闭环完整**：从 **特权教师**、**蒸馏混合策略** 到 **灵巧手 SysID** 与 **相机外参对齐**，与 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 开源栈叙事一致，便于对照实现细节。
+- **姊妹工作**：同仓 [DoorMan（论文实体）](./paper-doorman-opening-sim2real-door.md) 聚焦 **铰接门 loco-manipulation** 与 **GRPO 自举**，与 VIRAL 的 **规模化并行 + delta-WBC 教师** 形成互补阅读。
 
 ## 核心机制（归纳）
 
@@ -65,6 +67,7 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 ## 关联页面
 
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — NVlabs 开源实现与 DoorMan 姊妹工作
+- [DoorMan（论文实体）](./paper-doorman-opening-sim2real-door.md) — arXiv:2512.01061，铰接 loco-manipulation 与 GRPO 自举
 - [Tairan He](./tairan-he.md) — 作者侧总索引
 - [Sim2Real](../concepts/sim2real.md)
 - [Privileged Training](../concepts/privileged-training.md)

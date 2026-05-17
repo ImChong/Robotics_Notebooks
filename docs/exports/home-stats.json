@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 327,
-  "edge_count": 2197,
+  "node_count": 328,
+  "edge_count": 2212,
   "coverage": {
-    "covered": 325,
-    "total": 325,
+    "covered": 326,
+    "total": 326,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/concepts/motion-retargeting-pipeline.md",
-    "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-    "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-    "type": "concept",
-    "recency": "2026-05-16",
+    "path": "wiki/entities/paper-doorman-opening-sim2real-door.md",
+    "detail_id": "entity-paper-doorman-opening-sim2real-door",
+    "label": "DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）",
+    "type": "entity",
+    "recency": "2026-05-17",
     "source": "log.md"
   }
 }
