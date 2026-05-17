@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 329,
-  "edge_count": 2224,
+  "node_count": 332,
+  "edge_count": 2250,
   "coverage": {
-    "covered": 327,
-    "total": 327,
+    "covered": 330,
+    "total": 330,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/sage-sim2real-actuator-gap-estimator.md",
-    "detail_id": "entity-sage-sim2real-actuator-gap-estimator",
-    "label": "SAGE（Sim2Real Actuator Gap Estimator）",
+    "path": "wiki/entities/paper-interprior.md",
+    "detail_id": "entity-paper-interprior",
+    "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"

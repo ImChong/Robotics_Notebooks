@@ -147,6 +147,13 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - 规划时用 [MPPI](./mppi.md) 在潜空间搜索，用价值函数截断规划 horizon
 - 在机器人操作和 locomotion 上都有强结果
 
+### RWM / RWM-U（ETH RSL 工程参考）
+
+**核心思想**：用 **集成 RNN** 学习足式机器人 **状态–动作** 转移与若干 **特权监督头**，再在 **学习到的动力学** 上做 **自回归想象 rollout** 训练策略；官方实现分支为 **在线想象**（仿真持续采数、与 MBPO 叙事相近）与 **纯离线想象**（冻结模型 + 初始状态集、与 MOPO / RWM-U 叙事相近），并以 **Isaac Lab + ANYmal D** 为主参考，另提供 **无仿真 Lite** 仓库降低上手成本。
+
+- 与上文 MBPO / PETS 同属 **「神经动力学 + rollout」** 工具箱，但面向 **腿足速度跟踪** 任务族做了端到端脚本与扩展封装
+- 双仓对比、流程图与论文链接见 [Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)
+
 ---
 
 ## MBRL vs Model-Free RL 对比
@@ -158,7 +165,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 | 实现复杂度 | ❌ 高（需学模型 + 策略） | ✅ 低 |
 | 计算效率 | ❌ 推理时规划开销大 | ✅ 策略直接查询 |
 | 在机器人上的应用 | 操作任务、真实机器人 | Locomotion（高频控制） |
-| 代表算法 | Dreamer, MBPO, PETS | PPO, SAC, TD3 |
+| 代表算法 | Dreamer, MBPO, PETS, RWM/RWM-U | PPO, SAC, TD3 |
 
 ---
 
@@ -185,11 +192,14 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - Hansen et al., *TD-MPC2: Scalable, Robust World Models for Continuous Control* (2023) — 潜空间规划 + TD 价值
 - Sutton, *Integrated architectures for learning, planning, and reacting* (Dyna, 1990) — MBRL 经典框架
 - **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
+- [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md)
+- [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
 
 ---
 
 ## 关联页面
 
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](../entities/robotic-world-model-eth-rsl.md) — Isaac Lab 扩展与 Lite 离线管线
 - [Reinforcement Learning](./reinforcement-learning.md) — MBRL 是 RL 大类下的子方向，与 Model-Free 并列
 - [Model Predictive Control (MPC)](./model-predictive-control.md) — 基于模型规划的经典控制方法，MBRL 的"控制论版"
 - [Trajectory Optimization](./trajectory-optimization.md) — MBRL 规划阶段常用轨迹优化作为求解器
