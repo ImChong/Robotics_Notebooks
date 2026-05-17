@@ -222,6 +222,7 @@ SORT type ASC
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](entities/tairan-he.md) — 何泰然（Tairan He）为 CMU RI 博士、NVIDIA GEAR 实习背景，研究聚焦人形规模化学习与视觉 Sim2Real；代表作含 OmniH2O、HOVER、ASAP、VIRAL / DoorMan 等，主页为论文与项目总索引。 `📅2026-05-14` `[entity_page]`
 - [Unitree G1 (人形机器人)](entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
+- [unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）](entities/unitree-ros.md) — unitree_ros 是 Unitree 官方 ROS1（Melodic/Kinetic）+ Gazebo8 的机器人描述与关节级仿真栈；真机 ROS 控制依赖 unitree_ros_to_real 与 unitree_legged_msgs。README 明确 Gazebo 侧不做高层行走，与 MuJoCo 上的 unitree_rl_mjlab 形成并行官方路线。 `📅2026-05-17` `[entity_page]`
 - [Unitree](entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](entities/world-labs.md) — World Labs 是公开以「空间智能」与三维世界模型为主线的公司与产品团队：浏览器产品 Marble 从文本/图像/视频/全景生成可编辑的持久 3D 世界，并开源 Spark（Web 端 3DGS 渲染与流式大场景技术栈）支撑交互式展示与管线集成。 `📅2026-05-16` `[entity_page]`
 - [Xiaomi-Robotics-0](entities/xiaomi-robotics-0.md) — 小米开源的约 4.7B 参数 VLA（Qwen3-VL-4B + DiT flow matching），强调跨本体预训练、异步 action chunk 执行与仿真/双臂真机评测。 `📅2026-05-15` `[entity_page]`

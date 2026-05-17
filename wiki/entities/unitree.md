@@ -3,10 +3,11 @@ type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
-updated: 2026-04-25
+updated: 2026-05-17
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
+  - ./unitree-ros.md
   - ../concepts/wheel-legged-quadruped.md
 ---
 
@@ -191,6 +192,8 @@ Unitree 的意义之一就是：
 ### 如果你做仿真研究
 也值得关注 Unitree，因为你设计任务和 observation / action space 时，最好提前想清楚未来是不是可能迁到这类真实平台。
 
+若你需要 **经典 ROS1 + Gazebo** 下的 URDF 与关节级仿真入口（与 MuJoCo/Isaac 管线对照），见官方栈归纳页 [unitree_ros](./unitree-ros.md)。
+
 ### 如果你做 sim2real
 Unitree 是非常重要的目标平台语境，值得尽早理解它的硬件约束和部署现实。
 
@@ -212,6 +215,7 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 
 ## 关联页面
 
+- [unitree_ros（ROS1 / Gazebo）](./unitree-ros.md)
 - [四足机器人](./quadruped-robot.md)
 - [人形机器人](./humanoid-robot.md)
 - [legged_gym](./legged-gym.md)
