@@ -502,3 +502,9 @@
 ## [2026-05-15] structural | schema/search-regression-cases.json — WBC×QP BM25 回归 expected_top_k 3→5（语料扩张后 whole-body-control 概念页常居第 4–5 位）
 
 ## [2026-05-15] ingest | sources/repos/pytorch-official.md — 收录 pytorch.org 与 get-started/docs/tutorials；新建 wiki/entities/pytorch.md；互链深度学习基础、Isaac Lab
+
+## [2026-05-17] ingest | sources/papers/faststair_arxiv_2601_10365.md、sources/sites/npcliu-faststair-github-io.md — FastStair（arXiv:2601.10365）入库
+
+- 原始资料：`sources/papers/faststair_arxiv_2601_10365.md`、`sources/sites/npcliu-faststair-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-faststair-humanoid-stair-ascent.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`index.md`（由 `make ci-preflight` 同步）

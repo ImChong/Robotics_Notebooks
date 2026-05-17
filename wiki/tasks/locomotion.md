@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-16
+updated: 2026-05-17
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -24,6 +24,7 @@ related:
   - ../concepts/wheel-legged-quadruped.md
   - ../entities/quadruped-robot.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
+  - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -103,6 +104,8 @@ flowchart TD
 
 ### 4. 地形变化
 平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。
+
+- **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
 
 ### 5. 状态估计与延迟
 足式机器人在接触切换时很难直接观测机身速度和足端滑移；IMU、编码器、足端接触和视觉地形之间还存在时间同步与延迟问题。状态估计偏一点，控制器可能表现为“突然踢地”“脚底打滑”或“落脚点漂移”。
