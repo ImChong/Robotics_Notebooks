@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 338,
-  "edge_count": 2300,
+  "node_count": 339,
+  "edge_count": 2310,
   "coverage": {
-    "covered": 336,
-    "total": 336,
+    "covered": 337,
+    "total": 337,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -73,6 +73,38 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+      "label": "SPIDER（物理感知采样式灵巧重定向）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/robot-motion-keyframe-editors.md",
       "detail_id": "entity-robot-motion-keyframe-editors",
       "label": "机器人关键帧与运动编辑工具（选型入口）",
@@ -85,14 +117,6 @@
       "detail_id": "entity-project-instinct",
       "label": "Project Instinct",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
       "recency": "2026-05-17",
       "source": "log.md"
     },

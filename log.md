@@ -12,6 +12,12 @@
 - 沉淀页面：`wiki/methods/hy-motion-1.md`
 - 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`wiki/entities/awesome-text-to-motion-zilize.md`、`index.md`（由 `make ci-preflight` 同步）
 
+## [2026-05-17] ingest | sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md、sources/sites/jc-bao-spider-project-github-io.md、sources/repos/jc-bao-spider-project.md — SPIDER（arXiv:2511.09484）与项目页入库
+
+- 原始资料：`sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md`、`sources/sites/jc-bao-spider-project-github-io.md`、`sources/repos/jc-bao-spider-project.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/spider-physics-informed-dexterous-retargeting.md`
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/methods/motion-retargeting-gmr.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/repos/cyoahs-robot-motion-editor.md、stanford-tml-robot-keyframe-kit.md、project-instinct-robot-motion-editor.md — 机器人关键帧/运动编辑三仓库入库
 
 - 原始资料：`sources/repos/cyoahs-robot-motion-editor.md`、`sources/repos/stanford-tml-robot-keyframe-kit.md`、`sources/repos/project-instinct-robot-motion-editor.md`；索引 `sources/README.md`
