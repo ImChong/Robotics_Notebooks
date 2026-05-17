@@ -17,6 +17,7 @@
 | [ ] [survey_papers.md](papers/survey_papers.md) | 综述论文归档（待提炼） |
 | [x] [motion_control_projects.md](papers/motion_control_projects.md) | 飞书公开文档《开源运动控制项目》及其 14 个 PDF 附件来源归档 |
 | [x] [humanoid_motion_control_know_how.md](papers/humanoid_motion_control_know_how.md) | 飞书公开文档《人形机器人运动控制 Know-How》结构化来源归档 |
+| [x] [humannet_table1_benchmark_corpora.md](papers/humannet_table1_benchmark_corpora.md) | HumanNet 论文 Table1：代表性人视频/行为语料官方入口与规模转录 |
 | [x] [imitation_learning.md](papers/imitation_learning.md) | IL ingest 摘要（DAgger/ACT/Diffusion） |
 | [x] [whole_body_control.md](papers/whole_body_control.md) | WBC ingest 摘要（TSID/HQP/Crocoddyl） |
 | [x] [gentlehumanoid_upper_body_compliance.md](papers/gentlehumanoid_upper_body_compliance.md) | GentleHumanoid 原始资料归档（上半身柔顺 / 接触丰富人机交互） |

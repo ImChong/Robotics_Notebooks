@@ -13,9 +13,11 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/embodied-data-cleaning.md
+  - ../comparisons/humannet-table1-human-video-corpora.md
   - ./humanoid-robot.md
 sources:
   - ../../sources/papers/humannet.md
+  - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/repos/humannet.md
 ---
 
@@ -73,6 +75,7 @@ flowchart LR
 ## 参考来源
 
 - [HumanNet 论文 ingest 归档](../../sources/papers/humannet.md)
+- [HumanNet Table 1 代表性语料与官方入口索引](../../sources/papers/humannet_table1_benchmark_corpora.md)
 - [HumanNet 仓库与项目索引](../../sources/repos/humannet.md)
 - Deng et al., *HumanNet: Scaling Human-centric Video Learning to One Million Hours* (arXiv:2605.06747)
 - 项目主页：<https://dagroup-pku.github.io/HumanNet/>
@@ -80,6 +83,7 @@ flowchart LR
 
 ## 关联页面
 
+- [HumanNet Table 1：代表性人类视频语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [自动化标注流水线](../methods/auto-labeling-pipelines.md)
