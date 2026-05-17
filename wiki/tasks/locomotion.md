@@ -26,6 +26,7 @@ related:
   - ../entities/quadruped-robot.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -243,6 +244,7 @@ flowchart TD
 如果你想沿着 locomotion 继续往下挖，建议从这里进入：
 
 ### 论文入口
+- [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口

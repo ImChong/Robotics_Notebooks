@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 341,
-  "edge_count": 2329,
+  "node_count": 342,
+  "edge_count": 2337,
   "coverage": {
-    "covered": 339,
-    "total": 339,
+    "covered": 340,
+    "total": 340,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
+      "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
+      "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/unitree-ros.md",
       "detail_id": "entity-unitree-ros",
@@ -29,14 +53,6 @@
       "detail_id": "entity-unitree-rl-mjlab",
       "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -233,14 +249,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/robotic-world-model-eth-rsl.md",
       "detail_id": "entity-robotic-world-model-eth-rsl",
       "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
@@ -354,9 +362,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree-ros.md",
-    "detail_id": "entity-unitree-ros",
-    "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
+    "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
+    "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
+    "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"

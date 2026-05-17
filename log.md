@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/e_sds_arxiv_2512_16446.md、sds_quadruped_arxiv_2410_11571.md、repos/rpl_cs_ucl_sds.md — E-SDS（arXiv:2512.16446）与 SDS 前序资料入库
+
+- 原始资料：`sources/papers/e_sds_arxiv_2512_16446.md`、`sources/papers/sds_quadruped_arxiv_2410_11571.md`、`sources/repos/rpl_cs_ucl_sds.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`wiki/methods/reinforcement-learning.md`、`references/papers/locomotion-rl.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/repos/unitree_ros.md、sources/repos/unitree_ros_to_real.md — 官方 ROS1+Gazebo 与真机 ROS 桥入库
 
 - 原始资料：`sources/repos/unitree_ros.md`、`sources/repos/unitree_ros_to_real.md`；索引 `sources/README.md`
