@@ -214,6 +214,7 @@ SORT type ASC
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](entities/robotic-world-model-eth-rsl.md) — ETH RSL 开源的神经动力学世界模型：Isaac Lab 扩展支持在线/离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口（ANYmal D 参考任务）。 `📅2026-05-17` `[entity_page]`
 - [RIO（Robot I/O）](entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅2026-05-15` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
+- [机器人关键帧与运动编辑工具（选型入口）](entities/robot-motion-keyframe-editors.md) — 本页把三条 **公开仓库** 上的运动编辑工具放在一起对照：它们都解决「已有轨迹 / 姿态序列 → 人工修正 → 再导出」的问题，但 **绑定仿真栈、文件格式与是否纯前端** 差异很大，选型时应先确定下游是 **真机 CSV**、**MuJoCo qpos** 还是 **NumPy 归档**。 `📅2026-05-17` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](entities/roboto-origin.md) — Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。 `📅unknown` `[entity_page]`
 - [SceneVerse++（3D 场景理解数据集）](entities/sceneverse-pp.md) — SceneVerse++ 从互联网无标注视频自动重建与标注大规模真实室内 3D 场景，为检测分割、3D 空间 VQA 与视觉–语言导航等任务提供训练数据，代码与数据开源。 `📅2026-05-07` `[entity_page]`
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`

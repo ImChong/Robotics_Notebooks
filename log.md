@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/repos/cyoahs-robot-motion-editor.md、stanford-tml-robot-keyframe-kit.md、project-instinct-robot-motion-editor.md — 机器人关键帧/运动编辑三仓库入库
+
+- 原始资料：`sources/repos/cyoahs-robot-motion-editor.md`、`sources/repos/stanford-tml-robot-keyframe-kit.md`、`sources/repos/project-instinct-robot-motion-editor.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/robot-motion-keyframe-editors.md`
+- 交叉更新：`wiki/entities/project-instinct.md`、`wiki/entities/mujoco.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/tasks/manipulation.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/repos/obra-superpowers.md、sources/blogs/fsck_superpowers_announcement_2025-10-09.md — Superpowers（obra）编码代理技能与交付工作流入库
 
 - 原始资料：`sources/repos/obra-superpowers.md`、`sources/blogs/fsck_superpowers_announcement_2025-10-09.md`；索引 `sources/README.md`

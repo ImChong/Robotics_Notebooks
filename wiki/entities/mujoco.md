@@ -2,9 +2,10 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-05-16
+updated: 2026-05-17
 related:
   - ../comparisons/mujoco-vs-isaac-sim.md
+  - ./robot-motion-keyframe-editors.md
   - ./dm-control.md
   - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
@@ -44,6 +45,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。
 
 ## 关联页面
+- [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）
 - [dm_control / Control Suite](./dm-control.md) — MuJoCo 上的连续控制基准与 Python 栈
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎
