@@ -15,6 +15,7 @@ related:
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
   - ./mimic-video.md
+  - ./egoscale.md
   - ./amp-reward.md
   - ./smp.md
   - ./disney-olaf-character-robot.md
@@ -24,6 +25,8 @@ sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
+  - ../../sources/papers/egoscale_arxiv_2602_16710.md
+  - ../../sources/sites/nvidia-research-egoscale.md
   - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
@@ -122,6 +125,7 @@ flowchart TD
 - CLAW：宇树 G1 的模块化语言-动作数据生成管线
 - HTD：在人形接触丰富型移动操作中，把未来手部力与触觉 latent 预测作为行为克隆辅助目标，解决“有触觉输入但策略未必会用触觉”的问题
 - [HumanNet](../entities/humannet.md)：互联网级 **人中心** 视频语料（论文宣称约百万小时）与交互导向标注管线，可作为「人类侧大规模演示」与 VLA 持续预训练的数据基础设施参照（与真机日志互补，不等价替代物理闭环）
+- [EgoScale](./egoscale.md)：在 **两万小时量级** egocentric 人视频上做 **显式腕–手动作** 预训练，并系统测量 **数据规模–离线验证–真机灵巧** 的缩放关系；用 **对齐人–机 mid-training** 把表示锚到机器人（arXiv:2602.16710）
 
 ## 常见问题
 
@@ -139,6 +143,8 @@ flowchart TD
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频与 VLA 受控预训练叙事
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照（arXiv:2512.15692）摘录
+- [sources/papers/egoscale_arxiv_2602_16710.md](../../sources/papers/egoscale_arxiv_2602_16710.md) — EgoScale：人视频规模预训练 VLA + 对齐 mid-training（arXiv:2602.16710）摘录
+- [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
@@ -164,6 +170,7 @@ flowchart TD
 - [LeRobot](../entities/lerobot.md) — Hugging Face 开发的具身智能全栈框架
 - [DAgger](./dagger.md) — 用专家回标策略访问到的状态，缓解 covariate shift
 - [VLA](./vla.md) — 把语言、视觉与动作统一进多模态模仿学习 / foundation policy 路线
+- [EgoScale](./egoscale.md) — 海量 egocentric 人视频预训练 VLA + 对齐 mid-training 的灵巧操作迁移案例
 - [HumanNet](../entities/humannet.md) — 大规模人中心视频语料与跨本体迁移的数据侧参照
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)（两大策略学习路线的系统性对比）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — MoCap 数据需经过 Motion Retargeting 才能作为 IL 的参考轨迹

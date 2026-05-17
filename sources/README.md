@@ -28,6 +28,7 @@
 | [x] [dwm_arxiv_2512_17907.md](papers/dwm_arxiv_2512_17907.md) | DWM：Dexterous World Models，场景–手条件视频扩散与混合数据（arXiv:2512.17907，CVPR 2026）摘录与 wiki 映射 |
 | [x] [e_sds_arxiv_2512_16446.md](papers/e_sds_arxiv_2512_16446.md) | E-SDS：环境统计条件化 VLM 奖励 + Isaac Lab 人形感知行走 RL（arXiv:2512.16446）摘录与 wiki 映射 |
 | [x] [egm_arxiv_2512_19043.md](papers/egm_arxiv_2512_19043.md) | EGM：Efficient General Mimic，Bin 采样 + CDMoE + 三阶段教师–学生人形全身 tracking（arXiv:2512.19043）摘录与 wiki 映射 |
+| [x] [egoscale_arxiv_2602_16710.md](papers/egoscale_arxiv_2602_16710.md) | EgoScale：2 万小时级 egocentric 人视频预训练流式 VLA + 对齐人–机 mid-training（arXiv:2602.16710）摘录与 wiki 映射 |
 | [x] [faststair_arxiv_2601_10365.md](papers/faststair_arxiv_2601_10365.md) | FastStair：DCM 并行落脚点规划引导 + 分速专家 LoRA 融合的人形高速上楼梯（arXiv:2601.10365）摘录与 wiki 映射 |
 | [x] [interprior_arxiv_2602_06035.md](papers/interprior_arxiv_2602_06035.md) | InterPrior：物理 HOI 生成式控制（InterMimic+ → 变分蒸馏 → RL 微调，arXiv:2602.06035，CVPR 2026 Highlight）摘录与 wiki 映射 |
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |
@@ -103,6 +104,7 @@
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
+| [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |

@@ -24,6 +24,10 @@
 
 - **mimic-video** (Pai et al., 2025) — *Video-Action Models for Generalizable Robot Control Beyond VLAs*。用语义–动力学一体的 **互联网规模视频模型潜表示** 条件化 **流匹配动作解码器**，论文叙事强调相对 VLA 的 **样本效率** 与 oracle 缩放下的 **视频质量瓶颈**；归纳页见 [mimic-video](../../wiki/methods/mimic-video.md)。
 
+### 人视频预训练 VLA（显式腕–手监督 + 对齐 mid-training）
+
+- **EgoScale** (Zheng et al., 2026) — *EgoScale: Scaling Dexterous Manipulation with Diverse Egocentric Human Data*。在 **>20k h** egocentric 人视频上预训练 **流式 VLA**，给出 **数据规模–人轨验证损失（log-linear）–真机灵巧后训练** 的实证链条，并以 **小规模视点对齐的人–机 mid-training** 承接 embodiment gap；归纳页见 [EgoScale](../../wiki/methods/egoscale.md)。
+
 ### 技能嵌入
 
 - **ASE** (Peng et al., 2022) — *Adversarial Skill Embeddings for Hierarchical RL*. 学习可组合的隐空间技能表征。
@@ -33,5 +37,6 @@
 - [Imitation Learning (Method)](../../wiki/methods/imitation-learning.md)
 - [Diffusion Policy (Method)](../../wiki/methods/diffusion-policy.md)
 - [mimic-video / VAM (Method)](../../wiki/methods/mimic-video.md)
+- [EgoScale (Method)](../../wiki/methods/egoscale.md)
 - [Action Chunking (Method)](../../wiki/methods/action-chunking.md)
 - [Behavior Cloning (Method)](../../wiki/methods/behavior-cloning.md)

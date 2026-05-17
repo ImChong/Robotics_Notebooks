@@ -1,17 +1,17 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 345,
-  "edge_count": 2367,
+  "node_count": 346,
+  "edge_count": 2379,
   "coverage": {
-    "covered": 343,
-    "total": 343,
+    "covered": 344,
+    "total": 344,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/methods/mimic-video.md",
-      "detail_id": "wiki-methods-mimic-video",
-      "label": "mimic-video（Video-Action Model, VAM）",
+      "path": "wiki/methods/egoscale.md",
+      "detail_id": "wiki-methods-egoscale",
+      "label": "EgoScale",
       "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
@@ -33,6 +33,38 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humannet.md",
+      "detail_id": "entity-humannet",
+      "label": "HumanNet",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/embodied-scaling-laws.md",
+      "detail_id": "wiki-concepts-embodied-scaling-laws",
+      "label": "Embodied Scaling Laws (具身规模法则)",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/concepts/video-as-simulation.md",
       "detail_id": "wiki-concepts-video-as-simulation",
       "label": "Video-as-Simulation (视频即仿真)",
@@ -45,14 +77,6 @@
       "detail_id": "wiki-methods-generative-world-models",
       "label": "Generative World Models (生成式世界模型)",
       "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -418,9 +442,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/mimic-video.md",
-    "detail_id": "wiki-methods-mimic-video",
-    "label": "mimic-video（Video-Action Model, VAM）",
+    "path": "wiki/methods/egoscale.md",
+    "detail_id": "wiki-methods-egoscale",
+    "label": "EgoScale",
     "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"

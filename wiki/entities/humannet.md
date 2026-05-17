@@ -8,6 +8,7 @@ status: complete
 related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
+  - ../methods/egoscale.md
   - ../methods/auto-labeling-pipelines.md
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
@@ -88,5 +89,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- Ego4D / Ego-Exo4D / EgoScale / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
+- [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
 - LingBot-VLA 相关公开材料（论文中作为受控 VLA 后训练协议参照架构）
