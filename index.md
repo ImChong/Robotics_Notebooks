@@ -190,6 +190,7 @@ SORT type ASC
 - [GR00T-WholeBodyControl（人形全身控制平台）](entities/gr00t-wholebodycontrol.md) — NVlabs 单仓聚合解耦 WBC、GEAR-SONIC（SONIC）与 MotionBricks 预览的训练/部署/VLA 教程与 C++ 推理栈。 `📅2026-05-14` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [HumanNet](entities/humannet.md) — HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。 `📅2026-05-14` `[entity_page]`
+- [InterPrior（论文：物理 HOI 生成式控制）](entities/paper-interprior.md) — InterPrior（arXiv:2602.06035，CVPR 2026 Highlight）用 InterMimic+ 全参考 PPO 专家、掩码多模态目标变分蒸馏与带正则的 RL 微调，学习可泛化的物理人–物全身交互先验；报告 G1 sim-to-sim 与交互控制演示。 `📅2026-05-17` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [Kimodo（运动扩散模型）](entities/kimodo.md) — NVIDIA nv-tlabs 开源：大规模动捕上训练的运动扩散模型，支持文本与运动学约束生成 SOMA / G1 / SMPL-X 轨迹，附 CLI、时间线 Demo 与公开基准。 `📅2026-05-14` `[entity_page]`
 - [LaFAN1（Ubisoft 动捕数据集）](entities/lafan1-dataset.md) — Ubisoft La Forge 发布的 BVH 棚拍动捕与过渡任务基准（SIGGRAPH 2020 配套）；许可为 CC BY-NC-ND 4.0，克隆需 Git LFS。 `📅2026-05-15` `[entity_page]`
