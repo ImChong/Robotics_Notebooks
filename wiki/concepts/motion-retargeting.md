@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-05-15
+updated: 2026-05-17
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -57,6 +57,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 - 收集可行段，过滤摔倒片段
 - 可结合 RL 做后续精修（AMP 风格）
 - **双层 RL 式（ReActor）**：上层优化**参数化运动学参考**（稀疏语义刚体对应 + 有界偏移），下层用 **RL 跟踪**并在仿真里回传误差；把「造参考」与「跟参考」联立，减少脚滑与自碰等运动学伪影，详见 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)。
+- **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
 
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
@@ -152,6 +153,8 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 的消融提供"视频生成→动作估计→tracking"链路下不引入中间重定向反而更稳的反例
 - **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
 - **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
+- **ingest 档案：** [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导的规模化物理重定向（arXiv:2511.09484）
+- **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
 - **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
 - **ingest 档案：** [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1：Ubisoft BVH 动捕与评估脚本（SIGGRAPH 2020 论文配套）
 - **ingest 档案：** [sources/sites/mixamo.md](../../sources/sites/mixamo.md) — Mixamo：Adobe 在线角色与动画服务（商业许可与管线说明）
@@ -170,6 +173,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现
 - [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真 RL 修补监督
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 双层：可学习参考 + 同环 RL 跟踪，近似上层梯度
+- [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 运动学参考 + 并行仿真采样优化 + 课程式虚拟接触引导
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的人形控制流水线，提供"中间重定向并非永远收益项"的反例
 - [MotionCode](../entities/motioncode.md) — 商业运动数据与「人形/具身 + RL」叙事样本
 - [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一

@@ -320,6 +320,7 @@ SORT type ASC
 - [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](methods/neural-motion-retargeting-nmr.md) — NMR** 用 CEPR 管线（筛选、GMR、聚类 RL 专家、仿真 rollout）构造物理一致的人机配对监督，训练 CNN–Transformer 将 SMPL 序列映射为 Unitree G1 等平台的全身参考轨迹，缓解优化式重定向的非凸与噪声传播。 `📅2026-05-08` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](methods/reactor-physics-aware-motion-retargeting.md) — ReActor** 将跨具身运动重定向建成物理仿真中的双层问题：上层优化稀疏语义刚体对应下的参数化参考，下层用 RL 跟踪；以结构化近似上层梯度避免 Hessian 逆，面向少脚滑/自碰的参考与下游模仿学习（SIGGRAPH 2026 预印本 arXiv:2605.06593）。 `📅2026-05-13` `[method_page]`
+- [SPIDER（物理感知采样式灵巧重定向）](methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER** 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义（arXiv:2511.09484）。 `📅2026-05-17` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Pelican-Unified 1.0（统一具身智能 UEI）](methods/pelican-unified-1.md) — Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，与 Wan 系扩散 UFG 耦合，使未来视频与动作块在同一去噪轨迹中联合生成。 `📅2026-05-16` `[method_page]`

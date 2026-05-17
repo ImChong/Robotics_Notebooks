@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 336,
-  "edge_count": 2283,
+  "node_count": 337,
+  "edge_count": 2293,
   "coverage": {
-    "covered": 334,
-    "total": 334,
+    "covered": 335,
+    "total": 335,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+      "label": "SPIDER（物理感知采样式灵巧重定向）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/robot-motion-keyframe-editors.md",
       "detail_id": "entity-robot-motion-keyframe-editors",
@@ -29,14 +61,6 @@
       "detail_id": "entity-mujoco",
       "label": "MuJoCo (物理引擎)",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -258,10 +282,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robot-motion-keyframe-editors.md",
-    "detail_id": "entity-robot-motion-keyframe-editors",
-    "label": "机器人关键帧与运动编辑工具（选型入口）",
-    "type": "entity",
+    "path": "wiki/methods/spider-physics-informed-dexterous-retargeting.md",
+    "detail_id": "wiki-methods-spider-physics-informed-dexterous-retargeting",
+    "label": "SPIDER（物理感知采样式灵巧重定向）",
+    "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"
   }
