@@ -187,6 +187,7 @@ SORT type ASC
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [DoorMan（论文：人形 RGB 开门视觉 Sim2Real）](entities/paper-doorman-opening-sim2real-door.md) — DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化。 `📅2026-05-17` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](entities/ewmbench.md) — EWMBench 面向具身世界模型（EWM）视频生成：在 Agibot-World 子集上从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选模型，并开源数据与评测工具链。 `📅2026-05-16` `[entity_page]`
+- [FastStair（论文：人形高速上楼梯）](entities/paper-faststair-humanoid-stair-ascent.md) — FastStair（arXiv:2601.10365）用 GPU 并行 DCM 落脚点离散搜索嵌入 Isaac Lab RL，强 foothold-tracking 预训练后分训高速/低速专家并以 LoRA 合成单策略，在 LimX Oli 上报告约 1.65 m/s 指令速度与长螺旋梯实爬。 `📅2026-05-17` `[entity_page]`
 - [Figure AI](entities/figure-ai.md) — Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。 `📅2026-05-07` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5 是 Genesis AI 公司的机器人操作基础模型产品品牌；与开源 Genesis 物理仿真器（Genesis-Embodied-AI）名称相近但主体不同。 `📅2026-05-07` `[entity_page]`
 - [Genesis (仿真器)](entities/genesis-sim.md) — **Genesis** 是具身智能领域新兴的高性能物理仿真与数据生成平台，常与 Isaac Gym / Isaac Lab 并列，强调多物理场与 GPU 大规模并行。 `📅2026-05-07` `[entity_page]`

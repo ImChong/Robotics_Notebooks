@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 335,
-  "edge_count": 2274,
+  "node_count": 336,
+  "edge_count": 2283,
   "coverage": {
-    "covered": 333,
-    "total": 333,
+    "covered": 334,
+    "total": 334,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -44,6 +44,22 @@
       "path": "wiki/tasks/manipulation.md",
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
       "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
@@ -205,14 +221,6 @@
       "detail_id": "entity-lift-humanoid",
       "label": "LIFT（人形大规模预训练 + 高效微调）",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
       "recency": "2026-05-17",
       "source": "log.md"
     },
