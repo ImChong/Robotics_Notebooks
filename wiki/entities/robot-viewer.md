@@ -36,6 +36,7 @@ updated: 2026-05-01
 - [robot-explorer](robot-explorer.md) (动力学分析工具)
 - [urdf-studio](urdf-studio.md) (机器人组装工作站)
 - [mujoco](mujoco.md) (底层仿真引擎)
+- [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md)（URDF 派生数据模块化目录与浏览器检视；与本工具的「在线看模型」互补）
 
 ## 参考来源
 - [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)
