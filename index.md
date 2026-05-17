@@ -301,6 +301,7 @@ SORT type ASC
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](methods/dwm.md) — DWM（Dexterous World Models）在已知静态 3D 场景上，用场景–动作条件视频扩散把第一人称相机轨迹与手部网格轨迹转成可信的交互视频，通过修复模型恒等先验学残差动力学，并以合成精确对齐数据混合固定机位真实视频补全物理真实性。 `📅2026-05-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再按**成功率自适应衰减**辅助强度直至为零，使策略在**无参考轨迹、弱奖励塑形**的条件下仍能学会并**迁移到实机**。 `📅2026-05-13` `[method_page]`
+- [EGM（Efficient General Mimic，高效通用模仿跟踪）](methods/egm-efficient-general-mimic.md) — EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应采样、上下身分组的复合解耦 MoE（CDMoE）与三阶段教师–学生训练，在少量高质量重定向动捕上学习可泛化的人形高动态全身跟踪策略。 `📅2026-05-17` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频， `📅2026-05-03` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`

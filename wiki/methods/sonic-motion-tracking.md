@@ -6,6 +6,7 @@ date: 2026-05-14
 updated: 2026-05-14
 related:
   - ./beyondmimic.md
+  - ./egm-efficient-general-mimic.md
   - ./exoactor.md
   - ./imitation-learning.md
   - ./genmo.md
@@ -31,6 +32,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 
 - **执行层「基础模型」叙事**：把跟踪当作统一预训练目标，再用 **统一 token / 控制接口** 接入 VR、视频、VLA、文本与音乐等不同上游——降低「每换一个接口就重写 reward」的成本。
 - **与 BeyondMimic  lineage**：同属高质量仿真里的模仿 / 跟踪路线；SONIC 强调 **scaling** 式的数据与网络扩展（参见 [BeyondMimic](./beyondmimic.md) 中的物理建模与采样细节对照阅读）。
+- **与「少数据高效 tracking」对照**：[EGM（Efficient General Mimic）](./egm-efficient-general-mimic.md) 用 **小时级精选 MoCap + bin 级课程采样 + CDMoE** 追求高动态泛化，可与本文的 **大规模预训练** 路线并列阅读。
 - **视频驱动现实的落脚点**：人体运动估计（如 [GENMO](./genmo.md)、[WiLoR](./wilor.md)）给出参考轨迹后，需要动力学可行的跟踪策略；SONIC 在 [ExoActor](./exoactor.md) 中被用作「物理过滤器」，直接把人体运动喂入策略而省略部分经典重定向步骤（该结论具有任务与平台依赖性）。
 - **与 VLA 的分工示例**：公开演示把 **GR00T N1.5** 与 SONIC 经同一接口串联，体现「慢推理 / 快反射」式 **分层控制** 的一种工程形态（参见 [VLA](./vla.md)）。
 

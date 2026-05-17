@@ -80,9 +80,9 @@
 - wiki/methods/ase.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/auto-labeling-pipelines.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/being-h07.md（被 9 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/beyondmimic.md（被 17 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/beyondmimic.md（被 20 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/deepmimic.md（被 13 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/deepmimic.md（被 16 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/diffusion-motion-generation.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/dwm.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/efgcl.md（被 5 个页面引用，无 queries/comparisons 落地）
@@ -99,7 +99,7 @@
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/reactor-physics-aware-motion-retargeting.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/sonic-motion-tracking.md（被 27 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/sonic-motion-tracking.md（被 28 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/spider-physics-informed-dexterous-retargeting.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
@@ -107,4 +107,4 @@
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：338/338 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：339/339 (100%) wiki/entity 页有 ingest 来源

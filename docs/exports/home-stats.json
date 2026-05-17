@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 340,
-  "edge_count": 2318,
+  "node_count": 341,
+  "edge_count": 2328,
   "coverage": {
-    "covered": 338,
-    "total": 338,
+    "covered": 339,
+    "total": 339,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/beyondmimic.md",
+      "detail_id": "wiki-methods-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
       "detail_id": "entity-paper-urdd-universal-robot-description-directory",
@@ -330,10 +354,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
-    "detail_id": "entity-paper-urdd-universal-robot-description-directory",
-    "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
-    "type": "entity",
+    "path": "wiki/methods/egm-efficient-general-mimic.md",
+    "detail_id": "wiki-methods-egm-efficient-general-mimic",
+    "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+    "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"
   }

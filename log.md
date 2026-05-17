@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/egm_arxiv_2512_19043.md、sources/blogs/egm_themoonlight_literature_review_2512_19043.md — EGM（arXiv:2512.19043）与第三方导读入库
+
+- 原始资料：`sources/papers/egm_arxiv_2512_19043.md`、`sources/blogs/egm_themoonlight_literature_review_2512_19043.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/egm-efficient-general-mimic.md`
+- 交叉更新：`wiki/methods/beyondmimic.md`、`wiki/methods/sonic-motion-tracking.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md、Apollo-Lab-Yale 多仓与 Pages — URDD（arXiv:2512.23135）入库
 
 - 原始资料：`sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md`、`sources/repos/apollo-lab-yale-apollo-resources.md`、`sources/repos/apollo-lab-yale-apollo-rust.md`、`sources/repos/apollo-lab-yale-apollo-three-engine.md`、`sources/repos/apollo-lab-yale-apollo-py.md`、`sources/sites/apollo-lab-yale-apollo-resources-github-io.md`；索引 `sources/README.md`
