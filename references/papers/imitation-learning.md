@@ -20,6 +20,10 @@
 
 - **ACT** (Zhao et al., 2023) — *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware*. 提出了 Action Chunking，改善了长时序稳定性。
 
+### 视频先验 + 逆动力学（VAM）
+
+- **mimic-video** (Pai et al., 2025) — *Video-Action Models for Generalizable Robot Control Beyond VLAs*。用语义–动力学一体的 **互联网规模视频模型潜表示** 条件化 **流匹配动作解码器**，论文叙事强调相对 VLA 的 **样本效率** 与 oracle 缩放下的 **视频质量瓶颈**；归纳页见 [mimic-video](../../wiki/methods/mimic-video.md)。
+
 ### 技能嵌入
 
 - **ASE** (Peng et al., 2022) — *Adversarial Skill Embeddings for Hierarchical RL*. 学习可组合的隐空间技能表征。
@@ -28,5 +32,6 @@
 
 - [Imitation Learning (Method)](../../wiki/methods/imitation-learning.md)
 - [Diffusion Policy (Method)](../../wiki/methods/diffusion-policy.md)
+- [mimic-video / VAM (Method)](../../wiki/methods/mimic-video.md)
 - [Action Chunking (Method)](../../wiki/methods/action-chunking.md)
 - [Behavior Cloning (Method)](../../wiki/methods/behavior-cloning.md)
