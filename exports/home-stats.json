@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 328,
-  "edge_count": 2212,
+  "node_count": 329,
+  "edge_count": 2220,
   "coverage": {
-    "covered": 326,
-    "total": 326,
+    "covered": 327,
+    "total": 327,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-doorman-opening-sim2real-door.md",
-    "detail_id": "entity-paper-doorman-opening-sim2real-door",
-    "label": "DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）",
+    "path": "wiki/entities/robotic-world-model-eth-rsl.md",
+    "detail_id": "entity-robotic-world-model-eth-rsl",
+    "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
