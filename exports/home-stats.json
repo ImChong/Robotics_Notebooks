@@ -7,6 +7,192 @@
     "total": 331,
     "percent": 100
   },
+  "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-interprior.md",
+      "detail_id": "entity-paper-interprior",
+      "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robotic-world-model-eth-rsl.md",
+      "detail_id": "entity-robotic-world-model-eth-rsl",
+      "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Lab",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
+      "detail_id": "entity-awesome-text-to-motion-zilize",
+      "label": "Awesome Text-to-Motion（Zilize 精选集）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/genmo.md",
+      "detail_id": "wiki-methods-genmo",
+      "label": "GENMO（统一人体运动估计与生成）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/sage-sim2real-actuator-gap-estimator.md",
+      "detail_id": "entity-sage-sim2real-actuator-gap-estimator",
+      "label": "SAGE（Sim2Real Actuator Gap Estimator）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/roadmaps/humanoid-control-roadmap.md",
+      "detail_id": "wiki-roadmaps-humanoid-control-roadmap",
+      "label": "Humanoid Control Roadmap",
+      "type": "roadmap_page",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/actuator-network.md",
+      "detail_id": "wiki-methods-actuator-network",
+      "label": "Actuator Network (执行器网络)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lift-humanoid.md",
+      "detail_id": "entity-lift-humanoid",
+      "label": "LIFT（人形大规模预训练 + 高效微调）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/rl-algorithm-selection.md",
+      "detail_id": "wiki-queries-rl-algorithm-selection",
+      "label": "RL 算法选型指南：足式机器人中的 PPO / SAC / TD3",
+      "type": "query",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-doorman-opening-sim2real-door.md",
+      "detail_id": "entity-paper-doorman-opening-sim2real-door",
+      "label": "DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gr00t-visual-sim2real.md",
+      "detail_id": "entity-gr00t-visual-sim2real",
+      "label": "GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-viral-humanoid-visual-sim2real.md",
+      "detail_id": "entity-paper-viral-humanoid-visual-sim2real",
+      "label": "VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    }
+  ],
   "latest_wiki_node": {
     "path": "wiki/entities/paper-interprior.md",
     "detail_id": "entity-paper-interprior",

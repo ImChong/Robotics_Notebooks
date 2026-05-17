@@ -41,7 +41,10 @@ payload = {
         "percent": int(coverage_match.group(3)),
     },
 }
+latest_nodes = graph_stats.get("latest_wiki_nodes")
 latest = graph_stats.get("latest_wiki_node")
+if latest_nodes:
+    payload["latest_wiki_nodes"] = latest_nodes
 if latest:
     payload["latest_wiki_node"] = latest
 OUT_PATH.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
