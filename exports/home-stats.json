@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 336,
-  "edge_count": 2283,
+  "node_count": 337,
+  "edge_count": 2291,
   "coverage": {
-    "covered": 334,
-    "total": 334,
+    "covered": 335,
+    "total": 335,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
+      "detail_id": "entity-paper-urdd-universal-robot-description-directory",
+      "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robot-viewer.md",
+      "detail_id": "entity-robot-viewer",
+      "label": "Robot Viewer",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/urdf-studio.md",
+      "detail_id": "entity-urdf-studio",
+      "label": "URDF-Studio",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/robot-motion-keyframe-editors.md",
       "detail_id": "entity-robot-motion-keyframe-editors",
@@ -20,14 +52,6 @@
       "path": "wiki/entities/project-instinct.md",
       "detail_id": "entity-project-instinct",
       "label": "Project Instinct",
-      "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
       "type": "entity",
       "recency": "2026-05-17",
       "source": "log.md"
@@ -258,9 +282,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robot-motion-keyframe-editors.md",
-    "detail_id": "entity-robot-motion-keyframe-editors",
-    "label": "机器人关键帧与运动编辑工具（选型入口）",
+    "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
+    "detail_id": "entity-paper-urdd-universal-robot-description-directory",
+    "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
