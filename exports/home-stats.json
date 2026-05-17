@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 346,
-  "edge_count": 2379,
+  "node_count": 347,
+  "edge_count": 2386,
   "coverage": {
-    "covered": 344,
-    "total": 344,
+    "covered": 345,
+    "total": 345,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/humannet-table1-human-video-corpora.md",
+      "detail_id": "wiki-comparisons-humannet-table1-human-video-corpora",
+      "label": "HumanNet Table 1：代表性人类视频语料与具身向关系",
+      "type": "comparison",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humannet.md",
+      "detail_id": "entity-humannet",
+      "label": "HumanNet",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/egoscale.md",
       "detail_id": "wiki-methods-egoscale",
@@ -37,14 +53,6 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/humannet.md",
-      "detail_id": "entity-humannet",
-      "label": "HumanNet",
-      "type": "entity",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -442,10 +450,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/egoscale.md",
-    "detail_id": "wiki-methods-egoscale",
-    "label": "EgoScale",
-    "type": "method",
+    "path": "wiki/comparisons/humannet-table1-human-video-corpora.md",
+    "detail_id": "wiki-comparisons-humannet-table1-human-video-corpora",
+    "label": "HumanNet Table 1：代表性人类视频语料与具身向关系",
+    "type": "comparison",
     "recency": "2026-05-17",
     "source": "log.md"
   }

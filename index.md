@@ -387,6 +387,7 @@ SORT type ASC
 
 ### Wiki Comparisons（对比页）
 
+- [HumanNet Table 1：代表性人类视频语料与具身向关系](comparisons/humannet-table1-human-video-corpora.md) — 围绕 HumanNet 论文 Table 1，把代表性人类视频/行为语料按视点、活动语义与「具身向可用性」分组，并指向各数据集的官方入口；用于 VLA/模仿学习侧的人类数据选型，而非替代各数据集的官方数据卡。 `📅2026-05-17` `[comparison_page]`
 - [CLF vs CBF：稳定性与安全性的对偶工具](comparisons/clf-vs-cbf.md) —  工具 | 全称 | 核心角色  `📅unknown` `[comparison_page]`
 - [数据手套 vs 视觉遥操作 (灵巧数据采集选型)](comparisons/data-gloves-vs-vision-teleop.md) — 在训练灵巧手（Dexterous Hand）执行复杂任务时，获取高质量的人类演示数据是第一步。目前，**穿戴式数据手套 (Data Gloves)** 和 **基于视觉的遥操作 (Vision-bas `📅unknown` `[comparison_page]`
 - [Kalman Filter vs. Optimization-based Estimation (状态估计选型)](comparisons/kalman-filter-vs-optimization-based-estimation.md) — 在机器人（特别是人形和四足机器人）中，实时估计 Base 的位置、速度和姿态是所有算法的基础。目前主要存在两大技术路线：以 **EKF** 为代表的递归滤波派，和以 **滑窗优化 (Sliding W `📅unknown` `[comparison_page]`

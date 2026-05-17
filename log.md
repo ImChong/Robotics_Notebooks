@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/humannet_table1_benchmark_corpora.md — HumanNet Table1 代表性人视频/行为语料官方入口索引；新增对比页 wiki/comparisons/humannet-table1-human-video-corpora.md
+
+- 原始资料：`sources/papers/humannet_table1_benchmark_corpora.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/comparisons/humannet-table1-human-video-corpora.md`
+- 交叉更新：`wiki/entities/humannet.md`、`wiki/methods/vla.md`、`index.md`（由 `make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 等）
+
 ## [2026-05-17] ingest | sources/papers/egoscale_arxiv_2602_16710.md、sources/sites/nvidia-research-egoscale.md — EgoScale（arXiv:2602.16710）与 NVIDIA GEAR 项目页入库
 
 - 原始资料：`sources/papers/egoscale_arxiv_2602_16710.md`、`sources/sites/nvidia-research-egoscale.md`；索引 `sources/README.md`
