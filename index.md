@@ -49,6 +49,8 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md)（Isaac Lab 扩展 + Lite 离线仓；集成 RNN 动力学与想象 rollout 的 MBRL 参考实现）
+- [SAGE（执行器 Sim2Real 间隙估计）](wiki/entities/sage-sim2real-actuator-gap-estimator.md)（Isaac 重放与真机对齐、关节级 gap 指标与成对数据）
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [dm_control / Control Suite](wiki/entities/dm-control.md)
@@ -190,6 +192,7 @@ SORT type ASC
 - [GR00T-WholeBodyControl（人形全身控制平台）](entities/gr00t-wholebodycontrol.md) — NVlabs 单仓聚合解耦 WBC、GEAR-SONIC（SONIC）与 MotionBricks 预览的训练/部署/VLA 教程与 C++ 推理栈。 `📅2026-05-14` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [HumanNet](entities/humannet.md) — HumanNet 是面向具身学习的大规模人中心视频语料（论文宣称约一百万小时），一三人称混合并配套交互导向标注与可扩展策展管线；适合作为 VLA/表示学习的人类侧数据基础设施参照。 `📅2026-05-14` `[entity_page]`
+- [InterPrior（论文：物理 HOI 生成式控制）](entities/paper-interprior.md) — InterPrior（arXiv:2602.06035，CVPR 2026 Highlight）用 InterMimic+ 全参考 PPO 专家、掩码多模态目标变分蒸馏与带正则的 RL 微调，学习可泛化的物理人–物全身交互先验；报告 G1 sim-to-sim 与交互控制演示。 `📅2026-05-17` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [Kimodo（运动扩散模型）](entities/kimodo.md) — NVIDIA nv-tlabs 开源：大规模动捕上训练的运动扩散模型，支持文本与运动学约束生成 SOMA / G1 / SMPL-X 轨迹，附 CLI、时间线 Demo 与公开基准。 `📅2026-05-14` `[entity_page]`
 - [LaFAN1（Ubisoft 动捕数据集）](entities/lafan1-dataset.md) — Ubisoft La Forge 发布的 BVH 棚拍动捕与过渡任务基准（SIGGRAPH 2020 配套）；许可为 CC BY-NC-ND 4.0，克隆需 Git LFS。 `📅2026-05-15` `[entity_page]`
@@ -207,6 +210,7 @@ SORT type ASC
 - [Project Instinct](entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [四足机器人（Quadruped Robot）](entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
 - [RLDX-1](entities/rldx-1.md) — RLDX-1** 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。 `📅2026-05-11` `[entity_page]`
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](entities/robotic-world-model-eth-rsl.md) — ETH RSL 开源的神经动力学世界模型：Isaac Lab 扩展支持在线/离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口（ANYmal D 参考任务）。 `📅2026-05-17` `[entity_page]`
 - [RIO（Robot I/O）](entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅2026-05-15` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](entities/roboto-origin.md) — Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。 `📅unknown` `[entity_page]`

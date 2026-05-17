@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 329,
-  "edge_count": 2224,
+  "node_count": 333,
+  "edge_count": 2262,
   "coverage": {
-    "covered": 327,
-    "total": 327,
+    "covered": 331,
+    "total": 331,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/lift-humanoid.md",
-    "detail_id": "entity-lift-humanoid",
-    "label": "LIFT（人形大规模预训练 + 高效微调）",
+    "path": "wiki/entities/paper-interprior.md",
+    "detail_id": "entity-paper-interprior",
+    "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"

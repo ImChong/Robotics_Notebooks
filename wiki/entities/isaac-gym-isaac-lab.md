@@ -222,6 +222,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 ### Repo / 平台入口
 - [Simulation](../../references/repos/simulation.md)
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
+- [Robotic World Model（ETH RSL，Isaac Lab 扩展）](./robotic-world-model-eth-rsl.md) — RWM / RWM-U 神经动力学与想象训练参考实现
 
 ## 推荐继续阅读
 
@@ -238,6 +239,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 
 ## 关联页面
 
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md)
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
 - [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真

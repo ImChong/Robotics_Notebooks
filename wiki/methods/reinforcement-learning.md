@@ -2,6 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
+updated: 2026-05-17
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -17,11 +18,13 @@ related:
   - ../comparisons/rl-vs-il.md
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../entities/paper-interprior.md
   - ../entities/lift-humanoid.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
+  - ../../sources/papers/interprior_arxiv_2602_06035.md
 summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
@@ -184,6 +187,7 @@ flowchart LR
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
+- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）ingest 摘要
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 - [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
@@ -195,6 +199,7 @@ flowchart LR
 
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)
+- [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
