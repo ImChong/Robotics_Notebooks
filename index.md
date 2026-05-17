@@ -193,6 +193,7 @@ SORT type ASC
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
 - [Kimodo（运动扩散模型）](entities/kimodo.md) — NVIDIA nv-tlabs 开源：大规模动捕上训练的运动扩散模型，支持文本与运动学约束生成 SOMA / G1 / SMPL-X 轨迹，附 CLI、时间线 Demo 与公开基准。 `📅2026-05-14` `[entity_page]`
 - [LaFAN1（Ubisoft 动捕数据集）](entities/lafan1-dataset.md) — Ubisoft La Forge 发布的 BVH 棚拍动捕与过渡任务基准（SIGGRAPH 2020 配套）；许可为 CC BY-NC-ND 4.0，克隆需 Git LFS。 `📅2026-05-15` `[entity_page]`
+- [LIFT（人形 SAC + 物理知情世界模型管线）](entities/lift-humanoid.md) — BIGAI 开源：MuJoCo Playground 大规模并行 JAX SAC 预训练，Brax 拉格朗日 + 残差世界模型离线拟合，微调阶段真机确定性采集、随机探索仅发生在模型 rollout（arXiv:2601.21363）。 `📅2026-05-17` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [NVIDIA Omniverse (具身仿真底座)](entities/nvidia-omniverse.md) — NVIDIA Omniverse** 并非一个简单的物理引擎，而是一个庞大的**实时协作仿真平台**。在机器人领域，它是目前最强物理仿真器 **Isaac Sim** 的运行底座。通过利用光线追踪 `📅unknown` `[entity_page]`

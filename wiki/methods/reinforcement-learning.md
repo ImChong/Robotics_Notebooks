@@ -17,6 +17,7 @@ related:
   - ../comparisons/rl-vs-il.md
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../entities/lift-humanoid.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
@@ -107,6 +108,7 @@ flowchart TD
 
 代表：
 - Dreamer, MuZero, PETS, MBRL
+- **解耦式人形工程管线：** [LIFT](../entities/lift-humanoid.md)（大规模并行 **SAC** 预训练 + **物理知情** 可微动力学模型上做 **model-based** 微调）
 
 ### 离线强化学习（Offline RL）
 从固定数据集中学习，不允许和环境交互。
