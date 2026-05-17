@@ -296,6 +296,7 @@ SORT type ASC
 - [BeyondMimic](methods/beyondmimic.md) — BeyondMimic** 是由 Hybrid Robotics 等团队开发的高性能机器人动作模仿框架。相比早期的 DeepMimic 或 AMP，BeyondMimic 更侧重于从仿真到真实物理 `📅unknown` `[method_page]`
 - [CLAW (宇树 G1 全身动作数据生成管线)](methods/claw.md) — CLAW** (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的模块化数据生成方案。它通过将 `📅unknown` `[method_page]`
 - [ContactNet](methods/contact-net.md) — ContactNet** 解决了“在杂乱无章的堆叠物中，手手该按在哪”的问题。它直接输入原始点云，输出稠密的接触成功概率图。 `📅unknown` `[method_page]`
+- [CRISP（Contact-guided Real2Sim）](methods/crisp-real2sim.md) — CRISP（ICLR 2026）从单目视频用凸平面场景原语与人–场景接触补全构造可物理仿真的人形运动与场景，并以 RL 人形闭环提高跟踪成功率与仿真吞吐。 `📅2026-05-17` `[method_page]`
 - [DAgger（Dataset Aggregation）](methods/dagger.md) — DAgger**：一种交互式模仿学习方法，让当前策略先去“自己跑”，再由专家为这些真实访问到的状态打标签，并把新数据持续并入训练集。 `📅unknown` `[method_page]`
 - [Diffusion-based Motion Generation (基于扩散模型的运动生成)](methods/diffusion-motion-generation.md) — Diffusion-based Motion Generation**：利用扩散概率模型（Diffusion Probabilistic Models）生成机器人关节空间或笛卡尔空间的连续运动序列 `📅unknown` `[method_page]`
 - [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
