@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 329,
-  "edge_count": 2220,
+  "node_count": 330,
+  "edge_count": 2232,
   "coverage": {
-    "covered": 327,
-    "total": 327,
+    "covered": 328,
+    "total": 328,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/robotic-world-model-eth-rsl.md",
-    "detail_id": "entity-robotic-world-model-eth-rsl",
-    "label": "Robotic World Model（ETH RSL：RWM / RWM-U）",
+    "path": "wiki/entities/paper-interprior.md",
+    "detail_id": "entity-paper-interprior",
+    "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
