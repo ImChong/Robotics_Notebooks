@@ -31,6 +31,11 @@
 
 - **EFGCL** — External Force-Guided Curriculum Learning（Yoneda et al., RA-L 2026）：训练期辅助力 + 成功率衰减课程，四足高动态 sim2real；[wiki 方法页](../../wiki/methods/efgcl.md) · [Project Page](https://keitayoneda.github.io/kleiyn-efgcl/) · [DOI](https://doi.org/10.1109/LRA.2026.3675955)
 
+### 奖励自动合成与地形感知（VLM 代码奖励）
+
+- **E-SDS** — Environment-aware See it, Do it, Sorted（Yalcin et al., arXiv:2512.16446）：在 SDS 式视频分解上加入仿真采样的地形统计，生成调用高度图与 LiDAR 的 Python 奖励并闭环精炼 PPO；[wiki 论文实体](../../wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) · [arXiv](https://arxiv.org/abs/2512.16446)
+- **SDS** — See it, Do it, Sorted 四足单视频技能（Stamatopoulou et al., arXiv:2410.11571）：网格帧 + SUS 多智能体生成奖励，IsaacGym PPO 与 rollout 反馈进化；[arXiv](https://arxiv.org/abs/2410.11571) · [Project](https://rpl-cs-ucl.github.io/SDSweb/)
+
 ## 关联页面
 
 - [sim2real](../../wiki/concepts/sim2real.md) — Sim2Real 是 locomotion RL 的核心挑战

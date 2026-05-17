@@ -15,6 +15,7 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../concepts/contact-dynamics.md
   - ../entities/unitree.md
+  - ../entities/unitree-ros.md
   - ./ultra-survey.md
   - ./manipulation.md
   - ./loco-manipulation.md
@@ -25,6 +26,7 @@ related:
   - ../entities/quadruped-robot.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -225,6 +227,7 @@ flowchart TD
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
+- [unitree_ros（ROS1 / Gazebo）](../entities/unitree-ros.md)（官方 URDF + Gazebo 关节级仿真；高层行走不在 Gazebo 包承诺内）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md) — 实践决策指南
 
@@ -241,6 +244,7 @@ flowchart TD
 如果你想沿着 locomotion 继续往下挖，建议从这里进入：
 
 ### 论文入口
+- [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口

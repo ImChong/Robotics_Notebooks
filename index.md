@@ -186,6 +186,7 @@ SORT type ASC
 - [cuRobo（NVIDIA GPU 运动生成库）](entities/curobo.md) — cuRobo** 在 CUDA 上并行化无碰撞 IK、几何规划与多样本轨迹优化，cuRoboV2 引入 B 样条+力矩约束与深度融合 ESDF，面向双臂与人形等高自由度系统。 `📅2026-05-16` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [DoorMan（论文：人形 RGB 开门视觉 Sim2Real）](entities/paper-doorman-opening-sim2real-door.md) — DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化。 `📅2026-05-17` `[entity_page]`
+- [E-SDS（论文：环境感知 VLM 自动奖励与人形地形 RL）](entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — E-SDS（arXiv:2512.16446，UCL）在 SDS 式视频分解上加入仿真采样的地形统计以生成调用高度图与 LiDAR 的奖励，双候选 PPO 与 VLM rollout 反馈三轮精炼；Isaac Lab + Unitree G1 四类地形上报告相对手工感知基线显著降速跟误差，论文称唯其完成楼梯下降。 `📅2026-05-17` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](entities/ewmbench.md) — EWMBench 面向具身世界模型（EWM）视频生成：在 Agibot-World 子集上从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选模型，并开源数据与评测工具链。 `📅2026-05-16` `[entity_page]`
 - [FastStair（论文：人形高速上楼梯）](entities/paper-faststair-humanoid-stair-ascent.md) — FastStair（arXiv:2601.10365）用 GPU 并行 DCM 落脚点离散搜索嵌入 Isaac Lab RL，强 foothold-tracking 预训练后分训高速/低速专家并以 LoRA 合成单策略，在 LimX Oli 上报告约 1.65 m/s 指令速度与长螺旋梯实爬。 `📅2026-05-17` `[entity_page]`
 - [URDD（论文：Universal Robot Description Directory）](entities/paper-urdd-universal-robot-description-directory.md) — URDD（arXiv:2512.23135）把从 URDF 反复派生的 DOF 映射、链结构、凸分解与形状近似等整理为版本化 JSON/YAML 模块目录，配套 Rust/Bevy 与 Three.js 检视器及示例资产库，以减少跨栈重复预处理。 `📅2026-05-17` `[entity_page]`
@@ -222,6 +223,7 @@ SORT type ASC
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](entities/tairan-he.md) — 何泰然（Tairan He）为 CMU RI 博士、NVIDIA GEAR 实习背景，研究聚焦人形规模化学习与视觉 Sim2Real；代表作含 OmniH2O、HOVER、ASAP、VIRAL / DoorMan 等，主页为论文与项目总索引。 `📅2026-05-14` `[entity_page]`
 - [Unitree G1 (人形机器人)](entities/unitree-g1.md) — Unitree G1** 是宇树科技 (Unitree) 在 H1 之后推出的一款量产型、高性价比的人形机器人平台。其设计初衷是降低人形机器人研究的门槛，使其能够大规模进入实验室、高校和家庭场景。 `📅unknown` `[entity_page]`
+- [unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）](entities/unitree-ros.md) — unitree_ros 是 Unitree 官方 ROS1（Melodic/Kinetic）+ Gazebo8 的机器人描述与关节级仿真栈；真机 ROS 控制依赖 unitree_ros_to_real 与 unitree_legged_msgs。README 明确 Gazebo 侧不做高层行走，与 MuJoCo 上的 unitree_rl_mjlab 形成并行官方路线。 `📅2026-05-17` `[entity_page]`
 - [Unitree](entities/unitree.md) — Unitree Robotics（宇树科技）** 是当前腿式机器人和人形机器人领域最有影响力的公司之一。 `📅unknown` `[entity_page]`
 - [World Labs（空间智能与世界生成）](entities/world-labs.md) — World Labs 是公开以「空间智能」与三维世界模型为主线的公司与产品团队：浏览器产品 Marble 从文本/图像/视频/全景生成可编辑的持久 3D 世界，并开源 Spark（Web 端 3DGS 渲染与流式大场景技术栈）支撑交互式展示与管线集成。 `📅2026-05-16` `[entity_page]`
 - [Xiaomi-Robotics-0](entities/xiaomi-robotics-0.md) — 小米开源的约 4.7B 参数 VLA（Qwen3-VL-4B + DiT flow matching），强调跨本体预训练、异步 action chunk 执行与仿真/双臂真机评测。 `📅2026-05-15` `[entity_page]`

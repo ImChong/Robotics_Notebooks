@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 341,
-  "edge_count": 2328,
+  "node_count": 343,
+  "edge_count": 2347,
   "coverage": {
-    "covered": 339,
-    "total": 339,
+    "covered": 341,
+    "total": 341,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -29,6 +29,54 @@
       "detail_id": "wiki-methods-sonic-motion-tracking",
       "label": "SONIC（规模化运动跟踪人形控制）",
       "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
+      "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
+      "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-ros.md",
+      "detail_id": "entity-unitree-ros",
+      "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree.md",
+      "detail_id": "entity-unitree",
+      "label": "Unitree",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-rl-mjlab.md",
+      "detail_id": "entity-unitree-rl-mjlab",
+      "label": "unitree_rl_mjlab (Unitree 官方 RL 框架)",
+      "type": "entity",
       "recency": "2026-05-17",
       "source": "log.md"
     },
@@ -185,14 +233,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/superpowers-obra.md",
       "detail_id": "entity-superpowers-obra",
       "label": "Superpowers（obra）",
@@ -228,14 +268,6 @@
       "path": "wiki/methods/imitation-learning.md",
       "detail_id": "wiki-methods-imitation-learning",
       "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
       "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
