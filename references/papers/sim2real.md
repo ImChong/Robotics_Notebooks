@@ -24,6 +24,10 @@
 
 - **InEKF (Barrau & Bonnabel, 2017)** — *The Invariant Extended Kalman Filter as a Stable Observer*. 提供了基于李群的一致性状态估计理论。
 
+### Real2Sim / 视频资产（人形上下文）
+
+- **CRISP (Wang et al., ICLR 2026)** — *Contact-guided Real2Sim from Monocular Video with Planar Scene Primitives*. 从单目视频恢复**可物理仿真**的人形运动与**凸平面场景原语**，用人–场景接触补全遮挡几何，并以 RL 人形控制做物理闭环；项目页提供与 VideoMimic 的交互对比。知识页：[CRISP](../../wiki/methods/crisp-real2sim.md)；摘录：[sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md)。
+
 ## 关联页面
 
 - [Sim2Real (Concept)](../../wiki/concepts/sim2real.md)

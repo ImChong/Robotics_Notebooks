@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/crisp_real2sim_iclr2026.md、sources/sites/crisp-real2sim-project-github-io.md、sources/repos/crisp_real2sim_repo.md — CRISP（ICLR 2026）Real2Sim 入库
+
+- 原始资料：`sources/papers/crisp_real2sim_iclr2026.md`、`sources/sites/crisp-real2sim-project-github-io.md`、`sources/repos/crisp_real2sim_repo.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/crisp-real2sim.md`
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/entities/gs-playground.md`、`references/papers/sim2real.md`、`index.md`（新增方法页目录条目）、`README.md` / `exports/` / `docs/exports/` 等（`make ci-preflight`）
+
 ## [2026-05-17] ingest | sources/repos/unitree_ros.md、sources/repos/unitree_ros_to_real.md — 官方 ROS1+Gazebo 与真机 ROS 桥入库
 
 - 原始资料：`sources/repos/unitree_ros.md`、`sources/repos/unitree_ros_to_real.md`；索引 `sources/README.md`

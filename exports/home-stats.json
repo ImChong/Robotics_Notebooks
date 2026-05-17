@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 341,
-  "edge_count": 2329,
+  "node_count": 342,
+  "edge_count": 2335,
   "coverage": {
-    "covered": 339,
-    "total": 339,
+    "covered": 340,
+    "total": 340,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gs-playground.md",
+      "detail_id": "entity-gs-playground",
+      "label": "GS-Playground (3DGS 光真实感仿真)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/unitree-ros.md",
       "detail_id": "entity-unitree-ros",
@@ -273,14 +297,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/domain-randomization.md",
       "detail_id": "wiki-concepts-domain-randomization",
       "label": "Domain Randomization",
@@ -354,10 +370,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unitree-ros.md",
-    "detail_id": "entity-unitree-ros",
-    "label": "unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）",
-    "type": "entity",
+    "path": "wiki/methods/crisp-real2sim.md",
+    "detail_id": "wiki-methods-crisp-real2sim",
+    "label": "CRISP（Contact-guided Real2Sim）",
+    "type": "method",
     "recency": "2026-05-17",
     "source": "log.md"
   }

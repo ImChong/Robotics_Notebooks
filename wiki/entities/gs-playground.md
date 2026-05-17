@@ -9,6 +9,7 @@ related:
   - ./mujoco.md
   - ../concepts/sim2real.md
   - ./world-labs.md
+  - ../methods/crisp-real2sim.md
 sources:
   - ../../sources/repos/gs_playground.md
 summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲染耦合，以最高 10^4 FPS 提供光真实感视觉观测，用于视觉 RL 训练，RSS 2026 收录。"
@@ -92,6 +93,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real
 - [World Labs](./world-labs.md) — Web 端 3DGS 与空间世界生成产品/开源渲染参考
+- [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照
 
 ## 参考来源
 
