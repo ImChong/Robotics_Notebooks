@@ -6,6 +6,7 @@ updated: 2026-05-15
 related:
   - ../concepts/sim2real.md
   - ../entities/anymal.md
+  - ../entities/sage-sim2real-actuator-gap-estimator.md
   - ../concepts/system-identification.md
 sources:
   - ../../sources/papers/system_identification.md
