@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
-updated: 2026-05-16
+updated: 2026-05-17
 related:
   - ./exoactor.md
   - ./diffusion-motion-generation.md
@@ -176,3 +176,4 @@ GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环�
 - [Diffusion-based Motion Generation](./diffusion-motion-generation.md)
 - [ProtoMotions](../entities/protomotions.md)
 - [Kimodo](../entities/kimodo.md)
+- [Awesome Text-to-Motion（Zilize 精选集）](../entities/awesome-text-to-motion-zilize.md) — 人体 T2M 综述/数据/模型索引（含 GENMO 条目）
