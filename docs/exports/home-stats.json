@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 337,
-  "edge_count": 2292,
+  "node_count": 338,
+  "edge_count": 2300,
   "coverage": {
-    "covered": 335,
-    "total": 335,
+    "covered": 336,
+    "total": 336,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
+      "detail_id": "entity-paper-urdd-universal-robot-description-directory",
+      "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robot-viewer.md",
+      "detail_id": "entity-robot-viewer",
+      "label": "Robot Viewer",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/urdf-studio.md",
+      "detail_id": "entity-urdf-studio",
+      "label": "URDF-Studio",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/hy-motion-1.md",
       "detail_id": "wiki-methods-hy-motion-1",
@@ -52,14 +84,6 @@
       "path": "wiki/entities/project-instinct.md",
       "detail_id": "entity-project-instinct",
       "label": "Project Instinct",
-      "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
       "type": "entity",
       "recency": "2026-05-17",
       "source": "log.md"
@@ -266,10 +290,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/hy-motion-1.md",
-    "detail_id": "wiki-methods-hy-motion-1",
-    "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
-    "type": "method",
+    "path": "wiki/entities/paper-urdd-universal-robot-description-directory.md",
+    "detail_id": "entity-paper-urdd-universal-robot-description-directory",
+    "label": "URDD（Beyond URDF: Universal Robot Description Directory）",
+    "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
   }

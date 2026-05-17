@@ -51,6 +51,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎
 - [SAPIEN (仿真引擎)](./sapien.md) — 侧重关节体交互
 - [Robot Viewer](./robot-viewer.md) — 支持 MJCF 格式的 Web 查看器
+- [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — 以 URDF 为起点的派生模块目录（与 MJCF 这类仿真专用描述对照理解「预处理资产层」）
 - [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
