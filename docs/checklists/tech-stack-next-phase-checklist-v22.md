@@ -41,7 +41,9 @@
     - [x] `wiki/concepts/motion-retargeting-pipeline.md`（重定向流水线：MoCap → 骨架对齐 → IK/约束 → 物理可行性筛选 → 训练数据的端到端概念）。
       - 实现：新增 `wiki/concepts/motion-retargeting-pipeline.md`，把 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md) 概念页里的「单次映射」展开为 8 阶段端到端流水线（源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地），含 Mermaid 总览、三种工程化形态对比表、常见失败模式表与下游接口契约；交叉互链 GMR / NMR / ReActor / SONIC / ExoActor / WBC / Sim2Real / Teleoperation。
       - 验证：`motion-retargeting.md` 关联页面区块回链新页面；index.md 在「重点页面」加入流水线条目（见本次提交）。
-    - [ ] `wiki/formalizations/motion-retargeting-objective.md`（重定向目标函数形式化：姿态相似项、接触/约束项、平衡项、关节限位项的数学组合）。
+    - [x] `wiki/formalizations/motion-retargeting-objective.md`（重定向目标函数形式化：姿态相似项、接触/约束项、平衡项、关节限位项的数学组合）。
+      - 实现：新增 `wiki/formalizations/motion-retargeting-objective.md`，给出通用目标函数 $\mathcal{L}^{\text{pose}}+\mathcal{L}^{\text{ee}}+\mathcal{L}^{\text{bal}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$ 的形式化；逐项列出关节角/关键点/SO(3) 旋转一致、末端跟随/接触锁定/相位/摩擦锥、CoM–支撑多边形/ZMP/RFC 压制、限位四类硬罚项与平滑导数罚项；并给出 GMR（离线 QP）/ DeepMimic（指数核奖励）/ ReActor（双层）/ NMR（CEPR 硬阈值 + L1 标签）/ SPIDER（采样优化）五种工程退化形态对照表；横向回链 [TSID](./tsid-formulation.md)、[Friction Cone](./friction-cone.md)、[ZMP + LIP](./zmp-lip.md)。
+      - 交叉互链：`motion-retargeting.md`、`motion-retargeting-pipeline.md` 的「关联页面」加入本页入口。
     - [ ] `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（GMR / NMR / ReActor 重定向方法谱系对比：监督 vs 优化 vs 物理感知 RL，输入形态、依赖、产物差异）。
 - [ ] **角色化人形（Character Humanoid）边界澄清**：
     - [ ] `wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：动作风格化、表演意图与物理可控性之间的张力；面向 Disney Olaf / Roboto Origin / MotionCanvas 等案例）。

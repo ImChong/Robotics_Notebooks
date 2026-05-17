@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] structural | wiki/formalizations/motion-retargeting-objective.md — V22 P1 动作重定向知识链 (2/3)：新增重定向目标函数形式化页
+
+- 沉淀页面：`wiki/formalizations/motion-retargeting-objective.md`（通用目标函数 $\mathcal{L}^{\text{pose}}+\mathcal{L}^{\text{ee}}+\mathcal{L}^{\text{bal}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$；姿态相似/末端接触/平衡/限位/平滑五大罚项的数学定义；GMR/DeepMimic/ReActor/NMR/SPIDER 五种工程退化形态对照）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`（关联页面区块回链本页）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 2 项打勾，含实现摘要）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`index.md` 等
+
 ## [2026-05-17] ingest | sources/repos/lingbot-map.md、sources/papers/lingbot_map_arxiv_2604_14141.md、sources/sites/lingbot-map-technology-robbant.md、sources/sites/businesswire-lingbot-map-2026-04-16.md — LingBot-Map 论文/站点/通稿入库；勘误 byant 误链；扩充 wiki/methods/lingbot-map.md
 
 - 原始资料：`sources/repos/lingbot-map.md`、`sources/papers/lingbot_map_arxiv_2604_14141.md`、`sources/sites/lingbot-map-technology-robbant.md`、`sources/sites/businesswire-lingbot-map-2026-04-16.md`；索引 `sources/README.md`
