@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-05-16] lint | health-check | 自动化 wiki 健康检查
+## [2026-05-17] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **29** 条信息型预警）：
 
@@ -79,29 +79,29 @@
 - wiki/methods/ase.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/auto-labeling-pipelines.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/being-h07.md（被 9 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/beyondmimic.md（被 16 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/beyondmimic.md（被 17 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/deepmimic.md（被 11 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/deepmimic.md（被 13 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/diffusion-motion-generation.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/efgcl.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/exoactor.md（被 24 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/exoactor.md（被 25 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/gae.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/genmo.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/motion-retargeting-gmr.md（被 14 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/motion-retargeting-gmr.md（被 18 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/motionbricks.md（被 7 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/neural-motion-retargeting-nmr.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/neural-motion-retargeting-nmr.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pelican-unified-1.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/reactor-physics-aware-motion-retargeting.md（被 5 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/reactor-physics-aware-motion-retargeting.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/sonic-motion-tracking.md（被 24 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/sonic-motion-tracking.md（被 27 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：324/324 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：325/325 (100%) wiki/entity 页有 ingest 来源
