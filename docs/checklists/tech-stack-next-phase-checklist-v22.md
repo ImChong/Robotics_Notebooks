@@ -37,8 +37,10 @@
 
 ## P1: 动作重定向与角色化人形专题 (Quality)
 
-- [ ] **动作重定向知识链 (+3)**：
-    - [ ] `wiki/concepts/motion-retargeting-pipeline.md`（重定向流水线：MoCap → 骨架对齐 → IK/约束 → 物理可行性筛选 → 训练数据的端到端概念）。
+- [~] **动作重定向知识链 (+3)**：
+    - [x] `wiki/concepts/motion-retargeting-pipeline.md`（重定向流水线：MoCap → 骨架对齐 → IK/约束 → 物理可行性筛选 → 训练数据的端到端概念）。
+      - 实现：新增 `wiki/concepts/motion-retargeting-pipeline.md`，把 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md) 概念页里的「单次映射」展开为 8 阶段端到端流水线（源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地），含 Mermaid 总览、三种工程化形态对比表、常见失败模式表与下游接口契约；交叉互链 GMR / NMR / ReActor / SONIC / ExoActor / WBC / Sim2Real / Teleoperation。
+      - 验证：`motion-retargeting.md` 关联页面区块回链新页面；index.md 在「重点页面」加入流水线条目（见本次提交）。
     - [ ] `wiki/formalizations/motion-retargeting-objective.md`（重定向目标函数形式化：姿态相似项、接触/约束项、平衡项、关节限位项的数学组合）。
     - [ ] `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（GMR / NMR / ReActor 重定向方法谱系对比：监督 vs 优化 vs 物理感知 RL，输入形态、依赖、产物差异）。
 - [ ] **角色化人形（Character Humanoid）边界澄清**：
