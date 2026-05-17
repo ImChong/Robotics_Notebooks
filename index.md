@@ -49,6 +49,7 @@
 - [Locomotion](wiki/tasks/locomotion.md)
 - [WBC vs RL](wiki/comparisons/wbc-vs-rl.md)
 - [Isaac Gym / Isaac Lab](wiki/entities/isaac-gym-isaac-lab.md)
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](wiki/entities/robotic-world-model-eth-rsl.md)（Isaac Lab 扩展 + Lite 离线仓；集成 RNN 动力学与想象 rollout 的 MBRL 参考实现）
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [dm_control / Control Suite](wiki/entities/dm-control.md)
@@ -206,6 +207,7 @@ SORT type ASC
 - [Project Instinct](entities/project-instinct.md) — 本页汇总 Project Instinct 公开站点与子课题主张；定量结论与实现细节以各论文 PDF 与代码仓库为准。 `📅2026-05-12` `[entity_page]`
 - [四足机器人（Quadruped Robot）](entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
 - [RLDX-1](entities/rldx-1.md) — RLDX-1** 是 RLWRLD 开源的灵巧操作 VLA：Qwen3-VL 骨干 + MSAT 扩散动作头，可选运动模块、时序记忆与触觉/力矩物理流，三阶段训练与图捕获/RTC 推理栈。 `📅2026-05-11` `[entity_page]`
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](entities/robotic-world-model-eth-rsl.md) — ETH RSL 开源的神经动力学世界模型：Isaac Lab 扩展支持在线/离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口（ANYmal D 参考任务）。 `📅2026-05-17` `[entity_page]`
 - [RIO（Robot I/O）](entities/robot-io-rio.md) — RIO（Robot I/O）** 是一套面向**真实机器人**的 **Python 实时 I/O** 与编排框架，目标是把「换一套机械臂 / 人形 / 相机 / 遥操作设备就要重写控制栈」的摩擦降 `📅2026-05-15` `[entity_page]`
 - [robot_lab (IsaacLab 扩展框架)](entities/robot-lab.md) — robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和 `📅unknown` `[entity_page]`
 - [Roboto Origin（开源人形机器人基线）](entities/roboto-origin.md) — Roboto Origin** 是 Roboparty 发布的“全链路开源”人形机器人项目入口页，目标不是只给一个仓库，而是提供从硬件到训练再到部署的可复现工程路径。 `📅unknown` `[entity_page]`
