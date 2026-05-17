@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/egoscale_arxiv_2602_16710.md、sources/sites/nvidia-research-egoscale.md — EgoScale（arXiv:2602.16710）与 NVIDIA GEAR 项目页入库
+
+- 原始资料：`sources/papers/egoscale_arxiv_2602_16710.md`、`sources/sites/nvidia-research-egoscale.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/egoscale.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/methods/imitation-learning.md`、`wiki/tasks/manipulation.md`、`wiki/entities/humannet.md`、`wiki/concepts/embodied-scaling-laws.md`、`references/papers/imitation-learning.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/papers/mimic_video_arxiv_2512_15692.md、sources/sites/mimic-video-github-io.md、sources/repos/lucidrains_mimic_video.md — mimic-video（VAM，arXiv:2512.15692）入库
 
 - 原始资料：`sources/papers/mimic_video_arxiv_2512_15692.md`、`sources/sites/mimic-video-github-io.md`、`sources/repos/lucidrains_mimic_video.md`；索引 `sources/README.md`
