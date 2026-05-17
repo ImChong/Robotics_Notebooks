@@ -1,16 +1,16 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 329,
-  "edge_count": 2218,
+  "node_count": 331,
+  "edge_count": 2238,
   "coverage": {
-    "covered": 327,
-    "total": 327,
+    "covered": 329,
+    "total": 329,
     "percent": 100
   },
   "latest_wiki_node": {
-    "path": "wiki/entities/awesome-text-to-motion-zilize.md",
-    "detail_id": "entity-awesome-text-to-motion-zilize",
-    "label": "Awesome Text-to-Motion（Zilize 精选集）",
+    "path": "wiki/entities/paper-interprior.md",
+    "detail_id": "entity-paper-interprior",
+    "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"

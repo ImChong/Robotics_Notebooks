@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-17
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
@@ -13,6 +13,7 @@ related:
   - ./humanoid-transformer-touch-dreaming.md
   - ../entities/mimickit.md
   - ../entities/humannet.md
+  - ../entities/paper-interprior.md
   - ./amp-reward.md
   - ./smp.md
   - ./disney-olaf-character-robot.md
@@ -20,6 +21,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/humannet.md
+  - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/repos/robot_lab.md
 summary: "Imitation Learning 通过专家演示学习策略，以 DAgger 和行为克隆 (Behavior Cloning, BC) 为核心支柱，是奖励难定义任务中最直接的数据驱动路线。"
 ---
@@ -133,6 +135,7 @@ flowchart TD
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / ACT / Diffusion ingest 摘要
 - [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming ingest 摘要
 - [sources/papers/humannet.md](../../sources/papers/humannet.md) — HumanNet 百万小时人中心视频与 VLA 受控预训练叙事
+- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 变分蒸馏 + RL 微调 ingest 摘要
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
@@ -175,6 +178,7 @@ flowchart TD
 - [AMP Reward (HumanX)](./amp-reward.md) — 引入接触图与判别器奖励的风格模仿
 - [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
 - [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
+- [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
 
 ## 推荐继续阅读
 

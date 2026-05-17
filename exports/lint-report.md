@@ -104,4 +104,4 @@
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：327/327 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：329/329 (100%) wiki/entity 页有 ingest 来源
