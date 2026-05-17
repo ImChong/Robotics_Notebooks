@@ -2,7 +2,7 @@
 
 ## [2026-05-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **30** 条信息型预警）：
+共发现 **0** 个问题（另含 **31** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -73,7 +73,7 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（30 个）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（31 个）
 - wiki/methods/actuator-network.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/add.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/amp-reward.md（被 16 个页面引用，无 queries/comparisons 落地）
@@ -84,10 +84,11 @@
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/deepmimic.md（被 13 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/diffusion-motion-generation.md（被 8 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/dwm.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/efgcl.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/exoactor.md（被 25 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/gae.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/genmo.md（被 11 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/genmo.md（被 12 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
@@ -105,4 +106,4 @@
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：334/334 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：335/335 (100%) wiki/entity 页有 ingest 来源

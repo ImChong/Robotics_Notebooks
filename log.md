@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-17] ingest | sources/papers/dwm_arxiv_2512_17907.md、sources/sites/snuvclab-dwm-github-io.md、sources/repos/snuvclab_dwm.md — DWM（Dexterous World Models）项目页与论文入库
+
+- 原始资料：`sources/papers/dwm_arxiv_2512_17907.md`、`sources/sites/snuvclab-dwm-github-io.md`、`sources/repos/snuvclab_dwm.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/dwm.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`wiki/tasks/manipulation.md`、`index.md`（由 `make ci-preflight` 同步）
+
 ## [2026-05-17] ingest | sources/repos/cyoahs-robot-motion-editor.md、stanford-tml-robot-keyframe-kit.md、project-instinct-robot-motion-editor.md — 机器人关键帧/运动编辑三仓库入库
 
 - 原始资料：`sources/repos/cyoahs-robot-motion-editor.md`、`sources/repos/stanford-tml-robot-keyframe-kit.md`、`sources/repos/project-instinct-robot-motion-editor.md`；索引 `sources/README.md`

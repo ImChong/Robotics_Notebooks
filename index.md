@@ -298,6 +298,7 @@ SORT type ASC
 - [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
 - [Disney Olaf 角色机器人（实机动画角色）](methods/disney-olaf-character-robot.md) — Disney Research 将动画角色 Olaf 做成实机：非对称腿+泡沫裙隐藏机构、动画参考驱动的 PPO 策略，并把执行器温度与落地噪声显式写进观测与奖励（含 CBF 风格约束项）。 `📅2026-05-13` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
+- [DWM（Dexterous World Models，灵巧世界模型）](methods/dwm.md) — DWM（Dexterous World Models）在已知静态 3D 场景上，用场景–动作条件视频扩散把第一人称相机轨迹与手部网格轨迹转成可信的交互视频，通过修复模型恒等先验学残差动力学，并以合成精确对齐数据混合固定机位真实视频补全物理真实性。 `📅2026-05-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再按**成功率自适应衰减**辅助强度直至为零，使策略在**无参考轨迹、弱奖励塑形**的条件下仍能学会并**迁移到实机**。 `📅2026-05-13` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频， `📅2026-05-03` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
