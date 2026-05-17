@@ -186,6 +186,7 @@ SORT type ASC
 - [cuRobo（NVIDIA GPU 运动生成库）](entities/curobo.md) — cuRobo** 在 CUDA 上并行化无碰撞 IK、几何规划与多样本轨迹优化，cuRoboV2 引入 B 样条+力矩约束与深度融合 ESDF，面向双臂与人形等高自由度系统。 `📅2026-05-16` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [DoorMan（论文：人形 RGB 开门视觉 Sim2Real）](entities/paper-doorman-opening-sim2real-door.md) — DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化。 `📅2026-05-17` `[entity_page]`
+- [E-SDS（论文：环境感知 VLM 自动奖励与人形地形 RL）](entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — E-SDS（arXiv:2512.16446，UCL）在 SDS 式视频分解上加入仿真采样的地形统计以生成调用高度图与 LiDAR 的奖励，双候选 PPO 与 VLM rollout 反馈三轮精炼；Isaac Lab + Unitree G1 四类地形上报告相对手工感知基线显著降速跟误差，论文称唯其完成楼梯下降。 `📅2026-05-17` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](entities/ewmbench.md) — EWMBench 面向具身世界模型（EWM）视频生成：在 Agibot-World 子集上从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选模型，并开源数据与评测工具链。 `📅2026-05-16` `[entity_page]`
 - [FastStair（论文：人形高速上楼梯）](entities/paper-faststair-humanoid-stair-ascent.md) — FastStair（arXiv:2601.10365）用 GPU 并行 DCM 落脚点离散搜索嵌入 Isaac Lab RL，强 foothold-tracking 预训练后分训高速/低速专家并以 LoRA 合成单策略，在 LimX Oli 上报告约 1.65 m/s 指令速度与长螺旋梯实爬。 `📅2026-05-17` `[entity_page]`
 - [URDD（论文：Universal Robot Description Directory）](entities/paper-urdd-universal-robot-description-directory.md) — URDD（arXiv:2512.23135）把从 URDF 反复派生的 DOF 映射、链结构、凸分解与形状近似等整理为版本化 JSON/YAML 模块目录，配套 Rust/Bevy 与 Three.js 检视器及示例资产库，以减少跨栈重复预处理。 `📅2026-05-17` `[entity_page]`
@@ -303,6 +304,7 @@ SORT type ASC
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](methods/dwm.md) — DWM（Dexterous World Models）在已知静态 3D 场景上，用场景–动作条件视频扩散把第一人称相机轨迹与手部网格轨迹转成可信的交互视频，通过修复模型恒等先验学残差动力学，并以合成精确对齐数据混合固定机位真实视频补全物理真实性。 `📅2026-05-17` `[method_page]`
 - [EFGCL（External Force-Guided Curriculum Learning）](methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再按**成功率自适应衰减**辅助强度直至为零，使策略在**无参考轨迹、弱奖励塑形**的条件下仍能学会并**迁移到实机**。 `📅2026-05-13` `[method_page]`
+- [EGM（Efficient General Mimic，高效通用模仿跟踪）](methods/egm-efficient-general-mimic.md) — EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应采样、上下身分组的复合解耦 MoE（CDMoE）与三阶段教师–学生训练，在少量高质量重定向动捕上学习可泛化的人形高动态全身跟踪策略。 `📅2026-05-17` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频， `📅2026-05-03` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
