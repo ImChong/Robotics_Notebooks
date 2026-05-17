@@ -188,6 +188,7 @@ SORT type ASC
 - [DoorMan（论文：人形 RGB 开门视觉 Sim2Real）](entities/paper-doorman-opening-sim2real-door.md) — DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化。 `📅2026-05-17` `[entity_page]`
 - [EWMBench（具身世界模型生成评测）](entities/ewmbench.md) — EWMBench 面向具身世界模型（EWM）视频生成：在 Agibot-World 子集上从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选模型，并开源数据与评测工具链。 `📅2026-05-16` `[entity_page]`
 - [FastStair（论文：人形高速上楼梯）](entities/paper-faststair-humanoid-stair-ascent.md) — FastStair（arXiv:2601.10365）用 GPU 并行 DCM 落脚点离散搜索嵌入 Isaac Lab RL，强 foothold-tracking 预训练后分训高速/低速专家并以 LoRA 合成单策略，在 LimX Oli 上报告约 1.65 m/s 指令速度与长螺旋梯实爬。 `📅2026-05-17` `[entity_page]`
+- [URDD（论文：Universal Robot Description Directory）](entities/paper-urdd-universal-robot-description-directory.md) — URDD（arXiv:2512.23135）把从 URDF 反复派生的 DOF 映射、链结构、凸分解与形状近似等整理为版本化 JSON/YAML 模块目录，配套 Rust/Bevy 与 Three.js 检视器及示例资产库，以减少跨栈重复预处理。 `📅2026-05-17` `[entity_page]`
 - [Figure AI](entities/figure-ai.md) — Figure AI 是美国人形机器人公司，以 Figure 02 整机与自研 Helix 视觉-语言-动作（VLA）模型为核心，强调全身协同与端侧推理，代表「垂直整合具身 AI」的一条主流工程路线。 `📅2026-05-07` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5 是 Genesis AI 公司的机器人操作基础模型产品品牌；与开源 Genesis 物理仿真器（Genesis-Embodied-AI）名称相近但主体不同。 `📅2026-05-07` `[entity_page]`
 - [Genesis (仿真器)](entities/genesis-sim.md) — **Genesis** 是具身智能领域新兴的高性能物理仿真与数据生成平台，常与 Isaac Gym / Isaac Lab 并列，强调多物理场与 GPU 大规模并行。 `📅2026-05-07` `[entity_page]`
@@ -307,6 +308,7 @@ SORT type ASC
 - [GENMO（统一人体运动估计与生成）](methods/genmo.md) — GENMO（官方代码常以 GEM 名义发布）把人体运动估计表述为带多模态条件的约束式扩散生成，统一视频、2D 关键点、文本、音频与 SMPL 关键帧等输入下的轨迹恢复与合成。 `📅2026-05-07` `[method_page]`
 - [HAIC: 基于世界模型的教师-学生训练](methods/haic.md) — 在复杂的物体交互任务（如搬运、协作、精细操作）中，机器人不仅要模仿姿态，还要实时预测物体状态和外力。**HAIC** 提出了一种创新的训练范式，通过世界模型（World Model）将特权信息（Pri `📅unknown` `[method_page]`
 - [Hindsight Experience Replay (HER)](methods/her.md) — HER** 是一种处理“稀疏奖励（Sparse Reward）”任务的绝佳技巧。在抓取或装配任务中，如果机器人只有在完美完成任务时才得到 1 分奖励，它很难通过随机探索学到任何东西。 `📅unknown` `[method_page]`
+- [HY-Motion 1.0（文本→SMPL-H 流匹配 DiT）](methods/hy-motion-1.md) — HY-Motion 1.0：腾讯混元将 DiT+流匹配的人体文本→3D 运动生成扩至十亿级参数，配套大规模预训练、高质量微调与 DPO/Flow-GRPO 对齐，并开源代码与权重（arXiv:2512.23464）。 `📅2026-05-17` `[method_page]`
 - [HiPAN（Hierarchical Posture-Adaptive Navigation）](methods/hipan.md) — HiPAN** 是面向**四足机器人**在**非结构化三维环境**（窄通道、限高、死胡同、半封闭房间）中的导航框架：部署时**不依赖显式三维地图**，仅用**机载深度**做感知，通过**分层强化学习**把“往哪走、身体缩多低”与“关节怎么动”拆开，并用 **Path-Guided Curriculum Learning（PGCL）** 让高层策略从短视界反应式行为过渡到长视界目标导向导航。 `📅unknown` `[method_page]`
 - [htwk-gym](methods/htwk-gym.md) — htwk-gym** 是一个开源的强化学习（RL）框架，专门针对人形机器人足球（Humanoid Soccer）竞赛设计。该框架由 RoboCup 强队 HTWK Leipzig 维护，在 **B `📅unknown` `[method_page]`
 - [Imitation Learning (IL, 模仿学习)](methods/imitation-learning.md) — 模仿学习 (Imitation Learning)**：通过专家演示数据（行为克隆等），让机器人学会从状态到动作的映射，核心是“抄”。 `📅unknown` `[method_page]`
@@ -321,6 +323,7 @@ SORT type ASC
 - [GMR: 通用动作重定向](methods/motion-retargeting-gmr.md) — GMR (General Motion Retargeting)** 是运动控制流程中的“前端”模块，负责将人类或其他来源的动作序列转换为机器人可理解的关节角度序列。 `📅unknown` `[method_page]`
 - [NMR（神经运动重定向与人形全身控制）](methods/neural-motion-retargeting-nmr.md) — NMR** 用 CEPR 管线（筛选、GMR、聚类 RL 专家、仿真 rollout）构造物理一致的人机配对监督，训练 CNN–Transformer 将 SMPL 序列映射为 Unitree G1 等平台的全身参考轨迹，缓解优化式重定向的非凸与噪声传播。 `📅2026-05-08` `[method_page]`
 - [ReActor（物理感知 RL 运动重定向）](methods/reactor-physics-aware-motion-retargeting.md) — ReActor** 将跨具身运动重定向建成物理仿真中的双层问题：上层优化稀疏语义刚体对应下的参数化参考，下层用 RL 跟踪；以结构化近似上层梯度避免 Hessian 逆，面向少脚滑/自碰的参考与下游模仿学习（SIGGRAPH 2026 预印本 arXiv:2605.06593）。 `📅2026-05-13` `[method_page]`
+- [SPIDER（物理感知采样式灵巧重定向）](methods/spider-physics-informed-dexterous-retargeting.md) — SPIDER** 用并行物理仿真中的采样式轨迹优化，把人体+物体的运动学参考 refinement 成动力学可行、接触意图保留的机器人轨迹；课程式虚拟接触力降低接触歧义（arXiv:2511.09484）。 `📅2026-05-17` `[method_page]`
 - [Model Predictive Path Integral (MPPI)](methods/mppi.md) — MPPI** 是一种基于采样（Sampling-based）的随机最优控制算法。它不依赖于对动力学方程进行求导（与 DDP/iLQR 不同），而是通过在 GPU 上并行生成成千上万条随机轨迹，并根 `📅unknown` `[method_page]`
 - [PAiD Framework](methods/paid-framework.md) — PAiD (Perception-Action integrated Decision-making)** 是由 TeleHuman 研究团队提出的一种针对人形机器人足球技能的渐进式学习框架。其核 `📅unknown` `[method_page]`
 - [Pelican-Unified 1.0（统一具身智能 UEI）](methods/pelican-unified-1.md) — Pelican-Unified 1.0 将 Qwen3-VL 的语义理解与链式推理末态 \(z\)，与 Wan 系扩散 UFG 耦合，使未来视频与动作块在同一去噪轨迹中联合生成。 `📅2026-05-16` `[method_page]`
