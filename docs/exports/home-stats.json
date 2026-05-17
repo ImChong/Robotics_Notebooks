@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 337,
-  "edge_count": 2291,
+  "node_count": 338,
+  "edge_count": 2300,
   "coverage": {
-    "covered": 335,
-    "total": 335,
+    "covered": 336,
+    "total": 336,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -36,6 +36,38 @@
       "path": "wiki/entities/mujoco.md",
       "detail_id": "entity-mujoco",
       "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/hy-motion-1.md",
+      "detail_id": "wiki-methods-hy-motion-1",
+      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/genmo.md",
+      "detail_id": "wiki-methods-genmo",
+      "label": "GENMO（统一人体运动估计与生成）",
+      "type": "method",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
+      "detail_id": "entity-awesome-text-to-motion-zilize",
+      "label": "Awesome Text-to-Motion（Zilize 精选集）",
       "type": "entity",
       "recency": "2026-05-17",
       "source": "log.md"
@@ -165,30 +197,6 @@
       "detail_id": "entity-isaac-gym-isaac-lab",
       "label": "Isaac Gym / Isaac Lab",
       "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
-      "detail_id": "entity-awesome-text-to-motion-zilize",
-      "label": "Awesome Text-to-Motion（Zilize 精选集）",
-      "type": "entity",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-05-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/genmo.md",
-      "detail_id": "wiki-methods-genmo",
-      "label": "GENMO（统一人体运动估计与生成）",
-      "type": "method",
       "recency": "2026-05-17",
       "source": "log.md"
     },
