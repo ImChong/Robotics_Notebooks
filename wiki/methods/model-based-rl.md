@@ -58,6 +58,8 @@ $$a^* = \arg\max_{\{a_t\}_{t=0}^{H}} \sum_{t=0}^{H} r(s_t, a_t)$$
 
 代表：Dreamer 系列。
 
+**与人形硬件相关的另一条公开路线（非 RSSM）：** [LIFT](../entities/lift-humanoid.md) 在 **显式刚体动力学** 上学习 **接触/耗散残差**，并把 **随机策略探索** 主要限制在 **模型 rollout**，以便在 **分钟级** 实机数据预算下讨论微调稳定性；与潜空间世界模型互补而非替代。
+
 $$s_t \sim q_\phi(s_t | s_{t-1}, a_{t-1}, o_t), \quad \hat{o}_t \sim p_\theta(\hat{o}_t | s_t)$$
 
 ---

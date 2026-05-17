@@ -13,6 +13,8 @@ related:
   - ./data-flywheel.md
   - ../queries/sim2real-gap-reduction.md
   - ../entities/gr00t-visual-sim2real.md
+  - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../entities/lift-humanoid.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./processor-in-the-loop-sim2real.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
@@ -138,6 +140,8 @@ flowchart TD
 仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）
 ```
 
+- **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
+
 ## 参考来源
 - [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
 
@@ -150,6 +154,7 @@ flowchart TD
 - [机器人论文阅读笔记：LCP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - [Menlo：Noise is all you need…](../../sources/blogs/menlo_noise_is_all_you_need.md) — 处理器在环 + CAN 抖动注入的 Asimov 工程博文入库摘录
+- **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
 
 ## 关联页面
 
@@ -161,6 +166,8 @@ flowchart TD
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
+- [SAGE（执行器 Sim2Real 间隙估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — Isaac 重放与真机关节日志对齐，RMSE/相关/余弦相似度等量化执行器层 gap
+- [LIFT](../entities/lift-humanoid.md) — JAX SAC 大规模预训练 + Brax 物理知情世界模型微调；微调阶段真机确定性采集与模型内随机探索解耦（arXiv:2601.21363）
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线/调度纳入仿真闭环的腿式迁移路径
 
@@ -178,6 +185,6 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
-- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)
+- [SAGE 官方仓库 README](https://github.com/isaac-sim2real/sage)（执行器层 gap 度量与成对数据集管线）
 - [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)
 - [Comparison：Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)

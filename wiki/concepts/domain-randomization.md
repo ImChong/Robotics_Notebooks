@@ -135,5 +135,5 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 ## 推荐继续阅读
 
 - Tobio et al. 2018, "Sim-to-Real Transfer of Robotic Control with Dynamics Randomization"
-- [Sim2Real Actuator Gap Estimator (SAGE)](https://github.com/isaac-sim2real/sage)
+- [SAGE（执行器 Sim2Real 间隙估计）](../entities/sage-sim2real-actuator-gap-estimator.md)（[上游仓库](https://github.com/isaac-sim2real/sage)）
 - [Deployment-Ready RL](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)

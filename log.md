@@ -18,6 +18,17 @@
 - 沉淀页面：`wiki/entities/awesome-text-to-motion-zilize.md`
 - 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`sources/README.md`、`index.md`（由 `make ci-preflight` 同步目录统计）
 
+## [2026-05-17] ingest | sources/repos/sage-sim2real-actuator-gap.md — SAGE（Sim2Real Actuator Gap Estimator）与 README 要点归档
+
+- 原始资料：`sources/repos/sage-sim2real-actuator-gap.md`（<https://github.com/isaac-sim2real/sage> 及 README 公开信息；关联 AMASS、Human2Humanoid、OSMO 工作流线索）
+- 沉淀页面：`wiki/entities/sage-sim2real-actuator-gap-estimator.md`
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/concepts/domain-randomization.md`、`wiki/roadmaps/humanoid-control-roadmap.md`、`wiki/queries/sim2real-gap-reduction.md`、`wiki/methods/actuator-network.md`、`sources/README.md`、`index.md`
+
+## [2026-05-17] ingest | LIFT（arXiv:2601.21363）与 lift-humanoid.github.io、bigai-ai/LIFT-humanoid 归档入库
+
+- 原始资料：`sources/papers/lift_humanoid_arxiv_2601_21363.md`、`sources/sites/lift-humanoid-github-io.md`、`sources/repos/bigai-lift-humanoid.md`
+- 沉淀页面：`wiki/entities/lift-humanoid.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`wiki/concepts/sim2real.md`、`wiki/methods/reinforcement-learning.md`、`wiki/methods/model-based-rl.md`、`wiki/queries/rl-algorithm-selection.md`、`sources/README.md`、`index.md`
 
 ## [2026-05-17] ingest | DoorMan（arXiv:2512.01061）与 doorman-humanoid 站点、GR00T-VisualSim2Real 归档入库
 

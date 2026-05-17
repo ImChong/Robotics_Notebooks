@@ -139,7 +139,7 @@ flowchart TD
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
   - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。
 - **世界模型**：学习环境模型，在模型里规划。
-  - 代表：Dreamer, LIFT
+  - 代表：[Model-Based RL（Dreamer 等）](../methods/model-based-rl.md)、[LIFT（BIGAI 三阶段管线）](../entities/lift-humanoid.md)
 
 ### 混合路线
 
