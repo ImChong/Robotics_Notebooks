@@ -126,28 +126,52 @@
     reference: '参考'
   };
 
-  function renderLatestWikiNode(meta) {
+  function renderLatestWikiNode(homeStats) {
     var mount = document.getElementById('homeLatestWikiModule');
     if (!mount) return;
     mount.classList.remove('data-loading');
-    if (!meta || !meta.detail_id) {
+    var items = [];
+    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
+      items = homeStats.latest_wiki_nodes;
+    } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
+      items = [homeStats.latest_wiki_node];
+    }
+    if (!items.length || !items[0].detail_id) {
       mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
       return;
     }
-    var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
-    var href = detailHref(meta.detail_id);
-    var dateStr = meta.recency ? String(meta.recency) : '';
-    var metaLine = typeLabel;
-    if (dateStr) metaLine += ' · ' + dateStr;
-    if (meta.source === 'log.md') metaLine += ' · 维护日志';
-    mount.innerHTML =
-      '<article class="card home-latest-wiki-card"><p class="card-meta">' +
-      escapeHtml(metaLine) +
-      '</p><h3><a href="' +
-      escapeHtml(href) +
-      '">' +
-      escapeHtml(meta.label || meta.detail_id) +
-      '</a></h3></article>';
+    var first = items[0];
+    var fromLog = first.source === 'log.md';
+    var dateStr = first.recency ? String(first.recency) : '';
+    var introParts = [];
+    if (dateStr) introParts.push(dateStr);
+    if (fromLog) {
+      introParts.push('维护日志');
+      if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
+    } else {
+      introParts.push('按页面更新时间');
+    }
+    var introHtml =
+      '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
+    var cards = items
+      .map(function (meta) {
+        var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+        var href = detailHref(meta.detail_id);
+        var cardMeta = fromLog ? typeLabel : typeLabel + (dateStr ? ' · ' + dateStr : '');
+        return (
+          '<article class="card home-latest-wiki-card"><p class="card-meta">' +
+          escapeHtml(cardMeta) +
+          '</p><h3><a href="' +
+          escapeHtml(href) +
+          '">' +
+          escapeHtml(meta.label || meta.detail_id) +
+          '</a></h3></article>'
+        );
+      })
+      .join('');
+    var wrapClass =
+      items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
+    mount.innerHTML = introHtml + '<div class="' + wrapClass + '">' + cards + '</div>';
   }
 
   function moduleHref(id) {
@@ -2334,7 +2358,7 @@
       })
       .then(function (stats) {
         renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
-        renderLatestWikiNode(stats.latest_wiki_node);
+        renderLatestWikiNode(stats);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);

@@ -5,9 +5,10 @@ generate_link_graph.py — Wiki 内链图谱生成工具
 扫描所有 wiki 页面的内链，生成 exports/link-graph.json，
 供 docs/graph.html 的 D3.js 渲染使用。
 
-同时写入 exports/graph-stats.json（含 latest_wiki_node：按 log.md 自上而下
-首个日志块中出现的有效 wiki/... 路径解析（ingest / structural / query 等均可），
-若无则回退到 frontmatter / mtime 的 recency）。
+同时写入 exports/graph-stats.json（含 latest_wiki_nodes：按 log.md 最新日历日
+合并当日所有 `## [日期]` 块中出现的有效 wiki/... 路径（去重保序；ingest /
+structural / query 等均可）；latest_wiki_node 为当日列表首项（兼容旧字段）。
+若无日志命中则回退到 frontmatter / mtime 的 recency，列表仅一项。
 
 输出格式：
   {
@@ -122,25 +123,35 @@ def _log_sections(text: str) -> list[str]:
     return out
 
 
-def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | None:
-    """从 log.md 解析「当前应展示的」最新 wiki 节点。
+def latest_wiki_nodes_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """从 log.md 解析「最新日历日」在维护日志中出现的全部 wiki 节点（去重保序）。
 
-    规则：自上而下扫描 `## [日期] ...` 块（新记录在上）；按**文件顺序**取**第一个**
-    在块内出现且对应仓库现存文件、且在图谱节点中的 `wiki/...` 路径。
-    不区分 op 类型：ingest / structural / query 等只要在条目中写出 `wiki/...` 即可驱动首页展示。
+    规则：自上而下读取首条 `## [日期] ...` 的日期作为「最新日」；连续合并所有同日期
+    的日志块；在这些块的正文中按出现顺序收集 `wiki/...`（同一路径只保留首次出现），
+    且须对应仓库现存文件并在图谱节点中。不区分 op 类型。
     """
     if not LOG_MD_PATH.is_file():
-        return None
+        return []
     text = LOG_MD_PATH.read_text(encoding="utf-8")
     sections = _log_sections(text)
+    if not sections:
+        return []
+    first_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", sections[0])
+    if not first_m:
+        return []
+    target_date = first_m.group(1)
     node_by_id: dict[str, dict[str, Any]] = {str(n["id"]): n for n in nodes}
+    seen: set[str] = set()
+    out: list[dict[str, Any]] = []
 
     for chunk in sections:
         date_m = re.match(r"^## \[(\d{4}-\d{2}-\d{2})\]", chunk)
         log_date = date_m.group(1) if date_m else ""
+        if log_date != target_date:
+            break
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
-            if not rel.startswith("wiki/"):
+            if not rel.startswith("wiki/") or rel in seen:
                 continue
             p = REPO_ROOT / rel
             if not p.is_file():
@@ -148,15 +159,18 @@ def latest_wiki_node_from_log(nodes: list[dict[str, Any]]) -> dict[str, Any] | N
             base = node_by_id.get(rel)
             if not base:
                 continue
-            return {
-                "path": rel,
-                "detail_id": _wiki_node_detail_id(rel),
-                "label": str(base.get("label") or Path(rel).stem),
-                "type": str(base.get("type") or ""),
-                "recency": log_date,
-                "source": "log.md",
-            }
-    return None
+            seen.add(rel)
+            out.append(
+                {
+                    "path": rel,
+                    "detail_id": _wiki_node_detail_id(rel),
+                    "label": str(base.get("label") or Path(rel).stem),
+                    "type": str(base.get("type") or ""),
+                    "recency": log_date,
+                    "source": "log.md",
+                }
+            )
+    return out
 
 
 def compute_health_score(content: str) -> int:
@@ -603,20 +617,23 @@ def _compute_graph_stats(
     largest_size = max(community_sizes, default=0)
     largest_ratio = round(largest_size / max(len(nodes), 1), 3)
 
-    latest_wiki_node: dict[str, Any] | None = latest_wiki_node_from_log(nodes)
-    if latest_wiki_node is None and nodes:
+    latest_wiki_nodes: list[dict[str, Any]] = latest_wiki_nodes_from_log(nodes)
+    if not latest_wiki_nodes and nodes:
         best = max(
             nodes,
             key=lambda n: (date.fromisoformat(str(n["_recency"])), str(n["id"])),
         )
-        latest_wiki_node = {
-            "path": best["id"],
-            "detail_id": _wiki_node_detail_id(best["id"]),
-            "label": best["label"],
-            "type": best.get("type") or "",
-            "recency": best["_recency"],
-            "source": "recency",
-        }
+        latest_wiki_nodes = [
+            {
+                "path": best["id"],
+                "detail_id": _wiki_node_detail_id(best["id"]),
+                "label": best["label"],
+                "type": best.get("type") or "",
+                "recency": best["_recency"],
+                "source": "recency",
+            }
+        ]
+    latest_wiki_node: dict[str, Any] | None = latest_wiki_nodes[0] if latest_wiki_nodes else None
 
     stats = {
         "generated_at": date.today().isoformat(),
@@ -632,6 +649,7 @@ def _compute_graph_stats(
             "largest_community_ratio": largest_ratio,
             "community_quality_warning": largest_ratio > COMMUNITY_WARNING_RATIO,
         },
+        "latest_wiki_nodes": latest_wiki_nodes,
         "latest_wiki_node": latest_wiki_node,
     }
     return stats
