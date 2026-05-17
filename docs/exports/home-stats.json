@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-17",
-  "node_count": 333,
-  "edge_count": 2262,
+  "node_count": 334,
+  "edge_count": 2265,
   "coverage": {
-    "covered": 331,
-    "total": 331,
+    "covered": 332,
+    "total": 332,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/superpowers-obra.md",
+      "detail_id": "entity-superpowers-obra",
+      "label": "Superpowers（obra）",
+      "type": "entity",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/references/llm-wiki-karpathy.md",
+      "detail_id": "wiki-references-llm-wiki-karpathy",
+      "label": "LLM Wiki",
+      "type": "reference",
+      "recency": "2026-05-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-interprior.md",
       "detail_id": "entity-paper-interprior",
@@ -194,9 +210,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-interprior.md",
-    "detail_id": "entity-paper-interprior",
-    "label": "InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）",
+    "path": "wiki/entities/superpowers-obra.md",
+    "detail_id": "entity-superpowers-obra",
+    "label": "Superpowers（obra）",
     "type": "entity",
     "recency": "2026-05-17",
     "source": "log.md"
