@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 352,
-  "edge_count": 2449,
+  "node_count": 353,
+  "edge_count": 2462,
   "coverage": {
-    "covered": 350,
-    "total": 350,
+    "covered": 351,
+    "total": 351,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-barkour-quadruped-agility-benchmark.md",
+      "detail_id": "entity-paper-barkour-quadruped-agility-benchmark",
+      "label": "Barkour（四足敏捷评测基准与开源生态）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -73,14 +105,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/agent-reach.md",
       "detail_id": "entity-agent-reach",
       "label": "Agent Reach（Panniantong）",
@@ -122,10 +146,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-    "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-    "label": "人形机器人 RL 运动控制：身体系统栈视角",
-    "type": "overview",
+    "path": "wiki/entities/paper-barkour-quadruped-agility-benchmark.md",
+    "detail_id": "entity-paper-barkour-quadruped-agility-benchmark",
+    "label": "Barkour（四足敏捷评测基准与开源生态）",
+    "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"
   }
