@@ -1170,6 +1170,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    /* 去掉系统外观后，选中项文字才能稳定被裁切并显示省略号（WebKit / 部分 Android） */
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--bg);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%2364748b' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 12px;
+    padding-right: 22px;
   }
 }
 
