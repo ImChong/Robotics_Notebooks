@@ -35,6 +35,7 @@
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |
 | [x] [lift_humanoid_arxiv_2601_21363.md](papers/lift_humanoid_arxiv_2601_21363.md) | LIFT：人形 JAX SAC 大规模预训练 + 物理知情世界模型安全微调（arXiv:2601.21363）摘录与 wiki 映射 |
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
+| [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
 | [x] [lingbot_map_arxiv_2604_14141.md](papers/lingbot_map_arxiv_2604_14141.md) | LingBot-Map：GCA 流式 3D 重建 + Paged KV（arXiv:2604.14141）摘录与 wiki 映射 |
 | [x] [mimic_video_arxiv_2512_15692.md](papers/mimic_video_arxiv_2512_15692.md) | mimic-video：Video-Action Model（VAM），互联网视频潜计划 + 流匹配动作解码器（arXiv:2512.15692）摘录与 wiki 映射 |
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
@@ -43,6 +44,8 @@
 | 文件 | 内容 |
 |------|------|
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
+| [x] [mujoco-mjx.md](repos/mujoco-mjx.md) | MuJoCo MJX：JAX/XLA 重实现（`mujoco-mjx`） |
+| [x] [brax.md](repos/brax.md) | Brax：JAX 可微物理与 RL 训练（README 维护边界与 MJX/Playground 指引） |
 | [isaac_gym_isaac_lab.md](repos/isaac_gym_isaac_lab.md) | Isaac Gym / Isaac Lab |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
@@ -115,6 +118,7 @@
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
+| [x] [mujoco-mjx-readthedocs.md](sites/mujoco-mjx-readthedocs.md) | MuJoCo 官方文档：MJX（readthedocs） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |

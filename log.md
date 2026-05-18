@@ -1,6 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-05-18] structural | wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md — 参考来源补充微信公众号原文外链
+## [2026-05-18] ingest | sources/repos/mujoco-mjx.md、sources/repos/brax.md、sources/papers/brax_arxiv_2106_13281.md、sources/sites/mujoco-mjx-readthedocs.md — MuJoCo MJX 与 Brax 官方仓/文档/论文入库；新增实体页并交叉更新 MuJoCo / dm_control / 选型指南 / LIFT
+
+- 原始资料：`sources/repos/mujoco-mjx.md`、`sources/repos/brax.md`、`sources/papers/brax_arxiv_2106_13281.md`、`sources/sites/mujoco-mjx-readthedocs.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/mujoco-mjx.md`、`wiki/entities/brax.md`
+- 交叉更新：`wiki/entities/mujoco.md`、`wiki/entities/dm-control.md`、`wiki/queries/simulator-selection-guide.md`、`wiki/comparisons/mujoco-vs-isaac-sim.md`、`wiki/comparisons/mujoco-vs-isaac-lab.md`、`wiki/entities/lift-humanoid.md`、`index.md`（重点入口 + Page Catalog）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html` 等
+
 
 - 更新页面：`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`（`https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA`）、`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`（`https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w`）；保留仓库内 `sources/` 归档链接
 - 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等

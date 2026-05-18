@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 352,
-  "edge_count": 2449,
+  "node_count": 354,
+  "edge_count": 2470,
   "coverage": {
-    "covered": 350,
-    "total": 350,
+    "covered": 352,
+    "total": 352,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mujoco-mjx.md",
+      "detail_id": "entity-mujoco-mjx",
+      "label": "MuJoCo MJX（MuJoCo XLA）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/brax.md",
+      "detail_id": "entity-brax",
+      "label": "Brax（JAX 可微物理与 RL 训练）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/dm-control.md",
+      "detail_id": "entity-dm-control",
+      "label": "dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "detail_id": "wiki-comparisons-mujoco-vs-isaac-sim",
+      "label": "MuJoCo vs Isaac Sim (物理引擎选型)",
+      "type": "comparison",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "detail_id": "wiki-comparisons-mujoco-vs-isaac-lab",
+      "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
+      "type": "comparison",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lift-humanoid.md",
+      "detail_id": "entity-lift-humanoid",
+      "label": "LIFT（人形大规模预训练 + 高效微调）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -122,10 +186,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-    "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-    "label": "人形机器人 RL 运动控制：身体系统栈视角",
-    "type": "overview",
+    "path": "wiki/entities/mujoco-mjx.md",
+    "detail_id": "entity-mujoco-mjx",
+    "label": "MuJoCo MJX（MuJoCo XLA）",
+    "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"
   }

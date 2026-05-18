@@ -5,6 +5,8 @@ status: complete
 updated: 2026-05-11
 related:
   - ./mujoco.md
+  - ./mujoco-mjx.md
+  - ./brax.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../queries/simulator-selection-guide.md
@@ -50,6 +52,8 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 ## 关联页面
 
 - [MuJoCo（物理引擎）](./mujoco.md) — 底层动力学与接触求解
+- [MuJoCo MJX](./mujoco-mjx.md) — JAX 批量 / 可微执行后端（与 MJCF 对齐）
+- [Brax](./brax.md) — JAX RL 训练；README 引导与 Playground / MJX 组合
 - [Reinforcement Learning（方法总览）](../methods/reinforcement-learning.md) — 与连续控制基准的关系
 - [Locomotion（任务）](../tasks/locomotion.md) — walker / humanoid 等域在任务层面的位置
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 等并列讨论时的上下文
