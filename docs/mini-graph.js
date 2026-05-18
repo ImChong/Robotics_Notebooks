@@ -17,13 +17,18 @@
     };
   }
 
-  var TYPE_COLOR = {
-    concept:'#60a5fa', method:'#34d399', task:'#f472b6',
-    entity:'#fbbf24', comparison:'#c084fc', query:'#94a3b8',
-    formalization:'#fb923c', '':'#64748b'
-  };
+  var TABLEAU10 = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac'];
 
   fetch('exports/link-graph.json').then(function(r){ return r.json(); }).then(function(gd) {
+    var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
+    var communityFill = {};
+    (gd.communities || []).forEach(function(c, idx) {
+      communityFill[c.id] = palette[idx % palette.length];
+    });
+    function nodeFill(d) {
+      if (d.community && communityFill[d.community]) return communityFill[d.community];
+      return palette[palette.length - 1];
+    }
     fetch('exports/graph-stats.json').then(function(r){ return r.json(); }).then(function(stats) {
       var totalNodes = gd.nodes.length, totalEdges = gd.edges.length;
       var degreeMap = {};
@@ -39,7 +44,7 @@
       );
 
       var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
-        return { id:n.id, label:n.label||n.id, type:n.type||'', _degree:degreeMap[n.id]||0 };
+        return { id:n.id, label:n.label||n.id, type:n.type||'', community:n.community||'', _degree:degreeMap[n.id]||0 };
       });
       var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
       var edges = gd.edges.filter(function(e){
@@ -96,7 +101,7 @@
 
       nodeG.append('circle')
         .attr('r', function(d){ return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)); })
-        .attr('fill', function(d){ return TYPE_COLOR[d.type]||TYPE_COLOR['']; })
+        .attr('fill', function(d){ return nodeFill(d); })
         .attr('fill-opacity', 0.9);
 
       var label = nodeG.append('text')

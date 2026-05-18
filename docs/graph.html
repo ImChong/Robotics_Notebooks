@@ -750,7 +750,7 @@
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" list="graph-search-list" />
     <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
-    <button id="filter-toggle" class="chip" title="按类型筛选">
+    <button id="filter-toggle" class="chip" title="按社区筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
       <span id="filter-count" class="filter-count" style="display:none"></span>
     </button>
@@ -838,11 +838,11 @@
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
-        <button id="filter-mode-type" class="chip active" type="button">按类型</button>
-        <button id="filter-mode-community" class="chip" type="button">按社区</button>
+        <button id="filter-mode-type" class="chip" type="button">按类型</button>
+        <button id="filter-mode-community" class="chip active" type="button">按社区</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
-      <div class="filter-subtitle" id="filter-subtitle">当前按类型着色与筛选</div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
       <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
@@ -935,7 +935,7 @@
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
-    let colorMode = 'type';
+    let colorMode = 'community';
     let activeFilters = new Set();
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
