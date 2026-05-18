@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/papers/capvector_arxiv_2605_10903.md、sources/sites/capvector-github-io.md、sources/repos/openhelix_team_capvector.md — CapVector（参数空间 capability vector + 正交正则标准 SFT）arXiv:2605.10903 入库
+
+- 原始资料：`sources/papers/capvector_arxiv_2605_10903.md`、`sources/sites/capvector-github-io.md`、`sources/repos/openhelix_team_capvector.md`（PDF <https://arxiv.org/pdf/2605.10903>、项目页 <https://capvector.github.io/>、代码 <https://github.com/OpenHelix-Team/CapVector>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-capvector-capability-vectors-vla.md`
+- 交叉更新：`wiki/methods/vla.md`、`index.md`（Entities 目录补 CapVector 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/papers/physforge_arxiv_2605_05163.md — PhysForge（VLM 分层物理蓝图 + KVI 扩散、PhysDB）arXiv:2605.05163 入库
 
 - 原始资料：`sources/papers/physforge_arxiv_2605_05163.md`（PDF <https://arxiv.org/pdf/2605.05163>、项目页 <https://hku-mmlab.github.io/PhysForge/>）；索引 `sources/README.md`

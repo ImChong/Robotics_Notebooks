@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 379,
-  "edge_count": 2616,
+  "node_count": 380,
+  "edge_count": 2621,
   "coverage": {
-    "covered": 377,
-    "total": 377,
+    "covered": 378,
+    "total": 378,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-capvector-capability-vectors-vla.md",
+      "detail_id": "entity-paper-capvector-capability-vectors-vla",
+      "label": "CapVector（VLA 参数空间可迁移能力向量）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
       "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
@@ -426,9 +442,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
-    "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
-    "label": "PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）",
+    "path": "wiki/entities/paper-capvector-capability-vectors-vla.md",
+    "detail_id": "entity-paper-capvector-capability-vectors-vla",
+    "label": "CapVector（VLA 参数空间可迁移能力向量）",
     "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"

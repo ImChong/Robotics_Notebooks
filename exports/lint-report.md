@@ -2,7 +2,7 @@
 
 ## [2026-05-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **35** 条信息型预警）：
+共发现 **0** 个问题（另含 **36** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -73,7 +73,7 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（35 个）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（36 个）
 - wiki/methods/actuator-network.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/add.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/amp-reward.md（被 16 个页面引用，无 queries/comparisons 落地）
@@ -104,10 +104,11 @@
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/sonic-motion-tracking.md（被 36 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/spider-physics-informed-dexterous-retargeting.md（被 10 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/star-vla.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：377/377 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：378/378 (100%) wiki/entity 页有 ingest 来源

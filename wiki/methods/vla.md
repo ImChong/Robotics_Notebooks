@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-05-17
+updated: 2026-05-18
 summary: "VLA 把语言、视觉和动作统一进一个多模态策略模型，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../concepts/humanoid-policy-network-architecture.md
@@ -28,6 +28,7 @@ related:
   - ../entities/xiaomi-robotics-0.md
   - ../entities/rldx-1.md
   - ../entities/humannet.md
+  - ../entities/paper-capvector-capability-vectors-vla.md
   - ./sonic-motion-tracking.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
@@ -48,6 +49,9 @@ sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
   - ../../sources/repos/awesome-wam-openmoss.md
+  - ../../sources/papers/capvector_arxiv_2605_10903.md
+  - ../../sources/sites/capvector-github-io.md
+  - ../../sources/repos/openhelix_team_capvector.md
 ---
 
 # VLA（Vision-Language-Action）
@@ -81,6 +85,7 @@ flowchart TD
 - **π₀**：在 VLA 上加入 Flow Matching，生成连续动作序列
 - **π₀.₇**：在 π 系 VLA 上系统化**多模态提示条件**（子任务语言、片段元数据、控制模态、视觉子目标）以合并异质数据并支持推理时 **steering**；官方报告开箱 dexterity 对标 RL 专精与组合/跨本体泛化迹象（见 [π₀.₇](./pi07-policy.md)）
 - **OpenVLA / Octo**：更强调开源数据、跨任务泛化和 fine-tune 流程
+- **CapVector**：在 **参数空间** 用 **辅助目标 SFT** 与 **标准 SFT** 两枚同分布 checkpoint 的差 **\(\theta_{\text{ao}}-\theta_{\text{ft}}\)** 抽取 **capability vector**，合并回 **\(\theta_{\text{pt}}\)** 得 **\(\theta_{\text{meta}}\)**；下游仅用 **标准 SFT + 轻量正交正则** 以接近纯 SFT 的开销复现 **Spatial Forcing、LaRA-VLA** 等辅助微调带来的收敛与成功率收益，并在 **LIBERO / RoboTwin** 与多 VLA 骨干上讨论 **跨域与真机** 迁移（见 [CapVector 论文实体页](../entities/paper-capvector-capability-vectors-vla.md)）
 - **StarVLA**：证明强 VLM 底座（Qwen3-VL）配合简单 MLP 动作头即可在多项基准上打破 SOTA，代表极简主义路线
 - **Pelican-Unified 1.0**：在 Qwen3-VL 上叠 **推理末态潜变量 \(z\)** 与 **Wan 系 UFG**，用 **同一扩散去噪** 联合生成未来视频与动作块，语言 / 视频 / 动作损失回传共享表示；定位为 **统一具身智能（UEI）** 闭环而非 VLA+世界模型流水线拼接（见 [Pelican-Unified 1.0](./pelican-unified-1.md)）
 - **mimic-video（Video-Action Model, VAM）**：用 **互联网规模视频扩散骨干**（如 Cosmos-Predict2）在 **潜空间** 形成与语言一致的 **视觉动力学计划**，再以 **流匹配动作解码器** 作 **逆动力学** 输出动作块；论文叙事强调相对传统 VLA 的 **样本效率** 与把瓶颈转移到 **视频表征质量**（见 [mimic-video](./mimic-video.md)）
