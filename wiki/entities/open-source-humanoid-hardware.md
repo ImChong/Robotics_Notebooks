@@ -2,23 +2,34 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research]
 status: complete
-updated: 2026-05-07
+updated: 2026-05-18
 related:
   - ./humanoid-robot.md
   - ./roboto-origin.md
   - ./asimov-v1.md
+  - ../overview/robot-open-source-wechat-issue01-curator.md
+  - ./berkeley-humanoid-lite.md
+  - ./odri-solo-and-bolt.md
+  - ./fourier-grx-n1.md
+  - ./tienkung-humanoid-open-source.md
+  - ./agibot-lingxi-x1.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/roboto_origin.md
   - ../../sources/repos/asimov-v1.md
+  - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humanoid、Roboto Origin、Asimov v1、ODRI 与商业平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
 ---
 
 # 开源人形机器人硬件方案对比
 
 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。
+
+## 微信策展索引（更多开源整机入口）
+
+第三方清单文将 **傅利叶 N1、智元灵犀 X1、天工、ODRI、Berkeley Humanoid Lite** 等与 **ROBOTIS 教育/人形线** 并列收录，已拆成独立实体页，入口见：[机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)。本页下文的 **Berkeley / ODRI** 小节可与 [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)、[ODRI Solo / Bolt](./odri-solo-and-bolt.md) 交叉阅读。
 
 ## 核心方案对比
 
@@ -58,6 +69,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Asimov v1](./asimov-v1.md)
+- [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
 
@@ -65,4 +77,5 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [roboto_origin.md](../../sources/repos/roboto_origin.md)
 - [asimov-v1.md](../../sources/repos/asimov-v1.md)
+- [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - 各开源项目 GitHub Readme 与 Wiki。

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md — 微信公众号「机械Robot」开源宝库第01期：10 个机器人/平台独立实体节点 + 策展 overview
+
+- 原始资料：`sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-open-source-wechat-issue01-curator.md`；`wiki/entities/fourier-grx-n1.md`、`wiki/entities/agibot-lingxi-x1.md`、`wiki/entities/tienkung-humanoid-open-source.md`、`wiki/entities/odri-solo-and-bolt.md`、`wiki/entities/berkeley-humanoid-lite.md`、`wiki/entities/orca-hand.md`、`wiki/entities/turtlebot3.md`、`wiki/entities/robotis-open-manipulator-line.md`、`wiki/entities/robotis-op3.md`、`wiki/entities/robotis-thormang3.md`
+- 交叉更新：`wiki/entities/open-source-humanoid-hardware.md`、`wiki/entities/humanoid-robot.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/repos/mujoco-mjx.md、sources/repos/brax.md、sources/papers/brax_arxiv_2106_13281.md、sources/sites/mujoco-mjx-readthedocs.md — MuJoCo MJX 与 Brax 官方仓/文档/论文入库；新增实体页并交叉更新 MuJoCo / dm_control / 选型指南 / LIFT
 
 - 原始资料：`sources/repos/mujoco-mjx.md`、`sources/repos/brax.md`、`sources/papers/brax_arxiv_2106_13281.md`、`sources/sites/mujoco-mjx-readthedocs.md`；索引 `sources/README.md`

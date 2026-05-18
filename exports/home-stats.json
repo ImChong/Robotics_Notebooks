@@ -1,13 +1,117 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 355,
-  "edge_count": 2483,
+  "node_count": 366,
+  "edge_count": 2540,
   "coverage": {
-    "covered": 353,
-    "total": 353,
+    "covered": 364,
+    "total": 364,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
+      "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
+      "label": "机器人开源宝库（微信策展第01期）— 索引",
+      "type": "overview",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/fourier-grx-n1.md",
+      "detail_id": "entity-fourier-grx-n1",
+      "label": "傅利叶 GRX N1（开源人形）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agibot-lingxi-x1.md",
+      "detail_id": "entity-agibot-lingxi-x1",
+      "label": "智元灵犀 X1（Agibot 开源人形）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tienkung-humanoid-open-source.md",
+      "detail_id": "entity-tienkung-humanoid-open-source",
+      "label": "天工 Lite / Pro（开源人形）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/odri-solo-and-bolt.md",
+      "detail_id": "entity-odri-solo-and-bolt",
+      "label": "ODRI Solo / Bolt（开源腿式平台）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/berkeley-humanoid-lite.md",
+      "detail_id": "entity-berkeley-humanoid-lite",
+      "label": "Berkeley Humanoid Lite（BHL）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/orca-hand.md",
+      "detail_id": "entity-orca-hand",
+      "label": "Orca Hand（虎鲸巧手）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/turtlebot3.md",
+      "detail_id": "entity-turtlebot3",
+      "label": "TurtleBot3",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robotis-open-manipulator-line.md",
+      "detail_id": "entity-robotis-open-manipulator-line",
+      "label": "ROBOTIS 机械臂 / 手（OpenMANIPULATOR 等）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robotis-op3.md",
+      "detail_id": "entity-robotis-op3",
+      "label": "ROBOTIS OP3",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robotis-thormang3.md",
+      "detail_id": "entity-robotis-thormang3",
+      "label": "ROBOTIS THORMANG3",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/mujoco-mjx.md",
       "detail_id": "entity-mujoco-mjx",
@@ -153,14 +257,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/agent-reach.md",
       "detail_id": "entity-agent-reach",
       "label": "Agent Reach（Panniantong）",
@@ -202,10 +298,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mujoco-mjx.md",
-    "detail_id": "entity-mujoco-mjx",
-    "label": "MuJoCo MJX（MuJoCo XLA）",
-    "type": "entity",
+    "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
+    "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
+    "label": "机器人开源宝库（微信策展第01期）— 索引",
+    "type": "overview",
     "recency": "2026-05-18",
     "source": "log.md"
   }
