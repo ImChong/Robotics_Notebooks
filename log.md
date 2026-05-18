@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md — 微信公众号：Optimus 腿部行星滚柱丝杠解读入库；新增 wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md；交叉更新 humanoid-robot、locomotion、sources/README.md
+
+- 原始资料：`sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`（PRS 原理、反转式布置、连杆映射、与旋转关节权衡、Mermaid 主干流程）
+- 交叉更新：`wiki/entities/humanoid-robot.md`（Optimus 备注与参考来源）、`wiki/tasks/locomotion.md`（关联系统与方法回链）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/repos/panniantong_agent_reach.md — Panniantong/Agent-Reach 入库；新增 wiki/entities/agent-reach.md；交叉更新 superpowers-obra、index.md、sources/README.md
 
 - 原始资料：`sources/repos/panniantong_agent_reach.md`；索引 `sources/README.md`

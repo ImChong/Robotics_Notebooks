@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 350,
-  "edge_count": 2424,
+  "node_count": 351,
+  "edge_count": 2432,
   "coverage": {
-    "covered": 348,
-    "total": 348,
+    "covered": 349,
+    "total": 349,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
+      "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
+      "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
+      "type": "concept",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/agent-reach.md",
       "detail_id": "entity-agent-reach",
@@ -50,10 +74,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/agent-reach.md",
-    "detail_id": "entity-agent-reach",
-    "label": "Agent Reach（Panniantong）",
-    "type": "entity",
+    "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
+    "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
+    "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
+    "type": "concept",
     "recency": "2026-05-18",
     "source": "log.md"
   }

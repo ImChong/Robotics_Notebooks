@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-18
 related:
   - ./motioncode.md
   - ./project-instinct.md
@@ -17,6 +17,7 @@ related:
   - ./boston-dynamics.md
   - ./asimov-v1.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
+  - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ./figure-ai.md
   - ./humannet.md
   - ./1x-technologies.md
@@ -75,7 +76,7 @@ flowchart TD
 | **Atlas** | Boston Dynamics | 28 | 液压/全电 | 研究平台 | 动态平衡的行业标杆，全电版近期发布 |
 | **Unitree H1/G1** | Unitree | 19-23 | 准直接驱动(QDD) | 商业化 | 性价比极高，是当前 RL 研究的首选硬件 |
 | **Digit** | Agility Robotics | 20 | 串联弹性执行器(SEA) | 商业部署 | 数字化物流场景的先驱，独特的腿部结构 |
-| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求极致的量产效率与全栈 AI 集成 |
+| **Tesla Optimus** | Tesla | ~40 | 线性/旋转执行器 | 内部迭代 | 追求量产效率与全栈 AI；腿部 **PRS 直线驱动** 公开讨论与权衡见 [行星滚柱丝杠人形腿](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) |
 | **Apollo** | Apptronik | 28 | 电力驱动 | 商业化 | 针对工业协同设计，强调安全与交互 |
 | **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |
 | **Figure 02** | Figure AI | ~50（量级） | 电力驱动 | 商业试点 | 全栈人形 + 自研 Helix VLA，见 [Figure AI](./figure-ai.md) |
@@ -120,6 +121,7 @@ flowchart TD
 - [开源人形机器人“大脑”选型](./open-source-humanoid-brains.md) — 算力平衡与硬件底座
 - [Asimov v1](./asimov-v1.md) — 单仓 CAD/电气/MuJoCo/板载软件与双板架构参考
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链踝等机构层与仿真控制接口分层
+- [人形腿部行星滚柱丝杠直线驱动](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — PRS + 连杆的量产叙事与动态权衡（Optimus 相关公开讨论）
 - [机器人硬件抽象层 (HAL) 设计指南](../queries/hardware-abstraction-layer.md) — 屏蔽硬件差异的工程实践
 - [人形机器人电池与热管理指南](../queries/humanoid-battery-thermal-management.md) — 硬件部署中的动力与散热闭坑
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
@@ -130,6 +132,7 @@ flowchart TD
 - [Project Instinct](./project-instinct.md) — 清华 IIIS / 期智人形「本能级全身控制」公开研究站群（接触丰富 Shadowing、深度跑酷、野外徒步）
 
 ## 参考来源
+- [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) — Optimus 腿部 PRS 路线的第三方解读（与平台表交叉引用）
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [humannet.md](../../sources/papers/humannet.md) — 大规模人中心视频语料（与人形数据飞轮对照）
 - [humanoid_motion_control_know_how.md](../../sources/papers/humanoid_motion_control_know_how.md)
