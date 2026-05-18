@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 378,
-  "edge_count": 2609,
+  "node_count": 379,
+  "edge_count": 2616,
   "coverage": {
-    "covered": 376,
-    "total": 376,
+    "covered": 377,
+    "total": 377,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
+      "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
+      "label": "PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robotwin.md",
+      "detail_id": "entity-robotwin",
+      "label": "RoboTwin 2.0",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/holomotion.md",
       "detail_id": "entity-holomotion",
@@ -402,9 +426,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/holomotion.md",
-    "detail_id": "entity-holomotion",
-    "label": "HoloMotion（HoloMotion-1）",
+    "path": "wiki/entities/paper-physforge-physics-grounded-3d-assets.md",
+    "detail_id": "entity-paper-physforge-physics-grounded-3d-assets",
+    "label": "PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）",
     "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"
