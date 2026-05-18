@@ -3,10 +3,11 @@ type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
 date: 2026-05-16
-updated: 2026-05-16
+updated: 2026-05-18
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
+  - ./paper-physforge-physics-grounded-3d-assets.md
   - ./urdf-studio.md
   - ./mujoco.md
 sources:
@@ -61,6 +62,7 @@ flowchart TB
 - [URDF-Studio](./urdf-studio.md) — Web 端机器人描述与导出工作流，可与「仿真就绪关节资产」下游衔接对照。
 - [MuJoCo](./mujoco.md) — 常见刚体/关节仿真后端之一；项目页演示强调物理与 VR 交互叙事。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
+- [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。
 
 ## 推荐继续阅读
 

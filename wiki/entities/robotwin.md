@@ -28,6 +28,7 @@ updated: 2026-05-01
 - **底层驱动**：依赖 [SAPIEN (仿真引擎)](./sapien.md) 进行物理模拟。
 - **任务目标**：通常用于生成 [behavior-cloning](../methods/behavior-cloning.md) 或 [action-chunking](../methods/action-chunking.md) (ACT) 所需的训练数据。
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
+- **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)

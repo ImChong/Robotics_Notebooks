@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/papers/physforge_arxiv_2605_05163.md — PhysForge（VLM 分层物理蓝图 + KVI 扩散、PhysDB）arXiv:2605.05163 入库
+
+- 原始资料：`sources/papers/physforge_arxiv_2605_05163.md`（PDF <https://arxiv.org/pdf/2605.05163>、项目页 <https://hku-mmlab.github.io/PhysForge/>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-physforge-physics-grounded-3d-assets.md`
+- 交叉更新：`wiki/entities/articraft.md`、`wiki/entities/robotwin.md`、`index.md`（Entities 目录补 PhysForge 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/repos/horizon_robotics_holomotion.md、sources/papers/holomotion_arxiv_2605_15336.md — 地平线 HoloMotion-1（混合语料 + 稀疏 MoE Transformer + 序列级 PPO）官方资料入库
 
 - 原始资料：`sources/repos/horizon_robotics_holomotion.md`、`sources/papers/holomotion_arxiv_2605_15336.md`（GitHub / 项目主页 / arXiv:2605.15336 / Hugging Face / Docker Hub）；索引 `sources/README.md`
