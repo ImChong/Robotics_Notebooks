@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 349,
-  "edge_count": 2420,
+  "node_count": 350,
+  "edge_count": 2424,
   "coverage": {
-    "covered": 347,
-    "total": 347,
+    "covered": 348,
+    "total": 348,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/superpowers-obra.md",
+      "detail_id": "entity-superpowers-obra",
+      "label": "Superpowers（obra）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -34,9 +50,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-    "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-    "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+    "path": "wiki/entities/agent-reach.md",
+    "detail_id": "entity-agent-reach",
+    "label": "Agent Reach（Panniantong）",
     "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"
