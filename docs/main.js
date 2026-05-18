@@ -612,6 +612,10 @@
         body.appendChild(node);
         node = next;
       }
+      // 章节之间原稿常用 --- 分隔；折叠块自带底框，去掉落在本块末尾的 <hr> 避免重复分割线。
+      while (body.lastChild && body.lastChild.nodeType === 1 && body.lastChild.tagName === 'HR') {
+        body.removeChild(body.lastChild);
+      }
     }
   }
 
