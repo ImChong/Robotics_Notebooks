@@ -7,6 +7,14 @@
 - 交叉更新：`wiki/entities/mujoco.md`、`wiki/entities/dm-control.md`、`wiki/queries/simulator-selection-guide.md`、`wiki/comparisons/mujoco-vs-isaac-sim.md`、`wiki/comparisons/mujoco-vs-isaac-lab.md`、`wiki/entities/lift-humanoid.md`、`index.md`（重点入口 + Page Catalog）
 - 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html` 等
 
+## [2026-05-18] ingest | sources/papers/barkour_arxiv_2305_14654.md、sources/blogs/google-research-barkour-quadruped-agility-2023-05-26.md、sources/repos/google_deepmind_barkour_robot.md、sources/repos/mujoco_menagerie_google_barkour_models.md — Barkour 四足敏捷基准与开源生态入库
+
+- 原始资料：arXiv:2305.14654、Google Research 博客（2023-05-26）、[`google-deepmind/barkour_robot`](https://github.com/google-deepmind/barkour_robot)、[`mujoco_menagerie` 下 `google_barkour_v0` / `google_barkour_vb`](https://github.com/google-deepmind/mujoco_menagerie/tree/main/google_barkour_v0)；OnShape 以 README 中 **gdm.onshape.com / deepmind.onshape.com** 文档链接为准（`cad.onshape.com` 为产品首页）
+- 沉淀页面：`wiki/entities/paper-barkour-quadruped-agility-benchmark.md`
+- 交叉更新：`wiki/entities/quadruped-robot.md`、`wiki/entities/mujoco.md`、`wiki/tasks/locomotion.md`、`references/papers/locomotion-rl.md`、`sources/README.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] structural | wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md — 参考来源补充微信公众号原文外链
 
 - 更新页面：`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`（`https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA`）、`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`（`https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w`）；保留仓库内 `sources/` 归档链接
 - 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等

@@ -36,6 +36,7 @@ related:
   - ../entities/paper-cassie-feedback-control-drl.md
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-barkour-quadruped-agility-benchmark.md
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
@@ -176,6 +177,7 @@ flowchart TD
 - **泛化能力**：能否迁移到未见过的地形
 - **命令跟踪误差**：目标速度/角速度与实际速度的误差
 - **硬件安全裕度**：关节力矩、电流、温度和冲击峰值是否留有余量
+- **敏捷课一体化分数（研究基准）**：例如 [Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 将 **多障碍序列 + 计时扣分** 压成 **0–1 敏捷分**，便于对比 **专长切换 vs Transformer 通才** 与 **sim2real** 管线。
 
 ## 工程落地检查
 
@@ -198,6 +200,7 @@ flowchart TD
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
+- [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
 
 ## 参考来源

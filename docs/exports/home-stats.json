@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 354,
-  "edge_count": 2470,
+  "node_count": 355,
+  "edge_count": 2483,
   "coverage": {
-    "covered": 352,
-    "total": 352,
+    "covered": 353,
+    "total": 353,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -73,6 +73,30 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/entities/paper-barkour-quadruped-agility-benchmark.md",
+      "detail_id": "entity-paper-barkour-quadruped-agility-benchmark",
+      "label": "Barkour（四足敏捷评测基准与开源生态）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
@@ -133,14 +157,6 @@
       "detail_id": "entity-humanoid-robot",
       "label": "人形机器人（Humanoid Robot）",
       "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
       "recency": "2026-05-18",
       "source": "log.md"
     },
