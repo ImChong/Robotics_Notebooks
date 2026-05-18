@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 353,
-  "edge_count": 2462,
+  "node_count": 355,
+  "edge_count": 2483,
   "coverage": {
-    "covered": 351,
-    "total": 351,
+    "covered": 353,
+    "total": 353,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mujoco-mjx.md",
+      "detail_id": "entity-mujoco-mjx",
+      "label": "MuJoCo MJX（MuJoCo XLA）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/brax.md",
+      "detail_id": "entity-brax",
+      "label": "Brax（JAX 可微物理与 RL 训练）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/dm-control.md",
+      "detail_id": "entity-dm-control",
+      "label": "dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mujoco-vs-isaac-sim.md",
+      "detail_id": "wiki-comparisons-mujoco-vs-isaac-sim",
+      "label": "MuJoCo vs Isaac Sim (物理引擎选型)",
+      "type": "comparison",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "detail_id": "wiki-comparisons-mujoco-vs-isaac-lab",
+      "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
+      "type": "comparison",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lift-humanoid.md",
+      "detail_id": "entity-lift-humanoid",
+      "label": "LIFT（人形大规模预训练 + 高效微调）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-barkour-quadruped-agility-benchmark.md",
       "detail_id": "entity-paper-barkour-quadruped-agility-benchmark",
@@ -20,14 +84,6 @@
       "path": "wiki/entities/quadruped-robot.md",
       "detail_id": "entity-quadruped-robot",
       "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
       "type": "entity",
       "recency": "2026-05-18",
       "source": "log.md"
@@ -146,9 +202,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-barkour-quadruped-agility-benchmark.md",
-    "detail_id": "entity-paper-barkour-quadruped-agility-benchmark",
-    "label": "Barkour（四足敏捷评测基准与开源生态）",
+    "path": "wiki/entities/mujoco-mjx.md",
+    "detail_id": "entity-mujoco-mjx",
+    "label": "MuJoCo MJX（MuJoCo XLA）",
     "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"

@@ -5,6 +5,7 @@ status: complete
 updated: 2026-04-21
 related:
   - ../entities/mujoco.md
+  - ../entities/mujoco-mjx.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理论背景称王；而 Isaac Sim / Gym 凭借 GPU 千万级并行霸占现代 RL 训练管线。"
@@ -20,7 +21,7 @@ summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理
 |------|--------|------------------------|
 | **主打优势** | 物理严谨性、接触稳定性、算法原型开发 | 极高吞吐量的大规模 GPU 并行、高保真渲染 |
 | **底层引擎** | MuJoCo 专有优化动力学引擎 | 基于 PhysX 的刚体/柔体混合引擎 |
-| **计算位置** | 传统基于 CPU (近期推出 MJX 支持 TPU/GPU) | 原生 Tensor/GPU 计算，避免了 CPU-GPU 数据拷贝 |
+| **计算位置** | 默认 **CPU** 路径为主；[**MuJoCo MJX**](../entities/mujoco-mjx.md) 提供 JAX/TPU/GPU 批量后端（见官方 feature parity） | 原生 Tensor/GPU 计算，避免了 CPU-GPU 数据拷贝 |
 | **并行规模** | 单机通常跑数十到数百个环境 | 单卡可跑**成千上万**个机器人实例 |
 | **视觉仿真** | 基础的 OpenGL 渲染，仅供 debug 和简单的摄像头反馈 | 影视级的光线追踪 (RTX) 渲染，支持合成海量视觉数据集 |
 | **接触建模** | 通过凸优化计算，极少出现穿模，非常严谨 | 依赖 PhysX 参数调优，软约束有时会导致“抖动”或穿透 |

@@ -4,6 +4,8 @@ tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
 updated: 2026-05-18
 related:
+  - ./mujoco-mjx.md
+  - ./brax.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./robot-motion-keyframe-editors.md
@@ -42,10 +44,12 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 接触模型非常稳定，很少发生“穿模”或无理的反弹（Explosion）。
   - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。
 - **局限**：
-  - 原生 MuJoCo 在单机多 GPU 大规模并行能力上，逊色于专为此设计的 Isaac Gym（不过 DeepMind 推出的 MuJoCo XLA 正在弥补这一短板）。
+  - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。
 
 ## 关联页面
+- [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
+- [Brax](./brax.md) — JAX 侧 RL 训练与 README 中的 Playground / MJX 迁移指引
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）
 - [dm_control / Control Suite](./dm-control.md) — MuJoCo 上的连续控制基准与 Python 栈
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
@@ -59,4 +63,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
 
 ## 参考来源
+
+- [MuJoCo 物理引擎（仓库归档）](../../sources/repos/mujoco.md)
+- [mujoco-mjx（MJX 子树归档）](../../sources/repos/mujoco-mjx.md)
 - Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.

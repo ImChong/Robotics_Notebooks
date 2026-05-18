@@ -10,6 +10,7 @@ related:
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
   - ../entities/humanoid-robot.md
+  - ../entities/mujoco-mjx.md
 ---
 
 # MuJoCo vs Isaac Lab：仿真器选型对比
@@ -67,7 +68,7 @@ related:
 
 - **并行规模上限低**：CPU 多进程并行无法匹配 Isaac Lab 的 GPU tensor 吞吐
 - **大规模 locomotion 训练慢**：人形机器人 500M+ step 训练，MuJoCo 耗时明显更长
-- **GPU 加速尚不成熟**：MJX（JAX 后端）仍在发展，功能与稳定性不及原版
+- **GPU 加速尚不成熟**：[MuJoCo MJX](../entities/mujoco-mjx.md)（JAX 后端）仍在发展，功能与稳定性需按官方 parity 清单评估，不等同于 CPU 版全特性
 - **渲染能力弱**：不适合需要真实感视觉的 sim2real 任务（如视觉感知策略）
 
 ---

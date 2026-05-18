@@ -56,6 +56,8 @@
 - [Genesis (仿真器)](wiki/entities/genesis-sim.md)
 - [MuJoCo](wiki/entities/mujoco.md)
 - [dm_control / Control Suite](wiki/entities/dm-control.md)
+- [MuJoCo MJX](wiki/entities/mujoco-mjx.md)（JAX/XLA 版 MuJoCo，GPU 批量与可微 rollout）
+- [Brax](wiki/entities/brax.md)（JAX 可微物理与 RL 训练；与 MJX、MuJoCo Playground 的官方组合指引）
 - [legged_gym](wiki/entities/legged-gym.md)
 - [Pinocchio](wiki/entities/pinocchio.md)
 - [AprilTag](wiki/entities/april-tag.md)
@@ -192,6 +194,7 @@ SORT type ASC
 - [Booster Robotics RoboCup Demo](entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](entities/botlab-motioncanvas.md) — BotLab** 是 [地瓜机器人（D-Robotics）](https://www.d-robotics.cc/) 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
+- [Brax（JAX 可微物理与 RL 训练）](entities/brax.md) — Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；README 强调以 `brax/training` 为主维护面，环境推荐 MuJoCo Playground，物理推荐 MJX / MuJoCo Warp。 `📅2026-05-18` `[entity_page]`
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [cuRobo](entities/curobo.md) — cuRobo**（仓库名 `curobo`）把机器人 **运动生成** 里算得最重的部分——**运动学、有符号距离与连续碰撞、数值优化、几何种子、轨迹优化**——搬到 **GPU** 上 **批量 `📅unknown` `[entity_page]`
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
@@ -226,6 +229,7 @@ SORT type ASC
 - [Mixamo](entities/mixamo.md) — Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形 `📅unknown` `[entity_page]`
 - [mjlab_playground（mjlab 任务集合）](entities/mjlab-playground.md) — mjlab_playground** 是 [mjlab](./mjlab.md) 之上的 **示例任务仓库**：把 [MuJoCo Playground](https://playground.m `📅unknown` `[entity_page]`
 - [mjlab (轻量 GPU 加速 RL 框架)](entities/mjlab.md) — mjlab** 是由 mujocolab 开发的轻量机器人学习框架，核心设计是将 **Isaac Lab 的 manager-based API**（结构化环境设计）与 **MuJoCo Warp `📅unknown` `[entity_page]`
+- [MuJoCo MJX（MuJoCo XLA）](entities/mujoco-mjx.md) — MuJoCo MJX 是 MuJoCo 的 JAX/XLA 重实现，PyPI 包 `mujoco-mjx`，与主 MuJoCo 版本号对齐，用于 GPU 批量与可微 rollout。 `📅2026-05-18` `[entity_page]`
 - [Modern Robotics (Lynch-Park 教材)](entities/modern-robotics-book.md) — Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（ `📅unknown` `[entity_page]`
 - [MotionCode™](entities/motioncode.md) — MotionCode**（官网 [motioncode.ai](https://motioncode.ai/)）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`

@@ -19,6 +19,8 @@ related:
   - ../methods/model-based-rl.md
   - ../concepts/sim2real.md
   - ../queries/rl-algorithm-selection.md
+  - ./brax.md
+  - ./mujoco-mjx.md
   - ./mjlab-playground.md
 sources:
   - ../../sources/papers/lift_humanoid_arxiv_2601_21363.md
@@ -104,4 +106,4 @@ flowchart TB
 
 - [DreamerV3（世界模型通用化）](https://arxiv.org/abs/2301.04104) — 潜空间想象主线的对照基准
 - [MuJoCo Playground](https://playground.mujoco.org/) — 预训练任务与交互环境官方入口
-- [Brax](https://github.com/google/brax) — 论文中 **可微刚体 rollout** 依赖的后端之一
+- [Brax（JAX 可微物理与 RL 训练）](./brax.md) — 论文中 **可微刚体 rollout** 依赖的后端之一；维护边界以仓库 README 为准
