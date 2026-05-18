@@ -44,7 +44,10 @@
     - [x] `wiki/formalizations/motion-retargeting-objective.md`（重定向目标函数形式化：姿态相似项、接触/约束项、平衡项、关节限位项的数学组合）。
       - 实现：新增 `wiki/formalizations/motion-retargeting-objective.md`，给出通用目标函数 $\mathcal{L}^{\text{pose}}+\mathcal{L}^{\text{ee}}+\mathcal{L}^{\text{bal}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$ 的形式化；逐项列出关节角/关键点/SO(3) 旋转一致、末端跟随/接触锁定/相位/摩擦锥、CoM–支撑多边形/ZMP/RFC 压制、限位四类硬罚项与平滑导数罚项；并给出 GMR（离线 QP）/ DeepMimic（指数核奖励）/ ReActor（双层）/ NMR（CEPR 硬阈值 + L1 标签）/ SPIDER（采样优化）五种工程退化形态对照表；横向回链 [TSID](./tsid-formulation.md)、[Friction Cone](./friction-cone.md)、[ZMP + LIP](./zmp-lip.md)。
       - 交叉互链：`motion-retargeting.md`、`motion-retargeting-pipeline.md` 的「关联页面」加入本页入口。
-    - [ ] `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（GMR / NMR / ReActor 重定向方法谱系对比：监督 vs 优化 vs 物理感知 RL，输入形态、依赖、产物差异）。
+    - [x] `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（GMR / NMR / ReActor 重定向方法谱系对比：监督 vs 优化 vs 物理感知 RL，输入形态、依赖、产物差异）。
+      - 实现：新增 `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`，按「一句话定义 + 12 维核心对比表 + Mermaid 三路数据流并排图 + 三方适用场景 + 5 类常见误判 + 决策矩阵」结构覆盖三条路线；强调「误差修补发生位置」（下游 / 离线 / 在线）作为核心选型轴，并显式标注 NMR 仍以 GMR 为 CEPR 初值、三者实际常串联而非互斥；交叉互链 motion-retargeting / pipeline / objective / GMR / NMR / ReActor / SPIDER / SONIC / ExoActor。
+      - 关联回链：`motion-retargeting.md`、`motion-retargeting-pipeline.md`、`motion-retargeting-objective.md`、`methods/motion-retargeting-gmr.md`、`methods/neural-motion-retargeting-nmr.md`、`methods/reactor-physics-aware-motion-retargeting.md` 的「关联页面」加入本对比页入口；`index.md` Wiki Comparisons 区块插入本页摘要条目。
+      - 验证：本地 `python3 -m http.server` + `docs/detail.html?id=wiki-comparisons-gmr-vs-nmr-vs-reactor` 渲染正常（Mermaid 流程图落稳、表格未截断）；`grep "gmr-vs-nmr-vs-reactor" -r wiki/ index.md` 显示双向回链建立。
 - [ ] **角色化人形（Character Humanoid）边界澄清**：
     - [ ] `wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：动作风格化、表演意图与物理可控性之间的张力；面向 Disney Olaf / Roboto Origin / MotionCanvas 等案例）。
 
