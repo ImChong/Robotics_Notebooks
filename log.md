@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md — 具身智能研究室 42 篇 humanoid RL 运动控制综述入库；新增「身体系统栈」视角 overview 页
+
+- 原始资料：`sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md`（公众号长文，Camoufox 抓取，约 4.5w 字）
+- 沉淀页面：`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`（提炼作者的 8 层身体系统栈 + 6 个研究判断；把已有 wiki 实体页 DeepMimic / SONIC / BeyondMimic / Any2Track / AMS / GMR / NMR / DoorMan / VIRAL / BFM / GR00T-WBC / ULTRA 按层挂接；明确「单页未升格论文」候选清单）
+- 交叉关联：`wiki/overview/humanoid-motion-control-know-how.md`、`wiki/tasks/humanoid-locomotion.md`、`wiki/tasks/loco-manipulation.md`、`wiki/tasks/ultra-survey.md`、`wiki/tasks/balance-recovery.md` 与多篇 `wiki/methods` / `wiki/entities` 页面通过 related 区块互链
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/repos/panniantong_agent_reach.md — Panniantong/Agent-Reach 入库；新增 wiki/entities/agent-reach.md；交叉更新 superpowers-obra、index.md、sources/README.md
 
 - 原始资料：`sources/repos/panniantong_agent_reach.md`；索引 `sources/README.md`
