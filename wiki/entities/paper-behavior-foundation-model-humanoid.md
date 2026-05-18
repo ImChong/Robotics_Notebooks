@@ -19,6 +19,7 @@ related:
   - ../tasks/locomotion.md
   - ./amass.md
   - ./unitree-g1.md
+  - ./holomotion.md
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md

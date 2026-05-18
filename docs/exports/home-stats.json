@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 377,
-  "edge_count": 2596,
+  "node_count": 378,
+  "edge_count": 2609,
   "coverage": {
-    "covered": 375,
-    "total": 375,
+    "covered": 376,
+    "total": 376,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/holomotion.md",
+      "detail_id": "entity-holomotion",
+      "label": "HoloMotion（HoloMotion-1）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/robot-open-source-wechat-issue02-curator.md",
       "detail_id": "wiki-overview-robot-open-source-wechat-issue02-curator",
@@ -361,22 +393,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
-      "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/whole-body-control.md",
       "detail_id": "wiki-concepts-whole-body-control",
       "label": "Whole-Body Control (WBC)",
@@ -386,10 +402,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-open-source-wechat-issue02-curator.md",
-    "detail_id": "wiki-overview-robot-open-source-wechat-issue02-curator",
-    "label": "机器人开源宝库（微信策展第02期）— 索引",
-    "type": "overview",
+    "path": "wiki/entities/holomotion.md",
+    "detail_id": "entity-holomotion",
+    "label": "HoloMotion（HoloMotion-1）",
+    "type": "entity",
     "recency": "2026-05-18",
     "source": "log.md"
   }

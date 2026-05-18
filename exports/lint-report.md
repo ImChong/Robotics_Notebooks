@@ -102,7 +102,7 @@
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/reactor-physics-aware-motion-retargeting.md（被 15 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/sonic-motion-tracking.md（被 33 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/sonic-motion-tracking.md（被 36 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/spider-physics-informed-dexterous-retargeting.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
@@ -110,4 +110,4 @@
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：375/375 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：376/376 (100%) wiki/entity 页有 ingest 来源

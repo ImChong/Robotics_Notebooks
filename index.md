@@ -212,6 +212,7 @@ SORT type ASC
 - [GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)](entities/gr00t-visual-sim2real.md) — GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规 `📅unknown` `[entity_page]`
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`
 - [GS-Playground (3DGS 光真实感仿真)](entities/gs-playground.md) — GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting `📅unknown` `[entity_page]`
+- [HoloMotion（HoloMotion-1）](entities/holomotion.md) — HoloMotion-1 是地平线提出的人形零样本全身运动跟踪「运动基础模型」：以野外视频重建动作为主、MoCap 与自采为辅的混合语料做规模化 RL，策略采用稀疏 MoE Transformer 与 KV-cache 实时推理及序列级 PPO；开源代码、HF 权重与 Docker 与 arXiv:2605.15336 技术报告对齐。 `📅2026-05-18` `[entity_page]`
 - [HumanNet](entities/humannet.md) — HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言 `📅unknown` `[entity_page]`
 - [人形机器人（Humanoid Robot）](entities/humanoid-robot.md) — 人形机器人是具有双足步行能力和类人形态（躯干 + 双臂 + 双腿）的机器人平台，兼顾移动能力与操作能力，是当前具身智能研究的核心载体。 `📅unknown` `[entity_page]`
 - [Isaac Gym / Isaac Lab](entities/isaac-gym-isaac-lab.md) — Isaac Gym** 和 **Isaac Lab** 是 NVIDIA 机器人强化学习生态里的两代核心框架。 `📅unknown` `[entity_page]`
