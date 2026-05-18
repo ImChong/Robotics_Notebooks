@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 351,
-  "edge_count": 2432,
+  "node_count": 352,
+  "edge_count": 2449,
   "coverage": {
-    "covered": 349,
-    "total": 349,
+    "covered": 350,
+    "total": 350,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-motion-control-know-how.md",
+      "detail_id": "wiki-overview-humanoid-motion-control-know-how",
+      "label": "人形机器人运动控制 Know-How",
+      "type": "overview",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/ultra-survey.md",
+      "detail_id": "wiki-tasks-ultra-survey",
+      "label": "ULTRA: Unified Multimodal Control for Autonomous Humanoid Whole-Body Loco-Manipulation",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/balance-recovery.md",
+      "detail_id": "wiki-tasks-balance-recovery",
+      "label": "Balance Recovery（平衡恢复）",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
       "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
@@ -74,10 +122,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
-    "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
-    "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
-    "type": "concept",
+    "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+    "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+    "label": "人形机器人 RL 运动控制：身体系统栈视角",
+    "type": "overview",
     "recency": "2026-05-18",
     "source": "log.md"
   }
