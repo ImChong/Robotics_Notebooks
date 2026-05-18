@@ -1297,6 +1297,7 @@
     entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
     formalization: '#fb923c', '': '#64748b'
   };
+  var DETAIL_MINI_TABLEAU10 = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac'];
 
   function buildPathToDetailIdIndex(detailPages) {
     var idx = {};
@@ -1316,6 +1317,11 @@
     if (!currentPath) return;
 
     fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
+      var communityColor = {};
+      (gd.communities || []).forEach(function (c, i) {
+        communityColor[c.id] = palette[i % palette.length];
+      });
       var nodeMap = {};
       (gd.nodes || []).forEach(function (n) { nodeMap[n.id] = n; });
       var current = nodeMap[currentPath];
@@ -1334,10 +1340,10 @@
       var pathToId = buildPathToDetailIdIndex(detailPages);
       var nodes = [{
         id: currentPath, label: current.label || currentPath,
-        type: current.type || '', isCurrent: true
+        type: current.type || '', community: current.community || '', isCurrent: true
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
-        return { id: id, label: n.label || id, type: n.type || '', isCurrent: false };
+        return { id: id, label: n.label || id, type: n.type || '', community: n.community || '', isCurrent: false };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
 
@@ -1386,7 +1392,11 @@
       nodeG.append('title').text(function (d) { return d.label; });
       nodeG.append('circle')
         .attr('r', function (d) { return d.isCurrent ? 8 : 6; })
-        .attr('fill', function (d) { return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI['']; })
+        .attr('fill', function (d) {
+          var cc = d.community && communityColor[d.community];
+          if (cc) return cc;
+          return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI[''];
+        })
         .attr('fill-opacity', 0.9);
       nodeG.append('text')
         .text(function (d) { return d.label.length > 10 ? d.label.slice(0, 10) + '…' : d.label; })
