@@ -35,7 +35,7 @@ summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码
 - **WBC 的「foundation policy」立场**：与 [Foundation Policy](../concepts/foundation-policy.md) 主流的 **VLA 操作向** 路线互补，BFM 关注 **人形低层全身控制** 的「一个 checkpoint 覆盖多接口」问题；不是为每种 mode 单独训一条 RL，而是 **预训练一个生成模型**。
 - **位级掩码是关键抽象**：把 (i) 根平移/朝向/速度、(ii) 关节角、(iii) 关键点局部位置 共三类目标用 **位级二值掩码** 选择性激活，**告别每换 mode 就重写 reward**——这是与 [HOVER](https://hover-versatile-humanoid.github.io/) 等多模式 WBC 共同的工程动机，但 BFM 用 **生成式 CVAE** 而非多任务 RL 实现。
 - **生成式潜空间可被「组合 / 调制」**：潜空间线性插值（Roundhouse Kick = root-only mode + keypoint-only mode）与 **classifier-free guidance** 风格的潜调制（恢复平衡时 λ≈0.5）给 WBC 一种 **运行时可塑性**，这是经典 QP-WBC 与多任务 RL 缺的旋钮。
-- **新技能少样本路径**：**冻结预训练 BFM** 并训练 **残差解码器** `π(Δa | s^p, z)` 给 Side Salto 等未见动作，比 RL from scratch 收敛更快、跟踪更准——把 BFM 的预训练价值落到「**新行为获取**」上。
+- **新技能少样本路径**：**冻结预训练 BFM** 并训练 **残差解码器**（见下文「行为组合 / 调制 / 新技能」中的块级记法）给 Side Salto 等未见动作，比 RL from scratch 收敛更快、跟踪更准——把 BFM 的预训练价值落到「**新行为获取**」上。
 
 ## 流程总览
 
@@ -87,23 +87,66 @@ flowchart TB
 
 ### 2）CVAE 生成器
 
-- **prior ρ** `P(z | s^p, s^g)`：仅看可观测状态与目标。
-- **encoder ε** `q(z | s^p, s^g, m_t)`：以 mask 为输入，作为 **prior 的残差**；训练时提供更紧的后验。
-- **decoder D**：输入 `(s^p, z)`，**不直接输入 s^g**——迫使 **z 承载行为知识**；推理时只需 prior 采样 z 与 decoder 即可执行。
-- **损失**：`L = L_DAgger + λ_KL · L_KL`，前者是相对 proxy 动作的 MSE，后者是 `KL(q ‖ ρ)`。
+**prior ρ** 仅看可观测状态与目标：
+
+$$
+P(z \mid s^{p}, s^{g})
+$$
+
+**encoder ε** 以掩码为输入，作为 **prior 的残差**；训练时提供更紧的后验：
+
+$$
+q(z \mid s^{p}, s^{g}, m_{t})
+$$
+
+**decoder D** 输入 **(s^p, z)**，**不直接输入 s^g**——迫使 **z** 承载行为知识；推理时只需 prior 采样 **z** 与 decoder 即可执行。记法上可理解为从潜变量与特权状态生成动作（论文以网络 **D** 实现）：
+
+$$
+\hat{a} = D(s^{p}, z)
+$$
+
+**训练损失**：前者为相对 proxy 动作的 DAgger MSE，后者为加权 KL（encoder 后验 **q** 相对先验 **ρ**）：
+
+$$
+\mathcal{L} = \mathcal{L}_{\mathrm{DAgger}} + \lambda_{\mathrm{KL}}\, \mathcal{L}_{\mathrm{KL}}
+$$
+
+$$
+\mathcal{L}_{\mathrm{KL}} = \mathrm{KL}\bigl(q(z \mid s^{p}, s^{g}, m_{t}) \,\|\, P(z \mid s^{p}, s^{g})\bigr)
+$$
+
 - **训练规模**：**IsaacGym 8192 并行环境**。
 
 ### 3）掩码在线蒸馏与冷启动 curriculum
 
-- **掩码采样**：直接对每位用 **Bernoulli(0.5)** 采样，避开「两阶段 mask 训练」的复杂度。
+**掩码采样**：直接对每位用 Bernoulli 采样，避开「两阶段 mask 训练」的复杂度：
+
+$$
+m_{t,i} \sim \mathrm{Bernoulli}(0.5)
+$$
+
 - **冷启动 curriculum**：前若干百回合内 mask 元素采样概率从 **1.0 退火到 0.5**，先让策略学到「**所有信息都给**」的稳定 baseline，再逐步引入信息缺失情形。
 - **特权 proxy agent**：以 **PPO + 域随机化 + 硬负例挖掘 + motion filtering** 在仿真里把 AMASS 重定向运动 **完美跟踪**，作为蒸馏教师。
 
 ### 4）行为组合 / 调制 / 新技能
 
-- **潜空间线性插值**：把两种 mode 的潜变量 z1、z2 线性组合，可产出原始动捕中未出现的组合行为（Roundhouse Kick 见项目页）。
-- **classifier-free 调制**：`z = (1+λ)·μ^ρ(s^p, s^g) − λ·μ^ρ(s^p, ∅)`，把「有目标条件」相对「无条件」的方向外推；在 Butterfly Kick 平衡恢复设置中 **λ≈0.5** 时跟踪指标提升。
-- **残差解码器获取新技能**：冻结 BFM 主干，仅训 `π(Δa | s^p, z)`，对 Side Salto 等 **稀有动作** 比 RL from scratch 收敛更快、跟踪更准；意义上把 BFM 作为 **行为先验**，新任务只需「补差」。
+**潜空间线性插值**：把两种 mode 的潜变量 **z₁、z₂** 线性组合，可产出原始动捕中未出现的组合行为（Roundhouse Kick 见项目页）：
+
+$$
+z = \alpha z_{1} + (1-\alpha) z_{2}, \quad \alpha \in [0,1]
+$$
+
+**classifier-free 调制**：把「有目标条件」相对「无条件」先验均值的方向外推；Butterfly Kick 平衡恢复设置中取 **λ≈0.5** 时跟踪指标提升：
+
+$$
+z = (1+\lambda)\, \mu^{\rho}(s^{p}, s^{g}) - \lambda\, \mu^{\rho}(s^{p}, \emptyset)
+$$
+
+**残差解码器获取新技能**：冻结 BFM 主干，仅训下式，对 Side Salto 等 **稀有动作** 比 RL from scratch 收敛更快、跟踪更准；意义上把 BFM 作为 **行为先验**，新任务只需「补差」：
+
+$$
+\pi(\Delta a \mid s^{p}, z)
+$$
 
 ## 主要量化结果（论文 Table III / IV，AMASS Test）
 
