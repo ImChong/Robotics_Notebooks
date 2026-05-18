@@ -496,7 +496,8 @@
       clusterBorder: '#9B89C7',
       edgeLabelBackground: '#FFFFFF',
       titleColor: '#1a1a2e',
-      fontFamily: 'inherit'
+      fontFamily: 'inherit',
+      fontSize: '15px'
     };
     var darkThemeVars = {
       primaryColor: '#0d0d0d',
@@ -511,7 +512,8 @@
       clusterBorder: '#ffffff',
       edgeLabelBackground: '#0d0d0d',
       titleColor: '#ffffff',
-      fontFamily: 'inherit'
+      fontFamily: 'inherit',
+      fontSize: '15px'
     };
     window.mermaid.initialize({
       startOnLoad: false,

@@ -42,16 +42,19 @@ summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码
 ```mermaid
 flowchart TB
   subgraph data [参考数据与重定向]
+    direction TB
     am["AMASS MoCap"]
     rt["两阶段重定向\nshape → joint"]
     am --> rt
   end
   subgraph proxy [Stage 1：特权 proxy agent]
+    direction TB
     obs["特权观测\n本体感知 + 目标状态"]
     ppo["PPO + 域随机化\n+ 硬负例挖掘\n+ motion filtering"]
     obs --> ppo
   end
   subgraph bfm [Stage 2：BFM 掩码在线蒸馏（CVAE）]
+    direction TB
     mask["位级二值掩码 m_t\nB(0.5) + curriculum 1.0→0.5"]
     prior["prior ρ\nP(z | s^p, s^g)"]
     enc["encoder ε\nq(z | s^p, s^g, m_t)\n（残差于先验）"]
@@ -62,16 +65,13 @@ flowchart TB
     enc --> dec
     dec --> loss
   end
-  subgraph use [Stage 3：推理与扩展]
-    interp["潜空间线性插值\n→ 行为组合（Roundhouse Kick）"]
-    cfg["classifier-free 调制\nz=(1+λ)μ^ρ(s^p,s^g)−λμ^ρ(s^p,∅)"]
-    resid["冻结 BFM + 残差解码器\n→ 新技能（Side Salto）"]
+  subgraph use [Stage 3：推理与扩展（并列用法，非串行管线）]
+    direction TB
+    useblk["① 潜空间线性插值 → 行为组合（Roundhouse Kick）\n② classifier-free 调制\nz=(1+λ)μ^ρ(s^p,s^g)−λμ^ρ(s^p,∅)\n③ 冻结 BFM + 残差解码器 → 新技能（Side Salto）"]
   end
   rt --> ppo
   ppo -->|"reference action"| loss
-  dec --> interp
-  dec --> cfg
-  dec --> resid
+  dec --> useblk
 ```
 
 ## 核心机制（归纳）
