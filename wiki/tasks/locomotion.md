@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-17
+updated: 2026-05-18
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -22,6 +22,7 @@ related:
   - ./balance-recovery.md
   - ../queries/humanoid-hardware-selection.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ../concepts/wheel-legged-quadruped.md
   - ../entities/quadruped-robot.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
@@ -213,6 +214,7 @@ flowchart TD
 
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md)（直线执行器 + 闭链连杆与行走动态、能耗叙事）
 - [State Estimation](../concepts/state-estimation.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
@@ -258,6 +260,7 @@ flowchart TD
 
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务
 - [Hybrid Locomotion](./hybrid-locomotion.md)
+- [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MPC](../methods/model-predictive-control.md)
 

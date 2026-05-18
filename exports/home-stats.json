@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 351,
-  "edge_count": 2441,
+  "node_count": 352,
+  "edge_count": 2449,
   "coverage": {
-    "covered": 349,
-    "total": 349,
+    "covered": 350,
+    "total": 350,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -52,6 +52,30 @@
       "path": "wiki/tasks/balance-recovery.md",
       "detail_id": "wiki-tasks-balance-recovery",
       "label": "Balance Recovery（平衡恢复）",
+      "type": "task",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md",
+      "detail_id": "wiki-concepts-planetary-roller-screw-humanoid-leg-actuation",
+      "label": "人形腿部行星滚柱丝杠直线驱动（PRS 路线）",
+      "type": "concept",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
       "type": "task",
       "recency": "2026-05-18",
       "source": "log.md"
