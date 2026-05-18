@@ -1170,7 +1170,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--text);
   outline: none;
 }
-#wikiTypeFilter {
+#wikiCommunityFilter {
   border: none;
   background: var(--bg);
   border-radius: 10px;

@@ -2419,7 +2419,7 @@
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
-  var typeFilter = document.getElementById('wikiTypeFilter');
+  var communityFilter = document.getElementById('wikiCommunityFilter');
   var tagCloudEl = document.getElementById('wikiTagCloud');
   if (searchInput && searchResults) {
     var _indexData = null;
@@ -2428,6 +2428,55 @@
     var _searchIndex = null;
     var _searchIndexPromise = null;
     var _searchIndexFailed = false;
+
+    var _communityByPath = null;
+    var _communityByPathPromise = null;
+    var _communitySelectPopulated = false;
+
+    function populateCommunitySelect(communities) {
+      if (!communityFilter || _communitySelectPopulated) return;
+      _communitySelectPopulated = true;
+      var preserved = communityFilter.value;
+      var opts = ['<option value="">全部社区</option>'];
+      for (var ci = 0; ci < communities.length; ci++) {
+        var c = communities[ci];
+        if (!c || !c.id) continue;
+        opts.push(
+          '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.label || c.id) + '</option>'
+        );
+      }
+      communityFilter.innerHTML = opts.join('');
+      if (preserved) {
+        communityFilter.value = preserved;
+        if (communityFilter.value !== preserved) communityFilter.value = '';
+      }
+    }
+
+    function ensureCommunityByPath() {
+      if (_communityByPath) return Promise.resolve(_communityByPath);
+      if (_communityByPathPromise) return _communityByPathPromise;
+      _communityByPathPromise = fetch('exports/link-graph.json')
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          var m = new Map();
+          var nodes = data.nodes || [];
+          for (var ni = 0; ni < nodes.length; ni++) {
+            var node = nodes[ni];
+            if (node.id && node.community) m.set(node.id, node.community);
+          }
+          _communityByPath = m;
+          populateCommunitySelect(data.communities || []);
+          return m;
+        })
+        .catch(function() {
+          _communityByPath = new Map();
+          return _communityByPath;
+        });
+      return _communityByPathPromise;
+    }
 
     fetch('exports/index-v1.json')
       .then(function(r) { return r.json(); })
@@ -2685,11 +2734,13 @@
     function renderSearchResults(query) {
       _selectedIndex = -1;
       var q = query.trim();
-      var typeVal = typeFilter ? typeFilter.value : '';
-      if (!q && !typeVal) { renderEmptyState(); return; }
+      var communityVal = communityFilter ? communityFilter.value : '';
+      if (!q && !communityVal) { renderEmptyState(); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
-      ensureSearchIndex()
-        .then(function(indexData) {
+      Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
+        .then(function(results) {
+          var indexData = results[0];
+          var communityMap = results[1] || new Map();
           var docs = (indexData && indexData.docs) || [];
           var queryTokens = tokenizeQuery(q);
           // ⚡ Bolt Optimization: Single-pass search filtering
@@ -2697,7 +2748,10 @@
           var matched = [];
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
-            if (typeVal && doc.page_type !== typeVal) continue;
+            if (communityVal) {
+              var docCommunity = communityMap.get(doc.path);
+              if (docCommunity !== communityVal) continue;
+            }
 
             var partial = 0;
             var bm25 = 0;
@@ -2732,7 +2786,12 @@
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
           if (!matched.length) {
-            renderNoResults(q);
+            if (communityVal && !q) {
+              searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
+                + '<p>当前社区下暂无索引条目，或该社区数据仍在加载。</p></div>';
+            } else {
+              renderNoResults(q);
+            }
           } else {
             renderCards(matched, queryTokens);
           }
@@ -2768,7 +2827,7 @@
         searchInput.value = '';
         searchResults.innerHTML = '';
         _selectedIndex = -1;
-        if (typeFilter) typeFilter.value = '';
+        if (communityFilter) communityFilter.value = '';
       }
     });
 
@@ -2791,8 +2850,9 @@
       clearTimeout(_searchTimer);
       _searchTimer = setTimeout(triggerSearch, 120);
     });
-    if (typeFilter) {
-      typeFilter.addEventListener('change', triggerSearch);
+    if (communityFilter) {
+      communityFilter.addEventListener('change', triggerSearch);
+      ensureCommunityByPath();
     }
 
     document.addEventListener('click', function(e) {
@@ -2801,7 +2861,7 @@
       var term = tag.getAttribute('data-wiki-tag');
       if (term && searchInput) {
         searchInput.value = term;
-        if (typeFilter) typeFilter.value = '';
+        if (communityFilter) communityFilter.value = '';
         triggerSearch();
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }
