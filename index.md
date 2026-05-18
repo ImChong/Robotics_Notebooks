@@ -184,6 +184,7 @@ SORT type ASC
 - [Booster Robotics RoboCup Demo](entities/booster-robocup-demo.md) — Booster Robotics RoboCup Demo** 是由 [Booster Robotics](https://github.com/BoosterRobotics) 官方维护的开源项 `📅unknown` `[entity_page]`
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](entities/botlab-motioncanvas.md) — BotLab（站点内产品名 MotionCanvas）是地瓜机器人提供的浏览器端节点图工具：在网页里编排观测、历史堆叠、ONNX 策略与 MuJoCo 步进，并支持 MSCP 图与 Netron 模型预览。 `📅2026-05-12` `[entity_page]`
+- [BFM（论文：人形 WBC 基础模型）](entities/paper-behavior-foundation-model-humanoid.md) — BFM（arXiv:2509.13780，上海 AI Lab 等）把人形全身控制重新表述为「掩码条件下的行为生成」：CVAE + 位级二值掩码统一根/关节/关键点等控制接口，掩码在线蒸馏从特权 proxy agent 学习；潜空间插值与 classifier-free 调制支持行为组合，残差解码器实现 Side Salto 等少样本新技能。 `📅2026-05-18` `[entity_page]`
 - [Crocoddyl](entities/crocoddyl.md) — Crocoddyl** 是一个面向机器人最优控制与轨迹优化的开源工具箱，长期由 **LAAS-CNRS / INRIA / Gepetto / Stack-of-Tasks** 这条学术与开源路线 `📅unknown` `[entity_page]`
 - [cuRobo（NVIDIA GPU 运动生成库）](entities/curobo.md) — cuRobo** 在 CUDA 上并行化无碰撞 IK、几何规划与多样本轨迹优化，cuRoboV2 引入 B 样条+力矩约束与深度融合 ESDF，面向双臂与人形等高自由度系统。 `📅2026-05-16` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
