@@ -580,6 +580,42 @@
   }
 
   /**
+   * 路线正文：将 article 下每个顶层 h2 及其后内容包进默认收起的 <details>，首屏只保留章节标题行。
+   * 须在 embedRoadmapStagesIntoMarkdownBody 之后调用，使各 L 阶段嵌入块留在对应章节内。
+   */
+  function wrapRoadmapCollapsibleMajorHeadings(container) {
+    if (!container) return;
+    var top = Array.from(container.querySelectorAll(':scope > h2[id]'));
+    if (!top.length) return;
+    var idx;
+    for (idx = top.length - 1; idx >= 0; idx--) {
+      var h2 = top[idx];
+      if (typeof h2.closest === 'function' && h2.closest('details.roadmap-major-section')) continue;
+      var details = document.createElement('details');
+      details.className = 'roadmap-major-section';
+      var summary = document.createElement('summary');
+      summary.className = 'roadmap-major-section-summary';
+      var body = document.createElement('div');
+      body.className = 'roadmap-major-section-body';
+      h2.parentNode.insertBefore(details, h2);
+      summary.appendChild(h2);
+      details.appendChild(summary);
+      details.appendChild(body);
+      var node = details.nextSibling;
+      while (node) {
+        var next = node.nextSibling;
+        if (node.nodeType === 1) {
+          var el = node;
+          if (el.tagName === 'H2' && el.id) break;
+          if (el.classList && el.classList.contains('roadmap-major-section')) break;
+        }
+        body.appendChild(node);
+        node = next;
+      }
+    }
+  }
+
+  /**
    * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
    * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
    */
@@ -804,6 +840,9 @@
       node.classList.remove('detail-hash-target');
     });
     target.classList.add('detail-hash-target');
+    var roadmapFold =
+      typeof target.closest === 'function' ? target.closest('details.roadmap-major-section') : null;
+    if (roadmapFold) roadmapFold.open = true;
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.setTimeout(function () {
       target.classList.remove('detail-hash-target');
@@ -1816,6 +1855,7 @@
       if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
         clearRoadmapStandaloneFlowSection();
       }
+      wrapRoadmapCollapsibleMajorHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
       scrollToDetailHashTarget(contentEl);
