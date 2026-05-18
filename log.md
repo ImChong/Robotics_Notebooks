@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/papers/bfm_humanoid_arxiv_2509_13780.md、sources/sites/bfm4humanoid-github-io.md — BFM（Behavior Foundation Model，arXiv:2509.13780）入库；新增 wiki/entities/paper-behavior-foundation-model-humanoid.md；交叉更新 foundation-policy / whole-body-control；并对齐 CLAUDE.md 的 PR 截图流程
+
+- 原始资料：`sources/papers/bfm_humanoid_arxiv_2509_13780.md`、`sources/sites/bfm4humanoid-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-behavior-foundation-model-humanoid.md`（CVAE + 位级二值掩码 + 在线蒸馏 + 潜空间组合 + 残差解码器新技能的人形 WBC 基础模型，配 Mermaid 流程图与 Table III/IV 量化对照）
+- 交叉更新：`wiki/concepts/foundation-policy.md`（新增 BFM 子项与回链）、`wiki/concepts/whole-body-control.md`（Learning-based & Generative WBC 段补 BFM；关联页面与 sources 互链）、`index.md`（新增 Entity 条目）、`sources/README.md`
+- 规范同步：`CLAUDE.md` 新增「Claude Code Agent：PR 与验证截图」一节，与 `docs/checklists/cloud-agent-pr-workflow.md` 对齐
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-17] structural | wiki/formalizations/motion-retargeting-objective.md — V22 P1 动作重定向知识链 (2/3)：新增重定向目标函数形式化页
 
 - 沉淀页面：`wiki/formalizations/motion-retargeting-objective.md`（通用目标函数 $\mathcal{L}^{\text{pose}}+\mathcal{L}^{\text{ee}}+\mathcal{L}^{\text{bal}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$；姿态相似/末端接触/平衡/限位/平滑五大罚项的数学定义；GMR/DeepMimic/ReActor/NMR/SPIDER 五种工程退化形态对照）
