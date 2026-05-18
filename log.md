@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/repos/panniantong_agent_reach.md — Panniantong/Agent-Reach 入库；新增 wiki/entities/agent-reach.md；交叉更新 superpowers-obra、index.md、sources/README.md
+
+- 原始资料：`sources/repos/panniantong_agent_reach.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/agent-reach.md`（编码代理互联网接入脚手架：可插拔渠道、`doctor`、上游 CLI/MCP 与本地凭据主张；配流程图）
+- 交叉更新：`wiki/entities/superpowers-obra.md`（关联页面回链）、`index.md`（重点入口 + Page Catalog）、`sources/README.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html` 等
+
 ## [2026-05-18] ingest | sources/papers/bfm_humanoid_arxiv_2509_13780.md、sources/sites/bfm4humanoid-github-io.md — BFM（Behavior Foundation Model，arXiv:2509.13780）入库；新增 wiki/entities/paper-behavior-foundation-model-humanoid.md；交叉更新 foundation-policy / whole-body-control；并对齐 CLAUDE.md 的 PR 截图流程
 
 - 原始资料：`sources/papers/bfm_humanoid_arxiv_2509_13780.md`、`sources/sites/bfm4humanoid-github-io.md`；索引 `sources/README.md`
