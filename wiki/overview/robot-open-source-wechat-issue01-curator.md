@@ -4,6 +4,7 @@ tags: [open-source, hardware, humanoid, mobile-robot, manipulator, wechat-curato
 status: complete
 updated: 2026-05-18
 related:
+  - ./robot-open-source-wechat-issue02-curator.md
   - ../entities/open-source-humanoid-hardware.md
   - ../entities/humanoid-robot.md
   - ../entities/quadruped-robot.md

@@ -101,6 +101,7 @@
 | [x] [ted_xiao_embodied_three_eras_primary_refs.md](blogs/ted_xiao_embodied_three_eras_primary_refs.md) | Ted Xiao 访谈编译稿涉及话题的一手文献索引（论文 / 官方博客 / 技术报告） |
 | [x] [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md) | 微信公众号：Zane Zhang，特斯拉 Optimus 腿部行星滚柱丝杠（PRS）选型叙事与路线对比（入库归纳） |
 | [x] [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第01期 10 个全开源网址（策展索引 + 10 实体页） |
+| [x] [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第02期 10 个全开源网址（Reachy2、Poppy、InMoov、Doggo/Pupper 等） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 

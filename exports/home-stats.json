@@ -1,18 +1,122 @@
 {
   "generated_at": "2026-05-18",
-  "node_count": 366,
-  "edge_count": 2540,
+  "node_count": 377,
+  "edge_count": 2596,
   "coverage": {
-    "covered": 364,
-    "total": 364,
+    "covered": 375,
+    "total": 375,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/robot-open-source-wechat-issue02-curator.md",
+      "detail_id": "wiki-overview-robot-open-source-wechat-issue02-curator",
+      "label": "机器人开源宝库（微信策展第02期）— 索引",
+      "type": "overview",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/pollen-reachy2.md",
+      "detail_id": "entity-pollen-reachy2",
+      "label": "Pollen Reachy2",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/poppy-project-robots.md",
+      "detail_id": "entity-poppy-project-robots",
+      "label": "Poppy 开源机器人平台",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/inmoov-humanoid.md",
+      "detail_id": "entity-inmoov-humanoid",
+      "label": "InMoov（开源 3D 打印人形）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/stanford-doggo-and-pupper.md",
+      "detail_id": "entity-stanford-doggo-and-pupper",
+      "label": "Stanford Doggo / Pupper（开源四足）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/elephantrobotics-mycobot-320.md",
+      "detail_id": "entity-elephantrobotics-mycobot-320",
+      "label": "大象机器人 myCobot 320",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/elephantrobotics-myagv.md",
+      "detail_id": "entity-elephantrobotics-myagv",
+      "label": "大象机器人 myAGV",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tidybot2.md",
+      "detail_id": "entity-tidybot2",
+      "label": "TidyBot2",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/kinova-gen3.md",
+      "detail_id": "entity-kinova-gen3",
+      "label": "Kinova Gen3",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/franka-research-3.md",
+      "detail_id": "entity-franka-research-3",
+      "label": "Franka Research 3",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/parol6-source-robotics.md",
+      "detail_id": "entity-parol6-source-robotics",
+      "label": "PAROL6（Source Robotics）",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
       "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
       "label": "机器人开源宝库（微信策展第01期）— 索引",
       "type": "overview",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
+      "type": "entity",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
       "recency": "2026-05-18",
       "source": "log.md"
     },
@@ -92,22 +196,6 @@
       "path": "wiki/entities/robotis-thormang3.md",
       "detail_id": "entity-robotis-thormang3",
       "label": "ROBOTIS THORMANG3",
-      "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-05-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
       "type": "entity",
       "recency": "2026-05-18",
       "source": "log.md"
@@ -298,9 +386,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-open-source-wechat-issue01-curator.md",
-    "detail_id": "wiki-overview-robot-open-source-wechat-issue01-curator",
-    "label": "机器人开源宝库（微信策展第01期）— 索引",
+    "path": "wiki/overview/robot-open-source-wechat-issue02-curator.md",
+    "detail_id": "wiki-overview-robot-open-source-wechat-issue02-curator",
+    "label": "机器人开源宝库（微信策展第02期）— 索引",
     "type": "overview",
     "recency": "2026-05-18",
     "source": "log.md"

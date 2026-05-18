@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] ingest | sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md — 微信公众号「机械Robot」开源宝库第02期：10 个机器人/平台实体 + 策展 overview
+
+- 原始资料：`sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-open-source-wechat-issue02-curator.md`；`wiki/entities/pollen-reachy2.md`、`wiki/entities/poppy-project-robots.md`、`wiki/entities/inmoov-humanoid.md`、`wiki/entities/stanford-doggo-and-pupper.md`、`wiki/entities/elephantrobotics-mycobot-320.md`、`wiki/entities/elephantrobotics-myagv.md`、`wiki/entities/tidybot2.md`、`wiki/entities/kinova-gen3.md`、`wiki/entities/franka-research-3.md`、`wiki/entities/parol6-source-robotics.md`
+- 交叉更新：`wiki/overview/robot-open-source-wechat-issue01-curator.md`、`wiki/entities/open-source-humanoid-hardware.md`、`wiki/entities/humanoid-robot.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md — 微信公众号「机械Robot」开源宝库第01期：10 个机器人/平台独立实体节点 + 策展 overview
 
 - 原始资料：`sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md`；索引 `sources/README.md`

@@ -68,6 +68,7 @@
 - [Unitree](wiki/entities/unitree.md)
 - [市面知名机器人平台纵览](wiki/overview/notable-commercial-robot-platforms.md)（人形 / 四足高频品牌索引）
 - [机器人开源宝库（微信策展第01期）](wiki/overview/robot-open-source-wechat-issue01-curator.md)（10 个开源整机/平台：傅利叶 N1、智元 X1、天工、ODRI、BHL、Orca、TurtleBot3、ROBOTIS 等）
+- [机器人开源宝库（微信策展第02期）](wiki/overview/robot-open-source-wechat-issue02-curator.md)（Reachy2、Poppy、InMoov、Doggo/Pupper、myCobot 320、myAGV、TidyBot2、Kinova Gen3、Franka R3、PAROL6）
 - [四足机器人（Quadruped Robot）](wiki/entities/quadruped-robot.md)
 - [轮足四足机器人（四轮足）](wiki/concepts/wheel-legged-quadruped.md)（Go2W 类混合滚动–步态）
 - [MotionCode™](wiki/entities/motioncode.md)（人体运动数据与 Mind 线人形训练叙事）
@@ -502,6 +503,7 @@ SORT type ASC
 - [人形机器人运动控制 Know-How](overview/humanoid-motion-control-know-how.md) — - **高频振动**：足端撞击地面的瞬时振动会通过骨架传导至 IMU。如果固定不牢，加速度计会因共振产生巨大偏置。 `📅unknown` `[overview_page]`
 - [人形机器人 RL 运动控制：身体系统栈视角](overview/humanoid-rl-motion-control-body-system-stack.md) — 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不 `📅2026-05-18` `[overview_page]`
 - [机器人开源宝库（微信策展第01期）](overview/robot-open-source-wechat-issue01-curator.md) — 第三方微信清单拆成的 **10 个实体节点**（傅利叶 N1、智元灵犀 X1、天工、ODRI、Berkeley Humanoid Lite、Orca Hand、TurtleBot3、ROBOTIS 机械臂线、OP3、THORMANG3）+ 官方文档/GitHub 入口索引。 `📅2026-05-18` `[overview_page]`
+- [机器人开源宝库（微信策展第02期）](overview/robot-open-source-wechat-issue02-curator.md) — 第 11–20 号清单：**Reachy2、Poppy、InMoov、Stanford Doggo/Pupper、myCobot 320、myAGV、TidyBot2、Kinova Gen3、Franka Research 3、PAROL6** 的实体索引与官方入口。 `📅2026-05-18` `[overview_page]`
 - [市面知名机器人平台纵览](overview/notable-commercial-robot-platforms.md) — 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。 `📅unknown` `[overview_page]`
 - [Robot Learning Overview](overview/robot-learning-overview.md) — 机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。 `📅unknown` `[overview_page]`
 
