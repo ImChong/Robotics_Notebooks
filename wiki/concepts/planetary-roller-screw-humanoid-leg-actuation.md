@@ -85,4 +85,5 @@ flowchart LR
 
 ## 参考来源
 
-- [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
+- [特斯拉人形机器人腿部关节为什么选择行星滚柱丝杠？（微信公众号原文）](https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w)
+- [wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md（仓库内归档）](../../sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md)
