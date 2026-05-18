@@ -25,6 +25,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
   - ../overview/notable-commercial-robot-platforms.md
   - ../overview/robot-open-source-wechat-issue01-curator.md
+  - ../overview/robot-open-source-wechat-issue02-curator.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/humannet.md
@@ -128,6 +129,7 @@ flowchart TD
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [市面知名机器人平台纵览](../overview/notable-commercial-robot-platforms.md) — 人形 / 四足高频品牌索引
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md) — 10 个开源整机/平台实体索引（傅利叶 N1、智元 X1、天工、ODRI、BHL、Orca、TurtleBot3、ROBOTIS 等）
+- [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md) — Reachy2、Poppy、InMoov、Doggo/Pupper、myCobot 320、myAGV、TidyBot2、Kinova Gen3、Franka R3、PAROL6
 - [舞肌科技](./wuji-robotics.md) — 关节级高扭矩电机 OEM 叙事（F 系列 / Pan Motor，见原始资料溯源）
 - [MotionCode](./motioncode.md) — 人体运动采集与 Mind 线人形/具身训练叙事（产业数据侧参照）
 - [HumanNet](./humannet.md) — 互联网级人中心视频语料与具身预训练管线参照
