@@ -77,6 +77,7 @@ flowchart LR
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md) — 任务定义与分类坐标。
 - [GMR（通用动作重定向）](./motion-retargeting-gmr.md) — 运动学前端基线与工程生态。
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真修补监督的另一条主线。
+- [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三方并排对比与选型矩阵。
 - [DeepMimic](./deepmimic.md) — 「跟踪固定参考」的经典 RL 设定，可与本文「先造参考」对照。
 - [Imitation Learning](./imitation-learning.md) — 下游如何利用高质量参考与奖励 shaping。
 - [Locomotion](../tasks/locomotion.md) — 四足与人形步态参考在任务层的落点。

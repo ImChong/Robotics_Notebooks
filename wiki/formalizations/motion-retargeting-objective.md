@@ -211,6 +211,7 @@ $$
 - [NMR（神经运动重定向）](../methods/neural-motion-retargeting-nmr.md) — CEPR 把罚项硬阈值化 + 配对监督。
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 双层优化下的参数化参考。
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 采样轨迹优化形态。
+- [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种工程退化形态在选型坐标里的直接对照。
 - [DeepMimic](../methods/deepmimic.md) — 把目标函数写成 RL tracking 奖励的范式。
 - [TSID 形式化](./tsid-formulation.md) — 下游消费重定向参考的 QP 控制层。
 - [Friction Cone 形式化](./friction-cone.md) — 动力学一致化阶段的接触约束。

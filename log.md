@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-18] structural | wiki/comparisons/gmr-vs-nmr-vs-reactor.md — V22 P1 动作重定向知识链 (3/3)：新增 GMR / NMR / ReActor 三方对比页
+
+- 沉淀页面：`wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（一句话定义 + 12 维核心对比表 + Mermaid 三路数据流并排图 + 三方适用场景 + 5 类常见误判 + 决策矩阵；强调「误差修补发生位置」（下游 / 离线 / 在线）作为核心选型轴；显式标注 NMR 仍以 GMR 为 CEPR 初值、三者实际常串联而非互斥）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/formalizations/motion-retargeting-objective.md`、`wiki/methods/motion-retargeting-gmr.md`、`wiki/methods/neural-motion-retargeting-nmr.md`、`wiki/methods/reactor-physics-aware-motion-retargeting.md`（关联页面区块回链本对比页）、`index.md`（Wiki Comparisons 目录插入 GMR vs NMR vs ReActor 条目）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 3 项打勾，含实现摘要；至此 V22 P1「动作重定向知识链 (+3)」3/3 全部完成）
+- 派生再生成：保持当前状态，待后续 ingest 或 P2 推进时统一 `make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-18] ingest | sources/papers/capvector_arxiv_2605_10903.md、sources/sites/capvector-github-io.md、sources/repos/openhelix_team_capvector.md — CapVector（参数空间 capability vector + 正交正则标准 SFT）arXiv:2605.10903 入库
 
 - 原始资料：`sources/papers/capvector_arxiv_2605_10903.md`、`sources/sites/capvector-github-io.md`、`sources/repos/openhelix_team_capvector.md`（PDF <https://arxiv.org/pdf/2605.10903>、项目页 <https://capvector.github.io/>、代码 <https://github.com/OpenHelix-Team/CapVector>）；索引 `sources/README.md`

@@ -487,6 +487,7 @@ SORT type ASC
 - [CLF vs CBF：稳定性与安全性的对偶工具](comparisons/clf-vs-cbf.md) —  工具 | 全称 | 核心角色  `📅unknown` `[comparison_page]`
 - [数据手套 vs 视觉遥操作 (灵巧数据采集选型)](comparisons/data-gloves-vs-vision-teleop.md) — 在训练灵巧手（Dexterous Hand）执行复杂任务时，获取高质量的人类演示数据是第一步。目前，**穿戴式数据手套 (Data Gloves)** 和 **基于视觉的遥操作 (Vision-bas `📅unknown` `[comparison_page]`
 - [EtherCAT vs EtherNet/IP（工业总线选型对比）](comparisons/ethercat-vs-ethernet-ip.md) — 在人形机器人、工业机械臂、移动操作平台落地时，"主控板 ↔ 关节驱动器"的连接几乎都跑在工业以太网上。**EtherCAT** 和 **EtherNet/IP** 是当前装机量最大的两种以太网现场总线 `📅unknown` `[comparison_page]`
+- [GMR vs NMR vs ReActor：动作重定向方法谱系对比](comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线（运动学 QP / 学习式整段映射 / 物理感知 RL 双层优化）在「误差修补位置、训练与推理成本、跨形态能力」上的选型坐标；强调三者实际常串联而非互斥。 `📅2026-05-18` `[comparison_page]`
 - [HumanNet Table 1：代表性人类视频语料与具身向关系](comparisons/humannet-table1-human-video-corpora.md) — HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍 `📅unknown` `[comparison_page]`
 - [Kalman Filter vs. Optimization-based Estimation (状态估计选型)](comparisons/kalman-filter-vs-optimization-based-estimation.md) — 在机器人（特别是人形和四足机器人）中，实时估计 Base 的位置、速度和姿态是所有算法的基础。目前主要存在两大技术路线：以 **EKF** 为代表的递归滤波派，和以 **滑窗优化 (Sliding W `📅unknown` `[comparison_page]`
 - [Model-Based vs Model-Free RL 对比](comparisons/model-based-vs-model-free.md) —  维度 | Model-Free RL | Model-Based RL  `📅unknown` `[comparison_page]`
