@@ -48,6 +48,7 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 - [Sim2Real](../concepts/sim2real.md)
 - [Tairan He（何泰然）](./tairan-he.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
+- [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 其图形学起源方法被搬到真实人形 RL 的张力讨论
 
 ## 参考来源
 

@@ -48,8 +48,10 @@
       - 实现：新增 `wiki/comparisons/gmr-vs-nmr-vs-reactor.md`，按「一句话定义 + 12 维核心对比表 + Mermaid 三路数据流并排图 + 三方适用场景 + 5 类常见误判 + 决策矩阵」结构覆盖三条路线；强调「误差修补发生位置」（下游 / 离线 / 在线）作为核心选型轴，并显式标注 NMR 仍以 GMR 为 CEPR 初值、三者实际常串联而非互斥；交叉互链 motion-retargeting / pipeline / objective / GMR / NMR / ReActor / SPIDER / SONIC / ExoActor。
       - 关联回链：`motion-retargeting.md`、`motion-retargeting-pipeline.md`、`motion-retargeting-objective.md`、`methods/motion-retargeting-gmr.md`、`methods/neural-motion-retargeting-nmr.md`、`methods/reactor-physics-aware-motion-retargeting.md` 的「关联页面」加入本对比页入口；`index.md` Wiki Comparisons 区块插入本页摘要条目。
       - 验证：本地 `python3 -m http.server` + `docs/detail.html?id=wiki-comparisons-gmr-vs-nmr-vs-reactor` 渲染正常（Mermaid 流程图落稳、表格未截断）；`grep "gmr-vs-nmr-vs-reactor" -r wiki/ index.md` 显示双向回链建立。
-- [ ] **角色化人形（Character Humanoid）边界澄清**：
-    - [ ] `wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：动作风格化、表演意图与物理可控性之间的张力；面向 Disney Olaf / Roboto Origin / MotionCanvas 等案例）。
+- [x] **角色化人形（Character Humanoid）边界澄清**：
+    - [x] `wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：动作风格化、表演意图与物理可控性之间的张力；面向 Disney Olaf / Roboto Origin / MotionCanvas 等案例）。
+      - 实现：新增 `wiki/concepts/character-animation-vs-robotics.md`，给出六个张力维度（目标函数 / 时间尺度 / 失败定义 / 机构约束 / 数据来源 / 工具生态）与五个案例切片（Disney Olaf 角色优先、DeepMimic-AMP-ASE 图形学起源谱系、BotLab/MotionCanvas 工具语言、Roboto Origin/Asimov v1 中性研究平台、关键帧编辑工具艺术家手工层）；附决策矩阵、常见误区与「角色端→桥接层→机器人端」流程 Mermaid。
+      - 交叉互链：`wiki/methods/disney-olaf-character-robot.md`、`wiki/entities/botlab-motioncanvas.md`、`wiki/entities/roboto-origin.md`、`wiki/entities/xue-bin-peng.md`、`wiki/concepts/motion-retargeting.md`、`wiki/concepts/reward-design.md` 的 frontmatter `related` 与正文「关联页面 / 与其他页面的关系」均加入本页入口；与 [Motion Retargeting Pipeline](../../wiki/concepts/motion-retargeting-pipeline.md) 形成「映射几何/动力学」与「目标函数博弈」的双视角。
 
 ## P2: 抓取与操作感知深化 (Quantity)
 
