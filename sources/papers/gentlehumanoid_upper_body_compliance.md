@@ -5,9 +5,12 @@
 - **标题：** GentleHumanoid: Learning Upper-body Compliance for Contact-rich Human and Object Interaction
 - **类型：** paper
 - **来源：** arXiv HTML
-- **原始链接：** https://arxiv.org/html/2511.04679
+- **原始链接：** https://arxiv.org/abs/2511.04679（HTML：<https://arxiv.org/html/2511.04679>）
+- **项目页：** https://gentle-humanoid.axell.top/
+- **代码：** https://github.com/Axellwppr/motion_tracking
+- **演示（tracking）：** https://motion-tracking.axell.top/
 - **入库日期：** 2026-04-19
-- **最后更新：** 2026-04-19
+- **最后更新：** 2026-05-19
 - **一句话说明：** 这篇论文把阻抗参考动力学、统一的弹簧式交互力建模和可调力阈值整合到 humanoid whole-body tracking policy 中，重点解决拥抱、搀扶站起、气球操作这类上半身密集接触任务中的柔顺控制问题。
 
 ## 核心摘录
@@ -26,6 +29,8 @@
   - 这篇工作不是单纯让机器人“更软”，而是让它在 whole-body tracking 成功率和 interaction safety 之间获得可调、可部署的平衡。
   - 对 Robotics_Notebooks 来说，它是连接 **Whole-Body Control / Contact Dynamics / Loco-Manipulation / Human-Robot Interaction** 的一篇非常典型的桥接论文。
 - **对 wiki 的映射：**
+  - [GentleHumanoid（方法页）](../../wiki/methods/gentlehumanoid-motion-tracking.md)
+  - [axellwppr_motion_tracking（工程实体）](../../wiki/entities/axellwppr-motion-tracking.md)
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
   - [Contact Dynamics](../../wiki/concepts/contact-dynamics.md)
   - [Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)
@@ -34,5 +39,6 @@
 
 - [x] HTML 原文核心方法与实验信息已摘录
 - [x] wiki 页面映射确认
-- [ ] 相关 wiki 页面的参考来源段落已补 ingest 链接
+- [x] 方法页 `wiki/methods/gentlehumanoid-motion-tracking.md` 与工程实体已沉淀
+- [x] 相关概念页交叉链接已更新
 - [ ] 若后续需要，可继续拆成 upper-body compliance / safe physical interaction / assistive humanoid interaction 子页面

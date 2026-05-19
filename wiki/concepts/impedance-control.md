@@ -85,6 +85,7 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*. Journal of Dynamic Systems, Measurement, and Control.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力与柔顺执行基础
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触任务中的执行层组织
+- [GentleHumanoid（方法页）](../methods/gentlehumanoid-motion-tracking.md) — RL motion tracking 中嵌入虚拟弹簧–阻尼参考动力学与力阈值
 
 ## 关联页面
 
@@ -95,3 +96,4 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - [TSID](./tsid.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Query：接触丰富操作实践指南](../queries/contact-rich-manipulation-guide.md)
+- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md)
