@@ -53,6 +53,9 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function openMermaidLightbox(host)",
             "function bindMermaidZoom(container)",
+            "function bindMermaidLightboxWheel(body)",
+            "MERMAID_LIGHTBOX_ZOOM_MIN",
+            "mermaid-lightbox-stage",
             "mermaid-zoomable",
             "mermaid-lightbox",
         ]

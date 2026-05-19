@@ -528,6 +528,44 @@
   }
 
   var mermaidLightboxEl = null;
+  var mermaidLightboxZoom = 1;
+  var MERMAID_LIGHTBOX_ZOOM_MIN = 0.35;
+  var MERMAID_LIGHTBOX_ZOOM_MAX = 5;
+  var MERMAID_LIGHTBOX_ZOOM_FACTOR = 1.12;
+
+  function clampMermaidLightboxZoom(scale) {
+    return Math.min(MERMAID_LIGHTBOX_ZOOM_MAX, Math.max(MERMAID_LIGHTBOX_ZOOM_MIN, scale));
+  }
+
+  function resetMermaidLightboxZoom(stage) {
+    mermaidLightboxZoom = 1;
+    if (!stage) return;
+    stage.style.transform = 'scale(1)';
+    stage.style.transformOrigin = 'center center';
+  }
+
+  function applyMermaidLightboxZoom(stage, scale, clientX, clientY) {
+    if (!stage) return;
+    mermaidLightboxZoom = clampMermaidLightboxZoom(scale);
+    if (clientX != null && clientY != null) {
+      var rect = stage.getBoundingClientRect();
+      stage.style.transformOrigin = (clientX - rect.left) + 'px ' + (clientY - rect.top) + 'px';
+    }
+    stage.style.transform = 'scale(' + mermaidLightboxZoom + ')';
+  }
+
+  function bindMermaidLightboxWheel(body) {
+    if (!body || body.getAttribute('data-mermaid-wheel-bound') === '1') return;
+    body.setAttribute('data-mermaid-wheel-bound', '1');
+    body.addEventListener('wheel', function (ev) {
+      if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      ev.preventDefault();
+      var factor = ev.deltaY < 0 ? MERMAID_LIGHTBOX_ZOOM_FACTOR : 1 / MERMAID_LIGHTBOX_ZOOM_FACTOR;
+      applyMermaidLightboxZoom(stage, mermaidLightboxZoom * factor, ev.clientX, ev.clientY);
+    }, { passive: false });
+  }
 
   function ensureMermaidLightbox() {
     if (mermaidLightboxEl) return mermaidLightboxEl;
@@ -550,6 +588,8 @@
     document.addEventListener('keydown', function (ev) {
       if (ev.key === 'Escape' && mermaidLightboxEl && !mermaidLightboxEl.hidden) closeMermaidLightbox();
     });
+    var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
+    bindMermaidLightboxWheel(body);
     return mermaidLightboxEl;
   }
 
@@ -560,7 +600,11 @@
     var body = box.querySelector('.mermaid-lightbox-body');
     if (!body) return;
     body.innerHTML = '';
-    body.appendChild(svg.cloneNode(true));
+    var stage = document.createElement('div');
+    stage.className = 'mermaid-lightbox-stage';
+    stage.appendChild(svg.cloneNode(true));
+    body.appendChild(stage);
+    resetMermaidLightboxZoom(stage);
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
     document.body.classList.add('mermaid-lightbox-open');
@@ -584,7 +628,7 @@
       node.classList.add('mermaid-zoomable');
       if (!node.hasAttribute('tabindex')) node.setAttribute('tabindex', '0');
       node.setAttribute('role', 'button');
-      node.setAttribute('aria-label', '点击放大流程图');
+      node.setAttribute('aria-label', '点击放大流程图，放大后可滚轮缩放');
     });
   }
 
