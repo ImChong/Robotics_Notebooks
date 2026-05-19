@@ -893,12 +893,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   width: auto !important;
   height: auto !important;
 }
-body.mermaid-lightbox-open .site-header {
-  z-index: 10001;
-}
-body.mermaid-lightbox-open #detailTocSection:not([hidden]) {
-  z-index: 10001;
-}
 .detail-markdown-body hr {
   margin: 1.5rem 0;
   border: 0;
