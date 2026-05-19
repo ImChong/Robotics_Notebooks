@@ -760,7 +760,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   box-shadow: 0 0 0 1px var(--border), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 .detail-markdown-body .mermaid.mermaid-zoomable::after {
-  content: '点击放大 · 滚轮缩放 · 拖拽平移';
+  content: '点击放大 · 滚轮/双指缩放 · 拖拽平移';
   position: absolute;
   right: 8px;
   bottom: 8px;
