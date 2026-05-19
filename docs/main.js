@@ -2919,17 +2919,11 @@
       searchResults.innerHTML = html;
     }
 
-    function bm25Score(doc, queryTokens, indexData) {
-      var meta = (indexData && indexData.meta) || {};
-      var avgdl = meta.avgdl || 1;
-      var k1 = meta.k1 || 1.5;
-      var b = meta.b || 0.75;
+    function bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1) {
       var score = 0;
       var dl = doc.dl || 1;
       var docTokens = doc.tokens || {};
-      var idfMap = indexData.idf || {};
       var lenNorm = 1 - b + b * (dl / avgdl);
-      var k1_plus_1 = k1 + 1;
 
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
@@ -2990,6 +2984,16 @@
           var communityMap = results[1] || new Map();
           var docs = (indexData && indexData.docs) || [];
           var queryTokens = tokenizeQuery(q);
+
+          // ⚡ Bolt Optimization: Hoist BM25 invariant calculations outside the loop
+          // Expected impact: Significantly reduces redundant object property resolution and mathematical ops per document in the hot scoring loop, improving overall search latency.
+          var meta = (indexData && indexData.meta) || {};
+          var avgdl = meta.avgdl || 1;
+          var k1 = meta.k1 || 1.5;
+          var b = meta.b || 0.75;
+          var idfMap = (indexData && indexData.idf) ? indexData.idf : {};
+          var k1_plus_1 = k1 + 1;
+
           // ⚡ Bolt Optimization: Single-pass search filtering
           // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
           var matched = [];
@@ -3014,7 +3018,7 @@
 
               partial = substringScore(doc, queryTokens);
               if (!hasTokens && partial === 0) continue;
-              bm25 = bm25Score(doc, queryTokens, indexData);
+              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1);
             }
 
             matched.push({
