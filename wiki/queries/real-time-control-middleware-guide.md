@@ -5,6 +5,9 @@ status: complete
 updated: 2026-04-21
 related:
   - ../comparisons/ros2-vs-lcm.md
+  - ../comparisons/can-vs-ethercat-joint-bus.md
+  - ../concepts/can-bus-protocol.md
+  - ../concepts/ethercat-protocol.md
   - ../queries/sim2real-deployment-checklist.md
   - ../concepts/sim2real.md
   - ../formalizations/control-loop-latency-modeling.md
@@ -69,6 +72,8 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 3. **加锁互斥量**：避免使用 `std::mutex`，这可能导致优先级反转（Priority Inversion）。
 
 ## 关联页面
+- [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
+- [CAN 总线（经典）](../concepts/can-bus-protocol.md)
 - [ROS 2 vs LCM (中间件选型)](../comparisons/ros2-vs-lcm.md)
 - [Sim2Real 真机部署检查清单](./sim2real-deployment-checklist.md)
 - [Sim2Real 概念](../concepts/sim2real.md)

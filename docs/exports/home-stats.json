@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 385,
-  "edge_count": 2682,
+  "node_count": 390,
+  "edge_count": 2727,
   "coverage": {
-    "covered": 383,
-    "total": 383,
+    "covered": 388,
+    "total": 388,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/uart-serial-communication.md",
+      "detail_id": "wiki-concepts-uart-serial-communication",
+      "label": "UART 与串行通信（TTL / RS-232 / RS-485）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/processor-in-the-loop-sim2real.md",
+      "detail_id": "wiki-concepts-processor-in-the-loop-sim2real",
+      "label": "处理器在环 Sim2Real（Processor-in-the-loop）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/control-loop-latency-modeling.md",
+      "detail_id": "wiki-formalizations-control-loop-latency-modeling",
+      "label": "控制环路延迟建模 (Control Loop Latency Modeling)",
+      "type": "formalization",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/real-time-control-middleware-guide.md",
+      "detail_id": "wiki-queries-real-time-control-middleware-guide",
+      "label": "实时运控中间件配置指南",
+      "type": "query",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/newton-physics.md",
       "detail_id": "entity-newton-physics",
@@ -130,10 +202,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/newton-physics.md",
-    "detail_id": "entity-newton-physics",
-    "label": "Newton Physics（物理引擎）",
-    "type": "entity",
+    "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+    "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+    "label": "电机驱动器底软通信协议总览",
+    "type": "overview",
     "recency": "2026-05-19",
     "source": "log.md"
   }
