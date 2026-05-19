@@ -54,6 +54,8 @@ class DetailContentSyncTests(unittest.TestCase):
             "function openMermaidLightbox(host)",
             "function bindMermaidZoom(container)",
             "function bindMermaidLightboxWheel(body)",
+            "function bindMermaidLightboxPan(body)",
+            "mermaidLightboxPanX",
             "MERMAID_LIGHTBOX_ZOOM_MIN",
             "mermaid-lightbox-stage",
             "mermaid-zoomable",
