@@ -18,6 +18,7 @@ related:
   - ./being-h07.md
   - ./pi07-policy.md
   - ../concepts/world-action-models.md
+  - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./pelican-unified-1.md
   - ./mimic-video.md
   - ./egoscale.md

@@ -8,6 +8,7 @@
 - **代码：** <https://github.com/Panniantong/Agent-Reach>
 - **许可：** MIT（以仓库 `LICENSE` 为准）
 - **入库日期：** 2026-05-18
+- **维护备注（2026-05-19）：** Cloud 环境已 `pip install` 本仓库 main（v1.4.0）并 `agent-reach install --channels=wechat`；微信公众号正文抓取走 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），见 [`sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md`](../blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)。
 - **一句话说明：** 面向「能跑 shell 的编码代理」的安装脚手架：一键拉齐读网页 / 社媒 / 视频字幕 / GitHub / RSS / 全网语义搜索等上游 CLI 与 MCP 依赖，用 `agent-reach doctor` 做渠道健康检查；运行时代理由各上游工具直接承担，本仓以渠道可插拔与本地凭据管理为主张。
 
 ## 与本仓库知识的关系
