@@ -554,6 +554,30 @@
     applyMermaidLightboxTransform(stage);
   }
 
+  function updateMermaidLightboxLayoutContext() {
+    var toc = document.getElementById('detailTocSection');
+    var hasToc = !!(toc && !toc.hidden);
+    document.body.classList.toggle('mermaid-lightbox-has-toc', hasToc);
+  }
+
+  function fitMermaidLightboxToView(stage, body) {
+    if (!stage || !body) return;
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var svgW = svg.getBoundingClientRect().width;
+    var svgH = svg.getBoundingClientRect().height;
+    if (!(svgW > 0 && svgH > 0)) return;
+    var bodyW = body.clientWidth;
+    var bodyH = body.clientHeight;
+    var pad = 12;
+    var scale = Math.min(1, (bodyW - pad * 2) / svgW, (bodyH - pad * 2) / svgH);
+    mermaidLightboxZoom = scale;
+    mermaidLightboxPanX = Math.max(pad, (bodyW - svgW * scale) / 2);
+    mermaidLightboxPanY = Math.max(pad, (bodyH - svgH * scale) / 2);
+    mermaidLightboxPanState = null;
+    applyMermaidLightboxTransform(stage);
+  }
+
   function zoomMermaidLightboxAt(stage, body, factor, clientX, clientY) {
     if (!stage || !body) return;
     var oldZoom = mermaidLightboxZoom;
@@ -689,10 +713,15 @@
     stage.className = 'mermaid-lightbox-stage';
     stage.appendChild(cloneMermaidSvgForLightbox(svg));
     body.appendChild(stage);
-    resetMermaidLightboxView(stage);
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
+    updateMermaidLightboxLayoutContext();
     document.body.classList.add('mermaid-lightbox-open');
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fitMermaidLightboxToView(stage, body);
+      });
+    });
     var closeBtn = box.querySelector('.mermaid-lightbox-close');
     if (closeBtn) closeBtn.focus();
   }
@@ -708,6 +737,7 @@
     }
     mermaidLightboxPanState = null;
     document.body.classList.remove('mermaid-lightbox-open');
+    document.body.classList.remove('mermaid-lightbox-has-toc');
   }
 
   function enhanceMermaidZoomTargets(container) {
