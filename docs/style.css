@@ -784,45 +784,39 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .mermaid-lightbox {
   position: fixed;
-  top: var(--header-h);
-  right: 0;
-  bottom: 0;
-  left: 0;
+  inset: 0;
   z-index: 10000;
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  padding: 0.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
   box-sizing: border-box;
-}
-@media (min-width: 1200px) {
-  body.mermaid-lightbox-has-toc .mermaid-lightbox {
-    left: 360px;
-  }
+  pointer-events: none;
 }
 .mermaid-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
 }
 .mermaid-lightbox-panel {
   position: relative;
   z-index: 1;
-  flex: 1;
-  width: 100%;
-  max-width: 100%;
-  height: 100%;
-  max-height: 100%;
+  width: min(92vw, 1200px);
+  height: min(88vh, calc(100dvh - 2.5rem));
+  max-width: 92vw;
+  max-height: 88vh;
   overflow: hidden;
   margin: 0;
   padding: 2.75rem 1rem 1rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  pointer-events: auto;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--surface-strong, var(--bg));
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
   scrollbar-width: thin;
   scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
 }

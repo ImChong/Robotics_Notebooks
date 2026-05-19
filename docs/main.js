@@ -554,12 +554,6 @@
     applyMermaidLightboxTransform(stage);
   }
 
-  function updateMermaidLightboxLayoutContext() {
-    var toc = document.getElementById('detailTocSection');
-    var hasToc = !!(toc && !toc.hidden);
-    document.body.classList.toggle('mermaid-lightbox-has-toc', hasToc);
-  }
-
   function fitMermaidLightboxToView(stage, body) {
     if (!stage || !body) return;
     var svg = stage.querySelector('svg');
@@ -715,7 +709,6 @@
     body.appendChild(stage);
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
-    updateMermaidLightboxLayoutContext();
     document.body.classList.add('mermaid-lightbox-open');
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
@@ -737,7 +730,6 @@
     }
     mermaidLightboxPanState = null;
     document.body.classList.remove('mermaid-lightbox-open');
-    document.body.classList.remove('mermaid-lightbox-has-toc');
   }
 
   function enhanceMermaidZoomTargets(container) {

@@ -53,7 +53,6 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function fitMermaidLightboxToView(stage, body)",
             "function cloneMermaidSvgForLightbox(svg)",
-            "mermaid-lightbox-has-toc",
             "function openMermaidLightbox(host)",
             "function bindMermaidZoom(container)",
             "function bindMermaidLightboxWheel(body)",
