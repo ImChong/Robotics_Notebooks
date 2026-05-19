@@ -5,6 +5,8 @@ status: complete
 related:
   - ./sim2real.md
   - ./domain-randomization.md
+  - ./can-bus-protocol.md
+  - ./uart-serial-communication.md
   - ../entities/asimov-v1.md
   - ../queries/sim2real-gap-reduction.md
   - ../queries/real-time-control-middleware-guide.md
@@ -67,6 +69,8 @@ flowchart LR
 
 ## 关联页面
 
+- [CAN 总线（经典）](./can-bus-protocol.md) — 电机请求–响应与总线抖动注入
+- [UART 串行通信](./uart-serial-communication.md) — 与 I2C 并列的板级外设路径
 - [Sim2Real](./sim2real.md) — gap 来源总览；本页聚焦 **执行器 + 嵌入式 + 通信** 交叉层
 - [Domain Randomization](./domain-randomization.md) — **抖动注入**可视为面向总线/调度的结构化随机化
 - [Asimov v1](../entities/asimov-v1.md) — Menlo 博文线与全栈仓库交叉引用入口
