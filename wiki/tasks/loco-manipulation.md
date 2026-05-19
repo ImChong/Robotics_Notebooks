@@ -61,7 +61,7 @@ flowchart TD
 ### 3. 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）。
 
 ### 4. 残差与自适应学习 (Residual & Adaptive)
 - **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。

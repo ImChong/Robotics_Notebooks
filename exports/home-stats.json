@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 383,
-  "edge_count": 2659,
+  "node_count": 384,
+  "edge_count": 2668,
   "coverage": {
-    "covered": 381,
-    "total": 381,
+    "covered": 382,
+    "total": 382,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-daji-anticipatory-joint-intent.md",
+      "detail_id": "entity-paper-daji-anticipatory-joint-intent",
+      "label": "DAJI（预期关节意图 · 语言条件人形控制）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
       "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
@@ -29,22 +61,6 @@
       "detail_id": "wiki-concepts-world-action-models",
       "label": "World Action Models（WAM，世界–动作模型）",
       "type": "concept",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
       "recency": "2026-05-19",
       "source": "log.md"
     },
@@ -74,10 +90,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-    "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-    "label": "机器人世界模型：训练闭环与三线 taxonomy",
-    "type": "overview",
+    "path": "wiki/entities/paper-daji-anticipatory-joint-intent.md",
+    "detail_id": "entity-paper-daji-anticipatory-joint-intent",
+    "label": "DAJI（预期关节意图 · 语言条件人形控制）",
+    "type": "entity",
     "recency": "2026-05-19",
     "source": "log.md"
   }
