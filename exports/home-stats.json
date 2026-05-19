@@ -1,18 +1,42 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 387,
-  "edge_count": 2692,
+  "node_count": 388,
+  "edge_count": 2704,
   "coverage": {
-    "covered": 385,
-    "total": 385,
+    "covered": 386,
+    "total": 386,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/can-bus-protocol.md",
       "detail_id": "wiki-concepts-can-bus-protocol",
       "label": "CAN 总线（经典 CAN / CAN 2.0）",
       "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/ethercat-protocol.md",
+      "detail_id": "wiki-concepts-ethercat-protocol",
+      "label": "EtherCAT 协议基础",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
+      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
+      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
+      "type": "comparison",
       "recency": "2026-05-19",
       "source": "log.md"
     },
@@ -28,22 +52,6 @@
       "path": "wiki/concepts/uart-serial-communication.md",
       "detail_id": "wiki-concepts-uart-serial-communication",
       "label": "UART 与串行通信（TTL / RS-232 / RS-485）",
-      "type": "concept",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/can-vs-ethercat-joint-bus.md",
-      "detail_id": "wiki-comparisons-can-vs-ethercat-joint-bus",
-      "label": "CAN / CAN FD vs EtherCAT vs UART·RS485（关节与现场总线选型）",
-      "type": "comparison",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/ethercat-protocol.md",
-      "detail_id": "wiki-concepts-ethercat-protocol",
-      "label": "EtherCAT 协议基础",
       "type": "concept",
       "recency": "2026-05-19",
       "source": "log.md"
@@ -138,10 +146,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/can-bus-protocol.md",
-    "detail_id": "wiki-concepts-can-bus-protocol",
-    "label": "CAN 总线（经典 CAN / CAN 2.0）",
-    "type": "concept",
+    "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+    "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+    "label": "电机驱动器底软通信协议总览",
+    "type": "overview",
     "recency": "2026-05-19",
     "source": "log.md"
   }

@@ -4,6 +4,7 @@ tags: [hardware, fieldbus, can-bus, can-fd, ethercat, uart, rs485, realtime, rob
 status: complete
 updated: 2026-05-19
 related:
+  - ../overview/motor-drive-firmware-bus-protocols.md
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
   - ../concepts/ethercat-protocol.md
@@ -67,6 +68,7 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 
 ## 关联页面
 
+- [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [CAN 总线](./../concepts/can-bus-protocol.md)
 - [CAN FD](./../concepts/can-fd.md)
 - [EtherCAT 协议基础](./../concepts/ethercat-protocol.md)

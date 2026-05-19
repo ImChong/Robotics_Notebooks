@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-19] structural | wiki/overview/motor-drive-firmware-bus-protocols.md — 电机驱动器底软通信协议总览（种类与优缺点）
+
+- 原始资料：`sources/courses/motor_drive_firmware_bus_protocols.md`（CiA CANopen/CiA402、DroneCAN、MIT 紧凑帧与厂商私有等索引）
+- 沉淀页面：`wiki/overview/motor-drive-firmware-bus-protocols.md`（物理层 × 应用层 × 控制语义三层；协议族优缺点表；常见组合与选型 Mermaid）
+- 交叉更新：`wiki/concepts/can-bus-protocol.md`、`wiki/concepts/ethercat-protocol.md`、`wiki/comparisons/can-vs-ethercat-joint-bus.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-19] ingest | sources/sites/cia_can_*、sources/courses/uart_rs485_serial_embedded.md — CiA CAN/CAN FD/CANopen/DroneCAN 与 UART·RS485 一手资料入库
 
 - 原始资料：`sources/sites/cia_can_knowledge_can_classic_and_hs.md`、`sources/sites/cia_can_fd_basic_idea.md`、`sources/sites/cia_canopen_overview.md`、`sources/sites/cia_dronecan_uavcan.md`、`sources/courses/uart_rs485_serial_embedded.md`（CiA [CAN knowledge](https://www.can-cia.org/can-knowledge/)、[DroneCAN](http://dronecan.org/)、TI SLLA383 / Wikipedia UART）；索引 `sources/README.md`
