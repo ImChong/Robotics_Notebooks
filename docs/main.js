@@ -529,6 +529,9 @@
 
   var mermaidLightboxEl = null;
   var mermaidLightboxZoom = 1;
+  var mermaidLightboxPanX = 0;
+  var mermaidLightboxPanY = 0;
+  var mermaidLightboxPanState = null;
   var MERMAID_LIGHTBOX_ZOOM_MIN = 0.35;
   var MERMAID_LIGHTBOX_ZOOM_MAX = 5;
   var MERMAID_LIGHTBOX_ZOOM_FACTOR = 1.12;
@@ -537,21 +540,38 @@
     return Math.min(MERMAID_LIGHTBOX_ZOOM_MAX, Math.max(MERMAID_LIGHTBOX_ZOOM_MIN, scale));
   }
 
-  function resetMermaidLightboxZoom(stage) {
-    mermaidLightboxZoom = 1;
+  function applyMermaidLightboxTransform(stage) {
     if (!stage) return;
-    stage.style.transform = 'scale(1)';
-    stage.style.transformOrigin = 'center center';
+    stage.style.transformOrigin = '0 0';
+    stage.style.transform = 'translate(' + mermaidLightboxPanX + 'px, ' + mermaidLightboxPanY + 'px) scale(' + mermaidLightboxZoom + ')';
   }
 
-  function applyMermaidLightboxZoom(stage, scale, clientX, clientY) {
-    if (!stage) return;
-    mermaidLightboxZoom = clampMermaidLightboxZoom(scale);
-    if (clientX != null && clientY != null) {
-      var rect = stage.getBoundingClientRect();
-      stage.style.transformOrigin = (clientX - rect.left) + 'px ' + (clientY - rect.top) + 'px';
+  function resetMermaidLightboxView(stage) {
+    mermaidLightboxZoom = 1;
+    mermaidLightboxPanX = 0;
+    mermaidLightboxPanY = 0;
+    mermaidLightboxPanState = null;
+    applyMermaidLightboxTransform(stage);
+  }
+
+  function zoomMermaidLightboxAt(stage, body, factor, clientX, clientY) {
+    if (!stage || !body) return;
+    var oldZoom = mermaidLightboxZoom;
+    var newZoom = clampMermaidLightboxZoom(oldZoom * factor);
+    if (clientX == null || clientY == null) {
+      mermaidLightboxZoom = newZoom;
+      applyMermaidLightboxTransform(stage);
+      return;
     }
-    stage.style.transform = 'scale(' + mermaidLightboxZoom + ')';
+    var rect = body.getBoundingClientRect();
+    var x = clientX - rect.left + body.scrollLeft;
+    var y = clientY - rect.top + body.scrollTop;
+    var localX = (x - mermaidLightboxPanX) / oldZoom;
+    var localY = (y - mermaidLightboxPanY) / oldZoom;
+    mermaidLightboxZoom = newZoom;
+    mermaidLightboxPanX = x - localX * newZoom;
+    mermaidLightboxPanY = y - localY * newZoom;
+    applyMermaidLightboxTransform(stage);
   }
 
   function bindMermaidLightboxWheel(body) {
@@ -563,8 +583,49 @@
       if (!stage) return;
       ev.preventDefault();
       var factor = ev.deltaY < 0 ? MERMAID_LIGHTBOX_ZOOM_FACTOR : 1 / MERMAID_LIGHTBOX_ZOOM_FACTOR;
-      applyMermaidLightboxZoom(stage, mermaidLightboxZoom * factor, ev.clientX, ev.clientY);
+      zoomMermaidLightboxAt(stage, body, factor, ev.clientX, ev.clientY);
     }, { passive: false });
+  }
+
+  function bindMermaidLightboxPan(body) {
+    if (!body || body.getAttribute('data-mermaid-pan-bound') === '1') return;
+    body.setAttribute('data-mermaid-pan-bound', '1');
+    body.addEventListener('pointerdown', function (ev) {
+      if (ev.button !== 0) return;
+      if (ev.target.closest('.mermaid-lightbox-close')) return;
+      if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      mermaidLightboxPanState = {
+        pointerId: ev.pointerId,
+        startX: ev.clientX,
+        startY: ev.clientY,
+        panX: mermaidLightboxPanX,
+        panY: mermaidLightboxPanY
+      };
+      body.setPointerCapture(ev.pointerId);
+      body.classList.add('mermaid-lightbox-dragging');
+    });
+    body.addEventListener('pointermove', function (ev) {
+      if (!mermaidLightboxPanState || ev.pointerId !== mermaidLightboxPanState.pointerId) return;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      mermaidLightboxPanX = mermaidLightboxPanState.panX + (ev.clientX - mermaidLightboxPanState.startX);
+      mermaidLightboxPanY = mermaidLightboxPanState.panY + (ev.clientY - mermaidLightboxPanState.startY);
+      applyMermaidLightboxTransform(stage);
+    });
+    function endMermaidLightboxPan(ev) {
+      if (!mermaidLightboxPanState || ev.pointerId !== mermaidLightboxPanState.pointerId) return;
+      mermaidLightboxPanState = null;
+      body.classList.remove('mermaid-lightbox-dragging');
+      try {
+        body.releasePointerCapture(ev.pointerId);
+      } catch (unusedErr) {
+        void unusedErr;
+      }
+    }
+    body.addEventListener('pointerup', endMermaidLightboxPan);
+    body.addEventListener('pointercancel', endMermaidLightboxPan);
   }
 
   function ensureMermaidLightbox() {
@@ -590,6 +651,7 @@
     });
     var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
     bindMermaidLightboxWheel(body);
+    bindMermaidLightboxPan(body);
     return mermaidLightboxEl;
   }
 
@@ -604,7 +666,7 @@
     stage.className = 'mermaid-lightbox-stage';
     stage.appendChild(svg.cloneNode(true));
     body.appendChild(stage);
-    resetMermaidLightboxZoom(stage);
+    resetMermaidLightboxView(stage);
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
     document.body.classList.add('mermaid-lightbox-open');
@@ -617,7 +679,11 @@
     mermaidLightboxEl.hidden = true;
     mermaidLightboxEl.setAttribute('aria-hidden', 'true');
     var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
-    if (body) body.innerHTML = '';
+    if (body) {
+      body.innerHTML = '';
+      body.classList.remove('mermaid-lightbox-dragging');
+    }
+    mermaidLightboxPanState = null;
     document.body.classList.remove('mermaid-lightbox-open');
   }
 
@@ -628,7 +694,7 @@
       node.classList.add('mermaid-zoomable');
       if (!node.hasAttribute('tabindex')) node.setAttribute('tabindex', '0');
       node.setAttribute('role', 'button');
-      node.setAttribute('aria-label', '点击放大流程图，放大后可滚轮缩放');
+      node.setAttribute('aria-label', '点击放大流程图，放大后可滚轮缩放与拖拽平移');
     });
   }
 

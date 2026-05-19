@@ -760,7 +760,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   box-shadow: 0 0 0 1px var(--border), 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 .detail-markdown-body .mermaid.mermaid-zoomable::after {
-  content: '点击放大 · 滚轮缩放';
+  content: '点击放大 · 滚轮缩放 · 拖拽平移';
   position: absolute;
   right: 8px;
   bottom: 8px;
@@ -832,11 +832,16 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .mermaid-lightbox-body {
   clear: both;
   overflow: auto;
-  touch-action: pan-x pan-y;
+  touch-action: none;
+  cursor: grab;
+}
+.mermaid-lightbox-body.mermaid-lightbox-dragging {
+  cursor: grabbing;
+  user-select: none;
 }
 .mermaid-lightbox-stage {
   display: inline-block;
-  transform-origin: center center;
+  transform-origin: 0 0;
   will-change: transform;
 }
 .mermaid-lightbox-body svg {
