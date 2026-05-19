@@ -10,6 +10,7 @@ tags:
 status: complete
 date: 2026-05-18
 related:
+  - ./caveman.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ./articraft.md

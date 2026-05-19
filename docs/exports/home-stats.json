@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 392,
-  "edge_count": 2749,
+  "node_count": 393,
+  "edge_count": 2756,
   "coverage": {
-    "covered": 390,
-    "total": 390,
+    "covered": 391,
+    "total": 391,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/caveman.md",
+      "detail_id": "entity-caveman",
+      "label": "Caveman",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/superpowers-obra.md",
+      "detail_id": "entity-superpowers-obra",
+      "label": "Superpowers（obra）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/hermes-agent.md",
+      "detail_id": "entity-hermes-agent",
+      "label": "Hermes Agent（Nous Research）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
       "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
@@ -223,37 +255,13 @@
       "type": "concept",
       "recency": "2026-05-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agent-reach.md",
-      "detail_id": "entity-agent-reach",
-      "label": "Agent Reach（Panniantong）",
-      "type": "entity",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/hermes-agent.md",
-      "detail_id": "entity-hermes-agent",
-      "label": "Hermes Agent（Nous Research）",
-      "type": "entity",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/superpowers-obra.md",
-      "detail_id": "entity-superpowers-obra",
-      "label": "Superpowers（obra）",
-      "type": "entity",
-      "recency": "2026-05-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
-    "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
-    "label": "GentleHumanoid（上半身柔顺全身运动跟踪）",
-    "type": "method",
+    "path": "wiki/entities/caveman.md",
+    "detail_id": "entity-caveman",
+    "label": "Caveman",
+    "type": "entity",
     "recency": "2026-05-19",
     "source": "log.md"
   }

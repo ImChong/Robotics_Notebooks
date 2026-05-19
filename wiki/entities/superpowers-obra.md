@@ -70,6 +70,7 @@ flowchart TD
 ## 关联页面
 
 - [Agent Reach](agent-reach.md) — 面向编码代理的 **外网读搜工具链脚手架**（与本页「软件工程流程技能」互补）
+- [Caveman](caveman.md) — **输出与记忆文件 token 压缩**技能（与本页「交付流程」互补）
 - [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
