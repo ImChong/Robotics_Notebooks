@@ -12,6 +12,7 @@ related:
   - ./dm-control.md
   - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
+  - ./newton-physics.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 sources:
@@ -58,6 +59,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Robot Viewer](./robot-viewer.md) — 支持 MJCF 格式的 Web 查看器
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — 以 URDF 为起点的派生模块目录（与 MJCF 这类仿真专用描述对照理解「预处理资产层」）
 - [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
+- [Newton Physics](./newton-physics.md) — Warp + MuJoCo Warp 的 GPU 可微引擎（LF 托管）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)

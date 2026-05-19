@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 384,
-  "edge_count": 2668,
+  "node_count": 385,
+  "edge_count": 2682,
   "coverage": {
-    "covered": 382,
-    "total": 382,
+    "covered": 383,
+    "total": 383,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/newton-physics.md",
+      "detail_id": "entity-newton-physics",
+      "label": "Newton Physics（物理引擎）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mjlab.md",
+      "detail_id": "entity-mjlab",
+      "label": "mjlab (轻量 GPU 加速 RL 框架)",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Lab",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-daji-anticipatory-joint-intent.md",
       "detail_id": "entity-paper-daji-anticipatory-joint-intent",
@@ -90,9 +130,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-daji-anticipatory-joint-intent.md",
-    "detail_id": "entity-paper-daji-anticipatory-joint-intent",
-    "label": "DAJI（预期关节意图 · 语言条件人形控制）",
+    "path": "wiki/entities/newton-physics.md",
+    "detail_id": "entity-newton-physics",
+    "label": "Newton Physics（物理引擎）",
     "type": "entity",
     "recency": "2026-05-19",
     "source": "log.md"
