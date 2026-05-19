@@ -1,13 +1,69 @@
 {
-  "generated_at": "2026-05-18",
-  "node_count": 380,
-  "edge_count": 2621,
+  "generated_at": "2026-05-19",
+  "node_count": 381,
+  "edge_count": 2639,
   "coverage": {
-    "covered": 378,
-    "total": 378,
+    "covered": 379,
+    "total": 379,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/gmr-vs-nmr-vs-reactor.md",
+      "detail_id": "wiki-comparisons-gmr-vs-nmr-vs-reactor",
+      "label": "GMR vs NMR vs ReActor：动作重定向方法谱系对比",
+      "type": "comparison",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/motion-retargeting-objective.md",
+      "detail_id": "wiki-formalizations-motion-retargeting-objective",
+      "label": "Motion Retargeting Objective（动作重定向目标函数形式化）",
+      "type": "formalization",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/neural-motion-retargeting-nmr.md",
+      "detail_id": "wiki-methods-neural-motion-retargeting-nmr",
+      "label": "NMR（神经运动重定向与人形全身控制）",
+      "type": "method",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reactor-physics-aware-motion-retargeting.md",
+      "detail_id": "wiki-methods-reactor-physics-aware-motion-retargeting",
+      "label": "ReActor（物理感知 RL 运动重定向）",
+      "type": "method",
+      "recency": "2026-05-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-capvector-capability-vectors-vla.md",
       "detail_id": "entity-paper-capvector-capability-vectors-vla",
@@ -442,10 +498,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-capvector-capability-vectors-vla.md",
-    "detail_id": "entity-paper-capvector-capability-vectors-vla",
-    "label": "CapVector（VLA 参数空间可迁移能力向量）",
-    "type": "entity",
+    "path": "wiki/comparisons/gmr-vs-nmr-vs-reactor.md",
+    "detail_id": "wiki-comparisons-gmr-vs-nmr-vs-reactor",
+    "label": "GMR vs NMR vs ReActor：动作重定向方法谱系对比",
+    "type": "comparison",
     "recency": "2026-05-18",
     "source": "log.md"
   }
