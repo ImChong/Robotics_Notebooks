@@ -790,25 +790,49 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   align-items: center;
   justify-content: center;
   padding: 1.25rem;
+  box-sizing: border-box;
+  pointer-events: none;
 }
 .mermaid-lightbox-backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
 }
 .mermaid-lightbox-panel {
   position: relative;
   z-index: 1;
-  width: min(96vw, 1400px);
-  max-width: min(96vw, 1400px);
-  max-height: 92vh;
-  overflow: auto;
+  width: min(92vw, 1200px);
+  height: min(88vh, calc(100dvh - 2.5rem));
+  max-width: 92vw;
+  max-height: 88vh;
+  overflow: hidden;
   margin: 0;
-  padding: 2.75rem 1.25rem 1.25rem;
+  padding: 2.75rem 1rem 1rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  pointer-events: auto;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--surface-strong, var(--bg));
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.mermaid-lightbox-panel::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.mermaid-lightbox-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mermaid-lightbox-panel::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
+}
+.mermaid-lightbox-panel::-webkit-scrollbar-corner {
+  background: transparent;
 }
 .mermaid-lightbox-close {
   position: absolute;
@@ -831,9 +855,27 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--accent);
 }
 .mermaid-lightbox-body {
+  flex: 1;
+  min-height: 0;
   overflow: auto;
   touch-action: none;
   cursor: grab;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--text-muted) 48%, transparent) transparent;
+}
+.mermaid-lightbox-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.mermaid-lightbox-body::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mermaid-lightbox-body::-webkit-scrollbar-thumb {
+  background-color: color-mix(in srgb, var(--text-muted) 48%, transparent);
+  border-radius: 999px;
+}
+.mermaid-lightbox-body::-webkit-scrollbar-corner {
+  background: transparent;
 }
 .mermaid-lightbox-body.mermaid-lightbox-dragging {
   cursor: grabbing;
@@ -850,9 +892,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   max-width: none !important;
   width: auto !important;
   height: auto !important;
-}
-body.mermaid-lightbox-open {
-  overflow: hidden;
 }
 .detail-markdown-body hr {
   margin: 1.5rem 0;
