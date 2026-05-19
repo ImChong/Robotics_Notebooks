@@ -10,6 +10,8 @@ tags:
 status: complete
 updated: 2026-05-17
 related:
+  - ./hermes-agent.md
+  - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
   - ../../AGENTS.md
@@ -68,6 +70,7 @@ flowchart TD
 ## 关联页面
 
 - [Agent Reach](agent-reach.md) — 面向编码代理的 **外网读搜工具链脚手架**（与本页「软件工程流程技能」互补）
+- [Hermes Agent](hermes-agent.md) — **常驻代理运行时**（网关、记忆/技能、cron；与本页「流程技能」互补）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
