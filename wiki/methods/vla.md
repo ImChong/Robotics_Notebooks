@@ -19,6 +19,7 @@ related:
   - ./pi07-policy.md
   - ../concepts/world-action-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../entities/paper-daji-anticipatory-joint-intent.md
   - ./pelican-unified-1.md
   - ./mimic-video.md
   - ./egoscale.md
