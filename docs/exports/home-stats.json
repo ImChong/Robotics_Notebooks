@@ -1,13 +1,69 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 390,
-  "edge_count": 2727,
+  "node_count": 392,
+  "edge_count": 2749,
   "coverage": {
-    "covered": 388,
-    "total": 388,
+    "covered": 390,
+    "total": 390,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
+      "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
+      "label": "GentleHumanoid（上半身柔顺全身运动跟踪）",
+      "type": "method",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/axellwppr-motion-tracking.md",
+      "detail_id": "entity-axellwppr-motion-tracking",
+      "label": "Axellwppr/motion_tracking",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC)",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-dynamics.md",
+      "detail_id": "wiki-concepts-contact-dynamics",
+      "label": "Contact Dynamics",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/impedance-control.md",
+      "detail_id": "wiki-concepts-impedance-control",
+      "label": "Impedance Control（阻抗控制）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
       "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
@@ -145,14 +201,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-05-19",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
       "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
       "label": "机器人世界模型：训练闭环与三线 taxonomy",
@@ -202,10 +250,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
-    "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
-    "label": "电机驱动器底软通信协议总览",
-    "type": "overview",
+    "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
+    "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
+    "label": "GentleHumanoid（上半身柔顺全身运动跟踪）",
+    "type": "method",
     "recency": "2026-05-19",
     "source": "log.md"
   }

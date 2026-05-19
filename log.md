@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-19] ingest | sources/papers/gentlehumanoid_upper_body_compliance.md、sources/repos/axellwppr_motion_tracking.md — GentleHumanoid / motion_tracking 入库并沉淀 wiki
+
+- 原始资料：`sources/papers/gentlehumanoid_upper_body_compliance.md`（[arXiv:2511.04679](https://arxiv.org/abs/2511.04679)）、`sources/sites/gentle-humanoid-axell-top.md`、`sources/sites/motion-tracking-axell-top.md`、`sources/repos/axellwppr_motion_tracking.md`（<https://github.com/Axellwppr/motion_tracking>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/gentlehumanoid-motion-tracking.md`、`wiki/entities/axellwppr-motion-tracking.md`
+- 交叉更新：`wiki/concepts/whole-body-control.md`、`wiki/concepts/contact-dynamics.md`、`wiki/concepts/impedance-control.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`、`wiki/methods/sonic-motion-tracking.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-19] structural | wiki/overview/motor-drive-firmware-bus-protocols.md — 电机驱动器底软通信协议总览（种类与优缺点）
 
 - 原始资料：`sources/courses/motor_drive_firmware_bus_protocols.md`（CiA CANopen/CiA402、DroneCAN、MIT 紧凑帧与厂商私有等索引）

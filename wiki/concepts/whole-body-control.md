@@ -157,6 +157,7 @@ print("joint acceleration command:", qdd_star)
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
+- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 
 ## 继续深挖入口
 
