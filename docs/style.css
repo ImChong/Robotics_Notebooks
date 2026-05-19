@@ -381,7 +381,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   align-items: center;
   gap: .45rem;
 }
-.page-hero p { color: var(--text-muted); max-width: 76ch; font-size: .98rem; }
+.page-hero p:not(.detail-summary) { color: var(--text-muted); max-width: 76ch; font-size: .98rem; }
 /* 元信息卡片也在 .page-hero 内，勿继承 76ch：否则「互链枢纽」等说明行在宽卡片里提前换行 */
 .page-hero .detail-meta-list p {
   max-width: none;
@@ -426,7 +426,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 #roadmapSummary.detail-summary {
   line-height: 1.72;
   margin-top: 6px;
-  max-width: 92ch;
 }
 /* 阶段速览嵌在「正文」主标题下：与主栏大标题共用 #roadmap-content.section 顶距，侧栏 TOC 与之对齐 */
 .roadmap-content-section #roadmap-content #roadmap-flow.roadmap-flow-in-content {
@@ -469,9 +468,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   font-size: .88rem;
   color: var(--text-muted);
 }
+/* 与下方元信息卡 / 知识地图 / 正文主栏同宽（勿用 76ch 限宽） */
 .detail-summary {
   color: var(--text-muted);
-  max-width: 76ch;
+  max-width: none;
   font-size: .98rem;
 }
 .detail-meta-panel {
