@@ -799,22 +799,23 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .mermaid-lightbox-panel {
   position: relative;
   z-index: 1;
+  width: min(96vw, 1400px);
   max-width: min(96vw, 1400px);
   max-height: 92vh;
   overflow: auto;
   margin: 0;
-  padding: 1rem 1.25rem 1.25rem;
+  padding: 2.75rem 1.25rem 1.25rem;
   border-radius: 14px;
   border: 1px solid var(--border);
   background: var(--surface-strong, var(--bg));
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.22);
 }
 .mermaid-lightbox-close {
-  position: sticky;
-  top: 0;
-  float: right;
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 2;
-  margin: 0 0 0.5rem 0.5rem;
+  margin: 0;
   width: 2rem;
   height: 2rem;
   border: 1px solid var(--border);
@@ -830,7 +831,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--accent);
 }
 .mermaid-lightbox-body {
-  clear: both;
   overflow: auto;
   touch-action: none;
   cursor: grab;
