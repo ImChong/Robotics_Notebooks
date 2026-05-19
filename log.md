@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-19] structural | wiki/concepts/character-animation-vs-robotics.md — V22 P1「角色化人形边界澄清」落地
+
+- 新增页面：`wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：六维张力矩阵 + 五案例切片 + 决策矩阵 + Mermaid「角色端→桥接层→机器人端」流程）
+- 交叉更新：`wiki/methods/disney-olaf-character-robot.md`、`wiki/entities/botlab-motioncanvas.md`、`wiki/entities/roboto-origin.md`、`wiki/entities/xue-bin-peng.md`、`wiki/concepts/motion-retargeting.md`、`wiki/concepts/reward-design.md` 的 `related` 与「关联页面 / 与其他页面的关系」加入新入口
+- 清单同步：`docs/checklists/tech-stack-next-phase-checklist-v22.md` 勾选 P1「角色化人形（Character Humanoid）边界澄清」并补实现摘要
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md`、`exports/lint-report.md`（注：lint 报告中 17 条「陈旧页面」均为今日早些 ingest 留下的预存量，与本次改动无直接关系）
+
 ## [2026-05-19] ingest | sources/repos/caveman.md — JuliusBrussee/caveman 入库并沉淀 wiki
 
 - 原始资料：`sources/repos/caveman.md`（<https://github.com/JuliusBrussee/caveman>）；索引 `sources/README.md`

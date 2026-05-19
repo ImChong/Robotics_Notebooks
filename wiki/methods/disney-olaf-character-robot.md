@@ -2,7 +2,7 @@
 type: method
 tags: [locomotion, rl, imitation, entertainment-robotics, reward-shaping, thermal, sim2real, isaac-sim]
 status: complete
-updated: 2026-05-13
+updated: 2026-05-19
 related:
   - ../concepts/reward-design.md
   - ../tasks/locomotion.md
@@ -10,6 +10,7 @@ related:
   - ./reinforcement-learning.md
   - ../concepts/control-barrier-function.md
   - ../concepts/sim2real.md
+  - ../concepts/character-animation-vs-robotics.md
 sources:
   - ../../sources/papers/disney_olaf_character_robot.md
 summary: "Disney Research 将动画角色 Olaf 做成实机：非对称腿+泡沫裙隐藏机构、动画参考驱动的 PPO 策略，并把执行器温度与落地噪声显式写进观测与奖励（含 CBF 风格约束项）。"
@@ -84,6 +85,7 @@ flowchart LR
 - 奖励工程中模仿、正则与**安全/约束奖励**的配比，见 [Reward Design](../concepts/reward-design.md)。
 - CBF 在奖励里作为「软约束惩罚」的写法，可与 [Control Barrier Function](../concepts/control-barrier-function.md) 的形式化定义对照。
 - 任务语境见 [Locomotion](../tasks/locomotion.md)；动画参考跟踪属于 [Imitation Learning](./imitation-learning.md) 与 RL 结合的工程分支。
+- 「角色化人形 vs 研究/工业型人形」的边界澄清，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 把 Olaf 放在角色端，作为机构/奖励/分层全部受角色目标影响的范例。
 
 ## 推荐继续阅读
 
