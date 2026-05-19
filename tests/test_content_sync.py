@@ -48,6 +48,17 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_mermaid_click_zoom_lightbox(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            "function openMermaidLightbox(host)",
+            "function bindMermaidZoom(container)",
+            "mermaid-zoomable",
+            "mermaid-lightbox",
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
     def test_main_js_contains_toc_renderer_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [

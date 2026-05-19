@@ -521,7 +521,89 @@
       themeVariables: isDark ? darkThemeVars : lightThemeVars,
       securityLevel: 'strict'
     });
-    return window.mermaid.run({ nodes: nodes }).catch(function () {});
+    return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+      enhanceMermaidZoomTargets(container);
+      bindMermaidZoom(container);
+    });
+  }
+
+  var mermaidLightboxEl = null;
+
+  function ensureMermaidLightbox() {
+    if (mermaidLightboxEl) return mermaidLightboxEl;
+    mermaidLightboxEl = document.createElement('div');
+    mermaidLightboxEl.id = 'mermaidLightbox';
+    mermaidLightboxEl.className = 'mermaid-lightbox';
+    mermaidLightboxEl.hidden = true;
+    mermaidLightboxEl.setAttribute('aria-hidden', 'true');
+    mermaidLightboxEl.innerHTML = [
+      '<div class="mermaid-lightbox-backdrop" data-mermaid-lightbox-dismiss tabindex="-1" aria-hidden="true"></div>',
+      '<div class="mermaid-lightbox-panel" role="dialog" aria-modal="true" aria-label="流程图放大预览">',
+      '  <button type="button" class="mermaid-lightbox-close" data-mermaid-lightbox-dismiss aria-label="关闭放大预览">×</button>',
+      '  <div class="mermaid-lightbox-body" aria-live="polite"></div>',
+      '</div>'
+    ].join('');
+    document.body.appendChild(mermaidLightboxEl);
+    mermaidLightboxEl.addEventListener('click', function (ev) {
+      if (ev.target.closest('[data-mermaid-lightbox-dismiss]')) closeMermaidLightbox();
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && mermaidLightboxEl && !mermaidLightboxEl.hidden) closeMermaidLightbox();
+    });
+    return mermaidLightboxEl;
+  }
+
+  function openMermaidLightbox(host) {
+    var svg = host && host.querySelector('svg');
+    if (!svg) return;
+    var box = ensureMermaidLightbox();
+    var body = box.querySelector('.mermaid-lightbox-body');
+    if (!body) return;
+    body.innerHTML = '';
+    body.appendChild(svg.cloneNode(true));
+    box.hidden = false;
+    box.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mermaid-lightbox-open');
+    var closeBtn = box.querySelector('.mermaid-lightbox-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeMermaidLightbox() {
+    if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+    mermaidLightboxEl.hidden = true;
+    mermaidLightboxEl.setAttribute('aria-hidden', 'true');
+    var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
+    if (body) body.innerHTML = '';
+    document.body.classList.remove('mermaid-lightbox-open');
+  }
+
+  function enhanceMermaidZoomTargets(container) {
+    if (!container) return;
+    Array.from(container.querySelectorAll('.mermaid')).forEach(function (node) {
+      if (!node.querySelector('svg')) return;
+      node.classList.add('mermaid-zoomable');
+      if (!node.hasAttribute('tabindex')) node.setAttribute('tabindex', '0');
+      node.setAttribute('role', 'button');
+      node.setAttribute('aria-label', '点击放大流程图');
+    });
+  }
+
+  function bindMermaidZoom(container) {
+    if (!container || container.getAttribute('data-mermaid-zoom-bound') === '1') return;
+    container.setAttribute('data-mermaid-zoom-bound', '1');
+    container.addEventListener('click', function (ev) {
+      var host = ev.target.closest('.mermaid.mermaid-zoomable');
+      if (!host || !container.contains(host)) return;
+      ev.preventDefault();
+      openMermaidLightbox(host);
+    });
+    container.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      var host = ev.target.closest('.mermaid.mermaid-zoomable');
+      if (!host || !container.contains(host)) return;
+      ev.preventDefault();
+      openMermaidLightbox(host);
+    });
   }
 
   /**
