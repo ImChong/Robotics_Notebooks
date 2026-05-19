@@ -14,6 +14,20 @@
 - 交叉更新：`wiki/concepts/ethercat-protocol.md`、`wiki/concepts/processor-in-the-loop-sim2real.md`、`wiki/formalizations/control-loop-latency-modeling.md`、`wiki/queries/real-time-control-middleware-guide.md`
 - 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
 
+## [2026-05-19] ingest | sources/repos/newton-physics.md、sources/sites/nvidia-newton-physics.md、sources/sites/newton-physics-docs-overview.md — Newton Physics 引擎（NVIDIA / DeepMind / Disney，Warp + MuJoCo Warp）入库
+
+- 原始资料：`sources/repos/newton-physics.md`（<https://github.com/newton-physics/newton>）、`sources/sites/nvidia-newton-physics.md`（<https://developer.nvidia.com/newton-physics>）、`sources/sites/newton-physics-docs-overview.md`（<https://newton-physics.github.io/newton/stable/guide/overview.html>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/newton-physics.md`
+- 交叉更新：`wiki/entities/mujoco.md`、`wiki/entities/mjlab.md`、`wiki/entities/isaac-gym-isaac-lab.md`、`wiki/queries/simulator-selection-guide.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md、sources/papers/daji_arxiv_2605_14417.md — DAJI 预期关节意图（微信精读 / arXiv:2605.14417）入库
+
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md`（<https://mp.weixin.qq.com/s/u1ZUaFGYRKXxMcS7-V_2WA>）、`sources/papers/daji_arxiv_2605_14417.md`、`sources/sites/daji-hxxxz0-github-io.md`、`sources/repos/hxxxz0_daji.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-daji-anticipatory-joint-intent.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/tasks/loco-manipulation.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-19] ingest | sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md、sources/papers/wm_robot_survey_arxiv_2605_00080.md、sources/sites/wm-robot-survey-ntumars.md — 安装 Agent Reach 抓取微信公众号；机器人世界模型综述（arXiv:2605.00080）入库
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` 可编辑包 + `agent-reach install --channels=wechat`）；微信正文经 `wechat-article-for-ai`（Camoufox），Jina Reader 对该 URL 返回 CAPTCHA

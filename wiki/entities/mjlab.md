@@ -5,6 +5,7 @@ status: complete
 updated: 2026-05-07
 related:
   - ./mujoco.md
+  - ./newton-physics.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
   - ./mjlab-playground.md
@@ -64,10 +65,12 @@ mjlab 架构
 | 依赖重量 | 轻（pip 安装） | 重（Isaac Sim） | 重（IsaacGym） | 中 |
 | 开源授权 | Apache 2.0 | BSD-3 | BSD-3 | Apache 2.0 |
 | 上层框架 | AMP_mjlab、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork） | robot_lab | legged_gym 生态 | — |
+| 引擎层对照 | [Newton Physics](./newton-physics.md) 为通用 Warp 物理引擎；mjlab 专注 **RL 环境 API**，二者可并存选型 | — | — | — |
 
 ## 关联页面
 
 - [MuJoCo](./mujoco.md) — 物理内核（mjlab 使用 MuJoCo Warp）
+- [Newton Physics](./newton-physics.md) — 同生态的底层 GPU 可微引擎（非 RL 框架封装）
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — API 设计来源
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现

@@ -223,6 +223,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - [Simulation](../../references/repos/simulation.md)
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 - [Robotic World Model（ETH RSL，Isaac Lab 扩展）](./robotic-world-model-eth-rsl.md) — RWM / RWM-U 神经动力学与想象训练参考实现
+- [Newton Physics](./newton-physics.md) — NVIDIA 推动的 Warp + MuJoCo Warp 物理引擎；Isaac Lab 存在 `feature/newton` 集成探索
 
 ## 推荐继续阅读
 
@@ -242,6 +243,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md)
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
+- [Newton Physics](./newton-physics.md)
 - [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真
 - [PyTorch](./pytorch.md) — 常见策略/价值网络与张量并行 rollouts 的默认深度学习后端
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
