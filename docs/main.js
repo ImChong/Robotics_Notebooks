@@ -655,6 +655,29 @@
     return mermaidLightboxEl;
   }
 
+  function cloneMermaidSvgForLightbox(svg) {
+    var clone = svg.cloneNode(true);
+    var rect = svg.getBoundingClientRect();
+    var w = rect.width;
+    var h = rect.height;
+    if (!(w > 0 && h > 0)) {
+      var vb = svg.viewBox && svg.viewBox.baseVal;
+      if (vb && vb.width > 0 && vb.height > 0) {
+        w = vb.width;
+        h = vb.height;
+      }
+    }
+    if (w > 0 && h > 0) {
+      clone.setAttribute('width', String(w));
+      clone.setAttribute('height', String(h));
+      clone.style.width = w + 'px';
+      clone.style.height = h + 'px';
+      clone.style.maxWidth = 'none';
+      clone.style.maxHeight = 'none';
+    }
+    return clone;
+  }
+
   function openMermaidLightbox(host) {
     var svg = host && host.querySelector('svg');
     if (!svg) return;
@@ -664,7 +687,7 @@
     body.innerHTML = '';
     var stage = document.createElement('div');
     stage.className = 'mermaid-lightbox-stage';
-    stage.appendChild(svg.cloneNode(true));
+    stage.appendChild(cloneMermaidSvgForLightbox(svg));
     body.appendChild(stage);
     resetMermaidLightboxView(stage);
     box.hidden = false;
