@@ -11,6 +11,7 @@ status: complete
 date: 2026-05-18
 related:
   - ./superpowers-obra.md
+  - ./hermes-agent.md
   - ./articraft.md
   - ../references/llm-wiki-karpathy.md
 sources:
@@ -67,6 +68,7 @@ flowchart LR
 ## 关联页面
 
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **交付流程** 技能库（与本页「外网工具链」互补）
+- [Hermes Agent](hermes-agent.md) — **完整代理运行时**（内置 web/MCP/终端与网关；与本页「读搜脚手架」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
 
