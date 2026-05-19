@@ -13,6 +13,8 @@ related:
   - ../entities/dm-control.md
   - ../entities/mujoco-mjx.md
   - ../entities/brax.md
+  - ../entities/newton-physics.md
+  - ../entities/mjlab.md
 ---
 
 # Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis
@@ -123,6 +125,15 @@ related:
     └─ 是 → Isaac Lab（Omniverse 渲染管线）
 ```
 
+### 补充：[Newton Physics](../entities/newton-physics.md) 与 [mjlab](../entities/mjlab.md)
+
+本页主对比仍为 **MuJoCo / Isaac Lab / Genesis**。若目标是 **MuJoCo Warp 上的 GPU 批量** 且需要：
+
+- **引擎层**可插拔求解器、USD、可微与 LF 开源治理 → 评估 **Newton**
+- **现成 manager-based RL 环境**（类 Isaac Lab API、不绑 Isaac Sim）→ 优先 **mjlab**
+
+二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。
+
 ---
 
 ## Sim2Real Gap 实践注意
@@ -156,3 +167,5 @@ related:
 - [Isaac Lab / Isaac Gym](../entities/isaac-gym-isaac-lab.md) — Isaac Lab 实体页
 - [MuJoCo](../entities/mujoco.md) — MuJoCo 仿真器实体页
 - [MuJoCo vs Isaac Lab 对比](../comparisons/mujoco-vs-isaac-lab.md) — 仿真器系统性对比页
+- [Newton Physics](../entities/newton-physics.md) — Warp + MuJoCo Warp 可微引擎
+- [mjlab](../entities/mjlab.md) — MuJoCo Warp 上的轻量 RL 框架

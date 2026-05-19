@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 383,
-  "edge_count": 2659,
+  "node_count": 384,
+  "edge_count": 2673,
   "coverage": {
-    "covered": 381,
-    "total": 381,
+    "covered": 382,
+    "total": 382,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/newton-physics.md",
+      "detail_id": "entity-newton-physics",
+      "label": "Newton Physics（物理引擎）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mjlab.md",
+      "detail_id": "entity-mjlab",
+      "label": "mjlab (轻量 GPU 加速 RL 框架)",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Lab",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
       "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
@@ -74,10 +114,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-    "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-    "label": "机器人世界模型：训练闭环与三线 taxonomy",
-    "type": "overview",
+    "path": "wiki/entities/newton-physics.md",
+    "detail_id": "entity-newton-physics",
+    "label": "Newton Physics（物理引擎）",
+    "type": "entity",
     "recency": "2026-05-19",
     "source": "log.md"
   }
