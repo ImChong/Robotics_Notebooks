@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-19] ingest | sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md、sources/papers/wm_robot_survey_arxiv_2605_00080.md、sources/sites/wm-robot-survey-ntumars.md — 安装 Agent Reach 抓取微信公众号；机器人世界模型综述（arXiv:2605.00080）入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` 可编辑包 + `agent-reach install --channels=wechat`）；微信正文经 `wechat-article-for-ai`（Camoufox），Jina Reader 对该 URL 返回 CAPTCHA
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md`（<https://mp.weixin.qq.com/s/0edW0GhwtyNc5nF6RDIfuw>）、`sources/papers/wm_robot_survey_arxiv_2605_00080.md`、`sources/sites/wm-robot-survey-ntumars.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-world-models-training-loop-taxonomy.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/world-action-models.md`、`wiki/methods/vla.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`、`wiki/entities/agent-reach.md`、`sources/repos/panniantong_agent_reach.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-19] ingest | sources/repos/nousresearch_hermes_agent.md、sources/sites/hermes-agent-nousresearch-docs.md — Hermes Agent（NousResearch）仓库与官方文档入库
 
 - 原始资料：`sources/repos/nousresearch_hermes_agent.md`、`sources/sites/hermes-agent-nousresearch-docs.md`（GitHub <https://github.com/NousResearch/hermes-agent>、产品页 <https://hermes-agent.nousresearch.com/>、文档 <https://hermes-agent.nousresearch.com/docs>）；索引 `sources/README.md`

@@ -81,7 +81,7 @@
 - wiki/methods/any2track.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/ase.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/auto-labeling-pipelines.md（被 11 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/being-h07.md（被 9 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/being-h07.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/beyondmimic.md（被 23 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/deepmimic.md（被 23 个页面引用，无 queries/comparisons 落地）
@@ -93,7 +93,7 @@
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/mimic-video.md（被 11 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/mimic-video.md（被 12 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/motionbricks.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pelican-unified-1.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
@@ -105,4 +105,4 @@
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：380/380 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：381/381 (100%) wiki/entity 页有 ingest 来源

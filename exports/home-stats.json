@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-05-19",
-  "node_count": 382,
-  "edge_count": 2644,
+  "node_count": 383,
+  "edge_count": 2659,
   "coverage": {
-    "covered": 380,
-    "total": 380,
+    "covered": 381,
+    "total": 381,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
+      "type": "entity",
+      "recency": "2026-05-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/hermes-agent.md",
       "detail_id": "entity-hermes-agent",
@@ -23,21 +71,13 @@
       "type": "entity",
       "recency": "2026-05-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agent-reach.md",
-      "detail_id": "entity-agent-reach",
-      "label": "Agent Reach（Panniantong）",
-      "type": "entity",
-      "recency": "2026-05-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/hermes-agent.md",
-    "detail_id": "entity-hermes-agent",
-    "label": "Hermes Agent（Nous Research）",
-    "type": "entity",
+    "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+    "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+    "label": "机器人世界模型：训练闭环与三线 taxonomy",
+    "type": "overview",
     "recency": "2026-05-19",
     "source": "log.md"
   }

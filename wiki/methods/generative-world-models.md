@@ -4,6 +4,7 @@ tags: [world-models, generative-ai, simulation, video-generation, driving]
 status: complete
 updated: 2026-05-17
 related:
+  - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/latent-imagination.md
   - ../concepts/world-action-models.md
@@ -16,6 +17,7 @@ related:
   - ./dwm.md
   - ./mimic-video.md
 sources:
+  - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/being_h07.md
