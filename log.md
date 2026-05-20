@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-20] structural | wiki/entities/amp-mjlab.md — 补充 play.py（run_play）详细 Mermaid 流程图
+
+- 页面：`wiki/entities/amp-mjlab.md` 在「训练与回放」下新增 `run_play` 流程图（CLI → play 环境覆盖 → checkpoint 加载 → AMPOnPolicyRunner 推理 → ONNX 导出 → Viewer 主循环），源码依据 [ImChong/AMP_mjlab](https://github.com/ImChong/AMP_mjlab) `scripts/play.py`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-19] structural | wiki/concepts/character-animation-vs-robotics.md — V22 P1「角色化人形边界澄清」落地
 
 - 新增页面：`wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：六维张力矩阵 + 五案例切片 + 决策矩阵 + Mermaid「角色端→桥接层→机器人端」流程）
