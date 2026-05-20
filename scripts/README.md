@@ -6,7 +6,8 @@
 
 | 脚本 | 作用摘要 | 常见调用 |
 |------|----------|----------|
-| `append_log.py` | 向 `log.md` 追加维护操作记录 | `make log` |
+| `log_md.py` | `log.md` 顶部插入共用函数（`append_log` / `lint_wiki --write-log`） | （内部模块） |
+| `append_log.py` | 向 `log.md` **顶部**插入维护操作记录（新记录在上） | `make log` |
 | `build_search_index.py` | 生成站点搜索索引 JSON | 由 `export_minimal.py` / `make export` 间接使用 |
 | `build_vector_index.py` | 构建向量检索索引（可选依赖） | `make vectors` |
 | `check_export_quality.py` | 导出 JSON 与 wiki 一致性等检查 | `make export-check`；`make ci-preflight` |
