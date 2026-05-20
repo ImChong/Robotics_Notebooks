@@ -469,20 +469,12 @@
       + '</div>';
   }
 
-  function renderDetailMermaid(container) {
-    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
-    var nodes = Array.from(container.querySelectorAll('.mermaid'));
-    if (!nodes.length) return Promise.resolve();
-    nodes.forEach(function (node) {
-      var saved = node.getAttribute('data-mermaid-source');
-      if (saved === null) {
-        node.setAttribute('data-mermaid-source', node.textContent || '');
-      } else {
-        node.removeAttribute('data-processed');
-        node.textContent = saved;
-      }
-    });
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var MERMAID_FONT_SIZE_PX = 18;
+  var MERMAID_LIGHTBOX_FONT_SCALE = 1.75;
+
+  function getMermaidThemeVariables(isDark, fontSizePx) {
+    var size = Math.max(12, Math.round(fontSizePx || MERMAID_FONT_SIZE_PX));
+    var fontSize = String(size) + 'px';
     var lightThemeVars = {
       primaryColor: '#ECE8F8',
       primaryTextColor: '#1a1a2e',
@@ -497,7 +489,7 @@
       edgeLabelBackground: '#FFFFFF',
       titleColor: '#1a1a2e',
       fontFamily: 'inherit',
-      fontSize: '15px'
+      fontSize: fontSize
     };
     var darkThemeVars = {
       primaryColor: '#0d0d0d',
@@ -513,14 +505,39 @@
       edgeLabelBackground: '#0d0d0d',
       titleColor: '#ffffff',
       fontFamily: 'inherit',
-      fontSize: '15px'
+      fontSize: fontSize
     };
+    return isDark ? darkThemeVars : lightThemeVars;
+  }
+
+  function initializeMermaidRenderer(fontSizePx) {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     window.mermaid.initialize({
       startOnLoad: false,
       theme: 'base',
-      themeVariables: isDark ? darkThemeVars : lightThemeVars,
-      securityLevel: 'strict'
+      themeVariables: getMermaidThemeVariables(isDark, fontSizePx),
+      securityLevel: 'strict',
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: false
+      }
     });
+  }
+
+  function renderDetailMermaid(container) {
+    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
+    var nodes = Array.from(container.querySelectorAll('.mermaid'));
+    if (!nodes.length) return Promise.resolve();
+    nodes.forEach(function (node) {
+      var saved = node.getAttribute('data-mermaid-source');
+      if (saved === null) {
+        node.setAttribute('data-mermaid-source', node.textContent || '');
+      } else {
+        node.removeAttribute('data-processed');
+        node.textContent = saved;
+      }
+    });
+    initializeMermaidRenderer(MERMAID_FONT_SIZE_PX);
     return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
       enhanceMermaidZoomTargets(container);
       bindMermaidZoom(container);
@@ -763,17 +780,32 @@
     return mermaidLightboxEl;
   }
 
+  function getMermaidSvgLayoutSize(svg) {
+    if (!svg) return { w: 0, h: 0 };
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+    if (vb && vb.width > 0 && vb.height > 0) {
+      return { w: vb.width, h: vb.height };
+    }
+    var rawW = svg.getAttribute('width');
+    var rawH = svg.getAttribute('height');
+    var attrW = parseFloat(rawW);
+    var attrH = parseFloat(rawH);
+    if (attrW > 0 && attrH > 0 && String(rawW || '').indexOf('%') < 0) {
+      return { w: attrW, h: attrH };
+    }
+    var rect = svg.getBoundingClientRect();
+    return { w: rect.width, h: rect.height };
+  }
+
   function cloneMermaidSvgForLightbox(svg) {
     var clone = svg.cloneNode(true);
-    var rect = svg.getBoundingClientRect();
-    var w = rect.width;
-    var h = rect.height;
+    var layout = getMermaidSvgLayoutSize(svg);
+    var w = layout.w;
+    var h = layout.h;
     if (!(w > 0 && h > 0)) {
-      var vb = svg.viewBox && svg.viewBox.baseVal;
-      if (vb && vb.width > 0 && vb.height > 0) {
-        w = vb.width;
-        h = vb.height;
-      }
+      var rect = svg.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
     }
     if (w > 0 && h > 0) {
       clone.setAttribute('width', String(w));
@@ -786,24 +818,64 @@
     return clone;
   }
 
-  function openMermaidLightbox(host) {
-    var svg = host && host.querySelector('svg');
-    if (!svg) return;
-    var box = ensureMermaidLightbox();
-    var body = box.querySelector('.mermaid-lightbox-body');
-    if (!body) return;
+  function renderMermaidSvgForLightbox(host) {
+    if (!host || typeof window.mermaid === 'undefined') return Promise.resolve(null);
+    var source = host.getAttribute('data-mermaid-source');
+    var inlineSvg = host.querySelector('svg');
+    if (!source || !String(source).trim()) {
+      return Promise.resolve(inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null);
+    }
+    var sandbox = document.createElement('div');
+    sandbox.setAttribute('aria-hidden', 'true');
+    sandbox.style.cssText = 'position:fixed;left:-10000px;top:0;visibility:hidden;pointer-events:none;width:max-content;max-width:none;';
+    var node = document.createElement('div');
+    node.className = 'mermaid';
+    node.textContent = source;
+    sandbox.appendChild(node);
+    document.body.appendChild(sandbox);
+    var hiFontPx = Math.round(MERMAID_FONT_SIZE_PX * MERMAID_LIGHTBOX_FONT_SCALE);
+    initializeMermaidRenderer(hiFontPx);
+    return window.mermaid.run({ nodes: [node] }).catch(function () {}).then(function () {
+      var hiSvg = node.querySelector('svg');
+      if (sandbox.parentNode) document.body.removeChild(sandbox);
+      initializeMermaidRenderer(MERMAID_FONT_SIZE_PX);
+      if (hiSvg) return cloneMermaidSvgForLightbox(hiSvg);
+      return inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null;
+    });
+  }
+
+  function mountMermaidLightboxSvg(stage, body, svgClone) {
+    if (!stage || !body || !svgClone) return;
     body.innerHTML = '';
-    var stage = document.createElement('div');
-    stage.className = 'mermaid-lightbox-stage';
-    stage.appendChild(cloneMermaidSvgForLightbox(svg));
+    stage.innerHTML = '';
+    stage.appendChild(svgClone);
     body.appendChild(stage);
-    box.hidden = false;
-    box.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('mermaid-lightbox-open');
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
         fitMermaidLightboxToView(stage, body);
       });
+    });
+  }
+
+  function openMermaidLightbox(host) {
+    if (!host) return;
+    var box = ensureMermaidLightbox();
+    var body = box.querySelector('.mermaid-lightbox-body');
+    if (!body) return;
+    var stage = document.createElement('div');
+    stage.className = 'mermaid-lightbox-stage';
+    body.innerHTML = '';
+    body.appendChild(stage);
+    box.hidden = false;
+    box.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mermaid-lightbox-open');
+    renderMermaidSvgForLightbox(host).then(function (svgClone) {
+      if (!box || box.hidden) return;
+      if (!svgClone) {
+        closeMermaidLightbox();
+        return;
+      }
+      mountMermaidLightboxSvg(stage, body, svgClone);
     });
     var closeBtn = box.querySelector('.mermaid-lightbox-close');
     if (closeBtn) closeBtn.focus();

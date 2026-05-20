@@ -51,6 +51,12 @@ class DetailContentSyncTests(unittest.TestCase):
     def test_main_js_contains_mermaid_click_zoom_lightbox(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
+            "MERMAID_FONT_SIZE_PX",
+            "MERMAID_LIGHTBOX_FONT_SCALE",
+            "function getMermaidSvgLayoutSize(svg)",
+            "function renderMermaidSvgForLightbox(host)",
+            "flowchart: {",
+            "useMaxWidth: false",
             "function fitMermaidLightboxToView(stage, body)",
             "function cloneMermaidSvgForLightbox(svg)",
             "function openMermaidLightbox(host)",
