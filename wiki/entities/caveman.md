@@ -10,6 +10,7 @@ tags:
 status: complete
 updated: 2026-05-19
 related:
+  - ./mattpocock-skills.md
   - ./superpowers-obra.md
   - ./hermes-agent.md
   - ./agent-reach.md
@@ -93,6 +94,7 @@ flowchart LR
 
 ## 关联页面
 
+- [Skills For Real Engineers（mattpocock）](mattpocock-skills.md) — 含同名 `productivity/caveman` 技能但 **不同上游**；与本页 JuliusBrussee 插件对照
 - [Superpowers（obra）](superpowers-obra.md) — 交付流程技能（与「更短输出」互补）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与技能/记忆系统
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架

@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-20",
-  "node_count": 394,
-  "edge_count": 2778,
+  "node_count": 395,
+  "edge_count": 2786,
   "coverage": {
-    "covered": 392,
-    "total": 392,
+    "covered": 393,
+    "total": 393,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/superpowers-obra.md",
+      "detail_id": "entity-superpowers-obra",
+      "label": "Superpowers（obra）",
+      "type": "entity",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/caveman.md",
+      "detail_id": "entity-caveman",
+      "label": "Caveman",
+      "type": "entity",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/references/llm-wiki-karpathy.md",
+      "detail_id": "wiki-references-llm-wiki-karpathy",
+      "label": "LLM Wiki",
+      "type": "reference",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/amp-mjlab.md",
       "detail_id": "entity-amp-mjlab",
@@ -18,9 +50,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/amp-mjlab.md",
-    "detail_id": "entity-amp-mjlab",
-    "label": "AMP_mjlab (G1 统一 AMP 策略)",
+    "path": "wiki/entities/mattpocock-skills.md",
+    "detail_id": "entity-mattpocock-skills",
+    "label": "Skills For Real Engineers（mattpocock）",
     "type": "entity",
     "recency": "2026-05-20",
     "source": "log.md"
