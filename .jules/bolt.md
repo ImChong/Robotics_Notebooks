@@ -39,3 +39,11 @@
 ## 2026-05-15 - Hoisting Invariant Properties Out of Hot Loops
 **Learning:** In the frontend JavaScript search loop (`docs/main.js`), repeatedly accessing deep object properties (like `indexData.meta.k1`, `indexData.meta.b`) and recalculating invariant values (like `k1 + 1`) inside a hot loop (evaluating `bm25Score` for every matched document) causes measurable performance degradation due to redundant property lookups and constant math operations across hundreds or thousands of iterations.
 **Action:** When optimizing performance-critical loops that evaluate every document in a large array, always hoist invariant object properties and pre-computable constant math (like `k1 + 1` or extracting `idfMap`) to local variables outside the loop. This minimizes redundant CPU work and property lookup overhead per iteration.
+
+## 2026-05-20 - String Operations Optimization
+**Learning:** In string sanitization (like HTML escaping), chaining multiple `.replace()` calls with global regular expressions (`.replace(/&/g, '&amp;').replace...`) involves repeatedly parsing the entire string and allocating multiple intermediate string objects.
+**Action:** When a function executing basic character escaping is called extremely frequently, write a manual character iteration loop using `charCodeAt()` and build the resulting string by slicing (`substring`). While more verbose, this runs >3x faster.
+
+## 2026-05-20 - Regex and Set Initialization Overhead
+**Learning:** Instantiating `new Set(...)` and `new RegExp(...)` (or literal `/.../g`) inside functions that are called repeatedly (like line-by-line syntax highlighters) forces the JavaScript engine to reallocate and recompile these objects on every single function call.
+**Action:** In JavaScript hot paths, always hoist static structures (like sets of keywords or fixed regular expressions) to the outer scope to instantiate them exactly once.

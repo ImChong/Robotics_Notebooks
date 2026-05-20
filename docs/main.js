@@ -60,13 +60,52 @@
     updateActive();
   }
 
+  const matchHtmlRegExp = /["'&<>]/;
+
   function escapeHtml(value) {
-    return String(value == null ? '' : value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+    if (value == null) return '';
+    var str = String(value);
+    var match = matchHtmlRegExp.exec(str);
+    if (!match) {
+      return str;
+    }
+
+    var escape;
+    var html = '';
+    var lastIndex = 0;
+
+    for (var index = match.index; index < str.length; index++) {
+      switch (str.charCodeAt(index)) {
+        case 34: // "
+          escape = '&quot;';
+          break;
+        case 38: // &
+          escape = '&amp;';
+          break;
+        case 39: // '
+          escape = '&#39;';
+          break;
+        case 60: // <
+          escape = '&lt;';
+          break;
+        case 62: // >
+          escape = '&gt;';
+          break;
+        default:
+          continue;
+      }
+
+      if (lastIndex !== index) {
+        html += str.substring(lastIndex, index);
+      }
+
+      lastIndex = index + 1;
+      html += escape;
+    }
+
+    return lastIndex !== index
+      ? html + str.substring(lastIndex, index)
+      : html;
   }
 
   function isSafeUrl(url) {
@@ -361,19 +400,22 @@
     return escapeHtml(line);
   }
 
+  // ⚡ Bolt Optimization: Hoisted regular expressions and sets to avoid recreation on every function call
+  // Expected impact: Removes parsing and allocation overhead inside the high-frequency line highlighting loop.
+  const PY_KEYWORDS = new Set([
+    'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue',
+    'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
+    'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
+    'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
+  ]);
+  const PY_BUILTINS = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
+  const PY_TOKEN_RE = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*/<>!%]+|[()[\]{}.,:])/g;
+
   function highlightPythonLine(line) {
-    const keywords = new Set([
-      'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue',
-      'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
-      'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
-      'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
-    ]);
-    const builtins = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
-    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*/<>!%]+|[()[\]{}.,:])/g;
     let out = '';
     let lastIndex = 0;
     let afterKeyword = '';
-    line.replace(tokenRe, function (token, _whole, offset) {
+    line.replace(PY_TOKEN_RE, function (token, _whole, offset) {
       out += escapeHtml(line.slice(lastIndex, offset));
       if (token.startsWith('#')) {
         out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
@@ -391,10 +433,10 @@
       } else if (afterKeyword === 'def') {
         out += '<span class="tok-function">' + escapeHtml(token) + '</span>';
         afterKeyword = '';
-      } else if (keywords.has(token)) {
+      } else if (PY_KEYWORDS.has(token)) {
         out += '<span class="tok-keyword">' + escapeHtml(token) + '</span>';
         afterKeyword = token === 'class' || token === 'def' ? token : '';
-      } else if (builtins.has(token)) {
+      } else if (PY_BUILTINS.has(token)) {
         out += '<span class="tok-builtin">' + escapeHtml(token) + '</span>';
       } else {
         out += '<span class="tok-name">' + escapeHtml(token) + '</span>';
@@ -406,11 +448,12 @@
     return out;
   }
 
+  const BASH_TOKEN_RE = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:cd|cp|echo|export|git|make|mkdir|mv|pip|python|python3|rm|uv|source|test|then|fi|do|done|for|if|in)\b|\b\d+(?:\.\d+)?\b|[=|&;<>]+)/g;
+
   function highlightBashLine(line) {
-    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:cd|cp|echo|export|git|make|mkdir|mv|pip|python|python3|rm|uv|source|test|then|fi|do|done|for|if|in)\b|\b\d+(?:\.\d+)?\b|[=|&;<>]+)/g;
     let out = '';
     let lastIndex = 0;
-    line.replace(tokenRe, function (token, _whole, offset) {
+    line.replace(BASH_TOKEN_RE, function (token, _whole, offset) {
       out += escapeHtml(line.slice(lastIndex, offset));
       if (token.startsWith('#')) out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
       else if (/^['"]/.test(token)) out += '<span class="tok-string">' + escapeHtml(token) + '</span>';
@@ -424,13 +467,16 @@
     return out;
   }
 
+  const YAML_ATTR_RE = /^(\s*)([A-Za-z0-9_.-]+)(\s*:)/;
+  const YAML_VALUE_RE = /(:\s*)([-+]?\d+(?:\.\d+)?|true|false|null)\b/gi;
+
   function highlightYamlLine(line) {
     const commentIndex = line.indexOf('#');
     const codePart = commentIndex >= 0 ? line.slice(0, commentIndex) : line;
     const commentPart = commentIndex >= 0 ? line.slice(commentIndex) : '';
-    const renderedCode = escapeHtml(codePart).replace(/^(\s*)([A-Za-z0-9_.-]+)(\s*:)/, function (_, lead, key, sep) {
+    const renderedCode = escapeHtml(codePart).replace(YAML_ATTR_RE, function (_, lead, key, sep) {
       return lead + '<span class="tok-attr">' + key + '</span>' + sep;
-    }).replace(/(:\s*)([-+]?\d+(?:\.\d+)?|true|false|null)\b/gi, function (_, sep, value) {
+    }).replace(YAML_VALUE_RE, function (_, sep, value) {
       return sep + '<span class="tok-number">' + value + '</span>';
     });
     return renderedCode + (commentPart ? '<span class="tok-comment">' + escapeHtml(commentPart) + '</span>' : '');
