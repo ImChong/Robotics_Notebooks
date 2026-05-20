@@ -3,8 +3,7 @@
   const themeToggle = document.getElementById('themeToggle');
   const key = 'robotics-notebooks-theme';
   const saved = localStorage.getItem(key);
-  const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const dark = saved ? saved === 'dark' : preferDark;
+  const dark = saved ? saved === 'dark' : true;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
   function updateThemeToggle() {
