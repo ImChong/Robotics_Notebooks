@@ -126,7 +126,7 @@ make lint  # 目标：0 issues
 
 ### 步骤 9：记录到 `log.md`
 
-每次 ingest 都追加到 `log.md`：
+每次 ingest 都写入 `log.md` 顶部（`make log` / `append_log.py` 在首条 `## [` 之前插入，与首页 `latest_wiki_nodes` 解析一致）：
 
 ```bash
 make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"

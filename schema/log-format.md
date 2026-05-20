@@ -37,6 +37,8 @@
 
 ## 追加方式
 
+**新记录写在文件顶部**（首条 `## [YYYY-MM-DD]` 之前），与 `scripts/generate_link_graph.py` 解析首页「最新知识节点」的顺序一致；不要用尾部追加。
+
 **命令行（推荐）：**
 ```bash
 make log OP=ingest DESC="sources/papers/xxx.md — 描述"
@@ -50,15 +52,15 @@ python3 scripts/append_log.py ingest "sources/papers/xxx.md — 描述"
 python3 scripts/append_log.py lint "0 issues，覆盖率 75%"
 ```
 
-**手动追加**（大型操作）：直接在 log.md 末尾添加 `## [date] op | desc` 标题 + 详细列表。
+**手动追加**（大型操作）：在 log.md **顶部**（说明行之后、现有首条 `## [` 之前）插入 `## [date] op | desc` 标题 + 详细列表。
 
 ---
 
 ## 查询方式
 
 ```bash
-# 查看最近 5 条
-grep "^## \[" log.md | tail -5
+# 查看最近 5 条（新记录在上，用 head）
+grep "^## \[" log.md | head -5
 
 # 查看所有 ingest 操作
 grep "^## \[.*\] ingest" log.md

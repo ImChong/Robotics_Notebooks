@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-20] ingest | sources/papers/robot_link_rotor_inertia_primary_refs.md — 连杆/转子惯量一手资料入库并沉淀 wiki
+
+- 原始资料：`sources/papers/robot_link_rotor_inertia_primary_refs.md`（URDF / Modern Robotics Ch.8 / Gautier–Khalil 1990 / MuJoCo armature）
+- 沉淀页面：`wiki/concepts/robot-link-and-rotor-inertia.md`
+- 交叉更新：`wiki/concepts/armature-modeling.md`、`wiki/concepts/system-identification.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-20] ingest | sources/repos/mattpocock-skills.md — mattpocock/skills 入库并沉淀 wiki
 
 - 原始资料：`sources/repos/mattpocock-skills.md`（<https://github.com/mattpocock/skills>）；索引 `sources/README.md`
@@ -757,5 +764,3 @@
 ## [2026-05-15] structural | schema/search-regression-cases.json — WBC×QP BM25 回归 expected_top_k 3→5（语料扩张后 whole-body-control 概念页常居第 4–5 位）
 
 ## [2026-05-15] ingest | sources/repos/pytorch-official.md — 收录 pytorch.org 与 get-started/docs/tutorials；新建 wiki/entities/pytorch.md；互链深度学习基础、Isaac Lab
-
-## [2026-05-20] ingest | sources/papers/robot_link_rotor_inertia_primary_refs.md — 连杆/转子惯量一手资料入库并沉淀 wiki/concepts/robot-link-and-rotor-inertia.md
