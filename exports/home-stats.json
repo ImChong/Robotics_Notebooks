@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-20",
   "node_count": 398,
-  "edge_count": 2820,
+  "edge_count": 2821,
   "coverage": {
     "covered": 396,
     "total": 396,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
+      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
+      "label": "DeFI（解耦前向/逆动力学 VLA）",
+      "type": "method",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/grasp-pose-estimation.md",
       "detail_id": "wiki-methods-grasp-pose-estimation",
@@ -106,9 +114,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/grasp-pose-estimation.md",
-    "detail_id": "wiki-methods-grasp-pose-estimation",
-    "label": "Grasp Pose Estimation（抓取位姿估计）",
+    "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
+    "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
+    "label": "DeFI（解耦前向/逆动力学 VLA）",
     "type": "method",
     "recency": "2026-05-20",
     "source": "log.md"
