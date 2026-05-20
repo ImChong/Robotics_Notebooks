@@ -17,13 +17,20 @@
 - **对 wiki 的映射：**
   - [system-identification](../../wiki/concepts/system-identification.md)
 
-### 2) Exciting Trajectories for Identification（Gautier & Khalil, 1992 / 2013 更新）
+### 2) Direct Calculation of Minimum Set of Inertial Parameters（Gautier & Khalil, IEEE T-RA 1990）
+- **链接：** <https://doi.org/10.1109/70.56657>（HAL: <https://hal.science/hal-05223021/>）
+- **核心贡献：** 闭式计算串联机器人动力学 **最小惯性参数集**，剔除对力矩无贡献的参数并合并线性相关项，降低 SysID 维度与计算量
+- **对 wiki 的映射：**
+  - [robot-link-and-rotor-inertia](../../wiki/concepts/robot-link-and-rotor-inertia.md)
+  - [system-identification](../../wiki/concepts/system-identification.md)
+
+### 3) Exciting Trajectories for Identification（Gautier & Khalil, 1992 / 2013 更新）
 - **链接：** <https://ieeexplore.ieee.org/document/163864>
 - **核心贡献：** 提出最优激励轨迹设计：通过最大化观测矩阵条件数（或最小化参数估计方差）来设计持续激励轨迹；成为机器人标定领域的标准方法
 - **对 wiki 的映射：**
   - [system-identification](../../wiki/concepts/system-identification.md)
 
-### 3) Learning Agile and Dynamic Motor Skills for Legged Robots（Hwangbo et al., Science Robotics 2019）
+### 4) Learning Agile and Dynamic Motor Skills for Legged Robots（Hwangbo et al., Science Robotics 2019）
 - **链接：** <https://www.science.org/doi/10.1126/scirobotics.aau5872>
 - **核心贡献：** 提出 ActuatorNet：用神经网络从历史关节误差（位置/速度/力矩序列）预测真实关节力矩；通过真实数据辨识执行器动力学模型，显著减少 sim2real gap
 - **对 wiki 的映射：**
@@ -31,14 +38,14 @@
   - [system-identification](../../wiki/concepts/system-identification.md)
   - [sim2real](../../wiki/concepts/sim2real.md)
 
-### 4) Online System Identification for Legged Robots（Grandia et al., IROS 2019）
+### 5) Online System Identification for Legged Robots（Grandia et al., IROS 2019）
 - **链接：** <https://ieeexplore.ieee.org/document/8967800>
 - **核心贡献：** 在线辨识地面刚度和摩擦系数；与 MPC 耦合实现自适应步态规划；在 ANYmal 上验证了对未知地形（软地/冰面）的自适应能力
 - **对 wiki 的映射：**
   - [system-identification](../../wiki/concepts/system-identification.md)
   - [model-predictive-control](../../wiki/methods/model-predictive-control.md)
 
-### 5) Sim-to-Real Transfer of Robotic Control with Dynamics Randomization（Peng et al., ICRA 2018）
+### 6) Sim-to-Real Transfer of Robotic Control with Dynamics Randomization（Peng et al., ICRA 2018）
 - **链接：** <https://arxiv.org/abs/1710.06537>
 - **核心贡献：** 域随机化作为隐式系统辨识：通过随机化质量/摩擦/驱动增益覆盖真实参数分布；策略学习对参数变化鲁棒；比精确辨识更实用（无需测量真实参数）
 - **对 wiki 的映射：**

@@ -2,13 +2,15 @@
 type: concept
 tags: [robotics, dynamics, simulation, sim2real, actuator]
 status: complete
-updated: 2026-05-12
+updated: 2026-05-20
 related:
+  - ./robot-link-and-rotor-inertia.md
   - ./humanoid-parallel-joint-kinematics.md
   - ../methods/beyondmimic.md
   - ../methods/actuator-network.md
   - ./system-identification.md
 sources:
+  - ../../sources/papers/robot_link_rotor_inertia_primary_refs.md
   - ../../sources/papers/motion_control_projects.md
 summary: "Armature（电枢惯量 / 反射惯量）是电机转子经过减速器反射到关节侧的等效转动惯量，是机器人高频动态特性建模中不可忽视的项。"
 ---
@@ -72,6 +74,7 @@ $$
 
 ## 关联页面
 
+- [连杆惯量与转子惯量](./robot-link-and-rotor-inertia.md) — URDF link 惯量 vs 关节 `armature` 的分工与一手来源索引
 - [BeyondMimic](../methods/beyondmimic.md) — 强调 armature 精确建模的代表性模仿学习框架。
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。
 - [System Identification (系统辨识)](./system-identification.md) — Armature 是系统辨识中的关键物理参数。
@@ -79,5 +82,6 @@ $$
 
 ## 参考来源
 
+- [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — MuJoCo `armature` / 反射惯量 $G^2$ 官方定义
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - BeyondMimic 技术报告关于物理建模的部分。
