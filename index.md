@@ -45,6 +45,7 @@
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
 - [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
 - [mimic-video（VAM）](wiki/methods/mimic-video.md)（互联网视频潜计划 + 流匹配动作解码；arXiv:2512.15692）
+- [DeFI（解耦前向/逆动力学 VLA）](wiki/methods/defi-decoupled-dynamics-vla.md)（GFDM + GIDM 分阶段预训练；arXiv:2604.16391）
 - [EgoScale](wiki/methods/egoscale.md)（2 万小时级 egocentric 人视频预训练 VLA + 对齐 mid-training；arXiv:2602.16710）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
@@ -382,6 +383,7 @@ SORT type ASC
 - [DIAL（指令增强）](methods/dial-instruction-augmentation.md) — DIAL（Data-driven Instruction Augmentation for Language-conditioned control）**：在少量人工指令标注上微调 VLM，再对海 `📅unknown` `[method_page]`
 - [Diffusion-based Motion Generation (基于扩散模型的运动生成)](methods/diffusion-motion-generation.md) — Diffusion-based Motion Generation**：利用扩散概率模型（Diffusion Probabilistic Models）生成机器人关节空间或笛卡尔空间的连续运动序列 `📅unknown` `[method_page]`
 - [Diffusion Policy](methods/diffusion-policy.md) — Diffusion Policy**：将扩散生成模型（Diffusion Model）用于机器人模仿学习，通过逆扩散过程从噪声中生成动作序列的策略学习方法。 `📅unknown` `[method_page]`
+- [DeFI（解耦前向/逆动力学 VLA）](methods/defi-decoupled-dynamics-vla.md) — DeFI**（*Decoupling visual **F**orward and **I**nverse dynamics*）提出：先把 **前向动力学**（未来视频/潜状态预测）与 **逆动力 `📅2026-05-20` `[method_page]`
 - [Disney Olaf 角色机器人（实机动画角色）](methods/disney-olaf-character-robot.md) — 一句话定义：** 面向「高角色保真 + 紧凑机电包络」的娱乐型双足平台：用**动画参考 + RL** 解决非物理比例与风格化步态，用**机构设计**解决「看不见腿」与**热/声学**等实演约束。 `📅unknown` `[method_page]`
 - [Dynamic Movement Primitives (DMP)](methods/dmp.md) — DMP** 是一种用于轨迹建模和控制的方法。它将复杂的运动路径表示为一个非线性动力学系统，其核心是一个受迫振荡器，可以通过调整参数来改变运动的速度和目标位置，而不需要重新规划。 `📅unknown` `[method_page]`
 - [DWM（Dexterous World Models，灵巧世界模型）](methods/dwm.md) — DWM**（Kim 等，CVPR 2026）研究的是：当环境的**静态几何**已经可用（典型来自重建得到的数字孪生），如何用**视频扩散**去预测**灵巧手操作**会在第一人称视频里诱发哪些**物 `📅unknown` `[method_page]`
