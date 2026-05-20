@@ -2,7 +2,7 @@
 
 ## [2026-05-20] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **21** 个问题（另含 **31** 条信息型预警）：
+共发现 **0** 个问题（另含 **31** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,28 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（21 个）
-- wiki/tasks/teleoperation.md (wiki:2026-05-15 < sources/bfm_humanoid_arxiv_2509_13780.md:2026-05-20)
-- wiki/concepts/privileged-training.md (wiki:2026-05-15 < sources/bfm_humanoid_arxiv_2509_13780.md:2026-05-20)
-- wiki/methods/dagger.md (wiki:2026-05-15 < sources/bfm_humanoid_arxiv_2509_13780.md:2026-05-20)
-- wiki/concepts/curriculum-learning.md (wiki:2026-05-15 < sources/bfm_humanoid_arxiv_2509_13780.md:2026-05-20)
-- wiki/entities/amass.md (wiki:2026-05-15 < sources/bfm_humanoid_arxiv_2509_13780.md:2026-05-20)
-- wiki/methods/star-vla.md (wiki:2026-05-15 < sources/capvector_arxiv_2605_10903.md:2026-05-20)
-- wiki/methods/diffusion-policy.md (wiki:2026-05-15 < sources/defi_arxiv_2604_16391.md:2026-05-20)
-- wiki/methods/action-chunking.md (wiki:2026-05-15 < sources/defi_arxiv_2604_16391.md:2026-05-20)
-- wiki/concepts/contact-rich-manipulation.md (wiki:2026-05-15 < sources/doorman_opening_sim2real_arxiv_2512_01061.md:2026-05-20)
-- wiki/concepts/terrain-adaptation.md (wiki:2026-05-15 < sources/e_sds_arxiv_2512_16446.md:2026-05-20)
-- wiki/methods/deepmimic.md (wiki:2026-05-15 < sources/egm_arxiv_2512_19043.md:2026-05-20)
-- wiki/concepts/capture-point-dcm.md (wiki:2026-05-15 < sources/faststair_arxiv_2601_10365.md:2026-05-20)
-- wiki/concepts/footstep-planning.md (wiki:2026-05-15 < sources/faststair_arxiv_2601_10365.md:2026-05-20)
-- wiki/methods/exoactor.md (wiki:2026-05-15 < sources/genmo.md:2026-05-20)
-- wiki/entities/protomotions.md (wiki:2026-05-15 < sources/genmo.md:2026-05-20)
-- wiki/formalizations/probability-flow.md (wiki:2026-05-15 < sources/hy_motion_arxiv_2512_23464.md:2026-05-20)
-- wiki/concepts/state-estimation.md (wiki:2026-05-15 < sources/lingbot_map_arxiv_2604_14141.md:2026-05-20)
-- wiki/entities/sapien.md (wiki:2026-05-15 < sources/physforge_arxiv_2605_05163.md:2026-05-20)
-- wiki/entities/modern-robotics-book.md (wiki:2026-05-15 < sources/robot_link_rotor_inertia_primary_refs.md:2026-05-20)
-- wiki/methods/model-predictive-control.md (wiki:2026-05-15 < sources/system_identification.md:2026-05-20)
-- wiki/entities/pinocchio.md (wiki:2026-05-15 < sources/urdd_beyond_urdf_arxiv_2512_23135.md:2026-05-20)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
