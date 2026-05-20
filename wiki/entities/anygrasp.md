@@ -73,6 +73,7 @@ flowchart LR
 
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [Grasp Pose Estimation（抓取位姿估计）](../methods/grasp-pose-estimation.md) — GraspNet/Contact-GraspNet/GSNet/AnyGrasp 的方法谱系总览，AnyGrasp 在第三代位置上的工程化叙事
+- [Query：抓取策略选型](../queries/grasp-policy-selection.md) — AnyGrasp 在「检测式 + 时序关联」组合中的定位与替代关系
 - [WiLoR](../methods/wilor.md) — 另一路「视觉 → 手部几何」感知栈，可与抓取模块串联讨论人机操作数据
 - [AprilTag](../entities/april-tag.md) — 工作台标定与低层几何对齐，常与手眼抓取管线同现
 

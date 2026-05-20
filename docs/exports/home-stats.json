@@ -1,18 +1,18 @@
 {
   "generated_at": "2026-05-20",
-  "node_count": 398,
-  "edge_count": 2821,
+  "node_count": 399,
+  "edge_count": 2836,
   "coverage": {
-    "covered": 396,
-    "total": 396,
+    "covered": 397,
+    "total": 397,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-      "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
       "recency": "2026-05-20",
       "source": "log.md"
     },
@@ -37,6 +37,30 @@
       "detail_id": "wiki-tasks-manipulation",
       "label": "Manipulation",
       "type": "task",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/visual-servoing.md",
+      "detail_id": "wiki-methods-visual-servoing",
+      "label": "Visual Servoing（视觉伺服控制）",
+      "type": "method",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
+      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
+      "label": "DeFI（解耦前向/逆动力学 VLA）",
+      "type": "method",
       "recency": "2026-05-20",
       "source": "log.md"
     },
@@ -114,10 +138,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-    "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-    "label": "DeFI（解耦前向/逆动力学 VLA）",
-    "type": "method",
+    "path": "wiki/queries/grasp-policy-selection.md",
+    "detail_id": "wiki-queries-grasp-policy-selection",
+    "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+    "type": "query",
     "recency": "2026-05-20",
     "source": "log.md"
   }

@@ -9,6 +9,7 @@ related:
   - ./contact-net.md
   - ./visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
+  - ../queries/grasp-policy-selection.md
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
@@ -120,6 +121,7 @@ flowchart LR
 - [Visual Servoing](./visual-servoing.md) — 抓取位姿之后的亚毫米级对齐方案
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 抓握后接触阶段的执行层
 - [cuRobo](../entities/curobo.md) — 抓取候选 → 规划 / 避障的下游求解器
+- [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 
 ## 参考来源
 
