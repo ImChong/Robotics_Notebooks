@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-20] structural | wiki/comparisons/anygrasp-vs-graspnet.md — V22 P2 AnyGrasp vs GraspNet 抓取检测家族对比
+
+- 新增页面：`wiki/comparisons/anygrasp-vs-graspnet.md`，按「一句话定义 + 14 维核心对比表 + Mermaid 数据流并排图（GraspNet 家族白盒基线 / AnyGrasp SDK 工程闭环）+ 三类适用场景 + 6 类常见误判 + 决策矩阵 + 评测指标视角」结构覆盖 GraspNet-1Billion / Contact-GraspNet / GSNet / AnyGrasp 四条子路线；显式区分「白盒改造 vs 工程化交付」「单帧 vs 动态跨帧」「完全开源 vs 二进制 License」三对核心取舍。
+- 交叉互链：`wiki/methods/grasp-pose-estimation.md`、`wiki/entities/anygrasp.md`、`wiki/queries/grasp-policy-selection.md`、`wiki/methods/contact-net.md`、`wiki/tasks/manipulation.md` 的 frontmatter `related` 与「关联页面」均加入本页入口，形成「方法谱系页 + 实体页 + Query + 对比页」四级互链闭环。
+- 清单推进：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P2「抓取知识链 (+3)」第三项 `anygrasp-vs-graspnet.md` 打勾，整体专题完结进入 `[x]` 完成状态。
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`exports/lint-report.md`（图谱节点 399 → 400、边数 2836 → 2850、comparison 类型从 18 → 19；陈旧页面 21 条与本次改动无关，为今日早些 ingest 留下的预存量）。
+
 ## [2026-05-20] query | wiki/queries/grasp-policy-selection.md — V22 P2 抓取策略选型 Query 落地
 
 - 新增页面：`wiki/queries/grasp-policy-selection.md`，覆盖三轴选型（物体已知度 / 候选稠密度 / 方法类型）+ TL;DR 决策树 + 四类推荐组合 pipeline（已知物体 / 桌面 bin picking / 动态场景 / 任务级语言指令）+ 关键工程经验 + 常见误区，与 [Grasp Pose Estimation](wiki/methods/grasp-pose-estimation.md) / [AnyGrasp](wiki/entities/anygrasp.md) / [Manipulation](wiki/tasks/manipulation.md) / [Visual Servoing](wiki/methods/visual-servoing.md) / [Contact-Rich Manipulation](wiki/concepts/contact-rich-manipulation.md) 互链。
