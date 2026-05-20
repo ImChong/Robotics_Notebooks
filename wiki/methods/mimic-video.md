@@ -14,6 +14,7 @@ related:
   - ./generative-world-models.md
   - ../tasks/manipulation.md
   - ../concepts/world-action-models.md
+  - ./defi-decoupled-dynamics-vla.md
 sources:
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
   - ../../sources/sites/mimic-video-github-io.md
@@ -95,6 +96,7 @@ flowchart LR
 - 与 [Diffusion Policy](./diffusion-policy.md)：动作头同属 **生成式 IL** 家族，但 VAM 把 **长视野不确定性** 更多交给 **视频骨干**，DP 常从像素历史直接预测动作分布。
 - 与 [Video-as-Simulation](../concepts/video-as-simulation.md)：共享「**视频模型承载物理直觉**」动机；mimic-video 更偏 **潜计划 + 低维控制**，而非把像素 rollout 当可交互仿真器主循环。
 - 与 [World Action Models](../concepts/world-action-models.md)：VAM 在文献谱系上接近 **联合建模未来表征与动作**，但实现上通过 **冻结视频骨干 + 边际动作采样** 强调 **可部署分工**。
+- 与 [DeFI](./defi-decoupled-dynamics-vla.md)：同属视频先验 + 逆动力学；DeFI 把 **前向（SVD）与逆向（DINO+VQ 自监督）** 预训练 **显式拆开**，并强调逆向模块需与 forward **同等规模** 预训练。
 
 ## 推荐继续阅读
 
@@ -118,3 +120,4 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
 - [World Action Models](../concepts/world-action-models.md)
+- [DeFI（解耦前向/逆动力学 VLA）](./defi-decoupled-dynamics-vla.md)

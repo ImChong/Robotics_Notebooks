@@ -12,10 +12,12 @@ related:
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
   - ../methods/pelican-unified-1.md
+  - ../methods/defi-decoupled-dynamics-vla.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
   - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
+  - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
 ---
@@ -54,6 +56,8 @@ sources:
 
 - **工程直觉**：模块清晰，便于分别迭代世界模型与策略头。
 - **主要张力**：两阶段 **信息瓶颈与对齐**——未来计划是否保留 **动作可恢复** 的足够信息。
+
+**文献实例（Cascaded + 显式解耦预训练）**：[DeFI](../methods/defi-decoupled-dynamics-vla.md) 将 **GFDM（视频生成式前向动力学）** 与 **GIDM（自监督逆动力学潜动作）** 在 **不同数据源与目标** 上独立预训练，再在下游用扩散适配器耦合；论文强调弱化逆向模块（如 VPP）会成为整条链路的瓶颈（arXiv:2604.16391）。
 
 ### Joint WAM
 
