@@ -2,6 +2,8 @@
 
 面向 **pick-and-place、bin picking、动态抓取** 等任务中「从视觉/深度到抓取位姿」这一层的开源与半开源工具索引。适合已理解 **[Manipulation](../../wiki/tasks/manipulation.md)** 任务划分、需要选型 **检测式抓取** 或 **SDK 集成** 的读者。
 
+> 方法谱系总览（GraspNet → Contact-GraspNet → GSNet / Graspness / AnyGrasp）见 **[Grasp Pose Estimation](../../wiki/methods/grasp-pose-estimation.md)**。
+
 ## 稠密抓取与跟踪
 
 - **[AnyGrasp](../../wiki/entities/anygrasp.md)**（[SDK](https://github.com/graspnet/anygrasp_sdk) · [论文](https://arxiv.org/abs/2212.08333) · [项目页](https://graspnet.net/anygrasp.html)）  
