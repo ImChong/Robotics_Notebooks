@@ -59,7 +59,9 @@
     - [x] `wiki/methods/grasp-pose-estimation.md`（抓取位姿估计：6-DoF 抓取检测、点云/RGBD 输入、AnyGrasp / GraspNet / Contact-GraspNet 谱系）。
       - 实现：新增 `wiki/methods/grasp-pose-estimation.md`，按「一句话定义 + 任务参数化（6-DoF vs 7-DoF）+ 主流谱系三代演进（GPD → GraspNet-1Billion → Contact-GraspNet / GSNet/Graspness / AnyGrasp）+ Mermaid 谱系流向图 + 输入模态对照 + 训练数据 + AP/MPPH 评测指标 + 下游衔接（cuRobo/IK/视觉伺服/触觉）+ 常见误区」结构组织；显式区分检测式 grasp pose 与多指接触面分配的边界。
       - 交叉互链：`wiki/entities/anygrasp.md`（frontmatter `related` 与「关联页面」回链新页）、`wiki/tasks/manipulation.md` 关联方法新增条目、`wiki/methods/contact-net.md` 关联页面互链、`references/repos/manipulation-perception.md` 总览指针指向本页、`index.md` 重点页面区块加入条目。
-    - [ ] `wiki/queries/grasp-policy-selection.md`（抓取策略选型 Query：开放场景 vs 已知物体、稀疏 vs 稠密抓取、几何 vs 学习方法）。
+    - [x] `wiki/queries/grasp-policy-selection.md`（抓取策略选型 Query：开放场景 vs 已知物体、稀疏 vs 稠密抓取、几何 vs 学习方法）。
+      - 实现：新增 `wiki/queries/grasp-policy-selection.md`，按 Query 格式落地「TL;DR 决策树 + 三轴对比表（物体已知度 / 候选稠密度 / 方法类型）+ 四类推荐组合 pipeline + 关键工程经验（候选生成器 vs 执行器 / AP vs 真机成功率 / 透明反光物体 / 端到端策略边界）+ 常见误区 + 一句话记忆」结构，覆盖几何启发式 / 检测式 grasp pose（GraspNet → Contact-GraspNet → GSNet/AnyGrasp）/ 端到端 IL-VLA 的选型逻辑；显式给出「先检测式起步、再用 IL/VLA 替换可学环节」的工程序。
+      - 交叉互链：`wiki/queries/README.md` 注册新 Query；`wiki/methods/grasp-pose-estimation.md` frontmatter `related` 与「关联页面」加入新 Query；`wiki/entities/anygrasp.md` 关联页面加入新 Query；`wiki/tasks/manipulation.md` 关联页面新增 Query 入口。
     - [ ] `wiki/comparisons/anygrasp-vs-graspnet.md`（AnyGrasp 与 GraspNet 家族对比：输入模态、训练数据、部署延迟与开放词汇支持）。
 - [ ] **接触/操作交叉补强**：
     - [ ] 在 `wiki/concepts/contact-rich-manipulation.md` 与 `wiki/concepts/visuo-tactile-fusion.md` 中补"抓取→插装→精细操作"的级联引用，把 P1 触觉链路与 P2 抓取链路打通。

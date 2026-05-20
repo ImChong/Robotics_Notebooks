@@ -73,6 +73,7 @@
 | [simulator-selection-guide](./simulator-selection-guide.md) | MuJoCo vs Isaac Lab vs Genesis，做 locomotion RL 选哪个？ | Locomotion、Sim2Real、RL、Humanoid Robot |
 | [demo-data-collection-guide](./demo-data-collection-guide.md) | 用模仿学习做操作，怎么高效收集人类演示数据？ | Teleoperation、Imitation Learning、Behavior Cloning、Bimanual Manipulation |
 | [ppo-vs-sac-for-robots](./ppo-vs-sac-for-robots.md) | 机器人 RL 用 PPO 还是 SAC？有什么实践区别？ | Policy Optimization、RL、Locomotion、GAE |
+| [grasp-policy-selection](./grasp-policy-selection.md) | 真机抓取系统该用几何启发式 / 检测式 grasp pose / 还是端到端策略？开放场景 vs 已知物体怎么选？ | Grasp Pose Estimation、AnyGrasp、ContactNet、Manipulation、Visual Servoing、Contact-Rich Manipulation |
 
 ---
 
