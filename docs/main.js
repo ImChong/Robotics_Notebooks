@@ -746,6 +746,7 @@
       '<div class="mermaid-lightbox-backdrop" data-mermaid-lightbox-dismiss tabindex="-1" aria-hidden="true"></div>',
       '<div class="mermaid-lightbox-panel" role="dialog" aria-modal="true" aria-label="流程图放大预览">',
       '  <button type="button" class="mermaid-lightbox-close" data-mermaid-lightbox-dismiss aria-label="关闭放大预览">×</button>',
+      '  <p class="mermaid-lightbox-hint">拖拽平移 · 滚轮/双指缩放 · Esc 关闭</p>',
       '  <div class="mermaid-lightbox-body" aria-live="polite"></div>',
       '</div>'
     ].join('');

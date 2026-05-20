@@ -64,6 +64,8 @@ class DetailContentSyncTests(unittest.TestCase):
             "mermaid-lightbox-stage",
             "mermaid-zoomable",
             "mermaid-lightbox",
+            "mermaid-lightbox-hint",
+            "拖拽平移 · 滚轮/双指缩放 · Esc 关闭",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)

@@ -854,6 +854,14 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   border-color: var(--accent);
   color: var(--accent);
 }
+.mermaid-lightbox-hint {
+  margin: 0 0 0.5rem;
+  padding-right: 2rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  flex-shrink: 0;
+}
 .mermaid-lightbox-body {
   flex: 1;
   min-height: 0;
