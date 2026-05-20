@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-20",
-  "node_count": 396,
-  "edge_count": 2796,
+  "node_count": 397,
+  "edge_count": 2808,
   "coverage": {
-    "covered": 394,
-    "total": 394,
+    "covered": 395,
+    "total": 395,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/grasp-pose-estimation.md",
+      "detail_id": "wiki-methods-grasp-pose-estimation",
+      "label": "Grasp Pose Estimation（抓取位姿估计）",
+      "type": "method",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/anygrasp.md",
+      "detail_id": "entity-anygrasp",
+      "label": "AnyGrasp（抓取感知 SDK）",
+      "type": "entity",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/contact-net.md",
+      "detail_id": "wiki-methods-contact-net",
+      "label": "ContactNet",
+      "type": "method",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/robot-link-and-rotor-inertia.md",
       "detail_id": "wiki-concepts-robot-link-and-rotor-inertia",
@@ -74,10 +106,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/robot-link-and-rotor-inertia.md",
-    "detail_id": "wiki-concepts-robot-link-and-rotor-inertia",
-    "label": "连杆惯量与转子惯量（Robot Link vs Rotor Inertia）",
-    "type": "concept",
+    "path": "wiki/methods/grasp-pose-estimation.md",
+    "detail_id": "wiki-methods-grasp-pose-estimation",
+    "label": "Grasp Pose Estimation（抓取位姿估计）",
+    "type": "method",
     "recency": "2026-05-20",
     "source": "log.md"
   }

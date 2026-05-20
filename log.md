@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-20] structural | wiki/methods/grasp-pose-estimation.md — V22 P2 抓取位姿估计方法谱系页
+
+- 新增 `wiki/methods/grasp-pose-estimation.md`，覆盖 6-DoF/7-DoF 表征、三代谱系（GPD → GraspNet-1Billion → Contact-GraspNet/GSNet/Graspness/AnyGrasp）、点云/RGBD 输入对照、AP/MPPH 评测、下游 cuRobo/视觉伺服/触觉闭环串联与常见误区，含 Mermaid 谱系图。
+- 交叉互链：`wiki/entities/anygrasp.md` frontmatter `related` 与「关联页面」回链；`wiki/tasks/manipulation.md` 关联方法区块加入条目；`wiki/methods/contact-net.md` 关联页面新增本页；`references/repos/manipulation-perception.md` 顶部加入「方法谱系总览」指针；`index.md` 重点页面新增条目。
+- 清单推进：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P2「抓取知识链」首项打勾，整体专题进入 `[~]` 进行中状态。
+
 ## [2026-05-20] ingest | sources/papers/robot_link_rotor_inertia_primary_refs.md — 连杆/转子惯量一手资料入库并沉淀 wiki
 
 - 原始资料：`sources/papers/robot_link_rotor_inertia_primary_refs.md`（URDF / Modern Robotics Ch.8 / Gautier–Khalil 1990 / MuJoCo armature）

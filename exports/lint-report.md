@@ -94,7 +94,7 @@
 - wiki/methods/gentlehumanoid-motion-tracking.md（被 8 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/in-hand-reorientation.md（被 6 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/in-hand-reorientation.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/mimic-video.md（被 12 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/motionbricks.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pelican-unified-1.md（被 5 个页面引用，无 queries/comparisons 落地）
@@ -102,9 +102,9 @@
 - wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/star-vla.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/visual-servoing.md（被 4 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/visual-servoing.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：394/394 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：395/395 (100%) wiki/entity 页有 ingest 来源

@@ -63,6 +63,7 @@
 - [AprilTag](wiki/entities/april-tag.md)
 - [Agent Reach](wiki/entities/agent-reach.md)（编码代理互联网接入脚手架：CLI + doctor + 可插拔渠道；上游 yt-dlp / gh / MCP 等）
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md)
+- [Grasp Pose Estimation（抓取位姿估计）](wiki/methods/grasp-pose-estimation.md)（6-DoF 抓取检测谱系：GraspNet → Contact-GraspNet → GSNet/Graspness/AnyGrasp，含点云/RGBD 输入与评测指标）
 - [Crocoddyl](wiki/entities/crocoddyl.md)
 - [cuRobo](wiki/entities/curobo.md)
 - [Unitree](wiki/entities/unitree.md)

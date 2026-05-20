@@ -55,8 +55,10 @@
 
 ## P2: 抓取与操作感知深化 (Quantity)
 
-- [ ] **抓取知识链 (+3)**：
-    - [ ] `wiki/methods/grasp-pose-estimation.md`（抓取位姿估计：6-DoF 抓取检测、点云/RGBD 输入、AnyGrasp / GraspNet / Contact-GraspNet 谱系）。
+- [~] **抓取知识链 (+3)**：
+    - [x] `wiki/methods/grasp-pose-estimation.md`（抓取位姿估计：6-DoF 抓取检测、点云/RGBD 输入、AnyGrasp / GraspNet / Contact-GraspNet 谱系）。
+      - 实现：新增 `wiki/methods/grasp-pose-estimation.md`，按「一句话定义 + 任务参数化（6-DoF vs 7-DoF）+ 主流谱系三代演进（GPD → GraspNet-1Billion → Contact-GraspNet / GSNet/Graspness / AnyGrasp）+ Mermaid 谱系流向图 + 输入模态对照 + 训练数据 + AP/MPPH 评测指标 + 下游衔接（cuRobo/IK/视觉伺服/触觉）+ 常见误区」结构组织；显式区分检测式 grasp pose 与多指接触面分配的边界。
+      - 交叉互链：`wiki/entities/anygrasp.md`（frontmatter `related` 与「关联页面」回链新页）、`wiki/tasks/manipulation.md` 关联方法新增条目、`wiki/methods/contact-net.md` 关联页面互链、`references/repos/manipulation-perception.md` 总览指针指向本页、`index.md` 重点页面区块加入条目。
     - [ ] `wiki/queries/grasp-policy-selection.md`（抓取策略选型 Query：开放场景 vs 已知物体、稀疏 vs 稠密抓取、几何 vs 学习方法）。
     - [ ] `wiki/comparisons/anygrasp-vs-graspnet.md`（AnyGrasp 与 GraspNet 家族对比：输入模态、训练数据、部署延迟与开放词汇支持）。
 - [ ] **接触/操作交叉补强**：
