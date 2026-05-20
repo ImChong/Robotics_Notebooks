@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-20] ingest | sources/papers/defi_arxiv_2604_16391.md — DeFI 解耦前向/逆动力学 VLA；wiki/methods/defi-decoupled-dynamics-vla.md
+
 ## [2026-05-20] structural | wiki/methods/grasp-pose-estimation.md — V22 P2 抓取位姿估计方法谱系页
 
 - 新增 `wiki/methods/grasp-pose-estimation.md`，覆盖 6-DoF/7-DoF 表征、三代谱系（GPD → GraspNet-1Billion → Contact-GraspNet/GSNet/Graspness/AnyGrasp）、点云/RGBD 输入对照、AP/MPPH 评测、下游 cuRobo/视觉伺服/触觉闭环串联与常见误区，含 Mermaid 谱系图。
