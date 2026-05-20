@@ -10,6 +10,7 @@ related:
   - ./visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
   - ../queries/grasp-policy-selection.md
+  - ../comparisons/anygrasp-vs-graspnet.md
 sources:
   - ../../sources/repos/anygrasp-sdk.md
   - ../../sources/papers/perception.md
@@ -122,6 +123,7 @@ flowchart LR
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 抓握后接触阶段的执行层
 - [cuRobo](../entities/curobo.md) — 抓取候选 → 规划 / 避障的下游求解器
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
+- [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 白盒基线 vs SDK 工程闭环、单帧 vs 跨帧、开源 vs License 三对取舍
 
 ## 参考来源
 

@@ -11,6 +11,7 @@ related:
   - ../methods/contact-net.md
   - ../methods/visual-servoing.md
   - ../concepts/contact-rich-manipulation.md
+  - ../comparisons/anygrasp-vs-graspnet.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/repos/anygrasp-sdk.md
@@ -173,3 +174,4 @@ GraspNet AP / AP_novel 高，主要意味着「数据分布内匹配好」，但
 - [cuRobo](../entities/curobo.md) — 抓取候选到无碰撞规划的下游求解器
 - [Query：做机器人操作用模仿学习还是 RL？](./il-for-manipulation.md) — 抓取嵌在技能链时的策略层选型
 - [Query：接触丰富操作实践指南](./contact-rich-manipulation-guide.md) — 抓握后的接触排错与调试顺序
+- [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 在检测式 grasp 路线内部，进一步在 SDK 与白盒基线之间做选型
