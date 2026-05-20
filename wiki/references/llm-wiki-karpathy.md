@@ -95,5 +95,6 @@ This document is intentionally abstract. It describes the idea, not a specific i
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
 - [Ingest Workflow](../../schema/ingest-workflow.md) — Karpathy 循环在本项目中的具体实现
 - [Superpowers（obra）](../entities/superpowers-obra.md) — 面向编码代理的 **技能 + 交付流程** 方法论，可与本页的「持久 wiki」对照阅读
+- [Skills For Real Engineers（mattpocock）](../entities/mattpocock-skills.md) — **轻量可组合** 的日常工程技能库（grill、CONTEXT.md、TDD），与 Superpowers 形成流程轻重对照
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 是本知识库最核心的主题，体现"好问题回写 wiki"原则
 - [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型代表机器人领域对 LLM 范式的借鉴

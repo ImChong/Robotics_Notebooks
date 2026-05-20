@@ -81,6 +81,7 @@
 - [Articraft](wiki/entities/articraft.md)（agent + SDK + harness：可关节 3D 仿真资产与 Articraft-10K；arXiv:2605.15187）
 - [World Labs](wiki/entities/world-labs.md)（空间智能：Marble 生成式 3D 世界 + Spark 流式 3DGS Web 渲染）
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md)（编码代理可组合技能 + TDD / worktree / 子代理交付；与 LLM Wiki 规约对照）
+- [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md)（轻量可组合工程技能：grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装）
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md)（常驻自主代理：网关 + 记忆/技能闭环 + 多沙箱 + cron/子代理；MIT）
 
 ### roadmap/ — 成长路线
