@@ -1,8 +1,8 @@
-"""append_log.py 应与 log.md 新记录在上的约定一致。"""
+"""log.md 写入应与「新记录在上」约定一致（append_log / lint --write-log）。"""
 
 from pathlib import Path
 
-from scripts.append_log import prepend_log_entry
+from scripts.log_md import prepend_log_entry, write_log_prepend
 
 
 def test_prepend_log_entry_inserts_before_first_section() -> None:
@@ -19,3 +19,11 @@ def test_prepend_log_entry_empty_log_gets_entry_at_end() -> None:
     out = prepend_log_entry(text, entry)
     assert "## [2026-03-03]" in out
     assert "> only preamble" in out
+
+
+def test_write_log_prepend(tmp_path: Path) -> None:
+    log = tmp_path / "log.md"
+    log.write_text("> preamble\n\n## [2026-01-01] ingest | old\n\n", encoding="utf-8")
+    write_log_prepend("## [2026-06-06] lint | health-check | test\n\n", log)
+    text = log.read_text(encoding="utf-8")
+    assert text.index("## [2026-06-06]") < text.index("## [2026-01-01]")

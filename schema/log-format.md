@@ -54,6 +54,8 @@ python3 scripts/append_log.py lint "0 issues，覆盖率 75%"
 
 **手动追加**（大型操作）：在 log.md **顶部**（说明行之后、现有首条 `## [` 之前）插入 `## [date] op | desc` 标题 + 详细列表。
 
+**lint 健康报告**（`make lint` 带 `--write-log`，或 `python3 scripts/lint_wiki.py --write-log`）：同样插入顶部，标题形如 `## [YYYY-MM-DD] lint | health-check | ...`；勿在文件末尾追加。
+
 ---
 
 ## 查询方式

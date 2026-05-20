@@ -18,7 +18,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
 
 用法：
   python3 scripts/lint_wiki.py
-  python3 scripts/lint_wiki.py --write-log   # 同时追加报告到 log.md
+  python3 scripts/lint_wiki.py --write-log   # 同时将报告插入 log.md 顶部
   python3 scripts/lint_wiki.py --report      # 保存 markdown 报告到 exports/lint-report.md
 """
 
@@ -760,7 +760,11 @@ def format_report(results: dict[str, Any]) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="Robotics_Notebooks wiki lint 检查")
-    parser.add_argument("--write-log", action="store_true", help="将结果追加到 log.md")
+    parser.add_argument(
+        "--write-log",
+        action="store_true",
+        help="将结果插入 log.md 顶部（与 append_log / 首页 latest_wiki_nodes 一致）",
+    )
     parser.add_argument(
         "--report", action="store_true", help="将 markdown 健康报告保存到 exports/lint-report.md"
     )
@@ -783,11 +787,10 @@ def main():
         print(f"⚠️  共发现 {total} 个问题，请参考上方报告处理。")
 
     if args.write_log:
-        log_path = REPO_ROOT / "log.md"
-        with open(log_path, "a", encoding="utf-8") as f:
-            f.write("\n---\n\n")
-            f.write(report)
-        print(f"\n已将报告追加到 {log_path}")
+        from log_md import DEFAULT_LOG_PATH, write_log_prepend
+
+        write_log_prepend(report + "\n", DEFAULT_LOG_PATH)
+        print(f"\n已将报告插入 {DEFAULT_LOG_PATH} 顶部")
 
     if args.report:
         exports_dir = REPO_ROOT / "exports"

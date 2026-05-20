@@ -15,29 +15,10 @@ append_log.py — 向 log.md 顶部插入一条操作记录（新记录在上，
 
 import sys
 from datetime import date
-from pathlib import Path
+
+from log_md import DEFAULT_LOG_PATH, write_log_prepend
 
 VALID_OPS = {"ingest", "query", "lint", "index", "structural"}
-
-LOG_PATH = Path(__file__).resolve().parent.parent / "log.md"
-
-
-def prepend_log_entry(text: str, entry: str) -> str:
-    """在首条 `## [日期]` 日志标题之前插入 entry（保留文件顶部说明行）。"""
-    lines = text.splitlines(keepends=True)
-    insert_at = 0
-    for i, line in enumerate(lines):
-        if line.startswith("## ["):
-            insert_at = i
-            break
-    else:
-        insert_at = len(lines)
-    if insert_at > 0 and lines[insert_at - 1].strip() == "":
-        # 保持说明段与首条日志之间的空行
-        pass
-    elif insert_at > 0 and not lines[insert_at - 1].endswith("\n\n"):
-        entry = "\n" + entry
-    return "".join(lines[:insert_at]) + entry + "".join(lines[insert_at:])
 
 
 def main() -> None:
@@ -59,13 +40,7 @@ def main() -> None:
 
     today = date.today().isoformat()
     entry = f"## [{today}] {op} | {desc}\n\n"
-
-    if LOG_PATH.is_file():
-        text = LOG_PATH.read_text(encoding="utf-8")
-    else:
-        text = "> 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。\n\n"
-
-    LOG_PATH.write_text(prepend_log_entry(text, entry), encoding="utf-8")
+    write_log_prepend(entry, DEFAULT_LOG_PATH)
 
     print(f"✅ 已插入 log.md 顶部: [{today}] {op} | {desc}")
 
