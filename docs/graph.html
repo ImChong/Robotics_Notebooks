@@ -601,6 +601,27 @@
       gap: 1px;
       max-height: 240px;
       overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
+    .filter-body::-webkit-scrollbar {
+      width: 8px;
+    }
+    .filter-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .filter-body::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.28);
+      border-radius: 999px;
+    }
+    .filter-body::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    [data-theme="light"] .filter-body {
+      scrollbar-color: rgba(0,0,0,0.28) transparent;
+    }
+    [data-theme="light"] .filter-body::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.28);
     }
     .filter-section-title {
       padding: 8px 14px 4px;
