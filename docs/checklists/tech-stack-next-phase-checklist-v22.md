@@ -73,11 +73,12 @@
 
 ## P3: 交互层"关系视角"增强 (UX/UI)
 
-- [x] **详情页"关联类型分布"小条形图**：
-    - [x] 在 `docs/detail.html` 的"关联页面"区块新增按 `type`（method/concept/entity/formalization/...）聚类的横向条形小图，让读者一眼判断当前节点偏理论、偏工程还是偏实体。
-      - 实现：`docs/detail.html` 在 `#detail-related` 标题下新增 `#detailRelatedTypeDist` 容器（含 head 与 bars 两块）；`docs/main.js` 新增 `deriveDetailCategoryLabel()`（按 path/type/id 派生中文类别：概念 / 方法 / 形式化 / 对比 / Query / 任务 / 实体 / 总览 / 深挖 / 路线图 / 技术地图）与 `renderRelatedTypeDistribution()`（按计数排序、最长条占满轨道，其它按比例并保底 6% 可见宽度），在 `renderDetailPage` 正常态与未匹配态都调用一次以保持空态干净；`docs/style.css` 新增 `.related-type-dist*` 样式（标题/Meta/三列网格：标签/横向轨道/计数；540px 以下窄屏自适应缩列）。
-      - 验证：`make lint-js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server` + Puppeteer 视口截图 `wiki-concepts-armature-modeling` 详情页，按类型分布正常落稳（共 5 项 · 2 类，方法 / 概念）。
-      - 截图：`.cursor-artifacts/screenshots/detail-related-type-dist.png`。
+- [x] **详情页"关联社区分布"小条形图**：
+    - [x] 在 `docs/detail.html` 的"关联页面"区块新增按 `link-graph` 社区（Whole-Body Control / Motion Retargeting / Sim2Real / VLA / IL / RL / Locomotion / ...）聚类的横向条形小图，让读者一眼判断当前节点在知识图谱里偏向哪些社区。
+      - 实现：`docs/detail.html` 在 `#detail-related` 标题下新增 `#detailRelatedCommunityDist` 容器（含 head 与 bars 两块）；`docs/main.js` 新增 `ensureDetailCommunityIndex()` 懒加载 `exports/link-graph.json`，建立 `pathToCommunity` Map 与 `communityLabel` 字典（兜底为空 Map），与 `renderRelatedCommunityDistribution()`（按计数倒序排序、最大计数为 100% 基准、其余按比例并保底 6% 可见宽度；不在图谱内的 roadmap / reference / tech_map 关联项统一桶为「未分类」并永远排在末尾），在 `renderDetailPage` 正常态与未匹配态都调用一次以保持空态干净；`docs/style.css` 新增 `.related-community-dist*` 样式（标题/Meta/三列网格：社区标签 160px / 横向轨道 / 计数；540px 以下窄屏缩列至 110px / 1fr / 46px）。社区标签显式去掉末尾「社区」二字以节省横向空间，悬停 `title` 仍显示完整标签。
+      - 第一版本（type 分桶）由社区分桶替代后不再保留：理由是 type 维度（概念/方法/实体/...）与现有 frontmatter type 字段重复，区分度不如 link-graph 社区聚类高（V22 P0 已把社区切到 17 个 ≤ 40% 阈值之内，刚好可用于"邻域属于哪些主题"的快速判断）。
+      - 验证：`make lint-js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server` + Puppeteer 视口截图 `wiki-concepts-whole-body-control` 详情页（共 12 项 · 8 个社区：Whole-Body Control 4 / Imitation Learning 1 / Locomotion 1 / Motion Retargeting 3 / Sim2Real 1 / Unitree G1 1 / 1 / 未分类 1）与 `wiki-concepts-armature-modeling`（共 5 项 · 3 个社区：WBC 3 / Motion Retargeting 1 / Sim2Real 1），桌面端 1280px 与移动端 375px 双视口落稳。
+      - 截图：`.cursor-artifacts/screenshots/detail-related-community-dist-wbc.png`、`detail-related-community-dist-wbc-mobile.png`、`detail-related-community-dist.png`。
 - [ ] **图谱页"专题视图"切换器**：
     - [ ] `docs/graph.html` 增加下拉菜单，可选"全量 / 动作重定向 / 抓取 / 触觉与通信"三个子图过滤模式，复用 V21 微地图的同套 `path → type` 元数据。
 

@@ -1698,70 +1698,70 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   }
 }
 
-/* V22 P3：详情页关联项按类型分布小条形图 */
-.related-type-dist {
+/* V22 P3：详情页关联项按社区分布小条形图 */
+.related-community-dist {
   margin: 0 0 1rem;
   padding: 12px 14px;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
-.related-type-dist-head {
+.related-community-dist-head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
   margin-bottom: 8px;
 }
-.related-type-dist-title {
+.related-community-dist-title {
   font-size: .92rem;
   font-weight: 600;
   color: var(--text);
 }
-.related-type-dist-meta {
+.related-community-dist-meta {
   font-size: .78rem;
   color: var(--text-muted);
 }
-.related-type-dist-bars {
+.related-community-dist-bars {
   display: grid;
   gap: 6px;
 }
-.related-type-bar-row {
+.related-community-bar-row {
   display: grid;
-  grid-template-columns: 92px 1fr 56px;
+  grid-template-columns: 160px 1fr 56px;
   align-items: center;
   gap: 10px;
   font-size: .82rem;
 }
-.related-type-bar-label {
+.related-community-bar-label {
   color: var(--text-muted);
   text-align: right;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.related-type-bar-track {
+.related-community-bar-track {
   position: relative;
   background: rgba(94, 160, 235, 0.10);
   border-radius: 4px;
   height: 10px;
   overflow: hidden;
 }
-.related-type-bar-fill {
+.related-community-bar-fill {
   position: absolute;
   inset: 0 auto 0 0;
   background: var(--accent);
   border-radius: 4px;
   transition: width var(--transition);
 }
-.related-type-bar-count {
+.related-community-bar-count {
   color: var(--text-muted);
   text-align: left;
   font-variant-numeric: tabular-nums;
 }
 @media (max-width: 540px) {
-  .related-type-bar-row {
-    grid-template-columns: 78px 1fr 46px;
+  .related-community-bar-row {
+    grid-template-columns: 110px 1fr 46px;
     gap: 8px;
     font-size: .78rem;
   }
