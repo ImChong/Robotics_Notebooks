@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-21",
   "node_count": 413,
-  "edge_count": 3026,
+  "edge_count": 3029,
   "coverage": {
     "covered": 411,
     "total": 411,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kimodo.md",
+      "detail_id": "entity-kimodo",
+      "label": "Kimodo（可控人体与人形运动扩散）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md",
       "detail_id": "entity-paper-deeprl-locomotion-action-space-sca2017",
@@ -386,9 +402,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md",
-    "detail_id": "entity-paper-deeprl-locomotion-action-space-sca2017",
-    "label": "Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?",
+    "path": "wiki/entities/kimodo.md",
+    "detail_id": "entity-kimodo",
+    "label": "Kimodo（可控人体与人形运动扩散）",
     "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"
