@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] structural | scripts/lint_wiki.py — V22 P0 方法-Query 闭环 Lint：新增 `methods_without_practitioner_query` 检查（被 > 3 个 wiki 页引用的 methods/ 必须有 queries/ 或 comparisons/ 落地页，否则 💡 待落地预警）
+
+- 实现：`scripts/lint_wiki.py` 增加 `_check_methods_without_practitioner_query` + `SOFT_WARNING_KEYS={"methods_without_practitioner_query"}`，预警在报告中独立计数但不计入 CI 退出码；inbound 集合按 referrer 去重避免单页多链假阳性。
+- 新增测试：`tests/test_lint_wiki_practitioner_query.py` 共 6 个用例，覆盖阈值边界 / queries 命中 / comparisons 命中 / 重复链接去重 / README 例外。
+- 现网结果：22 条软预警入账（exoactor、sonic-motion-tracking、amp-reward、beyondmimic、auto-labeling-pipelines 等高频方法），未来由 V22 P1/P2（grasp-policy-selection、anygrasp-vs-graspnet、gmr-vs-nmr-vs-reactor 等 queries/comparisons）逐步消化。
+- 验证：`pytest tests/ --no-cov -q` 91/91 通过；`ruff check + format --check` 通过；`python3 scripts/lint_wiki.py` exit=0。
+
 ## [2026-05-15] ingest | sources/sites/amass-dataset.md, sources/repos/ubisoft-laforge-animation-dataset.md, sources/sites/mixamo.md — AMASS / LaFAN1 / Mixamo 入库；新增 wiki/entities/amass.md、wiki/entities/lafan1-dataset.md、wiki/entities/mixamo.md；互链 motion-retargeting、wbc-fsm、ProtoMotions
 
 - 原始资料：`sources/sites/amass-dataset.md`、`sources/repos/ubisoft-laforge-animation-dataset.md`、`sources/sites/mixamo.md`
