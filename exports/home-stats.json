@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 401,
-  "edge_count": 2868,
+  "node_count": 406,
+  "edge_count": 2943,
   "coverage": {
-    "covered": 399,
-    "total": 399,
+    "covered": 404,
+    "total": 404,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
+      "detail_id": "wiki-comparisons-amp-add-smp-motion-prior-variants",
+      "label": "AMP vs ADD vs SMP：运动先验变体对比",
+      "type": "comparison",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
       "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
@@ -42,10 +58,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
-    "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
-    "label": "人形机器人 AMP：运动先验综述视角",
-    "type": "overview",
+    "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+    "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+    "label": "人形运动跟踪方法选型指南",
+    "type": "query",
     "recency": "2026-05-21",
     "source": "log.md"
   }

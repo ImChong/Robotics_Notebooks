@@ -74,6 +74,12 @@
 | [demo-data-collection-guide](./demo-data-collection-guide.md) | 用模仿学习做操作，怎么高效收集人类演示数据？ | Teleoperation、Imitation Learning、Behavior Cloning、Bimanual Manipulation |
 | [ppo-vs-sac-for-robots](./ppo-vs-sac-for-robots.md) | 机器人 RL 用 PPO 还是 SAC？有什么实践区别？ | Policy Optimization、RL、Locomotion、GAE |
 | [grasp-policy-selection](./grasp-policy-selection.md) | 真机抓取系统该用几何启发式 / 检测式 grasp pose / 还是端到端策略？开放场景 vs 已知物体怎么选？ | Grasp Pose Estimation、AnyGrasp、ContactNet、Manipulation、Visual Servoing、Contact-Rich Manipulation |
+| [humanoid-motion-tracking-method-selection](./humanoid-motion-tracking-method-selection.md) | 人形运动跟踪与风格先验方法怎么选、怎么组合？ | DeepMimic、BeyondMimic、AMP/ADD/SMP、Any2Track、AMS、GentleHumanoid、ASE、GenMo |
+| [manipulation-vla-architecture-selection](./manipulation-vla-architecture-selection.md) | 灵巧操作里 VLA / 视频-动作 / 世界模型 / 开源策略怎么选？ | VLA、mimic-video、DeFI、DWM、CLAW、π₀、π0.7、STAR-VLA、Pelican |
+| [humanoid-contact-character-control-guide](./humanoid-contact-character-control-guide.md) | 接触丰富人形控制与角色化表演路线怎么选？ | GentleHumanoid、HTTD、Being-H07、Disney OLAF、HiPAN、Zest、EFGCL |
+| [dexterous-manipulation-data-pipeline](./dexterous-manipulation-data-pipeline.md) | 灵巧操作的数据标注、手部感知、GAE 与执行器建模怎么配？ | Auto-labeling、WiLoR、GAE、Actuator Network、Tactile Impedance |
+
+**对比页（comparisons/）补充**：AMP 先验变体见 [amp-add-smp-motion-prior-variants](../comparisons/amp-add-smp-motion-prior-variants.md)。
 
 ---
 

@@ -138,6 +138,8 @@ related:
 
 ## 关联页面
 
+- [人形接触与角色化控制实践指南](./humanoid-contact-character-control-guide.md) — 全身接触、触觉策略与角色平台选型
+
 - [Manipulation](../tasks/manipulation.md) — 操作任务总览，帮助区分非接触与接触丰富任务
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 本 Query 的概念基础页
 - [Bimanual Manipulation](../tasks/bimanual-manipulation.md) — 双臂装配与内力协调的代表场景
