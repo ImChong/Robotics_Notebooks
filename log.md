@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] structural | wiki/concepts/contact-rich-manipulation.md、wiki/concepts/visuo-tactile-fusion.md — V22 P2 接触/操作交叉补强：补「抓取 → 插装 → 精细操作」级联引用，打通 P1 触觉链路与 P2 抓取链路
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) P2「接触/操作交叉补强」唯一子项；V22 P2 抓取知识链 (+3) 已落地，需把上游检测式 grasp 与本页中段执行层、下游触觉精细操作连成一条流水线视角
+- 改动形态：
+  - [`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)：新增「抓取 → 插装 → 精细操作（级联视角）」小节，三段式表格显式串联 P2 上游（[Grasp Pose Estimation](wiki/methods/grasp-pose-estimation.md)、[AnyGrasp](wiki/entities/anygrasp.md)、[ContactNet](wiki/methods/contact-net.md)、[抓取策略选型 Query](wiki/queries/grasp-policy-selection.md)、[AnyGrasp vs GraspNet](wiki/comparisons/anygrasp-vs-graspnet.md)）→ 本页中段 → P1 下游（[Impedance Control](wiki/concepts/impedance-control.md)、[Tactile Impedance Control](wiki/methods/tactile-impedance-control.md)、[TSID](wiki/concepts/tsid.md)/[WBC](wiki/concepts/whole-body-control.md)），并补「① 准但 ② 没接管会撞死」的工程含义说明；frontmatter `related` 与「关联页面」尾部互链至 P2 抓取链
+  - [`wiki/concepts/visuo-tactile-fusion.md`](wiki/concepts/visuo-tactile-fusion.md)：新增同名小节，附 Mermaid 流水线图与三段式表格，强调「检测式 grasp 不带接触可信度，门控/注意力必须在触觉给出几何漂移信号时立即让出权重」这一常被忽略的衔接点；frontmatter `related` 与「关联页面」加入 P2 抓取链与 [Tactile Impedance Control](wiki/methods/tactile-impedance-control.md)、[Hybrid Force-Position Control](wiki/concepts/hybrid-force-position-control.md)
+  - 两页 `updated` 字段刷新至 2026-05-21
+- 验证：`python3 scripts/eval_search_quality.py` 37/37 通过；`python3 scripts/check_export_quality.py` 12/12 通过；`make ci-preflight` 同步派生产物（page catalog / exports / search-index / link-graph / docs/index.html / sitemap）。`exports/graph-stats.json`：节点 410、边 3004（远超 V22 目标 312/2050）、largest_community_ratio 0.207、`community_quality_warning: false`。`lint_wiki.py` 9 项 `stale_pages` 均为同日早些 ingest 引入的历史 baseline，与本次改动无关
+- 状态联动：V22 checklist 「接触/操作交叉补强」由 `[ ]` 变 `[x]`；P2 全部子项落地完毕
+
 ## [2026-05-21] ingest | sources/repos/sensenova-skills.md — OpenSenseNova/SenseNova-Skills 入库并沉淀 wiki/entities/sensenova-skills.md；交叉更新 wiki/entities/hermes-agent.md、wiki/entities/mattpocock-skills.md
 
 ## [2026-05-21] ingest | sources/repos/boyu_ai_hands_on_rl.md、sources/sites/hrl-boyuai-hands-on-rl.md、sources/courses/boyuai_hands_on_rl_elites_course.md — 接入动手学强化学习（蘑菇书）在线书/代码仓/伯禹视频课并沉淀 wiki/entities/hands-on-rl-book.md；交叉更新 wiki/methods/reinforcement-learning.md、roadmap/depth-rl-locomotion.md、roadmap/motion-control.md、wiki/overview/robot-learning-overview.md
