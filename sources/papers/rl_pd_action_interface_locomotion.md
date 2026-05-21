@@ -14,6 +14,17 @@
 
 ## 核心论文摘录
 
+### 0) Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?（SCA 2017）
+
+- **链接：** [arXiv:1611.01055](https://arxiv.org/abs/1611.01055) · [DOI:10.1145/3099564.3099567](https://doi.org/10.1145/3099564.3099567) · [项目页](https://xbpeng.github.io/projects/ActionSpace/index.html)
+- **核心贡献：** 在 **平面角色步态模仿** 上对照 **扭矩 / 肌肉激活 / 目标关节角（PD）/ 目标角速度** 四种 DeepRL 动作空间；论证 **带局部反馈的高层参数化**（尤其 PD）通常 **学得更快、更鲁棒、运动质量更好**（**SCA 2017 Best Student Paper**）。
+- **与 Kp/Kd：** 为「**为何 RL 不直接输出扭矩**」提供 **角色动画侧最早系统证据**；与后续 Cassie「PD 目标空间」与四足「直驱扭矩」文献构成 **同作者线上的前后对照**。
+- **对 wiki 的映射：**
+  - [论文实体：DeepRL 动作空间对比 SCA 2017](../../wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md)
+  - [原始 ingest 档案](deeprl_locomotion_action_space_sca2017.md)
+  - [Legged / Humanoid RL 中 Kp/Kd 设置](../../wiki/queries/legged-humanoid-rl-pd-gain-setting.md)
+  - [Xue Bin Peng](../../wiki/entities/xue-bin-peng.md)
+
 ### 1) Real-World Humanoid Locomotion with Reinforcement Learning（Digit，全尺寸人形）
 
 - **链接：** [arXiv:2303.03381](https://arxiv.org/abs/2303.03381) · [项目页](https://learning-humanoid-locomotion.github.io/)
@@ -117,5 +128,5 @@
 
 ## 当前提炼状态
 
-- [x] 已建立 10 篇论文的一手链接与与 Kp/Kd / 动作接口相关的映射句；每篇均有独立 **wiki 实体子页**（`wiki/entities/paper-*.md`）
+- [x] 已建立 11 篇论文的一手链接与与 Kp/Kd / 动作接口相关的映射句；每篇均有独立 **wiki 实体子页**（`wiki/entities/paper-*.md`），含 SCA 2017 动作空间前史（[deeprl_locomotion_action_space_sca2017.md](deeprl_locomotion_action_space_sca2017.md)）
 - [~] 后续可按「仅人形 / 含操作臂接触」拆分子索引，并补厂商阻抗表链接

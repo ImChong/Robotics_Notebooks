@@ -189,8 +189,9 @@ flowchart TD
 
 ## RL + 底层 PD / 阻抗 / 扭矩接口（论文实体子页）
 
-下列页面各含 **提炼正文 + Mermaid**，对应 [RL+PD 动作接口论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md) 中的十篇；与 [Kp/Kd 设置 query](../queries/legged-humanoid-rl-pd-gain-setting.md) 交叉阅读。
+下列页面各含 **提炼正文 + Mermaid**，对应 [RL+PD 动作接口论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md) 中的十一篇；与 [Kp/Kd 设置 query](../queries/legged-humanoid-rl-pd-gain-setting.md) 交叉阅读。
 
+- [DeepRL 动作空间对比（SCA 2017）](../entities/paper-deeprl-locomotion-action-space-sca2017.md)
 - [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md)
 - [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md)
 - [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md)
@@ -212,6 +213,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — EKF/InEKF 状态估计
 - **ingest 档案：** [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 多步态学习中的 Selective AMP 策略
 - **ingest 档案：** [sources/papers/rl_pd_action_interface_locomotion.md](../../sources/papers/rl_pd_action_interface_locomotion.md) — RL + PD/阻抗/扭矩接口论文索引
+- **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
 
 ## 关联系统/方法
 
