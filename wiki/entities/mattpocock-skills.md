@@ -9,11 +9,12 @@ tags:
   - software-engineering
   - agent-infrastructure
 status: complete
-updated: 2026-05-20
+updated: 2026-05-21
 related:
   - ./superpowers-obra.md
   - ./caveman.md
   - ./hermes-agent.md
+  - ./sensenova-skills.md
   - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
@@ -77,6 +78,7 @@ flowchart TD
 - [Superpowers（obra）](superpowers-obra.md) — **重流程、可强制** 的编码交付技能库（worktree、子代理评审）
 - [Caveman](caveman.md) — **独立上游** 的输出/上下文压缩插件（与本库同名 skill 对照）
 - [Hermes Agent](hermes-agent.md) — 常驻代理运行时与 agentskills.io 互操作
+- [SenseNova-Skills](sensenova-skills.md) — **办公产出** 向 Agent Skills（与本文 **编码工程** 技能互补）
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
