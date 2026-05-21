@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 407,
-  "edge_count": 2960,
+  "node_count": 409,
+  "edge_count": 2986,
   "coverage": {
-    "covered": 405,
-    "total": 405,
+    "covered": 407,
+    "total": 407,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -29,6 +29,22 @@
       "detail_id": "wiki-overview-robot-learning-overview",
       "label": "Robot Learning Overview",
       "type": "overview",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-physical-ai-learning.md",
+      "detail_id": "entity-nvidia-physical-ai-learning",
+      "label": "NVIDIA Physical AI Learning",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
+      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
+      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
+      "type": "entity",
       "recency": "2026-05-21",
       "source": "log.md"
     },
