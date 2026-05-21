@@ -29,6 +29,8 @@ TOKEN_SYNONYMS = {
     "李雅普诺夫": ["lyapunov", "stability"],
     "语义": ["semantic", "meaning"],
     "人形": ["humanoid"],
+    "全身控制": ["wbc", "whole-body-control"],
+    "模型预测控制": ["mpc", "model-predictive-control"],
 }
 
 

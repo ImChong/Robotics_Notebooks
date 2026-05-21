@@ -13,10 +13,10 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
-summary: "Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。"
+summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
-# Whole-Body Control (WBC)
+# Whole-Body Control (WBC，全身控制)
 
 **全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。
 

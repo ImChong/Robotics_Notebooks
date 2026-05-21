@@ -12,6 +12,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 
 from search_indexing import REPO_ROOT
 from search_wiki_core import (
+    _canonical_topic_boost,
     collect_known_terms,
     compute_avgdl,
     compute_score,
@@ -78,7 +79,44 @@ class TestComputeScore(unittest.TestCase):
         q = compute_score(tc, ["x"], title="", avgdl=5.0, fm={}, page_type="query")
         c = compute_score(tc, ["x"], title="", avgdl=5.0, fm={}, page_type="comparison")
         self.assertLess(q, base)
-        self.assertGreater(c, base)
+        self.assertEqual(c, base)
+
+    def test_comparison_boost_only_with_intent(self):
+        tc = {"对比": 1}
+        plain = compute_score(tc, ["mpc"], title="", avgdl=5.0, fm={}, page_type="comparison")
+        intent = compute_score(
+            tc, ["mpc", "对比"], title="", avgdl=5.0, fm={}, page_type="comparison"
+        )
+        self.assertGreater(intent, plain)
+
+    def test_canonical_topic_boost(self):
+        self.assertEqual(
+            _canonical_topic_boost("wiki/concepts/whole-body-control.md", ["wbc", "全身控制"]),
+            1.4,
+        )
+        self.assertEqual(_canonical_topic_boost("wiki/entities/wbc-fsm.md", ["wbc"]), 1.0)
+
+    def test_canonical_path_raises_score(self):
+        tc = {"wbc": 2, "全身控制": 1}
+        boosted = compute_score(
+            tc,
+            ["wbc", "全身控制"],
+            title="Whole-Body Control (WBC，全身控制)",
+            avgdl=10.0,
+            fm={"summary": "WBC 全身控制 QP"},
+            page_type="concept",
+            doc_path="wiki/concepts/whole-body-control.md",
+        )
+        entity = compute_score(
+            tc,
+            ["wbc", "全身控制"],
+            title="wbc_fsm",
+            avgdl=10.0,
+            fm={"summary": "全身控制部署"},
+            page_type="entity",
+            doc_path="wiki/entities/wbc-fsm.md",
+        )
+        self.assertGreater(boosted, entity)
 
     def test_recent_updated_boost(self):
         tc = {"z": 1}

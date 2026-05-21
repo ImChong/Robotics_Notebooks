@@ -1,5 +1,20 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] fix(search): 搜索回归 WBC/MPC 定义页排名 — 条件化 comparison 提权 + 定义页 canonical boost
+
+- `scripts/search_wiki_core.py`：`comparison` 类型仅在查询含「对比/选型」等意图时 ×1.3；WBC/MPC 定义页在缩写命中时 ×1.4 canonical boost
+- `scripts/search_indexing.py`：`全身控制` / `模型预测控制` 同义词展开至 wbc/mpc
+- 补强 `wiki/concepts/whole-body-control.md`、`wiki/methods/model-predictive-control.md` 标题与 summary 中文检索词
+- 验证：`eval_search_quality.py` 37/37（原 35/37）
+
+## [2026-05-21] query | wiki/queries/humanoid-motion-tracking-method-selection.md 等 — V22 方法-Query 闭环：31 条高频 methods 落地预警清零
+
+- 新增 Query：`wiki/queries/humanoid-motion-tracking-method-selection.md`、`manipulation-vla-architecture-selection.md`、`humanoid-contact-character-control-guide.md`、`dexterous-manipulation-data-pipeline.md`
+- 新增 Comparison：`wiki/comparisons/amp-add-smp-motion-prior-variants.md`
+- 覆盖 methods：`deepmimic`、`beyondmimic`、`amp-reward`、`add`、`smp`、`motionbricks`、`any2track`、`ams`、`gentlehumanoid`、`ase`、`genmo`、`diffusion-motion-generation`、`mimic-video`、`defi`、`dwm`、`star-vla`、`pi07-policy`、`π0-policy`、`pelican-unified-1`、`claw`、`being-h07`、`disney-olaf`、`humanoid-transformer-touch-dreaming`、`hipan`、`zest`、`efgcl`、`auto-labeling-pipelines`、`wilor`、`tactile-impedance-control`、`actuator-network`、`gae`（共 31 页）
+- 注册：`wiki/queries/README.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-21] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — 安装 Agent Reach 抓取具身智能研究室两篇微信公众号长文并消化入库
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA

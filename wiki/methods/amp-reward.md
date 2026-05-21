@@ -76,6 +76,9 @@ $$
 - [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 提出了 Selective AMP 以应对多步态学习中的正则化权衡。
 
 ## 关联页面
+
+- [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 
 - [Imitation Learning](./imitation-learning.md)
