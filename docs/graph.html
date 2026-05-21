@@ -382,6 +382,8 @@
     [data-theme="light"] .physics-close { color: rgba(0,0,0,0.3); }
     [data-theme="light"] .physics-close:hover { color: rgba(0,0,0,0.72); }
     [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .physics-toggle { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .physics-toggle input[type=checkbox] { accent-color: #1659b4; }
     [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
     [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
     /* 提示文字 */
@@ -501,6 +503,17 @@
     .slider-divider {
       height: 1px; background: rgba(255,255,255,0.05);
       margin: 0 14px;
+    }
+    .physics-toggle {
+      display: flex; align-items: center; gap: 9px;
+      font-size: .74rem; color: rgba(255,255,255,0.4);
+      cursor: pointer; user-select: none;
+    }
+    .physics-toggle input[type=checkbox] {
+      width: 18px; height: 18px;
+      accent-color: #60a5fa;
+      cursor: pointer;
+      flex-shrink: 0;
     }
 
     /* ── 筛选按钮计数徽章 ── */
@@ -827,9 +840,11 @@
 
       <div class="slider-divider"></div>
 
-      <div class="slider-row" style="flex-direction:row; justify-content:space-between; align-items:center;">
-        <span class="slider-label" style="margin-bottom:0">🧲 磁吸模式</span>
-        <input type="checkbox" id="check-magnetic" style="width:18px; height:18px; cursor:pointer;" />
+      <div class="slider-row">
+        <label class="physics-toggle" for="check-magnetic">
+          <input type="checkbox" id="check-magnetic" />
+          <span>🧲 磁吸模式</span>
+        </label>
       </div>
     </div>
 
