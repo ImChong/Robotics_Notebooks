@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 409,
-  "edge_count": 2986,
+  "node_count": 410,
+  "edge_count": 2993,
   "coverage": {
-    "covered": 407,
-    "total": 407,
+    "covered": 408,
+    "total": 408,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/sensenova-skills.md",
+      "detail_id": "entity-sensenova-skills",
+      "label": "SenseNova-Skills（OpenSenseNova）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/hermes-agent.md",
+      "detail_id": "entity-hermes-agent",
+      "label": "Hermes Agent（Nous Research）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/hands-on-rl-book.md",
       "detail_id": "entity-hands-on-rl-book",
@@ -242,9 +266,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/hands-on-rl-book.md",
-    "detail_id": "entity-hands-on-rl-book",
-    "label": "动手学强化学习（Hands-on RL / 蘑菇书）",
+    "path": "wiki/entities/sensenova-skills.md",
+    "detail_id": "entity-sensenova-skills",
+    "label": "SenseNova-Skills（OpenSenseNova）",
     "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"

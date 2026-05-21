@@ -9,10 +9,11 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-05-19
+updated: 2026-05-21
 related:
   - ./caveman.md
   - ./superpowers-obra.md
+  - ./sensenova-skills.md
   - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
@@ -101,6 +102,7 @@ flowchart TB
 
 ## 关联页面
 
+- [SenseNova-Skills](sensenova-skills.md) — **办公生产力** Agent Skills（PPT/Excel/深度研究）；推荐安装至 `~/.hermes/skills/`
 - [Superpowers（obra）](superpowers-obra.md) — 编码代理 **软件工程流程** 技能库
 - [Agent Reach](agent-reach.md) — 编码代理 **外网读搜** 脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式

@@ -84,6 +84,7 @@
 - [World Labs](wiki/entities/world-labs.md)（空间智能：Marble 生成式 3D 世界 + Spark 流式 3DGS Web 渲染）
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md)（编码代理可组合技能 + TDD / worktree / 子代理交付；与 LLM Wiki 规约对照）
 - [Skills For Real Engineers（mattpocock）](wiki/entities/mattpocock-skills.md)（轻量可组合工程技能：grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装）
+- [SenseNova-Skills（OpenSenseNova）](wiki/entities/sensenova-skills.md)（Agent Skills 办公技能库：信息图/PPT/Excel/深度研究；Hermes/OpenClaw + SenseNova API）
 - [Hermes Agent（Nous Research）](wiki/entities/hermes-agent.md)（常驻自主代理：网关 + 记忆/技能闭环 + 多沙箱 + cron/子代理；MIT）
 
 ### roadmap/ — 成长路线
@@ -282,6 +283,7 @@ SORT type ASC
 - [SAGE（Sim2Real Actuator Gap Estimator）](entities/sage-sim2real-actuator-gap-estimator.md) — SAGE** 是面向 **关节运动执行器层** 的 sim2real 度量工具链：同一组参考轨迹分别在 **Isaac Sim 仿真** 与 **真实机器人** 上执行，对齐日志格式后做 **统计 `📅unknown` `[entity_page]`
 - [SAPIEN (仿真引擎)](entities/sapien.md) — SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理 `📅unknown` `[entity_page]`
 - [SceneVerse++](entities/sceneverse-pp.md) — SceneVerse++** 是一套面向 **3D 场景理解** 的互联网级训练数据：从海量无标注网络视频中重建相机位姿与稠密几何，再自动生成实例级分割与高层语义标注（含空间问答与导航指令），用于 `📅unknown` `[entity_page]`
+- [SenseNova-Skills（OpenSenseNova）](entities/sensenova-skills.md) — SenseNova-Skills** 是 [OpenSenseNova/SenseNova-Skills](https://github.com/OpenSenseNova/SenseNova-Skills) 仓库：把 **SenseNova 多模态模型** 的办公能力拆成 **可组合、可自托管** 的 [Agent Skills](https://agentskills.io/) 目录（`skills/**/SKILL.md`），覆盖 **可视化、幻灯片、表格分析、深度研究与搜索**，既可单技能调用，也可串成 **数据 → 研究 → 演示** 的端到端工作流。 `📅2026-05-21` `[entity_page]`
 - [Shadow Hand (灵巧手)](entities/shadow-hand.md) — Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](entities/superpowers-obra.md) — Superpowers** 是 [obra/superpowers](https://github.com/obra/superpowers) 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
 - [Tairan He（何泰然）](entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：博士阶段在 CMU LECAR 与 NVIDIA GEAR 等合作网络中，系统推进 **特权 `📅unknown` `[entity_page]`
