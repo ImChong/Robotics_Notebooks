@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联项按社区分布」小条形图（基于 link-graph 社区，替换早些时候的按 type 分桶版本）
+
+- 触发：PR #347 review，社区维度（link-graph 的 Girvan-Newman + Louvain 二级拆分）比类型维度更有信息量——type 字段与 frontmatter 直接重复，而社区分桶能体现「当前节点的 1-hop 邻域聚集在哪几个主题」，与 V22 P0 的社区粒度二级拆分（17 个社区 / largest_community_ratio ≤ 0.40）形成闭环
+- 改动形态：
+  - [`docs/detail.html`](docs/detail.html)：`#detailRelatedTypeDist` 容器更名为 `#detailRelatedCommunityDist`，标题文案改「按社区分布」
+  - [`docs/main.js`](docs/main.js)：移除按 type 派生中文标签的 `deriveDetailCategoryLabel()` 与 `renderRelatedTypeDistribution()`；新增 `ensureDetailCommunityIndex()`（懒加载 `exports/link-graph.json`，建立 `pathToCommunity` Map 与 `communityLabel` 字典，失败兜底为空 Map）与 `renderRelatedCommunityDistribution()`（按 detail page 的 `path` 查表 → 拿社区 ID → 计数；不在图谱内的 roadmap / reference / tech_map 统一桶为「未分类」并永远排在末尾，避免遮挡有效社区）；社区标签显式 `replace(/\s*社区\s*$/, '')` 去掉末尾「社区」二字以节省横向空间，悬停 `title` 仍保留完整原始标签
+  - [`docs/style.css`](docs/style.css)：`.related-type-*` 系列样式整体改名为 `.related-community-*`，桌面端标签列宽 92px → 160px，540px 窄屏 78px → 110px，以容纳更长的社区中文标签（如 "Whole-Body Control (WBC，全身控制)"）
+  - [`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md)：P3 首项标题与实现说明同步换为「关联社区分布」版本，附 type→community 切换理由
+- 验证：`make lint-js` 通过；本地 http.server + Puppeteer 视口截图 `wiki-concepts-whole-body-control` 桌面 / 移动双端（共 12 项 · 8 个社区，含 Whole-Body Control 4 / Motion Retargeting 3 / Imitation Learning 1 / Locomotion 1 / Sim2Real 1 / Unitree G1 1 / Reward Design 1 / 未分类 1）与 `wiki-concepts-armature-modeling`（共 5 项 · 3 个社区，WBC 3 / Motion Retargeting 1 / Sim2Real 1）均正确落稳
+- 截图：`.cursor-artifacts/screenshots/detail-related-community-dist-wbc.png`、`detail-related-community-dist-wbc-mobile.png`、`detail-related-community-dist.png`
+
 ## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联类型分布」小条形图
 
 - 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) P3「详情页关联类型分布小条形图」唯一子项；P0–P2 已全部落地，进入交互层关系视角增强阶段
