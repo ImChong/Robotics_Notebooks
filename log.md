@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] ingest | sources/sites/kimodo-project.md、sources/papers/kimodo_arxiv_2603_15546.md — 深化 Kimodo 官方项目页与 arXiv:2603.15546 论文摘录；扩充 sources/repos/kimodo.md、wiki/entities/kimodo.md（两阶段去噪、变体选型、Mermaid 管线、GEM/SONIC/ProtoMotions 互链）；交叉更新 wiki/methods/diffusion-motion-generation.md
+
 ## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联项按社区分布」小条形图（基于 link-graph 社区，替换早些时候的按 type 分桶版本）
 
 - 触发：PR #347 review，社区维度（link-graph 的 Girvan-Newman + Louvain 二级拆分）比类型维度更有信息量——type 字段与 frontmatter 直接重复，而社区分桶能体现「当前节点的 1-hop 邻域聚集在哪几个主题」，与 V22 P0 的社区粒度二级拆分（17 个社区 / largest_community_ratio ≤ 0.40）形成闭环
