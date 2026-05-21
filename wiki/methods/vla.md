@@ -27,6 +27,7 @@ related:
   - ../tasks/manipulation.md
   - ../tasks/loco-manipulation.md
   - ../entities/lerobot.md
+  - ../entities/nvidia-so101-sim2real-lab-workflow.md
   - ../entities/robot-io-rio.md
   - ../entities/xiaomi-robotics-0.md
   - ../entities/rldx-1.md
@@ -193,6 +194,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [sources/repos/xiaomi-robotics-0.md](../../sources/repos/xiaomi-robotics-0.md) — Xiaomi-Robotics-0 官网 / GitHub / arXiv 归档
 - [sources/papers/mimic_video_arxiv_2512_15692.md](../../sources/papers/mimic_video_arxiv_2512_15692.md) — mimic-video：Video-Action Model 与 VLA 对照的 arXiv:2512.15692 摘录
 - [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：解耦前向/逆动力学预训练的 arXiv:2604.16391 摘录
+- [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — GR00T N1.6 + 语言条件操作臂 post-training 官方教程
 
 ## 关联页面
 - [深度学习基础](../concepts/deep-learning-foundations.md)
@@ -218,6 +220,7 @@ VLA 通常不是高频底层控制器，真机上常见 50ms 以上推理延迟�
 - [Behavior Cloning](./behavior-cloning.md)
 - [RoboTwin 2.0](../entities/robotwin.md) — 具身智能自动化数据生成平台
 - [LeRobot](../entities/lerobot.md) — Hugging Face 具身智能全栈框架
+- [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — GR00T N1.6 教程级 VLA + 四类 sim2real 策略对照
 - [RLDX-1](../entities/rldx-1.md) — 多流扩散动作头 + 可选触觉/力矩与 RTC 推理栈的工程参考
 - [RIO（Robot I/O）](../entities/robot-io-rio.md) — 跨形态实时采集与 VLA 闭环部署的模块化 I/O 栈（RSS 2026）
 - [Xiaomi-Robotics-0](../entities/xiaomi-robotics-0.md) — 小米开源 VLA：异步 chunk 执行与后训练技巧的系统叙述

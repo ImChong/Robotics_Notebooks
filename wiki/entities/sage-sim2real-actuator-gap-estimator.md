@@ -10,9 +10,11 @@ related:
   - ./isaac-gym-isaac-lab.md
   - ./amass.md
   - ./gr00t-visual-sim2real.md
+  - ./nvidia-so101-sim2real-lab-workflow.md
   - ../queries/sim2real-gap-reduction.md
 sources:
   - ../../sources/repos/sage-sim2real-actuator-gap.md
+  - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
 summary: "SAGE 在 Isaac Sim 中重放关节轨迹并与真机日志对齐，用 RMSE/相关/余弦相似度等指标量化执行器层 sim2real gap，并支持导出成对数据用于 gap 补偿建模。"
 ---
 
@@ -97,9 +99,11 @@ flowchart LR
 ## 参考来源
 
 - [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md)
+- [NVIDIA SO-101 Sim2Real 课程](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — Strategy 4：SAGE + GapONet 教学模块
 
 ## 关联页面
 
+- [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [AMASS](./amass.md)

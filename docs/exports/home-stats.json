@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 406,
-  "edge_count": 2943,
+  "node_count": 408,
+  "edge_count": 2969,
   "coverage": {
-    "covered": 404,
-    "total": 404,
+    "covered": 406,
+    "total": 406,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/nvidia-physical-ai-learning.md",
+      "detail_id": "entity-nvidia-physical-ai-learning",
+      "label": "NVIDIA Physical AI Learning",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
+      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
+      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/domain-randomization.md",
       "detail_id": "wiki-concepts-domain-randomization",
@@ -210,10 +226,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/domain-randomization.md",
-    "detail_id": "wiki-concepts-domain-randomization",
-    "label": "Domain Randomization",
-    "type": "concept",
+    "path": "wiki/entities/nvidia-physical-ai-learning.md",
+    "detail_id": "entity-nvidia-physical-ai-learning",
+    "label": "NVIDIA Physical AI Learning",
+    "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"
   }
