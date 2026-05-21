@@ -1618,6 +1618,82 @@
     removeLoadingState(container);
   }
 
+  // V22 P3：从 detail page 的 path/type/id 派生人类可读的类别标签，
+  // 用于「关联项按类型分布」小条形图。
+  function deriveDetailCategoryLabel(page, id) {
+    var path = (page && page.path) || '';
+    var type = (page && page.type) || '';
+    if (path.indexOf('wiki/') === 0) {
+      var seg = path.split('/')[1] || '';
+      var labels = {
+        concepts: '概念',
+        methods: '方法',
+        formalizations: '形式化',
+        comparisons: '对比',
+        queries: 'Query',
+        tasks: '任务',
+        entities: '实体',
+        overview: '总览',
+        references: '深挖'
+      };
+      if (labels[seg]) return labels[seg];
+      return seg || '其他';
+    }
+    if (type === 'entity_page') return '实体';
+    if (type === 'reference_page') return '深挖';
+    if (type === 'roadmap_page') return '路线图';
+    if (type === 'tech_map_node') return '技术地图';
+    if (typeof id === 'string') {
+      if (id.indexOf('entity-') === 0) return '实体';
+      if (id.indexOf('reference-') === 0) return '深挖';
+      if (id.indexOf('roadmap-') === 0) return '路线图';
+    }
+    return '其他';
+  }
+
+  function renderRelatedTypeDistribution(wrapperEl, ids, detailPages) {
+    if (!wrapperEl) return;
+    var barsEl = document.getElementById('detailRelatedTypeDistBars');
+    var metaEl = document.getElementById('detailRelatedTypeDistMeta');
+    var validIds = Array.isArray(ids) ? ids.filter(function (id) { return id && detailPages[id]; }) : [];
+    if (!validIds.length || !barsEl) {
+      wrapperEl.hidden = true;
+      removeLoadingState(wrapperEl);
+      return;
+    }
+    var counts = {};
+    for (var i = 0; i < validIds.length; i++) {
+      var id = validIds[i];
+      var label = deriveDetailCategoryLabel(detailPages[id] || {}, id);
+      counts[label] = (counts[label] || 0) + 1;
+    }
+    var entries = Object.keys(counts).map(function (key) {
+      return { label: key, count: counts[key] };
+    });
+    entries.sort(function (a, b) {
+      if (b.count !== a.count) return b.count - a.count;
+      return a.label.localeCompare(b.label);
+    });
+    var maxCount = entries[0].count;
+    barsEl.innerHTML = entries.map(function (entry) {
+      var pct = Math.max(6, Math.round((entry.count / maxCount) * 100));
+      return [
+        '<div class="related-type-bar-row">',
+        '  <span class="related-type-bar-label">' + escapeHtml(entry.label) + '</span>',
+        '  <span class="related-type-bar-track" aria-hidden="true">',
+        '    <span class="related-type-bar-fill" style="width:' + pct + '%"></span>',
+        '  </span>',
+        '  <span class="related-type-bar-count">' + entry.count + '</span>',
+        '</div>'
+      ].join('');
+    }).join('');
+    if (metaEl) {
+      metaEl.textContent = '共 ' + validIds.length + ' 项 · ' + entries.length + ' 类';
+    }
+    wrapperEl.hidden = false;
+    removeLoadingState(wrapperEl);
+  }
+
   function renderInternalLinks(container, ids, detailPages, options) {
     if (!container) return;
     const emptyText = (options && options.emptyText) || '暂无内部关联项';
@@ -1935,6 +2011,7 @@
         removeLoadingState(contentEl);
       }
       renderChipList(tagEl, [], {});
+      renderRelatedTypeDistribution(document.getElementById('detailRelatedTypeDist'), [], detailPages);
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。' });
       if (recommendedEl) {
         recommendedEl.innerHTML = '<article class="card"><p>当前无可展示的相关推荐。</p></article>';
@@ -2033,6 +2110,7 @@
         return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
       }
     });
+    renderRelatedTypeDistribution(document.getElementById('detailRelatedTypeDist'), detailPage.related, detailPages);
     renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
 
     // V17: 记录并渲染阅读足迹
