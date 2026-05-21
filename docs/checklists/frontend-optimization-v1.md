@@ -54,6 +54,7 @@
 - [x] 首页搜索索引修复：将 `tech-map/`、roadmap 与 references 纳入 `search-index.json`，支持搜索 `tech-map`。
 - [x] 技术路线页 `roadmap.html`：基于导出阶段数据渲染可折叠阶段树（垂直 `<details>` 列表）；已移除折叠 Mermaid 线框总图与路线页内 Mermaid CDN。
 - [x] 技术路线页 `roadmap.html`：favicon、顶栏统一为 🚀（与首页「技术路线指南」CTA 一致）；主题切换仍为 ☀️/🌙。
+- [x] 详情页 Mermaid：正文 14px / 移动端 12px，增大节点 `padding` 与 `wrappingWidth`，减轻大字贴边与单行裁切；灯箱仍按 1.75× 离屏高清重绘。
 ---
 
 ## 验收标准 (DoD)
