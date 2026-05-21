@@ -1396,17 +1396,23 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 
 /* Tables — align with Humanoid paper notes: scroll inside wrapper, natural column width */
 .detail-markdown-body .table-wrapper {
+  position: relative;
   width: 100%;
   max-width: 100%;
-  overflow-x: auto;
   margin: 1.5rem 0;
   border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--surface-strong);
+}
+.detail-markdown-body .table-scroll {
+  overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   contain: inline-size;
 }
-.detail-markdown-body .table-wrapper table {
+.detail-markdown-body .table-scroll-hint {
+  display: none;
+}
+.detail-markdown-body .table-scroll table {
   width: max-content;
   min-width: 100%;
   max-width: none;
@@ -1414,50 +1420,52 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   font-size: 0.95rem;
   table-layout: auto;
 }
-.detail-markdown-body .table-wrapper th,
-.detail-markdown-body .table-wrapper td {
+.detail-markdown-body .table-scroll th,
+.detail-markdown-body .table-scroll td {
   border-bottom: 1px solid var(--border);
   padding: 10px 14px;
   text-align: left;
   overflow-wrap: break-word;
   word-break: normal;
 }
-.detail-markdown-body .table-wrapper th:not(:last-child),
-.detail-markdown-body .table-wrapper td:not(:last-child) {
+.detail-markdown-body .table-scroll th:not(:last-child),
+.detail-markdown-body .table-scroll td:not(:last-child) {
   border-right: 1px solid var(--border);
 }
-.detail-markdown-body .table-wrapper th {
+.detail-markdown-body .table-scroll th {
   background: var(--bg-alt);
   font-weight: 600;
 }
 /* Inline code in tables: keep tokens on one line; wrapper scroll handles overflow */
-.detail-markdown-body .table-wrapper th code,
-.detail-markdown-body .table-wrapper td code {
+.detail-markdown-body .table-scroll th code,
+.detail-markdown-body .table-scroll td code {
   white-space: nowrap;
 }
 /* Key–value tables (e.g. 基本信息): short labels stay on one line when possible */
-.detail-markdown-body .table-wrapper th:first-child,
-.detail-markdown-body .table-wrapper td:first-child {
+.detail-markdown-body .table-scroll th:first-child,
+.detail-markdown-body .table-scroll td:first-child {
   white-space: nowrap;
   overflow-wrap: normal;
   word-break: normal;
 }
 
-/* Horizontal scroll hint for tables */
+/* Horizontal scroll hint — fixed on wrapper, does not move with table scroll */
 @media (max-width: 768px) {
   .detail-markdown-body .table-wrapper {
-    position: relative;
     padding-bottom: 1.5rem;
   }
-  .detail-markdown-body .table-wrapper::after {
-    content: '↔ 左右滑动查看更多';
+  .detail-markdown-body .table-scroll-hint {
+    display: block;
     position: absolute;
     bottom: 0.2rem;
     right: 0.5rem;
+    z-index: 1;
     font-size: 0.7rem;
+    line-height: 1.3;
     color: var(--text-muted);
     opacity: 0.6;
     pointer-events: none;
+    user-select: none;
   }
 }
 

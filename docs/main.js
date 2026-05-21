@@ -1417,7 +1417,12 @@
         const tag = isHeader ? 'th' : 'td';
         return '<tr>' + cells.map(function (c) { return '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(c, context)) + '</' + tag + '>'; }).join('') + '</tr>';
       }).join('');
-      blocks.push('<div class="table-wrapper"><table>' + htmlRows + '</table></div>');
+      blocks.push(
+        '<div class="table-wrapper">'
+        + '<div class="table-scroll"><table>' + htmlRows + '</table></div>'
+        + '<span class="table-scroll-hint" aria-hidden="true">↔ 左右滑动查看更多</span>'
+        + '</div>'
+      );
       tableLines = [];
     }
 
