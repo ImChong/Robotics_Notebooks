@@ -54,6 +54,7 @@
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
 | [x] [mujoco-mjx.md](repos/mujoco-mjx.md) | MuJoCo MJX：JAX/XLA 重实现（`mujoco-mjx`） |
 | [x] [brax.md](repos/brax.md) | Brax：JAX 可微物理与 RL 训练（README 维护边界与 MJX/Playground 指引） |
+| [x] [boyu_ai_hands_on_rl.md](repos/boyu_ai_hands_on_rl.md) | Hands-on-RL / 蘑菇书：中文 RL 教材 Jupyter 仓（PPO/SAC/MARL 等，配套 hrl.boyuai.com） |
 | [isaac_gym_isaac_lab.md](repos/isaac_gym_isaac_lab.md) | Isaac Gym / Isaac Lab |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
@@ -142,6 +143,7 @@
 | [x] [daji-hxxxz0-github-io.md](sites/daji-hxxxz0-github-io.md) | DAJI 项目页 hxxxz0.github.io/DAJI_PAGE（预期关节意图、HumanML3D/BABEL 结果，arXiv:2605.14417） |
 | [x] [doorman-humanoid-github-io.md](sites/doorman-humanoid-github-io.md) | DoorMan 项目页 doorman-humanoid.github.io（管线叙述、失败案例、BibTeX、渲染工作流链接） |
 | [x] [gentle-humanoid-axell-top.md](sites/gentle-humanoid-axell-top.md) | GentleHumanoid 项目页 gentle-humanoid.axell.top（浏览器 demo、人机/物交互与实验对比，arXiv:2511.04679） |
+| [x] [hrl-boyuai-hands-on-rl.md](sites/hrl-boyuai-hands-on-rl.md) | 动手学强化学习在线书 hrl.boyuai.com（章节 + 在线 notebook + 课件） |
 | [x] [hermes-agent-nousresearch-docs.md](sites/hermes-agent-nousresearch-docs.md) | Hermes Agent 官方站 hermes-agent.nousresearch.com（产品页 + Docusaurus 文档 + llms.txt 索引） |
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
@@ -166,6 +168,7 @@
 |------|------|
 | [x] [uart_rs485_serial_embedded.md](courses/uart_rs485_serial_embedded.md) | UART / RS-232 / RS-485 异步串行与机器人现场布线入门（Wikipedia、TI SLLA383 等索引） |
 | [x] [motor_drive_firmware_bus_protocols.md](courses/motor_drive_firmware_bus_protocols.md) | 电机驱动器底软通信：CANopen/CiA402、CoE、私有 CAN、MIT 帧、DroneCAN 等选型索引 |
+| [x] [boyuai_hands_on_rl_elites_course.md](courses/boyuai_hands_on_rl_elites_course.md) | 伯禹平台《动手学强化学习》张伟楠视频课（免费，与蘑菇书/ hrl.boyuai.com 配套） |
 
 ### notes/ — 原始笔记归档
 | 文件 | 内容 |

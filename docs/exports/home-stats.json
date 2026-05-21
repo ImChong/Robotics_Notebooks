@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 406,
-  "edge_count": 2943,
+  "node_count": 407,
+  "edge_count": 2960,
   "coverage": {
-    "covered": 404,
-    "total": 404,
+    "covered": 405,
+    "total": 405,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hands-on-rl-book.md",
+      "detail_id": "entity-hands-on-rl-book",
+      "label": "动手学强化学习（Hands-on RL / 蘑菇书）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/domain-randomization.md",
       "detail_id": "wiki-concepts-domain-randomization",
@@ -21,14 +45,6 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "recency": "2026-05-21",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
       "recency": "2026-05-21",
       "source": "log.md"
     },
@@ -210,10 +226,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/domain-randomization.md",
-    "detail_id": "wiki-concepts-domain-randomization",
-    "label": "Domain Randomization",
-    "type": "concept",
+    "path": "wiki/entities/hands-on-rl-book.md",
+    "detail_id": "entity-hands-on-rl-book",
+    "label": "动手学强化学习（Hands-on RL / 蘑菇书）",
+    "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"
   }
