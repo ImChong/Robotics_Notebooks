@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-20",
+  "generated_at": "2026-05-21",
   "node_count": 400,
   "edge_count": 2850,
   "coverage": {
@@ -9,10 +9,10 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
+      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
+      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
+      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
+      "type": "comparison",
       "recency": "2026-05-20",
       "source": "log.md"
     },
@@ -29,6 +29,22 @@
       "detail_id": "entity-anygrasp",
       "label": "AnyGrasp（抓取感知 SDK）",
       "type": "entity",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
+      "recency": "2026-05-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/contact-net.md",
+      "detail_id": "wiki-methods-contact-net",
+      "label": "ContactNet",
+      "type": "method",
       "recency": "2026-05-20",
       "source": "log.md"
     },
@@ -60,14 +76,6 @@
       "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
       "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
       "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/contact-net.md",
-      "detail_id": "wiki-methods-contact-net",
-      "label": "ContactNet",
       "type": "method",
       "recency": "2026-05-20",
       "source": "log.md"
@@ -138,10 +146,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/grasp-policy-selection.md",
-    "detail_id": "wiki-queries-grasp-policy-selection",
-    "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-    "type": "query",
+    "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
+    "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
+    "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
+    "type": "comparison",
     "recency": "2026-05-20",
     "source": "log.md"
   }
