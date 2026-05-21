@@ -18,6 +18,7 @@ related:
   - ../comparisons/rl-vs-il.md
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../entities/hands-on-rl-book.md
   - ../entities/paper-interprior.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/lift-humanoid.md
@@ -26,6 +27,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
+  - ../../sources/repos/boyu_ai_hands_on_rl.md
 summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
@@ -190,6 +192,7 @@ flowchart LR
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）ingest 摘要
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS：环境感知 VLM 奖励合成 + 人形地形 RL（arXiv:2512.16446）ingest 摘要
+- [sources/repos/boyu_ai_hands_on_rl.md](../../sources/repos/boyu_ai_hands_on_rl.md) — 《动手学强化学习》开源教材与代码（PPO/SAC 等中文实践入口）
 - [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
@@ -200,6 +203,7 @@ flowchart LR
 ## 关联页面
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 
+- [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）

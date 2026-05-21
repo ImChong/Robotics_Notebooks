@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 408,
-  "edge_count": 2969,
+  "node_count": 409,
+  "edge_count": 2986,
   "coverage": {
-    "covered": 406,
-    "total": 406,
+    "covered": 407,
+    "total": 407,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hands-on-rl-book.md",
+      "detail_id": "entity-hands-on-rl-book",
+      "label": "动手学强化学习（Hands-on RL / 蘑菇书）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/nvidia-physical-ai-learning.md",
       "detail_id": "entity-nvidia-physical-ai-learning",
@@ -37,14 +61,6 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "recency": "2026-05-21",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
       "recency": "2026-05-21",
       "source": "log.md"
     },
@@ -226,9 +242,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-physical-ai-learning.md",
-    "detail_id": "entity-nvidia-physical-ai-learning",
-    "label": "NVIDIA Physical AI Learning",
+    "path": "wiki/entities/hands-on-rl-book.md",
+    "detail_id": "entity-hands-on-rl-book",
+    "label": "动手学强化学习（Hands-on RL / 蘑菇书）",
     "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"

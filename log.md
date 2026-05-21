@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] ingest | sources/repos/boyu_ai_hands_on_rl.md、sources/sites/hrl-boyuai-hands-on-rl.md、sources/courses/boyuai_hands_on_rl_elites_course.md — 接入动手学强化学习（蘑菇书）在线书/代码仓/伯禹视频课并沉淀 wiki/entities/hands-on-rl-book.md；交叉更新 wiki/methods/reinforcement-learning.md、roadmap/depth-rl-locomotion.md、roadmap/motion-control.md、wiki/overview/robot-learning-overview.md
+
 ## [2026-05-21] ingest | sources/sites/nvidia-physical-ai-learning.md、sources/courses/nvidia_sim_to_real_so101_isaac.md — 入库 NVIDIA Physical AI 门户与 SO-101 Sim2Real 课；沉淀 wiki/entities/nvidia-physical-ai-learning.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md；互链 sim2real、lerobot、isaac-lab、vla、sage
 
 ## [2026-05-21] structural | wiki/concepts/domain-randomization.md 等 17 页 — 清理 lint 长期 stale 预存量：按 source 给 17 个 wiki 页补 ingest 档案交叉引用

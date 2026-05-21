@@ -596,6 +596,7 @@ flowchart LR
 - 理解 reward shaping、policy gradient、value function 的意义
 
 **推荐读什么：**
+- [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文 RL 基础与 PPO/SAC 实践（[在线书](https://hrl.boyuai.com/) / [视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)）
 - Spinning Up (OpenAI)
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
 - [Policy Optimization](../wiki/methods/policy-optimization.md)（本仓库）
