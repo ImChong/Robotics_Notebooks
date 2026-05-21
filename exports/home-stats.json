@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 410,
-  "edge_count": 3004,
+  "node_count": 412,
+  "edge_count": 3014,
   "coverage": {
-    "covered": 408,
-    "total": 408,
+    "covered": 410,
+    "total": 410,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gencad.md",
+      "detail_id": "entity-gencad",
+      "label": "GenCAD（Image-Conditioned CAD Program Generation）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gencad-3d.md",
+      "detail_id": "entity-gencad-3d",
+      "label": "GenCAD-3D（Multimodal Geometry → CAD Program）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/text-to-cad.md",
+      "detail_id": "wiki-concepts-text-to-cad",
+      "label": "文字生成 CAD（Text-to-CAD）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/contact-rich-manipulation.md",
       "detail_id": "wiki-concepts-contact-rich-manipulation",
@@ -354,10 +378,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/contact-rich-manipulation.md",
-    "detail_id": "wiki-concepts-contact-rich-manipulation",
-    "label": "Contact-Rich Manipulation（接触丰富型操作）",
-    "type": "concept",
+    "path": "wiki/entities/gencad.md",
+    "detail_id": "entity-gencad",
+    "label": "GenCAD（Image-Conditioned CAD Program Generation）",
+    "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"
   }

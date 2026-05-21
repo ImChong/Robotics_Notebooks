@@ -1,7 +1,7 @@
 # 文字生成 CAD / 对话式 CAD 工具（原始资料索引）
 
 - **类型**：网站与在线产品（机械 CAD / AEC / API / 脚本栈 / 网格生成）汇编
-- **收录日期**：2026-05-13；**最近更新**：2026-05-14（补充 Adam、Fusion AI 增强路线、CadQuery/OpenSCAD/Build123d、网格向工具）
+- **收录日期**：2026-05-13；**最近更新**：2026-05-21（补充 GenCAD / GenCAD-3D 学习与逆向工程入口）
 - **说明**：以下为可检索的**公开入口**与一句话定位；**定价、导出格式列表、合规边界以各产品当前文档为准**，本文件不做采购或合规建议。
 
 ## 一句话
@@ -60,6 +60,14 @@
 - **GrandpaCAD**：<https://grandpacad.com/> — 站点提供 **3D Model Generation API** 文档入口；公开叙事包含 **text-to-CAD** 与 **STEP** 等格式（以实时文档为准）。
 - **PartWork AI**：<https://partwork.ai/> — 公开定位为 **AI 参数化 CAD**；站点材料强调 **B-rep / STEP** 与加工场景（以实时文档为准）。
 
+### 学习式 CAD program 生成（GenCAD 家族，MIT）
+
+- **GenCAD 项目页**：<https://gencad.github.io/> — **图像条件**生成 **CAD 命令序列**（arXiv:2409.16294）；交互 Demo 与 BibTeX。
+- **GenCAD 代码**：<https://github.com/ferdous-alam/GenCAD>
+- **GenCAD-3D 项目页**：<https://gencad3d.github.io/> — **点云/网格→CAD program**、**SynthBal** 与复杂度分级展示（arXiv:2509.15246，JMD）。
+- **GenCAD-3D 代码**：<https://github.com/yunomi-git/GenCAD-3D>
+- **GenCAD-3D 数据/权重（Hugging Face）**：<https://huggingface.co/datasets/yu-nomi/GenCAD_3D> · <https://huggingface.co/yu-nomi/GenCAD_3D>
+
 ### 「文字 / 图像 → 三角网格或场景资产」（通常不替代机械 CAD）
 
 - **ModelsLab Text to 3D API**：<https://docs.modelslab.com/3d-api/text-to-3d> — 典型输出为 **OBJ / STL / PLY / GLB** 等网格格式文档入口。
@@ -70,7 +78,7 @@
 
 ## 对 wiki 的映射
 
-- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)
+- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/gencad.md](../../wiki/entities/gencad.md)、[wiki/entities/gencad-3d.md](../../wiki/entities/gencad-3d.md)
 
 ## 参考链接（索引）
 
