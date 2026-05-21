@@ -427,6 +427,12 @@
       background: #1659b4;
       color: #fff;
     }
+    [data-theme="light"] .filter-degree-section {
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .filter-degree-hint {
+      color: rgba(0,0,0,0.38);
+    }
     [data-theme="light"] .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
     [data-theme="light"] .chip[data-type="concept"].active    { background: #60a5fa; }
     [data-theme="light"] .chip[data-type="method"].active     { background: #34d399; }
@@ -525,7 +531,7 @@
       position: absolute;
       top: 12px; left: 20px;
       z-index: 30;
-      min-width: 170px;
+      min-width: 220px;
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -562,11 +568,26 @@
       color: rgba(255,255,255,0.4);
       font-family: inherit;
     }
+    .filter-degree-section {
+      padding: 0 0 4px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .filter-degree-section .slider-row {
+      padding: 4px 14px 12px;
+    }
+    .filter-degree-hint {
+      font-size: .68rem;
+      color: rgba(255,255,255,0.32);
+      line-height: 1.35;
+      margin: 0 14px 6px;
+    }
     .filter-body {
       padding: 8px 0;
       display: flex;
       flex-direction: column;
       gap: 1px;
+      max-height: 240px;
+      overflow-y: auto;
     }
     .filter-section-title {
       padding: 8px 14px 4px;
@@ -845,6 +866,18 @@
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
+      <div id="filter-degree-section" class="filter-degree-section">
+        <div class="filter-section-title">连接数 Top N</div>
+        <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>显示节点数</span>
+            <span class="slider-val" id="val-degree-top">全部</span>
+          </div>
+          <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
+                 aria-label="按连接数显示前 N 个节点" />
+        </div>
+      </div>
       <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
@@ -1067,6 +1100,62 @@
       _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+
+    /* ── 连接数 Top N 筛选（滑动条）── */
+    const totalNodeCount = nodes.length;
+    const degreeTopMin = Math.min(10, totalNodeCount);
+    let topDegreeLimit = totalNodeCount;
+    let topDegreeIds = null;
+
+    function computeTopDegreeIds(limit) {
+      if (limit >= totalNodeCount) return null;
+      return new Set(
+        nodes.slice()
+          .sort((a, b) => (b._degree || 0) - (a._degree || 0))
+          .slice(0, limit)
+          .map(n => n.id)
+      );
+    }
+
+    function nodeMatchesDegreeTop(d) {
+      return !topDegreeIds || topDegreeIds.has(d.id);
+    }
+
+    function updateDegreeTopLabel() {
+      const valEl = document.getElementById('val-degree-top');
+      if (!valEl) return;
+      valEl.textContent = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
+    }
+
+    function initDegreeTopSlider() {
+      const slider = document.getElementById('sl-degree-top');
+      if (!slider) return;
+      slider.min = String(degreeTopMin);
+      slider.max = String(totalNodeCount);
+      slider.value = String(topDegreeLimit);
+      updateDegreeTopLabel();
+    }
+
+    function setTopDegreeLimit(limit) {
+      topDegreeLimit = Math.max(degreeTopMin, Math.min(totalNodeCount, Number(limit)));
+      topDegreeIds = computeTopDegreeIds(topDegreeLimit);
+      const slider = document.getElementById('sl-degree-top');
+      if (slider) slider.value = String(topDegreeLimit);
+      updateDegreeTopLabel();
+      applyFilters();
+      updateFilterCount();
+    }
+
+    initDegreeTopSlider();
+    const slDegreeTop = document.getElementById('sl-degree-top');
+    if (slDegreeTop) {
+      slDegreeTop.addEventListener('input', ev => {
+        setTopDegreeLimit(ev.target.value);
+      });
+      slDegreeTop.addEventListener('change', () => {
+        if (topDegreeIds) fitToScreen();
+      });
+    }
 
     /* ── 初始化搜索自动联想 ── */
     const searchList = document.getElementById('graph-search-list');
@@ -1406,7 +1495,8 @@
         if (sidebar.classList.contains('open')) return;
         
         buildNeighborSet(d);
-        const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
+        const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+          || focusedCommunityId || focusedType || focusedHealth !== null;
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
           if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
@@ -1543,6 +1633,9 @@
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
       activeFilters.clear();
+      topDegreeLimit = totalNodeCount;
+      topDegreeIds = null;
+      initDegreeTopSlider();
       renderFilterPanel();
       applyFilters();
       updateFilterCount();
@@ -1551,7 +1644,7 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size;
+      const count = activeFilters.size + (topDegreeIds ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -1606,12 +1699,13 @@
     }
 
     function applyFilters() {
-      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId || focusedType || focusedHealth !== null;
+      const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+        || focusedCommunityId || focusedType || focusedHealth !== null;
       visibleNodeIds.clear();
       let visible = 0;
       
       node.each(function(d) {
-        const ok = nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
+        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
         
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
@@ -1630,16 +1724,19 @@
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
-          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
+          return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
+                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
-          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? linkWidthBase : linkWidthBase * 0.5;
+          const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
+            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t);
+          return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
       if (searchQuery) flyToVisible();
