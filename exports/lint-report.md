@@ -2,7 +2,7 @@
 
 ## [2026-05-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **9** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,16 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（9 个）
-- wiki/concepts/terrain-adaptation.md (wiki:2026-05-15 < sources/e_sds_arxiv_2512_16446.md:2026-05-21)
-- wiki/methods/deepmimic.md (wiki:2026-05-15 < sources/egm_arxiv_2512_19043.md:2026-05-21)
-- wiki/concepts/capture-point-dcm.md (wiki:2026-05-15 < sources/faststair_arxiv_2601_10365.md:2026-05-21)
-- wiki/concepts/footstep-planning.md (wiki:2026-05-15 < sources/faststair_arxiv_2601_10365.md:2026-05-21)
-- wiki/methods/exoactor.md (wiki:2026-05-15 < sources/genmo.md:2026-05-21)
-- wiki/entities/protomotions.md (wiki:2026-05-15 < sources/genmo.md:2026-05-21)
-- wiki/formalizations/probability-flow.md (wiki:2026-05-15 < sources/hy_motion_arxiv_2512_23464.md:2026-05-21)
-- wiki/concepts/state-estimation.md (wiki:2026-05-15 < sources/lingbot_map_arxiv_2604_14141.md:2026-05-21)
-- wiki/entities/pinocchio.md (wiki:2026-05-15 < sources/urdd_beyond_urdf_arxiv_2512_23135.md:2026-05-21)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
