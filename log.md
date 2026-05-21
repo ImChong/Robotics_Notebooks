@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — 安装 Agent Reach 抓取具身智能研究室两篇微信公众号长文并消化入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）、`sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md`（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/humanoid-amp-motion-prior-survey.md`；补强 `wiki/overview/humanoid-rl-motion-control-body-system-stack.md`
+- 交叉更新：`wiki/methods/amp-reward.md`、`wiki/entities/agent-reach.md`、`sources/repos/panniantong_agent_reach.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
 ## [2026-05-20] structural | wiki/comparisons/anygrasp-vs-graspnet.md — V22 P2 AnyGrasp vs GraspNet 抓取检测家族对比
 
 - 新增页面：`wiki/comparisons/anygrasp-vs-graspnet.md`，按「一句话定义 + 14 维核心对比表 + Mermaid 数据流并排图（GraspNet 家族白盒基线 / AnyGrasp SDK 工程闭环）+ 三类适用场景 + 6 类常见误判 + 决策矩阵 + 评测指标视角」结构覆盖 GraspNet-1Billion / Contact-GraspNet / GSNet / AnyGrasp 四条子路线；显式区分「白盒改造 vs 工程化交付」「单帧 vs 动态跨帧」「完全开源 vs 二进制 License」三对核心取舍。

@@ -75,8 +75,8 @@
 
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（31 个）
 - wiki/methods/actuator-network.md（被 4 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/add.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/amp-reward.md（被 19 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/add.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/amp-reward.md（被 22 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/ams.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/any2track.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/ase.md（被 8 个页面引用，无 queries/comparisons 落地）
@@ -84,7 +84,7 @@
 - wiki/methods/being-h07.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/beyondmimic.md（被 23 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/claw.md（被 7 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/deepmimic.md（被 26 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/deepmimic.md（被 27 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/defi-decoupled-dynamics-vla.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/diffusion-motion-generation.md（被 11 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/disney-olaf-character-robot.md（被 5 个页面引用，无 queries/comparisons 落地）
@@ -96,14 +96,14 @@
 - wiki/methods/hipan.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/humanoid-transformer-touch-dreaming.md（被 14 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/mimic-video.md（被 15 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/motionbricks.md（被 7 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/motionbricks.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pelican-unified-1.md（被 5 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/pi07-policy.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/smp.md（被 8 个页面引用，无 queries/comparisons 落地）
+- wiki/methods/smp.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/star-vla.md（被 4 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/tactile-impedance-control.md（被 6 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/wilor.md（被 9 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/zest.md（被 7 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/π0-policy.md（被 6 个页面引用，无 queries/comparisons 落地）
 
-📊 Sources 覆盖率：398/398 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：399/399 (100%) wiki/entity 页有 ingest 来源

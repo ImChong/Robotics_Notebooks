@@ -1,156 +1,52 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 400,
-  "edge_count": 2850,
+  "node_count": 401,
+  "edge_count": 2868,
   "coverage": {
-    "covered": 398,
-    "total": 398,
+    "covered": 399,
+    "total": 399,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
-      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
-      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
-      "type": "comparison",
-      "recency": "2026-05-20",
+      "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
+      "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
+      "label": "人形机器人 AMP：运动先验综述视角",
+      "type": "overview",
+      "recency": "2026-05-21",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/grasp-pose-estimation.md",
-      "detail_id": "wiki-methods-grasp-pose-estimation",
-      "label": "Grasp Pose Estimation（抓取位姿估计）",
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/amp-reward.md",
+      "detail_id": "wiki-methods-amp-reward",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
       "type": "method",
-      "recency": "2026-05-20",
+      "recency": "2026-05-21",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/anygrasp.md",
-      "detail_id": "entity-anygrasp",
-      "label": "AnyGrasp（抓取感知 SDK）",
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
       "type": "entity",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/grasp-policy-selection.md",
-      "detail_id": "wiki-queries-grasp-policy-selection",
-      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
-      "type": "query",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/contact-net.md",
-      "detail_id": "wiki-methods-contact-net",
-      "label": "ContactNet",
-      "type": "method",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/visual-servoing.md",
-      "detail_id": "wiki-methods-visual-servoing",
-      "label": "Visual Servoing（视觉伺服控制）",
-      "type": "method",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/defi-decoupled-dynamics-vla.md",
-      "detail_id": "wiki-methods-defi-decoupled-dynamics-vla",
-      "label": "DeFI（解耦前向/逆动力学 VLA）",
-      "type": "method",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/robot-link-and-rotor-inertia.md",
-      "detail_id": "wiki-concepts-robot-link-and-rotor-inertia",
-      "label": "连杆惯量与转子惯量（Robot Link vs Rotor Inertia）",
-      "type": "concept",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/armature-modeling.md",
-      "detail_id": "wiki-concepts-armature-modeling",
-      "label": "Armature Modeling（电枢惯量建模）",
-      "type": "concept",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mattpocock-skills.md",
-      "detail_id": "entity-mattpocock-skills",
-      "label": "Skills For Real Engineers（mattpocock）",
-      "type": "entity",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/superpowers-obra.md",
-      "detail_id": "entity-superpowers-obra",
-      "label": "Superpowers（obra）",
-      "type": "entity",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/caveman.md",
-      "detail_id": "entity-caveman",
-      "label": "Caveman",
-      "type": "entity",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/references/llm-wiki-karpathy.md",
-      "detail_id": "wiki-references-llm-wiki-karpathy",
-      "label": "LLM Wiki",
-      "type": "reference",
-      "recency": "2026-05-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-mjlab.md",
-      "detail_id": "entity-amp-mjlab",
-      "label": "AMP_mjlab (G1 统一 AMP 策略)",
-      "type": "entity",
-      "recency": "2026-05-20",
+      "recency": "2026-05-21",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
-    "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
-    "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
-    "type": "comparison",
-    "recency": "2026-05-20",
+    "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
+    "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
+    "label": "人形机器人 AMP：运动先验综述视角",
+    "type": "overview",
+    "recency": "2026-05-21",
     "source": "log.md"
   }
 }

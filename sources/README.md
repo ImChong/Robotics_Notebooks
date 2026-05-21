@@ -120,6 +120,8 @@
 | [x] [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md) | 微信公众号「机械Robot」：机器人开源宝库第02期 10 个全开源网址（Reachy2、Poppy、InMoov、Doggo/Pupper 等） |
 | [x] [wechat_embodied_ai_lab_robot_world_model_training_loop.md](blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md) | 微信公众号「具身智能研究室」：机器人世界模型应进入训练闭环（编译 arXiv:2605.00080 综述；Agent Reach + Camoufox 抓取） |
 | [x] [wechat_embodied_ai_lab_daji_semantic_body_interface.md](blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md) | 微信公众号「具身智能研究室」：语言控制人形缺的是语义到身体接口（编译 DAJI arXiv:2605.14417） |
+| [x] [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) | 具身智能研究室：42 篇 humanoid RL 运动控制「身体系统栈」长文（Agent Reach + Camoufox；`hz9JXtJeUPRfUGzfD-pZuA`） |
+| [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 
