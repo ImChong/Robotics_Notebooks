@@ -55,6 +55,35 @@ def _build_alias_indexes() -> tuple[dict[str, list[str]], dict[str, str]]:
 
 _ALIAS_FORWARD, _ALIAS_REVERSE = _build_alias_indexes()
 
+# 缩写检索时的「定义页」：优先于实体/对比页（见 schema/search-regression-cases.json）
+CANONICAL_TOPIC_PAGES: dict[str, str] = {
+    "wbc": "wiki/concepts/whole-body-control.md",
+    "whole-body control": "wiki/concepts/whole-body-control.md",
+    "mpc": "wiki/methods/model-predictive-control.md",
+    "model predictive control": "wiki/methods/model-predictive-control.md",
+}
+
+COMPARISON_INTENT_MARKERS = frozenset(
+    {"对比", "比较", "选型", "vs", "versus", "区别", "差异", "对照"}
+)
+
+
+def _query_has_comparison_intent(query_tokens: list[str]) -> bool:
+    joined = " ".join(query_tokens).lower()
+    return any(marker in joined for marker in COMPARISON_INTENT_MARKERS)
+
+
+def _canonical_topic_boost(doc_path: str, query_tokens: list[str]) -> float:
+    """当查询命中 WBC/MPC 等核心缩写且当前页为对应定义页时提权。"""
+    rel = doc_path.replace("\\", "/").lower()
+    qjoin = " ".join(query_tokens).lower()
+    for key, canon in CANONICAL_TOPIC_PAGES.items():
+        if rel != canon:
+            continue
+        if key in qjoin:
+            return 1.4
+    return 1.0
+
 
 def expand_query_aliases(
     query_words: list[str],
@@ -134,6 +163,7 @@ def compute_score(
     fm: dict | None = None,
     page_type: str = "",
     dl: int = 1,
+    doc_path: str = "",
 ) -> float:
     if not query_tokens:
         return 0.0
@@ -175,9 +205,12 @@ def compute_score(
     if page_type == "query":
         score *= 0.7
 
-    # V16: 提权 comparison 类型页面，鼓励用户查看对比总结
-    if page_type == "comparison":
+    # V16: 提权 comparison；仅当查询含「对比/选型」等意图时生效，避免盖过定义页
+    if page_type == "comparison" and _query_has_comparison_intent(query_tokens):
         score *= 1.3
+
+    if doc_path:
+        score *= _canonical_topic_boost(doc_path, query_tokens)
 
     return score
 
@@ -397,6 +430,7 @@ def search(
             fm=fm,
             page_type=doc["page_type"],
             dl=doc.get("dl", 1),
+            doc_path=doc["path"],
         )
         if query_tokens and not semantic and score <= 0:
             continue

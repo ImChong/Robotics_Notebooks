@@ -9,6 +9,22 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
       "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
       "label": "人形运动跟踪方法选型指南",
@@ -58,10 +74,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-    "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-    "label": "人形运动跟踪方法选型指南",
-    "type": "query",
+    "path": "wiki/concepts/whole-body-control.md",
+    "detail_id": "wiki-concepts-whole-body-control",
+    "label": "Whole-Body Control (WBC，全身控制)",
+    "type": "concept",
     "recency": "2026-05-21",
     "source": "log.md"
   }

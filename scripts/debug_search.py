@@ -38,7 +38,9 @@ def debug_query(query_text):
         # 计算系数（根据 search_wiki.py 逻辑反推）
         boost = 1.0
         if page_type == "comparison":
-            boost = 1.3
+            from search_wiki_core import _query_has_comparison_intent
+
+            boost = 1.3 if _query_has_comparison_intent(query_words) else 1.0
         elif page_type == "query":
             boost = 0.7
 

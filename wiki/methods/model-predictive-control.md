@@ -3,10 +3,10 @@ type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
 updated: 2026-04-20
-summary: "Model Predictive Control（MPC，模型预测控制）通过在线滚动优化未来轨迹，在约束控制和机器人运动规划中广泛使用。"
+summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 
-# Model Predictive Control (MPC)
+# Model Predictive Control (MPC，模型预测控制)
 
 **模型预测控制**：一种基于滚动时域优化的控制方法，在每个时刻求解一个有限时域的最优控制问题，只执行第一步，然后重复。
 
