@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联类型分布」小条形图
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) P3「详情页关联类型分布小条形图」唯一子项；P0–P2 已全部落地，进入交互层关系视角增强阶段
+- 改动形态：
+  - [`docs/detail.html`](docs/detail.html)：在 `#detail-related` 标题下新增 `#detailRelatedTypeDist` 容器（含标题 / Meta / 横向条形栅格），默认 hidden，由 JS 在有关联项时显式打开
+  - [`docs/main.js`](docs/main.js)：新增 `deriveDetailCategoryLabel()`（按 `path` 优先 → `type` 兜底 → `id` 前缀兜底，输出中文标签：概念 / 方法 / 形式化 / 对比 / Query / 任务 / 实体 / 总览 / 深挖 / 路线图 / 技术地图）；新增 `renderRelatedTypeDistribution()`（统计、按计数倒序+标签字典序、最大计数为 100% 基准、其余按比例并保底 6% 可见宽度），在 `renderDetailPage` 的正常态与「未匹配 detail page」空态均调用一次以避免幽灵骨架
+  - [`docs/style.css`](docs/style.css)：新增 `.related-type-dist*` 系列样式（卡片化容器 / 三列网格 `92px 1fr 56px`：标签—轨道—计数 / `var(--accent)` 填充 / 540px 窄屏自适应缩列至 `78px 1fr 46px`）
+- 验证：`make lint-js` 通过（仅一条 pre-existing `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server 8765` + `puppeteer-core` 视口截图（`/opt/pw-browsers/chromium-1194/chrome-linux/chrome`）打开 `detail.html?id=wiki-concepts-armature-modeling` 锚点 `detail-related`，条形图正确显示「方法 / 概念」两类共 5 项；截图落 `.cursor-artifacts/screenshots/detail-related-type-dist.png`
+- 状态联动：V22 checklist 「详情页关联类型分布小条形图」由 `[ ]` 变 `[x]`；P3 剩余「图谱页专题视图切换器」与 DoD 收尾继续推进
+
 ## [2026-05-21] ingest | sources/papers/deeprl_locomotion_action_space_sca2017.md — Peng & van de Panne SCA 2017 四动作空间 DeepRL 对照；沉淀 wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md；交叉更新 rl_pd 索引、legged-humanoid-rl-pd-gain-setting、xue-bin-peng、locomotion
 
 ## [2026-05-21] ingest | sources/papers/gencad_arxiv_2409_16294.md、sources/papers/gencad3d_arxiv_2509_15246.md、sources/sites/gencad-github-io.md、sources/sites/gencad3d-github-io.md、sources/repos/ferdous-alam-gencad.md、sources/repos/yunomi-git-gencad-3d.md — 入库 GenCAD / GenCAD-3D 论文、项目页与代码仓；沉淀 wiki/entities/gencad.md、wiki/entities/gencad-3d.md；交叉更新 wiki/concepts/text-to-cad.md、sources/sites/text-to-cad-tools.md

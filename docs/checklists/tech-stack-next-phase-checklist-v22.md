@@ -73,8 +73,11 @@
 
 ## P3: 交互层"关系视角"增强 (UX/UI)
 
-- [ ] **详情页"关联类型分布"小条形图**：
-    - [ ] 在 `docs/detail.html` 的"关联页面"区块新增按 `type`（method/concept/entity/formalization/...）聚类的横向条形小图，让读者一眼判断当前节点偏理论、偏工程还是偏实体。
+- [x] **详情页"关联类型分布"小条形图**：
+    - [x] 在 `docs/detail.html` 的"关联页面"区块新增按 `type`（method/concept/entity/formalization/...）聚类的横向条形小图，让读者一眼判断当前节点偏理论、偏工程还是偏实体。
+      - 实现：`docs/detail.html` 在 `#detail-related` 标题下新增 `#detailRelatedTypeDist` 容器（含 head 与 bars 两块）；`docs/main.js` 新增 `deriveDetailCategoryLabel()`（按 path/type/id 派生中文类别：概念 / 方法 / 形式化 / 对比 / Query / 任务 / 实体 / 总览 / 深挖 / 路线图 / 技术地图）与 `renderRelatedTypeDistribution()`（按计数排序、最长条占满轨道，其它按比例并保底 6% 可见宽度），在 `renderDetailPage` 正常态与未匹配态都调用一次以保持空态干净；`docs/style.css` 新增 `.related-type-dist*` 样式（标题/Meta/三列网格：标签/横向轨道/计数；540px 以下窄屏自适应缩列）。
+      - 验证：`make lint-js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server` + Puppeteer 视口截图 `wiki-concepts-armature-modeling` 详情页，按类型分布正常落稳（共 5 项 · 2 类，方法 / 概念）。
+      - 截图：`.cursor-artifacts/screenshots/detail-related-type-dist.png`。
 - [ ] **图谱页"专题视图"切换器**：
     - [ ] `docs/graph.html` 增加下拉菜单，可选"全量 / 动作重定向 / 抓取 / 触觉与通信"三个子图过滤模式，复用 V21 微地图的同套 `path → type` 元数据。
 
