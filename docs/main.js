@@ -514,11 +514,20 @@
       + '</div>';
   }
 
-  var MERMAID_FONT_SIZE_PX = 18;
+  var MERMAID_FONT_SIZE_PX = 14;
+  var MERMAID_FONT_SIZE_MOBILE_PX = 12;
   var MERMAID_LIGHTBOX_FONT_SCALE = 1.75;
 
+  function getMermaidFontSizePx() {
+    if (typeof window !== 'undefined' && window.matchMedia
+      && window.matchMedia('(max-width: 640px)').matches) {
+      return MERMAID_FONT_SIZE_MOBILE_PX;
+    }
+    return MERMAID_FONT_SIZE_PX;
+  }
+
   function getMermaidThemeVariables(isDark, fontSizePx) {
-    var size = Math.max(12, Math.round(fontSizePx || MERMAID_FONT_SIZE_PX));
+    var size = Math.max(11, Math.round(fontSizePx || getMermaidFontSizePx()));
     var fontSize = String(size) + 'px';
     var lightThemeVars = {
       primaryColor: '#ECE8F8',
@@ -564,7 +573,11 @@
       securityLevel: 'strict',
       flowchart: {
         useMaxWidth: false,
-        htmlLabels: false
+        htmlLabels: false,
+        padding: 18,
+        nodeSpacing: 42,
+        rankSpacing: 48,
+        wrappingWidth: 150
       }
     });
   }
@@ -582,7 +595,7 @@
         node.textContent = saved;
       }
     });
-    initializeMermaidRenderer(MERMAID_FONT_SIZE_PX);
+    initializeMermaidRenderer(getMermaidFontSizePx());
     return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
       enhanceMermaidZoomTargets(container);
       bindMermaidZoom(container);
@@ -878,12 +891,12 @@
     node.textContent = source;
     sandbox.appendChild(node);
     document.body.appendChild(sandbox);
-    var hiFontPx = Math.round(MERMAID_FONT_SIZE_PX * MERMAID_LIGHTBOX_FONT_SCALE);
+    var hiFontPx = Math.round(getMermaidFontSizePx() * MERMAID_LIGHTBOX_FONT_SCALE);
     initializeMermaidRenderer(hiFontPx);
     return window.mermaid.run({ nodes: [node] }).catch(function () {}).then(function () {
       var hiSvg = node.querySelector('svg');
       if (sandbox.parentNode) document.body.removeChild(sandbox);
-      initializeMermaidRenderer(MERMAID_FONT_SIZE_PX);
+      initializeMermaidRenderer(getMermaidFontSizePx());
       if (hiSvg) return cloneMermaidSvgForLightbox(hiSvg);
       return inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null;
     });
