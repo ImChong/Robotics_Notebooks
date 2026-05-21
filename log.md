@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] ingest | sources/papers/deeprl_locomotion_action_space_sca2017.md — Peng & van de Panne SCA 2017 四动作空间 DeepRL 对照；沉淀 wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md；交叉更新 rl_pd 索引、legged-humanoid-rl-pd-gain-setting、xue-bin-peng、locomotion
+
 ## [2026-05-21] ingest | sources/papers/gencad_arxiv_2409_16294.md、sources/papers/gencad3d_arxiv_2509_15246.md、sources/sites/gencad-github-io.md、sources/sites/gencad3d-github-io.md、sources/repos/ferdous-alam-gencad.md、sources/repos/yunomi-git-gencad-3d.md — 入库 GenCAD / GenCAD-3D 论文、项目页与代码仓；沉淀 wiki/entities/gencad.md、wiki/entities/gencad-3d.md；交叉更新 wiki/concepts/text-to-cad.md、sources/sites/text-to-cad-tools.md
 
 ## [2026-05-21] structural | wiki/concepts/contact-rich-manipulation.md、wiki/concepts/visuo-tactile-fusion.md — V22 P2 接触/操作交叉补强：补「抓取 → 插装 → 精细操作」级联引用，打通 P1 触觉链路与 P2 抓取链路

@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-21",
-  "node_count": 412,
-  "edge_count": 3014,
+  "node_count": 413,
+  "edge_count": 3026,
   "coverage": {
-    "covered": 410,
-    "total": 410,
+    "covered": 411,
+    "total": 411,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md",
+      "detail_id": "entity-paper-deeprl-locomotion-action-space-sca2017",
+      "label": "Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/gencad.md",
       "detail_id": "entity-gencad",
@@ -378,9 +386,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gencad.md",
-    "detail_id": "entity-gencad",
-    "label": "GenCAD（Image-Conditioned CAD Program Generation）",
+    "path": "wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md",
+    "detail_id": "entity-paper-deeprl-locomotion-action-space-sca2017",
+    "label": "Learning Locomotion Skills Using DeepRL: Does the Choice of Action Space Matter?",
     "type": "entity",
     "recency": "2026-05-21",
     "source": "log.md"

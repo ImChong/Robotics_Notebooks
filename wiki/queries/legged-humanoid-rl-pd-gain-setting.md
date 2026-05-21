@@ -3,7 +3,7 @@ type: query
 tags: [rl, locomotion, humanoid, legged, sim2real, actuator, pd-control]
 status: stable
 summary: "腿足与人形 RL 中如何把 Kp/Kd（刚度/阻尼）与仿真步长、控制频率及 sim2real 对齐的工程要点与决策流程。"
-updated: 2026-05-12
+updated: 2026-05-21
 related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-variable-impedance-contact-rl.md
+  - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
   - ../entities/legged-gym.md
   - ../entities/isaac-gym-isaac-lab.md
   - ../entities/mujoco.md
@@ -63,6 +64,7 @@ sources:
 
 | 若你最关心… | 知识库子页（含 Mermaid）· 外部一手 |
 |-------------|--------|
+| **四种动作语义（扭矩 / 肌肉 / PD 目标角 / 目标角速度）谁更好学** — 角色侧系统对照 | [DeepRL 动作空间 SCA 2017](../entities/paper-deeprl-locomotion-action-space-sca2017.md) · [arXiv:1611.01055](https://arxiv.org/abs/1611.01055) |
 | 全尺寸人形真机里 **PD 怎样嵌进大规模 RL + sim2real 流水线**（含公开增益表锚点） | [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md) · [arXiv:2303.03381](https://arxiv.org/abs/2303.03381) |
 | **固定标称增益 vs 随机化**、以及 **策略 Hz 与 PD 内环 Hz 的典型分频** | [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md) · [arXiv:2401.16889](https://arxiv.org/abs/2401.16889) |
 | **RL 能否学刚度/增益**、分组 vs 逐关节 | [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md) · [arXiv:2502.09436](https://arxiv.org/abs/2502.09436) |
@@ -79,6 +81,8 @@ sources:
 ```mermaid
 flowchart TB
   Q["子问题：你要优化哪一段接口"]
+  Q --> A0["动作语义族对照（前史）"]
+  A0 --> A01["1611.01055 SCA17 四接口"]
   Q --> H["人形全尺寸 sim2real 主干"]
   H --> H1["2303.03381 Digit RL"]
   Q --> B["双足分频与增益 DR"]

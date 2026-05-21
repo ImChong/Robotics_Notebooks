@@ -33,6 +33,7 @@ Simon Fraser University（SFU）助理教授兼 **NVIDIA Research Scientist**；
 
 | 方向 | 代表条目（示例） | 项目或论文入口 |
 |------|------------------|----------------|
+| 动作空间与 DeepRL locomotion | Action Space（SCA 2017 Best Student Paper） | <https://xbpeng.github.io/projects/ActionSpace/index.html> · [arXiv:1611.01055](https://arxiv.org/abs/1611.01055) |
 | 示例引导的物理技能 RL | DeepMimic（SIGGRAPH 2018） | <https://xbpeng.github.io/projects/DeepMimic/index.html> |
 | 对抗运动先验 / 技能潜空间 | AMP（2021）、ASE（2022）、ADD（2025） | 各项目页见主页对应行 |
 | 仿真到现实（腿式） | Sim-to-Real with Dynamics Randomization（ICRA 2018） | <https://xbpeng.github.io/projects/SimToReal/index.html> |
