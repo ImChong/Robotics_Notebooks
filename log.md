@@ -1,5 +1,21 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-21] structural | wiki/concepts/domain-randomization.md 等 17 页 — 清理 lint 长期 stale 预存量：按 source 给 17 个 wiki 页补 ingest 档案交叉引用
+
+- 触发：`make lint` 报「陈旧页面」17 条（mtime 判定：source 比 wiki 新 ≥ 24h）；预存自 2026-05-19 起多次 ingest 累积，与本批改动前的提交无关
+- 影响页面（按 source 分组）：
+  - `sources/papers/barkour_arxiv_2305_14654.md` → [`wiki/concepts/domain-randomization.md`](wiki/concepts/domain-randomization.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)
+  - `sources/papers/bfm_humanoid_arxiv_2509_13780.md` → [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/curriculum-learning.md`](wiki/concepts/curriculum-learning.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+  - `sources/papers/capvector_arxiv_2605_10903.md` → [`wiki/methods/star-vla.md`](wiki/methods/star-vla.md)
+  - `sources/papers/defi_arxiv_2604_16391.md` → [`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)
+  - `sources/papers/holomotion_arxiv_2605_15336.md` → [`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)
+  - `sources/papers/physforge_arxiv_2605_05163.md` → [`wiki/entities/sapien.md`](wiki/entities/sapien.md)
+  - `sources/papers/robot_link_rotor_inertia_primary_refs.md` → [`wiki/entities/modern-robotics-book.md`](wiki/entities/modern-robotics-book.md)
+  - `sources/papers/system_identification.md` → [`wiki/methods/actuator-network.md`](wiki/methods/actuator-network.md)（已有引用，扩写覆盖范围以反映 source 现含 Hwangbo / Gautier–Khalil / Grandia / Peng 等条目）
+  - `sources/papers/wm_robot_survey_arxiv_2605_00080.md` → [`wiki/methods/model-based-rl.md`](wiki/methods/model-based-rl.md)
+- 改动形态：每页在「参考来源」追加 1 条 ingest 档案行（含一句话提炼），统一与项目约定模式对齐；未做结构/正文重写
+- 验证：`make lint` 17 → 0 issues；`make ci-preflight` 通过（同步 `exports/`、`docs/exports/`、`docs/search-index.json` 等，导出质量 12/12）
+
 ## [2026-05-21] fix(search): 搜索回归 WBC/MPC 定义页排名 — 条件化 comparison 提权 + 定义页 canonical boost
 
 - `scripts/search_wiki_core.py`：`comparison` 类型仅在查询含「对比/选型」等意图时 ×1.3；WBC/MPC 定义页在缩写命中时 ×1.4 canonical boost

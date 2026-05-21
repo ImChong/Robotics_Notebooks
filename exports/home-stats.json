@@ -9,6 +9,142 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/curriculum-learning.md",
+      "detail_id": "wiki-concepts-curriculum-learning",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/star-vla.md",
+      "detail_id": "wiki-methods-star-vla",
+      "label": "StarVLA",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-policy.md",
+      "detail_id": "wiki-methods-diffusion-policy",
+      "label": "Diffusion Policy",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/action-chunking.md",
+      "detail_id": "wiki-methods-action-chunking",
+      "label": "Action Chunking（动作块输出）",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/imitation-learning.md",
+      "detail_id": "wiki-methods-imitation-learning",
+      "label": "Imitation Learning (IL, 模仿学习)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/sapien.md",
+      "detail_id": "entity-sapien",
+      "label": "SAPIEN (仿真引擎)",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/actuator-network.md",
+      "detail_id": "wiki-methods-actuator-network",
+      "label": "Actuator Network (执行器网络)",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/model-based-rl.md",
+      "detail_id": "wiki-methods-model-based-rl",
+      "label": "Model-Based RL（基于模型的强化学习）",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/concepts/whole-body-control.md",
       "detail_id": "wiki-concepts-whole-body-control",
       "label": "Whole-Body Control (WBC，全身控制)",
@@ -74,9 +210,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/whole-body-control.md",
-    "detail_id": "wiki-concepts-whole-body-control",
-    "label": "Whole-Body Control (WBC，全身控制)",
+    "path": "wiki/concepts/domain-randomization.md",
+    "detail_id": "wiki-concepts-domain-randomization",
+    "label": "Domain Randomization",
     "type": "concept",
     "recency": "2026-05-21",
     "source": "log.md"

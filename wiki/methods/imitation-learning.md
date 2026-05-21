@@ -146,6 +146,7 @@ flowchart TD
 - [sources/papers/egoscale_arxiv_2602_16710.md](../../sources/papers/egoscale_arxiv_2602_16710.md) — EgoScale：人视频规模预训练 VLA + 对齐 mid-training（arXiv:2602.16710）摘录
 - [sources/sites/nvidia-research-egoscale.md](../../sources/sites/nvidia-research-egoscale.md) — NVIDIA Research EgoScale 官方项目页索引
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
+- [sources/papers/holomotion_arxiv_2605_15336.md](../../sources/papers/holomotion_arxiv_2605_15336.md) — HoloMotion-1：野外视频重建 + MoCap 混合语料，稀疏 MoE Transformer + 序列级 PPO 的零样本全身跟踪
 - [sources/blogs/claw_unitree_g1_language_annotated_motion_data.md](../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md) — CLAW 数据生成管线资料
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — robot_lab RL 训练框架资料
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md) — 任务驱动的工程实践路径与 LeRobot 应用

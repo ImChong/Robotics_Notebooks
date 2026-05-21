@@ -196,6 +196,7 @@ Phase 2：Actor-Critic 在潜空间训练（想象数据）
 - **ingest 档案：** [sources/papers/model_based_rl.md](../../sources/papers/model_based_rl.md)
 - [robotic_world_model（Isaac Lab 扩展）](../../sources/repos/leggedrobotics_robotic_world_model.md)
 - [robotic_world_model_lite](../../sources/repos/leggedrobotics_robotic_world_model_lite.md)
+- [sources/papers/wm_robot_survey_arxiv_2605_00080.md](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md) — World Model for Robot Learning 综述（生成式世界模型 + WAM + Model-Based RL 八层栈站位）
 
 ---
 

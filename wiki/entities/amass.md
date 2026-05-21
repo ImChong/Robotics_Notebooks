@@ -60,6 +60,7 @@ flowchart LR
 - Mahmood et al., *AMASS: Archive of Motion Capture as Surface Shapes* (ICCV 2019) — 论文 PDF 见站点链接
 - AMASS 官网：<https://amass.is.tue.mpg.de/>
 - 教程代码仓库：<https://github.com/nghorbani/amass>
+- **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：AMASS 重定向轨迹作为 Unitree G1 行为基础模型的蒸馏输入
 
 ## 关联页面
 
