@@ -66,8 +66,10 @@
       - 实现：新增 `wiki/comparisons/anygrasp-vs-graspnet.md`，按「一句话定义 + 14 维核心对比表 + Mermaid 数据流并排图（GraspNet 家族白盒基线 / AnyGrasp SDK 工程闭环）+ 三类适用场景 + 6 类常见误判 + 决策矩阵 + 评测指标视角」结构覆盖 GraspNet-1Billion / Contact-GraspNet / GSNet 三条家族子路线与 AnyGrasp SDK；显式区分「白盒改造 vs 工程化交付」「单帧 vs 动态跨帧」「完全开源 vs 二进制 License」三对核心取舍，并强调两者非互斥替代关系。
       - 交叉互链：`wiki/methods/grasp-pose-estimation.md`、`wiki/entities/anygrasp.md`、`wiki/queries/grasp-policy-selection.md`、`wiki/methods/contact-net.md`、`wiki/tasks/manipulation.md` 的 frontmatter `related` 与「关联页面」均加入本页入口，形成「方法谱系页 + 实体页 + Query + 对比页」四级互链闭环。
       - 验证：`make ci-preflight` 同步派生产物（exports / docs / search-index / sitemap / index.md 等）；至此 P2「抓取知识链 (+3)」三个子项全部落地，专题进入 `[x]` 完成状态。
-- [ ] **接触/操作交叉补强**：
-    - [ ] 在 `wiki/concepts/contact-rich-manipulation.md` 与 `wiki/concepts/visuo-tactile-fusion.md` 中补"抓取→插装→精细操作"的级联引用，把 P1 触觉链路与 P2 抓取链路打通。
+- [x] **接触/操作交叉补强**：
+    - [x] 在 `wiki/concepts/contact-rich-manipulation.md` 与 `wiki/concepts/visuo-tactile-fusion.md` 中补"抓取→插装→精细操作"的级联引用，把 P1 触觉链路与 P2 抓取链路打通。
+      - 实现：两页同步新增「抓取 → 插装 → 精细操作（级联视角）」三段式小节。`contact-rich-manipulation.md` 加 3 列表格（① 抓取 / ② 插装 / ③ 精细操作）并显式标注 P2 上游候选（Grasp Pose Estimation / AnyGrasp / ContactNet / 抓取策略选型 Query / AnyGrasp vs GraspNet）→ 本页中段 → P1 下游执行层（Impedance / Tactile Impedance / TSID / WBC）的连接关系，附「① 准但 ② 没接管会撞死」的工程含义说明；`visuo-tactile-fusion.md` 同节加 Mermaid 流水线图 + 三段式表格，强调「检测式 grasp 不带接触可信度，门控必须在触觉给出几何漂移信号时让出权重」这一常被忽略的衔接点。两页 frontmatter `related` 与「关联页面」尾部互链至 P2 抓取链（grasp-pose-estimation / grasp-policy-selection / anygrasp-vs-graspnet）与 P1 触觉链（tactile-impedance-control / hybrid-force-position-control）。`updated` 字段同步刷至 2026-05-21。
+      - 验证：`make ci-preflight` 通过（page catalog / export_minimal / sync_all_stats / eval_search_quality 37/37 / check_export_quality 12/12 均通过；`lint_wiki.py` 的 9 项 `stale_pages` 与本次改动无关，均为 2026-05-21 早些 ingest 引入的历史 baseline）。`exports/graph-stats.json` 边数由 2050 升至 **3004**、节点数 **410**、largest_community_ratio = 0.207、community_quality_warning = false。
 
 ## P3: 交互层"关系视角"增强 (UX/UI)
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-04-27
+updated: 2026-05-21
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
@@ -13,6 +13,11 @@ related:
   - ../queries/multimodal-fusion-tricks.md
   - ../queries/tactile-feedback-in-rl.md
   - ../tasks/manipulation.md
+  - ../methods/grasp-pose-estimation.md
+  - ../queries/grasp-policy-selection.md
+  - ../comparisons/anygrasp-vs-graspnet.md
+  - ../methods/tactile-impedance-control.md
+  - ./hybrid-force-position-control.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
@@ -102,6 +107,26 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 
 工程上常见的兜底是：在视觉给出的目标位置上加一个微小的「过冲量 (over-travel)」，让接触一定先于精准对齐发生，再交给触觉做最后的微调。这等价于把「接触瞬间」从一个未知点变成一个**期望事件**，从而为融合策略提供稳定的对齐信号。
 
+## 抓取 → 插装 → 精细操作（级联视角）
+
+把视触觉融合放回更长的操作流水线，可以看清「为什么单独训一个融合网络往往效果不好」：融合的真正难点是在**三段不同主导模态**之间无缝交班，而不只是把两路特征做加权。
+
+```mermaid
+flowchart LR
+    A[① 抓取<br/>视觉主导] -->|落爪位姿 + 候选冗余| B[② 插装<br/>视触交班窗口期]
+    B -->|稳定接触<br/>力学闭环建立| C[③ 精细操作<br/>触觉主导]
+    A -. 候选过稀 .-> X[②/③ 力学不可执行]
+    B -. 门控误判 .-> X
+```
+
+| 阶段 | 主导模态 | 关键决策 | 代表页面 |
+|------|----------|----------|----------|
+| ① **抓取（pre-contact）** | 视觉（RGBD / 点云） | 落爪位姿 + 候选稠密度 + 摩擦锥兼容性 | [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)、[AnyGrasp](../entities/anygrasp.md)、[抓取策略选型 Query](../queries/grasp-policy-selection.md)、[AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md) |
+| ② **插装（make-contact）** | 视触交班，本页核心 | 接触检测、门控权重、过冲量、控制器切换 | 本页 + [Contact-Rich Manipulation](./contact-rich-manipulation.md)、[Contact Estimation](./contact-estimation.md)、[Hybrid Force-Position Control](./hybrid-force-position-control.md) |
+| ③ **精细操作（in-contact）** | 触觉 + 本体感受 | 阻抗在线调节、滑移检测、力跟踪 | [Tactile Impedance Control](../methods/tactile-impedance-control.md)、[Impedance Control](./impedance-control.md)、[Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)、[Contact Wrench Cone](../formalizations/contact-wrench-cone.md) |
+
+> **常被忽略的衔接点**：① 阶段的检测式 grasp（GraspNet / Contact-GraspNet / AnyGrasp）只输出 $(R, t, w, q)$，**不带任何接触可信度信息**——它会在指尖完全遮挡视觉之前就完成评估。这意味着 ② 阶段的视触觉融合**必须假设上游候选可能与真实接触面有数毫米的几何漂移**，门控/注意力机制要能在触觉一旦给出"实际接触在偏离 grasp 候选 N mm 处"的信号时**立刻让出权重**，否则会被上游 grasp 的高质量分数"锁死"在错误的接触假设上。这也是为什么把 ① 与 ② 串成一段端到端 VLA、却又不重采样接触瞬间样本时，融合策略经常退化为纯视觉的根因。
+
 ## 训练数据怎么收
 
 视触觉融合策略对数据分布极其敏感：
@@ -142,6 +167,11 @@ $\alpha_t$ 既可以由人类先验（接触力、深度差）算出，也可以
 - [Multimodal Fusion Tricks](../queries/multimodal-fusion-tricks.md)
 - [Tactile Feedback in RL](../queries/tactile-feedback-in-rl.md)
 - [Manipulation 任务](../tasks/manipulation.md)
+- [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — ① 抓取阶段的视觉感知主线
+- [抓取策略选型 Query](../queries/grasp-policy-selection.md) — ① 抓取阶段的选型决策
+- [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md) — ① 抓取检测家族对比
+- [Tactile Impedance Control](../methods/tactile-impedance-control.md) — ③ 精细操作阶段的触觉闭环
+- [Hybrid Force-Position Control](./hybrid-force-position-control.md) — ② 插装/③ 精细操作的执行层切换
 
 ## 参考来源
 

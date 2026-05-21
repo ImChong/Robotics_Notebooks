@@ -1,13 +1,109 @@
 {
   "generated_at": "2026-05-21",
   "node_count": 410,
-  "edge_count": 2993,
+  "edge_count": 3004,
   "coverage": {
     "covered": 408,
     "total": 408,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/visuo-tactile-fusion.md",
+      "detail_id": "wiki-concepts-visuo-tactile-fusion",
+      "label": "视触觉融合（Visuo-Tactile Fusion）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/grasp-pose-estimation.md",
+      "detail_id": "wiki-methods-grasp-pose-estimation",
+      "label": "Grasp Pose Estimation（抓取位姿估计）",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/anygrasp.md",
+      "detail_id": "entity-anygrasp",
+      "label": "AnyGrasp（抓取感知 SDK）",
+      "type": "entity",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/contact-net.md",
+      "detail_id": "wiki-methods-contact-net",
+      "label": "ContactNet",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/grasp-policy-selection.md",
+      "detail_id": "wiki-queries-grasp-policy-selection",
+      "label": "Query：抓取策略选型（开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习）",
+      "type": "query",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/anygrasp-vs-graspnet.md",
+      "detail_id": "wiki-comparisons-anygrasp-vs-graspnet",
+      "label": "AnyGrasp vs GraspNet：抓取检测家族选型对比",
+      "type": "comparison",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/impedance-control.md",
+      "detail_id": "wiki-concepts-impedance-control",
+      "label": "Impedance Control（阻抗控制）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/tactile-impedance-control.md",
+      "detail_id": "wiki-methods-tactile-impedance-control",
+      "label": "Tactile Impedance Control（基于触觉反馈的阻抗控制）",
+      "type": "method",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/tsid.md",
+      "detail_id": "wiki-concepts-tsid",
+      "label": "TSID",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/hybrid-force-position-control.md",
+      "detail_id": "wiki-concepts-hybrid-force-position-control",
+      "label": "Hybrid Force-Position Control（力位混合控制）",
+      "type": "concept",
+      "recency": "2026-05-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/sensenova-skills.md",
       "detail_id": "entity-sensenova-skills",
@@ -201,14 +297,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-05-21",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/methods/model-predictive-control.md",
       "detail_id": "wiki-methods-model-predictive-control",
       "label": "Model Predictive Control (MPC，模型预测控制)",
@@ -266,10 +354,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/sensenova-skills.md",
-    "detail_id": "entity-sensenova-skills",
-    "label": "SenseNova-Skills（OpenSenseNova）",
-    "type": "entity",
+    "path": "wiki/concepts/contact-rich-manipulation.md",
+    "detail_id": "wiki-concepts-contact-rich-manipulation",
+    "label": "Contact-Rich Manipulation（接触丰富型操作）",
+    "type": "concept",
     "recency": "2026-05-21",
     "source": "log.md"
   }
