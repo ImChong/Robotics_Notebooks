@@ -190,6 +190,7 @@ flowchart LR
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
 - [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）ingest 摘要
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS：环境感知 VLM 奖励合成 + 人形地形 RL（arXiv:2512.16446）ingest 摘要
+- [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 - [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)

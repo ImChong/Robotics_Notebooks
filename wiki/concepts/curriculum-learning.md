@@ -116,6 +116,7 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — Rudin 地形课程实现
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — Beyondmimic 的失败驱动采样说明了课程不只体现在地形难度，也体现在 reset 片段分布
 - **ingest 档案：** [sources/sites/kleiyn-efgcl.md](../../sources/sites/kleiyn-efgcl.md) — EFGCL：外部力引导课程（体操 spotting 隐喻）
+- **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：mask curriculum 让条件生成策略覆盖多种位级掩码（关节 / 根 / 关键点等接口）
 
 ---
 

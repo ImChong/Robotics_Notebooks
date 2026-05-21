@@ -132,6 +132,7 @@ VLA 推理常有 50ms 以上延迟，因此不适合直接做高频闭环。更�
 - [sources/repos/xiaomi-robotics-0.md](../../sources/repos/xiaomi-robotics-0.md) — Xiaomi-Robotics-0：异步 VLA chunk 条件化与后训练技巧归档
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md) — 具身智能能力栈与执行策略
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* — ACT 的代表性工作
+- [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：2D 视频预测与 3D 动作推理拆分预训练，扩散适配器输出动作 chunk
 
 ## 关联页面
 

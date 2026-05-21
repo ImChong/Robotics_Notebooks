@@ -84,3 +84,4 @@ Lynch-Park 将下面这些贯穿全书：
 - Lynch, K. M., & Park, F. C. (2017). *Modern Robotics: Mechanics, Planning, and Control*. Cambridge University Press.
 - [Northwestern Mechatronics Wiki — Modern Robotics](https://hades.mech.northwestern.edu/index.php/Modern_Robotics)
 - [PDF (官方免费)](https://hades.mech.northwestern.edu/images/7/7f/MR.pdf)
+- [sources/papers/robot_link_rotor_inertia_primary_refs.md](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — 连杆/转子惯量一手资料合集（Ch.8 开放链刚体动力学 + URDF + Gautier–Khalil 1990 + MuJoCo armature）

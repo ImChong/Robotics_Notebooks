@@ -124,6 +124,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 - OpenAI, *Learning Dexterous In-Hand Manipulation* (2019) — DR 大规模应用于操作任务
 - Hwangbo et al., *Learning Agile and Dynamic Motor Skills for Legged Robots* (2019) — 执行器网络与 actuator DR
 - **ingest 档案：** [sources/papers/simulation_tools.md](../../sources/papers/simulation_tools.md) — Genesis/Isaac Gym 仿真平台（DR 的执行环境）
+- **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour 在 Rudin 默认 DR 之外，对 >1m/s 敏捷动作补充躯干惯量 / 电机建模 / 关节静摩擦随机化（Table II）
 
 ## 关联页面
 
