@@ -48,6 +48,34 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_main_js_contains_mermaid_click_zoom_lightbox(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            "MERMAID_FONT_SIZE_PX",
+            "MERMAID_LIGHTBOX_FONT_SCALE",
+            "function getMermaidSvgLayoutSize(svg)",
+            "function renderMermaidSvgForLightbox(host)",
+            "flowchart: {",
+            "useMaxWidth: false",
+            "function fitMermaidLightboxToView(stage, body)",
+            "function cloneMermaidSvgForLightbox(svg)",
+            "function openMermaidLightbox(host)",
+            "function bindMermaidZoom(container)",
+            "function bindMermaidLightboxWheel(body)",
+            "function bindMermaidLightboxGestures(body)",
+            "function applyMermaidLightboxPinchZoom(stage, body)",
+            "mermaidLightboxPinchState",
+            "mermaidLightboxPanX",
+            "MERMAID_LIGHTBOX_ZOOM_MIN",
+            "mermaid-lightbox-stage",
+            "mermaid-zoomable",
+            "mermaid-lightbox",
+            "mermaid-lightbox-hint",
+            "拖拽平移 · 滚轮/双指缩放 · Esc 关闭",
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
     def test_main_js_contains_toc_renderer_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
@@ -135,7 +163,11 @@ class DetailContentSyncTests(unittest.TestCase):
             "decodeURIComponent(rawHash)",
             "container.querySelector('#' +",
             "target.scrollIntoView({ behavior: 'smooth', block: 'start' });",
-            "window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });",
+            "function notifyTocSpyScrollSync()",
+            "window.addEventListener('hashchange', function () {",
+            "scrollToDetailHashTarget(contentEl);",
+            "scrollDetailPageLayoutHashIntoView(contentEl);",
+            "notifyTocSpyScrollSync();",
             "scrollToDetailHashTarget(contentEl);",
         ]
         for snippet in expected_snippets:

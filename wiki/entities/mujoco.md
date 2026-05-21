@@ -2,11 +2,17 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-18
 related:
+  - ./mujoco-mjx.md
+  - ./brax.md
   - ../comparisons/mujoco-vs-isaac-sim.md
+  - ./paper-barkour-quadruped-agility-benchmark.md
+  - ./robot-motion-keyframe-editors.md
   - ./dm-control.md
+  - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
+  - ./newton-physics.md
   - ../methods/reinforcement-learning.md
   - ../concepts/sim2real.md
 sources:
@@ -29,7 +35,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 ## 对机器人研究的统治力
 
-- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。DeepMind 的 [dm-control](./dm-control.md) 则在 MuJoCo 上提供另一套广泛使用、约定更统一的连续控制基准（Control Suite）与 Python 工具链。
+- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。DeepMind 的 [dm-control](./dm-control.md) 则在 MuJoCo 上提供另一套广泛使用、约定更统一的连续控制基准（Control Suite）与 Python 工具链。四足敏捷方向另有官方资产 **MuJoCo Menagerie** 中的 [`google_barkour_v0` / `google_barkour_vb`](./paper-barkour-quadruped-agility-benchmark.md)（与 [Barkour](./paper-barkour-quadruped-agility-benchmark.md) 论文及开源机体 README 交叉索引）。
 - **Sim2Real 的证明**：诸多成功的 Sim2Real 论文（尤其是四足机器人和灵巧手操作领域）都证明了：只要系统辨识和域随机化做得好，在 MuJoCo 中训练的策略可以直接无缝迁移到物理硬件上。
 
 ## 优势与局限
@@ -39,18 +45,27 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 接触模型非常稳定，很少发生“穿模”或无理的反弹（Explosion）。
   - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。
 - **局限**：
-  - 原生 MuJoCo 在单机多 GPU 大规模并行能力上，逊色于专为此设计的 Isaac Gym（不过 DeepMind 推出的 MuJoCo XLA 正在弥补这一短板）。
+  - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。
 
 ## 关联页面
+- [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
+- [Brax](./brax.md) — JAX 侧 RL 训练与 README 中的 Playground / MJX 迁移指引
+- [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）
 - [dm_control / Control Suite](./dm-control.md) — MuJoCo 上的连续控制基准与 Python 栈
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎
 - [SAPIEN (仿真引擎)](./sapien.md) — 侧重关节体交互
 - [Robot Viewer](./robot-viewer.md) — 支持 MJCF 格式的 Web 查看器
+- [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md) — 以 URDF 为起点的派生模块目录（与 MJCF 这类仿真专用描述对照理解「预处理资产层」）
 - [NVIDIA Omniverse 具身仿真底座](./nvidia-omniverse.md)
+- [Newton Physics](./newton-physics.md) — Warp + MuJoCo Warp 的 GPU 可微引擎（LF 托管）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
+- [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
 
 ## 参考来源
+
+- [MuJoCo 物理引擎（仓库归档）](../../sources/repos/mujoco.md)
+- [mujoco-mjx（MJX 子树归档）](../../sources/repos/mujoco-mjx.md)
 - Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.

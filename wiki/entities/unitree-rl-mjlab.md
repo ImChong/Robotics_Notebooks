@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, framework, unitree, mjlab, mujoco, reinforcement-learning, sim2real, humanoid, locomotion]
 status: complete
-updated: 2026-04-29
+updated: 2026-05-17
 related:
+  - ./unitree-ros.md
   - ./mjlab.md
   - ./mjlab-playground.md
   - ./unitree.md
@@ -67,10 +68,13 @@ unitree_mujoco 仿真验证
 | 核心任务 | 速度跟踪 + 动作模仿 | AMP + recovery | 速度跟踪 | 速度跟踪 + AMP Dance |
 | 部署链路 | ONNX → C++（官方） | ONNX | 各异 | 各异 |
 
+**与 `unitree_ros` 的分工**：`unitree_ros` 提供 ROS1 + Gazebo8 的 URDF 与关节级仿真/控制示例（README 明确 Gazebo 不做高层行走）；`unitree_rl_mjlab` 面向当前研究常用的 **MuJoCo 并行训练 + SDK2** 部署闭环。二者同属官方开源，但中间件与仿真器代际不同，见 [unitree_ros](./unitree-ros.md)。
+
 ## 关联页面
 
 - [mjlab](./mjlab.md) — 底层框架（Isaac Lab API + MuJoCo Warp）
 - [Unitree](./unitree.md) — 品牌主页
+- [unitree_ros](./unitree-ros.md) — 官方 ROS1 / Gazebo URDF 与关节仿真栈（与本书 MuJoCo 主线对照）
 - [Unitree G1](./unitree-g1.md) — 主要人形目标机型
 - [AMP_mjlab](./amp-mjlab.md) — 同基于 mjlab 的社区 AMP 实现
 - [legged_gym](./legged-gym.md) — 同类框架，基于 IsaacGym

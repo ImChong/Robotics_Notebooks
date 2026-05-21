@@ -5,6 +5,9 @@ status: complete
 updated: 2026-04-30
 related:
   - ../concepts/ethercat-protocol.md
+  - ../concepts/can-bus-protocol.md
+  - ../concepts/can-fd.md
+  - ../concepts/uart-serial-communication.md
   - ../concepts/lcm-basics.md
   - ../concepts/ros2-basics.md
   - ../concepts/sim2real.md
@@ -144,6 +147,8 @@ $$
 
 ## 关联页面
 
+- [CAN 总线（经典）](../concepts/can-bus-protocol.md)
+- [CAN FD](../concepts/can-fd.md)
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
 - [LCM 基础](../concepts/lcm-basics.md)
 - [ROS 2 基础](../concepts/ros2-basics.md)

@@ -13,8 +13,13 @@ related:
   - ./data-flywheel.md
   - ../queries/sim2real-gap-reduction.md
   - ../entities/gr00t-visual-sim2real.md
+  - ../entities/nvidia-so101-sim2real-lab-workflow.md
+  - ../entities/nvidia-physical-ai-learning.md
+  - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../entities/lift-humanoid.md
   - ./humanoid-parallel-joint-kinematics.md
   - ./processor-in-the-loop-sim2real.md
+  - ../methods/crisp-real2sim.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 ---
 
@@ -138,6 +143,12 @@ flowchart TD
 仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）
 ```
 
+- **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
+
+### Real2Sim：从视频构造可仿真资产
+
+讨论 Sim2Real 时常隐含「仿真里已有合理关卡与参考运动」；人形上下文技能还要解决如何把**单目视频**变成**接触动力学可信**的仿真资产。[CRISP](../methods/crisp-real2sim.md)（ICLR 2026）用**凸平面场景原语 + 人–场景接触补全 + RL 人形闭环**把视频推向可 rollout 的 Real2Sim，并与 VideoMimic 等管线在几何—控制接口上形成对照（见项目页交互对比区）。
+
 ## 参考来源
 - [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
 
@@ -150,6 +161,10 @@ flowchart TD
 - [机器人论文阅读笔记：LCP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)
 - [机器人论文阅读笔记：RMA](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - [Menlo：Noise is all you need…](../../sources/blogs/menlo_noise_is_all_you_need.md) — 处理器在环 + CAN 抖动注入的 Asimov 工程博文入库摘录
+- **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — NVIDIA SO-101 动手课：DR / Co-training / Cosmos / SAGE+GapONet 四类策略对照与 VLA workflow
+- **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
+- [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
+- **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：>1m/s 敏捷动作的额外 DR + 零样本 sim2real 完成 5m×5m 障碍课
 
 ## 关联页面
 
@@ -160,9 +175,13 @@ flowchart TD
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
+- [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — 官方动手课：四类 sim2real 策略 + GR00T N1.6 VLA + LeRobot/Isaac Lab
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
+- [SAGE（执行器 Sim2Real 间隙估计）](../entities/sage-sim2real-actuator-gap-estimator.md) — Isaac 重放与真机关节日志对齐，RMSE/相关/余弦相似度等量化执行器层 gap
+- [LIFT](../entities/lift-humanoid.md) — JAX SAC 大规模预训练 + Brax 物理知情世界模型微调；微调阶段真机确定性采集与模型内随机探索解耦（arXiv:2601.21363）
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线/调度纳入仿真闭环的腿式迁移路径
+- [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 → 凸平面场景原语 + 接触补全 → RL 物理闭环的 Real2Sim（ICLR 2026）
 
 ## 继续深挖入口
 
@@ -178,6 +197,6 @@ flowchart TD
 ## 推荐继续阅读
 
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/)
-- [Sim2Real Actuator Gap Estimator](https://github.com/isaac-sim2real/sage)
+- [SAGE 官方仓库 README](https://github.com/isaac-sim2real/sage)（执行器层 gap 度量与成对数据集管线）
 - [Query：如何缩小 sim2real gap](../queries/sim2real-gap-reduction.md)
 - [Comparison：Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)

@@ -16,6 +16,10 @@
 - **PPO** (Schulman et al., 2017) — Humanoid locomotion RL 最常用基线，[arXiv](https://arxiv.org/abs/1707.06347)
 - **SAC** (Haarnoja et al., 2018) — 连续控制常用 off-policy 算法，[arXiv](https://arxiv.org/abs/1801.01290)
 
+### 敏捷与四足障碍课基准
+
+- **Barkour** — Benchmarking Animal-level Agility with Quadruped Robots（Caluwaerts et al., arXiv:2305.14654）：犬敏捷赛式障碍课 + 时间型敏捷分；专长 PPO + 导航 vs Locomotion-Transformer 蒸馏；零样本 sim2real 与开源 `barkour_robot` / MuJoCo Menagerie；[wiki 论文实体](../../wiki/entities/paper-barkour-quadruped-agility-benchmark.md) · [arXiv](https://arxiv.org/abs/2305.14654)
+
 ### 人形/足式 Locomotion
 
 - **AMP** — Adversarial Motion Priors (Peng et al., 2021)，用对抗方式嵌入技能，[Code](https://github.com/google-deepmind/deepmind-research/tree/master/adversarial_motion_priors)
@@ -31,8 +35,14 @@
 
 - **EFGCL** — External Force-Guided Curriculum Learning（Yoneda et al., RA-L 2026）：训练期辅助力 + 成功率衰减课程，四足高动态 sim2real；[wiki 方法页](../../wiki/methods/efgcl.md) · [Project Page](https://keitayoneda.github.io/kleiyn-efgcl/) · [DOI](https://doi.org/10.1109/LRA.2026.3675955)
 
+### 奖励自动合成与地形感知（VLM 代码奖励）
+
+- **E-SDS** — Environment-aware See it, Do it, Sorted（Yalcin et al., arXiv:2512.16446）：在 SDS 式视频分解上加入仿真采样的地形统计，生成调用高度图与 LiDAR 的 Python 奖励并闭环精炼 PPO；[wiki 论文实体](../../wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) · [arXiv](https://arxiv.org/abs/2512.16446)
+- **SDS** — See it, Do it, Sorted 四足单视频技能（Stamatopoulou et al., arXiv:2410.11571）：网格帧 + SUS 多智能体生成奖励，IsaacGym PPO 与 rollout 反馈进化；[arXiv](https://arxiv.org/abs/2410.11571) · [Project](https://rpl-cs-ucl.github.io/SDSweb/)
+
 ## 关联页面
 
+- [Barkour 论文实体](../../wiki/entities/paper-barkour-quadruped-agility-benchmark.md) — 敏捷障碍课基准 + 开源硬件与 Menagerie MJCF
 - [sim2real](../../wiki/concepts/sim2real.md) — Sim2Real 是 locomotion RL 的核心挑战
 - [domain-randomization](../../wiki/concepts/domain-randomization.md) — DR 是当前主流 sim2real 方法
 - [locomotion](../../wiki/concepts/locomotion.md) — locomotion 任务层

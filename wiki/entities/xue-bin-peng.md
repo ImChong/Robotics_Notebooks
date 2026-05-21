@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, reinforcement-learning, motion-imitation, sim2real, character-animation, sfu, nvidia, berkeley]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-21
 related:
+  - ./paper-deeprl-locomotion-action-space-sca2017.md
   - ./mimickit.md
   - ./protomotions.md
   - ../methods/deepmimic.md
@@ -14,6 +15,7 @@ related:
   - ./zhengyi-luo.md
 sources:
   - ../../sources/sites/xue-bin-peng.md
+  - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
 summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学家，博士师从 Levine / Abbeel；以 DeepMimic、AMP、ASE、动力学随机化 Sim2Real 等工作定义了物理角色与腿式机器人 RL 运动控制的一条主干研究线，并通过 MimicKit 统一开源实现。"
 ---
 
@@ -33,7 +35,8 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 1. **显式模仿与跟踪**：DeepMimic 一类工作强调 **参考运动 + 物理约束下的策略学习**，是后续大量 humanoid tracking 工作的参照系。
 2. **对抗式先验与表征**：AMP / ASE / ADD 等沿 **判别器或潜变量** 注入运动统计，降低手工奖励 shaping 成本，并与分层控制结合。
 3. **Sim2Real 与系统论文**：ICRA 2018 的动力学随机化论文常被作为 **域随机化 loco 迁移** 的入门引用；后续工作延续到多项目页（以主页列表为准）。
-4. **开源整合**：MimicKit 将多种算法置于统一训练循环，降低复现与对照实验门槛。
+4. **动作空间与 locomotion 前导**：[DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md) 在平面角色上系统比较 **扭矩 / PD 目标角** 等接口，为后续 Cassie 与 sim2real 中的 **「低维目标 + 内环」** 选型提供早期实证。
+5. **开源整合**：MimicKit 将多种算法置于统一训练循环，降低复现与对照实验门槛。
 
 ## 常见误区或局限
 
@@ -48,10 +51,13 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 - [Sim2Real](../concepts/sim2real.md)
 - [Tairan He（何泰然）](./tairan-he.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
+- [DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md)
+- [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 其图形学起源方法被搬到真实人形 RL 的张力讨论
 
 ## 参考来源
 
 - [Xue Bin Peng 个人主页原始资料](../../sources/sites/xue-bin-peng.md)
+- [DeepRL 动作空间 SCA 2017 原始资料](../../sources/papers/deeprl_locomotion_action_space_sca2017.md)
 
 ## 推荐继续阅读
 

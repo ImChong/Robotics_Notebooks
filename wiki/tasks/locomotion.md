@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-18
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -15,15 +15,19 @@ related:
   - ../concepts/terrain-adaptation.md
   - ../concepts/contact-dynamics.md
   - ../entities/unitree.md
+  - ../entities/unitree-ros.md
   - ./ultra-survey.md
   - ./manipulation.md
   - ./loco-manipulation.md
   - ./balance-recovery.md
   - ../queries/humanoid-hardware-selection.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ../concepts/wheel-legged-quadruped.md
   - ../entities/quadruped-robot.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
+  - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -32,7 +36,9 @@ related:
   - ../entities/paper-cassie-feedback-control-drl.md
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
+  - ../entities/paper-barkour-quadruped-agility-benchmark.md
   - ../entities/paper-variable-impedance-contact-rl.md
+  - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
 sources:
   - ../../sources/papers/policy_optimization.md
@@ -103,6 +109,8 @@ flowchart TD
 ### 4. 地形变化
 平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。
 
+- **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
+
 ### 5. 状态估计与延迟
 足式机器人在接触切换时很难直接观测机身速度和足端滑移；IMU、编码器、足端接触和视觉地形之间还存在时间同步与延迟问题。状态估计偏一点，控制器可能表现为“突然踢地”“脚底打滑”或“落脚点漂移”。
 
@@ -138,7 +146,7 @@ flowchart TD
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
   - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。
 - **世界模型**：学习环境模型，在模型里规划。
-  - 代表：Dreamer, LIFT
+  - 代表：[Model-Based RL（Dreamer 等）](../methods/model-based-rl.md)、[LIFT（BIGAI 三阶段管线）](../entities/lift-humanoid.md)
 
 ### 混合路线
 
@@ -169,6 +177,7 @@ flowchart TD
 - **泛化能力**：能否迁移到未见过的地形
 - **命令跟踪误差**：目标速度/角速度与实际速度的误差
 - **硬件安全裕度**：关节力矩、电流、温度和冲击峰值是否留有余量
+- **敏捷课一体化分数（研究基准）**：例如 [Barkour](../entities/paper-barkour-quadruped-agility-benchmark.md) 将 **多障碍序列 + 计时扣分** 压成 **0–1 敏捷分**，便于对比 **专长切换 vs Transformer 通才** 与 **sim2real** 管线。
 
 ## 工程落地检查
 
@@ -180,8 +189,9 @@ flowchart TD
 
 ## RL + 底层 PD / 阻抗 / 扭矩接口（论文实体子页）
 
-下列页面各含 **提炼正文 + Mermaid**，对应 [RL+PD 动作接口论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md) 中的十篇；与 [Kp/Kd 设置 query](../queries/legged-humanoid-rl-pd-gain-setting.md) 交叉阅读。
+下列页面各含 **提炼正文 + Mermaid**，对应 [RL+PD 动作接口论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md) 中的十一篇；与 [Kp/Kd 设置 query](../queries/legged-humanoid-rl-pd-gain-setting.md) 交叉阅读。
 
+- [DeepRL 动作空间对比（SCA 2017）](../entities/paper-deeprl-locomotion-action-space-sca2017.md)
 - [Digit 人形 RL 行走](../entities/paper-digit-humanoid-locomotion-rl.md)
 - [Cassie 双足多技能 RL](../entities/paper-cassie-biped-versatile-locomotion-rl.md)
 - [可变刚度腿足 RL](../entities/paper-variable-stiffness-locomotion-rl.md)
@@ -191,6 +201,7 @@ flowchart TD
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
+- [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
 
 ## 参考来源
@@ -202,11 +213,13 @@ flowchart TD
 - **ingest 档案：** [sources/papers/state_estimation.md](../../sources/papers/state_estimation.md) — EKF/InEKF 状态估计
 - **ingest 档案：** [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 多步态学习中的 Selective AMP 策略
 - **ingest 档案：** [sources/papers/rl_pd_action_interface_locomotion.md](../../sources/papers/rl_pd_action_interface_locomotion.md) — RL + PD/阻抗/扭矩接口论文索引
+- **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
 
 ## 关联系统/方法
 
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md)（直线执行器 + 闭链连杆与行走动态、能耗叙事）
 - [State Estimation](../concepts/state-estimation.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Imitation Learning](../methods/imitation-learning.md)
@@ -221,6 +234,7 @@ flowchart TD
 - [HiPAN](../methods/hipan.md)（四足在非结构化 3D 环境中的分层深度导航 + 姿态自适应低层跟踪）
 - [四足机器人](../entities/quadruped-robot.md)（四足形态与典型平台的实体入口）
 - [Unitree](../entities/unitree.md)（当前主流人形/四足研究硬件平台）
+- [unitree_ros（ROS1 / Gazebo）](../entities/unitree-ros.md)（官方 URDF + Gazebo 关节级仿真；高层行走不在 Gazebo 包承诺内）
 - [ULTRA：统一多模态 loco-manipulation 控制](./ultra-survey.md)（UIUC 2026，新一代全身移动操作统一控制器）
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md) — 实践决策指南
 
@@ -237,6 +251,7 @@ flowchart TD
 如果你想沿着 locomotion 继续往下挖，建议从这里进入：
 
 ### 论文入口
+- [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口
@@ -250,6 +265,7 @@ flowchart TD
 
 - [Humanoid Locomotion](./humanoid-locomotion.md) — 人形机器人全身移动任务
 - [Hybrid Locomotion](./hybrid-locomotion.md)
+- [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [MPC](../methods/model-predictive-control.md)
 

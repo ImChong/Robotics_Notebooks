@@ -1,11 +1,478 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-05-21] structural | scripts/lint_wiki.py — V22 P0 方法-Query 闭环 Lint：新增 `methods_without_practitioner_query` 检查（被 > 3 个 wiki 页引用的 methods/ 必须有 queries/ 或 comparisons/ 落地页，否则 💡 待落地预警）
+## [2026-05-21] ingest | sources/sites/kimodo-project.md、sources/papers/kimodo_arxiv_2603_15546.md — 深化 Kimodo 官方项目页与 arXiv:2603.15546 论文摘录；扩充 sources/repos/kimodo.md、wiki/entities/kimodo.md（两阶段去噪、变体选型、Mermaid 管线、GEM/SONIC/ProtoMotions 互链）；交叉更新 wiki/methods/diffusion-motion-generation.md
 
-- 实现：`scripts/lint_wiki.py` 增加 `_check_methods_without_practitioner_query` + `SOFT_WARNING_KEYS={"methods_without_practitioner_query"}`，预警在报告中独立计数但不计入 CI 退出码；inbound 集合按 referrer 去重避免单页多链假阳性。
-- 新增测试：`tests/test_lint_wiki_practitioner_query.py` 共 6 个用例，覆盖阈值边界 / queries 命中 / comparisons 命中 / 重复链接去重 / README 例外。
-- 现网结果：22 条软预警入账（exoactor、sonic-motion-tracking、amp-reward、beyondmimic、auto-labeling-pipelines 等高频方法），未来由 V22 P1/P2（grasp-policy-selection、anygrasp-vs-graspnet、gmr-vs-nmr-vs-reactor 等 queries/comparisons）逐步消化。
-- 验证：`pytest tests/ --no-cov -q` 91/91 通过；`ruff check + format --check` 通过；`python3 scripts/lint_wiki.py` exit=0。
+## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联项按社区分布」小条形图（基于 link-graph 社区，替换早些时候的按 type 分桶版本）
+
+- 触发：PR #347 review，社区维度（link-graph 的 Girvan-Newman + Louvain 二级拆分）比类型维度更有信息量——type 字段与 frontmatter 直接重复，而社区分桶能体现「当前节点的 1-hop 邻域聚集在哪几个主题」，与 V22 P0 的社区粒度二级拆分（17 个社区 / largest_community_ratio ≤ 0.40）形成闭环
+- 改动形态：
+  - [`docs/detail.html`](docs/detail.html)：`#detailRelatedTypeDist` 容器更名为 `#detailRelatedCommunityDist`，标题文案改「按社区分布」
+  - [`docs/main.js`](docs/main.js)：移除按 type 派生中文标签的 `deriveDetailCategoryLabel()` 与 `renderRelatedTypeDistribution()`；新增 `ensureDetailCommunityIndex()`（懒加载 `exports/link-graph.json`，建立 `pathToCommunity` Map 与 `communityLabel` 字典，失败兜底为空 Map）与 `renderRelatedCommunityDistribution()`（按 detail page 的 `path` 查表 → 拿社区 ID → 计数；不在图谱内的 roadmap / reference / tech_map 统一桶为「未分类」并永远排在末尾，避免遮挡有效社区）；社区标签显式 `replace(/\s*社区\s*$/, '')` 去掉末尾「社区」二字以节省横向空间，悬停 `title` 仍保留完整原始标签
+  - [`docs/style.css`](docs/style.css)：`.related-type-*` 系列样式整体改名为 `.related-community-*`，桌面端标签列宽 92px → 160px，540px 窄屏 78px → 110px，以容纳更长的社区中文标签（如 "Whole-Body Control (WBC，全身控制)"）
+  - [`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md)：P3 首项标题与实现说明同步换为「关联社区分布」版本，附 type→community 切换理由
+- 验证：`make lint-js` 通过；本地 http.server + Puppeteer 视口截图 `wiki-concepts-whole-body-control` 桌面 / 移动双端（共 12 项 · 8 个社区，含 Whole-Body Control 4 / Motion Retargeting 3 / Imitation Learning 1 / Locomotion 1 / Sim2Real 1 / Unitree G1 1 / Reward Design 1 / 未分类 1）与 `wiki-concepts-armature-modeling`（共 5 项 · 3 个社区，WBC 3 / Motion Retargeting 1 / Sim2Real 1）均正确落稳
+- 截图：`.cursor-artifacts/screenshots/detail-related-community-dist-wbc.png`、`detail-related-community-dist-wbc-mobile.png`、`detail-related-community-dist.png`
+
+## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联类型分布」小条形图
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) P3「详情页关联类型分布小条形图」唯一子项；P0–P2 已全部落地，进入交互层关系视角增强阶段
+- 改动形态：
+  - [`docs/detail.html`](docs/detail.html)：在 `#detail-related` 标题下新增 `#detailRelatedTypeDist` 容器（含标题 / Meta / 横向条形栅格），默认 hidden，由 JS 在有关联项时显式打开
+  - [`docs/main.js`](docs/main.js)：新增 `deriveDetailCategoryLabel()`（按 `path` 优先 → `type` 兜底 → `id` 前缀兜底，输出中文标签：概念 / 方法 / 形式化 / 对比 / Query / 任务 / 实体 / 总览 / 深挖 / 路线图 / 技术地图）；新增 `renderRelatedTypeDistribution()`（统计、按计数倒序+标签字典序、最大计数为 100% 基准、其余按比例并保底 6% 可见宽度），在 `renderDetailPage` 的正常态与「未匹配 detail page」空态均调用一次以避免幽灵骨架
+  - [`docs/style.css`](docs/style.css)：新增 `.related-type-dist*` 系列样式（卡片化容器 / 三列网格 `92px 1fr 56px`：标签—轨道—计数 / `var(--accent)` 填充 / 540px 窄屏自适应缩列至 `78px 1fr 46px`）
+- 验证：`make lint-js` 通过（仅一条 pre-existing `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server 8765` + `puppeteer-core` 视口截图（`/opt/pw-browsers/chromium-1194/chrome-linux/chrome`）打开 `detail.html?id=wiki-concepts-armature-modeling` 锚点 `detail-related`，条形图正确显示「方法 / 概念」两类共 5 项；截图落 `.cursor-artifacts/screenshots/detail-related-type-dist.png`
+- 状态联动：V22 checklist 「详情页关联类型分布小条形图」由 `[ ]` 变 `[x]`；P3 剩余「图谱页专题视图切换器」与 DoD 收尾继续推进
+
+## [2026-05-21] ingest | sources/papers/deeprl_locomotion_action_space_sca2017.md — Peng & van de Panne SCA 2017 四动作空间 DeepRL 对照；沉淀 wiki/entities/paper-deeprl-locomotion-action-space-sca2017.md；交叉更新 rl_pd 索引、legged-humanoid-rl-pd-gain-setting、xue-bin-peng、locomotion
+
+## [2026-05-21] ingest | sources/papers/gencad_arxiv_2409_16294.md、sources/papers/gencad3d_arxiv_2509_15246.md、sources/sites/gencad-github-io.md、sources/sites/gencad3d-github-io.md、sources/repos/ferdous-alam-gencad.md、sources/repos/yunomi-git-gencad-3d.md — 入库 GenCAD / GenCAD-3D 论文、项目页与代码仓；沉淀 wiki/entities/gencad.md、wiki/entities/gencad-3d.md；交叉更新 wiki/concepts/text-to-cad.md、sources/sites/text-to-cad-tools.md
+
+## [2026-05-21] structural | wiki/concepts/contact-rich-manipulation.md、wiki/concepts/visuo-tactile-fusion.md — V22 P2 接触/操作交叉补强：补「抓取 → 插装 → 精细操作」级联引用，打通 P1 触觉链路与 P2 抓取链路
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) P2「接触/操作交叉补强」唯一子项；V22 P2 抓取知识链 (+3) 已落地，需把上游检测式 grasp 与本页中段执行层、下游触觉精细操作连成一条流水线视角
+- 改动形态：
+  - [`wiki/concepts/contact-rich-manipulation.md`](wiki/concepts/contact-rich-manipulation.md)：新增「抓取 → 插装 → 精细操作（级联视角）」小节，三段式表格显式串联 P2 上游（[Grasp Pose Estimation](wiki/methods/grasp-pose-estimation.md)、[AnyGrasp](wiki/entities/anygrasp.md)、[ContactNet](wiki/methods/contact-net.md)、[抓取策略选型 Query](wiki/queries/grasp-policy-selection.md)、[AnyGrasp vs GraspNet](wiki/comparisons/anygrasp-vs-graspnet.md)）→ 本页中段 → P1 下游（[Impedance Control](wiki/concepts/impedance-control.md)、[Tactile Impedance Control](wiki/methods/tactile-impedance-control.md)、[TSID](wiki/concepts/tsid.md)/[WBC](wiki/concepts/whole-body-control.md)），并补「① 准但 ② 没接管会撞死」的工程含义说明；frontmatter `related` 与「关联页面」尾部互链至 P2 抓取链
+  - [`wiki/concepts/visuo-tactile-fusion.md`](wiki/concepts/visuo-tactile-fusion.md)：新增同名小节，附 Mermaid 流水线图与三段式表格，强调「检测式 grasp 不带接触可信度，门控/注意力必须在触觉给出几何漂移信号时立即让出权重」这一常被忽略的衔接点；frontmatter `related` 与「关联页面」加入 P2 抓取链与 [Tactile Impedance Control](wiki/methods/tactile-impedance-control.md)、[Hybrid Force-Position Control](wiki/concepts/hybrid-force-position-control.md)
+  - 两页 `updated` 字段刷新至 2026-05-21
+- 验证：`python3 scripts/eval_search_quality.py` 37/37 通过；`python3 scripts/check_export_quality.py` 12/12 通过；`make ci-preflight` 同步派生产物（page catalog / exports / search-index / link-graph / docs/index.html / sitemap）。`exports/graph-stats.json`：节点 410、边 3004（远超 V22 目标 312/2050）、largest_community_ratio 0.207、`community_quality_warning: false`。`lint_wiki.py` 9 项 `stale_pages` 均为同日早些 ingest 引入的历史 baseline，与本次改动无关
+- 状态联动：V22 checklist 「接触/操作交叉补强」由 `[ ]` 变 `[x]`；P2 全部子项落地完毕
+
+## [2026-05-21] ingest | sources/repos/sensenova-skills.md — OpenSenseNova/SenseNova-Skills 入库并沉淀 wiki/entities/sensenova-skills.md；交叉更新 wiki/entities/hermes-agent.md、wiki/entities/mattpocock-skills.md
+
+## [2026-05-21] ingest | sources/repos/boyu_ai_hands_on_rl.md、sources/sites/hrl-boyuai-hands-on-rl.md、sources/courses/boyuai_hands_on_rl_elites_course.md — 接入动手学强化学习（蘑菇书）在线书/代码仓/伯禹视频课并沉淀 wiki/entities/hands-on-rl-book.md；交叉更新 wiki/methods/reinforcement-learning.md、roadmap/depth-rl-locomotion.md、roadmap/motion-control.md、wiki/overview/robot-learning-overview.md
+
+## [2026-05-21] ingest | sources/sites/nvidia-physical-ai-learning.md、sources/courses/nvidia_sim_to_real_so101_isaac.md — 入库 NVIDIA Physical AI 门户与 SO-101 Sim2Real 课；沉淀 wiki/entities/nvidia-physical-ai-learning.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md；互链 sim2real、lerobot、isaac-lab、vla、sage
+
+## [2026-05-21] structural | wiki/concepts/domain-randomization.md 等 17 页 — 清理 lint 长期 stale 预存量：按 source 给 17 个 wiki 页补 ingest 档案交叉引用
+
+- 触发：`make lint` 报「陈旧页面」17 条（mtime 判定：source 比 wiki 新 ≥ 24h）；预存自 2026-05-19 起多次 ingest 累积，与本批改动前的提交无关
+- 影响页面（按 source 分组）：
+  - `sources/papers/barkour_arxiv_2305_14654.md` → [`wiki/concepts/domain-randomization.md`](wiki/concepts/domain-randomization.md)、[`wiki/concepts/sim2real.md`](wiki/concepts/sim2real.md)、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)
+  - `sources/papers/bfm_humanoid_arxiv_2509_13780.md` → [`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/curriculum-learning.md`](wiki/concepts/curriculum-learning.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)
+  - `sources/papers/capvector_arxiv_2605_10903.md` → [`wiki/methods/star-vla.md`](wiki/methods/star-vla.md)
+  - `sources/papers/defi_arxiv_2604_16391.md` → [`wiki/methods/diffusion-policy.md`](wiki/methods/diffusion-policy.md)、[`wiki/methods/action-chunking.md`](wiki/methods/action-chunking.md)
+  - `sources/papers/holomotion_arxiv_2605_15336.md` → [`wiki/methods/imitation-learning.md`](wiki/methods/imitation-learning.md)
+  - `sources/papers/physforge_arxiv_2605_05163.md` → [`wiki/entities/sapien.md`](wiki/entities/sapien.md)
+  - `sources/papers/robot_link_rotor_inertia_primary_refs.md` → [`wiki/entities/modern-robotics-book.md`](wiki/entities/modern-robotics-book.md)
+  - `sources/papers/system_identification.md` → [`wiki/methods/actuator-network.md`](wiki/methods/actuator-network.md)（已有引用，扩写覆盖范围以反映 source 现含 Hwangbo / Gautier–Khalil / Grandia / Peng 等条目）
+  - `sources/papers/wm_robot_survey_arxiv_2605_00080.md` → [`wiki/methods/model-based-rl.md`](wiki/methods/model-based-rl.md)
+- 改动形态：每页在「参考来源」追加 1 条 ingest 档案行（含一句话提炼），统一与项目约定模式对齐；未做结构/正文重写
+- 验证：`make lint` 17 → 0 issues；`make ci-preflight` 通过（同步 `exports/`、`docs/exports/`、`docs/search-index.json` 等，导出质量 12/12）
+
+## [2026-05-21] fix(search): 搜索回归 WBC/MPC 定义页排名 — 条件化 comparison 提权 + 定义页 canonical boost
+
+- `scripts/search_wiki_core.py`：`comparison` 类型仅在查询含「对比/选型」等意图时 ×1.3；WBC/MPC 定义页在缩写命中时 ×1.4 canonical boost
+- `scripts/search_indexing.py`：`全身控制` / `模型预测控制` 同义词展开至 wbc/mpc
+- 补强 `wiki/concepts/whole-body-control.md`、`wiki/methods/model-predictive-control.md` 标题与 summary 中文检索词
+- 验证：`eval_search_quality.py` 37/37（原 35/37）
+
+## [2026-05-21] query | wiki/queries/humanoid-motion-tracking-method-selection.md 等 — V22 方法-Query 闭环：31 条高频 methods 落地预警清零
+
+- 新增 Query：`wiki/queries/humanoid-motion-tracking-method-selection.md`、`manipulation-vla-architecture-selection.md`、`humanoid-contact-character-control-guide.md`、`dexterous-manipulation-data-pipeline.md`
+- 新增 Comparison：`wiki/comparisons/amp-add-smp-motion-prior-variants.md`
+- 覆盖 methods：`deepmimic`、`beyondmimic`、`amp-reward`、`add`、`smp`、`motionbricks`、`any2track`、`ams`、`gentlehumanoid`、`ase`、`genmo`、`diffusion-motion-generation`、`mimic-video`、`defi`、`dwm`、`star-vla`、`pi07-policy`、`π0-policy`、`pelican-unified-1`、`claw`、`being-h07`、`disney-olaf`、`humanoid-transformer-touch-dreaming`、`hipan`、`zest`、`efgcl`、`auto-labeling-pipelines`、`wilor`、`tactile-impedance-control`、`actuator-network`、`gae`（共 31 页）
+- 注册：`wiki/queries/README.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-21] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — 安装 Agent Reach 抓取具身智能研究室两篇微信公众号长文并消化入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）、`sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md`（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/humanoid-amp-motion-prior-survey.md`；补强 `wiki/overview/humanoid-rl-motion-control-body-system-stack.md`
+- 交叉更新：`wiki/methods/amp-reward.md`、`wiki/entities/agent-reach.md`、`sources/repos/panniantong_agent_reach.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-20] structural | wiki/comparisons/anygrasp-vs-graspnet.md — V22 P2 AnyGrasp vs GraspNet 抓取检测家族对比
+
+- 新增页面：`wiki/comparisons/anygrasp-vs-graspnet.md`，按「一句话定义 + 14 维核心对比表 + Mermaid 数据流并排图（GraspNet 家族白盒基线 / AnyGrasp SDK 工程闭环）+ 三类适用场景 + 6 类常见误判 + 决策矩阵 + 评测指标视角」结构覆盖 GraspNet-1Billion / Contact-GraspNet / GSNet / AnyGrasp 四条子路线；显式区分「白盒改造 vs 工程化交付」「单帧 vs 动态跨帧」「完全开源 vs 二进制 License」三对核心取舍。
+- 交叉互链：`wiki/methods/grasp-pose-estimation.md`、`wiki/entities/anygrasp.md`、`wiki/queries/grasp-policy-selection.md`、`wiki/methods/contact-net.md`、`wiki/tasks/manipulation.md` 的 frontmatter `related` 与「关联页面」均加入本页入口，形成「方法谱系页 + 实体页 + Query + 对比页」四级互链闭环。
+- 清单推进：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P2「抓取知识链 (+3)」第三项 `anygrasp-vs-graspnet.md` 打勾，整体专题完结进入 `[x]` 完成状态。
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`exports/lint-report.md`（图谱节点 399 → 400、边数 2836 → 2850、comparison 类型从 18 → 19；陈旧页面 21 条与本次改动无关，为今日早些 ingest 留下的预存量）。
+
+## [2026-05-20] query | wiki/queries/grasp-policy-selection.md — V22 P2 抓取策略选型 Query 落地
+
+- 新增页面：`wiki/queries/grasp-policy-selection.md`，覆盖三轴选型（物体已知度 / 候选稠密度 / 方法类型）+ TL;DR 决策树 + 四类推荐组合 pipeline（已知物体 / 桌面 bin picking / 动态场景 / 任务级语言指令）+ 关键工程经验 + 常见误区，与 [Grasp Pose Estimation](wiki/methods/grasp-pose-estimation.md) / [AnyGrasp](wiki/entities/anygrasp.md) / [Manipulation](wiki/tasks/manipulation.md) / [Visual Servoing](wiki/methods/visual-servoing.md) / [Contact-Rich Manipulation](wiki/concepts/contact-rich-manipulation.md) 互链。
+- 交叉互链：`wiki/queries/README.md` 注册新 Query；`wiki/methods/grasp-pose-estimation.md` frontmatter `related` + 「关联页面」加入本页；`wiki/entities/anygrasp.md`、`wiki/tasks/manipulation.md` 关联页面区块新增 Query 入口。
+- 清单推进：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P2「抓取知识链」第二项 `grasp-policy-selection.md` 打勾，附实现摘要。
+- 派生再生成：`make ci-preflight`。
+
+## [2026-05-20] ingest | sources/papers/defi_arxiv_2604_16391.md — DeFI 解耦前向/逆动力学 VLA；wiki/methods/defi-decoupled-dynamics-vla.md
+
+## [2026-05-20] structural | wiki/methods/grasp-pose-estimation.md — V22 P2 抓取位姿估计方法谱系页
+
+- 新增 `wiki/methods/grasp-pose-estimation.md`，覆盖 6-DoF/7-DoF 表征、三代谱系（GPD → GraspNet-1Billion → Contact-GraspNet/GSNet/Graspness/AnyGrasp）、点云/RGBD 输入对照、AP/MPPH 评测、下游 cuRobo/视觉伺服/触觉闭环串联与常见误区，含 Mermaid 谱系图。
+- 交叉互链：`wiki/entities/anygrasp.md` frontmatter `related` 与「关联页面」回链；`wiki/tasks/manipulation.md` 关联方法区块加入条目；`wiki/methods/contact-net.md` 关联页面新增本页；`references/repos/manipulation-perception.md` 顶部加入「方法谱系总览」指针；`index.md` 重点页面新增条目。
+- 清单推进：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P2「抓取知识链」首项打勾，整体专题进入 `[~]` 进行中状态。
+
+## [2026-05-20] ingest | sources/papers/robot_link_rotor_inertia_primary_refs.md — 连杆/转子惯量一手资料入库并沉淀 wiki
+
+- 原始资料：`sources/papers/robot_link_rotor_inertia_primary_refs.md`（URDF / Modern Robotics Ch.8 / Gautier–Khalil 1990 / MuJoCo armature）
+- 沉淀页面：`wiki/concepts/robot-link-and-rotor-inertia.md`
+- 交叉更新：`wiki/concepts/armature-modeling.md`、`wiki/concepts/system-identification.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-20] ingest | sources/repos/mattpocock-skills.md — mattpocock/skills 入库并沉淀 wiki
+
+- 原始资料：`sources/repos/mattpocock-skills.md`（<https://github.com/mattpocock/skills>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/mattpocock-skills.md`
+- 交叉更新：`wiki/entities/superpowers-obra.md`、`wiki/entities/caveman.md`、`wiki/references/llm-wiki-karpathy.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-20] structural | wiki/entities/amp-mjlab.md — 补充 play.py（run_play）详细 Mermaid 流程图
+
+- 页面：`wiki/entities/amp-mjlab.md` 在「训练与回放」下新增 `run_play` 流程图（CLI → play 环境覆盖 → checkpoint 加载 → AMPOnPolicyRunner 推理 → ONNX 导出 → Viewer 主循环），源码依据 [ImChong/AMP_mjlab](https://github.com/ImChong/AMP_mjlab) `scripts/play.py`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-19] structural | wiki/concepts/character-animation-vs-robotics.md — V22 P1「角色化人形边界澄清」落地
+
+- 新增页面：`wiki/concepts/character-animation-vs-robotics.md`（角色动画 vs 机器人控制：六维张力矩阵 + 五案例切片 + 决策矩阵 + Mermaid「角色端→桥接层→机器人端」流程）
+- 交叉更新：`wiki/methods/disney-olaf-character-robot.md`、`wiki/entities/botlab-motioncanvas.md`、`wiki/entities/roboto-origin.md`、`wiki/entities/xue-bin-peng.md`、`wiki/concepts/motion-retargeting.md`、`wiki/concepts/reward-design.md` 的 `related` 与「关联页面 / 与其他页面的关系」加入新入口
+- 清单同步：`docs/checklists/tech-stack-next-phase-checklist-v22.md` 勾选 P1「角色化人形（Character Humanoid）边界澄清」并补实现摘要
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md`、`exports/lint-report.md`（注：lint 报告中 17 条「陈旧页面」均为今日早些 ingest 留下的预存量，与本次改动无直接关系）
+
+## [2026-05-19] ingest | sources/repos/caveman.md — JuliusBrussee/caveman 入库并沉淀 wiki
+
+- 原始资料：`sources/repos/caveman.md`（<https://github.com/JuliusBrussee/caveman>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/caveman.md`
+- 交叉更新：`wiki/entities/superpowers-obra.md`、`wiki/entities/hermes-agent.md`、`wiki/entities/agent-reach.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/papers/gentlehumanoid_upper_body_compliance.md、sources/repos/axellwppr_motion_tracking.md — GentleHumanoid / motion_tracking 入库并沉淀 wiki
+
+- 原始资料：`sources/papers/gentlehumanoid_upper_body_compliance.md`（[arXiv:2511.04679](https://arxiv.org/abs/2511.04679)）、`sources/sites/gentle-humanoid-axell-top.md`、`sources/sites/motion-tracking-axell-top.md`、`sources/repos/axellwppr_motion_tracking.md`（<https://github.com/Axellwppr/motion_tracking>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/gentlehumanoid-motion-tracking.md`、`wiki/entities/axellwppr-motion-tracking.md`
+- 交叉更新：`wiki/concepts/whole-body-control.md`、`wiki/concepts/contact-dynamics.md`、`wiki/concepts/impedance-control.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`、`wiki/methods/sonic-motion-tracking.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] structural | wiki/overview/motor-drive-firmware-bus-protocols.md — 电机驱动器底软通信协议总览（种类与优缺点）
+
+- 原始资料：`sources/courses/motor_drive_firmware_bus_protocols.md`（CiA CANopen/CiA402、DroneCAN、MIT 紧凑帧与厂商私有等索引）
+- 沉淀页面：`wiki/overview/motor-drive-firmware-bus-protocols.md`（物理层 × 应用层 × 控制语义三层；协议族优缺点表；常见组合与选型 Mermaid）
+- 交叉更新：`wiki/concepts/can-bus-protocol.md`、`wiki/concepts/ethercat-protocol.md`、`wiki/comparisons/can-vs-ethercat-joint-bus.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-19] ingest | sources/sites/cia_can_*、sources/courses/uart_rs485_serial_embedded.md — CiA CAN/CAN FD/CANopen/DroneCAN 与 UART·RS485 一手资料入库
+
+- 原始资料：`sources/sites/cia_can_knowledge_can_classic_and_hs.md`、`sources/sites/cia_can_fd_basic_idea.md`、`sources/sites/cia_canopen_overview.md`、`sources/sites/cia_dronecan_uavcan.md`、`sources/courses/uart_rs485_serial_embedded.md`（CiA [CAN knowledge](https://www.can-cia.org/can-knowledge/)、[DroneCAN](http://dronecan.org/)、TI SLLA383 / Wikipedia UART）；索引 `sources/README.md`
+- 沉淀页面：`wiki/concepts/can-bus-protocol.md`、`wiki/concepts/can-fd.md`、`wiki/concepts/uart-serial-communication.md`、`wiki/comparisons/can-vs-ethercat-joint-bus.md`
+- 交叉更新：`wiki/concepts/ethercat-protocol.md`、`wiki/concepts/processor-in-the-loop-sim2real.md`、`wiki/formalizations/control-loop-latency-modeling.md`、`wiki/queries/real-time-control-middleware-guide.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/repos/newton-physics.md、sources/sites/nvidia-newton-physics.md、sources/sites/newton-physics-docs-overview.md — Newton Physics 引擎（NVIDIA / DeepMind / Disney，Warp + MuJoCo Warp）入库
+
+- 原始资料：`sources/repos/newton-physics.md`（<https://github.com/newton-physics/newton>）、`sources/sites/nvidia-newton-physics.md`（<https://developer.nvidia.com/newton-physics>）、`sources/sites/newton-physics-docs-overview.md`（<https://newton-physics.github.io/newton/stable/guide/overview.html>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/newton-physics.md`
+- 交叉更新：`wiki/entities/mujoco.md`、`wiki/entities/mjlab.md`、`wiki/entities/isaac-gym-isaac-lab.md`、`wiki/queries/simulator-selection-guide.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md、sources/papers/daji_arxiv_2605_14417.md — DAJI 预期关节意图（微信精读 / arXiv:2605.14417）入库
+
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md`（<https://mp.weixin.qq.com/s/u1ZUaFGYRKXxMcS7-V_2WA>）、`sources/papers/daji_arxiv_2605_14417.md`、`sources/sites/daji-hxxxz0-github-io.md`、`sources/repos/hxxxz0_daji.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-daji-anticipatory-joint-intent.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/tasks/loco-manipulation.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md、sources/papers/wm_robot_survey_arxiv_2605_00080.md、sources/sites/wm-robot-survey-ntumars.md — 安装 Agent Reach 抓取微信公众号；机器人世界模型综述（arXiv:2605.00080）入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` 可编辑包 + `agent-reach install --channels=wechat`）；微信正文经 `wechat-article-for-ai`（Camoufox），Jina Reader 对该 URL 返回 CAPTCHA
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md`（<https://mp.weixin.qq.com/s/0edW0GhwtyNc5nF6RDIfuw>）、`sources/papers/wm_robot_survey_arxiv_2605_00080.md`、`sources/sites/wm-robot-survey-ntumars.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-world-models-training-loop-taxonomy.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/world-action-models.md`、`wiki/methods/vla.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`、`wiki/entities/agent-reach.md`、`sources/repos/panniantong_agent_reach.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-19] ingest | sources/repos/nousresearch_hermes_agent.md、sources/sites/hermes-agent-nousresearch-docs.md — Hermes Agent（NousResearch）仓库与官方文档入库
+
+- 原始资料：`sources/repos/nousresearch_hermes_agent.md`、`sources/sites/hermes-agent-nousresearch-docs.md`（GitHub <https://github.com/NousResearch/hermes-agent>、产品页 <https://hermes-agent.nousresearch.com/>、文档 <https://hermes-agent.nousresearch.com/docs>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/hermes-agent.md`
+- 交叉更新：`wiki/entities/superpowers-obra.md`、`wiki/entities/agent-reach.md`、`index.md`（Entities 目录补 Hermes Agent 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] structural | wiki/comparisons/gmr-vs-nmr-vs-reactor.md — V22 P1 动作重定向知识链 (3/3)：新增 GMR / NMR / ReActor 三方对比页
+
+- 沉淀页面：`wiki/comparisons/gmr-vs-nmr-vs-reactor.md`（一句话定义 + 12 维核心对比表 + Mermaid 三路数据流并排图 + 三方适用场景 + 5 类常见误判 + 决策矩阵；强调「误差修补发生位置」（下游 / 离线 / 在线）作为核心选型轴；显式标注 NMR 仍以 GMR 为 CEPR 初值、三者实际常串联而非互斥）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/formalizations/motion-retargeting-objective.md`、`wiki/methods/motion-retargeting-gmr.md`、`wiki/methods/neural-motion-retargeting-nmr.md`、`wiki/methods/reactor-physics-aware-motion-retargeting.md`（关联页面区块回链本对比页）、`index.md`（Wiki Comparisons 目录插入 GMR vs NMR vs ReActor 条目）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 3 项打勾，含实现摘要；至此 V22 P1「动作重定向知识链 (+3)」3/3 全部完成）
+- 派生再生成：保持当前状态，待后续 ingest 或 P2 推进时统一 `make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/papers/capvector_arxiv_2605_10903.md、sources/sites/capvector-github-io.md、sources/repos/openhelix_team_capvector.md — CapVector（参数空间 capability vector + 正交正则标准 SFT）arXiv:2605.10903 入库
+
+- 原始资料：`sources/papers/capvector_arxiv_2605_10903.md`、`sources/sites/capvector-github-io.md`、`sources/repos/openhelix_team_capvector.md`（PDF <https://arxiv.org/pdf/2605.10903>、项目页 <https://capvector.github.io/>、代码 <https://github.com/OpenHelix-Team/CapVector>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-capvector-capability-vectors-vla.md`
+- 交叉更新：`wiki/methods/vla.md`、`index.md`（Entities 目录补 CapVector 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/papers/physforge_arxiv_2605_05163.md — PhysForge（VLM 分层物理蓝图 + KVI 扩散、PhysDB）arXiv:2605.05163 入库
+
+- 原始资料：`sources/papers/physforge_arxiv_2605_05163.md`（PDF <https://arxiv.org/pdf/2605.05163>、项目页 <https://hku-mmlab.github.io/PhysForge/>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-physforge-physics-grounded-3d-assets.md`
+- 交叉更新：`wiki/entities/articraft.md`、`wiki/entities/robotwin.md`、`index.md`（Entities 目录补 PhysForge 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/repos/horizon_robotics_holomotion.md、sources/papers/holomotion_arxiv_2605_15336.md — 地平线 HoloMotion-1（混合语料 + 稀疏 MoE Transformer + 序列级 PPO）官方资料入库
+
+- 原始资料：`sources/repos/horizon_robotics_holomotion.md`、`sources/papers/holomotion_arxiv_2605_15336.md`（GitHub / 项目主页 / arXiv:2605.15336 / Hugging Face / Docker Hub）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/holomotion.md`
+- 交叉更新：`wiki/concepts/foundation-policy.md`、`wiki/methods/sonic-motion-tracking.md`、`wiki/entities/paper-behavior-foundation-model-humanoid.md`、`index.md`（Entities 目录补 `holomotion` 条目）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md — 微信公众号「机械Robot」开源宝库第02期：10 个机器人/平台实体 + 策展 overview
+
+- 原始资料：`sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-open-source-wechat-issue02-curator.md`；`wiki/entities/pollen-reachy2.md`、`wiki/entities/poppy-project-robots.md`、`wiki/entities/inmoov-humanoid.md`、`wiki/entities/stanford-doggo-and-pupper.md`、`wiki/entities/elephantrobotics-mycobot-320.md`、`wiki/entities/elephantrobotics-myagv.md`、`wiki/entities/tidybot2.md`、`wiki/entities/kinova-gen3.md`、`wiki/entities/franka-research-3.md`、`wiki/entities/parol6-source-robotics.md`
+- 交叉更新：`wiki/overview/robot-open-source-wechat-issue01-curator.md`、`wiki/entities/open-source-humanoid-hardware.md`、`wiki/entities/humanoid-robot.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md — 微信公众号「机械Robot」开源宝库第01期：10 个机器人/平台独立实体节点 + 策展 overview
+
+- 原始资料：`sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/robot-open-source-wechat-issue01-curator.md`；`wiki/entities/fourier-grx-n1.md`、`wiki/entities/agibot-lingxi-x1.md`、`wiki/entities/tienkung-humanoid-open-source.md`、`wiki/entities/odri-solo-and-bolt.md`、`wiki/entities/berkeley-humanoid-lite.md`、`wiki/entities/orca-hand.md`、`wiki/entities/turtlebot3.md`、`wiki/entities/robotis-open-manipulator-line.md`、`wiki/entities/robotis-op3.md`、`wiki/entities/robotis-thormang3.md`
+- 交叉更新：`wiki/entities/open-source-humanoid-hardware.md`、`wiki/entities/humanoid-robot.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/repos/mujoco-mjx.md、sources/repos/brax.md、sources/papers/brax_arxiv_2106_13281.md、sources/sites/mujoco-mjx-readthedocs.md — MuJoCo MJX 与 Brax 官方仓/文档/论文入库；新增实体页并交叉更新 MuJoCo / dm_control / 选型指南 / LIFT
+
+- 原始资料：`sources/repos/mujoco-mjx.md`、`sources/repos/brax.md`、`sources/papers/brax_arxiv_2106_13281.md`、`sources/sites/mujoco-mjx-readthedocs.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/mujoco-mjx.md`、`wiki/entities/brax.md`
+- 交叉更新：`wiki/entities/mujoco.md`、`wiki/entities/dm-control.md`、`wiki/queries/simulator-selection-guide.md`、`wiki/comparisons/mujoco-vs-isaac-sim.md`、`wiki/comparisons/mujoco-vs-isaac-lab.md`、`wiki/entities/lift-humanoid.md`、`index.md`（重点入口 + Page Catalog）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html` 等
+
+## [2026-05-18] ingest | sources/papers/barkour_arxiv_2305_14654.md、sources/blogs/google-research-barkour-quadruped-agility-2023-05-26.md、sources/repos/google_deepmind_barkour_robot.md、sources/repos/mujoco_menagerie_google_barkour_models.md — Barkour 四足敏捷基准与开源生态入库
+
+- 原始资料：arXiv:2305.14654、Google Research 博客（2023-05-26）、[`google-deepmind/barkour_robot`](https://github.com/google-deepmind/barkour_robot)、[`mujoco_menagerie` 下 `google_barkour_v0` / `google_barkour_vb`](https://github.com/google-deepmind/mujoco_menagerie/tree/main/google_barkour_v0)；OnShape 以 README 中 **gdm.onshape.com / deepmind.onshape.com** 文档链接为准（`cad.onshape.com` 为产品首页）
+- 沉淀页面：`wiki/entities/paper-barkour-quadruped-agility-benchmark.md`
+- 交叉更新：`wiki/entities/quadruped-robot.md`、`wiki/entities/mujoco.md`、`wiki/tasks/locomotion.md`、`references/papers/locomotion-rl.md`、`sources/README.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] structural | wiki/overview/humanoid-rl-motion-control-body-system-stack.md、wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md — 参考来源补充微信公众号原文外链
+
+- 更新页面：`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`（`https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA`）、`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`（`https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w`）；保留仓库内 `sources/` 归档链接
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md、wiki/overview/humanoid-rl-motion-control-body-system-stack.md — 具身智能研究室 42 篇 humanoid RL 运动控制综述入库；新增「身体系统栈」视角 overview 页
+
+- 原始资料：`sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md`（公众号长文，Camoufox 抓取，约 4.5w 字）
+- 沉淀页面：`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`（提炼作者的 8 层身体系统栈 + 6 个研究判断；把已有 wiki 实体页 DeepMimic / SONIC / BeyondMimic / Any2Track / AMS / GMR / NMR / DoorMan / VIRAL / BFM / GR00T-WBC / ULTRA 按层挂接；明确「单页未升格论文」候选清单）
+- 交叉关联：`wiki/overview/humanoid-motion-control-know-how.md`、`wiki/tasks/humanoid-locomotion.md`、`wiki/tasks/loco-manipulation.md`、`wiki/tasks/ultra-survey.md`、`wiki/tasks/balance-recovery.md` 与多篇 `wiki/methods` / `wiki/entities` 页面通过 related 区块互链
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md — 微信公众号：Optimus 腿部行星滚柱丝杠解读入库；新增 wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md；交叉更新 humanoid-robot、locomotion、sources/README.md
+
+- 原始资料：`sources/blogs/wechat_zanezhang_tesla_optimus_leg_planetary_roller_screw.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md`（PRS 原理、反转式布置、连杆映射、与旋转关节权衡、Mermaid 主干流程）
+- 交叉更新：`wiki/entities/humanoid-robot.md`（Optimus 备注与参考来源）、`wiki/tasks/locomotion.md`（关联系统与方法回链）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-18] ingest | sources/repos/panniantong_agent_reach.md — Panniantong/Agent-Reach 入库；新增 wiki/entities/agent-reach.md；交叉更新 superpowers-obra、index.md、sources/README.md
+
+- 原始资料：`sources/repos/panniantong_agent_reach.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/agent-reach.md`（编码代理互联网接入脚手架：可插拔渠道、`doctor`、上游 CLI/MCP 与本地凭据主张；配流程图）
+- 交叉更新：`wiki/entities/superpowers-obra.md`（关联页面回链）、`index.md`（重点入口 + Page Catalog）、`sources/README.md`
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html` 等
+
+## [2026-05-18] ingest | sources/papers/bfm_humanoid_arxiv_2509_13780.md、sources/sites/bfm4humanoid-github-io.md — BFM（Behavior Foundation Model，arXiv:2509.13780）入库；新增 wiki/entities/paper-behavior-foundation-model-humanoid.md；交叉更新 foundation-policy / whole-body-control；并对齐 CLAUDE.md 的 PR 截图流程
+
+- 原始资料：`sources/papers/bfm_humanoid_arxiv_2509_13780.md`、`sources/sites/bfm4humanoid-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-behavior-foundation-model-humanoid.md`（CVAE + 位级二值掩码 + 在线蒸馏 + 潜空间组合 + 残差解码器新技能的人形 WBC 基础模型，配 Mermaid 流程图与 Table III/IV 量化对照）
+- 交叉更新：`wiki/concepts/foundation-policy.md`（新增 BFM 子项与回链）、`wiki/concepts/whole-body-control.md`（Learning-based & Generative WBC 段补 BFM；关联页面与 sources 互链）、`index.md`（新增 Entity 条目）、`sources/README.md`
+- 规范同步：`CLAUDE.md` 新增「Claude Code Agent：PR 与验证截图」一节，与 `docs/checklists/cloud-agent-pr-workflow.md` 对齐
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`docs/index.html`、`index.md` 等
+
+## [2026-05-17] structural | wiki/formalizations/motion-retargeting-objective.md — V22 P1 动作重定向知识链 (2/3)：新增重定向目标函数形式化页
+
+- 沉淀页面：`wiki/formalizations/motion-retargeting-objective.md`（通用目标函数 $\mathcal{L}^{\text{pose}}+\mathcal{L}^{\text{ee}}+\mathcal{L}^{\text{bal}}+\mathcal{L}^{\text{lim}}+\mathcal{L}^{\text{smooth}}$；姿态相似/末端接触/平衡/限位/平滑五大罚项的数学定义；GMR/DeepMimic/ReActor/NMR/SPIDER 五种工程退化形态对照）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`（关联页面区块回链本页）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 2 项打勾，含实现摘要）
+- 派生再生成：`make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md`、`index.md` 等
+
+## [2026-05-17] ingest | sources/repos/lingbot-map.md、sources/papers/lingbot_map_arxiv_2604_14141.md、sources/sites/lingbot-map-technology-robbant.md、sources/sites/businesswire-lingbot-map-2026-04-16.md — LingBot-Map 论文/站点/通稿入库；勘误 byant 误链；扩充 wiki/methods/lingbot-map.md
+
+- 原始资料：`sources/repos/lingbot-map.md`、`sources/papers/lingbot_map_arxiv_2604_14141.md`、`sources/sites/lingbot-map-technology-robbant.md`、`sources/sites/businesswire-lingbot-map-2026-04-16.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/lingbot-map.md`（流程图、工程局限、参考来源；官方仓库为 [Robbyant/lingbot-map](https://github.com/Robbyant/lingbot-map)）
+- 交叉更新：`index.md`（由 `make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 等）
+
+## [2026-05-17] ingest | sources/papers/humannet_table1_benchmark_corpora.md — HumanNet Table1 代表性人视频/行为语料官方入口索引；新增对比页 wiki/comparisons/humannet-table1-human-video-corpora.md
+
+- 原始资料：`sources/papers/humannet_table1_benchmark_corpora.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/comparisons/humannet-table1-human-video-corpora.md`
+- 交叉更新：`wiki/entities/humannet.md`、`wiki/methods/vla.md`、`index.md`（由 `make ci-preflight` 同步 `exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 等）
+
+## [2026-05-17] ingest | sources/papers/egoscale_arxiv_2602_16710.md、sources/sites/nvidia-research-egoscale.md — EgoScale（arXiv:2602.16710）与 NVIDIA GEAR 项目页入库
+
+- 原始资料：`sources/papers/egoscale_arxiv_2602_16710.md`、`sources/sites/nvidia-research-egoscale.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/egoscale.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/methods/imitation-learning.md`、`wiki/tasks/manipulation.md`、`wiki/entities/humannet.md`、`wiki/concepts/embodied-scaling-laws.md`、`references/papers/imitation-learning.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/mimic_video_arxiv_2512_15692.md、sources/sites/mimic-video-github-io.md、sources/repos/lucidrains_mimic_video.md — mimic-video（VAM，arXiv:2512.15692）入库
+
+- 原始资料：`sources/papers/mimic_video_arxiv_2512_15692.md`、`sources/sites/mimic-video-github-io.md`、`sources/repos/lucidrains_mimic_video.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/mimic-video.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/methods/imitation-learning.md`、`wiki/concepts/video-as-simulation.md`、`wiki/methods/generative-world-models.md`、`wiki/tasks/manipulation.md`、`references/papers/imitation-learning.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/crisp_real2sim_iclr2026.md、sources/sites/crisp-real2sim-project-github-io.md、sources/repos/crisp_real2sim_repo.md — CRISP（ICLR 2026）Real2Sim 入库
+
+- 原始资料：`sources/papers/crisp_real2sim_iclr2026.md`、`sources/sites/crisp-real2sim-project-github-io.md`、`sources/repos/crisp_real2sim_repo.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/crisp-real2sim.md`
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/entities/gs-playground.md`、`references/papers/sim2real.md`、`index.md`（新增方法页目录条目）、`README.md` / `exports/` / `docs/exports/` 等（`make ci-preflight`）
+
+## [2026-05-17] ingest | sources/papers/egm_arxiv_2512_19043.md、sources/blogs/egm_themoonlight_literature_review_2512_19043.md — EGM（arXiv:2512.19043）与第三方导读入库
+
+- 原始资料：`sources/papers/egm_arxiv_2512_19043.md`、`sources/blogs/egm_themoonlight_literature_review_2512_19043.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/egm-efficient-general-mimic.md`
+- 交叉更新：`wiki/methods/beyondmimic.md`、`wiki/methods/sonic-motion-tracking.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/e_sds_arxiv_2512_16446.md、sds_quadruped_arxiv_2410_11571.md、repos/rpl_cs_ucl_sds.md — E-SDS（arXiv:2512.16446）与 SDS 前序资料入库
+
+- 原始资料：`sources/papers/e_sds_arxiv_2512_16446.md`、`sources/papers/sds_quadruped_arxiv_2410_11571.md`、`sources/repos/rpl_cs_ucl_sds.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`wiki/methods/reinforcement-learning.md`、`references/papers/locomotion-rl.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/repos/unitree_ros.md、sources/repos/unitree_ros_to_real.md — 官方 ROS1+Gazebo 与真机 ROS 桥入库
+
+- 原始资料：`sources/repos/unitree_ros.md`、`sources/repos/unitree_ros_to_real.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/unitree-ros.md`
+- 交叉更新：`wiki/entities/unitree.md`、`wiki/entities/unitree-rl-mjlab.md`、`wiki/tasks/locomotion.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md、Apollo-Lab-Yale 多仓与 Pages — URDD（arXiv:2512.23135）入库
+
+- 原始资料：`sources/papers/urdd_beyond_urdf_arxiv_2512_23135.md`、`sources/repos/apollo-lab-yale-apollo-resources.md`、`sources/repos/apollo-lab-yale-apollo-rust.md`、`sources/repos/apollo-lab-yale-apollo-three-engine.md`、`sources/repos/apollo-lab-yale-apollo-py.md`、`sources/sites/apollo-lab-yale-apollo-resources-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-urdd-universal-robot-description-directory.md`
+- 交叉更新：`wiki/entities/robot-viewer.md`、`wiki/entities/urdf-studio.md`、`wiki/entities/mujoco.md`、`sources/urdf.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/hy_motion_arxiv_2512_23464.md、sources/repos/tencent_hunyuan_hy_motion_1_0.md — HY-Motion 1.0（arXiv:2512.23464）与官方仓入库
+
+- 原始资料：`sources/papers/hy_motion_arxiv_2512_23464.md`、`sources/repos/tencent_hunyuan_hy_motion_1_0.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/hy-motion-1.md`
+- 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`wiki/entities/awesome-text-to-motion-zilize.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md、sources/sites/jc-bao-spider-project-github-io.md、sources/repos/jc-bao-spider-project.md — SPIDER（arXiv:2511.09484）与项目页入库
+
+- 原始资料：`sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md`、`sources/sites/jc-bao-spider-project-github-io.md`、`sources/repos/jc-bao-spider-project.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/spider-physics-informed-dexterous-retargeting.md`
+- 交叉更新：`wiki/concepts/motion-retargeting.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/methods/motion-retargeting-gmr.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/dwm_arxiv_2512_17907.md、sources/sites/snuvclab-dwm-github-io.md、sources/repos/snuvclab_dwm.md — DWM（Dexterous World Models）项目页与论文入库
+
+- 原始资料：`sources/papers/dwm_arxiv_2512_17907.md`、`sources/sites/snuvclab-dwm-github-io.md`、`sources/repos/snuvclab_dwm.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/methods/dwm.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`wiki/tasks/manipulation.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/repos/cyoahs-robot-motion-editor.md、stanford-tml-robot-keyframe-kit.md、project-instinct-robot-motion-editor.md — 机器人关键帧/运动编辑三仓库入库
+
+- 原始资料：`sources/repos/cyoahs-robot-motion-editor.md`、`sources/repos/stanford-tml-robot-keyframe-kit.md`、`sources/repos/project-instinct-robot-motion-editor.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/robot-motion-keyframe-editors.md`
+- 交叉更新：`wiki/entities/project-instinct.md`、`wiki/entities/mujoco.md`、`wiki/concepts/motion-retargeting-pipeline.md`、`wiki/tasks/manipulation.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/papers/faststair_arxiv_2601_10365.md、sources/sites/npcliu-faststair-github-io.md — FastStair（arXiv:2601.10365）入库
+
+- 原始资料：`sources/papers/faststair_arxiv_2601_10365.md`、`sources/sites/npcliu-faststair-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-faststair-humanoid-stair-ascent.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/repos/obra-superpowers.md、sources/blogs/fsck_superpowers_announcement_2025-10-09.md — Superpowers（obra）编码代理技能与交付工作流入库
+
+- 原始资料：`sources/repos/obra-superpowers.md`、`sources/blogs/fsck_superpowers_announcement_2025-10-09.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/superpowers-obra.md`
+- 交叉更新：`wiki/references/llm-wiki-karpathy.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | InterPrior（arXiv:2602.06035）与 sirui-xu.github.io/InterPrior 站点入库
+
+- 原始资料：`sources/papers/interprior_arxiv_2602_06035.md`、`sources/sites/sirui-xu-interprior-github-io.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-interprior.md`
+- 交叉更新：`wiki/tasks/loco-manipulation.md`、`wiki/methods/imitation-learning.md`、`wiki/methods/reinforcement-learning.md`、`index.md`（由 `make ci-preflight` 同步）
+
+## [2026-05-17] ingest | sources/repos/leggedrobotics_robotic_world_model.md、leggedrobotics_robotic_world_model_lite.md — ETH RSL 的 RWM / RWM-U（Isaac Lab 扩展与 Lite 离线仓）
+
+- 原始资料：`sources/repos/leggedrobotics_robotic_world_model.md`、`sources/repos/leggedrobotics_robotic_world_model_lite.md`
+- 沉淀页面：`wiki/entities/robotic-world-model-eth-rsl.md`
+- 交叉更新：`wiki/methods/model-based-rl.md`、`wiki/methods/generative-world-models.md`、`wiki/entities/isaac-gym-isaac-lab.md`、`sources/README.md`、`index.md`
+
+## [2026-05-17] ingest | sources/repos/zilize-awesome-text-to-motion.md — 文本驱动人体运动生成 Awesome 列表入库；新增 wiki/entities/awesome-text-to-motion-zilize.md
+
+- 原始资料：`sources/repos/zilize-awesome-text-to-motion.md`（<https://github.com/Zilize/awesome-text-to-motion>，项目页 <https://zilize.github.io/awesome-text-to-motion/>）
+- 沉淀页面：`wiki/entities/awesome-text-to-motion-zilize.md`
+- 交叉更新：`wiki/methods/diffusion-motion-generation.md`、`wiki/methods/genmo.md`、`sources/README.md`、`index.md`（由 `make ci-preflight` 同步目录统计）
+
+## [2026-05-17] ingest | sources/repos/sage-sim2real-actuator-gap.md — SAGE（Sim2Real Actuator Gap Estimator）与 README 要点归档
+
+- 原始资料：`sources/repos/sage-sim2real-actuator-gap.md`（<https://github.com/isaac-sim2real/sage> 及 README 公开信息；关联 AMASS、Human2Humanoid、OSMO 工作流线索）
+- 沉淀页面：`wiki/entities/sage-sim2real-actuator-gap-estimator.md`
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/concepts/domain-randomization.md`、`wiki/roadmaps/humanoid-control-roadmap.md`、`wiki/queries/sim2real-gap-reduction.md`、`wiki/methods/actuator-network.md`、`sources/README.md`、`index.md`
+
+## [2026-05-17] ingest | LIFT（arXiv:2601.21363）与 lift-humanoid.github.io、bigai-ai/LIFT-humanoid 归档入库
+
+- 原始资料：`sources/papers/lift_humanoid_arxiv_2601_21363.md`、`sources/sites/lift-humanoid-github-io.md`、`sources/repos/bigai-lift-humanoid.md`
+- 沉淀页面：`wiki/entities/lift-humanoid.md`
+- 交叉更新：`wiki/tasks/locomotion.md`、`wiki/concepts/sim2real.md`、`wiki/methods/reinforcement-learning.md`、`wiki/methods/model-based-rl.md`、`wiki/queries/rl-algorithm-selection.md`、`sources/README.md`、`index.md`
+
+## [2026-05-17] ingest | DoorMan（arXiv:2512.01061）与 doorman-humanoid 站点、GR00T-VisualSim2Real 归档入库
+
+- 原始资料：`sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md`、`sources/sites/doorman-humanoid-github-io.md`；更新 `sources/repos/gr00t_visual_sim2real.md`
+- 沉淀页面：`wiki/entities/paper-doorman-opening-sim2real-door.md`
+- 交叉更新：`wiki/entities/gr00t-visual-sim2real.md`、`wiki/entities/paper-viral-humanoid-visual-sim2real.md`、`wiki/tasks/loco-manipulation.md`、`sources/README.md`、`index.md`
+
+## [2026-05-16] structural | wiki/concepts/motion-retargeting-pipeline.md — V22 P1 动作重定向知识链 (1/3)：新增重定向流水线概念页（8 阶段端到端：源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地）
+
+- 沉淀页面：`wiki/concepts/motion-retargeting-pipeline.md`（含 Mermaid 流程总览、三种工程化形态对比表、常见失败模式表与下游接口契约）
+- 交叉更新：`wiki/concepts/motion-retargeting.md`（关联页面回链流水线页）、`docs/checklists/tech-stack-next-phase-checklist-v22.md`（P1 第 1 项打勾、状态置 `[~]`）
+- 派生再生成：`make ci-preflight` → 327 Nodes / 2197 Edges / Coverage 325/325；`scripts/lint_wiki.py` 通过（29 条信息型预警不阻塞）
+
+## [2026-05-16] ingest | sources/sites/worldlabs-ai.md — World Labs 官网与 Marble/Spark 归档；新增 wiki/entities/world-labs.md；交叉更新 wiki/methods/generative-world-models.md、wiki/entities/gs-playground.md、index.md
+
+- 原始资料：`sources/sites/worldlabs-ai.md`（<https://www.worldlabs.ai/> 及 About、Marble、Marble Labs、Spark 技术博客等公开链接归档）
+- 沉淀页面：`wiki/entities/world-labs.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/entities/gs-playground.md`、`index.md`
+
+## [2026-05-16] ingest | sources/papers/pelican_unified_uei_arxiv_2605_15153.md — Pelican-Unified 1.0（UEI，arXiv:2605.15153）技术报告入库；新增 wiki/methods/pelican-unified-1.md；交叉更新 wiki/methods/vla.md、wiki/concepts/world-action-models.md、wiki/methods/being-h07.md、index.md
+
+- 原始资料：`sources/papers/pelican_unified_uei_arxiv_2605_15153.md`（PDF <https://arxiv.org/pdf/2605.15153>；关联 WAM 综述、Awesome-WAM、StarVLA、Being-H0.7 归档链接）
+- 沉淀页面：`wiki/methods/pelican-unified-1.md`
+- 交叉更新：`wiki/methods/vla.md`、`wiki/concepts/world-action-models.md`、`wiki/methods/being-h07.md`、`index.md`
+
+## [2026-05-16] ingest | sources/papers/ewmbench.md, sources/repos/ewmbench.md, sources/sites/agibot-world.md — EWMBench（arXiv:2505.09694）与 AgibotTech 仓库及 Agibot-World 关联站点入库；新增 wiki/entities/ewmbench.md；交叉更新 wiki/methods/generative-world-models.md、wiki/concepts/video-as-simulation.md
+
+- 原始资料：`sources/papers/ewmbench.md`、`sources/repos/ewmbench.md`、`sources/sites/agibot-world.md`
+- 沉淀页面：`wiki/entities/ewmbench.md`
+- 交叉更新：`wiki/methods/generative-world-models.md`、`wiki/concepts/video-as-simulation.md`、`index.md`
+
+## [2026-05-16] structural | wiki/methods/genmo.md, docs/main.js, docs/style.css — GENMO 详情页 Mermaid：节点标签改为引号形式并修正边语法，避免 `~`/括号在方括号语法中被误解析；详情页迷你知识地图支持 d3.zoom 平移（禁用滚轮缩放以免抢页面滚动）
+
+- 沉淀页面：`wiki/methods/genmo.md`（`detail.html?id=wiki-methods-genmo` 流程图可渲染）
+- 前端：`docs/main.js`（`renderDetailMiniMap`）、`docs/style.css`（grab 光标 / `touch-action`）
+
+## [2026-05-16] ingest | sources/papers/genmo.md, sources/repos/genmo.md — GENMO/GEM（arXiv:2505.01425v1，ICCV 2025 Highlight）论文与 NVlabs/GENMO 仓库入库；扩充 wiki/methods/genmo.md（dual-mode 训练 / multi-text 注入 / NVIDIA 人形栈 / Mermaid 流程图），交叉补 wiki/methods/diffusion-motion-generation.md 参考来源
+
+- 原始资料：`sources/papers/genmo.md`（arXiv abs + HTML v1 摘录）、`sources/repos/genmo.md`（NVlabs/GENMO 仓库、GEM-SMPL HuggingFace 权重、README 时间线）
+- 沉淀页面：`wiki/methods/genmo.md`（双模式训练 / multi-text 注入 / NVIDIA 人形栈关联 / Mermaid 流程总览）
+- 交叉更新：`wiki/methods/diffusion-motion-generation.md`（参考来源与人体运动域代表实现链接）
+
+## [2026-05-16] ingest | sources/repos/nvlabs-curobo.md — CuRobo / cuRoboV2（curobo.org、GitHub、arXiv:2310.17274、2603.05493）入库；沉淀 wiki/entities/curobo.md
+
+- 原始资料：`sources/repos/nvlabs-curobo.md`（归档 https://curobo.org/、https://github.com/NVlabs/curobo、https://arxiv.org/abs/2310.17274、https://arxiv.org/abs/2603.05493 及 Isaac ROS cuMotion 等关联链接）
+- 沉淀页面：`wiki/entities/curobo.md`
+
+## [2026-05-16] ingest | sources/sites/articraft3d-github-io.md, sources/repos/mattzh72-articraft.md — Articraft 项目页与代码仓；新增 wiki/entities/articraft.md；互链 text-to-cad、URDF-Studio
+
+- 原始资料：`sources/sites/articraft3d-github-io.md`、`sources/repos/mattzh72-articraft.md`
+- 沉淀页面：`wiki/entities/articraft.md`（交叉更新 `wiki/concepts/text-to-cad.md`、`wiki/entities/urdf-studio.md`、`index.md`）
+
+## [2026-05-16] ingest | sources/repos/jackhan-mujoco-walke3-simulation.md 等六仓 — JackHan-Sdu WalkE3 / HumanoidE3 / FEAP 工具链入库；新增 wiki/entities/jackhan-walke3-e3-ecosystem.md 及六条子实体页（各含 Mermaid 流程图）
+
+- 原始资料：`sources/repos/jackhan-mujoco-walke3-simulation.md`、`sources/repos/jackhan-walke3-dataset.md`、`sources/repos/jackhan-walke3-controller.md`、`sources/repos/jackhan-algorithm-template-for-developer.md`、`sources/repos/jackhan-feap-mujoco-deployment.md`、`sources/repos/jackhan-feapvision-mujoco-deployment.md`
+- 沉淀页面：`wiki/entities/jackhan-walke3-e3-ecosystem.md`、`wiki/entities/jackhan-mujoco-walke3-simulation.md`、`wiki/entities/jackhan-walke3-dataset.md`、`wiki/entities/jackhan-walke3-controller.md`、`wiki/entities/jackhan-yobotics-e3-algorithm-template.md`、`wiki/entities/jackhan-feap-mujoco-deployment.md`、`wiki/entities/jackhan-feapvision-mujoco-deployment.md`
+
+## [2026-05-16] structural | wiki/queries/humanoid-rl-cookbook.md, docs/style.css — Humanoid RL Cookbook：「TL;DR」标题改为「快速决策路径」；任务列表内普通子 bullet 增加左缩进避免与 checkbox 同列重叠
+
+## [2026-05-16] structural | wiki/queries/humanoid-rl-cookbook.md, docs/main.js, docs/style.css — Humanoid RL Cookbook：TL;DR 改为 Mermaid 流程图；详情页支持 `- [ ]` / `- [x]` 任务列表复选框渲染
+
+- `wiki/queries/humanoid-rl-cookbook.md`：用 `flowchart TB` 呈现硬件 / 仿真 / 训练路径分支；更新 `updated` 元数据。
+- `docs/main.js`：`renderMarkdownContent` 在无序列表解析中识别 GFM task list，输出 `<input type="checkbox" disabled>`；`flushList` 统一列表项结构。
+- `docs/style.css`：`.contains-task-list`、`.task-list-item` 与 label 布局，避免与默认列表圆点重叠。
+
+## [2026-05-15] structural | scripts/lint_wiki.py — V22 P0 方法-Query 闭环 Lint：新增 `methods_without_practitioner_query` 检查 + `INFO_ONLY_KEYS` 信息型分类机制
+
+- `scripts/lint_wiki.py`：新增 `_check_methods_without_practitioner_query()`，阈值 `METHOD_PRACTITIONER_INBOUND_THRESHOLD=3`（即 ≥ 4 个 wiki 入链，自链已排除），若入链来源中无任何 `wiki/queries/*` 或 `wiki/comparisons/*` 命中，则标记为"待落地"信息型预警。
+- 失败计数机制：抽出 `_failing_total()` / `_info_total()` 辅助函数，新增 `INFO_ONLY_KEYS = {"missing_pages", "methods_without_practitioner_query"}` 让 main 退出码只统计硬错误，避免首次落地即破坏 CI（baseline 28 项以 💡 信息型展示）。
+- 测试：新增 `tests/test_lint_wiki_practitioner_query.py` 6 个用例（高入链无 query 命中、queries 命中、comparisons 命中、阈值边界、自链排除、INFO_ONLY 不计失败 total），`PYTHONPATH=scripts pytest --no-cov` 91/91 通过；`ruff check`、`ruff format --check`、`mypy scripts/lint_wiki.py` 均通过；`scripts/lint_wiki.py` 退出码 0，报告含 28 条信息型预警。
+- 落地基线：当前 28 条预警覆盖 exoactor / sonic-motion-tracking / amp-reward / beyondmimic / motion-retargeting-gmr / humanoid-transformer-touch-dreaming / deepmimic / auto-labeling-pipelines / pi07-policy / π0-policy 等高频热点，将在 V22 P1（动作重定向）/ P2（抓取）落地 queries 与 comparisons 时同步消减。
+- 清单：`docs/checklists/tech-stack-next-phase-checklist-v22.md` P0 "方法-Query 闭环 Lint" 三项全部勾选。
 
 ## [2026-05-15] ingest | sources/sites/amass-dataset.md, sources/repos/ubisoft-laforge-animation-dataset.md, sources/sites/mixamo.md — AMASS / LaFAN1 / Mixamo 入库；新增 wiki/entities/amass.md、wiki/entities/lafan1-dataset.md、wiki/entities/mixamo.md；互链 motion-retargeting、wbc-fsm、ProtoMotions
 

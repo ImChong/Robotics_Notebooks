@@ -1,6 +1,7 @@
 ---
 type: entity
 sources:
+  - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Lab"
 updated: 2026-05-15
@@ -222,6 +223,8 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 ### Repo / 平台入口
 - [Simulation](../../references/repos/simulation.md)
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
+- [Robotic World Model（ETH RSL，Isaac Lab 扩展）](./robotic-world-model-eth-rsl.md) — RWM / RWM-U 神经动力学与想象训练参考实现
+- [Newton Physics](./newton-physics.md) — NVIDIA 推动的 Warp + MuJoCo Warp 物理引擎；Isaac Lab 存在 `feature/newton` 集成探索
 
 ## 推荐继续阅读
 
@@ -235,11 +238,15 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - 官方文档：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
+- **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
 
 ## 关联页面
 
+- [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
+- [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md)
 - [legged_gym](./legged-gym.md)
 - [MuJoCo](./mujoco.md)
+- [Newton Physics](./newton-physics.md)
 - [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真
 - [PyTorch](./pytorch.md) — 常见策略/价值网络与张量并行 rollouts 的默认深度学习后端
 - [RL Frameworks](../../references/repos/rl-frameworks.md)

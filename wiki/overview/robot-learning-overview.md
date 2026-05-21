@@ -187,10 +187,12 @@ sources:
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门
+- [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文教材与 PPO/SAC 代码（[hrl.boyuai.com](https://hrl.boyuai.com/)）
 
 ## 关联页面
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
+- [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Locomotion](../tasks/locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
@@ -201,3 +203,4 @@ sources:
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction*
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com)
+- [动手学强化学习在线书](https://hrl.boyuai.com/chapter)

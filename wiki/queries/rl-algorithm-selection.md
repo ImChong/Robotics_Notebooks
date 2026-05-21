@@ -91,6 +91,8 @@ $$J(\pi) = \sum_t \mathbb{E}\left[r(s_t, a_t) + \alpha \mathcal{H}(\pi(\cdot|s_t
 - 大规模并行仿真优势不如 PPO（off-policy 的并行化收益递减）
 - 随机策略在某些精细操作任务上不如 TD3
 
+**对「足式里 SAC 能否吃满 GPU 并行」的公开反例/进展：** [LIFT](../entities/lift-humanoid.md)（arXiv:2601.21363）在 **MuJoCo Playground** 上报告 **大 batch + 较高 UTD** 的 JAX SAC 人形预训练，并作为后续 **物理知情世界模型微调** 的统一 backbone；工程前提与任务分布强相关，不宜直接外推到所有 Isaac 栈配置。
+
 **关键超参数**：
 - `buffer_size`: 1M（足够大）
 - `batch_size`: 256

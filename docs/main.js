@@ -3,8 +3,7 @@
   const themeToggle = document.getElementById('themeToggle');
   const key = 'robotics-notebooks-theme';
   const saved = localStorage.getItem(key);
-  const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const dark = saved ? saved === 'dark' : preferDark;
+  const dark = saved ? saved === 'dark' : true;
   root.setAttribute('data-theme', dark ? 'dark' : 'light');
 
   function updateThemeToggle() {
@@ -61,13 +60,52 @@
     updateActive();
   }
 
+  const matchHtmlRegExp = /["'&<>]/;
+
   function escapeHtml(value) {
-    return String(value == null ? '' : value)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
+    if (value == null) return '';
+    var str = String(value);
+    var match = matchHtmlRegExp.exec(str);
+    if (!match) {
+      return str;
+    }
+
+    var escape;
+    var html = '';
+    var lastIndex = 0;
+
+    for (var index = match.index; index < str.length; index++) {
+      switch (str.charCodeAt(index)) {
+        case 34: // "
+          escape = '&quot;';
+          break;
+        case 38: // &
+          escape = '&amp;';
+          break;
+        case 39: // '
+          escape = '&#39;';
+          break;
+        case 60: // <
+          escape = '&lt;';
+          break;
+        case 62: // >
+          escape = '&gt;';
+          break;
+        default:
+          continue;
+      }
+
+      if (lastIndex !== index) {
+        html += str.substring(lastIndex, index);
+      }
+
+      lastIndex = index + 1;
+      html += escape;
+    }
+
+    return lastIndex !== index
+      ? html + str.substring(lastIndex, index)
+      : html;
   }
 
   function isSafeUrl(url) {
@@ -126,28 +164,52 @@
     reference: '参考'
   };
 
-  function renderLatestWikiNode(meta) {
+  function renderLatestWikiNode(homeStats) {
     var mount = document.getElementById('homeLatestWikiModule');
     if (!mount) return;
     mount.classList.remove('data-loading');
-    if (!meta || !meta.detail_id) {
+    var items = [];
+    if (homeStats && Array.isArray(homeStats.latest_wiki_nodes) && homeStats.latest_wiki_nodes.length) {
+      items = homeStats.latest_wiki_nodes;
+    } else if (homeStats && homeStats.latest_wiki_node && homeStats.latest_wiki_node.detail_id) {
+      items = [homeStats.latest_wiki_node];
+    }
+    if (!items.length || !items[0].detail_id) {
       mount.innerHTML = '<p class="data-meta">暂无「最近更新」数据。</p>';
       return;
     }
-    var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
-    var href = detailHref(meta.detail_id);
-    var dateStr = meta.recency ? String(meta.recency) : '';
-    var metaLine = typeLabel;
-    if (dateStr) metaLine += ' · ' + dateStr;
-    if (meta.source === 'log.md') metaLine += ' · 维护日志';
-    mount.innerHTML =
-      '<article class="card home-latest-wiki-card"><p class="card-meta">' +
-      escapeHtml(metaLine) +
-      '</p><h3><a href="' +
-      escapeHtml(href) +
-      '">' +
-      escapeHtml(meta.label || meta.detail_id) +
-      '</a></h3></article>';
+    var first = items[0];
+    var fromLog = first.source === 'log.md';
+    var dateStr = first.recency ? String(first.recency) : '';
+    var introParts = [];
+    if (dateStr) introParts.push(dateStr);
+    if (fromLog) {
+      introParts.push('维护日志');
+      if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
+    } else {
+      introParts.push('按页面更新时间');
+    }
+    var introHtml =
+      '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
+    var cards = items
+      .map(function (meta) {
+        var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+        var href = detailHref(meta.detail_id);
+        var cardMeta = fromLog ? typeLabel : typeLabel + (dateStr ? ' · ' + dateStr : '');
+        return (
+          '<article class="card home-latest-wiki-card"><p class="card-meta">' +
+          escapeHtml(cardMeta) +
+          '</p><h3><a href="' +
+          escapeHtml(href) +
+          '">' +
+          escapeHtml(meta.label || meta.detail_id) +
+          '</a></h3></article>'
+        );
+      })
+      .join('');
+    var wrapClass =
+      items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
+    mount.innerHTML = introHtml + '<div class="' + wrapClass + '">' + cards + '</div>';
   }
 
   function moduleHref(id) {
@@ -338,19 +400,22 @@
     return escapeHtml(line);
   }
 
+  // ⚡ Bolt Optimization: Hoisted regular expressions and sets to avoid recreation on every function call
+  // Expected impact: Removes parsing and allocation overhead inside the high-frequency line highlighting loop.
+  const PY_KEYWORDS = new Set([
+    'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue',
+    'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
+    'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
+    'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
+  ]);
+  const PY_BUILTINS = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
+  const PY_TOKEN_RE = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*/<>!%]+|[()[\]{}.,:])/g;
+
   function highlightPythonLine(line) {
-    const keywords = new Set([
-      'and', 'as', 'assert', 'async', 'await', 'break', 'class', 'continue',
-      'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
-      'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
-      'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield'
-    ]);
-    const builtins = new Set(['False', 'None', 'True', 'self', 'super', 'len', 'range', 'dict', 'list', 'set', 'tuple', 'str', 'int', 'float', 'print']);
-    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b[A-Za-z_]\w*\b|\b\d+(?:\.\d+)?\b|[=+\-*/<>!%]+|[()[\]{}.,:])/g;
     let out = '';
     let lastIndex = 0;
     let afterKeyword = '';
-    line.replace(tokenRe, function (token, _whole, offset) {
+    line.replace(PY_TOKEN_RE, function (token, _whole, offset) {
       out += escapeHtml(line.slice(lastIndex, offset));
       if (token.startsWith('#')) {
         out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
@@ -368,10 +433,10 @@
       } else if (afterKeyword === 'def') {
         out += '<span class="tok-function">' + escapeHtml(token) + '</span>';
         afterKeyword = '';
-      } else if (keywords.has(token)) {
+      } else if (PY_KEYWORDS.has(token)) {
         out += '<span class="tok-keyword">' + escapeHtml(token) + '</span>';
         afterKeyword = token === 'class' || token === 'def' ? token : '';
-      } else if (builtins.has(token)) {
+      } else if (PY_BUILTINS.has(token)) {
         out += '<span class="tok-builtin">' + escapeHtml(token) + '</span>';
       } else {
         out += '<span class="tok-name">' + escapeHtml(token) + '</span>';
@@ -383,11 +448,12 @@
     return out;
   }
 
+  const BASH_TOKEN_RE = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:cd|cp|echo|export|git|make|mkdir|mv|pip|python|python3|rm|uv|source|test|then|fi|do|done|for|if|in)\b|\b\d+(?:\.\d+)?\b|[=|&;<>]+)/g;
+
   function highlightBashLine(line) {
-    const tokenRe = /(#.*$|"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|\b(?:cd|cp|echo|export|git|make|mkdir|mv|pip|python|python3|rm|uv|source|test|then|fi|do|done|for|if|in)\b|\b\d+(?:\.\d+)?\b|[=|&;<>]+)/g;
     let out = '';
     let lastIndex = 0;
-    line.replace(tokenRe, function (token, _whole, offset) {
+    line.replace(BASH_TOKEN_RE, function (token, _whole, offset) {
       out += escapeHtml(line.slice(lastIndex, offset));
       if (token.startsWith('#')) out += '<span class="tok-comment">' + escapeHtml(token) + '</span>';
       else if (/^['"]/.test(token)) out += '<span class="tok-string">' + escapeHtml(token) + '</span>';
@@ -401,13 +467,16 @@
     return out;
   }
 
+  const YAML_ATTR_RE = /^(\s*)([A-Za-z0-9_.-]+)(\s*:)/;
+  const YAML_VALUE_RE = /(:\s*)([-+]?\d+(?:\.\d+)?|true|false|null)\b/gi;
+
   function highlightYamlLine(line) {
     const commentIndex = line.indexOf('#');
     const codePart = commentIndex >= 0 ? line.slice(0, commentIndex) : line;
     const commentPart = commentIndex >= 0 ? line.slice(commentIndex) : '';
-    const renderedCode = escapeHtml(codePart).replace(/^(\s*)([A-Za-z0-9_.-]+)(\s*:)/, function (_, lead, key, sep) {
+    const renderedCode = escapeHtml(codePart).replace(YAML_ATTR_RE, function (_, lead, key, sep) {
       return lead + '<span class="tok-attr">' + key + '</span>' + sep;
-    }).replace(/(:\s*)([-+]?\d+(?:\.\d+)?|true|false|null)\b/gi, function (_, sep, value) {
+    }).replace(YAML_VALUE_RE, function (_, sep, value) {
       return sep + '<span class="tok-number">' + value + '</span>';
     });
     return renderedCode + (commentPart ? '<span class="tok-comment">' + escapeHtml(commentPart) + '</span>' : '');
@@ -445,20 +514,21 @@
       + '</div>';
   }
 
-  function renderDetailMermaid(container) {
-    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
-    var nodes = Array.from(container.querySelectorAll('.mermaid'));
-    if (!nodes.length) return Promise.resolve();
-    nodes.forEach(function (node) {
-      var saved = node.getAttribute('data-mermaid-source');
-      if (saved === null) {
-        node.setAttribute('data-mermaid-source', node.textContent || '');
-      } else {
-        node.removeAttribute('data-processed');
-        node.textContent = saved;
-      }
-    });
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var MERMAID_FONT_SIZE_PX = 14;
+  var MERMAID_FONT_SIZE_MOBILE_PX = 12;
+  var MERMAID_LIGHTBOX_FONT_SCALE = 1.75;
+
+  function getMermaidFontSizePx() {
+    if (typeof window !== 'undefined' && window.matchMedia
+      && window.matchMedia('(max-width: 640px)').matches) {
+      return MERMAID_FONT_SIZE_MOBILE_PX;
+    }
+    return MERMAID_FONT_SIZE_PX;
+  }
+
+  function getMermaidThemeVariables(isDark, fontSizePx) {
+    var size = Math.max(11, Math.round(fontSizePx || getMermaidFontSizePx()));
+    var fontSize = String(size) + 'px';
     var lightThemeVars = {
       primaryColor: '#ECE8F8',
       primaryTextColor: '#1a1a2e',
@@ -472,7 +542,8 @@
       clusterBorder: '#9B89C7',
       edgeLabelBackground: '#FFFFFF',
       titleColor: '#1a1a2e',
-      fontFamily: 'inherit'
+      fontFamily: 'inherit',
+      fontSize: fontSize
     };
     var darkThemeVars = {
       primaryColor: '#0d0d0d',
@@ -487,15 +558,469 @@
       clusterBorder: '#ffffff',
       edgeLabelBackground: '#0d0d0d',
       titleColor: '#ffffff',
-      fontFamily: 'inherit'
+      fontFamily: 'inherit',
+      fontSize: fontSize
     };
+    return isDark ? darkThemeVars : lightThemeVars;
+  }
+
+  function initializeMermaidRenderer(fontSizePx) {
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     window.mermaid.initialize({
       startOnLoad: false,
       theme: 'base',
-      themeVariables: isDark ? darkThemeVars : lightThemeVars,
-      securityLevel: 'strict'
+      themeVariables: getMermaidThemeVariables(isDark, fontSizePx),
+      securityLevel: 'strict',
+      flowchart: {
+        useMaxWidth: false,
+        htmlLabels: false,
+        padding: 18,
+        nodeSpacing: 42,
+        rankSpacing: 48,
+        wrappingWidth: 150
+      }
     });
-    return window.mermaid.run({ nodes: nodes }).catch(function () {});
+  }
+
+  function renderDetailMermaid(container) {
+    if (!container || typeof window.mermaid === 'undefined') return Promise.resolve();
+    var nodes = Array.from(container.querySelectorAll('.mermaid'));
+    if (!nodes.length) return Promise.resolve();
+    nodes.forEach(function (node) {
+      var saved = node.getAttribute('data-mermaid-source');
+      if (saved === null) {
+        node.setAttribute('data-mermaid-source', node.textContent || '');
+      } else {
+        node.removeAttribute('data-processed');
+        node.textContent = saved;
+      }
+    });
+    initializeMermaidRenderer(getMermaidFontSizePx());
+    return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+      enhanceMermaidZoomTargets(container);
+      bindMermaidZoom(container);
+    });
+  }
+
+  var mermaidLightboxEl = null;
+  var mermaidLightboxZoom = 1;
+  var mermaidLightboxPanX = 0;
+  var mermaidLightboxPanY = 0;
+  var mermaidLightboxPanState = null;
+  var mermaidLightboxPinchState = null;
+  var mermaidLightboxPointers = null;
+  var MERMAID_LIGHTBOX_ZOOM_MIN = 0.35;
+  var MERMAID_LIGHTBOX_ZOOM_MAX = 5;
+  var MERMAID_LIGHTBOX_ZOOM_FACTOR = 1.12;
+
+  function clampMermaidLightboxZoom(scale) {
+    return Math.min(MERMAID_LIGHTBOX_ZOOM_MAX, Math.max(MERMAID_LIGHTBOX_ZOOM_MIN, scale));
+  }
+
+  function applyMermaidLightboxTransform(stage) {
+    if (!stage) return;
+    stage.style.transformOrigin = '0 0';
+    stage.style.transform = 'translate(' + mermaidLightboxPanX + 'px, ' + mermaidLightboxPanY + 'px) scale(' + mermaidLightboxZoom + ')';
+  }
+
+  function resetMermaidLightboxView(stage) {
+    mermaidLightboxZoom = 1;
+    mermaidLightboxPanX = 0;
+    mermaidLightboxPanY = 0;
+    mermaidLightboxPanState = null;
+    mermaidLightboxPinchState = null;
+    mermaidLightboxPointers = null;
+    applyMermaidLightboxTransform(stage);
+  }
+
+  function clearMermaidLightboxPan(body) {
+    mermaidLightboxPanState = null;
+    if (body) body.classList.remove('mermaid-lightbox-dragging');
+  }
+
+  function clearMermaidLightboxPinch() {
+    mermaidLightboxPinchState = null;
+  }
+
+  function mermaidLightboxPointerEntries() {
+    if (!mermaidLightboxPointers) return [];
+    return Object.keys(mermaidLightboxPointers).map(function (id) {
+      return mermaidLightboxPointers[id];
+    });
+  }
+
+  function applyMermaidLightboxPinchZoom(stage, body) {
+    if (!mermaidLightboxPinchState || !stage || !body) return;
+    var pts = mermaidLightboxPointerEntries();
+    if (pts.length < 2) return;
+    var p1 = pts[0];
+    var p2 = pts[1];
+    var dist = Math.hypot(p2.clientX - p1.clientX, p2.clientY - p1.clientY);
+    if (dist < 1) return;
+    var pinch = mermaidLightboxPinchState;
+    var newZoom = clampMermaidLightboxZoom(pinch.startZoom * (dist / pinch.startDistance));
+    var rect = body.getBoundingClientRect();
+    var cx = (p1.clientX + p2.clientX) / 2;
+    var cy = (p1.clientY + p2.clientY) / 2;
+    var anchorX = cx - rect.left + body.scrollLeft;
+    var anchorY = cy - rect.top + body.scrollTop;
+    mermaidLightboxZoom = newZoom;
+    mermaidLightboxPanX = anchorX - pinch.localX * newZoom;
+    mermaidLightboxPanY = anchorY - pinch.localY * newZoom;
+    applyMermaidLightboxTransform(stage);
+  }
+
+  function beginMermaidLightboxPinch(stage, body) {
+    var pts = mermaidLightboxPointerEntries();
+    if (pts.length < 2 || !stage || !body) return;
+    var p1 = pts[0];
+    var p2 = pts[1];
+    var dist = Math.hypot(p2.clientX - p1.clientX, p2.clientY - p1.clientY);
+    if (dist < 1) return;
+    var rect = body.getBoundingClientRect();
+    var cx = (p1.clientX + p2.clientX) / 2;
+    var cy = (p1.clientY + p2.clientY) / 2;
+    var anchorX = cx - rect.left + body.scrollLeft;
+    var anchorY = cy - rect.top + body.scrollTop;
+    mermaidLightboxPinchState = {
+      startDistance: dist,
+      startZoom: mermaidLightboxZoom,
+      localX: (anchorX - mermaidLightboxPanX) / mermaidLightboxZoom,
+      localY: (anchorY - mermaidLightboxPanY) / mermaidLightboxZoom
+    };
+  }
+
+  function fitMermaidLightboxToView(stage, body) {
+    if (!stage || !body) return;
+    var svg = stage.querySelector('svg');
+    if (!svg) return;
+    var svgW = svg.getBoundingClientRect().width;
+    var svgH = svg.getBoundingClientRect().height;
+    if (!(svgW > 0 && svgH > 0)) return;
+    var bodyW = body.clientWidth;
+    var bodyH = body.clientHeight;
+    var pad = 12;
+    var scale = Math.min(1, (bodyW - pad * 2) / svgW, (bodyH - pad * 2) / svgH);
+    mermaidLightboxZoom = scale;
+    mermaidLightboxPanX = Math.max(pad, (bodyW - svgW * scale) / 2);
+    mermaidLightboxPanY = Math.max(pad, (bodyH - svgH * scale) / 2);
+    mermaidLightboxPanState = null;
+    applyMermaidLightboxTransform(stage);
+  }
+
+  function zoomMermaidLightboxAt(stage, body, factor, clientX, clientY) {
+    if (!stage || !body) return;
+    var oldZoom = mermaidLightboxZoom;
+    var newZoom = clampMermaidLightboxZoom(oldZoom * factor);
+    if (clientX == null || clientY == null) {
+      mermaidLightboxZoom = newZoom;
+      applyMermaidLightboxTransform(stage);
+      return;
+    }
+    var rect = body.getBoundingClientRect();
+    var x = clientX - rect.left + body.scrollLeft;
+    var y = clientY - rect.top + body.scrollTop;
+    var localX = (x - mermaidLightboxPanX) / oldZoom;
+    var localY = (y - mermaidLightboxPanY) / oldZoom;
+    mermaidLightboxZoom = newZoom;
+    mermaidLightboxPanX = x - localX * newZoom;
+    mermaidLightboxPanY = y - localY * newZoom;
+    applyMermaidLightboxTransform(stage);
+  }
+
+  function bindMermaidLightboxWheel(body) {
+    if (!body || body.getAttribute('data-mermaid-wheel-bound') === '1') return;
+    body.setAttribute('data-mermaid-wheel-bound', '1');
+    body.addEventListener('wheel', function (ev) {
+      if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      ev.preventDefault();
+      var factor = ev.deltaY < 0 ? MERMAID_LIGHTBOX_ZOOM_FACTOR : 1 / MERMAID_LIGHTBOX_ZOOM_FACTOR;
+      zoomMermaidLightboxAt(stage, body, factor, ev.clientX, ev.clientY);
+    }, { passive: false });
+  }
+
+  function bindMermaidLightboxGestures(body) {
+    if (!body || body.getAttribute('data-mermaid-gestures-bound') === '1') return;
+    body.setAttribute('data-mermaid-gestures-bound', '1');
+    body.addEventListener('pointerdown', function (ev) {
+      if (ev.button !== 0) return;
+      if (ev.target.closest('.mermaid-lightbox-close')) return;
+      if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      if (!mermaidLightboxPointers) mermaidLightboxPointers = {};
+      mermaidLightboxPointers[ev.pointerId] = { clientX: ev.clientX, clientY: ev.clientY };
+      var pointerCount = Object.keys(mermaidLightboxPointers).length;
+      if (pointerCount >= 2) {
+        if (mermaidLightboxPanState) {
+          try {
+            body.releasePointerCapture(mermaidLightboxPanState.pointerId);
+          } catch (unusedReleaseErr) {
+            void unusedReleaseErr;
+          }
+          clearMermaidLightboxPan(body);
+        }
+        beginMermaidLightboxPinch(stage, body);
+        ev.preventDefault();
+        return;
+      }
+      mermaidLightboxPanState = {
+        pointerId: ev.pointerId,
+        startX: ev.clientX,
+        startY: ev.clientY,
+        panX: mermaidLightboxPanX,
+        panY: mermaidLightboxPanY
+      };
+      body.setPointerCapture(ev.pointerId);
+      body.classList.add('mermaid-lightbox-dragging');
+    });
+    body.addEventListener('pointermove', function (ev) {
+      if (!mermaidLightboxPointers || !mermaidLightboxPointers[ev.pointerId]) return;
+      mermaidLightboxPointers[ev.pointerId].clientX = ev.clientX;
+      mermaidLightboxPointers[ev.pointerId].clientY = ev.clientY;
+      var stage = body.querySelector('.mermaid-lightbox-stage');
+      if (!stage) return;
+      if (mermaidLightboxPinchState && Object.keys(mermaidLightboxPointers).length >= 2) {
+        applyMermaidLightboxPinchZoom(stage, body);
+        ev.preventDefault();
+        return;
+      }
+      if (!mermaidLightboxPanState || ev.pointerId !== mermaidLightboxPanState.pointerId) return;
+      mermaidLightboxPanX = mermaidLightboxPanState.panX + (ev.clientX - mermaidLightboxPanState.startX);
+      mermaidLightboxPanY = mermaidLightboxPanState.panY + (ev.clientY - mermaidLightboxPanState.startY);
+      applyMermaidLightboxTransform(stage);
+    });
+    function endMermaidLightboxPointer(ev) {
+      if (!mermaidLightboxPointers || !mermaidLightboxPointers[ev.pointerId]) return;
+      delete mermaidLightboxPointers[ev.pointerId];
+      if (Object.keys(mermaidLightboxPointers).length === 0) mermaidLightboxPointers = null;
+      if (Object.keys(mermaidLightboxPointers || {}).length < 2) clearMermaidLightboxPinch();
+      if (mermaidLightboxPanState && ev.pointerId === mermaidLightboxPanState.pointerId) {
+        clearMermaidLightboxPan(body);
+        try {
+          body.releasePointerCapture(ev.pointerId);
+        } catch (unusedErr) {
+          void unusedErr;
+        }
+      }
+    }
+    body.addEventListener('pointerup', endMermaidLightboxPointer);
+    body.addEventListener('pointercancel', endMermaidLightboxPointer);
+  }
+
+  function ensureMermaidLightbox() {
+    if (mermaidLightboxEl) return mermaidLightboxEl;
+    mermaidLightboxEl = document.createElement('div');
+    mermaidLightboxEl.id = 'mermaidLightbox';
+    mermaidLightboxEl.className = 'mermaid-lightbox';
+    mermaidLightboxEl.hidden = true;
+    mermaidLightboxEl.setAttribute('aria-hidden', 'true');
+    mermaidLightboxEl.innerHTML = [
+      '<div class="mermaid-lightbox-backdrop" data-mermaid-lightbox-dismiss tabindex="-1" aria-hidden="true"></div>',
+      '<div class="mermaid-lightbox-panel" role="dialog" aria-modal="true" aria-label="流程图放大预览">',
+      '  <button type="button" class="mermaid-lightbox-close" data-mermaid-lightbox-dismiss aria-label="关闭放大预览">×</button>',
+      '  <p class="mermaid-lightbox-hint">拖拽平移 · 滚轮/双指缩放 · Esc 关闭</p>',
+      '  <div class="mermaid-lightbox-body" aria-live="polite"></div>',
+      '</div>'
+    ].join('');
+    document.body.appendChild(mermaidLightboxEl);
+    mermaidLightboxEl.addEventListener('click', function (ev) {
+      if (ev.target.closest('[data-mermaid-lightbox-dismiss]')) closeMermaidLightbox();
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && mermaidLightboxEl && !mermaidLightboxEl.hidden) closeMermaidLightbox();
+    });
+    var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
+    bindMermaidLightboxWheel(body);
+    bindMermaidLightboxGestures(body);
+    return mermaidLightboxEl;
+  }
+
+  function getMermaidSvgLayoutSize(svg) {
+    if (!svg) return { w: 0, h: 0 };
+    var vb = svg.viewBox && svg.viewBox.baseVal;
+    if (vb && vb.width > 0 && vb.height > 0) {
+      return { w: vb.width, h: vb.height };
+    }
+    var rawW = svg.getAttribute('width');
+    var rawH = svg.getAttribute('height');
+    var attrW = parseFloat(rawW);
+    var attrH = parseFloat(rawH);
+    if (attrW > 0 && attrH > 0 && String(rawW || '').indexOf('%') < 0) {
+      return { w: attrW, h: attrH };
+    }
+    var rect = svg.getBoundingClientRect();
+    return { w: rect.width, h: rect.height };
+  }
+
+  function cloneMermaidSvgForLightbox(svg) {
+    var clone = svg.cloneNode(true);
+    var layout = getMermaidSvgLayoutSize(svg);
+    var w = layout.w;
+    var h = layout.h;
+    if (!(w > 0 && h > 0)) {
+      var rect = svg.getBoundingClientRect();
+      w = rect.width;
+      h = rect.height;
+    }
+    if (w > 0 && h > 0) {
+      clone.setAttribute('width', String(w));
+      clone.setAttribute('height', String(h));
+      clone.style.width = w + 'px';
+      clone.style.height = h + 'px';
+      clone.style.maxWidth = 'none';
+      clone.style.maxHeight = 'none';
+    }
+    return clone;
+  }
+
+  function renderMermaidSvgForLightbox(host) {
+    if (!host || typeof window.mermaid === 'undefined') return Promise.resolve(null);
+    var source = host.getAttribute('data-mermaid-source');
+    var inlineSvg = host.querySelector('svg');
+    if (!source || !String(source).trim()) {
+      return Promise.resolve(inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null);
+    }
+    var sandbox = document.createElement('div');
+    sandbox.setAttribute('aria-hidden', 'true');
+    sandbox.style.cssText = 'position:fixed;left:-10000px;top:0;visibility:hidden;pointer-events:none;width:max-content;max-width:none;';
+    var node = document.createElement('div');
+    node.className = 'mermaid';
+    node.textContent = source;
+    sandbox.appendChild(node);
+    document.body.appendChild(sandbox);
+    var hiFontPx = Math.round(getMermaidFontSizePx() * MERMAID_LIGHTBOX_FONT_SCALE);
+    initializeMermaidRenderer(hiFontPx);
+    return window.mermaid.run({ nodes: [node] }).catch(function () {}).then(function () {
+      var hiSvg = node.querySelector('svg');
+      if (sandbox.parentNode) document.body.removeChild(sandbox);
+      initializeMermaidRenderer(getMermaidFontSizePx());
+      if (hiSvg) return cloneMermaidSvgForLightbox(hiSvg);
+      return inlineSvg ? cloneMermaidSvgForLightbox(inlineSvg) : null;
+    });
+  }
+
+  function mountMermaidLightboxSvg(stage, body, svgClone) {
+    if (!stage || !body || !svgClone) return;
+    body.innerHTML = '';
+    stage.innerHTML = '';
+    stage.appendChild(svgClone);
+    body.appendChild(stage);
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        fitMermaidLightboxToView(stage, body);
+      });
+    });
+  }
+
+  function openMermaidLightbox(host) {
+    if (!host) return;
+    var box = ensureMermaidLightbox();
+    var body = box.querySelector('.mermaid-lightbox-body');
+    if (!body) return;
+    var stage = document.createElement('div');
+    stage.className = 'mermaid-lightbox-stage';
+    body.innerHTML = '';
+    body.appendChild(stage);
+    box.hidden = false;
+    box.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('mermaid-lightbox-open');
+    renderMermaidSvgForLightbox(host).then(function (svgClone) {
+      if (!box || box.hidden) return;
+      if (!svgClone) {
+        closeMermaidLightbox();
+        return;
+      }
+      mountMermaidLightboxSvg(stage, body, svgClone);
+    });
+    var closeBtn = box.querySelector('.mermaid-lightbox-close');
+    if (closeBtn) closeBtn.focus();
+  }
+
+  function closeMermaidLightbox() {
+    if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
+    mermaidLightboxEl.hidden = true;
+    mermaidLightboxEl.setAttribute('aria-hidden', 'true');
+    var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
+    if (body) {
+      body.innerHTML = '';
+      body.classList.remove('mermaid-lightbox-dragging');
+    }
+    mermaidLightboxPanState = null;
+    mermaidLightboxPinchState = null;
+    mermaidLightboxPointers = null;
+    document.body.classList.remove('mermaid-lightbox-open');
+  }
+
+  function enhanceMermaidZoomTargets(container) {
+    if (!container) return;
+    Array.from(container.querySelectorAll('.mermaid')).forEach(function (node) {
+      if (!node.querySelector('svg')) return;
+      node.classList.add('mermaid-zoomable');
+      if (!node.hasAttribute('tabindex')) node.setAttribute('tabindex', '0');
+      node.setAttribute('role', 'button');
+      node.setAttribute('aria-label', '点击放大流程图，放大后可滚轮或双指缩放、拖拽平移');
+    });
+  }
+
+  function bindMermaidZoom(container) {
+    if (!container || container.getAttribute('data-mermaid-zoom-bound') === '1') return;
+    container.setAttribute('data-mermaid-zoom-bound', '1');
+    container.addEventListener('click', function (ev) {
+      var host = ev.target.closest('.mermaid.mermaid-zoomable');
+      if (!host || !container.contains(host)) return;
+      ev.preventDefault();
+      openMermaidLightbox(host);
+    });
+    container.addEventListener('keydown', function (ev) {
+      if (ev.key !== 'Enter' && ev.key !== ' ') return;
+      var host = ev.target.closest('.mermaid.mermaid-zoomable');
+      if (!host || !container.contains(host)) return;
+      ev.preventDefault();
+      openMermaidLightbox(host);
+    });
+  }
+
+  /**
+   * One roadmap stage row (li > details): related wiki / roadmap links.
+   * Used by the vertical tree and by per-L–chapter embeds on roadmap pages.
+   */
+  function buildRoadmapStageRowHTML(stage, index, roadmapId, detailPages, options) {
+    var opts = options || {};
+    var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
+    var sid = String(stage.id || '');
+    var title = String(stage.title || '');
+    var openAttr = opts.openByDefault ? ' open' : '';
+    var parts = [];
+    parts.push('<li class="roadmap-vtree-item">');
+    parts.push('<details class="roadmap-vtree-stage roadmap-vtree-stage-embed"' + openAttr + '>');
+    parts.push('<summary class="roadmap-vtree-summary">');
+    parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
+    parts.push(
+      '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
+    );
+    parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
+    parts.push('</summary>');
+    if (!related.length) {
+      parts.push('<p class="roadmap-vtree-empty data-meta">本阶段正文内暂无抽取到的站内链接。</p>');
+    } else {
+      parts.push('<ul class="roadmap-vtree-links">');
+      for (var k = 0; k < related.length; k++) {
+        var rid = related[k];
+        var page = detailPages[rid] || {};
+        var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
+        parts.push('<li class="roadmap-vtree-link-row">');
+        parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
+        parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
+        parts.push('</li>');
+      }
+      parts.push('</ul>');
+    }
+    parts.push('</details>');
+    parts.push('</li>');
+    return parts.join('');
   }
 
   /**
@@ -508,41 +1033,91 @@
     parts.push('<ol class="roadmap-vtree">');
     var i;
     for (i = 0; i < stages.length; i++) {
-      var stage = stages[i];
-      var related = Array.isArray(stage.related_items) ? stage.related_items.slice(0, 8) : [];
-      var sid = String(stage.id || '');
-      var title = String(stage.title || '');
-      var openAttr = i === 0 ? ' open' : '';
-      parts.push('<li class="roadmap-vtree-item">');
-      parts.push('<details class="roadmap-vtree-stage"' + openAttr + '>');
-      parts.push('<summary class="roadmap-vtree-summary">');
-      parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(i + 1)) + '</span>');
-      parts.push(
-        '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
-      );
-      parts.push('<span class="roadmap-vtree-count">' + escapeHtml(String(related.length)) + ' 条</span>');
-      parts.push('</summary>');
-      if (!related.length) {
-        parts.push('<p class="roadmap-vtree-empty data-meta">本阶段正文内暂无抽取到的站内链接。</p>');
-      } else {
-        parts.push('<ul class="roadmap-vtree-links">');
-        for (var k = 0; k < related.length; k++) {
-          var rid = related[k];
-          var page = detailPages[rid] || {};
-          var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
-          parts.push('<li class="roadmap-vtree-link-row">');
-          parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
-          parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
-          parts.push('</li>');
-        }
-        parts.push('</ul>');
-      }
-      parts.push('</details>');
-      parts.push('</li>');
+      parts.push(buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, { openByDefault: i === 0 }));
     }
     parts.push('</ol>');
     parts.push('</div>');
     return parts.join('');
+  }
+
+  /**
+   * 路线正文：将 article 下每个顶层 h2 及其后内容包进默认收起的 <details>，首屏只保留章节标题行。
+   * 须在 embedRoadmapStagesIntoMarkdownBody 之后调用，使各 L 阶段嵌入块留在对应章节内。
+   */
+  function wrapRoadmapCollapsibleMajorHeadings(container) {
+    if (!container) return;
+    var top = Array.from(container.querySelectorAll(':scope > h2[id]'));
+    if (!top.length) return;
+    var idx;
+    for (idx = top.length - 1; idx >= 0; idx--) {
+      var h2 = top[idx];
+      if (typeof h2.closest === 'function' && h2.closest('details.roadmap-major-section')) continue;
+      var details = document.createElement('details');
+      details.className = 'roadmap-major-section';
+      var summary = document.createElement('summary');
+      summary.className = 'roadmap-major-section-summary';
+      var body = document.createElement('div');
+      body.className = 'roadmap-major-section-body';
+      h2.parentNode.insertBefore(details, h2);
+      summary.appendChild(h2);
+      details.appendChild(summary);
+      details.appendChild(body);
+      var node = details.nextSibling;
+      while (node) {
+        var next = node.nextSibling;
+        if (node.nodeType === 1) {
+          var el = node;
+          if (el.tagName === 'H2' && el.id) break;
+          if (el.classList && el.classList.contains('roadmap-major-section')) break;
+        }
+        body.appendChild(node);
+        node = next;
+      }
+      // 章节之间原稿常用 --- 分隔；折叠块自带底框，去掉落在本块末尾的 <hr> 避免重复分割线。
+      while (body.lastChild && body.lastChild.nodeType === 1 && body.lastChild.tagName === 'HR') {
+        body.removeChild(body.lastChild);
+      }
+    }
+  }
+
+  /**
+   * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
+   * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
+   */
+  function embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages) {
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!contentEl || stages.length < 2) return false;
+    var targets = [];
+    var i;
+    for (i = 0; i < stages.length; i++) {
+      var sid = String(stages[i].id || '').toLowerCase();
+      if (!sid) return false;
+      var h2 = Array.from(contentEl.querySelectorAll('h2[id]')).find(function (h) {
+        return h.id === sid || h.id.indexOf(sid + '-') === 0;
+      });
+      if (!h2) return false;
+      targets.push(h2);
+    }
+    var seen = new Set();
+    for (i = 0; i < targets.length; i++) {
+      if (seen.has(targets[i])) return false;
+      seen.add(targets[i]);
+    }
+    for (i = 0; i < stages.length; i++) {
+      var row = buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, { openByDefault: i === 0 });
+      var wrap = document.createElement('div');
+      wrap.className = 'roadmap-stage-embed-wrap';
+      wrap.setAttribute('data-roadmap-stage-embed', String(stages[i].id || '').toLowerCase());
+      wrap.innerHTML = '<ol class="roadmap-vtree">' + row + '</ol>';
+      targets[i].insertAdjacentElement('afterend', wrap);
+    }
+    return true;
+  }
+
+  function clearRoadmapStandaloneFlowSection() {
+    var flowRoot = document.getElementById('roadmapFlowMermaidRoot');
+    if (flowRoot) flowRoot.innerHTML = '';
+    setRoadmapFlowChromeVisible(false);
   }
 
   function setRoadmapFlowChromeVisible(show) {
@@ -662,14 +1237,27 @@
     const links = Array.from(tocContainer.querySelectorAll('a[href^="#"]'));
     if (!headings.length || !links.length) return;
 
+    let lastActiveHref = '';
+
+    function scrollTocActiveIntoView() {
+      const activeLink = tocContainer.querySelector('a.active');
+      if (!activeLink || typeof activeLink.scrollIntoView !== 'function') return;
+      activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+    }
+
     function updateActiveTocLink() {
       let activeId = headings[0].id;
       headings.forEach(function (heading) {
         if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
       });
+      const activeHref = '#' + activeId;
       links.forEach(function (link) {
-        link.classList.toggle('active', link.getAttribute('href') === '#' + activeId);
+        link.classList.toggle('active', link.getAttribute('href') === activeHref);
       });
+      if (activeHref !== lastActiveHref) {
+        lastActiveHref = activeHref;
+        scrollTocActiveIntoView();
+      }
     }
 
     let tocTicking = false;
@@ -686,6 +1274,13 @@
     }, { passive: true });
     window.addEventListener('hashchange', updateActiveTocLink);
     updateActiveTocLink();
+  }
+
+  /** 在程序化改变滚动位置后触发一次 TOC spy，避免初始带 hash 时高亮与侧栏滚动不同步。 */
+  function notifyTocSpyScrollSync() {
+    window.requestAnimationFrame(function () {
+      window.dispatchEvent(new Event('scroll'));
+    });
   }
 
   function scrollToDetailHashTarget(container) {
@@ -710,6 +1305,9 @@
       node.classList.remove('detail-hash-target');
     });
     target.classList.add('detail-hash-target');
+    var roadmapFold =
+      typeof target.closest === 'function' ? target.closest('details.roadmap-major-section') : null;
+    if (roadmapFold) roadmapFold.open = true;
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     window.setTimeout(function () {
       target.classList.remove('detail-hash-target');
@@ -785,12 +1383,19 @@
     function flushList() {
       if (!listItems.length) return;
       const openTag = listTag === 'ol' ? 'ol' : 'ul';
-      blocks.push((function () {
-        if (openTag === 'ul') return '<ul>';
+      const hasTask = listItems.some(function (it) { return it && it.task; });
+      const listOpen = (function () {
+        if (openTag === 'ul') return hasTask ? '<ul class="contains-task-list">' : '<ul>';
         if (openTag === 'ol') return '<ol>';
         return '<ul>';
-      })() + listItems.map(function (item) {
-        return '<li>' + renderMathBlocks(renderInlineMarkdown(item, context)) + '</li>';
+      })();
+      blocks.push(listOpen + listItems.map(function (item) {
+        const body = renderMathBlocks(renderInlineMarkdown(item.text, context));
+        if (item.task) {
+          const checkedAttr = item.checked ? ' checked' : '';
+          return '<li class="task-list-item"><label><input type="checkbox"' + checkedAttr + ' disabled aria-readonly="true" /> <span class="task-list-item-body">' + body + '</span></label></li>';
+        }
+        return '<li>' + body + '</li>';
       }).join('') + '</' + openTag + '>');
       listItems = [];
       listTag = '';
@@ -825,7 +1430,12 @@
         const tag = isHeader ? 'th' : 'td';
         return '<tr>' + cells.map(function (c) { return '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(c, context)) + '</' + tag + '>'; }).join('') + '</tr>';
       }).join('');
-      blocks.push('<div class="table-wrapper"><table>' + htmlRows + '</table></div>');
+      blocks.push(
+        '<div class="table-wrapper">'
+        + '<div class="table-scroll"><table>' + htmlRows + '</table></div>'
+        + '<span class="table-scroll-hint" aria-hidden="true">↔ 左右滑动查看更多</span>'
+        + '</div>'
+      );
       tableLines = [];
     }
 
@@ -939,13 +1549,27 @@
         return;
       }
 
+      const taskMatch = trimmed.match(/^[-*]\s+\[([ xX])\]\s*(.*)$/);
+      if (taskMatch) {
+        flushParagraph();
+        flushQuote();
+        if (listTag && listTag !== 'ul') flushList();
+        listTag = 'ul';
+        listItems.push({
+          task: true,
+          checked: String(taskMatch[1] || '').trim().toLowerCase() === 'x',
+          text: String(taskMatch[2] || '').trim()
+        });
+        return;
+      }
+
       const unorderedMatch = trimmed.match(/^[-*]\s+(.*)$/);
       if (unorderedMatch) {
         flushParagraph();
         flushQuote();
         if (listTag && listTag !== 'ul') flushList();
         listTag = 'ul';
-        listItems.push(unorderedMatch[1]);
+        listItems.push({ task: false, checked: false, text: unorderedMatch[1] });
         return;
       }
 
@@ -955,7 +1579,7 @@
         flushQuote();
         if (listTag && listTag !== 'ol') flushList();
         listTag = 'ol';
-        listItems.push(orderedMatch[1]);
+        listItems.push({ task: false, checked: false, text: orderedMatch[1] });
         return;
       }
 
@@ -992,6 +1616,109 @@
     }
     container.innerHTML = items.map(renderItem).join('');
     removeLoadingState(container);
+  }
+
+  // V22 P3：详情页「关联项按社区分布」小条形图。
+  // 社区来自 exports/link-graph.json（Girvan-Newman + Louvain 二级拆分），
+  // 节点 id 即 wiki/entity 页面相对路径；roadmap/reference/tech_map 不在图谱内，
+  // 在本图中统一桶为「未分类」。
+  var _detailCommunityIndex = null;
+  var _detailCommunityIndexPromise = null;
+
+  function ensureDetailCommunityIndex() {
+    if (_detailCommunityIndex) return Promise.resolve(_detailCommunityIndex);
+    if (_detailCommunityIndexPromise) return _detailCommunityIndexPromise;
+    _detailCommunityIndexPromise = fetch('exports/link-graph.json')
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
+      .then(function (data) {
+        var pathToCommunity = new Map();
+        var nodes = data && data.nodes ? data.nodes : [];
+        for (var ni = 0; ni < nodes.length; ni++) {
+          var node = nodes[ni];
+          if (node && node.id && node.community) {
+            pathToCommunity.set(node.id, node.community);
+          }
+        }
+        var communityLabel = {};
+        var communities = data && data.communities ? data.communities : [];
+        for (var ci = 0; ci < communities.length; ci++) {
+          var c = communities[ci];
+          if (c && c.id) communityLabel[c.id] = c.label || c.id;
+        }
+        _detailCommunityIndex = {
+          pathToCommunity: pathToCommunity,
+          communityLabel: communityLabel
+        };
+        return _detailCommunityIndex;
+      })
+      .catch(function () {
+        _detailCommunityIndex = { pathToCommunity: new Map(), communityLabel: {} };
+        return _detailCommunityIndex;
+      });
+    return _detailCommunityIndexPromise;
+  }
+
+  function shortenCommunityLabel(label) {
+    if (!label) return '未分类';
+    return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
+  }
+
+  function renderRelatedCommunityDistribution(wrapperEl, ids, detailPages) {
+    if (!wrapperEl) return;
+    var barsEl = document.getElementById('detailRelatedCommunityDistBars');
+    var metaEl = document.getElementById('detailRelatedCommunityDistMeta');
+    var validIds = Array.isArray(ids) ? ids.filter(function (id) { return id && detailPages[id]; }) : [];
+    if (!validIds.length || !barsEl) {
+      wrapperEl.hidden = true;
+      removeLoadingState(wrapperEl);
+      return;
+    }
+    ensureDetailCommunityIndex().then(function (idx) {
+      var pathToCommunity = idx.pathToCommunity;
+      var communityLabel = idx.communityLabel;
+      var counts = {};
+      var labelByKey = {};
+      for (var i = 0; i < validIds.length; i++) {
+        var page = detailPages[validIds[i]] || {};
+        var path = page.path || '';
+        var cid = pathToCommunity.get(path) || '__unbinned__';
+        counts[cid] = (counts[cid] || 0) + 1;
+        if (!labelByKey[cid]) {
+          labelByKey[cid] = cid === '__unbinned__' ? '未分类' : shortenCommunityLabel(communityLabel[cid] || cid);
+        }
+      }
+      var entries = Object.keys(counts).map(function (key) {
+        return { key: key, label: labelByKey[key], count: counts[key] };
+      });
+      entries.sort(function (a, b) {
+        if (a.key === '__unbinned__' && b.key !== '__unbinned__') return 1;
+        if (b.key === '__unbinned__' && a.key !== '__unbinned__') return -1;
+        if (b.count !== a.count) return b.count - a.count;
+        return a.label.localeCompare(b.label);
+      });
+      var maxCount = entries.reduce(function (m, e) { return e.count > m ? e.count : m; }, 0) || 1;
+      barsEl.innerHTML = entries.map(function (entry) {
+        var pct = Math.max(6, Math.round((entry.count / maxCount) * 100));
+        var safeLabel = escapeHtml(entry.label);
+        return [
+          '<div class="related-community-bar-row" title="' + safeLabel + '">',
+          '  <span class="related-community-bar-label">' + safeLabel + '</span>',
+          '  <span class="related-community-bar-track" aria-hidden="true">',
+          '    <span class="related-community-bar-fill" style="width:' + pct + '%"></span>',
+          '  </span>',
+          '  <span class="related-community-bar-count">' + entry.count + '</span>',
+          '</div>'
+        ].join('');
+      }).join('');
+      if (metaEl) {
+        metaEl.textContent = '共 ' + validIds.length + ' 项 · ' + entries.length + ' 个社区';
+      }
+      wrapperEl.hidden = false;
+      removeLoadingState(wrapperEl);
+    });
   }
 
   function renderInternalLinks(container, ids, detailPages, options) {
@@ -1137,6 +1864,7 @@
     entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
     formalization: '#fb923c', '': '#64748b'
   };
+  var DETAIL_MINI_TABLEAU10 = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac'];
 
   function buildPathToDetailIdIndex(detailPages) {
     var idx = {};
@@ -1156,6 +1884,11 @@
     if (!currentPath) return;
 
     fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
+      var communityColor = {};
+      (gd.communities || []).forEach(function (c, i) {
+        communityColor[c.id] = palette[i % palette.length];
+      });
       var nodeMap = {};
       (gd.nodes || []).forEach(function (n) { nodeMap[n.id] = n; });
       var current = nodeMap[currentPath];
@@ -1174,10 +1907,10 @@
       var pathToId = buildPathToDetailIdIndex(detailPages);
       var nodes = [{
         id: currentPath, label: current.label || currentPath,
-        type: current.type || '', isCurrent: true
+        type: current.type || '', community: current.community || '', isCurrent: true
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
-        return { id: id, label: n.label || id, type: n.type || '', isCurrent: false };
+        return { id: id, label: n.label || id, type: n.type || '', community: n.community || '', isCurrent: false };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
 
@@ -1188,9 +1921,20 @@
       svgEl.innerHTML = '';
 
       var svg = window.d3.select(svgEl);
-      var g = svg.append('g');
-      var lineLayer = g.append('g');
-      var nodeLayer = g.append('g');
+      var panRoot = svg.append('g').attr('class', 'detail-mini-map-pan');
+      var lineLayer = panRoot.append('g');
+      var nodeLayer = panRoot.append('g');
+
+      var zoom = window.d3.zoom()
+        .scaleExtent([1, 1])
+        .filter(function (event) {
+          if (event.type === 'wheel' || event.type === 'dblclick') return false;
+          return !event.button;
+        })
+        .on('zoom', function (ev) {
+          panRoot.attr('transform', ev.transform);
+        });
+      svg.call(zoom).on('dblclick.zoom', null);
 
       var sim = window.d3.forceSimulation(nodes)
         .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
@@ -1215,7 +1959,11 @@
       nodeG.append('title').text(function (d) { return d.label; });
       nodeG.append('circle')
         .attr('r', function (d) { return d.isCurrent ? 8 : 6; })
-        .attr('fill', function (d) { return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI['']; })
+        .attr('fill', function (d) {
+          var cc = d.community && communityColor[d.community];
+          if (cc) return cc;
+          return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI[''];
+        })
         .attr('fill-opacity', 0.9);
       nodeG.append('text')
         .text(function (d) { return d.label.length > 10 ? d.label.slice(0, 10) + '…' : d.label; })
@@ -1235,7 +1983,7 @@
       if (metaEl) {
         var totalDeg = Object.keys(neighborSet).length;
         var shown = neighborIds.length;
-        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 点击跳转';
+        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 拖拽平移 · 点击跳转';
       }
     }).catch(function () {
       if (metaEl) metaEl.textContent = '邻居数据加载失败';
@@ -1290,6 +2038,7 @@
         removeLoadingState(contentEl);
       }
       renderChipList(tagEl, [], {});
+      renderRelatedCommunityDistribution(document.getElementById('detailRelatedCommunityDist'), [], detailPages);
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的关联项。' });
       if (recommendedEl) {
         recommendedEl.innerHTML = '<article class="card"><p>当前无可展示的相关推荐。</p></article>';
@@ -1376,8 +2125,10 @@
       window.addEventListener('hashchange', function () {
         scrollToDetailHashTarget(contentEl);
         scrollDetailPageLayoutHashIntoView(contentEl);
+        notifyTocSpyScrollSync();
       });
       scrollToDetailHashTarget(contentEl);
+      notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }
 
@@ -1386,6 +2137,7 @@
         return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
       }
     });
+    renderRelatedCommunityDistribution(document.getElementById('detailRelatedCommunityDist'), detailPage.related, detailPages);
     renderInternalLinks(relatedEl, detailPage.related, detailPages, { emptyText: '当前 detail page 暂无 related。' });
 
     // V17: 记录并渲染阅读足迹
@@ -1685,9 +2437,14 @@
       renderDetailMath(contentEl);
       renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
+      if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
+        clearRoadmapStandaloneFlowSection();
+      }
+      wrapRoadmapCollapsibleMajorHeadings(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
-      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); });
+      window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
       scrollToDetailHashTarget(contentEl);
+      notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }
   }
@@ -2226,7 +2983,7 @@
       })
       .then(function (stats) {
         renderHomeStats(stats, stats.coverage ? (stats.coverage.covered + '/' + stats.coverage.total) : '');
-        renderLatestWikiNode(stats.latest_wiki_node);
+        renderLatestWikiNode(stats);
       })
       .catch(function (error) {
         console.warn('Home stats sync failed:', error);
@@ -2241,7 +2998,7 @@
   // ── Wiki 全文搜索（index.html 搜索框） ────────────────────────────────────
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
-  var typeFilter = document.getElementById('wikiTypeFilter');
+  var communityFilter = document.getElementById('wikiCommunityFilter');
   var tagCloudEl = document.getElementById('wikiTagCloud');
   if (searchInput && searchResults) {
     var _indexData = null;
@@ -2250,6 +3007,55 @@
     var _searchIndex = null;
     var _searchIndexPromise = null;
     var _searchIndexFailed = false;
+
+    var _communityByPath = null;
+    var _communityByPathPromise = null;
+    var _communitySelectPopulated = false;
+
+    function populateCommunitySelect(communities) {
+      if (!communityFilter || _communitySelectPopulated) return;
+      _communitySelectPopulated = true;
+      var preserved = communityFilter.value;
+      var opts = ['<option value="">全部社区</option>'];
+      for (var ci = 0; ci < communities.length; ci++) {
+        var c = communities[ci];
+        if (!c || !c.id) continue;
+        opts.push(
+          '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.label || c.id) + '</option>'
+        );
+      }
+      communityFilter.innerHTML = opts.join('');
+      if (preserved) {
+        communityFilter.value = preserved;
+        if (communityFilter.value !== preserved) communityFilter.value = '';
+      }
+    }
+
+    function ensureCommunityByPath() {
+      if (_communityByPath) return Promise.resolve(_communityByPath);
+      if (_communityByPathPromise) return _communityByPathPromise;
+      _communityByPathPromise = fetch('exports/link-graph.json')
+        .then(function(r) {
+          if (!r.ok) throw new Error('HTTP ' + r.status);
+          return r.json();
+        })
+        .then(function(data) {
+          var m = new Map();
+          var nodes = data.nodes || [];
+          for (var ni = 0; ni < nodes.length; ni++) {
+            var node = nodes[ni];
+            if (node.id && node.community) m.set(node.id, node.community);
+          }
+          _communityByPath = m;
+          populateCommunitySelect(data.communities || []);
+          return m;
+        })
+        .catch(function() {
+          _communityByPath = new Map();
+          return _communityByPath;
+        });
+      return _communityByPathPromise;
+    }
 
     fetch('exports/index-v1.json')
       .then(function(r) { return r.json(); })
@@ -2445,17 +3251,11 @@
       searchResults.innerHTML = html;
     }
 
-    function bm25Score(doc, queryTokens, indexData) {
-      var meta = (indexData && indexData.meta) || {};
-      var avgdl = meta.avgdl || 1;
-      var k1 = meta.k1 || 1.5;
-      var b = meta.b || 0.75;
+    function bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1) {
       var score = 0;
       var dl = doc.dl || 1;
       var docTokens = doc.tokens || {};
-      var idfMap = indexData.idf || {};
       var lenNorm = 1 - b + b * (dl / avgdl);
-      var k1_plus_1 = k1 + 1;
 
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
@@ -2507,19 +3307,34 @@
     function renderSearchResults(query) {
       _selectedIndex = -1;
       var q = query.trim();
-      var typeVal = typeFilter ? typeFilter.value : '';
-      if (!q && !typeVal) { renderEmptyState(); return; }
+      var communityVal = communityFilter ? communityFilter.value : '';
+      if (!q && !communityVal) { renderEmptyState(); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
-      ensureSearchIndex()
-        .then(function(indexData) {
+      Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
+        .then(function(results) {
+          var indexData = results[0];
+          var communityMap = results[1] || new Map();
           var docs = (indexData && indexData.docs) || [];
           var queryTokens = tokenizeQuery(q);
+
+          // ⚡ Bolt Optimization: Hoist BM25 invariant calculations outside the loop
+          // Expected impact: Significantly reduces redundant object property resolution and mathematical ops per document in the hot scoring loop, improving overall search latency.
+          var meta = (indexData && indexData.meta) || {};
+          var avgdl = meta.avgdl || 1;
+          var k1 = meta.k1 || 1.5;
+          var b = meta.b || 0.75;
+          var idfMap = (indexData && indexData.idf) ? indexData.idf : {};
+          var k1_plus_1 = k1 + 1;
+
           // ⚡ Bolt Optimization: Single-pass search filtering
           // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
           var matched = [];
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
-            if (typeVal && doc.page_type !== typeVal) continue;
+            if (communityVal) {
+              var docCommunity = communityMap.get(doc.path);
+              if (docCommunity !== communityVal) continue;
+            }
 
             var partial = 0;
             var bm25 = 0;
@@ -2535,7 +3350,7 @@
 
               partial = substringScore(doc, queryTokens);
               if (!hasTokens && partial === 0) continue;
-              bm25 = bm25Score(doc, queryTokens, indexData);
+              bm25 = bm25Score(doc, queryTokens, avgdl, k1, b, idfMap, k1_plus_1);
             }
 
             matched.push({
@@ -2554,7 +3369,12 @@
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
           if (!matched.length) {
-            renderNoResults(q);
+            if (communityVal && !q) {
+              searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
+                + '<p>当前社区下暂无索引条目，或该社区数据仍在加载。</p></div>';
+            } else {
+              renderNoResults(q);
+            }
           } else {
             renderCards(matched, queryTokens);
           }
@@ -2590,7 +3410,7 @@
         searchInput.value = '';
         searchResults.innerHTML = '';
         _selectedIndex = -1;
-        if (typeFilter) typeFilter.value = '';
+        if (communityFilter) communityFilter.value = '';
       }
     });
 
@@ -2613,8 +3433,9 @@
       clearTimeout(_searchTimer);
       _searchTimer = setTimeout(triggerSearch, 120);
     });
-    if (typeFilter) {
-      typeFilter.addEventListener('change', triggerSearch);
+    if (communityFilter) {
+      communityFilter.addEventListener('change', triggerSearch);
+      ensureCommunityByPath();
     }
 
     document.addEventListener('click', function(e) {
@@ -2623,7 +3444,7 @@
       var term = tag.getAttribute('data-wiki-tag');
       if (term && searchInput) {
         searchInput.value = term;
-        if (typeFilter) typeFilter.value = '';
+        if (communityFilter) communityFilter.value = '';
         triggerSearch();
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }

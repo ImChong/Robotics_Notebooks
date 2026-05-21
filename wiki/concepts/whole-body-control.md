@@ -9,12 +9,14 @@ related:
   - ../comparisons/wbc-vs-rl.md
   - ./sim2real.md
   - ./contact-estimation.md
+  - ./foundation-policy.md
+  - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
-summary: "Whole-Body Control（WBC，全身控制）通常写成一个 QP / hierarchical QP 问题，在全身动力学和任务优先级约束下统一求解关节力矩。"
+summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
 ---
 
-# Whole-Body Control (WBC)
+# Whole-Body Control (WBC，全身控制)
 
 **全身控制**：对人形机器人等复杂系统，同时协调多个肢体/关节完成全身任务的控制方法。
 
@@ -81,7 +83,7 @@ flowchart TD
 ### 3. Learning-based & Generative WBC
 用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。
 
-代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)
+代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及把多种 mode（locomotion / 跟踪 / 遥操作）抽到 **位级掩码** 与 **CVAE 潜空间** 下的 [BFM 论文实体（Behavior Foundation Model）](../entities/paper-behavior-foundation-model-humanoid.md)。
 
 ## 最小代码骨架
 
@@ -141,6 +143,7 @@ print("joint acceleration command:", qdd_star)
 - [机器人论文阅读笔记：ExBody2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)
 - [sources/papers/gentlehumanoid_upper_body_compliance.md](../../sources/papers/gentlehumanoid_upper_body_compliance.md) — GentleHumanoid 原始资料摘录（上半身柔顺 / 接触丰富人机交互）
 - [sources/papers/learn_weightlessness.md](../../sources/papers/learn_weightlessness.md) — Learn Weightlessness (WM) ingest 摘要
+- [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM 论文摘要（CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型，arXiv:2509.13780）
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 
 ## 关联页面
@@ -153,6 +156,8 @@ print("joint acceleration command:", qdd_star)
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
+- [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
+- [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 
 ## 继续深挖入口
 

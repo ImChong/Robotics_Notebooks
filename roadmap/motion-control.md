@@ -1,6 +1,14 @@
 # 主路线：运动控制算法工程师成长路线
 
-**摘要**：从 L−1 全景到 L7 出口的单一主线，串通人形 / 双足运动控制：L−1 建立机器人技术栈全景心智地图与必备术语，L0–L3 打底（数学、运动学、动力学、控制基础），L4 拿下传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC），L5 接上 RL/IL 扩展层，L6 完成 sim2real 闭环，L7 把全栈视角与 2024–2026 前沿地图交回给你。
+**摘要**：
+
+- **一条主线**：从 L−1 全景到 L7 出口，串通人形 / 双足运动控制。
+- **L−1**：建立机器人技术栈全景心智地图与必备术语。
+- **L0–L3**：数学、运动学、动力学、控制基础打底。
+- **L4**：传统控制主干（LIP/ZMP → Centroidal → MPC → TSID/WBC）。
+- **L5**：RL / IL 扩展层。
+- **L6**：sim2real 闭环。
+- **L7**：全栈视角与 2024–2026 前沿地图交还给你。
 
 ## 三句话先懂这条路线（极简版）
 
@@ -33,10 +41,10 @@
 
 ```mermaid
 flowchart LR
-  Sensor["**感知** (Sensor)<br/>摄像头 · IMU · 编码器<br/>力觉 · 雷达"]
-  Plan["**决策 / 规划** (Plan)<br/>任务规划 · 运动规划<br/>SLAM"]
-  Control["**控制** (Control)<br/>把规划翻译成关节指令<br/>★ 本路线主战场 ★"]
-  Body["**执行** (Actuator & Body)<br/>电机 · 减速器 · 关节<br/>本体结构"]
+  Sensor["感知 (Sensor)<br/>摄像头 · IMU · 编码器<br/>力觉 · 雷达"]
+  Plan["决策 / 规划 (Plan)<br/>任务规划 · 运动规划<br/>SLAM"]
+  Control["控制 (Control)<br/>把规划翻译成关节指令<br/>★ 本路线主战场 ★"]
+  Body["执行 (Actuator & Body)<br/>电机 · 减速器 · 关节<br/>本体结构"]
 
   Sensor --> Plan --> Control --> Body
   Body -. 反馈 .-> Sensor
@@ -588,6 +596,7 @@ flowchart LR
 - 理解 reward shaping、policy gradient、value function 的意义
 
 **推荐读什么：**
+- [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文 RL 基础与 PPO/SAC 实践（[在线书](https://hrl.boyuai.com/) / [视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)）
 - Spinning Up (OpenAI)
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
 - [Policy Optimization](../wiki/methods/policy-optimization.md)（本仓库）

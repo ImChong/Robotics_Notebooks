@@ -6,7 +6,7 @@ sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/policy_optimization.md
 summary: "RL vs 模仿学习（Imitation Learning）"
-updated: 2026-04-25
+updated: 2026-05-16
 ---
 
 # RL vs 模仿学习（Imitation Learning）
@@ -114,19 +114,26 @@ RL 和 IL 是机器人策略学习的两条主干路线。两者都在学"策略
 
 ## 与其他概念的关系
 
-```
-                 ┌────────────────────────────────────┐
-                 │    策略学习（Policy Learning）       │
-                 └───────────┬────────────────────────┘
-                    ┌────────┴──────────┐
-                    ▼                  ▼
-               Model-Free RL        Imitation Learning
-               (PPO/SAC/TD3)      (BC/DAgger/Diffusion)
-                    │                  │
-                    │    融合路线       │
-                    └────────┬──────────┘
-                             ▼
-                    AMP / RLHF / IL+RL
+策略学习在工程上常拆成两条主干：**用奖励塑形行为**，或**用演示模仿行为**；融合路线把两条干线的优点叠在一起。
+
+```mermaid
+flowchart TB
+  PL["策略学习 Policy Learning<br/>共同目标：学策略 π(a|s)"]
+
+  RL["RL 强化学习<br/>监督：奖励 r(s,a)<br/>数据：与环境交互 · 探索驱动"]
+  IL["IL 模仿学习<br/>监督：专家演示 D = (s,a)<br/>数据：演示轨迹 · 模仿驱动"]
+
+  RLm["RL 典型方法<br/>PPO · SAC · TD3 · AMP 等"]
+  ILm["IL 典型方法<br/>BC · DAgger · Diffusion · GAIL 等"]
+
+  FUS["融合路线<br/>BC 预训练 + RL 微调<br/>AMP · RLHF 等"]
+
+  PL --> RL
+  PL --> IL
+  RL --> RLm
+  IL --> ILm
+  RLm --> FUS
+  ILm --> FUS
 ```
 
 ---

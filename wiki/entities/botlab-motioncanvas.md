@@ -9,6 +9,7 @@ related:
   - ./quadruped-robot.md
   - ../concepts/sim2real.md
   - ./isaac-gym-isaac-lab.md
+  - ../concepts/character-animation-vs-robotics.md
 sources:
   - ../../sources/sites/botlab_motioncanvas.md
 summary: "BotLab（站点内产品名 MotionCanvas）是地瓜机器人提供的浏览器端节点图工具：在网页里编排观测、历史堆叠、ONNX 策略与 MuJoCo 步进，并支持 MSCP 图与 Netron 模型预览，面向 Unitree G1 / Go2 等策略的快速试验与教学演示。"
@@ -55,6 +56,7 @@ flowchart LR
 - 与 [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) 通过 **history stack 语义** 与常见 RL obs 设计形成互证。
 - 与 [Unitree G1](./unitree-g1.md)、[四足机器人](./quadruped-robot.md)（Go2）策略文件名与 obs 维度在模板中强相关。
 - [Sim2Real](../concepts/sim2real.md) 讨论中，可把本工具视为 **策略侧快速可视化** 的一环，而非系统辨识或域随机化的主战场。
+- 「节点图/动画语言进入策略调试」的工具层定位，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 解释为何同一张画布既能服务角色化人形又能服务通用机器人控制。
 
 ## 推荐继续阅读
 

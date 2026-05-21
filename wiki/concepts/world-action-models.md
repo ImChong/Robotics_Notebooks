@@ -2,18 +2,22 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-16
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
+  - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/vla.md
   - ../methods/generative-world-models.md
   - ../methods/model-based-rl.md
   - ../methods/being-h07.md
+  - ../methods/pelican-unified-1.md
+  - ../methods/defi-decoupled-dynamics-vla.md
   - ../tasks/loco-manipulation.md
-  - ../tasks/manipulation.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
+  - ../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md
+  - ../../sources/papers/defi_arxiv_2604_16391.md
   - ../../sources/repos/awesome-wam-openmoss.md
   - ../../sources/sites/awesome-wam-openmoss.md
 ---
@@ -53,12 +57,16 @@ sources:
 - **工程直觉**：模块清晰，便于分别迭代世界模型与策略头。
 - **主要张力**：两阶段 **信息瓶颈与对齐**——未来计划是否保留 **动作可恢复** 的足够信息。
 
+**文献实例（Cascaded + 显式解耦预训练）**：[DeFI](../methods/defi-decoupled-dynamics-vla.md) 将 **GFDM（视频生成式前向动力学）** 与 **GIDM（自监督逆动力学潜动作）** 在 **不同数据源与目标** 上独立预训练，再在下游用扩散适配器耦合；论文强调弱化逆向模块（如 VPP）会成为整条链路的瓶颈（arXiv:2604.16391）。
+
 ### Joint WAM
 
 `future + action`：在 **共享骨干** 下联合预测未来与动作（自回归统一词表、扩散/流匹配单引擎或多引擎等）。
 
 - **工程直觉**：耦合更紧，可能更利于 **一致性** 目标。
 - **主要张力**：**推理延迟**、训练目标设计、以及在多模态物理量（力触觉、形变）上的扩展。
+
+**文献实例（Joint 族 + 显式推理枢纽）**：[Pelican-Unified 1.0](../methods/pelican-unified-1.md) 用 VLM 产生可监督 CoT 并把末态投影为稠密 **\(z\)**，再以 **同一扩散去噪** 联合解码未来视频与动作，使语言 / 视频 / 动作损失回传至共享表示——可视作在 Joint WAM 思路上显式插入 **语言推理状态** 的工程化版本（细节与数字以 arXiv:2605.15153 为准）。
 
 ```mermaid
 flowchart TB
@@ -94,6 +102,7 @@ flowchart TB
 ## 参考来源
 
 - [sources/papers/world_action_models_survey_2605.md](../../sources/papers/world_action_models_survey_2605.md)
+- [sources/papers/pelican_unified_uei_arxiv_2605_15153.md](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)
 - [sources/repos/awesome-wam-openmoss.md](../../sources/repos/awesome-wam-openmoss.md)
 - [sources/sites/awesome-wam-openmoss.md](../../sources/sites/awesome-wam-openmoss.md)
 
@@ -102,6 +111,7 @@ flowchart TB
 - [VLA](../methods/vla.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)
+- [Pelican-Unified 1.0（UEI）](../methods/pelican-unified-1.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)
 

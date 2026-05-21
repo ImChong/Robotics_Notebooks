@@ -13,6 +13,7 @@ related:
   - ./atom01-train.md
   - ./atom01-deploy.md
   - ./atom01-firmware.md
+  - ../concepts/character-animation-vs-robotics.md
 sources:
   - ../../sources/repos/roboto_origin.md
   - ../../sources/repos/atom01_hardware.md
@@ -64,6 +65,7 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 - [Atom01 Train](./atom01-train.md)
 - [Atom01 Deploy](./atom01-deploy.md)
 - [Atom01 Firmware](./atom01-firmware.md)
+- [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 作为「中性研究型开源人形」对照组：机构未为角色形象做妥协，与 Disney Olaf 形成两端
 
 ## 推荐继续阅读
 

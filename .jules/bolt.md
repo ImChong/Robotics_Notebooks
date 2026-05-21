@@ -35,3 +35,15 @@
 ## 2025-05-15 - [Avoid N+1 File I/O in Hot Search Loop]
 **Learning:** In backend CLI scripts that read multiple files (like `search_wiki_core.py`), it is a common anti-pattern to re-read files from disk inside a loop (`path.read_text()`) when their content is already available in memory (e.g., `doc["body"]` from a prior collection step). Doing this creates a massive N+1 file I/O bottleneck which severely degrades performance as the document collection scales.
 **Action:** Always verify if needed data is already in memory before initiating file I/O operations inside iterative blocks. Replacing the `read_text` call with `doc["body"]` dramatically reduced CPU wait time. Additionally, properties derived from large strings inside loops (like total token count `dl`) should be computed once and cached on the document dictionary to avoid redundant sum/iteration overheads.
+
+## 2026-05-15 - Hoisting Invariant Properties Out of Hot Loops
+**Learning:** In the frontend JavaScript search loop (`docs/main.js`), repeatedly accessing deep object properties (like `indexData.meta.k1`, `indexData.meta.b`) and recalculating invariant values (like `k1 + 1`) inside a hot loop (evaluating `bm25Score` for every matched document) causes measurable performance degradation due to redundant property lookups and constant math operations across hundreds or thousands of iterations.
+**Action:** When optimizing performance-critical loops that evaluate every document in a large array, always hoist invariant object properties and pre-computable constant math (like `k1 + 1` or extracting `idfMap`) to local variables outside the loop. This minimizes redundant CPU work and property lookup overhead per iteration.
+
+## 2026-05-20 - String Operations Optimization
+**Learning:** In string sanitization (like HTML escaping), chaining multiple `.replace()` calls with global regular expressions (`.replace(/&/g, '&amp;').replace...`) involves repeatedly parsing the entire string and allocating multiple intermediate string objects.
+**Action:** When a function executing basic character escaping is called extremely frequently, write a manual character iteration loop using `charCodeAt()` and build the resulting string by slicing (`substring`). While more verbose, this runs >3x faster.
+
+## 2026-05-20 - Regex and Set Initialization Overhead
+**Learning:** Instantiating `new Set(...)` and `new RegExp(...)` (or literal `/.../g`) inside functions that are called repeatedly (like line-by-line syntax highlighters) forces the JavaScript engine to reallocate and recompile these objects on every single function call.
+**Action:** In JavaScript hot paths, always hoist static structures (like sets of keywords or fixed regular expressions) to the outer scope to instantiate them exactly once.

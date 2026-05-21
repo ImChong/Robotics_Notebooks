@@ -71,6 +71,7 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 -   Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026) — 原论文
 -   [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — 论文 ingest 档案
 -   [sources/repos/star_vla.md](../../sources/repos/star_vla.md) — GitHub 仓库 ingest 档案
+-   [sources/papers/capvector_arxiv_2605_10903.md](../../sources/papers/capvector_arxiv_2605_10903.md) — CapVector：参数空间 capability vector 解耦辅助 SFT 与任务 SFT，与 StarVLA 等 VLA 骨干在「后训练栈」轴互链
 
 ## 关联页面
 

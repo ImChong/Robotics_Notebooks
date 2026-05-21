@@ -96,6 +96,7 @@ flowchart TD
 - [Motion Retargeting（动作重定向）](../concepts/motion-retargeting.md) — 问题定义与常见流水线。
 - [GMR（通用动作重定向）](./motion-retargeting-gmr.md) — NMR 数据管线中的运动学前端。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略的对照路线。
+- [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种主流路线在「误差修补位置 / 训练成本 / 部署预算」上的选型坐标。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 另一类「人体/参考 → 人形执行」的大规模跟踪基线视角。
 - [Whole-Body Control](../concepts/whole-body-control.md) — 下游 QP / 分层控制与参考跟踪接口。
 - [Unitree G1](../entities/unitree-g1.md) — 论文实验平台。

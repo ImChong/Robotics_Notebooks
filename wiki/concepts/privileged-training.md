@@ -141,6 +141,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用
 - Pinto et al., *Asymmetric Actor Critic for Image-Based Robot Learning* (2018) — 非对称 AC 理论基础
+- **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：以 proxy agent 作 teacher，对学生做掩码在线蒸馏，把多接口 WBC 统一进 CVAE
 
 ---
 

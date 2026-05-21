@@ -6,6 +6,7 @@ updated: 2026-05-07
 related:
   - ./imitation-learning.md
   - ./deepmimic.md
+  - ./egm-efficient-general-mimic.md
   - ./sonic-motion-tracking.md
   - ../concepts/armature-modeling.md
   - ../concepts/curriculum-learning.md

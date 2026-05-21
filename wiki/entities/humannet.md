@@ -8,13 +8,16 @@ status: complete
 related:
   - ../methods/vla.md
   - ../methods/imitation-learning.md
+  - ../methods/egoscale.md
   - ../methods/auto-labeling-pipelines.md
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
   - ../concepts/embodied-data-cleaning.md
+  - ../comparisons/humannet-table1-human-video-corpora.md
   - ./humanoid-robot.md
 sources:
   - ../../sources/papers/humannet.md
+  - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/repos/humannet.md
 ---
 
@@ -72,6 +75,7 @@ flowchart LR
 ## 参考来源
 
 - [HumanNet 论文 ingest 归档](../../sources/papers/humannet.md)
+- [HumanNet Table 1 代表性语料与官方入口索引](../../sources/papers/humannet_table1_benchmark_corpora.md)
 - [HumanNet 仓库与项目索引](../../sources/repos/humannet.md)
 - Deng et al., *HumanNet: Scaling Human-centric Video Learning to One Million Hours* (arXiv:2605.06747)
 - 项目主页：<https://dagroup-pku.github.io/HumanNet/>
@@ -79,6 +83,7 @@ flowchart LR
 
 ## 关联页面
 
+- [HumanNet Table 1：代表性人类视频语料对照](../comparisons/humannet-table1-human-video-corpora.md)
 - [VLA](../methods/vla.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [自动化标注流水线](../methods/auto-labeling-pipelines.md)
@@ -88,5 +93,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- Ego4D / Ego-Exo4D / EgoScale / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
+- [EgoScale](../methods/egoscale.md)（arXiv:2602.16710，NVIDIA GEAR 项目页）、Ego4D / Ego-Exo4D / EgoVerse 等项目页与数据卡（对比视点设计与下游任务）
 - LingBot-VLA 相关公开材料（论文中作为受控 VLA 后训练协议参照架构）

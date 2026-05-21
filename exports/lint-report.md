@@ -2,7 +2,7 @@
 
 ## [2026-05-21] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 22 条 💡 待落地软预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -70,31 +70,10 @@
 ### ⚠️ Methods 页面缺少主要路线区块（0 个）
 - 无
 
-### 💡 Methods 高频被引用但无 queries/comparisons 落地页（待落地）（22 个）
-- wiki/methods/add.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/amp-reward.md（被 14 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/ase.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/auto-labeling-pipelines.md（被 9 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/being-h07.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/beyondmimic.md（被 9 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/claw.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/deepmimic.md（被 8 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/diffusion-motion-generation.md（被 6 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/exoactor.md（被 11 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/genmo.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/humanoid-transformer-touch-dreaming.md（被 8 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/in-hand-reorientation.md（被 5 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/motion-retargeting-gmr.md（被 9 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/motionbricks.md（被 5 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/smp.md（被 8 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/sonic-motion-tracking.md（被 13 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/tactile-impedance-control.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/visual-servoing.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/wilor.md（被 5 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/zest.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-- wiki/methods/π0-policy.md（被 4 个页面引用，但无 queries/ 或 comparisons/ 落地页）
-
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-📊 Sources 覆盖率：312/312 (100%) wiki/entity 页有 ingest 来源
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
+
+📊 Sources 覆盖率：411/411 (100%) wiki/entity 页有 ingest 来源

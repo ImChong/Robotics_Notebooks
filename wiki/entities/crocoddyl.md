@@ -3,7 +3,7 @@ type: entity
 sources:
   - ../../sources/papers/optimal_control.md
 summary: "Crocoddyl"
-updated: 2026-04-25
+updated: 2026-05-16
 ---
 
 # Crocoddyl
@@ -263,6 +263,7 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 ## 关联页面
 
 - [Pinocchio](./pinocchio.md)
+- [cuRobo](./curobo.md) — GPU 并行碰撞与多样本 TO 的另一条实现谱系（与 shooting/DDP 工具链问题剖分不同）
 - [Optimal Control](../methods/model-predictive-control.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 

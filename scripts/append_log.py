@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-append_log.py — 向 log.md 追加一条操作记录
+append_log.py — 向 log.md 顶部插入一条操作记录（新记录在上，与首页 latest_wiki_nodes 解析一致）
 
 用法:
     python3 scripts/append_log.py <op> "<描述>"
@@ -15,11 +15,10 @@ append_log.py — 向 log.md 追加一条操作记录
 
 import sys
 from datetime import date
-from pathlib import Path
+
+from log_md import DEFAULT_LOG_PATH, write_log_prepend
 
 VALID_OPS = {"ingest", "query", "lint", "index", "structural"}
-
-LOG_PATH = Path(__file__).resolve().parent.parent / "log.md"
 
 
 def main() -> None:
@@ -40,12 +39,10 @@ def main() -> None:
         sys.exit(1)
 
     today = date.today().isoformat()
-    entry = f"\n## [{today}] {op} | {desc}\n"
+    entry = f"## [{today}] {op} | {desc}\n\n"
+    write_log_prepend(entry, DEFAULT_LOG_PATH)
 
-    with LOG_PATH.open("a", encoding="utf-8") as f:
-        f.write(entry)
-
-    print(f"✅ 已追加到 log.md: [{today}] {op} | {desc}")
+    print(f"✅ 已插入 log.md 顶部: [{today}] {op} | {desc}")
 
 
 if __name__ == "__main__":

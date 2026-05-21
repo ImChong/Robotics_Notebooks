@@ -155,7 +155,7 @@
   - 不要只手动运行 `make catalog`、`make graph` 或 `make export` 其中一部分；最近的 GitHub Actions 问题主要来自这些派生文件不同步。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
   - **同步统计数据**：若新增/删除了 wiki 页面，必须通过 `make ci-preflight` 同步统计与导出文件，并把本次任务相关的派生文件一起 stage，否则 GitHub Actions 会因数据不一致而报错。
-  - **首页「最新知识节点」**：由 `log.md` 最上方条目中首次出现的有效 `wiki/...` 路径驱动（任意 op 类型）；ingest 与 structural 均应在日志中写明相关 `wiki/...`，并在任务末尾 `make ci-preflight` 以更新 `exports/home-stats.json` / `docs/exports/home-stats.json`。
+  - **首页「最新知识节点」**：由 `log.md` 最上方**日历日**对应的连续日志块中，所有可解析的有效 `wiki/...` 路径驱动（任意 op 类型；去重保序）；ingest 与 structural 均应在日志中写明相关 `wiki/...`，并在任务末尾 `make ci-preflight` 以更新 `exports/home-stats.json` / `docs/exports/home-stats.json`。
 
 ### Git 提交规范 (Git Commit Convention)
 

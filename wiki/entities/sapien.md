@@ -31,3 +31,4 @@ updated: 2026-05-01
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [SAPIEN Project Page](https://sapien.ucsd.edu/)
+- [sources/papers/physforge_arxiv_2605_05163.md](../../sources/papers/physforge_arxiv_2605_05163.md) — PhysForge：VLM 物理蓝图 + KineVoxel 扩散合成关节资产，PhysDB 物理标注与 SAPIEN 等仿真平台互链

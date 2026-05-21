@@ -14,11 +14,11 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
  11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  12. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
- 13. methods/ 高频被引用但缺少 queries/comparisons 落地指南（V22 新增）
+ 13. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
 
 用法：
   python3 scripts/lint_wiki.py
-  python3 scripts/lint_wiki.py --write-log   # 同时追加报告到 log.md
+  python3 scripts/lint_wiki.py --write-log   # 同时将报告插入 log.md 顶部
   python3 scripts/lint_wiki.py --report      # 保存 markdown 报告到 exports/lint-report.md
 """
 
@@ -35,9 +35,14 @@ REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
 CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
 
-# 软预警类别：仅在报告中提示"待落地"，不影响 CI 退出码。
-# 它们对应的是待补 queries/comparisons 等内容工作清单，CI 不应因此红。
-SOFT_WARNING_KEYS = {"methods_without_practitioner_query"}
+# methods/ 页面入链数超过该阈值即视为"高频引用"，需有对应 queries/comparisons 操作落地
+METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
+
+# 仅用于信息提示、不计入 lint 失败总数的检查 key
+INFO_ONLY_KEYS: set[str] = {
+    "missing_pages",
+    "methods_without_practitioner_query",
+}
 
 
 def load_canonical_facts() -> dict:
@@ -181,9 +186,9 @@ def _empty_results() -> dict[str, Any]:
         "orphan_count": [],
         "method_missing_link": [],
         "method_missing_sections": [],
-        "methods_without_practitioner_query": [],
         "entity_missing_outgoing": [],
         "wikilink_syntax": [],
+        "methods_without_practitioner_query": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -593,44 +598,46 @@ def _check_entity_page(page: Path, rel: Path, content: str, results: dict[str, A
 
 
 def _check_methods_without_practitioner_query(
-    pages: list[Path], inbound: dict[Path, list[Path]], results: dict[str, Any]
+    pages: list[Path],
+    inbound: dict[Path, list[Path]],
+    results: dict[str, Any],
 ) -> None:
-    """methods/ 页面若被超过 3 个其他页面引用，必须存在至少一篇
-    queries/ 操作指南或 comparisons/ 对比页与之对应（通过 markdown 链接），
-    否则提示"待落地"。
+    """高频引用的 methods/ 页面应有对应 queries/ 操作指南或 comparisons/ 对比页落地。
 
-    支撑场景：当一个方法被反复提及却没有读者可执行的"怎么落地 / 怎么选型"
-    页面时，知识图谱里只剩"提及"而无"实操"，对学习路径不友好。
+    判定：被超过 ``METHOD_PRACTITIONER_INBOUND_THRESHOLD`` 个其他 wiki 页面链接
+    （排除自链）的 methods/ 页，若其入链来源中没有任何一个属于 queries/ 或
+    comparisons/ 目录，则视为"待落地"——理论介绍已扩散，但缺少可操作的选型/
+    对比/Query 指南。属信息型预警，不计入 lint 失败总数。
     """
-    REF_THRESHOLD = 3
-    PRACTITIONER_PARTS = ("queries", "comparisons")
-
     for page in pages:
         rel = page.relative_to(REPO_ROOT)
         parts = rel.parts
-        if (
-            len(parts) < 2
-            or parts[0] != "wiki"
-            or parts[1] != "methods"
-            or page.name.lower() == "readme.md"
-        ):
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "methods":
+            continue
+        if page.name.lower() == "readme.md":
             continue
 
         resolved = page.resolve()
-        referrers = set(inbound.get(resolved, []))
-        if len(referrers) <= REF_THRESHOLD:
+        sources = [src for src in inbound.get(resolved, []) if src != resolved]
+        if len(sources) <= METHOD_PRACTITIONER_INBOUND_THRESHOLD:
             continue
 
-        has_practitioner = any(
-            ref.is_relative_to(REPO_ROOT)
-            and len(ref.relative_to(REPO_ROOT).parts) >= 2
-            and ref.relative_to(REPO_ROOT).parts[0] == "wiki"
-            and ref.relative_to(REPO_ROOT).parts[1] in PRACTITIONER_PARTS
-            for ref in referrers
-        )
+        has_practitioner = False
+        for src in sources:
+            if not src.is_relative_to(REPO_ROOT):
+                continue
+            src_parts = src.relative_to(REPO_ROOT).parts
+            if (
+                len(src_parts) >= 2
+                and src_parts[0] == "wiki"
+                and src_parts[1] in ("queries", "comparisons")
+            ):
+                has_practitioner = True
+                break
+
         if not has_practitioner:
             results["methods_without_practitioner_query"].append(
-                f"{rel}（被 {len(referrers)} 个页面引用，但无 queries/ 或 comparisons/ 落地页）"
+                f"{rel}（被 {len(sources)} 个页面引用，无 queries/comparisons 落地）"
             )
 
 
@@ -680,15 +687,25 @@ def lint() -> dict[str, Any]:
     return results
 
 
+def _failing_total(results: dict[str, Any]) -> int:
+    """计入 lint 失败的问题总数：排除内部统计键与信息型预警键。"""
+    return sum(
+        len(v) for k, v in results.items() if not k.startswith("_") and k not in INFO_ONLY_KEYS
+    )
+
+
+def _info_total(results: dict[str, Any]) -> int:
+    """信息型预警总数（不阻塞 CI）。"""
+    return sum(len(results.get(k, [])) for k in INFO_ONLY_KEYS)
+
+
 def format_report(results: dict[str, Any]) -> str:
     today = date.today().isoformat()
     lines = [f"## [{today}] lint | health-check | 自动化 wiki 健康检查", ""]
 
-    hard_issues = sum(
-        len(v) for k, v in results.items() if not k.startswith("_") and k not in SOFT_WARNING_KEYS
-    )
-    soft_issues = sum(len(results.get(k, [])) for k in SOFT_WARNING_KEYS)
-    lines.append(f"共发现 **{hard_issues}** 个问题（另含 {soft_issues} 条 💡 待落地软预警）：")
+    failing = _failing_total(results)
+    info = _info_total(results)
+    lines.append(f"共发现 **{failing}** 个问题（另含 **{info}** 条信息型预警）：")
     lines.append("")
 
     sections = [
@@ -714,12 +731,12 @@ def format_report(results: dict[str, Any]) -> str:
         ("orphan_count", "图谱孤儿节点预警（graph-stats.json）", "⚠️"),
         ("method_missing_link", "Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
         ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
+        ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
         (
             "methods_without_practitioner_query",
-            "Methods 高频被引用但无 queries/comparisons 落地页（待落地）",
+            "高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）",
             "💡",
         ),
-        ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
     ]
 
     for key, label, icon in sections:
@@ -743,7 +760,11 @@ def format_report(results: dict[str, Any]) -> str:
 
 def main():
     parser = argparse.ArgumentParser(description="Robotics_Notebooks wiki lint 检查")
-    parser.add_argument("--write-log", action="store_true", help="将结果追加到 log.md")
+    parser.add_argument(
+        "--write-log",
+        action="store_true",
+        help="将结果插入 log.md 顶部（与 append_log / 首页 latest_wiki_nodes 一致）",
+    )
     parser.add_argument(
         "--report", action="store_true", help="将 markdown 健康报告保存到 exports/lint-report.md"
     )
@@ -755,23 +776,21 @@ def main():
 
     print(report)
 
-    hard_total = sum(
-        len(v) for k, v in results.items() if not k.startswith("_") and k not in SOFT_WARNING_KEYS
-    )
-    soft_total = sum(len(results.get(k, [])) for k in SOFT_WARNING_KEYS)
-    if hard_total == 0 and soft_total == 0:
-        print("✅ 所有检查通过！")
-    elif hard_total == 0:
-        print(f"✅ 硬性检查通过（另有 {soft_total} 条 💡 待落地软预警，见上方报告）")
+    total = _failing_total(results)
+    info = _info_total(results)
+    if total == 0:
+        if info:
+            print(f"✅ 所有检查通过！（另含 {info} 条信息型预警，不阻塞 CI）")
+        else:
+            print("✅ 所有检查通过！")
     else:
-        print(f"⚠️  共发现 {hard_total} 个问题，请参考上方报告处理。")
+        print(f"⚠️  共发现 {total} 个问题，请参考上方报告处理。")
 
     if args.write_log:
-        log_path = REPO_ROOT / "log.md"
-        with open(log_path, "a", encoding="utf-8") as f:
-            f.write("\n---\n\n")
-            f.write(report)
-        print(f"\n已将报告追加到 {log_path}")
+        from log_md import DEFAULT_LOG_PATH, write_log_prepend
+
+        write_log_prepend(report + "\n", DEFAULT_LOG_PATH)
+        print(f"\n已将报告插入 {DEFAULT_LOG_PATH} 顶部")
 
     if args.report:
         exports_dir = REPO_ROOT / "exports"
@@ -782,7 +801,7 @@ def main():
             f.write(report)
         print(f"\n已将健康报告保存到 {report_path}")
 
-    if hard_total > 0:
+    if total > 0:
         sys.exit(1)
 
 

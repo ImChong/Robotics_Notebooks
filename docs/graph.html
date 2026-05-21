@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Robotics Notebooks 知识图谱 — 75 个概念节点、429 条关联边、8 个社区的力导向可视化" />
   <title>知识图谱 | Robotics Notebooks</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🕸️</text></svg>" />
+  <meta name="color-scheme" content="dark light" />
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="style.css" />
   <style>
     /* ── 图谱页专用样式（不影响其他页面）── */
@@ -380,6 +382,8 @@
     [data-theme="light"] .physics-close { color: rgba(0,0,0,0.3); }
     [data-theme="light"] .physics-close:hover { color: rgba(0,0,0,0.72); }
     [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .physics-toggle { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .physics-toggle input[type=checkbox] { accent-color: #1659b4; }
     [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
     [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
     /* 提示文字 */
@@ -424,6 +428,12 @@
     [data-theme="light"] .filter-count {
       background: #1659b4;
       color: #fff;
+    }
+    [data-theme="light"] .filter-degree-section {
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .filter-degree-hint {
+      color: rgba(0,0,0,0.38);
     }
     [data-theme="light"] .chip.active { color: #0d1117; font-weight: 700; border-color: transparent; }
     [data-theme="light"] .chip[data-type="concept"].active    { background: #60a5fa; }
@@ -500,6 +510,17 @@
       height: 1px; background: rgba(255,255,255,0.05);
       margin: 0 14px;
     }
+    .physics-toggle {
+      display: flex; align-items: center; gap: 9px;
+      font-size: .74rem; color: rgba(255,255,255,0.4);
+      cursor: pointer; user-select: none;
+    }
+    .physics-toggle input[type=checkbox] {
+      width: 18px; height: 18px;
+      accent-color: #60a5fa;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
 
     /* ── 筛选按钮计数徽章 ── */
     .filter-count {
@@ -523,7 +544,7 @@
       position: absolute;
       top: 12px; left: 20px;
       z-index: 30;
-      min-width: 170px;
+      min-width: 220px;
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -560,11 +581,47 @@
       color: rgba(255,255,255,0.4);
       font-family: inherit;
     }
+    .filter-degree-section {
+      padding: 0 0 4px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .filter-degree-section .slider-row {
+      padding: 4px 14px 12px;
+    }
+    .filter-degree-hint {
+      font-size: .68rem;
+      color: rgba(255,255,255,0.32);
+      line-height: 1.35;
+      margin: 0 14px 6px;
+    }
     .filter-body {
       padding: 8px 0;
       display: flex;
       flex-direction: column;
       gap: 1px;
+      max-height: 240px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
+    .filter-body::-webkit-scrollbar {
+      width: 8px;
+    }
+    .filter-body::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .filter-body::-webkit-scrollbar-thumb {
+      background-color: rgba(255,255,255,0.28);
+      border-radius: 999px;
+    }
+    .filter-body::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    [data-theme="light"] .filter-body {
+      scrollbar-color: rgba(0,0,0,0.28) transparent;
+    }
+    [data-theme="light"] .filter-body::-webkit-scrollbar-thumb {
+      background-color: rgba(0,0,0,0.28);
     }
     .filter-section-title {
       padding: 8px 14px 4px;
@@ -719,7 +776,7 @@
     [data-theme="light"] #graph-sidebar .sb-header { border-bottom-color: rgba(0,0,0,0.08); }
   </style>
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#3b82f6" />
+  <meta name="theme-color" content="#1c1c1e" />
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -750,7 +807,7 @@
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" list="graph-search-list" />
     <datalist id="graph-search-list"></datalist>
     <!-- 筛选按钮 -->
-    <button id="filter-toggle" class="chip" title="按类型筛选">
+    <button id="filter-toggle" class="chip" title="按社区筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
       <span id="filter-count" class="filter-count" style="display:none"></span>
     </button>
@@ -825,9 +882,11 @@
 
       <div class="slider-divider"></div>
 
-      <div class="slider-row" style="flex-direction:row; justify-content:space-between; align-items:center;">
-        <span class="slider-label" style="margin-bottom:0">🧲 磁吸模式</span>
-        <input type="checkbox" id="check-magnetic" style="width:18px; height:18px; cursor:pointer;" />
+      <div class="slider-row">
+        <label class="physics-toggle" for="check-magnetic">
+          <input type="checkbox" id="check-magnetic" />
+          <span>🧲 磁吸模式</span>
+        </label>
       </div>
     </div>
 
@@ -838,11 +897,23 @@
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
-        <button id="filter-mode-type" class="chip active" type="button">按类型</button>
-        <button id="filter-mode-community" class="chip" type="button">按社区</button>
+        <button id="filter-mode-type" class="chip" type="button">按类型</button>
+        <button id="filter-mode-community" class="chip active" type="button">按社区</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
-      <div class="filter-subtitle" id="filter-subtitle">当前按类型着色与筛选</div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
+      <div id="filter-degree-section" class="filter-degree-section">
+        <div class="filter-section-title">连接数 Top N</div>
+        <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>显示节点数</span>
+            <span class="slider-val" id="val-degree-top">全部</span>
+          </div>
+          <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
+                 aria-label="按连接数显示前 N 个节点" />
+        </div>
+      </div>
       <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
@@ -935,7 +1006,7 @@
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
-    let colorMode = 'type';
+    let colorMode = 'community';
     let activeFilters = new Set();
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
@@ -1065,6 +1136,62 @@
       _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
+
+    /* ── 连接数 Top N 筛选（滑动条）── */
+    const totalNodeCount = nodes.length;
+    const degreeTopMin = Math.min(10, totalNodeCount);
+    let topDegreeLimit = totalNodeCount;
+    let topDegreeIds = null;
+
+    function computeTopDegreeIds(limit) {
+      if (limit >= totalNodeCount) return null;
+      return new Set(
+        nodes.slice()
+          .sort((a, b) => (b._degree || 0) - (a._degree || 0))
+          .slice(0, limit)
+          .map(n => n.id)
+      );
+    }
+
+    function nodeMatchesDegreeTop(d) {
+      return !topDegreeIds || topDegreeIds.has(d.id);
+    }
+
+    function updateDegreeTopLabel() {
+      const valEl = document.getElementById('val-degree-top');
+      if (!valEl) return;
+      valEl.textContent = topDegreeLimit >= totalNodeCount ? '全部' : String(topDegreeLimit);
+    }
+
+    function initDegreeTopSlider() {
+      const slider = document.getElementById('sl-degree-top');
+      if (!slider) return;
+      slider.min = String(degreeTopMin);
+      slider.max = String(totalNodeCount);
+      slider.value = String(topDegreeLimit);
+      updateDegreeTopLabel();
+    }
+
+    function setTopDegreeLimit(limit) {
+      topDegreeLimit = Math.max(degreeTopMin, Math.min(totalNodeCount, Number(limit)));
+      topDegreeIds = computeTopDegreeIds(topDegreeLimit);
+      const slider = document.getElementById('sl-degree-top');
+      if (slider) slider.value = String(topDegreeLimit);
+      updateDegreeTopLabel();
+      applyFilters();
+      updateFilterCount();
+    }
+
+    initDegreeTopSlider();
+    const slDegreeTop = document.getElementById('sl-degree-top');
+    if (slDegreeTop) {
+      slDegreeTop.addEventListener('input', ev => {
+        setTopDegreeLimit(ev.target.value);
+      });
+      slDegreeTop.addEventListener('change', () => {
+        if (topDegreeIds) fitToScreen();
+      });
+    }
 
     /* ── 初始化搜索自动联想 ── */
     const searchList = document.getElementById('graph-search-list');
@@ -1404,7 +1531,8 @@
         if (sidebar.classList.contains('open')) return;
         
         buildNeighborSet(d);
-        const hasFilter = activeFilters.size > 0 || searchQuery.length > 0;
+        const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+          || focusedCommunityId || focusedType || focusedHealth !== null;
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
           if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
@@ -1541,6 +1669,9 @@
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
       activeFilters.clear();
+      topDegreeLimit = totalNodeCount;
+      topDegreeIds = null;
+      initDegreeTopSlider();
       renderFilterPanel();
       applyFilters();
       updateFilterCount();
@@ -1549,7 +1680,7 @@
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size;
+      const count = activeFilters.size + (topDegreeIds ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -1604,12 +1735,13 @@
     }
 
     function applyFilters() {
-      const hasFilter = activeFilters.size > 0 || searchQuery.length > 0 || focusedCommunityId || focusedType || focusedHealth !== null;
+      const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+        || focusedCommunityId || focusedType || focusedHealth !== null;
       visibleNodeIds.clear();
       let visible = 0;
       
       node.each(function(d) {
-        const ok = nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
+        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
         
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
@@ -1628,16 +1760,19 @@
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
-          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
+          return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
+                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
           const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
-          return (edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) &&
-                  edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? linkWidthBase : linkWidthBase * 0.5;
+          const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
+            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
+            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t);
+          return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
       if (searchQuery) flyToVisible();

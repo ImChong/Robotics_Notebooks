@@ -3,12 +3,14 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-04-29
+updated: 2026-05-17
 sources:
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/humanoid_touch_dream.md
   - ../../sources/papers/exoactor.md
+  - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
+  - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/repos/awesome-humanoid-robot-learning.md
 ---
 
@@ -59,7 +61,7 @@ flowchart TD
 ### 3. 基础模型路线 (Foundation Models / VLA)
 - **核心**：将视觉、语言和全身动作（Whole-body Actions）映射到统一的 Token 空间。
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
-- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025)。
+- **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）。
 
 ### 4. 残差与自适应学习 (Residual & Adaptive)
 - **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。
@@ -99,11 +101,11 @@ flowchart TD
 - [Humanoid Transformer with Touch Dreaming](../methods/humanoid-transformer-touch-dreaming.md)
 - [ExoActor](../methods/exoactor.md) — 视频生成驱动的零样本人形交互行为生成
 - [VIRAL（论文实体）](../entities/paper-viral-humanoid-visual-sim2real.md) — 人形 loco-manipulation 视觉 Sim2Real 全栈（arXiv:2511.15200）
+- [DoorMan（论文实体）](../entities/paper-doorman-opening-sim2real-door.md) — 人形纯 RGB 开门铰接操作与 GRPO 自举（arXiv:2512.01061）
+- [InterPrior（论文实体）](../entities/paper-interprior.md) — 物理 HOI 生成式先验：模仿专家 → 变分蒸馏 → RL 微调（arXiv:2602.06035）
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — VIRAL / DoorMan 官方开源框架
 
 ## 参考来源
-- **ingest 档案：** [sources/papers/x2n_transformable.md](../../sources/papers/x2n_transformable.md) — 具有轮足混合双模态与上肢操作能力的可变形人形机器人，用于展示强化学习的统一控制。
-
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
 - [ULTRA survey](./ultra-survey.md) — 统一多模态 loco-manipulation 综述 (2026)
 - [arXiv 2603.23983](https://arxiv.org/abs/2603.23983), *SafeFlow: Real-Time Text-Driven Humanoid Whole-Body Control* (2026)
@@ -111,6 +113,8 @@ flowchart TD
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — HOMIE / ALOHA / OmniH2O 
 - **ingest 档案：** [sources/papers/humanoid_touch_dream.md](../../sources/papers/humanoid_touch_dream.md) — HTD / Touch Dreaming 触觉增强人形移动操作
 - **ingest 档案：** [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor 视频生成驱动的人形控制
+- **ingest 档案：** [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md) — DoorMan：人形 RGB 开门视觉 Sim2Real（arXiv:2512.01061）
+- **ingest 档案：** [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：物理 HOI 生成式控制（arXiv:2602.06035）
 - **ingest 档案：** [sources/papers/x2n_transformable.md](../../sources/papers/x2n_transformable.md) — 具有轮足混合双模态与上肢操作能力的可变形人形机器人，用于展示强化学习的统一控制。
 
 ## 一句话记忆

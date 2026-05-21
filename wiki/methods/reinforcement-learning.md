@@ -2,6 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
+updated: 2026-05-17
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -17,10 +18,16 @@ related:
   - ../comparisons/rl-vs-il.md
   - ../concepts/curriculum-learning.md
   - ../queries/humanoid-rl-cookbook.md
+  - ../entities/hands-on-rl-book.md
+  - ../entities/paper-interprior.md
+  - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
+  - ../entities/lift-humanoid.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/locomotion_rl.md
+  - ../../sources/papers/interprior_arxiv_2602_06035.md
+  - ../../sources/repos/boyu_ai_hands_on_rl.md
 summary: "Reinforcement Learning 通过与环境交互优化长期回报，擅长探索复杂控制策略和鲁棒行为。"
 ---
 
@@ -107,6 +114,7 @@ flowchart TD
 
 代表：
 - Dreamer, MuZero, PETS, MBRL
+- **解耦式人形工程管线：** [LIFT](../entities/lift-humanoid.md)（大规模并行 **SAC** 预训练 + **物理知情** 可微动力学模型上做 **model-based** 微调）
 
 ### 离线强化学习（Offline RL）
 从固定数据集中学习，不允许和环境交互。
@@ -129,7 +137,7 @@ flowchart TD
 ## 局限
 
 - Sample efficiency 低（需要大量交互）
-- Reward 设计困难
+- Reward 设计困难（腿足与人形 locomotion 常占主要调参时间；近年出现 **VLM/LLM 生成可执行奖励代码** 的闭环管线，例如 [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 在感知观测上条件化地形统计以支撑复杂地形）
 - 安全性难以保证（尤其是真实机器人上）
 - 训练不稳定
 - **全流式（batch=1、无 replay）** 时，单步梯度尺度噪声无法被 minibatch 平均，价值与策略头易出现过大/过小交替更新；近年工作用 **意图更新（intentional updates）** 在输出空间反解步长以稳定跟踪，见 [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md)。
@@ -182,6 +190,10 @@ flowchart LR
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — BRRL / BPO，策略优化新进展
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — 策略优化（PPO/SAC/BRRL）ingest 档案
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — locomotion RL ingest 摘要（AMP/ASE 等）
+- [sources/papers/interprior_arxiv_2602_06035.md](../../sources/papers/interprior_arxiv_2602_06035.md) — InterPrior：模仿初始化后 RL 微调与失败态恢复（HOI）ingest 摘要
+- [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS：环境感知 VLM 奖励合成 + 人形地形 RL（arXiv:2512.16446）ingest 摘要
+- [sources/repos/boyu_ai_hands_on_rl.md](../../sources/repos/boyu_ai_hands_on_rl.md) — 《动手学强化学习》开源教材与代码（PPO/SAC 等中文实践入口）
+- [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 - [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
@@ -191,8 +203,11 @@ flowchart LR
 ## 关联页面
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 
+- [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文 RL 教材与 PPO/SAC 章节，适合 Stage 0 打底
 - [Intentional Updates for Streaming RL](./intentional-updates-streaming-rl.md) — batch=1、无 replay 时的步长与稳定跟踪
 - [Imitation Learning](./imitation-learning.md)
+- [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
+- [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)

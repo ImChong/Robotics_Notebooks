@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark light" />
   <meta name="description" content="Robotics Notebooks - 面向机器人学习与工程实践的技术栈导航，系统梳理运动控制、强化学习、模仿学习、人形机器人与相关技术主线。" />
   <meta name="keywords" content="Robotics Notebooks, 机器人技术栈, Humanoid Robot, Motion Control, Reinforcement Learning, Imitation Learning, Whole-Body Control" />
   <meta name="author" content="Chong Liu" />
@@ -11,9 +12,10 @@
   <meta property="og:type" content="website" />
   <title>Robotics Notebooks | 机器人技术栈地图</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>" />
+  <script src="theme-init.js"></script>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#3b82f6" />
+  <meta name="theme-color" content="#1c1c1e" />
 </head>
 <body>
   <header class="site-header">
@@ -39,9 +41,9 @@
           <p class="hero-subtitle">把 <strong>路线、图谱、模块、论文</strong> 串成一套极简导航系统。</p>
           
           <div class="hero-stat-row-mini" aria-label="知识库当前规模">
-            <span id="heroNodeCount">314</span> Nodes ·
-            <span id="heroEdgeCount">2105</span> Links ·
-            <span id="heroCoverageCount">312/312</span> Sources
+            <span id="heroNodeCount">413</span> Nodes ·
+            <span id="heroEdgeCount">3029</span> Links ·
+            <span id="heroCoverageCount">411/411</span> Sources
           </div>
 
           <div class="cta-row">
@@ -62,14 +64,8 @@
             aria-label="搜索知识页面"
             autocomplete="off"
           />
-          <select id="wikiTypeFilter" aria-label="按类型过滤">
-            <option value="">全部类型</option>
-            <option value="concept">概念 (concept)</option>
-            <option value="method">方法 (method)</option>
-            <option value="task">任务 (task)</option>
-            <option value="comparison">对比 (comparison)</option>
-            <option value="entity">工具/平台 (entity)</option>
-            <option value="query">Query 产物</option>
+          <select id="wikiCommunityFilter" aria-label="按社区过滤">
+            <option value="">全部社区</option>
           </select>
         </div>
         <div id="wikiTagCloud" class="tag-cloud" aria-label="热门标签"></div>

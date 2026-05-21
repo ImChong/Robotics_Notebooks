@@ -31,4 +31,4 @@
             
     - URDF 处理
         
-        - [Beyond URDF](https://arxiv.org/pdf/2512.23135)
+        - [Beyond URDF / URDD（arXiv:2512.23135）](papers/urdd_beyond_urdf_arxiv_2512_23135.md)（提炼页：[URDD 论文实体](../wiki/entities/paper-urdd-universal-robot-description-directory.md)；PDF <https://arxiv.org/pdf/2512.23135>）

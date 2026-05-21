@@ -3,7 +3,7 @@ type: query
 tags: [locomotion, rl, sim2real, humanoid, cookbook, training]
 status: stable
 summary: "人形机器人 RL 策略训练完整 Checklist"
-updated: 2026-04-25
+updated: 2026-05-16
 sources:
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/policy_optimization.md
@@ -18,22 +18,20 @@ sources:
 
 ---
 
-## TL;DR 决策路径
+## 快速决策路径
 
-```
-目标：真机行走策略
-
-1. 硬件确定？
-   → G1/H1（双足）      → 参考本页 Stage 1-6
-   → Unitree A1/Go1    → 参考 legged_gym 默认配置，直接 Stage 3 起步
-
-2. 仿真环境？
-   → Isaac Lab（推荐）  → GPU 并行训练，数万环境
-   → MuJoCo + legged_gym → 入门友好，10分钟出策略
-
-3. 训练策略？
-   → 从零       → PPO + 简单 reward → Stage 3 开始
-   → 有参考动作  → 先 motion imitation（AMP/PhysHOI），再 RL 微调
+```mermaid
+flowchart TB
+  goal(["目标：真机行走策略"])
+  goal --> hw{"硬件确定？"}
+  hw -->|"G1/H1（双足）"| s16["参考本页 Stage 1-6"]
+  hw -->|"Unitree A1/Go1"| lg["legged_gym 默认配置<br/>直接 Stage 3 起步"]
+  goal --> sim{"仿真环境？"}
+  sim -->|"Isaac Lab（推荐）"| isaac["GPU 并行训练<br/>数万并行环境"]
+  sim -->|"MuJoCo + legged_gym"| mj["入门友好<br/>约 10 分钟出策略"]
+  goal --> train{"训练策略？"}
+  train -->|"从零"| ppo["PPO + 简单 reward<br/>Stage 3 开始"]
+  train -->|"有参考动作"| mim["先 motion imitation<br/>AMP/PhysHOI，再 RL 微调"]
 ```
 
 ---

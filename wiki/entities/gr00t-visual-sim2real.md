@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, sim2real, visual-rl, humanoid, unitree-g1, isaac-lab, teacher-student, dagger, loco-manipulation, nvidia, cvpr2026]
 status: complete
-updated: 2026-05-15
+updated: 2026-05-17
 related:
+  - ./paper-doorman-opening-sim2real-door.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./tairan-he.md
   - ../concepts/sim2real.md
@@ -17,6 +18,8 @@ related:
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/repos/gr00t_visual_sim2real.md
+  - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
+  - ../../sources/sites/doorman-humanoid-github-io.md
   - ../../sources/papers/viral-humanoid-visual-sim2real.md
 summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。"
 ---
@@ -81,6 +84,7 @@ flowchart TB
 
 ### DoorMan — Pixel-to-Action Policy Transfer for Door Opening
 
+- **独立知识节点**：[DoorMan（论文实体）](./paper-doorman-opening-sim2real-door.md) — 分阶段重置、GRPO 自举与门随机化消融
 - **论文**：arXiv:2512.01061，CVPR 2026
 - **目标**：像素到动作（Pixel-to-Action）策略迁移，专注重型门开门
 - **难点**：接触丰富（需要对抗门铰链阻力），仅靠 RGB 隐式推断接触力
@@ -166,13 +170,16 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 - [Imitation Learning](../methods/imitation-learning.md) — DAgger 是 IL 核心算法之一
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 本框架的主要任务方向
 - [Tairan He](./tairan-he.md) — VIRAL / DoorMan 等工作的作者侧论文与项目索引
+- [DoorMan 论文实体](./paper-doorman-opening-sim2real-door.md) — arXiv:2512.01061 方法栈专页
 - [VIRAL 论文实体](./paper-viral-humanoid-visual-sim2real.md) — arXiv:2511.15200 方法栈专页
 
 ## 参考来源
 
 - [sources/repos/gr00t_visual_sim2real.md](../../sources/repos/gr00t_visual_sim2real.md) — 原始资料归档
+- [sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md](../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md) — DoorMan 论文摘录与 wiki 映射
+- [sources/sites/doorman-humanoid-github-io.md](../../sources/sites/doorman-humanoid-github-io.md) — DoorMan 项目页归档
 - [sources/papers/viral-humanoid-visual-sim2real.md](../../sources/papers/viral-humanoid-visual-sim2real.md) — VIRAL 论文摘录与 wiki 映射
-- [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real) — GitHub 仓库（135 stars，Apache-2.0）
+- [NVlabs/GR00T-VisualSim2Real](https://github.com/NVlabs/GR00T-VisualSim2Real) — GitHub 仓库（247 stars，Apache-2.0）
 - VIRAL: *Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation*, arXiv:2511.15200, CVPR 2026. 作者：Tairan He, Zi Wang, Haoru Xue et al.（CMU / NVIDIA GEAR Lab / UC Berkeley）
 - DoorMan: *Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer*, arXiv:2512.01061, CVPR 2026. 作者：Haoru Xue, Tairan He, Zi Wang et al.（NVIDIA GEAR Lab / CMU / UC Berkeley）
 
