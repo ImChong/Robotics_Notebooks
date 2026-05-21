@@ -511,6 +511,7 @@ SORT type ASC
 
 ### Wiki Overview（总览）
 
+- [人形机器人 AMP：运动先验综述视角](overview/humanoid-amp-motion-prior-survey.md) — AMP（Adversarial Motion Prior）解决的不是「能不能跑」，而是「跑起来之后仍不像一个身体」。** 它把策略生成的状态转移约束在人类运动分布附近，让任务 reward 与参考 `📅2026-05-21` `[overview_page]`
 - [人形机器人运动控制 Know-How](overview/humanoid-motion-control-know-how.md) — - **高频振动**：足端撞击地面的瞬时振动会通过骨架传导至 IMU。如果固定不牢，加速度计会因共振产生巨大偏置。 `📅unknown` `[overview_page]`
 - [人形机器人 RL 运动控制：身体系统栈视角](overview/humanoid-rl-motion-control-body-system-stack.md) — 人形机器人真正难的不是「让动作做出来」，而是让动作进入真实世界的**精细交互闭环**——视觉、接触、力、负载、失败恢复都参与控制；VLA / 世界模型对身体的稳定调用，是这层能力成熟之后的下一阶段，不 `📅2026-05-18` `[overview_page]`
 - [机器人世界模型：训练闭环与三线 taxonomy](overview/robot-world-models-training-loop-taxonomy.md) — 依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。 `📅2026-05-19` `[overview_page]`

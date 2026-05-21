@@ -10,6 +10,8 @@ related:
   - ./beyondmimic.md
   - ../tasks/humanoid-soccer.md
 sources:
+  - ../../sources/papers/amp.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/motion_control_projects.md
 summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。"
 ---

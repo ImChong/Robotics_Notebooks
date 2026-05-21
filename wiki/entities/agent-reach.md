@@ -8,7 +8,7 @@ tags:
   - web-scraping
   - agent-infrastructure
 status: complete
-date: 2026-05-18
+date: 2026-05-21
 related:
   - ./caveman.md
   - ./superpowers-obra.md
