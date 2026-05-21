@@ -83,9 +83,7 @@ class TestComputeScore(unittest.TestCase):
 
     def test_comparison_boost_only_with_intent(self):
         tc = {"对比": 1}
-        plain = compute_score(
-            tc, ["mpc"], title="", avgdl=5.0, fm={}, page_type="comparison"
-        )
+        plain = compute_score(tc, ["mpc"], title="", avgdl=5.0, fm={}, page_type="comparison")
         intent = compute_score(
             tc, ["mpc", "对比"], title="", avgdl=5.0, fm={}, page_type="comparison"
         )
@@ -93,14 +91,10 @@ class TestComputeScore(unittest.TestCase):
 
     def test_canonical_topic_boost(self):
         self.assertEqual(
-            _canonical_topic_boost(
-                "wiki/concepts/whole-body-control.md", ["wbc", "全身控制"]
-            ),
+            _canonical_topic_boost("wiki/concepts/whole-body-control.md", ["wbc", "全身控制"]),
             1.4,
         )
-        self.assertEqual(
-            _canonical_topic_boost("wiki/entities/wbc-fsm.md", ["wbc"]), 1.0
-        )
+        self.assertEqual(_canonical_topic_boost("wiki/entities/wbc-fsm.md", ["wbc"]), 1.0)
 
     def test_canonical_path_raises_score(self):
         tc = {"wbc": 2, "全身控制": 1}
