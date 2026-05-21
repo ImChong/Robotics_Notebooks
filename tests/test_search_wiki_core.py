@@ -13,7 +13,6 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from search_indexing import REPO_ROOT
 from search_wiki_core import (
     _canonical_topic_boost,
-    _query_has_comparison_intent,
     collect_known_terms,
     compute_avgdl,
     compute_score,
