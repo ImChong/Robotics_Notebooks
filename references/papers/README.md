@@ -34,6 +34,7 @@ updated: 2026-04-23
 
 | 你的目标 | 从这里进入 |
 |---------|-----------|
+| 想查 ICRA / IROS / CoRL / RSS 等发表渠道与官方投稿入口 | [机器人顶会顶刊发表渠道对比](../../wiki/comparisons/robotics-research-venues.md) |
 | 想看 locomotion RL 论文 | [Locomotion RL](locomotion-rl.md) |
 | 想看模仿学习论文 | [Imitation Learning](imitation-learning.md) |
 | 想看 WBC / TSID / whole-body 论文 | [Whole-Body Control](whole-body-control.md) |
