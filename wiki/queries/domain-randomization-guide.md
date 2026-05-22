@@ -2,6 +2,7 @@
 type: query
 tags: [sim2real, domain-randomization, rl, locomotion, training, parameters]
 status: complete
+updated: 2026-05-22
 summary: "如何为 sim2real 任务设计 domain randomization 参数与分布范围：涵盖物理参数、延迟、感知噪声和几何随机化的完整指导手册。"
 sources:
   - ../../sources/papers/locomotion_rl.md

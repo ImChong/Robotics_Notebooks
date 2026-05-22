@@ -3,7 +3,7 @@ type: entity
 tags: [legged, reinforcement-learning, impedance, quadruped, sim2real]
 status: stable
 summary: "腿足 RL：将可变刚度纳入动作空间，与关节位置联合学习；比较逐关节/分腿/混合参数化，并讨论阻尼等结构约束。"
-updated: 2026-05-12
+updated: 2026-05-22
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-variable-impedance-contact-rl.md

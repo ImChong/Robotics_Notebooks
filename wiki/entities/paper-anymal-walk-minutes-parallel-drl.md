@@ -3,7 +3,7 @@ type: entity
 tags: [quadruped, anymal, reinforcement-learning, isaac-gym, legged-gym, sim2real]
 status: stable
 summary: "ANYmal：单机 GPU 上千并行环境与课程式地形，在分钟级训练出行走策略；开源 legged_gym，成为 RL+PD 配置与消融的教科书入口。"
-updated: 2026-05-12
+updated: 2026-05-22
 related:
   - ../entities/legged-gym.md
   - ../entities/anymal.md

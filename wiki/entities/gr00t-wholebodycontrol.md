@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-22
 related:
   - ../methods/motionbricks.md
   - ../methods/sonic-motion-tracking.md
+  - ./kimodo.md
   - ../concepts/foundation-policy.md
   - ../concepts/whole-body-control.md
   - ./gr00t-visual-sim2real.md
@@ -40,6 +41,7 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 - [Foundation Policy](../concepts/foundation-policy.md) — GR00T 系基础策略与分层控制叙事
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
+- [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成「Kimodo 生成轨迹 → SONIC 仿真跟踪」工作流
 
 ## 参考来源
 

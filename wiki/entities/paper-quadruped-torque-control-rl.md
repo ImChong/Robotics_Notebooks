@@ -3,7 +3,7 @@ type: entity
 tags: [quadruped, reinforcement-learning, sim2real, torque-control]
 status: stable
 summary: "四足 RL：策略直接输出关节扭矩（高频），弱化固定 PD 内环，与位置目标+PD 路线形成对照，用于判断何时应弃用 PD 先验。"
-updated: 2026-05-12
+updated: 2026-05-22
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md

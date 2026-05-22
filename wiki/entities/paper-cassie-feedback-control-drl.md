@@ -3,14 +3,16 @@ type: entity
 tags: [cassie, reinforcement-learning, biped, sim2real, pd-control]
 status: stable
 summary: "高保真 Cassie 模型上的 DRL 反馈控制：跟踪参考运动、扰动与延迟鲁棒性，为「PD 目标空间」提供早期清晰 MDP 表述。"
-updated: 2026-05-12
+updated: 2026-05-22
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
+  - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
 ---
 
 # Feedback Control For Cassie With Deep Reinforcement Learning
@@ -20,6 +22,7 @@ sources:
 ## 为什么重要
 
 - 较早把 **「为何用位置/速度目标 + PD，而不是一上来就扭矩」** 放在 **可学习、可部署** 的框架里讲清楚：低维目标空间 **缩小探索、利用已知内环**。
+- 与图形学侧前史 [DeepRL 动作空间对比 SCA 2017](./paper-deeprl-locomotion-action-space-sca2017.md)（平面角色上四种动作语义对照）构成 **从角色动画到机器人** 的同主题前后参照。
 - 与后续 [迭代式 Cassie sim2real](./paper-cassie-iterative-locomotion-sim2real.md)、[双历史多技能](./paper-cassie-biped-versatile-locomotion-rl.md) 形成 **同一平台的方法演进链**。
 
 ## 核心机制（提炼）
@@ -51,6 +54,7 @@ flowchart LR
 ## 关联页面
 
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
+- [DeepRL 动作空间对比 SCA 2017](./paper-deeprl-locomotion-action-space-sca2017.md)
 - [Cassie 迭代式 sim2real](./paper-cassie-iterative-locomotion-sim2real.md)
 - [Cassie 双足多技能 RL](./paper-cassie-biped-versatile-locomotion-rl.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
