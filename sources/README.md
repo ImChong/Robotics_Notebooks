@@ -48,6 +48,7 @@
 | [x] [mimic_video_arxiv_2512_15692.md](papers/mimic_video_arxiv_2512_15692.md) | mimic-video：Video-Action Model（VAM），互联网视频潜计划 + 流匹配动作解码器（arXiv:2512.15692）摘录与 wiki 映射 |
 | [x] [defi_arxiv_2604_16391.md](papers/defi_arxiv_2604_16391.md) | DeFI：解耦 GFDM/GIDM 前向与逆动力学预训练 + 下游扩散耦合 VLA（arXiv:2604.16391）摘录与 wiki 映射 |
 | [x] [wm_robot_survey_arxiv_2605_00080.md](papers/wm_robot_survey_arxiv_2605_00080.md) | World Model for Robot Learning 综述（arXiv:2605.00080）：策略内预测 / 学习型模拟器 / 可控视频生成三线 taxonomy |
+| [x] [wem_arxiv_2605_19957.md](papers/wem_arxiv_2605_19957.md) | WEM：World-Ego Modeling + HTEWorld 混合导航–操作长程视频世界模型（arXiv:2605.19957，ZGCA-HMI-Lab）摘录与 wiki 映射 |
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
 ### repos/ — 代码仓库来源归档
@@ -91,6 +92,7 @@
 | [x] [freemocap.md](repos/freemocap.md) | FreeMoCap：开源低成本多相机动捕与 GUI 平台（AGPL） |
 | [x] [ubisoft-laforge-animation-dataset.md](repos/ubisoft-laforge-animation-dataset.md) | LaFAN1：Ubisoft La Forge BVH 动捕与 SIGGRAPH 2020 评估脚本（CC BY-NC-ND） |
 | [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
+| [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [gr00t_visual_sim2real.md](repos/gr00t_visual_sim2real.md) | GR00T-VisualSim2Real：NVIDIA 视觉 Sim2Real 框架，VIRAL + DoorMan 双 CVPR 2026 论文，PPO Teacher + DAgger RGB Student，Unitree G1 |
 | [x] [horizon_robotics_holomotion.md](repos/horizon_robotics_holomotion.md) | HoloMotion：地平线人形全身运动跟踪开源栈（GitHub + Pages 文档 + arXiv:2605.15336 + HF 权重 + Docker） |
 | [x] [google_deepmind_barkour_robot.md](repos/google_deepmind_barkour_robot.md) | barkour_robot：DeepMind 敏捷四足 CAD/PCBA/装配/固件（Pigweed+EtherCAT）与 OnShape、Menagerie MJCF 官方入口索引 |
@@ -172,6 +174,7 @@
 | [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（ModelBuilder 仿真循环、多求解器、URDF/MJCF/USD） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
 | [x] [wm-robot-survey-ntumars.md](sites/wm-robot-survey-ntumars.md) | NTUMARS 机器人世界模型综述项目站 ntumars.github.io/wm-robot-survey（arXiv:2605.00080） |
+| [x] [wem-project.md](sites/wem-project.md) | WEM 项目页 zgca-hmi-lab.github.io/WEM（World-Ego Modeling、HTEWorld 结果表与演示，arXiv:2605.19957） |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 
