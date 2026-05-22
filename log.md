@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-22] ingest | sources/papers/wem_arxiv_2605_19957.md — 接入 WEM/World-Ego Modeling 与 HTEWorld；沉淀 wiki/entities/paper-wem-world-ego-modeling.md 并交叉更新 generative-world-models、robot-world-models-taxonomy、loco-manipulation、ewmbench
+
 ## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md — Agent Reach 抓取深蓝具身智能 VLN 四范式新手复现长文并消化入库
 
 - 原始资料：`sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md`（<https://mp.weixin.qq.com/s/AzCDukzwrfIyms_65kh1mg>）；索引 `sources/README.md`
