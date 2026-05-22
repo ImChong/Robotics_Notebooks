@@ -2,7 +2,7 @@
 type: concept
 tags: [control, manipulation, hardware, force-control]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-22
 related:
   - ./impedance-control.md
   - ./hybrid-force-position-control.md

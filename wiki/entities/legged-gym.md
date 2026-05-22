@@ -1,7 +1,7 @@
 ---
 type: entity
 summary: "legged_gym"
-updated: 2026-05-12
+updated: 2026-05-22
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md

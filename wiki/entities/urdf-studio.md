@@ -3,7 +3,7 @@ type: entity
 title: URDF-Studio
 tags: [utility, design, workstation, hardware, ai]
 summary: "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
-updated: 2026-05-16
+updated: 2026-05-22
 ---
 
 # URDF-Studio
@@ -40,6 +40,7 @@ updated: 2026-05-16
 - [open-source-humanoid-hardware](open-source-humanoid-hardware.md) (开源硬件参考)
 - [Articraft](./articraft.md)（agent + SDK + harness：可关节 3D 仿真资产生成，与 URDF/网格下游对照）
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)（自然语言 → STEP 等上游几何与机器人描述衔接）
+- [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

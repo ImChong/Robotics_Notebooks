@@ -3,7 +3,7 @@ type: entity
 tags: [manipulation, reinforcement-learning, impedance, contact, sim2real]
 status: stable
 summary: "RA-L：关节空间同时学习期望轨迹与可变阻抗参数，并加正则以改善接触敏感任务中的样本效率与真机迁移；为可变刚度腿足提供思想前史。"
-updated: 2026-05-12
+updated: 2026-05-22
 related:
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
