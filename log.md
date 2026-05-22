@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md — Agent Reach 抓取深蓝具身智能 VLA GitHub 复现推荐长文并消化入库
+
+- 原始资料：`sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md`（<https://mp.weixin.qq.com/s/k_i-1NEBP-lEzth19HOHkQ>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/vla-open-source-repro-landscape-2025.md`（11 项开源栈 + Mermaid 景观 + 复现目标表）
+- 交叉更新：`wiki/methods/vla.md`、`wiki/methods/star-vla.md`、`wiki/queries/manipulation-vla-architecture-selection.md`、`sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-22] ingest | sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md — 安装 Agent Reach 抓取深蓝具身智能李群/李代数/四元数专栏文并消化入库
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA

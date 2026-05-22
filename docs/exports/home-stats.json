@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-22",
-  "node_count": 414,
-  "edge_count": 3045,
+  "node_count": 415,
+  "edge_count": 3062,
   "coverage": {
-    "covered": 412,
-    "total": 412,
+    "covered": 413,
+    "total": 413,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/star-vla.md",
+      "detail_id": "wiki-methods-star-vla",
+      "label": "StarVLA",
+      "type": "method",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/manipulation-vla-architecture-selection.md",
+      "detail_id": "wiki-queries-manipulation-vla-architecture-selection",
+      "label": "操作 VLA 与视频-动作架构选型指南",
+      "type": "query",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
       "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
@@ -34,10 +66,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
-    "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
-    "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
-    "type": "formalization",
+    "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+    "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+    "label": "VLA 开源复现景观（2025 策展）",
+    "type": "overview",
     "recency": "2026-05-22",
     "source": "log.md"
   }
