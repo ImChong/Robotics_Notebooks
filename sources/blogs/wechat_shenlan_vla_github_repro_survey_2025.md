@@ -9,7 +9,7 @@
 - **发表日期：** 2025-12-23（frontmatter）；文内统计截至 2025-12-22
 - **入库日期：** 2026-05-22
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0 + `wechat-article-for-ai`（Camoufox）；正文约 1.4 万字 / 28 图
-- **姊妹篇：** [极具「影响力」的12个VLA开源项目](https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247494473&idx=1&sn=28c95bea437f22cc8e9ed7ca3308a071)（文内未逐条复述，本篇为「复现向」策展）
+- **姊妹篇：** [极具「影响力」的12个VLA开源项目](https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247494473&idx=1&sn=28c95bea437f22cc8e9ed7ca3308a071)（文内未逐条复述）；[VLN 四范式新手复现](https://mp.weixin.qq.com/s/AzCDukzwrfIyms_65kh1mg)（已入库 [`wechat_shenlan_vln_repro_four_paradigms_2026.md`](wechat_shenlan_vln_repro_four_paradigms_2026.md)）
 - **一句话说明：** 以 GitHub star>400、代码可获取与活跃度为筛选，策展 2025 年 11 个高可见 VLA 相关开源栈（通用策略、轻量 VLA、RL 训练系统、跨本体、VLA+世界模型、空间/驾驶/灵巧抓取、推理-执行解耦），强调「可跑通代码」重于论文叙事。
 
 ## 筛选标准（作者）

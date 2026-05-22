@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-22",
-  "node_count": 415,
-  "edge_count": 3062,
+  "node_count": 416,
+  "edge_count": 3071,
   "coverage": {
-    "covered": 413,
-    "total": 413,
+    "covered": 414,
+    "total": 414,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
       "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
@@ -66,9 +82,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-    "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-    "label": "VLA 开源复现景观（2025 策展）",
+    "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+    "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+    "label": "VLN 开源复现：四范式学习路径",
     "type": "overview",
     "recency": "2026-05-22",
     "source": "log.md"

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md — Agent Reach 抓取深蓝具身智能 VLN 四范式新手复现长文并消化入库
+
+- 原始资料：`sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md`（<https://mp.weixin.qq.com/s/AzCDukzwrfIyms_65kh1mg>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/vln-open-source-repro-paradigms.md`（VLFM / NavGPT / NoMaD / Uni-NaVid + Mermaid 演进 + 复现门槛表）
+- 交叉更新：`wiki/tasks/vision-language-navigation.md`、`wiki/overview/vla-open-source-repro-landscape-2025.md`、`sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md — Agent Reach 抓取深蓝具身智能 VLA GitHub 复现推荐长文并消化入库
 
 - 原始资料：`sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md`（<https://mp.weixin.qq.com/s/k_i-1NEBP-lEzth19HOHkQ>）；索引 `sources/README.md`

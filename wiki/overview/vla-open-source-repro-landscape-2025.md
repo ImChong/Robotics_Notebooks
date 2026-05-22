@@ -12,6 +12,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ../queries/manipulation-vla-architecture-selection.md
   - ../entities/lerobot.md
+  - ../overview/vln-open-source-repro-paradigms.md
   - ../formalizations/lie-group-rigid-body-motions.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
@@ -73,7 +74,7 @@ flowchart TB
 | **VLA-Adapter** | ~0.5B 轻量 VLA；Bridge Attention 注入 VL；强调低机器人预训练数据 | [VLA-Adapter](https://github.com/OpenHelix-Team/VLA-Adapter) | [VLA](../methods/vla.md)、[选型 Query](../queries/manipulation-vla-architecture-selection.md) |
 | **RLinf** | 大规模 RL **系统**（流水线、通信、调度）；支撑 π-RL 等具身 RL | [RLinf](https://github.com/RLinf/RLinf) | [VLA](../methods/vla.md)、[强化学习](../methods/reinforcement-learning.md) |
 | **SimpleVLA-RL** | veRL 扩展；面向 VLA 的轨迹采样与并行；OpenVLA-OFT RL 实验 | [SimpleVLA-RL](https://github.com/PRIME-RL/SimpleVLA-RL) | [VLA](../methods/vla.md) |
-| **UniVLA** | 从视频学 **潜动作**；跨平台轻量解码；减弱显式动作标签依赖 | [UniVLA](https://github.com/OpenDriveLab/UniVLA) | [DeFI](../methods/defi-decoupled-dynamics-vla.md)（潜动作路线对照） |
+| **UniVLA** | 从视频学 **潜动作**；跨平台轻量解码；减弱显式动作标签依赖 | [UniVLA](https://github.com/OpenDriveLab/UniVLA) | [DeFI](../methods/defi-decoupled-dynamics-vla.md)（潜动作路线对照）；**≠** 导航向 [Uni-NaVid](../overview/vln-open-source-repro-paradigms.md) |
 | **RynnVLA-002** | 统一动作生成与环境预测的自回归 **动作-世界模型** | [RynnVLA-002](https://github.com/alibaba-damo-academy/RynnVLA-002) | [世界模型闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)、[LeRobot](../entities/lerobot.md) |
 | **StarVLA** | VLM / VLA /「用 VLM 训 VLA」模块化框架；单卡可训 | [starVLA](https://github.com/starVLA/starVLA) | [StarVLA](../methods/star-vla.md) |
 | **SpatialVLA** | Ego3D 三维位置编码；百万级真机轨迹预训练 | [SpatialVLA](https://github.com/SpatialVLA/SpatialVLA) | [VLA](../methods/vla.md)、[3D 空间 VQA](../concepts/3d-spatial-vqa.md) |
@@ -110,6 +111,7 @@ flowchart TB
 
 ## 关联页面
 
+- [VLN 四范式复现路径](../overview/vln-open-source-repro-paradigms.md) — 导航域 VLA（Uni-NaVid）与操作域 VLA 分工
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [StarVLA](../methods/star-vla.md)
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)

@@ -129,6 +129,7 @@
 | [x] [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) | 具身智能研究室：42 篇 humanoid RL 运动控制「身体系统栈」长文（Agent Reach + Camoufox；`hz9JXtJeUPRfUGzfD-pZuA`） |
 | [x] [wechat_shenlan_lie_group_lie_algebra_quaternion.md](blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | 深蓝具身智能：《具身智能基础》专栏 — 李群、李代数、四元数（Agent Reach + Camoufox；`JviRH2LW-fkCHA5gY7Qflw`） |
 | [x] [wechat_shenlan_vla_github_repro_survey_2025.md](blogs/wechat_shenlan_vla_github_repro_survey_2025.md) | 深蓝具身智能：2025 GitHub 高 star VLA 开源栈复现推荐（OpenPI、VLA-Adapter、RLinf 等 11 项；`k_i-1NEBP-lEzth19HOHkQ`） |
+| [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
 | [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
