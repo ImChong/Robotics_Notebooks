@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-22",
-  "node_count": 418,
-  "edge_count": 3085,
+  "node_count": 419,
+  "edge_count": 3091,
   "coverage": {
-    "covered": 416,
-    "total": 416,
+    "covered": 417,
+    "total": 417,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/esi-bench.md",
+      "detail_id": "entity-esi-bench",
+      "label": "ESI-Bench（具身空间智能基准）",
+      "type": "entity",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "detail_id": "wiki-concepts-3d-spatial-vqa",
+      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+      "type": "concept",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-wem-world-ego-modeling.md",
       "detail_id": "entity-paper-wem-world-ego-modeling",
@@ -106,9 +122,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-wem-world-ego-modeling.md",
-    "detail_id": "entity-paper-wem-world-ego-modeling",
-    "label": "WEM（World-Ego Modeling / World-Ego Model）",
+    "path": "wiki/entities/esi-bench.md",
+    "detail_id": "entity-esi-bench",
+    "label": "ESI-Bench（具身空间智能基准）",
     "type": "entity",
     "recency": "2026-05-22",
     "source": "log.md"
