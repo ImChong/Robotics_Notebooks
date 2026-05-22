@@ -1,6 +1,33 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md — Agent Reach 抓取深蓝具身智能 VLN 四范式新手复现长文并消化入库
+
+- 原始资料：`sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md`（<https://mp.weixin.qq.com/s/AzCDukzwrfIyms_65kh1mg>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/vln-open-source-repro-paradigms.md`（VLFM / NavGPT / NoMaD / Uni-NaVid + Mermaid 演进 + 复现门槛表）
+- 交叉更新：`wiki/tasks/vision-language-navigation.md`、`wiki/overview/vla-open-source-repro-landscape-2025.md`、`sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-22] ingest | sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md — Agent Reach 抓取深蓝具身智能 VLA GitHub 复现推荐长文并消化入库
+
+- 原始资料：`sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md`（<https://mp.weixin.qq.com/s/k_i-1NEBP-lEzth19HOHkQ>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/overview/vla-open-source-repro-landscape-2025.md`（11 项开源栈 + Mermaid 景观 + 复现目标表）
+- 交叉更新：`wiki/methods/vla.md`、`wiki/methods/star-vla.md`、`wiki/queries/manipulation-vla-architecture-selection.md`、`sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md`
+- 派生再生成：`make ci-preflight`
+
+## [2026-05-22] ingest | sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md — 安装 Agent Reach 抓取深蓝具身智能李群/李代数/四元数专栏文并消化入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA
+- 原始资料：`sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md`（<https://mp.weixin.qq.com/s/JviRH2LW-fkCHA5gY7Qflw>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/formalizations/lie-group-rigid-body-motions.md`
+- 交叉更新：`wiki/formalizations/se3-representation.md`、`wiki/entities/modern-robotics-book.md`、`sources/repos/panniantong_agent_reach.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-22] ingest | sources/sites/robotics-venues-primary-refs.md — 汇总 ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口；沉淀 wiki/comparisons/robotics-research-venues.md
+
+- 原始资料：`sources/sites/robotics-venues-primary-refs.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/comparisons/robotics-research-venues.md`
+- 交叉更新：`wiki/overview/robot-learning-overview.md`、`references/papers/README.md`
+- 派生再生成：`make ci-preflight`（与 main 上 PR #353 一致；合并时与深蓝专栏 ingest 同日块并列保留）
 
 ## [2026-05-21] ingest | sources/sites/kimodo-project.md、sources/papers/kimodo_arxiv_2603_15546.md — 深化 Kimodo 官方项目页与 arXiv:2603.15546 论文摘录；扩充 sources/repos/kimodo.md、wiki/entities/kimodo.md（两阶段去噪、变体选型、Mermaid 管线、GEM/SONIC/ProtoMotions 互链）；交叉更新 wiki/methods/diffusion-motion-generation.md
 

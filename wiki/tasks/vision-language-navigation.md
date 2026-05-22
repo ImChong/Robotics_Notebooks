@@ -2,14 +2,16 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-05-07
+updated: 2026-05-22
 status: complete
 related:
+  - ../overview/vln-open-source-repro-paradigms.md
   - ../entities/sceneverse-pp.md
   - ../concepts/3d-spatial-vqa.md
   - ../methods/vla.md
   - locomotion.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
   - ../../sources/repos/sceneverse-pp.md
 ---
 
@@ -41,6 +43,7 @@ sources:
 
 ## 与其他页面的关系
 
+- **复现路径**：[VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md) — VLFM / NavGPT / NoMaD / Uni-NaVid 由浅入深（模块化→LLM→扩散 e2e→导航 VLA）。
 - **数据**：[SceneVerse++](../entities/sceneverse-pp.md) 将室内漫游视频转为 R2R 兼容的离散导航数据，并报告在相关基准上的增益。
 - **空间推理**：[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 侧重问答；VLN 侧重 **时序决策**，二者常共享场景表示与 VLM 骨干。
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
@@ -48,12 +51,14 @@ sources:
 
 ## 参考来源
 
+- [深蓝具身智能：VLN 四范式新手复现推荐](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) — Habitat/R2R 可跑通开源栈策展
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)
 - Chen et al., *Lifting Unlabeled Internet-level Data for 3D Scene Understanding* (arXiv:2604.01907) — VLN 数据生成与 R2R 实验
 - Anderson et al., *Vision-and-Language Navigation* — R2R 任务经典定义（如需溯源基准起源可查阅原文）
 
 ## 关联页面
 
+- [VLN 开源复现：四范式学习路径](../overview/vln-open-source-repro-paradigms.md)
 - [SceneVerse++](../entities/sceneverse-pp.md)
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [Locomotion](locomotion.md)

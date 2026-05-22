@@ -2,8 +2,9 @@
 type: method
 tags: [vla, foundation-policy, embodied-ai, qwen, benchmark]
 status: complete
-updated: 2026-04-25
+updated: 2026-05-22
 related:
+  - ../overview/vla-open-source-repro-landscape-2025.md
   - ./vla.md
   - ../entities/rldx-1.md
   - ../concepts/foundation-policy.md
@@ -68,6 +69,7 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 
 ## 参考来源
 
+-   [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 文内将 StarVLA 列为模块化 VLM→VLA 工程框架入口
 -   Ye et al., *StarVLA-α: Reducing Complexity in Vision-Language-Action Systems* (2026) — 原论文
 -   [sources/papers/star_vla.md](../../sources/papers/star_vla.md) — 论文 ingest 档案
 -   [sources/repos/star_vla.md](../../sources/repos/star_vla.md) — GitHub 仓库 ingest 档案
@@ -75,6 +77,7 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 
 ## 关联页面
 
+-   [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — 含 starVLA/starVLA 仓库与单卡训练语境
 -   [VLA (Vision-Language-Action)](./vla.md) — 具身大模型全景
 -   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念

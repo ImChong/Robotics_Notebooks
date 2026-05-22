@@ -11,6 +11,7 @@ related:
   - ./contact-estimation.md
   - ./foundation-policy.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
+  - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
   - ../queries/when-to-use-wbc-vs-rl.md
 summary: "WBC（全身控制）通常写成 QP / hierarchical QP：在全身动力学与任务优先级约束下统一求解关节力矩。"
@@ -153,6 +154,7 @@ print("joint acceleration command:", qdd_star)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
 - [Sim2Real](./sim2real.md)
 - [Contact Estimation](./contact-estimation.md) — WBC 的接触集合来自接触估计，直接影响约束矩阵
+- [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现

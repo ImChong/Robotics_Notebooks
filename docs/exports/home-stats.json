@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-05-22",
-  "node_count": 414,
-  "edge_count": 3037,
+  "node_count": 417,
+  "edge_count": 3075,
   "coverage": {
-    "covered": 412,
-    "total": 412,
+    "covered": 415,
+    "total": 415,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/star-vla.md",
+      "detail_id": "wiki-methods-star-vla",
+      "label": "StarVLA",
+      "type": "method",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/manipulation-vla-architecture-selection.md",
+      "detail_id": "wiki-queries-manipulation-vla-architecture-selection",
+      "label": "操作 VLA 与视频-动作架构选型指南",
+      "type": "query",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
+      "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
+      "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
+      "type": "formalization",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/se3-representation.md",
+      "detail_id": "wiki-formalizations-se3-representation",
+      "label": "SE(3) Representation (位姿表示形式化)",
+      "type": "formalization",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/robotics-research-venues.md",
       "detail_id": "wiki-comparisons-robotics-research-venues",
@@ -15,13 +87,21 @@
       "type": "comparison",
       "recency": "2026-05-22",
       "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-05-22",
+      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/robotics-research-venues.md",
-    "detail_id": "wiki-comparisons-robotics-research-venues",
-    "label": "机器人顶会顶刊发表渠道对比",
-    "type": "comparison",
+    "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+    "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+    "label": "VLN 开源复现：四范式学习路径",
+    "type": "overview",
     "recency": "2026-05-22",
     "source": "log.md"
   }
