@@ -189,8 +189,13 @@ sources:
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com) — 实践入门
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md) — 中文教材与 PPO/SAC 代码（[hrl.boyuai.com](https://hrl.boyuai.com/)）
 
+## 发表与引用
+
+选题、投稿或核对会议/期刊信息时，见 [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)（ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方入口索引）。
+
 ## 关联页面
 
+- [机器人顶会顶刊发表渠道对比](../comparisons/robotics-research-venues.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [动手学强化学习（蘑菇书）](../entities/hands-on-rl-book.md)
 - [Imitation Learning](../methods/imitation-learning.md)

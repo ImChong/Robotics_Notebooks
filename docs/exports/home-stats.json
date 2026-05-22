@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-22",
-  "node_count": 416,
-  "edge_count": 3071,
+  "node_count": 417,
+  "edge_count": 3075,
   "coverage": {
-    "covered": 414,
-    "total": 414,
+    "covered": 415,
+    "total": 415,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -77,6 +77,22 @@
       "detail_id": "entity-modern-robotics-book",
       "label": "Modern Robotics (Lynch-Park 教材)",
       "type": "entity",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/robotics-research-venues.md",
+      "detail_id": "wiki-comparisons-robotics-research-venues",
+      "label": "机器人顶会顶刊发表渠道对比",
+      "type": "comparison",
+      "recency": "2026-05-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
       "recency": "2026-05-22",
       "source": "log.md"
     }

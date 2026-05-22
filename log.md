@@ -22,6 +22,13 @@
 - 交叉更新：`wiki/formalizations/se3-representation.md`、`wiki/entities/modern-robotics-book.md`、`sources/repos/panniantong_agent_reach.md`
 - 派生再生成：`make ci-preflight`
 
+## [2026-05-22] ingest | sources/sites/robotics-venues-primary-refs.md — 汇总 ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口；沉淀 wiki/comparisons/robotics-research-venues.md
+
+- 原始资料：`sources/sites/robotics-venues-primary-refs.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/comparisons/robotics-research-venues.md`
+- 交叉更新：`wiki/overview/robot-learning-overview.md`、`references/papers/README.md`
+- 派生再生成：`make ci-preflight`（与 main 上 PR #353 一致；合并时与深蓝专栏 ingest 同日块并列保留）
+
 ## [2026-05-21] ingest | sources/sites/kimodo-project.md、sources/papers/kimodo_arxiv_2603_15546.md — 深化 Kimodo 官方项目页与 arXiv:2603.15546 论文摘录；扩充 sources/repos/kimodo.md、wiki/entities/kimodo.md（两阶段去噪、变体选型、Mermaid 管线、GEM/SONIC/ProtoMotions 互链）；交叉更新 wiki/methods/diffusion-motion-generation.md
 
 ## [2026-05-21] feat(ux) | docs/detail.html、docs/main.js、docs/style.css — V22 P3 详情页「关联项按社区分布」小条形图（基于 link-graph 社区，替换早些时候的按 type 分桶版本）
