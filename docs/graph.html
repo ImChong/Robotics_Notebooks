@@ -244,22 +244,26 @@
         background: rgba(0,212,255,0.12);
       }
       #graph-legend {
+        /* 与桌面端相同的卡片外观，仅改为默认隐藏 + 自左滑入 */
         position: fixed;
-        top: calc(var(--header-h) + 46px);
-        left: 0;
-        bottom: 0;
-        width: min(86vw, 300px);
-        max-height: none;
+        bottom: 16px;
+        left: 16px;
+        top: auto;
+        width: auto;
+        max-width: calc(100vw - 32px);
+        max-height: min(72vh, calc(100dvh - var(--header-h) - 120px));
         margin: 0;
-        padding: 14px 12px 18px;
-        border-radius: 0 12px 12px 0;
-        border-left: none;
-        transform: translateX(-110%);
+        padding: 10px 13px;
+        background: rgba(13,17,23,0.88);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 10px;
+        backdrop-filter: blur(6px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+        transform: translateX(calc(-100% - 28px));
         transition: transform .28s cubic-bezier(.4,0,.2,1);
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         z-index: 46;
-        box-shadow: 8px 0 32px rgba(0,0,0,0.45);
         pointer-events: none;
       }
       #graph-legend.graph-legend-open {
