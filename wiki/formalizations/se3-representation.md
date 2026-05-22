@@ -2,12 +2,14 @@
 type: formalization
 tags: [kinematics, math, deep-learning, rotation]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-22
 related:
+  - ./lie-group-rigid-body-motions.md
   - ../concepts/whole-body-control.md
   - ../methods/visual-servoing.md
   - ../formalizations/mdp.md
 sources:
+  - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/papers/perception.md
 summary: "SE(3) 位姿表示形式化：探讨了欧拉角、四元数、旋转矩阵及 6D 连续表示在机器人学习中的优劣对比，重点关注其在神经网络训练中的连续性与独特性。"
 ---
@@ -47,6 +49,7 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
   $$ \mathcal{L}_{rot} = \arccos\left( \frac{\text{Tr}(R_{pred} R_{target}^T) - 1}{2} \right) $$
 
 ## 关联页面
+- [李群、李代数与刚体旋转](./lie-group-rigid-body-motions.md) — SO(3)/SE(3) 与 so(3)/se(3) 分工、四元数存储与 exp/log 优化链路
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Visual Servoing](../methods/visual-servoing.md)
 - [Action Tokenization](./vla-tokenization.md)
@@ -57,3 +60,4 @@ $$ T = \begin{bmatrix} R & t \\ 0 & 1 \end{bmatrix} \in \mathbb{R}^{4 \times 4} 
 - Lynch, K. M., & Park, F. C. (2017). *Modern Robotics*. Ch 3 *Rigid-Body Motions* — SO(3)/SE(3) 的李群结构、指数映射、twist 表示。
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)
+- [深蓝具身智能：李群、李代数、四元数（微信公众号）](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) — 具身场景下四元数 / 李代数 / 6D 表示的分工直觉

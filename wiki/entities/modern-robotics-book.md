@@ -4,6 +4,7 @@ tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundat
 status: complete
 updated: 2026-04-30
 related:
+  - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
   - ../concepts/floating-base-dynamics.md
   - ../concepts/whole-body-control.md
@@ -29,7 +30,7 @@ summary: "Lynch & Park 的现代机器人学经典教材，独特之处是全程
 | 章节 | 教材主题 | 对应已有页面 |
 |------|---------|------------|
 | Ch 2 | Configuration Space | （未直接覆盖，可补） |
-| Ch 3 | Rigid-Body Motions | [SE(3) Representation](../formalizations/se3-representation.md) |
+| Ch 3 | Rigid-Body Motions | [李群与刚体运动](../formalizations/lie-group-rigid-body-motions.md)、[SE(3) Representation](../formalizations/se3-representation.md) |
 | Ch 4 | Forward Kinematics (PoE) | （部分隐含在 [pinocchio](./pinocchio.md)） |
 | Ch 5 | Velocity Kinematics & Statics | （隐含在 [whole-body-control](../concepts/whole-body-control.md) 的 Jacobian 部分） |
 | Ch 6 | Inverse Kinematics | （未直接覆盖） |
@@ -72,7 +73,8 @@ Lynch-Park 将下面这些贯穿全书：
 
 ## 关联页面
 
-- [SE(3) Representation](../formalizations/se3-representation.md) — 教材 Ch 3 对应的形式化
+- [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — Ch 3 李群 / 指数映射的工程分工（含公众号策展导读）
+- [SE(3) Representation](../formalizations/se3-representation.md) — 教材 Ch 3 对应的 DL 表示对比
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 教材 Ch 8 在浮基系统上的延伸
 - [Whole-Body Control](../concepts/whole-body-control.md) — 教材 Ch 11 控制章节的现代延伸
 - [Pinocchio](./pinocchio.md) — 直接使用本教材数学语言的现代机器人库
