@@ -386,23 +386,30 @@
       #filter-toggle {
         padding: 0 6px;
       }
-      /* 移动端：closed state 仅显示 overlay emoji，select 自身文字隐藏 (text-indent off-screen)；下拉列表仍走原生渲染，显示完整文字 */
+      /* 移动端：将专题切换器做成圆形 emoji 按钮 — overlay span 居中显示，select 覆盖整圆透明接管点击 */
       .topic-view-wrap {
-        height: 26px;
-        padding: 0 6px;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
         flex-shrink: 0;
-        gap: 0;
       }
       .topic-view-emoji {
         display: inline-block;
         font-size: 14px;
+        line-height: 1;
       }
       #topic-view {
-        width: 14px;
-        text-indent: -9999px;
-        padding: 0 8px 0 0;
-        background-position: calc(100% - 0px) 50%, calc(100% + 4px) 50%;
-        color: transparent;
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        opacity: 0;
+        background-image: none;
+        cursor: pointer;
       }
       #physics-toggle span:first-child {
         margin-right: 0;
@@ -437,7 +444,9 @@
         width: 120px;
       }
       .topic-view-wrap {
-        padding: 0 5px;
+        width: 26px;
+        height: 26px;
+        padding: 0;
       }
     }
 
