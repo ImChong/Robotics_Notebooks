@@ -54,9 +54,8 @@
     .topic-view-wrap {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       height: 28px;
-      padding: 0 10px 0 9px;
+      padding: 0 8px;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
@@ -74,7 +73,6 @@
       border-color: rgba(0,212,255,0.55);
       color: #e6edf3;
     }
-    .topic-view-icon { font-size: .82rem; line-height: 1; }
     #topic-view {
       appearance: none;
       -webkit-appearance: none;
@@ -383,17 +381,16 @@
       }
       .topic-view-wrap {
         height: 26px;
-        padding: 0 6px;
-        font-size: .72rem;
-        max-width: 72px;
+        padding: 0 4px;
+        font-size: .85rem;
         overflow: hidden;
         flex-shrink: 1;
       }
-      .topic-view-icon { display: none; }
       #topic-view {
-        padding-right: 10px;
-        background-position: calc(100% - 5px) 50%, calc(100% - 1px) 50%;
-        max-width: 100%;
+        width: 32px;
+        padding: 0 10px 0 0;
+        background-position: calc(100% - 2px) 50%, calc(100% + 2px) 50%;
+        text-overflow: clip;
       }
       #physics-toggle span:first-child {
         margin-right: 0;
@@ -428,7 +425,10 @@
         width: 120px;
       }
       .topic-view-wrap {
-        max-width: 60px;
+        padding: 0 3px;
+      }
+      #topic-view {
+        width: 28px;
       }
     }
 
@@ -980,19 +980,18 @@
     <datalist id="graph-search-list"></datalist>
     <!-- 专题视图切换器 -->
     <label id="topic-view-wrap" class="topic-view-wrap" title="按专题子图过滤显示">
-      <span class="topic-view-icon" aria-hidden="true">📚</span>
       <select id="topic-view" aria-label="专题视图">
-        <option value="all">全量</option>
-        <option value="motion-retargeting">动作重定向</option>
-        <option value="grasp">抓取</option>
-        <option value="tactile">触觉</option>
-        <option value="communication">通信协议</option>
-        <option value="wbc">WBC 全身控制</option>
-        <option value="locomotion">Locomotion 步态</option>
-        <option value="vla">VLA / 基础策略</option>
-        <option value="learning">学习范式 IL/RL</option>
-        <option value="sim2real">Sim2Real</option>
-        <option value="state-estimation">状态估计</option>
+        <option value="all">🌐 全量</option>
+        <option value="motion-retargeting">🤸 动作重定向</option>
+        <option value="grasp">🤏 抓取</option>
+        <option value="tactile">✋ 触觉</option>
+        <option value="communication">🔌 通信协议</option>
+        <option value="wbc">🦾 WBC 全身控制</option>
+        <option value="locomotion">🚶 Locomotion 步态</option>
+        <option value="vla">👀 VLA / 基础策略</option>
+        <option value="learning">🎓 学习范式 IL/RL</option>
+        <option value="sim2real">🔁 Sim2Real</option>
+        <option value="state-estimation">📊 状态估计</option>
       </select>
     </label>
     <!-- 筛选按钮 -->
