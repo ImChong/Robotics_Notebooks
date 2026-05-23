@@ -383,12 +383,17 @@
       }
       .topic-view-wrap {
         height: 26px;
-        padding: 0 8px 0 7px;
+        padding: 0 6px;
         font-size: .72rem;
+        max-width: 72px;
+        overflow: hidden;
+        flex-shrink: 1;
       }
+      .topic-view-icon { display: none; }
       #topic-view {
-        padding-right: 12px;
-        background-position: calc(100% - 6px) 50%, calc(100% - 2px) 50%;
+        padding-right: 10px;
+        background-position: calc(100% - 5px) 50%, calc(100% - 1px) 50%;
+        max-width: 100%;
       }
       #physics-toggle span:first-child {
         margin-right: 0;
@@ -417,10 +422,13 @@
 
     @media (max-width: 480px) {
       #graph-search {
-        width: 100px;
+        width: 90px;
       }
       #graph-search:focus {
-        width: 140px;
+        width: 120px;
+      }
+      .topic-view-wrap {
+        max-width: 60px;
       }
     }
 
