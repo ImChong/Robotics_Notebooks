@@ -79,8 +79,12 @@
       - 第一版本（type 分桶）由社区分桶替代后不再保留：理由是 type 维度（概念/方法/实体/...）与现有 frontmatter type 字段重复，区分度不如 link-graph 社区聚类高（V22 P0 已把社区切到 17 个 ≤ 40% 阈值之内，刚好可用于"邻域属于哪些主题"的快速判断）。
       - 验证：`make lint-js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；本地 `python3 -m http.server` + Puppeteer 视口截图 `wiki-concepts-whole-body-control` 详情页（共 12 项 · 8 个社区：Whole-Body Control 4 / Imitation Learning 1 / Locomotion 1 / Motion Retargeting 3 / Sim2Real 1 / Unitree G1 1 / 1 / 未分类 1）与 `wiki-concepts-armature-modeling`（共 5 项 · 3 个社区：WBC 3 / Motion Retargeting 1 / Sim2Real 1），桌面端 1280px 与移动端 375px 双视口落稳。
       - 截图：`.cursor-artifacts/screenshots/detail-related-community-dist-wbc.png`、`detail-related-community-dist-wbc-mobile.png`、`detail-related-community-dist.png`。
-- [ ] **图谱页"专题视图"切换器**：
-    - [ ] `docs/graph.html` 增加下拉菜单，可选"全量 / 动作重定向 / 抓取 / 触觉与通信"三个子图过滤模式，复用 V21 微地图的同套 `path → type` 元数据。
+- [x] **图谱页"专题视图"切换器**：
+    - [x] `docs/graph.html` 增加下拉菜单，可选"全量 / 动作重定向 / 抓取 / 触觉与通信"三个子图过滤模式，复用 V21 微地图的同套 `path → type` 元数据。
+      - 实现：`docs/graph.html` 顶部工具栏在搜索框右侧新增 `<label#topic-view-wrap><select#topic-view>`（4 个选项：全量 / 动作重定向 / 抓取 / 触觉与通信），样式上沿用 `chip` 视觉规范并在激活态切换为高亮（深色：`rgba(0,212,255,0.14)` 边框+背景；浅色：`#e6f7ff` + `#1659b4` 描边）。JS 侧定义 `TOPIC_FILTERS`：动作重定向以 `community === 'community-8'` 为主信号叠加 17 个 path 片段（retargeting / gmr / nmr / reactor / sonic / exoactor / spider / wilor / mocap / teleoperation / deepmimic / amp / character / animation / keyframe / pipeline）；抓取以 9 个片段（grasp / graspnet / anygrasp / dexterous / manipulation / pick / place / bimanual / curobo）匹配；触觉与通信以 19 个片段（tactile / haptic / impedance / force / contact / visuo / ethercat / can / uart / dds / foxglove / rs485 / rs232 / serial / communication / protocol / bus / protocols / firmware）匹配并显式排除 `reinforcement` 误命中。新增 `nodeSegments(d)`（按 `/._-` 切分并 memo 化到 `d._segs`）+ `nodeMatchesTopic(d)`，并接入既有 `applyFilters()` 与 `link` 边权重透明度链路（与社区/类型/健康度/搜索筛选叠加，互不冲突），非命中节点保持 opacity 0.08 不丢失上下文。切换专题时调用新增的 `fitToVisibleNodes()` 自动缩放到该专题子图，切回"全量"恢复 `fitToScreen()`。
+      - 数据规模：MR 25 / Grasp 16 / Tactile-Comm 25（总节点 419），覆盖 V22 P1/P2 新增页（gmr-vs-nmr-vs-reactor、character-animation-vs-robotics、motion-retargeting-objective、grasp-pose-estimation、grasp-policy-selection、anygrasp-vs-graspnet、contact-rich-manipulation、visuo-tactile-fusion 等）。
+      - 验证：`npm run lint:js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；`node --check` 对 graph.html 提取的内联脚本通过；本地 `python3 -m http.server 8765` + Puppeteer 在 1440×900 视口对 4 种模式各截图一张，全部正常落稳。新增 `scripts/screenshot_graph_topic.cjs`（puppeteer-core + 本地 d3 注入兜底，便于离线/受限环境复现）。
+      - 截图：`.cursor-artifacts/screenshots/graph-topic-all.png`、`graph-topic-motion-retargeting.png`、`graph-topic-grasp.png`、`graph-topic-tactile-comm.png`。
 
 ---
 
