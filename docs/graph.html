@@ -52,11 +52,11 @@
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
     .topic-view-wrap {
+      position: relative;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
       height: 28px;
-      padding: 0 10px 0 9px;
+      padding: 0 8px;
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
@@ -74,7 +74,12 @@
       border-color: rgba(0,212,255,0.55);
       color: #e6edf3;
     }
-    .topic-view-icon { font-size: .82rem; line-height: 1; }
+    /* 桌面端：overlay emoji 隐藏，select 自身显示完整 "emoji + 文字" */
+    .topic-view-emoji {
+      display: none;
+      pointer-events: none;
+      line-height: 1;
+    }
     #topic-view {
       appearance: none;
       -webkit-appearance: none;
@@ -381,19 +386,23 @@
       #filter-toggle {
         padding: 0 6px;
       }
+      /* 移动端：closed state 仅显示 overlay emoji，select 自身文字隐藏 (text-indent off-screen)；下拉列表仍走原生渲染，显示完整文字 */
       .topic-view-wrap {
         height: 26px;
         padding: 0 6px;
-        font-size: .72rem;
-        max-width: 72px;
-        overflow: hidden;
-        flex-shrink: 1;
+        flex-shrink: 0;
+        gap: 0;
       }
-      .topic-view-icon { display: none; }
+      .topic-view-emoji {
+        display: inline-block;
+        font-size: 14px;
+      }
       #topic-view {
-        padding-right: 10px;
-        background-position: calc(100% - 5px) 50%, calc(100% - 1px) 50%;
-        max-width: 100%;
+        width: 14px;
+        text-indent: -9999px;
+        padding: 0 8px 0 0;
+        background-position: calc(100% - 0px) 50%, calc(100% + 4px) 50%;
+        color: transparent;
       }
       #physics-toggle span:first-child {
         margin-right: 0;
@@ -428,7 +437,7 @@
         width: 120px;
       }
       .topic-view-wrap {
-        max-width: 60px;
+        padding: 0 5px;
       }
     }
 
@@ -980,19 +989,19 @@
     <datalist id="graph-search-list"></datalist>
     <!-- 专题视图切换器 -->
     <label id="topic-view-wrap" class="topic-view-wrap" title="按专题子图过滤显示">
-      <span class="topic-view-icon" aria-hidden="true">📚</span>
+      <span id="topic-view-emoji" class="topic-view-emoji" aria-hidden="true">🌐</span>
       <select id="topic-view" aria-label="专题视图">
-        <option value="all">全量</option>
-        <option value="motion-retargeting">动作重定向</option>
-        <option value="grasp">抓取</option>
-        <option value="tactile">触觉</option>
-        <option value="communication">通信协议</option>
-        <option value="wbc">WBC 全身控制</option>
-        <option value="locomotion">Locomotion 步态</option>
-        <option value="vla">VLA / 基础策略</option>
-        <option value="learning">学习范式 IL/RL</option>
-        <option value="sim2real">Sim2Real</option>
-        <option value="state-estimation">状态估计</option>
+        <option value="all" data-emoji="🌐">🌐 全量</option>
+        <option value="motion-retargeting" data-emoji="🤸">🤸 动作重定向</option>
+        <option value="grasp" data-emoji="🤏">🤏 抓取</option>
+        <option value="tactile" data-emoji="✋">✋ 触觉</option>
+        <option value="communication" data-emoji="🔌">🔌 通信协议</option>
+        <option value="wbc" data-emoji="🦾">🦾 WBC 全身控制</option>
+        <option value="locomotion" data-emoji="🚶">🚶 Locomotion 步态</option>
+        <option value="vla" data-emoji="👀">👀 VLA / 基础策略</option>
+        <option value="learning" data-emoji="🎓">🎓 学习范式 IL/RL</option>
+        <option value="sim2real" data-emoji="🔁">🔁 Sim2Real</option>
+        <option value="state-estimation" data-emoji="📊">📊 状态估计</option>
       </select>
     </label>
     <!-- 筛选按钮 -->
@@ -2042,10 +2051,15 @@
     /* ── 专题视图切换 ── */
     const topicViewSelect = document.getElementById('topic-view');
     const topicViewWrap = document.getElementById('topic-view-wrap');
+    const topicViewEmojiEl = document.getElementById('topic-view-emoji');
     if (topicViewSelect) {
       topicViewSelect.addEventListener('change', ev => {
         currentTopic = ev.target.value || 'all';
         if (topicViewWrap) topicViewWrap.classList.toggle('is-active', currentTopic !== 'all');
+        if (topicViewEmojiEl) {
+          const opt = ev.target.selectedOptions && ev.target.selectedOptions[0];
+          topicViewEmojiEl.textContent = (opt && opt.getAttribute('data-emoji')) || '🌐';
+        }
         applyFilters();
         if (currentTopic !== 'all') fitToVisibleNodes();
         else fitToScreen();
