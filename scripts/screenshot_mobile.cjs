@@ -35,17 +35,17 @@ const fs = require('fs');
       if (ld) ld.style.display = 'none';
     });
 
-    // screenshot with default "全量"
+    // screenshot toolbar in default state (no topic chosen)
     await page.screenshot({ path: path.resolve(outDir, 'mobile-toolbar-all.png'), clip: { x:0, y:0, width:390, height:100 } });
 
-    // switch to a long topic
-    await page.select('#topic-view', 'motion-retargeting');
-    await new Promise(r => setTimeout(r, 600));
+    // activate a topic via filter panel, close, screenshot toolbar to verify badge
+    await page.click('#filter-toggle');
+    await new Promise(r => setTimeout(r, 300));
+    await page.click('.filter-topic-chip[data-topic="motion-retargeting"]');
+    await new Promise(r => setTimeout(r, 800));
+    await page.click('#filter-close');
+    await new Promise(r => setTimeout(r, 200));
     await page.screenshot({ path: path.resolve(outDir, 'mobile-toolbar-mr.png'), clip: { x:0, y:0, width:390, height:100 } });
-
-    await page.select('#topic-view', 'vla');
-    await new Promise(r => setTimeout(r, 600));
-    await page.screenshot({ path: path.resolve(outDir, 'mobile-toolbar-vla.png'), clip: { x:0, y:0, width:390, height:100 } });
 
     console.log('Done');
   } finally {

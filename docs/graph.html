@@ -51,52 +51,45 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
-    .topic-view-wrap {
-      position: relative;
+    /* 专题视图区块（在筛选面板里）*/
+    .filter-topic-section {
+      padding: 10px 14px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .filter-topic-section .filter-section-title {
+      margin-bottom: 8px;
+    }
+    .filter-topic-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .filter-topic-chip {
       display: inline-flex;
       align-items: center;
-      height: 28px;
-      padding: 0 8px;
-      border-radius: 20px;
+      gap: 5px;
+      height: 26px;
+      padding: 0 10px;
+      border-radius: 14px;
       border: 1px solid rgba(255,255,255,0.12);
       background: rgba(255,255,255,0.04);
-      color: rgba(255,255,255,0.55);
-      font-size: .78rem;
+      color: rgba(255,255,255,0.65);
+      font-size: .74rem;
       font-weight: 600;
       cursor: pointer;
       transition: border-color .15s, color .15s, background .15s;
       white-space: nowrap;
-      flex-shrink: 0;
     }
-    .topic-view-wrap:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
-    .topic-view-wrap.is-active {
-      background: rgba(0,212,255,0.14);
+    .filter-topic-chip:hover {
+      border-color: rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.92);
+    }
+    .filter-topic-chip.is-active {
+      background: rgba(0,212,255,0.16);
       border-color: rgba(0,212,255,0.55);
       color: #e6edf3;
     }
-    /* 桌面端：overlay emoji 隐藏，select 自身显示完整 "emoji + 文字" */
-    .topic-view-emoji {
-      display: none;
-      pointer-events: none;
-      line-height: 1;
-    }
-    #topic-view {
-      appearance: none;
-      -webkit-appearance: none;
-      background: transparent;
-      border: none;
-      outline: none;
-      color: inherit;
-      font: inherit;
-      cursor: pointer;
-      padding-right: 14px;
-      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
-                        linear-gradient(135deg, currentColor 50%, transparent 50%);
-      background-position: calc(100% - 7px) 50%, calc(100% - 3px) 50%;
-      background-size: 4px 4px, 4px 4px;
-      background-repeat: no-repeat;
-    }
-    #topic-view option { background: #0d1117; color: #e6edf3; }
+    .filter-topic-chip span:first-child { font-size: .9rem; line-height: 1; }
     .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
     .chip {
       height: 28px;
@@ -386,31 +379,6 @@
       #filter-toggle {
         padding: 0 6px;
       }
-      /* 移动端：将专题切换器做成圆形 emoji 按钮 — overlay span 居中显示，select 覆盖整圆透明接管点击 */
-      .topic-view-wrap {
-        width: 28px;
-        height: 28px;
-        padding: 0;
-        border-radius: 50%;
-        justify-content: center;
-        flex-shrink: 0;
-      }
-      .topic-view-emoji {
-        display: inline-block;
-        font-size: 14px;
-        line-height: 1;
-      }
-      #topic-view {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-        opacity: 0;
-        background-image: none;
-        cursor: pointer;
-      }
       #physics-toggle span:first-child {
         margin-right: 0;
       }
@@ -442,11 +410,6 @@
       }
       #graph-search:focus {
         width: 120px;
-      }
-      .topic-view-wrap {
-        width: 26px;
-        height: 26px;
-        padding: 0;
       }
     }
 
@@ -487,21 +450,23 @@
       border-color: rgba(0,0,0,0.28);
       color: rgba(0,0,0,0.8);
     }
-    [data-theme="light"] .topic-view-wrap {
+    [data-theme="light"] .filter-topic-section {
+      border-bottom-color: rgba(0,0,0,0.07);
+    }
+    [data-theme="light"] .filter-topic-chip {
       border-color: rgba(0,0,0,0.1);
       background: rgba(0,0,0,0.04);
-      color: rgba(0,0,0,0.55);
+      color: rgba(0,0,0,0.62);
     }
-    [data-theme="light"] .topic-view-wrap:hover {
+    [data-theme="light"] .filter-topic-chip:hover {
       border-color: rgba(0,0,0,0.28);
       color: rgba(0,0,0,0.85);
     }
-    [data-theme="light"] .topic-view-wrap.is-active {
+    [data-theme="light"] .filter-topic-chip.is-active {
       background: #e6f7ff;
       border-color: rgba(22,90,180,0.45);
       color: #1659b4;
     }
-    [data-theme="light"] #topic-view option { background: #fafaf6; color: #2f2d29; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -734,7 +699,7 @@
       position: absolute;
       top: 12px; left: 20px;
       z-index: 30;
-      min-width: 220px;
+      width: 260px;
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -996,23 +961,6 @@
   <div id="graph-toolbar">
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" list="graph-search-list" />
     <datalist id="graph-search-list"></datalist>
-    <!-- 专题视图切换器 -->
-    <label id="topic-view-wrap" class="topic-view-wrap" title="按专题子图过滤显示">
-      <span id="topic-view-emoji" class="topic-view-emoji" aria-hidden="true">🌐</span>
-      <select id="topic-view" aria-label="专题视图">
-        <option value="all" data-emoji="🌐">🌐 全量</option>
-        <option value="motion-retargeting" data-emoji="🤸">🤸 动作重定向</option>
-        <option value="grasp" data-emoji="🤏">🤏 抓取</option>
-        <option value="tactile" data-emoji="✋">✋ 触觉</option>
-        <option value="communication" data-emoji="🔌">🔌 通信协议</option>
-        <option value="wbc" data-emoji="🦾">🦾 WBC 全身控制</option>
-        <option value="locomotion" data-emoji="🚶">🚶 Locomotion 步态</option>
-        <option value="vla" data-emoji="👀">👀 VLA / 基础策略</option>
-        <option value="learning" data-emoji="🎓">🎓 学习范式 IL/RL</option>
-        <option value="sim2real" data-emoji="🔁">🔁 Sim2Real</option>
-        <option value="state-estimation" data-emoji="📊">📊 状态估计</option>
-      </select>
-    </label>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按社区筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
@@ -1104,6 +1052,22 @@
       <div class="filter-header">
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
+      </div>
+      <div class="filter-topic-section" aria-label="专题视图">
+        <div class="filter-section-title">专题视图</div>
+        <div class="filter-topic-chips" id="filter-topic-chips">
+          <button class="filter-topic-chip is-active" type="button" data-topic="all" title="全量"><span>🌐</span><span>全量</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="grasp" title="抓取"><span>🤏</span><span>抓取</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="tactile" title="触觉"><span>✋</span><span>触觉</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="communication" title="通信协议"><span>🔌</span><span>通信协议</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="wbc" title="WBC 全身控制"><span>🦾</span><span>WBC</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="locomotion" title="Locomotion 步态"><span>🚶</span><span>Locomotion</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="vla" title="VLA / 基础策略"><span>👀</span><span>VLA</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="learning" title="学习范式 IL/RL"><span>🎓</span><span>IL/RL</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="state-estimation" title="状态估计"><span>📊</span><span>状态估计</span></button>
+        </div>
       </div>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
@@ -2033,14 +1997,13 @@
       topDegreeIds = null;
       initDegreeTopSlider();
       renderFilterPanel();
-      applyFilters();
-      updateFilterCount();
+      setActiveTopic('all');
     });
     renderFilterPanel();
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size + (topDegreeIds ? 1 : 0);
+      const count = activeFilters.size + (topDegreeIds ? 1 : 0) + (currentTopic && currentTopic !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -2057,21 +2020,25 @@
       applyFilters();
     });
 
-    /* ── 专题视图切换 ── */
-    const topicViewSelect = document.getElementById('topic-view');
-    const topicViewWrap = document.getElementById('topic-view-wrap');
-    const topicViewEmojiEl = document.getElementById('topic-view-emoji');
-    if (topicViewSelect) {
-      topicViewSelect.addEventListener('change', ev => {
-        currentTopic = ev.target.value || 'all';
-        if (topicViewWrap) topicViewWrap.classList.toggle('is-active', currentTopic !== 'all');
-        if (topicViewEmojiEl) {
-          const opt = ev.target.selectedOptions && ev.target.selectedOptions[0];
-          topicViewEmojiEl.textContent = (opt && opt.getAttribute('data-emoji')) || '🌐';
-        }
-        applyFilters();
-        if (currentTopic !== 'all') fitToVisibleNodes();
-        else fitToScreen();
+    /* ── 专题视图切换（已合入筛选面板内）── */
+    const topicChipsEl = document.getElementById('filter-topic-chips');
+    function setActiveTopic(topic) {
+      currentTopic = topic || 'all';
+      if (topicChipsEl) {
+        topicChipsEl.querySelectorAll('.filter-topic-chip').forEach(btn => {
+          btn.classList.toggle('is-active', btn.getAttribute('data-topic') === currentTopic);
+        });
+      }
+      applyFilters();
+      updateFilterCount();
+      if (currentTopic !== 'all') fitToVisibleNodes();
+      else fitToScreen();
+    }
+    if (topicChipsEl) {
+      topicChipsEl.addEventListener('click', ev => {
+        const btn = ev.target.closest('.filter-topic-chip');
+        if (!btn) return;
+        setActiveTopic(btn.getAttribute('data-topic'));
       });
     }
 
