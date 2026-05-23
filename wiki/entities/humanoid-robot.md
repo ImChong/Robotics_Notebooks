@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, platform, actuator]
 status: complete
-updated: 2026-05-18
+updated: 2026-05-23
 related:
   - ./motioncode.md
   - ./project-instinct.md
@@ -16,6 +16,7 @@ related:
   - ./anymal.md
   - ./boston-dynamics.md
   - ./asimov-v1.md
+  - ./openloong.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../concepts/planetary-roller-screw-humanoid-leg-actuation.md
   - ./figure-ai.md
@@ -83,6 +84,7 @@ flowchart TD
 | **Fourier GR-1** | Fourier Intelligence | 44 | 力控电机 | 商业化 | 全身力控能力较强，自由度极高 |
 | **Figure 02** | Figure AI | ~50（量级） | 电力驱动 | 商业试点 | 全栈人形 + 自研 Helix VLA，见 [Figure AI](./figure-ai.md) |
 | **NEO / EVE** | 1X Technologies | 依型号 | 双足 / 轮式人形 | 产品迭代中 | 家庭与工业场景分叉布局，见 [1X](./1x-technologies.md) |
+| **OpenLoong 青龙** | 人形机器人（上海）/ 开放原子 | **43** | EtherCAT 全尺寸公版 | 全栈开源 | MPC/WBC + ROS-free Framework；见 [OpenLoong](./openloong.md) |
 
 详细对比见：[主流人形机器人硬件对比](../queries/hardware-comparison.md)
 

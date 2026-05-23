@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research]
 status: complete
-updated: 2026-05-18
+updated: 2026-05-23
 related:
   - ./humanoid-robot.md
   - ./roboto-origin.md
@@ -14,6 +14,7 @@ related:
   - ./fourier-grx-n1.md
   - ./tienkung-humanoid-open-source.md
   - ./agibot-lingxi-x1.md
+  - ./openloong.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
@@ -22,6 +23,7 @@ sources:
   - ../../sources/repos/asimov-v1.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
+  - ../../sources/repos/openloong.md
 summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humanoid、Roboto Origin、Asimov v1、ODRI 与商业平台的机械结构、执行器选型及开源生态，为研究者提供低成本入门指南。"
 ---
 
@@ -44,6 +46,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 | **ODRI (Bolt/Solo)** | Max Planck | 6-12 (双腿/四足) | 基于 T-Motor 改造 | 中等 | OCS2 / Pinocchio 深度支持 |
 | **Unitree H1 (SDK版)** | Unitree | 19 | 商业级 QDD | > 50,000 USD | Isaac Gym (legged_gym) 生态极强 |
 | **Asimov v1** | Asimov Inc. | 25 主动 + 2 被动（公开 README） | 铝结构 + MJF 尼龙；关节驱动以官方设计为准 | DIY Kit 目标价量级约 **1.5 万 USD**（以官网为准） | 单仓含 CAD/电气/**MuJoCo**；运控 API/策略仍在路线图 |
+| **OpenLoong 青龙** | 人形机器人（上海）/ 开放原子 | **43**（公开硬件 README） | 全尺寸公版；**EtherCAT** 关节总线；五指灵巧手 | 全栈开源图纸（制造门槛高，非 DIY 低价档） | **Framework**（ROS-free C++）+ **Dyn-Control**（MPC/WBC+MuJoCo）+ Isaac Gym/ROS 并行栈；详见 [OpenLoong](./openloong.md) |
 
 ## 1. Berkeley Humanoid (准直接驱动派)
 - **特点**：极其强调低成本和维修便捷性。它证明了使用廉价的无刷电机和 3D 打印结构，也能完成稳定的动态行走。
@@ -60,6 +63,13 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - **局限**：全身 **locomotion 策略**、统一 **API** 等在官方路线图中仍属推进项，算法侧需自建或与社区贡献结合。
 - **详情**：[Asimov v1](./asimov-v1.md)
 
+## 2c. OpenLoong 青龙（全尺寸公版 + 国家级全栈开源）
+
+- **特点**：业内首个强调 **全尺寸公版机** 开源叙事之一；硬件 PDF 分模块（腰/胸/头/腿足），软件 **ROS-free C++ Framework** 与 **MPC+WBC MuJoCo 栈** 并行；开放原子基金会项目。
+- **优点**：EtherCAT 工业总线、43 DOF、训推/白虎数据集与 [OpenLoong-Brain](./openloong.md) 大模型技能线，适合整机系统工程与 WBC/MPC 研究。
+- **局限**：制造与 EtherCAT 集成门槛高；多软件栈（Framework / Dyn-Control / ROS / Isaac Gym）环境版本需自行对齐。
+- **详情**：[OpenLoong（青龙·公版机）](./openloong.md)
+
 ## 3. ODRI 架构 (学术严谨派)
 - **特点**：Open Dynamic Robot Initiative。虽然其人形版本较少，但其开源的执行器模块（Actuator Modules）被广泛借鉴。
 - **优点**：力控精度极高，代码质量达工业级。
@@ -73,6 +83,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Asimov v1](./asimov-v1.md)
+- [OpenLoong（青龙·公版机）](./openloong.md)
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
@@ -82,6 +93,7 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [roboto_origin.md](../../sources/repos/roboto_origin.md)
 - [asimov-v1.md](../../sources/repos/asimov-v1.md)
+- [openloong.md](../../sources/repos/openloong.md)
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)
 - 各开源项目 GitHub Readme 与 Wiki。

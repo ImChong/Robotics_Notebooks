@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-23] ingest | sources/repos/openloong.md — 接入 OpenLoong 青龙全栈开源（硬件 AtomGit、Framework、Dyn-Control、社区门户）并沉淀 wiki/entities/openloong.md
+
+- 原始资料：`sources/repos/openloong.md`、`sources/repos/openloong_hardware.md`（<https://atomgit.com/openloong/OpenLoongHardware/tree/main>）、`sources/sites/openloong_community.md`（<https://www.openloong.org.cn/cn/projects/openloong>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/openloong.md`（四层架构、硬件 TA 子系统、Framework 子仓矩阵、MPC+WBC 与并行栈链接）
+- 交叉更新：`wiki/entities/open-source-humanoid-hardware.md`、`wiki/entities/humanoid-robot.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-22] ingest | sources/papers/esi_bench_arxiv_2605_18746.md — 接入 ESI-Bench 具身空间智能基准并沉淀 wiki/entities/esi-bench.md
 
 - 原始资料：`sources/papers/esi_bench_arxiv_2605_18746.md`（<https://arxiv.org/abs/2605.18746>）、`sources/sites/esi-bench-project.md`（<https://esi-bench.github.io/>）、`sources/repos/esi_bench.md`（<https://github.com/ESI-Bench/ESI-Bench>）；索引 `sources/README.md`
