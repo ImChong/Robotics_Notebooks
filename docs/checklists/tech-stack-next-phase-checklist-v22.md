@@ -81,10 +81,22 @@
       - 截图：`.cursor-artifacts/screenshots/detail-related-community-dist-wbc.png`、`detail-related-community-dist-wbc-mobile.png`、`detail-related-community-dist.png`。
 - [x] **图谱页"专题视图"切换器**：
     - [x] `docs/graph.html` 增加下拉菜单，可选"全量 / 动作重定向 / 抓取 / 触觉与通信"三个子图过滤模式，复用 V21 微地图的同套 `path → type` 元数据。
-      - 实现：`docs/graph.html` 顶部工具栏在搜索框右侧新增 `<label#topic-view-wrap><select#topic-view>`（4 个选项：全量 / 动作重定向 / 抓取 / 触觉与通信），样式上沿用 `chip` 视觉规范并在激活态切换为高亮（深色：`rgba(0,212,255,0.14)` 边框+背景；浅色：`#e6f7ff` + `#1659b4` 描边）。JS 侧定义 `TOPIC_FILTERS`：动作重定向以 `community === 'community-8'` 为主信号叠加 17 个 path 片段（retargeting / gmr / nmr / reactor / sonic / exoactor / spider / wilor / mocap / teleoperation / deepmimic / amp / character / animation / keyframe / pipeline）；抓取以 9 个片段（grasp / graspnet / anygrasp / dexterous / manipulation / pick / place / bimanual / curobo）匹配；触觉与通信以 19 个片段（tactile / haptic / impedance / force / contact / visuo / ethercat / can / uart / dds / foxglove / rs485 / rs232 / serial / communication / protocol / bus / protocols / firmware）匹配并显式排除 `reinforcement` 误命中。新增 `nodeSegments(d)`（按 `/._-` 切分并 memo 化到 `d._segs`）+ `nodeMatchesTopic(d)`，并接入既有 `applyFilters()` 与 `link` 边权重透明度链路（与社区/类型/健康度/搜索筛选叠加，互不冲突），非命中节点保持 opacity 0.08 不丢失上下文。切换专题时调用新增的 `fitToVisibleNodes()` 自动缩放到该专题子图，切回"全量"恢复 `fitToScreen()`。
-      - 数据规模：MR 25 / Grasp 16 / Tactile-Comm 25（总节点 419），覆盖 V22 P1/P2 新增页（gmr-vs-nmr-vs-reactor、character-animation-vs-robotics、motion-retargeting-objective、grasp-pose-estimation、grasp-policy-selection、anygrasp-vs-graspnet、contact-rich-manipulation、visuo-tactile-fusion 等）。
-      - 验证：`npm run lint:js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；`node --check` 对 graph.html 提取的内联脚本通过；本地 `python3 -m http.server 8765` + Puppeteer 在 1440×900 视口对 4 种模式各截图一张，全部正常落稳。新增 `scripts/screenshot_graph_topic.cjs`（puppeteer-core + 本地 d3 注入兜底，便于离线/受限环境复现）。
-      - 截图：`.cursor-artifacts/screenshots/graph-topic-all.png`、`graph-topic-motion-retargeting.png`、`graph-topic-grasp.png`、`graph-topic-tactile-comm.png`。
+      - 实现：`docs/graph.html` 顶部工具栏在搜索框右侧新增 `<label#topic-view-wrap><select#topic-view>`，样式沿用 `chip` 视觉规范并在激活态切换高亮（深色 `rgba(0,212,255,0.14)` / 浅色 `#e6f7ff` + `#1659b4` 描边）。JS 侧 `TOPIC_FILTERS` 字面量声明每个专题的命中规则，按 community id 集合 + path 片段集合双路并集判定（任一命中即可），可选 `excludeSegments` 抑制误命中。新增 `nodeSegments(d)`（按 `/._-` 切分并 memo 化到 `d._segs`）+ `nodeMatchesTopic(d)`，接入既有 `applyFilters()` 与 `link` 边权重透明度链路（与社区/类型/健康度/搜索筛选叠加，互不冲突），非命中节点保持 opacity 0.08 不丢失上下文。切换专题时调用新增的 `fitToVisibleNodes()` 自动缩放到该子图，切回"全量"恢复 `fitToScreen()`。
+      - 专题（共 10 项，按用户反馈在初版"触觉与通信"基础上拆分并扩充）：
+        | 专题 | 命中规则 | 节点数 |
+        |------|----------|--------|
+        | 动作重定向 | community-8 + retargeting/gmr/nmr/reactor/sonic/exoactor/spider/wilor/mocap/teleoperation/deepmimic/amp/character/animation/keyframe/pipeline | 25 |
+        | 抓取 | grasp/graspnet/anygrasp/dexterous/manipulation/pick/place/bimanual/curobo | 16 |
+        | 触觉 | tactile/haptic/impedance/force/contact/visuo（exclude reinforcement） | 16 |
+        | 通信协议 | ethercat/can/uart/dds/foxglove/rs485/rs232/serial/communication/protocol/bus/protocols/firmware | 9 |
+        | WBC 全身控制 | community-2 + community-15 + wbc/tsid/hqp/cbf/clf/whole/body/balance/hierarchical | ≈32 |
+        | Locomotion 步态 | community-14 + locomotion/gait/mpc/zmp/lip/walking/swing/stance/capture | ≈25 |
+        | VLA / 基础策略 | community-0 + community-5 + vla/foundation/octo/openvla/rt/pi0/gr00t | ≈111 |
+        | 学习范式 IL/RL | community-3 + community-4 + imitation/reinforcement/ppo/sac/behavior/cloning/dreamer | ≈40 |
+        | Sim2Real | community-11 + sim2real/randomization | ≈25 |
+        | 状态估计 | community-10 + estimation/ekf/ukf/slam/vio/odometry | ≈15 |
+      - 验证：`npm run lint:js` 通过（仅一条 pre-existing 的 `resetMermaidLightboxView` 未使用警告，与本次改动无关）；`node --check` 对 graph.html 提取的内联脚本通过；本地 `python3 -m http.server 8765` + Puppeteer 在 1440×900 视口对全部 11 种模式各截图一张，全部正常落稳。新增 `scripts/screenshot_graph_topic.cjs`（puppeteer-core + 本地 d3 注入兜底，便于离线/受限环境复现）。
+      - 截图：`.cursor-artifacts/screenshots/graph-topic-{all,motion-retargeting,grasp,tactile,communication,wbc,locomotion,vla,learning,sim2real,state-estimation}.png`。
 
 ---
 
