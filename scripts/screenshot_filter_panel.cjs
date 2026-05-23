@@ -35,6 +35,12 @@ const fs = require('fs');
     // open filter panel
     await page.click('#filter-toggle');
     await new Promise(r => setTimeout(r, 400));
+    // open the collapsed topic <details> so chips are visible / clickable
+    await page.evaluate(() => {
+      const det = document.getElementById('filter-topic-section');
+      if (det && !det.open) det.open = true;
+    });
+    await new Promise(r => setTimeout(r, 300));
     // optionally select a topic chip
     if (topic && topic !== 'all') {
       await page.click(`.filter-topic-chip[data-topic="${topic}"]`);

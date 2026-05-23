@@ -41,6 +41,11 @@ const fs = require('fs');
     // activate a topic via filter panel, close, screenshot toolbar to verify badge
     await page.click('#filter-toggle');
     await new Promise(r => setTimeout(r, 300));
+    await page.evaluate(() => {
+      const det = document.getElementById('filter-topic-section');
+      if (det && !det.open) det.open = true;
+    });
+    await new Promise(r => setTimeout(r, 200));
     await page.click('.filter-topic-chip[data-topic="motion-retargeting"]');
     await new Promise(r => setTimeout(r, 800));
     await page.click('#filter-close');
