@@ -51,6 +51,47 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
+    .topic-view-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      height: 28px;
+      padding: 0 10px 0 9px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.55);
+      font-size: .78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color .15s, color .15s, background .15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .topic-view-wrap:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.85); }
+    .topic-view-wrap.is-active {
+      background: rgba(0,212,255,0.14);
+      border-color: rgba(0,212,255,0.55);
+      color: #e6edf3;
+    }
+    .topic-view-icon { font-size: .82rem; line-height: 1; }
+    #topic-view {
+      appearance: none;
+      -webkit-appearance: none;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      padding-right: 14px;
+      background-image: linear-gradient(45deg, transparent 50%, currentColor 50%),
+                        linear-gradient(135deg, currentColor 50%, transparent 50%);
+      background-position: calc(100% - 7px) 50%, calc(100% - 3px) 50%;
+      background-size: 4px 4px, 4px 4px;
+      background-repeat: no-repeat;
+    }
+    #topic-view option { background: #0d1117; color: #e6edf3; }
     .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
     .chip {
       height: 28px;
@@ -340,6 +381,15 @@
       #filter-toggle {
         padding: 0 6px;
       }
+      .topic-view-wrap {
+        height: 26px;
+        padding: 0 8px 0 7px;
+        font-size: .72rem;
+      }
+      #topic-view {
+        padding-right: 12px;
+        background-position: calc(100% - 6px) 50%, calc(100% - 2px) 50%;
+      }
       #physics-toggle span:first-child {
         margin-right: 0;
       }
@@ -411,6 +461,21 @@
       border-color: rgba(0,0,0,0.28);
       color: rgba(0,0,0,0.8);
     }
+    [data-theme="light"] .topic-view-wrap {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.55);
+    }
+    [data-theme="light"] .topic-view-wrap:hover {
+      border-color: rgba(0,0,0,0.28);
+      color: rgba(0,0,0,0.85);
+    }
+    [data-theme="light"] .topic-view-wrap.is-active {
+      background: #e6f7ff;
+      border-color: rgba(22,90,180,0.45);
+      color: #1659b4;
+    }
+    [data-theme="light"] #topic-view option { background: #fafaf6; color: #2f2d29; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -905,6 +970,16 @@
   <div id="graph-toolbar">
     <input id="graph-search" type="search" placeholder="搜索节点…" autocomplete="off" aria-label="搜索节点" list="graph-search-list" />
     <datalist id="graph-search-list"></datalist>
+    <!-- 专题视图切换器 -->
+    <label id="topic-view-wrap" class="topic-view-wrap" title="按专题子图过滤显示">
+      <span class="topic-view-icon" aria-hidden="true">📚</span>
+      <select id="topic-view" aria-label="专题视图">
+        <option value="all">全量</option>
+        <option value="motion-retargeting">动作重定向</option>
+        <option value="grasp">抓取</option>
+        <option value="tactile-comm">触觉与通信</option>
+      </select>
+    </label>
     <!-- 筛选按钮 -->
     <button id="filter-toggle" class="chip" title="按社区筛选">
       <span>🔍</span>&nbsp;<span id="filter-label">筛选</span>
@@ -1158,6 +1233,54 @@
     let focusedCommunityId = null;
     let focusedType = null;
     let focusedHealth = null;
+
+    /* ── 专题视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
+    // 每个专题给一组路径片段，命中即视为属于该专题；MR 同时叠加 community-8。
+    const TOPIC_FILTERS = {
+      'motion-retargeting': {
+        community: 'community-8',
+        segments: new Set([
+          'retargeting','retarget','gmr','nmr','reactor','sonic','exoactor',
+          'spider','wilor','mocap','teleoperation','deepmimic','amp',
+          'character','animation','keyframe','pipeline'
+        ])
+      },
+      'grasp': {
+        segments: new Set([
+          'grasp','graspnet','anygrasp','dexterous','manipulation',
+          'pick','place','bimanual','curobo'
+        ])
+      },
+      'tactile-comm': {
+        segments: new Set([
+          'tactile','haptic','impedance','force','contact','visuo',
+          'ethercat','can','uart','dds','foxglove','rs485','rs232',
+          'serial','communication','protocol','bus','protocols','firmware'
+        ]),
+        excludeSegments: new Set(['reinforcement'])
+      }
+    };
+    let currentTopic = 'all';
+
+    function nodeSegments(d) {
+      if (d._segs) return d._segs;
+      const base = (d.id || '').toLowerCase().replace(/\.md$/, '');
+      d._segs = new Set(base.split(/[/._-]/).filter(Boolean));
+      return d._segs;
+    }
+
+    function nodeMatchesTopic(d) {
+      if (currentTopic === 'all') return true;
+      const cfg = TOPIC_FILTERS[currentTopic];
+      if (!cfg) return true;
+      if (cfg.community && d.community === cfg.community) return true;
+      const segs = nodeSegments(d);
+      if (cfg.excludeSegments) {
+        for (const ex of cfg.excludeSegments) if (segs.has(ex)) return false;
+      }
+      for (const seg of cfg.segments) if (segs.has(seg)) return true;
+      return false;
+    }
 
     /* ── 可变物理参数（由滑动块控制）── */
     let chargeStrength = -800;   // 排斥力（负值）
@@ -1859,6 +1982,19 @@
       applyFilters();
     });
 
+    /* ── 专题视图切换 ── */
+    const topicViewSelect = document.getElementById('topic-view');
+    const topicViewWrap = document.getElementById('topic-view-wrap');
+    if (topicViewSelect) {
+      topicViewSelect.addEventListener('change', ev => {
+        currentTopic = ev.target.value || 'all';
+        if (topicViewWrap) topicViewWrap.classList.toggle('is-active', currentTopic !== 'all');
+        applyFilters();
+        if (currentTopic !== 'all') fitToVisibleNodes();
+        else fitToScreen();
+      });
+    }
+
     /* 当前可见节点 ID 集合（供 hover 检查筛选状态用） */
     const visibleNodeIds = new Set();
 
@@ -1898,14 +2034,16 @@
 
     function applyFilters() {
       const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
-        || focusedCommunityId || focusedType || focusedHealth !== null;
+        || focusedCommunityId || focusedType || focusedHealth !== null
+        || currentTopic !== 'all';
       visibleNodeIds.clear();
       let visible = 0;
-      
+
       node.each(function(d) {
-        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d) && nodeMatchesSearch(d);
+        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+          && nodeMatchesSearch(d) && nodeMatchesTopic(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
-        
+
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
         d3.select(this).style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
 
@@ -1923,8 +2061,8 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
           return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
-                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t)) ? 1 : 0.2;
+                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s)
+                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
@@ -1932,12 +2070,28 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
           const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s)
-            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t);
+            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s)
+            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t);
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
       if (searchQuery) flyToVisible();
+    }
+
+    function fitToVisibleNodes() {
+      const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
+      if (visNodes.length === 0) return;
+      const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
+      const x0 = Math.min(...xs), x1 = Math.max(...xs);
+      const y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+      const pad = 140;
+      const scale = Math.min(5, Math.max(0.4,
+        Math.min(W / Math.max(x1 - x0 + pad, 200), H / Math.max(y1 - y0 + pad, 200))));
+      svg.transition().duration(650).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
+      );
     }
 
     /* ── 适配屏幕到所有节点 ── */
