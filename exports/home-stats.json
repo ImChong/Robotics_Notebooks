@@ -1,132 +1,44 @@
 {
   "generated_at": "2026-05-23",
-  "node_count": 419,
-  "edge_count": 3092,
+  "node_count": 420,
+  "edge_count": 3106,
   "coverage": {
-    "covered": 417,
-    "total": 417,
+    "covered": 418,
+    "total": 418,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/esi-bench.md",
-      "detail_id": "entity-esi-bench",
-      "label": "ESI-Bench（具身空间智能基准）",
+      "path": "wiki/entities/openloong.md",
+      "detail_id": "entity-openloong",
+      "label": "OpenLoong（青龙·公版机）",
       "type": "entity",
-      "recency": "2026-05-22",
+      "recency": "2026-05-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/3d-spatial-vqa.md",
-      "detail_id": "wiki-concepts-3d-spatial-vqa",
-      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-      "type": "concept",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-wem-world-ego-modeling.md",
-      "detail_id": "entity-paper-wem-world-ego-modeling",
-      "label": "WEM（World-Ego Modeling / World-Ego Model）",
+      "path": "wiki/entities/open-source-humanoid-hardware.md",
+      "detail_id": "entity-open-source-humanoid-hardware",
+      "label": "开源人形机器人硬件方案对比",
       "type": "entity",
-      "recency": "2026-05-22",
+      "recency": "2026-05-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
-      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
-      "label": "VLN 开源复现：四范式学习路径",
-      "type": "overview",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/star-vla.md",
-      "detail_id": "wiki-methods-star-vla",
-      "label": "StarVLA",
-      "type": "method",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/manipulation-vla-architecture-selection.md",
-      "detail_id": "wiki-queries-manipulation-vla-architecture-selection",
-      "label": "操作 VLA 与视频-动作架构选型指南",
-      "type": "query",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
-      "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
-      "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
-      "type": "formalization",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/se3-representation.md",
-      "detail_id": "wiki-formalizations-se3-representation",
-      "label": "SE(3) Representation (位姿表示形式化)",
-      "type": "formalization",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
       "type": "entity",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/robotics-research-venues.md",
-      "detail_id": "wiki-comparisons-robotics-research-venues",
-      "label": "机器人顶会顶刊发表渠道对比",
-      "type": "comparison",
-      "recency": "2026-05-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-learning-overview.md",
-      "detail_id": "wiki-overview-robot-learning-overview",
-      "label": "Robot Learning Overview",
-      "type": "overview",
-      "recency": "2026-05-22",
+      "recency": "2026-05-23",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/esi-bench.md",
-    "detail_id": "entity-esi-bench",
-    "label": "ESI-Bench（具身空间智能基准）",
+    "path": "wiki/entities/openloong.md",
+    "detail_id": "entity-openloong",
+    "label": "OpenLoong（青龙·公版机）",
     "type": "entity",
-    "recency": "2026-05-22",
+    "recency": "2026-05-23",
     "source": "log.md"
   }
 }
