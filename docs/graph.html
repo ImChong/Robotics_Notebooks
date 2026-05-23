@@ -51,18 +51,53 @@
     }
     #graph-search::placeholder { color: rgba(255,255,255,0.3); }
     #graph-search:focus { border-color: rgba(0,212,255,0.5); width: 240px; }
-    /* 专题视图区块（在筛选面板里）*/
+    /* 专题视图区块（在筛选面板里，可折叠 <details>）*/
     .filter-topic-section {
-      padding: 10px 14px 12px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .filter-topic-section .filter-section-title {
-      margin-bottom: 8px;
+    .filter-topic-summary {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+      transition: background .12s;
     }
+    .filter-topic-summary:hover { background: rgba(255,255,255,0.03); }
+    .filter-topic-summary::-webkit-details-marker { display: none; }
+    .filter-topic-summary::after {
+      content: '▾';
+      margin-left: auto;
+      font-size: 10px;
+      color: rgba(255,255,255,0.45);
+      transition: transform .18s;
+    }
+    .filter-topic-section[open] .filter-topic-summary::after {
+      transform: rotate(180deg);
+    }
+    .filter-topic-summary-label {
+      font-size: .68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.34);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .filter-topic-summary-current {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.78);
+    }
+    .filter-topic-summary-current span:first-child { font-size: .92rem; line-height: 1; }
     .filter-topic-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
+      padding: 2px 14px 12px;
     }
     .filter-topic-chip {
       display: inline-flex;
@@ -453,6 +488,10 @@
     [data-theme="light"] .filter-topic-section {
       border-bottom-color: rgba(0,0,0,0.07);
     }
+    [data-theme="light"] .filter-topic-summary:hover { background: rgba(0,0,0,0.03); }
+    [data-theme="light"] .filter-topic-summary::after { color: rgba(0,0,0,0.45); }
+    [data-theme="light"] .filter-topic-summary-label { color: rgba(0,0,0,0.4); }
+    [data-theme="light"] .filter-topic-summary-current { color: rgba(0,0,0,0.7); }
     [data-theme="light"] .filter-topic-chip {
       border-color: rgba(0,0,0,0.1);
       background: rgba(0,0,0,0.04);
@@ -1053,8 +1092,11 @@
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
-      <div class="filter-topic-section" aria-label="专题视图">
-        <div class="filter-section-title">专题视图</div>
+      <details class="filter-topic-section" id="filter-topic-section">
+        <summary class="filter-topic-summary">
+          <span class="filter-topic-summary-label">专题视图</span>
+          <span class="filter-topic-summary-current" id="filter-topic-current"><span>🌐</span><span>全量</span></span>
+        </summary>
         <div class="filter-topic-chips" id="filter-topic-chips">
           <button class="filter-topic-chip is-active" type="button" data-topic="all" title="全量"><span>🌐</span><span>全量</span></button>
           <button class="filter-topic-chip" type="button" data-topic="motion-retargeting" title="动作重定向"><span>🤸</span><span>动作重定向</span></button>
@@ -1068,7 +1110,7 @@
           <button class="filter-topic-chip" type="button" data-topic="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
           <button class="filter-topic-chip" type="button" data-topic="state-estimation" title="状态估计"><span>📊</span><span>状态估计</span></button>
         </div>
-      </div>
+      </details>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
@@ -2020,15 +2062,20 @@
       applyFilters();
     });
 
-    /* ── 专题视图切换（已合入筛选面板内）── */
+    /* ── 专题视图切换（已合入筛选面板内 <details> 区块）── */
     const topicChipsEl = document.getElementById('filter-topic-chips');
+    const topicCurrentEl = document.getElementById('filter-topic-current');
     function setActiveTopic(topic) {
       currentTopic = topic || 'all';
+      let activeBtn = null;
       if (topicChipsEl) {
         topicChipsEl.querySelectorAll('.filter-topic-chip').forEach(btn => {
-          btn.classList.toggle('is-active', btn.getAttribute('data-topic') === currentTopic);
+          const on = btn.getAttribute('data-topic') === currentTopic;
+          btn.classList.toggle('is-active', on);
+          if (on) activeBtn = btn;
         });
       }
+      if (topicCurrentEl && activeBtn) topicCurrentEl.innerHTML = activeBtn.innerHTML;
       applyFilters();
       updateFilterCount();
       if (currentTopic !== 'all') fitToVisibleNodes();
