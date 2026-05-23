@@ -113,6 +113,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Diffusion Policy 项目主页](https://diffusion-policy.cs.columbia.edu/)
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — Chi 2023 / π₀ / BESO / ACT / Consistency Policy
 - **ingest 档案：** [sources/papers/defi_arxiv_2604_16391.md](../../sources/papers/defi_arxiv_2604_16391.md) — DeFI：GFDM 前向 + GIDM 逆动力学解耦预训练后再用扩散适配器端到端耦合微调
+- **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：全身 47-D 稀疏关键点 + DINOv2 条件的扩散高层（arXiv:2605.03452）
 
 ## 关联页面
 
@@ -122,6 +123,7 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 - [Policy Optimization](./policy-optimization.md)
 - [Manipulation](../tasks/manipulation.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 人形全身 visuomotor 的扩散高层实例
 
 ## 推荐继续阅读
 
