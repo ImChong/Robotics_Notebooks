@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-23] structural | schema/canonical-facts.json — V22 DoD 事实库扩展：140 → 156 条，补全动作重定向 / 抓取 / 近期 ingest 矛盾检测规则
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD「事实库扩展至 155 条以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）」尚未打勾；P1 / P2 主线已沉淀大量新页（motion-retargeting-pipeline / motion-retargeting-objective / gmr-vs-nmr-vs-reactor / character-animation-vs-robotics / grasp-pose-estimation / grasp-policy-selection / anygrasp-vs-graspnet）以及 OpenLoong / BifrostUMI 实体页，需要让 `lint_wiki._check_contradictions` 覆盖到位
+- 新增条目（17 条 → 总计 156 条）：
+    - **动作重定向 5 条**：`GMR 运动学优化定位`（IK/QP/运动学层 vs 强化学习/仿真闭环）、`ReActor 双层联合优化`（参数化参考 + 单一策略联合更新 vs 纯运动学/离线/开环）、`Motion Retargeting Pipeline 端到端阶段`（8 阶段流水线 vs 单次映射/单阶段）、`Motion Retargeting 目标函数加权组合`（姿态 + 接触 + 平衡 + 限位 + 平滑 vs 单一姿态项）、`Character Humanoid 目标双重性`（表演可信度 × 物理可控性的三方博弈 vs 与工业人形等价）
+    - **抓取与感知 10 条**：`6-DoF vs 7-DoF 抓取`（7-DoF = 6-DoF + 夹爪开度）、`GraspNet 三代谱系演进`（采样评估 → 稠密回归 → 时序关联）、`Contact-GraspNet 接触点参数化`（每点回归基线方向 + 接近向量 + 抓取宽度）、`AnyGrasp 跨帧时序关联`（many-to-many + COG 稳定度 + bin clearing vs 单帧独立）、`AnyGrasp SDK License 分发`（二进制 + License vs 完全开源）、`MPPH 抓取吞吐指标`（Mean Picks Per Hour，吞吐口径 vs 精度/AP 等价）、`抓取候选需显式碰撞检查`（网络分数 ≠ 物理可执行）、`抓取选型 检测式优先`（先检测式 grasp pose 起步，再 IL/VLA 替换可学环节）、`GraspNet-1Billion 评测基准`（百万级真实标注、公开 benchmark）
+    - **近期 ingest 2 条**：`BifrostUMI 无机器人示范`（robot-free 全身示范 + 扩散 47-D 高层 + SKR vs 依赖真机遥操作/无扩散）、`OpenLoong 全栈开源`（青龙公版机硬件 + 软件 + 社区门户 vs 闭源/仅软件）
+- 验证：`python3 scripts/lint_wiki.py` 退出码 0、0 contradictions、0 ⚠️ / 0 💡，"✅ 所有检查通过！"；419/419 wiki/entity 页 ingest 来源覆盖率 100%。`exports/graph-stats.json` 维持 421 nodes / 3122 edges / `community_quality_warning: false`，本次仅触动 schema，未派生重排
+- 状态联动：V22 checklist DoD「事实库 155 条」由 `[ ]` 变 `[x]`；P1「动作重定向知识链 (+3)」父项由 `[~]` 变 `[x]`（3/3 子项已早期落地，仅此次回填父项状态）
+- 后续：DoD 余 4 项（`make lint` 0 errors / 图谱节点 ≥ 312 边 ≥ 2050 / `community_quality_warning: false` / log.md 记录 V22 关键改动）均已在历史记录中达成或自然满足，下日按"每日推进一项"继续顺次打勾或在 V22 完全收尾时新建 V23
+
 ## [2026-05-23] ingest | sources/papers/bifrost_umi_arxiv_2605_03452.md — 接入 BifrostUMI 无机器人人形全身示范与 SKR 管线并沉淀 wiki/entities/paper-bifrost-umi.md
 
 - 原始资料：`sources/papers/bifrost_umi_arxiv_2605_03452.md`（<https://arxiv.org/abs/2605.03452>）、`sources/sites/bifrost-umi-project.md`（<https://baai-aether.github.io/BifrostUMI/>）；索引 `sources/README.md`
