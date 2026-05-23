@@ -977,7 +977,14 @@
         <option value="all">全量</option>
         <option value="motion-retargeting">动作重定向</option>
         <option value="grasp">抓取</option>
-        <option value="tactile-comm">触觉与通信</option>
+        <option value="tactile">触觉</option>
+        <option value="communication">通信协议</option>
+        <option value="wbc">WBC 全身控制</option>
+        <option value="locomotion">Locomotion 步态</option>
+        <option value="vla">VLA / 基础策略</option>
+        <option value="learning">学习范式 IL/RL</option>
+        <option value="sim2real">Sim2Real</option>
+        <option value="state-estimation">状态估计</option>
       </select>
     </label>
     <!-- 筛选按钮 -->
@@ -1235,10 +1242,10 @@
     let focusedHealth = null;
 
     /* ── 专题视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
-    // 每个专题给一组路径片段，命中即视为属于该专题；MR 同时叠加 community-8。
+    // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
     const TOPIC_FILTERS = {
       'motion-retargeting': {
-        community: 'community-8',
+        communities: new Set(['community-8']),
         segments: new Set([
           'retargeting','retarget','gmr','nmr','reactor','sonic','exoactor',
           'spider','wilor','mocap','teleoperation','deepmimic','amp',
@@ -1251,13 +1258,53 @@
           'pick','place','bimanual','curobo'
         ])
       },
-      'tactile-comm': {
+      'tactile': {
         segments: new Set([
-          'tactile','haptic','impedance','force','contact','visuo',
-          'ethercat','can','uart','dds','foxglove','rs485','rs232',
-          'serial','communication','protocol','bus','protocols','firmware'
+          'tactile','haptic','impedance','force','contact','visuo'
         ]),
         excludeSegments: new Set(['reinforcement'])
+      },
+      'communication': {
+        segments: new Set([
+          'ethercat','can','uart','dds','foxglove','rs485','rs232',
+          'serial','communication','protocol','bus','protocols','firmware'
+        ])
+      },
+      'wbc': {
+        communities: new Set(['community-2','community-15']),
+        segments: new Set([
+          'wbc','tsid','hqp','cbf','clf','whole','body','balance','hierarchical'
+        ])
+      },
+      'locomotion': {
+        communities: new Set(['community-14']),
+        segments: new Set([
+          'locomotion','gait','mpc','zmp','lip','walking','swing','stance','capture'
+        ])
+      },
+      'vla': {
+        communities: new Set(['community-0','community-5']),
+        segments: new Set([
+          'vla','foundation','octo','openvla','rt','pi0','gr00t'
+        ])
+      },
+      'learning': {
+        communities: new Set(['community-3','community-4']),
+        segments: new Set([
+          'imitation','reinforcement','ppo','sac','behavior','cloning','dreamer'
+        ])
+      },
+      'sim2real': {
+        communities: new Set(['community-11']),
+        segments: new Set([
+          'sim2real','randomization'
+        ])
+      },
+      'state-estimation': {
+        communities: new Set(['community-10']),
+        segments: new Set([
+          'estimation','ekf','ukf','slam','vio','odometry'
+        ])
       }
     };
     let currentTopic = 'all';
@@ -1273,12 +1320,14 @@
       if (currentTopic === 'all') return true;
       const cfg = TOPIC_FILTERS[currentTopic];
       if (!cfg) return true;
-      if (cfg.community && d.community === cfg.community) return true;
       const segs = nodeSegments(d);
       if (cfg.excludeSegments) {
         for (const ex of cfg.excludeSegments) if (segs.has(ex)) return false;
       }
-      for (const seg of cfg.segments) if (segs.has(seg)) return true;
+      if (cfg.communities && cfg.communities.has(d.community)) return true;
+      if (cfg.segments) {
+        for (const seg of cfg.segments) if (segs.has(seg)) return true;
+      }
       return false;
     }
 
