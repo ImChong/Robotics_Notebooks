@@ -59,6 +59,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 - **双层 RL 式（ReActor）**：上层优化**参数化运动学参考**（稀疏语义刚体对应 + 有界偏移），下层用 **RL 跟踪**并在仿真里回传误差；把「造参考」与「跟参考」联立，减少脚滑与自碰等运动学伪影，详见 [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)。
 - **采样式物理重定向（SPIDER）**：在**并行物理仿真**中对控制序列做**采样优化**（退火噪声核），把人体+物体的**运动学参考** refinement 成**动力学可行**轨迹；用**课程式虚拟接触力**稳定接触丰富任务中的序列歧义，详见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)。
 
+### 3.5 稀疏关键点重定向（SKR，BifrostUMI）
+
+[BifrostUMI](../entities/paper-bifrost-umi.md) 提出的 **Spatial Keypoint Retargeting（SKR）** 面向 **无机器人采集 → 人形部署**：用 **骨盆、左右 TCP、左右脚** 五个任务关键点表示全身运动，**仅** 按身高差缩放 **骨盆–脚垂直距离**，其余关键点间 **度量空间关系保持不变**（对比 [GMR](../methods/motion-retargeting-gmr.md) 的全局/局部缩放）。闭环中从关节 FK 得当前关键点，与扩散高层预测合成目标，再用 **mink** 解全身 IK 供 WBC 跟踪——把「几何桥」与「低层动力学」明确分层。
+
 ### 4. 深度学习重定向（Learning-Based）
 - Encoder-Decoder 架构：将人类骨架 embedding，再 decode 到目标机器人
 - 可跨模态（视频 → 机器人关节）
@@ -154,6 +158,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR：CEPR 数据管线 + 神经重定向 + G1 全身实验
 - **ingest 档案：** [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：仿真内双层优化 + RL 跟踪的物理感知重定向（arXiv:2605.06593）
 - **ingest 档案：** [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导的规模化物理重定向（arXiv:2511.09484）
+- **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI SKR：稀疏关键点 + 仅身高缩放 + mink IK（arXiv:2605.03452）
 - **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
 - **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
 - **ingest 档案：** [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1：Ubisoft BVH 动捕与评估脚本（SIGGRAPH 2020 论文配套）
@@ -183,3 +188,4 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [AMASS](../entities/amass.md) — SMPL 系大规模统一动捕档案，常与 AMP / 生成式运动模型一起出现
 - [LaFAN1](../entities/lafan1-dataset.md) — BVH 多主题棚拍数据与过渡任务基准（注意 NC-ND 许可）
 - [Mixamo](../entities/mixamo.md) — 商业动画库，与科研向 MoCap 档案对照阅读
+- [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — Robot-Free 示范的 SKR 与全身 WBC 接口

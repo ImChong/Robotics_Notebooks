@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-23] ingest | sources/papers/bifrost_umi_arxiv_2605_03452.md — 接入 BifrostUMI 无机器人人形全身示范与 SKR 管线并沉淀 wiki/entities/paper-bifrost-umi.md
+
+- 原始资料：`sources/papers/bifrost_umi_arxiv_2605_03452.md`（<https://arxiv.org/abs/2605.03452>）、`sources/sites/bifrost-umi-project.md`（<https://baai-aether.github.io/BifrostUMI/>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-bifrost-umi.md`（Robot-Free 采集、扩散 47-D 关键点高层、SKR、mink IK + WBC、G1 实验与 Mermaid 管线）
+- 交叉更新：`wiki/tasks/teleoperation.md`、`wiki/tasks/loco-manipulation.md`、`wiki/concepts/motion-retargeting.md`、`wiki/methods/diffusion-policy.md`、`wiki/entities/unitree-g1.md`、`sources/papers/teleoperation.md`
+- 派生再生成：`make ci-preflight`
+
 ## [2026-05-23] ingest | sources/repos/openloong.md — 接入 OpenLoong 青龙全栈开源（硬件 AtomGit、Framework、Dyn-Control、社区门户）并沉淀 wiki/entities/openloong.md
 
 - 原始资料：`sources/repos/openloong.md`、`sources/repos/openloong_hardware.md`（<https://atomgit.com/openloong/OpenLoongHardware/tree/main>）、`sources/sites/openloong_community.md`（<https://www.openloong.org.cn/cn/projects/openloong>）；索引 `sources/README.md`

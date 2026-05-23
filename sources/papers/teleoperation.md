@@ -6,7 +6,7 @@
 - **类型：** paper
 - **来源：** RSS / CoRL / arXiv / Science Robotics
 - **入库日期：** 2026-04-14
-- **最后更新：** 2026-04-14
+- **最后更新：** 2026-05-23
 - **一句话说明：** 覆盖 ALOHA/ACT 遥操作系统、OmniH2O 全身遥操作、UMI 通用操作接口等
 
 ## 核心论文摘录
@@ -46,6 +46,16 @@
 - **链接：** <https://arxiv.org/abs/2307.04577>
 - **核心贡献：** 仅用 RGB 相机的通用手臂遥操作系统；不需要专用传感器（无手套/标记点）；跨机器人形态迁移；基于视觉手势估计的低成本遥操作
 - **对 wiki 的映射：**
+  - [motion-retargeting](../../wiki/concepts/motion-retargeting.md)
+  - [loco-manipulation](../../wiki/tasks/loco-manipulation.md)
+
+### 6) BifrostUMI: Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation（Yu et al., 2026）
+- **链接：** <https://arxiv.org/abs/2605.03452>；<https://baai-aether.github.io/BifrostUMI/>
+- **核心贡献：** 将 UMI 式 **无机器人** 示范扩展到人形全身：Pico 追踪 + 双腕鱼眼夹爪采集关键点与视觉；扩散高层预测稀疏关键点动作块；**SKR** 保留度量空间结构并重定向到 Unitree G1；mink IK + WBC 闭环执行杂乱桌面与桌下全身任务
+- **关键洞见：** 采集与部署解耦——数据飞轮可在无机房阶段启动，执行仍依赖现成全身控制栈
+- **对 wiki 的映射：**
+  - [BifrostUMI（论文实体）](../../wiki/entities/paper-bifrost-umi.md)
+  - [teleoperation](../../wiki/tasks/teleoperation.md)
   - [motion-retargeting](../../wiki/concepts/motion-retargeting.md)
   - [loco-manipulation](../../wiki/tasks/loco-manipulation.md)
 
