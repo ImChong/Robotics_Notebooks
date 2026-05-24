@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-24",
-  "node_count": 422,
-  "edge_count": 3132,
+  "node_count": 423,
+  "edge_count": 3142,
   "coverage": {
-    "covered": 420,
-    "total": 420,
+    "covered": 421,
+    "total": 421,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
+      "detail_id": "entity-paper-worldvln-aerial-vln-wam",
+      "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
+      "type": "entity",
+      "recency": "2026-05-24",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-05-24",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-05-24",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/easy-quadruped.md",
       "detail_id": "entity-easy-quadruped",
@@ -42,9 +66,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/easy-quadruped.md",
-    "detail_id": "entity-easy-quadruped",
-    "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
+    "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
+    "detail_id": "entity-paper-worldvln-aerial-vln-wam",
+    "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
     "type": "entity",
     "recency": "2026-05-24",
     "source": "log.md"
