@@ -1586,5 +1586,181 @@
     "neg_claims": [
       "NMR.*纯优化|NMR.*仅.*几何|NMR.*自回归.*单步|NMR.*无.*仿真.*监督"
     ]
+  },
+  "GMR 运动学优化定位": {
+    "terms": [
+      "GMR|General.*Motion.*Retargeting"
+    ],
+    "pos_claims": [
+      "关键点.*IK|QP|运动学.*层|几何对齐|CPU.*实时|关节.*轨迹|限位.*平滑|骨架.*对齐"
+    ],
+    "neg_claims": [
+      "GMR.*基于.*强化学习|GMR.*基于.*RL|GMR.*神经网络.*推理|GMR.*仿真.*闭环|GMR.*策略.*学习"
+    ]
+  },
+  "ReActor 双层联合优化": {
+    "terms": [
+      "ReActor"
+    ],
+    "pos_claims": [
+      "双层|bilevel|参数化.*参考|联合.*更新|物理.*感知.*RL|交替.*更新|结构化.*近似.*梯度|在线.*形变"
+    ],
+    "neg_claims": [
+      "ReActor.*纯.*运动学|ReActor.*离线.*单步|ReActor.*无.*仿真|ReActor.*仅.*几何.*对齐|ReActor.*完全.*开环"
+    ]
+  },
+  "Motion Retargeting Pipeline 端到端阶段": {
+    "terms": [
+      "Motion.*Retargeting.*Pipeline|动作重定向.*流水线|重定向.*流水线"
+    ],
+    "pos_claims": [
+      "源.*归一|骨架.*映射|体型.*缩放|IK.*QP|硬约束.*平滑|物理.*可行性.*筛选|端到端|多阶段|8.*阶段"
+    ],
+    "neg_claims": [
+      "重定向.*单次.*映射|重定向.*一步.*完成|重定向.*仅.*一阶段|流水线.*只.*IK"
+    ]
+  },
+  "Motion Retargeting 目标函数加权组合": {
+    "terms": [
+      "motion.retargeting.*objective|重定向.*目标函数|retargeting.*objective"
+    ],
+    "pos_claims": [
+      "姿态.*项|接触.*项|平衡.*项|限位.*项|平滑.*项|加权.*组合|多项.*加和|姿态.*接触.*平衡|关节.*限位"
+    ],
+    "neg_claims": [
+      "重定向.*目标.*单一.*姿态|目标函数.*只有.*姿态|目标函数.*无.*接触|目标函数.*无.*限位"
+    ]
+  },
+  "Character Humanoid 目标双重性": {
+    "terms": [
+      "character.*humanoid|角色化.*人形|character.*animation.*vs.*robot"
+    ],
+    "pos_claims": [
+      "表演.*可信度|character.*believability|物理.*可控性|风格先验|风格.*机电.*安全|三方博弈|双.*目标"
+    ],
+    "neg_claims": [
+      "角色化.*人形.*与.*工业.*人形.*等价|character.*humanoid.*仅.*物理|风格.*与.*物理.*无关|纯粹.*功能.*优化"
+    ]
+  },
+  "6-DoF vs 7-DoF 抓取": {
+    "terms": [
+      "6.?DoF.*7.?DoF|7.?DoF.*6.?DoF|grasp.*pose.*7.?DoF|抓取.*7.?DoF"
+    ],
+    "pos_claims": [
+      "夹爪.*开度|gripper.*width|6.?DoF.*位姿|7.?DoF.*=.*6.?DoF|加.*开度|加上.*开度|开度.*抓取"
+    ],
+    "neg_claims": [
+      "7.?DoF.*与.*6.?DoF.*等价|7.?DoF.*只是.*坐标|7.?DoF.*不含.*开度|6.?DoF.*已包含.*夹爪"
+    ]
+  },
+  "GraspNet 三代谱系演进": {
+    "terms": [
+      "GraspNet.*Contact.*GraspNet|Contact.*GraspNet.*GSNet|GraspNet.*GSNet|grasp.*pose.*estimation"
+    ],
+    "pos_claims": [
+      "采样.*评估|稠密.*回归|稠密.*预测|时序.*关联|graspness|演进|第二代|第三代|GraspNet.*1Billion"
+    ],
+    "neg_claims": [
+      "GraspNet.*与.*Contact.*GraspNet.*等价|GraspNet.*一代.*方法|GraspNet.*家族.*同一架构|稠密.*与.*采样.*相同"
+    ]
+  },
+  "Contact-GraspNet 接触点参数化": {
+    "terms": [
+      "Contact.?GraspNet"
+    ],
+    "pos_claims": [
+      "接触点|contact.*point|基线.*方向|接近.*向量|抓取.*宽度|每.*点.*回归|稠密.*预测"
+    ],
+    "neg_claims": [
+      "Contact.?GraspNet.*全.*6.?DoF.*回归|Contact.?GraspNet.*不基于.*接触点|Contact.?GraspNet.*仅.*分类"
+    ]
+  },
+  "AnyGrasp 跨帧时序关联": {
+    "terms": [
+      "AnyGrasp"
+    ],
+    "pos_claims": [
+      "时序.*关联|跨帧|temporal|tracking|物体.*坐标系|动态.*跟踪|bin.*clearing|many.to.many|稳定度|COG"
+    ],
+    "neg_claims": [
+      "AnyGrasp.*仅.*单帧|AnyGrasp.*无.*时序|AnyGrasp.*与.*GraspNet.*无差异|AnyGrasp.*每.*帧.*独立"
+    ]
+  },
+  "AnyGrasp SDK License 分发": {
+    "terms": [
+      "AnyGrasp.*SDK|AnyGrasp.*License|AnyGrasp.*权重"
+    ],
+    "pos_claims": [
+      "二进制|binary|License|商业.*许可|闭源.*权重|不.*开源.*权重|SDK.*分发"
+    ],
+    "neg_claims": [
+      "AnyGrasp.*完全.*开源|AnyGrasp.*权重.*开放|AnyGrasp.*MIT|AnyGrasp.*Apache|AnyGrasp.*无.*License.*限制"
+    ]
+  },
+  "MPPH 抓取吞吐指标": {
+    "terms": [
+      "MPPH|Mean.*Picks.*Per.*Hour"
+    ],
+    "pos_claims": [
+      "吞吐|throughput|bin.*clearing|每.*小时|抓取.*数|SDK.*报"
+    ],
+    "neg_claims": [
+      "MPPH.*精度.*指标|MPPH.*抓取.*成功率.*等价|MPPH.*与.*AP.*相同|MPPH.*单帧.*评测"
+    ]
+  },
+  "抓取候选需显式碰撞检查": {
+    "terms": [
+      "抓取候选|grasp.*candidate|grasp.*pose"
+    ],
+    "pos_claims": [
+      "显式.*碰撞|碰撞.*检查|IK.*解|可执行|物理.*可执行|网络.*分.*高.*不保证|不可省略|IK.*存在"
+    ],
+    "neg_claims": [
+      "网络.*分.*高.*等于.*可执行|无需.*碰撞.*检查|无需.*IK.*校验|网络.*打分.*直接.*执行"
+    ]
+  },
+  "抓取选型 检测式优先": {
+    "terms": [
+      "grasp.*policy.*selection|抓取.*策略.*选型|抓取.*选型"
+    ],
+    "pos_claims": [
+      "检测式.*起步|先.*检测式|先.*用.*检测|GraspNet.*起步|逐步.*替换|IL.*VLA.*替换|工程序"
+    ],
+    "neg_claims": [
+      "端到端.*VLA.*优先|直接.*端到端|跳过.*检测式|无需.*检测式|端到端.*替代.*所有"
+    ]
+  },
+  "GraspNet-1Billion 评测基准": {
+    "terms": [
+      "GraspNet.?1Billion|GraspNet-1Billion|GraspNet.*1.*Billion"
+    ],
+    "pos_claims": [
+      "百万|million|真实.*标注|评测.*基准|数据集|benchmark|公开"
+    ],
+    "neg_claims": [
+      "GraspNet.?1Billion.*仿真.*合成|GraspNet.?1Billion.*未开放|GraspNet.?1Billion.*小规模|GraspNet.?1Billion.*仅.*千.*级"
+    ]
+  },
+  "BifrostUMI 无机器人示范": {
+    "terms": [
+      "BifrostUMI|Bifrost.*UMI"
+    ],
+    "pos_claims": [
+      "无机器人|robot.free|人形.*全身|示范|demonstration|SKR|扩散.*高层.*策略|遥操作.*替代|采集.*成本"
+    ],
+    "neg_claims": [
+      "BifrostUMI.*依赖.*真机.*遥操作|BifrostUMI.*无.*人形.*目标|BifrostUMI.*仅.*仿真.*数据|BifrostUMI.*不含.*扩散"
+    ]
+  },
+  "OpenLoong 全栈开源": {
+    "terms": [
+      "OpenLoong|青龙"
+    ],
+    "pos_claims": [
+      "全栈.*开源|公版|参考.*实现|开源.*硬件|开源.*软件|开放.*社区|国家.*地方.*共建|人形.*开源"
+    ],
+    "neg_claims": [
+      "OpenLoong.*闭源|OpenLoong.*仅.*软件|OpenLoong.*不开放|青龙.*商业.*独占|青龙.*未公开"
+    ]
   }
 }

@@ -37,7 +37,7 @@
 
 ## P1: 动作重定向与角色化人形专题 (Quality)
 
-- [~] **动作重定向知识链 (+3)**：
+- [x] **动作重定向知识链 (+3)**：
     - [x] `wiki/concepts/motion-retargeting-pipeline.md`（重定向流水线：MoCap → 骨架对齐 → IK/约束 → 物理可行性筛选 → 训练数据的端到端概念）。
       - 实现：新增 `wiki/concepts/motion-retargeting-pipeline.md`，把 [Motion Retargeting](../../wiki/concepts/motion-retargeting.md) 概念页里的「单次映射」展开为 8 阶段端到端流水线（源归一 → 骨架/DoF 映射 → 体型缩放 → IK/QP → 硬约束与平滑 → 物理可行性筛选 → 可选物理修补 → 离线/在线产物落地），含 Mermaid 总览、三种工程化形态对比表、常见失败模式表与下游接口契约；交叉互链 GMR / NMR / ReActor / SONIC / ExoActor / WBC / Sim2Real / Teleoperation。
       - 验证：`motion-retargeting.md` 关联页面区块回链新页面；index.md 在「重点页面」加入流水线条目（见本次提交）。
@@ -104,7 +104,9 @@
 
 - [ ] `make lint`: 0 errors（含新引入的 `methods_without_practitioner_query` 检查全通过）。
 - [ ] 知识图谱节点数 **≥ 312**，边数 **≥ 2050**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **155 条** 以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）。
+- [x] 事实库扩展至 **155 条** 以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）。
+    - 实现：`schema/canonical-facts.json` 由 140 → **156** 条；本轮新增 17 条按 V22 P1 / P2 主线分布：动作重定向 5 条（`GMR 运动学优化定位` / `ReActor 双层联合优化` / `Motion Retargeting Pipeline 端到端阶段` / `Motion Retargeting 目标函数加权组合` / `Character Humanoid 目标双重性`）、抓取与感知 10 条（`6-DoF vs 7-DoF 抓取` / `GraspNet 三代谱系演进` / `Contact-GraspNet 接触点参数化` / `AnyGrasp 跨帧时序关联` / `AnyGrasp SDK License 分发` / `MPPH 抓取吞吐指标` / `抓取候选需显式碰撞检查` / `抓取选型 检测式优先` / `GraspNet-1Billion 评测基准` / 既有 `Contact-rich 接触力建模` 等基线沿用）、近期 ingest 2 条（`BifrostUMI 无机器人示范` / `OpenLoong 全栈开源`）。每条三元组（`terms` / `pos_claims` / `neg_claims`）按 `lint_wiki._check_contradictions` 的正则匹配规范设计，覆盖 P1 / P2 新页与既有页常见提法。
+    - 验证：`python3 scripts/lint_wiki.py` 退出码 0，0 contradictions、0 ⚠️ / 0 💡，"✅ 所有检查通过！"；419/419 wiki/entity 页 ingest 来源覆盖率 100%。
 - [ ] `community_quality_warning` 在 `exports/graph-stats.json` 中变为 `false`。
 - [ ] `log.md` 记录 V22 关键改动。
 
