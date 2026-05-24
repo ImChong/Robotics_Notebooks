@@ -109,7 +109,8 @@
 - [x] 事实库扩展至 **155 条** 以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）。
     - 实现：`schema/canonical-facts.json` 由 140 → **156** 条；本轮新增 17 条按 V22 P1 / P2 主线分布：动作重定向 5 条（`GMR 运动学优化定位` / `ReActor 双层联合优化` / `Motion Retargeting Pipeline 端到端阶段` / `Motion Retargeting 目标函数加权组合` / `Character Humanoid 目标双重性`）、抓取与感知 10 条（`6-DoF vs 7-DoF 抓取` / `GraspNet 三代谱系演进` / `Contact-GraspNet 接触点参数化` / `AnyGrasp 跨帧时序关联` / `AnyGrasp SDK License 分发` / `MPPH 抓取吞吐指标` / `抓取候选需显式碰撞检查` / `抓取选型 检测式优先` / `GraspNet-1Billion 评测基准` / 既有 `Contact-rich 接触力建模` 等基线沿用）、近期 ingest 2 条（`BifrostUMI 无机器人示范` / `OpenLoong 全栈开源`）。每条三元组（`terms` / `pos_claims` / `neg_claims`）按 `lint_wiki._check_contradictions` 的正则匹配规范设计，覆盖 P1 / P2 新页与既有页常见提法。
     - 验证：`python3 scripts/lint_wiki.py` 退出码 0，0 contradictions、0 ⚠️ / 0 💡，"✅ 所有检查通过！"；419/419 wiki/entity 页 ingest 来源覆盖率 100%。
-- [ ] `community_quality_warning` 在 `exports/graph-stats.json` 中变为 `false`。
+- [x] `community_quality_warning` 在 `exports/graph-stats.json` 中变为 `false`。
+    - 验证（2026-05-24）：`exports/graph-stats.json`（`generated_at: 2026-05-24`）实测 `community_count = 17`、`largest_community_ratio = 0.248`（最大社区 = "VLA（Vision-Language-Action） 社区" 105 / 423 = 24.8%，远低于 V22 ≤ 40% 阈值）、`community_quality_warning = false`、`singleton_communities = []`。该结果由 V22 P0「社区粒度二级拆分」（Girvan-Newman 一级 + Louvain `resolution=1.15` 二级对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分）持续生效，叠加 P1 / P2 / P3 累积新增页面（motion-retargeting × 5 / 抓取链 × 3 / 接触-操作交叉 / VLA-WAM / BifrostUMI / OpenLoong / WorldVLN / easy_quadruped 等），最大社区占比由 V21 的 46.1% → V22 当前的 24.8%（再降 21.3 pp），且 17 个社区中 ≥ 10 项节点的有 12 个，结构稳定无单点社区。本轮无新增代码改动，仅作"已达成"状态回填，与 V22 P0 历史记录一致。
 - [ ] `log.md` 记录 V22 关键改动。
 
 ---
