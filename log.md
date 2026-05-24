@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-24] ingest | sources/papers/worldvln_arxiv_2605_15964.md — 接入 WorldVLN 空中 VLN 自回归 WAM；沉淀 wiki/entities/paper-worldvln-aerial-vln-wam.md；交叉更新 vision-language-navigation、world-action-models
+
+- 原始资料：`sources/papers/worldvln_arxiv_2605_15964.md`（<https://arxiv.org/abs/2605.15964>）、`sources/sites/worldvln-embodiedcity.md`、 `sources/repos/worldvln_embodiedcity.md`；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-worldvln-aerial-vln-wam.md`
+- 交叉更新：`wiki/tasks/vision-language-navigation.md`、`wiki/concepts/world-action-models.md`
+
 ## [2026-05-24] ingest | sources/repos/easy_quadruped.md — 接入 Xzgz718/easy_quadruped（StanfordQuadruped 二次开发）并沉淀 wiki 实体
 
 - 原始资料：`sources/repos/easy_quadruped.md`（上游 MIT [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped)，公开快照含 `src/` 步态控制、`pupper/` IK/标定、`sim/` MuJoCo 浮动机身闭环）
