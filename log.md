@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-24] structural | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「图谱节点 ≥ 312 / 边 ≥ 2050」回填打勾
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD 余 3 项中数值最直接可验项；按"每日推进一项"节奏，今日选定图谱规模口径
+- 验证：`exports/graph-stats.json`（`generated_at: 2026-05-23`）实测 `node_count = 421`（V22 目标 312，超 +109 / +34.9%）、`edge_count = 3122`（V22 目标 2050，超 +1072 / +52.3%）、`community_count = 17`、`largest_community_ratio = 0.254`、`orphan_nodes = []`，两项数值远超 V22 目标且与 V22 P1（动作重定向 5 页 + 多向回链）/ P2（抓取链 3 页 + 接触-操作交叉 + AnyGrasp/GraspNet 互链）/ P3（详情页社区分布 + 图谱专题视图）历史推升轨迹一致
+- 状态联动：V22 checklist DoD「图谱节点 ≥ 312 边 ≥ 2050」由 `[ ]` 变 `[x]`；checklist 文件就地追加 2026-05-24 验证日期与数值快照
+- 后续：DoD 余 2 项（`community_quality_warning: false`、`log.md` 记录 V22 关键改动）按节奏继续回填，全部完成后基于 llm-wiki 与最新 graph-stats / 事实库 / 站点状态新建 V23 清单
+- 本轮无代码改动，仅清单与日志状态回填
+
 ## [2026-05-24] lint | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「`make lint`: 0 errors」回填打勾
 
 - 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD 余 4 项中最确定可验项；按 2026-05-23 后续计划「每日推进一项」执行
