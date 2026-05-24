@@ -35,6 +35,7 @@ summary: "Stanford Doggo 与 Pupper：斯坦福学生机器人俱乐部路线下
 ## 关联页面
 
 - [四足机器人](./quadruped-robot.md)
+- [easy_quadruped（控制 + MuJoCo 闭环 fork）](./easy-quadruped.md)
 - [Locomotion](../tasks/locomotion.md)
 - [强化学习](../methods/reinforcement-learning.md)
 - [机器人开源宝库（微信策展第02期）索引](../overview/robot-open-source-wechat-issue02-curator.md)

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-24] ingest | sources/repos/easy_quadruped.md — 接入 Xzgz718/easy_quadruped（StanfordQuadruped 二次开发）并沉淀 wiki 实体
+
+- 原始资料：`sources/repos/easy_quadruped.md`（上游 MIT [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped)，公开快照含 `src/` 步态控制、`pupper/` IK/标定、`sim/` MuJoCo 浮动机身闭环）
+- 沉淀页面：`wiki/entities/easy-quadruped.md`
+- 交叉更新：`wiki/entities/stanford-doggo-and-pupper.md`、`wiki/entities/quadruped-robot.md`、`wiki/concepts/gait-generation.md`、`references/repos/simulation.md`、`sources/README.md`
+
 ## [2026-05-24] structural | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「图谱节点 ≥ 312 / 边 ≥ 2050」回填打勾
 
 - 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD 余 3 项中数值最直接可验项；按"每日推进一项"节奏，今日选定图谱规模口径
