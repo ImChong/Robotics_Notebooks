@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-24] structural | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「community_quality_warning: false」回填打勾
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD 余 2 项中数值最直接可验项；按"每日推进一项"节奏继续顺次回填
+- 验证：`exports/graph-stats.json`（`generated_at: 2026-05-24`）实测 `community_count = 17`、`largest_community_ratio = 0.248`（最大社区 = "VLA（Vision-Language-Action） 社区" 105 / 423 = 24.8%，远低于 V22 ≤ 40% 阈值）、`community_quality_warning = false`、`singleton_communities = []`；最大社区占比相对 V21 基线 46.1% 累计下降 21.3 pp，结构稳定且 17 个社区中 ≥ 10 项节点的有 12 个
+- 归因：V22 P0「社区粒度二级拆分」（Girvan-Newman 一级 + Louvain `resolution=1.15` 二级对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分）持续生效，叠加 P1 / P2 / P3 累积新增页面（motion-retargeting × 5 / 抓取链 × 3 / 接触-操作交叉 / VLA-WAM / BifrostUMI / OpenLoong / WorldVLN / easy_quadruped 等）形成的多向回链让原 Locomotion 巨型社区进一步均匀化
+- 状态联动：V22 checklist DoD「community_quality_warning: false」由 `[ ]` 变 `[x]`；checklist 文件就地追加 2026-05-24 验证日期与数值快照
+- 后续：DoD 余 1 项（`log.md` 记录 V22 关键改动）按节奏继续回填，本日新增日志本身即对该项的部分兑现；DoD 全部清零后基于 llm-wiki 与最新 graph-stats / 事实库 / 站点状态新建 V23 清单
+- 本轮无代码改动，仅清单与日志状态回填
+
 ## [2026-05-24] ingest | sources/papers/worldvln_arxiv_2605_15964.md — 接入 WorldVLN 空中 VLN 自回归 WAM；沉淀 wiki/entities/paper-worldvln-aerial-vln-wam.md；交叉更新 vision-language-navigation、world-action-models
 
 - 原始资料：`sources/papers/worldvln_arxiv_2605_15964.md`（<https://arxiv.org/abs/2605.15964>）、`sources/sites/worldvln-embodiedcity.md`、 `sources/repos/worldvln_embodiedcity.md`；索引 `sources/README.md`
