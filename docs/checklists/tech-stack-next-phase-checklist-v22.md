@@ -102,7 +102,8 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（含新引入的 `methods_without_practitioner_query` 检查全通过）。
+- [x] `make lint`: 0 errors（含新引入的 `methods_without_practitioner_query` 检查全通过）。
+    - 验证（2026-05-24）：`make lint` 实跑 = `python3 scripts/eval_search_quality.py`（通过率 37/37，≥ 80% 阈值）→ `python3 scripts/lint_wiki.py`（0 矛盾 / 0 空壳页 / 0 高频缺页 / 0 缺 type / 0 log.md 活跃度警告 / 0 缺摘要 / 0 Query 格式残缺 / 0 Formalization 缺公式 / 0 公式变量缺解释 / 0 README 版本不一致 / 0 图谱孤儿节点 / 0 Methods 缺 Formalization 链接 / 0 Methods 缺主要路线 / 0 Entities 缺 Methods/Tasks 出边 / 0 高频 methods 缺 queries/comparisons）；419/419 wiki/entity 页 ingest 来源覆盖率 100%；终行 "✅ 所有检查通过！"。本轮无新增代码改动，仅作"已达成"状态回填，与日志保持一致。
 - [ ] 知识图谱节点数 **≥ 312**，边数 **≥ 2050**（见 `exports/graph-stats.json`）。
 - [x] 事实库扩展至 **155 条** 以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）。
     - 实现：`schema/canonical-facts.json` 由 140 → **156** 条；本轮新增 17 条按 V22 P1 / P2 主线分布：动作重定向 5 条（`GMR 运动学优化定位` / `ReActor 双层联合优化` / `Motion Retargeting Pipeline 端到端阶段` / `Motion Retargeting 目标函数加权组合` / `Character Humanoid 目标双重性`）、抓取与感知 10 条（`6-DoF vs 7-DoF 抓取` / `GraspNet 三代谱系演进` / `Contact-GraspNet 接触点参数化` / `AnyGrasp 跨帧时序关联` / `AnyGrasp SDK License 分发` / `MPPH 抓取吞吐指标` / `抓取候选需显式碰撞检查` / `抓取选型 检测式优先` / `GraspNet-1Billion 评测基准` / 既有 `Contact-rich 接触力建模` 等基线沿用）、近期 ingest 2 条（`BifrostUMI 无机器人示范` / `OpenLoong 全栈开源`）。每条三元组（`terms` / `pos_claims` / `neg_claims`）按 `lint_wiki._check_contradictions` 的正则匹配规范设计，覆盖 P1 / P2 新页与既有页常见提法。

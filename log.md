@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-24] lint | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「`make lint`: 0 errors」回填打勾
+
+- 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD 余 4 项中最确定可验项；按 2026-05-23 后续计划「每日推进一项」执行
+- 验证：`make lint` 实跑 = `python3 scripts/eval_search_quality.py`（通过率 37/37，≥ 80% 阈值）→ `python3 scripts/lint_wiki.py`（0 矛盾 / 0 空壳页 / 0 高频缺页 / 0 缺 type / 0 log.md 活跃度警告 / 0 缺摘要 / 0 Query 格式残缺 / 0 Formalization 缺公式 / 0 公式变量缺解释 / 0 README 版本不一致 / 0 图谱孤儿节点 / 0 Methods 缺 Formalization / Concept / 主要路线 / 0 Entities 缺 Methods/Tasks 出边 / 0 高频 methods 缺 queries/comparisons）；419/419 wiki/entity 页 ingest 来源覆盖率 100%；终行 "✅ 所有检查通过！"
+- 状态联动：V22 checklist DoD「`make lint`: 0 errors」由 `[ ]` 变 `[x]`；checklist 文件就地追加验证日期与项目级 0 警告快照
+- 后续：DoD 余 3 项（图谱节点 ≥ 312 边 ≥ 2050、`community_quality_warning: false`、log.md 记录 V22 关键改动）按节奏继续回填，全部完成后基于 llm-wiki 与最新 graph-stats / 事实库 / 站点状态新建 V23 清单
+- 本轮无代码改动，仅清单与日志状态回填
+
 ## [2026-05-23] structural | schema/canonical-facts.json — V22 DoD 事实库扩展：140 → 156 条，补全动作重定向 / 抓取 / 近期 ingest 矛盾检测规则
 
 - 触发：[`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) DoD「事实库扩展至 155 条以上（重点补 motion-retargeting / grasp-pose 矛盾检测规则）」尚未打勾；P1 / P2 主线已沉淀大量新页（motion-retargeting-pipeline / motion-retargeting-objective / gmr-vs-nmr-vs-reactor / character-animation-vs-robotics / grasp-pose-estimation / grasp-policy-selection / anygrasp-vs-graspnet）以及 OpenLoong / BifrostUMI 实体页，需要让 `lint_wiki._check_contradictions` 覆盖到位
