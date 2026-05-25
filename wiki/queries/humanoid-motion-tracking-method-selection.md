@@ -8,6 +8,8 @@ summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / 
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/amp.md
+  - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
+  - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 ---
 
@@ -61,6 +63,16 @@ flowchart TD
 
 [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。参考不足时，[ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) 用于扩充或平滑参考分布。
 
+### 5. 大扰动：跟踪 vs 生成中间件 vs 统一 AMP
+
+| 目标 | 优先路线 | 入口 |
+|------|----------|------|
+| 保持 tracker，只在 OOD 改参考 | **状态条件生成 middleware + tracker** | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
+| 单策略 RL，训练期分离 recovery/loco 先验 | **SD-AMP 双判别器** | [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
+| 工程复现统一 walk+recovery（mjlab） | **AMP_mjlab 统一判别器** | [AMP_mjlab](../entities/amp-mjlab.md) |
+
+**常见误判**：把 Heracles 当作「又一个 tracking 论文」——其贡献在 **中间层改参考命令**，底层仍是高频 tracking MDP。
+
 ---
 
 ## 推荐组合 pipeline
@@ -87,6 +99,7 @@ flowchart TD
 - [DeepMimic 论文摘要](../../sources/papers/deepmimic.md)
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
+- [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
 
 ## 关联页面
 
@@ -98,6 +111,7 @@ flowchart TD
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
+- [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)
 
 ## 一句话记忆
 
