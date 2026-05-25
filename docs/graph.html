@@ -1407,8 +1407,8 @@
         for (const [communityId, label] of communityLabelMap.entries()) {
           const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
           const isActive = (focusedCommunityId === communityId);
-          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(communityId)}">
-            <div class="legend-dot" style="background:${color}"></div>${escapeHtml(label)}
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(String(communityId))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div>${escapeHtml(String(label))}
           </div>`);
         }
       } else if (colorMode === 'health') {
@@ -1421,8 +1421,8 @@
         ];
         for (const h of healthRows) {
           const isActive = (focusedHealth === h.score);
-          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${h.score}">
-            <div class="legend-dot" style="background:${h.color}"></div>${h.label}
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-health="${escapeHtml(String(h.score))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(h.color))}"></div>${escapeHtml(String(h.label))}
           </div>`);
         }
       } else {
@@ -1438,8 +1438,8 @@
         ];
         for (const t of typeRows) {
           const isActive = (focusedType === t.type);
-          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-type="${t.type}">
-            <div class="legend-dot" style="background:${t.color}"></div>${t.label}
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-type="${escapeHtml(String(t.type))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(t.color))}"></div>${escapeHtml(String(t.label))}
           </div>`);
         }
       }
@@ -1795,11 +1795,11 @@
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       const communityLabel = communityLabelMap.get(d.community);
       const community = communityLabel
-        ? `<div class="tt-summary">社区：${escapeHtml(communityLabel)}</div>`
+        ? `<div class="tt-summary">社区：${escapeHtml(String(communityLabel))}</div>`
         : '';
-      return `<span class="tt-type" style="background:${color};color:#0d1117">${escapeHtml(typeLabel)}</span>` +
-             `<div class="tt-title">${escapeHtml(info.title || d.label)}</div>` +
-             (summary ? `<div class="tt-summary">${escapeHtml(summary)}</div>` : '') +
+      return `<span class="tt-type" style="background:${escapeHtml(String(color))};color:#0d1117">${escapeHtml(String(typeLabel))}</span>` +
+             `<div class="tt-title">${escapeHtml(String(info.title || d.label))}</div>` +
+             (summary ? `<div class="tt-summary">${escapeHtml(String(summary))}</div>` : '') +
              community +
              `<a class="tt-link" href="${detailUrl}" target="_self">打开详情页 →</a>`;
     }
