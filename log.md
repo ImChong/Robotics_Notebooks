@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-25] ingest | sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md + heracles_humanoid_diffusion_arxiv_2603_27756.md — 沉淀 wiki/entities/paper-unified-walk-run-recovery-sdamp.md、wiki/entities/paper-heracles-humanoid-diffusion.md；交叉更新 amp-reward、locomotion、balance-recovery、diffusion-motion-generation、humanoid-motion-tracking-method-selection、amp-mjlab、unitree-g1
+
 ## [2026-05-25] ingest | sources/repos/ppf-contact-solver.md — 接入 ZOZO GPU 接触求解器并沉淀 wiki/entities/ppf-contact-solver.md、wiki/entities/paper-ppf-cubic-barrier-contact-solver.md
 
 ## [2026-05-24] structural | docs/checklists/tech-stack-next-phase-checklist-v22.md — V22 DoD「community_quality_warning: false」回填打勾

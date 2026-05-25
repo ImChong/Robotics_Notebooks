@@ -11,6 +11,7 @@ related:
   - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/papers/amp.md
+  - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/motion_control_projects.md
 summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。"
@@ -37,6 +38,10 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 - **周期性、稳定性要求的步态**（如 walking, goose-stepping, stair climbing）：应用 AMP 可加速收敛，抑制不规律动作，提升动作质量。
 - **高动态步态**（如 running, jumping）：故意省略 AMP。因为在高度动态的过程中，AMP 的正则化会过度约束运动，反而阻碍动作的学习。
 这种**选择性应用 AMP** 的策略，可以在统一的 RL 框架下实现多样化步态的控制。
+
+### 4. 状态相关 AMP（SD-AMP，arXiv:2605.18611）
+
+当**同一策略**需同时覆盖 **locomotion + fall recovery** 时，单一全局 AMP 先验易把行走统计与起身动力学混在一个判别器里。SD-AMP 在**训练期**用投影重力门控 $|g_z+1|>0.6$（约 37° 倾角）路由到 **recovery 判别器**，否则路由到 **速度条件 locomotion 判别器**（$\hat{v}_t$ 在 walk/run 参考间混合）；部署仍为单 ONNX、无运行时模式变量。详见 [SD-AMP 统一走跑起身实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)。
 
 ## HumanX: 扩展到物体交互与接触图
 
@@ -74,10 +79,12 @@ $$
 - [HumanX 项目主页](https://github.com/wyhuai/human-x)
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
 - [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 提出了 Selective AMP 以应对多步态学习中的正则化权衡。
+- [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP：双判别器 + 重力门控，G1 真机统一走跑起身。
 
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 

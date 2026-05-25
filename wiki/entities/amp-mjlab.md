@@ -11,8 +11,10 @@ related:
   - ./wbc-fsm.md
   - ../methods/imitation-learning.md
   - ../tasks/locomotion.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
 sources:
   - ../../sources/repos/amp_mjlab.md
+  - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
 summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。"
 ---
 
@@ -52,7 +54,7 @@ flowchart TD
 2. **跌倒后的恢复 / 起身**
 3. **动作风格尽量接近参考动作数据**
 
-它不是单独训练“走路策略”和“起身策略”，而是把两种能力放进**同一个 policy** 里训练，减少策略切换带来的不连续问题。([GitHub][1])
+它不是单独训练“走路策略”和“起身策略”，而是把两种能力放进**同一个 policy** 里训练，减少策略切换带来的不连续问题。([GitHub][1]) 学术上，[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)（arXiv:2605.18611）用**双判别器 + 重力门控**形式化了「何时用哪种 motion prior」；AMP_mjlab 更接近工程侧**单判别器 + 分区参考库** 的实现对照。
 
 ### 2. AMP 是什么？先用直觉理解
 

@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-25",
-  "node_count": 425,
-  "edge_count": 3154,
+  "node_count": 427,
+  "edge_count": 3180,
   "coverage": {
-    "covered": 423,
-    "total": 423,
+    "covered": 425,
+    "total": 425,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
+      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
+      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
+      "type": "entity",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
+      "detail_id": "entity-paper-heracles-humanoid-diffusion",
+      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+      "type": "entity",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/ppf-contact-solver.md",
       "detail_id": "entity-ppf-contact-solver",
@@ -26,9 +42,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ppf-contact-solver.md",
-    "detail_id": "entity-ppf-contact-solver",
-    "label": "ppf-contact-solver（ZOZO Contact Solver）",
+    "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
+    "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
+    "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
     "type": "entity",
     "recency": "2026-05-25",
     "source": "log.md"
