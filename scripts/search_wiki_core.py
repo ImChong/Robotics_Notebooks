@@ -13,10 +13,22 @@ from typing import Any, cast
 from search_indexing import (
     REPO_ROOT,
     hash_embed_text,
-    iter_wiki_documents,
     tokenize_text,
     truncate_for_embedding,
 )
+from search_indexing import (
+    iter_wiki_documents as _orig_iter_wiki_documents,
+)
+
+_WIKI_DOCS_CACHE = None
+
+
+def iter_wiki_documents():
+    global _WIKI_DOCS_CACHE
+    if _WIKI_DOCS_CACHE is None:
+        _WIKI_DOCS_CACHE = list(_orig_iter_wiki_documents())
+    return _WIKI_DOCS_CACHE
+
 
 CACHE_FILE = REPO_ROOT / "exports" / "search-cache.json"
 CACHE_MAX = 30
@@ -386,9 +398,10 @@ def search(
     # Tokenizing the body text is expensive. Doing it twice (once for avgdl, once for scoring)
     # doubles the search latency. We cache it here on the doc objects.
     for doc in docs:
-        counts = Counter(tokenize_text(doc["body"]))
-        doc["token_counts"] = counts
-        doc["dl"] = max(sum(counts.values()), 1)
+        if "token_counts" not in doc:
+            counts = Counter(tokenize_text(doc["body"]))
+            doc["token_counts"] = counts
+            doc["dl"] = max(sum(counts.values()), 1)
 
     avgdl = compute_avgdl(docs)
 
