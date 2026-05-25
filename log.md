@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-25] ingest | sources/papers/slowrl_arxiv_2603_17092.md + any2any_arxiv_2605_23733.md — 接入 SLowRL（Go2 安全 LoRA 真机微调）与 Any2Any（跨具身 WBT 迁移）；沉淀 wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md、wiki/entities/paper-any2any-cross-embodiment-wbt.md；交叉更新 sim2real、locomotion、humanoid-motion-tracking-method-selection、sonic-motion-tracking
+
+- 原始资料：`sources/papers/slowrl_arxiv_2603_17092.md`（<https://arxiv.org/abs/2603.17092>）、`sources/papers/any2any_arxiv_2605_23733.md`（<https://arxiv.org/abs/2605.23733>）；索引 `sources/README.md`
+- 沉淀页面：`wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md`、`wiki/entities/paper-any2any-cross-embodiment-wbt.md`
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/tasks/locomotion.md`、`wiki/queries/humanoid-motion-tracking-method-selection.md`、`wiki/methods/sonic-motion-tracking.md`
+
 ## [2026-05-25] ingest | sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md + heracles_humanoid_diffusion_arxiv_2603_27756.md — 沉淀 wiki/entities/paper-unified-walk-run-recovery-sdamp.md、wiki/entities/paper-heracles-humanoid-diffusion.md；交叉更新 amp-reward、locomotion、balance-recovery、diffusion-motion-generation、humanoid-motion-tracking-method-selection、amp-mjlab、unitree-g1
 
 ## [2026-05-25] ingest | sources/repos/ppf-contact-solver.md — 接入 ZOZO GPU 接触求解器并沉淀 wiki/entities/ppf-contact-solver.md、wiki/entities/paper-ppf-cubic-barrier-contact-solver.md

@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-05-25",
-  "node_count": 427,
-  "edge_count": 3180,
+  "node_count": 429,
+  "edge_count": 3200,
   "coverage": {
-    "covered": 425,
-    "total": 425,
+    "covered": 427,
+    "total": 427,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
+      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
+      "label": "SLowRL：安全低秩 RL 真机运动微调",
+      "type": "entity",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-any2any-cross-embodiment-wbt.md",
+      "detail_id": "entity-paper-any2any-cross-embodiment-wbt",
+      "label": "Any2Any：跨具身高效全身跟踪迁移",
+      "type": "entity",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-05-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
       "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
@@ -42,9 +90,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-    "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-    "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
+    "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
+    "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
+    "label": "SLowRL：安全低秩 RL 真机运动微调",
     "type": "entity",
     "recency": "2026-05-25",
     "source": "log.md"
