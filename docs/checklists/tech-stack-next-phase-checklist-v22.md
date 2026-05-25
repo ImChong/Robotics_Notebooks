@@ -111,7 +111,8 @@
     - 验证：`python3 scripts/lint_wiki.py` 退出码 0，0 contradictions、0 ⚠️ / 0 💡，"✅ 所有检查通过！"；419/419 wiki/entity 页 ingest 来源覆盖率 100%。
 - [x] `community_quality_warning` 在 `exports/graph-stats.json` 中变为 `false`。
     - 验证（2026-05-24）：`exports/graph-stats.json`（`generated_at: 2026-05-24`）实测 `community_count = 17`、`largest_community_ratio = 0.248`（最大社区 = "VLA（Vision-Language-Action） 社区" 105 / 423 = 24.8%，远低于 V22 ≤ 40% 阈值）、`community_quality_warning = false`、`singleton_communities = []`。该结果由 V22 P0「社区粒度二级拆分」（Girvan-Newman 一级 + Louvain `resolution=1.15` 二级对占比 > 40% 且节点数 ≥ 30 的巨型社区做二级拆分）持续生效，叠加 P1 / P2 / P3 累积新增页面（motion-retargeting × 5 / 抓取链 × 3 / 接触-操作交叉 / VLA-WAM / BifrostUMI / OpenLoong / WorldVLN / easy_quadruped 等），最大社区占比由 V21 的 46.1% → V22 当前的 24.8%（再降 21.3 pp），且 17 个社区中 ≥ 10 项节点的有 12 个，结构稳定无单点社区。本轮无新增代码改动，仅作"已达成"状态回填，与 V22 P0 历史记录一致。
-- [ ] `log.md` 记录 V22 关键改动。
+- [x] `log.md` 记录 V22 关键改动。
+    - 验证（2026-05-25）：本日新增 `## [2026-05-25] checklist-v22 | DoD 收口 & 初始化 V23` 结构化条目，汇总 V22 P0–P3 四阶段交付（缩写归一化检索 / 社区粒度二级拆分 / 方法-Query 闭环 Lint / 动作重定向知识链 5 页 / 抓取知识链 3 页 + 接触-操作交叉补强 / 详情页关联社区分布 + 图谱专题视图 10 项）以及 5 项 DoD 数值快照（`make lint` 0 errors / 节点 421→429 / 边 3122→3200 / 事实库 156 / `community_quality_warning: false`）；至此 V22 全部条目（P0–P3 + DoD 5 项）由 `[ ]/[~]` 全部收敛为 `[x]`，进入归档状态。
 
 ---
 
