@@ -20,6 +20,7 @@ related:
   - ./humanoid-parallel-joint-kinematics.md
   - ./processor-in-the-loop-sim2real.md
   - ../methods/crisp-real2sim.md
+  - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 ---
 
@@ -143,6 +144,8 @@ flowchart TD
 仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）
 ```
 
+- **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
+
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
 
 ### Real2Sim：从视频构造可仿真资产
@@ -165,6 +168,7 @@ flowchart TD
 - **ingest 档案：** [sources/repos/sage-sim2real-actuator-gap.md](../../sources/repos/sage-sim2real-actuator-gap.md) — SAGE：Isaac Sim 重放与真机日志对齐的执行器层 sim2real gap 度量工具链
 - [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：>1m/s 敏捷动作的额外 DR + 零样本 sim2real 完成 5m×5m 障碍课
+- **ingest 档案：** [sources/papers/slowrl_arxiv_2603_17092.md](../../sources/papers/slowrl_arxiv_2603_17092.md) — SLowRL：LoRA + Recovery 安全真机微调（Go2）
 
 ## 关联页面
 
@@ -182,6 +186,7 @@ flowchart TD
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 并联踝闭链与仿真训练接口分层（冲击下传载再分配等）
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线/调度纳入仿真闭环的腿式迁移路径
 - [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 → 凸平面场景原语 + 接触补全 → RL 物理闭环的 Real2Sim（ICLR 2026）
+- [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足动态策略的低秩 + Recovery 安全层
 
 ## 继续深挖入口
 

@@ -3,13 +3,14 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-25
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/amp.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 ---
 
@@ -73,6 +74,18 @@ flowchart TD
 
 **常见误判**：把 Heracles 当作「又一个 tracking 论文」——其贡献在 **中间层改参考命令**，底层仍是高频 tracking MDP。
 
+### 6. 跨具身：已有 WBT 专家迁到新硬件
+
+当 **源机上已有大规模 WBT 专家**（如 [SONIC](../methods/sonic-motion-tracking.md) / Gear-SONIC on G1），而目标机 DoF、观测布局与动力学不同时：
+
+| 目标 | 优先路线 | 入口 |
+|------|----------|------|
+| 少数据、少算力迁到新机型 | **运动学对齐 + 局部 LoRA 动力学适配** | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
+| 从零获得单平台最强 tracker | **继续 scaling 预训练** | [SONIC](../methods/sonic-motion-tracking.md) |
+| 多机统一 generalist | **多具身联合预训练 / 统一动作空间** | 见 [BFM](../entities/paper-behavior-foundation-model-humanoid.md) 等 |
+
+**常见误判**：把 Any2Any 当作「再训一个 SONIC」——其设定是 **冻结单源专家 + 后训练**，与亿级帧从头预训练的算力预算不同；运动学对齐层必须覆盖 **髋轴、闭链** 等结构差异，不能只做关节 index 重排。
+
 ---
 
 ## 推荐组合 pipeline
@@ -82,6 +95,7 @@ flowchart TD
 | **经典 mimic** | DeepMimic → BeyondMimic | 单动作高保真、论文复现 |
 | **AMP 增强** | BeyondMimic + AMP/ADD/SMP | 行走/舞蹈等需自然风格 |
 | **通用 tracker** | GMR/NMR 重定向 → Any2Track/AMS | 多动作库、遥操作闭环 |
+| **跨具身 WBT** | 源机 Sonic/Oli-WBT → Any2Any 对齐+LoRA | 新机少量数据、保留源先验 |
 | **接触任务** | GentleHumanoid + 下游操作/搬运 | 推、扶、柔顺交互 |
 
 ---
@@ -100,6 +114,7 @@ flowchart TD
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
+- [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
 
 ## 关联页面
 
@@ -112,6 +127,7 @@ flowchart TD
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)
+- [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 
 ## 一句话记忆
 
