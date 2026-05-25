@@ -47,3 +47,6 @@
 ## 2026-05-20 - Regex and Set Initialization Overhead
 **Learning:** Instantiating `new Set(...)` and `new RegExp(...)` (or literal `/.../g`) inside functions that are called repeatedly (like line-by-line syntax highlighters) forces the JavaScript engine to reallocate and recompile these objects on every single function call.
 **Action:** In JavaScript hot paths, always hoist static structures (like sets of keywords or fixed regular expressions) to the outer scope to instantiate them exactly once.
+## 2026-05-25 - Prevent N+1 Tokenization and File Read Bottlenecks in Search Loop
+**Learning:** In backend search logic, calling a document retrieval function (`iter_wiki_documents()`) that hits the file system inside the main `search` function causes large bottlenecks if search is called multiple times. Furthermore, expensive tokenization (via `tokenize_text`) should only be calculated once per document, rather than re-computing it on each new search request.
+**Action:** When a loop computes properties over a collection, verify whether the collection retrieval causes file system hits and memoize it. When computing computationally heavy structures (like token counts or derived metrics) on documents, mutate the document dictionary to cache it and skip recalculation on subsequent operations.
