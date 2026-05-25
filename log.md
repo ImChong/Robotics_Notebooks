@@ -1,5 +1,26 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-25] checklist-v22 | DoD 收口 & 初始化 V23
+
+- V22 DoD 最后一项「`log.md` 记录 V22 关键改动」收口：本条目即为兑现物，把 V22 P0–P3 与 DoD 数值快照沉淀到日志，与 [`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) 同步勾选并标注 2026-05-25 验证日期。
+- V22 完整交付：
+    - **P0 自动化**：① `scripts/search_wiki_core.py` 缩写归一化检索（16 条 WBC/VLA/IL/RL/MPC/PPO/SAC/HQP/CBF/CLF/BC/IK/FK/LIP/ZMP/TSID，双向展开 + "已展开为…"提示）；② `scripts/generate_link_graph.py` 社区粒度二级拆分（Girvan-Newman 一级 + Louvain `resolution=1.15` 二级），最大社区占比由 V21 46.1% → V22 15.9%（-30.2 pp），17 社区均衡分布；③ `scripts/lint_wiki.py` 新增 `methods_without_practitioner_query` 方法-Query 闭环 Lint（INFO 级，不阻塞 CI，作为 P1/P2 推进基线）。
+    - **P1 动作重定向与角色化人形**：新增 5 页 `wiki/concepts/motion-retargeting-pipeline.md`、`wiki/formalizations/motion-retargeting-objective.md`、`wiki/comparisons/gmr-vs-nmr-vs-reactor.md`、`wiki/concepts/character-animation-vs-robotics.md`，覆盖「映射几何 → 目标函数 → 谱系对比 → 角色 vs 工业边界」四视角，双向回链 GMR / NMR / ReActor / SONIC / ExoActor / WBC / Sim2Real / Disney Olaf / Roboto Origin。
+    - **P2 抓取与操作感知**：新增 3 页 `wiki/methods/grasp-pose-estimation.md`、`wiki/queries/grasp-policy-selection.md`、`wiki/comparisons/anygrasp-vs-graspnet.md`，覆盖 GraspNet 三代谱系（GPD → GraspNet-1Billion → Contact-GraspNet/AnyGrasp）与「检测式 + IL/VLA」选型；同步在 `wiki/concepts/contact-rich-manipulation.md` 与 `wiki/concepts/visuo-tactile-fusion.md` 中补「抓取 → 插装 → 精细操作」三段式级联，把 P1 触觉链路与 P2 抓取链路打通。
+    - **P3 交互层**：① `docs/detail.html` + `docs/main.js` + `docs/style.css` 新增「关联页面社区分布」横向条形小图，按 link-graph 17 社区聚类显示当前节点邻域偏向；② `docs/graph.html` 新增「专题视图」切换器（10 项专题：动作重定向 / 抓取 / 触觉 / 通信协议 / WBC / Locomotion / VLA / IL+RL / Sim2Real / 状态估计），社区 id + path 片段双路并集判定，切换时自动 `fitToVisibleNodes()`。
+    - **事实库**：`schema/canonical-facts.json` 由 140 → **156** 条（+16），重点补动作重定向 5 条 / 抓取与感知 10 条 / 近期 ingest 2 条（BifrostUMI / OpenLoong）。
+- DoD 数值快照（验证日 2026-05-25 `exports/graph-stats.json` `generated_at: 2026-05-25`）：
+    | 维度 | V22 目标 | V22 实测 | 达成情况 |
+    |------|----------|----------|----------|
+    | `make lint` | 0 errors | 0 errors（419/419 wiki/entity 页 ingest 来源覆盖率 100%） | ✅ 远超 |
+    | 图谱节点 | ≥ 312 | 429 | ✅ +117 / +37.5% |
+    | 图谱边 | ≥ 2050 | 3200 | ✅ +1150 / +56.1% |
+    | 事实库 | ≥ 155 | 156 | ✅ 达标 |
+    | `community_quality_warning` | false | false（最大社区 VLA 15.9% / 17 社区） | ✅ 远超 ≤ 40% 阈值 |
+- 新建 [`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md)：专题选定「全身运动跟踪（WBT）与跨具身迁移」，配合「真机安全微调与 Sim2Real 深化」；P1 直接消化 V22 期间已 ingest 的 SONIC / SD-AMP / Heracles / Any2Any / SLowRL / BifrostUMI / BFM 等 WBT 谱系论文，P2 围绕 SLowRL 安全 LoRA / Heracles 扩散兜底等真机安全微调路径展开；P3 详情页新增「最近 ingest 时间线」与图谱专题视图扩充 3 项（WBT / 跨具身 / 真机安全）。V23 目标：节点 ≥ 445、边 ≥ 3320、事实库 ≥ 170、`largest_community_ratio ≤ 0.25`。
+- 同步将 `README.md` 维护看板 + Sources Coverage badge、`AGENTS.md` § `docs/checklists/`、`docs/README.md` 常用入口、`docs/checklists/README.md` 当前入口与历史归档的「当前清单」指针从 V22 切到 V23；V22 进入历史归档区（`docs/checklists/README.md` 历史列表追加 v22 条目）。
+- 本轮无代码改动，仅清单/日志状态回填与索引/指针同步；下一日按"每日推进一项"节奏从 V23 P0「缩写/别名归一化检索 V2」起步。
+
 ## [2026-05-25] ingest | sources/papers/slowrl_arxiv_2603_17092.md + any2any_arxiv_2605_23733.md — 接入 SLowRL（Go2 安全 LoRA 真机微调）与 Any2Any（跨具身 WBT 迁移）；沉淀 wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md、wiki/entities/paper-any2any-cross-embodiment-wbt.md；交叉更新 sim2real、locomotion、humanoid-motion-tracking-method-selection、sonic-motion-tracking
 
 - 原始资料：`sources/papers/slowrl_arxiv_2603_17092.md`（<https://arxiv.org/abs/2603.17092>）、`sources/papers/any2any_arxiv_2605_23733.md`（<https://arxiv.org/abs/2605.23733>）；索引 `sources/README.md`
