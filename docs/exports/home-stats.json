@@ -1,76 +1,36 @@
 {
-  "generated_at": "2026-05-24",
-  "node_count": 423,
-  "edge_count": 3142,
+  "generated_at": "2026-05-25",
+  "node_count": 425,
+  "edge_count": 3154,
   "coverage": {
-    "covered": 421,
-    "total": 421,
+    "covered": 423,
+    "total": 423,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
-      "detail_id": "entity-paper-worldvln-aerial-vln-wam",
-      "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
+      "path": "wiki/entities/ppf-contact-solver.md",
+      "detail_id": "entity-ppf-contact-solver",
+      "label": "ppf-contact-solver（ZOZO Contact Solver）",
       "type": "entity",
-      "recency": "2026-05-24",
+      "recency": "2026-05-25",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-05-24",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-05-24",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/easy-quadruped.md",
-      "detail_id": "entity-easy-quadruped",
-      "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
+      "path": "wiki/entities/paper-ppf-cubic-barrier-contact-solver.md",
+      "detail_id": "entity-paper-ppf-cubic-barrier-contact-solver",
+      "label": "A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness（TOG）",
       "type": "entity",
-      "recency": "2026-05-24",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/stanford-doggo-and-pupper.md",
-      "detail_id": "entity-stanford-doggo-and-pupper",
-      "label": "Stanford Doggo / Pupper（开源四足）",
-      "type": "entity",
-      "recency": "2026-05-24",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-05-24",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/gait-generation.md",
-      "detail_id": "wiki-concepts-gait-generation",
-      "label": "Gait Generation（步态生成）",
-      "type": "concept",
-      "recency": "2026-05-24",
+      "recency": "2026-05-25",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-worldvln-aerial-vln-wam.md",
-    "detail_id": "entity-paper-worldvln-aerial-vln-wam",
-    "label": "WorldVLN（空中 VLN · 自回归 World Action Model）",
+    "path": "wiki/entities/ppf-contact-solver.md",
+    "detail_id": "entity-ppf-contact-solver",
+    "label": "ppf-contact-solver（ZOZO Contact Solver）",
     "type": "entity",
-    "recency": "2026-05-24",
+    "recency": "2026-05-25",
     "source": "log.md"
   }
 }

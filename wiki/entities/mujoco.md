@@ -46,7 +46,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - `mjcf` (XML) 模型描述文件格式严谨且专为机器人设计。
 - **局限**：
   - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
-  - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱。
+  - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱；大规模 **壳/体 FEM + 亿级接触** 的离线路径见 [ppf-contact-solver](./ppf-contact-solver.md)。
 
 ## 关联页面
 - [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout

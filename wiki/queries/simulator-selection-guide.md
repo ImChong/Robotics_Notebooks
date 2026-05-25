@@ -169,3 +169,4 @@ related:
 - [MuJoCo vs Isaac Lab 对比](../comparisons/mujoco-vs-isaac-lab.md) — 仿真器系统性对比页
 - [Newton Physics](../entities/newton-physics.md) — Warp + MuJoCo Warp 可微引擎
 - [mjlab](../entities/mjlab.md) — MuJoCo Warp 上的轻量 RL 框架
+- [ppf-contact-solver](../entities/ppf-contact-solver.md) — 可变形 shell/solid/rod 离线 GPU 接触求解
