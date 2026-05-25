@@ -16,6 +16,7 @@ related:
   - ../entities/zhengyi-luo.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/holomotion.md
+  - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ./gentlehumanoid-motion-tracking.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
@@ -123,7 +124,7 @@ flowchart LR
 
 - **不是万能仿真替身**：跟踪器只能在其训练分布与机器人动力学对齐的范围内泛化；极端杂技或强接触任务仍可能失败。
 - **跳过重定向的前提**：ExoActor 显示「人体轨迹 → SONIC」可优于某些 SMPL→机器人重定向流水线，但不等于所有平台都应丢弃重定向（参见 [GMR](./motion-retargeting-gmr.md) 讨论）。
-- **硬件差异**：同一策略在不同人形硬件上仍需适配观测与动作映射。
+- **硬件差异**：同一策略在不同人形硬件上仍需适配观测与动作映射；**跨机体迁移** 可对照 [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）：运动学对齐 + 动力学 LoRA，约 **1%** 全量训练成本将 G1 上 Sonic 迁到 LimX Oli/Luna 等——与「从零训新机台 WBT」正交。
 - **演示与论文的边界**：官网视频突出系统集成；**可重复协议、随机种子与定量对比**仍以论文与后续开源实验脚本为准。
 
 ## 与其他页面的关系
@@ -135,6 +136,7 @@ flowchart LR
 - [Teleoperation](../tasks/teleoperation.md)：VR / 视频遥操作与规划器下身的工程组合参考。
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)：论文共同一作与项目核心贡献者之一，主页汇总 SONIC 与相邻人形工作入口。
 - [GentleHumanoid](./gentlehumanoid-motion-tracking.md)：同属 motion tracking 族，但显式优化 **上半身柔顺与可调接触力**，可与 SONIC 的规模化刚性跟踪对照阅读。
+- [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)：以 Sonic 为源骨干的 **跨 embodiment WBT 后训练** 系统研究（LimX Dynamics）。
 
 ## 推荐继续阅读
 
@@ -145,6 +147,7 @@ flowchart LR
 ## 参考来源
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
+- [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md) — 跨机体 WBT 迁移（含 Sonic→LimX 等）
 - NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
 
 ## 关联页面

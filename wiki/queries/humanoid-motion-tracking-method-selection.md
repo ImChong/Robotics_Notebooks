@@ -3,13 +3,14 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-05-25
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/amp.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 ---
 
@@ -73,6 +74,15 @@ flowchart TD
 
 **常见误判**：把 Heracles 当作「又一个 tracking 论文」——其贡献在 **中间层改参考命令**，底层仍是高频 tracking MDP。
 
+### 6. 已有 WBT 专家、换新人形平台
+
+| 目标 | 优先路线 | 入口 |
+|------|----------|------|
+| 保留 Sonic/Oli-WBT 等源先验，少数据迁新机 | **运动学对齐 + 动力学 LoRA（PEFT）** | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
+| 多机体联合 generalist | 多 embodiment 预训练 + 形态随机化 | 见论文 Related Work（HOVER 等）；非 Any2Any 设定 |
+
+**常见误判**：把 Any2Any 当作「从零训新机台 WBT」——其前提是 **源机体上已有成熟 checkpoint**；scaling 预训练仍走 [SONIC](../methods/sonic-motion-tracking.md) 等路线。
+
 ---
 
 ## 推荐组合 pipeline
@@ -100,6 +110,7 @@ flowchart TD
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
 - [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
+- [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
 
 ## 关联页面
 
@@ -111,6 +122,7 @@ flowchart TD
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
+- [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)、[SONIC](../methods/sonic-motion-tracking.md)
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)
 
 ## 一句话记忆

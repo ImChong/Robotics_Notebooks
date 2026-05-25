@@ -37,6 +37,8 @@ related:
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-barkour-quadruped-agility-benchmark.md
+  - ../entities/paper-slowrl-safe-lora-locomotion.md
+  - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
@@ -116,6 +118,9 @@ flowchart TD
 
 ### 6. 仿真到真实
 仿真里的摩擦、执行器带宽、关节间隙、地面柔顺性都比真实世界干净。只在仿真指标上最优的策略，常在真实机上因动作高频、冲击过大或接触模型偏差而退化。
+
+- **部署后短时段真机微调：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion.md)（Go2 trot/jump）用 **冻结预训练 + rank-1 LoRA + recovery** 做 on-robot PPO，相对全参微调强调 **墙钟与安全**；与 [Sim2Real](../concepts/sim2real.md) 中 DR/零样本叙事互补。
+- **跨机体 WBT 迁移（人形）：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 在 **运动学对齐** 后用 **LoRA** 适配动力学敏感模块，把 Sonic 等源专家迁到 LimX Oli/Luna、G1/H1 等——见 [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
 
 ## 子问题地图
 

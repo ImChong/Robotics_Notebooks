@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-25] ingest | sources/papers/slowrl_arxiv_2603_17092.md + sources/papers/any2any_arxiv_2605_23733.md — 沉淀 wiki/entities/paper-slowrl-safe-lora-locomotion.md、wiki/entities/paper-any2any-cross-embodiment-wbt.md；交叉更新 sim2real、locomotion、sonic-motion-tracking、humanoid-motion-tracking-method-selection
+
+- 原始资料：<https://arxiv.org/abs/2603.17092>（SLowRL，Go2 LoRA 安全真机微调）、<https://arxiv.org/abs/2605.23733>（Any2Any，LimX 跨机体 WBT）、LimX GitHub 生态 <https://github.com/limxdynamics>、GEAR-SONIC <https://nvlabs.github.io/GEAR-SONIC/>
+- 沉淀页面：`wiki/entities/paper-slowrl-safe-lora-locomotion.md`、`wiki/entities/paper-any2any-cross-embodiment-wbt.md`
+
 ## [2026-05-25] ingest | sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md + heracles_humanoid_diffusion_arxiv_2603_27756.md — 沉淀 wiki/entities/paper-unified-walk-run-recovery-sdamp.md、wiki/entities/paper-heracles-humanoid-diffusion.md；交叉更新 amp-reward、locomotion、balance-recovery、diffusion-motion-generation、humanoid-motion-tracking-method-selection、amp-mjlab、unitree-g1
 
 ## [2026-05-25] ingest | sources/repos/ppf-contact-solver.md — 接入 ZOZO GPU 接触求解器并沉淀 wiki/entities/ppf-contact-solver.md、wiki/entities/paper-ppf-cubic-barrier-contact-solver.md
