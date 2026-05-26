@@ -58,6 +58,7 @@ BFM 从 **大规模、多样化行为数据** 学习 **广义行为先验（broa
 
 - 沉淀概念页：[`wiki/concepts/behavior-foundation-model.md`](../../wiki/concepts/behavior-foundation-model.md) — BFM 定义、三线预训练 + 两线适应 taxonomy、与本库实体互链
 - 公众号五类问题导读：[`wiki/overview/bfm-41-papers-technology-map.md`](../../wiki/overview/bfm-41-papers-technology-map.md)（源：[`wechat_embodied_ai_lab_bfm_41_papers_survey.md`](../blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)）
+- **分篇 source 索引（2026-05-27）：** [`bfm_awesome_41_catalog.md`](../papers/bfm_awesome_41_catalog.md) — 41 论文 + 10 数据集各对应 `papers/bfm_awesome_*.md`
 - 交叉更新：
   - [`wiki/concepts/foundation-policy.md`](../../wiki/concepts/foundation-policy.md) — 区分 VLA 操作向 vs BFM 人形 WBC 向
   - [`wiki/entities/paper-behavior-foundation-model-humanoid.md`](../../wiki/entities/paper-behavior-foundation-model-humanoid.md) — 回链综述与精选列表

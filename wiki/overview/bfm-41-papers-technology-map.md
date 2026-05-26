@@ -2,7 +2,7 @@
 type: overview
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, survey, motion-tracking, foundation-model]
 status: complete
-updated: 2026-05-26
+updated: 2026-05-27
 related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
@@ -18,6 +18,7 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
+  - ../../sources/papers/bfm_awesome_41_catalog.md
 summary: "依据具身智能研究室 BFM 专题长文，把 awesome-bfm-papers 所列 41 篇论文整理为「五类问题」技术地图；核心判断：BFM 把人形运控从技能训练推向可复用、可适配、可调用的身体接口，与智元 BFM-2 运控基座叙事及众擎类 demo 需求同向。"
 ---
 
@@ -76,20 +77,26 @@ flowchart TB
 | **众擎** | 年度 demo：多动作拼接、长时程、倒地起身、抗扰 | 文内视为「运控基座需求侧验证」，**不写成已官方冠名 BFM** |
 | **学术索引** | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) + [综述 arXiv:2506.20487](https://arxiv.org/abs/2506.20487) | 41 篇编号与分组以仓库 README 为准 |
 
+## 原始资料索引（41 论文 + 10 数据集）
+
+- **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项对应独立 `sources/papers/bfm_awesome_<slug>.md`（策展摘录 + 公众号导读要点，非 PDF 全文）。
+- **编译导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+- **深读已有：** #13 → [bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)；AMASS → [amass-dataset.md](../../sources/sites/amass-dataset.md)
+
 ## 五组论文地图（41 篇）
 
-> **已有 wiki 页** 以链接标出；其余为后续按 arXiv / 项目页升格的候选。完整标题与链接见 [source 归档](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)。
+> **Source** 列指向独立原始资料页；**本库** 列标已有 wiki 深读页，其余为后续升格候选。
 
 ### 01 — Forward-backward 表征（6 篇）
 
-| # | 工作 | 要点 | 本库 |
-|---|------|------|------|
-| 01 | **BFM-Zero** | 无监督 RL + latent prompt；未见动作跟踪、奖励优化、恢复 | [BFM 实体 § 同期工作](../entities/paper-behavior-foundation-model-humanoid.md) |
-| 02 | **MetaMotivo** | Zero-shot whole-body；与 BFM-Zero 对照读 | — |
-| 03 | **FB-AW / FB-AWARE** | 潜空间要「细」才可被上层精确调用 | — |
-| 04 | **Fast Imitation** | 有基座后新动作应少走弯路 | — |
-| 05 | **Learning One Representation** | 统一 FB 嵌入服务多 reward | — |
-| 06 | **Successor States** | 未来状态分布的数学底座 | — |
+| # | 工作 | 要点 | Source | 本库 |
+|---|------|------|--------|------|
+| 01 | **BFM-Zero** | 无监督 RL + latent prompt；未见动作跟踪、奖励优化、恢复 | [01](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) | [BFM 实体 § 同期工作](../entities/paper-behavior-foundation-model-humanoid.md) |
+| 02 | **MetaMotivo** | Zero-shot whole-body；与 BFM-Zero 对照读 | [02](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md) | — |
+| 03 | **FB-AW / FB-AWARE** | 潜空间要「细」才可被上层精确调用 | [03](../../sources/papers/bfm_awesome_fb_aw_arxiv_2412_04368.md) | — |
+| 04 | **Fast Imitation** | 有基座后新动作应少走弯路 | [04](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) | — |
+| 05 | **Learning One Representation** | 统一 FB 嵌入服务多 reward | [05](../../sources/papers/bfm_awesome_learning_one_representation_neurips_2021.md) | — |
+| 06 | **Successor States** | 未来状态分布的数学底座 | [06](../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md) | — |
 
 ### 02 — Goal-conditioned 学习（19 篇）
 
@@ -129,7 +136,7 @@ flowchart TB
 
 ### 数据集（10 项，不计入 41 篇）
 
-文内强调：**上限在数据能否变成机器人可信、可执行、可迁移的训练材料**。Humanoid-X、PHUMA、Motion-X++、AMASS、HumanML3D、BABEL 等 — 见 [awesome_bfm_papers](../../sources/repos/awesome_bfm_papers.md) 与 [AMASS](../entities/amass.md)。
+文内强调：**上限在数据能否变成机器人可信、可执行、可迁移的训练材料**。独立 source 见 [catalog § 数据集](../../sources/papers/bfm_awesome_41_catalog.md#数据集10)（Humanoid-X、PHUMA、Motion-X++、Motion-X、HumanML3D、BABEL、LAFAN、PoseScript、KIT-ML；AMASS 另见 [amass-dataset](../../sources/sites/amass-dataset.md)）。
 
 ## 与 taxonomy / 身体系统栈的对照
 
@@ -158,6 +165,7 @@ flowchart TB
 
 ## 参考来源
 
+- [BFM 41 篇 + 10 数据集 source 总索引](../../sources/papers/bfm_awesome_41_catalog.md)
 - [具身智能研究室 · BFM 41 篇微信公众号编译稿](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)

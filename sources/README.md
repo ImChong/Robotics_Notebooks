@@ -41,6 +41,7 @@
 | [x] [lift_humanoid_arxiv_2601_21363.md](papers/lift_humanoid_arxiv_2601_21363.md) | LIFT：人形 JAX SAC 大规模预训练 + 物理知情世界模型安全微调（arXiv:2601.21363）摘录与 wiki 映射 |
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
 | [x] [bfm_survey_arxiv_2506_20487.md](papers/bfm_survey_arxiv_2506_20487.md) | BFM 综述：人形 WBC 行为基础模型 taxonomy（arXiv:2506.20487，IEEE TPAMI 2025）摘录与 wiki 映射 |
+| [x] [bfm_awesome_41_catalog.md](papers/bfm_awesome_41_catalog.md) | awesome-bfm-papers：**41 篇 BFM 论文 + 10 数据集** 独立 source 总索引（`papers/bfm_awesome_*.md`，配套微信公众号 41 篇专题） |
 | [x] [bifrost_umi_arxiv_2605_03452.md](papers/bifrost_umi_arxiv_2605_03452.md) | BifrostUMI：无机器人示范 + 扩散高层 + SKR + G1 全身 visuomotor（arXiv:2605.03452，BAAI Aether）摘录与 wiki 映射 |
 | [x] [barkour_arxiv_2305_14654.md](papers/barkour_arxiv_2305_14654.md) | Barkour：四足敏捷障碍课基准 + 专长 PPO + Locomotion-Transformer 蒸馏 + sim2real（arXiv:2305.14654）摘录与 wiki 映射 |
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
