@@ -2,9 +2,10 @@
 type: entity
 tags: [paper, humanoid, whole-body-control, foundation-policy, cvae, generative-policy, masked-control, dagger, privileged-training, ppo, unitree-g1, isaac-gym, amass, shanghai-ai-lab, pku, motion-tracking, teleoperation, locomotion]
 status: complete
-updated: 2026-05-18
+updated: 2026-05-26
 related:
   - ../concepts/foundation-policy.md
+  - ../concepts/behavior-foundation-model.md
   - ../concepts/whole-body-control.md
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/privileged-training.md
@@ -23,6 +24,8 @@ related:
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
+  - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
+  - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/sites/bfm4humanoid-github-io.md
 summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码条件下的行为生成」：CVAE 生成器 + 位级二值掩码统一根/关节/关键点等控制接口，掩码在线蒸馏从特权 proxy agent 学习，潜空间插值与 classifier-free 调制支持行为组合，残差解码器实现少样本新技能（Side Salto）。Unitree G1 上 motion tracking / VR 遥操作 / locomotion 单策略多接口表现与专家持平或更好。"
 ---
@@ -166,7 +169,7 @@ $$
 ## 与其他工作的关系
 
 - **BFM-Zero**（[lecar-lab.github.io/BFM-Zero](https://lecar-lab.github.io/BFM-Zero/)，arXiv:2511.04131）：同名族，但用 **无监督 RL + Forward-Backward 表示** 学 dynamics-aware 潜空间，零样本支持目标到达、轨迹跟踪与奖励优化。与本论文的 **CVAE + 特权蒸馏** 路线形成方法谱系的两端。
-- **BFM 综述**（Yuan et al., arXiv:2506.20487，IEEE TPAMI 2025）：把 BFM 作为 **next-generation WBC** 系统化梳理，本论文是该叙事下的 **CVAE 生成式 + 掩码控制接口** 代表。
+- **BFM 综述与 taxonomy**（Yuan et al., arXiv:2506.20487，IEEE TPAMI 2025；配套 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）：把 BFM 作为 **next-generation WBC** 系统化梳理；本库归纳见 [Behavior Foundation Model 概念页](../concepts/behavior-foundation-model.md)。本论文列在综述 **goal-conditioned** 线的 **真机部署代表**（CVAE + 掩码控制接口）。
 - 与 [SONIC](../methods/sonic-motion-tracking.md) 对照：SONIC 强调 **规模化 motion tracking** 单一目标下的数据/网络/算力 scaling；BFM 强调 **条件生成结构与多接口统一**。两者可作为「人形 WBC 基础模型」叙事的不同子分支。
 - 与 [EGM](../methods/egm-efficient-general-mimic.md) 对照：EGM 走 **小高质量数据 + bin 级课程 + CDMoE** 的「精炼 tracking 单任务」路线；BFM 是「多接口生成器」。
 - 与 [HOVER](https://hover-versatile-humanoid.github.io/) 对照：同为多模式 WBC，HOVER 强调 **multi-mode multi-task RL**；BFM 用 **生成式 + DAgger 蒸馏**，并显式支持 **潜空间运算**。
@@ -180,6 +183,7 @@ $$
 ## 关联页面
 
 - [Foundation Policy](../concepts/foundation-policy.md)
+- [Behavior Foundation Model（BFM 概念与综述 taxonomy）](../concepts/behavior-foundation-model.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Humanoid Policy Network Architecture](../concepts/humanoid-policy-network-architecture.md)
 - [Privileged Training](../concepts/privileged-training.md)
@@ -195,12 +199,15 @@ $$
 ## 参考来源
 
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)
+- [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
+- [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md)
 - [sources/sites/bfm4humanoid-github-io.md](../../sources/sites/bfm4humanoid-github-io.md)
 - Zeng, Lu, Yin, Niu, Dai, Wang, Pang. *Behavior Foundation Model for Humanoid Robots*. arXiv:2509.13780, 2025. <https://arxiv.org/abs/2509.13780>
 - Yuan et al., *A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots*, arXiv:2506.20487, IEEE TPAMI 2025. <https://arxiv.org/abs/2506.20487>
 
 ## 推荐继续阅读
 
+- [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — BFM 论文/项目精选列表（与 TPAMI 综述同步维护）
 - [BFM 项目主页](https://bfm4humanoid.github.io/) — 含 Roundhouse Kick / Side Salto / VR 遥操作演示视频
 - [BFM-Zero（无监督 RL + FB 表示）](https://lecar-lab.github.io/BFM-Zero/) — 同名族但方法谱系另一端
 - [HOVER 项目页](https://hover-versatile-humanoid.github.io/) — 多模式 WBC 强基线
