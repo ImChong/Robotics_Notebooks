@@ -14,13 +14,19 @@ ENTITIES_DIR = ROOT / "wiki" / "entities"
 TECH_MAP = ROOT / "wiki" / "overview" / "bfm-41-papers-technology-map.md"
 TODAY = date.today().isoformat()
 
-_SPEC = importlib.util.spec_from_file_location(
-    "bfm_sources",
-    ROOT / "scripts" / "generate_bfm_awesome_sources.py",
-)
-_bfm = importlib.util.module_from_spec(_SPEC)
-assert _SPEC and _SPEC.loader
-_SPEC.loader.exec_module(_bfm)
+def _load_bfm_sources_module():
+    spec = importlib.util.spec_from_file_location(
+        "bfm_sources",
+        ROOT / "scripts" / "generate_bfm_awesome_sources.py",
+    )
+    if spec is None or spec.loader is None:
+        raise ImportError("cannot load generate_bfm_awesome_sources.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+_bfm = _load_bfm_sources_module()
 PAPERS: list[dict] = _bfm.PAPERS
 DATASETS: list[dict] = _bfm.DATASETS
 GROUP_LABEL: dict[str, str] = _bfm.GROUP_LABEL
