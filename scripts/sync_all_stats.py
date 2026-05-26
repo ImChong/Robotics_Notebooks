@@ -61,6 +61,9 @@ def main():
     # 3. 确保 docs/exports 目录存在并同步图谱相关 JSON（与 make graph 共用逻辑）
     copy_graph_exports_to_docs()
 
+    # 3b. 与 graph-stats.generated_at 对齐 Service Worker 缓存版本
+    run_command(["python3", "scripts/sync_sw_cache_version.py"], "同步 SW 缓存版本")
+
     # 读取最新统计数据
     if not HOME_STATS_JSON.exists():
         print(f"❌ 找不到统计文件: {HOME_STATS_JSON}")

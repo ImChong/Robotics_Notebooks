@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-26",
-  "node_count": 433,
-  "edge_count": 3242,
+  "node_count": 482,
+  "edge_count": 3415,
   "coverage": {
-    "covered": 431,
-    "total": 431,
+    "covered": 480,
+    "total": 480,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bfm-01-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-01-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-41-unihsi.md",
+      "detail_id": "entity-paper-bfm-41-unihsi",
+      "label": "Unified Human-Scene Interaction via Prompted Chain-of-Contacts",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/dataset-bfm-humanoid-x.md",
+      "detail_id": "entity-dataset-bfm-humanoid-x",
+      "label": "Humanoid-X（BFM 行为数据）",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/bfm-41-papers-technology-map.md",
       "detail_id": "wiki-overview-bfm-41-papers-technology-map",
@@ -18,10 +58,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/bfm-41-papers-technology-map.md",
-    "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-    "label": "BFM 技术地图：41 篇论文的五类问题视角",
-    "type": "overview",
+    "path": "wiki/entities/paper-bfm-01-bfm-zero.md",
+    "detail_id": "entity-paper-bfm-01-bfm-zero",
+    "label": "BFM-Zero",
+    "type": "entity",
     "recency": "2026-05-27",
     "source": "log.md"
   }

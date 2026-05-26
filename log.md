@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | scripts/generate_bfm_awesome_wiki_entities.py — awesome-bfm 41 篇论文升格 wiki 实体详情页；图谱 + 搜索 + SW 缓存版本同步
+
+- 新增实体（40 篇论文）：`wiki/entities/paper-bfm-01-bfm-zero.md` … `wiki/entities/paper-bfm-41-unihsi.md`（#13 复用 `wiki/entities/paper-behavior-foundation-model-humanoid.md`）
+- 新增实体（9 个数据集）：`wiki/entities/dataset-bfm-humanoid-x.md` 等（AMASS 复用 `wiki/entities/amass.md`）
+- 交叉更新：`wiki/overview/bfm-41-papers-technology-map.md`（Wiki 实体索引表）、`scripts/sync_sw_cache_version.py`（`sync_all_stats` 链内按 `exports/graph-stats.json` bump `docs/sw.js` CACHE_NAME）
+
 ## [2026-05-27] structural | docs/checklists/github-actions-ci-gate.md — 补 CI 门禁看板并开 PR 触发全量 GitHub Actions
 
 - 变更：`docs/checklists/github-actions-ci-gate.md`、`docs/checklists/README.md`、`docs/checklists/cloud-agent-pr-workflow.md`、`schema/README.md`（交叉链接触发 Search & Export Quality Check）

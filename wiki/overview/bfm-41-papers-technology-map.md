@@ -2,7 +2,7 @@
 type: overview
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, survey, motion-tracking, foundation-model]
 status: complete
-updated: 2026-05-27
+updated: 2026-05-26
 related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
@@ -80,8 +80,74 @@ flowchart TB
 ## 原始资料索引（41 论文 + 10 数据集）
 
 - **总表：** [bfm_awesome_41_catalog.md](../../sources/papers/bfm_awesome_41_catalog.md) — 每篇/每项对应独立 `sources/papers/bfm_awesome_<slug>.md`（策展摘录 + 公众号导读要点，非 PDF 全文）。
+- **Wiki 实体：** 每篇/每项均有站内详情页，见下节 [Wiki 实体索引](#wiki-实体索引站内详情页)；图谱与搜索已收录。
 - **编译导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - **深读已有：** #13 → [bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)；AMASS → [amass-dataset.md](../../sources/sites/amass-dataset.md)
+
+## Wiki 实体索引（站内详情页）
+
+> 41 篇论文与 10 个数据集均已升格为 `wiki/entities/` 详情页（可搜索、进图谱）；#13 与 AMASS 复用既有深读页。
+
+### 论文（41）
+
+| # | 工作 | Wiki 实体 | Source |
+|---|------|-----------|--------|
+| 01 | BFM-Zero | [paper-bfm-01-bfm-zero](../entities/paper-bfm-01-bfm-zero.md) | [source](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) |
+| 02 | Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models | [paper-bfm-02-metamotivo](../entities/paper-bfm-02-metamotivo.md) | [source](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md) |
+| 03 | Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting | [paper-bfm-03-fb-aw](../entities/paper-bfm-03-fb-aw.md) | [source](../../sources/papers/bfm_awesome_fb_aw_arxiv_2412_04368.md) |
+| 04 | Fast Imitation via Behavior Foundation Models | [paper-bfm-04-fast-imitation-bfm](../entities/paper-bfm-04-fast-imitation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) |
+| 05 | Learning One Representation to Optimize All Rewards | [paper-bfm-05-learning-one-representation](../entities/paper-bfm-05-learning-one-representation.md) | [source](../../sources/papers/bfm_awesome_learning_one_representation_neurips_2021.md) |
+| 06 | Learning Successor States and Goal-Dependent Values | [paper-bfm-06-successor-states](../entities/paper-bfm-06-successor-states.md) | [source](../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md) |
+| 07 | Sonic | [paper-bfm-07-sonic](../entities/paper-bfm-07-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
+| 08 | Track Any Motions under Any Disturbances | [paper-bfm-08-opentrack](../entities/paper-bfm-08-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
+| 09 | Agility Meets Stability | [paper-bfm-09-ams](../entities/paper-bfm-09-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
+| 10 | TWIST2 | [paper-bfm-10-twist2](../entities/paper-bfm-10-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |
+| 11 | TWIST | [paper-bfm-11-twist](../entities/paper-bfm-11-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
+| 12 | CLONE | [paper-bfm-12-clone](../entities/paper-bfm-12-clone.md) | [source](../../sources/papers/bfm_awesome_clone_corl_2025.md) |
+| 13 | Behavior Foundation Model for Humanoid Robots | [paper-behavior-foundation-model-humanoid](../entities/paper-behavior-foundation-model-humanoid.md) | [source](../../sources/papers/bfm_awesome_bfm_humanoid_arxiv_2509_13780.md) |
+| 14 | HOVER | [paper-bfm-14-hover](../entities/paper-bfm-14-hover.md) | [source](../../sources/papers/bfm_awesome_hover_arxiv_2410_21229.md) |
+| 15 | InterMimic | [paper-bfm-15-intermimic](../entities/paper-bfm-15-intermimic.md) | [source](../../sources/papers/bfm_awesome_intermimic_arxiv_2502_20390.md) |
+| 16 | ModSkill | [paper-bfm-16-modskill](../entities/paper-bfm-16-modskill.md) | [source](../../sources/papers/bfm_awesome_modskill_arxiv_2502_14140.md) |
+| 17 | MaskedMimic | [paper-bfm-17-maskedmimic](../entities/paper-bfm-17-maskedmimic.md) | [source](../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md) |
+| 18 | H-GAP | [paper-bfm-18-hgap](../entities/paper-bfm-18-hgap.md) | [source](../../sources/papers/bfm_awesome_hgap_arxiv_2312_02682.md) |
+| 19 | CALM | [paper-bfm-19-calm](../entities/paper-bfm-19-calm.md) | [source](../../sources/papers/bfm_awesome_calm_siggraph_2024.md) |
+| 20 | MoConVQ | [paper-bfm-20-moconvq](../entities/paper-bfm-20-moconvq.md) | [source](../../sources/papers/bfm_awesome_moconvq_tog_2023.md) |
+| 21 | CASE | [paper-bfm-21-case](../entities/paper-bfm-21-case.md) | [source](../../sources/papers/bfm_awesome_case_arxiv_2309_11351.md) |
+| 22 | PHC | [paper-bfm-22-phc](../entities/paper-bfm-22-phc.md) | [source](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md) |
+| 23 | TeamPlay | [paper-bfm-23-teamplay](../entities/paper-bfm-23-teamplay.md) | [source](../../sources/papers/bfm_awesome_teamplay_arxiv_2105_12196.md) |
+| 24 | MTM | [paper-bfm-24-mtm](../entities/paper-bfm-24-mtm.md) | [source](../../sources/papers/bfm_awesome_mtm_arxiv_2305_02968.md) |
+| 25 | ASE | [paper-bfm-25-ase](../entities/paper-bfm-25-ase.md) | [source](../../sources/papers/bfm_awesome_ase_arxiv_2205_01906.md) |
+| 26 | Active Pretraining with Successor Features | [paper-bfm-26-aps](../entities/paper-bfm-26-aps.md) | [source](../../sources/papers/bfm_awesome_aps_icml_2021.md) |
+| 27 | Reinforcement Learning with Prototypical Representations | [paper-bfm-27-proto-rl](../entities/paper-bfm-27-proto-rl.md) | [source](../../sources/papers/bfm_awesome_proto_rl_icml_2021.md) |
+| 28 | State Entropy Maximization with Random Encoders for Efficient Exploration | [paper-bfm-28-re3](../entities/paper-bfm-28-re3.md) | [source](../../sources/papers/bfm_awesome_re3_icml_2020.md) |
+| 29 | Exploration by Random Network Distillation | [paper-bfm-29-rnd](../entities/paper-bfm-29-rnd.md) | [source](../../sources/papers/bfm_awesome_rnd_iclr_2019.md) |
+| 30 | Diversity is All You Need | [paper-bfm-30-diayn](../entities/paper-bfm-30-diayn.md) | [source](../../sources/papers/bfm_awesome_diayn_iclr_2018.md) |
+| 31 | Task Tokens | [paper-bfm-31-task-tokens](../entities/paper-bfm-31-task-tokens.md) | [source](../../sources/papers/bfm_awesome_task_tokens_arxiv_2503_22886.md) |
+| 32 | Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics | [paper-bfm-32-unseen-dynamics](../entities/paper-bfm-32-unseen-dynamics.md) | [source](../../sources/papers/bfm_awesome_unseen_dynamics_arxiv_2505_13150.md) |
+| 33 | Fast Adaptation With Behavioral Foundation Models | [paper-bfm-33-fast-adaptation-bfm](../entities/paper-bfm-33-fast-adaptation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_adaptation_bfm_corl_2025.md) |
+| 34 | SENTINEL | [paper-bfm-34-sentinel](../entities/paper-bfm-34-sentinel.md) | [source](../../sources/papers/bfm_awesome_sentinel_arxiv_2511_19236.md) |
+| 35 | BeyondMimic | [paper-bfm-35-beyondmimic](../entities/paper-bfm-35-beyondmimic.md) | [source](../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md) |
+| 36 | LeVerb | [paper-bfm-36-leverb](../entities/paper-bfm-36-leverb.md) | [source](../../sources/papers/bfm_awesome_leverb_arxiv_2506_13751.md) |
+| 37 | LangWBC | [paper-bfm-37-langwbc](../entities/paper-bfm-37-langwbc.md) | [source](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md) |
+| 38 | Tokenhsi | [paper-bfm-38-tokenhsi](../entities/paper-bfm-38-tokenhsi.md) | [source](../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md) |
+| 39 | CloSD | [paper-bfm-39-closd](../entities/paper-bfm-39-closd.md) | [source](../../sources/papers/bfm_awesome_closd_arxiv_2410_03441.md) |
+| 40 | UniPhys | [paper-bfm-40-uniphys](../entities/paper-bfm-40-uniphys.md) | [source](../../sources/papers/bfm_awesome_uniphys_arxiv_2504_12540.md) |
+| 41 | Unified Human-Scene Interaction via Prompted Chain-of-Contacts | [paper-bfm-41-unihsi](../entities/paper-bfm-41-unihsi.md) | [source](../../sources/papers/bfm_awesome_unihsi_arxiv_2309_07918.md) |
+
+### 数据集（10）
+
+| 数据集 | Wiki 实体 | Source |
+|--------|-----------|--------|
+| Humanoid-X | [dataset-bfm-humanoid-x](../entities/dataset-bfm-humanoid-x.md) | [source](../../sources/papers/bfm_awesome_dataset_humanoid_x_arxiv_2501_05098.md) |
+| PHUMA | [dataset-bfm-phuma](../entities/dataset-bfm-phuma.md) | [source](../../sources/papers/bfm_awesome_dataset_phuma_arxiv_2510_26236.md) |
+| Motion-X++ | [dataset-bfm-motion-xpp](../entities/dataset-bfm-motion-xpp.md) | [source](../../sources/papers/bfm_awesome_dataset_motion_xpp_arxiv_2501_05098.md) |
+| Motion-X | [dataset-bfm-motion-x](../entities/dataset-bfm-motion-x.md) | [source](../../sources/papers/bfm_awesome_dataset_motion_x_neurips_2023.md) |
+| PoseScript | [dataset-bfm-posescript](../entities/dataset-bfm-posescript.md) | [source](../../sources/papers/bfm_awesome_dataset_posescript_eccv_2022.md) |
+| HumanML3D | [dataset-bfm-humanml3d](../entities/dataset-bfm-humanml3d.md) | [source](../../sources/papers/bfm_awesome_dataset_humanml3d_cvpr_2022.md) |
+| BABEL | [dataset-bfm-babel](../entities/dataset-bfm-babel.md) | [source](../../sources/papers/bfm_awesome_dataset_babel_cvpr_2021.md) |
+| LAFAN | [dataset-bfm-lafan](../entities/dataset-bfm-lafan.md) | [source](../../sources/papers/bfm_awesome_dataset_lafan_tog_2020.md) |
+| AMASS | [amass](../entities/amass.md) | [source](../../sources/papers/bfm_awesome_dataset_amass_iccv_2019.md) |
+| KIT-ML | [dataset-bfm-kit-ml](../entities/dataset-bfm-kit-ml.md) | [source](../../sources/papers/bfm_awesome_dataset_kit_ml_arxiv_2016.md) |
 
 ## 五组论文地图（41 篇）
 

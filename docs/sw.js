@@ -1,11 +1,12 @@
 // Robotics Notebooks Service Worker — 离线缓存支持
-const CACHE_NAME = 'robotics-wiki-v1';
+const CACHE_NAME = 'robotics-wiki-2026-05-26';
 const ASSETS_TO_CACHE = [
   '/Robotics_Notebooks/',
   '/Robotics_Notebooks/index.html',
   '/Robotics_Notebooks/graph.html',
   '/Robotics_Notebooks/main.js',
   '/Robotics_Notebooks/search-index.json',
+  '/Robotics_Notebooks/exports/home-stats.json',
   '/Robotics_Notebooks/exports/link-graph.json',
   '/Robotics_Notebooks/exports/site-data-v1.json',
   '/Robotics_Notebooks/exports/index-v1.json',
