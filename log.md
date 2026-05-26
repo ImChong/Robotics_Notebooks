@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-26] ingest | sources/repos/simplefoc_arduino_foc.md、sources/sites/simplefoc_documentation.md — 接入 SimpleFOC 生态；沉淀 wiki/entities/simplefoc.md、wiki/concepts/field-oriented-control.md；交叉更新 wiki/overview/motor-drive-firmware-bus-protocols.md
+
 ## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md — Agent Reach 抓取具身智能研究室 BFM 41 篇专题长文并消化入库
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA

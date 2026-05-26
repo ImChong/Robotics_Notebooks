@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-26",
-  "node_count": 431,
-  "edge_count": 3232,
+  "node_count": 433,
+  "edge_count": 3243,
   "coverage": {
-    "covered": 429,
-    "total": 429,
+    "covered": 431,
+    "total": 431,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/field-oriented-control.md",
+      "detail_id": "wiki-concepts-field-oriented-control",
+      "label": "磁场定向控制（Field Oriented Control, FOC）",
+      "type": "concept",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/bfm-41-papers-technology-map.md",
       "detail_id": "wiki-overview-bfm-41-papers-technology-map",
@@ -58,10 +82,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/bfm-41-papers-technology-map.md",
-    "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-    "label": "BFM 技术地图：41 篇论文的五类问题视角",
-    "type": "overview",
+    "path": "wiki/entities/simplefoc.md",
+    "detail_id": "entity-simplefoc",
+    "label": "SimpleFOC（Arduino-FOC 生态）",
+    "type": "entity",
     "recency": "2026-05-26",
     "source": "log.md"
   }
