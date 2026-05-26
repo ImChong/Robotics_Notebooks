@@ -6,7 +6,15 @@ const fs = require('fs');
 (async () => {
   const [, , url, outPath, viewport, topic] = process.argv;
   const [W, H] = (viewport || '1440x900').split('x').map(Number);
-  const exe = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+  const candidates = [
+    process.env.CHROME_PATH,
+    '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+    '/usr/local/bin/google-chrome',
+    '/usr/bin/google-chrome',
+    '/usr/bin/chromium',
+  ].filter(Boolean);
+  const exe = candidates.find((p) => fs.existsSync(p));
+  if (!exe) throw new Error('No Chrome/Chromium found. Set CHROME_PATH.');
   const d3Body = fs.readFileSync(path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js'));
   const browser = await puppeteer.launch({
     executablePath: exe, headless: 'new',
