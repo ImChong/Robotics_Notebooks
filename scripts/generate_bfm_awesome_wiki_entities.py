@@ -120,7 +120,6 @@ def _yaml_list(items: list[str], indent: int = 0) -> str:
 
 
 def paper_entity_md(p: dict) -> str:
-    rel_path = paper_wiki_relpath(p)
     source_rel = f"../../sources/papers/bfm_awesome_{p['slug']}.md"
     related = _related_for_paper(p)
     short = _short_title(p["title"])
