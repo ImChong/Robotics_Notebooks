@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | docs/checklists/github-actions-ci-gate.md — 补 CI 门禁看板并开 PR 触发全量 GitHub Actions
+
+- 变更：`docs/checklists/github-actions-ci-gate.md`、`docs/checklists/README.md`、`docs/checklists/cloud-agent-pr-workflow.md`、`schema/README.md`（交叉链接触发 Search & Export Quality Check）
+- 目的：在 PR #387 未跑 Actions 即合并后，用 chore PR 重新拉起 `Tests` / `Wiki Lint` / `Search & Export Quality Check`；合并前以 Checks 全绿为准
+
 ## [2026-05-27] ingest | sources/papers/bfm_awesome_41_catalog.md、sources/papers/bfm_awesome_*.md（41+10）— awesome-bfm-papers 论文与数据集分别入库；消化更新 wiki/overview/bfm-41-papers-technology-map.md
 
 - 原始资料：[`sources/papers/bfm_awesome_41_catalog.md`](sources/papers/bfm_awesome_41_catalog.md) 及 51 个 `bfm_awesome_<slug>.md`（41 篇论文 + 10 数据集；#13 交叉指向既有 [`bfm_humanoid_arxiv_2509_13780.md`](sources/papers/bfm_humanoid_arxiv_2509_13780.md)）；生成脚本 [`scripts/generate_bfm_awesome_sources.py`](scripts/generate_bfm_awesome_sources.py)；索引 [`sources/README.md`](sources/README.md)

@@ -24,7 +24,11 @@ PAPERS: list[dict] = [
         "code": "https://github.com/LeCAR-Lab/BFM-Zero",
         "group": "forward-backward",
         "note": "latent prompt 统一目标姿态、奖励优化、恢复与少样本适配；技能切换≈搜索身体潜空间，接近产业「运控基座」。",
-        "wiki": ["wiki/entities/paper-behavior-foundation-model-humanoid.md", "wiki/concepts/behavior-foundation-model.md", "wiki/overview/bfm-41-papers-technology-map.md"],
+        "wiki": [
+            "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+            "wiki/concepts/behavior-foundation-model.md",
+            "wiki/overview/bfm-41-papers-technology-map.md",
+        ],
     },
     {
         "id": 2,
@@ -36,7 +40,10 @@ PAPERS: list[dict] = [
         "code": "https://github.com/facebookresearch/metamotivo",
         "group": "forward-backward",
         "note": "与 BFM-Zero 对照：zero-shot WBC 依赖可调用行为表示，任务变时尽量在潜空间找方向而非重训。",
-        "wiki": ["wiki/concepts/behavior-foundation-model.md", "wiki/overview/bfm-41-papers-technology-map.md"],
+        "wiki": [
+            "wiki/concepts/behavior-foundation-model.md",
+            "wiki/overview/bfm-41-papers-technology-map.md",
+        ],
     },
     {
         "id": 3,
@@ -60,7 +67,10 @@ PAPERS: list[dict] = [
         "code": "",
         "group": "forward-backward",
         "note": "有行为基座后新动作应少走弯路；降低技能扩展的真机数据与训练成本。",
-        "wiki": ["wiki/methods/imitation-learning.md", "wiki/concepts/behavior-foundation-model.md"],
+        "wiki": [
+            "wiki/methods/imitation-learning.md",
+            "wiki/concepts/behavior-foundation-model.md",
+        ],
     },
     {
         "id": 5,
@@ -96,7 +106,10 @@ PAPERS: list[dict] = [
         "code": "https://nvlabs.github.io/SONIC/",
         "group": "goal-conditioned",
         "note": "supersizing motion tracking；运控基座被上层调用前底层动作覆盖面必须足够宽。",
-        "wiki": ["wiki/methods/sonic-motion-tracking.md", "wiki/overview/bfm-41-papers-technology-map.md"],
+        "wiki": [
+            "wiki/methods/sonic-motion-tracking.md",
+            "wiki/overview/bfm-41-papers-technology-map.md",
+        ],
     },
     {
         "id": 8,
@@ -397,7 +410,10 @@ PAPERS: list[dict] = [
         "code": "",
         "group": "adaptation",
         "note": "负载/地面/硬件参数变化下的零样本动力学适配。",
-        "wiki": ["wiki/concepts/sim2real.md", "wiki/entities/paper-any2any-cross-embodiment-wbt.md"],
+        "wiki": [
+            "wiki/concepts/sim2real.md",
+            "wiki/entities/paper-any2any-cross-embodiment-wbt.md",
+        ],
     },
     {
         "id": 33,
@@ -421,7 +437,10 @@ PAPERS: list[dict] = [
         "code": "",
         "group": "hierarchical",
         "note": "语言–全身动作端到端；中间须有处理平衡/接触的身体通道。",
-        "wiki": ["wiki/methods/vla.md", "wiki/overview/humanoid-rl-motion-control-body-system-stack.md"],
+        "wiki": [
+            "wiki/methods/vla.md",
+            "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+        ],
     },
     {
         "id": 35,
@@ -645,24 +664,26 @@ GROUP_LABEL = {
 
 def paper_md(p: dict) -> str:
     code_line = f"- **代码/项目：** <{p['code']}>\n" if p.get("code") else "- **代码/项目：** N/A\n"
-    wiki_lines = "\n".join(f"  - [{w.split('/')[-1].replace('.md', '')}](../../{w})" for w in p["wiki"])
-    return f"""# {p['title']}
+    wiki_lines = "\n".join(
+        f"  - [{w.split('/')[-1].replace('.md', '')}](../../{w})" for w in p["wiki"]
+    )
+    return f"""# {p["title"]}
 
-> 来源归档（ingest · awesome-bfm-papers 第 {p['id']:02d}/41）
+> 来源归档（ingest · awesome-bfm-papers 第 {p["id"]:02d}/41）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** paper
-- **BFM 分类：** {GROUP_LABEL[p['group']]}（[awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）
-- **出处：** {p['year']} · {p['venue']}
-- **论文链接：** <{p['paper']}>
+- **BFM 分类：** {GROUP_LABEL[p["group"]]}（[awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）
+- **出处：** {p["year"]} · {p["venue"]}
+- **论文链接：** <{p["paper"]}>
 {code_line}- **索引来源：** [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) · [具身智能研究室 BFM 41 篇编译](../blogs/{WECHAT})（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
 - **入库日期：** {TODAY}
-- **一句话说明：** {p['note']}
+- **一句话说明：** {p["note"]}
 
 ## 核心摘录（策展，非全文）
 
-- **在 BFM 技术地图中的位置：** {GROUP_LABEL[p['group']]}，编号 **{p['id']:02d}/41**。
-- **公众号导读要点：** {p['note']}
+- **在 BFM 技术地图中的位置：** {GROUP_LABEL[p["group"]]}，编号 **{p["id"]:02d}/41**。
+- **公众号导读要点：** {p["note"]}
 - **读者动作：** 方法细节以论文 PDF / 项目页为准；谱系对照见 [BFM 41 篇技术地图](../../wiki/overview/bfm-41-papers-technology-map.md) 与 [Behavior Foundation Model](../../wiki/concepts/behavior-foundation-model.md)。
 
 ## 对 wiki 的映射
@@ -671,31 +692,33 @@ def paper_md(p: dict) -> str:
 
 ## 参考来源（原始）
 
-- 论文：<{p['paper']}>
+- 论文：<{p["paper"]}>
 - 策展列表：<https://github.com/friedrichyuan/awesome-bfm-papers>
 - 微信公众号编译：[wechat_embodied_ai_lab_bfm_41_papers_survey.md](../blogs/{WECHAT})
 """
 
 
 def dataset_md(d: dict) -> str:
-    wiki_lines = "\n".join(f"  - [{w.split('/')[-1].replace('.md', '')}](../../{w})" for w in d["wiki"])
+    wiki_lines = "\n".join(
+        f"  - [{w.split('/')[-1].replace('.md', '')}](../../{w})" for w in d["wiki"]
+    )
     existing = ""
     if d.get("existing"):
         existing = f"\n- **本库已有归档：** [`{d['existing']}`](../sites/amass-dataset.md)（本文件补 awesome-bfm 数据集表索引位）\n"
-    return f"""# {d['name']}（BFM 行为数据 · awesome-bfm-papers 数据集表）
+    return f"""# {d["name"]}（BFM 行为数据 · awesome-bfm-papers 数据集表）
 
 > 来源归档（ingest · 数据集）
 
-- **名称：** {d['name']}
+- **名称：** {d["name"]}
 - **类型：** dataset
 - **BFM 数据索引：** [awesome-bfm-papers § Datasets](https://github.com/friedrichyuan/awesome-bfm-papers#datasets)
-- **出处：** {d['year']} · {d['venue']}
-- **规模：** {d['clips']} clips · {d['hours']} h（列表标注）
-- **论文链接：** <{d['paper']}>
-- **代码/入口：** <{d['code']}>
+- **出处：** {d["year"]} · {d["venue"]}
+- **规模：** {d["clips"]} clips · {d["hours"]} h（列表标注）
+- **论文链接：** <{d["paper"]}>
+- **代码/入口：** <{d["code"]}>
 - **索引来源：** [具身智能研究室 BFM 41 篇编译](../blogs/{WECHAT})
 - **入库日期：** {TODAY}
-- **一句话说明：** {d['note']}{existing}
+- **一句话说明：** {d["note"]}{existing}
 
 ## 核心摘录（策展）
 
@@ -708,7 +731,7 @@ def dataset_md(d: dict) -> str:
 
 ## 参考来源（原始）
 
-- 数据集论文/页：<{d['paper']}>
+- 数据集论文/页：<{d["paper"]}>
 - awesome-bfm-papers：<https://github.com/friedrichyuan/awesome-bfm-papers>
 """
 
@@ -719,9 +742,9 @@ def catalog_md(papers_written: list[dict], datasets_written: list[dict]) -> str:
         "",
         "> 来源归档（catalog）",
         "",
-        f"- **维护列表：** <https://github.com/friedrichyuan/awesome-bfm-papers>",
+        "- **维护列表：** <https://github.com/friedrichyuan/awesome-bfm-papers>",
         f"- **微信公众号导读：** [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../blogs/{WECHAT})",
-        f"- **wiki 技术地图：** [bfm-41-papers-technology-map.md](../../wiki/overview/bfm-41-papers-technology-map.md)",
+        "- **wiki 技术地图：** [bfm-41-papers-technology-map.md](../../wiki/overview/bfm-41-papers-technology-map.md)",
         f"- **入库日期：** {TODAY}",
         "- **一句话说明：** 将 awesome-bfm-papers 所列 **41 篇 BFM 论文** 与 **10 个数据集** 分别落成独立 `sources/papers/bfm_awesome_*` 归档，便于 ingest 溯源与 lint 入链统计。",
         "",
@@ -762,14 +785,14 @@ def main() -> None:
         if p.get("skip") and (ROOT / "sources/papers" / f"{p['slug']}.md").exists():
             # cross-ref stub for #13
             if p["id"] == 13:
-                stub = f"""# {p['title']}（索引位 · 已有深读归档）
+                stub = f"""# {p["title"]}（索引位 · 已有深读归档）
 
 > 本条目对应 awesome-bfm-papers **第 13/41** 篇；完整 ingest 见既有归档。
 
 - **主归档：** [bfm_humanoid_arxiv_2509_13780.md](bfm_humanoid_arxiv_2509_13780.md)
 - **wiki：** [paper-behavior-foundation-model-humanoid.md](../../wiki/entities/paper-behavior-foundation-model-humanoid.md)
-- **BFM 分类：** {GROUP_LABEL[p['group']]}
-- **论文：** <{p['paper']}>
+- **BFM 分类：** {GROUP_LABEL[p["group"]]}
+- **论文：** <{p["paper"]}>
 """
                 out.write_text(stub, encoding="utf-8")
                 created += 1
