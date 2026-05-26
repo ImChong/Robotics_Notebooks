@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "d3": "^7.9.0",
     "eslint": "^10.4.0",
     "globals": "^17.6.0",
     "puppeteer-core": "^25.0.4"
