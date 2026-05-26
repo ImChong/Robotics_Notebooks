@@ -198,6 +198,45 @@ class TestExpandQueryAliases(unittest.TestCase):
         _, expansions = expand_query_aliases(["wbc"])
         self.assertTrue(any("whole-body control" == dst for _, dst in expansions))
 
+    def test_v22_abbreviations_expand_to_full(self):
+        """V23 P0：V22 期间新增的高频缩写必须可双向展开。"""
+        cases = [
+            ("WBT", "whole-body tracking"),
+            ("BFM", "behavior foundation model"),
+            ("DAgger", "dataset aggregation"),
+            ("RSI", "reference state initialization"),
+            ("RFC", "residual force control"),
+            ("RMA", "rapid motor adaptation"),
+            ("EMA", "exponential moving average"),
+            ("LoRA", "low-rank adaptation"),
+            ("DoF", "degrees of freedom"),
+        ]
+        for abbrev, full in cases:
+            with self.subTest(abbrev=abbrev):
+                expanded, expansions = expand_query_aliases([abbrev])
+                self.assertIn(abbrev, expanded)
+                self.assertIn(full, expanded)
+                self.assertTrue(any(dst == full for _, dst in expansions))
+
+    def test_v22_full_phrases_expand_to_abbreviation(self):
+        """V23 P0：V22 缩写的反向展开（全称 → 缩写）必须命中规范缩写（大写化形式）。"""
+        cases = [
+            (["whole-body", "tracking"], "WBT"),
+            (["behavior", "foundation", "model"], "BFM"),
+            (["dataset", "aggregation"], "DAGGER"),
+            (["reference", "state", "initialization"], "RSI"),
+            (["residual", "force", "control"], "RFC"),
+            (["rapid", "motor", "adaptation"], "RMA"),
+            (["exponential", "moving", "average"], "EMA"),
+            (["low-rank", "adaptation"], "LORA"),
+            (["degrees", "of", "freedom"], "DOF"),
+        ]
+        for tokens, expected_abbrev in cases:
+            with self.subTest(tokens=tokens):
+                expanded, expansions = expand_query_aliases(tokens)
+                self.assertIn(expected_abbrev, expanded)
+                self.assertTrue(any(dst == expected_abbrev for _, dst in expansions))
+
 
 if __name__ == "__main__":
     unittest.main()

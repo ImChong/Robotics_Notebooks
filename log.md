@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-26] checklist-v23 | scripts/search_wiki_core.py、tests/test_search_wiki_core.py — V23 P0「缩写/别名归一化检索 V2」收口
+
+- 变更：`scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补齐 9 条 V22 期间高频缩写（**WBT** / **BFM** / **DAgger** / **RSI** / **RFC** / **RMA** / **EMA** / **LoRA** / **DoF**），共 25 条；映射均双向化（`_build_alias_indexes` 自动构造 forward + reverse）。
+- 测试：`tests/test_search_wiki_core.py` 新增两组 subTest——`test_v22_abbreviations_expand_to_full`（9 条缩写 → 全称展开）与 `test_v22_full_phrases_expand_to_abbreviation`（9 条全称 → 缩写大写化反向命中），`python -m unittest tests.test_search_wiki_core -v` 26/26 通过。
+- 门禁：`ruff check`、`ruff format --check`、`PYTHONPATH=scripts mypy scripts/search_wiki_core.py` 均绿。
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P0「缩写/别名归一化检索 V2」打勾。
+
 ## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — Agent Reach 重抓两篇微信公众号长文；42+19 篇论文分别入库并升格 wiki 实体节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）

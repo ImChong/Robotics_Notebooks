@@ -53,6 +53,15 @@ WIKI_ABBREVIATIONS: dict[str, list[str]] = {
     "lip": ["linear inverted pendulum"],
     "zmp": ["zero moment point"],
     "tsid": ["task-space inverse dynamics"],
+    "wbt": ["whole-body tracking"],
+    "bfm": ["behavior foundation model"],
+    "dagger": ["dataset aggregation"],
+    "rsi": ["reference state initialization"],
+    "rfc": ["residual force control"],
+    "rma": ["rapid motor adaptation"],
+    "ema": ["exponential moving average"],
+    "lora": ["low-rank adaptation"],
+    "dof": ["degrees of freedom"],
 }
 
 
