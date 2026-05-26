@@ -1835,28 +1835,40 @@
     if (!Array.isArray(currentTags) || !currentTags.length) return [];
     maxResults = typeof maxResults === 'number' ? maxResults : 5;
     var tagSet = {};
-    currentTags.forEach(function (tag) { tagSet[tag] = true; });
+    for (var t = 0; t < currentTags.length; t++) {
+      tagSet[currentTags[t]] = true;
+    }
 
     var scored = [];
-    Object.keys(detailPages).forEach(function (id) {
-      if (id === currentId) return;
-      var page = detailPages[id] || {};
-      var pageTags = Array.isArray(page.tags) ? page.tags : [];
+    // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
+    // Expected impact: Eliminates intermediate array allocations of all page IDs and closures, reducing memory overhead and GC pressure when rendering related tags.
+    for (var id in detailPages) {
+      if (!Object.prototype.hasOwnProperty.call(detailPages, id) || id === currentId) continue;
+      var page = detailPages[id];
+      if (!page) continue;
+      var pageTags = page.tags;
+      if (!Array.isArray(pageTags)) continue;
+
       var matchCount = 0;
-      pageTags.forEach(function (tag) {
-        if (tagSet[tag]) matchCount++;
-      });
+      for (var j = 0; j < pageTags.length; j++) {
+        if (tagSet[pageTags[j]]) matchCount++;
+      }
       if (matchCount > 0) {
         scored.push({ id: id, page: page, score: matchCount, topTag: pageTags[0] || '' });
       }
-    });
+    }
 
     scored.sort(function (a, b) {
       if (b.score !== a.score) return b.score - a.score;
       return (b.page.title || '').localeCompare(a.page.title || '');
     });
 
-    return scored.slice(0, maxResults).map(function (item) { return item.id; });
+    var result = [];
+    var limit = Math.min(scored.length, maxResults);
+    for (var k = 0; k < limit; k++) {
+      result.push(scored[k].id);
+    }
+    return result;
   }
 
   function resolveDetailPage(detailId, detailPages) {
