@@ -20,3 +20,4 @@
 - 提交与 CI 命令：[../docs/contributing-ci.md](../docs/contributing-ci.md)
 - 贡献总入口：[../CONTRIBUTING.md](../CONTRIBUTING.md)
 - 自动化维护者说明：[../AGENTS.md](../AGENTS.md)
+- 合并前 GitHub Actions 门禁（非 schema 正文）：[../docs/checklists/github-actions-ci-gate.md](../docs/checklists/github-actions-ci-gate.md)

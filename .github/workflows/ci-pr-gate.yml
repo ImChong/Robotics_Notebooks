@@ -1,0 +1,35 @@
+# 轻量 smoke：用于确认 GitHub Actions 已对 push/PR 恢复调度。
+# 若本 workflow 仍不出现 run，请到仓库 Settings → Actions 启用 Actions（与 Claude/Cursor App checks 无关）。
+name: CI PR Gate (smoke)
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-pr-gate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Report context
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "sha=${{ github.sha }}"
+          echo "workflow=${{ github.workflow }}"
+          python3 --version
+
+      - name: Workflow files present
+        run: ls -la .github/workflows/
