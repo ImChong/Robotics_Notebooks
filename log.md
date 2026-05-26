@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-26] ingest | sources/repos/awesome_bfm_papers.md、sources/papers/bfm_survey_arxiv_2506_20487.md — 接入 awesome-bfm-papers 与 BFM 综述；沉淀 wiki/concepts/behavior-foundation-model.md；交叉更新 foundation-policy、whole-body-control、paper-behavior-foundation-model-humanoid、humanoid-rl-motion-control-body-system-stack
+
+- 原始资料：<https://github.com/friedrichyuan/awesome-bfm-papers>、[`sources/papers/bfm_survey_arxiv_2506_20487.md`](sources/papers/bfm_survey_arxiv_2506_20487.md)（arXiv:2506.20487）；索引 [`sources/README.md`](sources/README.md)
+- 沉淀页面：[`wiki/concepts/behavior-foundation-model.md`](wiki/concepts/behavior-foundation-model.md)（BFM 定义、预训练三线 + 适应两线 taxonomy、Mermaid 流程图）
+- 交叉更新：[`wiki/concepts/foundation-policy.md`](wiki/concepts/foundation-policy.md)、[`wiki/concepts/whole-body-control.md`](wiki/concepts/whole-body-control.md)、[`wiki/entities/paper-behavior-foundation-model-humanoid.md`](wiki/entities/paper-behavior-foundation-model-humanoid.md)、[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)
+
 ## [2026-05-25] checklist-v22 | DoD 收口 & 初始化 V23
 
 - V22 DoD 最后一项「`log.md` 记录 V22 关键改动」收口：本条目即为兑现物，把 V22 P0–P3 与 DoD 数值快照沉淀到日志，与 [`docs/checklists/tech-stack-next-phase-checklist-v22.md`](docs/checklists/tech-stack-next-phase-checklist-v22.md) 同步勾选并标注 2026-05-25 验证日期。

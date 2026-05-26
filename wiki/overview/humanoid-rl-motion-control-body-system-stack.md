@@ -19,6 +19,7 @@ related:
   - ../entities/paper-doorman-opening-sim2real-door.md
   - ../entities/paper-viral-humanoid-visual-sim2real.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
+  - ../concepts/behavior-foundation-model.md
   - ../entities/gr00t-wholebodycontrol.md
 sources:
   - ../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md

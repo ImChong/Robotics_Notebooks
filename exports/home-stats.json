@@ -1,100 +1,60 @@
 {
-  "generated_at": "2026-05-25",
-  "node_count": 429,
-  "edge_count": 3200,
+  "generated_at": "2026-05-26",
+  "node_count": 430,
+  "edge_count": 3214,
   "coverage": {
-    "covered": 427,
-    "total": 427,
+    "covered": 428,
+    "total": 428,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
-      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
-      "label": "SLowRL：安全低秩 RL 真机运动微调",
-      "type": "entity",
-      "recency": "2026-05-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-any2any-cross-embodiment-wbt.md",
-      "detail_id": "entity-paper-any2any-cross-embodiment-wbt",
-      "label": "Any2Any：跨具身高效全身跟踪迁移",
-      "type": "entity",
-      "recency": "2026-05-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
       "type": "concept",
-      "recency": "2026-05-25",
+      "recency": "2026-05-26",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-05-25",
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-05-26",
       "source": "log.md"
     },
     {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-05-25",
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-05-26",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-05-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
       "type": "entity",
-      "recency": "2026-05-25",
+      "recency": "2026-05-26",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-      "detail_id": "entity-paper-heracles-humanoid-diffusion",
-      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-      "type": "entity",
-      "recency": "2026-05-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ppf-contact-solver.md",
-      "detail_id": "entity-ppf-contact-solver",
-      "label": "ppf-contact-solver（ZOZO Contact Solver）",
-      "type": "entity",
-      "recency": "2026-05-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-ppf-cubic-barrier-contact-solver.md",
-      "detail_id": "entity-paper-ppf-cubic-barrier-contact-solver",
-      "label": "A Cubic Barrier with Elasticity-Inclusive Dynamic Stiffness（TOG）",
-      "type": "entity",
-      "recency": "2026-05-25",
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-26",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
-    "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
-    "label": "SLowRL：安全低秩 RL 真机运动微调",
-    "type": "entity",
-    "recency": "2026-05-25",
+    "path": "wiki/concepts/behavior-foundation-model.md",
+    "detail_id": "wiki-concepts-behavior-foundation-model",
+    "label": "Behavior Foundation Model（行为基础模型，BFM）",
+    "type": "concept",
+    "recency": "2026-05-26",
     "source": "log.md"
   }
 }
