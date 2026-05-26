@@ -14,6 +14,7 @@ ENTITIES_DIR = ROOT / "wiki" / "entities"
 TECH_MAP = ROOT / "wiki" / "overview" / "bfm-41-papers-technology-map.md"
 TODAY = date.today().isoformat()
 
+
 def _load_bfm_sources_module():
     spec = importlib.util.spec_from_file_location(
         "bfm_sources",
