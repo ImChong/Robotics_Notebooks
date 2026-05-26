@@ -20,6 +20,7 @@ related:
   - ../entities/paper-viral-humanoid-visual-sim2real.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../concepts/behavior-foundation-model.md
+  - ./bfm-41-papers-technology-map.md
   - ../entities/gr00t-wholebodycontrol.md
 sources:
   - ../../sources/sites/wechat-embodied-ai-lab-humanoid-rl-motion-survey-2026-05-18.md

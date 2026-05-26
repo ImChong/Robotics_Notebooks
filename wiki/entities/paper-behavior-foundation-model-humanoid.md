@@ -26,6 +26,7 @@ sources:
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
   - ../../sources/repos/awesome_bfm_papers.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/sites/bfm4humanoid-github-io.md
 summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码条件下的行为生成」：CVAE 生成器 + 位级二值掩码统一根/关节/关键点等控制接口，掩码在线蒸馏从特权 proxy agent 学习，潜空间插值与 classifier-free 调制支持行为组合，残差解码器实现少样本新技能（Side Salto）。Unitree G1 上 motion tracking / VR 遥操作 / locomotion 单策略多接口表现与专家持平或更好。"
 ---

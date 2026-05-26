@@ -1,18 +1,42 @@
 {
   "generated_at": "2026-05-26",
-  "node_count": 430,
-  "edge_count": 3214,
+  "node_count": 431,
+  "edge_count": 3232,
   "coverage": {
-    "covered": 428,
-    "total": 428,
+    "covered": 429,
+    "total": 429,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/bfm-41-papers-technology-map.md",
+      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
+      "label": "BFM 技术地图：41 篇论文的五类问题视角",
+      "type": "overview",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/behavior-foundation-model.md",
       "detail_id": "wiki-concepts-behavior-foundation-model",
       "label": "Behavior Foundation Model（行为基础模型，BFM）",
       "type": "concept",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
       "recency": "2026-05-26",
       "source": "log.md"
     },
@@ -31,29 +55,13 @@
       "type": "concept",
       "recency": "2026-05-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
-      "type": "entity",
-      "recency": "2026-05-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-05-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/behavior-foundation-model.md",
-    "detail_id": "wiki-concepts-behavior-foundation-model",
-    "label": "Behavior Foundation Model（行为基础模型，BFM）",
-    "type": "concept",
+    "path": "wiki/overview/bfm-41-papers-technology-map.md",
+    "detail_id": "wiki-overview-bfm-41-papers-technology-map",
+    "label": "BFM 技术地图：41 篇论文的五类问题视角",
+    "type": "overview",
     "recency": "2026-05-26",
     "source": "log.md"
   }
