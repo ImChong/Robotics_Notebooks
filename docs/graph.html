@@ -739,12 +739,18 @@
       top: 12px; left: 20px;
       z-index: 30;
       width: 260px;
+      height: 520px;
+      display: flex;
+      flex-direction: column;
       background: rgba(13,17,23,0.97);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
       backdrop-filter: blur(14px);
       box-shadow: 0 8px 32px rgba(0,0,0,0.55);
       overflow: hidden;
+    }
+    .filter-panel > :not(.filter-resize-handle):not(.filter-body) {
+      flex-shrink: 0;
     }
     .filter-header {
       display: flex; align-items: center; justify-content: space-between;
@@ -793,7 +799,8 @@
       display: flex;
       flex-direction: column;
       gap: 1px;
-      max-height: 240px;
+      flex: 1 1 auto;
+      min-height: 72px;
       overflow-y: auto;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
@@ -865,6 +872,87 @@
       padding: 10px 14px 14px;
       font-size: .74rem;
       color: rgba(255,255,255,0.4);
+    }
+
+    /* 筛选面板缩放把手（右侧 / 下侧 / 右下角，参照 RL Sim2Sim Demo） */
+    .filter-resize-handle {
+      position: absolute;
+      z-index: 4;
+      touch-action: none;
+    }
+    .filter-resize-e {
+      top: 18px;
+      right: 0;
+      width: 8px;
+      bottom: 18px;
+      cursor: ew-resize;
+    }
+    .filter-resize-s {
+      left: 18px;
+      right: 0;
+      bottom: 0;
+      height: 8px;
+      cursor: ns-resize;
+    }
+    .filter-resize-se {
+      right: 0;
+      bottom: 0;
+      width: 16px;
+      height: 16px;
+      cursor: nwse-resize;
+      background: transparent;
+    }
+    .filter-resize-se::before {
+      content: '';
+      position: absolute;
+      right: 4px;
+      bottom: 4px;
+      width: 8px;
+      height: 8px;
+      border-right: 1.5px solid rgba(0, 212, 255, 0.45);
+      border-bottom: 1.5px solid rgba(0, 212, 255, 0.45);
+      border-bottom-right-radius: 3px;
+      pointer-events: none;
+      transition: border-color .18s ease;
+    }
+    .filter-resize-e:hover,
+    .filter-resize-e:active,
+    .filter-resize-s:hover,
+    .filter-resize-s:active {
+      background-color: rgba(0, 212, 255, 0.12);
+    }
+    .filter-resize-se:hover::before,
+    .filter-resize-se:active::before {
+      border-color: rgba(0, 212, 255, 0.9);
+    }
+    [data-theme="light"] .filter-resize-e:hover,
+    [data-theme="light"] .filter-resize-e:active,
+    [data-theme="light"] .filter-resize-s:hover,
+    [data-theme="light"] .filter-resize-s:active {
+      background-color: rgba(22, 89, 180, 0.1);
+    }
+    [data-theme="light"] .filter-resize-se::before {
+      border-color: rgba(22, 89, 180, 0.45);
+    }
+    [data-theme="light"] .filter-resize-se:hover::before,
+    [data-theme="light"] .filter-resize-se:active::before {
+      border-color: rgba(22, 89, 180, 0.85);
+    }
+    body.filter-panel-resizing {
+      user-select: none;
+      cursor: inherit;
+    }
+    @media (max-width: 768px) {
+      .filter-resize-handle { display: none; }
+      .filter-panel {
+        width: min(260px, calc(100vw - 40px));
+        height: auto;
+        max-height: min(72vh, 520px);
+      }
+      .filter-body {
+        max-height: 240px;
+        flex: none;
+      }
     }
 
     /* ── 右侧详情侧边栏 ── */
@@ -1133,6 +1221,9 @@
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
+      <div class="filter-resize-handle filter-resize-e" role="separator" aria-label="拖拽右边框调整面板宽度" tabindex="-1"></div>
+      <div class="filter-resize-handle filter-resize-s" role="separator" aria-label="拖拽下边框调整面板高度" tabindex="-1"></div>
+      <div class="filter-resize-handle filter-resize-se" role="separator" aria-label="拖拽右下角调整面板大小" tabindex="-1"></div>
     </div>
 
     <div id="graph-hint">
@@ -2001,6 +2092,133 @@
         }
       }
     });
+
+    /* ── 筛选面板尺寸（可拖拽缩放，尺寸写入 localStorage）── */
+    const FILTER_PANEL_SIZE_KEY = 'graph-filter-panel-size';
+    const FILTER_PANEL_DEFAULT_SIZE = { width: 260, height: 520 };
+    const FILTER_PANEL_MIN_SIZE = { width: 220, height: 280 };
+
+    function isFilterPanelResizeEnabled() {
+      return !window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function getFilterPanelMaxSize() {
+      const panelTop = 12;
+      const panelLeft = 20;
+      const canvasTop = 58 + 46;
+      return {
+        width: Math.max(FILTER_PANEL_MIN_SIZE.width, window.innerWidth - panelLeft - 24),
+        height: Math.max(FILTER_PANEL_MIN_SIZE.height, window.innerHeight - canvasTop - panelTop - 12)
+      };
+    }
+
+    function clampFilterPanelSize(width, height) {
+      const max = getFilterPanelMaxSize();
+      return {
+        width: Math.round(Math.min(max.width, Math.max(FILTER_PANEL_MIN_SIZE.width, width))),
+        height: Math.round(Math.min(max.height, Math.max(FILTER_PANEL_MIN_SIZE.height, height)))
+      };
+    }
+
+    function loadFilterPanelSize() {
+      if (!isFilterPanelResizeEnabled()) {
+        return { ...FILTER_PANEL_DEFAULT_SIZE };
+      }
+      try {
+        const raw = localStorage.getItem(FILTER_PANEL_SIZE_KEY);
+        if (!raw) return { ...FILTER_PANEL_DEFAULT_SIZE };
+        const parsed = JSON.parse(raw);
+        return clampFilterPanelSize(
+          parsed.width ?? FILTER_PANEL_DEFAULT_SIZE.width,
+          parsed.height ?? FILTER_PANEL_DEFAULT_SIZE.height
+        );
+      } catch {
+        return { ...FILTER_PANEL_DEFAULT_SIZE };
+      }
+    }
+
+    function saveFilterPanelSize(width, height) {
+      if (!isFilterPanelResizeEnabled()) return;
+      try {
+        localStorage.setItem(FILTER_PANEL_SIZE_KEY, JSON.stringify({ width, height }));
+      } catch { /* ignore */ }
+    }
+
+    function applyFilterPanelSize(width, height) {
+      if (!filterPanel || !isFilterPanelResizeEnabled()) return;
+      const size = clampFilterPanelSize(width, height);
+      filterPanel.style.width = size.width + 'px';
+      filterPanel.style.height = size.height + 'px';
+      return size;
+    }
+
+    let filterPanelResize = null;
+
+    function startFilterPanelResize(edge, event) {
+      if (!isFilterPanelResizeEnabled() || !filterPanel) return;
+      const rect = filterPanel.getBoundingClientRect();
+      filterPanelResize = {
+        edge,
+        startX: event.clientX,
+        startY: event.clientY,
+        startW: rect.width,
+        startH: rect.height
+      };
+      document.addEventListener('mousemove', onFilterPanelResizeMove);
+      document.addEventListener('mouseup', endFilterPanelResize);
+      document.body.classList.add('filter-panel-resizing');
+    }
+
+    function onFilterPanelResizeMove(event) {
+      if (!filterPanelResize) return;
+      const dx = event.clientX - filterPanelResize.startX;
+      const dy = event.clientY - filterPanelResize.startY;
+      let w = filterPanelResize.startW;
+      let h = filterPanelResize.startH;
+      const edge = filterPanelResize.edge;
+      if (edge.includes('e')) w += dx;
+      if (edge.includes('s')) h += dy;
+      const size = applyFilterPanelSize(w, h);
+      const cursor = edge === 'e' ? 'ew-resize' : edge === 's' ? 'ns-resize' : 'nwse-resize';
+      document.body.style.cursor = cursor;
+      if (size) {
+        filterPanelResize.liveW = size.width;
+        filterPanelResize.liveH = size.height;
+      }
+    }
+
+    function endFilterPanelResize() {
+      if (!filterPanelResize) return;
+      if (filterPanelResize.liveW != null && filterPanelResize.liveH != null) {
+        saveFilterPanelSize(filterPanelResize.liveW, filterPanelResize.liveH);
+      }
+      filterPanelResize = null;
+      document.removeEventListener('mousemove', onFilterPanelResizeMove);
+      document.removeEventListener('mouseup', endFilterPanelResize);
+      document.body.classList.remove('filter-panel-resizing');
+      document.body.style.cursor = '';
+    }
+
+    (function initFilterPanelSize() {
+      if (!filterPanel) return;
+      const size = loadFilterPanelSize();
+      applyFilterPanelSize(size.width, size.height);
+      filterPanel.querySelectorAll('.filter-resize-handle').forEach(handle => {
+        handle.addEventListener('mousedown', ev => {
+          ev.preventDefault();
+          ev.stopPropagation();
+          const edge = handle.classList.contains('filter-resize-se') ? 'se'
+            : handle.classList.contains('filter-resize-s') ? 's' : 'e';
+          startFilterPanelResize(edge, ev);
+        });
+      });
+      window.addEventListener('resize', () => {
+        if (!isFilterPanelResizeEnabled() || !filterPanel) return;
+        const rect = filterPanel.getBoundingClientRect();
+        const next = applyFilterPanelSize(rect.width, rect.height);
+        if (next) saveFilterPanelSize(next.width, next.height);
+      });
+    })();
 
     /* ── 筛选面板开关 ── */
     filterToggle.addEventListener('click', () => {
