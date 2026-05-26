@@ -902,15 +902,24 @@
     });
   }
 
+  function revealMermaidLightboxStage(stage, body) {
+    if (!stage || !body) return;
+    resetMermaidLightboxView(stage);
+    fitMermaidLightboxToView(stage, body);
+    stage.classList.remove('mermaid-lightbox-stage-pending');
+    if (mermaidLightboxEl) mermaidLightboxEl.classList.remove('mermaid-lightbox-loading');
+  }
+
   function mountMermaidLightboxSvg(stage, body, svgClone) {
     if (!stage || !body || !svgClone) return;
     body.innerHTML = '';
     stage.innerHTML = '';
+    stage.className = 'mermaid-lightbox-stage mermaid-lightbox-stage-pending';
     stage.appendChild(svgClone);
     body.appendChild(stage);
     requestAnimationFrame(function () {
       requestAnimationFrame(function () {
-        fitMermaidLightboxToView(stage, body);
+        revealMermaidLightboxStage(stage, body);
       });
     });
   }
@@ -920,10 +929,8 @@
     var box = ensureMermaidLightbox();
     var body = box.querySelector('.mermaid-lightbox-body');
     if (!body) return;
-    var stage = document.createElement('div');
-    stage.className = 'mermaid-lightbox-stage';
-    body.innerHTML = '';
-    body.appendChild(stage);
+    body.innerHTML = '<p class="mermaid-lightbox-status" role="status">正在生成高清预览…</p>';
+    box.classList.add('mermaid-lightbox-loading');
     box.hidden = false;
     box.setAttribute('aria-hidden', 'false');
     document.body.classList.add('mermaid-lightbox-open');
@@ -933,6 +940,7 @@
         closeMermaidLightbox();
         return;
       }
+      var stage = document.createElement('div');
       mountMermaidLightboxSvg(stage, body, svgClone);
     });
     var closeBtn = box.querySelector('.mermaid-lightbox-close');
@@ -943,6 +951,7 @@
     if (!mermaidLightboxEl || mermaidLightboxEl.hidden) return;
     mermaidLightboxEl.hidden = true;
     mermaidLightboxEl.setAttribute('aria-hidden', 'true');
+    mermaidLightboxEl.classList.remove('mermaid-lightbox-loading');
     var body = mermaidLightboxEl.querySelector('.mermaid-lightbox-body');
     if (body) {
       body.innerHTML = '';
