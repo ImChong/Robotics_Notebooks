@@ -18,8 +18,9 @@ git push -u origin <branch-name>
 
 ## 3. 创建或更新 Pull Request
 
-- 使用仓库的 PR 管理流程创建草稿或正式 PR，`base_branch` 与任务要求一致（未指定时默认 `main`）。
+- 使用仓库的 PR 管理流程创建 **正式 PR**（非 Draft），`base_branch` 与任务要求一致（未指定时默认 `main`），以便触发 `pull_request` 上的全量 Actions。
 - PR 正文应包含：**摘要**（改了什么、为什么）、**风险或回滚注意**（如有）、**关联 issue**（如有）。
+- **合并前必须等 GitHub Actions 全绿**：至少 `Tests`、`Wiki Lint`；若改动 `wiki/` / `sources/` / `scripts/` / `schema/`，还需 `Search & Export Quality Check`（常需 7–10 分钟）。详见 [GitHub Actions CI 门禁](github-actions-ci-gate.md)。本地 `make ci-preflight` 不能替代 PR Checks。
 
 ## 4. 验证截图（推荐默认执行）
 
