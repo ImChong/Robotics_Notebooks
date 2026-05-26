@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — Agent Reach 重抓两篇微信公众号长文；42+19 篇论文分别入库并升格 wiki 实体节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）、[`sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）；抓取落盘 [`sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md`](sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)、[`sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md`](sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
+- 论文 source：[`sources/papers/humanoid_rl_stack_42_catalog.md`](sources/papers/humanoid_rl_stack_42_catalog.md) + 42× `humanoid_rl_stack_*`；[`sources/papers/humanoid_amp_survey_19_catalog.md`](sources/papers/humanoid_amp_survey_19_catalog.md) + 19× `humanoid_amp_survey_*`；生成脚本 [`scripts/generate_humanoid_stack_survey.py`](scripts/generate_humanoid_stack_survey.py)
+- 沉淀实体（61）：`wiki/entities/paper-hrl-stack-01-*.md` … `paper-hrl-stack-42-*.md`；`wiki/entities/paper-amp-survey-01-*.md` … `paper-amp-survey-19-*.md`
+- 交叉更新：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-05-27] structural | scripts/generate_bfm_awesome_wiki_entities.py — awesome-bfm 41 篇论文升格 wiki 实体详情页；图谱 + 搜索 + SW 缓存版本同步
 
 - 新增实体（40 篇论文）：`wiki/entities/paper-bfm-01-bfm-zero.md` … `wiki/entities/paper-bfm-41-unihsi.md`（#13 复用 `wiki/entities/paper-behavior-foundation-model-humanoid.md`）
