@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] ingest | sources/papers/bfm_awesome_41_catalog.md、sources/papers/bfm_awesome_*.md（41+10）— awesome-bfm-papers 论文与数据集分别入库；消化更新 wiki/overview/bfm-41-papers-technology-map.md
+
+- 原始资料：[`sources/papers/bfm_awesome_41_catalog.md`](sources/papers/bfm_awesome_41_catalog.md) 及 51 个 `bfm_awesome_<slug>.md`（41 篇论文 + 10 数据集；#13 交叉指向既有 [`bfm_humanoid_arxiv_2509_13780.md`](sources/papers/bfm_humanoid_arxiv_2509_13780.md)）；生成脚本 [`scripts/generate_bfm_awesome_sources.py`](scripts/generate_bfm_awesome_sources.py)；索引 [`sources/README.md`](sources/README.md)
+- 沉淀/交叉更新：[`wiki/overview/bfm-41-papers-technology-map.md`](wiki/overview/bfm-41-papers-technology-map.md)（原始资料索引节、01 组 Source 列）、[`sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md`](sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+
 ## [2026-05-26] ingest | sources/repos/simplefoc_arduino_foc.md、sources/sites/simplefoc_documentation.md — 接入 SimpleFOC 生态；沉淀 wiki/entities/simplefoc.md、wiki/concepts/field-oriented-control.md；交叉更新 wiki/overview/motor-drive-firmware-bus-protocols.md
 
 ## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md — Agent Reach 抓取具身智能研究室 BFM 41 篇专题长文并消化入库
