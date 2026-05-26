@@ -58,3 +58,4 @@
 - [x] Agent Reach + Camoufox 正文抓取与归纳摘要
 - [x] wiki 主页面映射确认
 - [x] 与 AMP 姊妹篇交叉引用
+- [x] 42 篇论文各建 `sources/papers/humanoid_rl_stack_*` + `wiki/entities/paper-hrl-stack-*`（见 [humanoid_rl_stack_42_catalog.md](../papers/humanoid_rl_stack_42_catalog.md)）

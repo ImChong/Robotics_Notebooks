@@ -78,3 +78,4 @@
 - [x] Agent Reach + Camoufox 正文抓取与归纳摘要
 - [x] 19 篇论文索引与五段叙事
 - [x] wiki 主页面映射确认
+- [x] 19 篇论文各建 `sources/papers/humanoid_amp_survey_*` + `wiki/entities/paper-amp-survey-*`（见 [humanoid_amp_survey_19_catalog.md](../papers/humanoid_amp_survey_19_catalog.md)）

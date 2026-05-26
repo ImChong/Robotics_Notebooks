@@ -19,6 +19,7 @@ related:
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/papers/amp.md
 summary: "依据具身智能研究室 AMP 专题长文，把 19 篇运动先验论文整理为「分布约束 → 人形走跑 → 多技能 → 交互与长时程」四段检索表；核心主张：AMP 把人类运动分布嵌入 RL，补足任务完成之后仍不像身体的问题，并演化为可复用、条件化的底层先验模块。"
 ---
@@ -131,10 +132,36 @@ flowchart TB
 | G1 上统一走 + 跌倒恢复工程实现？ | [amp-mjlab](../entities/amp-mjlab.md)、[mimickit](../entities/mimickit.md) |
 | 世界模型在身体栈哪一层？ | [robot-world-models-training-loop-taxonomy](./robot-world-models-training-loop-taxonomy.md) |
 
+## Wiki 实体索引（站内详情页）
+
+> 以下 19 篇均已升格为 `wiki/entities/` 详情页（可搜索、进图谱）。
+
+| # | 论文 | 实体页 |
+|---|------|--------|
+| 01 | AMP | [paper-amp-survey-01-amp.md](../entities/paper-amp-survey-01-amp.md) |
+| 02 | Physics-Based Motion Imitation with Adversarial Differential Discriminators | [paper-amp-survey-02-physics_based_motion_imitation_with.md](../entities/paper-amp-survey-02-physics_based_motion_imitation_with.md) |
+| 03 | SMP | [paper-amp-survey-03-smp.md](../entities/paper-amp-survey-03-smp.md) |
+| 04 | Kimodo | [paper-amp-survey-04-kimodo.md](../entities/paper-amp-survey-04-kimodo.md) |
+| 05 | MotionBricks | [paper-amp-survey-05-motionbricks.md](../entities/paper-amp-survey-05-motionbricks.md) |
+| 06 | Natural Humanoid Robot Locomotion with Generative Motion Prior | [paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) |
+| 07 | Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning | [paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](../entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md) |
+| 08 | MoRE | [paper-amp-survey-08-more.md](../entities/paper-amp-survey-08-more.md) |
+| 09 | Hiking in the Wild | [paper-amp-survey-09-hiking_in_the_wild.md](../entities/paper-amp-survey-09-hiking_in_the_wild.md) |
+| 10 | Unified Walking, Running, and Recovery for Humanoids via State-Dependent Adversarial Motion Priors | [paper-amp-survey-10-unified_walking_running_and_recovery.md](../entities/paper-amp-survey-10-unified_walking_running_and_recovery.md) |
+| 11 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-amp-survey-11-towards_adaptive_humanoid_control_vi.md](../entities/paper-amp-survey-11-towards_adaptive_humanoid_control_vi.md) |
+| 12 | HAML | [paper-amp-survey-12-haml.md](../entities/paper-amp-survey-12-haml.md) |
+| 13 | Humanoid Goalkeeper | [paper-amp-survey-13-humanoid_goalkeeper.md](../entities/paper-amp-survey-13-humanoid_goalkeeper.md) |
+| 14 | HUSKY | [paper-amp-survey-14-husky.md](../entities/paper-amp-survey-14-husky.md) |
+| 15 | PhysHSI | [paper-amp-survey-15-physhsi.md](../entities/paper-amp-survey-15-physhsi.md) |
+| 16 | CLOT | [paper-amp-survey-16-clot.md](../entities/paper-amp-survey-16-clot.md) |
+| 17 | TeamHOI | [paper-amp-survey-17-teamhoi.md](../entities/paper-amp-survey-17-teamhoi.md) |
+| 18 | Deep Whole-body Parkour | [paper-amp-survey-18-deep_whole_body_parkour.md](../entities/paper-amp-survey-18-deep_whole_body_parkour.md) |
+| 19 | Embrace Collisions | [paper-amp-survey-19-embrace_collisions.md](../entities/paper-amp-survey-19-embrace_collisions.md) |
+
 ## 局限
 
 - 公众号标题写「20 篇」、正文编号至 19；本页 **不臆造第 20 篇**。
-- 「仅在源文中提及」的工作（GMP、ALMI、MoRE、HAML、PhysHSI、CLOT、TeamHOI 等）**尚无独立 wiki 页**；升格时应以各论文官方来源为准。
+- 上表 19 篇均已各有 `wiki/entities/paper-amp-survey-*` **索引节点**；AMP / ADD / SMP 等另有 `wiki/methods/` 方法页。实体页为策展摘要，细节以论文 PDF / 项目页为准。
 - 策展框架不等于领域共识；与 [ULTRA Survey](../tasks/ultra-survey.md) 等其它综述可能分层不同。
 
 ## 关联页面
