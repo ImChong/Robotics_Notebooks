@@ -739,7 +739,6 @@
       top: 12px; left: 20px;
       z-index: 30;
       width: 260px;
-      height: 520px;
       display: flex;
       flex-direction: column;
       background: rgba(13,17,23,0.97);
@@ -881,7 +880,7 @@
       touch-action: none;
     }
     .filter-resize-e {
-      top: 18px;
+      top: 44px;
       right: 0;
       width: 8px;
       bottom: 18px;
@@ -942,16 +941,44 @@
       user-select: none;
       cursor: inherit;
     }
+    #filter-panel-scrim {
+      display: none;
+    }
     @media (max-width: 768px) {
-      .filter-resize-handle { display: none; }
+      .filter-resize-handle {
+        display: none !important;
+        pointer-events: none !important;
+      }
       .filter-panel {
-        width: min(260px, calc(100vw - 40px));
-        height: auto;
+        width: min(260px, calc(100vw - 40px)) !important;
+        height: auto !important;
         max-height: min(72vh, 520px);
       }
       .filter-body {
         max-height: 240px;
         flex: none;
+      }
+      .filter-close {
+        padding: 8px 10px;
+        min-width: 36px;
+        min-height: 36px;
+      }
+      #filter-panel-scrim {
+        position: fixed;
+        top: calc(var(--header-h) + 46px);
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 29;
+        background: rgba(0,0,0,0.42);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .22s ease;
+      }
+      #filter-panel-scrim.is-visible {
+        display: block;
+        opacity: 1;
+        pointer-events: auto;
       }
     }
 
@@ -1175,6 +1202,7 @@
     </div>
 
     <!-- ── 筛选浮窗面板 ── -->
+    <div id="filter-panel-scrim" hidden aria-hidden="true"></div>
     <div id="filter-panel" class="filter-panel" hidden>
       <div class="filter-header">
         <span id="filter-panel-title">🔍 图谱筛选</span>
@@ -1356,6 +1384,31 @@
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
+    const filterPanelScrim = document.getElementById('filter-panel-scrim');
+
+    function isFilterPanelMobileMode() {
+      return window.matchMedia('(max-width: 768px)').matches;
+    }
+
+    function setFilterPanelOpen(open) {
+      if (!filterPanel) return;
+      filterPanel.hidden = !open;
+      if (!filterPanelScrim) return;
+      if (isFilterPanelMobileMode() && open) {
+        filterPanelScrim.classList.add('is-visible');
+        filterPanelScrim.hidden = false;
+        filterPanelScrim.setAttribute('aria-hidden', 'false');
+      } else {
+        filterPanelScrim.classList.remove('is-visible');
+        filterPanelScrim.hidden = true;
+        filterPanelScrim.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    if (filterPanelScrim) {
+      filterPanelScrim.addEventListener('click', () => setFilterPanelOpen(false));
+    }
+
     let colorMode = 'community';
     let activeFilters = new Set();
     let communityColorMap = new Map();
@@ -2058,6 +2111,7 @@
       const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
       const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
       const onFilterPanel = ev.target.closest && ev.target.closest('#filter-panel');
+      const onFilterScrim = ev.target.closest && ev.target.closest('#filter-panel-scrim');
       const onFilterToggle = ev.target.closest && ev.target.closest('#filter-toggle');
       const onLegendPanel = ev.target.closest && ev.target.closest('#graph-legend');
       const onLegendFab = ev.target.closest && ev.target.closest('#graph-legend-fab');
@@ -2068,9 +2122,9 @@
         const panel = document.getElementById('physics-panel');
         if (panel && !panel.hidden) panel.hidden = true;
       }
-      if (!onFilterPanel && !onFilterToggle) {
+      if (!onFilterPanel && !onFilterToggle && !onFilterScrim) {
         const fpanel = document.getElementById('filter-panel');
-        if (fpanel && !fpanel.hidden) fpanel.hidden = true;
+        if (fpanel && !fpanel.hidden) setFilterPanelOpen(false);
       }
       if (legendDrawerOpen && !onLegendPanel && !onLegendFab && !onLegendScrim) {
         closeLegendDrawer();
@@ -2084,7 +2138,7 @@
     document.addEventListener('keydown', ev => {
       if (ev.key === 'Escape') {
         document.getElementById('physics-panel').hidden = true;
-        document.getElementById('filter-panel').hidden = true;
+        setFilterPanelOpen(false);
         closeLegendDrawer();
         if (isMobile && pinnedNode) {
           pinnedNode = null;
@@ -2144,12 +2198,29 @@
       } catch { /* ignore */ }
     }
 
+    function clearFilterPanelInlineSize() {
+      if (!filterPanel) return;
+      filterPanel.style.width = '';
+      filterPanel.style.height = '';
+    }
+
     function applyFilterPanelSize(width, height) {
       if (!filterPanel || !isFilterPanelResizeEnabled()) return;
       const size = clampFilterPanelSize(width, height);
       filterPanel.style.width = size.width + 'px';
       filterPanel.style.height = size.height + 'px';
       return size;
+    }
+
+    function syncFilterPanelSizeMode() {
+      if (!filterPanel) return;
+      if (!isFilterPanelResizeEnabled()) {
+        clearFilterPanelInlineSize();
+        endFilterPanelResize();
+        return;
+      }
+      const size = loadFilterPanelSize();
+      applyFilterPanelSize(size.width, size.height);
     }
 
     let filterPanelResize = null;
@@ -2201,8 +2272,7 @@
 
     (function initFilterPanelSize() {
       if (!filterPanel) return;
-      const size = loadFilterPanelSize();
-      applyFilterPanelSize(size.width, size.height);
+      syncFilterPanelSizeMode();
       filterPanel.querySelectorAll('.filter-resize-handle').forEach(handle => {
         handle.addEventListener('mousedown', ev => {
           ev.preventDefault();
@@ -2213,16 +2283,16 @@
         });
       });
       window.addEventListener('resize', () => {
-        if (!isFilterPanelResizeEnabled() || !filterPanel) return;
-        const rect = filterPanel.getBoundingClientRect();
-        const next = applyFilterPanelSize(rect.width, rect.height);
-        if (next) saveFilterPanelSize(next.width, next.height);
+        syncFilterPanelSizeMode();
+        if (filterPanel && !filterPanel.hidden) {
+          setFilterPanelOpen(true);
+        }
       });
     })();
 
     /* ── 筛选面板开关 ── */
     filterToggle.addEventListener('click', () => {
-      filterPanel.hidden = !filterPanel.hidden;
+      setFilterPanelOpen(filterPanel.hidden);
     });
 
     // V17: 社区高亮功能 / V22: 扩展支持类型与健康度筛选
@@ -2248,8 +2318,9 @@
       applyFilters();
       updateFilterCount();
     });
-    document.getElementById('filter-close').addEventListener('click', () => {
-      filterPanel.hidden = true;
+    document.getElementById('filter-close').addEventListener('click', (ev) => {
+      ev.stopPropagation();
+      setFilterPanelOpen(false);
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
       activeFilters.clear();
