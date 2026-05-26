@@ -734,6 +734,10 @@
     }
 
     /* ── 筛选浮窗面板 ── */
+    .filter-panel[hidden] {
+      display: none !important;
+      pointer-events: none;
+    }
     .filter-panel {
       position: absolute;
       top: 12px; left: 20px;
@@ -943,6 +947,10 @@
     }
     #filter-panel-scrim {
       display: none;
+    }
+    #filter-panel-scrim[hidden]:not(.is-visible) {
+      display: none !important;
+      pointer-events: none;
     }
     @media (max-width: 768px) {
       .filter-resize-handle {
@@ -1393,6 +1401,7 @@
     function setFilterPanelOpen(open) {
       if (!filterPanel) return;
       filterPanel.hidden = !open;
+      filterPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
       if (!filterPanelScrim) return;
       if (isFilterPanelMobileMode() && open) {
         filterPanelScrim.classList.add('is-visible');

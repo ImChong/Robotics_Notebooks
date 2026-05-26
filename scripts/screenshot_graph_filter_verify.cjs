@@ -66,7 +66,21 @@ async function openFilterPanel(page) {
   await new Promise((r) => setTimeout(r, 500));
   await page.waitForFunction(() => {
     const panel = document.getElementById('filter-panel');
-    return panel && !panel.hidden;
+    if (!panel || panel.hidden) return false;
+    return window.getComputedStyle(panel).display !== 'none';
+  }, { timeout: 5000 });
+}
+
+async function waitFilterPanelClosed(page) {
+  await page.waitForFunction(() => {
+    const panel = document.getElementById('filter-panel');
+    if (!panel || panel.hidden) return true;
+    return window.getComputedStyle(panel).display === 'none';
+  }, { timeout: 5000 });
+  await page.waitForFunction(() => {
+    const scrim = document.getElementById('filter-panel-scrim');
+    if (!scrim) return true;
+    return !scrim.classList.contains('is-visible') && window.getComputedStyle(scrim).display === 'none';
   }, { timeout: 5000 });
 }
 
@@ -99,20 +113,22 @@ async function openFilterPanel(page) {
       return { right: r.right, bottom: r.bottom };
     });
     await mobile.mouse.click(Math.min(385, panelBox.right + 40), Math.min(800, panelBox.bottom + 80));
-    await new Promise((r) => setTimeout(r, 400));
-    let closed = await mobile.evaluate(() => {
-      const panel = document.getElementById('filter-panel');
-      const scrim = document.getElementById('filter-panel-scrim');
-      return Boolean(panel?.hidden && !scrim?.classList.contains('is-visible'));
-    });
-    if (!closed) {
+    try {
+      await waitFilterPanelClosed(mobile);
+    } catch {
       await mobile.click('#filter-close');
-      await new Promise((r) => setTimeout(r, 300));
-      closed = await mobile.evaluate(() => document.getElementById('filter-panel')?.hidden);
+      await waitFilterPanelClosed(mobile);
     }
-    if (!closed) {
-      throw new Error('Mobile filter panel did not close after scrim/close tap');
+    const stillVisible = await mobile.evaluate(() => {
+      const panel = document.getElementById('filter-panel');
+      if (!panel || panel.hidden) return false;
+      const s = window.getComputedStyle(panel);
+      return s.display !== 'none';
+    });
+    if (stillVisible) {
+      throw new Error('Filter panel still visible in computed style after close');
     }
+    await new Promise((r) => setTimeout(r, 350));
     const mobileClosedOut = path.join(OUT_DIR, 'graph-filter-panel-mobile-after-close.png');
     await mobile.screenshot({ path: mobileClosedOut, fullPage: false });
     console.log('Saved:', mobileClosedOut);
