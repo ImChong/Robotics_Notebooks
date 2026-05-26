@@ -82,6 +82,10 @@ CANONICAL_TOPIC_PAGES: dict[str, str] = {
     "whole-body control": "wiki/concepts/whole-body-control.md",
     "mpc": "wiki/methods/model-predictive-control.md",
     "model predictive control": "wiki/methods/model-predictive-control.md",
+    "cbf": "wiki/concepts/control-barrier-function.md",
+    "control barrier function": "wiki/concepts/control-barrier-function.md",
+    "vla": "wiki/methods/vla.md",
+    "vision-language-action": "wiki/methods/vla.md",
 }
 
 COMPARISON_INTENT_MARKERS = frozenset(
