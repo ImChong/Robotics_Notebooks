@@ -121,6 +121,7 @@
 | [x] [caveman.md](repos/caveman.md) | JuliusBrussee/caveman：多 harness 洞穴语输出/上下文压缩技能（~65% 输出 token 宣称，MIT） |
 | [x] [mattpocock-skills.md](repos/mattpocock-skills.md) | mattpocock/skills：Skills For Real Engineers（grill、CONTEXT.md、TDD、架构卫生；skills.sh 安装） |
 | [x] [sensenova-skills.md](repos/sensenova-skills.md) | OpenSenseNova/SenseNova-Skills：Agent Skills 办公技能库（信息图/PPT/Excel/深度研究；Hermes/OpenClaw，MIT） |
+| [x] [simplefoc_arduino_foc.md](repos/simplefoc_arduino_foc.md) | SimpleFOC / Arduino-FOC：跨 MCU 开源 FOC 库与 Shield/Mini 硬件生态（BLDC/步进） |
 | [x] [hxxxz0_daji.md](repos/hxxxz0_daji.md) | Hxxxz0/DAJI：语言条件人形预期关节意图官方代码（arXiv:2605.14417） |
 | [x] [panniantong_agent_reach.md](repos/panniantong_agent_reach.md) | Panniantong/Agent-Reach：编码代理互联网接入脚手架（CLI + doctor + 可插拔渠道与上游工具链） |
 | [x] [crisp_real2sim_repo.md](repos/crisp_real2sim_repo.md) | CRISP-Real2Sim：ICLR 2026 单目视频 Real2Sim 官方代码入口索引 |
@@ -179,6 +180,7 @@
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
+| [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |
 | [x] [jc-bao-spider-project-github-io.md](sites/jc-bao-spider-project-github-io.md) | SPIDER 项目页 jc-bao.github.io/spider-project（管线、交互可视化、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
