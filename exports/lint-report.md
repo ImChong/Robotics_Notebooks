@@ -76,4 +76,4 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：428/428 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：429/429 (100%) wiki/entity 页有 ingest 来源

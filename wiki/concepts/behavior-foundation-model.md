@@ -6,6 +6,7 @@ updated: 2026-05-26
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
+  - ../overview/bfm-41-papers-technology-map.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
 summary: "Behavior Foundation Model（BFM）在大规模多样化行为数据上预训练广义行为先验，使人形全身控制可零样本或快速适应多下游任务；与 VLA 操作向基础策略互补，预训练常分 goal-conditioned、intrinsic-reward、forward-backward 三线，适应分微调与层次化控制两线。"
 ---
 
@@ -111,9 +113,11 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — awesome 列表 + 公众号五类问题导读
 
 ## 参考来源
 
+- [具身智能研究室 · BFM 41 篇专题（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
 - [BFM 综述（arXiv:2506.20487）](../../sources/papers/bfm_survey_arxiv_2506_20487.md)
 - [awesome-bfm-papers 精选列表](../../sources/repos/awesome_bfm_papers.md)
 - [BFM 论文 ingest（arXiv:2509.13780）](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md)

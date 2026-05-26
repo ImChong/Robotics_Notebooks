@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md — Agent Reach 抓取具身智能研究室 BFM 41 篇专题长文并消化入库
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox），Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA
+- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md`](sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）；配套 [`sources/repos/awesome_bfm_papers.md`](sources/repos/awesome_bfm_papers.md)、[`sources/papers/bfm_survey_arxiv_2506_20487.md`](sources/papers/bfm_survey_arxiv_2506_20487.md)；索引 [`sources/README.md`](sources/README.md)
+- 沉淀页面：[`wiki/overview/bfm-41-papers-technology-map.md`](wiki/overview/bfm-41-papers-technology-map.md)（五类问题 × 41 篇地图 + Mermaid + 智元/众擎策展观察）
+- 交叉更新：[`wiki/concepts/behavior-foundation-model.md`](wiki/concepts/behavior-foundation-model.md)、[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/entities/paper-behavior-foundation-model-humanoid.md`](wiki/entities/paper-behavior-foundation-model-humanoid.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-05-26] ingest | sources/repos/awesome_bfm_papers.md、sources/papers/bfm_survey_arxiv_2506_20487.md — 接入 awesome-bfm-papers 与 BFM 综述；沉淀 wiki/concepts/behavior-foundation-model.md；交叉更新 foundation-policy、whole-body-control、paper-behavior-foundation-model-humanoid、humanoid-rl-motion-control-body-system-stack
 
 - 原始资料：<https://github.com/friedrichyuan/awesome-bfm-papers>、[`sources/papers/bfm_survey_arxiv_2506_20487.md`](sources/papers/bfm_survey_arxiv_2506_20487.md)（arXiv:2506.20487）；索引 [`sources/README.md`](sources/README.md)
