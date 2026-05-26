@@ -305,7 +305,9 @@ def patch_tech_map() -> bool:
     if note.strip() not in text and old in text:
         text = text.replace(old, old + note)
     if f"updated: {TODAY}" not in text.split("---", 2)[0]:
-        text = re.sub(r"^updated: \d{4}-\d{2}-\d{2}", f"updated: {TODAY}", text, count=1, flags=re.M)
+        text = re.sub(
+            r"^updated: \d{4}-\d{2}-\d{2}", f"updated: {TODAY}", text, count=1, flags=re.M
+        )
     TECH_MAP.write_text(text, encoding="utf-8")
     return True
 
