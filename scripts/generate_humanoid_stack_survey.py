@@ -421,7 +421,7 @@ def hrl_catalog_md(papers: list[dict]) -> str:
         "> 来源归档（catalog）",
         "",
         f"- **微信公众号：** [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/{WECHAT_HRL})（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）",
-        f"- **wiki 总览：** [humanoid-rl-motion-control-body-system-stack.md](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)",
+        "- **wiki 总览：** [humanoid-rl-motion-control-body-system-stack.md](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)",
         f"- **入库日期：** {TODAY}",
         "- **一句话说明：** 将具身智能研究室 42 篇 humanoid RL 运动控制论文分别落成独立 `sources/papers/humanoid_rl_stack_*` 与 `wiki/entities/paper-hrl-stack-*` 节点。",
         "",
@@ -454,7 +454,7 @@ def amp_catalog_md(papers: list[dict]) -> str:
         "> 来源归档（catalog）",
         "",
         f"- **微信公众号：** [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/{WECHAT_AMP})（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）",
-        f"- **wiki 总览：** [humanoid-amp-motion-prior-survey.md](../../wiki/overview/humanoid-amp-motion-prior-survey.md)",
+        "- **wiki 总览：** [humanoid-amp-motion-prior-survey.md](../../wiki/overview/humanoid-amp-motion-prior-survey.md)",
         f"- **入库日期：** {TODAY}",
         "- **一句话说明：** 将 AMP 专题 19 篇论文分别落成独立 source 与 `wiki/entities/paper-amp-survey-*` 节点。",
         "",
@@ -493,9 +493,7 @@ def overview_entity_index(papers: list[dict], survey: str) -> str:
     for p in papers:
         ent = entity_filename(p)
         short = _short_title(p["title"])
-        lines.append(
-            f"| {p['num']:02d} | {short} | [{ent}](../entities/{ent}) |"
-        )
+        lines.append(f"| {p['num']:02d} | {short} | [{ent}](../entities/{ent}) |")
     return "\n".join(lines)
 
 
@@ -504,7 +502,7 @@ def patch_overview(path: Path, marker: str, section: str) -> None:
     if marker in text:
         # replace existing section
         pattern = re.compile(
-            rf"\n## Wiki 实体索引.*?(?=\n## |\Z)",
+            r"\n## Wiki 实体索引.*?(?=\n## |\Z)",
             re.DOTALL,
         )
         text = pattern.sub(section, text, count=1)
