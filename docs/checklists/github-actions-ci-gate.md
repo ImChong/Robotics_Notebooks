@@ -21,10 +21,21 @@
 
 本地 **`make ci-preflight`** 与 GitHub Actions **互补**：提交前本地预检；PR 上仍以 Actions 检查结果为准。
 
+## 若 PR 只有 Claude/Cursor checks、没有 GitHub Actions
+
+在 commit 的 check-suites 里若只看到 **Claude**、**Cursor** 为 `queued`，而 **没有任何** `Tests` / `Wiki Lint` / `CI PR Gate` 等 Actions 工作流 run（Actions 页 `created > 合并时间` 仍为 0），说明：
+
+- **第三方 App checks ≠ GitHub Actions**；App 能排队不代表 Actions 已启用。
+- 请在仓库 **Settings → Actions → General**：
+  - 选择 **Allow all actions and reusable workflows**（或至少允许本仓库列出的工作流）；
+  - 确认未勾选全局 **Disable actions**；
+  - 组织仓库还需检查 **Org → Settings → Actions** 是否对成员仓库禁用了 Actions。
+- 恢复后：打开 [Actions](https://github.com/ImChong/Robotics_Notebooks/actions)，对 **CI PR Gate (smoke)** 或 **Tests** 点 **Run workflow**，分支选 PR 头分支；或在 PR 上 **Re-run all jobs** / 再 push 一次触发 `synchronize`。
+
 ## 合并前检查清单
 
 1. 打开 PR 页 **Checks** 标签，确认上述三项均为绿色（非「跳过 / 未运行」）。
-2. 若 Checks 为空：到仓库 **Settings → Actions** 确认已启用；在 Actions 页对 `Tests` 等手动 **Run workflow** 排查。
+2. 若 Checks 为空或仅有 App checks：按上一节启用 Actions；在 Actions 页对 `CI PR Gate (smoke)` / `Tests` 手动 **Run workflow** 排查。
 3. 建议仓库管理员在 **Settings → Branches → Branch protection rules** 为 `main` 勾选 Required status checks（至少 `Tests`、`Wiki Lint`；ingest 类 PR 再加 `Search & Export Quality Check`）。
 4. Cloud Agent：**不要**在 Draft 刚转 Ready 后数分钟内合并；`Search & Export Quality Check` 常需 7 分钟以上。
 
