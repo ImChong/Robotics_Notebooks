@@ -1135,6 +1135,8 @@
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span>🔍</span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
+      <button id="restart-simulation" class="chip" title="从初始状态重新计算力导向布局（与未缓存布局时首次打开相同）"><span>↻</span><span> 刷新布局</span></button>
+      <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>
   </div>
@@ -1728,6 +1730,35 @@
       });
     svg.call(zoom);
 
+    function applyExportedLayout(data) {
+      const layout = data && data.layout;
+      if (!layout || !layout.positions) return false;
+      let applied = 0;
+      for (const n of nodes) {
+        const p = layout.positions[n.id];
+        if (!p) continue;
+        n.x = p.x;
+        n.y = p.y;
+        n.vx = 0;
+        n.vy = 0;
+        applied++;
+      }
+      return applied > 0;
+    }
+
+    function randomizeNodePositions() {
+      for (const n of nodes) {
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+        n.x = W / 2 + (Math.random() - 0.5) * 80;
+        n.y = H / 2 + (Math.random() - 0.5) * 80;
+      }
+    }
+
+    let usingPrecomputedLayout = applyExportedLayout(graphData);
+
     /* ── 力模拟 ── */
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
@@ -1910,26 +1941,56 @@
     if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
     if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
-    /* ── Tick ── */
-    simulation.on('tick', () => {
+    function syncGraphDomFromSimulation() {
       link
         .attr('x1', d => d.source.x).attr('y1', d => d.source.y)
         .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
       node.attr('transform', d => `translate(${d.x},${d.y})`);
+    }
+
+    function finishSimulationLoad() {
+      document.getElementById('graph-loading').style.display = 'none';
+      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
+      setTimeout(() => fitToScreen(), 100);
+    }
+
+    function startLiveForceSimulation() {
+      usingPrecomputedLayout = false;
+      const loadingEl = document.getElementById('graph-loading');
+      if (loadingEl) loadingEl.style.display = '';
+      node.select('.node-label').style('opacity', 0);
+      randomizeNodePositions();
+      syncGraphDomFromSimulation();
+      simulation.alpha(1).restart();
+    }
+
+    /* ── Tick ── */
+    simulation.on('tick', () => {
+      syncGraphDomFromSimulation();
     });
 
     /* ── 隐藏加载 & 标签渐显 ── */
     simulation.on('end', () => {
-      document.getElementById('graph-loading').style.display = 'none';
-      // 仿真稳定后让所有标签渐显
-      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
-      // 仿真稳定后自动适配屏幕
-      setTimeout(() => fitToScreen(), 100);
+      finishSimulationLoad();
     });
-    setTimeout(() => {
-      document.getElementById('graph-loading').style.display = 'none';
-      node.select('.node-label').transition().duration(400).style('opacity', 0.85);
-    }, 1200);
+
+    if (usingPrecomputedLayout) {
+      simulation.stop();
+      syncGraphDomFromSimulation();
+      finishSimulationLoad();
+    } else {
+      setTimeout(() => {
+        if (simulation.alpha() > 0.01) return;
+        finishSimulationLoad();
+      }, 1200);
+    }
+
+    const restartSimulationBtn = document.getElementById('restart-simulation');
+    if (restartSimulationBtn) {
+      restartSimulationBtn.addEventListener('click', () => {
+        startLiveForceSimulation();
+      });
+    }
 
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
@@ -2525,7 +2586,9 @@
       W = wrap.clientWidth; H = wrap.clientHeight;
       svg.attr('width', W).attr('height', H);
       simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
-      simulation.alpha(0.1).restart();
+      if (!usingPrecomputedLayout) {
+        simulation.alpha(0.1).restart();
+      }
     });
 
     /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
@@ -2786,9 +2849,12 @@
           );
           openSidebar(focusNode);
         };
-        // 等仿真稳定后飞行
-        simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
-        setTimeout(flyToFocus, 1400);  // fallback: 1.4s 后强制执行
+        if (usingPrecomputedLayout) {
+          setTimeout(flyToFocus, 150);
+        } else {
+          simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
+          setTimeout(flyToFocus, 1400);
+        }
       }
     }
 
