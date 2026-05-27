@@ -1713,11 +1713,38 @@
       searchList.innerHTML = nodes.map(n => '<option value="' + escapeHtml(n._info.title || n.label) + '"></option>').join('');
     }
 
-    /* ── SVG 尺寸 ── */
+    /* ── SVG 尺寸（移动端首屏 clientHeight 可能为 0，需延后 fit）── */
     const wrap = document.getElementById('graph-wrap');
     const svg = d3.select('#graph-canvas');
-    let W = wrap.clientWidth, H = wrap.clientHeight;
-    svg.attr('width', W).attr('height', H);
+    let W = 0;
+    let H = 0;
+
+    function updateGraphViewport() {
+      if (!wrap) return false;
+      const nextW = wrap.clientWidth;
+      const nextH = wrap.clientHeight;
+      if (nextW <= 0 || nextH <= 0) return false;
+      W = nextW;
+      H = nextH;
+      svg.attr('width', W).attr('height', H);
+      simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+      return true;
+    }
+
+    function whenGraphViewportReady(callback, attempt) {
+      const n = attempt || 0;
+      if (updateGraphViewport()) {
+        callback();
+        return;
+      }
+      if (n < 80) {
+        requestAnimationFrame(() => whenGraphViewportReady(callback, n + 1));
+        return;
+      }
+      window.addEventListener('load', () => {
+        if (updateGraphViewport()) callback();
+      }, { once: true });
+    }
 
     /* ── Zoom ── */
     const gRoot = svg.append('g');
@@ -1951,7 +1978,7 @@
     function finishSimulationLoad() {
       document.getElementById('graph-loading').style.display = 'none';
       node.select('.node-label').transition().duration(400).style('opacity', 0.85);
-      setTimeout(() => fitToScreen(), 100);
+      whenGraphViewportReady(() => fitToScreen());
     }
 
     function startLiveForceSimulation() {
@@ -1976,6 +2003,7 @@
 
     if (usingPrecomputedLayout) {
       simulation.stop();
+      simulation.tick();
       syncGraphDomFromSimulation();
       finishSimulationLoad();
     } else {
@@ -2532,6 +2560,7 @@
     }
 
     function fitToVisibleNodes() {
+      if (!updateGraphViewport()) return;
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0) return;
       const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
@@ -2549,6 +2578,7 @@
 
     /* ── 适配屏幕到所有节点 ── */
     function fitToScreen() {
+      if (!updateGraphViewport()) return;
       const allNodes = nodes.filter(n => n.x != null);
       if (allNodes.length === 0) return;
       const xs = allNodes.map(n => n.x), ys = allNodes.map(n => n.y);
@@ -2566,6 +2596,7 @@
 
     /* ── 搜索飞行定位 ── */
     function flyToVisible() {
+      if (!updateGraphViewport()) return;
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0 || visNodes.length > 15) return;
       const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
@@ -2581,15 +2612,21 @@
       );
     }
 
-    /* ── resize ── */
-    window.addEventListener('resize', () => {
-      W = wrap.clientWidth; H = wrap.clientHeight;
-      svg.attr('width', W).attr('height', H);
-      simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+    /* ── resize（移动端地址栏收起会改变可视高度；预计算布局需重新 fit）── */
+    let resizeFitTimer = null;
+    function onGraphViewportResize() {
+      if (!updateGraphViewport()) return;
       if (!usingPrecomputedLayout) {
         simulation.alpha(0.1).restart();
+        return;
       }
-    });
+      clearTimeout(resizeFitTimer);
+      resizeFitTimer = setTimeout(() => fitToScreen(), 120);
+    }
+    window.addEventListener('resize', onGraphViewportResize);
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener('resize', onGraphViewportResize);
+    }
 
     /* ── 主题切换监听：同步更新 D3 SVG 元素颜色 ── */
     new MutationObserver(() => {
