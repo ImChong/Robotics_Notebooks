@@ -1798,9 +1798,22 @@
     function applyExportedLayout(data) {
       const layout = data && data.layout;
       if (!layout || !layout.positions) return false;
+      const positions = layout.positions;
+      // Reject the whole cache if any coordinate is non-finite or runaway —
+      // a divergent export (e.g. positions of 1e60+) will pin every node to
+      // the canvas corner instead of producing a usable layout.
+      const MAX_ABS = 1e6;
+      for (const n of nodes) {
+        const p = positions[n.id];
+        if (!p) continue;
+        if (!Number.isFinite(p.x) || !Number.isFinite(p.y) ||
+            Math.abs(p.x) > MAX_ABS || Math.abs(p.y) > MAX_ABS) {
+          return false;
+        }
+      }
       let applied = 0;
       for (const n of nodes) {
-        const p = layout.positions[n.id];
+        const p = positions[n.id];
         if (!p) continue;
         n.x = p.x;
         n.y = p.y;
