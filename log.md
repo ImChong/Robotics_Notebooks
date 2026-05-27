@@ -1,26 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | 首页最新节点 — 人形 RL/AMP 61 篇 + BFM 41 篇论文实体与五类分类 hub
+
+- 人形 RL 身体系统栈（42 篇）：`wiki/entities/paper-hrl-stack-*.md`
+- 人形 AMP 运动先验（19 篇）：`wiki/entities/paper-amp-survey-*.md`
+- BFM 论文实体（41 篇）：`wiki/entities/paper-bfm-*.md`、`wiki/entities/paper-behavior-foundation-model-humanoid.md`
+- BFM 五类分类 hub（5）：`wiki/overview/bfm-category-01-forward-backward-representation.md`、`wiki/overview/bfm-category-02-goal-conditioned-learning.md`、`wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md`、`wiki/overview/bfm-category-04-adaptation.md`、`wiki/overview/bfm-category-05-hierarchical-control.md`
+- 总览：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`wiki/overview/bfm-41-papers-technology-map.md`](wiki/overview/bfm-41-papers-technology-map.md)、[`wiki/concepts/behavior-foundation-model.md`](wiki/concepts/behavior-foundation-model.md)
+
 ## [2026-05-27] structural | wiki/overview/bfm-category-01-* … bfm-category-05-* — BFM 五类问题各建图谱分类 hub 节点并交叉链接 41 篇论文实体
 
 - 原始资料：[wechat_embodied_ai_lab_bfm_41_papers_survey.md](sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
-- 新增分类页（5）：`wiki/overview/bfm-category-01-forward-backward-representation.md` … `bfm-category-05-hierarchical-control.md`
+- 新增分类页（5）：见 `wiki/overview/bfm-category-01-forward-backward-representation.md` … `bfm-category-05-hierarchical-control.md`
 - 交叉更新：41 个 `wiki/entities/paper-bfm-*` 回链对应分类 hub；[bfm-41-papers-technology-map.md](wiki/overview/bfm-41-papers-technology-map.md)、[behavior-foundation-model.md](wiki/concepts/behavior-foundation-model.md)
 - 生成脚本：[scripts/generate_bfm_category_overviews.py](scripts/generate_bfm_category_overviews.py)
-
-## [2026-05-26] checklist-v23 | scripts/search_wiki_core.py、tests/test_search_wiki_core.py — V23 P0「缩写/别名归一化检索 V2」收口
-
-- 变更：`scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补齐 9 条 V22 期间高频缩写（**WBT** / **BFM** / **DAgger** / **RSI** / **RFC** / **RMA** / **EMA** / **LoRA** / **DoF**），共 25 条；映射均双向化（`_build_alias_indexes` 自动构造 forward + reverse）。
-- 测试：`tests/test_search_wiki_core.py` 新增两组 subTest——`test_v22_abbreviations_expand_to_full`（9 条缩写 → 全称展开）与 `test_v22_full_phrases_expand_to_abbreviation`（9 条全称 → 缩写大写化反向命中），`python -m unittest tests.test_search_wiki_core -v` 26/26 通过。
-- 门禁：`ruff check`、`ruff format --check`、`PYTHONPATH=scripts mypy scripts/search_wiki_core.py` 均绿。
-- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P0「缩写/别名归一化检索 V2」打勾。
-
-## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — Agent Reach 重抓两篇微信公众号长文；42+19 篇论文分别入库并升格 wiki 实体节点
-
-- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
-- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）、[`sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）；抓取落盘 [`sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md`](sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)、[`sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md`](sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
-- 论文 source：[`sources/papers/humanoid_rl_stack_42_catalog.md`](sources/papers/humanoid_rl_stack_42_catalog.md) + 42× `humanoid_rl_stack_*`；[`sources/papers/humanoid_amp_survey_19_catalog.md`](sources/papers/humanoid_amp_survey_19_catalog.md) + 19× `humanoid_amp_survey_*`；生成脚本 [`scripts/generate_humanoid_stack_survey.py`](scripts/generate_humanoid_stack_survey.py)
-- 沉淀实体（61）：`wiki/entities/paper-hrl-stack-01-*.md` … `paper-hrl-stack-42-*.md`；`wiki/entities/paper-amp-survey-01-*.md` … `paper-amp-survey-19-*.md`
-- 交叉更新：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`sources/README.md`](sources/README.md)
 
 ## [2026-05-27] structural | scripts/generate_bfm_awesome_wiki_entities.py — awesome-bfm 41 篇论文升格 wiki 实体详情页；图谱 + 搜索 + SW 缓存版本同步
 
@@ -37,6 +30,21 @@
 
 - 原始资料：[`sources/papers/bfm_awesome_41_catalog.md`](sources/papers/bfm_awesome_41_catalog.md) 及 51 个 `bfm_awesome_<slug>.md`（41 篇论文 + 10 数据集；#13 交叉指向既有 [`bfm_humanoid_arxiv_2509_13780.md`](sources/papers/bfm_humanoid_arxiv_2509_13780.md)）；生成脚本 [`scripts/generate_bfm_awesome_sources.py`](scripts/generate_bfm_awesome_sources.py)；索引 [`sources/README.md`](sources/README.md)
 - 沉淀/交叉更新：[`wiki/overview/bfm-41-papers-technology-map.md`](wiki/overview/bfm-41-papers-technology-map.md)（原始资料索引节、01 组 Source 列）、[`sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md`](sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)
+
+## [2026-05-26] checklist-v23 | scripts/search_wiki_core.py、tests/test_search_wiki_core.py — V23 P0「缩写/别名归一化检索 V2」收口
+
+- 变更：`scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补齐 9 条 V22 期间高频缩写（**WBT** / **BFM** / **DAgger** / **RSI** / **RFC** / **RMA** / **EMA** / **LoRA** / **DoF**），共 25 条；映射均双向化（`_build_alias_indexes` 自动构造 forward + reverse）。
+- 测试：`tests/test_search_wiki_core.py` 新增两组 subTest——`test_v22_abbreviations_expand_to_full`（9 条缩写 → 全称展开）与 `test_v22_full_phrases_expand_to_abbreviation`（9 条全称 → 缩写大写化反向命中），`python -m unittest tests.test_search_wiki_core -v` 26/26 通过。
+- 门禁：`ruff check`、`ruff format --check`、`PYTHONPATH=scripts mypy scripts/search_wiki_core.py` 均绿。
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P0「缩写/别名归一化检索 V2」打勾。
+
+## [2026-05-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md、sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md — Agent Reach 重抓两篇微信公众号长文；42+19 篇论文分别入库并升格 wiki 实体节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）、[`sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md`](sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)（<https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w>）；抓取落盘 [`sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md`](sources/raw/wechat_humanoid_rl_42_survey_2026-05-26.md)、[`sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md`](sources/raw/wechat_humanoid_amp_19_survey_2026-05-26.md)
+- 论文 source：[`sources/papers/humanoid_rl_stack_42_catalog.md`](sources/papers/humanoid_rl_stack_42_catalog.md) + 42× `humanoid_rl_stack_*`；[`sources/papers/humanoid_amp_survey_19_catalog.md`](sources/papers/humanoid_amp_survey_19_catalog.md) + 19× `humanoid_amp_survey_*`；生成脚本 [`scripts/generate_humanoid_stack_survey.py`](scripts/generate_humanoid_stack_survey.py)
+- 沉淀实体（61）：`wiki/entities/paper-hrl-stack-01-*.md` … `paper-hrl-stack-42-*.md`；`wiki/entities/paper-amp-survey-01-*.md` … `paper-amp-survey-19-*.md`
+- 交叉更新：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`wiki/overview/humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、[`sources/README.md`](sources/README.md)
 
 ## [2026-05-26] ingest | sources/repos/simplefoc_arduino_foc.md、sources/sites/simplefoc_documentation.md — 接入 SimpleFOC 生态；沉淀 wiki/entities/simplefoc.md、wiki/concepts/field-oriented-control.md；交叉更新 wiki/overview/motor-drive-firmware-bus-protocols.md
 

@@ -46,6 +46,8 @@ STATS_PATH = REPO_ROOT / "exports" / "graph-stats.json"
 LOG_MD_PATH = REPO_ROOT / "log.md"
 # log.md 正文中出现的 wiki 相对路径（允许省略 .md，匹配至非标点为止）
 WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
+# 反引号内的 wiki 通配路径，如 `wiki/entities/paper-bfm-*.md`
+WIKI_GLOB_IN_LOG = re.compile(r"`(wiki/[^`]*\*(?:\.md)?)`", re.IGNORECASE)
 # 主社区检测（Girvan-Newman）允许的最大社区数：与历史行为一致。
 PRIMARY_COMMUNITY_CAP = 8
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
@@ -107,9 +109,54 @@ def _wiki_node_detail_id(page_id: str) -> str:
 
 def _normalize_wiki_rel_from_log_match(raw: str) -> str:
     s = raw.strip().strip("`'\"").rstrip("，。；、）)」』,.;:")
+    if "*" in s:
+        return s
     if not s.lower().endswith(".md"):
         s = s + ".md"
     return s
+
+
+def _expand_wiki_glob(pattern: str) -> list[str]:
+    """将 log 中的 `wiki/.../*.md` 展开为仓库内存在的相对路径列表。"""
+    rel = _normalize_wiki_rel_from_log_match(pattern)
+    if "*" not in rel:
+        return [rel] if (REPO_ROOT / rel).is_file() else []
+    if not rel.lower().endswith(".md"):
+        rel = rel + ".md"
+    paths: list[str] = []
+    for path in REPO_ROOT.glob(rel):
+        if path.is_file():
+            paths.append(str(path.relative_to(REPO_ROOT)).replace("\\", "/"))
+    return sorted(paths)
+
+
+def _append_latest_node(
+    rel: str,
+    *,
+    node_by_id: dict[str, dict[str, Any]],
+    seen: set[str],
+    out: list[dict[str, Any]],
+    log_date: str,
+) -> None:
+    if not rel.startswith("wiki/") or rel in seen or "*" in rel:
+        return
+    p = REPO_ROOT / rel
+    if not p.is_file():
+        return
+    base = node_by_id.get(rel)
+    if not base:
+        return
+    seen.add(rel)
+    out.append(
+        {
+            "path": rel,
+            "detail_id": _wiki_node_detail_id(rel),
+            "label": str(base.get("label") or Path(rel).stem),
+            "type": str(base.get("type") or ""),
+            "recency": log_date,
+            "source": "log.md",
+        }
+    )
 
 
 def _log_sections(text: str) -> list[str]:
@@ -149,26 +196,33 @@ def latest_wiki_nodes_from_log(nodes: list[dict[str, Any]]) -> list[dict[str, An
         log_date = date_m.group(1) if date_m else ""
         if log_date != target_date:
             break
+        for m in WIKI_GLOB_IN_LOG.finditer(chunk):
+            for rel in _expand_wiki_glob(m.group(1)):
+                _append_latest_node(
+                    rel,
+                    node_by_id=node_by_id,
+                    seen=seen,
+                    out=out,
+                    log_date=log_date,
+                )
         for m in WIKI_PATH_IN_LOG.finditer(chunk):
             rel = _normalize_wiki_rel_from_log_match(m.group(0))
-            if not rel.startswith("wiki/") or rel in seen:
+            if "*" in rel:
+                for expanded in _expand_wiki_glob(rel):
+                    _append_latest_node(
+                        expanded,
+                        node_by_id=node_by_id,
+                        seen=seen,
+                        out=out,
+                        log_date=log_date,
+                    )
                 continue
-            p = REPO_ROOT / rel
-            if not p.is_file():
-                continue
-            base = node_by_id.get(rel)
-            if not base:
-                continue
-            seen.add(rel)
-            out.append(
-                {
-                    "path": rel,
-                    "detail_id": _wiki_node_detail_id(rel),
-                    "label": str(base.get("label") or Path(rel).stem),
-                    "type": str(base.get("type") or ""),
-                    "recency": log_date,
-                    "source": "log.md",
-                }
+            _append_latest_node(
+                rel,
+                node_by_id=node_by_id,
+                seen=seen,
+                out=out,
+                log_date=log_date,
             )
     return out
 
