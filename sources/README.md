@@ -111,6 +111,28 @@
 | [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [worldvln_embodiedcity.md](repos/worldvln_embodiedcity.md) | EmbodiedCity/WorldVLN：空中 VLN 自回归 WAM 官方代码入口（arXiv:2605.15964） |
 | [x] [multirotor_uav_stack_catalog.md](repos/multirotor_uav_stack_catalog.md) | 多旋翼栈 10 仓索引：PX4、XTDrone、EGO-Planner、AirSim、Flightmare、PyBullet Gym、swarm RL、Crazyflie、MAVSDK |
+| [x] [navigation_slam_autonomy_stack_catalog.md](repos/navigation_slam_autonomy_stack_catalog.md) | 导航·SLAM·自动驾驶 21 仓索引：Nav2、slam_toolbox、Cartographer、FAST-LIO、VINS、Autoware、Isaac ROS、LeRobot、OpenVLA 等 |
+| [x] [navigation2.md](repos/navigation2.md) | Navigation2：ROS 2 导航框架 |
+| [x] [slam_toolbox.md](repos/slam_toolbox.md) | SLAM Toolbox：2D lifelong SLAM |
+| [x] [cartographer.md](repos/cartographer.md) | Google Cartographer 2D/3D SLAM |
+| [x] [fast_lio.md](repos/fast_lio.md) | FAST-LIO：LiDAR-惯性里程计 |
+| [x] [lio_sam.md](repos/lio_sam.md) | LIO-SAM：因子图 LiDAR-惯性 SLAM |
+| [x] [autoware.md](repos/autoware.md) | Autoware 开源自动驾驶全栈 |
+| [x] [orb_slam3.md](repos/orb_slam3.md) | ORB-SLAM3 视觉/视觉-惯性 SLAM |
+| [x] [vins_fusion.md](repos/vins_fusion.md) | VINS-Fusion 多传感器 VIO |
+| [x] [openvslam.md](repos/openvslam.md) | OpenVSLAM 模块化视觉 SLAM |
+| [x] [open_vins.md](repos/open_vins.md) | OpenVINS 视觉-惯性研究平台 |
+| [x] [lego_loam.md](repos/lego_loam.md) | LeGO-LOAM 地面优化激光 SLAM |
+| [x] [rtabmap.md](repos/rtabmap.md) | RTAB-Map RGB-D/激光建图 |
+| [x] [kimera.md](repos/kimera.md) | Kimera 语义 SLAM 套件 |
+| [x] [hdl_graph_slam.md](repos/hdl_graph_slam.md) | hdl_graph_slam 3D 激光图优化 |
+| [x] [voxgraph.md](repos/voxgraph.md) | voxgraph TSDF 位姿图 |
+| [x] [openloong_dyn_control.md](repos/openloong_dyn_control.md) | OpenLoong-Dyn-Control：人形 MPC+WBC |
+| [x] [lerobot.md](repos/lerobot.md) | Hugging Face LeRobot 具身框架 |
+| [x] [openvla.md](repos/openvla.md) | OpenVLA 开源视觉-语言-动作模型 |
+| [x] [mushr.md](repos/mushr.md) | MuSHR 非完整约束小车导航教学平台 |
+| [x] [isaac_ros_visual_slam.md](repos/isaac_ros_visual_slam.md) | Isaac ROS cuVSLAM |
+| [x] [isaac_ros_nvblox.md](repos/isaac_ros_nvblox.md) | Isaac ROS nvblox TSDF/ESDF |
 | [x] [px4_autopilot.md](repos/px4_autopilot.md) | PX4-Autopilot：开源多旋翼/固定翼/VTOL 飞控与 SITL |
 | [x] [mavsdk.md](repos/mavsdk.md) | MAVSDK：MAVLink 兼容系统 C++/Python API |
 | [x] [ego_planner_swarm.md](repos/ego_planner_swarm.md) | ego-planner-swarm：ESDF + B-spline 单/多机局部规划 |

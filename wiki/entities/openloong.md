@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, hardware, open-source, openloong, mpc, wbc, ethercat, sim2real]
 status: complete
-updated: 2026-05-23
+updated: 2026-05-27
 related:
+  - ../overview/navigation-slam-autonomy-stack.md
   - ./open-source-humanoid-hardware.md
   - ./humanoid-robot.md
   - ./asimov-v1.md
@@ -18,6 +19,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
 sources:
   - ../../sources/repos/openloong.md
+  - ../../sources/repos/openloong_dyn_control.md
   - ../../sources/repos/openloong_hardware.md
   - ../../sources/sites/openloong_community.md
 summary: "OpenLoong（青龙）是由人形机器人（上海）有限公司、国家地方共建人形机器人创新中心与开放原子基金会运营的全尺寸公版人形全栈开源项目：硬件 PDF/BOM、ROS-free C++ 控制框架、MPC+WBC 动力学包、Isaac Gym/ROS 并行栈与训推数据集。"
