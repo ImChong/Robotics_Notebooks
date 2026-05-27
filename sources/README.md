@@ -95,6 +95,7 @@
 | [x] [atom01_firmware.md](repos/atom01_firmware.md) | Atom01 固件仓库（板端构建与通信链路） |
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
+| [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |
 | [x] [apollo-lab-yale-apollo-py.md](repos/apollo-lab-yale-apollo-py.md) | apollo-py：Apollo Toolbox Python 包骨架（与 URDD 论文配套的轻量 README 入口） |
 | [x] [apollo-lab-yale-apollo-resources.md](repos/apollo-lab-yale-apollo-resources.md) | apollo-resources：URDD 机器人/环境资产与 GitHub Pages 宿主（Apollo-Lab-Yale） |
 | [x] [apollo-lab-yale-apollo-rust.md](repos/apollo-lab-yale-apollo-rust.md) | apollo-rust：Rust URDF→URDD 预处理与示例输出（Apollo-Lab-Yale） |

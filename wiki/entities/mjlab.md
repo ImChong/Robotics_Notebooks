@@ -10,6 +10,7 @@ related:
   - ./legged-gym.md
   - ./mjlab-playground.md
   - ./amp-mjlab.md
+  - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
   - ./asimov-v1.md
   - ../methods/reinforcement-learning.md
@@ -64,7 +65,7 @@ mjlab 架构
 | API 风格 | Isaac Lab（移植） | 原生 Isaac Lab | 简单脚本 | Pythonic |
 | 依赖重量 | 轻（pip 安装） | 重（Isaac Sim） | 重（IsaacGym） | 中 |
 | 开源授权 | Apache 2.0 | BSD-3 | BSD-3 | Apache 2.0 |
-| 上层框架 | AMP_mjlab、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork） | robot_lab | legged_gym 生态 | — |
+| 上层框架 | AMP_mjlab、[SMP on G1](./smp-g1-mjlab.md)、unitree_rl_mjlab、[asimov-mjlab](https://github.com/asimovinc/asimov-mjlab)（Asimov 官方 fork） | robot_lab | legged_gym 生态 | — |
 | 引擎层对照 | [Newton Physics](./newton-physics.md) 为通用 Warp 物理引擎；mjlab 专注 **RL 环境 API**，二者可并存选型 | — | — | — |
 
 ## 关联页面
@@ -74,6 +75,7 @@ mjlab 架构
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — API 设计来源
 - [legged_gym](./legged-gym.md) — 同类框架，绑定 IsaacGym
 - [AMP_mjlab](./amp-mjlab.md) — 以 mjlab 为底层的 AMP 统一策略实现
+- [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
 - [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式

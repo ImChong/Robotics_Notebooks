@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] ingest | sources/repos/smp_suz_tsinghua.md — 接入清华 SUZ-tsinghua/smp（G1 上 SMP + mjlab 复现）；沉淀 wiki/entities/smp-g1-mjlab.md；交叉更新 wiki/methods/smp.md、wiki/entities/mimickit.md、wiki/entities/mjlab.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md
+
 ## [2026-05-27] structural | wiki/entities/* — 为导航·SLAM 栈 21 仓补齐实体节点（slam-toolbox/cartographer/FAST-LIO 等 15 页）
 
 ## [2026-05-27] ingest | sources/repos/navigation_slam_autonomy_stack_catalog.md — 入库 Nav2/SLAM/Autoware/Isaac ROS/LeRobot/OpenVLA 等 21 仓；沉淀 wiki/overview/navigation-slam-autonomy-stack.md、wiki/comparisons/lidar-slam-lio-vio-selection.md、wiki/entities/navigation2.md、wiki/entities/autoware.md、wiki/entities/openvla.md、wiki/entities/isaac-ros-visual-slam.md、wiki/entities/isaac-ros-nvblox.md；互链 openloong/lerobot/vla/ros2
