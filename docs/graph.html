@@ -2596,6 +2596,7 @@
 
     /* ── 搜索飞行定位 ── */
     function flyToVisible() {
+      if (!updateGraphViewport()) return;
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0 || visNodes.length > 15) return;
       const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
