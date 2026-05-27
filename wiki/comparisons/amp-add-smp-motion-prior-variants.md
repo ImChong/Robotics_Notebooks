@@ -42,7 +42,7 @@ related:
 
 **选 ADD**：任务 reward 项很多（速度、平衡、接触、末端），不想再手工调一大组 style 权重。
 
-**选 SMP**：实验矩阵要求**频繁替换或组合** motion prior，希望 prior 与 policy 训练解耦。
+**选 SMP**：实验矩阵要求**频繁替换或组合** motion prior，希望 prior 与 policy 训练解耦。G1 + mjlab 工程入口见 [SMP on G1（mjlab 复现）](../entities/smp-g1-mjlab.md)（与 [AMP_mjlab](../entities/amp-mjlab.md) 对照）。
 
 ---
 
@@ -74,6 +74,7 @@ related:
 - [AMP & HumanX](../methods/amp-reward.md)
 - [ADD](../methods/add.md)
 - [SMP](../methods/smp.md)
+- [SMP on G1（mjlab）](../entities/smp-g1-mjlab.md)
 - [DeepMimic](../methods/deepmimic.md)
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 AMP 先验综述](../overview/humanoid-amp-motion-prior-survey.md)

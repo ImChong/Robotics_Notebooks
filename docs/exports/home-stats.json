@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-27",
-  "node_count": 581,
-  "edge_count": 3927,
+  "node_count": 582,
+  "edge_count": 3943,
   "coverage": {
-    "covered": 579,
-    "total": 579,
+    "covered": 580,
+    "total": 580,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/smp-g1-mjlab.md",
+      "detail_id": "entity-smp-g1-mjlab",
+      "label": "SMP on G1（mjlab 复现）",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/smp.md",
+      "detail_id": "wiki-methods-smp",
+      "label": "SMP: 基于得分匹配的可复用运动先验",
+      "type": "method",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mimickit.md",
+      "detail_id": "entity-mimickit",
+      "label": "MimicKit: 运动模仿与控制研究套件",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mjlab.md",
+      "detail_id": "entity-mjlab",
+      "label": "mjlab (轻量 GPU 加速 RL 框架)",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/amp-add-smp-motion-prior-variants.md",
+      "detail_id": "wiki-comparisons-amp-add-smp-motion-prior-variants",
+      "label": "AMP vs ADD vs SMP：运动先验变体对比",
+      "type": "comparison",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/navigation-slam-autonomy-stack.md",
       "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
@@ -994,10 +1034,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-    "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-    "label": "导航·SLAM·自动驾驶开源栈总览",
-    "type": "overview",
+    "path": "wiki/entities/smp-g1-mjlab.md",
+    "detail_id": "entity-smp-g1-mjlab",
+    "label": "SMP on G1（mjlab 复现）",
+    "type": "entity",
     "recency": "2026-05-27",
     "source": "log.md"
   }
