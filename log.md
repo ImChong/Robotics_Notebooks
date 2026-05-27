@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] checklist-v23 | scripts/lint_wiki.py、tests/test_lint_wiki_paper_metadata.py — V23 P0「Entity-Paper 类页元数据 Lint」收口
+
+- 变更：`scripts/lint_wiki.py` 新增 `_check_paper_entity_metadata`，针对 `wiki/entities/paper-*.md` 做两项信息型检查——frontmatter 是否含 `arxiv` / `venue` / `code` 任一来源键、正文是否覆盖「方法 / 评测 / 对比」三段式；两个新 result key `paper_missing_source_meta` 与 `paper_missing_three_sections` 加入 `INFO_ONLY_KEYS`，缺失不阻塞 CI 但写入 lint 报告作为 ingest 流水线基线。
+- 基线快照：当前 131 个 paper-* 实体全部缺 arxiv/venue/code 显式键（依赖 `sources:` 间接来源），130/131 缺三段式之一（多数缺「评测」段），将作为后续 ingest 模板对齐的目标。
+- 测试：`tests/test_lint_wiki_paper_metadata.py` 新增 6 用例（命中 arxiv/venue/code、缺失定位、三段式部分缺失、非 paper- 实体豁免、信息型计数）；`python -m pytest tests/ --ignore=tests/test_graph_layout.py --no-cov` 106 通过；`ruff check` 与 `mypy scripts/lint_wiki.py` 均绿。
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P0「Entity-Paper 类页元数据 Lint」打勾。
+
 ## [2026-05-27] ingest | sources/papers/smp.md — 扩写 arXiv:2512.03028 完整摘录（摘要、SDS/ESM/GSI、任务与 AMP 对比、G1 部署、wiki 映射）；同步 sources/README 论文索引
 
 ## [2026-05-27] ingest | sources/repos/smp_suz_tsinghua.md — 接入清华 SUZ-tsinghua/smp（G1 上 SMP + mjlab 复现）；沉淀 wiki/entities/smp-g1-mjlab.md；交叉更新 wiki/methods/smp.md、wiki/entities/mimickit.md、wiki/entities/mjlab.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md
