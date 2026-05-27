@@ -17,18 +17,18 @@
 
 ## 仓库列表
 
-| Source | GitHub | Stars（约） | wiki 映射 |
+| Source | GitHub | Stars（约） | wiki 实体 |
 |--------|--------|-------------|-----------|
 | [px4_autopilot.md](px4_autopilot.md) | [PX4/PX4-Autopilot](https://github.com/PX4/PX4-Autopilot) | 11.8k | [px4-autopilot](../../wiki/entities/px4-autopilot.md) |
-| [mavsdk.md](mavsdk.md) | [mavlink/MAVSDK](https://github.com/mavlink/MAVSDK) | 0.9k | 总览栈 |
-| [crazyflie_firmware.md](crazyflie_firmware.md) | [bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware) | 1.5k | 总览栈 |
-| [ego_planner_swarm.md](ego_planner_swarm.md) | [ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-swarm) | 2.0k | 总览栈 |
+| [mavsdk.md](mavsdk.md) | [mavlink/MAVSDK](https://github.com/mavlink/MAVSDK) | 0.9k | [mavsdk](../../wiki/entities/mavsdk.md) |
+| [ego_planner_swarm.md](ego_planner_swarm.md) | [ZJU-FAST-Lab/ego-planner-swarm](https://github.com/ZJU-FAST-Lab/ego-planner-swarm) | 2.0k | [ego-planner-swarm](../../wiki/entities/ego-planner-swarm.md) |
 | [airsim.md](airsim.md) | [microsoft/AirSim](https://github.com/microsoft/AirSim) | 18.2k | [airsim](../../wiki/entities/airsim.md) |
-| [xtdrone.md](xtdrone.md) | [robin-shaun/XTDrone](https://github.com/robin-shaun/XTDrone) | 1.6k | 总览栈 |
-| [flightmare.md](flightmare.md) | [uzh-rpg/flightmare](https://github.com/uzh-rpg/flightmare) | 1.4k | 总览栈 |
-| [gym_pybullet_drones.md](gym_pybullet_drones.md) | [utiasDSL/gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-drones) | 2.0k | 总览栈 |
-| [quad_swarm_rl.md](quad_swarm_rl.md) | [Zhehui-Huang/quad-swarm-rl](https://github.com/Zhehui-Huang/quad-swarm-rl) | 0.2k | 总览栈 |
-| [crazyswarm2.md](crazyswarm2.md) | [IMRCLab/crazyswarm2](https://github.com/IMRCLab/crazyswarm2) | 0.2k | 总览栈 |
+| [xtdrone.md](xtdrone.md) | [robin-shaun/XTDrone](https://github.com/robin-shaun/XTDrone) | 1.6k | [xtdrone](../../wiki/entities/xtdrone.md) |
+| [flightmare.md](flightmare.md) | [uzh-rpg/flightmare](https://github.com/uzh-rpg/flightmare) | 1.4k | [flightmare](../../wiki/entities/flightmare.md) |
+| [gym_pybullet_drones.md](gym_pybullet_drones.md) | [utiasDSL/gym-pybullet-drones](https://github.com/utiasDSL/gym-pybullet-drones) | 2.0k | [gym-pybullet-drones](../../wiki/entities/gym-pybullet-drones.md) |
+| [quad_swarm_rl.md](quad_swarm_rl.md) | [Zhehui-Huang/quad-swarm-rl](https://github.com/Zhehui-Huang/quad-swarm-rl) | 0.2k | [quad-swarm-rl](../../wiki/entities/quad-swarm-rl.md) |
+| [crazyswarm2.md](crazyswarm2.md) | [IMRCLab/crazyswarm2](https://github.com/IMRCLab/crazyswarm2) | 0.2k | [crazyswarm2](../../wiki/entities/crazyswarm2.md) |
+| [crazyflie_firmware.md](crazyflie_firmware.md) | [bitcraze/crazyflie-firmware](https://github.com/bitcraze/crazyflie-firmware) | 1.5k | [crazyflie-firmware](../../wiki/entities/crazyflie-firmware.md) |
 
 ## 关联原始资料（既有）
 

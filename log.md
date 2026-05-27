@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | wiki/entities/mavsdk.md、ego-planner-swarm.md、xtdrone.md、flightmare.md、gym-pybullet-drones.md、quad-swarm-rl.md、crazyswarm2.md、crazyflie-firmware.md — 多旋翼十仓各补独立实体节点；交叉更新 wiki/overview/multirotor-simulation-planning-control-stack.md
+
 ## [2026-05-27] ingest | sources/repos/multirotor_uav_stack_catalog.md 及 10 仓 — PX4/XTDrone/EGO-Planner/PyBullet Gym/AirSim/quad-swarm-rl/Crazyswarm2/Crazyflie/Flightmare/MAVSDK 入库；沉淀 wiki/overview/multirotor-simulation-planning-control-stack.md、wiki/entities/px4-autopilot.md、wiki/entities/airsim.md
 
 ## [2026-05-27] structural | 首页最新节点 — 人形 RL/AMP 61 篇 + BFM 41 篇论文实体与五类分类 hub

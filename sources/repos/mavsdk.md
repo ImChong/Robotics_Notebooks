@@ -8,7 +8,7 @@
 - **Stars：** ~0.9k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 面向 MAVLink 兼容飞控（PX4、ArduPilot）的 C++20 库与多语言绑定，提供高层异步 API（起飞、任务、Offboard、遥测订阅）。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [mavsdk](../../wiki/entities/mavsdk.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 

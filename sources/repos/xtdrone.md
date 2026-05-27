@@ -8,7 +8,7 @@
 - **Stars：** ~1.6k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 基于 **PX4 + ROS + Gazebo** 的无人机仿真平台：多机型、视觉 SLAM、目标检测、编队与强化学习实验教程（中文社区友好）。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [xtdrone](../../wiki/entities/xtdrone.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 

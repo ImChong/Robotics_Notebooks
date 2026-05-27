@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-27",
-  "node_count": 551,
-  "edge_count": 3772,
+  "node_count": 559,
+  "edge_count": 3823,
   "coverage": {
-    "covered": 549,
-    "total": 549,
+    "covered": 557,
+    "total": 557,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mavsdk.md",
+      "detail_id": "entity-mavsdk",
+      "label": "MAVSDK",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
       "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
@@ -938,10 +946,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
-    "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
-    "label": "多旋翼仿真—规划—飞控开源栈总览",
-    "type": "overview",
+    "path": "wiki/entities/mavsdk.md",
+    "detail_id": "entity-mavsdk",
+    "label": "MAVSDK",
+    "type": "entity",
     "recency": "2026-05-27",
     "source": "log.md"
   }
