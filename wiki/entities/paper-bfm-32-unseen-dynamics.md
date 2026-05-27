@@ -7,6 +7,7 @@ summary: "负载/地面/硬件参数变化下的零样本动力学适配。"
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-04-adaptation.md
   - ../concepts/sim2real.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
 sources:
@@ -22,7 +23,7 @@ sources:
 ## 为什么重要
 
 - 负载/地面/硬件参数变化下的零样本动力学适配。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **04 Adaptation** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Adaptation](../overview/bfm-category-04-adaptation.md)**（04 Adaptation），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

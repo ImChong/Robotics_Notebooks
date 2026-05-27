@@ -7,6 +7,7 @@ summary: "原型表示组织行为空间，便于上层组合与选择技能。"
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
 sources:
   - ../../sources/papers/bfm_awesome_proto_rl_icml_2021.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -20,7 +21,7 @@ sources:
 ## 为什么重要
 
 - 原型表示组织行为空间，便于上层组合与选择技能。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **03 Intrinsic reward 预训练** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)**（03 Intrinsic reward 预训练），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

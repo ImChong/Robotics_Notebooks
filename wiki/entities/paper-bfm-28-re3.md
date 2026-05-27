@@ -7,6 +7,7 @@ summary: "状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-03-intrinsic-reward-pretraining.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/bfm_awesome_re3_icml_2020.md
@@ -21,7 +22,7 @@ sources:
 ## 为什么重要
 
 - 状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **03 Intrinsic reward 预训练** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)**（03 Intrinsic reward 预训练），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

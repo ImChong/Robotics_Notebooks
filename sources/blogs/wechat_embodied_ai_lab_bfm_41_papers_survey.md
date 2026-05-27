@@ -112,6 +112,17 @@
 
 AMASS、KIT-ML、LAFAN、BABEL、HumanML3D、PoseScript、Motion-X、Motion-X++、PHUMA、Humanoid-X — 规模与入口见 awesome-bfm-papers README；与本库 [AMASS](../../wiki/entities/amass.md) 等实体互参。
 
+
+### 五类问题分类节点（wiki / 图谱）
+
+| 组 | 分类页 |
+|----|--------|
+| 01 Forward-backward 表征（6 篇） | [bfm-category-01-forward-backward-representation](../../wiki/overview/bfm-category-01-forward-backward-representation.md) |
+| 02 Goal-conditioned 学习（19 篇） | [bfm-category-02-goal-conditioned-learning](../../wiki/overview/bfm-category-02-goal-conditioned-learning.md) |
+| 03 Intrinsic reward 预训练（5 篇） | [bfm-category-03-intrinsic-reward-pretraining](../../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) |
+| 04 Adaptation（3 篇） | [bfm-category-04-adaptation](../../wiki/overview/bfm-category-04-adaptation.md) |
+| 05 Hierarchical control（8 篇） | [bfm-category-05-hierarchical-control](../../wiki/overview/bfm-category-05-hierarchical-control.md) |
+
 ## 对 wiki 的映射
 
 - [bfm_awesome_41_catalog.md](../papers/bfm_awesome_41_catalog.md)（41 论文 + 10 数据集分别入库的 source 总索引）

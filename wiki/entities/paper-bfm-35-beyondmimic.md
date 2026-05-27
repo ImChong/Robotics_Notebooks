@@ -7,6 +7,7 @@ summary: "guided diffusion 进入全身控制；生成方案仍需低层执行�
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-05-hierarchical-control.md
   - ../methods/beyondmimic.md
 sources:
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
@@ -21,7 +22,7 @@ sources:
 ## 为什么重要
 
 - guided diffusion 进入全身控制；生成方案仍需低层执行器兜底。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **05 Hierarchical control** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Hierarchical control](../overview/bfm-category-05-hierarchical-control.md)**（05 Hierarchical control），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

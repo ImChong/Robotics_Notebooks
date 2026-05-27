@@ -7,6 +7,7 @@ summary: "离散动作 token 便于规划器/语言模块组织连续轨迹。"
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-02-goal-conditioned-learning.md
 sources:
   - ../../sources/papers/bfm_awesome_moconvq_tog_2023.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -20,7 +21,7 @@ sources:
 ## 为什么重要
 
 - 离散动作 token 便于规划器/语言模块组织连续轨迹。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **02 Goal-conditioned 学习** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)**（02 Goal-conditioned 学习），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 
