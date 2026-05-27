@@ -7,6 +7,7 @@ summary: "语言–全身动作端到端；中间须有处理平衡/接触的身
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-05-hierarchical-control.md
   - ../methods/vla.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
 sources:
@@ -22,7 +23,7 @@ sources:
 ## 为什么重要
 
 - 语言–全身动作端到端；中间须有处理平衡/接触的身体通道。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **05 Hierarchical control** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Hierarchical control](../overview/bfm-category-05-hierarchical-control.md)**（05 Hierarchical control），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

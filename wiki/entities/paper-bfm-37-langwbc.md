@@ -7,6 +7,7 @@ summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-05-hierarchical-control.md
   - ../methods/vla.md
 sources:
   - ../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md
@@ -21,7 +22,7 @@ sources:
 ## 为什么重要
 
 - 语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **05 Hierarchical control** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Hierarchical control](../overview/bfm-category-05-hierarchical-control.md)**（05 Hierarchical control），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 

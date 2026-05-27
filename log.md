@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | wiki/overview/bfm-category-01-* … bfm-category-05-* — BFM 五类问题各建图谱分类 hub 节点并交叉链接 41 篇论文实体
+
+- 原始资料：[wechat_embodied_ai_lab_bfm_41_papers_survey.md](sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md)（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）
+- 新增分类页（5）：`wiki/overview/bfm-category-01-forward-backward-representation.md` … `bfm-category-05-hierarchical-control.md`
+- 交叉更新：41 个 `wiki/entities/paper-bfm-*` 回链对应分类 hub；[bfm-41-papers-technology-map.md](wiki/overview/bfm-41-papers-technology-map.md)、[behavior-foundation-model.md](wiki/concepts/behavior-foundation-model.md)
+- 生成脚本：[scripts/generate_bfm_category_overviews.py](scripts/generate_bfm_category_overviews.py)
+
 ## [2026-05-26] checklist-v23 | scripts/search_wiki_core.py、tests/test_search_wiki_core.py — V23 P0「缩写/别名归一化检索 V2」收口
 
 - 变更：`scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补齐 9 条 V22 期间高频缩写（**WBT** / **BFM** / **DAgger** / **RSI** / **RFC** / **RMA** / **EMA** / **LoRA** / **DoF**），共 25 条；映射均双向化（`_build_alias_indexes` 自动构造 forward + reverse）。

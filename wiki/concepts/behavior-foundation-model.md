@@ -113,7 +113,12 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
-- [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) — awesome 列表 + 公众号五类问题导读
+- [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md)
+- [BFM 分类 01：Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)
+- [BFM 分类 02：Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)
+- [BFM 分类 03：Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)
+- [BFM 分类 04：Adaptation](../overview/bfm-category-04-adaptation.md)
+- [BFM 分类 05：Hierarchical control](../overview/bfm-category-05-hierarchical-control.md) — awesome 列表 + 公众号五类问题导读
 
 ## 参考来源
 

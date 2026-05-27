@@ -22,6 +22,7 @@ related:
   - ./unitree-g1.md
   - ./holomotion.md
   - ./isaac-gym-isaac-lab.md
+  - ../overview/bfm-category-02-goal-conditioned-learning.md
 sources:
   - ../../sources/papers/bfm_humanoid_arxiv_2509_13780.md
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md

@@ -2,12 +2,17 @@
 type: overview
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, survey, motion-tracking, foundation-model]
 status: complete
-updated: 2026-05-26
+updated: 2026-05-27
 related:
   - ../concepts/behavior-foundation-model.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ./humanoid-amp-motion-prior-survey.md
+  - ./bfm-category-05-hierarchical-control.md
+  - ./bfm-category-04-adaptation.md
+  - ./bfm-category-03-intrinsic-reward-pretraining.md
+  - ./bfm-category-02-goal-conditioned-learning.md
+  - ./bfm-category-01-forward-backward-representation.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ../methods/ams.md
@@ -59,6 +64,11 @@ flowchart TB
     LANG["SENTINEL / LangWBC / LeVerb\n语言–身体"]
     GEN["BeyondMimic / CLoSD / UniPhys\n扩散 · 规划–控制"]
   end
+  click G1 href "./bfm-category-01-forward-backward-representation.md" "分类 hub"
+  click G2 href "./bfm-category-02-goal-conditioned-learning.md" "分类 hub"
+  click G3 href "./bfm-category-03-intrinsic-reward-pretraining.md" "分类 hub"
+  click G4 href "./bfm-category-04-adaptation.md" "分类 hub"
+  click G5 href "./bfm-category-05-hierarchical-control.md" "分类 hub"
   AGI["上层：VLA · 世界模型 · 任务规划"]
   G1 --> BODY["BFM checkpoint / 身体潜空间"]
   G2 --> BODY
@@ -76,6 +86,18 @@ flowchart TB
 | **智元** | 公开把 **BFM-2** 推为「运控基座模型」，预告 BFM-3 | 与 **01 FB 线 + 02 跟踪覆盖面** 叙事直接对齐 |
 | **众擎** | 年度 demo：多动作拼接、长时程、倒地起身、抗扰 | 文内视为「运控基座需求侧验证」，**不写成已官方冠名 BFM** |
 | **学术索引** | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) + [综述 arXiv:2506.20487](https://arxiv.org/abs/2506.20487) | 41 篇编号与分组以仓库 README 为准 |
+
+## 五类问题分类节点（图谱 hub）
+
+> 每组对应一个独立 `wiki/overview/bfm-category-*` 页面，作为图谱中的**分类枢纽**；组内论文实体经 `[text](../overview/...)` 与本页互链。
+
+| 组 | 分类节点 | 篇数 |
+|----|----------|------|
+| 01 Forward-backward 表征 | [Forward-backward 表征](./bfm-category-01-forward-backward-representation.md) | 6 |
+| 02 Goal-conditioned 学习 | [Goal-conditioned 学习](./bfm-category-02-goal-conditioned-learning.md) | 19 |
+| 03 Intrinsic reward 预训练 | [Intrinsic reward 预训练](./bfm-category-03-intrinsic-reward-pretraining.md) | 5 |
+| 04 Adaptation | [Adaptation](./bfm-category-04-adaptation.md) | 3 |
+| 05 Hierarchical control | [Hierarchical control](./bfm-category-05-hierarchical-control.md) | 8 |
 
 ## 原始资料索引（41 论文 + 10 数据集）
 

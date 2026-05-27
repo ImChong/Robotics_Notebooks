@@ -7,6 +7,7 @@ summary: "未来状态分布作为可复用控制表示的数学底座。"
 related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
+  - ../overview/bfm-category-01-forward-backward-representation.md
 sources:
   - ../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -20,7 +21,7 @@ sources:
 ## 为什么重要
 
 - 未来状态分布作为可复用控制表示的数学底座。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **01 Forward-backward 表征** 簇，可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)**（01 Forward-backward 表征），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
 ## 核心信息（索引级）
 
