@@ -15,6 +15,9 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
  12. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
  13. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
+ 14. wiki/entities/paper-* 元数据基线（V23 新增，信息型）：
+     - frontmatter 至少含 arxiv/venue/code 三类来源键之一；
+     - 正文至少含「方法栈 / 评测 / 与其他工作对比」三段式。
 
 用法：
   python3 scripts/lint_wiki.py
@@ -42,6 +45,8 @@ METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
 INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
     "methods_without_practitioner_query",
+    "paper_missing_source_meta",
+    "paper_missing_three_sections",
 }
 
 
@@ -189,6 +194,8 @@ def _empty_results() -> dict[str, Any]:
         "entity_missing_outgoing": [],
         "wikilink_syntax": [],
         "methods_without_practitioner_query": [],
+        "paper_missing_source_meta": [],
+        "paper_missing_three_sections": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -641,6 +648,50 @@ def _check_methods_without_practitioner_query(
             )
 
 
+def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
+    """V23: paper-* 实体页元数据基线检查（信息型，不阻塞 CI）。
+
+    针对 ``wiki/entities/paper-*.md``：
+      - frontmatter 至少包含 ``arxiv`` / ``venue`` / ``code`` 三类来源键之一；
+      - 正文至少存在「方法栈 / 评测 / 与其他工作对比」三段式。
+
+    用于 ingest 工作流自检入口，缺失项作为基线快照写入 lint 报告。
+    """
+    method_patterns = ["方法栈", "流程总览", "流程", "核心机制", "核心信息", "pipeline", "方法"]
+    eval_patterns = ["评测", "实验", "量化", "结果", "benchmark"]
+    compare_patterns = ["与其他工作", "与其他页面", "对比", "比较"]
+    source_keys = ("arxiv", "venue", "code")
+
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 3 or parts[0] != "wiki" or parts[1] != "entities":
+            continue
+        if not page.name.startswith("paper-"):
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        has_source = any(
+            re.search(rf"^{key}\s*:", fm_block, re.MULTILINE) for key in source_keys
+        )
+        if not has_source:
+            results["paper_missing_source_meta"].append(str(rel))
+
+        missing_sections = []
+        if not has_section(content, method_patterns):
+            missing_sections.append("方法")
+        if not has_section(content, eval_patterns):
+            missing_sections.append("评测")
+        if not has_section(content, compare_patterns):
+            missing_sections.append("对比")
+        if missing_sections:
+            results["paper_missing_three_sections"].append(
+                f"{rel}（缺 {' / '.join(missing_sections)}）"
+            )
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查 + entities/ 出边检查。
 
@@ -683,6 +734,7 @@ def lint() -> dict[str, Any]:
     _check_graph_orphans(results)
     _check_methods_entities(pages, results)
     _check_methods_without_practitioner_query(pages, inbound, results)
+    _check_paper_entity_metadata(pages, results)
 
     return results
 
@@ -735,6 +787,16 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "methods_without_practitioner_query",
             "高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "paper_missing_source_meta",
+            "paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "paper_missing_three_sections",
+            "paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）",
             "💡",
         ),
     ]
