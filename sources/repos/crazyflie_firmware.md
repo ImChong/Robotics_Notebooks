@@ -8,7 +8,7 @@
 - **Stars：** ~1.5k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** Bitcraze Crazyflie 2.x / Bolt / Roadrunner 的嵌入式飞控固件：STM32 上姿态控制、CRTP 无线协议、扩展甲板与定位支持。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [crazyflie-firmware](../../wiki/entities/crazyflie-firmware.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 

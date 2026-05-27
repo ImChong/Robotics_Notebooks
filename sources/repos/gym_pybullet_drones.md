@@ -8,7 +8,7 @@
 - **Stars：** ~2.0k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** **PyBullet + Gymnasium** 的单/多智能体四旋翼 RL 环境：CF2X、HB 等模型，内置 PID/RL 控制接口，论文引用广泛的无人机 RL 基准。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [gym-pybullet-drones](../../wiki/entities/gym-pybullet-drones.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 
