@@ -1,13 +1,69 @@
 {
   "generated_at": "2026-05-27",
-  "node_count": 551,
-  "edge_count": 3772,
+  "node_count": 558,
+  "edge_count": 3815,
   "coverage": {
-    "covered": 549,
-    "total": 549,
+    "covered": 556,
+    "total": 556,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/lidar-slam-lio-vio-selection.md",
+      "detail_id": "wiki-comparisons-lidar-slam-lio-vio-selection",
+      "label": "LiDAR / LIO / VIO 开源选型对比",
+      "type": "comparison",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/navigation2.md",
+      "detail_id": "entity-navigation2",
+      "label": "Navigation2（Nav2）",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/autoware.md",
+      "detail_id": "entity-autoware",
+      "label": "Autoware",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/openvla.md",
+      "detail_id": "entity-openvla",
+      "label": "OpenVLA",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-ros-visual-slam.md",
+      "detail_id": "entity-isaac-ros-visual-slam",
+      "label": "Isaac ROS Visual SLAM",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-ros-nvblox.md",
+      "detail_id": "entity-isaac-ros-nvblox",
+      "label": "Isaac ROS Nvblox",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
       "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
@@ -938,9 +994,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
-    "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
-    "label": "多旋翼仿真—规划—飞控开源栈总览",
+    "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+    "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+    "label": "导航·SLAM·自动驾驶开源栈总览",
     "type": "overview",
     "recency": "2026-05-27",
     "source": "log.md"
