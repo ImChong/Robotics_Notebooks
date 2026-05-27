@@ -24,24 +24,24 @@
 | Source | GitHub | Stars（约） | wiki 映射 |
 |--------|--------|-------------|-----------|
 | [navigation2.md](navigation2.md) | [ros-navigation/navigation2](https://github.com/ros-navigation/navigation2) | 4.3k | [navigation2](../../wiki/entities/navigation2.md) |
-| [slam_toolbox.md](slam_toolbox.md) | [SteveMacenski/slam_toolbox](https://github.com/SteveMacenski/slam_toolbox) | 2.5k | 总览栈 |
-| [cartographer.md](cartographer.md) | [cartographer-project/cartographer](https://github.com/cartographer-project/cartographer) | 7.9k | 总览栈 |
-| [orb_slam3.md](orb_slam3.md) | [UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) | 8.7k | SLAM 选型 |
-| [vins_fusion.md](vins_fusion.md) | [HKUST-Aerial-Robotics/VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) | 4.5k | SLAM 选型 |
-| [openvslam.md](openvslam.md) | [xdspacelab/openvslam](https://github.com/xdspacelab/openvslam) | 3.0k | SLAM 选型 |
-| [fast_lio.md](fast_lio.md) | [hku-mars/FAST_LIO](https://github.com/hku-mars/FAST_LIO) | 4.7k | 总览 + 选型 |
-| [lio_sam.md](lio_sam.md) | [TixiaoShan/LIO-SAM](https://github.com/TixiaoShan/LIO-SAM) | 4.8k | SLAM 选型 |
+| [slam_toolbox.md](slam_toolbox.md) | [SteveMacenski/slam_toolbox](https://github.com/SteveMacenski/slam_toolbox) | 2.5k | [slam-toolbox](../../wiki/entities/slam-toolbox.md) |
+| [cartographer.md](cartographer.md) | [cartographer-project/cartographer](https://github.com/cartographer-project/cartographer) | 7.9k | [cartographer](../../wiki/entities/cartographer.md) |
+| [orb_slam3.md](orb_slam3.md) | [UZ-SLAMLab/ORB_SLAM3](https://github.com/UZ-SLAMLab/ORB_SLAM3) | 8.7k | [orb-slam3](../../wiki/entities/orb-slam3.md) |
+| [vins_fusion.md](vins_fusion.md) | [HKUST-Aerial-Robotics/VINS-Fusion](https://github.com/HKUST-Aerial-Robotics/VINS-Fusion) | 4.5k | [vins-fusion](../../wiki/entities/vins-fusion.md) |
+| [openvslam.md](openvslam.md) | [xdspacelab/openvslam](https://github.com/xdspacelab/openvslam) | 3.0k | [openvslam](../../wiki/entities/openvslam.md) |
+| [fast_lio.md](fast_lio.md) | [hku-mars/FAST_LIO](https://github.com/hku-mars/FAST_LIO) | 4.7k | [fast-lio](../../wiki/entities/fast-lio.md) |
+| [lio_sam.md](lio_sam.md) | [TixiaoShan/LIO-SAM](https://github.com/TixiaoShan/LIO-SAM) | 4.8k | [lio-sam](../../wiki/entities/lio-sam.md) |
 | [autoware.md](autoware.md) | [autowarefoundation/autoware](https://github.com/autowarefoundation/autoware) | 11.7k | [autoware](../../wiki/entities/autoware.md) |
-| [openloong_dyn_control.md](openloong_dyn_control.md) | [loongOpen/OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control) | 0.3k | [openloong](../../wiki/entities/openloong.md) |
-| [lego_loam.md](lego_loam.md) | [RobustFieldAutonomyLab/LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | 2.7k | SLAM 选型 |
-| [rtabmap.md](rtabmap.md) | [introlab/rtabmap](https://github.com/introlab/rtabmap) | 3.8k | 总览 + 选型 |
-| [kimera.md](kimera.md) | [MIT-SPARK/Kimera](https://github.com/MIT-SPARK/Kimera) | 2.1k | SLAM 选型 |
-| [open_vins.md](open_vins.md) | [rpng/open_vins](https://github.com/rpng/open_vins) | 2.9k | SLAM 选型 |
-| [hdl_graph_slam.md](hdl_graph_slam.md) | [koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam) | 2.3k | SLAM 选型 |
-| [voxgraph.md](voxgraph.md) | [ethz-asl/voxgraph](https://github.com/ethz-asl/voxgraph) | 0.5k | SLAM 选型 |
+| [openloong_dyn_control.md](openloong_dyn_control.md) | [loongOpen/OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control) | 0.3k | [openloong-dyn-control](../../wiki/entities/openloong-dyn-control.md) |
+| [lego_loam.md](lego_loam.md) | [RobustFieldAutonomyLab/LeGO-LOAM](https://github.com/RobustFieldAutonomyLab/LeGO-LOAM) | 2.7k | [lego-loam](../../wiki/entities/lego-loam.md) |
+| [rtabmap.md](rtabmap.md) | [introlab/rtabmap](https://github.com/introlab/rtabmap) | 3.8k | [rtabmap](../../wiki/entities/rtabmap.md) |
+| [kimera.md](kimera.md) | [MIT-SPARK/Kimera](https://github.com/MIT-SPARK/Kimera) | 2.1k | [kimera](../../wiki/entities/kimera.md) |
+| [open_vins.md](open_vins.md) | [rpng/open_vins](https://github.com/rpng/open_vins) | 2.9k | [open-vins](../../wiki/entities/open-vins.md) |
+| [hdl_graph_slam.md](hdl_graph_slam.md) | [koide3/hdl_graph_slam](https://github.com/koide3/hdl_graph_slam) | 2.3k | [hdl-graph-slam](../../wiki/entities/hdl-graph-slam.md) |
+| [voxgraph.md](voxgraph.md) | [ethz-asl/voxgraph](https://github.com/ethz-asl/voxgraph) | 0.5k | [voxgraph](../../wiki/entities/voxgraph.md) |
 | [lerobot.md](lerobot.md) | [huggingface/lerobot](https://github.com/huggingface/lerobot) | 24.4k | [lerobot](../../wiki/entities/lerobot.md) |
 | [openvla.md](openvla.md) | [openvla/openvla](https://github.com/openvla/openvla) | 6.3k | [openvla](../../wiki/entities/openvla.md) |
-| [mushr.md](mushr.md) | [prl-mushr/mushr](https://github.com/prl-mushr/mushr) | 0.2k | 总览栈 |
+| [mushr.md](mushr.md) | [prl-mushr/mushr](https://github.com/prl-mushr/mushr) | 0.2k | [mushr](../../wiki/entities/mushr.md) |
 | [isaac_ros_visual_slam.md](isaac_ros_visual_slam.md) | [NVIDIA-ISAAC-ROS/isaac_ros_visual_slam](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_visual_slam) | 1.4k | [isaac-ros-visual-slam](../../wiki/entities/isaac-ros-visual-slam.md) |
 | [isaac_ros_nvblox.md](isaac_ros_nvblox.md) | [NVIDIA-ISAAC-ROS/isaac_ros_nvblox](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox) | 0.7k | [isaac-ros-nvblox](../../wiki/entities/isaac-ros-nvblox.md) |
 

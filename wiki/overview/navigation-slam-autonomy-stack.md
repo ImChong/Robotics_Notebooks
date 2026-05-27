@@ -5,12 +5,21 @@ status: complete
 updated: 2026-05-27
 related:
   - ../entities/navigation2.md
+  - ../entities/slam-toolbox.md
+  - ../entities/cartographer.md
+  - ../entities/fast-lio.md
+  - ../entities/lio-sam.md
+  - ../entities/orb-slam3.md
+  - ../entities/vins-fusion.md
+  - ../entities/open-vins.md
+  - ../entities/rtabmap.md
   - ../entities/autoware.md
   - ../entities/isaac-ros-visual-slam.md
   - ../entities/isaac-ros-nvblox.md
-  - ../entities/openloong.md
+  - ../entities/openloong-dyn-control.md
   - ../entities/lerobot.md
   - ../entities/openvla.md
+  - ../entities/mushr.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../concepts/ros2-basics.md
   - ../methods/vla.md
@@ -99,28 +108,29 @@ flowchart TB
 ### ROS 2 导航层
 
 - **[Navigation2](../entities/navigation2.md)**：行为树导航器、全局/局部规划器插件（NavFn、Smac、DWB/RPP 等）、代价地图、恢复行为。
-- **[MuSHR](https://github.com/prl-mushr/mushr)**：低成本差速平台 + 课程式 ROS 导航实验。
+- **[MuSHR](../entities/mushr.md)**：低成本阿克曼平台 + 课程式 ROS 导航实验。
 
 ### 2D SLAM
 
-- **slam_toolbox**：Karto 后端、序列化大地图、定位/建图模式切换；Nav2 社区常用搭档。
-- **Cartographer**：子图 + scan matching + 位姿图；2D/3D 均可，ROS 封装成熟。
+- **[SLAM Toolbox](../entities/slam-toolbox.md)**：Karto 后端、序列化大地图、定位/建图模式切换；Nav2 社区常用搭档。
+- **[Cartographer](../entities/cartographer.md)**：子图 + scan matching + 位姿图；2D/3D 均可，ROS 封装成熟。
 
 ### 3D LiDAR 与图优化
 
-- **FAST-LIO**：ikd-Tree + 迭代 ESKF，强调 **速度** 与鲁棒性。
-- **LIO-SAM**：GTSAM 因子图，易接 **GPS** 与回环。
-- **LeGO-LOAM**：地面分割与地面优化，适合 **起伏地形**。
-- **hdl_graph_slam**：NDT 前端 + g2o，偏 **室外大场景**。
-- **voxgraph**：Voxblox TSDF 子图对齐，多会话建图。
+- **[FAST-LIO](../entities/fast-lio.md)**：ikd-Tree + 迭代 ESKF，强调 **速度** 与鲁棒性。
+- **[LIO-SAM](../entities/lio-sam.md)**：GTSAM 因子图，易接 **GPS** 与回环。
+- **[LeGO-LOAM](../entities/lego-loam.md)**：地面分割与地面优化，适合 **起伏地形**。
+- **[hdl_graph_slam](../entities/hdl-graph-slam.md)**：NDT 前端 + g2o，偏 **室外大场景**。
+- **[Voxgraph](../entities/voxgraph.md)**：Voxblox TSDF 子图对齐，多会话建图。
 
 ### 视觉 / VIO
 
-- **ORB-SLAM3**：多地图、视觉/视觉-惯性；研究基准强，工程需自行对接 ROS 2。
-- **VINS-Fusion**：优化式多传感器；支持 GPS 全局融合。
-- **OpenVINS**：MSCKF 系，便于 **算法对比实验**。
-- **OpenVSLAM** → 社区多迁移至 **stella_vslam** 分支维护。
-- **Kimera**：Kimera-VIO + RPGO + Semantics 模块化 **语义 SLAM**。
+- **[ORB-SLAM3](../entities/orb-slam3.md)**：多地图、视觉/视觉-惯性；研究基准强，工程需自行对接 ROS 2。
+- **[VINS-Fusion](../entities/vins-fusion.md)**：优化式多传感器；支持 GPS 全局融合。
+- **[OpenVINS](../entities/open-vins.md)**：MSCKF 系，便于 **算法对比实验**。
+- **[OpenVSLAM](../entities/openvslam.md)** → 社区多迁移至 **stella_vslam** 分支维护。
+- **[Kimera](../entities/kimera.md)**：Kimera-VIO + RPGO + Semantics 模块化 **语义 SLAM**。
+- **[RTAB-Map](../entities/rtabmap.md)**：RGB-D/激光多模态建图与记忆管理。
 
 ### 自动驾驶与 NVIDIA 栈
 
@@ -134,7 +144,7 @@ flowchart TB
 | 状态估计 | 位姿 + 地图 | 浮基 + 接触 + 关节 |
 | 规划输出 | `cmd_vel` / 轨迹 | 足端/质心/关节参考 |
 | 学习 | VLA/IL 操作 | RL locomotion / tracking |
-| 代表仓 | Nav2、FAST-LIO | [OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control)、[legged_gym](https://github.com/leggedrobotics/legged_gym) |
+| 代表仓 | Nav2、FAST-LIO | [OpenLoong-Dyn-Control](../entities/openloong-dyn-control.md)、[legged_gym](https://github.com/leggedrobotics/legged_gym) |
 
 ## 常见误区
 

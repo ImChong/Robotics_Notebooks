@@ -7,6 +7,10 @@ related:
   - ../overview/navigation-slam-autonomy-stack.md
   - ../concepts/ros2-basics.md
   - ../comparisons/lidar-slam-lio-vio-selection.md
+  - ./slam-toolbox.md
+  - ./cartographer.md
+  - ./fast-lio.md
+  - ./mushr.md
   - ./autoware.md
 sources:
   - ../../sources/repos/navigation2.md

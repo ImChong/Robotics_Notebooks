@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] structural | wiki/entities/* — 为导航·SLAM 栈 21 仓补齐实体节点（slam-toolbox/cartographer/FAST-LIO 等 15 页）
+
 ## [2026-05-27] ingest | sources/repos/navigation_slam_autonomy_stack_catalog.md — 入库 Nav2/SLAM/Autoware/Isaac ROS/LeRobot/OpenVLA 等 21 仓；沉淀 wiki/overview/navigation-slam-autonomy-stack.md、wiki/comparisons/lidar-slam-lio-vio-selection.md、wiki/entities/navigation2.md、wiki/entities/autoware.md、wiki/entities/openvla.md、wiki/entities/isaac-ros-visual-slam.md、wiki/entities/isaac-ros-nvblox.md；互链 openloong/lerobot/vla/ros2
 
 ## [2026-05-27] ingest | sources/repos/multirotor_uav_stack_catalog.md 及 10 仓 — PX4/XTDrone/EGO-Planner/PyBullet Gym/AirSim/quad-swarm-rl/Crazyswarm2/Crazyflie/Flightmare/MAVSDK 入库；沉淀 wiki/overview/multirotor-simulation-planning-control-stack.md、wiki/entities/px4-autopilot.md、wiki/entities/airsim.md
