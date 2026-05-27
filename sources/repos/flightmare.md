@@ -8,7 +8,7 @@
 - **Stars：** ~1.4k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** 苏黎世大学 RPG 的 **灵活四旋翼仿真器**：Unity 渲染 + 可配置动力学，面向敏捷飞行、感知与 RL（高吞吐、多环境并行）。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [flightmare](../../wiki/entities/flightmare.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 

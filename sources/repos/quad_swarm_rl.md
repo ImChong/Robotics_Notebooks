@@ -8,7 +8,7 @@
 - **Stars：** ~0.2k（2026-05）
 - **入库日期：** 2026-05-27
 - **一句话说明：** **OpenAI Gym 兼容的多四旋翼环境**，面向群体强化学习实验（相对 gym-pybullet-drones 社区更小，作 swarm RL 补充参考）。
-- **沉淀到 wiki：** [multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
+- **沉淀到 wiki：** [quad-swarm-rl](../../wiki/entities/quad-swarm-rl.md)、[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)
 
 ---
 
