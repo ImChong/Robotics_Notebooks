@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-27",
-  "node_count": 548,
-  "edge_count": 3753,
+  "node_count": 551,
+  "edge_count": 3772,
   "coverage": {
-    "covered": 546,
-    "total": 546,
+    "covered": 549,
+    "total": 549,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
+      "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
+      "label": "多旋翼仿真—规划—飞控开源栈总览",
+      "type": "overview",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/px4-autopilot.md",
+      "detail_id": "entity-px4-autopilot",
+      "label": "PX4 Autopilot",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/airsim.md",
+      "detail_id": "entity-airsim",
+      "label": "AirSim",
+      "type": "entity",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-01-retargeting_matters.md",
       "detail_id": "entity-paper-hrl-stack-01-retargeting_matters",
@@ -914,10 +938,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-01-retargeting_matters.md",
-    "detail_id": "entity-paper-hrl-stack-01-retargeting_matters",
-    "label": "Retargeting Matters",
-    "type": "entity",
+    "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
+    "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
+    "label": "多旋翼仿真—规划—飞控开源栈总览",
+    "type": "overview",
     "recency": "2026-05-27",
     "source": "log.md"
   }
