@@ -140,6 +140,16 @@
       white-space: nowrap;
     }
     .chip:hover { border-color: rgba(255,255,255,0.3); color: rgba(255,255,255,0.8); }
+    .chip.is-running {
+      background: rgba(0,212,255,0.16);
+      border-color: rgba(0,212,255,0.55);
+      color: #e6edf3;
+      cursor: wait;
+    }
+    .chip:disabled {
+      opacity: 0.72;
+      cursor: wait;
+    }
     .chip.active {
       background: #00d4ff;
       color: #0d1117;
@@ -484,6 +494,11 @@
     [data-theme="light"] .chip:hover {
       border-color: rgba(0,0,0,0.28);
       color: rgba(0,0,0,0.8);
+    }
+    [data-theme="light"] .chip.is-running {
+      background: #e6f7ff;
+      border-color: rgba(22,89,180,0.45);
+      color: #1659b4;
     }
     [data-theme="light"] .filter-topic-section {
       border-bottom-color: rgba(0,0,0,0.07);
@@ -1137,6 +1152,8 @@
       <div class="toolbar-sep"></div>
       <button id="restart-simulation" class="chip" title="从初始状态重新计算力导向布局（与未缓存布局时首次打开相同）"><span>↻</span><span> 刷新布局</span></button>
       <div class="toolbar-sep"></div>
+      <button id="timeline-animate" class="chip" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）"><span>▶</span><span> 时序动画</span></button>
+      <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>
   </div>
@@ -1422,6 +1439,10 @@
 
     let colorMode = 'community';
     let activeFilters = new Set();
+    let timelineAnimating = false;
+    let timelineAnimTimer = null;
+    const timelineRevealedIds = new Set();
+    const TIMELINE_TARGET_MS = 12000;
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
     let focusedCommunityId = null;
@@ -1631,9 +1652,25 @@
     renderLegend();
 
     /* ── 建立 path→info 映射 ── */
+    function parseRecencyFromMarkdown(md) {
+      if (!md) return '';
+      const fm = md.match(/^---\n([\s\S]*?)\n---/);
+      if (!fm) return '';
+      const updated = fm[1].match(/^updated\s*:\s*(\S+)/m);
+      if (updated) return updated[1].slice(0, 10);
+      const created = fm[1].match(/^created\s*:\s*(\S+)/m);
+      if (created) return created[1].slice(0, 10);
+      return '';
+    }
+
     const infoMap = {};
     for (const item of indexItems) {
-      infoMap[item.path] = { title: item.title, summary: item.summary, pageType: item.page_type };
+      infoMap[item.path] = {
+        title: item.title,
+        summary: item.summary,
+        pageType: item.page_type,
+        recency: parseRecencyFromMarkdown(item.content_markdown || ''),
+      };
     }
 
     /* ── 计算节点度数 ── */
@@ -1646,6 +1683,7 @@
     /* ── 准备节点/边数据 ── */
     const nodes = graphData.nodes.map(n => ({
       ...n,
+      recency: n.recency || infoMap[n.id]?.recency || '1970-01-01',
       _degree: degreeMap[n.id] || 0,
       _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
     }));
@@ -2514,6 +2552,7 @@
     }
 
     function applyFilters() {
+      if (timelineAnimating) return;
       const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
         || focusedCommunityId || focusedType || focusedHealth !== null
         || currentTopic !== 'all';
@@ -2557,6 +2596,128 @@
         });
       updateCount(visible);
       if (searchQuery) flyToVisible();
+    }
+
+    /* ── 时序动画（Obsidian Animate：按 recency 从早到晚逐帧显现）── */
+    const timelineAnimateBtn = document.getElementById('timeline-animate');
+
+    function getNodeRecency(d) {
+      return d.recency || '1970-01-01';
+    }
+
+    function sortNodesByTimeline(list) {
+      return list.slice().sort((a, b) => {
+        const cmp = getNodeRecency(a).localeCompare(getNodeRecency(b));
+        return cmp !== 0 ? cmp : a.id.localeCompare(b.id);
+      });
+    }
+
+    function cancelTimelineAnimation() {
+      if (timelineAnimTimer) {
+        clearInterval(timelineAnimTimer);
+        timelineAnimTimer = null;
+      }
+      timelineAnimating = false;
+      timelineRevealedIds.clear();
+      if (timelineAnimateBtn) {
+        timelineAnimateBtn.classList.remove('is-running');
+        timelineAnimateBtn.disabled = false;
+      }
+      node.interrupt();
+      link.interrupt();
+    }
+
+    function updateTimelineProgress(revealedCount, total) {
+      const countEl = document.getElementById('graph-node-count');
+      if (!countEl) return;
+      countEl.textContent = `时序 ${revealedCount} / ${total} · ${edges.length} 边`;
+    }
+
+    function updateTimelineLinks(revealed) {
+      link.attr('stroke-opacity', e => {
+        const sid = typeof e.source === 'object' ? e.source.id : e.source;
+        const tid = typeof e.target === 'object' ? e.target.id : e.target;
+        return revealed.has(sid) && revealed.has(tid) ? 0.35 : 0;
+      });
+    }
+
+    function revealTimelineNode(d) {
+      timelineRevealedIds.add(d.id);
+      const sel = node.filter(n => n.id === d.id);
+      sel.interrupt()
+        .style('opacity', 1)
+        .select('.node-glow')
+        .attr('fill-opacity', 0);
+      sel.select('.node-circle')
+        .attr('fill-opacity', 1)
+        .attr('stroke-opacity', 0.35)
+        .attr('r', n => scaledRadius(n) * 0.15)
+        .transition()
+        .duration(220)
+        .ease(d3.easeCubicOut)
+        .attr('r', scaledRadius);
+    }
+
+    function finishTimelineAnimation() {
+      cancelTimelineAnimation();
+      applyFilters();
+      node.select('.node-label').transition().duration(350).style('opacity', 0.85);
+      fitToScreen();
+    }
+
+    function playTimelineAnimation() {
+      cancelTimelineAnimation();
+      if (typeof closeSidebar === 'function') closeSidebar();
+      hideTooltip();
+
+      if (!usingPrecomputedLayout) {
+        simulation.stop();
+        syncGraphDomFromSimulation();
+      }
+
+      const ordered = sortNodesByTimeline(nodes);
+      const total = ordered.length;
+      if (!total) return;
+
+      timelineAnimating = true;
+      timelineRevealedIds.clear();
+      if (timelineAnimateBtn) {
+        timelineAnimateBtn.classList.add('is-running');
+        timelineAnimateBtn.disabled = true;
+      }
+
+      node.interrupt().style('opacity', 0);
+      node.select('.node-circle')
+        .interrupt()
+        .attr('fill-opacity', 0)
+        .attr('stroke-opacity', 0);
+      node.select('.node-label').style('opacity', 0);
+      link.interrupt().attr('stroke-opacity', 0);
+
+      fitToScreen();
+      updateTimelineProgress(0, total);
+
+      let idx = 0;
+      const batchSize = total > 400 ? 4 : (total > 180 ? 2 : 1);
+      const stepMs = Math.min(90, Math.max(14, Math.floor(TIMELINE_TARGET_MS / Math.ceil(total / batchSize))));
+
+      timelineAnimTimer = setInterval(() => {
+        if (idx >= total) {
+          finishTimelineAnimation();
+          return;
+        }
+        for (let b = 0; b < batchSize && idx < total; b++, idx++) {
+          revealTimelineNode(ordered[idx]);
+        }
+        updateTimelineLinks(timelineRevealedIds);
+        updateTimelineProgress(idx, total);
+      }, stepMs);
+    }
+
+    if (timelineAnimateBtn) {
+      timelineAnimateBtn.addEventListener('click', () => {
+        playTimelineAnimation();
+      });
     }
 
     function fitToVisibleNodes() {

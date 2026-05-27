@@ -718,7 +718,9 @@ def main() -> None:
     stats = _compute_graph_stats(nodes, edges, communities, community_meta)
 
     for node in nodes:
-        node.pop("_recency", None)
+        recency = node.pop("_recency", None)
+        if recency:
+            node["recency"] = recency
 
     degree_map: dict[str, int] = {n["id"]: 0 for n in nodes}
     for edge in edges:
