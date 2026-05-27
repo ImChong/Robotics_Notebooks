@@ -21,6 +21,7 @@ related:
   - ./processor-in-the-loop-sim2real.md
   - ../methods/crisp-real2sim.md
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
+  - ../overview/multirotor-simulation-planning-control-stack.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
 ---
 

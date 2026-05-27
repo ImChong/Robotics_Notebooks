@@ -110,6 +110,17 @@
 | [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
 | [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [worldvln_embodiedcity.md](repos/worldvln_embodiedcity.md) | EmbodiedCity/WorldVLN：空中 VLN 自回归 WAM 官方代码入口（arXiv:2605.15964） |
+| [x] [multirotor_uav_stack_catalog.md](repos/multirotor_uav_stack_catalog.md) | 多旋翼栈 10 仓索引：PX4、XTDrone、EGO-Planner、AirSim、Flightmare、PyBullet Gym、swarm RL、Crazyflie、MAVSDK |
+| [x] [px4_autopilot.md](repos/px4_autopilot.md) | PX4-Autopilot：开源多旋翼/固定翼/VTOL 飞控与 SITL |
+| [x] [mavsdk.md](repos/mavsdk.md) | MAVSDK：MAVLink 兼容系统 C++/Python API |
+| [x] [ego_planner_swarm.md](repos/ego_planner_swarm.md) | ego-planner-swarm：ESDF + B-spline 单/多机局部规划 |
+| [x] [airsim.md](repos/airsim.md) | Microsoft AirSim：UE/Unity 视觉无人机仿真 |
+| [x] [xtdrone.md](repos/xtdrone.md) | XTDrone：PX4 + ROS + Gazebo 教学仿真平台 |
+| [x] [flightmare.md](repos/flightmare.md) | Flightmare：RPG 灵活四旋翼研究仿真器 |
+| [x] [gym_pybullet_drones.md](repos/gym_pybullet_drones.md) | gym-pybullet-drones：Gymnasium 四旋翼 RL 环境 |
+| [x] [quad_swarm_rl.md](repos/quad_swarm_rl.md) | quad-swarm-rl：多四旋翼 OpenAI Gym 环境 |
+| [x] [crazyswarm2.md](repos/crazyswarm2.md) | Crazyswarm2：Crazyflie 大规模群体 ROS2 框架 |
+| [x] [crazyflie_firmware.md](repos/crazyflie_firmware.md) | crazyflie-firmware：Bitcraze 微四轴机载固件 |
 | [x] [gr00t_visual_sim2real.md](repos/gr00t_visual_sim2real.md) | GR00T-VisualSim2Real：NVIDIA 视觉 Sim2Real 框架，VIRAL + DoorMan 双 CVPR 2026 论文，PPO Teacher + DAgger RGB Student，Unitree G1 |
 | [x] [horizon_robotics_holomotion.md](repos/horizon_robotics_holomotion.md) | HoloMotion：地平线人形全身运动跟踪开源栈（GitHub + Pages 文档 + arXiv:2605.15336 + HF 权重 + Docker） |
 | [x] [google_deepmind_barkour_robot.md](repos/google_deepmind_barkour_robot.md) | barkour_robot：DeepMind 敏捷四足 CAD/PCBA/装配/固件（Pigweed+EtherCAT）与 OnShape、Menagerie MJCF 官方入口索引 |
