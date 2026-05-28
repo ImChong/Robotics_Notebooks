@@ -1,28 +1,84 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 582,
-  "edge_count": 3943,
+  "node_count": 587,
+  "edge_count": 3983,
   "coverage": {
-    "covered": 580,
-    "total": 580,
+    "covered": 585,
+    "total": 585,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
+      "path": "wiki/entities/genesis-world-10.md",
+      "detail_id": "entity-genesis-world-10",
+      "label": "Genesis World 1.0（Genesis AI 仿真基础设施）",
+      "type": "entity",
       "recency": "2026-05-28",
-      "source": "recency"
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
+      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
+      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
+      "type": "concept",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/genesis-sim.md",
+      "detail_id": "entity-genesis-sim",
+      "label": "Genesis (仿真器)",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gene-26-5-genesis-ai.md",
+      "detail_id": "entity-gene-26-5-genesis-ai",
+      "label": "GENE-26.5（Genesis AI 操作基础模型）",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/spark-3dgs-renderer.md",
+      "detail_id": "entity-spark-3dgs-renderer",
+      "label": "Spark（Web 3DGS 渲染器）",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/aholo-viewer.md",
+      "detail_id": "entity-aholo-viewer",
+      "label": "Aholo Viewer",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md",
+      "detail_id": "wiki-comparisons-spark-vs-aholo-web-3dgs-renderers",
+      "label": "Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型",
+      "type": "comparison",
+      "recency": "2026-05-28",
+      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/vision-language-navigation.md",
-    "detail_id": "wiki-tasks-vision-language-navigation",
-    "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-    "type": "task",
+    "path": "wiki/entities/genesis-world-10.md",
+    "detail_id": "entity-genesis-world-10",
+    "label": "Genesis World 1.0（Genesis AI 仿真基础设施）",
+    "type": "entity",
     "recency": "2026-05-28",
-    "source": "recency"
+    "source": "log.md"
   }
 }

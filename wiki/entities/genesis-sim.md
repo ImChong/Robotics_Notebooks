@@ -3,7 +3,11 @@ type: entity
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-05-07
+updated: 2026-05-28
+related:
+  - ./genesis-world-10.md
+  - ./gene-26-5-genesis-ai.md
+  - ../concepts/simulation-evaluation-infrastructure.md
 ---
 
 # Genesis (仿真器)
@@ -30,15 +34,26 @@ updated: 2026-05-07
 
 ## 名称辨析（易混品牌）
 
-英文 **Genesis** 在机器人领域至少对应两条独立线索：本页的 **Genesis-Embodied-AI 开源仿真平台**，以及 **Genesis AI 公司** 与其 **GENE-26.5** 操作基础模型（闭源产品与演示为主）。二者不应在文献或工程选型中混为一谈；参见实体页 [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) 与原始汇编 [genesis_gene_ecosystem](../../sources/papers/genesis_gene_ecosystem.md)。
+英文 **Genesis** 在机器人领域至少对应三条易混线索：
+
+| 线索 | 映射 |
+|------|------|
+| **Genesis-Embodied-AI（开源）** | 本页 — 论文 [arXiv:2412.12919](https://arxiv.org/abs/2412.12919) 与社区仓库 |
+| **Genesis World 1.0（公司栈）** | [Genesis World 1.0](genesis-world-10.md) — Genesis AI 全栈仿真基础设施（评测引擎叙事） |
+| **GENE-26.5（公司模型）** | [GENE-26.5](gene-26-5-genesis-ai.md) — 操作基础模型品牌 |
+
+公司博客称创立前发布的初版仿真即 **Genesis World** 前身（曾用名 Genesis），与开源项目在叙事上同源但**发布边界与许可证未必一致**；选型时以仓库与官方文档为准。总档见 [genesis_gene_ecosystem](../../sources/papers/genesis_gene_ecosystem.md)。
 
 ## 关联页面
 
+- [Genesis World 1.0](genesis-world-10.md) — 同公司演进中的全栈仿真与 real-to-sim 评测基础设施
+- [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 「仿真优先服务评测」的概念归纳
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
 
 ## 参考来源
 
+- [genesis_ai_simulation_world_10_blog（Genesis AI：World 1.0 与仿真评测）](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [机器人仿真工具核心论文（含 Genesis arXiv 摘录）](../../sources/papers/simulation_tools.md)
 - [genesis_gene_ecosystem（Genesis / GENE 资料总档）](../../sources/papers/genesis_gene_ecosystem.md)
