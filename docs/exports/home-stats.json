@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 584,
-  "edge_count": 3960,
+  "node_count": 587,
+  "edge_count": 3983,
   "coverage": {
-    "covered": 582,
-    "total": 582,
+    "covered": 585,
+    "total": 585,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -45,6 +45,30 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/spark-3dgs-renderer.md",
+      "detail_id": "entity-spark-3dgs-renderer",
+      "label": "Spark（Web 3DGS 渲染器）",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/aholo-viewer.md",
+      "detail_id": "entity-aholo-viewer",
+      "label": "Aholo Viewer",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md",
+      "detail_id": "wiki-comparisons-spark-vs-aholo-web-3dgs-renderers",
+      "label": "Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型",
+      "type": "comparison",
       "recency": "2026-05-28",
       "source": "log.md"
     }
