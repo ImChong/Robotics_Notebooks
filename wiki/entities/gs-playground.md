@@ -2,13 +2,15 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026]
 status: complete
-updated: 2026-05-16
+updated: 2026-05-28
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
   - ./mujoco.md
   - ../concepts/sim2real.md
   - ./world-labs.md
+  - ./spark-3dgs-renderer.md
+  - ./aholo-viewer.md
   - ../methods/crisp-real2sim.md
 sources:
   - ../../sources/repos/gs_playground.md
@@ -38,7 +40,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 
 **原理**：3DGS 将场景表示为数百万个各向异性高斯椭球，GPU 并行将其溅射（splat）到像素平面，速度远高于 NeRF 的 ray marching，质量远高于光栅化。
 
-产业侧也有面向 **Web 大场景流式 3DGS** 的开源渲染栈（例如 World Labs 的 [Spark](https://sparkjs.dev/)，见 [World Labs](./world-labs.md)），与 GS-Playground 强调的 **物理仿真步进 + 批量光真实感观测** 关注点不同，但共享 splat 表征与工程化瓶颈词汇（排序、内存、LoD 等）。
+产业侧也有面向 **Web 大场景流式 3DGS** 的开源渲染栈（[Spark](./spark-3dgs-renderer.md)、[Aholo Viewer](./aholo-viewer.md)，见 [选型对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)），与 GS-Playground 强调的 **物理仿真步进 + 批量光真实感观测** 关注点不同，但共享 splat 表征与工程化瓶颈词汇（排序、内存、LoD 等）。
 
 ### Rigid-Link Gaussian Kinematics
 
@@ -92,7 +94,8 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 主流并行仿真平台，视觉质量较低
 - [MuJoCo](./mujoco.md) — 物理内核参考，GS-Playground 使用自研求解器
 - [Sim2Real](../concepts/sim2real.md) — Real2Sim 工作流直接服务 sim2real
-- [World Labs](./world-labs.md) — Web 端 3DGS 与空间世界生成产品/开源渲染参考
+- [Spark](./spark-3dgs-renderer.md) / [Aholo Viewer](./aholo-viewer.md) — Web 端大场景 3DGS 渲染（见 [对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）
+- [World Labs](./world-labs.md) — 空间世界生成（Marble）与 Spark 产业侧上下文
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照
 
 ## 参考来源

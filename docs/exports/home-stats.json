@@ -1,28 +1,44 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 582,
-  "edge_count": 3943,
+  "node_count": 585,
+  "edge_count": 3965,
   "coverage": {
-    "covered": 580,
-    "total": 580,
+    "covered": 583,
+    "total": 583,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
+      "path": "wiki/entities/spark-3dgs-renderer.md",
+      "detail_id": "entity-spark-3dgs-renderer",
+      "label": "Spark（Web 3DGS 渲染器）",
+      "type": "entity",
       "recency": "2026-05-28",
-      "source": "recency"
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/aholo-viewer.md",
+      "detail_id": "entity-aholo-viewer",
+      "label": "Aholo Viewer",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md",
+      "detail_id": "wiki-comparisons-spark-vs-aholo-web-3dgs-renderers",
+      "label": "Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型",
+      "type": "comparison",
+      "recency": "2026-05-28",
+      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/vision-language-navigation.md",
-    "detail_id": "wiki-tasks-vision-language-navigation",
-    "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-    "type": "task",
+    "path": "wiki/entities/spark-3dgs-renderer.md",
+    "detail_id": "entity-spark-3dgs-renderer",
+    "label": "Spark（Web 3DGS 渲染器）",
+    "type": "entity",
     "recency": "2026-05-28",
-    "source": "recency"
+    "source": "log.md"
   }
 }
