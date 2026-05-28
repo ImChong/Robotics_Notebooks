@@ -2,7 +2,7 @@
 
 ## [2026-05-28] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **42** 个问题（另含 **261** 条信息型预警）：
+共发现 **43** 个问题（另含 **261** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,7 +25,7 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（42 个）
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（43 个）
 - wiki/methods/ams.md (wiki:2026-04-27 < sources/bfm_awesome_ams_arxiv_2511_17373.md:2026-05-26)
 - wiki/methods/beyondmimic.md (wiki:2026-05-17 < sources/bfm_awesome_beyondmimic_arxiv_2508_08241.md:2026-05-26)
 - wiki/tasks/teleoperation.md (wiki:2026-05-23 < sources/bfm_awesome_clone_corl_2025.md:2026-05-26)
@@ -42,6 +42,7 @@
 - wiki/concepts/whole-body-coordination.md (wiki:2026-04-17 < sources/exoactor.md:2026-05-07)
 - wiki/concepts/capture-point-dcm.md (wiki:2026-04-25 < sources/faststair_arxiv_2601_10365.md:2026-05-17)
 - wiki/concepts/footstep-planning.md (wiki:2026-04-17 < sources/faststair_arxiv_2601_10365.md:2026-05-17)
+- wiki/entities/isaac-gym-isaac-lab.md (wiki:2026-05-21 < sources/genesis_gene_ecosystem.md:2026-05-28)
 - wiki/methods/exoactor.md (wiki:2026-05-07 < sources/genmo.md:2026-05-16)
 - wiki/concepts/embodied-data-cleaning.md (wiki:2026-04-21 < sources/humannet.md:2026-05-14)
 - wiki/methods/amp-reward.md (wiki:2026-05-25 < sources/humanoid_amp_survey_01_amp_adversarial_motion_priors_for_stylized_physi.md:2026-05-26)
