@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] ingest | sources/repos/tnkr.md、sources/blogs/tnkr_launch_youtube_nlv.md — 接入 Tnkr 协作平台（tnkr.ai）与官方 launch 视频；沉淀 wiki/entities/tnkr.md；交叉更新 lerobot、urdf-studio、humanoid-robot
+
 ## [2026-05-28] ingest | sources/blogs/genesis_ai_simulation_world_10_blog.md — Genesis AI 博客：仿真评测引擎、Genesis World 1.0（Nyx/Quadrants）与 real-to-sim 相关性叙事
 
 - 原始资料：[genesis_ai_simulation_world_10_blog.md](sources/blogs/genesis_ai_simulation_world_10_blog.md)（<https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>）
