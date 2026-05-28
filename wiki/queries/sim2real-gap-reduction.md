@@ -3,7 +3,7 @@ type: query
 tags: [sim2real, domain-randomization, locomotion, deployment, training]
 status: complete
 summary: "Sim2Real Gap 缩减实战指南"
-updated: 2026-05-17
+updated: 2026-05-28
 sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/privileged_training.md
@@ -71,6 +71,7 @@ push_robots: True                   # 随机推力 [0, 150] N
 | 方法 | 描述 |
 |------|------|
 | ActuatorNet（Hwangbo 2019） | 用 MLP 学习执行器的输入-输出映射（从真机数据） |
+| BAM M1–M6（ICRA 2025） | 摆锤 CMA-ES 辨识扩展摩擦 + MuJoCo 在线更新；见 [论文实体](../entities/paper-bam-extended-friction-servo-actuators.md) / [Rhoban/bam](https://github.com/Rhoban/bam) |
 | 延迟建模 | 在仿真中加入随机延迟 1-5 个控制步 |
 | PD 控制模式 | 用 PD 目标角度代替直接力矩（更鲁棒） |
 | 低通滤波 | 对策略输出的动作做一阶低通滤波 |

@@ -47,6 +47,7 @@
 | [x] [humanoid_amp_survey_19_catalog.md](papers/humanoid_amp_survey_19_catalog.md) | 具身智能研究室 19 篇 AMP 运动先验：独立 `humanoid_amp_survey_*` source + `paper-amp-survey-*` 实体总索引 |
 | [x] [bifrost_umi_arxiv_2605_03452.md](papers/bifrost_umi_arxiv_2605_03452.md) | BifrostUMI：无机器人示范 + 扩散高层 + SKR + G1 全身 visuomotor（arXiv:2605.03452，BAAI Aether）摘录与 wiki 映射 |
 | [x] [barkour_arxiv_2305_14654.md](papers/barkour_arxiv_2305_14654.md) | Barkour：四足敏捷障碍课基准 + 专长 PPO + Locomotion-Transformer 蒸馏 + sim2real（arXiv:2305.14654）摘录与 wiki 映射 |
+| [x] [bam_extended_friction_servos_arxiv_2410_08650.md](papers/bam_extended_friction_servos_arxiv_2410_08650.md) | BAM：舵机扩展摩擦 M1–M6 + 摆锤辨识 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）摘录与 wiki 映射 |
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
 | [x] [capvector_arxiv_2605_10903.md](papers/capvector_arxiv_2605_10903.md) | CapVector：参数空间 capability vector（θ_ao−θ_ft）合并 + 下游正交正则的 VLA 微调（arXiv:2605.10903，HKUSTGZ/浙大/西湖/清华/智源等）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
@@ -151,6 +152,7 @@
 | [x] [google_deepmind_barkour_robot.md](repos/google_deepmind_barkour_robot.md) | barkour_robot：DeepMind 敏捷四足 CAD/PCBA/装配/固件（Pigweed+EtherCAT）与 OnShape、Menagerie MJCF 官方入口索引 |
 | [x] [mujoco_menagerie_google_barkour_models.md](repos/mujoco_menagerie_google_barkour_models.md) | mujoco_menagerie：`google_barkour_v0` / `google_barkour_vb` 子目录（MJCF 资产） |
 | [x] [sage-sim2real-actuator-gap.md](repos/sage-sim2real-actuator-gap.md) | SAGE：Isaac Sim 重放与真机关节日志对齐，量化执行器层 sim2real gap（isaac-sim2real/sage） |
+| [x] [rhoban_bam.md](repos/rhoban_bam.md) | Rhoban/bam：Better Actuator Models 摆锤辨识、CMA-ES 拟合 M1–M6、MuJoCo 2R 验证（ICRA 2025 配套） |
 | [x] [awesome_bfm_papers.md](repos/awesome_bfm_papers.md) | awesome-bfm-papers：行为基础模型（BFM）论文/项目精选列表，配套 TPAMI 2025 综述（friedrichyuan / yuanmingqi 镜像） |
 | [x] [zilize-awesome-text-to-motion.md](repos/zilize-awesome-text-to-motion.md) | awesome-text-to-motion：文本驱动单人人体运动生成综述/数据集/模型精选与 GitHub Pages 交互索引（Zilize） |
 | [x] [tencent_hunyuan_hy_motion_1_0.md](repos/tencent_hunyuan_hy_motion_1_0.md) | HY-Motion-1.0：腾讯混元文本→3D 人体运动 DiT+Flow Matching 官方代码与 HF 权重入口 |

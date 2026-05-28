@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 587,
-  "edge_count": 3983,
+  "node_count": 589,
+  "edge_count": 4002,
   "coverage": {
-    "covered": 585,
-    "total": 585,
+    "covered": 587,
+    "total": 587,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
+      "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
+      "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/bam-better-actuator-models.md",
+      "detail_id": "entity-bam-better-actuator-models",
+      "label": "BAM（Better Actuator Models）",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/actuator-network.md",
+      "detail_id": "wiki-methods-actuator-network",
+      "label": "Actuator Network (执行器网络)",
+      "type": "method",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/genesis-world-10.md",
       "detail_id": "entity-genesis-world-10",
@@ -41,14 +89,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-05-28",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/spark-3dgs-renderer.md",
       "detail_id": "entity-spark-3dgs-renderer",
       "label": "Spark（Web 3DGS 渲染器）",
@@ -74,9 +114,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/genesis-world-10.md",
-    "detail_id": "entity-genesis-world-10",
-    "label": "Genesis World 1.0（Genesis AI 仿真基础设施）",
+    "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
+    "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
+    "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
     "type": "entity",
     "recency": "2026-05-28",
     "source": "log.md"

@@ -2,11 +2,13 @@
 type: method
 tags: [simulation, sim2real, hardware, control, deep-learning]
 status: complete
-updated: 2026-05-15
+updated: 2026-05-28
 related:
   - ../concepts/sim2real.md
   - ../entities/anymal.md
   - ../entities/sage-sim2real-actuator-gap-estimator.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
+  - ../entities/bam-better-actuator-models.md
   - ../concepts/system-identification.md
 sources:
   - ../../sources/papers/system_identification.md
@@ -68,10 +70,15 @@ flowchart LR
 - **功耗预测**：由于能够拟合真实力矩，RL 学出来的策略会更加节能。
 - **零样本迁移**：极大提升了 Locomotion 策略在复杂地形上的稳健性，减少了在真机上二次调参的需求。
 
+## 与解析摩擦模型（BAM）的关系
+
+执行器网络用 **黑箱 MLP** 拟合 $(q,\dot q,\text{历史指令})\rightarrow\tau$；[BAM 扩展摩擦](../entities/paper-bam-extended-friction-servo-actuators.md) 则用 **M1–M6 物理参数**（Stribeck、负载相关等）在 MuJoCo 中 **在线更新** 摩擦上界，数据需求为摆锤台架轨迹而非大规模悬空激励。二者可串联：先 BAM 缩小可解释误差，再对残差训练小型网络。
+
 ## 关联页面
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [ANYmal 实体页](../entities/anymal.md) — 广泛使用执行器网络的代表
 - [System Identification (系统辨识)](../concepts/system-identification.md)
+- [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
 
 ## 参考来源
 
