@@ -42,8 +42,7 @@ def test_venue_or_code_satisfies_source_check(tmp_path: Path, monkeypatch) -> No
     for key in ("venue", "code"):
         page = wiki / "entities" / f"paper-{key}.md"
         page.write_text(
-            f"---\ntype: entity\n{key}: https://example.org\n---\n"
-            "## 方法\n## 实验\n## 对比\n",
+            f"---\ntype: entity\n{key}: https://example.org\n---\n## 方法\n## 实验\n## 对比\n",
             encoding="utf-8",
         )
         results = _run([page])

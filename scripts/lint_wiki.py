@@ -29,6 +29,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 from datetime import date
 from pathlib import Path
@@ -284,6 +285,58 @@ def _check_missing_concepts(pages: list[Path], results: dict[str, Any]) -> None:
         )
 
 
+def _build_git_mtime_map() -> dict[Path, float]:
+    """Return {absolute Path → unix ts of most recent commit touching it}.
+
+    Uses a single `git log --name-only` pass over the entire history so it
+    runs in <1s on typical repos. The filesystem `mtime` is unreliable in
+    fresh clones (e.g. cloud Agent containers) where every checked-out file
+    has the same `mtime` regardless of when its content actually changed.
+    Returns an empty map if the repo isn't a git checkout or git fails.
+    """
+    try:
+        result = subprocess.run(
+            [
+                "git",
+                "-C",
+                str(REPO_ROOT),
+                "log",
+                "--format=__COMMIT__:%ct",
+                "--name-only",
+            ],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=30,
+        )
+        if result.returncode != 0:
+            return {}
+    except (subprocess.SubprocessError, OSError):
+        return {}
+
+    mtime_map: dict[Path, float] = {}
+    current_ts: float | None = None
+    for line in result.stdout.splitlines():
+        if line.startswith("__COMMIT__:"):
+            try:
+                current_ts = float(line.removeprefix("__COMMIT__:"))
+            except ValueError:
+                current_ts = None
+        elif line and current_ts is not None:
+            p = (REPO_ROOT / line).resolve()
+            # git log is reverse-chronological → first occurrence wins
+            if p not in mtime_map:
+                mtime_map[p] = current_ts
+    return mtime_map
+
+
+def _effective_mtime(path: Path, git_mtime_map: dict[Path, float]) -> float:
+    """Git commit time if tracked; otherwise filesystem mtime (uncommitted edits)."""
+    if path in git_mtime_map:
+        return git_mtime_map[path]
+    return path.stat().st_mtime
+
+
 def _check_sources_health(results: dict[str, Any]) -> None:
     """Sources 孤儿检测 + 陈旧页面检测。"""
     sources_papers_dir = REPO_ROOT / "sources" / "papers"
@@ -300,15 +353,16 @@ def _check_sources_health(results: dict[str, Any]) -> None:
 
     if os.environ.get("GITHUB_ACTIONS") == "true":
         return
+    git_mtime_map = _build_git_mtime_map()
     seen_stale: set[Path] = set()
     for src_file in sorted(sources_papers_dir.glob("*.md")):
         src_content = src_file.read_text(encoding="utf-8")
-        src_mtime = src_file.stat().st_mtime
+        src_mtime = _effective_mtime(src_file, git_mtime_map)
         for m in re.finditer(r"\]\(([^)]*wiki/[^)]+\.md)\)", src_content):
             href = m.group(1).split("#")[0]
             wiki_target = (src_file.parent / href).resolve()
             if wiki_target.exists() and wiki_target not in seen_stale:
-                wiki_mtime = wiki_target.stat().st_mtime
+                wiki_mtime = _effective_mtime(wiki_target, git_mtime_map)
                 if src_mtime > wiki_mtime + 86400:
                     seen_stale.add(wiki_target)
                     rel_wiki = wiki_target.relative_to(REPO_ROOT)
@@ -673,9 +727,7 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
         content = page.read_text(encoding="utf-8")
         fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
         fm_block = fm_match.group(1) if fm_match else ""
-        has_source = any(
-            re.search(rf"^{key}\s*:", fm_block, re.MULTILINE) for key in source_keys
-        )
+        has_source = any(re.search(rf"^{key}\s*:", fm_block, re.MULTILINE) for key in source_keys)
         if not has_source:
             results["paper_missing_source_meta"].append(str(rel))
 

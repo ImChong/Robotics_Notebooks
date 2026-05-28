@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] fix(lint) | scripts/lint_wiki.py — 陈旧页面检测改用 git commit time，根治 cloud Agent 容器 fresh-clone 伪阳性
+
+- 问题：`_check_sources_health` 用 `Path.stat().st_mtime` 比较 source 与 wiki 的修改时间；cloud Agent 容器 clone 时 `sources/papers/` 的 mtime 被刷成 checkout 时间，wiki 文件保留更早 mtime，导致 18+ 个 wiki 页被误报为「陈旧」（实际两边 git 提交日同日）。
+- 修复：新增 `_build_git_mtime_map()`，一次 `git log --format=%ct --name-only` 全量扫描得到 `{Path: 最近提交 unix ts}`；`_check_sources_health` 改为优先使用 git mtime，未入库的本地新文件 fallback 到 fs mtime；非 git 环境下整体退化到旧行为不报硬错。
+- 测试：`tests/test_lint_wiki_stale_pages.py` 4 用例覆盖 fresh-clone 场景不误报 / 真陈旧仍报 / 未提交本地编辑回退 fs mtime / 非 git 环境回退 fs mtime；全量 pytest 111 通过，ruff + mypy 均绿。
+- 效果：本次 cloud 环境 `make lint` 陈旧条目从 19 个全伪阳性，变为 30 个均为 git 历史中真实「wiki 早于 source ≥1 天」的需 review 列表。
+
+## [2026-05-27] query | wiki/queries/humanoid-motion-tracking-method-selection.md — 对照 smp.md 扩写后的源文件 review：纠正 mermaid 将 SMP 标为「判别器先验」的事实错误（SMP 为评分匹配，非判别器）；section 2 增补 SMP 选型轴（冻结扩散 + 可丢 MoCap vs AMP 同采样量 wall-clock ~1.8×）；frontmatter 加 smp.md 源、bump updated
+
 ## [2026-05-27] checklist-v23 | scripts/lint_wiki.py、tests/test_lint_wiki_paper_metadata.py — V23 P0「Entity-Paper 类页元数据 Lint」收口
 
 - 变更：`scripts/lint_wiki.py` 新增 `_check_paper_entity_metadata`，针对 `wiki/entities/paper-*.md` 做两项信息型检查——frontmatter 是否含 `arxiv` / `venue` / `code` 任一来源键、正文是否覆盖「方法 / 评测 / 对比」三段式；两个新 result key `paper_missing_source_meta` 与 `paper_missing_three_sections` 加入 `INFO_ONLY_KEYS`，缺失不阻塞 CI 但写入 lint 报告作为 ingest 流水线基线。

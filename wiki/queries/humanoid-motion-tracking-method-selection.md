@@ -3,11 +3,12 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-05-25
+updated: 2026-05-27
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/amp.md
+  - ../../sources/papers/smp.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/papers/any2any_arxiv_2605_23733.md
@@ -27,7 +28,7 @@ flowchart TD
   A -->|是| C[首要目标是逐帧贴合?]
   C -->|是| D[DeepMimic / BeyondMimic 显式跟踪]
   C -->|否| E[首要目标是自然步态/风格?]
-  E -->|是| F[AMP / ADD / SMP 判别器先验]
+  E -->|是| F[AMP / ADD / SMP 运动先验]
   F --> G[需要实时全身 tracker?]
   G -->|是| H[Any2Track / AMS / MotionBricks]
   G -->|接触柔顺| I[GentleHumanoid]
@@ -52,9 +53,9 @@ flowchart TD
 
 ### 2. Motion prior：再解决「像不像」
 
-当任务奖励已满足，仍出现步态不自然时，引入 [AMP](../methods/amp-reward.md) 判别器先验。[ADD](../methods/add.md) 用对抗差分减轻多目标手调；[SMP](../methods/smp.md) 把先验拆成可复用 reward model，便于模块化实验。
+当任务奖励已满足，仍出现步态不自然时，引入 [AMP](../methods/amp-reward.md) 判别器先验。[ADD](../methods/add.md) 用对抗差分减轻多目标手调；[SMP](../methods/smp.md) 走 **冻结扩散 + SDS** 路线（非判别器），先验预训练后可**丢弃原始 MoCap**、在多任务多策略间复用，代价是两阶段训练、同采样量 wall-clock 约为 AMP 的 ~1.8×（论文报告 600M samples：SMP ~11.5h vs AMP ~6.2h）。
 
-三者对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
+**选型轴**：每任务都要重训先验 / 必须保留数据集 → AMP/ADD；先验一次训好跨任务复用、不愿在 RL 阶段保留 MoCap → SMP。三者对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
 
 ### 3. 通用 tracker 与实时原语
 
