@@ -23,8 +23,8 @@
 
 - [x] **缩写/别名归一化检索 V2**：
     - [x] `scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补 WBT / BFM / DAgger / RSI / RFC / RMA / EMA / LoRA / DoF 等 V22 期间新增的高频缩写，确保新热点直接可检；新增用例覆盖到 `tests/test_search_wiki_core.py`。（2026-05-26：补全 9 条至共 25 条；新增 `test_v22_abbreviations_expand_to_full` / `test_v22_full_phrases_expand_to_abbreviation` 两组子测试，`python -m unittest tests.test_search_wiki_core` 全 26 用例通过；ruff / mypy 同步绿）
-- [ ] **Entity-Paper 类页元数据 Lint**：
-    - [ ] `scripts/lint_wiki.py` 新增 `entity_paper_metadata_check`：以 `wiki/entities/paper-*.md` 为目标，校验 frontmatter 至少包含 `arxiv` / `venue` / `code` 三类来源中之一，且正文存在「方法栈 / 评测 / 与其他工作对比」三段式（缺失给出 INFO 级提示，不阻塞 CI）。基线快照写入 lint 报告，作为后续 ingest 工作流自检入口。
+- [x] **Entity-Paper 类页元数据 Lint**：
+    - [x] `scripts/lint_wiki.py` 新增 `entity_paper_metadata_check`：以 `wiki/entities/paper-*.md` 为目标，校验 frontmatter 至少包含 `arxiv` / `venue` / `code` 三类来源中之一，且正文存在「方法栈 / 评测 / 与其他工作对比」三段式（缺失给出 INFO 级提示，不阻塞 CI）。基线快照写入 lint 报告，作为后续 ingest 工作流自检入口。（2026-05-27：新增 `_check_paper_entity_metadata` 与两条 INFO key `paper_missing_source_meta` / `paper_missing_three_sections`；基线快照：131/131 缺来源键、130/131 缺三段式之一。`tests/test_lint_wiki_paper_metadata.py` 新增 6 用例覆盖来源命中、缺失定位、非论文实体豁免、信息型计数；`python -m pytest tests/ --ignore=test_graph_layout.py` 106 通过，ruff / mypy 同步绿）
 - [ ] **图谱 latest_wiki_nodes 时间窗口可配置**：
     - [ ] `scripts/generate_link_graph.py` 把 `latest_wiki_nodes` 的「最近 N 项」改为可通过 CLI flag / 环境变量配置（默认 10，上限 30）；前端 `docs/main.js` 在详情页底部新增「最近 30 天 ingest 时间线」轻量展示（仅在主入口/首页生效）。
 
