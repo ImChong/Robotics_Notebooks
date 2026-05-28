@@ -1632,46 +1632,28 @@
       }
     }
 
-    /* ── 加载数据 ── */
-    let graphData, indexItems;
+    /* ── 加载数据 ──
+       仅首屏阻塞 link-graph.json（~570KB，含 summary）。
+       index-v1.json（~3.4MB）懒加载，供节点侧栏的 tags / related / source_links 使用。 */
+    let graphData;
+    let indexItems = [];
     try {
-      [graphData, indexItems] = await Promise.all([
-        fetch('exports/link-graph.json').then(r => r.json()),
-        fetch('exports/index-v1.json').then(r => r.json()).then(d => d.items),
-      ]);
+      graphData = await fetch('exports/link-graph.json').then(r => r.json());
     } catch (e) {
       document.getElementById('graph-loading').innerHTML =
         '<span style="color:#f87171">数据加载失败：' + escapeHtml(e.message) + '</span>';
       return;
     }
+    fetch('exports/index-v1.json')
+      .then(r => r.json())
+      .then(d => { indexItems = d.items || []; })
+      .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
     (graphData.communities || []).forEach((community, idx) => {
       communityColorMap.set(community.id, COMMUNITY_COLORS[idx % COMMUNITY_COLORS.length]);
       communityLabelMap.set(community.id, community.label || community.id);
     });
     renderLegend();
-
-    /* ── 建立 path→info 映射 ── */
-    function parseRecencyFromMarkdown(md) {
-      if (!md) return '';
-      const fm = md.match(/^---\n([\s\S]*?)\n---/);
-      if (!fm) return '';
-      const updated = fm[1].match(/^updated\s*:\s*(\S+)/m);
-      if (updated) return updated[1].slice(0, 10);
-      const created = fm[1].match(/^created\s*:\s*(\S+)/m);
-      if (created) return created[1].slice(0, 10);
-      return '';
-    }
-
-    const infoMap = {};
-    for (const item of indexItems) {
-      infoMap[item.path] = {
-        title: item.title,
-        summary: item.summary,
-        pageType: item.page_type,
-        recency: parseRecencyFromMarkdown(item.content_markdown || ''),
-      };
-    }
 
     /* ── 计算节点度数 ── */
     const degreeMap = {};
@@ -1680,12 +1662,12 @@
       degreeMap[e.target] = (degreeMap[e.target] || 0) + 1;
     }
 
-    /* ── 准备节点/边数据 ── */
+    /* ── 准备节点/边数据：title / summary / recency 都直接来自 link-graph.json ── */
     const nodes = graphData.nodes.map(n => ({
       ...n,
-      recency: n.recency || infoMap[n.id]?.recency || '1970-01-01',
+      recency: n.recency || '1970-01-01',
       _degree: degreeMap[n.id] || 0,
-      _info: infoMap[n.id] || { title: n.label || n.id, summary: '' },
+      _info: { title: n.label || n.id, summary: n.summary || '' },
     }));
     const edges = graphData.edges.map(e => ({ ...e }));
 

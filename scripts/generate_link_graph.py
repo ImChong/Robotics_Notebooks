@@ -39,6 +39,7 @@ from datetime import date
 from pathlib import Path
 from typing import Any
 
+from export_minimal import extract_summary
 from graph_layout import compute_force_layout
 
 REPO_ROOT = Path(__file__).parent.parent
@@ -609,6 +610,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
                 "label": extract_title(content) or page.stem,
                 "type": parse_frontmatter_type(content),
                 "health_score": compute_health_score(content),
+                "summary": extract_summary(content),
                 "_recency": wiki_recency_date(content, page).isoformat(),
             }
         )
