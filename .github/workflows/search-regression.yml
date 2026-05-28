@@ -40,6 +40,12 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements-ci-lite.txt
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
       - name: Run CI preflight
         id: preflight
         run: python3 scripts/ci_preflight.py

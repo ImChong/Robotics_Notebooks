@@ -75,9 +75,15 @@ def compute_force_layout(
         input=json.dumps(payload, ensure_ascii=False),
         capture_output=True,
         text=True,
-        check=True,
+        check=False,
         cwd=_D3_LAYOUT_SCRIPT.parent.parent,
     )
+    if proc.returncode != 0:
+        detail = (proc.stderr or proc.stdout or "").strip()
+        raise RuntimeError(
+            "d3-force layout failed (is Node installed and `npm ci` run?). "
+            f"exit={proc.returncode}: {detail[:500]}"
+        ) from None
     layout = json.loads(proc.stdout)
     layout["width"] = width
     layout["height"] = height

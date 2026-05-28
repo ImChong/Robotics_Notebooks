@@ -4,7 +4,7 @@
  * stdin: JSON { nodes, edges, degree_map, width, height, seed, params }
  * stdout: layout object { version, width, height, params, positions }
  */
-import { forceCenter, forceCollide, forceLink, forceManyBody, forceSimulation } from 'd3-force';
+import { forceCenter, forceCollide, forceLink, forceManyBody, forceSimulation } from 'd3';
 
 function mulberry32(seed) {
   let a = seed >>> 0;
