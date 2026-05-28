@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] ingest | sources/repos/aholo-viewer.md、sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md — 接入 Aholo Viewer 与 Spark 2.0；沉淀 wiki/entities/spark-3dgs-renderer.md、wiki/entities/aholo-viewer.md、wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md；交叉更新 world-labs、gs-playground、generative-world-models
+
 ## [2026-05-28] fix(lint) | scripts/lint_wiki.py — 陈旧页面检测改用 git commit time，根治 cloud Agent 容器 fresh-clone 伪阳性
 
 - 问题：`_check_sources_health` 用 `Path.stat().st_mtime` 比较 source 与 wiki 的修改时间；cloud Agent 容器 clone 时 `sources/papers/` 的 mtime 被刷成 checkout 时间，wiki 文件保留更早 mtime，导致 18+ 个 wiki 页被误报为「陈旧」（实际两边 git 提交日同日）。
