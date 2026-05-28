@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
+import json
+import subprocess
+from pathlib import Path
 from typing import Any
-
-import numpy as np
 
 # Match docs/graph.html initial physics (charge slider 800 → strength -800).
 LAYOUT_VERSION = 1
@@ -18,7 +19,6 @@ DISTANCE_MAX = 400.0
 COLLISION_STRENGTH = 0.7
 ALPHA_DECAY = 0.025
 MAX_TICKS = 320
-VELOCITY_DECAY = 0.6
 RNG_SEED = 42
 
 LAYOUT_PARAMS: dict[str, float | int] = {
@@ -35,6 +35,8 @@ LAYOUT_PARAMS: dict[str, float | int] = {
     "node_scale": 1.0,
 }
 
+_D3_LAYOUT_SCRIPT = Path(__file__).with_name("compute_force_layout.mjs")
+
 
 def base_radius(degree: float, node_scale: float = 1.0) -> float:
     return max(5.0, min(18.0, 4.0 + float(max(degree, 0.0)) ** 0.5 * 2.2)) * node_scale
@@ -48,9 +50,8 @@ def compute_force_layout(
     width: int = LAYOUT_WIDTH,
     height: int = LAYOUT_HEIGHT,
 ) -> dict[str, Any]:
-    """Run a force simulation and return layout metadata for link-graph.json."""
-    n = len(nodes)
-    if n == 0:
+    """Run d3-force (Barnes-Hut) and return layout metadata for link-graph.json."""
+    if not nodes:
         return {
             "version": LAYOUT_VERSION,
             "width": width,
@@ -59,91 +60,25 @@ def compute_force_layout(
             "positions": {},
         }
 
-    id_to_idx = {node["id"]: i for i, node in enumerate(nodes)}
-    radii = np.array(
-        [base_radius(float(degree_map.get(node["id"], 0))) + 5.0 for node in nodes],
-        dtype=np.float64,
-    )
-
-    rng = np.random.default_rng(RNG_SEED)
-    pos = rng.uniform(-40.0, 40.0, (n, 2))
-    pos[:, 0] += width / 2.0
-    pos[:, 1] += height / 2.0
-    vel = np.zeros((n, 2), dtype=np.float64)
-
-    edge_i: list[int] = []
-    edge_j: list[int] = []
-    for edge in edges:
-        si = id_to_idx.get(edge["source"])
-        ti = id_to_idx.get(edge["target"])
-        if si is None or ti is None:
-            continue
-        edge_i.append(si)
-        edge_j.append(ti)
-    edge_i_arr = np.asarray(edge_i, dtype=np.intp)
-    edge_j_arr = np.asarray(edge_j, dtype=np.intp)
-
-    cx, cy = width / 2.0, height / 2.0
-    alpha = 1.0
-
-    for _ in range(MAX_TICKS):
-        if alpha < 0.001:
-            break
-
-        disp = np.zeros((n, 2), dtype=np.float64)
-
-        diff = pos[:, np.newaxis, :] - pos[np.newaxis, :, :]
-        dist = np.linalg.norm(diff, axis=2)
-        np.fill_diagonal(dist, 1.0)
-        with np.errstate(divide="ignore", invalid="ignore"):
-            inv = np.where(dist > 0, 1.0 / dist, 0.0)
-            force_mag = np.where(
-                dist < DISTANCE_MAX,
-                CHARGE_STRENGTH * alpha * inv,
-                0.0,
-            )
-        force = diff * force_mag[..., np.newaxis]
-        disp += np.sum(force, axis=1)
-
-        if edge_i_arr.size:
-            delta = pos[edge_j_arr] - pos[edge_i_arr]
-            dist_e = np.linalg.norm(delta, axis=1) + 1e-6
-            pull = ((dist_e - LINK_DISTANCE) / dist_e) * LINK_STRENGTH * alpha
-            fvec = delta * pull[:, np.newaxis]
-            np.add.at(disp, edge_i_arr, fvec)
-            np.add.at(disp, edge_j_arr, -fvec)
-
-        disp[:, 0] += (cx - pos[:, 0]) * CENTER_STRENGTH * alpha
-        disp[:, 1] += (cy - pos[:, 1]) * CENTER_STRENGTH * alpha
-
-        diff_c = pos[:, np.newaxis, :] - pos[np.newaxis, :, :]
-        dist_c = np.linalg.norm(diff_c, axis=2)
-        np.fill_diagonal(dist_c, np.inf)
-        min_dist = radii[:, np.newaxis] + radii[np.newaxis, :]
-        overlap = np.maximum(0.0, min_dist - dist_c)
-        safe_dist = np.where(dist_c < np.inf, np.maximum(dist_c, 1e-6), np.inf)
-        push = np.where(
-            dist_c < np.inf,
-            (overlap / safe_dist) * COLLISION_STRENGTH * alpha,
-            0.0,
-        )
-        disp += np.sum(diff_c * push[..., np.newaxis], axis=1)
-
-        vel = (vel + disp) * VELOCITY_DECAY
-        pos += vel
-        alpha *= 1.0 - ALPHA_DECAY
-
-    positions: dict[str, dict[str, float]] = {}
-    for idx, node in enumerate(nodes):
-        positions[node["id"]] = {
-            "x": round(float(pos[idx, 0]), 2),
-            "y": round(float(pos[idx, 1]), 2),
-        }
-
-    return {
-        "version": LAYOUT_VERSION,
+    payload = {
+        "nodes": [{"id": node["id"]} for node in nodes],
+        "edges": edges,
+        "degree_map": degree_map,
         "width": width,
         "height": height,
+        "seed": RNG_SEED,
         "params": dict(LAYOUT_PARAMS),
-        "positions": positions,
+        "max_ticks": MAX_TICKS,
     }
+    proc = subprocess.run(
+        ["node", str(_D3_LAYOUT_SCRIPT)],
+        input=json.dumps(payload, ensure_ascii=False),
+        capture_output=True,
+        text=True,
+        check=True,
+        cwd=_D3_LAYOUT_SCRIPT.parent.parent,
+    )
+    layout = json.loads(proc.stdout)
+    layout["width"] = width
+    layout["height"] = height
+    return layout

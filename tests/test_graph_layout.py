@@ -25,3 +25,22 @@ def test_compute_force_layout_returns_positions_for_all_nodes() -> None:
         assert "x" in pos and "y" in pos
         assert 0 <= pos["x"] <= 800
         assert 0 <= pos["y"] <= 600
+
+
+def test_compute_force_layout_stays_finite_for_dense_graph() -> None:
+    """Regression: overlapping nodes must not explode charge forces to 1e60+."""
+    nodes = [{"id": f"wiki/n{i}.md", "label": f"N{i}"} for i in range(120)]
+    edges = [
+        {"source": f"wiki/n{i}.md", "target": f"wiki/n{(i + 1) % 120}.md"}
+        for i in range(120)
+    ]
+    degree_map = {node["id"]: 2 for node in nodes}
+    layout = compute_force_layout(nodes, edges, degree_map, width=1200, height=800)
+
+    assert len(layout["positions"]) == 120
+    for pos in layout["positions"].values():
+        assert abs(pos["x"]) < 1e6
+        assert abs(pos["y"]) < 1e6
+        # d3-force may spill slightly outside the nominal canvas; fitToScreen handles it.
+        assert -800 <= pos["x"] <= 2000
+        assert -800 <= pos["y"] <= 2000

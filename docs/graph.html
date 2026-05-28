@@ -1739,7 +1739,7 @@
     let W = 0;
     let H = 0;
 
-    function updateGraphViewport() {
+    function measureGraphViewport() {
       if (!wrap) return false;
       const nextW = wrap.clientWidth;
       const nextH = wrap.clientHeight;
@@ -1747,7 +1747,14 @@
       W = nextW;
       H = nextH;
       svg.attr('width', W).attr('height', H);
-      simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+      return true;
+    }
+
+    function updateGraphViewport() {
+      if (!measureGraphViewport()) return false;
+      if (simulation) {
+        simulation.force('center', d3.forceCenter(W / 2, H / 2).strength(0.05));
+      }
       return true;
     }
 
@@ -1817,7 +1824,18 @@
       }
     }
 
+    // 尽早拿到视口尺寸；若容器尚未布局完成则用离线布局画布尺寸作兜底，
+    // 避免 W=H=0 时 forceCenter(0,0) 把所有节点钉在 SVG 左上角。
+    if (!measureGraphViewport()) {
+      W = 1200;
+      H = 800;
+      svg.attr('width', W).attr('height', H);
+    }
+
     let usingPrecomputedLayout = applyExportedLayout(graphData);
+    if (!usingPrecomputedLayout) {
+      randomizeNodePositions();
+    }
 
     /* ── 力模拟 ── */
     const simulation = d3.forceSimulation(nodes)
@@ -2984,9 +3002,15 @@
         .attr('stroke', edgeBaseColor());
       applyFilters(); // 恢复筛选/搜索状态下的透明度
       wrap.classList.remove('sidebar-open');
-      simulation.force('center', d3.forceCenter(
-        (wrap.clientWidth || W) / 2, H / 2
-      ).strength(0.05)).alpha(0.1).restart();
+      updateGraphViewport();
+      const cx = (wrap.clientWidth || W) / 2;
+      const cy = (wrap.clientHeight || H) / 2;
+      simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
+      simulation.alpha(0.1).restart();
+      simulation.on('end.sidebar', () => {
+        simulation.on('end.sidebar', null);
+        fitToScreen();
+      });
     }
 
     sbClose.addEventListener('click', closeSidebar);
