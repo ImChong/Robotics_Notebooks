@@ -94,6 +94,10 @@
 | [x] [atom01_train.md](repos/atom01_train.md) | Atom01 训练仓库（IsaacLab 训练与迁移） |
 | [x] [atom01_description.md](repos/atom01_description.md) | Atom01 描述仓库（URDF/网格/模型） |
 | [x] [atom01_firmware.md](repos/atom01_firmware.md) | Atom01 固件仓库（板端构建与通信链路） |
+| [x] [open_duck_mini.md](repos/open_duck_mini.md) | Open Duck Mini：BDX 迷你双足 Hub（CAD/BOM/v2 sim2real 文档） |
+| [x] [open_duck_playground.md](repos/open_duck_playground.md) | Open Duck Playground：MuJoCo Playground/MJX RL 训练与 ONNX 导出 |
+| [x] [open_duck_reference_motion_generator.md](repos/open_duck_reference_motion_generator.md) | Open Duck 参考运动：Placo 参数化步态 → 模仿奖励系数 |
+| [x] [open_duck_mini_runtime.md](repos/open_duck_mini_runtime.md) | Open Duck Mini Runtime：Pi Zero 2W 机载 ONNX 与 Feetech 驱动 |
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
 | [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |

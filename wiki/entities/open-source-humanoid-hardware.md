@@ -15,6 +15,7 @@ related:
   - ./tienkung-humanoid-open-source.md
   - ./agibot-lingxi-x1.md
   - ./openloong.md
+  - ./open-duck-mini.md
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
@@ -78,12 +79,21 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 
 - **如果你想验证 RL 算法**：首选 **Berkeley Humanoid** 类方案，因为其 QDD 电机的动力学建模最为简单。
 - **如果你想研究全身协调 (WBC)**：建议寻找支持更高自由度的平台，或者在仿真中使用 **ODRI** 模型进行先行验证。
+- **如果你想做低成本娱乐双足 / BDX 复刻**：见 [Open Duck Mini](./open-duck-mini.md)（~42 cm、BOM &lt;$400、MuJoCo Playground + Pi Zero 2W 部署；非全尺寸人形，但 sim2real 管线完整）。
+
+## 2d. Open Duck Mini（迷你娱乐双足 / DIY）
+
+- **特点：** Disney BDX 角色的开源迷你版；Feetech 舵机 + Onshape CAD + 四仓分工（Hub / Playground / 参考运动 / Runtime）。
+- **优点：** 社区活跃、文档与预训练 ONNX 公开；适合学习 **BAM 执行器辨识 + 模仿奖励** 在廉价硬件上的 sim2real。
+- **局限：** 舵机扭矩与背隙限制动态性能；与 Berkeley / 青龙等全尺寸研究平台不可直接类比。
+- **详情：** [Open Duck Mini](./open-duck-mini.md)
 
 ## 关联页面
 - [人形机器人 (Humanoid Robot)](./humanoid-robot.md)
 - [Roboto Origin（开源人形机器人基线）](./roboto-origin.md)
 - [Asimov v1](./asimov-v1.md)
 - [OpenLoong（青龙·公版机）](./openloong.md)
+- [Open Duck Mini](./open-duck-mini.md)
 - [机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)

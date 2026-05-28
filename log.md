@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] ingest | sources/repos/open_duck_*.md — 接入 Open Duck 四仓（Mini Hub / Playground / Reference Motion / Runtime）并沉淀 wiki 实体与 sim2real、locomotion 交叉引用
+
+- 原始资料：[open_duck_mini.md](sources/repos/open_duck_mini.md)、[open_duck_playground.md](sources/repos/open_duck_playground.md)、[open_duck_reference_motion_generator.md](sources/repos/open_duck_reference_motion_generator.md)、[open_duck_mini_runtime.md](sources/repos/open_duck_mini_runtime.md)
+- 新建 wiki：[open-duck-mini.md](wiki/entities/open-duck-mini.md)、[open-duck-playground.md](wiki/entities/open-duck-playground.md)、[open-duck-reference-motion-generator.md](wiki/entities/open-duck-reference-motion-generator.md)、[open-duck-mini-runtime.md](wiki/entities/open-duck-mini-runtime.md)
+- 交叉更新：[sim2real.md](wiki/concepts/sim2real.md)、[locomotion.md](wiki/tasks/locomotion.md)、[open-source-humanoid-hardware.md](wiki/entities/open-source-humanoid-hardware.md)、[disney-olaf-character-robot.md](wiki/methods/disney-olaf-character-robot.md)
+
 ## [2026-05-28] ingest | sources/blogs/genesis_ai_simulation_world_10_blog.md — Genesis AI 博客：仿真评测引擎、Genesis World 1.0（Nyx/Quadrants）与 real-to-sim 相关性叙事
 
 - 原始资料：[genesis_ai_simulation_world_10_blog.md](sources/blogs/genesis_ai_simulation_world_10_blog.md)（<https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>）
