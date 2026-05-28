@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-27] query | wiki/queries/humanoid-motion-tracking-method-selection.md — 对照 smp.md 扩写后的源文件 review：纠正 mermaid 将 SMP 标为「判别器先验」的事实错误（SMP 为评分匹配，非判别器）；section 2 增补 SMP 选型轴（冻结扩散 + 可丢 MoCap vs AMP 同采样量 wall-clock ~1.8×）；frontmatter 加 smp.md 源、bump updated
+
 ## [2026-05-27] ingest | sources/papers/smp.md — 扩写 arXiv:2512.03028 完整摘录（摘要、SDS/ESM/GSI、任务与 AMP 对比、G1 部署、wiki 映射）；同步 sources/README 论文索引
 
 ## [2026-05-27] ingest | sources/repos/smp_suz_tsinghua.md — 接入清华 SUZ-tsinghua/smp（G1 上 SMP + mjlab 复现）；沉淀 wiki/entities/smp-g1-mjlab.md；交叉更新 wiki/methods/smp.md、wiki/entities/mimickit.md、wiki/entities/mjlab.md、wiki/comparisons/amp-add-smp-motion-prior-variants.md

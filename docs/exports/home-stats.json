@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-27",
+  "generated_at": "2026-05-28",
   "node_count": 582,
   "edge_count": 3943,
   "coverage": {
@@ -8,6 +8,14 @@
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/smp-g1-mjlab.md",
       "detail_id": "entity-smp-g1-mjlab",
@@ -1034,10 +1042,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/smp-g1-mjlab.md",
-    "detail_id": "entity-smp-g1-mjlab",
-    "label": "SMP on G1（mjlab 复现）",
-    "type": "entity",
+    "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+    "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+    "label": "人形运动跟踪方法选型指南",
+    "type": "query",
     "recency": "2026-05-27",
     "source": "log.md"
   }
