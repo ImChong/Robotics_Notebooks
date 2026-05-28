@@ -6,6 +6,8 @@
 - 新建 wiki：[open-duck-mini.md](wiki/entities/open-duck-mini.md)、[open-duck-playground.md](wiki/entities/open-duck-playground.md)、[open-duck-reference-motion-generator.md](wiki/entities/open-duck-reference-motion-generator.md)、[open-duck-mini-runtime.md](wiki/entities/open-duck-mini-runtime.md)
 - 交叉更新：[sim2real.md](wiki/concepts/sim2real.md)、[locomotion.md](wiki/tasks/locomotion.md)、[open-source-humanoid-hardware.md](wiki/entities/open-source-humanoid-hardware.md)、[disney-olaf-character-robot.md](wiki/methods/disney-olaf-character-robot.md)
 
+## [2026-05-28] ingest | sources/repos/tnkr.md、sources/blogs/tnkr_launch_youtube_nlv.md — 接入 Tnkr 协作平台（tnkr.ai）与官方 launch 视频；沉淀 wiki/entities/tnkr.md；交叉更新 lerobot、urdf-studio、humanoid-robot
+
 ## [2026-05-28] ingest | sources/blogs/genesis_ai_simulation_world_10_blog.md — Genesis AI 博客：仿真评测引擎、Genesis World 1.0（Nyx/Quadrants）与 real-to-sim 相关性叙事
 
 - 原始资料：[genesis_ai_simulation_world_10_blog.md](sources/blogs/genesis_ai_simulation_world_10_blog.md)（<https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>）

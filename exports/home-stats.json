@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 591,
-  "edge_count": 4011,
+  "node_count": 592,
+  "edge_count": 4022,
   "coverage": {
-    "covered": 589,
-    "total": 589,
+    "covered": 590,
+    "total": 590,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -69,6 +69,14 @@
       "detail_id": "wiki-methods-disney-olaf-character-robot",
       "label": "Disney Olaf 角色机器人（实机动画角色）",
       "type": "method",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tnkr.md",
+      "detail_id": "entity-tnkr",
+      "label": "Tnkr",
+      "type": "entity",
       "recency": "2026-05-28",
       "source": "log.md"
     },

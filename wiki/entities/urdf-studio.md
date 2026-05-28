@@ -25,6 +25,7 @@ updated: 2026-05-22
 - **硬件原型开发**：通过其 Hardware 模式管理电机选型，并一键生成 CSV/PDF 格式的 BOM 清单供采购使用。
 - **快速仿真适配**：将复杂的机器人设计快速转换为适合 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 或 [mujoco](mujoco.md) 的描述文件。
 - **团队协作**：提供项目级的工作区管理，方便分享和复用机器人资产。
+- **与整机协作平台对照：** [Tnkr](./tnkr.md) 从 **Onshape/GitHub 接入 + CAD 装配说明 + 线束标注** 组织开源整机项目；URDF-Studio 则专注 **URDF/MJCF/USD 描述文件与 BOM** 编辑，二者可上下游衔接而非互替。
 
 ## 技术架构
 
@@ -41,6 +42,7 @@ updated: 2026-05-22
 - [Articraft](./articraft.md)（agent + SDK + harness：可关节 3D 仿真资产生成，与 URDF/网格下游对照）
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)（自然语言 → STEP 等上游几何与机器人描述衔接）
 - [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
+- [Tnkr](./tnkr.md)（开源整机项目仓库：CAD 装配流、电气文档与部署数据闭环）
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

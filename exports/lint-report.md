@@ -383,4 +383,4 @@
 - wiki/entities/paper-wem-world-ego-modeling.md（缺 方法 / 对比）
 - wiki/entities/paper-worldvln-aerial-vln-wam.md（缺 方法 / 对比）
 
-📊 Sources 覆盖率：589/589 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：590/590 (100%) wiki/entity 页有 ingest 来源
