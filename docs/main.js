@@ -385,6 +385,80 @@
       });
   }
 
+  /** Split a markdown table row on column pipes, respecting $...$, \\(...\\), and \\| escapes. */
+  function splitMarkdownTableCells(row) {
+    const cells = [];
+    let current = '';
+    let inInlineMath = false;
+    let inDisplayMath = false;
+    let inParenMath = false;
+    let inCode = false;
+    const source = String(row || '');
+    let i = 0;
+
+    while (i < source.length) {
+      const ch = source[i];
+      const next = source[i + 1];
+
+      if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '\\' && next === '|') {
+        current += '\\|';
+        i += 2;
+        continue;
+      }
+
+      if (!inInlineMath && !inDisplayMath && !inParenMath && ch === '`') {
+        inCode = !inCode;
+        current += ch;
+        i++;
+        continue;
+      }
+
+      if (!inCode && !inInlineMath && !inParenMath && ch === '$' && next === '$') {
+        inDisplayMath = !inDisplayMath;
+        current += '$$';
+        i += 2;
+        continue;
+      }
+
+      if (!inCode && !inDisplayMath && ch === '$' && !inParenMath) {
+        inInlineMath = !inInlineMath;
+        current += ch;
+        i++;
+        continue;
+      }
+
+      if (!inCode && !inInlineMath && !inDisplayMath && ch === '\\' && next === '(') {
+        inParenMath = true;
+        current += '\\(';
+        i += 2;
+        continue;
+      }
+
+      if (inParenMath && ch === '\\' && next === ')') {
+        inParenMath = false;
+        current += '\\)';
+        i += 2;
+        continue;
+      }
+
+      if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '|') {
+        cells.push(current);
+        current = '';
+        i++;
+        continue;
+      }
+
+      current += ch;
+      i++;
+    }
+    cells.push(current);
+
+    const trimmed = cells.map(function (c) { return c.trim(); });
+    if (trimmed.length > 0 && trimmed[0] === '') trimmed.shift();
+    if (trimmed.length > 0 && trimmed[trimmed.length - 1] === '') trimmed.pop();
+    return trimmed;
+  }
+
   function normalizeCodeLang(lang) {
     const value = String(lang || '').trim().toLowerCase();
     if (!value) return 'text';
@@ -1433,9 +1507,7 @@
         const isHeader = i === 0;
         const isSeparator = row.replace(/\|/g, '').replace(/-/g, '').replace(/:/g, '').trim().length === 0;
         if (isSeparator) return '';
-        let cells = row.split('|').map(function (c) { return c.trim(); });
-        if (cells.length > 0 && cells[0] === '') cells.shift();
-        if (cells.length > 0 && cells[cells.length - 1] === '') cells.pop();
+        const cells = splitMarkdownTableCells(row);
         const tag = isHeader ? 'th' : 'td';
         return '<tr>' + cells.map(function (c) { return '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(c, context)) + '</' + tag + '>'; }).join('') + '</tr>';
       }).join('');
