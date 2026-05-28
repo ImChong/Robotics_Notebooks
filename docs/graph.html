@@ -593,6 +593,22 @@
     [data-theme="light"] .slider-label { color: rgba(0,0,0,0.45); }
     [data-theme="light"] .physics-toggle { color: rgba(0,0,0,0.45); }
     [data-theme="light"] .physics-toggle input[type=checkbox] { accent-color: #1659b4; }
+    [data-theme="light"] .physics-section-title { color: rgba(0,0,0,0.4); }
+    [data-theme="light"] .physics-action-btn {
+      border-color: rgba(0,0,0,0.12);
+      background: rgba(0,0,0,0.04);
+      color: rgba(0,0,0,0.72);
+    }
+    [data-theme="light"] .physics-action-btn:hover:not(:disabled) {
+      border-color: rgba(22,89,180,0.45);
+      background: rgba(22,89,180,0.08);
+      color: #1659b4;
+    }
+    [data-theme="light"] .physics-action-btn.is-running,
+    [data-theme="light"] .physics-action-btn:disabled {
+      border-color: rgba(22,89,180,0.4);
+      background: rgba(22,89,180,0.1);
+    }
     [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
     [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
     /* 提示文字 */
@@ -658,7 +674,7 @@
       position: absolute;
       top: 12px; right: 20px;
       z-index: 30;
-      width: 230px;
+      width: 240px;
       background: rgba(13,17,23,0.96);
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
@@ -729,6 +745,49 @@
       accent-color: #60a5fa;
       cursor: pointer;
       flex-shrink: 0;
+    }
+    .physics-section-title {
+      padding: 10px 14px 4px;
+      font-size: .68rem;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+    .physics-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding: 2px 14px 14px;
+    }
+    .physics-action-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.72);
+      font-size: .74rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .physics-action-btn:hover:not(:disabled) {
+      border-color: rgba(0,212,255,0.45);
+      color: #e6edf3;
+      background: rgba(0,212,255,0.08);
+    }
+    .physics-action-btn.is-running,
+    .physics-action-btn:disabled {
+      opacity: 0.72;
+      cursor: wait;
+      border-color: rgba(0,212,255,0.55);
+      background: rgba(0,212,255,0.16);
     }
 
     /* ── 筛选按钮计数徽章 ── */
@@ -1146,13 +1205,9 @@
     <div class="toolbar-right">
       <span id="graph-node-count">加载中…</span>
       <div class="toolbar-sep"></div>
-      <button id="physics-toggle" class="chip" title="调整物理参数"><span>⚙</span><span> 参数</span></button>
+      <button id="physics-toggle" class="chip" title="力导向参数、布局刷新与时序动画"><span>⚙</span><span> 参数</span></button>
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span>🔍</span><span> 适配屏幕</span></button>
-      <div class="toolbar-sep"></div>
-      <button id="restart-simulation" class="chip" title="从初始状态重新计算力导向布局（与未缓存布局时首次打开相同）"><span>↻</span><span> 刷新布局</span></button>
-      <div class="toolbar-sep"></div>
-      <button id="timeline-animate" class="chip" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）"><span>▶</span><span> 时序动画</span></button>
       <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
     </div>
@@ -1172,7 +1227,7 @@
     <!-- ── 物理参数面板 ── -->
     <div id="physics-panel" class="physics-panel" hidden>
       <div class="physics-header">
-        <span>⚙ 物理参数</span>
+        <span>⚙ 图谱参数</span>
         <button id="physics-close" class="physics-close" aria-label="关闭面板">✕</button>
       </div>
 
@@ -1225,6 +1280,17 @@
           <input type="checkbox" id="check-magnetic" />
           <span>🧲 磁吸模式</span>
         </label>
+      </div>
+
+      <div class="slider-divider"></div>
+      <div class="physics-section-title">布局与演示</div>
+      <div class="physics-actions">
+        <button type="button" id="restart-simulation" class="physics-action-btn" title="从初始状态重新计算力导向布局">
+          <span>↻</span><span>刷新布局</span>
+        </button>
+        <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
+          <span>▶</span><span>时序动画</span>
+        </button>
       </div>
     </div>
 
@@ -1784,47 +1850,7 @@
       });
     svg.call(zoom);
 
-    function applyExportedLayout(data) {
-      const layout = data && data.layout;
-      if (!layout || !layout.positions) return false;
-      const positions = layout.positions;
-      // Reject the whole cache if any coordinate is non-finite or runaway —
-      // a divergent export (e.g. positions of 1e60+) will pin every node to
-      // the canvas corner instead of producing a usable layout.
-      const MAX_ABS = 1e6;
-      for (const n of nodes) {
-        const p = positions[n.id];
-        if (!p) continue;
-        if (!Number.isFinite(p.x) || !Number.isFinite(p.y) ||
-            Math.abs(p.x) > MAX_ABS || Math.abs(p.y) > MAX_ABS) {
-          return false;
-        }
-      }
-      let applied = 0;
-      for (const n of nodes) {
-        const p = positions[n.id];
-        if (!p) continue;
-        n.x = p.x;
-        n.y = p.y;
-        n.vx = 0;
-        n.vy = 0;
-        applied++;
-      }
-      return applied > 0;
-    }
-
-    function randomizeNodePositions() {
-      for (const n of nodes) {
-        n.fx = null;
-        n.fy = null;
-        n.vx = 0;
-        n.vy = 0;
-        n.x = W / 2 + (Math.random() - 0.5) * 80;
-        n.y = H / 2 + (Math.random() - 0.5) * 80;
-      }
-    }
-
-    // 尽早拿到视口尺寸；若容器尚未布局完成则用离线布局画布尺寸作兜底，
+    // 尽早拿到视口尺寸；若容器尚未布局完成则用兜底尺寸，
     // 避免 W=H=0 时 forceCenter(0,0) 把所有节点钉在 SVG 左上角。
     if (!measureGraphViewport()) {
       W = 1200;
@@ -1832,9 +1858,17 @@
       svg.attr('width', W).attr('height', H);
     }
 
-    let usingPrecomputedLayout = applyExportedLayout(graphData);
-    if (!usingPrecomputedLayout) {
-      randomizeNodePositions();
+    function randomizeNodePositions() {
+      const cx = W / 2;
+      const cy = H / 2;
+      for (const n of nodes) {
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+        n.x = cx + (Math.random() - 0.5) * 80;
+        n.y = cy + (Math.random() - 0.5) * 80;
+      }
     }
 
     /* ── 力模拟 ── */
@@ -2032,11 +2066,11 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    function startLiveForceSimulation() {
-      usingPrecomputedLayout = false;
+    function restartForceSimulation() {
       const loadingEl = document.getElementById('graph-loading');
       if (loadingEl) loadingEl.style.display = '';
       node.select('.node-label').style('opacity', 0);
+      updateGraphViewport();
       randomizeNodePositions();
       syncGraphDomFromSimulation();
       simulation.alpha(1).restart();
@@ -2052,22 +2086,15 @@
       finishSimulationLoad();
     });
 
-    if (usingPrecomputedLayout) {
-      simulation.stop();
-      simulation.tick();
-      syncGraphDomFromSimulation();
+    setTimeout(() => {
+      if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
-    } else {
-      setTimeout(() => {
-        if (simulation.alpha() > 0.01) return;
-        finishSimulationLoad();
-      }, 1200);
-    }
+    }, 1200);
 
     const restartSimulationBtn = document.getElementById('restart-simulation');
     if (restartSimulationBtn) {
       restartSimulationBtn.addEventListener('click', () => {
-        startLiveForceSimulation();
+        restartForceSimulation();
       });
     }
 
@@ -2683,10 +2710,8 @@
       if (typeof closeSidebar === 'function') closeSidebar();
       hideTooltip();
 
-      if (!usingPrecomputedLayout) {
-        simulation.stop();
-        syncGraphDomFromSimulation();
-      }
+      simulation.stop();
+      syncGraphDomFromSimulation();
 
       const ordered = sortNodesByTimeline(nodes);
       const total = ordered.length;
@@ -2786,16 +2811,10 @@
       );
     }
 
-    /* ── resize（移动端地址栏收起会改变可视高度；预计算布局需重新 fit）── */
-    let resizeFitTimer = null;
+    /* ── resize（移动端地址栏收起会改变可视高度）── */
     function onGraphViewportResize() {
       if (!updateGraphViewport()) return;
-      if (!usingPrecomputedLayout) {
-        simulation.alpha(0.1).restart();
-        return;
-      }
-      clearTimeout(resizeFitTimer);
-      resizeFitTimer = setTimeout(() => fitToScreen(), 120);
+      simulation.alpha(0.1).restart();
     }
     window.addEventListener('resize', onGraphViewportResize);
     if (window.visualViewport) {
@@ -3066,12 +3085,8 @@
           );
           openSidebar(focusNode);
         };
-        if (usingPrecomputedLayout) {
-          setTimeout(flyToFocus, 150);
-        } else {
-          simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
-          setTimeout(flyToFocus, 1400);
-        }
+        simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
+        setTimeout(flyToFocus, 1400);
       }
     }
 
