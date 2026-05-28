@@ -6,7 +6,7 @@
 - **类型：** paper / blog / product-brief（混合）
 - **来源：** arXiv、公司官网、行业媒体、开源仓库
 - **入库日期：** 2026-05-07
-- **最后更新：** 2026-05-07
+- **最后更新：** 2026-05-28
 - **一句话说明：** 归档「GENE-26.5 机器人基础模型」公开信息与「Genesis 生成式通用物理引擎」论文及工程链接，并在仓库内与同名品牌做明确区分。
 
 ## 名称辨析（必须先读）
@@ -53,8 +53,22 @@
 
 - **RoboGen（生成式机器人技能管线展示页）：** <https://robogen-ai.github.io/>
 
+### 4) Genesis World 1.0 与仿真评测（Genesis AI 博客，2026-05）
+
+- **原文：** <https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>
+- **本仓库 source：** [genesis_ai_simulation_world_10_blog](../blogs/genesis_ai_simulation_world_10_blog.md)
+- **核心主张（归纳）：**
+  - 仿真 = **评测与迭代引擎**，先于依赖仿真训练数据；预训练阶段策略仅用真机数据，闭环仿真评测与真机 **Pearson ~0.90**（公司自报，14 任务协议）。
+  - **Genesis World 1.0** 组件：**Nyx**（机器人光追）、统一多物理 **Genesis World**、**Quadrants**（Taichi fork 编译器）、资产/场景管线。
+  - 未来：仿真规模化 post-training RL、经典+学习 **Hybrid simulator**、**Self-evolving physical AI** 双环。
+- **对 wiki 的映射：**
+  - [genesis-world-10](../../wiki/entities/genesis-world-10.md)
+  - [simulation-evaluation-infrastructure](../../wiki/concepts/simulation-evaluation-infrastructure.md)
+  - 交叉更新 [genesis-sim](../../wiki/entities/genesis-sim.md)、[gene-26-5-genesis-ai](../../wiki/entities/gene-26-5-genesis-ai.md)
+
 ## 当前提炼状态
 
 - [x] 名称辨析与链接核对
 - [x] wiki 页面映射确认
+- [x] Genesis World 1.0 博客（2026-05）入库
 - [ ] 若后续出现 GENE-26.5 正式技术报告或论文，应在本文件追加独立条目并更新实体页「参考来源」

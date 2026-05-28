@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] ingest | sources/blogs/genesis_ai_simulation_world_10_blog.md — Genesis AI 博客：仿真评测引擎、Genesis World 1.0（Nyx/Quadrants）与 real-to-sim 相关性叙事
+
+- 原始资料：[genesis_ai_simulation_world_10_blog.md](sources/blogs/genesis_ai_simulation_world_10_blog.md)（<https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>）
+- 新建 wiki：[genesis-world-10.md](wiki/entities/genesis-world-10.md)、[simulation-evaluation-infrastructure.md](wiki/concepts/simulation-evaluation-infrastructure.md)
+- 交叉更新：[genesis-sim.md](wiki/entities/genesis-sim.md)、[gene-26-5-genesis-ai.md](wiki/entities/gene-26-5-genesis-ai.md)、[genesis_gene_ecosystem.md](sources/papers/genesis_gene_ecosystem.md)、[sim2real.md](wiki/concepts/sim2real.md)
+
 ## [2026-05-28] ingest | sources/repos/aholo-viewer.md、sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md — 接入 Aholo Viewer 与 Spark 2.0；沉淀 wiki/entities/spark-3dgs-renderer.md、wiki/entities/aholo-viewer.md、wiki/comparisons/spark-vs-aholo-web-3dgs-renderers.md；交叉更新 world-labs、gs-playground、generative-world-models
 
 ## [2026-05-28] fix(lint) | scripts/lint_wiki.py — 陈旧页面检测改用 git commit time，根治 cloud Agent 容器 fresh-clone 伪阳性
