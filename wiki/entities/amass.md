@@ -3,7 +3,7 @@ type: entity
 title: AMASS（统一 SMPL 表示的大规模人体动捕档案）
 tags: [dataset, mocap, smpl, human-motion, deep-learning, animation, mpi-tuebingen]
 summary: "AMASS 将多份光学标记动捕数据通过 MoSh++ 拟合到 SMPL 参数序列，形成可合并训练的人体运动档案；站点提供注册下载与教程代码，是机器人学习里常见的人体参考运动来源之一。"
-updated: 2026-05-15
+updated: 2026-05-28
 status: complete
 related:
   - ../concepts/motion-retargeting.md

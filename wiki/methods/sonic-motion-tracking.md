@@ -3,7 +3,7 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-05-25
+updated: 2026-05-28
 related:
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ./beyondmimic.md

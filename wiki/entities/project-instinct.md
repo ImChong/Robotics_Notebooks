@@ -3,7 +3,7 @@ type: entity
 tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program]
 status: complete
 date: 2026-05-12
-updated: 2026-05-17
+updated: 2026-05-28
 related:
   - ./robot-motion-keyframe-editors.md
   - ./humanoid-robot.md

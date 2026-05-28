@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear]
 status: complete
-updated: 2026-05-17
+updated: 2026-05-28
 related:
   - ./gr00t-visual-sim2real.md
   - ./paper-viral-humanoid-visual-sim2real.md

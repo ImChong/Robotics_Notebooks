@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-tracking, impedance-control, compliance, contact-rich, ppo, teacher-student, sim2real, unitree-g1, mjlab, human-robot-interaction]
 status: complete
-updated: 2026-05-19
+updated: 2026-05-28
 related:
   - ./sonic-motion-tracking.md
   - ./beyondmimic.md
