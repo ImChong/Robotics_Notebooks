@@ -1,3 +1,4 @@
+import subprocess
 import unittest
 from pathlib import Path
 
@@ -99,6 +100,82 @@ class DetailContentSyncTests(unittest.TestCase):
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_main_js_splits_table_cells_inside_inline_math(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("function splitMarkdownTableCells(row)", content)
+        self.assertIn("const cells = splitMarkdownTableCells(row);", content)
+
+        node_script = r"""
+function splitMarkdownTableCells(row) {
+  const cells = [];
+  let current = '';
+  let inInlineMath = false;
+  let inDisplayMath = false;
+  let inParenMath = false;
+  let inCode = false;
+  const source = String(row || '');
+  let i = 0;
+  while (i < source.length) {
+    const ch = source[i];
+    const next = source[i + 1];
+    if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '\\' && next === '|') {
+      current += '\\|'; i += 2; continue;
+    }
+    if (!inInlineMath && !inDisplayMath && !inParenMath && ch === '`') {
+      inCode = !inCode; current += ch; i++; continue;
+    }
+    if (!inCode && !inInlineMath && !inParenMath && ch === '$' && next === '$') {
+      inDisplayMath = !inDisplayMath; current += '$$'; i += 2; continue;
+    }
+    if (!inCode && !inDisplayMath && ch === '$' && !inParenMath) {
+      inInlineMath = !inInlineMath; current += ch; i++; continue;
+    }
+    if (!inCode && !inInlineMath && !inDisplayMath && ch === '\\' && next === '(') {
+      inParenMath = true; current += '\\('; i += 2; continue;
+    }
+    if (inParenMath && ch === '\\' && next === ')') {
+      inParenMath = false; current += '\\)'; i += 2; continue;
+    }
+    if (!inCode && !inInlineMath && !inDisplayMath && !inParenMath && ch === '|') {
+      cells.push(current); current = ''; i++; continue;
+    }
+    current += ch; i++;
+  }
+  cells.push(current);
+  const trimmed = cells.map(function (c) { return c.trim(); });
+  if (trimmed.length > 0 && trimmed[0] === '') trimmed.shift();
+  if (trimmed.length > 0 && trimmed[trimmed.length - 1] === '') trimmed.pop();
+  return trimmed;
+}
+const cases = [
+  [
+    '| M3 | 3 | + 负载相关 $K_l\\|\\tau_m-\\tau_e\\|$ | eRob80:50 |',
+    ['M3', '3', '+ 负载相关 $K_l\\|\\tau_m-\\tau_e\\|$', 'eRob80:50']
+  ],
+  [
+    '| 摩擦锥 | $|f_x|, |f_y| \\leq \\mu f_z$，$f_z \\geq 0$ |',
+    ['摩擦锥', '$|f_x|, |f_y| \\leq \\mu f_z$，$f_z \\geq 0$']
+  ]
+];
+for (const [row, expected] of cases) {
+  const got = splitMarkdownTableCells(row);
+  if (JSON.stringify(got) !== JSON.stringify(expected)) {
+    console.error(JSON.stringify({ row, expected, got }));
+    process.exit(1);
+  }
+}
+console.log('ok');
+"""
+        result = subprocess.run(
+            ["node", "-e", node_script],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_detail_page_loads_katex_assets(self):
         content = DETAIL_HTML.read_text(encoding="utf-8")
