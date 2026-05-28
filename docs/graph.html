@@ -373,27 +373,10 @@
       }
     }
 
-    /* ── 加载状态 ── */
+    /* 加载状态仅由工具栏 #graph-node-count 提示，不遮挡画布 */
     #graph-loading {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 14px;
-      color: rgba(255,255,255,0.4);
-      font-size: .9rem;
-      z-index: 20;
+      display: none !important;
     }
-    .spinner {
-      width: 32px; height: 32px;
-      border: 2px solid rgba(255,255,255,0.08);
-      border-top-color: #00d4ff;
-      border-radius: 50%;
-      animation: spin .8s linear infinite;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     /* ── 移动端优化 ── */
     @media (max-width: 768px) {
@@ -1215,10 +1198,7 @@
 
   <!-- ── 图谱容器 ── -->
   <div id="graph-wrap">
-    <div id="graph-loading">
-      <div class="spinner"></div>
-      <span>正在构建知识图谱…</span>
-    </div>
+    <div id="graph-loading" hidden aria-hidden="true"></div>
     <svg id="graph-canvas"></svg>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
     <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
@@ -1706,8 +1686,11 @@
     try {
       graphData = await fetch('exports/link-graph.json').then(r => r.json());
     } catch (e) {
-      document.getElementById('graph-loading').innerHTML =
-        '<span style="color:#f87171">数据加载失败：' + escapeHtml(e.message) + '</span>';
+      const countEl = document.getElementById('graph-node-count');
+      if (countEl) {
+        countEl.textContent = '数据加载失败';
+        countEl.title = e.message || '';
+      }
       return;
     }
     fetch('exports/index-v1.json')
@@ -2061,14 +2044,11 @@
     }
 
     function finishSimulationLoad() {
-      document.getElementById('graph-loading').style.display = 'none';
       node.select('.node-label').transition().duration(400).style('opacity', 0.85);
       whenGraphViewportReady(() => fitToScreen());
     }
 
     function restartForceSimulation() {
-      const loadingEl = document.getElementById('graph-loading');
-      if (loadingEl) loadingEl.style.display = '';
       node.select('.node-label').style('opacity', 0);
       updateGraphViewport();
       randomizeNodePositions();
@@ -2081,7 +2061,7 @@
       syncGraphDomFromSimulation();
     });
 
-    /* ── 隐藏加载 & 标签渐显 ── */
+    /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
       finishSimulationLoad();
     });
