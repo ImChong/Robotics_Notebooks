@@ -33,6 +33,7 @@ related:
 - **对比**：相比传统的 [ros2-basics](../concepts/ros2-basics.md)，LeRobot 更侧重于“数据驱动型”的端到端学习，而非复杂的分布式中间件逻辑。
 - **互补 I/O 栈**：[RIO（Robot I/O）](./robot-io-rio.md) 侧重 **本机实时闭环** 与可切换中间件上的 **异步策略推理**；官方文档叙述可 **导出到 LeRobot / DROID 等格式** 再进入常见训练管线，二者常在「采集/部署」与「数据集/训练」两侧分工。
 - **NVIDIA 官方课：** [SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md) 用 `lerobot-record`（`so101_follower` / `so101_leader`）采集真机少量演示，并与 Isaac Lab 仿真演示做 Co-training。
+- **整机项目协作：** [Tnkr](./tnkr.md) 侧重把 CAD、线束、代码版本与部署/运行数据收进同一开源项目仓库；训练侧仍常导出到 LeRobot 等数据集格式，二者分工不同。
 
 ## 参考来源
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md) — 本批导航/SLAM 栈 ingest 同步的官方 GitHub source

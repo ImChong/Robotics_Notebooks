@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-28",
-  "node_count": 587,
-  "edge_count": 3983,
+  "node_count": 588,
+  "edge_count": 3994,
   "coverage": {
-    "covered": 585,
-    "total": 585,
+    "covered": 586,
+    "total": 586,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tnkr.md",
+      "detail_id": "entity-tnkr",
+      "label": "Tnkr",
+      "type": "entity",
+      "recency": "2026-05-28",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/genesis-world-10.md",
       "detail_id": "entity-genesis-world-10",
@@ -74,9 +82,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/genesis-world-10.md",
-    "detail_id": "entity-genesis-world-10",
-    "label": "Genesis World 1.0（Genesis AI 仿真基础设施）",
+    "path": "wiki/entities/tnkr.md",
+    "detail_id": "entity-tnkr",
+    "label": "Tnkr",
     "type": "entity",
     "recency": "2026-05-28",
     "source": "log.md"
