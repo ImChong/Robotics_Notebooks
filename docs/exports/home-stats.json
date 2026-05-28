@@ -9,19 +9,19 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
       "recency": "2026-05-28",
       "source": "recency"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-    "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-    "label": "人形运动跟踪方法选型指南",
-    "type": "query",
+    "path": "wiki/tasks/vision-language-navigation.md",
+    "detail_id": "wiki-tasks-vision-language-navigation",
+    "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+    "type": "task",
     "recency": "2026-05-28",
     "source": "recency"
   }
