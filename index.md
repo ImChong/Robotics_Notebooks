@@ -214,6 +214,7 @@ SORT type ASC
 - [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
 - [Generalist AI（机器人方向）](entities/generalist-ai-robotics.md) — Generalist AI**：聚焦具身智能与通用机器人策略的商业实体之一；对外叙事强调 **海量人类 / 机器人交互数据** 上的预训练与规模化定律验证（产品线名称与版本随发布更新）。 `📅unknown` `[entity_page]`
 - [Genesis (仿真器)](entities/genesis-sim.md) — Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 并列，作为新一代 `📅unknown` `[entity_page]`
+- [Genesis World 1.0（Genesis AI 仿真基础设施）](entities/genesis-world-10.md) — Genesis World 1.0 是 Genesis AI 公司的全栈仿真基础设施（Nyx 渲染、统一多物理、Quadrants GPU 编译器），将仿真定位为机器人基础模型的闭环评测与迭代引擎。 `📅2026-05-28` `[entity_page]`
 - [GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)](entities/gr00t-visual-sim2real.md) — GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规 `📅unknown` `[entity_page]`
 - [GR00T-WholeBodyControl（人形全身控制统一平台）](entities/gr00t-wholebodycontrol.md) — GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 `📅unknown` `[entity_page]`
 - [GS-Playground (3DGS 光真实感仿真)](entities/gs-playground.md) — GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting `📅unknown` `[entity_page]`
@@ -348,6 +349,7 @@ SORT type ASC
 - [Safety Filter（安全过滤器）](concepts/safety-filter.md) — Safety Filter**：位于高层策略和低层控制器之间的一层在线修正模块。它接收一个“名义动作”或“候选控制输入”，在尽量少改动原动作的前提下，强制满足安全约束，例如关节限位、碰撞距离、接触 `📅unknown` `[wiki_page]`
 - [传感器融合（Sensor Fusion）](concepts/sensor-fusion.md) — 传感器融合**：将来自多个传感器（IMU、摄像头、激光雷达、腿部运动学）的测量值在概率框架下统一融合，估计机器人的位姿、速度和接触状态，为上层控制（MPC / WBC）提供实时、精确的状态输入。 `📅unknown` `[wiki_page]`
 - [Sim2Real](concepts/sim2real.md) — Sim2Real**（仿真到现实迁移）：在仿真环境训练控制策略，然后部署到真实机器人上。 `📅unknown` `[wiki_page]`
+- [仿真评测基础设施（Simulation as Evaluation Infrastructure）](concepts/simulation-evaluation-infrastructure.md) — 将可信仿真作为机器人基础模型的可扩展闭环评测基础设施，在训练数据仍主要来自真机时，用 real-to-sim 相关性把模型迭代从墙钟瓶颈转为算力瓶颈。 `📅2026-05-28` `[wiki_page]`
 - [State Estimation](concepts/state-estimation.md) — State Estimation（状态估计）**：根据传感器观测、机器人模型和历史信息，估计机器人当前最可能真实状态的过程。 `📅unknown` `[wiki_page]`
 - [System Identification](concepts/system-identification.md) — System Identification（系统辨识 / SysID）**：通过实验数据估计机器人动力学、执行器、摩擦、延迟等模型参数，使模型更接近真实系统的过程。 `📅unknown` `[wiki_page]`
 - [Tactile Sensing（触觉感知）](concepts/tactile-sensing.md) — 触觉感知 (Tactile Sensing)** 是机器人感知系统中的重要组成部分。如果说视觉（Vision）赋予了机器人远距离和全局的场景理解能力，那么触觉则是机器人与物理世界发生**直接物理交 `📅unknown` `[wiki_page]`
