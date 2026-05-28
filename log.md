@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] ingest | sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md、sources/repos/rhoban_bam.md — BAM 舵机扩展摩擦（arXiv:2410.08650 / ICRA 2025）与 Rhoban/bam 开源管线入库
+
+- 原始资料：[bam_extended_friction_servos_arxiv_2410_08650.md](sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md)（<https://arxiv.org/abs/2410.08650v1>、PDF/HTML）、[rhoban_bam.md](sources/repos/rhoban_bam.md)（<https://github.com/Rhoban/bam>）
+- 新建 wiki：[paper-bam-extended-friction-servo-actuators.md](wiki/entities/paper-bam-extended-friction-servo-actuators.md)、[bam-better-actuator-models.md](wiki/entities/bam-better-actuator-models.md)
+- 交叉更新：[sim2real.md](wiki/concepts/sim2real.md)、[system-identification.md](wiki/concepts/system-identification.md)、[actuator-network.md](wiki/methods/actuator-network.md)、[sim2real-gap-reduction.md](wiki/queries/sim2real-gap-reduction.md)
+
 ## [2026-05-28] ingest | sources/repos/open_duck_*.md — 接入 Open Duck 四仓（Mini Hub / Playground / Reference Motion / Runtime）并沉淀 wiki 实体与 sim2real、locomotion 交叉引用
 
 - 原始资料：[open_duck_mini.md](sources/repos/open_duck_mini.md)、[open_duck_playground.md](sources/repos/open_duck_playground.md)、[open_duck_reference_motion_generator.md](sources/repos/open_duck_reference_motion_generator.md)、[open_duck_mini_runtime.md](sources/repos/open_duck_mini_runtime.md)

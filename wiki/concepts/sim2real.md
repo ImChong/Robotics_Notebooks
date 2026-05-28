@@ -21,6 +21,8 @@ related:
   - ./processor-in-the-loop-sim2real.md
   - ../methods/crisp-real2sim.md
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
+  - ../entities/paper-bam-extended-friction-servo-actuators.md
+  - ../entities/bam-better-actuator-models.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/open-duck-mini.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
@@ -120,6 +122,8 @@ flowchart TD
 
 ### 8. 高保真执行器对齐 (Actuator Alignment)
 
+**解析摩擦扩展（舵机 / 伺服）：** [BAM](../entities/paper-bam-extended-friction-servo-actuators.md)（ICRA 2025，[Rhoban/bam](https://github.com/Rhoban/bam)）在 MuJoCo 等默认 Coulomb–Viscous 之外，用 **M1–M6 可辨识摩擦上界**（Stribeck、负载相关、谐波二次项）与摆锤台架 **CMA-ES** 标定，在 Dynamixel / eRob 2R 臂上可将轨迹 MAE 降至约一半——尤其适合 **RL 低 PD 增益** 下执行器滞后明显的场景；与 [Actuator Network](../methods/actuator-network.md)（数据驱动）及 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)（gap 度量）可组合使用。
+
 根据 [zest](../methods/zest.md) 的实践，缩小动力学差距的关键在于精确处理闭链执行器（如膝盖、脚踝）的物理特性。通过基于电枢（Armature）分析值的增益选择程序，可以在不使用反馈补偿器的情况下，实现高动态动作的零样本迁移。机构层闭链几何、驱动—关节力映射与「训练用开环树 / 真机串并联」落差，可对照 [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md)（含 LiPS、Kinematic Actuation Models 等文献锚点）。
 
 ### 9. 处理器在环（固件 + 外设路径）
@@ -174,6 +178,8 @@ flowchart TD
 - [sources/papers/crisp_real2sim_iclr2026.md](../../sources/papers/crisp_real2sim_iclr2026.md) — CRISP：单目视频平面原语 Real2Sim + 接触引导（ICLR 2026）ingest 摘录
 - **ingest 档案：** [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：>1m/s 敏捷动作的额外 DR + 零样本 sim2real 完成 5m×5m 障碍课
 - **ingest 档案：** [sources/papers/slowrl_arxiv_2603_17092.md](../../sources/papers/slowrl_arxiv_2603_17092.md) — SLowRL：LoRA + Recovery 安全真机微调（Go2）
+- **ingest 档案：** [sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md) — BAM：舵机扩展摩擦模型 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）
+- **ingest 档案：** [sources/repos/rhoban_bam.md](../../sources/repos/rhoban_bam.md) — Rhoban/bam 开源辨识与仿真管线
 
 ## 关联页面
 
@@ -192,6 +198,7 @@ flowchart TD
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md) — 固件/总线/调度纳入仿真闭环的腿式迁移路径
 - [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 → 凸平面场景原语 + 接触补全 → RL 物理闭环的 Real2Sim（ICLR 2026）
 - [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足动态策略的低秩 + Recovery 安全层
+- [BAM 扩展摩擦（舵机仿真）](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 开源仓库](../entities/bam-better-actuator-models.md) — M1–M6 摩擦辨识与 MuJoCo 2R 验证
 
 ## 继续深挖入口
 
