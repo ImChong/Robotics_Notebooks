@@ -74,6 +74,8 @@ def main() -> None:
 
     run(["python3", "scripts/generate_page_catalog.py"], "Update page catalog")
     run(["python3", "scripts/export_minimal.py"], "Export wiki JSON, sitemap, and search index")
+    if (REPO_ROOT / "package-lock.json").is_file():
+        run(["npm", "ci"], "Install Node dependencies (d3-force layout export)")
     run(
         ["python3", "scripts/sync_all_stats.py"], "Update graph, home stats, badges, and docs stats"
     )
