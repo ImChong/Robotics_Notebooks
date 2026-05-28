@@ -1150,6 +1150,8 @@
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span>🔍</span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
+      <button id="restart-simulation" class="chip" title="从初始状态重新计算力导向布局"><span>↻</span><span> 刷新布局</span></button>
+      <div class="toolbar-sep"></div>
       <button id="timeline-animate" class="chip" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）"><span>▶</span><span> 时序动画</span></button>
       <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
@@ -1790,6 +1792,19 @@
       svg.attr('width', W).attr('height', H);
     }
 
+    function randomizeNodePositions() {
+      const cx = W / 2;
+      const cy = H / 2;
+      for (const n of nodes) {
+        n.fx = null;
+        n.fy = null;
+        n.vx = 0;
+        n.vy = 0;
+        n.x = cx + (Math.random() - 0.5) * 80;
+        n.y = cy + (Math.random() - 0.5) * 80;
+      }
+    }
+
     /* ── 力模拟 ── */
     const simulation = d3.forceSimulation(nodes)
       .force('link', d3.forceLink(edges).id(d => d.id).distance(80).strength(0.35))
@@ -1985,6 +2000,16 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
+    function restartForceSimulation() {
+      const loadingEl = document.getElementById('graph-loading');
+      if (loadingEl) loadingEl.style.display = '';
+      node.select('.node-label').style('opacity', 0);
+      updateGraphViewport();
+      randomizeNodePositions();
+      syncGraphDomFromSimulation();
+      simulation.alpha(1).restart();
+    }
+
     /* ── Tick ── */
     simulation.on('tick', () => {
       syncGraphDomFromSimulation();
@@ -1999,6 +2024,13 @@
       if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
     }, 1200);
+
+    const restartSimulationBtn = document.getElementById('restart-simulation');
+    if (restartSimulationBtn) {
+      restartSimulationBtn.addEventListener('click', () => {
+        restartForceSimulation();
+      });
+    }
 
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
