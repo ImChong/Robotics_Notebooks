@@ -25,8 +25,8 @@
     - [x] `scripts/search_wiki_core.py` 的 `WIKI_ABBREVIATIONS` 在 V22 16 条基础上补 WBT / BFM / DAgger / RSI / RFC / RMA / EMA / LoRA / DoF 等 V22 期间新增的高频缩写，确保新热点直接可检；新增用例覆盖到 `tests/test_search_wiki_core.py`。（2026-05-26：补全 9 条至共 25 条；新增 `test_v22_abbreviations_expand_to_full` / `test_v22_full_phrases_expand_to_abbreviation` 两组子测试，`python -m unittest tests.test_search_wiki_core` 全 26 用例通过；ruff / mypy 同步绿）
 - [x] **Entity-Paper 类页元数据 Lint**：
     - [x] `scripts/lint_wiki.py` 新增 `entity_paper_metadata_check`：以 `wiki/entities/paper-*.md` 为目标，校验 frontmatter 至少包含 `arxiv` / `venue` / `code` 三类来源中之一，且正文存在「方法栈 / 评测 / 与其他工作对比」三段式（缺失给出 INFO 级提示，不阻塞 CI）。基线快照写入 lint 报告，作为后续 ingest 工作流自检入口。（2026-05-27：新增 `_check_paper_entity_metadata` 与两条 INFO key `paper_missing_source_meta` / `paper_missing_three_sections`；基线快照：131/131 缺来源键、130/131 缺三段式之一。`tests/test_lint_wiki_paper_metadata.py` 新增 6 用例覆盖来源命中、缺失定位、非论文实体豁免、信息型计数；`python -m pytest tests/ --ignore=test_graph_layout.py` 106 通过，ruff / mypy 同步绿）
-- [ ] **图谱 latest_wiki_nodes 时间窗口可配置**：
-    - [ ] `scripts/generate_link_graph.py` 把 `latest_wiki_nodes` 的「最近 N 项」改为可通过 CLI flag / 环境变量配置（默认 10，上限 30）；前端 `docs/main.js` 在详情页底部新增「最近 30 天 ingest 时间线」轻量展示（仅在主入口/首页生效）。
+- [x] **图谱 latest_wiki_nodes 时间窗口可配置**：
+    - [x] `scripts/generate_link_graph.py` 把 `latest_wiki_nodes` 的「最近 N 项」改为可通过 CLI flag / 环境变量配置（默认 10，上限 30）；前端 `docs/main.js` 在详情页底部新增「最近 30 天 ingest 时间线」轻量展示（仅在主入口/首页生效）。（2026-05-28：`latest_wiki_nodes_from_log` 新增 `max_items` / `window_days` 形参；新增 `resolve_latest_nodes_max()` 处理 CLI 标志 `--latest-nodes-max` + 环境变量 `GRAPH_LATEST_NODES_MAX`，默认 10、上限 30、最低 1；窗口默认 30 天，跨日合并保序。前端 `docs/main.js renderLatestWikiNode` 在跨日返回时按日期分组渲染时间线（仅 `homeLatestWikiModule` 挂载点生效，详情/图谱页不受影响）；`docs/style.css` 新增 `.home-latest-wiki-timeline*` 轻量样式。`tests/test_generate_link_graph_latest_nodes.py` 新增 10 用例覆盖 max_items / window 截断 / CLI vs env 优先级 / clamp 边界；`PYTHONPATH=scripts python3 -m unittest discover tests` 87 通过。）
 
 ## P1: 全身运动跟踪（WBT）与跨具身迁移专题 (Quality)
 
