@@ -41,7 +41,9 @@ const path = require('path');
     await page.waitForFunction(() => {
       const loading = document.getElementById('graph-loading');
       const count = document.getElementById('graph-node-count');
-      const loadingHidden = !loading || loading.style.display === 'none';
+      const loadingHidden = !loading || loading.hidden
+        || loading.style.display === 'none'
+        || window.getComputedStyle(loading).display === 'none';
       const countReady = count && count.textContent && !count.textContent.includes('加载中');
       return loadingHidden && countReady;
     }, { timeout: 90000 });
