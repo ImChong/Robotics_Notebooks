@@ -11,6 +11,7 @@ related:
   - ../concepts/control-barrier-function.md
   - ../concepts/sim2real.md
   - ../concepts/character-animation-vs-robotics.md
+  - ../entities/open-duck-mini.md
 sources:
   - ../../sources/papers/disney_olaf_character_robot.md
 summary: "Disney Research 将动画角色 Olaf 做成实机：非对称腿+泡沫裙隐藏机构、动画参考驱动的 PPO 策略，并把执行器温度与落地噪声显式写进观测与奖励（含 CBF 风格约束项）。"
@@ -86,6 +87,7 @@ flowchart LR
 - CBF 在奖励里作为「软约束惩罚」的写法，可与 [Control Barrier Function](../concepts/control-barrier-function.md) 的形式化定义对照。
 - 任务语境见 [Locomotion](../tasks/locomotion.md)；动画参考跟踪属于 [Imitation Learning](./imitation-learning.md) 与 RL 结合的工程分支。
 - 「角色化人形 vs 研究/工业型人形」的边界澄清，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 把 Olaf 放在角色端，作为机构/奖励/分层全部受角色目标影响的范例。
+- 同系 **BDX 迷你复刻** 开源栈（MuJoCo Playground + Placo 参考运动 + Pi 部署），见 [Open Duck Mini](../entities/open-duck-mini.md) — 可与本文对照「工业级 Isaac + 热模型」与「社区 DIY + 舵机 + BAM」两条 entertainment biped 路线。
 
 ## 推荐继续阅读
 

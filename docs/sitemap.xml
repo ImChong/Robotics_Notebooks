@@ -396,6 +396,10 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-nvidia-so101-sim2real-lab-workflow</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-oculust-quest-teleop</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-odri-solo-and-bolt</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-duck-mini-runtime</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-duck-mini</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-duck-playground</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-duck-reference-motion-generator</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-source-humanoid-brains</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-source-humanoid-hardware</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-open-vins</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -575,6 +579,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-tairan-he</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-tidybot2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-tienkung-humanoid-open-source</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-tnkr</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-turtlebot3</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-unitree-g1</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-unitree-rl-mjlab</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
