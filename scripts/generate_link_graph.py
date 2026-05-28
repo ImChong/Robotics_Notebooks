@@ -40,7 +40,6 @@ from pathlib import Path
 from typing import Any
 
 from export_minimal import extract_summary
-from graph_layout import compute_force_layout
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -724,18 +723,10 @@ def main() -> None:
         if recency:
             node["recency"] = recency
 
-    degree_map: dict[str, int] = {n["id"]: 0 for n in nodes}
-    for edge in edges:
-        degree_map[edge["source"]] = degree_map.get(edge["source"], 0) + 1
-        degree_map[edge["target"]] = degree_map.get(edge["target"], 0) + 1
-
-    layout = compute_force_layout(nodes, edges, degree_map)
-
     graph = {
         "nodes": nodes,
         "edges": edges,
         "communities": communities,
-        "layout": layout,
     }
     OUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUT_PATH.write_text(

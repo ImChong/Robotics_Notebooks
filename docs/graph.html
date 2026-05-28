@@ -1150,8 +1150,6 @@
       <div class="toolbar-sep"></div>
       <button id="fit-to-screen" class="chip" title="适配屏幕"><span>🔍</span><span> 适配屏幕</span></button>
       <div class="toolbar-sep"></div>
-      <button id="restart-simulation" class="chip" title="从初始状态重新计算力导向布局（与未缓存布局时首次打开相同）"><span>↻</span><span> 刷新布局</span></button>
-      <div class="toolbar-sep"></div>
       <button id="timeline-animate" class="chip" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）"><span>▶</span><span> 时序动画</span></button>
       <div class="toolbar-sep"></div>
       <a href="index.html" id="graph-back">← 返回首页</a>
@@ -1784,57 +1782,12 @@
       });
     svg.call(zoom);
 
-    function applyExportedLayout(data) {
-      const layout = data && data.layout;
-      if (!layout || !layout.positions) return false;
-      const positions = layout.positions;
-      // Reject the whole cache if any coordinate is non-finite or runaway —
-      // a divergent export (e.g. positions of 1e60+) will pin every node to
-      // the canvas corner instead of producing a usable layout.
-      const MAX_ABS = 1e6;
-      for (const n of nodes) {
-        const p = positions[n.id];
-        if (!p) continue;
-        if (!Number.isFinite(p.x) || !Number.isFinite(p.y) ||
-            Math.abs(p.x) > MAX_ABS || Math.abs(p.y) > MAX_ABS) {
-          return false;
-        }
-      }
-      let applied = 0;
-      for (const n of nodes) {
-        const p = positions[n.id];
-        if (!p) continue;
-        n.x = p.x;
-        n.y = p.y;
-        n.vx = 0;
-        n.vy = 0;
-        applied++;
-      }
-      return applied > 0;
-    }
-
-    function randomizeNodePositions() {
-      for (const n of nodes) {
-        n.fx = null;
-        n.fy = null;
-        n.vx = 0;
-        n.vy = 0;
-        n.x = W / 2 + (Math.random() - 0.5) * 80;
-        n.y = H / 2 + (Math.random() - 0.5) * 80;
-      }
-    }
-
-    // 尽早拿到视口尺寸；若容器尚未布局完成则用离线布局画布尺寸作兜底，
+    // 尽早拿到视口尺寸；若容器尚未布局完成则用兜底尺寸，
     // 避免 W=H=0 时 forceCenter(0,0) 把所有节点钉在 SVG 左上角。
     if (!measureGraphViewport()) {
       W = 1200;
       H = 800;
       svg.attr('width', W).attr('height', H);
-    }
-
-    let usingPrecomputedLayout = applyExportedLayout(graphData);
-    if (!usingPrecomputedLayout) {
-      randomizeNodePositions();
     }
 
     /* ── 力模拟 ── */
@@ -2032,16 +1985,6 @@
       whenGraphViewportReady(() => fitToScreen());
     }
 
-    function startLiveForceSimulation() {
-      usingPrecomputedLayout = false;
-      const loadingEl = document.getElementById('graph-loading');
-      if (loadingEl) loadingEl.style.display = '';
-      node.select('.node-label').style('opacity', 0);
-      randomizeNodePositions();
-      syncGraphDomFromSimulation();
-      simulation.alpha(1).restart();
-    }
-
     /* ── Tick ── */
     simulation.on('tick', () => {
       syncGraphDomFromSimulation();
@@ -2052,24 +1995,10 @@
       finishSimulationLoad();
     });
 
-    if (usingPrecomputedLayout) {
-      simulation.stop();
-      simulation.tick();
-      syncGraphDomFromSimulation();
+    setTimeout(() => {
+      if (simulation.alpha() > 0.01) return;
       finishSimulationLoad();
-    } else {
-      setTimeout(() => {
-        if (simulation.alpha() > 0.01) return;
-        finishSimulationLoad();
-      }, 1200);
-    }
-
-    const restartSimulationBtn = document.getElementById('restart-simulation');
-    if (restartSimulationBtn) {
-      restartSimulationBtn.addEventListener('click', () => {
-        startLiveForceSimulation();
-      });
-    }
+    }, 1200);
 
     /* ── Tooltip ── */
     const tooltip = document.getElementById('graph-tooltip');
@@ -2683,10 +2612,8 @@
       if (typeof closeSidebar === 'function') closeSidebar();
       hideTooltip();
 
-      if (!usingPrecomputedLayout) {
-        simulation.stop();
-        syncGraphDomFromSimulation();
-      }
+      simulation.stop();
+      syncGraphDomFromSimulation();
 
       const ordered = sortNodesByTimeline(nodes);
       const total = ordered.length;
@@ -2786,16 +2713,10 @@
       );
     }
 
-    /* ── resize（移动端地址栏收起会改变可视高度；预计算布局需重新 fit）── */
-    let resizeFitTimer = null;
+    /* ── resize（移动端地址栏收起会改变可视高度）── */
     function onGraphViewportResize() {
       if (!updateGraphViewport()) return;
-      if (!usingPrecomputedLayout) {
-        simulation.alpha(0.1).restart();
-        return;
-      }
-      clearTimeout(resizeFitTimer);
-      resizeFitTimer = setTimeout(() => fitToScreen(), 120);
+      simulation.alpha(0.1).restart();
     }
     window.addEventListener('resize', onGraphViewportResize);
     if (window.visualViewport) {
@@ -3066,12 +2987,8 @@
           );
           openSidebar(focusNode);
         };
-        if (usingPrecomputedLayout) {
-          setTimeout(flyToFocus, 150);
-        } else {
-          simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
-          setTimeout(flyToFocus, 1400);
-        }
+        simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
+        setTimeout(flyToFocus, 1400);
       }
     }
 
