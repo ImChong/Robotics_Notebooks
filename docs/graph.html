@@ -2374,7 +2374,6 @@
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        if (timelineAnimating) return;
         if (isMobile) {
           // 移动端：点击节点显示/关闭固定卡片
           if (pinnedNode === d) {
@@ -3401,6 +3400,8 @@
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
+      // 时序动画进行中：禁用节点点击，避免打开背景节点详情侧栏
+      if (timelineAnimating) return;
       if (isMobile) {
         if (pinnedNode === d) {
           pinnedNode = null;
