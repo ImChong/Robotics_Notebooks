@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, locomotion, humanoid, sampling]
 status: complete
-updated: 2026-05-07
+updated: 2026-05-28
 related:
   - ./imitation-learning.md
   - ./deepmimic.md

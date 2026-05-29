@@ -2,7 +2,7 @@
 type: method
 tags: [generative-model, wbc, humanoid, motion-synthesis, gr00t, nvidia]
 status: complete
-updated: 2026-05-22
+updated: 2026-05-28
 related:
   - ../concepts/whole-body-control.md
   - ../entities/gr00t-wholebodycontrol.md

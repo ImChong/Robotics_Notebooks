@@ -2,7 +2,7 @@
 type: method
 tags: [rl, adaptation, world-model, transformer, locomotion]
 status: complete
-updated: 2026-04-27
+updated: 2026-05-28
 related:
   - ./model-based-rl.md
   - ./beyondmimic.md

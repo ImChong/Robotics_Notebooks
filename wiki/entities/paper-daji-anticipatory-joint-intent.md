@@ -9,7 +9,7 @@ tags:
   - latent-interface
   - streaming-instruction
 status: complete
-updated: 2026-05-19
+updated: 2026-05-28
 related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md

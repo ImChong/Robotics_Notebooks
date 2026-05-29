@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu]
 status: complete
-updated: 2026-05-17
+updated: 2026-05-28
 related:
   - ./paper-doorman-opening-sim2real-door.md
   - ./gr00t-visual-sim2real.md
