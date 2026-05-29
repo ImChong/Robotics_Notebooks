@@ -600,13 +600,9 @@
       color: #1659b4;
     }
     [data-theme="light"] .timeline-ctrl-btn {
-      border-color: rgba(0,0,0,0.12);
-      background: rgba(0,0,0,0.04);
       color: rgba(0,0,0,0.72);
     }
-    [data-theme="light"] .timeline-ctrl-btn:hover {
-      border-color: rgba(22,89,180,0.45);
-      background: rgba(22,89,180,0.08);
+    [data-theme="light"] .timeline-ctrl-btn:hover:not(:disabled) {
       color: #1659b4;
     }
     [data-theme="light"] .timeline-progress {
@@ -813,27 +809,61 @@
     }
     .timeline-ctrl-btn {
       flex-shrink: 0;
-      width: 28px; height: 28px;
+      width: 24px; height: 24px;
       display: inline-flex; align-items: center; justify-content: center;
-      border-radius: 7px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background: transparent;
       color: rgba(255,255,255,0.72);
-      font-size: .82rem; line-height: 1;
       font-family: inherit;
       cursor: pointer;
-      transition: border-color .15s, background .15s, color .15s;
+      transition: color .15s, opacity .15s;
     }
-    .timeline-ctrl-btn:hover {
-      border-color: rgba(0,212,255,0.45);
-      color: #e6edf3;
-      background: rgba(0,212,255,0.08);
+    .timeline-ctrl-btn:hover:not(:disabled) {
+      color: #00d4ff;
+    }
+    .timeline-ctrl-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .timeline-icon {
+      width: 16px;
+      height: 16px;
+      display: block;
+      pointer-events: none;
+    }
+    .timeline-controls.is-disabled .timeline-progress {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .timeline-controls.is-disabled .timeline-scrub-label {
+      opacity: 0.35;
     }
     .timeline-progress {
       flex: 1; min-width: 0;
       background: linear-gradient(to right,
         #00d4ff 0%, #00d4ff var(--tl-pct, 0%),
         rgba(255,255,255,0.1) var(--tl-pct, 0%), rgba(255,255,255,0.1) 100%);
+    }
+    .timeline-progress:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+    #filter-toggle.is-disabled,
+    #filter-toggle:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .filter-panel.filters-locked {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .filter-panel.filters-locked .filter-topic-section {
+      pointer-events: none;
     }
     .timeline-scrub-label {
       font-size: .7rem;
@@ -1340,12 +1370,16 @@
         <button type="button" id="timeline-animate" class="physics-action-btn" title="按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）">
           <span>▶</span><span>时序动画</span>
         </button>
-        <div id="timeline-controls" class="timeline-controls" hidden>
+        <div id="timeline-controls" class="timeline-controls is-disabled">
           <div class="timeline-scrub-row">
-            <button type="button" id="timeline-restart" class="timeline-ctrl-btn" title="回到起点" aria-label="回到起点">⏮</button>
-            <button type="button" id="timeline-playpause" class="timeline-ctrl-btn" title="暂停" aria-label="暂停">⏸</button>
+            <button type="button" id="timeline-restart" class="timeline-ctrl-btn" title="回到起点" aria-label="回到起点" disabled>
+              <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="3" width="2" height="10" rx="0.4" fill="currentColor"/><polygon points="12,4 7,8 12,12" fill="currentColor"/></svg>
+            </button>
+            <button type="button" id="timeline-playpause" class="timeline-ctrl-btn" title="暂停" aria-label="暂停" disabled>
+              <svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/><rect x="9.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/></svg>
+            </button>
             <input type="range" id="timeline-progress" class="timeline-progress" min="0" max="100" value="0" step="1"
-                   aria-label="时序进度，可拖拽倒退或快进" />
+                   aria-label="时序进度，可拖拽倒退或快进" disabled />
           </div>
           <div class="timeline-scrub-label"><span id="timeline-scrub-current">0</span> / <span id="timeline-scrub-total">0</span></div>
         </div>
@@ -1542,6 +1576,7 @@
     }
 
     function setFilterPanelOpen(open) {
+      if (open && areFiltersLocked()) return;
       if (!filterPanel) return;
       filterPanel.hidden = !open;
       filterPanel.setAttribute('aria-hidden', open ? 'false' : 'true');
@@ -1576,6 +1611,11 @@
     let timelineLastFit = 0;            // 上次相机自适应时间戳（节流）
     const timelineRevealedIds = new Set();
     const TIMELINE_TARGET_MS = 12000;
+
+    function areFiltersLocked() {
+      return timelineAnimating && timelinePlaying;
+    }
+
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
     let focusedCommunityId = null;
@@ -1856,6 +1896,7 @@
     const slDegreeTop = document.getElementById('sl-degree-top');
     if (slDegreeTop) {
       slDegreeTop.addEventListener('input', ev => {
+        if (areFiltersLocked()) return;
         setTopDegreeLimit(ev.target.value);
       });
       slDegreeTop.addEventListener('change', () => {
@@ -2086,6 +2127,7 @@
 
       filterPanelBody.querySelectorAll('input[type="checkbox"]').forEach(cb => {
         cb.addEventListener('change', () => {
+          if (areFiltersLocked()) return;
           if (cb.checked) {
             activeFilters.add(cb.value);
           } else {
@@ -2107,6 +2149,7 @@
     }
 
     function setColorMode(mode) {
+      if (areFiltersLocked()) return;
       if (colorMode === mode) return;
       colorMode = mode;
       activeFilters.clear();
@@ -2537,11 +2580,13 @@
 
     /* ── 筛选面板开关 ── */
     filterToggle.addEventListener('click', () => {
+      if (areFiltersLocked()) return;
       setFilterPanelOpen(filterPanel.hidden);
     });
 
     // V17: 社区高亮功能 / V22: 扩展支持类型与健康度筛选
     graphLegend.addEventListener('click', (ev) => {
+      if (areFiltersLocked()) return;
       const row = ev.target.closest('.legend-row');
       if (!row) return;
 
@@ -2568,6 +2613,7 @@
       setFilterPanelOpen(false);
     });
     document.getElementById('filter-clear').addEventListener('click', () => {
+      if (areFiltersLocked()) return;
       activeFilters.clear();
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
@@ -2617,6 +2663,7 @@
     }
     if (topicChipsEl) {
       topicChipsEl.addEventListener('click', ev => {
+        if (areFiltersLocked()) return;
         const btn = ev.target.closest('.filter-topic-chip');
         if (!btn) return;
         setActiveTopic(btn.getAttribute('data-topic'));
@@ -2716,6 +2763,27 @@
     const timelineScrubCurrentEl = document.getElementById('timeline-scrub-current');
     const timelineScrubTotalEl = document.getElementById('timeline-scrub-total');
 
+    const TIMELINE_ICON_PLAY = '<svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><polygon points="5,3 5,13 13,8" fill="currentColor"/></svg>';
+    const TIMELINE_ICON_PAUSE = '<svg class="timeline-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/><rect x="9.2" y="3" width="2.6" height="10" rx="0.4" fill="currentColor"/></svg>';
+
+    function syncTimelineInteractionState() {
+      const filtersLocked = areFiltersLocked();
+      const scrubEnabled = timelineAnimating;
+
+      if (filterToggle) {
+        filterToggle.disabled = filtersLocked;
+        filterToggle.classList.toggle('is-disabled', filtersLocked);
+        filterToggle.setAttribute('aria-disabled', filtersLocked ? 'true' : 'false');
+      }
+      if (filterPanel) filterPanel.classList.toggle('filters-locked', filtersLocked);
+      if (filtersLocked && filterPanel && !filterPanel.hidden) setFilterPanelOpen(false);
+
+      if (timelineControls) timelineControls.classList.toggle('is-disabled', !scrubEnabled);
+      if (timelinePlayPauseBtn) timelinePlayPauseBtn.disabled = !scrubEnabled;
+      if (timelineRestartBtn) timelineRestartBtn.disabled = !scrubEnabled;
+      if (timelineProgressEl) timelineProgressEl.disabled = !scrubEnabled;
+    }
+
     function getNodeRecency(d) {
       return d.recency || '1970-01-01';
     }
@@ -2744,7 +2812,7 @@
     // 按钮文案 / 高亮随播放状态切换
     function updateTimelineControls() {
       if (timelinePlayPauseBtn) {
-        timelinePlayPauseBtn.textContent = timelinePlaying ? '⏸' : '▶';
+        timelinePlayPauseBtn.innerHTML = timelinePlaying ? TIMELINE_ICON_PAUSE : TIMELINE_ICON_PLAY;
         timelinePlayPauseBtn.title = timelinePlaying ? '暂停' : '播放';
         timelinePlayPauseBtn.setAttribute('aria-label', timelinePlaying ? '暂停' : '播放');
       }
@@ -2755,6 +2823,7 @@
         if (icon) icon.textContent = timelineAnimating ? '✕' : '▶';
         if (label) label.textContent = timelineAnimating ? '退出动画' : '时序动画';
       }
+      syncTimelineInteractionState();
     }
 
     function updateTimelineLinks(revealed) {
@@ -2903,7 +2972,7 @@
         for (let i = targetIdx; i < prev; i++) timelineRevealedIds.delete(timelineOrdered[i].id);
         renderTimelineStatic();
       }
-      syncTimelineSimulation();                 // 成员 = 已显现子集（播放时在动，暂停时冻结）
+      syncTimelineSimulation();                 // 成员 = 已显现子集；暂停时力模拟仍继续
       timelineIdx = targetIdx;
       updateTimelineLinks(timelineRevealedIds);
       updateTimelineProgress(timelineIdx, timelineTotal);
@@ -2938,8 +3007,7 @@
       }
       timelinePlaying = false;
       svg.interrupt('tlfit');
-      simulation.alphaTarget(0);
-      simulation.stop();             // 冻结当前布局
+      simulation.alphaTarget(0.3).restart();   // 仅停计时器，力导向布局继续演化
       updateTimelineControls();
     }
 
@@ -2975,7 +3043,6 @@
       syncTimelineSimulation();
       simulation.stop();
 
-      if (timelineControls) timelineControls.hidden = false;
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
       updateTimelineProgress(0, timelineTotal);
       updateTimelineControls();
@@ -2990,7 +3057,6 @@
       timelineRevealedIds.clear();
       timelineIdx = 0;
       timelineTotal = 0;
-      if (timelineControls) timelineControls.hidden = true;
       node.interrupt();
       link.interrupt();
       svg.interrupt('tlfit');
@@ -3040,6 +3106,8 @@
         seekTimeline(Number(timelineProgressEl.value), false);
       });
     }
+
+    syncTimelineInteractionState();
 
     function fitToVisibleNodes() {
       if (!updateGraphViewport()) return;
