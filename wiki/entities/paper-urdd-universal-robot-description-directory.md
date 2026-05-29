@@ -3,6 +3,8 @@ type: entity
 tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135]
 status: complete
 updated: 2026-05-17
+arxiv: "2512.23135"
+code: https://github.com/Apollo-Lab-Yale/apollo-rust
 related:
   - ./robot-viewer.md
   - ./urdf-studio.md
@@ -94,6 +96,15 @@ flowchart LR
 - Klein-Seetharaman & Rakita, *Beyond URDF: The Universal Robot Description Directory for Shared, Extensible, and Standardized Robot Models*, [arXiv:2512.23135](https://arxiv.org/abs/2512.23135)
 - 浏览器演示与资产布局：<https://apollo-lab-yale.github.io/apollo-resources/>
 - 预处理与示例输出入口：<https://github.com/Apollo-Lab-Yale/apollo-rust>
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

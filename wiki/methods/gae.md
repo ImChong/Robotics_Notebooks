@@ -2,12 +2,15 @@
 type: method
 tags: [rl, policy-optimization, math, optimization]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-29
 related:
   - ./policy-optimization.md
   - ./reinforcement-learning.md
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/intentional_streaming_rl.md
+related:
+  - ./intentional-updates-streaming-rl.md
 summary: "广义优势估计（GAE）通过引入衰减因子 λ 在偏差与方差之间进行权衡，是目前 PPO 等主流 Policy Gradient 算法中计算优势函数的标准方法。"
 ---
 
@@ -28,9 +31,12 @@ $$ \hat{A}_t^{GAE(\gamma, \lambda)} = \sum_{l=0}^{\infty} (\gamma \lambda)^l \de
 
 在 [PPO](./policy-optimization.md) 中使用 GAE 可以显著稳定训练过程。其优势估计的准确性直接决定了 [Bellman 方程](../formalizations/bellman-equation.md) 迭代中的梯度平滑度，使模型在面对长时域任务时更容易收敛。
 
+**与流式 RL 的交叉：** [Intentional Updates（流式 RL）](./intentional-updates-streaming-rl.md) 在 **TD($\lambda$) + eligibility traces** 设定下，把「意图更新」写成对 **近期多状态预测折扣 RMS 变化** 与 $|\delta_t|$ 成比例——trace 几何必须与 GAE 的多步信用分配一致，否则 naive 用 $\mathbf{z}_t$ 范数归一化会导致 trace 变长时更新反而缩小。读 GAE 时若关心 **batch=1、无 replay** 的在线设定，应连同 intentional TD($\lambda$) 一并理解。
+
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Policy Optimization](./policy-optimization.md)
 
 ## 参考来源
 - Schulman, J., et al. (2015). *High-Dimensional Continuous Control Using Generalized Advantage Estimation*.
+- [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — intentional TD($\lambda$) 与 GAE trace 几何

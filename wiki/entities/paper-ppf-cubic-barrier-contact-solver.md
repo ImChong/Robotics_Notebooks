@@ -3,6 +3,7 @@ type: entity
 tags: [paper, simulation, contact, deformable, fem, graphics, gpu, zozo]
 status: complete
 updated: 2026-05-25
+code: https://github.com/st-tech/ppf-contact-solver#-technical-materials
 related:
   - ./ppf-contact-solver.md
   - ./mujoco.md
@@ -44,6 +45,15 @@ summary: "TOG 论文：三次障碍接触势 + 弹性包容动态刚度，使 FE
 - [ppf-contact-solver（实现）](./ppf-contact-solver.md) — 代码、部署、Blender/MCP
 - [MuJoCo](./mujoco.md) — 刚体 RL / 控制标准栈
 - [仿真器选型指南](../queries/simulator-selection-guide.md) — locomotion RL 三维对比；可变形离线场景见 ppf 实体
+
+## 方法栈
+
+见上文 **核心结构** 表与流程描述；模块级实现以原文 PDF 为准。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
 
 ## 参考来源
 

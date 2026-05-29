@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, hoi, loco-manipulation, imitation-learning, reinforcement-learning, ppo, variational-policy, unitree-g1, physics-simulation, uiuc, amazon, cvpr2026]
 status: complete
 updated: 2026-05-17
+arxiv: "2602.06035"
+venue: "CVPR 2026"
 related:
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
@@ -101,6 +103,15 @@ flowchart TB
 - InterMimic 项目页：<https://sirui-xu.github.io/InterMimic/>
 - InterAct 数据集：<https://sirui-xu.github.io/InterAct/>
 - ULTRA（多模态人形 loco-manipulation）：<https://ultra-humanoid.github.io/>
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

@@ -4,6 +4,7 @@ tags: [quadruped, sim2real, reinforcement-learning, legged]
 status: stable
 summary: "RSS 2018：随机化动力学与感知，在仿真中学敏捷四足运动并迁移真机；建立早期 sim2real 扭矩/敏捷控制参照系。"
 updated: 2026-05-22
+venue: "RSS 2018"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-quadruped-torque-control-rl.md
@@ -41,6 +42,15 @@ flowchart LR
 ## 与 Kp / Kd 设置的关系
 
 - 若你的实现仍用 **PD 内环**：可把此文当作 **「随机化清单」** 的历史参照，再映射到当前栈（Isaac / MuJoCo）的 **等效参数名**。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

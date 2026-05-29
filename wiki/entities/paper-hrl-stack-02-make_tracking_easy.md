@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -38,6 +39,12 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md](../../sources/papers/humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

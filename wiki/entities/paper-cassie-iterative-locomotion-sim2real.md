@@ -4,6 +4,8 @@ tags: [cassie, reinforcement-learning, sim2real, reward-design, legged]
 status: stable
 summary: "Cassie 行走：记录 reward / observation / action 接口多轮迭代的 sim2real 设计史，含 DASS 等跨迭代经验复用。"
 updated: 2026-05-22
+arxiv: "1903.09537"
+venue: "CORL 2019"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-cassie-feedback-control-drl.md
@@ -43,6 +45,15 @@ flowchart TB
 ## 与 Kp / Kd 设置的关系
 
 - 若出现「仿真走得漂亮、真机抖/摔」，先检查 **动作接口是否与 PD 表同一版本文档化**，再进入增益扫描；本文是这一纪律的 **案例教材**。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 与同期 **baseline、PD 内环、纯模仿或纯 RL** 等路线的差异见原文实验章节；知识库内相关概念页见 **关联页面**。
+
 
 ## 参考来源
 

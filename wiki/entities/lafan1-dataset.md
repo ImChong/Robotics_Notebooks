@@ -3,16 +3,19 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-05-15
-status: complete
+updated: 2026-05-29
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md
   - ../tasks/locomotion.md
+  - ../tasks/balance-recovery.md
   - ../methods/motion-retargeting-gmr.md
+  - ../methods/amp-reward.md
+  - ./paper-unified-walk-run-recovery-sdamp.md
   - ./amass.md
 sources:
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
+  - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
 ---
 
 # LaFAN1（Ubisoft La Forge Animation Dataset）
@@ -24,6 +27,7 @@ sources:
 - **动作语义覆盖**：除平地行走外，包含 **障碍地形、跌倒起身、爬行、瞄准移动** 等，对 **recovery / 多接触** 研究比单一行走库更有信息量。
 - **社区可复现基准**：README 定义 **L2Q / L2P / NPSS** 等指标与 `evaluate_test.py` 期望区间，便于论文对比。
 - **与部署案例衔接**：例如 **[wbc_fsm](./wbc-fsm.md)** 公开链路中采用 LAFAN1 子集经重定向训练 ONNX 跟踪策略，读者可把「数据形态」与「上机策略」对照阅读。
+- **极简参考统一走/跑/起身**：[SD-AMP（arXiv:2605.18611）](./paper-unified-walk-run-recovery-sdamp.md) 仅用 **三条 LAFAN1 retarget 片段** 训练 **单一 G1 策略**，部署 **无运行时 FSM**。
 
 ## 许可与合规（工程必读）
 
@@ -49,6 +53,7 @@ sources:
 ## 参考来源
 
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
+- [sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP 三条 LAFAN1 clip
 - Harvey et al., *Robust Motion In-betweening*, ACM TOG (SIGGRAPH) 2020 — README 内引用信息
 - GitHub 仓库：<https://github.com/ubisoft/ubisoft-laforge-animation-dataset>
 

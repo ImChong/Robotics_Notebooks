@@ -9,6 +9,8 @@ tags:
   - robotwin
 status: complete
 updated: 2026-05-18
+arxiv: "2605.10903"
+code: https://github.com/OpenHelix-Team/CapVector
 related:
   - ../methods/vla.md
   - ../methods/star-vla.md
@@ -81,6 +83,19 @@ flowchart TB
 - [StarVLA](../methods/star-vla.md) — 论文 **多骨干** 实验之一（与 LaRA-VLA 组合）。
 - [RoboTwin 2.0](./robotwin.md) — **跨域迁移** 与 **能力抽取任务** 涉及的仿真基准之一。
 - [Manipulation（任务总览）](../tasks/manipulation.md) — LIBERO / 桌面操作 **评测语义** 背景。
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

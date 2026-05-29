@@ -11,6 +11,8 @@ tags:
   - reinforcement-learning
 status: complete
 updated: 2026-05-24
+arxiv: "2605.15964"
+code: https://github.com/EmbodiedCity/WorldVLN.code
 related:
   - ../tasks/vision-language-navigation.md
   - ../concepts/world-action-models.md
@@ -90,6 +92,15 @@ flowchart LR
 - [VLA](../methods/vla.md) — 对比基线类别与导航子任务挂接
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — 视频世界模型与策略内预测三线
 - [VLN 四范式开源复现](../overview/vln-open-source-repro-paradigms.md) — 地面导航复现路径（对照）
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

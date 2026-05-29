@@ -1,5 +1,16 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-29] lint | wiki/entities/paper-*.md、scripts/fix_paper_entity_lint.py — 清零 paper 实体信息型 lint 预警（261→0）
+
+- 变更：批量补齐 **131** 个 `wiki/entities/paper-*.md` 的 frontmatter 来源键（`arxiv` / `venue` / `code`，从正文 URL、sources 文件名与索引表提取）；缺「方法 / 评测 / 对比」三段式的页面在 [参考来源] 前追加 **方法栈 / 实验与评测 / 与其他工作对比** 策展级摘要块；新增维护脚本 [fix_paper_entity_lint.py](scripts/fix_paper_entity_lint.py) 供后续复跑。
+- 验证：`make lint` 信息型预警 **261→0**（`paper_missing_source_meta` / `paper_missing_three_sections` 均为 0）；`make ci-preflight` 通过。
+- 关联 PR：与 [2026-05-29] stale-wiki-review 同期分支 `cursor/stale-wiki-review-d40c`（#420）。
+
+## [2026-05-29] lint | stale-wiki-review — 14 个陈旧 wiki 页与较新 sources 交叉同步
+
+- 逐页 review lint 陈旧报告：concepts（character-animation、terrain-adaptation、whole-body-coordination、capture-point-dcm、footstep-planning、embodied-data-cleaning、state-estimation）、methods（exoactor、gae）、comparisons（ppo-vs-sac）、formalizations（probability-flow）、entities（lafan1-dataset、pinocchio）、overview（robot-world-models-training-loop-taxonomy）；补 source 映射与正文切片，`updated: 2026-05-29`。
+- 验证：lint 阻塞 **14→0**；`make ci-preflight` 通过。
+
 ## [2026-05-28] checklist-v23 | scripts/generate_link_graph.py、docs/main.js、docs/style.css、tests/test_generate_link_graph_latest_nodes.py — V23 P0「图谱 latest_wiki_nodes 时间窗口可配置」收口
 
 - 变更：`scripts/generate_link_graph.py` 把 `latest_wiki_nodes_from_log` 从「锁定最新日历日」改为「最近 30 天回看 + 取前 N 项」；新增形参 `max_items` / `window_days`、模块级常量 `LATEST_NODES_DEFAULT=10` / `LATEST_NODES_CAP=30` / `LATEST_NODES_WINDOW_DAYS=30` / `LATEST_NODES_ENV_VAR="GRAPH_LATEST_NODES_MAX"`；新增 `resolve_latest_nodes_max()` 解析 CLI flag `--latest-nodes-max N`（优先级最高）→ 环境变量 `GRAPH_LATEST_NODES_MAX` → 默认 10，并 clamp 至 [1, 30]；`main()` 接入 argparse 后将 N 透传给 `_compute_graph_stats`。

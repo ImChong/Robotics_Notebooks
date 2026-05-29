@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
 updated: 2026-05-25
+arxiv: "2605.23733"
 related:
   - ../methods/sonic-motion-tracking.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -75,6 +76,15 @@ flowchart LR
 2. **「全参微调一定更好」：** 全参易 **覆盖** 源机平衡与协调先验；局部 LoRA 旨在学 **$\Delta\eta$ 残差** 而非重学 tracking 任务结构。
 3. **「等于 SONIC 再训一版」：** SONIC 是 **单平台 scaling**；Any2Any 是 **跨平台 post-training**，数据与算力量级不同。
 4. **「任意机器人零样本」：** 仍需目标机 **少量** 跟踪数据与正确 $\pi_r$ 式关节映射；闭链与髋轴特殊结构必须进 $J_r,D_r$。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

@@ -4,6 +4,7 @@ tags: [cassie, reinforcement-learning, biped, sim2real, pd-control]
 status: stable
 summary: "高保真 Cassie 模型上的 DRL 反馈控制：跟踪参考运动、扰动与延迟鲁棒性，为「PD 目标空间」提供早期清晰 MDP 表述。"
 updated: 2026-05-22
+arxiv: "1803.05580"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -45,6 +46,15 @@ flowchart LR
 ## 与 Kp / Kd 设置的关系
 
 - 读此文时把 **PD 当作已建模内环**：调 `Kp/Kd` 等价于改变 **策略看到的有效 plant**；过大增益会掩盖策略缺陷，过小则让策略扛全部扰动。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

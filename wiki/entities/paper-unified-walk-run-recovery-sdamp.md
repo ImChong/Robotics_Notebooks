@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1]
 status: complete
 updated: 2026-05-28
+arxiv: "2605.18611"
 related:
   - ../methods/amp-reward.md
   - ../tasks/locomotion.md
@@ -83,6 +84,15 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 1. **门控在部署运行：** 式 (5) 仅用于**训练时选判别器**；推理时策略已内化，不读 $g_z$ 做切换。
 2. **三条参考 = 能力上限：** 论文主张的是**先验分离**而非 MoCap 规模；换平台仍需 retarget 与任务奖励调参。
 3. **SD-AMP = Selective AMP：** [Selective AMP](../../sources/papers/multi-gait-learning.md) 按**步态周期 vs 高动态**决定是否加 AMP；本文按**机体是否跌倒**切换**不同判别器**。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

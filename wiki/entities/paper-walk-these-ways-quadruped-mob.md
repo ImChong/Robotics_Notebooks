@@ -4,6 +4,7 @@ tags: [quadruped, reinforcement-learning, sim2real, generalization, legged-gym]
 status: stable
 summary: "四足 MoB：单一策略嵌入多种步态与风格参数，部署时人类可调参以适配分布外地形与任务；开源 Walk These Ways 控制器。"
 updated: 2026-05-22
+arxiv: "2212.03238"
 related:
   - ../entities/legged-gym.md
   - ../entities/paper-anymal-walk-minutes-parallel-drl.md
@@ -42,6 +43,15 @@ flowchart LR
 
 - 当你已能跑通 **legged_gym 式默认 PD**，下一步常不是盲目加大 DR，而是像本文一样 **先获得一族可切换的低层行为**，再决定增益随机化区间。
 - **文献号**：本文 arXiv 为 **[2212.03238](https://arxiv.org/abs/2212.03238)**（不是「Walk in Minutes」）。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 与同期 **baseline、PD 内环、纯模仿或纯 RL** 等路线的差异见原文实验章节；知识库内相关概念页见 **关联页面**。
+
 
 ## 参考来源
 

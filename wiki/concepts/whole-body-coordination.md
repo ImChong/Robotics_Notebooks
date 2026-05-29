@@ -1,12 +1,15 @@
 ---
 type: concept
 tags: [whole-body, coordination, humanoid, locomotion, manipulation, loco-manipulation, control]
-status: stub
+status: complete
 summary: "全身协调控制（Whole-Body Coordination）关注多肢体、多链接系统在运动和操作中的时空同步问题，是 WBC 的上层概念，在 loco-manipulation 中尤为关键。"
 sources:
   - ../../sources/papers/whole_body_control.md
+  - ../../sources/papers/exoactor.md
+updated: 2026-05-29
 related:
   - ./whole-body-control.md
+  - ../methods/exoactor.md
   - ../tasks/loco-manipulation.md
   - ../tasks/bimanual-manipulation.md
   - ./centroidal-dynamics.md
@@ -145,6 +148,10 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 - 自动发现协调策略，但训练困难、协调行为可能不自然
 - 可以通过参考运动（reference motion）引导协调姿态
 
+### 评测视角：ExoActor 的 B / A / S 难度分级
+
+[ExoActor](../methods/exoactor.md) 在零样本 loco-manipulation 评测中，按 **导航 + 交互复杂度** 把任务分成三级：**B**（纯到达 / 绕障）、**A**（粗交互如扫物、坐下、跨障）、**S**（多步精细手物操作）。这一分级把「全身协调」从抽象概念落到 **可复现的验收维度**——A/S 级失败往往来自 **手臂–躯干–步态耦合**（如行走抖动拖累末端精度、手部高度误差需工程补偿），而非单一子系统能力不足。读者在评估自家 loco-manipulation 栈时，可借用该分级设计 **由易到难的协调回归用例**。
+
 ## 常见误区
 
 1. **协调 ≠ 同步**：全身协调不是让所有关节同时运动，而是让不同关节在**各自适当的时机**运动，并相互配合。
@@ -158,6 +165,7 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 - Sentis & Khatib, *Synthesis of Whole-Body Behaviors Through Hierarchical Control of Behavioral Primitives* — 全身协调层级控制奠基工作
 - Cheng et al., *Expressive Whole-Body Control for Humanoid Robots* (2024) — 学习方法实现全身协调
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md) — WBC / TSID / HQP 技术实现背景
+- [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — B/A/S 难度分级评测切片
 
 ## 关联页面
 

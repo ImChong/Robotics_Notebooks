@@ -10,6 +10,9 @@ tags:
   - deepmind
 status: complete
 updated: 2026-05-18
+arxiv: "2305.14654"
+venue: "RSS 2018"
+code: https://github.com/google-deepmind/barkour_robot
 related:
   - ../tasks/locomotion.md
   - ./quadruped-robot.md
@@ -100,6 +103,19 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md)
 - [RSS 2018 敏捷四足 sim2real](./paper-quadruped-agile-sim2real-rss2018.md)
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 实验与评测
+
+- 论文报告 **benchmark 任务集** 上的成功率、速度与鲁棒性指标；具体数值与消融见原文表格（[参考来源](#参考来源)）。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

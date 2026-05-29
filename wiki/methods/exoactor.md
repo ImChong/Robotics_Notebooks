@@ -2,7 +2,7 @@
 type: method
 tags: [video-generation, world-models, humanoid, motion-tracking, loco-manipulation, baai]
 status: complete
-updated: 2026-05-07
+updated: 2026-05-29
 related:
   - ./generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -15,6 +15,7 @@ related:
   - ./sonic-motion-tracking.md
 sources:
   - ../../sources/papers/exoactor.md
+  - ../../sources/papers/genmo.md
 summary: "ExoActor 是 BAAI 提出的视频生成驱动的人形控制框架：把第三人称视频生成当作交互动力学的统一接口，通过 embodiment transfer + 动作链分解 + Kling 3 视频生成，再用 GENMO/WiLoR 做动作估计、SONIC 做通用动作跟踪，最终把 Unitree G1 在零真实数据下泛化到多难度交互任务。"
 ---
 
@@ -83,7 +84,7 @@ Unitree G1 物理执行
 
 视频生成的产物是像素，机器人需要的是结构化运动。这一阶段同时关注全身和双手：
 
-- **全身动作（[GENMO](./genmo.md)）**：扩散式约束生成模型，以视频特征 + 2D 关键点为条件，输出时序一致、物理合理的 SMPL 参数序列 $\mathcal{M}=\{q_t, p_t\}_{t=1}^T$，并对部分遮挡帧做时序填补。
+- **全身动作（[GENMO](./genmo.md)）**：扩散式约束生成模型，以视频特征 + 2D 关键点为条件，输出时序一致、物理合理的 SMPL 参数序列 $\mathcal{M}=\{q_t, p_t\}_{t=1}^T$，并对部分遮挡帧做时序填补。GENMO 采用 **dual-mode 训练**（估计模式 + 生成模式），使视频条件下首步预测足够准确——这正是 ExoActor 把「生成视频 → SMPL」交给 GENMO 而非纯 tracking 网络的原因；其与 [SONIC](./sonic-motion-tracking.md) 同属 NVIDIA 人形栈的上下游接口。
 - **双手动作（[WiLoR](./wilor.md)）**：逐帧估计双手 3D 姿态 $\mathcal{H}=\{h_t^l, h_t^r\}$，并把每只手映射为 {open, half-open, closed} 三态 $\mathcal{S}$。视点（正面 / 背面）会决定左右手的语义对应方式，避免手性歧义。
 
 最终拼成联合表示：
@@ -140,6 +141,7 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 ## 参考来源
 
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — 本仓库 ingest 档案。
+- [sources/papers/genmo.md](../../sources/papers/genmo.md) — GENMO dual-mode 训练
 - Zhou Y., Ma J., Peng Y., Sun Z., Bai Y., Karlsson B. F. *ExoActor: Exocentric Video Generation as Generalizable Interactive Humanoid Control.* arXiv:2604.27711, BAAI, 2026. <https://arxiv.org/abs/2604.27711> / <https://arxiv.org/html/2604.27711v1>
 - 项目主页：<https://baai-agents.github.io/ExoActor/>
 - 相关基础工作：[GENMO](./genmo.md) (Li et al., 2025)、[WiLoR](./wilor.md) (Potamias et al., 2025)、[SONIC](./sonic-motion-tracking.md) (Luo et al., 2025)、Kling 3 (Kling Team, 2025)、SMPL (Loper et al., 2015)。

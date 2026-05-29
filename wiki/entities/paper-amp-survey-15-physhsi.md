@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "PhysHSI 把 AMP 用到 humanoid-scene interaction 里：搬箱子、坐下、躺下、站起，以及风格化行走。"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -37,6 +38,12 @@ sources:
 - AMP 综述：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - 原始 source：[humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md](../../sources/papers/humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

@@ -3,6 +3,8 @@ type: entity
 tags: [paper, quadruped, sim2real, lora, ppo, safe-rl, unitree-go2, isaac-lab, mujoco]
 status: complete
 updated: 2026-05-25
+arxiv: "2603.17092"
+code: https://github.com/unitreerobotics/unitree_rl_lab
 related:
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
@@ -75,6 +77,15 @@ flowchart TB
 2. **「rank 越大越强」：** 在固定真机时间预算下，**rank-1 往往最优**；额外自由度主要放大接触 RL 的梯度噪声。
 3. **「Recovery 等于任务恢复策略」：** $\pi_r$ 是 **回到安全名义态**，与 jump/trot 任务策略解耦，一套 recovery 可服务多下游微调任务。
 4. **「等于 RMA」：** RMA 从状态历史估计环境参数；SLowRL 在 **固定预训练行为流形上** 加低秩残差，并 **硬切换** 安全策略。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

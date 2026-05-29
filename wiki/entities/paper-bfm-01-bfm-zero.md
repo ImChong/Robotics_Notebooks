@@ -3,6 +3,9 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
 updated: 2026-05-26
+arxiv: "2511.04131"
+venue: "2025 · arXiv"
+code: https://github.com/LeCAR-Lab/BFM-Zero
 summary: "latent prompt 统一目标姿态、奖励优化、恢复与少样本适配；技能切换≈搜索身体潜空间，接近产业「运控基座」。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -39,6 +42,12 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_bfm_zero_arxiv_2511_04131.md](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

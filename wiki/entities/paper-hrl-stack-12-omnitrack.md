@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "OmniTrack 关注 physics-consistent reference。它的出发点是：从人类动作或重定向数据里得到的参考轨迹常常不干净，可能有浮空、脚滑、不稳定接触和噪声。如果训练策略时强迫控制器去追踪这些参考，策略就会在“像参考”和“保持物理稳定”之间冲突。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -37,6 +38,12 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_12_omnitrack_general_motion_tracking_via_physics_co.md](../../sources/papers/humanoid_rl_stack_12_omnitrack_general_motion_tracking_via_physics_co.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

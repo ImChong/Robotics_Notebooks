@@ -4,6 +4,7 @@ tags: [manipulation, reinforcement-learning, impedance, contact, sim2real]
 status: stable
 summary: "RA-L：关节空间同时学习期望轨迹与可变阻抗参数，并加正则以改善接触敏感任务中的样本效率与真机迁移；为可变刚度腿足提供思想前史。"
 updated: 2026-05-22
+arxiv: "1907.07500"
 related:
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
@@ -44,6 +45,15 @@ flowchart TB
 ## 与 Kp / Kd 设置的关系
 
 - 当你把 **Kp/Kd 从常量改为可学习输出** 时，应同步设计 **阻抗正则与接触奖励**；否则易出现 **训练期刚度爆炸** 或 **真机无法执行的不连续刚度**。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 
