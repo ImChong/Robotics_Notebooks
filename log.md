@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-28] checklist-v23 | scripts/generate_link_graph.py、docs/main.js、docs/style.css、tests/test_generate_link_graph_latest_nodes.py — V23 P0「图谱 latest_wiki_nodes 时间窗口可配置」收口
+
+- 变更：`scripts/generate_link_graph.py` 把 `latest_wiki_nodes_from_log` 从「锁定最新日历日」改为「最近 30 天回看 + 取前 N 项」；新增形参 `max_items` / `window_days`、模块级常量 `LATEST_NODES_DEFAULT=10` / `LATEST_NODES_CAP=30` / `LATEST_NODES_WINDOW_DAYS=30` / `LATEST_NODES_ENV_VAR="GRAPH_LATEST_NODES_MAX"`；新增 `resolve_latest_nodes_max()` 解析 CLI flag `--latest-nodes-max N`（优先级最高）→ 环境变量 `GRAPH_LATEST_NODES_MAX` → 默认 10，并 clamp 至 [1, 30]；`main()` 接入 argparse 后将 N 透传给 `_compute_graph_stats`。
+- 前端：`docs/main.js renderLatestWikiNode` 在跨日返回时按 `recency` 分组渲染「维护日志时间线」（日期 + 项数小标 + 卡片网格），单日时维持原 cards 渲染；只通过 `#homeLatestWikiModule` 挂载点生效（即仅首页 `docs/index.html`），详情/图谱/路线图页不受影响。`docs/style.css` 新增 `.home-latest-wiki-timeline*` 三条轻量样式。
+- 测试：`tests/test_generate_link_graph_latest_nodes.py` 新增 10 用例覆盖 `max_items` 单日截断 / `window_days` 多日合并 / 30 天外日期被排除 / `max_items=0` 返空 / CLI vs env 优先级 / 非法 env 回退默认值 / clamp 上限 30 + 下限 1；`PYTHONPATH=scripts python3 -m unittest discover tests -v` 87 通过（含 V22/V23 既有用例），唯一 ERROR `test_lint_wiki_stale_pages` 为 pytest 缺失的预存问题，与本次改动无关。
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P0「图谱 latest_wiki_nodes 时间窗口可配置」打勾。
+
 ## [2026-05-28] ingest | sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md、sources/repos/rhoban_bam.md — BAM 舵机扩展摩擦（arXiv:2410.08650 / ICRA 2025）与 Rhoban/bam 开源管线入库
 
 - 原始资料：[bam_extended_friction_servos_arxiv_2410_08650.md](sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md)（<https://arxiv.org/abs/2410.08650v1>、PDF/HTML）、[rhoban_bam.md](sources/repos/rhoban_bam.md)（<https://github.com/Rhoban/bam>）

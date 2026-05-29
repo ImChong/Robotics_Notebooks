@@ -181,35 +181,78 @@
     var first = items[0];
     var fromLog = first.source === 'log.md';
     var dateStr = first.recency ? String(first.recency) : '';
+
+    var groups = [];
+    var groupIndex = {};
+    items.forEach(function (meta) {
+      var dateKey = meta && meta.recency ? String(meta.recency) : '';
+      if (!(dateKey in groupIndex)) {
+        groupIndex[dateKey] = groups.length;
+        groups.push({ date: dateKey, items: [] });
+      }
+      groups[groupIndex[dateKey]].items.push(meta);
+    });
+
     var introParts = [];
-    if (dateStr) introParts.push(dateStr);
-    if (fromLog) {
-      introParts.push('维护日志');
-      if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
+    if (fromLog && groups.length > 1) {
+      var lastDate = groups[groups.length - 1].date || dateStr;
+      var dateRange = lastDate && dateStr && lastDate !== dateStr ? (lastDate + ' → ' + dateStr) : dateStr;
+      if (dateRange) introParts.push(dateRange);
+      introParts.push('维护日志时间线');
+      introParts.push(String(items.length) + ' 个节点 / ' + String(groups.length) + ' 天');
     } else {
-      introParts.push('按页面更新时间');
+      if (dateStr) introParts.push(dateStr);
+      if (fromLog) {
+        introParts.push('维护日志');
+        if (items.length > 1) introParts.push(String(items.length) + ' 个节点');
+      } else {
+        introParts.push('按页面更新时间');
+      }
     }
     var introHtml =
       '<p class="data-meta home-latest-wiki-intro">' + escapeHtml(introParts.join(' · ')) + '</p>';
-    var cards = items
-      .map(function (meta) {
-        var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
-        var href = detailHref(meta.detail_id);
-        var cardMeta = fromLog ? typeLabel : typeLabel + (dateStr ? ' · ' + dateStr : '');
-        return (
-          '<article class="card home-latest-wiki-card"><p class="card-meta">' +
-          escapeHtml(cardMeta) +
-          '</p><h3><a href="' +
-          escapeHtml(href) +
-          '">' +
-          escapeHtml(meta.label || meta.detail_id) +
-          '</a></h3></article>'
-        );
-      })
-      .join('');
-    var wrapClass =
-      items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
-    mount.innerHTML = introHtml + '<div class="' + wrapClass + '">' + cards + '</div>';
+
+    function renderCard(meta, includeDate) {
+      var typeLabel = WIKI_TYPE_LABEL_HOME[meta.type] || (meta.type ? String(meta.type) : 'Wiki');
+      var href = detailHref(meta.detail_id);
+      var cardMetaText = includeDate && meta.recency
+        ? typeLabel + ' · ' + String(meta.recency)
+        : typeLabel;
+      return (
+        '<article class="card home-latest-wiki-card"><p class="card-meta">' +
+        escapeHtml(cardMetaText) +
+        '</p><h3><a href="' +
+        escapeHtml(href) +
+        '">' +
+        escapeHtml(meta.label || meta.detail_id) +
+        '</a></h3></article>'
+      );
+    }
+
+    var bodyHtml;
+    if (fromLog && groups.length > 1) {
+      bodyHtml = groups
+        .map(function (group) {
+          var cards = group.items.map(function (meta) { return renderCard(meta, false); }).join('');
+          var dateLabel = group.date
+            ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
+            : String(group.items.length) + ' 项';
+          return (
+            '<section class="home-latest-wiki-timeline-group">' +
+            '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
+            '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + cards + '</div>' +
+            '</section>'
+          );
+        })
+        .join('');
+      bodyHtml = '<div class="home-latest-wiki-timeline">' + bodyHtml + '</div>';
+    } else {
+      var cards = items.map(function (meta) { return renderCard(meta, !fromLog); }).join('');
+      var wrapClass =
+        items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
+      bodyHtml = '<div class="' + wrapClass + '">' + cards + '</div>';
+    }
+    mount.innerHTML = introHtml + bodyHtml;
   }
 
   function moduleHref(id) {
