@@ -11,6 +11,7 @@ tags:
   - articulated-objects
 status: complete
 updated: 2026-05-18
+arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md
   - ./articraft.md
@@ -71,6 +72,19 @@ flowchart LR
 - [SAPIEN（仿真引擎）](./sapien.md) — 关节体交互仿真栈语境。
 - [Sim2Real](../concepts/sim2real.md) — 资产 **动力学/碰撞/关节** 与仿真器一致性总提醒。
 - [Manipulation（任务总览）](../tasks/manipulation.md) — 操作学习对 **可交互场景资产** 的需求背景。
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

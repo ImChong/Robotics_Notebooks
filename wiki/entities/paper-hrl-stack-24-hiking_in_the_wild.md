@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "Hiking in the Wild 关注复杂野外地形中的感知式徒步 / 跑酷。它和 PHP、Deep Whole-body Parkour 的共同点是使用深度感知，但它更强调持续通过复杂地形，例如楼梯、沟壑、高台、斜坡、边缘密集区域。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -37,6 +38,12 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_24_hiking_in_the_wild_a_scalable_perceptive_parkour.md](../../sources/papers/humanoid_rl_stack_24_hiking_in_the_wild_a_scalable_perceptive_parkour.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

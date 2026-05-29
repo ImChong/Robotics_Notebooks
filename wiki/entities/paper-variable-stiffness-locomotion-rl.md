@@ -4,6 +4,7 @@ tags: [legged, reinforcement-learning, impedance, quadruped, sim2real]
 status: stable
 summary: "腿足 RL：将可变刚度纳入动作空间，与关节位置联合学习；比较逐关节/分腿/混合参数化，并讨论阻尼等结构约束。"
 updated: 2026-05-22
+arxiv: "2502.09436"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-variable-impedance-contact-rl.md
@@ -43,6 +44,15 @@ flowchart LR
 
 - 若你把 **刚度从 URDF 常量** 改成 **策略输出**，需要同步改 **观测归一化、动作缩放、reward 中对冲击/滑移的惩罚**，否则同一 `Kp` 数值语义已变。
 - 与 [Learning Variable Impedance…](./paper-variable-impedance-contact-rl.md) 对照阅读：后者更偏 **操作接触** 与 **阻抗 shaping**，本文偏 **腿足户外 loco**。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

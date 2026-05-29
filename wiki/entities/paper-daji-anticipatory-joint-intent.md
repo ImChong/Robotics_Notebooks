@@ -10,6 +10,8 @@ tags:
   - streaming-instruction
 status: complete
 updated: 2026-05-28
+arxiv: "2605.14417"
+code: https://github.com/Hxxxz0/DAJI
 related:
   - ../methods/vla.md
   - ../tasks/loco-manipulation.md
@@ -94,6 +96,15 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身移动操作任务族
 - [Teleoperation](../tasks/teleoperation.md) — OmniH2O 等 **身体接口** 对照
 - [人形 RL 运动控制：身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 第 7 层任务接口 / VLA 调用
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

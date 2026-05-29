@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "这篇论文提出 Adaptive Humanoid Control，通过 multi-behavior distillation 和 reinforced fine-tuning 训练统一控制器。它先训练多个基础行为策略，再蒸馏成一个 multi-behavior controller，最后用强化微调提升地形适应和跌倒恢复。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -37,6 +38,12 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_21_towards_adaptive_humanoid_control_via_multi_beha.md](../../sources/papers/humanoid_rl_stack_21_towards_adaptive_humanoid_control_via_multi_beha.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

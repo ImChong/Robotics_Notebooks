@@ -4,6 +4,7 @@ tags: [humanoid, reinforcement-learning, sim2real, legged, digit, pd-control]
 status: stable
 summary: "UC Berkeley：全尺寸 Digit 人形上大规模并行 RL + 因果 Transformer 策略，零样本户外行走与 sim2real 流水线（含关节 PD 部署链）。"
 updated: 2026-05-22
+arxiv: "2303.03381"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../tasks/locomotion.md
@@ -51,6 +52,15 @@ flowchart LR
 
 - 精读时应以 **论文附录 / 补充材料中的 PD 表** 为准；公开讨论里常以 **髋部量级 \(K_p\approx 200\) N·m/rad、\(K_d\approx 10\) N·m·s/rad** 作为可读锚点，**左右肢与各关节仍有差异**。
 - 调参时把 **策略时间步、仿真子步、PD 更新率** 与表放在同一页系统图里核对，避免只改 `stiffness` 不改分频。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

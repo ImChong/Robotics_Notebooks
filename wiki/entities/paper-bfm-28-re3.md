@@ -3,6 +3,9 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
 updated: 2026-05-26
+arxiv: "2102.09430"
+venue: "2020 · ICML"
+code: https://github.com/younggyoseo/RE3
 summary: "状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。"
 related:
   - ../concepts/behavior-foundation-model.md
@@ -39,6 +42,12 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_re3_icml_2020.md](../../sources/papers/bfm_awesome_re3_icml_2020.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

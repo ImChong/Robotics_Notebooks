@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, loco-manipulation, teleoperation, imitation-learning, diffusion-policy, motion-retargeting, whole-body-control, umi, robot-free, data-collection, unitree-g1, vr-tracking, visuomotor, baai-aether]
 status: complete
 updated: 2026-05-23
+arxiv: "2605.03452"
+venue: "RSS 2024"
 related:
   - ../tasks/teleoperation.md
   - ../tasks/loco-manipulation.md
@@ -110,6 +112,15 @@ flowchart TB
 - [GMR](../methods/motion-retargeting-gmr.md) — 对比：全局缩放 vs SKR 度量保留
 - [Unitree G1](./unitree-g1.md) — 实验平台
 - [BFM](./paper-behavior-foundation-model-humanoid.md) — 另一路人形 WBC 多接口统一
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

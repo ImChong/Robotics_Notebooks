@@ -3,6 +3,9 @@ type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, grpo, ppo, unitree-g1, isaac-lab, door-opening, cvpr2026, nvidia, gear]
 status: complete
 updated: 2026-05-28
+arxiv: "2512.01061"
+venue: "CVPR 2026"
+code: https://github.com/NVlabs/GR00T-VisualSim2Real
 related:
   - ./gr00t-visual-sim2real.md
   - ./paper-viral-humanoid-visual-sim2real.md
@@ -105,6 +108,15 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [Tairan He](./tairan-he.md)
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

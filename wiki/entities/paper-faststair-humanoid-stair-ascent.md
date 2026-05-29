@@ -13,6 +13,7 @@ tags:
   - stairs
 status: complete
 updated: 2026-05-17
+arxiv: "2601.10365"
 related:
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
@@ -106,6 +107,19 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 域随机化与感知 sim2real
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 高程图与崎岖地形策略
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 训练框架参照
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

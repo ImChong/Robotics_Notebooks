@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
 updated: 2026-05-26
+arxiv: "2605.18611"
+venue: "arXiv"
 summary: "这篇是我认为最贴近“人形 AMP 未来”的论文之一。"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
@@ -39,6 +41,12 @@ sources:
 - AMP 综述：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - 原始 source：[humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md](../../sources/papers/humanoid_amp_survey_10_unified_walking_running_and_recovery_for_humanoi.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

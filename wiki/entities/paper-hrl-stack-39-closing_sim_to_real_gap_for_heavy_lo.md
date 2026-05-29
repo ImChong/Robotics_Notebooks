@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
 updated: 2026-05-26
+venue: curated
 summary: "HALO 解决 heavy-loaded humanoid agile motion skills。真实机器人执行任务时经常会携带未知负载，而负载会改变机器人动力学。一个空载时表现很好的策略，拿重物后可能直接失效。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
@@ -37,6 +38,12 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_39_closing_sim_to_real_gap_for_heavy_loaded_humanoi.md](../../sources/papers/humanoid_rl_stack_39_closing_sim_to_real_gap_for_heavy_loaded_humanoi.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
+- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
+
 
 ## 参考来源
 

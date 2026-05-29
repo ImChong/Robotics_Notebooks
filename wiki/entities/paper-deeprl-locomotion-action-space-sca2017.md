@@ -4,6 +4,8 @@ tags: [reinforcement-learning, locomotion, action-space, character-animation, pd
 status: stable
 summary: "SCA 2017：在步态模仿任务上对比扭矩、肌肉激活、目标关节角（PD）与目标角速度四种 DeepRL 动作空间，论证带局部反馈的高层参数化通常学得更快、更鲁棒、运动质量更好。"
 updated: 2026-05-21
+arxiv: "1611.01055"
+venue: curated
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-cassie-feedback-control-drl.md
@@ -71,6 +73,11 @@ flowchart TB
 - **上游（作者线）**：[Xue Bin Peng](./xue-bin-peng.md)、[Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
 - **同主题后续（机器人 MDP）**：[Cassie 反馈控制 DRL](./paper-cassie-feedback-control-drl.md)、[四足扭矩控制 RL](./paper-quadruped-torque-control-rl.md)
 - **策展索引**：[Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)、[RL+PD 动作接口论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
 
 ## 参考来源
 

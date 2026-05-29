@@ -4,6 +4,7 @@ tags: [biped, cassie, reinforcement-learning, sim2real, pd-control, domain-rando
 status: stable
 summary: "Cassie 双足：双历史 I/O 架构 + 任务随机化，统一多种动态技能；文中给出策略/PD 分频与 PD 增益缩放随机化等工程细节。"
 updated: 2026-05-22
+arxiv: "2401.16889"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../queries/domain-randomization-guide.md
@@ -47,6 +48,15 @@ flowchart TB
 
 - **分频优先**：先锁「策略一步内 PD 子步数 / 真机控制循环」，再调名义 `Kp/Kd`；否则 DR 区间会对不上真实带宽。
 - **随机化是结构化假设**：0.7–1.3 是 **缩放名义表** 的窄区间实践，与「±30% 标称」类宽随机化并不矛盾，服务于 **不同保守程度** 的 sim2real。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

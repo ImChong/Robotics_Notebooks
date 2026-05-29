@@ -4,6 +4,7 @@ tags: [quadruped, anymal, reinforcement-learning, isaac-gym, legged-gym, sim2rea
 status: stable
 summary: "ANYmal：单机 GPU 上千并行环境与课程式地形，在分钟级训练出行走策略；开源 legged_gym，成为 RL+PD 配置与消融的教科书入口。"
 updated: 2026-05-22
+arxiv: "2109.11978"
 related:
   - ../entities/legged-gym.md
   - ../entities/anymal.md
@@ -43,6 +44,15 @@ flowchart TB
 
 - 扫增益与消融时，固定 **随机种子、地形课程阶段、decimation**，只改 `stiffness`/`damping` 分组，才能对齐论文 **ablation 精神**。
 - **易混文献号**：本文 arXiv 为 **[2109.11978](https://arxiv.org/abs/2109.11978)**；**2212.03238** 对应的是 [Walk These Ways](./paper-walk-these-ways-quadruped-mob.md)。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

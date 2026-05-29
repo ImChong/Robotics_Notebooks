@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid, motion-tracking, diffusion, flow-matching, recovery, middleware, x-humanoid]
 status: complete
 updated: 2026-05-25
+arxiv: "2603.27756"
 related:
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
@@ -76,6 +77,15 @@ flowchart TB
 1. **Heracles 取代 tracker：** 中间件**不直接输出扭矩**；物理可行性仍由 RL tracker 保证。
 2. **等于开环 MDM：** 运动扩散模型（如 HY-Motion）缺接触与扭矩约束；Heracles 输出进 **closed-loop MDP**。
 3. **等于 BeyondMimic 测试时 guidance：** BeyondMimic 在跟踪 formulation 内加 classifier guidance；Heracles 是**独立 middleware + 状态条件 flow**，按 $\mathbf{p}_t$ 实时改参考缓冲。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

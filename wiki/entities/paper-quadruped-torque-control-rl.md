@@ -4,6 +4,8 @@ tags: [quadruped, reinforcement-learning, sim2real, torque-control]
 status: stable
 summary: "四足 RL：策略直接输出关节扭矩（高频），弱化固定 PD 内环，与位置目标+PD 路线形成对照，用于判断何时应弃用 PD 先验。"
 updated: 2026-05-22
+arxiv: "2203.05194"
+venue: "RSS 2018"
 related:
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
@@ -40,6 +42,15 @@ flowchart TB
 ## 与 Kp / Kd 设置的关系
 
 - 若你在此路线与 PD 路线之间选型：列出 **电流环等效带宽、关节速度限幅、急停策略** 三行清单；任一行薄弱，**直驱扭矩** 的风险都显著上升。
+
+## 实验与评测
+
+- 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 

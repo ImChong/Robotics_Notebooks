@@ -12,6 +12,8 @@ tags:
   - mixture-of-experts
 status: complete
 updated: 2026-05-22
+arxiv: "2605.19957"
+code: https://github.com/ZGCA-HMI-Lab/WEM
 related:
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
@@ -116,6 +118,15 @@ flowchart TB
 - [EWMBench](./ewmbench.md) — 操纵向 EWM 多维基准（对照 HTEWorld 混合长程设定）。
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 移动+操作任务背景。
 - [Manipulation](../tasks/manipulation.md) — 操作子任务与 world model 选型语境。
+
+## 方法栈
+
+见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。
+
+## 与其他工作对比
+
+- 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+
 
 ## 参考来源
 
