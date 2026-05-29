@@ -2162,7 +2162,8 @@
     const restartSimulationBtn = document.getElementById('restart-simulation');
     if (restartSimulationBtn) {
       restartSimulationBtn.addEventListener('click', () => {
-        restartForceSimulation();
+        if (timelineAnimating) teardownTimelineMode();   // 先干净退出时序动画
+        restartForceSimulation();                        // 再对整图重新随机布局
       });
     }
 
@@ -2982,7 +2983,8 @@
       startTimelinePlayback();
     }
 
-    function exitTimelineMode() {
+    // 拆除时序模式：停播、恢复完整力模拟成员、复位节点显隐（供退出与「刷新布局」共用）
+    function teardownTimelineMode() {
       pauseTimelinePlayback();
       timelineAnimating = false;
       timelineRevealedIds.clear();
@@ -2994,16 +2996,19 @@
       svg.interrupt('tlfit');
       updateTimelineControls();
 
-      // 恢复完整力模拟成员 + 还原进入前布局
-      restoreTimelinePositions();
       const linkForce = simulation.force('link');
       linkForce.links([]);
       simulation.nodes(nodes);
       linkForce.links(edges);
+      applyFilters();                 // 复位节点显隐，清除时序遗留的 opacity
+    }
+
+    function exitTimelineMode() {
+      teardownTimelineMode();
+      // 还原进入前布局并定格
+      restoreTimelinePositions();
       simulation.stop();
       syncGraphDomFromSimulation();
-
-      applyFilters();
       node.select('.node-label').transition().duration(350).style('opacity', 0.85);
       fitToScreen();
     }
