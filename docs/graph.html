@@ -2374,7 +2374,6 @@
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
-        if (timelineAnimating) return;
         if (isMobile) {
           // 移动端：点击节点显示/关闭固定卡片
           if (pinnedNode === d) {
@@ -3038,7 +3037,8 @@
         Math.floor(TIMELINE_TARGET_MS / Math.ceil(timelineTotal / timelineBatchSize))));
 
       // 隐藏全部，力模拟成员清空（从 0 个节点开始生长）
-      node.interrupt().style('opacity', 0);
+      // pointer-events: none 确保透明节点不捕获任何鼠标/触控事件（opacity:0 在 SVG 中不足以屏蔽指针事件）
+      node.interrupt().style('opacity', 0).style('pointer-events', 'none');
       node.select('.node-circle')
         .interrupt()
         .attr('fill-opacity', 0)
@@ -3062,7 +3062,7 @@
       timelineRevealedIds.clear();
       timelineIdx = 0;
       timelineTotal = 0;
-      node.interrupt();
+      node.interrupt().style('pointer-events', null);  // 恢复指针事件
       link.interrupt();
       svg.interrupt('tlfit');
       updateTimelineControls();
@@ -3401,6 +3401,8 @@
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
+      // 时序动画进行中：禁用节点点击，避免打开背景节点详情侧栏
+      if (timelineAnimating) return;
       if (isMobile) {
         if (pinnedNode === d) {
           pinnedNode = null;
