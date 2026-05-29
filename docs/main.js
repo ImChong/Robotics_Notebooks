@@ -3408,31 +3408,35 @@
       var score = 0;
       var docTokens = doc.tokens || {};
 
+      // ⚡ Bolt Optimization: Hoist lazily-initialized string properties to local variables
+      // Expected impact: Drastically reduces object property lookups and initialization checks on `doc` inside the hot `queryTokens` iteration loop.
+      var tl = doc._title_l, pl = doc._path_l, ts = doc._tagsStr, sl = doc._summary_l, tk = doc._tokenKeysStr;
+
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
         if (!token || token.length < 2) continue;
 
-        if (doc._title_l === undefined) doc._title_l = String(doc.title || '').toLowerCase();
-        var titleIdx = doc._title_l.indexOf(token);
+        if (tl === undefined) { tl = doc._title_l = String(doc.title || '').toLowerCase(); }
+        var titleIdx = tl.indexOf(token);
         if (titleIdx >= 0) {
             score += 8;
             if (titleIdx === 0) score += 8;
         }
 
-        if (doc._path_l === undefined) doc._path_l = String(doc.path || '').toLowerCase();
-        if (doc._path_l.indexOf(token) >= 0) score += 5;
+        if (pl === undefined) { pl = doc._path_l = String(doc.path || '').toLowerCase(); }
+        if (pl.indexOf(token) >= 0) score += 5;
 
-        if (doc._tagsStr === undefined) doc._tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n';
-        if (doc._tagsStr.indexOf(token) >= 0) score += 4;
+        if (ts === undefined) { ts = doc._tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n'; }
+        if (ts.indexOf(token) >= 0) score += 4;
 
-        if (doc._summary_l === undefined) doc._summary_l = String(doc.summary || '').toLowerCase();
-        if (doc._summary_l.indexOf(token) >= 0) score += 2;
+        if (sl === undefined) { sl = doc._summary_l = String(doc.summary || '').toLowerCase(); }
+        if (sl.indexOf(token) >= 0) score += 2;
 
         if (docTokens[token] > 0) {
             score += 1;
         } else {
-            if (doc._tokenKeysStr === undefined) doc._tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n';
-            if (doc._tokenKeysStr.indexOf(token) >= 0) {
+            if (tk === undefined) { tk = doc._tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n'; }
+            if (tk.indexOf(token) >= 0) {
                 score += 1;
             }
         }
