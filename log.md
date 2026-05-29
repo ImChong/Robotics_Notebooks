@@ -1,5 +1,22 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-29] lint | stale-wiki-review | 14 个陈旧 wiki 页逐页 review 并同步较新 sources 交叉引用
+
+- 触发：`make lint` 报告 14 个「sources 比 wiki 新」的陈旧页面（无断链/孤儿/空壳等结构性错误）。
+- 已更新 wiki（`updated: 2026-05-29`，补 source 映射与正文切片）：
+  - [character-animation-vs-robotics.md](wiki/concepts/character-animation-vs-robotics.md) ← deeprl_locomotion_action_space_sca2017（SCA 2017 动作空间对照）
+  - [terrain-adaptation.md](wiki/concepts/terrain-adaptation.md) ← e_sds（环境感知 VLM 奖励）
+  - [whole-body-coordination.md](wiki/concepts/whole-body-coordination.md) ← exoactor（B/A/S 评测分级）
+  - [capture-point-dcm.md](wiki/concepts/capture-point-dcm.md)、[footstep-planning.md](wiki/concepts/footstep-planning.md) ← faststair（并行 DCM 落脚点 + RL）
+  - [exoactor.md](wiki/methods/exoactor.md) ← genmo（dual-mode 与 NVIDIA 栈接口）
+  - [embodied-data-cleaning.md](wiki/concepts/embodied-data-cleaning.md) ← humannet（百万小时清洗管线对照）
+  - [probability-flow.md](wiki/formalizations/probability-flow.md) ← hy_motion（十亿级 DiT+FM）
+  - [gae.md](wiki/methods/gae.md)、[ppo-vs-sac.md](wiki/comparisons/ppo-vs-sac.md) ← intentional_streaming_rl（流式 intentional 更新）
+  - [state-estimation.md](wiki/concepts/state-estimation.md) ← lingbot_map（流式 GCA 几何上下文）
+  - [lafan1-dataset.md](wiki/entities/lafan1-dataset.md) ← sdamp（三条 LAFAN1 clip 统一走跑起身）
+  - [pinocchio.md](wiki/entities/pinocchio.md) ← urdd（与 Pinocchio 正交的预处理层）
+  - [robot-world-models-training-loop-taxonomy.md](wiki/overview/robot-world-models-training-loop-taxonomy.md) ← worldvln（自回归 WAM 案例）
+
 ## [2026-05-28] checklist-v23 | scripts/generate_link_graph.py、docs/main.js、docs/style.css、tests/test_generate_link_graph_latest_nodes.py — V23 P0「图谱 latest_wiki_nodes 时间窗口可配置」收口
 
 - 变更：`scripts/generate_link_graph.py` 把 `latest_wiki_nodes_from_log` 从「锁定最新日历日」改为「最近 30 天回看 + 取前 N 项」；新增形参 `max_items` / `window_days`、模块级常量 `LATEST_NODES_DEFAULT=10` / `LATEST_NODES_CAP=30` / `LATEST_NODES_WINDOW_DAYS=30` / `LATEST_NODES_ENV_VAR="GRAPH_LATEST_NODES_MAX"`；新增 `resolve_latest_nodes_max()` 解析 CLI flag `--latest-nodes-max N`（优先级最高）→ 环境变量 `GRAPH_LATEST_NODES_MAX` → 默认 10，并 clamp 至 [1, 30]；`main()` 接入 argparse 后将 N 透传给 `_compute_graph_stats`。

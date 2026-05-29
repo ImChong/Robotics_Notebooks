@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-05-19
+updated: 2026-05-29
 related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
@@ -15,10 +15,13 @@ related:
   - ../methods/being-h07.md
   - ../entities/robotic-world-model-eth-rsl.md
   - ../entities/paper-wem-world-ego-modeling.md
+  - ../entities/paper-worldvln-aerial-vln-wam.md
+  - ../tasks/vision-language-navigation.md
 sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/sites/wm-robot-survey-ntumars.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md
+  - ../../sources/papers/worldvln_arxiv_2605_15964.md
 summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。"
 ---
 
@@ -53,7 +56,7 @@ flowchart TB
 
 | 线路 | 典型问题 | 与本库页面的关系 |
 |------|----------|------------------|
-| **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md) |
+| **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md)、[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md)（空中 VLN · 自回归 WAM） |
 | **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径） |
 | **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld） |
 
@@ -86,6 +89,10 @@ flowchart TB
 
 **提醒**：通用文生视频越强，**不自动**意味着更适合机器人；机器人需要的是 **可进入训练闭环的未来**。
 
+## 案例：WorldVLN 的自回归 WAM
+
+[WorldVLN（arXiv:2605.15964）](../entities/paper-worldvln-aerial-vln-wam.md) 把 **空中 VLN** 重框为 **预测驱动的 world–action 问题**：潜自回归骨干预测 **短视界世界转移** → **waypoint 动作** → 新观测写回上下文；**Action-aware GRPO** 把世界预测与动作决策绑在同一策略内。
+
 ## 与 VLA 后训练：「任务无关世界模型」方向
 
 策展文将综述与「任务无关世界模型强化 VLA」对照：若每个新任务都重采轨迹并重训专用世界模型，**数据成本过高**；方向性做法是先从 **更宽行为数据** 学物理先验，再由奖励或语义头接新任务——世界模型更接近 VLA 后训练的 **通用环境基础**（参见 [Model-Based RL](../methods/model-based-rl.md) 与 [VLA](../methods/vla.md) 中的后训练讨论）。该路线 **尚未** 被综述宣称已解决，但解释了近期论文密度上升的原因。
@@ -112,6 +119,7 @@ flowchart TB
 - [World Model for Robot Learning 综述（arXiv:2605.00080）](../../sources/papers/wm_robot_survey_arxiv_2605_00080.md)
 - [NTUMARS 综述项目站](../../sources/sites/wm-robot-survey-ntumars.md)
 - [具身智能研究室 · 训练闭环解读（微信公众号）](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)
+- [WorldVLN 归档（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md)
 
 ## 推荐继续阅读
 

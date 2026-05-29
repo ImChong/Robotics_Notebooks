@@ -3,12 +3,14 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-05-19
+updated: 2026-05-29
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
   - ./reward-design.md
   - ./control-barrier-function.md
+  - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
+  - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../methods/disney-olaf-character-robot.md
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
@@ -23,6 +25,7 @@ sources:
   - ../../sources/papers/deepmimic.md
   - ../../sources/sites/botlab_motioncanvas.md
   - ../../sources/sites/xue-bin-peng.md
+  - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
 summary: "Character Animation vs Robotics：澄清「角色化人形（character humanoid）」与「研究/工业型人形」在目标函数、机构约束、表演意图与物理可控性之间的张力——以 Disney Olaf / DeepMimic-AMP-ASE 谱系 / BotLab MotionCanvas / Roboto Origin 等案例为切片。"
 ---
 
@@ -74,6 +77,8 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 - [ASE](../methods/ase.md)：把多技能压成潜空间，分层控制时由上层选 latent。
 
 > 迁移时易踩坑：图形学角色没有热模型、没有 IMU 噪声、没有传感延迟；同一套奖励直接搬上真机往往「仿真好看、真机抽搐」。是否需要补 [Sim2Real](./sim2real.md) 一层取决于目标平台。
+
+**动作接口的前史（SCA 2017）：** [DeepRL 动作空间对比（SCA 2017）](../entities/paper-deeprl-locomotion-action-space-sca2017.md) 在平面物理角色上系统对比 **扭矩 / 肌肉激活 / 目标关节角（PD）/ 目标角速度** 四种参数化，结论与后续 Cassie / 四足真机路线一致——**带局部反馈的高层动作空间**（尤其 PD 目标角）通常比端到端扭矩 RL 学得更快、更鲁棒。这是「图形学角色 → 机器人控制」迁移链上 **最早的可复现对照实验之一**。
 
 ### C. BotLab / MotionCanvas（动画社区工具语言进入策略调试）
 
@@ -174,3 +179,4 @@ flowchart LR
 - [sources/papers/amp.md](../../sources/papers/amp.md) — AMP 判别器风格先验
 - [sources/sites/botlab_motioncanvas.md](../../sources/sites/botlab_motioncanvas.md) — BotLab / MotionCanvas 浏览器节点图
 - [sources/sites/xue-bin-peng.md](../../sources/sites/xue-bin-peng.md) — 角色动画 → 机器人控制研究脉络索引
+- [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — SCA 2017 四种动作空间对照

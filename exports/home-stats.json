@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-05-29",
   "node_count": 594,
-  "edge_count": 4041,
+  "edge_count": 4060,
   "coverage": {
     "covered": 592,
     "total": 592,
@@ -9,92 +9,92 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
-      "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
-      "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
-      "type": "entity",
-      "recency": "2026-05-28",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/bam-better-actuator-models.md",
-      "detail_id": "entity-bam-better-actuator-models",
-      "label": "BAM（Better Actuator Models）",
-      "type": "entity",
-      "recency": "2026-05-28",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
       "type": "concept",
-      "recency": "2026-05-28",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
       "type": "concept",
-      "recency": "2026-05-28",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/actuator-network.md",
-      "detail_id": "wiki-methods-actuator-network",
-      "label": "Actuator Network (执行器网络)",
+      "path": "wiki/concepts/whole-body-coordination.md",
+      "detail_id": "wiki-concepts-whole-body-coordination",
+      "label": "Whole-Body Coordination（全身协调控制）",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/footstep-planning.md",
+      "detail_id": "wiki-concepts-footstep-planning",
+      "label": "Footstep Planning（步位规划）",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/exoactor.md",
+      "detail_id": "wiki-methods-exoactor",
+      "label": "ExoActor (视频生成驱动的交互式人形控制)",
       "type": "method",
-      "recency": "2026-05-28",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/queries/sim2real-gap-reduction.md",
-      "detail_id": "wiki-queries-sim2real-gap-reduction",
-      "label": "Sim2Real Gap 缩减实战指南",
-      "type": "query",
-      "recency": "2026-05-28",
+      "path": "wiki/concepts/embodied-data-cleaning.md",
+      "detail_id": "wiki-concepts-embodied-data-cleaning",
+      "label": "Embodied Data Cleaning (具身数据清洗)",
+      "type": "concept",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/open-duck-mini.md",
-      "detail_id": "entity-open-duck-mini",
-      "label": "Open Duck Mini",
-      "type": "entity",
-      "recency": "2026-05-28",
+      "path": "wiki/formalizations/probability-flow.md",
+      "detail_id": "wiki-formalizations-probability-flow",
+      "label": "Probability Flow (概率流形式化)",
+      "type": "formalization",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/open-duck-playground.md",
-      "detail_id": "entity-open-duck-playground",
-      "label": "Open Duck Playground",
-      "type": "entity",
-      "recency": "2026-05-28",
+      "path": "wiki/methods/gae.md",
+      "detail_id": "wiki-methods-gae",
+      "label": "Generalized Advantage Estimation (GAE)",
+      "type": "method",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/open-duck-reference-motion-generator.md",
-      "detail_id": "entity-open-duck-reference-motion-generator",
-      "label": "Open Duck Reference Motion Generator",
-      "type": "entity",
-      "recency": "2026-05-28",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini-runtime.md",
-      "detail_id": "entity-open-duck-mini-runtime",
-      "label": "Open Duck Mini Runtime",
-      "type": "entity",
-      "recency": "2026-05-28",
+      "path": "wiki/comparisons/ppo-vs-sac.md",
+      "detail_id": "wiki-comparisons-ppo-vs-sac",
+      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
+      "type": "comparison",
+      "recency": "2026-05-29",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bam-extended-friction-servo-actuators.md",
-    "detail_id": "entity-paper-bam-extended-friction-servo-actuators",
-    "label": "扩展摩擦模型：舵机物理仿真（BAM 论文）",
-    "type": "entity",
-    "recency": "2026-05-28",
+    "path": "wiki/concepts/character-animation-vs-robotics.md",
+    "detail_id": "wiki-concepts-character-animation-vs-robotics",
+    "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+    "type": "concept",
+    "recency": "2026-05-29",
     "source": "log.md"
   }
 }

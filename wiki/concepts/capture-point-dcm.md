@@ -1,10 +1,14 @@
 ---
 type: concept
 summary: "Capture Point / DCM 用线性倒立摆的发散分量描述步行平衡，是步位规划和扰动恢复的核心直觉工具。"
-updated: 2026-04-25
+updated: 2026-05-29
+related:
+  - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ./footstep-planning.md
 sources:
   - ../../sources/papers/whole_body_control.md
   - ../../sources/papers/footstep_and_balance.md
+  - ../../sources/papers/faststair_arxiv_2601_10365.md
 ---
 
 # Capture Point / DCM
@@ -199,6 +203,10 @@ Capture Point 可以直接影响：
 - DCM 告诉你“发散分量现在往哪里走”
 
 所以在现代 humanoid locomotion 语境里，它们往往比单独讲 ZMP 更贴近控制直觉。
+
+### 5. GPU 并行 DCM 落脚点规划（FastStair）
+
+[FastStair（arXiv:2601.10365）](../entities/paper-faststair-humanoid-stair-ascent.md) 把 **变高倒立摆（VHIP）** 上的 DCM 演化改写为 **离散候选集上的并行代价评估 + argmin**，用张量化 GPU 运算嵌入 Isaac Lab 大规模 RL——在保留 **接触可行性与平衡结构** 的同时，避免纯 model-free RL 在楼梯上的不安全行为。这与 [Footstep Planning](./footstep-planning.md) 中「DCM 触发步位更新」的经典路线不同：FastStair 让 DCM 规划器 **直接成为训练期特权监督**，而非仅作在线 MPC 模块。
 
 ## 常见误区
 

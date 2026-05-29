@@ -2,12 +2,15 @@
 type: comparison
 tags: [ppo, sac, rl, policy-optimization, locomotion, manipulation, on-policy, off-policy]
 status: complete
+updated: 2026-05-29
 summary: "PPO 与 SAC 在机器人 RL 任务中的系统性对比：on-policy vs off-policy 权衡、样本效率、稳定性、超参数敏感度与适用场景。"
 sources:
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/intentional_streaming_rl.md
 related:
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md
+  - ../methods/intentional-updates-streaming-rl.md
   - ../tasks/locomotion.md
   - ../formalizations/gae.md
 ---
@@ -104,6 +107,10 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 ```
 
 核心特征：**经验复用驱动**——每步收集一条数据即可触发更新，Buffer 中的旧数据反复利用。
+
+### 流式 RL 中的 Intentional Policy Gradient
+
+[Intentional Updates（流式 RL）](../methods/intentional-updates-streaming-rl.md)（arXiv:2604.19033）在 **batch=1、无 replay** 设定下，用 intentional 步长作为 **PPO/TRPO 式信任域** 的廉价流式代理——与 PPO clip 解决同一「参数步长 ≠ 函数输出变化」痛点。
 
 ---
 
@@ -220,6 +227,7 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 ## 参考来源
 
 - [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO / SAC 核心论文档案
+- [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 intentional PG
 - Schulman et al., *Proximal Policy Optimization Algorithms* (2017) — PPO 原论文
 - Haarnoja et al., *Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor* (2018) — SAC 原论文
 - Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning* (2022) — PPO locomotion 代表

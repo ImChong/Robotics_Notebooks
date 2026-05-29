@@ -2,13 +2,13 @@
 type: formalization
 tags: [math, probability, generative-ai, flow-matching, diffusion]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-29
 related:
-  - ../methods/π0-policy.md
-  - ../methods/diffusion-policy.md
-  - ../methods/generative-world-models.md
+  - ../methods/hy-motion-1.md
+  - ../methods/diffusion-motion-generation.md
 sources:
   - ../../sources/papers/diffusion_and_gen.md
+  - ../../sources/papers/hy_motion_arxiv_2512_23464.md
 summary: "概率流（Probability Flow）提供了一个统一的数学框架来描述扩散模型与流匹配，通过将离散的去噪步转化为连续的可微常微分方程（ODE），实现了生成过程的极致加速与可控性。"
 ---
 
@@ -34,6 +34,10 @@ $$ v(x_t, t) = f(x_t, t) - \frac{1}{2} g(t)^2 \nabla_x \log p_t(x_t) $$
 - **目标函数**：直接最小化预测速度与理想线性插值速度之间的差异：
   $$ \mathcal{L}_{FM}(\theta) = \mathbb{E}_{t, x_0, x_1} [ \| v_\theta(x_t, t) - (x_1 - x_0) \|^2 ] $$
 
+### 3. 十亿级 DiT + 流匹配（HY-Motion 1.0）
+
+[HY-Motion 1.0](../methods/hy-motion-1.md)（arXiv:2512.23464）把 **DiT + Flow Matching** 推到十亿参数级文本驱动人体运动生成；数据管线经 GVHMR → SMPL-H 重定向得到 **>3000 小时** 语料，是 **概率流 ODE 在人体运动域** 的可复现锚点。
+
 ## 为什么对机器人重要
 
 1. **推理速度**：传统的扩散模型需要 50-100 步迭代；概率流 ODE 可以通过高级求解器（如 RK45）在 1-3 步内生成动作，满足机器人的实时性需求。
@@ -48,3 +52,4 @@ $$ v(x_t, t) = f(x_t, t) - \frac{1}{2} g(t)^2 \nabla_x \log p_t(x_t) $$
 ## 参考来源
 - Lipman, Y., et al. (2022). *Flow Matching for Scalable Simulation*.
 - Song, Y., et al. (2020). *Score-Based Generative Modeling through Stochastic Differential Equations*.
+- [sources/papers/hy_motion_arxiv_2512_23464.md](../../sources/papers/hy_motion_arxiv_2512_23464.md) — HY-Motion 1.0

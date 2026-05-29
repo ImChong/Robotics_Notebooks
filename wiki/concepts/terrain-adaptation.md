@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-04-20
+updated: 2026-05-29
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../tasks/locomotion.md
@@ -10,10 +10,13 @@ related:
   - ./sim2real.md
   - ./privileged-training.md
   - ../tasks/balance-recovery.md
+  - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
+  - ../entities/paper-faststair-humanoid-stair-ascent.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/contact_planning.md
+  - ../../sources/papers/e_sds_arxiv_2512_16446.md
 ---
 
 # Terrain Adaptation（地形适应）
@@ -63,6 +66,11 @@ sources:
 | 传统规划 | 感知 + footstep planning + MPC/WBC | 可解释、约束清晰 | 感知和规划耦合复杂 |
 | 特权训练 | teacher 用高度图，student 蒸馏到本体感知 | sim2real 友好 | teacher/student 设计复杂 |
 | 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |
+| 环境感知自动奖励（E-SDS） | VLM 读地形统计 + 行为分解生成调用高度图/LiDAR 的 Python 奖励 | 跨四类地形少手工调参；楼梯下降为分水岭 | 每地形专用策略、仅仿真、首轮仍依赖 prompt 工程 |
+
+### 近期案例：E-SDS 的环境感知奖励合成
+
+[E-SDS（arXiv:2512.16446）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 把 **地形适应** 从「控制器读传感器」前移到 **奖励设计阶段**：Environment Analysis Agent 在目标地形上跑千机短 rollout，统计 **缺口率、障碍密度、崎岖度**，与 SUS 行为分解一并喂给 VLM，生成显式调用 **27×21 高度栅格 + 144 线 LiDAR** 的奖励代码；再经双候选 PPO + 反馈迭代精炼。在 Isaac Lab + Unitree G1 上，相对手工 13 项感知基线 **速度跟踪误差降 51.9–82.6%**，且 **仅该方法完成 12 cm 台阶下降**。
 
 ## 与其他页面的关系
 
@@ -85,6 +93,7 @@ sources:
 - [sources/papers/footstep_and_balance.md](../../sources/papers/footstep_and_balance.md) — 步位规划、DCM 与不平地形步行基础
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ANYmal 高度图 teacher / proprioception student 经典路线
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划
+- [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS 环境感知 VLM 奖励合成
 
 ## 关联页面
 
