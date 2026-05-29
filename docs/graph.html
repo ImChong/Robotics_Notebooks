@@ -1571,6 +1571,9 @@
     let timelineTotal = 0;
     let timelineStepMs = 40;
     let timelineBatchSize = 1;
+    let timelineIncident = null;        // nodeId -> 关联边数组（把新节点种在邻居附近）
+    let timelineSavedPositions = null;  // 进入前布局快照（退出时还原）
+    let timelineLastFit = 0;            // 上次相机自适应时间戳（节流）
     const timelineRevealedIds = new Set();
     const TIMELINE_TARGET_MS = 12000;
     let communityColorMap = new Map();
@@ -2147,6 +2150,7 @@
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
+      if (timelineAnimating) return;   // 时序动画期间不触发整图标签渐显 / 自适应
       finishSimulationLoad();
     });
 
@@ -2763,6 +2767,7 @@
     // 前进显现单个节点（带 pop-in 动画，用于播放）
     function revealTimelineNode(d) {
       const sel = node.filter(n => n.id === d.id);
+      sel.attr('transform', `translate(${d.x},${d.y})`);   // 从出生位置出现，随后由力模拟带动
       sel.interrupt()
         .style('opacity', 1)
         .select('.node-glow')
@@ -2792,24 +2797,112 @@
       });
     }
 
-    // 跳转到指定进度：显现前 targetIdx 个节点。播放前进时逐个 pop-in，其余情况一次性渲染
+    /* ── Obsidian 式：力模拟只作用于「已显现」的节点子集 ── */
+    function buildTimelineAdjacency() {
+      timelineIncident = new Map();
+      edges.forEach(e => {
+        const s = typeof e.source === 'object' ? e.source.id : e.source;
+        const t = typeof e.target === 'object' ? e.target.id : e.target;
+        if (!timelineIncident.has(s)) timelineIncident.set(s, []);
+        if (!timelineIncident.has(t)) timelineIncident.set(t, []);
+        timelineIncident.get(s).push(e);
+        timelineIncident.get(t).push(e);
+      });
+    }
+
+    // 新节点出生位置：落在已显现邻居的质心附近；无邻居则落在画布中心附近
+    function seedTimelineNodePosition(d) {
+      let sx = 0, sy = 0, cnt = 0;
+      const inc = timelineIncident && timelineIncident.get(d.id);
+      if (inc) {
+        for (const e of inc) {
+          const sid = typeof e.source === 'object' ? e.source.id : e.source;
+          const other = sid === d.id ? e.target : e.source;
+          if (other && typeof other === 'object' && timelineRevealedIds.has(other.id) && other.x != null) {
+            sx += other.x; sy += other.y; cnt++;
+          }
+        }
+      }
+      if (cnt > 0) {
+        d.x = sx / cnt + (Math.random() - 0.5) * 30;
+        d.y = sy / cnt + (Math.random() - 0.5) * 30;
+      } else {
+        d.x = W / 2 + (Math.random() - 0.5) * 80;
+        d.y = H / 2 + (Math.random() - 0.5) * 80;
+      }
+      d.vx = 0; d.vy = 0; d.fx = null; d.fy = null;
+    }
+
+    function placeTimelineNode(d) {
+      node.filter(n => n.id === d.id).attr('transform', `translate(${d.x},${d.y})`);
+    }
+
+    // 把力模拟成员同步为「当前已显现」的节点与其内部边
+    function syncTimelineSimulation() {
+      const revNodes = nodes.filter(n => timelineRevealedIds.has(n.id));
+      const revEdges = edges.filter(e => {
+        const s = typeof e.source === 'object' ? e.source.id : e.source;
+        const t = typeof e.target === 'object' ? e.target.id : e.target;
+        return timelineRevealedIds.has(s) && timelineRevealedIds.has(t);
+      });
+      const linkForce = simulation.force('link');
+      linkForce.links([]);            // 先清空，避免 nodes() 重新初始化时校验到已被移除的端点
+      simulation.nodes(revNodes);
+      linkForce.links(revEdges);
+    }
+
+    // 进入前布局快照与还原（退出时回到进入前的样子）
+    function snapshotTimelinePositions() {
+      timelineSavedPositions = nodes.map(n => ({ id: n.id, x: n.x, y: n.y }));
+    }
+    function restoreTimelinePositions() {
+      if (!timelineSavedPositions) return;
+      const byId = new Map(nodes.map(n => [n.id, n]));
+      timelineSavedPositions.forEach(p => {
+        const n = byId.get(p.id);
+        if (n) { n.x = p.x; n.y = p.y; n.vx = 0; n.vy = 0; n.fx = null; n.fy = null; }
+      });
+    }
+
+    // 相机自适应到「已显现」节点（生长时随之缩放，类似 Obsidian）
+    function fitToTimelineNodes() {
+      if (!updateGraphViewport()) return;
+      const vis = nodes.filter(n => timelineRevealedIds.has(n.id) && n.x != null);
+      if (vis.length < 2) return;
+      const xs = vis.map(n => n.x), ys = vis.map(n => n.y);
+      const x0 = Math.min(...xs), x1 = Math.max(...xs);
+      const y0 = Math.min(...ys), y1 = Math.max(...ys);
+      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
+      const pad = 160;
+      const scale = Math.min(2.2, Math.max(0.45,
+        Math.min(W / Math.max(x1 - x0 + pad, 200), H / Math.max(y1 - y0 + pad, 200))));
+      svg.transition('tlfit').duration(500).ease(d3.easeCubicOut).call(
+        zoom.transform,
+        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
+      );
+    }
+
+    // 跳转到指定进度：显现前 targetIdx 个节点
     function seekTimeline(targetIdx, animate) {
       if (!timelineAnimating) return;
       targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
       const prev = timelineIdx;
       if (targetIdx === prev) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
 
-      if (animate && targetIdx > prev) {
+      if (targetIdx > prev) {
         for (let i = prev; i < targetIdx; i++) {
           const d = timelineOrdered[i];
+          seedTimelineNodePosition(d);          // 先按已显现邻居定位
           timelineRevealedIds.add(d.id);
-          revealTimelineNode(d);
+          if (animate) revealTimelineNode(d);   // 播放：逐个 pop-in（含定位）
+          else placeTimelineNode(d);            // 拖拽：仅定位，显隐交给下方批量渲染
         }
+        if (!animate) renderTimelineStatic();
       } else {
-        timelineRevealedIds.clear();
-        for (let i = 0; i < targetIdx; i++) timelineRevealedIds.add(timelineOrdered[i].id);
+        for (let i = targetIdx; i < prev; i++) timelineRevealedIds.delete(timelineOrdered[i].id);
         renderTimelineStatic();
       }
+      syncTimelineSimulation();                 // 成员 = 已显现子集（播放时在动，暂停时冻结）
       timelineIdx = targetIdx;
       updateTimelineLinks(timelineRevealedIds);
       updateTimelineProgress(timelineIdx, timelineTotal);
@@ -2820,10 +2913,21 @@
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
       timelinePlaying = true;
       updateTimelineControls();
+      simulation.alphaTarget(0.3).restart();    // 力模拟持续运行，新节点逐帧被带动
       timelineAnimTimer = setInterval(() => {
-        if (timelineIdx >= timelineTotal) { pauseTimelinePlayback(); return; }
+        if (timelineIdx >= timelineTotal) { onTimelinePlaybackComplete(); return; }
         seekTimeline(timelineIdx + timelineBatchSize, true);
+        const now = performance.now();
+        if (now - timelineLastFit > 650) { timelineLastFit = now; fitToTimelineNodes(); }
       }, timelineStepMs);
+    }
+
+    function onTimelinePlaybackComplete() {
+      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
+      timelinePlaying = false;
+      updateTimelineControls();
+      simulation.alphaTarget(0);     // 缓缓收敛（最后一批节点落位），不立即冻结
+      fitToTimelineNodes();
     }
 
     function pauseTimelinePlayback() {
@@ -2832,6 +2936,9 @@
         timelineAnimTimer = null;
       }
       timelinePlaying = false;
+      svg.interrupt('tlfit');
+      simulation.alphaTarget(0);
+      simulation.stop();             // 冻结当前布局
       updateTimelineControls();
     }
 
@@ -2839,22 +2946,24 @@
       if (typeof closeSidebar === 'function') closeSidebar();
       hideTooltip();
 
-      simulation.stop();
-      syncGraphDomFromSimulation();
-
       timelineOrdered = sortNodesByTimeline(nodes);
       timelineTotal = timelineOrdered.length;
       if (!timelineTotal) return;
 
+      snapshotTimelinePositions();
+      buildTimelineAdjacency();
+      fitToScreen();                 // 先框定整图范围（用进入前布局），生长从中心展开
+
       timelineAnimating = true;
       timelineIdx = 0;
+      timelineLastFit = 0;
       timelineRevealedIds.clear();
 
       timelineBatchSize = timelineTotal > 400 ? 4 : (timelineTotal > 180 ? 2 : 1);
       timelineStepMs = Math.min(90, Math.max(14,
         Math.floor(TIMELINE_TARGET_MS / Math.ceil(timelineTotal / timelineBatchSize))));
 
-      // 隐藏全部节点与连线作为时序起点
+      // 隐藏全部，力模拟成员清空（从 0 个节点开始生长）
       node.interrupt().style('opacity', 0);
       node.select('.node-circle')
         .interrupt()
@@ -2862,8 +2971,8 @@
         .attr('stroke-opacity', 0);
       node.select('.node-label').style('opacity', 0);
       link.interrupt().attr('stroke-opacity', 0);
-
-      fitToScreen();
+      syncTimelineSimulation();
+      simulation.stop();
 
       if (timelineControls) timelineControls.hidden = false;
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
@@ -2882,7 +2991,18 @@
       if (timelineControls) timelineControls.hidden = true;
       node.interrupt();
       link.interrupt();
+      svg.interrupt('tlfit');
       updateTimelineControls();
+
+      // 恢复完整力模拟成员 + 还原进入前布局
+      restoreTimelinePositions();
+      const linkForce = simulation.force('link');
+      linkForce.links([]);
+      simulation.nodes(nodes);
+      linkForce.links(edges);
+      simulation.stop();
+      syncGraphDomFromSimulation();
+
       applyFilters();
       node.select('.node-label').transition().duration(350).style('opacity', 0.85);
       fitToScreen();
