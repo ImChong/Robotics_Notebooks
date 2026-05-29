@@ -2,7 +2,7 @@
 type: method
 tags: [gan, discriminator, artifacts, xbpeng]
 status: complete
-updated: 2026-04-28
+updated: 2026-05-28
 related:
   - ../entities/protomotions.md
   - ./amp-reward.md

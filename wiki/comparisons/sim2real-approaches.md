@@ -11,7 +11,7 @@ sources:
   - ../../sources/papers/sim2real.md
   - ../../sources/papers/locomotion_rl.md
 summary: "Sim2Real 方法横向对比"
-updated: 2026-04-25
+updated: 2026-05-28
 ---
 
 # Sim2Real 方法横向对比

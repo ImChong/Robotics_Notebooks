@@ -2,7 +2,7 @@
 type: entity
 tags: [humanoid, teleoperation, sim2real, motion-tracking, egocentric-vision, cmu, nvidia, gear]
 status: complete
-updated: 2026-05-14
+updated: 2026-05-28
 related:
   - ./tairan-he.md
   - ../methods/sonic-motion-tracking.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [framework, simulation, humanoid, sim2real, nvidia, newton, mujoco, isaac-gym]
 status: complete
-updated: 2026-05-22
+updated: 2026-05-28
 related:
   - ./amass.md
   - ./kimodo.md

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1]
 status: complete
-updated: 2026-05-25
+updated: 2026-05-28
 related:
   - ../methods/amp-reward.md
   - ../tasks/locomotion.md

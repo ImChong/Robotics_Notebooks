@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]
 status: complete
-updated: 2026-05-20
+updated: 2026-05-28
 related:
   - ../methods/amp-reward.md
   - ./mjlab.md
