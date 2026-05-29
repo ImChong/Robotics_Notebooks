@@ -1613,7 +1613,7 @@
     const TIMELINE_TARGET_MS = 12000;
 
     function areFiltersLocked() {
-      return timelineAnimating && timelinePlaying;
+      return timelineAnimating;
     }
 
     let communityColorMap = new Map();
@@ -2318,6 +2318,8 @@
 
     node
       .on('mouseenter', (ev, d) => {
+        // 时序动画进行中：禁用节点悬停，避免选中尚未显现的背景节点
+        if (timelineAnimating) return;
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑
         if (sidebar.classList.contains('open')) return;
         
@@ -2351,12 +2353,14 @@
         showTooltip(ev, d);
       })
       .on('mousemove', ev => {
+        if (timelineAnimating) return;
         // 移动端固定卡片后，mousemove 不移动 tooltip
         if (!isMobile || !pinnedNode) {
           moveTooltip(ev);
         }
       })
       .on('mouseleave', () => {
+        if (timelineAnimating) return;
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑
         if (sidebar.classList.contains('open')) return;
 
@@ -2370,6 +2374,7 @@
       })
       .on('click', (ev, d) => {
         ev.stopPropagation();
+        if (timelineAnimating) return;
         if (isMobile) {
           // 移动端：点击节点显示/关闭固定卡片
           if (pinnedNode === d) {
