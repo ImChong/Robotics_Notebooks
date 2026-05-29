@@ -127,15 +127,19 @@ def method_block(body: str, name: str) -> str:
     if re.search(r"^###\s+流程总览", body, re.MULTILINE):
         return "## 方法栈\n\n见上文 **核心结构** 与 **流程总览**（`###` 小节）；完整机制与模块分工以原文为准。\n"
     if re.search(r"^##\s+流程总览", body, re.MULTILINE):
-        return "## 方法栈\n\n见上文 **流程总览** 与 **核心机制** 段落；训练/推理管线细节以原文为准。\n"
+        return (
+            "## 方法栈\n\n见上文 **流程总览** 与 **核心机制** 段落；训练/推理管线细节以原文为准。\n"
+        )
     if "核心结构" in body:
         return "## 方法栈\n\n见上文 **核心结构** 表与流程描述；模块级实现以原文 PDF 为准。\n"
     return "## 方法栈\n\n见上文 **为什么重要** 与正文归纳；完整算法细节以原文 PDF 与项目页为准。\n"
 
 
 def eval_block(body: str, name: str) -> str:
-    if name.startswith("paper-bfm-") or name.startswith("paper-amp-survey-") or name.startswith(
-        "paper-hrl-stack-"
+    if (
+        name.startswith("paper-bfm-")
+        or name.startswith("paper-amp-survey-")
+        or name.startswith("paper-hrl-stack-")
     ):
         return (
             "## 实验与评测\n\n"
