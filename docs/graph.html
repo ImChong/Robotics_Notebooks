@@ -2842,6 +2842,7 @@
     function revealTimelineNode(d) {
       const sel = node.filter(n => n.id === d.id);
       sel.attr('transform', `translate(${d.x},${d.y})`);   // 从出生位置出现，随后由力模拟带动
+      sel.style('pointer-events', null);   // 恢复指针事件，使暂停时可点击
       sel.interrupt()
         .style('opacity', 1)
         .select('.node-glow')
@@ -2862,6 +2863,7 @@
         const shown = timelineRevealedIds.has(d.id);
         const g = d3.select(this);
         g.interrupt().style('opacity', shown ? 1 : 0);
+        g.style('pointer-events', shown ? null : 'none');   // 已显现节点可点击
         g.select('.node-glow').attr('fill-opacity', 0);
         g.select('.node-circle')
           .interrupt()
@@ -3401,8 +3403,8 @@
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
-      // 时序动画进行中：禁用节点点击，避免打开背景节点详情侧栏
-      if (timelineAnimating) return;
+      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情
+      if (timelinePlaying) return;
       if (isMobile) {
         if (pinnedNode === d) {
           pinnedNode = null;
