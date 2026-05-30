@@ -55,9 +55,6 @@
 - **核心贡献：** 融合 **3D 点云外感知** 与 **本体 MLP-Mixer/CENet**；分层 $SE(3)$ 外感知记忆 + PointNet 置信滤波 + 多模态 Mixer；对比/VAE/versatility 辅助损失；楼梯/陡坡/OOD 与多传感器平台验证
 - **对 wiki 的映射：**
   - [dreamwaq-plus](../../wiki/entities/dreamwaq-plus.md)
-  - [terrain-adaptation](../../wiki/concepts/terrain-adaptation.md)
-  - [locomotion](../../wiki/tasks/locomotion.md)
-  - [sim2real](../../wiki/concepts/sim2real.md)
 
 ## 当前提炼状态
 

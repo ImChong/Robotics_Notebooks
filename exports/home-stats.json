@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-30",
-  "node_count": 598,
-  "edge_count": 4113,
+  "node_count": 599,
+  "edge_count": 4125,
   "coverage": {
-    "covered": 596,
-    "total": 596,
+    "covered": 597,
+    "total": 597,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/dreamwaq-plus.md",
+      "detail_id": "entity-dreamwaq-plus",
+      "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
+      "type": "entity",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/privileged-training.md",
+      "detail_id": "wiki-concepts-privileged-training",
+      "label": "Privileged Training（特权信息训练）",
+      "type": "concept",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/schedulestream.md",
       "detail_id": "entity-schedulestream",
@@ -55,44 +87,12 @@
       "type": "concept",
       "recency": "2026-05-29",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-01-amp.md",
-      "detail_id": "entity-paper-amp-survey-01-amp",
-      "label": "AMP",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/schedulestream.md",
-    "detail_id": "entity-schedulestream",
-    "label": "ScheduleStream",
+    "path": "wiki/entities/dreamwaq-plus.md",
+    "detail_id": "entity-dreamwaq-plus",
+    "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
     "type": "entity",
     "recency": "2026-05-30",
     "source": "log.md"
