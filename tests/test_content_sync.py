@@ -82,10 +82,13 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function slugifyHeading(text)",
             "function collectMarkdownHeadings(markdown)",
+            "function buildDetailTocTree(headings)",
+            "function renderDetailTocList(nodes, markdownContext)",
+            "function stripTocHeadingNumberPrefix(text, level)",
             "function renderTocHeadingLabel(text, markdownContext)",
             "function renderDetailToc(container, headings, markdownContext)",
             "function bindDetailTocEntryNavigation(tocContainer)",
-            "renderTocHeadingLabel(heading.text, context)",
+            "renderTocHeadingLabel(",
             'class="toc-entry"',
             "document.getElementById('detailTocList')",
             "renderDetailToc(tocEl, detailHeadings, detailMarkdownContext)",
@@ -98,6 +101,59 @@ class DetailContentSyncTests(unittest.TestCase):
             )
         ]
         self.assertNotIn("escapeHtml(heading.text)", render_detail_toc)
+
+    def test_detail_toc_nested_tree_and_strip_number_prefix(self):
+        """TOC 应按标题层级嵌套，并去掉 h3/h4 自带的小节序号前缀。"""
+        node = r"""
+const fs = require('fs');
+function escapeHtml(value) {
+  return String(value || '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+function renderTocHeadingLabel(text) {
+  return escapeHtml(text);
+}
+function tocHeadingLabelHasInnerLink() {
+  return false;
+}
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function stripTocHeadingNumberPrefix');
+const labelStart = content.indexOf('function renderTocHeadingLabel', start);
+const listStart = content.indexOf('function renderDetailTocList', start);
+const listEnd = content.indexOf('function renderDetailToc(container', listStart);
+const block = content.slice(start, labelStart) + content.slice(listStart, listEnd);
+eval(block);
+const headings = [
+  { level: 2, text: '主要方法', slug: 'main-methods' },
+  { level: 3, text: '1. Domain Randomization', slug: 'dr' },
+  { level: 3, text: '2. System Identification', slug: 'sysid' },
+  { level: 2, text: '常见误区', slug: 'pitfalls' },
+];
+const html = renderDetailTocList(buildDetailTocTree(headings));
+if (!html.includes('<ol><li class="toc-level-2">')) throw new Error('missing root ol');
+if (!html.includes('<ol><li class="toc-level-3">')) throw new Error('missing nested ol');
+if (html.includes('1. Domain Randomization')) throw new Error('number prefix not stripped');
+if (!html.includes('Domain Randomization')) throw new Error('expected stripped label');
+if ((html.match(/<ol>/g) || []).length < 2) throw new Error('expected nested ol');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")

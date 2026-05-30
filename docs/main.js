@@ -1314,12 +1314,54 @@
     }).filter(Boolean);
   }
 
+  /** 去掉 h3/h4 标题里自带的「1. 」式小节编号，避免与嵌套 <ol> 序号叠成「6. 1. …」。 */
+  function stripTocHeadingNumberPrefix(text, level) {
+    const raw = String(text || '');
+    if (level < 3 || !/^\d+\.\s+/.test(raw)) return raw;
+    return raw.replace(/^\d+\.\s+/, '');
+  }
+
+  function buildDetailTocTree(headings) {
+    const root = { children: [] };
+    const stack = [{ node: root, level: 1 }];
+    headings.forEach(function (heading) {
+      const node = { heading: heading, children: [] };
+      while (stack.length > 1 && stack[stack.length - 1].level >= heading.level) {
+        stack.pop();
+      }
+      stack[stack.length - 1].node.children.push(node);
+      stack.push({ node: node, level: heading.level });
+    });
+    return root.children;
+  }
+
   function renderTocHeadingLabel(text, markdownContext) {
     return renderInlineMarkdown(String(text || ''), markdownContext || {});
   }
 
   function tocHeadingLabelHasInnerLink(labelHtml) {
     return /<a\s/i.test(String(labelHtml || ''));
+  }
+
+  function renderDetailTocList(nodes, markdownContext) {
+    if (!Array.isArray(nodes) || !nodes.length) return '';
+    const context = markdownContext || {};
+    return '<ol>' + nodes.map(function (node) {
+      const heading = node.heading;
+      const labelHtml = renderTocHeadingLabel(
+        stripTocHeadingNumberPrefix(heading.text, heading.level),
+        context
+      );
+      const slugAttr = escapeHtml(heading.slug);
+      const levelClass = 'toc-level-' + escapeHtml(heading.level);
+      let entryHtml;
+      if (tocHeadingLabelHasInnerLink(labelHtml)) {
+        entryHtml = '<span class="toc-entry" data-href="#' + slugAttr + '" role="link" tabindex="0">' + labelHtml + '</span>';
+      } else {
+        entryHtml = '<a href="#' + slugAttr + '">' + labelHtml + '</a>';
+      }
+      return '<li class="' + levelClass + '">' + entryHtml + renderDetailTocList(node.children, context) + '</li>';
+    }).join('') + '</ol>';
   }
 
   function renderDetailToc(container, headings, markdownContext) {
@@ -1330,16 +1372,7 @@
       return;
     }
 
-    const context = markdownContext || {};
-    container.innerHTML = '<ol>' + headings.map(function (heading) {
-      const labelHtml = renderTocHeadingLabel(heading.text, context);
-      const slugAttr = escapeHtml(heading.slug);
-      const levelClass = 'toc-level-' + escapeHtml(heading.level);
-      if (tocHeadingLabelHasInnerLink(labelHtml)) {
-        return '<li class="' + levelClass + '"><span class="toc-entry" data-href="#' + slugAttr + '" role="link" tabindex="0">' + labelHtml + '</span></li>';
-      }
-      return '<li class="' + levelClass + '"><a href="#' + slugAttr + '">' + labelHtml + '</a></li>';
-    }).join('') + '</ol>';
+    container.innerHTML = renderDetailTocList(buildDetailTocTree(headings), markdownContext);
     removeLoadingState(container);
   }
 
