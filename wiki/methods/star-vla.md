@@ -80,5 +80,6 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 -   [VLA 开源复现景观（2025）](../overview/vla-open-source-repro-landscape-2025.md) — 含 starVLA/starVLA 仓库与单卡训练语境
 -   [VLA (Vision-Language-Action)](./vla.md) — 具身大模型全景
 -   [RLDX-1](../entities/rldx-1.md) — 同 Qwen3-VL 底座下的多流扩散动作头与物理传感路线对照
+-   [Qwen-VLA](../entities/qwen-vla.md) — 同生态下的 **大规模通才**（操作–导航统一 + embodiment prompt）对照
 -   [Foundation Policy](../concepts/foundation-policy.md) — 基础策略模型概念
 -   [Diffusion Policy](./diffusion-policy.md) — 另一种主流的生成式动作头路线

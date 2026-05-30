@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/repos/qwen-vla.md、sources/papers/qwenvla_arxiv_2605_30280.md — Qwen-VLA 统一 VLA 通才入库；wiki/entities/qwen-vla.md
+
+- 原始资料：[qwen-vla.md](sources/repos/qwen-vla.md)（<https://github.com/QwenLM/Qwen-VLA>）、[qwenvla_arxiv_2605_30280.md](sources/papers/qwenvla_arxiv_2605_30280.md)（<https://arxiv.org/abs/2605.30280>）
+- 新建 wiki：[qwen-vla.md](wiki/entities/qwen-vla.md)（Qwen3.5-4B + 1.15B DiT flow；操作–导航–轨迹统一；embodiment prompt；渐进训练 SFT/RL）
+- 交叉更新：[vla.md](wiki/methods/vla.md)、[star-vla.md](wiki/methods/star-vla.md)、[xiaomi-robotics-0.md](wiki/entities/xiaomi-robotics-0.md)、[vla-open-source-repro-landscape-2025.md](wiki/overview/vla-open-source-repro-landscape-2025.md)
+
 ## [2026-05-30] ingest | sources/papers/dreamwaq_plus_arxiv_2409_19709.md、sources/sites/dreamwaqpp-github-io.md — DreamWaQ++（arXiv:2409.19709 / T-RO 2026）入库；wiki/entities/dreamwaq-plus.md
 
 - 原始资料：[dreamwaq_plus_arxiv_2409_19709.md](sources/papers/dreamwaq_plus_arxiv_2409_19709.md)（<https://arxiv.org/abs/2409.19709>）、[dreamwaqpp-github-io.md](sources/sites/dreamwaqpp-github-io.md)（<https://dreamwaqpp.github.io/>）
