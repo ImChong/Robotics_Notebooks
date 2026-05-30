@@ -37,6 +37,7 @@
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |
 | [x] [holomotion_arxiv_2605_15336.md](papers/holomotion_arxiv_2605_15336.md) | HoloMotion-1：混合大规模运动语料 + 稀疏 MoE Transformer + 序列级 PPO 的人形零样本全身跟踪（arXiv:2605.15336，Horizon Robotics）摘录与 wiki 映射 |
 | [x] [physforge_arxiv_2605_05163.md](papers/physforge_arxiv_2605_05163.md) | PhysForge：VLM 分层物理蓝图 + KVI 协同扩散生成仿真就绪关节 3D 资产；PhysDB 约 15 万四档标注（arXiv:2605.05163，HKU MMLab / 腾讯混元等）摘录与 wiki 映射 |
+| [x] [physx_omni_arxiv_2605_21572.md](papers/physx_omni_arxiv_2605_21572.md) | PhysX-Omni：统一刚体/可变形/关节体 sim-ready 3D 生成；PhysXVerse + PhysX-Bench（arXiv:2605.21572，NTU S-Lab）摘录与 wiki 映射 |
 | [x] [gencad_arxiv_2409_16294.md](papers/gencad_arxiv_2409_16294.md) | GenCAD：图像条件 CAD program 生成（对比学习 + 潜扩散，arXiv:2409.16294，MIT）摘录与 wiki 映射 |
 | [x] [gencad3d_arxiv_2509_15246.md](papers/gencad3d_arxiv_2509_15246.md) | GenCAD-3D：点云/网格→CAD program、SynthBal 与真实扫描子集（arXiv:2509.15246，MIT/JMD）摘录与 wiki 映射 |
 | [x] [lift_humanoid_arxiv_2601_21363.md](papers/lift_humanoid_arxiv_2601_21363.md) | LIFT：人形 JAX SAC 大规模预训练 + 物理知情世界模型安全微调（arXiv:2601.21363）摘录与 wiki 映射 |
@@ -157,6 +158,8 @@
 | [x] [mujoco_menagerie_google_barkour_models.md](repos/mujoco_menagerie_google_barkour_models.md) | mujoco_menagerie：`google_barkour_v0` / `google_barkour_vb` 子目录（MJCF 资产） |
 | [x] [sage-sim2real-actuator-gap.md](repos/sage-sim2real-actuator-gap.md) | SAGE：Isaac Sim 重放与真机关节日志对齐，量化执行器层 sim2real gap（isaac-sim2real/sage） |
 | [x] [rhoban_bam.md](repos/rhoban_bam.md) | Rhoban/bam：Better Actuator Models 摆锤辨识、CMA-ES 拟合 M1–M6、MuJoCo 2R 验证（ICRA 2025 配套） |
+| [x] [physx-omni.md](repos/physx-omni.md) | physx-omni/PhysX-Omni：sim-ready 物理 3D 统一生成、PhysX-Bench 评测与训练/推理脚本（arXiv:2605.21572） |
+| [x] [physx-omni-physxverse.md](repos/physx-omni-physxverse.md) | Hugging Face PhysXVerse：通用 physics-grounded sim-ready 3D 数据集（约 113 GB，五维物理标注） |
 | [x] [awesome_bfm_papers.md](repos/awesome_bfm_papers.md) | awesome-bfm-papers：行为基础模型（BFM）论文/项目精选列表，配套 TPAMI 2025 综述（friedrichyuan / yuanmingqi 镜像） |
 | [x] [zilize-awesome-text-to-motion.md](repos/zilize-awesome-text-to-motion.md) | awesome-text-to-motion：文本驱动单人人体运动生成综述/数据集/模型精选与 GitHub Pages 交互索引（Zilize） |
 | [x] [tencent_hunyuan_hy_motion_1_0.md](repos/tencent_hunyuan_hy_motion_1_0.md) | HY-Motion-1.0：腾讯混元文本→3D 人体运动 DiT+Flow Matching 官方代码与 HF 权重入口 |
@@ -224,6 +227,7 @@
 | [x] [hrl-boyuai-hands-on-rl.md](sites/hrl-boyuai-hands-on-rl.md) | 动手学强化学习在线书 hrl.boyuai.com（章节 + 在线 notebook + 课件） |
 | [x] [hermes-agent-nousresearch-docs.md](sites/hermes-agent-nousresearch-docs.md) | Hermes Agent 官方站 hermes-agent.nousresearch.com（产品页 + Docusaurus 文档 + llms.txt 索引） |
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
+| [x] [physx-omni-github-io.md](sites/physx-omni-github-io.md) | PhysX-Omni 项目页 physx-omni.github.io（PhysXVerse / PhysX-Bench / 实验对比，arXiv:2605.21572） |
 | [x] [robotics-venues-primary-refs.md](sites/robotics-venues-primary-refs.md) | ICRA、IROS、CoRL、RSS、T-RO、IJRR、Science Robotics 官方介绍与投稿入口一手索引 |
 | [x] [sirui-xu-interprior-github-io.md](sites/sirui-xu-interprior-github-io.md) | InterPrior 项目页 sirui-xu.github.io/InterPrior（能力演示、BibTeX、Inter-line 姊妹链） |
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |

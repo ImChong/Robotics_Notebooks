@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-30",
-  "node_count": 595,
-  "edge_count": 4081,
+  "node_count": 596,
+  "edge_count": 4094,
   "coverage": {
-    "covered": 593,
-    "total": 593,
+    "covered": 594,
+    "total": 594,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/physx-omni.md",
+      "detail_id": "entity-physx-omni",
+      "label": "PhysX-Omni（统一仿真就绪物理 3D 生成）",
+      "type": "entity",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/whole-body-tracking-pipeline.md",
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
@@ -79,22 +87,14 @@
       "type": "entity",
       "recency": "2026-05-29",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-04-kimodo.md",
-      "detail_id": "entity-paper-amp-survey-04-kimodo",
-      "label": "Kimodo",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-    "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-    "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-    "type": "concept",
-    "recency": "2026-05-29",
+    "path": "wiki/entities/physx-omni.md",
+    "detail_id": "entity-physx-omni",
+    "label": "PhysX-Omni（统一仿真就绪物理 3D 生成）",
+    "type": "entity",
+    "recency": "2026-05-30",
     "source": "log.md"
   }
 }

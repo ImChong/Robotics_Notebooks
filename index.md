@@ -261,6 +261,7 @@ SORT type ASC
 - [FastStair（Learning to Run Up Stairs with Humanoid Robots）](entities/paper-faststair-humanoid-stair-ascent.md) — FastStair** 是面向 **人形机器人高速上楼梯** 的 **规划引导 + 多阶段强化学习** 工作（arXiv:2601.10365，LimX Dynamics 等）：用 **DCM 落 `📅unknown` `[entity_page]`
 - [InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）](entities/paper-interprior.md) — InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highligh `📅unknown` `[entity_page]`
 - [PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）](entities/paper-physforge-physics-grounded-3d-assets.md) — PhysForge（arXiv:2605.05163）用 VLM 输出分层物理蓝图，再以 KineVoxel Injection 在扩散中去噪联合合成几何与关节参数，配套 PhysDB 约 15 万四档物理标注，面向仿真就绪交互资产与具身数据引擎。 `📅2026-05-18` `[entity_page]`
+- [PhysX-Omni（统一仿真就绪物理 3D 生成）](entities/physx-omni.md) — PhysX-Omni（arXiv:2605.21572）：Qwen2.5-VL 统一生成刚体/可变形/关节化 sim-ready 3D 资产，模板化 RLE 几何表征 + TRELLIS 解码；配套 PhysXVerse（8.7K+）与 PhysX-Bench 六维物理评测。 `📅2026-05-30` `[entity_page]`
 - [Sim-to-Real: Learning Agile Locomotion For Quadruped Robots（RSS 2018）](entities/paper-quadruped-agile-sim2real-rss2018.md) — 一句话定义**：通过 **域随机化** 覆盖模型与传感不确定性，在仿真中训练 **高频敏捷四足运动策略**，并 **零样本或低开销** 迁移到实物平台，是后续大量 **sim2real 腿足工作 `📅unknown` `[entity_page]`
 - [Learning Torque Control for Quadrupedal Locomotion](entities/paper-quadruped-torque-control-rl.md) — 一句话定义**：用 **单网络策略直接预测关节扭矩**（相对高频），在仿真中训练并完成 **sim2real**，在多种地形与扰动下与 **位置+PD** 基线对比 **奖励与鲁棒性**。 `📅unknown` `[entity_page]`
 - [URDD（Beyond URDF: Universal Robot Description Directory）](entities/paper-urdd-universal-robot-description-directory.md) — URDD** 是 Klein-Seetharaman 与 Rakita 提出的 **机器人描述「派生层」**：保留 **URDF（等）原始规格** 的同时，把下游常算的 **结构化派生信息** 分 `📅unknown` `[entity_page]`
@@ -338,6 +339,7 @@ SORT type ASC
 - [LCM (Lightweight Communications and Marshalling) 基础](concepts/lcm-basics.md) — LCM** 是一款由 MIT 团队开发的通信库，专门针对**高频、低延迟、高带宽**的机器人控制场景设计。在人形机器人和四足机器人的“脊髓级”控制中，LCM 是优于 ROS 2 的首选方案。 `📅unknown` `[wiki_page]`
 - [LIP / ZMP](concepts/lip-zmp.md) — LIP（Linear Inverted Pendulum, 线性倒立摆）** 和 **ZMP（Zero Moment Point, 零力矩点）** 是双足机器人行走控制里最经典的一对基础模型与稳定 `📅unknown` `[wiki_page]`
 - [Motion Retargeting Pipeline（动作重定向流水线）](concepts/motion-retargeting-pipeline.md) — Motion Retargeting Pipeline** 关注的不是「某一个重定向算法」，而是把**异构来源的人体动作**（MoCap、单目视频估计、生成模型、遥操作流）落到**机器人可执行参考 `📅unknown` `[wiki_page]`
+- [Whole-Body Tracking Pipeline（全身运动跟踪流水线）](concepts/whole-body-tracking-pipeline.md) — Whole-Body Tracking（WBT）关心让人形机器人全身按参考动作动起来的端到端工程链路；含 6 阶段流水线与 SONIC / BeyondMimic / SD-AMP 等 6 条落地路径对照。 `📅2026-05-29` `[wiki_page]`
 - [Motion Retargeting（动作重定向）](concepts/motion-retargeting.md) — Motion Retargeting 是将一个运动序列（通常来自人类或动物）**转换为适合目标机器人执行的动作序列**的过程。 `📅unknown` `[wiki_page]`
 - [MPC 与 WBC 集成：人形机器人 locomotion 的典型控制架构](concepts/mpc-wbc-integration.md) — MPC 负责"大尺度规划"（质心往哪走、落脚点放哪），WBC 负责"全身执行"（怎么协调关节力矩来跟踪 MPC 发出的指令）**——两者分层配合，组成当前人形机器人 locomotion 最主流的 `📅unknown` `[wiki_page]`
 - [Open X-Embodiment（OXE）](concepts/open-x-embodiment.md) — Open X-Embodiment**：面向机器人模仿学习的大规模跨机构、跨硬件形态数据集与基准管线，把多种机器人的演示统一到可比格式上，用于训练与评测「通用操作策略」。 `📅unknown` `[wiki_page]`

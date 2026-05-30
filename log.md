@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/physx_omni_arxiv_2605_21572.md — PhysX-Omni/PhysXVerse/PhysX-Bench 入库；wiki/entities/physx-omni.md
+
 ## [2026-05-29] checklist-v23 | wiki/concepts/whole-body-tracking-pipeline.md — V23 P1「WBT 知识链」首页落地
 
 - 变更：新建 [wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)，把 Whole-Body Tracking 端到端流水线统一为 **6 阶段**（参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署），并把 **SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT)** 6 条主流落地路径以 6 列对照表展开；包含 mermaid 端到端流程图、与 [人形 RL 身体系统栈](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) 8 层框架的映射、6 类常见失败模式、评测视角。

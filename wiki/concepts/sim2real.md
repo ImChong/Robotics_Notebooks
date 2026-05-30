@@ -25,7 +25,11 @@ related:
   - ../entities/bam-better-actuator-models.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/open-duck-mini.md
+  - ../entities/physx-omni.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
+updated: 2026-05-30
+sources:
+  - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 ---
 
 # Sim2Real
@@ -114,7 +118,7 @@ flowchart TD
 ### 7. Sim2Real SOP (标准作业程序)
 
 根据 [xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：
-- **前置阶段**：精确的 URDF 建模与动力学参数初步对齐。
+- **前置阶段**：精确的 URDF 建模与动力学参数初步对齐；若场景物体来自 **生成式 sim-ready 管线**（如 [PhysX-Omni](../entities/physx-omni.md) 导出的 URDF/XML），须单独验收 **惯性、碰撞盒与关节轴** 是否与目标仿真器一致，不宜默认「生成即可用」。
 - **仿真验证**：在 [isaac-gym-isaac-lab](../entities/isaac-gym-isaac-lab.md) 或 [genesis-sim](../entities/genesis-sim.md) 中完成基础策略训练，并通过域随机化覆盖物理参数偏差。
 - **评测基础设施**：产业侧亦将可信仿真用于 **real-to-sim 闭环排序**（训练仍主要来自真机），见 [仿真评测基础设施](simulation-evaluation-infrastructure.md) 与 [Genesis World 1.0](../entities/genesis-world-10.md)。
 - **中间件对齐**：统一仿真与真机的控制频率（如 50Hz 策略 + 200Hz 关节 PD）与动作/状态归一化标准。
