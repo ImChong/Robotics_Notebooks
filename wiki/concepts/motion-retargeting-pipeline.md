@@ -174,6 +174,7 @@ flowchart TD
 ## 关联页面
 
 - [Motion Retargeting（动作重定向）](./motion-retargeting.md) — 概念页：单次映射的定义与分类
+- [Whole-Body Tracking Pipeline（全身运动跟踪流水线）](./whole-body-tracking-pipeline.md) — **下游消费方**：把本流水线的参考产物训成可在真机上执行的全身跟踪策略
 - [Motion Retargeting Objective（重定向目标函数形式化）](../formalizations/motion-retargeting-objective.md) — 流水线第 4–6 阶段共用的目标函数数学骨架
 - [GMR（通用动作重定向）](../methods/motion-retargeting-gmr.md) — 流水线中 IK 主导阶段的代表实现
 - [NMR（神经运动重定向）](../methods/neural-motion-retargeting-nmr.md) — 流水线中"前端 + 配对数据 + 神经推断"的实例
