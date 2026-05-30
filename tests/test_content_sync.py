@@ -219,7 +219,7 @@ console.log('ok');
             "heading-anchor-link",
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
-            "tocContainer.querySelectorAll('a[href^=\"#\"]')",
+            "tocContainer.querySelectorAll('a[href^=\"#\"], .toc-entry[data-href]')",
             "item.classList.toggle('active',",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
