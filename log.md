@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/ge_sim_2_arxiv_2605_27491.md、sources/repos/ge_sim_v2.md、sources/sites/ge-sim-v2-project.md — GE-Sim 2.0 闭环视频世界模拟器入库；wiki/entities/ge-sim-2.md
+
+- 原始资料：[ge_sim_2_arxiv_2605_27491.md](sources/papers/ge_sim_2_arxiv_2605_27491.md)（<https://arxiv.org/abs/2605.27491>）、[ge_sim_v2.md](sources/repos/ge_sim_v2.md)（<https://github.com/AgibotTech/GE-Sim-V2>）、[ge-sim-v2-project.md](sources/sites/ge-sim-v2-project.md)（<https://ge-sim-v2.github.io/>）
+- 新建 wiki：[ge-sim-2.md](wiki/entities/ge-sim-2.md)（视觉+本体双专家、World Judge、加速 rollout；WorldArena 2B 榜首）
+- 交叉更新：[generative-world-models.md](wiki/methods/generative-world-models.md)、[video-as-simulation.md](wiki/concepts/video-as-simulation.md)、[robot-world-models-training-loop-taxonomy.md](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[ewmbench.md](wiki/entities/ewmbench.md)
+
 ## [2026-05-30] structural | wiki/concepts/sim2real.md — 对齐 Sim2Real 工程流程 Mermaid：训练前准备、训练期 DR/RMA、SAGE/中间件/real-to-sim 与可选 Real2Sim 上游
 
 - 变更：更新 [sim2real.md](wiki/concepts/sim2real.md)「Sim2Real 工程流程总览」Mermaid，与 §7 SOP、[sim2real-checklist](wiki/queries/sim2real-checklist.md)、[sim2real-gap-reduction](wiki/queries/sim2real-gap-reduction.md) 时序一致。

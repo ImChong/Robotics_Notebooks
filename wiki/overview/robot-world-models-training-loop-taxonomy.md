@@ -59,7 +59,7 @@ flowchart TB
 |------|----------|------------------|
 | **① 策略内世界模型** | 执行 \(a\) 前，内部推演 \(o'\) 是否合理？ | [VLA](../methods/vla.md)、[WAM](../concepts/world-action-models.md)、[Being-H0.7](../methods/being-h07.md)（潜空间先验）、[mimic-video](../methods/mimic-video.md)、[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md)（空中 VLN · 自回归 WAM） |
 | **② 学习型模拟器** | 真机数据贵、传统仿真不够真，能否学可用「中间环境」？ | [Model-Based RL](../methods/model-based-rl.md)、[Video-as-Simulation](../concepts/video-as-simulation.md)、[Robotic World Model（ETH RSL）](../entities/robotic-world-model-eth-rsl.md)（状态动力学口径） |
-| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld） |
+| **③ 机器人视频世界模型** | 生成的未来是否 **受动作控制** 且 **物理/几何可信**？ | [Generative World Models](../methods/generative-world-models.md)、[Latent Imagination](../concepts/latent-imagination.md)、[WEM](../entities/paper-wem-world-ego-modeling.md)（world/ego 解耦 + 混合长程基准 HTEWorld）、[GE-Sim 2.0](../entities/ge-sim-2.md)（闭环 rollout + 本体状态 + World Judge） |
 
 ## 路线演化：从「想象未来」到「训练闭环」
 
@@ -106,7 +106,7 @@ flowchart TB
 - 预测未来是否 **帮助少犯错**？
 - 是否在 **闭环任务** 中提高成功率？
 
-若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout，可与上述口径对照阅读。
+若三者答不好，世界模型容易退化为 Demo。本库 [EWMBench](../entities/ewmbench.md) 讨论 **操纵场景守恒** 类指标；[GE-Sim 2.0](../entities/ge-sim-2.md) 把 **任务成功判定与奖励** 内置进模拟器并报告真机策略增益；[WEM / HTEWorld](../entities/paper-wem-world-ego-modeling.md) 进一步覆盖 **导航–操作交错、多轮长程** rollout，可与上述口径对照阅读。
 
 ## 关联页面
 
