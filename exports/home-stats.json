@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-05-30",
-  "node_count": 595,
-  "edge_count": 4073,
+  "node_count": 596,
+  "edge_count": 4094,
   "coverage": {
-    "covered": 593,
-    "total": 593,
+    "covered": 594,
+    "total": 594,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -14,6 +14,54 @@
       "label": "PhysX-Omni（统一仿真就绪物理 3D 生成）",
       "type": "entity",
       "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-control.md",
+      "detail_id": "wiki-concepts-whole-body-control",
+      "label": "Whole-Body Control (WBC，全身控制)",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-05-29",
       "source": "log.md"
     },
     {
@@ -36,54 +84,6 @@
       "path": "wiki/entities/paper-amp-survey-03-smp.md",
       "detail_id": "entity-paper-amp-survey-03-smp",
       "label": "SMP",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-04-kimodo.md",
-      "detail_id": "entity-paper-amp-survey-04-kimodo",
-      "label": "Kimodo",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
-      "detail_id": "entity-paper-amp-survey-05-motionbricks",
-      "label": "MotionBricks",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md",
-      "detail_id": "entity-paper-amp-survey-06-natural_humanoid_robot_locomotion_wi",
-      "label": "Natural Humanoid Robot Locomotion with Generative Motion Prior",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md",
-      "detail_id": "entity-paper-amp-survey-07-adversarial_locomotion_and_motion_im",
-      "label": "Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-08-more.md",
-      "detail_id": "entity-paper-amp-survey-08-more",
-      "label": "MoRE",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-09-hiking_in_the_wild.md",
-      "detail_id": "entity-paper-amp-survey-09-hiking_in_the_wild",
-      "label": "Hiking in the Wild",
       "type": "entity",
       "recency": "2026-05-29",
       "source": "log.md"

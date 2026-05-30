@@ -2,6 +2,12 @@
 
 ## [2026-05-30] ingest | sources/papers/physx_omni_arxiv_2605_21572.md — PhysX-Omni/PhysXVerse/PhysX-Bench 入库；wiki/entities/physx-omni.md
 
+## [2026-05-29] checklist-v23 | wiki/concepts/whole-body-tracking-pipeline.md — V23 P1「WBT 知识链」首页落地
+
+- 变更：新建 [wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)，把 Whole-Body Tracking 端到端流水线统一为 **6 阶段**（参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署），并把 **SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT)** 6 条主流落地路径以 6 列对照表展开；包含 mermaid 端到端流程图、与 [人形 RL 身体系统栈](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) 8 层框架的映射、6 类常见失败模式、评测视角。
+- 链接：frontmatter `related` 拉入 [motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)、[whole-body-control.md](wiki/concepts/whole-body-control.md)、[sim2real.md](wiki/concepts/sim2real.md)、[behavior-foundation-model.md](wiki/concepts/behavior-foundation-model.md) 与 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / RGMT 全部 6 条路径的对应 method / entity 页；`sources` 链入对应 8 条原始资料。
+- 关联清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P1「WBT 知识链 (+3)」中的首条页面打勾，剩余 2 页（`comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md`、`queries/cross-embodiment-transfer-strategy.md`）继续后推。
+
 ## [2026-05-29] lint | wiki/entities/paper-*.md、scripts/fix_paper_entity_lint.py — 清零 paper 实体信息型 lint 预警（261→0）
 
 - 变更：批量补齐 **131** 个 `wiki/entities/paper-*.md` 的 frontmatter 来源键（`arxiv` / `venue` / `code`，从正文 URL、sources 文件名与索引表提取）；缺「方法 / 评测 / 对比」三段式的页面在 [参考来源] 前追加 **方法栈 / 实验与评测 / 与其他工作对比** 策展级摘要块；新增维护脚本 [fix_paper_entity_lint.py](scripts/fix_paper_entity_lint.py) 供后续复跑。
