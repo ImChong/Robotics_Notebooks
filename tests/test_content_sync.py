@@ -82,12 +82,20 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function slugifyHeading(text)",
             "function collectMarkdownHeadings(markdown)",
-            "function renderDetailToc(container, headings)",
+            "function renderTocHeadingLabel(text, markdownContext)",
+            "function renderDetailToc(container, headings, markdownContext)",
+            "function bindDetailTocEntryNavigation(tocContainer)",
+            "renderTocHeadingLabel(heading.text, context)",
+            'class="toc-entry"',
             "document.getElementById('detailTocList')",
-            "renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));",
+            "renderDetailToc(tocEl, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+        render_detail_toc = content[
+            content.find("function renderDetailToc") : content.find("function bindDetailTocEntryNavigation")
+        ]
+        self.assertNotIn("escapeHtml(heading.text)", render_detail_toc)
 
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
@@ -265,6 +273,8 @@ console.log('ok');
             ".heading-anchor-link",
             ".detail-markdown-body h2:hover .heading-anchor-link",
             ".detail-toc-list a.active",
+            ".detail-toc-list .toc-entry.active",
+            ".detail-toc-list .toc-entry a",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
