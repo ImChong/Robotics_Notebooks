@@ -38,7 +38,7 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function stripYamlFrontmatter(markdown)",
             "function renderMarkdownContent(markdown, headings, markdownContext)",
-            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
             "blocks.push('<hr>');",
             "function renderCodeBlock(code, lang)",
             "function escapeMermaidForInnerHtml(text)",
@@ -93,7 +93,9 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
         render_detail_toc = content[
-            content.find("function renderDetailToc") : content.find("function bindDetailTocEntryNavigation")
+            content.find("function renderDetailToc") : content.find(
+                "function bindDetailTocEntryNavigation"
+            )
         ]
         self.assertNotIn("escapeHtml(heading.text)", render_detail_toc)
 
@@ -218,7 +220,7 @@ console.log('ok');
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
             "tocContainer.querySelectorAll('a[href^=\"#\"]')",
-            "link.classList.toggle('active',",
+            "item.classList.toggle('active',",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
         ]
@@ -233,9 +235,10 @@ console.log('ok');
             "function resolveInternalMarkdownHref(target, currentPath, routeIndex)",
             "function renderInlineMarkdown(text, markdownContext)",
             "resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)",
-            "renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "const detailMarkdownContext = {",
             "currentPath: detailPage.path || ''",
             "routeIndex: markdownRouteIndex",
+            "renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
