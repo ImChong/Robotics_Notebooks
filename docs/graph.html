@@ -2961,6 +2961,7 @@
     // 跳转到指定进度：显现前 targetIdx 个节点
     function seekTimeline(targetIdx, animate) {
       if (!timelineAnimating) return;
+      if (sidebar.classList.contains('open')) closeSidebar();  // 时序推进/拖拽时收起详情侧栏，避免高亮态残留
       targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
       const prev = timelineIdx;
       if (targetIdx === prev) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
@@ -3290,9 +3291,14 @@
       });
 
       hideTooltip();
-      node.select('.node-glow').attr('fill-opacity', n => n.id === d.id ? 0.2 : 0);
-      node.select('.node-circle').attr('fill-opacity', 1);
-      node.style('opacity', n => (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05));
+      // 时序动画期间：未显现的节点/连线必须保持隐藏，高亮只在「已显现子集」内进行
+      const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
+      node.select('.node-glow').attr('fill-opacity', n => (n.id === d.id && tlShown(n.id)) ? 0.2 : 0);
+      node.select('.node-circle').attr('fill-opacity', n => tlShown(n.id) ? 1 : 0);
+      node.style('opacity', n => {
+        if (!tlShown(n.id)) return 0;
+        return (n.id === d.id || direct.has(n.id)) ? 1 : (secondary.has(n.id) ? 0.4 : 0.05);
+      });
       link
         .style('opacity', null)
         .style('stroke-width', null)
@@ -3302,6 +3308,7 @@
         })
         .attr('stroke-opacity', e => {
           const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
+          if (!tlShown(sId) || !tlShown(tId)) return 0;   // 任一端未显现 → 连线隐藏
           const involved = (sId === d.id || tId === d.id);
           return involved ? 0.85 : 0.18;
         })
@@ -3372,6 +3379,15 @@
     function closeSidebar() {
       sidebar.classList.remove('open');
       pinnedNode = null; // V21 修复：清除固定节点状态
+      if (timelineAnimating) {
+        // 时序模式：只恢复「已显现子集」的渲染，不触发 applyFilters 重建全图，也不重启力模拟/相机
+        renderTimelineStatic();
+        link.style('opacity', null).style('stroke-width', null)
+            .attr('stroke', edgeBaseColor()).attr('stroke-width', linkWidthBase);
+        updateTimelineLinks(timelineRevealedIds);
+        wrap.classList.remove('sidebar-open');
+        return;
+      }
       node.select('.node-glow').attr('fill-opacity', 0);
       link
         .style('opacity', null)
@@ -3403,7 +3419,8 @@
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
-      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情
+      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情侧栏
+      // （openSidebar 已做时序感知，仅在「已显现子集」内高亮，不会显示背景全局图）
       if (timelinePlaying) return;
       if (isMobile) {
         if (pinnedNode === d) {

@@ -3,16 +3,18 @@ type: entity
 tags: [generative-ai, simulation, articulated-bodies, dataset, llm-agents, 3d-assets]
 status: complete
 date: 2026-05-16
-updated: 2026-05-18
+updated: 2026-05-30
 related:
   - ../concepts/text-to-cad.md
   - ../concepts/sim2real.md
   - ./paper-physforge-physics-grounded-3d-assets.md
+  - ./physx-omni.md
   - ./urdf-studio.md
   - ./mujoco.md
 sources:
   - ../../sources/sites/articraft3d-github-io.md
   - ../../sources/repos/mattzh72-articraft.md
+  - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 summary: "Articraft 将「可关节 3D 资产生成」表述为受限工作区内的程序化 agent 回路：LLM 在 SDK 上编写/修改生成程序，执行 harness 返回编译与验证类结构化反馈并迭代，目标为带关节限位与 PBR 的仿真就绪对象；配套 Articraft-10K 数据集与公开代码仓。"
 ---
 
@@ -63,6 +65,7 @@ flowchart TB
 - [MuJoCo](./mujoco.md) — 常见刚体/关节仿真后端之一；项目页演示强调物理与 VR 交互叙事。
 - [Sim2Real](../concepts/sim2real.md) — 资产几何与动力学一致性的总提醒。
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 物理蓝图 + 扩散 KVI** 的学习式「仿真就绪关节资产」路线，与 Articraft 的 **程序化 agent** 形态对照。
+- [PhysX-Omni](./physx-omni.md) — **VLM + 模板 RLE + TRELLIS** 统一三类物理 3D 与 **PhysXVerse** 数据引擎；项目页亦列 Articraft 等为生成对比基线。
 
 ## 推荐继续阅读
 
