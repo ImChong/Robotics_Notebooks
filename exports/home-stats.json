@@ -9,6 +9,30 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-checklist.md",
+      "detail_id": "wiki-queries-sim2real-checklist",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/qwen-vla.md",
       "detail_id": "entity-qwen-vla",
       "label": "Qwen-VLA",
@@ -63,37 +87,13 @@
       "type": "concept",
       "recency": "2026-05-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/terrain-adaptation.md",
-      "detail_id": "wiki-concepts-terrain-adaptation",
-      "label": "Terrain Adaptation（地形适应）",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/schedulestream.md",
-      "detail_id": "entity-schedulestream",
-      "label": "ScheduleStream",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/qwen-vla.md",
-    "detail_id": "entity-qwen-vla",
-    "label": "Qwen-VLA",
-    "type": "entity",
+    "path": "wiki/concepts/sim2real.md",
+    "detail_id": "wiki-concepts-sim2real",
+    "label": "Sim2Real",
+    "type": "concept",
     "recency": "2026-05-30",
     "source": "log.md"
   }
