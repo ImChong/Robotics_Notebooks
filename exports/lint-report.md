@@ -2,7 +2,7 @@
 
 ## [2026-05-30] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **4** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,11 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（4 个）
-- wiki/entities/articraft.md (wiki:2026-05-18 < sources/physx_omni_arxiv_2605_21572.md:2026-05-30)
-- wiki/entities/sapien.md (wiki:2026-05-21 < sources/physx_omni_arxiv_2605_21572.md:2026-05-30)
-- wiki/tasks/manipulation.md (wiki:2026-05-21 < sources/physx_omni_arxiv_2605_21572.md:2026-05-30)
-- wiki/concepts/sim2real.md (wiki:2026-05-28 < sources/physx_omni_arxiv_2605_21572.md:2026-05-30)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
