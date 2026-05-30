@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-05-17
+updated: 2026-05-30
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -188,4 +188,6 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [AMASS](../entities/amass.md) — SMPL 系大规模统一动捕档案，常与 AMP / 生成式运动模型一起出现
 - [LaFAN1](../entities/lafan1-dataset.md) — BVH 多主题棚拍数据与过渡任务基准（注意 NC-ND 许可）
 - [Mixamo](../entities/mixamo.md) — 商业动画库，与科研向 MoCap 档案对照阅读
+- [SAM 3D Body](../entities/sam-3d-body.md) — 单目 RGB 全身 MHR 估计，可作视频→重定向上游
+- [SAM3DBody-cpp](../entities/sam3dbody-cpp.md) — 上述模型的 C++/BVH 工程导出
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — Robot-Free 示范的 SKR 与全身 WBC 接口

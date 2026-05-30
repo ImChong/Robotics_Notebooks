@@ -22,6 +22,8 @@ related:
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ../entities/sam-3d-body.md
+  - ../entities/sam3dbody-cpp.md
 sources:
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
@@ -57,7 +59,7 @@ flowchart TD
   subgraph S1["1. 参考采集（Reference Acquisition）"]
     A1[棚拍 MoCap<br/>LAFAN1 / AMASS]
     A2[SMPL/SMPL-X 大库<br/>Motion-X / HumanML3D]
-    A3[视频估计<br/>GVHMR / WHAM]
+    A3[视频估计<br/>GVHMR / WHAM / SAM 3D Body]
     A4[生成式<br/>扩散 / VLA / 文本]
     A5[实时遥操作流]
   end

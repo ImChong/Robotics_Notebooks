@@ -13,6 +13,8 @@ related:
   - ../methods/reactor-physics-aware-motion-retargeting.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
   - ../methods/sonic-motion-tracking.md
+  - ../entities/sam-3d-body.md
+  - ../entities/sam3dbody-cpp.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -49,7 +51,7 @@ flowchart TD
   subgraph src["上游源（异构）"]
     A1[棚拍 MoCap<br/>BVH / FBX]
     A2[SMPL / SMPL-X 序列]
-    A3[单目视频 → 姿态估计<br/>GVHMR / WHAM 等]
+    A3[单目视频 → 姿态估计<br/>GVHMR / WHAM / SAM 3D Body 等]
     A4[生成式动作模型<br/>GENMO / 扩散等]
     A5[实时遥操作流]
   end

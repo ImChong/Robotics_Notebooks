@@ -9,6 +9,7 @@ related:
   - ./diffusion-motion-generation.md
   - ./sonic-motion-tracking.md
   - ./wilor.md
+  - ../entities/sam-3d-body.md
   - ../entities/protomotions.md
   - ../entities/kimodo.md
 sources:
