@@ -38,7 +38,7 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function stripYamlFrontmatter(markdown)",
             "function renderMarkdownContent(markdown, headings, markdownContext)",
-            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
             "blocks.push('<hr>');",
             "function renderCodeBlock(code, lang)",
             "function escapeMermaidForInnerHtml(text)",
@@ -82,12 +82,22 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function slugifyHeading(text)",
             "function collectMarkdownHeadings(markdown)",
-            "function renderDetailToc(container, headings)",
+            "function renderTocHeadingLabel(text, markdownContext)",
+            "function renderDetailToc(container, headings, markdownContext)",
+            "function bindDetailTocEntryNavigation(tocContainer)",
+            "renderTocHeadingLabel(heading.text, context)",
+            'class="toc-entry"',
             "document.getElementById('detailTocList')",
-            "renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));",
+            "renderDetailToc(tocEl, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+        render_detail_toc = content[
+            content.find("function renderDetailToc") : content.find(
+                "function bindDetailTocEntryNavigation"
+            )
+        ]
+        self.assertNotIn("escapeHtml(heading.text)", render_detail_toc)
 
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
@@ -209,8 +219,8 @@ console.log('ok');
             "heading-anchor-link",
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
-            "tocContainer.querySelectorAll('a[href^=\"#\"]')",
-            "link.classList.toggle('active',",
+            "tocContainer.querySelectorAll('a[href^=\"#\"], .toc-entry[data-href]')",
+            "item.classList.toggle('active',",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
         ]
@@ -225,9 +235,10 @@ console.log('ok');
             "function resolveInternalMarkdownHref(target, currentPath, routeIndex)",
             "function renderInlineMarkdown(text, markdownContext)",
             "resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)",
-            "renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "const detailMarkdownContext = {",
             "currentPath: detailPage.path || ''",
             "routeIndex: markdownRouteIndex",
+            "renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
@@ -265,6 +276,8 @@ console.log('ok');
             ".heading-anchor-link",
             ".detail-markdown-body h2:hover .heading-anchor-link",
             ".detail-toc-list a.active",
+            ".detail-toc-list .toc-entry.active",
+            ".detail-toc-list .toc-entry a",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
