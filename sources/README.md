@@ -148,6 +148,7 @@
 | [x] [airsim.md](repos/airsim.md) | Microsoft AirSim：UE/Unity 视觉无人机仿真 |
 | [x] [xtdrone.md](repos/xtdrone.md) | XTDrone：PX4 + ROS + Gazebo 教学仿真平台 |
 | [x] [flightmare.md](repos/flightmare.md) | Flightmare：RPG 灵活四旋翼研究仿真器 |
+| [x] [gamma_world.md](repos/gamma_world.md) | nv-tlabs/Gamma-World：多智能体生成式交互世界模型官方实现（arXiv:2605.28816） |
 | [x] [gym_pybullet_drones.md](repos/gym_pybullet_drones.md) | gym-pybullet-drones：Gymnasium 四旋翼 RL 环境 |
 | [x] [quad_swarm_rl.md](repos/quad_swarm_rl.md) | quad-swarm-rl：多四旋翼 OpenAI Gym 环境 |
 | [x] [crazyswarm2.md](repos/crazyswarm2.md) | Crazyswarm2：Crazyflie 大规模群体 ROS2 框架 |
