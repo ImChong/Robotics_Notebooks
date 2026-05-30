@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] structural | wiki/concepts/sim2real.md — 对齐 Sim2Real 工程流程 Mermaid：训练前准备、训练期 DR/RMA、SAGE/中间件/real-to-sim 与可选 Real2Sim 上游
+
+- 变更：更新 [sim2real.md](wiki/concepts/sim2real.md)「Sim2Real 工程流程总览」Mermaid，与 §7 SOP、[sim2real-checklist](wiki/queries/sim2real-checklist.md)、[sim2real-gap-reduction](wiki/queries/sim2real-gap-reduction.md) 时序一致。
+- 关联页面：`wiki/concepts/sim2real.md`
+
 ## [2026-05-30] ingest | sources/repos/qwen-vla.md、sources/papers/qwenvla_arxiv_2605_30280.md — Qwen-VLA 统一 VLA 通才入库；wiki/entities/qwen-vla.md
 
 - 原始资料：[qwen-vla.md](sources/repos/qwen-vla.md)（<https://github.com/QwenLM/Qwen-VLA>）、[qwenvla_arxiv_2605_30280.md](sources/papers/qwenvla_arxiv_2605_30280.md)（<https://arxiv.org/abs/2605.30280>）

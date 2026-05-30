@@ -50,15 +50,18 @@ sources:
 
 ```mermaid
 flowchart TD
-  T[仿真中训练策略]
-  G[刻画 Domain Gap<br/>动力学 / 传感器 / 延迟 / 视觉 / 固件路径]
-  M[选择迁移手段<br/>DR / SysID / 域适应 / Curriculum / 特权蒸馏 / RMA / 执行器对齐 / 处理器在环等]
-  P[仿真内回归与压力测试]
+  R[可选 Real2Sim<br/>CRISP 等：视频 → 可仿真资产]
+  A[资产与模型准备<br/>URDF/MJCF · 初值 SysID · 生成式资产验收]
+  T[仿真训练<br/>DR / Curriculum / 特权·RMA 等融入本阶段]
+  G[刻画 Domain Gap<br/>动力学 · 执行器 · 传感器 · 延迟 · 视觉 · 固件路径<br/>含 SAGE 等执行器 gap 画像]
+  M[闭环补齐<br/>BAM/ActuatorNet · 处理器在环 · 域适应 · 中间件对齐]
+  P[仿真回归与压力测试<br/>含可选 real-to-sim 评测]
   V[渐进式真机 SOP<br/>吊架 → 空转 → 落地]
   D[部署与监控]
-  O[可选在线微调]
+  O[可选安全真机收尾<br/>LoRA + Recovery 等]
 
-  T --> G --> M --> P --> V --> D --> O
+  R -.-> A
+  A --> T --> G --> M --> P --> V --> D --> O
 ```
 
 ## 核心问题：Domain Gap
