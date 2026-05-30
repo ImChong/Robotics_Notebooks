@@ -3403,8 +3403,8 @@
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
       ev.stopPropagation();
-      // 播放中禁止点击；暂停时已显现节点（pointer-events 已恢复）可点击打开详情
-      if (timelinePlaying) return;
+      // 时序动画进行中（播放或暂停）一律禁止点击：openSidebar 的高亮会把尚未显现的背景全局图显示出来
+      if (timelineAnimating) return;
       if (isMobile) {
         if (pinnedNode === d) {
           pinnedNode = null;
