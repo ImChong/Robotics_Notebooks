@@ -11,6 +11,7 @@ related:
   - ../comparisons/trajectory-opt-vs-rl.md
   - ../concepts/humanoid-parallel-joint-kinematics.md
   - ../entities/curobo.md
+  - ../entities/schedulestream.md
 sources:
   - ../../sources/papers/optimal_control.md
   - ../../sources/papers/mpc.md
@@ -65,6 +66,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 
 ## 关联页面
 - [cuRobo（NVIDIA GPU 运动生成）](../entities/curobo.md) — 多 seed 并行 TO + GPU 碰撞/IK 的工业级开源栈，与经典 CPU NLP 路线互补对照
+- [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — stream 中的 **motion** 段常对接轨迹/几何规划；上层负责 **时间表** 而非单次 TO
 - [Model Predictive Control](./model-predictive-control.md)
 - [LQR / iLQR 算法详解](./lqr-ilqr.md)
 - [Optimal Control (OCP) 概念](../concepts/optimal-control.md)
