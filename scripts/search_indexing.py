@@ -13,6 +13,10 @@ from utils.paths import path_to_id
 REPO_ROOT = Path(__file__).resolve().parents[1]
 WIKI_DIR = REPO_ROOT / "wiki"
 
+# ⚡ Bolt Optimization: Cache REPO_PARTS_LEN and use direct path slicing `path.parts[REPO_PARTS_LEN:]`
+# instead of `path.relative_to(REPO_ROOT)` to avoid expensive Path instantiation and string validation in hot loops.
+REPO_PARTS_LEN = len(REPO_ROOT.parts)
+
 ASCII_TOKEN_RE = re.compile(r"[a-z0-9_+\-.]+")
 MIXED_TOKEN_RE = re.compile(r"[A-Za-z0-9_+\-.]+|[\u4e00-\u9fff]+")
 
@@ -146,7 +150,7 @@ def truncate_for_embedding(text: str, max_tokens: int = 512) -> str:
 def page_type_for_path(path: Path, fm: dict) -> str:
     if fm.get("type"):
         return str(fm["type"])
-    parts = path.relative_to(REPO_ROOT).parts
+    parts = path.parts[REPO_PARTS_LEN:]
     if len(parts) >= 2 and parts[0] == "wiki":
         mapping = {
             "concepts": "concept",
@@ -174,7 +178,7 @@ def infer_path_tags(path: Path, fm: dict) -> List[str]:
     tags = fm.get("tags", [])
     if isinstance(tags, str):
         tags = [tags]
-    parts = path.relative_to(REPO_ROOT).parts
+    parts = path.parts[REPO_PARTS_LEN:]
     if parts[0] == "tech-map":
         tags = list(tags) + ["tech-map"]
         if len(parts) >= 3 and parts[1] == "modules":
@@ -223,7 +227,7 @@ def iter_wiki_documents() -> List[Dict]:
         docs.append(
             {
                 "id": path_to_id(path, REPO_ROOT),
-                "path": path.relative_to(REPO_ROOT).as_posix(),
+                "path": "/".join(path.parts[REPO_PARTS_LEN:]),
                 "title": title,
                 "summary": summary,
                 "body": body,

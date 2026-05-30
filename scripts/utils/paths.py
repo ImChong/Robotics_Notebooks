@@ -12,7 +12,8 @@ def slugify(value: str) -> str:
 
 def path_to_id(path: Path, repo_root: Path) -> str:
     """Generate a unique ID from a file path."""
-    parts = path.relative_to(repo_root).parts
+    # ⚡ Bolt Optimization: Use path slicing instead of relative_to for speed in hot loops
+    parts = path.parts[len(repo_root.parts) :]
     stem = path.stem
     if parts[0] == "wiki":
         if parts[1] == "entities":
