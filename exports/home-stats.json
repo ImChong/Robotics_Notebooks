@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-30",
-  "node_count": 600,
-  "edge_count": 4137,
+  "node_count": 601,
+  "edge_count": 4147,
   "coverage": {
-    "covered": 598,
-    "total": 598,
+    "covered": 599,
+    "total": 599,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/ge-sim-2.md",
+      "detail_id": "entity-ge-sim-2",
+      "label": "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）",
+      "type": "entity",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/ewmbench.md",
+      "detail_id": "entity-ewmbench",
+      "label": "EWMBench（具身世界模型生成评测）",
+      "type": "entity",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/sim2real.md",
       "detail_id": "wiki-concepts-sim2real",
@@ -47,53 +87,13 @@
       "type": "method",
       "recency": "2026-05-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/star-vla.md",
-      "detail_id": "wiki-methods-star-vla",
-      "label": "StarVLA",
-      "type": "method",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/xiaomi-robotics-0.md",
-      "detail_id": "entity-xiaomi-robotics-0",
-      "label": "Xiaomi-Robotics-0",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/dreamwaq-plus.md",
-      "detail_id": "entity-dreamwaq-plus",
-      "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/sim2real.md",
-    "detail_id": "wiki-concepts-sim2real",
-    "label": "Sim2Real",
-    "type": "concept",
+    "path": "wiki/entities/ge-sim-2.md",
+    "detail_id": "entity-ge-sim-2",
+    "label": "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）",
+    "type": "entity",
     "recency": "2026-05-30",
     "source": "log.md"
   }

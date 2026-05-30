@@ -2,13 +2,14 @@
 type: entity
 tags: [benchmark, embodied-ai, video-generation, world-models, manipulation, evaluation, open-source, agibot]
 status: complete
-updated: 2026-05-16
+updated: 2026-05-30
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
   - ../methods/model-based-rl.md
   - ./paper-wem-world-ego-modeling.md
+  - ./ge-sim-2.md
 sources:
   - ../../sources/papers/ewmbench.md
   - ../../sources/repos/ewmbench.md
@@ -82,6 +83,7 @@ flowchart LR
 - [Generative World Models（生成式世界模型）](../methods/generative-world-models.md) — 像素域动力学与评测缺口语境
 - [Video-as-Simulation（视频即仿真）](../concepts/video-as-simulation.md) — 视频 rollout 作为仿真接口时的失效模式
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 任务域：双臂/抓取等工程注意点与本基准当前子集范围对照
+- [GE-Sim 2.0](./ge-sim-2.md) — 同 Genie Envisioner 生态的 **闭环** 视频世界模拟器（内置 World Judge；EWMBench 偏开环生成质量）
 - [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型学习与规划文献脉络（EWMBench 评的是「生成式视频世界模型」子类）
 
 ## 参考来源
