@@ -2,6 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
+updated: 2026-05-30
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路。"
 ---
 
@@ -100,6 +101,11 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - Teacher：用高质量参考动作 + 判别器训练
 - Student：蒸馏 Teacher 策略到本体感知策略
 
+### DreamWaQ / DreamWaQ++（四足，Nahrendra et al.）
+
+- **DreamWaQ（ICRA 2023）**：盲走 + **CENet** 估计隐式地形上下文；单阶段非对称 AC，不依赖显式高度图。
+- **DreamWaQ++（T-RO 2026，[实体页](../entities/dreamwaq-plus.md)）**：在 DreamWaQ 上加入 **3D 点云外感知**、分层记忆与多模态 Mixer；仍用 **特权 critic + 部分观测 actor**，但 actor 输入含学习到的 $\mathbf{z}^{pe}$，实现障碍前瞻与传感器失效时的本体回退。
+
 ---
 
 ## 和标准 Sim2Real 的关系
@@ -152,6 +158,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Imitation Learning](../methods/imitation-learning.md) — Student 阶段本质上是模仿 Teacher 的行为克隆
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
+- [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 
