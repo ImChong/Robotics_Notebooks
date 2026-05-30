@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/sam_3d_body_arxiv_2602_15989.md、sources/repos/sam-3d-body.md、sources/repos/sam3dbody-cpp.md — SAM 3D Body（MHR 全身 HMR）与 SAM3DBody-cpp 工程运行时入库
+
+- 原始资料：[sam_3d_body_arxiv_2602_15989.md](sources/papers/sam_3d_body_arxiv_2602_15989.md)（<https://arxiv.org/abs/2602.15989>）、[sam-3d-body.md](sources/repos/sam-3d-body.md)（<https://github.com/facebookresearch/sam-3d-body>）、[sam3dbody-cpp.md](sources/repos/sam3dbody-cpp.md)（<https://github.com/AmmarkoV/SAM3DBody-cpp>）
+- 新建 wiki：[sam-3d-body.md](wiki/entities/sam-3d-body.md)（可提示单图 MHR、官方 checkpoint/数据集）、[sam3dbody-cpp.md](wiki/entities/sam3dbody-cpp.md)（ONNX+ggml、BVH/CSV、离线五遍精修）
+- 交叉更新：[motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)、[wilor.md](wiki/methods/wilor.md)、[genmo.md](wiki/methods/genmo.md)
+
 ## [2026-05-30] ingest | sources/papers/ge_sim_2_arxiv_2605_27491.md、sources/repos/ge_sim_v2.md、sources/sites/ge-sim-v2-project.md — GE-Sim 2.0 闭环视频世界模拟器入库；wiki/entities/ge-sim-2.md
 
 - 原始资料：[ge_sim_2_arxiv_2605_27491.md](sources/papers/ge_sim_2_arxiv_2605_27491.md)（<https://arxiv.org/abs/2605.27491>）、[ge_sim_v2.md](sources/repos/ge_sim_v2.md)（<https://github.com/AgibotTech/GE-Sim-V2>）、[ge-sim-v2-project.md](sources/sites/ge-sim-v2-project.md)（<https://ge-sim-v2.github.io/>）
