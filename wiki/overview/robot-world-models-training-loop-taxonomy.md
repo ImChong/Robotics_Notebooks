@@ -2,7 +2,7 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-05-29
+updated: 2026-05-30
 related:
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
@@ -15,6 +15,7 @@ related:
   - ../methods/being-h07.md
   - ../entities/robotic-world-model-eth-rsl.md
   - ../entities/paper-wem-world-ego-modeling.md
+  - ../entities/paper-gamma-world-multi-agent.md
   - ../entities/paper-worldvln-aerial-vln-wam.md
   - ../tasks/vision-language-navigation.md
 sources:

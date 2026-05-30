@@ -2,12 +2,15 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-04-21
+updated: 2026-05-30
 related:
   - ./reinforcement-learning.md
   - ../concepts/whole-body-coordination.md
+  - ../entities/paper-gamma-world-multi-agent.md
+  - ../methods/generative-world-models.md
 sources:
   - ../../sources/papers/survey_papers.md
+  - ../../sources/papers/gamma_world_arxiv_2605_28816.md
 summary: "多智能体强化学习（MARL）研究多个自主智能体在共享环境中的交互与进化，涵盖了竞争、协作及纳什均衡等复杂博弈动力学。"
 ---
 
@@ -24,9 +27,15 @@ summary: "多智能体强化学习（MARL）研究多个自主智能体在共享
 - **非平稳性 (Non-stationarity)**：由于其他机器人的策略在变，环境的转移概率也在变。
 - **维度爆炸**：联合动作空间随机器人数量指数级增长。
 
+## 与生成式世界模型的交叉
+
+传统 MARL 在 **解析或网格仿真** 里学联合策略；[Gamma-World](../entities/paper-gamma-world-multi-agent.md) 代表另一条路：先学 **多体动作条件的像素 rollout**（共享世界 + 各体独立可控），再作为 **MARL / 规划的想象环境**。二者互补——前者给 **策略梯度**，后者给 **高保真可交互观测**；是否进入闭环任务增益仍需单独验证（见 [训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)）。
+
 ## 关联页面
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Whole-body Coordination](../concepts/whole-body-coordination.md)
+- [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — 多智能体生成式交互世界模型（arXiv:2605.28816）
+- [Generative World Models](./generative-world-models.md) — 像素级世界模型总览
 
 ## 参考来源
 - Vinyals, O., et al. (2019). *Grandmaster level in StarCraft II using multi-agent reinforcement learning*.

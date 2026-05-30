@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/gamma_world_arxiv_2605_28816.md — Gamma-World 多智能体世界模型入库；wiki/entities/paper-gamma-world-multi-agent.md
+
 ## [2026-05-29] lint | wiki/entities/paper-*.md、scripts/fix_paper_entity_lint.py — 清零 paper 实体信息型 lint 预警（261→0）
 
 - 变更：批量补齐 **131** 个 `wiki/entities/paper-*.md` 的 frontmatter 来源键（`arxiv` / `venue` / `code`，从正文 URL、sources 文件名与索引表提取）；缺「方法 / 评测 / 对比」三段式的页面在 [参考来源] 前追加 **方法栈 / 实验与评测 / 与其他工作对比** 策展级摘要块；新增维护脚本 [fix_paper_entity_lint.py](scripts/fix_paper_entity_lint.py) 供后续复跑。
