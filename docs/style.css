@@ -654,14 +654,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   margin: 0;
   padding-left: 1.1em;
 }
+.detail-toc-list ol ol {
+  margin-top: .35em;
+  margin-bottom: 0;
+}
 .detail-toc-list li + li {
   margin-top: .5em;
 }
-.detail-toc-list .toc-level-3 {
-  margin-left: .8em;
-}
-.detail-toc-list .toc-level-4 {
-  margin-left: 1.6em;
+.detail-toc-list ol ol li + li {
+  margin-top: .35em;
 }
 .detail-toc-list a {
   color: var(--text);

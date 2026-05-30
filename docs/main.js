@@ -1314,6 +1314,37 @@
     }).filter(Boolean);
   }
 
+  /** 去掉 h3/h4 标题里自带的「1. 」式小节编号，避免与嵌套 <ol> 序号叠成「6. 1. …」。 */
+  function stripTocHeadingNumberPrefix(text, level) {
+    const raw = String(text || '');
+    if (level < 3 || !/^\d+\.\s+/.test(raw)) return raw;
+    return raw.replace(/^\d+\.\s+/, '');
+  }
+
+  function buildDetailTocTree(headings) {
+    const root = { children: [] };
+    const stack = [{ node: root, level: 1 }];
+    headings.forEach(function (heading) {
+      const node = { heading: heading, children: [] };
+      while (stack.length > 1 && stack[stack.length - 1].level >= heading.level) {
+        stack.pop();
+      }
+      stack[stack.length - 1].node.children.push(node);
+      stack.push({ node: node, level: heading.level });
+    });
+    return root.children;
+  }
+
+  function renderDetailTocList(nodes) {
+    if (!Array.isArray(nodes) || !nodes.length) return '';
+    return '<ol>' + nodes.map(function (node) {
+      const heading = node.heading;
+      const label = stripTocHeadingNumberPrefix(heading.text, heading.level);
+      return '<li class="toc-level-' + escapeHtml(heading.level) + '"><a href="#' + escapeHtml(heading.slug) + '">' +
+        escapeHtml(label) + '</a>' + renderDetailTocList(node.children) + '</li>';
+    }).join('') + '</ol>';
+  }
+
   function renderDetailToc(container, headings) {
     if (!container) return;
     if (!Array.isArray(headings) || !headings.length) {
@@ -1322,9 +1353,7 @@
       return;
     }
 
-    container.innerHTML = '<ol>' + headings.map(function (heading) {
-      return '<li class="toc-level-' + escapeHtml(heading.level) + '"><a href="#' + escapeHtml(heading.slug) + '">' + escapeHtml(heading.text) + '</a></li>';
-    }).join('') + '</ol>';
+    container.innerHTML = renderDetailTocList(buildDetailTocTree(headings));
     removeLoadingState(container);
   }
 
