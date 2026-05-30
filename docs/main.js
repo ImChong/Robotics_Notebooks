@@ -1335,17 +1335,36 @@
     return root.children;
   }
 
-  function renderDetailTocList(nodes) {
+  function renderTocHeadingLabel(text, markdownContext) {
+    return renderInlineMarkdown(String(text || ''), markdownContext || {});
+  }
+
+  function tocHeadingLabelHasInnerLink(labelHtml) {
+    return /<a\s/i.test(String(labelHtml || ''));
+  }
+
+  function renderDetailTocList(nodes, markdownContext) {
     if (!Array.isArray(nodes) || !nodes.length) return '';
+    const context = markdownContext || {};
     return '<ol>' + nodes.map(function (node) {
       const heading = node.heading;
-      const label = stripTocHeadingNumberPrefix(heading.text, heading.level);
-      return '<li class="toc-level-' + escapeHtml(heading.level) + '"><a href="#' + escapeHtml(heading.slug) + '">' +
-        escapeHtml(label) + '</a>' + renderDetailTocList(node.children) + '</li>';
+      const labelHtml = renderTocHeadingLabel(
+        stripTocHeadingNumberPrefix(heading.text, heading.level),
+        context
+      );
+      const slugAttr = escapeHtml(heading.slug);
+      const levelClass = 'toc-level-' + escapeHtml(heading.level);
+      let entryHtml;
+      if (tocHeadingLabelHasInnerLink(labelHtml)) {
+        entryHtml = '<span class="toc-entry" data-href="#' + slugAttr + '" role="link" tabindex="0">' + labelHtml + '</span>';
+      } else {
+        entryHtml = '<a href="#' + slugAttr + '">' + labelHtml + '</a>';
+      }
+      return '<li class="' + levelClass + '">' + entryHtml + renderDetailTocList(node.children, context) + '</li>';
     }).join('') + '</ol>';
   }
 
-  function renderDetailToc(container, headings) {
+  function renderDetailToc(container, headings, markdownContext) {
     if (!container) return;
     if (!Array.isArray(headings) || !headings.length) {
       container.innerHTML = '<p class="data-meta">当前正文较短，暂不生成目录。</p>';
@@ -1353,8 +1372,39 @@
       return;
     }
 
-    container.innerHTML = renderDetailTocList(buildDetailTocTree(headings));
+    container.innerHTML = renderDetailTocList(buildDetailTocTree(headings), markdownContext);
     removeLoadingState(container);
+  }
+
+  function bindDetailTocEntryNavigation(tocContainer) {
+    if (!tocContainer || tocContainer.dataset.tocEntryNavBound === '1') return;
+    tocContainer.dataset.tocEntryNavBound = '1';
+    tocContainer.addEventListener('click', function (event) {
+      const innerLink = event.target.closest('a[href]');
+      if (innerLink) {
+        const href = innerLink.getAttribute('href') || '';
+        if (href && href.charAt(0) !== '#') return;
+      }
+      const entry = event.target.closest('.toc-entry[data-href]');
+      if (!entry) return;
+      const sectionHref = entry.getAttribute('data-href') || '';
+      if (!sectionHref || sectionHref.charAt(0) !== '#') return;
+      event.preventDefault();
+      const targetId = sectionHref.slice(1);
+      const target = document.getElementById(targetId);
+      if (target && typeof target.scrollIntoView === 'function') {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      history.replaceState({}, '', sectionHref);
+      notifyTocSpyScrollSync();
+    });
+    tocContainer.addEventListener('keydown', function (event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      const entry = event.target.closest('.toc-entry[data-href]');
+      if (!entry || event.target.closest('a[href]')) return;
+      event.preventDefault();
+      entry.click();
+    });
   }
 
   function enhanceDetailHeadings(container) {
@@ -1388,16 +1438,17 @@
 
   function bindDetailTocSpy(container, tocContainer) {
     if (!container || !tocContainer) return;
+    bindDetailTocEntryNavigation(tocContainer);
     const headings = Array.from(container.querySelectorAll('h2[id], h3[id], h4[id]'));
-    const links = Array.from(tocContainer.querySelectorAll('a[href^="#"]'));
-    if (!headings.length || !links.length) return;
+    const navItems = Array.from(tocContainer.querySelectorAll('a[href^="#"], .toc-entry[data-href]'));
+    if (!headings.length || !navItems.length) return;
 
     let lastActiveHref = '';
 
     function scrollTocActiveIntoView() {
-      const activeLink = tocContainer.querySelector('a.active');
-      if (!activeLink || typeof activeLink.scrollIntoView !== 'function') return;
-      activeLink.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
+      const activeItem = tocContainer.querySelector('a.active, .toc-entry.active');
+      if (!activeItem || typeof activeItem.scrollIntoView !== 'function') return;
+      activeItem.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'auto' });
     }
 
     function updateActiveTocLink() {
@@ -1406,8 +1457,9 @@
         if (heading.getBoundingClientRect().top <= 140) activeId = heading.id;
       });
       const activeHref = '#' + activeId;
-      links.forEach(function (link) {
-        link.classList.toggle('active', link.getAttribute('href') === activeHref);
+      navItems.forEach(function (item) {
+        const itemHref = item.getAttribute('href') || item.getAttribute('data-href') || '';
+        item.classList.toggle('active', itemHref === activeHref);
       });
       if (activeHref !== lastActiveHref) {
         lastActiveHref = activeHref;
@@ -2272,17 +2324,18 @@
     if (tocSectionEl) {
       tocSectionEl.hidden = !detailHeadings.length;
     }
+    const detailMarkdownContext = {
+      currentPath: detailPage.path || '',
+      routeIndex: markdownRouteIndex
+    };
     if (tocEl) {
-      renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));
+      renderDetailToc(tocEl, detailHeadings, detailMarkdownContext);
     }
     if (contentSectionEl) {
       contentSectionEl.hidden = !contentMarkdown;
     }
     if (contentEl) {
-      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {
-        currentPath: detailPage.path || '',
-        routeIndex: markdownRouteIndex
-      }) : '<p>当前 detail page 暂无可同步正文。</p>';
+      contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext) : '<p>当前 detail page 暂无可同步正文。</p>';
       renderDetailMath(contentEl);
       detailMermaidPromise = renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
@@ -2590,15 +2643,16 @@
     if (subnavContent) subnavContent.hidden = false;
 
     var headings = collectMarkdownHeadings(contentMarkdown);
+    var markdownRouteIndex = buildMarkdownRouteIndex(siteData);
+    var roadmapMarkdownContext = {
+      currentPath: detail.path || roadmapPage.path || '',
+      routeIndex: markdownRouteIndex
+    };
     if (tocEl) {
-      renderDetailToc(tocEl, headings);
+      renderDetailToc(tocEl, headings, roadmapMarkdownContext);
     }
     if (contentEl) {
-      var markdownRouteIndex = buildMarkdownRouteIndex(siteData);
-      contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, {
-        currentPath: detail.path || roadmapPage.path || '',
-        routeIndex: markdownRouteIndex
-      });
+      contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
       renderDetailMath(contentEl);
       renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);

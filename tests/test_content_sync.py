@@ -38,7 +38,7 @@ class DetailContentSyncTests(unittest.TestCase):
         expected_snippets = [
             "function stripYamlFrontmatter(markdown)",
             "function renderMarkdownContent(markdown, headings, markdownContext)",
-            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "contentEl.innerHTML = contentMarkdown ? renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
             "blocks.push('<hr>');",
             "function renderCodeBlock(code, lang)",
             "function escapeMermaidForInnerHtml(text)",
@@ -83,14 +83,24 @@ class DetailContentSyncTests(unittest.TestCase):
             "function slugifyHeading(text)",
             "function collectMarkdownHeadings(markdown)",
             "function buildDetailTocTree(headings)",
-            "function renderDetailTocList(nodes)",
+            "function renderDetailTocList(nodes, markdownContext)",
             "function stripTocHeadingNumberPrefix(text, level)",
-            "function renderDetailToc(container, headings)",
+            "function renderTocHeadingLabel(text, markdownContext)",
+            "function renderDetailToc(container, headings, markdownContext)",
+            "function bindDetailTocEntryNavigation(tocContainer)",
+            "renderTocHeadingLabel(",
+            'class="toc-entry"',
             "document.getElementById('detailTocList')",
-            "renderDetailToc(tocEl, collectMarkdownHeadings(contentMarkdown));",
+            "renderDetailToc(tocEl, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+        render_detail_toc = content[
+            content.find("function renderDetailToc") : content.find(
+                "function bindDetailTocEntryNavigation"
+            )
+        ]
+        self.assertNotIn("escapeHtml(heading.text)", render_detail_toc)
 
     def test_detail_toc_nested_tree_and_strip_number_prefix(self):
         """TOC 应按标题层级嵌套，并去掉 h3/h4 自带的小节序号前缀。"""
@@ -103,10 +113,18 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
 }
+function renderTocHeadingLabel(text) {
+  return escapeHtml(text);
+}
+function tocHeadingLabelHasInnerLink() {
+  return false;
+}
 const content = fs.readFileSync(process.argv[2], 'utf8');
 const start = content.indexOf('function stripTocHeadingNumberPrefix');
-const end = content.indexOf('function enhanceDetailHeadings', start);
-const block = content.slice(start, end);
+const labelStart = content.indexOf('function renderTocHeadingLabel', start);
+const listStart = content.indexOf('function renderDetailTocList', start);
+const listEnd = content.indexOf('function renderDetailToc(container', listStart);
+const block = content.slice(start, labelStart) + content.slice(listStart, listEnd);
 eval(block);
 const headings = [
   { level: 2, text: '主要方法', slug: 'main-methods' },
@@ -257,8 +275,8 @@ console.log('ok');
             "heading-anchor-link",
             "navigator.clipboard.writeText",
             "function bindDetailTocSpy(container, tocContainer)",
-            "tocContainer.querySelectorAll('a[href^=\"#\"]')",
-            "link.classList.toggle('active',",
+            "tocContainer.querySelectorAll('a[href^=\"#\"], .toc-entry[data-href]')",
+            "item.classList.toggle('active',",
             "enhanceDetailHeadings(contentEl);",
             "bindDetailTocSpy(contentEl, tocEl);",
         ]
@@ -273,9 +291,10 @@ console.log('ok');
             "function resolveInternalMarkdownHref(target, currentPath, routeIndex)",
             "function renderInlineMarkdown(text, markdownContext)",
             "resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)",
-            "renderMarkdownContent(contentMarkdown, detailHeadings, {",
+            "const detailMarkdownContext = {",
             "currentPath: detailPage.path || ''",
             "routeIndex: markdownRouteIndex",
+            "renderMarkdownContent(contentMarkdown, detailHeadings, detailMarkdownContext)",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
@@ -313,6 +332,8 @@ console.log('ok');
             ".heading-anchor-link",
             ".detail-markdown-body h2:hover .heading-anchor-link",
             ".detail-toc-list a.active",
+            ".detail-toc-list .toc-entry.active",
+            ".detail-toc-list .toc-entry a",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
