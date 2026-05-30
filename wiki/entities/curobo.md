@@ -11,10 +11,11 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-05-16
+updated: 2026-05-30
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md
+  - ./schedulestream.md
   - ../tasks/manipulation.md
   - ../concepts/motion-retargeting.md
   - ./isaac-gym-isaac-lab.md
@@ -97,6 +98,7 @@ flowchart LR
 - [Manipulation（操作任务）](../tasks/manipulation.md) — 抓取–放置与 **笛卡尔目标** 的工程任务面
 - [Motion Retargeting（运动重定向）](../concepts/motion-retargeting.md) — V2 将 **高 DoF 无碰撞 IK** 与 **重定向 / 策略训练** 质量关联的叙事入口
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与 **Isaac Sim** 生态入口
+- [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
 
 ## 参考来源
 

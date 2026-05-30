@@ -2,13 +2,15 @@
 type: concept
 tags: [state-estimation, ekf, kalman, imu, contact]
 status: complete
-updated: 2026-05-29
+updated: 2026-05-30
 summary: "State Estimation 负责从传感器中恢复机器人姿态、速度和接触状态，是控制闭环的前提。"
 related:
   - ../methods/lingbot-map.md
+  - ../entities/dreamwaq-plus.md
 sources:
   - ../../sources/papers/state_estimation.md
   - ../../sources/papers/lingbot_map_arxiv_2604_14141.md
+  - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
 ---
 
 # State Estimation
@@ -72,6 +74,8 @@ sources:
 
 ### 1. Base Pose / Base Velocity
 因为机身不是固定在地上的，躯干位姿没法像机械臂那样直接从关节角唯一算出来。
+
+在 **端到端 locomotion RL** 中，也可把 **体速估计** 并入策略侧网络（例如 [DreamWaQ++](../entities/dreamwaq-plus.md) 用本体编码器预测 $\hat{\mathbf{v}}_t$，供低帧率点云 $SE(3)$ 对齐），与经典 EKF/因子图估计并行存在，部署时仍需验收漂移与失效模式。
 
 你通常需要融合：
 - IMU

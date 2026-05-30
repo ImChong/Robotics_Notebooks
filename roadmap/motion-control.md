@@ -792,7 +792,7 @@ flowchart LR
 | **World Model for Robotics** | 让机器人在"想象的世界"里训练 | Dreamer-V3, UniSim, GAIA-1 | （扩展阅读） |
 | **大规模 Teacher-Student**| 用特权 teacher 训 student，实现 sim2real | "Learning to Walk in Minutes"、ANYmal、Unitree 等 | [Sim2Real](../wiki/concepts/sim2real.md) |
 | **AMP / Motion Prior** | 用对抗式损失把 MoCap 动作蒸馏到 RL 策略 | AMP, ASE, CALM, PHC | [模仿学习纵深路线](depth-imitation-learning.md) |
-| **End-to-End Locomotion**| 视觉 + 本体观测 → 关节动作的端到端 RL | Extreme Parkour, ANYmal Parkour, DreamWaQ | [RL 纵深路线](depth-rl-locomotion.md) |
+| **End-to-End Locomotion**| 视觉 + 本体观测 → 关节动作的端到端 RL | Extreme Parkour, ANYmal Parkour, [DreamWaQ++](../wiki/entities/dreamwaq-plus.md) | [RL 纵深路线](depth-rl-locomotion.md) |
 | **Whole-Body Loco-Manipulation** | 走着同时操作（搬箱子、推门）| HumanPlus, OmniH2O, OKAMI | [Manipulation 任务地图](../wiki/tasks/manipulation.md) |
 | **Tactile / 力觉闭环** | 高频触觉反馈用于精细装配 | DIGIT, GelSight 系列 | （扩展阅读） |
 

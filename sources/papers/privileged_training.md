@@ -45,10 +45,16 @@
 
 ### 5) DreamWaQ: Learning Robust Quadrupedal Locomotion（Nahrendra et al., ICRA 2023）
 - **链接：** <https://arxiv.org/abs/2301.10602>
-- **核心贡献：** 引入 Dreamer（世界模型）到 privileged training 框架；teacher 的隐状态包含地形感知；student 通过 recurrent 网络估计隐状态；提升样本效率
+- **核心贡献：** **CENet** 上下文估计 + 隐式地形想象；盲走（仅本体）单阶段非对称 AC；为 DreamWaQ++ 奠定基础
 - **对 wiki 的映射：**
   - [privileged-training](../../wiki/concepts/privileged-training.md)
-  - [model-based-rl](../../wiki/methods/model-based-rl.md)
+  - [dreamwaq-plus](../../wiki/entities/dreamwaq-plus.md)（T-RO 2026 多模态扩展）
+
+### 6) DreamWaQ++: Obstacle-Aware Quadrupedal Locomotion（Nahrendra et al., IEEE T-RO 2026）
+- **链接：** <https://arxiv.org/abs/2409.19709> · 项目页 <https://dreamwaqpp.github.io/>
+- **核心贡献：** 融合 **3D 点云外感知** 与 **本体 MLP-Mixer/CENet**；分层 $SE(3)$ 外感知记忆 + PointNet 置信滤波 + 多模态 Mixer；对比/VAE/versatility 辅助损失；楼梯/陡坡/OOD 与多传感器平台验证
+- **对 wiki 的映射：**
+  - [dreamwaq-plus](../../wiki/entities/dreamwaq-plus.md)
 
 ## 当前提炼状态
 

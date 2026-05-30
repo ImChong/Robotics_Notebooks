@@ -3,12 +3,13 @@ type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
-updated: 2026-05-17
+updated: 2026-05-30
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
   - ./unitree-ros.md
   - ../concepts/wheel-legged-quadruped.md
+  - ./dreamwaq-plus.md
 ---
 
 # Unitree
@@ -78,6 +79,7 @@ Unitree 最早广泛出圈的是四足机器人。
 - 为 locomotion、强化学习、扰动恢复、sim2real 提供了稳定研究平台
 - 让很多本来只能在论文里看的东西，变成可真实验证的实验系统
 - **延伸形态**：腿末集成驱动轮的 **轮足四足（四轮足）**（如 Go2W / B2W），兼顾平地滚动效率与崎岖越障；专题综述见 [轮足四足机器人](../concepts/wheel-legged-quadruped.md)。
+- **感知 loco 代表**：**Go1** 上 [DreamWaQ++](./dreamwaq-plus.md)（T-RO 2026）用深度/LiDAR 点云 + 本体多模态 RL 实现楼梯与陡坡障碍感知行走（[arXiv:2409.19709](https://arxiv.org/abs/2409.19709)）。
 
 ### 2. 人形线
 Unitree 现在已经明显不只是四足公司。

@@ -78,6 +78,9 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/humanoid-robot.md": "人形机器人（Humanoid Robot）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
+    "wiki/overview/bfm-41-papers-technology-map.md": "BFM 技术地图（Behavior Foundation Model）",
+    "wiki/concepts/foundation-policy.md": "基础策略（Foundation Policy）",
+    "wiki/overview/multirotor-simulation-planning-control-stack.md": "多旋翼开源栈（Multirotor Stack）",
 }
 # V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
 LARGE_COMMUNITY_SPLIT_RATIO = 0.40
