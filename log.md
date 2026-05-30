@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/dreamwaq_plus_arxiv_2409_19709.md、sources/sites/dreamwaqpp-github-io.md — DreamWaQ++（arXiv:2409.19709 / T-RO 2026）入库；wiki/entities/dreamwaq-plus.md
+
+- 原始资料：[dreamwaq_plus_arxiv_2409_19709.md](sources/papers/dreamwaq_plus_arxiv_2409_19709.md)（<https://arxiv.org/abs/2409.19709>）、[dreamwaqpp-github-io.md](sources/sites/dreamwaqpp-github-io.md)（<https://dreamwaqpp.github.io/>）
+- 新建 wiki：[dreamwaq-plus.md](wiki/entities/dreamwaq-plus.md)（多模态点云+本体、分层外感知记忆、非对称 AC+PPO、楼梯/陡坡/OOD）
+- 交叉更新：[privileged-training.md](wiki/concepts/privileged-training.md)、[terrain-adaptation.md](wiki/concepts/terrain-adaptation.md)、[locomotion.md](wiki/tasks/locomotion.md)、[privileged_training.md](sources/papers/privileged_training.md)、[motion-control.md](roadmap/motion-control.md)
+
 ## [2026-05-30] ingest | sources/papers/schedulestream_arxiv_2511_04758.md、sources/repos/nvlabs-schedulestream.md — ScheduleStream/TAMPAS 入库；wiki/entities/schedulestream.md
 
 ## [2026-05-30] ingest | sources/papers/gamma_world_arxiv_2605_28816.md — Gamma-World 多智能体世界模型入库；wiki/entities/paper-gamma-world-multi-agent.md

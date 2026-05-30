@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-18
+updated: 2026-05-30
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -205,6 +205,7 @@ flowchart TD
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
 - [Barkour（四足敏捷课 + 开源机体 / Menagerie）](../entities/paper-barkour-quadruped-agility-benchmark.md)
+- [DreamWaQ++（多模态点云 + 本体四足障碍感知行走）](../entities/dreamwaq-plus.md)
 - [可变阻抗接触任务 RL](../entities/paper-variable-impedance-contact-rl.md)
 
 ## 参考来源

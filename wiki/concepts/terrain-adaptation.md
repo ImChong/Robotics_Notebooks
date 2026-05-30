@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-05-29
+updated: 2026-05-30
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../tasks/locomotion.md
@@ -12,9 +12,11 @@ related:
   - ../tasks/balance-recovery.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/dreamwaq-plus.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
+  - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
 ---
@@ -66,6 +68,7 @@ sources:
 | 传统规划 | 感知 + footstep planning + MPC/WBC | 可解释、约束清晰 | 感知和规划耦合复杂 |
 | 特权训练 | teacher 用高度图，student 蒸馏到本体感知 | sim2real 友好 | teacher/student 设计复杂 |
 | 端到端 RL | 直接输入高度图/点云预测动作 | 反应式强 | 对训练分布依赖高 |
+| 多模态点云 RL（DreamWaQ++） | 分层 $SE(3)$ 点云记忆 + PointNet + 本体 Mixer，单阶段非对称 AC | 障碍前瞻、传感器无关、OOD 本体回退 | 训练重、公开页暂无同署官方代码仓 |
 | 环境感知自动奖励（E-SDS） | VLM 读地形统计 + 行为分解生成调用高度图/LiDAR 的 Python 奖励 | 跨四类地形少手工调参；楼梯下降为分水岭 | 每地形专用策略、仅仿真、首轮仍依赖 prompt 工程 |
 
 ### 近期案例：E-SDS 的环境感知奖励合成
@@ -77,6 +80,7 @@ sources:
 - [Footstep Planning](./footstep-planning.md) 决定“下一步踩哪里”。
 - [Locomotion](../tasks/locomotion.md) 关注更完整的移动任务。
 - [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。
+- [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
 
 ## 常见误区
@@ -94,6 +98,7 @@ sources:
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ANYmal 高度图 teacher / proprioception student 经典路线
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS 环境感知 VLM 奖励合成
+- [sources/papers/dreamwaq_plus_arxiv_2409_19709.md](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md) — DreamWaQ++ 多模态点云四足 loco
 
 ## 关联页面
 
