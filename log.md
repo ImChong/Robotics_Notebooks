@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-30] ingest | sources/papers/schedulestream_arxiv_2511_04758.md、sources/repos/nvlabs-schedulestream.md — ScheduleStream/TAMPAS 入库；wiki/entities/schedulestream.md
+
 ## [2026-05-30] ingest | sources/papers/gamma_world_arxiv_2605_28816.md — Gamma-World 多智能体世界模型入库；wiki/entities/paper-gamma-world-multi-agent.md
 
 ## [2026-05-30] ingest | sources/papers/physx_omni_arxiv_2605_21572.md — PhysX-Omni/PhysXVerse/PhysX-Bench 入库；wiki/entities/physx-omni.md

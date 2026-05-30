@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-05-30",
-  "node_count": 597,
-  "edge_count": 4106,
+  "node_count": 598,
+  "edge_count": 4113,
   "coverage": {
-    "covered": 595,
-    "total": 595,
+    "covered": 596,
+    "total": 596,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/schedulestream.md",
+      "detail_id": "entity-schedulestream",
+      "label": "ScheduleStream",
+      "type": "entity",
+      "recency": "2026-05-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-gamma-world-multi-agent.md",
       "detail_id": "entity-paper-gamma-world-multi-agent",
@@ -79,20 +87,12 @@
       "type": "entity",
       "recency": "2026-05-29",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-02-physics_based_motion_imitation_with.md",
-      "detail_id": "entity-paper-amp-survey-02-physics_based_motion_imitation_with",
-      "label": "Physics-Based Motion Imitation with Adversarial Differential Discriminators",
-      "type": "entity",
-      "recency": "2026-05-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-gamma-world-multi-agent.md",
-    "detail_id": "entity-paper-gamma-world-multi-agent",
-    "label": "Gamma-World（γ-World / Generative Multi-Agent World Model）",
+    "path": "wiki/entities/schedulestream.md",
+    "detail_id": "entity-schedulestream",
+    "label": "ScheduleStream",
     "type": "entity",
     "recency": "2026-05-30",
     "source": "log.md"
