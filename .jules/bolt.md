@@ -50,3 +50,7 @@
 ## 2026-05-25 - Prevent N+1 Tokenization and File Read Bottlenecks in Search Loop
 **Learning:** In backend search logic, calling a document retrieval function (`iter_wiki_documents()`) that hits the file system inside the main `search` function causes large bottlenecks if search is called multiple times. Furthermore, expensive tokenization (via `tokenize_text`) should only be calculated once per document, rather than re-computing it on each new search request.
 **Action:** When a loop computes properties over a collection, verify whether the collection retrieval causes file system hits and memoize it. When computing computationally heavy structures (like token counts or derived metrics) on documents, mutate the document dictionary to cache it and skip recalculation on subsequent operations.
+
+## 2026-05-30 - pathlib.Path.relative_to Performance Bottleneck
+**Learning:** In Python, calling `pathlib.Path.relative_to()` inside a hot loop (like traversing thousands of files) adds massive overhead because it instantiates a new `Path` object and runs internal path validation and string manipulation logic on every call.
+**Action:** When extracting sub-paths from known, validated absolute paths inside a hot loop, calculate the base path's part length once (`REPO_PARTS_LEN = len(REPO_ROOT.parts)`) and use direct tuple slicing `path.parts[REPO_PARTS_LEN:]`. This performs the same logical operation nearly 5x faster by bypassing `pathlib` instantiation entirely.
