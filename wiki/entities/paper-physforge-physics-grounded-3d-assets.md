@@ -15,6 +15,7 @@ arxiv: "2605.05163"
 related:
   - ../concepts/sim2real.md
   - ./articraft.md
+  - ./physx-omni.md
   - ./robotwin.md
   - ./sapien.md
   - ../tasks/manipulation.md
@@ -35,7 +36,7 @@ summary: "PhysForge（arXiv:2605.05163）：VLM 生成分层物理蓝图 + KineV
 
 - **数据引擎视角：** 交互式虚拟世界与机器人操作仿真都受限于 **高质量、可关节、带物理字段** 的资产供给；论文将问题从「好看」推进到 **功能 plausible + simulation-ready**。
 - **分工明确：** **VLM** 擅长 **结构/语义/离散物理属性** 与 **部件分解消歧**；**扩散头** 负责 **连续关节参数** 的精细回归；**KVI** 给出二者在同一去噪框架内的 **耦合接口**。
-- **可对照工程路线：** 与 **程序化 agent + SDK** 生成（如 [Articraft](./articraft.md)）形成 **学习式端到端** vs **符号程序 + 验证闭环** 的对照谱系。
+- **可对照工程路线：** 与 **程序化 agent + SDK** 生成（如 [Articraft](./articraft.md)）、**VLM + RLE 体素统一三类物理对象**（如 [PhysX-Omni](./physx-omni.md)）形成 **学习式端到端** vs **符号程序 + 验证闭环** vs **PhysX 系 sim-ready 统一生成** 的对照谱系。
 
 ## 核心结构
 
@@ -68,6 +69,7 @@ flowchart LR
 ## 关联页面
 
 - [Articraft](./articraft.md) — **Agent + SDK** 式可关节资产生成对照。
+- [PhysX-Omni](./physx-omni.md) — **Qwen2.5-VL + 模板 RLE + TRELLIS**，统一刚体/可变形/关节体 sim-ready 生成与 PhysXVerse / PhysX-Bench。
 - [RoboTwin 2.0](./robotwin.md) — 论文展示 **双臂操作仿真** 下游语境之一。
 - [SAPIEN（仿真引擎）](./sapien.md) — 关节体交互仿真栈语境。
 - [Sim2Real](../concepts/sim2real.md) — 资产 **动力学/碰撞/关节** 与仿真器一致性总提醒。

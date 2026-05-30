@@ -2,10 +2,14 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-05-17
+updated: 2026-05-30
+related:
+  - ../entities/physx-omni.md
+  - ../entities/paper-physforge-physics-grounded-3d-assets.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/survey_papers.md
+  - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核心难点是感知、接触和全身协同。"
 ---
 
@@ -30,6 +34,9 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 
 ### 4. 开放词汇
 现实世界物体种类几乎无限，不可能为每个物体单独训练。
+
+### 5. 仿真场景与交互资产
+操作仿真除策略外，还依赖 **可关节、带物理字段的 3D 资产**（尺度、材料、affordance、运动学）。近期 **sim-ready 生成**（如 [PhysX-Omni](../entities/physx-omni.md)、[PhysForge](../entities/paper-physforge-physics-grounded-3d-assets.md)）试图缓解 **PartNet-Mobility 系数据** 在类别与标注上的瓶颈，但导入目标引擎（SAPIEN、MuJoCo、Isaac 等）时仍需核对 **URDF/碰撞/关节限位**。
 
 ## 操作闭环流程总览
 
@@ -128,6 +135,7 @@ flowchart TD
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 检测式抓取路线内部的 SDK vs 白盒基线选型坐标
 - [Query：在 RL 中利用触觉反馈提升操作鲁棒性](../queries/tactile-feedback-in-rl.md) — 处理视觉遮挡的进阶方法
 - [Impedance Control](../concepts/impedance-control.md) — 接触任务最常见的柔顺执行层
+- [PhysX-Omni](../entities/physx-omni.md) — 统一刚体/可变形/关节体 sim-ready 3D 生成与 PhysXVerse 数据引擎
 
 ## 推荐继续阅读
 

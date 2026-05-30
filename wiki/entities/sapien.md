@@ -3,7 +3,11 @@ type: entity
 title: SAPIEN (仿真引擎)
 tags: [simulation, physics-engine, manipulation, sapien]
 summary: "SAPIEN 是针对关节体交互与机器人操作设计的高性能仿真引擎，支持大规模 PartNet-Mobility 数据集，适用于细粒度操作任务。"
-updated: 2026-05-01
+updated: 2026-05-30
+related:
+  - ./physx-omni.md
+  - ./paper-physforge-physics-grounded-3d-assets.md
+  - ./robotwin.md
 ---
 
 # SAPIEN (仿真引擎)
@@ -26,9 +30,11 @@ updated: 2026-05-01
 ## 与其他系统的关系
 
 - **上层应用**：[robotwin](robotwin.md) 2.0 建立在 SAPIEN 之上，用于自动化数据生成。
+- **资产生成生态**：[PhysX-Omni](physx-omni.md)、[PhysForge](paper-physforge-physics-grounded-3d-assets.md) 等路线产出 **sim-ready 关节/可变形资产** 后，常需与 PartNet-Mobility 系引擎（含 SAPIEN）核对 **关节轴、碰撞与 URDF** 一致性。
 - **同类对比**：相比 [mujoco](mujoco.md)，SAPIEN 更侧重于物体交互和视觉感知；相比 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md)，它在处理部件级关节体模型方面具有独特的生态优势；相比 [genesis-sim](genesis-sim.md)，后者在多物理场（流体、柔性体）耦合方面更为先进。
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [SAPIEN Project Page](https://sapien.ucsd.edu/)
 - [sources/papers/physforge_arxiv_2605_05163.md](../../sources/papers/physforge_arxiv_2605_05163.md) — PhysForge：VLM 物理蓝图 + KineVoxel 扩散合成关节资产，PhysDB 物理标注与 SAPIEN 等仿真平台互链
+- [sources/papers/physx_omni_arxiv_2605_21572.md](../../sources/papers/physx_omni_arxiv_2605_21572.md) — PhysX-Omni：统一 sim-ready 物理 3D 生成；代码致谢 PartNet-mobility / SAPIEN 生态
