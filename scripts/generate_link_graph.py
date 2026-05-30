@@ -58,6 +58,27 @@ PRIMARY_COMMUNITY_CAP = 8
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
+# 社区名默认取「枢纽页标题 + ' 社区'」，但各枢纽页 H1 风格不一（半角/全角括号、纯英文 / 中文长句 /
+# 双语混杂）。此处按枢纽页相对路径给出统一的「中文（English）」双语展示名，附 ` 社区` 后缀；未命中的
+# 枢纽仍回退到页面 H1 自动命名，社区划分若变动也能优雅降级。
+COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
+    "wiki/overview/humanoid-rl-motion-control-body-system-stack.md": "人形 RL 运动控制（Humanoid RL Locomotion）",
+    "wiki/concepts/whole-body-control.md": "全身控制（Whole-Body Control, WBC）",
+    "wiki/methods/imitation-learning.md": "模仿学习（Imitation Learning, IL）",
+    "wiki/tasks/locomotion.md": "运动控制（Locomotion）",
+    "wiki/concepts/sim2real.md": "仿真到现实（Sim2Real）",
+    "wiki/methods/generative-world-models.md": "生成式世界模型（Generative World Models）",
+    "wiki/overview/navigation-slam-autonomy-stack.md": "导航与 SLAM（Navigation / 自动驾驶）",
+    "wiki/entities/mujoco.md": "物理引擎（MuJoCo）",
+    "wiki/methods/reinforcement-learning.md": "强化学习（Reinforcement Learning, RL）",
+    "wiki/queries/real-time-control-middleware-guide.md": "实时运控中间件（Real-Time Control Middleware）",
+    "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
+    "wiki/methods/vla.md": "视觉-语言-动作（VLA）",
+    "wiki/concepts/motion-retargeting.md": "动作重定向（Motion Retargeting）",
+    "wiki/entities/humanoid-robot.md": "人形机器人（Humanoid Robot）",
+    "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
+    "wiki/tasks/manipulation.md": "操作（Manipulation）",
+}
 # V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
 LARGE_COMMUNITY_SPLIT_RATIO = 0.40
 LARGE_COMMUNITY_MIN_SIZE = 30
@@ -605,7 +626,8 @@ def assign_communities(
                 members,
                 key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
             )
-            label = f"{node_map[hub_id]['label']} 社区"
+            hub_name = COMMUNITY_NAME_OVERRIDES.get(hub_id, node_map[hub_id]["label"])
+            label = f"{hub_name} 社区"
         else:
             community_id = OTHER_COMMUNITY_ID
             label = OTHER_COMMUNITY_LABEL
