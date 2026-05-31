@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-31",
-  "node_count": 606,
-  "edge_count": 4207,
+  "node_count": 607,
+  "edge_count": 4216,
   "coverage": {
-    "covered": 604,
-    "total": 604,
+    "covered": 605,
+    "total": 605,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/linear-algebra-curriculum.md",
+      "detail_id": "entity-linear-algebra-curriculum",
+      "label": "线性代数学习策展（机器人 L0）",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/unilab.md",
       "detail_id": "entity-unilab",
@@ -71,28 +87,12 @@
       "type": "method",
       "recency": "2026-05-31",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md",
-      "detail_id": "wiki-comparisons-sonic-vs-beyondmimic-vs-sdamp-vs-heracles",
-      "label": "SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比",
-      "type": "comparison",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unilab.md",
-    "detail_id": "entity-unilab",
-    "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
+    "path": "wiki/entities/linear-algebra-curriculum.md",
+    "detail_id": "entity-linear-algebra-curriculum",
+    "label": "线性代数学习策展（机器人 L0）",
     "type": "entity",
     "recency": "2026-05-31",
     "source": "log.md"
