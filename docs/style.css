@@ -652,11 +652,16 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .detail-toc-list ol {
   margin: 0;
-  padding-left: 1.1em;
+  padding-left: 2.5em;
+  list-style-position: outside;
 }
 .detail-toc-list ol ol {
   margin-top: .35em;
   margin-bottom: 0;
+  padding-left: 2.15em;
+}
+.detail-toc-list li {
+  list-style-position: outside;
 }
 .detail-toc-list li + li {
   margin-top: .5em;
