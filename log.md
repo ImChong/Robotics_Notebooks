@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] query | wiki/queries/cross-embodiment-transfer-strategy.md — 跨具身策略迁移选型指南（V23 P1 WBT 知识链收官）
+
+- 新建 wiki：[cross-embodiment-transfer-strategy.md](wiki/queries/cross-embodiment-transfer-strategy.md)（单具身重训 + 重定向 / Any2Any 高效后训练 / 多具身联合训练三路径：9 维「算力 × 数据 × 泛化」对照表 + Mermaid 决策树 + 7 类典型故障模式 + 4 条推荐组合 pipeline；定位为 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) 阶段 5 选型横切面）。
+- 交叉更新：[whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md) 阶段 5 与关联页面、[humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md) §6 加入站链接。
+- 进度：V23 P1「WBT 知识链 (+3)」三页（pipeline / 四方法对比 / 跨具身 Query）全部完成，标记为 `[x]`。
+- 验证：`make lint` 全绿（孤儿页消解）、`eval_search_quality` 37/37 通过。
+
 ## [2026-05-31] structural | roadmap/motion-control.md — 各 L 层补充英文缩写速查表（缩写 / 全称 / 简要说明）
 
 - 变更：[roadmap/motion-control.md](roadmap/motion-control.md) 在 L−1～L7 及 L4.1–L4.4、L5.1–L5.3、L7.1–L7.5 增加统一格式「英文缩写速查」表；L−1 原「必备术语速查」改为三列英文全称版。

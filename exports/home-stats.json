@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-05-31",
-  "node_count": 610,
-  "edge_count": 4248,
+  "node_count": 611,
+  "edge_count": 4260,
   "coverage": {
-    "covered": 608,
-    "total": 608,
+    "covered": 609,
+    "total": 609,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
+      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
+      "label": "跨具身策略迁移选型指南",
+      "type": "query",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/tau0-world-model.md",
       "detail_id": "entity-tau0-world-model",
@@ -63,37 +87,13 @@
       "type": "task",
       "recency": "2026-05-31",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/linear-algebra-curriculum.md",
-      "detail_id": "entity-linear-algebra-curriculum",
-      "label": "线性代数学习策展（机器人 L0）",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unilab.md",
-      "detail_id": "entity-unilab",
-      "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tau0-world-model.md",
-    "detail_id": "entity-tau0-world-model",
-    "label": "τ₀-World Model（τ0-WM）",
-    "type": "entity",
+    "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
+    "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
+    "label": "跨具身策略迁移选型指南",
+    "type": "query",
     "recency": "2026-05-31",
     "source": "log.md"
   }
