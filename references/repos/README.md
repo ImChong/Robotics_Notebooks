@@ -43,7 +43,7 @@
 - RL locomotion
 
 建议从这里进入：
-- [Simulation](simulation.md)
+- [仿真平台与工具链](simulation.md)
 - [RL Frameworks](rl-frameworks.md)
 
 ### 人形 / 足式项目主线

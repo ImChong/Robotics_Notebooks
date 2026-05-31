@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] structural | references/repos/simulation.md、tech-map/modules/system/simulation.md — 区分「仿真平台索引」与「技术栈模块」详情页，消除同名 Simulation 混淆
+
+- 问题：`detail.html?id=reference-repos-simulation` 与 `tech-node-system-simulation` 标题同为 Simulation、正文量差异大，易被误判为重复页。
+- 变更：reference 页改名为「仿真平台与工具链」并链回 tech-map；tech-map 页改名为「仿真（系统集成层）」、补充模块定位与 wiki 互链；更新 `references/repos/README.md` 入口文案。
+- 验证：`make ci-preflight` 通过。
+
 ## [2026-05-31] ingest | sources/papers/tau0_wm_tech_report.md、sources/sites/tau0-wm-agibot-finch.md、sources/repos/sii_research_tau_0_wm.md — τ₀-WM 统一视频–动作世界模型入库
 
 - 原始资料：[tau0_wm_tech_report.md](sources/papers/tau0_wm_tech_report.md)（<https://finch-static.agibot.com/VAM/blog/tau_0_wm.pdf>）、[tau0-wm-agibot-finch.md](sources/sites/tau0-wm-agibot-finch.md)（<https://finch.agibot.com/research/tau0-wm>）、[sii_research_tau_0_wm.md](sources/repos/sii_research_tau_0_wm.md)（<https://github.com/sii-research/tau-0-wm>、<https://huggingface.co/sii-research/tau-0-wm>）
