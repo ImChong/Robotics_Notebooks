@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/papers/php_parkour_arxiv_2602_15827.md、sources/sites/php-parkour-github-io.md、sources/papers/omniretarget_arxiv_2509_26633.md — PHP/RSS2026 与 OmniRetarget 深读；wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md、wiki/entities/paper-hrl-stack-03-omniretarget.md
+
 ## [2026-05-31] structural | roadmap/motion-control.md — 各 L 层补充英文缩写速查表（缩写 / 全称 / 简要说明）
 
 - 变更：[roadmap/motion-control.md](roadmap/motion-control.md) 在 L−1～L7 及 L4.1–L4.4、L5.1–L5.3、L7.1–L7.5 增加统一格式「英文缩写速查」表；L−1 原「必备术语速查」改为三列英文全称版。

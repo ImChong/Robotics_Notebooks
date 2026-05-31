@@ -89,7 +89,7 @@ flowchart TD
 |------|---------|---------|
 | **家务/生活** | 开门、端托盘、整理箱子 | BEHAVIOR Robot Suite (2025), StageACT (2025) |
 | **体育竞技** | 网球、羽毛球、足球、滑板 | LATENT (2026), HITTER (2025), HUSKY (2026) |
-| **极端环境** | 跑酷、徒步、复杂室内穿越 | Perceptive Humanoid Parkour (2026), Hiking in the Wild (2026) |
+| **极端环境** | 跑酷、徒步、复杂室内穿越 | [Perceptive Humanoid Parkour (PHP)](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) (RSS 2026), Hiking in the Wild (2026) |
 | **人类协作** | 共同搬运物体、人机交互 | Human-Humanoid Interaction (2026) |
 
 ## 关联页面
