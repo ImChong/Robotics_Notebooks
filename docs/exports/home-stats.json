@@ -1,13 +1,45 @@
 {
-  "generated_at": "2026-05-30",
-  "node_count": 603,
-  "edge_count": 4167,
+  "generated_at": "2026-05-31",
+  "node_count": 604,
+  "edge_count": 4173,
   "coverage": {
-    "covered": 601,
-    "total": 601,
+    "covered": 602,
+    "total": 602,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
+      "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
+      "label": "CTDE vs 完全去中心化 MARL",
+      "type": "comparison",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/marl.md",
+      "detail_id": "wiki-methods-marl",
+      "label": "Multi-Agent Reinforcement Learning (MARL)",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/sam-3d-body.md",
       "detail_id": "entity-sam-3d-body",
@@ -55,46 +87,14 @@
       "type": "entity",
       "recency": "2026-05-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/video-as-simulation.md",
-      "detail_id": "wiki-concepts-video-as-simulation",
-      "label": "Video-as-Simulation (视频即仿真)",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ewmbench.md",
-      "detail_id": "entity-ewmbench",
-      "label": "EWMBench（具身世界模型生成评测）",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/sam-3d-body.md",
-    "detail_id": "entity-sam-3d-body",
-    "label": "SAM 3D Body（3DB）",
-    "type": "entity",
-    "recency": "2026-05-30",
+    "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
+    "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
+    "label": "CTDE vs 完全去中心化 MARL",
+    "type": "comparison",
+    "recency": "2026-05-31",
     "source": "log.md"
   }
 }

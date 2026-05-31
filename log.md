@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] structural | wiki/comparisons/ctde-vs-decentralized-marl.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/methods/marl.md — 为两个高频引用 methods 补 queries/comparisons 落地，消除 lint 信息型预警
+
+- 背景：`make lint` 报两条信息型预警——[egm-efficient-general-mimic.md](wiki/methods/egm-efficient-general-mimic.md)、[marl.md](wiki/methods/marl.md) 被多页引用却无 queries/comparisons 落地。
+- 新建 wiki：[ctde-vs-decentralized-marl.md](wiki/comparisons/ctde-vs-decentralized-marl.md)（CTDE 集中式训练分布式执行 vs 完全去中心化选型对比）。
+- 交叉更新：[humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md) 通用 tracker 段补 [EGM](wiki/methods/egm-efficient-general-mimic.md)；[marl.md](wiki/methods/marl.md) 关联页面回链新对比页。
+- 验证：`make lint` 全绿，两条信息型预警归零；搜索回归 37/37。
+
 ## [2026-05-30] ingest | sources/papers/sam_3d_body_arxiv_2602_15989.md、sources/repos/sam-3d-body.md、sources/repos/sam3dbody-cpp.md — SAM 3D Body（MHR 全身 HMR）与 SAM3DBody-cpp 工程运行时入库
 
 - 原始资料：[sam_3d_body_arxiv_2602_15989.md](sources/papers/sam_3d_body_arxiv_2602_15989.md)（<https://arxiv.org/abs/2602.15989>）、[sam-3d-body.md](sources/repos/sam-3d-body.md)（<https://github.com/facebookresearch/sam-3d-body>）、[sam3dbody-cpp.md](sources/repos/sam3dbody-cpp.md)（<https://github.com/AmmarkoV/SAM3DBody-cpp>）
