@@ -1749,6 +1749,40 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   }
 }
 
+/* 路线正文：L 级别自测题参考答案（默认折叠，点击展开） */
+.selftest-answers {
+  margin: 0.4rem 0 1rem;
+  padding: 0.55rem 1rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-strong, var(--bg-alt));
+}
+.selftest-answers > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--accent);
+  list-style-position: outside;
+  padding: 0.15rem 0;
+}
+.selftest-answers > summary::-webkit-details-marker {
+  color: var(--accent);
+}
+.selftest-answers[open] > summary {
+  margin-bottom: 0.4rem;
+}
+.selftest-answers ol {
+  margin: 0.4rem 0 0;
+  padding-left: 1.3rem;
+}
+.selftest-answers li {
+  margin: 0.5rem 0;
+  line-height: 1.7;
+}
+.selftest-answers li::marker {
+  color: var(--text-muted);
+}
+
 /* V22 P3：详情页关联项按社区分布小条形图 */
 .related-community-dist {
   margin: 0 0 1rem;

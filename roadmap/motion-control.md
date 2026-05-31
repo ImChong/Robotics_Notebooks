@@ -204,6 +204,15 @@ flowchart LR
 - 给定 SE(3) 元素 \(g = (R, p)\)，向量 \(v\) 在新坐标系下表示是什么形式？
 - 矩阵指数 \(\exp([\omega]_\times)\) 和欧拉角 / 四元数描述旋转，分别的优劣是什么？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>R 为何不能直接相加 / 插值：</strong> 旋转矩阵属于 SO(3) 流形（\(R^\top R=I,\ \det R=1\)），不是向量空间；逐元素相加或线性插值后一般不再正交，会跳出 SO(3)。插值朝向要在流形上做：四元数 SLERP，或在李代数上 \(R(t)=R_0\exp\!\big(t\log(R_0^\top R_1)\big)\)。</li>
+<li><strong>SE(3) 作用在点 / 向量：</strong> 齐次坐标下 \(\tilde v' = g\,\tilde v\)，展开即 \(v' = Rv + p\)（点，受平移）；若 \(v\) 是自由方向向量（不受平移），则只旋转 \(v' = Rv\)。关键是区分"点"与"方向"。</li>
+<li><strong>矩阵指数 / 欧拉角 / 四元数：</strong> 旋转矩阵 + 矩阵指数无奇异、可直接复合、与 twist / 李代数统一（PoE、Jacobian 都基于它），但 9 数 + 6 约束冗余；欧拉角仅 3 数、直观，但有万向锁奇异、不唯一、插值差；四元数 4 数、无奇异、复合 / SLERP 高效稳定，但双重覆盖（\(q\) 与 \(-q\) 表示同一旋转）。工程上内部计算用四元数、链式 FK 用矩阵 / 矩阵指数、欧拉角只做人读的输入输出。</li>
+</ol>
+</details>
+
 ---
 
 ## L1 机器人学骨架
@@ -256,6 +265,15 @@ flowchart LR
 - 给定 space Jacobian \(J_s\)，怎么算 body Jacobian \(J_b\)？两者在任务空间速度控制里的应用差别在哪？
 - 6 自由度机械臂的 IK 一般有几组解？"肘部上 / 肘部下"是怎么来的？
 - PoE 公式相比 D-H 参数最大的工程优势是什么？为什么 Pinocchio / TSID 都建立在 twist / screw 上？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>space ↔ body Jacobian：</strong> \(J_b = [\mathrm{Ad}_{T_{bs}}]\,J_s\)，其中 \(T_{bs}=T_{sb}^{-1}\)、\([\mathrm{Ad}]\) 为 6×6 伴随矩阵。\(J_s\) 把关节速度映射到"在固定基坐标系下表达的"末端 twist，\(J_b\) 映射到"在末端体坐标系下表达的"twist。目标定义在哪个坐标系就用对应 Jacobian：视觉伺服 / 末端力控常用 \(J_b\)，世界系目标用 \(J_s\)。</li>
+<li><strong>IK 解的个数：</strong> 带球型手腕的 6R 机械臂最多 8 组解，来自肩前 / 后、肘上 / 下、腕翻转三个二元选择（\(2^3=8\)）；一般非球腕 6R 最多可达 16 组。"肘上 / 肘下"来自求肘关节角时的 \(\pm\) 二次解——同一末端位姿，肘可朝上拱或朝下拱。</li>
+<li><strong>PoE 相比 D-H：</strong> PoE 只需各关节螺旋轴 + 零位姿，几何清晰、无需在每个连杆摆 D-H 坐标系（D-H 对零位 / 坐标选取敏感、对树形与浮动基不友好）；且 PoE 天然用 twist / screw 表达，与速度运动学（Jacobian 的列即变换后的螺旋轴）、wrench、李群 / 李代数、动力学是同一套语言。Pinocchio / TSID 全程基于 twist / wrench / SE(3)，所以 PoE 衔接无缝。</li>
+</ol>
+</details>
 
 ---
 
@@ -312,6 +330,16 @@ flowchart LR
 - 给定接触点 Jacobian \(J_c\) 和接触力 \(f_c\)，从接触力到关节力矩的映射是什么？为什么这是 WBC 的核心一步？
 - RNEA / CRBA / ABA 分别求什么、计算复杂度差异在哪？Pinocchio 里典型一个 1 kHz 控制循环你会用哪个？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>固定基动力学标准形式：</strong> \(M(q)\ddot q + C(q,\dot q)\dot q + g(q) = \tau\)。\(M(q)\)：对称正定质量 / 惯量矩阵，刻画产生加速度所需的广义力（惯性）；\(C(q,\dot q)\dot q\)：科里奥利与离心项，源于惯量随构型变化及速度耦合；\(g(q)\)：重力广义力。</li>
+<li><strong>浮动基为何需 base 状态：</strong> 浮动基躯干没有固定底座，其 6 维位姿本身是自由变量。只用关节量 \((q,\dot q)\) 无法表达整机在世界中的平移 / 旋转与动量，也写不出 CoM / ZMP / 接触等平衡约束，故状态须含 base pose 与 base vel，总维度约为 \((n+6)\) 位姿 + \((n+6)\) 速度。</li>
+<li><strong>接触力到关节力矩：</strong> \(\tau = J_c^\top f_c\)（虚功原理 / Jacobian 转置）。这是 WBC 核心一步：机器人能直接控制的只有关节力矩 \(\tau\)，而平衡靠接触力 \(f_c\)；WBC 在动力学与接触约束下求 \((\ddot q, f_c, \tau)\)，\(J_c^\top\) 正是把"想要的接触力"翻译成"每个关节该出多少力矩"的桥梁。</li>
+<li><strong>RNEA / CRBA / ABA：</strong> RNEA 求逆动力学（由 \(q,\dot q,\ddot q\) 得 \(\tau\)），\(O(n)\)；CRBA 求质量矩阵 \(M(q)\)，\(O(n^2)\)；ABA 求正动力学（由 \(\tau\) 得 \(\ddot q\)），\(O(n)\)。1 kHz WBC 循环要的是逆动力学 / 力矩前馈，用 RNEA（需要 \(M\) 喂给 QP 时再配 CRBA）；ABA 主要用于仿真器正向积分。</li>
+</ol>
+</details>
+
 ---
 
 ## L3 控制基础与最优化
@@ -360,6 +388,16 @@ flowchart LR
 - 给一个 QP 问题，怎么判断它是不是凸的？为什么 WBC 强烈倾向于凸 QP？
 - HQP（Hierarchical QP）的"优先级"是怎么从数学上实现的（提示：null-space projection）？
 - 阻抗控制和导纳控制的本质区别是什么？什么时候用前者、什么时候用后者？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>LQR 与 MPC 何时等价：</strong> 当系统线性时不变、代价二次、无约束、且 MPC 预测时域趋于无穷时，MPC 的解就是无限时域 LQR 的反馈律 \(u=-Kx\)。一旦出现状态 / 输入约束（最常见）、非线性、有限 / 时变时域或需跟踪参考轨迹，就必须用 MPC。</li>
+<li><strong>QP 凸性判定：</strong> 目标函数 Hessian 半正定（\(\tfrac12 x^\top P x\) 中 \(P\succeq 0\)）、约束为线性等式加凸（仿射）不等式，即为凸。WBC 偏好凸 QP，因其有唯一全局最优、求解快且确定性收敛，OSQP / qpOASES 能在 1 kHz 实时求解；非凸会有局部极小、求解时间不可控，对实时安全控制不可接受。</li>
+<li><strong>HQP 优先级的数学实现：</strong> 用零空间投影（null-space projection）：先在最高优先级任务里求解，低优先级只能在不破坏高优先级的零空间内优化——\(\dot q = J_1^{+}\dot x_1 + N_1 z\)，其中 \(N_1 = I - J_1^{+}J_1\) 是任务 1 的零空间投影，逐层投影。等价地，多层 QP 把上层最优值作为下层的等式约束（lexicographic 求解）。</li>
+<li><strong>阻抗 vs 导纳：</strong> 本质是因果方向相反。阻抗控制"输入运动、输出力"：按位置 / 速度偏差经 \(F=K\Delta x + D\Delta\dot x\) 生成力（力矩驱动器，环境刚则自身柔顺）；导纳控制"输入力、输出运动"：按测得外力生成位置参考（位置驱动器）。环境软 / 未知、需高带宽柔顺与碰撞安全（人形腿）用阻抗；驱动器只能精确位置控制、面对刚性环境且要高位置精度（工业装配）用导纳。</li>
+</ol>
+</details>
 
 ---
 
@@ -468,6 +506,15 @@ flowchart LR
 - 走路过程中 ZMP 何时会离开支撑多边形？工程上你怎么从数据里发现这件事？
 - DCM / Capture Point 相比 ZMP 多解决了什么问题？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>LIP 为何假设 CoM 高度固定：</strong> 高度 \(z_c\) 恒定时水平动力学线性化为 \(\ddot x = \tfrac{g}{z_c}\,(x - x_{\mathrm{zmp}})\)，解析可解且 CoM 与 ZMP 成线性关系。跳跃时 CoM 高度剧变甚至腾空（接触力为零）、上下楼梯 / 深蹲时 \(z_c\) 持续变化，该线性关系失效，需要变高度模型或 centroidal / 全身动力学。</li>
+<li><strong>ZMP 离开支撑多边形：</strong> ZMP 触及 / 越出支撑多边形即将翻倒（脚绕边缘转动、单边接触），此时该侧足底法向力趋零。工程上用足底力 / 力矩或压力阵列实时算 CoP（接触时 ZMP=CoP），看其是否触界；或检测足底一侧法向力趋零并叠加 IMU 出现非预期角加速度。</li>
+<li><strong>DCM / Capture Point 多解决了什么：</strong> 它把 LIP 中不稳定的发散模态单独解出：\(\xi = x + \dot x/\omega\)。它前瞻地回答"想一步刹停脚该踩哪"（Capture Point 即踩下去能让 CoM 渐近停住的落点），把控制聚焦在唯一不稳定的一阶模态上，比仅判断"当前是否稳"的 ZMP 更适合实时落点规划与扰动恢复。</li>
+</ol>
+</details>
+
 ---
 
 ### L4.2 Centroidal Dynamics
@@ -497,6 +544,15 @@ flowchart LR
 - Centroidal Momentum Matrix \(A_g(q)\) 的维度是多少？它的零空间在物理上意味着什么？
 - 为什么 Centroidal Dynamics 是 "model order reduction" 的一种？它损失了原始全身动力学的什么信息？
 - 在 MPC 里使用 Centroidal Dynamics vs 全身动力学，求解延迟会差多少量级？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>CMM 维度与零空间：</strong> \(A_g(q)\) 为 6×(n+6)（浮动基，n 个关节 + 6 维 base），把广义速度映射到 6 维质心动量（3 线动量 + 3 角动量）：\(h_g = A_g(q)\dot q\)。其零空间是"不改变整机线 / 角动量"的内部自运动（如对称挥臂相互抵消、绕 CoM 的内部重构），即动量守恒下的自由度。</li>
+<li><strong>为何是 model order reduction：</strong> 它把 \((n+6)\) 维全身动力学投影到 6 维质心动量空间，只保留"合外力 / 力矩 = 动量变化率"\(\big(\dot h_g = \textstyle\sum \text{wrench} + mg\big)\)，用少量状态抓住平衡最关键的量。损失的是各肢体具体构型 / 关节级分布（同一动量可由无穷多构型实现）、关节限位与碰撞——这些由下层 WBC 补回。</li>
+<li><strong>求解延迟差多少：</strong> centroidal（6 维 + 接触力，中等规模凸 QP / NLP）单步求解约亚毫秒到几毫秒，可 50–200 Hz 在线；全身动力学 MPC（\((n+6)\) 维含全约束的非线性 OCP）常几十到上百毫秒，二者约差 1–2 个数量级。故在线层多用 centroidal / 简化模型，全身动力学多用于离线 trajopt 或低频。</li>
+</ol>
+</details>
 
 ---
 
@@ -530,6 +586,15 @@ flowchart LR
 - Trajectory Optimization 和 MPC 的关键区别是什么？为什么人形里这两个名词经常混用？
 - Convex MPC 和 Nonlinear MPC 各适合什么任务？接触切换怎么处理？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>MPC 发抖排查顺序：</strong> 由外到内——① 参考是否本身抖（上游 footstep / CoM 轨迹不连续）；② 求解器是否真收敛 / 触迭代上限、有无 warm-start；③ 时序：控制频率、求解延迟、是否补偿 one-step delay；④ 权重：跟踪过硬而平滑 / 正则过软导致控制量高频震荡，加 \(\Delta u\) 惩罚；⑤ 模型 / 约束：接触切换处约束突变、摩擦锥 / ZMP 约束过紧；⑥ 状态估计噪声 / 延迟引入反馈抖动。</li>
+<li><strong>TrajOpt 与 MPC 区别：</strong> Trajectory Optimization 多为离线、对整段时域一次求一条最优轨迹（可全身动力学、长时域、初值敏感）；MPC 在线滚动——每周期解短时域 OCP、只执行第一步再重规划（receding horizon），靠反馈抗扰。人形里常混用，是因为 MPC 内核每步解的正是一个小型 trajectory optimization，数学形式（OCP）相同，区别仅在"离线一次 vs 在线滚动 + 是否实时"。</li>
+<li><strong>Convex vs Nonlinear MPC：</strong> Convex MPC（线性 / 凸化模型 + 凸约束）求解快、确定性，适合周期性平地行走与高频实时，接触切换靠预先给定的 contact schedule、接触力受摩擦锥线性约束；Nonlinear MPC（全 / 非线性动力学）适合跑跳、复杂地形、需同时优化接触力与姿态，接触切换可用预定时序或互补约束 / 相位优化，代价是非凸、慢、初值敏感。</li>
+</ol>
+</details>
+
 ---
 
 ### L4.4 TSID / Whole-Body Control
@@ -562,6 +627,15 @@ flowchart LR
 - TSID 的 QP 里典型有哪些约束（等式 / 不等式各写 2 条）？目标函数通常长什么样？
 - 当上层 MPC 输出的 CoM 参考与 WBC 的接触约束冲突时，会发生什么？怎么用任务优先级处理？
 - 阻抗控制为什么常常放在 WBC 任务里的较高优先级层？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>TSID 的 QP 约束与目标：</strong> 等式如：① 浮动基动力学一致性 \(M\ddot q + h = S^\top \tau + J_c^\top f\)；② 刚性接触零加速度 \(J_c\ddot q + \dot J_c\dot q = 0\)。不等式如：① 接触力落在摩擦锥内；② 关节力矩 / 位置 / 速度限位（或 ZMP 在支撑多边形内）。目标函数通常是各任务加权二次跟踪误差之和 \(\sum_i w_i\lVert J_i\ddot q + \dot J_i\dot q - \ddot x_i^{\mathrm{des}}\rVert^2\)（CoM、足端、躯干姿态、姿势正则）加上对 \(\tau,f\) 的正则。</li>
+<li><strong>CoM 参考与接触约束冲突：</strong> 若接触 / 动力学一致性设为硬约束，WBC 会优先保接触可行，CoM 参考只被"尽量"跟踪，出现稳态误差或被裁剪。处理：用任务优先级——接触 / 动力学放最高（硬约束），CoM 跟踪放较低优先级软任务、在不违反接触的零空间内最优逼近；HQP 严格分层，加权 QP 用大权重近似分层；必要时上层 MPC 据反馈调整参考。</li>
+<li><strong>阻抗为何常居高优先级：</strong> 阻抗 / 柔顺直接关系接触稳定与交互安全。若被低优先级位置任务覆盖，易导致接触力失稳、刚性碰撞或接触跳变；把接触 / 末端的阻抗行为放在较高层，可保证无论下层如何优化姿态，接触力始终被良好整形，从而安全、柔顺地与环境交互。</li>
+</ol>
+</details>
 
 ---
 
@@ -610,6 +684,15 @@ flowchart LR
 - 同样数据量下 on-policy（PPO）和 off-policy（SAC）哪个样本效率高？为什么人形 RL 主流仍用 PPO？
 - 给一个 reward 函数（前进项 + 平衡项 + 平滑项），如果机器人学到"小跳着前进"而不是"走路"，你会怎么改 reward？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>PPO 的 clipping：</strong> 用重要性比 \(r=\pi_\theta/\pi_{\mathrm{old}}\)，目标取 \(\min\!\big(r\hat A,\ \mathrm{clip}(r,1-\epsilon,1+\epsilon)\hat A\big)\)。当一步更新让 \(r\) 偏离 1 过多时，clip 截断 advantage 增益，使越出信赖域的更新拿不到额外回报，从而抑制过大的策略跳变（近似信赖域）。\(\epsilon\) 太大：约束太松、更新过激、易崩；太小：更新太保守、收敛慢、样本利用率低。</li>
+<li><strong>样本效率与为何仍用 PPO：</strong> 同数据量下 off-policy 的 SAC 更省样本（有 replay buffer 反复利用历史），on-policy 的 PPO 数据用完即弃。但人形 RL 主流仍用 PPO，因为大规模并行仿真（IsaacGym 上万环境）让样本"便宜"、瓶颈在 wall-clock 而非样本数，且 PPO 实现简单、超参鲁棒、与并行 on-policy 采样契合、训练稳定、易加 curriculum / DR。</li>
+<li><strong>"小跳前进"如何改 reward：</strong> 多为 reward hack（前进得分未约束接触 / 腾空）。可：① 加同时双脚离地惩罚或限制 feet air-time、要求周期性单脚支撑；② 惩罚 base 垂直速度 / CoM 上下波动；③ 奖励规整步态（步频、足端轨迹、接触时序）；④ 调小纯前进项权重、加力矩 / 能量平滑惩罚抑制爆发弹跳；⑤ 用 AMP / motion prior 约束到"走"的风格。</li>
+</ol>
+</details>
+
 ---
 
 ### L5.2 RL 在人形运动控制里的应用
@@ -645,6 +728,15 @@ flowchart LR
 - "Privileged information"（特权信息）在 teacher-student 中具体是什么？为什么 student 拿不到？
 - AMP / DeepMimic 这类 motion prior 方法和纯 PPO 比，最大的工程优势是什么？
 
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>action space 选择：</strong> 人形 RL 主流用 position（输出关节目标位置 / 相对默认姿态的偏移，交底层 PD 跟踪）。IsaacLab 默认这种，因为 PD 在高频跟踪、给策略一个低频平滑易学的接口，自带阻尼与稳定性、对网络输出噪声鲁棒，sim2real 时只要对齐 PD 增益即可；直接 torque 高频易抖、对延迟敏感，既难训也难迁移。</li>
+<li><strong>特权信息：</strong> 指仿真可得、真机部署拿不到的精确量：真实地面摩擦 / 接触力、地形高度图、机器人质量 / 惯量、外力扰动、精确 base 速度等。teacher 用它训得又快又好；student 只能用真机可得的本体感（IMU、编码器、历史）加可选视觉，通过蒸馏 / 模仿 teacher 学到受限观测下的策略——因为部署时没有这些特权传感。</li>
+<li><strong>motion prior 的工程优势：</strong> AMP / DeepMimic 用参考动作（MoCap）作先验，最大优势是免去手工设计复杂 reward——风格 / 自然度由对抗判别器或模仿误差自动提供，省掉大量 reward shaping 与调参，得到自然可迁移的步态；同时缩小探索空间、加速收敛、避免纯 PPO 学出的怪异 gait。</li>
+</ol>
+</details>
+
 ---
 
 ### L5.3 模仿学习
@@ -677,6 +769,15 @@ flowchart LR
 - BC 的 compounding error 在数学上意味着什么（提示：状态分布漂移）？
 - DAgger 为什么能缓解 compounding error？需要付出什么额外代价？
 - Motion Retargeting 时，骨骼比例不同 + 关节限位不同分别会造成什么问题？工程上如何缓解？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>BC 的 compounding error：</strong> 训练只见专家访问过的状态分布，部署时策略自身的小误差把它带到没见过的状态，误差沿时间累积（covariate shift / 状态分布漂移）。数学上若每步误差为 \(\epsilon\)，总误差随时域 \(T\) 呈 \(O(\epsilon T^2)\) 二次放大——一旦偏离，后续状态分布与训练分布失配，错误自我强化。</li>
+<li><strong>DAgger 为何缓解、代价：</strong> DAgger 让策略在自己访问的状态上 roll-out，再请 expert 对这些状态标注正确动作并聚合进数据集迭代，使训练分布逐渐覆盖策略实际遭遇的状态，消除 covariate shift，把误差从 \(O(\epsilon T^2)\) 降到 \(O(\epsilon T)\)。代价：需要一个可随时查询的在线 expert 持续标注（成本高），且在真机上 roll-out 不成熟策略可能不安全。</li>
+<li><strong>Motion Retargeting 的两类问题：</strong> 骨骼比例不同——照搬关节角会使末端（手 / 脚）错位、脚穿地 / 打滑，应按比例缩放并用 IK 匹配末端 / 接触关键点而非照抄关节角；关节限位不同——源动作可能超出物理限位致不可行 / 饱和，应裁剪 / 重映射到可行范围或在优化中加限位约束并重分配。工程上多用 IK + 优化的 retargeting（匹配 CoM / 脚接触 / 末端轨迹）并叠加接触与限位约束。</li>
+</ol>
+</details>
 
 ---
 
@@ -721,6 +822,15 @@ flowchart LR
 - 给定一个仿真训好的 PPO 策略，列出真机部署前必须做的 5 件事。
 - Domain Randomization 范围选过大 / 过小分别会出什么问题？你怎么定 DR 边界？
 - 执行器延迟在 sim2real 里为什么对 RL 策略的破坏性比对传统 MPC 更大？
+
+<details class="selftest-answers">
+<summary>参考答案（点击展开）</summary>
+<ol>
+<li><strong>真机部署前必做 5 件事：</strong> ① System Identification 辨识真实质量 / 惯量、关节摩擦、PD 增益、力矩-电流曲线；② 执行器建模——加入力矩限幅、传动延迟 / 带宽、电机一阶滞后；③ 观测对齐——传感器噪声 / 偏置 / 延迟、坐标系与单位、滤波与训练时一致；④ 在训练中注入延迟 / 噪声 / 外扰并做 Domain Randomization 提升鲁棒；⑤ 安全与渐进上机——限位限速、力矩饱和、急停、吊装 / 逐步放权并备好 fallback 控制器。</li>
+<li><strong>DR 范围过大 / 过小：</strong> 太大——任务过难，策略学得过度保守（蹲低、慢动作）牺牲性能甚至学不会（信号被噪声淹没）；太小——覆盖不到真机参数，sim2real gap 仍大、上机即败（过拟合仿真）。定边界：以辨识值为中心、按硬件不确定度（传感 / 装配 / 磨损）设范围并逐步加宽（curriculum），用真机 / 留出验证反馈调，在仍能收敛的前提下尽量覆盖真实分布。</li>
+<li><strong>执行器延迟为何对 RL 更致命：</strong> RL 策略是高带宽、对观测-动作时序拟合极紧的反应式映射，且常隐式假设零延迟；延迟引入相位滞后，把训练时学到的紧反馈变成震荡 / 正反馈，又不可解释、无显式相位裕度可调。传统 MPC / WBC 有显式模型，可把延迟纳入预测（time-delay model、Smith predictor）并有稳定裕度概念，相对更可控。</li>
+</ol>
+</details>
 
 ---
 
