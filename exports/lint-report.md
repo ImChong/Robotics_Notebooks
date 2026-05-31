@@ -1,6 +1,6 @@
 # Wiki 健康报告
 
-## [2026-05-30] lint | health-check | 自动化 wiki 健康检查
+## [2026-05-31] lint | health-check | 自动化 wiki 健康检查
 
 共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
@@ -83,4 +83,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：601/601 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：602/602 (100%) wiki/entity 页有 ingest 来源

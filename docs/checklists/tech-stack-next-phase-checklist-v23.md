@@ -32,7 +32,7 @@
 
 - [~] **WBT 知识链 (+3)**：
     - [x] `wiki/concepts/whole-body-tracking-pipeline.md`（WBT 端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，区分 SONIC / SD-AMP / Heracles / Any2Any / BeyondMimic / GMT 等 6 条主流落地路径）。（2026-05-29：新建 `wiki/concepts/whole-body-tracking-pipeline.md`，6 阶段流水线 + 6 路径对比表 + 8 层系统栈映射 + 6 类失败模式 + 评测视角；frontmatter 链入 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / RGMT 全部 6 条路径的 method/entity 页与对应 sources；与 `motion-retargeting-pipeline.md` 形成「映射 → 训练 → 迁移」三段流水线衔接的中段。）
-    - [ ] `wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md`（四条主流 WBT 方法谱系对比：监督蒸馏 vs AMP 风格化 vs 扩散中间件 vs 物理可行性筛选，重点列出参考来源、训练目标、跨任务一般化、真机指标）。
+    - [x] `wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md`（四条主流 WBT 方法谱系对比：监督蒸馏 vs AMP 风格化 vs 扩散中间件 vs 物理可行性筛选，重点列出参考来源、训练目标、跨任务一般化、真机指标）。（2026-05-30：新建 `wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md`，13 维度对照表 + 数据流 Mermaid + 四类选型场景 + 6 类常见误判 + 决策矩阵；frontmatter `related` 拉入 [WBT pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md) / SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / AMP / DeepMimic / 选型 query，`sources` 链入 9 条原始资料；`make lint` 仅余 2 条与本页无关的预存 INFO，全站 0 阻塞。）
     - [ ] `wiki/queries/cross-embodiment-transfer-strategy.md`（跨具身策略迁移 Query：单具身训练 + 重定向迁移 vs Any2Any 高效迁移 vs 多具身联合训练，给出选型决策树与典型故障模式）。
 - [ ] **跨具身专题交叉补强**：
     - [ ] 在 `wiki/concepts/motion-retargeting.md`（V22 P1 已存在）与 `wiki/concepts/sim2real.md` 中明示「重定向产物 → WBT 训练数据 → 跨具身策略蒸馏」的三段流水线衔接；引用 P1 新页与 V22 motion-retargeting-pipeline / objective 形成「映射 → 训练 → 迁移」三视角闭环。

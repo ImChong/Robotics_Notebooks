@@ -127,6 +127,7 @@ flowchart TD
 - [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md)
 - [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md)
 - [AMP / ADD / SMP 对比](../comparisons/amp-add-smp-motion-prior-variants.md)
+- [SONIC vs BeyondMimic vs SD-AMP vs Heracles 对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)

@@ -7,6 +7,13 @@
 - 交叉更新：[humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md) 通用 tracker 段补 [EGM](wiki/methods/egm-efficient-general-mimic.md)；[marl.md](wiki/methods/marl.md) 关联页面回链新对比页。
 - 验证：`make lint` 全绿，两条信息型预警归零；搜索回归 37/37。
 
+## [2026-05-30] checklist-v23 | wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md — V23 P1「WBT 知识链」第二页落地
+
+- 变更：新建 [wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)，把四条主流 WBT 「策略学习」路线（**SONIC 规模化预训练 / BeyondMimic 精准物理 + 失败采样 / SD-AMP 状态门控双判别器 / Heracles 状态条件扩散中间件**）放进同一张 13 维度对照表 + 数据流 Mermaid + 四类适用场景 + 6 类常见误判 + 决策矩阵；显式声明四者按「OOD 修补位置」（数据池 / 训练物理 / 训练判别器 / 部署参考层）构成连续谱而非互斥选择，工程系统常**串联组合**。
+- 链接：frontmatter `related` 拉入 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md)、[motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)、[whole-body-control.md](wiki/concepts/whole-body-control.md)、[behavior-foundation-model.md](wiki/concepts/behavior-foundation-model.md)、[SONIC](wiki/methods/sonic-motion-tracking.md)、[BeyondMimic](wiki/methods/beyondmimic.md)、[SD-AMP](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)、[Heracles](wiki/entities/paper-heracles-humanoid-diffusion.md)、[Any2Any](wiki/entities/paper-any2any-cross-embodiment-wbt.md)、[AMP](wiki/methods/amp-reward.md)、[DeepMimic](wiki/methods/deepmimic.md)、[扩散运动生成](wiki/methods/diffusion-motion-generation.md)、[motion tracking 选型 query](wiki/queries/humanoid-motion-tracking-method-selection.md)、[balance recovery](wiki/tasks/balance-recovery.md)；`sources` 链入 9 条原始资料（SONIC / BeyondMimic / SD-AMP / Heracles 的 arXiv 摘要 + HRL stack 策展条目 + 项目页 + 代码仓 + sites）。
+- 验证：`python3 scripts/lint_wiki.py` — 仅余 2 条与本页无关的预存 INFO（`egm-efficient-general-mimic` / `marl` 高频引用缺 queries/comparisons 落地），新页面在 type / summary / sources / 关联出边等所有阻塞检查项上均 0 错误。
+- 关联清单：[`docs/checklists/tech-stack-next-phase-checklist-v23.md`](docs/checklists/tech-stack-next-phase-checklist-v23.md) P1「WBT 知识链 (+3)」中的第二条 `sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md` 打勾；剩 1 页 `queries/cross-embodiment-transfer-strategy.md` 待落地。
+
 ## [2026-05-30] ingest | sources/papers/sam_3d_body_arxiv_2602_15989.md、sources/repos/sam-3d-body.md、sources/repos/sam3dbody-cpp.md — SAM 3D Body（MHR 全身 HMR）与 SAM3DBody-cpp 工程运行时入库
 
 - 原始资料：[sam_3d_body_arxiv_2602_15989.md](sources/papers/sam_3d_body_arxiv_2602_15989.md)（<https://arxiv.org/abs/2602.15989>）、[sam-3d-body.md](sources/repos/sam-3d-body.md)（<https://github.com/facebookresearch/sam-3d-body>）、[sam3dbody-cpp.md](sources/repos/sam3dbody-cpp.md)（<https://github.com/AmmarkoV/SAM3DBody-cpp>）
