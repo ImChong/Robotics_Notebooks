@@ -2,7 +2,7 @@
 
 ## [2026-05-31] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **3** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,8 +25,10 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（3 个）
+- wiki/concepts/world-action-models.md (wiki:2026-05-24 < sources/tau0_wm_tech_report.md:2026-05-31)
+- wiki/methods/mimic-video.md (wiki:2026-05-20 < sources/tau0_wm_tech_report.md:2026-05-31)
+- wiki/tasks/manipulation.md (wiki:2026-05-30 < sources/tau0_wm_tech_report.md:2026-05-31)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -82,4 +84,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：605/605 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：606/606 (100%) wiki/entity 页有 ingest 来源

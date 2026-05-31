@@ -10,6 +10,7 @@ related:
   - ../methods/model-based-rl.md
   - ./ewmbench.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ./tau0-world-model.md
 sources:
   - ../../sources/papers/ge_sim_2_arxiv_2605_27491.md
   - ../../sources/repos/ge_sim_v2.md
@@ -97,6 +98,7 @@ flowchart TB
 - [Model-Based RL](../methods/model-based-rl.md) — 想象 rollout 与奖励驱动学习接口
 - [EWMBench](./ewmbench.md) — 同厂牌 EWM **开环** 三维评测
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — ③ 视频世界模型 · 从想象到训练闭环
+- [τ₀-World Model（τ0-WM）](./tau0-world-model.md) — 同 Agibot 系 **5B 统一视频–动作** 与测试时 propose–evaluate–revise（策略–仿真一体，非独立 Judge 栈）
 
 ## 参考来源
 
