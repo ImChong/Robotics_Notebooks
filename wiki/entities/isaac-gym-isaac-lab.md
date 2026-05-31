@@ -20,6 +20,10 @@ updated: 2026-05-31
 
 > 如果你在看老论文和老开源项目，会不断遇到 Isaac Gym；如果你要搭现在的新实验栈，应该优先看 Isaac Lab。
 
+> **本页是两代框架的总览 / 对比枢纽。** 想看单个框架的数据流与细节，请进入拆分后的独立实体页：
+> - [Isaac Gym](./isaac-gym.md) — 旧一代 GPU RL 仿真框架（已 deprecated）
+> - [Isaac Lab](./isaac-lab.md) — 当前 NVIDIA 官方主推的后继框架
+
 ## 先说结论
 
 这是最容易把人带偏的地方：
@@ -114,6 +118,27 @@ Isaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 rob
 
 最容易混的点在这里。
 
+两代框架及其生态的演进与迁移关系，可以这样看：
+
+```mermaid
+flowchart TB
+  subgraph legacy["旧一代 · legacy"]
+    IG[Isaac Gym\nGPU 物理底座 · deprecated]
+    IGE[IsaacGymEnvs]
+    LG[legged_gym]
+    IG --> IGE
+    IG --> LG
+  end
+  subgraph current["当前主线 · active"]
+    SIM[Isaac Sim\nOmniverse 底座]
+    LAB[Isaac Lab\n官方主推框架]
+    SIM --> LAB
+  end
+  IGE -->|官方迁移| LAB
+  IG -.->|后继者| LAB
+  LAB --> APP[RL / IL / locomotion / manipulation]
+```
+
 ### 不是简单的“新版本号关系”
 它们不是“Isaac Gym 2.0 = Isaac Lab”。
 
@@ -148,22 +173,22 @@ Isaac Lab 不是单纯替代 Isaac Gym 的 API 包装，而是 NVIDIA 当前 rob
 
 ## 常见搭配关系
 
-### 经典旧栈
+经典旧栈以 [Isaac Gym](./isaac-gym.md) 为底座，当前推荐新栈以 [Isaac Lab](./isaac-lab.md) 为主线：
 
-```text
-Isaac Gym
-  + IsaacGymEnvs
-  + legged_gym
-  + PPO / rl-games
-```
-
-### 当前推荐新栈
-
-```text
-Isaac Sim
-  + Isaac Lab
-  + 任务定义 / 环境注册
-  + RL / IL / manipulation / locomotion
+```mermaid
+flowchart LR
+  subgraph old["经典旧栈 · legacy"]
+    IG[Isaac Gym] --> IGE[IsaacGymEnvs]
+    IG --> LG[legged_gym]
+    IGE --> PPO1[PPO / rl-games]
+    LG --> PPO1
+  end
+  subgraph new["当前推荐新栈 · active"]
+    SIM[Isaac Sim] --> LAB[Isaac Lab]
+    LAB --> REG[任务定义 / 环境注册]
+    REG --> APP[RL / IL / manipulation / locomotion]
+  end
+  old -.->|迁移| new
 ```
 
 ## 它和当前项目主线的关系
@@ -242,6 +267,8 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 
 ## 关联页面
 
+- [Isaac Gym](./isaac-gym.md) — 旧一代 GPU RL 仿真框架（已 deprecated）的独立实体页
+- [Isaac Lab](./isaac-lab.md) — 当前 NVIDIA 官方主推后继框架的独立实体页
 - [NVIDIA SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md)
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md)
 - [legged_gym](./legged-gym.md)

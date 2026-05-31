@@ -161,19 +161,19 @@ sources:
 ## 它和 Isaac Gym / Isaac Lab 的关系
 
 ### 和 Isaac Gym 的关系
-`legged_gym` 是典型的 **Isaac Gym 生态项目**。
+`legged_gym` 是典型的 **Isaac Gym 生态项目**，底层物理仿真直接依赖 Isaac Gym。
 
 也就是说：
 - 它的历史价值很高
 - 但技术语境偏旧一代 NVIDIA robot RL 栈
 
-见：[Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+见：[Isaac Gym](./isaac-gym.md)
 
 ### 和 Isaac Lab 的关系
 现在如果做新项目：
 - 你仍然很值得学习 `legged_gym` 的 reward、DR、训练组织思路
 - 但未必要继续把它当成长期主训练主线
-- 更合理的做法是：**学 `legged_gym` 的工程经验，实验平台优先看 Isaac Lab**
+- 更合理的做法是：**学 `legged_gym` 的工程经验，实验平台优先看 [Isaac Lab](./isaac-lab.md)**
 
 一句话：
 
@@ -237,7 +237,7 @@ sources:
 
 - 官方仓库：<https://github.com/leggedrobotics/legged_gym>
 - 论文：Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*
-- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [Isaac Gym](./isaac-gym.md) — legged_gym 依赖的底层仿真框架
 
 ## 参考来源
 
@@ -248,7 +248,8 @@ sources:
 
 ## 关联页面
 
-- [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [Isaac Gym](./isaac-gym.md) — legged_gym 依赖的底层 GPU 仿真框架
+- [Isaac Lab](./isaac-lab.md) — 当前官方主线，新项目实验平台优先选型
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
