@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-05-31",
   "node_count": 610,
-  "edge_count": 4248,
+  "edge_count": 4266,
   "coverage": {
     "covered": 608,
     "total": 608,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+      "label": "Perceptive Humanoid Parkour（PHP）",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/tau0-world-model.md",
       "detail_id": "entity-tau0-world-model",
@@ -71,28 +87,12 @@
       "type": "entity",
       "recency": "2026-05-31",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unilab.md",
-      "detail_id": "entity-unilab",
-      "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tau0-world-model.md",
-    "detail_id": "entity-tau0-world-model",
-    "label": "τ₀-World Model（τ0-WM）",
+    "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+    "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+    "label": "Perceptive Humanoid Parkour（PHP）",
     "type": "entity",
     "recency": "2026-05-31",
     "source": "log.md"
