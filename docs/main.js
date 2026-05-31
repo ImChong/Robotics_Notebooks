@@ -1214,6 +1214,25 @@
     }
   }
 
+  /** 路线章节折叠展开后，对刚打开的 section 内未渲染/失败的 Mermaid 再跑一次。 */
+  function bindRoadmapSectionMermaidRerender(container) {
+    if (!container || container.getAttribute('data-roadmap-mermaid-toggle-bound') === '1') return;
+    container.setAttribute('data-roadmap-mermaid-toggle-bound', '1');
+    container.addEventListener('toggle', function (ev) {
+      var details = ev.target;
+      if (!details || details.tagName !== 'DETAILS') return;
+      if (!details.classList || !details.classList.contains('roadmap-major-section')) return;
+      if (!details.open) return;
+      var body = details.querySelector('.roadmap-major-section-body');
+      if (!body) return;
+      var pending = Array.from(body.querySelectorAll('.mermaid')).filter(function (node) {
+        return !node.querySelector('svg');
+      });
+      if (!pending.length) return;
+      renderDetailMermaid(body);
+    }, true);
+  }
+
   /**
    * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
    * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
@@ -2662,12 +2681,13 @@
     if (contentEl) {
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
       renderDetailMath(contentEl);
-      renderDetailMermaid(contentEl);
       enhanceDetailHeadings(contentEl);
       if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
         clearRoadmapStandaloneFlowSection();
       }
       wrapRoadmapCollapsibleMajorHeadings(contentEl);
+      bindRoadmapSectionMermaidRerender(contentEl);
+      renderDetailMermaid(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
       scrollToDetailHashTarget(contentEl);

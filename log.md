@@ -6,6 +6,12 @@
 - 新建 wiki：[tau0-world-model.md](wiki/entities/tau0-world-model.md)（5B VAM、异构 ~27.3k h 掩码预训练、动作条件仿真 + 测试时 propose–evaluate–revise）
 - 交叉更新：[world-action-models.md](wiki/concepts/world-action-models.md)、[generative-world-models.md](wiki/methods/generative-world-models.md)、[mimic-video.md](wiki/methods/mimic-video.md)、[ge-sim-2.md](wiki/entities/ge-sim-2.md)、[robot-world-models-training-loop-taxonomy.md](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[manipulation.md](wiki/tasks/manipulation.md)
 
+## [2026-05-31] fix(ux) | docs/main.js — 路线页 Mermaid 在章节折叠后补渲染
+
+- 根因：L4 方法链等 Mermaid 在 `wrapRoadmapCollapsibleMajorHeadings` 之前渲染，部分环境下折叠 DOM 重组后流程图空白或单行。
+- 变更：路线正文在折叠包装完成后再 `renderDetailMermaid`；`bindRoadmapSectionMermaidRerender` 在展开章节时对未出 SVG 的图补跑；保留 `htmlLabels: true` 以支持 `<br/>` / `<b>` 多行标签。
+- 验证：`roadmap.html?id=roadmap-motion-control` L4 方法链四节点多行渲染；`make ci-preflight` 通过。
+
 ## [2026-05-31] fix(ux) | docs/main.js — 修复详情页链接标签内 `*斜体*` / `**粗体**` 未渲染
 
 - 根因：`renderInlineMarkdown` 在链接 token 化时对 label 仅 `escapeHtml`，强调语法在还原后不会再次处理。
