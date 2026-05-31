@@ -59,6 +59,7 @@
 | [x] [wm_robot_survey_arxiv_2605_00080.md](papers/wm_robot_survey_arxiv_2605_00080.md) | World Model for Robot Learning 综述（arXiv:2605.00080）：策略内预测 / 学习型模拟器 / 可控视频生成三线 taxonomy |
 | [x] [wem_arxiv_2605_19957.md](papers/wem_arxiv_2605_19957.md) | WEM：World-Ego Modeling + HTEWorld 混合导航–操作长程视频世界模型（arXiv:2605.19957，ZGCA-HMI-Lab）摘录与 wiki 映射 |
 | [x] [ge_sim_2_arxiv_2605_27491.md](papers/ge_sim_2_arxiv_2605_27491.md) | GE-Sim 2.0：闭环操纵视频世界模拟器（本体状态专家 + World Judge + 加速，arXiv:2605.27491，AgibotTech）摘录与 wiki 映射 |
+| [x] [tau0_wm_tech_report.md](papers/tau0_wm_tech_report.md) | τ₀-WM：统一视频–动作世界模型（5B VAM、异构掩码预训练、测试时 propose–evaluate–revise，Agibot Finch 技术报告 2026-05-31）摘录与 wiki 映射 |
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
 | [x] [heracles_humanoid_diffusion_arxiv_2603_27756.md](papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) | Heracles：状态条件扩散中间件桥接跟踪与生成恢复（arXiv:2603.27756，X-Humanoid）摘录与 wiki 映射 |
@@ -120,6 +121,7 @@
 | [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
 | [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [ge_sim_v2.md](repos/ge_sim_v2.md) | AgibotTech/GE-Sim-V2：Genie Envisioner World Simulator 2.0（arXiv:2605.27491；代码/权重待发布） |
+| [x] [sii_research_tau_0_wm.md](repos/sii_research_tau_0_wm.md) | sii-research/tau-0-wm：τ₀-WM 官方实现（Wan-2.2 VAM 部署、HF 权重；Simulator/测试时代码待发布） |
 | [x] [worldvln_embodiedcity.md](repos/worldvln_embodiedcity.md) | EmbodiedCity/WorldVLN：空中 VLN 自回归 WAM 官方代码入口（arXiv:2605.15964） |
 | [x] [multirotor_uav_stack_catalog.md](repos/multirotor_uav_stack_catalog.md) | 多旋翼栈 10 仓索引：PX4、XTDrone、EGO-Planner、AirSim、Flightmare、PyBullet Gym、swarm RL、Crazyflie、MAVSDK |
 | [x] [navigation_slam_autonomy_stack_catalog.md](repos/navigation_slam_autonomy_stack_catalog.md) | 导航·SLAM·自动驾驶 21 仓索引：Nav2、slam_toolbox、Cartographer、FAST-LIO、VINS、Autoware、Isaac ROS、LeRobot、OpenVLA 等 |
@@ -251,6 +253,7 @@
 | [x] [wm-robot-survey-ntumars.md](sites/wm-robot-survey-ntumars.md) | NTUMARS 机器人世界模型综述项目站 ntumars.github.io/wm-robot-survey（arXiv:2605.00080） |
 | [x] [wem-project.md](sites/wem-project.md) | WEM 项目页 zgca-hmi-lab.github.io/WEM（World-Ego Modeling、HTEWorld 结果表与演示，arXiv:2605.19957） |
 | [x] [ge-sim-v2-project.md](sites/ge-sim-v2-project.md) | GE-Sim 2.0 项目页 ge-sim-v2.github.io（多视角闭环模拟、World Judge、长视频演示，arXiv:2605.27491） |
+| [x] [tau0-wm-agibot-finch.md](sites/tau0-wm-agibot-finch.md) | τ₀-WM 项目页 finch.agibot.com/research/tau0-wm（5B 统一视频–动作 WM、异构数据与测试时闭环，2026-05-31） |
 | [x] [worldvln-embodiedcity.md](sites/worldvln-embodiedcity.md) | WorldVLN 项目页 embodiedcity.github.io/WorldVLN（闭环推理、两阶段训练、室内外 UAV 与真机演示，arXiv:2605.15964） |
 | [x] [worldlabs-ai.md](sites/worldlabs-ai.md) | World Labs 官网：Marble / Spark / Marble Labs；Spark 2.0 见 blogs/worldlabs_spark_2_0_streaming_3dgs.md |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |

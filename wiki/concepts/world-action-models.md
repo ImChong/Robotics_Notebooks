@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-05-24
+updated: 2026-05-31
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../entities/paper-worldvln-aerial-vln-wam.md
@@ -15,6 +15,7 @@ related:
   - ../methods/being-h07.md
   - ../methods/pelican-unified-1.md
   - ../methods/defi-decoupled-dynamics-vla.md
+  - ../entities/tau0-world-model.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -72,6 +73,8 @@ sources:
 
 **文献实例（Joint 族 + 潜自回归闭环 · 空中 VLN）**：[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) 在 **无人机 VLN** 上将 **预训练视频潜自回归骨干** 用于 **短视界世界转移预测**，经解码器输出 **waypoint 段**，执行后把新观测写回上下文；Stage 2 使用作者所称首个面向 **自回归 WAM** 的 **Action-aware GRPO**（arXiv:2605.15964）。与 Pelican 的扩散联合去噪不同，WorldVLN 强调 **因果 observe–act–update** 与 **导航后果优化**，而非整段双向 clip 生成。
 
+**文献实例（Joint 族 + 操纵测试时仿真 · Agibot）**：[τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md) 在 **Wan-2.2 级视频扩散骨干** 上 **联合** 预测未来多视角 latent 与 **action chunk**，并用 **动作条件 rollout + 任务进度轨迹** 在执行前做 **propose–evaluate–revise**；异构 **~2.73 万小时** 数据通过 **模态掩码** 分监督（人视频不伪标机器人动作）。
+
 ```mermaid
 flowchart TB
   subgraph cascaded["Cascaded WAM"]
@@ -119,6 +122,7 @@ flowchart TB
 - [Being-H0.7](../methods/being-h07.md)
 - [Pelican-Unified 1.0（UEI）](../methods/pelican-unified-1.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
+- [τ₀-World Model（τ0-WM）](../entities/tau0-world-model.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Model-Based RL](../methods/model-based-rl.md)
