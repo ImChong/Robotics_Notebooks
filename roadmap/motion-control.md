@@ -71,7 +71,7 @@ flowchart LR
 
 | 你是谁 | 推荐读法 | 不需要做什么 |
 |--------|---------|------------|
-| **完全外行**（想搞懂术语，能和工程师对话）| 只读每一 L 的"场景隐喻 / 学完能做什么 / 推荐读什么"和本节"必备术语速查" | 不需要写一行代码、不需要做练习 |
+| **完全外行**（想搞懂术语，能和工程师对话）| 只读每一 L 的"场景隐喻 / 学完能做什么 / 推荐读什么"和各层「英文缩写速查」 | 不需要写一行代码、不需要做练习 |
 | **想入行**（程序员 / 在校生）| 跟 [最小可执行 90 天路径](#最小可执行学习路径90-天版本) → 再按 L0 → L7 全程走，每一层都做"推荐做什么" | 不需要先读完所有论文 |
 | **资深从业者**（有相关经验、查漏补缺）| 直接跳 L4 / L5，重点看每层的"常见误区 / 自测题"；用 [可选纵深](#depth-optional-index) 切入研究方向 | 不需要重读 L0–L2 基础 |
 
@@ -103,38 +103,36 @@ flowchart LR
 - **Learning-based 主线（L5）：** RL 基础 → locomotion RL → imitation learning / motion prior → teacher-student
 - 优先把传统主线学通，再把 RL / IL 当作扩展层接上去；否则容易只会调超参数、不理解控制结构为什么这样设计。
 
-### 必备术语速查（外行先建立"听到能对上号"的肌肉记忆）
+### 英文缩写速查（L−1 全路线鸟瞰）
 
-| 分层 | 术语 | 一句话（听到能对上号） |
-|------|------|------------------------|
-| 控制层 | DOF / 自由度 | 机器人能独立运动的方向数；人形常见 ≈ 25 DOF。 |
-| 控制层 | 关节力矩 | 关节电机出的「扭力」；控制最终都要落到每个关节出多少力矩。 |
-| 控制层 | 正运动学（FK）/ 逆运动学（IK） | FK：关节角 → 末端位姿；IK：末端目标 → 反推关节角。 |
-| 控制层 | 雅可比矩阵 | FK 的微分版：关节速度 → 末端速度。 |
-| 控制层 | 动力学 | 力 / 力矩与运动的关系；正动力学力→加速度，逆动力学加速度→力。 |
-| 控制层 | 浮动基（Floating Base） | 底座不固定；人形躯干常建模为浮动基。 |
-| 控制层 | 接触切换（Contact Switch） | 脚何时着地 / 离地，是人形控制核心难点之一。 |
-| 控制层 | 质心（CoM）/ 质心动力学 | 整体重心与动量；平衡控制的核心状态。 |
-| 控制层 | ZMP / 支撑多边形 | 接触面内的零力矩点；ZMP 留在支撑多边形内 → 不易翻倒。 |
-| 控制层 | DCM / Capture Point | ZMP 思路的推广：回答「踩到哪能立刻稳住」。 |
-| 控制层 | MPC（模型预测控制） | 在线滚动求解未来一小段时域的最优控制。 |
-| 控制层 | WBC / TSID（全身控制） | 把上层目标同时分配到全身关节力矩，并处理优先级与约束。 |
-| 控制层 | PID / LQR | 两类经典反馈控制器。 |
-| 学习与仿真层 | RL / PPO | 仿真里试错学策略；PPO 是常用算法之一。 |
-| 学习与仿真层 | IL / BC（模仿学习 / 行为克隆） | 从人类示范数据里学动作。 |
-| 学习与仿真层 | Motion Retargeting | 把人类动作映射到机器人骨架。 |
-| 学习与仿真层 | Sim2Real | 仿真策略上真机；常有 sim2real gap。 |
-| 学习与仿真层 | Domain Randomization (DR) | 仿真里随机化参数，换真机鲁棒性。 |
-| 学习与仿真层 | Isaac Gym / Isaac Lab / MuJoCo | 常见 RL / 物理仿真引擎。 |
-| 学习与仿真层 | Pinocchio / Crocoddyl / TSID | 传统控制常用 C++/Python 库。 |
-| 学习与仿真层 | URDF / MJCF | 机器人结构描述文件格式。 |
-| 系统与前沿层 | ROS / ROS2 | 机器人中间件与软件生态事实标准。 |
-| 系统与前沿层 | SLAM | 同时定位与建图：我在哪 + 环境地图。 |
-| 系统与前沿层 | VLA（Vision-Language-Action） | 视觉–语言–动作一体的大模型路线（如 RT-2、π0）。 |
-| 系统与前沿层 | Foundation Model for Robots | 大规模预训练 + 微调的通用机器人模型方向。 |
-| 系统与前沿层 | Teacher-Student | 全观测 teacher 训练受限观测 student；sim2real 常用。 |
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DOF | Degrees of Freedom | 机器人能独立运动的方向数；人形常见约 25 DOF。 |
+| FK | Forward Kinematics | 关节角 → 末端位姿。 |
+| IK | Inverse Kinematics | 末端目标 → 反推关节角。 |
+| CoM | Center of Mass | 整机质心；平衡控制的核心状态之一。 |
+| ZMP | Zero Moment Point | 接触面内合力矩为零的点；留在支撑多边形内则不易翻倒。 |
+| DCM | Divergent Component of Motion | 发散运动分量；用于落点与平衡前瞻。 |
+| CP | Capture Point | 踩下即可渐近停稳的落点；常由 DCM 导出。 |
+| MPC | Model Predictive Control | 滚动时域内在线求解最优控制。 |
+| WBC | Whole-Body Control | 全身多任务力矩分配与约束处理。 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学；WBC 常用实现框架。 |
+| PID | Proportional–Integral–Derivative | 经典反馈控制；单关节保底常用。 |
+| LQR | Linear Quadratic Regulator | 线性二次最优调节器；平衡 baseline。 |
+| RL | Reinforcement Learning | 试错学习策略。 |
+| PPO | Proximal Policy Optimization | 常用 on-policy RL 算法。 |
+| IL | Imitation Learning | 从示范数据学策略。 |
+| BC | Behavior Cloning | 监督模仿；IL 的最简形式。 |
+| Sim2Real | Simulation to Reality | 仿真策略迁移真机。 |
+| DR | Domain Randomization | 仿真随机化参数以提升真机鲁棒性。 |
+| URDF | Unified Robot Description Format | 机器人连杆与关节的 XML 描述格式。 |
+| MJCF | MuJoCo XML Format | MuJoCo 仿真用的模型描述格式。 |
+| IMU | Inertial Measurement Unit | 惯性测量单元（加速度计 + 陀螺仪等）。 |
+| SLAM | Simultaneous Localization and Mapping | 同时定位与建图。 |
+| VLA | Vision–Language–Action | 视觉–语言–动作一体大模型路线。 |
+| ROS | Robot Operating System | 机器人中间件与通信生态（ROS2 为新一代）。 |
 
-> 这些术语在后面每一层会反复出现。**外行只需先建立"听到能对上号"的肌肉记忆**，不必现在搞懂细节。
+> 各 L 层正文前还有**该层专用**缩写表；外行先扫本表建立「听到能对上号」的肌肉记忆即可。
 
 ### 一本贯穿全程的教材：Modern Robotics
 
@@ -175,6 +173,17 @@ flowchart LR
 > **这一层为什么存在：** 之后每一层的公式都把"位姿 / 速度 / 力"当作黑话。没有 L0，每读一行公式都要现场查。
 
 **本阶段入口：** [线性代数学习策展（L0）](../wiki/entities/linear-algebra-curriculum.md)、[SE(3) 表示](../wiki/formalizations/se3-representation.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Crocoddyl](../wiki/entities/crocoddyl.md)（Modern Robotics 在 L−1 已介绍，下方"推荐读什么"会指出具体章节）。
+
+### 英文缩写速查（L0）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SE(3) | Special Euclidean Group in 3D | 三维刚体位姿（旋转 + 平移）的数学群。 |
+| SO(3) | Special Orthogonal Group in 3D | 三维旋转矩阵构成的群；\(R^\top R=I,\ \det R=1\)。 |
+| PoE | Product of Exponentials | 用关节螺旋轴的矩阵指数连乘表示正运动学。 |
+| FK | Forward Kinematics | 关节变量 → 末端位姿（L0 常先接触概念，L1 深入）。 |
+| QP | Quadratic Programming | 二次规划；后续 MPC / WBC 的基础优化形式。 |
+| SVD | Singular Value Decomposition | 奇异值分解；理解雅可比秩、冗余度时常用。 |
 
 ### 前置知识
 - 高中数学 + 一点微积分直觉
@@ -224,6 +233,20 @@ flowchart LR
 > **上一层的局限：** L0 让你能写矩阵运算，但还不知道"机器人的关节角"和"末端位姿"是什么映射；L1 把这个翻译器搭起来。
 
 **本阶段入口：** [Humanoid Robot](../wiki/entities/humanoid-robot.md)、[Pinocchio](../wiki/entities/pinocchio.md)、[Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)。
+
+### 英文缩写速查（L1）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| FK | Forward Kinematics | 关节角 → 末端位姿。 |
+| IK | Inverse Kinematics | 末端目标 → 关节角；6R 臂常有多组解。 |
+| DH | Denavit–Hartenberg | 经典连杆参数化；本路线更推荐 PoE / twist。 |
+| PoE | Product of Exponentials | 螺旋轴 + 矩阵指数描述开链 FK。 |
+| \(J\) / Jacobian | Manipulator Jacobian | 关节速度 → 末端 twist 的线性映射。 |
+| Twist | Spatial Velocity (6D) | 刚体瞬时速度（角速度 + 线速度）。 |
+| Screw | Twist + Pitch | 螺旋运动；PoE 中关节轴即 screw axis。 |
+| Wrench | Spatial Force (6D) | 力 + 力矩的六维广义力。 |
+| Ad | Adjoint Transformation | 在不同坐标系间变换 twist / wrench 的 \(6\times6\) 矩阵。 |
 
 **这一层建议分三步走，不要一口气啃完：**
 
@@ -286,6 +309,19 @@ flowchart LR
 > **上一层的局限：** L1 运动学只回答"关节角速度 ↔ 末端速度"是怎么映射的，但不能回答"加多大力矩才能让它产生这个加速度"。没有动力学，你只能做位置控制，碰到接触、高速运动、力交互就崩。
 
 **本阶段入口：** [Floating Base Dynamics](../wiki/concepts/floating-base-dynamics.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Contact Dynamics](../wiki/concepts/contact-dynamics.md)、[Contact Wrench Cone](../wiki/formalizations/contact-wrench-cone.md)。
+
+### 英文缩写速查（L2）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RNEA | Recursive Newton–Euler Algorithm | 逆动力学：\((q,\dot q,\ddot q)\to\tau\)，\(O(n)\)。 |
+| CRBA | Composite Rigid Body Algorithm | 组装质量矩阵 \(M(q)\)，\(O(n^2)\)。 |
+| ABA | Articulated Body Algorithm | 正动力学：\(\tau\to\ddot q\)，\(O(n)\)，仿真常用。 |
+| FB | Floating Base | 底座不固定；人形躯干为 6 自由度浮动基。 |
+| CoM | Center of Mass | 质心位置；与 centroidal 动量紧密相关。 |
+| CMM | Centroidal Momentum Matrix | 广义速度 → 6D 质心动量的映射 \(h_g=A_g\dot q\)。 |
+| ID | Inverse Dynamics | 给定运动求所需广义力。 |
+| FD | Forward Dynamics | 给定广义力求加速度。 |
 
 **这一层建议分两步走：**
 
@@ -352,6 +388,19 @@ flowchart LR
 
 **本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
 
+### 英文缩写速查（L3）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| OCP | Optimal Control Problem | 最优控制问题；MPC / TrajOpt 的数学外壳。 |
+| PID | Proportional–Integral–Derivative | 经典反馈；关节级跟踪保底。 |
+| LQR | Linear Quadratic Regulator | 无限时域线性二次最优反馈 \(u=-Kx\)。 |
+| MPC | Model Predictive Control | 有限时域滚动优化；可含约束。 |
+| QP | Quadratic Programming | 二次规划；WBC / 凸 MPC 的核心求解形式。 |
+| HQP | Hierarchical Quadratic Programming | 分层 QP；用零空间实现任务优先级。 |
+| PD | Proportional–Derivative | 比例–微分控制；常与 computed torque 联用。 |
+| CT | Computed Torque Control | 用逆动力学前馈 + 反馈跟踪期望轨迹。 |
+
 ### 前置知识
 - L2 内容（动力学）
 - 一点数值优化直觉
@@ -410,6 +459,21 @@ flowchart LR
 > **上一层的局限：** L3 的方法（PID / LQR / MPC / QP）在固定基机器人上很直接，但人形是浮动基 + 间歇接触 + 高维欠驱动，不能直接套；需要专门的简化模型（LIP / Centroidal）和分层结构（MPC + WBC）。
 
 **本阶段入口：** [LIP / ZMP](../wiki/concepts/lip-zmp.md)、[Capture Point / DCM](../wiki/concepts/capture-point-dcm.md)、[Centroidal Dynamics](../wiki/concepts/centroidal-dynamics.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[MPC](../wiki/methods/model-predictive-control.md)、[TSID](../wiki/concepts/tsid.md)、[Whole-Body Control](../wiki/concepts/whole-body-control.md)。
+
+### 英文缩写速查（L4 总览）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LIP | Linear Inverted Pendulum | 线性倒立摆；固定 CoM 高度的步行简化模型。 |
+| ZMP | Zero Moment Point | 支撑面内零力矩点；平衡判据。 |
+| DCM | Divergent Component of Motion | 不稳定模态分量；落点规划常用。 |
+| CP | Capture Point | 可捕获平衡的落点。 |
+| CoP | Center of Pressure | 足底压力中心；接触时常与 ZMP 重合。 |
+| MPC | Model Predictive Control | 在线滚动优化 CoM / 接触力 / 步态。 |
+| TrajOpt | Trajectory Optimization | 离线或单段时域最优轨迹求解。 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学 WBC 框架。 |
+| WBC | Whole-Body Control | 全身多任务力矩 QP / HQP。 |
+| HQP | Hierarchical Quadratic Programming | 分层全身控制常用求解结构。 |
 
 ### L4.0 桥段：怎么把 L1–L3 串成 L4 的方法链
 
@@ -483,6 +547,18 @@ flowchart LR
 
 > **上一层的局限：** L3 给了你 LQR / MPC 这些通用工具，但人形动力学几十个状态变量、非线性强，直接套太重。LIP / ZMP 是一个**极度简化的模型**（把整机当成"会走的倒立摆"），让你用最少假设理解步行和平衡。
 
+### 英文缩写速查（L4.1）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LIP | Linear Inverted Pendulum | 固定质心高度的线性倒立摆模型。 |
+| ZMP | Zero Moment Point | 支撑多边形内的平衡判据点。 |
+| DCM | Divergent Component of Motion | \(\xi=x+\dot x/\omega\)；不稳定模态。 |
+| CP | Capture Point | 踩下可渐近停稳的落点。 |
+| CoM | Center of Mass | 质心；LIP 水平动力学围绕其展开。 |
+| CoP | Center of Pressure | 足底压力中心。 |
+| SP | Support Polygon | 支撑多边形；ZMP 须留于其内。 |
+
 **前置知识：** [L2 动力学与刚体建模](#l2-动力学与刚体建模) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
 **核心问题：** 双足机器人怎么在地上走而不倒
@@ -523,6 +599,17 @@ flowchart LR
 
 > **上一层的局限：** L4.1 的 LIP 简化了角动量、忽略了腿摆动质量、把支撑多边形当静态约束；真机走起来这些都不能忽略。Centroidal Dynamics 把整机投影到 6D 的 CoM 动量空间——比 LIP 更精确，又比全身动力学简单。
 
+### 英文缩写速查（L4.2）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CMM | Centroidal Momentum Matrix | \(h_g=A_g(q)\dot q\)；6D 质心动量映射。 |
+| CoM | Center of Mass | 质心位置与动量状态的核心量。 |
+| AM | Angular Momentum | 角动量；LIP 忽略、centroidal 显式保留。 |
+| LM | Linear Momentum | 线动量。 |
+| MOR | Model Order Reduction | 模型降阶；centroidal 相对全身动力学的定位。 |
+| Wrench | Spatial Contact Wrench | 接触点 6D 力 / 力矩；驱动动量变化。 |
+
 **前置知识：** [L4.1 LIP / ZMP](#l41-lip--zmp)
 
 **核心问题：** LIP 简化太狠了，真实人形平衡和接触力怎么描述
@@ -561,6 +648,18 @@ flowchart LR
 > **场景隐喻：** 上一秒看见脚滑——能不能预判未来 2 秒该往哪儿踩、并实时改步态？MPC 就是这件事的数学化：把"未来一小段时间窗"做成一个滚动求解的优化问题。
 
 > **上一层的局限：** L4.2 的 Centroidal Dynamics 给了你一组方程，但**用这些方程在线规划 CoM 轨迹和接触力**还需要再加一层优化（Trajectory Optimization 或 MPC）。这就是从"模型"到"控制器"的过渡。
+
+### 英文缩写速查（L4.3）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域最优控制；每步只执行首段控制。 |
+| TrajOpt | Trajectory Optimization | 对整段或长时域状态–控制轨迹求最优。 |
+| OCP | Optimal Control Problem | 动力学 + 代价 + 约束的优化问题表述。 |
+| NLP | Nonlinear Programming | 非线性规划；非凸全身 TrajOpt 常用。 |
+| DDP | Differential Dynamic Programming | 微分动态规划；局部 TrajOpt 方法。 |
+| iLQR | Iterative Linear Quadratic Regulator | 迭代 LQR；局部线性化 TrajOpt。 |
+| RH | Receding Horizon | 滚动时域；MPC 与 TrajOpt 在线化的关键思想。 |
 
 **前置知识：** [L4.2 Centroidal Dynamics](#l42-centroidal-dynamics) + [L3 控制基础与最优化](#l3-控制基础与最优化)
 
@@ -602,6 +701,17 @@ flowchart LR
 > **场景隐喻：** MPC 已经告诉你"CoM 要在哪里、足端要到哪里、躯干姿态怎么变"——但人形 25 个关节里，谁先动谁后动？谁让位给安全约束？WBC 是这个仲裁器，每个控制周期都解一个 QP / HQP 来分配每个关节的力矩。
 
 > **上一层的局限：** L4.3 的 MPC 输出的是 CoM / 接触力 / 末端任务参考，**不直接告诉你每个关节出多少力矩**。WBC 就是把上层规划"落到下层执行"的最后一步。
+
+### 英文缩写速查（L4.4）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 在动力学与接触约束下求 \(\tau,f\) 的任务空间框架。 |
+| WBC | Whole-Body Control | 全身多任务、多约束的实时力矩分配。 |
+| HQP | Hierarchical Quadratic Programming | 严格任务优先级的分层 QP。 |
+| QP | Quadratic Programming | 加权 WBC 的凸优化内核。 |
+| ID | Inverse Dynamics | 给定 \(\ddot q\) 求 \(\tau\)；WBC 等式约束的一部分。 |
+| IC | Impedance Control | 力–运动关系整形；接触安全常高优先级。 |
 
 **前置知识：** [L4.3 Trajectory Optimization / MPC](#l43-trajectory-optimization--mpc)
 
@@ -649,6 +759,19 @@ flowchart LR
 
 **本阶段入口：** [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)、[Policy Optimization](../wiki/methods/policy-optimization.md)、[PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)、[Imitation Learning](../wiki/methods/imitation-learning.md)、[Behavior Cloning](../wiki/methods/behavior-cloning.md)、[DAgger](../wiki/methods/dagger.md)、[Motion Retargeting](../wiki/concepts/motion-retargeting.md)。
 
+### 英文缩写速查（L5 总览）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 奖励驱动试错学习策略。 |
+| IL | Imitation Learning | 从示范数据学习策略。 |
+| PPO | Proximal Policy Optimization | 常用 on-policy 策略梯度算法。 |
+| SAC | Soft Actor–Critic | 常用 off-policy 最大熵 RL。 |
+| BC | Behavior Cloning | 状态→动作监督模仿。 |
+| DAgger | Dataset Aggregation | 交互式纠错标注缓解分布漂移。 |
+| AMP | Adversarial Motion Priors | 对抗式运动先验；风格化 locomotion。 |
+| MoCap | Motion Capture | 人体动作捕捉数据。 |
+
 这一阶段最容易踩的坑，是把 RL / IL 当成“跳过建模”的捷径。更稳的学习方式是：
 - 把 RL / IL 看成**能力扩展层**，不是替代所有控制结构的万能钥匙
 - 始终追问：这个策略学到的是高层决策、低层 tracking，还是把两者混在一起了
@@ -659,6 +782,18 @@ flowchart LR
 > **场景隐喻：** 把机器人扔进仿真器，给它定一个奖励规则（"前进 +1，摔倒 -10"），让它反复试错——它能学出一个策略。L5.1 教你这套"试错训练"框架。
 
 > **上一层的局限：** L4 方法都依赖精确动力学 + 显式目标；当模型不准、或目标难写成代价函数时，RL 用数据驱动绕开建模。
+
+### 英文缩写速查（L5.1）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 智能体与环境交互最大化累积奖励。 |
+| MDP | Markov Decision Process | RL 的标准序贯决策形式化。 |
+| PPO | Proximal Policy Optimization | clip 重要性比，稳定 on-policy 更新。 |
+| SAC | Soft Actor–Critic | 最大熵 off-policy；样本效率通常更高。 |
+| PG | Policy Gradient | 直接优化策略参数的方法族。 |
+| VF | Value Function | 估计状态或状态–动作的长期回报。 |
+| TRPO | Trust Region Policy Optimization | 信赖域策略优化；PPO 的前身思想。 |
 
 **前置知识：** L2 + L3 内容（优化直觉）
 
@@ -700,6 +835,18 @@ flowchart LR
 > **场景隐喻：** 通用 RL 算法直接套到人形上往往学不会——需要给它"合适的奖励 / 观测 / 动作空间 + 一堆训练 trick"。L5.2 是把 L5.1 的玩具环境落到真人形 locomotion 的工程细节。
 
 > **上一层的局限：** L5.1 让你在 CartPole 上跑通 PPO；人形 25 DOF + 浮动基的状态空间维度高几个量级，需要 reward shaping、curriculum、early termination、特权信息、teacher-student 等专门技巧。
+
+### 英文缩写速查（L5.2）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DR | Domain Randomization | 仿真随机化物理 / 传感参数以缩小 sim2real gap。 |
+| PD | Proportional–Derivative | 底层关节位置跟踪；RL 常输出 PD 目标。 |
+| AMP | Adversarial Motion Priors | 判别器约束策略接近 MoCap 风格。 |
+| ET | Early Termination | 摔倒等提前结束 episode，节省训练。 |
+| Priv. | Privileged Information | 仅仿真 teacher 可见的额外状态。 |
+| T–S | Teacher–Student | 全观测 teacher 蒸馏受限观测 student。 |
+| Loco | Locomotion | 移动 / 步行类运动技能。 |
 
 **前置知识：** L5.1 + L4.3/4.4
 
@@ -744,6 +891,18 @@ flowchart LR
 > **场景隐喻：** 与其让机器人反复试错，不如让它"看人怎么做"——MoCap、遥操作数据进来，机器人直接输出相似动作。
 
 > **上一层的局限：** 纯 RL 在复杂动作（跳舞、操作、跑酷）上探索成本极高、reward 极难写。IL 用人类示范数据给一个**好起点**；但 IL 本身有 compounding error，通常要叠 RL 或 DAgger 才稳。
+
+### 英文缩写速查（L5.3）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IL | Imitation Learning | 从专家轨迹学习策略。 |
+| BC | Behavior Cloning | 监督学习 \(\pi(s)\approx a_{\mathrm{expert}}\)。 |
+| DAgger | Dataset Aggregation | 在策略访问状态上请 expert 重新标注。 |
+| MoCap | Motion Capture | 人体 / 物体运动捕捉数据。 |
+| Retarget | Motion Retargeting | 将示范骨架映射到目标机器人。 |
+| ASE | Adversarial Skill Embeddings | 可组合技能嵌入的 IL / RL 框架之一。 |
+| Cov. Shift | Covariate Shift | 训练与部署状态分布不一致；BC 核心难点。 |
 
 **前置知识：** L5.1
 
@@ -790,6 +949,17 @@ flowchart LR
 > **上一层的局限：** L4 / L5 都在仿真里假设理想：传感器无噪声、执行器无延迟、动力学完全已知。真机里这三条全都不成立，需要 system identification + domain randomization + teacher-student 等专门桥接技术。
 
 **本阶段入口：** [Sim2Real](../wiki/concepts/sim2real.md)、[System Identification](../wiki/concepts/system-identification.md)、[Domain Randomization](../wiki/concepts/domain-randomization.md)、[Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)、[部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)、[机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)。
+
+### 英文缩写速查（L6）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Reality | 仿真训练策略部署到真机。 |
+| SysID | System Identification | 辨识质量、摩擦、延迟等真实参数。 |
+| DR | Domain Randomization | 训练期随机化以覆盖真机不确定性。 |
+| T–S | Teacher–Student | 特权 teacher 蒸馏部署 student。 |
+| Gap | Sim-to-Real Gap | 仿真与真机动力学 / 传感差异。 |
+| Lat. | Actuator Latency | 执行器与通信延迟；RL 策略尤其敏感。 |
 
 ### 前置知识
 - L4 全流程
@@ -840,7 +1010,30 @@ flowchart LR
 
 读到这里，你已经知道"控制盒子"在做什么。本节给出 [L−1 30 秒全景图](#30-秒看懂一台机器人在干嘛) 里其它三盒，以及当下 2024–2026 真正最活跃的几个方向。每块都不深入，只给：**它是什么 → 和运动控制怎么接 → 推荐 1 个入口页**。
 
+### 英文缩写速查（L7 总览）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SE | State Estimation | 融合多传感器估计本体状态。 |
+| SLAM | Simultaneous Localization and Mapping | 定位与建图同时进行。 |
+| MP | Motion Planning | 无碰撞路径 / 轨迹规划。 |
+| VLA | Vision–Language–Action | 语言 + 视觉驱动动作的大模型。 |
+| FM | Foundation Model | 大规模预训练后微调的通用模型。 |
+| BFM | Behavior Foundation Model | 面向机器人行为的基础模型方向。 |
+| LoCo-Manip | Loco-Manipulation | 移动中同时操作（走 + 搬）。 |
+
 ### L7.1 感知层（Perception / SLAM / 状态估计）
+
+### 英文缩写速查（L7.1）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SE | State Estimation | 融合 IMU、编码器、视觉等估计位姿与速度。 |
+| SLAM | Simultaneous Localization and Mapping | 未知环境中同时建图与定位。 |
+| IMU | Inertial Measurement Unit | 惯性测量；高频本体运动感知。 |
+| RGB-D | RGB + Depth | 彩色加深度相机；3D 感知常用输入。 |
+| VO | Visual Odometry | 纯视觉估计相机 / 机体运动。 |
+| SEM | Semantic Segmentation | 像素级语义；场景理解入口。 |
 
 **它是什么**：让机器人从摄像头 / IMU / 雷达 / 编码器 / 力觉等传感器中估出"自身位姿 + 世界几何 + 物体属性"。核心子领域：
 - **State Estimation**：融合 IMU + 编码器 + 视觉，估出机器人本体在世界里的 6D 位姿与速度。
@@ -855,6 +1048,17 @@ flowchart LR
 
 ### L7.2 决策与规划层（Motion Planning / Task Planning）
 
+### 英文缩写速查（L7.2）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MP | Motion Planning | 几何或动力学约束下的路径 / 轨迹规划。 |
+| RRT | Rapidly-exploring Random Tree | 采样规划；高维空间常用。 |
+| CHOMP | Covariant Hamiltonian Optimization for Motion Planning | 轨迹优化类运动规划。 |
+| HTN | Hierarchical Task Network | 分层任务分解规划。 |
+| PDDL | Planning Domain Definition Language | 符号任务规划标准语言。 |
+| FP | Footstep Planning | 人形落点与步态时序规划。 |
+
 **它是什么**：在感知建好的地图上，回答"先去哪、再去哪、用什么动作过去"。核心子领域：
 - **Motion Planning**：A* / RRT / RRT* / CHOMP / TrajOpt → 给出无碰撞轨迹。
 - **Task Planning / HTN / PDDL**：把"把杯子放到桌上"分解成"接近 → 抓 → 移动 → 放"。
@@ -868,6 +1072,17 @@ flowchart LR
 
 ### L7.3 操作层（Manipulation / Grasping）
 
+### 英文缩写速查（L7.3）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| EE | End Effector | 末端执行器（手爪、工具等）。 |
+| Grasp | Grasping | 抓取与稳定持握。 |
+| CRM | Contact-Rich Manipulation | 接触丰富、力交互主导的操作。 |
+| DP | Diffusion Policy | 扩散模型生成动作序列；多模态操作常用。 |
+| ACT | Action Chunking with Transformers | 分块动作预测的模仿学习架构之一。 |
+| WBC | Whole-Body Control | 操作任务底层仍常依赖全身力控。 |
+
 **它是什么**：手 / 末端执行器与物体的精细交互，包括抓取、放置、装配、双臂协同、接触丰富的精细操作（拧螺丝、插拔）。
 
 **和运动控制怎么接**：
@@ -877,6 +1092,17 @@ flowchart LR
 **入口页**：[Manipulation 任务地图](../wiki/tasks/manipulation.md) · [接触丰富操作纵深路线](depth-contact-manipulation.md)
 
 ### L7.4 系统与软件栈（ROS / 中间件 / 部署）
+
+### 英文缩写速查（L7.4）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ROS | Robot Operating System | 机器人节点、话题、服务中间件生态。 |
+| RT | Real-Time Control | 毫秒级硬实时控制循环。 |
+| CAN | Controller Area Network | 常见电机总线协议。 |
+| EtherCAT | Ethernet for Control Automation Technology | 工业实时以太网；低延迟驱动。 |
+| HAL | Hardware Abstraction Layer | 硬件抽象；统一仿真与真机接口。 |
+| Gazebo | Gazebo Simulator | 经典 ROS 配套仿真器之一。 |
 
 **它是什么**：把上述所有模块连起来跑在一台真机上需要的工程基础设施。
 - **ROS / ROS2**：机器人最常用的消息中间件、节点抽象、launch 系统。
@@ -891,6 +1117,17 @@ flowchart LR
 **入口页**：[Pinocchio](../wiki/entities/pinocchio.md) · [Isaac Gym / Isaac Lab](../wiki/entities/isaac-gym-isaac-lab.md)
 
 ### L7.5 2024–2026 前沿地图（你会反复看到的关键词）
+
+### 英文缩写速查（L7.5）
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision–Language–Action | 视觉–语言条件策略；如 RT-2、π0。 |
+| WM | World Model | 学习环境动力学用于想象 rollout。 |
+| E2E | End-to-End | 传感到动作的单网络，少分层。 |
+| HFM | Humanoid Foundation Model | 通用人形大模型 / 基础策略方向。 |
+| LfWM | Learning from World Models | 在世界模型中训练或规划。 |
+| Tactile | Tactile Sensing | 触觉；精细装配闭环常用。 |
 
 近三年机器人 AI 正在快速重塑，下面这几个方向并行推进；它们不是替代 L4 的传统控制，而是 **在传统控制之上叠了一层"通用化 / 端到端"**：
 

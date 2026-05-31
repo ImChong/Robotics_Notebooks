@@ -6,6 +6,12 @@
 - 变更：新增 `applyMathBlocksInHtmlFragment`，在 `flushHtmlBlock` 中对 HTML 片段文本节点补公式包裹。
 - 验证：`roadmap.html?id=roadmap-motion-control` 展开参考答案后行内公式带蓝框；`make ci-preflight` 通过。
 
+## [2026-05-31] structural | roadmap/motion-control.md — 各 L 层补充英文缩写速查表（缩写 / 全称 / 简要说明）
+
+- 变更：[roadmap/motion-control.md](roadmap/motion-control.md) 在 L−1～L7 及 L4.1–L4.4、L5.1–L5.3、L7.1–L7.5 增加统一格式「英文缩写速查」表；L−1 原「必备术语速查」改为三列英文全称版。
+- 关联页面：`roadmap/motion-control.md`
+- 验证：`make ci-preflight` 通过。
+
 ## [2026-05-31] structural | references/repos/simulation.md、tech-map/modules/system/simulation.md — 区分「仿真平台索引」与「技术栈模块」详情页，消除同名 Simulation 混淆
 
 - 问题：`detail.html?id=reference-repos-simulation` 与 `tech-node-system-simulation` 标题同为 Simulation、正文量差异大，易被误判为重复页。
