@@ -6,7 +6,8 @@
 - **类型：** paper
 - **系统栈层：** 01 数据 · 重定向 · 遥操作
 - **机构：** Amazon FAR；MIT；伯克利；斯坦福大学；CMU
-- **项目/论文链接：** <https://omniretarget.github.io>
+- **项目/论文链接：** <https://omniretarget.github.io> · arXiv <https://arxiv.org/abs/2509.26633>
+- **深读主归档：** [omniretarget_arxiv_2509_26633.md](omniretarget_arxiv_2509_26633.md)
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26

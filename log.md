@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/papers/php_parkour_arxiv_2602_15827.md、sources/sites/php-parkour-github-io.md、sources/papers/omniretarget_arxiv_2509_26633.md — PHP/RSS2026 与 OmniRetarget 深读；wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md、wiki/entities/paper-hrl-stack-03-omniretarget.md
+
 ## [2026-05-31] fix(ux) | docs/main.js — 路线页自测参考答案等 HTML 块内公式补蓝色边框包裹
 
 - 根因：`<details class="selftest-answers">` 等原样 HTML 块绕过 `renderMathBlocks`，KaTeX 能渲染但缺少 `math-inline` / `math-block` 与 detail 一致的蓝框样式。

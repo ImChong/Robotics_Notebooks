@@ -6,7 +6,8 @@
 - **类型：** paper
 - **系统栈层：** 03 感知式高动态运动
 - **机构：** Amazon FAR；伯克利；CMU；斯坦福大学
-- **项目/论文链接：** <https://php-parkour.github.io/>
+- **项目/论文链接：** <https://php-parkour.github.io/> · arXiv <https://arxiv.org/abs/2602.15827> · PDF <https://php-parkour.github.io/static/images/paper.pdf>
+- **深读主归档：** [php_parkour_arxiv_2602_15827.md](php_parkour_arxiv_2602_15827.md)、[php-parkour-github-io.md](../sites/php-parkour-github-io.md)
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
@@ -20,7 +21,8 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md](../../wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)
+- 上游：[omniretarget_arxiv_2509_26633.md](omniretarget_arxiv_2509_26633.md) → [paper-hrl-stack-03-omniretarget.md](../../wiki/entities/paper-hrl-stack-03-omniretarget.md)
 
 ## 参考来源（原始）
 

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-05-18
+updated: 2026-05-31
 related:
   - ./robot-world-models-training-loop-taxonomy.md
   - ./humanoid-motion-control-know-how.md
