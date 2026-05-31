@@ -290,6 +290,8 @@ console.log('ok');
             "function normalizeInternalMarkdownTarget(target, currentPath)",
             "function resolveInternalMarkdownHref(target, currentPath, routeIndex)",
             "function renderInlineMarkdown(text, markdownContext)",
+            "function renderLinkLabel(label)",
+            "renderLinkLabel(label)",
             "resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)",
             "const detailMarkdownContext = {",
             "currentPath: detailPage.path || ''",

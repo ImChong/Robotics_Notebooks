@@ -1,5 +1,17 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] fix(ux) | docs/main.js — 修复详情页链接标签内 `*斜体*` / `**粗体**` 未渲染
+
+- 根因：`renderInlineMarkdown` 在链接 token 化时对 label 仅 `escapeHtml`，强调语法在还原后不会再次处理。
+- 变更：新增 `renderLinkLabel`，在 `<a>` 内应用与正文一致的 inline 样式；影响含 `*…*` 书名的外链（如 linear-algebra-curriculum）。
+- 验证：`detail.html?id=entity-linear-algebra-curriculum` 中 Axler 链接呈现 `<em>`。
+
+## [2026-05-31] structural | roadmap/motion-control.md、docs/main.js — 修复 L4 方法链 Mermaid 换行与加粗渲染
+
+- 根因：`flowchart.htmlLabels: false` 时节点内 `<br/>` / `<em>` 被当作纯文本，四段 L4 标签挤成单行。
+- 变更：`docs/main.js` 启用 `htmlLabels: true`；`roadmap/motion-control.md` L4.0 流程图标题改用 `<b>`，去掉易干扰解析的弯引号。
+- 验证：本地 `roadmap.html?id=roadmap-motion-control` 中 L4 图 `foreignObject` 多行标签正常；`make ci-preflight` 通过。
+
 ## [2026-05-31] ingest | sources/courses/gatech_interactive_linear_algebra.md、sources/courses/axler_linear_algebra_done_right_4e.md、sources/courses/linear_algebra_teaching_materials_curated.md — 线性代数优秀教学材料入库；L0 策展页与运动控制路线互链
 
 - 原始资料：[gatech_interactive_linear_algebra.md](sources/courses/gatech_interactive_linear_algebra.md)（<https://textbooks.math.gatech.edu/ila/>）、[axler_linear_algebra_done_right_4e.md](sources/courses/axler_linear_algebra_done_right_4e.md)（<https://linear.axler.net/LADR4e.pdf>）、[linear_algebra_teaching_materials_curated.md](sources/courses/linear_algebra_teaching_materials_curated.md)（3Blue1Brown、Strang 18.06 等策展）
