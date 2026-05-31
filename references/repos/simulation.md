@@ -1,4 +1,6 @@
-# Simulation
+# 仿真平台与工具链
+
+按用途整理的仿真与训练平台入口。若需理解仿真在控制—学习—部署链中的位置，见 [仿真（系统集成层）](../../tech-map/modules/system/simulation.md)。
 
 当前重点平台：
 - MuJoCo；连续控制基准与 Python 工具链见 [dm_control](../../wiki/entities/dm-control.md)
@@ -8,5 +10,11 @@
 - **[motrix](../../wiki/entities/motrix.md)** — Motphys 开发的高性能 Rust CPU 仿真引擎，兼容 MJCF
 - Gazebo / GZ
 - **[multirotor-simulation-planning-control-stack](../../wiki/overview/multirotor-simulation-planning-control-stack.md)** — PX4 / AirSim / Flightmare / XTDrone / gym-pybullet-drones 等多旋翼仿真—规划—飞控栈（[catalog](../../sources/repos/multirotor_uav_stack_catalog.md)）
-- **[easy_quadruped](../../wiki/entities/easy-quadruped.md)** — Pupper 步态控制 + MuJoCo 浮动机身闭环（[sources/repos/easy_quadruped.md](../../sources/repos/easy_quadruped.md)）
+- **[easy_quadruped](../../wiki/entities/easy_quadruped.md)** — Pupper 步态控制 + MuJoCo 浮动机身闭环（[sources/repos/easy_quadruped.md](../../sources/repos/easy_quadruped.md)）
 - **[ppf-contact-solver](../../wiki/entities/ppf-contact-solver.md)** — ZOZO GPU shell/solid/rod FEM+接触离线仿真（布料/软体高保真，非 RL 实时环）
+
+## 关联页面
+
+- [仿真（系统集成层）](../../tech-map/modules/system/simulation.md)
+- [Sim2Real](../../wiki/concepts/sim2real.md)
+- [RL Frameworks](rl-frameworks.md)
