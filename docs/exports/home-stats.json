@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-05-31",
-  "node_count": 605,
-  "edge_count": 4193,
+  "node_count": 606,
+  "edge_count": 4207,
   "coverage": {
-    "covered": 603,
-    "total": 603,
+    "covered": 604,
+    "total": 604,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/unilab.md",
+      "detail_id": "entity-unilab",
+      "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Lab",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/motrix.md",
+      "detail_id": "entity-motrix",
+      "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
+      "detail_id": "wiki-comparisons-mujoco-vs-isaac-lab",
+      "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
+      "type": "comparison",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
       "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
@@ -47,53 +87,13 @@
       "type": "comparison",
       "recency": "2026-05-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
-    "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
-    "label": "CTDE vs 完全去中心化 MARL",
-    "type": "comparison",
+    "path": "wiki/entities/unilab.md",
+    "detail_id": "entity-unilab",
+    "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
+    "type": "entity",
     "recency": "2026-05-31",
     "source": "log.md"
   }

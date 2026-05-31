@@ -2,6 +2,7 @@
 type: comparison
 tags: [mujoco, isaac-lab, simulator, locomotion, sim2real, rl]
 status: complete
+updated: 2026-05-31
 summary: "MuJoCo 与 Isaac Lab 在仿真精度、并行效率、sim2real gap 方面的系统性对比，帮助选择适合 locomotion RL 项目的仿真平台。"
 sources:
   - ../../sources/papers/sim2real.md
@@ -66,7 +67,7 @@ related:
 
 ### 局限
 
-- **并行规模上限低**：CPU 多进程并行无法匹配 Isaac Lab 的 GPU tensor 吞吐
+- **并行规模上限低**：传统 CPU 多进程并行难以匹配 Isaac Lab 的 GPU tensor 吞吐；**[UniLab](../entities/unilab.md)** 等异构栈通过 CPU 批量后端 + 采集–学习重叠，在部分算法/任务上可缩小端到端墙钟差距（见 arXiv:2605.30313），但不改变「单进程物理步进」与 GPU 驻留并行的架构差异
 - **大规模 locomotion 训练慢**：人形机器人 500M+ step 训练，MuJoCo 耗时明显更长
 - **GPU 加速尚不成熟**：[MuJoCo MJX](../entities/mujoco-mjx.md)（JAX 后端）仍在发展，功能与稳定性需按官方 parity 清单评估，不等同于 CPU 版全特性
 - **渲染能力弱**：不适合需要真实感视觉的 sim2real 任务（如视觉感知策略）

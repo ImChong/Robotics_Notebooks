@@ -3,7 +3,7 @@ type: entity
 title: Motrix (MotrixSim / MotrixLab)
 tags: [simulation, physics-engine, robot-learning, rust, mjcf]
 summary: "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，专注于高频控制与强化学习训练。"
-updated: 2026-05-01
+updated: 2026-05-31
 ---
 
 # Motrix (Motphys 机器人仿真与训练平台)
@@ -33,10 +33,12 @@ updated: 2026-05-01
 
 - **对比 [mujoco](mujoco.md)**：MotrixSim 是 MuJoCo 的现代化、高性能替代方案，保持了 MJCF 兼容性，但在并行化和系统稳定性上做了更多工作。
 - **对比 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md)**：Motrix 提供了更轻量、更灵活的 CPU 并行方案，而非强制绑定特定的 NVIDIA 驱动与硬件。
+- **与 [UniLab](unilab.md)**：UniLab 将 **MotrixSim** 与 MuJoCoUni 作为可选 CPU 批量物理后端，经统一 runtime 对接 GPU learner（见论文 arXiv:2605.30313）。
 - **对比 [genesis-sim](genesis-sim.md)**：Genesis 更强调多物理场（流体、柔性体），而 Motrix 更专注于刚体关节型机器人的高频控制与 RL 训练。
 
 ## 关联页面
 
+- [UniLab](unilab.md) — 异构 CPU-sim / GPU-learn 训练系统（MotrixSim 后端）
 - [simulation](../../references/repos/simulation.md) (仿真平台导航)
 - [rl-frameworks](../../references/repos/rl-frameworks.md) (RL 框架导航)
 - [mujoco](mujoco.md) (底层物理引擎参考)

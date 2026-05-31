@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/papers/unilab_arxiv_2605_30313.md、sources/repos/unilab.md、sources/sites/unilabsim-project.md — UniLab 异构 CPU 仿真 / GPU 学习训练系统入库
+
+- 原始资料：[unilab_arxiv_2605_30313.md](sources/papers/unilab_arxiv_2605_30313.md)（<https://arxiv.org/abs/2605.30313>）、[unilab.md](sources/repos/unilab.md)（<https://github.com/unilabsim/UniLab>）、[unilabsim-project.md](sources/sites/unilabsim-project.md)（<https://unilabsim.github.io>）
+- 新建 wiki：[unilab.md](wiki/entities/unilab.md)（统一 runtime、MuJoCoUni/MotrixSim 双后端、3–10× 端到端墙钟、跨平台训练）
+- 交叉更新：[isaac-gym-isaac-lab.md](wiki/entities/isaac-gym-isaac-lab.md)、[motrix.md](wiki/entities/motrix.md)、[simulator-selection-guide.md](wiki/queries/simulator-selection-guide.md)、[mujoco-vs-isaac-lab.md](wiki/comparisons/mujoco-vs-isaac-lab.md)
+
 ## [2026-05-31] structural | wiki/comparisons/ctde-vs-decentralized-marl.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/methods/marl.md — 为两个高频引用 methods 补 queries/comparisons 落地，消除 lint 信息型预警
 
 - 背景：`make lint` 报两条信息型预警——[egm-efficient-general-mimic.md](wiki/methods/egm-efficient-general-mimic.md)、[marl.md](wiki/methods/marl.md) 被多页引用却无 queries/comparisons 落地。
