@@ -161,13 +161,49 @@ console.log('ok');
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
             "function renderMathBlocks(text)",
+            "function applyMathBlocksInHtmlFragment(html)",
             'class="math-block"',
             'class="math-inline"',
             "expr.trim() +",
             "renderMathBlocks(renderInlineMarkdown(paragraphLines.join(",
+            "applyMathBlocksInHtmlFragment(htmlBlockLines.join",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_html_fragment_math_gets_inline_wrapper(self):
+        """<details> 等原样 HTML 块内的 \\(...\\) 也应包 math-inline，与 detail 正文一致。"""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function renderMathBlocks(text)');
+const end = content.indexOf('function splitMarkdownTableCells', start);
+eval(content.slice(start, end));
+const sample = [
+  '<details class="selftest-answers">',
+  '<summary>参考答案</summary>',
+  '<ol><li>矩阵（\\(R^\\top R=I\\)）</li></ol>',
+  '</details>',
+].join('\n');
+const out = applyMathBlocksInHtmlFragment(sample);
+if (!out.includes('class="math-inline"')) throw new Error('missing math-inline wrapper');
+if (out.includes('矩阵（\\(R')) throw new Error('unwrapped delimiter remains');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_main_js_splits_table_cells_inside_inline_math(self):
         content = MAIN_JS.read_text(encoding="utf-8")
