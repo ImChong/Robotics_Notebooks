@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/papers/tau0_wm_tech_report.md、sources/sites/tau0-wm-agibot-finch.md、sources/repos/sii_research_tau_0_wm.md — τ₀-WM 统一视频–动作世界模型入库
+
+- 原始资料：[tau0_wm_tech_report.md](sources/papers/tau0_wm_tech_report.md)（<https://finch-static.agibot.com/VAM/blog/tau_0_wm.pdf>）、[tau0-wm-agibot-finch.md](sources/sites/tau0-wm-agibot-finch.md)（<https://finch.agibot.com/research/tau0-wm>）、[sii_research_tau_0_wm.md](sources/repos/sii_research_tau_0_wm.md)（<https://github.com/sii-research/tau-0-wm>、<https://huggingface.co/sii-research/tau-0-wm>）
+- 新建 wiki：[tau0-world-model.md](wiki/entities/tau0-world-model.md)（5B VAM、异构 ~27.3k h 掩码预训练、动作条件仿真 + 测试时 propose–evaluate–revise）
+- 交叉更新：[world-action-models.md](wiki/concepts/world-action-models.md)、[generative-world-models.md](wiki/methods/generative-world-models.md)、[mimic-video.md](wiki/methods/mimic-video.md)、[ge-sim-2.md](wiki/entities/ge-sim-2.md)、[robot-world-models-training-loop-taxonomy.md](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[manipulation.md](wiki/tasks/manipulation.md)
+
 ## [2026-05-31] fix(ux) | docs/main.js — 路线页 Mermaid 在章节折叠后补渲染
 
 - 根因：L4 方法链等 Mermaid 在 `wrapRoadmapCollapsibleMajorHeadings` 之前渲染，部分环境下折叠 DOM 重组后流程图空白或单行。
