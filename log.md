@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] fix(ux) | docs/main.js — 修复详情页链接标签内 `*斜体*` / `**粗体**` 未渲染
+
+- 根因：`renderInlineMarkdown` 在链接 token 化时对 label 仅 `escapeHtml`，强调语法在还原后不会再次处理。
+- 变更：新增 `renderLinkLabel`，在 `<a>` 内应用与正文一致的 inline 样式；影响含 `*…*` 书名的外链（如 linear-algebra-curriculum）。
+- 验证：`detail.html?id=entity-linear-algebra-curriculum` 中 Axler 链接呈现 `<em>`。
+
 ## [2026-05-31] structural | roadmap/motion-control.md、docs/main.js — 修复 L4 方法链 Mermaid 换行与加粗渲染
 
 - 根因：`flowchart.htmlLabels: false` 时节点内 `<br/>` / `<em>` 被当作纯文本，四段 L4 标签挤成单行。

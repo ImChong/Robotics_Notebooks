@@ -321,6 +321,14 @@
     return routeIndex && routeIndex[normalizedPath] ? routeIndex[normalizedPath] + hash : '';
   }
 
+  /** Link labels are tokenized before emphasis runs; apply inline styles inside <a> text. */
+  function renderLinkLabel(label) {
+    return escapeHtml(String(label || ''))
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  }
+
   function renderInlineMarkdown(text, markdownContext) {
     markdownContext = markdownContext || {};
     const source = String(text || '');
@@ -353,12 +361,12 @@
     const withLinkTokens = withMathTokens.replace(/\[([^\]]+)\]\(([^)]+)\)/g, function (match, label, target) {
       let html = '';
       if (/^https?:\/\//i.test(target)) {
-        if (!isSafeUrl(target)) return escapeHtml(label);
-        html = '<a href="' + escapeHtml(target) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+        if (!isSafeUrl(target)) return renderLinkLabel(label);
+        html = '<a href="' + escapeHtml(target) + '" target="_blank" rel="noopener noreferrer">' + renderLinkLabel(label) + '</a>';
       } else {
         const internalHref = resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex);
         if (internalHref) {
-          html = '<a href="' + escapeHtml(internalHref) + '">' + escapeHtml(label) + '</a>';
+          html = '<a href="' + escapeHtml(internalHref) + '">' + renderLinkLabel(label) + '</a>';
         }
       }
       if (!html) {
@@ -366,10 +374,10 @@
         // 解析绝对 repo 路径，生成 GitHub blob 链接；纯锚点或无法解析则降级为纯文本
         const normalizedPath = normalizeInternalMarkdownTarget(target, markdownContext.currentPath);
         if (normalizedPath && !normalizedPath.startsWith('#') && /\.md$/i.test(normalizedPath)) {
-          html = '<a href="' + escapeHtml(GITHUB_BLOB_BASE + normalizedPath) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(label) + '</a>';
+          html = '<a href="' + escapeHtml(GITHUB_BLOB_BASE + normalizedPath) + '" target="_blank" rel="noopener noreferrer">' + renderLinkLabel(label) + '</a>';
         } else {
           // 无法解析：渲染 label 纯文本，避免原始 Markdown 语法泄漏到页面
-          return escapeHtml(label);
+          return renderLinkLabel(label);
         }
       }
       const token = linkPrefix + linkTokens.length + '@@';
@@ -384,11 +392,11 @@
       const def = linkRefs[key];
       if (!def || !def.url) return match;
       const url = def.url;
-      if (!isSafeUrl(url)) return escapeHtml(label);
+      if (!isSafeUrl(url)) return renderLinkLabel(label);
       const titleAttr = def.title ? ' title="' + escapeHtml(def.title) + '"' : '';
       const isExternal = /^https?:\/\//i.test(url);
       const targetAttr = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
-      const html = '<a href="' + escapeHtml(url) + '"' + targetAttr + titleAttr + '>' + escapeHtml(label) + '</a>';
+      const html = '<a href="' + escapeHtml(url) + '"' + targetAttr + titleAttr + '>' + renderLinkLabel(label) + '</a>';
       const token = linkPrefix + linkTokens.length + '@@';
       linkTokens.push({ token: token, html: html });
       return token;
