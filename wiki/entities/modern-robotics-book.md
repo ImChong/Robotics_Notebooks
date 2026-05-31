@@ -10,6 +10,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../methods/trajectory-optimization.md
   - ./pinocchio.md
+  - ./linear-algebra-curriculum.md
 sources:
   - ../../sources/papers/modern_robotics_textbook.md
 summary: "Lynch & Park 的现代机器人学经典教材，独特之处是全程使用李群 / 螺旋理论作为统一数学语言，覆盖配置空间到全身控制、抓取、移动机器人的完整体系，是本知识库传统机器人学部分的主要参考底座。"
@@ -78,6 +79,7 @@ Lynch-Park 将下面这些贯穿全书：
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 教材 Ch 8 在浮基系统上的延伸
 - [Whole-Body Control](../concepts/whole-body-control.md) — 教材 Ch 11 控制章节的现代延伸
 - [Pinocchio](./pinocchio.md) — 直接使用本教材数学语言的现代机器人库
+- [线性代数学习策展](./linear-algebra-curriculum.md) — L0 通用矩阵语言，再接本教材 Ch 2–3
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本
 
 ## 参考来源

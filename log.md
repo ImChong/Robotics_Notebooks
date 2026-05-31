@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/courses/gatech_interactive_linear_algebra.md、sources/courses/axler_linear_algebra_done_right_4e.md、sources/courses/linear_algebra_teaching_materials_curated.md — 线性代数优秀教学材料入库；L0 策展页与运动控制路线互链
+
+- 原始资料：[gatech_interactive_linear_algebra.md](sources/courses/gatech_interactive_linear_algebra.md)（<https://textbooks.math.gatech.edu/ila/>）、[axler_linear_algebra_done_right_4e.md](sources/courses/axler_linear_algebra_done_right_4e.md)（<https://linear.axler.net/LADR4e.pdf>）、[linear_algebra_teaching_materials_curated.md](sources/courses/linear_algebra_teaching_materials_curated.md)（3Blue1Brown、Strang 18.06 等策展）
+- 新建 wiki：[linear-algebra-curriculum.md](wiki/entities/linear-algebra-curriculum.md)（机器人 L0 章节地图 + 2–4 周学习路径）
+- 交叉更新：[roadmap/motion-control.md](roadmap/motion-control.md) L0 推荐读什么/入口、[modern-robotics-book.md](wiki/entities/modern-robotics-book.md)、[tech-map/modules/math/linear-algebra.md](tech-map/modules/math/linear-algebra.md)
+
 ## [2026-05-31] ingest | sources/papers/unilab_arxiv_2605_30313.md、sources/repos/unilab.md、sources/sites/unilabsim-project.md — UniLab 异构 CPU 仿真 / GPU 学习训练系统入库
 
 - 原始资料：[unilab_arxiv_2605_30313.md](sources/papers/unilab_arxiv_2605_30313.md)（<https://arxiv.org/abs/2605.30313>）、[unilab.md](sources/repos/unilab.md)（<https://github.com/unilabsim/UniLab>）、[unilabsim-project.md](sources/sites/unilabsim-project.md)（<https://unilabsim.github.io>）
