@@ -195,6 +195,8 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 > - **已有源机 SONIC/类似专家，想搬新机** → Any2Any（~1% 算力 LoRA）
 > - **核心是抗扰与历史依赖** → GMT / RGMT / Any2Track
 
+> **深入对比**：阶段 4「策略学习」里 SONIC / BeyondMimic / SD-AMP / Heracles 四条路线的逐维度取舍（参考池规模、训练目标、OOD 行为、真机交付），见 [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)。
+
 ## 与 8 层 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的对应
 
 | 8 层框架 | 在本流水线中的位置 |
@@ -250,6 +252,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md) — 扩散中间件兜底
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) — 跨具身 LoRA 后训练
 - [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) / [Any2Track](../methods/any2track.md) — 历史编码 + 抗扰
+- [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 阶段 4「策略学习」四条路线逐维度对比
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 选型决策树
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 8 层总框架
 
