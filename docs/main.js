@@ -436,6 +436,14 @@
       });
   }
 
+  /** 对原样透传的 HTML 片段（如 <details> 自测参考答案）补 math-inline / math-block 包裹，与正文段落一致。 */
+  function applyMathBlocksInHtmlFragment(html) {
+    return String(html || '').split(/(<[^>]+>)/g).map(function (part) {
+      if (part.startsWith('<') && part.endsWith('>')) return part;
+      return renderMathBlocks(part);
+    }).join('');
+  }
+
   /** Split a markdown table row on column pipes, respecting $...$, \\(...\\), and \\| escapes. */
   function splitMarkdownTableCells(row) {
     const cells = [];
@@ -1673,7 +1681,7 @@
 
     function flushHtmlBlock() {
       if (!htmlBlockLines.length) return;
-      blocks.push(htmlBlockLines.join('\n'));
+      blocks.push(applyMathBlocksInHtmlFragment(htmlBlockLines.join('\n')));
       htmlBlockLines = [];
       htmlBlockOpenTag = '';
     }

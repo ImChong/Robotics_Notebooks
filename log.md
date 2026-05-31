@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] fix(ux) | docs/main.js — 路线页自测参考答案等 HTML 块内公式补蓝色边框包裹
+
+- 根因：`<details class="selftest-answers">` 等原样 HTML 块绕过 `renderMathBlocks`，KaTeX 能渲染但缺少 `math-inline` / `math-block` 与 detail 一致的蓝框样式。
+- 变更：新增 `applyMathBlocksInHtmlFragment`，在 `flushHtmlBlock` 中对 HTML 片段文本节点补公式包裹。
+- 验证：`roadmap.html?id=roadmap-motion-control` 展开参考答案后行内公式带蓝框；`make ci-preflight` 通过。
+
 ## [2026-05-31] structural | references/repos/simulation.md、tech-map/modules/system/simulation.md — 区分「仿真平台索引」与「技术栈模块」详情页，消除同名 Simulation 混淆
 
 - 问题：`detail.html?id=reference-repos-simulation` 与 `tech-node-system-simulation` 标题同为 Simulation、正文量差异大，易被误判为重复页。
