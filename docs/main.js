@@ -690,7 +690,7 @@
       securityLevel: 'strict',
       flowchart: {
         useMaxWidth: false,
-        htmlLabels: false,
+        htmlLabels: true,
         padding: 18,
         nodeSpacing: 42,
         rankSpacing: 48,

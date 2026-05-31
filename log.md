@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] structural | roadmap/motion-control.md、docs/main.js — 修复 L4 方法链 Mermaid 换行与加粗渲染
+
+- 根因：`flowchart.htmlLabels: false` 时节点内 `<br/>` / `<em>` 被当作纯文本，四段 L4 标签挤成单行。
+- 变更：`docs/main.js` 启用 `htmlLabels: true`；`roadmap/motion-control.md` L4.0 流程图标题改用 `<b>`，去掉易干扰解析的弯引号。
+- 验证：本地 `roadmap.html?id=roadmap-motion-control` 中 L4 图 `foreignObject` 多行标签正常；`make ci-preflight` 通过。
+
 ## [2026-05-31] ingest | sources/papers/unilab_arxiv_2605_30313.md、sources/repos/unilab.md、sources/sites/unilabsim-project.md — UniLab 异构 CPU 仿真 / GPU 学习训练系统入库
 
 - 原始资料：[unilab_arxiv_2605_30313.md](sources/papers/unilab_arxiv_2605_30313.md)（<https://arxiv.org/abs/2605.30313>）、[unilab.md](sources/repos/unilab.md)（<https://github.com/unilabsim/UniLab>）、[unilabsim-project.md](sources/sites/unilabsim-project.md)（<https://unilabsim.github.io>）
