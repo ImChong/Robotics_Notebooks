@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-05-31",
-  "node_count": 604,
-  "edge_count": 4187,
+  "node_count": 605,
+  "edge_count": 4193,
   "coverage": {
-    "covered": 602,
-    "total": 602,
+    "covered": 603,
+    "total": 603,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
+      "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
+      "label": "CTDE vs 完全去中心化 MARL",
+      "type": "comparison",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/marl.md",
+      "detail_id": "wiki-methods-marl",
+      "label": "Multi-Agent Reinforcement Learning (MARL)",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md",
       "detail_id": "wiki-comparisons-sonic-vs-beyondmimic-vs-sdamp-vs-heracles",
@@ -55,46 +87,14 @@
       "type": "method",
       "recency": "2026-05-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/beyondmimic.md",
-      "detail_id": "wiki-methods-beyondmimic",
-      "label": "BeyondMimic",
-      "type": "method",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-      "detail_id": "entity-paper-heracles-humanoid-diffusion",
-      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-any2any-cross-embodiment-wbt.md",
-      "detail_id": "entity-paper-any2any-cross-embodiment-wbt",
-      "label": "Any2Any：跨具身高效全身跟踪迁移",
-      "type": "entity",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md",
-    "detail_id": "wiki-comparisons-sonic-vs-beyondmimic-vs-sdamp-vs-heracles",
-    "label": "SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比",
+    "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
+    "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
+    "label": "CTDE vs 完全去中心化 MARL",
     "type": "comparison",
-    "recency": "2026-05-30",
+    "recency": "2026-05-31",
     "source": "log.md"
   }
 }

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] structural | wiki/comparisons/ctde-vs-decentralized-marl.md、wiki/queries/humanoid-motion-tracking-method-selection.md、wiki/methods/marl.md — 为两个高频引用 methods 补 queries/comparisons 落地，消除 lint 信息型预警
+
+- 背景：`make lint` 报两条信息型预警——[egm-efficient-general-mimic.md](wiki/methods/egm-efficient-general-mimic.md)、[marl.md](wiki/methods/marl.md) 被多页引用却无 queries/comparisons 落地。
+- 新建 wiki：[ctde-vs-decentralized-marl.md](wiki/comparisons/ctde-vs-decentralized-marl.md)（CTDE 集中式训练分布式执行 vs 完全去中心化选型对比）。
+- 交叉更新：[humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md) 通用 tracker 段补 [EGM](wiki/methods/egm-efficient-general-mimic.md)；[marl.md](wiki/methods/marl.md) 关联页面回链新对比页。
+- 验证：`make lint` 全绿，两条信息型预警归零；搜索回归 37/37。
+
 ## [2026-05-30] checklist-v23 | wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md — V23 P1「WBT 知识链」第二页落地
 
 - 变更：新建 [wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)，把四条主流 WBT 「策略学习」路线（**SONIC 规模化预训练 / BeyondMimic 精准物理 + 失败采样 / SD-AMP 状态门控双判别器 / Heracles 状态条件扩散中间件**）放进同一张 13 维度对照表 + 数据流 Mermaid + 四类适用场景 + 6 类常见误判 + 决策矩阵；显式声明四者按「OOD 修补位置」（数据池 / 训练物理 / 训练判别器 / 部署参考层）构成连续谱而非互斥选择，工程系统常**串联组合**。

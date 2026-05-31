@@ -32,6 +32,7 @@ summary: "多智能体强化学习（MARL）研究多个自主智能体在共享
 传统 MARL 在 **解析或网格仿真** 里学联合策略；[Gamma-World](../entities/paper-gamma-world-multi-agent.md) 代表另一条路：先学 **多体动作条件的像素 rollout**（共享世界 + 各体独立可控），再作为 **MARL / 规划的想象环境**。二者互补——前者给 **策略梯度**，后者给 **高保真可交互观测**；是否进入闭环任务增益仍需单独验证（见 [训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)）。
 
 ## 关联页面
+- [CTDE vs 完全去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) — 两大训练范式选型对比
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Whole-body Coordination](../concepts/whole-body-coordination.md)
 - [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — 多智能体生成式交互世界模型（arXiv:2605.28816）
