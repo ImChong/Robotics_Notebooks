@@ -2,6 +2,7 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl]
 status: complete
+updated: 2026-05-31
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景。
 sources:
   - ../../sources/papers/sim2real.md
@@ -134,6 +135,10 @@ related:
 
 二者均依赖 MuJoCo Warp，与 Isaac Lab 的 `feature/newton` 集成属于同一技术脉络，选型时按「要框架还是要引擎」拆分。
 
+### 异构路径：UniLab（CPU 物理 + GPU 学习）
+
+若已有 **强 CPU**（多核桌面/工作站）且希望 **减轻 GPU 上仿真与学习争用**，或需要 **macOS / ROCm / Intel XPU** 上端到端训练，可评估 **[UniLab](../entities/unilab.md)**：物理在 **MuJoCoUni / MotrixSim** 的 CPU batch 路径，策略在 GPU；统一 runtime 做共享内存缓冲与采集–更新重叠。论文报告在代表 locomotion / tracking / manipulation 任务上相对 GPU 驻留栈约 **3–10×** 墙钟（同机硬件）；**强同步 PPO** 或 **视觉主导** workload 收益可能较小。详见 [MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md) 与 UniLab 实体页。
+
 ---
 
 ## Sim2Real Gap 实践注意
@@ -169,4 +174,5 @@ related:
 - [MuJoCo vs Isaac Lab 对比](../comparisons/mujoco-vs-isaac-lab.md) — 仿真器系统性对比页
 - [Newton Physics](../entities/newton-physics.md) — Warp + MuJoCo Warp 可微引擎
 - [mjlab](../entities/mjlab.md) — MuJoCo Warp 上的轻量 RL 框架
+- [UniLab](../entities/unilab.md) — CPU 批量仿真 + GPU 学习的异构机器人 RL 训练栈
 - [ppf-contact-solver](../entities/ppf-contact-solver.md) — 可变形 shell/solid/rod 离线 GPU 接触求解

@@ -4,7 +4,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Lab"
-updated: 2026-05-28
+updated: 2026-05-31
 ---
 
 # Isaac Gym / Isaac Lab
@@ -248,6 +248,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 - [MuJoCo](./mujoco.md)
 - [Newton Physics](./newton-physics.md)
 - [Genesis](./genesis-sim.md) — 支持多物理场的新一代并行仿真
+- [UniLab](./unilab.md) — CPU 批量仿真 + GPU 学习的异构训练栈，可作为 GPU 驻留物理之外的系统选型
 - [PyTorch](./pytorch.md) — 常见策略/价值网络与张量并行 rollouts 的默认深度学习后端
 - [RL Frameworks](../../references/repos/rl-frameworks.md)
 
