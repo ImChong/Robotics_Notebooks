@@ -2112,10 +2112,14 @@
 
   function buildPathToDetailIdIndex(detailPages) {
     var idx = {};
-    Object.keys(detailPages).forEach(function (id) {
-      var p = detailPages[id];
-      if (p && p.path) idx[p.path] = id;
-    });
+    // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
+    // Expected impact: Eliminates intermediate array allocations of all page IDs and closures, reducing memory overhead and GC pressure when resolving paths.
+    for (var id in detailPages) {
+      if (Object.prototype.hasOwnProperty.call(detailPages, id)) {
+        var p = detailPages[id];
+        if (p && p.path) idx[p.path] = id;
+      }
+    }
     return idx;
   }
 
