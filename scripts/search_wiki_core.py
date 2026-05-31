@@ -195,21 +195,8 @@ def compute_score(
     score = 0.0
     fm = fm or {}
     avgdl = avgdl or dl
-
-    # ⚡ Bolt Optimization: Cache derived strings and dates on document dictionary
-    # Expected impact: Dramatically reduces redundant string lowercasing, property lookups, and date parsing per query.
-    if "_title_l" not in fm:
-        fm["_title_l"] = (title or "").lower()
-        fm["_summary_l"] = str(fm.get("summary", fm.get("description", ""))).lower()
-        updated_str = fm.get("updated", fm.get("created", ""))
-        try:
-            from datetime import date as _date
-            fm["_upd"] = _date.fromisoformat(str(updated_str)[:10]) if updated_str else None
-        except (ValueError, TypeError):
-            fm["_upd"] = None
-
-    summary = fm["_summary_l"]
-    title_l = fm["_title_l"]
+    summary = str(fm.get("summary", fm.get("description", ""))).lower()
+    title_l = (title or "").lower()
 
     # Pre-compute document-level constants outside the loop
     len_norm = 1 - b + b * dl / avgdl
@@ -229,17 +216,16 @@ def compute_score(
             term_score *= 2.0
         score += term_score
 
-    upd = fm.get("_upd")
-    if upd:
-        from datetime import date as _date
+    updated_str = fm.get("updated", fm.get("created", ""))
+    if updated_str:
+        try:
+            from datetime import date as _date
 
-        is_recent = fm.get("_is_recent")
-        if is_recent is None:
-            is_recent = (_date.today() - upd).days <= 30
-            fm["_is_recent"] = is_recent
-
-        if is_recent:
-            score *= 1.2
+            upd = _date.fromisoformat(str(updated_str)[:10])
+            if (_date.today() - upd).days <= 30:
+                score *= 1.2
+        except (ValueError, TypeError):
+            pass
 
     if page_type == "query":
         score *= 0.7

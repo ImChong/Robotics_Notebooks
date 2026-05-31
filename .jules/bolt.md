@@ -55,6 +55,6 @@
 **Learning:** In Python, calling `pathlib.Path.relative_to()` inside a hot loop (like traversing thousands of files) adds massive overhead because it instantiates a new `Path` object and runs internal path validation and string manipulation logic on every call.
 **Action:** When extracting sub-paths from known, validated absolute paths inside a hot loop, calculate the base path's part length once (`REPO_PARTS_LEN = len(REPO_ROOT.parts)`) and use direct tuple slicing `path.parts[REPO_PARTS_LEN:]`. This performs the same logical operation nearly 5x faster by bypassing `pathlib` instantiation entirely.
 
-## 2026-06-01 - Avoid Date Parsing and Object Creation in Hot Inner Loops
-**Learning:** Parsing dates inside inner loops, like calling `datetime.date.fromisoformat` over and over again in the core loop of a BM25 ranking algorithm, combined with other string parsing logic and dict lookups (`.get`) creates enormous unnecessary CPU overhead per query.
-**Action:** Always precalculate and statically cache expensive parsed objects, such as `datetime.date` outputs, back onto the document dictionary if they are expected to be accessed over many search iterations. Furthermore, cache derivations of that calculation if they don't depend on the query string directly.
+## 2026-06-01 - Avoid Object Iteration Array Allocations
+**Learning:** In frontend JavaScript processing large data structures (`docs/main.js`), repeatedly calling `Object.keys()` constructs a new array and invokes garbage collection closures for `.forEach`.
+**Action:** When extracting data or iterating across dictionary-like objects inside hot execution paths, directly use `for (var key in obj)` alongside `.hasOwnProperty.call(obj, key)` to completely skip the intermediate array allocation entirely. This removes unneeded memory overhead.
