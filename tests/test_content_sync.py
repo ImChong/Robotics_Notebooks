@@ -328,6 +328,8 @@ console.log('ok');
             "function normalizeInternalMarkdownTarget(target, currentPath)",
             "function resolveInternalMarkdownHref(target, currentPath, routeIndex)",
             "function renderInlineMarkdown(text, markdownContext)",
+            "Angle-bracket autolinks: <https://...>",
+            "/<(https?:\\/\\/[^>\\s]+)>/gi",
             "function renderLinkLabel(label)",
             "renderLinkLabel(label)",
             "resolveInternalMarkdownHref(target, markdownContext.currentPath, markdownContext.routeIndex)",

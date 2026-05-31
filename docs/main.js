@@ -402,8 +402,17 @@
       return token;
     });
 
+    // 2c. Angle-bracket autolinks: <https://...>（wiki 推荐继续阅读等常用）
+    const withAutolinks = withRefLinks.replace(/<(https?:\/\/[^>\s]+)>/gi, function (match, url) {
+      if (!isSafeUrl(url)) return match;
+      const html = '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>';
+      const token = linkPrefix + linkTokens.length + '@@';
+      linkTokens.push({ token: token, html: html });
+      return token;
+    });
+
     // 3. Apply standard escapes and basic Markdown styles
-    let rendered = escapeHtml(withRefLinks)
+    let rendered = escapeHtml(withAutolinks)
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
       .replace(/\*([^*]+)\*/g, '<em>$1</em>');
