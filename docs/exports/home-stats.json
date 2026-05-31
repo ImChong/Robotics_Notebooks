@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-05-31",
-  "node_count": 608,
-  "edge_count": 4224,
+  "node_count": 610,
+  "edge_count": 4248,
   "coverage": {
-    "covered": 606,
-    "total": 606,
+    "covered": 608,
+    "total": 608,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tau0-world-model.md",
+      "detail_id": "entity-tau0-world-model",
+      "label": "τ₀-World Model（τ0-WM）",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/ge-sim-2.md",
+      "detail_id": "entity-ge-sim-2",
+      "label": "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/linear-algebra-curriculum.md",
+      "detail_id": "entity-linear-algebra-curriculum",
+      "label": "线性代数学习策展（机器人 L0）",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-05-31",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/unilab.md",
       "detail_id": "entity-unilab",
@@ -15,84 +87,12 @@
       "type": "entity",
       "recency": "2026-05-31",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-gym-isaac-lab.md",
-      "detail_id": "entity-isaac-gym-isaac-lab",
-      "label": "Isaac Gym / Isaac Lab",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/motrix.md",
-      "detail_id": "entity-motrix",
-      "label": "Motrix (Motphys 机器人仿真与训练平台)",
-      "type": "entity",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulator-selection-guide.md",
-      "detail_id": "wiki-queries-simulator-selection-guide",
-      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
-      "type": "query",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "detail_id": "wiki-comparisons-mujoco-vs-isaac-lab",
-      "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
-      "type": "comparison",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/ctde-vs-decentralized-marl.md",
-      "detail_id": "wiki-comparisons-ctde-vs-decentralized-marl",
-      "label": "CTDE vs 完全去中心化 MARL",
-      "type": "comparison",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/marl.md",
-      "detail_id": "wiki-methods-marl",
-      "label": "Multi-Agent Reinforcement Learning (MARL)",
-      "type": "method",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-05-31",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md",
-      "detail_id": "wiki-comparisons-sonic-vs-beyondmimic-vs-sdamp-vs-heracles",
-      "label": "SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比",
-      "type": "comparison",
-      "recency": "2026-05-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/unilab.md",
-    "detail_id": "entity-unilab",
-    "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
+    "path": "wiki/entities/tau0-world-model.md",
+    "detail_id": "entity-tau0-world-model",
+    "label": "τ₀-World Model（τ0-WM）",
     "type": "entity",
     "recency": "2026-05-31",
     "source": "log.md"

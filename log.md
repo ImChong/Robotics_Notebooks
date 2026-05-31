@@ -1,5 +1,35 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-05-31] ingest | sources/papers/tau0_wm_tech_report.md、sources/sites/tau0-wm-agibot-finch.md、sources/repos/sii_research_tau_0_wm.md — τ₀-WM 统一视频–动作世界模型入库
+
+- 原始资料：[tau0_wm_tech_report.md](sources/papers/tau0_wm_tech_report.md)（<https://finch-static.agibot.com/VAM/blog/tau_0_wm.pdf>）、[tau0-wm-agibot-finch.md](sources/sites/tau0-wm-agibot-finch.md)（<https://finch.agibot.com/research/tau0-wm>）、[sii_research_tau_0_wm.md](sources/repos/sii_research_tau_0_wm.md)（<https://github.com/sii-research/tau-0-wm>、<https://huggingface.co/sii-research/tau-0-wm>）
+- 新建 wiki：[tau0-world-model.md](wiki/entities/tau0-world-model.md)（5B VAM、异构 ~27.3k h 掩码预训练、动作条件仿真 + 测试时 propose–evaluate–revise）
+- 交叉更新：[world-action-models.md](wiki/concepts/world-action-models.md)、[generative-world-models.md](wiki/methods/generative-world-models.md)、[mimic-video.md](wiki/methods/mimic-video.md)、[ge-sim-2.md](wiki/entities/ge-sim-2.md)、[robot-world-models-training-loop-taxonomy.md](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[manipulation.md](wiki/tasks/manipulation.md)
+
+## [2026-05-31] fix(ux) | docs/main.js — 路线页 Mermaid 在章节折叠后补渲染
+
+- 根因：L4 方法链等 Mermaid 在 `wrapRoadmapCollapsibleMajorHeadings` 之前渲染，部分环境下折叠 DOM 重组后流程图空白或单行。
+- 变更：路线正文在折叠包装完成后再 `renderDetailMermaid`；`bindRoadmapSectionMermaidRerender` 在展开章节时对未出 SVG 的图补跑；保留 `htmlLabels: true` 以支持 `<br/>` / `<b>` 多行标签。
+- 验证：`roadmap.html?id=roadmap-motion-control` L4 方法链四节点多行渲染；`make ci-preflight` 通过。
+
+## [2026-05-31] fix(ux) | docs/main.js — 修复详情页链接标签内 `*斜体*` / `**粗体**` 未渲染
+
+- 根因：`renderInlineMarkdown` 在链接 token 化时对 label 仅 `escapeHtml`，强调语法在还原后不会再次处理。
+- 变更：新增 `renderLinkLabel`，在 `<a>` 内应用与正文一致的 inline 样式；影响含 `*…*` 书名的外链（如 linear-algebra-curriculum）。
+- 验证：`detail.html?id=entity-linear-algebra-curriculum` 中 Axler 链接呈现 `<em>`。
+
+## [2026-05-31] structural | roadmap/motion-control.md、docs/main.js — 修复 L4 方法链 Mermaid 换行与加粗渲染
+
+- 根因：`flowchart.htmlLabels: false` 时节点内 `<br/>` / `<em>` 被当作纯文本，四段 L4 标签挤成单行。
+- 变更：`docs/main.js` 启用 `htmlLabels: true`；`roadmap/motion-control.md` L4.0 流程图标题改用 `<b>`，去掉易干扰解析的弯引号。
+- 验证：本地 `roadmap.html?id=roadmap-motion-control` 中 L4 图 `foreignObject` 多行标签正常；`make ci-preflight` 通过。
+
+## [2026-05-31] ingest | sources/courses/gatech_interactive_linear_algebra.md、sources/courses/axler_linear_algebra_done_right_4e.md、sources/courses/linear_algebra_teaching_materials_curated.md — 线性代数优秀教学材料入库；L0 策展页与运动控制路线互链
+
+- 原始资料：[gatech_interactive_linear_algebra.md](sources/courses/gatech_interactive_linear_algebra.md)（<https://textbooks.math.gatech.edu/ila/>）、[axler_linear_algebra_done_right_4e.md](sources/courses/axler_linear_algebra_done_right_4e.md)（<https://linear.axler.net/LADR4e.pdf>）、[linear_algebra_teaching_materials_curated.md](sources/courses/linear_algebra_teaching_materials_curated.md)（3Blue1Brown、Strang 18.06 等策展）
+- 新建 wiki：[linear-algebra-curriculum.md](wiki/entities/linear-algebra-curriculum.md)（机器人 L0 章节地图 + 2–4 周学习路径）
+- 交叉更新：[roadmap/motion-control.md](roadmap/motion-control.md) L0 推荐读什么/入口、[modern-robotics-book.md](wiki/entities/modern-robotics-book.md)、[tech-map/modules/math/linear-algebra.md](tech-map/modules/math/linear-algebra.md)
+
 ## [2026-05-31] ingest | sources/papers/unilab_arxiv_2605_30313.md、sources/repos/unilab.md、sources/sites/unilabsim-project.md — UniLab 异构 CPU 仿真 / GPU 学习训练系统入库
 
 - 原始资料：[unilab_arxiv_2605_30313.md](sources/papers/unilab_arxiv_2605_30313.md)（<https://arxiv.org/abs/2605.30313>）、[unilab.md](sources/repos/unilab.md)（<https://github.com/unilabsim/UniLab>）、[unilabsim-project.md](sources/sites/unilabsim-project.md)（<https://unilabsim.github.io>）
