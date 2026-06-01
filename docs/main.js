@@ -2231,7 +2231,7 @@
     var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
 
     function moveTooltip(ev) {
-      if (!tooltipEl) return;
+      if (!tooltipEl || tooltipEl.classList.contains('hidden')) return;
       var x = ev.clientX + 14;
       var y = ev.clientY - 10;
       var tw = tooltipEl.offsetWidth;
@@ -2245,30 +2245,28 @@
       if (!tooltipEl) return;
       tooltipEl.classList.add('hidden');
       tooltipEl.setAttribute('aria-hidden', 'true');
-      tooltipEl.style.left = '';
-      tooltipEl.style.top = '';
-      tooltipEl.style.transform = '';
-      tooltipEl.style.right = '';
-      tooltipEl.style.bottom = '';
     }
 
     function showTooltip(ev, d, html) {
       if (!tooltipEl) return;
       tooltipEl.innerHTML = html;
-      tooltipEl.classList.remove('hidden');
       tooltipEl.setAttribute('aria-hidden', 'false');
-      tooltipEl.style.left = '';
-      tooltipEl.style.top = '';
       tooltipEl.style.width = '';
       tooltipEl.style.transform = '';
       if (isMobile) {
         tooltipEl.classList.add('tt-pinned');
+        tooltipEl.style.left = '';
+        tooltipEl.style.top = '';
         tooltipEl.style.right = '20px';
         tooltipEl.style.bottom = '20px';
         pinnedNode = d;
+        tooltipEl.classList.remove('hidden');
       } else {
         tooltipEl.classList.remove('tt-pinned');
+        tooltipEl.style.right = '';
+        tooltipEl.style.bottom = '';
         moveTooltip(ev);
+        tooltipEl.classList.remove('hidden');
       }
     }
 

@@ -61,25 +61,28 @@
   function showTooltip(ev, d, nodeFill, communityLabelMap) {
     if (!tooltip) return;
     tooltip.innerHTML = tooltipHtml(d, nodeFill, communityLabelMap);
-    tooltip.classList.remove('hidden');
     tooltip.setAttribute('aria-hidden', 'false');
-    tooltip.style.left = '';
-    tooltip.style.top = '';
     tooltip.style.width = '';
     tooltip.style.transform = '';
     if (isMobile) {
       tooltip.classList.add('tt-pinned');
+      tooltip.style.left = '';
+      tooltip.style.top = '';
       tooltip.style.right = '20px';
       tooltip.style.bottom = '20px';
       pinnedNode = d;
+      tooltip.classList.remove('hidden');
     } else {
       tooltip.classList.remove('tt-pinned');
+      tooltip.style.right = '';
+      tooltip.style.bottom = '';
       moveTooltip(ev);
+      tooltip.classList.remove('hidden');
     }
   }
 
   function moveTooltip(ev) {
-    if (!tooltip) return;
+    if (!tooltip || tooltip.classList.contains('hidden')) return;
     var x = ev.clientX + 14;
     var y = ev.clientY - 10;
     var tw = tooltip.offsetWidth;
@@ -93,11 +96,6 @@
     if (!tooltip) return;
     tooltip.classList.add('hidden');
     tooltip.setAttribute('aria-hidden', 'true');
-    tooltip.style.left = '';
-    tooltip.style.top = '';
-    tooltip.style.transform = '';
-    tooltip.style.right = '';
-    tooltip.style.bottom = '';
   }
 
   if (tooltip) {
