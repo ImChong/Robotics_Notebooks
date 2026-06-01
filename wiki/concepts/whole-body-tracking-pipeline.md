@@ -168,6 +168,8 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - **多具身联合训练**：共享骨干，靠观测/动作维度的统一编码吸收差异；需要大规模数据与多机型仿真。
 - **运动学对齐 + LoRA 后训练**：[Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) 把差距拆为**运动学对齐**（无梯度的坐标重排）与**动力学残差**（LoRA 局部更新），用 ~1% 的全量训练算力把 SONIC 等骨干迁到 LimX / Unitree 等新机。
 
+> **本阶段选型**：三条路径（单具身重训 + 重定向 / Any2Any 高效后训练 / 多具身联合训练）的「算力 × 数据 × 泛化」决策树与典型故障模式，见 [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)。
+
 ### 6. 真机部署（Sim2Real Deployment）
 
 最后一段路："仿真里跑得好"≠"真机能用"。三层契约：
@@ -254,6 +256,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) / [Any2Track](../methods/any2track.md) — 历史编码 + 抗扰
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 阶段 4「策略学习」四条路线逐维度对比
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 选型决策树
+- [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 阶段 5 三路径选型与故障模式
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 8 层总框架
 
 ## 推荐继续阅读
