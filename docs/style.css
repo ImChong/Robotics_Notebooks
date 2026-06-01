@@ -1631,9 +1631,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   border-top: 1px solid var(--border);
 }
 .roadmap-vtree-link-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
   padding: 0.45rem 0;
   border-bottom: 1px dashed var(--border);
 }
@@ -1643,11 +1640,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-vtree-link-a {
   font-weight: 500;
   word-break: break-word;
-}
-.roadmap-vtree-link-id {
-  font-size: 0.72rem;
-  opacity: 0.8;
-  word-break: break-all;
 }
 .roadmap-vtree-empty {
   padding: 0.45rem 0.85rem 0.65rem 2.45rem;
