@@ -1967,8 +1967,12 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   pointer-events: none;
   transition: opacity 0.12s;
 }
+.graph-hover-tooltip:not(.hidden) {
+  visibility: visible;
+}
 .graph-hover-tooltip.hidden {
   opacity: 0;
+  visibility: hidden;
   pointer-events: none !important;
 }
 .graph-hover-tooltip.tt-pinned {
