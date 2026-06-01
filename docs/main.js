@@ -1173,7 +1173,6 @@
         var href = page.type === 'roadmap_page' ? roadmapHref(rid) : detailHref(rid);
         parts.push('<li class="roadmap-vtree-link-row">');
         parts.push('<a class="roadmap-vtree-link-a" href="' + escapeHtml(href) + '">' + escapeHtml(page.title || rid) + '</a>');
-        parts.push('<code class="roadmap-vtree-link-id">' + escapeHtml(rid) + '</code>');
         parts.push('</li>');
       }
       parts.push('</ul>');
