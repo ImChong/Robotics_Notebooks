@@ -1144,9 +1144,11 @@
     var sid = String(stage.id || '');
     var title = String(stage.title || '');
     var openAttr = opts.openByDefault ? ' open' : '';
+    var stageClass = 'roadmap-vtree-stage roadmap-vtree-stage-embed';
+    if (opts.atEntry) stageClass += ' roadmap-vtree-stage-at-entry';
     var parts = [];
     parts.push('<li class="roadmap-vtree-item">');
-    parts.push('<details class="roadmap-vtree-stage roadmap-vtree-stage-embed"' + openAttr + '>');
+    parts.push('<details class="' + stageClass + '"' + openAttr + '>');
     parts.push('<summary class="roadmap-vtree-summary">');
     parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
     parts.push(
@@ -1193,7 +1195,7 @@
 
   /**
    * 路线正文：将 article 下每个顶层 h2 及其后内容包进默认收起的 <details>，首屏只保留章节标题行。
-   * 须在 embedRoadmapStagesIntoMarkdownBody 之后调用，使各 L 阶段嵌入块留在对应章节内。
+   * 须在 embedRoadmapStagesIntoMarkdownBody 之后调用，使各 L 阶段入口下拉块留在对应章节内。
    */
   function wrapRoadmapCollapsibleMajorHeadings(container) {
     if (!container) return;
@@ -1267,14 +1269,37 @@
     }, true);
   }
 
+  /** 在单个 L 章节（h2 与下一同级 h2 之间）定位「本阶段入口」段落；无则回退到首个 h3 前。 */
+  function findRoadmapStageEntryAnchor(h2) {
+    if (!h2) return null;
+    var node = h2.nextSibling;
+    var fallbackBefore = null;
+    while (node) {
+      if (node.nodeType === 1) {
+        var el = node;
+        if (el.tagName === 'H2' && el.id) break;
+        if (el.tagName === 'P' && (el.textContent || '').indexOf('本阶段入口') >= 0) {
+          return { mode: 'replace', element: el };
+        }
+        if (!fallbackBefore && el.tagName === 'H3') {
+          fallbackBefore = el;
+        }
+      }
+      node = node.nextSibling;
+    }
+    if (fallbackBefore) return { mode: 'insertBefore', element: fallbackBefore };
+    return null;
+  }
+
   /**
-   * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
-   * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
+   * 正文里已有对应 L 章节时，把各阶段相关链接下拉块放到「本阶段入口」处（替换原静态链接行），
+   * 不再插在 h2 标题下。若任一阶段找不到 h2 或入口锚点则返回 false，保留顶部整块速览。
    */
   function embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages) {
     var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
     if (!contentEl || stages.length < 2) return false;
-    var targets = [];
+    var stageHeadings = [];
+    var entryAnchors = [];
     var i;
     for (i = 0; i < stages.length; i++) {
       var sid = String(stages[i].id || '').toLowerCase();
@@ -1283,20 +1308,31 @@
         return h.id === sid || h.id.indexOf(sid + '-') === 0;
       });
       if (!h2) return false;
-      targets.push(h2);
+      var anchor = findRoadmapStageEntryAnchor(h2);
+      if (!anchor) return false;
+      stageHeadings.push(h2);
+      entryAnchors.push(anchor);
     }
     var seen = new Set();
-    for (i = 0; i < targets.length; i++) {
-      if (seen.has(targets[i])) return false;
-      seen.add(targets[i]);
+    for (i = 0; i < stageHeadings.length; i++) {
+      if (seen.has(stageHeadings[i])) return false;
+      seen.add(stageHeadings[i]);
     }
     for (i = 0; i < stages.length; i++) {
-      var row = buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, { openByDefault: i === 0 });
+      var row = buildRoadmapStageRowHTML(stages[i], i, roadmapId, detailPages, {
+        openByDefault: false,
+        atEntry: true
+      });
       var wrap = document.createElement('div');
-      wrap.className = 'roadmap-stage-embed-wrap';
+      wrap.className = 'roadmap-stage-embed-wrap roadmap-stage-entry-embed';
       wrap.setAttribute('data-roadmap-stage-embed', String(stages[i].id || '').toLowerCase());
       wrap.innerHTML = '<ol class="roadmap-vtree">' + row + '</ol>';
-      targets[i].insertAdjacentElement('afterend', wrap);
+      var placement = entryAnchors[i];
+      if (placement.mode === 'replace') {
+        placement.element.replaceWith(wrap);
+      } else {
+        placement.element.parentNode.insertBefore(wrap, placement.element);
+      }
     }
     return true;
   }
@@ -2725,6 +2761,7 @@
       }
       wrapRoadmapCollapsibleMajorHeadings(contentEl);
       bindRoadmapSectionMermaidRerender(contentEl);
+      bindSelftestMermaidRerender(contentEl);
       renderDetailMermaid(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });
