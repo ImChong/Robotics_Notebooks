@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] structural | wiki/concepts/motion-retargeting.md、sim2real.md — 跨具身专题交叉补强（V23 P1 收官）
+
+- 变更：在 [motion-retargeting.md](wiki/concepts/motion-retargeting.md) 新增「三段流水线衔接：重定向产物 → WBT 训练数据 → 跨具身策略蒸馏」小节（映射/训练/迁移三段表格 + 衔接段落），关联页面补 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) / [跨具身迁移选型](wiki/queries/cross-embodiment-transfer-strategy.md) / [SONIC 四方对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 三条出边。
+- 变更：在 [sim2real.md](wiki/concepts/sim2real.md) 新增「在『映射 → 训练 → 迁移』三段流水线中的位置」小节（点明 Sim2Real 横切训练与迁移两段），frontmatter `related` 与关联页面同步补 motion-retargeting / WBT pipeline / 跨具身迁移 / SONIC 对比。
+- 进度：V23 P1「跨具身专题交叉补强」标记为 `[x]`，至此 P1 全部完成。
+- 验证：`make lint` 全绿；`make ci-preflight` 重生成派生文件。
+
 ## [2026-06-01] ingest | sources/papers/kalman_filter_ekf_primary_refs.md、sources/papers/lqr_ilqr_primary_refs.md — KF/EKF/LQR/iLQR 一手资料入库并新建 KF 形式化页
 
 - 原始资料：[kalman_filter_ekf_primary_refs.md](sources/papers/kalman_filter_ekf_primary_refs.md)（Kalman 1960/61、Gelb 1974、Simon 2006 等）、[lqr_ilqr_primary_refs.md](sources/papers/lqr_ilqr_primary_refs.md)（Bryson & Ho 1975、Li & Todorov 2004、Tassa 2012/14 等）；课程：[welch_bishop_kalman_filter.md](sources/courses/welch_bishop_kalman_filter.md)、[mit_underactuated_kalman_lqr.md](sources/courses/mit_underactuated_kalman_lqr.md)

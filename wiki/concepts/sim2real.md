@@ -5,6 +5,10 @@ status: complete
 related:
   - ../methods/reinforcement-learning.md
   - ./whole-body-control.md
+  - ./motion-retargeting.md
+  - ./whole-body-tracking-pipeline.md
+  - ../queries/cross-embodiment-transfer-strategy.md
+  - ../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md
   - ../tasks/locomotion.md
   - ./system-identification.md
   - ../methods/actuator-network.md
@@ -158,6 +162,10 @@ flowchart TD
 仿真训练 → 域随机化 → 零样本迁移 → 真实机器人部署 → 在线微调（可选）
 ```
 
+### 在「映射 → 训练 → 迁移」三段流水线中的位置
+
+人形动作落地的整条链是「**映射 → 训练 → 迁移**」三段：[重定向流水线](./motion-retargeting.md) 把人体参考映射成物理可执行参考（**映射**），[WBT 流水线](./whole-body-tracking-pipeline.md) 把这些参考当训练数据学出全身跟踪策略（**训练**），[跨具身策略迁移](../queries/cross-embodiment-transfer-strategy.md) 再把策略搬到新机体（**迁移**）。Sim2Real **横切训练与迁移两段**：它既决定阶段 ② 训练出的策略能否零样本上真机，也决定阶段 ③ 换机体后是否需要重新跨越 domain gap。本页的 RMA / 域随机化 / 执行器对齐 / 安全 LoRA 收尾正是这条链「从仿真策略到真机可执行」的关键工程手段——其中 [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) 式「冻结策略 + rank-1 LoRA + 安全壳」尤其契合**跨具身迁移后**的真机收尾。不同 WBT 方法（[SONIC / BeyondMimic / SD-AMP / Heracles 对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)）在「仿真训练 vs 真机微调」的比重上各有取舍。
+
 - **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
 
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
@@ -192,6 +200,9 @@ flowchart TD
 
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [Motion Retargeting](./motion-retargeting.md) — 「映射 → 训练 → 迁移」三段流水线首段：Sim2Real 消费其物理可执行参考产物
+- [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 三段流水线中段；Sim2Real 横切其「训练 → 真机」落地
+- [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线末段；换机体后是否需重跨 domain gap
 - [Locomotion](../tasks/locomotion.md)
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性

@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-01",
   "node_count": 632,
-  "edge_count": 4413,
+  "edge_count": 4420,
   "coverage": {
     "covered": 630,
     "total": 630,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
+      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
+      "label": "跨具身策略迁移选型指南",
+      "type": "query",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md",
+      "detail_id": "wiki-comparisons-sonic-vs-beyondmimic-vs-sdamp-vs-heracles",
+      "label": "SONIC vs BeyondMimic vs SD-AMP vs Heracles：四条 WBT 方法谱系对比",
+      "type": "comparison",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/kalman-filter.md",
       "detail_id": "wiki-formalizations-kalman-filter",
@@ -47,53 +87,13 @@
       "type": "concept",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-ego-9-papers-technology-map",
-      "label": "Ego 技术地图：9 篇论文的四类问题视角",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-02-human-to-robot.md",
-      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
-      "label": "Ego 分类 02：人→机器人",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-03-world-models.md",
-      "detail_id": "wiki-overview-ego-category-03-world-models",
-      "label": "Ego 分类 03：世界模型",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-04-ego-exo-fusion.md",
-      "detail_id": "wiki-overview-ego-category-04-ego-exo-fusion",
-      "label": "Ego 分类 04：Ego+Exo 融合",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/kalman-filter.md",
-    "detail_id": "wiki-formalizations-kalman-filter",
-    "label": "Kalman Filter (KF)",
-    "type": "formalization",
+    "path": "wiki/concepts/motion-retargeting.md",
+    "detail_id": "wiki-concepts-motion-retargeting",
+    "label": "Motion Retargeting（动作重定向）",
+    "type": "concept",
     "recency": "2026-06-01",
     "source": "log.md"
   }
