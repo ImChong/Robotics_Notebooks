@@ -3746,21 +3746,29 @@
         }).join('');
         return;
       }
-      var exact = [], potential = [];
-      matched.forEach(function(item) {
-        if (classifyTier(item, queryTokens) === 'exact') exact.push(item);
-        else potential.push(item);
-      });
-      var html = '';
-      if (exact.length) {
-        html += '<h4 class="search-tier-heading search-tier-exact">精确匹配'
-          + ' <span class="data-meta">· ' + exact.length + ' 项</span></h4>';
-        html += exact.map(function(item) { return buildResultCardHtml(item, queryTokens); }).join('');
+      // ⚡ Bolt Optimization: Replace exact/potential intermediate arrays with single-pass HTML concatenation
+      // Expected impact: Minimizes array allocations and redundant iteration in the search result rendering path.
+      var exactHtml = '', potentialHtml = '';
+      var exactCount = 0, potentialCount = 0;
+      for (var i = 0; i < matched.length; i++) {
+        var item = matched[i];
+        var cardHtml = buildResultCardHtml(item, queryTokens);
+        if (classifyTier(item, queryTokens) === 'exact') {
+          exactCount++;
+          exactHtml += cardHtml;
+        } else {
+          potentialCount++;
+          potentialHtml += cardHtml;
+        }
       }
-      if (potential.length) {
+      var html = '';
+      if (exactCount > 0) {
+        html += '<h4 class="search-tier-heading search-tier-exact">精确匹配'
+          + ' <span class="data-meta">· ' + exactCount + ' 项</span></h4>' + exactHtml;
+      }
+      if (potentialCount > 0) {
         html += '<h4 class="search-tier-heading search-tier-potential">潜在关联'
-          + ' <span class="data-meta">· ' + potential.length + ' 项</span></h4>';
-        html += potential.map(function(item) { return buildResultCardHtml(item, queryTokens); }).join('');
+          + ' <span class="data-meta">· ' + potentialCount + ' 项</span></h4>' + potentialHtml;
       }
       searchResults.innerHTML = html;
     }
