@@ -46,6 +46,7 @@
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
 | [x] [bfm_survey_arxiv_2506_20487.md](papers/bfm_survey_arxiv_2506_20487.md) | BFM 综述：人形 WBC 行为基础模型 taxonomy（arXiv:2506.20487，IEEE TPAMI 2025）摘录与 wiki 映射 |
 | [x] [bfm_awesome_41_catalog.md](papers/bfm_awesome_41_catalog.md) | awesome-bfm-papers：**41 篇 BFM 论文 + 10 数据集** 独立 source 总索引（`papers/bfm_awesome_*.md`，配套微信公众号 41 篇专题） |
+| [x] [ego_9_papers_catalog.md](papers/ego_9_papers_catalog.md) | Ego 9 篇专题：**9 篇第一视角论文** 独立 source 总索引（`papers/ego_survey_*.md`，配套 `4JQ1xa-cJ7J1ep_e4txNnA`） |
 | [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
 | [x] [omniretarget_arxiv_2509_26633.md](papers/omniretarget_arxiv_2509_26633.md) | OmniRetarget：interaction mesh 交互保留重定向与数据增广（arXiv:2509.26633；PHP 上游）摘录与 wiki 映射 |
 | [x] [humanoid_rl_stack_42_catalog.md](papers/humanoid_rl_stack_42_catalog.md) | 具身智能研究室 42 篇 humanoid RL 身体系统栈：独立 `humanoid_rl_stack_*` source + `paper-hrl-stack-*` 实体总索引 |
@@ -205,6 +206,7 @@
 | [x] [wechat_shenlan_lie_group_lie_algebra_quaternion.md](blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | 深蓝具身智能：《具身智能基础》专栏 — 李群、李代数、四元数（Agent Reach + Camoufox；`JviRH2LW-fkCHA5gY7Qflw`） |
 | [x] [wechat_shenlan_vla_github_repro_survey_2025.md](blogs/wechat_shenlan_vla_github_repro_survey_2025.md) | 深蓝具身智能：2025 GitHub 高 star VLA 开源栈复现推荐（OpenPI、VLA-Adapter、RLinf 等 11 项；`k_i-1NEBP-lEzth19HOHkQ`） |
 | [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
+| [x] [wechat_embodied_ai_lab_ego_9_papers_survey.md](blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) | 具身智能研究室：9 篇 Ego 第一视角数据入口专题（四类问题各建 `wiki/overview/ego-category-*` 图谱 hub；Agent Reach + Camoufox；`4JQ1xa-cJ7J1ep_e4txNnA`） |
 | [x] [wechat_embodied_ai_lab_bfm_41_papers_survey.md](blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) | 具身智能研究室：41 篇 BFM 运控基座技术地图（五类问题各建 `wiki/overview/bfm-category-*` 图谱 hub；`Ei32la_vo0UW9Y_QCAqB2g`） |
 | [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`；见 `humanoid_amp_survey_19_catalog.md`） |
 | [x] [wechat_human_five_humanoid_hardware_101.md](blogs/wechat_human_five_humanoid_hardware_101.md) | 微信公众号 human five：《Humanoid Hardware 入门 101》四万字硬件拆解（Agent Reach + Camoufox；`10hYwFzC1EuCypFVzC6QGQ`；七类 `wiki/overview/humanoid-hardware-101-*` 图谱 hub） |

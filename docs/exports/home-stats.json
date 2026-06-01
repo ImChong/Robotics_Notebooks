@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-01",
-  "node_count": 620,
-  "edge_count": 4336,
+  "node_count": 632,
+  "edge_count": 4413,
   "coverage": {
-    "covered": 618,
-    "total": 618,
+    "covered": 630,
+    "total": 630,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -49,41 +49,41 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-      "label": "Humanoid Hardware 101：七类子系统技术地图",
+      "path": "wiki/overview/ego-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-ego-9-papers-technology-map",
+      "label": "Ego 技术地图：9 篇论文的四类问题视角",
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
-      "label": "Humanoid Hardware 101 · 01：机身与材料",
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-actuation-sensing-chain",
-      "label": "Humanoid Hardware 101 · 02：传动与感知链",
+      "path": "wiki/overview/ego-category-02-human-to-robot.md",
+      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
+      "label": "Ego 分类 02：人→机器人",
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-linear-transmission-bearings",
-      "label": "Humanoid Hardware 101 · 03：直线传动与轴承",
+      "path": "wiki/overview/ego-category-03-world-models.md",
+      "detail_id": "wiki-overview-ego-category-03-world-models",
+      "label": "Ego 分类 03：世界模型",
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-hardware-101-integrated-actuators.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-integrated-actuators",
-      "label": "Humanoid Hardware 101 · 04：集成执行器",
+      "path": "wiki/overview/ego-category-04-ego-exo-fusion.md",
+      "detail_id": "wiki-overview-ego-category-04-ego-exo-fusion",
+      "label": "Ego 分类 04：Ego+Exo 融合",
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
