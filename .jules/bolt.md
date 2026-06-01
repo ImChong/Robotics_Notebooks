@@ -58,3 +58,6 @@
 ## 2026-06-01 - Avoid Object Iteration Array Allocations
 **Learning:** In frontend JavaScript processing large data structures (`docs/main.js`), repeatedly calling `Object.keys()` constructs a new array and invokes garbage collection closures for `.forEach`.
 **Action:** When extracting data or iterating across dictionary-like objects inside hot execution paths, directly use `for (var key in obj)` alongside `.hasOwnProperty.call(obj, key)` to completely skip the intermediate array allocation entirely. This removes unneeded memory overhead.
+## 2026-06-02 - Frontend Search UI DOM construction string concatenation
+**Learning:** In `docs/main.js`, rendering result HTML using a two-pass strategy via intermediate arrays (e.g., `exact.push()`, followed by `exact.map().join('')`) creates unnecessary intermediate allocations that stress the garbage collector and slow down UI render during frequent typing.
+**Action:** When constructing HTML dynamically from search results or other collections, merge filtering and HTML generation into a single-pass `for` loop that uses simple string concatenation (`html +=`) instead of intermediate arrays and array closures.
