@@ -1600,16 +1600,23 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   margin-bottom: 0.5rem;
 }
 .roadmap-vtree-stage {
+  --roadmap-vtree-summary-pad-x: 0.85rem;
+  --roadmap-vtree-summary-gap: 0.5rem;
+  /* 与 summary 内序号/图标列同宽，供链接区与标题文字左对齐 */
+  --roadmap-vtree-step-width: 1.5rem;
   border: 1px solid var(--border);
   border-radius: 12px;
   background: var(--surface-strong, var(--bg-alt));
   overflow: hidden;
 }
+.roadmap-vtree-stage-at-entry {
+  --roadmap-vtree-step-width: 1.25rem;
+}
 .roadmap-vtree-summary {
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  padding: 0.65rem 0.85rem;
+  gap: var(--roadmap-vtree-summary-gap);
+  padding: 0.65rem var(--roadmap-vtree-summary-pad-x);
   cursor: pointer;
   list-style: none;
   font-weight: 600;
@@ -1622,7 +1629,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .roadmap-vtree-step {
   flex-shrink: 0;
-  width: 1.5rem;
+  width: var(--roadmap-vtree-step-width);
   height: 1.5rem;
   border-radius: 999px;
   background: var(--accent);
@@ -1635,7 +1642,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-vtree-step-icon {
   width: auto;
   height: auto;
-  min-width: 1.25rem;
+  min-width: var(--roadmap-vtree-step-width);
   padding: 0;
   border-radius: 0;
   background: transparent;
@@ -1660,8 +1667,19 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .roadmap-vtree-links {
   list-style: none;
   margin: 0;
-  padding: 0.35rem 0.85rem 0.65rem 2.45rem;
+  padding: 0.35rem var(--roadmap-vtree-summary-pad-x, 0.85rem) 0.65rem
+    calc(
+      var(--roadmap-vtree-summary-pad-x, 0.85rem) + var(--roadmap-vtree-step-width, 1.5rem) +
+        var(--roadmap-vtree-summary-gap, 0.5rem)
+    );
   border-top: 1px solid var(--border);
+}
+.detail-markdown-body ul.roadmap-vtree-links {
+  /* 覆盖正文区 ul 默认 1.4em，避免链接区与标题文字错位 */
+  padding-left: calc(
+    var(--roadmap-vtree-summary-pad-x, 0.85rem) + var(--roadmap-vtree-step-width, 1.5rem) +
+      var(--roadmap-vtree-summary-gap, 0.5rem)
+  );
 }
 .roadmap-vtree-link-row {
   padding: 0.45rem 0;
@@ -1675,9 +1693,19 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   word-break: break-word;
 }
 .roadmap-vtree-empty {
-  padding: 0.45rem 0.85rem 0.65rem 2.45rem;
+  padding: 0.45rem var(--roadmap-vtree-summary-pad-x, 0.85rem) 0.65rem
+    calc(
+      var(--roadmap-vtree-summary-pad-x, 0.85rem) + var(--roadmap-vtree-step-width, 1.5rem) +
+        var(--roadmap-vtree-summary-gap, 0.5rem)
+    );
   margin: 0;
   border-top: 1px solid var(--border);
+}
+.detail-markdown-body .roadmap-vtree-empty {
+  padding-left: calc(
+    var(--roadmap-vtree-summary-pad-x, 0.85rem) + var(--roadmap-vtree-step-width, 1.5rem) +
+      var(--roadmap-vtree-summary-gap, 0.5rem)
+  );
 }
 /* 嵌入正文各 L 章节下的单阶段「速览」块（与顶部整块二选一） */
 .roadmap-stage-embed-wrap {
@@ -1689,11 +1717,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 /* 替换「本阶段入口」静态链接行时的下拉块 */
 .roadmap-stage-entry-embed {
   margin: 10px 0 16px;
-}
-.roadmap-stage-entry-embed .roadmap-vtree-links,
-.roadmap-stage-entry-embed .roadmap-vtree-empty {
-  padding-left: 0.85rem;
-  padding-right: 0.85rem;
 }
 .roadmap-vtree-stage-at-entry .roadmap-vtree-summary {
   font-size: 0.92rem;
