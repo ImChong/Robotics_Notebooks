@@ -2290,19 +2290,6 @@
       }
     });
 
-    if (window.RNGraphTooltip) {
-      window.RNGraphTooltip.bindBlankDismiss(
-        document.getElementById('graph-canvas'),
-        {
-          isMobile,
-          getPinned: () => pinnedNode,
-          clearPin: () => { pinnedNode = null; },
-          hide: hideTooltip
-        },
-        { nodeSelector: '.node-g', tooltipEl: tooltip }
-      );
-    }
-
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
@@ -3416,13 +3403,36 @@
 
     sbClose.addEventListener('click', closeSidebar);
 
-    // V21: 点击背景退出高亮聚焦模式
+    function dismissMobilePinnedTooltip() {
+      if (!isMobile || !pinnedNode) return false;
+      pinnedNode = null;
+      hideTooltip();
+      return true;
+    }
+
+    // V21: 点击背景退出高亮聚焦模式；移动端空白处关闭浮窗
     svg.on('click', (ev) => {
-      // 如果点击的不是节点，则视为点击背景
-      if (!ev.target.closest('.node-g')) {
-        closeSidebar();
+      if (ev.defaultPrevented) return;
+      if (ev.target.closest('.node-g')) return;
+      if (isMobile) {
+        dismissMobilePinnedTooltip();
+        return;
       }
+      closeSidebar();
     });
+
+    if (window.RNGraphTooltip) {
+      window.RNGraphTooltip.bindBlankDismiss(
+        document.getElementById('graph-canvas'),
+        {
+          isMobile,
+          getPinned: () => pinnedNode,
+          clearPin: () => { pinnedNode = null; },
+          hide: hideTooltip
+        },
+        { nodeSelector: '.node-g', tooltipEl: tooltip }
+      );
+    }
 
     // 覆盖节点 click：PC 打开侧边栏而不是直接跳转
     node.on('click', (ev, d) => {
