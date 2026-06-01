@@ -2688,10 +2688,29 @@
 
     if (titleEl) titleEl.textContent = roadmapPage.title || roadmapId;
     if (summaryEl) {
-      summaryEl.innerHTML = escapeHtml(roadmapPage.summary || '当前路线暂无摘要。');
+      var heroItems = roadmapPage.summary_items || [];
+      if (heroItems.length) {
+        summaryEl.classList.add('roadmap-hero-summary-list');
+        summaryEl.innerHTML =
+          '<ul class="roadmap-hero-summary">' +
+          heroItems
+            .map(function (line) {
+              return '<li>' + escapeHtml(line) + '</li>';
+            })
+            .join('') +
+          '</ul>';
+      } else {
+        summaryEl.classList.remove('roadmap-hero-summary-list');
+        summaryEl.innerHTML = escapeHtml(roadmapPage.summary || '当前路线暂无摘要。');
+      }
       removeLoadingState(summaryEl);
     }
-    var roadmapSummaryText = roadmapPage.summary || '';
+    var roadmapSummaryText =
+      (roadmapPage.summary_items && roadmapPage.summary_items.length
+        ? roadmapPage.summary_items.join(' ')
+        : '') ||
+      roadmapPage.summary ||
+      '';
     if (roadmapSummaryText) {
       var metaDescRoadmap = document.getElementById('metaDescription');
       if (metaDescRoadmap) metaDescRoadmap.setAttribute('content', roadmapSummaryText.slice(0, 160));
