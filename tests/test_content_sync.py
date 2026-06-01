@@ -162,11 +162,15 @@ console.log('ok');
         expected_snippets = [
             "function renderMathBlocks(text)",
             "function applyMathBlocksInHtmlFragment(html)",
+            "function convertMermaidFencesInHtmlFragment(html)",
             'class="math-block"',
             'class="math-inline"',
             "expr.trim() +",
             "renderMathBlocks(renderInlineMarkdown(paragraphLines.join(",
-            "applyMathBlocksInHtmlFragment(htmlBlockLines.join",
+            "convertMermaidFencesInHtmlFragment(htmlBlockLines.join",
+            "applyMathBlocksInHtmlFragment(htmlFragment)",
+            "if (htmlBlockOpenTag) {",
+            "htmlBlockLines.push(line);",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
