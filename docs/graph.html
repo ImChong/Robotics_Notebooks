@@ -1480,6 +1480,7 @@
   <!-- ── D3.js ── -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="main.js"></script>
+  <script src="graph-tooltip.js"></script>
   <script>
   (async function () {
     /* ── 颜色 & 类型标签 ── */
@@ -2289,6 +2290,19 @@
       }
     });
 
+    if (window.RNGraphTooltip) {
+      window.RNGraphTooltip.bindBlankDismiss(
+        document.getElementById('graph-canvas'),
+        {
+          isMobile,
+          getPinned: () => pinnedNode,
+          clearPin: () => { pinnedNode = null; },
+          hide: hideTooltip
+        },
+        { nodeSelector: '.node-g', tooltipEl: tooltip }
+      );
+    }
+
     function escapeHtml(s) {
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
@@ -2396,9 +2410,8 @@
     }
     updateCount(nodes.length);
 
-    /* ── 点击背景：关闭移动端固定卡片 + 关闭面板 ── */
+    /* ── 点击背景：关闭面板 ── */
     document.addEventListener('click', ev => {
-      const onNode    = ev.target.closest && ev.target.closest('g.node');
       const onLink    = ev.target.closest && ev.target.closest('.tt-link');
       const onPanel   = ev.target.closest && ev.target.closest('#physics-panel');
       const onToggle  = ev.target.closest && ev.target.closest('#physics-toggle');
@@ -2409,7 +2422,6 @@
       const onLegendFab = ev.target.closest && ev.target.closest('#graph-legend-fab');
       const onLegendScrim = ev.target.closest && ev.target.closest('#graph-legend-scrim');
       if (onLink) return; // 点击卡片内链接：不处理（让它跳转）
-      if (onNode) return; // 点击节点：节点自己的 click handler 处理
       if (!onPanel && !onToggle) {
         const panel = document.getElementById('physics-panel');
         if (panel && !panel.hidden) panel.hidden = true;
@@ -2420,11 +2432,6 @@
       }
       if (legendDrawerOpen && !onLegendPanel && !onLegendFab && !onLegendScrim) {
         closeLegendDrawer();
-      }
-      // 移动端点击空白处：关闭固定卡片
-      if (isMobile && pinnedNode) {
-        pinnedNode = null;
-        hideTooltip();
       }
     });
     document.addEventListener('keydown', ev => {
@@ -3378,7 +3385,8 @@
     }
     function closeSidebar() {
       sidebar.classList.remove('open');
-      pinnedNode = null; // V21 修复：清除固定节点状态
+      pinnedNode = null;
+      if (isMobile) hideTooltip();
       if (timelineAnimating) {
         // 时序模式：只恢复「已显现子集」的渲染，不触发 applyFilters 重建全图，也不重启力模拟/相机
         renderTimelineStatic();
