@@ -30,6 +30,8 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmap_pages",
             "graph-stats.json",
             "renderRoadmapMarkdownBody",
+            "findRoadmapStageEntryAnchor",
+            "roadmap-stage-entry-embed",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
