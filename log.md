@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] fix(ux) | roadmap/motion-control.md — 运动控制路线页首屏摘要改为三条导读列表
+
+- 变更：在 `roadmap/motion-control.md` 增加仅用于首屏的「首屏导读」三行；导出层写入 `summary_items`，`roadmap.html` 标题下以列表展示；正文「摘要」列表不变。
+- 关联页面：`roadmap/motion-control.md`
+- 验证：`make ci-preflight` 通过。
+
 ## [2026-06-01] fix(wiki) | wiki/overview/humanoid-hardware-101-technology-map.md — 修复七类子系统 Mermaid（子图直连改节点边、去 click、htmlLabels 换行）
 
 - 根因：子图 `G1 --> G4` 直连在 `securityLevel: strict` 下易解析失败；`click` 指令被站点 Mermaid 配置禁用；标签内 `/` 与 `·` 增加歧义。

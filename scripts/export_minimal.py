@@ -113,16 +113,92 @@ def clean_summary(text: str) -> str:
     )
 
 
+ROADMAP_HERO_LABEL = "首屏导读"
+ROADMAP_SKIP_SUMMARY_LABELS = {ROADMAP_HERO_LABEL}
+
+
+def _labeled_section_label(stripped: str) -> str | None:
+    if not stripped.startswith("**") or "：" not in stripped:
+        return None
+    label, _sep, _tail = stripped.partition("：")
+    label = label.strip("* ").strip()
+    return label or None
+
+
+def extract_labeled_bullets(text: str, label: str) -> List[str]:
+    lines = text.splitlines()
+    for i in range(0, min(len(lines), 40)):
+        stripped = lines[i].strip()
+        if _labeled_section_label(stripped) != label:
+            continue
+        _label, _sep, tail = stripped.partition("：")
+        bullets: List[str] = []
+        if tail.strip():
+            bullets.append(clean_summary(tail))
+        for j in range(i + 1, min(len(lines), i + 30)):
+            s = lines[j].strip()
+            if not s:
+                if bullets:
+                    break
+                continue
+            if s.startswith("## "):
+                break
+            if s.startswith("- "):
+                bullets.append(clean_summary(s[2:]))
+            elif bullets:
+                break
+        return [b for b in bullets if b]
+    return []
+
+
+def strip_labeled_section(text: str, label: str) -> str:
+    lines = text.splitlines()
+    out: List[str] = []
+    skipping = False
+    for line in lines:
+        stripped = line.strip()
+        if _labeled_section_label(stripped) == label:
+            skipping = True
+            continue
+        if skipping:
+            if not stripped:
+                continue
+            if stripped.startswith("## ") or (
+                stripped.startswith("**") and "：" in stripped and _labeled_section_label(stripped)
+            ):
+                skipping = False
+            else:
+                continue
+        out.append(line)
+    while out and not out[0].strip():
+        out.pop(0)
+    while out and not out[-1].strip():
+        out.pop()
+    return "\n".join(out)
+
+
+def extract_roadmap_hero(text: str) -> tuple[List[str], str]:
+    bullets = extract_labeled_bullets(text, ROADMAP_HERO_LABEL)
+    if not bullets:
+        return [], ""
+    short = re.sub(r"\s+", " ", bullets[0].replace("。", ""))
+    if len(short) > 120:
+        short = short[:117] + "…"
+    return bullets, short + ("。" if short and not short.endswith("…") else "")
+
+
 def extract_summary(text: str) -> str:
     lines = text.splitlines()
 
-    for i in range(1, min(len(lines), 15)):
+    for i in range(0, min(len(lines), 40)):
         stripped = lines[i].strip()
+        if _labeled_section_label(stripped) in ROADMAP_SKIP_SUMMARY_LABELS:
+            continue
         if stripped.startswith("**") and "：" in stripped:
             _label, _sep, tail = stripped.partition("：")
             if tail.strip():
                 return clean_summary(stripped)
-            # 仅「**摘要**：」占一行、正文在后续列表时：合并列表项为 roadmap_pages 摘要
+            # 仅「**摘要**：」占一行、正文在后续列表时：合并列表项为全文检索/备用摘要
             bullets: List[str] = []
             for j in range(i + 1, min(len(lines), i + 30)):
                 s = lines[j].strip()
@@ -169,9 +245,14 @@ def extract_body_markdown(text: str) -> str:
         lines = lines[1:]
     while lines and not lines[0].strip():
         lines = lines[1:]
-    while lines and not lines[-1].strip():
-        lines = lines[:-1]
-    return "\n".join(lines)
+    body = "\n".join(lines)
+    if extract_labeled_bullets(body, ROADMAP_HERO_LABEL):
+        body = strip_labeled_section(body, ROADMAP_HERO_LABEL)
+    while body and not body.splitlines()[0].strip():
+        body = "\n".join(body.splitlines()[1:])
+    while body and not body.splitlines()[-1].strip():
+        body = "\n".join(body.splitlines()[:-1])
+    return body
 
 
 def infer_tags(path: Path, title: str, text: str) -> List[str]:
@@ -337,6 +418,10 @@ def build_item(path: Path) -> dict[str, Any]:
     elif parts[0] == "roadmap":
         item["type"] = "roadmap_page"
         item["stages"] = parse_roadmap_stages(text, path)
+        hero_items, hero_short = extract_roadmap_hero(text)
+        if hero_items:
+            item["summary_items"] = hero_items
+            item["hero_summary"] = hero_short
     elif parts[0] == "references":
         item["type"] = "reference_page"
         item["reference_kind"] = parts[1] if parts[1] in REFERENCE_KINDS else "unknown"
@@ -526,7 +611,8 @@ def build_site_data(items: List[Dict]) -> Dict:
         item["id"]: {
             "id": item["id"],
             "title": item["title"],
-            "summary": item.get("summary", ""),
+            "summary": item.get("hero_summary") or item.get("summary", ""),
+            "summary_items": item.get("summary_items", []),
             "stages": item.get("stages", []),
             "related_items": item.get("related", []),
             "source_links": item.get("source_links", []),
