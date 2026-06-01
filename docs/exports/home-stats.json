@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-06-01",
-  "node_count": 619,
-  "edge_count": 4327,
+  "node_count": 631,
+  "edge_count": 4404,
   "coverage": {
-    "covered": 617,
-    "total": 617,
+    "covered": 629,
+    "total": 629,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/ego-9-papers-technology-map.md",
+      "detail_id": "wiki-overview-ego-9-papers-technology-map",
+      "label": "Ego 技术地图：9 篇论文的四类问题视角",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/ego-category-01-data-collection.md",
+      "detail_id": "wiki-overview-ego-category-01-data-collection",
+      "label": "Ego 分类 01：数据采集",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/ego-category-02-human-to-robot.md",
+      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
+      "label": "Ego 分类 02：人→机器人",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/ego-category-03-world-models.md",
+      "detail_id": "wiki-overview-ego-category-03-world-models",
+      "label": "Ego 分类 03：世界模型",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/ego-category-04-ego-exo-fusion.md",
+      "detail_id": "wiki-overview-ego-category-04-ego-exo-fusion",
+      "label": "Ego 分类 04：Ego+Exo 融合",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md",
+      "detail_id": "entity-paper-hrl-stack-33-ego_vision_world_model_for_humanoid",
+      "label": "Ego-Vision World Model for Humanoid Contact Planning",
+      "type": "entity",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-wem-world-ego-modeling.md",
+      "detail_id": "entity-paper-wem-world-ego-modeling",
+      "label": "WEM（World-Ego Modeling / World-Ego Model）",
+      "type": "entity",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
       "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
@@ -15,84 +87,12 @@
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
-      "label": "Humanoid Hardware 101 · 01：机身与材料",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-actuation-sensing-chain",
-      "label": "Humanoid Hardware 101 · 02：传动与感知链",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-linear-transmission-bearings",
-      "label": "Humanoid Hardware 101 · 03：直线传动与轴承",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-integrated-actuators.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-integrated-actuators",
-      "label": "Humanoid Hardware 101 · 04：集成执行器",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
-      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-supply-chain-economics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-supply-chain-economics",
-      "label": "Humanoid Hardware 101 · 07：产业与成本地缘",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-hardware-selection.md",
-      "detail_id": "wiki-queries-humanoid-hardware-selection",
-      "label": "人形机器人硬件选型指南",
-      "type": "query",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-    "label": "Humanoid Hardware 101：七类子系统技术地图",
+    "path": "wiki/overview/ego-9-papers-technology-map.md",
+    "detail_id": "wiki-overview-ego-9-papers-technology-map",
+    "label": "Ego 技术地图：9 篇论文的四类问题视角",
     "type": "overview",
     "recency": "2026-06-01",
     "source": "log.md"

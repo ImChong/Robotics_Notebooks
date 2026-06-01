@@ -4,6 +4,8 @@ tags: [world-models, robot-learning, survey, vla, video-generation, model-based-
 status: complete
 updated: 2026-05-30
 related:
+  - ./ego-9-papers-technology-map.md
+  - ./ego-category-03-world-models.md
   - ../methods/generative-world-models.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md

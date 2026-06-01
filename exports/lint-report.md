@@ -82,4 +82,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：617/617 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：629/629 (100%) wiki/entity 页有 ingest 来源

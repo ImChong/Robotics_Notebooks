@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] ingest | sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md — Agent Reach 抓取 Ego 9 篇专题并建四类子系统图谱与 9 论文节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + `agent-reach install --channels=wechat`）；微信正文经 `wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md`](sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)（<https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA>）；落盘 [`sources/raw/wechat_ego_9_papers_2026-06-01.md`](sources/raw/wechat_ego_9_papers_2026-06-01.md)
+- 沉淀页面：[`wiki/overview/ego-9-papers-technology-map.md`](wiki/overview/ego-9-papers-technology-map.md)（父节点 + Mermaid）；子节点 [`ego-category-01-data-collection`](wiki/overview/ego-category-01-data-collection.md)、[`ego-category-02-human-to-robot`](wiki/overview/ego-category-02-human-to-robot.md)、[`ego-category-03-world-models`](wiki/overview/ego-category-03-world-models.md)、[`ego-category-04-ego-exo-fusion`](wiki/overview/ego-category-04-ego-exo-fusion.md)；论文实体 `paper-ego-01`…`05`、`08`、`09`（06→[`paper-hrl-stack-33`](wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md)、07→[`paper-wem`](wiki/entities/paper-wem-world-ego-modeling.md)）
+- 交叉更新：[`humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-01] fix(ux) | docs/style.css — 撤销路线页首屏 360px 左缩进，与面包屑/正文左缘对齐
 
 - 变更：去掉 #470 误加的 `margin-inline-start: 360px`；保留首屏列表满宽与 `#roadmapSummary` 使用 `<div>`。
