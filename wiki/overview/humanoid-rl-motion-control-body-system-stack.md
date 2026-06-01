@@ -21,6 +21,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../concepts/behavior-foundation-model.md
   - ./bfm-41-papers-technology-map.md
+  - ./ego-9-papers-technology-map.md
   - ../entities/gr00t-wholebodycontrol.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md

@@ -11,12 +11,14 @@ tags:
   - diffusion
   - mixture-of-experts
 status: complete
-updated: 2026-05-22
+updated: 2026-06-01
 arxiv: "2605.19957"
 code: https://github.com/ZGCA-HMI-Lab/WEM
 related:
   - ../methods/generative-world-models.md
   - ../overview/robot-world-models-training-loop-taxonomy.md
+  - ../overview/ego-9-papers-technology-map.md
+  - ../overview/ego-category-03-world-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/loco-manipulation.md
   - ../tasks/manipulation.md
@@ -25,6 +27,8 @@ sources:
   - ../../sources/papers/wem_arxiv_2605_19957.md
   - ../../sources/sites/wem-project.md
   - ../../sources/repos/wem.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
+  - ../../sources/papers/ego_survey_07_wem.md
 summary: "WEM（arXiv:2605.19957）：World-Ego Modeling 将具身未来解耦为持久场景 world 与指令条件 ego；RCA 规划器 + CP-MoE 扩散生成长程混合导航–操作视频；HTEWorld（BEHAVIOR-1K）125K 训练片段与 300 条多轮评测轨迹，EWMScore 61.48 SOTA。"
 ---
 
