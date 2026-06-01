@@ -2194,6 +2194,109 @@
     formalization: '#fb923c', '': '#64748b'
   };
   var DETAIL_MINI_TABLEAU10 = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac'];
+  var GRAPH_NODE_TYPE_LABEL = {
+    concept: '概念', method: '方法', task: '任务',
+    entity: '工具', comparison: '对比', query: 'Query',
+    formalization: '形式化', '': 'Wiki'
+  };
+
+  function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId) {
+    var color = nodeFill(d);
+    var typeLabel = GRAPH_NODE_TYPE_LABEL[d.type] || d.type || 'Wiki';
+    var summary = d.summary || '';
+    if (summary.length > 100) summary = summary.slice(0, 100) + '…';
+    var communityLabel = d.community && communityLabelMap[d.community];
+    var community = communityLabel
+      ? '<div class="tt-summary">社区：' + escapeHtml(String(communityLabel)) + '</div>'
+      : '';
+    var linkHtml;
+    if (d.isCurrent) {
+      linkHtml = '<div class="tt-summary">当前页面</div>';
+    } else {
+      var pid = pathToId[d.id];
+      var href = pid ? detailHref(pid) : ('graph.html?focus=' + encodeURIComponent(d.id));
+      var linkText = pid ? '打开详情页 →' : '在完整图谱中查看 →';
+      linkHtml = '<a class="tt-link" href="' + escapeHtml(href) + '">' + escapeHtml(linkText) + '</a>';
+    }
+    return '<span class="tt-type" style="background:' + escapeHtml(String(color)) + ';color:#0d1117">' +
+      escapeHtml(String(typeLabel)) + '</span>' +
+      '<div class="tt-title">' + escapeHtml(String(d.label || d.id)) + '</div>' +
+      (summary ? '<div class="tt-summary">' + escapeHtml(String(summary)) + '</div>' : '') +
+      community +
+      linkHtml;
+  }
+
+  function setupGraphHoverTooltip(tooltipEl) {
+    var pinnedNode = null;
+    var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
+    function moveTooltip(ev) {
+      if (!tooltipEl) return;
+      var x = ev.clientX + 14;
+      var y = ev.clientY - 10;
+      var tw = tooltipEl.offsetWidth;
+      var th = tooltipEl.offsetHeight;
+      tooltipEl.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
+      tooltipEl.style.top = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+      tooltipEl.style.transform = '';
+    }
+
+    function hideTooltip() {
+      if (!tooltipEl) return;
+      tooltipEl.classList.add('hidden');
+      tooltipEl.setAttribute('aria-hidden', 'true');
+      tooltipEl.style.left = '';
+      tooltipEl.style.top = '';
+      tooltipEl.style.transform = '';
+      tooltipEl.style.right = '';
+      tooltipEl.style.bottom = '';
+    }
+
+    function showTooltip(ev, d, html) {
+      if (!tooltipEl) return;
+      tooltipEl.innerHTML = html;
+      tooltipEl.classList.remove('hidden');
+      tooltipEl.setAttribute('aria-hidden', 'false');
+      tooltipEl.style.left = '';
+      tooltipEl.style.top = '';
+      tooltipEl.style.width = '';
+      tooltipEl.style.transform = '';
+      if (isMobile) {
+        tooltipEl.classList.add('tt-pinned');
+        tooltipEl.style.right = '20px';
+        tooltipEl.style.bottom = '20px';
+        pinnedNode = d;
+      } else {
+        tooltipEl.classList.remove('tt-pinned');
+        moveTooltip(ev);
+      }
+    }
+
+    if (tooltipEl && !tooltipEl.dataset.hoverBound) {
+      tooltipEl.dataset.hoverBound = '1';
+      tooltipEl.addEventListener('click', function (ev) {
+        var link = ev.target.closest && ev.target.closest('.tt-link');
+        if (!link) return;
+        var href = link.getAttribute('href');
+        if (!href) return;
+        window.location.href = href;
+        setTimeout(function () {
+          pinnedNode = null;
+          hideTooltip();
+        }, 100);
+      });
+    }
+
+    return {
+      isMobile: isMobile,
+      show: showTooltip,
+      move: moveTooltip,
+      hide: hideTooltip,
+      getPinned: function () { return pinnedNode; },
+      clearPin: function () { pinnedNode = null; }
+    };
+  }
+
 
   function buildPathToDetailIdIndex(detailPages) {
     var idx = {};
@@ -2212,6 +2315,7 @@
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
     var metaEl = document.getElementById('detailMiniMapMeta');
+    var tooltipEl = document.getElementById('detail-mini-map-tooltip');
     if (!wrap || !svgEl || typeof window.d3 === 'undefined') return;
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) return;
@@ -2219,8 +2323,10 @@
     fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var palette = (window.d3 && window.d3.schemeTableau10) ? window.d3.schemeTableau10 : DETAIL_MINI_TABLEAU10;
       var communityColor = {};
+      var communityLabelMap = {};
       (gd.communities || []).forEach(function (c, i) {
         communityColor[c.id] = palette[i % palette.length];
+        communityLabelMap[c.id] = c.label || c.id;
       });
       var nodeMap = {};
       (gd.nodes || []).forEach(function (n) { nodeMap[n.id] = n; });
@@ -2240,12 +2346,30 @@
       var pathToId = buildPathToDetailIdIndex(detailPages);
       var nodes = [{
         id: currentPath, label: current.label || currentPath,
-        type: current.type || '', community: current.community || '', isCurrent: true
+        type: current.type || '', community: current.community || '',
+        summary: current.summary || '', isCurrent: true
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
-        return { id: id, label: n.label || id, type: n.type || '', community: n.community || '', isCurrent: false };
+        return {
+          id: id, label: n.label || id, type: n.type || '', community: n.community || '',
+          summary: n.summary || '', isCurrent: false
+        };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
+
+      function nodeFill(d) {
+        var cc = d.community && communityColor[d.community];
+        if (cc) return cc;
+        return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI[''];
+      }
+
+      var hoverTip = setupGraphHoverTooltip(tooltipEl);
+
+      function detailMiniNodeRadius(d, scale) {
+        var base = d.isCurrent ? 8 : 6;
+        return base * (scale || 1);
+      }
+
 
       wrap.hidden = false;
       var W = wrap.clientWidth || 700;
@@ -2284,19 +2408,42 @@
         .attr('class', function (d) { return d.isCurrent ? 'mini-node-current' : 'mini-node'; })
         .style('cursor', function (d) { return d.isCurrent ? 'default' : 'pointer'; })
         .on('click', function (ev, d) {
+          if (hoverTip.isMobile && !d.isCurrent) {
+            ev.stopPropagation();
+            if (hoverTip.getPinned() === d) {
+              hoverTip.clearPin();
+              hoverTip.hide();
+            } else {
+              hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId));
+            }
+            return;
+          }
           if (d.isCurrent) return;
           var pid = pathToId[d.id];
           if (pid) window.location.href = detailHref(pid);
+        })
+        .on('mouseenter', function (ev, d) {
+          if (hoverTip.isMobile) return;
+          window.d3.select(this).select('circle')
+            .attr('fill-opacity', 1)
+            .attr('r', function (node) { return detailMiniNodeRadius(node, 1.3); });
+          hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId));
+        })
+        .on('mousemove', function (ev) {
+          if (hoverTip.isMobile && hoverTip.getPinned()) return;
+          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.move(ev);
+        })
+        .on('mouseleave', function () {
+          if (hoverTip.isMobile) return;
+          window.d3.select(this).select('circle')
+            .attr('fill-opacity', 0.9)
+            .attr('r', function (node) { return detailMiniNodeRadius(node); });
+          if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
         });
 
-      nodeG.append('title').text(function (d) { return d.label; });
       nodeG.append('circle')
-        .attr('r', function (d) { return d.isCurrent ? 8 : 6; })
-        .attr('fill', function (d) {
-          var cc = d.community && communityColor[d.community];
-          if (cc) return cc;
-          return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI[''];
-        })
+        .attr('r', function (d) { return detailMiniNodeRadius(d); })
+        .attr('fill', function (d) { return nodeFill(d); })
         .attr('fill-opacity', 0.9);
       nodeG.append('text')
         .text(function (d) { return d.label.length > 10 ? d.label.slice(0, 10) + '…' : d.label; })
@@ -2316,7 +2463,7 @@
       if (metaEl) {
         var totalDeg = Object.keys(neighborSet).length;
         var shown = neighborIds.length;
-        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 拖拽平移 · 点击跳转';
+        metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 悬停预览 · 拖拽平移 · 点击跳转';
       }
     }).catch(function () {
       if (metaEl) metaEl.textContent = '邻居数据加载失败';
