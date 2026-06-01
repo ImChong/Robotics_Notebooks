@@ -3,18 +3,115 @@
   var miniSvg  = document.getElementById('mini-graph-svg');
   var statsEl  = document.getElementById('mini-graph-stats');
   var expandEl = document.getElementById('mini-graph-expand');
+  var tooltip  = document.getElementById('mini-graph-tooltip');
   if (!miniWrap || !miniSvg) return;
+
+  var TYPE_LABEL = {
+    concept: '概念', method: '方法', task: '任务',
+    entity: '工具', comparison: '对比', query: 'Query',
+    formalization: '形式化', '': 'Wiki'
+  };
+
+  var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  var pinnedNode = null;
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function toDetailId(path) {
+    return String(path).replace(/\//g, '-').replace('.md', '');
+  }
 
   function miniGraphTheme() {
     var dark = document.documentElement.getAttribute('data-theme') !== 'light';
     return {
       background: dark ? '#0d1117' : '#eef2f7',
       edge: dark ? 'rgba(255,255,255,0.07)' : 'rgba(0,0,0,0.10)',
-      label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)', // 提高对比度
+      label: dark ? 'rgba(255,255,255,0.75)' : 'rgba(0,0,0,0.70)',
       stats: dark ? 'rgba(255,255,255,0.55)' : 'rgba(0,0,0,0.62)',
-      link: dark ? '#60a5fa' : '#2563eb', // 使用更标准的蓝色
+      link: dark ? '#60a5fa' : '#2563eb',
       linkBorder: dark ? 'rgba(96,165,250,0.30)' : 'rgba(37,99,235,0.30)'
     };
+  }
+
+  function tooltipHtml(d, nodeFill, communityLabelMap) {
+    var color = nodeFill(d);
+    var typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
+    var summary = d.summary || '';
+    if (summary.length > 100) summary = summary.slice(0, 100) + '…';
+    var detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
+    var communityLabel = d.community && communityLabelMap[d.community];
+    var community = communityLabel
+      ? '<div class="tt-summary">社区：' + escapeHtml(String(communityLabel)) + '</div>'
+      : '';
+    return '<span class="tt-type" style="background:' + escapeHtml(String(color)) + ';color:#0d1117">' +
+      escapeHtml(String(typeLabel)) + '</span>' +
+      '<div class="tt-title">' + escapeHtml(String(d.label || d.id)) + '</div>' +
+      (summary ? '<div class="tt-summary">' + escapeHtml(String(summary)) + '</div>' : '') +
+      community +
+      '<a class="tt-link" href="' + detailUrl + '">打开详情页 →</a>';
+  }
+
+  function showTooltip(ev, d, nodeFill, communityLabelMap) {
+    if (!tooltip) return;
+    tooltip.innerHTML = tooltipHtml(d, nodeFill, communityLabelMap);
+    tooltip.classList.remove('hidden');
+    tooltip.setAttribute('aria-hidden', 'false');
+    tooltip.style.left = '';
+    tooltip.style.top = '';
+    tooltip.style.width = '';
+    tooltip.style.transform = '';
+    if (isMobile) {
+      tooltip.classList.add('tt-pinned');
+      tooltip.style.right = '20px';
+      tooltip.style.bottom = '20px';
+      pinnedNode = d;
+    } else {
+      tooltip.classList.remove('tt-pinned');
+      moveTooltip(ev);
+    }
+  }
+
+  function moveTooltip(ev) {
+    if (!tooltip) return;
+    var x = ev.clientX + 14;
+    var y = ev.clientY - 10;
+    var tw = tooltip.offsetWidth;
+    var th = tooltip.offsetHeight;
+    tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
+    tooltip.style.top = (y + th > window.innerHeight - 20 ? y - th : y) + 'px';
+    tooltip.style.transform = '';
+  }
+
+  function hideTooltip() {
+    if (!tooltip) return;
+    tooltip.classList.add('hidden');
+    tooltip.setAttribute('aria-hidden', 'true');
+    tooltip.style.left = '';
+    tooltip.style.top = '';
+    tooltip.style.transform = '';
+    tooltip.style.right = '';
+    tooltip.style.bottom = '';
+  }
+
+  if (tooltip) {
+    tooltip.addEventListener('click', function(ev) {
+      var link = ev.target.closest && ev.target.closest('.tt-link');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      if (!href) return;
+      window.location.href = href;
+      setTimeout(function() {
+        pinnedNode = null;
+        hideTooltip();
+      }, 100);
+    });
   }
 
   var TABLEAU10 = ['#4e79a7','#f28e2b','#e15759','#76b7b2','#59a14f','#edc948','#b07aa1','#ff9da7','#9c755f','#bab0ac'];
@@ -22,13 +119,16 @@
   fetch('exports/link-graph.json').then(function(r){ return r.json(); }).then(function(gd) {
     var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
     var communityFill = {};
+    var communityLabelMap = {};
     (gd.communities || []).forEach(function(c, idx) {
       communityFill[c.id] = palette[idx % palette.length];
+      communityLabelMap[c.id] = c.label || c.id;
     });
     function nodeFill(d) {
       if (d.community && communityFill[d.community]) return communityFill[d.community];
       return palette[palette.length - 1];
     }
+
     fetch('exports/graph-stats.json').then(function(r){ return r.json(); }).then(function(stats) {
       var totalNodes = gd.nodes.length, totalEdges = gd.edges.length;
       var degreeMap = {};
@@ -37,14 +137,20 @@
         degreeMap[e.target] = (degreeMap[e.target]||0)+1;
       });
 
-      // Top-40 by degree
       var topIds = new Set(
         gd.nodes.slice().sort(function(a,b){ return (degreeMap[b.id]||0)-(degreeMap[a.id]||0); })
         .slice(0,40).map(function(n){ return n.id; })
       );
 
       var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
-        return { id:n.id, label:n.label||n.id, type:n.type||'', community:n.community||'', _degree:degreeMap[n.id]||0 };
+        return {
+          id: n.id,
+          label: n.label || n.id,
+          type: n.type || '',
+          community: n.community || '',
+          summary: n.summary || '',
+          _degree: degreeMap[n.id] || 0
+        };
       });
       var nodeIdSet = new Set(nodes.map(function(n){ return n.id; }));
       var edges = gd.edges.filter(function(e){
@@ -58,6 +164,9 @@
       var g = svg.append('g');
       var lineLayer = g.append('g');
       var nodeLayer = g.append('g');
+
+      var line;
+      var label;
 
       function applyMiniGraphTheme() {
         var theme = miniGraphTheme();
@@ -81,22 +190,40 @@
         .force('collision', d3.forceCollide().radius(12).strength(0.6))
         .alphaDecay(0.03);
 
-      var line = lineLayer.selectAll('line').data(edges).join('line')
+      line = lineLayer.selectAll('line').data(edges).join('line')
         .attr('stroke-width',1);
 
       var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
         .style('cursor','pointer')
         .on('click', function(ev, d) {
+          if (isMobile) {
+            ev.stopPropagation();
+            if (pinnedNode === d) {
+              pinnedNode = null;
+              hideTooltip();
+            } else {
+              showTooltip(ev, d, nodeFill, communityLabelMap);
+            }
+            return;
+          }
           window.location.href = 'graph.html?focus=' + encodeURIComponent(d.id);
         })
         .on('mouseenter', function(ev, d) {
+          if (isMobile) return;
           d3.select(this).select('circle').attr('fill-opacity', 1).attr('r', function(){
             return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)) * 1.3;
           });
+          showTooltip(ev, d, nodeFill, communityLabelMap);
+        })
+        .on('mousemove', function(ev) {
+          if (isMobile && pinnedNode) return;
+          if (!isMobile || !pinnedNode) moveTooltip(ev);
         })
         .on('mouseleave', function(ev, d) {
+          if (isMobile) return;
           d3.select(this).select('circle').attr('fill-opacity', 0.9).attr('r',
             Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)));
+          if (!isMobile || !pinnedNode) hideTooltip();
         });
 
       nodeG.append('circle')
@@ -104,15 +231,15 @@
         .attr('fill', function(d){ return nodeFill(d); })
         .attr('fill-opacity', 0.9);
 
-      var label = nodeG.append('text')
+      label = nodeG.append('text')
         .text(function(d){ return d.label.length>12 ? d.label.slice(0,12)+'…' : d.label; })
         .attr('dy', function(d){ return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2))+11; })
         .attr('text-anchor','middle')
-        .attr('font-size','10px') // 稍大一点以提高清晰度
+        .attr('font-size','10px')
         .attr('pointer-events','none');
 
       applyMiniGraphTheme();
-      
+
       var observer = new MutationObserver(function() {
         applyMiniGraphTheme();
       });
