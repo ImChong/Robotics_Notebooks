@@ -1310,11 +1310,11 @@
       wrap.className = 'roadmap-stage-embed-wrap roadmap-stage-entry-embed';
       wrap.setAttribute('data-roadmap-stage-embed', String(stages[i].id || '').toLowerCase());
       wrap.innerHTML = '<ol class="roadmap-vtree">' + row + '</ol>';
-      var anchor = entryAnchors[i];
-      if (anchor.mode === 'replace') {
-        anchor.element.replaceWith(wrap);
+      var placement = entryAnchors[i];
+      if (placement.mode === 'replace') {
+        placement.element.replaceWith(wrap);
       } else {
-        anchor.element.parentNode.insertBefore(wrap, anchor.element);
+        placement.element.parentNode.insertBefore(wrap, placement.element);
       }
     }
     return true;
