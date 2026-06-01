@@ -205,6 +205,7 @@
 | [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
 | [x] [wechat_embodied_ai_lab_bfm_41_papers_survey.md](blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) | 具身智能研究室：41 篇 BFM 运控基座技术地图（五类问题各建 `wiki/overview/bfm-category-*` 图谱 hub；`Ei32la_vo0UW9Y_QCAqB2g`） |
 | [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`；见 `humanoid_amp_survey_19_catalog.md`） |
+| [x] [wechat_human_five_humanoid_hardware_101.md](blogs/wechat_human_five_humanoid_hardware_101.md) | 微信公众号 human five：《Humanoid Hardware 入门 101》四万字硬件拆解（Agent Reach + Camoufox；`10hYwFzC1EuCypFVzC6QGQ`；七类 `wiki/overview/humanoid-hardware-101-*` 图谱 hub） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 | [x] [worldlabs_spark_2_0_streaming_3dgs.md](blogs/worldlabs_spark_2_0_streaming_3dgs.md) | World Labs：Spark 2.0 流式 3DGS（LoD splat 树、.RAD、虚拟 splat 分页）技术博客归档 |

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] ingest | sources/blogs/wechat_human_five_humanoid_hardware_101.md — Agent Reach 抓取 human five《Humanoid Hardware 入门 101》并建七类子系统图谱
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_human_five_humanoid_hardware_101.md`](sources/blogs/wechat_human_five_humanoid_hardware_101.md)（<https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ>）；落盘 [`sources/raw/wechat_humanoid_hardware_101_2026-06-01.md`](sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- 沉淀页面：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)（父节点 + Mermaid）；子节点 [`humanoid-hardware-101-chassis-materials`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`actuation-sensing-chain`](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md)、[`linear-transmission-bearings`](wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md)、[`integrated-actuators`](wiki/overview/humanoid-hardware-101-integrated-actuators.md)、[`power-compute-electronics`](wiki/overview/humanoid-hardware-101-power-compute-electronics.md)、[`sensing-end-effectors`](wiki/overview/humanoid-hardware-101-sensing-end-effectors.md)、[`supply-chain-economics`](wiki/overview/humanoid-hardware-101-supply-chain-economics.md)
+- 交叉更新：[`wiki/queries/humanoid-hardware-selection.md`](wiki/queries/humanoid-hardware-selection.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-05-31] query | wiki/queries/cross-embodiment-transfer-strategy.md — 跨具身策略迁移选型指南（V23 P1 WBT 知识链收官）
 
 - 新建 wiki：[cross-embodiment-transfer-strategy.md](wiki/queries/cross-embodiment-transfer-strategy.md)（单具身重训 + 重定向 / Any2Any 高效后训练 / 多具身联合训练三路径：9 维「算力 × 数据 × 泛化」对照表 + Mermaid 决策树 + 7 类典型故障模式 + 4 条推荐组合 pipeline；定位为 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) 阶段 5 选型横切面）。
