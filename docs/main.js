@@ -1252,6 +1252,23 @@
     }, true);
   }
 
+  /** 自测参考答案展开后，补渲染其中尚未出图的 Mermaid（常见于默认折叠的 details）。 */
+  function bindSelftestMermaidRerender(container) {
+    if (!container || container.getAttribute('data-selftest-mermaid-bound') === '1') return;
+    container.setAttribute('data-selftest-mermaid-bound', '1');
+    container.addEventListener('toggle', function (ev) {
+      var details = ev.target;
+      if (!details || details.tagName !== 'DETAILS') return;
+      if (!details.classList || !details.classList.contains('selftest-answers')) return;
+      if (!details.open) return;
+      var pending = Array.from(details.querySelectorAll('.mermaid')).filter(function (node) {
+        return !node.querySelector('svg');
+      });
+      if (!pending.length) return;
+      renderDetailMermaid(details);
+    }, true);
+  }
+
   /** 在单个 L 章节（h2 与下一同级 h2 之间）定位「本阶段入口」段落；无则回退到首个 h3 前。 */
   function findRoadmapStageEntryAnchor(h2) {
     if (!h2) return null;
@@ -2744,6 +2761,7 @@
       }
       wrapRoadmapCollapsibleMajorHeadings(contentEl);
       bindRoadmapSectionMermaidRerender(contentEl);
+      bindSelftestMermaidRerender(contentEl);
       renderDetailMermaid(contentEl);
       bindDetailTocSpy(contentEl, tocEl);
       window.addEventListener('hashchange', function () { scrollToDetailHashTarget(contentEl); notifyTocSpyScrollSync(); });

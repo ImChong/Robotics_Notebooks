@@ -215,6 +215,19 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  A[需要插值 / 组合两个朝向] --> B{在 SO3 流形上操作?}
+  B -->|否：逐元素加减| X[结果一般不正交，跳出 SO3]
+  B -->|是| C{更偏好哪种表示?}
+  C -->|四元数| D[SLERP 插值]
+  C -->|旋转矩阵 / 李代数| E["R(t)=R0 exp(t log(R0^T R1))"]
+  F[SE3 作用在几何对象] --> G{点还是方向向量?}
+  G -->|点| H["v' = Rv + p"]
+  G -->|方向| I["v' = Rv（不受平移）"]
+```
+
 <ol>
 <li><strong>R 为何不能直接相加 / 插值：</strong> 旋转矩阵属于 SO(3) 流形（\(R^\top R=I,\ \det R=1\)），不是向量空间；逐元素相加或线性插值后一般不再正交，会跳出 SO(3)。插值朝向要在流形上做：四元数 SLERP，或在李代数上 \(R(t)=R_0\exp\!\big(t\log(R_0^\top R_1)\big)\)。</li>
 <li><strong>SE(3) 作用在点 / 向量：</strong> 齐次坐标下 \(\tilde v' = g\,\tilde v\)，展开即 \(v' = Rv + p\)（点，受平移）；若 \(v\) 是自由方向向量（不受平移），则只旋转 \(v' = Rv\)。关键是区分"点"与"方向"。</li>
@@ -291,6 +304,23 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart LR
+  Js["space Jacobian J_s"] --> Ad["伴随 Ad(T_bs)"]
+  Ad --> Jb["body Jacobian J_b"]
+  Tgt[任务目标定义在哪个坐标系?] -->|世界 / 固定基| UseS[用 J_s]
+  Tgt -->|末端体坐标系| UseB[用 J_b]
+```
+
+```mermaid
+flowchart TD
+  IK[6R + 球腕 IK] --> S{肩前 / 后}
+  S --> E{肘上 / 下}
+  E --> W{腕翻转}
+  W --> Eight["最多 2^3 = 8 组解"]
+```
+
 <ol>
 <li><strong>space ↔ body Jacobian：</strong> \(J_b = [\mathrm{Ad}_{T_{bs}}]\,J_s\)，其中 \(T_{bs}=T_{sb}^{-1}\)、\([\mathrm{Ad}]\) 为 6×6 伴随矩阵。\(J_s\) 把关节速度映射到"在固定基坐标系下表达的"末端 twist，\(J_b\) 映射到"在末端体坐标系下表达的"twist。目标定义在哪个坐标系就用对应 Jacobian：视觉伺服 / 末端力控常用 \(J_b\)，世界系目标用 \(J_s\)。</li>
 <li><strong>IK 解的个数：</strong> 带球型手腕的 6R 机械臂最多 8 组解，来自肩前 / 后、肘上 / 下、腕翻转三个二元选择（\(2^3=8\)）；一般非球腕 6R 最多可达 16 组。"肘上 / 肘下"来自求肘关节角时的 \(\pm\) 二次解——同一末端位姿，肘可朝上拱或朝下拱。</li>
@@ -368,6 +398,22 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart LR
+  fc[接触力 f_c] --> Jt["J_c^T"]
+  Jt --> tau[关节力矩 tau]
+  tau --> WBC[WBC：在动力学与接触约束下分配 tau]
+```
+
+```mermaid
+flowchart TD
+  Need{控制循环要什么?}
+  Need -->|逆动力学 tau 前馈| RNEA[RNEA O n]
+  Need -->|质量矩阵 M| CRBA[CRBA O n^2]
+  Need -->|仿真正向积分 qdd| ABA[ABA O n]
+```
+
 <ol>
 <li><strong>固定基动力学标准形式：</strong> \(M(q)\ddot q + C(q,\dot q)\dot q + g(q) = \tau\)。\(M(q)\)：对称正定质量 / 惯量矩阵，刻画产生加速度所需的广义力（惯性）；\(C(q,\dot q)\dot q\)：科里奥利与离心项，源于惯量随构型变化及速度耦合；\(g(q)\)：重力广义力。</li>
 <li><strong>浮动基为何需 base 状态：</strong> 浮动基躯干没有固定底座，其 6 维位姿本身是自由变量。只用关节量 \((q,\dot q)\) 无法表达整机在世界中的平移 / 旋转与动量，也写不出 CoM / ZMP / 接触等平衡约束，故状态须含 base pose 与 base vel，总维度约为 \((n+6)\) 位姿 + \((n+6)\) 速度。</li>
@@ -440,6 +486,19 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  Start[线性二次最优控制] --> C1{LTI + 无约束 + 无穷时域?}
+  C1 -->|是| LQR["MPC 解 = LQR u=-Kx"]
+  C1 -->|否| MPC[必须用 MPC]
+  MPC --> R1[状态 / 输入约束]
+  MPC --> R2[非线性 / 有限时域 / 轨迹跟踪]
+  Imp[力控交互选型] --> I1[可测力 + 力矩驱动?]
+  I1 -->|是| Imped[阻抗：运动进、力出]
+  I1 -->|否 位置驱动 + 刚性环境| Adm[导纳：力进、运动出]
+```
+
 <ol>
 <li><strong>LQR 与 MPC 何时等价：</strong> 当系统线性时不变、代价二次、无约束、且 MPC 预测时域趋于无穷时，MPC 的解就是无限时域 LQR 的反馈律 \(u=-Kx\)。一旦出现状态 / 输入约束（最常见）、非线性、有限 / 时变时域或需跟踪参考轨迹，就必须用 MPC。</li>
 <li><strong>QP 凸性判定：</strong> 目标函数 Hessian 半正定（\(\tfrac12 x^\top P x\) 中 \(P\succeq 0\)）、约束为线性等式加凸（仿射）不等式，即为凸。WBC 偏好凸 QP，因其有唯一全局最优、求解快且确定性收敛，OSQP / qpOASES 能在 1 kHz 实时求解；非凸会有局部极小、求解时间不可控，对实时安全控制不可接受。</li>
@@ -584,6 +643,18 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  LIP[LIP：z_c 恒定] --> Lin["水平动力学线性、CoM-ZMP 可解析"]
+  Break[跳跃 / 楼梯 / 深蹲] --> Vary[z_c 时变或腾空]
+  Vary --> Need[需变高度 / centroidal / 全身模型]
+  Mon[在线监测平衡] --> CoP[算 CoP / ZMP]
+  CoP --> Poly{在支撑多边形内?}
+  Poly -->|否 / 触界| Fall[翻倒风险：法向力趋零 + IMU 异常]
+  DCM[DCM / Capture Point] --> Prev[前瞻落点：xi = x + xdot/omega]
+```
+
 <ol>
 <li><strong>LIP 为何假设 CoM 高度固定：</strong> 高度 \(z_c\) 恒定时水平动力学线性化为 \(\ddot x = \tfrac{g}{z_c}\,(x - x_{\mathrm{zmp}})\)，解析可解且 CoM 与 ZMP 成线性关系。跳跃时 CoM 高度剧变甚至腾空（接触力为零）、上下楼梯 / 深蹲时 \(z_c\) 持续变化，该线性关系失效，需要变高度模型或 centroidal / 全身动力学。</li>
 <li><strong>ZMP 离开支撑多边形：</strong> ZMP 触及 / 越出支撑多边形即将翻倒（脚绕边缘转动、单边接触），此时该侧足底法向力趋零。工程上用足底力 / 力矩或压力阵列实时算 CoP（接触时 ZMP=CoP），看其是否触界；或检测足底一侧法向力趋零并叠加 IMU 出现非预期角加速度。</li>
@@ -634,6 +705,15 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart LR
+  Full["全身 (n+6) 维动力学"] --> Proj[投影到 6D 质心动量]
+  Proj --> Cent[Centroidal: h_g = A_g qdot]
+  Cent --> Lost[损失：具体构型 / 关节分布]
+  Lost --> WBC2[由下层 WBC 补回]
+```
+
 <ol>
 <li><strong>CMM 维度与零空间：</strong> \(A_g(q)\) 为 6×(n+6)（浮动基，n 个关节 + 6 维 base），把广义速度映射到 6 维质心动量（3 线动量 + 3 角动量）：\(h_g = A_g(q)\dot q\)。其零空间是"不改变整机线 / 角动量"的内部自运动（如对称挥臂相互抵消、绕 CoM 的内部重构），即动量守恒下的自由度。</li>
 <li><strong>为何是 model order reduction：</strong> 它把 \((n+6)\) 维全身动力学投影到 6 维质心动量空间，只保留"合外力 / 力矩 = 动量变化率"\(\big(\dot h_g = \textstyle\sum \text{wrench} + mg\big)\)，用少量状态抓住平衡最关键的量。损失的是各肢体具体构型 / 关节级分布（同一动量可由无穷多构型实现）、关节限位与碰撞——这些由下层 WBC 补回。</li>
@@ -687,6 +767,19 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  Bug[MPC 步态发抖] --> R1[1 参考轨迹是否抖]
+  R1 --> R2[2 求解器是否收敛 / warm-start]
+  R2 --> R3[3 频率 vs 求解延迟 / one-step delay]
+  R3 --> R4[4 权重：跟踪过硬或 Delta-u 过小]
+  R4 --> R5[5 接触切换约束突变 / 摩擦锥过紧]
+  R5 --> R6[6 状态估计噪声与延迟]
+  Mode{选型} --> Convex[Convex MPC：快、定 schedule 平地走]
+  Mode --> NL[Nonlinear MPC：跑跳 / 复杂地形 / 接触优化]
+```
+
 <ol>
 <li><strong>MPC 发抖排查顺序：</strong> 由外到内——① 参考是否本身抖（上游 footstep / CoM 轨迹不连续）；② 求解器是否真收敛 / 触迭代上限、有无 warm-start；③ 时序：控制频率、求解延迟、是否补偿 one-step delay；④ 权重：跟踪过硬而平滑 / 正则过软导致控制量高频震荡，加 \(\Delta u\) 惩罚；⑤ 模型 / 约束：接触切换处约束突变、摩擦锥 / ZMP 约束过紧；⑥ 状态估计噪声 / 延迟引入反馈抖动。</li>
 <li><strong>TrajOpt 与 MPC 区别：</strong> Trajectory Optimization 多为离线、对整段时域一次求一条最优轨迹（可全身动力学、长时域、初值敏感）；MPC 在线滚动——每周期解短时域 OCP、只执行第一步再重规划（receding horizon），靠反馈抗扰。人形里常混用，是因为 MPC 内核每步解的正是一个小型 trajectory optimization，数学形式（OCP）相同，区别仅在"离线一次 vs 在线滚动 + 是否实时"。</li>
@@ -740,6 +833,17 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  MPCout[MPC：CoM / 接触力 / 末端参考] --> WBC[TSID / WBC QP]
+  WBC --> Hard[硬约束：动力学 + 接触零加速度 + 摩擦锥]
+  WBC --> Soft[软任务：CoM / 足端 / 姿态跟踪]
+  Conflict[CoM 参考 vs 接触冲突?] --> Prio[接触 / 动力学最高优先级]
+  Prio --> Null[在零空间内尽量跟踪 CoM]
+  ImpZ[阻抗任务常置高优先级] --> Safe[保证接触力整形与安全]
+```
+
 <ol>
 <li><strong>TSID 的 QP 约束与目标：</strong> 等式如：① 浮动基动力学一致性 \(M\ddot q + h = S^\top \tau + J_c^\top f\)；② 刚性接触零加速度 \(J_c\ddot q + \dot J_c\dot q = 0\)。不等式如：① 接触力落在摩擦锥内；② 关节力矩 / 位置 / 速度限位（或 ZMP 在支撑多边形内）。目标函数通常是各任务加权二次跟踪误差之和 \(\sum_i w_i\lVert J_i\ddot q + \dot J_i\dot q - \ddot x_i^{\mathrm{des}}\rVert^2\)（CoM、足端、躯干姿态、姿势正则）加上对 \(\tau,f\) 的正则。</li>
 <li><strong>CoM 参考与接触约束冲突：</strong> 若接触 / 动力学一致性设为硬约束，WBC 会优先保接触可行，CoM 参考只被"尽量"跟踪，出现稳态误差或被裁剪。处理：用任务优先级——接触 / 动力学放最高（硬约束），CoM 跟踪放较低优先级软任务、在不违反接触的零空间内最优逼近；HQP 严格分层，加权 QP 用大权重近似分层；必要时上层 MPC 据反馈调整参考。</li>
@@ -821,6 +925,16 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  Jump[策略学到小跳前进?] --> C1[惩罚双脚同时离地 / 限制 air-time]
+  C1 --> C2[惩罚 base 垂直速度 / CoM 起伏]
+  C2 --> C3[奖励规整步态与接触时序]
+  C3 --> C4[降低纯前进项 + 力矩平滑]
+  C4 --> C5[AMP / motion prior 约束风格]
+```
+
 <ol>
 <li><strong>PPO 的 clipping：</strong> 用重要性比 \(r=\pi_\theta/\pi_{\mathrm{old}}\)，目标取 \(\min\!\big(r\hat A,\ \mathrm{clip}(r,1-\epsilon,1+\epsilon)\hat A\big)\)。当一步更新让 \(r\) 偏离 1 过多时，clip 截断 advantage 增益，使越出信赖域的更新拿不到额外回报，从而抑制过大的策略跳变（近似信赖域）。\(\epsilon\) 太大：约束太松、更新过激、易崩；太小：更新太保守、收敛慢、样本利用率低。</li>
 <li><strong>样本效率与为何仍用 PPO：</strong> 同数据量下 off-policy 的 SAC 更省样本（有 replay buffer 反复利用历史），on-policy 的 PPO 数据用完即弃。但人形 RL 主流仍用 PPO，因为大规模并行仿真（IsaacGym 上万环境）让样本"便宜"、瓶颈在 wall-clock 而非样本数，且 PPO 实现简单、超参鲁棒、与并行 on-policy 采样契合、训练稳定、易加 curriculum / DR。</li>
@@ -877,6 +991,16 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  Act[人形 RL action] --> Pos[关节目标位置 + 底层 PD]
+  Pos --> Why[易训、平滑、对噪声鲁棒、sim2real 对齐增益]
+  Teach[Teacher-Student] --> Priv[Teacher 用特权：摩擦 / 地形 / 真实参数]
+  Priv --> Stud[Student 仅 IMU / 编码器 / 可选视觉]
+  Stud --> Distill[蒸馏到可部署策略]
+```
+
 <ol>
 <li><strong>action space 选择：</strong> 人形 RL 主流用 position（输出关节目标位置 / 相对默认姿态的偏移，交底层 PD 跟踪）。IsaacLab 默认这种，因为 PD 在高频跟踪、给策略一个低频平滑易学的接口，自带阻尼与稳定性、对网络输出噪声鲁棒，sim2real 时只要对齐 PD 增益即可；直接 torque 高频易抖、对延迟敏感，既难训也难迁移。</li>
 <li><strong>特权信息：</strong> 指仿真可得、真机部署拿不到的精确量：真实地面摩擦 / 接触力、地形高度图、机器人质量 / 惯量、外力扰动、精确 base 速度等。teacher 用它训得又快又好；student 只能用真机可得的本体感（IMU、编码器、历史）加可选视觉，通过蒸馏 / 模仿 teacher 学到受限观测下的策略——因为部署时没有这些特权传感。</li>
@@ -931,6 +1055,18 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  BC[BC 只在专家状态分布上训练] --> Drift[策略误差导致状态漂移]
+  Drift --> O1["误差 ~ O(eps T^2)"]
+  DAg[DAgger] --> Roll[在策略访问状态上 roll-out]
+  Roll --> Label[Expert 重新标注并聚合数据]
+  Label --> O2["误差 ~ O(eps T)"]
+  Ret[Motion Retargeting] --> R1[比例不同：IK 匹配末端 / 接触]
+  Ret --> R2[限位不同：裁剪 + 约束优化]
+```
+
 <ol>
 <li><strong>BC 的 compounding error：</strong> 训练只见专家访问过的状态分布，部署时策略自身的小误差把它带到没见过的状态，误差沿时间累积（covariate shift / 状态分布漂移）。数学上若每步误差为 \(\epsilon\)，总误差随时域 \(T\) 呈 \(O(\epsilon T^2)\) 二次放大——一旦偏离，后续状态分布与训练分布失配，错误自我强化。</li>
 <li><strong>DAgger 为何缓解、代价：</strong> DAgger 让策略在自己访问的状态上 roll-out，再请 expert 对这些状态标注正确动作并聚合进数据集迭代，使训练分布逐渐覆盖策略实际遭遇的状态，消除 covariate shift，把误差从 \(O(\epsilon T^2)\) 降到 \(O(\epsilon T)\)。代价：需要一个可随时查询的在线 expert 持续标注（成本高），且在真机上 roll-out 不成熟策略可能不安全。</li>
@@ -995,6 +1131,20 @@ flowchart LR
 
 <details class="selftest-answers">
 <summary>参考答案（点击展开）</summary>
+
+```mermaid
+flowchart TD
+  PPO[仿真训好的 PPO] --> S1[1 System ID]
+  S1 --> S2[2 执行器：限幅 / 延迟 / 带宽]
+  S2 --> S3[3 观测对齐：噪声 / 坐标系 / 滤波]
+  S3 --> S4[4 训练注入延迟 + DR]
+  S4 --> S5[5 安全上机：限速 / 急停 / fallback]
+  DR[Domain Randomization] --> Big[过大：过保守或学不会]
+  DR --> Small[过小：gap 仍在、上机即败]
+  Big --> Tune[以 SysID 为中心逐步加宽 + 真机反馈]
+  Small --> Tune
+```
+
 <ol>
 <li><strong>真机部署前必做 5 件事：</strong> ① System Identification 辨识真实质量 / 惯量、关节摩擦、PD 增益、力矩-电流曲线；② 执行器建模——加入力矩限幅、传动延迟 / 带宽、电机一阶滞后；③ 观测对齐——传感器噪声 / 偏置 / 延迟、坐标系与单位、滤波与训练时一致；④ 在训练中注入延迟 / 噪声 / 外扰并做 Domain Randomization 提升鲁棒；⑤ 安全与渐进上机——限位限速、力矩饱和、急停、吊装 / 逐步放权并备好 fallback 控制器。</li>
 <li><strong>DR 范围过大 / 过小：</strong> 太大——任务过难，策略学得过度保守（蹲低、慢动作）牺牲性能甚至学不会（信号被噪声淹没）；太小——覆盖不到真机参数，sim2real gap 仍大、上机即败（过拟合仿真）。定边界：以辨识值为中心、按硬件不确定度（传感 / 装配 / 磨损）设范围并逐步加宽（curriculum），用真机 / 留出验证反馈调，在仍能收敛的前提下尽量覆盖真实分布。</li>

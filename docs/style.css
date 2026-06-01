@@ -1811,6 +1811,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .selftest-answers li::marker {
   color: var(--text-muted);
 }
+.selftest-answers .mermaid {
+  margin: 0.5rem 0 0.85rem;
+  max-width: 100%;
+}
+.selftest-answers .mermaid + .mermaid {
+  margin-top: 0.35rem;
+}
 
 /* V22 P3：详情页关联项按社区分布小条形图 */
 .related-community-dist {
