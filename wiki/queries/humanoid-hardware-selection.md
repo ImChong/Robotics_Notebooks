@@ -3,10 +3,13 @@ title: 人形机器人硬件选型指南
 type: query
 status: complete
 created: 2026-04-14
-updated: 2026-04-14
+updated: 2026-06-01
 summary: 对比当前主流人形机器人平台（G1 / H1 / Unitree B2 / Figure / Atlas），从研究场景和工程目标给出选型建议。
+related:
+  - ../overview/humanoid-hardware-101-technology-map.md
 sources:
   - ../../sources/papers/humanoid_hardware.md
+  - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「做人形机器人运动控制研究，该选哪个硬件平台？」
@@ -130,6 +133,7 @@ sources:
 
 ## 参考来源
 
+- [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — human five 公众号硬件 101（部件级权衡）
 - Unitree G1 产品页与 SDK 文档
 - Fourier GR1 技术白皮书
 - Rudin et al., *Learning to Walk in Minutes* (2022) — 大规模仿真训练基准
@@ -139,6 +143,7 @@ sources:
 
 ## 关联页面
 
+- [Humanoid Hardware 101 技术地图](../overview/humanoid-hardware-101-technology-map.md) — 部件级 BOM、执行器与供应链（与本文整机选型互补）
 - [Locomotion](../tasks/locomotion.md) — 平台选择直接影响 locomotion 任务的难度和方案
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 操作任务需要关节数量和灵巧手支持
 - [Sim2Real](../concepts/sim2real.md) — 硬件特性影响 sim2real 策略（SEA vs 刚性关节）

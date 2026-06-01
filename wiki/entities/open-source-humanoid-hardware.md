@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, hardware, open-source, robotics, research]
 status: complete
-updated: 2026-05-23
+updated: 2026-06-01
 related:
+  - ../overview/humanoid-hardware-101-technology-map.md
   - ./humanoid-robot.md
   - ./roboto-origin.md
   - ./asimov-v1.md
@@ -19,6 +20,7 @@ related:
   - ../queries/humanoid-hardware-selection.md
   - ../roadmaps/humanoid-control-roadmap.md
 sources:
+  - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/repos/roboto_origin.md
   - ../../sources/repos/asimov-v1.md

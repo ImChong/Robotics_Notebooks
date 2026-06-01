@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] fix(wiki) | wiki/overview/humanoid-hardware-101-technology-map.md — 修复七类子系统 Mermaid（子图直连改节点边、去 click、htmlLabels 换行）
+
+- 根因：子图 `G1 --> G4` 直连在 `securityLevel: strict` 下易解析失败；`click` 指令被站点 Mermaid 配置禁用；标签内 `/` 与 `·` 增加歧义。
+- 变更：改为 `CH/M/LS --> ACT --> ROB` 节点级边；标签用 `<br/>` 分行；分类入口保留下方表格链接。
+- 关联页面：`wiki/overview/humanoid-hardware-101-technology-map.md`
+- 验证：`make ci-preflight` 通过。
+
+## [2026-06-01] ingest | sources/blogs/wechat_human_five_humanoid_hardware_101.md — Agent Reach 抓取 human five《Humanoid Hardware 入门 101》并建七类子系统图谱
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_human_five_humanoid_hardware_101.md`](sources/blogs/wechat_human_five_humanoid_hardware_101.md)（<https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ>）；落盘 [`sources/raw/wechat_humanoid_hardware_101_2026-06-01.md`](sources/raw/wechat_humanoid_hardware_101_2026-06-01.md)
+- 沉淀页面：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)（父节点 + Mermaid）；子节点 [`humanoid-hardware-101-chassis-materials`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`actuation-sensing-chain`](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md)、[`linear-transmission-bearings`](wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md)、[`integrated-actuators`](wiki/overview/humanoid-hardware-101-integrated-actuators.md)、[`power-compute-electronics`](wiki/overview/humanoid-hardware-101-power-compute-electronics.md)、[`sensing-end-effectors`](wiki/overview/humanoid-hardware-101-sensing-end-effectors.md)、[`supply-chain-economics`](wiki/overview/humanoid-hardware-101-supply-chain-economics.md)
+- 交叉更新：[`wiki/queries/humanoid-hardware-selection.md`](wiki/queries/humanoid-hardware-selection.md)、[`wiki/entities/open-source-humanoid-hardware.md`](wiki/entities/open-source-humanoid-hardware.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-01] fix(ux) | docs/main.js — 修复运动控制路线页 L1–L7 章节被 L0 自测块吞没
 
 - 根因：`<details class="selftest-answers">` 内的 ` ```mermaid ` 会提前 `flushHtmlBlock()`，导致 `<details>` 未闭合，后续 L1–L7 的 h2 落入错误 DOM，`wrapRoadmapCollapsibleMajorHeadings` 只显示到 L0。
