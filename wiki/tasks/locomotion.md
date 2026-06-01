@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-30
+updated: 2026-05-31
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -38,6 +38,7 @@ related:
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-barkour-quadruped-agility-benchmark.md
+  - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ../entities/paper-variable-impedance-contact-rl.md
   - ../entities/jackhan-walke3-e3-ecosystem.md
   - ../methods/disney-olaf-character-robot.md
@@ -257,6 +258,7 @@ flowchart TD
 
 ### 论文入口
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
+- [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口

@@ -44,6 +44,8 @@
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
 | [x] [bfm_survey_arxiv_2506_20487.md](papers/bfm_survey_arxiv_2506_20487.md) | BFM 综述：人形 WBC 行为基础模型 taxonomy（arXiv:2506.20487，IEEE TPAMI 2025）摘录与 wiki 映射 |
 | [x] [bfm_awesome_41_catalog.md](papers/bfm_awesome_41_catalog.md) | awesome-bfm-papers：**41 篇 BFM 论文 + 10 数据集** 独立 source 总索引（`papers/bfm_awesome_*.md`，配套微信公众号 41 篇专题） |
+| [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
+| [x] [omniretarget_arxiv_2509_26633.md](papers/omniretarget_arxiv_2509_26633.md) | OmniRetarget：interaction mesh 交互保留重定向与数据增广（arXiv:2509.26633；PHP 上游）摘录与 wiki 映射 |
 | [x] [humanoid_rl_stack_42_catalog.md](papers/humanoid_rl_stack_42_catalog.md) | 具身智能研究室 42 篇 humanoid RL 身体系统栈：独立 `humanoid_rl_stack_*` source + `paper-hrl-stack-*` 实体总索引 |
 | [x] [humanoid_amp_survey_19_catalog.md](papers/humanoid_amp_survey_19_catalog.md) | 具身智能研究室 19 篇 AMP 运动先验：独立 `humanoid_amp_survey_*` source + `paper-amp-survey-*` 实体总索引 |
 | [x] [bifrost_umi_arxiv_2605_03452.md](papers/bifrost_umi_arxiv_2605_03452.md) | BifrostUMI：无机器人示范 + 扩散高层 + SKR + G1 全身 visuomotor（arXiv:2605.03452，BAAI Aether）摘录与 wiki 映射 |
@@ -212,6 +214,7 @@
 |------|------|
 | [x] [amass-dataset.md](sites/amass-dataset.md) | AMASS：MPI-IS 统一 SMPL 人体动捕元数据集（站点与论文索引） |
 | [x] [apollo-lab-yale-apollo-resources-github-io.md](sites/apollo-lab-yale-apollo-resources-github-io.md) | apollo-lab-yale.github.io/apollo-resources：URDD 浏览器内可视化（Three.js + GitHub API 列机器人） |
+| [x] [php-parkour-github-io.md](sites/php-parkour-github-io.md) | PHP 项目页 php-parkour.github.io（RSS 2026、浏览器 MuJoCo demo、跑酷实机视频；配套 arXiv:2602.15827） |
 | [x] [bfm4humanoid-github-io.md](sites/bfm4humanoid-github-io.md) | BFM 项目页 bfm4humanoid.github.io（Roundhouse Kick / Side Salto / VR 遥操作演示，代码 In Coming） |
 | [x] [bifrost-umi-project.md](sites/bifrost-umi-project.md) | BifrostUMI 项目页 baai-aether.github.io/BifrostUMI（三层级方法、采集硬件、G1 实验、BibTeX） |
 | [x] [businesswire-lingbot-map-2026-04-16.md](sites/businesswire-lingbot-map-2026-04-16.md) | Business Wire：LingBot-Map 媒体发布稿（传播侧参考，性能数字需回查论文） |

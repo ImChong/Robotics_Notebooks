@@ -7,6 +7,14 @@
 - 进度：V23 P1「WBT 知识链 (+3)」三页（pipeline / 四方法对比 / 跨具身 Query）全部完成，标记为 `[x]`。
 - 验证：`make lint` 全绿（孤儿页消解）、`eval_search_quality` 37/37 通过。
 
+## [2026-05-31] ingest | sources/papers/php_parkour_arxiv_2602_15827.md、sources/sites/php-parkour-github-io.md、sources/papers/omniretarget_arxiv_2509_26633.md — PHP/RSS2026 与 OmniRetarget 深读；wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md、wiki/entities/paper-hrl-stack-03-omniretarget.md
+
+## [2026-05-31] fix(ux) | docs/main.js — 路线页自测参考答案等 HTML 块内公式补蓝色边框包裹
+
+- 根因：`<details class="selftest-answers">` 等原样 HTML 块绕过 `renderMathBlocks`，KaTeX 能渲染但缺少 `math-inline` / `math-block` 与 detail 一致的蓝框样式。
+- 变更：新增 `applyMathBlocksInHtmlFragment`，在 `flushHtmlBlock` 中对 HTML 片段文本节点补公式包裹。
+- 验证：`roadmap.html?id=roadmap-motion-control` 展开参考答案后行内公式带蓝框；`make ci-preflight` 通过。
+
 ## [2026-05-31] structural | roadmap/motion-control.md — 各 L 层补充英文缩写速查表（缩写 / 全称 / 简要说明）
 
 - 变更：[roadmap/motion-control.md](roadmap/motion-control.md) 在 L−1～L7 及 L4.1–L4.4、L5.1–L5.3、L7.1–L7.5 增加统一格式「英文缩写速查」表；L−1 原「必备术语速查」改为三列英文全称版。
