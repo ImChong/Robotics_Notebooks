@@ -440,6 +440,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 #roadmapSummary.roadmap-hero-summary-list {
   margin-top: 8px;
+  max-width: none;
+  width: 100%;
 }
 .roadmap-hero-summary {
   margin: 0;
@@ -447,14 +449,26 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   list-style: disc;
   color: var(--text-muted);
   font-size: 0.98rem;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
 }
 .roadmap-hero-summary li {
   margin: 0.35rem 0;
   line-height: 1.55;
-  max-width: 52ch;
+  max-width: none;
 }
 .roadmap-hero-summary li::marker {
   color: var(--accent, #00d4ff);
+}
+/* 宽屏：首屏导读与下方正文主栏左缘对齐（侧栏 TOC 320px + gap 40px，见 .detail-toc-panel） */
+@media (min-width: 1200px) {
+  .page-hero.detail-hero .detail-hero-top > div:first-child {
+    margin-inline-start: 360px;
+    width: calc(100% - 360px);
+    max-width: calc(var(--content-max-width) - 360px);
+    box-sizing: border-box;
+  }
 }
 /* 阶段速览嵌在「正文」主标题下：与主栏大标题共用 #roadmap-content.section 顶距，侧栏 TOC 与之对齐 */
 .roadmap-content-section #roadmap-content #roadmap-flow.roadmap-flow-in-content {
