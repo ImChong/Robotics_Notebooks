@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] fix(ux) | docs/main.js — 修复运动控制路线页 L1–L7 章节被 L0 自测块吞没
+
+- 根因：`<details class="selftest-answers">` 内的 ` ```mermaid ` 会提前 `flushHtmlBlock()`，导致 `<details>` 未闭合，后续 L1–L7 的 h2 落入错误 DOM，`wrapRoadmapCollapsibleMajorHeadings` 只显示到 L0。
+- 变更：HTML 块解析中保留围栏行直至 `</details>`；`flushHtmlBlock` 时将块内 mermaid 转为 `.mermaid`。
+- 验证：`roadmap.html?id=roadmap-motion-control` 顶层折叠章节含 L0–L7；`make ci-preflight` 通过。
+
 ## [2026-05-31] query | wiki/queries/cross-embodiment-transfer-strategy.md — 跨具身策略迁移选型指南（V23 P1 WBT 知识链收官）
 
 - 新建 wiki：[cross-embodiment-transfer-strategy.md](wiki/queries/cross-embodiment-transfer-strategy.md)（单具身重训 + 重定向 / Any2Any 高效后训练 / 多具身联合训练三路径：9 维「算力 × 数据 × 泛化」对照表 + Mermaid 决策树 + 7 类典型故障模式 + 4 条推荐组合 pipeline；定位为 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) 阶段 5 选型横切面）。

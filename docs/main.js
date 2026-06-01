@@ -638,6 +638,13 @@
       .replace(/</g, '&lt;');
   }
 
+  /** 将 HTML 片段内的 ```mermaid 围栏转为可渲染的 .mermaid 节点（路线自测块等）。 */
+  function convertMermaidFencesInHtmlFragment(html) {
+    return String(html || '').replace(/```mermaid\s*\n([\s\S]*?)```/gi, function (_, code) {
+      return '<div class="mermaid">' + escapeMermaidForInnerHtml(String(code || '').trim()) + '</div>';
+    });
+  }
+
   function renderCodeBlock(code, lang) {
     const normalizedLang = normalizeCodeLang(lang);
     if (normalizedLang === 'mermaid') {
@@ -1743,7 +1750,8 @@
 
     function flushHtmlBlock() {
       if (!htmlBlockLines.length) return;
-      blocks.push(applyMathBlocksInHtmlFragment(htmlBlockLines.join('\n')));
+      var htmlFragment = convertMermaidFencesInHtmlFragment(htmlBlockLines.join('\n'));
+      blocks.push(applyMathBlocksInHtmlFragment(htmlFragment));
       htmlBlockLines = [];
       htmlBlockOpenTag = '';
     }
@@ -1759,6 +1767,10 @@
       const trimmed = line.trim();
 
       if (trimmed.startsWith('```')) {
+        if (htmlBlockOpenTag) {
+          htmlBlockLines.push(line);
+          return;
+        }
         if (inCodeBlock) {
           flushCodeBlock();
           inCodeBlock = false;
