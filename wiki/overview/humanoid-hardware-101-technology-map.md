@@ -41,40 +41,33 @@ summary: "依据 human five 公众号《Humanoid Hardware 入门 101》长文，
 ```mermaid
 flowchart TB
   subgraph G1["01 机身与材料"]
-    CH["铝合金骨架 · 钢耐磨件 · 镁/钛/复材减重"]
+    CH["铝合金骨架<br/>钢耐磨件<br/>镁钛与复材减重"]
   end
   subgraph G2["02 传动与感知链"]
-    M["伺服电机 · 谐波/RV/行星减速 · 磁编码器"]
+    M["伺服电机<br/>谐波 RV 行星减速<br/>磁编码器"]
   end
   subgraph G3["03 直线与轴承"]
-    LS["滚珠/行星滚柱丝杠 · 交叉滚子轴承"]
+    LS["滚珠与行星滚柱丝杠<br/>交叉滚子轴承"]
   end
   subgraph G4["04 集成执行器"]
-    ACT["电动关节模块 · 直线腿关节"]
+    ACT["电动关节模块<br/>直线腿关节"]
   end
   subgraph G5["05 能源与计算"]
-    PW["锂电 · Thor/NX 计算 · PCB/BMS"]
+    PW["锂电<br/>Thor NX 计算<br/>PCB 与 BMS"]
   end
   subgraph G6["06 传感与末端"]
-    SN["IMU/相机 · 触觉 · 灵巧手/夹爪"]
+    SN["IMU 与相机<br/>触觉<br/>灵巧手与夹爪"]
   end
   subgraph G7["07 产业与成本"]
-    EC["BOM 拆解 · 中美供应链 · 2 万美元目标"]
+    EC["BOM 拆解<br/>中美供应链<br/>两万美元目标"]
   end
-  G1 --> G4
-  G2 --> G4
-  G3 --> G4
-  G4 --> ROB["整机人形"]
-  G5 --> ROB
-  G6 --> ROB
-  G7 -.->|"约束设计"| G4
-  click G1 href "./humanoid-hardware-101-chassis-materials.md" "分类 hub"
-  click G2 href "./humanoid-hardware-101-actuation-sensing-chain.md" "分类 hub"
-  click G3 href "./humanoid-hardware-101-linear-transmission-bearings.md" "分类 hub"
-  click G4 href "./humanoid-hardware-101-integrated-actuators.md" "分类 hub"
-  click G5 href "./humanoid-hardware-101-power-compute-electronics.md" "分类 hub"
-  click G6 href "./humanoid-hardware-101-sensing-end-effectors.md" "分类 hub"
-  click G7 href "./humanoid-hardware-101-supply-chain-economics.md" "分类 hub"
+  CH --> ACT
+  M --> ACT
+  LS --> ACT
+  ACT --> ROB["整机人形"]
+  PW --> ROB
+  SN --> ROB
+  EC -.->|约束设计| ACT
 ```
 
 ## 七类子系统分类节点（图谱 hub）
