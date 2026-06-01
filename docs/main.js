@@ -1250,6 +1250,23 @@
     }, true);
   }
 
+  /** 自测参考答案展开后，补渲染其中尚未出图的 Mermaid（常见于默认折叠的 details）。 */
+  function bindSelftestMermaidRerender(container) {
+    if (!container || container.getAttribute('data-selftest-mermaid-bound') === '1') return;
+    container.setAttribute('data-selftest-mermaid-bound', '1');
+    container.addEventListener('toggle', function (ev) {
+      var details = ev.target;
+      if (!details || details.tagName !== 'DETAILS') return;
+      if (!details.classList || !details.classList.contains('selftest-answers')) return;
+      if (!details.open) return;
+      var pending = Array.from(details.querySelectorAll('.mermaid')).filter(function (node) {
+        return !node.querySelector('svg');
+      });
+      if (!pending.length) return;
+      renderDetailMermaid(details);
+    }, true);
+  }
+
   /**
    * When正文里已有对应的 L 章节标题（h2），把各阶段的「阶段速览」链接块插入到该标题下方，
    * 避免单独占一整段 mini-map 区。若任一阶段找不到匹配标题则返回 false，保留顶部整块速览。
