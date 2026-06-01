@@ -88,6 +88,7 @@ LQR 的二次型代价函数和 Riccati 方程解本质上就给出了一个 Lya
 
 ## 参考来源
 
+- [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — LQR / iLQR 一手资料索引
 - [optimal_control](../../sources/papers/optimal_control.md) — LQR / iLQR / 最优控制主线
 - [最优控制理论（Optimal Control Theory）](../../sources/papers/optimal_control_theory.md) — 轨迹优化与稳定性分析背景
 - Khalil, *Nonlinear Systems* — 非线性系统稳定性分析经典教材

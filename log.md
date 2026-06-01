@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] ingest | sources/papers/kalman_filter_ekf_primary_refs.md、sources/papers/lqr_ilqr_primary_refs.md — KF/EKF/LQR/iLQR 一手资料入库并新建 KF 形式化页
+
+- 原始资料：[kalman_filter_ekf_primary_refs.md](sources/papers/kalman_filter_ekf_primary_refs.md)（Kalman 1960/61、Gelb 1974、Simon 2006 等）、[lqr_ilqr_primary_refs.md](sources/papers/lqr_ilqr_primary_refs.md)（Bryson & Ho 1975、Li & Todorov 2004、Tassa 2012/14 等）；课程：[welch_bishop_kalman_filter.md](sources/courses/welch_bishop_kalman_filter.md)、[mit_underactuated_kalman_lqr.md](sources/courses/mit_underactuated_kalman_lqr.md)
+- 沉淀页面：[wiki/formalizations/kalman-filter.md](wiki/formalizations/kalman-filter.md)（新建）；交叉更新 [ekf.md](wiki/formalizations/ekf.md)、[lqr.md](wiki/formalizations/lqr.md)、[lqr-ilqr.md](wiki/methods/lqr-ilqr.md)、[state-estimation.md](wiki/concepts/state-estimation.md)
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-01] fix(ux) | docs/style.css — 撤销路线页首屏 360px 左缩进，与面包屑/正文左缘对齐
 
 - 变更：去掉 #470 误加的 `margin-inline-start: 360px`；保留首屏列表满宽与 `#roadmapSummary` 使用 `<div>`。

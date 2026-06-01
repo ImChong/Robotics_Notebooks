@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-01",
-  "node_count": 619,
-  "edge_count": 4327,
+  "node_count": 620,
+  "edge_count": 4336,
   "coverage": {
-    "covered": 617,
-    "total": 617,
+    "covered": 618,
+    "total": 618,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/kalman-filter.md",
+      "detail_id": "wiki-formalizations-kalman-filter",
+      "label": "Kalman Filter (KF)",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/ekf.md",
+      "detail_id": "wiki-formalizations-ekf",
+      "label": "Extended Kalman Filter (EKF)",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/lqr.md",
+      "detail_id": "wiki-formalizations-lqr",
+      "label": "LQR / iLQR",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/lqr-ilqr.md",
+      "detail_id": "wiki-methods-lqr-ilqr",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/state-estimation.md",
+      "detail_id": "wiki-concepts-state-estimation",
+      "label": "State Estimation",
+      "type": "concept",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
       "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
@@ -47,53 +87,13 @@
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
-      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-supply-chain-economics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-supply-chain-economics",
-      "label": "Humanoid Hardware 101 · 07：产业与成本地缘",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-hardware-selection.md",
-      "detail_id": "wiki-queries-humanoid-hardware-selection",
-      "label": "人形机器人硬件选型指南",
-      "type": "query",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-source-humanoid-hardware.md",
-      "detail_id": "entity-open-source-humanoid-hardware",
-      "label": "开源人形机器人硬件方案对比",
-      "type": "entity",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-    "label": "Humanoid Hardware 101：七类子系统技术地图",
-    "type": "overview",
+    "path": "wiki/formalizations/kalman-filter.md",
+    "detail_id": "wiki-formalizations-kalman-filter",
+    "label": "Kalman Filter (KF)",
+    "type": "formalization",
     "recency": "2026-06-01",
     "source": "log.md"
   }

@@ -2,7 +2,7 @@
 
 ## [2026-06-01] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **14** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,8 +25,19 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（12 个）
+- wiki/formalizations/ekf.md (wiki:2026-04-25 < sources/kalman_filter_ekf_primary_refs.md:2026-06-01)
+- wiki/concepts/state-estimation.md (wiki:2026-05-30 < sources/kalman_filter_ekf_primary_refs.md:2026-06-01)
+- wiki/formalizations/lqr.md (wiki:2026-04-25 < sources/kalman_filter_ekf_primary_refs.md:2026-06-01)
+- wiki/concepts/sensor-fusion.md (wiki:2026-04-20 < sources/kalman_filter_ekf_primary_refs.md:2026-06-01)
+- wiki/comparisons/kalman-filter-vs-optimization-based-estimation.md (wiki:2026-04-21 < sources/kalman_filter_ekf_primary_refs.md:2026-06-01)
+- wiki/methods/lqr-ilqr.md (wiki:2026-04-25 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/methods/trajectory-optimization.md (wiki:2026-05-30 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/formalizations/bellman-equation.md (wiki:2026-04-25 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/concepts/optimal-control.md (wiki:2026-04-18 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/formalizations/lyapunov.md (wiki:2026-04-17 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/entities/mujoco.md (wiki:2026-05-25 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
+- wiki/methods/model-predictive-control.md (wiki:2026-05-21 < sources/lqr_ilqr_primary_refs.md:2026-06-01)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -55,8 +66,9 @@
 ### ⚠️ Formalization 页面缺少公式块（0 个）
 - 无
 
-### ⚠️ Formalization 公式变量缺少正文物理含义解释（0 个）
-- 无
+### ⚠️ Formalization 公式变量缺少正文物理含义解释（2 个）
+- wiki/formalizations/ekf.md（变量缺解释：I, Q, R）
+- wiki/formalizations/kalman-filter.md（变量缺解释：B, C, I）
 
 ### ⚠️ README checklist 链接版本不一致（0 个）
 - 无
@@ -82,4 +94,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：617/617 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：618/618 (100%) wiki/entity 页有 ingest 来源

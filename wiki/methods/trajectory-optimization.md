@@ -76,6 +76,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链传动在 TO/MPC 中的 \(J_A\) 与电机侧约束
 
 ## 参考来源
+- [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文索引
 - Betts, J. T. (2010). *Practical Methods for Optimal Control and Estimation Using Nonlinear Programming*.
 - Posa, M., Cantu, C., & Tedrake, R. (2014). *A direct method for trajectory optimization of rigid bodies through contact*.
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)

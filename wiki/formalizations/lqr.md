@@ -3,14 +3,17 @@ type: formalization
 tags: [control, lqr, optimal-control, linear-systems, locomotion]
 status: complete
 related:
+  - ./kalman-filter.md
   - ../concepts/optimal-control.md
   - ../methods/model-predictive-control.md
   - ../methods/trajectory-optimization.md
 sources:
+  - ../../sources/papers/lqr_ilqr_primary_refs.md
   - ../../sources/papers/optimal_control_theory.md
   - ../../sources/papers/optimal_control.md
+  - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "LQR / iLQR"
-updated: 2026-04-25
+updated: 2026-06-01
 ---
 
 # LQR / iLQR
@@ -139,9 +142,9 @@ MPC 在某种意义上是"在线、有约束、有限时域的 LQR"。
 
 ## 参考来源
 
-- Anderson & Moore, *Optimal Control: Linear Quadratic Methods* — LQR 经典教材
-- Todorov & Li, *A generalized iterative LQG method for locally-optimal feedback control* (2005) — iLQR 核心论文
-- Tassa et al., *Synthesis and stabilization of complex behaviors through online trajectory optimization* (2012) — MuJoCo + iLQR 系统
+- [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — LQR / iLQR 一手索引（Kalman 1964；Bryson & Ho 1975；Li & Todorov 2004 等）
+- [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — MIT LQR 三视角与 DDP 课程
+- [optimal_control.md](../../sources/papers/optimal_control.md) — DDP / Bellman 等最优控制主线归档
 
 ## 推荐继续阅读
 

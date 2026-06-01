@@ -25,6 +25,8 @@
 | [-] [humanoid_hardware.md](papers/humanoid_hardware.md) | 人形机器人硬件论文归档（当前暂缓） |
 | [x] [modern_robotics_textbook.md](papers/modern_robotics_textbook.md) | Lynch & Park《Modern Robotics》教材：李群/螺旋理论统一描述运动学/动力学/控制（13 章） |
 | [x] [robot_link_rotor_inertia_primary_refs.md](papers/robot_link_rotor_inertia_primary_refs.md) | 连杆 URDF 惯量 + 转子反射惯量（MuJoCo armature / Gautier–Khalil 1990）一手资料索引 |
+| [x] [kalman_filter_ekf_primary_refs.md](papers/kalman_filter_ekf_primary_refs.md) | KF / EKF 一手论文与教材索引（Kalman 1960；Gelb 1974；Simon 2006 等） |
+| [x] [lqr_ilqr_primary_refs.md](papers/lqr_ilqr_primary_refs.md) | LQR / iLQR 一手论文与课程索引（Bryson & Ho 1975；Li & Todorov 2004 等） |
 | [x] [universal_skeleton.md](papers/universal_skeleton.md) | HOVL：异构骨架开放词汇动作识别，多粒度动作-文本对齐（arXiv:2604.17013） |
 | [x] [doorman_opening_sim2real_arxiv_2512_01061.md](papers/doorman_opening_sim2real_arxiv_2512_01061.md) | DoorMan：人形纯 RGB 开门 loco-manipulation（arXiv:2512.01061，CVPR 2026）摘录与 wiki 映射 |
 | [x] [crisp_real2sim_iclr2026.md](papers/crisp_real2sim_iclr2026.md) | CRISP：单目视频平面原语 Real2Sim + 接触引导人形 RL（ICLR 2026）摘录与 wiki 映射 |
@@ -268,6 +270,8 @@
 |------|------|
 | [x] [uart_rs485_serial_embedded.md](courses/uart_rs485_serial_embedded.md) | UART / RS-232 / RS-485 异步串行与机器人现场布线入门（Wikipedia、TI SLLA383 等索引） |
 | [x] [motor_drive_firmware_bus_protocols.md](courses/motor_drive_firmware_bus_protocols.md) | 电机驱动器底软通信：CANopen/CiA402、CoE、私有 CAN、MIT 帧、DroneCAN 等选型索引 |
+| [x] [welch_bishop_kalman_filter.md](courses/welch_bishop_kalman_filter.md) | Welch & Bishop KF 入门教程（UNC TR / kalmanfilter.net） |
+| [x] [mit_underactuated_kalman_lqr.md](courses/mit_underactuated_kalman_lqr.md) | MIT Underactuated + Optimal Control 2025（估计 / LQR / DDP 模块） |
 | [x] [boyuai_hands_on_rl_elites_course.md](courses/boyuai_hands_on_rl_elites_course.md) | 伯禹平台《动手学强化学习》张伟楠视频课（免费，与蘑菇书/ hrl.boyuai.com 配套） |
 | [x] [nvidia_sim_to_real_so101_isaac.md](courses/nvidia_sim_to_real_so101_isaac.md) | NVIDIA：SO-101 操作臂 Sim2Real 动手课（GR00T/LeRobot/Isaac Lab、四类 gap 策略） |
 
