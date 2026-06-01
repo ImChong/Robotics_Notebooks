@@ -1157,7 +1157,11 @@
     parts.push('<li class="roadmap-vtree-item">');
     parts.push('<details class="' + stageClass + '"' + openAttr + '>');
     parts.push('<summary class="roadmap-vtree-summary">');
-    parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
+    if (opts.atEntry) {
+      parts.push('<span class="roadmap-vtree-step roadmap-vtree-step-icon" aria-hidden="true">🔗</span>');
+    } else {
+      parts.push('<span class="roadmap-vtree-step" aria-hidden="true">' + escapeHtml(String(index + 1)) + '</span>');
+    }
     parts.push(
       '<span class="roadmap-vtree-heading">' + escapeHtml(sid.toUpperCase() + ' · ' + title) + '</span>'
     );
