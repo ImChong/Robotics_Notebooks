@@ -2365,6 +2365,12 @@
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);
 
+      function detailMiniNodeRadius(d, scale) {
+        var base = d.isCurrent ? 8 : 6;
+        return base * (scale || 1);
+      }
+
+
       wrap.hidden = false;
       var W = wrap.clientWidth || 700;
       var H = 180;
@@ -2418,7 +2424,9 @@
         })
         .on('mouseenter', function (ev, d) {
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle').attr('fill-opacity', 1);
+          window.d3.select(this).select('circle')
+            .attr('fill-opacity', 1)
+            .attr('r', function (node) { return detailMiniNodeRadius(node, 1.3); });
           hoverTip.show(ev, d, buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId));
         })
         .on('mousemove', function (ev) {
@@ -2427,12 +2435,14 @@
         })
         .on('mouseleave', function () {
           if (hoverTip.isMobile) return;
-          window.d3.select(this).select('circle').attr('fill-opacity', 0.9);
+          window.d3.select(this).select('circle')
+            .attr('fill-opacity', 0.9)
+            .attr('r', function (node) { return detailMiniNodeRadius(node); });
           if (!hoverTip.isMobile || !hoverTip.getPinned()) hoverTip.hide();
         });
 
       nodeG.append('circle')
-        .attr('r', function (d) { return d.isCurrent ? 8 : 6; })
+        .attr('r', function (d) { return detailMiniNodeRadius(d); })
         .attr('fill', function (d) { return nodeFill(d); })
         .attr('fill-opacity', 0.9);
       nodeG.append('text')
