@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-01",
-  "node_count": 631,
-  "edge_count": 4404,
+  "node_count": 632,
+  "edge_count": 4413,
   "coverage": {
-    "covered": 629,
-    "total": 629,
+    "covered": 630,
+    "total": 630,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/kalman-filter.md",
+      "detail_id": "wiki-formalizations-kalman-filter",
+      "label": "Kalman Filter (KF)",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/ekf.md",
+      "detail_id": "wiki-formalizations-ekf",
+      "label": "Extended Kalman Filter (EKF)",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/lqr.md",
+      "detail_id": "wiki-formalizations-lqr",
+      "label": "LQR / iLQR",
+      "type": "formalization",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/lqr-ilqr.md",
+      "detail_id": "wiki-methods-lqr-ilqr",
+      "label": "LQR / iLQR 算法详解",
+      "type": "method",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/state-estimation.md",
+      "detail_id": "wiki-concepts-state-estimation",
+      "label": "State Estimation",
+      "type": "concept",
+      "recency": "2026-06-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/ego-9-papers-technology-map.md",
       "detail_id": "wiki-overview-ego-9-papers-technology-map",
@@ -47,53 +87,13 @@
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md",
-      "detail_id": "entity-paper-hrl-stack-33-ego_vision_world_model_for_humanoid",
-      "label": "Ego-Vision World Model for Humanoid Contact Planning",
-      "type": "entity",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-wem-world-ego-modeling.md",
-      "detail_id": "entity-paper-wem-world-ego-modeling",
-      "label": "WEM（World-Ego Modeling / World-Ego Model）",
-      "type": "entity",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-      "label": "Humanoid Hardware 101：七类子系统技术地图",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/ego-9-papers-technology-map.md",
-    "detail_id": "wiki-overview-ego-9-papers-technology-map",
-    "label": "Ego 技术地图：9 篇论文的四类问题视角",
-    "type": "overview",
+    "path": "wiki/formalizations/kalman-filter.md",
+    "detail_id": "wiki-formalizations-kalman-filter",
+    "label": "Kalman Filter (KF)",
+    "type": "formalization",
     "recency": "2026-06-01",
     "source": "log.md"
   }

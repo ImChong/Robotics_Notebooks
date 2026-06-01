@@ -66,6 +66,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 ## 参考来源
 
+- [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — MuJoCo + iLQR 在线轨迹优化（Tassa et al. 2012/14）
 - [MuJoCo 物理引擎（仓库归档）](../../sources/repos/mujoco.md)
 - [mujoco-mjx（MJX 子树归档）](../../sources/repos/mujoco-mjx.md)
 - Todorov, E., Erez, T., & Tassa, Y. (2012). *MuJoCo: A physics engine for model-based control*.

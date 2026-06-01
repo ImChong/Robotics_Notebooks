@@ -207,7 +207,7 @@ print("apply control:", u.ravel())
 - Bellicoso et al., *Convex Model Predictive Control for Bipedal Locomotion* — 双足行走 MPC 代表论文
 - [Optimal Control 2025 (YouTube Course)](https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI), Lecture 10: Convex MPC — 理论讲解
 - Acados (http://acados.org/) — 开源 NMPC 求解器，实现参考
-- **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)
+- **ingest 档案：** [sources/papers/mpc.md](../../sources/papers/mpc.md)、[lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md)（LQR 与 MPC 关系）
 
 ## 关联页面
 

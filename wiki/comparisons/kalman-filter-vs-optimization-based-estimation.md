@@ -49,6 +49,7 @@ summary: "状态估计方法对比：探讨了经典的卡尔曼滤波（EKF/UKF
 - [MDP 形式化](../formalizations/mdp.md)
 
 ## 参考来源
+- [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 一手资料索引
 - [sources/papers/perception.md](../../sources/papers/perception.md)
 - Sola, J. *Course on SLAM*.
 - Bloesch, M., et al. (2015). *Robust Visual-Inertial Odometry via Inexact Iterated Kalman Filtering*.

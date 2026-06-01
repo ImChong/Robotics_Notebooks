@@ -112,10 +112,9 @@ iLQR 常被称为“DDP 的简化版”。
 
 ## 参考来源
 
-- Li & Todorov, *Iterative Linear Quadratic Regulator Design for Control of Nonlinear Biological Movement Systems* (2004) — iLQR 经典论文。
-- Tassa et al., *Control-Limited Differential Dynamic Programming* (2014) — 解决带约束的 iLQR。
-- [Optimal Control Course (CMU 16-745)](../../references/README.md) — 理论推导背景。
-- **ingest 档案：** [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)
+- [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文与 MIT 课程索引（Li & Todorov 2004；Tassa et al. 2012/2014 等）
+- [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — DDP 与 iLQR 关系讲义
+- [optimal_control.md](../../sources/papers/optimal_control.md) — 最优控制与 DDP 历史主线
 
 ## 关联页面
 

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-01] ingest | sources/papers/kalman_filter_ekf_primary_refs.md、sources/papers/lqr_ilqr_primary_refs.md — KF/EKF/LQR/iLQR 一手资料入库并新建 KF 形式化页
+
+- 原始资料：[kalman_filter_ekf_primary_refs.md](sources/papers/kalman_filter_ekf_primary_refs.md)（Kalman 1960/61、Gelb 1974、Simon 2006 等）、[lqr_ilqr_primary_refs.md](sources/papers/lqr_ilqr_primary_refs.md)（Bryson & Ho 1975、Li & Todorov 2004、Tassa 2012/14 等）；课程：[welch_bishop_kalman_filter.md](sources/courses/welch_bishop_kalman_filter.md)、[mit_underactuated_kalman_lqr.md](sources/courses/mit_underactuated_kalman_lqr.md)
+- 沉淀页面：[wiki/formalizations/kalman-filter.md](wiki/formalizations/kalman-filter.md)（新建）；交叉更新 [ekf.md](wiki/formalizations/ekf.md)、[lqr.md](wiki/formalizations/lqr.md)、[lqr-ilqr.md](wiki/methods/lqr-ilqr.md)、[state-estimation.md](wiki/concepts/state-estimation.md)
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-01] ingest | sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md — Agent Reach 抓取 Ego 9 篇专题并建四类子系统图谱与 9 论文节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install git+https://github.com/Panniantong/Agent-Reach.git` + `agent-reach install --channels=wechat`）；微信正文经 `wechat-article-for-ai`（Camoufox）
