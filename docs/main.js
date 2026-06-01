@@ -2285,13 +2285,25 @@
       });
     }
 
+    function bindBlankDismiss(containerEl, nodeSelector) {
+      if (window.RNGraphTooltip && window.RNGraphTooltip.bindBlankDismiss) {
+        window.RNGraphTooltip.bindBlankDismiss(containerEl, {
+          isMobile: isMobile,
+          getPinned: function () { return pinnedNode; },
+          clearPin: function () { pinnedNode = null; },
+          hide: hideTooltip
+        }, { nodeSelector: nodeSelector, tooltipEl: tooltipEl });
+      }
+    }
+
     return {
       isMobile: isMobile,
       show: showTooltip,
       move: moveTooltip,
       hide: hideTooltip,
       getPinned: function () { return pinnedNode; },
-      clearPin: function () { pinnedNode = null; }
+      clearPin: function () { pinnedNode = null; },
+      bindBlankDismiss: bindBlankDismiss
     };
   }
 
@@ -2362,6 +2374,7 @@
       }
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);
+      hoverTip.bindBlankDismiss(svgEl, '.mini-node, .mini-node-current');
 
       function detailMiniNodeRadius(d, scale) {
         var base = d.isCurrent ? 8 : 6;

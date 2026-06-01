@@ -192,6 +192,7 @@
         .attr('stroke-width',1);
 
       var nodeG = nodeLayer.selectAll('g').data(nodes).join('g')
+        .attr('class', 'mini-graph-node')
         .style('cursor','pointer')
         .on('click', function(ev, d) {
           if (isMobile) {
@@ -264,6 +265,16 @@
         svg.transition().duration(600).call(zoom.transform,
           d3.zoomIdentity.translate(W/2-scale*cx, H/2-scale*cy).scale(scale));
       });
+
+
+      if (window.RNGraphTooltip) {
+        window.RNGraphTooltip.bindBlankDismiss(miniSvg, {
+          isMobile: isMobile,
+          getPinned: function() { return pinnedNode; },
+          clearPin: function() { pinnedNode = null; },
+          hide: hideTooltip
+        }, { nodeSelector: '.mini-graph-node', tooltipEl: tooltip });
+      }
 
       var orphans = (stats.orphan_nodes||[]).length;
       statsEl.textContent = totalNodes + ' 节点 · ' + totalEdges + ' 条边 · 孤儿 ' + orphans + ' 个 | 显示 Top-40';
