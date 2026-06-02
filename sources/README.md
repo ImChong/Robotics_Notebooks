@@ -211,6 +211,7 @@
 | [x] [wechat_embodied_ai_lab_bfm_41_papers_survey.md](blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) | 具身智能研究室：41 篇 BFM 运控基座技术地图（五类问题各建 `wiki/overview/bfm-category-*` 图谱 hub；`Ei32la_vo0UW9Y_QCAqB2g`） |
 | [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`；见 `humanoid_amp_survey_19_catalog.md`） |
 | [x] [wechat_human_five_humanoid_hardware_101.md](blogs/wechat_human_five_humanoid_hardware_101.md) | 微信公众号 human five：《Humanoid Hardware 入门 101》四万字硬件拆解（Agent Reach + Camoufox；`10hYwFzC1EuCypFVzC6QGQ`；七类 `wiki/overview/humanoid-hardware-101-*` 图谱 hub） |
+| [x] [wechat_human_five_humanoid_actuator_102.md](blogs/wechat_human_five_humanoid_actuator_102.md) | 微信公众号 human five：《Humanoid 执行器 入门 102》姊妹篇（`zinp6ulTorzfqmCR_HaI5A`；八章 `wiki/overview/humanoid-actuator-102-*` + 参考文献 catalog） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 | [x] [worldlabs_spark_2_0_streaming_3dgs.md](blogs/worldlabs_spark_2_0_streaming_3dgs.md) | World Labs：Spark 2.0 流式 3DGS（LoD splat 树、.RAD、虚拟 splat 分页）技术博客归档 |
@@ -234,6 +235,7 @@
 | [x] [daji-hxxxz0-github-io.md](sites/daji-hxxxz0-github-io.md) | DAJI 项目页 hxxxz0.github.io/DAJI_PAGE（预期关节意图、HumanML3D/BABEL 结果，arXiv:2605.14417） |
 | [x] [doorman-humanoid-github-io.md](sites/doorman-humanoid-github-io.md) | DoorMan 项目页 doorman-humanoid.github.io（管线叙述、失败案例、BibTeX、渲染工作流链接） |
 | [x] [esi-bench-project.md](sites/esi-bench-project.md) | ESI-Bench 项目页 esi-bench.github.io（任务 taxonomy、Key Findings、arXiv:2605.18746） |
+| [x] [mobilegym-dev.md](sites/mobilegym-dev.md) | MobileGym 官网 mobilegym.dev（Live Demo、Leaderboard、Sim-to-Real，arXiv:2605.26114） |
 | [x] [gentle-humanoid-axell-top.md](sites/gentle-humanoid-axell-top.md) | GentleHumanoid 项目页 gentle-humanoid.axell.top（浏览器 demo、人机/物交互与实验对比，arXiv:2511.04679） |
 | [x] [heracles-humanoid-control.md](sites/heracles-humanoid-control.md) | Heracles 项目页 heracles-humanoid-control.github.io（扩散中间件演示与 BibTeX，arXiv:2603.27756） |
 | [x] [gencad-github-io.md](sites/gencad-github-io.md) | GenCAD 项目页 gencad.github.io（图像条件 CAD program 生成 Demo，arXiv:2409.16294） |

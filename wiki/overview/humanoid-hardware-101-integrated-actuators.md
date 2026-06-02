@@ -5,6 +5,8 @@ status: complete
 updated: 2026-06-01
 summary: "Humanoid Hardware 101 · 04 集成执行器 — 电动主导（线束+软件）；腿膝踝偏直线高力、肩等大转角用旋转；Atlas 由液压转电、部分灵巧手仍液压。"
 related:
+  - ./humanoid-actuator-102-technology-map.md
+  - ./humanoid-actuator-102-split-architecture.md
   - ./humanoid-hardware-101-technology-map.md
   - ./humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-hardware-101-linear-transmission-bearings.md
@@ -40,6 +42,7 @@ sources:
 
 ## 关联页面
 
+- [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md) — 为何在腿上失效、三大物种
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [传动与感知链](./humanoid-hardware-101-actuation-sensing-chain.md)
 - [传感与末端执行器](./humanoid-hardware-101-sensing-end-effectors.md)

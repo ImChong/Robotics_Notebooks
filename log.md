@@ -7,6 +7,30 @@
 - 进度：V23 P2「安全微调知识链 (+3)」标记 1/3（`[~]` 进行中）。
 - 验证：`make lint` 全绿（1 条 INFO 不阻塞）；`make ci-preflight` 重生成派生文件。
 
+## [2026-06-02] ingest | sources/papers/mobilegym_arxiv_2605_26114.md、sources/repos/purewhiter_mobilegym.md、sources/sites/mobilegym-dev.md — MobileGym 入库
+
+- 沉淀页面：[`wiki/entities/mobilegym.md`](wiki/entities/mobilegym.md)
+
+## [2026-06-02] structural | schema/naming.md、scripts/generate_link_graph.py — 统一图谱社区名为「中文（English） 社区」并补全 override
+
+- 规范：[`schema/naming.md`](schema/naming.md) 新增「图谱社区命名」；[`scripts/generate_link_graph.py`](scripts/generate_link_graph.py) 增加 `COMMUNITY_HUB_NAME_RE` 校验与 WARNING
+- 修正社区名：规模化运动跟踪（SONIC）、人形硬件技术地图（Humanoid Hardware 101）、机器人学习（Robot Learning）、行为基础模型技术地图（BFM）
+- 测试：[`tests/test_community_naming.py`](tests/test_community_naming.py)
+- 验证：`make ci-preflight` 通过
+## [2026-06-02] structural | wiki/overview humanoid-hardware-101-* 与 humanoid-actuator-102-* — 首页最新知识节点补登子 hub
+
+- 父节点：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)
+- Hardware 101 子 hub：[`wiki/overview/humanoid-hardware-101-chassis-materials.md`](wiki/overview/humanoid-hardware-101-chassis-materials.md)、[`wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md`](wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md)、[`wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md`](wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md)、[`wiki/overview/humanoid-hardware-101-integrated-actuators.md`](wiki/overview/humanoid-hardware-101-integrated-actuators.md)、[`wiki/overview/humanoid-hardware-101-power-compute-electronics.md`](wiki/overview/humanoid-hardware-101-power-compute-electronics.md)、[`wiki/overview/humanoid-hardware-101-sensing-end-effectors.md`](wiki/overview/humanoid-hardware-101-sensing-end-effectors.md)、[`wiki/overview/humanoid-hardware-101-supply-chain-economics.md`](wiki/overview/humanoid-hardware-101-supply-chain-economics.md)
+- Actuator 102 子 hub：[`wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md`](wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md)、[`wiki/overview/humanoid-actuator-102-split-architecture.md`](wiki/overview/humanoid-actuator-102-split-architecture.md)、[`wiki/overview/humanoid-actuator-102-gear-reflected-inertia.md`](wiki/overview/humanoid-actuator-102-gear-reflected-inertia.md)、[`wiki/overview/humanoid-actuator-102-thermal-and-control.md`](wiki/overview/humanoid-actuator-102-thermal-and-control.md)、[`wiki/overview/humanoid-actuator-102-compliance-sensing.md`](wiki/overview/humanoid-actuator-102-compliance-sensing.md)、[`wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md`](wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md)、[`wiki/overview/humanoid-actuator-102-decision-species.md`](wiki/overview/humanoid-actuator-102-decision-species.md)、[`wiki/overview/humanoid-actuator-102-future-artificial-muscle.md`](wiki/overview/humanoid-actuator-102-future-artificial-muscle.md)
+- 验证：`make graph` 后 `exports/home-stats.json` 的 `latest_wiki_nodes` 含上述 17 个 hub。
+
+## [2026-06-02] ingest | sources/blogs/wechat_human_five_humanoid_actuator_102.md、sources/papers/humanoid_actuator_102_reference_catalog.md — Agent Reach 抓取 Humanoid 执行器 102 并建八章图谱
+
+- 工具：[Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0 + `wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_human_five_humanoid_actuator_102.md`](sources/blogs/wechat_human_five_humanoid_actuator_102.md)（<https://mp.weixin.qq.com/s/zinp6ulTorzfqmCR_HaI5A>）；落盘 [`sources/raw/wechat_humanoid_actuator_102_2026-06-02.md`](sources/raw/wechat_humanoid_actuator_102_2026-06-02.md)；参考资料 [`sources/papers/humanoid_actuator_102_reference_catalog.md`](sources/papers/humanoid_actuator_102_reference_catalog.md)
+- 沉淀页面：[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)（父节点）；子节点 [`wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md`](wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md)、[`wiki/overview/humanoid-actuator-102-split-architecture.md`](wiki/overview/humanoid-actuator-102-split-architecture.md)、[`wiki/overview/humanoid-actuator-102-gear-reflected-inertia.md`](wiki/overview/humanoid-actuator-102-gear-reflected-inertia.md)、[`wiki/overview/humanoid-actuator-102-thermal-and-control.md`](wiki/overview/humanoid-actuator-102-thermal-and-control.md)、[`wiki/overview/humanoid-actuator-102-compliance-sensing.md`](wiki/overview/humanoid-actuator-102-compliance-sensing.md)、[`wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md`](wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md)、[`wiki/overview/humanoid-actuator-102-decision-species.md`](wiki/overview/humanoid-actuator-102-decision-species.md)、[`wiki/overview/humanoid-actuator-102-future-artificial-muscle.md`](wiki/overview/humanoid-actuator-102-future-artificial-muscle.md)
+- 交叉更新：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-hardware-101-integrated-actuators.md`](wiki/overview/humanoid-hardware-101-integrated-actuators.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-02] ingest | sources/repos/nvidia_isaac_teleop.md — Isaac Teleop 入库；新建 wiki/entities/isaac-teleop.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/teleoperation.md
 
 - 原始资料：[nvidia_isaac_teleop.md](sources/repos/nvidia_isaac_teleop.md)（[GitHub](https://github.com/NVIDIA/IsaacTeleop)、[官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)、[Isaac Lab 功能页](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)）
