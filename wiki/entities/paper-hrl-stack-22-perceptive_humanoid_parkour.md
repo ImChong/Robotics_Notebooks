@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-02
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -66,7 +66,7 @@ flowchart TB
 
 ### 1）Motion matching 长程合成
 
-- **特征**（局部系）：短视界未来轨迹位姿、足部关节位速、根速度；给定 **2D 速度命令** 构造查询 **x̂_t**，在库中 **argmin ||x̂_t − x_i||²**。
+- **特征**（局部系）：短视界未来轨迹位姿、足部关节位速、根速度；给定 **2D 速度命令** 构造查询 $\hat{x}_t$，在库中 $\arg\min_i \|\hat{x}_t - x_i\|^2$。
 - **模板：** `Locomotion → Parkour Skill → Locomotion`；locomotion 作共享流形连接异质技能，避免为每对技能手工采集过渡。
 - **技能段：** 标注 **(s_k, e_k)** 与入技能窗口 **E_k**；执行技能时**顺序播放**、禁用进一步 matching，并把配对地形对齐到当前根位姿。
 - **多样性：** 速度档（1 / 2 m/s）× 五档转向；入技能前 locomotion 时长随机；障碍尺寸/位姿 ± 扰动；近场 **distractor** box。
@@ -76,7 +76,7 @@ flowchart TB
 | 阶段 | 观测 | 训练要点 |
 |------|------|----------|
 | **专家** | 参考关节/骨盆误差 + 本体 + **0.7 m height scan** + **全局根**（纠 reference–terrain 耦合 drift） | BeyondMimic 式 tracking reward；**adaptive sampling** 对难技能必需；action scale 统一为 1 |
-| **学生** | 本体 + **深度图**（WARP 渲染）+ 速度命令 | **L = λ_PPO L_PPO + λ_D L_D**；λ 线性课程；终止阈值 0.5 m→1 m 缓解左右对称；**均匀技能采样**（不用专家 adaptive sampling） |
+| **学生** | 本体 + **深度图**（WARP 渲染）+ 速度命令 | $L = \lambda_{\mathrm{PPO}} L_{\mathrm{PPO}} + \lambda_D L_D$；$\lambda$ 线性课程；终止阈值 0.5 m→1 m 缓解左右对称；**均匀技能采样**（不用专家 adaptive sampling） |
 
 - **Sim2Real：** 相机外参/延迟/深度噪声随机化；与专家共享动作空间与 DR。
 
