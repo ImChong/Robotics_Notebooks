@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 from build_search_index import generate_search_index
+from search_indexing import parse_frontmatter, strip_frontmatter
 from utils.paths import path_to_id
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -106,6 +107,7 @@ def clean_summary(text: str) -> str:
     text = text.strip()
     text = re.sub(r"^[-*]\s+", "", text)
     text = re.sub(r">\s*", "", text)
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
     text = text.replace("**", "")
     text = re.sub(r"\s+", " ", text)
     return text.strip(" ：:，,。") + (
@@ -113,16 +115,23 @@ def clean_summary(text: str) -> str:
     )
 
 
+LABELED_LINE_RE = re.compile(r"^\*\*([^*]+)\*\*[：:]\s*(.*)$")
+
+
+def _parse_labeled_line(stripped: str) -> tuple[str, str] | None:
+    m = LABELED_LINE_RE.match(stripped)
+    if not m:
+        return None
+    return m.group(1).strip(), m.group(2)
+
+
 ROADMAP_HERO_LABEL = "首屏导读"
 ROADMAP_SKIP_SUMMARY_LABELS = {ROADMAP_HERO_LABEL}
 
 
 def _labeled_section_label(stripped: str) -> str | None:
-    if not stripped.startswith("**") or "：" not in stripped:
-        return None
-    label, _sep, _tail = stripped.partition("：")
-    label = label.strip("* ").strip()
-    return label or None
+    parsed = _parse_labeled_line(stripped)
+    return parsed[0] if parsed else None
 
 
 def extract_labeled_bullets(text: str, label: str) -> List[str]:
@@ -187,37 +196,44 @@ def extract_roadmap_hero(text: str) -> tuple[List[str], str]:
     return bullets, short + ("。" if short and not short.endswith("…") else "")
 
 
-def extract_summary(text: str) -> str:
+def extract_summary(text: str, fm: dict[str, Any] | None = None) -> str:
+    fm = fm or {}
+    yaml_summary = fm.get("summary") or fm.get("description") or ""
+    if isinstance(yaml_summary, str) and yaml_summary.strip():
+        return clean_summary(yaml_summary.strip())
+
     lines = text.splitlines()
 
     for i in range(0, min(len(lines), 40)):
         stripped = lines[i].strip()
-        if _labeled_section_label(stripped) in ROADMAP_SKIP_SUMMARY_LABELS:
+        parsed = _parse_labeled_line(stripped)
+        if not parsed:
             continue
-        if stripped.startswith("**") and "：" in stripped:
-            _label, _sep, tail = stripped.partition("：")
-            if tail.strip():
-                return clean_summary(stripped)
-            # 仅「**摘要**：」占一行、正文在后续列表时：合并列表项为全文检索/备用摘要
-            bullets: List[str] = []
-            for j in range(i + 1, min(len(lines), i + 30)):
-                s = lines[j].strip()
-                if not s:
-                    if bullets:
-                        break
-                    continue
-                if s.startswith("## "):
-                    break
-                if s.startswith("- "):
-                    bullets.append(clean_summary(s[2:]))
-                elif bullets:
-                    break
-            if bullets:
-                merged = "；".join(b for b in bullets if b)
-                if len(merged) > 320:
-                    merged = merged[:317] + "…"
-                return merged if merged.endswith(("。", "…", "!", "?", ".")) else merged + "。"
+        label, tail = parsed
+        if label in ROADMAP_SKIP_SUMMARY_LABELS:
             continue
+        if tail.strip():
+            return clean_summary(stripped)
+        # 仅「**摘要**：」占一行、正文在后续列表时：合并列表项为全文检索/备用摘要
+        bullets: List[str] = []
+        for j in range(i + 1, min(len(lines), i + 30)):
+            s = lines[j].strip()
+            if not s:
+                if bullets:
+                    break
+                continue
+            if s.startswith("## "):
+                break
+            if s.startswith("- "):
+                bullets.append(clean_summary(s[2:]))
+            elif bullets:
+                break
+        if bullets:
+            merged = "；".join(b for b in bullets if b)
+            if len(merged) > 320:
+                merged = merged[:317] + "…"
+            return merged if merged.endswith(("。", "…", "!", "?", ".")) else merged + "。"
+        continue
 
     in_one_liner = False
     for line in lines:
@@ -234,7 +250,7 @@ def extract_summary(text: str) -> str:
 
     for line in lines[1:20]:
         stripped = line.strip()
-        if stripped and not stripped.startswith("#"):
+        if stripped and not stripped.startswith("#") and not _parse_labeled_line(stripped):
             return clean_summary(stripped)
     return ""
 
@@ -381,12 +397,14 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
 
 def build_item(path: Path) -> dict[str, Any]:
     text = read_text(path)
-    title = extract_title(text, path.stem)
+    fm = parse_frontmatter(text)
+    body_text = strip_frontmatter(text)
+    title = extract_title(body_text, path.stem)
     item: dict[str, Any] = {
         "id": path_to_id(path, ROOT),
         "title": title,
         "path": rel(path),
-        "summary": extract_summary(text),
+        "summary": extract_summary(body_text, fm),
         "content_markdown": extract_body_markdown(text),
         "tags": infer_tags(path, title, text),
         "related": collect_markdown_links(text, path),
