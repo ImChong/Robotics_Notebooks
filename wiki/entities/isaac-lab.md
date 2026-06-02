@@ -164,6 +164,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 ## 关联页面
 
 - [Isaac Gym / Isaac Lab 平台总览](./isaac-gym-isaac-lab.md) — 两代框架定位与迁移路径
+- [Isaac Teleop](./isaac-teleop.md) — XR 遥操作与示范采集的统一框架（Lab 3.x 主线）
 - [Isaac Gym](./isaac-gym.md) — 它的旧一代前身
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现
 - [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 物理后端集成探索
