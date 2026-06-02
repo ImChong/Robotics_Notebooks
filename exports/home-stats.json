@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-02",
-  "node_count": 632,
-  "edge_count": 4411,
+  "node_count": 633,
+  "edge_count": 4420,
   "coverage": {
-    "covered": 630,
-    "total": 630,
+    "covered": 631,
+    "total": 631,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/isaac-teleop.md",
+      "detail_id": "entity-isaac-teleop",
+      "label": "Isaac Teleop",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/kalman-filter.md",
       "detail_id": "wiki-formalizations-kalman-filter",
@@ -63,38 +87,14 @@
       "type": "overview",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-02-human-to-robot.md",
-      "detail_id": "wiki-overview-ego-category-02-human-to-robot",
-      "label": "Ego 分类 02：人→机器人",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-03-world-models.md",
-      "detail_id": "wiki-overview-ego-category-03-world-models",
-      "label": "Ego 分类 03：世界模型",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-04-ego-exo-fusion.md",
-      "detail_id": "wiki-overview-ego-category-04-ego-exo-fusion",
-      "label": "Ego 分类 04：Ego+Exo 融合",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/kalman-filter.md",
-    "detail_id": "wiki-formalizations-kalman-filter",
-    "label": "Kalman Filter (KF)",
-    "type": "formalization",
-    "recency": "2026-06-01",
+    "path": "wiki/entities/isaac-teleop.md",
+    "detail_id": "entity-isaac-teleop",
+    "label": "Isaac Teleop",
+    "type": "entity",
+    "recency": "2026-06-02",
     "source": "log.md"
   }
 }

@@ -80,6 +80,7 @@
 | [x] [brax.md](repos/brax.md) | Brax：JAX 可微物理与 RL 训练（README 维护边界与 MJX/Playground 指引） |
 | [x] [boyu_ai_hands_on_rl.md](repos/boyu_ai_hands_on_rl.md) | Hands-on-RL / 蘑菇书：中文 RL 教材 Jupyter 仓（PPO/SAC/MARL 等，配套 hrl.boyuai.com） |
 | [isaac_gym_isaac_lab.md](repos/isaac_gym_isaac_lab.md) | Isaac Gym / Isaac Lab |
+| [x] [nvidia_isaac_teleop.md](repos/nvidia_isaac_teleop.md) | Isaac Teleop：NVIDIA 统一仿真/真机 XR 遥操作、retargeting 与 Isaac Lab 集成 |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
 | [unitree.md](repos/unitree.md) | Unitree 硬件与 SDK |

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/repos/nvidia_isaac_teleop.md — Isaac Teleop 入库；新建 wiki/entities/isaac-teleop.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/teleoperation.md
+
+- 原始资料：[nvidia_isaac_teleop.md](sources/repos/nvidia_isaac_teleop.md)（[GitHub](https://github.com/NVIDIA/IsaacTeleop)、[官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)、[Isaac Lab 功能页](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)）
+- 沉淀页面：[wiki/entities/isaac-teleop.md](wiki/entities/isaac-teleop.md)；交叉 [isaac-lab.md](wiki/entities/isaac-lab.md)、[teleoperation.md](wiki/tasks/teleoperation.md)
+- 验证：`make ci-preflight` 通过
+
+
 ## [2026-06-01] ingest | sources/papers/kalman_filter_ekf_primary_refs.md、sources/papers/lqr_ilqr_primary_refs.md — KF/EKF/LQR/iLQR 一手资料入库并新建 KF 形式化页
 
 - 原始资料：[kalman_filter_ekf_primary_refs.md](sources/papers/kalman_filter_ekf_primary_refs.md)（Kalman 1960/61、Gelb 1974、Simon 2006 等）、[lqr_ilqr_primary_refs.md](sources/papers/lqr_ilqr_primary_refs.md)（Bryson & Ho 1975、Li & Todorov 2004、Tassa 2012/14 等）；课程：[welch_bishop_kalman_filter.md](sources/courses/welch_bishop_kalman_filter.md)、[mit_underactuated_kalman_lqr.md](sources/courses/mit_underactuated_kalman_lqr.md)
