@@ -268,12 +268,20 @@
 
 
       if (window.RNGraphTooltip) {
-        window.RNGraphTooltip.bindBlankDismiss(miniSvg, {
+        var tooltipApi = {
           isMobile: isMobile,
           getPinned: function() { return pinnedNode; },
           clearPin: function() { pinnedNode = null; },
           hide: hideTooltip
-        }, { nodeSelector: '.mini-graph-node', tooltipEl: tooltip });
+        };
+        window.RNGraphTooltip.bindBlankDismiss(miniSvg, tooltipApi, {
+          nodeSelector: '.mini-graph-node',
+          tooltipEl: tooltip
+        });
+        window.RNGraphTooltip.bindOutsideDismiss(miniSvg, tooltipApi, {
+          tooltipEl: tooltip,
+          dismissRootEl: document.querySelector('main')
+        });
       }
 
       var orphans = (stats.orphan_nodes||[]).length;

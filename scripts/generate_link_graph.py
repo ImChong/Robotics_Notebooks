@@ -682,6 +682,8 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
 
         for target in extract_internal_links(content, page):
             target_id = str(target.relative_to(REPO_ROOT))
+            if page_id == target_id:
+                continue
             key = (page_id, target_id)
             if key not in seen_edges:
                 seen_edges.add(key)

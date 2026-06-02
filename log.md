@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/repos/nvidia_isaac_teleop.md — Isaac Teleop 入库；新建 wiki/entities/isaac-teleop.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/teleoperation.md
+
+- 原始资料：[nvidia_isaac_teleop.md](sources/repos/nvidia_isaac_teleop.md)（[GitHub](https://github.com/NVIDIA/IsaacTeleop)、[官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)、[Isaac Lab 功能页](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)）
+- 沉淀页面：[wiki/entities/isaac-teleop.md](wiki/entities/isaac-teleop.md)；交叉 [isaac-lab.md](wiki/entities/isaac-lab.md)、[teleoperation.md](wiki/tasks/teleoperation.md)
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-01] structural | wiki/concepts/motion-retargeting.md、sim2real.md — 跨具身专题交叉补强（V23 P1 收官）
 
 - 变更：在 [motion-retargeting.md](wiki/concepts/motion-retargeting.md) 新增「三段流水线衔接：重定向产物 → WBT 训练数据 → 跨具身策略蒸馏」小节（映射/训练/迁移三段表格 + 衔接段落），关联页面补 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) / [跨具身迁移选型](wiki/queries/cross-embodiment-transfer-strategy.md) / [SONIC 四方对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 三条出边。
