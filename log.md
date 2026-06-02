@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/papers/shape_your_body_arxiv_2606_00702.md、sources/sites/shape-your-body-nico-bohlinger.md — Shape Your Body（VGDS 多具身价值梯度共设计）入库
+
+- 原始资料：[shape_your_body_arxiv_2606_00702.md](sources/papers/shape_your_body_arxiv_2606_00702.md)（[PDF](https://www.ias.informatik.tu-darmstadt.de/uploads/Team/NicoBohlinger/shape_your_body.pdf)、[arXiv HTML](https://arxiv.org/html/2606.00702v1)）；[shape-your-body-nico-bohlinger.md](sources/sites/shape-your-body-nico-bohlinger.md)（[项目页](https://nico-bohlinger.github.io/shape-your-body/)）
+- 沉淀页面：[wiki/entities/paper-shape-your-body-value-gradient-design.md](wiki/entities/paper-shape-your-body-value-gradient-design.md)
+- 交叉更新：[cross-embodiment-transfer-strategy.md](wiki/queries/cross-embodiment-transfer-strategy.md)、[reinforcement-learning.md](wiki/methods/reinforcement-learning.md)、[foundation-policy.md](wiki/concepts/foundation-policy.md)
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-02] structural | wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md — 补全 motion matching / 蒸馏损失公式的 KaTeX 蓝框显示
 
 - 修正页面：[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)（$\hat{x}_t$、$\arg\min_i \|\hat{x}_t - x_i\|^2$、$L = \lambda_{\mathrm{PPO}} L_{\mathrm{PPO}} + \lambda_D L_D$ 改用 `$...$` 包裹，detail 页可触发 `math-inline` 与 KaTeX）

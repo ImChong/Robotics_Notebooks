@@ -134,7 +134,7 @@ flowchart TD
 ## 当前局限
 
 1. **数据规模是瓶颈**：RT-1 需要 130k+ 真实演示；数据采集成本极高，异构性大
-2. **Locomotion 基础模型尚未出现**：当前基础模型主要针对操作（pick-place）；跨地形、跨形态的 locomotion 基础模型是下一个前沿
+2. **Locomotion 基础模型仍在成形**：操作侧 VLA/通才策略更成熟；腿足侧已有 URMA 等多具身 locomotion 与 [Shape Your Body](../entities/paper-shape-your-body-value-gradient-design.md) 式「价值函数作设计 surrogate」，但跨地形真机通才仍弱于专用策略
 3. **低级控制精度不足**：通用模型在精细操作（螺丝拧紧、接线）上仍弱于专用策略
 4. **实时性**：大模型推理延迟与机器人控制高频需求（100Hz+）之间仍有矛盾
 
