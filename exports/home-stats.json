@@ -17,6 +17,30 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
+      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
+      "label": "跨具身策略迁移选型指南",
+      "type": "query",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
       "label": "Perceptive Humanoid Parkour（PHP）",
@@ -140,30 +164,6 @@
       "path": "wiki/overview/humanoid-hardware-101-supply-chain-economics.md",
       "detail_id": "wiki-overview-humanoid-hardware-101-supply-chain-economics",
       "label": "Humanoid Hardware 101 · 07：产业与成本地缘",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-load-and-mass-spiral.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-load-and-mass-spiral",
-      "label": "Actuator 102 · 01：负载与质量螺旋",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-split-architecture.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-split-architecture",
-      "label": "Actuator 102 · 02：旋转-直线分离架构",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-gear-reflected-inertia.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-gear-reflected-inertia",
-      "label": "Actuator 102 · 03：减速与反射惯量",
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
