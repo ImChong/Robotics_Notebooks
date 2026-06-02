@@ -91,6 +91,20 @@ subject to: FK(θ) = p_target (末端位置约束)
 
 ---
 
+## 三段流水线衔接：重定向产物 → WBT 训练数据 → 跨具身策略蒸馏
+
+重定向常被误当成「终点」，但在人形动作落地的整条链里它只是**第一段**。把视角拉远，会看到「**映射 → 训练 → 迁移**」三段彼此咬合：
+
+| 阶段 | 视角 | 产物 | 主页面 |
+|------|------|------|--------|
+| ① 映射（Mapping） | 几何/动力学一致化：把人体参考变成「机器人物理上可执行的参考」 | 物理可行参考轨迹 | [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md)、[重定向目标函数形式化](../formalizations/motion-retargeting-objective.md) |
+| ② 训练（Training） | 把重定向**产物当作训练数据**，学一个能稳定执行它们的全身跟踪策略 | 真机可执行的 WBT 策略 | [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) |
+| ③ 迁移（Transfer） | 把已训策略/数据**搬到新机体**，区分重训迁移 vs 高效后训练 vs 联合训练 | 跨具身复用的策略族 | [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md)、[SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) |
+
+衔接关系：本页（重定向）的 §「两层架构模式」产出**阶段 ①** 的物理可行参考；[WBT 流水线](./whole-body-tracking-pipeline.md) 把这些参考当**阶段 ②** 的训练数据消费，产出真机策略；当目标换成新机体时进入**阶段 ③**——重定向的「**仅缩放骨盆–脚距、其余度量关系保持**」（如 SKR）等几何桥接质量，会直接决定跨具身迁移能否复用同一份参考库。三段构成「**MoCap → Reference → Policy → 新机体**」的闭环；[Sim2Real](./sim2real.md) 则横切阶段 ② 与 ③ 的真机落地与安全收尾。
+
+---
+
 ## 关键技术问题
 
 ### 1. 骨架拓扑匹配
@@ -176,6 +190,9 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [Locomotion](../tasks/locomotion.md) — locomotion 的风格先验来自重定向后的 MoCap 数据
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 全身操作任务需要手臂 + 腿部的联合重定向
 - [Whole-Body Control](./whole-body-control.md) — WBC 执行重定向后的参考轨迹
+- [Whole-Body Tracking Pipeline](./whole-body-tracking-pipeline.md) — 「映射 → 训练 → 迁移」三段流水线的中段：把重定向产物当作训练数据学跟踪策略
+- [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 三段流水线的末段：已训策略/数据搬到新机体的选型决策树
+- [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) — 四条主流 WBT 方法谱系对比（重定向下游的训练/迁移取舍）
 - [Sim2Real](./sim2real.md) — 重定向数据质量影响真实机器人策略的泛化性
 - [GMR (通用动作重定向)](../methods/motion-retargeting-gmr.md) — 基于运动学优化的重定向代表实现
 - [NMR（神经运动重定向与人形全身控制）](../methods/neural-motion-retargeting-nmr.md) — 学习式整段映射 + 仿真 RL 修补监督

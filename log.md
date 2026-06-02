@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] structural | wiki/concepts/safe-real-world-rl-fine-tuning.md — 新建「真机安全 RL 微调」概念页（V23 P2 安全微调知识链 1/3）
+
+- 新建 wiki：[safe-real-world-rl-fine-tuning.md](wiki/concepts/safe-real-world-rl-fine-tuning.md)（残差视角 + 三路径详解：SLowRL 低秩残差 + Recovery/Safety Filter、Heracles 生成式兜底中间件、CBF/CLF 安全壳；5 维对比表 + 5 类常见误区）。
+- 交叉更新：[sim2real.md](wiki/concepts/sim2real.md)（安全微调段落引导 + frontmatter related + 关联页面）、[safety-filter.md](wiki/concepts/safety-filter.md)、[SLowRL 实体](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md)、[Heracles 实体](wiki/entities/paper-heracles-humanoid-diffusion.md) 补入站边。
+- 进度：V23 P2「安全微调知识链 (+3)」标记 1/3（`[~]` 进行中）。
+- 验证：`make lint` 全绿（1 条 INFO 不阻塞）；`make ci-preflight` 重生成派生文件。
+
 ## [2026-06-02] ingest | sources/papers/mobilegym_arxiv_2605_26114.md、sources/repos/purewhiter_mobilegym.md、sources/sites/mobilegym-dev.md — MobileGym 入库
 
 - 沉淀页面：[`wiki/entities/mobilegym.md`](wiki/entities/mobilegym.md)
@@ -30,6 +37,12 @@
 - 沉淀页面：[wiki/entities/isaac-teleop.md](wiki/entities/isaac-teleop.md)；交叉 [isaac-lab.md](wiki/entities/isaac-lab.md)、[teleoperation.md](wiki/tasks/teleoperation.md)
 - 验证：`make ci-preflight` 通过
 
+## [2026-06-01] structural | wiki/concepts/motion-retargeting.md、sim2real.md — 跨具身专题交叉补强（V23 P1 收官）
+
+- 变更：在 [motion-retargeting.md](wiki/concepts/motion-retargeting.md) 新增「三段流水线衔接：重定向产物 → WBT 训练数据 → 跨具身策略蒸馏」小节（映射/训练/迁移三段表格 + 衔接段落），关联页面补 [WBT pipeline](wiki/concepts/whole-body-tracking-pipeline.md) / [跨具身迁移选型](wiki/queries/cross-embodiment-transfer-strategy.md) / [SONIC 四方对比](wiki/comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md) 三条出边。
+- 变更：在 [sim2real.md](wiki/concepts/sim2real.md) 新增「在『映射 → 训练 → 迁移』三段流水线中的位置」小节（点明 Sim2Real 横切训练与迁移两段），frontmatter `related` 与关联页面同步补 motion-retargeting / WBT pipeline / 跨具身迁移 / SONIC 对比。
+- 进度：V23 P1「跨具身专题交叉补强」标记为 `[x]`，至此 P1 全部完成。
+- 验证：`make lint` 全绿；`make ci-preflight` 重生成派生文件。
 
 ## [2026-06-01] ingest | sources/papers/kalman_filter_ekf_primary_refs.md、sources/papers/lqr_ilqr_primary_refs.md — KF/EKF/LQR/iLQR 一手资料入库并新建 KF 形式化页
 

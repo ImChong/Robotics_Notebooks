@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-02",
-  "node_count": 643,
-  "edge_count": 4476,
+  "node_count": 644,
+  "edge_count": 4499,
   "coverage": {
-    "covered": 641,
-    "total": 641,
+    "covered": 642,
+    "total": 642,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+      "type": "concept",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/safety-filter.md",
+      "detail_id": "wiki-concepts-safety-filter",
+      "label": "Safety Filter（安全过滤器）",
+      "type": "concept",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
+      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
+      "label": "SLowRL：安全低秩 RL 真机运动微调",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
+      "detail_id": "entity-paper-heracles-humanoid-diffusion",
+      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/mobilegym.md",
       "detail_id": "entity-mobilegym",
@@ -127,53 +167,13 @@
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-industrial-actuator-trap.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-industrial-actuator-trap",
-      "label": "Actuator 102 · 06：工业执行器陷阱",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-decision-species.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-decision-species",
-      "label": "Actuator 102 · 07：决策矩阵与三大物种",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-future-artificial-muscle.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-future-artificial-muscle",
-      "label": "Actuator 102 · 08：人工肌肉与未来",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-teleop.md",
-      "detail_id": "entity-isaac-teleop",
-      "label": "Isaac Teleop",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-lab.md",
-      "detail_id": "entity-isaac-lab",
-      "label": "Isaac Lab",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/mobilegym.md",
-    "detail_id": "entity-mobilegym",
-    "label": "MobileGym（移动 GUI Agent 可验证仿真与基准）",
-    "type": "entity",
+    "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+    "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+    "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+    "type": "concept",
     "recency": "2026-06-02",
     "source": "log.md"
   }
