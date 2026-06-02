@@ -58,9 +58,14 @@ PRIMARY_COMMUNITY_CAP = 8
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
-# 社区名默认取「枢纽页标题 + ' 社区'」，但各枢纽页 H1 风格不一（半角/全角括号、纯英文 / 中文长句 /
-# 双语混杂）。此处按枢纽页相对路径给出统一的「中文（English）」双语展示名，附 ` 社区` 后缀；未命中的
-# 枢纽仍回退到页面 H1 自动命名，社区划分若变动也能优雅降级。
+# 社区展示名格式：「中文（English） 社区」。规范见 schema/naming.md § 图谱社区命名。
+# 社区基名默认取枢纽页 H1，但 H1 风格不一；此处按 hub 路径给出统一 override，脚本再追加 ` 社区`。
+# 未命中 override 时回退 H1，并在 generate 阶段对不符合 COMMUNITY_HUB_NAME_RE 的基名打印 WARNING。
+COMMUNITY_HUB_NAME_RE = re.compile(
+    r"^[\u4e00-\u9fff]"  # 以中文开头
+    r"[\u4e00-\u9fff\w\s·/·、，,\-：:]*"  # 中文主名（允许常见标点）
+    r"（[^）]+）$"  # 全角括号内的英文/缩写副名
+)
 COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/overview/humanoid-rl-motion-control-body-system-stack.md": "人形 RL 运动控制（Humanoid RL Locomotion）",
     "wiki/concepts/whole-body-control.md": "全身控制（Whole-Body Control, WBC）",
@@ -78,10 +83,39 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/humanoid-robot.md": "人形机器人（Humanoid Robot）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
-    "wiki/overview/bfm-41-papers-technology-map.md": "BFM 技术地图（Behavior Foundation Model）",
+    "wiki/overview/bfm-41-papers-technology-map.md": "行为基础模型技术地图（BFM）",
     "wiki/concepts/foundation-policy.md": "基础策略（Foundation Policy）",
     "wiki/overview/multirotor-simulation-planning-control-stack.md": "多旋翼开源栈（Multirotor Stack）",
+    "wiki/methods/sonic-motion-tracking.md": "规模化运动跟踪（SONIC）",
+    "wiki/overview/humanoid-hardware-101-technology-map.md": "人形硬件技术地图（Humanoid Hardware 101）",
+    "wiki/overview/robot-learning-overview.md": "机器人学习（Robot Learning）",
 }
+
+
+def resolve_community_hub_name(hub_id: str, fallback_label: str) -> str:
+    """返回社区基名（不含 ` 社区` 后缀）。优先 override，否则回退枢纽页 label。"""
+    return COMMUNITY_NAME_OVERRIDES.get(hub_id, fallback_label)
+
+
+def warn_nonconforming_community_hub_names(
+    community_meta: dict[str, dict[str, Any]],
+) -> None:
+    """对未遵循「中文（English）」格式的社区基名打印 WARNING（不阻塞生成）。"""
+    for meta in community_meta.values():
+        if meta["id"] == OTHER_COMMUNITY_ID:
+            continue
+        label = str(meta["label"])
+        if not label.endswith(" 社区"):
+            continue
+        hub_name = label[: -len(" 社区")]
+        if COMMUNITY_HUB_NAME_RE.fullmatch(hub_name):
+            continue
+        hub_id = meta.get("hub_id") or "?"
+        print(
+            "WARNING: community label does not match 中文（English） 社区 — "
+            f"hub={hub_id!r} label={label!r}; "
+            "add COMMUNITY_NAME_OVERRIDES entry (see schema/naming.md)"
+        )
 # V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
 LARGE_COMMUNITY_SPLIT_RATIO = 0.40
 LARGE_COMMUNITY_MIN_SIZE = 30
@@ -629,7 +663,7 @@ def assign_communities(
                 members,
                 key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
             )
-            hub_name = COMMUNITY_NAME_OVERRIDES.get(hub_id, node_map[hub_id]["label"])
+            hub_name = resolve_community_hub_name(hub_id, node_map[hub_id]["label"])
             label = f"{hub_name} 社区"
         else:
             community_id = OTHER_COMMUNITY_ID
@@ -801,6 +835,7 @@ def main() -> None:
 
     nodes, edges = _build_graph_data()
     communities, community_meta = assign_communities(nodes, edges)
+    warn_nonconforming_community_hub_names(community_meta)
 
     stats = _compute_graph_stats(
         nodes, edges, communities, community_meta, latest_nodes_max=latest_nodes_max

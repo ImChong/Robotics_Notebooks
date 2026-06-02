@@ -42,6 +42,38 @@
 **仿真到现实迁移**
 ```
 
+## 图谱社区命名
+
+知识图谱（`exports/link-graph.json`）中每个社区的展示名由 `scripts/generate_link_graph.py` 生成，**统一格式**：
+
+```text
+中文（English） 社区
+```
+
+### 格式要求
+
+| 部分 | 规则 | 示例 |
+|------|------|------|
+| 中文主名 | 放在最前，用简体中文概括主题 | `强化学习`、`人形硬件技术地图` |
+| 英文副名 | 放在**全角括号** `（）` 内；可为全称、缩写或产品名 | `（Reinforcement Learning, RL）`、`（SONIC）` |
+| 后缀 | 固定为半角空格 + `社区` | ` 社区` |
+
+完整示例：`强化学习（Reinforcement Learning, RL） 社区`、`规模化运动跟踪（SONIC） 社区`。
+
+### 维护方式
+
+1. **优先**在 `scripts/generate_link_graph.py` 的 `COMMUNITY_NAME_OVERRIDES` 中为枢纽页（hub）显式指定 `中文（English）` 基名；脚本会自动追加 ` 社区` 后缀。
+2. 未命中 override 时回退为枢纽页 H1 标题 + ` 社区`，但 H1 风格不一（纯英文、英文在前等），**新增或变更社区划分后应检查并补 override**。
+3. `其他社区` 为兜底桶，不参与上述格式。
+4. 运行 `make graph` 或 `make ci-preflight` 时，若某社区基名不符合 `中文（…）` 模式，脚本会打印 `WARNING`；CI 不因此失败，但维护者应补 override。
+
+### 命名反例（勿用）
+
+- `SONIC（规模化运动跟踪人形控制） 社区` — 英文在前、中文在括号内
+- `Robot Learning Overview 社区` — 纯英文、无中文主名
+- `Humanoid Hardware 101：七类子系统技术地图 社区` — 英文主名 + 中文副标题，未遵循「中文（English）」
+- `BFM 技术地图（Behavior Foundation Model） 社区` — 英文缩写开头、中文不在主位
+
 ## 避免事项
 
 不要：
@@ -49,3 +81,4 @@
 - 用时间戳做知识页文件名
 - 把多个不相关主题塞进同一个文件
 - 把 README 继续当总索引和总内容的混合垃圾场
+- 让图谱社区名直接沿用 wiki H1 而不检查是否符合「中文（English） 社区」格式
