@@ -2296,6 +2296,17 @@
       }
     }
 
+    function bindOutsideDismiss(containerEl, dismissRootEl) {
+      if (window.RNGraphTooltip && window.RNGraphTooltip.bindOutsideDismiss) {
+        window.RNGraphTooltip.bindOutsideDismiss(containerEl, {
+          isMobile: isMobile,
+          getPinned: function () { return pinnedNode; },
+          clearPin: function () { pinnedNode = null; },
+          hide: hideTooltip
+        }, { tooltipEl: tooltipEl, dismissRootEl: dismissRootEl });
+      }
+    }
+
     return {
       isMobile: isMobile,
       show: showTooltip,
@@ -2303,7 +2314,8 @@
       hide: hideTooltip,
       getPinned: function () { return pinnedNode; },
       clearPin: function () { pinnedNode = null; },
-      bindBlankDismiss: bindBlankDismiss
+      bindBlankDismiss: bindBlankDismiss,
+      bindOutsideDismiss: bindOutsideDismiss
     };
   }
 
