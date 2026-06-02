@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/papers/mobilegym_arxiv_2605_26114.md、sources/repos/purewhiter_mobilegym.md、sources/sites/mobilegym-dev.md — MobileGym 入库
+
+- 沉淀页面：[`wiki/entities/mobilegym.md`](wiki/entities/mobilegym.md)
+
 ## [2026-06-02] structural | wiki/overview humanoid-hardware-101-* 与 humanoid-actuator-102-* — 首页最新知识节点补登子 hub
 
 - 父节点：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)
