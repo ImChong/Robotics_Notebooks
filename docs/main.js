@@ -2398,6 +2398,7 @@
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);
       hoverTip.bindBlankDismiss(svgEl, '.mini-node, .mini-node-current');
+      hoverTip.bindOutsideDismiss(svgEl, document.body);
 
       function detailMiniNodeRadius(d, scale) {
         var base = d.isCurrent ? 8 : 6;
