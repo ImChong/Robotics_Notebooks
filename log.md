@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] structural | wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md — 补全 motion matching / 蒸馏损失公式的 KaTeX 蓝框显示
+
+- 修正页面：[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)（$\hat{x}_t$、$\arg\min_i \|\hat{x}_t - x_i\|^2$、$L = \lambda_{\mathrm{PPO}} L_{\mathrm{PPO}} + \lambda_D L_D$ 改用 `$...$` 包裹，detail 页可触发 `math-inline` 与 KaTeX）
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-02] structural | wiki/concepts/safe-real-world-rl-fine-tuning.md — 新建「真机安全 RL 微调」概念页（V23 P2 安全微调知识链 1/3）
 
 - 新建 wiki：[safe-real-world-rl-fine-tuning.md](wiki/concepts/safe-real-world-rl-fine-tuning.md)（残差视角 + 三路径详解：SLowRL 低秩残差 + Recovery/Safety Filter、Heracles 生成式兜底中间件、CBF/CLF 安全壳；5 维对比表 + 5 类常见误区）。
