@@ -11,6 +11,7 @@ related:
   - ./control-barrier-function.md
   - ../methods/reinforcement-learning.md
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
+  - ../formalizations/safe-lora-update-projection.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/lift-humanoid.md
   - ../methods/crisp-real2sim.md
@@ -57,7 +58,7 @@ sources:
 - **Safety Filter**：每步监测 pitch/roll 等姿态，超限则**硬切换覆盖**主策略输出。
 - **关键经验**：Actor 与 Critic **都要**低秩适配（只改 Actor 不收敛，因为 Critic 仍活在源仿真分布里）；固定真机时间预算下 **rank-1 往往最优**，更高秩反而放大接触 RL 的梯度噪声。
 
-在 Unitree Go2 的 jump/trot 上，相对全参 PPO 微调报告约 **46.5%** 墙钟缩短、训练期摔倒近零。适合「**不全参、不盲探索**」的收尾阶段。
+在 Unitree Go2 的 jump/trot 上，相对全参 PPO 微调报告约 **46.5%** 墙钟缩短、训练期摔倒近零。适合「**不全参、不盲探索**」的收尾阶段。其「冻结权重 + 低秩残差 + 安全投影」可统一写成约束策略优化，见 [安全 LoRA 投影更新形式化](../formalizations/safe-lora-update-projection.md)。
 
 ### 2. 生成式兜底中间件（Heracles 路线）
 
@@ -121,6 +122,7 @@ $$
 - [Safety Filter](./safety-filter.md) — 动作层最小修改的安全过滤
 - [Control Barrier Function](./control-barrier-function.md) — 安全集不变性的形式化基础
 - [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)
+- [安全 LoRA 投影更新形式化](../formalizations/safe-lora-update-projection.md) — 把本路线写成约束策略优化 + 安全投影 $\Pi_{\mathcal{S}}$
 - [Heracles（扩散中间件）](../entities/paper-heracles-humanoid-diffusion.md)
 - [LIFT](../entities/lift-humanoid.md) — 世界模型内随机探索 + 真机确定性采集
 - [CRISP（Real2Sim）](../methods/crisp-real2sim.md) — 用真机回放修仿真，减少待吸收残差

@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-03] structural | wiki/formalizations/safe-lora-update-projection.md — 新建「安全 LoRA 投影更新形式化」（V23 P2 安全微调知识链 2/3）
+
+- 新建 wiki：[safe-lora-update-projection.md](wiki/formalizations/safe-lora-update-projection.md)（「冻结 $W_0$ + 低秩残差 $\frac{\alpha}{r}BA$ + 两层安全投影」统一形式：参数侧秩约束作隐式正则、动作侧 $\Pi_{\mathcal{S}}$ 分硬切换 Recovery 与连续 QP 安全壳两谱系，写成低秩子空间 CMDP；SLowRL 实例化表 + 全参 CMDP / 纯 QP 安全壳 / 生成式改写退化对照 + 评测口径）。
+- 交叉更新：[safe-real-world-rl-fine-tuning.md](wiki/concepts/safe-real-world-rl-fine-tuning.md)、[SLowRL 实体](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) 补双向入链（消除孤儿页）。
+- 检索回归修复：[`scripts/search_wiki_core.py`](scripts/search_wiki_core.py) `_canonical_topic_boost` 由 1.4→1.7——safe-RL 专题扩张后「CBF 安全集 barrier」query 的 CBF 定义页被 clf-vs-cbf / safe-RL 系列页挤出 top5（main 既有回归），提权后 CBF 定义页回到 top5。
+- 进度：V23 P2「安全微调知识链 (+3)」2/3（仍 `[~]`，余 sim2real-vs-real2sim-fine-tuning 对比页）。
+- 验证：`make lint` 全绿（`eval_search_quality` 37/37）；`make ci-preflight` 重生成派生文件。
+
 ## [2026-06-02] ingest | sources/papers/shape_your_body_arxiv_2606_00702.md、sources/sites/shape-your-body-nico-bohlinger.md — Shape Your Body（VGDS 多具身价值梯度共设计）入库
 
 - 原始资料：[shape_your_body_arxiv_2606_00702.md](sources/papers/shape_your_body_arxiv_2606_00702.md)（[PDF](https://www.ias.informatik.tu-darmstadt.de/uploads/Team/NicoBohlinger/shape_your_body.pdf)、[arXiv HTML](https://arxiv.org/html/2606.00702v1)）；[shape-your-body-nico-bohlinger.md](sources/sites/shape-your-body-nico-bohlinger.md)（[项目页](https://nico-bohlinger.github.io/shape-your-body/)）

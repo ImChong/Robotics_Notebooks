@@ -41,7 +41,7 @@
 
 - [~] **安全微调知识链 (+3)**：
     - [x] `wiki/concepts/safe-real-world-rl-fine-tuning.md`（真机安全 RL 微调：从 Sim2Real 残差到真机在线适配的边界与安全约束；覆盖 SLowRL 安全 LoRA、Heracles 扩散兜底、CBF/CLF 安全壳三条主流路径）。（2026-06-02：新建概念页，残差视角 + 三路径详解（低秩残差/生成兜底/CBF 安全壳）+ 5 维对比表 + 5 类误区；回链 [Sim2Real](../../wiki/concepts/sim2real.md) / [Safety Filter](../../wiki/concepts/safety-filter.md) / [SLowRL](../../wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) / [Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md) 并补对应入站边。`make lint` 全绿、`make ci-preflight` 重生成派生文件。）
-    - [ ] `wiki/formalizations/safe-lora-update-projection.md`（安全 LoRA 投影更新形式化：低秩参数化 + 安全约束投影 $\Pi_{\mathcal{S}}$ 的目标函数；对照 SLowRL 实现）。
+    - [x] `wiki/formalizations/safe-lora-update-projection.md`（安全 LoRA 投影更新形式化：低秩参数化 + 安全约束投影 $\Pi_{\mathcal{S}}$ 的目标函数；对照 SLowRL 实现）。（2026-06-03：新建形式化页，给出「冻结 $W_0$ + 低秩残差 $\frac{\alpha}{r}BA$ + 两层安全投影」统一形式：参数侧秩约束（隐式正则）+ 动作侧 $\Pi_{\mathcal{S}}$（硬切换 Recovery / 连续 QP 安全壳两谱系），写成低秩子空间 CMDP；SLowRL 实例化表（rank-1、actor&critic 同时低秩、$B=0$ 暖启、46.5% 墙钟/88.9% 平滑）+ 全参 CMDP / 纯 QP 安全壳 / 生成式改写退化对照 + 评测口径。回链 [真机安全 RL 微调](../../wiki/concepts/safe-real-world-rl-fine-tuning.md) / SLowRL 并补双向入链，消除孤儿页。同步把 `_canonical_topic_boost` 1.4→1.7 修复 V11 既有回归「CBF 安全集 barrier」（safe-RL 专题扩张后 CBF 定义页被挤出 top5）；`make lint` 全绿、`eval_search_quality` 37/37 通过。）
     - [ ] `wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md`（Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调三类策略的成本/安全/数据效率三维对比）。
 - [ ] **事实库扩展**：
     - [ ] `schema/canonical-facts.json` 由 156 → **≥ 170 条**：新增 WBT 跨具身（SONIC 监督蒸馏 / Any2Any many-to-many 迁移 / BFM 行为基础模型 / SD-AMP 统一走跑起身 / Heracles 扩散兜底中间件）与真机安全微调（SLowRL 安全 LoRA / 真机 RL 安全约束 / Sim2Real 残差 vs Real2Sim）专题的矛盾检测规则。
