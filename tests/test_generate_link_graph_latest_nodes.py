@@ -120,6 +120,11 @@ class ResolveLatestNodesMaxTest(unittest.TestCase):
         self.assertEqual(glg.resolve_latest_nodes_max(0), 1)
         self.assertEqual(glg.resolve_latest_nodes_max(-3), 1)
 
+    def test_build_graph_data_skips_self_loop_edges(self) -> None:
+        nodes, edges = glg._build_graph_data()
+        self_loops = [e for e in edges if e["source"] == e["target"]]
+        self.assertEqual(self_loops, [])
+
 
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
