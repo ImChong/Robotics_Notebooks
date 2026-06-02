@@ -4,6 +4,7 @@ tags: [humanoid, hardware, bom, actuators, supply-chain, survey]
 status: complete
 updated: 2026-06-01
 related:
+  - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-chassis-materials.md
   - ./humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-hardware-101-linear-transmission-bearings.md
@@ -92,6 +93,7 @@ flowchart TB
 
 ## 关联页面
 
+- [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md) — 姊妹篇：行走冲击、反射惯量与三大物种选型
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [开源人形硬件对比](../entities/open-source-humanoid-hardware.md)
 - [电机驱动与总线协议概览](./motor-drive-firmware-bus-protocols.md)

@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-02",
-  "node_count": 633,
-  "edge_count": 4420,
+  "node_count": 642,
+  "edge_count": 4470,
   "coverage": {
-    "covered": 631,
-    "total": 631,
+    "covered": 640,
+    "total": 640,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
+      "label": "Humanoid 执行器 102：八章技术地图",
+      "type": "overview",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
+      "label": "Humanoid Hardware 101：七类子系统技术地图",
+      "type": "overview",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-hardware-101-integrated-actuators.md",
+      "detail_id": "wiki-overview-humanoid-hardware-101-integrated-actuators",
+      "label": "Humanoid Hardware 101 · 04：集成执行器",
+      "type": "overview",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/isaac-teleop.md",
       "detail_id": "entity-isaac-teleop",
@@ -63,37 +87,13 @@
       "type": "method",
       "recency": "2026-06-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/state-estimation.md",
-      "detail_id": "wiki-concepts-state-estimation",
-      "label": "State Estimation",
-      "type": "concept",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-9-papers-technology-map.md",
-      "detail_id": "wiki-overview-ego-9-papers-technology-map",
-      "label": "Ego 技术地图：9 篇论文的四类问题视角",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/ego-category-01-data-collection.md",
-      "detail_id": "wiki-overview-ego-category-01-data-collection",
-      "label": "Ego 分类 01：数据采集",
-      "type": "overview",
-      "recency": "2026-06-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-teleop.md",
-    "detail_id": "entity-isaac-teleop",
-    "label": "Isaac Teleop",
-    "type": "entity",
+    "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
+    "label": "Humanoid 执行器 102：八章技术地图",
+    "type": "overview",
     "recency": "2026-06-02",
     "source": "log.md"
   }

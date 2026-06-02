@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/blogs/wechat_human_five_humanoid_actuator_102.md、sources/papers/humanoid_actuator_102_reference_catalog.md — Agent Reach 抓取 Humanoid 执行器 102 并建八章图谱
+
+- 工具：[Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0 + `wechat-article-for-ai`（Camoufox）
+- 原始资料：[`sources/blogs/wechat_human_five_humanoid_actuator_102.md`](sources/blogs/wechat_human_five_humanoid_actuator_102.md)（<https://mp.weixin.qq.com/s/zinp6ulTorzfqmCR_HaI5A>）；落盘 [`sources/raw/wechat_humanoid_actuator_102_2026-06-02.md`](sources/raw/wechat_humanoid_actuator_102_2026-06-02.md)；参考资料 [`sources/papers/humanoid_actuator_102_reference_catalog.md`](sources/papers/humanoid_actuator_102_reference_catalog.md)
+- 沉淀页面：[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)（父节点）；子节点 `humanoid-actuator-102-load-and-mass-spiral`、`split-architecture`、`gear-reflected-inertia`、`thermal-and-control`、`compliance-sensing`、`industrial-actuator-trap`、`decision-species`、`future-artificial-muscle`
+- 交叉更新：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-hardware-101-integrated-actuators.md`](wiki/overview/humanoid-hardware-101-integrated-actuators.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-02] ingest | sources/repos/nvidia_isaac_teleop.md — Isaac Teleop 入库；新建 wiki/entities/isaac-teleop.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/teleoperation.md
 
 - 原始资料：[nvidia_isaac_teleop.md](sources/repos/nvidia_isaac_teleop.md)（[GitHub](https://github.com/NVIDIA/IsaacTeleop)、[官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)、[Isaac Lab 功能页](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)）
