@@ -3768,12 +3768,12 @@
         ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
           + matchExplanation(item, queryTokens) + '</span>'
         : '';
-      var graphBtn = '<a href="' + graphUrl + '" onclick="event.stopPropagation()" '
+      var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" onclick="event.stopPropagation()" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
         + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
-      return '<article class="card" data-result-url="' + detailUrl + '">'
+      return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
         + '<p class="card-meta" style="font-size:.75rem;margin-bottom:.25rem">' + escapeHtml(typeLabel) + explain + '</p>'
-        + '<h3><a href="' + detailUrl + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
+        + '<h3><a href="' + escapeHtml(detailUrl) + '">' + escapeHtml(item.title || item.id) + '</a>' + graphBtn + '</h3>'
         + '<p>' + escapeHtml((item.summary || '').slice(0, 120)) + '</p>'
         + (tagLine ? '<div class="chip-list">' + tagLine + '</div>' : '')
         + '</article>';

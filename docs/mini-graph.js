@@ -55,7 +55,7 @@
       '<div class="tt-title">' + escapeHtml(String(d.label || d.id)) + '</div>' +
       (summary ? '<div class="tt-summary">' + escapeHtml(String(summary)) + '</div>' : '') +
       community +
-      '<a class="tt-link" href="' + detailUrl + '">打开详情页 →</a>';
+      '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">打开详情页 →</a>';
   }
 
   function showTooltip(ev, d, nodeFill, communityLabelMap) {
