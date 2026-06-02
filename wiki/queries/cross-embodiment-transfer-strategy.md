@@ -40,6 +40,8 @@ related:
 | **Any2Any 高效后训练** | 冻结源机 WBT 专家，差距拆成**无梯度运动学对齐** + **动力学敏感层 LoRA**，约 1% 全量算力迁到新机。 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **多具身联合训练** | 从一开始就把多台机器人塞进同一训练，用统一观测/动作编码吸收差异，训出一个 generalist 骨干。 | [SONIC](../methods/sonic-motion-tracking.md) 多具身路线 / [BFM](../concepts/behavior-foundation-model.md) |
 
+**正交维度（机体参数，而非策略权重）：** 若问题从「搬策略」变成「在固定拓扑下改质量、几何、PD、执行器限位等连续设计变量」，见 [Shape Your Body（VGDS 价值梯度共设计）](../entities/paper-shape-your-body-value-gradient-design.md)——先多具身训 URMA critic，再冻结沿 $\nabla_f V$ 搜索，边际约 1–2 min/设计。
+
 ---
 
 ## TL;DR 决策路径

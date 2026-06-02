@@ -22,6 +22,7 @@ related:
   - ../entities/paper-interprior.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/lift-humanoid.md
+  - ../entities/paper-shape-your-body-value-gradient-design.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md

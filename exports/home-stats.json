@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-02",
-  "node_count": 644,
-  "edge_count": 4499,
+  "node_count": 645,
+  "edge_count": 4509,
   "coverage": {
-    "covered": 642,
-    "total": 642,
+    "covered": 643,
+    "total": 643,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-shape-your-body-value-gradient-design.md",
+      "detail_id": "entity-paper-shape-your-body-value-gradient-design",
+      "label": "Shape Your Body：多具身价值梯度机器人共设计",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
       "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
@@ -159,20 +167,12 @@
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-thermal-and-control.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-thermal-and-control",
-      "label": "Actuator 102 · 04：热学与力矩控制",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
-    "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
-    "label": "Perceptive Humanoid Parkour（PHP）",
+    "path": "wiki/entities/paper-shape-your-body-value-gradient-design.md",
+    "detail_id": "entity-paper-shape-your-body-value-gradient-design",
+    "label": "Shape Your Body：多具身价值梯度机器人共设计",
     "type": "entity",
     "recency": "2026-06-02",
     "source": "log.md"
