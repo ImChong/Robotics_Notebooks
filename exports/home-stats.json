@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-02",
-  "node_count": 642,
-  "edge_count": 4470,
+  "node_count": 643,
+  "edge_count": 4476,
   "coverage": {
-    "covered": 640,
-    "total": 640,
+    "covered": 641,
+    "total": 641,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mobilegym.md",
+      "detail_id": "entity-mobilegym",
+      "label": "MobileGym（移动 GUI Agent 可验证仿真与基准）",
+      "type": "entity",
+      "recency": "2026-06-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
       "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-    "label": "Humanoid Hardware 101：七类子系统技术地图",
-    "type": "overview",
+    "path": "wiki/entities/mobilegym.md",
+    "detail_id": "entity-mobilegym",
+    "label": "MobileGym（移动 GUI Agent 可验证仿真与基准）",
+    "type": "entity",
     "recency": "2026-06-02",
     "source": "log.md"
   }

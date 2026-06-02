@@ -1,12 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] ingest | sources/papers/mobilegym_arxiv_2605_26114.md、sources/repos/purewhiter_mobilegym.md、sources/sites/mobilegym-dev.md — MobileGym 入库
+
+- 沉淀页面：[`wiki/entities/mobilegym.md`](wiki/entities/mobilegym.md)
+
 ## [2026-06-02] structural | schema/naming.md、scripts/generate_link_graph.py — 统一图谱社区名为「中文（English） 社区」并补全 override
 
 - 规范：[`schema/naming.md`](schema/naming.md) 新增「图谱社区命名」；[`scripts/generate_link_graph.py`](scripts/generate_link_graph.py) 增加 `COMMUNITY_HUB_NAME_RE` 校验与 WARNING
 - 修正社区名：规模化运动跟踪（SONIC）、人形硬件技术地图（Humanoid Hardware 101）、机器人学习（Robot Learning）、行为基础模型技术地图（BFM）
 - 测试：[`tests/test_community_naming.py`](tests/test_community_naming.py)
 - 验证：`make ci-preflight` 通过
-
 ## [2026-06-02] structural | wiki/overview humanoid-hardware-101-* 与 humanoid-actuator-102-* — 首页最新知识节点补登子 hub
 
 - 父节点：[`wiki/overview/humanoid-hardware-101-technology-map.md`](wiki/overview/humanoid-hardware-101-technology-map.md)、[`wiki/overview/humanoid-actuator-102-technology-map.md`](wiki/overview/humanoid-actuator-102-technology-map.md)
