@@ -116,6 +116,8 @@ def warn_nonconforming_community_hub_names(
             f"hub={hub_id!r} label={label!r}; "
             "add COMMUNITY_NAME_OVERRIDES entry (see schema/naming.md)"
         )
+
+
 # V22: 当主社区占比超过该阈值时，对其内部做 Louvain 二级拆分。
 LARGE_COMMUNITY_SPLIT_RATIO = 0.40
 LARGE_COMMUNITY_MIN_SIZE = 30
