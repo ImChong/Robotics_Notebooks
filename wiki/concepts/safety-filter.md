@@ -114,3 +114,4 @@ Safety Filter
 - [Control Lyapunov Function](../formalizations/control-lyapunov-function.md)
 - [Query：CLF 与 CBF 在 WBC/MPC 中的联合使用](../queries/clf-cbf-in-wbc.md)
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
+- [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md) — 安全过滤作为真机微调三路径之一（CBF/CLF 安全壳）

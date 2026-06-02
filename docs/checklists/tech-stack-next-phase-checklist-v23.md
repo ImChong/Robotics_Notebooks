@@ -39,8 +39,8 @@
 
 ## P2: 真机安全微调与 Sim2Real 深化 (Quantity)
 
-- [ ] **安全微调知识链 (+3)**：
-    - [ ] `wiki/concepts/safe-real-world-rl-fine-tuning.md`（真机安全 RL 微调：从 Sim2Real 残差到真机在线适配的边界与安全约束；覆盖 SLowRL 安全 LoRA、Heracles 扩散兜底、CBF/CLF 安全壳三条主流路径）。
+- [~] **安全微调知识链 (+3)**：
+    - [x] `wiki/concepts/safe-real-world-rl-fine-tuning.md`（真机安全 RL 微调：从 Sim2Real 残差到真机在线适配的边界与安全约束；覆盖 SLowRL 安全 LoRA、Heracles 扩散兜底、CBF/CLF 安全壳三条主流路径）。（2026-06-02：新建概念页，残差视角 + 三路径详解（低秩残差/生成兜底/CBF 安全壳）+ 5 维对比表 + 5 类误区；回链 [Sim2Real](../../wiki/concepts/sim2real.md) / [Safety Filter](../../wiki/concepts/safety-filter.md) / [SLowRL](../../wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md) / [Heracles](../../wiki/entities/paper-heracles-humanoid-diffusion.md) 并补对应入站边。`make lint` 全绿、`make ci-preflight` 重生成派生文件。）
     - [ ] `wiki/formalizations/safe-lora-update-projection.md`（安全 LoRA 投影更新形式化：低秩参数化 + 安全约束投影 $\Pi_{\mathcal{S}}$ 的目标函数；对照 SLowRL 实现）。
     - [ ] `wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md`（Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调三类策略的成本/安全/数据效率三维对比）。
 - [ ] **事实库扩展**：

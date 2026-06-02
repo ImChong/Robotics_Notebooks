@@ -11,6 +11,7 @@ related:
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../queries/humanoid-motion-tracking-method-selection.md
+  - ../concepts/safe-real-world-rl-fine-tuning.md
   - ../tasks/balance-recovery.md
 sources:
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
@@ -98,6 +99,7 @@ flowchart TB
 - [SONIC](../methods/sonic-motion-tracking.md)、[BeyondMimic](../methods/beyondmimic.md)、[扩散运动生成](../methods/diffusion-motion-generation.md)
 - [BFM 人形基础模型](./paper-behavior-foundation-model-humanoid.md)、[SD-AMP](./paper-unified-walk-run-recovery-sdamp.md)
 - [Balance Recovery](../tasks/balance-recovery.md)
+- [真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md) — 生成式兜底作为真机微调三路径之一
 
 ## 推荐继续阅读
 

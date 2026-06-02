@@ -7,6 +7,7 @@ arxiv: "2603.17092"
 code: https://github.com/unitreerobotics/unitree_rl_lab
 related:
   - ../concepts/sim2real.md
+  - ../concepts/safe-real-world-rl-fine-tuning.md
   - ../tasks/locomotion.md
   - ../queries/sim2real-gap-reduction.md
   - ../comparisons/sim2real-approaches.md
@@ -95,7 +96,7 @@ flowchart TB
 
 ## 关联页面
 
-- [Sim2Real](../concepts/sim2real.md)、[Locomotion](../tasks/locomotion.md)
+- [Sim2Real](../concepts/sim2real.md)、[真机安全 RL 微调](../concepts/safe-real-world-rl-fine-tuning.md)、[Locomotion](../tasks/locomotion.md)
 - [Sim2Real Gap 缩减实战](../queries/sim2real-gap-reduction.md)、[Sim2Real 方法对比](../comparisons/sim2real-approaches.md)
 - [四足机器人](./quadruped-robot.md)、[Unitree](./unitree.md)
 - [FastStair](./paper-faststair-humanoid-stair-ascent.md) — 同仓库内另一 LoRA 用于 **多专家融合**（人形楼梯），目标不同

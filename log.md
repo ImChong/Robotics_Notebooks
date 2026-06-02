@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-02] structural | wiki/concepts/safe-real-world-rl-fine-tuning.md — 新建「真机安全 RL 微调」概念页（V23 P2 安全微调知识链 1/3）
+
+- 新建 wiki：[safe-real-world-rl-fine-tuning.md](wiki/concepts/safe-real-world-rl-fine-tuning.md)（残差视角 + 三路径详解：SLowRL 低秩残差 + Recovery/Safety Filter、Heracles 生成式兜底中间件、CBF/CLF 安全壳；5 维对比表 + 5 类常见误区）。
+- 交叉更新：[sim2real.md](wiki/concepts/sim2real.md)（安全微调段落引导 + frontmatter related + 关联页面）、[safety-filter.md](wiki/concepts/safety-filter.md)、[SLowRL 实体](wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md)、[Heracles 实体](wiki/entities/paper-heracles-humanoid-diffusion.md) 补入站边。
+- 进度：V23 P2「安全微调知识链 (+3)」标记 1/3（`[~]` 进行中）。
+- 验证：`make lint` 全绿（1 条 INFO 不阻塞）；`make ci-preflight` 重生成派生文件。
+
 ## [2026-06-02] ingest | sources/repos/nvidia_isaac_teleop.md — Isaac Teleop 入库；新建 wiki/entities/isaac-teleop.md；交叉 wiki/entities/isaac-lab.md、wiki/tasks/teleoperation.md
 
 - 原始资料：[nvidia_isaac_teleop.md](sources/repos/nvidia_isaac_teleop.md)（[GitHub](https://github.com/NVIDIA/IsaacTeleop)、[官方文档](https://nvidia.github.io/IsaacTeleop/main/index.html)、[Isaac Lab 功能页](https://isaac-sim.github.io/IsaacLab/main/source/features/isaac_teleop.html)）
