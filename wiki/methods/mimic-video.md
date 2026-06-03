@@ -2,7 +2,7 @@
 type: method
 tags: [vam, video-action-model, imitation-learning, vla, flow-matching, manipulation, cosmos, inverse-dynamics]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-03
 date: 2026-05-17
 summary: "mimic-video 提出 Video-Action Model（VAM）：用语义–动力学一体的互联网规模视频扩散骨干在潜空间形成视觉计划，再以流匹配动作解码器作逆动力学模型输出机器人动作块，从而把大量样本效率压力从纯 VLA 式静态先验转移到视频表征质量。"
 related:
@@ -16,8 +16,12 @@ related:
   - ../concepts/world-action-models.md
   - ../entities/tau0-world-model.md
   - ./defi-decoupled-dynamics-vla.md
+  - ../overview/world-models-15-open-source-technology-map.md
+  - ../overview/world-models-route-01-cascade.md
 sources:
   - ../../sources/papers/mimic_video_arxiv_2512_15692.md
+  - ../../sources/papers/shenlan_wm_survey_04_mimic-video.md
+  - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/sites/mimic-video-github-io.md
   - ../../sources/repos/lucidrains_mimic_video.md
 ---

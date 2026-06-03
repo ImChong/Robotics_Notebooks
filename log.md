@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-03] ingest | sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md — Agent Reach 抓取深蓝世界模型 15 项目并建三线图谱
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（editable 安装 + `wechat-article-for-ai`/Camoufox）
+- 原始资料：[`sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md`](sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md)（<https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg>）；落盘 [`sources/raw/wechat_world_models_15_2026-06-03.md`](sources/raw/wechat_world_models_15_2026-06-03.md)；参考资料 [`sources/papers/shenlan_world_models_15_reference_catalog.md`](sources/papers/shenlan_world_models_15_reference_catalog.md)
+- 沉淀页面：[`wiki/overview/world-models-15-open-source-technology-map.md`](wiki/overview/world-models-15-open-source-technology-map.md)（**父节点**）；子节点 [`wiki/overview/world-models-route-01-cascade.md`](wiki/overview/world-models-route-01-cascade.md)、[`wiki/overview/world-models-route-02-joint.md`](wiki/overview/world-models-route-02-joint.md)、[`wiki/overview/world-models-route-03-virtual-sandbox.md`](wiki/overview/world-models-route-03-virtual-sandbox.md)；论文实体 `paper-shenlan-wm-01`…`03`、`05`…`15`（04→[`mimic-video`](wiki/methods/mimic-video.md)）
+- 交叉更新：[`wiki/overview/robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-03] structural | wiki/formalizations/safe-lora-update-projection.md — 新建「安全 LoRA 投影更新形式化」（V23 P2 安全微调知识链 2/3）
 
 - 新建 wiki：[safe-lora-update-projection.md](wiki/formalizations/safe-lora-update-projection.md)（「冻结 $W_0$ + 低秩残差 $\frac{\alpha}{r}BA$ + 两层安全投影」统一形式：参数侧秩约束作隐式正则、动作侧 $\Pi_{\mathcal{S}}$ 分硬切换 Recovery 与连续 QP 安全壳两谱系，写成低秩子空间 CMDP；SLowRL 实例化表 + 全参 CMDP / 纯 QP 安全壳 / 生成式改写退化对照 + 评测口径）。
