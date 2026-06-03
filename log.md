@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-03] ingest | sources/papers/assistmimic_arxiv_2603_11346.md — AssistMimic（CVPR 2026 双人 assistive MARL tracking）入库
+
+- 原始资料：[assistmimic_arxiv_2603_11346.md](sources/papers/assistmimic_arxiv_2603_11346.md)（<https://arxiv.org/abs/2603.11346>）；[yutoshibata07-assistmimic-github-io.md](sources/sites/yutoshibata07-assistmimic-github-io.md)（<https://yutoshibata07.github.io/AssistMimic/>）
+- 沉淀页面：[wiki/entities/paper-assistmimic.md](wiki/entities/paper-assistmimic.md)
+- 交叉更新：[wiki/methods/marl.md](wiki/methods/marl.md)、[wiki/entities/paper-bfm-22-phc.md](wiki/entities/paper-bfm-22-phc.md)、[wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)
+
 ## [2026-06-03] ingest | sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md — Agent Reach 抓取深蓝世界模型 15 项目并建三线图谱
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（editable 安装 + `wechat-article-for-ai`/Camoufox）

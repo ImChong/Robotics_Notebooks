@@ -2,10 +2,12 @@
 type: method
 tags: [rl, multi-agent, swarm, coordination]
 status: complete
-updated: 2026-05-30
+updated: 2026-06-03
 related:
   - ./reinforcement-learning.md
   - ../concepts/whole-body-coordination.md
+  - ../concepts/whole-body-tracking-pipeline.md
+  - ../entities/paper-assistmimic.md
   - ../entities/paper-gamma-world-multi-agent.md
   - ../methods/generative-world-models.md
 sources:
