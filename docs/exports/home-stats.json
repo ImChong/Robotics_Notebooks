@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-03",
-  "node_count": 647,
-  "edge_count": 4528,
+  "node_count": 665,
+  "edge_count": 4666,
   "coverage": {
-    "covered": 645,
-    "total": 645,
+    "covered": 663,
+    "total": 663,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/world-models-15-open-source-technology-map.md",
+      "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
+      "label": "世界模型 15 开源项目：三线技术地图",
+      "type": "overview",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/world-models-route-01-cascade.md",
+      "detail_id": "wiki-overview-world-models-route-01-cascade",
+      "label": "世界模型路线 01：级联架构",
+      "type": "overview",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/world-models-route-02-joint.md",
+      "detail_id": "wiki-overview-world-models-route-02-joint",
+      "label": "世界模型路线 02：联合架构",
+      "type": "overview",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
+      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
+      "label": "世界模型路线 03：虚拟沙盒",
+      "type": "overview",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/safe-lora-update-projection.md",
       "detail_id": "wiki-formalizations-safe-lora-update-projection",
@@ -119,61 +167,13 @@
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-chassis-materials.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-chassis-materials",
-      "label": "Humanoid Hardware 101 · 01：机身与材料",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-actuation-sensing-chain",
-      "label": "Humanoid Hardware 101 · 02：传动与感知链",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-linear-transmission-bearings.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-linear-transmission-bearings",
-      "label": "Humanoid Hardware 101 · 03：直线传动与轴承",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-integrated-actuators.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-integrated-actuators",
-      "label": "Humanoid Hardware 101 · 04：集成执行器",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-power-compute-electronics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-power-compute-electronics",
-      "label": "Humanoid Hardware 101 · 05：能源与计算电子",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-sensing-end-effectors.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-sensing-end-effectors",
-      "label": "Humanoid Hardware 101 · 06：传感与末端执行器",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/safe-lora-update-projection.md",
-    "detail_id": "wiki-formalizations-safe-lora-update-projection",
-    "label": "Safe LoRA Update Projection（安全 LoRA 投影更新形式化）",
-    "type": "formalization",
+    "path": "wiki/overview/world-models-15-open-source-technology-map.md",
+    "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
+    "label": "世界模型 15 开源项目：三线技术地图",
+    "type": "overview",
     "recency": "2026-06-03",
     "source": "log.md"
   }

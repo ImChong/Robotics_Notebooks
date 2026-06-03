@@ -2,8 +2,12 @@
 type: overview
 tags: [world-models, robot-learning, survey, vla, video-generation, model-based-rl, training-loop]
 status: complete
-updated: 2026-05-30
+updated: 2026-06-03
 related:
+  - ./world-models-15-open-source-technology-map.md
+  - ./world-models-route-01-cascade.md
+  - ./world-models-route-02-joint.md
+  - ./world-models-route-03-virtual-sandbox.md
   - ./ego-9-papers-technology-map.md
   - ./ego-category-03-world-models.md
   - ../methods/generative-world-models.md
@@ -24,6 +28,7 @@ sources:
   - ../../sources/papers/wm_robot_survey_arxiv_2605_00080.md
   - ../../sources/sites/wm-robot-survey-ntumars.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md
+  - ../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md
   - ../../sources/papers/worldvln_arxiv_2605_15964.md
 summary: "依据 arXiv:2605.00080 与策展解读，把机器人世界模型整理为策略内预测、学习型模拟器、可控视频生成三线，并强调评价应从开环视频逼真转向物理/动作一致性与训练闭环增益。"
 ---
@@ -112,6 +117,7 @@ flowchart TB
 
 ## 关联页面
 
+- [世界模型 15 开源项目技术地图](./world-models-15-open-source-technology-map.md) — 深蓝具身智能 **级联/联合/沙盒** 三线开源基线策展（15 项目）
 - [Generative World Models](../methods/generative-world-models.md) — 像素/Token 视频 rollout 与工程折中（DWM、Being-H0.7、mimic-video 等）
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 未来与动作联合建模的平行综述（arXiv:2605.12090）
 - [VLA](../methods/vla.md) — 反应式策略与长程物理推演的张力
