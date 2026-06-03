@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-03",
-  "node_count": 666,
-  "edge_count": 4681,
+  "node_count": 667,
+  "edge_count": 4692,
   "coverage": {
-    "covered": 664,
-    "total": 664,
+    "covered": 665,
+    "total": 665,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md",
+      "detail_id": "wiki-comparisons-sim2real-vs-real2sim-fine-tuning",
+      "label": "Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调",
+      "type": "comparison",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+      "type": "concept",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/sim2real-approaches.md",
+      "detail_id": "wiki-comparisons-sim2real-approaches",
+      "label": "Sim2Real 方法横向对比",
+      "type": "comparison",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-assistmimic.md",
       "detail_id": "entity-paper-assistmimic",
@@ -105,14 +129,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
       "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
       "label": "SLowRL：安全低秩 RL 真机运动微调",
@@ -151,30 +167,14 @@
       "type": "concept",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
-      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
-      "label": "Perceptive Humanoid Parkour（PHP）",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-assistmimic.md",
-    "detail_id": "entity-paper-assistmimic",
-    "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
-    "type": "entity",
-    "recency": "2026-06-03",
+    "path": "wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md",
+    "detail_id": "wiki-comparisons-sim2real-vs-real2sim-fine-tuning",
+    "label": "Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调",
+    "type": "comparison",
+    "recency": "2026-06-04",
     "source": "log.md"
   }
 }
