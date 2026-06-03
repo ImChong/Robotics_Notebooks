@@ -89,6 +89,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/sonic-motion-tracking.md": "规模化运动跟踪（SONIC）",
     "wiki/overview/humanoid-hardware-101-technology-map.md": "人形硬件技术地图（Humanoid Hardware 101）",
     "wiki/overview/robot-learning-overview.md": "机器人学习（Robot Learning）",
+    "wiki/methods/policy-optimization.md": "策略优化（Policy Optimization）",
 }
 
 

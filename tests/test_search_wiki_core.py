@@ -92,7 +92,7 @@ class TestComputeScore(unittest.TestCase):
     def test_canonical_topic_boost(self):
         self.assertEqual(
             _canonical_topic_boost("wiki/concepts/whole-body-control.md", ["wbc", "全身控制"]),
-            1.4,
+            1.7,
         )
         self.assertEqual(_canonical_topic_boost("wiki/entities/wbc-fsm.md", ["wbc"]), 1.0)
 

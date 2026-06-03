@@ -1,13 +1,37 @@
 {
-  "generated_at": "2026-06-02",
-  "node_count": 645,
-  "edge_count": 4509,
+  "generated_at": "2026-06-03",
+  "node_count": 646,
+  "edge_count": 4519,
   "coverage": {
-    "covered": 643,
-    "total": 643,
+    "covered": 644,
+    "total": 644,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/safe-lora-update-projection.md",
+      "detail_id": "wiki-formalizations-safe-lora-update-projection",
+      "label": "Safe LoRA Update Projection（安全 LoRA 投影更新形式化）",
+      "type": "formalization",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
+      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
+      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
+      "type": "concept",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
+      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
+      "label": "SLowRL：安全低秩 RL 真机运动微调",
+      "type": "entity",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-shape-your-body-value-gradient-design.md",
       "detail_id": "entity-paper-shape-your-body-value-gradient-design",
@@ -49,14 +73,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/sim2real.md",
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
@@ -69,14 +85,6 @@
       "detail_id": "wiki-concepts-safety-filter",
       "label": "Safety Filter（安全过滤器）",
       "type": "concept",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
-      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
-      "label": "SLowRL：安全低秩 RL 真机运动微调",
-      "type": "entity",
       "recency": "2026-06-02",
       "source": "log.md"
     },
@@ -159,22 +167,14 @@
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-supply-chain-economics.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-supply-chain-economics",
-      "label": "Humanoid Hardware 101 · 07：产业与成本地缘",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-shape-your-body-value-gradient-design.md",
-    "detail_id": "entity-paper-shape-your-body-value-gradient-design",
-    "label": "Shape Your Body：多具身价值梯度机器人共设计",
-    "type": "entity",
-    "recency": "2026-06-02",
+    "path": "wiki/formalizations/safe-lora-update-projection.md",
+    "detail_id": "wiki-formalizations-safe-lora-update-projection",
+    "label": "Safe LoRA Update Projection（安全 LoRA 投影更新形式化）",
+    "type": "formalization",
+    "recency": "2026-06-03",
     "source": "log.md"
   }
 }
