@@ -666,6 +666,7 @@
   var MERMAID_FONT_SIZE_PX = 14;
   var MERMAID_FONT_SIZE_MOBILE_PX = 12;
   var MERMAID_LIGHTBOX_FONT_SCALE = 1.75;
+  var MERMAID_LABEL_OVERFLOW_PAD = 8;
 
   function getMermaidFontSizePx() {
     if (typeof window !== 'undefined' && window.matchMedia
@@ -723,12 +724,49 @@
       flowchart: {
         useMaxWidth: false,
         htmlLabels: true,
-        padding: 18,
+        padding: 22,
         nodeSpacing: 42,
         rankSpacing: 48,
-        wrappingWidth: 150
+        wrappingWidth: 220
       }
     });
+  }
+
+  /** htmlLabels 下 foreignObject 常比 nodeLabel 略窄且 overflow:hidden，补扩节点框避免裁切。 */
+  function fixMermaidForeignObjectOverflow(svg) {
+    if (!svg) return;
+    Array.from(svg.querySelectorAll('.node')).forEach(function (node) {
+      var fo = node.querySelector('foreignObject');
+      if (!fo) return;
+      var inner = fo.querySelector('div, span');
+      if (!inner) return;
+      var pad = MERMAID_LABEL_OVERFLOW_PAD;
+      var needW = inner.scrollWidth + pad;
+      var needH = inner.scrollHeight + pad;
+      var curW = fo.clientWidth;
+      var curH = fo.clientHeight;
+      var deltaW = Math.max(0, needW - curW);
+      var deltaH = Math.max(0, needH - curH);
+      if (deltaW === 0 && deltaH === 0) return;
+      fo.setAttribute('width', String(needW));
+      fo.setAttribute('height', String(needH));
+      var shape = node.querySelector('rect.label-container, rect.basic');
+      if (shape) {
+        var rw = parseFloat(shape.getAttribute('width') || '0');
+        var rh = parseFloat(shape.getAttribute('height') || '0');
+        var rx = parseFloat(shape.getAttribute('x') || '0');
+        var ry = parseFloat(shape.getAttribute('y') || '0');
+        shape.setAttribute('width', String(rw + deltaW));
+        shape.setAttribute('height', String(rh + deltaH));
+        shape.setAttribute('x', String(rx - deltaW / 2));
+        shape.setAttribute('y', String(ry - deltaH / 2));
+      }
+    });
+  }
+
+  function patchMermaidSvgLabelOverflow(container) {
+    if (!container) return;
+    Array.from(container.querySelectorAll('.mermaid svg')).forEach(fixMermaidForeignObjectOverflow);
   }
 
   function renderDetailMermaid(container) {
@@ -746,6 +784,7 @@
     });
     initializeMermaidRenderer(getMermaidFontSizePx());
     return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
+      patchMermaidSvgLabelOverflow(container);
       enhanceMermaidZoomTargets(container);
       bindMermaidZoom(container);
     });
@@ -1044,6 +1083,7 @@
     initializeMermaidRenderer(hiFontPx);
     return window.mermaid.run({ nodes: [node] }).catch(function () {}).then(function () {
       var hiSvg = node.querySelector('svg');
+      if (hiSvg) fixMermaidForeignObjectOverflow(hiSvg);
       if (sandbox.parentNode) document.body.removeChild(sandbox);
       initializeMermaidRenderer(getMermaidFontSizePx());
       if (hiSvg) return cloneMermaidSvgForLightbox(hiSvg);
