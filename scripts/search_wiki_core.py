@@ -106,7 +106,7 @@ def _canonical_topic_boost(doc_path: str, query_tokens: list[str]) -> float:
         if rel != canon:
             continue
         if key in qjoin:
-            return 1.4
+            return 1.7
     return 1.0
 
 
