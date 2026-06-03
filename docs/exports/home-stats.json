@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-03",
-  "node_count": 665,
-  "edge_count": 4666,
+  "node_count": 666,
+  "edge_count": 4681,
   "coverage": {
-    "covered": 663,
-    "total": 663,
+    "covered": 664,
+    "total": 664,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-assistmimic.md",
+      "detail_id": "entity-paper-assistmimic",
+      "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
+      "type": "entity",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/marl.md",
+      "detail_id": "wiki-methods-marl",
+      "label": "Multi-Agent Reinforcement Learning (MARL)",
+      "type": "method",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-22-phc.md",
+      "detail_id": "entity-paper-bfm-22-phc",
+      "label": "PHC",
+      "type": "entity",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/dwm.md",
       "detail_id": "wiki-methods-dwm",
@@ -135,45 +167,13 @@
       "type": "concept",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/safety-filter.md",
-      "detail_id": "wiki-concepts-safety-filter",
-      "label": "Safety Filter（安全过滤器）",
-      "type": "concept",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-      "detail_id": "entity-paper-heracles-humanoid-diffusion",
-      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mobilegym.md",
-      "detail_id": "entity-mobilegym",
-      "label": "MobileGym（移动 GUI Agent 可验证仿真与基准）",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-hardware-101-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-hardware-101-technology-map",
-      "label": "Humanoid Hardware 101：七类子系统技术地图",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/dwm.md",
-    "detail_id": "wiki-methods-dwm",
-    "label": "DWM（Dexterous World Models，灵巧世界模型）",
-    "type": "method",
+    "path": "wiki/entities/paper-assistmimic.md",
+    "detail_id": "entity-paper-assistmimic",
+    "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
+    "type": "entity",
     "recency": "2026-06-03",
     "source": "log.md"
   }

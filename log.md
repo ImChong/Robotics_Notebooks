@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-03] ingest | sources/papers/assistmimic_arxiv_2603_11346.md — AssistMimic（CVPR 2026 双人 assistive MARL tracking）入库
+
+- 原始资料：[assistmimic_arxiv_2603_11346.md](sources/papers/assistmimic_arxiv_2603_11346.md)（<https://arxiv.org/abs/2603.11346>）；[yutoshibata07-assistmimic-github-io.md](sources/sites/yutoshibata07-assistmimic-github-io.md)（<https://yutoshibata07.github.io/AssistMimic/>）
+- 沉淀页面：[wiki/entities/paper-assistmimic.md](wiki/entities/paper-assistmimic.md)
+- 交叉更新：[wiki/methods/marl.md](wiki/methods/marl.md)、[wiki/entities/paper-bfm-22-phc.md](wiki/entities/paper-bfm-22-phc.md)、[wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)
+
 ## [2026-06-03] ingest | sources/papers/dwm_arxiv_2512_17907.md、sources/repos/snuvclab_dwm.md — 补充 DWM 官方代码工程栈（CogVideoX-5B LoRA / WAN / 三元组数据目录）并更新 wiki/methods/dwm.md
 
 - 原始资料：[`sources/papers/dwm_arxiv_2512_17907.md`](sources/papers/dwm_arxiv_2512_17907.md)（[arXiv:2512.17907](https://arxiv.org/abs/2512.17907)）；[`sources/sites/snuvclab-dwm-github-io.md`](sources/sites/snuvclab-dwm-github-io.md)；[`sources/repos/snuvclab_dwm.md`](sources/repos/snuvclab_dwm.md)（[snuvclab/dwm](https://github.com/snuvclab/dwm)，2026-04-03 代码发布）

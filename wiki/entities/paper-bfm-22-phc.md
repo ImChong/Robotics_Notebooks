@@ -42,6 +42,7 @@ sources:
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_phc_arxiv_2305_06456.md](../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md)
+- **下游扩展**：[AssistMimic](./paper-assistmimic.md) 以 PHC 单人 tracking 为 prior，零填充 partner-aware 输入维，联合 MARL 学习 **双人 assistive 力交换** tracking（arXiv:2603.11346）。
 
 ## 实验与评测
 
