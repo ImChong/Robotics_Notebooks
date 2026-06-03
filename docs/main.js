@@ -2200,11 +2200,17 @@
     formalization: '形式化', '': 'Wiki'
   };
 
+  function formatGraphTooltipSummary(raw) {
+    if (window.RNGraphTooltip && window.RNGraphTooltip.formatTooltipSummary) {
+      return window.RNGraphTooltip.formatTooltipSummary(raw, 100);
+    }
+    return raw || '';
+  }
+
   function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId) {
     var color = nodeFill(d);
     var typeLabel = GRAPH_NODE_TYPE_LABEL[d.type] || d.type || 'Wiki';
-    var summary = d.summary || '';
-    if (summary.length > 100) summary = summary.slice(0, 100) + '…';
+    var summary = formatGraphTooltipSummary(d.summary);
     var communityLabel = d.community && communityLabelMap[d.community];
     var community = communityLabel
       ? '<div class="tt-summary">社区：' + escapeHtml(String(communityLabel)) + '</div>'
@@ -2597,6 +2603,9 @@
     }
 
     function isMetadataOnlySummary(summary) {
+      if (window.RNGraphTooltip && window.RNGraphTooltip.isMetadataOnlySummary) {
+        return window.RNGraphTooltip.isMetadataOnlySummary(summary);
+      }
       return /^type:\s*[\w-]+[。.]?$/i.test(String(summary || '').trim());
     }
 
