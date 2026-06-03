@@ -812,6 +812,17 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   max-width: 100%;
   height: auto;
 }
+.detail-markdown-body .mermaid foreignObject,
+.selftest-answers .mermaid foreignObject,
+.roadmap-markdown-body .mermaid foreignObject {
+  overflow: visible;
+}
+.detail-markdown-body .mermaid .nodeLabel,
+.selftest-answers .mermaid .nodeLabel,
+.roadmap-markdown-body .mermaid .nodeLabel {
+  display: inline-block;
+  line-height: 1.35;
+}
 .detail-markdown-body .mermaid.mermaid-zoomable {
   cursor: zoom-in;
   position: relative;
