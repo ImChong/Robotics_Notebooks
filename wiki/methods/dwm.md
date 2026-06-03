@@ -8,7 +8,7 @@ tags:
   - digital-twins
   - computer-vision
 status: complete
-updated: 2026-05-17
+updated: 2026-06-03
 related:
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
@@ -73,6 +73,16 @@ flowchart LR
 - **手网格作为动作载体：** 相对语言或稀疏关节角，手部网格序列同时编码接触几何与时序，适合细粒度操纵条件。
 - **修复式恒等先验：** 以全掩码视频修复权重初始化，把无交互的静态渲染当基轨迹，再注入手驱动的 \(\Delta\) 视觉变化。
 - **合成精确对齐 + 真实固定机位混合：** TRUMANS 提供同轨迹三元组；Taste-Rob + HaMeR 用固定相机近似配对，换真实材质与动力学多样性。
+
+## 工程实现（官方代码，2026-04 开源）
+
+| 项 | 要点 |
+|----|------|
+| **仓库** | [snuvclab/dwm](https://github.com/snuvclab/dwm) — 2026-04-03 发布 CogVideoX 与 **WAN** 两套实现 |
+| **训练骨干** | **CogVideoX-5B + LoRA**；static / hand 潜变量在通道维与噪声 latent 拼接后送入 DiT |
+| **初始化** | **VideoX-Fun** 全掩码视频修复权重 → 对应上文「静态场景视频作恒等基线、手条件学残差」 |
+| **数据目录** | 每样本需 `videos`（交互）、`videos_static`、`videos_hands` 及可选 prompt / 预编码 latent 子目录；划分清单见 `dataset_files/trumans_*.txt`、`taste_rob_*.txt` |
+| **算力** | 默认 5B 训练通常需 **~80 GB** GPU |
 
 ## 常见误区或局限
 

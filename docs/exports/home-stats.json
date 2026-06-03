@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/dwm.md",
+      "detail_id": "wiki-methods-dwm",
+      "label": "DWM（Dexterous World Models，灵巧世界模型）",
+      "type": "method",
+      "recency": "2026-06-03",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/overview/world-models-15-open-source-technology-map.md",
       "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
       "label": "世界模型 15 开源项目：三线技术地图",
@@ -159,21 +167,13 @@
       "type": "overview",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-actuator-102-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-actuator-102-technology-map",
-      "label": "Humanoid 执行器 102：八章技术地图",
-      "type": "overview",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/world-models-15-open-source-technology-map.md",
-    "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
-    "label": "世界模型 15 开源项目：三线技术地图",
-    "type": "overview",
+    "path": "wiki/methods/dwm.md",
+    "detail_id": "wiki-methods-dwm",
+    "label": "DWM（Dexterous World Models，灵巧世界模型）",
+    "type": "method",
     "recency": "2026-06-03",
     "source": "log.md"
   }

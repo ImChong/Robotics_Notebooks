@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-03] ingest | sources/papers/dwm_arxiv_2512_17907.md、sources/repos/snuvclab_dwm.md — 补充 DWM 官方代码工程栈（CogVideoX-5B LoRA / WAN / 三元组数据目录）并更新 wiki/methods/dwm.md
+
+- 原始资料：[`sources/papers/dwm_arxiv_2512_17907.md`](sources/papers/dwm_arxiv_2512_17907.md)（[arXiv:2512.17907](https://arxiv.org/abs/2512.17907)）；[`sources/sites/snuvclab-dwm-github-io.md`](sources/sites/snuvclab-dwm-github-io.md)；[`sources/repos/snuvclab_dwm.md`](sources/repos/snuvclab_dwm.md)（[snuvclab/dwm](https://github.com/snuvclab/dwm)，2026-04-03 代码发布）
+- 沉淀页面：[`wiki/methods/dwm.md`](wiki/methods/dwm.md) — 增补「工程实现」节（CogVideoX-5B LoRA、VideoX-Fun 初始化、数据三元组目录、WAN 变体）
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-03] ingest | sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md — Agent Reach 抓取深蓝世界模型 15 项目并建三线图谱
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（editable 安装 + `wechat-article-for-ai`/Camoufox）
