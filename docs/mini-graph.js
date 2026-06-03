@@ -40,11 +40,16 @@
     };
   }
 
+  function tooltipSummary(raw) {
+    return window.RNGraphTooltip && window.RNGraphTooltip.formatTooltipSummary
+      ? window.RNGraphTooltip.formatTooltipSummary(raw, 100)
+      : (raw || '');
+  }
+
   function tooltipHtml(d, nodeFill, communityLabelMap) {
     var color = nodeFill(d);
     var typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
-    var summary = d.summary || '';
-    if (summary.length > 100) summary = summary.slice(0, 100) + '…';
+    var summary = tooltipSummary(d.summary);
     var detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
     var communityLabel = d.community && communityLabelMap[d.community];
     var community = communityLabel

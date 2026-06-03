@@ -93,8 +93,24 @@
     document.addEventListener('click', onClick);
   }
 
+  /** 与详情页一致：仅含 type 元数据的摘要不在浮窗正文重复展示 */
+  function isMetadataOnlySummary(summary) {
+    return /^type:\s*[\w-]+[。.]?$/i.test(String(summary || '').trim());
+  }
+
+  /** 浮窗摘要：过滤 type 占位行，并按 maxLen 截断 */
+  function formatTooltipSummary(raw, maxLen) {
+    var s = String(raw || '').trim();
+    if (!s || isMetadataOnlySummary(s)) return '';
+    maxLen = maxLen == null ? 100 : maxLen;
+    if (s.length > maxLen) return s.slice(0, maxLen) + '…';
+    return s;
+  }
+
   window.RNGraphTooltip = {
     bindBlankDismiss: bindGraphTooltipBlankDismiss,
-    bindOutsideDismiss: bindGraphTooltipOutsideDismiss
+    bindOutsideDismiss: bindGraphTooltipOutsideDismiss,
+    isMetadataOnlySummary: isMetadataOnlySummary,
+    formatTooltipSummary: formatTooltipSummary
   };
 })();

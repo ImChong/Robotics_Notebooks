@@ -2223,11 +2223,17 @@
     /* ── 固定卡片状态（仅移动端使用）── */
     let pinnedNode = null;
 
+    function tooltipSummary(raw) {
+      return window.RNGraphTooltip?.formatTooltipSummary
+        ? window.RNGraphTooltip.formatTooltipSummary(raw, 100)
+        : (raw || '');
+    }
+
     function tooltipHtml(d) {
       const color = nodeColor(d);
       const info = d._info;
       const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
-      const summary = (info.summary || '').slice(0, 100) + (info.summary?.length > 100 ? '…' : '');
+      const summary = tooltipSummary(info.summary);
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       const communityLabel = communityLabelMap.get(d.community);
       const community = communityLabel
