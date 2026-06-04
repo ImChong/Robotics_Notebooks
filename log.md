@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] structural | wiki/concepts/motion-retargeting-pipeline.md — 流水线页三处公式改 `$...$` 以启用 KaTeX 蓝框；`docs/main.js` 保留 Mermaid `htmlLabels` 的 `<br/>` 换行
+
+- 页面：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)
+- 前端：`docs/main.js` 中 `escapeMermaidForInnerHtml` 不再转义 `<br/>`，修复流程图节点多行标签被拼成一行的问题
+
 ## [2026-06-04] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — HTD-Refine（CVPR 2026）单目 HMR 高阶动力学后处理入库；wiki/entities/paper-htd-refine-monocular-hmr.md
 
 - 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；[htd-refine-zju3dv-github-io.md](sources/sites/htd-refine-zju3dv-github-io.md)（<https://zju3dv.github.io/htd-refine/>）
