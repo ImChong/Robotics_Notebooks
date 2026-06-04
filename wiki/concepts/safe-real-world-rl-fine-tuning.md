@@ -7,6 +7,7 @@ updated: 2026-06-02
 summary: "真机安全 RL 微调：在已有 sim2real 策略上做真机在线适配时，如何用低秩残差、生成式兜底与 CBF/CLF 安全壳约束探索边界，避免训练期摔倒与硬件损坏。"
 related:
   - ./sim2real.md
+  - ../comparisons/sim2real-vs-real2sim-fine-tuning.md
   - ./safety-filter.md
   - ./control-barrier-function.md
   - ../methods/reinforcement-learning.md
@@ -106,6 +107,7 @@ $$
 ## 与相邻概念的关系
 
 - 上游：[Sim2Real](./sim2real.md)（残差从何而来）、[Real2Sim/CRISP](../methods/crisp-real2sim.md)（用真机回放反向修仿真，减少需在真机上吸收的残差）。
+- 选型横切：[Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调](../comparisons/sim2real-vs-real2sim-fine-tuning.md)（本页是其「残差适配」分支的安全机制展开）。
 - 折中参照：[LIFT](../entities/lift-humanoid.md) 把「预训练高随机探索」约束在物理知情世界模型内，微调期真机侧用确定性采集，是另一种安全–样本效率拆分。
 - 下游恢复行为：[Balance Recovery](../tasks/balance-recovery.md)。
 

@@ -158,3 +158,4 @@ Real: student π(a|o) → 用观测历史近似特权信息 → 微调
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — DR 策略的训练基础
 - [Privileged Training](../concepts/privileged-training.md) — 特权训练是 DR + Fine-tuning 的桥梁
 - [Online vs Offline RL](./online-vs-offline-rl.md) — Real fine-tuning 涉及 online/offline RL 的选择
+- [Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接微调](./sim2real-vs-real2sim-fine-tuning.md) — 「最后一公里」三策略的成本/安全/数据效率细分

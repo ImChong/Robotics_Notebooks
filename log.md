@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] structural | wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md — 新建「Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调」对比页（V23 P2 安全微调知识链 3/3，专题收官）
+
+- 新建 wiki：[sim2real-vs-real2sim-fine-tuning.md](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md)——把真机适配「最后一公里」拆成三策略：残差适配（冻结 $W_0$ + 低秩残差 + Recovery/Safety Filter 吸收残差，SLowRL）/ Real2Sim 真机回放（用真机数据反修仿真后回仿真重训，CRISP）/ 真机直接 RL 微调；给出 11 维核心对照表 + 数据流 Mermaid + 成本/安全/数据效率三维深读 + 三场景选型 + 5 类误判 + 决策矩阵，明确三者本质是「gap 在真机侧 / 仿真侧 / 真机侧端到端消化」的连续谱。
+- 交叉更新：[safe-real-world-rl-fine-tuning.md](wiki/concepts/safe-real-world-rl-fine-tuning.md)、[sim2real-approaches.md](wiki/comparisons/sim2real-approaches.md) 补双向入链（消除孤儿页）。
+- 进度：V23 P2「安全微调知识链 (+3)」3/3 完成，父项 `[~]`→`[x]`。
+- 验证：`make lint` 仅余 2 条与本页无关的预存陈旧页警告（`generative-world-models` / `π0-policy`），`eval_search_quality` 37/37 通过；`make ci-preflight` 重生成派生文件，图谱 666 节点 / 4681 边 / 孤儿 0、`largest_community_ratio` 0.179、`community_quality_warning: false`。
+
 ## [2026-06-03] ingest | sources/papers/assistmimic_arxiv_2603_11346.md — AssistMimic（CVPR 2026 双人 assistive MARL tracking）入库
 
 - 原始资料：[assistmimic_arxiv_2603_11346.md](sources/papers/assistmimic_arxiv_2603_11346.md)（<https://arxiv.org/abs/2603.11346>）；[yutoshibata07-assistmimic-github-io.md](sources/sites/yutoshibata07-assistmimic-github-io.md)（<https://yutoshibata07.github.io/AssistMimic/>）
