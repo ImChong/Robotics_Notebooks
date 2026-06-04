@@ -81,6 +81,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/vla.md": "视觉-语言-动作（VLA）",
     "wiki/concepts/motion-retargeting.md": "动作重定向（Motion Retargeting）",
     "wiki/entities/humanoid-robot.md": "人形机器人（Humanoid Robot）",
+    "wiki/entities/unitree-g1.md": "宇树 G1 人形机器人（Unitree G1）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
     "wiki/overview/bfm-41-papers-technology-map.md": "行为基础模型技术地图（BFM）",
