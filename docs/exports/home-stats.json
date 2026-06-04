@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 669,
-  "edge_count": 4714,
+  "node_count": 670,
+  "edge_count": 4738,
   "coverage": {
-    "covered": 667,
-    "total": 667,
+    "covered": 668,
+    "total": 668,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
+      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gs-playground.md",
+      "detail_id": "entity-gs-playground",
+      "label": "GS-Playground (3DGS 光真实感仿真)",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/stanford-doggo-and-pupper.md",
       "detail_id": "entity-stanford-doggo-and-pupper",
@@ -37,14 +77,6 @@
       "detail_id": "entity-paper-humanoid-gpt",
       "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
       "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
       "recency": "2026-06-04",
       "source": "log.md"
     },
@@ -135,44 +167,12 @@
       "type": "concept",
       "recency": "2026-06-03",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dwm.md",
-      "detail_id": "wiki-methods-dwm",
-      "label": "DWM（Dexterous World Models，灵巧世界模型）",
-      "type": "method",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/world-models-15-open-source-technology-map.md",
-      "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
-      "label": "世界模型 15 开源项目：三线技术地图",
-      "type": "overview",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/world-models-route-01-cascade.md",
-      "detail_id": "wiki-overview-world-models-route-01-cascade",
-      "label": "世界模型路线 01：级联架构",
-      "type": "overview",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/world-models-route-02-joint.md",
-      "detail_id": "wiki-overview-world-models-route-02-joint",
-      "label": "世界模型路线 02：联合架构",
-      "type": "overview",
-      "recency": "2026-06-03",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/stanford-doggo-and-pupper.md",
-    "detail_id": "entity-stanford-doggo-and-pupper",
-    "label": "Stanford Doggo / Pupper（开源四足）",
+    "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
+    "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+    "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
     "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"

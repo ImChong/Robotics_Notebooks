@@ -18,6 +18,7 @@ related:
   - ../entities/zhengyi-luo.md
   - ../entities/gr00t-wholebodycontrol.md
   - ../entities/holomotion.md
+  - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
   - ./gentlehumanoid-motion-tracking.md
 sources:
   - ../../sources/repos/sonic-humanoid-motion-tracking.md
@@ -158,5 +159,6 @@ flowchart LR
 - [ExoActor (视频生成驱动的交互式人形控制)](./exoactor.md)
 - [GENMO（统一人体运动估计与生成）](./genmo.md)
 - [VLA（Vision-Language-Action）](./vla.md)
+- [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — G1 loco-manip VLA 数据合成以 SONIC 为低层 WBC（arXiv:2606.01458）
 - [Teleoperation（遥操作）](../tasks/teleoperation.md)
 - [Zhengyi Luo（罗正宜）](../entities/zhengyi-luo.md)
