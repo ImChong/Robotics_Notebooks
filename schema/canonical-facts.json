@@ -1762,5 +1762,181 @@
     "neg_claims": [
       "OpenLoong.*闭源|OpenLoong.*仅.*软件|OpenLoong.*不开放|青龙.*商业.*独占|青龙.*未公开"
     ]
+  },
+  "SONIC 规模化预训练": {
+    "terms": [
+      "SONIC"
+    ],
+    "pos_claims": [
+      "tracking.*预训练|规模化.*运动跟踪|MoCap.*scaling|三轴.*scaling|统一.*token|单一.*统一.*策略|预训练.*任务|上亿帧|GPU.*小时"
+    ],
+    "neg_claims": [
+      "SONIC.*仅.*小规模|SONIC.*无.*scaling|SONIC.*多.*策略.*切换|SONIC.*不.*依赖.*MoCap|SONIC.*非.*预训练"
+    ]
+  },
+  "Any2Any 跨具身迁移": {
+    "terms": [
+      "Any2Any"
+    ],
+    "pos_claims": [
+      "LoRA.*后训练|运动学.*对齐|动力学.*残差|动力学.*适配|约.*1%|many.to.many|PEFT|后训练.*迁移|低秩.*补丁"
+    ],
+    "neg_claims": [
+      "Any2Any.*从头.*重训|Any2Any.*全参.*微调|Any2Any.*仅.*单具身|Any2Any.*需.*亿级.*MoCap.*重训|Any2Any.*不.*用.*LoRA"
+    ]
+  },
+  "BFM 行为基础模型无参考": {
+    "terms": [
+      "behavior.*foundation.*model|BFM|行为基础模型"
+    ],
+    "pos_claims": [
+      "无参考|前向.*后向|successor|CVAE|生成式.*WBC|技能.*预训练|zero.?shot|提示.*推断.*行为|无.*奖励.*预训练"
+    ],
+    "neg_claims": [
+      "BFM.*必须.*参考|BFM.*每.*任务.*重训|BFM.*仅.*tracking|行为基础模型.*依赖.*逐任务.*奖励|BFM.*单一.*任务.*策略"
+    ]
+  },
+  "SD-AMP 状态门控双判别器": {
+    "terms": [
+      "SD-AMP|State.?Dependent.*AMP"
+    ],
+    "pos_claims": [
+      "双判别器|状态.*门控|投影重力.*门控|3.*条.*LAFAN1|recovery.*locomotion|部署.*无.*FSM|无.*运行时.*模式.*切换|50.*Hz.*ONNX"
+    ],
+    "neg_claims": [
+      "SD-AMP.*单判别器|SD-AMP.*仅.*一个.*判别器|SD-AMP.*部署.*需.*FSM|SD-AMP.*运行时.*模式.*切换|SD-AMP.*需要.*大量.*参考.*片段|SD-AMP.*运行时.*读.*门控"
+    ]
+  },
+  "Heracles 扩散中间件": {
+    "terms": [
+      "Heracles"
+    ],
+    "pos_claims": [
+      "状态条件.*flow.*matching|状态条件.*扩散|生成.*中间件|近.*恒等|生成.*恢复.*关键帧|receding.?horizon|改.*参考|分层.*系统"
+    ],
+    "neg_claims": [
+      "Heracles.*重训.*tracker|Heracles.*显式.*状态机|Heracles.*单一.*rigid.*tracker|Heracles.*无.*生成|Heracles.*加重.*tracking.*权重"
+    ]
+  },
+  "WBT 跨具身解耦": {
+    "terms": [
+      "跨具身.*迁移|cross.?embodiment.*transfer"
+    ],
+    "pos_claims": [
+      "运动学.*对齐.*动力学|encoder.*可迁移|decoder.*动力学.*修正|LoRA.*补丁|低秩.*残差.*适配|运动学.*接口.*对齐"
+    ],
+    "neg_claims": [
+      "跨具身.*必须.*从头.*训|跨具身.*无法.*复用.*专家|跨具身.*迁移.*等于.*全量.*重训|跨具身.*仅.*联合训练"
+    ]
+  },
+  "WBT pipeline 端到端阶段": {
+    "terms": [
+      "whole.?body.?tracking.*pipeline|WBT.*流水线|全身运动跟踪.*流水线"
+    ],
+    "pos_claims": [
+      "参考.*采集|重定向|训练.*数据|策略.*学习|跨具身.*迁移|真机.*部署|六.*阶段|6.*条.*路径|端到端"
+    ],
+    "neg_claims": [
+      "WBT.*单.*阶段.*完成|WBT.*一步.*映射|WBT.*无需.*重定向|全身运动跟踪.*仅.*策略.*学习"
+    ]
+  },
+  "SONIC vs Any2Any 训练范式": {
+    "terms": [
+      "SONIC.*Any2Any|Any2Any.*SONIC"
+    ],
+    "pos_claims": [
+      "从头.*预训练.*迁移|后训练.*迁移|Any2Any.*复用.*SONIC|Any2Any.*在.*SONIC.*骨干|1%.*算力|残差.*适配"
+    ],
+    "neg_claims": [
+      "SONIC.*Any2Any.*相同.*成本|Any2Any.*也.*从头.*训|二者.*算力.*等价|Any2Any.*无法.*复用.*SONIC"
+    ]
+  },
+  "BeyondMimic 失败率采样": {
+    "terms": [
+      "BeyondMimic"
+    ],
+    "pos_claims": [
+      "失败率.*采样|失败率.*自适应|自适应.*重采样|精确.*armature|简单.*PPO|历史.*本体.*堆叠|失败率.*驱动"
+    ],
+    "neg_claims": [
+      "BeyondMimic.*均匀.*采样|BeyondMimic.*复杂.*奖励.*工程|BeyondMimic.*无.*失败.*采样|BeyondMimic.*多.*策略.*切换"
+    ]
+  },
+  "SD-AMP vs Heracles 抽象层": {
+    "terms": [
+      "SD-AMP.*Heracles|Heracles.*SD-AMP"
+    ],
+    "pos_claims": [
+      "奖励层.*参考层|SD-AMP.*单策略.*Heracles.*分层|SD-AMP.*AMP.*Heracles.*扩散|不同.*抽象|落.*在.*奖励.*与.*参考"
+    ],
+    "neg_claims": [
+      "SD-AMP.*Heracles.*相同.*抽象|二者.*都.*单策略|二者.*都.*分层.*中间件|SD-AMP.*Heracles.*无差异"
+    ]
+  },
+  "SLowRL 安全 LoRA 微调": {
+    "terms": [
+      "SLowRL"
+    ],
+    "pos_claims": [
+      "rank.?1|LoRA|Recovery.*Policy|Safety.*Filter|安全.*滤波|46.5%|近零.*摔倒|99%|低维.*流形|冻结.*预训练"
+    ],
+    "neg_claims": [
+      "SLowRL.*全参.*微调|SLowRL.*无.*安全|SLowRL.*高秩|SLowRL.*不.*冻结|SLowRL.*需.*FFT"
+    ]
+  },
+  "真机 RL 微调安全约束必要": {
+    "terms": [
+      "真机.*RL.*微调|真机.*在线.*适配|safe.*real.?world.*RL|真机.*安全.*RL"
+    ],
+    "pos_claims": [
+      "安全.*约束|安全.*滤波|安全.*壳|CBF|安全集|Recovery|不可.*省略|残差.*视角|安全.*探索"
+    ],
+    "neg_claims": [
+      "真机.*RL.*无需.*安全|真机.*直接.*自由.*探索|真机.*微调.*无.*约束|真机.*在线.*适配.*无.*安全.*壳"
+    ]
+  },
+  "Sim2Real 残差 vs Real2Sim 回放": {
+    "terms": [
+      "Sim2Real.*Real2Sim|Real2Sim.*Sim2Real|残差.*真机.*回放|残差.*适配.*回放"
+    ],
+    "pos_claims": [
+      "残差.*适配|低秩.*残差|真机.*回放|CRISP|三.*策略|成本.*安全.*数据效率|反修.*仿真|真机.*直接.*RL"
+    ],
+    "neg_claims": [
+      "Sim2Real.*与.*Real2Sim.*等价|残差.*与.*回放.*相同|三.*策略.*无差异|残差.*适配.*即.*真机.*回放"
+    ]
+  },
+  "安全 LoRA 投影更新": {
+    "terms": [
+      "安全.*LoRA.*投影|safe.*lora.*projection|安全.*LoRA.*更新"
+    ],
+    "pos_claims": [
+      "冻结.*W_?0|低秩.*残差|安全.*投影|Pi_?.*S|\\\\Pi_|CMDP|硬切换.*Recovery|QP.*安全壳|两层.*安全"
+    ],
+    "neg_claims": [
+      "安全.*LoRA.*全参.*更新|安全.*LoRA.*无.*投影|安全.*LoRA.*高秩|安全.*LoRA.*不.*冻结.*W_?0"
+    ]
+  },
+  "跨具身策略迁移三路径": {
+    "terms": [
+      "跨具身.*策略.*迁移|cross.?embodiment.*transfer.*strategy"
+    ],
+    "pos_claims": [
+      "单具身.*重定向.*迁移|Any2Any.*高效.*迁移|多具身.*联合.*训练|决策树|三.*路径|算力.*数据.*泛化"
+    ],
+    "neg_claims": [
+      "跨具身.*迁移.*唯一.*方案|跨具身.*只能.*联合.*训练|跨具身.*迁移.*无.*选型|三.*路径.*等价"
+    ]
+  },
+  "CRISP Real2Sim 反修": {
+    "terms": [
+      "CRISP"
+    ],
+    "pos_claims": [
+      "真机.*回放|反修.*仿真|Real2Sim|回.*仿真.*重训|真机.*数据.*修.*仿真|闭环.*修正.*仿真"
+    ],
+    "neg_claims": [
+      "CRISP.*Sim2Real.*残差|CRISP.*真机.*直接.*RL|CRISP.*不.*回.*仿真|CRISP.*纯.*域随机化"
+    ]
   }
 }

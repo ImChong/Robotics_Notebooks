@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
+
+- 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）
+- 新增 16 条事实：SONIC 规模化预训练 / Any2Any 跨具身迁移 / BFM 无参考 / SD-AMP 双判别器门控 / Heracles 扩散中间件 / WBT pipeline 端到端 / WBT 跨具身解耦 / SONIC-vs-Any2Any 训练范式 / SD-AMP-vs-Heracles 抽象层 / BeyondMimic 失败率采样 / SLowRL 安全 LoRA / 真机 RL 安全约束 / Sim2Real-vs-Real2Sim / 安全 LoRA 投影 / 跨具身策略迁移三路径 / CRISP Real2Sim
+- 修正：收紧 `SD-AMP 状态门控双判别器` 的 neg 正则，避免误命中 [Heracles 页](wiki/entities/paper-heracles-humanoid-diffusion.md)「SD-AMP…单策略…判别器」对照描述
+- 验证：`make lint` 潜在矛盾 0；`make ci-preflight` 导出质量 12/12 通过
+
 ## [2026-06-04] ingest | sources/blogs/wechat_shenlan_3d_coordinate_transforms.md、wechat_shenlan_riemannian_manifold_tangent_space.md — Agent Reach 抓取《具身智能基础》专栏 02/03 并建几何三篇父节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（修复 hatchling `force-include` 重复后 `pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
