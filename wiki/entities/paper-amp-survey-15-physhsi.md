@@ -2,12 +2,15 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-04
 venue: curated
 summary: "PhysHSI 把 AMP 用到 humanoid-scene interaction 里：搬箱子、坐下、躺下、站起，以及风格化行走。"
 related:
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
+  - ./paper-splitadapter-load-aware-loco-manipulation.md
+  - ../tasks/loco-manipulation.md
+  - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
@@ -38,6 +41,7 @@ sources:
 - AMP 综述：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - 原始 source：[humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md](../../sources/papers/humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md)
+- **下游适配：** [SplitAdapter](./paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）以 PhysHSI 类 **AMP 搬箱策略为冻结基线**，用因子化世界模型/FiLM 做负载感知 sim2real 适配。
 
 ## 实验与评测
 

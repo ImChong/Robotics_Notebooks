@@ -5,6 +5,12 @@
 - 页面：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)
 - 前端：`docs/main.js` 中 `escapeMermaidForInnerHtml` 不再转义 `<br/>`，修复流程图节点多行标签被拼成一行的问题
 
+## [2026-06-04] ingest | sources/papers/splitadapter_arxiv_2606_03297.md — SplitAdapter 负载感知人形搬箱因子化适配入库；wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md
+
+- 原始资料：[splitadapter_arxiv_2606_03297.md](sources/papers/splitadapter_arxiv_2606_03297.md)（<https://arxiv.org/abs/2606.03297>）；[splitadapter-github-io.md](sources/sites/splitadapter-github-io.md)（<https://splitadapter.github.io/>）
+- 沉淀页面：[wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md](wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md)（含 Mermaid 因子化适配管线）
+- 交叉更新：[wiki/tasks/loco-manipulation.md](wiki/tasks/loco-manipulation.md)、[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/paper-amp-survey-15-physhsi.md](wiki/entities/paper-amp-survey-15-physhsi.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-04] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — HTD-Refine（CVPR 2026）单目 HMR 高阶动力学后处理入库；wiki/entities/paper-htd-refine-monocular-hmr.md
 
 - 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；[htd-refine-zju3dv-github-io.md](sources/sites/htd-refine-zju3dv-github-io.md)（<https://zju3dv.github.io/htd-refine/>）

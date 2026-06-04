@@ -175,6 +175,8 @@ flowchart TD
 
 - **补充参照（低成本双足 / 舵机）：** [Open Duck Mini](../entities/open-duck-mini.md) 在 **Feetech 舵机 + BAM 电机辨识 + MuJoCo Playground** 管线上公开 sim2real 行走；强调 MJCF 执行器参数与真机一致、模仿奖励与参考运动分仓迭代，机载部署在 Pi Zero 2W（见 [Open Duck Mini Runtime](../entities/open-duck-mini-runtime.md)）。
 
+- **补充参照（人形 loco-manip · 冻结策略适配）：** [SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）在 **冻结 AMP 搬箱策略** 上学习 **物体/负载** 与 **动力学** 双分支历史适配（分裂世界模型 + GRL + 分层 FiLM），针对 **载荷与搬放高度变化** 与 **sim–real 动力学差** 的耦合；MuJoCo sim-to-sim 与 **Unitree G1 零样本** 重载（6 kg）全流程成功率显著提升，可与 RMA 式「单 latent 外参估计」对照阅读。
+
 ### Real2Sim：从视频构造可仿真资产
 
 讨论 Sim2Real 时常隐含「仿真里已有合理关卡与参考运动」；人形上下文技能还要解决如何把**单目视频**变成**接触动力学可信**的仿真资产。[CRISP](../methods/crisp-real2sim.md)（ICLR 2026）用**凸平面场景原语 + 人–场景接触补全 + RL 人形闭环**把视频推向可 rollout 的 Real2Sim，并与 VideoMimic 等管线在几何—控制接口上形成对照（见项目页交互对比区）。
