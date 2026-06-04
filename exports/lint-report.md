@@ -2,7 +2,7 @@
 
 ## [2026-06-04] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **2** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,9 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（2 个）
-- wiki/concepts/motion-retargeting-pipeline.md (wiki:2026-05-30 < sources/htd_refine_arxiv_2605_26879.md:2026-06-04)
-- wiki/methods/motion-retargeting-gmr.md (wiki:2026-05-28 < sources/htd_refine_arxiv_2605_26879.md:2026-06-04)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -80,7 +79,7 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-htd-refine-monocular-hmr.md（缺 对比）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
 📊 Sources 覆盖率：668/668 (100%) wiki/entity 页有 ingest 来源
