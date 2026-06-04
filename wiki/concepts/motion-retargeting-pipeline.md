@@ -98,13 +98,13 @@ flowchart TD
 - **手部特殊处理**：灵巧手另起一条子管线，避免与全身重定向同优化。
 
 ### 3. 体型与比例缩放（Geometric Scaling）
-- **整体缩放**：`p_robot ≈ (L_robot / L_human) · p_human`，按肢长比对末端轨迹缩放。
+- **整体缩放**：$p_{\mathrm{robot}} \approx (L_{\mathrm{robot}} / L_{\mathrm{human}}) \cdot p_{\mathrm{human}}$，按肢长比对末端轨迹缩放。
 - **高度归一化**：脚到地面距离对齐，避免穿地与凌空起点。
 - **不可避免的失真**：人机比例越悬殊，步长与触地相位的累积偏差越大；这是物理筛选阶段的主要"客户"。
 
 ### 4. IK / QP 求解（Inverse Kinematics）
 - **目标**：让末端（手、脚、骨盆、头）跟随源轨迹关键点。
-- **形式**：`min ‖θ - θ_ref‖² s.t. FK(θ)=p_target, θ_min ≤ θ ≤ θ_max, 接触约束`。
+- **形式**：$\min \| \theta - \theta_{\mathrm{ref}} \|^2 \ \text{s.t.}\ \mathrm{FK}(\theta)=p_{\mathrm{target}},\ \theta_{\min} \le \theta \le \theta_{\max}$，接触约束。
 - **工具**：[Pinocchio](../entities/pinocchio.md) + TSID / [Crocoddyl](../entities/crocoddyl.md) / [cuRobo](../entities/curobo.md) / 各家自研 QP 求解器。
 - **代表实现**：[GMR](../methods/motion-retargeting-gmr.md) 等以此为核心。
 
@@ -154,7 +154,7 @@ flowchart TD
 
 ## 接口形态（与下游的契约）
 
-- **模仿学习侧**：参考轨迹 = `{q_t, q̇_t, contact_phase_t}`，常见频率 30–60 Hz。
+- **模仿学习侧**：参考轨迹 $= \{q_t,\, \dot{q}_t,\, \mathrm{contact\_phase}_t\}$，常见频率 30–60 Hz。
 - **WBC 侧**：参考 = 末端任务（手/脚 SE(3)）+ 质心轨迹 + 接触切换序列。
 - **RL tracking 侧**：参考 = 全身关节角 + 关键点位姿，奖励通常对齐 [DeepMimic](../methods/deepmimic.md) 风格分项。
 - **遥操作侧**：实时输入流 + 重定向延迟预算（< 20 ms 才能闭环操作）。

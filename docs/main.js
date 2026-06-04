@@ -635,7 +635,8 @@
   function escapeMermaidForInnerHtml(text) {
     return String(text || '')
       .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;');
+      // Preserve Mermaid htmlLabels line breaks; escape other '<' for innerHTML safety.
+      .replace(/<(?!br\s*\/?>)/gi, '&lt;');
   }
 
   /** 将 HTML 片段内的 ```mermaid 围栏转为可渲染的 .mermaid 节点（路线自测块等）。 */

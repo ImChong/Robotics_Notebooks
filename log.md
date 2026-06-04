@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] structural | wiki/concepts/motion-retargeting-pipeline.md — 流水线页三处公式改 `$...$` 以启用 KaTeX 蓝框；`docs/main.js` 保留 Mermaid `htmlLabels` 的 `<br/>` 换行
+
+- 页面：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)
+- 前端：`docs/main.js` 中 `escapeMermaidForInnerHtml` 不再转义 `<br/>`，修复流程图节点多行标签被拼成一行的问题
+
 ## [2026-06-04] ingest | sources/papers/splitadapter_arxiv_2606_03297.md — SplitAdapter 负载感知人形搬箱因子化适配入库；wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md
 
 - 原始资料：[splitadapter_arxiv_2606_03297.md](sources/papers/splitadapter_arxiv_2606_03297.md)（<https://arxiv.org/abs/2606.03297>）；[splitadapter-github-io.md](sources/sites/splitadapter-github-io.md)（<https://splitadapter.github.io/>）
