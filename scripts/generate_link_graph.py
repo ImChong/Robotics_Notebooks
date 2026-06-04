@@ -84,6 +84,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/unitree-g1.md": "宇树 G1 人形机器人（Unitree G1）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
+    "wiki/tasks/loco-manipulation.md": "移动操作（Loco-Manipulation）",
     "wiki/overview/bfm-41-papers-technology-map.md": "行为基础模型技术地图（BFM）",
     "wiki/concepts/foundation-policy.md": "基础策略（Foundation Policy）",
     "wiki/overview/multirotor-simulation-planning-control-stack.md": "多旋翼开源栈（Multirotor Stack）",
