@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/sites/pupper-v3-documentation-readthedocs.md、sources/repos/pupperv3_monorepo.md、sources/courses/stanford_cs123_robotics_ai.md — Pupper v3 官方文档与 monorepo/CS123 入库；更新 wiki/entities/stanford-doggo-and-pupper.md
+
+- 原始资料：[pupper-v3-documentation-readthedocs.md](sources/sites/pupper-v3-documentation-readthedocs.md)（<https://pupper-v3-documentation.readthedocs.io/en/latest/index.html>）；[pupperv3_monorepo.md](sources/repos/pupperv3_monorepo.md)（<https://github.com/Nate711/pupperv3-monorepo>）；[stanford_cs123_robotics_ai.md](sources/courses/stanford_cs123_robotics_ai.md)（<https://cs123-stanford.readthedocs.io/en/latest/>）
+- 沉淀页面：[wiki/entities/stanford-doggo-and-pupper.md](wiki/entities/stanford-doggo-and-pupper.md)（补充 v3 规格、安全、RL/VLM、ROS 2 流程图；区分 v2/easy_quadruped lineage）
+- 交叉更新：[wiki/entities/easy-quadruped.md](wiki/entities/easy-quadruped.md)、[wiki/entities/quadruped-robot.md](wiki/entities/quadruped-robot.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-04] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md — Humanoid-GPT（CVPR 2026，2B 帧零样本 motion tracking）入库
 
 - 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid-gpt-qizekun-github-io.md](sources/sites/humanoid-gpt-qizekun-github-io.md)（<https://qizekun.github.io/Humanoid-GPT/>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）

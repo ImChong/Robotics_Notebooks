@@ -24,7 +24,7 @@ summary: "easy_quadruped 是 StanfordQuadruped（Pupper）控制栈的独立 for
 ## 为什么重要
 
 - **与 RL 训练栈形成对照**：本库 [Legged Gym](./legged-gym.md)、[robot_lab](https://github.com/fan-ziqi/robot_lab) 等解决的是「如何在并行仿真里训策略」；easy_quadruped 展示的是「**时钟式步态 + 足端轨迹 + IK + 关节 PD**」这条经典模型控制链，对读懂四足底层控制更有直接性。
-- **低成本教学载体**：与 Pupper「数小时组装、树莓派 + 舵机」定位一致；公开快照把仿真入口收敛到 `run_floating_base.py`，降低上手摩擦。
+- **低成本教学载体**：对应 **早期 Pupper / StanfordQuadruped**（树莓派 + 舵机、模型步态），与当前 **[Pupper v3](./stanford-doggo-and-pupper.md)**（无刷 GIM4305 + ROS 2 monorepo + RL/VLM）不是同一代软件栈；公开快照把仿真入口收敛到 `run_floating_base.py`，降低上手摩擦。
 - **MuJoCo 闭环样板**：`TaskScheduler → Controller → IK → PD → MuJoCo → State` 是小型四足在 [MuJoCo](./mujoco.md) 里做集成测试与调参的常见形态，可与 Menagerie / RL 环境区分使用场景。
 
 > **非官方声明：** 维护方 Xzgz718 在 `NOTICE` 中明确本仓非 Stanford Student Robotics 官方发布；名称仅用于标明上游来源。

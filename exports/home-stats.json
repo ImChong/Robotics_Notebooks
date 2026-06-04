@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-04",
   "node_count": 669,
-  "edge_count": 4713,
+  "edge_count": 4714,
   "coverage": {
     "covered": 667,
     "total": 667,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/stanford-doggo-and-pupper.md",
+      "detail_id": "entity-stanford-doggo-and-pupper",
+      "label": "Stanford Doggo / Pupper（开源四足）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/easy-quadruped.md",
+      "detail_id": "entity-easy-quadruped",
+      "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-humanoid-gpt.md",
       "detail_id": "entity-paper-humanoid-gpt",
@@ -143,36 +167,12 @@
       "type": "overview",
       "recency": "2026-06-03",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/world-models-route-03-virtual-sandbox.md",
-      "detail_id": "wiki-overview-world-models-route-03-virtual-sandbox",
-      "label": "世界模型路线 03：虚拟沙盒",
-      "type": "overview",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/mimic-video.md",
-      "detail_id": "wiki-methods-mimic-video",
-      "label": "mimic-video（Video-Action Model, VAM）",
-      "type": "method",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-06-03",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-gpt.md",
-    "detail_id": "entity-paper-humanoid-gpt",
-    "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+    "path": "wiki/entities/stanford-doggo-and-pupper.md",
+    "detail_id": "entity-stanford-doggo-and-pupper",
+    "label": "Stanford Doggo / Pupper（开源四足）",
     "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"
