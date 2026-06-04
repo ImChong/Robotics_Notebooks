@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-06-03] lint | health-check | 自动化 wiki 健康检查
+## [2026-06-04] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **2** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,9 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（2 个）
-- wiki/methods/generative-world-models.md (wiki:2026-05-31 < sources/dwm_arxiv_2512_17907.md:2026-06-03)
-- wiki/methods/π0-policy.md (wiki:2026-05-29 < sources/pi07.md:2026-05-31)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
