@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 667,
-  "edge_count": 4692,
+  "node_count": 668,
+  "edge_count": 4702,
   "coverage": {
-    "covered": 665,
-    "total": 665,
+    "covered": 666,
+    "total": 666,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoid-gpt.md",
+      "detail_id": "entity-paper-humanoid-gpt",
+      "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md",
       "detail_id": "wiki-comparisons-sim2real-vs-real2sim-fine-tuning",
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/cross-embodiment-transfer-strategy.md",
-      "detail_id": "wiki-queries-cross-embodiment-transfer-strategy",
-      "label": "跨具身策略迁移选型指南",
-      "type": "query",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-06-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/foundation-policy.md",
-      "detail_id": "wiki-concepts-foundation-policy",
-      "label": "Foundation Policy（基础策略模型）",
-      "type": "concept",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md",
-    "detail_id": "wiki-comparisons-sim2real-vs-real2sim-fine-tuning",
-    "label": "Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调",
-    "type": "comparison",
+    "path": "wiki/entities/paper-humanoid-gpt.md",
+    "detail_id": "entity-paper-humanoid-gpt",
+    "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+    "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"
   }

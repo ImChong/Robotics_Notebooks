@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md — Humanoid-GPT（CVPR 2026，2B 帧零样本 motion tracking）入库
+
+- 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid-gpt-qizekun-github-io.md](sources/sites/humanoid-gpt-qizekun-github-io.md)（<https://qizekun.github.io/Humanoid-GPT/>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）
+- 沉淀页面：[wiki/entities/paper-humanoid-gpt.md](wiki/entities/paper-humanoid-gpt.md)
+- 交叉更新：[wiki/methods/sonic-motion-tracking.md](wiki/methods/sonic-motion-tracking.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)
+
 ## [2026-06-04] structural | wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md — 新建「Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调」对比页（V23 P2 安全微调知识链 3/3，专题收官）
 
 - 新建 wiki：[sim2real-vs-real2sim-fine-tuning.md](wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md)——把真机适配「最后一公里」拆成三策略：残差适配（冻结 $W_0$ + 低秩残差 + Recovery/Safety Filter 吸收残差，SLowRL）/ Real2Sim 真机回放（用真机数据反修仿真后回仿真重训，CRISP）/ 真机直接 RL 微调；给出 11 维核心对照表 + 数据流 Mermaid + 成本/安全/数据效率三维深读 + 三场景选型 + 5 类误判 + 决策矩阵，明确三者本质是「gap 在真机侧 / 仿真侧 / 真机侧端到端消化」的连续谱。
