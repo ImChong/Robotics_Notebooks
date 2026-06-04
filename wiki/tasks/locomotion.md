@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-04
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -257,6 +257,7 @@ flowchart TD
 如果你想沿着 locomotion 继续往下挖，建议从这里进入：
 
 ### 论文入口
+- [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) — arXiv:2309.14341（ICRA 2024；scandots + 航向双重蒸馏 → 单目深度，Go1）
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)

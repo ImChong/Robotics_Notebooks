@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-05-30
+updated: 2026-06-04
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路。"
 ---
 
@@ -145,6 +145,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
 - Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现
 - Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展
+- Cheng et al., *Extreme Parkour with Legged Robots* (ICRA 2024) — scandots + oracle 航向 → 深度 + 自预测 yaw 双重 DAgger；见 [Extreme Parkour](../entities/extreme-parkour.md)
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用
 - Pinto et al., *Asymmetric Actor Critic for Image-Based Robot Learning* (2018) — 非对称 AC 理论基础
 - **ingest 档案：** [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM：以 proxy agent 作 teacher，对学生做掩码在线蒸馏，把多接口 WBC 统一进 CVAE
@@ -159,6 +160,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
+- [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 

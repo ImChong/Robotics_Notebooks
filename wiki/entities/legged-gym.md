@@ -1,11 +1,14 @@
 ---
 type: entity
 summary: "legged_gym"
-updated: 2026-05-22
+updated: 2026-06-04
+related:
+  - ../entities/extreme-parkour.md
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
+  - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
 ---
 
 # legged_gym
@@ -254,6 +257,7 @@ sources:
 - [Sim2Real](../concepts/sim2real.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [ANYmal 分钟级并行 DRL（原论文实体）](./paper-anymal-walk-minutes-parallel-drl.md)
+- [Extreme Parkour（感知跑酷 fork）](./extreme-parkour.md) — ICRA 2024；legged_gym 生态上的两阶段深度跑酷扩展
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 
 ## 一句话记忆
