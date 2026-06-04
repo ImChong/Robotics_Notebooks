@@ -2,8 +2,11 @@
 type: formalization
 tags: [kinematics, math, lie-group, so3, se3, quaternion, embodied-ai, optimization]
 status: complete
-updated: 2026-05-22
+updated: 2026-06-04
 related:
+  - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ./3d-coordinate-transforms-vision-robotics.md
+  - ./riemannian-manifold-tangent-space.md
   - ./se3-representation.md
   - ../entities/modern-robotics-book.md
   - ../concepts/whole-body-control.md
@@ -128,6 +131,9 @@ flowchart LR
 
 ## 关联页面
 
+- [《具身智能基础》专栏地图](../overview/shenlan-embodied-ai-fundamentals-series.md) — 本页为专栏 **01/03**（姿态与刚体运动）
+- [三维坐标变换（视觉–机器人）](./3d-coordinate-transforms-vision-robotics.md) — 专栏 **02/03**（外参中的 $R,t$ 与手眼）
+- [黎曼流形与切空间](./riemannian-manifold-tangent-space.md) — 专栏 **03/03**（SO(3)/SE(3) 的统一几何框架）
 - [SE(3) Representation](./se3-representation.md) — 欧拉/四元数/矩阵/6D 对比与 DL 损失
 - [Modern Robotics (Lynch-Park)](../entities/modern-robotics-book.md) — Ch 3 系统推导
 - [Whole-Body Control](../concepts/whole-body-control.md) — 任务空间 se(3) 速度

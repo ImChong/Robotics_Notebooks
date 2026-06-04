@@ -9,6 +9,7 @@
 - **发表日期：** 2026-05-22（frontmatter）
 - **入库日期：** 2026-05-22
 - **抓取方式：** [Agent Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0 安装的 `wechat-article-for-ai`（Camoufox）；正文约 1.0 万字 / 19 图；Jina Reader 对该链接触发微信 CAPTCHA，未采用
+- **专栏姊妹篇：** [三维世界坐标变换](wechat_shenlan_3d_coordinate_transforms.md)（`P5Jm7bMhaTHsytHStFbbLg`）；[黎曼流形与切空间](wechat_shenlan_riemannian_manifold_tangent_space.md)（`uFTKN5FDvlHQxOSspvxVZw`）
 - **关联推荐（文内）：** [极具「影响力」的12个VLA开源项目](https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247494473&idx=1&sn=28c95bea437f22cc8e9ed7ca3308a071)、[刷完 Github VLA 后最推荐复现的几个](https://mp.weixin.qq.com/s/k_i-1NEBP-lEzth19HOHkQ)（已入库 [`wechat_shenlan_vla_github_repro_survey_2025.md`](wechat_shenlan_vla_github_repro_survey_2025.md)）、[VLN发展历程中4个代表性项目复现](https://mp.weixin.qq.com/s?__biz=MzkwMDcyNDUzMQ==&mid=2247496491&idx=1&sn=9ed38a5f612d0e3b670f3d6a74a8d5d7)
 - **一句话说明：** 从「深度学习把旋转优化暴露到网络前向/反向」出发，系统梳理 SO(3)/SE(3) 李群、so(3)/se(3) 李代数与单位四元数的分工：李群保证物理合法姿态，李代数提供可微线性增量，四元数是 SO(3) 的工程存储格式；并串联 SLAM、轨迹优化、WBC、MPC、VLA 动作微调等落地场景。
 
@@ -68,6 +69,7 @@
 
 ## 对 wiki 的映射
 
+- [shenlan-embodied-ai-fundamentals-series](../../wiki/overview/shenlan-embodied-ai-fundamentals-series.md)（专栏父节点）
 - [lie-group-rigid-body-motions](../../wiki/formalizations/lie-group-rigid-body-motions.md)（本次升格主页面）
 - [se3-representation](../../wiki/formalizations/se3-representation.md)、[modern-robotics-book](../../wiki/entities/modern-robotics-book.md)
 - [whole-body-control](../../wiki/concepts/whole-body-control.md)、[model-predictive-control](../../wiki/methods/model-predictive-control.md)、[ekf](../../wiki/formalizations/ekf.md)

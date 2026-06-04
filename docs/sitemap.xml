@@ -234,12 +234,14 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-robot-open-source-wechat-issue01-curator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-robot-open-source-wechat-issue02-curator</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-robot-world-models-training-loop-taxonomy</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-shenlan-embodied-ai-fundamentals-series</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-vla-open-source-repro-landscape-2025</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-vln-open-source-repro-paradigms</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-world-models-15-open-source-technology-map</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-world-models-route-01-cascade</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-world-models-route-02-joint</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-overview-world-models-route-03-virtual-sandbox</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-3d-coordinate-transforms-vision-robotics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-behavior-cloning-loss</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-bellman-equation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-cmdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -262,6 +264,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-motion-retargeting-objective</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-pomdp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-probability-flow</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-riemannian-manifold-tangent-space</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-safe-lora-update-projection</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-se3-representation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=wiki-formalizations-tsid-formulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

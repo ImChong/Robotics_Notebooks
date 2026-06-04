@@ -100,7 +100,7 @@ flowchart TB
 
 ## 与深蓝专栏其他篇的关系
 
-- [李群 / 李代数 / 四元数](../formalizations/lie-group-rigid-body-motions.md)（《具身智能基础》）补 **姿态与动作几何**；VLA 部署时仍要面对 SE(3) 动作空间（见 [SE(3) 表示](../formalizations/se3-representation.md)）。
+- [《具身智能基础》几何三篇](../overview/shenlan-embodied-ai-fundamentals-series.md)（李群 → 坐标变换 → 黎曼流形）补 **姿态、标定与流形优化**；VLA 部署时仍要面对 SE(3) 动作空间（见 [SE(3) 表示](../formalizations/se3-representation.md)）。
 - 姊妹篇「12 个 VLA 开源项目」偏影响力盘点；**本篇偏「刷完 repo 后优先复现哪几个」**，索引重叠但叙事不同。
 
 ## 常见误区
