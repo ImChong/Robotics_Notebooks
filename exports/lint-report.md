@@ -2,7 +2,7 @@
 
 ## [2026-06-04] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **9** 个问题（另含 **1** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,16 +25,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（9 个）
-- wiki/tasks/loco-manipulation.md (wiki:2026-05-31 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/methods/vla.md (wiki:2026-06-02 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/entities/gs-playground.md (wiki:2026-06-03 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/concepts/sim2real.md (wiki:2026-06-02 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/concepts/whole-body-control.md (wiki:2026-05-26 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/tasks/teleoperation.md (wiki:2026-06-02 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/methods/pi07-policy.md (wiki:2026-05-15 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/entities/unitree-g1.md (wiki:2026-05-31 < sources/legs_arxiv_2606_01458.md:2026-06-04)
-- wiki/entities/paper-viral-humanoid-visual-sim2real.md (wiki:2026-05-29 < sources/legs_arxiv_2606_01458.md:2026-06-04)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
