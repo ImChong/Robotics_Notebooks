@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 672,
-  "edge_count": 4763,
+  "node_count": 675,
+  "edge_count": 4793,
   "coverage": {
-    "covered": 670,
-    "total": 670,
+    "covered": 673,
+    "total": 673,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+      "label": "《具身智能基础》专栏：几何三篇技术地图",
+      "type": "overview",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
+      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
+      "label": "三维坐标变换（视觉–机器人对齐）",
+      "type": "formalization",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/riemannian-manifold-tangent-space.md",
+      "detail_id": "wiki-formalizations-riemannian-manifold-tangent-space",
+      "label": "黎曼流形与切空间（具身运动的几何语言）",
+      "type": "formalization",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
+      "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
+      "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
+      "type": "formalization",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
+      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
+      "label": "VLA 开源复现景观（2025 策展）",
+      "type": "overview",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/motion-retargeting-pipeline.md",
       "detail_id": "wiki-concepts-motion-retargeting-pipeline",
@@ -127,53 +167,13 @@
       "type": "entity",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-gpt.md",
-      "detail_id": "entity-paper-humanoid-gpt",
-      "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/extreme-parkour.md",
-      "detail_id": "entity-extreme-parkour",
-      "label": "Extreme Parkour（端到端四足感知跑酷）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/motion-retargeting-pipeline.md",
-    "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-    "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-    "type": "concept",
+    "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+    "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+    "label": "《具身智能基础》专栏：几何三篇技术地图",
+    "type": "overview",
     "recency": "2026-06-04",
     "source": "log.md"
   }

@@ -210,7 +210,9 @@
 | [x] [wechat_embodied_ai_lab_robot_world_model_training_loop.md](blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md) | 微信公众号「具身智能研究室」：机器人世界模型应进入训练闭环（编译 arXiv:2605.00080 综述；Agent Reach + Camoufox 抓取） |
 | [x] [wechat_embodied_ai_lab_daji_semantic_body_interface.md](blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md) | 微信公众号「具身智能研究室」：语言控制人形缺的是语义到身体接口（编译 DAJI arXiv:2605.14417） |
 | [x] [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md) | 具身智能研究室：42 篇 humanoid RL 运动控制「身体系统栈」长文（Agent Reach + Camoufox；`hz9JXtJeUPRfUGzfD-pZuA`；61 篇论文已各建 `paper-hrl-stack-*` / `paper-amp-survey-*` 实体） |
-| [x] [wechat_shenlan_lie_group_lie_algebra_quaternion.md](blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | 深蓝具身智能：《具身智能基础》专栏 — 李群、李代数、四元数（Agent Reach + Camoufox；`JviRH2LW-fkCHA5gY7Qflw`） |
+| [x] [wechat_shenlan_lie_group_lie_algebra_quaternion.md](blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | 深蓝具身智能：《具身智能基础》专栏 01 — 李群、李代数、四元数（Agent Reach + Camoufox；`JviRH2LW-fkCHA5gY7Qflw`） |
+| [x] [wechat_shenlan_3d_coordinate_transforms.md](blogs/wechat_shenlan_3d_coordinate_transforms.md) | 深蓝具身智能：《具身智能基础》专栏 02 — 三维世界坐标变换（内外参、深度、手眼；`P5Jm7bMhaTHsytHStFbbLg`） |
+| [x] [wechat_shenlan_riemannian_manifold_tangent_space.md](blogs/wechat_shenlan_riemannian_manifold_tangent_space.md) | 深蓝具身智能：《具身智能基础》专栏 03 — 黎曼流形与切空间（Exp/Log、工程近似；`uFTKN5FDvlHQxOSspvxVZw`） |
 | [x] [wechat_shenlan_vla_github_repro_survey_2025.md](blogs/wechat_shenlan_vla_github_repro_survey_2025.md) | 深蓝具身智能：2025 GitHub 高 star VLA 开源栈复现推荐（OpenPI、VLA-Adapter、RLinf 等 11 项；`k_i-1NEBP-lEzth19HOHkQ`） |
 | [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
 | [x] [wechat_shenlan_world_models_15_open_source_2026.md](blogs/wechat_shenlan_world_models_15_open_source_2026.md) | 深蓝具身智能：世界模型 15 开源项目三线地图（级联/联合/沙盒；`KZT8sI4n7GvHWyM20wN3gg`） |
