@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 670,
-  "edge_count": 4723,
+  "node_count": 671,
+  "edge_count": 4747,
   "coverage": {
-    "covered": 668,
-    "total": 668,
+    "covered": 669,
+    "total": 669,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -41,6 +41,46 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
+      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
+      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gs-playground.md",
+      "detail_id": "entity-gs-playground",
+      "label": "GS-Playground (3DGS 光真实感仿真)",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/stanford-doggo-and-pupper.md",
       "detail_id": "entity-stanford-doggo-and-pupper",
       "label": "Stanford Doggo / Pupper（开源四足）",
@@ -69,14 +109,6 @@
       "detail_id": "entity-paper-humanoid-gpt",
       "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
       "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
       "recency": "2026-06-04",
       "source": "log.md"
     },
@@ -134,38 +166,6 @@
       "label": "Sim2Real 方法横向对比",
       "type": "comparison",
       "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-assistmimic.md",
-      "detail_id": "entity-paper-assistmimic",
-      "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
-      "type": "entity",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/marl.md",
-      "detail_id": "wiki-methods-marl",
-      "label": "Multi-Agent Reinforcement Learning (MARL)",
-      "type": "method",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-22-phc.md",
-      "detail_id": "entity-paper-bfm-22-phc",
-      "label": "PHC",
-      "type": "entity",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dwm.md",
-      "detail_id": "wiki-methods-dwm",
-      "label": "DWM（Dexterous World Models，灵巧世界模型）",
-      "type": "method",
-      "recency": "2026-06-03",
       "source": "log.md"
     }
   ],
