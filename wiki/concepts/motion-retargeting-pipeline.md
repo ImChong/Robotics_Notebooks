@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-05-17
+updated: 2026-06-04
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -15,6 +15,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
+  - ../entities/paper-htd-refine-monocular-hmr.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -24,6 +25,7 @@ sources:
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
   - ../../sources/papers/exoactor.md
+  - ../../sources/papers/htd_refine_arxiv_2605_26879.md
 ---
 
 # Motion Retargeting Pipeline（动作重定向流水线）
@@ -87,6 +89,7 @@ flowchart TD
 - **单位与坐标**：统一为 SI 单位、Z-up 或 Y-up、根坐标朝向对齐。
 - **时间采样**：重采样到目标控制频率（常见 30/50/60 Hz），处理可变帧率与丢帧。
 - **格式归并**：BVH / FBX / SMPL（含 SMPL-H / SMPL-X）/ 自定义 JSON 等统一到内部表示。
+- **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 
 ### 2. 骨架拓扑与 DoF 映射（Skeleton Mapping）

@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-04
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -24,6 +24,7 @@ related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
+  - ../entities/paper-htd-refine-monocular-hmr.md
 sources:
   - ../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md
   - ../../sources/papers/bfm_awesome_beyondmimic_arxiv_2508_08241.md
@@ -125,9 +126,9 @@ WBT 的**容量上限**由参考池决定。三类典型来源：
 
 - **干净棚拍**：LAFAN1（少量、高质量）、AMASS（万级 SMPL 序列）；适合 fine-grained tracking。
 - **大规模 SMPL 库**：Motion-X / HumanML3D / Motion-X++；适合规模化预训练（[SONIC](../methods/sonic-motion-tracking.md) 路线）。
-- **视频估计 / 生成**：GVHMR、WHAM、扩散模型；噪声大、覆盖广，适合 long-tail 行为。
+- **视频估计 / 生成**：GVHMR、WHAM、扩散模型；噪声大、覆盖广，适合 long-tail 行为。轨迹级 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 等后处理可在重定向前改善 **jitter / 脚滑 / 速度–加速度保真度**（对 TRAM、GVHMR 等初始化即插即用）。
 
-> **关键经验**：参考池的**多样性**比单条参考的"精细度"更影响下游泛化；但太脏的视频估计会让全局位置漂移在策略上被放大（参见 [ExoActor](../methods/exoactor.md) 的"跳过重定向"反例）。
+> **关键经验**：参考池的**多样性**比单条参考的"精细度"更影响下游泛化；但太脏的视频估计会让全局位置漂移在策略上被放大（参见 [ExoActor](../methods/exoactor.md) 的"跳过重定向"反例）。高阶动力学精炼 **不能替代** 下游物理筛选与 tracking 消融。
 
 ### 2. 重定向（Retargeting）
 

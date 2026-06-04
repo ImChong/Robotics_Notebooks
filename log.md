@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — HTD-Refine（CVPR 2026）单目 HMR 高阶动力学后处理入库；wiki/entities/paper-htd-refine-monocular-hmr.md
+
+- 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；[htd-refine-zju3dv-github-io.md](sources/sites/htd-refine-zju3dv-github-io.md)（<https://zju3dv.github.io/htd-refine/>）
+- 沉淀页面：[wiki/entities/paper-htd-refine-monocular-hmr.md](wiki/entities/paper-htd-refine-monocular-hmr.md)
+- 交叉更新：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)、[wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)、[wiki/methods/motion-retargeting-gmr.md](wiki/methods/motion-retargeting-gmr.md)
+
 ## [2026-06-04] ingest | sources/sites/pupper-v3-documentation-readthedocs.md、sources/repos/pupperv3_monorepo.md、sources/courses/stanford_cs123_robotics_ai.md — Pupper v3 官方文档与 monorepo/CS123 入库；更新 wiki/entities/stanford-doggo-and-pupper.md
 
 - 原始资料：[pupper-v3-documentation-readthedocs.md](sources/sites/pupper-v3-documentation-readthedocs.md)（<https://pupper-v3-documentation.readthedocs.io/en/latest/index.html>）；[pupperv3_monorepo.md](sources/repos/pupperv3_monorepo.md)（<https://github.com/Nate711/pupperv3-monorepo>）；[stanford_cs123_robotics_ai.md](sources/courses/stanford_cs123_robotics_ai.md)（<https://cs123-stanford.readthedocs.io/en/latest/>）
