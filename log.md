@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — HTD-Refine（CVPR 2026）单目 HMR 高阶动力学后处理入库；wiki/entities/paper-htd-refine-monocular-hmr.md
+
+- 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；[htd-refine-zju3dv-github-io.md](sources/sites/htd-refine-zju3dv-github-io.md)（<https://zju3dv.github.io/htd-refine/>）
+- 沉淀页面：[wiki/entities/paper-htd-refine-monocular-hmr.md](wiki/entities/paper-htd-refine-monocular-hmr.md)
+- 交叉更新：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)、[wiki/concepts/whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)、[wiki/methods/motion-retargeting-gmr.md](wiki/methods/motion-retargeting-gmr.md)
+
 ## [2026-06-04] ingest | sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md — Agent Reach 抓取 LEGS/3DGS 人形 VLA loco-manip 专题并沉淀论文实体
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（editable 安装，修复 hatchling `force-include` 重复文件后 `pip install -e` + `wechat-article-for-ai`/Camoufox）

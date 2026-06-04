@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-04
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -10,6 +10,7 @@ related:
   - ./spider-physics-informed-dexterous-retargeting.md
   - ./beyondmimic.md
   - ./sonic-motion-tracking.md
+  - ../entities/paper-htd-refine-monocular-hmr.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
@@ -43,7 +44,7 @@ flowchart TD
   subgraph inputs["人体侧参考（多源）"]
     M1[动捕 BVH / FBX 等]
     M2[SMPL / SMPL-X 序列]
-    M3[单目视频 → 姿态估计<br/>如 GVHMR 等]
+    M3[单目视频 → 姿态估计<br/>GVHMR 等 · 可选 HTD-Refine 动力学精炼]
   end
 
   M1 --> N[格式归一与坐标对齐]
