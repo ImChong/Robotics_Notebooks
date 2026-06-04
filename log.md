@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md — Humanoid-GPT（CVPR 2026，2B 帧零样本 motion tracking）入库
+
+- 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid-gpt-qizekun-github-io.md](sources/sites/humanoid-gpt-qizekun-github-io.md)（<https://qizekun.github.io/Humanoid-GPT/>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）
+- 沉淀页面：[wiki/entities/paper-humanoid-gpt.md](wiki/entities/paper-humanoid-gpt.md)
+- 交叉更新：[wiki/methods/sonic-motion-tracking.md](wiki/methods/sonic-motion-tracking.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)
+
 ## [2026-06-04] ingest | sources/papers/extreme_parkour_arxiv_2309_14341.md、sources/repos/extreme-parkour.md、sources/sites/extreme-parkour-github-io.md — Extreme Parkour（ICRA 2024）入库；wiki/entities/extreme-parkour.md
 
 - 原始资料：[extreme_parkour_arxiv_2309_14341.md](sources/papers/extreme_parkour_arxiv_2309_14341.md)（<https://arxiv.org/abs/2309.14341>）；[extreme-parkour.md](sources/repos/extreme-parkour.md)（<https://github.com/chengxuxin/extreme-parkour>）；[extreme-parkour-github-io.md](sources/sites/extreme-parkour-github-io.md)（<https://extreme-parkour.github.io/>）

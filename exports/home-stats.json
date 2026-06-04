@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 668,
-  "edge_count": 4703,
+  "node_count": 669,
+  "edge_count": 4713,
   "coverage": {
-    "covered": 666,
-    "total": 666,
+    "covered": 667,
+    "total": 667,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoid-gpt.md",
+      "detail_id": "entity-paper-humanoid-gpt",
+      "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/extreme-parkour.md",
       "detail_id": "entity-extreme-parkour",
@@ -143,36 +167,12 @@
       "type": "overview",
       "recency": "2026-06-03",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/safe-lora-update-projection.md",
-      "detail_id": "wiki-formalizations-safe-lora-update-projection",
-      "label": "Safe LoRA Update Projection（安全 LoRA 投影更新形式化）",
-      "type": "formalization",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md",
-      "detail_id": "entity-paper-slowrl-safe-lora-locomotion-sim2real",
-      "label": "SLowRL：安全低秩 RL 真机运动微调",
-      "type": "entity",
-      "recency": "2026-06-03",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-shape-your-body-value-gradient-design.md",
-      "detail_id": "entity-paper-shape-your-body-value-gradient-design",
-      "label": "Shape Your Body：多具身价值梯度机器人共设计",
-      "type": "entity",
-      "recency": "2026-06-02",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/extreme-parkour.md",
-    "detail_id": "entity-extreme-parkour",
-    "label": "Extreme Parkour（端到端四足感知跑酷）",
+    "path": "wiki/entities/paper-humanoid-gpt.md",
+    "detail_id": "entity-paper-humanoid-gpt",
+    "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
     "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"
