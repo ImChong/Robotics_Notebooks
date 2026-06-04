@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, deepmind, flow-matching, manipulation]
 status: complete
-updated: 2026-05-15
+updated: 2026-06-04
 related:
   - ./vla.md
   - ./pi07-policy.md
