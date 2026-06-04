@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-04
 related:
   - ./genesis-sim.md
   - ./isaac-gym-isaac-lab.md
@@ -97,6 +97,7 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [Spark](./spark-3dgs-renderer.md) / [Aholo Viewer](./aholo-viewer.md) — Web 端大场景 3DGS 渲染（见 [对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)）
 - [World Labs](./world-labs.md) — 空间世界生成（Marble）与 Spark 产业侧上下文
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照（见 [选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）
+- [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 背景 + mesh 前景为人形 VLA loco-manip 合成演示（arXiv:2606.01458）
 
 ## 参考来源
 

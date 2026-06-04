@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md — Agent Reach 抓取 LEGS/3DGS 人形 VLA loco-manip 专题并沉淀论文实体
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（editable 安装，修复 hatchling `force-include` 重复文件后 `pip install -e` + `wechat-article-for-ai`/Camoufox）
+- 原始资料：[`sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md`](sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md)（<https://mp.weixin.qq.com/s/B1sYOPKg6TQwnNGs-_8NDw>）；落盘 [`sources/raw/wechat_legs_vla_3dgs_2026-06-04.md`](sources/raw/wechat_legs_vla_3dgs_2026-06-04.md)；论文 [`sources/papers/legs_arxiv_2606_01458.md`](sources/papers/legs_arxiv_2606_01458.md)；项目页 [`sources/sites/legsvla-github-io.md`](sources/sites/legsvla-github-io.md)
+- 沉淀页面：[`wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md`](wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md)（含 Mermaid 管线总览）
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/methods/sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)、[`wiki/entities/gs-playground.md`](wiki/entities/gs-playground.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-06-04] ingest | sources/sites/pupper-v3-documentation-readthedocs.md、sources/repos/pupperv3_monorepo.md、sources/courses/stanford_cs123_robotics_ai.md — Pupper v3 官方文档与 monorepo/CS123 入库；更新 wiki/entities/stanford-doggo-and-pupper.md
 
 - 原始资料：[pupper-v3-documentation-readthedocs.md](sources/sites/pupper-v3-documentation-readthedocs.md)（<https://pupper-v3-documentation.readthedocs.io/en/latest/index.html>）；[pupperv3_monorepo.md](sources/repos/pupperv3_monorepo.md)（<https://github.com/Nate711/pupperv3-monorepo>）；[stanford_cs123_robotics_ai.md](sources/courses/stanford_cs123_robotics_ai.md)（<https://cs123-stanford.readthedocs.io/en/latest/>）

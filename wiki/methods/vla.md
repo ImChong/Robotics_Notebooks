@@ -2,7 +2,7 @@
 type: method
 tags: [vla, vision-language-action, foundation-policy, manipulation, rt2, pi0, pi07, vam]
 status: complete
-updated: 2026-06-02
+updated: 2026-06-04
 summary: "VLA（Vision-Language-Action）把语言、视觉和动作统一进一个多模态策略模型，是 manipulation 与 loco-manipulation 任务上最具代表性的 foundation policy 实例化路径，使机器人能够直接从自然语言与图像条件生成控制动作。"
 related:
   - ../overview/vla-open-source-repro-landscape-2025.md
@@ -36,6 +36,7 @@ related:
   - ../entities/humannet.md
   - ../entities/paper-capvector-capability-vectors-vla.md
   - ./sonic-motion-tracking.md
+  - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
 sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -59,6 +60,7 @@ sources:
   - ../../sources/papers/capvector_arxiv_2605_10903.md
   - ../../sources/sites/capvector-github-io.md
   - ../../sources/repos/openhelix_team_capvector.md
+  - ../../sources/papers/legs_arxiv_2606_01458.md
 ---
 
 # VLA（Vision-Language-Action）
