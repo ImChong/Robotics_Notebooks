@@ -269,14 +269,20 @@
     const roadmapPages = pages.roadmap_pages || {};
     const routeIndex = {};
 
-    Object.keys(detailPages).forEach(function (id) {
-      const page = detailPages[id] || {};
-      if (page.path) routeIndex[page.path] = detailHref(id);
-    });
-    Object.keys(roadmapPages).forEach(function (id) {
-      const page = roadmapPages[id] || {};
-      if (page.path) routeIndex[page.path] = roadmapHref(id);
-    });
+    // ⚡ Bolt Optimization: Replace Object.keys().forEach with for...in
+    // Expected impact: Eliminates intermediate array allocations of all page IDs and closures, reducing memory overhead and GC pressure when building the markdown route index.
+    for (var id in detailPages) {
+      if (Object.prototype.hasOwnProperty.call(detailPages, id)) {
+        const page = detailPages[id] || {};
+        if (page.path) routeIndex[page.path] = detailHref(id);
+      }
+    }
+    for (var id2 in roadmapPages) {
+      if (Object.prototype.hasOwnProperty.call(roadmapPages, id2)) {
+        const page = roadmapPages[id2] || {};
+        if (page.path) routeIndex[page.path] = roadmapHref(id2);
+      }
+    }
 
     return routeIndex;
   }
