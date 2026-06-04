@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-04] ingest | sources/blogs/wechat_shenlan_3d_coordinate_transforms.md、wechat_shenlan_riemannian_manifold_tangent_space.md — Agent Reach 抓取《具身智能基础》专栏 02/03 并建几何三篇父节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（修复 hatchling `force-include` 重复后 `pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`wechat_shenlan_3d_coordinate_transforms.md`](sources/blogs/wechat_shenlan_3d_coordinate_transforms.md)（<https://mp.weixin.qq.com/s/P5Jm7bMhaTHsytHStFbbLg>）；[`wechat_shenlan_riemannian_manifold_tangent_space.md`](sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md)（<https://mp.weixin.qq.com/s/uFTKN5FDvlHQxOSspvxVZw>）；落盘 [`sources/raw/wechat_shenlan_3d_coord_transforms_2026-06-04.md`](sources/raw/wechat_shenlan_3d_coord_transforms_2026-06-04.md)、[`sources/raw/wechat_shenlan_riemannian_manifold_2026-06-04.md`](sources/raw/wechat_shenlan_riemannian_manifold_2026-06-04.md)；专栏 01 已存在 [`wechat_shenlan_lie_group_lie_algebra_quaternion.md`](sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)（<https://mp.weixin.qq.com/s/JviRH2LW-fkCHA5gY7Qflw>）
+- 沉淀页面：**父节点** [`wiki/overview/shenlan-embodied-ai-fundamentals-series.md`](wiki/overview/shenlan-embodied-ai-fundamentals-series.md)；子节点 [`wiki/formalizations/3d-coordinate-transforms-vision-robotics.md`](wiki/formalizations/3d-coordinate-transforms-vision-robotics.md)、[`wiki/formalizations/riemannian-manifold-tangent-space.md`](wiki/formalizations/riemannian-manifold-tangent-space.md)
+- 交叉更新：[`wiki/formalizations/lie-group-rigid-body-motions.md`](wiki/formalizations/lie-group-rigid-body-motions.md)、[`wiki/overview/vla-open-source-repro-landscape-2025.md`](wiki/overview/vla-open-source-repro-landscape-2025.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-06-04] structural | wiki/concepts/motion-retargeting-pipeline.md — 流水线页三处公式改 `$...$` 以启用 KaTeX 蓝框；`docs/main.js` 保留 Mermaid `htmlLabels` 的 `<br/>` 换行
 
 - 页面：[wiki/concepts/motion-retargeting-pipeline.md](wiki/concepts/motion-retargeting-pipeline.md)
