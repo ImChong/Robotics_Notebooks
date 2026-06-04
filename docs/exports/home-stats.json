@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-04",
-  "node_count": 671,
-  "edge_count": 4747,
+  "node_count": 672,
+  "edge_count": 4763,
   "coverage": {
-    "covered": 669,
-    "total": 669,
+    "covered": 670,
+    "total": 670,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
+      "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
+      "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
+      "detail_id": "entity-paper-amp-survey-15-physhsi",
+      "label": "PhysHSI",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
       "detail_id": "entity-paper-htd-refine-monocular-hmr",
@@ -45,14 +77,6 @@
       "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
       "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
       "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
       "recency": "2026-06-04",
       "source": "log.md"
     },
@@ -143,36 +167,12 @@
       "type": "concept",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/sim2real-vs-real2sim-fine-tuning.md",
-      "detail_id": "wiki-comparisons-sim2real-vs-real2sim-fine-tuning",
-      "label": "Sim2Real 残差适配 vs Real2Sim 真机回放 vs 真机直接 RL 微调",
-      "type": "comparison",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/safe-real-world-rl-fine-tuning.md",
-      "detail_id": "wiki-concepts-safe-real-world-rl-fine-tuning",
-      "label": "Safe Real-World RL Fine-Tuning（真机安全 RL 微调）",
-      "type": "concept",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/sim2real-approaches.md",
-      "detail_id": "wiki-comparisons-sim2real-approaches",
-      "label": "Sim2Real 方法横向对比",
-      "type": "comparison",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
-    "detail_id": "entity-paper-htd-refine-monocular-hmr",
-    "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
+    "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
+    "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
+    "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
     "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"
