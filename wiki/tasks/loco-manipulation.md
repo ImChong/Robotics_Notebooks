@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-04
+updated: 2026-06-05
 sources:
+  - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
   - ../../sources/papers/humanoid_touch_dream.md
@@ -93,6 +94,10 @@ flowchart TD
 - **核心**：先 **AMP/RL 预训练** 全身搬箱策略并 **冻结**；再用 **观测–动作历史** 学 **物体/负载** 与 **动力学** 双 latent，以 **分裂世界模型预测** + **GRL 交叉对抗** 减少混编，经 **分层 FiLM** 注入冻结网络；面向 **质量/搬放高度** 变化与 sim–real 动力学差的 **零样本真机** 部署。
 - **代表作**：[SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md) (Samsung, 2026, arXiv:2606.03297) — 在 PhysHSI 类基策略上，MuJoCo sim-to-sim **86/90** vs **71/90** Full-task；G1 真机 **96.3%** vs **59.3%**，**6 kg** 与 **0 cm 地面搬起** 增益最大。
 
+### 11. 感知统一低层 LLC（单阶段全身 RL + 高程图）
+- **核心**：**单策略 PPO** 同时输出 **行走与上肢** 力矩/关节目标；机载 **LiDAR 高程图** 经 **跨模态编码**（本体预测 + 注意力地形）进入 **MoE** 全身 actor；上肢 **残差** 跟踪 $q^{\mathrm{upper}^*}$；**渐进命令课程** 替代 MoCap，作为上层 VLA/遥操作/分层 RL 的 **稳健低层 API**。
+- **代表作**：[PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) (上海交大, 2026, arXiv:2601.17440) — G1 真机楼梯/高台等非结构化 **loco-manipulation**；相对 HOMIE/FALCON/AMO 跟踪误差更低；全地形 stumble 消融验证感知、注意力与 MoE。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -122,6 +127,7 @@ flowchart TD
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — 无机器人示范 + 扩散高层 + SKR + G1 WBC（arXiv:2605.03452）
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 合成演示 + VLA 微调，无遥操作 loco-manip 数据工厂（arXiv:2606.01458）
 - [SplitAdapter（论文实体）](../entities/paper-splitadapter-load-aware-loco-manipulation.md) — 冻结 AMP 搬箱策略 + 因子化世界模型/FiLM 负载感知适配（arXiv:2606.03297）
+- [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — LiDAR 高程图 + MoE 单阶段感知全身 LLC（arXiv:2601.17440）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -137,6 +143,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/bifrost_umi_arxiv_2605_03452.md](../../sources/papers/bifrost_umi_arxiv_2605_03452.md) — BifrostUMI：无机器人全身示范与 G1 部署（arXiv:2605.03452）
 - **ingest 档案：** [sources/papers/legs_arxiv_2606_01458.md](../../sources/papers/legs_arxiv_2606_01458.md) — LEGS：3DGS 无遥操作 VLA loco-manip 数据（arXiv:2606.01458）
 - **ingest 档案：** [sources/papers/splitadapter_arxiv_2606_03297.md](../../sources/papers/splitadapter_arxiv_2606_03297.md) — SplitAdapter：负载感知因子化适配与人形搬箱 sim2real（arXiv:2606.03297）
+- **ingest 档案：** [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 
 ## 一句话记忆
 

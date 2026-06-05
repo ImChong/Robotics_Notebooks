@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-05
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -159,6 +159,7 @@ print("joint acceleration command:", qdd_star)
 - [sources/papers/bfm_survey_arxiv_2506_20487.md](../../sources/papers/bfm_survey_arxiv_2506_20487.md) — BFM 综述（arXiv:2506.20487，TPAMI 2025）
 - [sources/repos/awesome_bfm_papers.md](../../sources/repos/awesome_bfm_papers.md) — awesome-bfm-papers 精选列表
 - [sources/papers/bfm_humanoid_arxiv_2509_13780.md](../../sources/papers/bfm_humanoid_arxiv_2509_13780.md) — BFM 论文摘要（CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型，arXiv:2509.13780）
+- [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 
 ## 关联页面
@@ -176,6 +177,7 @@ print("joint acceleration command:", qdd_star)
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
+- [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
 
 ## 继续深挖入口
 
