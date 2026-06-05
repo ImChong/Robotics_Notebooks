@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/sprint_arxiv_2605_28549.md、sources/sites/sprint-anonymous-project-page.md — SPRINT 人形竞技冲刺（频谱先验 + 6 m/s G1 真机）入库
+
+- 原始资料：[sprint_arxiv_2605_28549.md](sources/papers/sprint_arxiv_2605_28549.md)（<https://arxiv.org/abs/2605.28549>、<https://arxiv.org/html/2605.28549v1>）；[sprint-anonymous-project-page.md](sources/sites/sprint-anonymous-project-page.md)（<https://anonymous.4open.science/w/SPRINT-138A/>）
+- 沉淀页面：[wiki/entities/paper-sprint-humanoid-athletic-sprints.md](wiki/entities/paper-sprint-humanoid-athletic-sprints.md)（含三阶段 Mermaid 管线）
+- 交叉更新：[wiki/tasks/humanoid-locomotion.md](wiki/tasks/humanoid-locomotion.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
 - 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-05
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
@@ -80,11 +80,12 @@ $$
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md) — AMP 在 Unitree G1 + mjlab 上的统一 locomotion+recovery 实现。
 - [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 提出了 Selective AMP 以应对多步态学习中的正则化权衡。
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP：双判别器 + 重力门控，G1 真机统一走跑起身。
+- [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 高动态冲刺场景下以频谱先验替代对抗先验的对照路线。
 
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
+- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 

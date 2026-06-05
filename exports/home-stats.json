@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 676,
-  "edge_count": 4806,
+  "node_count": 677,
+  "edge_count": 4823,
   "coverage": {
-    "covered": 674,
-    "total": 674,
+    "covered": 675,
+    "total": 675,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
+      "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
+      "label": "SPRINT：人形竞技冲刺的高效频谱先验",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
       "detail_id": "entity-paper-heracles-humanoid-diffusion",
@@ -143,38 +167,14 @@
       "type": "method",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gs-playground.md",
-      "detail_id": "entity-gs-playground",
-      "label": "GS-Playground (3DGS 光真实感仿真)",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/stanford-doggo-and-pupper.md",
-      "detail_id": "entity-stanford-doggo-and-pupper",
-      "label": "Stanford Doggo / Pupper（开源四足）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/easy-quadruped.md",
-      "detail_id": "entity-easy-quadruped",
-      "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-    "detail_id": "entity-paper-heracles-humanoid-diffusion",
-    "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+    "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
+    "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
+    "label": "SPRINT：人形竞技冲刺的高效频谱先验",
     "type": "entity",
-    "recency": "2026-06-04",
+    "recency": "2026-06-05",
     "source": "log.md"
   }
 }

@@ -71,6 +71,7 @@
 | [x] [tau0_wm_tech_report.md](papers/tau0_wm_tech_report.md) | τ₀-WM：统一视频–动作世界模型（5B VAM、异构掩码预训练、测试时 propose–evaluate–revise，Agibot Finch 技术报告 2026-05-31）摘录与 wiki 映射 |
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
+| [x] [sprint_arxiv_2605_28549.md](papers/sprint_arxiv_2605_28549.md) | SPRINT：5 条参考 + 频率自适应频谱先验 + 残差 PPO，G1 真机冲刺 6 m/s（arXiv:2605.28549，NUDT / 湖南大学）摘录与 wiki 映射 |
 | [x] [heracles_humanoid_diffusion_arxiv_2603_27756.md](papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) | Heracles：状态条件扩散中间件桥接跟踪与生成恢复（arXiv:2603.27756，X-Humanoid）摘录与 wiki 映射 |
 | [x] [slowrl_arxiv_2603_17092.md](papers/slowrl_arxiv_2603_17092.md) | SLowRL：LoRA + Recovery 安全真机微调四足动态策略（arXiv:2603.17092，Go2）摘录与 wiki 映射 |
 | [x] [any2any_arxiv_2605_23733.md](papers/any2any_arxiv_2605_23733.md) | Any2Any：跨具身 WBT 运动学对齐 + LoRA 动力学适配（arXiv:2605.23733，LimX）摘录与 wiki 映射 |
@@ -261,6 +262,7 @@
 | [x] [simplefoc_documentation.md](sites/simplefoc_documentation.md) | docs.simplefoc.com：Arduino SimpleFOC 官方文档（理论、运动/扭矩环、硬件与 v2.4 发布说明） |
 | [x] [jc-bao-spider-project-github-io.md](sites/jc-bao-spider-project-github-io.md) | SPIDER 项目页 jc-bao.github.io/spider-project（管线、交互可视化、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
+| [x] [sprint-anonymous-project-page.md](sites/sprint-anonymous-project-page.md) | SPRINT 匿名项目页 anonymous.4open.science/w/SPRINT-138A（跨身高先验与真机冲刺 demo；arXiv:2605.28549） |
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
