@@ -6,6 +6,34 @@
 - 沉淀页面：[wiki/entities/paper-sprint-humanoid-athletic-sprints.md](wiki/entities/paper-sprint-humanoid-athletic-sprints.md)（含三阶段 Mermaid 管线）
 - 交叉更新：[wiki/tasks/humanoid-locomotion.md](wiki/tasks/humanoid-locomotion.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)、[sources/README.md](sources/README.md)
 
+## [2026-06-05] ingest | sources/papers/homeworld_arxiv_2606_06390.md — HomeWorld（Kairos）全屋 sim-ready 场景生成入库
+
+- 原始资料：[homeworld_arxiv_2606_06390.md](sources/papers/homeworld_arxiv_2606_06390.md)（<https://arxiv.org/abs/2606.06390>）；[kairos-homeworld-github-io.md](sources/sites/kairos-homeworld-github-io.md)（<https://kairos-homeworld.github.io/>）；[homeworld.md](sources/repos/homeworld.md)（<https://github.com/Kairos-HomeWorld/HomeWorld>，Coming Soon）
+- 沉淀页面：[wiki/entities/paper-homeworld-whole-home-scene-generation.md](wiki/entities/paper-homeworld-whole-home-scene-generation.md)（含 Mermaid 四阶段流水线）
+- 交叉更新：[wiki/concepts/video-as-simulation.md](wiki/concepts/video-as-simulation.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)、[wiki/tasks/vision-language-navigation.md](wiki/tasks/vision-language-navigation.md)、[sources/README.md](sources/README.md)
+
+## [2026-06-05] ingest | sources/papers/host_humanoid_standingup_arxiv_2502_08378.md — HoST（RSS 2025）人形多姿态起身 RL 入库
+
+- 原始资料：[host_humanoid_standingup_arxiv_2502_08378.md](sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)（<https://arxiv.org/abs/2502.08378>）；[host-humanoid-standingup-project.md](sources/sites/host-humanoid-standingup-project.md)（<https://taohuang13.github.io/humanoid-standingup.github.io/>）；[host_internrobotics.md](sources/repos/host_internrobotics.md)（<https://github.com/InternRobotics/HoST>）
+- 沉淀页面：[wiki/entities/paper-host-humanoid-standingup.md](wiki/entities/paper-host-humanoid-standingup.md)
+- 交叉更新：[wiki/tasks/balance-recovery.md](wiki/tasks/balance-recovery.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-unified-walk-run-recovery-sdamp.md](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)、[sources/README.md](sources/README.md)
+
+## [2026-06-05] structural | wiki/methods/model-predictive-control.md — MPC 页补充滚动时域 Mermaid 流程图
+
+- 页面：[wiki/methods/model-predictive-control.md](wiki/methods/model-predictive-control.md)（「有限时域优化」小节）
+
+## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
+
+- 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）
+- 沉淀页面：[wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（含 Mermaid 训练—部署管线）
+- 交叉更新：[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/concepts/terrain-adaptation.md](wiki/concepts/terrain-adaptation.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-faststair-humanoid-stair-ascent.md](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[sources/README.md](sources/README.md)
+
+## [2026-06-05] ingest | sources/papers/faststair_arxiv_2601_10365.md — FastStair 挂接楼梯/障碍中心节点并刷新交叉引用
+
+- 原始资料（已存在，本次补摘录 §5 感知定位）：[`sources/papers/faststair_arxiv_2601_10365.md`](sources/papers/faststair_arxiv_2601_10365.md)、[`sources/sites/npcliu-faststair-github-io.md`](sources/sites/npcliu-faststair-github-io.md)
+- 新建中心节点：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md) — **带/不带感知 · 上下楼梯 · 越障** 维护挂接点
+- 交叉更新：[`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/concepts/footstep-planning.md`](wiki/concepts/footstep-planning.md)、[`wiki/concepts/capture-point-dcm.md`](wiki/concepts/capture-point-dcm.md)、[`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md)、[`wiki/entities/dreamwaq-plus.md`](wiki/entities/dreamwaq-plus.md)、[`wiki/entities/extreme-parkour.md`](wiki/entities/extreme-parkour.md)、[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md`](wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md)、[`wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md`](wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md)、[`wiki/entities/paper-walk-these-ways-quadruped-mob.md`](wiki/entities/paper-walk-these-ways-quadruped-mob.md)、[`wiki/entities/jackhan-mujoco-walke3-simulation.md`](wiki/entities/jackhan-mujoco-walke3-simulation.md)
+
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
 - 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）

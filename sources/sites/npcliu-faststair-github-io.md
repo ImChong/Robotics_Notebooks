@@ -19,4 +19,5 @@
 ## 对 wiki 的映射
 
 - [`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](../../wiki/entities/paper-faststair-humanoid-stair-ascent.md)
+- [`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md)
 - [`sources/papers/faststair_arxiv_2601_10365.md`](../papers/faststair_arxiv_2601_10365.md)

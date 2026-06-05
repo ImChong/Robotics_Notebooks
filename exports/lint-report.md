@@ -2,7 +2,7 @@
 
 ## [2026-06-05] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **7** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -25,8 +25,14 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（7 个）
+- wiki/concepts/video-as-simulation.md (wiki:2026-05-30 < sources/homeworld_arxiv_2606_06390.md:2026-06-05)
+- wiki/tasks/vision-language-navigation.md (wiki:2026-05-30 < sources/homeworld_arxiv_2606_06390.md:2026-06-05)
+- wiki/methods/generative-world-models.md (wiki:2026-06-04 < sources/homeworld_arxiv_2606_06390.md:2026-06-05)
+- wiki/tasks/manipulation.md (wiki:2026-05-31 < sources/homeworld_arxiv_2606_06390.md:2026-06-05)
+- wiki/tasks/balance-recovery.md (wiki:2026-05-25 < sources/host_humanoid_standingup_arxiv_2502_08378.md:2026-06-05)
+- wiki/tasks/locomotion.md (wiki:2026-06-04 < sources/host_humanoid_standingup_arxiv_2502_08378.md:2026-06-05)
+- wiki/entities/unitree-g1.md (wiki:2026-06-04 < sources/host_humanoid_standingup_arxiv_2502_08378.md:2026-06-05)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -82,4 +88,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：675/675 (100%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：679/679 (100%) wiki/entity 页有 ingest 来源

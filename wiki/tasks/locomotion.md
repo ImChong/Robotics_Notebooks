@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-05
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -28,7 +28,9 @@ related:
   - ../entities/open-duck-mini.md
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
+  - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -111,7 +113,9 @@ flowchart TD
 ### 4. 地形变化
 平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。
 
+- **楼梯 / 越障专题索引：** [楼梯与障碍 Locomotion（感知/盲走中心节点）](./stair-obstacle-perceptive-locomotion.md) — 带/不带感知、上下楼梯与跑酷文献的 **维护挂接点**。
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
+- **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
 
 ### 5. 状态估计与延迟
@@ -149,6 +153,7 @@ flowchart TD
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
   - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。
   - **SD-AMP（arXiv:2605.18611）**：训练期用投影重力门控在 **recovery / 速度条件 locomotion** 两个 AMP 判别器间切换，部署单策略覆盖走、跑与起身（见 [SD-AMP 实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
+  - **HoST（arXiv:2502.08378）**：无 MoCap 参考的**纯起身**技能，多 critic + 四地形课程 + 真机运动约束，G1 室内外与俯仰卧验证（见 [HoST 实体页](../entities/paper-host-humanoid-standingup.md)）。
 - **世界模型**：学习环境模型，在模型里规划。
   - 代表：[Model-Based RL（Dreamer 等）](../methods/model-based-rl.md)、[LIFT（BIGAI 三阶段管线）](../entities/lift-humanoid.md)
 
