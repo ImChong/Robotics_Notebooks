@@ -2,12 +2,13 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-05
 venue: curated
 summary: "Deep Whole-body Parkour 和 PHP 都做跑酷，但侧重点不同。"
 related:
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_23_deep_whole_body_parkour.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md

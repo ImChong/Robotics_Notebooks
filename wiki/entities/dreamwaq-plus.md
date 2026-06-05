@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - point-cloud
 status: complete
-updated: 2026-05-30
+updated: 2026-06-05
 arxiv: "2409.19709"
 venue: "IEEE T-RO 2026"
 related:
@@ -18,6 +18,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/state-estimation.md
   - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./unitree.md
   - ./paper-walk-these-ways-quadruped-mob.md
 sources:
