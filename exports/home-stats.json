@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 676,
-  "edge_count": 4806,
+  "node_count": 677,
+  "edge_count": 4821,
   "coverage": {
-    "covered": 674,
-    "total": 674,
+    "covered": 675,
+    "total": 675,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+      "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+      "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
       "detail_id": "entity-paper-heracles-humanoid-diffusion",
@@ -127,54 +167,14 @@
       "type": "entity",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gs-playground.md",
-      "detail_id": "entity-gs-playground",
-      "label": "GS-Playground (3DGS 光真实感仿真)",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/stanford-doggo-and-pupper.md",
-      "detail_id": "entity-stanford-doggo-and-pupper",
-      "label": "Stanford Doggo / Pupper（开源四足）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/easy-quadruped.md",
-      "detail_id": "entity-easy-quadruped",
-      "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-    "detail_id": "entity-paper-heracles-humanoid-diffusion",
-    "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+    "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+    "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+    "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
     "type": "entity",
-    "recency": "2026-06-04",
+    "recency": "2026-06-05",
     "source": "log.md"
   }
 }

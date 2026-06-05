@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
+
+- 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）
+- 沉淀页面：[wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（含 Mermaid 训练—部署管线）
+- 交叉更新：[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/concepts/terrain-adaptation.md](wiki/concepts/terrain-adaptation.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-faststair-humanoid-stair-ascent.md](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
 - 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）

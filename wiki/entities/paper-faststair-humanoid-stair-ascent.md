@@ -12,7 +12,7 @@ tags:
   - limx-dynamics
   - stairs
 status: complete
-updated: 2026-05-17
+updated: 2026-06-05
 arxiv: "2601.10365"
 related:
   - ../tasks/locomotion.md
@@ -23,6 +23,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/terrain-adaptation.md
   - ./isaac-gym-isaac-lab.md
+  - ./paper-explicit-stair-geometry-humanoid-locomotion.md
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/sites/npcliu-faststair-github-io.md
@@ -119,6 +120,7 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+- **显式几何条件化（arXiv:2605.09944）：** [Explicit Stair Geometry Conditioning](./paper-explicit-stair-geometry-humanoid-locomotion.md) 用 **BEV 点云 → 踢面/踏面/航向 token** 条件化 PPO（**Unitree G1**），强调 **OOD 踢面泛化** 与 **长程户外楼梯**；FastStair 则用 **DCM 落点规划监督 + LoRA 专家** 追求 **高速上楼梯**（**LimX Oli**）。二者互补：规划引导 vs 低维几何接口。
 
 
 ## 参考来源
