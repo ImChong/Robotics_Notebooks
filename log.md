@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] structural | wiki/methods/model-predictive-control.md — MPC 页补充滚动时域 Mermaid 流程图
+
+- 页面：[wiki/methods/model-predictive-control.md](wiki/methods/model-predictive-control.md)（「有限时域优化」小节）
+
 ## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
 
 - 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）

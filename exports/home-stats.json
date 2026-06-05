@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
       "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
       "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
@@ -159,21 +167,13 @@
       "type": "overview",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
-      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
-      "label": "三维坐标变换（视觉–机器人对齐）",
-      "type": "formalization",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
-    "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
-    "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
-    "type": "entity",
+    "path": "wiki/methods/model-predictive-control.md",
+    "detail_id": "wiki-methods-model-predictive-control",
+    "label": "Model Predictive Control (MPC，模型预测控制)",
+    "type": "method",
     "recency": "2026-06-05",
     "source": "log.md"
   }
