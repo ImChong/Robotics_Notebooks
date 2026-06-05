@@ -681,6 +681,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 }
 .detail-toc-list {
   --toc-marker-width: 2.25em;
+  --toc-sub-indent: 0.4em;
 }
 .detail-toc-list ol {
   list-style: none;
@@ -702,7 +703,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-/* 子级：序号左缘与父项文字左缘对齐（不用与父序号列对齐） */
+/* 子级：序号略缩进于父文字列，左缘对齐后整体右移 --toc-sub-indent */
 .detail-toc-list ol ol > li {
   grid-template-columns: auto minmax(0, 1fr);
 }
@@ -719,6 +720,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   grid-column: 2;
   grid-row: 2;
   margin-top: .35em;
+  padding-left: var(--toc-sub-indent);
   counter-reset: toc;
 }
 .detail-toc-list ol > li + li {
@@ -731,7 +733,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .detail-toc-list .toc-entry {
   color: var(--text);
   border-radius: 8px;
-  padding: 2px 6px;
+  padding: 2px 0;
   margin: 0;
   transition: color var(--transition), background var(--transition);
   overflow-wrap: anywhere;
