@@ -117,6 +117,7 @@ flowchart TB
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — T2M 文献与数据集拓扑索引
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与连续归一化流基础
 - [GMR: 通用动作重定向](./motion-retargeting-gmr.md) — 从人体 SMPL 系运动到机器人骨架的常见工程落点
+- [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
 
 ## 参考来源
 
