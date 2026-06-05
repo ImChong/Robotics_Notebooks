@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] structural | schema + wiki — 英文缩写速查表工作流与 SSR 页试点
+
+- 工作流：[schema/page-types.md](schema/page-types.md)、[schema/ingest-workflow.md](schema/ingest-workflow.md)、[schema/linking.md](schema/linking.md)、[AGENTS.md](AGENTS.md)；`lint_wiki.py` 新增 `missing_abbrev_glossary` 信息型检查
+- 试点页面：[wiki/entities/paper-ssr-humanoid-open-world-traversal.md](wiki/entities/paper-ssr-humanoid-open-world-traversal.md)（`## 英文缩写速查` 三列表）
+
 ## [2026-06-05] ingest | sources/papers/ssr_arxiv_2605_30770.md、sources/sites/ssr-humanoid-github-io.md — SSR 开放世界人形穿越（想象落脚点 + 潜空间对称 + 分地形 AMP）入库
 
 - 原始资料：[ssr_arxiv_2605_30770.md](sources/papers/ssr_arxiv_2605_30770.md)（<https://arxiv.org/abs/2605.30770>、<https://arxiv.org/html/2605.30770v1>）；[ssr-humanoid-github-io.md](sources/sites/ssr-humanoid-github-io.md)（<https://ssr-humanoid.github.io/>）

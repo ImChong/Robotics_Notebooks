@@ -22,9 +22,12 @@
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 ```
 
-## 页面内建议保留的关联区块
+## 页面内建议保留的区块
 
-推荐在每页末尾加入：
+**正文前部（紧跟一句话定义之后）：**
+- **英文缩写速查** — 固定标题 `## 英文缩写速查`，三列表格：缩写 / 英文全称 / 简要说明（详见 [page-types.md](page-types.md)）
+
+**页末导航：**
 - 关联页面
 - 推荐继续阅读
 

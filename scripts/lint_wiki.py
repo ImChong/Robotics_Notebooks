@@ -5,17 +5,18 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   1. 孤儿页（无其他 wiki 页面链接到它）
   2. 缺少"关联页面"或"关联"区块的页面
   3. 缺少"参考来源"区块的页面
-  4. 内链断链（链接目标文件不存在）
-  5. 空壳页面（内容过少，< 200 字）
-  6. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
-  7. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
-  8. 矛盾检测（同一概念在不同页面有相反描述）
-  9. Frontmatter 缺少 type 字段（V8 新增）
- 10. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
- 11. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
- 12. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
- 13. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
- 14. wiki/entities/paper-* 元数据基线（V23 新增，信息型）：
+  4. 缺少"英文缩写速查"区块的页面（信息型 backlog；新建/大幅改写页须补齐）
+  5. 内链断链（链接目标文件不存在）
+  6. 空壳页面（内容过少，< 200 字）
+  7. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
+  8. 陈旧页面（sources 文件比对应 wiki 页新，需 review）
+  9. 矛盾检测（同一概念在不同页面有相反描述）
+ 10. Frontmatter 缺少 type 字段（V8 新增）
+ 11. log.md 活跃度检查（V8 新增：最近 30 天无操作则警告）
+ 12. concepts/methods/tasks 缺少 summary/description 字段（V10 新增）
+ 13. formalizations/ 公式变量在正文是否有物理含义解释（V21 新增）
+ 14. 高频引用的 methods/ 缺少 queries/ 操作指南或 comparisons/ 对比页（V22 新增，信息型）
+ 15. wiki/entities/paper-* 元数据基线（V23 新增，信息型）：
      - frontmatter 至少含 arxiv/venue/code 三类来源键之一；
      - 正文至少含「方法栈 / 评测 / 与其他工作对比」三段式。
 
@@ -45,6 +46,7 @@ METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
 INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
+    "missing_abbrev_glossary",
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
     "paper_missing_three_sections",
@@ -174,6 +176,7 @@ def _empty_results() -> dict[str, Any]:
         "orphan_pages": [],
         "missing_related": [],
         "missing_sources": [],
+        "missing_abbrev_glossary": [],
         "broken_links": [],
         "stub_pages": [],
         "missing_pages": [],
@@ -231,6 +234,14 @@ def _check_per_page(
         )
         if not is_meta_sources and not has_section(content, ["参考来源", "sources", "参考"]):
             results["missing_sources"].append(str(rel))
+
+        is_meta_abbrev = page.name.lower() in ("readme.md", "index.md") or any(
+            seg in str(rel) for seg in ("references/", "roadmaps/")
+        )
+        if not is_meta_abbrev and not has_section(
+            content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
+        ):
+            results["missing_abbrev_glossary"].append(str(rel))
 
         if resolved in broken:
             for b in broken[resolved]:
@@ -816,6 +827,11 @@ def format_report(results: dict[str, Any]) -> str:
         ("orphan_pages", "孤儿页（无入链）", "⚠️"),
         ("missing_related", "缺少关联页面区块", "⚠️"),
         ("missing_sources", "缺少参考来源区块", "⚠️"),
+        (
+            "missing_abbrev_glossary",
+            "缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）",
+            "💡",
+        ),
         ("broken_links", "断链（内链目标不存在）", "❌"),
         ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
         ("broken_source_refs", "引用了不存在的 sources/ 文件", "❌"),
