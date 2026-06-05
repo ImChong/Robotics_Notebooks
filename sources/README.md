@@ -74,6 +74,7 @@
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
 | [x] [sprint_arxiv_2605_28549.md](papers/sprint_arxiv_2605_28549.md) | SPRINT：5 条参考 + 频率自适应频谱先验 + 残差 PPO，G1 真机冲刺 6 m/s（arXiv:2605.28549，NUDT / 湖南大学）摘录与 wiki 映射 |
+| [x] [ssr_arxiv_2605_30770.md](papers/ssr_arxiv_2605_30770.md) | SSR：想象落脚点 + 潜空间对称 + 分地形 AMP，AgiBot X2 开放世界 1.3 km 穿越（arXiv:2605.30770，浙江大学）摘录与 wiki 映射 |
 | [x] [heracles_humanoid_diffusion_arxiv_2603_27756.md](papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) | Heracles：状态条件扩散中间件桥接跟踪与生成恢复（arXiv:2603.27756，X-Humanoid）摘录与 wiki 映射 |
 | [x] [host_humanoid_standingup_arxiv_2502_08378.md](papers/host_humanoid_standingup_arxiv_2502_08378.md) | HoST：多 critic PPO 跨姿态人形起身，G1 真机直接部署（arXiv:2502.08378，RSS 2025 系统论文 finalist）摘录与 wiki 映射 |
 | [x] [slowrl_arxiv_2603_17092.md](papers/slowrl_arxiv_2603_17092.md) | SLowRL：LoRA + Recovery 安全真机微调四足动态策略（arXiv:2603.17092，Go2）摘录与 wiki 映射 |
@@ -270,6 +271,7 @@
 | [x] [kairos-homeworld-github-io.md](sites/kairos-homeworld-github-io.md) | Kairos · HomeWorld 项目页 kairos-homeworld.github.io（四阶段全屋生成、300K/5K 数据集 teaser、具身交互 demo、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
 | [x] [sprint-anonymous-project-page.md](sites/sprint-anonymous-project-page.md) | SPRINT 匿名项目页 anonymous.4open.science/w/SPRINT-138A（跨身高先验与真机冲刺 demo；arXiv:2605.28549） |
+| [x] [ssr-humanoid-github-io.md](sites/ssr-humanoid-github-io.md) | SSR 项目页 ssr-humanoid.github.io（多样楼梯/沟壑/高台、1.3 km 户外长程与跨平台 demo；arXiv:2605.30770） |
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
