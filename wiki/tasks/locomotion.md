@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-05
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -149,6 +149,7 @@ flowchart TD
 - **Multi-Gait Learning (多步态学习)**：在一个统一的 RL 框架下训练多种步态。
   - 新趋势：使用 **Selective AMP (选择性 AMP)** 策略，对周期性步态（如行走、上楼梯）应用 AMP 以提高稳定性，对高动态步态（如跑、跳）则省略 AMP，避免正则化过度约束。
   - **SD-AMP（arXiv:2605.18611）**：训练期用投影重力门控在 **recovery / 速度条件 locomotion** 两个 AMP 判别器间切换，部署单策略覆盖走、跑与起身（见 [SD-AMP 实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
+  - **HoST（arXiv:2502.08378）**：无 MoCap 参考的**纯起身**技能，多 critic + 四地形课程 + 真机运动约束，G1 室内外与俯仰卧验证（见 [HoST 实体页](../entities/paper-host-humanoid-standingup.md)）。
 - **世界模型**：学习环境模型，在模型里规划。
   - 代表：[Model-Based RL（Dreamer 等）](../methods/model-based-rl.md)、[LIFT（BIGAI 三阶段管线）](../entities/lift-humanoid.md)
 

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/host_humanoid_standingup_arxiv_2502_08378.md — HoST（RSS 2025）人形多姿态起身 RL 入库
+
+- 原始资料：[host_humanoid_standingup_arxiv_2502_08378.md](sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)（<https://arxiv.org/abs/2502.08378>）；[host-humanoid-standingup-project.md](sources/sites/host-humanoid-standingup-project.md)（<https://taohuang13.github.io/humanoid-standingup.github.io/>）；[host_internrobotics.md](sources/repos/host_internrobotics.md)（<https://github.com/InternRobotics/HoST>）
+- 沉淀页面：[wiki/entities/paper-host-humanoid-standingup.md](wiki/entities/paper-host-humanoid-standingup.md)
+- 交叉更新：[wiki/tasks/balance-recovery.md](wiki/tasks/balance-recovery.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-unified-walk-run-recovery-sdamp.md](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
 - 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）
