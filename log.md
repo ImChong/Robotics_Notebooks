@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/homeworld_arxiv_2606_06390.md — HomeWorld（Kairos）全屋 sim-ready 场景生成入库
+
+- 原始资料：[homeworld_arxiv_2606_06390.md](sources/papers/homeworld_arxiv_2606_06390.md)（<https://arxiv.org/abs/2606.06390>）；[kairos-homeworld-github-io.md](sources/sites/kairos-homeworld-github-io.md)（<https://kairos-homeworld.github.io/>）；[homeworld.md](sources/repos/homeworld.md)（<https://github.com/Kairos-HomeWorld/HomeWorld>，Coming Soon）
+- 沉淀页面：[wiki/entities/paper-homeworld-whole-home-scene-generation.md](wiki/entities/paper-homeworld-whole-home-scene-generation.md)（含 Mermaid 四阶段流水线）
+- 交叉更新：[wiki/concepts/video-as-simulation.md](wiki/concepts/video-as-simulation.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)、[wiki/tasks/vision-language-navigation.md](wiki/tasks/vision-language-navigation.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-05] ingest | sources/papers/host_humanoid_standingup_arxiv_2502_08378.md — HoST（RSS 2025）人形多姿态起身 RL 入库
 
 - 原始资料：[host_humanoid_standingup_arxiv_2502_08378.md](sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)（<https://arxiv.org/abs/2502.08378>）；[host-humanoid-standingup-project.md](sources/sites/host-humanoid-standingup-project.md)（<https://taohuang13.github.io/humanoid-standingup.github.io/>）；[host_internrobotics.md](sources/repos/host_internrobotics.md)（<https://github.com/InternRobotics/HoST>）

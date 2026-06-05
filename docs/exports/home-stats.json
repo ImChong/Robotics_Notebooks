@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 679,
-  "edge_count": 4863,
+  "node_count": 680,
+  "edge_count": 4874,
   "coverage": {
-    "covered": 677,
-    "total": 677,
+    "covered": 678,
+    "total": 678,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
+      "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
+      "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-host-humanoid-standingup.md",
       "detail_id": "entity-paper-host-humanoid-standingup",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
-      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
-      "label": "Perceptive Humanoid Parkour（PHP）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md",
-      "detail_id": "entity-paper-hrl-stack-23-deep_whole_body_parkour",
-      "label": "Deep Whole-body Parkour",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md",
-      "detail_id": "entity-paper-hrl-stack-24-hiking_in_the_wild",
-      "label": "Hiking in the Wild",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-walk-these-ways-quadruped-mob.md",
-      "detail_id": "entity-paper-walk-these-ways-quadruped-mob",
-      "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-host-humanoid-standingup.md",
-    "detail_id": "entity-paper-host-humanoid-standingup",
-    "label": "HoST：跨多样姿态的人形起身控制",
+    "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
+    "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
+    "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
     "type": "entity",
     "recency": "2026-06-05",
     "source": "log.md"
