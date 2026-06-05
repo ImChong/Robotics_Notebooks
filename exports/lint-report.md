@@ -2,7 +2,7 @@
 
 ## [2026-06-05] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **669** 条信息型预警）：
+共发现 **0** 个问题（另含 **629** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -13,7 +13,7 @@
 ### ⚠️ 缺少参考来源区块（0 个）
 - 无
 
-### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（669 个）
+### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（629 个）
 - wiki/comparisons/amp-add-smp-motion-prior-variants.md
 - wiki/comparisons/anygrasp-vs-graspnet.md
 - wiki/comparisons/can-vs-ethercat-joint-bus.md
@@ -44,7 +44,6 @@
 - wiki/comparisons/wbc-vs-rl.md
 - wiki/concepts/3d-spatial-vqa.md
 - wiki/concepts/armature-modeling.md
-- wiki/concepts/behavior-foundation-model.md
 - wiki/concepts/can-bus-protocol.md
 - wiki/concepts/can-fd.md
 - wiki/concepts/capture-point-dcm.md
@@ -53,14 +52,12 @@
 - wiki/concepts/clock-synchronization-algorithms.md
 - wiki/concepts/contact-dynamics.md
 - wiki/concepts/contact-estimation.md
-- wiki/concepts/contact-rich-manipulation.md
 - wiki/concepts/control-barrier-function.md
 - wiki/concepts/curriculum-learning.md
 - wiki/concepts/data-flywheel.md
 - wiki/concepts/deep-learning-foundations.md
 - wiki/concepts/deep-rl-game-milestones.md
 - wiki/concepts/dexterous-kinematics.md
-- wiki/concepts/domain-randomization.md
 - wiki/concepts/embodied-data-cleaning.md
 - wiki/concepts/embodied-scaling-laws.md
 - wiki/concepts/ethercat-protocol.md
@@ -68,7 +65,6 @@
 - wiki/concepts/floating-base-dynamics.md
 - wiki/concepts/footstep-planning.md
 - wiki/concepts/force-control-basics.md
-- wiki/concepts/foundation-policy.md
 - wiki/concepts/gait-generation.md
 - wiki/concepts/hqp.md
 - wiki/concepts/humanoid-parallel-joint-kinematics.md
@@ -78,15 +74,11 @@
 - wiki/concepts/latent-imagination.md
 - wiki/concepts/lcm-basics.md
 - wiki/concepts/lip-zmp.md
-- wiki/concepts/motion-retargeting-pipeline.md
-- wiki/concepts/motion-retargeting.md
 - wiki/concepts/mpc-wbc-integration.md
 - wiki/concepts/open-x-embodiment.md
 - wiki/concepts/optimal-control.md
 - wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md
-- wiki/concepts/privileged-training.md
 - wiki/concepts/processor-in-the-loop-sim2real.md
-- wiki/concepts/reward-design.md
 - wiki/concepts/robot-link-and-rotor-inertia.md
 - wiki/concepts/ros2-basics.md
 - wiki/concepts/safe-real-world-rl-fine-tuning.md
@@ -100,12 +92,9 @@
 - wiki/concepts/text-to-cad.md
 - wiki/concepts/tsid.md
 - wiki/concepts/uart-serial-communication.md
-- wiki/concepts/video-as-simulation.md
 - wiki/concepts/visuo-tactile-fusion.md
 - wiki/concepts/wheel-legged-quadruped.md
 - wiki/concepts/whole-body-coordination.md
-- wiki/concepts/whole-body-tracking-pipeline.md
-- wiki/concepts/world-action-models.md
 - wiki/entities/1x-technologies.md
 - wiki/entities/agent-reach.md
 - wiki/entities/agibot-lingxi-x1.md
@@ -183,9 +172,7 @@
 - wiki/entities/hermes-agent.md
 - wiki/entities/holomotion.md
 - wiki/entities/humannet.md
-- wiki/entities/humanoid-robot.md
 - wiki/entities/inmoov-humanoid.md
-- wiki/entities/isaac-gym-isaac-lab.md
 - wiki/entities/isaac-gym.md
 - wiki/entities/isaac-lab.md
 - wiki/entities/isaac-ros-nvblox.md
@@ -202,7 +189,6 @@
 - wiki/entities/kimodo.md
 - wiki/entities/kinova-gen3.md
 - wiki/entities/lafan1-dataset.md
-- wiki/entities/legged-gym.md
 - wiki/entities/lego-loam.md
 - wiki/entities/lerobot.md
 - wiki/entities/lift-humanoid.md
@@ -219,7 +205,6 @@
 - wiki/entities/motioncode.md
 - wiki/entities/motrix.md
 - wiki/entities/mujoco-mjx.md
-- wiki/entities/mujoco.md
 - wiki/entities/mushr.md
 - wiki/entities/navigation2.md
 - wiki/entities/newton-physics.md
@@ -233,7 +218,6 @@
 - wiki/entities/open-duck-playground.md
 - wiki/entities/open-duck-reference-motion-generator.md
 - wiki/entities/open-source-humanoid-brains.md
-- wiki/entities/open-source-humanoid-hardware.md
 - wiki/entities/open-vins.md
 - wiki/entities/openloong-dyn-control.md
 - wiki/entities/openloong.md
@@ -265,7 +249,6 @@
 - wiki/entities/paper-assistmimic.md
 - wiki/entities/paper-bam-extended-friction-servo-actuators.md
 - wiki/entities/paper-barkour-quadruped-agility-benchmark.md
-- wiki/entities/paper-behavior-foundation-model-humanoid.md
 - wiki/entities/paper-bfm-01-bfm-zero.md
 - wiki/entities/paper-bfm-02-metamotivo.md
 - wiki/entities/paper-bfm-03-fb-aw.md
@@ -416,7 +399,6 @@
 - wiki/entities/px4-autopilot.md
 - wiki/entities/pytorch.md
 - wiki/entities/quad-swarm-rl.md
-- wiki/entities/quadruped-robot.md
 - wiki/entities/qwen-vla.md
 - wiki/entities/rldx-1.md
 - wiki/entities/robot-explorer.md
@@ -452,7 +434,6 @@
 - wiki/entities/tnkr.md
 - wiki/entities/turtlebot3.md
 - wiki/entities/unilab.md
-- wiki/entities/unitree-g1.md
 - wiki/entities/unitree-rl-mjlab.md
 - wiki/entities/unitree-ros.md
 - wiki/entities/unitree.md
@@ -500,7 +481,6 @@
 - wiki/methods/action-chunking.md
 - wiki/methods/actuator-network.md
 - wiki/methods/add.md
-- wiki/methods/amp-reward.md
 - wiki/methods/ams.md
 - wiki/methods/any2track.md
 - wiki/methods/ase.md
@@ -510,7 +490,6 @@
 - wiki/methods/bc-z.md
 - wiki/methods/behavior-cloning.md
 - wiki/methods/being-h07.md
-- wiki/methods/beyondmimic.md
 - wiki/methods/chasing-autonomy-pipeline.md
 - wiki/methods/claw.md
 - wiki/methods/contact-net.md
@@ -521,7 +500,6 @@
 - wiki/methods/defi-decoupled-dynamics-vla.md
 - wiki/methods/dial-instruction-augmentation.md
 - wiki/methods/diffusion-motion-generation.md
-- wiki/methods/diffusion-policy.md
 - wiki/methods/disney-olaf-character-robot.md
 - wiki/methods/dmp.md
 - wiki/methods/dwm.md
@@ -531,7 +509,6 @@
 - wiki/methods/exoactor.md
 - wiki/methods/gae.md
 - wiki/methods/generative-data-augmentation.md
-- wiki/methods/generative-world-models.md
 - wiki/methods/genmo.md
 - wiki/methods/gentlehumanoid-motion-tracking.md
 - wiki/methods/grasp-pose-estimation.md
@@ -550,9 +527,6 @@
 - wiki/methods/lwd.md
 - wiki/methods/marl.md
 - wiki/methods/mimic-video.md
-- wiki/methods/model-based-rl.md
-- wiki/methods/model-predictive-control.md
-- wiki/methods/motion-retargeting-gmr.md
 - wiki/methods/motionbricks.md
 - wiki/methods/mppi.md
 - wiki/methods/mt-opt.md
@@ -561,7 +535,6 @@
 - wiki/methods/paid-framework.md
 - wiki/methods/pelican-unified-1.md
 - wiki/methods/pi07-policy.md
-- wiki/methods/policy-optimization.md
 - wiki/methods/qt-opt.md
 - wiki/methods/reactor-physics-aware-motion-retargeting.md
 - wiki/methods/roboarena.md
@@ -570,7 +543,6 @@
 - wiki/methods/saycan.md
 - wiki/methods/skeleton-action-recognition.md
 - wiki/methods/smp.md
-- wiki/methods/sonic-motion-tracking.md
 - wiki/methods/spider-physics-informed-dexterous-retargeting.md
 - wiki/methods/star-vla.md
 - wiki/methods/sumo.md
@@ -583,11 +555,8 @@
 - wiki/methods/zest.md
 - wiki/methods/π0-policy.md
 - wiki/overview/bfm-category-01-forward-backward-representation.md
-- wiki/overview/bfm-category-02-goal-conditioned-learning.md
 - wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md
 - wiki/overview/bfm-category-04-adaptation.md
-- wiki/overview/bfm-category-05-hierarchical-control.md
-- wiki/overview/ego-9-papers-technology-map.md
 - wiki/overview/ego-category-01-data-collection.md
 - wiki/overview/ego-category-02-human-to-robot.md
 - wiki/overview/ego-category-03-world-models.md
@@ -612,16 +581,12 @@
 - wiki/overview/humanoid-motion-control-know-how.md
 - wiki/overview/motor-drive-firmware-bus-protocols.md
 - wiki/overview/multirotor-simulation-planning-control-stack.md
-- wiki/overview/navigation-slam-autonomy-stack.md
 - wiki/overview/notable-commercial-robot-platforms.md
-- wiki/overview/robot-learning-overview.md
 - wiki/overview/robot-open-source-wechat-issue01-curator.md
 - wiki/overview/robot-open-source-wechat-issue02-curator.md
-- wiki/overview/robot-world-models-training-loop-taxonomy.md
 - wiki/overview/shenlan-embodied-ai-fundamentals-series.md
 - wiki/overview/vla-open-source-repro-landscape-2025.md
 - wiki/overview/vln-open-source-repro-paradigms.md
-- wiki/overview/world-models-15-open-source-technology-map.md
 - wiki/overview/world-models-route-01-cascade.md
 - wiki/overview/world-models-route-02-joint.md
 - wiki/overview/world-models-route-03-virtual-sandbox.md
@@ -643,10 +608,8 @@
 - wiki/queries/humanoid-contact-character-control-guide.md
 - wiki/queries/humanoid-hardware-selection.md
 - wiki/queries/humanoid-motion-control-know-how.md
-- wiki/queries/humanoid-motion-tracking-method-selection.md
 - wiki/queries/humanoid-rl-cookbook.md
 - wiki/queries/il-for-manipulation.md
-- wiki/queries/legged-humanoid-rl-pd-gain-setting.md
 - wiki/queries/locomotion-failure-modes.md
 - wiki/queries/locomotion-reward-design-guide.md
 - wiki/queries/manipulation-vla-architecture-selection.md
@@ -678,9 +641,6 @@
 - wiki/tasks/humanoid-locomotion.md
 - wiki/tasks/humanoid-soccer.md
 - wiki/tasks/hybrid-locomotion.md
-- wiki/tasks/loco-manipulation.md
-- wiki/tasks/stair-obstacle-perceptive-locomotion.md
-- wiki/tasks/teleoperation.md
 - wiki/tasks/ultra-survey.md
 - wiki/tasks/vision-language-navigation.md
 

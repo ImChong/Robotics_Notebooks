@@ -204,6 +204,16 @@ sources:
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 - [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 从交互奖励学习策略 |
+| IL | Imitation Learning | 从专家演示学习策略 |
+| Sim2Real | Simulation to Real | 学习策略落地真机的工程主线 |
+| VLA | Vision-Language-Action | 多模态基础策略方向 |
+| WBC | Whole-Body Control | 人形/移动操作的控制基础设施 |
+
 ## 推荐继续阅读
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction*

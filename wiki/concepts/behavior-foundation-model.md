@@ -29,6 +29,17 @@ summary: "Behavior Foundation Model（BFM）在大规模多样化行为数据上
 
 **Behavior Foundation Model（BFM）**：从 **大规模、多样化行为数据**（动捕、遥操作、自博弈交互等）学习 **可复用的全身行为先验**，使人形 **whole-body control（WBC）** 在换任务、换控制接口或换目标时 **少重训或零重训** 即可适应——是人形控制从「每任务一条 RL」走向「一个 checkpoint + 适应」的范式标签。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| WBC | Whole-Body Control | 人形多关节协调控制，BFM 主要服务层 |
+| VLA | Vision-Language-Action | 高层语义策略，常与 BFM 低层执行叠加 |
+| GC | Goal-conditioned Learning | 以外在目标/参考条件化全身技能扩展 |
+| FB | Forward–Backward Representation | 无 reward 的转移表征，如 BFM-Zero 线 |
+| DIAYN | Diversity Is All You Need | 内在奖励技能发现类预训练代表 |
+
 ## 为什么重要
 
 - **填补 WBC 泛化缺口**：任务专用 RL/IL 在 DeepMimic、AMP、HOVER 等线上已能做出高难度动作，但 **换场景往往要重新奖励工程 + 重训**；BFM 把成本前移到 **一次预训练**。

@@ -25,6 +25,17 @@ sources:
 
 让机器人**边走边动手**——不是先停下来再操作，而是行走和操作在动力学层面高度耦合、在控制层面完全协调。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
+| WBC | Whole-Body Control | 统一分配行走与上肢任务的协调层 |
+| VLA | Vision-Language-Action | 高层语义/任务接口，低层全身执行 |
+| MPC | Model Predictive Control | 滚动优化质心/接触的经典分层路线 |
+| HLC | High-Level Control | 给出末端或技能目标的上层模块 |
+| LLC | Low-Level Control | 跟踪全身参考或力矩的底层策略 |
+
 ## 全身协调流程总览
 
 ```mermaid

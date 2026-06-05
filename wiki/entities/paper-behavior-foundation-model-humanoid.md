@@ -209,6 +209,16 @@ $$
 - Zeng, Lu, Yin, Niu, Dai, Wang, Pang. *Behavior Foundation Model for Humanoid Robots*. arXiv:2509.13780, 2025. <https://arxiv.org/abs/2509.13780>
 - Yuan et al., *A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots*, arXiv:2506.20487, IEEE TPAMI 2025. <https://arxiv.org/abs/2506.20487>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model for Humanoid Robots | 本文提出的人形全身行为基础模型 |
+| WBC | Whole-Body Control | 预训练服务低层全身协调 |
+| RL | Reinforcement Learning | 预训练与下游适应常用范式 |
+| MoCap | Motion Capture | 大规模行为数据主要来源之一 |
+| VLA | Vision-Language-Action | 可与 BFM 低层能力上下叠加 |
+
 ## 推荐继续阅读
 
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — BFM 论文/项目精选列表（与 TPAMI 综述同步维护）

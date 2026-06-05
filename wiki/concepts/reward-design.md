@@ -24,6 +24,16 @@ sources:
 
 > 奖励函数就是"你告诉机器人什么是好、什么是坏"的语言。设计得好，机器人学出你想要的；设计得差，机器人找到 reward hacking 的漏洞，表面指标满分，实际行为一塌糊涂。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Reward | Reward Function | 标量反馈，塑造 RL 策略行为 |
+| RL | Reinforcement Learning | reward 设计是 sample efficiency 关键 |
+| AMP | Adversarial Motion Prior | 风格/分布类 reward 与任务 reward 组合 |
+| PPO | Proximal Policy Optimization | 对 reward 尺度与稀疏性较敏感 |
+| WBC | Whole-Body Control | 任务空间 reward 常需与全身约束一致 |
+
 ## 为什么重要
 
 MDP 框架的核心之一就是奖励函数 $R(s, a, s')$。理论上，只要奖励函数正确，RL 能找到最优策略。实践中：

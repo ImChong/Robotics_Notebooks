@@ -35,6 +35,16 @@ sources:
 
 **代表工作（策展）：** SENTINEL、BeyondMimic、LeVerb、LangWBC、TokenHSI、CLoSD、UniPhys、UniHSI
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 层次化控制中的低层身体执行 |
+| HRL | Hierarchical Reinforcement Learning | 高层技能 + 低层控制的结构 |
+| LLM | Large Language Model | 部分工作作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 与 BFM 低层组合的上层策略 |
+| WBC | Whole-Body Control | 低层跟踪与全身协调 |
+
 ## 本组论文（8 篇）
 
 | # | 工作 | Wiki 实体 | Source |

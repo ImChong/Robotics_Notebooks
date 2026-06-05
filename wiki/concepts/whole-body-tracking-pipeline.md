@@ -44,6 +44,16 @@ sources:
 
 WBT = **参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署** 的端到端流水线，目标是把一段「人形参考运动」变成一份「真机可执行的全身控制策略」。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBT | Whole-Body Tracking Pipeline | 参考→仿真跟踪→部署的流水线 |
+| MoCap | Motion Capture | 上游人体/专家参考来源 |
+| RL | Reinforcement Learning | 仿真中 PPO 等学跟踪策略 |
+| Sim2Real | Simulation to Real | 跟踪策略迁移真机阶段 |
+| Retargeting | Motion Retargeting | 流水线首段：映射到机器人骨架 |
+
 ## 为什么单独立一页
 
 [Whole-Body Control (WBC)](./whole-body-control.md) 关心「**给定一帧参考，怎么协调全身关节求解力矩**」（QP 视角）；本页关心「**给定一批参考轨迹与一台目标机器人，怎么从数据到真机部署整条链路**」（学习驱动视角）。两者是同一战场上的两层抽象：

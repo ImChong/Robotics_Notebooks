@@ -29,6 +29,16 @@ summary: "深蓝具身智能《15 开源世界模型》专题：按级联（6）
 
 世界模型的价值不在「会生成未来视频」，而在 **预测能否进入策略学习、评估与闭环决策**——15 个高引开源项目按 **先预测后动作（级联）→ 想象与动作同骨干（联合）→ 想象作 RL/评估环境（沙盒）** 三条路线展开，且路径正在相互渗透。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WM | World Model | 预测未来以支撑策略学习与评估 |
+| WAM | World Action Model | 想象与动作同骨干的联合架构 |
+| RL | Reinforcement Learning | 虚拟沙盒路线中的想象环境 |
+| VLA | Vision-Language-Action | 级联路线常见上层语义接口 |
+| IDM | Inverse Dynamics Model | 由未来表征解码动作块的模块 |
+
 ## 与 arXiv 综述 taxonomy 的对照
 
 | 维度 | [robot-world-models-training-loop-taxonomy](./robot-world-models-training-loop-taxonomy.md) | 本页（深蓝 15 项目） |
