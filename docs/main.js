@@ -1475,23 +1475,6 @@
     return raw.replace(/^\d+\.\s+/, '');
   }
 
-  /** 路线页侧栏 TOC 仅保留 L−1 序言至 L7 出口（含其间各层子标题）。 */
-  function filterRoadmapTocHeadings(headings) {
-    if (!Array.isArray(headings) || !headings.length) return headings;
-    var start = -1;
-    var end = -1;
-    for (var i = 0; i < headings.length; i++) {
-      var heading = headings[i];
-      if (heading.level !== 2) continue;
-      if (/^L[−-]1\b/.test(heading.text)) start = i;
-      if (/^L7\b/.test(heading.text)) end = i;
-    }
-    if (start < 0 || end < 0 || end < start) return headings;
-    var stop = end + 1;
-    while (stop < headings.length && headings[stop].level > 2) stop++;
-    return headings.slice(start, stop);
-  }
-
   function buildDetailTocTree(headings) {
     const root = { children: [] };
     const stack = [{ node: root, level: 1 }];
@@ -3049,18 +3032,17 @@
     if (contentSection) contentSection.hidden = false;
     if (subnavContent) subnavContent.hidden = false;
 
-    var allHeadings = collectMarkdownHeadings(contentMarkdown);
-    var tocHeadings = filterRoadmapTocHeadings(allHeadings);
+    var headings = collectMarkdownHeadings(contentMarkdown);
     var markdownRouteIndex = buildMarkdownRouteIndex(siteData);
     var roadmapMarkdownContext = {
       currentPath: detail.path || roadmapPage.path || '',
       routeIndex: markdownRouteIndex
     };
     if (tocEl) {
-      renderDetailToc(tocEl, tocHeadings, roadmapMarkdownContext);
+      renderDetailToc(tocEl, headings, roadmapMarkdownContext);
     }
     if (contentEl) {
-      contentEl.innerHTML = renderMarkdownContent(contentMarkdown, allHeadings, roadmapMarkdownContext);
+      contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
       renderDetailMath(contentEl);
       enhanceDetailHeadings(contentEl);
       if (embedRoadmapStagesIntoMarkdownBody(contentEl, roadmapPage, roadmapId, detailPages)) {
