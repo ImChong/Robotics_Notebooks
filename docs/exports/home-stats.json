@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
+      "detail_id": "entity-paper-heracles-humanoid-diffusion",
+      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+      "type": "entity",
+      "recency": "2026-06-04",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
       "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
       "label": "《具身智能基础》专栏：几何三篇技术地图",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
-    "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
-    "label": "《具身智能基础》专栏：几何三篇技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
+    "detail_id": "entity-paper-heracles-humanoid-diffusion",
+    "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
+    "type": "entity",
     "recency": "2026-06-04",
     "source": "log.md"
   }
