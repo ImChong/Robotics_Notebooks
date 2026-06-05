@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-05
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -29,6 +29,7 @@ related:
   - ../entities/paper-digit-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
+  - ./stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-cassie-biped-versatile-locomotion-rl.md
   - ../entities/paper-variable-stiffness-locomotion-rl.md
   - ../entities/paper-cassie-iterative-locomotion-sim2real.md
@@ -112,6 +113,7 @@ flowchart TD
 平坦、崎岖、不平整、楼梯——每种地形需要不同的步态策略。
 
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
+- **楼梯 / 越障专题索引：** [楼梯与障碍 Locomotion（感知/盲走中心节点）](./stair-obstacle-perceptive-locomotion.md) — 带/不带感知、上下楼梯与跑酷文献的 **维护挂接点**。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
 
 ### 5. 状态估计与延迟

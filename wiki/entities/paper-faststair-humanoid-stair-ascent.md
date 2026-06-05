@@ -12,9 +12,10 @@ tags:
   - limx-dynamics
   - stairs
 status: complete
-updated: 2026-05-17
+updated: 2026-06-05
 arxiv: "2601.10365"
 related:
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/capture-point-dcm.md
@@ -99,6 +100,7 @@ flowchart TB
 
 ## 关联页面
 
+- [楼梯与障碍 Locomotion（感知/盲走中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — 本页在「带感知 · 人形 · 高速上楼」轴上的索引位
 - [Locomotion（运动任务）](../tasks/locomotion.md) — 楼梯与离散地形在任务层的总览
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO 类 actor-critic 与奖励工程坐标
 - [Capture Point / DCM](../concepts/capture-point-dcm.md) — DCM 动力学直觉与文献锚点

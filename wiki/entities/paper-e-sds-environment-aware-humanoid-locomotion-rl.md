@@ -11,10 +11,11 @@ tags:
   - isaac-lab
   - unitree
 status: complete
-updated: 2026-05-17
+updated: 2026-06-05
 arxiv: "2512.16446"
 related:
   - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../methods/reinforcement-learning.md
   - ../concepts/terrain-adaptation.md
   - ../concepts/sim2real.md
@@ -93,6 +94,7 @@ flowchart TB
 - [Terrain Adaptation](../concepts/terrain-adaptation.md) — 高程/外感受与步态适应
 - [Sim2Real](../concepts/sim2real.md) — 真机迁移与域差（本文明确列为后续）
 - [FastStair（论文实体）](./paper-faststair-humanoid-stair-ascent.md) — 另一类人形楼梯 RL：**规划式落脚点引导**
+- [楼梯与障碍 Locomotion（中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) — 感知 vs 盲走、上下楼梯索引
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 训练框架参照
 
 ## 方法栈

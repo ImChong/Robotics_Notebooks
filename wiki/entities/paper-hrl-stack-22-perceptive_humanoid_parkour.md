@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-06-02
+updated: 2026-06-05
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -17,6 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ../tasks/loco-manipulation.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./unitree-g1.md
 sources:
   - ../../sources/papers/php_parkour_arxiv_2602_15827.md

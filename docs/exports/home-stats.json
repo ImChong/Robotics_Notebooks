@@ -1,13 +1,133 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 676,
-  "edge_count": 4806,
+  "node_count": 677,
+  "edge_count": 4837,
   "coverage": {
-    "covered": 674,
-    "total": 674,
+    "covered": 675,
+    "total": 675,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/footstep-planning.md",
+      "detail_id": "wiki-concepts-footstep-planning",
+      "label": "Footstep Planning（步位规划）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
+      "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
+      "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/dreamwaq-plus.md",
+      "detail_id": "entity-dreamwaq-plus",
+      "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/extreme-parkour.md",
+      "detail_id": "entity-extreme-parkour",
+      "label": "Extreme Parkour（端到端四足感知跑酷）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+      "label": "Perceptive Humanoid Parkour（PHP）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-23-deep_whole_body_parkour",
+      "label": "Deep Whole-body Parkour",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md",
+      "detail_id": "entity-paper-hrl-stack-24-hiking_in_the_wild",
+      "label": "Hiking in the Wild",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-walk-these-ways-quadruped-mob.md",
+      "detail_id": "entity-paper-walk-these-ways-quadruped-mob",
+      "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/jackhan-mujoco-walke3-simulation.md",
+      "detail_id": "entity-jackhan-mujoco-walke3-simulation",
+      "label": "Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
       "detail_id": "entity-paper-heracles-humanoid-diffusion",
@@ -47,134 +167,14 @@
       "type": "formalization",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vla-open-source-repro-landscape-2025.md",
-      "detail_id": "wiki-overview-vla-open-source-repro-landscape-2025",
-      "label": "VLA 开源复现景观（2025 策展）",
-      "type": "overview",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-splitadapter-load-aware-loco-manipulation.md",
-      "detail_id": "entity-paper-splitadapter-load-aware-loco-manipulation",
-      "label": "SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
-      "detail_id": "entity-paper-htd-refine-monocular-hmr",
-      "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-legs-embodied-gaussian-splatting-vla.md",
-      "detail_id": "entity-paper-legs-embodied-gaussian-splatting-vla",
-      "label": "LEGS（Loco-manipulation via Embodied Gaussian Splatting）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gs-playground.md",
-      "detail_id": "entity-gs-playground",
-      "label": "GS-Playground (3DGS 光真实感仿真)",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/stanford-doggo-and-pupper.md",
-      "detail_id": "entity-stanford-doggo-and-pupper",
-      "label": "Stanford Doggo / Pupper（开源四足）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/easy-quadruped.md",
-      "detail_id": "entity-easy-quadruped",
-      "label": "easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-    "detail_id": "entity-paper-heracles-humanoid-diffusion",
-    "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-    "type": "entity",
-    "recency": "2026-06-04",
+    "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+    "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+    "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+    "type": "task",
+    "recency": "2026-06-05",
     "source": "log.md"
   }
 }
