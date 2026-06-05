@@ -160,6 +160,45 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_roadmap_toc_filters_l_minus1_through_l7(self):
+        """路线页侧栏 TOC 应只保留 L−1 至 L7 区间（含子标题）。"""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function filterRoadmapTocHeadings');
+const end = content.indexOf('function buildDetailTocTree', start);
+eval(content.slice(start, end));
+const headings = [
+  { level: 2, text: '三句话先懂这条路线（极简版）', slug: 'a' },
+  { level: 2, text: 'L−1 序言：机器人技术栈全景 & 怎么读这条路线', slug: 'b' },
+  { level: 3, text: '30 秒看懂"一台机器人在干嘛"', slug: 'c' },
+  { level: 2, text: 'L0 数学与编程基础', slug: 'd' },
+  { level: 2, text: 'L7 出口：从运动控制看整个机器人技术栈', slug: 'e' },
+  { level: 3, text: 'L7.1 感知层（Perception / SLAM / 状态估计）', slug: 'f' },
+  { level: 2, text: '可选纵深（独立路线页）', slug: 'g' },
+];
+const filtered = filterRoadmapTocHeadings(headings);
+if (filtered.length !== 5) throw new Error('expected 5 headings, got ' + filtered.length);
+if (filtered[0].slug !== 'b') throw new Error('expected L-1 first');
+if (filtered[4].slug !== 'f') throw new Error('expected L7.1 last');
+if (filtered.some((h) => h.slug === 'a' || h.slug === 'g')) throw new Error('unexpected heading kept');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
@@ -383,6 +422,7 @@ console.log('ok');
             ".detail-toc-list a.active",
             ".detail-toc-list .toc-entry.active",
             ".detail-toc-list .toc-entry a",
+            ".detail-toc-list ol ol > li",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
