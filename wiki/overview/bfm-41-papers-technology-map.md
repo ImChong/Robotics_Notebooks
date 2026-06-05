@@ -35,6 +35,17 @@ summary: "依据具身智能研究室 BFM 专题长文，把 awesome-bfm-papers 
 
 **BFM 最值得看的，不是「动作库更大」，而是把身体能力做成上层智能可调用的接口**——走、平衡、起身、接触、抗扰恢复要先在底层封装好，语言 / VLA / 世界模型 / 规划器才能稳定调用；41 篇论文共同回答 **「身体如何成为运控基座」**，而非单点 demo。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 身体运控基座：可复用、可适配、可被上层调用的能力接口 |
+| FB | Forward–Backward Representation | 五类问题之 01：前向–后向表征与 zero-shot 适配 |
+| VLA | Vision-Language-Action | 上层智能调用身体 API 时的典型策略形态 |
+| WBC | Whole-Body Control | 多接口全身控制与力/柔顺任务的基础层 |
+| DIAYN | Diversity Is All You Need | 内在奖励预探索代表，无任务分布发现技能 |
+| RND | Random Network Distillation | 用预测误差作探索奖励的无监督预训练手段 |
+
 ## 为什么单独做这张地图
 
 - [BFM 概念页](../concepts/behavior-foundation-model.md) 已给出 **预训练三线 + 适应两线** 的 taxonomy（对齐 TPAMI 2025 综述）。

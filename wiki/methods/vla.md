@@ -71,6 +71,18 @@ sources:
 
 VLA 可以看成机器人版的多模态 foundation model：输入“看到了什么 + 要做什么”，输出“下一步怎么动”。在 [Foundation Policy](../concepts/foundation-policy.md) 抽象下，VLA 是 manipulation 域最主流的 foundation policy 实例。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉、语言与动作统一的多模态策略模型 |
+| VLM | Vision-Language Model | 预训练视觉–语言底座，常经 SFT 适配为 VLA |
+| RT-2 | Robotics Transformer 2 | 将 web-scale VLM 能力迁移到机器人控制的代表工作 |
+| BC | Behavior Cloning | 监督模仿路线，常与 VLA 预训练/微调组合 |
+| SFT | Supervised Fine-Tuning | 将通用 VLM 适配到特定机器人任务与数据分布 |
+| VAM | Video-Action Model | 先预测视频潜动力学再解码动作，如 mimic-video |
+| UEI | Unified Embodied Intelligence | 同一扩散骨干联合生成视频与动作块的统一架构 |
+
 ## 为什么重要
 
 - 它把“任务描述”从手写 reward 或手工 state machine，转成自然语言接口。
