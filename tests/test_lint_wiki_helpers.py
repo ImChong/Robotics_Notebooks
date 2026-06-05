@@ -60,6 +60,13 @@ def test_has_section_matches_h2_keywords_case_insensitive() -> None:
     assert not has_section(body, ["参考来源"])
 
 
+def test_has_section_matches_abbrev_glossary_heading() -> None:
+    body_cn = "## 英文缩写速查\n\n| 缩写 | 英文全称 | 简要说明 |\n"
+    assert has_section(body_cn, ["英文缩写速查"])
+    body_en = "## Abbreviations\n\n| Abbr | Full name | Note |\n"
+    assert has_section(body_en, ["abbreviations"])
+
+
 def test_word_count_chinese_and_english() -> None:
     assert word_count("") == 0
     assert word_count("你好 robot learning") == 2 + 2  # 2 个汉字 + 2 个英文词

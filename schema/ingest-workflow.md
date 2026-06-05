@@ -85,6 +85,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - 或新建一个 wiki 页
 
 同时补充：
+- **`英文缩写速查`** — 紧跟页面「一句话定义」之后，固定标题 `## 英文缩写速查`，三列表格（缩写 / 英文全称 / 简要说明）；至少 3 行，覆盖本页核心缩写。格式与编写要求见 [page-types.md](page-types.md)「新增页面最低质量标准」。
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
   ## 参考来源
@@ -216,6 +217,7 @@ make log OP=ingest DESC="sources/papers/xxx.md — 简述覆盖的 wiki 页面"
 5. **空壳页面**：只有标题没有实质内容的页面
 6. **stale related**：某页面的 `related` 列表已经明显不反映当前知识结构
 7. **索引一致性**：index.md 中的页面列表是否和实际 wiki 目录一致
+8. **缺失英文缩写速查**：知识页是否缺少 `## 英文缩写速查` 区块（`make lint` 会统计 backlog；**新建或大幅改写页面时必须补齐**）
 
 ### Lint 后记录
 
