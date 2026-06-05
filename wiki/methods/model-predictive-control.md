@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-04-20
+updated: 2026-06-05
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 
@@ -48,7 +48,20 @@ $$x_{k+1} = f(x_k, u_k)$$
 3. **执行**：只把 $u_t$ 发给机器人
 4. **重复**：到下一个时刻，重新预测 + 求解
 
-这就是"滚动时域"（receding horizon）控制的核心。
+这就是"滚动时域"（receding horizon）控制的核心。下图概括每个控制周期内的闭环：
+
+```mermaid
+flowchart TD
+  t0(["控制周期 t"])
+  s1["① 预测<br/>模型 rollout 未来 N 步"]
+  s2["② 优化<br/>min 有限时域代价 + 约束"]
+  s3["③ 执行<br/>仅下发 u_t"]
+  s4["④ 重复<br/>t ← t+1，重新测量"]
+  t0 --> s1 --> s2 --> s3 --> s4
+  s4 -->|"滚动时域"| t0
+  xref["参考 x_ref<br/>关节/接触/碰撞约束"] -.-> s2
+  model["动力学模型 f(x,u)"] -.-> s1
+```
 
 ### 代价函数
 典型形式：
