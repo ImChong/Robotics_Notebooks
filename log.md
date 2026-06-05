@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/pilot_arxiv_2601_17440.md — PILOT 感知统一 loco-manipulation LLC（arXiv:2601.17440）；wiki/entities/paper-pilot-perceptive-loco-manipulation.md、wiki/tasks/loco-manipulation.md、wiki/tasks/stair-obstacle-perceptive-locomotion.md、wiki/entities/unitree-g1.md
+
 ## [2026-06-05] structural | schema + wiki — 英文缩写速查表工作流与 SSR 页试点
 
 - 工作流：[schema/page-types.md](schema/page-types.md)、[schema/ingest-workflow.md](schema/ingest-workflow.md)、[schema/linking.md](schema/linking.md)、[AGENTS.md](AGENTS.md)；`lint_wiki.py` 新增 `missing_abbrev_glossary` 信息型检查
