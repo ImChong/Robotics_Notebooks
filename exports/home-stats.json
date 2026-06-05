@@ -49,6 +49,14 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
       "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
       "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
@@ -156,14 +164,6 @@
       "path": "wiki/entities/paper-walk-these-ways-quadruped-mob.md",
       "detail_id": "entity-paper-walk-these-ways-quadruped-mob",
       "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/jackhan-mujoco-walke3-simulation.md",
-      "detail_id": "entity-jackhan-mujoco-walke3-simulation",
-      "label": "Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）",
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"

@@ -6,6 +6,10 @@
 - 沉淀页面：[wiki/entities/paper-host-humanoid-standingup.md](wiki/entities/paper-host-humanoid-standingup.md)
 - 交叉更新：[wiki/tasks/balance-recovery.md](wiki/tasks/balance-recovery.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-unified-walk-run-recovery-sdamp.md](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)、[sources/README.md](sources/README.md)
 
+## [2026-06-05] structural | wiki/methods/model-predictive-control.md — MPC 页补充滚动时域 Mermaid 流程图
+
+- 页面：[wiki/methods/model-predictive-control.md](wiki/methods/model-predictive-control.md)（「有限时域优化」小节）
+
 ## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
 
 - 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）
