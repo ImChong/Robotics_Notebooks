@@ -702,6 +702,13 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
+/* 子级：序号左缘与父项文字左缘对齐（不用与父序号列对齐） */
+.detail-toc-list ol ol > li {
+  grid-template-columns: auto minmax(0, 1fr);
+}
+.detail-toc-list ol ol > li::before {
+  text-align: left;
+}
 .detail-toc-list li > a,
 .detail-toc-list li > .toc-entry {
   grid-column: 2;

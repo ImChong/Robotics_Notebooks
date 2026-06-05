@@ -385,6 +385,8 @@ console.log('ok');
             ".detail-toc-list .toc-entry a",
             "--toc-marker-width",
             "grid-template-columns: var(--toc-marker-width)",
+            ".detail-toc-list ol ol > li::before",
+            "text-align: left",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
