@@ -6,6 +6,16 @@
 - 沉淀页面：[wiki/entities/paper-homeworld-whole-home-scene-generation.md](wiki/entities/paper-homeworld-whole-home-scene-generation.md)（含 Mermaid 四阶段流水线）
 - 交叉更新：[wiki/concepts/video-as-simulation.md](wiki/concepts/video-as-simulation.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)、[wiki/tasks/vision-language-navigation.md](wiki/tasks/vision-language-navigation.md)、[sources/README.md](sources/README.md)
 
+## [2026-06-05] ingest | sources/papers/host_humanoid_standingup_arxiv_2502_08378.md — HoST（RSS 2025）人形多姿态起身 RL 入库
+
+- 原始资料：[host_humanoid_standingup_arxiv_2502_08378.md](sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)（<https://arxiv.org/abs/2502.08378>）；[host-humanoid-standingup-project.md](sources/sites/host-humanoid-standingup-project.md)（<https://taohuang13.github.io/humanoid-standingup.github.io/>）；[host_internrobotics.md](sources/repos/host_internrobotics.md)（<https://github.com/InternRobotics/HoST>）
+- 沉淀页面：[wiki/entities/paper-host-humanoid-standingup.md](wiki/entities/paper-host-humanoid-standingup.md)
+- 交叉更新：[wiki/tasks/balance-recovery.md](wiki/tasks/balance-recovery.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-unified-walk-run-recovery-sdamp.md](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)、[sources/README.md](sources/README.md)
+
+## [2026-06-05] structural | wiki/methods/model-predictive-control.md — MPC 页补充滚动时域 Mermaid 流程图
+
+- 页面：[wiki/methods/model-predictive-control.md](wiki/methods/model-predictive-control.md)（「有限时域优化」小节）
+
 ## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
 
 - 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）

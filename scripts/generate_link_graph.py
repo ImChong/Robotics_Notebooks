@@ -92,6 +92,8 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/overview/humanoid-hardware-101-technology-map.md": "人形硬件技术地图（Humanoid Hardware 101）",
     "wiki/overview/robot-learning-overview.md": "机器人学习（Robot Learning）",
     "wiki/methods/policy-optimization.md": "策略优化（Policy Optimization）",
+    "wiki/methods/amp-reward.md": "对抗运动先验（AMP & HumanX）",
+    "wiki/methods/model-predictive-control.md": "模型预测控制（Model Predictive Control, MPC）",
 }
 
 
