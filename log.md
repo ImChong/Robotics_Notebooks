@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] structural | wiki — 连接数前十 hub 页补齐英文缩写速查表
+
+- 依据 `exports/graph-stats.json` 的 `top_hubs`（总度前十），在下列页面一句话定义/观点之后新增 `## 英文缩写速查` 三列表：`wiki/concepts/sim2real.md`、`wiki/tasks/locomotion.md`、`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`、`wiki/methods/reinforcement-learning.md`、`wiki/methods/vla.md`、`wiki/overview/bfm-41-papers-technology-map.md`、`wiki/methods/imitation-learning.md`、`wiki/tasks/manipulation.md`、`wiki/concepts/whole-body-control.md`、`wiki/overview/humanoid-amp-motion-prior-survey.md`
+
 ## [2026-06-05] structural | schema + wiki — 英文缩写速查表工作流与 SSR 页试点
 
 - 工作流：[schema/page-types.md](schema/page-types.md)、[schema/ingest-workflow.md](schema/ingest-workflow.md)、[schema/linking.md](schema/linking.md)、[AGENTS.md](AGENTS.md)；`lint_wiki.py` 新增 `missing_abbrev_glossary` 信息型检查

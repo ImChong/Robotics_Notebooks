@@ -45,6 +45,17 @@ sources:
 
 在仿真里学会，在现实中生效。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 仿真训练策略迁移到真机部署 |
+| DR | Domain Randomization | 随机化仿真物理参数以提升跨域鲁棒性 |
+| RMA | Rapid Motor Adaptation | 特权信息 Teacher–Student，从历史轨迹隐式估计环境参数 |
+| SysID | System Identification | 标定真机动力学/摩擦等，缩小仿真–现实差距 |
+| SOP | Standard Operating Procedure | 渐进式真机验证流程（吊架→空转→落地） |
+| URDF | Unified Robot Description Format | 机器人运动学与惯性描述，迁移前须与真机对齐 |
+
 ## 为什么重要
 
 - 真实机器人训练成本高、速度慢、容易损坏

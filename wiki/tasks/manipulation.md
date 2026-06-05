@@ -21,6 +21,18 @@ summary: "Manipulation 关注机器人如何抓取、移动和操作物体，核
 
 让机器人的手能做事情——抓东西、搬东西、用东西。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| IL | Imitation Learning | 示教驱动路线，扩散策略、BC 等常见于操作 |
+| VLA | Vision-Language-Action | 开放词汇操作与自然语言任务接口 |
+| TAMP | Task and Motion Planning | 离散任务规划与连续运动/抓取联合求解 |
+| WBC | Whole-Body Control | 移动操作中人形全身协调与阻抗执行 |
+| 6DoF | Six Degrees of Freedom | 物体位姿（位置+朝向）抓取表示 |
+| RL | Reinforcement Learning | 接触丰富场景中探索式策略学习 |
+
 ## 核心挑战
 
 ### 1. 接触力学

@@ -2,7 +2,7 @@
 
 ## [2026-06-05] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **679** 条信息型预警）：
+共发现 **0** 个问题（另含 **669** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -13,7 +13,7 @@
 ### ⚠️ 缺少参考来源区块（0 个）
 - 无
 
-### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（679 个）
+### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（669 个）
 - wiki/comparisons/amp-add-smp-motion-prior-variants.md
 - wiki/comparisons/anygrasp-vs-graspnet.md
 - wiki/comparisons/can-vs-ethercat-joint-bus.md
@@ -92,7 +92,6 @@
 - wiki/concepts/safe-real-world-rl-fine-tuning.md
 - wiki/concepts/safety-filter.md
 - wiki/concepts/sensor-fusion.md
-- wiki/concepts/sim2real.md
 - wiki/concepts/simulation-evaluation-infrastructure.md
 - wiki/concepts/state-estimation.md
 - wiki/concepts/system-identification.md
@@ -104,7 +103,6 @@
 - wiki/concepts/video-as-simulation.md
 - wiki/concepts/visuo-tactile-fusion.md
 - wiki/concepts/wheel-legged-quadruped.md
-- wiki/concepts/whole-body-control.md
 - wiki/concepts/whole-body-coordination.md
 - wiki/concepts/whole-body-tracking-pipeline.md
 - wiki/concepts/world-action-models.md
@@ -543,7 +541,6 @@
 - wiki/methods/htwk-gym.md
 - wiki/methods/humanoid-transformer-touch-dreaming.md
 - wiki/methods/hy-motion-1.md
-- wiki/methods/imitation-learning.md
 - wiki/methods/in-hand-reorientation.md
 - wiki/methods/intentional-updates-streaming-rl.md
 - wiki/methods/lcp.md
@@ -567,7 +564,6 @@
 - wiki/methods/policy-optimization.md
 - wiki/methods/qt-opt.md
 - wiki/methods/reactor-physics-aware-motion-retargeting.md
-- wiki/methods/reinforcement-learning.md
 - wiki/methods/roboarena.md
 - wiki/methods/robotics-transformer-rt-series.md
 - wiki/methods/safe-rl.md
@@ -583,11 +579,9 @@
 - wiki/methods/trajectory-optimization.md
 - wiki/methods/unified-multimodal-tokens.md
 - wiki/methods/visual-servoing.md
-- wiki/methods/vla.md
 - wiki/methods/wilor.md
 - wiki/methods/zest.md
 - wiki/methods/π0-policy.md
-- wiki/overview/bfm-41-papers-technology-map.md
 - wiki/overview/bfm-category-01-forward-backward-representation.md
 - wiki/overview/bfm-category-02-goal-conditioned-learning.md
 - wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md
@@ -607,7 +601,6 @@
 - wiki/overview/humanoid-actuator-102-split-architecture.md
 - wiki/overview/humanoid-actuator-102-technology-map.md
 - wiki/overview/humanoid-actuator-102-thermal-and-control.md
-- wiki/overview/humanoid-amp-motion-prior-survey.md
 - wiki/overview/humanoid-hardware-101-actuation-sensing-chain.md
 - wiki/overview/humanoid-hardware-101-chassis-materials.md
 - wiki/overview/humanoid-hardware-101-integrated-actuators.md
@@ -617,7 +610,6 @@
 - wiki/overview/humanoid-hardware-101-supply-chain-economics.md
 - wiki/overview/humanoid-hardware-101-technology-map.md
 - wiki/overview/humanoid-motion-control-know-how.md
-- wiki/overview/humanoid-rl-motion-control-body-system-stack.md
 - wiki/overview/motor-drive-firmware-bus-protocols.md
 - wiki/overview/multirotor-simulation-planning-control-stack.md
 - wiki/overview/navigation-slam-autonomy-stack.md
@@ -687,8 +679,6 @@
 - wiki/tasks/humanoid-soccer.md
 - wiki/tasks/hybrid-locomotion.md
 - wiki/tasks/loco-manipulation.md
-- wiki/tasks/locomotion.md
-- wiki/tasks/manipulation.md
 - wiki/tasks/stair-obstacle-perceptive-locomotion.md
 - wiki/tasks/teleoperation.md
 - wiki/tasks/ultra-survey.md
