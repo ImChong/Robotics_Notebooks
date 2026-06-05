@@ -21,9 +21,7 @@ def _load_exported_communities() -> list[dict[str, Any]]:
     data = json.loads(LINK_GRAPH_SNAPSHOT.read_text(encoding="utf-8"))
     communities = data.get("communities")
     if not isinstance(communities, list) or not communities:
-        raise ValueError(
-            f"{LINK_GRAPH_SNAPSHOT.name} 缺少非空 communities 数组；请重新 make graph"
-        )
+        raise ValueError(f"{LINK_GRAPH_SNAPSHOT.name} 缺少非空 communities 数组；请重新 make graph")
     return communities
 
 
