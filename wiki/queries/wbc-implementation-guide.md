@@ -194,6 +194,23 @@ WBC 输出: τ_wbc [关节力矩, Nm]
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+
 ## 参考来源
 
 - Del Prete et al., *Task Space Inverse Dynamics* (2014) — TSID 参考实现

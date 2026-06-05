@@ -105,6 +105,18 @@ uv run scripts/play.py Smp-Forward-G1 --wandb-run-path <org>/<project>/<run> --n
 - [AMP_mjlab](./amp-mjlab.md)
 - [Unitree G1](./unitree-g1.md)、[LaFAN1](./lafan1-dataset.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| SMP | Score-Matching Motion Prior | 可复用的 score-matching 运动先验模块 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+
 ## 参考来源
 
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)

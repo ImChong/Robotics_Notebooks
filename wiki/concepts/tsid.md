@@ -282,6 +282,20 @@ print("joint acceleration command:", qdd_star)
 2. **最小代码**：你至少要能把 `xdd*`、`J qdd + Jdot qdot` 这层关系写成一个小例子
 3. **局限性**：一旦模型、接触状态、任务权重不准，TSID 就会从“优雅协调”迅速退化成“数学上能解、机器人上难用”
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+
 ## 参考来源
 
 - Del Prete et al., *Prioritized motion-force control of constrained fully-actuated robots: "Task Space Inverse Dynamics"* — TSID 核心论文

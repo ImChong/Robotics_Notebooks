@@ -102,6 +102,18 @@ flowchart LR
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| SOTA | State of the Art | 当前最优水平 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - [WorldVLN 论文摘录（arXiv:2605.15964）](../../sources/papers/worldvln_arxiv_2605_15964.md)

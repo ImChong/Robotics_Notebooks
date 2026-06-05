@@ -83,6 +83,13 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [mattpocock/skills 仓库源归档（本站）](../../sources/repos/mattpocock-skills.md)

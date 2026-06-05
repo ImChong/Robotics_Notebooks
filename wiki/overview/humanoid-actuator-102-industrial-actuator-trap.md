@@ -38,6 +38,12 @@ sources:
 - [决策与物种](./humanoid-actuator-102-decision-species.md)
 - [负载与质量螺旋](./humanoid-actuator-102-load-and-mass-spiral.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)

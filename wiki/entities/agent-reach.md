@@ -73,6 +73,14 @@ flowchart LR
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SDK | Software Development Kit | 软件开发工具包 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+
 ## 参考来源
 
 - [Agent Reach 仓库源归档（本站）](../../sources/repos/panniantong_agent_reach.md)

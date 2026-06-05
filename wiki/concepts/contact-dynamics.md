@@ -270,6 +270,19 @@ locomotion 本质上可以看成是：
 ### 如果你做 RL locomotion
 即使策略是端到端学的，也建议懂接触动力学，不然 reward、observation、termination 条件很容易设计得很盲。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Featherstone 2008 / Stewart LCP 2000 / Todorov MuJoCo 2012）

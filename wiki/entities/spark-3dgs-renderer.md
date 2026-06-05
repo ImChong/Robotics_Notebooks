@@ -68,6 +68,13 @@ flowchart LR
 - [Spark vs Aholo（Web 3DGS 渲染选型）](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 参考来源
 
 - [World Labs Spark 2.0 技术博客归档](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)

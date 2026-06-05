@@ -139,6 +139,24 @@ flowchart TB
 - 项目页：<https://splitadapter.github.io/>
 - PhysHSI 原文：<https://arxiv.org/abs/2510.11072>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| AI | Artificial Intelligence | 人工智能 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - [splitadapter_arxiv_2606_03297.md](../../sources/papers/splitadapter_arxiv_2606_03297.md)

@@ -60,6 +60,18 @@ updated: 2026-06-05
 - [Unitree G1 (机器人实体)](../entities/unitree-g1.md)
 - [SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 同平台更高峰值速度的对照路线
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 同 G1 极速域对照：频谱先验 + 6 m/s 真机冲刺

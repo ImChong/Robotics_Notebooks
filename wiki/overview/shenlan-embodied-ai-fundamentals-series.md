@@ -80,6 +80,16 @@ flowchart TB
 - [VLA 方法页](../methods/vla.md) — 上层策略对底层几何的依赖
 - [Agent Reach](../entities/agent-reach.md) — 微信正文抓取工具链
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
+
 ## 参考来源
 
 - [深蓝具身智能：李群、李代数、四元数](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)

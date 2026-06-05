@@ -101,6 +101,20 @@ Safety Filter
 - **误区 3：只有 RL 需要 safety filter。**  
   任何存在模型误差、噪声、延迟或黑盒模块的控制栈都需要它。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+
 ## 参考来源
 
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md) — QP 约束控制与安全约束背景

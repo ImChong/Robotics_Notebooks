@@ -69,6 +69,21 @@ flowchart LR
 - **v1 已过时：** alpha 版机械间隙大；新入门应直接跟 v2 与 Playground 栈。
 - **文档仍在完善：** 表情功能（眼 LED、相机、麦克风）在路线图中，不影响核心行走闭环。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [sources/repos/open_duck_mini.md](../../sources/repos/open_duck_mini.md)

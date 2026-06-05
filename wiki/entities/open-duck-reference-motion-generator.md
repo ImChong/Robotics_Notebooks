@@ -45,6 +45,17 @@ uv run scripts/fit_poly.py --ref_motion recordings/
 - **格式文档缺失：** 从 mocap 转换需自行对齐 JSON 字段；上游 TODO 中计划补规范。
 - **机器人描述重复：** 未来拟拆 submodule，当前与 Playground MJCF 需手动保持版本一致。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 
 - [sources/repos/open_duck_reference_motion_generator.md](../../sources/repos/open_duck_reference_motion_generator.md)

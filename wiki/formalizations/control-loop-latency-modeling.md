@@ -157,6 +157,21 @@ $$
 - [UDP 组播动力学](./udp-multicast-dynamics.md)
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CPU | Central Processing Unit | 中央处理器 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)

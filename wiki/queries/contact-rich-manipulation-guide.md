@@ -129,6 +129,16 @@ related:
 - **误区 3：双臂任务可以分别训练再拼起来。**  
   共同操持物体时会出现闭链约束和内力问题，必须协调建模。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+
 ## 参考来源
 
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 接触序列组织、接触约束与装配规划

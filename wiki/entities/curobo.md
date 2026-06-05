@@ -100,6 +100,23 @@ flowchart LR
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与 **Isaac Sim** 生态入口
 - [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| CPU | Central Processing Unit | 中央处理器 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 参考来源
 
 - [NVlabs cuRobo 源归档（本站）](../../sources/repos/nvlabs-curobo.md)

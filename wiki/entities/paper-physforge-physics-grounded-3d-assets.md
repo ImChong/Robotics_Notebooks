@@ -88,6 +88,15 @@ flowchart LR
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [PhysForge 论文摘录（arXiv:2605.05163）](../../sources/papers/physforge_arxiv_2605_05163.md)

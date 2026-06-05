@@ -176,6 +176,31 @@ WBC（TSID/HQP）
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| CPU | Central Processing Unit | 中央处理器 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| LLC | Low-Level Control | 跟踪全身参考或关节/力矩目标的底层控制 |
+| HLC | High-Level Control | 给出末端或技能目标的上层控制模块 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+
 ## 参考来源
 
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021) — RL 与运动风格融合路线代表

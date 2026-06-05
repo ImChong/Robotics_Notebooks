@@ -158,6 +158,22 @@ flowchart TB
 - **局限：Crazyswarm** — 依赖室内定位，难扩展到 GPS 室外大编队。
 - **局限：EGO-Planner** — 算力与传感器标定要求高；动态障碍极端场景需额外安全层。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [sources/repos/multirotor_uav_stack_catalog.md](../../sources/repos/multirotor_uav_stack_catalog.md)

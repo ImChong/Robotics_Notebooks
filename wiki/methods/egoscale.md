@@ -83,6 +83,19 @@ flowchart LR
 - 官方项目页（演示、作者、BibTeX）：<https://research.nvidia.com/labs/gear/egoscale/>
 - GR00T N1 公开材料（同族 flow-VLA 叙述入口，便于对照架构选择）：<https://github.com/NVIDIA/Isaac-GR00T>（以官方 README 为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [EgoScale 论文摘录（arXiv:2602.16710）](../../sources/papers/egoscale_arxiv_2602_16710.md)

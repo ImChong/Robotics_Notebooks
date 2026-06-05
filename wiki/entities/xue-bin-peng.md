@@ -54,6 +54,16 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 - [DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 其图形学起源方法被搬到真实人形 RL 的张力讨论
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 参考来源
 
 - [Xue Bin Peng 个人主页原始资料](../../sources/sites/xue-bin-peng.md)

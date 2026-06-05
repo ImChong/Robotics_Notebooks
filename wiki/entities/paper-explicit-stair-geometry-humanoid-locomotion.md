@@ -132,6 +132,26 @@ flowchart TB
 | 实机平台 | **Unitree G1** | — | — | LimX Oli | Unitree G1 |
 | 突出指标 | OOD 踢面 + 33 级户外 | 中等成功率 | 低成功率 | 高速上楼梯 | 楼梯下降（仿真） |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+
 ## 参考来源
 
 - [显式楼梯几何条件化论文摘录（arXiv:2605.09944）](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)

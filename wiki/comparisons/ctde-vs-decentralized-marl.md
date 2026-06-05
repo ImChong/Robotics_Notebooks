@@ -58,6 +58,13 @@ updated: 2026-05-31
 | 需部署时各体独立运行 | 两者皆可（执行期都只用局部观测） | 关键差异在训练期信息 |
 | 强协作、信用分配难 | CTDE | 去中心化非平稳性放大协作难度 |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
 ## 参考来源
 
 - Vinyals, O., et al. (2019). *Grandmaster level in StarCraft II using multi-agent reinforcement learning*.

@@ -59,6 +59,12 @@ $$ J \dot{q} = G^T \mathcal{V}_o $$
 - [Friction Cone (摩擦锥) 形式化](../formalizations/friction-cone.md)
 - [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md) — 下肢闭链踝与力分配（与抓取闭链对照阅读）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 - Murray, R. M., Li, Z., & Sastry, S. S. (1994). *A Mathematical Introduction to Robotic Manipulation*. (多指抓取的经典圣经)
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)

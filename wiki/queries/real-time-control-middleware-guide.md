@@ -80,5 +80,17 @@ ROS 2 底层使用的是 DDS 协议，它极其庞杂，包含大量的多线程
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 - [UDP 组播动力学](../formalizations/udp-multicast-dynamics.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CPU | Central Processing Unit | 中央处理器 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+
 ## 参考来源
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)

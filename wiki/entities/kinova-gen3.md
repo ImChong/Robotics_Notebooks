@@ -40,6 +40,14 @@ summary: "Kinova Gen3：加拿大 Kinova 轻型六轴协作臂，官方产品页
 
 - Kinova 官方文档门户（以产品页导航为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SDK | Software Development Kit | 软件开发工具包 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

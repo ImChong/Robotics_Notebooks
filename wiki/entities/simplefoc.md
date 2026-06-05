@@ -75,6 +75,18 @@ flowchart TB
 - **局限：实时与确定性** — 无 EtherCAT DC 级多轴同步；硬实时需自选 MCU、定时器与裸机/RTOS 策略。
 - **局限：文档与版本** — 应锁定库版本并对照 [release notes](https://github.com/simplefoc/Arduino-FOC/releases)；社区视频可能落后于 v2.4 API。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| FOC | Field-Oriented Control | 无刷电机的磁场定向控制 |
+| BLDC | Brushless DC Motor | 无刷直流电机 |
+| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)

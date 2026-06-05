@@ -40,6 +40,14 @@ summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [DIAL](./dial-instruction-augmentation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - RT-1: Brohan et al., https://arxiv.org/abs/2212.06817 — https://research.google/blog/rt-1-robotics-transformer-for-real-world-control-at-scale/

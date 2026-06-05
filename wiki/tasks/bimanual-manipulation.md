@@ -152,6 +152,23 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [ALOHA](../entities/aloha.md) — 开源双臂遥操作硬件标准
 - [RoboTwin 2.0](../entities/robotwin.md) — 双臂自动化数据生成与仿真平台
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - Zhao et al., *Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware* (RSS, 2023) — ALOHA + ACT 奠基工作

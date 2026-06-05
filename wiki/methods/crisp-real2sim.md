@@ -74,6 +74,14 @@ flowchart LR
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [GS-Playground](../entities/gs-playground.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 参考来源
 
 - [CRISP（ICLR 2026）论文摘录](../../sources/papers/crisp_real2sim_iclr2026.md)

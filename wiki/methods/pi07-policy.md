@@ -85,6 +85,17 @@ flowchart LR
 - **误区 2：通才必然弱于专精。** 在官方报告的若干 dexterous 任务上，单一 π₀.₇ 的归一化吞吐与成功率可以对齐或超过 **π*₀.₆** 专精策略；代价是系统复杂度转移到**数据标注、提示与推理管线**。
 - **误区 3：组合泛化已被完全解决。** 博客中的厨电案例表明，**零样本长指令**仍可能不完整成功，**分步语言 coaching** 或学习高层策略生成子任务可显著提升表现——组合能力更像「出现迹象」而非已闭合问题。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+
 ## 参考来源
 
 - [sources/papers/pi07.md](../../sources/papers/pi07.md) — 本次 ingest 的论文 + 博客统一归档

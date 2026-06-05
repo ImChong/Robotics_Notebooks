@@ -109,6 +109,12 @@ flowchart LR
 - [DBLP 机器人会议索引](https://dblp.org/db/conf/icra/index.html) — 历年论文书目（非官方，但便于检索）
 - [OpenReview CoRL 组](https://openreview.net/group?id=robot-learning.org/CoRL/2026/Conference) — 当年投稿与开放评审状态
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [机器人顶会顶刊官方一手资料索引](../../sources/sites/robotics-venues-primary-refs.md)

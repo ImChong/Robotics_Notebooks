@@ -80,6 +80,20 @@ MotionBricks 的顶层接口通过「Smart Primitives」实现了极高的任务
 - [Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 训练与验证环境。
 - [Unitree G1](../entities/unitree-g1.md) — 部署验证硬件。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 参考来源
 
 - [sources/papers/motionbricks.md](../../sources/papers/motionbricks.md)

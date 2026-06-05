@@ -89,6 +89,17 @@ flowchart TB
 - [arXiv:2509.15246](https://arxiv.org/abs/2509.15246)
 - [GenCAD-3D GitHub](https://github.com/yunomi-git/GenCAD-3D) · [HF 数据集](https://huggingface.co/datasets/yu-nomi/GenCAD_3D)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 参考来源
 
 - [GenCAD-3D 论文摘录（arXiv:2509.15246）](../../sources/papers/gencad3d_arxiv_2509_15246.md)

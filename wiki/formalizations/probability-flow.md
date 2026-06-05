@@ -49,6 +49,14 @@ $$ v(x_t, t) = f(x_t, t) - \frac{1}{2} g(t)^2 \nabla_x \log p_t(x_t) $$
 - [Diffusion Policy](../methods/diffusion-policy.md)
 - [Generative World Models](../methods/generative-world-models.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+
 ## 参考来源
 - Lipman, Y., et al. (2022). *Flow Matching for Scalable Simulation*.
 - Song, Y., et al. (2020). *Score-Based Generative Modeling through Stochastic Differential Equations*.

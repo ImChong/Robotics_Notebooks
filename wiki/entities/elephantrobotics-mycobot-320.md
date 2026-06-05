@@ -43,6 +43,14 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 
 - myCobot320-docs 仓库内 **API / ROS** 章节（版本以默认分支为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

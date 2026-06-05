@@ -46,6 +46,12 @@ Tesla、Figure、Apptronik 等 **重载通用人形** 独立趋同：**旋转谐
 - [减速与反射惯量](./humanoid-actuator-102-gear-reflected-inertia.md)
 - [Hardware 101 · 直线与轴承](./humanoid-hardware-101-linear-transmission-bearings.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)

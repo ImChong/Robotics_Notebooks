@@ -35,6 +35,13 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
 - [Manipulation 任务](../tasks/manipulation.md)
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 - Shadow Robot Company Official Website.
 - OpenAI, et al. (2019). *Solving Rubik’s Cube with a Robot Hand*.

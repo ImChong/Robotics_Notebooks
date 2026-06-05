@@ -47,6 +47,12 @@ sources:
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [Humanoid Hardware 101 · 集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)

@@ -93,6 +93,24 @@ flowchart LR
 - [depth-rl-locomotion](../../roadmap/depth-rl-locomotion.md) — 人形 RL 运动控制纵深路线
 - [Modern Robotics Book](./modern-robotics-book.md) — 传统机器人学中文/英文教材互补
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| TRPO | Trust Region Policy Optimization | 带信赖域约束的策略优化算法，PPO 的前身 |
+| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [sources/repos/boyu_ai_hands_on_rl.md](../../sources/repos/boyu_ai_hands_on_rl.md)

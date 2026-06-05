@@ -45,6 +45,13 @@ $$ \mathcal{L}(\theta, \phi) = \sum_{t=1}^T \left( \underbrace{\mathbb{E}_{q_\ph
 - [Model-Based RL](../methods/model-based-rl.md)
 - [Action Tokenization](./vla-tokenization.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 - Kingma, D. P., & Welling, M. (2013). *Auto-Encoding Variational Bayes*.
 - Hafner, D., et al. (2019). *Dream to Control*.

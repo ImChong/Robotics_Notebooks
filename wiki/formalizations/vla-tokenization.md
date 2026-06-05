@@ -56,6 +56,15 @@ $$ \mathcal{L}_{recon} = \| a - D(E(a)) \|^2 $$
 - [Behavior Cloning Loss](./behavior-cloning-loss.md)
 - [Cross-modal Attention](./cross-modal-attention.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+
 ## 参考来源
 - Brohan, A., et al. (2022). *RT-1: Robotics Transformer*.
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.

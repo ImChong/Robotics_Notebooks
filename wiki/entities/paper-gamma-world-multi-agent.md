@@ -122,6 +122,15 @@ flowchart TB
 - [MARL](../methods/marl.md) — 多机器人学习语境
 - [WEM（World-Ego Model）](./paper-wem-world-ego-modeling.md) — 单主体长程 world/ego 解耦对照
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [Gamma-World 论文归档（arXiv:2605.28816）](../../sources/papers/gamma_world_arxiv_2605_28816.md)

@@ -119,6 +119,18 @@ MDP（数学框架）
 
 所有 RL 方法都是对 Bellman 方程的近似求解。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
+
 ## 参考来源
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* (2nd ed.) — MDP 与 RL 标准教材，Chapter 3

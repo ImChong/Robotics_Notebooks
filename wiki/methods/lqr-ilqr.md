@@ -110,6 +110,17 @@ iLQR 常被称为“DDP 的简化版”。
 2. **灵巧操作规划**：在 MuJoCo 中规划手指拨动物体的复杂序列。
 3. **全身控制器内核**：作为 MPC 的底层求解器，每 10-20ms 运行一次以应对扰动。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文与 MIT 课程索引（Li & Todorov 2004；Tassa et al. 2012/2014 等）

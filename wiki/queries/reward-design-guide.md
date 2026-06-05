@@ -112,6 +112,17 @@ $$r_{AMP} = \log D_\phi(s, a, s')$$
 3. **速度课程**：低速（0.5 m/s）→ 中速（1.0 m/s）→ 高速（2.0+）
 4. **避免太难的初始条件**：初始难度过高 = 零梯度 = 策略不收敛
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [sources/papers/reward_design.md](../../sources/papers/reward_design.md) — Rudin legged_gym / Walk These Ways / EUREKA / Portelas 综述

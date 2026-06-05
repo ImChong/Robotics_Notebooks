@@ -75,6 +75,24 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [对比：轨迹优化 vs RL](../comparisons/trajectory-opt-vs-rl.md)
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链传动在 TO/MPC 中的 \(J_A\) 与电机侧约束
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| CPU | Central Processing Unit | 中央处理器 |
+| TAMP | Task and Motion Planning | 联合符号任务规划与连续运动规划 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+
 ## 参考来源
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文索引
 - Betts, J. T. (2010). *Practical Methods for Optimal Control and Estimation Using Nonlinear Programming*.

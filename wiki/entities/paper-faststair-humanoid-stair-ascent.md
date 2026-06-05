@@ -125,6 +125,22 @@ flowchart TB
 - **显式几何条件化（arXiv:2605.09944）：** [Explicit Stair Geometry Conditioning](./paper-explicit-stair-geometry-humanoid-locomotion.md) 用 **BEV 点云 → 踢面/踏面/航向 token** 条件化 PPO（**Unitree G1**），强调 **OOD 踢面泛化** 与 **长程户外楼梯**；FastStair 则用 **DCM 落点规划监督 + LoRA 专家** 追求 **高速上楼梯**（**LimX Oli**）。二者互补：规划引导 vs 低维几何接口。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+
 ## 参考来源
 
 - [FastStair 论文摘录（arXiv:2601.10365）](../../sources/papers/faststair_arxiv_2601_10365.md)

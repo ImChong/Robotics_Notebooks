@@ -112,6 +112,14 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 
 人形机器人早期训练时 critic（$V$ 网络）不准，$\lambda$ 不宜过小（否则偏差大训练慢）。实践中 $\lambda = 0.95 \sim 0.99$。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 参考来源
 
 - Schulman et al., *High-Dimensional Continuous Control Using Generalized Advantage Estimation* (2016) — GAE 原始论文

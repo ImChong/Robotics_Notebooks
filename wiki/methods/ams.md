@@ -52,6 +52,14 @@ AMS 实际上定义了一个自动化的合成数据生成流程：
 3. **优化过滤**：通过上述的平衡约束进行物理校验。
 4. **高质量池**：形成一个物理可行的、多样化的专家动作数据库。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。

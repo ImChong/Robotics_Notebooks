@@ -83,6 +83,16 @@ flowchart LR
 - [LQR / iLQR](../formalizations/lqr.md)
 - [Pinocchio](./pinocchio.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 参考来源
 
 - [sources/courses/gatech_interactive_linear_algebra.md](../../sources/courses/gatech_interactive_linear_algebra.md)

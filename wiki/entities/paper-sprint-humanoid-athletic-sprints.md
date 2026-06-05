@@ -105,6 +105,25 @@ flowchart TB
 | [Chasing Autonomy](../methods/chasing-autonomy-pipeline.md) | 动态重定向周期库 | 目标条件奔跑 | ~3.3 m/s 户外 |
 | AMP / Humanoid-Gym | 对抗 / 手工奖励 | 依实现而定 | 冲刺稳定性弱于 SPRINT（论文对照） |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| AI | Artificial Intelligence | 人工智能 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md)

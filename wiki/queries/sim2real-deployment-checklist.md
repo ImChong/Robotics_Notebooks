@@ -54,6 +54,18 @@ related:
 | 步伐极小 | 命令归一化错误 | 打印原始策略输入 |
 | 关节力矩饱和 | 力矩映射错误 | 核查 scale 因子 |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - Kumar et al., *RMA: Rapid Motor Adaptation* (2021)

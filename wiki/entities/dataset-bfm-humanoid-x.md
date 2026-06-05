@@ -35,6 +35,12 @@ sources:
 - [behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - [bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+
 ## 参考来源
 
 - [bfm_awesome_dataset_humanoid_x_arxiv_2501_05098.md](../../sources/papers/bfm_awesome_dataset_humanoid_x_arxiv_2501_05098.md)

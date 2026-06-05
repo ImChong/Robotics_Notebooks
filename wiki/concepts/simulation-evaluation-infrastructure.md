@@ -93,6 +93,18 @@ flowchart TB
 - SimplerEnv 项目页（real-to-sim 评测）：<https://simpler-env.github.io/>
 - Gao et al.（2025）— generalist manipulation 评测 taxonomy（博客引用 [06]）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - [genesis_ai_simulation_world_10_blog](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)

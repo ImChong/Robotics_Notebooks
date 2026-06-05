@@ -47,6 +47,15 @@ sources:
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [humanoid_rl_stack_29_opening_the_sim_to_real_door_for_humanoid_pixel.md](../../sources/papers/humanoid_rl_stack_29_opening_the_sim_to_real_door_for_humanoid_pixel.md) — 42 篇栈策展摘录

@@ -140,6 +140,16 @@ MPC 在某种意义上是"在线、有约束、有限时域的 LQR"。
 - [Lyapunov 稳定性](./lyapunov.md) — LQR 的闭环稳定性可通过 Lyapunov 视角理解
 - [Crocoddyl](../entities/crocoddyl.md) — iLQR/FDDP 的开源实现
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — LQR / iLQR 一手索引（Kalman 1964；Bryson & Ho 1975；Li & Todorov 2004 等）

@@ -96,6 +96,21 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 - **[HoST](./paper-host-humanoid-standingup.md)（arXiv:2502.08378）** 专注**无 MoCap 的纯起身**与**墙/台/坡等非地面初始姿态**；SD-AMP 则用 **AMP 先验**把 **locomotion + recovery** 压进**单策略**。二者可组合理解：HoST 提供「站起来」子技能，SD-AMP 提供「站起来后继续走跑」的统一 prior。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+
 ## 参考来源
 
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)

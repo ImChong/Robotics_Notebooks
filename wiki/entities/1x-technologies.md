@@ -45,6 +45,16 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [1X Technologies 原始资料](../../sources/repos/1x-technologies.md)

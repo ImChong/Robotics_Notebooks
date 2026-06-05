@@ -41,6 +41,13 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 
 - [EWMBench](./ewmbench.md)（评测与 Agibot-World 数据子集）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)

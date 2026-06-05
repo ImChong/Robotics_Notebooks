@@ -104,6 +104,22 @@ flowchart TB
 - 代码：<https://github.com/LogosRoboticsGroup/DeFi>
 - 权重：<https://huggingface.co/zbzzbz/DeFI>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| SOTA | State of the Art | 当前最优水平 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| VPP | Video Prediction Policy | 以视频预测为中介生成动作的策略架构 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [DeFI 论文摘录（arXiv:2604.16391）](../../sources/papers/defi_arxiv_2604_16391.md)

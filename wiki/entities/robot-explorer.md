@@ -35,6 +35,13 @@ updated: 2026-05-01
 - [robot-viewer](robot-viewer.md) (多格式仿真预览)
 - [pinocchio](pinocchio.md) (后端动力学计算库)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 参考来源
 - [Robot Explorer 原始资料](../../sources/repos/robot-explorer.md)
 - [Robot Explorer GitHub](https://github.com/ferrolho/robot-explorer)

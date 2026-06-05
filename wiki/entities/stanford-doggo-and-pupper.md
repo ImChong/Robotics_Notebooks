@@ -109,6 +109,24 @@ flowchart LR
 - 修改机载代码：[Modifying Pupper code](https://pupper-v3-documentation.readthedocs.io/en/latest/development/modifying_code.html)
 - Hands-On Robotics：https://www.handsonrobotics.org
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - [pupper-v3-documentation-readthedocs.md](../../sources/sites/pupper-v3-documentation-readthedocs.md)

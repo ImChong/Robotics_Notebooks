@@ -122,6 +122,15 @@ $$
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（Stewart LCP 2000 / Todorov MuJoCo 2012）

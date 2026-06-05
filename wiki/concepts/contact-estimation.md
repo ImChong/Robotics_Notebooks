@@ -101,6 +101,23 @@ J^T · f = τ_gravity_compensation - τ_actuator
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — ingest 档案（MuJoCo 接触模型 / CBF 接触一致性）

@@ -40,6 +40,12 @@ sources:
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)

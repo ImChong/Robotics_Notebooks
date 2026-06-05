@@ -52,6 +52,15 @@ HAIC 的核心在于如何平滑地从“全知全能”的教师过渡到“仅
 - **物体搬运**：在不知道物体准确重量的情况下，通过世界模型感知负重并调整姿态。
 - **协作任务**：预测合作伙伴的意图或外力变化。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| Privileged Info | Privileged Information | 训练时可访问、部署时不可见的额外状态 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。

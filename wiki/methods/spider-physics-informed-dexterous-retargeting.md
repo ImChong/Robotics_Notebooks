@@ -98,6 +98,18 @@ flowchart LR
 - 项目首页（视频与交互可视化）：<https://jc-bao.github.io/spider-project/>
 - 网站源码仓：<https://github.com/jc-bao/spider-project>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [spider_scalable_physics_informed_dexterous_retargeting（本入库摘录）](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md)

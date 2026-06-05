@@ -117,6 +117,15 @@ flowchart LR
 - [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) — 共享 **BEHAVIOR-1K / OmniGibson** 生态的不同评测切面
 - [EWMBench](./ewmbench.md) — 具身 **视频世界模型** 生成质量评测，互补
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SOTA | State of the Art | 当前最优水平 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - [ESI-Bench 论文摘录](../../sources/papers/esi_bench_arxiv_2605_18746.md)

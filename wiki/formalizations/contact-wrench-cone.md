@@ -148,6 +148,15 @@ def rectangular_foot_cwc(mu, X, Y, fz_min=5.0):
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md)
 - [Tactile Sensing](../concepts/tactile-sensing.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 - [contact_dynamics.md](../../sources/papers/contact_dynamics.md)
 - [whole_body_control.md](../../sources/papers/whole_body_control.md)

@@ -36,5 +36,11 @@ $$ \tau^2 \ddot{y} = \alpha_y (\beta_y (g - y) - \dot{y}) + f(s) $$
 - [Imitation Learning (模仿学习)](./imitation-learning.md)
 - [Behavior Cloning](./behavior-cloning.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DMP | Dynamic Movement Primitives | 用动力学方程编码可调轨迹的运动基元 |
+
 ## 参考来源
 - Ijspeert, A. J., et al. (2013). *Dynamical movement primitives: Learning attractor models for motor behaviors*.

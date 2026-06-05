@@ -142,6 +142,16 @@ flowchart LR
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 浮基 nq/nv 与四元数状态
 - [Pinocchio 快速上手 Query](../queries/pinocchio-quick-start.md) — 基座四元数在 q 向量中的布局
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - [深蓝具身智能：李群、李代数、四元数（微信公众号归档）](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)

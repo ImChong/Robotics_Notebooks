@@ -104,6 +104,25 @@ flowchart TB
 
 论文 Table I 强调 HoST 在 **真机、无先验轨迹、超地面姿态、高 DoF、单阶段训练** 五维同时满足；与「仅仿真」或「仅地面参考」路线的差异见 [arXiv 正文](https://arxiv.org/abs/2502.08378)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| AI | Artificial Intelligence | 人工智能 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [Learning Humanoid Standing-up Control across Diverse Postures（arXiv:2502.08378）](../../sources/papers/host_humanoid_standingup_arxiv_2502_08378.md)

@@ -50,6 +50,20 @@ uv run playground/open_duck_mini_v2/runner.py --task flat_terrain_backlash --num
 - **模仿奖励非万能：** 需与 BAM 标定后的 MJCF 联调；电机模型不准时模仿项无法单独救场。
 - **与 Brax 自带 env 不同：** 新环境应在本 Playground 模式扩展，而非 Brax legacy physics env。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 
 - [sources/repos/open_duck_playground.md](../../sources/repos/open_duck_playground.md)

@@ -132,6 +132,16 @@ flowchart TB
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
+| SOTA | State of the Art | 当前最优水平 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [WEM 论文摘录（arXiv:2605.19957）](../../sources/papers/wem_arxiv_2605_19957.md)

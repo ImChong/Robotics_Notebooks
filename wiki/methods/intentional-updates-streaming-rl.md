@@ -109,6 +109,18 @@ flowchart LR
 - **边部署边学**：若系统约束禁止存 replay（隐私、存储、硬实时），可参考该线的**步长构造**与 **clip + 对角预条件** 实践。
 - **与 Sim2Real**：不直接解决域隙，但降低「单步更新炸掉价值/策略头」的风险，有利于长程在线微调稳定性（需与任务层保守探索与安全滤波配合）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| TRPO | Trust Region Policy Optimization | 带信赖域约束的策略优化算法，PPO 的前身 |
+| PG | Policy Gradient | 以回报梯度更新策略参数的基础方法族 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 论文 ingest 档案（摘录与 wiki 映射）

@@ -29,6 +29,15 @@ updated: 2026-05-01
 - **仿真对应**：[robotwin](robotwin.md) 2.0 等平台常提供 ALOHA 的仿真版本以进行数据增强。
 - **进阶版本**：后续发展出了 Mobile ALOHA (具备移动底盘版本) 和更加紧凑的方案。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| 6DoF | Six Degrees of Freedom | 物体位姿（位置+朝向）级的抓取/操作表示 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [ALOHA Project Page](https://tonyzhaozh.github.io/aloha/)

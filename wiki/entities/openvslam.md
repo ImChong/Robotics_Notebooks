@@ -32,6 +32,16 @@ summary: "OpenVSLAM 是模块化视觉 SLAM 框架；社区维护多迁移至 st
 
 - **维护状态**：原仓库 README 提示后续开发重心转移，选型前确认分支活跃度。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+
 ## 参考来源
 
 - [sources/repos/openvslam.md](../../sources/repos/openvslam.md)

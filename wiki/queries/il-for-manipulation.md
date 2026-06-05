@@ -103,6 +103,20 @@ sources:
 
 > 做机器人操作，默认先 IL；当你发现“会做，但不会救、不会泛化、不会恢复”时，再引入 DAgger 或 RL。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+
 ## 参考来源
 
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — BC / DAgger / ACT / Diffusion 的来源整理

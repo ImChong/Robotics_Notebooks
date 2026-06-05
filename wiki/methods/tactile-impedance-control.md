@@ -174,6 +174,15 @@ $$
 - [GelSlim 实体（薄片化视觉触觉传感器）](../entities/gel-slim.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md) — 接触力建模与摩擦锥

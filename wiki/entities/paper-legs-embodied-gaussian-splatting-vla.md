@@ -122,6 +122,23 @@ flowchart TB
 | 新场景成本 | ~0.1 h GPU 重渲染 | >1.5 h 重采 | 可重渲染但视觉域差大 | 需重新仿真训练管线 |
 | Task 3（长时程） | LEGS(200) 2–6/10 | **0/10**（三 backbone） | 低于 LEGS | 不同任务设定（行走–放置循环） |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 参考来源
 
 - [legs_arxiv_2606_01458.md](../../sources/papers/legs_arxiv_2606_01458.md) — arXiv 摘录与 Table 1 摘要

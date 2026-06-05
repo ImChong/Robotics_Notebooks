@@ -55,6 +55,20 @@ summary: "具身数据清洗（Embodied Data Cleaning）是指对采集到的原
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 - [Behavior Cloning (行为克隆)](../methods/behavior-cloning.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 - Padalkar, A., et al. (2023). *Open X-Embodiment: Robotic Learning at Scale*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)

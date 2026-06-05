@@ -64,6 +64,17 @@ ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式
 - [G1 (机器人)](../entities/unitree-g1.md)
 - [Spot (机器人)](../entities/boston-dynamics.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 - [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)
 - [Boston Dynamics Technical Blog](https://bostondynamics.com/)

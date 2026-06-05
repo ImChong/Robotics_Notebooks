@@ -131,6 +131,25 @@ flowchart TD
 - **只跑预训练模型不读 Strategy 4：** 执行器 gap 在低成本舵机臂上往往显著，需 SAGE 量化后再调 DR 范围或补偿模型。
 - **与 GR00T-VisualSim2Real 混为一谈：** 后者是 G1  loco-manipulation 的 **特权 Teacher + RGB Student** 研究 repo，算法栈与任务不同。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| AI | Artificial Intelligence | 人工智能 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [SO-101 Sim2Real 课程归档](../../sources/courses/nvidia_sim_to_real_so101_isaac.md)

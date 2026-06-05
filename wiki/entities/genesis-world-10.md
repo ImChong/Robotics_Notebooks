@@ -99,6 +99,20 @@ flowchart LR
 - 开源 Genesis 论文：<https://arxiv.org/abs/2412.12919>
 - SimplerEnv（real-to-sim 评测与 MMRV 指标语境）：<https://simpler-env.github.io/>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 参考来源
 
 - [genesis_ai_simulation_world_10_blog（原始资料）](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)

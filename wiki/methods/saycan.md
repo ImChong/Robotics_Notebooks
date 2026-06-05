@@ -27,6 +27,13 @@ summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函
 - [VLA](./vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - Ahn et al., *Do As I Can, Not As I Say: Grounding Language in Robotic Affordances*, https://arxiv.org/abs/2204.01691

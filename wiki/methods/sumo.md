@@ -58,6 +58,20 @@ Sumo 的创新在于其分工明确的双层结构：
 - [Unitree G1](../entities/unitree-g1.md) — Sumo 验证的人形平台
 - [VLA](./vla.md) — 未来可能的更高层指令提供者
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 - [Sumo: Dynamic and Generalizable Whole-Body Loco-Manipulation](../../sources/papers/sumo.md)
 - [RAI Institute Project Page](https://rai-institute.github.io/sumo/)

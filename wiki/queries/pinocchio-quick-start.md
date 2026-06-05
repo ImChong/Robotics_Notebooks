@@ -158,6 +158,16 @@ Jc = pin.computeFrameJacobian(model, data, q, contact_frame,
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+
 ## 参考来源
 
 - [sources/papers/robot_kinematics_tools.md](../../sources/papers/robot_kinematics_tools.md) — ingest 档案（Pinocchio 2019 / Crocoddyl 2020）

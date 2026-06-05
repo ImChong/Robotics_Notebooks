@@ -109,6 +109,21 @@ flowchart LR
 - 官方项目页（演示与 BibTeX）：<https://mimic-video.github.io/>
 - NVIDIA Cosmos 生态入口（项目页脚注）：<https://developer.nvidia.com/cosmos>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+
 ## 参考来源
 
 - [mimic-video 论文摘录（arXiv:2512.15692）](../../sources/papers/mimic_video_arxiv_2512_15692.md)

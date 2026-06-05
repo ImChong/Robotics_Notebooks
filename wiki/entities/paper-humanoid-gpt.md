@@ -126,6 +126,24 @@ flowchart TB
 - 代码：<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>
 - 对照：[SONIC 项目页](https://nvlabs.github.io/GEAR-SONIC/)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [humanoid_gpt_arxiv_2606_03985.md](../../sources/papers/humanoid_gpt_arxiv_2606_03985.md) — arXiv 策展摘录

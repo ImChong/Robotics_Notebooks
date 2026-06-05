@@ -209,6 +209,25 @@ Unitree 之所以重要，不只是因为它火，而是因为它让人形控制
 - G1 页面：<https://www.unitree.com/g1/>
 - H1 页面：<https://www.unitree.com/h1/>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 参考来源
 
 - 官方网站：<https://www.unitree.com/>

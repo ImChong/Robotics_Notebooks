@@ -42,6 +42,12 @@ ADD 的核心思想是将判别器的输入从绝对状态 $ 转变为状态的*
 - [smp](smp.md) — 另一种通过得分匹配解决稳定性的方案。
 - [mimickit](../entities/mimickit.md) — ADD 的官方实现框架（集成于 [mimickit](../entities/mimickit.md) 与 [protomotions](../entities/protomotions.md)）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+
 ## 参考来源
 - [sources/papers/add.md](../../sources/papers/add.md)
 - Peng et al., *ADD: Adversarial Differential Discriminator for Physics-Based Character Control*, SIGGRAPH 2024.

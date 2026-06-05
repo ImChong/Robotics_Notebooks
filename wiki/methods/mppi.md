@@ -38,5 +38,14 @@ MPPI 的核心是基于信息论的路径积分控制理论：
 - [Model Predictive Control (MPC)](./model-predictive-control.md)
 - [变分目标函数](../formalizations/variational-objective.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+
 ## 参考来源
 - Williams, G., et al. (2017). *Information-theoretic model predictive control: Theory and applications to autonomous driving*.

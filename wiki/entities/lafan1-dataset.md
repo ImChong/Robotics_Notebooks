@@ -50,6 +50,21 @@ sources:
 - **[GMR](../methods/motion-retargeting-gmr.md)**：讨论几何重定向时常与 BVH / 骨架比例问题一并出现。
 - **[AMASS](./amass.md)**：另一条「SMPL 统一库」路线；LaFAN1 则是「单一棚拍、原始 BVH」路线，二者在表示与许可上均不同。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)

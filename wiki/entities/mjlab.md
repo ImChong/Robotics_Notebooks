@@ -80,6 +80,21 @@ mjlab 架构
 - [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| SMP | Score-Matching Motion Prior | 可复用的 score-matching 运动先验模块 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+
 ## 参考来源
 
 - [sources/repos/mjlab.md](../../sources/repos/mjlab.md)

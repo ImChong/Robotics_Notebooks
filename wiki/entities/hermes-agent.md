@@ -108,6 +108,14 @@ flowchart TB
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久 wiki 知识编译** 范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库维护操作规范
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [Hermes Agent 仓库源归档（本站）](../../sources/repos/nousresearch_hermes_agent.md)

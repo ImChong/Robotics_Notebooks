@@ -52,6 +52,12 @@ $$ \mathcal{L}_{MLE} = -\sum_{(o,l,a) \in \mathcal{D}} \log P(a | o, l) $$
 - [具身规模法则 (Scaling Laws)](../concepts/embodied-scaling-laws.md)
 - [动作分词 (Tokenization)](./vla-tokenization.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 - Reed, S., et al. (2022). *A Generalist Agent (Gato)*.
 - [Google DeepMind Blog on Foundation Policies](https://deepmind.google/research/publications/rt-2/).

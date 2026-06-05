@@ -117,6 +117,17 @@ flowchart LR
 - **数据策展：** [HY-Motion 1.0](../methods/hy-motion-1.md) 等大规模 T2M 管线用 **GVHMR→SMPL-H** 建库；HTD-Refine 类精炼 **可能** 降低视频侧 jitter/脚滑，但需单独验证对文本对齐与过滤规则的影响。
 - **应用动机（论文 §1）：** 自然动态轨迹服务于 **人形模仿学习**、角色动画、步态/健康分析等——与 WBT 参考采集动机一致。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+
 ## 参考来源
 
 - [HTD-Refine（arXiv:2605.26879）](../../sources/papers/htd_refine_arxiv_2605_26879.md)

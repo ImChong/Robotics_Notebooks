@@ -155,6 +155,18 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+
 ## 参考来源
 
 - [sources/papers/mpc.md](../../sources/papers/mpc.md) — ingest 档案（MPC 核心论文）

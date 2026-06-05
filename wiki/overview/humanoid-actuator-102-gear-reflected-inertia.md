@@ -41,6 +41,13 @@ sources:
 - [柔顺与感知](./humanoid-actuator-102-compliance-sensing.md)
 - [工业陷阱](./humanoid-actuator-102-industrial-actuator-trap.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md)

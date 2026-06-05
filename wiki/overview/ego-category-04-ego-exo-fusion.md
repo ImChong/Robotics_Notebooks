@@ -35,6 +35,12 @@ sources:
 - [视频作为仿真](../concepts/video-as-simulation.md)
 - [世界模型分类 03](./ego-category-03-world-models.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+
 ## 参考来源
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)

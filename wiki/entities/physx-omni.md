@@ -79,6 +79,17 @@ flowchart LR
 - [Manipulation（任务总览）](../tasks/manipulation.md) — 操作学习数据与资产缺口背景。
 - [Sim2Real](../concepts/sim2real.md) — 仿真器质量与资产动力学一致性提醒。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [PhysX-Omni 论文摘录（arXiv:2605.21572）](../../sources/papers/physx_omni_arxiv_2605_21572.md)

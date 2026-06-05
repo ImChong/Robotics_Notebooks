@@ -39,6 +39,14 @@ sources:
 - [机器人世界模型训练闭环](./robot-world-models-training-loop-taxonomy.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)

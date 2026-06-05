@@ -42,6 +42,12 @@ summary: "ROBOTIS THORMANG3：全尺寸人形开源平台，文档与资源在 e
 
 - [ROBOTIS-GIT 组织](https://github.com/ROBOTIS-GIT)（检索 `thormang3` 相关仓库）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)

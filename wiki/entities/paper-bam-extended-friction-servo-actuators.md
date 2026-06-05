@@ -107,6 +107,17 @@ flowchart TB
 
 - 未建模 **温升**、**径向力**、**dwell time** 延迟；未来工作指向 **引擎原生集成** 与更复杂系统（人形）仿真。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 参考来源
 
 - [扩展摩擦论文归档](../../sources/papers/bam_extended_friction_servos_arxiv_2410_08650.md)

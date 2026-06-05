@@ -89,6 +89,18 @@ flowchart LR
 - [SimpleFOC](../entities/simplefoc.md) — 跨 MCU 的开源 FOC 实现与社区硬件
 - [CAN 总线](./can-bus-protocol.md) — 常见关节指令物理层
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| FOC | Field-Oriented Control | 无刷电机的磁场定向控制 |
+| BLDC | Brushless DC Motor | 无刷直流电机 |
+| PMSM | Permanent Magnet Synchronous Motor | 永磁同步电机 |
+| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+
 ## 参考来源
 
 - [sources/repos/simplefoc_arduino_foc.md](../../sources/repos/simplefoc_arduino_foc.md)

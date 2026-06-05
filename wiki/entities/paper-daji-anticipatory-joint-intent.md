@@ -106,6 +106,19 @@ flowchart LR
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| CPU | Central Processing Unit | 中央处理器 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [DAJI 论文摘录（arXiv:2605.14417）](../../sources/papers/daji_arxiv_2605_14417.md)

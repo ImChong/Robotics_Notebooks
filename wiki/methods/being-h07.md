@@ -118,6 +118,15 @@ flowchart TB
 - 论文预印本：<https://arxiv.org/abs/2605.00078>
 - 与异步动作缓冲相关的站内页：[Action Chunking](action-chunking.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [sources/papers/being_h07.md](../../sources/papers/being_h07.md) — 本次 ingest 归档与摘录映射

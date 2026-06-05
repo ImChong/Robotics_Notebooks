@@ -166,6 +166,30 @@ flowchart TD
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| CPU | Central Processing Unit | 中央处理器 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》对 GMR 的工程定位与局限点评。

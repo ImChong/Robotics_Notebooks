@@ -76,6 +76,17 @@ $$
 - [Contact Wrench Cone（接触力旋量锥）](./contact-wrench-cone.md)
 - [WBC 调参指南](../queries/wbc-tuning-guide.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+
 ## 参考来源
 - [contact_dynamics.md](../../sources/papers/contact_dynamics.md)
 - Siciliano, B., et al. (2009). *Robotics: Modelling, Planning and Control*.

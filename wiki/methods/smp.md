@@ -75,6 +75,18 @@ flowchart TD
 - [Diffusion Policy](./diffusion-policy.md) — 同样基于扩散模型，但 SMP 侧重于作为先验奖励。
 - [Sim2Real](../concepts/sim2real.md) — SMP 提供的结构化先验增强了迁移鲁棒性。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SMP | Score-Matching Motion Prior | 可复用的 score-matching 运动先验模块 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 - [sources/papers/smp.md](../../sources/papers/smp.md)
 - [sources/repos/smp_suz_tsinghua.md](../../sources/repos/smp_suz_tsinghua.md)

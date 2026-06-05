@@ -47,6 +47,15 @@ $$p_\theta(\mathbf{x}_{t-1}|\mathbf{x}_t) = \mathcal{N}(\mathbf{x}_{t-1}; \mu_\t
 - [潜空间想象 (Latent Imagination)](../concepts/latent-imagination.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 

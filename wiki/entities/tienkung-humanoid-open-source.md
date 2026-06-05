@@ -41,6 +41,13 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 
 - [TienKung_Docs 仓库](https://github.com/Open-X-Humanoid/TienKung_Docs)（默认分支 README）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SDK | Software Development Kit | 软件开发工具包 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)

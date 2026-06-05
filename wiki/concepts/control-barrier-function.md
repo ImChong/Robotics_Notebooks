@@ -131,6 +131,17 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 
 4. **离散时间系统需要特殊处理**：上述分析基于连续时间，离散时间版本需要用离散 CBF（DCBF），约束形式有所不同。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+
 ## 参考来源
 
 - Ames et al., *Control Barrier Function Based Quadratic Programs for Safety Critical Systems* (IEEE TAC, 2017) — CBF-QP 奠基论文

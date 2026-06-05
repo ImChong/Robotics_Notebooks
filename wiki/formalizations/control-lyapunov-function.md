@@ -141,6 +141,18 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 
 4. **离散时间系统**：连续时间 CLF 的理论在离散时间需要修改（条件变为 $V(x_{t+1}) - V(x_t) \leq -c V(x_t)$），不能直接套用。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+
 ## 参考来源
 
 - Sontag, *A universal construction of Artstein's theorem on nonlinear stabilization* (1989) — CLF 奠基理论（Artstein-Sontag 公式）

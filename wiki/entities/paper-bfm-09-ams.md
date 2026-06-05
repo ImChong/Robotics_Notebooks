@@ -49,6 +49,14 @@ sources:
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [bfm_awesome_ams_arxiv_2511_17373.md](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) — awesome-bfm 策展摘录

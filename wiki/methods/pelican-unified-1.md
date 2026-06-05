@@ -90,6 +90,16 @@ flowchart LR
 - [Being-H0.7](./being-h07.md) — 潜空间世界–动作先验的另一工程路径，对照「像素 roll 与否」与表示压缩取舍。
 - [StarVLA](./star-vla.md) — 同 **Qwen3-VL** 生态的极简 VLA 参照，对比「何时值得叠 UFG」。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - [Pelican-Unified 1.0 技术报告（arXiv:2605.15153）](../../sources/papers/pelican_unified_uei_arxiv_2605_15153.md)

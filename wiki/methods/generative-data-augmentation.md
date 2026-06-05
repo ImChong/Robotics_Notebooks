@@ -48,6 +48,12 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 - [Generative World Models](../methods/generative-world-models.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 - Yu, T., et al. (2023). *Scaling Robot Learning with Semantically Imagined Experience*.
 - [Google DeepMind ROSS 项目摘要](../../sources/papers/diffusion_and_gen.md)。

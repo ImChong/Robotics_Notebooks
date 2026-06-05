@@ -39,6 +39,21 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 参考来源
 - NVIDIA Omniverse 官方文档.
 - Makoviychuk, V., et al. (2021). *Isaac Gym: High Performance GPU-Based Physics Simulation For Robot Learning*.

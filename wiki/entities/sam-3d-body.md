@@ -97,6 +97,17 @@ flowchart LR
 - MHR：<https://github.com/facebookresearch/MHR>
 - Hugging Face 权重：<https://huggingface.co/facebook/sam-3d-body-dinov3>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SOTA | State of the Art | 当前最优水平 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+
 ## 参考来源
 
 - [SAM 3D Body（arXiv:2602.15989）](../../sources/papers/sam_3d_body_arxiv_2602_15989.md)

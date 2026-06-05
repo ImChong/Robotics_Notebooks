@@ -61,6 +61,16 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 
 - [原文第02期（微信）](https://mp.weixin.qq.com/s/wl_WvXn78WHxIRCrZb5xfA)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

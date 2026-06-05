@@ -72,6 +72,20 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [Constrained MDP](../formalizations/cmdp.md)
 - [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+
 ## 参考来源
 - Achiam, J., et al. (2017). *Constrained Policy Optimization*.
 - Ray, A., et al. (2019). *Benchmarking Safe Deep Reinforcement Learning*.

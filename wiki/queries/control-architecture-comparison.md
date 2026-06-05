@@ -245,6 +245,32 @@ MoCap 数据 → 训练判别器 D（区分真实/生成动作）
 - [Diffusion Policy](../methods/diffusion-policy.md) — 层次 IL 的现代实现
 - [RL vs IL](../comparisons/rl-vs-il.md) — B vs C 路线对比
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| HLC | High-Level Control | 给出末端或技能目标的上层控制模块 |
+| LLC | Low-Level Control | 跟踪全身参考或关节/力矩目标的底层控制 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| GAN | Generative Adversarial Network | 生成对抗网络，AMP 对抗训练的范式来源 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+
 ## 参考来源
 
 - Peng et al., *AMP: Adversarial Motion Priors for Stylized Physics-Based Character Control* (2021)

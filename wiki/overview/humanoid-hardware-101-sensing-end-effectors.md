@@ -41,6 +41,13 @@ sources:
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)
 - [抓取姿态估计](../methods/grasp-pose-estimation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)

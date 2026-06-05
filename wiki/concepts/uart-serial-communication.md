@@ -66,6 +66,15 @@ flowchart LR
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+
 ## 参考来源
 
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)

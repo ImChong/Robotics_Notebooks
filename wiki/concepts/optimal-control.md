@@ -208,6 +208,22 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 解法：预计算、凸近似、定制求解器（Acados, FORCES Pro）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+
 ## 参考来源
 
 - Kirk, *Optimal Control Theory: An Introduction* — OCP 经典入门教材

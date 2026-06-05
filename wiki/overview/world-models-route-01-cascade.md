@@ -58,6 +58,15 @@ sources:
 - [Generative World Models](../methods/generative-world-models.md)
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IDM | Inverse Dynamics Model | 由（未来）状态反推所需动作/力矩的模型 |
+| VPP | Video Prediction Policy | 以视频预测为中介生成动作的策略架构 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md) — <https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg>

@@ -30,6 +30,14 @@ updated: 2026-05-01
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
 - **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)

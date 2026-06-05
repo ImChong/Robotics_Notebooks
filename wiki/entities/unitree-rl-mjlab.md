@@ -80,6 +80,24 @@ unitree_mujoco 仿真验证
 - [legged_gym](./legged-gym.md) — 同类框架，基于 IsaacGym
 - [Locomotion](../tasks/locomotion.md) — 任务方向
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [sources/repos/unitree_rl_mjlab.md](../../sources/repos/unitree_rl_mjlab.md)

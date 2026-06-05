@@ -104,6 +104,23 @@ flowchart TB
 - [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) — 大规模 RL 中显式并联踝动力学
 - [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) — 解析 \(J_A\) 嵌入 DDP 与 RL
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+
 ## 参考来源
 
 - [sources/notes/humanoid-parallel-joint-kinematics.md](../../sources/notes/humanoid-parallel-joint-kinematics.md) — 本主题资料索引与 ingest 归档

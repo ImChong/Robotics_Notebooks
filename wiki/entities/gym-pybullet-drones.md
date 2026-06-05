@@ -43,6 +43,15 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 - **局限：视觉保真度** — 低于 [Flightmare](./flightmare.md) / [AirSim](./airsim.md)。
 - **局限：桨叶/接触物理** — PyBullet 简化，不宜作唯一空气动力学真理源。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [sources/repos/gym_pybullet_drones.md](../../sources/repos/gym_pybullet_drones.md)

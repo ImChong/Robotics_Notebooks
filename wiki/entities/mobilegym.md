@@ -106,6 +106,17 @@ flowchart TB
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练、真机保留增益的对照框架
 - [ESI-Bench](./esi-bench.md) — 另一路线的 **可验证、可并行** 具身评测（3D 空间 QA vs 移动 GUI）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
 ## 参考来源
 
 - [MobileGym 论文摘录](../../sources/papers/mobilegym_arxiv_2605_26114.md)

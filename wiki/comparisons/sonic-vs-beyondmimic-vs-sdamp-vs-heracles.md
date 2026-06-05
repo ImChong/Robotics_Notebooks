@@ -207,6 +207,35 @@ flowchart TD
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| HRL | Hierarchical Reinforcement Learning | 高层技能 + 低层控制分层结构的强化学习 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 参考来源
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md) — SONIC 项目页与代码入口

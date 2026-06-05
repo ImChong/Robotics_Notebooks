@@ -166,6 +166,21 @@ flowchart TD
 - [人形运动控制 Know-How](./humanoid-motion-control-know-how.md)
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| FOC | Field-Oriented Control | 无刷电机的磁场定向控制 |
+| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 
 - [电机底软通信协议课程索引](../../sources/courses/motor_drive_firmware_bus_protocols.md)

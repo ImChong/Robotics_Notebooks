@@ -41,6 +41,12 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 
 - Poppy 文档中 **Getting started / Assembly**（以当前站点版本为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

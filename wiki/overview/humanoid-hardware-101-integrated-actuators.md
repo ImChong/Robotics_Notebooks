@@ -48,6 +48,10 @@ sources:
 - [传感与末端执行器](./humanoid-hardware-101-sensing-end-effectors.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
+## 英文缩写速查
+
+本页未引入需额外解释的英文缩写（相关术语在正文首次出现处已随文说明）。
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)
