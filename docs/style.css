@@ -702,7 +702,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-/* 子级：序号左缘与父项文字左缘对齐（不用与父序号列对齐） */
+/* 子级：序号左缘与父项文字左缘对齐（嵌套 ol 仍在文字列内） */
 .detail-toc-list ol ol > li {
   grid-template-columns: auto minmax(0, 1fr);
 }
@@ -731,7 +731,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .detail-toc-list .toc-entry {
   color: var(--text);
   border-radius: 8px;
-  padding: 2px 6px;
+  /* 无左右 padding，避免子序号列与父文字左缘错位 */
+  padding: 2px 0;
   margin: 0;
   transition: color var(--transition), background var(--transition);
   overflow-wrap: anywhere;
