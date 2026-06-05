@@ -94,6 +94,7 @@ flowchart LR
 - [SONIC](../methods/sonic-motion-tracking.md) — GEAR-SONIC 规模化运动跟踪
 - [GR00T WholeBodyControl](./gr00t-wholebodycontrol.md) — SONIC 训练与推理代码仓
 - [Unitree G1](./unitree-g1.md) — Kimodo-G1 目标平台
+- [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
 
 ## 参考来源
 
