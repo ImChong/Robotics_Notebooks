@@ -3,7 +3,7 @@ type: entity
 title: Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）
 tags: [mujoco, humanoid, pytorch, gamepad, locomotion, jackhan-sdu, walke3]
 summary: "MuJoCo 中加载 E3 场景与预训练 PyTorch 策略，用手柄发送平面速度指令，支持行走/跑步/扰动测试与相机跟踪；README 同时列出 MuJoCo 接触与静立打滑的已知局限。"
-updated: 2026-05-16
+updated: 2026-06-05
 status: complete
 related:
   - ./jackhan-walke3-e3-ecosystem.md
@@ -11,6 +11,7 @@ related:
   - ./mujoco.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
 sources:
   - ../../sources/repos/jackhan-mujoco-walke3-simulation.md
 ---

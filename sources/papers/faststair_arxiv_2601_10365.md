@@ -41,7 +41,15 @@
   - [`wiki/concepts/sim2real.md`](../../wiki/concepts/sim2real.md)
   - [`wiki/entities/isaac-gym-isaac-lab.md`](../../wiki/entities/isaac-gym-isaac-lab.md)
 
+### 5) 感知管线与「带感知上楼」定位
+
+- **要点：** 策略 **部署期** 依赖 **机载高程图**（深度 → 栅格 scandots）；训练期仿真可直接读 GT 高度；与纯盲走楼梯 RL 对照时，应区分 **「规划特权信号」**（训练期 DCM 落点）与 **「外感知输入」**（部署期地图）两层。
+- **对 wiki 的映射：**
+  - [`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](../../wiki/tasks/stair-obstacle-perceptive-locomotion.md) — **楼梯/障碍中心节点**（感知 vs 盲走索引）
+  - [`wiki/concepts/terrain-adaptation.md`](../../wiki/concepts/terrain-adaptation.md)
+
 ## 当前提炼状态
 
 - [x] 摘要与主方法摘录
 - [x] wiki 页面映射确认
+- [x] 挂接楼梯/障碍中心节点（2026-06-05）

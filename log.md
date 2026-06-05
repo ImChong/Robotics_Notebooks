@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/faststair_arxiv_2601_10365.md — FastStair 挂接楼梯/障碍中心节点并刷新交叉引用
+
+- 原始资料（已存在，本次补摘录 §5 感知定位）：[`sources/papers/faststair_arxiv_2601_10365.md`](sources/papers/faststair_arxiv_2601_10365.md)、[`sources/sites/npcliu-faststair-github-io.md`](sources/sites/npcliu-faststair-github-io.md)
+- 新建中心节点：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md) — **带/不带感知 · 上下楼梯 · 越障** 维护挂接点
+- 交叉更新：[`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/concepts/footstep-planning.md`](wiki/concepts/footstep-planning.md)、[`wiki/concepts/capture-point-dcm.md`](wiki/concepts/capture-point-dcm.md)、[`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md)、[`wiki/entities/dreamwaq-plus.md`](wiki/entities/dreamwaq-plus.md)、[`wiki/entities/extreme-parkour.md`](wiki/entities/extreme-parkour.md)、[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md`](wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md)、[`wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md`](wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md)、[`wiki/entities/paper-walk-these-ways-quadruped-mob.md`](wiki/entities/paper-walk-these-ways-quadruped-mob.md)、[`wiki/entities/jackhan-mujoco-walke3-simulation.md`](wiki/entities/jackhan-mujoco-walke3-simulation.md)
+
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
 - 推进 [tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P2「事实库扩展」一项，达成 ≥170 条目标（实际 172）

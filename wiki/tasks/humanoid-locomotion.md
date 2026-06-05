@@ -2,6 +2,11 @@
 type: task
 tags: [humanoid, locomotion, whole-body-control]
 status: complete
+updated: 2026-06-05
+related:
+  - ./locomotion.md
+  - ./stair-obstacle-perceptive-locomotion.md
+  - ../concepts/terrain-adaptation.md
 summary: "人形机器人在复杂地形下的平衡与移动任务，强调高维动力学处理、环境感知以及全身肢体协调。"
 ---
 
