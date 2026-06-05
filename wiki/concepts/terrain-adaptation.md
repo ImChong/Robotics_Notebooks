@@ -2,16 +2,18 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-05-30
+updated: 2026-06-05
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
   - ./sim2real.md
   - ./privileged-training.md
   - ../tasks/balance-recovery.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/dreamwaq-plus.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
@@ -75,10 +77,15 @@ sources:
 
 [E-SDS（arXiv:2512.16446）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 把 **地形适应** 从「控制器读传感器」前移到 **奖励设计阶段**：Environment Analysis Agent 在目标地形上跑千机短 rollout，统计 **缺口率、障碍密度、崎岖度**，与 SUS 行为分解一并喂给 VLM，生成显式调用 **27×21 高度栅格 + 144 线 LiDAR** 的奖励代码；再经双候选 PPO + 反馈迭代精炼。在 Isaac Lab + Unitree G1 上，相对手工 13 项感知基线 **速度跟踪误差降 51.9–82.6%**，且 **仅该方法完成 12 cm 台阶下降**。
 
+### 近期案例：显式楼梯几何 token（arXiv:2605.09944）
+
+[显式楼梯几何条件化](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) 把 **楼梯** 从「高维高程图 / 视觉 latent」收束为 **踢面高度、踏面深度、航向与楼梯状态** 四维 token，由 **BEV 点云 CNN** 估计后直接条件化 **PPO**；相对 **11×17 高程图** 与 **盲走** 在 Isaac Lab 楼梯任务上成功率 **96% / 88% / 52%**，在 **未见踢面高度** 上优于 **MoRE** 视觉基线；**Unitree G1** 实机含 **户外 33 级连续上楼**。与 [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) 的 **DCM 落点规划监督** 形成对照：本文强调 **可解释几何接口 + teacher–student 感知**，而非高速规划引导。
+
 ## 与其他页面的关系
 
 - [Footstep Planning](./footstep-planning.md) 决定“下一步踩哪里”。
 - [Locomotion](../tasks/locomotion.md) 关注更完整的移动任务。
+- [楼梯与障碍 Locomotion（中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) 汇总楼梯/越障上的感知 vs 盲走文献索引。
 - [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
@@ -99,6 +106,7 @@ sources:
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS 环境感知 VLM 奖励合成
 - [sources/papers/dreamwaq_plus_arxiv_2409_19709.md](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md) — DreamWaQ++ 多模态点云四足 loco
+- [sources/papers/explicit_stair_geometry_arxiv_2605_09944.md](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md) — 显式楼梯几何条件化人形爬梯
 
 ## 关联页面
 

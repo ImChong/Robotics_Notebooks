@@ -34,6 +34,7 @@
 | [x] [e_sds_arxiv_2512_16446.md](papers/e_sds_arxiv_2512_16446.md) | E-SDS：环境统计条件化 VLM 奖励 + Isaac Lab 人形感知行走 RL（arXiv:2512.16446）摘录与 wiki 映射 |
 | [x] [egm_arxiv_2512_19043.md](papers/egm_arxiv_2512_19043.md) | EGM：Efficient General Mimic，Bin 采样 + CDMoE + 三阶段教师–学生人形全身 tracking（arXiv:2512.19043）摘录与 wiki 映射 |
 | [x] [egoscale_arxiv_2602_16710.md](papers/egoscale_arxiv_2602_16710.md) | EgoScale：2 万小时级 egocentric 人视频预训练流式 VLA + 对齐人–机 mid-training（arXiv:2602.16710）摘录与 wiki 映射 |
+| [x] [explicit_stair_geometry_arxiv_2605_09944.md](papers/explicit_stair_geometry_arxiv_2605_09944.md) | 显式楼梯几何条件化：BEV 点云 → 几何 token 条件化 PPO 的人形楼梯爬升（arXiv:2605.09944，G1 实机）摘录与 wiki 映射 |
 | [x] [faststair_arxiv_2601_10365.md](papers/faststair_arxiv_2601_10365.md) | FastStair：DCM 并行落脚点规划引导 + 分速专家 LoRA 融合的人形高速上楼梯（arXiv:2601.10365）摘录与 wiki 映射 |
 | [x] [interprior_arxiv_2602_06035.md](papers/interprior_arxiv_2602_06035.md) | InterPrior：物理 HOI 生成式控制（InterMimic+ → 变分蒸馏 → RL 微调，arXiv:2602.06035，CVPR 2026 Highlight）摘录与 wiki 映射 |
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |

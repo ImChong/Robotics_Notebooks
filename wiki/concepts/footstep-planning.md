@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: stable
-updated: 2026-05-29
+updated: 2026-06-05
 summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 sources:
   - ../../sources/papers/mpc.md
@@ -12,6 +12,7 @@ sources:
 related:
   - ./capture-point-dcm.md
   - ./terrain-adaptation.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
 ---
 

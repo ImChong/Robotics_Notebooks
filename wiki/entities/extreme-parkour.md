@@ -9,7 +9,7 @@ tags:
   - privileged-training
   - parkour
 status: complete
-updated: 2026-06-04
+updated: 2026-06-05
 arxiv: "2309.14341"
 venue: "ICRA 2024"
 related:
@@ -17,6 +17,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/terrain-adaptation.md
   - ../tasks/locomotion.md
+  - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./legged-gym.md
   - ./unitree.md
   - ./dreamwaq-plus.md
