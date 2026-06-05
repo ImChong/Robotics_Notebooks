@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/ssr_arxiv_2605_30770.md、sources/sites/ssr-humanoid-github-io.md — SSR 开放世界人形穿越（想象落脚点 + 潜空间对称 + 分地形 AMP）入库
+
+- 原始资料：[ssr_arxiv_2605_30770.md](sources/papers/ssr_arxiv_2605_30770.md)（<https://arxiv.org/abs/2605.30770>、<https://arxiv.org/html/2605.30770v1>）；[ssr-humanoid-github-io.md](sources/sites/ssr-humanoid-github-io.md)（<https://ssr-humanoid.github.io/>）
+- 沉淀页面：[wiki/entities/paper-ssr-humanoid-open-world-traversal.md](wiki/entities/paper-ssr-humanoid-open-world-traversal.md)（含单阶段 PPO + 三项机制 Mermaid 管线）
+- 交叉更新：[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/tasks/humanoid-locomotion.md](wiki/tasks/humanoid-locomotion.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-05] ingest | sources/papers/sprint_arxiv_2605_28549.md、sources/sites/sprint-anonymous-project-page.md — SPRINT 人形竞技冲刺（频谱先验 + 6 m/s G1 真机）入库
 
 - 原始资料：[sprint_arxiv_2605_28549.md](sources/papers/sprint_arxiv_2605_28549.md)（<https://arxiv.org/abs/2605.28549>、<https://arxiv.org/html/2605.28549v1>）；[sprint-anonymous-project-page.md](sources/sites/sprint-anonymous-project-page.md)（<https://anonymous.4open.science/w/SPRINT-138A/>）

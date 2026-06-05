@@ -1,18 +1,26 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 681,
-  "edge_count": 4891,
+  "node_count": 682,
+  "edge_count": 4906,
   "coverage": {
-    "covered": 679,
-    "total": 679,
+    "covered": 680,
+    "total": 680,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
-      "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
-      "label": "SPRINT：人形竞技冲刺的高效频谱先验",
+      "path": "wiki/entities/paper-ssr-humanoid-open-world-traversal.md",
+      "detail_id": "entity-paper-ssr-humanoid-open-world-traversal",
+      "label": "SSR：开放世界人形安全对称穿越",
       "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
       "recency": "2026-06-05",
       "source": "log.md"
     },
@@ -21,6 +29,14 @@
       "detail_id": "wiki-tasks-humanoid-locomotion",
       "label": "Humanoid Locomotion (人形机器人移动)",
       "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
+      "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
+      "label": "SPRINT：人形竞技冲刺的高效频谱先验",
+      "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
     },
@@ -121,14 +137,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/terrain-adaptation.md",
       "detail_id": "wiki-concepts-terrain-adaptation",
       "label": "Terrain Adaptation（地形适应）",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md",
-      "detail_id": "entity-paper-e-sds-environment-aware-humanoid-locomotion-rl",
-      "label": "E-SDS（Environment-aware See it, Do it, Sorted）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
-    "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
-    "label": "SPRINT：人形竞技冲刺的高效频谱先验",
+    "path": "wiki/entities/paper-ssr-humanoid-open-world-traversal.md",
+    "detail_id": "entity-paper-ssr-humanoid-open-world-traversal",
+    "label": "SSR：开放世界人形安全对称穿越",
     "type": "entity",
     "recency": "2026-06-05",
     "source": "log.md"

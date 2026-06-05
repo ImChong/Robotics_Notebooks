@@ -19,10 +19,12 @@ related:
   - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ../entities/paper-hrl-stack-23-deep_whole_body_parkour.md
   - ../entities/paper-hrl-stack-24-hiking_in_the_wild.md
+  - ../entities/paper-ssr-humanoid-open-world-traversal.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
+  - ../../sources/papers/ssr_arxiv_2605_30770.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -81,6 +83,7 @@ flowchart TB
 | **有**（点云 BEV → 几何 token） | **上楼 · OOD 踢面** | [Explicit Stair Geometry](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) | 踢面/踏面/航向四维条件化 PPO；G1 户外 33 级；相对 MoRE 更高 OOD 成功率 |
 | **有**（高度图 + LiDAR 奖励） | **多地形含下楼** | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) | VLM 生成环境感知奖励；论文称感知基线未能完成楼梯下降 |
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
+| **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
 
 ### 四足 · 楼梯与崎岖
 
@@ -116,6 +119,7 @@ flowchart TB
 | **下楼** 或自动奖励设计 | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) |
 | 四足 **点云前瞻** 楼梯 | [DreamWaQ++](../entities/dreamwaq-plus.md) |
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
+| 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
 | 理解 DCM / 落脚点如何进 RL | [Capture Point / DCM](../concepts/capture-point-dcm.md) |
 
@@ -140,6 +144,7 @@ flowchart TB
 ## 参考来源
 
 - [FastStair 论文摘录（arXiv:2601.10365）](../../sources/papers/faststair_arxiv_2601_10365.md)
+- [SSR 论文摘录（arXiv:2605.30770）](../../sources/papers/ssr_arxiv_2605_30770.md)
 - [E-SDS 论文摘录（arXiv:2512.16446）](../../sources/papers/e_sds_arxiv_2512_16446.md)
 - [DreamWaQ++ 论文摘录（arXiv:2409.19709）](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md)
 - [Extreme Parkour 论文摘录（arXiv:2309.14341）](../../sources/papers/extreme_parkour_arxiv_2309_14341.md)
