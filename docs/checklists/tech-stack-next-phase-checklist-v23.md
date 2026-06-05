@@ -48,8 +48,8 @@
 
 ## P3: 交互层"时间维度"增强 (UX/UI)
 
-- [ ] **详情页"最近相关 ingest"时间线**：
-    - [ ] 在 `docs/detail.html` 的「关联页面」附近新增 `#detailRecentIngestTimeline` 容器：基于 `exports/link-graph.json` 的 `latest_wiki_nodes` 与当前节点 1-hop 邻居取交集，展示最近 30 天内入库的相关页面（最多 6 项，按 `recency` 倒序）；空态降级隐藏（不显示标题）。
+- [x] **详情页"最近相关 ingest"时间线**：
+    - [x] 在 `docs/detail.html` 的「关联页面」附近新增 `#detailRecentIngestTimeline` 容器：基于 `exports/link-graph.json` 的 `latest_wiki_nodes` 与当前节点 1-hop 邻居取交集，展示最近 30 天内入库的相关页面（最多 6 项，按 `recency` 倒序）；空态降级隐藏（不显示标题）。（2026-06-05：在 `detail-related` 与 `detail-recommended` 之间新增 `#detail-recent-ingest-section`（默认 `hidden`，空态整段含标题不渲染）；`docs/main.js` 新增 `renderDetailRecentIngestTimeline(detailPage)`，并发拉取 `link-graph.json`（算 1-hop 邻居）与 `graph-stats.json`（取 `latest_wiki_nodes`）取交集，窗口锚定到最新一条 ingest 回溯 30 天，避免静态站随时间陈化整段消失，按 `recency` 倒序、最多 6 项，复用 `WIKI_TYPE_LABEL_HOME` 类型标签；在 `renderDetailMiniMap` 调用后挂载。`docs/style.css` 新增 `.detail-recent-ingest-*` 轻量时间线样式（左缘强调条 + 日期徽标 + 类型/标题两行）。`node --check` + `eslint docs/main.js` 全绿、`make lint` 全部检查通过；BFM 详情页验证截图命中 5 项（Foundation Policy / SONIC / BFM 分类 02 / 选型指南 / WBT pipeline）。）
 - [ ] **图谱页"专题视图"扩充**：
     - [ ] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V22 10 项基础上新增「全身运动跟踪（WBT）」「跨具身迁移」「真机安全微调」三个专题；命中规则复用 V22 community id + path 片段双路并集机制；新增视图均配 Puppeteer 截图归档到 `.cursor-artifacts/screenshots/`。
 

@@ -343,6 +343,34 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   margin: 0;
 }
 .section-subtitle { color: var(--text-muted); font-size: .97rem; margin-bottom: 28px; max-width: 72ch; }
+.detail-recent-ingest-timeline { display: grid; gap: 10px; }
+.detail-recent-ingest-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-left: 3px solid rgba(45,116,218,.45);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--text);
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+}
+.detail-recent-ingest-item:hover {
+  border-color: rgba(45,116,218,.5);
+  background: rgba(45,116,218,.06);
+  transform: translateX(2px);
+}
+.detail-recent-ingest-date {
+  flex: 0 0 auto;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+.detail-recent-ingest-body { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.detail-recent-ingest-type { font-size: .76rem; color: var(--text-muted); }
+.detail-recent-ingest-label { font-weight: 650; letter-spacing: -.01em; }
 .card-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .card {
   padding: 20px;

@@ -2386,6 +2386,69 @@
     return idx;
   }
 
+  // V23 P3：详情页「最近相关 ingest」时间线。
+  // 取 graph-stats.json 的 latest_wiki_nodes 与当前节点的 1-hop 邻居（来自 link-graph.json）的交集，
+  // 仅保留最近 30 天内入库的页面（窗口锚定到最新一条 ingest，避免静态站随时间陈化后整段消失），
+  // 最多 6 项，按 recency 倒序。空态时整段（含标题）隐藏。
+  function renderDetailRecentIngestTimeline(detailPage) {
+    var section = document.getElementById('detail-recent-ingest-section');
+    var listEl = document.getElementById('detailRecentIngestTimeline');
+    if (!section || !listEl) return;
+    var currentPath = (detailPage && detailPage.path) || '';
+    if (!currentPath) { section.hidden = true; return; }
+
+    Promise.all([
+      fetch('exports/link-graph.json').then(function (r) { return r.json(); }),
+      fetch('exports/graph-stats.json').then(function (r) { return r.json(); })
+    ]).then(function (res) {
+      var gd = res[0];
+      var stats = res[1];
+      var neighborSet = {};
+      (gd.edges || []).forEach(function (e) {
+        if (e.source === e.target) return;
+        if (e.source === currentPath) neighborSet[e.target] = true;
+        else if (e.target === currentPath) neighborSet[e.source] = true;
+      });
+
+      var latest = Array.isArray(stats.latest_wiki_nodes) ? stats.latest_wiki_nodes : [];
+      var dated = latest.filter(function (n) {
+        return n && n.path && n.detail_id && !isNaN(Date.parse(n.recency));
+      });
+      if (!dated.length) { section.hidden = true; return; }
+
+      // 以最新一条 ingest 作为窗口锚点，30 天回溯。
+      var anchor = dated.reduce(function (mx, n) {
+        var t = Date.parse(n.recency);
+        return t > mx ? t : mx;
+      }, 0);
+      var WINDOW_MS = 30 * 24 * 60 * 60 * 1000;
+      var MAX_ITEMS = 6;
+
+      var items = dated.filter(function (n) {
+        if (n.path === currentPath || !neighborSet[n.path]) return false;
+        return (anchor - Date.parse(n.recency)) <= WINDOW_MS;
+      });
+      items.sort(function (a, b) { return String(b.recency).localeCompare(String(a.recency)); });
+      if (items.length > MAX_ITEMS) items = items.slice(0, MAX_ITEMS);
+
+      if (!items.length) { section.hidden = true; return; }
+      section.hidden = false;
+      listEl.innerHTML = items.map(function (n) {
+        var typeLabel = WIKI_TYPE_LABEL_HOME[n.type] || (n.type ? String(n.type) : 'Wiki');
+        return (
+          '<a class="detail-recent-ingest-item" href="' + escapeHtml(detailHref(n.detail_id)) + '">' +
+          '<span class="detail-recent-ingest-date">' + escapeHtml(String(n.recency)) + '</span>' +
+          '<span class="detail-recent-ingest-body">' +
+          '<span class="detail-recent-ingest-type">' + escapeHtml(typeLabel) + '</span>' +
+          '<span class="detail-recent-ingest-label">' + escapeHtml(n.label || n.detail_id) + '</span>' +
+          '</span></a>'
+        );
+      }).join('');
+    }).catch(function () {
+      section.hidden = true;
+    });
+  }
+
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
@@ -2763,6 +2826,7 @@
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
 
     renderDetailMiniMap(detailPage, detailPages);
+    renderDetailRecentIngestTimeline(detailPage);
 
     var hashForLayoutScroll = window.location.hash.replace(/^#/, '');
     var emergencyLayoutScrollTimer = null;
