@@ -383,7 +383,8 @@ console.log('ok');
             ".detail-toc-list a.active",
             ".detail-toc-list .toc-entry.active",
             ".detail-toc-list .toc-entry a",
-            ".detail-toc-list ol ol > li",
+            "--toc-marker-width",
+            "grid-template-columns: var(--toc-marker-width)",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
