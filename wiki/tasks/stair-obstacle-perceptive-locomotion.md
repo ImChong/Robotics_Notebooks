@@ -42,6 +42,16 @@ summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：
 
 **把「下一步踩哪里、身体多快过障」从平地 tracking 问题，升级为在离散可行接触集上的感知–规划–控制闭环（或盲走下的接触探测闭环）。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Locomotion | Robot Locomotion | 楼梯/障碍场景下的足式移动任务 |
+| DCM | Divergent Component of Motion | 落脚点规划与 capture 相关概念 |
+| RL | Reinforcement Learning | PPO 等学感知行走策略 |
+| PPO | Proximal Policy Optimization | 显式几何/感知条件化 loco 常用算法 |
+| Sim2Real | Simulation to Real | 感知策略从仿真到户外真机 |
+
 ## 为什么重要
 
 - **接触选择与动态平衡耦合：** 楼梯与垫脚石类地形上，错误落脚比平地更容易一次失稳；纯速度跟踪奖励常与隐式稳定项冲突（见 [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) 问题表述）。

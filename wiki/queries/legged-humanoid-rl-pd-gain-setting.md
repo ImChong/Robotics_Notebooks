@@ -187,6 +187,16 @@ flowchart TB
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PD | Proportional–Derivative | 关节刚度/阻尼底层，RL 输出常为其 setpoint |
+| Kp | Proportional Gain | 位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | 速度误差增益，抑制振荡 |
+| RL | Reinforcement Learning | 策略层与 PD 层分工是 loco 常见栈 |
+| Sim2Real | Simulation to Real | 增益不匹配是迁移失败常见原因 |
+
 ## 关联页面
 
 ### 论文实体子页（各含 Mermaid）

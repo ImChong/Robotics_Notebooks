@@ -35,6 +35,16 @@ sources:
 
 **代表工作（策展）：** SONIC、OpenTrack、AMS、TWIST/TWIST2、BFM4Humanoid、HOVER、InterMimic、MaskedMimic、ASE/CALM/CASE…
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 本分类所属运控基座范式 |
+| GC | Goal-conditioned Learning | 以目标/参考条件扩展动作覆盖面 |
+| HOI | Human–Object Interaction | 人-物交互技能纳入统一目标条件 |
+| WBC | Whole-Body Control | 跟踪与全身技能的控制载体 |
+| TWIST | Teleoperated Whole-body Imitation System | 遥操作数据采集代表工作 |
+
 ## 本组论文（19 篇）
 
 | # | 工作 | Wiki 实体 | Source |

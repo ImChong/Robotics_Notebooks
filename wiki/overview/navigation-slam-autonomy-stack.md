@@ -44,6 +44,16 @@ summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR
 
 **ROS 2 导航闭环** 以 [Navigation2](../entities/navigation2.md) 为中枢，上游接 **2D SLAM**（[slam_toolbox](https://github.com/SteveMacenski/slam_toolbox)、[Cartographer](https://github.com/cartographer-project/cartographer)）或 **3D 定位**（[FAST-LIO](https://github.com/hku-mars/FAST_LIO)、[LIO-SAM](https://github.com/TixiaoShan/LIO-SAM) 等，见 [LiDAR/VIO 选型](../comparisons/lidar-slam-lio-vio-selection.md)）；**乘用车级全栈** 走 [Autoware](../entities/autoware.md)；**Jetson + GPU 感知建图** 用 [Isaac ROS Visual SLAM](../entities/isaac-ros-visual-slam.md) + [nvblox](../entities/isaac-ros-nvblox.md)。**人形全身 MPC/WBC** 不属于本栈，见 [OpenLoong-Dyn-Control](https://github.com/loongOpen/OpenLoong-Dyn-Control) 与 [OpenLoong](../entities/openloong.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| ROS 2 | Robot Operating System 2 | 导航与系统集成常用中间件 |
+| LiDAR | Light Detection and Ranging | 2D/3D 激光 SLAM 主传感器 |
+| MPC | Model Predictive Control | 局部路径/轨迹跟踪优化 |
+| VLA | Vision-Language-Action | 语义导航与端到端驾驶新路线 |
+
 ## 为什么重要
 
 - 仓库主线以 **腿式/人形运控与模仿学习** 为主，但 **移动底盘、AMR、低速无人车** 仍依赖成熟的 **定位—建图—规划** 栈；与 [VLN](../tasks/vision-language-navigation.md) 共享「感知—决策—执行」分层思想，**执行层接口不同**（`cmd_vel` / Ackermann vs 关节力矩）。

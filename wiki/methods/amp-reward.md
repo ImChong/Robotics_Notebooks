@@ -94,6 +94,16 @@ $$
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 判别器约束状态转移接近专家分布 |
+| GAN | Generative Adversarial Network | AMP 对抗训练的范式来源 |
+| RL | Reinforcement Learning | 任务 reward 与风格 reward 联合优化 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减碎片 reward 的演进 |
+| HOI | Human–Object Interaction | HumanX 扩展的接触图交互场景 |
+
 ## 进阶：MimicKit 与 ADD
 
 在 **[mimickit](../entities/mimickit.md)** 框架中，AMP 得到了进一步的扩展和优化：

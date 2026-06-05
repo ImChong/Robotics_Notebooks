@@ -180,6 +180,16 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — Isaac Lab 侧集成任务与训练栈说明。
 - Hybrid Robotics，[whole_body_tracking](https://github.com/HybridRobotics/whole_body_tracking) — 上游开源实现与 issue 讨论入口（张量命名以仓库为准）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BeyondMimic | BeyondMimic Framework | 高精度仿真人形动作模仿框架 |
+| IL | Imitation Learning | 参考轨迹跟踪式模仿学习 |
+| RL | Reinforcement Learning | 仿真中 PPO 等优化跟踪策略 |
+| Isaac Lab | NVIDIA Isaac Lab | 主要验证与训练环境 |
+| Sim2Real | Simulation to Real | 强调物理建模与采样以促迁移 |
+
 ## 关联页面
 
 - [Imitation Learning (模仿学习)](./imitation-learning.md)

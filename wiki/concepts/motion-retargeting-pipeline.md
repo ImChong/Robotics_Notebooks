@@ -36,6 +36,16 @@ sources:
 
 把"人怎么动"翻译成"机器人能怎么动"的全过程管线：源数据归一 → 骨架与坐标对齐 → IK/约束求解 → 物理可行性筛选 → 下游可用的参考轨迹/配对数据。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Retargeting | Motion Retargeting | 人体参考→机器人可执行动作 |
+| GMR | General Motion Retargeting | 本库常用重定向工具链节点 |
+| WBT | Whole-Body Tracking | 重定向后仿真跟踪训练段 |
+| MoCap | Motion Capture | 流水线输入的动捕/视频数据 |
+| Sim2Real | Simulation to Real | 跟踪策略上真机的最后一段 |
+
 ## 为什么单独立一页
 
 单点的方法页（[GMR](../methods/motion-retargeting-gmr.md) / [NMR](../methods/neural-motion-retargeting-nmr.md) / [ReActor](../methods/reactor-physics-aware-motion-retargeting.md)）解决「映射怎么算」；本页关注**工程链路**：

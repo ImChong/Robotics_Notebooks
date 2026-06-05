@@ -64,6 +64,16 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富刚体仿真引擎 |
+| MJCF | MuJoCo XML Format | 模型与场景描述格式 |
+| MJX | MuJoCo JAX | JAX/XLA 后端，便于可微与批量 |
+| RL | Reinforcement Learning | 腿足/人形 loco 常用训练后端 |
+| PD | Proportional–Derivative | 仿真中常见的低层关节控制接口 |
+
 ## 参考来源
 
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — MuJoCo + iLQR 在线轨迹优化（Tassa et al. 2012/14）

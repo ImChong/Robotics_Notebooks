@@ -23,6 +23,16 @@ updated: 2026-05-10
 
 不学值函数再推策略，而是**直接优化"在每个状态下该怎么行动"的参数**，用梯度或近似梯度做更新。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PO | Policy Optimization | 直接优化策略参数的 RL 算法族 |
+| PPO | Proximal Policy Optimization | 机器人 loco 最常用 on-policy 算法 |
+| TRPO | Trust Region Policy Optimization | 信任域约束的策略梯度先驱 |
+| RL | Reinforcement Learning | 策略优化是 model-free RL 核心 |
+| MDP | Markov Decision Process | 策略优化的标准问题形式 |
+
 ## 为什么重要
 
 机器人控制的动作空间通常是**连续高维**的（30+ 自由度的关节力矩），Q-learning 类方法在离散动作空间里很强，但对连续动作空间扩展困难。

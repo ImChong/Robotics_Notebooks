@@ -21,6 +21,16 @@ sources:
 
 > 一套已经帮你把足式机器人 RL 训练流程、reward 设计、domain randomization 和 sim2real 工程习惯打包好的经典训练栈。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| legged_gym | Legged Gym | ETH RSL 四足/双足 RL 训练框架 |
+| RL | Reinforcement Learning | PPO 训 loco 的主流入口 |
+| PD | Proportional–Derivative | 策略输出经 PD 转力矩执行 |
+| GPU | Graphics Processing Unit | Isaac Gym 并行仿真依赖 |
+| Sim2Real | Simulation to Real | 训练后零样本/微调上真机 |
+
 ## 为什么重要
 
 很多人第一次真正把“机器人 RL 训练”跑起来，不是从零自己写环境，而是直接从 `legged_gym` 这种现成训练框架开始。

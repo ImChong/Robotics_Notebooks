@@ -24,6 +24,16 @@ updated: 2026-06-05
 > - [Isaac Gym](./isaac-gym.md) — 旧一代 GPU RL 仿真框架（已 deprecated）
 > - [Isaac Lab](./isaac-lab.md) — 当前 NVIDIA 官方主推的后继框架
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真（PhysX）训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习框架 |
+| RL | Reinforcement Learning | 大规模并行 PPO 等训练的主场景 |
+| GPU | Graphics Processing Unit | 数千环境并行仿真的算力基础 |
+| URDF | Unified Robot Description Format | 机器人模型导入仿真的标准描述 |
+
 ## 先说结论
 
 这是最容易把人带偏的地方：

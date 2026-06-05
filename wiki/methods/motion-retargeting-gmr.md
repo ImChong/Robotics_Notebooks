@@ -166,6 +166,16 @@ $$
 - Ze Y., et al. *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)；技术报告 [arXiv:2510.02252](https://arxiv.org/abs/2510.02252)。
 - [GMR 源码仓库](https://github.com/YanjieZe/GMR) — 功能列表、支持的机器人与数据格式、与 TWIST / MimicKit 等生态链接。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GMR | General Motion Retargeting | 通用人体→机器人动作重定向方法 |
+| MoCap | Motion Capture | 输入运动序列的主要来源 |
+| IK | Inverse Kinematics | 满足关节限位与末端约束的求解 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化与重定向源 |
+| WBT | Whole-Body Tracking | 重定向产物用于下游跟踪训练 |
+
 ## 关联页面
 
 - [Motion Retargeting (动作重定向)](../concepts/motion-retargeting.md) — 任务概览。

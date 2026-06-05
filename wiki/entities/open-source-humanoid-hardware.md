@@ -101,6 +101,16 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 各平台关节规模对比维度 |
+| BOM | Bill of Materials | 自研/开源硬件物料清单 |
+| RL | Reinforcement Learning | 平台选型常看仿真与训练生态 |
+| WBC | Whole-Body Control | 力控/全身协调硬件能力指标 |
+| Sim2Real | Simulation to Real | 硬件–仿真模型一致性影响迁移 |
+
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)
 - [roboto_origin.md](../../sources/repos/roboto_origin.md)

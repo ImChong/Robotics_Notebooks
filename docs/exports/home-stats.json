@@ -9,89 +9,33 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
       "type": "concept",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
       "type": "method",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/bfm-41-papers-technology-map.md",
-      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-      "label": "BFM 技术地图：41 篇论文的五类问题视角",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/imitation-learning.md",
-      "detail_id": "wiki-methods-imitation-learning",
-      "label": "Imitation Learning (IL, 模仿学习)",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-control.md",
-      "detail_id": "wiki-concepts-whole-body-control",
-      "label": "Whole-Body Control (WBC，全身控制)",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
-      "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
-      "label": "人形机器人 AMP：运动先验综述视角",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-pilot-perceptive-loco-manipulation.md",
-      "detail_id": "entity-paper-pilot-perceptive-loco-manipulation",
-      "label": "PILOT：非结构化场景感知统一 loco-manipulation 低层控制器",
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
@@ -105,50 +49,66 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
+      "path": "wiki/entities/isaac-gym-isaac-lab.md",
+      "detail_id": "entity-isaac-gym-isaac-lab",
+      "label": "Isaac Gym / Isaac Lab",
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-ssr-humanoid-open-world-traversal.md",
-      "detail_id": "entity-paper-ssr-humanoid-open-world-traversal",
-      "label": "SSR：开放世界人形安全对称穿越",
+      "path": "wiki/entities/mujoco.md",
+      "detail_id": "entity-mujoco",
+      "label": "MuJoCo (物理引擎)",
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
       "recency": "2026-06-05",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
-      "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
-      "label": "SPRINT：人形竞技冲刺的高效频谱先验",
-      "type": "entity",
+      "path": "wiki/concepts/foundation-policy.md",
+      "detail_id": "wiki-concepts-foundation-policy",
+      "label": "Foundation Policy（基础策略模型）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/bfm-category-02-goal-conditioned-learning.md",
+      "detail_id": "wiki-overview-bfm-category-02-goal-conditioned-learning",
+      "label": "BFM 分类 02：Goal-conditioned 学习",
+      "type": "overview",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/world-models-15-open-source-technology-map.md",
+      "detail_id": "wiki-overview-world-models-15-open-source-technology-map",
+      "label": "世界模型 15 开源项目：三线技术地图",
+      "type": "overview",
       "recency": "2026-06-05",
       "source": "log.md"
     },
@@ -161,18 +121,58 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
-      "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
-      "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
-      "type": "entity",
+      "path": "wiki/methods/amp-reward.md",
+      "detail_id": "wiki-methods-amp-reward",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "type": "method",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
       "recency": "2026-06-05",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/sim2real.md",
-    "detail_id": "wiki-concepts-sim2real",
-    "label": "Sim2Real",
+    "path": "wiki/concepts/behavior-foundation-model.md",
+    "detail_id": "wiki-concepts-behavior-foundation-model",
+    "label": "Behavior Foundation Model（行为基础模型，BFM）",
     "type": "concept",
     "recency": "2026-06-05",
     "source": "log.md"

@@ -28,6 +28,16 @@ sources:
 
 这类任务的难点不是“让手碰到物体”，而是“碰到以后如何稳定地利用接触”。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CRM | Contact-Rich Manipulation | 多指/多接触约束下的操作任务 |
+| WBC | Whole-Body Control | 移动操作中协调力与运动的全身层 |
+| IL | Imitation Learning | 接触策略常从示教或扩散策略学习 |
+| RL | Reinforcement Learning | 探索接触模式与力控制的路线 |
+| 6DoF | Six Degrees of Freedom | 物体位姿级抓取/操作表示 |
+
 ## 为什么重要
 
 非接触抓取更多是在自由空间里规划轨迹；接触丰富型操作则必须面对：

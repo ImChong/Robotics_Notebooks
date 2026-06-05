@@ -153,6 +153,16 @@ flowchart LR
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
 - NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SONIC | Supersizing Motion Tracking for Natural Humanoid WBC | 规模化运动跟踪预训练人形控制 |
+| MoCap | Motion Capture | 海量参考轨迹的监督来源 |
+| WBC | Whole-Body Control | 全身协调跟踪的执行层问题 |
+| VLA | Vision-Language-Action | 经统一 token 接入的高层接口 |
+| VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
+
 ## 关联页面
 
 - [BeyondMimic](./beyondmimic.md)
