@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/explicit_stair_geometry_arxiv_2605_09944.md — 显式楼梯几何条件化人形爬梯（arXiv:2605.09944）入库
+
+- 原始资料：[explicit_stair_geometry_arxiv_2605_09944.md](sources/papers/explicit_stair_geometry_arxiv_2605_09944.md)（<https://arxiv.org/abs/2605.09944>）
+- 沉淀页面：[wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（含 Mermaid 训练—部署管线）
+- 交叉更新：[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/concepts/terrain-adaptation.md](wiki/concepts/terrain-adaptation.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)、[wiki/entities/paper-faststair-humanoid-stair-ascent.md](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-05] ingest | sources/papers/faststair_arxiv_2601_10365.md — FastStair 挂接楼梯/障碍中心节点并刷新交叉引用
 
 - 原始资料（已存在，本次补摘录 §5 感知定位）：[`sources/papers/faststair_arxiv_2601_10365.md`](sources/papers/faststair_arxiv_2601_10365.md)、[`sources/sites/npcliu-faststair-github-io.md`](sources/sites/npcliu-faststair-github-io.md)

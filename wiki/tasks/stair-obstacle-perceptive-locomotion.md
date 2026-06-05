@@ -12,6 +12,7 @@ related:
   - ../concepts/privileged-training.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/dreamwaq-plus.md
   - ../entities/extreme-parkour.md
@@ -21,6 +22,7 @@ related:
   - ../entities/paper-walk-these-ways-quadruped-mob.md
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
+  - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -76,6 +78,7 @@ flowchart TB
 | 感知 | 方向 / 场景 | 页面 | 要点 |
 |------|-------------|------|------|
 | **有**（机载高程图 + 深度重建） | **高速上楼** | [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) | GPU 并行 DCM 落脚点作训练监督；分速专家 + LoRA；LimX Oli ~1.65 m/s 上楼 |
+| **有**（点云 BEV → 几何 token） | **上楼 · OOD 踢面** | [Explicit Stair Geometry](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) | 踢面/踏面/航向四维条件化 PPO；G1 户外 33 级；相对 MoRE 更高 OOD 成功率 |
 | **有**（高度图 + LiDAR 奖励） | **多地形含下楼** | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) | VLM 生成环境感知奖励；论文称感知基线未能完成楼梯下降 |
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
 

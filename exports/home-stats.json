@@ -1,25 +1,17 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 677,
-  "edge_count": 4837,
+  "node_count": 678,
+  "edge_count": 4853,
   "coverage": {
-    "covered": 675,
-    "total": 675,
+    "covered": 676,
+    "total": 676,
     "percent": 100
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
-      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
-      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+      "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+      "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
@@ -33,9 +25,9 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
       "type": "task",
       "recency": "2026-06-05",
       "source": "log.md"
@@ -45,6 +37,30 @@
       "detail_id": "wiki-concepts-terrain-adaptation",
       "label": "Terrain Adaptation（地形适应）",
       "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-faststair-humanoid-stair-ascent.md",
+      "detail_id": "entity-paper-faststair-humanoid-stair-ascent",
+      "label": "FastStair（Learning to Run Up Stairs with Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
       "recency": "2026-06-05",
       "source": "log.md"
     },
@@ -151,29 +167,13 @@
       "type": "formalization",
       "recency": "2026-06-04",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/riemannian-manifold-tangent-space.md",
-      "detail_id": "wiki-formalizations-riemannian-manifold-tangent-space",
-      "label": "黎曼流形与切空间（具身运动的几何语言）",
-      "type": "formalization",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
-      "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
-      "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
-      "type": "formalization",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-    "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-    "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-    "type": "task",
+    "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+    "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+    "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
+    "type": "entity",
     "recency": "2026-06-05",
     "source": "log.md"
   }

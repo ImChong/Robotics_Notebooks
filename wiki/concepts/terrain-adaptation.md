@@ -13,6 +13,7 @@ related:
   - ../tasks/balance-recovery.md
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
+  - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/dreamwaq-plus.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
@@ -76,6 +77,10 @@ sources:
 
 [E-SDS（arXiv:2512.16446）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) 把 **地形适应** 从「控制器读传感器」前移到 **奖励设计阶段**：Environment Analysis Agent 在目标地形上跑千机短 rollout，统计 **缺口率、障碍密度、崎岖度**，与 SUS 行为分解一并喂给 VLM，生成显式调用 **27×21 高度栅格 + 144 线 LiDAR** 的奖励代码；再经双候选 PPO + 反馈迭代精炼。在 Isaac Lab + Unitree G1 上，相对手工 13 项感知基线 **速度跟踪误差降 51.9–82.6%**，且 **仅该方法完成 12 cm 台阶下降**。
 
+### 近期案例：显式楼梯几何 token（arXiv:2605.09944）
+
+[显式楼梯几何条件化](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) 把 **楼梯** 从「高维高程图 / 视觉 latent」收束为 **踢面高度、踏面深度、航向与楼梯状态** 四维 token，由 **BEV 点云 CNN** 估计后直接条件化 **PPO**；相对 **11×17 高程图** 与 **盲走** 在 Isaac Lab 楼梯任务上成功率 **96% / 88% / 52%**，在 **未见踢面高度** 上优于 **MoRE** 视觉基线；**Unitree G1** 实机含 **户外 33 级连续上楼**。与 [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) 的 **DCM 落点规划监督** 形成对照：本文强调 **可解释几何接口 + teacher–student 感知**，而非高速规划引导。
+
 ## 与其他页面的关系
 
 - [Footstep Planning](./footstep-planning.md) 决定“下一步踩哪里”。
@@ -101,6 +106,7 @@ sources:
 - [sources/papers/contact_planning.md](../../sources/papers/contact_planning.md) — 不平整地形接触区域与多步接触规划
 - [sources/papers/e_sds_arxiv_2512_16446.md](../../sources/papers/e_sds_arxiv_2512_16446.md) — E-SDS 环境感知 VLM 奖励合成
 - [sources/papers/dreamwaq_plus_arxiv_2409_19709.md](../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md) — DreamWaQ++ 多模态点云四足 loco
+- [sources/papers/explicit_stair_geometry_arxiv_2605_09944.md](../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md) — 显式楼梯几何条件化人形爬梯
 
 ## 关联页面
 
