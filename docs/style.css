@@ -687,7 +687,17 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .detail-toc-list ol ol {
   margin-top: .35em;
   margin-bottom: 0;
-  padding-left: 2.15em;
+  padding-left: 0;
+  margin-left: 0;
+}
+.detail-toc-list ol ol > li {
+  list-style-position: inside;
+}
+.detail-toc-list ol ol ol {
+  padding-left: 2em;
+}
+.detail-toc-list ol ol ol > li {
+  list-style-position: inside;
 }
 .detail-toc-list li {
   list-style-position: outside;

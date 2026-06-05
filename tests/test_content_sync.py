@@ -383,6 +383,7 @@ console.log('ok');
             ".detail-toc-list a.active",
             ".detail-toc-list .toc-entry.active",
             ".detail-toc-list .toc-entry a",
+            ".detail-toc-list ol ol > li",
             ".detail-hash-target",
             ".detail-markdown-body hr",
         ]
