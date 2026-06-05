@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, locomotion, fall-recovery, unitree-g1, isaac-lab, ppo, sim2real, lafan1]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-05
 arxiv: "2605.18611"
 related:
   - ../methods/amp-reward.md
@@ -12,6 +12,7 @@ related:
   - ./amp-mjlab.md
   - ./lafan1-dataset.md
   - ./paper-heracles-humanoid-diffusion.md
+  - ./paper-host-humanoid-standingup.md
   - ../queries/humanoid-motion-tracking-method-selection.md
 sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
@@ -92,6 +93,7 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
+- **[HoST](./paper-host-humanoid-standingup.md)（arXiv:2502.08378）** 专注**无 MoCap 的纯起身**与**墙/台/坡等非地面初始姿态**；SD-AMP 则用 **AMP 先验**把 **locomotion + recovery** 压进**单策略**。二者可组合理解：HoST 提供「站起来」子技能，SD-AMP 提供「站起来后继续走跑」的统一 prior。
 
 
 ## 参考来源

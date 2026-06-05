@@ -270,6 +270,18 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 10px;
       backdrop-filter: blur(6px);
+      max-height: min(420px, calc(100dvh - var(--header-h) - 88px));
+      overflow-y: auto;
+      overflow-x: hidden;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.28) transparent;
+    }
+    #graph-legend::-webkit-scrollbar {
+      width: 6px;
+    }
+    #graph-legend::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.22);
+      border-radius: 4px;
     }
     .legend-row {
       display: flex;
@@ -281,11 +293,29 @@
       padding: 3px 6px;
       border-radius: 4px;
       transition: all 0.2s;
+      min-width: 0;
+    }
+    .legend-label-text {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.35;
     }
     .legend-row:hover { background: rgba(255,255,255,0.05); color: #fff; }
     .legend-row.active { background: rgba(0,212,255,0.15); color: #00d4ff; font-weight: 700; }
     .legend-title { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,0.32); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 4px; }
     .legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+    .legend-count {
+      margin-left: auto;
+      font-size: .62rem;
+      color: rgba(255,255,255,0.28);
+      font-variant-numeric: tabular-nums;
+    }
+    .filter-count-badge {
+      margin-left: auto;
+      font-size: .64rem;
+      color: rgba(255,255,255,0.32);
+      font-variant-numeric: tabular-nums;
+    }
 
     /* ── 移动端图例 FAB + 左侧抽屉 ── */
     #graph-legend-fab {
@@ -549,6 +579,11 @@
     [data-theme="light"] .legend-row { color: rgba(0,0,0,0.5); }
     [data-theme="light"] .legend-row:hover { background: rgba(0,0,0,0.04); }
     [data-theme="light"] .legend-row.active { background: #e6f7ff; color: #1659b4; }
+    [data-theme="light"] .legend-count { color: rgba(0,0,0,0.38); }
+    [data-theme="light"] .filter-count-badge { color: rgba(0,0,0,0.42); }
+    [data-theme="light"] #graph-legend::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,0.18);
+    }
     [data-theme="light"] #graph-legend-fab {
       background: rgba(255,255,255,0.96);
       border-color: rgba(0,0,0,0.12);
@@ -1014,6 +1049,11 @@
       width: 9px; height: 9px;
       border-radius: 50%;
       flex-shrink: 0;
+    }
+    .filter-item-label {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.35;
     }
     .filter-footer {
       padding: 10px 14px 14px;
@@ -1518,7 +1558,9 @@
       { value: '2', label: '2 分', color: '#facc15' },
       { value: '3', label: '3 分', color: '#4ade80' }
     ];
-    const COMMUNITY_COLORS = d3.schemeTableau10;
+    const COMMUNITY_COLORS = d3.schemeTableau10.concat([
+      '#e377c2', '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', '#98df8a', '#c5b0d5'
+    ]);
     const graphLegend = document.getElementById('graph-legend');
     const graphLegendFab = document.getElementById('graph-legend-fab');
     const graphLegendScrim = document.getElementById('graph-legend-scrim');
@@ -1622,6 +1664,36 @@
 
     let communityColorMap = new Map();
     let communityLabelMap = new Map();
+    let communityMetaMap = new Map();
+
+    function getSortedCommunities() {
+      const list = graphData && graphData.communities ? graphData.communities.slice() : [];
+      return list.sort((a, b) => {
+        if (a.id === 'community-other') return 1;
+        if (b.id === 'community-other') return -1;
+        const sizeDiff = (b.size || 0) - (a.size || 0);
+        if (sizeDiff !== 0) return sizeDiff;
+        return String(a.label || a.id).localeCompare(String(b.label || b.id), 'zh-CN');
+      });
+    }
+
+    function initCommunityMapsFromGraph() {
+      communityColorMap = new Map();
+      communityLabelMap = new Map();
+      communityMetaMap = new Map();
+      getSortedCommunities().forEach((community, idx) => {
+        communityColorMap.set(community.id, COMMUNITY_COLORS[idx % COMMUNITY_COLORS.length]);
+        communityLabelMap.set(community.id, community.label || community.id);
+        communityMetaMap.set(community.id, community);
+      });
+    }
+
+    function formatCommunityOptionLabel(communityId) {
+      const meta = communityMetaMap.get(communityId);
+      const label = communityLabelMap.get(communityId) || communityId;
+      if (!meta || meta.size == null) return label;
+      return label + ' (' + meta.size + ')';
+    }
     let focusedCommunityId = null;
     let focusedType = null;
     let focusedHealth = null;
@@ -1630,7 +1702,7 @@
     // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
     const TOPIC_FILTERS = {
       'motion-retargeting': {
-        communities: new Set(['community-8']),
+        communities: new Set(['community-3']),
         segments: new Set([
           'retargeting','retarget','gmr','nmr','reactor','sonic','exoactor',
           'spider','wilor','mocap','teleoperation','deepmimic','amp',
@@ -1656,37 +1728,35 @@
         ])
       },
       'wbc': {
-        communities: new Set(['community-2','community-15']),
+        communities: new Set(['community-0']),
         segments: new Set([
           'wbc','tsid','hqp','cbf','clf','whole','body','balance','hierarchical'
         ])
       },
       'locomotion': {
-        communities: new Set(['community-14']),
+        communities: new Set(['community-11', 'community-9']),
         segments: new Set([
           'locomotion','gait','mpc','zmp','lip','walking','swing','stance','capture'
         ])
       },
       'vla': {
-        communities: new Set(['community-0','community-5']),
+        communities: new Set(['community-5']),
         segments: new Set([
           'vla','foundation','octo','openvla','rt','pi0','gr00t'
         ])
       },
       'learning': {
-        communities: new Set(['community-3','community-4']),
+        communities: new Set(['community-4', 'community-6']),
         segments: new Set([
           'imitation','reinforcement','ppo','sac','behavior','cloning','dreamer'
         ])
       },
       'sim2real': {
-        communities: new Set(['community-11']),
         segments: new Set([
-          'sim2real','randomization'
+          'sim2real', 'randomization', 'domain'
         ])
       },
       'state-estimation': {
-        communities: new Set(['community-10']),
         segments: new Set([
           'estimation','ekf','ukf','slam','vio','odometry'
         ])
@@ -1757,11 +1827,16 @@
       const rows = [];
       if (colorMode === 'community') {
         rows.push('<div class="legend-title">按社区着色</div>');
-        for (const [communityId, label] of communityLabelMap.entries()) {
+        for (const community of getSortedCommunities()) {
+          const communityId = community.id;
+          const label = communityLabelMap.get(communityId) || community.label || communityId;
           const color = communityColorMap.get(communityId) || COMMUNITY_COLORS[9];
           const isActive = (focusedCommunityId === communityId);
+          const countHtml = community.size != null
+            ? `<span class="legend-count">${escapeHtml(String(community.size))}</span>`
+            : '';
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(String(communityId))}">
-            <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div>${escapeHtml(String(label))}
+            <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
           </div>`);
         }
       } else if (colorMode === 'health') {
@@ -1829,10 +1904,7 @@
       .then(d => { indexItems = d.items || []; })
       .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
-    (graphData.communities || []).forEach((community, idx) => {
-      communityColorMap.set(community.id, COMMUNITY_COLORS[idx % COMMUNITY_COLORS.length]);
-      communityLabelMap.set(community.id, community.label || community.id);
-    });
+    initCommunityMapsFromGraph();
     renderLegend();
 
     /* ── 计算节点度数 ── */
@@ -2085,10 +2157,10 @@
 
     function getFilterOptions() {
       if (colorMode === 'community') {
-        return Array.from(communityLabelMap.entries()).map(([communityId, label]) => ({
-          value: communityId,
-          label: label,
-          color: communityColorMap.get(communityId) || COMMUNITY_COLORS[9]
+        return getSortedCommunities().map((community) => ({
+          value: community.id,
+          label: formatCommunityOptionLabel(community.id),
+          color: communityColorMap.get(community.id) || COMMUNITY_COLORS[9]
         }));
       }
       if (colorMode === 'health') {
@@ -2121,10 +2193,15 @@
           '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
           + options.map(option => {
               const checked = activeFilters.has(option.value) ? ' checked' : '';
+              const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+              const countBadge = meta && meta.size != null
+                ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
+                : '';
               return '<label class="filter-item">'
                 + '<input type="checkbox" value="' + escapeHtml(option.value) + '"' + checked + ' /> '
                 + '<span class="filter-dot" style="background:' + escapeHtml(option.color) + '"></span>'
-                + escapeHtml(option.label)
+                + '<span class="filter-item-label">' + escapeHtml(option.label) + '</span>'
+                + countBadge
                 + '</label>';
             }).join('');
       }

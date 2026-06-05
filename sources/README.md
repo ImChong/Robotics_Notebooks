@@ -73,6 +73,7 @@
 | [x] [worldvln_arxiv_2605_15964.md](papers/worldvln_arxiv_2605_15964.md) | WorldVLN：空中 VLN 自回归 World Action Model + Action-aware GRPO（arXiv:2605.15964，EmbodiedCity）摘录与 wiki 映射 |
 | [x] [unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) | SD-AMP：投影重力门控双判别器 AMP，G1 单策略走跑起身（arXiv:2605.18611，HKU）摘录与 wiki 映射 |
 | [x] [heracles_humanoid_diffusion_arxiv_2603_27756.md](papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) | Heracles：状态条件扩散中间件桥接跟踪与生成恢复（arXiv:2603.27756，X-Humanoid）摘录与 wiki 映射 |
+| [x] [host_humanoid_standingup_arxiv_2502_08378.md](papers/host_humanoid_standingup_arxiv_2502_08378.md) | HoST：多 critic PPO 跨姿态人形起身，G1 真机直接部署（arXiv:2502.08378，RSS 2025 系统论文 finalist）摘录与 wiki 映射 |
 | [x] [slowrl_arxiv_2603_17092.md](papers/slowrl_arxiv_2603_17092.md) | SLowRL：LoRA + Recovery 安全真机微调四足动态策略（arXiv:2603.17092，Go2）摘录与 wiki 映射 |
 | [x] [any2any_arxiv_2605_23733.md](papers/any2any_arxiv_2605_23733.md) | Any2Any：跨具身 WBT 运动学对齐 + LoRA 动力学适配（arXiv:2605.23733，LimX）摘录与 wiki 映射 |
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
@@ -117,6 +118,7 @@
 | [x] [open_duck_mini_runtime.md](repos/open_duck_mini_runtime.md) | Open Duck Mini Runtime：Pi Zero 2W 机载 ONNX 与 Feetech 驱动 |
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
+| [x] [host_internrobotics.md](repos/host_internrobotics.md) | InternRobotics/HoST：RSS 2025 人形多姿态起身 RL（Isaac Gym + legged_gym，arXiv:2502.08378） |
 | [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |
 | [x] [apollo-lab-yale-apollo-py.md](repos/apollo-lab-yale-apollo-py.md) | apollo-py：Apollo Toolbox Python 包骨架（与 URDD 论文配套的轻量 README 入口） |
 | [x] [apollo-lab-yale-apollo-resources.md](repos/apollo-lab-yale-apollo-resources.md) | apollo-resources：URDD 机器人/环境资产与 GitHub Pages 宿主（Apollo-Lab-Yale） |
@@ -251,6 +253,7 @@
 | [x] [shape-your-body-nico-bohlinger.md](sites/shape-your-body-nico-bohlinger.md) | Shape Your Body 项目页（VGDS 交互演示、50 机训练集，arXiv:2606.00702） |
 | [x] [gentle-humanoid-axell-top.md](sites/gentle-humanoid-axell-top.md) | GentleHumanoid 项目页 gentle-humanoid.axell.top（浏览器 demo、人机/物交互与实验对比，arXiv:2511.04679） |
 | [x] [heracles-humanoid-control.md](sites/heracles-humanoid-control.md) | Heracles 项目页 heracles-humanoid-control.github.io（扩散中间件演示与 BibTeX，arXiv:2603.27756） |
+| [x] [host-humanoid-standingup-project.md](sites/host-humanoid-standingup-project.md) | HoST 项目页 humanoid-standingup.github.io（RSS 2025 系统论文 finalist，arXiv:2502.08378） |
 | [x] [gencad-github-io.md](sites/gencad-github-io.md) | GenCAD 项目页 gencad.github.io（图像条件 CAD program 生成 Demo，arXiv:2409.16294） |
 | [x] [gencad3d-github-io.md](sites/gencad3d-github-io.md) | GenCAD-3D 项目页 gencad3d.github.io（点云/网格→CAD、SynthBal，arXiv:2509.15246） |
 | [x] [hrl-boyuai-hands-on-rl.md](sites/hrl-boyuai-hands-on-rl.md) | 动手学强化学习在线书 hrl.boyuai.com（章节 + 在线 notebook + 课件） |

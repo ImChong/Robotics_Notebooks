@@ -3628,11 +3628,18 @@
       _communitySelectPopulated = true;
       var preserved = communityFilter.value;
       var opts = ['<option value="">全部社区</option>'];
-      for (var ci = 0; ci < communities.length; ci++) {
-        var c = communities[ci];
+      var sorted = (communities || []).slice().sort(function (a, b) {
+        if (a.id === 'community-other') return 1;
+        if (b.id === 'community-other') return -1;
+        return (b.size || 0) - (a.size || 0);
+      });
+      for (var ci = 0; ci < sorted.length; ci++) {
+        var c = sorted[ci];
         if (!c || !c.id) continue;
+        var label = c.label || c.id;
+        if (c.size != null) label += ' (' + c.size + ')';
         opts.push(
-          '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(c.label || c.id) + '</option>'
+          '<option value="' + escapeHtml(c.id) + '">' + escapeHtml(label) + '</option>'
         );
       }
       communityFilter.innerHTML = opts.join('');
