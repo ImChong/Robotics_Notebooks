@@ -9,6 +9,7 @@
     python3 scripts/gen_abbrev_glossary.py            # 写入
     python3 scripts/gen_abbrev_glossary.py --dry-run  # 只统计不写盘
 """
+
 from __future__ import annotations
 
 import json
