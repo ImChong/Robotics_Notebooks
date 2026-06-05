@@ -101,12 +101,13 @@ $g_z$ 为投影重力 $z$ 分量；阈值落在经验分布低占用区，作者
 - [Unified Walking, Running, and Recovery…（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
 - Peng et al., *AMP: Adversarial Motion Priors* (2021) — 方法基线
 - Harvey et al., *LAFAN1* (2020) — 三条参考动作来源
+- [SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md) — 五条 LAFAN1 参考 + 频谱先验，G1 冲刺 6 m/s
 
 ## 关联页面
 
 - [AMP & HumanX](../methods/amp-reward.md)、[Locomotion](../tasks/locomotion.md)、[Balance Recovery](../tasks/balance-recovery.md)
 - [Unitree G1](./unitree-g1.md)、[AMP_mjlab](./amp-mjlab.md)、[LAFAN1](./lafan1-dataset.md)
-- [Heracles](./paper-heracles-humanoid-diffusion.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
+- [Heracles](./paper-heracles-humanoid-diffusion.md)、[SPRINT](./paper-sprint-humanoid-athletic-sprints.md)、[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 
 ## 推荐继续阅读
 

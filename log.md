@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] ingest | sources/papers/sprint_arxiv_2605_28549.md、sources/sites/sprint-anonymous-project-page.md — SPRINT 人形竞技冲刺（频谱先验 + 6 m/s G1 真机）入库
+
+- 原始资料：[sprint_arxiv_2605_28549.md](sources/papers/sprint_arxiv_2605_28549.md)（<https://arxiv.org/abs/2605.28549>、<https://arxiv.org/html/2605.28549v1>）；[sprint-anonymous-project-page.md](sources/sites/sprint-anonymous-project-page.md)（<https://anonymous.4open.science/w/SPRINT-138A/>）
+- 沉淀页面：[wiki/entities/paper-sprint-humanoid-athletic-sprints.md](wiki/entities/paper-sprint-humanoid-athletic-sprints.md)（含三阶段 Mermaid 管线）
+- 交叉更新：[wiki/tasks/humanoid-locomotion.md](wiki/tasks/humanoid-locomotion.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)、[sources/README.md](sources/README.md)
+
 ## [2026-06-05] ingest | sources/papers/homeworld_arxiv_2606_06390.md — HomeWorld（Kairos）全屋 sim-ready 场景生成入库
 
 - 原始资料：[homeworld_arxiv_2606_06390.md](sources/papers/homeworld_arxiv_2606_06390.md)（<https://arxiv.org/abs/2606.06390>）；[kairos-homeworld-github-io.md](sources/sites/kairos-homeworld-github-io.md)（<https://kairos-homeworld.github.io/>）；[homeworld.md](sources/repos/homeworld.md)（<https://github.com/Kairos-HomeWorld/HomeWorld>，Coming Soon）

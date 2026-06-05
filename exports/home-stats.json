@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 680,
-  "edge_count": 4874,
+  "node_count": 681,
+  "edge_count": 4891,
   "coverage": {
-    "covered": 678,
-    "total": 678,
+    "covered": 679,
+    "total": 679,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
+      "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
+      "label": "SPRINT：人形竞技冲刺的高效频谱先验",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
       "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
@@ -121,14 +145,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/footstep-planning.md",
       "detail_id": "wiki-concepts-footstep-planning",
       "label": "Footstep Planning（步位规划）",
@@ -151,28 +167,12 @@
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/dreamwaq-plus.md",
-      "detail_id": "entity-dreamwaq-plus",
-      "label": "DreamWaQ++（障碍感知四足多模态强化学习）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/extreme-parkour.md",
-      "detail_id": "entity-extreme-parkour",
-      "label": "Extreme Parkour（端到端四足感知跑酷）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
-    "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
-    "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
+    "path": "wiki/entities/paper-sprint-humanoid-athletic-sprints.md",
+    "detail_id": "entity-paper-sprint-humanoid-athletic-sprints",
+    "label": "SPRINT：人形竞技冲刺的高效频谱先验",
     "type": "entity",
     "recency": "2026-06-05",
     "source": "log.md"

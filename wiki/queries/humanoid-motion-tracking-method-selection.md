@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-06-04
+updated: 2026-06-05
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/deepmimic.md
@@ -11,6 +11,7 @@ sources:
   - ../../sources/papers/smp.md
   - ../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/sprint_arxiv_2605_28549.md
   - ../../sources/papers/any2any_arxiv_2605_23733.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 ---
@@ -77,7 +78,19 @@ flowchart TD
 
 **常见误判**：把 Heracles 当作「又一个 tracking 论文」——其贡献在 **中间层改参考命令**，底层仍是高频 tracking MDP。
 
-### 6. 跨具身：已有 WBT 专家迁到新硬件
+### 6. 竞技冲刺：参考极少 + 连续全速域
+
+当目标是 **6 m/s 级冲刺**、**走–跑–冲无缝变速**，且 **人形可用 MoCap 极少** 时：
+
+| 目标 | 优先路线 | 入口 |
+|------|----------|------|
+| 频域外推 + 单策略全速域 | **频率自适应频谱先验 + 冻结先验 + 残差 PPO** | [SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md) |
+| 单演示扩展周期参考库 + 控制引导 | **动态重定向 + goal-conditioned RL** | [Chasing Autonomy](../methods/chasing-autonomy-pipeline.md) |
+| 对抗风格 + 跌倒/起身统一 | **SD-AMP 双判别器** | [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
+
+**常见误判**：在冲刺段继续堆 AMP 参考——论文指出高动态下 AMP 易不稳定；SPRINT 用 **5 条 LAFAN1 单周期 + 频谱生成** 外推，与「多 clip 对抗先验」是不同数据假设。
+
+### 7. 跨具身：已有 WBT 专家迁到新硬件
 
 当 **源机上已有大规模 WBT 专家**（如 [SONIC](../methods/sonic-motion-tracking.md) / Gear-SONIC on G1），而目标机 DoF、观测布局与动力学不同时：
 
@@ -102,6 +115,7 @@ flowchart TD
 | **通用 tracker** | GMR/NMR 重定向 → Any2Track/AMS | 多动作库、遥操作闭环 |
 | **跨具身 WBT** | 源机 Sonic/Oli-WBT → Any2Any 对齐+LoRA | 新机少量数据、保留源先验 |
 | **接触任务** | GentleHumanoid + 下游操作/搬运 | 推、扶、柔顺交互 |
+| **竞技冲刺** | LAFAN1→GMR 五周期 → 频谱先验 → 残差 PPO | G1 零样本 0–6 m/s（[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)） |
 
 ---
 
@@ -118,7 +132,7 @@ flowchart TD
 - [DeepMimic 论文摘要](../../sources/papers/deepmimic.md)
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
-- [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)
+- [Heracles（arXiv:2603.27756）](../../sources/papers/heracles_humanoid_diffusion_arxiv_2603_27756.md)、[SD-AMP（arXiv:2605.18611）](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md)、[SPRINT（arXiv:2605.28549）](../../sources/papers/sprint_arxiv_2605_28549.md)
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md)
 
 ## 关联页面
@@ -132,7 +146,7 @@ flowchart TD
 - [SONIC vs BeyondMimic vs SD-AMP vs Heracles 对比](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
-- [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)
+- [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 
 ## 一句话记忆

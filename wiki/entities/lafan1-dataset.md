@@ -3,7 +3,7 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-05-29
+updated: 2026-06-05
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md
@@ -54,6 +54,7 @@ sources:
 
 - [Ubisoft La Forge Animation Dataset 仓库归档](../../sources/repos/ubisoft-laforge-animation-dataset.md)
 - [sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md](../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md) — SD-AMP 三条 LAFAN1 clip
+- [sources/papers/sprint_arxiv_2605_28549.md](../../sources/papers/sprint_arxiv_2605_28549.md) — SPRINT 五条单周期步态 + GMR 重定向
 - Harvey et al., *Robust Motion In-betweening*, ACM TOG (SIGGRAPH) 2020 — README 内引用信息
 - GitHub 仓库：<https://github.com/ubisoft/ubisoft-laforge-animation-dataset>
 
@@ -63,6 +64,7 @@ sources:
 - [wbc_fsm（G1 部署框架）](./wbc-fsm.md)
 - [Locomotion](../tasks/locomotion.md)
 - [GMR（通用动作重定向）](../methods/motion-retargeting-gmr.md)
+- [SPRINT 竞技冲刺频谱先验](./paper-sprint-humanoid-athletic-sprints.md)
 - [AMASS](./amass.md)
 
 ## 推荐继续阅读
