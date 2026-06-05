@@ -678,7 +678,10 @@
       color: rgba(0,0,0,0.35);
     }
     [data-theme="light"] .filter-item input[type=checkbox] { accent-color: #1659b4; }
-    [data-theme="light"] .filter-footer { border-top-color: rgba(0,0,0,0.07); }
+    [data-theme="light"] .filter-footer {
+      border-top-color: rgba(0,0,0,0.07);
+      background: rgba(250,249,246,0.98);
+    }
     [data-theme="light"] .filter-clear {
       border-color: rgba(0,0,0,0.1);
       color: rgba(0,0,0,0.4);
@@ -1157,13 +1160,32 @@
         pointer-events: none !important;
       }
       .filter-panel {
-        width: min(260px, calc(100vw - 40px)) !important;
-        height: auto !important;
-        max-height: min(72vh, 520px);
+        position: fixed;
+        top: calc(var(--header-h) + 46px + 8px);
+        left: 12px;
+        width: min(300px, calc(100vw - 24px)) !important;
+        height: min(520px, calc(100dvh - var(--header-h) - 46px - 20px)) !important;
+        max-height: min(520px, calc(100dvh - var(--header-h) - 46px - 20px));
+        z-index: 31;
+      }
+      .filter-topic-section[open] .filter-topic-chips {
+        max-height: 96px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .filter-body {
-        max-height: 240px;
-        flex: none;
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .filter-footer {
+        flex-shrink: 0;
+        position: sticky;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(13,17,23,0.97);
       }
       .filter-close {
         padding: 8px 10px;
