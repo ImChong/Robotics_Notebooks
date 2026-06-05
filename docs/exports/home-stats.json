@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-05",
-  "node_count": 678,
-  "edge_count": 4853,
+  "node_count": 679,
+  "edge_count": 4863,
   "coverage": {
-    "covered": 676,
-    "total": 676,
+    "covered": 677,
+    "total": 677,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
+      "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
+      "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
+      "type": "entity",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/video-as-simulation.md",
+      "detail_id": "wiki-concepts-video-as-simulation",
+      "label": "Video-as-Simulation (视频即仿真)",
+      "type": "concept",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-06-05",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
       "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/jackhan-mujoco-walke3-simulation.md",
-      "detail_id": "entity-jackhan-mujoco-walke3-simulation",
-      "label": "Mujoco-WalkerE3-Simulation（Walker 泰山手柄仿真）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-heracles-humanoid-diffusion.md",
-      "detail_id": "entity-paper-heracles-humanoid-diffusion",
-      "label": "Heracles：跟踪精度与生成式恢复的扩散中间件",
-      "type": "entity",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
-      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
-      "label": "《具身智能基础》专栏：几何三篇技术地图",
-      "type": "overview",
-      "recency": "2026-06-04",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
-      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
-      "label": "三维坐标变换（视觉–机器人对齐）",
-      "type": "formalization",
-      "recency": "2026-06-04",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
-    "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
-    "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
+    "path": "wiki/entities/paper-homeworld-whole-home-scene-generation.md",
+    "detail_id": "entity-paper-homeworld-whole-home-scene-generation",
+    "label": "HomeWorld（Kairos · Whole-Home Scene Generation）",
     "type": "entity",
     "recency": "2026-06-05",
     "source": "log.md"

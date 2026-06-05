@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-05-24
+updated: 2026-06-05
 status: complete
 related:
   - ../overview/vln-open-source-repro-paradigms.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/3d-spatial-vqa.md
   - ../concepts/world-action-models.md
   - ../methods/vla.md
+  - ../entities/paper-homeworld-whole-home-scene-generation.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
@@ -54,6 +55,7 @@ sources:
 - **复现路径**：[VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md) — VLFM / NavGPT / NoMaD / Uni-NaVid 由浅入深（模块化→LLM→扩散 e2e→导航 VLA）。
 - **空中 WAM**：[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) — 潜自回归世界转移 + 航点解码 + Action-aware GRPO；室内外 UAV 基准与真机部署（arXiv:2605.15964）。
 - **数据**：[SceneVerse++](../entities/sceneverse-pp.md) 将室内漫游视频转为 R2R 兼容的离散导航数据，并报告在相关基准上的增益。
+- **全屋仿真场景**：[HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) 从文本生成 **sim-ready 多房间家居**（300K **Chinese Style** 矢量平面图 + 5K furnished 全屋 3D 待开源），面向 **跨房间语言导航与家务** 的 **户型本地化** 数据链——与 Matterport 系扫描 benchmark 互补而非直接替代。
 - **空间推理**：[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 侧重问答；VLN 侧重 **时序决策**，二者常共享场景表示与 VLM 骨干。
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
@@ -72,6 +74,7 @@ sources:
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [World Action Models（WAM）](../concepts/world-action-models.md)
 - [SceneVerse++](../entities/sceneverse-pp.md)
+- [HomeWorld](../entities/paper-homeworld-whole-home-scene-generation.md) — 文本到 sim-ready 全屋 3D 与中国住宅平面图数据
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md)
 - [Locomotion](locomotion.md)
 - [VLA](../methods/vla.md)
