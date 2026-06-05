@@ -82,6 +82,22 @@ Lynch-Park 将下面这些贯穿全书：
 - [线性代数学习策展](./linear-algebra-curriculum.md) — L0 通用矩阵语言，再接本教材 Ch 2–3
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [sources/papers/modern_robotics_textbook.md](../../sources/papers/modern_robotics_textbook.md)

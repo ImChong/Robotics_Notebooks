@@ -32,6 +32,12 @@ updated: 2026-05-01
 
 主流数据飞轮以"部署 → 抽取好动作 → 模仿学习"为主，本质把部署当成**高质量演示的来源**。AGIBOT 在 [LWD](../methods/lwd.md) 中提出了另一种范式：把成功 / 失败 / 半成 / 救场 / 人为干预**全部**作为 RL 训练信号，offline 与 online 阶段共用同一个学习器，形成 **offline-to-online RL 数据飞轮**——不再丢弃失败轨迹，长程任务上的提升尤其显著。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)

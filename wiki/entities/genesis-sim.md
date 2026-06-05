@@ -51,6 +51,14 @@ related:
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - [genesis_ai_simulation_world_10_blog（Genesis AI：World 1.0 与仿真评测）](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)

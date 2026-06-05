@@ -80,6 +80,16 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 - **误区 1：刚度越大越稳。** 事实上，环境越硬，机器人刚度必须越低，否则系统闭环特征值会移向不稳定区。
 - **误区 2：阻抗控制需要精确环境模型。** 阻抗控制的初衷就是为了应对环境的不确定性，它不需要知道环境的具体几何信息。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+
 ## 参考来源
 
 - Hogan, N. (1985). *Impedance Control: An Approach to Manipulation*. Journal of Dynamic Systems, Measurement, and Control.

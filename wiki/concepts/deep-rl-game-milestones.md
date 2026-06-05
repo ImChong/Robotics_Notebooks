@@ -33,6 +33,12 @@ sources:
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [QT-Opt](../methods/qt-opt.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
+
 ## 参考来源
 
 - [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)

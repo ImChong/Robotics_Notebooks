@@ -73,6 +73,17 @@ $$
 - [MDP 形式化](./mdp.md)
 - [Bellman 方程](./bellman-equation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 参考来源
 - Altman, E. (1999). *Constrained Markov Decision Processes*. (奠定了 CMDP 的运筹学根基)
 - Achiam, J., Held, D., Tamar, A., & Abbeel, P. (2017). *Constrained Policy Optimization*. (深度学习时代 CMDP 的标杆之作)

@@ -261,6 +261,24 @@ init_base_ori  ~ Uniform(-0.05, 0.05)  # rad，小倾斜扰动
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+
 ## 参考来源
 
 - [sources/papers/locomotion_rl.md](../../sources/papers/locomotion_rl.md) — 足式运动 RL 训练与 DR 设计实践

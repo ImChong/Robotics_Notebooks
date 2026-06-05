@@ -88,6 +88,17 @@ flowchart LR
 - arXiv HTML 全文：<https://arxiv.org/html/2605.06593v1>
 - ACM Digital Library（正式录用信息以 TOG / SIGGRAPH 条目为准）：<https://doi.org/10.1145/3811378>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [reactor_rl_physics_aware_motion_retargeting（本入库摘录）](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md)

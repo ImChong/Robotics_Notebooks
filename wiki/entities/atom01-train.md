@@ -142,6 +142,19 @@ python scripts/sim2sim.py   --task atom01_walk   --checkpoint logs/atom01_walk/m
 - 误区：只要训练收敛就能真机稳定。真机仍受通信、校准、硬件误差影响。
 - 局限：训练仓库往往强调算法迭代，部署鲁棒性要靠额外工程补齐。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 参考来源
 
 - [sources/repos/atom01_train.md](../../sources/repos/atom01_train.md)

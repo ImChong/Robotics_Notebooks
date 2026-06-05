@@ -132,6 +132,21 @@ flowchart LR
 - [MuJoCo](../entities/mujoco.md) — 仿真器中的 joint 参数
 - [Sim2Real](./sim2real.md) — 质量/惯量随机化与真机偏差
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [机器人连杆惯量与转子惯量（一手资料索引）](../../sources/papers/robot_link_rotor_inertia_primary_refs.md) — URDF 规范、Modern Robotics Ch.8、Gautier & Khalil 1990、MuJoCo `armature` 官方定义

@@ -144,6 +144,20 @@ $$
 - [Sim2Real](../concepts/sim2real.md) — 低秩残差所要吸收的 domain gap 来源。
 - [Safe RL](../methods/safe-rl.md)、[Reinforcement Learning](../methods/reinforcement-learning.md) — 上层方法范式。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+
 ## 参考来源
 
 - [SLowRL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md) — 冻结策略 + rank-1 LoRA（actor & critic）+ Recovery/Safety Filter 真机微调与秩消融。

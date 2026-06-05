@@ -96,6 +96,20 @@ flowchart LR
 - [Peng et al., DeepMimic（arXiv）](https://arxiv.org/abs/1804.06401) — 物理角色技能 RL 模仿的经典参照
 - [Ames et al., Control Barrier Functions: Theory and Applications（arXiv）](https://arxiv.org/abs/1903.11199) — CBF 理论与应用综述
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [sources/papers/disney_olaf_character_robot.md](../../sources/papers/disney_olaf_character_robot.md)（本页知识编译自该 ingest 档案与 arXiv:2512.16705 多形态链接）

@@ -44,6 +44,17 @@ sources:
 - **兄弟任务**：[视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) 同样依赖「语言 + 空间」，但更强调 **动作序列** 而非单一答案。
 - **模型范式**：[VLA](../methods/vla.md) 若承载高层「去哪、找什么」的语义，底层仍需可靠几何感知；3D 空间 VQA 可作为 **空间推理能力** 的中间监督或评测。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+
 ## 参考来源
 
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)

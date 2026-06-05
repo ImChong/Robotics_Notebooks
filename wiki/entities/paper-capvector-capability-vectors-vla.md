@@ -97,6 +97,16 @@ flowchart TB
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [CapVector 论文摘录（arXiv:2605.10903）](../../sources/papers/capvector_arxiv_2605_10903.md)

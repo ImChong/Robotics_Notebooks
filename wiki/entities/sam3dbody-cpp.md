@@ -87,6 +87,19 @@ flowchart TB
 - 导出工具链：<https://github.com/AmmarkoV/Fast-SAM-3D-Body>
 - 演示视频：<https://www.youtube.com/watch?v=f-tCwCQvurQ>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CPU | Central Processing Unit | 中央处理器 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+
 ## 参考来源
 
 - [SAM3DBody-cpp 仓库](../../sources/repos/sam3dbody-cpp.md)

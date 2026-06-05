@@ -86,6 +86,17 @@ flowchart LR
 - [Action Chunking](../methods/action-chunking.md) — 异步 chunk 推理与平滑控制
 - [Unitree G1](./unitree-g1.md) — 论文表中人形平台之一
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
 ## 参考来源
 
 - [RIO 仓库与论文归档](../../sources/repos/robot-io-rio.md)

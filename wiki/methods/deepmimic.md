@@ -31,5 +31,13 @@ summary: "DeepMimic 是物理角色动画的基石工作，通过精确的轨迹
 - [amp-reward](amp-reward.md) — 后续的“无奖励设计”版本。
 - [mimickit](../entities/mimickit.md) — 现代化的实现框架。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md)

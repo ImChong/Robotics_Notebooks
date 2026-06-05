@@ -31,5 +31,11 @@ HER 的核心逻辑是“**错有错着**”：
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Reward Design 概念](../concepts/reward-design.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 - Andrychowicz, M., et al. (2017). *Hindsight Experience Replay*.

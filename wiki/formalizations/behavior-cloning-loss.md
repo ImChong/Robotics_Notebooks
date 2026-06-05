@@ -79,6 +79,14 @@ $$
 - [Action Chunking](../methods/action-chunking.md)
 - [MDP 形式化](./mdp.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+
 ## 参考来源
 - Pomerleau, D. A. (1989). *Alvinn: An autonomous land vehicle in a neural network*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)

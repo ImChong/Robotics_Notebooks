@@ -111,6 +111,20 @@ $$
 - 折中参照：[LIFT](../entities/lift-humanoid.md) 把「预训练高随机探索」约束在物理知情世界模型内，微调期真机侧用确定性采集，是另一种安全–样本效率拆分。
 - 下游恢复行为：[Balance Recovery](../tasks/balance-recovery.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [SLowRL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md) — 冻结策略 + rank-1 LoRA + Recovery/Safety Filter 真机微调

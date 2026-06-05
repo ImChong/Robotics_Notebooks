@@ -79,6 +79,16 @@ flowchart LR
 - 项目页（视频、图表与 BibTeX）：<https://keitayoneda.github.io/kleiyn-efgcl/>
 - IEEE RA-L 正式条目（DOI）：<https://doi.org/10.1109/LRA.2026.3675955>
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 参考来源
 
 - [EFGCL（KLEIYN 项目页 / RA-L 2026）](../../sources/sites/kleiyn-efgcl.md)

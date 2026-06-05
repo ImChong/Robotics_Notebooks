@@ -118,6 +118,18 @@ flowchart TB
 - [机器人世界模型训练闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)
 - [LeRobot](../entities/lerobot.md) — RynnVLA-002 文内 SO100 数据收集语境
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+
 ## 参考来源
 
 - [深蓝具身智能：刷完 Github VLA 项目后的复现推荐（微信公众号归档）](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md)

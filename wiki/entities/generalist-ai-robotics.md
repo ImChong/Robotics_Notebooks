@@ -26,6 +26,13 @@ sources:
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - GEN-0 博文入口：https://generalistai.com/blog/nov-04-2025-GEN-0

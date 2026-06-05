@@ -113,6 +113,24 @@ python sim/run_floating_base.py --headless --duration 8 --task-sequence "rest:1.
 - 本 fork 仓库：<https://github.com/Xzgz718/easy_quadruped>
 - Pupper 社区硬件文档（交叉核对）：[StanfordPupper](https://github.com/stanfordroboticsclub/StanfordPupper)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [easy_quadruped（sources 归档）](../../sources/repos/easy_quadruped.md)

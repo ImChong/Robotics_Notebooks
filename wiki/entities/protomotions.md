@@ -110,6 +110,25 @@ flowchart TD
 - [模仿学习](../methods/imitation-learning.md) — 任务层概念索引
 - [ADD](../methods/add.md) — README 用作「易扩展算法」示例的差分判别器路线
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| SMP | Score-Matching Motion Prior | 可复用的 score-matching 运动先验模块 |
+
 ## 参考来源
 
 - 本页知识编译自仓库侧原始摘录：[sources/repos/protomotions.md](../../sources/repos/protomotions.md)（含 GitHub README 与 [protomotions.github.io](https://protomotions.github.io/) 文档入口归纳）

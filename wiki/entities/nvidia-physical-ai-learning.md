@@ -45,6 +45,20 @@ NVIDIA 官方的 Physical AI 自学路径总入口：按主题选课后，用 Is
 
 门户强调 Physical AI 与纯生成式/对话式 AI 的差异：必须 **感知真实传感器、在物理约束下行动、适应环境变化**。这一边界与 [Sim2Real](../concepts/sim2real.md) 讨论中的「仿真分布 ≠ 真机分布」一致，但课程更偏 **动手验证** 而非理论综述。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 参考来源
 
 - [NVIDIA Physical AI Learning 门户](../../sources/sites/nvidia-physical-ai-learning.md)

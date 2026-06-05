@@ -67,6 +67,19 @@ StarVLA 在面对环境光照变化、物体位姿偏移以及从未见过的背
 2.  **作为工业部署**：由于动作头极轻且支持中等规模 VLM 底座，它在实时性要求高的机器人任务中具有优势。
 3.  **开发体验**：其高度模块化的代码库极大降低了具身大模型的上手门槛。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| SOTA | State of the Art | 当前最优水平 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| OXE | Open X-Embodiment | 跨形态机器人的大规模操作数据集 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+
 ## 参考来源
 
 -   [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 文内将 StarVLA 列为模块化 VLM→VLA 工程框架入口

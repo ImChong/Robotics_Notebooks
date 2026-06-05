@@ -76,6 +76,17 @@ sources:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [运动控制开源项目笔记](../../sources/papers/motion_control_projects.md)

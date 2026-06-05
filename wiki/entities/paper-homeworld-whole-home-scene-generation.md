@@ -132,6 +132,20 @@ flowchart TB
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 室内语言导航 benchmark 与户型数据
 - [PhysX-Omni](./physx-omni.md) — 物体级 sim-ready 3D 生成对照
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [HomeWorld 论文归档（arXiv:2606.06390）](../../sources/papers/homeworld_arxiv_2606_06390.md)

@@ -154,6 +154,23 @@ GraspNet AP / AP_novel 高，主要意味着「数据分布内匹配好」，但
 
 > 默认起点是 **检测式 6-DoF grasp pose**；已知物体往左走「6D + 离线 grasp set」，技能链复杂往右走 **IL/VLA**；但「显式碰撞检查 + 触觉/视觉兜底」三件套永远不能省。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| SDK | Software Development Kit | 软件开发工具包 |
+
 ## 参考来源
 
 - [sources/papers/perception.md](../../sources/papers/perception.md) — 抓取感知与 6D 位姿估计来源整理

@@ -56,6 +56,14 @@ sources:
 - **方法**：[EgoScale](../methods/egoscale.md) 提供「万小时级 ego 人视频 ↔ VLA」的实证参照轴。
 - **概念**：[具身规模法则](../concepts/embodied-scaling-laws.md) 用于讨论 **人视频小时** 与 **机器人日志小时** 在指标上不可混用。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [HumanNet Table 1 语料链接与规模转录](../../sources/papers/humannet_table1_benchmark_corpora.md)

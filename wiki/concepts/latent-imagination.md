@@ -55,6 +55,15 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [Being-H0.7](../methods/being-h07.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
+
 ## 参考来源
 - Hafner, D., et al. (2019). *Dream to Control: Learning Behaviors by Latent Imagination*.
 - Hafner, D., et al. (2023). *Mastering Diverse Domains through World Models (DreamerV3)*.

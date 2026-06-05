@@ -121,6 +121,18 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 - **3D 骨架质量依赖**：真实机器人上需要可靠的关节估计（IMU / 编码器），精度直接影响识别效果
 - **机器人场景验证**：当前工作主要在人体骨架数据集上验证，直接应用于机器人骨架需要进一步适配
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+
 ## 参考来源
 
 - [sources/papers/universal_skeleton.md](../../sources/papers/universal_skeleton.md) — Kuang et al. (2026) HOVL 原论文 ingest 归档

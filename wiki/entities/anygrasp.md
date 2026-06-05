@@ -64,6 +64,16 @@ flowchart LR
 - 任务层：作为 **[Manipulation](../tasks/manipulation.md)** 中「视觉 → 抓取位姿」的 **感知模块** 选项之一。
 - 数据与先验：与 **GraspNet-1Billion**、**Graspness** 等工作构成 **同团队方法链**；更广泛的 6-DoF 抓取综述应以独立论文为准（AnyGrasp 正文 Related Work 中有线索）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [AnyGrasp SDK 原始资料索引](../../sources/repos/anygrasp-sdk.md)

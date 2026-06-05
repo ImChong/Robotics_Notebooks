@@ -88,6 +88,19 @@ flowchart TB
 - **误区：导航与操作只需拼两个 specialist。** 本文主张 **共享动作–轨迹空间** 与 **联合训练**；若仅推理时切换两个 checkpoint，则不在同一设计点。
 - **局限：** 仓库以官方 README、技术报告与 Demo 为主；训练数据规模、RL 细节与权重发布节奏需跟踪 [GitHub Issues](https://github.com/QwenLM/Qwen-VLA/issues)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [Qwen-VLA 仓库与论文归档](../../sources/repos/qwen-vla.md)

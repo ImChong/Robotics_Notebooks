@@ -66,6 +66,22 @@ HAL 运行在高频控制环（1kHz+）中。
 - [人形机器人运动控制学习路线](../roadmaps/humanoid-control-roadmap.md)
 - [人形机器人运动控制 Know-How](../overview/humanoid-motion-control-know-how.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| CPU | Central Processing Unit | 中央处理器 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 - 各大主流开源机器人框架（如 OCS2, Drake, ROS2 Control）的设计模式。
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)

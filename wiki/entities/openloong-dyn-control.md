@@ -34,6 +34,16 @@ summary: "OpenLoong-Dyn-Control 是青龙人形 MuJoCo 动力学控制包：MPC+
 - **勿与 Autoware/Nav2 混栈** — 输出为关节/力矩级控制，非 `cmd_vel`。
 - **硬件**：实机需配合 [OpenLoong](./openloong.md) Framework 与 EtherCAT 驱动。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+
 ## 参考来源
 
 - [sources/repos/openloong_dyn_control.md](../../sources/repos/openloong_dyn_control.md)

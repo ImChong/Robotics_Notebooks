@@ -55,6 +55,14 @@ flowchart TD
 - **[生态总览](./jackhan-walke3-e3-ecosystem.md)**：把本仓与数据集、控制器、FEAP 线放在同一张图里。
 - **[WalkE3 控制器](./jackhan-walke3-controller.md)**：若要从「单机演示」升级到「仿真进程 + 控制进程」分离栈，可对照阅读。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [Mujoco-WalkerE3-Simulation 仓库归档](../../sources/repos/jackhan-mujoco-walke3-simulation.md)

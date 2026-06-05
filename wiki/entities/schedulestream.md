@@ -109,6 +109,16 @@ flowchart TB
 - [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 连续段代价与约束的方法论语境
 - [Whole-Body Control（全身控制）](../concepts/whole-body-control.md) — 多臂 schedule **下发到执行层** 时的协调与平衡
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| TAMP | Task and Motion Planning | 联合符号任务规划与连续运动规划 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [ScheduleStream 论文归档（本站）](../../sources/papers/schedulestream_arxiv_2511_04758.md)

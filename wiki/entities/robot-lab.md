@@ -48,6 +48,18 @@ robot_lab 遵循 IsaacLab 的扩展规范：
 - [MimicKit (运动模仿套件)](./mimickit.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 参考来源
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md)
 - [fan-ziqi/robot_lab GitHub Repo](https://github.com/fan-ziqi/robot_lab)

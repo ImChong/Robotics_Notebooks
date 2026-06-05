@@ -73,6 +73,19 @@ flowchart TB
 - [arXiv:2605.15187](https://arxiv.org/abs/2605.15187)（论文 PDF 与元数据）
 - [articraft 代码仓库](https://github.com/mattzh72/articraft)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [Articraft 项目主页（原始资料）](../../sources/sites/articraft3d-github-io.md)

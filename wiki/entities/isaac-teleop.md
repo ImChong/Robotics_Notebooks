@@ -119,6 +119,21 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 文档中 G1 TriHand / loco-manip 遥操作范例平台
 - [RIO（Robot I/O）](./robot-io-rio.md) — 另一套跨形态真机 I/O 抽象（对照）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 参考来源
 
 - [Isaac Teleop 仓库与文档归档](../../sources/repos/nvidia_isaac_teleop.md)

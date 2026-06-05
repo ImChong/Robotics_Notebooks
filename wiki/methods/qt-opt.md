@@ -31,6 +31,13 @@ summary: "QT-Opt 用大规模离线 + 在线真实机器人数据训练视觉条
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - Kalashnikov et al., *Scalable Deep Reinforcement Learning for Vision-Based Robotic Manipulation*, https://arxiv.org/abs/1806.10293

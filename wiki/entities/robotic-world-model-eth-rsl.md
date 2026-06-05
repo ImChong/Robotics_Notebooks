@@ -87,6 +87,17 @@ flowchart TB
 - [ANYmal 四足机器人](./anymal.md) — 参考平台与 RSL 研究脉络
 - [Latent Imagination（潜空间想象）](../concepts/latent-imagination.md) — 其他「在模型中 rollout」范式对照
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MBRL | Model-Based Reinforcement Learning | 先学/用环境模型再规划或想象 rollout 的强化学习 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 参考来源
 
 - [robotic_world_model（Isaac Lab 扩展）归档](../../sources/repos/leggedrobotics_robotic_world_model.md)

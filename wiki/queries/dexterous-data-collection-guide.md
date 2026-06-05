@@ -59,6 +59,18 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 参考来源
 - Qin, B., et al. (2023). *AnyTeleop: A Unified and General Framework for Bimanual Dexterous Teleoperation*.
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md)

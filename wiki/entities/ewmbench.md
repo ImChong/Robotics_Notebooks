@@ -86,6 +86,14 @@ flowchart LR
 - [GE-Sim 2.0](./ge-sim-2.md) — 同 Genie Envisioner 生态的 **闭环** 视频世界模拟器（内置 World Judge；EWMBench 偏开环生成质量）
 - [Model-Based RL（基于模型的强化学习）](../methods/model-based-rl.md) — 世界模型学习与规划文献脉络（EWMBench 评的是「生成式视频世界模型」子类）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [EWMBench 论文摘录](../../sources/papers/ewmbench.md)

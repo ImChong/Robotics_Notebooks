@@ -88,6 +88,18 @@ flowchart LR
 - [Tnkr 官方站点](https://tnkr.ai/)
 - [Launch 视频：We built the GitHub for robotics](https://www.youtube.com/watch?v=nLVeWpSb38U)（@TnkrdotAI）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| AI | Artificial Intelligence | 人工智能 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [Tnkr 平台归档](../../sources/repos/tnkr.md)

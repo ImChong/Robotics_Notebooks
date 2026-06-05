@@ -72,6 +72,17 @@ Roboto Origin 的仓库体系可理解为“五段流水线”：
 - [Roboparty / roboto_origin](https://github.com/Roboparty/roboto_origin)
 - [Humanoid Robot Know-How Documentation](https://roboparty.com/roboto_origin/doc)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 参考来源
 
 - [sources/repos/roboto_origin.md](../../sources/repos/roboto_origin.md)

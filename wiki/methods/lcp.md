@@ -42,6 +42,12 @@ LCP 通过限制神经网络的 Lipschitz 常数 $，确保：
 - [safety-filter](../concepts/safety-filter.md) — 类似的初衷，但 LCP 是在策略内部实现的。
 - [mimickit](../entities/mimickit.md) — LCP 已集成至此研究套件。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 - [sources/papers/lcp.md](../../sources/papers/lcp.md)
 - Peng et al., *Lipschitz-Constrained Policies for Physics-Based Character Control*, SIGGRAPH 2023.

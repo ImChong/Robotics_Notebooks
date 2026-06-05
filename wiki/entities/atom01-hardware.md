@@ -34,6 +34,15 @@ summary: "Atom01_hardware 是 Roboparty Atom01 的机械与电子设计仓库，
 - 误区：有了硬件仓库就能直接跑策略。实际上还需要 `atom01_deploy`、`atom01_firmware` 与训练模型闭环。
 - 局限：开源硬件文档通常偏原型阶段，工业级可靠性验证仍需大量自测。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 参考来源
 
 - [sources/repos/atom01_hardware.md](../../sources/repos/atom01_hardware.md)

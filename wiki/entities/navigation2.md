@@ -46,6 +46,16 @@ summary: "Navigation2（Nav2）是 ROS 2 标准导航框架：行为树、全局
 - **误区：默认 DWB 适用所有底盘** — 全向、阿克曼、差速动力学差异大，需换 **controller / footprint**。
 - **局限**：Nav2 面向 **平面移动底盘**；人形/腿式 **步态规划** 不在其范围（见 [OpenLoong](./openloong.md)）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+
 ## 参考来源
 
 - [sources/repos/navigation2.md](../../sources/repos/navigation2.md)

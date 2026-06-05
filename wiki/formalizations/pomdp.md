@@ -36,5 +36,12 @@ $$ b_t(s) = P(s_t = s | o_{1:t}, a_{1:t-1}) $$
 - [MDP 形式化](./mdp.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+
 ## 参考来源
 - Kaelbling, L. P., et al. (1998). *Planning and learning in partially observable stochastic domains*.

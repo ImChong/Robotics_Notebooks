@@ -191,6 +191,17 @@ flowchart TD
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+
 ## 参考来源
 
 - [SLowRL（arXiv:2603.17092）](../../sources/papers/slowrl_arxiv_2603_17092.md) — 冻结策略 + rank-1 LoRA + Recovery/Safety Filter 真机残差适配

@@ -217,6 +217,21 @@ print("final com state:", traj[-1])
 2. **最小代码**：你至少要能自己写出 `ddot{x} = ω²(x - x_zmp)` 的仿真 loop
 3. **局限性**：一旦涉及高动态动作、显著质心起伏、复杂接触，就该往 centroidal dynamics / MPC / WBC 升级
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+
 ## 参考来源
 
 - Kajita et al., *Introduction to Humanoid Robotics* — LIP/ZMP 理论基础经典教材

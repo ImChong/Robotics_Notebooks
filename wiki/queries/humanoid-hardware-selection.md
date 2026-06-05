@@ -131,6 +131,29 @@ sources:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| AI | Artificial Intelligence | 人工智能 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — human five 公众号硬件 101（部件级权衡）

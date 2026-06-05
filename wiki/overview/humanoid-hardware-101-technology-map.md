@@ -106,6 +106,15 @@ flowchart TB
 - [人形机器人力学](https://arxiv.org/abs/2309.04329)（综述类背景）
 - [摩根士丹利人形机器人供应链报告](https://www.morganstanley.com/)（文内引用，具体版本以原文脚注为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md) — 微信公众号编译（<https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ>）

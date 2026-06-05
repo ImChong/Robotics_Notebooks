@@ -142,6 +142,20 @@ QP 优化层：
 - **高层 (Sample-based MPC)**：在线规划器。它在底层策略的“命令空间”内进行并行轨迹采样（如 CEM）。
 - **代表工作**：[sumo](../methods/sumo.md) (RAI Institute, 2026) 证明了这种架构能让机器人（Spot/G1）操纵超重、超大物体，且具备零样本泛化能力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+
 ## 参考来源
 
 - Di Carlo et al., *Dynamic Locomotion in the MIT Cheetah 3* (2018) — MPC+WBC 两层架构代表作

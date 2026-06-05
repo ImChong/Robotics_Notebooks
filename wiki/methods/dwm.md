@@ -105,6 +105,16 @@ flowchart LR
 - Taste-Rob：<https://taste-rob.github.io/>（固定机位真实交互视频来源）。
 - HaMeR：<https://geopavlakos.github.io/hamer/>（真实视频上手网格条件构造）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [DWM 论文摘录（arXiv:2512.17907）](../../sources/papers/dwm_arxiv_2512_17907.md)

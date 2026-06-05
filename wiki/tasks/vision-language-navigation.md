@@ -60,6 +60,16 @@ sources:
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [深蓝具身智能：VLN 四范式新手复现推荐](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) — Habitat/R2R 可跑通开源栈策展

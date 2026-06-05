@@ -61,6 +61,20 @@ flowchart LR
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [LeRobot（Hugging Face）](./lerobot.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| CPU | Central Processing Unit | 中央处理器 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+
 ## 参考来源
 
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)

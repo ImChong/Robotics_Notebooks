@@ -103,6 +103,20 @@ related:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [sources/papers/mpc.md](../../sources/papers/mpc.md) — ingest 档案（MPC 接触规划相关论文）

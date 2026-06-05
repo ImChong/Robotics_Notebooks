@@ -27,6 +27,12 @@ sources:
 - [VLA](../methods/vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - Google DeepMind Blog — Gemini Robotics: https://deepmind.google/blog/gemini-robotics-brings-ai-into-the-physical-world/

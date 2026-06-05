@@ -52,6 +52,12 @@ sources:
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与真机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源)）。
 - 公众号文内引用量截止 2026-06-02，**不作**研究水平排名；复现前请核对各仓库 License 与权重可得性。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VPP | Video Prediction Policy | 以视频预测为中介生成动作的策略架构 |
+
 ## 参考来源
 
 - [shenlan_wm_survey_02_vpp.md](../../sources/papers/shenlan_wm_survey_02_vpp.md)

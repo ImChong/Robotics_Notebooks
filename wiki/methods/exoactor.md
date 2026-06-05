@@ -138,6 +138,18 @@ ExoActor 是一篇典型的"桥接型"论文，把好几条看似独立的技术
 - 把 [BeyondMimic](./beyondmimic.md) / [SONIC](./sonic-motion-tracking.md) 风格的 motion tracking 大模型作为通用执行层，而不再为每个任务单独 reward 工程。
 - 在 [Unitree G1](../entities/unitree-g1.md) 上端到端验证，是当前 G1 平台上"video → motion → tracking"系统的代表实现。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — 本仓库 ingest 档案。

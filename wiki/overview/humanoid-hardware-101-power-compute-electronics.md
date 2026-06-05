@@ -39,6 +39,15 @@ sources:
 - [开源人形「大脑」对比](../entities/open-source-humanoid-brains.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| NMC | Nickel Manganese Cobalt | 三元锂电池正极材料体系 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| BMS | Battery Management System | 电池管理系统 |
+| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_hardware_101.md](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)

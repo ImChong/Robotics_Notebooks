@@ -136,6 +136,24 @@ contact_noise:  0.05            # 接触检测误报率
 - [ ] 监控量：关节温度、电流峰值、控制延迟
 - [ ] 逐步提升速度/地形难度
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要

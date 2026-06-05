@@ -77,6 +77,16 @@ flowchart LR
 - [arXiv:2409.16294](https://arxiv.org/abs/2409.16294)
 - [DeepCAD（ICCV 2021）](https://arxiv.org/abs/2105.09492) — 数据集与无条件 CAD 生成基线语境
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 参考来源
 
 - [GenCAD 论文摘录（arXiv:2409.16294）](../../sources/papers/gencad_arxiv_2409_16294.md)

@@ -28,6 +28,14 @@ summary: "MT-Opt 把多任务机器人强化学习扩展到连续动作与共享
 - [QT-Opt](./qt-opt.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - Gupta et al., *MT-Opt: Continuous Multi-Task Robotic Reinforcement Learning at Scale*, https://arxiv.org/abs/2104.08212

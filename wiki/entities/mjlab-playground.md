@@ -83,6 +83,20 @@ README 给出了在 **NVIDIA 5090** 上的粗量级收敛时间（Go1 getup 约 
 - [MuJoCo Playground 站点](https://playground.mujoco.org/) — 任务设计与交互参考
 - [mjlab 论文（arXiv:2601.22074）](https://arxiv.org/abs/2601.22074) — 框架动机与基准
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+
 ## 参考来源
 
 - [sources/repos/mjlab_playground.md](../../sources/repos/mjlab_playground.md)

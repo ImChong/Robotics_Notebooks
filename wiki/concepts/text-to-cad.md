@@ -174,6 +174,23 @@ flowchart LR
 - [OpenSCAD](https://openscad.org/)
 - [Autodesk 生成式设计（Generative Design）](https://www.autodesk.com/solutions/generative-design)（理解「AI 增强」与「全自动整机 CAD」的差别）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| AI | Artificial Intelligence | 人工智能 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 参考来源
 
 - [文字生成 CAD / 对话式 CAD 工具（原始资料索引）](../../sources/sites/text-to-cad-tools.md)

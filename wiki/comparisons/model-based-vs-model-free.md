@@ -99,6 +99,21 @@ MBRL 的最大风险：**模型误差在 rollout 中累积**（compound error）
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| MBRL | Model-Based Reinforcement Learning | 先学/用环境模型再规划或想象 rollout 的强化学习 |
+| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+
 ## 参考来源
 
 - Janner et al., *When to Trust Your Model* (MBPO, 2019) — MBRL 样本效率分析

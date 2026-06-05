@@ -65,6 +65,15 @@ flowchart LR
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
 - [Xue Bin Peng（彭学斌）](./xue-bin-peng.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 参考来源
 
 - [Tairan He 个人主页原始资料](../../sources/sites/tairan-he.md)

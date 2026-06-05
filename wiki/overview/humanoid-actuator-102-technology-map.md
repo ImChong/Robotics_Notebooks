@@ -90,6 +90,15 @@ flowchart LR
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [参考文献索引（source）](../../sources/papers/humanoid_actuator_102_reference_catalog.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+
 ## 参考来源
 
 - [wechat_human_five_humanoid_actuator_102.md](../../sources/blogs/wechat_human_five_humanoid_actuator_102.md) — <https://mp.weixin.qq.com/s/zinp6ulTorzfqmCR_HaI5A>

@@ -45,6 +45,15 @@ sources:
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GMP | Generative Motion Prior | 生成式细轨迹指导人形走跑的运动先验 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [humanoid_amp_survey_06_natural_humanoid_robot_locomotion_with_generativ.md](../../sources/papers/humanoid_amp_survey_06_natural_humanoid_robot_locomotion_with_generativ.md)

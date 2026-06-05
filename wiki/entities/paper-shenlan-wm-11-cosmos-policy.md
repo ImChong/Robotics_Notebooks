@@ -52,6 +52,10 @@ sources:
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与真机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源)）。
 - 公众号文内引用量截止 2026-06-02，**不作**研究水平排名；复现前请核对各仓库 License 与权重可得性。
 
+## 英文缩写速查
+
+本页未引入需额外解释的英文缩写（相关术语在正文首次出现处已随文说明）。
+
 ## 参考来源
 
 - [shenlan_wm_survey_11_cosmos-policy.md](../../sources/papers/shenlan_wm_survey_11_cosmos-policy.md)

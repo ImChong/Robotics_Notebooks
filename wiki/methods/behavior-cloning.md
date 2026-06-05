@@ -99,6 +99,19 @@ $$
 - **误区 3：只要模型够大，BC 就天然鲁棒。**
   模型容量能帮助拟合，但不能替代分布覆盖。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [sources/papers/imitation_learning.md](../../sources/papers/imitation_learning.md) — DAgger / BC / ACT / Diffusion Policy 的 ingest 档案

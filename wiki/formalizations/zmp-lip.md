@@ -74,6 +74,18 @@ $$
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Friction Cone](./friction-cone.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 - Kajita, S., et al. (2001). *The 3D Linear Inverted Pendulum Mode: A simple modeling for a biped robot*.
 - Wieber, P.-B. (2006). *Trajectory Free Linear Model Predictive Control for Stable Walking*.

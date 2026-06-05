@@ -46,6 +46,13 @@ sources:
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [humanoid_amp_survey_19_embrace_collisions_humanoid_shadowing_for_deploy.md](../../sources/papers/humanoid_amp_survey_19_embrace_collisions_humanoid_shadowing_for_deploy.md)

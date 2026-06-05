@@ -46,6 +46,14 @@ $$ \min_{\mathcal{X}} \sum w_k \| J_k \ddot{q} + \dot{J}_k \dot{q} - \ddot{x}_{d
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Friction Cone 形式化](./friction-cone.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 参考来源
 - Prete, A., et al. (2016). *Task Space Inverse Dynamics*.
 - [sources/papers/whole_body_control.md](../../sources/papers/whole_body_control.md)

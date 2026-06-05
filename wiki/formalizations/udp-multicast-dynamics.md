@@ -160,6 +160,14 @@ $$
 - [实时运控中间件配置指南](../queries/real-time-control-middleware-guide.md)
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md)

@@ -87,6 +87,12 @@ $$ \tau = J^T ( S f_{pos} + \bar{S} f_{force} ) $$
 - **选择混合控制**：当你明确知道任务在哪些维度需要力，哪些维度需要位（如平面作业、已知几何体的装配）。
 - **选择阻抗控制**：当环境非常不确定，或者任务目标是保持整体柔顺性（如在人群中行走、抓取位置未知的物体）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - Raibert, M. H., & Craig, J. J. (1981). *Hybrid position/force control of manipulators*. Journal of Dynamic Systems, Measurement, and Control.

@@ -159,6 +159,18 @@ class rewards:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
 ## 参考来源
 
 - Rudin et al., *Learning to Walk in Minutes* (2022) — legged_gym 奖励设计参考

@@ -43,6 +43,15 @@ sources:
 - **方法**：[VLA](../methods/vla.md) 若要在复杂室内几何中稳健跟随语言，往往需要除 2D 网页图像之外的 **3D 空间监督**；本数据集是近年代表性来源之一。
 - **同类几何基础模型参照**：[LingBot-Map](../methods/lingbot-map.md) 侧重流式 3D 重建模型；SceneVerse++ 侧重 **数据集构建与多任务监督**，问题域互补。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [SceneVerse++ 原始资料归档](../../sources/repos/sceneverse-pp.md)

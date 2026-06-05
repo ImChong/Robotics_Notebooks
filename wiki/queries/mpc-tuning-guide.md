@@ -51,6 +51,13 @@ MPC 的目标是最小化 $J = \sum (x^T Q x + u^T R u)$。
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Trajectory Optimization (轨迹优化)](../methods/trajectory-optimization.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 - [sources/papers/mpc.md](../../sources/papers/mpc.md)
 - Di Carlo, J., et al. (2018). *Dynamic Locomotion on the MIT Cheetah 3*.

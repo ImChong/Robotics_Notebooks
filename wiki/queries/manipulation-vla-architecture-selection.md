@@ -73,6 +73,18 @@ sources:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [深蓝具身智能：VLA GitHub 复现推荐](../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md) — 开源仓库入口与复现目标分组

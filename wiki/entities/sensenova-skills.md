@@ -86,6 +86,15 @@ flowchart LR
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| API | Application Programming Interface | 应用程序编程接口 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 参考来源
 
 - [SenseNova-Skills 仓库源归档（本站）](../../sources/repos/sensenova-skills.md)

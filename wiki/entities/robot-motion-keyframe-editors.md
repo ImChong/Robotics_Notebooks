@@ -80,6 +80,18 @@ flowchart LR
 - [robot_keyframe_kit 视频教程（YouTube）](https://www.youtube.com/watch?v=ZoRK3STKsd0) — README 嵌入的官方教程
 - [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) — Stanford 工具 README 推荐的示例模型来源
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [sources/repos/cyoahs-robot-motion-editor.md](../../sources/repos/cyoahs-robot-motion-editor.md)

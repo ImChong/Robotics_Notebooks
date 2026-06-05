@@ -60,6 +60,18 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 - Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.
 - [sources/papers/contact_dynamics.md](../../sources/papers/contact_dynamics.md)

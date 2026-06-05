@@ -100,6 +100,19 @@ flowchart TB
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — ③ 视频世界模型 · 从想象到训练闭环
 - [τ₀-World Model（τ0-WM）](./tau0-world-model.md) — 同 Agibot 系 **5B 统一视频–动作** 与测试时 propose–evaluate–revise（策略–仿真一体，非独立 Judge 栈）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+
 ## 参考来源
 
 - [GE-Sim 2.0 论文摘录](../../sources/papers/ge_sim_2_arxiv_2605_27491.md)

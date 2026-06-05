@@ -157,6 +157,23 @@ flowchart TD
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| HRL | Hierarchical Reinforcement Learning | 高层技能 + 低层控制分层结构的强化学习 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [Any2Any（arXiv:2605.23733）](../../sources/papers/any2any_arxiv_2605_23733.md) — 运动学对齐 + 动力学 LoRA 的跨具身后训练

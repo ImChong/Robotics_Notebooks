@@ -60,6 +60,16 @@ sources:
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RND | Random Network Distillation | 用预测误差作内在探索奖励的无监督手段 |
+| DIAYN | Diversity Is All You Need | 以内在奖励发现多样技能的无监督预训练代表 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 参考来源
 
 - [wechat_embodied_ai_lab_bfm_41_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) — 微信公众号编译（<https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g>）

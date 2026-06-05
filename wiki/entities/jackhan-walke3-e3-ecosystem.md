@@ -86,6 +86,18 @@ flowchart LR
 - **[Locomotion](../tasks/locomotion.md)**：任务层视角，对照速度指令、地形与稳定性指标。
 - **[Sim2Real](../concepts/sim2real.md)**：控制器仓显式支持仿真/硬件双模式，是典型 Sim2Real 工程切片的参考栈。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [Mujoco-WalkerE3-Simulation 仓库归档](../../sources/repos/jackhan-mujoco-walke3-simulation.md)

@@ -57,6 +57,15 @@ summary: "Spark（World Labs）与 Aholo Viewer（manycoretech）均为浏览器
 - [GS-Playground](../entities/gs-playground.md)
 - [生成式世界模型](../methods/generative-world-models.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 参考来源
 
 - [World Labs Spark 2.0 博客归档](../../sources/blogs/worldlabs_spark_2_0_streaming_3dgs.md)

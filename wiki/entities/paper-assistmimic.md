@@ -129,6 +129,17 @@ flowchart TB
 - **Specialist（论文摘要级）**：Inter-X SR **74.9%**（generalist **83%**）；HHI-Assist SR **85.8%**（generalist **73%**）。
 - 完整 ablation、MPJPE 与扰动实验见 **原文 PDF** 与 [参考来源](#参考来源)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
+
 ## 参考来源
 
 - [AssistMimic 论文摘录](../../sources/papers/assistmimic_arxiv_2603_11346.md)

@@ -76,6 +76,15 @@ summary: "腿式与人形关节反馈选型：经典 CAN/CAN FD、EtherCAT 与 U
 - [EtherCAT vs EtherNet/IP](./ethercat-vs-ethernet-ip.md)
 - [控制环路延迟建模](../formalizations/control-loop-latency-modeling.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 参考来源
 
 - [CiA：经典 CAN 与物理层](../../sources/sites/cia_can_knowledge_can_classic_and_hs.md)

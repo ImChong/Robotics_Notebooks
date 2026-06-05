@@ -99,6 +99,23 @@ $$\hat{J}_\lambda(f)=\frac{1}{M}\sum_{m=1}^{M}\bar{V}(s_m,\Phi(f))-\lambda\frac{
 | 需要的数据 | 共设计 episode | 多具身 RL 预训练 | 源机 WBT 专家 + 目标机少量数据 |
 | 典型任务 | 与内环 RL 同任务 | URMA 速度跟踪 | 参考运动跟踪 |
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| GC | Goal-conditioned Learning | 以目标/参考条件化策略以扩展技能覆盖 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [Shape Your Body 论文摘录](../../sources/papers/shape_your_body_arxiv_2606_00702.md)

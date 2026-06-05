@@ -36,6 +36,13 @@ summary: "XTDrone 是基于 PX4 + ROS + Gazebo 的无人机仿真教学平台，
 - **局限：Gazebo 版本与 ROS 发行版** — 需按文档锁定 Melodic/Noetic 等组合。
 - **局限：视觉画质** — 不适合作为唯一的高保真渲染 Sim2Real 来源。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 
 - [sources/repos/xtdrone.md](../../sources/repos/xtdrone.md)

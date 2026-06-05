@@ -33,6 +33,14 @@ summary: "OpenVINS 是开源视觉-惯性导航研究平台：MSCKF 类滤波、
 - **工程部署**：大规模产品化常选 VINS-Fusion 或商用 VIO；OpenVINS 偏研究。
 - **极端运动**：需仔细调过程噪声与特征管理。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+
 ## 参考来源
 
 - [sources/repos/open_vins.md](../../sources/repos/open_vins.md)

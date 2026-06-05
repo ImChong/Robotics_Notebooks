@@ -86,6 +86,20 @@ LQR 的二次型代价函数和 Riccati 方程解本质上就给出了一个 Lya
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md) — 质心动力学稳定性分析的常用建模层
 - [Capture Point / DCM](../concepts/capture-point-dcm.md) — 步行平衡中的误差发散/收敛分析
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — LQR / iLQR 一手资料索引

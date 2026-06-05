@@ -116,6 +116,16 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 - [Sim2Real](../concepts/sim2real.md) — 状态估计精度直接影响 sim2real 效果
 - [LQR / iLQR](./lqr.md) — LQR/EKF 是最优控制中的"最优估计+最优控制"经典对
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+
 ## 参考来源
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 一手论文与教材索引（Kalman 1960；Gelb 1974；Simon 2006 等）

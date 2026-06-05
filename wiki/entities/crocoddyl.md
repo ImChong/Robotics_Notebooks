@@ -255,6 +255,19 @@ Crocoddyl 可以用于更高层的轨迹优化与运动规划，再由 WBC / TSI
 - 论文：Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control*
 - [Pinocchio](./pinocchio.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
 ## 参考来源
 
 - Mastalli et al., *Crocoddyl: An Efficient and Versatile Framework for Multi-Contact Optimal Control* (2020) — Crocoddyl 论文

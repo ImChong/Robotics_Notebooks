@@ -116,6 +116,14 @@ flowchart LR
 - [SE(3) Representation (位姿表示形式化)](../formalizations/se3-representation.md)
 - [Extended Kalman Filter (EKF)](../formalizations/ekf.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 参考来源
 
 - [LingBot-Map 仓库](../../sources/repos/lingbot-map.md)

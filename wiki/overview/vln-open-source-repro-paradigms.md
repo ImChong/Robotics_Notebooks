@@ -89,6 +89,17 @@ flowchart LR
 - [SceneVerse++](../entities/sceneverse-pp.md) — 互联网视频→R2R 风格数据
 - [3D 空间 VQA](../concepts/3d-spatial-vqa.md) — 空间推理与 VLN 对照
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
 ## 参考来源
 
 - [深蓝具身智能：VLN 四范式新手复现推荐（微信公众号归档）](../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md)

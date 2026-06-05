@@ -48,6 +48,20 @@ summary: "状态估计方法对比：探讨了经典的卡尔曼滤波（EKF/UKF
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [MDP 形式化](../formalizations/mdp.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| CPU | Central Processing Unit | 中央处理器 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+
 ## 参考来源
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — KF / EKF 一手资料索引
 - [sources/papers/perception.md](../../sources/papers/perception.md)

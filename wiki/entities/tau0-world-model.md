@@ -122,6 +122,16 @@ flowchart TB
 - [GE-Sim 2.0](./ge-sim-2.md) — Agibot 闭环视频世界模拟器
 - [EWMBench](./ewmbench.md) — 操纵视频生成质量评测（与内置 task-progress 评估互补）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [τ₀-WM 技术报告](../../sources/papers/tau0_wm_tech_report.md)

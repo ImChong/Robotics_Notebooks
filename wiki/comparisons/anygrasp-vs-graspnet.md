@@ -176,6 +176,19 @@ flowchart LR
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| CPU | Central Processing Unit | 中央处理器 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [sources/repos/anygrasp-sdk.md](../../sources/repos/anygrasp-sdk.md) — AnyGrasp / GraspNet 生态资料索引（SDK / 数据集 / API / 基线代码）。

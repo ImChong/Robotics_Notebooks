@@ -100,6 +100,15 @@ flowchart LR
 - [LQR / iLQR](./lqr.md) — LQG 对偶与 Riccati 结构
 - [Sensor Fusion](../concepts/sensor-fusion.md) — 多传感器融合实践
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+
 ## 参考来源
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — Kalman (1960)、Kalman–Bucy (1961)、Gelb / Maybeck / Simon 等一手索引

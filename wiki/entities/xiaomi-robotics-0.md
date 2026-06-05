@@ -97,6 +97,17 @@ flowchart LR
 - [Manipulation（操作）](../tasks/manipulation.md) — 桌面与 deformable 物体操作任务语境
 - [RIO（Robot I/O）](./robot-io-rio.md) — 跨形态实时 I/O 与异步策略节点的另一种抽象
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SOTA | State of the Art | 当前最优水平 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [Xiaomi-Robotics-0 仓库与论文归档](../../sources/repos/xiaomi-robotics-0.md)

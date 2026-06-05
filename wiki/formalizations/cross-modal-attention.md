@@ -49,6 +49,14 @@ $$ S_{out} = \text{SelfAttention}(S_{total}) $$
 - [Action Tokenization](./vla-tokenization.md)
 - [触觉感知 (Tactile Sensing)](../concepts/tactile-sensing.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+
 ## 参考来源
 - Vaswani, A., et al. (2017). *Attention Is All You Need*.
 - Team, G., et al. (2023). *RT-2: Vision-Language-Action Models Transfer Knowledge from Web to Robots*.

@@ -125,6 +125,26 @@ flowchart TD
 - [Foundation Policy](./foundation-policy.md)
 - [Diffusion Policy](../methods/diffusion-policy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| SOTA | State of the Art | 当前最优水平 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
+
 ## 参考来源
 
 - [人形策略网络架构 FAQ 摘录（维护者整理）](../../sources/personal/humanoid-policy-network-architecture-faq.md)

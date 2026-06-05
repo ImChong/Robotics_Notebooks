@@ -83,6 +83,15 @@ flowchart LR
 - [Rollvis 行星滚柱丝杠介绍（厂商技术页）](https://www.rollvis.com/) — 典型 PRS 结构术语与选型维度（英文站点，可作名词对齐）。
 - Boston Dynamics 对 Atlas 全电化与液压路线的公开技术叙述（与「极限动态」叙事对照）：建议从 [Boston Dynamics 官网新闻/技术稿](https://www.bostondynamics.com/) 检索 *Atlas* 获取一手时间线。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [特斯拉人形机器人腿部关节为什么选择行星滚柱丝杠？（微信公众号原文）](https://mp.weixin.qq.com/s/webqJRQJREZdABw8bdl68w)

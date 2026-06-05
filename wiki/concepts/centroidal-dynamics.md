@@ -288,6 +288,19 @@ print("com acceleration:", com_acc)
 2. **最小代码**：你至少要能自己写出“接触力 → 线动量变化 → 质心加速度”的最小推演
 3. **局限性**：它是中层模型，不会自动保证关节可达、姿态自然、接触切换平滑，所以下一层通常必须接 WBC / TSID
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+
 ## 参考来源
 
 - Orin, Goswami, Lee, *Centroidal dynamics of a humanoid robot* — centroidal dynamics 系统性阐述

@@ -49,6 +49,13 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 - [MimicKit](./mimickit.md)
 - [人形机器人](./humanoid-robot.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 参考来源
 
 - [Zhengyi Luo 个人主页原始资料](../../sources/sites/zhengyiluo.md)

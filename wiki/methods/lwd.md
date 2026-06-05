@@ -101,6 +101,17 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 - **误区 2：LWD = 数据飞轮的换皮。** 区别是把"部署 → 提取好动作 → 模仿"换成"部署 → 全谱经验 → RL 更新"，并明确把失败和人为干预算进训练信号。
 - **误区 3：随便一个 VLA 都能直接接 LWD。** Flow-based 动作头的策略抽取本身就是难点，LWD 用 QAM 才把这件事做稳；换成其他动作头时，对应的策略抽取方法需要重新对齐。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+
 ## 参考来源
 
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — 论文 ingest 档案

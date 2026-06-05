@@ -71,6 +71,22 @@ flowchart LR
 - [unitreerobotics/unitree_ros_to_real README（raw）](https://raw.githubusercontent.com/unitreerobotics/unitree_ros_to_real/master/README.md)
 - [unitreerobotics/unitree_mujoco](https://github.com/unitreerobotics/unitree_mujoco) — 与官方 MuJoCo 仿真验证链路常一起出现（参见 [unitree_rl_mjlab](./unitree-rl-mjlab.md) 部署叙述）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 参考来源
 
 - [sources/repos/unitree_ros.md](../../sources/repos/unitree_ros.md)

@@ -173,6 +173,16 @@ flowchart LR
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — ③ 精细操作阶段的触觉闭环
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md) — ② 插装/③ 精细操作的执行层切换
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+
 ## 参考来源
 
 - [sources/papers/perception.md](../../sources/papers/perception.md)

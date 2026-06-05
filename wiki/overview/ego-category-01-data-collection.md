@@ -34,6 +34,12 @@ sources:
 - [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)
 - [人→机器人](./ego-category-02-human-to-robot.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+
 ## 参考来源
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)

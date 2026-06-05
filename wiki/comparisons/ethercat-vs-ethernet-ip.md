@@ -121,6 +121,15 @@ EtherCAT 选型几乎决定了上层中间件的形态：
 - [时钟同步算法](../concepts/clock-synchronization-algorithms.md)
 - [ROS 2 vs LCM (机器人中间件选型)](./ros2-vs-lcm.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 参考来源
 
 - EtherCAT Technology Group (ETG) 官方规范与白皮书。

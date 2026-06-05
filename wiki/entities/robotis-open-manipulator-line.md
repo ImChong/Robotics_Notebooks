@@ -43,6 +43,13 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 
 - [ROBOTIS 下载中心](https://en.robotis.com/service/downloadpage.php?ca_id=70c0)（图纸与固件，以官网为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue01_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md)

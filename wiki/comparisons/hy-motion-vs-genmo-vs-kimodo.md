@@ -168,6 +168,23 @@ flowchart TD
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| SOTA | State of the Art | 当前最优水平 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+
 ## 参考来源
 
 - [hy_motion_arxiv_2512_23464.md](../../sources/papers/hy_motion_arxiv_2512_23464.md) — HY-Motion 1.0 arXiv 摘要、流匹配 DiT 与全阶段训练

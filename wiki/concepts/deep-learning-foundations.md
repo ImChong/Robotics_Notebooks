@@ -42,6 +42,14 @@ updated: 2026-05-15
 - [Sim2Real](../concepts/sim2real.md)
 - [PyTorch](../entities/pytorch.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)

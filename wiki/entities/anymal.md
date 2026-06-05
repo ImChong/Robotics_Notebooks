@@ -56,6 +56,25 @@ ANYmal 系列及其背后的 ETH RSL 团队是“**数据驱动足式控制（Da
 - [Legged Gym](../entities/legged-gym.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 参考来源
 - Hutter, M., et al. (2016). *ANYmal - a highly mobile and dynamic quadrupedal robot*.
 - Lee, J., et al. (2020). *Learning quadrupedal locomotion over challenging terrain*.

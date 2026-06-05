@@ -72,6 +72,13 @@ flowchart TB
 - [GS-Playground](./gs-playground.md)
 - [World Labs](./world-labs.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| API | Application Programming Interface | 应用程序编程接口 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+
 ## 参考来源
 
 - [aholo-viewer 仓库归档](../../sources/repos/aholo-viewer.md)

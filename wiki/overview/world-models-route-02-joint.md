@@ -58,6 +58,16 @@ sources:
 - [VLA](../methods/vla.md)
 - [机器人世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| UWM | Unified World Models | 统一世界模型，联合建模观测与动作 |
+| UVA | Unified Video Action Model | 统一视频-动作模型 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
+
 ## 参考来源
 
 - [wechat_shenlan_world_models_15_open_source_2026.md](../../sources/blogs/wechat_shenlan_world_models_15_open_source_2026.md) — <https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg>

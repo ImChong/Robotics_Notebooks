@@ -27,6 +27,12 @@ summary: "RoboArena 通过多机构分布式真实机器人评测与盲测配对
 - [Octo Model](./octo-model.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 参考来源
 
 - Atreya et al., *RoboArena: Distributed Real-World Evaluation of Generalist Robot Policies*, https://arxiv.org/abs/2506.18123

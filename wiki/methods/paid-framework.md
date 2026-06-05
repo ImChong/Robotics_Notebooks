@@ -59,6 +59,17 @@ PAiD 的成功关键在于其结构化的训练方案：
 - 动态调整踢球方向和力度以射门或传球。
 - 在受到轻微外部扰动时仍能维持平衡并完成动作。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
 ## 参考来源
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)

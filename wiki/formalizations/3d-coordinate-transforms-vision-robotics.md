@@ -149,6 +149,13 @@ $A$：末端两姿态间变换；$B$：标定板在相机下的观测变换；$X
 - [Visual Servoing](../methods/visual-servoing.md)
 - [VLA](../methods/vla.md)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 参考来源
 
 - [深蓝具身智能：三维世界坐标变换（微信公众号归档）](../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md)

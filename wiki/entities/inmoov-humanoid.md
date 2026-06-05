@@ -42,6 +42,13 @@ summary: "InMoov：Gael Langevin 发起的开源 3D 打印真人比例人形，A
 
 - [InMoov 官网 English 入口](https://inmoov.fr/)（语言切换以站点为准）
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 参考来源
 
 - [wechat_jixie_robot_open_source_treasury_issue02_10_robots.md](../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md)

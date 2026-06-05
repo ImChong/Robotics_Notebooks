@@ -211,6 +211,32 @@ flowchart TD
 - [Assembly Manual（官方）](https://manual.asimov.inc)
 - [BOM（官方）](https://manual.asimov.inc/v1/bom)
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 参考来源
 
 - [asimov-v1.md](../../sources/repos/asimov-v1.md)

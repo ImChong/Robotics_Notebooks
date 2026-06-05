@@ -48,6 +48,15 @@ flowchart LR
 - **[生态总览](./jackhan-walke3-e3-ecosystem.md)**：说明本仓在整条工具链中的位置。
 - **[Motion Retargeting](../concepts/motion-retargeting.md)**：若要把 CSV 运动迁移到其他骨架比例，需要额外的重定向层（本仓未内置）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 参考来源
 
 - [WalkE3-Dataset 仓库归档](../../sources/repos/jackhan-walke3-dataset.md)

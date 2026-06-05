@@ -101,6 +101,13 @@ flowchart LR
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 操作规范
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 参考来源
 
 - [Caveman 仓库源归档（本站）](../../sources/repos/caveman.md)

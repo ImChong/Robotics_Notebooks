@@ -122,6 +122,19 @@ TSID（Task Space Inverse Dynamics）是典型的 HQP 实现框架：
 - [LQR / iLQR](../formalizations/lqr.md) — LQR 是单任务最优控制解析解；HQP 是多任务优先级控制的数值求解
 - [Crocoddyl](../entities/crocoddyl.md) — 相关最优控制求解框架
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+
 ## 参考来源
 
 - Kanoun et al., *Kinematic Control of Redundant Manipulators: Generalizing the Task-Priority Framework to Inequality Task* (2011) — HQP 优先级框架理论基础

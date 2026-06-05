@@ -77,6 +77,17 @@ flowchart LR
 - [Sim2Real gap 缩减实战](../queries/sim2real-gap-reduction.md) — gap 分类与缓解策略
 - [实时控制中间件指南](../queries/real-time-control-middleware-guide.md) — 调度与通信负载侧补充
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 参考来源
 
 - [Menlo：Noise is all you need…](../../sources/blogs/menlo_noise_is_all_you_need.md)
