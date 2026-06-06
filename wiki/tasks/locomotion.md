@@ -220,6 +220,7 @@ flowchart TD
 - [Cassie 迭代式 sim2real](../entities/paper-cassie-iterative-locomotion-sim2real.md)
 - [ANYmal 分钟级并行 DRL](../entities/paper-anymal-walk-minutes-parallel-drl.md)
 - [Walk These Ways（MoB）](../entities/paper-walk-these-ways-quadruped-mob.md)
+- [Learning to Adapt（Nature MI 2025 四足多步态 + 生物力学切换）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md)
 - [Cassie 反馈控制 DRL](../entities/paper-cassie-feedback-control-drl.md)
 - [四足扭矩控制 RL](../entities/paper-quadruped-torque-control-rl.md)
 - [RSS 2018 敏捷四足 sim2real](../entities/paper-quadruped-agile-sim2real-rss2018.md)
@@ -277,6 +278,7 @@ flowchart TD
 ### 论文入口
 - [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) — arXiv:2309.14341（ICRA 2024；scandots + 航向双重蒸馏 → 单目深度，Go1）
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
+- [Learning to Adapt（Nature MI 2025 四足 bio-inspired 多步态）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) — πG/BGS/πL 分层 DRL，盲零样本复杂地形（RaiSim / ihcr）
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 

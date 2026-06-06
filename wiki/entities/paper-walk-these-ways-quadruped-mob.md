@@ -52,6 +52,7 @@ flowchart LR
 ## 与其他工作对比
 
 - 与同期 **baseline、PD 内环、纯模仿或纯 RL** 等路线的差异见原文实验章节；知识库内相关概念页见 **关联页面**。
+- 与 [Learning to Adapt（Nature MI 2025）](./paper-learning-to-adapt-bio-inspired-quadruped-gait.md) 对照：MoB 用 **连续行为参数 b** 索引多样解；后者用 **离散 gait ID（Γ\*）+ BGS 参考 + πG 生物力学指标** 做 **8 步态在线切换** 与 **辅助步态恢复**。
 
 
 ## 英文缩写速查
@@ -79,6 +80,7 @@ flowchart LR
 - [Learning to Walk in Minutes（并行 DRL）](./paper-anymal-walk-minutes-parallel-drl.md)
 - [legged_gym](./legged-gym.md)
 - [Locomotion](../tasks/locomotion.md)
+- [Learning to Adapt（Nature MI 2025 四足多步态）](./paper-learning-to-adapt-bio-inspired-quadruped-gait.md)
 
 ## 推荐继续阅读
 
