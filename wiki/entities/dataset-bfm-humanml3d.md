@@ -18,6 +18,12 @@ sources:
 
 **HumanML3D** 列入 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 数据集表（2022 · CVPR）。本页为 **索引级** 说明；规模与许可以官方页面为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+
 ## 为什么重要
 
 - 文本到人体动作生成常用基准。
@@ -35,12 +41,6 @@ sources:
 
 - [behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - [bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
 
 ## 参考来源
 

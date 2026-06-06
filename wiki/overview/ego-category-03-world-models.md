@@ -23,6 +23,14 @@ sources:
 
 > **图谱分类节点**：**03 世界模型**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 核心问题
 
 **为什么世界模型也开始区分 ego 和 world？** 相机运动、身体运动与环境/物体变化混在同一预测流里，长时程 rollout 易漂移。
@@ -38,14 +46,6 @@ sources:
 
 - [机器人世界模型训练闭环](./robot-world-models-training-loop-taxonomy.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

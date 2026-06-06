@@ -16,6 +16,15 @@ summary: "FAST-LIO 是高效鲁棒的 LiDAR-惯性里程计：ikd-Tree + 迭代 
 
 **FAST-LIO** 以 **紧耦合迭代卡尔曼滤波** 实现低延迟 3D LiDAR-惯性里程计。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+
 ## 为什么重要
 
 - **速度与鲁棒性**：在 Livox/Velodyne 等平台广泛使用。
@@ -33,15 +42,6 @@ summary: "FAST-LIO 是高效鲁棒的 LiDAR-惯性里程计：ikd-Tree + 迭代 
 
 - **里程计 vs SLAM**：默认偏 odometry；全局一致需外部位姿图或回环模块。
 - **对比**：[LIO-SAM](./lio-sam.md) 更重因子图与 GPS。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
 
 ## 参考来源
 

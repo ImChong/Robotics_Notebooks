@@ -35,6 +35,22 @@ summary: "DreamWaQ++（T-RO 2026）：四足多模态 RL，融合本体与外感
 
 **用分层外感知记忆 + 置信 PointNet + MLP-Mixer 多模态融合，在不对称 Actor–Critic 下单阶段学会「先看再走」的四足控制，并在传感器失效时回退到本体策略。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **盲走上限清晰：** 仅靠本体时，楼梯/缺口往往要先 **碰** 再改步态；DreamWaQ++ 用 **前瞻点云** 主动抬身、伸摆腿，项目页报告困难楼梯成功率约 **97.8%**，相对盲走 DreamWaQ 在 50 级楼梯竞速中 **距离与爬升显著领先**。
@@ -106,22 +122,6 @@ flowchart TB
 - **误区：** 把 DreamWaQ++ 等同于「又一个深度盲走」——其核心是 **外感知–本体融合与记忆对齐**，盲走 DreamWaQ 是 **对照基线** 而非同一方法。
 - **误区：** 认为必须 **在线建完整 elevation map**——论文刻意避免 U-Net 式重建，用 **位姿积分 + 点云堆叠** 换算力。
 - **局限：** 公开页 **未给出与论文同署名的官方训练代码仓库**（2026-05-30）；复现需依赖论文细节与社区 DreamWaQ 实现（如 Isaac Gym / Legged Gym 生态）自行对齐。**sim2real** 仍依赖大规模域随机与特权 critic，真机极端工况需自行安全边界验收。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

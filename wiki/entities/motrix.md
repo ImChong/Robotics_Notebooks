@@ -10,6 +10,19 @@ updated: 2026-05-31
 
 **Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研究与工业应用提供精度高、吞吐量大的动力学环境。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| CPU | Central Processing Unit | 中央处理器 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| AI | Artificial Intelligence | 人工智能 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 核心组件
 
 ### 1. MotrixSim (仿真引擎)
@@ -42,19 +55,6 @@ updated: 2026-05-31
 - [simulation](../../references/repos/simulation.md) (仿真平台导航)
 - [rl-frameworks](../../references/repos/rl-frameworks.md) (RL 框架导航)
 - [mujoco](mujoco.md) (底层物理引擎参考)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| CPU | Central Processing Unit | 中央处理器 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| AI | Artificial Intelligence | 人工智能 |
-| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 - [Motrix 原始资料](../../sources/repos/motphys-motrix.md)

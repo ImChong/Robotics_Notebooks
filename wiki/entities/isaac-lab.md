@@ -27,6 +27,23 @@ summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac S
 
 > Isaac Lab 不是 [Isaac Gym](./isaac-gym.md) 的 API 换皮，而是 NVIDIA 当前 robot learning 的官方主线框架：它接住了 IsaacGymEnvs / OmniIsaacGymEnvs / Orbit 用户，跑在更完整的 Isaac Sim 生态上。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 先说结论
 
 - 如果你要搭**现在的新实验栈**，应该优先看 Isaac Lab。
@@ -154,23 +171,6 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 - Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
 
 ## 参考来源
 

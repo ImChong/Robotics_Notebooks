@@ -23,6 +23,19 @@ summary: "HoloMotion-1 是地平线提出的人形零样本全身运动跟踪「
 
 **HoloMotion-1** 是 **Horizon Robotics（地平线）** 发布的 **人形全身运动跟踪** 路线：把跟踪策略建成可在 **大规模异质运动语料** 上训练的 **高容量时序策略**，并在 **未见运动与采集条件** 下做 **零样本** 评估，报告 **无任务特化微调** 的真机迁移。工程侧提供 **GitHub 代码**、**Hugging Face 权重**、**Docker 镜像** 与 **GitHub Pages 文档**，与技术报告 [arXiv:2605.15336](https://arxiv.org/abs/2605.15336) 一致。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+
 ## 为什么重要
 
 - **数据 scaling 轴与 SONIC / BFM 并列阅读**：与强调 **MoCap 帧规模** 的 [SONIC](../methods/sonic-motion-tracking.md) 或 **生成式多接口 WBC** 的 [BFM](./paper-behavior-foundation-model-humanoid.md) 不同，HoloMotion-1 明确把 **野外视频重建运动** 作为 **多样性主来源**，用 **精选 MoCap + 自采** 补 **保真度与部署覆盖**——这是「**异质监督下的运动基础模型**」一条独立工程叙事。
@@ -85,19 +98,6 @@ flowchart LR
 
 - [HoloMotion-1 Technical Report（arXiv:2605.15336）](https://arxiv.org/abs/2605.15336)
 - [HoloMotion GitHub 仓库](https://github.com/HorizonRobotics/HoloMotion)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
 
 ## 参考来源
 

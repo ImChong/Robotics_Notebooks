@@ -26,6 +26,19 @@ sources:
 
 用 **海量 egocentric 人视频上的显式腕–手动作预测** 预训练 **流匹配式 VLA**，再用 **小规模、视点与场景严格对齐的人–机 play 数据** 做 mid-training，把表示落到可执行机器人接口上，最后用常规 **任务演示后训练** 完成部署。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **把「人视频小时」接到可复核指标上：** 论文在约 **1k–20k 小时** 扫描上给出 **验证损失随数据规模近似 log-linear 下降**，并展示其与 **后训练后真机平均完成度** 同向改善，便于把数据采集预算和实验设计对齐到同一标尺。
@@ -82,19 +95,6 @@ flowchart LR
 - 论文 HTML（方法与实验锚点）：<https://arxiv.org/html/2602.16710v1>
 - 官方项目页（演示、作者、BibTeX）：<https://research.nvidia.com/labs/gear/egoscale/>
 - GR00T N1 公开材料（同族 flow-VLA 叙述入口，便于对照架构选择）：<https://github.com/NVIDIA/Isaac-GR00T>（以官方 README 为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

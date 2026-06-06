@@ -25,6 +25,15 @@ sources:
 
 > **图谱分类节点**：对应 [深蓝具身智能 · 15 开源世界模型](https://mp.weixin.qq.com/s/KZT8sI4n7GvHWyM20wN3gg) 的 **01 级联架构** 分组；本页汇集该组 **6 篇** 工作的站内实体与 source 索引。总地图见 [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IDM | Inverse Dynamics Model | 由（未来）状态反推所需动作/力矩的模型 |
+| VPP | Video Prediction Policy | 以视频预测为中介生成动作的策略架构 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 核心问题
 
 **能否先把未来「脑补」出来，再据此决定动作？** 级联架构将 **世界预测** 与 **动作解码** 分模块实现——通常先用视频/4D/潜特征模型生成未来表征，再用逆动力学（IDM）或轻量动作头输出控制。优势是 **可复用大规模视频预训练**；代价是 **误差在级联间传递**，未来预测偏差会直接污染动作。
@@ -57,15 +66,6 @@ sources:
 - [mimic-video（VAM）](../methods/mimic-video.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IDM | Inverse Dynamics Model | 由（未来）状态反推所需动作/力矩的模型 |
-| VPP | Video Prediction Policy | 以视频预测为中介生成动作的策略架构 |
-| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
 ## 参考来源
 

@@ -24,6 +24,16 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 **MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apache 2.0）以来，它已成为机器人强化学习（RL）和控制社区无可争议的基石工具。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富刚体仿真引擎 |
+| MJCF | MuJoCo XML Format | 模型与场景描述格式 |
+| MJX | MuJoCo JAX | JAX/XLA 后端，便于可微与批量 |
+| RL | Reinforcement Learning | 腿足/人形 loco 常用训练后端 |
+| PD | Proportional–Derivative | 仿真中常见的低层关节控制接口 |
+
 ## 核心设计理念
 
 不同于面向游戏或视觉特效的引擎（如 PhysX, Havok, Bullet），MuJoCo 是为**严格的控制理论**而生的：
@@ -63,16 +73,6 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real 概念](../concepts/sim2real.md)
 - [Barkour（Menagerie MJCF + 敏捷课）](./paper-barkour-quadruped-agility-benchmark.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富刚体仿真引擎 |
-| MJCF | MuJoCo XML Format | 模型与场景描述格式 |
-| MJX | MuJoCo JAX | JAX/XLA 后端，便于可微与批量 |
-| RL | Reinforcement Learning | 腿足/人形 loco 常用训练后端 |
-| PD | Proportional–Derivative | 仿真中常见的低层关节控制接口 |
 
 ## 参考来源
 

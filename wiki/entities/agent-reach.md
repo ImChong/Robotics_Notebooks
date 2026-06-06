@@ -30,6 +30,14 @@ README 将自身定位为 **scaffolding（脚手架）而非应用框架**：各
 
 用 **`agent-reach` CLI + 渠道检测（`doctor`）+ Agent 侧 SKILL 分发**，把多平台信息接入的 **工程摩擦** 从「每个项目手搓一遍」降到 **可审计的一键安装与可插拔替换**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SDK | Software Development Kit | 软件开发工具包 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+
 ## 为什么重要（对本知识库读者）
 
 - **文献与代码调研侧**：机器人论文、开源仓库、教程视频、社区讨论（Reddit / X / 中文社区）常分散在多站；本工具链把 **字幕抽取、公开网页清洗阅读、GitHub 检索、RSS 订阅、微信公众号全文（Camoufox / Exa）** 等接到同一套 CLI/MCP 习惯里，便于代理辅助 **ingest 与交叉验证**（仍须遵守各平台 ToS 与学术引用规范）。本站经 `wechat-article-for-ai`（Camoufox）抓取多篇 `mp.weixin.qq.com` 长文（如 [Humanoid Hardware 101](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)、[世界模型训练闭环](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)、[李群/李代数/四元数基础](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)）时，Jina Reader 常返回 CAPTCHA，与公开 README 一致。
@@ -72,14 +80,6 @@ flowchart LR
 - [Hermes Agent](hermes-agent.md) — **完整代理运行时**（内置 web/MCP/终端与网关；与本页「读搜脚手架」互补）
 - [Articraft](articraft.md) — 另一类 **harness + SDK** 型代理外围（3D 资产域）
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久化知识结构与 **人类策展** 范式
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 软件开发工具包 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
 
 ## 参考来源
 

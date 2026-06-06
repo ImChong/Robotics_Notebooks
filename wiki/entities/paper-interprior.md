@@ -25,6 +25,21 @@ summary: "InterPrior（arXiv:2602.06035，CVPR 2026 Highlight）提出物理 HOI
 
 **InterPrior** 是 UIUC 与 Amazon 团队的 **物理仿真人–物交互（HOI）** 论文（arXiv:2602.06035，项目页标注 **CVPR 2026 Highlight**）：用 **大规模模仿预训练** 建立 **稀疏目标条件** 的 **生成式全身控制器**，再用 **RL 后训练** 缓解纯蒸馏在巨大 HOI 构型空间上的 **分布外脆性**，同时避免孤立 RL 的 **非自然奖励投机**。与 **InterMimic**（全参考共跟踪）形成「专家 → 可条件采样先验 → 可泛化流形」的前后级关系。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **对准 HOI 的组合爆炸**：多接触模式、相对位姿与物体几何使 **稠密参考** 难以覆盖；论文把问题表述为需要 **运动先验（motor prior）** 而非单一轨迹跟踪器。
@@ -111,22 +126,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

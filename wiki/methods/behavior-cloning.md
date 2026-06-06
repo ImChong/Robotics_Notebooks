@@ -23,6 +23,19 @@ sources:
 
 给机器人一堆“专家在这个状态下应该怎么做”的样本，训练一个策略去直接复现这些动作。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - 它几乎是所有模仿学习 pipeline 的起点：先训一个能跑的 BC baseline，再谈 DAgger、Diffusion Policy 或 IL+RL。
@@ -98,19 +111,6 @@ $$
   错。horizon 越长，早期偏差越容易滚雪球。
 - **误区 3：只要模型够大，BC 就天然鲁棒。**
   模型容量能帮助拟合，但不能替代分布覆盖。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

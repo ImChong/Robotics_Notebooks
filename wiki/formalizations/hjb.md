@@ -22,6 +22,21 @@ updated: 2026-04-25
 
 > HJB = 连续时间版 Bellman 最优方程。满足 HJB 的值函数对应最优控制策略；求解 HJB 等价于解连续时间最优控制问题。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+
 ## 为什么重要
 
 - **轨迹优化的理论基础**：MPC、Crocoddyl 等工具求解的是 HJB 的离散近似
@@ -126,21 +141,6 @@ Deep RL (PPO/SAC)
 - **iLQR / DDP**：局部二阶近似，沿轨迹求解（MPC 框架）
 - **MPC + 短时域**：只在短时域 $[t, t+T]$ 近似求解，用终端代价代替无限时域
 - **Deep RL**：用神经网络近似 $V^*$，避免显式求解 PDE
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
-| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
 
 ## 参考来源
 

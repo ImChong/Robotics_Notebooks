@@ -18,6 +18,12 @@ sources:
 
 > **图谱分类节点**：对应 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) 的 **01 数据采集** 分组；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+
 ## 核心问题
 
 **Ego 数据怎么大规模、低成本采？** 真机遥操作与多场景部署贵；让人类戴设备完成真实任务，可把未被机器人系统记录的经验变成可整理数据。
@@ -33,12 +39,6 @@ sources:
 
 - [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)
 - [人→机器人](./ego-category-02-human-to-robot.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
 
 ## 参考来源
 

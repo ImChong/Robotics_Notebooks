@@ -18,6 +18,18 @@ sources:
 
 **一句话定义**：在 Cassie 上，用 **长/短双历史** 的观测–动作序列输入统一表达周期与非周期运动，再配合 **任务层随机化**，在仿真中学会多技能并 **直接 sim2real** 到硬件。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要
 
 - 把「**策略多慢、PD 多快、增益要不要随机化**」写成可对照的 **公开工程细节**：文中报告 **策略约 33 Hz**、**关节 PD 内环约 2 kHz**；训练中对名义 PD 增益做 **约 0.7–1.3 倍缩放随机化**。
@@ -56,19 +68,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

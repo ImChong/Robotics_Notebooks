@@ -23,6 +23,17 @@ summary: "ETH RSL 的 Robotic World Model（RWM）与 Uncertainty-Aware RWM（RW
 
 把 **环境动力学** 显式学成 **可前滚的神经模拟器**，再让策略只在 **想象轨迹** 上优化——**RWM** 侧重与 **在线** 数据联训的鲁棒策略优化，**RWM-U** 用 **集成不确定性** 支撑 **纯离线** 模型基 RL 上真机。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| MBRL | Model-Based Reinforcement Learning | 先学/用环境模型再规划或想象 rollout 的强化学习 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 为什么重要
 
 - **把「世界模型」接到足式 RL 主流程：** 与像素级 [生成式世界模型](../methods/generative-world-models.md) 不同，这里的世界模型是 **低维状态空间动力学**，直接服务 **PPO / MBPO / MOPO** 式样本增广与策略训练。
@@ -86,17 +97,6 @@ flowchart TB
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — 完整扩展的安装与任务注册语境
 - [ANYmal 四足机器人](./anymal.md) — 参考平台与 RSL 研究脉络
 - [Latent Imagination（潜空间想象）](../concepts/latent-imagination.md) — 其他「在模型中 rollout」范式对照
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| MBRL | Model-Based Reinforcement Learning | 先学/用环境模型再规划或想象 rollout 的强化学习 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
 
 ## 参考来源
 

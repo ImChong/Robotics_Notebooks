@@ -18,6 +18,15 @@ sources:
 
 > **图谱分类节点**：**X 总决策矩阵** + **XI 关节执行器设计要求**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 三大物种（文内策展）
 
 | 物种 | 任务 | 执行器倾向 | 案例 |
@@ -51,15 +60,6 @@ sources:
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [产业与成本](./humanoid-hardware-101-supply-chain-economics.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

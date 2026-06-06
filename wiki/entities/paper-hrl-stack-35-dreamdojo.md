@@ -18,6 +18,14 @@ sources:
 
 **DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 35/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 为什么重要
 
 - DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
@@ -43,15 +51,6 @@ sources:
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 

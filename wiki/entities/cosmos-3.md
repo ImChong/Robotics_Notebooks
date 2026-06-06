@@ -39,6 +39,18 @@ summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 
 
 **一个开源 MoT 世界模型栈：Reasoner 路径做物理 grounded 文本推理，Generator 路径做视频/音频/动作联合生成与 rollout，用同一时空表征服务机器人与自动驾驶等 Physical AI 任务。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoT | Mixture-of-Transformers | Cosmos 3 统一骨干：AR 推理 + 扩散生成 |
+| mRoPE | multi-dimensional Rotary Position Embedding | 跨模态时空位置编码 |
+| VLM | Vision-Language Model | 视觉–语言理解模型；Cosmos 3 Reasoner 涵盖此类能力 |
+| WAM | World Action Model | 联合世界预测与动作生成的范式 |
+| Physical AI | Physical Artificial Intelligence | 需在物理世界中感知、推理与行动的 AI 系统 |
+| T2V | Text-to-Video | 文本条件视频生成 |
+| I2V | Image-to-Video | 图像条件视频生成 |
+
 ## 为什么重要
 
 - **平台级统一，而非单点论文：** 同时发布 **16B Nano / 64B Super** 权重、合成数据、评测基准与 **Diffusers / vLLM-Omni / NIM** 集成，降低从「看视频想象」到「出动作/出仿真」的工程切换成本。
@@ -150,18 +162,6 @@ flowchart TB
 - [mimic-video（VAM）](../methods/mimic-video.md) — Cosmos-Predict2 系视频先验的历史路线
 - [Cosmos Policy](./paper-shenlan-wm-11-cosmos-policy.md) — Predict2 微调版联合控制实例
 - [NVIDIA SO-101 Sim2Real 动手课](./nvidia-so101-sim2real-lab-workflow.md) — Cosmos 演示视频增广实验
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MoT | Mixture-of-Transformers | Cosmos 3 统一骨干：AR 推理 + 扩散生成 |
-| mRoPE | multi-dimensional Rotary Position Embedding | 跨模态时空位置编码 |
-| VLM | Vision-Language Model | 视觉–语言理解模型；Cosmos 3 Reasoner 涵盖此类能力 |
-| WAM | World Action Model | 联合世界预测与动作生成的范式 |
-| Physical AI | Physical Artificial Intelligence | 需在物理世界中感知、推理与行动的 AI 系统 |
-| T2V | Text-to-Video | 文本条件视频生成 |
-| I2V | Image-to-Video | 图像条件视频生成 |
 
 ## 参考来源
 

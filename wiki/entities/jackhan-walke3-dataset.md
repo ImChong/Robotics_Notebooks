@@ -20,6 +20,15 @@ sources:
 
 **定位**：把 **28 列 CSV**（根位置、四元数 x-y-z-w、21 关节）处理为 **55 元/帧** 的 JSON 运动（追加体坐标系根线速度、根角速度、关节速度），并提供 `visualize_txt.py` 在 MuJoCo 中播放。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 核心机制（工程切片）
 
 - **数值微分**：中间帧用中心差分估计线速度；四元数差分换算角速度；边界帧用前向/后向差分（README「Technical Details」节）。
@@ -47,15 +56,6 @@ flowchart LR
 
 - **[生态总览](./jackhan-walke3-e3-ecosystem.md)**：说明本仓在整条工具链中的位置。
 - **[Motion Retargeting](../concepts/motion-retargeting.md)**：若要把 CSV 运动迁移到其他骨架比例，需要额外的重定向层（本仓未内置）。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

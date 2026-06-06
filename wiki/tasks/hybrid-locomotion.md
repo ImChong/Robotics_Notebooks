@@ -14,6 +14,14 @@ related:
 
 **混合运动（Hybrid Locomotion）**：机器人系统能通过不同的机械模式进行运动，最常见的是轮腿混合（Wheel-legged）以及形态可变（Transformable）的设计。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 核心挑战
 
 1. **模态切换（Mode Transition / Transformation）：** 如何在不同结构形态或运动模式（例如，双足行走模式切换到带轮滑行模式）之间实现平稳和高效的转换。
@@ -37,14 +45,6 @@ related:
 - [Locomotion](./locomotion.md)
 - [Loco-Manipulation](./loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

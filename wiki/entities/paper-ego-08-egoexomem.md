@@ -19,6 +19,13 @@ sources:
 
 **EgoExoMem** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 08/9** 篇，归类为 **04 Ego+Exo**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要
 
 - 同步 ego-exo 视频上的跨视角记忆推理；提醒 Ego 需 Exo 补全空间结构。
@@ -43,13 +50,6 @@ sources:
 ## 实验与评测
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

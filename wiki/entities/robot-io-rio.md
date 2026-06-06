@@ -25,6 +25,17 @@ summary: "RIO（Robot I/O）是 CMU 等团队开源的跨形态实时机器人 I
 
 用 **同一套 Node 抽象 + 可插拔中间件 + station 拓扑配置**，把多路传感、遥操作输入、本体命令与 **异步策略推理** 串成可复用的实时管线，使跨形态（单臂 / 双臂 / 人形）部署主要变成**改配置**而不是** fork 一套新代码**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+
 ## 为什么重要
 
 - **痛点对准「基础设施碎片化」**：与单纯扩大数据集并列，论文强调跨数据集、跨实验室复现时**驱动与控制栈高度绑定单台套机**带来的工程税。
@@ -85,17 +96,6 @@ flowchart LR
 - [Imitation Learning](../methods/imitation-learning.md) — 示范数据 → 策略的学习路径
 - [Action Chunking](../methods/action-chunking.md) — 异步 chunk 推理与平滑控制
 - [Unitree G1](./unitree-g1.md) — 论文表中人形平台之一
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
 
 ## 参考来源
 

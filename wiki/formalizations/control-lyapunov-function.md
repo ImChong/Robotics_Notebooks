@@ -21,6 +21,18 @@ related:
 
 > CLF 回答的是：**"存在哪个控制输入，能让系统'能量'（Lyapunov 函数）单调递减，直到状态到达目标？"** 它将稳定性设计问题转化为寻找一个满足特定衰减条件的控制律，并可嵌入 QP 实时在线求解。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+
 ## 为什么重要
 
 Lyapunov 稳定性分析是控制理论的核心工具，但传统 Lyapunov 方法主要用于**分析**给定控制律的稳定性，而非**综合**使系统稳定的控制律。CLF 弥补了这一鸿沟：
@@ -140,18 +152,6 @@ $$\dot{V}(x) = x^T (A^T P + PA + Q - PBR^{-1}B^T P) x = -x^T Q x \leq -\lambda_{
 3. **指数衰减 vs 渐近衰减**：$\dot{V} \leq -c V$ 保证指数收敛（更强），而 $\dot{V} < 0$ 只保证渐近收敛。实际中通常选指数衰减以获得更快的响应和更好的扰动抑制。
 
 4. **离散时间系统**：连续时间 CLF 的理论在离散时间需要修改（条件变为 $V(x_{t+1}) - V(x_t) \leq -c V(x_t)$），不能直接套用。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
 
 ## 参考来源
 

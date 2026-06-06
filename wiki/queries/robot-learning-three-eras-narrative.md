@@ -34,6 +34,20 @@ related:
 
 # 机器人学习「三个时代」：叙事透镜与一手文献
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| OXE | Open X-Embodiment | 跨形态机器人的大规模操作数据集 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 使用方式（重要）
 
 中文媒体编译稿与口述访谈适合作为**动机与术语地图**，其中涉及的数字、内部代号与因果陈述可能无法逐条核验。本页把编译稿里的技术名词压成三条**阅读轴线**，每条轴线只承接可在 arXiv / 机构博客上复核的实体；完整书目见 [`sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md`](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)。
@@ -90,20 +104,6 @@ related:
 - [Octo](../methods/octo-model.md) · [RoboArena](../methods/roboarena.md)
 - [Gemini Robotics](../entities/gemini-robotics.md) · [Generalist AI](../entities/generalist-ai-robotics.md)
 - [Imitation Learning](../methods/imitation-learning.md) · [Reinforcement Learning](../methods/reinforcement-learning.md) · [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| OXE | Open X-Embodiment | 跨形态机器人的大规模操作数据集 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| DQN | Deep Q-Network | 深度 Q 网络，深度强化学习里程碑算法 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 

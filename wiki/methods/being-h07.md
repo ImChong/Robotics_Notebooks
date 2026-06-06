@@ -32,6 +32,15 @@ sources:
 
 一种面向真机闭环的 **latent world–action model**：从互联网级 **egocentric 人视频** 与机器人演示里学未来相关结构，在潜空间表达为**可部署的动作先验**，而不是像素 rollout。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 为什么重要
 
 - **缓解 VLA 的行为塌缩**：纯稀疏动作监督时，模型容易忽略视觉细节差异；引入稠密未来对齐信号有助于保留与交互动力学相关的细粒度结构。
@@ -117,15 +126,6 @@ flowchart TB
 - 项目页：[Being-H0.7: A Latent World-Action Model from Egocentric Videos](https://research.beingbeyond.com/being-h07)
 - 论文预印本：<https://arxiv.org/abs/2605.00078>
 - 与异步动作缓冲相关的站内页：[Action Chunking](action-chunking.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 

@@ -19,6 +19,21 @@ sources:
 
 **一句话定义**：在 Agility Digit 全尺寸人形上，用 **大规模并行仿真 + 域随机化** 训练 **因果 Transformer**，从本体感觉与动作历史自回归预测下一步关节指令，经 **低层 PD/跟踪** 上真机，实现零样本户外行走与扰动恢复。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 为什么重要
 
 - 把「**高维人形 + 盲走 + 户外材质变化**」收进一条可公开的 **sim→厂商仿真→硬件** 流水线，便于和经典 MPC / 厂商控制器对照。
@@ -60,22 +75,6 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
 
 ## 参考来源
 

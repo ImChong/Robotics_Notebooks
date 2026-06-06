@@ -26,6 +26,16 @@ summary: "深蓝具身智能《具身智能基础》专栏几何主线：李群/
 
 具身智能的大模型叙事容易掩盖一条暗线：**所有「能交互」的智能，最终都要在多个坐标系与弯曲状态空间之间做对变换**——先学会合法旋转（李群），再统一相机与机械臂的语言（坐标变换），最后用流形–切空间统一「补丁式约束」与「原生几何优化」。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
+
 ## 流程总览：三篇递进
 
 ```mermaid
@@ -79,16 +89,6 @@ flowchart TB
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md) — 多视点与手眼
 - [VLA 方法页](../methods/vla.md) — 上层策略对底层几何的依赖
 - [Agent Reach](../entities/agent-reach.md) — 微信正文抓取工具链
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
 
 ## 参考来源
 

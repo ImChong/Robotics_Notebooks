@@ -20,6 +20,12 @@ summary: "多智能体强化学习（MARL）研究多个自主智能体在共享
 
 **MARL** 扩展了单智能体 RL，处理多个机器人在同一空间协作或竞争的问题（如机器人足球、多臂流水线）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 主要分类
 
 1. **集中式训练，分布式执行 (CTDE)**：训练时模型可以看到所有机器人的全局信息，部署时每个机器人仅根据局部观测决策（如 MAPPO）。
@@ -39,12 +45,6 @@ summary: "多智能体强化学习（MARL）研究多个自主智能体在共享
 - [Whole-body Coordination](../concepts/whole-body-coordination.md)
 - [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — 多智能体生成式交互世界模型（arXiv:2605.28816）
 - [Generative World Models](./generative-world-models.md) — 像素级世界模型总览
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 - Vinyals, O., et al. (2019). *Grandmaster level in StarCraft II using multi-agent reinforcement learning*.

@@ -34,6 +34,16 @@ summary: "ScheduleStream 是 NVIDIA 提出的领域无关「规划+调度+连续
 
 **在 PDDLStream 式「有限动作 + 连续 stream」之上引入可异步、时长依赖参数的 durative action，用领域无关算法求碰撞自由时间表，并把运动/抓取等采样批到 GPU 上，使双臂任务从「轮流动一条臂」变为可并行的调度解。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| TAMP | Task and Motion Planning | 联合符号任务规划与连续运动规划 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **双臂/人形操作的节拍瓶颈往往在「调度」而非单次 IK：** 两臂可达性、共享工作空间 clearance、物体–臂分配组合爆炸；只优化「下一步动哪条臂」会得到 **保守串行计划**。
@@ -108,16 +118,6 @@ flowchart TB
 - [cuRobo](./curobo.md) — **GPU 无碰撞运动生成**，可作 stream 中 motion 段的后端对照
 - [Trajectory Optimization（轨迹优化）](../methods/trajectory-optimization.md) — 连续段代价与约束的方法论语境
 - [Whole-Body Control（全身控制）](../concepts/whole-body-control.md) — 多臂 schedule **下发到执行层** 时的协调与平衡
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| TAMP | Task and Motion Planning | 联合符号任务规划与连续运动规划 |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

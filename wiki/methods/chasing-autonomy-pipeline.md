@@ -10,6 +10,18 @@ updated: 2026-06-05
 
 **Chasing Autonomy Pipeline** 是由加州理工学院和 Unitree 团队（Olkin et al., 2026）提出的一套使人形机器人能够高性能奔跑的系统框架。它有效衔接了人体动作重定向（Motion Retargeting）与强化学习（RL），利用单一的人类演示动作生成高质量的参考库，并在真实世界上实现了快速、具有环境避障能力的跑步。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 核心理念
 
 该框架的核心洞见是：通过**带有硬约束的动态优化**处理人体动作数据，比直接进行运动学重定向能提供更好的 RL 训练参考（Reference Library）；在强化学习阶段，**目标条件（Goal-conditioned）和控制引导（Control-guided）的奖励结构**对于在真实环境中实现稳定的高动态运动（如跑步）至关重要。
@@ -59,18 +71,6 @@ updated: 2026-06-05
 - [Reward Design (奖励设计)](../concepts/reward-design.md)
 - [Unitree G1 (机器人实体)](../entities/unitree-g1.md)
 - [SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md) — 同平台更高峰值速度的对照路线
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)

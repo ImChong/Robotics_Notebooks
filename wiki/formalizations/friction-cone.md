@@ -18,6 +18,17 @@ summary: "摩擦锥（Friction Cone）描述了接触力在接触面上不发生
 
 **摩擦锥** 是机器人学中描述接触力物理约束的核心数学模型。它规定了接触力 $\mathbf{f}$ 必须满足的范围，以确保机器人脚部或手部与支撑环境之间不发生滑动。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+
 ## 库仑摩擦模型 (Coulomb Friction)
 
 根据库仑摩擦定律，静态摩擦力 $f_t$（切向）与正向压力 $f_n$（法向）的关系如下：
@@ -75,17 +86,6 @@ $$
 - [ZMP + LIP 形式化](./zmp-lip.md)
 - [Contact Wrench Cone（接触力旋量锥）](./contact-wrench-cone.md)
 - [WBC 调参指南](../queries/wbc-tuning-guide.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
 
 ## 参考来源
 - [contact_dynamics.md](../../sources/papers/contact_dynamics.md)

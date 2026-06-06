@@ -31,6 +31,17 @@ summary: "ResNet（arXiv:1512.03385，CVPR 2016）用残差映射与恒等捷径
 
 **用无参恒等捷径把深层网络 reformulate 成「学扰动」而非「学完整映射」，从而训得动极深 CNN，并作为检测/分割/机器人视觉编码器的通用骨干。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| BN | Batch Normalization | 批归一化，极深网络训练的标准配套 |
+| FLOPs | Floating Point Operations | 浮点运算量，衡量网络计算复杂度 |
+| SOTA | State of the Art | 当前最优水平 |
+| FPN | Feature Pyramid Network | 多尺度特征金字塔，检测常用 neck |
+| ImageNet | ImageNet Large Scale Visual Recognition Challenge | 大规模图像分类基准数据集 |
+
 ## 为什么重要
 
 - **优化瓶颈被正视：** 论文证明更深 plain net 的 **训练误差反而升高** 并非过拟合，而是 **当前优化器难以拟合恒等映射**；残差形式把最优解预条件到「接近零映射」。
@@ -86,17 +97,6 @@ flowchart LR
 - [深度学习基础](../concepts/deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)
 - [YOLO v1（论文实体）](./paper-yolo-unified-realtime-detection.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
-| BN | Batch Normalization | 批归一化，极深网络训练的标准配套 |
-| FLOPs | Floating Point Operations | 浮点运算量，衡量网络计算复杂度 |
-| SOTA | State of the Art | 当前最优水平 |
-| FPN | Feature Pyramid Network | 多尺度特征金字塔，检测常用 neck |
-| ImageNet | ImageNet Large Scale Visual Recognition Challenge | 大规模图像分类基准数据集 |
 
 ## 参考来源
 

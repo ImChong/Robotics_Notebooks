@@ -10,6 +10,16 @@ sources:
 
 **机器人学习**：让机器人通过数据学会完成复杂任务的方法集合，核心是把”如何做”从人工编程转向从经验中学习。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 从交互奖励学习策略 |
+| IL | Imitation Learning | 从专家演示学习策略 |
+| Sim2Real | Simulation to Real | 学习策略落地真机的工程主线 |
+| VLA | Vision-Language-Action | 多模态基础策略方向 |
+| WBC | Whole-Body Control | 人形/移动操作的控制基础设施 |
+
 ## 为什么重要
 
 传统机器人依赖精确建模和手工控制，缺点：
@@ -203,16 +213,6 @@ sources:
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
 - [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 从交互奖励学习策略 |
-| IL | Imitation Learning | 从专家演示学习策略 |
-| Sim2Real | Simulation to Real | 学习策略落地真机的工程主线 |
-| VLA | Vision-Language-Action | 多模态基础策略方向 |
-| WBC | Whole-Body Control | 人形/移动操作的控制基础设施 |
 
 ## 推荐继续阅读
 

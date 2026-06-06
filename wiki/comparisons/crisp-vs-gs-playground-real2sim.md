@@ -19,6 +19,15 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 
 两者都把**真实世界**变成**能在仿真里训练策略**的资产，但优化的「真实」是不同维度：[CRISP](../methods/crisp-real2sim.md) 追求**接触动力学可信**（脚–地、臀–椅不穿透、可 rollout），[GS-Playground](../entities/gs-playground.md) 追求**外观光真实感**（缩小 visual domain gap）。它们不是竞品，而是 Real2Sim 资产链上常被**串联**的两段。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 对比表
 
 | 维度 | [CRISP](../methods/crisp-real2sim.md) | [GS-Playground](../entities/gs-playground.md) |
@@ -67,15 +76,6 @@ summary: "CRISP 与 GS-Playground 是两条互补的 Real2Sim 路线：前者从
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Spark vs Aholo Viewer：Web 大场景 3DGS 渲染选型](./spark-vs-aholo-web-3dgs-renderers.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 

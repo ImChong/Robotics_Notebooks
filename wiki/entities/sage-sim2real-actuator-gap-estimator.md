@@ -26,6 +26,18 @@ summary: "SAGE 在 Isaac Sim 中重放关节轨迹并与真机日志对齐，用
 
 用可复现脚本把「仿真里关节实际跟上指令的程度」和「真机同一指令下的响应」拉到同一指标体系里量化。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 为什么重要
 
 - **执行器 gap** 常被 lump 进「动力学不准」，但工程上需要独立度量：PD 带宽、摩擦、温度与电流限制、通信抖动都会体现在关节状态轨迹上，而不是仅靠刚体参数随机化就能覆盖。
@@ -95,18 +107,6 @@ flowchart LR
 - 上游仓库 README：<https://github.com/isaac-sim2real/sage>
 - Isaac Lab 安装文档：<https://isaac-sim.github.io/IsaacLab/main/source/setup/installation/index.html>
 - [AMASS](./amass.md)（人体动捕元数据，常与重定向轨迹来源一起出现）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
 
 ## 参考来源
 

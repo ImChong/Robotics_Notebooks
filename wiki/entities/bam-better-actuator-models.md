@@ -25,6 +25,14 @@ summary: "Rhoban 开源的 Better Actuator Models：摆锤数据采集、CMA-ES 
 
 把「舵机摩擦比 Coulomb–Viscous 复杂」这件事变成 **可复现的 record → fit → sim** 脚本与公开参数/日志。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 为什么重要
 
 - **降低执行器 sim2real 门槛：** 不必先训练 ActuatorNet，也能用 **物理可解释参数** 改善 MuJoCo 跟踪误差（论文报告 **>50% MAE 下降**）。
@@ -73,14 +81,6 @@ flowchart LR
 1. **拟合用 m6、2R 也用 m6：** README 示例对 MX-106 拟合 m6，但 **Dynamixel 2R 论文推荐 m4** 参数对，避免过拟合。
 2. **忽略 eRob 的 Etherban：** eRob 分支需先 `generate_protobuf.sh` 与 `etherban` 服务，并设置 `offset` 零点。
 3. **与 ActuatorNet 二选一：** 可先 BAM 解析摩擦，残差再用数据驱动网络；也可对照 [SAGE](./sage-sim2real-actuator-gap-estimator.md) 看 gap 是否已足够小。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
 
 ## 参考来源
 

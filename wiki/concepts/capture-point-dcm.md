@@ -25,6 +25,22 @@ sources:
 
 > ZMP 更像“现在还能不能稳住”，Capture Point / DCM 更像“已经开始失稳时，下一步该怎么救”。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 LIP / ZMP 是理解双足步行的经典入口，但它们有一个局限：
@@ -233,22 +249,6 @@ Capture Point / DCM 是很重要的中间概念。
 
 ### 如果你学 WBC / TSID
 哪怕你不直接用它们做控制变量，也建议理解，因为它们能帮你建立更动态的稳定性直觉。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
-| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

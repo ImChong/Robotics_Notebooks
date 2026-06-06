@@ -32,6 +32,18 @@ summary: "YOLO v1（arXiv:1506.02640）将目标检测重构为单次 CNN 回归
 
 **把检测当成从像素到框坐标的端到端回归，一次看完整张图就输出所有目标，用速度换部分定位精度，但显著减少背景误报。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| YOLO | You Only Look Once | 单次前向回归的实时目标检测范式 |
+| mAP | mean Average Precision | 检测任务标准精度指标 |
+| IOU | Intersection over Union | 预测框与真值框重叠率 |
+| NMS | Non-Maximum Suppression | 抑制重叠冗余检测框的后处理 |
+| FPS | Frames Per Second | 每秒处理帧数，实时性指标 |
+| VOC | Pascal Visual Object Classes | 经典目标检测基准数据集 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+
 ## 为什么重要
 
 - **范式转换：** 首次在 **精度可接受** 的前提下把检测做到 **真·实时**（>30 FPS），证明 **单网络端到端优化** 可行。
@@ -89,18 +101,6 @@ flowchart LR
 - [ResNet（论文实体）](./paper-resnet-deep-residual-learning.md)
 - [Booster RoboCup Demo](./booster-robocup-demo.md)
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| YOLO | You Only Look Once | 单次前向回归的实时目标检测范式 |
-| mAP | mean Average Precision | 检测任务标准精度指标 |
-| IOU | Intersection over Union | 预测框与真值框重叠率 |
-| NMS | Non-Maximum Suppression | 抑制重叠冗余检测框的后处理 |
-| FPS | Frames Per Second | 每秒处理帧数，实时性指标 |
-| VOC | Pascal Visual Object Classes | 经典目标检测基准数据集 |
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
 
 ## 参考来源
 

@@ -72,13 +72,9 @@ def render_section(keys: list[str], terms: dict) -> str:
 
 
 def insert_section(content: str, section: str) -> str:
-    lines = content.splitlines(keepends=True)
-    for i, line in enumerate(lines):
-        if line.startswith("## 参考来源"):
-            return "".join(lines[:i]) + section + "".join(lines[i:])
-    # 兜底：没有参考来源时追加到末尾
-    sep = "" if content.endswith("\n") else "\n"
-    return content + sep + "\n" + section
+    from wiki_abbrev_section import insert_abbrev_section
+
+    return insert_abbrev_section(content, section)
 
 
 def main() -> int:

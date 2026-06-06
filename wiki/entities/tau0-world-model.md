@@ -38,6 +38,16 @@ summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多
 
 **一个 5B Joint WAM：用同一视频扩散骨干学「世界怎么变」与「手该怎么动」，再用动作条件 rollout 与一致性分数在真机执行前筛选、修正 action chunk。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **监督错位是常态：** 机器人数据有 **动作** 但场景窄；人视频有 **交互动力学** 但没有机器人控制空间。τ₀-WM 用 **模态掩码** 让每条样本只贡献其合法信号，避免假装「每条轨迹都有 action label」。
@@ -121,16 +131,6 @@ flowchart TB
 - [mimic-video（VAM）](../methods/mimic-video.md) — 另一条 VAM 工程路线
 - [GE-Sim 2.0](./ge-sim-2.md) — Agibot 闭环视频世界模拟器
 - [EWMBench](./ewmbench.md) — 操纵视频生成质量评测（与内置 task-progress 评估互补）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
-| VAM | Video-Action Model | 从视频学习并预测动作的模型 |
-| WAM | World Action Model | 联合世界模型与动作预测的架构 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

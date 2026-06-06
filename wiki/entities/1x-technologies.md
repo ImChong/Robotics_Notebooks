@@ -19,6 +19,16 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 
 **1X Technologies** 专注于「能在真实环境里长期运行的人形机器人」，当前公开产品线以 **轮式人形 EVE**（面向仓储 / 安防 / 医疗等结构化场景）与 **双足 NEO**（强调家庭与通用场景）为主轴。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **硬件形态分叉**：同时押注「轮式 + 上半身人形」与「双足全身人形」，反映了商业化上对续航、通过性与成本的权衡。
@@ -44,16 +54,6 @@ summary: "1X Technologies（前身为 Halodi Robotics）是一家挪威与美国
 - [Figure AI](./figure-ai.md)（美国人形与 VLA 路线的可比节点）
 - [Query：人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AI | Artificial Intelligence | 人工智能 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

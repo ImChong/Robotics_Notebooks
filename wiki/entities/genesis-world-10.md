@@ -20,6 +20,20 @@ summary: "Genesis World 1.0 是 Genesis AI 公司的全栈仿真基础设施（N
 
 **Genesis World 1.0** 是 **Genesis AI**（机器人全栈公司，博客域名 genesis.ai）对外阐述的**仿真基础设施**版本：在初版开源 **Genesis** 仿真之上，过去一年做全栈重构，目标是在**不依赖仿真预训练数据**的前提下，让 **real-to-sim 闭环评测**与真机 rollout 强相关，并把模型开发瓶颈从墙钟转为算力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要？
 
 - **范式：** 将仿真从「数据生成器」提升为**评测与迭代引擎**——与仅强调 sim 数据增广的路线形成对照，适合理解产业侧如何支撑**机器人基础模型**开发。
@@ -98,20 +112,6 @@ flowchart LR
 - Genesis AI 博客原文：<https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>
 - 开源 Genesis 论文：<https://arxiv.org/abs/2412.12919>
 - SimplerEnv（real-to-sim 评测与 MMRV 指标语境）：<https://simpler-env.github.io/>
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| AI | Artificial Intelligence | 人工智能 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

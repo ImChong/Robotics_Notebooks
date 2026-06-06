@@ -26,6 +26,18 @@ sources:
 
 本页在 [42 篇 humanoid RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中编号 **03/42**（**01 数据 · 重定向 · 遥操作**）。下游应用示例：[Perceptive Humanoid Parkour（PHP）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) 用其构建跑酷**原子技能库**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 为什么重要
 
 - **关键词是 interaction-preserving：** 不仅匹配关键点，而是保留 agent–object–terrain 的相对几何与接触关系，缓解传统 PHC/GMR 的穿透、脚滑与「场景盲」。
@@ -69,18 +81,6 @@ sources:
 - 下游跑酷：[PHP（2602.15827）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md)
 - 问题域：[Motion Retargeting](../concepts/motion-retargeting.md)、[GMR](../methods/motion-retargeting-gmr.md)
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

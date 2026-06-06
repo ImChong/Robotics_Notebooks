@@ -18,6 +18,14 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 
 **π₀ (Pi-zero)** 是具身智能大模型（VLA）领域的最新突破，由 Physical Intelligence 团队于 2024 年提出。它旨在打破“一个机器人一个模型”的限制，通过单一的大型神经网络同时掌控不同形态（如双臂机械臂、灵巧手、移动底座）的机器人执行多样化的复杂任务。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+
 ## 主要技术路线
 
 π₀ 的设计融合了语言模型的大规模预训练优势与生成式动作建模的精确性：
@@ -46,14 +54,6 @@ summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 
 - [Action Tokenization (动作分词)](../formalizations/vla-tokenization.md)
 - [Cross-modal Attention (跨模态注意力)](../formalizations/cross-modal-attention.md)
 - [LWD（Learning while Deploying）](./lwd.md) — 其 QAM 组件正是为 flow-based 动作头（如 π₀）设计的策略抽取方法
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
 
 ## 参考来源
 - Black, K., et al. (2024). *π₀: A Vision-Language-Action Flow Model for General Robot Control*.

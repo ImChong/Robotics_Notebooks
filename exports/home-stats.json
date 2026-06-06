@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-01-bfm-zero.md",
+      "detail_id": "entity-paper-bfm-01-bfm-zero",
+      "label": "BFM-Zero",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-checklist.md",
+      "detail_id": "wiki-queries-sim2real-checklist",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/cosmos-3.md",
       "detail_id": "entity-cosmos-3",
       "label": "Cosmos 3（NVIDIA 全模态世界模型）",
@@ -135,45 +167,13 @@
       "type": "entity",
       "recency": "2026-06-06",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/cosmos-3.md",
-    "detail_id": "entity-cosmos-3",
-    "label": "Cosmos 3（NVIDIA 全模态世界模型）",
-    "type": "entity",
+    "path": "wiki/concepts/sim2real.md",
+    "detail_id": "wiki-concepts-sim2real",
+    "label": "Sim2Real",
+    "type": "concept",
     "recency": "2026-06-06",
     "source": "log.md"
   }

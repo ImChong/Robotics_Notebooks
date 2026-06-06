@@ -19,6 +19,16 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 
 **Franka Research 3** 是 **Franka Robotics** 面向 **科研与教育** 的 **七轴力控协作臂**：技术文档在 **[frankarobotics.github.io/docs](https://frankarobotics.github.io/docs/)**，开源 SDK 与驱动在 GitHub 组织 **[frankarobotics](https://github.com/frankarobotics)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SDK | Software Development Kit | 软件开发工具包 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要
 
 - **力控与接触丰富操作基线**：大量 **操作学习 / 遥操作 / Sim2Real** 论文以 Franka 为硬件参照（本仓库多处仿真与 GS 演示亦常出现 Franka 模型）。
@@ -41,16 +51,6 @@ summary: "Franka Research 3：Franka Robotics 七轴科研协作臂；官方 doc
 ## 推荐继续阅读
 
 - `libfranka` 与 **FCI** 文档（以官方 docs 当前章节为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 软件开发工具包 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

@@ -20,6 +20,15 @@ sources:
 
 **定位**：把「**仿真进程** + **控制进程**」拆开的 **人形通用部署框架**：README 强调 **Ubuntu 20.04**、conda 一键环境、MuJoCo 侧 `mujoco_simulator.py` 与 `run_controller.sh` 启动的算法侧可加载 **ONNX RL**，并用 **FSM** 组织 RL_HYBRID / RL_WALK / DEVELOPMENT / PASSIVE 等模式。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+
 ## 核心机制（工程切片）
 
 - **双进程 IO**：仿真发布状态、控制端消费并回写指令——结构上接近「中间件 + 控制频率」拆分，便于替换算法实现。
@@ -54,15 +63,6 @@ flowchart TD
 
 - **[Yobotics E3 算法模板](./jackhan-yobotics-e3-algorithm-template.md)**：实现 DEVELOPMENT 外环时的直接配套。
 - **[Sim2Real](../concepts/sim2real.md)**：同一套配置切换仿真/硬件是 Sim2Real 工程化的常见切片。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 
 ## 参考来源
 

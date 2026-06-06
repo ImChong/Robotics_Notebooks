@@ -24,6 +24,21 @@ summary: "SLowRL（arXiv:2603.17092）冻结仿真预训练腿足策略，用 ra
 
 **SLowRL**（*Safe Low-Rank Adaptation Reinforcement Learning for Locomotion*，arXiv:2603.17092）针对 **动态腿足策略的 sim-to-real 后微调**：不全参更新预训练网络，而用 **LoRA 低秩扰动** 吸收环境差异，并用 **任务无关 Recovery Policy + Safety Filter** 把探索限制在安全集内。在 **Unitree Go2** 的 trot / jump 上，相对标准 **全参 PPO 微调** 报告约 **46.5%** 墙钟缩短与 **近零** 训练期摔倒。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要
 
 - **真机微调的安全–效率折中：** 直接 FFT 在脆弱预训练策略上易摔倒（trot 无安全基线平均 **14.25** 次/seed）；SLowRL 将 trot 摔倒压到 **0**，jump 到 **2**（仍远低于 FFT+安全 **17.5**）。
@@ -87,22 +102,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

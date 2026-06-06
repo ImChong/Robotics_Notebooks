@@ -21,6 +21,16 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 
 在机器人动作模仿中，单纯的轨迹跟踪奖励（如关节角度 MSE）往往会导致机器人出现高频抖动、抽搐或不自然的步态。**AMP** 引入了生成对抗的思想来提升运动质量，而 **HumanX** 将其扩展到了包含接触关系的物体交互场景。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 判别器约束状态转移接近专家分布 |
+| GAN | Generative Adversarial Network | AMP 对抗训练的范式来源 |
+| RL | Reinforcement Learning | 任务 reward 与风格 reward 联合优化 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减碎片 reward 的演进 |
+| HOI | Human–Object Interaction | HumanX 扩展的接触图交互场景 |
+
 ## AMP: 对抗性动作先验
 
 **AMP (Adversarial Motion Prior)** 的核心在于不显式定义“什么是好动作”，而是让神经网络去“悟”。
@@ -93,16 +103,6 @@ $$
 - [Behavior Cloning](../formalizations/behavior-cloning-loss.md) — HumanX 学生策略训练中使用了 BC 损失。
 - [BeyondMimic](./beyondmimic.md) — 同样是动作模仿，但 BeyondMimic 侧重于精确建模，AMP 侧重于风格判别。
 - [AMP_mjlab](../entities/amp-mjlab.md) — AMP 在 Unitree G1 + mjlab 上的工程实现，统一 locomotion+recovery。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AMP | Adversarial Motion Prior | 判别器约束状态转移接近专家分布 |
-| GAN | Generative Adversarial Network | AMP 对抗训练的范式来源 |
-| RL | Reinforcement Learning | 任务 reward 与风格 reward 联合优化 |
-| ADD | Adversarial Differential Discriminator | 差分判别、减碎片 reward 的演进 |
-| HOI | Human–Object Interaction | HumanX 扩展的接触图交互场景 |
 
 ## 进阶：MimicKit 与 ADD
 

@@ -35,6 +35,18 @@ summary: "WorldVLN（arXiv:2605.15964）：首个面向空中 VLN 的自回归 W
 
 **用自回归潜世界预测承担导航的时空–因果结构，并把动作生成绑在同一 WAM 策略内**——而不是仅用 VLM 语义先验做「观测 + 语言 → 控制」的单步映射。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| SOTA | State of the Art | 当前最优水平 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 为什么重要
 
 - **空中 VLN 的额外难度：** 相对室内地面/agent 离散转向，UAV 的 **大视角变化、连续 3D 运动与累积状态误差** 更依赖 **因果记忆与在线修正**；整段双向视频生成与闭环接口天然错位。
@@ -100,19 +112,6 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| WAM | World Action Model | 联合世界模型与动作预测的架构 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
-| SOTA | State of the Art | 当前最优水平 |
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 

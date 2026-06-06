@@ -18,6 +18,14 @@ sources:
 
 **Adversarial Locomotion and Motion Imitation for Humanoid Policy Learning** 收录于 [具身智能研究室 · AMP 运动先验专题](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) **第 07/19** 篇，归类为 **02 人形走跑**。本页为知识库 **策展摘要**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要
 
 - ALMI 的切入点非常实际：人形机器人的上半身和下半身，在控制里不是同一种角色。
@@ -43,15 +51,6 @@ sources:
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

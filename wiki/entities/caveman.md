@@ -30,6 +30,13 @@ summary: "Caveman（JuliusBrussee/caveman）是多 harness 可安装的编码代
 
 用 **可版本化的「洞穴语」技能契约 + 可选 hook/记忆压缩**，把代理的 **mouth** 变小而 **brain** 不变，针对 **输出 token**（及可选 **每会话输入上下文**）做持续省钱。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 为什么重要（对本知识库读者）
 
 - **与 LLM Wiki 维护同轴、不同杠杆：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 与 [Ingest Workflow](../../schema/ingest-workflow.md) 把知识 **编译进 `wiki/`**；本仓库每次 ingest 还伴随 `make ci-preflight`、长 `log.md` 与 `AGENTS.md`/`CLAUDE.md` 规约。Caveman 不替代 wiki 结构，但可降低 **代理在维护、评审、解释 diff 时的输出与记忆文件 token 开销**。
@@ -100,13 +107,6 @@ flowchart LR
 - [Agent Reach](agent-reach.md) — 外网读搜脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 本仓库知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — ingest / query / lint 操作规范
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 

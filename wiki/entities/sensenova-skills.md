@@ -29,6 +29,15 @@ summary: "SenseNova-Skills 是 OpenSenseNova 发布的 Agent Skills 办公技能
 
 用 **Tier 0 基础层 + 领域入口技能 + 分阶段研究/PPT 子技能**，把大模型办公场景固化为 **代理可发现、可编排、可恢复** 的技能图，而不是一次性 prompt 脚本。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| API | Application Programming Interface | 应用程序编程接口 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 为什么重要（对本知识库读者）
 
 - **与 Hermes / 编码技能库互补：** [Hermes Agent](hermes-agent.md) 提供 **常驻运行时与 `~/.hermes/skills/` 安装位**；[mattpocock/skills](mattpocock-skills.md) 面向 **工程交付习惯**；SenseNova-Skills 面向 **办公产出**（报告、图表、Deck）。维护本 wiki 时的 **文献综述、对比表、路演材料** 可借鉴其深度研究与 PPT 管线，而不必从零写 prompt。
@@ -85,15 +94,6 @@ flowchart LR
 - [Superpowers（obra）](superpowers-obra.md) — **重流程编码交付** 技能方法论
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| API | Application Programming Interface | 应用程序编程接口 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 

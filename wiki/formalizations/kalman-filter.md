@@ -23,6 +23,15 @@ updated: 2026-06-01
 
 > KF 把「带噪预测 + 带噪观测」合成一步：先按模型外推，再用观测残差按 Kalman 增益修正——整条链路在 Kalman (1960) 的线性高斯世界里是闭式、最优的。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+
 ## 为什么重要
 
 - 机器人 **IMU 积分 + 编码器 / GPS / 视觉** 等融合，在局部线性化良好时常退化为 KF 或其子块。
@@ -99,15 +108,6 @@ flowchart LR
 - [Kalman vs. Optimization-based Estimation](../comparisons/kalman-filter-vs-optimization-based-estimation.md) — 滤波 vs 滑窗优化选型
 - [LQR / iLQR](./lqr.md) — LQG 对偶与 Riccati 结构
 - [Sensor Fusion](../concepts/sensor-fusion.md) — 多传感器融合实践
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
 
 ## 参考来源
 

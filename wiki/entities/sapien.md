@@ -14,6 +14,17 @@ related:
 
 **SAPIEN** (A Scannable Articulated Part Engine) 是一个专门针对**关节体（Articulated Objects）**交互和机器人操作设计的高性能物理仿真引擎。它由 UCSD 的 Su Lab 开发，是目前具身智能研究中处理物体细粒度交互（如开门、拉抽屉）的主流选择。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| AI | Artificial Intelligence | 人工智能 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 为什么重要？
 
 在具身智能中，机器人需要学习如何与人类环境中的复杂物体交互。SAPIEN 的优势在于：
@@ -32,17 +43,6 @@ related:
 - **上层应用**：[robotwin](robotwin.md) 2.0 建立在 SAPIEN 之上，用于自动化数据生成。
 - **资产生成生态**：[PhysX-Omni](physx-omni.md)、[PhysForge](paper-physforge-physics-grounded-3d-assets.md) 等路线产出 **sim-ready 关节/可变形资产** 后，常需与 PartNet-Mobility 系引擎（含 SAPIEN）核对 **关节轴、碰撞与 URDF** 一致性。
 - **同类对比**：相比 [mujoco](mujoco.md)，SAPIEN 更侧重于物体交互和视觉感知；相比 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md)，它在处理部件级关节体模型方面具有独特的生态优势；相比 [genesis-sim](genesis-sim.md)，后者在多物理场（流体、柔性体）耦合方面更为先进。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| AI | Artificial Intelligence | 人工智能 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)

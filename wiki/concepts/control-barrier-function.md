@@ -23,6 +23,17 @@ related:
 
 CBF 回答的是：**"给定一个当前控制律，如何在最小修改的前提下，保证系统状态永远不进入危险区域？"** 其核心是把安全性转化为对控制输入的线性约束，进而通过 QP（二次规划）实时求解。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+
 ## 为什么重要
 
 在机器人控制中，稳定性与安全性是两个不同的问题：
@@ -130,17 +141,6 @@ $$\psi_1(x) = \dot{\psi}_0 + \alpha_1(\psi_0)$$
 3. **$h(x)$ 的设计是关键**：$h$ 需要满足一定的正则性条件，且 $\partial h / \partial x \cdot g(x) \neq 0$（否则约束退化）。设计不当的 $h$ 会导致保守性过高或约束失效。
 
 4. **离散时间系统需要特殊处理**：上述分析基于连续时间，离散时间版本需要用离散 CBF（DCBF），约束形式有所不同。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| CLF | Control Lyapunov Function | 以能量函数衰减保证稳定性的控制李雅普诺夫函数 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
 
 ## 参考来源
 

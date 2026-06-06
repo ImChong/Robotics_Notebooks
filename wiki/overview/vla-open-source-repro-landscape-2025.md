@@ -27,6 +27,18 @@ summary: "2025 年高可见 VLA 开源栈策展：从通用策略（OpenPI）、
 
 VLA 的「智能」可以写在论文里，但**跑不通的训练脚本与权重**会直接暴露工程差距；2025 年开源生态同时在 **模型、RL 训练系统、跨本体与 VLA+世界模型** 四条线上铺开，复现时应先选对「你要验证的层」再选仓库。**2026 起** 可另见通义 [Qwen-VLA](../entities/qwen-vla.md)（**操作 + VLN 统一通才**、Qwen3.5-4B + DiT flow），本页 11 项表仍锁定 2025-12 策展快照。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+
 ## 为什么用「复现目标」而不是「榜单排名」
 
 - 筛选口径（原文）：代码可获取、活跃度、star>400（截至 2025-12-22）——**遗漏仍多**，未上榜项目同样有参考价值。
@@ -117,18 +129,6 @@ flowchart TB
 - [操作 VLA 架构选型 Query](../queries/manipulation-vla-architecture-selection.md)
 - [机器人世界模型训练闭环分类](../overview/robot-world-models-training-loop-taxonomy.md)
 - [LeRobot](../entities/lerobot.md) — RynnVLA-002 文内 SO100 数据收集语境
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
 
 ## 参考来源
 

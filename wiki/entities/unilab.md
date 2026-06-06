@@ -30,6 +30,25 @@ summary: "UniLab（arXiv:2605.30313）用 CPU 批量刚体仿真 + GPU 策略学
 
 > **把「谁算物理」和「谁算梯度」拆开，用低开销 runtime 让采集与 learner 在墙钟上重叠**——GPU 驻留仿真是一条高效路径，但不是必要条件。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CPU | Central Processing Unit | 中央处理器 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **打破 GPU 仿真默认：** [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)、MJX Playground、[mjlab](./mjlab.md)、ManiSkill3、Genesis 等证明 GPU 并行环境极快，但也把实验栈绑在 **NVIDIA CUDA 生态**；UniLab 给出 **CPU 物理 + GPU 学习** 的完整工程反例。
@@ -112,25 +131,6 @@ flowchart TB
 - [Motrix](./motrix.md)、[MuJoCo](./mujoco.md)、[MuJoCo MJX](./mujoco-mjx.md) — 物理后端与批量仿真语境
 - [仿真器选型指南](../queries/simulator-selection-guide.md)、[MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)、[Locomotion](../tasks/locomotion.md)、[Unitree G1](./unitree-g1.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CPU | Central Processing Unit | 中央处理器 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
-| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

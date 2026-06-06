@@ -17,6 +17,14 @@ sources:
 
 > **图谱分类节点**：**XII 未来** + 文末 **参考文献与拓展必读**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 电磁瓶颈（XII）
 
 - 商用仿人机器人仍为 **刚性电磁 + 减速/丝杠**；违背生物 **直线收缩、柔顺、分布式** 驱动。
@@ -44,14 +52,6 @@ sources:
 
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md)
 - [Humanoid Hardware 101](./humanoid-hardware-101-technology-map.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

@@ -18,6 +18,13 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 
 **ROBOTIS** 在 **OpenMANIPULATOR** 品牌下维护多条 **开源机械臂与夹爪** 产品线（如 **OpenMANIPULATOR-X / P**、**Manipulator-H**、**RH-P12-RN** 等）：每条线在 **[eManual](https://emanual.robotis.com/docs/en/platform/openmanipulator_x/overview/)** 独立成章；源码与示例仓库分布在 **[ROBOTIS-GIT](https://github.com/ROBOTIS-GIT)** 组织。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要
 
 - **ROS 教学与实验台常客**：与 TurtleBot3、OpenCR 控制板生态互通，适合作为 **操作 + 移动底座** 组合实验的硬件锚点。
@@ -42,13 +49,6 @@ summary: "ROBOTIS 开源机械臂/手产品线（OpenMANIPULATOR-X/P、Manipulat
 ## 推荐继续阅读
 
 - [ROBOTIS 下载中心](https://en.robotis.com/service/downloadpage.php?ca_id=70c0)（图纸与固件，以官网为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

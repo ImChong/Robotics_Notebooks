@@ -17,6 +17,12 @@ sources:
 
 > **图谱分类节点**：**I 行走难题** + **II 质量惩罚螺旋**；总地图见 [Humanoid 执行器 102](./humanoid-actuator-102-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
+
 ## 核心问题
 
 为何工业额定执行器在人形腿上数周失效？
@@ -46,12 +52,6 @@ sources:
 
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [Humanoid Hardware 101 · 集成执行器](./humanoid-hardware-101-integrated-actuators.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CoT | Cost of Transport | 单位重量·距离能耗的无量纲移动效率指标 |
 
 ## 参考来源
 

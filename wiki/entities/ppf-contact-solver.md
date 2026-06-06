@@ -20,6 +20,19 @@ summary: "ZOZO ppf-contact-solver：GPU 上单精度、无穿透的大规模 she
 
 **ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 [ZOZO, Inc.](https://corp.zozo.com/en/) 技术团队（[st-tech](https://github.com/st-tech)）开源的 **GPU 接触–弹性联合求解器**：在 NVIDIA GPU 上以 **单精度** 处理 **shell（三角壳）**、**solid（四面体体）** 与 **rod（杆/索）** 的 FEM 可变形体与大规模接触（公开案例含 **>1.8 亿** 接触对）。默认定位为 **离线** 物理仿真（布料垂坠、编织、多米诺、摩擦滑坡等），而非足式机器人毫秒级控制环。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要？
 
 - **可变形体 + 接触的工程缺口：** 主流 RL 仿真栈（[MuJoCo](./mujoco.md)、[Isaac Lab](./isaac-gym-isaac-lab.md)、[Newton](./newton-physics.md)）以 **刚体 / 关节** 为主；服装电商、数字孪生布料、软包装与索网结构需要 **无穿透、应变受限** 的壳/体仿真，本项目把该能力做到可 Docker 化、可 Blender 远程调用的产品级形态。
@@ -95,19 +108,6 @@ flowchart LR
 - [mjlab](./mjlab.md)
 - [Locomotion RL 仿真器选型](../queries/simulator-selection-guide.md)
 - [Sim2Real](../concepts/sim2real.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

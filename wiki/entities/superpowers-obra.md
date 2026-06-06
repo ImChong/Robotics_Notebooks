@@ -30,6 +30,15 @@ summary: "Superpowers（obra/superpowers）是一套面向多种编码代理 har
 
 用 **可组合技能库 + 启动时行为契约**，把 **头脑风暴→设计确认→细粒度实施计划→（子）代理实现与评审→TDD→分支收尾** 固化成代理的默认软件工程管线。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要（对本知识库读者）
 
 - **与「LLM 维护 wiki」同构的另一条轴：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 强调 **持久 wiki 与 cross-reference**；Superpowers 强调 **持久技能与可验证工程习惯**（TDD、评审、worktree）。两者都试图把 **人类策展 + 机器执行** 写成 **可重复、可审计** 的文件结构。
@@ -77,15 +86,6 @@ flowchart TD
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — **持久结构化知识** 与 **人类策展** 的范式说明
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 **ingest / query / lint** 操作规范
 - [Articraft](./articraft.md) — 另一类 **agent + 规约文件 + harness** 的闭环（面向 3D 资产生成，与编码技能栈问题域不同但可类比）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

@@ -16,6 +16,14 @@ summary: "atom01_deploy 是 Atom01 的上机部署仓库，覆盖 ROS2 驱动、
 
 **atom01_deploy** 负责 Atom01 的真机部署链路，连接训练策略与机器人执行系统，是 Sim2Real 落地关键环节。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+
 ## 为什么重要
 
 - 打通策略输出到硬件执行器的最后一公里。
@@ -32,14 +40,6 @@ summary: "atom01_deploy 是 Atom01 的上机部署仓库，覆盖 ROS2 驱动、
 
 - 误区：部署问题只是“脚本没写好”。很多问题来自时序、同步、硬件状态与网络抖动。
 - 局限：部署仓库不直接改进策略能力，但会显著影响策略实用性。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
 
 ## 参考来源
 

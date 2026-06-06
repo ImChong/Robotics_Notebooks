@@ -10,6 +10,14 @@ updated: 2026-05-01
 
 **Robot Viewer** 是由开发者 `fan-ziqi` 开发的一个全功能 Web 机器人模型查看与仿真平台。它最大的特点是支持多种主流机器人描述格式，并能直接在浏览器中运行物理仿真。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 核心功能
 
 - **多格式支持**：
@@ -37,14 +45,6 @@ updated: 2026-05-01
 - [urdf-studio](urdf-studio.md) (机器人组装工作站)
 - [mujoco](mujoco.md) (底层仿真引擎)
 - [URDD（Beyond URDF）](./paper-urdd-universal-robot-description-directory.md)（URDF 派生数据模块化目录与浏览器检视；与本工具的「在线看模型」互补）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 
 ## 参考来源
 - [Robot Viewer 原始资料](../../sources/repos/robot-viewer.md)

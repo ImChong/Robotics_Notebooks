@@ -30,6 +30,28 @@ summary: "动作重定向目标函数形式化：把姿态相似项、末端/接
 
 给定源人体序列 $\mathbf{x}^h_{1:T}$，求解机器人关节轨迹 $\mathbf{q}^r_{1:T}$，最小化「姿态相似 + 接触/末端约束 + 平衡 + 关节限位 + 平滑」的加权和，同时满足运动学（或附加动力学）硬约束。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 决策变量与符号
 
 | 符号 | 含义 |
@@ -216,28 +238,6 @@ $$
 - [TSID 形式化](./tsid-formulation.md) — 下游消费重定向参考的 QP 控制层。
 - [Friction Cone 形式化](./friction-cone.md) — 动力学一致化阶段的接触约束。
 - [ZMP + LIP 形式化](./zmp-lip.md) — 平衡项在简化模型下的解析形式。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| ZMP | Zero Moment Point | 足式平衡判据，地面反力合力矩为零的点 |
-| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
-| LIP | Linear Inverted Pendulum | 线性倒立摆，质心动力学的常用简化模型 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
 ## 参考来源
 

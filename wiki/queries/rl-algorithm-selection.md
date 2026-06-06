@@ -13,6 +13,27 @@ sources:
 
 # RL 算法选型指南：足式机器人中的 PPO / SAC / TD3
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| TRPO | Trust Region Policy Optimization | 带信赖域约束的策略优化算法，PPO 的前身 |
+
 ## 核心结论（先看这里）
 | 场景 | 首选 | 备选 |
 |------|------|------|
@@ -159,27 +180,6 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 - [Reward Design](../concepts/reward-design.md) — reward 设计是算法选型之后的核心问题
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练后如何迁移到真实机器人
 - [Locomotion](../tasks/locomotion.md) — 足式 locomotion 任务定义与挑战
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| TRPO | Trust Region Policy Optimization | 带信赖域约束的策略优化算法，PPO 的前身 |
 
 ## 参考来源
 

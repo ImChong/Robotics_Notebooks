@@ -6,6 +6,7 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
   2. 缺少"关联页面"或"关联"区块的页面
   3. 缺少"参考来源"区块的页面
   4. 缺少"英文缩写速查"区块的页面（信息型 backlog；新建/大幅改写页须补齐）
+  4b. 英文缩写速查区块位置错误（须在「一句话定义」之后、「为什么重要」之前）
   5. 内链断链（链接目标文件不存在）
   6. 空壳页面（内容过少，< 200 字）
   7. Sources 孤儿（sources/papers 中链接到不存在 wiki 页）
@@ -177,6 +178,7 @@ def _empty_results() -> dict[str, Any]:
         "missing_related": [],
         "missing_sources": [],
         "missing_abbrev_glossary": [],
+        "abbrev_glossary_wrong_order": [],
         "broken_links": [],
         "stub_pages": [],
         "missing_pages": [],
@@ -242,6 +244,14 @@ def _check_per_page(
             content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
         ):
             results["missing_abbrev_glossary"].append(str(rel))
+
+        if not is_meta_abbrev:
+            from wiki_abbrev_section import is_abbrev_glossary_well_placed
+
+            if has_section(
+                content, ["英文缩写速查", "abbreviation glossary", "abbreviations"]
+            ) and not is_abbrev_glossary_well_placed(content):
+                results["abbrev_glossary_wrong_order"].append(str(rel))
 
         if resolved in broken:
             for b in broken[resolved]:
@@ -831,6 +841,11 @@ def format_report(results: dict[str, Any]) -> str:
             "missing_abbrev_glossary",
             "缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）",
             "💡",
+        ),
+        (
+            "abbrev_glossary_wrong_order",
+            "英文缩写速查位置错误（应在「一句话定义」之后、「为什么重要」之前）",
+            "❌",
         ),
         ("broken_links", "断链（内链目标不存在）", "❌"),
         ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),

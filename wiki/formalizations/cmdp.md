@@ -18,6 +18,17 @@ summary: "Constrained MDP（CMDP）是安全强化学习的数学地基，在标
 
 **约束马尔可夫决策过程 (Constrained Markov Decision Process, CMDP)** 是一种在运筹学和强化学习中极其重要的数学形式化框架。当我们在构建真实物理世界的机器人（具身智能）时，单一的“最大化奖励”往往是极其危险的。CMDP 为我们提供了一种具有数学严谨性的方式，以解决在满足一系列预定义硬性物理约束（如防碰撞、关节安全限位、功耗限制）的前提下，寻找全局最优行为策略的问题。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 标准 MDP 的局限与 CMDP 的引入
 
 在标准的马尔可夫决策过程（MDP）中，强化学习的唯一指导信号是一个标量奖励 $R(s, a)$。遇到不想要的行为（如跌倒），常规做法是**奖励塑形 (Reward Shaping)**——赋予一个极大的负奖励。但这在机器人控制上常常失败：权衡不当会导致机器人直接拒绝移动。
@@ -72,17 +83,6 @@ $$
 - [Safe RL 方法论](../methods/safe-rl.md)
 - [MDP 形式化](./mdp.md)
 - [Bellman 方程](./bellman-equation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
 ## 参考来源
 - Altman, E. (1999). *Constrained Markov Decision Processes*. (奠定了 CMDP 的运筹学根基)

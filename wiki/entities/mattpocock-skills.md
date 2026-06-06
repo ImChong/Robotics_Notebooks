@@ -32,6 +32,13 @@ summary: "mattpocock/skills（Skills For Real Engineers）是 Matt Pocock 公开
 
 用 **按需安装的技能片 + 每仓库一次性 setup**，把 **对齐（grill）→ 共享领域语言 → 细粒度 TDD/诊断反馈 → 架构与 issue 卫生** 固化为日常编码代理的默认习惯，而不是依赖「包办全流程」的重方法论框架。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 为什么重要（对本知识库读者）
 
 - **与 LLM Wiki 维护同构：** [Karpathy LLM Wiki](../references/llm-wiki-karpathy.md) 把 **知识编译进 `wiki/`**；本技能库把 **工程习惯编译进 `SKILL.md` + `CONTEXT.md` + ADR**。两者都服务 **人类策展 + 代理执行**，但对象分别是 **机器人知识** 与 **通用应用代码**。
@@ -82,13 +89,6 @@ flowchart TD
 - [Agent Reach](agent-reach.md) — 外网读搜工具链脚手架
 - [LLM Wiki（Karpathy 模式）](../references/llm-wiki-karpathy.md) — 持久 wiki 知识编译范式
 - [Ingest Workflow](../../schema/ingest-workflow.md) — 本仓库 ingest / query / lint 规范
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 
 ## 参考来源
 

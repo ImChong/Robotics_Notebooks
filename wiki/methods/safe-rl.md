@@ -18,6 +18,20 @@ summary: "安全强化学习（Safe RL）旨在满足显式安全约束的前提
 
 **安全强化学习（Safe Reinforcement Learning, Safe RL）** 是近年来强化学习领域发展最快、在机器人实体部署中最为核心的一个分支。其根本宗旨在于：在智能体（Agent）持续试错、学习和最大化任务奖励（Reward）的过程中，能够**提供数学或经验层面上的绝对安全保证**，确保其行为永远不违反预定义的物理边界或致命约束。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+
 ## 为什么需要专属的 Safe RL？
 
 在传统的无模型强化学习（Vanilla Model-Free RL）中，处理约束最常见的手法是**奖励塑形（Reward Shaping）**——即在奖励函数中直接减去违反规则的惩罚项（例如：$R = r_{task} - 100 \times \text{撞墙}$）。然而，这种软性惩罚在复杂的具身智能应用中存在难以逾越的障碍：
@@ -71,20 +85,6 @@ CPO 是一种更为严谨的自然梯度法。它在每次更新策略参数 $\t
 - [Safety Filter](../concepts/safety-filter.md)
 - [Constrained MDP](../formalizations/cmdp.md)
 - [Query：机器人策略排障手册](../queries/robot-policy-debug-playbook.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| CMDP | Constrained Markov Decision Process | 带代价约束的 MDP，安全强化学习的标准形式 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
 
 ## 参考来源
 - Achiam, J., et al. (2017). *Constrained Policy Optimization*.

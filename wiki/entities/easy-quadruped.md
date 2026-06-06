@@ -21,6 +21,24 @@ summary: "easy_quadruped 是 StanfordQuadruped（Pupper）控制栈的独立 for
 
 **easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped)（[Stanford Pupper](./stanford-doggo-and-pupper.md) 软件 lineage）基础上独立维护的二次开发仓库：保留 **步态调度、支撑/摆腿足端规划、行为状态机与逆运动学**，并补齐 **MuJoCo 浮动机身仿真、观测回填与可脚本化任务序列**，便于在不依赖大规模 RL 训练的前提下理解四足控制闭环。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **与 RL 训练栈形成对照**：本库 [Legged Gym](./legged-gym.md)、[robot_lab](https://github.com/fan-ziqi/robot_lab) 等解决的是「如何在并行仿真里训策略」；easy_quadruped 展示的是「**时钟式步态 + 足端轨迹 + IK + 关节 PD**」这条经典模型控制链，对读懂四足底层控制更有直接性。
@@ -112,24 +130,6 @@ python sim/run_floating_base.py --headless --duration 8 --task-sequence "rest:1.
 - 上游官方 lineage：[StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped)
 - 本 fork 仓库：<https://github.com/Xzgz718/easy_quadruped>
 - Pupper 社区硬件文档（交叉核对）：[StanfordPupper](https://github.com/stanfordroboticsclub/StanfordPupper)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

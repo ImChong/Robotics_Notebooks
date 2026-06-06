@@ -24,6 +24,18 @@ related:
 
 全身协调控制关注的是"**让整个身体作为一个整体工作**"——不仅仅是让每个关节独立运动，而是确保腿部、躯干、手臂的运动在动力学上相互协调、在任务层面相互支持、在时序上精准配合。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 为什么重要
 
 ### 从生物学视角
@@ -159,18 +171,6 @@ Loco-Manipulation（边走边操作）是全身协调最复杂的场景：
 2. **高自由度不等于高协调**：自由度多提供了更多可能性，但不自动产生协调——协调需要显式设计或学习。
 
 3. **局部优化的陷阱**：独立优化手臂轨迹和腿部步态，再把结果叠加，几乎总是次优的。真正的全身协调需要全局考量。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

@@ -18,6 +18,13 @@ sources:
 
 **Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 07/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 为什么重要
 
 - H2O 的完整名字是 Human-to-Humanoid。它要解决的问题很直接：能不能让一个人通过自己的身体动作，实时驱动一个人形机器人做全身动作，而不是只控制手臂或轮式底盘。
@@ -43,14 +50,6 @@ sources:
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 

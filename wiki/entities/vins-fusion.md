@@ -16,6 +16,15 @@ summary: "VINS-Fusion 是优化式多传感器状态估计器：单目/双目+IM
 
 **VINS-Fusion** 提供 **滑动窗口优化** 的视觉-惯性里程计与可选 GPS 融合。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+
 ## 为什么重要
 
 - **工程常用 VIO**：HKUST 空中机器人实验室生态成熟。
@@ -33,15 +42,6 @@ summary: "VINS-Fusion 是优化式多传感器状态估计器：单目/双目+IM
 
 - **标定敏感**：相机-IMU 外参与时间偏移需离线标定。
 - **对比**：[OpenVINS](./open-vins.md) 偏滤波器研究路线。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
 
 ## 参考来源
 

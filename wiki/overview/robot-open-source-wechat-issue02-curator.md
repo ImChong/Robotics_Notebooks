@@ -31,6 +31,16 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 
 本页对应转载清单 **第 11–20 号**共 **10** 条开源机器人/平台入口，拆成独立实体节点，并集中指向 **官方文档、GitHub 组织与论文/数据集页**；个人网盘与 360 共享链不作唯一依据。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 11–20 实体页一览
 
 | # | 实体页 | 一句话 |
@@ -60,16 +70,6 @@ summary: "微信公众号「机械Robot」第02期《10个全开源网址》：R
 ## 推荐继续阅读
 
 - [原文第02期（微信）](https://mp.weixin.qq.com/s/wl_WvXn78WHxIRCrZb5xfA)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

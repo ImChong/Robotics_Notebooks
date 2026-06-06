@@ -38,6 +38,16 @@ summary: "BFM（arXiv:2509.13780）把人形全身控制重新表述为「掩码
 
 **BFM** 是北大、港中大（深圳）、上交、复旦与 **上海人工智能实验室** 合作的人形 **whole-body control（WBC）基础模型** 论文（arXiv:2509.13780，[项目页](https://bfm4humanoid.github.io/)）：作者把 motion tracking、VR 遥操作、locomotion 等不同 WBC 任务统一抽象为「**生成把机器人引向目标状态的合适行为**」，因此用一个 **CVAE 生成式策略 + 位级掩码控制接口 + 掩码在线蒸馏** 训练单一策略覆盖多种控制接口。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model for Humanoid Robots | 本文提出的人形全身行为基础模型 |
+| WBC | Whole-Body Control | 预训练服务低层全身协调 |
+| RL | Reinforcement Learning | 预训练与下游适应常用范式 |
+| MoCap | Motion Capture | 大规模行为数据主要来源之一 |
+| VLA | Vision-Language-Action | 可与 BFM 低层能力上下叠加 |
+
 ## 为什么重要
 
 - **WBC 的「foundation policy」立场**：与 [Foundation Policy](../concepts/foundation-policy.md) 主流的 **VLA 操作向** 路线互补，BFM 关注 **人形低层全身控制** 的「一个 checkpoint 覆盖多接口」问题；不是为每种 mode 单独训一条 RL，而是 **预训练一个生成模型**。
@@ -208,16 +218,6 @@ $$
 - [sources/sites/bfm4humanoid-github-io.md](../../sources/sites/bfm4humanoid-github-io.md)
 - Zeng, Lu, Yin, Niu, Dai, Wang, Pang. *Behavior Foundation Model for Humanoid Robots*. arXiv:2509.13780, 2025. <https://arxiv.org/abs/2509.13780>
 - Yuan et al., *A Survey of Behavior Foundation Model: Next-Generation Whole-Body Control System of Humanoid Robots*, arXiv:2506.20487, IEEE TPAMI 2025. <https://arxiv.org/abs/2506.20487>
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BFM | Behavior Foundation Model for Humanoid Robots | 本文提出的人形全身行为基础模型 |
-| WBC | Whole-Body Control | 预训练服务低层全身协调 |
-| RL | Reinforcement Learning | 预训练与下游适应常用范式 |
-| MoCap | Motion Capture | 大规模行为数据主要来源之一 |
-| VLA | Vision-Language-Action | 可与 BFM 低层能力上下叠加 |
 
 ## 推荐继续阅读
 

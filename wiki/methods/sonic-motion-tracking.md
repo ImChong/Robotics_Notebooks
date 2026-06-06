@@ -33,6 +33,16 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 
 官网（[GEAR-SONIC](https://nvlabs.github.io/GEAR-SONIC/)，与 [SONIC 别名页](https://nvlabs.github.io/SONIC/) 同源）在论文摘要之外，补充了 **VLA 堆叠、VR/视频遥操作、音乐与文本条件、运动学规划器交互** 等系统级演示；下文「公开材料要点」与之对齐，**仍以 arXiv 论文为方法细节准绳**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SONIC | Supersizing Motion Tracking for Natural Humanoid WBC | 规模化运动跟踪预训练人形控制 |
+| MoCap | Motion Capture | 海量参考轨迹的监督来源 |
+| WBC | Whole-Body Control | 全身协调跟踪的执行层问题 |
+| VLA | Vision-Language-Action | 经统一 token 接入的高层接口 |
+| VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
+
 ## 为什么重要？
 
 - **执行层「基础模型」叙事**：把跟踪当作统一预训练目标，再用 **统一 token / 控制接口** 接入 VR、视频、VLA、文本与音乐等不同上游——降低「每换一个接口就重写 reward」的成本。
@@ -152,16 +162,6 @@ flowchart LR
 
 - [SONIC（规模化人体运动跟踪驱动的人形全身控制）](../../sources/repos/sonic-humanoid-motion-tracking.md)
 - NVIDIA SONIC 项目页 — <https://nvlabs.github.io/GEAR-SONIC/>（页面内摘要、方法段落与演示分区，2026-05-14 抓取对照）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SONIC | Supersizing Motion Tracking for Natural Humanoid WBC | 规模化运动跟踪预训练人形控制 |
-| MoCap | Motion Capture | 海量参考轨迹的监督来源 |
-| WBC | Whole-Body Control | 全身协调跟踪的执行层问题 |
-| VLA | Vision-Language-Action | 经统一 token 接入的高层接口 |
-| VR | Virtual Reality | 遥操作与实时参考生成入口之一 |
 
 ## 关联页面
 

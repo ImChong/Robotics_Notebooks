@@ -32,6 +32,15 @@ summary: "PhysForge（arXiv:2605.05163）：VLM 生成分层物理蓝图 + KineV
 
 **用世界知识做部件级物理规划，用扩散做几何—运动学协同落地，使生成资产在仿真里具备可操作的关节与物理语义，而不是只能看的壳。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **数据引擎视角：** 交互式虚拟世界与机器人操作仿真都受限于 **高质量、可关节、带物理字段** 的资产供给；论文将问题从「好看」推进到 **功能 plausible + simulation-ready**。
@@ -86,16 +95,6 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

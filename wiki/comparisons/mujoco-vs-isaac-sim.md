@@ -15,6 +15,26 @@ summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理
 
 在机器人强化学习和仿真部署领域，**MuJoCo**（由 DeepMind 维护）和 **Isaac Sim / Isaac Gym**（由 NVIDIA 维护）是目前最主流的两大物理引擎阵营。它们的底层哲学和适用场景有着显著差异。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| CPU | Central Processing Unit | 中央处理器 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+
 ## 核心特性对比
 
 | 维度 | MuJoCo | NVIDIA Isaac Sim / Gym |
@@ -47,26 +67,6 @@ summary: "物理引擎选型对比：MuJoCo 以极致的接触精度和控制理
 - [MuJoCo 实体页](../entities/mujoco.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Sim2Real](../concepts/sim2real.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| CPU | Central Processing Unit | 中央处理器 |
-| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
-| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
 
 ## 参考来源
 - [sources/papers/simulation.md](../../sources/papers/simulation.md)

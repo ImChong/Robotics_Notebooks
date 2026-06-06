@@ -20,6 +20,14 @@ sources:
 
 **定位**：README 声明本仓是论文 **FEAP** 的 **部署与验证框架**：把训练好的 **双 ONNX**（Encoder + Actor）放入 `policy/`，用 `scripts/feap_e3_mujoco_deploy.py` 加载 `configs/e3.yaml` 中的场景与输入设备配置，在 MuJoCo 中做 omnidirectional walking / high-speed running / 地形与扰动测试。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 核心机制（工程切片）
 
 - **策略形态**：显式区分 `HumanEncodernet.onnx` 与 `HumanActornet.onnx`，与「单文件 PyTorch `.pt`」演示仓形成对照。
@@ -51,14 +59,6 @@ flowchart TD
 
 - **[FEAP Vision 部署](./jackhan-feapvision-mujoco-deployment.md)**：同作者的「深度 + TorchScript」变体，观测栈更厚。
 - **[Locomotion](../tasks/locomotion.md)**：README 强调的多地形、多风格与扰动测试直接服务 locomotion 论文复现。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

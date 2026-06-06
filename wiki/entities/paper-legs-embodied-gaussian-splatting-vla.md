@@ -27,6 +27,23 @@ summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo
 
 **LEGS** 是斯坦福团队提出的 **人形 loco-manipulation VLA 数据工厂**（arXiv:2606.01458，2026-05）：在 **无真人遥操作、无种子演示、无人视频** 的前提下，用 **程序化仿真** 生成带标签演示，并通过 **3D Gaussian Splatting（3DGS）背景 + mesh 前景合成 + 两阶段颜色校准**，使合成图像接近 **Unitree G1 头载 RealSense** 的真机分布。论文在三个递难 pick-place 与 **ψ0、π0.5、GR00T N1.6** 上报告：**纯 LEGS 数据微调** 的策略 **匹配或超过 50 条 teleop**，且全面优于 **SAM3D mesh-only** 消融。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 为什么重要
 
 - **对准 VLA 数据瓶颈：** 人形 loco-manip 需要同时覆盖 **行走与操作**；teleop 绑定操作员与机时，换场景/物体/语言提示往往要 **重采整条轨迹**。
@@ -121,23 +138,6 @@ flowchart TB
 | 目标策略 | 微调预训练 **VLA** | 微调 VLA | 微调 VLA | RGB 策略（非 VLA 微调叙事） |
 | 新场景成本 | ~0.1 h GPU 重渲染 | >1.5 h 重采 | 可重渲染但视觉域差大 | 需重新仿真训练管线 |
 | Task 3（长时程） | LEGS(200) 2–6/10 | **0/10**（三 backbone） | 低于 LEGS | 不同任务设定（行走–放置循环） |
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Teleop | Teleoperation | 人遥操作机器人采集演示数据 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
 
 ## 参考来源
 

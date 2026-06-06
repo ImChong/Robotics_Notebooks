@@ -20,6 +20,19 @@ sources:
 
 **定位**：README 以中文描述「**本体观测 + 深度图 + 手柄速度指令**」的 **TorchScript** 部署：依赖 `mujoco`、`torch`、`opencv-python`、`pygame` 等；策略文件放在 `policy/`，配置中可用 `{DEPLOY_DIR}` / `{PACKAGE_ROOT}` 占位符展开路径。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 核心机制（工程切片）
 
 - **观测链**：深度相机 → 深度预处理模块 → `Observation Builder` → `VisionPolicyRunner`（TorchScript）→ PD 控制 → MuJoCo 步进（README 系统结构图）。
@@ -52,19 +65,6 @@ flowchart TD
 
 - **[FEAP MuJoCo 部署](./jackhan-feap-mujoco-deployment.md)**：同一作者的「纯本体 ONNX FEAP」对照组。
 - **[Sim2Real](../concepts/sim2real.md)**：视觉策略在仿真渲染深度上闭环，对 sim2real 的感知域随机化提出更高要求。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| CPU | Central Processing Unit | 中央处理器 |
 
 ## 参考来源
 

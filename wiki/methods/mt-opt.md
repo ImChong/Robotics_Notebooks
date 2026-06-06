@@ -18,6 +18,14 @@ summary: "MT-Opt 把多任务机器人强化学习扩展到连续动作与共享
 
 **MT-Opt**：在多机器人并行采集框架下，同时学习多项操控技能的连续动作多任务深度强化学习系统；强调任务规范、成功检测器与跨任务表示共享。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 主要技术路线
 
 - **多任务并行 RL**：在共享机器人农场与任务判定器上同时优化多项操控技能，共享表示与跨任务经验。
@@ -27,14 +35,6 @@ summary: "MT-Opt 把多任务机器人强化学习扩展到连续动作与共享
 
 - [QT-Opt](./qt-opt.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 

@@ -21,6 +21,16 @@ summary: "运动控制 L0 线性代数策展：Georgia Tech 交互教材、Axler
 
 **一句话：** 机器人运动控制把位姿、速度、力都写成向量和矩阵；本页把 [Georgia Tech ILA](https://textbooks.math.gatech.edu/ila/)、[Axler *Linear Algebra Done Right* 4e](https://linear.axler.net/LADR4e.pdf) 及常见优秀配套材料，整理成可执行的 **L0 线性代数路线**，并接到 [运动控制成长路线](../../roadmap/motion-control.md) 的数学打底阶段。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 为什么重要？
 
 1. **L0 不可跳过**：没有矩阵语言，读不懂 SE(3)、Jacobian、LQR 的 Riccati 递推。
@@ -82,16 +92,6 @@ flowchart LR
 - [SE(3) Representation](../formalizations/se3-representation.md)
 - [LQR / iLQR](../formalizations/lqr.md)
 - [Pinocchio](./pinocchio.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
 ## 参考来源
 

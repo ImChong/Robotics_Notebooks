@@ -24,6 +24,15 @@ summary: "ESI-Bench（arXiv:2605.18746）在 OmniGibson 上评测具身空间智
 
 用 **感知–行动闭环** 度量「是否知道 **如何行动才能看见** 隐藏的空间结构」，而非仅度量「给定足够像素后能否答对空间题」。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SOTA | State of the Art | 当前最优水平 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 为什么重要
 
 - **与被动 3D VQA / 多视角基准的分野**：许多空间基准默认 **oracle 或随机多视角**；ESI-Bench 显示 **被动多视角常加噪**（更多图像 ≠ 更好答案），而 **主动探索** 可无指令自发出现 **move-behind、俯视、拿起、倒出** 等策略。
@@ -116,15 +125,6 @@ flowchart LR
 - [VLA](../methods/vla.md) — 高层语义策略仍依赖 **何时采集何种观测**；本基准量化 **行动选择** 短板
 - [WEM / HTEWorld](./paper-wem-world-ego-modeling.md) — 共享 **BEHAVIOR-1K / OmniGibson** 生态的不同评测切面
 - [EWMBench](./ewmbench.md) — 具身 **视频世界模型** 生成质量评测，互补
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SOTA | State of the Art | 当前最优水平 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
 ## 参考来源
 

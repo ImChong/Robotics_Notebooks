@@ -23,6 +23,18 @@ summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 R
 
 **Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时** [Bones Rigplay 1](https://bones.studio/datasets#rp01) 光学动捕上训练，输出可落在 **SOMA（somaskel77）、Unitree G1、SMPL-X** 等骨架；除自然语言外，支持全身关键帧、稀疏关节位姿、末端手/脚约束、2D 路点与稠密地面路径。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要？
 
 - **规模 + 可控**：公开 mocap 偏小长期限制文生运动的质量与约束精度；Kimodo 用大规模工作室数据支撑 **scaling 实验**，并把「导演式」关键帧编辑与扩散采样结合。
@@ -95,18 +107,6 @@ flowchart LR
 - [GR00T WholeBodyControl](./gr00t-wholebodycontrol.md) — SONIC 训练与推理代码仓
 - [Unitree G1](./unitree-g1.md) — Kimodo-G1 目标平台
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

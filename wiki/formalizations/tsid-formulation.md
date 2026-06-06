@@ -16,6 +16,14 @@ summary: "任务空间逆动力学（TSID）形式化：描述了如何在浮动
 
 **TSID** 是一种在保持机器人物理一致性的前提下，实现多任务并行控制的数学框架。它将复杂的运动指令转换为底层的电机力矩。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 数学定义：QP 形式
 
 TSID 通常被形式化为一个**带等式与不等式约束的二次规划 (QP)** 问题。
@@ -45,14 +53,6 @@ $$ \min_{\mathcal{X}} \sum w_k \| J_k \ddot{q} + \dot{J}_k \dot{q} - \ddot{x}_{d
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Friction Cone 形式化](./friction-cone.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
 ## 参考来源
 - Prete, A., et al. (2016). *Task Space Inverse Dynamics*.

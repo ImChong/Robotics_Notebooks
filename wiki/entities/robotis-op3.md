@@ -19,6 +19,12 @@ summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eMan
 
 **ROBOTIS OP3** 是 **ROBOTIS** 的 **小型人形** 开源平台：硬件结构、电气与传感器接口说明在 **[OP3 eManual](https://emanual.robotis.com/docs/en/platform/op3/introduction/)**；官方手册 Markdown 源码在 GitHub **[emanual …/op3](https://github.com/ROBOTIS-GIT/emanual/tree/master/docs/en/platform/op3)** 树下。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要
 
 - **教育与研究人形基线**：在 **ROS** 课程与小型比赛里长期作为 **可编程全身关节** 的参考机。
@@ -42,12 +48,6 @@ summary: "ROBOTIS OP3：小型人形开源平台，文档与三维模型在 eMan
 ## 推荐继续阅读
 
 - [ROBOTIS-GIT 组织](https://github.com/ROBOTIS-GIT)（检索 `op3` 相关仓库）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

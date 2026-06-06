@@ -18,6 +18,18 @@ sources:
 
 **一句话定义**：在 **接触丰富** 的任务里，让 RL 策略输出 **关节空间期望轨迹 + 可变阻抗参数**，并用 **额外正则** 约束阻抗变化，使学习 **更快、更稳、更可迁移** 到真机（相对纯扭矩或纯位置策略）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 为什么重要
 
 - 把 **「位置通道 + 阻抗通道」联合作为动作** 的思想讲清楚，是后来 **可变刚度腿足 loco** 与 **VLA+阻抗** 等路线的 **概念前史**。
@@ -53,19 +65,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
 ## 参考来源
 

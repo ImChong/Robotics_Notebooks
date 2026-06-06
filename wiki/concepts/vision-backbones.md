@@ -25,6 +25,17 @@ summary: "视觉骨干是从图像提取多尺度表征的 CNN/ViT 网络；ResN
 
 **视觉骨干**是感知管线中负责从 RGB/深度图提取 **层次化特征** 的神经网络主体；在机器人栈里，它常为 **检测头、策略网络、VLA 视觉塔** 提供可迁移的表征，典型训练路径是 **ImageNet 预训练 → 任务微调**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| ViT | Vision Transformer | 将图像分块后用 Transformer 编码的视觉骨干 |
+| FPN | Feature Pyramid Network | 多尺度特征融合，检测/分割常用 neck |
+| ImageNet | ImageNet Large Scale Visual Recognition Challenge | 大规模图像分类预训练数据源 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略，依赖强视觉塔 |
+| FPS | Frames Per Second | 机载感知实时性指标 |
+
 ## 为什么重要
 
 - **表征深度决定上限：** 浅层 CNN 难以同时编码 **纹理、部件、语义**；[ResNet](../entities/paper-resnet-deep-residual-learning.md) 证明 **百层网络可训**，直接抬升检测、分割与下游 RL 视觉编码能力。
@@ -74,17 +85,6 @@ flowchart TB
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [传感器融合](./sensor-fusion.md)
 - [三维坐标变换（形式化）](../formalizations/3d-coordinate-transforms-vision-robotics.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
-| ViT | Vision Transformer | 将图像分块后用 Transformer 编码的视觉骨干 |
-| FPN | Feature Pyramid Network | 多尺度特征融合，检测/分割常用 neck |
-| ImageNet | ImageNet Large Scale Visual Recognition Challenge | 大规模图像分类预训练数据源 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态策略，依赖强视觉塔 |
-| FPS | Frames Per Second | 机载感知实时性指标 |
 
 ## 参考来源
 

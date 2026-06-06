@@ -23,6 +23,16 @@ sources:
 
 **VLN**：智能体接收 **自然语言导航指令** 与 **第一人称（egocentric）视觉观测**（渲染视图或真实相机图像），在离散或连续动作空间中决策，最终到达指令描述的目标位置或物体。**语言–视觉接地** 与 **路径效率** 是核心评价维度。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| WAM | World Action Model | 联合世界模型与动作预测的架构 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要？
 
 - **机器人场景**：家庭或服务机器人需要理解「穿过客厅，在冰箱左侧停下」这类指令；VLN 提供了可复现的 **语言–几何–动作** 闭环基准。
@@ -59,16 +69,6 @@ sources:
 - **空间推理**：[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 侧重问答；VLN 侧重 **时序决策**，二者常共享场景表示与 VLM 骨干。
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| WAM | World Action Model | 联合世界模型与动作预测的架构 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

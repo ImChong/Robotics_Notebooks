@@ -19,6 +19,13 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 
 **灵犀 X1** 是智元机器人 **Agibot** 品牌的开源人形方案：以 **[文档中心](https://www.agibot.com.cn/DOCS)** 提供 BOM、整机图纸、装机 SOP、推理与训练相关代码索引；源码与项目组织入口在 **[AgibotTech](https://github.com/AgibotTech)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
+
 ## 为什么重要
 
 - **整机 + 工具链叙事**：与具身学习里 **Agibot-World** 等数据子集可在同一研究语境下出现（见 [EWMBench](./ewmbench.md)）。
@@ -40,13 +47,6 @@ summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推
 ## 推荐继续阅读
 
 - [EWMBench](./ewmbench.md)（评测与 Agibot-World 数据子集）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| SOP | Standard Operating Procedure | 标准操作流程，如渐进式真机验证 |
 
 ## 参考来源
 

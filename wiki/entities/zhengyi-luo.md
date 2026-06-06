@@ -22,6 +22,13 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 **Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / PULSE** 等「可扩展人形控制与表示」路线，随后在 NVIDIA GEAR 与 LECAR 网络合作者一道推进 **HOVER、ASAP、VIRAL、Doorman、SONIC** 等面向真机与大规模仿真的系统论文。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 为什么重要
 
 - **人形学习管线枢纽作者**：与 [Tairan He](./tairan-he.md) 等在 **OmniH2O、HOVER、ASAP、SONIC、VIRAL** 上高度重叠署名，是理解 **2023–2026 通用人形控制 + 视觉迁移** 论文簇的关键人物节点。
@@ -48,13 +55,6 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 - [Sim2Real](../concepts/sim2real.md)
 - [MimicKit](./mimickit.md)
 - [人形机器人](./humanoid-robot.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

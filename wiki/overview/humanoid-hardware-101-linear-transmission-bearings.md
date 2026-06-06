@@ -17,6 +17,12 @@ sources:
 
 > **图谱分类节点**：**丝杠、轴承** 章；旋转电机→直线推力的「机械肌肉」，以及关节 **三向载荷** 支承。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 丝杠
 
 | 类型 | 机理 | 人形角色 | 瓶颈 |
@@ -39,12 +45,6 @@ sources:
 - [传动与感知链](./humanoid-hardware-101-actuation-sensing-chain.md)
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
 
 ## 参考来源
 

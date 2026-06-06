@@ -16,6 +16,12 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 
 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖动”或“光影极端暗淡”等失败或罕见场景的数据却极难获取。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 核心机制：AI 驱动的样本扩充
 
 生成式增强不再仅仅是简单的裁剪或翻转图像，而是利用生成式大模型在语义和物理层面改写数据。
@@ -47,12 +53,6 @@ summary: "生成式数据增强（Generative Data Augmentation）利用扩散模
 - [具身数据清洗 (Data Cleaning)](../concepts/embodied-data-cleaning.md)
 - [Generative World Models](../methods/generative-world-models.md)
 - [演示数据采集指南](../queries/demo-data-collection-guide.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 - Yu, T., et al. (2023). *Scaling Robot Learning with Semantically Imagined Experience*.

@@ -22,6 +22,14 @@ sources:
 
 > **图谱分类节点**：**02 人→机器人**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 核心问题
 
 **人类第一视角怎么变成机器人可用的策略数据？** 手、身体、视角与机器人不一致；隐含的准备动作与视线需在管线中显式处理。
@@ -38,14 +46,6 @@ sources:
 
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)
 - [世界模型](./ego-category-03-world-models.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
 ## 参考来源
 

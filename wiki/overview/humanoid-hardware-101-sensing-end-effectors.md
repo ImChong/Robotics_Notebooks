@@ -18,6 +18,13 @@ sources:
 
 > **图谱分类节点**：**通用传感器、触觉传感器、末端执行器** 三章。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+
 ## 通用传感器
 
 - **IMU（MEMS）**、相机模组等受益于 **汽车/消费电子** 规模。
@@ -40,13 +47,6 @@ sources:
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [视觉触觉融合](../concepts/visuo-tactile-fusion.md)
 - [抓取姿态估计](../methods/grasp-pose-estimation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
 
 ## 参考来源
 

@@ -22,6 +22,16 @@ summary: "AnyGrasp 是面向平行夹爪的稠密 7-DoF 抓取感知与跨帧跟
 
 **「稠密抓取检测 + 跨观测关联」**：把抓取感知从「少量候选 + 慢速采样评估」推向 **全场景稠密预测**，并用 **时序关联模块** 在物体坐标系下对齐跨帧抓取，以支持动态场景与连续机械臂伺服。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 为什么重要？
 
 - **系统边界完整**：同时覆盖 **空间覆盖（稠密）**、**时间连续（跟踪）** 与 **执行可行性（障碍与开度）**，是连接 **感知** 与 **运动规划 / 夹爪闭合** 的常用中间层。
@@ -63,16 +73,6 @@ flowchart LR
 
 - 任务层：作为 **[Manipulation](../tasks/manipulation.md)** 中「视觉 → 抓取位姿」的 **感知模块** 选项之一。
 - 数据与先验：与 **GraspNet-1Billion**、**Graspness** 等工作构成 **同团队方法链**；更广泛的 6-DoF 抓取综述应以独立论文为准（AnyGrasp 正文 Related Work 中有线索）。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 

@@ -21,6 +21,18 @@ related:
 
 本页回答：**除了少数明星项目外，产业与新闻里还经常出现哪些人形、四足与腿足平台**，它们大致属于哪条技术–商业路线，以及在本知识库里应去哪里深挖。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AI | Artificial Intelligence | 人工智能 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 做选型、写综述或对齐仿真模型时，如果只盯着一两家公司，容易误判「行业平均水平」。把 **高频出镜的平台族谱** 摊开，可以快速判断：
@@ -92,18 +104,6 @@ related:
 - [Boston Dynamics](../entities/boston-dynamics.md)
 - [ANYmal](../entities/anymal.md)
 - [MotionCode](../entities/motioncode.md) — 人体运动数据与 Mind 线人形训练叙事
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AI | Artificial Intelligence | 人工智能 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

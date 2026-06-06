@@ -24,6 +24,16 @@ updated: 2026-06-01
 
 > EKF 是"把卡尔曼滤波硬套到非线性系统上"的工程化方案——每步在当前估计点附近线性化非线性模型，然后按标准 KF 递推。不精确但实用，是足式机器人状态估计里二十年来最常用的方法之一。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+
 ## 为什么重要
 
 人形/足式机器人的状态估计（base pose、velocity、contact）涉及：
@@ -115,16 +125,6 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md) — 浮动基机器人状态估计的动力学背景
 - [Sim2Real](../concepts/sim2real.md) — 状态估计精度直接影响 sim2real 效果
 - [LQR / iLQR](./lqr.md) — LQR/EKF 是最优控制中的"最优估计+最优控制"经典对
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
 
 ## 参考来源
 

@@ -20,6 +20,14 @@ updated: 2026-04-25
 
 > GAE = 多步 TD 误差的指数加权平均。$\lambda$ 接近 1 时低偏差高方差，接近 0 时高偏差低方差。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要
 
 策略梯度的关键公式：
@@ -111,14 +119,6 @@ $$\hat{A}_{T-1} = \delta_{T-1} + \gamma \lambda V(s_T)$$
 ### 问题：V(s) 训练不充分时 GAE 偏差大
 
 人形机器人早期训练时 critic（$V$ 网络）不准，$\lambda$ 不宜过小（否则偏差大训练慢）。实践中 $\lambda = 0.95 \sim 0.99$。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 
