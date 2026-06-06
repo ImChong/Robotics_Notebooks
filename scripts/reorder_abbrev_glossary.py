@@ -46,7 +46,9 @@ def main() -> int:
         else:
             print(f"SKIP (no anchor) {rel}")
 
-    print(f"\n{'[dry-run] ' if dry else ''}reordered={changed} already_ok={skipped} misplaced={len(wrong)}")
+    print(
+        f"\n{'[dry-run] ' if dry else ''}reordered={changed} already_ok={skipped} misplaced={len(wrong)}"
+    )
     return 0
 
 
