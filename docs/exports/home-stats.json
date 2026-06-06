@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-06",
-  "node_count": 683,
-  "edge_count": 4922,
+  "node_count": 684,
+  "edge_count": 4935,
   "coverage": {
-    "covered": 681,
-    "total": 681,
+    "covered": 682,
+    "total": 682,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md",
+      "detail_id": "entity-paper-learning-to-adapt-bio-inspired-quadruped-gait",
+      "label": "Learning to Adapt：生物启发步态策略与四足 versatile locomotion",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/gait-generation.md",
+      "detail_id": "wiki-concepts-gait-generation",
+      "label": "Gait Generation（步态生成）",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-walk-these-ways-quadruped-mob.md",
+      "detail_id": "entity-paper-walk-these-ways-quadruped-mob",
+      "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/behavior-foundation-model.md",
       "detail_id": "wiki-concepts-behavior-foundation-model",
@@ -127,54 +167,14 @@
       "type": "method",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/behavior-foundation-model.md",
-    "detail_id": "wiki-concepts-behavior-foundation-model",
-    "label": "Behavior Foundation Model（行为基础模型，BFM）",
-    "type": "concept",
-    "recency": "2026-06-05",
+    "path": "wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md",
+    "detail_id": "entity-paper-learning-to-adapt-bio-inspired-quadruped-gait",
+    "label": "Learning to Adapt：生物启发步态策略与四足 versatile locomotion",
+    "type": "entity",
+    "recency": "2026-06-06",
     "source": "log.md"
   }
 }

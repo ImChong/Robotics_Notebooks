@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] ingest | sources/papers/learning_to_adapt_nature_2025.md、sources/repos/ihcr_learning_to_adapt.md — Learning to Adapt（Nature MI 2025）四足 bio-inspired 多步态 DRL；wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md、wiki/concepts/gait-generation.md、wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-walk-these-ways-quadruped-mob.md
+
 ## [2026-06-05] structural | docs — V23 P3 详情页「最近相关 ingest」时间线
 
 - 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 首项打勾
