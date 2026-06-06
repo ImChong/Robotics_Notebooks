@@ -16,6 +16,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
+summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
 # Isaac Lab
