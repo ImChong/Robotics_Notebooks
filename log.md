@@ -2,6 +2,12 @@
 
 ## [2026-06-06] ingest | sources/papers/cosmos3_arxiv_2606_02800.md、sources/sites/cosmos3-project.md、sources/repos/nvidia_cosmos.md — Cosmos 3 全模态 Physical AI 世界模型；wiki/entities/cosmos-3.md、wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md、wiki/methods/mimic-video.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md
 
+## [2026-06-06] ingest | sources/papers/vision_backbone_detection_classics.md — 入库 ResNet (1512.03385) 与 YOLO v1 (1506.02640) 及视觉骨干/目标检测 wiki
+
+- 原始资料：[resnet_arxiv_1512_03385.md](sources/papers/resnet_arxiv_1512_03385.md)（<https://arxiv.org/abs/1512.03385>）、[yolo_arxiv_1506_02640.md](sources/papers/yolo_arxiv_1506_02640.md)（<https://arxiv.org/abs/1506.02640>）、[vision_backbone_detection_classics.md](sources/papers/vision_backbone_detection_classics.md)
+- 沉淀页面：[wiki/entities/paper-resnet-deep-residual-learning.md](wiki/entities/paper-resnet-deep-residual-learning.md)、[wiki/entities/paper-yolo-unified-realtime-detection.md](wiki/entities/paper-yolo-unified-realtime-detection.md)、[wiki/concepts/vision-backbones.md](wiki/concepts/vision-backbones.md)、[wiki/methods/object-detection.md](wiki/methods/object-detection.md)
+- 交叉更新：[wiki/concepts/deep-learning-foundations.md](wiki/concepts/deep-learning-foundations.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)
+
 ## [2026-06-06] lint | health-check — 全库健康度提升至满分：isaac-gym / isaac-lab 补 summary frontmatter（health_score 2→3）；paper-learning-to-adapt-bio-inspired-quadruped-gait 补 venue 元数据；684/684 节点 health_score=3，lint 0 issues
 
 ## [2026-06-06] ingest | sources/papers/learning_to_adapt_nature_2025.md、sources/repos/ihcr_learning_to_adapt.md — Learning to Adapt（Nature MI 2025）四足 bio-inspired 多步态 DRL；wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md、wiki/concepts/gait-generation.md、wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-walk-these-ways-quadruped-mob.md
