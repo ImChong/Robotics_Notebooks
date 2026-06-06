@@ -6,6 +6,8 @@
 - 沉淀页面：[wiki/entities/paper-resnet-deep-residual-learning.md](wiki/entities/paper-resnet-deep-residual-learning.md)、[wiki/entities/paper-yolo-unified-realtime-detection.md](wiki/entities/paper-yolo-unified-realtime-detection.md)、[wiki/concepts/vision-backbones.md](wiki/concepts/vision-backbones.md)、[wiki/methods/object-detection.md](wiki/methods/object-detection.md)
 - 交叉更新：[wiki/concepts/deep-learning-foundations.md](wiki/concepts/deep-learning-foundations.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)
 
+## [2026-06-06] lint | health-check — 全库健康度提升至满分：isaac-gym / isaac-lab 补 summary frontmatter（health_score 2→3）；paper-learning-to-adapt-bio-inspired-quadruped-gait 补 venue 元数据；684/684 节点 health_score=3，lint 0 issues
+
 ## [2026-06-06] ingest | sources/papers/learning_to_adapt_nature_2025.md、sources/repos/ihcr_learning_to_adapt.md — Learning to Adapt（Nature MI 2025）四足 bio-inspired 多步态 DRL；wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md、wiki/concepts/gait-generation.md、wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-walk-these-ways-quadruped-mob.md
 
 ## [2026-06-05] structural | docs — V23 P3 详情页「最近相关 ingest」时间线

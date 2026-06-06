@@ -13,6 +13,7 @@ tags:
 status: complete
 updated: 2026-06-06
 doi: "10.1038/s42256-025-01065-z"
+venue: "Nature Machine Intelligence 2025"
 related:
   - ../concepts/gait-generation.md
   - ../tasks/locomotion.md
