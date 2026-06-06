@@ -191,6 +191,7 @@ sources:
 本知识库采用 Karpathy LLM Wiki 模式构建：LLM 作为维护者，人类作为 curator，通过 Ingest / Query / Lint 三类操作持续积累知识。
 
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 知识库构建模式来源
+- [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者；Tesla Autopilot 视觉栈、CS231n 与 Zero to Hero 教育主线
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md) — 人形机器人控制的学习路线
 
 ## 参考来源
@@ -212,6 +213,7 @@ sources:
 - [Locomotion](../tasks/locomotion.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [LLM Wiki 方法论（Karpathy）](../references/llm-wiki-karpathy.md) — 本知识库的构建方法论来源
+- [Andrej Karpathy](../entities/andrej-karpathy.md) — LLM Wiki 提出者与深度学习/视觉教育索引
 - [Query：人形机器人运动控制 Know-How](../queries/humanoid-motion-control-know-how.md) — 实战经验结构化摘要，快速入门推荐
 
 ## 推荐继续阅读
