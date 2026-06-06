@@ -2,7 +2,15 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-05-15
+updated: 2026-06-06
+related:
+  - ./vision-backbones.md
+  - ../methods/object-detection.md
+  - ../entities/paper-resnet-deep-residual-learning.md
+sources:
+  - ../../sources/books/udl_book.md
+  - ../../sources/repos/pytorch-official.md
+  - ../../sources/papers/resnet_arxiv_1512_03385.md
 ---
 
 # 深度学习基础 (Deep Learning Foundations)
@@ -23,7 +31,7 @@ updated: 2026-05-15
 ### 2. 优化与训练 (Optimization)
 - **损失函数 (Loss Functions)**: 定义了模型预测与真实值之间的距离（如 MSE, Cross-Entropy）。
 - **随机梯度下降 (SGD)**: 通过反向传播（Backpropagation）计算梯度并更新参数。
-- **初始化与残差连接 (Residual Connections)**: 缓解梯度消失/爆炸问题，使极深网络（如 ResNet）的训练成为可能。
+- **初始化与残差连接 (Residual Connections)**: 缓解极深网络的 **退化（degradation）** 与优化困难，使百层 CNN（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）可训练；详见 [视觉骨干](./vision-backbones.md)。
 
 ### 3. 泛化理论 (Generalization)
 深度学习的成功在很大程度上取决于其在未见数据上的表现。
@@ -32,11 +40,14 @@ updated: 2026-05-15
 
 ## 与机器人技术的联系
 
-- **感知 (Perception)**: 卷积神经网络 (CNN) 和 Transformer 用于处理图像、点云和触觉信号。
+- **感知 (Perception)**: 卷积神经网络 (CNN) 和 Transformer 用于处理图像、点云和触觉信号；[视觉骨干](./vision-backbones.md) 与 [目标检测](../methods/object-detection.md)（如 [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)）是机载感知常见模块。
 - **控制 (Control)**: 强化学习 (RL) 中的策略网络（Policy Network）通过深度学习进行函数逼近。
 - **生成 (Generation)**: [生成式模型基础](../formalizations/generative-foundations.md) 为动作轨迹生成提供数学底座。
 
 ## 关联页面
+- [视觉骨干](./vision-backbones.md)
+- [目标检测（方法）](../methods/object-detection.md)
+- [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [强化学习基础](../methods/reinforcement-learning.md)
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Sim2Real](../concepts/sim2real.md)
@@ -53,6 +64,7 @@ updated: 2026-05-15
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
+- [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 
 ## 推荐继续阅读
 - [Deep Learning Book (Goodfellow et al.)](https://www.deeplearningbook.org/)

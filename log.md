@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] ingest | sources/papers/vision_backbone_detection_classics.md — 入库 ResNet (1512.03385) 与 YOLO v1 (1506.02640) 及视觉骨干/目标检测 wiki
+
+- 原始资料：[resnet_arxiv_1512_03385.md](sources/papers/resnet_arxiv_1512_03385.md)（<https://arxiv.org/abs/1512.03385>）、[yolo_arxiv_1506_02640.md](sources/papers/yolo_arxiv_1506_02640.md)（<https://arxiv.org/abs/1506.02640>）、[vision_backbone_detection_classics.md](sources/papers/vision_backbone_detection_classics.md)
+- 沉淀页面：[wiki/entities/paper-resnet-deep-residual-learning.md](wiki/entities/paper-resnet-deep-residual-learning.md)、[wiki/entities/paper-yolo-unified-realtime-detection.md](wiki/entities/paper-yolo-unified-realtime-detection.md)、[wiki/concepts/vision-backbones.md](wiki/concepts/vision-backbones.md)、[wiki/methods/object-detection.md](wiki/methods/object-detection.md)
+- 交叉更新：[wiki/concepts/deep-learning-foundations.md](wiki/concepts/deep-learning-foundations.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)
+
 ## [2026-06-05] structural | docs — V23 P3 详情页「最近相关 ingest」时间线
 
 - 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 首项打勾

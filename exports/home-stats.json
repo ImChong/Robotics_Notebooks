@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-06",
-  "node_count": 683,
-  "edge_count": 4922,
+  "node_count": 687,
+  "edge_count": 4952,
   "coverage": {
-    "covered": 681,
-    "total": 681,
+    "covered": 685,
+    "total": 685,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-resnet-deep-residual-learning.md",
+      "detail_id": "entity-paper-resnet-deep-residual-learning",
+      "label": "ResNet（Deep Residual Learning for Image Recognition）",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-yolo-unified-realtime-detection.md",
+      "detail_id": "entity-paper-yolo-unified-realtime-detection",
+      "label": "YOLO v1（You Only Look Once）",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/vision-backbones.md",
+      "detail_id": "wiki-concepts-vision-backbones",
+      "label": "视觉骨干（Vision Backbones）",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/behavior-foundation-model.md",
       "detail_id": "wiki-concepts-behavior-foundation-model",
@@ -119,62 +167,14 @@
       "type": "query",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/amp-reward.md",
-      "detail_id": "wiki-methods-amp-reward",
-      "label": "AMP & HumanX: 判别器驱动的风格学习",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/behavior-foundation-model.md",
-    "detail_id": "wiki-concepts-behavior-foundation-model",
-    "label": "Behavior Foundation Model（行为基础模型，BFM）",
-    "type": "concept",
-    "recency": "2026-06-05",
+    "path": "wiki/entities/paper-resnet-deep-residual-learning.md",
+    "detail_id": "entity-paper-resnet-deep-residual-learning",
+    "label": "ResNet（Deep Residual Learning for Image Recognition）",
+    "type": "entity",
+    "recency": "2026-06-06",
     "source": "log.md"
   }
 }
