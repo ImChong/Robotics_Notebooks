@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-06",
-  "node_count": 688,
-  "edge_count": 4965,
+  "node_count": 689,
+  "edge_count": 4984,
   "coverage": {
-    "covered": 686,
-    "total": 686,
+    "covered": 687,
+    "total": 687,
     "percent": 100
   },
   "latest_wiki_nodes": [
@@ -37,6 +37,46 @@
       "detail_id": "wiki-queries-sim2real-checklist",
       "label": "Sim2Real 工程 Checklist",
       "type": "query",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/cosmos-3.md",
+      "detail_id": "entity-cosmos-3",
+      "label": "Cosmos 3（NVIDIA 全模态世界模型）",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
+      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
+      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
+      "type": "entity",
       "recency": "2026-06-06",
       "source": "log.md"
     },
@@ -126,46 +166,6 @@
       "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
       "type": "entity",
       "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/behavior-foundation-model.md",
-      "detail_id": "wiki-concepts-behavior-foundation-model",
-      "label": "Behavior Foundation Model（行为基础模型，BFM）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-05",
       "source": "log.md"
     }
   ],

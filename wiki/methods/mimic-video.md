@@ -116,12 +116,14 @@ flowchart LR
 - 与 [Diffusion Policy](./diffusion-policy.md)：动作头同属 **生成式 IL** 家族，但 VAM 把 **长视野不确定性** 更多交给 **视频骨干**，DP 常从像素历史直接预测动作分布。
 - 与 [Video-as-Simulation](../concepts/video-as-simulation.md)：共享「**视频模型承载物理直觉**」动机；mimic-video 更偏 **潜计划 + 低维控制**，而非把像素 rollout 当可交互仿真器主循环。
 - 与 [World Action Models](../concepts/world-action-models.md)：VAM 在文献谱系上接近 **联合建模未来表征与动作**，但实现上通过 **冻结视频骨干 + 边际动作采样** 强调 **可部署分工**。
+- 与 [Cosmos 3](../entities/cosmos-3.md)：mimic-video 论文实现依赖 **Cosmos-Predict2 系** 视频骨干；Cosmos 3 为 **全模态 MoT 母平台**（policy / 正逆动力学 / Reasoner 一体），可视为同生态的 **下一代统一栈**。
 - 与 [DeFI](./defi-decoupled-dynamics-vla.md)：同属视频先验 + 逆动力学；DeFI 把 **前向（SVD）与逆向（DINO+VQ 自监督）** 预训练 **显式拆开**，并强调逆向模块需与 forward **同等规模** 预训练。
 
 ## 推荐继续阅读
 
 - 论文 HTML（方法细节锚点）：<https://arxiv.org/html/2512.15692v2>
 - 官方项目页（演示与 BibTeX）：<https://mimic-video.github.io/>
+- [Cosmos 3](../entities/cosmos-3.md) — NVIDIA 全模态世界模型平台（Predict2 系后继）
 - NVIDIA Cosmos 生态入口（项目页脚注）：<https://developer.nvidia.com/cosmos>
 
 ## 参考来源

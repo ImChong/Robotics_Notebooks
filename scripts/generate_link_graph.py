@@ -94,6 +94,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/policy-optimization.md": "策略优化（Policy Optimization）",
     "wiki/methods/amp-reward.md": "对抗运动先验（AMP & HumanX）",
     "wiki/methods/model-predictive-control.md": "模型预测控制（Model Predictive Control, MPC）",
+    "wiki/entities/mimickit.md": "运动模仿与控制（MimicKit）",
 }
 
 
