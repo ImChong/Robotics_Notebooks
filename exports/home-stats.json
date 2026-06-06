@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-06",
-  "node_count": 688,
-  "edge_count": 4965,
+  "node_count": 689,
+  "edge_count": 4984,
   "coverage": {
-    "covered": 686,
-    "total": 686,
+    "covered": 687,
+    "total": 687,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cosmos-3.md",
+      "detail_id": "entity-cosmos-3",
+      "label": "Cosmos 3（NVIDIA 全模态世界模型）",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mimic-video.md",
+      "detail_id": "wiki-methods-mimic-video",
+      "label": "mimic-video（Video-Action Model, VAM）",
+      "type": "method",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-so101-sim2real-lab-workflow.md",
+      "detail_id": "entity-nvidia-so101-sim2real-lab-workflow",
+      "label": "NVIDIA SO-101 Sim2Real 实验 workflow",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-resnet-deep-residual-learning.md",
       "detail_id": "entity-paper-resnet-deep-residual-learning",
@@ -113,14 +153,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/unitree-g1.md",
       "detail_id": "entity-unitree-g1",
       "label": "Unitree G1 (人形机器人)",
@@ -135,44 +167,12 @@
       "type": "task",
       "recency": "2026-06-05",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-gym-isaac-lab.md",
-      "detail_id": "entity-isaac-gym-isaac-lab",
-      "label": "Isaac Gym / Isaac Lab",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
-      "type": "entity",
-      "recency": "2026-06-05",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-06-05",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-resnet-deep-residual-learning.md",
-    "detail_id": "entity-paper-resnet-deep-residual-learning",
-    "label": "ResNet（Deep Residual Learning for Image Recognition）",
+    "path": "wiki/entities/cosmos-3.md",
+    "detail_id": "entity-cosmos-3",
+    "label": "Cosmos 3（NVIDIA 全模态世界模型）",
     "type": "entity",
     "recency": "2026-06-06",
     "source": "log.md"

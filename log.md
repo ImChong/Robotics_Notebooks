@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] ingest | sources/papers/cosmos3_arxiv_2606_02800.md、sources/sites/cosmos3-project.md、sources/repos/nvidia_cosmos.md — Cosmos 3 全模态 Physical AI 世界模型；wiki/entities/cosmos-3.md、wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md、wiki/methods/mimic-video.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md
+
 ## [2026-06-06] ingest | sources/papers/vision_backbone_detection_classics.md — 入库 ResNet (1512.03385) 与 YOLO v1 (1506.02640) 及视觉骨干/目标检测 wiki
 
 - 原始资料：[resnet_arxiv_1512_03385.md](sources/papers/resnet_arxiv_1512_03385.md)（<https://arxiv.org/abs/1512.03385>）、[yolo_arxiv_1506_02640.md](sources/papers/yolo_arxiv_1506_02640.md)（<https://arxiv.org/abs/1506.02640>）、[vision_backbone_detection_classics.md](sources/papers/vision_backbone_detection_classics.md)

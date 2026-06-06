@@ -62,6 +62,7 @@
 | [x] [bam_extended_friction_servos_arxiv_2410_08650.md](papers/bam_extended_friction_servos_arxiv_2410_08650.md) | BAM：舵机扩展摩擦 M1–M6 + 摆锤辨识 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）摘录与 wiki 映射 |
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
 | [x] [capvector_arxiv_2605_10903.md](papers/capvector_arxiv_2605_10903.md) | CapVector：参数空间 capability vector（θ_ao−θ_ft）合并 + 下游正交正则的 VLA 微调（arXiv:2605.10903，HKUSTGZ/浙大/西湖/清华/智源等）摘录与 wiki 映射 |
+| [x] [cosmos3_arxiv_2606_02800.md](papers/cosmos3_arxiv_2606_02800.md) | Cosmos 3：全模态 MoT 世界模型平台（语言/图像/视频/音频/动作，arXiv:2606.02800，NVIDIA Cosmos Lab）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [lingbot_map_arxiv_2604_14141.md](papers/lingbot_map_arxiv_2604_14141.md) | LingBot-Map：GCA 流式 3D 重建 + Paged KV（arXiv:2604.14141）摘录与 wiki 映射 |
 | [x] [mimic_video_arxiv_2512_15692.md](papers/mimic_video_arxiv_2512_15692.md) | mimic-video：Video-Action Model（VAM），互联网视频潜计划 + 流匹配动作解码器（arXiv:2512.15692）摘录与 wiki 映射 |
@@ -91,6 +92,7 @@
 | [x] [boyu_ai_hands_on_rl.md](repos/boyu_ai_hands_on_rl.md) | Hands-on-RL / 蘑菇书：中文 RL 教材 Jupyter 仓（PPO/SAC/MARL 等，配套 hrl.boyuai.com） |
 | [isaac_gym_isaac_lab.md](repos/isaac_gym_isaac_lab.md) | Isaac Gym / Isaac Lab |
 | [x] [nvidia_isaac_teleop.md](repos/nvidia_isaac_teleop.md) | Isaac Teleop：NVIDIA 统一仿真/真机 XR 遥操作、retargeting 与 Isaac Lab 集成 |
+| [x] [nvidia_cosmos.md](repos/nvidia_cosmos.md) | NVIDIA/cosmos：Cosmos 3 全模态世界模型开放平台（Diffusers / vLLM-Omni / NIM，OpenMDW-1.1） |
 | [pinocchio.md](repos/pinocchio.md) | Pinocchio 动力学库 |
 | [crocoddyl.md](repos/crocoddyl.md) | Crocoddyl 最优控制框架 |
 | [unitree.md](repos/unitree.md) | Unitree 硬件与 SDK |
@@ -279,6 +281,7 @@
 | [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
 | [x] [motion-tracking-axell-top.md](sites/motion-tracking-axell-top.md) | motion-tracking.axell.top：Axellwppr/motion_tracking 预训练策略浏览器演示 |
+| [x] [cosmos3-project.md](sites/cosmos3-project.md) | Cosmos 3 项目页 research.nvidia.com/labs/cosmos-lab/cosmos3（全模态 Physical AI 能力 demo 与榜单摘要，arXiv:2606.02800） |
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
 | [x] [mujoco-mjx-readthedocs.md](sites/mujoco-mjx-readthedocs.md) | MuJoCo 官方文档：MJX（readthedocs） |
