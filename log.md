@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-05] structural | docs — V23 P3 详情页「最近相关 ingest」时间线
+
+- 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 首项打勾
+- 前端改动：[docs/detail.html](docs/detail.html) 在 `detail-related` 与 `detail-recommended` 之间新增 `#detail-recent-ingest-section`（默认 `hidden`，空态整段含标题不渲染）；[docs/main.js](docs/main.js) 新增 `renderDetailRecentIngestTimeline`，并发取 `link-graph.json`（1-hop 邻居）与 `graph-stats.json`（`latest_wiki_nodes`）求交，窗口锚定最新一条 ingest 回溯 30 天，按 `recency` 倒序、最多 6 项；[docs/style.css](docs/style.css) 新增 `.detail-recent-ingest-*` 时间线样式
+- 验证：`node --check` + `eslint docs/main.js` 全绿、`make lint` 全部检查通过；BFM 详情页截图命中 5 项
+
 ## [2026-06-05] structural | wiki — 连接度前 50 hub 页补齐英文缩写速查（第 11–50 名，40 页）
 
 - 依据 `exports/link-graph.json` 总度排序：第 1–10 名已在 main，本次为第 11–50 名共 40 页新增 `## 英文缩写速查`；批量工具 `scripts/batch_insert_abbrev_glossary.py`
