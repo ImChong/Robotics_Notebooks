@@ -50,18 +50,18 @@
 
 - [x] **详情页"最近相关 ingest"时间线**：
     - [x] 在 `docs/detail.html` 的「关联页面」附近新增 `#detailRecentIngestTimeline` 容器：基于 `exports/link-graph.json` 的 `latest_wiki_nodes` 与当前节点 1-hop 邻居取交集，展示最近 30 天内入库的相关页面（最多 6 项，按 `recency` 倒序）；空态降级隐藏（不显示标题）。（2026-06-05：在 `detail-related` 与 `detail-recommended` 之间新增 `#detail-recent-ingest-section`（默认 `hidden`，空态整段含标题不渲染）；`docs/main.js` 新增 `renderDetailRecentIngestTimeline(detailPage)`，并发拉取 `link-graph.json`（算 1-hop 邻居）与 `graph-stats.json`（取 `latest_wiki_nodes`）取交集，窗口锚定到最新一条 ingest 回溯 30 天，避免静态站随时间陈化整段消失，按 `recency` 倒序、最多 6 项，复用 `WIKI_TYPE_LABEL_HOME` 类型标签；在 `renderDetailMiniMap` 调用后挂载。`docs/style.css` 新增 `.detail-recent-ingest-*` 轻量时间线样式（左缘强调条 + 日期徽标 + 类型/标题两行）。`node --check` + `eslint docs/main.js` 全绿、`make lint` 全部检查通过；BFM 详情页验证截图命中 5 项（Foundation Policy / SONIC / BFM 分类 02 / 选型指南 / WBT pipeline）。）
-- [ ] **图谱页"专题视图"扩充**：
-    - [ ] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V22 10 项基础上新增「全身运动跟踪（WBT）」「跨具身迁移」「真机安全微调」三个专题；命中规则复用 V22 community id + path 片段双路并集机制；新增视图均配 Puppeteer 截图归档到 `.cursor-artifacts/screenshots/`。
+- [x] **图谱页"专题视图"扩充**：
+    - [x] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V22 10 项基础上新增「全身运动跟踪（WBT）」「跨具身迁移」「真机安全微调」三个专题；命中规则复用 V22 community id + path 片段双路并集机制；新增视图均配 Puppeteer 截图归档到 `.cursor-artifacts/screenshots/`。（2026-06-06：`TOPIC_FILTERS` 新增三项——`wbt`（segments：wbt/tracking/beyondmimic/sdamp/heracles/opentrack/maskedmimic/sonic/any2any/twist/twist2，命中 22 节点）、`cross-embodiment`（segments：embodiment/any2any/transfer，命中 3 节点）、`safe-fine-tuning`（community-13 + segments：safe/safety/cbf/clf/barrier/lyapunov/slowrl/lora/cmdp，命中 18 节点）；`#filter-topic-chips` 同步新增三枚 `data-topic` chip（🕺 WBT / 🔀 跨具身 / 🛡️ 安全微调），复用既有 `nodeMatchesTopic` 双路并集逻辑无需改动。把已过时的 `scripts/screenshot_graph_topic.cjs`（仍点击 V22 移除的 `#topic-view` 下拉）改为展开 `#filter-topic-section` 后点击 `[data-topic]` chip。`make lint` 全绿（仅 1 条无关信息型预警）、内联 JS `new Function` 语法校验通过；三专题视图截图归档至 `.cursor-artifacts/screenshots/graph-topic-{wbt,cross-embodiment,safe-fine-tuning}.png`。）
 
 ---
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（含新引入的 `entity_paper_metadata_check` INFO 级检查不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 445**，边数 **≥ 3320**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **170 条** 以上（重点补 WBT 跨具身 / 真机安全微调 矛盾检测规则）。
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
-- [ ] `log.md` 记录 V23 关键改动。
+- [x] `make lint`: 0 errors（含新引入的 `entity_paper_metadata_check` INFO 级检查不阻塞 CI）。（2026-06-06：0 errors，仅 1 条无关信息型预警）
+- [x] 知识图谱节点数 **≥ 445**，边数 **≥ 3320**（见 `exports/graph-stats.json`）。（2026-06-06：690 节点 / 4993 边）
+- [x] 事实库扩展至 **170 条** 以上（重点补 WBT 跨具身 / 真机安全微调 矛盾检测规则）。（2026-06-06：172 条）
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。（2026-06-06：`largest_community_ratio` 0.104、warning false）
+- [x] `log.md` 记录 V23 关键改动。（2026-06-06：P0–P3 各项均有 log 条目，P3 末项与全部完成已补记）
 
 ---
 

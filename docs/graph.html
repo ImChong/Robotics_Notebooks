@@ -1475,6 +1475,9 @@
           <button class="filter-topic-chip" type="button" data-topic="learning" title="学习范式 IL/RL"><span>🎓</span><span>IL/RL</span></button>
           <button class="filter-topic-chip" type="button" data-topic="sim2real" title="Sim2Real"><span>🔁</span><span>Sim2Real</span></button>
           <button class="filter-topic-chip" type="button" data-topic="state-estimation" title="状态估计"><span>📊</span><span>状态估计</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="wbt" title="全身运动跟踪（WBT）"><span>🕺</span><span>WBT</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="cross-embodiment" title="跨具身迁移"><span>🔀</span><span>跨具身</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="safe-fine-tuning" title="真机安全微调"><span>🛡️</span><span>安全微调</span></button>
         </div>
       </details>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
@@ -1781,6 +1784,23 @@
       'state-estimation': {
         segments: new Set([
           'estimation','ekf','ukf','slam','vio','odometry'
+        ])
+      },
+      'wbt': {
+        segments: new Set([
+          'wbt','tracking','beyondmimic','sdamp','heracles','opentrack',
+          'maskedmimic','sonic','any2any','twist','twist2'
+        ])
+      },
+      'cross-embodiment': {
+        segments: new Set([
+          'embodiment','any2any','transfer'
+        ])
+      },
+      'safe-fine-tuning': {
+        communities: new Set(['community-13']),
+        segments: new Set([
+          'safe','safety','cbf','clf','barrier','lyapunov','slowrl','lora','cmdp'
         ])
       }
     };
