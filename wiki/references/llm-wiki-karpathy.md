@@ -3,17 +3,34 @@ type: reference
 tags: [methodology, llm, wiki, karpathy, knowledge-base]
 status: active
 sources:
-  - "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
+  - ../../sources/blogs/karpathy_llm_wiki_gist.md
+  - ../../sources/sites/karpathy-ai.md
+related:
+  - ../entities/andrej-karpathy.md
+  - ../overview/robot-learning-overview.md
 summary: "Karpathy 提出的 LLM Wiki 模式：通过 LLM 持续维护结构化 markdown 知识库，实现知识积累而非每次重新检索。"
-updated: 2026-05-17
+updated: 2026-06-06
 ---
 
 # LLM Wiki
 
-> Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13
+**LLM Wiki**：用 LLM **增量编译并维护持久 markdown 知识库**（ingest / query / lint），让 cross-reference 与综合洞见 **复利积累**，而非每次 RAG 重新检索原始资料。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 负责读源、写 wiki、交叉引用与 lint 的维护代理 |
+| RAG | Retrieval-Augmented Generation | 查询时检索片段再生成；本模式强调 **预编译 wiki** 优于纯 RAG |
+| BM25 | Best Matching 25 | 经典稀疏检索；Gist 推荐 qmd 等 hybrid BM25/vector 检索 wiki |
+| MCP | Model Context Protocol | 代理工具协议；qmd 等可提供 MCP 供 LLM 原生搜索 wiki |
+
+> Source: [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) · Saved: 2026-04-13 · 仓库归档: [sources/blogs/karpathy_llm_wiki_gist.md](../../sources/blogs/karpathy_llm_wiki_gist.md)
 
 ## 参考来源
 
+- [LLM Wiki Gist 原始资料](../../sources/blogs/karpathy_llm_wiki_gist.md)
+- [Andrej Karpathy 个人站点原始资料](../../sources/sites/karpathy-ai.md)
 - [karpathy/llm-wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — Original Gist
 - [Robotics_Notebooks Methodology](../../AGENTS.md) — How this project applies the pattern
 
@@ -92,6 +109,7 @@ This document is intentionally abstract. It describes the idea, not a specific i
 
 ## 关联页面
 
+- [Andrej Karpathy](../entities/andrej-karpathy.md) — 模式提出者与 Tesla / CS231n / Zero to Hero 背景
 - [Robot Learning Overview](../overview/robot-learning-overview.md) — 本知识库的三层架构（sources → wiki → schema）正是基于此方法论
 - [Ingest Workflow](../../schema/ingest-workflow.md) — Karpathy 循环在本项目中的具体实现
 - [Superpowers（obra）](../entities/superpowers-obra.md) — 面向编码代理的 **技能 + 交付流程** 方法论，可与本页的「持久 wiki」对照阅读

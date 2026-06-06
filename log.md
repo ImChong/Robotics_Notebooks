@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] ingest | sources/sites/karpathy-ai.md、sources/blogs/karpathy_llm_wiki_gist.md — Andrej Karpathy 个人站与 LLM Wiki Gist；wiki/entities/andrej-karpathy.md、wiki/references/llm-wiki-karpathy.md、wiki/overview/robot-learning-overview.md
+
 ## [2026-06-06] structural | wiki — 全库 587 页英文缩写速查区块重排至「一句话定义」后、「为什么重要」前；新增 reorder 脚本与 lint 位置校验
 
 - 工具：`scripts/wiki_abbrev_section.py`、`scripts/reorder_abbrev_glossary.py`；`lint_wiki.py` 新增位置错误阻塞项；`gen_abbrev_glossary.py` 插入锚点对齐 schema

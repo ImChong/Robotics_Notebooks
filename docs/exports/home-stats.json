@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-06",
-  "node_count": 689,
-  "edge_count": 4984,
+  "node_count": 690,
+  "edge_count": 4993,
   "coverage": {
-    "covered": 687,
-    "total": 687,
+    "covered": 688,
+    "total": 688,
     "percent": 100
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/andrej-karpathy.md",
+      "detail_id": "entity-andrej-karpathy",
+      "label": "Andrej Karpathy",
+      "type": "entity",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/references/llm-wiki-karpathy.md",
+      "detail_id": "wiki-references-llm-wiki-karpathy",
+      "label": "LLM Wiki",
+      "type": "reference",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-learning-overview.md",
+      "detail_id": "wiki-overview-robot-learning-overview",
+      "label": "Robot Learning Overview",
+      "type": "overview",
+      "recency": "2026-06-06",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/sim2real.md",
       "detail_id": "wiki-concepts-sim2real",
@@ -143,37 +167,13 @@
       "type": "concept",
       "recency": "2026-06-06",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-walk-these-ways-quadruped-mob.md",
-      "detail_id": "entity-paper-walk-these-ways-quadruped-mob",
-      "label": "Walk These Ways: Tuning Robot Control for Generalization with Multiplicity of Behavior",
-      "type": "entity",
-      "recency": "2026-06-06",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/sim2real.md",
-    "detail_id": "wiki-concepts-sim2real",
-    "label": "Sim2Real",
-    "type": "concept",
+    "path": "wiki/entities/andrej-karpathy.md",
+    "detail_id": "entity-andrej-karpathy",
+    "label": "Andrej Karpathy",
+    "type": "entity",
     "recency": "2026-06-06",
     "source": "log.md"
   }
