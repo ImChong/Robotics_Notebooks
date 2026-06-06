@@ -21,6 +21,13 @@ summary: "Aholo Viewer 是 manycoretech 的高性能 Web 3DGS/Mesh 渲染 monore
 
 用 **Chunked Streaming LoD** 在 Web 上同时承载 **超大 3DGS 与 Mesh**，并以文档站 / Playground 降低集成门槛。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| API | Application Programming Interface | 应用程序编程接口 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+
 ## 为什么重要
 
 - **3DGS + Mesh 混渲**：许多机器人/数字孪生场景需要 **splat 外观 + 传统网格碰撞体或 CAD** 同屏；Aholo 公开定位覆盖两类几何。
@@ -71,13 +78,6 @@ flowchart TB
 - [Spark vs Aholo 对比](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [GS-Playground](./gs-playground.md)
 - [World Labs](./world-labs.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| API | Application Programming Interface | 应用程序编程接口 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
 
 ## 参考来源
 

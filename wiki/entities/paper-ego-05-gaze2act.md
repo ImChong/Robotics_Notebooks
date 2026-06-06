@@ -20,6 +20,14 @@ sources:
 
 **Gaze2Act** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 05/9** 篇，归类为 **02 人→机器人**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要
 
 - 将人类第一视角 gaze 映射到机器人视角，作为 VLA 条件输入，补语言难以精确描述的空间意图。
@@ -44,14 +52,6 @@ sources:
 ## 实验与评测
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

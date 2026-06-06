@@ -20,6 +20,22 @@ summary: "Lynch & Park 的现代机器人学经典教材，独特之处是全程
 
 **Modern Robotics: Mechanics, Planning, and Control** 是 Kevin M. Lynch（Northwestern）与 Frank C. Park（SNU）2017 年由 Cambridge University Press 出版的本科级机器人学教材。它在传统教材（Craig、Spong、Siciliano）之外提供了**用李群 / 螺旋理论统一描述刚体运动、运动学与动力学**的视角，配套 Coursera 6 门专项课程与开源库，是本知识库传统机器人学部分的主要参考底座。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 为什么重要？
 
 1. **语言上的统一**：传统教材用 D-H 参数 + 旋转矩阵 + 欧拉角，每章独立；Lynch-Park 全程用 SE(3)、twist、PoE，链条干净。
@@ -81,22 +97,6 @@ Lynch-Park 将下面这些贯穿全书：
 - [Pinocchio](./pinocchio.md) — 直接使用本教材数学语言的现代机器人库
 - [线性代数学习策展](./linear-algebra-curriculum.md) — L0 通用矩阵语言，再接本教材 Ch 2–3
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 
 ## 参考来源
 

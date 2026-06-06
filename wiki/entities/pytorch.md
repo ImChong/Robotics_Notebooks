@@ -15,6 +15,20 @@ updated: 2026-05-15
 
 面向研究与生产的 **动态图友好** 深度学习运行时：同一套 Python API 既能快速实验，又能通过分布式、编译与多语言/边端栈延伸到部署。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| CPU | Central Processing Unit | 中央处理器 |
+| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+
 ## 为什么重要？
 
 - **研究闭环快**：张量运算与自动求值与 Python 控制流自然结合，适合算法迭代频繁的机器人学习课题。
@@ -60,20 +74,6 @@ flowchart LR
 - [强化学习](../methods/reinforcement-learning.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
 - [LeRobot（Hugging Face）](./lerobot.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| CPU | Central Processing Unit | 中央处理器 |
-| CUDA | Compute Unified Device Architecture | NVIDIA GPU 通用并行计算平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
 
 ## 参考来源
 

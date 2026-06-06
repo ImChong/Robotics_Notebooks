@@ -33,6 +33,30 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 
 **一句话定义：** 当一个人形平台的目标函数里同时出现「表演可信度（character believability）」与「物理可控性（physical controllability）」时，工程取舍不再是纯粹的功能优化，而是**风格先验 × 机电包络 × 安全约束** 的三方博弈——这是「角色化人形（Character Humanoid）」与「研究/工业型人形」最容易混淆又最值得分清的一类边界问题。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+
 ## 为什么单独立一页
 
 [Motion Retargeting](./motion-retargeting.md) 与 [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) 已经讲清楚「人怎么动 → 机器人怎么动」的几何与物理一致化链路；但仓库内仍混着多组**目标函数不同的人形平台**：
@@ -171,30 +195,6 @@ flowchart LR
 - [Disney Olaf 论文（arXiv:2512.16705）](https://arxiv.org/abs/2512.16705) — 实机角色化人形最完整的工程报告
 - [Peng et al., DeepMimic（arXiv:1804.06401）](https://arxiv.org/abs/1804.06401) — 物理角色 RL 模仿的奠基论文
 - [Peng et al., AMP（SIGGRAPH 2021 主页）](https://xbpeng.github.io/projects/AMP/index.html) — 判别器驱动的风格保持
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| CBF | Control Barrier Function | 用前向不变集保证安全约束的控制屏障函数 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
 
 ## 参考来源
 

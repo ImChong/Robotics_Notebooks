@@ -22,6 +22,14 @@ sources:
 
 **定位**：面向「可立即运行」的 MuJoCo 人形演示——仓库内置 **Walker 泰山** 预训练策略（`.pt`）、`e3.yaml` 与手柄标定脚本，强调速度指令跟踪、楼梯与扰动模式切换。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 核心机制（工程切片）
 
 - **控制回路**：配置中的 `simulation_dt`、`control_decimation` 与 PD `kps`/`kds` 共同决定仿真步长、控制频率与关节阻抗；观测/动作维度在 `e3.yaml` 中显式给出（README 示例为 72 维观测、21 维动作）。
@@ -54,14 +62,6 @@ flowchart TD
 
 - **[生态总览](./jackhan-walke3-e3-ecosystem.md)**：把本仓与数据集、控制器、FEAP 线放在同一张图里。
 - **[WalkE3 控制器](./jackhan-walke3-controller.md)**：若要从「单机演示」升级到「仿真进程 + 控制进程」分离栈，可对照阅读。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

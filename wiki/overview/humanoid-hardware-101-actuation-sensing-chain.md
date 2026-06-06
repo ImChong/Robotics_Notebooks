@@ -19,6 +19,14 @@ sources:
 
 > **图谱分类节点**：**电机、减速器、编码器** 三章合并；关节「转什么、减多少、知在哪」的部件层，集成见 [04 集成执行器](./humanoid-hardware-101-integrated-actuators.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 电机（核心结论）
 
 - 关节主流：**永磁无刷直流伺服**，**有传感器电子换相**、**外转子**、**径向磁通**、**钕永磁**。
@@ -57,14 +65,6 @@ sources:
 - [直线传动与轴承](./humanoid-hardware-101-linear-transmission-bearings.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
 - [电机驱动与总线协议](./motor-drive-firmware-bus-protocols.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 
 ## 参考来源
 

@@ -17,6 +17,13 @@ summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函
 
 **SayCan**：把大型语言模型当作高层任务分解器，把学得的价值函数或成功率估计当作**物理 affordance 过滤器**，两者结合输出当前环境下可执行的指令序列。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 主要技术路线
 
 - **分层接口**：LLM 产出候选子技能序列；学得的价值或成功率估计裁剪「物理上可行」的一步（affordance grounding）。
@@ -26,13 +33,6 @@ summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函
 
 - [VLA](./vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
 ## 参考来源
 

@@ -17,6 +17,16 @@ sources:
 
 > **图谱分类节点**：**V 腿部的热学现实** + **VI 从 PWM 到力矩控制**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| FOC | Field-Oriented Control | 无刷电机的磁场定向控制 |
+| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| CAN-FD | CAN with Flexible Data-rate | CAN 的灵活数据速率扩展，更高带宽 |
+
 ## 热学（V）
 
 - 谐波 **金属弯曲摩擦** → 连续重载下温升快。
@@ -37,16 +47,6 @@ sources:
 
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [决策与物种](./humanoid-actuator-102-decision-species.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| FOC | Field-Oriented Control | 无刷电机的磁场定向控制 |
-| PWM | Pulse-Width Modulation | 脉宽调制，驱动电机与功率器件 |
-| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
-| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
-| CAN-FD | CAN with Flexible Data-rate | CAN 的灵活数据速率扩展，更高带宽 |
 
 ## 参考来源
 

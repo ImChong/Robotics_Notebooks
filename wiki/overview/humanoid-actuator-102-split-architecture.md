@@ -18,6 +18,12 @@ sources:
 
 > **图谱分类节点**：**III 趋同解法**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+
 ## 核心结论
 
 Tesla、Figure、Apptronik 等 **重载通用人形** 独立趋同：**旋转谐波**（肩腕髋旋转）+ **直线行星滚柱丝杠**（膝踝等冲击关节）。非唯一架构：Unitree 偏 **高动态旋转**；Digit 偏 **SEA**；Atlas 电动变体各异。
@@ -45,12 +51,6 @@ Tesla、Figure、Apptronik 等 **重载通用人形** 独立趋同：**旋转谐
 
 - [减速与反射惯量](./humanoid-actuator-102-gear-reflected-inertia.md)
 - [Hardware 101 · 直线与轴承](./humanoid-hardware-101-linear-transmission-bearings.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
 
 ## 参考来源
 

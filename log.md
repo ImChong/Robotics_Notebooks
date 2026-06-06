@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] structural | wiki — 全库 587 页英文缩写速查区块重排至「一句话定义」后、「为什么重要」前；新增 reorder 脚本与 lint 位置校验
+
+- 工具：`scripts/wiki_abbrev_section.py`、`scripts/reorder_abbrev_glossary.py`；`lint_wiki.py` 新增位置错误阻塞项；`gen_abbrev_glossary.py` 插入锚点对齐 schema
+- 代表页：[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/lerobot.md](wiki/entities/lerobot.md)、[wiki/entities/paper-bfm-01-bfm-zero.md](wiki/entities/paper-bfm-01-bfm-zero.md)、[wiki/queries/sim2real-checklist.md](wiki/queries/sim2real-checklist.md)
+
 ## [2026-06-06] ingest | sources/papers/vision_backbone_detection_classics.md — 入库 ResNet (1512.03385) 与 YOLO v1 (1506.02640) 及视觉骨干/目标检测 wiki
 
 - 原始资料：[resnet_arxiv_1512_03385.md](sources/papers/resnet_arxiv_1512_03385.md)（<https://arxiv.org/abs/1512.03385>）、[yolo_arxiv_1506_02640.md](sources/papers/yolo_arxiv_1506_02640.md)（<https://arxiv.org/abs/1506.02640>）、[vision_backbone_detection_classics.md](sources/papers/vision_backbone_detection_classics.md)

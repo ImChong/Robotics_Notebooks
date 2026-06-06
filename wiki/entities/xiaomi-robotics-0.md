@@ -23,6 +23,17 @@ summary: "Xiaomi-Robotics-0 是小米开源的约 4.7B 参数 VLA：Qwen3-VL-4B 
 
 用 **冻结 VLM 的 KV 特征** 驱动 **flow-matching DiT** 生成连续动作块，并通过 **前缀条件 + 专门注意力与损失设计** 缓解异步 rollout 时的 **时序捷径** 与 **chunk 边界抖动**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| SOTA | State of the Art | 当前最优水平 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **把「VLA 延迟」写进训练目标**：同步执行时机器人需等推理结束，异步执行则引入 **跨 chunk 一致性** 与 **模型抄近路模仿前缀** 等新问题；该工作把相关对策与部署对齐（时间戳、Δtc、Te 等）写清楚，便于和通用 I/O 栈（如 [RIO（Robot I/O）](./robot-io-rio.md)）对照阅读。
@@ -96,17 +107,6 @@ flowchart LR
 - [Teleoperation（遥操作）](../tasks/teleoperation.md) — 房内大规模示教采集的工程参照
 - [Manipulation（操作）](../tasks/manipulation.md) — 桌面与 deformable 物体操作任务语境
 - [RIO（Robot I/O）](./robot-io-rio.md) — 跨形态实时 I/O 与异步策略节点的另一种抽象
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| SOTA | State of the Art | 当前最优水平 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

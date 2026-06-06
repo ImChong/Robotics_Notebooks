@@ -19,6 +19,13 @@ sources:
 
 **定位**：把「**状态机内 RL**」与「**外接 Python 算法**」解耦：模板通过 **LCM** 订阅 `development_state_t`、发布 `development_command_t`，并在 `AlgorithmBase` 内固定 **50Hz 推理 + 500Hz 指令刷新** 的双线程节奏；示例 `dance_algorithm` 演示 ONNX + `.npz` 动作序列混合管线。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 核心机制（工程切片）
 
 - **观测/动作契约**：子类必须实现 `compute_observation(state)` 与 `process_action(state, action)`；`process_action` 内用 `latest_command_lock` 更新 `latest_command` 字典以适配下游关节分组。
@@ -49,13 +56,6 @@ flowchart TD
 
 - **[WalkE3 控制器](./jackhan-walke3-controller.md)**：模板所对接的宿主进程与模式切换语义。
 - **[强化学习](../methods/reinforcement-learning.md)**：策略侧常见输出为关节目标或残差，本模板聚焦部署壳而非训练。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

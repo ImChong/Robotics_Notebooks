@@ -19,6 +19,18 @@ sources:
 
 **AMASS** 是 MPI-IS Perceiving Systems 维护的 **人体运动元数据集**：把多份独立 **光学标记动捕** 序列转换到统一的 **SMPL**（及网格）参数化上，使动画、可视化与机器学习可以在同一表示下吃「合并后的」人类动作分布。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+
 ## 为什么重要？
 
 - **打破数据集孤岛**：不同实验室 MoCap 的标记布局与后处理各异；统一到 SMPL 后，便于与 **重定向**、**生成模型**、**判别式运动先验（如 AMP）** 等下游共享同一接口。
@@ -53,18 +65,6 @@ flowchart LR
 - **[ProtoMotions](./protomotions.md)**：官方文档把 AMASS 作为大规模并行训练的典型数据来源之一。
 - **[MimicKit](./mimickit.md)**：研究管线中常出现从 AMASS（SMPL）到目标骨架的重定向工具链叙述。
 - **[AMP 奖励与运动先验](../methods/amp-reward.md)**：MoCap 风格先验训练常以 AMASS 类统一表示为输入。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
 
 ## 参考来源
 

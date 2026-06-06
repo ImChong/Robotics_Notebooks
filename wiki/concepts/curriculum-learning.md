@@ -17,6 +17,21 @@ Curriculum Learning 是一种训练策略：在学习早期提供更简单的任
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+
 ## 为什么重要
 
 在机器人强化学习中，直接从最终任务开始训练常常遇到：
@@ -106,21 +121,6 @@ terrain_level = clip(terrain_level + delta, 0, max_level)
 - **奖励归一化**：不同难度的奖励量级不同，需在课程变化时注意归一化
 
 ---
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
 
 ## 参考来源
 

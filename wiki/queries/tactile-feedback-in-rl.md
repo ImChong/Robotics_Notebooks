@@ -22,6 +22,18 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 
 在传统视觉引导的操作（Manipulation）任务中，一旦机械手极其靠近或包裹住目标物体，摄像头就会产生严重的**视觉遮挡（Occlusion）**。此时，如果仅靠视觉，机器人相当于“盲人摸象”。将**触觉感知（Tactile Sensing）**作为额外模态引入强化学习（RL），是目前解决滑动、形变和微观对齐问题的核心方向。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+
 ## 1. 触觉作为状态输入 (State Representation)
 
 如何将触觉信号喂给策略网络（Actor-Critic）？这取决于你使用的触觉传感器类型：
@@ -59,18 +71,6 @@ summary: "如何在 RL 中利用触觉反馈提升操作鲁棒性：介绍了多
 - [视触觉融合 (Visuo-Tactile Fusion)](../concepts/visuo-tactile-fusion.md)
 - [Manipulation 任务](../tasks/manipulation.md)
 - [Behavior Cloning Loss](../formalizations/behavior-cloning-loss.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
 
 ## 参考来源
 - Yuan, W., et al. (2017). *GelSight: High-resolution robot tactile sensors for estimating geometry and force*.

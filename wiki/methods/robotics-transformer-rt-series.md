@@ -19,6 +19,14 @@ summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规
 
 **Robotics Transformer（RT 系列）**：把多视角图像与自然语言指令编码为 token，并输出离散化机器人动作 token，使单一 Transformer 可在海量真实演示上训练成多任务操控策略；**RT-2** 进一步用视觉–语言大模型作骨干，将网络知识与机器人动作对齐（即常见所称 **VLA**）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 主要技术路线
 
 - **统一序列接口**：视觉 token + 语言 token → 动作 token，推理频率与工程栈与 [Foundation Policy](../concepts/foundation-policy.md) 叙事一致。
@@ -39,14 +47,6 @@ summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规
 - [VLA](./vla.md)
 - [Foundation Policy](../concepts/foundation-policy.md)
 - [DIAL](./dial-instruction-augmentation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 

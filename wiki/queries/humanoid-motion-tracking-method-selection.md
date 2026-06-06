@@ -21,6 +21,16 @@ sources:
 
 # 人形运动跟踪方法选型指南
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBT | Whole-Body Tracking | 参考动作跟踪类方法总称 |
+| AMP | Adversarial Motion Prior | 分布约束式运动先验路线 |
+| RL | Reinforcement Learning | 任务奖励与先验联合优化 |
+| MoCap | Motion Capture | 参考动作与风格数据来源 |
+| Sim2Real | Simulation to Real | 跟踪策略上真机的迁移考量 |
+
 ## TL;DR 决策路径
 
 ```mermaid
@@ -148,16 +158,6 @@ flowchart TD
 - [人形 RL Cookbook](./humanoid-rl-cookbook.md)
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBT | Whole-Body Tracking | 参考动作跟踪类方法总称 |
-| AMP | Adversarial Motion Prior | 分布约束式运动先验路线 |
-| RL | Reinforcement Learning | 任务奖励与先验联合优化 |
-| MoCap | Motion Capture | 参考动作与风格数据来源 |
-| Sim2Real | Simulation to Real | 跟踪策略上真机的迁移考量 |
 
 ## 一句话记忆
 

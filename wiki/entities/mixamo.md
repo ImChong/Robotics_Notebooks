@@ -19,6 +19,15 @@ sources:
 
 **Mixamo** 是 **Adobe** 旗下的 **Web 端角色动画服务**：浏览并下载带骨骼的 3D 角色与 **大量全身动作**（站点描述为专业演员动捕后迁移到角色），也支持上传自定义人形网格做 **Auto-Rigging**，并导出到常见 DCC 与游戏引擎工作流。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 为什么重要？
 
 - **极低摩擦的「人类动作占位」**：在预研阶段需要人形参考轨迹驱动渲染或交互 Demo 时，比自建 MoCap 室更快。
@@ -36,15 +45,6 @@ sources:
 - **[Motion Retargeting](../concepts/motion-retargeting.md)**：把 Mixamo 动作接到机器人或物理仿真时的必经概念页。
 - **[MotionCode](./motioncode.md)**：同属「产业侧人体运动资产」叙事，可对照商业数据供应商与自采 MoCap。
 - **[ZEST](../methods/zest.md)**：讨论异构人类运动数据（含非物理真实动画）作为 RL 输入时的框架参照。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

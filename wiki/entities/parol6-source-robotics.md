@@ -19,6 +19,13 @@ summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页
 
 **PAROL6** 是 **Source Robotics** 推出的 **开源桌面六轴机械臂**：强调 **低成本、可 DIY、ROS 控制**；产品介绍在 **[source-robotics.com/pages/robots](https://source-robotics.com/pages/robots)**，技术文档在 **[PAROL-docs](https://source-robotics.github.io/PAROL-docs/)**，源码与硬件设计多在作者 **[PCrnjak](https://github.com/PCrnjak)** 的 GitHub 仓库中维护。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要
 
 - **教育向开源臂补充**：与 **myCobot** 等桌面臂并列时，PAROL6 提供另一条 **硬件开源度与社区节奏** 的对比样本。
@@ -42,13 +49,6 @@ summary: "Source Robotics PAROL6：开源桌面六轴机械臂；官网产品页
 ## 推荐继续阅读
 
 - PAROL-docs 中 **ROS bringup** 章节（以站点版本为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

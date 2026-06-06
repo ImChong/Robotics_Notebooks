@@ -19,6 +19,12 @@ sources:
 
 > **图谱分类节点**：**04 Ego+Exo**；总地图见 [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+
 ## 核心问题
 
 **只看第一视角够不够？** Ego 擅长临场执行细节；Exo 补全人与物体的整体关系，3D 环境记忆抑制空间漂移。
@@ -34,12 +40,6 @@ sources:
 
 - [视频作为仿真](../concepts/video-as-simulation.md)
 - [世界模型分类 03](./ego-category-03-world-models.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
 
 ## 参考来源
 

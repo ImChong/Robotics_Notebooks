@@ -33,6 +33,17 @@ summary: "GenCAD-3D（arXiv:2509.15246）：对比学习对齐点云/网格与 C
 
 **把几何观测与 CAD program 压到同一潜空间，用扩散先验完成「扫描/网格 → 命令序列」，并用 SynthBal 让模型在长尾高复杂度样本上也能收敛。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 为什么重要
 
 - **逆向工程自动化：** 备件断供、老设备翻新等场景常只有 **扫描点云** 而无历史 CAD；可编辑 **CAD program** 比纯 mesh 更利于 **改公差、改特征、下 CAM**。
@@ -88,17 +99,6 @@ flowchart TB
 - [GenCAD-3D 项目页](https://gencad3d.github.io/)
 - [arXiv:2509.15246](https://arxiv.org/abs/2509.15246)
 - [GenCAD-3D GitHub](https://github.com/yunomi-git/GenCAD-3D) · [HF 数据集](https://huggingface.co/datasets/yu-nomi/GenCAD_3D)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
 
 ## 参考来源
 

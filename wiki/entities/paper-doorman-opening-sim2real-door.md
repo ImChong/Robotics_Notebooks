@@ -29,6 +29,22 @@ summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 lo
 
 **DoorMan** 是 NVIDIA GEAR 等团队的人形 **视觉 loco-manipulation** 论文（arXiv:2512.01061，CVPR 2026）：策略 **完全在仿真中训练**，部署时仅 **机载 RGB + 本体感知**，在 **Unitree G1** 上对 **未见过的真实门** 做 **零样本** 开关门与穿行。与姊妹工作 [VIRAL](./paper-viral-humanoid-visual-sim2real.md) 同属 [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) 开源栈，但 DoorMan 强调 **铰接接触 + 长时域** 下的 **像素到关节目标** 迁移与 **GRPO 自举**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 为什么重要
 
 - **任务对准日常难点**：门把手弹簧负载、铰链约束力与 **全身平衡** 强耦合，是「看似简单、实则难」的 **接触丰富 loco-manipulation** 代表。
@@ -116,23 +132,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
 
 ## 参考来源
 

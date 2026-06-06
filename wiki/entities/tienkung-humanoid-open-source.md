@@ -18,6 +18,13 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 
 **天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心**推动的开源人形平台：转载清单给出 **云端文档总览**、**x-humanoid.com 开源页** 与 GitHub **[Open-X-Humanoid/TienKung_Docs](https://github.com/Open-X-Humanoid/TienKung_Docs)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SDK | Software Development Kit | 软件开发工具包 |
+
 ## 为什么重要
 
 - **「中心制」分发**：结构、电气、ROS、SDK 与上层算法资料并行更新，读者需固定一个「跟踪主分支」的习惯。
@@ -40,13 +47,6 @@ summary: "北京人形机器人创新中心「天工」Lite/Pro：URDF、STEP、
 ## 推荐继续阅读
 
 - [TienKung_Docs 仓库](https://github.com/Open-X-Humanoid/TienKung_Docs)（默认分支 README）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| SDK | Software Development Kit | 软件开发工具包 |
 
 ## 参考来源
 

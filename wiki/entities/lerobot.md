@@ -14,6 +14,16 @@ related:
 
 **LeRobot** 是由 Hugging Face 开发并维护的一个**具身智能全栈框架**。它旨在将自然语言处理（NLP）领域的成熟生态（如 `transformers` 库和模型 Hub）迁移到机器人领域，提供从数据采集、策略训练到实物部署的一站式工具。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+
 ## 为什么重要？
 
 在具身智能的爆发期，LeRobot 扮演了“机器人届的 Transformers”角色：
@@ -34,16 +44,6 @@ related:
 - **互补 I/O 栈**：[RIO（Robot I/O）](./robot-io-rio.md) 侧重 **本机实时闭环** 与可切换中间件上的 **异步策略推理**；官方文档叙述可 **导出到 LeRobot / DROID 等格式** 再进入常见训练管线，二者常在「采集/部署」与「数据集/训练」两侧分工。
 - **NVIDIA 官方课：** [SO-101 Sim2Real 实验 workflow](./nvidia-so101-sim2real-lab-workflow.md) 用 `lerobot-record`（`so101_follower` / `so101_leader`）采集真机少量演示，并与 Isaac Lab 仿真演示做 Co-training。
 - **整机项目协作：** [Tnkr](./tnkr.md) 侧重把 CAD、线束、代码版本与部署/运行数据收进同一开源项目仓库；训练侧仍常导出到 LeRobot 等数据集格式，二者分工不同。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| ACT | Action Chunking Transformer | 预测动作块的序列模型架构，常与 ALOHA 配套 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
 
 ## 参考来源
 - [LeRobot 仓库归档](../../sources/repos/lerobot.md) — 本批导航/SLAM 栈 ingest 同步的官方 GitHub source

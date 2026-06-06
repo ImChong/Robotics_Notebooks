@@ -25,6 +25,16 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 
 **Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与 **可复用技能潜空间（ASE）** 等方法体系化，并推动 **动力学随机化 Sim2Real** 在 locomotion 上的早期标杆实践；工程上通过 [MimicKit](https://github.com/xbpeng/MimicKit) 与 [ProtoMotions](./protomotions.md) 等框架把论文算法收敛到可维护代码栈。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 为什么重要
 
 - **仓库内多条主线的「原作者索引」**：[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)、[Sim2Real](../concepts/sim2real.md) 与 [MimicKit](./mimickit.md) 的叙事均直接依赖其论文与主页给出的 **项目页 / PDF**。
@@ -53,16 +63,6 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
 - [DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 其图形学起源方法被搬到真实人形 RL 的张力讨论
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| ADD | Adversarial Differential Discriminator | 差分判别、减少碎片化 reward 的 AMP 演进 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
 ## 参考来源
 

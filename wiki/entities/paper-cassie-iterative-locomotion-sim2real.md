@@ -19,6 +19,17 @@ sources:
 
 **一句话定义**：把 Cassie 行走 RL 从「一次性写 reward」还原成 **多轮迭代**：反复调整 **奖励、观测与动作语义**，并用 **DASS 等机制** 在奖励重写时复用旧策略数据，最终无动力学随机化也完成迁移。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 为什么重要
 
 - 对工程读者的价值 **高于** 许多只展示最终效果的论文：它明确写出 **接口与 reward 共同演化** 才是 sim2real 主战场。
@@ -53,18 +64,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 与同期 **baseline、PD 内环、纯模仿或纯 RL** 等路线的差异见原文实验章节；知识库内相关概念页见 **关联页面**。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
 ## 参考来源
 

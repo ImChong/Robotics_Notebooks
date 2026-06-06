@@ -22,6 +22,15 @@ sources:
 
 **Ego-Vision World Model for Humanoid Contact Planning** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 33/42** 篇（**04 视觉闭环 · 任务接口 · 世界模型**），并列入 [Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 06/9** 篇（**03 世界模型**）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 为什么重要
 
 - 这篇论文把 world model 用于 humanoid contact planning。它不是预测图像未来，而是预测接触相关任务结果，服务 sampling-based MPC。
@@ -48,16 +57,6 @@ sources:
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 

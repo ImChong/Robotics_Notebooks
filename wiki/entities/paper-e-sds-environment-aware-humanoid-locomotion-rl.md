@@ -36,6 +36,21 @@ summary: "E-SDS（arXiv:2512.16446，UCL）在 SDS 式 VLM 视频分析之上，
 
 **让「写奖励的人」也看见地形统计：用千机短时采样得到缺口/障碍/崎岖度等数字，和视频里拆出来的步态目标一起喂给 VLM，生成能读高度图和 LiDAR 的奖励，再自动训和筛 PPO 策略。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+
 ## 为什么重要
 
 - **对准结构矛盾：** 纯 VLM 自动奖励在复杂地形上容易训出 **「有传感器但不会用」** 或 **盲走** 的策略；手工感知奖励 **调参成本高** 且难迁移。E-SDS 把 **环境摘要前置到奖励生成**，是较清晰的 **自动化 + 外感受** 拼接点。
@@ -108,22 +123,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| POMDP | Partially Observable Markov Decision Process | 部分可观测的 MDP，部署时观测受限的常见建模 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
 
 ## 参考来源
 

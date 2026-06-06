@@ -25,6 +25,15 @@ sources:
 
 将具身大模型（VLA）部署到真实机器人上，最大的挑战在于**时域错配**：VLA 的推理通常需要 50-200ms，而底层的力矩控制需要 1ms。如果处理不好，这会导致机器人动作由于等待推理结果而产生严重的“抽搐”或停顿。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 1. 推理加速技巧：压榨每一毫秒
 
 ### TensorRT 部署
@@ -71,15 +80,6 @@ VLA 应当预测未来的一段轨迹（如未来 2 秒内的 16 步动作），
 - [Action Chunking](../methods/action-chunking.md)
 - [实时运控中间件配置指南](./real-time-control-middleware-guide.md)
 - [VLA 与低级控制器融合架构](./vla-with-low-level-controller.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 - [sources/papers/rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)

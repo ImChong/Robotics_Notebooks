@@ -10,6 +10,13 @@ updated: 2026-05-01
 
 **Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控数十种主流机器人模型。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+
 ## 核心功能
 
 - **交互式运动学**：支持实时正向 (FK) 和逆向运动学 (IK)。其 IK 引擎支持多末端全身控制，并能自动避开关节限位及零空间约束。
@@ -34,13 +41,6 @@ updated: 2026-05-01
 - [urdf-studio](urdf-studio.md) (专业设计工作站)
 - [robot-viewer](robot-viewer.md) (多格式仿真预览)
 - [pinocchio](pinocchio.md) (后端动力学计算库)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
 
 ## 参考来源
 - [Robot Explorer 原始资料](../../sources/repos/robot-explorer.md)

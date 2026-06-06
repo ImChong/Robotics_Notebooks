@@ -27,6 +27,18 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 
 **目标检测**在给定图像中同时回答 **「有什么物体」** 与 **「在哪里（边界框）」**；在机器人中它为 **抓取、导航、人机交互** 提供 **物体级语义与几何锚点**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| mAP | mean Average Precision | 检测精度标准指标 |
+| R-CNN | Regions with CNN features | 区域 CNN 两阶段检测开山工作 |
+| RPN | Region Proposal Network | Faster R-CNN 中的可学习提议子网 |
+| YOLO | You Only Look Once | 单次回归实时检测范式 |
+| IOU | Intersection over Union | 框重叠率，训练与评估核心量 |
+| NMS | Non-Maximum Suppression | 去重后处理 |
+| FPN | Feature Pyramid Network | 多尺度特征金字塔 |
+
 ## 为什么重要
 
 - **操作前置：** 抓取管线常依赖 **6DoF 位姿估计** 或 **候选框**（见 [Manipulation](../tasks/manipulation.md)）；检测质量直接决定后续规划可否启动。
@@ -94,18 +106,6 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
 - [Visual Servoing（方法）](./visual-servoing.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| mAP | mean Average Precision | 检测精度标准指标 |
-| R-CNN | Regions with CNN features | 区域 CNN 两阶段检测开山工作 |
-| RPN | Region Proposal Network | Faster R-CNN 中的可学习提议子网 |
-| YOLO | You Only Look Once | 单次回归实时检测范式 |
-| IOU | Intersection over Union | 框重叠率，训练与评估核心量 |
-| NMS | Non-Maximum Suppression | 去重后处理 |
-| FPN | Feature Pyramid Network | 多尺度特征金字塔 |
 
 ## 参考来源
 

@@ -25,6 +25,22 @@ summary: "EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应
 
 **「Bin 级误差驱动的跨动作采样课程 + 上下身分组 CDMoE + 两阶段特权教师 PPO + DAgger 历史编码学生」**，在 **约 4 小时级** 精选重定向数据上得到可推广到 **数十小时级** 测试运动的跟踪策略。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要？
 
 - **与「堆更多小时 MoCap」路线对照**：论文通过 **小高质量集优于大规则筛集** 的实验，支持「**通用 tracking 更吃质量与多样性**」这一判断，对 **数据策展与采样** 的优先级有直接启示。
@@ -84,22 +100,6 @@ flowchart LR
 - [Unitree G1](../entities/unitree-g1.md) — 论文使用的硬件平台语境
 - [AMASS](../entities/amass.md) — MoCap 元数据集入口
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 采样与仿真两层面的课程化
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MoE | Mixture-of-Experts | 门控网络加权组合多个专家子网络 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

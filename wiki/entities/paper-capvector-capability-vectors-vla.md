@@ -31,6 +31,16 @@ summary: "CapVector（arXiv:2605.10903）：在参数空间用 θ_ao−θ_ft 抽
 
 **用两次同分布微调（标准 SFT 与辅助目标 SFT）的参数差当「能力向量」，离线合并进预训练权重，再用正交正则保护该方向，让下游标准微调继承辅助训练的好处而不长期背负辅助前向。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 为什么重要
 
 - **成本结构：** 把 **Spatial Forcing、LaRA-VLA** 等路线里 **持续在线的辅助对齐 / 额外分支** 转成 **一次性的双 checkpoint 抽取 + 合并**，适合 **多下游、反复微调** 的工程节奏。
@@ -95,17 +105,6 @@ flowchart TB
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 
 ## 参考来源
 

@@ -21,6 +21,20 @@ updated: 2026-04-25
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| AI | Artificial Intelligence | 人工智能 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+
 ## 平台速览
 
 | 平台 | 组织 | DOF | 重量 | 执行器 | 状态 |
@@ -87,20 +101,6 @@ updated: 2026-04-25
 - [全身运动控制](../concepts/whole-body-control.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [WBC vs RL 对比](../comparisons/wbc-vs-rl.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| AI | Artificial Intelligence | 人工智能 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

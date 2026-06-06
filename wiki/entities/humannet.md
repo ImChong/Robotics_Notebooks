@@ -25,6 +25,15 @@ sources:
 
 **HumanNet** 是一套把 **互联网级人中心视频** 加工成「可喂给大规模模型」的具身向语料：强调 **第一人称与第三人称并存**、**物理相关行为** 的策展、以及 **手体几何 + 语言描述 + 活动语义** 等多层标注；论文在固定下游设定下对比了 **egocentric 人视频小时数** 与 **真机机器人数据小时数** 作为 VLA 类模型持续预训练来源的相对价值。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+
 ## 为什么重要？
 
 - **缓解机器人日志稀缺**：高质量真机演示昂贵且慢；人视频在行为多样性与环境覆盖上可补位，但前提是管线能把「泛网页视频」压成 **交互可学** 的分布。
@@ -71,15 +80,6 @@ flowchart LR
 - **方法**：[Imitation Learning](../methods/imitation-learning.md) 把人类演示视作监督来源时，可对照互联网级人视频的策展与重定向接口。
 - **概念**：[Motion Retargeting](../concepts/motion-retargeting.md) 是连接人体运动与机器人可训练监督的关键模块。
 - **实体**：[人形机器人](./humanoid-robot.md) 作为典型目标形态，可与人视频–机器人数据的混合训练叙事对照阅读。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
 
 ## 参考来源
 

@@ -24,6 +24,17 @@ summary: "MobileGym（arXiv:2605.26114）是浏览器托管的日常 App 移动 
 
 > GUI Agent 只看见截图并发出离散动作；研究者则在后台拥有 **可读、可写、可分叉、无真实后果** 的全环境状态——把日常 App 从真机管线的「不可读、难重置、不可逆」盲区，拉进可编程实验台。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+
 ## 为什么重要
 
 - **填补日常 App 评测空白：** AndroidWorld / AndroidLab 等多限于系统工具与开源 App；MobileBench-OL 等真机基准覆盖真实日常 App，但难并行、难重置、XPath/VLM 判分脆弱。MobileGym 用 **仿真替身** 覆盖微信、支付宝、小红书、B 站、12306 等 **12 个日常 + 16 个系统** App。
@@ -105,17 +116,6 @@ flowchart TB
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — PPO/GRPO 与稠密 shaping 奖励语境
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练、真机保留增益的对照框架
 - [ESI-Bench](./esi-bench.md) — 另一路线的 **可验证、可并行** 具身评测（3D 空间 QA vs 移动 GUI）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
 
 ## 参考来源
 

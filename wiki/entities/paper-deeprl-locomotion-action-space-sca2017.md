@@ -22,6 +22,19 @@ sources:
 
 **一句话定义**：在 **平面物理角色** 的 **步态周期模仿** 上，用深度 RL **对照四种动作参数化**（扭矩、肌肉激活、**目标关节角 + PD**、目标关节角速度），从 **学习时间、鲁棒性、运动质量与策略查询率** 论证 **高层动作空间 + 局部反馈** 往往优于端到端扭矩控制。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+
 ## 为什么重要
 
 - **动作接口争论的「前史锚点」**：后续腿足/人形 RL 中「**策略输出目标角 + PD 内环**」与「**直驱扭矩**」的分歧，在仓库 [Kp/Kd 设置 Query](../queries/legged-humanoid-rl-pd-gain-setting.md) 里多以 **2018 以后的 Cassie / 四足论文** 展开；本文（**SCA 2017，arXiv 2016**）在 **角色动画 + 模仿步态** 设定下给出 **四种语义的系统实证**，便于理解 Peng 研究线的起点。
@@ -77,20 +90,6 @@ flowchart TB
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
 
 ## 参考来源
 

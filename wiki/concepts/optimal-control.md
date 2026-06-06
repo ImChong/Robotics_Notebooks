@@ -11,6 +11,22 @@ summary: "Optimal Control 研究如何在动力学约束下最优地生成控制
 
 “给定一个会动的机器人，什么样的控制序列能让它完成任务的同时代价最小？”
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
+| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+
 ## 为什么重要
 
 最优控制是现代控制理论的基石，也是 MPC、RL、WBC 的理论根基。
@@ -122,7 +138,6 @@ B = np.array([[0.0], [0.1]])
 Q = np.diag([10.0, 1.0])
 R = np.diag([0.1])
 
-
 def rollout_cost(x0, U):
     x = x0.copy()
     cost = 0.0
@@ -131,7 +146,6 @@ def rollout_cost(x0, U):
         x = A @ x + B @ u
     cost += x.T @ Q @ x
     return float(cost)
-
 
 x0 = np.array([[0.3], [0.0]])
 candidates = [np.zeros((20, 1)), 0.2 * np.ones((20, 1)), -0.2 * np.ones((20, 1))]
@@ -207,22 +221,6 @@ WBC（全身控制）本质上是一个**分层最优控制**：
 OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 
 解法：预计算、凸近似、定制求解器（Acados, FORCES Pro）。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| OCP | Optimal Control Problem | MPC 每步求解的有限时域最优控制问题 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| DP | Diffusion Policy | 用扩散模型生成动作序列的模仿学习方法 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| LQR | Linear Quadratic Regulator | 线性系统二次型代价下的最优反馈控制器 |
-| iLQR | iterative Linear Quadratic Regulator | 对非线性系统迭代线性化求解的轨迹优化方法 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
 
 ## 参考来源
 

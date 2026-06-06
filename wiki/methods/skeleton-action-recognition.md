@@ -25,6 +25,18 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 
 输入一段骨架关节序列，输出动作类别标签或自然语言描述——在机器人场景中尤指能跨不同机器人形态和未见动作类别泛化的统一识别能力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+
 ## 为什么重要
 
 - **数据标注流水线**：自动识别演示数据中的动作类别，直接服务于模仿学习（IL）数据引擎
@@ -120,18 +132,6 @@ summary: "骨架动作识别通过对关节序列建模来理解人体/机器人
 - **计算开销**：三层对比学习的多流 Transformer 比单流 GCN 计算量高
 - **3D 骨架质量依赖**：真实机器人上需要可靠的关节估计（IMU / 编码器），精度直接影响识别效果
 - **机器人场景验证**：当前工作主要在人体骨架数据集上验证，直接应用于机器人骨架需要进一步适配
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
 
 ## 参考来源
 

@@ -22,6 +22,25 @@ summary: "HoST（arXiv:2502.08378，RSS 2025 系统论文 finalist）用多 crit
 
 **HoST（Humanoid Standing-up Control）** 是上海 AI Lab 等团队提出的强化学习框架（arXiv:2502.08378，**RSS 2025 Best Systems Paper Finalist**）：在 **Unitree G1** 上**不依赖预定义起身轨迹或 MoCap 参考**，从 Isaac Gym 仿真**端到端学习**起身策略，并**直接部署**到实验室与户外真机（沙发、斜坡、俯仰卧等）。官方实现：[InternRobotics/HoST](https://github.com/InternRobotics/HoST)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| AI | Artificial Intelligence | 人工智能 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **补齐 loco-manip 前置能力：** 多数行走/操作栈默认机器人已站立；HoST 把「躺/坐/跪 → 站」做成可学习的**全身协同技能**，与跌倒恢复、人机交互场景（从沙发起身）直接相关。
@@ -103,25 +122,6 @@ flowchart TB
 | 典型硬件 | G1（23-DoF） | G1（29-DoF 动作维） | 视论文而定 |
 
 论文 Table I 强调 HoST 在 **真机、无先验轨迹、超地面姿态、高 DoF、单阶段训练** 五维同时满足；与「仅仿真」或「仅地面参考」路线的差异见 [arXiv 正文](https://arxiv.org/abs/2502.08378)。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| AI | Artificial Intelligence | 人工智能 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| CoM | Center of Mass | 质心，平衡与 locomotion 规划的核心状态量 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

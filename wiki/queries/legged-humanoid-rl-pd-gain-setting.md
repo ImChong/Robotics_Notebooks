@@ -38,6 +38,16 @@ sources:
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| PD | Proportional–Derivative | 关节刚度/阻尼底层，RL 输出常为其 setpoint |
+| Kp | Proportional Gain | 位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | 速度误差增益，抑制振荡 |
+| RL | Reinforcement Learning | 策略层与 PD 层分工是 loco 常见栈 |
+| Sim2Real | Simulation to Real | 增益不匹配是迁移失败常见原因 |
+
 ## 为什么和 RL 强相关
 
 - **动作语义**：若动作为「目标关节角（或默认姿态上的残差）」，则 PD 增益直接决定同一动作向量对应的关节加速度与接触冲量，进而改变最优策略形状。
@@ -186,16 +196,6 @@ flowchart TB
 - [RL+PD 动作接口与增益设计论文索引](../../sources/papers/rl_pd_action_interface_locomotion.md)
 
 ---
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| PD | Proportional–Derivative | 关节刚度/阻尼底层，RL 输出常为其 setpoint |
-| Kp | Proportional Gain | 位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | 速度误差增益，抑制振荡 |
-| RL | Reinforcement Learning | 策略层与 PD 层分工是 loco 常见栈 |
-| Sim2Real | Simulation to Real | 增益不匹配是迁移失败常见原因 |
 
 ## 关联页面
 

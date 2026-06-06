@@ -37,6 +37,20 @@ summary: "Extreme Parkour（ICRA 2024）：Go1 级四足在单目深度下端到
 
 **Phase 1 用特权 scandots 与 terrain waypoint 航向训 PPO Teacher，Phase 2 用 DAgger 把外感知与 yaw 决策蒸馏进 ConvNet–GRU 深度 Student——部署时仅深度图即可输出精确跑酷控制。**
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| GRU | Gated Recurrent Unit | 门控循环单元，处理时序观测 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **端到端视觉 loco 的早期标杆：** 在 **执行器不精确、深度低频抖动** 的真实约束下，仍实现 **2× 身高 / 2× 体长** 级动态动作，影响后续 Robot Parkour Learning、DreamWaQ++ 等感知 locomotion 叙事。
@@ -98,20 +112,6 @@ flowchart TB
 - **误区：** 把 Extreme Parkour 等同于「又一个 legged_gym 走路」——其核心是 **parkour 地形 + 统一奖励 + 双重蒸馏**，普通 velocity tracking 奖励不能直接迁移。
 - **误区：** 认为 Phase 1 可直接部署——Teacher 依赖 **scandots 与 oracle waypoint**，必须完成 Phase 2。
 - **局限：** 栈绑定 **Isaac Gym Preview 3/4 + PyTorch 1.10** 等较旧环境；深度 **单目前向**、障碍以 **结构化 box course** 为主，野外 unstructured terrain 需自行扩展。后续 **人形 PHP**、**Hiking in the Wild** 等将跑酷推向更大机体与更长技能链。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| GRU | Gated Recurrent Unit | 门控循环单元，处理时序观测 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

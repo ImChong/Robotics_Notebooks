@@ -24,6 +24,17 @@ summary: "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架
 
 把一群真实机器人放出去做事，再把它们做出来的"成功 / 失败 / 半成 / 救场 / 人为接管"全部喂回同一个 RL 学习器，让一个 generalist VLA 策略一边跑一边变强。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+
 ## 为什么重要
 
 - 现有 VLA / [Foundation Policy](../concepts/foundation-policy.md) 在实验室预训练得很强，但**真实家庭/门店/工厂的分布永远在漂**：台面高度、水果形状、透明摇酒壶……固定测试集解决不了这件事。
@@ -100,17 +111,6 @@ DIVL 与 QAM 一起实现了**策略评估（value learning）与策略抽取（
 - **误区 1：LWD 等于"在线微调"。** 它的 offline 与 online 阶段共用一个 RL 学习器和目标，是一个统一框架，而不是"先 IL 再加点 online RL"的简单拼接。
 - **误区 2：LWD = 数据飞轮的换皮。** 区别是把"部署 → 提取好动作 → 模仿"换成"部署 → 全谱经验 → RL 更新"，并明确把失败和人为干预算进训练信号。
 - **误区 3：随便一个 VLA 都能直接接 LWD。** Flow-based 动作头的策略抽取本身就是难点，LWD 用 QAM 才把这件事做稳；换成其他动作头时，对应的策略抽取方法需要重新对齐。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
 
 ## 参考来源
 

@@ -18,6 +18,12 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 
 **Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr** 等模块；门户在 **[poppy-project.org](https://www.poppy-project.org/en/)**，手册在 **[docs.poppy-project.org](https://docs.poppy-project.org/en/)**，源码在 **[poppy-project](https://github.com/poppy-project)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
+
 ## 为什么重要
 
 - **教育 / 创客基线**：以 **Dynamixel 舵机 + Python** 为主轴，适合作为 **机器人学课程硬件锚点**。
@@ -40,12 +46,6 @@ summary: "Poppy：法国 Inria 背景的开源 3D 打印机器人平台（Humano
 ## 推荐继续阅读
 
 - Poppy 文档中 **Getting started / Assembly**（以当前站点版本为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| STL | Stereolithography (3D model file) | 3D 打印常用的三角网格模型文件格式 |
 
 ## 参考来源
 

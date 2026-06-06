@@ -21,6 +21,21 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 
 **GS-Playground** 是由 discoverse-dev 开发的高吞吐视觉机器人学习仿真框架，核心创新是将 **并行物理仿真** 与 **批量 3D Gaussian Splatting (3DGS) 渲染** 耦合，在保持极高帧率的同时提供光真实感的视觉观测。已被 **RSS 2026** 收录。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+
 ## 为什么重要？
 
 视觉 RL 训练面临两个长期矛盾：
@@ -98,21 +113,6 @@ summary: "GS-Playground 将并行物理仿真与批量 3D Gaussian Splatting 渲
 - [World Labs](./world-labs.md) — 空间世界生成（Marble）与 Spark 产业侧上下文
 - [CRISP](../methods/crisp-real2sim.md) — 另一条 Real2Sim 路线：单目视频 + 平面原语与接触物理（ICLR 2026），与 3DGS 外观路径互补对照（见 [选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 背景 + mesh 前景为人形 VLA loco-manip 合成演示（arXiv:2606.01458）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
 
 ## 参考来源
 

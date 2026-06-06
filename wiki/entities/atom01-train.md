@@ -16,6 +16,19 @@ summary: "atom01_train 是 Atom01 的训练仓库，围绕 IsaacLab 训练配置
 
 **atom01_train** 是 Roboparty Atom01 项目的训练主仓库，聚焦 IsaacLab 场景下的策略学习、实验配置与迁移链路。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要
 
 - 是 Atom01 从模型到策略的训练入口。
@@ -27,7 +40,6 @@ summary: "atom01_train 是 Atom01 的训练仓库，围绕 IsaacLab 训练配置
 - **训练配置**：任务参数、奖励项与训练超参数。
 - **仿真迁移**：支持 Sim2Sim/Sim2Real 工作流。
 - **工程接口**：与模型描述与部署链路对齐。
-
 
 ## 训练任务的输入与输出（面向 IsaacLab / PPO）
 
@@ -141,19 +153,6 @@ python scripts/sim2sim.py   --task atom01_walk   --checkpoint logs/atom01_walk/m
 
 - 误区：只要训练收敛就能真机稳定。真机仍受通信、校准、硬件误差影响。
 - 局限：训练仓库往往强调算法迭代，部署鲁棒性要靠额外工程补齐。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

@@ -28,6 +28,28 @@ summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架
 
 **GR00T-VisualSim2Real** 是 NVIDIA NVlabs 发布的开源框架，囊括两项 CVPR 2026 研究：**VIRAL**（人形 Loco-Manipulation 的规模化视觉 Sim2Real）和 **DoorMan**（像素到动作的策略迁移）。核心方法是 **PPO Teacher（特权状态）→ DAgger Student（RGB 蒸馏）** 的两阶段 pipeline，最终以 ONNX 格式部署到 Unitree G1 真机。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+
 ## 为什么重要
 
 视觉 Sim2Real 长期面临三重矛盾：
@@ -172,28 +194,6 @@ Teacher 训练时使用 RSI：环境 reset 从 demo buffer 中随机采样中间
 - [Tairan He](./tairan-he.md) — VIRAL / DoorMan 等工作的作者侧论文与项目索引
 - [DoorMan 论文实体](./paper-doorman-opening-sim2real-door.md) — arXiv:2512.01061 方法栈专页
 - [VIRAL 论文实体](./paper-viral-humanoid-visual-sim2real.md) — arXiv:2511.15200 方法栈专页
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
 
 ## 参考来源
 

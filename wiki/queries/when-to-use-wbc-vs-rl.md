@@ -23,6 +23,23 @@ updated: 2026-04-25
 
 ---
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
+| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 快速决策树
 
 ```
@@ -113,23 +130,6 @@ updated: 2026-04-25
 - [策略优化方法](../methods/policy-optimization.md)
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| TSID | Task-Space Inverse Dynamics | 任务空间逆动力学求解关节力矩的 WBC 实现 |
-| HQP | Hierarchical Quadratic Programming | 按优先级分层堆叠任务与约束的二次规划 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 - [policy_optimization.md](../../sources/papers/policy_optimization.md)

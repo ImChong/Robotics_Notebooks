@@ -10,6 +10,17 @@ updated: 2026-05-22
 
 **URDF-Studio** 是由 OpenLegged 社区开发的一款专业级** Web 机器人设计与组装工作站**。它不仅是一个查看器，更是一个涵盖了从拓扑设计到硬件物料管理（BOM）的全流程工具。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| AI | Artificial Intelligence | 人工智能 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| SDK | Software Development Kit | 软件开发工具包 |
+
 ## 核心功能
 
 - **模块化设计流**：
@@ -43,17 +54,6 @@ updated: 2026-05-22
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)（自然语言 → STEP 等上游几何与机器人描述衔接）
 - [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
 - [Tnkr](./tnkr.md)（开源整机项目仓库：CAD 装配流、电气文档与部署数据闭环）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| AI | Artificial Intelligence | 人工智能 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| SDK | Software Development Kit | 软件开发工具包 |
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

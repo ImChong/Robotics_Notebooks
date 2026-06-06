@@ -22,6 +22,16 @@ summary: "机器人合法状态生活在黎曼流形上（周期关节、SO(3)/S
 
 **一句话：** 具身体的状态空间 **整体弯曲、局部平直**；在流形上存合法姿态，在 **切空间** 做梯度与增量，用 **指数/对数映射** 往返——[李群页](./lie-group-rigid-body-motions.md) 中的 SO(3)/SE(3) 是这一框架最重要的机器人特例。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+
 ## 为什么欧式空间会「算错物理」
 
 | 现象 | 欧式做法的问题 | 流形视角 |
@@ -130,16 +140,6 @@ $$
 - [三维坐标变换](./3d-coordinate-transforms-vision-robotics.md)
 - [SE(3) Representation](./se3-representation.md)
 - [Model Predictive Control](../methods/model-predictive-control.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
 
 ## 参考来源
 

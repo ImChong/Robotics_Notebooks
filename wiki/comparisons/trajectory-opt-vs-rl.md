@@ -15,6 +15,19 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 
 在足式机器人运动控制领域，**轨迹优化 (Trajectory Optimization, TO)** 和 **强化学习 (Reinforcement Learning, RL)** 是两种截然不同但又互补的技术路线。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 核心对比
 
 | 维度 | Trajectory Optimization (TO) | Reinforcement Learning (RL) |
@@ -58,19 +71,6 @@ summary: "轨迹优化（Trajectory Optimization）与强化学习（RL）的对
 - [Reinforcement Learning (RL)](../methods/reinforcement-learning.md)
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
 - [Query：何时用 WBC vs RL？](../queries/when-to-use-wbc-vs-rl.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
 ## 参考来源
 - [sources/papers/optimal_control.md](../../sources/papers/optimal_control.md)

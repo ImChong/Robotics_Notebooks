@@ -13,6 +13,17 @@ summary: "四足在非结构化 3D 场景中的分层导航：高层从深度输
 
 用高层策略在深度图像上生成**平面速度 + 体姿态（高度/横滚）**指令，由低层姿态自适应 locomotion 执行，再用**沿特权全局路径采样的子目标课程**训练高层，最后用 **DAgger** 把特权教师蒸馏成仅深度的学生策略。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **算力与内存**：经典 mapping–planning 管线在资源受限平台上易累积感知误差且计算开销大；HiPAN 在部署端走“感知→指令→足式控制”的紧凑闭环。
@@ -91,17 +102,6 @@ flowchart TB
 - [Privileged Training](../concepts/privileged-training.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [DAgger](./dagger.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

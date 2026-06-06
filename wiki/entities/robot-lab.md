@@ -17,6 +17,18 @@ summary: "robot_lab 是一个基于 NVIDIA IsaacLab 的机器人 RL 扩展训练
 
 **robot_lab** 是由开发者 `fan-ziqi` 维护的一个建立在 NVIDIA **IsaacLab** 之上的强化学习 (RL) 扩展库。它允许用户在隔离的仓库中开发机器人资产、环境和任务，而不必直接修改 IsaacLab 的核心代码，极大地提高了开发效率和代码的可维护性。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+
 ## 核心定位
 
 在机器人学习的工具链中，robot_lab 扮演了“生态适配层”的角色：
@@ -47,18 +59,6 @@ robot_lab 遵循 IsaacLab 的扩展规范：
 - [轮足四足机器人（四轮足）](../concepts/wheel-legged-quadruped.md)
 - [MimicKit (运动模仿套件)](./mimickit.md)
 - [强化学习 (Reinforcement Learning)](../methods/reinforcement-learning.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
 
 ## 参考来源
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md)

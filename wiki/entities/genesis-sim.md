@@ -14,6 +14,14 @@ related:
 
 **Genesis** 是具身智能领域新兴的高性能**物理仿真与数据生成平台**。它通常与 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 并列，作为新一代大规模并行仿真的代表，特别强调在处理柔性体、流体以及多物理场耦合方面的能力。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| AI | Artificial Intelligence | 人工智能 |
+
 ## 为什么重要？
 
 随着具身智能向复杂环境渗透，传统的刚体仿真已显不足。Genesis 的核心价值在于：
@@ -50,14 +58,6 @@ related:
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 「仿真优先服务评测」的概念归纳
 - [GS-Playground](./gs-playground.md) — 同为新一代高吞吐仿真，以批量 3DGS 渲染换取光真实感视觉观测（RSS 2026）
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 与公司品牌相近的机器人基础模型产品线（非本仿真仓库）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| AI | Artificial Intelligence | 人工智能 |
 
 ## 参考来源
 

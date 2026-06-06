@@ -23,6 +23,13 @@ summary: "Spark 是 World Labs 开源的 Web 端 3D Gaussian Splatting 渲染器
 
 用 **全局 splat 管线 + Spark 2.0 连续 LoD + .RAD 流式 + 虚拟 splat 显存** 在普通浏览器里稳定渲染 **百万到上亿 splat** 的可组合 3D 世界。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 为什么重要
 
 - **3DGS 工程词典**：排序、多对象深度合成、LoD、分块流式与显存分页是 2024–2026 产业界反复出现的瓶颈；Spark 2.0 博客给出了可引用的 **公开实现叙事**（含 Tiny-LoD / Bhatt-LoD、RADC 块格式）。
@@ -67,13 +74,6 @@ flowchart LR
 - [GS-Playground](./gs-playground.md)
 - [Spark vs Aholo（Web 3DGS 渲染选型）](../comparisons/spark-vs-aholo-web-3dgs-renderers.md)
 - [生成式世界模型](../methods/generative-world-models.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| CPU | Central Processing Unit | 中央处理器 |
 
 ## 参考来源
 

@@ -24,6 +24,20 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 
 面向 **连续控制** 研究与教学的、**约定统一**（观测分组、奖励尺度、评估回合长度）的 MuJoCo 基准环境集合，加上可扩展的仿真基础设施（`mjcf`、`composer`、`locomotion` 等）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要
 
 - **可比基准**：奖励大多落在 \([0,1]\)，配合固定步数评估，学习曲线与跨任务汇总更直观，便于算法论文横向对比。
@@ -63,20 +77,6 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 - 论文原文：[DeepMind Control Suite（arXiv:1801.00690）](https://arxiv.org/abs/1801.00690)
 - 仓库与安装说明：[google-deepmind/dm_control](https://github.com/google-deepmind/dm_control)
 - 入门 Colab：仓库 README 中的 `tutorial.ipynb` 徽章链接
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
-| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

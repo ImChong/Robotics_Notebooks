@@ -21,6 +21,24 @@ summary: "Any2Any（arXiv:2605.23733）把单源人形 WBT 专家经运动学对
 
 **Any2Any**（arXiv:2605.23733，LimX Dynamics）研究 **已有 whole-body tracking（WBT）专家如何迁到新的人形**：不从头重训亿级 MoCap 策略，而是把差距拆成 **运动学接口对齐** 与 **动力学残差适配**。在 **Gear-SONIC / Oli-WBT** 等源骨干上，用约 **1%** 全量预训练的算力与数据，将跟踪能力迁到 **LimX Oli、LimX Luna、Unitree G1/H1** 等目标机，并报告多组真机下游表现。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
+| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+
 ## 为什么重要
 
 - **WBT scaling 的下一站：** [SONIC](../methods/sonic-motion-tracking.md) 等路线证明「大规模 tracking 预训练」可行，但策略与 **源机 DoF、观测顺序、动力学** 强绑定；Any2Any 给出 **后训练迁移范式**，降低新机部署的重复烧卡。
@@ -84,25 +102,6 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| WBT | Whole-Body Tracking | 全身参考运动跟踪控制 |
-| LoRA | Low-Rank Adaptation | 低秩增量微调，低成本适配大模型 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
 
 ## 参考来源
 

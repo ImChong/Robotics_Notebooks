@@ -25,6 +25,17 @@ summary: "抓取位姿估计是把 RGBD / 点云观测映射为 6-DoF（或 7-Do
 
 > 给定一帧 RGBD/点云，**稠密**或**稀疏**地输出 $(R, t, w, q)$ 候选集合——其中 $R \in SO(3)$ 表示夹爪朝向，$t \in \mathbb{R}^3$ 表示接近点，$w$ 是夹爪开度，$q \in [0, 1]$ 是质量/可执行性分数。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| SDK | Software Development Kit | 软件开发工具包 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+
 ## 任务参数化
 
 不同方法在 **抓取表示** 上略有差异，主流约定如下：
@@ -124,17 +135,6 @@ flowchart LR
 - [cuRobo](../entities/curobo.md) — 抓取候选 → 规划 / 避障的下游求解器
 - [Query：抓取策略选型](../queries/grasp-policy-selection.md) — 开放场景 vs 已知物体 / 稀疏 vs 稠密 / 几何 vs 学习的方案组合指南
 - [AnyGrasp vs GraspNet：抓取检测家族选型对比](../comparisons/anygrasp-vs-graspnet.md) — 白盒基线 vs SDK 工程闭环、单帧 vs 跨帧、开源 vs License 三对取舍
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| SDK | Software Development Kit | 软件开发工具包 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
 
 ## 参考来源
 

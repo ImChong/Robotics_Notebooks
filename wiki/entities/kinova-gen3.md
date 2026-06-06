@@ -18,6 +18,14 @@ summary: "Kinova Gen3：加拿大 Kinova 轻型六轴协作臂，官方产品页
 
 **Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinovarobotics.com/product/gen3-robots)**，开源 SDK / ROS 接口等在 GitHub 组织 **[Kinovarobotics](https://github.com/Kinovarobotics)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SDK | Software Development Kit | 软件开发工具包 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 为什么重要
 
 - **协作安全与力控**：作为 **实验室常见工业臂对照组**，与 **Franka**、**UR** 等并列出现在仿真与真机管线讨论中。
@@ -39,14 +47,6 @@ summary: "Kinova Gen3：加拿大 Kinova 轻型六轴协作臂，官方产品页
 ## 推荐继续阅读
 
 - Kinova 官方文档门户（以产品页导航为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SDK | Software Development Kit | 软件开发工具包 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

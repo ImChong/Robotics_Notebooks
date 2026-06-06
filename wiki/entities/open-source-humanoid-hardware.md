@@ -34,6 +34,16 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 
 随着具身智能的爆发，人形机器人的硬件门槛正在迅速降低。对于预算有限的实验室或个人研究者，**开源硬件方案 (Open-source Humanoid Hardware)** 是验证算法的首选。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DoF | Degrees of Freedom | 各平台关节规模对比维度 |
+| BOM | Bill of Materials | 自研/开源硬件物料清单 |
+| RL | Reinforcement Learning | 平台选型常看仿真与训练生态 |
+| WBC | Whole-Body Control | 力控/全身协调硬件能力指标 |
+| Sim2Real | Simulation to Real | 硬件–仿真模型一致性影响迁移 |
+
 ## 微信策展索引（更多开源整机入口）
 
 第三方清单文将 **傅利叶 N1、智元灵犀 X1、天工、ODRI、Berkeley Humanoid Lite** 等与 **ROBOTIS 教育/人形线** 并列收录，已拆成独立实体页，入口见：[机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md)。本页下文的 **Berkeley / ODRI** 小节可与 [Berkeley Humanoid Lite](./berkeley-humanoid-lite.md)、[ODRI Solo / Bolt](./odri-solo-and-bolt.md) 交叉阅读。
@@ -100,16 +110,6 @@ summary: "主流开源人形机器人硬件方案对比：梳理 Berkeley Humano
 - [机器人开源宝库（微信策展第02期）](../overview/robot-open-source-wechat-issue02-curator.md)
 - [人形机器人硬件怎么选](../queries/humanoid-hardware-selection.md)
 - [Humanoid Control Roadmap](../roadmaps/humanoid-control-roadmap.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DoF | Degrees of Freedom | 各平台关节规模对比维度 |
-| BOM | Bill of Materials | 自研/开源硬件物料清单 |
-| RL | Reinforcement Learning | 平台选型常看仿真与训练生态 |
-| WBC | Whole-Body Control | 力控/全身协调硬件能力指标 |
-| Sim2Real | Simulation to Real | 硬件–仿真模型一致性影响迁移 |
 
 ## 参考来源
 - [humanoid_hardware.md](../../sources/papers/humanoid_hardware.md)

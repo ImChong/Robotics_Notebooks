@@ -25,6 +25,21 @@ summary: "wbc_fsm 是针对 Unitree G1 的 C++ 全身控制部署框架，用有
 
 用有限状态机统一管理人形机器人的安全保护、行走、全身动作追踪三种模式，内置预训练 ONNX 策略，C++ 原生部署，无 ROS 依赖。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要
 
 - **FSM 作为运动控制运行时架构**：多种控制模式（安全 / 行走 / 全身控制）在真机上的组织方式是工程实践的重要范式，wbc_fsm 提供了一个干净的 C++ 参考实现
@@ -91,21 +106,6 @@ G1 板端 (PC2 / aarch64)
 - **仅部署，无训练代码**：策略改进需依赖外部训练框架（如 AMP_mjlab）
 - **硬绑 G1 + Unitree SDK2**：移植到其他机器人平台需大幅重写接口层
 - **动作类型受限**：当前 ONNX 模型仅覆盖 LAFAN1 dance12 动作，扩展需重新训练
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

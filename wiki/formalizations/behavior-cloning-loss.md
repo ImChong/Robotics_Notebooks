@@ -19,6 +19,14 @@ summary: "行为克隆损失函数（BC Loss）将马尔可夫决策过程中的
 
 在数学形式上，BC 完全将马尔可夫决策过程（MDP）的时间序列特性剥离，将其退化为一个独立同分布（i.i.d.）的标准**监督学习 (Supervised Learning)** 问题。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+
 ## 基础数学定义
 
 假设我们有一个专家策略 $\pi_E(a|s)$，并利用它在环境中收集了一组包含 $N$ 个状态-动作对的演示轨迹数据集：
@@ -78,14 +86,6 @@ $$
 - [DAgger](../methods/dagger.md)
 - [Action Chunking](../methods/action-chunking.md)
 - [MDP 形式化](./mdp.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
 
 ## 参考来源
 - Pomerleau, D. A. (1989). *Alvinn: An autonomous land vehicle in a neural network*.

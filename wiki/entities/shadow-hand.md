@@ -16,6 +16,13 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
 
 **Shadow Hand** 由英国 Shadow Robot Company 开发，是目前世界上最接近人类手部功能的灵巧手平台之一。它拥有 5 根手指和 20 个主动驱动关节（总计 24 个自由度），常被用于具身智能、远程手术操作和极限灵巧性的研究。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 硬件特性
 
 1. **拟人化设计**：完全遵循人类手的比例与关节分布，甚至包含指间关节的耦合关系。
@@ -34,13 +41,6 @@ summary: "Shadow Hand 是一款仿生程度极高的五指灵巧手，拥有 20 
 - [Allegro Hand 实体](./allegro-hand.md) — 更轻量化的 4 指备选方案
 - [Manipulation 任务](../tasks/manipulation.md)
 - [手内重定向 (In-hand Reorientation)](../methods/in-hand-reorientation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 - Shadow Robot Company Official Website.

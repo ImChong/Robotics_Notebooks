@@ -25,6 +25,17 @@ summary: "AssistMimic（arXiv:2603.11346，CVPR 2026）将紧密接触的双人 
 
 **AssistMimic** 是 CMU 与庆应等团队的 **物理仿真双人 assistive 交互 tracking** 论文（arXiv:2603.11346，项目页标注 **CVPR 2026**）：把 **扶起、床椅护理** 等 **力交换、紧密接触** 的人–人 MoCap 序列，从「单人 GMT + kinematic replay」推进到 **supporter 与 recipient 联合优化的 MARL**，并报告在 **Inter-X Help-up** 与 **HHI-Assist** 基准上 **首次** 稳定复现 assistive 参考。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
+
 ## 为什么重要
 
 - **填补 GMT 的交互空白**：现有 motion tracking 多在 **无接触社交动作** 或 **单人孤立动作** 上成功；护理场景需要 **持续 partner awareness** 与 **双向力协调**。
@@ -128,17 +139,6 @@ flowchart TB
 - **Success Rate**：双 agent 与参考距离均 < **0.5 m** 的 episode 比例。
 - **Specialist（论文摘要级）**：Inter-X SR **74.9%**（generalist **83%**）；HHI-Assist SR **85.8%**（generalist **73%**）。
 - 完整 ablation、MPJPE 与扰动实验见 **原文 PDF** 与 [参考来源](#参考来源)。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| MDP | Markov Decision Process | 状态–动作–奖励–转移的标准序贯决策建模框架 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| HOI | Human–Object Interaction | 人与物体接触交互的技能场景 |
 
 ## 参考来源
 

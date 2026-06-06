@@ -21,6 +21,14 @@ sources:
 
 **MTM** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 24/41** 篇，归类为 **02 Goal-conditioned 学习**（2023 · ICML）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 为什么重要
 
 - 轨迹作为预训练对象；行为基座不必只靠传统 RL 交互。
@@ -46,15 +54,6 @@ sources:
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
 - 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 

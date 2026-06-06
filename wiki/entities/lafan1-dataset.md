@@ -22,6 +22,21 @@ sources:
 
 **LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ubisoft-laforge-animation-dataset) 中发布的 **La Forge 动捕动画数据集**：序列以 **BVH** 存储，README 给出 **5 名被试、77 条序列、约 49.6 万帧 @30Hz（约 4.6 小时）** 等统计，并配套 **Python 评估脚本** 与若干插值基线。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
+| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 为什么重要？
 
 - **动作语义覆盖**：除平地行走外，包含 **障碍地形、跌倒起身、爬行、瞄准移动** 等，对 **recovery / 多接触** 研究比单一行走库更有信息量。
@@ -49,21 +64,6 @@ sources:
 - **[wbc_fsm](./wbc-fsm.md)**：以 LAFAN1 为 MoCap 源的重定向 + RL + ONNX 部署范例。
 - **[GMR](../methods/motion-retargeting-gmr.md)**：讨论几何重定向时常与 BVH / 骨架比例问题一并出现。
 - **[AMASS](./amass.md)**：另一条「SMPL 统一库」路线；LaFAN1 则是「单一棚拍、原始 BVH」路线，二者在表示与许可上均不同。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Retargeting | Motion Retargeting | 将人体/动物动作映射到目标机器人骨架 |
-| MoCap | Motion Capture | 动作捕捉，参考动作与演示数据的主要来源 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| AMASS | Archive of Motion Capture as Surface Shapes | 大规模统一人体动捕数据集 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 

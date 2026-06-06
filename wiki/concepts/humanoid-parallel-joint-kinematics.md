@@ -21,6 +21,23 @@ summary: "人形上常见并联/闭链关节（如并联踝）在机构学上需
 
 **并联关节解算**在这里指：当多个驱动分支通过刚性闭链耦合到同一末端（或同一等效自由度）时，在**机构空间**建立「驱动变量 ↔ 末端位姿/速度/力」映射，并处理**冗余与约束一致性**的一整套问题；人形产品中典型例子是 **并联踝（如 RSU 类构型）**，而不是「两个电池并联」之类的电气含义。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+
 ## 为什么重要
 
 - **控制与规划消费的变量**往往是「踝 pitch / roll」等低维任务空间；**真实力矩路径**却经过多电机、多连杆的耦合。若忽略这一层，Sim2Real 会在**等效惯量、摩擦与背隙、足底力分配**上系统性失配。
@@ -103,23 +120,6 @@ flowchart TB
 - [How we built humanoid legs from the ground up in 100 days（Menlo）](https://menlo.ai/blog/humanoid-legs-100-days) — RSU 并联踝的产品与机构动机
 - [LiPS（arXiv:2503.08349）](https://arxiv.org/abs/2503.08349) — 大规模 RL 中显式并联踝动力学
 - [Kinematic Actuation Models（arXiv:2503.22459）](https://arxiv.org/abs/2503.22459) — 解析 \(J_A\) 嵌入 DDP 与 RL
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| DoF | Degrees of Freedom | 自由度，人形通常 20–50+ 关节 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
 
 ## 参考来源
 

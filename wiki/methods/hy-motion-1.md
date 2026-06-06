@@ -22,6 +22,22 @@ summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运
 
 **十亿级 DiT 流匹配生成器 + 独立时长/改写 LLM + 人类偏好与 Flow-GRPO 细化**，在统一 SMPL-H 数据与多级动作分类上实现开源 SOTA 级文本驱动人体运动合成。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
+| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| SOTA | State of the Art | 当前最优水平 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要？
 
 - **Scaling 证据**：把 **流匹配 + Transformer 扩散骨干** 在人体运动域做到 **B 级参数**，为「T2M 是否吃 scaling law」提供了正面样本，可与机器人侧 [Diffusion-based Motion Generation](./diffusion-motion-generation.md)、VLA 动作头等路线对照。
@@ -118,22 +134,6 @@ flowchart TB
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与连续归一化流基础
 - [GMR: 通用动作重定向](./motion-retargeting-gmr.md) — 从人体 SMPL 系运动到机器人骨架的常见工程落点
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| DiT | Diffusion Transformer | 以 Transformer 为骨干的扩散生成架构 |
-| SMPL | Skinned Multi-Person Linear Model | 常见人体参数化模型与重定向源 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| SOTA | State of the Art | 当前最优水平 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| GMR | General Motion Retargeting | 把人体/视频动作重定向为机器人可执行参考 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| SFT | Supervised Fine-Tuning | 用监督数据将通用模型适配到特定任务分布 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

@@ -28,6 +28,16 @@ sources:
 
 > **图谱分类节点**：对应 [具身智能研究室 · BFM 41 篇专题](https://mp.weixin.qq.com/s/Ei32la_vo0UW9Y_QCAqB2g) 与 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 的 **03 Intrinsic reward 预训练** 分组；本页汇集该组 **5 篇** 论文的站内实体与 source 索引。总地图见 [BFM 技术地图](./bfm-41-papers-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| RND | Random Network Distillation | 用预测误差作内在探索奖励的无监督手段 |
+| DIAYN | Diversity Is All You Need | 以内在奖励发现多样技能的无监督预训练代表 |
+| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
+
 ## 核心问题（公众号分类）
 
 在**尚无明确下游任务**时，身体应先通过内在奖励积累何种**可迁移探索经验**？
@@ -59,16 +69,6 @@ sources:
 - [Behavior Foundation Model](../concepts/behavior-foundation-model.md)
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)
 - [AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BFM | Behavior Foundation Model | 大规模行为数据预训练的可复用全身行为先验 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| RND | Random Network Distillation | 用预测误差作内在探索奖励的无监督手段 |
-| DIAYN | Diversity Is All You Need | 以内在奖励发现多样技能的无监督预训练代表 |
-| AMP | Adversarial Motion Prior | 用对抗判别约束状态转移接近专家运动分布的先验 |
 
 ## 参考来源
 

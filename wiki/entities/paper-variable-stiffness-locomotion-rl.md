@@ -18,6 +18,19 @@ sources:
 
 **一句话定义**：策略同时输出 **关节位置（或等价目标）与可变刚度参数**，在仿真中学会鲁棒行走，并展示 **刚度参数化粒度**（逐关节、分腿、混合）对性能与能耗的影响。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
+| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
+| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+
 ## 为什么重要
 
 - 直接回答 **「RL 能不能学增益/刚度」**：能，但 **参数化结构**（分组、分腿）往往比「每关节完全自由」更易稳定与迁移。
@@ -52,20 +65,6 @@ flowchart LR
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| legged_gym | Legged Gym | 足式机器人 RL 训练的常用开源框架 |
-| Kp | Proportional Gain | PD 控制的位置误差增益，影响刚度与响应 |
-| Kd | Derivative Gain | PD 控制的速度误差增益，抑制振荡 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
 
 ## 参考来源
 

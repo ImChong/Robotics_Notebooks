@@ -16,6 +16,16 @@ summary: "SLAM Toolbox 是 ROS 2 常用的 2D lifelong SLAM：Karto 后端、大
 
 **SLAM Toolbox** 面向 **2D 激光** 的 lifelong 建图与定位，支持大规模地图持久化与在线更新。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+
 ## 为什么重要
 
 - **Nav2 标配搭档**：室内 AMR 常见「slam_toolbox 建图 + Nav2 导航」闭环。
@@ -34,16 +44,6 @@ summary: "SLAM Toolbox 是 ROS 2 常用的 2D lifelong SLAM：Karto 后端、大
 
 - **误区：可直接做 3D 避障** — 产物为 2D 占据栅格；3D 障碍需额外传感器或 nvblox。
 - **局限**：非视觉 SLAM；与 ORB-SLAM3 等赛道不同。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
 
 ## 参考来源
 

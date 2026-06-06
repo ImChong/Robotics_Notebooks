@@ -18,6 +18,18 @@ sources:
 
 > **图谱分类节点**：**VII 柔顺性与串联弹性** + **VIII 感知与反馈**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+
 ## 串联弹性（VII）
 
 - **SEA**：电机与负载间弹簧 → 冲击存储、力传感、能效（单腿弹簧效应）。
@@ -39,18 +51,6 @@ sources:
 
 - [决策与物种](./humanoid-actuator-102-decision-species.md)
 - [参考文献 · SEA / QDD](../../sources/papers/humanoid_actuator_102_reference_catalog.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| PCB | Printed Circuit Board | 印刷电路板 |
-| EtherCAT | Ethernet for Control Automation Technology | 高实时性工业以太网总线 |
-| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
 
 ## 参考来源
 

@@ -18,6 +18,17 @@ summary: "Boston Dynamics 是全球足式机器人的领军企业，旗下的 At
 
 **Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至今，它先后推出了 BigDog, Cheetah, LS3, Atlas 和 Spot 等一系列划时代的机器人产品，极大地推动了腿足式机器人（Legged Robotics）从学术理论向实际工程部署的演进。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+
 ## 代表性产品
 
 ### 1. Atlas (人形机器人)
@@ -51,17 +62,6 @@ Stretch 是一款针对物流搬运设计的非类人机器人。它拥有一个
 - [Locomotion 任务](../tasks/locomotion.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Model Predictive Control (MPC)](../methods/model-predictive-control.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 - Boston Dynamics 官方网站与技术博客。

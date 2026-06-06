@@ -22,6 +22,15 @@ sources:
 
 > **图谱分类节点**：**03 虚拟沙盒**；总地图见 [世界模型 15 项目技术地图](./world-models-15-open-source-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
+| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 核心问题
 
 **能否在「脑海」里试错，而不是每次都在真实物理世界碰壁？** 虚拟沙盒路线不（仅）把 WM 当作 **动作前的预测模块**，而是将其提升为 **可交互的想象环境**——用于 **RL 微调**（在学到的动力学中 rollout 优化策略）或 **策略评估**（蒙特卡洛模拟 + 可验证奖励，保持策略/checkpoint 相对排名）。与 [Model-Based RL](../methods/model-based-rl.md) 和 [Latent Imagination](../concepts/latent-imagination.md) 直接同构。
@@ -52,15 +61,6 @@ sources:
 - [Model-Based RL](../methods/model-based-rl.md)
 - [机器人世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md)
 - [Video-as-Simulation](../concepts/video-as-simulation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
-| WM | World Model | 学习环境动态以供想象/规划的世界模型 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 

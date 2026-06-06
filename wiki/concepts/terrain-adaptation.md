@@ -31,6 +31,25 @@ sources:
 
 地形适应不是“看见地面”，而是把看见的地形真正转成可执行的接触决策。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
+| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+
 ## 为什么重要
 
 平地 locomotion 可以依赖固定步态和简化模型，但一旦进入真实世界：
@@ -98,25 +117,6 @@ sources:
   还需要把感知结果转成步位、姿态和接触约束。
 - **误区 3：地形适应只属于高层规划。**
   实际上它影响从 perception 到控制执行的全链路。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| MPC | Model Predictive Control | 滚动时域内优化控制序列的预测控制 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| OOD | Out-of-Distribution | 分布外样本/未见场景，泛化评测关注点 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
-| DCM | Divergent Component of Motion | 质心发散分量，用于落脚点与平衡调节 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
 
 ## 参考来源
 

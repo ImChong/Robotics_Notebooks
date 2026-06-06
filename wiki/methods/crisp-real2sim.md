@@ -18,6 +18,14 @@ related:
 
 用**平面几何 + 接触物理**把单目视频里的「人–场景交互」变成**可 rollout 的仿真资产**，而不是只做视觉好看的稠密重建。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+
 ## 为什么重要
 
 - **Real2Sim 的瓶颈常在几何与接触**：稠密 mesh 或噪声深度会在脚–地、臀–椅等接触上产生伪碰撞，后续跟踪/模仿策略大量失败。
@@ -73,14 +81,6 @@ flowchart LR
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [GS-Playground](../entities/gs-playground.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
 
 ## 参考来源
 

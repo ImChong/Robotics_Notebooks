@@ -45,6 +45,15 @@ $$ \mathcal{L}_{recon} = \| a - D(E(a)) \|^2 $$
 
 在 VLA 训练中，为了保证精度，通常需要在 Token 数量（计算开销）与量化分辨率（控制精度）之间进行折中。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
+| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
+| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
+
 ## 为什么重要
 
 1. **统一架构**：将动作视为一种特殊的“方言”，使 LLM 可以像预测下一个单词一样预测下一步动作。
@@ -55,15 +64,6 @@ $$ \mathcal{L}_{recon} = \| a - D(E(a)) \|^2 $$
 - [VLA (Vision-Language-Action Models)](../methods/vla.md)
 - [Behavior Cloning Loss](./behavior-cloning-loss.md)
 - [Cross-modal Attention](./cross-modal-attention.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| LLM | Large Language Model | 大语言模型，常作高层任务/语言接口 |
-| RT-2 | Robotics Transformer 2 | 将 web 规模 VLM 能力迁移到机器人控制的代表工作 |
-| VAE | Variational Autoencoder | 变分自编码器，学习隐变量生成表示 |
 
 ## 参考来源
 - Brohan, A., et al. (2022). *RT-1: Robotics Transformer*.

@@ -19,6 +19,12 @@ summary: "ROBOTIS THORMANG3：全尺寸人形开源平台，文档与资源在 e
 
 **ROBOTIS THORMANG3** 是 **ROBOTIS** 的 **全尺寸人形** 开源平台：产品介绍与开发指引在 **[THORMANG3 eManual](https://emanual.robotis.com/docs/en/platform/thormang3/introduction/)**；手册源码在 GitHub **[emanual …/thormang3](https://github.com/ROBOTIS-GIT/emanual/tree/master/docs/en/platform/thormang3)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+
 ## 为什么重要
 
 - **全尺寸人形公开资料栈**：在 **硬件架构 / 电气 / ROS 接口 / 运动调试** 上提供较完整的官方叙述，适合与 **OP3** 做尺寸与维护策略对照。
@@ -41,12 +47,6 @@ summary: "ROBOTIS THORMANG3：全尺寸人形开源平台，文档与资源在 e
 ## 推荐继续阅读
 
 - [ROBOTIS-GIT 组织](https://github.com/ROBOTIS-GIT)（检索 `thormang3` 相关仓库）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
 
 ## 参考来源
 

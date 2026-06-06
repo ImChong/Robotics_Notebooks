@@ -19,6 +19,15 @@ sources:
 
 > **图谱分类节点**：**人形机器人产业格局、成本分析、地缘格局、潜在领先者** 及文末观察。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
+| BMS | Battery Management System | 电池管理系统 |
+
 ## BOM 结构（文内量级）
 
 - **执行器**：整机最大头；宇树类 **~2000 元/关节×25–30**；减速器占执行器 **45–50%**，电机 **20–25%**，编码器 **10–15%**。
@@ -55,15 +64,6 @@ sources:
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [传感与末端](./humanoid-hardware-101-sensing-end-effectors.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| PCB | Printed Circuit Board | 印刷电路板 |
-| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
-| BMS | Battery Management System | 电池管理系统 |
 
 ## 参考来源
 

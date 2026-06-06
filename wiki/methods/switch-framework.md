@@ -20,6 +20,16 @@ summary: "Switch 是一种分层人形机器人控制框架，通过「增强技
 
 **Switch** 是由香港科技大学等机构提出的一种针对人形机器人的技能切换方案。它解决了传统运动模仿方法在处理非连续、大跨度动作转换时容易失稳的问题，通过将高层图规划与底层强化学习（RL）控制相结合，实现了极其稳健的动作衔接。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+
 ## 核心技术路线
 
 ### 1. 增强技能图 (Augmented Skill Graph)
@@ -59,16 +69,6 @@ Switch 的高层调度器不仅仅是简单的顺序执行器：
 - [Any2Track & RGMT](./any2track.md) — 基准对比方法，侧重于通用跟踪。
 - [AMS](./ams.md) — 侧重于物理可行性过滤。
 - [Unitree G1](../entities/unitree-g1.md) — Switch 的实验验证平台。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
 
 ## 参考来源
 

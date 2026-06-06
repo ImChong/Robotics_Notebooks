@@ -20,6 +20,21 @@ summary: "执行器网络（Actuator Network）通过神经网络在仿真中拟
 
 **执行器网络 (Actuator Network)** 是一种在机器人仿真中用于模拟物理驱动器（如电控伺服电机、SEA 驱动器）真实物理行为的深度学习模型。它是解决**足式机器人 Sim2Real 鸿沟**中“动力学不匹配”问题的利器。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
+| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么需要 Actuator Network？
 
 在物理仿真器（如 MuJoCo 或 Isaac Gym）中，默认的关节驱动通常是理想化的 PD 控制：
@@ -79,21 +94,6 @@ flowchart LR
 - [ANYmal 实体页](../entities/anymal.md) — 广泛使用执行器网络的代表
 - [System Identification (系统辨识)](../concepts/system-identification.md)
 - [BAM 论文实体](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 仓库](../entities/bam-better-actuator-models.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| SEA | Series Elastic Actuator | 串联弹性执行器，提供柔顺与力控 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| ANYmal | ANYbotics Quadruped | ANYbotics 的四足机器人研究平台 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

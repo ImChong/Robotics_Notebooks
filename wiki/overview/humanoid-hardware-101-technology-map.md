@@ -31,6 +31,15 @@ summary: "依据 human five 公众号《Humanoid Hardware 入门 101》长文，
 
 人形硬件最难降本的不是「多买几个便宜电机」，而是 **关节级耦合执行器**（电机×减速器×丝杠×轴承×编码器×热与公差）——在 RL 与可消耗件思维下，**扭矩透明、减自由度、简化手部** 比单纯压供应商报价更接近 2 万美元级 BOM 叙事。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+
 ## 为何单独做这张地图
 
 - 公众号文长达 **~4 万字**，按 **第一性原理 + BOM** 写部件，而非按厂商软文堆参数。
@@ -105,15 +114,6 @@ flowchart TB
 
 - [人形机器人力学](https://arxiv.org/abs/2309.04329)（综述类背景）
 - [摩根士丹利人形机器人供应链报告](https://www.morganstanley.com/)（文内引用，具体版本以原文脚注为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| QDD | Quasi-Direct Drive | 准直驱，低减速比、高背驱动性的作动方案 |
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| PCB | Printed Circuit Board | 印刷电路板 |
 
 ## 参考来源
 

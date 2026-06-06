@@ -19,6 +19,14 @@ sources:
 
 **HumanNet** 在与既有语料对比时，用一张表同时强调 **规模、视点、活动语义粒度** 以及论文中称为 **Embodied Use** 的定性列（与「能否直接支撑机器人学习接口」相关，但仍是作者视角下的归类）。本页把该表 **提炼为阅读框架**，完整转录与链接索引见下方参考来源中的原始资料文件。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 为什么重要？
 
 - **人类视频 ≠ 同一种监督**：同样是「小时数」，厨房第一人称、电影第三人称与成对机器人示教，对 **接触几何、可执行动作标签、跨本体迁移** 的含义完全不同；Table 1 的价值在于把常见基准 **放在同一套维度下扫一眼**。
@@ -55,14 +63,6 @@ sources:
 - **方法**：[VLA](../methods/vla.md)、[Imitation Learning](../methods/imitation-learning.md) 讨论人类侧数据与真机数据的互补与不等价替换。
 - **方法**：[EgoScale](../methods/egoscale.md) 提供「万小时级 ego 人视频 ↔ VLA」的实证参照轴。
 - **概念**：[具身规模法则](../concepts/embodied-scaling-laws.md) 用于讨论 **人视频小时** 与 **机器人日志小时** 在指标上不可混用。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 

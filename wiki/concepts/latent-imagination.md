@@ -18,6 +18,15 @@ summary: "潜空间想象（Latent Imagination）是 Model-Based RL 的核心技
 
 **潜空间想象 (Latent Imagination)** 是现代 Model-Based 强化学习（尤其是 **Dreamer** 系列）的灵魂。它彻底改变了机器人学习的范式：不再是在真实世界或沉重的物理仿真器中反复试错，而是在一个完全由数据学出来的“脑内模型”中进行极其高速的并行进化。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
+| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
+| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
+
 ## 核心工作原理
 
 潜空间想象通常建立在 **RSSM (Recurrent State Space Model)** 之上。其流程分为“梦境构建”和“梦中训练”两个阶段：
@@ -54,15 +63,6 @@ Actor-Critic 策略直接在这条“想象轨迹”上运行：
 - [Generative World Models](../methods/generative-world-models.md)
 - [Being-H0.7](../methods/being-h07.md)
 - [变分目标函数 (ELBO)](../formalizations/variational-objective.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| Dreamer | Dreamer (World Models) | 在潜空间想象中训练的 MBRL 代表 |
-| Reward | Reward Function | 塑造强化学习策略行为的标量反馈 |
-| DreamerV3 | Dreamer version 3 | 在潜空间想象中训练、单一超参跨 150+ 任务通用的世界模型智能体 |
 
 ## 参考来源
 - Hafner, D., et al. (2019). *Dream to Control: Learning Behaviors by Latent Imagination*.

@@ -17,6 +17,13 @@ sources:
 
 > **图谱分类节点**：对应 [human five · Hardware 101](https://mp.weixin.qq.com/s/10hYwFzC1EuCypFVzC6QGQ) **机身骨架** 章；总地图见 [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GF | Glass Fiber | 玻璃纤维增强材料 |
+| POM | Polyoxymethylene | 聚甲醛工程塑料（俗称赛钢/Delrin） |
+
 ## 核心问题
 
 承重结构应按 **载荷路径** 分功能选材，而非把机身当作单一整体。
@@ -40,13 +47,6 @@ sources:
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [集成执行器](./humanoid-hardware-101-integrated-actuators.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GF | Glass Fiber | 玻璃纤维增强材料 |
-| POM | Polyoxymethylene | 聚甲醛工程塑料（俗称赛钢/Delrin） |
 
 ## 参考来源
 

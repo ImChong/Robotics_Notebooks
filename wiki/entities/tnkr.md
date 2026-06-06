@@ -14,6 +14,18 @@ related:
 
 **Tnkr**（[tnkr.ai](https://tnkr.ai/)）公开定位为 **「robotics 的 GitHub」**：把机器人项目里长期分散的 **机械设计、电气接线、控制软件、现场部署与运行数据** 放进**可分享、可 fork、可贡献**的单一项目空间，而不是让知识碎在 CAD 云盘、代码仓、网盘和聊天里。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
+| AI | Artificial Intelligence | 人工智能 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
+| URDF | Unified Robot Description Format | 统一机器人描述格式 |
+| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 为什么重要？
 
 机器人研发是**跨学科流水线**，但工具链默认按学科切开：
@@ -87,18 +99,6 @@ flowchart LR
 
 - [Tnkr 官方站点](https://tnkr.ai/)
 - [Launch 视频：We built the GitHub for robotics](https://www.youtube.com/watch?v=nLVeWpSb38U)（@TnkrdotAI）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| CAD | Computer-Aided Design | 计算机辅助设计，硬件结构建模 |
-| AI | Artificial Intelligence | 人工智能 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| BOM | Bill of Materials | 物料清单，硬件零部件列表 |
-| URDF | Unified Robot Description Format | 统一机器人描述格式 |
-| MJCF | MuJoCo XML Format | MuJoCo 的模型与场景描述格式 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 

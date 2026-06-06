@@ -19,6 +19,13 @@ sources:
 
 **E³C** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 09/9** 篇，归类为 **04 Ego+Exo**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Ego | Egocentric Vision | 第一人称视角感知与控制 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+
 ## 为什么重要
 
 - 3D 环境记忆 + ego/exo 人体姿态控制的第一视角视频生成，服务可推演的世界片段而非短视频观感。
@@ -33,7 +40,6 @@ sources:
 | 出处 | 2026 · 项目 |
 | 论文/项目 | <https://e3c-videogen.github.io/> |
 
-
 ## 与其他页面的关系
 
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
@@ -43,13 +49,6 @@ sources:
 ## 实验与评测
 
 - 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Ego | Egocentric Vision | 第一人称视角感知与控制 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 
 ## 参考来源
 

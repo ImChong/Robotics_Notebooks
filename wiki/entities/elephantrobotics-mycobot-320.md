@@ -19,6 +19,14 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 
 **myCobot 320** 是 **大象机器人（Elephant Robotics）** 的 **桌面六轴协作机械臂**：主打 **轻量、开源、教育/创客**；产品资料在 **[mycobot-320-pi-cn](https://www.elephantrobotics.com/mycobot-320-pi-cn/)**，技术文档在 GitHub **[myCobot320-docs](https://github.com/elephantrobotics/myCobot320-docs)**，支持入口在 **[官方 Support](https://www.elephantrobotics.com/support/)**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| API | Application Programming Interface | 应用程序编程接口 |
+
 ## 为什么重要
 
 - **视觉 + 臂一体化教学**：常与 **eye-in-hand** 课程设计绑定，适合作为 **ROS 操作入门** 硬件。
@@ -42,14 +50,6 @@ summary: "大象机器人 myCobot 320：桌面级六轴开源协作臂，支持 
 ## 推荐继续阅读
 
 - myCobot320-docs 仓库内 **API / ROS** 章节（版本以默认分支为准）
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| API | Application Programming Interface | 应用程序编程接口 |
 
 ## 参考来源
 

@@ -20,6 +20,20 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 
 **GR00T-WholeBodyControl** 把 NVIDIA **GR00T 全身控制（WBC）** 相关资产收敛到同一 Git 单仓：**解耦 WBC**（下肢 RL + 上肢 IK，用于 [GR00T N1.5 / N1.6](https://research.nvidia.com/labs/gear/gr00t-n1_5/) 等）、**GEAR-SONIC**（[SONIC](../methods/sonic-motion-tracking.md) 规模化运动跟踪通用策略）与 **MotionBricks**（[`motionbricks/`](https://github.com/NVlabs/GR00T-WholeBodyControl/tree/main/motionbricks) 预览代码）的训练脚本、权重托管说明与部署栈并列维护。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
+| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
+
 ## 为什么重要？
 
 - **从论文到实机的纵向切片**：覆盖 Isaac Lab 侧大规模 PPO 训练、ONNX / C++ 推理、ZMQ 协议与 VR 遥操作采集，适合作为「人形低层策略工程」的对照样本。
@@ -42,20 +56,6 @@ summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 概念层与 QP / 分层控制主线
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — 同品牌视觉 Sim2Real 仓库，任务侧重不同
 - [Kimodo](./kimodo.md) — 文生人体/人形运动学轨迹的上游；GEAR-SONIC 在线 Demo 集成「Kimodo 生成轨迹 → SONIC 仿真跟踪」工作流
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| IK | Inverse Kinematics | 满足末端/姿态约束求解关节角的运动学逆解 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| ONNX | Open Neural Network Exchange | 跨框架神经网络模型交换格式 |
-| QP | Quadratic Programming | 将 WBC/控制问题写成二次规划的标准求解形式 |
 
 ## 参考来源
 

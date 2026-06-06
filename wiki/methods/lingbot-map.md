@@ -25,6 +25,14 @@ summary: "LingBot-Map 是面向流式单目视频的前馈 3D 基础模型：Geo
 
 LingBot-Map 采用前馈式 Transformer 架构，在单一框架内用 **Geometric Context Attention（GCA）** 显式维护 **锚点上下文、位姿参考窗口、轨迹记忆**，将坐标接地、局部稠密几何与长程漂移校正统一到可学习的注意力掩码中；推理侧结合 **Paged KV Cache（FlashInfer）**，在官方设定下报告约 **20 FPS**（518×378）并支持 **>10,000 帧** 量级的稳定流式推理（仍受训练时视频 RoPE 长度与工程 keyframe/window 策略约束）。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
+
 ## 为什么重要
 
 传统的 SLAM 和 3D 重建系统通常依赖于复杂的全局优化（如 Bundle Adjustment）或易受长程漂移影响。LingBot-Map 的重要性在于：
@@ -115,14 +123,6 @@ flowchart LR
 - [Unified Multimodal Tokens (统一 Token)](./unified-multimodal-tokens.md)
 - [SE(3) Representation (位姿表示形式化)](../formalizations/se3-representation.md)
 - [Extended Kalman Filter (EKF)](../formalizations/ekf.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 
 ## 参考来源
 

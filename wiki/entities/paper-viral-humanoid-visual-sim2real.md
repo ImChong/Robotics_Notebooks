@@ -28,6 +28,28 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 
 **VIRAL** 是一篇面向 **人形机器人 loco-manipulation** 的 **视觉 Sim2Real** 系统论文（arXiv:2511.15200，CVPR 2026）：策略 **完全在仿真中训练**，以 **机载 RGB + 本体感知** 在 **Unitree G1** 上 **零样本真机** 执行多步行走–放置–抓取–转向循环。作者强调贡献是 **「全栈技术配方 + 规模化」**——何种设计有效、何处失效、如何相互作用——而非单一新 RL 公式。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
+| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
+| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
+| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| API | Application Programming Interface | 应用程序编程接口 |
+| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
+| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
+| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
+| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
+
 ## 为什么重要
 
 - **问题对准**：多数工作将 **盲走**、**固定基座操作** 或 **重度遥操作 / 非机载传感** 分开；VIRAL 针对 **机载视觉下的移动操作** 长时域闭环。
@@ -90,29 +112,6 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 ## 与其他工作对比
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| DAgger | Dataset Aggregation | 迭代收集策略诱导状态下的专家标注以纠偏的模仿学习方法 |
-| BC | Behavior Cloning | 将状态映射到动作的监督式模仿，易受分布偏移影响 |
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| SysID | System Identification | 系统辨识，估计物理/动力学参数 |
-| G1 | Unitree G1 Humanoid | 宇树入门级教育科研人形平台 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| API | Application Programming Interface | 应用程序编程接口 |
-| MLP | Multi-Layer Perceptron | 多层感知机，处理本体向量等低维输入 |
-| IL | Imitation Learning | 从专家演示学习策略，奖励难定义时的主路线 |
-| VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
-| Isaac Gym | NVIDIA Isaac Gym | GPU 并行刚体仿真训练环境 |
-| Isaac Lab | NVIDIA Isaac Lab | 基于 Omniverse 的机器人学习训练框架 |
 
 ## 参考来源
 

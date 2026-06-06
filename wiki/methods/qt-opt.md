@@ -19,6 +19,13 @@ summary: "QT-Opt 用大规模离线 + 在线真实机器人数据训练视觉条
 
 **QT-Opt**：面向视觉输入机械臂抓取的异策深度强化学习框架，用交叉熵方法等近似在连续动作空间上做 Q 学习，并结合长时间运行的真实机器人数据采集闭环。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
+
 ## 主要技术路线
 
 - **连续动作 Q 学习**：区别于离散动作 Atari，在连续关节 / 末端空间估计 Q；整体定位见 [Sim2Real](../concepts/sim2real.md) 中的像素闭环叙事。
@@ -30,13 +37,6 @@ summary: "QT-Opt 用大规模离线 + 在线真实机器人数据训练视觉条
 - [MT-Opt](./mt-opt.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Manipulation 任务](../tasks/manipulation.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
-| Manipulation | Robot Manipulation | 抓取、移动、操作物体的任务总称 |
 
 ## 参考来源
 

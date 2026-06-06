@@ -18,6 +18,15 @@ summary: "TOG 论文：三次障碍接触势 + 弹性包容动态刚度，使 FE
 
 **一句话定义：** 本文提出一种 **三次障碍（cubic barrier）** 接触模型，并在接触矩阵组装时纳入 **弹性模态对动态刚度的贡献（elasticity-inclusive dynamic stiffness）**，使 shell / solid / rod 的 FEM 体与 **百万–亿级** 接触在 GPU 单精度牛顿求解中保持 **无穿透** 与可控应变。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+
 ## 为什么重要？
 
 - **接触–弹性耦合是软体仿真的瓶颈：** 将接触 Jacobian 与弹性力分步处理时，易出现虚假刚度、穿透或「橡胶化」拉伸；本文把障碍势与弹性刚度 **同一牛顿步** 对齐，直接服务服装、软包装、索网等 **严格几何约束** 场景。
@@ -53,16 +62,6 @@ summary: "TOG 论文：三次障碍接触势 + 弹性包容动态刚度，使 FE
 ## 实验与评测
 
 - 量化指标、消融与 sim2real / 实机结果见 **原文 PDF** 与 [参考来源](#参考来源)；本页正文侧重方法结构与知识库交叉引用。
-
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 
 ## 参考来源
 

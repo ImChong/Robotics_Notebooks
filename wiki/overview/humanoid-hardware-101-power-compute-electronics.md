@@ -17,6 +17,15 @@ sources:
 
 > **图谱分类节点**：**电池、计算单元、PCB** 三章 — 移动人形的 **能量预算** 与 **边缘算力**。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| NMC | Nickel Manganese Cobalt | 三元锂电池正极材料体系 |
+| PCB | Printed Circuit Board | 印刷电路板 |
+| BMS | Battery Management System | 电池管理系统 |
+| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
+
 ## 电池
 
 - **锂离子** 标配（轻、高电压）；正极常见 **NMC** 等镍基体系利能量密度。
@@ -38,15 +47,6 @@ sources:
 - [人形电池热管理 Query](../queries/humanoid-battery-thermal-management.md)
 - [开源人形「大脑」对比](../entities/open-source-humanoid-brains.md)
 - [产业与成本地缘](./humanoid-hardware-101-supply-chain-economics.md)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| NMC | Nickel Manganese Cobalt | 三元锂电池正极材料体系 |
-| PCB | Printed Circuit Board | 印刷电路板 |
-| BMS | Battery Management System | 电池管理系统 |
-| DFM | Design for Manufacturing | 面向制造的设计，降低量产成本与风险 |
 
 ## 参考来源
 

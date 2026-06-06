@@ -16,6 +16,18 @@ summary: "ORB-SLAM3 支持单目/双目/RGB-D 与 IMU 的视觉/视觉-惯性 SL
 
 **ORB-SLAM3** 是学术与工程界广泛引用的 **视觉/视觉-惯性 SLAM** 开源库。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
+| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
+| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
+| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
+| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
+| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
+| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
+
 ## 为什么重要
 
 - **多传感器模式**：单目、双目、RGB-D、IMU 紧耦合。
@@ -33,18 +45,6 @@ summary: "ORB-SLAM3 支持单目/双目/RGB-D 与 IMU 的视觉/视觉-惯性 SL
 
 - **误区：自带 Nav2 插件** — 需自行 ROS 2 桥接与 TF 发布。
 - **局限**：动态场景、弱纹理环境性能下降。
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| RGB | Red-Green-Blue | 彩色图像通道，常与深度 (RGB-D) 配合 |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| SLAM | Simultaneous Localization and Mapping | 同步定位与建图 |
-| ROS 2 | Robot Operating System 2 | 机器人系统集成与通信的常用中间件 |
-| LiDAR | Light Detection and Ranging | 激光雷达，地形感知与建图主传感器 |
-| LIO | LiDAR-Inertial Odometry | 激光-惯性里程计 |
-| VIO | Visual-Inertial Odometry | 视觉-惯性里程计，融合相机与 IMU 估计位姿 |
 
 ## 参考来源
 

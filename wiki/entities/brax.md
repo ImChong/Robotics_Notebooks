@@ -25,6 +25,19 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 
 **JAX 上的 RL 训练库 + 历史上自带的多种可微物理后端**；新项目中 **物理** 应优先对齐 **MJX / MuJoCo Warp**，**任务环境** 官方推荐转向 **MuJoCo Playground**，Brax 侧以 **`brax/training`** 为主维护面。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
+| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
+| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
+| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
+| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
+| CPU | Central Processing Unit | 中央处理器 |
+
 ## 为什么重要
 
 - **可微仿真文献锚点**：论文 [arXiv:2106.13281](https://arxiv.org/abs/2106.13281) 与开源实现长期作为 **解析策略梯度**、**sim2sim** 等方向的 **基线栈**。
@@ -57,19 +70,6 @@ summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 RE
 - 论文：[Brax — A Differentiable Physics Engine…](https://arxiv.org/abs/2106.13281)
 - 仓库 README 与 Colab：[google/brax](https://github.com/google/brax)
 - 与 MJX 联训示例：[MuJoCo `mjx/tutorial.ipynb`（Colab）](https://colab.research.google.com/github/google-deepmind/mujoco/blob/main/mjx/tutorial.ipynb)
-
-## 英文缩写速查
-
-| 缩写 | 英文全称 | 简要说明 |
-|------|----------|----------|
-| JAX | JAX | 支持自动微分与 XLA 编译的数值计算库 |
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
-| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富的刚体物理仿真引擎 |
-| MJX | MuJoCo JAX | MuJoCo 的 JAX/XLA 后端，支持可微与批量仿真 |
-| PPO | Proximal Policy Optimization | 人形/足式 locomotion 中最常用的 on-policy 策略梯度算法 |
-| SAC | Soft Actor-Critic | 连续控制常用的 off-policy 最大熵算法 |
-| GPU | Graphics Processing Unit | 图形处理器，大规模并行仿真训练的算力基础 |
-| CPU | Central Processing Unit | 中央处理器 |
 
 ## 参考来源
 
