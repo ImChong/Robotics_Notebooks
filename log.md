@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] ingest | sources/papers/cosmos3_arxiv_2606_02800.md、sources/sites/cosmos3-project.md、sources/repos/nvidia_cosmos.md — Cosmos 3 全模态 Physical AI 世界模型；wiki/entities/cosmos-3.md、wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md、wiki/methods/mimic-video.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md
+
 ## [2026-06-06] lint | health-check — 全库健康度提升至满分：isaac-gym / isaac-lab 补 summary frontmatter（health_score 2→3）；paper-learning-to-adapt-bio-inspired-quadruped-gait 补 venue 元数据；684/684 节点 health_score=3，lint 0 issues
 
 ## [2026-06-06] ingest | sources/papers/learning_to_adapt_nature_2025.md、sources/repos/ihcr_learning_to_adapt.md — Learning to Adapt（Nature MI 2025）四足 bio-inspired 多步态 DRL；wiki/entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md、wiki/concepts/gait-generation.md、wiki/tasks/locomotion.md、wiki/entities/quadruped-robot.md、wiki/entities/paper-walk-these-ways-quadruped-mob.md
