@@ -86,6 +86,7 @@ CANONICAL_TOPIC_PAGES: dict[str, str] = {
     "control barrier function": "wiki/concepts/control-barrier-function.md",
     "vla": "wiki/methods/vla.md",
     "vision-language-action": "wiki/methods/vla.md",
+    "sim2real": "wiki/concepts/sim2real.md",
 }
 
 COMPARISON_INTENT_MARKERS = frozenset(
