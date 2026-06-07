@@ -4,6 +4,7 @@ tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, dat
 status: complete
 updated: 2026-05-17
 related:
+  - ./blender.md
   - ./mujoco.md
   - ./project-instinct.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -85,6 +86,7 @@ flowchart LR
 - [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — 重定向或跟踪之后的手工修整在流水线中的位置
 - [Manipulation](../tasks/manipulation.md) — 操作任务里关键帧式示教与数据后处理
 - [Teleoperation](../tasks/teleoperation.md) — 上游人类演示采集
+- [Blender（DCC 绑定/动画/BVH 上游）](./blender.md) — 通用网格与骨骼编辑；与本页三条 **机器人专用** 编辑器互补串联
 
 ## 推荐继续阅读
 
