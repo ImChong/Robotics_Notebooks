@@ -17,8 +17,7 @@ SCHEMA_DIR = ROOT / "schema"
 FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
 INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
 NOTEBOOK_RAW = (
-    "https://raw.githubusercontent.com/ImChong/"
-    "Humanoid_Robot_Learning_Paper_Notebooks/main"
+    "https://raw.githubusercontent.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/main"
 )
 
 GENERIC_ONE_LINE = "以 Paper Notebooks 深读笔记为首要编译来源"
