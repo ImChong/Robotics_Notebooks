@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | wiki/comparisons/cnn-vs-vit-backbones.md — V24 P1 视觉表征知识链首页：CNN vs ViT 视觉骨干对比
+
+- 新增页面：[wiki/comparisons/cnn-vs-vit-backbones.md](wiki/comparisons/cnn-vs-vit-backbones.md)（归纳偏置、数据量需求、分辨率/吞吐、多尺度特征、边缘部署、下游迁移六维对比；机器人感知取舍决策图与误区）
+- 交叉回链：[wiki/concepts/vision-backbones.md](wiki/concepts/vision-backbones.md)、[wiki/methods/object-detection.md](wiki/methods/object-detection.md) 关联页面区块增补对比页入链，消除孤儿节点
+- 派生同步：`make graph` + `make badge` + `make export`（知识图谱 772→773 节点 / 5332→5338 边，README badge 同步）；`make lint` 0 阻塞问题，搜索回归 37/37，导出质量 12/12
+- 清单推进：[docs/checklists/tech-stack-next-phase-checklist-v24.md](docs/checklists/tech-stack-next-phase-checklist-v24.md) P1「视觉表征知识链 (+3)」首项打勾
+
 ## [2026-06-07] ingest | sources/papers/esi_bench_arxiv_2605_18746.md — 补强 ESI-Bench 动作空间/基准对比并交叉 VLN
 
 - 原始资料：[sources/papers/esi_bench_arxiv_2605_18746.md](sources/papers/esi_bench_arxiv_2605_18746.md)（<https://arxiv.org/abs/2605.18746>）、[sources/sites/esi-bench-project.md](sources/sites/esi-bench-project.md)（<https://esi-bench.github.io/>）、[sources/repos/esi_bench.md](sources/repos/esi_bench.md)（<https://github.com/ESI-Bench/ESI-Bench>）
