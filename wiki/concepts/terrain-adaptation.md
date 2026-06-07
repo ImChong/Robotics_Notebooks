@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-07
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../tasks/locomotion.md
@@ -15,12 +15,14 @@ related:
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
   - ../entities/dreamwaq-plus.md
+  - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
 sources:
   - ../../sources/papers/footstep_and_balance.md
   - ../../sources/papers/privileged_training.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
+  - ../../sources/papers/rpl_arxiv_2602_03002.md
 ---
 
 # Terrain Adaptation（地形适应）
@@ -107,6 +109,7 @@ sources:
 - [楼梯与障碍 Locomotion（中心节点）](../tasks/stair-obstacle-perceptive-locomotion.md) 汇总楼梯/越障上的感知 vs 盲走文献索引。
 - [Privileged Training](./privileged-training.md) 展示了复杂地形上 teacher 用高度图、student 用本体感知的经典方案。
 - [DreamWaQ++](../entities/dreamwaq-plus.md) 把 **3D 点云** 与 **本体历史** 在单阶段 RL 中融合，是四足 **点云地形适应** 的代表实现。
+- [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 用 **多视角深度** 做 **双向/多向** 地形适应，并以 **DFSV/RSM** 处理非对称视野与未见窄地形宽度。
 - [Sim2Real](./sim2real.md) 强调地形感知和真实传感器偏差是迁移痛点。
 
 ## 常见误区

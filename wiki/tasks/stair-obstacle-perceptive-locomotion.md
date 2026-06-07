@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, stairs, obstacle, perception, blind-locomotion, parkour, humanoid, quadruped, hub]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-07
 related:
   - ./locomotion.md
   - ./humanoid-locomotion.md
@@ -21,12 +21,14 @@ related:
   - ../entities/paper-hrl-stack-24-hiking_in_the_wild.md
   - ../entities/paper-ssr-humanoid-open-world-traversal.md
   - ../entities/paper-pilot-perceptive-loco-manipulation.md
+  - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
 sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
   - ../../sources/papers/ssr_arxiv_2605_30770.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
+  - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -97,6 +99,7 @@ flowchart TB
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
 | **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
+| **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |
 
 ### 四足 · 楼梯与崎岖
 
@@ -134,6 +137,7 @@ flowchart TB
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
 | 人形 **边走边操作** + LiDAR 高程 LLC | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) |
+| 人形 **双向/多向** 深度感知 + **载荷** 爬楼梯/垫脚石 | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
 | 理解 DCM / 落脚点如何进 RL | [Capture Point / DCM](../concepts/capture-point-dcm.md) |
 

@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-07
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路。"
 ---
 
@@ -111,6 +111,12 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - Teacher：用高质量参考动作 + 判别器训练
 - Student：蒸馏 Teacher 策略到本体感知策略
 
+### RPL（人形多向深度，Zhang et al. 2026）
+
+- **Stage 1 Teacher**：分地形 **特权高程图** + FALCON 双智能体 PPO 专家（含载荷末端力课程）。
+- **Stage 2 Student**：**DAgger** 蒸馏为 **多视角深度 Transformer** 统一下身策略；部署仅前后 ZED 深度。
+- 见 [RPL 实体页](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 与 [sources/papers/rpl_arxiv_2602_03002.md](../../sources/papers/rpl_arxiv_2602_03002.md)。
+
 ### DreamWaQ / DreamWaQ++（四足，Nahrendra et al.）
 
 - **DreamWaQ（ICRA 2023）**：盲走 + **CENet** 估计隐式地形上下文；单阶段非对称 AC，不依赖显式高度图。
@@ -171,6 +177,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例
+- [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 

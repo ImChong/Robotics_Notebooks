@@ -2,7 +2,7 @@
 
 ## [2026-06-07] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **3** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -34,8 +34,10 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（3 个）
+- wiki/concepts/terrain-adaptation.md (wiki:2026-06-06 < sources/rpl_arxiv_2602_03002.md:2026-06-07)
+- wiki/concepts/privileged-training.md (wiki:2026-06-05 < sources/rpl_arxiv_2602_03002.md:2026-06-07)
+- wiki/methods/dagger.md (wiki:2026-06-06 < sources/rpl_arxiv_2602_03002.md:2026-06-07)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -93,4 +95,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：754/768 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：755/769 (98%) wiki/entity 页有 ingest 来源
