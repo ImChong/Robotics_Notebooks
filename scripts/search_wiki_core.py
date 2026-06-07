@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import json
 from collections import Counter
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, cast
 
@@ -190,6 +190,7 @@ def compute_score(
     page_type: str = "",
     dl: int = 1,
     doc_path: str = "",
+    today_date: date | None = None,
 ) -> float:
     if not query_tokens:
         return 0.0
@@ -220,10 +221,11 @@ def compute_score(
     updated_str = fm.get("updated", fm.get("created", ""))
     if updated_str:
         try:
-            from datetime import date as _date
-
-            upd = _date.fromisoformat(str(updated_str)[:10])
-            if (_date.today() - upd).days <= 30:
+            upd = date.fromisoformat(str(updated_str)[:10])
+            # ⚡ Bolt Optimization: Use cached `today_date` passed from outer loop
+            # Expected impact: Avoids expensive repeated calls to `date.today()` and redundant module imports inside the hot scoring loop, reducing search latency.
+            ref_date = today_date or date.today()
+            if (ref_date - upd).days <= 30:
                 score *= 1.2
         except (ValueError, TypeError):
             pass
@@ -440,6 +442,10 @@ def search(
             semantic_notice = f"{semantic_notice}；{fallback}" if semantic_notice else fallback
             semantic = False
 
+    # ⚡ Bolt Optimization: Cache today's date once per batch search
+    # Expected impact: Eliminates redundant calls to `date.today()` across thousands of documents.
+    today_date = date.today()
+
     prepared = []
     for doc in docs:
         if not _filter_doc(doc, type_filter, tag_filters):
@@ -458,6 +464,7 @@ def search(
             page_type=doc["page_type"],
             dl=doc.get("dl", 1),
             doc_path=doc["path"],
+            today_date=today_date,
         )
         if query_tokens and not semantic and score <= 0:
             continue

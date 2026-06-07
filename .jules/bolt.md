@@ -61,3 +61,7 @@
 ## 2026-06-02 - Frontend Search UI DOM construction string concatenation
 **Learning:** In `docs/main.js`, rendering result HTML using a two-pass strategy via intermediate arrays (e.g., `exact.push()`, followed by `exact.map().join('')`) creates unnecessary intermediate allocations that stress the garbage collector and slow down UI render during frequent typing.
 **Action:** When constructing HTML dynamically from search results or other collections, merge filtering and HTML generation into a single-pass `for` loop that uses simple string concatenation (`html +=`) instead of intermediate arrays and array closures.
+
+## 2026-06-03 - Python Loop Optimization: Avoid Repeated Imports and Function Calls
+**Learning:** In the python search ranking code (`scripts/search_wiki_core.py`), repeatedly importing `date` from `datetime` and calling `date.today()` inside the inner scoring loop `compute_score` creates significant execution overhead and degrades overall search performance.
+**Action:** Always hoist invariant module imports and relatively static values (like `date.today()`) out of hot document processing loops to the global module scope to avoid unneeded CPU instruction execution and memory pressure.
