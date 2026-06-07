@@ -8,7 +8,7 @@
 - **分类：** 08_Navigation
 - **arXiv：** <https://arxiv.org/abs/2601.12790>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** FocusNav 把人形局部导航做成"路径点先告诉我往哪走，注意力再去看那条路上的细节"：用 WGSCA（路径点引导的空间交叉注意力）把感知聚焦到未来轨迹附近，用 SASG（稳定性感知选择门控）在打滑/失稳时主动屏蔽远端信息、把策略压回到脚下安全，在 Unitree G1 上显著提升复杂场景下的导航成功率。
 
 ## 核心摘录（策展，非全文）
 

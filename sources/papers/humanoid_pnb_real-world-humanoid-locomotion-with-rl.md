@@ -9,7 +9,7 @@
 - **子分类：** 行走经典
 - **arXiv：** <https://arxiv.org/abs/2303.03381>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把"观测-动作历史"塞进一个 1.4 M 参数的因果 Transformer，用 Isaac Gym 上千并行环境 + 大规模 PPO 训练完，零样本部署到全尺寸 Digit 上直接在户外稳走——首次证明纯学习方案能取代传统模型预测控制（MPC）做真实人形 locomotion，且能"在上下文里"自适应地形变化与脚被卡的紧急情况。
 
 ## 核心摘录（策展，非全文）
 

@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_physics-informed-neural-networks-with-ukf-for-se.md
-summary: "Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "要让一台没有关节力矩传感器的人形机器人也能做力矩控制，就必须把\"力矩\"从其他传感器里估出来；论文的做法是：先用 PINN 把谐波减速器最难刻画的非线性摩擦学下来，再把 PINN 的摩擦估计当作 UKF 的一个测量量喂进去，最终在 ergoCub 真机平衡实验上让腿部 6 个关节的力矩跟踪 RMSE 落到 0.08–1.41 Nm，整体优于工业界默认基线 RNEA。"
 ---
 
 # Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots
@@ -18,7 +18,7 @@ summary: "Physics-Informed Neural Networks with Unscented Kalman Filter for Sens
 
 ## 一句话定义
 
-Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+要让一台没有关节力矩传感器的人形机器人也能做力矩控制，就必须把"力矩"从其他传感器里估出来；论文的做法是：先用 PINN 把谐波减速器最难刻画的非线性摩擦学下来，再把 PINN 的摩擦估计当作 UKF 的一个测量量喂进去，最终在 ergoCub 真机平衡实验上让腿部 6 个关节的力矩跟踪 RMSE 落到 0.08–1.41 Nm，整体优于工业界默认基线 RNEA。
 
 ## 英文缩写速查
 

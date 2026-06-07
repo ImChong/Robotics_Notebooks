@@ -9,118 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-      "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-      "label": "Paper Notebooks · Foundational RL",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
-      "detail_id": "wiki-overview-paper-notebook-category-02-motion-retargeting",
-      "label": "Paper Notebooks · Motion Retargeting",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
-      "detail_id": "wiki-overview-paper-notebook-category-03-high-impact-selection",
-      "label": "Paper Notebooks · High Impact Selection",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
-      "label": "Paper Notebooks · Loco-Manipulation and WBC",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
-      "label": "Paper Notebooks · Locomotion",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-06-manipulation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-06-manipulation",
-      "label": "Paper Notebooks · Manipulation",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-07-teleoperation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-07-teleoperation",
-      "label": "Paper Notebooks · Teleoperation",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-08-navigation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-08-navigation",
-      "label": "Paper Notebooks · Navigation",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-09-state-estimation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-09-state-estimation",
-      "label": "Paper Notebooks · State Estimation",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
-      "detail_id": "wiki-overview-paper-notebook-category-10-sim-to-real",
-      "label": "Paper Notebooks · Sim-to-Real",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
-      "detail_id": "wiki-overview-paper-notebook-category-11-simulation-benchmark",
-      "label": "Paper Notebooks · Simulation Benchmark",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-12-hardware-design.md",
-      "detail_id": "wiki-overview-paper-notebook-category-12-hardware-design",
-      "label": "Paper Notebooks · Hardware Design",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
-      "label": "Paper Notebooks · Physics-Based Animation",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-14-human-motion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-14-human-motion",
-      "label": "Paper Notebooks · Human Motion",
-      "type": "overview",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr.md",
       "detail_id": "entity-paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr",
       "label": "An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems",
@@ -167,13 +55,125 @@
       "type": "entity",
       "recency": "2026-06-07",
       "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-behavior-foundation-model-for-humanoid-robots.md",
+      "detail_id": "entity-paper-notebook-behavior-foundation-model-for-humanoid-robots",
+      "label": "Behavior Foundation Model for Humanoid Robots",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md",
+      "detail_id": "entity-paper-notebook-benchmarking-humanoid-imitation-learning-with-mo",
+      "label": "Benchmarking Humanoid Imitation Learning with Motion Difficulty",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md",
+      "detail_id": "entity-paper-notebook-biomechanical-comparisons-reveal-divergence-of-h",
+      "label": "Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-characteristics-management-and-utilization-of-mu.md",
+      "detail_id": "entity-paper-notebook-characteristics-management-and-utilization-of-mu",
+      "label": "Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-contact-aided-invariant-ekf-for-legged-robots.md",
+      "detail_id": "entity-paper-notebook-contact-aided-invariant-ekf-for-legged-robots",
+      "label": "Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-contrastive-representation-learning-for-adaptive.md",
+      "detail_id": "entity-paper-notebook-contrastive-representation-learning-for-adaptive",
+      "label": "Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-control-operators-for-interactive-character-anim.md",
+      "detail_id": "entity-paper-notebook-control-operators-for-interactive-character-anim",
+      "label": "Control Operators for Interactive Character Animation",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md",
+      "detail_id": "entity-paper-notebook-domain-randomization-for-transferring-deep-neura",
+      "label": "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md",
+      "detail_id": "entity-paper-notebook-domain-randomization-understanding-sim-to-real-t",
+      "label": "Understanding Domain Randomization for Sim-to-real Transfer",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-eco-energy-constrained-optimization-with-rl-for.md",
+      "detail_id": "entity-paper-notebook-eco-energy-constrained-optimization-with-rl-for",
+      "label": "ECO Energy Constrained Optimization with RL for Humanoid Walking",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-egoactor.md",
+      "detail_id": "entity-paper-notebook-egoactor",
+      "label": "EgoActor",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-embedding-classical-balance-control-principles-i.md",
+      "detail_id": "entity-paper-notebook-embedding-classical-balance-control-principles-i",
+      "label": "Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md",
+      "detail_id": "entity-paper-notebook-embodiment-aware-generalist-specialist-distillat",
+      "label": "Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-Body Control",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-extreme-parkour-with-legged-robots.md",
+      "detail_id": "entity-paper-notebook-extreme-parkour-with-legged-robots",
+      "label": "Extreme Parkour with Legged Robots",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-    "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-    "label": "Paper Notebooks · Foundational RL",
-    "type": "overview",
+    "path": "wiki/entities/paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr.md",
+    "detail_id": "entity-paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr",
+    "label": "An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems",
+    "type": "entity",
     "recency": "2026-06-07",
     "source": "log.md"
   }

@@ -8,7 +8,7 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2601.14874>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** HumanoidVLM 把"挑阻抗参数 + 选抓取角"这件老靠手调的事，外包给一个轻量管线：VLM 看一眼第一视角图把任务和物体说出来 → FAISS-RAG 从两个小数据库（9 个任务 + 9 个物体）里查出实验验证过的 stiffness/damping 与手指角→ 直接喂给 G1 的任务空间阻抗控制器，让接触富集的人形操作"软硬合适"。14 个测试场景命中率 93%。
 
 ## 核心摘录（策展，非全文）
 

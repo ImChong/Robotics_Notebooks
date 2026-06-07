@@ -8,7 +8,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_unitree-h1-whitepaper.md
-summary: "Unitree H1 Humanoid Robot Whitepaper & Specifications：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形机器人，凭借自研的高扭矩密度电机和强大的计算能力，成为了具身智能科研领域的\"国民级\"硬件平台。"
 ---
 
 # Unitree H1 Humanoid Robot Whitepaper & Specifications
@@ -17,7 +17,7 @@ summary: "Unitree H1 Humanoid Robot Whitepaper & Specifications：Humanoid Paper
 
 ## 一句话定义
 
-Unitree H1 Humanoid Robot Whitepaper & Specifications 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形机器人，凭借自研的高扭矩密度电机和强大的计算能力，成为了具身智能科研领域的"国民级"硬件平台。
 
 ## 英文缩写速查
 

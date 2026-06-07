@@ -8,7 +8,7 @@
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2509.22442>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把篮球里「运球 / 投篮 / 上篮 / 跑动 / 转身 / 捡球」这些差异极大、各自训好的子技能策略，用一套策略组合框架 + 一个高层「软路由器」拼起来——关键在于处理那些「目标说不清」的过渡段，让物理仿真角色能连贯打出 shoot-off-the-dribble（运球急停跳投）、catch-and-shoot（接球就投）、board-and-bang（抢下前场篮板立刻补篮）这类多阶段长程连招。
 
 ## 核心摘录（策展，非全文）
 

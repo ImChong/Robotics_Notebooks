@@ -9,7 +9,7 @@
 - **子分类：** 行走经典
 - **arXiv：** <https://arxiv.org/abs/2402.19469>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把真实人形 locomotion 写成「下一词预测」：用 因果 Transformer 对 传感–动作 token 序列 做自回归拟合，模态对齐 地预测下一 token；对缺动作的轨迹用 可学习 mask token 统一格式，从而吃进 RL 策略轨迹、MPC 观测、动捕与 YouTube 人体视频。仅用约 27 小时量级行走数据 训练即可 零样本 在旧金山多路面部署，并能泛化到如 后退行走 等训练外指令。
 
 ## 核心摘录（策展，非全文）
 

@@ -8,7 +8,7 @@
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2602.21599>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 物理人形跟踪策略训练受限于「数据集难度上限」——动捕昂贵、难度分布固定；CLAIMS 把「文本→动作扩散合成 → 控制器训练 → 多模态 Agent 失败诊断 → 提示词进化」串成一个闭环 + 迭代的流水线，让数据集随着控制器一起"越练越难"，覆盖武术、舞蹈、格斗、体育、体操五大专业动作域。
 
 ## 核心摘录（策展，非全文）
 

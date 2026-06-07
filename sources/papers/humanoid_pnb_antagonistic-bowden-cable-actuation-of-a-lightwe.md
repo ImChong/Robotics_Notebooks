@@ -8,7 +8,7 @@
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/2512.24657>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把"驱动电机"全部搬到躯干，手部远端只剩 236 g 结构件却仍能输出 >18 N 指尖力、抓起 >100 倍自重 的负载 —— 给"手臂载荷不够、手却必须像人手"的人形机器人一条可工程化的路。
 
 ## 核心摘录（策展，非全文）
 

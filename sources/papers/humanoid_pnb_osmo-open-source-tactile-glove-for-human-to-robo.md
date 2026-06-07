@@ -8,7 +8,7 @@
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/2512.08920>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** OSMO 的核心思路是：让人和机器人戴上「同一只」触觉手套——人戴它采数据、机器手也装它来执行，从而同时抹平视觉外观差异和触觉模态差异，把视频学不到的连续法向力/剪切力反馈，原封不动地从人手迁移到机器手，最终仅靠人类演示就训出能持续保压擦拭的策略。
 
 ## 核心摘录（策展，非全文）
 

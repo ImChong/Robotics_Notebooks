@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanml3d.md
-summary: "Generating Diverse and Natural 3D Human Motions from Textual Descriptions：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供了近 1.5 万个动作剪辑和 4.5 万条对应的自然语言描述，是研究文本生成动作（Text-to-Motion）的基石。"
 ---
 
 # Generating Diverse and Natural 3D Human Motions from Textual Descriptions
@@ -18,7 +18,7 @@ summary: "Generating Diverse and Natural 3D Human Motions from Textual Descripti
 
 ## 一句话定义
 
-Generating Diverse and Natural 3D Human Motions from Textual Descriptions 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+HumanML3D 是目前最主流的 3D 人体运动 - 文本数据集之一，提供了近 1.5 万个动作剪辑和 4.5 万条对应的自然语言描述，是研究文本生成动作（Text-to-Motion）的基石。
 
 ## 英文缩写速查
 

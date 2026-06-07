@@ -8,7 +8,7 @@
 - **分类：** 03_High_Impact_Selection
 - **子分类：** 行走经典
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 这篇 Science Robotics 论文证明了一个重要事实：只依赖本体感知、在相对简单的仿真域中训练的 RL 控制器，也可以零样本迁移到泥地、雪地、碎石、植被和流水等真实复杂地形上的 ANYmal 四足机器人。
 
 ## 核心摘录（策展，非全文）
 

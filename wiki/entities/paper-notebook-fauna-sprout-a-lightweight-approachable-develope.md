@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_fauna-sprout-a-lightweight-approachable-develope.md
-summary: "Fauna Sprout：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "Sprout 把\"在共享人类空间里安全、表达丰富、上手即用\"放在硬件设计的最前面：用 22.7 kg / 107 cm 的轻量身体 + 软外壳 + 顺应电机 + 受限关节扭矩，配上 VR 遥操作 + Isaac Lab 训练的全身 RL 策略 + 360° 面部 LED 表情头，做成一台\"开箱即开发\"的人形机器人。"
 ---
 
 # Fauna Sprout
@@ -18,7 +18,7 @@ summary: "Fauna Sprout：Humanoid Paper Notebooks 深读笔记索引实体；待
 
 ## 一句话定义
 
-Fauna Sprout 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+Sprout 把"在共享人类空间里安全、表达丰富、上手即用"放在硬件设计的最前面：用 22.7 kg / 107 cm 的轻量身体 + 软外壳 + 顺应电机 + 受限关节扭矩，配上 VR 遥操作 + Isaac Lab 训练的全身 RL 策略 + 360° 面部 LED 表情头，做成一台"开箱即开发"的人形机器人。
 
 ## 英文缩写速查
 

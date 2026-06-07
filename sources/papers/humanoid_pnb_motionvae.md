@@ -8,7 +8,7 @@
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2103.14274>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构化的运动潜空间，使高层控制器（如 RL）能够通过采样潜变量来生成平滑、逼真且可控的角色动作。
 
 ## 核心摘录（策展，非全文）
 

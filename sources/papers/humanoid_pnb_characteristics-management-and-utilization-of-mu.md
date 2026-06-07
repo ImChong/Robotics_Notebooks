@@ -8,7 +8,7 @@
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/2602.08518>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设计 / 控制 / 学习」经验，浓缩成一篇「特性 → 管理 → 利用」的三段式实证综述：先把肌肉的五大固有特性（冗余 / 独立 / 各向异性 / 可变力臂 / 非线性弹性）讲清楚，再讲怎么用硬件模块把这些特性"管住"，最后讲怎么用反射 + 学习的方法把它们"用好"。
 
 ## 核心摘录（策展，非全文）
 

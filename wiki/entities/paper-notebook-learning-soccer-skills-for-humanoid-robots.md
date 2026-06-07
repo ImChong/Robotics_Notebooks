@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md
-summary: "Learning Soccer Skills for Humanoid Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "PAiD 把\"踢球\"这件事拆成 运动跟踪 → 感知融合 → 物理对齐迁移 三个递进阶段，先在干净的运动学世界里学会拟人的踢球姿态，再加入第一视角感知泛化到任意球位与滚动球，最后通过接触动力学对齐和感知噪声建模完成 Unitree G1 真机部署，实现 91.3% 踢球成功率。"
 ---
 
 # Learning Soccer Skills for Humanoid Robots
@@ -18,7 +18,7 @@ summary: "Learning Soccer Skills for Humanoid Robots：Humanoid Paper Notebooks 
 
 ## 一句话定义
 
-Learning Soccer Skills for Humanoid Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+PAiD 把"踢球"这件事拆成 运动跟踪 → 感知融合 → 物理对齐迁移 三个递进阶段，先在干净的运动学世界里学会拟人的踢球姿态，再加入第一视角感知泛化到任意球位与滚动球，最后通过接触动力学对齐和感知噪声建模完成 Unitree G1 真机部署，实现 91.3% 踢球成功率。
 
 ## 英文缩写速查
 

@@ -8,7 +8,7 @@
 - **分类：** 09_State_Estimation
 - **arXiv：** <https://arxiv.org/abs/1904.09251>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 本论文将李群（Lie Group）理论中的不变卡尔曼滤波（InEKF）应用于足式机器人，通过融合 IMU 和腿部运动学信息，实现了比传统 EKF 更准确、收敛更快的状态估计。
 
 ## 核心摘录（策展，非全文）
 

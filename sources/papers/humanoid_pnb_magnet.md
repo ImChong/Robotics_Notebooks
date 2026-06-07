@@ -8,7 +8,7 @@
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2512.17900>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把 Diffusion Forcing（每个 token 独立加噪/独立去噪的自回归扩散）从单序列搬到多人交互——把每个人的姿态先用 VQ-VAE 压成 token，再把所有人的 token 交错喂给同一个 Transformer，训练时每个 token 独立采噪声、推理时按需控制每个人/每个时刻的噪声等级，从而一个模型同时支持双人/三人/N 人预测、Partner Inpainting、Partner Prediction、超长动作生成等任务。
 
 ## 核心摘录（策展，非全文）
 

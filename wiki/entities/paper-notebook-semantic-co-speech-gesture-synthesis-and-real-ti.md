@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_semantic-co-speech-gesture-synthesis-and-real-ti.md
-summary: "Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "论文把\"机器人讲话的同时做出语义对齐的手势\"这件事拆成 语义检索 + 自回归生成 + 人到机重定向 + 全身跟踪 四段流水线：用 LLM 从语料库里检索与语义高度相关的人体手势片段、用 Motion-GPT 自回归补全长时间序列、用 General Motion Retargeting (GMR) 把人体动作迁到 Unitree G1 上，最后用强化学习训出的 MotionTracker 把这套带有语义的参考动作在真机上稳定、实时地跟出来。"
 ---
 
 # Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots
@@ -18,7 +18,7 @@ summary: "Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoi
 
 ## 一句话定义
 
-Semantic Co-Speech Gesture Synthesis and Real-Time Control for Humanoid Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+论文把"机器人讲话的同时做出语义对齐的手势"这件事拆成 语义检索 + 自回归生成 + 人到机重定向 + 全身跟踪 四段流水线：用 LLM 从语料库里检索与语义高度相关的人体手势片段、用 Motion-GPT 自回归补全长时间序列、用 General Motion Retargeting (GMR) 把人体动作迁到 Unitree G1 上，最后用强化学习训出的 MotionTracker 把这套带有语义的参考动作在真机上稳定、实时地跟出来。
 
 ## 英文缩写速查
 

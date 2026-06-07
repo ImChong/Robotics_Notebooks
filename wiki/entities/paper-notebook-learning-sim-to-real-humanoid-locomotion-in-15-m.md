@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-sim-to-real-humanoid-locomotion-in-15-m.md
-summary: "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。"
 ---
 
 # Learning Sim-to-Real Humanoid Locomotion in 15 Minutes
@@ -18,7 +18,7 @@ summary: "Learning Sim-to-Real Humanoid Locomotion in 15 Minutes：Humanoid Pape
 
 ## 一句话定义
 
-Learning Sim-to-Real Humanoid Locomotion in 15 Minutes 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+在 单张 RTX 4090 + 数千并行仿真环境 下，用 为大规模并行调参的 FastSAC / FastTD3（离策略 RL） 配合 极简奖励 + 强域随机化（动力学、粗糙地形、推扰、延迟等），把 全关节人形速度跟踪 的训练墙钟时间压到约 15 分钟，并在 G1 / T1 上完成 sim-to-real；同一套配方也可加速 全身人形动作跟踪（相对 PPO 更快）。
 
 ## 英文缩写速查
 

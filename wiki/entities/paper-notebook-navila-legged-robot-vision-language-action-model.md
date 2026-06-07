@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_navila-legged-robot-vision-language-action-model.md
-summary: "NaVILA：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "NaVILA 提出了一个两层分层框架，将高层视觉 - 语言 - 动作（VLA）推理出的自然语言指令转换为低层足式运动控制，实现了人类自然语言指令到复杂地面导航的高效映射。"
 ---
 
 # NaVILA
@@ -18,7 +18,7 @@ summary: "NaVILA：Humanoid Paper Notebooks 深读笔记索引实体；待从笔
 
 ## 一句话定义
 
-NaVILA 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+NaVILA 提出了一个两层分层框架，将高层视觉 - 语言 - 动作（VLA）推理出的自然语言指令转换为低层足式运动控制，实现了人类自然语言指令到复杂地面导航的高效映射。
 
 ## 英文缩写速查
 

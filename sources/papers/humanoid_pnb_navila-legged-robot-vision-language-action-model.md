@@ -8,7 +8,7 @@
 - **分类：** 08_Navigation
 - **arXiv：** <https://arxiv.org/abs/2412.04453>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** NaVILA 提出了一个两层分层框架，将高层视觉 - 语言 - 动作（VLA）推理出的自然语言指令转换为低层足式运动控制，实现了人类自然语言指令到复杂地面导航的高效映射。
 
 ## 核心摘录（策展，非全文）
 

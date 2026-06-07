@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_lcp-sim-to-real-action-smoothing.md
-summary: "Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩罚”旋钮，或者在输出后面再塞低通滤波器，不如直接约束策略本身对输入的敏感度——用一个可微的梯度惩罚，把策略训练成“天生不抖”。"
 ---
 
 # Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies
@@ -18,7 +18,7 @@ summary: "Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Poli
 
 ## 一句话定义
 
-Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩罚”旋钮，或者在输出后面再塞低通滤波器，不如直接约束策略本身对输入的敏感度——用一个可微的梯度惩罚，把策略训练成“天生不抖”。
 
 ## 英文缩写速查
 

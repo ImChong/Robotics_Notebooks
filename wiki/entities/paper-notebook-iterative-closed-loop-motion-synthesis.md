@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_iterative-closed-loop-motion-synthesis.md
-summary: "Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "物理人形跟踪策略训练受限于「数据集难度上限」——动捕昂贵、难度分布固定；CLAIMS 把「文本→动作扩散合成 → 控制器训练 → 多模态 Agent 失败诊断 → 提示词进化」串成一个闭环 + 迭代的流水线，让数据集随着控制器一起\"越练越难\"，覆盖武术、舞蹈、格斗、体育、体操五大专业动作域。"
 ---
 
 # Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control
@@ -18,7 +18,7 @@ summary: "Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of
 
 ## 一句话定义
 
-Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+物理人形跟踪策略训练受限于「数据集难度上限」——动捕昂贵、难度分布固定；CLAIMS 把「文本→动作扩散合成 → 控制器训练 → 多模态 Agent 失败诊断 → 提示词进化」串成一个闭环 + 迭代的流水线，让数据集随着控制器一起"越练越难"，覆盖武术、舞蹈、格斗、体育、体操五大专业动作域。
 
 ## 英文缩写速查
 

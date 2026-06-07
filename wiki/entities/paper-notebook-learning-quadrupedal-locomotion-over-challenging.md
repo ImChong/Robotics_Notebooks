@@ -8,7 +8,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-quadrupedal-locomotion-over-challenging.md
-summary: "Learning Quadrupedal Locomotion over Challenging Terrain：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "这篇 Science Robotics 论文证明了一个重要事实：只依赖本体感知、在相对简单的仿真域中训练的 RL 控制器，也可以零样本迁移到泥地、雪地、碎石、植被和流水等真实复杂地形上的 ANYmal 四足机器人。"
 ---
 
 # Learning Quadrupedal Locomotion over Challenging Terrain
@@ -17,7 +17,7 @@ summary: "Learning Quadrupedal Locomotion over Challenging Terrain：Humanoid Pa
 
 ## 一句话定义
 
-Learning Quadrupedal Locomotion over Challenging Terrain 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+这篇 Science Robotics 论文证明了一个重要事实：只依赖本体感知、在相对简单的仿真域中训练的 RL 控制器，也可以零样本迁移到泥地、雪地、碎石、植被和流水等真实复杂地形上的 ANYmal 四足机器人。
 
 ## 英文缩写速查
 

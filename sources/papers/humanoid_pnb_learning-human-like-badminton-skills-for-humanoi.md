@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.08370>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 提出 Imitation-to-Interaction 渐进式强化学习框架，将人形机器人的羽毛球学习拆解为四阶段：运动先验建立 → 目标条件蒸馏 → 对抗先验稳定 → 交互流形扩展，实现首个零样本迁移到真实机器人的拟人羽毛球技能。
 
 ## 核心摘录（策展，非全文）
 

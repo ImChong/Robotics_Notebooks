@@ -8,7 +8,7 @@
 - **分类：** 05_Locomotion
 - **arXiv：** <https://arxiv.org/abs/2309.14341>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 本论文通过端到端的强化学习，让廉价的四足机器人（Unitree Go1）仅凭板载深度相机，就能执行包括手立、越过自身高度两倍的障碍以及跨越两倍身长的间隙等极限跑酷动作。
 
 ## 核心摘录（策展，非全文）
 

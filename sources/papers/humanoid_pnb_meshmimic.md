@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.15733>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-地形”耦合数据：先用 3D 视觉重建人体 SMPL-X、场景几何和接触，再通过运动优化与接触不变重定向，将人类在复杂地形上的动作迁移到人形机器人策略中，缓解传统 MoCap 缺少环境几何导致的脚滑、穿模和接触不一致问题。
 
 ## 核心摘录（策展，非全文）
 

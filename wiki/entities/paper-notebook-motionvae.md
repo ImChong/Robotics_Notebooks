@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_motionvae.md
-summary: "Character Controllers using Motion VAEs：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构化的运动潜空间，使高层控制器（如 RL）能够通过采样潜变量来生成平滑、逼真且可控的角色动作。"
 ---
 
 # Character Controllers using Motion VAEs
@@ -18,7 +18,7 @@ summary: "Character Controllers using Motion VAEs：Humanoid Paper Notebooks 深
 
 ## 一句话定义
 
-Character Controllers using Motion VAEs 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+MotionVAE 通过自回归条件变分自编码器（CVAE）构建了一个结构化的运动潜空间，使高层控制器（如 RL）能够通过采样潜变量来生成平滑、逼真且可控的角色动作。
 
 ## 英文缩写速查
 

@@ -8,7 +8,7 @@
 - **分类：** 01_Foundational_RL
 - **arXiv：** <https://arxiv.org/abs/2110.03239>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但这篇论文提供了理论框架来解释为什么 DR 能在不需要任何现实数据的情况下成功迁移，并证明了使用记忆（历史依赖策略）对 DR 的成功至关重要。
 
 ## 核心摘录（策展，非全文）
 

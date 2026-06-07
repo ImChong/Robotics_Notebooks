@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_humanoid-locomotion-as-next-token-prediction.md
-summary: "Humanoid Locomotion as Next Token Prediction：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把真实人形 locomotion 写成「下一词预测」：用 因果 Transformer 对 传感–动作 token 序列 做自回归拟合，模态对齐 地预测下一 token；对缺动作的轨迹用 可学习 mask token 统一格式，从而吃进 RL 策略轨迹、MPC 观测、动捕与 YouTube 人体视频。仅用约 27 小时量级行走数据 训练即可 零样本 在旧金山多路面部署，并能泛化到如 后退行走 等训练外指令。"
 ---
 
 # Humanoid Locomotion as Next Token Prediction
@@ -18,7 +18,7 @@ summary: "Humanoid Locomotion as Next Token Prediction：Humanoid Paper Notebook
 
 ## 一句话定义
 
-Humanoid Locomotion as Next Token Prediction 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把真实人形 locomotion 写成「下一词预测」：用 因果 Transformer 对 传感–动作 token 序列 做自回归拟合，模态对齐 地预测下一 token；对缺动作的轨迹用 可学习 mask token 统一格式，从而吃进 RL 策略轨迹、MPC 观测、动捕与 YouTube 人体视频。仅用约 27 小时量级行走数据 训练即可 零样本 在旧金山多路面部署，并能泛化到如 后退行走 等训练外指令。
 
 ## 英文缩写速查
 

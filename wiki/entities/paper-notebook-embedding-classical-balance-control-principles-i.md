@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_embedding-classical-balance-control-principles-i.md
-summary: "Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "这篇论文的核心不是“再堆一个更大的网络”，而是把经典平衡控制里可解释的物理量（Capture Point、CoM 状态、质心动量）嵌入到 RL 训练中： - 在训练时作为特权 critic 输入和奖励塑形信号； - 在部署时 actor 仍然只依赖本体感觉，保证可落地。 结果是在一个统一策略中实现了从小扰动到大跌倒后的恢复行为链，并报告 93.4% 的恢复成功率。"
 ---
 
 # Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery
@@ -18,7 +18,7 @@ summary: "Embedding Classical Balance Control Principles in Reinforcement Learni
 
 ## 一句话定义
 
-Embedding Classical Balance Control Principles in Reinforcement Learning for Humanoid Recovery 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+这篇论文的核心不是“再堆一个更大的网络”，而是把经典平衡控制里可解释的物理量（Capture Point、CoM 状态、质心动量）嵌入到 RL 训练中： - 在训练时作为特权 critic 输入和奖励塑形信号； - 在部署时 actor 仍然只依赖本体感觉，保证可落地。 结果是在一个统一策略中实现了从小扰动到大跌倒后的恢复行为链，并报告 93.4% 的恢复成功率。
 
 ## 英文缩写速查
 

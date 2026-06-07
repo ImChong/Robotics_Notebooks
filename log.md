@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | schema + wiki — Paper Notebooks 64 篇 stub 实体从深读笔记同步一句话总结
+
+- 工具：[scripts/sync_paper_notebook_summaries.py](scripts/sync_paper_notebook_summaries.py)；`make paper-notebook-summaries`
+- 从 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 各篇 `## 🎯 一句话总结` 同步至 `wiki/entities/paper-notebook-*` 的 frontmatter `summary` 与 `## 一句话定义`，并更新对应 `sources/papers/humanoid_pnb_*.md` 一句话说明
+- RL Sim2Sim Demo 映射 7 页（[schema/rl-sim2sim-demo-wiki-map.yml](schema/rl-sim2sim-demo-wiki-map.yml)）经审计已具备有效 summary，无需改动
+
 ## [2026-06-07] structural | schema + wiki — Paper Notebooks 全量分类父节点与 64 篇未映射论文 sources/实体入库
 
 - 工具：[scripts/bootstrap_paper_notebook_knowledge.py](scripts/bootstrap_paper_notebook_knowledge.py)；`make paper-notebook-bootstrap`；完整映射 [schema/paper-notebook-wiki-full-map.yml](schema/paper-notebook-wiki-full-map.yml)（137/137）

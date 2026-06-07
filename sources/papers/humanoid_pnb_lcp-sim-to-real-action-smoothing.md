@@ -8,7 +8,7 @@
 - **分类：** 01_Foundational_RL
 - **arXiv：** <https://arxiv.org/abs/2410.11825>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** LCP 的核心主张很硬：与其在 reward 里拧各种“平滑惩罚”旋钮，或者在输出后面再塞低通滤波器，不如直接约束策略本身对输入的敏感度——用一个可微的梯度惩罚，把策略训练成“天生不抖”。
 
 ## 核心摘录（策展，非全文）
 

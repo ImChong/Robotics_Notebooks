@@ -8,7 +8,7 @@
 - **分类：** 14_Human_Motion
 - **arXiv：** <https://arxiv.org/abs/2602.22209>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 第一视角视频里手和物体动不动就互相遮挡、还会出画——WHOLE 训练一个手-物联合扩散先验，再用 VLM 抠出来的接触线索 + 物体/手分割掩膜做测试时引导，一次性给出世界坐标系下的 MANO 手姿 + 6D 物体轨迹，比"分头估 + 后处理"显著更稳。
 
 ## 核心摘录（策展，非全文）
 

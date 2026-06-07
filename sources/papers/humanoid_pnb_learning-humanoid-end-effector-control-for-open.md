@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2501.17173>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** HERO (Humanoid End-effector ContROl) 结合了大型视觉模型的开放词汇识别能力与高精度仿真训练的全身控制，实现了人形机器人对任意现实物体的"边走边抓"。
 
 ## 核心摘录（策展，非全文）
 

@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_eco-energy-constrained-optimization-with-rl-for.md
-summary: "ECO Energy Constrained Optimization with RL for Humanoid Walking：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把电机能耗从「多目标奖励里的一堆加权项」里拆出来，改成 CMDP 下的显式不等式约束（再配合镜像对称 / 参考运动类约束），用 PPO-Lagrangian 在仿真里稳定求解，并在 BRUCE 上实现比 MPC、普通 PPO 显著更低能耗的稳健对称行走。"
 ---
 
 # ECO Energy Constrained Optimization with RL for Humanoid Walking
@@ -18,7 +18,7 @@ summary: "ECO Energy Constrained Optimization with RL for Humanoid Walking：Hum
 
 ## 一句话定义
 
-ECO Energy Constrained Optimization with RL for Humanoid Walking 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把电机能耗从「多目标奖励里的一堆加权项」里拆出来，改成 CMDP 下的显式不等式约束（再配合镜像对称 / 参考运动类约束），用 PPO-Lagrangian 在仿真里稳定求解，并在 BRUCE 上实现比 MPC、普通 PPO 显著更低能耗的稳健对称行走。
 
 ## 英文缩写速查
 

@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2603.09170>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** ZeroWBC 把"教人形机器人做事"的重心从昂贵的真机遥操作搬到几乎免费的人类第一人称视频——它不靠重定向把人体动作硬塞进机器人，而是直接训练一个视触运动（visuomotor）策略，从第一视角图像 + 少量机载本体感觉，端到端地输出全身关节命令；"Zero"指的是大规模真机遥操作上的"近零"依赖，由此让机器人学到坐下、踢、迈步、伸手等多样的"自然交互"行为，而不是被现有方法卡死在僵硬的步态模板里。
 
 ## 核心摘录（策展，非全文）
 

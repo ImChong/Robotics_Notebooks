@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.06341>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** HiWET 将长时域 Loco-Manipulation 拆解为世界坐标子目标生成（高层）与稳定末端跟踪执行（低层）两级，并引入运动学流形先验（KMP）缩小低层探索空间，从而在腿部运动引发的累积漂移下仍能精确到达世界坐标系末端目标。
 
 ## 核心摘录（策展，非全文）
 
