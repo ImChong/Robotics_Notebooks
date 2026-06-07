@@ -38,7 +38,7 @@ Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies 的�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 01_Foundational_RL |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html> |
 | arXiv | <https://arxiv.org/abs/2410.11825> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies 的�
 ## 参考来源
 
 - [humanoid_pnb_lcp-sim-to-real-action-smoothing.md](../../sources/papers/humanoid_pnb_lcp-sim-to-real-action-smoothing.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html>
 - 论文：<https://arxiv.org/abs/2410.11825>
 
 ## 推荐继续阅读

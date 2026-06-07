@@ -38,7 +38,7 @@ Generating Diverse and Natural 3D Human Motions from Textual Descriptions 的人
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html> |
 | arXiv | <https://arxiv.org/abs/2204.09419> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Generating Diverse and Natural 3D Human Motions from Textual Descriptions 的人
 ## 参考来源
 
 - [humanoid_pnb_humanml3d.md](../../sources/papers/humanoid_pnb_humanml3d.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html>
 - 论文：<https://arxiv.org/abs/2204.09419>
 
 ## 推荐继续阅读

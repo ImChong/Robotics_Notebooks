@@ -38,7 +38,7 @@ Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid 
 | 字段 | 内容 |
 |------|------|
 | 分类 | 13_Physics-Based_Animation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html> |
 | arXiv | <https://arxiv.org/abs/2602.21599> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid 
 ## 参考来源
 
 - [humanoid_pnb_iterative-closed-loop-motion-synthesis.md](../../sources/papers/humanoid_pnb_iterative-closed-loop-motion-synthesis.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html>
 - 论文：<https://arxiv.org/abs/2602.21599>
 
 ## 推荐继续阅读

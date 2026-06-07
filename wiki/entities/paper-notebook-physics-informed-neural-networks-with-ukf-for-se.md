@@ -38,7 +38,7 @@ Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joi
 | 字段 | 内容 |
 |------|------|
 | 分类 | 09_State_Estimation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html> |
 | arXiv | <https://arxiv.org/abs/2507.10105> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joi
 ## 参考来源
 
 - [humanoid_pnb_physics-informed-neural-networks-with-ukf-for-se.md](../../sources/papers/humanoid_pnb_physics-informed-neural-networks-with-ukf-for-se.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html>
 - 论文：<https://arxiv.org/abs/2507.10105>
 
 ## 推荐继续阅读

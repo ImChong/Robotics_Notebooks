@@ -38,7 +38,7 @@ Extreme Parkour with Legged Robots 的人形机器人学习论文条目，以 Pa
 | 字段 | 内容 |
 |------|------|
 | 分类 | 05_Locomotion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html> |
 | arXiv | <https://arxiv.org/abs/2309.14341> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Extreme Parkour with Legged Robots 的人形机器人学习论文条目，以 Pa
 ## 参考来源
 
 - [humanoid_pnb_extreme-parkour-with-legged-robots.md](../../sources/papers/humanoid_pnb_extreme-parkour-with-legged-robots.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html>
 - 论文：<https://arxiv.org/abs/2309.14341>
 
 ## 推荐继续阅读
