@@ -53,8 +53,20 @@
 - **对 wiki 的映射：**
   - [ESI-Bench](../../wiki/entities/esi-bench.md) — 复现入口与依赖（OmniGibson / BEHAVIOR-1K 引用）。
 
+### 5) 任务形式化、动作空间与四协议评测
+
+- **链接：** <https://arxiv.org/abs/2605.18746>（§3.1、§4.1、Table 1）
+- **摘录要点：**
+  - 每实例 \((\mathcal{S}, p_0, q, y^*)\)；环境 \(\mathcal{E}=\langle\mathcal{S},\mathcal{A},\mathcal{O},T\rangle\)；步数预算 **\(T_{\max}=30\)**。
+  - **动作空间：** locomotion（六向平移）、perception（四向转头）、manipulation（pick/put/fill/pour）、`answer(ŷ,c)`。
+  - **四协议：** Passive Single-View、Passive Multi-View（随机 30 视角）、Active Exploration、Ground-Truth Passive（oracle 轨迹分离行动/感知误差）。
+  - **相对 VSI-Bench / EmbodiedBench / CHAIN：** 唯一同时覆盖 **主动 L+P+M**、**隐藏空间状态** 与 **Spelke 四系统** 十类任务的具身空间基准（Table 1）。
+- **对 wiki 的映射：**
+  - [ESI-Bench](../../wiki/entities/esi-bench.md) — 动作空间表、基准定位表、评测范式节。
+
 ## 当前提炼状态
 
 - [x] arXiv 摘要、项目页 taxonomy 与 Key Findings 已摘录
 - [x] GitHub README 环境与目录结构已对齐 [sources/repos/esi_bench.md](../repos/esi_bench.md)
+- [x] §3.1 任务形式化、动作空间与 Table 1 基准对比已摘录（2026-06-07 补强）
 - [x] wiki 映射：`wiki/entities/esi-bench.md`；交叉 [3d-spatial-vqa](../../wiki/concepts/3d-spatial-vqa.md)、[vision-language-navigation](../../wiki/tasks/vision-language-navigation.md)

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, rl, motion-control, survey, body-system-stack, vla, world-model]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-07
 related:
   - ./robot-world-models-training-loop-taxonomy.md
   - ./humanoid-motion-control-know-how.md
@@ -134,7 +134,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 24 | Hiking in the Wild | [paper-hrl-stack-24-hiking_in_the_wild.md](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) |
 | 25 | ASAP | [paper-hrl-stack-25-asap.md](../entities/paper-hrl-stack-25-asap.md) |
 | 26 | Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots | [paper-hrl-stack-26-learning_vision_driven_reactive_socc.md](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
-| 27 | Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking | [paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) |
+| 27 | Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking（**全文消化** · arXiv:2604.17335） | [paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) |
 | 28 | VIRAL | [paper-hrl-stack-28-viral.md](../entities/paper-hrl-stack-28-viral.md) |
 | 29 | Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer | [paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md](../entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
 | 30 | WholeBodyVLA | [paper-hrl-stack-30-wholebodyvla.md](../entities/paper-hrl-stack-30-wholebodyvla.md) |

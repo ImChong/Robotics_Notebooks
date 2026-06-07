@@ -2,7 +2,7 @@
 
 ## [2026-06-07] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **2** 个问题（另含 **4** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -34,8 +34,9 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（2 个）
+- wiki/entities/paper-heracles-humanoid-diffusion.md (wiki:2026-06-06 < sources/eth-g1-diffusion.md:2026-06-07)
+- wiki/overview/humanoid-rl-motion-control-body-system-stack.md (wiki:2026-06-05 < sources/humanoid_rl_stack_27_learning_whole_body_humanoid_locomotion_via_moti.md:2026-06-07)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
