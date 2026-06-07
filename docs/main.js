@@ -2106,7 +2106,6 @@
         '    <p>' + escapeHtml(page.summary || '当前关联项暂无摘要') + '</p>',
         '  </div>',
         '  <div class="chip-list">',
-        '    <span class="data-chip"><code>' + escapeHtml(id) + '</code></span>',
         '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
         '  </div>',
         '</article>'
@@ -2141,7 +2140,6 @@
         '  </div>',
         '  <div class="chip-list">',
         '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(degree)) + '</span>',
-        '    <span class="data-chip"><code>' + escapeHtml(detailId) + '</code></span>',
         '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
         '  </div>',
         '</article>'
@@ -2926,7 +2924,6 @@
           '    <p>' + escapeHtml(page.summary || '当前路线暂无摘要') + '</p>',
           '  </div>',
           '  <div class="chip-list">',
-          '    <span class="data-chip"><code>' + escapeHtml(id) + '</code></span>',
           '    <a class="btn-secondary btn-inline" href="' + escapeHtml(roadmapHref(id)) + '">打开路线页</a>',
           '  </div>',
           '</article>'
