@@ -6,7 +6,9 @@
 - **类型：** paper
 - **系统栈层：** 03 感知式高动态运动
 - **机构：** 苏黎世联邦理工机器人系统实验室；西蒙弗雷泽大学；ETH AI Center
+- **arXiv：** <https://arxiv.org/abs/2604.17335>
 - **项目/论文链接：** <https://wholebodylocomotion.github.io/>
+- **深度归档：** [eth-g1-diffusion.md](./eth-g1-diffusion.md)（arXiv 全文编译，2026-06-07）
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
@@ -20,7 +22,8 @@
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- 实体页：[Learning Whole-Body Humanoid Locomotion（#27）](../../wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)
+- 深度 source：[eth-g1-diffusion.md](./eth-g1-diffusion.md)、[wholebody-locomotion.md](../sites/wholebody-locomotion.md)
 
 ## 参考来源（原始）
 
