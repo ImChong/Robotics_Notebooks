@@ -78,6 +78,7 @@
 | [manipulation-vla-architecture-selection](./manipulation-vla-architecture-selection.md) | 灵巧操作里 VLA / 视频-动作 / 世界模型 / 开源策略怎么选？ | VLA、mimic-video、DeFI、DWM、CLAW、π₀、π0.7、STAR-VLA、Pelican |
 | [humanoid-contact-character-control-guide](./humanoid-contact-character-control-guide.md) | 接触丰富人形控制与角色化表演路线怎么选？ | GentleHumanoid、HTTD、Being-H07、Disney OLAF、HiPAN、Zest、EFGCL |
 | [dexterous-manipulation-data-pipeline](./dexterous-manipulation-data-pipeline.md) | 灵巧操作的数据标注、手部感知、GAE 与执行器建模怎么配？ | Auto-labeling、WiLoR、GAE、Actuator Network、Tactile Impedance |
+| [object-detection-model-selection](./object-detection-model-selection.md) | 机器人感知栈选单阶段还是两阶段检测器？机载实时 vs 服务器侧怎么选？ | Object Detection、Vision Backbones、YOLO、ResNet、Manipulation、Humanoid Soccer |
 
 **对比页（comparisons/）补充**：AMP 先验变体见 [amp-add-smp-motion-prior-variants](../comparisons/amp-add-smp-motion-prior-variants.md)。
 

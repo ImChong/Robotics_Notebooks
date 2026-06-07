@@ -106,6 +106,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
 - [Visual Servoing（方法）](./visual-servoing.md)
+- [Query：目标检测模型选型](../queries/object-detection-model-selection.md)
 
 ## 参考来源
 
