@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-06] structural | docs — V23 P3 图谱页「专题视图」扩充（WBT / 跨具身 / 真机安全微调）
+
+- 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 末项打勾，V23 清单全部完成
+- 前端改动：[docs/graph.html](docs/graph.html) `TOPIC_FILTERS` 在 V22 10 项基础上新增 `wbt`（segments 11 项，命中 22 节点）、`cross-embodiment`（segments 3 项，命中 3 节点）、`safe-fine-tuning`（community-13 + segments 9 项，命中 18 节点）；`#filter-topic-chips` 同步新增 🕺 WBT / 🔀 跨具身 / 🛡️ 安全微调 三枚 `data-topic` chip，复用既有 `nodeMatchesTopic` 双路并集逻辑
+- 工具修复：[scripts/screenshot_graph_topic.cjs](scripts/screenshot_graph_topic.cjs) 由点击 V22 已移除的 `#topic-view` 下拉改为展开 `#filter-topic-section` 后点击 `[data-topic]` chip
+- 验证：`make lint` 全绿（仅 1 条无关信息型预警）、内联 JS `new Function` 语法校验通过；三专题视图截图归档至 `.cursor-artifacts/screenshots/graph-topic-{wbt,cross-embodiment,safe-fine-tuning}.png`
+- V23 验收：节点 690（≥445）/ 边 4993（≥3320）/ 事实库 172（≥170）/ `largest_community_ratio` 0.104（≤0.25）/ `community_quality_warning` false，全部达标
+
 ## [2026-06-06] ingest | sources/sites/karpathy-ai.md、sources/blogs/karpathy_llm_wiki_gist.md — Andrej Karpathy 个人站与 LLM Wiki Gist；wiki/entities/andrej-karpathy.md、wiki/references/llm-wiki-karpathy.md、wiki/overview/robot-learning-overview.md
 
 ## [2026-06-06] structural | wiki — 全库 587 页英文缩写速查区块重排至「一句话定义」后、「为什么重要」前；新增 reorder 脚本与 lint 位置校验

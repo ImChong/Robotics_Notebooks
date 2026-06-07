@@ -58,7 +58,12 @@ const fs = require('fs');
       if (ld) ld.style.display = 'none';
     });
     if (topic && topic !== 'all') {
-      await page.select('#topic-view', topic);
+      await page.evaluate((t) => {
+        const sec = document.getElementById('filter-topic-section');
+        if (sec) sec.open = true;
+        const btn = document.querySelector('[data-topic="' + t + '"]');
+        if (btn) btn.click();
+      }, topic);
       await new Promise(r => setTimeout(r, 1800));
     }
     await page.screenshot({ path: path.resolve(out), fullPage: false });
