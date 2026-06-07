@@ -82,4 +82,5 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
 - [legged_gym 项目页](https://leggedrobotics.github.io/legged_gym/)

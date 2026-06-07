@@ -1,5 +1,22 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | schema + wiki — Paper Notebooks 全量分类父节点与 64 篇未映射论文 sources/实体入库
+
+- 工具：[scripts/bootstrap_paper_notebook_knowledge.py](scripts/bootstrap_paper_notebook_knowledge.py)；`make paper-notebook-bootstrap`；完整映射 [schema/paper-notebook-wiki-full-map.yml](schema/paper-notebook-wiki-full-map.yml)（137/137）
+- 父节点：[wiki/overview/humanoid-paper-notebooks-index.md](wiki/overview/humanoid-paper-notebooks-index.md) + 14 类 `wiki/overview/paper-notebook-category-*.md`（03 类含 5 个子分类段落）
+- 新增 64 组 `sources/papers/humanoid_pnb_*.md` + `wiki/entities/paper-notebook-*.md` 索引实体；既有 73 篇保留原深度 wiki 并挂入分类子节点
+
+## [2026-06-07] structural | schema + wiki — 同步 RL Sim2Sim Demo 在线演示链接至对应 wiki 节点
+
+- 工具：[scripts/sync_rl_sim2sim_demo_links.py](scripts/sync_rl_sim2sim_demo_links.py)；`make rl-sim2sim-demo-links`；映射 [schema/rl-sim2sim-demo-wiki-map.yml](schema/rl-sim2sim-demo-wiki-map.yml) + [schema/rl-sim2sim-demo-index.json](schema/rl-sim2sim-demo-index.json)
+- 来源归档：[sources/sites/rl-sim2sim-demo-website.md](sources/sites/rl-sim2sim-demo-website.md)
+- 挂接节点：[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/amp-mjlab.md](wiki/entities/amp-mjlab.md)、[wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[wiki/methods/gentlehumanoid-motion-tracking.md](wiki/methods/gentlehumanoid-motion-tracking.md) 等 7 页
+
+## [2026-06-07] structural | schema + wiki — 同步 Humanoid Paper Notebooks 深读笔记链接至对应 wiki 节点
+
+- 工具：[scripts/sync_paper_notebook_links.py](scripts/sync_paper_notebook_links.py)；`make paper-notebook-links`；映射 [schema/paper-notebook-wiki-overrides.yml](schema/paper-notebook-wiki-overrides.yml) + [schema/paper-notebook-index.json](schema/paper-notebook-index.json)
+- 覆盖 73/138 篇已有对应节点的论文笔记；修复 5 处旧版 `02_High_Impact` / `09_Sim-to-Real` URL；示例节点 [wiki/entities/paper-bfm-07-sonic.md](wiki/entities/paper-bfm-07-sonic.md)、[wiki/methods/awr.md](wiki/methods/awr.md)、[wiki/tasks/teleoperation.md](wiki/tasks/teleoperation.md)
+
 ## [2026-06-06] structural | docs — V23 P3 图谱页「专题视图」扩充（WBT / 跨具身 / 真机安全微调）
 
 - 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 末项打勾，V23 清单全部完成

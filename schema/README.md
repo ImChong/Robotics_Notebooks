@@ -14,6 +14,13 @@
 | [log-format.md](log-format.md) | `log.md` 条目格式与前缀约定 |
 | [canonical-facts.json](canonical-facts.json) | `lint_wiki.py` 矛盾检测用的事实规则数据 |
 | [search-regression-cases.json](search-regression-cases.json) | 搜索质量回归测试用例数据 |
+| [paper-notebook-index.json](paper-notebook-index.json) | Humanoid Paper Notebooks 137 篇笔记 URL 索引（由脚本同步） |
+| [paper-notebook-wiki-overrides.yml](paper-notebook-wiki-overrides.yml) | 论文笔记 → 本库 wiki 路径的手动映射 |
+| [paper-notebook-wiki-map.yml](paper-notebook-wiki-map.yml) | 合并后的完整映射（手动 + 自动，供脚本读取） |
+| [paper-notebook-wiki-full-map.yml](paper-notebook-wiki-full-map.yml) | 137 篇笔记 → wiki 完整映射（含分类 bootstrap 生成的实体页） |
+| [paper-notebook-categories.json](paper-notebook-categories.json) | Paper Notebooks 14 类主页分类元数据 |
+| [rl-sim2sim-demo-index.json](rl-sim2sim-demo-index.json) | RL Sim2Sim Demo 站点与三条 G1 策略索引 |
+| [rl-sim2sim-demo-wiki-map.yml](rl-sim2sim-demo-wiki-map.yml) | Sim2Sim 演示 → 本库 wiki 路径映射 |
 
 ## 与其它文档的关系
 

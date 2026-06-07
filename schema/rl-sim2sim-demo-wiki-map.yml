@@ -1,0 +1,13 @@
+# RL Sim2Sim Demo Website → wiki 路径映射（供 scripts/sync_rl_sim2sim_demo_links.py 读取）
+overrides:
+  homepage:
+    - wiki/concepts/sim2real.md
+    - wiki/concepts/simulation-evaluation-infrastructure.md
+  g1-amp-walk-run-getup:
+    - wiki/entities/amp-mjlab.md
+    - wiki/entities/unitree-g1.md
+  g1-parkour:
+    - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  g1-tracking-latest:
+    - wiki/methods/gentlehumanoid-motion-tracking.md
+    - wiki/entities/axellwppr-motion-tracking.md

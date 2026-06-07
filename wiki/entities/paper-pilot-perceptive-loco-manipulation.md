@@ -160,6 +160,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：PILOT](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation/PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation.html)
 - 论文 HTML：<https://arxiv.org/html/2601.17440>
 - 论文 PDF：<https://arxiv.org/pdf/2601.17440>
 - [OpenDriveLab/WholebodyVLA](https://github.com/OpenDriveLab/WholebodyVLA) — 统一 latent VLA 全身 loco-manipulation（README 引用 PILOT 为相关工作）

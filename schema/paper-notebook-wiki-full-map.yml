@@ -1,0 +1,283 @@
+overrides:
+  ADD_Adversarial_Differential_Discriminators:
+  - wiki/methods/add.md
+  AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control:
+  - wiki/entities/paper-amp-survey-01-amp.md
+  ANYmal_Parkour_Robust_Perceptive_Locomotion:
+  - wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md
+  APEX_Learning_Adaptive_High-Platform_Traversal_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md
+  ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills:
+  - wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md
+  ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control:
+  - wiki/entities/paper-bfm-25-ase.md
+  AWR_Advantage_Weighted_Regression:
+  - wiki/methods/awr.md
+  An_Empirical_Evaluation_of_Four_Off-the-Shelf_Proprietary_VIO_Systems:
+  - wiki/entities/paper-notebook-an-empirical-evaluation-of-four-off-the-shelf-pr.md
+  Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand:
+  - wiki/entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md
+  AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio:
+  - wiki/entities/paper-notebook-autoodom.md
+  BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation:
+  - wiki/tasks/loco-manipulation.md
+  Behavior_Foundation_Model_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-behavior-foundation-model-for-humanoid-robots.md
+  Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty:
+  - wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md
+  BeyondMimic:
+  - wiki/entities/paper-bfm-35-beyondmimic.md
+  - wiki/methods/beyondmimic.md
+  Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits:
+  - wiki/entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md
+  CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters:
+  - wiki/entities/paper-bfm-19-calm.md
+  CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation:
+  - wiki/entities/paper-amp-survey-16-clot.md
+  CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit:
+  - wiki/methods/crisp-real2sim.md
+  Characteristics_Management_and_Utilization_of_Muscles_in_Musculoskeletal_Humanoids:
+  - wiki/entities/paper-notebook-characteristics-management-and-utilization-of-mu.md
+  Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes:
+  - wiki/tasks/stair-obstacle-perceptive-locomotion.md
+  Contact-Aided_Invariant_EKF_for_Legged_Robots:
+  - wiki/entities/paper-notebook-contact-aided-invariant-ekf-for-legged-robots.md
+  Contrastive_Representation_Learning_for_Adaptive_Humanoid_Locomotion:
+  - wiki/entities/paper-notebook-contrastive-representation-learning-for-adaptive.md
+  Control_Operators_for_Interactive_Character_Animation:
+  - wiki/entities/paper-notebook-control-operators-for-interactive-character-anim.md
+  DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills:
+  - wiki/entities/paper-hrl-stack-11-deepmimic.md
+  Diffusion_Policy:
+  - wiki/methods/diffusion-policy.md
+  Domain_Randomization_Understanding_Sim-to-Real_Transfer:
+  - wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md
+  Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World:
+  - wiki/entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md
+  DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos:
+  - wiki/entities/paper-hrl-stack-35-dreamdojo.md
+  ECO_Energy_Constrained_Optimization_with_RL_for_Humanoid_Walking:
+  - wiki/entities/paper-notebook-eco-energy-constrained-optimization-with-rl-for.md
+  EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum:
+  - wiki/entities/paper-notebook-egoactor.md
+  EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_:
+  - wiki/overview/ego-category-02-human-to-robot.md
+  EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video:
+  - wiki/entities/paper-ego-03-egomimic.md
+  Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery:
+  - wiki/entities/paper-notebook-embedding-classical-balance-control-principles-i.md
+  EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents:
+  - wiki/overview/ego-category-01-data-collection.md
+  Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B:
+  - wiki/entities/paper-notebook-embodiment-aware-generalist-specialist-distillat.md
+  ExBody2_Advanced_Expressive_Whole-Body_Control:
+  - wiki/concepts/whole-body-control.md
+  Expressive_Whole-Body_Control_for_Humanoid_Robots:
+  - wiki/concepts/whole-body-control.md
+  ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control:
+  - wiki/tasks/teleoperation.md
+  Extreme_Parkour_with_Legged_Robots:
+  - wiki/entities/paper-notebook-extreme-parkour-with-legged-robots.md
+  Fauna_Sprout_A_lightweight_approachable_developer-ready_humanoid_robot:
+  - wiki/entities/paper-notebook-fauna-sprout-a-lightweight-approachable-develope.md
+  FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local:
+  - wiki/entities/paper-notebook-focusnav.md
+  GR00T_N1_Humanoid_Foundation_Model:
+  - wiki/entities/paper-hrl-stack-34-gr00t_n1.md
+  - wiki/concepts/foundation-policy.md
+  GRUtopia__Dream_General_Robots_in_a_City_at_Scale:
+  - wiki/concepts/simulation-evaluation-infrastructure.md
+  General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast_Adaptation:
+  - wiki/methods/egm-efficient-general-mimic.md
+  Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report:
+  - wiki/methods/generative-world-models.md
+  GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
+  - wiki/methods/gentlehumanoid-motion-tracking.md
+  HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
+  - wiki/entities/paper-hrl-stack-38-haic.md
+  HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit:
+  - wiki/tasks/loco-manipulation.md
+  - wiki/tasks/teleoperation.md
+  HOVER_Versatile_Neural_Whole-Body_Controller:
+  - wiki/entities/paper-bfm-14-hover.md
+  HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control:
+  - wiki/entities/paper-amp-survey-14-husky.md
+  HiWET__Hierarchical_World-Frame_End-Effector_Tracking_for_Long-Horizon_Humanoid_Loco-Manipulation:
+  - wiki/entities/paper-notebook-hiwet.md
+  HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation:
+  - wiki/tasks/humanoid-locomotion.md
+  HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller:
+  - wiki/concepts/whole-body-control.md
+  HumDex_Humanoid_Dexterous_Manipulation_Made_Easy:
+  - wiki/tasks/manipulation.md
+  HumanML3D:
+  - wiki/entities/paper-notebook-humanml3d.md
+  HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans:
+  - wiki/tasks/teleoperation.md
+  HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi:
+  - wiki/entities/paper-hrl-stack-05-humanx.md
+  Humanoid-Gym_Zero-Shot_Sim2Real_Transfer:
+  - wiki/entities/legged-gym.md
+  HumanoidBench:
+  - wiki/concepts/simulation-evaluation-infrastructure.md
+  HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation:
+  - wiki/entities/paper-notebook-humanoidvlm-vision-language-guided-impedance-con.md
+  Humanoid_Locomotion_as_Next_Token_Prediction:
+  - wiki/entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md
+  Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre:
+  - wiki/entities/paper-notebook-humanoid-manipulation-interface.md
+  Humanoid_Parkour_Learning:
+  - wiki/entities/paper-notebook-humanoid-parkour-learning.md
+  Hybrid_Autoencoder_for_Robust_Heightmap_from_Fused_Lidar_and_Depth_Data:
+  - wiki/entities/paper-notebook-hybrid-autoencoder-for-robust-heightmap-from-fus.md
+  InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-inekformer.md
+  Isaac_Lab_GPU_Simulation:
+  - wiki/entities/isaac-gym-isaac-lab.md
+  Iterative_Closed-Loop_Motion_Synthesis:
+  - wiki/entities/paper-notebook-iterative-closed-loop-motion-synthesis.md
+  LATENT__Learning_Athletic_Humanoid_Tennis_Skills_from_Imperfect_Human_Motion_Dat:
+  - wiki/entities/paper-notebook-latent.md
+  LCP_Sim-to-Real_Action_Smoothing:
+  - wiki/entities/paper-notebook-lcp-sim-to-real-action-smoothing.md
+  LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F:
+  - wiki/entities/lift-humanoid.md
+  Learned_Motion_Matching:
+  - wiki/methods/diffusion-motion-generation.md
+  Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots:
+  - wiki/tasks/teleoperation.md
+  Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots:
+  - wiki/entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md
+  Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
+  Learning_Humanoid_End-Effector_Control_for_Open-Vocabulary_Visual_Loco-Manipulation:
+  - wiki/entities/paper-notebook-learning-humanoid-end-effector-control-for-open.md
+  Learning_Quadrupedal_Locomotion_over_Challenging_Terrain:
+  - wiki/entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md
+  Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes:
+  - wiki/entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md
+  Learning_Soccer_Skills_for_Humanoid_Robots____A_Progressive_Perception-Action_Fr:
+  - wiki/entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md
+  Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves:
+  - wiki/entities/paper-notebook-learning-to-ball.md
+  Learning_to_Walk_in_Minutes:
+  - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
+  Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors:
+  - wiki/concepts/state-estimation.md
+  LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations:
+  - wiki/entities/paper-notebook-lessmimic-long-horizon-humanoid-interaction-with.md
+  MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling:
+  - wiki/entities/paper-notebook-magnet.md
+  MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking_and_:
+  - wiki/concepts/sim2real.md
+  Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control:
+  - wiki/entities/paper-hrl-stack-02-make_tracking_easy.md
+  MeshMimic__Geometry-Aware_Humanoid_Motion_Learning_through_3D_Scene_Reconstructi:
+  - wiki/entities/paper-notebook-meshmimic.md
+  Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control:
+  - wiki/entities/paper-notebook-mimic2dm.md
+  MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control:
+  - wiki/entities/mimickit.md
+  MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation:
+  - wiki/tasks/vision-language-navigation.md
+  MotionVAE:
+  - wiki/entities/paper-notebook-motionvae.md
+  NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation:
+  - wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md
+  Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels:
+  - wiki/tasks/humanoid-locomotion.md
+  OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer:
+  - wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md
+  Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World:
+  - wiki/methods/disney-olaf-character-robot.md
+  OmniH2O_Universal_Whole-Body_Teleoperation:
+  - wiki/entities/paper-hrl-stack-08-omnih2o.md
+  - wiki/tasks/teleoperation.md
+  OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_Humanoid_Control:
+  - wiki/entities/paper-hrl-stack-16-omnixtreme.md
+  PACE_Systematic_Sim-to-Real_Transfer_for_Diverse_Legged_Robots:
+  - wiki/concepts/sim2real.md
+  PDF-HR__Pose_Distance_Fields_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-pdf-hr.md
+  PHC_Perpetual_Humanoid_Control:
+  - wiki/entities/paper-bfm-22-phc.md
+  PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
+  - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
+  PPO_Proximal_Policy_Optimization:
+  - wiki/methods/reinforcement-learning.md
+  - wiki/methods/policy-optimization.md
+  PULSE_Physics-based_Universal_Latent_Space:
+  - wiki/entities/zhengyi-luo.md
+  Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
+  - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR:
+  - wiki/entities/paper-notebook-physhmr.md
+  Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation:
+  - wiki/entities/paper-notebook-physics-informed-neural-networks-with-ukf-for-se.md
+  PolySim__Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_via_Multi-Simulato:
+  - wiki/concepts/sim2real.md
+  ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control:
+  - wiki/entities/protomotions.md
+  Quantum_Deep_RL_for_Humanoid_Robot_Navigation:
+  - wiki/entities/paper-notebook-quantum-deep-rl-for-humanoid-robot-navigation.md
+  RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_:
+  - wiki/concepts/sim2real.md
+  RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation:
+  - wiki/entities/paper-notebook-rgmp-s.md
+  RMA_Rapid_Motor_Adaptation:
+  - wiki/concepts/sim2real.md
+  - wiki/methods/safe-rl.md
+  ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting:
+  - wiki/entities/paper-notebook-reactor.md
+  Real-World_Humanoid_Locomotion_with_RL:
+  - wiki/entities/paper-notebook-real-world-humanoid-locomotion-with-rl.md
+  Retargeting_Matters__General_Motion_Retargeting_for_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-01-retargeting_matters.md
+  RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing:
+  - wiki/entities/paper-notebook-robostriker.md
+  Robust_and_Generalized_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation:
+  - wiki/tasks/teleoperation.md
+  SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
+  - wiki/methods/sonic-motion-tracking.md
+  - wiki/entities/paper-bfm-07-sonic.md
+  - wiki/entities/paper-hrl-stack-17-sonic.md
+  STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
+  - wiki/tasks/vision-language-navigation.md
+  Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_for_Humanoid_Robots:
+  - wiki/entities/paper-notebook-semantic-co-speech-gesture-synthesis-and-real-ti.md
+  SteadyTray__Learning_Object_Balancing_Tasks_in_Humanoid_Tray_Transport_via_Resid:
+  - wiki/entities/paper-notebook-steadytray.md
+  TTT-Parkour__Rapid_Test-Time_Training_for_Perceptive_Robot_Parkour:
+  - wiki/entities/paper-notebook-ttt-parkour.md
+  TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:
+  - wiki/tasks/teleoperation.md
+  TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C:
+  - wiki/methods/genmo.md
+  Thinking_in_360__Humanoid_Visual_Search_in_the_Wild:
+  - wiki/tasks/vision-language-navigation.md
+  Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots:
+  - wiki/entities/paper-notebook-towards-motion-turing-test.md
+  UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control:
+  - wiki/entities/dataset-bfm-humanoid-x.md
+  ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation:
+  - wiki/entities/paper-notebook-ultra-unified-multimodal-control-for-autonomous.md
+  Unitree_H1_Whitepaper:
+  - wiki/entities/paper-notebook-unitree-h1-whitepaper.md
+  VIGOR_Visual_Goal-In-Context_Inference_for_Unified_Humanoid_Fall_Safety:
+  - wiki/entities/paper-notebook-vigor-visual-goal-in-context-inference-for-unifi.md
+  WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos:
+  - wiki/entities/paper-notebook-whole.md
+  XHugWBC__Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_Locomotion:
+  - wiki/concepts/whole-body-control.md
+  ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control:
+  - wiki/methods/zest.md
+  ZeroWBC__Learning_Natural_Visuomotor_Humanoid_Control_from_Egocentric_Video:
+  - wiki/entities/paper-notebook-zerowbc.md
+  cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields:
+  - wiki/entities/curobo.md
+  iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies:
+  - wiki/methods/diffusion-policy.md
+  Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation:
+  - wiki/entities/paper-daji-anticipatory-joint-intent.md

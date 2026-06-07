@@ -155,6 +155,7 @@ flowchart TD
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HumDex](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy.html)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Diffusion Policy (Blog)](https://diffusion-policy.cs.columbia.edu/)（当前模仿学习 SOTA 路线之一）
 - Unitree 开源操作项目：<https://github.com/unitreerobotics>

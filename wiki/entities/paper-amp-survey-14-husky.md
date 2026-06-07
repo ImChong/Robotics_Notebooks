@@ -60,5 +60,6 @@ sources:
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HUSKY](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control/HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control.html)
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
 - [42 篇 RL 身体系统栈姊妹篇](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)

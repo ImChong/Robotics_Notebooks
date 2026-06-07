@@ -51,3 +51,7 @@ sources:
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
+
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：EgoHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_/EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_.html)

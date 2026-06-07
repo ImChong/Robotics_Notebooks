@@ -165,5 +165,7 @@ f_{\text{drive\_limited}} = \min\left(1,\ \frac{\tau_{\text{safe}}}{\|f_{\text{d
 
 ## 推荐继续阅读
 
+- [RL Sim2Sim 在线演示：G1 Tracking](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
+- [机器人论文阅读笔记：GentleHumanoid](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object/GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object.html)
 - [ISO/TS 15066](https://www.iso.org/standard/62996.html) — 协作机器人力限相关安全参考（论文阈值论证引用）
 - [GMR 官方仓库](https://github.com/YanjieZe/GMR) — 人体→人形重定向基线实现

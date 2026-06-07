@@ -185,6 +185,7 @@ BeyondMimic 已经成为许多人形机器人项目的底层基座：
 - **[SONIC](./sonic-motion-tracking.md)（NVIDIA/CMU 等）**：将 BeyondMimic 的能力扩展到手柄、VR 和文本控制；并被 [ExoActor](./exoactor.md) 直接当作"视频生成 → 动作估计 → 通用动作跟踪"流水线中的物理过滤器。
 
 ## 参考来源
+- [机器人论文阅读笔记：BeyondMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/BeyondMimic/BeyondMimic.html)
 
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — 飞书公开文档《开源运动控制项目》总结。
 - [sources/repos/robot_lab.md](../../sources/repos/robot_lab.md) — Isaac Lab 侧集成任务与训练栈说明。

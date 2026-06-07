@@ -90,6 +90,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：CRISP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit.html)
 - [OpenReview：CRISP 论文页](https://openreview.net/forum?id=xlr3NqxUqY)
 - [VideoMimic 项目页](https://videomimic.github.io/)（站点中与 CRISP 做交互对比的基线之一）
 - [Sim2Real 论文导航](../../references/papers/sim2real.md)

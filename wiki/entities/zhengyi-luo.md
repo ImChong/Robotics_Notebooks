@@ -62,5 +62,6 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：PULSE](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PULSE_Physics-based_Universal_Latent_Space/PULSE_Physics-based_Universal_Latent_Space.html)
 - [HOVER 项目页](https://hover-versatile-humanoid.github.io/)
 - [ASAP 项目页](https://agile.human2humanoid.com/)

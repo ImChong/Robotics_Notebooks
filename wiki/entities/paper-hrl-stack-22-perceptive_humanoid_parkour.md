@@ -156,6 +156,8 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [RL Sim2Sim 在线演示：G1 Perceptive Parkour](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
+- [机器人论文阅读笔记：Perceptive Humanoid Parkour](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching.html)
 - 论文 PDF：<https://php-parkour.github.io/static/images/paper.pdf>
 - arXiv：<https://arxiv.org/abs/2602.15827>
 - 上游重定向：<https://arxiv.org/abs/2509.26633>（OmniRetarget）

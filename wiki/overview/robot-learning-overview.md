@@ -218,6 +218,8 @@ sources:
 
 ## 推荐继续阅读
 
+- [Humanoid Paper Notebooks 知识库索引](./humanoid-paper-notebooks-index.md) — 137 篇深读笔记按笔记主站 14 类分类的父/子节点总览
+
 - Sutton & Barto, *Reinforcement Learning: An Introduction*
 - [OpenAI Spinning Up in Deep RL](https://spinningup.openai.com)
 - [动手学强化学习在线书](https://hrl.boyuai.com/chapter)

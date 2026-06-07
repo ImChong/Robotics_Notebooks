@@ -60,5 +60,6 @@ summary: "Axellwppr/motion_tracking：GentleHumanoid 论文对应的 mjlab 全�
 
 ## 推荐继续阅读
 
+- [RL Sim2Sim 在线演示：G1 Tracking](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [GentleHumanoid 项目页](https://gentle-humanoid.axell.top/)
 - [arXiv:2511.04679](https://arxiv.org/abs/2511.04679)

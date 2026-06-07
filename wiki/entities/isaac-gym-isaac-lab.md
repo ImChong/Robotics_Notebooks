@@ -263,6 +263,7 @@ Isaac Gym 当年就因为易于做大规模随机化而很受欢迎；Isaac Lab 
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Isaac Lab GPU Simulation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Isaac_Lab_GPU_Simulation/Isaac_Lab_GPU_Simulation.html)
 - NVIDIA Isaac Gym 页面：<https://developer.nvidia.com/isaac-gym>
 - Isaac Lab 文档首页：<https://isaac-sim.github.io/IsaacLab/v2.1.0/>
 - Isaac Lab 迁移指南：<https://isaac-sim.github.io/IsaacLab/v1.0.0/source/migration/index.html>

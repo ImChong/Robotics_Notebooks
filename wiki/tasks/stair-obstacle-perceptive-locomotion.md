@@ -152,6 +152,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Collision-Free Humanoid Traversal in Cluttered Indoor Scenes](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes/Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes.html)
 - FastStair 论文 HTML：<https://arxiv.org/html/2601.10365v1>
 - FastStair 项目页：<https://npcliu.github.io/FastStair>
 
