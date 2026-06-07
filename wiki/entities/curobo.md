@@ -127,5 +127,6 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：cuRoboV2](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields.html)
 - [Isaac ROS cuMotion（MoveIt 插件仓库）](https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_cumotion) — 产品化集成与部署文档入口
 - [nvblox（GPU TSDF/ESDF）](https://github.com/nvidia-isaac/nvblox) — 初版文档常引用的深度 **ESDF** 后端之一

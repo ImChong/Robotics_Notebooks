@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | schema + wiki — 同步 Humanoid Paper Notebooks 深读笔记链接至对应 wiki 节点
+
+- 工具：[scripts/sync_paper_notebook_links.py](scripts/sync_paper_notebook_links.py)；`make paper-notebook-links`；映射 [schema/paper-notebook-wiki-overrides.yml](schema/paper-notebook-wiki-overrides.yml) + [schema/paper-notebook-index.json](schema/paper-notebook-index.json)
+- 覆盖 73/138 篇已有对应节点的论文笔记；修复 5 处旧版 `02_High_Impact` / `09_Sim-to-Real` URL；示例节点 [wiki/entities/paper-bfm-07-sonic.md](wiki/entities/paper-bfm-07-sonic.md)、[wiki/methods/awr.md](wiki/methods/awr.md)、[wiki/tasks/teleoperation.md](wiki/tasks/teleoperation.md)
+
 ## [2026-06-06] structural | docs — V23 P3 图谱页「专题视图」扩充（WBT / 跨具身 / 真机安全微调）
 
 - 清单推进：[tech-stack-next-phase-checklist-v23.md](docs/checklists/tech-stack-next-phase-checklist-v23.md) P3 末项打勾，V23 清单全部完成

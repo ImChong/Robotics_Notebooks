@@ -1,0 +1,155 @@
+overrides:
+  ADD_Adversarial_Differential_Discriminators:
+  - wiki/methods/add.md
+  AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control:
+  - wiki/entities/paper-amp-survey-01-amp.md
+  ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control:
+  - wiki/entities/paper-bfm-25-ase.md
+  AWR_Advantage_Weighted_Regression:
+  - wiki/methods/awr.md
+  BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation:
+  - wiki/tasks/loco-manipulation.md
+  BeyondMimic:
+  - wiki/entities/paper-bfm-35-beyondmimic.md
+  - wiki/methods/beyondmimic.md
+  CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters:
+  - wiki/entities/paper-bfm-19-calm.md
+  CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation:
+  - wiki/entities/paper-amp-survey-16-clot.md
+  CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit:
+  - wiki/methods/crisp-real2sim.md
+  Collision-Free_Humanoid_Traversal_in_Cluttered_Indoor_Scenes:
+  - wiki/tasks/stair-obstacle-perceptive-locomotion.md
+  DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills:
+  - wiki/entities/paper-hrl-stack-11-deepmimic.md
+  Diffusion_Policy:
+  - wiki/methods/diffusion-policy.md
+  DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos:
+  - wiki/entities/paper-hrl-stack-35-dreamdojo.md
+  EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_:
+  - wiki/overview/ego-category-02-human-to-robot.md
+  EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video:
+  - wiki/entities/paper-ego-03-egomimic.md
+  EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents:
+  - wiki/overview/ego-category-01-data-collection.md
+  ExBody2_Advanced_Expressive_Whole-Body_Control:
+  - wiki/concepts/whole-body-control.md
+  Expressive_Whole-Body_Control_for_Humanoid_Robots:
+  - wiki/concepts/whole-body-control.md
+  ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control:
+  - wiki/tasks/teleoperation.md
+  GR00T_N1_Humanoid_Foundation_Model:
+  - wiki/entities/paper-hrl-stack-34-gr00t_n1.md
+  - wiki/concepts/foundation-policy.md
+  GRUtopia__Dream_General_Robots_in_a_City_at_Scale:
+  - wiki/concepts/simulation-evaluation-infrastructure.md
+  General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast_Adaptation:
+  - wiki/methods/egm-efficient-general-mimic.md
+  Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report:
+  - wiki/methods/generative-world-models.md
+  GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
+  - wiki/methods/gentlehumanoid-motion-tracking.md
+  HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
+  - wiki/entities/paper-hrl-stack-38-haic.md
+  HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit:
+  - wiki/tasks/loco-manipulation.md
+  - wiki/tasks/teleoperation.md
+  HOVER_Versatile_Neural_Whole-Body_Controller:
+  - wiki/entities/paper-bfm-14-hover.md
+  HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control:
+  - wiki/entities/paper-amp-survey-14-husky.md
+  HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation:
+  - wiki/tasks/humanoid-locomotion.md
+  HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller:
+  - wiki/concepts/whole-body-control.md
+  HumDex_Humanoid_Dexterous_Manipulation_Made_Easy:
+  - wiki/tasks/manipulation.md
+  HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans:
+  - wiki/tasks/teleoperation.md
+  HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi:
+  - wiki/entities/paper-hrl-stack-05-humanx.md
+  Humanoid-Gym_Zero-Shot_Sim2Real_Transfer:
+  - wiki/entities/legged-gym.md
+  HumanoidBench:
+  - wiki/concepts/simulation-evaluation-infrastructure.md
+  Isaac_Lab_GPU_Simulation:
+  - wiki/entities/isaac-gym-isaac-lab.md
+  LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F:
+  - wiki/entities/lift-humanoid.md
+  Learned_Motion_Matching:
+  - wiki/methods/diffusion-motion-generation.md
+  Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots:
+  - wiki/tasks/teleoperation.md
+  Learning_to_Walk_in_Minutes:
+  - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
+  Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors:
+  - wiki/concepts/state-estimation.md
+  MOSAIC__Bridging_the_Sim-to-Real_Gap_in_Generalist_Humanoid_Motion_Tracking_and_:
+  - wiki/concepts/sim2real.md
+  Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control:
+  - wiki/entities/paper-hrl-stack-02-make_tracking_easy.md
+  MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control:
+  - wiki/entities/mimickit.md
+  MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation:
+  - wiki/tasks/vision-language-navigation.md
+  Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels:
+  - wiki/tasks/humanoid-locomotion.md
+  Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World:
+  - wiki/methods/disney-olaf-character-robot.md
+  OmniH2O_Universal_Whole-Body_Teleoperation:
+  - wiki/entities/paper-hrl-stack-08-omnih2o.md
+  - wiki/tasks/teleoperation.md
+  OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_Humanoid_Control:
+  - wiki/entities/paper-hrl-stack-16-omnixtreme.md
+  PACE_Systematic_Sim-to-Real_Transfer_for_Diverse_Legged_Robots:
+  - wiki/concepts/sim2real.md
+  PHC_Perpetual_Humanoid_Control:
+  - wiki/entities/paper-bfm-22-phc.md
+  PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
+  - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
+  PPO_Proximal_Policy_Optimization:
+  - wiki/methods/reinforcement-learning.md
+  - wiki/methods/policy-optimization.md
+  PULSE_Physics-based_Universal_Latent_Space:
+  - wiki/entities/zhengyi-luo.md
+  Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
+  - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  PolySim__Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_via_Multi-Simulato:
+  - wiki/concepts/sim2real.md
+  ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control:
+  - wiki/entities/protomotions.md
+  RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_:
+  - wiki/concepts/sim2real.md
+  RMA_Rapid_Motor_Adaptation:
+  - wiki/concepts/sim2real.md
+  - wiki/methods/safe-rl.md
+  Retargeting_Matters__General_Motion_Retargeting_for_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-01-retargeting_matters.md
+  Robust_and_Generalized_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation:
+  - wiki/tasks/teleoperation.md
+  SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
+  - wiki/methods/sonic-motion-tracking.md
+  - wiki/entities/paper-bfm-07-sonic.md
+  - wiki/entities/paper-hrl-stack-17-sonic.md
+  STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
+  - wiki/tasks/vision-language-navigation.md
+  TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:
+  - wiki/tasks/teleoperation.md
+  TextOp__Real-time_Interactive_Text-Driven_Humanoid_Robot_Motion_Generation_and_C:
+  - wiki/methods/genmo.md
+  Thinking_in_360__Humanoid_Visual_Search_in_the_Wild:
+  - wiki/tasks/vision-language-navigation.md
+  UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control:
+  - wiki/entities/dataset-bfm-humanoid-x.md
+  XHugWBC__Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_Locomotion:
+  - wiki/concepts/whole-body-control.md
+  ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control:
+  - wiki/methods/zest.md
+  cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields:
+  - wiki/entities/curobo.md
+  iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies:
+  - wiki/methods/diffusion-policy.md
+  Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation:
+  - wiki/entities/paper-daji-anticipatory-joint-intent.md

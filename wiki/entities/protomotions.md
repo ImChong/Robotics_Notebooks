@@ -133,3 +133,7 @@ flowchart TD
 
 - 本页知识编译自仓库侧原始摘录：[sources/repos/protomotions.md](../../sources/repos/protomotions.md)（含 GitHub README 与 [protomotions.github.io](https://protomotions.github.io/) 文档入口归纳）
 - 上游仓库：[NVlabs/ProtoMotions](https://github.com/NVlabs/ProtoMotions)
+
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：ProtoMotions3 Open-source Framework for Humanoid Simulation and Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html)

@@ -91,5 +91,7 @@ sources:
 
 ## 推荐继续阅读
 
-- Matterport3D / R2R、RxR 等官方基准说明
+- [机器人论文阅读笔记：MolmoSpaces](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation.html)
+- [机器人论文阅读笔记：Thinking in 360°](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild.html)
+- [机器人论文阅读笔记：STATE-NAV](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain/STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain.html)- Matterport3D / R2R、RxR 等官方基准说明
 - NaVILA、RoomTour3D 等「真实视频 + 导航」相关工作（与互联网视频蒸馏路线对照）

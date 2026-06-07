@@ -175,4 +175,4 @@ flowchart TD
 - [imitation_learning.md](../../sources/papers/imitation_learning.md)
 - [sources/papers/star_vla.md](../../sources/papers/star_vla.md)
 - [sources/repos/gr00t_wholebodycontrol.md](../../sources/repos/gr00t_wholebodycontrol.md) — GR00T WBC 官方单仓（解耦 WBC、GEAR-SONIC、MotionBricks 与 VLA 教程文档）
-- [机器人论文阅读笔记：GR00T N1](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/02_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)
+- [机器人论文阅读笔记：GR00T N1](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)

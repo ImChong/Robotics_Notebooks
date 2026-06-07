@@ -108,6 +108,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：General Humanoid Whole-Body Control via Pretraining and Fast Adaptation](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast_Adaptation/General_Humanoid_Whole-Body_Control_via_Pretraining_and_Fast_Adaptation.html)
 - [EGM 论文（arXiv:2512.19043）](https://arxiv.org/abs/2512.19043)
 - [EGM HTML 实验版（arXiv HTML）](https://arxiv.org/html/2512.19043v1)
 - [Moonlight 社区导读（英文）](https://www.themoonlight.io/en/review/egm-efficiently-learning-general-motion-tracking-policy-for-high-dynamic-humanoid-whole-body-control)

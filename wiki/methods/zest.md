@@ -76,5 +76,6 @@ ZEST 的核心在于将运动数据视为物理正则化项，在不需要显式
 - [Spot (机器人)](../entities/boston-dynamics.md)
 
 ## 参考来源
+- [机器人论文阅读笔记：ZEST](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control/ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control.html)
 - [ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control](../../sources/papers/zest.md)
 - [Boston Dynamics Technical Blog](https://bostondynamics.com/)

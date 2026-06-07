@@ -105,6 +105,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Olaf](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World/Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World.html)
 - [Olaf 论文（arXiv 摘要）](https://arxiv.org/abs/2512.16705)
 - [Olaf 论文 HTML 全文 v2](https://arxiv.org/html/2512.16705v2)
 - [Peng et al., DeepMimic（arXiv）](https://arxiv.org/abs/1804.06401) — 物理角色技能 RL 模仿的经典参照

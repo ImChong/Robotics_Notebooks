@@ -44,3 +44,7 @@ sources:
 
 - [wechat_embodied_ai_lab_ego_9_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md)
 - [ego_9_papers_catalog.md](../../sources/papers/ego_9_papers_catalog.md)
+
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：EmbodMocap](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents.html)

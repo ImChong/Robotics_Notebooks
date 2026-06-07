@@ -49,5 +49,6 @@ ADD 的核心思想是将判别器的输入从绝对状态 $ 转变为状态的*
 - [mimickit](../entities/mimickit.md) — ADD 的官方实现框架（集成于 [mimickit](../entities/mimickit.md) 与 [protomotions](../entities/protomotions.md)）。
 
 ## 参考来源
+- [机器人论文阅读笔记：ADD](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators/ADD_Adversarial_Differential_Discriminators.html)
 - [sources/papers/add.md](../../sources/papers/add.md)
 - Peng et al., *ADD: Adversarial Differential Discriminator for Physics-Based Character Control*, SIGGRAPH 2024.

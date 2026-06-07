@@ -1,0 +1,49 @@
+overrides:
+  ADD_Adversarial_Differential_Discriminators:
+  - wiki/methods/add.md
+  CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters:
+  - wiki/entities/paper-bfm-19-calm.md
+  CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation:
+  - wiki/entities/paper-amp-survey-16-clot.md
+  DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills:
+  - wiki/entities/paper-hrl-stack-11-deepmimic.md
+  Diffusion_Policy:
+  - wiki/methods/diffusion-policy.md
+  DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos:
+  - wiki/entities/paper-hrl-stack-35-dreamdojo.md
+  EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video:
+  - wiki/entities/paper-ego-03-egomimic.md
+  GentleHumanoid__Learning_Upper-body_Compliance_for_Contact-rich_Human_and_Object:
+  - wiki/methods/gentlehumanoid-motion-tracking.md
+  HAIC__Humanoid_Agile_Object_Interaction_Control_via_Dynamics-Aware_World_Model:
+  - wiki/entities/paper-hrl-stack-38-haic.md
+  HUSKY__Humanoid_Skateboarding_System_via_Physics-Aware_Whole-Body_Control:
+  - wiki/entities/paper-amp-survey-14-husky.md
+  HumanX__Toward_Agile_and_Generalizable_Humanoid_Interaction_Skills_from_Human_Vi:
+  - wiki/entities/paper-hrl-stack-05-humanx.md
+  LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F:
+  - wiki/entities/lift-humanoid.md
+  Learning_to_Walk_in_Minutes:
+  - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
+  Make_Tracking_Easy__Neural_Motion_Retargeting_for_Humanoid_Whole-body_Control:
+  - wiki/entities/paper-hrl-stack-02-make_tracking_easy.md
+  Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World:
+  - wiki/methods/disney-olaf-character-robot.md
+  OmniXtreme_Breaking_the_Generality_Barrier_in_High-Dynamic_Humanoid_Control:
+  - wiki/entities/paper-hrl-stack-16-omnixtreme.md
+  PHC_Perpetual_Humanoid_Control:
+  - wiki/entities/paper-bfm-22-phc.md
+  PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
+  - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
+  Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
+  - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  Retargeting_Matters__General_Motion_Retargeting_for_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-01-retargeting_matters.md
+  Robust_and_Generalized_Humanoid_Motion_Tracking:
+  - wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  ZEST__Zero-shot_Embodied_Skill_Transfer_for_Athletic_Robot_Control:
+  - wiki/methods/zest.md
+  cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields:
+  - wiki/entities/curobo.md
+  Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation:
+  - wiki/entities/paper-daji-anticipatory-joint-intent.md

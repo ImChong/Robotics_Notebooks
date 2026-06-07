@@ -49,4 +49,5 @@ sources:
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：UH-1 Learning from Massive Human Videos for Universal Humanoid Pose Control](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control.html)
 - [awesome-bfm-papers § Datasets](https://github.com/friedrichyuan/awesome-bfm-papers#datasets)
