@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] ingest | sources/papers/rpl_arxiv_2602_03002.md — RPL（arXiv:2602.03002）Amazon FAR 人形多向深度感知行走与载荷 loco-manipulation
+
+- 原始资料：[sources/papers/rpl_arxiv_2602_03002.md](sources/papers/rpl_arxiv_2602_03002.md)、[sources/sites/rpl-humanoid-github-io.md](sources/sites/rpl-humanoid-github-io.md)
+- 新增实体：[wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)
+- 交叉补强：[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/tasks/loco-manipulation.md](wiki/tasks/loco-manipulation.md)
+
 ## [2026-06-07] structural | schema + wiki — Paper Notebooks 64 篇 stub 实体从深读笔记同步一句话总结
 
 - 工具：[scripts/sync_paper_notebook_summaries.py](scripts/sync_paper_notebook_summaries.py)；`make paper-notebook-summaries`
