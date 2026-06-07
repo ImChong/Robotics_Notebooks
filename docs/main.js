@@ -3817,8 +3817,7 @@
 
     function renderEmptyState() {
       var hotHtml = HOT_QUERIES.map(function(q) {
-        return '<button class="tag-chip" onclick="wikiSearchInput.value=\'' + escapeHtml(q)
-          + '\';triggerSearch()" style="cursor:pointer">' + escapeHtml(q) + '</button>';
+        return '<button class="tag-chip" onclick="document.getElementById(\'wikiSearchInput\').value=this.getAttribute(\'data-query\');triggerSearch()" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
       }).join('');
       searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted);font-size:.85rem">'
         + '<p style="margin-bottom:.5rem">热门查询：</p>'
