@@ -292,6 +292,21 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   display: grid;
   gap: 12px;
 }
+/* card-grid 内关联项等卡片：等高伸展，操作按钮贴底对齐 */
+.card-grid > .card.data-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card-grid > .card.data-card > .chip-list {
+  margin-top: auto;
+  align-items: center;
+}
+.card-grid > .card.data-card .btn-inline {
+  min-height: 36px;
+  box-sizing: border-box;
+}
 .data-card h4 {
   font-size: .95rem;
   margin-bottom: 4px;
