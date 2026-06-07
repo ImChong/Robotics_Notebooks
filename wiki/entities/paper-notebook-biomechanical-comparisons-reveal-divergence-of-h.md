@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_biomechanical-comparisons-reveal-divergence-of-h.md
-summary: "Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "GDAF 提出一个与控制器无关、面向生物力学的评估框架，把\"人形机器人走路像不像人\"拆成波形相似度 + 双侧对称性 + 能量学行为三类指标，在 0.5–1.85 m/s 共 28 个速度档对一个 SOTA RL 人形控制器进行扫描，量化结论是：视觉上像人，生物力学上仍系统性偏离。"
 ---
 
 # Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits
@@ -18,7 +18,7 @@ summary: "Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gait
 
 ## 一句话定义
 
-Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+GDAF 提出一个与控制器无关、面向生物力学的评估框架，把"人形机器人走路像不像人"拆成波形相似度 + 双侧对称性 + 能量学行为三类指标，在 0.5–1.85 m/s 共 28 个速度档对一个 SOTA RL 人形控制器进行扫描，量化结论是：视觉上像人，生物力学上仍系统性偏离。
 
 ## 英文缩写速查
 

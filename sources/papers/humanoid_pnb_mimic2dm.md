@@ -8,7 +8,7 @@
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2512.08500>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 不再依赖 off-the-shelf 的 3D 重建，直接用从野生视频抽出的 2D 关键点轨迹 + 重投影误差，把"物理仿真中的角色控制器"从训练到生成端到端做穿；多视角聚合后还能涨成 3D 追踪能力 —— 给数据匮乏 / 物理可信度难保证的复杂动作（舞蹈、球类、动物步态）一条便宜得多的路。
 
 ## 核心摘录（策展，非全文）
 

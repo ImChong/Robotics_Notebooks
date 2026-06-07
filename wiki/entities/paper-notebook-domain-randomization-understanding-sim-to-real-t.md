@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_domain-randomization-understanding-sim-to-real-t.md
-summary: "Understanding Domain Randomization for Sim-to-real Transfer：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但这篇论文提供了理论框架来解释为什么 DR 能在不需要任何现实数据的情况下成功迁移，并证明了使用记忆（历史依赖策略）对 DR 的成功至关重要。"
 ---
 
 # Understanding Domain Randomization for Sim-to-real Transfer
@@ -18,7 +18,7 @@ summary: "Understanding Domain Randomization for Sim-to-real Transfer：Humanoid
 
 ## 一句话定义
 
-Understanding Domain Randomization for Sim-to-real Transfer 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+Domain Randomization（DR）是 sim-to-real 领域最常用的方法之一，但这篇论文提供了理论框架来解释为什么 DR 能在不需要任何现实数据的情况下成功迁移，并证明了使用记忆（历史依赖策略）对 DR 的成功至关重要。
 
 ## 英文缩写速查
 

@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_contrastive-representation-learning-for-adaptive.md
-summary: "Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "主流人形 RL 行走面临两难选择——纯本体感知策略反应快但被动（只能\"踩到了再调\"），而依赖深度图/高程图的感知驱动策略主动但脆弱（深度噪声、外参漂移、视角遮挡都会让 sim-to-real 崩掉）。本文用对比学习把仿真侧的特权环境信息（地形高度、摩擦、质量、外力等）\"蒸馏\"到 actor 的隐状态里，同时引入一个自适应步态时钟让策略根据\"已感知到但实际看不见\"的地形主动调整步频，从而在不接任何外部感知模块的前提下兼具反应与主动性，全尺寸人形零样本通过 30 cm 台阶和 26.5° 斜坡。"
 ---
 
 # Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion
@@ -18,7 +18,7 @@ summary: "Contrastive Representation Learning for Robust Sim-to-Real Transfer of
 
 ## 一句话定义
 
-Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+主流人形 RL 行走面临两难选择——纯本体感知策略反应快但被动（只能"踩到了再调"），而依赖深度图/高程图的感知驱动策略主动但脆弱（深度噪声、外参漂移、视角遮挡都会让 sim-to-real 崩掉）。本文用对比学习把仿真侧的特权环境信息（地形高度、摩擦、质量、外力等）"蒸馏"到 actor 的隐状态里，同时引入一个自适应步态时钟让策略根据"已感知到但实际看不见"的地形主动调整步频，从而在不接任何外部感知模块的前提下兼具反应与主动性，全尺寸人形零样本通过 30 cm 台阶和 26.5° 斜坡。
 
 ## 英文缩写速查
 

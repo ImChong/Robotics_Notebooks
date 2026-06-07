@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.02960>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** EAGLE 把"跨本体人形 WBC"建成一个迭代的"泛化—专家"蒸馏循环：先在一个池子里同时训练多种本体的泛化策略；再为每个本体派生一个专家做精修；最后把各专家的新技能通过 DAgger 蒸馏回泛化策略，反复循环直至收敛——配合一套统一的高维指令接口（蹲、倾、底盘速度等同时支持），最终用一份策略驱动 H1 / G1 / N1 / T1 / Adam 等异构人形。
 
 ## 核心摘录（策展，非全文）
 

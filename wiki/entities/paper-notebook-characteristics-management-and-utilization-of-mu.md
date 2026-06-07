@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_characteristics-management-and-utilization-of-mu.md
-summary: "Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设计 / 控制 / 学习」经验，浓缩成一篇「特性 → 管理 → 利用」的三段式实证综述：先把肌肉的五大固有特性（冗余 / 独立 / 各向异性 / 可变力臂 / 非线性弹性）讲清楚，再讲怎么用硬件模块把这些特性\"管住\"，最后讲怎么用反射 + 学习的方法把它们\"用好\"。"
 ---
 
 # Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids
@@ -18,7 +18,7 @@ summary: "Characteristics, Management, and Utilization of Muscles in Musculoskel
 
 ## 一句话定义
 
-Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把 JSK 实验室十几年在 腱-驱动肌骨型人形 上的「设计 / 控制 / 学习」经验，浓缩成一篇「特性 → 管理 → 利用」的三段式实证综述：先把肌肉的五大固有特性（冗余 / 独立 / 各向异性 / 可变力臂 / 非线性弹性）讲清楚，再讲怎么用硬件模块把这些特性"管住"，最后讲怎么用反射 + 学习的方法把它们"用好"。
 
 ## 英文缩写速查
 

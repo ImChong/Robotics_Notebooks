@@ -8,7 +8,7 @@
 - **分类：** 06_Manipulation
 - **arXiv：** <https://arxiv.org/abs/2601.09031>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** RGMP-S 把"人形机器人做长程操作"拆成两段：上层让 VLM 在轻量级 2D 几何先验的帮助下"看懂场景 → 选对技能 → 拆分任务"；下层让一种递归自适应脉冲网络（RASNet）在稀疏示范下学到时间一致的动作，避免过拟合。ManiSkill2 + 3 个真机平台上验证有效。
 
 ## 核心摘录（策展，非全文）
 

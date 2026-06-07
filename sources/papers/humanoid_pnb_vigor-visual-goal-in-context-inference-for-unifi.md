@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.16511>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** VIGOR 提出了一个统一的人形机器人跌落安全框架，将跌落避障、撞击缓解和起身恢复集成在单一视觉条件策略中，实现了在复杂非结构化地形下的零样本跌落安全保护。
 
 ## 核心摘录（策展，非全文）
 

@@ -8,7 +8,7 @@
 - **分类：** 08_Navigation
 - **arXiv：** <https://arxiv.org/abs/2602.04515>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** EgoActor 把"高层语言指令 → 低层人形动作"的落地过程统一成一个 VLM：仅用第一视角 RGB 与指令，就能同时输出移动 / 头部姿态 / 操作 / 人机交互这四类动作原语，亚秒级推理，4B / 8B 双尺寸，覆盖仿真与真机环境。
 
 ## 核心摘录（策展，非全文）
 

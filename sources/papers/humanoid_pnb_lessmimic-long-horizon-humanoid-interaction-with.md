@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.21723>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——不依赖运动参考，单个策略就能在 0.4× ～ 1.6× 尺度变化下完成抓取、坐立、推拉、搬运，并支持最长 40 个连续技能的长时序组合。
 
 ## 核心摘录（策展，非全文）
 

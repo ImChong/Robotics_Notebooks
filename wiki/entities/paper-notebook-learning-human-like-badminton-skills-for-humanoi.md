@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-human-like-badminton-skills-for-humanoi.md
-summary: "Learning Human-Like Badminton Skills for Humanoid Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "提出 Imitation-to-Interaction 渐进式强化学习框架，将人形机器人的羽毛球学习拆解为四阶段：运动先验建立 → 目标条件蒸馏 → 对抗先验稳定 → 交互流形扩展，实现首个零样本迁移到真实机器人的拟人羽毛球技能。"
 ---
 
 # Learning Human-Like Badminton Skills for Humanoid Robots
@@ -18,7 +18,7 @@ summary: "Learning Human-Like Badminton Skills for Humanoid Robots：Humanoid Pa
 
 ## 一句话定义
 
-Learning Human-Like Badminton Skills for Humanoid Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+提出 Imitation-to-Interaction 渐进式强化学习框架，将人形机器人的羽毛球学习拆解为四阶段：运动先验建立 → 目标条件蒸馏 → 对抗先验稳定 → 交互流形扩展，实现首个零样本迁移到真实机器人的拟人羽毛球技能。
 
 ## 英文缩写速查
 

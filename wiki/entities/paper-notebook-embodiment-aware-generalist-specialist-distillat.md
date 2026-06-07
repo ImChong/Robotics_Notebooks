@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_embodiment-aware-generalist-specialist-distillat.md
-summary: "Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-Body Control：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "EAGLE 把\"跨本体人形 WBC\"建成一个迭代的\"泛化—专家\"蒸馏循环：先在一个池子里同时训练多种本体的泛化策略；再为每个本体派生一个专家做精修；最后把各专家的新技能通过 DAgger 蒸馏回泛化策略，反复循环直至收敛——配合一套统一的高维指令接口（蹲、倾、底盘速度等同时支持），最终用一份策略驱动 H1 / G1 / N1 / T1 / Adam 等异构人形。"
 ---
 
 # Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-Body Control
@@ -18,7 +18,7 @@ summary: "Embodiment-Aware Generalist Specialist Distillation for Unified Humano
 
 ## 一句话定义
 
-Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-Body Control 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+EAGLE 把"跨本体人形 WBC"建成一个迭代的"泛化—专家"蒸馏循环：先在一个池子里同时训练多种本体的泛化策略；再为每个本体派生一个专家做精修；最后把各专家的新技能通过 DAgger 蒸馏回泛化策略，反复循环直至收敛——配合一套统一的高维指令接口（蹲、倾、底盘速度等同时支持），最终用一份策略驱动 H1 / G1 / N1 / T1 / Adam 等异构人形。
 
 ## 英文缩写速查
 

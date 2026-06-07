@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_behavior-foundation-model-for-humanoid-robots.md
-summary: "Behavior Foundation Model for Humanoid Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把各类 WBC 任务都看成「在合适目标下生成行为轨迹」，先用 AMASS 重定向 + 仿真里特权信息的 proxy 运动模仿策略在线产出大规模行为数据，再用 掩码在线蒸馏 + 条件 VAE（CVAE） 学到可跨速度指令、遥操作、参考动作等多种控制接口共享的生成式策略，并可用 残差学习在不大改网络的前提下快速学会新动作——在仿真与真机上都展示了对多种全身任务的泛化与可组合潜空间。"
 ---
 
 # Behavior Foundation Model for Humanoid Robots
@@ -18,7 +18,7 @@ summary: "Behavior Foundation Model for Humanoid Robots：Humanoid Paper Noteboo
 
 ## 一句话定义
 
-Behavior Foundation Model for Humanoid Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把各类 WBC 任务都看成「在合适目标下生成行为轨迹」，先用 AMASS 重定向 + 仿真里特权信息的 proxy 运动模仿策略在线产出大规模行为数据，再用 掩码在线蒸馏 + 条件 VAE（CVAE） 学到可跨速度指令、遥操作、参考动作等多种控制接口共享的生成式策略，并可用 残差学习在不大改网络的前提下快速学会新动作——在仿真与真机上都展示了对多种全身任务的泛化与可组合潜空间。
 
 ## 英文缩写速查
 

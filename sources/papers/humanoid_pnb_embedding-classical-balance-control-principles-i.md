@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2603.08619>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 这篇论文的核心不是“再堆一个更大的网络”，而是把经典平衡控制里可解释的物理量（Capture Point、CoM 状态、质心动量）嵌入到 RL 训练中： - 在训练时作为特权 critic 输入和奖励塑形信号； - 在部署时 actor 仍然只依赖本体感觉，保证可落地。 结果是在一个统一策略中实现了从小扰动到大跌倒后的恢复行为链，并报告 93.4% 的恢复成功率。
 
 ## 核心摘录（策展，非全文）
 

@@ -8,7 +8,7 @@
 - **分类：** 12_Hardware_Design
 - **arXiv：** <https://arxiv.org/abs/2601.18963>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** Sprout 把"在共享人类空间里安全、表达丰富、上手即用"放在硬件设计的最前面：用 22.7 kg / 107 cm 的轻量身体 + 软外壳 + 顺应电机 + 受限关节扭矩，配上 VR 遥操作 + Isaac Lab 训练的全身 RL 策略 + 360° 面部 LED 表情头，做成一台"开箱即开发"的人形机器人。
 
 ## 核心摘录（策展，非全文）
 

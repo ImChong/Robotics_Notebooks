@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_rgmp-s.md
-summary: "Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "RGMP-S 把\"人形机器人做长程操作\"拆成两段：上层让 VLM 在轻量级 2D 几何先验的帮助下\"看懂场景 → 选对技能 → 拆分任务\"；下层让一种递归自适应脉冲网络（RASNet）在稀疏示范下学到时间一致的动作，避免过拟合。ManiSkill2 + 3 个真机平台上验证有效。"
 ---
 
 # Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation
@@ -18,7 +18,7 @@ summary: "Generalizable Geometric Prior and Recurrent Spiking Feature Learning f
 
 ## 一句话定义
 
-Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+RGMP-S 把"人形机器人做长程操作"拆成两段：上层让 VLM 在轻量级 2D 几何先验的帮助下"看懂场景 → 选对技能 → 拆分任务"；下层让一种递归自适应脉冲网络（RASNet）在稀疏示范下学到时间一致的动作，避免过拟合。ManiSkill2 + 3 个真机平台上验证有效。
 
 ## 英文缩写速查
 

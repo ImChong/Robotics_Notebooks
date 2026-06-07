@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_meshmimic.md
-summary: "MeshMimic：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-地形”耦合数据：先用 3D 视觉重建人体 SMPL-X、场景几何和接触，再通过运动优化与接触不变重定向，将人类在复杂地形上的动作迁移到人形机器人策略中，缓解传统 MoCap 缺少环境几何导致的脚滑、穿模和接触不一致问题。"
 ---
 
 # MeshMimic
@@ -18,7 +18,7 @@ summary: "MeshMimic：Humanoid Paper Notebooks 深读笔记索引实体；待从
 
 ## 一句话定义
 
-MeshMimic 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+MeshMimic 把普通单目 RGB 视频变成可训练人形机器人的“运动-地形”耦合数据：先用 3D 视觉重建人体 SMPL-X、场景几何和接触，再通过运动优化与接触不变重定向，将人类在复杂地形上的动作迁移到人形机器人策略中，缓解传统 MoCap 缺少环境几何导致的脚滑、穿模和接触不一致问题。
 
 ## 英文缩写速查
 

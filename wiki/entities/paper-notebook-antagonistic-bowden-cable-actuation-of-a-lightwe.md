@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md
-summary: "Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把\"驱动电机\"全部搬到躯干，手部远端只剩 236 g 结构件却仍能输出 >18 N 指尖力、抓起 >100 倍自重 的负载 —— 给\"手臂载荷不够、手却必须像人手\"的人形机器人一条可工程化的路。"
 ---
 
 # Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand
@@ -18,7 +18,7 @@ summary: "Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand：Hu
 
 ## 一句话定义
 
-Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+用 拮抗式 Bowden 缆绳 + 滚动接触关节优化 把"驱动电机"全部搬到躯干，手部远端只剩 236 g 结构件却仍能输出 >18 N 指尖力、抓起 >100 倍自重 的负载 —— 给"手臂载荷不够、手却必须像人手"的人形机器人一条可工程化的路。
 
 ## 英文缩写速查
 

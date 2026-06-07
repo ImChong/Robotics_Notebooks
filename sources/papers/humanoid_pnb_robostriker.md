@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2601.22517>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** RoboStriker 把"两个人形机器人互殴"建成 两玩家零和马尔可夫博弈，先用单智能体追真人拳击 MoCap 训出 运动跟踪器（46 段、约 14 分钟 Xsens 数据，经 GMR 重定向到 Unitree G1），再把这些技能蒸馏成一个 投到单位超球面的潜空间动作流形，最后在这个潜空间上跑 Latent-Space Neural Fictitious Self-Play (LS-NFSP)，让两个智能体只挑"高层动作意图"而不直接挑电机指令——动作天然物理可行又像人，多智能体训练也稳定收敛。
 
 ## 核心摘录（策展，非全文）
 

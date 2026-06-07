@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_asap-aligning-simulation-and-real-world-physics.md
-summary: "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "先用人类视频重定向后的参考动作在仿真里预训练运动跟踪策略，再在真机 rollout 收集状态轨迹，用残差（delta）动作模型显式补偿仿真与真机的动力学差；把该模型冻结后嵌入仿真器做「物理对齐」式的策略微调，最后在真机去掉 delta 模型直接部署——在侧跳、前跳、踢球、球星庆祝动作等全身敏捷技能上显著降低跟踪误差，并优于纯 SysID、纯域随机化、以及仅学习 delta 动力学但不回灌仿真的基线。"
 ---
 
 # ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills
@@ -18,7 +18,7 @@ summary: "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Ski
 
 ## 一句话定义
 
-ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+先用人类视频重定向后的参考动作在仿真里预训练运动跟踪策略，再在真机 rollout 收集状态轨迹，用残差（delta）动作模型显式补偿仿真与真机的动力学差；把该模型冻结后嵌入仿真器做「物理对齐」式的策略微调，最后在真机去掉 delta 模型直接部署——在侧跳、前跳、踢球、球星庆祝动作等全身敏捷技能上显著降低跟踪误差，并优于纯 SysID、纯域随机化、以及仅学习 delta 动力学但不回灌仿真的基线。
 
 ## 英文缩写速查
 

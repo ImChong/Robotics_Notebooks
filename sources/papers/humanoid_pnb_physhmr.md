@@ -8,7 +8,7 @@
 - **分类：** 13_Physics-Based_Animation
 - **arXiv：** <https://arxiv.org/abs/2510.02566>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把 HMR 从"先估姿态、再做物理后修"的两段式拼接，压缩成一个端到端的视觉条件 RL 策略：用 GVHMR 抽到的视觉特征做局部 pose 推理，加上把 2D 关键点抬成"3D 射线"的 pixel-as-ray 软全局对齐，再叠一层从 MoCap 专家蒸馏来的运动先验 + 物理 reward 微调；输出直接是物理仿真中跑得动、又对齐视频的人体动作。
 
 ## 核心摘录（策展，非全文）
 

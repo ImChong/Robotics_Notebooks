@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.05310>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** PAiD 把"踢球"这件事拆成 运动跟踪 → 感知融合 → 物理对齐迁移 三个递进阶段，先在干净的运动学世界里学会拟人的踢球姿态，再加入第一视角感知泛化到任意球位与滚动球，最后通过接触动力学对齐和感知噪声建模完成 Unitree G1 真机部署，实现 91.3% 踢球成功率。
 
 ## 核心摘录（策展，非全文）
 

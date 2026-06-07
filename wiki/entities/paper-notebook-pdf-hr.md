@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_pdf-hr.md
-summary: "PDF-HR：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到\"已知合理姿态语料库\"的最短距离；这个连续可微的\"姿态可信度\"可以直接当作 RL 的奖励整形项、模仿学习的正则项，或作为运动重定向时的姿态打分器，几乎零成本接入到现有 humanoid 任务流水线。"
 ---
 
 # PDF-HR
@@ -18,7 +18,7 @@ summary: "PDF-HR：Humanoid Paper Notebooks 深读笔记索引实体；待从笔
 
 ## 一句话定义
 
-PDF-HR 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+PDF-HR 训练一个神经距离场：输入一个机器人姿态，输出它到"已知合理姿态语料库"的最短距离；这个连续可微的"姿态可信度"可以直接当作 RL 的奖励整形项、模仿学习的正则项，或作为运动重定向时的姿态打分器，几乎零成本接入到现有 humanoid 任务流水线。
 
 ## 英文缩写速查
 

@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_an-empirical-evaluation-of-four-off-the-shelf-pr.md
-summary: "An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "不是又一篇新算法，而是一篇「实测对比」基准论文：作者用同一只「手提四传感器架」、同一组室内外轨迹，把四款最常被人形 / 移动机器人引用的商用闭源 VIO拉到同一条尺子上量——结论是 Apple ARKit 综合最稳最准（相对位姿误差 ≈ 0.02 m/s 漂移），但只能跑 iOS、对 ROS / Linux 不友好；T265 和 ZED 2 虽然 ROS 友好，但分别栽在「单目尺度漂移」和「旋转估计破坏正交性」上，给后续工程选型提供了一个可重复的硬证据。"
 ---
 
 # An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems
@@ -18,7 +18,7 @@ summary: "An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inert
 
 ## 一句话定义
 
-An Empirical Evaluation of Four Off-the-Shelf Proprietary Visual-Inertial Odometry Systems 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+不是又一篇新算法，而是一篇「实测对比」基准论文：作者用同一只「手提四传感器架」、同一组室内外轨迹，把四款最常被人形 / 移动机器人引用的商用闭源 VIO拉到同一条尺子上量——结论是 Apple ARKit 综合最稳最准（相对位姿误差 ≈ 0.02 m/s 漂移），但只能跑 iOS、对 ROS / Linux 不友好；T265 和 ZED 2 虽然 ROS 友好，但分别栽在「单目尺度漂移」和「旋转估计破坏正交性」上，给后续工程选型提供了一个可重复的硬证据。
 
 ## 英文缩写速查
 

@@ -8,7 +8,7 @@
 - **分类：** 02_Motion_Retargeting
 - **arXiv：** <https://arxiv.org/abs/2605.06593v1>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 针对传统几何重定向需要 手工接触模板 / 大量调参、且仍产生 脚滑、自碰、动力学不可行 等问题，ReActor 提出 物理感知、RL 内嵌的双层框架：用户只给 稀疏语义刚体对应 与名义姿态对齐，系统自动搜索一组 有界偏移参数 把源运动 $\mathbf{m}_t$ 映到参数化参考 $\mathbf{g}_t(\mathbf{p})$；下层策略在仿真里跟踪 $\mathbf{g}_t$，上层最小化 $\mathbf{g}$ 与仿真 rollout 状态 $\mathbf{s}_t$ 的误差。论文在 两台人形 + 四足 上展示跨大差异本体的重定向，并分析近似梯度与泛化行为。
 
 ## 核心摘录（策展，非全文）
 

@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2512.17183>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 论文把"机器人讲话的同时做出语义对齐的手势"这件事拆成 语义检索 + 自回归生成 + 人到机重定向 + 全身跟踪 四段流水线：用 LLM 从语料库里检索与语义高度相关的人体手势片段、用 Motion-GPT 自回归补全长时间序列、用 General Motion Retargeting (GMR) 把人体动作迁到 Unitree G1 上，最后用强化学习训出的 MotionTracker 把这套带有语义的参考动作在真机上稳定、实时地跟出来。
 
 ## 核心摘录（策展，非全文）
 

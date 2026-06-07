@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.02331>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** TTT-Parkour 把"对一段陌生地形拍 RGB-D 视频 → 前馈式快速重建出可仿真的网格 → 在仿真里对预训练好的跑酷策略做 ≤10 分钟的微调 → 直接零样本部署回真机"做成了端到端流水线，让 Unitree G1 能在楔块、桩柱、箱子、梯形台、窄梁等极端地形上稳定通行，摆脱了"只能在程序化生成的简单地形上训练"这一根本限制。
 
 ## 核心摘录（策展，非全文）
 

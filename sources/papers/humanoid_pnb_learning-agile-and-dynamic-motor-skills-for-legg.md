@@ -9,7 +9,7 @@
 - **子分类：** 仿真到现实与基座模型
 - **arXiv：** <https://arxiv.org/abs/1901.08652>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 把"电机 + 减速箱 + 控制器 + 通信延迟"全部用一个 LSTM 致动器网络（actuator network） 离线辨识，然后在 RaiSim 里以神经网络代替传统刚体力学做高速 RL 训练，最终把策略零样本搬到 ANYmal 上，让它能跟随速度指令、奔跑（最高 1.5 m/s，比厂家 MPC 快 25%）以及从任意倒地姿态自主翻身爬起——首次系统性证明 sim-to-real RL 可以在真实四足上稳定落地。
 
 ## 核心摘录（策展，非全文）
 

@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_domain-randomization-for-transferring-deep-neura.md
-summary: "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "在视觉参数随机化的仿真环境里训练神经网络，让真实世界看起来只是仿真的\"另一个变体\"，从而无需任何真实数据即可完成 sim-to-real 迁移。"
 ---
 
 # Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World
@@ -18,7 +18,7 @@ summary: "Domain Randomization for Transferring Deep Neural Networks from Simula
 
 ## 一句话定义
 
-Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+在视觉参数随机化的仿真环境里训练神经网络，让真实世界看起来只是仿真的"另一个变体"，从而无需任何真实数据即可完成 sim-to-real 迁移。
 
 ## 英文缩写速查
 

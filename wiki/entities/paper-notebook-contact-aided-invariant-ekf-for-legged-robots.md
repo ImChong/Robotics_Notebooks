@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_contact-aided-invariant-ekf-for-legged-robots.md
-summary: "Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "本论文将李群（Lie Group）理论中的不变卡尔曼滤波（InEKF）应用于足式机器人，通过融合 IMU 和腿部运动学信息，实现了比传统 EKF 更准确、收敛更快的状态估计。"
 ---
 
 # Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation
@@ -18,7 +18,7 @@ summary: "Contact-Aided Invariant Extended Kalman Filtering for Legged Robot Sta
 
 ## 一句话定义
 
-Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+本论文将李群（Lie Group）理论中的不变卡尔曼滤波（InEKF）应用于足式机器人，通过融合 IMU 和腿部运动学信息，实现了比传统 EKF 更准确、收敛更快的状态估计。
 
 ## 英文缩写速查
 

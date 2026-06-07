@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_latent.md
-summary: "LATENT：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "LATENT 只用 5 小时、3 × 5 米小场地采集的\"业余网球动作碎片\"，就把 Unitree G1 训练成会在真人对打下完成连续多拍回合的\"人形网球手\"——核心办法是先用动作跟踪器学出一个可修正的 latent 动作空间，再让高层策略在该空间里做 \"修正 + 组合\"，并用 Latent Action Barrier (LAB) 约束策略别跑出先验分布。"
 ---
 
 # LATENT
@@ -18,7 +18,7 @@ summary: "LATENT：Humanoid Paper Notebooks 深读笔记索引实体；待从笔
 
 ## 一句话定义
 
-LATENT 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+LATENT 只用 5 小时、3 × 5 米小场地采集的"业余网球动作碎片"，就把 Unitree G1 训练成会在真人对打下完成连续多拍回合的"人形网球手"——核心办法是先用动作跟踪器学出一个可修正的 latent 动作空间，再让高层策略在该空间里做 "修正 + 组合"，并用 Latent Action Barrier (LAB) 约束策略别跑出先验分布。
 
 ## 英文缩写速查
 

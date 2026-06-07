@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_quantum-deep-rl-for-humanoid-robot-navigation.md
-summary: "Quantum deep reinforcement learning for humanoid robot navigation task：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经典 SAC 框架里，把 actor 的核心网络换成参数化量子电路（PQC，编码电路 + 变分电路），再用一层经典网络把量子测量结果映射成连续动作的均值与方差，从而不依赖传统建图 / 规划，直接在高维状态空间里学控制——并首次在 MuJoCo 的 Humanoid-v4 / Walker2d-v4 这类大观测、大动作的人形 / 双足任务上跑通量子深度 RL。"
 ---
 
 # Quantum deep reinforcement learning for humanoid robot navigation task
@@ -18,7 +18,7 @@ summary: "Quantum deep reinforcement learning for humanoid robot navigation task
 
 ## 一句话定义
 
-Quantum deep reinforcement learning for humanoid robot navigation task 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+本文提出 变分量子 Soft Actor-Critic（QuantumSAC）：在经典 SAC 框架里，把 actor 的核心网络换成参数化量子电路（PQC，编码电路 + 变分电路），再用一层经典网络把量子测量结果映射成连续动作的均值与方差，从而不依赖传统建图 / 规划，直接在高维状态空间里学控制——并首次在 MuJoCo 的 Humanoid-v4 / Walker2d-v4 这类大观测、大动作的人形 / 双足任务上跑通量子深度 RL。
 
 ## 英文缩写速查
 

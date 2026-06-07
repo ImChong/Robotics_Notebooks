@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2602.06643>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** HuMI 提出了一个便携、无机器人的演示系统，通过捕捉人类全身动作进行高低层分层控制学习，极大提高了人形机器人数据收集效率并在真实环境中实现了包括深蹲拾取、投掷等高难度全身任务。
 
 ## 核心摘录（策展，非全文）
 

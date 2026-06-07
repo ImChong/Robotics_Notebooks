@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_lessmimic-long-horizon-humanoid-interaction-with.md
-summary: "LessMimic：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——不依赖运动参考，单个策略就能在 0.4× ～ 1.6× 尺度变化下完成抓取、坐立、推拉、搬运，并支持最长 40 个连续技能的长时序组合。"
 ---
 
 # LessMimic
@@ -18,7 +18,7 @@ summary: "LessMimic：Humanoid Paper Notebooks 深读笔记索引实体；待从
 
 ## 一句话定义
 
-LessMimic 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+LessMimic 用距离场（Distance Field, DF）作为统一的交互表征——不依赖运动参考，单个策略就能在 0.4× ～ 1.6× 尺度变化下完成抓取、坐立、推拉、搬运，并支持最长 40 个连续技能的长时序组合。
 
 ## 英文缩写速查
 

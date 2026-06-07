@@ -9,7 +9,7 @@
 - **子分类：** 行走经典
 - **arXiv：** <https://arxiv.org/abs/2406.10759>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** 用 RL 在仿真里练「神谕」地形策略（scandots 地形编码 + GRU 状态估计），再通过 DAgger 把感知蒸馏成机载深度图 CNN，在 无参考轨迹、无抬脚奖励项 的前提下，让人形在多种跑酷障碍上 零样本 sim-to-real，并能跟随摇杆转向命令；手臂通道可覆盖以迁移到移动操作。
 
 ## 核心摘录（策展，非全文）
 

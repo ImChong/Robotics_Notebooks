@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_learning-agile-and-dynamic-motor-skills-for-legg.md
-summary: "Learning Agile and Dynamic Motor Skills for Legged Robots：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把\"电机 + 减速箱 + 控制器 + 通信延迟\"全部用一个 LSTM 致动器网络（actuator network） 离线辨识，然后在 RaiSim 里以神经网络代替传统刚体力学做高速 RL 训练，最终把策略零样本搬到 ANYmal 上，让它能跟随速度指令、奔跑（最高 1.5 m/s，比厂家 MPC 快 25%）以及从任意倒地姿态自主翻身爬起——首次系统性证明 sim-to-real RL 可以在真实四足上稳定落地。"
 ---
 
 # Learning Agile and Dynamic Motor Skills for Legged Robots
@@ -18,7 +18,7 @@ summary: "Learning Agile and Dynamic Motor Skills for Legged Robots：Humanoid P
 
 ## 一句话定义
 
-Learning Agile and Dynamic Motor Skills for Legged Robots 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把"电机 + 减速箱 + 控制器 + 通信延迟"全部用一个 LSTM 致动器网络（actuator network） 离线辨识，然后在 RaiSim 里以神经网络代替传统刚体力学做高速 RL 训练，最终把策略零样本搬到 ANYmal 上，让它能跟随速度指令、奔跑（最高 1.5 m/s，比厂家 MPC 快 25%）以及从任意倒地姿态自主翻身爬起——首次系统性证明 sim-to-real RL 可以在真实四足上稳定落地。
 
 ## 英文缩写速查
 

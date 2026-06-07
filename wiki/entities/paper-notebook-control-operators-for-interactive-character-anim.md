@@ -8,7 +8,7 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_control-operators-for-interactive-character-anim.md
-summary: "Control Operators for Interactive Character Animation：Humanoid Paper Notebooks 深读笔记索引实体；待从笔记与论文 PDF 深化归纳。"
+summary: "把「控制输入 → 神经网络」这件原本需要 ML 专家手工设计的事，拆解成一组有语义、可组合的「控制算子（Control Operator）」：每个算子对设计师来说是一个直观概念（\"沿这条轨迹走\"\"朝这个目标看\"\"按摇杆方向/速度移动\"\"在某时刻到达某位置\"），对网络来说则对应一段固定的编码结构。把若干算子拼起来，非技术用户就能自己训练出带多技能、多控制模式的学习型角色控制器——本文在 Learned Motion Matching 变体 和一个新的流匹配（flow-matching）自回归模型上都做了演示，并通过工业界从业者的用户研究验证其易用性。"
 ---
 
 # Control Operators for Interactive Character Animation
@@ -17,7 +17,7 @@ summary: "Control Operators for Interactive Character Animation：Humanoid Paper
 
 ## 一句话定义
 
-Control Operators for Interactive Character Animation 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为首要编译来源。
+把「控制输入 → 神经网络」这件原本需要 ML 专家手工设计的事，拆解成一组有语义、可组合的「控制算子（Control Operator）」：每个算子对设计师来说是一个直观概念（"沿这条轨迹走""朝这个目标看""按摇杆方向/速度移动""在某时刻到达某位置"），对网络来说则对应一段固定的编码结构。把若干算子拼起来，非技术用户就能自己训练出带多技能、多控制模式的学习型角色控制器——本文在 Learned Motion Matching 变体 和一个新的流匹配（flow-matching）自回归模型上都做了演示，并通过工业界从业者的用户研究验证其易用性。
 
 ## 英文缩写速查
 

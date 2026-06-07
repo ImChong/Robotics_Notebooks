@@ -8,7 +8,7 @@
 - **分类：** 04_Loco-Manipulation_and_WBC
 - **arXiv：** <https://arxiv.org/abs/2603.10306>
 - **入库日期：** 2026-06-07
-- **一句话说明：** 来自 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的深读笔记索引；正文以笔记站与 arXiv 为准。
+- **一句话说明：** SteadyTray 把"端托盘 + 走路"这件高耦合的活，显式拆成两层 RL：底层用一个稳健的人形行走策略当老师，上层挂一个残差模块专门抵消步态引起的末端抖动；通过四阶段课程（预训练 → 托盘微调 → 残差教师 → 学生蒸馏），在 Unitree G1 上做到 96.9% 速度跟踪成功率 / 74.5% 抗扰鲁棒性，并且零样本 sim-to-real 落地真机。
 
 ## 核心摘录（策展，非全文）
 
