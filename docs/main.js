@@ -2085,6 +2085,19 @@
     });
   }
 
+  function buildInternalLinkCardMeta(page, id, options) {
+    var typeLabel = (page && page.type) || (options && options.defaultType) || 'detail_page';
+    var extra = options && typeof options.metaExtra === 'function' ? options.metaExtra(id, page) : '';
+    return extra ? typeLabel + ' · ' + extra : typeLabel;
+  }
+
+  function buildInternalLinkTitle(id, page, options) {
+    if (options && typeof options.getTitle === 'function') {
+      return options.getTitle(id, page) || id;
+    }
+    return (page && page.title) || id;
+  }
+
   function renderInternalLinks(container, ids, detailPages, options) {
     if (!container) return;
     const emptyText = (options && options.emptyText) || '暂无内部关联项';
@@ -2098,14 +2111,17 @@
       const page = detailPages[id] || {};
       const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
       const buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
+      const summaryFallback = (options && options.summaryFallback) || '当前关联项暂无摘要';
+      const chipExtra = options && typeof options.chipExtra === 'function' ? options.chipExtra(id, page) : '';
       return [
         '<article class="card data-card">',
         '  <div>',
-        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(page.title || id) + '</a></h3>',
-        '    <p class="card-meta">' + escapeHtml(page.type || 'detail_page') + '</p>',
-        '    <p>' + escapeHtml(page.summary || '当前关联项暂无摘要') + '</p>',
+        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(buildInternalLinkTitle(id, page, options)) + '</a></h3>',
+        '    <p class="card-meta">' + escapeHtml(buildInternalLinkCardMeta(page, id, options)) + '</p>',
+        '    <p>' + escapeHtml(page.summary || summaryFallback) + '</p>',
         '  </div>',
         '  <div class="chip-list">',
+        chipExtra,
         '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
         '  </div>',
         '</article>'
@@ -2119,33 +2135,21 @@
     if (!container) return;
     var pathToId = buildPathToDetailIdIndex(detailPages);
     var hubs = Array.isArray(topHubs) ? topHubs : [];
-    var parts = [];
+    var ids = [];
+    var hubMeta = {};
     for (var i = 0; i < hubs.length; i++) {
       var hub = hubs[i];
       var path = hub && hub.id;
       if (!path) continue;
       var detailId = pathToId[path];
       if (!detailId) continue;
-      var page = resolveDetailPage(detailId, detailPages) || detailPages[detailId] || {};
-      var degree = hub.degree != null ? Number(hub.degree) : 0;
-      var title = page.title || hub.label || detailId;
-      var href = page.type === 'roadmap_page' ? roadmapHref(detailId) : detailHref(detailId);
-      var buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
-      parts.push([
-        '<article class="card data-card">',
-        '  <div>',
-        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(title) + '</a></h3>',
-        '    <p class="card-meta">' + escapeHtml(page.type || 'wiki_page') + '</p>',
-        '    <p>' + escapeHtml(page.summary || '当前页面暂无摘要') + '</p>',
-        '  </div>',
-        '  <div class="chip-list">',
-        '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(degree)) + '</span>',
-        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
-        '  </div>',
-        '</article>'
-      ].join(''));
+      ids.push(detailId);
+      hubMeta[detailId] = {
+        label: hub.label || '',
+        degree: hub.degree != null ? Number(hub.degree) : 0
+      };
     }
-    if (!parts.length) {
+    if (!ids.length) {
       container.innerHTML = [
         '<article class="card"><p>',
         '无法从链接图统计中匹配到详情页条目。请稍后再试，或前往 ',
@@ -2155,8 +2159,19 @@
       removeLoadingState(container);
       return;
     }
-    container.innerHTML = parts.join('');
-    removeLoadingState(container);
+    renderInternalLinks(container, ids, detailPages, {
+      defaultType: 'wiki_page',
+      summaryFallback: '当前页面暂无摘要',
+      getTitle: function (id, page) {
+        var meta = hubMeta[id] || {};
+        return (page && page.title) || meta.label || id;
+      },
+      chipExtra: function (id) {
+        var meta = hubMeta[id] || {};
+        if (meta.degree == null) return '';
+        return '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(meta.degree)) + '</span>\n';
+      }
+    });
   }
 
   function renderSourceCards(container, links, emptyText) {
