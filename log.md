@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | schema + wiki — Paper Notebooks 全量分类父节点与 64 篇未映射论文 sources/实体入库
+
+- 工具：[scripts/bootstrap_paper_notebook_knowledge.py](scripts/bootstrap_paper_notebook_knowledge.py)；`make paper-notebook-bootstrap`；完整映射 [schema/paper-notebook-wiki-full-map.yml](schema/paper-notebook-wiki-full-map.yml)（137/137）
+- 父节点：[wiki/overview/humanoid-paper-notebooks-index.md](wiki/overview/humanoid-paper-notebooks-index.md) + 14 类 `wiki/overview/paper-notebook-category-*.md`（03 类含 5 个子分类段落）
+- 新增 64 组 `sources/papers/humanoid_pnb_*.md` + `wiki/entities/paper-notebook-*.md` 索引实体；既有 73 篇保留原深度 wiki 并挂入分类子节点
+
 ## [2026-06-07] structural | schema + wiki — 同步 RL Sim2Sim Demo 在线演示链接至对应 wiki 节点
 
 - 工具：[scripts/sync_rl_sim2sim_demo_links.py](scripts/sync_rl_sim2sim_demo_links.py)；`make rl-sim2sim-demo-links`；映射 [schema/rl-sim2sim-demo-wiki-map.yml](schema/rl-sim2sim-demo-wiki-map.yml) + [schema/rl-sim2sim-demo-index.json](schema/rl-sim2sim-demo-index.json)

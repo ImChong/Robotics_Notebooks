@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SCHEMA_DIR = ROOT / "schema"
 INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
 MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-map.yml"
+FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
 OVERRIDES_PATH = SCHEMA_DIR / "paper-notebook-wiki-overrides.yml"
 AUTO_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-auto-map.yml"
 PAPERS_JSON_URL = (
@@ -72,7 +73,7 @@ def build_paper_index(force_refresh: bool = False) -> list[dict]:
         if "/todos/" in path or "PROGRESS" in path or path.endswith("README.md"):
             continue
         folder = "/".join(path.split("/")[:-1])
-        if folder in seen_folders:
+        if folder in seen_folders or folder == "papers":
             continue
         seen_folders.add(folder)
         html_path = path.rsplit(".", 1)[0] + ".html"
@@ -265,11 +266,26 @@ def fix_stale_urls(papers: list[dict], dry_run: bool) -> int:
     return changed
 
 
+def load_full_map() -> dict[str, list[str]]:
+    if not FULL_MAP_PATH.exists():
+        return {}
+    data = yaml.safe_load(FULL_MAP_PATH.read_text(encoding="utf-8")) or {}
+    overrides = data.get("overrides", {})
+    result: dict[str, list[str]] = {}
+    for key, value in overrides.items():
+        result[key] = [value] if isinstance(value, str) else list(value)
+    return result
+
+
 def build_mapping(papers: list[dict], wiki_index: dict) -> dict[str, list[str]]:
+    full = load_full_map()
     manual = load_manual_map()
     mapping: dict[str, list[str]] = {}
     for paper in papers:
         key = paper["dir"]
+        if key in full:
+            mapping[key] = full[key]
+            continue
         if key in manual:
             mapping[key] = manual[key]
             continue

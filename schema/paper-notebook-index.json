@@ -1,13 +1,5 @@
 [
   {
-    "folder": "papers",
-    "dir": "papers",
-    "title": "papers",
-    "arxiv": null,
-    "url": "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/DAILY_SUMMARY_LOG.html",
-    "category": ""
-  },
-  {
     "folder": "papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators",
     "dir": "ADD_Adversarial_Differential_Discriminators",
     "title": "ADD: Adversarial Disentanglement and Distillation",
