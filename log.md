@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] ingest | sources/papers/esi_bench_arxiv_2605_18746.md — 补强 ESI-Bench 动作空间/基准对比并交叉 VLN
+
+- 原始资料：[sources/papers/esi_bench_arxiv_2605_18746.md](sources/papers/esi_bench_arxiv_2605_18746.md)（<https://arxiv.org/abs/2605.18746>）、[sources/sites/esi-bench-project.md](sources/sites/esi-bench-project.md)（<https://esi-bench.github.io/>）、[sources/repos/esi_bench.md](sources/repos/esi_bench.md)（<https://github.com/ESI-Bench/ESI-Bench>）
+- 消化实体：[wiki/entities/esi-bench.md](wiki/entities/esi-bench.md)（任务形式化、高层动作空间、与 VSI-Bench/EmbodiedBench 定位表）
+- 交叉补强：[wiki/concepts/3d-spatial-vqa.md](wiki/concepts/3d-spatial-vqa.md)、[wiki/tasks/vision-language-navigation.md](wiki/tasks/vision-language-navigation.md)
+
 ## [2026-06-07] ingest | sources/papers/eth-g1-diffusion.md — Learning Whole-Body Humanoid Locomotion（arXiv:2604.17335）扩散生成 + RL 全身跟踪真机 G1
 
 - 原始资料：[sources/papers/eth-g1-diffusion.md](sources/papers/eth-g1-diffusion.md)、[sources/sites/wholebody-locomotion.md](sources/sites/wholebody-locomotion.md)

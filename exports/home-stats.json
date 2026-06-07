@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-07",
   "node_count": 772,
-  "edge_count": 5330,
+  "edge_count": 5332,
   "coverage": {
     "covered": 756,
     "total": 770,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/esi-bench.md",
+      "detail_id": "entity-esi-bench",
+      "label": "ESI-Bench（具身空间智能基准）",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "detail_id": "wiki-concepts-3d-spatial-vqa",
+      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+      "type": "concept",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md",
       "detail_id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-07",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-autoodom.md",
-      "detail_id": "entity-paper-notebook-autoodom",
-      "label": "AutoOdom",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-behavior-foundation-model-for-humanoid-robots.md",
-      "detail_id": "entity-paper-notebook-behavior-foundation-model-for-humanoid-robots",
-      "label": "Behavior Foundation Model for Humanoid Robots",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md",
-      "detail_id": "entity-paper-notebook-benchmarking-humanoid-imitation-learning-with-mo",
-      "label": "Benchmarking Humanoid Imitation Learning with Motion Difficulty",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md",
-    "detail_id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
-    "label": "Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking",
+    "path": "wiki/entities/esi-bench.md",
+    "detail_id": "entity-esi-bench",
+    "label": "ESI-Bench（具身空间智能基准）",
     "type": "entity",
     "recency": "2026-06-07",
     "source": "log.md"

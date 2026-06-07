@@ -2,7 +2,7 @@
 type: entity
 tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm]
 status: complete
-updated: 2026-05-22
+updated: 2026-06-07
 related:
   - ../concepts/3d-spatial-vqa.md
   - ../tasks/vision-language-navigation.md
@@ -28,10 +28,11 @@ summary: "ESI-Bench（arXiv:2605.18746）在 OmniGibson 上评测具身空间智
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| SOTA | State of the Art | 当前最优水平 |
+| ESI | Embodied Spatial Intelligence | 具身空间智能：在感知–行动环中推理隐藏空间结构 |
+| MLLM | Multimodal Large Language Model | 多模态大语言模型，本基准主要评测对象 |
 | VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
-| API | Application Programming Interface | 应用程序编程接口 |
 | VLA | Vision-Language-Action | 视觉-语言-动作多模态基础策略方向 |
+| GT | Ground Truth | 真值；oracle 协议沿最优行动轨迹渲染观测 |
 
 ## 为什么重要
 
@@ -65,6 +66,28 @@ summary: "ESI-Bench（arXiv:2605.18746）在 OmniGibson 上评测具身空间智
 | 时间与行动 | Temporal Scene、Action Sequencing |
 
 完整子类列表与能力说明见 [项目页 Task Taxonomy](https://esi-bench.github.io/)。
+
+**任务形式化（论文 §3.1）：** 每实例为 \((\mathcal{S}, p_0, q, y^*)\)——**BEHAVIOR-1K** 场景 \(\mathcal{S}\)、智能体初始位姿 \(p_0\)、自然语言空间问题 \(q\) 与真值答案 \(y^*\)。智能体在 **\(T_{\max}=30\)** 步内交替 **egocentric 观测** 与 **高层离散行动**，最终以 `answer(ŷ, c)` 提交答案与置信度 \(c\)。
+
+### 智能体动作空间（高层 API）
+
+| 类型 | 动作 | 说明 |
+|------|------|------|
+| **Locomotion** | `move_forward` / `move_backward` / `move_left` / `move_right` / `move_up` / `move_down` | 沿视轴或侧向/垂直平移 |
+| **Perception** | `turn_left` / `turn_right` / `turn_up` / `turn_down` | 水平/垂直转头 |
+| **Manipulation** | `pick_up` / `put inside` / `put on` / `fill with water` / `pour` | 抓取、放置、注水、倾倒等交互 |
+| **Terminal** | `answer(ŷ, c)` | 提交最终答案与置信度 |
+
+评测 API 驱动 **GPT-5、Gemini 3.1** 等 MLLM 逐步选行动；亦支持 **VGGT 重建 3D** 或 **真值 3D** 作为额外输入做对照。
+
+### 与相关基准的定位（论文 Table 1 归纳）
+
+| 基准 | 具身环境 | 主动感知 | 动作空间 | 隐藏状态 | 与 ESI-Bench 关系 |
+|------|----------|----------|----------|----------|-------------------|
+| VSI-Bench / MMSI-Bench | ✗ | ✗ | 仅 P | ✗ | 被动 egocentric 空间 QA；**无行动选择** |
+| EmbodiedBench / EmbodiedEval | ✓ | ✓ | L+P+M | ✗ | 导航/操作/QA 综合，少测 **遮挡/容纳/透明** 等隐藏空间属性 |
+| CHAIN | ✓ | ✓ | P+M | ✓ | 机械谜题闭环物理推理；任务域更窄 |
+| **ESI-Bench** | ✓ | ✓ | **L+P+M** | **✓** | **10 类空间 faculty** + **主动传感** + **隐藏结构** 三合一 |
 
 ## 流程总览（感知–行动环）
 
