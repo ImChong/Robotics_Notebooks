@@ -259,7 +259,9 @@ def fix_stale_urls(papers: list[dict], dry_run: bool) -> int:
             changed += 1
             if not dry_run:
                 wiki_path.write_text(new_text, encoding="utf-8")
-            print(f"{'would fix urls in' if dry_run else 'fixed urls in'}: {wiki_path.relative_to(ROOT)}")
+            print(
+                f"{'would fix urls in' if dry_run else 'fixed urls in'}: {wiki_path.relative_to(ROOT)}"
+            )
     return changed
 
 
@@ -279,9 +281,15 @@ def build_mapping(papers: list[dict], wiki_index: dict) -> dict[str, list[str]]:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--refresh-index", action="store_true", help="Re-download paper notebook index")
-    parser.add_argument("--dry-run", action="store_true", help="Print planned edits without writing files")
-    parser.add_argument("--write-map", action="store_true", help="Write auto-generated mapping to schema YAML")
+    parser.add_argument(
+        "--refresh-index", action="store_true", help="Re-download paper notebook index"
+    )
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print planned edits without writing files"
+    )
+    parser.add_argument(
+        "--write-map", action="store_true", help="Write auto-generated mapping to schema YAML"
+    )
     args = parser.parse_args()
 
     papers = build_paper_index(force_refresh=args.refresh_index)

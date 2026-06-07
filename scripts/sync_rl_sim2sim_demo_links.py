@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
 import sys
 from pathlib import Path
 
@@ -83,7 +82,9 @@ def inject_link(wiki_rel: str, line: str, entry: dict, dry_run: bool) -> bool:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--dry-run", action="store_true", help="Print planned edits without writing files")
+    parser.add_argument(
+        "--dry-run", action="store_true", help="Print planned edits without writing files"
+    )
     args = parser.parse_args()
 
     entries = load_index()
