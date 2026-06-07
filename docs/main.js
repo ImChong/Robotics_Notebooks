@@ -2112,6 +2112,7 @@
       const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
       const buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
       const summaryFallback = (options && options.summaryFallback) || '当前关联项暂无摘要';
+      const chipExtra = options && typeof options.chipExtra === 'function' ? options.chipExtra(id, page) : '';
       return [
         '<article class="card data-card">',
         '  <div>',
@@ -2120,6 +2121,7 @@
         '    <p>' + escapeHtml(page.summary || summaryFallback) + '</p>',
         '  </div>',
         '  <div class="chip-list">',
+        chipExtra,
         '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
         '  </div>',
         '</article>'
@@ -2164,9 +2166,10 @@
         var meta = hubMeta[id] || {};
         return (page && page.title) || meta.label || id;
       },
-      metaExtra: function (id) {
+      chipExtra: function (id) {
         var meta = hubMeta[id] || {};
-        return meta.degree != null ? '互链度 ' + meta.degree : '';
+        if (meta.degree == null) return '';
+        return '    <span class="data-chip" title="无向边总数（入链+出链）">互链度 ' + escapeHtml(String(meta.degree)) + '</span>\n';
       }
     });
   }
