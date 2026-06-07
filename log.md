@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] ingest | sources/papers/eth-g1-diffusion.md — Learning Whole-Body Humanoid Locomotion（arXiv:2604.17335）扩散生成 + RL 全身跟踪真机 G1
+
+- 原始资料：[sources/papers/eth-g1-diffusion.md](sources/papers/eth-g1-diffusion.md)、[sources/sites/wholebody-locomotion.md](sources/sites/wholebody-locomotion.md)
+- 消化实体：[wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)（由 42 篇栈索引级升格为全文消化）
+- 交叉补强：[wiki/methods/diffusion-motion-generation.md](wiki/methods/diffusion-motion-generation.md)、[wiki/tasks/humanoid-locomotion.md](wiki/tasks/humanoid-locomotion.md)、[wiki/entities/unitree-g1.md](wiki/entities/unitree-g1.md)
+
 ## [2026-06-07] ingest | sources/sites/blender-org.md、sources/repos/blender.md — Blender 开源 DCC 官网与官方仓库；wiki/entities/blender.md
 
 - 原始资料：[sources/sites/blender-org.md](sources/sites/blender-org.md)、[sources/repos/blender.md](sources/repos/blender.md)

@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-07",
   "node_count": 772,
-  "edge_count": 5319,
+  "edge_count": 5330,
   "coverage": {
     "covered": 756,
     "total": 770,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md",
+      "detail_id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
+      "label": "Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/unitree-g1.md",
+      "detail_id": "entity-unitree-g1",
+      "label": "Unitree G1 (人形机器人)",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/blender.md",
       "detail_id": "entity-blender",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-07",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md",
-      "detail_id": "entity-paper-notebook-biomechanical-comparisons-reveal-divergence-of-h",
-      "label": "Biomechanical Comparisons Reveal Divergence of Human and Humanoid Gaits",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-characteristics-management-and-utilization-of-mu.md",
-      "detail_id": "entity-paper-notebook-characteristics-management-and-utilization-of-mu",
-      "label": "Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-contact-aided-invariant-ekf-for-legged-robots.md",
-      "detail_id": "entity-paper-notebook-contact-aided-invariant-ekf-for-legged-robots",
-      "label": "Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimation",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-contrastive-representation-learning-for-adaptive.md",
-      "detail_id": "entity-paper-notebook-contrastive-representation-learning-for-adaptive",
-      "label": "Contrastive Representation Learning for Robust Sim-to-Real Transfer of Adaptive Humanoid Locomotion",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/blender.md",
-    "detail_id": "entity-blender",
-    "label": "Blender（开源 3D 创作套件）",
+    "path": "wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md",
+    "detail_id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
+    "label": "Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking",
     "type": "entity",
     "recency": "2026-06-07",
     "source": "log.md"
