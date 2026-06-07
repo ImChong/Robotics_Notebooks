@@ -38,7 +38,7 @@ Humanoid Parkour Learning 的人形机器人学习论文条目，以 Paper Noteb
 | 字段 | 内容 |
 |------|------|
 | 分类 | 03_High_Impact_Selection |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html> |
 | arXiv | <https://arxiv.org/abs/2406.10759> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Humanoid Parkour Learning 的人形机器人学习论文条目，以 Paper Noteb
 ## 参考来源
 
 - [humanoid_pnb_humanoid-parkour-learning.md](../../sources/papers/humanoid_pnb_humanoid-parkour-learning.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html>
 - 论文：<https://arxiv.org/abs/2406.10759>
 
 ## 推荐继续阅读

@@ -38,7 +38,7 @@ Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-B
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html> |
 | arXiv | <https://arxiv.org/abs/2602.02960> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Embodiment-Aware Generalist Specialist Distillation for Unified Humanoid Whole-B
 ## 参考来源
 
 - [humanoid_pnb_embodiment-aware-generalist-specialist-distillat.md](../../sources/papers/humanoid_pnb_embodiment-aware-generalist-specialist-distillat.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B/Embodiment-Aware_Generalist_Specialist_Distillation_for_Unified_Humanoid_Whole-B.html>
 - 论文：<https://arxiv.org/abs/2602.02960>
 
 ## 推荐继续阅读

@@ -38,7 +38,7 @@ Humanoid Manipulation Interface 的人形机器人学习论文条目，以 Paper
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html> |
 | arXiv | <https://arxiv.org/abs/2602.06643> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Humanoid Manipulation Interface 的人形机器人学习论文条目，以 Paper
 ## 参考来源
 
 - [humanoid_pnb_humanoid-manipulation-interface.md](../../sources/papers/humanoid_pnb_humanoid-manipulation-interface.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre/Humanoid_Manipulation_Interface__Humanoid_Whole-Body_Manipulation_from_Robot-Fre.html>
 - 论文：<https://arxiv.org/abs/2602.06643>
 
 ## 推荐继续阅读

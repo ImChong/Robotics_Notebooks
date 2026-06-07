@@ -38,7 +38,7 @@ AutoOdom 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记
 | 字段 | 内容 |
 |------|------|
 | 分类 | 09_State_Estimation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio.html> |
 | arXiv | <https://arxiv.org/abs/2511.18857> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ AutoOdom 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记
 ## 参考来源
 
 - [humanoid_pnb_autoodom.md](../../sources/papers/humanoid_pnb_autoodom.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio/AutoOdom__Learning_Auto-regressive_Proprioceptive_Odometry_for_Legged_Locomotio.html>
 - 论文：<https://arxiv.org/abs/2511.18857>
 
 ## 推荐继续阅读

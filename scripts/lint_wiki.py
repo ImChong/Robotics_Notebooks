@@ -199,6 +199,7 @@ def _empty_results() -> dict[str, Any]:
         "method_missing_sections": [],
         "entity_missing_outgoing": [],
         "wikilink_syntax": [],
+        "unclosed_autolinks": [],
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
         "paper_missing_three_sections": [],
@@ -271,6 +272,10 @@ def _check_per_page(
             if re.match(r"^[\d\.\-\s,]+$", token):
                 continue
             results["wikilink_syntax"].append(f"{rel}: {m.group(0)}")
+
+        for line_no, line in enumerate(wl_stripped.splitlines(), start=1):
+            if re.search(r"<https?://[^\s>]+(?=\s*\||\s*$)", line):
+                results["unclosed_autolinks"].append(f"{rel}:{line_no}: {line.strip()}")
 
         stripped = strip_code_blocks(content)
         for m in re.finditer(r"\[([^\]]*)\]\(([^)]+sources/[^)]+\.md)[^)]*\)", stripped):
@@ -849,6 +854,11 @@ def format_report(results: dict[str, Any]) -> str:
         ),
         ("broken_links", "断链（内链目标不存在）", "❌"),
         ("wikilink_syntax", "禁止的 [[...]] wikilink 写法（请用标准 Markdown）", "❌"),
+        (
+            "unclosed_autolinks",
+            "未闭合的 <https://...> 自动链接（表格/列表行缺少结尾 >）",
+            "❌",
+        ),
         ("broken_source_refs", "引用了不存在的 sources/ 文件", "❌"),
         ("sources_orphans", "Sources 孤儿（sources/papers 死链）", "❌"),
         ("stale_pages", "陈旧页面（sources 比 wiki 新，建议 review）", "⚠️"),

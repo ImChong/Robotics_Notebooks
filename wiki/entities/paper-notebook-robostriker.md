@@ -38,7 +38,7 @@ RoboStriker 的人形机器人学习论文条目，以 Paper Notebooks 深读笔
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html> |
 | arXiv | <https://arxiv.org/abs/2601.22517> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ RoboStriker 的人形机器人学习论文条目，以 Paper Notebooks 深读笔
 ## 参考来源
 
 - [humanoid_pnb_robostriker.md](../../sources/papers/humanoid_pnb_robostriker.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing/RoboStriker__Hierarchical_Decision-Making_for_Autonomous_Humanoid_Boxing.html>
 - 论文：<https://arxiv.org/abs/2601.22517>
 
 ## 推荐继续阅读

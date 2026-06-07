@@ -38,7 +38,7 @@ ULTRA 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为
 | 字段 | 内容 |
 |------|------|
 | 分类 | 04_Loco-Manipulation_and_WBC |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation.html> |
 | arXiv | <https://arxiv.org/abs/2603.03279> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ ULTRA 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为
 ## 参考来源
 
 - [humanoid_pnb_ultra-unified-multimodal-control-for-autonomous.md](../../sources/papers/humanoid_pnb_ultra-unified-multimodal-control-for-autonomous.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation/ULTRA_Unified_Multimodal_Control_for_Autonomous_Humanoid_Whole-Body_Loco-Manipulation.html>
 - 论文：<https://arxiv.org/abs/2603.03279>
 
 ## 推荐继续阅读

@@ -38,7 +38,7 @@ Benchmarking Humanoid Imitation Learning with Motion Difficulty 的人形机器�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 11_Simulation_Benchmark |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty.html> |
 | arXiv | <https://arxiv.org/abs/2512.07248> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Benchmarking Humanoid Imitation Learning with Motion Difficulty 的人形机器�
 ## 参考来源
 
 - [humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md](../../sources/papers/humanoid_pnb_benchmarking-humanoid-imitation-learning-with-mo.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty/Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty.html>
 - 论文：<https://arxiv.org/abs/2512.07248>
 
 ## 推荐继续阅读

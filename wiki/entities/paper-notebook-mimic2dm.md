@@ -38,7 +38,7 @@ Mimic2DM 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记
 | 字段 | 内容 |
 |------|------|
 | 分类 | 13_Physics-Based_Animation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html> |
 | arXiv | <https://arxiv.org/abs/2512.08500> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Mimic2DM 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记
 ## 参考来源
 
 - [humanoid_pnb_mimic2dm.md](../../sources/papers/humanoid_pnb_mimic2dm.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control/Mimic2DM__Generating_and_Mimicking_2D_Motions_for_3D_Character_Control.html>
 - 论文：<https://arxiv.org/abs/2512.08500>
 
 ## 推荐继续阅读

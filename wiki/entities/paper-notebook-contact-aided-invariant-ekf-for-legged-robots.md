@@ -38,7 +38,7 @@ Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimat
 | 字段 | 内容 |
 |------|------|
 | 分类 | 09_State_Estimation |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html> |
 | arXiv | <https://arxiv.org/abs/1904.09251> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Contact-Aided Invariant Extended Kalman Filtering for Legged Robot State Estimat
 ## 参考来源
 
 - [humanoid_pnb_contact-aided-invariant-ekf-for-legged-robots.md](../../sources/papers/humanoid_pnb_contact-aided-invariant-ekf-for-legged-robots.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Contact-Aided_Invariant_EKF_for_Legged_Robots/Contact-Aided_Invariant_EKF_for_Legged_Robots.html>
 - 论文：<https://arxiv.org/abs/1904.09251>
 
 ## 推荐继续阅读

@@ -38,7 +38,7 @@ WHOLE 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为
 | 字段 | 内容 |
 |------|------|
 | 分类 | 14_Human_Motion |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html> |
 | arXiv | <https://arxiv.org/abs/2602.22209> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ WHOLE 的人形机器人学习论文条目，以 Paper Notebooks 深读笔记为
 ## 参考来源
 
 - [humanoid_pnb_whole.md](../../sources/papers/humanoid_pnb_whole.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos/WHOLE__World-Grounded_Hand-Object_Lifted_from_Egocentric_Videos.html>
 - 论文：<https://arxiv.org/abs/2602.22209>
 
 ## 推荐继续阅读

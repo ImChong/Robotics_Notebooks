@@ -38,7 +38,7 @@ Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand 的人形机�
 | 字段 | 内容 |
 |------|------|
 | 分类 | 12_Hardware_Design |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html> |
 | arXiv | <https://arxiv.org/abs/2512.24657> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand 的人形机�
 ## 参考来源
 
 - [humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md](../../sources/papers/humanoid_pnb_antagonistic-bowden-cable-actuation-of-a-lightwe.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html>
 - 论文：<https://arxiv.org/abs/2512.24657>
 
 ## 推荐继续阅读

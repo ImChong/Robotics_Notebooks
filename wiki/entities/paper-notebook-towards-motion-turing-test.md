@@ -38,7 +38,7 @@ Towards Motion Turing Test 的人形机器人学习论文条目，以 Paper Note
 | 字段 | 内容 |
 |------|------|
 | 分类 | 11_Simulation_Benchmark |
-| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html |
+| 深读笔记 | <https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html> |
 | arXiv | <https://arxiv.org/abs/2603.06181> |
 
 ## 实验与评测
@@ -53,7 +53,7 @@ Towards Motion Turing Test 的人形机器人学习论文条目，以 Paper Note
 ## 参考来源
 
 - [humanoid_pnb_towards-motion-turing-test.md](../../sources/papers/humanoid_pnb_towards-motion-turing-test.md)
-- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html
+- 深读笔记：<https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html>
 - 论文：<https://arxiv.org/abs/2603.06181>
 
 ## 推荐继续阅读
