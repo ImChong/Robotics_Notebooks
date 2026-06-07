@@ -101,8 +101,10 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [RL Sim2Sim 在线演示：MuJoCo WASM + ONNX](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [机器人论文阅读笔记：HumanoidBench](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/HumanoidBench/HumanoidBench.html)
-- [机器人论文阅读笔记：GRUtopia](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/GRUtopia__Dream_General_Robots_in_a_City_at_Scale/GRUtopia__Dream_General_Robots_in_a_City_at_Scale.html)- Genesis AI（2026）：*The Role of Simulation in Scalable Robotics, Genesis World 1.0, and the Path Forward* — <https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>
+- [机器人论文阅读笔记：GRUtopia](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/GRUtopia__Dream_General_Robots_in_a_City_at_Scale/GRUtopia__Dream_General_Robots_in_a_City_at_Scale.html)
+- Genesis AI（2026）：*The Role of Simulation in Scalable Robotics, Genesis World 1.0, and the Path Forward* — <https://www.genesis.ai/blog/the-role-of-simulation-in-scalable-robotics-genesis-world-10-and-the-path-forward>
 - SimplerEnv 项目页（real-to-sim 评测）：<https://simpler-env.github.io/>
 - Gao et al.（2025）— generalist manipulation 评测 taxonomy（博客引用 [06]）
 

@@ -1,0 +1,34 @@
+[
+  {
+    "id": "homepage",
+    "title": "Robotics RL Sim2Sim Demo",
+    "label": "MuJoCo WASM + ONNX",
+    "url": "https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html",
+    "repo": "https://github.com/ImChong/RL_Sim2Sim_Demo_Website",
+    "description": "浏览器内 MuJoCo WebAssembly + ONNX 策略的人形 RL Sim2Sim 演示站，含 G1 AMP、感知跑酷与全身 tracking 三条策略。"
+  },
+  {
+    "id": "g1-amp-walk-run-getup",
+    "title": "G1 AMP Walk/Run/Getup",
+    "label": "G1 AMP Walk/Run/Getup",
+    "url": "https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html",
+    "training_code": "https://github.com/ccrpRepo/AMP_mjlab",
+    "description": "AMP 策略：行走、跑步与 knockdown 起身；可在演示面板切换至该策略。"
+  },
+  {
+    "id": "g1-parkour",
+    "title": "G1 Perceptive Parkour",
+    "label": "G1 Perceptive Parkour",
+    "url": "https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html",
+    "paper": "https://php-parkour.github.io/index.html",
+    "description": "感知跑酷 demo（内嵌 PHP 浏览器 MuJoCo 子页）；在演示站 Policy 下拉中选择 G1 Perceptive Parkour。"
+  },
+  {
+    "id": "g1-tracking-latest",
+    "title": "G1 Tracking",
+    "label": "G1 Tracking",
+    "url": "https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html",
+    "training_code": "https://github.com/Axellwppr/motion_tracking",
+    "description": "全身 motion tracking + compliance 输入；可在演示面板切换至 G1 Tracking。"
+  }
+]

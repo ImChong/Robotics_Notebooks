@@ -182,7 +182,8 @@ SAC 常用于：
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Proximal Policy Optimization Algorithms](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)- Schulman et al., [*Proximal Policy Optimization Algorithms*](https://arxiv.org/abs/1707.06347) — PPO 原论文
+- [机器人论文阅读笔记：Proximal Policy Optimization Algorithms](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
+- Schulman et al., [*Proximal Policy Optimization Algorithms*](https://arxiv.org/abs/1707.06347) — PPO 原论文
 - Haarnoja et al., [*Soft Actor-Critic*](https://arxiv.org/abs/1801.01290) — SAC 原论文
 - Andrychowicz et al., [*Learning dexterous in-hand manipulation*](https://arxiv.org/abs/1808.00177) — 灵巧手操作 PPO 经典
 - Ao et al., [*Bounded Ratio Reinforcement Learning*](https://arxiv.org/abs/2604.18578) — BRRL / BPO 原论文

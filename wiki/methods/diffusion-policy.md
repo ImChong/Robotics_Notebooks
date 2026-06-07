@@ -138,7 +138,8 @@ Diffusion Policy 通常预测一段动作序列（Action Chunk），而不是单
 ## 推荐继续阅读
 
 - [机器人论文阅读笔记：iDP3 Generalizable Humanoid Manipulation with 3D Diffusion Policies](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies.html)
-- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)- Chi et al., [*Diffusion Policy*](https://arxiv.org/abs/2303.04137) — 原论文
+- [机器人论文阅读笔记：Diffusion Policy](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
+- Chi et al., [*Diffusion Policy*](https://arxiv.org/abs/2303.04137) — 原论文
 - Zhao et al., [*ACT: Action Chunking with Transformers*](https://arxiv.org/abs/2304.13705) — 动作块预测方法
 - Black et al., [*π0: A Vision-Language-Action Flow Model for General Robot Control*](https://www.physicalintelligence.company/blog/pi0) — flow matching 路线
 

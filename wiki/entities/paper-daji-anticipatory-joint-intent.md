@@ -127,7 +127,8 @@ flowchart LR
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Ψ₀](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation.html)- 论文 PDF：<https://arxiv.org/pdf/2605.14417>
+- [机器人论文阅读笔记：Ψ₀](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation/Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation.html)
+- 论文 PDF：<https://arxiv.org/pdf/2605.14417>
 - 项目主页：<https://hxxxz0.github.io/DAJI_PAGE/>
 - 官方代码：<https://github.com/Hxxxz0/DAJI>
 - OmniH2O：<https://arxiv.org/abs/2406.08858> — 多输入统一身体接口的参照

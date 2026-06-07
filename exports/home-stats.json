@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amp-mjlab.md",
+      "detail_id": "entity-amp-mjlab",
+      "label": "AMP_mjlab (G1 统一 AMP 策略)",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md",
+      "detail_id": "entity-paper-hrl-stack-22-perceptive_humanoid_parkour",
+      "label": "Perceptive Humanoid Parkour（PHP）",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/gentlehumanoid-motion-tracking.md",
+      "detail_id": "wiki-methods-gentlehumanoid-motion-tracking",
+      "label": "GentleHumanoid（上半身柔顺全身运动跟踪）",
+      "type": "method",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-bfm-07-sonic.md",
       "detail_id": "entity-paper-bfm-07-sonic",
       "label": "Sonic",
@@ -53,14 +85,6 @@
       "detail_id": "wiki-overview-robot-learning-overview",
       "label": "Robot Learning Overview",
       "type": "overview",
-      "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
       "recency": "2026-06-06",
       "source": "log.md"
     },
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-06",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/vision-backbones.md",
-      "detail_id": "wiki-concepts-vision-backbones",
-      "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/object-detection.md",
-      "detail_id": "wiki-methods-object-detection",
-      "label": "目标检测（Object Detection）",
-      "type": "method",
-      "recency": "2026-06-06",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
-      "recency": "2026-06-06",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bfm-07-sonic.md",
-    "detail_id": "entity-paper-bfm-07-sonic",
-    "label": "Sonic",
-    "type": "entity",
+    "path": "wiki/concepts/sim2real.md",
+    "detail_id": "wiki-concepts-sim2real",
+    "label": "Sim2Real",
+    "type": "concept",
     "recency": "2026-06-07",
     "source": "log.md"
   }

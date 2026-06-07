@@ -248,7 +248,8 @@ sources:
 
 ## 推荐继续阅读
 
-- [机器人论文阅读笔记：Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)- 官方仓库：<https://github.com/leggedrobotics/legged_gym>
+- [机器人论文阅读笔记：Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
+- 官方仓库：<https://github.com/leggedrobotics/legged_gym>
 - 论文：Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*
 - [Isaac Gym](./isaac-gym.md) — legged_gym 依赖的底层仿真框架
 

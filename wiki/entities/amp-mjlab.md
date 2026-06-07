@@ -355,6 +355,7 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 
 ## 参考来源
 
+- [RL Sim2Sim 在线演示：G1 AMP Walk/Run/Getup](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)
 - [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)
 

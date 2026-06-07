@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] structural | schema + wiki — 同步 RL Sim2Sim Demo 在线演示链接至对应 wiki 节点
+
+- 工具：[scripts/sync_rl_sim2sim_demo_links.py](scripts/sync_rl_sim2sim_demo_links.py)；`make rl-sim2sim-demo-links`；映射 [schema/rl-sim2sim-demo-wiki-map.yml](schema/rl-sim2sim-demo-wiki-map.yml) + [schema/rl-sim2sim-demo-index.json](schema/rl-sim2sim-demo-index.json)
+- 来源归档：[sources/sites/rl-sim2sim-demo-website.md](sources/sites/rl-sim2sim-demo-website.md)
+- 挂接节点：[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/amp-mjlab.md](wiki/entities/amp-mjlab.md)、[wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[wiki/methods/gentlehumanoid-motion-tracking.md](wiki/methods/gentlehumanoid-motion-tracking.md) 等 7 页
+
 ## [2026-06-07] structural | schema + wiki — 同步 Humanoid Paper Notebooks 深读笔记链接至对应 wiki 节点
 
 - 工具：[scripts/sync_paper_notebook_links.py](scripts/sync_paper_notebook_links.py)；`make paper-notebook-links`；映射 [schema/paper-notebook-wiki-overrides.yml](schema/paper-notebook-wiki-overrides.yml) + [schema/paper-notebook-index.json](schema/paper-notebook-index.json)
