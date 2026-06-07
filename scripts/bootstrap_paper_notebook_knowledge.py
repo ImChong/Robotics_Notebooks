@@ -6,7 +6,6 @@ from __future__ import annotations
 import argparse
 import json
 import re
-import sys
 from pathlib import Path
 
 import yaml
@@ -112,7 +111,6 @@ def resolve_primary_wiki(
 
 
 def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
-    src_name = source_filename(paper["dir"])
     arxiv = paper.get("arxiv") or meta.get("arxiv")
     arxiv_line = f"- **arXiv：** <https://arxiv.org/abs/{arxiv}>\n" if arxiv else ""
     sub = meta.get("_subcategory_zh") or ""
@@ -215,7 +213,6 @@ def render_category_page(
     papers_in_cat: list[tuple[dict, str, dict]],
     subcategories: list[dict] | None,
 ) -> str:
-    slug = category_wiki_slug(cat_id)
     display = section.get("display_name") or cat_id
     zh = section.get("zhname") or display
     subtitle = section.get("subtitle") or section.get("subtitle_zh") or ""

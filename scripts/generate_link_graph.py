@@ -86,6 +86,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/tasks/manipulation.md": "操作（Manipulation）",
     "wiki/tasks/loco-manipulation.md": "移动操作（Loco-Manipulation）",
     "wiki/overview/bfm-41-papers-technology-map.md": "行为基础模型技术地图（BFM）",
+    "wiki/overview/humanoid-paper-notebooks-index.md": "人形论文深读笔记（Humanoid Paper Notebooks）",
     "wiki/concepts/foundation-policy.md": "基础策略（Foundation Policy）",
     "wiki/overview/multirotor-simulation-planning-control-stack.md": "多旋翼开源栈（Multirotor Stack）",
     "wiki/methods/sonic-motion-tracking.md": "规模化运动跟踪（SONIC）",
