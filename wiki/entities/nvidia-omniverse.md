@@ -4,6 +4,7 @@ tags: [software, simulation, physics-engine, nvidia, realtime, metaverse]
 status: complete
 updated: 2026-04-21
 related:
+  - ./blender.md
   - ./mujoco.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ../concepts/sim2real.md
@@ -35,7 +36,7 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 ## 核心技术支柱
 
 1. **通用场景描述 (OpenUSD)**：
-   采用皮克斯开源的 USD 格式作为底层架构，允许来自不同软件（如 Blender, Maya, CAD）的模型在同一场景中无缝整合，解决了机器人场景搭建中繁琐的格式转换问题。
+   采用皮克斯开源的 USD 格式作为底层架构，允许来自不同软件（如 [Blender](./blender.md)、Maya、CAD）的模型在同一场景中无缝整合，解决了机器人场景搭建中繁琐的格式转换问题。
 2. **PhysX 5 / GPU 并行加速**：
    集成了目前最先进的物理引擎。利用 NVIDIA GPU 的海量核心，支持在单一工作站内并行运行成千上万个机器人实例，极大缩短了 RL 策略的采样时间。
 3. **RTX 高保真渲染**：
@@ -49,6 +50,7 @@ summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于
 - **工业数字化孪生**：宝马（BMW）等巨头利用 Omniverse 构建完整的工厂数字化孪生，在机器人进入真实产线前进行全流程的虚拟验证。
 
 ## 关联页面
+- [Blender（开源 DCC 与 USD 资产来源）](./blender.md)
 - [MuJoCo 物理引擎](./mujoco.md)
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Sim2Real (仿真到现实迁移)](../concepts/sim2real.md)

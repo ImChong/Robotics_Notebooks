@@ -19,7 +19,10 @@ related:
   - ../entities/botlab-motioncanvas.md
   - ../entities/roboto-origin.md
   - ../entities/robot-motion-keyframe-editors.md
+  - ../entities/blender.md
 sources:
+  - ../../sources/sites/blender-org.md
+  - ../../sources/repos/blender.md
   - ../../sources/papers/disney_olaf_character_robot.md
   - ../../sources/papers/amp.md
   - ../../sources/papers/deepmimic.md
@@ -77,7 +80,7 @@ summary: "Character Animation vs Robotics：澄清「角色化人形（character
 | 失败定义 | 「出戏」「不自然」 | 摔倒、超温、超力矩 | 风格惩罚和安全惩罚的权重必须分别建模（[Reward Design](./reward-design.md)） |
 | 机构约束 | costume / 外观包络反向约束机构 | 任务功能反向约束机构 | Olaf 的非对称腿与泡沫裙：先有角色形象，再选 DoF |
 | 数据来源 | 艺术家关键帧 / 棚拍 MoCap | 仿真 rollout / 真机日志 | 风格库通常没有物理一致版本，需要做 [Motion Retargeting Pipeline](./motion-retargeting-pipeline.md) |
-| 工具生态 | DCC（Maya / Blender）、节点图、动画引擎 | URDF / MJCF、ROS2、Isaac Lab | [BotLab / MotionCanvas](../entities/botlab-motioncanvas.md) 试图把两端拼到一张画布上 |
+| 工具生态 | DCC（Maya / [Blender](../entities/blender.md)）、节点图、动画引擎 | URDF / MJCF、ROS2、Isaac Lab | [BotLab / MotionCanvas](../entities/botlab-motioncanvas.md) 试图把两端拼到一张画布上 |
 
 > 选型直觉：如果一段需求里「不像 X 角色 / 没有表演意图就算失败」，就应当把它放在 character 端，并显式增加 [CBF](./control-barrier-function.md) 风格的安全约束项；反之，研究/工业型人形可以把风格当成可选的奖励 shaping。
 

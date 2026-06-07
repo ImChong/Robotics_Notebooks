@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-07",
-  "node_count": 771,
-  "edge_count": 5303,
+  "node_count": 772,
+  "edge_count": 5319,
   "coverage": {
-    "covered": 755,
-    "total": 769,
+    "covered": 756,
+    "total": 770,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/blender.md",
+      "detail_id": "entity-blender",
+      "label": "Blender（开源 3D 创作套件）",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-omniverse.md",
+      "detail_id": "entity-nvidia-omniverse",
+      "label": "NVIDIA Omniverse (具身仿真底座)",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robot-motion-keyframe-editors.md",
+      "detail_id": "entity-robot-motion-keyframe-editors",
+      "label": "机器人关键帧与运动编辑工具（选型入口）",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/sam3dbody-cpp.md",
+      "detail_id": "entity-sam3dbody-cpp",
+      "label": "SAM3DBody-cpp",
+      "type": "entity",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
       "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
@@ -127,52 +167,12 @@
       "type": "entity",
       "recency": "2026-06-07",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-control-operators-for-interactive-character-anim.md",
-      "detail_id": "entity-paper-notebook-control-operators-for-interactive-character-anim",
-      "label": "Control Operators for Interactive Character Animation",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md",
-      "detail_id": "entity-paper-notebook-domain-randomization-for-transferring-deep-neura",
-      "label": "Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md",
-      "detail_id": "entity-paper-notebook-domain-randomization-understanding-sim-to-real-t",
-      "label": "Understanding Domain Randomization for Sim-to-real Transfer",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-eco-energy-constrained-optimization-with-rl-for.md",
-      "detail_id": "entity-paper-notebook-eco-energy-constrained-optimization-with-rl-for",
-      "label": "ECO Energy Constrained Optimization with RL for Humanoid Walking",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-egoactor.md",
-      "detail_id": "entity-paper-notebook-egoactor",
-      "label": "EgoActor",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
-    "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
-    "label": "RPL：复杂地形上的鲁棒人形多向感知行走",
+    "path": "wiki/entities/blender.md",
+    "detail_id": "entity-blender",
+    "label": "Blender（开源 3D 创作套件）",
     "type": "entity",
     "recency": "2026-06-07",
     "source": "log.md"

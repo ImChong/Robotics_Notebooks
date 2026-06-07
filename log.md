@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-07] ingest | sources/sites/blender-org.md、sources/repos/blender.md — Blender 开源 DCC 官网与官方仓库；wiki/entities/blender.md
+
+- 原始资料：[sources/sites/blender-org.md](sources/sites/blender-org.md)、[sources/repos/blender.md](sources/repos/blender.md)
+- 新增实体：[wiki/entities/blender.md](wiki/entities/blender.md)
+- 交叉补强：[wiki/entities/nvidia-omniverse.md](wiki/entities/nvidia-omniverse.md)、[wiki/concepts/character-animation-vs-robotics.md](wiki/concepts/character-animation-vs-robotics.md)、[wiki/entities/robot-motion-keyframe-editors.md](wiki/entities/robot-motion-keyframe-editors.md)、[wiki/entities/sam3dbody-cpp.md](wiki/entities/sam3dbody-cpp.md)
+
 ## [2026-06-07] ingest | sources/papers/rpl_arxiv_2602_03002.md — RPL（arXiv:2602.03002）Amazon FAR 人形多向深度感知行走与载荷 loco-manipulation
 
 - 原始资料：[sources/papers/rpl_arxiv_2602_03002.md](sources/papers/rpl_arxiv_2602_03002.md)、[sources/sites/rpl-humanoid-github-io.md](sources/sites/rpl-humanoid-github-io.md)
