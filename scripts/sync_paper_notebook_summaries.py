@@ -113,7 +113,6 @@ def update_source_file(source_path: Path, summary: str, dry_run: bool) -> bool:
     pattern = re.compile(r"(- \*\*一句话说明：\*\* ).+?\n")
     if not pattern.search(text):
         return False
-    new_line = f"- **一句话说明：** {summary}\n"
     new_text = pattern.sub(lambda m: m.group(1) + summary + "\n", text, count=1)
     if new_text == text:
         return False
