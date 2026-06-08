@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-08] structural | wiki/concepts/visual-representation-for-policy.md — V24 P1 视觉表征知识链第二项：视觉表征作为策略输入
+
+- 新建概念页：[`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md)（端到端联合训练 vs 冻结预训练骨干 vs 机器人专用预训练表征（R3M / VC-1 / DINOv2）三条路径与取舍 + Mermaid 决策图）
+- 交叉回链：[`wiki/concepts/vision-backbones.md`](wiki/concepts/vision-backbones.md) 新增 related/关联出边，消除孤儿页
+- 进展：V24 P1「视觉表征知识链 (+3)」第二项交付（首项 cnn-vs-vit-backbones 已于 2026-06-07 完成），余 `wiki/queries/perception-backbone-selection.md`
+- lint：`python3 scripts/lint_wiki.py` 全绿；同步重建全站索引与图谱统计
+
 ## [2026-06-08] ingest | sources/repos/* — 补充 fairmotion / AMP-RSL-RL 两个重定向相关成熟仓库实体并互链
 
 - 原始资料：`sources/repos/amp_rsl_rl.md`、`sources/repos/fairmotion.md`
