@@ -175,7 +175,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用
 - Choi et al., *SMPL-X: Expressive Whole Body Pose Estimation* (CVPR 2019) — 人体参数化模型
 - Liao et al., *Real-Time Motion Retargeting to Highly Varied User-Specific Hand Anatomies* (CHI 2019) — 异构骨架重定向
-- **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：interaction mesh 交互保留重定向（PHP 等下游的上游）
+- **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：interaction mesh 交互保留重定向（PHP 等下游的上游）；配套 [holosoma 代码](../../sources/repos/holosoma.md)、[HF 数据集](../../sources/sites/omniretarget-dataset-huggingface.md)
 - **ingest 档案：** [sources/papers/teleoperation.md](../../sources/papers/teleoperation.md) — ALOHA / OmniH2O / UMI / AnyTeleop 遥操作系统
 - **ingest 档案：** [sources/papers/diffusion_and_gen.md](../../sources/papers/diffusion_and_gen.md) — ACT（CVAE 动作块预测）
 - [sources/papers/motion_control_projects.md](../../sources/papers/motion_control_projects.md) — GMR 的总结强调了“运动学重定向之后还需要动力学一致化层”
@@ -215,6 +215,9 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一
 - [AMASS](../entities/amass.md) — SMPL 系大规模统一动捕档案，常与 AMP / 生成式运动模型一起出现
 - [LaFAN1](../entities/lafan1-dataset.md) — BVH 多主题棚拍数据与过渡任务基准（注意 NC-ND 许可）
+- [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — interaction mesh 硬约束 + 单演示增广的交互保留重定向（ICRA 2026）
+- [holosoma](../entities/holosoma.md) — OmniRetarget 开源实现与 WBT/locomotion 训练部署框架
+- [OmniRetarget 数据集](../entities/omniretarget-dataset.md) — G1 交互重定向轨迹 HuggingFace 公开子集
 - [Mixamo](../entities/mixamo.md) — 商业动画库，与科研向 MoCap 档案对照阅读
 - [SAM 3D Body](../entities/sam-3d-body.md) — 单目 RGB 全身 MHR 估计，可作视频→重定向上游
 - [SAM3DBody-cpp](../entities/sam3dbody-cpp.md) — 上述模型的 C++/BVH 工程导出
