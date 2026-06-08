@@ -1,13 +1,37 @@
 {
-  "generated_at": "2026-06-07",
+  "generated_at": "2026-06-08",
   "node_count": 773,
-  "edge_count": 5338,
+  "edge_count": 5339,
   "coverage": {
     "covered": 757,
     "total": 771,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
+      "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
+      "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
+      "type": "comparison",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/vision-backbones.md",
+      "detail_id": "wiki-concepts-vision-backbones",
+      "label": "视觉骨干（Vision Backbones）",
+      "type": "concept",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-06-07",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/esi-bench.md",
       "detail_id": "entity-esi-bench",
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-07",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-anymal-parkour-robust-perceptive-locomotion.md",
-      "detail_id": "entity-paper-notebook-anymal-parkour-robust-perceptive-locomotion",
-      "label": "ANYmal Parkour",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-apex-learning-adaptive-high-platform-traversal-f.md",
-      "detail_id": "entity-paper-notebook-apex-learning-adaptive-high-platform-traversal-f",
-      "label": "APEX",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md",
-      "detail_id": "entity-paper-notebook-asap-aligning-simulation-and-real-world-physics",
-      "label": "ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/esi-bench.md",
-    "detail_id": "entity-esi-bench",
-    "label": "ESI-Bench（具身空间智能基准）",
-    "type": "entity",
+    "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
+    "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
+    "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
+    "type": "comparison",
     "recency": "2026-06-07",
     "source": "log.md"
   }
