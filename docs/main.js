@@ -3832,7 +3832,7 @@
 
     function renderEmptyState() {
       var hotHtml = HOT_QUERIES.map(function(q) {
-        return '<button class="tag-chip" onclick="document.getElementById(\'wikiSearchInput\').value=this.getAttribute(\'data-query\');triggerSearch()" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
+        return '<button class="tag-chip js-hot-query-btn" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
       }).join('');
       searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted);font-size:.85rem">'
         + '<p style="margin-bottom:.5rem">热门查询：</p>'
@@ -3906,7 +3906,7 @@
         ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
           + matchExplanation(item, queryTokens) + '</span>'
         : '';
-      var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" onclick="event.stopPropagation()" '
+      var graphBtn = '<a href="' + escapeHtml(graphUrl) + '" class="js-graph-btn" '
         + 'style="font-size:.75rem;opacity:.6;margin-left:8px;text-decoration:none" '
         + 'title="查看图谱邻居" tabindex="-1">🔗图谱</a>';
       return '<article class="card" data-result-url="' + escapeHtml(detailUrl) + '">'
@@ -4142,6 +4142,27 @@
       communityFilter.addEventListener('change', triggerSearch);
       ensureCommunityByPath();
     }
+
+    searchResults.addEventListener('click', function(e) {
+      var hotBtn = e.target.closest('.js-hot-query-btn');
+      if (hotBtn) {
+        var query = hotBtn.getAttribute('data-query');
+        if (query) {
+          var inputEl = document.getElementById('wikiSearchInput');
+          if (inputEl) {
+            inputEl.value = query;
+            triggerSearch();
+          }
+        }
+        return;
+      }
+
+      var graphBtn = e.target.closest('.js-graph-btn');
+      if (graphBtn) {
+        e.stopPropagation();
+        return;
+      }
+    });
 
     document.addEventListener('click', function(e) {
       var tag = e.target.closest('[data-wiki-tag]');
