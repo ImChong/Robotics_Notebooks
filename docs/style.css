@@ -592,6 +592,20 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   font-size: .78rem;
   color: var(--text-muted);
 }
+.detail-mini-map-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+  padding-bottom: 4px;
+}
+.detail-mini-map-all-link {
+  font-size: .78rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+.detail-mini-map-all-link:hover {
+  text-decoration: underline;
+}
 .detail-mini-map-svg {
   display: block;
   width: 100%;
