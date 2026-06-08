@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-08] ingest | sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md — Agent Reach 抓取训练栈分层长文并建六层技术地图
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（修复 hatchling `guides` force-include 重复后 `pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：[`wechat_embodied_ai_lab_robot_training_stack_layers_2026.md`](sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)（<https://mp.weixin.qq.com/s/Z9pgVa48wQKLYVRD3psnhw>）；[`mujoco_playground.md`](sources/repos/mujoco_playground.md)；落盘 [`sources/raw/wechat_embodied_ai_lab_robot_training_stack_layers_2026-06-08.md`](sources/raw/wechat_embodied_ai_lab_robot_training_stack_layers_2026-06-08.md)
+- 沉淀页面：[`wiki/overview/robot-training-stack-layers-technology-map.md`](wiki/overview/robot-training-stack-layers-technology-map.md)（六层训练–评估栈 + Mermaid）；新建 [`wiki/entities/mujoco-playground.md`](wiki/entities/mujoco-playground.md)
+- 交叉更新：[`isaac-lab.md`](wiki/entities/isaac-lab.md)、[`mujoco.md`](wiki/entities/mujoco.md)、[`mjlab.md`](wiki/entities/mjlab.md)、[`unilab.md`](wiki/entities/unilab.md)、[`newton-physics.md`](wiki/entities/newton-physics.md)、[`genesis-world-10.md`](wiki/entities/genesis-world-10.md)、[`simulator-selection-guide.md`](wiki/queries/simulator-selection-guide.md)、[`simulation-evaluation-infrastructure.md`](wiki/concepts/simulation-evaluation-infrastructure.md)、[`humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`mujoco-vs-isaac-lab.md`](wiki/comparisons/mujoco-vs-isaac-lab.md)、[`agent-reach.md`](wiki/entities/agent-reach.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-07] structural | wiki/comparisons/cnn-vs-vit-backbones.md — V24 P1 视觉表征知识链首页：CNN vs ViT 视觉骨干对比
 
 - 新增页面：[wiki/comparisons/cnn-vs-vit-backbones.md](wiki/comparisons/cnn-vs-vit-backbones.md)（归纳偏置、数据量需求、分辨率/吞吐、多尺度特征、边缘部署、下游迁移六维对比；机器人感知取舍决策图与误区）

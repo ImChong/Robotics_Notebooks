@@ -7,6 +7,7 @@ related:
   - ./open-duck-mini.md
   - ./open-duck-reference-motion-generator.md
   - ./open-duck-mini-runtime.md
+  - ./mujoco-playground.md
   - ./mjlab-playground.md
   - ./brax.md
   - ../concepts/sim2real.md
@@ -36,7 +37,7 @@ summary: "Open Duck Playground 在 MuJoCo Playground/MJX 上提供 open_duck_min
 
 ## 为什么重要
 
-- 将 Google DeepMind [MuJoCo Playground](https://github.com/google-deepmind/mujoco_playground) 范式落到 **廉价舵机双足** 上，与 Isaac Gym 时代的 AWD 训练形成代际切换。
+- 将 [MuJoCo Playground](./mujoco-playground.md) 范式落到 **廉价舵机双足** 上，与 Isaac Gym 时代的 AWD 训练形成代际切换。
 - **模仿奖励**与 [Reference Motion Generator](./open-duck-reference-motion-generator.md) 解耦：多项式系数文件可独立迭代，不必重训整个 MJCF 管线。
 - 提供 **flat_terrain_backlash** 等任务与 3e8 步量级训练示例，便于复现社区「当前最佳行走」配置。
 

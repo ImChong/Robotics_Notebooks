@@ -138,6 +138,7 @@
 | [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管，Disney/DeepMind/NVIDIA） |
 | [x] [ppf-contact-solver.md](repos/ppf-contact-solver.md) | ppf-contact-solver：ZOZO GPU shell/solid/rod FEM+接触离线仿真（TOG 论文实现） |
 | [x] [mjlab_playground.md](repos/mjlab_playground.md) | mjlab_playground：mjlab 任务集合（MuJoCo Playground 端口起步，含 Go1/T1 getup 等） |
+| [x] [mujoco_playground.md](repos/mujoco_playground.md) | google-deepmind/mujoco_playground：MJX 机器人 RL 环境库（time-to-robot 训练入口） |
 | [x] [freemocap.md](repos/freemocap.md) | FreeMoCap：开源低成本多相机动捕与 GUI 平台（AGPL） |
 | [x] [ubisoft-laforge-animation-dataset.md](repos/ubisoft-laforge-animation-dataset.md) | LaFAN1：Ubisoft La Forge BVH 动捕与 SIGGRAPH 2020 评估脚本（CC BY-NC-ND） |
 | [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
@@ -231,6 +232,7 @@
 | [x] [wechat_embodied_ai_lab_bfm_41_papers_survey.md](blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) | 具身智能研究室：41 篇 BFM 运控基座技术地图（五类问题各建 `wiki/overview/bfm-category-*` 图谱 hub；`Ei32la_vo0UW9Y_QCAqB2g`） |
 | [x] [wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md) | 具身智能研究室：19 篇 AMP / 运动先验专题长文（Agent Reach + Camoufox；`YZsm3855iP3TNTTt1aou7w`；见 `humanoid_amp_survey_19_catalog.md`） |
 | [x] [wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md](blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md) | 具身智能研究室：斯坦福 LEGS / 3DGS 人形 VLA loco-manip 数据工厂策展（Agent Reach + Camoufox；`B1sYOPKg6TQwnNGs-_8NDw`；arXiv:2606.01458） |
+| [x] [wechat_embodied_ai_lab_robot_training_stack_layers_2026.md](blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) | 具身智能研究室：Isaac Lab / MuJoCo / mjlab / UniLab / Newton / Genesis 训练栈分层解读（Agent Reach + Camoufox；`Z9pgVa48wQKLYVRD3psnhw`） |
 | [x] [wechat_human_five_humanoid_hardware_101.md](blogs/wechat_human_five_humanoid_hardware_101.md) | 微信公众号 human five：《Humanoid Hardware 入门 101》四万字硬件拆解（Agent Reach + Camoufox；`10hYwFzC1EuCypFVzC6QGQ`；七类 `wiki/overview/humanoid-hardware-101-*` 图谱 hub） |
 | [x] [wechat_human_five_humanoid_actuator_102.md](blogs/wechat_human_five_humanoid_actuator_102.md) | 微信公众号 human five：《Humanoid 执行器 入门 102》姊妹篇（`zinp6ulTorzfqmCR_HaI5A`；八章 `wiki/overview/humanoid-actuator-102-*` + 参考文献 catalog） |
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |

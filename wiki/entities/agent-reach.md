@@ -40,7 +40,7 @@ README 将自身定位为 **scaffolding（脚手架）而非应用框架**：各
 
 ## 为什么重要（对本知识库读者）
 
-- **文献与代码调研侧**：机器人论文、开源仓库、教程视频、社区讨论（Reddit / X / 中文社区）常分散在多站；本工具链把 **字幕抽取、公开网页清洗阅读、GitHub 检索、RSS 订阅、微信公众号全文（Camoufox / Exa）** 等接到同一套 CLI/MCP 习惯里，便于代理辅助 **ingest 与交叉验证**（仍须遵守各平台 ToS 与学术引用规范）。本站经 `wechat-article-for-ai`（Camoufox）抓取多篇 `mp.weixin.qq.com` 长文（如 [Humanoid Hardware 101](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)、[世界模型训练闭环](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)、[李群/李代数/四元数基础](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)）时，Jina Reader 常返回 CAPTCHA，与公开 README 一致。
+- **文献与代码调研侧**：机器人论文、开源仓库、教程视频、社区讨论（Reddit / X / 中文社区）常分散在多站；本工具链把 **字幕抽取、公开网页清洗阅读、GitHub 检索、RSS 订阅、微信公众号全文（Camoufox / Exa）** 等接到同一套 CLI/MCP 习惯里，便于代理辅助 **ingest 与交叉验证**（仍须遵守各平台 ToS 与学术引用规范）。本站经 `wechat-article-for-ai`（Camoufox）抓取多篇 `mp.weixin.qq.com` 长文（如 [Humanoid Hardware 101](../../sources/blogs/wechat_human_five_humanoid_hardware_101.md)、[世界模型训练闭环](../../sources/blogs/wechat_embodied_ai_lab_robot_world_model_training_loop.md)、[训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)、[李群/李代数/四元数基础](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md)）时，Jina Reader 常返回 CAPTCHA，与公开 README 一致。
 - **与「代理工程规约」相邻**：和 [Superpowers（obra）](superpowers-obra.md) 这类 **软件交付流程技能库** 不同，Agent Reach 解决的是 **外网只读/检索型工具链**；和 [Articraft](articraft.md) 这类 **3D 资产生成 SDK** 也不同，但同属 **把代理能力边界写进可版本化外围** 的实践谱系。
 - **安全与运维意识对齐公开文档**：README 明确 **Cookie 等凭据本地 `~/.agent-reach`、文件权限 600**、`--safe` / `--dry-run`、以及 **Cookie 平台封号风险** 与 **小号建议**；适合作为代理侧 **凭据与合规** 讨论的参照锚点。
 

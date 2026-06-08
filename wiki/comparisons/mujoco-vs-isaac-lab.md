@@ -2,11 +2,14 @@
 type: comparison
 tags: [mujoco, isaac-lab, simulator, locomotion, sim2real, rl]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-08
 summary: "MuJoCo 与 Isaac Lab 在仿真精度、并行效率、sim2real gap 方面的系统性对比，帮助选择适合 locomotion RL 项目的仿真平台。"
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 related:
+  - ../overview/robot-training-stack-layers-technology-map.md
+  - ../entities/mujoco-playground.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
@@ -21,6 +24,8 @@ related:
 ## 一句话定位
 
 > MuJoCo 是"精确、轻量、研究友好"的经典底座；Isaac Lab 是"并行、工业级、GPU 全栈"的训练加速平台——选哪个取决于你的规模需求和生态取向，而非谁更"先进"。
+
+二者在 [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) 中分属 **物理/sim2sim** 与 **大平台** 层，可与 [MuJoCo Playground](../entities/mujoco-playground.md)、[mjlab](../entities/mjlab.md) 等入口层 **并存** 而非互斥替代。
 
 ---
 
