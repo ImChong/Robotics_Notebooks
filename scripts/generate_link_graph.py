@@ -96,6 +96,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/amp-reward.md": "对抗运动先验（AMP & HumanX）",
     "wiki/methods/model-predictive-control.md": "模型预测控制（Model Predictive Control, MPC）",
     "wiki/entities/mimickit.md": "运动模仿与控制（MimicKit）",
+    "wiki/entities/isaac-gym-isaac-lab.md": "仿真训练（Isaac Gym / Isaac Lab）",
 }
 
 
