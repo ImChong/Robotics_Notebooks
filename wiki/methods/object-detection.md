@@ -100,6 +100,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 ## 关联页面
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
+- [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [Manipulation（任务）](../tasks/manipulation.md)

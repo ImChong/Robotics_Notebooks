@@ -81,6 +81,7 @@ flowchart TB
 
 - [深度学习基础](./deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)
+- [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [传感器融合](./sensor-fusion.md)
