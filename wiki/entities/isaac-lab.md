@@ -2,12 +2,15 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real]
 status: stable
-updated: 2026-05-31
+updated: 2026-06-08
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
   - ./robotic-world-model-eth-rsl.md
   - ./newton-physics.md
+  - ./mujoco-playground.md
+  - ./mjlab.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ./legged-gym.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
@@ -16,6 +19,7 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "NVIDIA 当前官方主推的 robot learning 框架，建立在 Isaac Sim 之上，承接 IsaacGymEnvs/Orbit 用户；locomotion、manipulation 与 sim2real 新实验的首选仿真栈。"
 ---
 
@@ -178,6 +182,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - Ao et al., *Bounded Ratio Reinforcement Learning* (2026) — 在 Isaac Lab 中验证新算法
 - **ingest 档案：** [sources/papers/policy_optimization.md](../../sources/papers/policy_optimization.md) — PPO/BRRL 与 Isaac Lab 的结合应用
 - **ingest 档案：** [sources/courses/nvidia_sim_to_real_so101_isaac.md](../../sources/courses/nvidia_sim_to_real_so101_isaac.md) — SO-101 课：仿真 DR 遥操作采数、策略评测与 sim2real 对照实验
+- **ingest 档案：** [具身智能研究室训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md) — OpenUSD / PhysX / Lab Views 统一场景–物理–学习接口的策展归纳
 
 ## 关联页面
 
@@ -186,6 +191,9 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 - [Isaac Gym](./isaac-gym.md) — 它的旧一代前身
 - [Robotic World Model（ETH RSL，RWM / RWM-U）](./robotic-world-model-eth-rsl.md) — Isaac Lab 扩展的神经动力学与想象训练参考实现
 - [Newton Physics](./newton-physics.md) — Isaac Lab 存在 `feature/newton` 物理后端集成探索
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 大平台层定位；与 Playground/mjlab 非同一竞争平面
+- [MuJoCo Playground](./mujoco-playground.md) — 轻量 time-to-robot 入口，复杂任务可再迁移至 Lab
+- [mjlab](./mjlab.md) — 借用 Lab manager-based API 的 MuJoCo Warp 折中栈
 - [legged_gym](./legged-gym.md) — 旧一代足式 RL 训练栈，工程经验可迁移
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Locomotion](../tasks/locomotion.md)

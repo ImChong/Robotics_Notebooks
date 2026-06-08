@@ -2,9 +2,11 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation]
 status: complete
-updated: 2026-05-07
+updated: 2026-06-08
 related:
   - ./mujoco.md
+  - ./mujoco-playground.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ./newton-physics.md
   - ./isaac-gym-isaac-lab.md
   - ./legged-gym.md
@@ -16,6 +18,7 @@ related:
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/repos/mjlab.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "mjlab 将 Isaac Lab 的 manager-based 环境 API 与 MuJoCo Warp（GPU 加速物理）融合，是一个不依赖 Isaac Sim 的轻量 RL 框架，也是 AMP_mjlab 和 unitree_rl_mjlab 的底层依赖。"
 ---
 
@@ -48,6 +51,8 @@ Isaac Lab API 是当前 RL 机器人训练的优秀抽象，但它绑定了 Isaa
 - 替换底层为开源、轻量的 MuJoCo Warp
 - 安装极简（PyPI 包 + `uv sync`）
 - 对 macOS 提供有限评估支持（无 GPU 训练）
+
+策展解读（[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)）强调：mjlab 的价值不止于 GPU 吞吐，更在于 **manager-based 模块化**——observation、reward、event、command、curriculum 可组合复用，使多任务、多本体长期迭代时 **环境定义本身成为基础设施**，而非一次性巨型脚本。
 
 ## 架构
 
@@ -93,10 +98,13 @@ mjlab 架构
 - [SMP on G1（mjlab）](./smp-g1-mjlab.md) — G1 上 score-matching 运动先验复现
 - [unitree-rl-mjlab](./unitree-rl-mjlab.md) — Unitree 官方以 mjlab 为底层的训练框架
 - [Asimov v1](./asimov-v1.md) — 硬件与 MuJoCo 主仓；行走 RL 公开在 asimov-mjlab fork
+- [MuJoCo Playground](./mujoco-playground.md) — 上游任务参照；[mjlab_playground](./mjlab-playground.md) 端口
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 任务与训练入口层
 - [强化学习](../methods/reinforcement-learning.md) — 框架支持的学习范式
 
 ## 参考来源
 
 - [sources/repos/mjlab.md](../../sources/repos/mjlab.md)
+- [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 - [mujocolab/mjlab GitHub Repo](https://github.com/mujocolab/mjlab)
 - Zakka et al. (2026), arXiv:2601.22074

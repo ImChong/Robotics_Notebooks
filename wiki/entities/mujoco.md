@@ -2,9 +2,11 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-05-18
+updated: 2026-06-08
 related:
   - ./mujoco-mjx.md
+  - ./mujoco-playground.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ./brax.md
   - ../comparisons/mujoco-vs-isaac-sim.md
   - ./paper-barkour-quadruped-agility-benchmark.md
@@ -17,6 +19,7 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/simulation.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
 ---
 
@@ -59,6 +62,8 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱；大规模 **壳/体 FEM + 亿级接触** 的离线路径见 [ppf-contact-solver](./ppf-contact-solver.md)。
 
 ## 关联页面
+- [MuJoCo Playground](./mujoco-playground.md) — MJX 上的任务入口层，强调 time-to-robot 与 sim2real 短链路
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — MuJoCo 在物理/sim2sim 层的定位
 - [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
 - [Brax](./brax.md) — JAX 侧 RL 训练与 README 中的 Playground / MJX 迁移指引
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）

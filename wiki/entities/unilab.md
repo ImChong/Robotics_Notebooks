@@ -2,11 +2,12 @@
 type: entity
 tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac]
 status: complete
-updated: 2026-05-31
+updated: 2026-06-08
 arxiv: "2605.30313"
 related:
   - ./isaac-gym-isaac-lab.md
   - ./mjlab.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ./motrix.md
   - ./mujoco.md
   - ./mujoco-mjx.md
@@ -19,6 +20,7 @@ sources:
   - ../../sources/papers/unilab_arxiv_2605_30313.md
   - ../../sources/repos/unilab.md
   - ../../sources/sites/unilabsim-project.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "UniLab（arXiv:2605.30313）用 CPU 批量刚体仿真 + GPU 策略学习 + 统一 runtime（共享内存、采集–更新重叠、权重同步），在单机同硬件上相对 GPU 驻留仿真栈实现约 3–10× 端到端墙钟效率，并支持 macOS/ROCm/Intel XPU。"
 ---
 
@@ -129,6 +131,7 @@ flowchart TB
 
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)、[mjlab](./mjlab.md) — GPU 驻留 / MuJoCo GPU 路径对照
 - [Motrix](./motrix.md)、[MuJoCo](./mujoco.md)、[MuJoCo MJX](./mujoco-mjx.md) — 物理后端与批量仿真语境
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 异构运行时层；采样器–学习器时序视角
 - [仿真器选型指南](../queries/simulator-selection-guide.md)、[MuJoCo vs Isaac Lab](../comparisons/mujoco-vs-isaac-lab.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)、[Locomotion](../tasks/locomotion.md)、[Unitree G1](./unitree-g1.md)
 
@@ -137,6 +140,7 @@ flowchart TB
 - [UniLab 论文摘录](../../sources/papers/unilab_arxiv_2605_30313.md)（arXiv:2605.30313）
 - [UniLab 官方仓库](../../sources/repos/unilab.md)
 - [UniLab 项目页](../../sources/sites/unilabsim-project.md)
+- [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 - Jia et al., *UniLab: A Heterogeneous Architecture for Robot RL Beyond GPU-Dominant Paradigms* (2026)
 
 ## 推荐继续阅读

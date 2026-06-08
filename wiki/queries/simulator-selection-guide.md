@@ -2,11 +2,15 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl]
 status: complete
-updated: 2026-05-31
-summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景。
+updated: 2026-06-08
+summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接六层训练栈地图以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 related:
+  - ../overview/robot-training-stack-layers-technology-map.md
+  - ../entities/mujoco-playground.md
+  - ../entities/unilab.md
   - ../tasks/locomotion.md
   - ../concepts/sim2real.md
   - ../methods/reinforcement-learning.md
@@ -30,6 +34,21 @@ related:
 | 学术研究 / 精确物理 / 算法验证 | **MuJoCo** |
 | 大规模并行训练 / 产业化部署 | **Isaac Lab** |
 | 极速原型验证 / 新兴框架尝鲜 | **Genesis** |
+| 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
+| 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
+| 跨项目理解「谁在跟谁竞争」 | 先读 **[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)** |
+
+---
+
+## 训练栈分层（补充视角）
+
+本页下文仍是 **MuJoCo / Isaac Lab / Genesis 三选一** 的经典对比。若问题变成「为什么已有 Isaac Lab 和 MuJoCo 还会出现 mjlab、Newton、UniLab、Genesis World」，应优先读 [训练栈分层技术地图](../overview/robot-training-stack-layers-technology-map.md)：**六层互补**（大平台 / 物理 sim2sim / 任务入口 / 异构运行时 / 底层连接器 / 闭环评估），竞争焦点在 **整条闭环返工成本** 而非单一峰值 FPS。
+
+| 层 | 代表 | 与本页三选关系 |
+|----|------|----------------|
+| 任务入口 | [MuJoCo Playground](../entities/mujoco-playground.md)、[mjlab](../entities/mjlab.md) | 可与 MuJoCo/Isaac **并存**；先原型再迁移 |
+| 运行时 | [UniLab](../entities/unilab.md) | 可搭配 MuJoCo 后端，质疑「必须 GPU 仿真」默认 |
+| 评估 | [Genesis World](../entities/genesis-world-10.md) | 与开源 [Genesis](../entities/genesis-sim.md) 同名不同物，选型须核对主体 |
 
 ---
 

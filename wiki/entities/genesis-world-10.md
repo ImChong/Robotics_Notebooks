@@ -2,16 +2,18 @@
 type: entity
 tags: [simulation, physics-engine, rendering, compiler, foundation-model, evaluation, genesis-ai]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-08
 related:
   - ./genesis-sim.md
   - ./gene-26-5-genesis-ai.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ../concepts/simulation-evaluation-infrastructure.md
   - ../concepts/sim2real.md
   - ../concepts/data-flywheel.md
   - ./isaac-gym-isaac-lab.md
 sources:
   - ../../sources/blogs/genesis_ai_simulation_world_10_blog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/papers/genesis_gene_ecosystem.md
 summary: "Genesis World 1.0 是 Genesis AI 公司的全栈仿真基础设施（Nyx 渲染、统一多物理、Quadrants GPU 编译器），将仿真定位为机器人基础模型的闭环评测与迭代引擎，而非仅数据生成工具。"
 ---
@@ -102,6 +104,7 @@ flowchart LR
 
 - [Genesis (仿真器)](genesis-sim.md) — 开源学术/社区物理引擎与论文
 - [GENE-26.5（Genesis AI）](gene-26-5-genesis-ai.md) — 同公司操作基础模型
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — 闭环评估基础设施层
 - [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) — 跨平台概念归纳
 - [Sim2Real](../concepts/sim2real.md) — real-to-sim / sim-to-real 方法论
 - [数据飞轮](../concepts/data-flywheel.md) — 数据–仿真–部署闭环语境
@@ -116,4 +119,5 @@ flowchart LR
 ## 参考来源
 
 - [genesis_ai_simulation_world_10_blog（原始资料）](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)
+- [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
 - [genesis_gene_ecosystem（Genesis / GENE 资料总档）](../../sources/papers/genesis_gene_ecosystem.md)

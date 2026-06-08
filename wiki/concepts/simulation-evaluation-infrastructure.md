@@ -2,15 +2,17 @@
 type: concept
 tags: [simulation, evaluation, foundation-model, closed-loop, real-to-sim, benchmarking]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-08
 related:
   - ../entities/genesis-world-10.md
+  - ../overview/robot-training-stack-layers-technology-map.md
   - ../entities/isaac-gym-isaac-lab.md
   - ./sim2real.md
   - ./data-flywheel.md
   - ../methods/vla.md
 sources:
   - ../../sources/blogs/genesis_ai_simulation_world_10_blog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "将可信仿真作为机器人基础模型的可扩展闭环评测基础设施，在训练数据仍主要来自真机时，用 real-to-sim 相关性把模型迭代从墙钟瓶颈转为算力瓶颈。"
 ---
 
@@ -93,6 +95,7 @@ flowchart TB
 
 ## 关联页面
 
+- [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — Genesis World 在「闭环评估基础设施层」的策展坐标
 - [Genesis World 1.0](../entities/genesis-world-10.md) — 产业侧全栈实现与自报相关性案例
 - [Sim2Real](sim2real.md) — 迁移与域随机化；本概念侧重 **评测闭环**
 - [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 高并行仿真与 RL 评测生态
@@ -111,3 +114,4 @@ flowchart TB
 ## 参考来源
 
 - [genesis_ai_simulation_world_10_blog](../../sources/blogs/genesis_ai_simulation_world_10_blog.md)
+- [具身智能研究室：训练栈分层解读](../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md)
