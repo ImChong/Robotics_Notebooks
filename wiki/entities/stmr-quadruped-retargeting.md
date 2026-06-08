@@ -1,9 +1,9 @@
 ---
 type: entity
-tags: [repo, quadruped, motion-retargeting, spatio-temporal, legged-gym]
+tags: [repo, quadruped, motion-retargeting, spatio-temporal, legged-gym, paper]
 status: complete
 updated: 2026-06-08
-summary: "STMR 四足时空重定向生态：Quadruped_Retargeting（SMR）+ Quadruped-Motion-Timing（TMR）+ STMR_RL 完整训练，将噪声动物关键点转为 Go1/A1 等可跟踪全身运动。"
+summary: "STMR 四足时空重定向：论文官方项目页 + arXiv；SMR/TMR 分解将噪声动物关键点转为可跟踪全身参考；原 README 引用的 terry97-guel GitHub 子仓截至 2026-06 已不可公开访问。"
 related:
   - ../concepts/motion-retargeting.md
   - ./legged-gym.md
@@ -15,7 +15,7 @@ sources:
 
 # STMR 四足时空重定向
 
-**STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，arXiv:[2404.11557](https://arxiv.org/abs/2404.11557)）把 **动物/视频关键点轨迹** 转为 **四足机器人全身可执行参考**，显式拆分 **空间重定向（SMR）** 与 **时间重定向（TMR）**，再通过 [STMR_RL](https://github.com/terry97-guel/STMR_RL) 接入 **legged_gym** RL 训练与真机部署。
+**STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557](https://arxiv.org/abs/2404.11557)）把 **动物/视频关键点轨迹** 转为 **四足机器人全身可执行参考**，显式拆分 **空间重定向（SMR）** 与 **时间重定向（TMR）**，再接 **legged_gym** 式 RL 模仿学习与真机部署。
 
 ## 英文缩写速查
 
@@ -23,23 +23,23 @@ sources:
 |------|----------|----------|
 | STMR | Spatio-Temporal Motion Retargeting | 空间+时间联合重定向 |
 | SMR | Spatial Motion Retargeting | 关键点→机器人空间位形 |
-| TMR | Temporal Motion Retargeting | 相位/时间轴对齐与基座运动补全 |
+| TMR | Temporal Motion Retargeting | 相位/时间轴与基座运动补全 |
 | RL | Reinforcement Learning | 跟踪重定向参考 |
 
 ## 为什么重要
 
-- **四足专用重定向栈**：相比只改关节角的早期模仿，STMR 针对 **物理不可行参考** 与 **缺失基座运动** 两类痛点分阶段处理。
-- **支持噪声源**：论文展示手持视频、野外动物轨迹等来源，经 STMR 后可训练策略并完成硬件实验（含跑酷类技能）。
+- **四足专用重定向栈**：针对 **物理不可行参考** 与 **缺失基座运动** 分阶段处理；论文含 Go1 / Aliengo / B2 等真机视频。
+- **支持噪声源**：手持视频等来源经 STMR 后可训练 RL 跟踪策略（含跳跃、后空翻等飞行相技能）。
 
-## 三仓库分工
+## 一手资料入口（已验证可打开）
 
-| 仓库 | 链接 | 职责 |
+| 类型 | 链接 | 说明 |
 |------|------|------|
-| Quadruped_Retargeting | https://github.com/terry97-guel/Quadruped_Retargeting | SMR 空间重定向 |
-| Quadruped-Motion-Timing | https://github.com/terry97-guel/Quadruped-Motion-Timing | TMR 时间重定向 |
-| STMR_RL | https://github.com/terry97-guel/STMR_RL | legged_gym 训练/播放/导出 |
+| **论文** | <https://arxiv.org/abs/2404.11557> | 一手方法描述；正文声明代码见下方项目页 |
+| **官方项目页** | <https://taerimyoon.me/Spatio-Temporal-Motion-Retargeting-for-Quadruped-Robots/> | 作者 Taerim Yoon 维护；含真机实验视频与方法说明 |
+| **旧 gh-pages 跳转** | <https://terry97-guel.github.io/STMR-RL.github.io/> | 301 跳转至上述官方项目页 |
 
-训练示例：`python legged_gym/scripts/train.py --task={ROBOT}_{MR}_{MOTION}`（`ROBOT`∈go1,a1,al；`MR`∈NMR,SMR,TMR,STMR 等）
+> **链接核验说明（2026-06-08）：** 论文与部分二手 README 曾引用 `github.com/terry97-guel/STMR_RL`、`Quadruped_Retargeting`、`Quadruped-Motion-Timing`，经 HTTP/GitHub API 核验均为 **404 / Not Found**，且不在 `terry97-guel` 当前公开仓库列表中。本页**不以失效 GitHub URL 作为一手入口**；获取代码请以 **arXiv 论文 + 官方项目页** 或联系作者为准。
 
 ## 流程总览
 
@@ -48,8 +48,8 @@ flowchart LR
   kp["动物/视频关键点"] --> smr["SMR\n空间重定向"]
   smr --> tmr["TMR\n时间/基座补全"]
   tmr --> ref["四足全身参考"]
-  ref --> rl["STMR_RL + legged_gym"]
-  rl --> hw["Go1 / A1 真机"]
+  ref --> rl["legged_gym + RL"]
+  rl --> hw["Go1 / Aliengo / B2 等真机"]
 ```
 
 ## 关联页面
@@ -66,4 +66,4 @@ flowchart LR
 ## 推荐继续阅读
 
 - 论文 HTML：<https://arxiv.org/html/2404.11557v3>
-- STMR_RL：<https://github.com/terry97-guel/STMR_RL>
+- 官方项目页：<https://taerimyoon.me/Spatio-Temporal-Motion-Retargeting-for-Quadruped-Robots/>

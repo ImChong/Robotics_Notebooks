@@ -37,8 +37,8 @@
 ## 四足：模仿动物与 AMP 生态
 
 - [motion_imitation](https://github.com/erwincoumans/motion_imitation) — 奠基四足模仿动物；wiki [motion-imitation-quadruped](../../wiki/entities/motion-imitation-quadruped.md)
-- [STMR_RL](https://github.com/terry97-guel/STMR_RL) — 时空重定向 + legged_gym；wiki [stmr-quadruped-retargeting](../../wiki/entities/stmr-quadruped-retargeting.md)
-- [AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware) — 四足 AMP 工程基座；wiki [amp-for-hardware](../../wiki/entities/amp-for-hardware.md)
+- [STMR 官方项目页](https://taerimyoon.me/Spatio-Temporal-Motion-Retargeting-for-Quadruped-Robots/) — 四足时空重定向（arXiv:2404.11557）；wiki [stmr-quadruped-retargeting](../../wiki/entities/stmr-quadruped-retargeting.md)（注：原 `terry97-guel/*` GitHub 子仓已 404）
+- [AMP_for_hardware](https://github.com/escontra/AMP_for_hardware) — 四足 AMP 工程基座（Escontrela）；wiki [amp-for-hardware](../../wiki/entities/amp-for-hardware.md)
 - [MetalHead](https://github.com/inspirai/MetalHead) — A1 AMP jump/recovery；wiki [MetalHead](../../wiki/entities/metalhead.md)
 - [LeggedGym-Ex](https://github.com/lupinjia/LeggedGym-Ex) — legged_gym 多仿真器 + AMP/DeepMimic；wiki [leggedgym-ex](../../wiki/entities/leggedgym-ex.md)
 - [Go2 motion-imitation](https://github.com/TSUITUENYUE/motion-imitation) — Go2 retarget + Genesis；wiki [go2-motion-imitation](../../wiki/entities/go2-motion-imitation.md)

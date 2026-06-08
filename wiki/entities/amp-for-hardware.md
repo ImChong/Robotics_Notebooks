@@ -15,7 +15,7 @@ sources:
 
 # AMP_for_hardware
 
-**AMP_for_hardware**（<https://github.com/Alescontrela/AMP_for_hardware>）由 Alejandro Escontrela 维护，是把 **AMP（对抗式运动先验）** 从角色动画领域 **工程化到四足机器人 + Isaac Gym** 的早期开源实现，建立在 [legged_gym](./legged-gym.md) 与 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) 之上。
+**AMP_for_hardware**（<https://github.com/escontra/AMP_for_hardware>）由 Alejandro Escontrela（GitHub：`escontra`）维护，是把 **AMP（对抗式运动先验）** 从角色动画领域 **工程化到四足机器人 + Isaac Gym** 的早期开源实现，建立在 [legged_gym](./legged-gym.md) 与 [rsl_rl](https://github.com/leggedrobotics/rsl_rl) 之上。论文项目页见 [bit.ly/3hpvbD6](https://bit.ly/3hpvbD6)（Escontrela et al., 2022）。
 
 ## 英文缩写速查
 
@@ -44,5 +44,5 @@ sources:
 
 ## 推荐继续阅读
 
-- GitHub：<https://github.com/Alescontrela/AMP_for_hardware>
+- GitHub（作者维护仓）：<https://github.com/escontra/AMP_for_hardware>
 - [AMP 方法页](../methods/amp-reward.md)

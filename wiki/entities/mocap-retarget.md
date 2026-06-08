@@ -30,6 +30,8 @@ sources:
 - **低门槛对照**：理解「源骨架关节角 → 目标机器人关节角」需要哪些标定与坐标对齐时，可作为比 GMR 更小的阅读样本。
 - **导航锚点**：本知识库 [retarget-tools](../../references/repos/retarget-tools.md) 与历史资源地图均收录此外链，补齐实体页可避免详情页空链。
 
+> **一手性说明：** 非论文官方实现，而是 `ccrpRepo` 个人维护的工程示例；与 [GMR](../methods/motion-retargeting-gmr.md) 等论文作者仓相比，更适合作脚本参考而非方法复现基线。
+
 ## 定位与局限
 
 | 维度 | 说明 |
