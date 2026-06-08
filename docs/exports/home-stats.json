@@ -1,13 +1,133 @@
 {
   "generated_at": "2026-06-08",
-  "node_count": 777,
-  "edge_count": 5407,
+  "node_count": 791,
+  "edge_count": 5489,
   "coverage": {
-    "covered": 761,
-    "total": 775,
+    "covered": 775,
+    "total": 789,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mocap-retarget.md",
+      "detail_id": "entity-mocap-retarget",
+      "label": "mocap_retarget",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/soma-retargeter.md",
+      "detail_id": "entity-soma-retargeter",
+      "label": "SOMA Retargeter",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gvhmr.md",
+      "detail_id": "entity-gvhmr",
+      "label": "GVHMR",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/videomimic.md",
+      "detail_id": "entity-videomimic",
+      "label": "VideoMimic",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/phc.md",
+      "detail_id": "entity-phc",
+      "label": "PHC（Perpetual Humanoid Control）",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/human2humanoid.md",
+      "detail_id": "entity-human2humanoid",
+      "label": "human2humanoid（LeCAR-Lab）",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/motion-imitation-quadruped.md",
+      "detail_id": "entity-motion-imitation-quadruped",
+      "label": "motion_imitation（四足模仿动物）",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amp-for-hardware.md",
+      "detail_id": "entity-amp-for-hardware",
+      "label": "AMP_for_hardware",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/metalhead.md",
+      "detail_id": "entity-metalhead",
+      "label": "MetalHead",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/leggedgym-ex.md",
+      "detail_id": "entity-leggedgym-ex",
+      "label": "LeggedGym-Ex",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/stmr-quadruped-retargeting.md",
+      "detail_id": "entity-stmr-quadruped-retargeting",
+      "label": "STMR 四足时空重定向",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/go2-motion-imitation.md",
+      "detail_id": "entity-go2-motion-imitation",
+      "label": "Go2 Motion Imitation",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/pan-motion-retargeting.md",
+      "detail_id": "entity-pan-motion-retargeting",
+      "label": "PAN Motion Retargeting",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/walk-the-dog.md",
+      "detail_id": "entity-walk-the-dog",
+      "label": "WalkTheDog",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
       "detail_id": "entity-paper-hrl-stack-03-omniretarget",
@@ -33,14 +153,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/overview/robot-training-stack-layers-technology-map.md",
       "detail_id": "wiki-overview-robot-training-stack-layers-technology-map",
       "label": "机器人训练栈分层技术地图",
@@ -55,124 +167,12 @@
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-lab.md",
-      "detail_id": "entity-isaac-lab",
-      "label": "Isaac Lab",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mjlab.md",
-      "detail_id": "entity-mjlab",
-      "label": "mjlab (轻量 GPU 加速 RL 框架)",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unilab.md",
-      "detail_id": "entity-unilab",
-      "label": "UniLab：异构 CPU 仿真 / GPU 学习的机器人 RL 训练系统",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/newton-physics.md",
-      "detail_id": "entity-newton-physics",
-      "label": "Newton Physics（物理引擎）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/genesis-world-10.md",
-      "detail_id": "entity-genesis-world-10",
-      "label": "Genesis World 1.0（Genesis AI 仿真基础设施）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulator-selection-guide.md",
-      "detail_id": "wiki-queries-simulator-selection-guide",
-      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
-      "type": "query",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/simulation-evaluation-infrastructure.md",
-      "detail_id": "wiki-concepts-simulation-evaluation-infrastructure",
-      "label": "仿真评测基础设施（Simulation as Evaluation Infrastructure）",
-      "type": "concept",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/mujoco-vs-isaac-lab.md",
-      "detail_id": "wiki-comparisons-mujoco-vs-isaac-lab",
-      "label": "MuJoCo vs Isaac Lab：仿真器选型对比",
-      "type": "comparison",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agent-reach.md",
-      "detail_id": "entity-agent-reach",
-      "label": "Agent Reach（Panniantong）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
-      "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
-      "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
-      "type": "comparison",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/vision-backbones.md",
-      "detail_id": "wiki-concepts-vision-backbones",
-      "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/object-detection.md",
-      "detail_id": "wiki-methods-object-detection",
-      "label": "目标检测（Object Detection）",
-      "type": "method",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
-    "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-    "label": "OmniRetarget",
+    "path": "wiki/entities/mocap-retarget.md",
+    "detail_id": "entity-mocap-retarget",
+    "label": "mocap_retarget",
     "type": "entity",
     "recency": "2026-06-08",
     "source": "log.md"
