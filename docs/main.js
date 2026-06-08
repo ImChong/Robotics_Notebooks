@@ -2466,6 +2466,7 @@
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
     var metaEl = document.getElementById('detailMiniMapMeta');
+    var allNeighborsLink = document.getElementById('detailMiniMapAllNeighbors');
     var tooltipEl = document.getElementById('detail-mini-map-tooltip');
     if (!wrap || !svgEl || typeof window.d3 === 'undefined') return;
     var currentPath = (detailPage && detailPage.path) || '';
@@ -2638,13 +2639,23 @@
           window.d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale));
       });
 
+      var totalDeg = Object.keys(neighborSet).length;
+      var shown = neighborIds.length;
       if (metaEl) {
-        var totalDeg = Object.keys(neighborSet).length;
-        var shown = neighborIds.length;
         metaEl.textContent = shown + ' / ' + totalDeg + ' 个 1-hop 邻居 · 悬停预览 · 拖拽平移 · 点击跳转';
+      }
+      if (allNeighborsLink) {
+        if (totalDeg > 0) {
+          allNeighborsLink.hidden = false;
+          allNeighborsLink.textContent = '查看全部 ' + totalDeg + ' 个邻居 →';
+          allNeighborsLink.href = 'graph.html?focus=' + encodeURIComponent(currentPath);
+        } else {
+          allNeighborsLink.hidden = true;
+        }
       }
     }).catch(function () {
       if (metaEl) metaEl.textContent = '邻居数据加载失败';
+      if (allNeighborsLink) allNeighborsLink.hidden = true;
     });
   }
 
@@ -2713,7 +2724,7 @@
 
     const graphLink = document.getElementById('detailGraphLink');
     if (graphLink) {
-      graphLink.href = 'graph.html?focus=' + encodeURIComponent(detailPage.id || detailId);
+      graphLink.href = 'graph.html?focus=' + encodeURIComponent(detailPage.path || detailPage.id || detailId);
     }
     var ogTitle = document.getElementById('ogTitleMeta');
     var ogDesc = document.getElementById('ogDescMeta');

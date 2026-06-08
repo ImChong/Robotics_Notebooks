@@ -1275,6 +1275,8 @@
       text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px;
     }
     .sb-related-list { list-style: none; padding: 0; margin: 0 0 12px; display: flex; flex-direction: column; gap: 4px; }
+    .sb-neighbors-list { max-height: 220px; overflow-y: auto; }
+    .sb-neighbors-count { font-weight: 400; color: var(--text-muted, #94a3b8); }
     .sb-related-list li a {
       font-size: .76rem; color: rgba(0,212,255,0.75);
       text-decoration: none; display: block;
@@ -1530,6 +1532,10 @@
           <span class="sb-community-dot" id="sb-community-dot"></span>
           <span id="sb-community-label"></span>
         </div>
+      </div>
+      <div id="sb-neighbors-section" hidden>
+        <div class="sb-section-title">图邻居 <span id="sb-neighbors-count" class="sb-neighbors-count"></span></div>
+        <ul class="sb-related-list sb-neighbors-list" id="sb-neighbors-list"></ul>
       </div>
       <div id="sb-related-section" hidden>
         <div class="sb-section-title">关联页面</div>
@@ -3383,6 +3389,9 @@
     const sbCommunityBlock = document.getElementById('sb-community-block');
     const sbCommunityDot   = document.getElementById('sb-community-dot');
     const sbCommunityLabel = document.getElementById('sb-community-label');
+    const sbNeighborsSec  = document.getElementById('sb-neighbors-section');
+    const sbNeighborsList = document.getElementById('sb-neighbors-list');
+    const sbNeighborsCount = document.getElementById('sb-neighbors-count');
     const sbRelSec     = document.getElementById('sb-related-section');
     const sbRelList    = document.getElementById('sb-related-list');
     const sbPaperSec   = document.getElementById('sb-paper-section');
@@ -3463,6 +3472,26 @@
       const item = indexItems.find(it => it.path === d.id);
       const tags = item?.tags || [];
       sbTags.innerHTML = tags.map(t => `<span class="sb-tag">${escapeHtml(t)}</span>`).join('');
+
+      // 1-hop graph neighbors (full list)
+      const neighborIds = Array.from(direct).sort((a, b) => {
+        const na = nodes.find(n => n.id === a);
+        const nb = nodes.find(n => n.id === b);
+        return String(na?.label || na?._info?.title || a)
+          .localeCompare(String(nb?.label || nb?._info?.title || b), 'zh-CN');
+      });
+      if (neighborIds.length) {
+        if (sbNeighborsCount) sbNeighborsCount.textContent = '(' + neighborIds.length + ')';
+        sbNeighborsList.innerHTML = neighborIds.map(id => {
+          const n = nodes.find(nd => nd.id === id);
+          const label = n?.label || n?._info?.title || id.split('/').pop().replace('.md', '');
+          const detailId = toDetailId(id);
+          return `<li><a href="detail.html?id=${encodeURIComponent(detailId)}">${escapeHtml(label)}</a></li>`;
+        }).join('');
+        sbNeighborsSec.hidden = false;
+      } else {
+        sbNeighborsSec.hidden = true;
+      }
 
       // related from index
       const related = item?.related || [];
