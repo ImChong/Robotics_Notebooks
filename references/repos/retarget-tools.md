@@ -1,6 +1,6 @@
 # Retarget Tools
 
-**Retarget Tools：** 人体运动到机器人执行空间的开源工具与代表性项目导航（几何重定向、物理补丁、视频/单目估计与轨迹编辑），与知识库 [Motion Retargeting（动作重定向）](../../wiki/concepts/motion-retargeting.md) 主线配套使用。
+**Retarget Tools：** 人体/动物运动到机器人执行空间的开源工具与代表性项目导航（几何重定向、物理补丁、视频/单目估计与轨迹编辑），与知识库 [Motion Retargeting（动作重定向）](../../wiki/concepts/motion-retargeting.md) 主线配套使用。
 
 ## 与知识库主线的关系
 
@@ -14,22 +14,39 @@
 
 - [三维人体动捕模型 SMPL：A Skinned Multi Person Linear Model](https://yunyang1994.github.io/2021/08/21/%E4%B8%89%E7%BB%B4%E4%BA%BA%E4%BD%93%E6%A8%A1%E5%9E%8B-SMPL-A-Skinned-Multi-Person-Linear-Model/) — SMPL 系表示是多数重定向与视频人体估计管线的共同前置语言。
 
-## 几何重定向与通用实现
+## 人形：几何重定向与通用实现
 
-- [GMR](https://github.com/YanjieZe/GMR) — 通用运动学前端；与 wiki 方法页 [GMR](../../wiki/methods/motion-retargeting-gmr.md) 对应。
-- [OmniRetarget](https://omniretarget.github.io/) — 跨形态重定向框架与项目主页。
-- [mocap_retarget](https://github.com/ccrpRepo/mocap_retarget?tab=readme-ov-file) — 动捕数据向机器人运动空间的工程向管线示例。
+- [GMR](https://github.com/YanjieZe/GMR) — 通用运动学前端；wiki [GMR](../../wiki/methods/motion-retargeting-gmr.md)
+- [holosoma](https://github.com/amazon-far/holosoma) / [OmniRetarget](https://omniretarget.github.io/) — 交互保留重定向 + WBT 训练；wiki [holosoma](../../wiki/entities/holosoma.md)
+- [mocap_retarget](https://github.com/ccrpRepo/mocap_retarget) — 工程向 MoCap 管线；wiki [mocap-retarget](../../wiki/entities/mocap-retarget.md)
+- [SOMA Retargeter](https://github.com/NVIDIA/soma-retargeter) — SOMA BVH→G1 CSV；wiki [soma-retargeter](../../wiki/entities/soma-retargeter.md)
 
-## 物理一致性、策略学习与集成仿真
+## 人形：物理一致性、策略学习与集成仿真
 
-- [PHC](https://github.com/ZhengyiLuo/PHC) — 人形/角色控制与重定向相关 RL 生态中的常用基座之一。
-- [ProtoMotions](https://github.com/NVlabs/ProtoMotions) — NVIDIA 侧大规模可微分运动与物理集成方向的代表仓库。
-- [SPIDER](https://github.com/facebookresearch/spider) — Meta 研究向的物理交互与运动表示相关开源（与重定向/控制管线常并列出现）。
+- [PHC](https://github.com/ZhengyiLuo/PHC) — SMPL fitting + 物理模仿；wiki [PHC](../../wiki/entities/phc.md)
+- [ProtoMotions](https://github.com/NVlabs/ProtoMotions) — 大规模并行仿真；wiki [ProtoMotions](../../wiki/entities/protomotions.md)
+- [MimicKit](https://github.com/xbpeng/MimicKit) — 轻量模仿学习 + GMR 转换；wiki [MimicKit](../../wiki/entities/mimickit.md)
+- [SPIDER](https://github.com/facebookresearch/spider) — 物理采样式重定向；wiki [SPIDER](../../wiki/methods/spider-physics-informed-dexterous-retargeting.md)
+- [human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) — 遥操 + AMASS 重定向；wiki [human2humanoid](../../wiki/entities/human2humanoid.md)
 
-## 视频与单目人体运动
+## 人形：视频与单目人体运动
 
-- [GVHMR](https://github.com/zju3dv/GVHMR?tab=readme-ov-file) — 视频/单目场景下的人体运动估计，可作为重定向上游观测。
-- [VideoMimic](https://github.com/hongsukchoi/VideoMimic) — 视频驱动模仿与运动先验相关仓库。
+- [GVHMR](https://github.com/zju3dv/GVHMR) — 单目视频→SMPL；wiki [GVHMR](../../wiki/entities/gvhmr.md)
+- [VideoMimic](https://github.com/hongsukchoi/VideoMimic) — 视频驱动人形模仿；wiki [VideoMimic](../../wiki/entities/videomimic.md)
+
+## 四足：模仿动物与 AMP 生态
+
+- [motion_imitation](https://github.com/erwincoumans/motion_imitation) — 奠基四足模仿动物；wiki [motion-imitation-quadruped](../../wiki/entities/motion-imitation-quadruped.md)
+- [STMR_RL](https://github.com/terry97-guel/STMR_RL) — 时空重定向 + legged_gym；wiki [stmr-quadruped-retargeting](../../wiki/entities/stmr-quadruped-retargeting.md)
+- [AMP_for_hardware](https://github.com/Alescontrela/AMP_for_hardware) — 四足 AMP 工程基座；wiki [amp-for-hardware](../../wiki/entities/amp-for-hardware.md)
+- [MetalHead](https://github.com/inspirai/MetalHead) — A1 AMP jump/recovery；wiki [MetalHead](../../wiki/entities/metalhead.md)
+- [LeggedGym-Ex](https://github.com/lupinjia/LeggedGym-Ex) — legged_gym 多仿真器 + AMP/DeepMimic；wiki [leggedgym-ex](../../wiki/entities/leggedgym-ex.md)
+- [Go2 motion-imitation](https://github.com/TSUITUENYUE/motion-imitation) — Go2 retarget + Genesis；wiki [go2-motion-imitation](../../wiki/entities/go2-motion-imitation.md)
+
+## 跨形态（人↔四足）研究向
+
+- [pan-motion-retargeting](https://github.com/hlcdyy/pan-motion-retargeting) — 学习式部位注意力重定向；wiki [pan-motion-retargeting](../../wiki/entities/pan-motion-retargeting.md)
+- [walk-the-dog](https://github.com/PeizhuoLi/walk-the-dog) — 相位流形跨形态对齐；wiki [walk-the-dog](../../wiki/entities/walk-the-dog.md)
 
 ## 轨迹与关键帧编辑（机器人运动资产）
 

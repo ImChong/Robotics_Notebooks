@@ -101,12 +101,14 @@
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
 | [x] [extreme-parkour.md](repos/extreme-parkour.md) | Extreme Parkour 官方代码（ICRA 2024；Isaac Gym + legged_gym 两阶段跑酷训练） |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
+| [x] [leggedgym_ex.md](repos/leggedgym_ex.md) | LeggedGym-Ex：legged_gym 多仿真器扩展 + AMP/DeepMimic（Go2/K1 等） |
 | [x] [leggedrobotics_robotic_world_model.md](repos/leggedrobotics_robotic_world_model.md) | robotic_world_model：ETH RSL 的 RWM / RWM-U Isaac Lab 扩展（在线 + 离线想象管线） |
 | [x] [leggedrobotics_robotic_world_model_lite.md](repos/leggedrobotics_robotic_world_model_lite.md) | robotic_world_model_lite：无仿真器依赖的 RWM / RWM-U 离线训练精简仓 |
 | [x] [lingbot-map.md](repos/lingbot-map.md) | LingBot-Map：Robbyant 流式 3D 重建官方仓（GCT/GCA、FlashInfer、误链勘误） |
 | [x] [lucidrains_mimic_video.md](repos/lucidrains_mimic_video.md) | lucidrains/mimic-video：mimic-video / VAM 论文的非官方 PyTorch 实现索引 |
 | [x] [defi-logos-robotics.md](repos/defi-logos-robotics.md) | LogosRoboticsGroup/DeFi：解耦前向/逆动力学 VLA 官方实现（arXiv:2604.16391） |
 | [x] [easy_quadruped.md](repos/easy_quadruped.md) | Xzgz718/easy_quadruped：StanfordQuadruped 二次开发，Pupper 步态控制 + MuJoCo 浮动机身闭环仿真 |
+| [x] [go2_motion_imitation.md](repos/go2_motion_imitation.md) | TSUITUENYUE/motion-imitation：Go2 retarget_motion + Genesis 关节速度匹配模仿 |
 | [x] [pupperv3_monorepo.md](repos/pupperv3_monorepo.md) | Nate711/pupperv3-monorepo：Pupper v3 机载 ROS 2 软件（与官方文档 ~/pupperv3-monorepo 一致） |
 | [x] [esi_bench.md](repos/esi_bench.md) | ESI-Bench/ESI-Bench：OmniGibson 主动探索评测与 HF 数据集（arXiv:2605.18746） |
 | [x] [robot_lab.md](repos/robot_lab.md) | robot_lab：基于 IsaacLab 的 RL 扩展框架，支持 26+ 机器人（四足 / 轮足 / 人形） |
@@ -120,13 +122,18 @@
 | [x] [atom01_description.md](repos/atom01_description.md) | Atom01 描述仓库（URDF/网格/模型） |
 | [x] [atom01_firmware.md](repos/atom01_firmware.md) | Atom01 固件仓库（板端构建与通信链路） |
 | [x] [open_duck_mini.md](repos/open_duck_mini.md) | Open Duck Mini：BDX 迷你双足 Hub（CAD/BOM/v2 sim2real 文档） |
+| [x] [pan_motion_retargeting.md](repos/pan_motion_retargeting.md) | hlcdyy/pan-motion-retargeting：学习式人↔四足重定向（TVCG 2023） |
+| [x] [phc.md](repos/phc.md) | ZhengyiLuo/PHC：SMPL fitting 重定向 + 物理人形控制 |
 | [x] [open_duck_playground.md](repos/open_duck_playground.md) | Open Duck Playground：MuJoCo Playground/MJX RL 训练与 ONNX 导出 |
 | [x] [open_duck_reference_motion_generator.md](repos/open_duck_reference_motion_generator.md) | Open Duck 参考运动：Placo 参数化步态 → 模仿奖励系数 |
 | [x] [open_duck_mini_runtime.md](repos/open_duck_mini_runtime.md) | Open Duck Mini Runtime：Pi Zero 2W 机载 ONNX 与 Feetech 驱动 |
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
+| [x] [amp_for_hardware.md](repos/amp_for_hardware.md) | AMP_for_hardware：四足 AMP 工程基座（Isaac Gym + legged_gym） |
 | [x] [host_internrobotics.md](repos/host_internrobotics.md) | InternRobotics/HoST：RSS 2025 人形多姿态起身 RL（Isaac Gym + legged_gym，arXiv:2502.08378） |
 | [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |
+| [x] [soma_retargeter.md](repos/soma_retargeter.md) | NVIDIA/soma-retargeter：SOMA BVH→G1 CSV GPU 重定向 |
+| [x] [stmr_quadruped_retargeting.md](repos/stmr_quadruped_retargeting.md) | STMR 生态：Quadruped_Retargeting + Motion-Timing + STMR_RL |
 | [x] [apollo-lab-yale-apollo-py.md](repos/apollo-lab-yale-apollo-py.md) | apollo-py：Apollo Toolbox Python 包骨架（与 URDD 论文配套的轻量 README 入口） |
 | [x] [apollo-lab-yale-apollo-resources.md](repos/apollo-lab-yale-apollo-resources.md) | apollo-resources：URDD 机器人/环境资产与 GitHub Pages 宿主（Apollo-Lab-Yale） |
 | [x] [apollo-lab-yale-apollo-rust.md](repos/apollo-lab-yale-apollo-rust.md) | apollo-rust：Rust URDF→URDD 预处理与示例输出（Apollo-Lab-Yale） |
@@ -134,13 +141,19 @@
 | [x] [openhelix_team_capvector.md](repos/openhelix_team_capvector.md) | OpenHelix-Team/CapVector：CapVector（arXiv:2605.10903）官方训练与评估代码入口 |
 | [x] [gs_playground.md](repos/gs_playground.md) | GS-Playground：批量 3DGS 光真实感并行仿真框架，RSS 2026，10^4 FPS |
 | [x] [aholo-viewer.md](repos/aholo-viewer.md) | Aholo Viewer：Web 高性能 3DGS+Mesh，Chunked Streaming LoD（manycoretech） |
+| [x] [metalhead.md](repos/metalhead.md) | inspirai/MetalHead：Unitree A1 AMP walk/jump/recovery |
+| [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
+| [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
 | [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管，Disney/DeepMind/NVIDIA） |
 | [x] [ppf-contact-solver.md](repos/ppf-contact-solver.md) | ppf-contact-solver：ZOZO GPU shell/solid/rod FEM+接触离线仿真（TOG 论文实现） |
 | [x] [mjlab_playground.md](repos/mjlab_playground.md) | mjlab_playground：mjlab 任务集合（MuJoCo Playground 端口起步，含 Go1/T1 getup 等） |
 | [x] [mujoco_playground.md](repos/mujoco_playground.md) | google-deepmind/mujoco_playground：MJX 机器人 RL 环境库（time-to-robot 训练入口） |
 | [x] [freemocap.md](repos/freemocap.md) | FreeMoCap：开源低成本多相机动捕与 GUI 平台（AGPL） |
+| [x] [gvhmr.md](repos/gvhmr.md) | zju3dv/GVHMR：单目视频全局人体运动恢复（SMPL），重定向上游 |
 | [x] [ubisoft-laforge-animation-dataset.md](repos/ubisoft-laforge-animation-dataset.md) | LaFAN1：Ubisoft La Forge BVH 动捕与 SIGGRAPH 2020 评估脚本（CC BY-NC-ND） |
+| [x] [videomimic.md](repos/videomimic.md) | hongsukchoi/VideoMimic：视频驱动人形模仿与重定向 |
+| [x] [walk_the_dog.md](repos/walk_the_dog.md) | PeizhuoLi/walk-the-dog：SIGGRAPH 2024 人↔狗相位流形跨形态对齐 |
 | [x] [wbc_fsm.md](repos/wbc_fsm.md) | wbc_fsm：Unitree G1 C++ 全身控制 FSM 部署框架，ONNX + Unitree SDK2，无 ROS 依赖（ccrpRepo） |
 | [x] [wem.md](repos/wem.md) | ZGCA-HMI-Lab/WEM：World-Ego Model 与 HTEWorld 官方代码（arXiv:2605.19957） |
 | [x] [ge_sim_v2.md](repos/ge_sim_v2.md) | AgibotTech/GE-Sim-V2：Genie Envisioner World Simulator 2.0（arXiv:2605.27491；代码/权重待发布） |
@@ -184,6 +197,7 @@
 | [x] [horizon_robotics_holomotion.md](repos/horizon_robotics_holomotion.md) | HoloMotion：地平线人形全身运动跟踪开源栈（GitHub + Pages 文档 + arXiv:2605.15336 + HF 权重 + Docker） |
 | [x] [homeworld.md](repos/homeworld.md) | Kairos-HomeWorld/HomeWorld：全屋 sim-ready 室内场景生成（arXiv:2606.06390；代码/数据集 Coming Soon） |
 | [x] [holosoma.md](repos/holosoma.md) | holosoma：Amazon FAR 人形 RL 训练/推理 + OmniRetarget 重定向（IsaacGym/IsaacSim/MJWarp，G1/T1，arXiv:2509.26633） |
+| [x] [human2humanoid.md](repos/human2humanoid.md) | LeCAR-Lab/human2humanoid：人形全身遥操 + AMASS 重定向脚本 |
 | [x] [google_deepmind_barkour_robot.md](repos/google_deepmind_barkour_robot.md) | barkour_robot：DeepMind 敏捷四足 CAD/PCBA/装配/固件（Pigweed+EtherCAT）与 OnShape、Menagerie MJCF 官方入口索引 |
 | [x] [mujoco_menagerie_google_barkour_models.md](repos/mujoco_menagerie_google_barkour_models.md) | mujoco_menagerie：`google_barkour_v0` / `google_barkour_vb` 子目录（MJCF 资产） |
 | [x] [sage-sim2real-actuator-gap.md](repos/sage-sim2real-actuator-gap.md) | SAGE：Isaac Sim 重放与真机关节日志对齐，量化执行器层 sim2real gap（isaac-sim2real/sage） |

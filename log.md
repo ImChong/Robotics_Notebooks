@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-08] ingest | sources/repos/* — 补全人形/四足重定向成熟开源仓库实体（14 页）并互链 motion-retargeting 主线
+
+- 原始资料：`sources/repos/mocap_retarget.md`、`soma_retargeter.md`、`gvhmr.md`、`videomimic.md`、`phc.md`、`human2humanoid.md`、`motion_imitation_peng.md`、`amp_for_hardware.md`、`metalhead.md`、`leggedgym_ex.md`、`stmr_quadruped_retargeting.md`、`go2_motion_imitation.md`、`pan_motion_retargeting.md`、`walk_the_dog.md`
+- 新建实体：[`wiki/entities/mocap-retarget.md`](wiki/entities/mocap-retarget.md)、[`soma-retargeter.md`](wiki/entities/soma-retargeter.md)、[`gvhmr.md`](wiki/entities/gvhmr.md)、[`videomimic.md`](wiki/entities/videomimic.md)、[`phc.md`](wiki/entities/phc.md)、[`human2humanoid.md`](wiki/entities/human2humanoid.md)、[`motion-imitation-quadruped.md`](wiki/entities/motion-imitation-quadruped.md)、[`amp-for-hardware.md`](wiki/entities/amp-for-hardware.md)、[`metalhead.md`](wiki/entities/metalhead.md)、[`leggedgym-ex.md`](wiki/entities/leggedgym-ex.md)、[`stmr-quadruped-retargeting.md`](wiki/entities/stmr-quadruped-retargeting.md)、[`go2-motion-imitation.md`](wiki/entities/go2-motion-imitation.md)、[`pan-motion-retargeting.md`](wiki/entities/pan-motion-retargeting.md)、[`walk-the-dog.md`](wiki/entities/walk-the-dog.md)
+- 交叉更新：[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`references/repos/retarget-tools.md`](references/repos/retarget-tools.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-08] ingest | sources/papers/omniretarget_arxiv_2509_26633.md — OmniRetarget（ICRA 2026）全文消化：holosoma 代码 + HF 数据集 + 项目页
 
 - 原始资料：[`omniretarget_arxiv_2509_26633.md`](sources/papers/omniretarget_arxiv_2509_26633.md)（<https://arxiv.org/abs/2509.26633>、PDF <https://omniretarget.github.io/static/images/paper.pdf>）；[`omniretarget-github-io.md`](sources/sites/omniretarget-github-io.md)；[`holosoma.md`](sources/repos/holosoma.md)（<https://github.com/amazon-far/holosoma>）；[`omniretarget-dataset-huggingface.md`](sources/sites/omniretarget-dataset-huggingface.md)（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）

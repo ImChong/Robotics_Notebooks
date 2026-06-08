@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, locomotion, parkour, motion-matching, depth, teacher-student, dagger, ppo, unitree-g1, perception, skill-chaining, amazon-far, body-system-stack]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-08
 arxiv: "2602.15827"
 venue: "RSS 2026"
 related:
@@ -141,7 +141,7 @@ flowchart TB
 
 ## 与其他页面的关系
 
-- 数据上游：[OmniRetarget（arXiv:2509.26633）](./paper-hrl-stack-03-omniretarget.md)
+- 数据上游：[OmniRetarget（arXiv:2509.26633）](./paper-hrl-stack-03-omniretarget.md)、[holosoma](./holosoma.md)（开源重定向与 WBT 管线）
 - 蒸馏算法：[DAgger](../methods/dagger.md)、[Imitation Learning](../methods/imitation-learning.md)
 - 任务语境：[Locomotion](../tasks/locomotion.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)
 - 硬件：[Unitree G1](./unitree-g1.md)
