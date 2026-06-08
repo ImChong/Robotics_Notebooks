@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
 updated: 2026-06-07
+arxiv: "2010.11251"
+venue: "Science Robotics 2020"
 related:
   - ../overview/paper-notebook-category-03-high-impact-selection.md
   - ../overview/humanoid-paper-notebooks-index.md

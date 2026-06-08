@@ -43,7 +43,8 @@ sources:
 | 确定性连续控制、操作任务 | **TD3** | SAC |
 | 模仿人类运动风格 | **AMP（PPO 变体）** | SAC+GAIL |
 | 需要最高渐近性能 | **SAC** | TD3 |
-| 调参时间有限，要稳定收敛 | **PPO** | AWR |
+| 调参时间有限，要稳定收敛 | **PPO** | [AWR](../methods/awr.md) |
+| 含人类演示 / 离线缓冲区数据 | **[AWR](../methods/awr.md)** | SAC |
 
 ---
 
@@ -142,6 +143,25 @@ $$\tilde{a} = \pi_{\theta'}(s') + \text{clip}(\epsilon, -c, c), \quad y = r + \g
 
 ---
 
+### AWR（Advantage-Weighted Regression）
+
+**类型**：Off-policy，回归式策略优化
+
+**原理**：不直接计算策略梯度，而是用优势函数的指数权重 $\exp(A/\beta)$ 对动作做加权监督回归，把策略优化转成监督学习。
+
+**适合足式机器人的原因**：
+- 实现极简，不需要信赖域 / clip，调参负担小
+- 离策兼容，可无缝吃人类演示或历史回放缓冲区数据
+- 作为"调参时间有限"或"有离线/演示数据"场景的备选路径
+
+**缺点**：
+- 渐近性能通常不及 SAC / PPO，对大规模并行仿真没有专门优化
+- 价值基准网络质量直接决定优势估计的可靠性
+
+详见 [AWR 方法页](../methods/awr.md)。
+
+---
+
 ## 足式机器人 RL 实践要点
 
 ### 1. 大规模并行仿真 → 用 PPO
@@ -176,6 +196,7 @@ PPO 更容易调试：reward 曲线平滑，超参数不敏感，失败原因更
 ## 关联页面
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO/SAC/TD3 算法详细说明
+- [AWR](../methods/awr.md) — 优势加权回归，离策/演示数据场景的回归式备选
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全景
 - [Reward Design](../concepts/reward-design.md) — reward 设计是算法选型之后的核心问题
 - [Sim2Real](../concepts/sim2real.md) — 仿真训练后如何迁移到真实机器人
