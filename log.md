@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-08] ingest | sources/papers/omniretarget_arxiv_2509_26633.md — OmniRetarget（ICRA 2026）全文消化：holosoma 代码 + HF 数据集 + 项目页
+
+- 原始资料：[`omniretarget_arxiv_2509_26633.md`](sources/papers/omniretarget_arxiv_2509_26633.md)（<https://arxiv.org/abs/2509.26633>、PDF <https://omniretarget.github.io/static/images/paper.pdf>）；[`omniretarget-github-io.md`](sources/sites/omniretarget-github-io.md)；[`holosoma.md`](sources/repos/holosoma.md)（<https://github.com/amazon-far/holosoma>）；[`omniretarget-dataset-huggingface.md`](sources/sites/omniretarget-dataset-huggingface.md)（<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>）
+- 深化实体：[`wiki/entities/paper-hrl-stack-03-omniretarget.md`](wiki/entities/paper-hrl-stack-03-omniretarget.md)（interaction mesh + Sequential SOCP + 5 reward 下游 RL + Mermaid 管线）
+- 新建实体：[`wiki/entities/holosoma.md`](wiki/entities/holosoma.md)、[`wiki/entities/omniretarget-dataset.md`](wiki/entities/omniretarget-dataset.md)
+- 交叉更新：[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-08] ingest | sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md — Agent Reach 抓取训练栈分层长文并建六层技术地图
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（修复 hatchling `guides` force-include 重复后 `pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）

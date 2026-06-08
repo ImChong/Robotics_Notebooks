@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-08",
-  "node_count": 775,
-  "edge_count": 5386,
+  "node_count": 777,
+  "edge_count": 5407,
   "coverage": {
-    "covered": 759,
-    "total": 773,
+    "covered": 761,
+    "total": 775,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
+      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+      "label": "OmniRetarget",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/holosoma.md",
+      "detail_id": "entity-holosoma",
+      "label": "holosoma（Amazon FAR 人形 RL + 重定向框架）",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/omniretarget-dataset.md",
+      "detail_id": "entity-omniretarget-dataset",
+      "label": "OmniRetarget Dataset（G1 交互重定向轨迹）",
+      "type": "entity",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/robot-training-stack-layers-technology-map.md",
       "detail_id": "wiki-overview-robot-training-stack-layers-technology-map",
@@ -135,45 +167,13 @@
       "type": "method",
       "recency": "2026-06-07",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/esi-bench.md",
-      "detail_id": "entity-esi-bench",
-      "label": "ESI-Bench（具身空间智能基准）",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/3d-spatial-vqa.md",
-      "detail_id": "wiki-concepts-3d-spatial-vqa",
-      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-      "type": "concept",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-06-07",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md",
-      "detail_id": "entity-paper-hrl-stack-27-learning_whole_body_humanoid_locomot",
-      "label": "Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking",
-      "type": "entity",
-      "recency": "2026-06-07",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/robot-training-stack-layers-technology-map.md",
-    "detail_id": "wiki-overview-robot-training-stack-layers-technology-map",
-    "label": "机器人训练栈分层技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
+    "detail_id": "entity-paper-hrl-stack-03-omniretarget",
+    "label": "OmniRetarget",
+    "type": "entity",
     "recency": "2026-06-08",
     "source": "log.md"
   }
