@@ -130,6 +130,7 @@
 | [x] [axellwppr_motion_tracking.md](repos/axellwppr_motion_tracking.md) | Axellwppr/motion_tracking：GentleHumanoid 全身跟踪训练/部署（mjlab，含 VR teleop 与 ONNX sim2real） |
 | [x] [amp_mjlab.md](repos/amp_mjlab.md) | AMP_mjlab：Unitree G1 统一 AMP locomotion+recovery 策略（mjlab + rsl_rl） |
 | [x] [amp_for_hardware.md](repos/amp_for_hardware.md) | AMP_for_hardware：四足 AMP 工程基座（Isaac Gym + legged_gym） |
+| [x] [amp_rsl_rl.md](repos/amp_rsl_rl.md) | AMP-RSL-RL：rsl_rl(PPO)+AMP 人形模仿，可 pip 安装（IIT） |
 | [x] [host_internrobotics.md](repos/host_internrobotics.md) | InternRobotics/HoST：RSS 2025 人形多姿态起身 RL（Isaac Gym + legged_gym，arXiv:2502.08378） |
 | [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |
 | [x] [soma_retargeter.md](repos/soma_retargeter.md) | NVIDIA/soma-retargeter：SOMA BVH→G1 CSV GPU 重定向 |
@@ -150,6 +151,7 @@
 | [x] [mjlab_playground.md](repos/mjlab_playground.md) | mjlab_playground：mjlab 任务集合（MuJoCo Playground 端口起步，含 Go1/T1 getup 等） |
 | [x] [mujoco_playground.md](repos/mujoco_playground.md) | google-deepmind/mujoco_playground：MJX 机器人 RL 环境库（time-to-robot 训练入口） |
 | [x] [freemocap.md](repos/freemocap.md) | FreeMoCap：开源低成本多相机动捕与 GUI 平台（AGPL） |
+| [x] [fairmotion.md](repos/fairmotion.md) | fairmotion：Meta 通用动捕数据处理库（BVH/AMASS IO，已归档），重定向上游 |
 | [x] [gvhmr.md](repos/gvhmr.md) | zju3dv/GVHMR：单目视频全局人体运动恢复（SMPL），重定向上游 |
 | [x] [ubisoft-laforge-animation-dataset.md](repos/ubisoft-laforge-animation-dataset.md) | LaFAN1：Ubisoft La Forge BVH 动捕与 SIGGRAPH 2020 评估脚本（CC BY-NC-ND） |
 | [x] [videomimic.md](repos/videomimic.md) | hongsukchoi/VideoMimic：视频驱动人形模仿与重定向 |

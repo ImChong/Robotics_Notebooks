@@ -158,6 +158,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [Go2 Motion Imitation](../entities/go2-motion-imitation.md) | Go2 专用 retarget_motion + Genesis 训练 |
 | [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
 | [FreeMoCap](../entities/freemocap.md) | 开源多相机 USB 动捕与 GUI 平台，适合作为低成本原始人体轨迹来源（AGPL，集成前需合规评估） |
+| [fairmotion](../entities/fairmotion.md) | Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK，已归档）；重定向上游数据层，本身不做机器人重定向 |
 
 ---
 
@@ -237,3 +238,5 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) / [STMR](../entities/stmr-quadruped-retargeting.md) / [AMP_for_hardware](../entities/amp-for-hardware.md) / [MetalHead](../entities/metalhead.md) / [LeggedGym-Ex](../entities/leggedgym-ex.md) — 四足模仿与 AMP 生态
 - [Go2 Motion Imitation](../entities/go2-motion-imitation.md) — Go2 + Genesis 重定向样板
 - [PAN Motion Retargeting](../entities/pan-motion-retargeting.md) / [WalkTheDog](../entities/walk-the-dog.md) — 跨形态（人↔四足）学习式对齐研究
+- [AMP-RSL-RL](../entities/amp-rsl-rl.md) — rsl_rl(PPO)+AMP 的人形模仿实现，重定向/动捕产物的消费侧（可 pip 安装）
+- [fairmotion](../entities/fairmotion.md) — 上游通用动捕数据处理库（已归档），重定向前的数据 IO/表示层

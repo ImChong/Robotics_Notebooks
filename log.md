@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-08] ingest | sources/repos/* — 补充 fairmotion / AMP-RSL-RL 两个重定向相关成熟仓库实体并互链
+
+- 原始资料：`sources/repos/amp_rsl_rl.md`、`sources/repos/fairmotion.md`
+- 新建实体：[`wiki/entities/amp-rsl-rl.md`](wiki/entities/amp-rsl-rl.md)、[`wiki/entities/fairmotion.md`](wiki/entities/fairmotion.md)
+- 交叉更新：[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`references/repos/retarget-tools.md`](references/repos/retarget-tools.md)、[`sources/README.md`](sources/README.md)
+- 说明：fairmotion 经核实为已归档(2023)的通用动捕工具、本身不做机器人重定向，按「上游数据基础设施」收录（与 FreeMoCap/MotionCode 同列）；AMP-RSL-RL 为 IIT 的 rsl_rl+AMP 人形模仿实现。
+
 ## [2026-06-08] ingest | sources/repos/* — 补全人形/四足重定向成熟开源仓库实体（14 页）并互链 motion-retargeting 主线
 
 - 原始资料：`sources/repos/mocap_retarget.md`、`soma_retargeter.md`、`gvhmr.md`、`videomimic.md`、`phc.md`、`human2humanoid.md`、`motion_imitation_peng.md`、`amp_for_hardware.md`、`metalhead.md`、`leggedgym_ex.md`、`stmr_quadruped_retargeting.md`、`go2_motion_imitation.md`、`pan_motion_retargeting.md`、`walk_the_dog.md`

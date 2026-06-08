@@ -13,6 +13,7 @@
 ## 人体表示与参数化模型
 
 - [三维人体动捕模型 SMPL：A Skinned Multi Person Linear Model](https://yunyang1994.github.io/2021/08/21/%E4%B8%89%E7%BB%B4%E4%BA%BA%E4%BD%93%E6%A8%A1%E5%9E%8B-SMPL-A-Skinned-Multi-Person-Linear-Model/) — SMPL 系表示是多数重定向与视频人体估计管线的共同前置语言。
+- [fairmotion](https://github.com/facebookresearch/fairmotion) — Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK、可视化）；重定向上游数据基础设施，本身不做机器人重定向（2023 已归档）；wiki [fairmotion](../../wiki/entities/fairmotion.md)
 
 ## 人形：几何重定向与通用实现
 
@@ -28,6 +29,7 @@
 - [MimicKit](https://github.com/xbpeng/MimicKit) — 轻量模仿学习 + GMR 转换；wiki [MimicKit](../../wiki/entities/mimickit.md)
 - [SPIDER](https://github.com/facebookresearch/spider) — 物理采样式重定向；wiki [SPIDER](../../wiki/methods/spider-physics-informed-dexterous-retargeting.md)
 - [human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) — 遥操 + AMASS 重定向；wiki [human2humanoid](../../wiki/entities/human2humanoid.md)
+- [AMP-RSL-RL](https://github.com/gbionics/amp-rsl-rl) — rsl_rl(PPO)+AMP 人形模仿，对称性增广、可 pip 安装（IIT）；wiki [amp-rsl-rl](../../wiki/entities/amp-rsl-rl.md)
 
 ## 人形：视频与单目人体运动
 
