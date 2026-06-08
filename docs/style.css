@@ -357,7 +357,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   letter-spacing: -.01em;
   margin: 0;
 }
-.section-subtitle { color: var(--text-muted); font-size: .97rem; margin-bottom: 28px; max-width: 72ch; }
+.section-subtitle {
+  color: var(--text-muted);
+  font-size: .97rem;
+  margin-bottom: 28px;
+  max-width: 72ch;
+  /* CJK：避免「核心」等词在容器边缘被拆成两行 */
+  word-break: keep-all;
+  line-break: strict;
+}
 .detail-recent-ingest-timeline { display: grid; gap: 10px; }
 .detail-recent-ingest-item {
   display: flex;
@@ -651,6 +659,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   flex: 1;
   min-width: 0;
   max-width: var(--content-max-width);
+}
+/* 详情/路线主栏已由 flex 限宽，勿再叠 72ch 导致副标题提前换行 */
+.detail-content-main .section-subtitle {
+  max-width: none;
 }
 /* Detail page — 来源链接：超长 URL 单行省略，悬停 title 显示完整地址 */
 #detailSourceList > article.card {
