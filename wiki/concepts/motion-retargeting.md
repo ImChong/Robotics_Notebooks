@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-05-31
+updated: 2026-06-08
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -147,10 +147,18 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [LaFAN1](../entities/lafan1-dataset.md) | Ubisoft 发布的多主题 **BVH** 棚拍动捕（**CC BY-NC-ND**；常用作基准与部署案例数据源） |
 | [Mixamo](../entities/mixamo.md) | Adobe **商业**角色与动画库；快速原型与美术管线友好，**不等同**于可自由再分发的原始 MoCap 研究档案 |
 | SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |
-| phc (Perpetual Humanoid Control) | PHC 的重定向+RL 框架 |
-| OmniH2O | 人形机器人遥操+重定向框架 |
+| [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
+| [SOMA Retargeter](../entities/soma-retargeter.md) | NVIDIA SOMA BVH→G1 CSV，GPU IK（SEED 数据生态） |
+| [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |
+| [GVHMR](../entities/gvhmr.md) | 单目视频→SMPL 全局人体运动（重定向上游） |
+| [VideoMimic](../entities/videomimic.md) | 视频→人形参考 + RL 模仿 |
+| [human2humanoid](../entities/human2humanoid.md) | LECAR 遥操栈；含 AMASS 重定向脚本 |
+| [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) | 动物 MoCap→四足模仿奠基仓库 |
+| [STMR 四足重定向](../entities/stmr-quadruped-retargeting.md) | 空间+时间重定向 + legged_gym RL |
+| [Go2 Motion Imitation](../entities/go2-motion-imitation.md) | Go2 专用 retarget_motion + Genesis 训练 |
 | [MotionCode](../entities/motioncode.md) | 产业侧人体运动采集与标注（官网宣称可进 Isaac / MuJoCo 等；多作原始运动源，仍需重定向） |
 | [FreeMoCap](../entities/freemocap.md) | 开源多相机 USB 动捕与 GUI 平台，适合作为低成本原始人体轨迹来源（AGPL，集成前需合规评估） |
+| [fairmotion](../entities/fairmotion.md) | Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK，已归档）；重定向上游数据层，本身不做机器人重定向 |
 
 ---
 
@@ -222,3 +230,13 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [SAM 3D Body](../entities/sam-3d-body.md) — 单目 RGB 全身 MHR 估计，可作视频→重定向上游
 - [SAM3DBody-cpp](../entities/sam3dbody-cpp.md) — 上述模型的 C++/BVH 工程导出
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — Robot-Free 示范的 SKR 与全身 WBC 接口
+- [PHC](../entities/phc.md) — SMPL fitting 重定向与大规模物理模仿
+- [SOMA Retargeter](../entities/soma-retargeter.md) — SOMA/SEED→G1 批处理重定向
+- [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) — 视频→人体/人形两条管线入口
+- [human2humanoid](../entities/human2humanoid.md) — 遥操与 AMASS 重定向同仓
+- [mocap_retarget](../entities/mocap-retarget.md) — 轻量工程向 MoCap 映射参考
+- [motion_imitation（四足）](../entities/motion-imitation-quadruped.md) / [STMR](../entities/stmr-quadruped-retargeting.md) / [AMP_for_hardware](../entities/amp-for-hardware.md) / [MetalHead](../entities/metalhead.md) / [LeggedGym-Ex](../entities/leggedgym-ex.md) — 四足模仿与 AMP 生态
+- [Go2 Motion Imitation](../entities/go2-motion-imitation.md) — Go2 + Genesis 重定向样板
+- [PAN Motion Retargeting](../entities/pan-motion-retargeting.md) / [WalkTheDog](../entities/walk-the-dog.md) — 跨形态（人↔四足）学习式对齐研究
+- [AMP-RSL-RL](../entities/amp-rsl-rl.md) — rsl_rl(PPO)+AMP 的人形模仿实现，重定向/动捕产物的消费侧（可 pip 安装）
+- [fairmotion](../entities/fairmotion.md) — 上游通用动捕数据处理库（已归档），重定向前的数据 IO/表示层
