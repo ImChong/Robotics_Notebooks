@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/ladderman_arxiv_2606_05873.md — LadderMan 人形感知梯子攀爬（项目页 + arXiv）消化并建实体页
+
+- 原始资料：[`sources/papers/ladderman_arxiv_2606_05873.md`](sources/papers/ladderman_arxiv_2606_05873.md)（<https://arxiv.org/abs/2606.05873>）；[`sources/sites/ladderman-robot-github-io.md`](sources/sites/ladderman-robot-github-io.md)（<https://ladderman-robot.github.io/>）
+- 新建实体：[`wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md`](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)（两阶段 hybrid tracking + DAgger+RL、VFM/RFM sim-to-real、梯上双智能体操作 + Mermaid 管线）
+- 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)
+
 ## [2026-06-09] ingest | sources/repos/python_robotics.md — 接入 PythonRobotics 代码库/教材/arXiv 论文并新建实体页与导航栈交叉引用
 
 - 原始资料：[`sources/repos/python_robotics.md`](sources/repos/python_robotics.md)、[`sources/papers/python_robotics_arxiv_1808_10703.md`](sources/papers/python_robotics_arxiv_1808_10703.md)、[`sources/courses/python_robotics_textbook.md`](sources/courses/python_robotics_textbook.md)

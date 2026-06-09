@@ -2,7 +2,7 @@
 type: concept
 tags: [rl, sim2real, training, humanoid, policy-optimization]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-09
 summary: "Privileged Training 让 teacher 使用仿真特权信息训练，再蒸馏给真实可观测 student，是 sim2real 常见套路。"
 ---
 
@@ -117,6 +117,12 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - **Stage 2 Student**：**DAgger** 蒸馏为 **多视角深度 Transformer** 统一下身策略；部署仅前后 ZED 深度。
 - 见 [RPL 实体页](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) 与 [sources/papers/rpl_arxiv_2602_03002.md](../../sources/papers/rpl_arxiv_2602_03002.md)。
 
+### LadderMan（人形梯子攀爬，Zhao et al. 2026）
+
+- **Stage 1 Teacher**：**状态专家** $\pi^{\text{expert}}_{\phi,z}$ 用 **hybrid motion tracking**（非对称上/下身跟踪 + 梯子接触奖励）从 **单条参考** 学到多倾角/踏棍间距攀爬；观测含梯子相对位姿等 **特权几何**。
+- **Stage 2 Student**：**DAgger + PPO + KL** 蒸馏为仅 **深度 + 本体 + 攀爬方向** 的 $\pi^{\text{visual}}$；真机深度经 **VFM** 而非学生侧特权输入。
+- 见 [LadderMan 实体页](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) 与 [sources/papers/ladderman_arxiv_2606_05873.md](../../sources/papers/ladderman_arxiv_2606_05873.md)。
+
 ### DreamWaQ / DreamWaQ++（四足，Nahrendra et al.）
 
 - **DreamWaQ（ICRA 2023）**：盲走 + **CENet** 估计隐式地形上下文；单阶段非对称 AC，不依赖显式高度图。
@@ -178,6 +184,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
 - [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
+- [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 单参考 hybrid tracking 专家 → 深度 visuomotor 学生
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 

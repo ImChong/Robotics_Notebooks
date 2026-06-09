@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-08
+updated: 2026-06-09
 sources:
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
@@ -113,6 +113,10 @@ flowchart TD
 ### 12. 多向深度感知行走 + 载荷（FALCON 解耦 + 分地形蒸馏）
 - **核心**：**FALCON 式双智能体**（下身条件 **多视角深度**，上身 **盲策略**）；Stage 1 用 **特权高程图** 训 **分地形专家** 并加 **末端力课程** 面向载荷；Stage 2 **DAgger** 蒸馏为统一深度 Transformer，辅以 **DFSV**（速度选相机）与 **RSM**（窄地形泛化）；配套 **Warp 多深度射线渲染** 降低训练成本。
 - **代表作**：[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) (Amazon FAR, 2026, arXiv:2602.03002) — G1 **前后双深度** 双向楼梯/坡/垫脚石；**2 kg 载荷** loco-manipulation；相对单前向深度方法强调 **多向与非对称感知**。
+
+### 13. 梯上稳定操作（攀爬策略 + 双智能体遥操作）
+- **核心**：先学 **深度 visuomotor 攀爬策略** 到梯顶；再训 **双智能体 manipulation**——下身 $\pi^l$ 维持梯子接触与骨盆姿态，上身 $\pi^u$ 跟踪 VR 遥操作目标；相对现成 **全身遥操作**（如 TWIST2）在梯顶切换后更不易失稳。
+- **代表作**：[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) (Amazon FAR 等, 2026, arXiv:2606.05873) — G1 **零样本 sim-to-real** 多样梯子双向攀爬；梯顶 **调画 / 换灯泡 / 高处递箱**；深度经 **VFM + RFM** 桥接真机。
 
 ## 重点应用领域
 
