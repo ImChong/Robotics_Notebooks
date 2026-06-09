@@ -11,6 +11,7 @@ updated: 2026-06-06
 related:
   - ./deep-learning-foundations.md
   - ../methods/object-detection.md
+  - ./visual-representation-for-policy.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
 sources:
@@ -81,6 +82,7 @@ flowchart TB
 
 - [深度学习基础](./deep-learning-foundations.md)
 - [目标检测（方法）](../methods/object-detection.md)
+- [视觉表征作为策略输入（概念）](./visual-representation-for-policy.md)
 - [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
