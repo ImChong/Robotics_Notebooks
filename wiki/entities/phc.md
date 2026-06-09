@@ -2,11 +2,12 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-09
 summary: "PHC（ZhengyiLuo/PHC）是 ICCV 2023 物理人形控制框架，含 SMPL→自定义人形 shape/motion fitting 重定向脚本与万级动作模仿训练。"
 related:
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
+  - ../methods/dart-control.md
   - ./paper-bfm-22-phc.md
   - ./zhengyi-luo.md
   - ./protomotions.md
@@ -64,6 +65,7 @@ python scripts/data_process/fit_smpl_motion.py robot=unitree_g1_fitting +amass_r
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
+- [DART（DartControl）](../methods/dart-control.md) — 项目页演示 DART 运动学输出 + PHC 跟踪以减轻穿模/滑步
 - [ProtoMotions](./protomotions.md)
 - [Zhengyi Luo](./zhengyi-luo.md)
 - [paper-bfm-22-phc](./paper-bfm-22-phc.md)

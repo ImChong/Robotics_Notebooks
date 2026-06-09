@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 800,
-  "edge_count": 5589,
+  "node_count": 801,
+  "edge_count": 5606,
   "coverage": {
-    "covered": 784,
-    "total": 798,
+    "covered": 785,
+    "total": 799,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/dart-control.md",
+      "detail_id": "wiki-methods-dart-control",
+      "label": "DART（DartControl：实时文本驱动人体运动控制）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/hy-motion-1.md",
+      "detail_id": "wiki-methods-hy-motion-1",
+      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/genmo.md",
+      "detail_id": "wiki-methods-genmo",
+      "label": "GENMO（统一人体运动估计与生成）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
+      "detail_id": "entity-awesome-text-to-motion-zilize",
+      "label": "Awesome Text-to-Motion（Zilize 精选集）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/phc.md",
+      "detail_id": "entity-phc",
+      "label": "PHC（Perpetual Humanoid Control）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/wbc-vs-rl.md",
+      "detail_id": "wiki-comparisons-wbc-vs-rl",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
+      "type": "comparison",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
       "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
@@ -103,77 +167,13 @@
       "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
-      "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
-      "label": "RPL：复杂地形上的鲁棒人形多向感知行走",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/limmt-gqs-motion-curation.md",
-      "detail_id": "wiki-methods-limmt-gqs-motion-curation",
-      "label": "LIMMT / GQS：人形 Motion Tracking 的数据策展",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
-    "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
-    "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
-    "type": "entity",
+    "path": "wiki/methods/dart-control.md",
+    "detail_id": "wiki-methods-dart-control",
+    "label": "DART（DartControl：实时文本驱动人体运动控制）",
+    "type": "method",
     "recency": "2026-06-09",
     "source": "log.md"
   }

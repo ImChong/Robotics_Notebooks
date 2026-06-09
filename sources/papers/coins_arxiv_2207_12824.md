@@ -21,7 +21,7 @@
 | 基础数据集 | [PROX](https://prox.is.tue.mpg.de/index.html) | 人–场景交互 MoCap + 3D 场景约束 |
 | 场景扩展 | [PROX-E / PSI](https://github.com/yz-cnsdqz/PSI-release) | 场景语义与实例分割来源之一 |
 | 对比基线 | [POSA](https://posa.is.tue.mpg.de/index.html) | 人–场景放置与接触特征；COINS 实现 POSA-I 变体 |
-| 下游关联 | [CRISP](../../wiki/methods/crisp-real2sim.md) | 同在 PROX 等人-centric 基准生态；COINS 走 **生成式场景填充**，CRISP 走 **单目 Real2Sim** |
+| 下游关联 | CRISP（`wiki/methods/crisp-real2sim.md`） | 同在 PROX 等人-centric 基准生态；COINS 走 **生成式场景填充**，CRISP 走 **单目 Real2Sim** |
 
 ## 摘要级要点
 
@@ -91,4 +91,4 @@
 ## 对 wiki 的映射
 
 - 实体页：[COINS（论文）](../../wiki/entities/paper-coins-compositional-human-scene-interaction.md)
-- 交叉：[CRISP](../../wiki/methods/crisp-real2sim.md)（PROX 生态）、[TokenHSI](../../wiki/entities/paper-bfm-38-tokenhsi.md)（人–场景交互 task token 化对照）
+- 交叉：`wiki/methods/crisp-real2sim.md`（PROX 生态）、`wiki/entities/paper-bfm-38-tokenhsi.md`（人–场景交互 task token 化对照）

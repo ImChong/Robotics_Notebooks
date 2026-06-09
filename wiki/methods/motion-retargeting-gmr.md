@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-09
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -184,5 +184,6 @@ $$
 - [NMR（神经运动重定向与人形全身控制）](./neural-motion-retargeting-nmr.md) — 用 GMR + 仿真 RL 构造监督的学习式重定向。
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层联合优化参考与跟踪策略。
 - [SPIDER（物理感知采样式灵巧重定向）](./spider-physics-informed-dexterous-retargeting.md) — 并行仿真采样优化 + 虚拟接触引导的数据生成外壳。
-- [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
+- [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
+- [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
