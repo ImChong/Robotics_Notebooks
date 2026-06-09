@@ -2,8 +2,9 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving]
 status: complete
-updated: 2026-05-27
+updated: 2026-06-09
 related:
+  - ../entities/python-robotics.md
   - ../entities/navigation2.md
   - ../entities/slam-toolbox.md
   - ../entities/cartographer.md
@@ -25,6 +26,7 @@ related:
   - ../methods/vla.md
   - ../tasks/vision-language-navigation.md
 sources:
+  - ../../sources/repos/python_robotics.md
   - ../../sources/repos/navigation_slam_autonomy_stack_catalog.md
   - ../../sources/repos/navigation2.md
   - ../../sources/repos/slam_toolbox.md
@@ -59,6 +61,7 @@ summary: "移动机器人导航与 SLAM 开源栈总览：Nav2 + 2D SLAM、LiDAR
 - 仓库主线以 **腿式/人形运控与模仿学习** 为主，但 **移动底盘、AMR、低速无人车** 仍依赖成熟的 **定位—建图—规划** 栈；与 [VLN](../tasks/vision-language-navigation.md) 共享「感知—决策—执行」分层思想，**执行层接口不同**（`cmd_vel` / Ackermann vs 关节力矩）。
 - 21 仓覆盖从 **教学小车 MuSHR** 到 **Autoware Universe** 的完整谱系；常见错误：用 ORB-SLAM3 直接驱动 Nav2 而无坐标系/频率对齐，或把 FAST-LIO 当全局规划器。
 - [LeRobot](../entities/lerobot.md) / [OpenVLA](../entities/openvla.md) 解决 **操作与策略**，不替代 Nav2；二者常在「同一机器人」上 **分层共存**（导航栈 + 机械臂 VLA）。
+- **[PythonRobotics](../entities/python-robotics.md)** 提供 **算法层入门**（EKF、A*、RRT*、DWA、Stanley/MPC 等可运行 Python 示例），与 Nav2 **互补而非替代**：先建立直觉，再读 ROS 2 工程集成。
 
 ## 流程总览
 
@@ -110,6 +113,7 @@ flowchart TB
 | RGB-D 一体建图导航 | RTAB-Map | — | 与高动态场景无 motion compensation |
 | 开源 L4 全栈 | Autoware | — | 用 Nav2 插件冒充感知预测 |
 | Jetson 视觉 SLAM + 3D 避障 | Isaac ROS VSLAM + nvblox | — | x86 无 GPU 强上 nvblox |
+| 算法预习 / 无 ROS 环境 | PythonRobotics | MuSHR 课程 | 直接上 Autoware 却不理解 DWA/A* |
 | 导航课 / 非完整小车 | MuSHR | TurtleBot3（既有资料） | 当人形 WBC 教程 |
 | 机械臂抓取策略 | LeRobot / OpenVLA | — | 用 Nav2 输出关节力矩 |
 
@@ -169,6 +173,7 @@ flowchart TB
 
 ## 关联页面
 
+- [PythonRobotics](../entities/python-robotics.md) — 自主导航算法入门代码与教材
 - [LiDAR / LIO / VIO 选型对比](../comparisons/lidar-slam-lio-vio-selection.md)
 - [Navigation2](../entities/navigation2.md)
 - [Autoware](../entities/autoware.md)
@@ -177,6 +182,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [PythonRobotics 在线教材](https://atsushisakai.github.io/PythonRobotics/)（算法入门）
 - [Nav2 官方文档](https://docs.nav2.org/)
 - [Autoware 文档](https://autowarefoundation.github.io/autoware-documentation/)
 - [Isaac ROS](https://nvidia-isaac-ros.github.io/)

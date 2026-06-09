@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/repos/python_robotics.md — 接入 PythonRobotics 代码库/教材/arXiv 论文并新建实体页与导航栈交叉引用
+
+- 原始资料：[`sources/repos/python_robotics.md`](sources/repos/python_robotics.md)、[`sources/papers/python_robotics_arxiv_1808_10703.md`](sources/papers/python_robotics_arxiv_1808_10703.md)、[`sources/courses/python_robotics_textbook.md`](sources/courses/python_robotics_textbook.md)
+- 新建实体：[`wiki/entities/python-robotics.md`](wiki/entities/python-robotics.md)
+- 交叉更新：[`wiki/overview/navigation-slam-autonomy-stack.md`](wiki/overview/navigation-slam-autonomy-stack.md)、[`wiki/entities/navigation2.md`](wiki/entities/navigation2.md)、[`wiki/entities/modern-robotics-book.md`](wiki/entities/modern-robotics-book.md)、[`wiki/formalizations/kalman-filter.md`](wiki/formalizations/kalman-filter.md)
+
 ## [2026-06-08] structural | wiki/concepts/visual-representation-for-policy.md — V24 P1 视觉表征知识链第二项：视觉表征作为策略输入
 
 - 新建概念页：[`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md)（端到端联合训练 vs 冻结预训练骨干 vs 机器人专用预训练表征（R3M / VC-1 / DINOv2）三条路径与取舍 + Mermaid 决策图）

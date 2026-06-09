@@ -4,6 +4,7 @@ tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundat
 status: complete
 updated: 2026-04-30
 related:
+  - ./python-robotics.md
   - ../formalizations/lie-group-rigid-body-motions.md
   - ../formalizations/se3-representation.md
   - ../concepts/floating-base-dynamics.md
@@ -85,7 +86,8 @@ Lynch-Park 将下面这些贯穿全书：
 | 入门人形/四足控制的数学语言 | Ch 3 → Ch 5 → Ch 8 → Ch 11 |
 | 实现 IK 求解器 | Ch 6（数值法部分）+ 配套 Python 库 |
 | 理解 Pinocchio / TSID 的内部实现 | Ch 3, 4, 5, 8（PoE + Spatial Vectors） |
-| 写传统采样规划（RRT/PRM） | Ch 10 |
+| 写传统采样规划（RRT/PRM） | Ch 10 + [PythonRobotics](./python-robotics.md) 可运行示例 |
+| 移动机器人导航算法代码直觉 | [PythonRobotics](./python-robotics.md) 定位/规划/跟踪模块 |
 | 学抓取力学 | Ch 12 + [friction-cone.md](../formalizations/friction-cone.md) |
 
 ## 关联页面
@@ -97,6 +99,7 @@ Lynch-Park 将下面这些贯穿全书：
 - [Pinocchio](./pinocchio.md) — 直接使用本教材数学语言的现代机器人库
 - [线性代数学习策展](./linear-algebra-curriculum.md) — L0 通用矩阵语言，再接本教材 Ch 2–3
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — 教材 Ch 9 的现代化版本
+- [PythonRobotics](./python-robotics.md) — Ch 10/13 移动机器人算法的 Python 实现与动画演示
 
 ## 参考来源
 

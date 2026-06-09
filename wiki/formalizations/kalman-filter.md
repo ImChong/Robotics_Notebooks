@@ -3,11 +3,13 @@ type: formalization
 tags: [state-estimation, kalman-filter, filtering, sensor-fusion]
 status: complete
 related:
+  - ../entities/python-robotics.md
   - ./ekf.md
   - ../concepts/state-estimation.md
   - ../concepts/sensor-fusion.md
   - ./lqr.md
 sources:
+  - ../../sources/repos/python_robotics.md
   - ../../sources/papers/kalman_filter_ekf_primary_refs.md
   - ../../sources/courses/welch_bishop_kalman_filter.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
@@ -108,12 +110,14 @@ flowchart LR
 - [Kalman vs. Optimization-based Estimation](../comparisons/kalman-filter-vs-optimization-based-estimation.md) — 滤波 vs 滑窗优化选型
 - [LQR / iLQR](./lqr.md) — LQG 对偶与 Riccati 结构
 - [Sensor Fusion](../concepts/sensor-fusion.md) — 多传感器融合实践
+- [PythonRobotics](../entities/python-robotics.md) — EKF 定位可运行示例与动画
 
 ## 参考来源
 
 - [kalman_filter_ekf_primary_refs.md](../../sources/papers/kalman_filter_ekf_primary_refs.md) — Kalman (1960)、Kalman–Bucy (1961)、Gelb / Maybeck / Simon 等一手索引
 - [welch_bishop_kalman_filter.md](../../sources/courses/welch_bishop_kalman_filter.md) — KF 入门教程 PDF
 - [mit_underactuated_kalman_lqr.md](../../sources/courses/mit_underactuated_kalman_lqr.md) — MIT 估计与 LQG 课程模块
+- [python_robotics.md](../../sources/repos/python_robotics.md) — EKF / 粒子滤波定位教学代码
 
 ## 推荐继续阅读
 
