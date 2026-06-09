@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/vision_banana_arxiv_2604_20329.md — Vision Banana（DeepMind）生成式视觉预训练入库并建实体/概念页
+
+- 原始资料：[`vision_banana_arxiv_2604_20329.md`](sources/papers/vision_banana_arxiv_2604_20329.md)（<https://arxiv.org/abs/2604.20329>）；[`vision-banana-project.md`](sources/sites/vision-banana-project.md)（<https://vision-banana.github.io/>、<https://deepmind.google/research/publications/240658/>）
+- 新建实体：[`wiki/entities/vision-banana.md`](wiki/entities/vision-banana.md)（NBP instruction-tuning、RGB 任务统一接口、2D/3D benchmark 表与 Mermaid 管线）
+- 新建概念：[`wiki/concepts/generative-vision-pretraining.md`](wiki/concepts/generative-vision-pretraining.md)（生成预训练 ≈ LLM 预训练、三条技术谱系）
+- 交叉更新：[`wiki/concepts/vision-backbones.md`](wiki/concepts/vision-backbones.md)、[`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md)、[`wiki/formalizations/3d-coordinate-transforms-vision-robotics.md`](wiki/formalizations/3d-coordinate-transforms-vision-robotics.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/mamma_arxiv_2506_13040.md — MAMMA（CVPR 2026 Oral）markerless 多视角双人 SMPL-X 采集入库并建实体页
 
 - 原始资料：[`mamma_arxiv_2506_13040.md`](sources/papers/mamma_arxiv_2506_13040.md)（<https://arxiv.org/abs/2506.13040>）；[`mamma-tue-mpg-de.md`](sources/sites/mamma-tue-mpg-de.md)（<https://mamma.is.tue.mpg.de/>）；[`mamma.md`](sources/repos/mamma.md)（<https://github.com/cuevhv/mamma>）
