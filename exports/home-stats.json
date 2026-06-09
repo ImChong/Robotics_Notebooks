@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 794,
-  "edge_count": 5509,
+  "node_count": 795,
+  "edge_count": 5521,
   "coverage": {
-    "covered": 778,
-    "total": 792,
+    "covered": 779,
+    "total": 793,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/python-robotics.md",
+      "detail_id": "entity-python-robotics",
+      "label": "PythonRobotics",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
+      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
+      "label": "导航·SLAM·自动驾驶开源栈总览",
+      "type": "overview",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/navigation2.md",
+      "detail_id": "entity-navigation2",
+      "label": "Navigation2（Nav2）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/modern-robotics-book.md",
+      "detail_id": "entity-modern-robotics-book",
+      "label": "Modern Robotics (Lynch-Park 教材)",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/kalman-filter.md",
+      "detail_id": "wiki-formalizations-kalman-filter",
+      "label": "Kalman Filter (KF)",
+      "type": "formalization",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/visual-representation-for-policy.md",
       "detail_id": "wiki-concepts-visual-representation-for-policy",
@@ -127,54 +167,14 @@
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/stmr-quadruped-retargeting.md",
-      "detail_id": "entity-stmr-quadruped-retargeting",
-      "label": "STMR 四足时空重定向",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/go2-motion-imitation.md",
-      "detail_id": "entity-go2-motion-imitation",
-      "label": "Go2 Motion Imitation",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/pan-motion-retargeting.md",
-      "detail_id": "entity-pan-motion-retargeting",
-      "label": "PAN Motion Retargeting",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/walk-the-dog.md",
-      "detail_id": "entity-walk-the-dog",
-      "label": "WalkTheDog",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hrl-stack-03-omniretarget.md",
-      "detail_id": "entity-paper-hrl-stack-03-omniretarget",
-      "label": "OmniRetarget",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/visual-representation-for-policy.md",
-    "detail_id": "wiki-concepts-visual-representation-for-policy",
-    "label": "视觉表征作为策略输入（Visual Representation for Policy）",
-    "type": "concept",
-    "recency": "2026-06-08",
+    "path": "wiki/entities/python-robotics.md",
+    "detail_id": "entity-python-robotics",
+    "label": "PythonRobotics",
+    "type": "entity",
+    "recency": "2026-06-09",
     "source": "log.md"
   }
 }
