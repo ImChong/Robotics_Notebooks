@@ -13,6 +13,7 @@ updated: 2026-06-08
 related:
   - ./vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md
+  - ../queries/perception-backbone-selection.md
   - ./foundation-policy.md
   - ./humanoid-policy-network-architecture.md
   - ../methods/object-detection.md
@@ -85,6 +86,7 @@ flowchart TB
 
 - [视觉骨干（概念）](./vision-backbones.md)
 - [CNN vs ViT 视觉骨干对比](../comparisons/cnn-vs-vit-backbones.md)
+- [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [基础策略（概念）](./foundation-policy.md)
 - [人形策略网络架构（概念）](./humanoid-policy-network-architecture.md)
 - [目标检测（方法）](../methods/object-detection.md)

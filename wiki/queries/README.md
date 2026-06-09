@@ -79,6 +79,7 @@
 | [humanoid-contact-character-control-guide](./humanoid-contact-character-control-guide.md) | 接触丰富人形控制与角色化表演路线怎么选？ | GentleHumanoid、HTTD、Being-H07、Disney OLAF、HiPAN、Zest、EFGCL |
 | [dexterous-manipulation-data-pipeline](./dexterous-manipulation-data-pipeline.md) | 灵巧操作的数据标注、手部感知、GAE 与执行器建模怎么配？ | Auto-labeling、WiLoR、GAE、Actuator Network、Tactile Impedance |
 | [object-detection-model-selection](./object-detection-model-selection.md) | 机器人感知栈选单阶段还是两阶段检测器？机载实时 vs 服务器侧怎么选？ | Object Detection、Vision Backbones、YOLO、ResNet、Manipulation、Humanoid Soccer |
+| [perception-backbone-selection](./perception-backbone-selection.md) | 机器人感知栈该用分类骨干 / 检测头 / 还是通用预训练表征？选型第一刀砍在哪？ | Vision Backbones、Visual Representation for Policy、CNN vs ViT、Object Detection、VLA、DINOv2/R3M/VC-1 |
 
 **对比页（comparisons/）补充**：AMP 先验变体见 [amp-add-smp-motion-prior-variants](../comparisons/amp-add-smp-motion-prior-variants.md)。
 
