@@ -1508,6 +1508,15 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   .cta-row a { width: 100%; }
   .page-hero h1 { font-size: 2rem; }
   .container { padding: 0 18px; }
+  /* 窄屏：keep-all 会让长中文副标题整段不换行溢出列宽 */
+  .section-subtitle,
+  .detail-content-main .section-subtitle {
+    min-width: 0;
+    max-width: 100%;
+    word-break: normal;
+    line-break: auto;
+    overflow-wrap: break-word;
+  }
   /* 首页 Wiki 搜索：移动端收紧内边距与字号 */
   .search-bar-wrap input[type="search"] {
     padding: 12px 12px;
