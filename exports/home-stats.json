@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 795,
-  "edge_count": 5521,
+  "node_count": 796,
+  "edge_count": 5533,
   "coverage": {
-    "covered": 779,
-    "total": 793,
+    "covered": 780,
+    "total": 794,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/limmt-gqs-motion-curation.md",
+      "detail_id": "wiki-methods-limmt-gqs-motion-curation",
+      "label": "LIMMT / GQS：人形 Motion Tracking 的数据策展",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/python-robotics.md",
       "detail_id": "entity-python-robotics",
@@ -135,45 +167,13 @@
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/motion-imitation-quadruped.md",
-      "detail_id": "entity-motion-imitation-quadruped",
-      "label": "motion_imitation（四足模仿动物）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-for-hardware.md",
-      "detail_id": "entity-amp-for-hardware",
-      "label": "AMP_for_hardware",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/metalhead.md",
-      "detail_id": "entity-metalhead",
-      "label": "MetalHead",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/leggedgym-ex.md",
-      "detail_id": "entity-leggedgym-ex",
-      "label": "LeggedGym-Ex",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/python-robotics.md",
-    "detail_id": "entity-python-robotics",
-    "label": "PythonRobotics",
-    "type": "entity",
+    "path": "wiki/methods/limmt-gqs-motion-curation.md",
+    "detail_id": "wiki-methods-limmt-gqs-motion-curation",
+    "label": "LIMMT / GQS：人形 Motion Tracking 的数据策展",
+    "type": "method",
     "recency": "2026-06-09",
     "source": "log.md"
   }
