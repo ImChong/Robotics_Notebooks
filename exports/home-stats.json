@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 799,
-  "edge_count": 5581,
+  "node_count": 800,
+  "edge_count": 5586,
   "coverage": {
-    "covered": 783,
-    "total": 797,
+    "covered": 784,
+    "total": 798,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
+      "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
+      "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/humanoid-gym.md",
       "detail_id": "entity-humanoid-gym",
@@ -151,28 +167,12 @@
       "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/kalman-filter.md",
-      "detail_id": "wiki-formalizations-kalman-filter",
-      "label": "Kalman Filter (KF)",
-      "type": "formalization",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-gym.md",
-    "detail_id": "entity-humanoid-gym",
-    "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
+    "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
+    "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
+    "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"

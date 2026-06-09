@@ -2,7 +2,7 @@
 
 ## [2026-06-09] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **2** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -34,8 +34,9 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
-- 无
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（2 个）
+- wiki/methods/crisp-real2sim.md (wiki:2026-06-07 < sources/coins_arxiv_2207_12824.md:2026-06-09)
+- wiki/entities/paper-bfm-38-tokenhsi.md (wiki:2026-06-06 < sources/coins_arxiv_2207_12824.md:2026-06-09)
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
@@ -91,4 +92,4 @@
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：783/797 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：784/798 (98%) wiki/entity 页有 ingest 来源

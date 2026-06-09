@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/coins_arxiv_2207_12824.md — COINS 论文 + 项目页 + 仓库入库并建实体页
+
+- 原始资料：[`coins_arxiv_2207_12824.md`](sources/papers/coins_arxiv_2207_12824.md)（<https://arxiv.org/abs/2207.12824>）；[`coins-zkf1997-github-io.md`](sources/sites/coins-zkf1997-github-io.md)（<https://zkf1997.github.io/COINS/index.html>）；[`coins.md`](sources/repos/coins.md)（<https://github.com/zkf1997/COINS>）
+- 新建实体：[`wiki/entities/paper-coins-compositional-human-scene-interaction.md`](wiki/entities/paper-coins-compositional-human-scene-interaction.md)（PelvisVAE/BodyVAE 三阶段 + 组合交互 + PROX-S + Mermaid 管线）
+- 交叉更新：[`wiki/methods/crisp-real2sim.md`](wiki/methods/crisp-real2sim.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/humanoid_gym_arxiv_2404_05695.md — Humanoid-Gym 论文 + 官方/社区仓库入库并建实体页
 
 - 原始资料：[`humanoid_gym_arxiv_2404_05695.md`](sources/papers/humanoid_gym_arxiv_2404_05695.md)（<https://arxiv.org/abs/2404.05695>）；[`humanoid-gym.md`](sources/repos/humanoid-gym.md)（<https://github.com/roboterax/humanoid-gym>）；[`humanoid-gym-modified.md`](sources/repos/humanoid-gym-modified.md)（<https://github.com/roboman-ly/humanoid-gym-modified>）

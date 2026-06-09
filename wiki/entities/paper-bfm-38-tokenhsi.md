@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-09
 arxiv: "2503.19901"
 venue: "2025 · CVPR"
 code: https://github.com/liangpan99/TokenHSI
@@ -11,6 +11,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-05-hierarchical-control.md
+  - ./paper-coins-compositional-human-scene-interaction.md
 sources:
   - ../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
@@ -47,6 +48,7 @@ sources:
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
+- 人–场景交互合成对照：[COINS](./paper-coins-compositional-human-scene-interaction.md)（静态语义姿态生成 vs TokenHSI 的 task token 控制）
 - 原始 source：[bfm_awesome_tokenhsi_arxiv_2503_19901.md](../../sources/papers/bfm_awesome_tokenhsi_arxiv_2503_19901.md)
 
 ## 实验与评测
