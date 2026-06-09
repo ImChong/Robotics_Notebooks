@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-09
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -207,6 +207,7 @@ flowchart LR
 - [sources/repos/boyu_ai_hands_on_rl.md](../../sources/repos/boyu_ai_hands_on_rl.md) — 《动手学强化学习》开源教材与代码（PPO/SAC 等中文实践入口）
 - [sources/papers/barkour_arxiv_2305_14654.md](../../sources/papers/barkour_arxiv_2305_14654.md) — Barkour：三专长 PPO + Locomotion-Transformer 通才蒸馏（LeggedGym / Isaac Gym）ingest 档案
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — sim2real 与策略迁移相关论文摘录
+- [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT 预训练 + PPO 残差后训练的人形 loco-manipulation（arXiv:2510.05070）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md) — 机器人 RL 应用论文集合
 - [机器人论文阅读笔记：PPO](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
 - [机器人论文阅读笔记：AMP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)
@@ -220,6 +221,7 @@ flowchart LR
 - [Imitation Learning](./imitation-learning.md)
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
+- [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)

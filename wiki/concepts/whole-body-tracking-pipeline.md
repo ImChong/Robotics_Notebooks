@@ -21,6 +21,7 @@ related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
+  - ../entities/paper-resmimic.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/sam-3d-body.md
@@ -215,6 +216,10 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 ### 扩展：双人物理交互 tracking（AssistMimic）
 
 上表六条路径默认 **单具身** 按参考全身跟踪。当任务变为 **护理 / 扶起** 等 **双人力交换** 时，recipient 轨迹在物理上 **无法独立执行**，kinematic replay 或 frozen-recipient 解耦训练会系统性失败。[AssistMimic](../entities/paper-assistmimic.md)（arXiv:2603.11346）把问题升格为 **MARL**：supporter 与 recipient **联合 PPO**，以 [PHC](../entities/paper-bfm-22-phc.md) 单人 prior 初始化，并叠加 **动态 hand retargeting** 与 **contact-promoting reward**。它仍在 **仿真 avatar** 层验证，但为 WBT 流水线提供了「从单人 GMT 到 **partner-aware 物理 tracking**」的明确分支。
+
+### 扩展：GMT 先验 + 残差物体交互（ResMimic）
+
+当 WBT 目标从 **纯运动模仿** 延伸到 **动态物体 loco-manipulation** 时，GMT 直出往往 **缺乏物体感知**（论文报告 MuJoCo 均值 SR 约 **10%**），而每条任务 **从头 PPO** 又面临奖励工程与样本效率问题。[ResMimic](../entities/paper-resmimic.md)（arXiv:2510.05070）在阶段 4 采用 **两阶段残差**：**Stage I** 用 AMASS/OMOMO 等训练 **GMT 先验** $\pi_{\mathrm{GMT}}$；**Stage II** 冻结先验并学习 **物体条件残差** $\Delta a$，使 $a=a^{\mathrm{gmt}}+\Delta a$，配合 **点云物体跟踪奖励**、**链节接触奖励** 与 **虚拟物体力课程**。它在 **统一奖励模板** 下覆盖跪姿抬箱、背载、蹲起托举、搬椅等任务，并在 G1 真机展示 **4.5–5.5 kg** 全身接触搬运——为 WBT 流水线补充了「**规模化 GMT 预训练 → 轻量 per-task 残差后训练**」的 loco-manipulation 分支，与 [holosoma](../entities/holosoma.md)/[OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 的 **交互保留参考生成** 形成上下游互补。
 
 ## 与 8 层 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的对应
 

@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/resmimic_arxiv_2510_05070.md — ResMimic GMT→残差全身 loco-manipulation 入库并建实体页
+
+- 原始资料：[`resmimic_arxiv_2510_05070.md`](sources/papers/resmimic_arxiv_2510_05070.md)（<https://arxiv.org/abs/2510.05070>）；[`resmimic-github-io.md`](sources/sites/resmimic-github-io.md)（<https://resmimic.github.io/>）；[`resmimic.md`](sources/repos/resmimic.md)（<https://github.com/amazon-far/ResMimic>）
+- 新建实体：[`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)（两阶段残差 + 点云/接触奖励 + 虚拟力课程 + Mermaid 管线）
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/ladderman_arxiv_2606_05873.md — LadderMan 人形感知梯子攀爬（项目页 + arXiv）消化并建实体页
 
 - 原始资料：[`sources/papers/ladderman_arxiv_2606_05873.md`](sources/papers/ladderman_arxiv_2606_05873.md)（<https://arxiv.org/abs/2606.05873>）；[`sources/sites/ladderman-robot-github-io.md`](sources/sites/ladderman-robot-github-io.md)（<https://ladderman-robot.github.io/>）
