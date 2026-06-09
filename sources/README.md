@@ -30,6 +30,7 @@
 | [x] [universal_skeleton.md](papers/universal_skeleton.md) | HOVL：异构骨架开放词汇动作识别，多粒度动作-文本对齐（arXiv:2604.17013） |
 | [x] [doorman_opening_sim2real_arxiv_2512_01061.md](papers/doorman_opening_sim2real_arxiv_2512_01061.md) | DoorMan：人形纯 RGB 开门 loco-manipulation（arXiv:2512.01061，CVPR 2026）摘录与 wiki 映射 |
 | [x] [crisp_real2sim_iclr2026.md](papers/crisp_real2sim_iclr2026.md) | CRISP：单目视频平面原语 Real2Sim + 接触引导人形 RL（ICLR 2026）摘录与 wiki 映射 |
+| [x] [dart_control_arxiv_2410_05260.md](papers/dart_control_arxiv_2410_05260.md) | DART / DartControl：自回归运动原语潜扩散 + 在线文本与空间控制（ICLR 2025，arXiv:2410.05260，ETH）摘录与 wiki 映射 |
 | [x] [dwm_arxiv_2512_17907.md](papers/dwm_arxiv_2512_17907.md) | DWM：Dexterous World Models，场景–手条件视频扩散与混合数据（arXiv:2512.17907，CVPR 2026）摘录与 wiki 映射 |
 | [x] [e_sds_arxiv_2512_16446.md](papers/e_sds_arxiv_2512_16446.md) | E-SDS：环境统计条件化 VLM 奖励 + Isaac Lab 人形感知行走 RL（arXiv:2512.16446）摘录与 wiki 映射 |
 | [x] [egm_arxiv_2512_19043.md](papers/egm_arxiv_2512_19043.md) | EGM：Efficient General Mimic，Bin 采样 + CDMoE + 三阶段教师–学生人形全身 tracking（arXiv:2512.19043）摘录与 wiki 映射 |
@@ -213,6 +214,7 @@
 | [x] [physx-omni.md](repos/physx-omni.md) | physx-omni/PhysX-Omni：sim-ready 物理 3D 统一生成、PhysX-Bench 评测与训练/推理脚本（arXiv:2605.21572） |
 | [x] [physx-omni-physxverse.md](repos/physx-omni-physxverse.md) | Hugging Face PhysXVerse：通用 physics-grounded sim-ready 3D 数据集（约 113 GB，五维物理标注） |
 | [x] [awesome_bfm_papers.md](repos/awesome_bfm_papers.md) | awesome-bfm-papers：行为基础模型（BFM）论文/项目精选列表，配套 TPAMI 2025 综述（friedrichyuan / yuanmingqi 镜像） |
+| [x] [zkf1997_dart.md](repos/zkf1997_dart.md) | DART / DartControl：自回归潜扩散文本→人体运动与潜空间控制官方代码（ICLR 2025，arXiv:2410.05260，ETH） |
 | [x] [zilize-awesome-text-to-motion.md](repos/zilize-awesome-text-to-motion.md) | awesome-text-to-motion：文本驱动单人人体运动生成综述/数据集/模型精选与 GitHub Pages 交互索引（Zilize） |
 | [x] [tencent_hunyuan_hy_motion_1_0.md](repos/tencent_hunyuan_hy_motion_1_0.md) | HY-Motion-1.0：腾讯混元文本→3D 人体运动 DiT+Flow Matching 官方代码与 HF 权重入口 |
 | [x] [bigai-lift-humanoid.md](repos/bigai-lift-humanoid.md) | LIFT-humanoid：BIGAI 人形 SAC 预训练 + Brax 物理知情世界模型微调开源管线 |
@@ -282,6 +284,7 @@
 | [x] [botlab_motioncanvas.md](sites/botlab_motioncanvas.md) | 地瓜机器人 BotLab（MotionCanvas）：浏览器内 obs→ONNX→MuJoCo 节点图与 MSCP |
 | [x] [crisp-real2sim-project-github-io.md](sites/crisp-real2sim-project-github-io.md) | CRISP 项目页 crisp-real2sim.github.io（交互演示、与 VideoMimic 对比、Method、BibTeX） |
 | [x] [capvector-github-io.md](sites/capvector-github-io.md) | CapVector 项目页 capvector.github.io（论文 / GitHub / Hugging Face 权重集合外链索引） |
+| [x] [dart-control-project.md](sites/dart-control-project.md) | DART 项目页 zkf1997.github.io/DART（自回归 T2M、潜空间控制、PHC 组合演示；配套 arXiv:2410.05260） |
 | [x] [daji-hxxxz0-github-io.md](sites/daji-hxxxz0-github-io.md) | DAJI 项目页 hxxxz0.github.io/DAJI_PAGE（预期关节意图、HumanML3D/BABEL 结果，arXiv:2605.14417） |
 | [x] [doorman-humanoid-github-io.md](sites/doorman-humanoid-github-io.md) | DoorMan 项目页 doorman-humanoid.github.io（管线叙述、失败案例、BibTeX、渲染工作流链接） |
 | [x] [extreme-parkour-github-io.md](sites/extreme-parkour-github-io.md) | Extreme Parkour 项目页 extreme-parkour.github.io（ICRA 2024 实机视频、clearance/航向 ablation、CoRL 2023 demo） |

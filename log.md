@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/dart_control_arxiv_2410_05260.md — DART/DartControl（ICLR 2025）论文+仓库+项目页入库并建方法页
+
+- 原始资料：[`dart_control_arxiv_2410_05260.md`](sources/papers/dart_control_arxiv_2410_05260.md)（<https://arxiv.org/abs/2410.05260>）；[`zkf1997_dart.md`](sources/repos/zkf1997_dart.md)（<https://github.com/zkf1997/DART>）；[`dart-control-project.md`](sources/sites/dart-control-project.md)（<https://zkf1997.github.io/DART/>）
+- 新建方法页：[`wiki/methods/dart-control.md`](wiki/methods/dart-control.md)（自回归运动原语潜扩散 + 在线文本/空间控制 + Mermaid 管线）
+- 交叉更新：[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/methods/hy-motion-1.md`](wiki/methods/hy-motion-1.md)、[`wiki/methods/genmo.md`](wiki/methods/genmo.md)、[`wiki/entities/awesome-text-to-motion-zilize.md`](wiki/entities/awesome-text-to-motion-zilize.md)、[`wiki/entities/phc.md`](wiki/entities/phc.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/comparisons/wbc-vs-rl.md`](wiki/comparisons/wbc-vs-rl.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/humanoid_gym_arxiv_2404_05695.md — Humanoid-Gym 论文 + 官方/社区仓库入库并建实体页
 
 - 原始资料：[`humanoid_gym_arxiv_2404_05695.md`](sources/papers/humanoid_gym_arxiv_2404_05695.md)（<https://arxiv.org/abs/2404.05695>）；[`humanoid-gym.md`](sources/repos/humanoid-gym.md)（<https://github.com/roboterax/humanoid-gym>）；[`humanoid-gym-modified.md`](sources/repos/humanoid-gym-modified.md)（<https://github.com/roboman-ly/humanoid-gym-modified>）

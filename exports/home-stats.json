@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 799,
-  "edge_count": 5581,
+  "node_count": 800,
+  "edge_count": 5598,
   "coverage": {
-    "covered": 783,
-    "total": 797,
+    "covered": 784,
+    "total": 798,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/dart-control.md",
+      "detail_id": "wiki-methods-dart-control",
+      "label": "DART（DartControl：实时文本驱动人体运动控制）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/hy-motion-1.md",
+      "detail_id": "wiki-methods-hy-motion-1",
+      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/genmo.md",
+      "detail_id": "wiki-methods-genmo",
+      "label": "GENMO（统一人体运动估计与生成）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
+      "detail_id": "entity-awesome-text-to-motion-zilize",
+      "label": "Awesome Text-to-Motion（Zilize 精选集）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/phc.md",
+      "detail_id": "entity-phc",
+      "label": "PHC（Perpetual Humanoid Control）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/wbc-vs-rl.md",
+      "detail_id": "wiki-comparisons-wbc-vs-rl",
+      "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
+      "type": "comparison",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/humanoid-gym.md",
       "detail_id": "entity-humanoid-gym",
@@ -103,77 +167,13 @@
       "type": "concept",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/limmt-gqs-motion-curation.md",
-      "detail_id": "wiki-methods-limmt-gqs-motion-curation",
-      "label": "LIMMT / GQS：人形 Motion Tracking 的数据策展",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/egm-efficient-general-mimic.md",
-      "detail_id": "wiki-methods-egm-efficient-general-mimic",
-      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/python-robotics.md",
-      "detail_id": "entity-python-robotics",
-      "label": "PythonRobotics",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/navigation2.md",
-      "detail_id": "entity-navigation2",
-      "label": "Navigation2（Nav2）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/kalman-filter.md",
-      "detail_id": "wiki-formalizations-kalman-filter",
-      "label": "Kalman Filter (KF)",
-      "type": "formalization",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-gym.md",
-    "detail_id": "entity-humanoid-gym",
-    "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
-    "type": "entity",
+    "path": "wiki/methods/dart-control.md",
+    "detail_id": "wiki-methods-dart-control",
+    "label": "DART（DartControl：实时文本驱动人体运动控制）",
+    "type": "method",
     "recency": "2026-06-09",
     "source": "log.md"
   }
