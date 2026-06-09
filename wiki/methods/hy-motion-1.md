@@ -2,9 +2,10 @@
 type: method
 tags: [human-motion, text-to-motion, flow-matching, diffusion-transformer, smpl-h, preference-optimization, digital-human]
 status: complete
-updated: 2026-05-17
+updated: 2026-06-09
 related:
   - ./diffusion-motion-generation.md
+  - ./dart-control.md
   - ./genmo.md
   - ../entities/awesome-text-to-motion-zilize.md
   - ../formalizations/probability-flow.md
@@ -129,6 +130,7 @@ flowchart TB
 ## 关联页面
 
 - [Diffusion-based Motion Generation](./diffusion-motion-generation.md) — 机器人侧扩散/流式轨迹生成的对照入口
+- [DART（DartControl）](./dart-control.md) — 自回归原语潜扩散 + 在线文本/空间控制；运动表示选择相近
 - [GENMO（统一人体运动估计与生成）](./genmo.md) — 另一套「人体扩散大模型」多模态条件设计对照
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — T2M 文献与数据集拓扑索引
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与连续归一化流基础

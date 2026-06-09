@@ -13,7 +13,7 @@ related:
   - ../queries/control-architecture-comparison.md
   - ../queries/when-to-use-wbc-vs-rl.md
 summary: "WBC vs RL: Whole-Body Control vs Reinforcement Learning"
-updated: 2026-04-25
+updated: 2026-06-09
 sources:
   - ../../sources/papers/whole_body_control.md
 ---
@@ -115,7 +115,7 @@ IL/RL（student）学习压缩策略
   └─ 推理时不需要 WBC
 ```
 
-**代表**：DART（通过 MPC 生成数据训练神经网络策略）
+**代表**：DART（通过 MPC 生成数据训练神经网络策略；**勿与** [DartControl（ICLR 2025 文本驱动人体运动）](../methods/dart-control.md) **同名缩写混淆**）
 
 **优点**：
 - 利用 WBC 的精确性生成训练数据

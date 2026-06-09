@@ -12,6 +12,7 @@ related:
   - ../methods/crisp-real2sim.md
   - ../methods/reinforcement-learning.md
   - ./paper-amp-survey-15-physhsi.md
+  - ./paper-coins-compositional-human-scene-interaction.md
   - ../overview/paper-notebook-category-14-human-motion.md
 sources:
   - ../../sources/papers/dimos_arxiv_2305_12411.md
@@ -88,7 +89,7 @@ flowchart TB
 
 ### 3）细粒度物体交互
 
-- **目标：** [COINS](https://zkf1997.github.io/COINS/) 由「action-object」语义生成 **静态交互 marker 目标**。
+- **目标：** [COINS](./paper-coins-compositional-human-scene-interaction.md) 由「action-object」语义生成 **静态交互 marker 目标**。
 - **状态：** 当前 marker + 到目标的距离/方向 + **物体 SDF 值与梯度**（每人–物邻近）。
 - **奖励：** marker 距离 + 顶点穿透惩罚（负 SDF）+ 脚接触项。
 - **双向训练：** 随机交换初始/目标姿态，同时学 **坐下/躺下** 与 **站起**，便于回到 locomotion。
@@ -128,5 +129,5 @@ flowchart TB
 
 - [DIMOS 项目页](https://zkf1997.github.io/DIMOS/) — 演示视频、OOD 案例与训练演化
 - [GAMMA 项目页](https://yz-cnsdq-z.github.io/) — 潜空间 locomotion 基座
-- [COINS 项目页](https://zkf1997.github.io/COINS/) — 语义可控静态人–场景交互（DIMOS 的 marker 目标来源）
+- [COINS 实体页](./paper-coins-compositional-human-scene-interaction.md) — 语义可控静态人–场景交互（DIMOS 的 marker 目标来源）
 - [arXiv:2305.12411](https://arxiv.org/abs/2305.12411) — 完整方法与实验

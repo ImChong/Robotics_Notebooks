@@ -826,6 +826,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--accent);
   background: rgba(45,116,218,.10);
   font-weight: 700;
+  /* 高亮态单独加左右留白，避免背景贴字；默认项仍无水平 padding 以保持序号对齐 */
+  padding: 2px 8px;
 }
 .detail-toc-list .toc-entry.active a {
   font-weight: inherit;
