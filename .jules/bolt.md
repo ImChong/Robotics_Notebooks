@@ -65,3 +65,7 @@
 ## 2026-06-03 - Python Loop Optimization: Avoid Repeated Imports and Function Calls
 **Learning:** In the python search ranking code (`scripts/search_wiki_core.py`), repeatedly importing `date` from `datetime` and calling `date.today()` inside the inner scoring loop `compute_score` creates significant execution overhead and degrades overall search performance.
 **Action:** Always hoist invariant module imports and relatively static values (like `date.today()`) out of hot document processing loops to the global module scope to avoid unneeded CPU instruction execution and memory pressure.
+
+## 2026-06-09 - Avoid Closure and Array Methods in Hot Loops
+**Learning:** In frontend JavaScript processing large text bodies (like markdown rendering via `renderMarkdownContent` in `docs/main.js`), repeatedly calling array iteration methods like `.forEach()` allocates a new closure scope for every line. For large arrays or tight loops, this incurs measurable performance overhead compared to a standard `for` loop.
+**Action:** For optimal performance in JavaScript hot loops, such as array iteration and text parsing, always replace `.forEach()`, `.map()`, and `.filter()` with standard `for` loops to eliminate function closure allocation and invocation overhead.

@@ -1757,6 +1757,15 @@
     target.scrollIntoView({ behavior: 'auto', block: 'start' });
   }
 
+  // ⚡ Bolt Optimization: Hoist regular expressions to avoid recompilation inside the hot markdown parsing loop
+  // Expected impact: Eliminates regex recompilation overhead per line in the main markdown render loop, improving text parsing speed.
+  const RE_HR = /^(-{3,}|\*{3,}|_{3,})$/;
+  const RE_HEADING = /^(#{1,6})\s+(.*)$/;
+  const RE_QUOTE = /^>\s?(.*)$/;
+  const RE_TASK = /^[-*]\s+\[([ xX])\]\s*(.*)$/;
+  const RE_UNORDERED = /^[-*]\s+(.*)$/;
+  const RE_ORDERED = /^\d+\.\s+(.*)$/;
+
   function renderMarkdownContent(markdown, headings, markdownContext) {
     let source = stripYamlFrontmatter(markdown);
     if (!source) {
@@ -1875,13 +1884,14 @@
       return HTML_BLOCK_TAGS.indexOf(tag) >= 0 ? tag : '';
     }
 
-    lines.forEach(function (line) {
+  for (let idx = 0; idx < lines.length; idx++) {
+    const line = lines[idx];
       const trimmed = line.trim();
 
       if (trimmed.startsWith('```')) {
         if (htmlBlockOpenTag) {
           htmlBlockLines.push(line);
-          return;
+        continue;
         }
         if (inCodeBlock) {
           flushCodeBlock();
@@ -1895,12 +1905,12 @@
           inCodeBlock = true;
           codeLang = normalizeCodeLang(trimmed.replace(/^```+/, '').trim().split(/\s+/)[0] || '');
         }
-        return;
+      continue;
       }
 
       if (inCodeBlock) {
         codeLines.push(line);
-        return;
+      continue;
       }
 
       if (htmlBlockOpenTag) {
@@ -1909,7 +1919,7 @@
         if (closeRe.test(line)) {
           flushHtmlBlock();
         }
-        return;
+      continue;
       }
 
       const htmlOpenTag = startsHtmlBlock(trimmed);
@@ -1925,7 +1935,7 @@
         if (selfClose) {
           flushHtmlBlock();
         }
-        return;
+      continue;
       }
 
       if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
@@ -1933,7 +1943,7 @@
         flushList();
         flushQuote();
         tableLines.push(trimmed);
-        return;
+      continue;
       }
 
       if (tableLines.length) flushTable();
@@ -1942,19 +1952,19 @@
         flushParagraph();
         flushList();
         flushQuote();
-        return;
+      continue;
       }
 
-      if (/^(-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+    if (RE_HR.test(trimmed)) {
         flushParagraph();
         flushList();
         flushQuote();
         flushTable();
         blocks.push('<hr>');
-        return;
+      continue;
       }
 
-      const headingMatch = trimmed.match(/^(#{1,6})\s+(.*)$/);
+    const headingMatch = trimmed.match(RE_HEADING);
       if (headingMatch) {
         flushParagraph();
         flushList();
@@ -1964,18 +1974,18 @@
         const headingMeta = level >= 2 && headingQueue.length ? headingQueue.shift() : null;
         const headingId = headingMeta ? headingMeta.slug : slugifyHeading(text);
         blocks.push('<h' + level + ' id="' + escapeHtml(headingId) + '">' + renderMathBlocks(renderInlineMarkdown(text, context)) + '</h' + level + '>');
-        return;
+      continue;
       }
 
-      const quoteMatch = trimmed.match(/^>\s?(.*)$/);
+    const quoteMatch = trimmed.match(RE_QUOTE);
       if (quoteMatch) {
         flushParagraph();
         flushList();
         quoteLines.push(quoteMatch[1]);
-        return;
+      continue;
       }
 
-      const taskMatch = trimmed.match(/^[-*]\s+\[([ xX])\]\s*(.*)$/);
+    const taskMatch = trimmed.match(RE_TASK);
       if (taskMatch) {
         flushParagraph();
         flushQuote();
@@ -1986,27 +1996,27 @@
           checked: String(taskMatch[1] || '').trim().toLowerCase() === 'x',
           text: String(taskMatch[2] || '').trim()
         });
-        return;
+      continue;
       }
 
-      const unorderedMatch = trimmed.match(/^[-*]\s+(.*)$/);
+    const unorderedMatch = trimmed.match(RE_UNORDERED);
       if (unorderedMatch) {
         flushParagraph();
         flushQuote();
         if (listTag && listTag !== 'ul') flushList();
         listTag = 'ul';
         listItems.push({ task: false, checked: false, text: unorderedMatch[1] });
-        return;
+      continue;
       }
 
-      const orderedMatch = trimmed.match(/^\d+\.\s+(.*)$/);
+    const orderedMatch = trimmed.match(RE_ORDERED);
       if (orderedMatch) {
         flushParagraph();
         flushQuote();
         if (listTag && listTag !== 'ol') flushList();
         listTag = 'ol';
         listItems.push({ task: false, checked: false, text: orderedMatch[1] });
-        return;
+      continue;
       }
 
       flushList();
@@ -2015,10 +2025,10 @@
       if (bookmarkAnchorHtml) {
         flushParagraph();
         blocks.push(bookmarkAnchorHtml);
-        return;
+      continue;
       }
       paragraphLines.push(trimmed);
-    });
+  }
 
     if (inCodeBlock) flushCodeBlock();
     flushParagraph();
