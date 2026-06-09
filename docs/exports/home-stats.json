@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-08",
+  "generated_at": "2026-06-09",
   "node_count": 794,
   "edge_count": 5509,
   "coverage": {
@@ -8,6 +8,22 @@
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/visual-representation-for-policy.md",
+      "detail_id": "wiki-concepts-visual-representation-for-policy",
+      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+      "type": "concept",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/vision-backbones.md",
+      "detail_id": "wiki-concepts-vision-backbones",
+      "label": "视觉骨干（Vision Backbones）",
+      "type": "concept",
+      "recency": "2026-06-08",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/amp-rsl-rl.md",
       "detail_id": "entity-amp-rsl-rl",
@@ -151,29 +167,13 @@
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/holosoma.md",
-      "detail_id": "entity-holosoma",
-      "label": "holosoma（Amazon FAR 人形 RL + 重定向框架）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/omniretarget-dataset.md",
-      "detail_id": "entity-omniretarget-dataset",
-      "label": "OmniRetarget Dataset（G1 交互重定向轨迹）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/amp-rsl-rl.md",
-    "detail_id": "entity-amp-rsl-rl",
-    "label": "AMP-RSL-RL",
-    "type": "entity",
+    "path": "wiki/concepts/visual-representation-for-policy.md",
+    "detail_id": "wiki-concepts-visual-representation-for-policy",
+    "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+    "type": "concept",
     "recency": "2026-06-08",
     "source": "log.md"
   }
