@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 795,
-  "edge_count": 5521,
+  "node_count": 796,
+  "edge_count": 5537,
   "coverage": {
-    "covered": 779,
-    "total": 793,
+    "covered": 780,
+    "total": 794,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-resmimic.md",
+      "detail_id": "entity-paper-resmimic",
+      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/python-robotics.md",
       "detail_id": "entity-python-robotics",
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-for-hardware.md",
-      "detail_id": "entity-amp-for-hardware",
-      "label": "AMP_for_hardware",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/metalhead.md",
-      "detail_id": "entity-metalhead",
-      "label": "MetalHead",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/leggedgym-ex.md",
-      "detail_id": "entity-leggedgym-ex",
-      "label": "LeggedGym-Ex",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/python-robotics.md",
-    "detail_id": "entity-python-robotics",
-    "label": "PythonRobotics",
+    "path": "wiki/entities/paper-resmimic.md",
+    "detail_id": "entity-paper-resmimic",
+    "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"
