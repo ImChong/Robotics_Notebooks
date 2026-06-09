@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/mamma_arxiv_2506_13040.md — MAMMA（CVPR 2026 Oral）markerless 多视角双人 SMPL-X 采集入库并建实体页
+
+- 原始资料：[`mamma_arxiv_2506_13040.md`](sources/papers/mamma_arxiv_2506_13040.md)（<https://arxiv.org/abs/2506.13040>）；[`mamma-tue-mpg-de.md`](sources/sites/mamma-tue-mpg-de.md)（<https://mamma.is.tue.mpg.de/>）；[`mamma.md`](sources/repos/mamma.md)（<https://github.com/cuevhv/mamma>）
+- 新建实体：[`wiki/entities/paper-mamma-markerless-motion-capture.md`](wiki/entities/paper-mamma-markerless-motion-capture.md)（MammaNet 稠密 landmark + 跨视角匹配 + SMPL-X 优化 + Mermaid 管线）
+- 交叉更新：[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/entities/freemocap.md`](wiki/entities/freemocap.md)、[`wiki/overview/paper-notebook-category-14-human-motion.md`](wiki/overview/paper-notebook-category-14-human-motion.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/dimos_arxiv_2305_12411.md — DIMOS 室内人–场景运动合成（ICCV 2023）入库并建实体页
 
 - 原始资料：[`dimos_arxiv_2305_12411.md`](sources/papers/dimos_arxiv_2305_12411.md)（<https://arxiv.org/abs/2305.12411>）；[`dimos-zkf1997-github-io.md`](sources/sites/dimos-zkf1997-github-io.md)（<https://zkf1997.github.io/DIMOS/>）；[`dimos.md`](sources/repos/dimos.md)（<https://github.com/zkf1997/DIMOS>）

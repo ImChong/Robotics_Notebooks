@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, motion-retargeting, humanoid, pipeline, mocap, imitation-learning]
 status: complete
 created: 2026-05-16
-updated: 2026-06-04
+updated: 2026-06-09
 summary: "Motion Retargeting Pipeline：把 MoCap / 视频估计 / 生成式动作等异构人体序列，经过骨架对齐 → IK/约束求解 → 物理可行性筛选 → 配对监督，落到可作为模仿学习与跟踪策略输入的机器人参考轨迹的端到端流水线。"
 related:
   - ./motion-retargeting.md
@@ -16,6 +16,7 @@ related:
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
+  - ../entities/paper-mamma-markerless-motion-capture.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -62,7 +63,7 @@ sources:
 flowchart TD
   subgraph src["上游源（异构）"]
     A1[棚拍 MoCap<br/>BVH / FBX]
-    A2[SMPL / SMPL-X 序列]
+    A2[SMPL / SMPL-X 序列<br/>AMASS / MAMMA 等多视角采集]
     A3[单目视频 → 姿态估计<br/>GVHMR / WHAM / SAM 3D Body 等]
     A4[生成式动作模型<br/>GENMO / 扩散等]
     A5[实时遥操作流]
@@ -99,6 +100,7 @@ flowchart TD
 - **单位与坐标**：统一为 SI 单位、Z-up 或 Y-up、根坐标朝向对齐。
 - **时间采样**：重采样到目标控制频率（常见 30/50/60 Hz），处理可变帧率与丢帧。
 - **格式归并**：BVH / FBX / SMPL（含 SMPL-H / SMPL-X）/ 自定义 JSON 等统一到内部表示。
+- **多视角 SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 等 markerless 多相机管线直接产出 **SMPL-X 时序**（双人交互场景相对单目 HMR 噪声更低），与 AMASS 离线库互补。
 - **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 
@@ -143,7 +145,7 @@ flowchart TD
 
 | 形态 | 上游源 | 中间是否走重定向 | 物理修补在哪 | 代表 |
 |------|--------|------------------|-------------|------|
-| **干净 MoCap + 几何重定向** | 棚拍 BVH/SMPL | 是（IK 主导） | 下游 QP/WBC 或单独 RL | [GMR](../methods/motion-retargeting-gmr.md) 主流用法 |
+| **干净 MoCap + 几何重定向** | 棚拍 BVH/SMPL / [MAMMA](../entities/paper-mamma-markerless-motion-capture.md) SMPL-X | 是（IK 主导） | 下游 QP/WBC 或单独 RL | [GMR](../methods/motion-retargeting-gmr.md) 主流用法 |
 | **重定向 + 仿真 RL 配对** | SMPL 大库 | 是（GMR 当作前端） | CEPR 仿真 rollout | [NMR](../methods/neural-motion-retargeting-nmr.md) |
 | **双层联合优化** | SMPL / 跨形态 | 是（参考可学习） | 下层 RL 在同一环 | [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) |
 | **并行仿真 + 采样轨迹优化** | 人体+物体运动学 + mesh | 是（IK 初参考） | 采样型 MPC/CEM 式更新 + 课程式虚拟接触 | [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) |

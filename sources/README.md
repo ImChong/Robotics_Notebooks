@@ -70,6 +70,7 @@
 | [x] [cosmos3_arxiv_2606_02800.md](papers/cosmos3_arxiv_2606_02800.md) | Cosmos 3：全模态 MoT 世界模型平台（语言/图像/视频/音频/动作，arXiv:2606.02800，NVIDIA Cosmos Lab）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [lingbot_map_arxiv_2604_14141.md](papers/lingbot_map_arxiv_2604_14141.md) | LingBot-Map：GCA 流式 3D 重建 + Paged KV（arXiv:2604.14141）摘录与 wiki 映射 |
+| [x] [mamma_arxiv_2506_13040.md](papers/mamma_arxiv_2506_13040.md) | MAMMA：多视角 markerless 双人 SMPL-X 采集 + MammaNet 稠密 landmark（CVPR 2026 Oral，arXiv:2506.13040，MPI-IS）摘录与 wiki 映射 |
 | [x] [mimic_video_arxiv_2512_15692.md](papers/mimic_video_arxiv_2512_15692.md) | mimic-video：Video-Action Model（VAM），互联网视频潜计划 + 流匹配动作解码器（arXiv:2512.15692）摘录与 wiki 映射 |
 | [x] [defi_arxiv_2604_16391.md](papers/defi_arxiv_2604_16391.md) | DeFI：解耦 GFDM/GIDM 前向与逆动力学预训练 + 下游扩散耦合 VLA（arXiv:2604.16391）摘录与 wiki 映射 |
 | [x] [extreme_parkour_arxiv_2309_14341.md](papers/extreme_parkour_arxiv_2309_14341.md) | Extreme Parkour：Go1 四足单目深度端到端跑酷 + 双重 DAgger 蒸馏（arXiv:2309.14341，ICRA 2024）摘录与 wiki 映射 |
@@ -150,6 +151,7 @@
 | [x] [gs_playground.md](repos/gs_playground.md) | GS-Playground：批量 3DGS 光真实感并行仿真框架，RSS 2026，10^4 FPS |
 | [x] [aholo-viewer.md](repos/aholo-viewer.md) | Aholo Viewer：Web 高性能 3DGS+Mesh，Chunked Streaming LoD（manycoretech） |
 | [x] [metalhead.md](repos/metalhead.md) | inspirai/MetalHead：Unitree A1 AMP walk/jump/recovery |
+| [x] [mamma.md](repos/mamma.md) | cuevhv/mamma：CVPR 2026 MAMMA 多视角 markerless SMPL-X 管线（CLI + GUI） |
 | [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
 | [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
@@ -316,6 +318,7 @@
 | [x] [legsvla-github-io.md](sites/legsvla-github-io.md) | LEGS 项目页 legsvla.github.io（3DGS loco-manip VLA 数据管线、真机 demo；arXiv:2606.01458） |
 | [x] [splitadapter-github-io.md](sites/splitadapter-github-io.md) | SplitAdapter 项目页 splitadapter.github.io（负载感知因子化适配、G1 真机 demo；arXiv:2606.03297） |
 | [x] [lingbot-map-technology-robbant.md](sites/lingbot-map-technology-robbant.md) | LingBot-Map 官方项目页 technology.robbyant.com/lingbot-map（与论文/仓库交叉索引） |
+| [x] [mamma-tue-mpg-de.md](sites/mamma-tue-mpg-de.md) | MAMMA 项目页 mamma.is.tue.mpg.de（MammaNet、MAMMASyn、Vicon 对比、iPhone demo；配套 arXiv:2506.13040） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
 | [x] [motion-tracking-axell-top.md](sites/motion-tracking-axell-top.md) | motion-tracking.axell.top：Axellwppr/motion_tracking 预训练策略浏览器演示 |
 | [x] [cosmos3-project.md](sites/cosmos3-project.md) | Cosmos 3 项目页 research.nvidia.com/labs/cosmos-lab/cosmos3（全模态 Physical AI 能力 demo 与榜单摘要，arXiv:2606.02800） |
