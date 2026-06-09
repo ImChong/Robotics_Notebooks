@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 799,
-  "edge_count": 5583,
+  "node_count": 800,
+  "edge_count": 5589,
   "coverage": {
-    "covered": 783,
-    "total": 797,
+    "covered": 784,
+    "total": 798,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
+      "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
+      "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/robot-lab.md",
       "detail_id": "entity-robot-lab",
@@ -151,28 +167,12 @@
       "type": "query",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/python-robotics.md",
-      "detail_id": "entity-python-robotics",
-      "label": "PythonRobotics",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robot-lab.md",
-    "detail_id": "entity-robot-lab",
-    "label": "robot_lab (IsaacLab 扩展框架)",
+    "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
+    "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
+    "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"
