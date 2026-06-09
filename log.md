@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/ladderman_arxiv_2606_05873.md — LadderMan 人形感知梯子攀爬（项目页 + arXiv）消化并建实体页
+
+- 原始资料：[`sources/papers/ladderman_arxiv_2606_05873.md`](sources/papers/ladderman_arxiv_2606_05873.md)（<https://arxiv.org/abs/2606.05873>）；[`sources/sites/ladderman-robot-github-io.md`](sources/sites/ladderman-robot-github-io.md)（<https://ladderman-robot.github.io/>）
+- 新建实体：[`wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md`](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)（两阶段 hybrid tracking + DAgger+RL、VFM/RFM sim-to-real、梯上双智能体操作 + Mermaid 管线）
+- 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)
+
 ## [2026-06-09] ingest | sources/papers/limmt_arxiv_2606_06953.md — LIMMT（ICML 2026，GQS 数据策展 3% AMASS 胜全量）入库
 
 - 原始资料：[`limmt_arxiv_2606_06953.md`](sources/papers/limmt_arxiv_2606_06953.md)（<https://arxiv.org/abs/2606.06953>）；[`limmt-giraffeguan-github-io.md`](sources/sites/limmt-giraffeguan-github-io.md)（<https://giraffeguan.github.io/limmt/>）

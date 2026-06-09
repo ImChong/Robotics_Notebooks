@@ -14,7 +14,7 @@ tags:
   - isaac-gym
   - amazon-far
 status: complete
-updated: 2026-06-07
+updated: 2026-06-09
 arxiv: "2602.03002"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -28,6 +28,7 @@ related:
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ./paper-pilot-perceptive-loco-manipulation.md
   - ./paper-faststair-humanoid-stair-ascent.md
+  - ./paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ./extreme-parkour.md
 sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
@@ -159,6 +160,7 @@ flowchart TB
 - [Privileged Training](../concepts/privileged-training.md) — 高程图专家 → 深度学生
 - [DAgger](../methods/dagger.md) — Stage 2 蒸馏算法
 - [PHP（Perceptive Humanoid Parkour）](./paper-hrl-stack-22-perceptive_humanoid_parkour.md) — 同系 Amazon FAR 深度跑酷对照
+- [LadderMan](./paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 同系 Amazon FAR 稀疏踏棍攀爬与梯上操作
 - [Unitree G1](./unitree-g1.md) — 实验平台
 
 ## 参考来源
