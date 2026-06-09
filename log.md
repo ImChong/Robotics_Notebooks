@@ -6,6 +6,12 @@
 - 新建方法页：[`wiki/methods/dart-control.md`](wiki/methods/dart-control.md)（自回归运动原语潜扩散 + 在线文本/空间控制 + Mermaid 管线）
 - 交叉更新：[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/methods/hy-motion-1.md`](wiki/methods/hy-motion-1.md)、[`wiki/methods/genmo.md`](wiki/methods/genmo.md)、[`wiki/entities/awesome-text-to-motion-zilize.md`](wiki/entities/awesome-text-to-motion-zilize.md)、[`wiki/entities/phc.md`](wiki/entities/phc.md)、[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/comparisons/wbc-vs-rl.md`](wiki/comparisons/wbc-vs-rl.md)、[`sources/README.md`](sources/README.md)
 
+## [2026-06-09] ingest | sources/repos/robot_lab.md — 复核 fan-ziqi/robot_lab 并刷新实体页（24+ 环境、新机型、rl_sar 部署链、Mermaid）
+
+- 原始资料：[`sources/repos/robot_lab.md`](sources/repos/robot_lab.md)（<https://github.com/fan-ziqi/robot_lab>）
+- 刷新实体：[`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)（版本矩阵、24 环境机型表、BeyondMimic/AMP 实验任务、Sim2Real→rl_sar Mermaid）
+- 交叉更新：[`wiki/concepts/wheel-legged-quadruped.md`](wiki/concepts/wheel-legged-quadruped.md)、[`wiki/entities/openloong.md`](wiki/entities/openloong.md)
+
 ## [2026-06-09] ingest | sources/papers/humanoid_gym_arxiv_2404_05695.md — Humanoid-Gym 论文 + 官方/社区仓库入库并建实体页
 
 - 原始资料：[`humanoid_gym_arxiv_2404_05695.md`](sources/papers/humanoid_gym_arxiv_2404_05695.md)（<https://arxiv.org/abs/2404.05695>）；[`humanoid-gym.md`](sources/repos/humanoid-gym.md)（<https://github.com/roboterax/humanoid-gym>）；[`humanoid-gym-modified.md`](sources/repos/humanoid-gym-modified.md)（<https://github.com/roboman-ly/humanoid-gym-modified>）

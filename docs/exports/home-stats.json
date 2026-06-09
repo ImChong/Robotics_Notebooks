@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-06-09",
   "node_count": 800,
-  "edge_count": 5598,
+  "edge_count": 5600,
   "coverage": {
     "covered": 784,
     "total": 798,
@@ -69,6 +69,30 @@
       "detail_id": "wiki-comparisons-wbc-vs-rl",
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robot-lab.md",
+      "detail_id": "entity-robot-lab",
+      "label": "robot_lab (IsaacLab 扩展框架)",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/openloong.md",
+      "detail_id": "entity-openloong",
+      "label": "OpenLoong（青龙·公版机）",
+      "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
     },
@@ -141,30 +165,6 @@
       "detail_id": "entity-unitree-g1",
       "label": "Unitree G1 (人形机器人)",
       "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md",
-      "detail_id": "entity-paper-rpl-robust-humanoid-perceptive-locomotion",
-      "label": "RPL：复杂地形上的鲁棒人形多向感知行走",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/privileged-training.md",
-      "detail_id": "wiki-concepts-privileged-training",
-      "label": "Privileged Training（特权信息训练）",
-      "type": "concept",
       "recency": "2026-06-09",
       "source": "log.md"
     }
