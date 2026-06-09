@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/dimos_arxiv_2305_12411.md — DIMOS 室内人–场景运动合成（ICCV 2023）入库并建实体页
+
+- 原始资料：[`dimos_arxiv_2305_12411.md`](sources/papers/dimos_arxiv_2305_12411.md)（<https://arxiv.org/abs/2305.12411>）；[`dimos-zkf1997-github-io.md`](sources/sites/dimos-zkf1997-github-io.md)（<https://zkf1997.github.io/DIMOS/>）；[`dimos.md`](sources/repos/dimos.md)（<https://github.com/zkf1997/DIMOS>）
+- 新建实体：[`wiki/entities/paper-dimos-human-scene-motion-synthesis.md`](wiki/entities/paper-dimos-human-scene-motion-synthesis.md)（RL + CVAE 潜空间 + 场景感知 locomotion/interaction + Mermaid 管线）
+- 交叉更新：[`wiki/concepts/character-animation-vs-robotics.md`](wiki/concepts/character-animation-vs-robotics.md)、[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/methods/crisp-real2sim.md`](wiki/methods/crisp-real2sim.md)、[`wiki/entities/paper-amp-survey-15-physhsi.md`](wiki/entities/paper-amp-survey-15-physhsi.md)、[`wiki/overview/paper-notebook-category-14-human-motion.md`](wiki/overview/paper-notebook-category-14-human-motion.md)
+
 ## [2026-06-09] ingest | sources/papers/dart_control_arxiv_2410_05260.md — DART/DartControl（ICLR 2025）论文+仓库+项目页入库并建方法页
 
 - 原始资料：[`dart_control_arxiv_2410_05260.md`](sources/papers/dart_control_arxiv_2410_05260.md)（<https://arxiv.org/abs/2410.05260>）；[`zkf1997_dart.md`](sources/repos/zkf1997_dart.md)（<https://github.com/zkf1997/DART>）；[`dart-control-project.md`](sources/sites/dart-control-project.md)（<https://zkf1997.github.io/DART/>）

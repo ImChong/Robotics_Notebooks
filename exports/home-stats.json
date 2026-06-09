@@ -1,18 +1,26 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 801,
-  "edge_count": 5606,
+  "node_count": 802,
+  "edge_count": 5619,
   "coverage": {
-    "covered": 785,
-    "total": 799,
+    "covered": 786,
+    "total": 800,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/methods/dart-control.md",
-      "detail_id": "wiki-methods-dart-control",
-      "label": "DART（DartControl：实时文本驱动人体运动控制）",
-      "type": "method",
+      "path": "wiki/entities/paper-dimos-human-scene-motion-synthesis.md",
+      "detail_id": "entity-paper-dimos-human-scene-motion-synthesis",
+      "label": "DIMOS：室内 3D 场景中的多样人体运动合成",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
       "recency": "2026-06-09",
       "source": "log.md"
     },
@@ -20,6 +28,38 @@
       "path": "wiki/methods/diffusion-motion-generation.md",
       "detail_id": "wiki-methods-diffusion-motion-generation",
       "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
+      "detail_id": "entity-paper-amp-survey-15-physhsi",
+      "label": "PhysHSI",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-14-human-motion.md",
+      "detail_id": "wiki-overview-paper-notebook-category-14-human-motion",
+      "label": "Paper Notebooks · Human Motion",
+      "type": "overview",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/dart-control.md",
+      "detail_id": "wiki-methods-dart-control",
+      "label": "DART（DartControl：实时文本驱动人体运动控制）",
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
@@ -81,14 +121,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/crisp-real2sim.md",
-      "detail_id": "wiki-methods-crisp-real2sim",
-      "label": "CRISP（Contact-guided Real2Sim）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/robot-lab.md",
       "detail_id": "entity-robot-lab",
       "label": "robot_lab (IsaacLab 扩展框架)",
@@ -135,45 +167,13 @@
       "type": "overview",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-resmimic.md",
-      "detail_id": "entity-paper-resmimic",
-      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md",
-      "detail_id": "entity-paper-ladderman-humanoid-perceptive-ladder-climbing",
-      "label": "LadderMan：人形感知梯子攀爬与梯上操作",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/dart-control.md",
-    "detail_id": "wiki-methods-dart-control",
-    "label": "DART（DartControl：实时文本驱动人体运动控制）",
-    "type": "method",
+    "path": "wiki/entities/paper-dimos-human-scene-motion-synthesis.md",
+    "detail_id": "entity-paper-dimos-human-scene-motion-synthesis",
+    "label": "DIMOS：室内 3D 场景中的多样人体运动合成",
+    "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"
   }
