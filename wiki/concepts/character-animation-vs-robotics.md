@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-05-29
+updated: 2026-06-09
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -191,6 +191,7 @@ flowchart LR
 - 安全与奖励配比：[Reward Design](./reward-design.md)、[Control Barrier Function](./control-barrier-function.md)。
 - 实机案例：[Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)；中性平台 [Roboto Origin](../entities/roboto-origin.md)、[Asimov v1](../entities/asimov-v1.md)。
 - 风格先验方法：[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)；原作者索引 [Xue Bin Peng](../entities/xue-bin-peng.md)。
+- **室内人–场景交互合成（运动学角色）：** [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)（ICCV 2023）用 RL 在 CVAE 运动基元潜空间上合成走–坐–躺序列，服务 AR/VR 与训练数据规模化；上真机需经重定向与接触动力学重建模，与 DeepMimic/AMP 的「仿真物理角色 → 机器人」迁移链正交。
 - 工具层：[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)。
 
 ## 推荐继续阅读

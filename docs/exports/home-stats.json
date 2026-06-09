@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 799,
-  "edge_count": 5581,
+  "node_count": 800,
+  "edge_count": 5593,
   "coverage": {
-    "covered": 783,
-    "total": 797,
+    "covered": 784,
+    "total": 798,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dimos-human-scene-motion-synthesis.md",
+      "detail_id": "entity-paper-dimos-human-scene-motion-synthesis",
+      "label": "DIMOS：室内 3D 场景中的多样人体运动合成",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/humanoid-gym.md",
       "detail_id": "entity-humanoid-gym",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/kalman-filter.md",
-      "detail_id": "wiki-formalizations-kalman-filter",
-      "label": "Kalman Filter (KF)",
-      "type": "formalization",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-gym.md",
-    "detail_id": "entity-humanoid-gym",
-    "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
+    "path": "wiki/entities/paper-dimos-human-scene-motion-synthesis.md",
+    "detail_id": "entity-paper-dimos-human-scene-motion-synthesis",
+    "label": "DIMOS：室内 3D 场景中的多样人体运动合成",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-09
 venue: curated
 summary: "PhysHSI 把 AMP 用到 humanoid-scene interaction 里：搬箱子、坐下、躺下、站起，以及风格化行走。"
 related:
@@ -50,6 +50,7 @@ sources:
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - 原始 source：[humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md](../../sources/papers/humanoid_amp_survey_15_physhsi_towards_a_real_world_generalizable_and_n.md)
 - **下游适配：** [SplitAdapter](./paper-splitadapter-load-aware-loco-manipulation.md)（arXiv:2606.03297）以 PhysHSI 类 **AMP 搬箱策略为冻结基线**，用因子化世界模型/FiLM 做负载感知 sim2real 适配。
+- **图形学对照（运动学角色）：** [DIMOS](./paper-dimos-human-scene-motion-synthesis.md) 同样覆盖坐/躺/站起与室内导航，但是 **SMPL-X 运动学合成 + RL 潜空间控制**，非 PhysHSI 的 **物理仿真人形 + AMP**；任务重叠、平台与物理层级不同。
 
 ## 实验与评测
 

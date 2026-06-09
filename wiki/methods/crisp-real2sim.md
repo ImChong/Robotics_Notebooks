@@ -74,6 +74,7 @@ flowchart LR
 
 - 与 **[Sim2Real](../concepts/sim2real.md)**：CRISP 强化 **Real2Sim** 一侧的资产质量，使后续 sim 中训练更稳。
 - 与 **[GS-Playground](../entities/gs-playground.md)**：后者用 **3DGS** 做外观 Real2Sim；CRISP 走 **单目视频 + 平面原语 + 接触** 路线，侧重点不同，可对照「视觉真实感 vs 接触动力学可仿真性」（详见 [CRISP vs GS-Playground 选型对比](../comparisons/crisp-vs-gs-playground-real2sim.md)）。
+- 与 **[DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)**：CRISP 从 **视频恢复可仿真资产**；DIMOS 从 **语义/路点目标正向合成** 室内坐/躺/行走序列——前者偏 Real2Sim 上游，后者偏 **合成训练数据 / 场景填充**。
 
 ## 关联页面
 
