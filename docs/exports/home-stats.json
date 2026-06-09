@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-06-09",
   "node_count": 800,
-  "edge_count": 5587,
+  "edge_count": 5589,
   "coverage": {
     "covered": 784,
     "total": 798,
@@ -21,6 +21,30 @@
       "detail_id": "wiki-methods-crisp-real2sim",
       "label": "CRISP（Contact-guided Real2Sim）",
       "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/robot-lab.md",
+      "detail_id": "entity-robot-lab",
+      "label": "robot_lab (IsaacLab 扩展框架)",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/openloong.md",
+      "detail_id": "entity-openloong",
+      "label": "OpenLoong（青龙·公版机）",
+      "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
     },
@@ -141,30 +165,6 @@
       "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
       "label": "人形运动跟踪方法选型指南",
       "type": "query",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/python-robotics.md",
-      "detail_id": "entity-python-robotics",
-      "label": "PythonRobotics",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/navigation-slam-autonomy-stack.md",
-      "detail_id": "wiki-overview-navigation-slam-autonomy-stack",
-      "label": "导航·SLAM·自动驾驶开源栈总览",
-      "type": "overview",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/navigation2.md",
-      "detail_id": "entity-navigation2",
-      "label": "Navigation2（Nav2）",
-      "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
     }
