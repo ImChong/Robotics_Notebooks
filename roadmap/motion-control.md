@@ -224,14 +224,14 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  A[需要插值 / 组合两个朝向] --> B{在 SO3 流形上操作?}
-  B -->|否：逐元素加减| X[结果一般不正交，跳出 SO3]
+  A[需要插值 / 组合两个朝向] --> B{在 SO(3) 流形上操作?}
+  B -->|否：逐元素加减| X[结果一般不正交，跳出 SO(3)]
   B -->|是| C{更偏好哪种表示?}
   C -->|四元数| D[SLERP 插值]
-  C -->|旋转矩阵 / 李代数| E["R(t)=R0 exp(t log(R0^T R1))"]
-  F[SE3 作用在几何对象] --> G{点还是方向向量?}
-  G -->|点| H["v' = Rv + p"]
-  G -->|方向| I["v' = Rv（不受平移）"]
+  C -->|旋转矩阵 / 李代数| E["$$R(t)=R_0\exp\!\big(t\log(R_0^{\mathsf T}R_1)\big)$$"]
+  F[SE(3) 作用在几何对象] --> G{点还是方向向量?}
+  G -->|点| H["$$v' = Rv + p$$"]
+  G -->|方向，不受平移| I["$$v' = Rv$$"]
 ```
 
 <ol>
@@ -313,10 +313,10 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-  Js["space Jacobian J_s"] --> Ad["伴随 Ad(T_bs)"]
-  Ad --> Jb["body Jacobian J_b"]
-  Tgt[任务目标定义在哪个坐标系?] -->|世界 / 固定基| UseS[用 J_s]
-  Tgt -->|末端体坐标系| UseB[用 J_b]
+  Js["$$\mathbf{J}_s$$"] --> Ad["$$\mathrm{Ad}(T_{bs})$$"]
+  Ad --> Jb["$$\mathbf{J}_b$$"]
+  Tgt[任务目标定义在哪个坐标系?] -->|世界 / 固定基| UseS[用 space Jacobian]
+  Tgt -->|末端体坐标系| UseB[用 body Jacobian]
 ```
 
 ```mermaid
@@ -324,7 +324,7 @@ flowchart TD
   IK[6R + 球腕 IK] --> S{肩前 / 后}
   S --> E{肘上 / 下}
   E --> W{腕翻转}
-  W --> Eight["最多 2^3 = 8 组解"]
+  W --> Eight["$$\text{最多 }2^3=8\text{ 组解}$$"]
 ```
 
 <ol>
@@ -407,17 +407,17 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-  fc[接触力 f_c] --> Jt["$$\mathbf{J}_c^{\mathsf{T}}$$"]
-  Jt --> tau[关节力矩 tau]
-  tau --> WBC[WBC：在动力学与接触约束下分配 tau]
+  fc["接触力<br/>$$f_c$$"] --> Jt["$$\mathbf{J}_c^{\mathsf{T}}$$"]
+  Jt --> tau["$$\boldsymbol{\tau}$$"]
+  tau --> WBC[WBC：在动力学与接触约束下分配力矩]
 ```
 
 ```mermaid
 flowchart TD
   Need{控制循环要什么?}
-  Need -->|逆动力学 tau 前馈| RNEA[RNEA O n]
-  Need -->|质量矩阵 M| CRBA[CRBA O n^2]
-  Need -->|仿真正向积分 qdd| ABA[ABA O n]
+  Need -->|逆动力学前馈| RNEA["RNEA<br/>$$O(n)$$"]
+  Need -->|质量矩阵| CRBA["CRBA<br/>$$O(n^2)$$"]
+  Need -->|正向积分| ABA["ABA<br/>$$O(n)$$"]
 ```
 
 <ol>
@@ -496,7 +496,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   Start[线性二次最优控制] --> C1{LTI + 无约束 + 无穷时域?}
-  C1 -->|是| LQR["MPC 解 = LQR u=-Kx"]
+  C1 -->|是| LQR["$$u = -Kx$$"]
   C1 -->|否| MPC[必须用 MPC]
   MPC --> R1[状态 / 输入约束]
   MPC --> R2[非线性 / 有限时域 / 轨迹跟踪]
@@ -652,13 +652,13 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-  LIP[LIP：z_c 恒定] --> Lin["水平动力学线性、CoM-ZMP 可解析"]
-  Break[跳跃 / 楼梯 / 深蹲] --> Vary[z_c 时变或腾空]
+  LIP["LIP 恒定高度<br/>$$z_c$$"] --> Lin["$$\ddot{x}=\tfrac{g}{z_c}(x-x_{\mathrm{zmp}})$$"]
+  Break[跳跃 / 楼梯 / 深蹲] --> Vary["$$z_c$$<br/>时变或腾空"]
   Vary --> Need[需变高度 / centroidal / 全身模型]
   Mon[在线监测平衡] --> CoP[算 CoP / ZMP]
   CoP --> Poly{在支撑多边形内?}
   Poly -->|否 / 触界| Fall[翻倒风险：法向力趋零 + IMU 异常]
-  DCM[DCM / Capture Point] --> Prev[前瞻落点：xi = x + xdot/omega]
+  DCM[DCM / Capture Point] --> Prev["$$\xi = x + \dot{x}/\omega$$"]
 ```
 
 <ol>
@@ -714,8 +714,8 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-  Full["全身 (n+6) 维动力学"] --> Proj[投影到 6D 质心动量]
-  Proj --> Cent[Centroidal: h_g = A_g qdot]
+  Full["全身<br/>$$(n+6)$$ 维动力学"] --> Proj[投影到 6D 质心动量]
+  Proj --> Cent["$$h_g = A_g\dot{q}$$"]
   Cent --> Lost[损失：具体构型 / 关节分布]
   Lost --> WBC2[由下层 WBC 补回]
 ```
@@ -779,7 +779,7 @@ flowchart TD
   Bug[MPC 步态发抖] --> R1[1 参考轨迹是否抖]
   R1 --> R2[2 求解器是否收敛 / warm-start]
   R2 --> R3[3 频率 vs 求解延迟 / one-step delay]
-  R3 --> R4[4 权重：跟踪过硬或 Delta-u 过小]
+  R3 --> R4["权重<br/>$$\Delta u$$ 过小"]
   R4 --> R5[5 接触切换约束突变 / 摩擦锥过紧]
   R5 --> R6[6 状态估计噪声与延迟]
   Mode{选型} --> Convex[Convex MPC：快、定 schedule 平地走]
@@ -1065,10 +1065,10 @@ flowchart TD
 ```mermaid
 flowchart TD
   BC[BC 只在专家状态分布上训练] --> Drift[策略误差导致状态漂移]
-  Drift --> O1["误差 ~ O(eps T^2)"]
+  Drift --> O1["$$O(\epsilon T^2)$$"]
   DAg[DAgger] --> Roll[在策略访问状态上 roll-out]
   Roll --> Label[Expert 重新标注并聚合数据]
-  Label --> O2["误差 ~ O(eps T)"]
+  Label --> O2["$$O(\epsilon T)$$"]
   Ret[Motion Retargeting] --> R1[比例不同：IK 匹配末端 / 接触]
   Ret --> R2[限位不同：裁剪 + 约束优化]
 ```
