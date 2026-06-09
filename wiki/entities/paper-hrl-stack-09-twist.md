@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-09
 venue: curated
 summary: "TWIST 和 H2O / OmniH2O 属于同一条技术线，但它强调的是另一个问题：**人形机器人的遥操作不能只控制手，也不能只控制底盘，而是要控制整具身体。**"
 related:
@@ -45,6 +45,7 @@ sources:
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_09_twist_teleoperated_whole_body_imitation_system.md](../../sources/papers/humanoid_rl_stack_09_twist_teleoperated_whole_body_imitation_system.md)
+- 下游残差 loco-manipulation：[ResMimic](./paper-resmimic.md)（arXiv:2510.05070）在 GMT 奖励与域随机化上沿用 TWIST 配方，并叠加物体条件残差策略。
 
 ## 实验与评测
 

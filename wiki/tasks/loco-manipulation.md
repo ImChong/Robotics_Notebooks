@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-08
+updated: 2026-06-09
 sources:
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
@@ -16,6 +16,7 @@ sources:
   - ../../sources/papers/splitadapter_arxiv_2606_03297.md
   - ../../sources/repos/awesome-humanoid-robot-learning.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
+  - ../../sources/papers/resmimic_arxiv_2510_05070.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -79,8 +80,8 @@ flowchart TD
 - **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）。
 
 ### 4. 残差与自适应学习 (Residual & Adaptive)
-- **核心**：在高层规划器输出的基础上，通过轻量级 RL 学习补偿项（Residual），以处理复杂地形或扰动。
-- **代表作**：SteadyTray (2026), ResMimic (2025), SEEC (2025)。
+- **核心**：在 **预训练全身先验**（GMT、WBC 等）或高层规划输出之上，用轻量 RL 学习 **残差修正**，注入物体条件、地形或扰动补偿，避免每条任务从零学平衡与步态。
+- **代表作**：[ResMimic](../entities/paper-resmimic.md) (Amazon FAR, 2025, arXiv:2510.05070) — **GMT 预训练 + 物体条件残差**、点云/接触奖励与虚拟力课程，G1 真机 **4.5–5.5 kg** 全身接触搬运；SteadyTray (2026), SEEC (2025)。
 
 ### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)
 - **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
@@ -145,6 +146,7 @@ flowchart TD
 - [SplitAdapter（论文实体）](../entities/paper-splitadapter-load-aware-loco-manipulation.md) — 冻结 AMP 搬箱策略 + 因子化世界模型/FiLM 负载感知适配（arXiv:2606.03297）
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — LiDAR 高程图 + MoE 单阶段感知全身 LLC（arXiv:2601.17440）
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
+- [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 
 ## 参考来源
@@ -163,6 +165,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/splitadapter_arxiv_2606_03297.md](../../sources/papers/splitadapter_arxiv_2606_03297.md) — SplitAdapter：负载感知因子化适配与人形搬箱 sim2real（arXiv:2606.03297）
 - **ingest 档案：** [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：交互保留人形重定向（ICRA 2026）
+- **ingest 档案：** [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT→残差全身 loco-manipulation（arXiv:2510.05070）
 
 ## 一句话记忆
 

@@ -55,6 +55,7 @@
 | [x] [shenlan_world_models_15_reference_catalog.md](papers/shenlan_world_models_15_reference_catalog.md) | 深蓝世界模型 15 项目：**15 篇开源 WM** 独立 source 总索引（`papers/shenlan_wm_survey_*.md`，配套 `KZT8sI4n7GvHWyM20wN3gg`） |
 | [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
 | [x] [rpl_arxiv_2602_03002.md](papers/rpl_arxiv_2602_03002.md) | RPL：分地形高程专家 + 多视角深度 DAgger 蒸馏 + DFSV/RSM 多向感知行走（arXiv:2602.03002，Amazon FAR / G1）摘录与 wiki 映射 |
+| [x] [resmimic_arxiv_2510_05070.md](papers/resmimic_arxiv_2510_05070.md) | ResMimic：GMT 预训练 + 残差后训练的人形全身 loco-manipulation（arXiv:2510.05070，Amazon FAR / G1）摘录与 wiki 映射 |
 | [x] [omniretarget_arxiv_2509_26633.md](papers/omniretarget_arxiv_2509_26633.md) | OmniRetarget：interaction mesh + Sequential SOCP 交互保留重定向与增广（ICRA 2026，arXiv:2509.26633；holosoma + HF 数据集）全文消化与 wiki 映射 |
 | [x] [humanoid_rl_stack_42_catalog.md](papers/humanoid_rl_stack_42_catalog.md) | 具身智能研究室 42 篇 humanoid RL 身体系统栈：独立 `humanoid_rl_stack_*` source + `paper-hrl-stack-*` 实体总索引 |
 | [x] [humanoid_amp_survey_19_catalog.md](papers/humanoid_amp_survey_19_catalog.md) | 具身智能研究室 19 篇 AMP 运动先验：独立 `humanoid_amp_survey_*` source + `paper-amp-survey-*` 实体总索引 |
@@ -199,6 +200,7 @@
 | [x] [horizon_robotics_holomotion.md](repos/horizon_robotics_holomotion.md) | HoloMotion：地平线人形全身运动跟踪开源栈（GitHub + Pages 文档 + arXiv:2605.15336 + HF 权重 + Docker） |
 | [x] [homeworld.md](repos/homeworld.md) | Kairos-HomeWorld/HomeWorld：全屋 sim-ready 室内场景生成（arXiv:2606.06390；代码/数据集 Coming Soon） |
 | [x] [holosoma.md](repos/holosoma.md) | holosoma：Amazon FAR 人形 RL 训练/推理 + OmniRetarget 重定向（IsaacGym/IsaacSim/MJWarp，G1/T1，arXiv:2509.26633） |
+| [x] [resmimic.md](repos/resmimic.md) | ResMimic：GMT→残差 loco-manipulation 仿真基础设施与数据（arXiv:2510.05070，Amazon FAR / G1） |
 | [x] [human2humanoid.md](repos/human2humanoid.md) | LeCAR-Lab/human2humanoid：人形全身遥操 + AMASS 重定向脚本 |
 | [x] [google_deepmind_barkour_robot.md](repos/google_deepmind_barkour_robot.md) | barkour_robot：DeepMind 敏捷四足 CAD/PCBA/装配/固件（Pigweed+EtherCAT）与 OnShape、Menagerie MJCF 官方入口索引 |
 | [x] [mujoco_menagerie_google_barkour_models.md](repos/mujoco_menagerie_google_barkour_models.md) | mujoco_menagerie：`google_barkour_v0` / `google_barkour_vb` 子目录（MJCF 资产） |
@@ -264,6 +266,7 @@
 | [x] [php-parkour-github-io.md](sites/php-parkour-github-io.md) | PHP 项目页 php-parkour.github.io（RSS 2026、浏览器 MuJoCo demo、跑酷实机视频；配套 arXiv:2602.15827） |
 | [x] [rpl-humanoid-github-io.md](sites/rpl-humanoid-github-io.md) | RPL 项目页 rpl-humanoid.github.io（双向楼梯/坡/垫脚石、2 kg 载荷、DFSV/RSM 消融；配套 arXiv:2602.03002） |
 | [x] [omniretarget-github-io.md](sites/omniretarget-github-io.md) | OmniRetarget 项目页 omniretarget.github.io（ICRA 2026、增广交互演示、GMR/PHC 基线对比；配套 arXiv:2509.26633） |
+| [x] [resmimic-github-io.md](sites/resmimic-github-io.md) | ResMimic 项目页 resmimic.github.io（GMT+残差真机演示、基线对比、关节残差可视化；配套 arXiv:2510.05070） |
 | [x] [omniretarget-dataset-huggingface.md](sites/omniretarget-dataset-huggingface.md) | OmniRetarget Dataset（HF）：G1 重定向轨迹 4.0 h（OMOMO + 自采 MoCap；.npz qpos+fps） |
 | [x] [bfm4humanoid-github-io.md](sites/bfm4humanoid-github-io.md) | BFM 项目页 bfm4humanoid.github.io（Roundhouse Kick / Side Salto / VR 遥操作演示，代码 In Coming） |
 | [x] [bifrost-umi-project.md](sites/bifrost-umi-project.md) | BifrostUMI 项目页 baai-aether.github.io/BifrostUMI（三层级方法、采集硬件、G1 实验、BibTeX） |

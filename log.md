@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/resmimic_arxiv_2510_05070.md — ResMimic GMT→残差全身 loco-manipulation 入库并建实体页
+
+- 原始资料：[`resmimic_arxiv_2510_05070.md`](sources/papers/resmimic_arxiv_2510_05070.md)（<https://arxiv.org/abs/2510.05070>）；[`resmimic-github-io.md`](sources/sites/resmimic-github-io.md)（<https://resmimic.github.io/>）；[`resmimic.md`](sources/repos/resmimic.md)（<https://github.com/amazon-far/ResMimic>）
+- 新建实体：[`wiki/entities/paper-resmimic.md`](wiki/entities/paper-resmimic.md)（两阶段残差 + 点云/接触奖励 + 虚拟力课程 + Mermaid 管线）
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/repos/python_robotics.md — 接入 PythonRobotics 代码库/教材/arXiv 论文并新建实体页与导航栈交叉引用
 
 - 原始资料：[`sources/repos/python_robotics.md`](sources/repos/python_robotics.md)、[`sources/papers/python_robotics_arxiv_1808_10703.md`](sources/papers/python_robotics_arxiv_1808_10703.md)、[`sources/courses/python_robotics_textbook.md`](sources/courses/python_robotics_textbook.md)
