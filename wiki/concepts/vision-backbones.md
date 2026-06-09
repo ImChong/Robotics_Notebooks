@@ -7,13 +7,15 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-06-06
+updated: 2026-06-09
 related:
   - ./deep-learning-foundations.md
+  - ./generative-vision-pretraining.md
   - ../methods/object-detection.md
   - ./visual-representation-for-policy.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
+  - ../entities/vision-banana.md
 sources:
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
@@ -86,6 +88,8 @@ flowchart TB
 - [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
+- [生成式视觉预训练（概念）](./generative-vision-pretraining.md) — 图像生成预训练作为 FVM 新兴主线
+- [Vision Banana（实体）](../entities/vision-banana.md) — 生成基座 + instruction-tuning 实证
 - [传感器融合](./sensor-fusion.md)
 - [三维坐标变换（形式化）](../formalizations/3d-coordinate-transforms-vision-robotics.md)
 
