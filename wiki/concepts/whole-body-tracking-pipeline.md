@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-06-04
+updated: 2026-06-09
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -15,6 +15,7 @@ related:
   - ../methods/beyondmimic.md
   - ../methods/any2track.md
   - ../methods/deepmimic.md
+  - ../methods/limmt-gqs-motion-curation.md
   - ../methods/amp-reward.md
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
@@ -158,6 +159,7 @@ WBT 的**容量上限**由参考池决定。三类典型来源：
 - **RSI（Reference State Initialization）**：[DeepMimic](../methods/deepmimic.md) 经典做法，避免长 horizon 信用分配。
 - **失败率自适应采样**：[BeyondMimic](../methods/beyondmimic.md) 按片段失败率动态调权，"难片段多练"。
 - **Bin 级课程**：[EGM](../methods/egm-efficient-general-mimic.md) 按 bin 维度（速度 / 倾角 / 接触模式）做难度课程。
+- **离线子集策展**：[LIMMT / GQS](../methods/limmt-gqs-motion-curation.md) 用仿真可行性 + HME 多样性 + 复杂度加权 FPS 从大库中选出 **≈3%** 高价值 clip，改善早期优化轨迹（tracker 无关）。
 - **域随机化分布**：armature、friction、mass、传感器延迟等的扰动范围——是 sim2real 的主战场（详见 [Sim2Real](./sim2real.md)）。
 
 ### 4. 策略学习（Policy Learning）

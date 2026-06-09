@@ -2,8 +2,9 @@
 type: method
 tags: [humanoid, motion-tracking, rl, ppo, dagger, moe, curriculum, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-05-17
+updated: 2026-06-09
 related:
+  - ./limmt-gqs-motion-curation.md
   - ./beyondmimic.md
   - ./deepmimic.md
   - ./dagger.md
@@ -89,6 +90,7 @@ flowchart LR
 ## 与其他页面的关系
 
 - 与 [BeyondMimic](./beyondmimic.md)、[DeepMimic](./deepmimic.md) 同属 **参考轨迹 + RL** 的 **tracking** 家族；EGM 更强调 **跨 clip 的 bin 级采样与 MoE 结构** 对 **数据不平衡** 与 **高动态** 的针对性。
+- 与 [LIMMT / GQS](./limmt-gqs-motion-curation.md) 共享 **「小高质量 MoCap 优于大噪声库」** 结论：LIMMT 把策展前移到 **离线 GQS 三阶段** 且 **tracker-agnostic**；EGM 在 **训练期 BCCAS 采样 + CDMoE** 上论证同类判断。
 - **特权–非特权** 叙述见 [Privileged Training](../concepts/privileged-training.md)；蒸馏算法见 [DAgger](./dagger.md)。
 - 数据来源与版权边界见 [AMASS](../entities/amass.md) 与 LaFAN1 仓库索引（`sources/repos/ubisoft-laforge-animation-dataset.md`）。
 
@@ -100,6 +102,7 @@ flowchart LR
 - [Unitree G1](../entities/unitree-g1.md) — 论文使用的硬件平台语境
 - [AMASS](../entities/amass.md) — MoCap 元数据集入口
 - [Curriculum Learning](../concepts/curriculum-learning.md) — 采样与仿真两层面的课程化
+- [LIMMT / GQS](./limmt-gqs-motion-curation.md) — 离线三维质量策展（可行性 / 多样性 / 复杂度）
 
 ## 参考来源
 

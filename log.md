@@ -6,6 +6,12 @@
 - 新建实体：[`wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md`](wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md)（两阶段 hybrid tracking + DAgger+RL、VFM/RFM sim-to-real、梯上双智能体操作 + Mermaid 管线）
 - 交叉更新：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/entities/unitree-g1.md`](wiki/entities/unitree-g1.md)、[`wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md`](wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md)、[`wiki/methods/dagger.md`](wiki/methods/dagger.md)、[`wiki/concepts/privileged-training.md`](wiki/concepts/privileged-training.md)
 
+## [2026-06-09] ingest | sources/papers/limmt_arxiv_2606_06953.md — LIMMT（ICML 2026，GQS 数据策展 3% AMASS 胜全量）入库
+
+- 原始资料：[`limmt_arxiv_2606_06953.md`](sources/papers/limmt_arxiv_2606_06953.md)（<https://arxiv.org/abs/2606.06953>）；[`limmt-giraffeguan-github-io.md`](sources/sites/limmt-giraffeguan-github-io.md)（<https://giraffeguan.github.io/limmt/>）
+- 新建方法页：[`wiki/methods/limmt-gqs-motion-curation.md`](wiki/methods/limmt-gqs-motion-curation.md)（GQS 三阶段 + Mermaid + Any2Track/TWIST2/PHUMA/G1 实验归纳）
+- 交叉更新：[`wiki/methods/egm-efficient-general-mimic.md`](wiki/methods/egm-efficient-general-mimic.md)、[`wiki/queries/humanoid-motion-tracking-method-selection.md`](wiki/queries/humanoid-motion-tracking-method-selection.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/repos/python_robotics.md — 接入 PythonRobotics 代码库/教材/arXiv 论文并新建实体页与导航栈交叉引用
 
 - 原始资料：[`sources/repos/python_robotics.md`](sources/repos/python_robotics.md)、[`sources/papers/python_robotics_arxiv_1808_10703.md`](sources/papers/python_robotics_arxiv_1808_10703.md)、[`sources/courses/python_robotics_textbook.md`](sources/courses/python_robotics_textbook.md)
