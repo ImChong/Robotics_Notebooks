@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/papers/humanoid_gym_arxiv_2404_05695.md — Humanoid-Gym 论文 + 官方/社区仓库入库并建实体页
+
+- 原始资料：[`humanoid_gym_arxiv_2404_05695.md`](sources/papers/humanoid_gym_arxiv_2404_05695.md)（<https://arxiv.org/abs/2404.05695>）；[`humanoid-gym.md`](sources/repos/humanoid-gym.md)（<https://github.com/roboterax/humanoid-gym>）；[`humanoid-gym-modified.md`](sources/repos/humanoid-gym-modified.md)（<https://github.com/roboman-ly/humanoid-gym-modified>）
+- 新建实体：[`wiki/entities/humanoid-gym.md`](wiki/entities/humanoid-gym.md)（步态相位奖励 + 非对称 AC + MuJoCo sim2sim + Mermaid 管线；含 Pandaman/Gazebo fork 小节）
+- 交叉更新：[`wiki/entities/legged-gym.md`](wiki/entities/legged-gym.md)、[`references/repos/rl-frameworks.md`](references/repos/rl-frameworks.md)、[`wiki/overview/paper-notebook-category-03-high-impact-selection.md`](wiki/overview/paper-notebook-category-03-high-impact-selection.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-09] ingest | sources/papers/resmimic_arxiv_2510_05070.md — ResMimic GMT→残差全身 loco-manipulation 入库并建实体页
 
 - 原始资料：[`resmimic_arxiv_2510_05070.md`](sources/papers/resmimic_arxiv_2510_05070.md)（<https://arxiv.org/abs/2510.05070>）；[`resmimic-github-io.md`](sources/sites/resmimic-github-io.md)（<https://resmimic.github.io/>）；[`resmimic.md`](sources/repos/resmimic.md)（<https://github.com/amazon-far/ResMimic>）

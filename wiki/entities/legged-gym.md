@@ -4,6 +4,7 @@ summary: "legged_gym"
 updated: 2026-06-04
 related:
   - ../entities/extreme-parkour.md
+  - ../entities/humanoid-gym.md
 sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
@@ -248,6 +249,7 @@ sources:
 
 ## 推荐继续阅读
 
+- [Humanoid-Gym](./humanoid-gym.md) — 基于 legged_gym 的人形专用 RL 框架与 XBot 零样本 sim2real
 - [机器人论文阅读笔记：Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
 - 官方仓库：<https://github.com/leggedrobotics/legged_gym>
 - 论文：Rudin et al., *Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning*
@@ -268,6 +270,7 @@ sources:
 - [Sim2Real](../concepts/sim2real.md)
 - [Legged / Humanoid RL 中 Kp/Kd 设置](../queries/legged-humanoid-rl-pd-gain-setting.md)
 - [ANYmal 分钟级并行 DRL（原论文实体）](./paper-anymal-walk-minutes-parallel-drl.md)
+- [Humanoid-Gym](./humanoid-gym.md) — 人形步态相位奖励 + MuJoCo sim2sim + XBot 真机验证
 - [Extreme Parkour（感知跑酷 fork）](./extreme-parkour.md) — ICRA 2024；legged_gym 生态上的两阶段深度跑酷扩展
 - [Walk These Ways（MoB）](./paper-walk-these-ways-quadruped-mob.md)
 

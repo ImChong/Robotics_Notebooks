@@ -56,7 +56,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（23 篇深读笔记索
 ### 仿真平台与工具
 
 - [BEHAVIOR Robot Suite Streamlining Real-World Whole-Body Manipulation](../tasks/loco-manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation.html)
-- [Humanoid-Gym Zero-Shot Sim2Real Transfer](../entities/legged-gym.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
+- [Humanoid-Gym Zero-Shot Sim2Real Transfer](../entities/humanoid-gym.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
 - [Isaac Lab GPU Simulation](../entities/isaac-gym-isaac-lab.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Isaac_Lab_GPU_Simulation/Isaac_Lab_GPU_Simulation.html)
 - [ProtoMotions3 Open-source Framework for Humanoid Simulation and Control](../entities/protomotions.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html)
 
