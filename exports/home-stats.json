@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 800,
-  "edge_count": 5600,
+  "node_count": 801,
+  "edge_count": 5606,
   "coverage": {
-    "covered": 784,
-    "total": 798,
+    "covered": 785,
+    "total": 799,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -69,6 +69,22 @@
       "detail_id": "wiki-comparisons-wbc-vs-rl",
       "label": "WBC vs RL: Whole-Body Control vs Reinforcement Learning",
       "type": "comparison",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-coins-compositional-human-scene-interaction.md",
+      "detail_id": "entity-paper-coins-compositional-human-scene-interaction",
+      "label": "COINS（Compositional Human-Scene Interaction Synthesis with Semantic Control）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
     },
@@ -148,22 +164,6 @@
       "path": "wiki/entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md",
       "detail_id": "entity-paper-ladderman-humanoid-perceptive-ladder-climbing",
       "label": "LadderMan：人形感知梯子攀爬与梯上操作",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/unitree-g1.md",
-      "detail_id": "entity-unitree-g1",
-      "label": "Unitree G1 (人形机器人)",
       "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
