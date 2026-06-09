@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] ingest | sources/repos/robot_lab.md — 复核 fan-ziqi/robot_lab 并刷新实体页（24+ 环境、新机型、rl_sar 部署链、Mermaid）
+
+- 原始资料：[`sources/repos/robot_lab.md`](sources/repos/robot_lab.md)（<https://github.com/fan-ziqi/robot_lab>）
+- 刷新实体：[`wiki/entities/robot-lab.md`](wiki/entities/robot-lab.md)（版本矩阵、24 环境机型表、BeyondMimic/AMP 实验任务、Sim2Real→rl_sar Mermaid）
+- 交叉更新：[`wiki/concepts/wheel-legged-quadruped.md`](wiki/concepts/wheel-legged-quadruped.md)、[`wiki/entities/openloong.md`](wiki/entities/openloong.md)
+
 ## [2026-06-09] ingest | sources/papers/humanoid_gym_arxiv_2404_05695.md — Humanoid-Gym 论文 + 官方/社区仓库入库并建实体页
 
 - 原始资料：[`humanoid_gym_arxiv_2404_05695.md`](sources/papers/humanoid_gym_arxiv_2404_05695.md)（<https://arxiv.org/abs/2404.05695>）；[`humanoid-gym.md`](sources/repos/humanoid-gym.md)（<https://github.com/roboterax/humanoid-gym>）；[`humanoid-gym-modified.md`](sources/repos/humanoid-gym-modified.md)（<https://github.com/roboman-ly/humanoid-gym-modified>）
