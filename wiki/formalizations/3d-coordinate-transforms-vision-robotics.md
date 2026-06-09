@@ -2,7 +2,7 @@
 type: formalization
 tags: [kinematics, computer-vision, calibration, hand-eye, camera-model, embodied-ai, shenlan]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-09
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
   - ./lie-group-rigid-body-motions.md
@@ -11,9 +11,11 @@ related:
   - ../methods/visual-servoing.md
   - ../methods/vla.md
   - ../entities/april-tag.md
+  - ../entities/vision-banana.md
 sources:
   - ../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md
   - ../../sources/raw/wechat_shenlan_3d_coord_transforms_2026-06-04.md
+  - ../../sources/papers/vision_banana_arxiv_2604_20329.md
 summary: "具身抓取与 VLA 部署的底层暗线：世界 / 相机 / 图像 / 像素四系经内参 K 与外参 [R|t] 串联；单目丢深度须双目或 RGB-D 反投影；手眼标定闭合「看见→理解→能抓」三链。相机前方 10 cm 与机械臂前方 10 cm 常不是同一方向。"
 ---
 
@@ -140,6 +142,8 @@ $A$：末端两姿态间变换；$B$：标定板在相机下的观测变换；$X
 
 任一环标定或深度错误，都会在末端表现为 **重复性抓偏**。
 
+**生成式单目深度（补充）：** 新兴路线如 [Vision Banana](../entities/vision-banana.md) 用图像生成模型输出 **可逆 colormap 深度图**，再经反投影得到点云——仍须用已知或估计的 **相机内参 $K$** 完成 $P_C \to P_W$ 链路；与 RGB-D 硬件路径相比，几何闭环同样依赖标定质量。
+
 ## 常见误区
 
 1. **「仿真里点云对就够了」** — 真机外参漂移、时间戳不对齐仍会导致抓空。
@@ -155,6 +159,7 @@ $A$：末端两姿态间变换；$B$：标定板在相机下的观测变换；$X
 - [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)
 - [Visual Servoing](../methods/visual-servoing.md)
 - [VLA](../methods/vla.md)
+- [Vision Banana](../entities/vision-banana.md) — 单目 metric depth → 点云反投影的上游示例
 
 ## 参考来源
 

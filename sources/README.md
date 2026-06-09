@@ -75,6 +75,7 @@
 | [x] [defi_arxiv_2604_16391.md](papers/defi_arxiv_2604_16391.md) | DeFI：解耦 GFDM/GIDM 前向与逆动力学预训练 + 下游扩散耦合 VLA（arXiv:2604.16391）摘录与 wiki 映射 |
 | [x] [extreme_parkour_arxiv_2309_14341.md](papers/extreme_parkour_arxiv_2309_14341.md) | Extreme Parkour：Go1 四足单目深度端到端跑酷 + 双重 DAgger 蒸馏（arXiv:2309.14341，ICRA 2024）摘录与 wiki 映射 |
 | [x] [esi_bench_arxiv_2605_18746.md](papers/esi_bench_arxiv_2605_18746.md) | ESI-Bench：具身空间智能感知–行动环基准（OmniGibson，10/29/3081，arXiv:2605.18746）摘录与 wiki 映射 |
+| [x] [vision_banana_arxiv_2604_20329.md](papers/vision_banana_arxiv_2604_20329.md) | Vision Banana：图像生成器是通用视觉学习者，NBP instruction-tuning 统一分割/深度/法线（arXiv:2604.20329，DeepMind）摘录与 wiki 映射 |
 | [x] [wm_robot_survey_arxiv_2605_00080.md](papers/wm_robot_survey_arxiv_2605_00080.md) | World Model for Robot Learning 综述（arXiv:2605.00080）：策略内预测 / 学习型模拟器 / 可控视频生成三线 taxonomy |
 | [x] [wem_arxiv_2605_19957.md](papers/wem_arxiv_2605_19957.md) | WEM：World-Ego Modeling + HTEWorld 混合导航–操作长程视频世界模型（arXiv:2605.19957，ZGCA-HMI-Lab）摘录与 wiki 映射 |
 | [x] [ge_sim_2_arxiv_2605_27491.md](papers/ge_sim_2_arxiv_2605_27491.md) | GE-Sim 2.0：闭环操纵视频世界模拟器（本体状态专家 + World Judge + 加速，arXiv:2605.27491，AgibotTech）摘录与 wiki 映射 |
@@ -331,6 +332,7 @@
 | [x] [openloong_community.md](sites/openloong_community.md) | OpenLoong 社区：青龙·公版机门户（硬件 v2.5、控制框架、数据集、文档/论坛） |
 | [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（ModelBuilder 仿真循环、多求解器、URDF/MJCF/USD） |
 | [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
+| [x] [vision-banana-project.md](sites/vision-banana-project.md) | Vision Banana 项目页 vision-banana.github.io（交互分割/深度/法线演示、zero-shot 榜单，arXiv:2604.20329） |
 | [x] [wm-robot-survey-ntumars.md](sites/wm-robot-survey-ntumars.md) | NTUMARS 机器人世界模型综述项目站 ntumars.github.io/wm-robot-survey（arXiv:2605.00080） |
 | [x] [wem-project.md](sites/wem-project.md) | WEM 项目页 zgca-hmi-lab.github.io/WEM（World-Ego Modeling、HTEWorld 结果表与演示，arXiv:2605.19957） |
 | [x] [ge-sim-v2-project.md](sites/ge-sim-v2-project.md) | GE-Sim 2.0 项目页 ge-sim-v2.github.io（多视角闭环模拟、World Judge、长视频演示，arXiv:2605.27491） |
