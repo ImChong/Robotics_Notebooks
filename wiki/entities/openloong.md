@@ -15,6 +15,7 @@ related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
   - ../concepts/mpc-wbc-integration.md
+  - ./robot-lab.md
   - ../roadmaps/humanoid-control-roadmap.md
   - ../queries/humanoid-hardware-selection.md
 sources:
@@ -197,6 +198,7 @@ OpenLoong 软件以 **`loongOpen` GitHub 组织** 与 **AtomGit `openloong` 组�
 | 路线 | 仓库 | 说明 |
 |------|------|------|
 | **Isaac Gym RL** | [OpenLoong-Gymloong](https://github.com/loongOpen/OpenLoong-Gymloong) | AzureLoong + Isaac Gym 训练行走；需 CUDA，推荐 Ubuntu 20.04 |
+| **Isaac Lab RL** | [robot_lab](./robot-lab.md) | `RobotLab-Isaac-Velocity-Rough-Openloong-Loong-v0` 等社区扩展环境；与 Gymloong 并行，偏 Isaac Lab 生态 |
 | **ROS1 + Gazebo** | [OpenLoong-ROS](https://github.com/loongOpen/OpenLoong-ROS) | `azureloong_control` / `azureloong_description`；AtomGit 亦托管 [OpenLoongROS](https://atomgit.com/openloong/OpenLoongROS.git) |
 | **Unity RL** | [Unity-RL-Playground](https://github.com/loongOpen/Unity-RL-Playground) | Unity 侧 RL 与 embodied 仿真 |
 | **大模型技能** | [OpenLoong-Brain](https://github.com/loongOpen/OpenLoong-Brain) | 客户端/服务端 Agent、图像流、机器人 IP 指令下发 |

@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-09",
   "node_count": 799,
-  "edge_count": 5581,
+  "edge_count": 5583,
   "coverage": {
     "covered": 783,
     "total": 797,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robot-lab.md",
+      "detail_id": "entity-robot-lab",
+      "label": "robot_lab (IsaacLab 扩展框架)",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/openloong.md",
+      "detail_id": "entity-openloong",
+      "label": "OpenLoong（青龙·公版机）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/humanoid-gym.md",
       "detail_id": "entity-humanoid-gym",
@@ -143,36 +167,12 @@
       "type": "overview",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/navigation2.md",
-      "detail_id": "entity-navigation2",
-      "label": "Navigation2（Nav2）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/modern-robotics-book.md",
-      "detail_id": "entity-modern-robotics-book",
-      "label": "Modern Robotics (Lynch-Park 教材)",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/kalman-filter.md",
-      "detail_id": "wiki-formalizations-kalman-filter",
-      "label": "Kalman Filter (KF)",
-      "type": "formalization",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-gym.md",
-    "detail_id": "entity-humanoid-gym",
-    "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
+    "path": "wiki/entities/robot-lab.md",
+    "detail_id": "entity-robot-lab",
+    "label": "robot_lab (IsaacLab 扩展框架)",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"
