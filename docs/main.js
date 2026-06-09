@@ -732,6 +732,53 @@
     return isDark ? darkThemeVars : lightThemeVars;
   }
 
+  function isSafariBrowser() {
+    var ua = navigator.userAgent;
+    var isWebKit = /AppleWebKit/i.test(ua);
+    var isChrome = /Chrome|CriOS|Chromium/i.test(ua);
+    var isAndroid = /Android/i.test(ua);
+    return isWebKit && !isChrome && !isAndroid;
+  }
+
+  function degradeLatexToPlainText(latex) {
+    var s = String(latex || '').trim();
+    s = s.replace(/\\(text|mathrm|mathsf|mathbf|boldsymbol)\{([^}]*)\}/g, '$2');
+    s = s.replace(/\\t?frac\{([^}]*)\}\{([^}]*)\}/g, '$1/$2');
+    s = s.replace(/\\ddot\{([^}]*)\}/g, '$1̈');
+    s = s.replace(/\\dot\{([^}]*)\}/g, '$1̇');
+    s = s.replace(/\^\{([^}]*)\}/g, '^$1');
+    s = s.replace(/_\{([^}]*)\}/g, '_$1');
+    var latexSymbols = [
+      ['\\epsilon', 'ε'],
+      ['\\Delta', 'Δ'],
+      ['\\tau', 'τ'],
+      ['\\omega', 'ω'],
+      ['\\xi', 'ξ'],
+      ['\\exp', 'exp'],
+      ['\\log', 'log'],
+      ['\\big', ''],
+      ['\\!', ''],
+      ['\\,', ' '],
+      ['\\;', ' ']
+    ];
+    latexSymbols.forEach(function (pair) {
+      s = s.split(pair[0]).join(pair[1]);
+    });
+    s = s.replace(/\\([a-zA-Z]+)/g, '$1');
+    return s.replace(/\s+/g, ' ').trim();
+  }
+
+  function degradeMermaidMathToPlainText(source) {
+    if (!source) return source;
+    return String(source).replace(/\$\$([\s\S]*?)\$\$/g, function (_, latex) {
+      return degradeLatexToPlainText(latex);
+    });
+  }
+
+  function mermaidSourceForCurrentBrowser(source) {
+    return isSafariBrowser() ? degradeMermaidMathToPlainText(source) : source;
+  }
+
   function initializeMermaidRenderer(fontSizePx) {
     var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
     window.mermaid.initialize({
@@ -739,7 +786,7 @@
       theme: 'base',
       themeVariables: getMermaidThemeVariables(isDark, fontSizePx),
       securityLevel: 'strict',
-      forceLegacyMathML: true,
+      forceLegacyMathML: !isSafariBrowser(),
       flowchart: {
         useMaxWidth: false,
         htmlLabels: true,
@@ -795,11 +842,12 @@
     nodes.forEach(function (node) {
       var saved = node.getAttribute('data-mermaid-source');
       if (saved === null) {
-        node.setAttribute('data-mermaid-source', node.textContent || '');
+        saved = node.textContent || '';
+        node.setAttribute('data-mermaid-source', saved);
       } else {
         node.removeAttribute('data-processed');
-        node.textContent = saved;
       }
+      node.textContent = mermaidSourceForCurrentBrowser(saved);
     });
     initializeMermaidRenderer(getMermaidFontSizePx());
     return window.mermaid.run({ nodes: nodes }).catch(function () {}).then(function () {
@@ -1095,7 +1143,7 @@
     sandbox.style.cssText = 'position:fixed;left:-10000px;top:0;visibility:hidden;pointer-events:none;width:max-content;max-width:none;';
     var node = document.createElement('div');
     node.className = 'mermaid';
-    node.textContent = source;
+    node.textContent = mermaidSourceForCurrentBrowser(source);
     sandbox.appendChild(node);
     document.body.appendChild(sandbox);
     var hiFontPx = Math.round(getMermaidFontSizePx() * MERMAID_LIGHTBOX_FONT_SCALE);
