@@ -453,10 +453,21 @@
 
   /** 对原样透传的 HTML 片段（如 <details> 自测参考答案）补 math-inline / math-block 包裹，与正文段落一致。 */
   function applyMathBlocksInHtmlFragment(html) {
-    return String(html || '').split(/(<[^>]+>)/g).map(function (part) {
+    var mermaidTokens = [];
+    var mermaidPrefix = '@@MDMERMAIDFRAG';
+    var withMermaidTokens = String(html || '').replace(/<div class="mermaid">[\s\S]*?<\/div>/gi, function (match) {
+      var token = mermaidPrefix + mermaidTokens.length + '@@';
+      mermaidTokens.push(match);
+      return token;
+    });
+    var rendered = withMermaidTokens.split(/(<[^>]+>)/g).map(function (part) {
       if (part.startsWith('<') && part.endsWith('>')) return part;
       return renderMathBlocks(part);
     }).join('');
+    mermaidTokens.forEach(function (entry, index) {
+      rendered = rendered.replace(mermaidPrefix + index + '@@', function () { return entry; });
+    });
+    return rendered;
   }
 
   /** Split a markdown table row on column pipes, respecting $...$, \\(...\\), and \\| escapes. */
@@ -728,6 +739,7 @@
       theme: 'base',
       themeVariables: getMermaidThemeVariables(isDark, fontSizePx),
       securityLevel: 'strict',
+      forceLegacyMathML: true,
       flowchart: {
         useMaxWidth: false,
         htmlLabels: true,
@@ -1436,6 +1448,8 @@
         { left: '$$', right: '$$', display: true },
         { left: '\\(', right: '\\)', display: false }
       ],
+      ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
+      ignoredClasses: ['mermaid'],
       throwOnError: false
     });
   }

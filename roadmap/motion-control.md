@@ -407,7 +407,7 @@ flowchart TD
 
 ```mermaid
 flowchart LR
-  fc[接触力 f_c] --> Jt["J_c^T"]
+  fc[接触力 f_c] --> Jt["$$\mathbf{J}_c^{\mathsf{T}}$$"]
   Jt --> tau[关节力矩 tau]
   tau --> WBC[WBC：在动力学与接触约束下分配 tau]
 ```
