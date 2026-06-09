@@ -82,6 +82,7 @@
 | [x] [ssr_arxiv_2605_30770.md](papers/ssr_arxiv_2605_30770.md) | SSR：想象落脚点 + 潜空间对称 + 分地形 AMP，AgiBot X2 开放世界 1.3 km 穿越（arXiv:2605.30770，浙江大学）摘录与 wiki 映射 |
 | [x] [heracles_humanoid_diffusion_arxiv_2603_27756.md](papers/heracles_humanoid_diffusion_arxiv_2603_27756.md) | Heracles：状态条件扩散中间件桥接跟踪与生成恢复（arXiv:2603.27756，X-Humanoid）摘录与 wiki 映射 |
 | [x] [host_humanoid_standingup_arxiv_2502_08378.md](papers/host_humanoid_standingup_arxiv_2502_08378.md) | HoST：多 critic PPO 跨姿态人形起身，G1 真机直接部署（arXiv:2502.08378，RSS 2025 系统论文 finalist）摘录与 wiki 映射 |
+| [x] [humanoid_gym_arxiv_2404_05695.md](papers/humanoid_gym_arxiv_2404_05695.md) | Humanoid-Gym：人形 PPO + 步态相位奖励 + MuJoCo sim2sim + XBot 零样本 sim2real（arXiv:2404.05695，RobotEra）摘录与 wiki 映射 |
 | [x] [slowrl_arxiv_2603_17092.md](papers/slowrl_arxiv_2603_17092.md) | SLowRL：LoRA + Recovery 安全真机微调四足动态策略（arXiv:2603.17092，Go2）摘录与 wiki 映射 |
 | [x] [any2any_arxiv_2605_23733.md](papers/any2any_arxiv_2605_23733.md) | Any2Any：跨具身 WBT 运动学对齐 + LoRA 动力学适配（arXiv:2605.23733，LimX）摘录与 wiki 映射 |
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
@@ -103,6 +104,8 @@
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
 | [x] [extreme-parkour.md](repos/extreme-parkour.md) | Extreme Parkour 官方代码（ICRA 2024；Isaac Gym + legged_gym 两阶段跑酷训练） |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
+| [x] [humanoid-gym.md](repos/humanoid-gym.md) | Humanoid-Gym 官方：人形 Isaac Gym PPO + MuJoCo sim2sim（arXiv:2404.05695，RobotEra XBot） |
+| [x] [humanoid-gym-modified.md](repos/humanoid-gym-modified.md) | humanoid-gym-modified：Pandaman 模型 + Gazebo/ROS sim2sim 社区 fork |
 | [x] [leggedgym_ex.md](repos/leggedgym_ex.md) | LeggedGym-Ex：legged_gym 多仿真器扩展 + AMP/DeepMimic（Go2/K1 等） |
 | [x] [leggedrobotics_robotic_world_model.md](repos/leggedrobotics_robotic_world_model.md) | robotic_world_model：ETH RSL 的 RWM / RWM-U Isaac Lab 扩展（在线 + 离线想象管线） |
 | [x] [leggedrobotics_robotic_world_model_lite.md](repos/leggedrobotics_robotic_world_model_lite.md) | robotic_world_model_lite：无仿真器依赖的 RWM / RWM-U 离线训练精简仓 |

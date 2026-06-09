@@ -18,8 +18,10 @@
 
 ### humanoid-gym
 
-- 人形机器人 RL 专用，基于 IsaacGym
-- 聚焦双足步行、站起、扰动恢复
+- 人形机器人 RL 专用，基于 IsaacGym + legged_gym 范式
+- 步态相位奖励、非对称 AC、MuJoCo sim2sim；XBot 零样本 sim2real（[arXiv:2404.05695](https://arxiv.org/abs/2404.05695)）
+- [roboterax/humanoid-gym](https://github.com/roboterax/humanoid-gym)；社区 fork [roboman-ly/humanoid-gym-modified](https://github.com/roboman-ly/humanoid-gym-modified)（Pandaman + Gazebo）
+- Wiki：[humanoid-gym](../../wiki/entities/humanoid-gym.md)
 
 ### MimicKit
 
@@ -37,5 +39,6 @@
 
 - [isaac-gym-isaac-lab](../../wiki/entities/isaac-gym-isaac-lab.md) — Isaac Gym 实体页
 - [legged-gym](../../wiki/entities/legged-gym.md) — legged_gym 实体页
+- [humanoid-gym](../../wiki/entities/humanoid-gym.md) — 人形 RL 训练框架实体页
 - [motrix](../../wiki/entities/motrix.md) — Motrix 实体页
 - [simulation](simulation.md) — 仿真平台层

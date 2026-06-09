@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 798,
-  "edge_count": 5570,
+  "node_count": 799,
+  "edge_count": 5581,
   "coverage": {
-    "covered": 782,
-    "total": 796,
+    "covered": 783,
+    "total": 797,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/humanoid-gym.md",
+      "detail_id": "entity-humanoid-gym",
+      "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/legged-gym.md",
+      "detail_id": "entity-legged-gym",
+      "label": "legged_gym",
+      "type": "entity",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
+      "detail_id": "wiki-overview-paper-notebook-category-03-high-impact-selection",
+      "label": "Paper Notebooks · High Impact Selection",
+      "type": "overview",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-resmimic.md",
       "detail_id": "entity-paper-resmimic",
@@ -143,36 +167,12 @@
       "type": "formalization",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/visual-representation-for-policy.md",
-      "detail_id": "wiki-concepts-visual-representation-for-policy",
-      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
-      "type": "concept",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/vision-backbones.md",
-      "detail_id": "wiki-concepts-vision-backbones",
-      "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-rsl-rl.md",
-      "detail_id": "entity-amp-rsl-rl",
-      "label": "AMP-RSL-RL",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-resmimic.md",
-    "detail_id": "entity-paper-resmimic",
-    "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+    "path": "wiki/entities/humanoid-gym.md",
+    "detail_id": "entity-humanoid-gym",
+    "label": "Humanoid-Gym（人形零样本 Sim2Real 训练框架）",
     "type": "entity",
     "recency": "2026-06-09",
     "source": "log.md"
