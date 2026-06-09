@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 796,
-  "edge_count": 5537,
+  "node_count": 797,
+  "edge_count": 5549,
   "coverage": {
-    "covered": 780,
-    "total": 794,
+    "covered": 781,
+    "total": 795,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -29,6 +29,30 @@
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
       "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
       "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/limmt-gqs-motion-curation.md",
+      "detail_id": "wiki-methods-limmt-gqs-motion-curation",
+      "label": "LIMMT / GQS：人形 Motion Tracking 的数据策展",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/egm-efficient-general-mimic.md",
+      "detail_id": "wiki-methods-egm-efficient-general-mimic",
+      "label": "EGM（Efficient General Mimic，高效通用模仿跟踪）",
+      "type": "method",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
+      "label": "人形运动跟踪方法选型指南",
+      "type": "query",
       "recency": "2026-06-09",
       "source": "log.md"
     },
@@ -140,30 +164,6 @@
       "path": "wiki/entities/videomimic.md",
       "detail_id": "entity-videomimic",
       "label": "VideoMimic",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/phc.md",
-      "detail_id": "entity-phc",
-      "label": "PHC（Perpetual Humanoid Control）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/human2humanoid.md",
-      "detail_id": "entity-human2humanoid",
-      "label": "human2humanoid（LeCAR-Lab）",
-      "type": "entity",
-      "recency": "2026-06-08",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/motion-imitation-quadruped.md",
-      "detail_id": "entity-motion-imitation-quadruped",
-      "label": "motion_imitation（四足模仿动物）",
       "type": "entity",
       "recency": "2026-06-08",
       "source": "log.md"
