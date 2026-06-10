@@ -2,7 +2,7 @@
 
 ## [2026-06-10] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **35** 个问题（另含 **3** 条信息型预警）：
+共发现 **0** 个问题（另含 **3** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -34,42 +34,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（35 个）
-- wiki/entities/paper-hrl-stack-01-retargeting_matters.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-02-make_tracking_easy.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-03-omniretarget.md (wiki:2026-06-08 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-05-humanx.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-06-hdmi.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-08-omnih2o.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-11-deepmimic.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-12-omnitrack.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-16-omnixtreme.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-20-pvp.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md (wiki:2026-06-08 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-25-asap.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-28-viral.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-30-wholebodyvla.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-32-metaworld.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-34-gr00t_n1.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-35-dreamdojo.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-36-chip.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-37-gentlehumanoid.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-38-haic.md (wiki:2026-06-07 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-40-heracles.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-41-safefall.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/entities/paper-hrl-stack-42-thor.md (wiki:2026-06-06 < sources/humanoid_rl_stack_42_catalog.md:2026-06-10)
-- wiki/concepts/motion-retargeting.md (wiki:2026-06-08 < sources/resmimic_arxiv_2510_05070.md:2026-06-10)
-- wiki/entities/unitree-g1.md (wiki:2026-06-09 < sources/resmimic_arxiv_2510_05070.md:2026-06-10)
-- wiki/entities/holosoma.md (wiki:2026-06-08 < sources/resmimic_arxiv_2510_05070.md:2026-06-10)
-- wiki/entities/videomimic.md (wiki:2026-06-08 < sources/resmimic_arxiv_2510_05070.md:2026-06-10)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
