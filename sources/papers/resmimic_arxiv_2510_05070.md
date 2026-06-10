@@ -91,7 +91,7 @@
 ## 对 wiki 的映射
 
 - 沉淀实体页：[ResMimic（arXiv:2510.05070）](../../wiki/entities/paper-resmimic.md)
-- 交叉补强：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Whole-Body Tracking Pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[holosoma](../../wiki/entities/holosoma.md)、[TWIST](../../wiki/entities/paper-hrl-stack-09-twist.md)、[VideoMimic](../../wiki/entities/videomimic.md)
+- 交叉补强：[Loco-Manipulation](../../wiki/tasks/loco-manipulation.md)、[Whole-Body Tracking Pipeline](../../wiki/concepts/whole-body-tracking-pipeline.md)、[Motion Retargeting](../../wiki/concepts/motion-retargeting.md)、[Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)、[holosoma](../../wiki/entities/holosoma.md)、[TWIST](../../wiki/entities/paper-twist.md)、[VideoMimic](../../wiki/entities/videomimic.md)
 
 ## 当前提炼状态
 

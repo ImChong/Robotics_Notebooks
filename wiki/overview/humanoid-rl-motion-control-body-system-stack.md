@@ -120,15 +120,15 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 06 | HDMI | [paper-hrl-stack-06-hdmi.md](../entities/paper-hrl-stack-06-hdmi.md) |
 | 07 | Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation | [paper-hrl-stack-07-learning_human_to_humanoid_real_time.md](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) |
 | 08 | OmniH2O | [paper-hrl-stack-08-omnih2o.md](../entities/paper-hrl-stack-08-omnih2o.md) |
-| 09 | TWIST | [paper-hrl-stack-09-twist.md](../entities/paper-hrl-stack-09-twist.md) |
-| 10 | TWIST2 | [paper-hrl-stack-10-twist2.md](../entities/paper-hrl-stack-10-twist2.md) |
+| 09 | TWIST | [paper-twist.md](../entities/paper-twist.md) |
+| 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) |
 | 11 | DeepMimic | [paper-hrl-stack-11-deepmimic.md](../entities/paper-hrl-stack-11-deepmimic.md) |
 | 12 | OmniTrack | [paper-hrl-stack-12-omnitrack.md](../entities/paper-hrl-stack-12-omnitrack.md) |
 | 13 | Track Any Motions under Any Disturbances | [paper-hrl-stack-13-track_any_motions_under_any_disturba.md](../entities/paper-hrl-stack-13-track_any_motions_under_any_disturba.md) |
 | 14 | Robust and Generalized Humanoid Motion Tracking | [paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
-| 15 | BeyondMimic | [paper-hrl-stack-15-beyondmimic.md](../entities/paper-hrl-stack-15-beyondmimic.md) |
+| 15 | BeyondMimic | [paper-beyondmimic.md](../entities/paper-beyondmimic.md) |
 | 16 | OmniXtreme | [paper-hrl-stack-16-omnixtreme.md](../entities/paper-hrl-stack-16-omnixtreme.md) |
-| 17 | SONIC | [paper-hrl-stack-17-sonic.md](../entities/paper-hrl-stack-17-sonic.md) |
+| 17 | SONIC | [paper-sonic.md](../entities/paper-sonic.md) |
 | 18 | Agility Meets Stability | [paper-hrl-stack-18-agility_meets_stability.md](../entities/paper-hrl-stack-18-agility_meets_stability.md) |
 | 19 | BFM-Zero | [paper-hrl-stack-19-bfm_zero.md](../entities/paper-hrl-stack-19-bfm_zero.md) |
 | 20 | PvP | [paper-hrl-stack-20-pvp.md](../entities/paper-hrl-stack-20-pvp.md) |
@@ -142,7 +142,7 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 28 | VIRAL | [paper-hrl-stack-28-viral.md](../entities/paper-hrl-stack-28-viral.md) |
 | 29 | Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer | [paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md](../entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md) |
 | 30 | WholeBodyVLA | [paper-hrl-stack-30-wholebodyvla.md](../entities/paper-hrl-stack-30-wholebodyvla.md) |
-| 31 | SENTINEL | [paper-hrl-stack-31-sentinel.md](../entities/paper-hrl-stack-31-sentinel.md) |
+| 31 | SENTINEL | [paper-sentinel.md](../entities/paper-sentinel.md) |
 | 32 | MetaWorld | [paper-hrl-stack-32-metaworld.md](../entities/paper-hrl-stack-32-metaworld.md) |
 | 33 | Ego-Vision World Model for Humanoid Contact Planning | [paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md](../entities/paper-hrl-stack-33-ego_vision_world_model_for_humanoid.md) |
 | 34 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1.md](../entities/paper-hrl-stack-34-gr00t_n1.md) |

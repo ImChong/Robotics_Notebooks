@@ -11,7 +11,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ./unitree-g1.md
   - ./holosoma.md
-  - ./paper-hrl-stack-09-twist.md
+  - ./paper-twist.md
   - ./videomimic.md
   - ./paper-hrl-stack-03-omniretarget.md
 sources:
@@ -142,7 +142,7 @@ flowchart TB
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
-- [TWIST](./paper-hrl-stack-09-twist.md)
+- [TWIST](./paper-twist.md)
 - [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - [holosoma](./holosoma.md)
 - [VideoMimic](./videomimic.md)
