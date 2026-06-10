@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/sites/ttl_uart_logic_level_primary_refs.md、rs232_tia_eia_primary_refs.md、rs485_tia_eia_primary_refs.md — TTL/RS-232/RS-485 一手资料入库；wiki/concepts/ttl-serial-logic-level.md、rs-232-serial-interface.md、rs-485-serial-bus.md 及 uart-serial-communication 交叉链接
+
 ## [2026-06-10] ingest | sources/papers/mpc_rl_arxiv_2606_05687.md — MPC-RL 与 π MPC 入库；wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md、wiki/methods/pi-mpc.md 及 mpc-vs-rl / loco-manipulation 交叉更新
 
 - 原始资料：[`mpc_rl_arxiv_2606_05687.md`](sources/papers/mpc_rl_arxiv_2606_05687.md)（<https://arxiv.org/abs/2606.05687>）；[`pi_mpc_arxiv_2601_14414.md`](sources/papers/pi_mpc_arxiv_2601_14414.md)（<https://arxiv.org/abs/2601.14414>）；[`junhengl_mpc_rl.md`](sources/repos/junhengl_mpc_rl.md)（<https://github.com/junhengl/mpc-rl>）

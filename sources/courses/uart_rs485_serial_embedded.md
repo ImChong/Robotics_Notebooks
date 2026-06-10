@@ -22,7 +22,7 @@
 ### 1) UART 是什么
 
 - **要点：** **UART（Universal Asynchronous Receiver-Transmitter）** 为可配置波特率与数据格式的 **异步** 串行外设；按位发送 LSB→MSB，由起始/停止位界定帧，时序由通信双方约定。电平由外部驱动实现：常见 **TTL**、**RS-232**、**RS-485**。
-- **对 wiki 的映射：** [uart-serial-communication](../../wiki/concepts/uart-serial-communication.md)
+- **对 wiki 的映射：** [uart-serial-communication](../../wiki/concepts/uart-serial-communication.md)、[ttl-serial-logic-level](../../wiki/concepts/ttl-serial-logic-level.md)、[rs-232-serial-interface](../../wiki/concepts/rs-232-serial-interface.md)、[rs-485-serial-bus](../../wiki/concepts/rs-485-serial-bus.md)
 
 ### 2) USART 与同步模式
 
@@ -32,7 +32,12 @@
 ### 3) RS-485 与多点总线
 
 - **要点：** RS-485 为 **差分、半双工** 物理层，支持一条总线上多驱动器/接收器（典型 ≤32 单元），常用于 Modbus RTU、部分伺服与传感器组网；需 **终端匹配与偏置电阻** 避免空闲态误码。TI SLLA383 等资料给出 UART↔RS485 收发器接口与方向控制（DE/RE）要点。
-- **对 wiki 的映射：** [uart-serial-communication](../../wiki/concepts/uart-serial-communication.md)、[can-vs-ethercat-joint-bus](../../wiki/comparisons/can-vs-ethercat-joint-bus.md)（选型语境）
+- **对 wiki 的映射：** [rs-485-serial-bus](../../wiki/concepts/rs-485-serial-bus.md)、[uart-serial-communication](../../wiki/concepts/uart-serial-communication.md)、[can-vs-ethercat-joint-bus](../../wiki/comparisons/can-vs-ethercat-joint-bus.md)（选型语境）
+
+### 3b) TTL 与 RS-232 电平（拆分页）
+
+- **要点：** TTL/CMOS 为 MCU 板内 **0/V<sub>CC</sub> 单端**；RS-232 为 **± 电压点对点**，TIA-232-F 定义 DTE/DCE 与 mark/space 极性。详见各一手资料索引。
+- **对 wiki 的映射：** [ttl-serial-logic-level](../../wiki/concepts/ttl-serial-logic-level.md)、[rs-232-serial-interface](../../wiki/concepts/rs-232-serial-interface.md)；sources：[ttl_uart_logic_level_primary_refs](../sites/ttl_uart_logic_level_primary_refs.md)、[rs232_tia_eia_primary_refs](../sites/rs232_tia_eia_primary_refs.md)、[rs485_tia_eia_primary_refs](../sites/rs485_tia_eia_primary_refs.md)
 
 ### 4) 与 CAN 的分工（工程直觉）
 

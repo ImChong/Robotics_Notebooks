@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 817,
-  "edge_count": 5806,
+  "node_count": 820,
+  "edge_count": 5828,
   "coverage": {
-    "covered": 801,
-    "total": 815,
+    "covered": 804,
+    "total": 818,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/ttl-serial-logic-level.md",
+      "detail_id": "wiki-concepts-ttl-serial-logic-level",
+      "label": "TTL 串行逻辑电平（UART 板内接口）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md",
       "detail_id": "entity-paper-mpc-rl-humanoid-locomotion-manipulation",
@@ -159,21 +167,13 @@
       "type": "method",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-assistmimic.md",
-      "detail_id": "entity-paper-assistmimic",
-      "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md",
-    "detail_id": "entity-paper-mpc-rl-humanoid-locomotion-manipulation",
-    "label": "MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）",
-    "type": "entity",
+    "path": "wiki/concepts/ttl-serial-logic-level.md",
+    "detail_id": "wiki-concepts-ttl-serial-logic-level",
+    "label": "TTL 串行逻辑电平（UART 板内接口）",
+    "type": "concept",
     "recency": "2026-06-10",
     "source": "log.md"
   }
