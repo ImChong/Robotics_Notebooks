@@ -1555,6 +1555,7 @@
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
+  <script src="graph-node-size.js"></script>
   <script>
   (async function () {
     /* ── 颜色 & 类型标签 ── */
@@ -1862,7 +1863,10 @@
       }
       return TYPE_COLOR[d.type] || TYPE_COLOR[''];
     }
-    function baseRadius(d) { return Math.max(5, Math.min(18, 4 + Math.sqrt(d._degree || 0) * 2.2)); }
+    // 节点半径标尺与首页预览、详情页知识地图共用（graph-node-size.js）：
+    // 度数 1 → 最小半径，全图最大度数 → 最大半径
+    let graphMaxDegree = 1;
+    function baseRadius(d) { return window.RNGraphNodeSize.radiusForDegree(d._degree || 0, graphMaxDegree); }
     function scaledRadius(d) { return baseRadius(d) * nodeScale; }
     // 最终字号 = baseRadius × nodeScale × 0.4 × (fontSliderVal/10)
     // 0.4 让 baseRadius=10 的节点在 nodeScale=1, fontSliderVal=10 时字体≈10px
@@ -1956,11 +1960,8 @@
     renderLegend();
 
     /* ── 计算节点度数 ── */
-    const degreeMap = {};
-    for (const e of graphData.edges) {
-      degreeMap[e.source] = (degreeMap[e.source] || 0) + 1;
-      degreeMap[e.target] = (degreeMap[e.target] || 0) + 1;
-    }
+    const degreeMap = window.RNGraphNodeSize.computeDegreeMap(graphData.edges);
+    graphMaxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
 
     /* ── 准备节点/边数据：title / summary / recency 都直接来自 link-graph.json ── */
     const nodes = graphData.nodes.map(n => ({
