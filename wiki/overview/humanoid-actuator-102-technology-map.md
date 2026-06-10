@@ -93,6 +93,7 @@ flowchart LR
 
 ## 关联页面
 
+- [电机设计流程（规格 → 仿真 → 样机 → 控制）](./motor-design-workflow.md)
 - [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md) — 关节模组 datasheet 读图
 - [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)

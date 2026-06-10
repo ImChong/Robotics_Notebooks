@@ -17,6 +17,7 @@ related:
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
   - ../entities/paper-mamma-markerless-motion-capture.md
+  - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../methods/imitation-learning.md
   - ./whole-body-control.md
   - ../tasks/teleoperation.md
@@ -101,6 +102,7 @@ flowchart TD
 - **时间采样**：重采样到目标控制频率（常见 30/50/60 Hz），处理可变帧率与丢帧。
 - **格式归并**：BVH / FBX / SMPL（含 SMPL-H / SMPL-X）/ 自定义 JSON 等统一到内部表示。
 - **多视角 SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 等 markerless 多相机管线直接产出 **SMPL-X 时序**（双人交互场景相对单目 HMR 噪声更低），与 AMASS 离线库互补。
+- **双人→双机 kinematic conflict**：异构人体 MoCap 映射到 **同构双 humanoid** 时，**个体缩放流形** 与 **统一交互流形** 不可兼得；[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) 的 **IAMR** 通过 $\mathcal{E}_{self}$ / $\mathcal{E}_{inter}$ 解耦能量并导出交互图，是 MAGIC 数据集与下游 IGRL 的上游环节。
 - **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 

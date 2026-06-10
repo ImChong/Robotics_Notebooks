@@ -8,6 +8,7 @@ related:
   - ../concepts/whole-body-coordination.md
   - ../concepts/whole-body-tracking-pipeline.md
   - ../entities/paper-assistmimic.md
+  - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../entities/paper-gamma-world-multi-agent.md
   - ../methods/generative-world-models.md
 sources:
@@ -39,10 +40,14 @@ summary: "多智能体强化学习（MARL）研究多个自主智能体在共享
 
 传统 MARL 在 **解析或网格仿真** 里学联合策略；[Gamma-World](../entities/paper-gamma-world-multi-agent.md) 代表另一条路：先学 **多体动作条件的像素 rollout**（共享世界 + 各体独立可控），再作为 **MARL / 规划的想象环境**。二者互补——前者给 **策略梯度**，后者给 **高保真可交互观测**；是否进入闭环任务增益仍需单独验证（见 [训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md)）。
 
+人形 **物理交互** 方向的近期实例：[AssistMimic](../entities/paper-assistmimic.md) 用 **联合 PPO** 学仿真双人 assistive tracking；[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) 用 **MAPPO + 图结构奖励** 在 **双 G1 真机** 实现拥抱/共舞等耦合行为——二者共享 **CTDE / partner-aware 观测** 叙事，但问题设定（护理 vs 对称社交）与 sim2real 栈不同。
+
 ## 关联页面
 - [CTDE vs 完全去中心化 MARL](../comparisons/ctde-vs-decentralized-marl.md) — 两大训练范式选型对比
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Whole-body Coordination](../concepts/whole-body-coordination.md)
+- [AssistMimic](../entities/paper-assistmimic.md) — 双人 assistive MARL tracking（arXiv:2603.11346）
+- [Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) — 双 G1 真机交互 MAPPO + 图奖励（arXiv:2603.02856）
 - [Gamma-World](../entities/paper-gamma-world-multi-agent.md) — 多智能体生成式交互世界模型（arXiv:2605.28816）
 - [Generative World Models](./generative-world-models.md) — 像素级世界模型总览
 

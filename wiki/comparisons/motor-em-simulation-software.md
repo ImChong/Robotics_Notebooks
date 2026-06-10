@@ -4,6 +4,7 @@ tags: [motor, simulation, fem, thermal, cfd, hardware, actuator, humanoid]
 status: complete
 updated: 2026-06-10
 related:
+  - ../overview/motor-design-workflow.md
   - ../concepts/motor-torque-speed-curve.md
   - ../concepts/motor-torque-current-curve.md
   - ../overview/humanoid-actuator-102-thermal-and-control.md

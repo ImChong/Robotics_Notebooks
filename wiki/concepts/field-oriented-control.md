@@ -2,10 +2,12 @@
 type: concept
 tags: [motor-control, embedded, bldc, stepper, actuators, firmware]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-10
 related:
   - ../overview/motor-drive-firmware-bus-protocols.md
+  - ../overview/motor-design-workflow.md
   - ../entities/simplefoc.md
+  - ./motor-torque-current-curve.md
   - ./can-bus-protocol.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../queries/sim2real-gap-reduction.md
@@ -97,6 +99,7 @@ flowchart LR
 
 ## 与其他页面的关系
 
+- [电机设计流程（规格 → 仿真 → 样机 → 控制）](../overview/motor-design-workflow.md) — FOC 验证处于全流程第 7 步，依赖 \(L_d, L_q, K_t\) 与台架 [TI 曲线](./motor-torque-current-curve.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md) — L3 力矩/速度指令如何穿过 CANopen 或私有帧到达 FOC
 - [SimpleFOC](../entities/simplefoc.md) — 跨 MCU 的开源 FOC 实现与社区硬件
 - [CAN 总线](./can-bus-protocol.md) — 常见关节指令物理层

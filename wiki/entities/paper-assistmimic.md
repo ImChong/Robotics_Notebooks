@@ -15,6 +15,7 @@ related:
   - ./paper-bfm-22-phc.md
   - ./paper-interprior.md
   - ./paper-bfm-15-intermimic.md
+  - ./paper-rhythm-dual-humanoid-interaction.md
 sources:
   - ../../sources/papers/assistmimic_arxiv_2603_11346.md
   - ../../sources/sites/yutoshibata07-assistmimic-github-io.md
@@ -118,6 +119,8 @@ flowchart TB
 | **AssistMimic** | **联合 MARL** | 强 | 首次在 Inter-X / HHI-Assist 稳定 SR |
 
 与 [InterMimic](./paper-bfm-15-intermimic.md) / [InterPrior](./paper-interprior.md) 的对照：**Inter-line** 聚焦 **人–物（HOI）** 物理控制；AssistMimic 聚焦 **人–人 assistive 力交换**，共享 **PHC 式 tracking + PPO + DAgger** 工具链但 **问题 formulation 与奖励** 不同。
+
+与 [Rhythm](./paper-rhythm-dual-humanoid-interaction.md) 的对照：二者均为 **双人 MARL + 接触丰富交互**，但 AssistMimic 强调 **非对称护理角色** 与 **仿真 avatar 主证据**；Rhythm 强调 **对称双 humanoid 社交交互**、**IAMR 解耦重定向 + 图奖励**，并在 **双 G1 真机** 报告拥抱/共舞等 sim2real。
 
 ## 关联页面
 
