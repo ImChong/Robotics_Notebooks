@@ -7,6 +7,7 @@ summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高
 related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
+  - perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../tasks/manipulation.md
@@ -157,6 +158,7 @@ sources:
 
 ## 关联页面
 
+- [感知骨干/表征选型 Query](perception-backbone-selection.md) — 上一层的「分类骨干 / 检测头 / 通用预训练表征」三类总选型
 - [目标检测（方法）](../methods/object-detection.md) — 本 Query 的方法谱系基础页（两阶段 vs 单阶段技术路线）
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — 检测器骨干与多尺度特征的上游
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md) — 单阶段回归检测开山工作
