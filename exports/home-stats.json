@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 806,
-  "edge_count": 5662,
+  "node_count": 807,
+  "edge_count": 5676,
   "coverage": {
-    "covered": 790,
-    "total": 804,
+    "covered": 791,
+    "total": 805,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
+      "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
+      "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting-pipeline.md",
+      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
+      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/marl.md",
+      "detail_id": "wiki-methods-marl",
+      "label": "Multi-Agent Reinforcement Learning (MARL)",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-assistmimic.md",
+      "detail_id": "entity-paper-assistmimic",
+      "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/perception-backbone-selection.md",
       "detail_id": "wiki-queries-perception-backbone-selection",
@@ -81,14 +121,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/motion-retargeting-pipeline.md",
-      "detail_id": "wiki-concepts-motion-retargeting-pipeline",
-      "label": "Motion Retargeting Pipeline（动作重定向流水线）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/freemocap.md",
       "detail_id": "entity-freemocap",
       "label": "FreeMoCap（开源多相机动捕平台）",
@@ -135,46 +167,14 @@
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dart-control.md",
-      "detail_id": "wiki-methods-dart-control",
-      "label": "DART（DartControl：实时文本驱动人体运动控制）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/hy-motion-1.md",
-      "detail_id": "wiki-methods-hy-motion-1",
-      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/genmo.md",
-      "detail_id": "wiki-methods-genmo",
-      "label": "GENMO（统一人体运动估计与生成）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/perception-backbone-selection.md",
-    "detail_id": "wiki-queries-perception-backbone-selection",
-    "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
-    "type": "query",
-    "recency": "2026-06-09",
+    "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
+    "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
+    "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
+    "type": "entity",
+    "recency": "2026-06-10",
     "source": "log.md"
   }
 }

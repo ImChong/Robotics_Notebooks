@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/papers/rhythm_arxiv_2603_02856.md — Rhythm 双 G1 交互全身控制（IAMR+IGRL+MAGIC）入库并建实体页
+
+- 原始资料：[`rhythm_arxiv_2603_02856.md`](sources/papers/rhythm_arxiv_2603_02856.md)（<https://arxiv.org/abs/2603.02856>）；[`hoshi-no-ai-rhythm-github-io.md`](sources/sites/hoshi-no-ai-rhythm-github-io.md)（<https://hoshi-no-ai.github.io/Rhythm/>）
+- 新建实体：[`wiki/entities/paper-rhythm-dual-humanoid-interaction.md`](wiki/entities/paper-rhythm-dual-humanoid-interaction.md)（IAMR 解耦重定向 + IGRL 图奖励 MAPPO + 真机部署 + MAGIC 数据集 + Mermaid 管线）
+- 交叉更新：[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/methods/marl.md`](wiki/methods/marl.md)、[`wiki/entities/paper-assistmimic.md`](wiki/entities/paper-assistmimic.md)、[`sources/README.md`](sources/README.md)
+- 门禁：`make ci-preflight` 全绿（图谱 807 节点，无孤儿节点）
+
 ## [2026-06-09] query | wiki/queries/perception-backbone-selection.md — V24 P1 视觉表征知识链收官（机器人感知骨干/表征选型 Query）
 
 - 新建 Query：[`wiki/queries/perception-backbone-selection.md`](wiki/queries/perception-backbone-selection.md)（「分类骨干 / 检测头 / 通用预训练表征」三类选型决策树、推荐组合 pipeline、关键工程经验与典型失败模式；含 Mermaid 决策树与缩写速查）
