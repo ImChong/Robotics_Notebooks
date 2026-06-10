@@ -2,7 +2,7 @@
 type: concept
 tags: [il, rl, humanoid, architecture, vla, world-models, foundation-policy, diffusion-policy, amp]
 status: complete
-updated: 2026-05-15
+updated: 2026-06-10
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
   - ./whole-body-control.md
@@ -78,6 +78,19 @@ flowchart TB
 
   e0 --> e1 --> e2 --> e3 --> e4
 ```
+
+## 架构代际对比表
+
+| 代际 / 路线 | 典型骨干与规模 | 输入 | 输出 | 代表工作 | 强项 | 主要局限 |
+|------|------|------|------|------|------|------|
+| 浅层 MLP（DeepMimic 类） | 2–3 层 MLP，512–1024 隐藏单元，`tanh` | 本体状态 + 参考运动相位 | 单步关节目标 / 扭矩 | DeepMimic | 结构简单、训练稳定、推理极快 | 单技能、强依赖 mocap 参考 |
+| AMP（对抗运动先验） | MLP policy + 独立 MLP 判别器（如 1024→512） | 本体状态；判别器看状态转移 | 单步动作 | [AMP](../methods/amp-reward.md)、ASE | 风格自然，免逐项手工奖励 shaping | 判别器易不稳 / mode collapse，调参敏感 |
+| Multi-expert / MoE | 多个 expert MLP + gating 网络 | 本体状态 + 任务 / 步态指令 | 单步动作（加权或选中 expert） | MCP、multi-expert locomotion | 多技能切换可解释，技能分解清晰 | expert 划分靠人工设计，扩展性有限 |
+| Transformer / Diffusion | Transformer 或 UNet 去噪骨干 | 图像 + 历史观测特征 | **action chunk**（多步轨迹） | [Diffusion Policy](../methods/diffusion-policy.md)、ACT | 表达多模态动作分布，长 horizon 操作强 | 推理慢，高频控制需蒸馏 / 异步执行 |
+| VLA / WAM | VLM 骨干 + 动作 token 或 flow / 扩散动作头；WAM 加视频 token 联合建模 | 图像 + 语言 + 本体（+ 历史） | 动作 token / chunk（低频） | [RT-2](../methods/robotics-transformer-rt-series.md)、OpenVLA、[π0](../methods/π0-policy.md)、[WAM](./world-action-models.md) | 开放指令、跨任务跨本体泛化 | 算力与延迟大，需低层跟踪器配合 |
+| 低层小网（并行仿真主力） | 2–3 层 MLP，256–512 隐藏单元，`ELU` | 本体 + 指令（critic 可加特权信息） | 高频关节目标 | legged_gym / Isaac Gym 系 PPO 策略 | 吞吐高、延迟低、sim2real 路径成熟 | 表达力有限，语义与规划交给上层 |
+
+> 阅读建议：前五行是「论文叙事主线」的代际演化；最后一行提醒——**无论上层多新，真机低层高频策略至今仍常是小 MLP**，两条线在实际系统里是分层共存而非互相取代。
 
 ## 各时代的典型骨架（归纳）
 

@@ -6,6 +6,10 @@
 - 新建实体：[`wiki/entities/paper-rhythm-dual-humanoid-interaction.md`](wiki/entities/paper-rhythm-dual-humanoid-interaction.md)（IAMR 解耦重定向 + IGRL 图奖励 MAPPO + 真机部署 + MAGIC 数据集 + Mermaid 管线）
 - 交叉更新：[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/methods/marl.md`](wiki/methods/marl.md)、[`wiki/entities/paper-assistmimic.md`](wiki/entities/paper-assistmimic.md)、[`sources/README.md`](sources/README.md)
 
+## [2026-06-10] structural | wiki/concepts/humanoid-policy-network-architecture.md — 新增「架构代际对比表」
+
+- 在 [`wiki/concepts/humanoid-policy-network-architecture.md`](wiki/concepts/humanoid-policy-network-architecture.md) 的架构演化总览后新增六行对比表：浅层 MLP / AMP / MoE / Transformer-Diffusion / VLA-WAM / 低层小网，按「骨干规模、输入输出、代表工作、强项、主要局限」横向对比，并强调真机低层高频策略与上层新架构分层共存
+
 ## [2026-06-10] ingest | sources/papers/dit4dit_arxiv_2603_10448.md — DiT4DiT 双 DiT 联合 VAM 入库；wiki/entities/paper-dit4dit-video-action-model.md 并与 MotionWAM 双向链接
 
 ## [2026-06-10] ingest | sources/papers/motionwam_arxiv_2606_09215.md — MotionWAM 实时人形 loco-manipulation WAM 入库；wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md、wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md 等交叉更新
