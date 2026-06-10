@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-06-10
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -20,6 +20,7 @@ related:
   - ../entities/paper-any2any-cross-embodiment-wbt.md
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
+  - ../entities/paper-omg-omni-modal-humanoid-control.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-resmimic.md
   - ../queries/humanoid-motion-tracking-method-selection.md
@@ -212,6 +213,10 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 > - **核心是抗扰与历史依赖** → GMT / RGMT / Any2Track
 
 > **深入对比**：阶段 4「策略学习」里 SONIC / BeyondMimic / SD-AMP / Heracles 四条路线的逐维度取舍（参考池规模、训练目标、OOD 行为、真机交付），见 [SONIC vs BeyondMimic vs SD-AMP vs Heracles](../comparisons/sonic-vs-beyondmimic-vs-sdamp-vs-heracles.md)。
+
+### 扩展：Omni-modal 运动生成 + tracker（OMG）
+
+当 WBT 推理期需要 **语言 / 音频 / 人体参考 / 运动历史** 等多模态意图而非固定参考文件时，可在流水线前端插入 **运动生成器**。[OMG](../entities/paper-omg-omni-modal-humanoid-control.md)（清华 MARS Lab）采用 **generator–tracker 分层**：**OMG-DiT** 在 **OMG-Data**（约 1174.66 h，G1 对齐 + sim-in-the-loop 过滤）上训练扩散先验，经轻量 encoder 与 **CFG** 接入各模态；执行层复用 [HoloMotion](../entities/holomotion.md) tracker ONNX，并在 G1 上实现 **运行时多模态切换**。它与 [ETH G1 扩散 locomotion](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md)（地形条件 MDM + 自训 tracker）、[Heracles](../entities/paper-heracles-humanoid-diffusion.md)（recovery 中间件）并列，代表 **「参考生产」阶段的多模态 foundation 路线**。
 
 ### 扩展：双人物理交互 tracking（AssistMimic）
 

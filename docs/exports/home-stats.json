@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 814,
-  "edge_count": 5761,
+  "node_count": 815,
+  "edge_count": 5778,
   "coverage": {
-    "covered": 798,
-    "total": 812,
+    "covered": 799,
+    "total": 813,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
+      "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
+      "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/holomotion.md",
+      "detail_id": "entity-holomotion",
+      "label": "HoloMotion（HoloMotion-1）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/field-oriented-control-derivation.md",
       "detail_id": "wiki-formalizations-field-oriented-control-derivation",
@@ -53,14 +85,6 @@
       "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
       "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
       "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
       "recency": "2026-06-10",
       "source": "log.md"
     },
@@ -143,37 +167,13 @@
       "type": "comparison",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/visual-representation-for-policy.md",
-      "detail_id": "wiki-concepts-visual-representation-for-policy",
-      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/object-detection-model-selection.md",
-      "detail_id": "wiki-queries-object-detection-model-selection",
-      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
-      "type": "query",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/vision-banana.md",
-      "detail_id": "entity-vision-banana",
-      "label": "Vision Banana",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/field-oriented-control-derivation.md",
-    "detail_id": "wiki-formalizations-field-oriented-control-derivation",
-    "label": "磁场定向控制（FOC）逐步推导",
-    "type": "formalization",
+    "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
+    "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
+    "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
+    "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"
   }
