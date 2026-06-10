@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 806,
-  "edge_count": 5662,
+  "node_count": 808,
+  "edge_count": 5697,
   "coverage": {
-    "covered": 790,
-    "total": 804,
+    "covered": 792,
+    "total": 806,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dit4dit-video-action-model.md",
+      "detail_id": "entity-paper-dit4dit-video-action-model",
+      "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
+      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
+      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/world-action-models.md",
+      "detail_id": "wiki-concepts-world-action-models",
+      "label": "World Action Models（WAM，世界–动作模型）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/perception-backbone-selection.md",
       "detail_id": "wiki-queries-perception-backbone-selection",
@@ -135,46 +167,14 @@
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dart-control.md",
-      "detail_id": "wiki-methods-dart-control",
-      "label": "DART（DartControl：实时文本驱动人体运动控制）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/hy-motion-1.md",
-      "detail_id": "wiki-methods-hy-motion-1",
-      "label": "HY-Motion 1.0（文本→3D 人体运动的规模化流匹配 DiT）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/genmo.md",
-      "detail_id": "wiki-methods-genmo",
-      "label": "GENMO（统一人体运动估计与生成）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/perception-backbone-selection.md",
-    "detail_id": "wiki-queries-perception-backbone-selection",
-    "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
-    "type": "query",
-    "recency": "2026-06-09",
+    "path": "wiki/entities/paper-dit4dit-video-action-model.md",
+    "detail_id": "entity-paper-dit4dit-video-action-model",
+    "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
+    "type": "entity",
+    "recency": "2026-06-10",
     "source": "log.md"
   }
 }

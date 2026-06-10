@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/papers/dit4dit_arxiv_2603_10448.md — DiT4DiT 双 DiT 联合 VAM 入库；wiki/entities/paper-dit4dit-video-action-model.md 并与 MotionWAM 双向链接
+
+## [2026-06-10] ingest | sources/papers/motionwam_arxiv_2606_09215.md — MotionWAM 实时人形 loco-manipulation WAM 入库；wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md、wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md 等交叉更新
+
 ## [2026-06-09] query | wiki/queries/perception-backbone-selection.md — V24 P1 视觉表征知识链收官（机器人感知骨干/表征选型 Query）
 
 - 新建 Query：[`wiki/queries/perception-backbone-selection.md`](wiki/queries/perception-backbone-selection.md)（「分类骨干 / 检测头 / 通用预训练表征」三类选型决策树、推荐组合 pipeline、关键工程经验与典型失败模式；含 Mermaid 决策树与缩写速查）
