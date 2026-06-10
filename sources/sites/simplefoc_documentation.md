@@ -46,6 +46,7 @@
 
 - [wiki/entities/simplefoc.md](../../wiki/entities/simplefoc.md)
 - [wiki/concepts/field-oriented-control.md](../../wiki/concepts/field-oriented-control.md)
+- [wiki/formalizations/field-oriented-control-derivation.md](../../wiki/formalizations/field-oriented-control-derivation.md)
 
 ## 推荐继续阅读（外部）
 

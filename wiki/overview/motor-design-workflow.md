@@ -8,6 +8,7 @@ related:
   - ../concepts/motor-torque-current-curve.md
   - ../comparisons/motor-em-simulation-software.md
   - ../concepts/field-oriented-control.md
+  - ../formalizations/field-oriented-control-derivation.md
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-hardware-101-integrated-actuators.md
   - ../entities/simplefoc.md
@@ -126,7 +127,7 @@ flowchart TD
 
 ### 7) 驱动器与 FOC 验证
 
-电机参数冻结后，在逆变器上实现 [磁场定向控制（FOC）](../concepts/field-oriented-control.md)：
+电机参数冻结后，在逆变器上实现 [磁场定向控制（FOC）](../concepts/field-oriented-control.md)（公式推导见 [FOC 逐步推导](../formalizations/field-oriented-control-derivation.md)）：
 
 | 环节 | 要点 |
 |------|------|

@@ -6,6 +6,7 @@ updated: 2026-06-10
 related:
   - ./motor-torque-speed-curve.md
   - ./field-oriented-control.md
+  - ../formalizations/field-oriented-control-derivation.md
   - ../overview/humanoid-actuator-102-thermal-and-control.md
   - ../overview/humanoid-actuator-102-decision-species.md
   - ../comparisons/motor-em-simulation-software.md

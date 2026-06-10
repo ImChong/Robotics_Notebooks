@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 813,
-  "edge_count": 5751,
+  "node_count": 814,
+  "edge_count": 5761,
   "coverage": {
-    "covered": 797,
-    "total": 811,
+    "covered": 798,
+    "total": 812,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/field-oriented-control-derivation.md",
+      "detail_id": "wiki-formalizations-field-oriented-control-derivation",
+      "label": "磁场定向控制（FOC）逐步推导",
+      "type": "formalization",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/motor-design-workflow.md",
       "detail_id": "wiki-overview-motor-design-workflow",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/generative-vision-pretraining.md",
-      "detail_id": "wiki-concepts-generative-vision-pretraining",
-      "label": "生成式视觉预训练（Generative Vision Pretraining）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/motor-design-workflow.md",
-    "detail_id": "wiki-overview-motor-design-workflow",
-    "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-    "type": "overview",
+    "path": "wiki/formalizations/field-oriented-control-derivation.md",
+    "detail_id": "wiki-formalizations-field-oriented-control-derivation",
+    "label": "磁场定向控制（FOC）逐步推导",
+    "type": "formalization",
     "recency": "2026-06-10",
     "source": "log.md"
   }

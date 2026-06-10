@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] structural | wiki/formalizations/field-oriented-control-derivation.md — FOC Clarke/Park 与 dq 转矩方程逐步推导；交叉链接概念页与设计流程
+
 ## [2026-06-10] ingest | sources/sites/ansys_motor_cad_electric_machine_design.md — 电机设计流程入库；wiki/overview/motor-design-workflow.md 并与 FOC/TN/仿真选型交叉链接
 
 ## [2026-06-10] ingest | sources/personal/motor_curves_and_em_simulation_faq.md — TN/TI 曲线与电机电磁仿真软件入库；wiki/concepts/motor-torque-speed-curve.md、wiki/concepts/motor-torque-current-curve.md、wiki/comparisons/motor-em-simulation-software.md
