@@ -7,12 +7,14 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-06-09
+updated: 2026-06-10
 related:
   - ./deep-learning-foundations.md
   - ./generative-vision-pretraining.md
   - ../methods/object-detection.md
   - ./visual-representation-for-policy.md
+  - ../comparisons/cnn-vs-vit-backbones.md
+  - ../queries/perception-backbone-selection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/vision-banana.md
@@ -74,6 +76,15 @@ flowchart TB
 
 [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md) 即典型路径：前 20 层 ImageNet 预训练 → 升分辨率检测微调。
 
+### 4. 骨干特征 → 检测/分割头 → 策略输入
+
+骨干在机器人栈里有两种下游接法，构成完整的「**骨干特征 → 头 → 策略输入**」衔接链：
+
+- **经检测/分割头**：骨干多尺度特征接 [目标检测](../methods/object-detection.md) / 分割头，输出 **结构化的物体框、掩码或位姿**，再喂给策略——可解释、便于安全约束。
+- **特征图直喂**：把骨干特征图 / CLS token **直接** 当作 [策略输入](./visual-representation-for-policy.md)，保留更多信息、契合端到端 VLA。
+
+骨干族（CNN vs ViT）的取舍见 [CNN vs ViT 视觉骨干对比](../comparisons/cnn-vs-vit-backbones.md)；三类「分类骨干 / 检测头 / 通用预训练表征」的端到端选型决策树见 [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)。
+
 ## 常见误区或局限
 
 - **误区：「骨干越强，机器人策略越好。」** 仿真—真机 **视觉域差距**、相机标定与 **时序对齐** 常比换 ResNet-152 更致命。
@@ -86,6 +97,7 @@ flowchart TB
 - [目标检测（方法）](../methods/object-detection.md)
 - [视觉表征作为策略输入（概念）](./visual-representation-for-policy.md)
 - [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
+- [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [生成式视觉预训练（概念）](./generative-vision-pretraining.md) — 图像生成预训练作为 FVM 新兴主线
