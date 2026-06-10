@@ -3,10 +3,11 @@ type: comparison
 tags: [mpc, rl, control, locomotion, comparison, engineering-selection]
 status: stable
 summary: "MPC vs RL：控制策略选型对比"
-updated: 2026-04-25
+updated: 2026-06-10
 sources:
   - ../../sources/papers/mpc.md
   - ../../sources/papers/policy_optimization.md
+  - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
 ---
 
 # MPC vs RL：控制策略选型对比
@@ -78,7 +79,9 @@ sources:
 
 ## 混合架构：MPC + RL
 
-实际高性能系统往往结合两者优势：
+实际高性能系统往往结合两者优势，常见有三条轴：
+
+### A. 部署期分层（RL 上 / MPC 下 或相反）
 
 ```
 高层 RL 策略（步态/步位决策）
@@ -93,6 +96,24 @@ sources:
 - CMU Humanoid Locomotion（2023）：RL policy + MPC 接触规划
 - ETH RSL：OCS2 MPC + RL 初始化
 - MIT Cheetah：MPC + RL 结合的高速奔跑
+
+### B. 训练期 MPC 指导、部署期纯 RL
+
+```
+训练：CD-MPC 批求解 → 预测地标奖励 → PPO
+部署：仅 MLP 策略（无在线 MPC）
+```
+
+- **MPC 仅训练时**：质心 MPC 轨迹转为 landmark guidance reward，把长时域物理结构写进奖励
+- **RL 部署时**：推理极快，无求解器延迟；适合大规模并行仿真内嵌 MPC
+
+代表工作：
+- [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md)（Caltech/JHU, 2026, arXiv:2606.05687）：[πⁿ MPC](../methods/pi-mpc.md) 支撑 4096 env 长时域 CD-MPC；Themis 真机 loco-manipulation（含 290 kg 推车）
+
+### C. 残差 / 在线 MPC 增强
+
+- **残差 RL on MPC**：测试时 MPC 仍在环，RL 学残差修正
+- **MPC-over-RL**（如 Sumo）：高层采样 MPC 在 RL WBC 命令空间规划
 
 ---
 
@@ -153,6 +174,8 @@ sources:
 - [WBC vs RL](./wbc-vs-rl.md) — 相关的控制架构对比
 - [Model-Based vs Model-Free](./model-based-vs-model-free.md) — RL 内部的方法对比
 - [MPC Solver Selection](../queries/mpc-solver-selection.md) — MPC 求解器选型指南
+- [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 MPC 地标奖励 + 部署期纯 RL
+- [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM 求解器（MPC-RL 批训练后端）
 
 ---
 

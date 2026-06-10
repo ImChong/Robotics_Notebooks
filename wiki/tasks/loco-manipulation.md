@@ -7,6 +7,7 @@ updated: 2026-06-10
 sources:
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
+  - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -121,7 +122,11 @@ flowchart TD
 - **核心**：先学 **深度 visuomotor 攀爬策略** 到梯顶；再训 **双智能体 manipulation**——下身 $\pi^l$ 维持梯子接触与骨盆姿态，上身 $\pi^u$ 跟踪 VR 遥操作目标；相对现成 **全身遥操作**（如 TWIST2）在梯顶切换后更不易失稳。
 - **代表作**：[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) (Amazon FAR 等, 2026, arXiv:2606.05873) — G1 **零样本 sim-to-real** 多样梯子双向攀爬；梯顶 **调画 / 换灯泡 / 高处递箱**；深度经 **VFM + RFM** 桥接真机。
 
-### 14. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
+### 14. 训练期质心 MPC 地标奖励 + 部署期纯 RL（CD-MPC · πⁿ MPC）
+- **核心**：**训练时** 用 **质心动力学 MPC（CD-MPC）** 批求解预测轨迹，转为 **landmark guidance reward** 监督 PPO；**部署时** 仅 MLP 关节策略（无在线 MPC）；配套 **[πⁿ MPC](../methods/pi-mpc.md)** 实现长时域 × 数千环境 GPU 批 ADMM。
+- **代表作**：[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) (Caltech/JHU, 2026, arXiv:2606.05687) — Themis 真机行走、推恢复、未知负重与 **290 kg 推车** loco-manipulation；[junhengl/mpc-rl](https://github.com/junhengl/mpc-rl) 开源。
+
+### 15. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
 

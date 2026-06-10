@@ -134,6 +134,8 @@ QP 优化层：
 
 **主流趋势**：MPC + WBC 作为 baseline，RL 作为提升层（学更好的策略 prior 或补偿误差）。
 
+另有一条与「部署期 MPC+WBC」正交的路线：[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 在 **训练期** 用 CD-MPC 地标奖励指导 PPO，**部署期** 不再运行 MPC，由学得的低层策略直接跟踪关节目标。
+
 ## 新兴趋势：反向层级架构 (MPC-over-RL)
 
 在 2025-2026 年，出现了一种与上述“传统分层”相反的架构，用于处理极其复杂的全身移动操作：
@@ -170,3 +172,4 @@ QP 优化层：
 - [Locomotion](../tasks/locomotion.md) — locomotion 任务层
 - [Optimal Control (OCP)](./optimal-control.md) — 理论层，MPC 是 OCP 的在线求解
 - [Query：控制架构选型对比](../queries/control-architecture-comparison.md)
+- [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 指导、部署期纯 RL

@@ -3,9 +3,10 @@ type: query
 tags: [mpc, solver, osqp, qpoases, acados, optimization, legged-robots]
 status: stable
 summary: "MPC 求解器选型指南"
-updated: 2026-04-25
+updated: 2026-06-10
 sources:
   - ../../sources/papers/mpc.md
+  - ../../sources/papers/pi_mpc_arxiv_2601_14414.md
 ---
 
 # MPC 求解器选型指南
@@ -49,6 +50,7 @@ sources:
 | **IPOPT** | NLP | ⚠️ 慢 | ✅ | ❌ | 离线规划、TO |
 | **Crocoddyl** | DDP/OCP | ✅ 快 | ✅ | ❌ | 全身 TO，接触规划 |
 | **HPIPM** | QP（结构化） | ✅ 极快 | ✅ | ✅ | 线性化 MPC，内嵌 OCS2 |
+| **π MPC / πⁿ MPC** | LTV MPC（ADMM） | ✅ 批 GPU | ✅ | ❌ | parallel-in-horizon、construction-free；RL 训练内嵌长时域 MPC |
 
 ---
 
@@ -181,6 +183,7 @@ solver = AcadosOcpSolver(ocp, json_file="ocp.json")
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC QP 同样需要 QP 求解器
 - [Crocoddyl](../entities/crocoddyl.md) — 全身 TO 的 DDP 框架
 - [TSID](../concepts/tsid.md) — 任务空间逆动力学，依赖 QP 求解器
+- [π MPC](../methods/pi-mpc.md) — parallel-in-horizon ADMM；[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) 批训练应用
 
 ---
 
