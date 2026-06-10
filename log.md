@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] structural | wiki/concepts/humanoid-policy-network-architecture.md — 新增「架构代际对比表」
+
+- 在 [`wiki/concepts/humanoid-policy-network-architecture.md`](wiki/concepts/humanoid-policy-network-architecture.md) 的架构演化总览后新增六行对比表：浅层 MLP / AMP / MoE / Transformer-Diffusion / VLA-WAM / 低层小网，按「骨干规模、输入输出、代表工作、强项、主要局限」横向对比，并强调真机低层高频策略与上层新架构分层共存
+
 ## [2026-06-10] ingest | sources/papers/dit4dit_arxiv_2603_10448.md — DiT4DiT 双 DiT 联合 VAM 入库；wiki/entities/paper-dit4dit-video-action-model.md 并与 MotionWAM 双向链接
 
 ## [2026-06-10] ingest | sources/papers/motionwam_arxiv_2606_09215.md — MotionWAM 实时人形 loco-manipulation WAM 入库；wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md、wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md 等交叉更新
