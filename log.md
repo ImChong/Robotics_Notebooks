@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/sites/omg-tsinghua-mars-lab-github-io.md — OMG omni-modal G1 运动生成（清华 MARS Lab）入库并建实体页
+
+- 原始资料：[`omg-tsinghua-mars-lab-github-io.md`](sources/sites/omg-tsinghua-mars-lab-github-io.md)（<https://tsinghua-mars-lab.github.io/OMG/>）；[`omg-tsinghua-mars-lab.md`](sources/repos/omg-tsinghua-mars-lab.md)（<https://github.com/tsinghua-mars-lab/OMG>）
+- 新建实体：[`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](wiki/entities/paper-omg-omni-modal-humanoid-control.md)（generator–tracker 分层、OMG-DiT 多模态条件、OMG-Data 规模、HoloMotion tracker 部署与 Mermaid 管线）
+- 交叉更新：[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/entities/holomotion.md`](wiki/entities/holomotion.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-10] ingest | sources/papers/rhythm_arxiv_2603_02856.md — Rhythm 双 G1 交互全身控制（IAMR+IGRL+MAGIC）入库并建实体页
 
 - 原始资料：[`rhythm_arxiv_2603_02856.md`](sources/papers/rhythm_arxiv_2603_02856.md)（<https://arxiv.org/abs/2603.02856>）；[`hoshi-no-ai-rhythm-github-io.md`](sources/sites/hoshi-no-ai-rhythm-github-io.md)（<https://hoshi-no-ai.github.io/Rhythm/>）
