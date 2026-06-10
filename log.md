@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/personal/motor_curves_and_em_simulation_faq.md — TN/TI 曲线与电机电磁仿真软件入库；wiki/concepts/motor-torque-speed-curve.md、wiki/concepts/motor-torque-current-curve.md、wiki/comparisons/motor-em-simulation-software.md
+
 ## [2026-06-10] structural | wiki/concepts/humanoid-policy-network-architecture.md — 新增「架构代际对比表」
 
 - 在 [`wiki/concepts/humanoid-policy-network-architecture.md`](wiki/concepts/humanoid-policy-network-architecture.md) 的架构演化总览后新增六行对比表：浅层 MLP / AMP / MoE / Transformer-Diffusion / VLA-WAM / 低层小网，按「骨干规模、输入输出、代表工作、强项、主要局限」横向对比，并强调真机低层高频策略与上层新架构分层共存

@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 808,
-  "edge_count": 5697,
+  "node_count": 811,
+  "edge_count": 5723,
   "coverage": {
-    "covered": 792,
-    "total": 806,
+    "covered": 795,
+    "total": 809,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/motor-torque-speed-curve.md",
+      "detail_id": "wiki-concepts-motor-torque-speed-curve",
+      "label": "电机转矩-转速曲线（TN 曲线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motor-torque-current-curve.md",
+      "detail_id": "wiki-concepts-motor-torque-current-curve",
+      "label": "电机转矩-电流曲线（TI 曲线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/motor-em-simulation-software.md",
+      "detail_id": "wiki-comparisons-motor-em-simulation-software",
+      "label": "电机电磁与多物理场仿真软件选型",
+      "type": "comparison",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/humanoid-policy-network-architecture.md",
       "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
@@ -143,36 +167,12 @@
       "type": "overview",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-dimos-human-scene-motion-synthesis.md",
-      "detail_id": "entity-paper-dimos-human-scene-motion-synthesis",
-      "label": "DIMOS：室内 3D 场景中的多样人体运动合成",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/character-animation-vs-robotics.md",
-      "detail_id": "wiki-concepts-character-animation-vs-robotics",
-      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/humanoid-policy-network-architecture.md",
-    "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
-    "label": "人形与腿式策略的网络架构（Policy Network Architecture）",
+    "path": "wiki/concepts/motor-torque-speed-curve.md",
+    "detail_id": "wiki-concepts-motor-torque-speed-curve",
+    "label": "电机转矩-转速曲线（TN 曲线）",
     "type": "concept",
     "recency": "2026-06-10",
     "source": "log.md"
