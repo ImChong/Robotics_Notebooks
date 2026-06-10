@@ -47,8 +47,8 @@ summary: "RS-485（TIA-485）：差分、半双工、多点总线物理层，典
 
 | 条件（A 相对 B） | 标准态名 | 常见 UART 空闲对应 |
 |------------------|----------|---------------------|
-| A − B &lt; −200 mV | mark（binary 1 / OFF） | 总线空闲偏置到此态 |
-| A − B &gt; +200 mV | space（binary 0 / ON） | 驱动发送起始/数据 0 |
+| A − B < −200 mV | mark（binary 1 / OFF） | 总线空闲偏置到此态 |
+| A − B > +200 mV | space（binary 0 / ON） | 驱动发送起始/数据 0 |
 
 - 驱动器在 **54 Ω** 等效负载上差分 **≥ 1.5 V**。
 - **A/B 丝印极性**：不同厂商与 Profibus 颜色约定可能相反，现场以 **差分电压极性** 为准（TI「Pesky Polarity」应用笔记）；见 [一手资料](../../sources/sites/rs485_tia_eia_primary_refs.md)。
