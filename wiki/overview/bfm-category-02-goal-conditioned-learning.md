@@ -13,11 +13,11 @@ related:
   - ./bfm-category-03-intrinsic-reward-pretraining.md
   - ./bfm-category-04-adaptation.md
   - ./bfm-category-05-hierarchical-control.md
-  - ../entities/paper-bfm-07-sonic.md
+  - ../entities/paper-sonic.md
   - ../entities/paper-bfm-08-opentrack.md
   - ../entities/paper-bfm-09-ams.md
   - ../entities/paper-twist2.md
-  - ../entities/paper-bfm-11-twist.md
+  - ../entities/paper-twist.md
   - ../entities/paper-bfm-12-clone.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
@@ -49,11 +49,11 @@ sources:
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 07 | Sonic | [paper-bfm-07-sonic.md](../entities/paper-bfm-07-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
+| 07 | Sonic | [paper-sonic.md](../entities/paper-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
 | 08 | Track Any Motions under Any Disturbances | [paper-bfm-08-opentrack.md](../entities/paper-bfm-08-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
 | 09 | Agility Meets Stability | [paper-bfm-09-ams.md](../entities/paper-bfm-09-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |
-| 11 | TWIST | [paper-bfm-11-twist.md](../entities/paper-bfm-11-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
+| 11 | TWIST | [paper-twist.md](../entities/paper-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
 | 12 | CLONE | [paper-bfm-12-clone.md](../entities/paper-bfm-12-clone.md) | [source](../../sources/papers/bfm_awesome_clone_corl_2025.md) |
 | 13 | Behavior Foundation Model for Humanoid Robots | [paper-behavior-foundation-model-humanoid.md](../entities/paper-behavior-foundation-model-humanoid.md) | [source](../../sources/papers/bfm_awesome_bfm_humanoid_arxiv_2509_13780.md) |
 | 14 | HOVER | [paper-bfm-14-hover.md](../entities/paper-bfm-14-hover.md) | [source](../../sources/papers/bfm_awesome_hover_arxiv_2410_21229.md) |

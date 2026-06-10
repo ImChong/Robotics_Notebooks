@@ -26,7 +26,7 @@ overrides:
   Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty:
   - wiki/entities/paper-notebook-benchmarking-humanoid-imitation-learning-with-mo.md
   BeyondMimic:
-  - wiki/entities/paper-bfm-35-beyondmimic.md
+  - wiki/entities/paper-beyondmimic.md
   - wiki/methods/beyondmimic.md
   Biomechanical_Comparisons_Reveal_Divergence_of_Human_and_Humanoid_Gaits:
   - wiki/entities/paper-notebook-biomechanical-comparisons-reveal-divergence-of-h.md
@@ -241,8 +241,8 @@ overrides:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
   - wiki/methods/sonic-motion-tracking.md
-  - wiki/entities/paper-bfm-07-sonic.md
-  - wiki/entities/paper-hrl-stack-17-sonic.md
+  - wiki/entities/paper-sonic.md
+  - wiki/entities/paper-sonic.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   Semantic_Co-Speech_Gesture_Synthesis_and_Real-Time_Control_for_Humanoid_Robots:

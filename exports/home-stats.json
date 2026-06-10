@@ -1,17 +1,41 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 819,
-  "edge_count": 5828,
+  "node_count": 815,
+  "edge_count": 5826,
   "coverage": {
-    "covered": 803,
-    "total": 817,
+    "covered": 799,
+    "total": 813,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
+      "path": "wiki/entities/paper-beyondmimic.md",
+      "detail_id": "entity-paper-beyondmimic",
+      "label": "BeyondMimic",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-sentinel.md",
+      "detail_id": "entity-paper-sentinel",
+      "label": "SENTINEL",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-sonic.md",
+      "detail_id": "entity-paper-sonic",
+      "label": "SONIC",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist.md",
+      "detail_id": "entity-paper-twist",
+      "label": "TWIST",
       "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
@@ -21,6 +45,22 @@
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
       "label": "人形机器人 RL 运动控制：身体系统栈视角",
       "type": "overview",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-resmimic.md",
+      "detail_id": "entity-paper-resmimic",
+      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
     },
@@ -127,52 +167,12 @@
       "type": "method",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/holomotion.md",
-      "detail_id": "entity-holomotion",
-      "label": "HoloMotion（HoloMotion-1）",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/field-oriented-control-derivation.md",
-      "detail_id": "wiki-formalizations-field-oriented-control-derivation",
-      "label": "磁场定向控制（FOC）逐步推导",
-      "type": "formalization",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motor-design-workflow.md",
-      "detail_id": "wiki-overview-motor-design-workflow",
-      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
-      "type": "overview",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motor-torque-speed-curve.md",
-      "detail_id": "wiki-concepts-motor-torque-speed-curve",
-      "label": "电机转矩-转速曲线（TN 曲线）",
-      "type": "concept",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-twist2.md",
-    "detail_id": "entity-paper-twist2",
-    "label": "TWIST2",
+    "path": "wiki/entities/paper-beyondmimic.md",
+    "detail_id": "entity-paper-beyondmimic",
+    "label": "BeyondMimic",
     "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"

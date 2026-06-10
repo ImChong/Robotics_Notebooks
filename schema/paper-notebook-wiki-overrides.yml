@@ -8,7 +8,7 @@ overrides:
   BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation:
   - wiki/tasks/loco-manipulation.md
   BeyondMimic:
-  - wiki/entities/paper-bfm-35-beyondmimic.md
+  - wiki/entities/paper-beyondmimic.md
   - wiki/methods/beyondmimic.md
   CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit:
   - wiki/methods/crisp-real2sim.md
@@ -89,8 +89,8 @@ overrides:
   - wiki/tasks/teleoperation.md
   SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control:
   - wiki/methods/sonic-motion-tracking.md
-  - wiki/entities/paper-bfm-07-sonic.md
-  - wiki/entities/paper-hrl-stack-17-sonic.md
+  - wiki/entities/paper-sonic.md
+  - wiki/entities/paper-sonic.md
   STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain:
   - wiki/tasks/vision-language-navigation.md
   TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior:

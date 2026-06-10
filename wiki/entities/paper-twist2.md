@@ -14,6 +14,7 @@ related:
   - ../overview/bfm-category-02-goal-conditioned-learning.md
   - ../concepts/behavior-foundation-model.md
   - ../tasks/teleoperation.md
+  - ./paper-twist.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
@@ -67,6 +68,7 @@ sources:
 
 ## 与其他页面的关系
 
+- 前作：[paper-twist.md](./paper-twist.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)

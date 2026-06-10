@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] structural | wiki/entities/paper-beyondmimic.md、paper-sentinel.md、paper-sonic.md、paper-twist.md — 合并 HRL 栈与 BFM 双索引重复实体页（4 对）
+
+- 合并为单一实体：[`paper-beyondmimic.md`](wiki/entities/paper-beyondmimic.md)、[`paper-sentinel.md`](wiki/entities/paper-sentinel.md)、[`paper-sonic.md`](wiki/entities/paper-sonic.md)、[`paper-twist.md`](wiki/entities/paper-twist.md)
+- 删除 8 个重复页（`paper-hrl-stack-*` / `paper-bfm-*` 各 4 对）
+- 交叉更新：[`humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、BFM 技术地图/分类页、[`paper-resmimic.md`](wiki/entities/paper-resmimic.md)、[`schema/paper-notebook-wiki-map.yml`](schema/paper-notebook-wiki-map.yml)
+
 ## [2026-06-10] structural | wiki/entities/paper-twist2.md — 合并 TWIST2 重复实体页（paper-hrl-stack-10-twist2 与 paper-bfm-10-twist2 为同一篇 arXiv:2505.02833）
 
 - 合并为单一实体：[`wiki/entities/paper-twist2.md`](wiki/entities/paper-twist2.md)（保留 42 篇 RL 栈与 BFM 41 篇双索引语境）
@@ -201,7 +207,7 @@
 ## [2026-06-07] structural | schema + wiki — 同步 Humanoid Paper Notebooks 深读笔记链接至对应 wiki 节点
 
 - 工具：[scripts/sync_paper_notebook_links.py](scripts/sync_paper_notebook_links.py)；`make paper-notebook-links`；映射 [schema/paper-notebook-wiki-overrides.yml](schema/paper-notebook-wiki-overrides.yml) + [schema/paper-notebook-index.json](schema/paper-notebook-index.json)
-- 覆盖 73/138 篇已有对应节点的论文笔记；修复 5 处旧版 `02_High_Impact` / `09_Sim-to-Real` URL；示例节点 [wiki/entities/paper-bfm-07-sonic.md](wiki/entities/paper-bfm-07-sonic.md)、[wiki/methods/awr.md](wiki/methods/awr.md)、[wiki/tasks/teleoperation.md](wiki/tasks/teleoperation.md)
+- 覆盖 73/138 篇已有对应节点的论文笔记；修复 5 处旧版 `02_High_Impact` / `09_Sim-to-Real` URL；示例节点 [wiki/entities/paper-sonic.md](wiki/entities/paper-sonic.md)、[wiki/methods/awr.md](wiki/methods/awr.md)、[wiki/tasks/teleoperation.md](wiki/tasks/teleoperation.md)
 
 ## [2026-06-06] structural | docs — V23 P3 图谱页「专题视图」扩充（WBT / 跨具身 / 真机安全微调）
 
