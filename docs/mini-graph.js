@@ -134,11 +134,12 @@
 
     fetch('exports/graph-stats.json').then(function(r){ return r.json(); }).then(function(stats) {
       var totalNodes = gd.nodes.length, totalEdges = gd.edges.length;
-      var degreeMap = {};
-      gd.edges.forEach(function(e) {
-        degreeMap[e.source] = (degreeMap[e.source]||0)+1;
-        degreeMap[e.target] = (degreeMap[e.target]||0)+1;
-      });
+      // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
+      var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
+      var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
+      function nodeRadius(d) {
+        return window.RNGraphNodeSize.radiusForDegree(d._degree, maxDegree);
+      }
 
       var topIds = new Set(
         gd.nodes.slice().sort(function(a,b){ return (degreeMap[b.id]||0)-(degreeMap[a.id]||0); })
@@ -190,7 +191,7 @@
         .force('link', d3.forceLink(edges).id(function(d){ return d.id; }).distance(60).strength(0.4))
         .force('charge', d3.forceManyBody().strength(-200).distanceMax(300))
         .force('center', d3.forceCenter(W/2, H/2).strength(0.08))
-        .force('collision', d3.forceCollide().radius(12).strength(0.6))
+        .force('collision', d3.forceCollide().radius(function(d){ return nodeRadius(d) + 4; }).strength(0.6))
         .alphaDecay(0.03);
 
       line = lineLayer.selectAll('line').data(edges).join('line')
@@ -214,9 +215,7 @@
         })
         .on('mouseenter', function(ev, d) {
           if (isMobile) return;
-          d3.select(this).select('circle').attr('fill-opacity', 1).attr('r', function(){
-            return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)) * 1.3;
-          });
+          d3.select(this).select('circle').attr('fill-opacity', 1).attr('r', nodeRadius(d) * 1.3);
           showTooltip(ev, d, nodeFill, communityLabelMap);
         })
         .on('mousemove', function(ev) {
@@ -225,19 +224,18 @@
         })
         .on('mouseleave', function(ev, d) {
           if (isMobile) return;
-          d3.select(this).select('circle').attr('fill-opacity', 0.9).attr('r',
-            Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)));
+          d3.select(this).select('circle').attr('fill-opacity', 0.9).attr('r', nodeRadius(d));
           if (!isMobile || !pinnedNode) hideTooltip();
         });
 
       nodeG.append('circle')
-        .attr('r', function(d){ return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2)); })
+        .attr('r', nodeRadius)
         .attr('fill', function(d){ return nodeFill(d); })
         .attr('fill-opacity', 0.9);
 
       label = nodeG.append('text')
         .text(function(d){ return d.label.length>12 ? d.label.slice(0,12)+'…' : d.label; })
-        .attr('dy', function(d){ return Math.max(5, Math.min(14, 3+Math.sqrt(d._degree)*2))+11; })
+        .attr('dy', function(d){ return nodeRadius(d)+11; })
         .attr('text-anchor','middle')
         .attr('font-size','10px')
         .attr('pointer-events','none');

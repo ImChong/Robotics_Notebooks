@@ -2557,6 +2557,10 @@
       var current = nodeMap[currentPath];
       if (!current) return; // 当前节点不在图谱里
 
+      // 节点半径继承 graph view 的标尺（graph-node-size.js），度数基准为全图
+      var degreeMap = window.RNGraphNodeSize.computeDegreeMap(gd.edges);
+      var maxDegree = window.RNGraphNodeSize.maxDegreeOf(degreeMap);
+
       var neighborSet = {};
       (gd.edges || []).forEach(function (e) {
         if (e.source === e.target) return;
@@ -2582,12 +2586,14 @@
         id: currentPath, label: current.label || currentPath,
         type: current.type || '', community: current.community || '',
         summary: current.summary || '', isCurrent: true,
+        _degree: degreeMap[currentPath] || 0,
         fx: W / 2, fy: H / 2
       }].concat(neighborIds.map(function (id) {
         var n = nodeMap[id];
         return {
           id: id, label: n.label || id, type: n.type || '', community: n.community || '',
-          summary: n.summary || '', isCurrent: false
+          summary: n.summary || '', isCurrent: false,
+          _degree: degreeMap[id] || 0
         };
       }));
       var edges = neighborIds.map(function (id) { return { source: currentPath, target: id }; });
@@ -2603,7 +2609,7 @@
       hoverTip.bindOutsideDismiss(svgEl, document.body);
 
       function detailMiniNodeRadius(d, scale) {
-        var base = d.isCurrent ? 8 : 6;
+        var base = window.RNGraphNodeSize.radiusForDegree(d._degree || 0, maxDegree);
         return base * (scale || 1);
       }
 
@@ -2631,7 +2637,7 @@
         .force('link', window.d3.forceLink(edges).id(function (d) { return d.id; }).distance(54).strength(0.5))
         .force('charge', window.d3.forceManyBody().strength(-160).distanceMax(220))
         .force('center', window.d3.forceCenter(W / 2, H / 2).strength(0.12))
-        .force('collision', window.d3.forceCollide().radius(14).strength(0.7))
+        .force('collision', window.d3.forceCollide().radius(function (d) { return detailMiniNodeRadius(d) + 8; }).strength(0.7))
         .alphaDecay(0.05);
 
       var line = lineLayer.selectAll('line').data(edges).join('line')
@@ -2681,7 +2687,7 @@
         .attr('fill-opacity', 0.9);
       nodeG.append('text')
         .text(function (d) { return d.label.length > 10 ? d.label.slice(0, 10) + '…' : d.label; })
-        .attr('dy', function (d) { return (d.isCurrent ? 8 : 6) + 11; })
+        .attr('dy', function (d) { return detailMiniNodeRadius(d) + 11; })
         .attr('text-anchor', 'middle')
         .attr('font-size', '10px')
         .style('fill', 'var(--text-muted)')
