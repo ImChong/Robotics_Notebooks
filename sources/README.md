@@ -52,6 +52,7 @@
 | [x] [mpc_rl_arxiv_2606_05687.md](papers/mpc_rl_arxiv_2606_05687.md) | MPC-RL：训练期 CD-MPC 地标奖励 + πⁿ MPC 批 GPU 求解，人形 locomotion/loco-manipulation（arXiv:2606.05687，Caltech/JHU）摘录与 wiki 映射 |
 | [x] [pi_mpc_arxiv_2601_14414.md](papers/pi_mpc_arxiv_2601_14414.md) | π MPC：parallel-in-horizon、construction-free ADMM NMPC 求解器（arXiv:2601.14414，JHU/Tsinghua/Caltech）摘录与 wiki 映射 |
 | [x] [motionwam_arxiv_2606_09215.md](papers/motionwam_arxiv_2606_09215.md) | MotionWAM：实时 WAM 人形全身 loco-manipulation，双 DiT + SONIC 统一 token（arXiv:2606.09215，Mondo Robotics / HKUST）摘录与 wiki 映射 |
+| [x] [robonaldo_arxiv_2606_11092.md](papers/robonaldo_arxiv_2606_11092.md) | RoboNaldo：三阶段 motion-guided curriculum RL 人形射门，G1 机载 LiDAR/IR 真草部署（arXiv:2606.11092，港大/港中文/Archon）摘录与 wiki 映射 |
 | [x] [legs_arxiv_2606_01458.md](papers/legs_arxiv_2606_01458.md) | LEGS：3DGS 无遥操作 VLA 人形 loco-manip 合成数据（arXiv:2606.01458，Stanford）摘录与 wiki 映射 |
 | [x] [splitadapter_arxiv_2606_03297.md](papers/splitadapter_arxiv_2606_03297.md) | SplitAdapter：负载感知因子化适配的人形搬箱 loco-manipulation（arXiv:2606.03297，Samsung）摘录与 wiki 映射 |
 | [x] [bfm_humanoid_arxiv_2509_13780.md](papers/bfm_humanoid_arxiv_2509_13780.md) | BFM：CVAE + 位级掩码 + 在线蒸馏的人形 WBC 基础模型（arXiv:2509.13780，上海 AI Lab 等）摘录与 wiki 映射 |
@@ -286,6 +287,7 @@
 | [x] [rpl-humanoid-github-io.md](sites/rpl-humanoid-github-io.md) | RPL 项目页 rpl-humanoid.github.io（双向楼梯/坡/垫脚石、2 kg 载荷、DFSV/RSM 消融；配套 arXiv:2602.03002） |
 | [x] [omniretarget-github-io.md](sites/omniretarget-github-io.md) | OmniRetarget 项目页 omniretarget.github.io（ICRA 2026、增广交互演示、GMR/PHC 基线对比；配套 arXiv:2509.26633） |
 | [x] [omg-tsinghua-mars-lab-github-io.md](sites/omg-tsinghua-mars-lab-github-io.md) | OMG 项目页 tsinghua-mars-lab.github.io/OMG（清华 MARS Lab omni-modal G1 运动生成、OMG-Data、多模态真机演示） |
+| [x] [opendrivelab-robonaldo.md](sites/opendrivelab-robonaldo.md) | RoboNaldo 项目页 opendrivelab.com/RoboNaldo（三阶段射门课程、G1 室外演示与热图；配套 arXiv:2606.11092） |
 | [x] [resmimic-github-io.md](sites/resmimic-github-io.md) | ResMimic 项目页 resmimic.github.io（GMT+残差真机演示、基线对比、关节残差可视化；配套 arXiv:2510.05070） |
 | [x] [omniretarget-dataset-huggingface.md](sites/omniretarget-dataset-huggingface.md) | OmniRetarget Dataset（HF）：G1 重定向轨迹 4.0 h（OMOMO + 自采 MoCap；.npz qpos+fps） |
 | [x] [bfm4humanoid-github-io.md](sites/bfm4humanoid-github-io.md) | BFM 项目页 bfm4humanoid.github.io（Roundhouse Kick / Side Salto / VR 遥操作演示，代码 In Coming） |
