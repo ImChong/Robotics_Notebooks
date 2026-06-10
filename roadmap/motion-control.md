@@ -1152,7 +1152,15 @@ flowchart TD
 ```
 
 <ol>
-<li><strong>真机部署前必做 5 件事：</strong> ① System Identification 辨识真实质量 / 惯量、关节摩擦、PD 增益、力矩-电流曲线；② 执行器建模——加入力矩限幅、传动延迟 / 带宽、电机一阶滞后；③ 观测对齐——传感器噪声 / 偏置 / 延迟、坐标系与单位、滤波与训练时一致；④ 在训练中注入延迟 / 噪声 / 外扰并做 Domain Randomization 提升鲁棒；⑤ 安全与渐进上机——限位限速、力矩饱和、急停、吊装 / 逐步放权并备好 fallback 控制器。</li>
+<li><strong>真机部署前必做 5 件事：</strong>
+<ol>
+<li><strong>System Identification：</strong>辨识真实质量 / 惯量、关节摩擦、PD 增益、力矩-电流曲线。</li>
+<li><strong>执行器建模：</strong>加入力矩限幅、传动延迟 / 带宽、电机一阶滞后。</li>
+<li><strong>观测对齐：</strong>传感器噪声 / 偏置 / 延迟、坐标系与单位、滤波与训练时一致。</li>
+<li><strong>训练侧鲁棒化：</strong>在训练中注入延迟 / 噪声 / 外扰并做 Domain Randomization 提升鲁棒。</li>
+<li><strong>安全与渐进上机：</strong>限位限速、力矩饱和、急停、吊装 / 逐步放权并备好 fallback 控制器。</li>
+</ol>
+</li>
 <li><strong>DR 范围过大 / 过小：</strong> 太大——任务过难，策略学得过度保守（蹲低、慢动作）牺牲性能甚至学不会（信号被噪声淹没）；太小——覆盖不到真机参数，sim2real gap 仍大、上机即败（过拟合仿真）。定边界：以辨识值为中心、按硬件不确定度（传感 / 装配 / 磨损）设范围并逐步加宽（curriculum），用真机 / 留出验证反馈调，在仍能收敛的前提下尽量覆盖真实分布。</li>
 <li><strong>执行器延迟为何对 RL 更致命：</strong> RL 策略是高带宽、对观测-动作时序拟合极紧的反应式映射，且常隐式假设零延迟；延迟引入相位滞后，把训练时学到的紧反馈变成震荡 / 正反馈，又不可解释、无显式相位裕度可调。传统 MPC / WBC 有显式模型，可把延迟纳入预测（time-delay model、Smith predictor）并有稳定裕度概念，相对更可控。</li>
 </ol>
