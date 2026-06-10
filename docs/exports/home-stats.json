@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/humanoid-policy-network-architecture.md",
+      "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
+      "label": "人形与腿式策略的网络架构（Policy Network Architecture）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-dit4dit-video-action-model.md",
       "detail_id": "entity-paper-dit4dit-video-action-model",
       "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
@@ -159,21 +167,13 @@
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/crisp-real2sim.md",
-      "detail_id": "wiki-methods-crisp-real2sim",
-      "label": "CRISP（Contact-guided Real2Sim）",
-      "type": "method",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-dit4dit-video-action-model.md",
-    "detail_id": "entity-paper-dit4dit-video-action-model",
-    "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
-    "type": "entity",
+    "path": "wiki/concepts/humanoid-policy-network-architecture.md",
+    "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
+    "label": "人形与腿式策略的网络架构（Policy Network Architecture）",
+    "type": "concept",
     "recency": "2026-06-10",
     "source": "log.md"
   }
