@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-06-09
+updated: 2026-06-10
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -226,6 +226,8 @@ flowchart LR
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
 - [WBC vs RL](../comparisons/wbc-vs-rl.md)
+- [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 地标奖励指导 PPO、部署期纯策略
+- [MPC vs RL](../comparisons/mpc-vs-rl.md) — 含训练期 MPC 指导第三条混合轴
 - [Model-Based RL](./model-based-rl.md) — 利用世界模型提升样本效率
 - [Hindsight Experience Replay (HER)](./her.md) — 解决稀疏奖励任务的技巧
 - [Multi-Agent RL (MARL)](./marl.md) — 多机器人协同与竞争

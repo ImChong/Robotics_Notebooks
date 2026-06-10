@@ -2,7 +2,7 @@
 type: method
 tags: [control, mpc, optimization, locomotion, humanoid]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-10
 summary: "MPC（模型预测控制）通过在线滚动优化未来轨迹，在约束控制与人形/腿足运动规划中广泛使用。"
 ---
 
@@ -240,6 +240,8 @@ print("apply control:", u.ravel())
 - [LQR / iLQR 算法详解](./lqr-ilqr.md)
 - [Optimal Control (OCP)](../concepts/optimal-control.md)
 - [MPC vs RL](../comparisons/mpc-vs-rl.md) — 控制范式选型对比
+- [π MPC](./pi-mpc.md) — parallel-in-horizon、construction-free ADMM NMPC
+- [MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) — 训练期 CD-MPC 地标奖励指导 PPO
 
 ## 推荐继续阅读
 

@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]
 status: complete
-updated: 2026-05-16
+updated: 2026-06-10
 related:
   - ./model-predictive-control.md
   - ../concepts/optimal-control.md
@@ -86,6 +86,7 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [cuRobo（NVIDIA GPU 运动生成）](../entities/curobo.md) — 多 seed 并行 TO + GPU 碰撞/IK 的工业级开源栈，与经典 CPU NLP 路线互补对照
 - [ScheduleStream（多臂 TAMP 与调度）](../entities/schedulestream.md) — stream 中的 **motion** 段常对接轨迹/几何规划；上层负责 **时间表** 而非单次 TO
 - [Model Predictive Control](./model-predictive-control.md)
+- [π MPC](./pi-mpc.md) — parallel-in-horizon ADMM NMPC 求解器（MPC-RL 批训练后端）
 - [LQR / iLQR 算法详解](./lqr-ilqr.md)
 - [Optimal Control (OCP) 概念](../concepts/optimal-control.md)
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)

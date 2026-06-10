@@ -49,6 +49,8 @@
 | [x] [gencad3d_arxiv_2509_15246.md](papers/gencad3d_arxiv_2509_15246.md) | GenCAD-3D：点云/网格→CAD program、SynthBal 与真实扫描子集（arXiv:2509.15246，MIT/JMD）摘录与 wiki 映射 |
 | [x] [lift_humanoid_arxiv_2601_21363.md](papers/lift_humanoid_arxiv_2601_21363.md) | LIFT：人形 JAX SAC 大规模预训练 + 物理知情世界模型安全微调（arXiv:2601.21363）摘录与 wiki 映射 |
 | [x] [limmt_arxiv_2606_06953.md](papers/limmt_arxiv_2606_06953.md) | LIMMT：GQS 三阶段 MoCap 策展，3% AMASS 胜全量人形 tracking（ICML 2026，arXiv:2606.06953）摘录与 wiki 映射 |
+| [x] [mpc_rl_arxiv_2606_05687.md](papers/mpc_rl_arxiv_2606_05687.md) | MPC-RL：训练期 CD-MPC 地标奖励 + πⁿ MPC 批 GPU 求解，人形 locomotion/loco-manipulation（arXiv:2606.05687，Caltech/JHU）摘录与 wiki 映射 |
+| [x] [pi_mpc_arxiv_2601_14414.md](papers/pi_mpc_arxiv_2601_14414.md) | π MPC：parallel-in-horizon、construction-free ADMM NMPC 求解器（arXiv:2601.14414，JHU/Tsinghua/Caltech）摘录与 wiki 映射 |
 | [x] [motionwam_arxiv_2606_09215.md](papers/motionwam_arxiv_2606_09215.md) | MotionWAM：实时 WAM 人形全身 loco-manipulation，双 DiT + SONIC 统一 token（arXiv:2606.09215，Mondo Robotics / HKUST）摘录与 wiki 映射 |
 | [x] [legs_arxiv_2606_01458.md](papers/legs_arxiv_2606_01458.md) | LEGS：3DGS 无遥操作 VLA 人形 loco-manip 合成数据（arXiv:2606.01458，Stanford）摘录与 wiki 映射 |
 | [x] [splitadapter_arxiv_2606_03297.md](papers/splitadapter_arxiv_2606_03297.md) | SplitAdapter：负载感知因子化适配的人形搬箱 loco-manipulation（arXiv:2606.03297，Samsung）摘录与 wiki 映射 |
@@ -157,6 +159,7 @@
 | [x] [aholo-viewer.md](repos/aholo-viewer.md) | Aholo Viewer：Web 高性能 3DGS+Mesh，Chunked Streaming LoD（manycoretech） |
 | [x] [metalhead.md](repos/metalhead.md) | inspirai/MetalHead：Unitree A1 AMP walk/jump/recovery |
 | [x] [mamma.md](repos/mamma.md) | cuevhv/mamma：CVPR 2026 MAMMA 多视角 markerless SMPL-X 管线（CLI + GUI） |
+| [x] [junhengl_mpc_rl.md](repos/junhengl_mpc_rl.md) | junhengl/mpc-rl：MPC-RL 官方代码（CD-MPC 奖励、πⁿ MPC、mjlab+rsl-rl，arXiv:2606.05687） |
 | [x] [mondo_robotics_dit4dit.md](repos/mondo_robotics_dit4dit.md) | Mondo-Robotics/DiT4DiT：双 DiT VAM 官方训练/评测/部署代码（arXiv:2603.10448） |
 | [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
 | [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
