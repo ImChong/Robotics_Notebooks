@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, vla, loco-manipulation, 3dgs, gaussian-splatting, sim2real, teleoperation-free, unitree-g1, stanford, sam3d, mujoco]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-10
 arxiv: "2606.01458"
 related:
   - ../tasks/loco-manipulation.md
@@ -16,6 +16,7 @@ related:
   - ../concepts/sim2real.md
   - ../concepts/domain-randomization.md
   - ../tasks/teleoperation.md
+  - ./paper-motionwam-humanoid-loco-manipulation-wam.md
 sources:
   - ../../sources/papers/legs_arxiv_2606_01458.md
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
@@ -124,6 +125,7 @@ flowchart TB
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — 视觉 sim 数据 + loco-manip（RL 蒸馏而非 VLA 合成 IL）
 - [Teleoperation](../tasks/teleoperation.md) — 数据成本对照
+- [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 G1+SONIC 栈的 **WAM 预训练** 路线对照（arXiv:2606.09215）
 
 ## 实验与评测
 
@@ -132,10 +134,10 @@ flowchart TB
 
 ## 与其他工作对比
 
-| 维度 | LEGS | Teleop(50) | SAM3D mesh-only | [VIRAL](./paper-viral-humanoid-visual-sim2real.md) |
-|------|------|------------|-----------------|-----------------------------------------------------|
-| 数据入口 | 程序化仿真 + 3DGS 渲染 | 真人 VR 遥操作 | 同 LEGS 但无 3DGS/校准 | 特权 RL 教师 → 视觉学生 |
-| 目标策略 | 微调预训练 **VLA** | 微调 VLA | 微调 VLA | RGB 策略（非 VLA 微调叙事） |
+| 维度 | LEGS | Teleop(50) | SAM3D mesh-only | [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) | [VIRAL](./paper-viral-humanoid-visual-sim2real.md) |
+|------|------|------------|-----------------|----------------------------------------------------------------|-----------------------------------------------------|
+| 数据入口 | 程序化仿真 + 3DGS 渲染 | 真人 VR 遥操作 | 同 LEGS 但无 3DGS/校准 | egocentric 视频预训练 + VR 全身遥操作 | 特权 RL 教师 → 视觉学生 |
+| 目标策略 | 微调预训练 **VLA** | 微调 VLA | 微调 VLA | **WAM**（Video+Motion DiT） | RGB 策略（非 VLA 微调叙事） |
 | 新场景成本 | ~0.1 h GPU 重渲染 | >1.5 h 重采 | 可重渲染但视觉域差大 | 需重新仿真训练管线 |
 | Task 3（长时程） | LEGS(200) 2–6/10 | **0/10**（三 backbone） | 低于 LEGS | 不同任务设定（行走–放置循环） |
 

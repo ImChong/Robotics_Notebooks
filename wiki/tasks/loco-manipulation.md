@@ -3,8 +3,9 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-09
+updated: 2026-06-10
 sources:
+  - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -119,6 +120,10 @@ flowchart TD
 - **核心**：先学 **深度 visuomotor 攀爬策略** 到梯顶；再训 **双智能体 manipulation**——下身 $\pi^l$ 维持梯子接触与骨盆姿态，上身 $\pi^u$ 跟踪 VR 遥操作目标；相对现成 **全身遥操作**（如 TWIST2）在梯顶切换后更不易失稳。
 - **代表作**：[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) (Amazon FAR 等, 2026, arXiv:2606.05873) — G1 **零样本 sim-to-real** 多样梯子双向攀爬；梯顶 **调画 / 换灯泡 / 高处递箱**；深度经 **VFM + RFM** 桥接真机。
 
+### 14. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
+- **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
+- **代表作**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (Mondo Robotics / HKUST, 2026, arXiv:2606.09215) — G1 + 双 ALOHA2 + D435i 头摄；九项真机任务平均成功率 **76.1%** vs 同演示微调 GR00T-N1.7 **43.9%**；**4.9 Hz** 闭环（相对 Cosmos Policy **7×**）。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -152,6 +157,7 @@ flowchart TD
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
+- [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -170,6 +176,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：交互保留人形重定向（ICRA 2026）
 - **ingest 档案：** [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT→残差全身 loco-manipulation（arXiv:2510.05070）
+- **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 
 ## 一句话记忆
 
