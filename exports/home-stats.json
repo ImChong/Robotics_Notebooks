@@ -1,13 +1,69 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 810,
-  "edge_count": 5728,
+  "node_count": 812,
+  "edge_count": 5756,
   "coverage": {
-    "covered": 794,
-    "total": 808,
+    "covered": 796,
+    "total": 810,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md",
+      "detail_id": "entity-paper-mpc-rl-humanoid-locomotion-manipulation",
+      "label": "MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/pi-mpc.md",
+      "detail_id": "wiki-methods-pi-mpc",
+      "label": "π MPC（Parallel-in-horizon、Construction-free NMPC）",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/mpc-vs-rl.md",
+      "detail_id": "wiki-comparisons-mpc-vs-rl",
+      "label": "MPC vs RL：控制策略选型对比",
+      "type": "comparison",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/centroidal-dynamics.md",
+      "detail_id": "wiki-concepts-centroidal-dynamics",
+      "label": "Centroidal Dynamics",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/model-predictive-control.md",
+      "detail_id": "wiki-methods-model-predictive-control",
+      "label": "Model Predictive Control (MPC，模型预测控制)",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/mpc-solver-selection.md",
+      "detail_id": "wiki-queries-mpc-solver-selection",
+      "label": "MPC 求解器选型指南",
+      "type": "query",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
       "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
@@ -105,74 +161,18 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/queries/perception-backbone-selection.md",
       "detail_id": "wiki-queries-perception-backbone-selection",
       "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
       "type": "query",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
-      "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
-      "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
-      "type": "comparison",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/visual-representation-for-policy.md",
-      "detail_id": "wiki-concepts-visual-representation-for-policy",
-      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/object-detection-model-selection.md",
-      "detail_id": "wiki-queries-object-detection-model-selection",
-      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
-      "type": "query",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/vision-banana.md",
-      "detail_id": "entity-vision-banana",
-      "label": "Vision Banana",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/generative-vision-pretraining.md",
-      "detail_id": "wiki-concepts-generative-vision-pretraining",
-      "label": "生成式视觉预训练（Generative Vision Pretraining）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/vision-backbones.md",
-      "detail_id": "wiki-concepts-vision-backbones",
-      "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
-    "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
-    "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
+    "path": "wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md",
+    "detail_id": "entity-paper-mpc-rl-humanoid-locomotion-manipulation",
+    "label": "MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）",
     "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"
