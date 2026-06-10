@@ -1989,6 +1989,10 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   margin: 0.4rem 0 0;
   padding-left: 1.3rem;
 }
+.selftest-answers ol ol {
+  margin-top: 0.35rem;
+  margin-bottom: 0.1rem;
+}
 .selftest-answers li {
   margin: 0.5rem 0;
   line-height: 1.7;
