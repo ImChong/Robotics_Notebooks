@@ -2,14 +2,17 @@
 type: method
 tags: [rl, imitation-learning, perception, soccer, humanoid, unitree-g1]
 status: drafting
-updated: 2026-04-27
+updated: 2026-06-10
 related:
   - ../tasks/humanoid-soccer.md
   - ../entities/unitree-g1.md
+  - ../entities/paper-robonaldo-humanoid-soccer-shooting.md
+  - ../entities/paper-notebook-learning-soccer-skills-for-humanoid-robots.md
   - ./reinforcement-learning.md
   - ./imitation-learning.md
 sources:
   - ../../sources/repos/humanoid_soccer.md
+  - ../../sources/papers/robonaldo_arxiv_2606_11092.md
 summary: "PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。"
 ---
 
@@ -52,6 +55,19 @@ PAiD 的成功关键在于其结构化的训练方案：
 - **RNN 网络架构**：使用循环神经网络处理感知序列，能够更好地利用历史信息应对视觉遮挡或足球滚动。
 - **高泛化性**：支持多种地形（室内地板、室外草坪）以及静止/滚动的足球。
 
+## 与 RoboNaldo 的对照（2026）
+
+同为 **G1 + 三阶段渐进 RL** 的人形射门路线，[RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)（arXiv:2606.11092）与 PAiD 侧重点不同：
+
+| 维度 | PAiD | RoboNaldo |
+|------|------|-----------|
+| **阶段语义** | 动作习得 → 感知融合 → Sim2Real | motion tracking → 任意球适应 → 来球时机 |
+| **瞄准目标** | goal-region / 成功率导向 | **点级误差**（3 m 平均 **0.73 m**） |
+| **功率** | 未主打触球球速叙事 | 触球后最高 **13.10 m/s** |
+| **感知** | 第一视角 RGB 融合 | **LiDAR 近距 + IR 远距** 球定位 |
+
+二者可并读：PAiD 代表 **感知–动作渐进融合** 范式；RoboNaldo 代表 **motion scaffold + 高冲量课程** 范式。
+
 ## 应用案例
 
 在 **Unitree G1** 机器人上的实验证明，PAiD 框架能够实现：
@@ -73,11 +89,13 @@ PAiD 的成功关键在于其结构化的训练方案：
 ## 参考来源
 
 - [HumanoidSoccer (PAiD) 源码仓库](../../sources/repos/humanoid_soccer.md)
-- *Learning Soccer Skills for Humanoid Robots: A Progressive Perception-Action Framework* (Paper)
+- [Learning Soccer Skills for Humanoid Robots（Paper Notebooks 摘录）](../../sources/papers/humanoid_pnb_learning-soccer-skills-for-humanoid-robots.md)
+- [robonaldo_arxiv_2606_11092.md](../../sources/papers/robonaldo_arxiv_2606_11092.md) — 并发射门工作对照摘录
 
 ## 关联页面
 
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
+- [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Domain Randomization](../concepts/domain-randomization.md)

@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 815,
-  "edge_count": 5826,
+  "node_count": 816,
+  "edge_count": 5840,
   "coverage": {
-    "covered": 799,
-    "total": 813,
+    "covered": 800,
+    "total": 814,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md",
+      "detail_id": "entity-paper-robonaldo-humanoid-soccer-shooting",
+      "label": "RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/paid-framework.md",
+      "detail_id": "wiki-methods-paid-framework",
+      "label": "PAiD Framework",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-beyondmimic.md",
       "detail_id": "entity-paper-beyondmimic",
@@ -143,36 +167,12 @@
       "type": "method",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/mpc-solver-selection.md",
-      "detail_id": "wiki-queries-mpc-solver-selection",
-      "label": "MPC 求解器选型指南",
-      "type": "query",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
-      "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
-      "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-beyondmimic.md",
-    "detail_id": "entity-paper-beyondmimic",
-    "label": "BeyondMimic",
+    "path": "wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md",
+    "detail_id": "entity-paper-robonaldo-humanoid-soccer-shooting",
+    "label": "RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）",
     "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"

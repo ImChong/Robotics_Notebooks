@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/papers/robonaldo_arxiv_2606_11092.md — RoboNaldo 三阶段射门课程 RL；wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md、wiki/tasks/humanoid-soccer.md、wiki/methods/paid-framework.md
+
 ## [2026-06-10] structural | wiki/entities/paper-beyondmimic.md、paper-sentinel.md、paper-sonic.md、paper-twist.md — 合并 HRL 栈与 BFM 双索引重复实体页（4 对）
 
 - 合并为单一实体：[`paper-beyondmimic.md`](wiki/entities/paper-beyondmimic.md)、[`paper-sentinel.md`](wiki/entities/paper-sentinel.md)、[`paper-sonic.md`](wiki/entities/paper-sonic.md)、[`paper-twist.md`](wiki/entities/paper-twist.md)
