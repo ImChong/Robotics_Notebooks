@@ -15,6 +15,7 @@ status: complete
 updated: 2026-06-10
 arxiv: "2606.09215"
 related:
+  - ./paper-dit4dit-video-action-model.md
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -56,7 +57,7 @@ summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 W
 - **WAM 的「速度墙」与人形「空间墙」同时被点名：** 既有 WAM 在高维 latent 上 **迭代去噪太慢**，难以闭环平衡人形；分层系统又让腿只能 **被动保平衡**，无法 **踩踏板、踢球** 等 **足端任务语义**——MotionWAM 用 **$\tau_f \approx 1$ 单次前向隐状态** 与 **统一 motion token** 同时回应两条线。
 - **与 VLA 的对照实验干净：** 全部方法在 **同一 Stage 3 演示** 上微调，且经 **同一 SONIC 低层接口** 执行；最强 VLA（GR00T-N1.7）平均 **43.9%** vs MotionWAM **76.1%**，说明 **视频动力学先验** 对 **闭环物理人形** 的增益难以用 **更强语义 VLM** 单独替代。
 - **与 [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) 形成互补：** 二者均在 **G1 + SONIC + 语言条件** 栈上工作，但 LEGS 走 **合成数据 + VLA 微调**，MotionWAM 走 **大规模 egocentric 视频预训练 + WAM 联合建模**——代表 loco-manip **数据工厂 vs 世界–动作基础模型** 两条 2026 路线。
-- **机构与谱系：** 摩多机器人 / 港科大（广州）团队；架构与训练接口受同团队 **DiT4DiT**（arXiv:2603.10448）启发，可视为 **VAM/WAM 向人形实时全身** 的推进。
+- **机构与谱系：** 摩多机器人 / 港科大（广州）团队；架构与训练接口直接继承 [DiT4DiT](./paper-dit4dit-video-action-model.md) 的 **双 DiT + flow matching + 中间隐状态条件化**，并针对 **实时人形全身** 引入 SONIC 统一 token 与三阶段 egocentric 预训练。
 
 ## 核心结构
 
@@ -123,7 +124,7 @@ flowchart TB
 
 | 工作 | 关系 |
 |------|------|
-| **DiT4DiT**（arXiv:2603.10448） | 同团队前序 **双 DiT + flow matching** VAM；MotionWAM 扩展到 **人形实时全身** 与 **统一 motion token** |
+| **[DiT4DiT](./paper-dit4dit-video-action-model.md)** | 同团队前序 **双 DiT + flow matching** VAM（LIBERO 98.6%、G1 桌面/全身）；MotionWAM 扩展到 **实时闭环** 与 **SONIC 统一 motion token** |
 | **Cosmos Policy** | 同类世界模型策略；需 **迭代去噪未来** → **0.7 Hz**；MotionWAM **单次前向隐状态 → 4.9 Hz** |
 | **GR00T-N1.7 / π₀.₅** | 同演示微调 VLA 基线；**静态 VLM 先验** 在 locomotion-heavy 任务上大幅落后 |
 | **LEGS** | 同 **G1 + SONIC** 栈；LEGS 走 **3DGS 合成 + VLA**，MotionWAM 走 **egocentric 视频 WAM 预训练** |
@@ -138,6 +139,7 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 论文硬件平台
 - [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) — 同 G1+SONIC 栈的 VLA 数据路线对照
 - [WorldVLN](./paper-worldvln-aerial-vln-wam.md) — 另一 WAM 闭环部署实例（空中 VLN）
+- [DiT4DiT（前序 VAM）](./paper-dit4dit-video-action-model.md) — 同团队双 DiT 联合训练基座（arXiv:2603.10448）
 
 ## 参考来源
 
@@ -146,5 +148,5 @@ flowchart TB
 ## 推荐继续阅读
 
 - [MotionWAM 论文（arXiv:2606.09215）](https://arxiv.org/abs/2606.09215)
-- [DiT4DiT：Jointly Modeling Video Dynamics and Actions（arXiv:2603.10448）](https://arxiv.org/abs/2603.10448) — 同团队前序双 DiT VAM 框架
+- [DiT4DiT 论文实体](./paper-dit4dit-video-action-model.md) — 同团队前序双 DiT VAM（arXiv:2603.10448）
 - [World Action Models: The Next Frontier in Embodied AI（arXiv:2605.12090）](https://arxiv.org/abs/2605.12090) — WAM 综述

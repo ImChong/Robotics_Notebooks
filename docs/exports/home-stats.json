@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 807,
-  "edge_count": 5682,
+  "node_count": 808,
+  "edge_count": 5697,
   "coverage": {
-    "covered": 791,
-    "total": 805,
+    "covered": 792,
+    "total": 806,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-dit4dit-video-action-model.md",
+      "detail_id": "entity-paper-dit4dit-video-action-model",
+      "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
       "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
-    "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-    "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
+    "path": "wiki/entities/paper-dit4dit-video-action-model.md",
+    "detail_id": "entity-paper-dit4dit-video-action-model",
+    "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
     "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"

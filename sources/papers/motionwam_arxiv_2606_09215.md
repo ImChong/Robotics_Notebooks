@@ -54,10 +54,10 @@
 ### 5) 局限与谱系（§6 / Related Work）
 
 - **局限：** Stage 3 仅在 **G1** 验证；未见严格 **新物体 OOD** 评测；**单目 egocentric** 在物体出视野或头摄视角漂移时失稳。
-- **谱系：** 方法受 **DiT4DiT**（Mondo Robotics，arXiv:2603.10448，双 DiT + flow matching 桌面/全身操纵）启发；与 **Cosmos Policy**、**GR00T-N1.7**、**π₀.₅** 等同演示微调 VLA 基线对比。
+- **谱系：** 方法直接继承 **[DiT4DiT](../../wiki/entities/paper-dit4dit-video-action-model.md)**（arXiv:2603.10448）双 DiT + flow matching 接口；与 **Cosmos Policy**、**GR00T-N1.7**、**π₀.₅** 等同演示微调 VLA 基线对比。
 - **对 wiki 的映射：**
   - [World Action Models](../../wiki/concepts/world-action-models.md) — Joint 族 **人形实时** 实例
-  - [DiT4DiT（外部）](https://arxiv.org/abs/2603.10448) — 同团队前序 VAM 框架（本仓库尚未单独 ingest）
+  - [DiT4DiT 论文实体](../../wiki/entities/paper-dit4dit-video-action-model.md)
 
 ## 对 wiki 的映射（汇总）
 
