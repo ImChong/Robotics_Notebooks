@@ -79,7 +79,7 @@ flowchart TB
   subgraph action [Action DiT]
     HF --> AD["cross-attn + AdaLN"]
     PROP[本体 s] --> AD
-    NOISE[噪声动作 a_t^{τ_a}] --> AD
+    NOISE["噪声动作 a_t^{τ_a}"] --> AD
     AD --> AT["动作轨迹 a_t"]
   end
   OT --> AT
