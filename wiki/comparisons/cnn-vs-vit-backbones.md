@@ -13,6 +13,7 @@ updated: 2026-06-07
 related:
   - ../concepts/vision-backbones.md
   - ../methods/object-detection.md
+  - ../queries/perception-backbone-selection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../entities/paper-yolo-unified-realtime-detection.md
 sources:
@@ -83,6 +84,7 @@ flowchart TB
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [目标检测（方法）](../methods/object-detection.md)
+- [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 

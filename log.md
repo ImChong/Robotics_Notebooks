@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-09] query | wiki/queries/perception-backbone-selection.md — V24 P1 视觉表征知识链收官（机器人感知骨干/表征选型 Query）
+
+- 新建 Query：[`wiki/queries/perception-backbone-selection.md`](wiki/queries/perception-backbone-selection.md)（「分类骨干 / 检测头 / 通用预训练表征」三类选型决策树、推荐组合 pipeline、关键工程经验与典型失败模式；含 Mermaid 决策树与缩写速查）
+- 交叉补强（消孤儿）：在 [`wiki/comparisons/cnn-vs-vit-backbones.md`](wiki/comparisons/cnn-vs-vit-backbones.md)、[`wiki/concepts/visual-representation-for-policy.md`](wiki/concepts/visual-representation-for-policy.md)、[`wiki/queries/object-detection-model-selection.md`](wiki/queries/object-detection-model-selection.md) 增加双向回链
+- 清单推进：[`docs/checklists/tech-stack-next-phase-checklist-v24.md`](docs/checklists/tech-stack-next-phase-checklist-v24.md) P1「视觉表征知识链 (+3)」三页全部 `[x]`；同步更新 [`wiki/queries/README.md`](wiki/queries/README.md) 索引
+- 门禁：`make lint` 全绿、`ci-preflight` 派生文件已重生（图谱 804 节点 / 5644 边，无孤儿节点）
+
 ## [2026-06-09] ingest | sources/papers/vision_banana_arxiv_2604_20329.md — Vision Banana（DeepMind）生成式视觉预训练入库并建实体/概念页
 
 - 原始资料：[`vision_banana_arxiv_2604_20329.md`](sources/papers/vision_banana_arxiv_2604_20329.md)（<https://arxiv.org/abs/2604.20329>）；[`vision-banana-project.md`](sources/sites/vision-banana-project.md)（<https://vision-banana.github.io/>、<https://deepmind.google/research/publications/240658/>）

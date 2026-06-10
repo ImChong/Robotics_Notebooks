@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-09",
-  "node_count": 805,
-  "edge_count": 5648,
+  "node_count": 806,
+  "edge_count": 5662,
   "coverage": {
-    "covered": 789,
-    "total": 803,
+    "covered": 790,
+    "total": 804,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/perception-backbone-selection.md",
+      "detail_id": "wiki-queries-perception-backbone-selection",
+      "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
+      "type": "query",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
+      "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
+      "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
+      "type": "comparison",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/visual-representation-for-policy.md",
+      "detail_id": "wiki-concepts-visual-representation-for-policy",
+      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+      "type": "concept",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/object-detection-model-selection.md",
+      "detail_id": "wiki-queries-object-detection-model-selection",
+      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
+      "type": "query",
+      "recency": "2026-06-09",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/vision-banana.md",
       "detail_id": "entity-vision-banana",
@@ -28,14 +60,6 @@
       "path": "wiki/concepts/vision-backbones.md",
       "detail_id": "wiki-concepts-vision-backbones",
       "label": "视觉骨干（Vision Backbones）",
-      "type": "concept",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/visual-representation-for-policy.md",
-      "detail_id": "wiki-concepts-visual-representation-for-policy",
-      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
       "type": "concept",
       "recency": "2026-06-09",
       "source": "log.md"
@@ -143,37 +167,13 @@
       "type": "method",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/awesome-text-to-motion-zilize.md",
-      "detail_id": "entity-awesome-text-to-motion-zilize",
-      "label": "Awesome Text-to-Motion（Zilize 精选集）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/phc.md",
-      "detail_id": "entity-phc",
-      "label": "PHC（Perpetual Humanoid Control）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amass.md",
-      "detail_id": "entity-amass",
-      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/vision-banana.md",
-    "detail_id": "entity-vision-banana",
-    "label": "Vision Banana",
-    "type": "entity",
+    "path": "wiki/queries/perception-backbone-selection.md",
+    "detail_id": "wiki-queries-perception-backbone-selection",
+    "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
+    "type": "query",
     "recency": "2026-06-09",
     "source": "log.md"
   }
