@@ -125,15 +125,15 @@ flowchart TB
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 01 | BFM-Zero | [paper-bfm-01-bfm-zero](../entities/paper-bfm-01-bfm-zero.md) | [source](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) |
+| 01 | BFM-Zero | [paper-bfm-zero](../entities/paper-bfm-zero.md) | [source](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) |
 | 02 | Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models | [paper-bfm-02-metamotivo](../entities/paper-bfm-02-metamotivo.md) | [source](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md) |
 | 03 | Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting | [paper-bfm-03-fb-aw](../entities/paper-bfm-03-fb-aw.md) | [source](../../sources/papers/bfm_awesome_fb_aw_arxiv_2412_04368.md) |
 | 04 | Fast Imitation via Behavior Foundation Models | [paper-bfm-04-fast-imitation-bfm](../entities/paper-bfm-04-fast-imitation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) |
 | 05 | Learning One Representation to Optimize All Rewards | [paper-bfm-05-learning-one-representation](../entities/paper-bfm-05-learning-one-representation.md) | [source](../../sources/papers/bfm_awesome_learning_one_representation_neurips_2021.md) |
 | 06 | Learning Successor States and Goal-Dependent Values | [paper-bfm-06-successor-states](../entities/paper-bfm-06-successor-states.md) | [source](../../sources/papers/bfm_awesome_successor_states_arxiv_2101_07123.md) |
 | 07 | Sonic | [paper-sonic](../entities/paper-sonic.md) | [source](../../sources/papers/bfm_awesome_sonic_arxiv_2511_07820.md) |
-| 08 | Track Any Motions under Any Disturbances | [paper-bfm-08-opentrack](../entities/paper-bfm-08-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
-| 09 | Agility Meets Stability | [paper-bfm-09-ams](../entities/paper-bfm-09-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
+| 08 | Track Any Motions under Any Disturbances | [paper-opentrack](../entities/paper-opentrack.md) | [source](../../sources/papers/bfm_awesome_opentrack_arxiv_2509_13833.md) |
+| 09 | Agility Meets Stability | [paper-ams](../entities/paper-ams.md) | [source](../../sources/papers/bfm_awesome_ams_arxiv_2511_17373.md) |
 | 10 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) | [source](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) |
 | 11 | TWIST | [paper-twist](../entities/paper-twist.md) | [source](../../sources/papers/bfm_awesome_twist_corl_2025.md) |
 | 12 | CLONE | [paper-bfm-12-clone](../entities/paper-bfm-12-clone.md) | [source](../../sources/papers/bfm_awesome_clone_corl_2025.md) |

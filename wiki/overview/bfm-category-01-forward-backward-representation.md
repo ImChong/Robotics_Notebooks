@@ -13,7 +13,7 @@ related:
   - ./bfm-category-03-intrinsic-reward-pretraining.md
   - ./bfm-category-04-adaptation.md
   - ./bfm-category-05-hierarchical-control.md
-  - ../entities/paper-bfm-01-bfm-zero.md
+  - ../entities/paper-bfm-zero.md
   - ../entities/paper-bfm-02-metamotivo.md
   - ../entities/paper-bfm-03-fb-aw.md
   - ../entities/paper-bfm-04-fast-imitation-bfm.md
@@ -47,7 +47,7 @@ sources:
 
 | # | 工作 | Wiki 实体 | Source |
 |---|------|-----------|--------|
-| 01 | BFM-Zero | [paper-bfm-01-bfm-zero.md](../entities/paper-bfm-01-bfm-zero.md) | [source](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) |
+| 01 | BFM-Zero | [paper-bfm-zero.md](../entities/paper-bfm-zero.md) | [source](../../sources/papers/bfm_awesome_bfm_zero_arxiv_2511_04131.md) |
 | 02 | Zero-shot Whole-body Humanoid Control via Behavioral Foundation Models | [paper-bfm-02-metamotivo.md](../entities/paper-bfm-02-metamotivo.md) | [source](../../sources/papers/bfm_awesome_metamotivo_arxiv_2504_11054.md) |
 | 03 | Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting | [paper-bfm-03-fb-aw.md](../entities/paper-bfm-03-fb-aw.md) | [source](../../sources/papers/bfm_awesome_fb_aw_arxiv_2412_04368.md) |
 | 04 | Fast Imitation via Behavior Foundation Models | [paper-bfm-04-fast-imitation-bfm.md](../entities/paper-bfm-04-fast-imitation-bfm.md) | [source](../../sources/papers/bfm_awesome_fast_imitation_bfm_neurips_2024.md) |

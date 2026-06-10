@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] structural | wiki/entities/paper-bfm-zero.md、paper-opentrack.md、paper-ams.md、paper-hiking-in-the-wild.md、paper-adaptive-humanoid-control.md、paper-deep-whole-body-parkour.md — 全量去重合并 6 对重复实体页（HRL 栈 / BFM / AMP 双索引）
+
+- 合并为单一实体：[`paper-bfm-zero.md`](wiki/entities/paper-bfm-zero.md)、[`paper-opentrack.md`](wiki/entities/paper-opentrack.md)、[`paper-ams.md`](wiki/entities/paper-ams.md)、[`paper-hiking-in-the-wild.md`](wiki/entities/paper-hiking-in-the-wild.md)、[`paper-adaptive-humanoid-control.md`](wiki/entities/paper-adaptive-humanoid-control.md)、[`paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)
+- 删除 12 个重复页（`paper-hrl-stack-*` / `paper-bfm-*` / `paper-amp-survey-*` 各 2 对）
+- 交叉更新：[`humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`humanoid-amp-motion-prior-survey.md`](wiki/overview/humanoid-amp-motion-prior-survey.md)、BFM 技术地图/分类页、[`stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、catalog 源表
+
 ## [2026-06-10] ingest | sources/papers/robonaldo_arxiv_2606_11092.md — RoboNaldo 三阶段射门课程 RL；wiki/entities/paper-robonaldo-humanoid-soccer-shooting.md、wiki/tasks/humanoid-soccer.md、wiki/methods/paid-framework.md
 
 ## [2026-06-10] structural | wiki/entities/paper-beyondmimic.md、paper-sentinel.md、paper-sonic.md、paper-twist.md — 合并 HRL 栈与 BFM 双索引重复实体页（4 对）
@@ -224,7 +230,7 @@
 ## [2026-06-06] structural | wiki — 全库 587 页英文缩写速查区块重排至「一句话定义」后、「为什么重要」前；新增 reorder 脚本与 lint 位置校验
 
 - 工具：`scripts/wiki_abbrev_section.py`、`scripts/reorder_abbrev_glossary.py`；`lint_wiki.py` 新增位置错误阻塞项；`gen_abbrev_glossary.py` 插入锚点对齐 schema
-- 代表页：[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/lerobot.md](wiki/entities/lerobot.md)、[wiki/entities/paper-bfm-01-bfm-zero.md](wiki/entities/paper-bfm-01-bfm-zero.md)、[wiki/queries/sim2real-checklist.md](wiki/queries/sim2real-checklist.md)
+- 代表页：[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)、[wiki/entities/lerobot.md](wiki/entities/lerobot.md)、[wiki/entities/paper-bfm-zero.md](wiki/entities/paper-bfm-zero.md)、[wiki/queries/sim2real-checklist.md](wiki/queries/sim2real-checklist.md)
 
 ## [2026-06-06] ingest | sources/papers/cosmos3_arxiv_2606_02800.md、sources/sites/cosmos3-project.md、sources/repos/nvidia_cosmos.md — Cosmos 3 全模态 Physical AI 世界模型；wiki/entities/cosmos-3.md、wiki/methods/generative-world-models.md、wiki/concepts/world-action-models.md、wiki/methods/mimic-video.md、wiki/entities/nvidia-so101-sim2real-lab-workflow.md
 
@@ -302,7 +308,7 @@
 
 - 原始资料（已存在，本次补摘录 §5 感知定位）：[`sources/papers/faststair_arxiv_2601_10365.md`](sources/papers/faststair_arxiv_2601_10365.md)、[`sources/sites/npcliu-faststair-github-io.md`](sources/sites/npcliu-faststair-github-io.md)
 - 新建中心节点：[`wiki/tasks/stair-obstacle-perceptive-locomotion.md`](wiki/tasks/stair-obstacle-perceptive-locomotion.md) — **带/不带感知 · 上下楼梯 · 越障** 维护挂接点
-- 交叉更新：[`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/concepts/footstep-planning.md`](wiki/concepts/footstep-planning.md)、[`wiki/concepts/capture-point-dcm.md`](wiki/concepts/capture-point-dcm.md)、[`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md)、[`wiki/entities/dreamwaq-plus.md`](wiki/entities/dreamwaq-plus.md)、[`wiki/entities/extreme-parkour.md`](wiki/entities/extreme-parkour.md)、[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md`](wiki/entities/paper-hrl-stack-23-deep_whole_body_parkour.md)、[`wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md`](wiki/entities/paper-hrl-stack-24-hiking_in_the_wild.md)、[`wiki/entities/paper-walk-these-ways-quadruped-mob.md`](wiki/entities/paper-walk-these-ways-quadruped-mob.md)、[`wiki/entities/jackhan-mujoco-walke3-simulation.md`](wiki/entities/jackhan-mujoco-walke3-simulation.md)
+- 交叉更新：[`wiki/entities/paper-faststair-humanoid-stair-ascent.md`](wiki/entities/paper-faststair-humanoid-stair-ascent.md)、[`wiki/tasks/locomotion.md`](wiki/tasks/locomotion.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)、[`wiki/concepts/terrain-adaptation.md`](wiki/concepts/terrain-adaptation.md)、[`wiki/concepts/footstep-planning.md`](wiki/concepts/footstep-planning.md)、[`wiki/concepts/capture-point-dcm.md`](wiki/concepts/capture-point-dcm.md)、[`wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md`](wiki/entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md)、[`wiki/entities/dreamwaq-plus.md`](wiki/entities/dreamwaq-plus.md)、[`wiki/entities/extreme-parkour.md`](wiki/entities/extreme-parkour.md)、[`wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md`](wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md)、[`wiki/entities/paper-deep-whole-body-parkour.md`](wiki/entities/paper-deep-whole-body-parkour.md)、[`wiki/entities/paper-hiking-in-the-wild.md`](wiki/entities/paper-hiking-in-the-wild.md)、[`wiki/entities/paper-walk-these-ways-quadruped-mob.md`](wiki/entities/paper-walk-these-ways-quadruped-mob.md)、[`wiki/entities/jackhan-mujoco-walke3-simulation.md`](wiki/entities/jackhan-mujoco-walke3-simulation.md)
 
 ## [2026-06-04] structural | schema/canonical-facts.json — V23 P2 事实库扩展 156→172，补 WBT 跨具身与真机安全微调矛盾检测规则
 
@@ -690,7 +696,7 @@
 
 ## [2026-05-27] structural | scripts/generate_bfm_awesome_wiki_entities.py — awesome-bfm 41 篇论文升格 wiki 实体详情页；图谱 + 搜索 + SW 缓存版本同步
 
-- 新增实体（40 篇论文）：`wiki/entities/paper-bfm-01-bfm-zero.md` … `wiki/entities/paper-bfm-41-unihsi.md`（#13 复用 `wiki/entities/paper-behavior-foundation-model-humanoid.md`）
+- 新增实体（40 篇论文）：`wiki/entities/paper-bfm-zero.md` … `wiki/entities/paper-bfm-41-unihsi.md`（#13 复用 `wiki/entities/paper-behavior-foundation-model-humanoid.md`）
 - 新增实体（9 个数据集）：`wiki/entities/dataset-bfm-humanoid-x.md` 等（AMASS 复用 `wiki/entities/amass.md`）
 - 交叉更新：`wiki/overview/bfm-41-papers-technology-map.md`（Wiki 实体索引表）、`scripts/sync_sw_cache_version.py`（`sync_all_stats` 链内按 `exports/graph-stats.json` bump `docs/sw.js` CACHE_NAME）
 

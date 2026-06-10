@@ -124,18 +124,18 @@ summary: "把 42 篇 humanoid RL 运动控制 / 移动操作论文整理成一�
 | 10 | TWIST2 | [paper-twist2.md](../entities/paper-twist2.md) |
 | 11 | DeepMimic | [paper-hrl-stack-11-deepmimic.md](../entities/paper-hrl-stack-11-deepmimic.md) |
 | 12 | OmniTrack | [paper-hrl-stack-12-omnitrack.md](../entities/paper-hrl-stack-12-omnitrack.md) |
-| 13 | Track Any Motions under Any Disturbances | [paper-hrl-stack-13-track_any_motions_under_any_disturba.md](../entities/paper-hrl-stack-13-track_any_motions_under_any_disturba.md) |
+| 13 | Track Any Motions under Any Disturbances | [paper-opentrack.md](../entities/paper-opentrack.md) |
 | 14 | Robust and Generalized Humanoid Motion Tracking | [paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
 | 15 | BeyondMimic | [paper-beyondmimic.md](../entities/paper-beyondmimic.md) |
 | 16 | OmniXtreme | [paper-hrl-stack-16-omnixtreme.md](../entities/paper-hrl-stack-16-omnixtreme.md) |
 | 17 | SONIC | [paper-sonic.md](../entities/paper-sonic.md) |
-| 18 | Agility Meets Stability | [paper-hrl-stack-18-agility_meets_stability.md](../entities/paper-hrl-stack-18-agility_meets_stability.md) |
-| 19 | BFM-Zero | [paper-hrl-stack-19-bfm_zero.md](../entities/paper-hrl-stack-19-bfm_zero.md) |
+| 18 | Agility Meets Stability | [paper-ams.md](../entities/paper-ams.md) |
+| 19 | BFM-Zero | [paper-bfm-zero.md](../entities/paper-bfm-zero.md) |
 | 20 | PvP | [paper-hrl-stack-20-pvp.md](../entities/paper-hrl-stack-20-pvp.md) |
-| 21 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-hrl-stack-21-towards_adaptive_humanoid_control_vi.md](../entities/paper-hrl-stack-21-towards_adaptive_humanoid_control_vi.md) |
+| 21 | Towards Adaptive Humanoid Control via Multi-Behavior Distillation and Reinforced Fine-Tuning | [paper-adaptive-humanoid-control.md](../entities/paper-adaptive-humanoid-control.md) |
 | 22 | Perceptive Humanoid Parkour | [paper-hrl-stack-22-perceptive_humanoid_parkour.md](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
-| 23 | Deep Whole-body Parkour | [paper-hrl-stack-23-deep_whole_body_parkour.md](../entities/paper-hrl-stack-23-deep_whole_body_parkour.md) |
-| 24 | Hiking in the Wild | [paper-hrl-stack-24-hiking_in_the_wild.md](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) |
+| 23 | Deep Whole-body Parkour | [paper-deep-whole-body-parkour.md](../entities/paper-deep-whole-body-parkour.md) |
+| 24 | Hiking in the Wild | [paper-hiking-in-the-wild.md](../entities/paper-hiking-in-the-wild.md) |
 | 25 | ASAP | [paper-hrl-stack-25-asap.md](../entities/paper-hrl-stack-25-asap.md) |
 | 26 | Learning Vision-Driven Reactive Soccer Skills for Humanoid Robots | [paper-hrl-stack-26-learning_vision_driven_reactive_socc.md](../entities/paper-hrl-stack-26-learning_vision_driven_reactive_socc.md) |
 | 27 | Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking（**全文消化** · arXiv:2604.17335） | [paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md](../entities/paper-hrl-stack-27-learning_whole_body_humanoid_locomot.md) |

@@ -17,8 +17,8 @@ related:
   - ../entities/dreamwaq-plus.md
   - ../entities/extreme-parkour.md
   - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
-  - ../entities/paper-hrl-stack-23-deep_whole_body_parkour.md
-  - ../entities/paper-hrl-stack-24-hiking_in_the_wild.md
+  - ../entities/paper-deep-whole-body-parkour.md
+  - ../entities/paper-hiking-in-the-wild.md
   - ../entities/paper-ssr-humanoid-open-world-traversal.md
   - ../entities/paper-pilot-perceptive-loco-manipulation.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
@@ -98,7 +98,7 @@ flowchart TB
 | **有**（机载高程图 + 深度重建） | **高速上楼** | [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) | GPU 并行 DCM 落脚点作训练监督；分速专家 + LoRA；LimX Oli ~1.65 m/s 上楼 |
 | **有**（点云 BEV → 几何 token） | **上楼 · OOD 踢面** | [Explicit Stair Geometry](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md) | 踢面/踏面/航向四维条件化 PPO；G1 户外 33 级；相对 MoRE 更高 OOD 成功率 |
 | **有**（高度图 + LiDAR 奖励） | **多地形含下楼** | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) | VLM 生成环境感知奖励；论文称感知基线未能完成楼梯下降 |
-| **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hrl-stack-24-hiking_in_the_wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
+| **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hiking-in-the-wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
 | **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
 | **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |
@@ -117,7 +117,7 @@ flowchart TB
 | 平台 | 感知 | 页面 | 要点 |
 |------|------|------|------|
 | 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略 |
-| 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-hrl-stack-23-deep_whole_body_parkour.md) | 全身跑酷，与 PHP 同簇 |
+| 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
 
 ### 概念与方法（跨论文）
