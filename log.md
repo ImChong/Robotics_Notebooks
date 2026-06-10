@@ -13,6 +13,12 @@
 - 新建实体：[`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](wiki/entities/paper-omg-omni-modal-humanoid-control.md)（generator–tracker 分层、OMG-DiT 多模态条件、OMG-Data 规模、HoloMotion tracker 部署与 Mermaid 管线）
 - 交叉更新：[`wiki/methods/diffusion-motion-generation.md`](wiki/methods/diffusion-motion-generation.md)、[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/entities/holomotion.md`](wiki/entities/holomotion.md)、[`sources/README.md`](sources/README.md)
 
+## [2026-06-10] structural | wiki/formalizations/field-oriented-control-derivation.md — FOC Clarke/Park 与 dq 转矩方程逐步推导；交叉链接概念页与设计流程
+
+## [2026-06-10] ingest | sources/sites/ansys_motor_cad_electric_machine_design.md — 电机设计流程入库；wiki/overview/motor-design-workflow.md 并与 FOC/TN/仿真选型交叉链接
+
+## [2026-06-10] ingest | sources/personal/motor_curves_and_em_simulation_faq.md — TN/TI 曲线与电机电磁仿真软件入库；wiki/concepts/motor-torque-speed-curve.md、wiki/concepts/motor-torque-current-curve.md、wiki/comparisons/motor-em-simulation-software.md
+
 ## [2026-06-10] ingest | sources/papers/rhythm_arxiv_2603_02856.md — Rhythm 双 G1 交互全身控制（IAMR+IGRL+MAGIC）入库并建实体页
 
 - 原始资料：[`rhythm_arxiv_2603_02856.md`](sources/papers/rhythm_arxiv_2603_02856.md)（<https://arxiv.org/abs/2603.02856>）；[`hoshi-no-ai-rhythm-github-io.md`](sources/sites/hoshi-no-ai-rhythm-github-io.md)（<https://hoshi-no-ai.github.io/Rhythm/>）

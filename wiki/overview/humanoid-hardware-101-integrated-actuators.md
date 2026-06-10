@@ -11,6 +11,8 @@ related:
   - ./humanoid-hardware-101-actuation-sensing-chain.md
   - ./humanoid-hardware-101-linear-transmission-bearings.md
   - ../entities/open-source-humanoid-hardware.md
+  - ../concepts/motor-torque-speed-curve.md
+  - ../comparisons/motor-em-simulation-software.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
   - ../../sources/raw/wechat_humanoid_hardware_101_2026-06-01.md
@@ -43,10 +45,13 @@ sources:
 
 - **Atlas** 液压运行多年后新一代转电；Sanctuary 手、Clone 等仍探索 **微液压/气动**  niche。
 - 选型需平衡：功率密度、可控性、反向驱动、效率、响应、**系统复杂度**。
+- 评估电动关节模组时，[TN 曲线](../concepts/motor-torque-speed-curve.md) 是 datasheet 第一张要看的图；电机预研阶段的电磁/热仿真工具对照见 [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)。
 
 ## 关联页面
 
 - [Humanoid 执行器 102 技术地图](./humanoid-actuator-102-technology-map.md) — 为何在腿上失效、三大物种
+- [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md) — 峰值/连续/基速读图
+- [电机电磁仿真软件选型](../comparisons/motor-em-simulation-software.md)
 - [Humanoid Hardware 101 技术地图](./humanoid-hardware-101-technology-map.md)
 - [传动与感知链](./humanoid-hardware-101-actuation-sensing-chain.md)
 - [传感与末端执行器](./humanoid-hardware-101-sensing-end-effectors.md)

@@ -53,10 +53,11 @@ sources:
 | 反射惯量 | 输出端 **<0.1 kg·m²** |
 | 冲击 | 线接触传动；**>1000 万次** 循环量级（文内表述） |
 
-膝关节样本参数见原文图 31；髋/踝/肩/肘/腕按负荷缩放。
+膝关节样本参数见原文图 31；髋/踝/肩/肘/腕按负荷缩放。上述峰值:持续与比力矩指标应在供应商 [TN 曲线](../concepts/motor-torque-speed-curve.md) 与 [TI 曲线](../concepts/motor-torque-current-curve.md) 上逐项核对，而非仅看单点标称值。
 
 ## 关联页面
 
+- [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
 - [人形硬件选型 Query](../queries/humanoid-hardware-selection.md)
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [产业与成本](./humanoid-hardware-101-supply-chain-economics.md)

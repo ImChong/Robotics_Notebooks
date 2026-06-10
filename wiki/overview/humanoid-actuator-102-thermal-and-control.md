@@ -8,6 +8,8 @@ related:
   - ./humanoid-actuator-102-technology-map.md
   - ./humanoid-actuator-102-compliance-sensing.md
   - ./humanoid-hardware-101-power-compute-electronics.md
+  - ../concepts/motor-torque-speed-curve.md
+  - ../concepts/motor-torque-current-curve.md
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md
@@ -31,8 +33,9 @@ sources:
 
 - 谐波 **金属弯曲摩擦** → 连续重载下温升快。
 - 行走 **脉冲负载**：支撑相高峰、摆动相近零；但蹲起、持物需 **持续大力矩**。
-- **峰值:持续** 目标 **≥3:1**；散热差设计常仅 **~2:1** → 要么峰值不够，要么持续过热。
+- **峰值:持续** 目标 **≥3:1**；散热差设计常仅 **~2:1** → 要么峰值不够，要么持续过热。读 datasheet 时应对照 [TN 曲线](../concepts/motor-torque-speed-curve.md) 区分**宣传峰值**与**连续转矩**工作区。
 - **液冷** 可把比例压到 **2:1 甚至 1.5:1**（文内）。
+- 电流侧发热压力可用 [TI 曲线](../concepts/motor-torque-current-curve.md) 与力矩常数 \(K_t\) 估算：同样转矩下电流越大，铜损 \(I^2R\) 越高。
 
 ## 控制（VI）
 
@@ -45,6 +48,8 @@ sources:
 
 ## 关联页面
 
+- [电机转矩-转速曲线（TN 曲线）](../concepts/motor-torque-speed-curve.md)
+- [电机转矩-电流曲线（TI 曲线）](../concepts/motor-torque-current-curve.md)
 - [分离架构](./humanoid-actuator-102-split-architecture.md)
 - [决策与物种](./humanoid-actuator-102-decision-species.md)
 

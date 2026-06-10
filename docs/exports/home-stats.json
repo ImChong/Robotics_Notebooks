@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 812,
-  "edge_count": 5756,
+  "node_count": 817,
+  "edge_count": 5806,
   "coverage": {
-    "covered": 796,
-    "total": 810,
+    "covered": 801,
+    "total": 815,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -97,6 +97,46 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/formalizations/field-oriented-control-derivation.md",
+      "detail_id": "wiki-formalizations-field-oriented-control-derivation",
+      "label": "磁场定向控制（FOC）逐步推导",
+      "type": "formalization",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/motor-design-workflow.md",
+      "detail_id": "wiki-overview-motor-design-workflow",
+      "label": "电机设计流程（规格 → 仿真 → 样机 → 控制）",
+      "type": "overview",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motor-torque-speed-curve.md",
+      "detail_id": "wiki-concepts-motor-torque-speed-curve",
+      "label": "电机转矩-转速曲线（TN 曲线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motor-torque-current-curve.md",
+      "detail_id": "wiki-concepts-motor-torque-current-curve",
+      "label": "电机转矩-电流曲线（TI 曲线）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/motor-em-simulation-software.md",
+      "detail_id": "wiki-comparisons-motor-em-simulation-software",
+      "label": "电机电磁与多物理场仿真软件选型",
+      "type": "comparison",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
       "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
       "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
@@ -126,46 +166,6 @@
       "label": "AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）",
       "type": "entity",
       "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/humanoid-policy-network-architecture.md",
-      "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
-      "label": "人形与腿式策略的网络架构（Policy Network Architecture）",
-      "type": "concept",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-dit4dit-video-action-model.md",
-      "detail_id": "entity-paper-dit4dit-video-action-model",
-      "label": "DiT4DiT（双 DiT 联合视频–动作建模）",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md",
-      "detail_id": "entity-paper-motionwam-humanoid-loco-manipulation-wam",
-      "label": "MotionWAM（实时人形 Loco-Manipulation · World Action Model）",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/world-action-models.md",
-      "detail_id": "wiki-concepts-world-action-models",
-      "label": "World Action Models（WAM，世界–动作模型）",
-      "type": "concept",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/perception-backbone-selection.md",
-      "detail_id": "wiki-queries-perception-backbone-selection",
-      "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
-      "type": "query",
-      "recency": "2026-06-09",
       "source": "log.md"
     }
   ],
