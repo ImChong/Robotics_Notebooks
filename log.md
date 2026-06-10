@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-10] ingest | sources/papers/mpc_rl_arxiv_2606_05687.md — MPC-RL 与 π MPC 入库；wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md、wiki/methods/pi-mpc.md 及 mpc-vs-rl / loco-manipulation 交叉更新
+
+- 原始资料：[`mpc_rl_arxiv_2606_05687.md`](sources/papers/mpc_rl_arxiv_2606_05687.md)（<https://arxiv.org/abs/2606.05687>）；[`pi_mpc_arxiv_2601_14414.md`](sources/papers/pi_mpc_arxiv_2601_14414.md)（<https://arxiv.org/abs/2601.14414>）；[`junhengl_mpc_rl.md`](sources/repos/junhengl_mpc_rl.md)（<https://github.com/junhengl/mpc-rl>）
+- 新建实体：[`wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md`](wiki/entities/paper-mpc-rl-humanoid-locomotion-manipulation.md)（CD-MPC landmark reward、πⁿ MPC 批训练、部署纯 RL、Mermaid 管线）
+- 新建方法页：[`wiki/methods/pi-mpc.md`](wiki/methods/pi-mpc.md)（parallel-in-horizon ADMM、velocity-form、construction-free）
+- 交叉更新：[`wiki/comparisons/mpc-vs-rl.md`](wiki/comparisons/mpc-vs-rl.md)、[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/concepts/centroidal-dynamics.md`](wiki/concepts/centroidal-dynamics.md)、[`wiki/methods/model-predictive-control.md`](wiki/methods/model-predictive-control.md)、[`wiki/queries/mpc-solver-selection.md`](wiki/queries/mpc-solver-selection.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-10] ingest | sources/sites/omg-tsinghua-mars-lab-github-io.md — OMG omni-modal G1 运动生成（清华 MARS Lab）入库并建实体页
 
 - 原始资料：[`omg-tsinghua-mars-lab-github-io.md`](sources/sites/omg-tsinghua-mars-lab-github-io.md)（<https://tsinghua-mars-lab.github.io/OMG/>）；[`omg-tsinghua-mars-lab.md`](sources/repos/omg-tsinghua-mars-lab.md)（<https://github.com/tsinghua-mars-lab/OMG>）
