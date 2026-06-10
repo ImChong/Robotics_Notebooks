@@ -357,6 +357,9 @@
 | 文件 | 内容 |
 |------|------|
 | [x] [uart_rs485_serial_embedded.md](courses/uart_rs485_serial_embedded.md) | UART / RS-232 / RS-485 异步串行与机器人现场布线入门（Wikipedia、TI SLLA383 等索引） |
+| [x] [ttl_uart_logic_level_primary_refs.md](sites/ttl_uart_logic_level_primary_refs.md) | TTL/CMOS UART 逻辑电平一手资料（JEDEC、TI 逻辑族、MS Learn UART 架构） |
+| [x] [rs232_tia_eia_primary_refs.md](sites/rs232_tia_eia_primary_refs.md) | RS-232 / TIA-232-F 一手资料（ITU-T V.24/V.28、Maxim 设计指南） |
+| [x] [rs485_tia_eia_primary_refs.md](sites/rs485_tia_eia_primary_refs.md) | RS-485 / TIA-485-A 一手资料（TSB-89A、TI SLLA383/SLLA070、Modbus RTU） |
 | [x] [motor_drive_firmware_bus_protocols.md](courses/motor_drive_firmware_bus_protocols.md) | 电机驱动器底软通信：CANopen/CiA402、CoE、私有 CAN、MIT 帧、DroneCAN 等选型索引 |
 | [x] [welch_bishop_kalman_filter.md](courses/welch_bishop_kalman_filter.md) | Welch & Bishop KF 入门教程（UNC TR / kalmanfilter.net） |
 | [x] [mit_underactuated_kalman_lqr.md](courses/mit_underactuated_kalman_lqr.md) | MIT Underactuated + Optimal Control 2025（估计 / LQR / DDP 模块） |

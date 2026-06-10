@@ -8,6 +8,8 @@ related:
   - ../concepts/can-fd.md
   - ../concepts/ethercat-protocol.md
   - ../concepts/uart-serial-communication.md
+  - ../concepts/rs-485-serial-bus.md
+  - ../concepts/ttl-serial-logic-level.md
   - ../concepts/field-oriented-control.md
   - ../entities/simplefoc.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
@@ -117,7 +119,7 @@ flowchart TB
 | 经典 CAN | 轴数中等、已有电机 | [CAN 总线](../concepts/can-bus-protocol.md) |
 | CAN FD | 要更大载荷/更高吞吐 | [CAN FD](../concepts/can-fd.md) |
 | EtherCAT | 多轴硬实时 + DC | [EtherCAT](../concepts/ethercat-protocol.md) |
-| UART/RS485 | 调试、单设备、非关节环 | [UART](../concepts/uart-serial-communication.md) |
+| UART/RS485 | 调试、单设备、非关节环 | [UART](../concepts/uart-serial-communication.md)、[RS-485](../concepts/rs-485-serial-bus.md) |
 | 横向对比 | 关节总线选型 | [CAN vs EtherCAT](../comparisons/can-vs-ethercat-joint-bus.md) |
 
 ## 机器人常见「组合套餐」
@@ -177,6 +179,8 @@ flowchart TD
 - [CAN FD](../concepts/can-fd.md)
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
 - [UART 串行通信](../concepts/uart-serial-communication.md)
+- [RS-485 串行总线](../concepts/rs-485-serial-bus.md)
+- [TTL 串行逻辑电平](../concepts/ttl-serial-logic-level.md)
 - [CAN vs EtherCAT 关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
 - [人形运动控制 Know-How](./humanoid-motion-control-know-how.md)
 - [处理器在环 Sim2Real](../concepts/processor-in-the-loop-sim2real.md)

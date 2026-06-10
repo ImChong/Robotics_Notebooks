@@ -2,8 +2,11 @@
 type: concept
 tags: [hardware, protocol, uart, rs485, serial, embedded, debugging, robotics]
 status: complete
-updated: 2026-05-19
+updated: 2026-06-10
 related:
+  - ./ttl-serial-logic-level.md
+  - ./rs-232-serial-interface.md
+  - ./rs-485-serial-bus.md
   - ./can-bus-protocol.md
   - ./can-fd.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
@@ -11,6 +14,9 @@ related:
   - ../queries/real-time-control-middleware-guide.md
 sources:
   - ../../sources/courses/uart_rs485_serial_embedded.md
+  - ../../sources/sites/ttl_uart_logic_level_primary_refs.md
+  - ../../sources/sites/rs232_tia_eia_primary_refs.md
+  - ../../sources/sites/rs485_tia_eia_primary_refs.md
 summary: "UART 异步串行通信：MCU 最常见的点对点外设接口，配合 TTL/RS-232/RS-485 电平用于调试日志、遥控、IMU 与低速模组；多节点场景需软件协议，硬实时关节环路由 CAN/EtherCAT 承担。"
 ---
 
@@ -58,9 +64,13 @@ flowchart LR
   CAN["CAN 控制器"] --> CANBUS["CAN_H / CAN_L\n硬件仲裁"]
 ```
 
-- **TTL**：板内或短杜邦线；**不可直接长距离** 裸接多机。
-- **RS-232**：PC 串口、老式仪器；距离与速率有限。
-- **RS-485**： **差分、半双工**；需 **DE/RE** 方向控制；总线末端终端与偏置电阻，否则空闲误码。
+各电平标准已拆分为独立概念页，详见：
+
+| 电平 | 页面 | 要点 |
+|------|------|------|
+| **TTL / CMOS** | [TTL 串行逻辑电平](./ttl-serial-logic-level.md) | 板内 3.3 V/5 V 单端；调试与 IMU 默认形态 |
+| **RS-232** | [RS-232 串行接口](./rs-232-serial-interface.md) | ± 电压、点对点；须经 MAX232 等与 MCU 相连 |
+| **RS-485** | [RS-485 串行总线](./rs-485-serial-bus.md) | 差分半双工、多点；DE/RE、终端与偏置 |
 
 ## 常见误区
 
@@ -70,6 +80,9 @@ flowchart LR
 
 ## 关联页面
 
+- [TTL 串行逻辑电平](./ttl-serial-logic-level.md)
+- [RS-232 串行接口](./rs-232-serial-interface.md)
+- [RS-485 串行总线](./rs-485-serial-bus.md)
 - [CAN 总线（经典）](./can-bus-protocol.md)
 - [CAN FD](./can-fd.md)
 - [CAN vs EtherCAT：关节总线选型](../comparisons/can-vs-ethercat-joint-bus.md)
@@ -78,6 +91,9 @@ flowchart LR
 ## 参考来源
 
 - [UART / RS-485 嵌入式入门索引](../../sources/courses/uart_rs485_serial_embedded.md)
+- [TTL / CMOS UART 逻辑电平一手资料](../../sources/sites/ttl_uart_logic_level_primary_refs.md)
+- [RS-232（TIA/EIA-232）一手资料](../../sources/sites/rs232_tia_eia_primary_refs.md)
+- [RS-485（TIA/EIA-485）一手资料](../../sources/sites/rs485_tia_eia_primary_refs.md)
 
 ## 推荐继续阅读
 
