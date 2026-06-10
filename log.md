@@ -5,7 +5,10 @@
 - 原始资料：[`rhythm_arxiv_2603_02856.md`](sources/papers/rhythm_arxiv_2603_02856.md)（<https://arxiv.org/abs/2603.02856>）；[`hoshi-no-ai-rhythm-github-io.md`](sources/sites/hoshi-no-ai-rhythm-github-io.md)（<https://hoshi-no-ai.github.io/Rhythm/>）
 - 新建实体：[`wiki/entities/paper-rhythm-dual-humanoid-interaction.md`](wiki/entities/paper-rhythm-dual-humanoid-interaction.md)（IAMR 解耦重定向 + IGRL 图奖励 MAPPO + 真机部署 + MAGIC 数据集 + Mermaid 管线）
 - 交叉更新：[`wiki/concepts/whole-body-tracking-pipeline.md`](wiki/concepts/whole-body-tracking-pipeline.md)、[`wiki/concepts/motion-retargeting-pipeline.md`](wiki/concepts/motion-retargeting-pipeline.md)、[`wiki/methods/marl.md`](wiki/methods/marl.md)、[`wiki/entities/paper-assistmimic.md`](wiki/entities/paper-assistmimic.md)、[`sources/README.md`](sources/README.md)
-- 门禁：`make ci-preflight` 全绿（图谱 807 节点，无孤儿节点）
+
+## [2026-06-10] ingest | sources/papers/dit4dit_arxiv_2603_10448.md — DiT4DiT 双 DiT 联合 VAM 入库；wiki/entities/paper-dit4dit-video-action-model.md 并与 MotionWAM 双向链接
+
+## [2026-06-10] ingest | sources/papers/motionwam_arxiv_2606_09215.md — MotionWAM 实时人形 loco-manipulation WAM 入库；wiki/entities/paper-motionwam-humanoid-loco-manipulation-wam.md、wiki/concepts/world-action-models.md、wiki/tasks/loco-manipulation.md 等交叉更新
 
 ## [2026-06-09] query | wiki/queries/perception-backbone-selection.md — V24 P1 视觉表征知识链收官（机器人感知骨干/表征选型 Query）
 

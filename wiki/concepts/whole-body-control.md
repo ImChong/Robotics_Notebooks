@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-10
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -172,6 +172,7 @@ print("joint acceleration command:", qdd_star)
 - [李群、李代数与刚体旋转](../formalizations/lie-group-rigid-body-motions.md) — 任务空间 twist 与 se(3) 增量
 - [SE(3) 位姿表示形式化](../formalizations/se3-representation.md) — WBC 任务空间目标表示的基础
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — [SONIC](../methods/sonic-motion-tracking.md) 作低层 WBC 合成 loco-manip VLA 数据（arXiv:2606.01458）
+- [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — WAM 在 **SONIC 统一 motion token** 空间预测全身行为，替代上下身分层命令接口（arXiv:2606.09215）
 - [Query：什么时候该用 WBC，什么时候该用 RL？](../queries/when-to-use-wbc-vs-rl.md)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
