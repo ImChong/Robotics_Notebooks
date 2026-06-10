@@ -10,7 +10,7 @@ related:
   - ../entities/legged-gym.md
 sources:
   - ../../sources/papers/policy_optimization.md
-summary: "Locomotion RL 常见失败模式分析：通过识别原地踏步、关节振荡、双脚起跳和策略崩溃等典型现象，快速定位训练与奖励设计问题。"
+summary: "Locomotion RL 常见失败模式分析：通过识别原地踏步、关节高频抖动、双脚起跳和策略崩溃等典型现象，快速定位训练与奖励设计问题。"
 ---
 
 # Locomotion RL 训练失败模式分析
