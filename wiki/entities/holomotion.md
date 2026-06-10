@@ -13,6 +13,7 @@ related:
   - ./paper-behavior-foundation-model-humanoid.md
   - ./amass.md
   - ./unitree-g1.md
+  - ./paper-omg-omni-modal-humanoid-control.md
 sources:
   - ../../sources/repos/horizon_robotics_holomotion.md
   - ../../sources/papers/holomotion_arxiv_2605_15336.md
@@ -41,6 +42,7 @@ summary: "HoloMotion-1 是地平线提出的人形零样本全身运动跟踪「
 - **数据 scaling 轴与 SONIC / BFM 并列阅读**：与强调 **MoCap 帧规模** 的 [SONIC](../methods/sonic-motion-tracking.md) 或 **生成式多接口 WBC** 的 [BFM](./paper-behavior-foundation-model-humanoid.md) 不同，HoloMotion-1 明确把 **野外视频重建运动** 作为 **多样性主来源**，用 **精选 MoCap + 自采** 补 **保真度与部署覆盖**——这是「**异质监督下的运动基础模型**」一条独立工程叙事。
 - **实时人形闭环的系统约束**：高容量 **Transformer** 常见瓶颈是 **训练贵 + 推理延迟**；工作采用 **稀疏 MoE**、**KV-cache** 与 **序列级优化** 显式对准 **控制频率与算力预算**（细节与数字以论文为准）。
 - **开源交付完整**：代码、文档站、权重与容器降低 **复现与集成** 成本，便于与仿真栈、数据管线对照实验。
+- **下游生成栈复用 tracker：** [OMG](./paper-omg-omni-modal-humanoid-control.md) 将 HoloMotion **motion_tracking / velocity_tracking** ONNX 作为执行层，与「规模化 tracking 预训练 → 上游扩散生成参考」的分层叙事形成互证。
 
 ## 核心机制（提炼）
 
@@ -98,6 +100,7 @@ flowchart LR
 
 - [HoloMotion-1 Technical Report（arXiv:2605.15336）](https://arxiv.org/abs/2605.15336)
 - [HoloMotion GitHub 仓库](https://github.com/HorizonRobotics/HoloMotion)
+- [OMG](../entities/paper-omg-omni-modal-humanoid-control.md) — 以 HoloMotion 为 tracker 的 omni-modal 运动生成系统
 
 ## 参考来源
 

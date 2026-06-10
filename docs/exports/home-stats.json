@@ -1,18 +1,26 @@
 {
   "generated_at": "2026-06-10",
-  "node_count": 809,
-  "edge_count": 5711,
+  "node_count": 810,
+  "edge_count": 5728,
   "coverage": {
-    "covered": 793,
-    "total": 807,
+    "covered": 794,
+    "total": 808,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
-      "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
-      "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
+      "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
+      "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
+      "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
       "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/diffusion-motion-generation.md",
+      "detail_id": "wiki-methods-diffusion-motion-generation",
+      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
+      "type": "method",
       "recency": "2026-06-10",
       "source": "log.md"
     },
@@ -21,6 +29,22 @@
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
       "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
       "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/holomotion.md",
+      "detail_id": "entity-holomotion",
+      "label": "HoloMotion（HoloMotion-1）",
+      "type": "entity",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
+      "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
+      "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
+      "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
     },
@@ -143,36 +167,12 @@
       "type": "concept",
       "recency": "2026-06-09",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
-      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
-      "label": "三维坐标变换（视觉–机器人对齐）",
-      "type": "formalization",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-mamma-markerless-motion-capture.md",
-      "detail_id": "entity-paper-mamma-markerless-motion-capture",
-      "label": "MAMMA：无标记多视角多人 SMPL-X 动作捕捉",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/freemocap.md",
-      "detail_id": "entity-freemocap",
-      "label": "FreeMoCap（开源多相机动捕平台）",
-      "type": "entity",
-      "recency": "2026-06-09",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-rhythm-dual-humanoid-interaction.md",
-    "detail_id": "entity-paper-rhythm-dual-humanoid-interaction",
-    "label": "Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）",
+    "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
+    "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
+    "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
     "type": "entity",
     "recency": "2026-06-10",
     "source": "log.md"
