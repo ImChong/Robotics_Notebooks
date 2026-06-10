@@ -543,7 +543,6 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-07-sonic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-08-opentrack</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-09-ams</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-10-twist2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-11-twist</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-12-clone</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-bfm-14-hover</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -609,7 +608,6 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-07-learning_human_to_humanoid_real_time</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-08-omnih2o</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-09-twist</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-10-twist2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-11-deepmimic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-12-omnitrack</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-hrl-stack-13-track_any_motions_under_any_disturba</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -744,6 +742,7 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-splitadapter-load-aware-loco-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-sprint-humanoid-athletic-sprints</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-ssr-humanoid-open-world-traversal</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-twist2</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-unified-walk-run-recovery-sdamp</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-urdd-universal-robot-description-directory</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-variable-impedance-contact-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

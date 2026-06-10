@@ -6,7 +6,7 @@ updated: 2026-06-09
 related:
   - ./egm-efficient-general-mimic.md
   - ./any2track.md
-  - ../entities/paper-hrl-stack-10-twist2.md
+  - ../entities/paper-twist2.md
   - ../entities/phc.md
   - ../entities/amass.md
   - ../entities/unitree-g1.md
@@ -110,7 +110,7 @@ flowchart LR
 ## 与其他页面的关系
 
 - 与 [EGM](./egm-efficient-general-mimic.md) 共享 **「小高质量 MoCap > 大噪声库」** 判断；LIMMT 侧重 **离线策展**，EGM 侧重 **在线 bin 采样 + CDMoE**。
-- 实验基线 tracker：[Any2Track](./any2track.md)、[TWIST2](../entities/paper-hrl-stack-10-twist2.md)。
+- 实验基线 tracker：[Any2Track](./any2track.md)、[TWIST2](../entities/paper-twist2.md)。
 - 数据源：[AMASS](../entities/amass.md)；对比过滤基线 [PHC](../entities/phc.md)。
 - 选型语境：[人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)。
 
@@ -118,7 +118,7 @@ flowchart LR
 
 - [EGM](./egm-efficient-general-mimic.md) — 训练期数据效率与 bin 课程的另一条证据链
 - [Any2Track](./any2track.md) — GQS 主实验基线 tracker 之一
-- [TWIST2](../entities/paper-hrl-stack-10-twist2.md) — GQS 主实验基线 tracker 之二
+- [TWIST2](../entities/paper-twist2.md) — GQS 主实验基线 tracker 之二
 - [AMASS](../entities/amass.md) — 主实验语料与「全量 vs 3%」对照语境
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — WBT 阶段 3 数据策展落点
 - [Humanoid-GPT](../entities/paper-humanoid-gpt.md) — 同用 HME 但走向规模化预训练的对照工作
