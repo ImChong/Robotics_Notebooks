@@ -12,11 +12,13 @@
 ## 核心论文摘录
 
 ### 1) RMA: Rapid Motor Adaptation for Legged Robots（Kumar et al., RSS 2021）
-- **链接：** <https://arxiv.org/abs/2107.04034>
-- **核心贡献：** 两阶段训练：Phase 1 用特权信息（地形参数、摩擦系数）训练 base policy + 环境编码器；Phase 2 用真实历史 obs 训练适应模块模仿编码器输出；无需域随机化微调即可迁移真机
+- **链接：** <https://arxiv.org/abs/2107.04034> · 项目页 <https://ashish-kmr.github.io/rma-legged-robots/> · 代码 <https://github.com/antonilo/rl_locomotion>
+- **核心贡献：** 两阶段训练：Phase 1 用特权 $e_t$ 编码为 extrinsics $z_t$ 训练 base policy $\pi$ + encoder $\mu$；Phase 2 用 **on-policy** 历史 $(x,a)$ 监督 adaptation module $\phi$ 预测 $\hat{z}_t$；A1 **异步 10/100 Hz** 零微调部署，<1 s 适应变地形/载荷
 - **对 wiki 的映射：**
+  - [paper-rma-rapid-motor-adaptation](../../wiki/entities/paper-rma-rapid-motor-adaptation.md)（本次升格实体页 + Mermaid）
   - [privileged-training](../../wiki/concepts/privileged-training.md)
   - [sim2real](../../wiki/concepts/sim2real.md)
+- **一手归档：** [rma_arxiv_2107_04034.md](rma_arxiv_2107_04034.md)、[rma-legged-robots 项目页](../sites/rma-legged-robots-github-io.md)、[antonilo/rl_locomotion](../repos/antonilo_rl_locomotion.md)
 
 ### 2) Learning to Walk in Difficult Terrain（Lee et al., Science Robotics 2020）
 - **链接：** <https://www.science.org/doi/10.1126/scirobotics.abc5986>
@@ -60,4 +62,4 @@
 
 - [x] 论文摘要填写
 - [x] wiki 页面映射确认
-- [ ] 关联 wiki 页面的参考来源段落已添加 ingest 链接
+- [x] RMA 独立 ingest 与实体页；关联 wiki 参考来源已链至 `rma_arxiv_2107_04034.md`

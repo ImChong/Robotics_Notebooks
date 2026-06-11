@@ -28,12 +28,13 @@ related:
   - ../entities/paper-slowrl-safe-lora-locomotion-sim2real.md
   - ../entities/paper-bam-extended-friction-servo-actuators.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
+  - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../entities/bam-better-actuator-models.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ../entities/open-duck-mini.md
   - ../entities/physx-omni.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-06-09
+updated: 2026-06-11
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 ---
@@ -112,28 +113,28 @@ flowchart TD
 
 ### 6. RMA（Rapid Motor Adaptation）
 
-**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student 框架之一（Kumar et al. 2021）。
+**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student + **在线适应** 框架之一（Kumar et al., RSS 2021）。完整提炼见 **[RMA 论文实体页](../entities/paper-rma-rapid-motor-adaptation.md)**。
 
 **两阶段流程：**
 
 ```
-阶段 1：训练 Base Policy（仿真中）
-  输入：机器人本体感知状态 s_t + 环境特权参数 e_t（质量/摩擦/电机参数）
-  算法：PPO
-  产出：Base Policy π(a | s_t, e_t)
+阶段 1：训练 Base Policy π + Encoder μ（仿真中）
+  输入：x_t, a_{t-1} + 特权 e_t（质量/摩擦/电机强度等）
+  编码：z_t = μ(e_t)（8 维 extrinsics，非完整物理参数辨识）
+  算法：PPO 联合训练
 
-阶段 2：训练 Adaptation Module（仿真中，模拟真机条件）
-  输入：过去 k 步的关节状态历史 {s_{t-k}, ..., s_{t-1}}
-  目标：从历史轨迹中隐式估计 e_t 的压缩表示 ê_t
-  损失：||ê_t - φ(e_t)||²（对齐 Base Policy 所用的特权嵌入）
+阶段 2：训练 Adaptation Module φ（仿真中，on-policy 数据）
+  输入：过去 k=50 步 (x,a) 历史（0.5 s）
+  目标：回归 z_t = μ(e_t)
+  损失：MSE(ẑ_t, z_t)；用随机初始化 φ rollout，避免只见过专家轨迹
 
-部署（真实机器人）：
-  Base Policy + Adaptation Module（无需特权参数 e_t）
+部署（真实机器人，A1 零微调）：
+  φ @ 10 Hz 输出 ẑ_t；π @ 100 Hz 用缓存 ẑ_t + (x_t,a_{t-1}) → 关节位置 → PD 力矩
 ```
 
-**为什么有效**：机器人与地面的历史交互隐含了地形/摩擦/质量等信息，Adaptation Module 从行为历史中隐式重建这些信息。
+**为什么有效**：命令关节运动与实际运动的偏差隐含环境 extrinsics；$\phi$ 从 **单条历史轨迹 <1 s** 在线估计 $\hat{z}_t$，无需在新场景采集数分钟真机数据（对比 Peng et al. 2018 latent 优化）。
 
-**在 Unitree A1 上实测**：复杂地形（草地/碎石/台阶）零样本迁移成功。
+**在 Unitree A1 上实测**：岩石、油滑、泡沫床垫、植被、楼梯、沙地等 OOD 地形零样本迁移；相对厂商控制器与 w/o adaptation 消融显著更稳。
 
 ### 7. Sim2Real SOP (标准作业程序)
 
@@ -199,6 +200,7 @@ flowchart TD
 - Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World* — domain randomization 奠基论文
 - Peng et al. 2018, *Sim-to-Real Transfer of Robotic Control with Dynamics Randomization* — locomotion 控制迁移基线
 - [sources/papers/sim2real.md](../../sources/papers/sim2real.md) — DR / RMA / InEKF ingest 摘要
+- [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
 - [Sim2Real 论文导航](../../references/papers/sim2real.md) — 论文集合
 - [Deployment-Ready RL: Pitfalls, Lessons, and Best Practices](https://thehumanoid.ai/deployment-ready-rl-pitfalls-lessons-and-best-practices/) — 工程实践
 - [机器人论文阅读笔记：Domain Randomization](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)
@@ -225,6 +227,7 @@ flowchart TD
 - [System Identification](./system-identification.md)（减少物理参数和执行器模型的 sim2real gap）
 - [Actuator Network 执行器网络](../methods/actuator-network.md) — 用神经网络拟合电机非线性特性
 - [Privileged Training](./privileged-training.md)（Teacher-Student 训练是 sim2real 的核心技术之一）
+- [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 缩小 **视觉** sim2real gap 以合成 VLA 训练数据（arXiv:2606.01458）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — 官方动手课：四类 sim2real 策略 + GR00T N1.6 VLA + LeRobot/Isaac Lab
