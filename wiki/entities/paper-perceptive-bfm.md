@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, bfm, behavior-foundation-model, motion-tracking, perceptive-locomotion, terrain-adaptation, privileged-training, distillation, transformer, unitree-g1, mocap, teleoperation, parkour, miaodong, hkust, cas-ai]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-11
 venue: "CoRL 2026 · submission"
 related:
   - ../concepts/behavior-foundation-model.md

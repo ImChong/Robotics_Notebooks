@@ -1,6 +1,6 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-12] structural | wiki/entities/paper-perceptive-bfm.md、docs/main.js — 正文 PMT 公式改 `$...$` 启用 KaTeX 蓝框；修复 Mermaid `<br/>` 渲染语法错误
+## [2026-06-11] structural | wiki/entities/paper-perceptive-bfm.md、docs/main.js — 正文 PMT 公式改 `$...$` 启用 KaTeX 蓝框；修复 Mermaid `<br/>` 渲染语法错误
 
 ## [2026-06-11] ingest | sources/papers/perceptive_bfm_corl_2026.md — Perceptive BFM（CoRL 2026）TCRS+PMT 地形感知 BFM；wiki/entities/paper-perceptive-bfm.md 及 behavior-foundation-model / privileged-training / footstep-planning / sonic / stair-obstacle 交叉更新
 
