@@ -64,9 +64,7 @@ def test_coverage_stats_from_results() -> None:
     assert stats == {"covered": 3, "total": 4, "percent": 75}
 
 
-def test_frontmatter_updated_exempts_stale(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_frontmatter_updated_exempts_stale(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     repo = _init_repo(tmp_path, monkeypatch)
     wiki = repo / "wiki" / "methods" / "foo.md"
     wiki.write_text(
@@ -110,7 +108,8 @@ def test_committed_wiki_local_edit_uses_fresh_mtime(
 
 
 def test_frontmatter_updated_date_parses(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     repo = _init_repo(tmp_path, monkeypatch)
     wiki = repo / "wiki" / "methods" / "foo.md"

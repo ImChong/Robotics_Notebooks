@@ -544,10 +544,7 @@ def _merge_communities_to_cap(
         best_cross = -1
         for j, other in enumerate(groups):
             cross = sum(
-                1
-                for node in small
-                for neighbor in adjacency.get(node, ())
-                if neighbor in other
+                1 for node in small for neighbor in adjacency.get(node, ()) if neighbor in other
             )
             if cross > best_cross:
                 best_cross = cross
