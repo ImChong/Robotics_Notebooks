@@ -90,8 +90,6 @@ flowchart TB
     scan --> terrain
     ppo2 --> g1
   end
-  classDef formula fill:#E8F0FE,stroke:#2D74DA,stroke-width:2px,color:#1a1a2e
-  class ref_tcrs,ppo1,backbone,terrain,gate,align formula
 ```
 
 ## 核心机制（归纳）
