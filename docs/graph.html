@@ -1389,39 +1389,6 @@
       <div class="slider-divider"></div>
 
       <div class="slider-row">
-        <div class="slider-label">
-          <span>节点大小</span>
-          <span class="slider-val" id="val-size">1.0×</span>
-        </div>
-        <input type="range" id="sl-size" min="40" max="280" value="100" step="5"
-               aria-label="节点大小" />
-      </div>
-
-      <div class="slider-divider"></div>
-
-      <div class="slider-row">
-        <div class="slider-label">
-          <span>连接线粗细</span>
-          <span class="slider-val" id="val-link">1.0px</span>
-        </div>
-        <input type="range" id="sl-link" min="2" max="60" value="10" step="1"
-               aria-label="连接线粗细" />
-      </div>
-
-      <div class="slider-divider"></div>
-
-      <div class="slider-row">
-        <div class="slider-label">
-          <span>节点字体大小</span>
-          <span class="slider-val" id="val-font">×1.5</span>
-        </div>
-        <input type="range" id="sl-font" min="6" max="22" value="15" step="1"
-               aria-label="节点字体大小" />
-      </div>
-
-      <div class="slider-divider"></div>
-
-      <div class="slider-row">
         <label class="physics-toggle" for="check-magnetic">
           <input type="checkbox" id="check-magnetic" />
           <span>🧲 磁吸模式</span>
@@ -1835,11 +1802,11 @@
       return false;
     }
 
-    /* ── 可变物理参数（由滑动块控制）── */
-    let chargeStrength = -800;   // 排斥力（负值）
-    let nodeScale      = 1.0;    // 节点大小倍数
-    let linkWidthBase  = 1.0;    // 连接线基础粗细（px）
-    let fontSliderVal  = 15;     // 字体滑块值（6-22），作为乘数作用在nodeScale上
+    /* ── 可变物理参数 ── */
+    let chargeStrength = -800;   // 排斥力（负值，由滑块控制）
+    const nodeScale      = 1.0;    // 节点大小倍数
+    const linkWidthBase  = 1.0;    // 连接线基础粗细（px）
+    const fontSliderVal  = 15;     // 字体缩放（相对 nodeScale）
     let isMagnetic     = false;
 
     /* ── 主题辅助（响应 data-theme 切换）── */
@@ -3343,39 +3310,10 @@
       updateForces();
     });
 
-    /* 4. 磁吸模式 checkbox */
+    /* 磁吸模式 checkbox */
     document.getElementById('check-magnetic').addEventListener('change', ev => {
       isMagnetic = ev.target.checked;
       updateForces();
-    });
-
-    /* 2. 节点大小 slider（min=40, max=280, value/100 = nodeScale） */
-    document.getElementById('sl-size').addEventListener('input', ev => {
-      nodeScale = Number(ev.target.value) / 100;
-      document.getElementById('val-size').textContent = nodeScale.toFixed(1) + '×';
-      // 更新圆半径 & 标签位置
-      node.select('.node-circle').attr('r', scaledRadius);
-      node.select('.node-glow').attr('r', d => scaledRadius(d) + 6);
-      label.attr('dy', d => scaledRadius(d) + 13);
-      // 更新碰撞半径并重新模拟
-      simulation
-        .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
-        .alpha(0.3).restart();
-    });
-
-    /* 3. 连接线粗细 slider（min=2, max=60, value/10 = linkWidthBase） */
-    document.getElementById('sl-link').addEventListener('input', ev => {
-      linkWidthBase = Number(ev.target.value) / 10;
-      document.getElementById('val-link').textContent = linkWidthBase.toFixed(1) + 'px';
-      // 立即更新，无需重启模拟
-      link.attr('stroke-width', linkWidthBase);
-    });
-
-    /* 4. 节点字体大小 slider（min=6, max=22, step=1）—— 在 nodeScale 基础上再缩放 */
-    document.getElementById('sl-font').addEventListener('input', ev => {
-      fontSliderVal = Number(ev.target.value);
-      document.getElementById('val-font').textContent = '×' + (fontSliderVal / 10).toFixed(1);
-      label.attr('font-size', d => scaledFontSize(d) + 'px');
     });
 
     /* ════════════════════════════════════════════
