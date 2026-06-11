@@ -14,6 +14,7 @@
 | [x] [sds_quadruped_arxiv_2410_11571.md](papers/sds_quadruped_arxiv_2410_11571.md) | SDS：四足单视频 VLM→奖励 + IsaacGym 闭环进化（arXiv:2410.11571），E-SDS 前序方法摘录 |
 | [x] [smp.md](papers/smp.md) | SMP：可复用 score-matching 运动先验（arXiv:2512.03028，SDS/ESM/GSI、100 风格组合、G1 真机）完整摘录 |
 | [x] [sim2real.md](papers/sim2real.md) | Sim2Real ingest 摘要（DR/RMA/InEKF） |
+| [x] [rma_arxiv_2107_04034.md](papers/rma_arxiv_2107_04034.md) | RMA：四足快速运动自适应（RSS 2021，arXiv:2107.04034）特权 extrinsics + 历史适应模块；A1 零微调部署 |
 | [x] [spider_scalable_physics_informed_dexterous_retargeting.md](papers/spider_scalable_physics_informed_dexterous_retargeting.md) | SPIDER：并行物理仿真采样式重定向 + 课程式虚拟接触引导（arXiv:2511.09484）摘录与 wiki 映射 |
 | [ ] [survey_papers.md](papers/survey_papers.md) | 综述论文归档（待提炼） |
 | [x] [motion_control_projects.md](papers/motion_control_projects.md) | 飞书公开文档《开源运动控制项目》及其 14 个 PDF 附件来源归档 |
@@ -113,6 +114,7 @@
 | [x] [unitree_ros.md](repos/unitree_ros.md) | unitree_ros：ROS1 + Gazebo8 官方描述与关节级仿真包 |
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
 | [x] [extreme-parkour.md](repos/extreme-parkour.md) | Extreme Parkour 官方代码（ICRA 2024；Isaac Gym + legged_gym 两阶段跑酷训练） |
+| [x] [antonilo_rl_locomotion.md](repos/antonilo_rl_locomotion.md) | antonilo/rl_locomotion：RMA 系 RaiSim 四足特权 locomotion 训练（亦服务 CMS ICRA 2023） |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
 | [x] [humanoid-gym.md](repos/humanoid-gym.md) | Humanoid-Gym 官方：人形 Isaac Gym PPO + MuJoCo sim2sim（arXiv:2404.05695，RobotEra XBot） |
 | [x] [humanoid-gym-modified.md](repos/humanoid-gym-modified.md) | humanoid-gym-modified：Pandaman 模型 + Gazebo/ROS sim2sim 社区 fork |
@@ -306,6 +308,7 @@
 | [x] [dit4dit-project.md](sites/dit4dit-project.md) | DiT4DiT 项目页 dit4dit.github.io（双 DiT 方法、LIBERO/RoboCasa/G1 结果、效率表，arXiv:2603.10448） |
 | [x] [doorman-humanoid-github-io.md](sites/doorman-humanoid-github-io.md) | DoorMan 项目页 doorman-humanoid.github.io（管线叙述、失败案例、BibTeX、渲染工作流链接） |
 | [x] [extreme-parkour-github-io.md](sites/extreme-parkour-github-io.md) | Extreme Parkour 项目页 extreme-parkour.github.io（ICRA 2024 实机视频、clearance/航向 ablation、CoRL 2023 demo） |
+| [x] [rma-legged-robots-github-io.md](sites/rma-legged-robots-github-io.md) | RMA 项目页 ashish-kmr.github.io/rma-legged-robots（RSS 2021 A1 多样地形视频、与原厂控制器对照） |
 | [x] [esi-bench-project.md](sites/esi-bench-project.md) | ESI-Bench 项目页 esi-bench.github.io（任务 taxonomy、Key Findings、arXiv:2605.18746） |
 | [x] [mobilegym-dev.md](sites/mobilegym-dev.md) | MobileGym 官网 mobilegym.dev（Live Demo、Leaderboard、Sim-to-Real，arXiv:2605.26114） |
 | [x] [shape-your-body-nico-bohlinger.md](sites/shape-your-body-nico-bohlinger.md) | Shape Your Body 项目页（VGDS 交互演示、50 机训练集，arXiv:2606.00702） |

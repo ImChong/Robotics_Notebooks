@@ -87,18 +87,18 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 
 ### RMA（Rapid Motor Adaptation，Kumar et al. 2021）
 
-最具代表性的 Teacher-Student + Sim2Real 框架。
+最具代表性的 Teacher-Student + Sim2Real 框架。完整提炼见 **[RMA 论文实体页](../entities/paper-rma-rapid-motor-adaptation.md)**。
 
-**阶段 1**：训练 Teacher（base policy）
-- 输入：机器人状态 + 环境参数（摩擦、质量等特权信息）
-- PPO 训练，学会适应各种参数
+**阶段 1**：训练 base policy $\pi$ + encoder $\mu$
+- 输入：$x_t$, $a_{t-1}$ + 特权 $e_t$（摩擦、质量、电机强度等）→ extrinsics $z_t=\mu(e_t)$
+- **PPO** 联合训练，分形地形 + 生物力学奖励
 
-**阶段 2**：训练 Adaptation Module
-- 输入：过去 $n$ 步的关节状态历史
-- 目标：从历史轨迹中隐式估计 Teacher 用的特权信息
-- 损失：预测 Teacher 所用的隐变量
+**阶段 2**：训练 adaptation module $\phi$
+- 输入：过去 **50 步**（0.5 s）$(x,a)$ 历史
+- 目标：回归仿真中 $z_t$；用 **on-policy** rollout 数据（非仅专家轨迹）
+- 损失：$\mathrm{MSE}(\hat{z}_t, z_t)$
 
-部署时：Base policy + Adaptation Module，无需特权信息。
+部署时：$\phi$ @ **10 Hz** + $\pi$ @ **100 Hz** **异步**运行；无需特权信息、**无真机 fine-tuning**（A1 实机验证）。
 
 ### Learning to Walk in Minutes（ETH Zurich）
 
@@ -165,7 +165,8 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 ## 参考来源
 
 - [sources/papers/privileged_training.md](../../sources/papers/privileged_training.md) — ingest 档案（Kumar RMA 2021 / Lee Science Robotics 2020 / Ji 并发训练 2022）
-- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现
+- [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA 一手论文摘录（RSS 2021）
+- Kumar et al., *RMA: Rapid Motor Adaptation for Legged Robots* (2021) — 最经典的 Teacher-Student sim2real 实现；实体页 [paper-rma-rapid-motor-adaptation](../entities/paper-rma-rapid-motor-adaptation.md)
 - Zhuang et al., *Robot Parkour Learning* (2023) — Teacher-Student + 视觉输入扩展
 - Cheng et al., *Extreme Parkour with Legged Robots* (ICRA 2024) — scandots + oracle 航向 → 深度 + 自预测 yaw 双重 DAgger；见 [Extreme Parkour](../entities/extreme-parkour.md)
 - Lee et al., *Learning Quadrupedal Locomotion over Challenging Terrain* (Science Robotics, 2020) — 非对称 Actor-Critic 在足式机器人上的应用
@@ -182,7 +183,8 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [Domain Randomization](./domain-randomization.md) — 常与特权训练结合，增强策略鲁棒性
 - [Loco-Manipulation](../tasks/loco-manipulation.md) — 复杂操作任务需要特权训练处理感知遮挡
 - [DreamWaQ++](../entities/dreamwaq-plus.md) — 四足多模态非对称 AC 与 CENet 谱系
-- [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例
+- [RMA](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块的经典两阶段框架
+- [Extreme Parkour](../entities/extreme-parkour.md) — 四足跑酷 scandots/航向双重蒸馏范例（ROA 继承 RMA）
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 单参考 hybrid tracking 专家 → 深度 visuomotor 学生
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — TCRS 合成 **地形一致 adapted 参考** 作盲 teacher 监督；部署仍用 **raw 参考 + 视觉学生**

@@ -26,10 +26,12 @@
   - [Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
 
 ### 3) Rapid Motor Adaptation for Legged Robots (Kumar et al., 2021)
-- **链接：** <https://arxiv.org/abs/2107.04034>
-- **核心贡献：** 在线估计隐式环境变量并快速调整策略，是 sim2real 适应范式代表。
+- **链接：** <https://arxiv.org/abs/2107.04034> · 归档见 [rma_arxiv_2107_04034.md](rma_arxiv_2107_04034.md)
+- **核心贡献：** 特权 extrinsics 训练 base policy + 历史监督 adaptation module；在线 <1 s 估计 $\hat{z}_t$ 并调整步态，是 sim2real **在线适应** 范式代表。
 - **对 wiki 的映射：**
+  - [RMA 论文实体](../../wiki/entities/paper-rma-rapid-motor-adaptation.md)
   - [Sim2Real](../../wiki/concepts/sim2real.md)
+  - [Privileged Training](../../wiki/concepts/privileged-training.md)
   - [Locomotion](../../wiki/tasks/locomotion.md)
 
 ### 4) Invariant Extended Kalman Filter as a Stable Observer (Barrau & Bonnabel, 2017)

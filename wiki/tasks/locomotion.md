@@ -2,10 +2,11 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-11
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
+  - ../entities/paper-rma-rapid-motor-adaptation.md
   - ../concepts/state-estimation.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
@@ -176,7 +177,7 @@ flowchart TD
 
 - **RL policy + PD/阻抗底层**：策略输出关节位置增量或期望角度，PD/阻抗层保证高频执行稳定。
 - **MPC/WBC baseline + learned residual**：模型控制提供安全可解释的主干，学习模块补偿摩擦、冲击或模型误差。
-- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。
+- **Teacher-student / privileged learning**：训练时 teacher 使用高度图、真实速度等 privileged information；部署时 student 只用机载传感器。经典 **在线适应** 实例：[RMA](../entities/paper-rma-rapid-motor-adaptation.md)（特权 extrinsics → 历史 $\hat{z}_t$ 估计，A1 零微调）。
 - **Motion prior + task RL**：先用 MoCap/视频/重定向得到自然运动先验，再用任务奖励获得速度、转向和地形适应能力。
 
 ## 方法选型速查
@@ -238,6 +239,7 @@ flowchart TD
 - **ingest 档案：** [Multi-Gait Learning for Humanoid Robots Using Reinforcement Learning with Selective Adversarial Motion Priority](../../sources/papers/multi-gait-learning.md) — 多步态学习中的 Selective AMP 策略
 - **ingest 档案：** [sources/papers/rl_pd_action_interface_locomotion.md](../../sources/papers/rl_pd_action_interface_locomotion.md) — RL + PD/阻抗/扭矩接口论文索引
 - **ingest 档案：** [sources/papers/deeprl_locomotion_action_space_sca2017.md](../../sources/papers/deeprl_locomotion_action_space_sca2017.md) — Peng SCA 2017 四动作空间对照
+- **ingest 档案：** [sources/papers/rma_arxiv_2107_04034.md](../../sources/papers/rma_arxiv_2107_04034.md) — RMA：四足快速运动自适应（RSS 2021）
 
 ## 关联系统/方法
 
