@@ -185,6 +185,7 @@ overrides:
   NaVILA_Legged_Robot_Vision-Language-Action_Model_for_Navigation:
   - wiki/entities/paper-notebook-navila-legged-robot-vision-language-action-model.md
   Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels:
+  - wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - wiki/tasks/humanoid-locomotion.md
   OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer:
   - wiki/entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md

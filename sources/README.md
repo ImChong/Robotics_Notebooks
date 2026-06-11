@@ -61,6 +61,7 @@
 | [x] [bfm_awesome_41_catalog.md](papers/bfm_awesome_41_catalog.md) | awesome-bfm-papers：**41 篇 BFM 论文 + 10 数据集** 独立 source 总索引（`papers/bfm_awesome_*.md`，配套微信公众号 41 篇专题） |
 | [x] [ego_9_papers_catalog.md](papers/ego_9_papers_catalog.md) | Ego 9 篇专题：**9 篇第一视角论文** 独立 source 总索引（`papers/ego_survey_*.md`，配套 `4JQ1xa-cJ7J1ep_e4txNnA`） |
 | [x] [shenlan_world_models_15_reference_catalog.md](papers/shenlan_world_models_15_reference_catalog.md) | 深蓝世界模型 15 项目：**15 篇开源 WM** 独立 source 总索引（`papers/shenlan_wm_survey_*.md`，配套 `KZT8sI4n7GvHWyM20wN3gg`） |
+| [x] [now_you_see_that_arxiv_2602_06382.md](papers/now_you_see_that_arxiv_2602_06382.md) | Now You See That：8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏（arXiv:2602.06382，RSS 2026，HIT/HONOR）摘录与 wiki 映射 |
 | [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
 | [x] [rpl_arxiv_2602_03002.md](papers/rpl_arxiv_2602_03002.md) | RPL：分地形高程专家 + 多视角深度 DAgger 蒸馏 + DFSV/RSM 多向感知行走（arXiv:2602.03002，Amazon FAR / G1）摘录与 wiki 映射 |
 | [x] [resmimic_arxiv_2510_05070.md](papers/resmimic_arxiv_2510_05070.md) | ResMimic：GMT 预训练 + 残差后训练的人形全身 loco-manipulation（arXiv:2510.05070，Amazon FAR / G1）摘录与 wiki 映射 |
@@ -113,6 +114,7 @@
 | [unitree.md](repos/unitree.md) | Unitree 硬件与 SDK |
 | [x] [unitree_ros.md](repos/unitree_ros.md) | unitree_ros：ROS1 + Gazebo8 官方描述与关节级仿真包 |
 | [x] [unitree_ros_to_real.md](repos/unitree_ros_to_real.md) | unitree_ros_to_real：ROS↔真机桥与 unitree_legged_msgs（与 unitree_ros 配套） |
+| [x] [now_you_see_that.md](repos/now_you_see_that.md) | Now You See That 官方 GitHub（arXiv:2602.06382；README + 视频；训练代码待发布） |
 | [x] [extreme-parkour.md](repos/extreme-parkour.md) | Extreme Parkour 官方代码（ICRA 2024；Isaac Gym + legged_gym 两阶段跑酷训练） |
 | [x] [antonilo_rl_locomotion.md](repos/antonilo_rl_locomotion.md) | antonilo/rl_locomotion：RMA 系 RaiSim 四足特权 locomotion 训练（亦服务 CMS ICRA 2023） |
 | [legged_gym.md](repos/legged_gym.md) | legged_gym 训练框架 |
@@ -285,6 +287,7 @@
 |------|------|
 | [x] [amass-dataset.md](sites/amass-dataset.md) | AMASS：MPI-IS 统一 SMPL 人体动捕元数据集（站点与论文索引） |
 | [x] [apollo-lab-yale-apollo-resources-github-io.md](sites/apollo-lab-yale-apollo-resources-github-io.md) | apollo-lab-yale.github.io/apollo-resources：URDD 浏览器内可视化（Three.js + GitHub API 列机器人） |
+| [x] [now-you-see-that-github-io.md](sites/now-you-see-that-github-io.md) | Now You See That 项目页 hellod035.github.io（RSS 2026、深度增广可视化、跑酷/楼梯/平衡恢复实机视频；arXiv:2602.06382） |
 | [x] [php-parkour-github-io.md](sites/php-parkour-github-io.md) | PHP 项目页 php-parkour.github.io（RSS 2026、浏览器 MuJoCo demo、跑酷实机视频；配套 arXiv:2602.15827） |
 | [x] [rpl-humanoid-github-io.md](sites/rpl-humanoid-github-io.md) | RPL 项目页 rpl-humanoid.github.io（双向楼梯/坡/垫脚石、2 kg 载荷、DFSV/RSM 消融；配套 arXiv:2602.03002） |
 | [x] [omniretarget-github-io.md](sites/omniretarget-github-io.md) | OmniRetarget 项目页 omniretarget.github.io（ICRA 2026、增广交互演示、GMR/PHC 基线对比；配套 arXiv:2509.26633） |
