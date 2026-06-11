@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 papers/PROGRESS.md 全量 563 条：合并 progress.json 后 665 篇入图谱，新建约 380 个 `wiki/entities/paper-notebook-*` 计划子节点；14 类分类父节点扩表
+
+- 数据源：[papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md) + [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- 工具：`make paper-notebook-bootstrap`；`schema/paper-notebook-wiki-full-map.yml` 扩至 665 篇
+- 相关：`wiki/overview/paper-notebook-category-*.md`、`wiki/overview/humanoid-paper-notebooks-index.md`
+
 ## [2026-06-11] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 Paper Notebooks progress.json 待深读 115 篇：新建 87 个 `wiki/entities/paper-notebook-*` 计划子节点 + sources；更新分类父节点与 full-map（252 篇）
 
 - 数据源：[Humanoid_Robot_Learning_Paper_Notebooks/progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json) 中 `status=pending` 且尚无完整深读笔记的条目

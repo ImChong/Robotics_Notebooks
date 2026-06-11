@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-11
 arxiv: "2605.06593v1"
 related:
   - ../overview/paper-notebook-category-02-motion-retargeting.md

@@ -17,6 +17,7 @@ from sync_paper_notebook_links import (  # noqa: E402
     build_paper_index,
     collect_wiki_index,
     load_manual_map,
+    norm_title,
     short_label,
 )
 
@@ -35,7 +36,30 @@ PROGRESS_JSON_URL = (
     "https://raw.githubusercontent.com/ImChong/"
     "Humanoid_Robot_Learning_Paper_Notebooks/main/progress.json"
 )
+PROGRESS_MD_URL = (
+    "https://raw.githubusercontent.com/ImChong/"
+    "Humanoid_Robot_Learning_Paper_Notebooks/main/papers/PROGRESS.md"
+)
 ARXIV_ID_RE = re.compile(r"^\d{4}\.\d{4,5}(v\d+)?$")
+PROGRESS_SECTION_CATEGORY: list[tuple[str, str]] = [
+    ("基础路线图", "01_Foundational_RL"),
+    ("Whole-Body Control", "03_High_Impact_Selection"),
+    ("遥操作与模仿学习", "03_High_Impact_Selection"),
+    ("Locomotion 经典", "03_High_Impact_Selection"),
+    ("Sim-to-Real & Foundation Model", "03_High_Impact_Selection"),
+    ("仿真平台 & 工具", "03_High_Impact_Selection"),
+    ("Loco-Manipulation and Whole-Body-Control", "04_Loco-Manipulation_and_WBC"),
+    ("Locomotion（", "05_Locomotion"),
+    ("Manipulation（", "06_Manipulation"),
+    ("Teleoperation（", "07_Teleoperation"),
+    ("Navigation（", "08_Navigation"),
+    ("State Estimation（", "09_State_Estimation"),
+    ("Sim-to-Real（", "10_Sim-to-Real"),
+    ("Simulation Benchmark（", "11_Simulation_Benchmark"),
+    ("Hardware Design（", "12_Hardware_Design"),
+    ("Physics-Based Character Animation（", "13_Physics-Based_Animation"),
+    ("Human Motion Analysis and Synthesis（", "14_Human_Motion"),
+]
 
 GENERIC_ABBREV = """| 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
@@ -67,6 +91,9 @@ def normalize_arxiv(value: str | None) -> str | None:
 
 def clean_progress_title(title: str) -> str:
     title = title.strip()
+    link = re.match(r"^\[([^\]]+)\]\([^)]+\)$", title)
+    if link:
+        title = link.group(1).strip()
     if title.lower().startswith("[website],"):
         return title.split(",", 1)[1].strip()
     return title
@@ -105,10 +132,156 @@ def fetch_progress_pending(existing_folders: set[str]) -> list[dict]:
     return pending
 
 
+def fetch_progress_md() -> str:
+    import urllib.request
+
+    with urllib.request.urlopen(PROGRESS_MD_URL, timeout=60) as resp:
+        return resp.read().decode("utf-8")
+
+
+def category_for_progress_section(section: str) -> str:
+    for needle, cat_id in PROGRESS_SECTION_CATEGORY:
+        if needle in section:
+            return cat_id
+    return "03_High_Impact_Selection"
+
+
+def parse_progress_md(text: str) -> list[dict]:
+    entries: list[dict] = []
+    current_section = ""
+    for line in text.splitlines():
+        if line.startswith("### "):
+            current_section = line[4:].strip()
+            continue
+        if line.startswith("#### "):
+            current_section = line[5:].strip()
+            continue
+        if not line.startswith("|") or "---" in line:
+            continue
+        cols = [c.strip() for c in line.strip("|").split("|")]
+        if len(cols) < 2:
+            continue
+        num = cols[0]
+        if not re.match(r"^(\d+|H\d+)$", num):
+            continue
+        paper_col = cols[1]
+        link = re.search(r"\[([^\]]+)\]\((https://arxiv\.org/abs/[^)]+)\)", paper_col)
+        if link:
+            title = clean_progress_title(link.group(1))
+            arxiv = normalize_arxiv(link.group(2).rsplit("/", 1)[-1])
+        else:
+            generic = re.search(r"\[([^\]]+)\]\(([^)]+)\)", paper_col)
+            if generic:
+                title = clean_progress_title(generic.group(1))
+                arxiv = None
+            else:
+                title = clean_progress_title(re.sub(r"✅.*$", "", paper_col))
+                title = title.replace("🌟", "").strip()
+                arxiv = None
+        note_match = re.search(r"\[笔记\]\(([^)]+)\)", paper_col)
+        entries.append(
+            {
+                "num": num,
+                "title": title,
+                "arxiv": arxiv,
+                "note_path": note_match.group(1) if note_match else None,
+                "category": category_for_progress_section(current_section),
+                "section": current_section,
+            }
+        )
+    return entries
+
+
+def progress_md_entry_to_paper(entry: dict) -> dict:
+    note_path = entry.get("note_path")
+    if note_path:
+        parts = note_path.split("/")
+        dir_name = parts[-2] if len(parts) >= 2 else slugify(entry["title"], 48)
+        folder = f"papers/{'/'.join(parts[:-1])}"
+        html_path = note_path.rsplit(".", 1)[0] + ".html"
+        url = f"{NOTEBOOK_SITE}/papers/{html_path}"
+    else:
+        dir_name = slugify(entry["title"], 48)
+        folder = f"papers/{entry['category']}/{dir_name}"
+        url = f"{NOTEBOOK_SITE}/{folder}/{dir_name}.html"
+    return {
+        "folder": folder,
+        "dir": dir_name,
+        "title": entry["title"],
+        "arxiv": entry.get("arxiv"),
+        "url": url,
+        "category": entry["category"],
+        "planned": True,
+        "from_progress_md": True,
+    }
+
+
+def fetch_progress_md_papers(existing_keys: set[str]) -> list[dict]:
+    entries = parse_progress_md(fetch_progress_md())
+    papers: list[dict] = []
+    for entry in entries:
+        paper = progress_md_entry_to_paper(entry)
+        key = paper_dedup_key(paper)
+        if key in existing_keys:
+            continue
+        papers.append(paper)
+        existing_keys.add(key)
+    papers.sort(key=lambda p: (p.get("category", ""), p["title"]))
+    return papers
+
+
+def paper_dedup_key(paper: dict) -> str:
+    if paper.get("arxiv"):
+        return f"arxiv:{paper['arxiv']}"
+    return f"title:{norm_title(paper['title'])}"
+
+
+def paper_catalog_score(paper: dict) -> int:
+    score = 0
+    if not paper.get("planned"):
+        score += 100
+    if paper.get("folder") and "/" in paper["folder"]:
+        score += 20
+    if not paper.get("from_progress_md"):
+        score += 10
+    return score
+
+
+def merge_paper_catalog(*groups: list[dict]) -> list[dict]:
+    merged: dict[str, dict] = {}
+    for group in groups:
+        for paper in group:
+            key = paper_dedup_key(paper)
+            if key not in merged or paper_catalog_score(paper) > paper_catalog_score(
+                merged[key]
+            ):
+                merged[key] = paper
+    by_dir: dict[str, dict] = {}
+    for paper in merged.values():
+        dir_key = paper["dir"]
+        if dir_key not in by_dir or paper_catalog_score(paper) > paper_catalog_score(
+            by_dir[dir_key]
+        ):
+            by_dir[dir_key] = paper
+    return sorted(by_dir.values(), key=lambda p: (p.get("category", ""), p["title"]))
+
+
 def category_entry_suffix(paper: dict) -> str:
     if paper.get("planned"):
         return "待深读"
     return f"[深读笔记]({paper['url']})"
+
+
+def progress_source_label(paper: dict) -> tuple[str, str]:
+    if paper.get("from_progress_md"):
+        return (
+            "PROGRESS.md",
+            "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md",
+        )
+    return (
+        "progress.json",
+        "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json",
+    )
 
 
 def slugify(text: str, max_len: int = 56) -> str:
@@ -183,13 +356,20 @@ def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
     if paper.get("planned"):
         route = paper.get("route") or ""
         route_line = f"- **路线：** {route}\n" if route else ""
+        progress_src = (
+            "[papers/PROGRESS.md](https://github.com/ImChong/"
+            "Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)"
+            if paper.get("from_progress_md")
+            else "[progress.json](https://github.com/ImChong/"
+            "Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)"
+        )
         return f"""# {paper["title"]}
 
 > 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
 
 - **标题：** {paper["title"]}
 - **类型：** paper
-- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
+- **深读状态：** 待撰写（见 {progress_src}）
 - **计划笔记路径：** `{paper["folder"]}/{Path(paper["folder"]).name}.md`
 - **分类：** {paper.get("category", meta.get("_category", ""))}
 {sub_line}{route_line}{arxiv_line}- **入库日期：** 2026-06-11
@@ -207,7 +387,7 @@ def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Humanoid Robot Learning Paper Notebooks · {"PROGRESS.md" if paper.get("from_progress_md") else "progress.json"}]({"https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md" if paper.get("from_progress_md") else "https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json"})
 {f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
 """
     return f"""# {paper["title"]}
@@ -244,6 +424,7 @@ def render_entity_stub(paper: dict, meta: dict, wiki_rel: str, category_rel: str
     fm_arxiv = f'arxiv: "{arxiv}"\n' if arxiv else ""
     title_short = short_label(paper["title"])
     if paper.get("planned"):
+        prog_label, prog_url = progress_source_label(paper)
         return f"""---
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
@@ -254,12 +435,12 @@ updated: 2026-06-11
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - {src_rel}
-summary: "{title_short}：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "{title_short}：列入 Paper Notebooks {prog_label} 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
 # {title_short}
 
-**{paper["title"]}** 已列入 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **progress 待深读** 清单（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**{paper["title"]}** 已列入 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **{prog_label} 待深读** 清单（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
@@ -279,7 +460,7 @@ summary: "{title_short}：列入 Paper Notebooks progress 待深读清单；深�
 | 字段 | 内容 |
 |------|------|
 | 分类 | {paper.get("category", meta.get("_category", ""))} |
-| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
+| 深读状态 | 待撰写（[{prog_label}]({prog_url})） |
 | 计划文件夹 | `{paper["folder"]}` |
 {f"| arXiv | <https://arxiv.org/abs/{arxiv}> |" if arxiv else ""}
 
@@ -295,7 +476,7 @@ summary: "{title_short}：列入 Paper Notebooks progress 待深读清单；深�
 ## 参考来源
 
 - [{source_filename(paper["dir"])}]({src_rel})
-- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- [Humanoid Robot Learning Paper Notebooks · {prog_label}]({prog_url})
 {f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
 
 ## 推荐继续阅读
@@ -493,7 +674,7 @@ def render_root_index(categories: list[tuple[str, dict, int]]) -> str:
             "- 笔记 URL 与分类元数据：`schema/paper-notebook-index.json`、`schema/paper-notebook-categories.json`",
             "- 论文 → wiki 完整映射：`schema/paper-notebook-wiki-full-map.yml`",
             "- 向已有 wiki 页注入深读链接：`make paper-notebook-links`",
-            "- 补齐未映射论文的 sources/实体与分类树：`make paper-notebook-bootstrap`（含 progress.json 待深读条目）",
+            "- 补齐未映射论文的 sources/实体与分类树：`make paper-notebook-bootstrap`（含 progress.json 与 papers/PROGRESS.md）",
             "",
             "## 与其他页面的关系",
             "",
@@ -524,8 +705,12 @@ def main() -> int:
     papers_json = fetch_papers_json()
     papers = valid_papers(build_paper_index())
     note_folders = {p["folder"] for p in papers}
+    existing_keys = {paper_dedup_key(p) for p in papers}
     progress_pending = fetch_progress_pending(note_folders)
-    all_papers = papers + progress_pending
+    for paper in progress_pending:
+        existing_keys.add(paper_dedup_key(paper))
+    progress_md_papers = fetch_progress_md_papers(existing_keys)
+    all_papers = merge_paper_catalog(papers, progress_pending, progress_md_papers)
     meta_by_dir = paper_meta_by_dir(papers_json)
     manual = load_manual_map()
     wiki_index = collect_wiki_index()
@@ -571,9 +756,13 @@ def main() -> int:
                         updated_wiki += 1
 
     # Category pages
+    cat_ids = sorted({cat_id for cat_id in papers_json} | {p["category"] for p in all_papers if p.get("category")})
     cat_entries: list[tuple[str, dict, int]] = []
-    for cat_id in sorted(papers_json.keys()):
-        section = papers_json[cat_id]
+    for cat_id in cat_ids:
+        section = papers_json.get(cat_id) or {
+            "display_name": cat_id.split("_", 1)[-1].replace("_", " "),
+            "zhname": cat_id.split("_", 1)[-1].replace("_", " "),
+        }
         papers_in_cat: list[tuple[dict, str, dict]] = []
         for paper in all_papers:
             if paper.get("category") != cat_id:
@@ -620,7 +809,8 @@ def main() -> int:
         f"updated {updated_wiki}; "
         f"{len(cat_entries)} category pages + root index; "
         f"full map {len(full_map)} / {len(all_papers)} papers "
-        f"({len(progress_pending)} progress pending)"
+        f"({len(progress_pending)} progress.json pending, "
+        f"{len(progress_md_papers)} PROGRESS.md additions)"
     )
     return 0
 
