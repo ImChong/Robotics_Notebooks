@@ -31,6 +31,11 @@ PAPERS_JSON_URL = (
     "https://raw.githubusercontent.com/ImChong/"
     "Humanoid_Robot_Learning_Paper_Notebooks/main/_data/papers.json"
 )
+PROGRESS_JSON_URL = (
+    "https://raw.githubusercontent.com/ImChong/"
+    "Humanoid_Robot_Learning_Paper_Notebooks/main/progress.json"
+)
+ARXIV_ID_RE = re.compile(r"^\d{4}\.\d{4,5}(v\d+)?$")
 
 GENERIC_ABBREV = """| 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
@@ -44,6 +49,66 @@ def fetch_papers_json() -> dict:
 
     with urllib.request.urlopen(PAPERS_JSON_URL, timeout=60) as resp:
         return json.load(resp)
+
+
+def fetch_progress_json() -> dict:
+    import urllib.request
+
+    with urllib.request.urlopen(PROGRESS_JSON_URL, timeout=60) as resp:
+        return json.load(resp)
+
+
+def normalize_arxiv(value: str | None) -> str | None:
+    if not value:
+        return None
+    cleaned = value.strip()
+    return cleaned if ARXIV_ID_RE.match(cleaned) else None
+
+
+def clean_progress_title(title: str) -> str:
+    title = title.strip()
+    if title.lower().startswith("[website],"):
+        return title.split(",", 1)[1].strip()
+    return title
+
+
+def progress_entry_to_paper(entry: dict) -> dict:
+    folder = entry["folder"]
+    dir_name = Path(folder).name
+    note_file = entry.get("note_file") or f"{dir_name}.md"
+    html_name = note_file.rsplit(".", 1)[0] + ".html"
+    parts = folder.split("/")
+    category = parts[1] if len(parts) > 1 else ""
+    return {
+        "folder": folder,
+        "dir": dir_name,
+        "title": clean_progress_title(entry["title"]),
+        "arxiv": normalize_arxiv(entry.get("arxiv")),
+        "url": f"{NOTEBOOK_SITE}/{folder}/{html_name}",
+        "category": category,
+        "planned": True,
+        "route": entry.get("route", ""),
+    }
+
+
+def fetch_progress_pending(existing_folders: set[str]) -> list[dict]:
+    progress = fetch_progress_json()
+    pending: list[dict] = []
+    for entry in progress.get("papers", []):
+        if entry.get("status") != "pending":
+            continue
+        folder = entry.get("folder", "")
+        if not folder or folder in existing_folders:
+            continue
+        pending.append(progress_entry_to_paper(entry))
+    pending.sort(key=lambda p: p["folder"])
+    return pending
+
+
+def category_entry_suffix(paper: dict) -> str:
+    if paper.get("planned"):
+        return "待深读"
+    return f"[深读笔记]({paper['url']})"
 
 
 def slugify(text: str, max_len: int = 56) -> str:
@@ -115,6 +180,36 @@ def render_source(paper: dict, meta: dict, wiki_rel: str) -> str:
     arxiv_line = f"- **arXiv：** <https://arxiv.org/abs/{arxiv}>\n" if arxiv else ""
     sub = meta.get("_subcategory_zh") or ""
     sub_line = f"- **子分类：** {sub}\n" if sub else ""
+    if paper.get("planned"):
+        route = paper.get("route") or ""
+        route_line = f"- **路线：** {route}\n" if route else ""
+        return f"""# {paper["title"]}
+
+> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+
+- **标题：** {paper["title"]}
+- **类型：** paper
+- **深读状态：** 待撰写（见 [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)）
+- **计划笔记路径：** `{paper["folder"]}/{Path(paper["folder"]).name}.md`
+- **分类：** {paper.get("category", meta.get("_category", ""))}
+{sub_line}{route_line}{arxiv_line}- **入库日期：** 2026-06-11
+- **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
+
+## 核心摘录（策展，非全文）
+
+- 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
+- 知识归纳见 wiki 实体页：[{Path(wiki_rel).stem}](../../{wiki_rel}).
+
+## 对 wiki 的映射
+
+- [{Path(wiki_rel).stem}](../../{wiki_rel})
+- 分类父节点：[{category_wiki_slug(paper.get("category") or meta.get("_category", ""))}](../../wiki/overview/{category_wiki_slug(paper.get("category") or meta.get("_category", ""))}.md)
+
+## 参考来源（原始）
+
+- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+{f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
+"""
     return f"""# {paper["title"]}
 
 > 来源归档（ingest · Humanoid Paper Notebooks 深读笔记）
@@ -148,6 +243,65 @@ def render_entity_stub(paper: dict, meta: dict, wiki_rel: str, category_rel: str
     arxiv = paper.get("arxiv") or meta.get("arxiv")
     fm_arxiv = f'arxiv: "{arxiv}"\n' if arxiv else ""
     title_short = short_label(paper["title"])
+    if paper.get("planned"):
+        return f"""---
+type: entity
+tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
+status: planned
+updated: 2026-06-11
+{fm_arxiv}related:
+  - ../overview/{Path(category_rel).stem}.md
+  - ../overview/humanoid-paper-notebooks-index.md
+sources:
+  - {src_rel}
+summary: "{title_short}：列入 Paper Notebooks progress 待深读清单；深读笔记完成后升格为完整索引实体。"
+---
+
+# {title_short}
+
+**{paper["title"]}** 已列入 [Humanoid Robot Learning Paper Notebooks]({NOTEBOOK_SITE}/index.html) 的 **progress 待深读** 清单（分类：{paper.get("category", meta.get("_category", ""))}）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+
+## 一句话定义
+
+{title_short} 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+
+## 英文缩写速查
+
+{GENERIC_ABBREV}
+
+## 为什么重要
+
+- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
+- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+
+## 核心信息
+
+| 字段 | 内容 |
+|------|------|
+| 分类 | {paper.get("category", meta.get("_category", ""))} |
+| 深读状态 | 待撰写（[progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)） |
+| 计划文件夹 | `{paper["folder"]}` |
+{f"| arXiv | <https://arxiv.org/abs/{arxiv}> |" if arxiv else ""}
+
+## 实验与评测
+
+- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+
+## 与其他页面的关系
+
+- 分类父节点：[{Path(category_rel).stem}](../overview/{Path(category_rel).stem}.md)
+- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+
+## 参考来源
+
+- [{source_filename(paper["dir"])}]({src_rel})
+- [Humanoid Robot Learning Paper Notebooks · progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+{f"- 论文：<https://arxiv.org/abs/{arxiv}>" if arxiv else ""}
+
+## 推荐继续阅读
+
+- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+"""
     return f"""---
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
@@ -260,7 +414,7 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(items, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(f"- [{label}]({wiki_path}) — [深读笔记]({paper['url']})")
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
             lines.append("")
         if no_sub:
             lines.append("### 其他")
@@ -268,13 +422,13 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(no_sub, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(f"- [{label}]({wiki_path}) — [深读笔记]({paper['url']})")
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
             lines.append("")
     else:
         for paper, wiki_rel, _ in sorted(papers_in_cat, key=lambda x: x[0]["title"]):
             label = short_label(paper["title"])
             wiki_path = wiki_rel.replace("wiki/", "../")
-            lines.append(f"- [{label}]({wiki_path}) — [深读笔记]({paper['url']})")
+            lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
         lines.append("")
 
     lines.extend(
@@ -339,7 +493,13 @@ def render_root_index(categories: list[tuple[str, dict, int]]) -> str:
             "- 笔记 URL 与分类元数据：`schema/paper-notebook-index.json`、`schema/paper-notebook-categories.json`",
             "- 论文 → wiki 完整映射：`schema/paper-notebook-wiki-full-map.yml`",
             "- 向已有 wiki 页注入深读链接：`make paper-notebook-links`",
-            "- 补齐未映射论文的 sources/实体与分类树：`make paper-notebook-bootstrap`",
+            "- 补齐未映射论文的 sources/实体与分类树：`make paper-notebook-bootstrap`（含 progress.json 待深读条目）",
+            "",
+            "## 与其他页面的关系",
+            "",
+            "- [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md)",
+            "- [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md)",
+            "- [Ego 9 篇技术地图](./ego-9-papers-technology-map.md)",
             "",
             "## 参考来源",
             "",
@@ -363,6 +523,9 @@ def main() -> int:
 
     papers_json = fetch_papers_json()
     papers = valid_papers(build_paper_index())
+    note_folders = {p["folder"] for p in papers}
+    progress_pending = fetch_progress_pending(note_folders)
+    all_papers = papers + progress_pending
     meta_by_dir = paper_meta_by_dir(papers_json)
     manual = load_manual_map()
     wiki_index = collect_wiki_index()
@@ -371,7 +534,7 @@ def main() -> int:
 
     created_src = created_wiki = updated_wiki = 0
 
-    for paper in papers:
+    for paper in all_papers:
         key = paper["dir"]
         meta = meta_by_dir.get(key, {})
         primary = resolve_primary_wiki(paper, manual, wiki_index, planned)
@@ -412,7 +575,7 @@ def main() -> int:
     for cat_id in sorted(papers_json.keys()):
         section = papers_json[cat_id]
         papers_in_cat: list[tuple[dict, str, dict]] = []
-        for paper in papers:
+        for paper in all_papers:
             if paper.get("category") != cat_id:
                 continue
             wiki_rel = full_map[paper["dir"]][0]
@@ -456,7 +619,8 @@ def main() -> int:
         f"{created_src} sources, {created_wiki} wiki entities; "
         f"updated {updated_wiki}; "
         f"{len(cat_entries)} category pages + root index; "
-        f"full map {len(full_map)} / {len(papers)} papers"
+        f"full map {len(full_map)} / {len(all_papers)} papers "
+        f"({len(progress_pending)} progress pending)"
     )
     return 0
 

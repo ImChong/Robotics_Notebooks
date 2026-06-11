@@ -9,7 +9,7 @@
     "display_name": "Motion Retargeting",
     "zhname": "运动重定向",
     "wiki": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
-    "count": 3
+    "count": 4
   },
   "03_High_Impact_Selection": {
     "display_name": "High Impact Selection",
@@ -21,7 +21,7 @@
     "display_name": "Loco-Manipulation and WBC",
     "zhname": "运动操作与全身控制",
     "wiki": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-    "count": 33
+    "count": 147
   },
   "05_Locomotion": {
     "display_name": "Locomotion",

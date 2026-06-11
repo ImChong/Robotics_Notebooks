@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 Paper Notebooks progress.json 待深读 115 篇：新建 87 个 `wiki/entities/paper-notebook-*` 计划子节点 + sources；更新分类父节点与 full-map（252 篇）
+
+- 数据源：[Humanoid_Robot_Learning_Paper_Notebooks/progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json) 中 `status=pending` 且尚无完整深读笔记的条目
+- 新建：`sources/papers/humanoid_pnb_*.md`（87）、`wiki/entities/paper-notebook-*.md`（87，`status: planned`）
+- 交叉更新：`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`（33→147 篇）、`wiki/overview/paper-notebook-category-02-motion-retargeting.md`、`wiki/overview/humanoid-paper-notebooks-index.md`、`schema/paper-notebook-wiki-full-map.yml`
+- 工具：`make paper-notebook-bootstrap`；`make ci-preflight` 通过
+
 ## [2026-06-11] structural | scripts: preflight 提速（Louvain 图谱、lint 去重、stale 规则、bump-wiki-from-sources）
 
 ## [2026-06-11] ingest | sources/papers/rma_arxiv_2107_04034.md — RMA（RSS 2021）论文/项目页/rl_locomotion 代码入库；沉淀 wiki/entities/paper-rma-rapid-motor-adaptation.md；交叉更新 privileged-training、sim2real、locomotion

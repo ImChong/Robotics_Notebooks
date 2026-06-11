@@ -2,7 +2,7 @@
 
 ## [2026-06-11] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **86** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -85,10 +85,95 @@
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（86 个）
+- wiki/entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md
+- wiki/entities/paper-notebook-a-survey-of-behavior-foundation-model.md
+- wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md
+- wiki/entities/paper-notebook-adamimic.md
+- wiki/entities/paper-notebook-amo.md
+- wiki/entities/paper-notebook-being-0.md
+- wiki/entities/paper-notebook-commanding-humanoid-by-free-form-language.md
+- wiki/entities/paper-notebook-coordinated-humanoid-manipulation-with-choice-po.md
+- wiki/entities/paper-notebook-demohlm.md
+- wiki/entities/paper-notebook-discovering-self-protective-falling-policy-for-h.md
+- wiki/entities/paper-notebook-dreamcontrol.md
+- wiki/entities/paper-notebook-embracing-bulky-objects-with-humanoid-robots.md
+- wiki/entities/paper-notebook-emotion.md
+- wiki/entities/paper-notebook-emp.md
+- wiki/entities/paper-notebook-falcon.md
+- wiki/entities/paper-notebook-fame.md
+- wiki/entities/paper-notebook-from-experts-to-a-generalist.md
+- wiki/entities/paper-notebook-from-language-to-locomotion.md
+- wiki/entities/paper-notebook-from-motion-to-behavior.md
+- wiki/entities/paper-notebook-from-w1.md
+- wiki/entities/paper-notebook-gbc.md
+- wiki/entities/paper-notebook-general-motion-tracking-for-humanoid-whole-body.md
+- wiki/entities/paper-notebook-gmt.md
+- wiki/entities/paper-notebook-h2-compact.md
+- wiki/entities/paper-notebook-hafo.md
+- wiki/entities/paper-notebook-harmon.md
+- wiki/entities/paper-notebook-hierarchical-intention-aware-expressive-motion-g.md
+- wiki/entities/paper-notebook-hifar.md
+- wiki/entities/paper-notebook-hitter.md
+- wiki/entities/paper-notebook-hmc.md
+- wiki/entities/paper-notebook-hub.md
+- wiki/entities/paper-notebook-hube.md
+- wiki/entities/paper-notebook-human-humanoid-robots-cross-embodiment-behavior.md
+- wiki/entities/paper-notebook-humanoid-whole-body-badminton-via-multi-stage-re.md
+- wiki/entities/paper-notebook-humanoidexo.md
+- wiki/entities/paper-notebook-humanoidverse.md
+- wiki/entities/paper-notebook-hypermotion.md
+- wiki/entities/paper-notebook-implicit-kinodynamic-motion-retargeting-for-huma.md
+- wiki/entities/paper-notebook-it-takes-two.md
+- wiki/entities/paper-notebook-jaeger.md
+- wiki/entities/paper-notebook-keep-on-going.md
+- wiki/entities/paper-notebook-kinematics-aware-multi-policy-reinforcement-lear.md
+- wiki/entities/paper-notebook-kungfubot-2.md
+- wiki/entities/paper-notebook-learning-agile-striker-skills-for-humanoid-socce.md
+- wiki/entities/paper-notebook-learning-gentle-humanoid-locomotion-and-end-effe.md
+- wiki/entities/paper-notebook-learning-getting-up-policies-for-real-world-huma.md
+- wiki/entities/paper-notebook-learning-human-humanoid-coordination-for-collabo.md
+- wiki/entities/paper-notebook-learning-humanoid-standing-up-control-across-div.md
+- wiki/entities/paper-notebook-learning-motion-skills-with-adaptive-assistive-c.md
+- wiki/entities/paper-notebook-learning-whole-body-human-humanoid-interaction-f.md
+- wiki/entities/paper-notebook-mobi.md
+- wiki/entities/paper-notebook-mobile-television.md
+- wiki/entities/paper-notebook-one-shot-humanoid-whole-body-motion-learning.md
+- wiki/entities/paper-notebook-opt2skill.md
+- wiki/entities/paper-notebook-physically-consistent-humanoid-loco-manipulation.md
+- wiki/entities/paper-notebook-pyroki.md
+- wiki/entities/paper-notebook-resmimic.md
+- wiki/entities/paper-notebook-robot-crash-course.md
+- wiki/entities/paper-notebook-robot-motion-diffusion-model.md
+- wiki/entities/paper-notebook-seec.md
+- wiki/entities/paper-notebook-signbot.md
+- wiki/entities/paper-notebook-sim-to-real-learning-for-humanoid-box-loco-manip.md
+- wiki/entities/paper-notebook-skillblender.md
+- wiki/entities/paper-notebook-slac.md
+- wiki/entities/paper-notebook-smap.md
+- wiki/entities/paper-notebook-spark.md
+- wiki/entities/paper-notebook-spider.md
+- wiki/entities/paper-notebook-stageact.md
+- wiki/entities/paper-notebook-tact.md
+- wiki/entities/paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md
+- wiki/entities/paper-notebook-towards-adaptable-humanoid-control-via-adaptive.md
+- wiki/entities/paper-notebook-towards-versatile-humanoid-table-tennis.md
+- wiki/entities/paper-notebook-trajbooster.md
+- wiki/entities/paper-notebook-trinity.md
+- wiki/entities/paper-notebook-ulc.md
+- wiki/entities/paper-notebook-uniact.md
+- wiki/entities/paper-notebook-unified-humanoid-fall-safety-policy-from-a-few-d.md
+- wiki/entities/paper-notebook-unitracker.md
+- wiki/entities/paper-notebook-unleashing-humanoid-reaching-potential-via-real.md
+- wiki/entities/paper-notebook-unveiling-the-impact-of-data-and-model-scaling-o.md
+- wiki/entities/paper-notebook-visualmimic.md
+- wiki/entities/paper-notebook-vmp.md
+- wiki/entities/paper-notebook-website-embodied-chain-of-action-reasoning-with.md
+- wiki/entities/paper-notebook-whole-body-dynamic-throwing-with-legged-manipula.md
+- wiki/entities/paper-notebook-whole-body-model-predictive-control-of-legged-ro.md
+- wiki/entities/paper-notebook-wococo.md
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：797/811 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：884/898 (98%) wiki/entity 页有 ingest 来源
