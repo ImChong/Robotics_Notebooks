@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] ingest | sources/papers/perceptive_bfm_corl_2026.md — Perceptive BFM（CoRL 2026）TCRS+PMT 地形感知 BFM；wiki/entities/paper-perceptive-bfm.md 及 behavior-foundation-model / privileged-training / footstep-planning / sonic / stair-obstacle 交叉更新
+
 ## [2026-06-11] structural | wiki/queries/humanoid-soccer-skill-learning-method-selection.md、wiki/entities/paper-omg-omni-modal-humanoid-control.md、wiki/methods/paid-framework.md、wiki/tasks/humanoid-soccer.md — lint 清零 + 人形足球技能学习选型 Query
 
 - 新建 Query：[`wiki/queries/humanoid-soccer-skill-learning-method-selection.md`](wiki/queries/humanoid-soccer-skill-learning-method-selection.md)（PAiD vs RoboNaldo 选型指南；落地高频引用的 paid-framework 交叉链）

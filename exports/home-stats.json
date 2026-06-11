@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-11",
-  "node_count": 811,
-  "edge_count": 5844,
+  "node_count": 812,
+  "edge_count": 5866,
   "coverage": {
-    "covered": 795,
-    "total": 809,
+    "covered": 796,
+    "total": 810,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-perceptive-bfm.md",
+      "detail_id": "entity-paper-perceptive-bfm",
+      "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/humanoid-soccer-skill-learning-method-selection.md",
       "detail_id": "wiki-queries-humanoid-soccer-skill-learning-method-selection",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-beyondmimic.md",
-      "detail_id": "entity-paper-beyondmimic",
-      "label": "BeyondMimic",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-soccer-skill-learning-method-selection.md",
-    "detail_id": "wiki-queries-humanoid-soccer-skill-learning-method-selection",
-    "label": "人形足球技能学习方法选型指南",
-    "type": "query",
+    "path": "wiki/entities/paper-perceptive-bfm.md",
+    "detail_id": "entity-paper-perceptive-bfm",
+    "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
+    "type": "entity",
     "recency": "2026-06-11",
     "source": "log.md"
   }

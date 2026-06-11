@@ -3,7 +3,7 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-06-10
+updated: 2026-06-11
 related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-humanoid-gpt.md
@@ -54,6 +54,7 @@ SONIC（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*）
 - **跨具身后训练：** [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)（arXiv:2605.23733）以 **Gear-SONIC 为源骨干**，经运动学对齐 + 解码器侧 LoRA，用约 **1%** 全量训练成本将 WBT 迁到 LimX Oli/Luna 等新机——与本文「单平台 scaling」形成 **预训练 vs 迁移** 对照阅读。
 - **结构 + 数据再 scaling：** [Humanoid-GPT](../entities/paper-humanoid-gpt.md)（arXiv:2606.03985）在 **~2B 帧 + 因果 Transformer + expert DAgger** 上继续推进零样本敏捷跟踪，项目页提供与 SONIC 的 **四类真机并排对比**；可与本文 **~100M + MLP** 路线并列阅读「通才 tracker 前沿」。
 - **WAM 上游接口：** [MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md)（arXiv:2606.09215）将 SONIC **FSQ motion token** 作为 **World Action Model 的统一全身动作空间**，由 Video DiT 单次前向隐状态条件 Motion DiT 预测，再经 SONIC 解码闭环执行 G1 loco-manipulation——与 GR00T+VLA 分层接 SONIC 形成 **动力学先验 vs 语义先验** 对照。
+- **感知地形扩展：** [Perceptive BFM](../entities/paper-perceptive-bfm.md)（CoRL 2026 submission）在 **保留 raw 参考接口** 的 BFM 叙事上叠加 **机器人中心高程感知**；项目页报告无视觉消融 reward **54.6 → 3.6**，可与 SONIC 的 **无感知大规模 tracking** 形成「接口开放 vs 地形落地」对照。
 
 ## 公开材料要点（论文摘要 + 官网，2026-05）
 
