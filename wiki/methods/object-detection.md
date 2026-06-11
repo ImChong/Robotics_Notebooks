@@ -7,9 +7,12 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-06-06
+updated: 2026-06-10
 related:
   - ../concepts/vision-backbones.md
+  - ../comparisons/cnn-vs-vit-backbones.md
+  - ../concepts/visual-representation-for-policy.md
+  - ../queries/perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/paper-resnet-deep-residual-learning.md
   - ../tasks/manipulation.md
@@ -84,6 +87,10 @@ flowchart TB
   end
 ```
 
+### 在感知链中的位置：骨干特征 → 检测头 → 策略输入
+
+检测头并非终点，而是「**骨干特征 → 检测/分割头 → 策略输入**」衔接链的中间环节：上游由 [视觉骨干](../concepts/vision-backbones.md) 提供多尺度特征（骨干族取舍见 [CNN vs ViT 对比](../comparisons/cnn-vs-vit-backbones.md)），检测头将其转成 **结构化的物体框/掩码/ROI**，再作为策略的显式输入——这是与「骨干特征图直喂策略」并列的两条接法之一（见 [视觉表征作为策略输入](../concepts/visual-representation-for-policy.md)）。要结构化物体就接检测头、要整图语义就走表征直喂，三类选型决策树见 [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)。
+
 ## 误差画像与组合
 
 YOLO v1 误差分析（相对 Fast R-CNN）：
@@ -101,6 +108,8 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 
 - [视觉骨干（概念）](../concepts/vision-backbones.md)
 - [CNN vs ViT 视觉骨干（对比）](../comparisons/cnn-vs-vit-backbones.md)
+- [视觉表征作为策略输入（概念）](../concepts/visual-representation-for-policy.md)
+- [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
 - [Manipulation（任务）](../tasks/manipulation.md)
