@@ -1,13 +1,53 @@
 {
-  "generated_at": "2026-06-10",
+  "generated_at": "2026-06-11",
   "node_count": 810,
-  "edge_count": 5831,
+  "edge_count": 5834,
   "coverage": {
     "covered": 794,
     "total": 808,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/vision-backbones.md",
+      "detail_id": "wiki-concepts-vision-backbones",
+      "label": "视觉骨干（Vision Backbones）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/cnn-vs-vit-backbones.md",
+      "detail_id": "wiki-comparisons-cnn-vs-vit-backbones",
+      "label": "CNN vs ViT 视觉骨干：归纳偏置与数据规模的取舍",
+      "type": "comparison",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/perception-backbone-selection.md",
+      "detail_id": "wiki-queries-perception-backbone-selection",
+      "label": "Query：机器人感知骨干/表征选型（分类骨干 vs 检测头 vs 通用预训练表征）",
+      "type": "query",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/visual-representation-for-policy.md",
+      "detail_id": "wiki-concepts-visual-representation-for-policy",
+      "label": "视觉表征作为策略输入（Visual Representation for Policy）",
+      "type": "concept",
+      "recency": "2026-06-10",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-bfm-zero.md",
       "detail_id": "entity-paper-bfm-zero",
@@ -127,53 +167,13 @@
       "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-twist.md",
-      "detail_id": "entity-paper-twist",
-      "label": "TWIST",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-resmimic.md",
-      "detail_id": "entity-paper-resmimic",
-      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/bfm-41-papers-technology-map.md",
-      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-      "label": "BFM 技术地图：41 篇论文的五类问题视角",
-      "type": "overview",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/bfm-category-02-goal-conditioned-learning.md",
-      "detail_id": "wiki-overview-bfm-category-02-goal-conditioned-learning",
-      "label": "BFM 分类 02：Goal-conditioned 学习",
-      "type": "overview",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bfm-zero.md",
-    "detail_id": "entity-paper-bfm-zero",
-    "label": "BFM-Zero",
-    "type": "entity",
+    "path": "wiki/concepts/vision-backbones.md",
+    "detail_id": "wiki-concepts-vision-backbones",
+    "label": "视觉骨干（Vision Backbones）",
+    "type": "concept",
     "recency": "2026-06-10",
     "source": "log.md"
   }
