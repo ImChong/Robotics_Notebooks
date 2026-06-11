@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] tooling | scripts/scaffold_wiki_page.py、tests/test_scaffold_wiki_page.py — V24 P0「query → wiki 回填脚手架」：新增页面骨架生成脚本与测试
+
+- 新增 [`scripts/scaffold_wiki_page.py`](scripts/scaffold_wiki_page.py)：`type + 标题`（可选 `--slug`）按全库 frontmatter 规范生成骨架——含 `## 英文缩写速查` 落在规范位置（定义之后、为什么重要之前）、`related`/`sources` 占位、三段式正文；query 类型额外含 `**Query 产物**` / `## 参考来源` / `## 关联页面`
+- 复用 `lint_wiki.has_section` / `wiki_abbrev_section.is_abbrev_glossary_well_placed` 做生成后结构自检；`--dry-run` 只打印不落盘、`--force` 控制覆盖
+- 新增 [`tests/test_scaffold_wiki_page.py`](tests/test_scaffold_wiki_page.py) 7 例：结构自检、缩写区块位序、query 标记、frontmatter 键、slug 推断、dry-run 不落盘、写入与防覆盖
+- 验证：新增测试全绿（全量 149 passed）、ruff/format/mypy 通过、`lint_wiki` 基线 51 项不变
+- 勾选 checklist v24 P0「query → wiki 回填脚手架」
+
 ## [2026-06-10] structural | wiki/concepts/vision-backbones.md、wiki/methods/object-detection.md — V24 P1「视觉感知专题交叉补强」：明示「骨干特征 → 检测/分割头 → 策略输入」衔接链并与新页双向回链
 
 - 在 [`vision-backbones.md`](wiki/concepts/vision-backbones.md) 新增「骨干特征 → 检测/分割头 → 策略输入」小节，补回链 [`cnn-vs-vit-backbones.md`](wiki/comparisons/cnn-vs-vit-backbones.md)、[`perception-backbone-selection.md`](wiki/queries/perception-backbone-selection.md)（frontmatter `related` + 关联页面）
