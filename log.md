@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | wiki/queries/humanoid-soccer-skill-learning-method-selection.md、wiki/entities/paper-omg-omni-modal-humanoid-control.md、wiki/methods/paid-framework.md、wiki/tasks/humanoid-soccer.md — lint 清零 + 人形足球技能学习选型 Query
+
+- 新建 Query：[`wiki/queries/humanoid-soccer-skill-learning-method-selection.md`](wiki/queries/humanoid-soccer-skill-learning-method-selection.md)（PAiD vs RoboNaldo 选型指南；落地高频引用的 paid-framework 交叉链）
+- 补强实体：[`wiki/entities/paper-omg-omni-modal-humanoid-control.md`](wiki/entities/paper-omg-omni-modal-humanoid-control.md)（frontmatter 补 code 来源键、正文补「评测与开放进度」段）
+- 交叉更新：[`wiki/methods/paid-framework.md`](wiki/methods/paid-framework.md)、[`wiki/tasks/humanoid-soccer.md`](wiki/tasks/humanoid-soccer.md)
+- 51 页 stale 复核：2026-06-10 去重合并对 source catalog 的链接改写 bump `updated`→2026-06-11（经 review 内容仍准确，非内容重写）
+- 门禁：`make ci-preflight` 通过、lint-report 归零
+
 ## [2026-06-11] tooling | scripts/scaffold_wiki_page.py、tests/test_scaffold_wiki_page.py — V24 P0「query → wiki 回填脚手架」：新增页面骨架生成脚本与测试
 
 - 新增 [`scripts/scaffold_wiki_page.py`](scripts/scaffold_wiki_page.py)：`type + 标题`（可选 `--slug`）按全库 frontmatter 规范生成骨架——含 `## 英文缩写速查` 落在规范位置（定义之后、为什么重要之前）、`related`/`sources` 占位、三段式正文；query 类型额外含 `**Query 产物**` / `## 参考来源` / `## 关联页面`
