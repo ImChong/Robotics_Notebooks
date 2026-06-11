@@ -1,5 +1,27 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | scripts/dedupe_paper_notebook_nodes.py — 全量去重合并 4 对 `paper-notebook-*` 计划子节点与已有深读实体（按 frontmatter arXiv）；`make paper-notebook-dedupe` 复跑零残留
+
+- 合并：`paper-notebook-behavior-foundation-model-for-humanoid-robots` → [`paper-behavior-foundation-model-humanoid.md`](wiki/entities/paper-behavior-foundation-model-humanoid.md)（2509.13780）
+- 合并：`paper-notebook-reinforcement-learning-for-versatile-dynamic-and` → [`paper-cassie-biped-versatile-locomotion-rl.md`](wiki/entities/paper-cassie-biped-versatile-locomotion-rl.md)（2401.16889）
+- 合并：`paper-notebook-real-world-humanoid-locomotion-with-rl` → [`paper-digit-humanoid-locomotion-rl.md`](wiki/entities/paper-digit-humanoid-locomotion-rl.md)（2303.03381）
+- 合并：`paper-notebook-pilot` → [`paper-pilot-perceptive-loco-manipulation.md`](wiki/entities/paper-pilot-perceptive-loco-manipulation.md)（2601.17440）
+- 工具：新增 [`scripts/dedupe_paper_notebook_nodes.py`](scripts/dedupe_paper_notebook_nodes.py)、`make paper-notebook-dedupe`；补强 [`scripts/sync_paper_notebook_links.py`](scripts/sync_paper_notebook_links.py) 多候选 arXiv 评分与 bootstrap 防重建
+- 相关：`schema/paper-notebook-wiki-full-map.yml`、分类父节点表项、`make ci-preflight` 通过
+
+## [2026-06-11] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 papers/PROGRESS.md 全量 563 条：合并 progress.json 后 665 篇入图谱，新建约 380 个 `wiki/entities/paper-notebook-*` 计划子节点；14 类分类父节点扩表
+
+- 数据源：[papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md) + [progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)
+- 工具：`make paper-notebook-bootstrap`；`schema/paper-notebook-wiki-full-map.yml` 扩至 665 篇
+- 相关：`wiki/overview/paper-notebook-category-*.md`、`wiki/overview/humanoid-paper-notebooks-index.md`
+
+## [2026-06-11] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 Paper Notebooks progress.json 待深读 115 篇：新建 87 个 `wiki/entities/paper-notebook-*` 计划子节点 + sources；更新分类父节点与 full-map（252 篇）
+
+- 数据源：[Humanoid_Robot_Learning_Paper_Notebooks/progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json) 中 `status=pending` 且尚无完整深读笔记的条目
+- 新建：`sources/papers/humanoid_pnb_*.md`（87）、`wiki/entities/paper-notebook-*.md`（87，`status: planned`）
+- 交叉更新：`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`（33→147 篇）、`wiki/overview/paper-notebook-category-02-motion-retargeting.md`、`wiki/overview/humanoid-paper-notebooks-index.md`、`schema/paper-notebook-wiki-full-map.yml`
+- 工具：`make paper-notebook-bootstrap`；`make ci-preflight` 通过
+
 ## [2026-06-11] ingest | sources/papers/now_you_see_that_arxiv_2602_06382.md — Now You See That（RSS 2026）8 步深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger；wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md；交叉 humanoid-locomotion / stair-obstacle-perceptive-locomotion
 
 ## [2026-06-11] structural | scripts: preflight 提速（Louvain 图谱、lint 去重、stale 规则、bump-wiki-from-sources）

@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 07：遥操作（6 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 07：遥操作（24 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Teleoperation
@@ -22,12 +22,30 @@ summary: "Paper Notebooks 分类 07：遥操作（6 篇深读笔记索引）。"
 
 ## 本类论文索引
 
+- [A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](../entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md) — 待深读
+- [AvatarPoser](../entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — 待深读
+- [CHILD](../entities/paper-notebook-child-controller-for-humanoid-imitation-and-live.md) — 待深读
+- [CHILD](../entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) — 待深读
+- [CLONE](../entities/paper-bfm-12-clone.md) — 待深读
 - [CLOT](../entities/paper-amp-survey-16-clot.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation.html)
+- [Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation](../entities/paper-notebook-deep-imitation-learning-for-humanoid-loco-manipu.md) — 待深读
+- [Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots](../entities/paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md) — 待深读
+- [EgoPoser](../entities/paper-notebook-egoposer-robust-real-time-egocentric-pose-estima.md) — 待深读
 - [ExtremControl](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html)
+- [Heavy lifting tasks via haptic teleoperation of a wheeled humanoid](../entities/paper-notebook-heavy-lifting-tasks-via-haptic-teleoperation-of.md) — 待深读
+- [High-Speed and Impact Resilient Teleoperation of Humanoid Robots](../entities/paper-notebook-high-speed-and-impact-resilient-teleoperation-of.md) — 待深读
+- [Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots](../entities/paper-notebook-human-robot-collaboration-for-the-remote-control.md) — 待深读
 - [HumanPlus](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans/HumanPlus_Humanoid_Shadowing_and_Imitation_from_Humans.html)
+- [LapSurgie](../entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md) — 待深读
 - [Learning Adaptive Neural Teleoperation for Humanoid Robots](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots/Learning_Adaptive_Neural_Teleoperation_for_Humanoid_Robots.html)
+- [NuExo](../entities/paper-notebook-nuexo-a-wearable-exoskeleton-covering-all-upper.md) — 待深读
 - [SEW-Mimic](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation/SEW-Mimic__Closed-Form_Geometric_Retargeting_Solver_for_Upper_Body_Humanoid_Teleoperation.html)
+- [Stability-Aware Retargeting for Humanoid Multi-Contact Teleoperation](../entities/paper-notebook-stability-aware-retargeting-for-humanoid-multi-c.md) — 待深读
 - [TeleGate](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior/TeleGate__Whole-Body_Humanoid_Teleoperation_via_Gated_Expert_Selection_with_Motion_Prior.html)
+- [TeleOpBench](../entities/paper-notebook-teleopbench-a-simulator-centric-benchmark-for-du.md) — 待深读
+- [Teleoperation of Humanoid Robots](../entities/paper-notebook-teleoperation-of-humanoid-robots-a-survey.md) — 待深读
+- [Whole-Body Bilateral Teleoperation with Multi-Stage Object Parameter Estimation for Wheeled Humanoid Locomanipulation](../entities/paper-notebook-whole-body-bilateral-teleoperation-with-multi-st.md) — 待深读
+- [iCub3 Avatar System](../entities/paper-notebook-icub3-avatar-system-enabling-remote-fully-immers.md) — 待深读
 
 ## 与其他页面的关系
 

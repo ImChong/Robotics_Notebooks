@@ -3,84 +3,84 @@
     "display_name": "Foundational RL",
     "zhname": "基础强化学习",
     "wiki": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-    "count": 15
+    "count": 28
   },
   "02_Motion_Retargeting": {
     "display_name": "Motion Retargeting",
     "zhname": "运动重定向",
     "wiki": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
-    "count": 3
+    "count": 4
   },
   "03_High_Impact_Selection": {
     "display_name": "High Impact Selection",
     "zhname": "高影响力精选",
     "wiki": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
-    "count": 23
+    "count": 37
   },
   "04_Loco-Manipulation_and_WBC": {
     "display_name": "Loco-Manipulation and WBC",
     "zhname": "运动操作与全身控制",
     "wiki": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-    "count": 33
+    "count": 262
   },
   "05_Locomotion": {
     "display_name": "Locomotion",
     "zhname": "行走运动",
     "wiki": "wiki/overview/paper-notebook-category-05-locomotion.md",
-    "count": 9
+    "count": 82
   },
   "06_Manipulation": {
     "display_name": "Manipulation",
     "zhname": "灵巧操作",
     "wiki": "wiki/overview/paper-notebook-category-06-manipulation.md",
-    "count": 6
+    "count": 57
   },
   "07_Teleoperation": {
     "display_name": "Teleoperation",
     "zhname": "遥操作",
     "wiki": "wiki/overview/paper-notebook-category-07-teleoperation.md",
-    "count": 6
+    "count": 24
   },
   "08_Navigation": {
     "display_name": "Navigation",
     "zhname": "导航",
     "wiki": "wiki/overview/paper-notebook-category-08-navigation.md",
-    "count": 6
+    "count": 18
   },
   "09_State_Estimation": {
     "display_name": "State Estimation",
     "zhname": "状态估计",
     "wiki": "wiki/overview/paper-notebook-category-09-state-estimation.md",
-    "count": 6
+    "count": 12
   },
   "10_Sim-to-Real": {
     "display_name": "Sim-to-Real",
     "zhname": "仿真到现实",
     "wiki": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
-    "count": 6
+    "count": 11
   },
   "11_Simulation_Benchmark": {
     "display_name": "Simulation Benchmark",
     "zhname": "仿真与基准",
     "wiki": "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
-    "count": 6
+    "count": 20
   },
   "12_Hardware_Design": {
     "display_name": "Hardware Design",
     "zhname": "硬件设计",
     "wiki": "wiki/overview/paper-notebook-category-12-hardware-design.md",
-    "count": 6
+    "count": 39
   },
   "13_Physics-Based_Animation": {
     "display_name": "Physics-Based Animation",
     "zhname": "物理动画",
     "wiki": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-    "count": 6
+    "count": 31
   },
   "14_Human_Motion": {
     "display_name": "Human Motion",
     "zhname": "人体动作分析与生成",
     "wiki": "wiki/overview/paper-notebook-category-14-human-motion.md",
-    "count": 6
+    "count": 40
   }
 }

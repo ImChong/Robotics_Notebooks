@@ -152,9 +152,32 @@ def collect_wiki_index() -> dict[str, dict[str, set[str]]]:
     }
 
 
+def _entity_pick_score(rel: str) -> tuple[int, int, str]:
+    score = 0
+    if "paper-notebook-" in rel:
+        score -= 100
+    if "paper-bfm-" in rel or "paper-hrl-stack-" in rel or "paper-amp-survey-" in rel:
+        score -= 40
+    if rel.startswith("wiki/methods/"):
+        score -= 10
+    if "behavior-foundation-model" in rel or rel.endswith(
+        "paper-pilot-perceptive-loco-manipulation.md"
+    ):
+        score += 20
+    if (
+        "paper-digit-humanoid-locomotion-rl.md" in rel
+        or "paper-cassie-biped-versatile-locomotion-rl.md" in rel
+    ):
+        score += 15
+    return (-score, len(rel), rel)
+
+
 def pick_entity_or_single(candidates: set[str]) -> list[str]:
     if len(candidates) == 1:
         return [next(iter(candidates))]
+    deep = [c for c in candidates if "/entities/paper-" in c and "paper-notebook-" not in c]
+    if deep:
+        return [sorted(deep, key=_entity_pick_score)[0]]
     entity = sorted(c for c in candidates if "/entities/paper-" in c)
     if len(entity) == 1:
         return entity

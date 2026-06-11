@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 03：高影响力精选（23 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 03：高影响力精选（37 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · High Impact Selection
@@ -44,21 +44,38 @@ summary: "Paper Notebooks 分类 03：高影响力精选（23 篇深读笔记索
 - [Humanoid Parkour Learning](../entities/paper-notebook-humanoid-parkour-learning.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid_Parkour_Learning/Humanoid_Parkour_Learning.html)
 - [Learning Quadrupedal Locomotion over Challenging Terrain](../entities/paper-notebook-learning-quadrupedal-locomotion-over-challenging.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain/Learning_Quadrupedal_Locomotion_over_Challenging_Terrain.html)
 - [Learning Sim-to-Real Humanoid Locomotion in 15 Minutes](../entities/paper-notebook-learning-sim-to-real-humanoid-locomotion-in-15-m.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes/Learning_Sim-to-Real_Humanoid_Locomotion_in_15_Minutes.html)
-- [Real-World Humanoid Locomotion with RL](../entities/paper-notebook-real-world-humanoid-locomotion-with-rl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html)
+- [Real-World Humanoid Locomotion with RL](../entities/paper-digit-humanoid-locomotion-rl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html)
 
 ### 仿真到现实与基座模型
 
 - [ASAP Aligning Simulation and Real-World Physics for Agile Humanoid Skills](../entities/paper-notebook-asap-aligning-simulation-and-real-world-physics.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills/ASAP_Aligning_Simulation_and_Real-World_Physics_for_Agile_Humanoid_Skills.html)
-- [Behavior Foundation Model for Humanoid Robots](../entities/paper-notebook-behavior-foundation-model-for-humanoid-robots.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Behavior_Foundation_Model_for_Humanoid_Robots/Behavior_Foundation_Model_for_Humanoid_Robots.html)
+- [Behavior Foundation Model for Humanoid Robots](../entities/paper-behavior-foundation-model-humanoid.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Behavior_Foundation_Model_for_Humanoid_Robots/Behavior_Foundation_Model_for_Humanoid_Robots.html)
 - [GR00T N1 Humanoid Foundation Model](../entities/paper-hrl-stack-34-gr00t_n1.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/GR00T_N1_Humanoid_Foundation_Model/GR00T_N1_Humanoid_Foundation_Model.html)
 - [Learning Agile and Dynamic Motor Skills for Legged Robots](../entities/paper-notebook-learning-agile-and-dynamic-motor-skills-for-legg.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots/Learning_Agile_and_Dynamic_Motor_Skills_for_Legged_Robots.html)
 
 ### 仿真平台与工具
 
 - [BEHAVIOR Robot Suite Streamlining Real-World Whole-Body Manipulation](../tasks/loco-manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation/BEHAVIOR_Robot_Suite_Streamlining_Real-World_Whole-Body_Manipulation.html)
-- [Humanoid-Gym Zero-Shot Sim2Real Transfer](../entities/humanoid-gym.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
+- [Humanoid-Gym Zero-Shot Sim2Real Transfer](../entities/legged-gym.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
 - [Isaac Lab GPU Simulation](../entities/isaac-gym-isaac-lab.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Isaac_Lab_GPU_Simulation/Isaac_Lab_GPU_Simulation.html)
 - [ProtoMotions3 Open-source Framework for Humanoid Simulation and Control](../entities/protomotions.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control/ProtoMotions3_Open-source_Framework_for_Humanoid_Simulation_and_Control.html)
+
+### 其他
+
+- [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 待深读
+- [Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training](../entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md) — 待深读
+- [Distillation-PPO](../entities/paper-notebook-distillation-ppo-a-novel-two-stage-rl-framework.md) — 待深读
+- [ExBody2](../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md) — 待深读
+- [Expressive Whole-Body Control for Humanoid Robots](../entities/paper-notebook-expressive-whole-body-control-for-humanoid-robot.md) — 待深读
+- [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — 待深读
+- [Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction](../entities/paper-notebook-gait-adaptive-perceptive-humanoid-locomotion-wit.md) — 待深读
+- [Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion](../entities/paper-notebook-gait-conditioned-rl-with-multi-phase-curriculum.md) — 待深读
+- [Learning a Vision-Based Footstep Planner for Hierarchical Walking Control](../entities/paper-notebook-learning-a-vision-based-footstep-planner-for-hie.md) — 待深读
+- [OmniH2O](../entities/paper-hrl-stack-08-omnih2o.md) — 待深读
+- [PHUMA](../entities/dataset-bfm-phuma.md) — 待深读
+- [Reference-Free Sampling-Based Model Predictive Control](../entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md) — 待深读
+- [Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — 待深读
+- [Toward Reliable Sim-to-Real Predictability for MoE-based Robust Quadrupedal Locomotion](../entities/paper-notebook-toward-reliable-sim-to-real-predictability-for-m.md) — 待深读
 
 ## 与其他页面的关系
 

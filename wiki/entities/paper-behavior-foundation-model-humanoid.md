@@ -222,6 +222,7 @@ $$
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Behavior Foundation Model for Humanoid Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Behavior_Foundation_Model_for_Humanoid_Robots/Behavior_Foundation_Model_for_Humanoid_Robots.html)
 - [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) — BFM 论文/项目精选列表（与 TPAMI 综述同步维护）
 - [BFM 项目主页](https://bfm4humanoid.github.io/) — 含 Roundhouse Kick / Side Salto / VR 遥操作演示视频
 - [BFM-Zero（无监督 RL + FB 表示）](https://lecar-lab.github.io/BFM-Zero/) — 同名族但方法谱系另一端
