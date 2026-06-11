@@ -49,6 +49,44 @@ class DetailContentSyncTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_escape_mermaid_for_inner_html_preserves_br_labels(self):
+        """Mermaid htmlLabels use <br/>; escape must entity-encode so innerHTML does not eat tags."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function escapeMermaidForInnerHtml(text)');
+const end = content.indexOf('function convertMermaidFencesInHtmlFragment', start);
+eval(content.slice(start, end));
+function decodeHtmlEntities(value) {
+  return String(value || '')
+    .replace(/&amp;/g, '&')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+}
+const sample = 'gate["Identity gate<br/>$$\\tanh(\\alpha)\\approx 0$$<br/>$$u\' = u + \\Delta u$$"]';
+const escaped = escapeMermaidForInnerHtml(sample);
+if (escaped.includes('<br/>')) throw new Error('raw <br/> must not appear in innerHTML payload');
+if (!escaped.includes('&lt;br/')) throw new Error('expected entity-encoded br');
+const recovered = decodeHtmlEntities(escaped);
+if (!recovered.includes('<br/>')) throw new Error('missing literal <br/> after entity decode');
+if (recovered.includes('Identity gate$$')) throw new Error('line breaks collapsed: ' + recovered);
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_main_js_contains_mermaid_click_zoom_lightbox(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [

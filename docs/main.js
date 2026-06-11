@@ -648,12 +648,11 @@
     return highlightGenericLine(line);
   }
 
-  /** Escape & and < only so Mermaid arrows (-->) stay intact while innerHTML cannot close tags. */
+  /** Escape & and < so innerHTML cannot parse tags; Mermaid htmlLabels need literal <br/> in textContent. */
   function escapeMermaidForInnerHtml(text) {
     return String(text || '')
       .replace(/&/g, '&amp;')
-      // Preserve Mermaid htmlLabels line breaks; escape other '<' for innerHTML safety.
-      .replace(/<(?!br\s*\/?>)/gi, '&lt;');
+      .replace(/</g, '&lt;');
   }
 
   /** 将 HTML 片段内的 ```mermaid 围栏转为可渲染的 .mermaid 节点（路线自测块等）。 */

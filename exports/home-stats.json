@@ -13,7 +13,7 @@
       "detail_id": "entity-paper-perceptive-bfm",
       "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
       "type": "entity",
-      "recency": "2026-06-11",
+      "recency": "2026-06-12",
       "source": "log.md"
     },
     {
@@ -174,7 +174,7 @@
     "detail_id": "entity-paper-perceptive-bfm",
     "label": "Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain",
     "type": "entity",
-    "recency": "2026-06-11",
+    "recency": "2026-06-12",
     "source": "log.md"
   }
 }
