@@ -2,7 +2,7 @@
 
 ## [2026-06-11] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **2** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -34,9 +34,8 @@
 ### ❌ Sources 孤儿（sources/papers 死链）（0 个）
 - 无
 
-### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（2 个）
-- wiki/concepts/sim2real.md (wiki:2026-06-09 < sources/rma_arxiv_2107_04034.md:2026-06-11)
-- wiki/tasks/locomotion.md (wiki:2026-06-06 < sources/rma_arxiv_2107_04034.md:2026-06-11)
+### ⚠️ 陈旧页面（sources 比 wiki 新，建议 review）（0 个）
+- 无
 
 ### ⚠️ 可能过期（updated: 距今 > 180 天）（0 个）
 - 无
