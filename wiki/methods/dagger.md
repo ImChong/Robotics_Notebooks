@@ -1,7 +1,7 @@
 ---
 type: method
 tags: [il, dagger, online-learning, covariate-shift, expert-intervention]
-updated: 2026-06-09
+updated: 2026-06-11
 status: complete
 summary: "DAgger 通过让当前策略访问状态、再由专家回标这些状态，系统性缓解 Behavior Cloning 的分布漂移问题。"
 related:

@@ -22,6 +22,8 @@
 - 交叉更新：`wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md`（33→147 篇）、`wiki/overview/paper-notebook-category-02-motion-retargeting.md`、`wiki/overview/humanoid-paper-notebooks-index.md`、`schema/paper-notebook-wiki-full-map.yml`
 - 工具：`make paper-notebook-bootstrap`；`make ci-preflight` 通过
 
+## [2026-06-11] ingest | sources/papers/now_you_see_that_arxiv_2602_06382.md — Now You See That（RSS 2026）8 步深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger；wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md；交叉 humanoid-locomotion / stair-obstacle-perceptive-locomotion
+
 ## [2026-06-11] structural | scripts: preflight 提速（Louvain 图谱、lint 去重、stale 规则、bump-wiki-from-sources）
 
 ## [2026-06-11] ingest | sources/papers/rma_arxiv_2107_04034.md — RMA（RSS 2021）论文/项目页/rl_locomotion 代码入库；沉淀 wiki/entities/paper-rma-rapid-motor-adaptation.md；交叉更新 privileged-training、sim2real、locomotion

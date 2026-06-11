@@ -65,7 +65,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Learning to Get Up Across Morphologies](../entities/paper-notebook-learning-to-get-up-across-morphologies-zero-shot.md) — 待深读
 - [Learning to Walk and Fly with Adversarial Motion Priors](../entities/paper-notebook-learning-to-walk-and-fly-with-adversarial-motion.md) — 待深读
 - [Learning to Walk in Costume](../entities/paper-notebook-learning-to-walk-in-costume-adversarial-motion-p.md) — 待深读
-- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/paper-digit-humanoid-locomotion-rl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
+- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/paper-anymal-walk-minutes-parallel-drl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
 - [Let Humanoids Hike! Integrative Skill Development on Complex Trails](../entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md) — 待深读
 - [LiPS](../concepts/humanoid-parallel-joint-kinematics.md) — 待深读
 - [LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 待深读
@@ -74,7 +74,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [MoRE](../entities/paper-amp-survey-08-more.md) — 待深读
 - [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 待深读
 - [No More Marching](../entities/paper-notebook-no-more-marching-learning-humanoid-locomotion-fo.md) — 待深读
-- [Now You See That](../tasks/humanoid-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)
+- [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)
 - [Omni-Perception](../entities/paper-notebook-omni-perception-omnidirectional-collision-avoida.md) — 待深读
 - [One Policy but Many Worlds](../entities/paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md) — 待深读
 - [Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running](../entities/paper-notebook-optimizing-bipedal-locomotion-for-the-100m-dash.md) — 待深读
