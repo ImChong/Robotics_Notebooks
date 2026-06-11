@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | scripts/lint_wiki.py — V24 P0「陈旧声明（stale claim）巡检 V1」：新增 `_check_stale_claims` 信息型检查 + 6 例单测 + lint 报告基线快照
+
+- 实现：正文（去 frontmatter / 代码块 / 误区区块）命中「SOTA / state-of-the-art / 当前最强 / 最新」等绝对化措辞，且本页 frontmatter `updated` 早于库内共享 ≥1 个 tag 的更晚页面时，输出 💡 INFO 级提示；列入 `INFO_ONLY_KEYS`，不计入 lint 失败总数、不阻塞 CI
+- 新增：`STALE_CLAIM_PATTERNS`、`_frontmatter_block`、`_frontmatter_tags` 辅助函数；`format_report` 新增「陈旧声明」小节
+- 基线快照：`exports/lint-report.md` 当前 5 条（generative-vision-pretraining / paper-resnet / paper-wem / paper-worldvln / paper-yolo）
+- 测试：`tests/test_lint_wiki_stale_claims.py` 6 例（命中/最新页不报/无共享 tag/无绝对化措辞/代码块忽略/info-only），`pytest -k lint` 41 passed；`ruff check`、`ruff format` 通过
+- 清单：勾选 [`tech-stack-next-phase-checklist-v24.md`](docs/checklists/tech-stack-next-phase-checklist-v24.md) P0 首项
+
 ## [2026-06-11] structural | scripts/dedupe_paper_notebook_nodes.py — 全量去重合并 4 对 `paper-notebook-*` 计划子节点与已有深读实体（按 frontmatter arXiv）；`make paper-notebook-dedupe` 复跑零残留
 
 - 合并：`paper-notebook-behavior-foundation-model-for-humanoid-robots` → [`paper-behavior-foundation-model-humanoid.md`](wiki/entities/paper-behavior-foundation-model-humanoid.md)（2509.13780）

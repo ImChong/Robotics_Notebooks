@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **陈旧声明（stale claim）巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `stale_claim_check`：扫描正文出现「SOTA / 最新 / 当前最强 / state-of-the-art」等绝对化措辞但 frontmatter `updated` 早于库内同主题更晚页面的情形，给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。
+- [x] **陈旧声明（stale claim）巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `stale_claim_check`：扫描正文出现「SOTA / 最新 / 当前最强 / state-of-the-art」等绝对化措辞但 frontmatter `updated` 早于库内同主题更晚页面的情形，给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。（实现 `_check_stale_claims`，按共享 tag 判定同主题；基线快照 5 条；`tests/test_lint_wiki_stale_claims.py` 6 例覆盖）
 - [ ] **缺页概念巡检 V1**：
     - [ ] `scripts/lint_wiki.py` 新增 `missing_concept_page_check`：统计正文中以 `**术语**`/反引号高频出现（≥ N 页引用）但无独立 `wiki/concepts|methods|formalizations` 页的术语，输出"建议新建页"候选清单（INFO 级，不阻塞 CI），作为后续 ingest/query 选题入口。
 - [x] **query → wiki 回填脚手架**：
