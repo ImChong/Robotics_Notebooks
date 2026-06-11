@@ -3942,13 +3942,14 @@
       if (!queryTokens || !queryTokens.length) return '';
       var title = (item.title || '').toLowerCase();
       var summary = (item.summary || '').toLowerCase();
-      var tags = (item.tags || []).map(function(t) { return t.toLowerCase(); });
+      var itemTags = item.tags || [];
 
       // 检查标签命中 (V20 增强)
-      for (var k = 0; k < tags.length; k++) {
+      for (var k = 0; k < itemTags.length; k++) {
+        var tagLower = String(itemTags[k] || '').toLowerCase();
         for (var l = 0; l < queryTokens.length; l++) {
-          if (tags[k].indexOf(queryTokens[l]) >= 0) {
-            return escapeHtml('核心标签命中: ' + tags[k]);
+          if (tagLower.indexOf(queryTokens[l]) >= 0) {
+            return escapeHtml('核心标签命中: ' + itemTags[k]);
           }
         }
       }
@@ -3969,10 +3970,11 @@
       if (!queryTokens || !queryTokens.length) return 'exact';
       var title = String(item.title || '').toLowerCase();
       var path = String(item.path || '').toLowerCase();
-      var tags = (item.tags || []).map(function(t) { return String(t || '').toLowerCase(); });
-      for (var k = 0; k < tags.length; k++) {
+      var itemTags = item.tags || [];
+      for (var k = 0; k < itemTags.length; k++) {
+        var tagLower = String(itemTags[k] || '').toLowerCase();
         for (var l = 0; l < queryTokens.length; l++) {
-          if (tags[k].indexOf(queryTokens[l]) >= 0) return 'exact';
+          if (tagLower.indexOf(queryTokens[l]) >= 0) return 'exact';
         }
       }
       for (var i = 0; i < queryTokens.length; i++) {
