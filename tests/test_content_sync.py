@@ -406,7 +406,7 @@ console.log('ok');
 
     def test_main_js_search_match_explanation_escapes_user_facing_strings(self):
         content = MAIN_JS.read_text(encoding="utf-8")
-        self.assertIn("return escapeHtml('核心标签命中: ' + tags[k]);", content)
+        self.assertIn("return escapeHtml('核心标签命中: ' + itemTags[k]);", content)
         self.assertIn("return escapeHtml('标题命中: ' + t);", content)
 
     def test_main_js_defines_escape_html_once(self):
