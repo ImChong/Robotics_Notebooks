@@ -1,4 +1,4 @@
-.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check paper-notebook-links paper-notebook-bootstrap paper-notebook-summaries rl-sim2sim-demo-links
+.PHONY: lint test ci-test install-hooks format lint-py lint-js typecheck complexity audit-dev catalog export export-check search ingest log coverage graph anki slides fetch badge vectors eval-search ci-preflight ci-check bump-wiki-from-sources paper-notebook-links paper-notebook-bootstrap paper-notebook-summaries rl-sim2sim-demo-links
 
 # 与 .github/workflows/tests.yml 步骤顺序一致（不含 Wiki lint）
 ci-test:
@@ -101,6 +101,9 @@ paper-notebook-summaries:
 
 rl-sim2sim-demo-links:
 	python3 scripts/sync_rl_sim2sim_demo_links.py
+
+bump-wiki-from-sources:
+	python3 scripts/bump_wiki_updated_for_sources.py
 
 ci-preflight:
 	python3 scripts/ci_preflight.py

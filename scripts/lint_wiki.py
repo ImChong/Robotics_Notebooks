@@ -356,11 +356,57 @@ def _build_git_mtime_map() -> dict[Path, float]:
     return mtime_map
 
 
+def _path_has_local_changes(path: Path) -> bool:
+    """工作区相对 HEAD 是否有未提交改动（含 staged）。"""
+    try:
+        rel = path.relative_to(REPO_ROOT).as_posix()
+        result = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), "status", "--porcelain", "--", rel],
+            capture_output=True,
+            text=True,
+            check=False,
+            timeout=10,
+        )
+        return bool(result.stdout.strip())
+    except (subprocess.SubprocessError, OSError, ValueError):
+        return False
+
+
 def _effective_mtime(path: Path, git_mtime_map: dict[Path, float]) -> float:
-    """Git commit time if tracked; otherwise filesystem mtime (uncommitted edits)."""
-    if path in git_mtime_map:
-        return git_mtime_map[path]
-    return path.stat().st_mtime
+    """Git commit time；未跟踪文件或本地有未提交改动时用 max(git, fs)。"""
+    fs_mtime = path.stat().st_mtime
+    git_mtime = git_mtime_map.get(path)
+    if git_mtime is None:
+        return fs_mtime
+    if _path_has_local_changes(path):
+        return max(git_mtime, fs_mtime)
+    return git_mtime
+
+
+def _frontmatter_updated_date(path: Path) -> date | None:
+    """解析 wiki frontmatter 的 updated: YYYY-MM-DD（维护者显式复核日期）。"""
+    try:
+        content = path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+    if not fm_match:
+        return None
+    upd_m = re.search(r"^updated:\s*(\d{4}-\d{2}-\d{2})", fm_match.group(1), re.MULTILINE)
+    if not upd_m:
+        return None
+    try:
+        return date.fromisoformat(upd_m.group(1))
+    except ValueError:
+        return None
+
+
+def _wiki_reviewed_on_or_after_source(wiki_target: Path, src_mtime: float) -> bool:
+    """frontmatter updated 日历日 ≥ source 提交日 → 视为已 review，不报 stale。"""
+    reviewed = _frontmatter_updated_date(wiki_target)
+    if reviewed is None:
+        return False
+    return reviewed >= date.fromtimestamp(src_mtime)
 
 
 def _check_sources_health(results: dict[str, Any]) -> None:
@@ -388,6 +434,8 @@ def _check_sources_health(results: dict[str, Any]) -> None:
             href = m.group(1).split("#")[0]
             wiki_target = (src_file.parent / href).resolve()
             if wiki_target.exists() and wiki_target not in seen_stale:
+                if _wiki_reviewed_on_or_after_source(wiki_target, src_mtime):
+                    continue
                 wiki_mtime = _effective_mtime(wiki_target, git_mtime_map)
                 if src_mtime > wiki_mtime + 86400:
                     seen_stale.add(wiki_target)
@@ -792,6 +840,23 @@ def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
 # ---------------------------------------------------------------------------
 # 主入口
 # ---------------------------------------------------------------------------
+
+
+def coverage_stats(results: dict[str, Any]) -> dict[str, int]:
+    """从 lint 结果提取 Sources 覆盖率，供 home-stats / preflight 复用。"""
+    covered = int(results.get("_ingest_covered", 0))
+    total = int(results.get("_ingest_total", 0))
+    percent = round(covered / total * 100) if total else 0
+    return {"covered": covered, "total": total, "percent": percent}
+
+
+def save_lint_report(results: dict[str, Any], report_path: Path | None = None) -> Path:
+    """将 format_report 写入 exports/lint-report.md。"""
+    target = report_path or (REPO_ROOT / "exports" / "lint-report.md")
+    target.parent.mkdir(exist_ok=True)
+    report = format_report(results)
+    target.write_text("# Wiki 健康报告\n\n" + report, encoding="utf-8")
+    return target
 
 
 def lint() -> dict[str, Any]:

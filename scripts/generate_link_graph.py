@@ -52,7 +52,7 @@ LOG_MD_PATH = REPO_ROOT / "log.md"
 WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
 # 反引号内的 wiki 通配路径，如 `wiki/entities/paper-bfm-*.md`
 WIKI_GLOB_IN_LOG = re.compile(r"`(wiki/[^`]*\*(?:\.md)?)`", re.IGNORECASE)
-# 主社区检测（Girvan-Newman）允许的最大社区数：与历史行为一致。
+# 主社区检测（Louvain）合并后的目标社区数上限：与历史 Girvan-Newman 行为对齐。
 PRIMARY_COMMUNITY_CAP = 8
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
 MAX_COMMUNITIES = 16
@@ -527,32 +527,47 @@ def modularity(partition: list[list[str]], adjacency: dict[str, set[str]]) -> fl
     return score / (2 * edge_count)
 
 
+def _merge_communities_to_cap(
+    partition: list[list[str]],
+    adjacency: dict[str, set[str]],
+    cap: int,
+) -> list[list[str]]:
+    """将 Louvain 过细分区合并到不超过 cap 个社区（优先合并跨边最少的相邻小社区）。"""
+    if len(partition) <= cap:
+        return partition
+
+    groups: list[set[str]] = [set(members) for members in partition]
+    while len(groups) > cap:
+        smallest_idx = min(range(len(groups)), key=lambda i: len(groups[i]))
+        small = groups.pop(smallest_idx)
+        best_j = 0
+        best_cross = -1
+        for j, other in enumerate(groups):
+            cross = sum(
+                1
+                for node in small
+                for neighbor in adjacency.get(node, ())
+                if neighbor in other
+            )
+            if cross > best_cross:
+                best_cross = cross
+                best_j = j
+        groups[best_j].update(small)
+
+    return [sorted(members) for members in groups]
+
+
 def detect_communities(adjacency: dict[str, set[str]]) -> list[list[str]]:
-    working = {node: set(neighbors) for node, neighbors in adjacency.items()}
-    best_partition = connected_components(working)
-    best_score = modularity(best_partition, adjacency)
+    """主社区检测：Louvain（O(n log n) 量级）替代 Girvan-Newman 边介数（O(n³)）。"""
+    if not adjacency:
+        return []
 
-    while sum(len(neighbors) for neighbors in working.values()) > 0:
-        betweenness = edge_betweenness(working)
-        if not betweenness:
-            break
-        max_value = max(betweenness.values())
-        max_edges = sorted(
-            [edge for edge, value in betweenness.items() if value == max_value],
-            key=lambda e: e,
-        )
-        for left, right in max_edges:
-            working[left].discard(right)
-            working[right].discard(left)
-        partition = connected_components(working)
-        if len(partition) > PRIMARY_COMMUNITY_CAP:
-            break
-        score = modularity(partition, adjacency)
-        if len(partition) > 1 and score >= best_score:
-            best_partition = partition
-            best_score = score
+    partition = louvain_communities(adjacency, resolution=LOUVAIN_RESOLUTION)
+    if not partition:
+        partition = connected_components(adjacency)
 
-    refined = refine_oversized_communities(best_partition, adjacency)
+    merged = _merge_communities_to_cap(partition, adjacency, PRIMARY_COMMUNITY_CAP)
+    refined = refine_oversized_communities(merged, adjacency)
     return sorted(refined, key=lambda members: (-len(members), members[0] if members else ""))
 
 

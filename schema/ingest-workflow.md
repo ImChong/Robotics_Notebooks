@@ -116,13 +116,25 @@ make export  # 等价于 python3 scripts/export_minimal.py
 # 同时更新 exports/index-v1.json、exports/site-data-v1.json、docs/sitemap.xml
 ```
 
+### 步骤 7.5：批量 bump 交叉引用 wiki 的 `updated`（推荐）
+
+更新 `sources/papers/*.md` 并改写其中 `wiki/...` 映射后，**先** bump 链到的 wiki 页日历日，再 **一次性 commit**，最后只跑 **一轮** `make ci-preflight`：
+
+```bash
+# 仅 bump 本次改动的 source 所链接的 wiki 页；省略参数则扫描全部 papers
+python3 scripts/bump_wiki_updated_for_sources.py sources/papers/your_new_paper.md
+# 或：make bump-wiki-from-sources
+```
+
+这可避免 lint「sources 比 wiki 新」在多轮 preflight 里反复失败（尤其 agent 在未 commit 时重试）。
+
 ### 步骤 8：健康检查
 
 确认知识库健康状态：
 
 ```bash
-make lint  # 目标：0 issues
-# 输出包含 Sources 覆盖率报告
+make ci-preflight  # 推荐：同步派生文件 + lint + export 质量门（单次约 2–5 分钟）
+# 仅快速体检、不改派生文件时：make lint
 ```
 
 ### 步骤 9：记录到 `log.md`
