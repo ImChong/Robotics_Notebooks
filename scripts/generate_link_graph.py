@@ -52,8 +52,8 @@ LOG_MD_PATH = REPO_ROOT / "log.md"
 WIKI_PATH_IN_LOG = re.compile(r"wiki/(?:[\w./-]+/)+[\w./-]+(?:\.md)?", re.IGNORECASE)
 # 反引号内的 wiki 通配路径，如 `wiki/entities/paper-bfm-*.md`
 WIKI_GLOB_IN_LOG = re.compile(r"`(wiki/[^`]*\*(?:\.md)?)`", re.IGNORECASE)
-# 主社区检测（Louvain）合并后的目标社区数上限：与历史 Girvan-Newman 行为对齐。
-PRIMARY_COMMUNITY_CAP = 8
+# 主社区检测（Louvain）合并后的目标社区数上限（与 MAX_COMMUNITIES 命名席位对齐）。
+PRIMARY_COMMUNITY_CAP = 16
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
