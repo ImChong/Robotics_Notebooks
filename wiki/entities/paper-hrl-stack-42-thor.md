@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "这篇中文文件名是“北京理工：雷神”，论文题目对应 Human-Level Whole-Body Reactions for Intense Contact-Rich Environments。它关注的是强接触环境中的全身反应。"
 related:

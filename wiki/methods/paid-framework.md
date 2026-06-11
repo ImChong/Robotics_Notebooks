@@ -95,6 +95,7 @@ PAiD 的成功关键在于其结构化的训练方案：
 ## 关联页面
 
 - [Humanoid Soccer](../tasks/humanoid-soccer.md)
+- [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md)
 - [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Reinforcement Learning](./reinforcement-learning.md)

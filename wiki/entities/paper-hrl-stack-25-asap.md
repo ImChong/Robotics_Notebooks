@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "ASAP 的完整思想是 Aligning Simulation and Real Physics。它关注敏捷全身动作在仿真和真实之间的动力学偏差。"
 related:

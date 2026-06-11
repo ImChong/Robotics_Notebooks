@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 arxiv: "2601.17507"
 venue: "arXiv"
 summary: "MetaWorld 是一个 hierarchical world model。它把系统分成三层：semantic layer、skill transfer layer、physical layer。"

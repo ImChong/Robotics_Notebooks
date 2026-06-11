@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "HAML 也是单策略多技能路线。"
 related:

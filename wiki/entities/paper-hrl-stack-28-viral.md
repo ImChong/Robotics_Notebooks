@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "VIRAL 做的是 Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation。它要让人形机器人仅凭机载 RGB 摄像头，在仿真中训练后零样本迁移到真实机器人，完成移动抓取和放置任务。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: "project"
 code: https://github.com/NVIDIA/Isaac-GR00T
 summary: "GR00T N1 是这次新增论文里很关键的一篇。它的目标不是再做一个单项 manipulation policy，而是把视觉、语言和动作放进同一个 humanoid foundation model 里。"

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "ALMI 的切入点非常实际：人形机器人的上半身和下半身，在控制里不是同一种角色。"
 related:

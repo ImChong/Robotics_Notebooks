@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-11
 venue: curated
 summary: "MoRE 很适合说明人形 AMP 的下一步。"
 related:

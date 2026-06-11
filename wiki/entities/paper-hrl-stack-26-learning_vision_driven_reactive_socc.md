@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "这篇论文要让人形机器人学习视觉驱动的反应式足球技能。它不是做一个传统规则系统，而是把视觉感知、运动先验和动态控制结合起来，让机器人在真实 RoboCup 类场景中完成更连贯的踢球行为。"
 related:

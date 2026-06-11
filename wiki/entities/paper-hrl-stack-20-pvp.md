@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: "project"
 code: https://github.com/myismyname/SRL4Humanoid
 summary: "PvP 的全称是 Proprioceptive-Privileged Contrastive Representations。它关注的是 whole-body control 中的样本效率和部分可观测问题。"

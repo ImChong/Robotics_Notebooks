@@ -87,6 +87,7 @@ summary: "Humanoid Soccer 是机器人学中最具挑战性的综合任务之一
 
 - [Locomotion](./locomotion.md) — 足球任务的基础
 - [PAiD Framework](../methods/paid-framework.md) — 渐进式感知动作学习
+- [人形足球技能学习方法选型指南](../queries/humanoid-soccer-skill-learning-method-selection.md) — PAiD vs RoboNaldo 选型
 - [RoboNaldo](../entities/paper-robonaldo-humanoid-soccer-shooting.md) — 点级瞄准与高冲量射门课程 RL
 - [HTWK-Gym](../methods/htwk-gym.md) — 足球专项 RL 训练环境
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
