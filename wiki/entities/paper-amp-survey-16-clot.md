@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 arxiv: "2602.15060"
 venue: "arXiv"
 summary: "CLOT 关注长时程全身遥操作。"

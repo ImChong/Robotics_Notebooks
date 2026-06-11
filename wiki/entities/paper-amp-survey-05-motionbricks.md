@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "MotionBricks 比 Kimodo 更靠近机器人。"
 related:

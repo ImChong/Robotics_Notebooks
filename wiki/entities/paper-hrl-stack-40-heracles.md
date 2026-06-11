@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "Heracles 试图连接 precise tracking 和 generative synthesis。它的核心问题是：传统 tracking controller 在正常状态下很好，但当机器人受到强扰动、摔倒或远离参考状态时，继续追踪原始参考动作可能会更糟。"
 related:

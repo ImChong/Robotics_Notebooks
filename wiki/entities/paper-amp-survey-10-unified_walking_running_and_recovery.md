@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 arxiv: "2605.18611"
 venue: "arXiv"
 summary: "这篇是我认为最贴近“人形 AMP 未来”的论文之一。"

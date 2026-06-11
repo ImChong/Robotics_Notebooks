@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "Kimodo 不是机器人控制论文，但它应该放在这里。"
 related:

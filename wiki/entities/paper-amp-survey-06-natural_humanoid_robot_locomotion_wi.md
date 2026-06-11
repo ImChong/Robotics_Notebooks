@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-11
 venue: curated
 summary: "GMP 严格来说不是传统 AMP，但它非常适合作为对照。"
 related:

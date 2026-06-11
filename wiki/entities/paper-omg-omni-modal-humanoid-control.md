@@ -2,7 +2,8 @@
 type: entity
 tags: [paper, humanoid, motion-generation, diffusion, dit, omni-modal, text-to-motion, audio-conditioned, motion-tracking, foundation-model, unitree-g1, tsinghua, mars-lab]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-11
+code: https://github.com/tsinghua-mars-lab/OMG
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/sonic-motion-tracking.md
@@ -107,6 +108,15 @@ flowchart TB
 2. **等于人体文本→运动（HY-Motion / Kimodo）：** 那些工作多在 **SMPL 人体空间**；OMG 目标空间是 **G1 机器人可执行运动**，并含 **音频 / 参考 / 历史** 与 **真机部署** 全栈。
 3. **等于 BFM 端到端 WBC：** [BFM](./paper-behavior-foundation-model-humanoid.md) 强调 **单策略多接口**；OMG 显式 **生成器 + tracker 两层**，更贴近 WBT 流水线里的「参考生产」阶段。
 4. **数据已全开：** 代码已开源，但 **OMG-Data / 预训练权重 / Evaluator** 截至入库日仍 **待 HF 发布**——复现需关注官方更新。
+
+## 评测与开放进度
+
+> 截至入库日，官方**未公布同行评审论文与量化 benchmark 数据**（BibTeX 标注 TBD），以下为可核验的已公开口径：
+
+- **数据规模（已公布）：** OMG-Data 总处理 **1174.66 h**，其中文本标注 **1166.6 h**、人体参考 **958.77 h**、音频条件 **191.6 h**（项目页统计）。
+- **模型规模（已公布）：** OMG-DiT 提供 **50M–1B** 参数配置，文本 encoder 默认 **T5-base**。
+- **评测工具（待发布）：** 仓库规划 **OMG-Evaluator** benchmark 流程，但其依赖的 **OMG-Data 数据集与预训练权重** 标注 **coming soon（HF 待发布）**，因此目前**无法复现官方量化指标**。
+- **可验证证据：** 现阶段主要证据为项目页**一镜到底真机演示**（text / audio / human ref / 组合条件实时切换）与开源训练/推理/**G1 双机部署**代码，定量成功率/跟踪误差等指标需等官方 Evaluator 与权重发布后补录。
 
 ## 与其他工作对比（定性）
 

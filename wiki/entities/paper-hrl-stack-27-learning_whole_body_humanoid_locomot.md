@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, diffusion, motion-tracking, perceptive-locomotion, whole-body, unitree-g1, body-system-stack]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-11
 arxiv: "2604.17335"
 venue: curated
 related:
