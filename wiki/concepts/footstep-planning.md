@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, planning, footstep, contact-sequence, dcm, mpc]
 status: stable
-updated: 2026-06-05
+updated: 2026-06-11
 summary: "Footstep Planning 负责决定腿式机器人下一步踩哪里、踩多久，是地形感知和控制执行之间的关键桥梁。"
 sources:
   - ../../sources/papers/mpc.md
@@ -72,6 +72,10 @@ related:
 ### 5. 规划引导 + RL 融合（FastStair）
 
 [FastStair（arXiv:2601.10365）](../entities/paper-faststair-humanoid-stair-ascent.md) 代表 **model-based foothold 硬约束 + model-free RL** 的折中：GPU 并行 **DCM 离散搜索** 给出最优落脚点，作为 **foothold-tracking reward** 监督 RL 预训练；再经 **低速/高速专家 + LoRA 融合** 覆盖全速域。LimX Oli 实机报告 **指令速度至约 1.65 m/s** 稳定上楼梯——说明步位规划也可作为 **训练期特权信号** 注入端到端策略。
+
+### 6. 离线地形一致参考合成（Perceptive BFM / TCRS）
+
+[Perceptive BFM](../entities/paper-perceptive-bfm.md) 的 **TCRS** 在训练期把 raw 人体片段 + 高程场转为 **接触感知落脚 + MPPI 摆动优化 + 根重建** 的地形一致参考，供盲 teacher 跟踪；部署期 **不查询 TCRS**，仅保留 raw 参考命令并由感知 student 在线修正——把步位/摆动几何前移到 **离线特权监督** 而非在线规划器。
 
 ---
 

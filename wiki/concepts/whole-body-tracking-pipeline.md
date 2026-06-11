@@ -21,6 +21,7 @@ related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-omg-omni-modal-humanoid-control.md
+  - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-resmimic.md
   - ../queries/humanoid-motion-tracking-method-selection.md
