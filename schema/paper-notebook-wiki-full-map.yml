@@ -40,7 +40,7 @@ overrides:
   BFM-Zero__A_Promptable_Behavioral_Foundation_Model_for_Humanoid_Control_Using_Un:
   - wiki/entities/paper-bfm-zero.md
   Behavior_Foundation_Model_for_Humanoid_Robots:
-  - wiki/entities/paper-notebook-behavior-foundation-model-for-humanoid-robots.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   Being-0__A_Humanoid_Robotic_Agent_with_Vision-Language_Models_and_Modular_Skills:
   - wiki/entities/paper-notebook-being-0.md
   Benchmarking_Humanoid_Imitation_Learning_with_Motion_Difficulty:
@@ -115,7 +115,7 @@ overrides:
   EgoHumanoid__Unlocking_In-the-Wild_Loco-Manipulation_with_Robot-Free_Egocentric_:
   - wiki/overview/ego-category-02-human-to-robot.md
   EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video:
-  - wiki/entities/paper-ego-03-egomimic.md
+  - wiki/entities/paper-ego-01-aoe.md
   Embedding_Classical_Balance_Control_Principles_in_RL_for_Humanoid_Recovery:
   - wiki/entities/paper-notebook-embedding-classical-balance-control-principles-i.md
   EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents:
@@ -307,7 +307,7 @@ overrides:
   Learning_to_Ball__Composing_Policies_for_Long-Horizon_Basketball_Moves:
   - wiki/entities/paper-notebook-learning-to-ball.md
   Learning_to_Walk_in_Minutes:
-  - wiki/entities/paper-anymal-walk-minutes-parallel-drl.md
+  - wiki/entities/paper-digit-humanoid-locomotion-rl.md
   Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors:
   - wiki/concepts/state-estimation.md
   LessMimic_Long-Horizon_Humanoid_Interaction_with_Unified_Distance_Field_Representations:
@@ -362,14 +362,14 @@ overrides:
   PHC_Perpetual_Humanoid_Control:
   - wiki/entities/paper-bfm-22-phc.md
   PILOT__A_Perceptive_Integrated_Low-level_Controller_for_Loco-manipulation:
-  - wiki/entities/paper-notebook-pilot.md
+  - wiki/entities/paper-pilot-perceptive-loco-manipulation.md
   PPO_Proximal_Policy_Optimization:
   - wiki/methods/reinforcement-learning.md
   - wiki/methods/policy-optimization.md
   PULSE_Physics-based_Universal_Latent_Space:
   - wiki/entities/zhengyi-luo.md
   Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching:
-  - wiki/entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
+  - wiki/entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   PhysHMR__Learning_Humanoid_Control_Policies_from_Vision_for_Physical_HMR:
   - wiki/entities/paper-notebook-physhmr.md
   PhysHSI__Towards_a_Real-World_Generalizable_and_Natural_Humanoid-Scene_Interacti:
@@ -398,7 +398,7 @@ overrides:
   ReActor__Reinforcement_Learning_for_Physics-Aware_Motion_Retargeting:
   - wiki/entities/paper-notebook-reactor.md
   Real-World_Humanoid_Locomotion_with_RL:
-  - wiki/entities/paper-notebook-real-world-humanoid-locomotion-with-rl.md
+  - wiki/entities/paper-digit-humanoid-locomotion-rl.md
   ResMimic__From_General_Motion_Tracking_to_Humanoid_Whole-body_Loco-Manipulation_:
   - wiki/entities/paper-notebook-resmimic.md
   Retargeting_Matters__General_Motion_Retargeting_for_Humanoid_Motion_Tracking:
@@ -538,7 +538,7 @@ overrides:
   a-mobile-robot-hand-arm-teleoperation-system-by:
   - wiki/entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md
   a-survey-of-behavior-foundation-model-next-gener:
-  - wiki/entities/paper-notebook-a-survey-of-behavior-foundation-model.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   a-systematic-study-of-data-modalities-and-strate:
   - wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md
   a-whole-body-motion-imitation-framework-from-hum:
@@ -560,7 +560,7 @@ overrides:
   aero-hand-open:
   - wiki/entities/paper-notebook-aero-hand-open.md
   agility-meets-stability-versatile-humanoid-contr:
-  - wiki/entities/paper-ams.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   agiloped-agile-open-source-humanoid-robot-for-re:
   - wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md
   ame-2-agile-and-generalized-legged-locomotion-vi:
@@ -600,7 +600,7 @@ overrides:
   beyondmimic-from-motion-tracking-to-versatile-hu:
   - wiki/entities/paper-beyondmimic.md
   bfm-zero-a-promptable-behavioral-foundation-mode:
-  - wiki/entities/paper-bfm-zero.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   bi-level-motion-imitation-for-humanoid-robots:
   - wiki/entities/paper-notebook-bi-level-motion-imitation-for-humanoid-robots.md
   bigym-a-demo-driven-mobile-bi-manual-manipulatio:
@@ -634,7 +634,7 @@ overrides:
   clone-closed-loop-whole-body-humanoid-teleoperat:
   - wiki/entities/paper-bfm-12-clone.md
   closd-closing-the-loop-between-simulation-and-di:
-  - wiki/entities/paper-bfm-39-closd.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   cmr-contractive-mapping-embeddings-for-robust-hu:
   - wiki/entities/paper-notebook-cmr-contractive-mapping-embeddings-for-robust-hu.md
   commanding-humanoid-by-free-form-language-a-larg:
@@ -906,7 +906,7 @@ overrides:
   intention-inferring-tendencies-of-humanoid-robot:
   - wiki/entities/paper-notebook-intention-inferring-tendencies-of-humanoid-robot.md
   intermimic-towards-universal-whole-body-control:
-  - wiki/entities/paper-bfm-15-intermimic.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   interprior-scaling-generative-control-for-physic:
   - wiki/entities/paper-interprior.md
   ironcub-3-the-jet-powered-flying-humanoid-robot:
@@ -930,7 +930,7 @@ overrides:
   kungfubot-physics-based-humanoid-whole-body-cont:
   - wiki/entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md
   langwbc-language-directed-humanoid-whole-body-co:
-  - wiki/entities/paper-bfm-37-langwbc.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   lapsurgie-humanoid-robots-performing-surgery-via:
   - wiki/entities/paper-notebook-lapsurgie-humanoid-robots-performing-surgery-via.md
   lcp-sim-to-real-action-smoothing:
@@ -998,7 +998,7 @@ overrides:
   let-humanoids-hike-integrative-skill-development:
   - wiki/entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md
   leverb-humanoid-whole-body-control-with-latent-v:
-  - wiki/entities/paper-bfm-36-leverb.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   lightning-grasp-high-performance-procedural-gras:
   - wiki/entities/paper-notebook-lightning-grasp-high-performance-procedural-gras.md
   lips-large-scale-humanoid-robot-rl-with-parallel:
@@ -1072,7 +1072,7 @@ overrides:
   open-television-teleoperation-with-immersive-act:
   - wiki/entities/paper-notebook-open-television-teleoperation-with-immersive-act.md
   opening-the-sim-to-real-door-for-humanoid-pixel:
-  - wiki/entities/paper-hrl-stack-29-opening_the_sim_to_real_door_for_hum.md
+  - wiki/entities/paper-doorman-opening-sim2real-door.md
   opt2skill-imitating-dynamically-feasible-whole-b:
   - wiki/entities/paper-notebook-opt2skill.md
   optimizing-bipedal-locomotion-for-the-100m-dash:
@@ -1130,7 +1130,7 @@ overrides:
   reference-free-sampling-based-model-predictive-c:
   - wiki/entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md
   reinforcement-learning-for-versatile-dynamic-and:
-  - wiki/entities/paper-notebook-reinforcement-learning-for-versatile-dynamic-and.md
+  - wiki/entities/paper-digit-humanoid-locomotion-rl.md
   residual-off-policy-rl-for-finetuning-behavior-c:
   - wiki/entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md
   resmimic-from-general-motion-tracking-to-humanoi:
@@ -1178,7 +1178,7 @@ overrides:
   seec-stable-end-effector-control-with-model-enha:
   - wiki/entities/paper-notebook-seec.md
   sentinel-a-fully-end-to-end-language-action-mode:
-  - wiki/entities/paper-sentinel.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   shield-safety-on-humanoids-via-cbfs-in-expectati:
   - wiki/entities/paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md
   signbot-learning-human-to-humanoid-sign-language:
@@ -1256,7 +1256,7 @@ overrides:
   toddlerbot-open-source-ml-compatible-humanoid-pl:
   - wiki/entities/paper-notebook-toddlerbot-open-source-ml-compatible-humanoid-pl.md
   tokenhsi-unified-synthesis-of-physical-human-sce:
-  - wiki/entities/paper-bfm-38-tokenhsi.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   top-time-optimization-policy-for-stable-and-accu:
   - wiki/entities/paper-notebook-top-time-optimization-policy-for-stable-and-accu.md
   toward-humanoid-brain-body-co-design-joint-optim:
@@ -1272,7 +1272,7 @@ overrides:
   towards-versatile-humanoid-table-tennis-unified:
   - wiki/entities/paper-notebook-towards-versatile-humanoid-table-tennis.md
   track-any-motions-under-any-disturbances:
-  - wiki/entities/paper-opentrack.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   trajbooster-boosting-humanoid-whole-body-manipul:
   - wiki/entities/paper-notebook-trajbooster.md
   traversing-narrow-paths-a-two-stage-rl-framework:
@@ -1280,7 +1280,7 @@ overrides:
   trinity-a-modular-humanoid-robot-ai-system:
   - wiki/entities/paper-notebook-trinity.md
   twist-teleoperated-whole-body-imitation-system:
-  - wiki/entities/paper-twist.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   twist2-scalable-portable-and-holistic-humanoid-d:
   - wiki/entities/paper-twist2.md
   ulc-a-unified-and-fine-grained-controller-for-hu:
@@ -1290,7 +1290,7 @@ overrides:
   uniact-unified-motion-generation-and-action-stre:
   - wiki/entities/paper-notebook-uniact.md
   unified-human-scene-interaction-via-prompted-cha:
-  - wiki/entities/paper-bfm-41-unihsi.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   unified-humanoid-fall-safety-policy-from-a-few-d:
   - wiki/entities/paper-notebook-unified-humanoid-fall-safety-policy-from-a-few-d.md
   unified-video-action-model:
@@ -1332,7 +1332,7 @@ overrides:
   wococo-learning-whole-body-humanoid-control-with:
   - wiki/entities/paper-notebook-wococo.md
   zero-shot-whole-body-humanoid-control-via-behavi:
-  - wiki/entities/paper-bfm-02-metamotivo.md
+  - wiki/entities/paper-behavior-foundation-model-humanoid.md
   zeroth-bot:
   - wiki/entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md
   Ψ₀__An_Open_Foundation_Model_Towards_Universal_Humanoid_Loco-Manipulation:

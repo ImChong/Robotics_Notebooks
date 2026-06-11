@@ -669,7 +669,6 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-autoodom</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-avatarposer-articulated-full-body-pose-tracking</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-beamdojo-learning-agile-humanoid-locomotion-on-s</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-behavior-foundation-model-for-humanoid-robots</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-being-0</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-being-h0-vision-language-action-pretraining-from</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-being-m0-5-a-real-time-controllable-vision-langu</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -931,7 +930,6 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-physically-consistent-humanoid-loco-manipulation</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-physics-informed-neural-networks-with-ukf-for-se</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-pico-reconstructing-3d-people-in-contact-with-ob</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-pilot</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-pimbs-efficient-body-schema-learning-for-musculo</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-polygmap-a-perceptive-locomotion-framework-for-h</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-ppf-pre-training-and-preservative-fine-tuning-of</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
@@ -947,10 +945,8 @@
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-rapid-hand-a-robust-affordable-perception-integr</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-reactor</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-real-world-humanoid-locomotion-with-rl</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-reduced-order-model-guided-rl-for-demonstration</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-reference-free-sampling-based-model-predictive-c</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-reinforcement-learning-for-versatile-dynamic-and</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-resmimic</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://imchong.github.io/Robotics_Notebooks/docs/detail.html?id=entity-paper-notebook-rgmp-recurrent-geometric-prior-multimodal-policy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>

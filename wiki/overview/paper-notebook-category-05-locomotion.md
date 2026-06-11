@@ -65,7 +65,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [Learning to Get Up Across Morphologies](../entities/paper-notebook-learning-to-get-up-across-morphologies-zero-shot.md) — 待深读
 - [Learning to Walk and Fly with Adversarial Motion Priors](../entities/paper-notebook-learning-to-walk-and-fly-with-adversarial-motion.md) — 待深读
 - [Learning to Walk in Costume](../entities/paper-notebook-learning-to-walk-in-costume-adversarial-motion-p.md) — 待深读
-- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/paper-anymal-walk-minutes-parallel-drl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
+- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/paper-digit-humanoid-locomotion-rl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
 - [Let Humanoids Hike! Integrative Skill Development on Complex Trails](../entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md) — 待深读
 - [LiPS](../concepts/humanoid-parallel-joint-kinematics.md) — 待深读
 - [LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 待深读
@@ -84,7 +84,7 @@ summary: "Paper Notebooks 分类 05：行走运动（82 篇深读笔记索引）
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 待深读
 - [Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md) — 待深读
 - [Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion](../entities/paper-notebook-reduced-order-model-guided-rl-for-demonstration.md) — 待深读
-- [Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control](../entities/paper-notebook-reinforcement-learning-for-versatile-dynamic-and.md) — 待深读
+- [Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control](../entities/paper-digit-humanoid-locomotion-rl.md) — 待深读
 - [RoboMirror](../entities/paper-notebook-robomirror-understand-before-you-imitate-for-vid.md) — 待深读
 - [Robust Humanoid Walking on Compliant and Uneven Terrain with Deep RL](../entities/paper-notebook-robust-humanoid-walking-on-compliant-and-uneven.md) — 待深读
 - [Robust and Versatile Bipedal Jumping Control through Reinforcement Learning](../entities/paper-notebook-robust-and-versatile-bipedal-jumping-control-thr.md) — 待深读

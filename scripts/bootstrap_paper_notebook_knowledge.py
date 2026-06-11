@@ -252,9 +252,7 @@ def merge_paper_catalog(*groups: list[dict]) -> list[dict]:
     for group in groups:
         for paper in group:
             key = paper_dedup_key(paper)
-            if key not in merged or paper_catalog_score(paper) > paper_catalog_score(
-                merged[key]
-            ):
+            if key not in merged or paper_catalog_score(paper) > paper_catalog_score(merged[key]):
                 merged[key] = paper
     by_dir: dict[str, dict] = {}
     for paper in merged.values():
@@ -340,7 +338,15 @@ def resolve_primary_wiki(
         return manual[key][0]
     if key in planned:
         return planned[key]
+    if paper.get("arxiv"):
+        from sync_paper_notebook_links import pick_entity_or_single
+
+        picked = pick_entity_or_single(wiki_index["arxiv"].get(paper["arxiv"], set()))
+        if picked and "paper-notebook-" not in picked[0]:
+            return picked[0]
     auto = auto_match(paper, wiki_index)
+    if auto and "paper-notebook-" not in auto[0]:
+        return auto[0]
     if auto:
         return auto[0]
     rel = f"wiki/entities/{paper_entity_slug(key)}.md"
@@ -722,7 +728,12 @@ def main() -> int:
     for paper in all_papers:
         key = paper["dir"]
         meta = meta_by_dir.get(key, {})
-        primary = resolve_primary_wiki(paper, manual, wiki_index, planned)
+        paper_for_resolve = dict(paper)
+        if not paper_for_resolve.get("arxiv") and meta.get("arxiv"):
+            paper_for_resolve["arxiv"] = normalize_arxiv(meta["arxiv"])
+        if meta.get("title"):
+            paper_for_resolve["title"] = meta["title"]
+        primary = resolve_primary_wiki(paper_for_resolve, manual, wiki_index, planned)
         targets = manual.get(key) or [primary]
         full_map[key] = targets
 
@@ -756,7 +767,10 @@ def main() -> int:
                         updated_wiki += 1
 
     # Category pages
-    cat_ids = sorted({cat_id for cat_id in papers_json} | {p["category"] for p in all_papers if p.get("category")})
+    cat_ids = sorted(
+        {cat_id for cat_id in papers_json}
+        | {p["category"] for p in all_papers if p.get("category")}
+    )
     cat_entries: list[tuple[str, dict, int]] = []
     for cat_id in cat_ids:
         section = papers_json.get(cat_id) or {

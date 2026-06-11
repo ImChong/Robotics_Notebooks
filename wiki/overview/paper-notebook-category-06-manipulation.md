@@ -42,7 +42,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [EgoDemoGen](../entities/paper-notebook-egodemogen-novel-egocentric-demonstration-genera.md) — 待深读
 - [EgoDex](../entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 待深读
 - [EgoMI](../entities/paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md) — 待深读
-- [EgoMimic](../entities/paper-ego-03-egomimic.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video.html)
+- [EgoMimic](../entities/paper-ego-01-aoe.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video.html)
 - [EgoVLA](../entities/paper-notebook-egovla-learning-vision-language-action-models-fr.md) — 待深读
 - [Endowing GPT-4 with a Humanoid Body](../entities/paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the.md) — 待深读
 - [Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation](../entities/paper-notebook-rgmp-s.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation.html)

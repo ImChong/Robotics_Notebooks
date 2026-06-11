@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-11",
-  "node_count": 1164,
-  "edge_count": 6986,
+  "node_count": 1160,
+  "edge_count": 6975,
   "coverage": {
-    "covered": 1148,
-    "total": 1162,
+    "covered": 1144,
+    "total": 1158,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-cassie-biped-versatile-locomotion-rl.md",
+      "detail_id": "entity-paper-cassie-biped-versatile-locomotion-rl",
+      "label": "Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control（Cassie）",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-digit-humanoid-locomotion-rl.md",
+      "detail_id": "entity-paper-digit-humanoid-locomotion-rl",
+      "label": "Real-World Humanoid Locomotion with Reinforcement Learning（Digit）",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-pilot-perceptive-loco-manipulation.md",
+      "detail_id": "entity-paper-pilot-perceptive-loco-manipulation",
+      "label": "PILOT：非结构化场景感知统一 loco-manipulation 低层控制器",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
       "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md",
-      "detail_id": "entity-paper-notebook-advancing-humanoid-locomotion-mastering-challeng",
-      "label": "Advancing Humanoid Locomotion",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-aero-hand-open.md",
-      "detail_id": "entity-paper-notebook-aero-hand-open",
-      "label": "Aero Hand Open",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md",
-      "detail_id": "entity-paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re",
-      "label": "AGILOped",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md",
-      "detail_id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
-      "label": "AME-2",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
-    "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
-    "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
+    "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
+    "detail_id": "entity-paper-behavior-foundation-model-humanoid",
+    "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
     "type": "entity",
     "recency": "2026-06-11",
     "source": "log.md"

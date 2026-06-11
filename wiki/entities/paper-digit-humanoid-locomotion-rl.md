@@ -90,4 +90,5 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Real-World Humanoid Locomotion with RL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html)
 - [项目页 Learning Humanoid Locomotion](https://learning-humanoid-locomotion.github.io/)
