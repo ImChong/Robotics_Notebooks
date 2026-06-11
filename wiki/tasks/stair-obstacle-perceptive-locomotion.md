@@ -20,6 +20,7 @@ related:
   - ../entities/paper-deep-whole-body-parkour.md
   - ../entities/paper-hiking-in-the-wild.md
   - ../entities/paper-ssr-humanoid-open-world-traversal.md
+  - ../entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - ../entities/paper-pilot-perceptive-loco-manipulation.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
@@ -29,6 +30,7 @@ sources:
   - ../../sources/papers/faststair_arxiv_2601_10365.md
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
   - ../../sources/papers/ssr_arxiv_2605_30770.md
+  - ../../sources/papers/now_you_see_that_arxiv_2602_06382.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/papers/ladderman_arxiv_2606_05873.md
@@ -101,6 +103,7 @@ flowchart TB
 | **有**（高度图 + LiDAR 奖励） | **多地形含下楼** | [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) | VLM 生成环境感知奖励；论文称感知基线未能完成楼梯下降 |
 | **策展** | 综述位 | [Hiking in the Wild](../entities/paper-hiking-in-the-wild.md) | 持续通过楼梯、沟壑、高台等复杂野外地形（感知徒步/跑酷簇） |
 | **有**（36×36 第一视角深度） | **上下楼梯 · 沟/台 · 户外长程** | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) | 想象落脚点 + 潜空间对称 + 分地形 AMP；AgiBot X2 零样本 **1.3 km** 户外；90 cm 沟 / 45 cm 台 |
+| **有**（24×32 立体深度 + 8 步增广） | **双向长楼梯 · 沟/台 · 跑酷** | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) | 特权 height → 深度 DAgger；多 critic/discriminator；**30+ 级楼梯**、RDT-Bench **98.9%**；RSS 2026 |
 | **有**（LiDAR 11×11 高程 + cross-attn） | **楼梯/高台 + 边走边操作** | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) | 单阶段 MoE 全身 LLC；G1 非结构化 loco-manipulation；相对 HOMIE/AMO 更低跟踪误差 |
 | **有**（前+后深度，特权高程蒸馏） | **双向楼梯/坡/垫脚石 + 载荷** | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) | 分地形专家 + DAgger；DFSV/RSM 鲁棒多向；G1 真机 2 kg 载荷、22–30 cm 台阶与 60 cm 缝垫脚石 |
 | **有**（机载深度 + VFM） | **梯子攀爬 · 梯上操作** | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | 单参考 hybrid tracking 多几何专家 + DAgger+RL；RFM/VFM 零样本 sim-to-real；G1 双向 ~3.4 s/踏棍；梯顶 VR 双智能体操作 |
@@ -141,6 +144,7 @@ flowchart TB
 | 四足 **点云前瞻** 楼梯 | [DreamWaQ++](../entities/dreamwaq-plus.md) |
 | 人形 **跑酷技能链** + 机载深度 | [PHP](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) |
 | 人形 **开放世界长程** + 想象落脚 | [SSR](../entities/paper-ssr-humanoid-open-world-traversal.md) |
+| 人形 **立体深度 sim2real** + 特权蒸馏 + 跑酷/长楼梯 | [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) |
 | 人形 **边走边操作** + LiDAR 高程 LLC | [PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) |
 | 人形 **双向/多向** 深度感知 + **载荷** 爬楼梯/垫脚石 | [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) |
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |

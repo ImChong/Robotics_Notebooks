@@ -65,6 +65,7 @@ overrides:
   MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation:
   - wiki/tasks/vision-language-navigation.md
   Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels:
+  - wiki/entities/paper-now-you-see-that-humanoid-vision-locomotion.md
   - wiki/tasks/humanoid-locomotion.md
   OmniH2O_Universal_Whole-Body_Teleoperation:
   - wiki/entities/paper-hrl-stack-08-omnih2o.md
