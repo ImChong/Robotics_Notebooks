@@ -9,6 +9,38 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/queries/humanoid-soccer-skill-learning-method-selection.md",
+      "detail_id": "wiki-queries-humanoid-soccer-skill-learning-method-selection",
+      "label": "人形足球技能学习方法选型指南",
+      "type": "query",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-omg-omni-modal-humanoid-control.md",
+      "detail_id": "entity-paper-omg-omni-modal-humanoid-control",
+      "label": "OMG：Omni-Modal Motion Generation for Generalist Humanoid Control",
+      "type": "entity",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/paid-framework.md",
+      "detail_id": "wiki-methods-paid-framework",
+      "label": "PAiD Framework",
+      "type": "method",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-06-11",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/concepts/vision-backbones.md",
       "detail_id": "wiki-concepts-vision-backbones",
       "label": "视觉骨干（Vision Backbones）",
@@ -129,52 +161,20 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/humanoid-soccer.md",
-      "detail_id": "wiki-tasks-humanoid-soccer",
-      "label": "Humanoid Soccer",
-      "type": "task",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/paid-framework.md",
-      "detail_id": "wiki-methods-paid-framework",
-      "label": "PAiD Framework",
-      "type": "method",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/paper-beyondmimic.md",
       "detail_id": "entity-paper-beyondmimic",
       "label": "BeyondMimic",
       "type": "entity",
       "recency": "2026-06-10",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-sentinel.md",
-      "detail_id": "entity-paper-sentinel",
-      "label": "SENTINEL",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-sonic.md",
-      "detail_id": "entity-paper-sonic",
-      "label": "SONIC",
-      "type": "entity",
-      "recency": "2026-06-10",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/vision-backbones.md",
-    "detail_id": "wiki-concepts-vision-backbones",
-    "label": "视觉骨干（Vision Backbones）",
-    "type": "concept",
-    "recency": "2026-06-10",
+    "path": "wiki/queries/humanoid-soccer-skill-learning-method-selection.md",
+    "detail_id": "wiki-queries-humanoid-soccer-skill-learning-method-selection",
+    "label": "人形足球技能学习方法选型指南",
+    "type": "query",
+    "recency": "2026-06-11",
     "source": "log.md"
   }
 }
