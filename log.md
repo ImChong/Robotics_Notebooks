@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-11] structural | scripts: preflight 提速（Louvain 图谱、lint 去重、stale 规则、bump-wiki-from-sources）
+
 ## [2026-06-11] ingest | sources/papers/rma_arxiv_2107_04034.md — RMA（RSS 2021）论文/项目页/rl_locomotion 代码入库；沉淀 wiki/entities/paper-rma-rapid-motor-adaptation.md；交叉更新 privileged-training、sim2real、locomotion
 
 ## [2026-06-11] structural | wiki/entities/paper-perceptive-bfm.md、docs/main.js — 正文 PMT 公式改 `$...$` 启用 KaTeX 蓝框；修复 Mermaid `<br/>` 渲染语法错误

@@ -52,11 +52,28 @@ def run_command(cmd: list[str], description: str):
 
 
 def main():
-    # 1. 生成图谱数据和统计
-    run_command(["python3", "scripts/generate_link_graph.py"], "生成图谱数据")
+    import argparse
 
-    # 2. 生成首页统计 JSON (内部会调用 lint_wiki.py)
-    run_command(["python3", "scripts/generate_home_stats.py"], "生成首页统计 JSON")
+    parser = argparse.ArgumentParser(description="同步图谱统计、首页 JSON、README 与 docs 硬编码")
+    parser.add_argument(
+        "--skip-graph",
+        action="store_true",
+        help="跳过 generate_link_graph（ci-preflight 已单独跑过时使用）",
+    )
+    parser.add_argument(
+        "--skip-home-stats",
+        action="store_true",
+        help="跳过 generate_home_stats（ci-preflight 已注入 lint coverage 时使用）",
+    )
+    args = parser.parse_args()
+
+    # 1. 生成图谱数据和统计
+    if not args.skip_graph:
+        run_command(["python3", "scripts/generate_link_graph.py"], "生成图谱数据")
+
+    # 2. 生成首页统计 JSON（无 --coverage-json 时会内部跑一次 lint）
+    if not args.skip_home_stats:
+        run_command(["python3", "scripts/generate_home_stats.py"], "生成首页统计 JSON")
 
     # 3. 确保 docs/exports 目录存在并同步图谱相关 JSON（与 make graph 共用逻辑）
     copy_graph_exports_to_docs()
