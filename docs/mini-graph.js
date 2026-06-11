@@ -291,7 +291,7 @@
       var orphans = (stats.orphan_nodes||[]).length;
       statsEl.textContent =
         '全站 ' + totalNodes + ' 节点 · ' + totalEdges + ' 条边 · 孤儿 ' + orphans +
-        ' 个 | 预览：按连接度 Top-' + PREVIEW_TOP_N + ' 枢纽（仅绘子图内连边）';
+        ' 个 | 预览：按连接度 Top-' + PREVIEW_TOP_N + ' 枢纽';
     }).catch(function(){});
   }).catch(function(){});
 })();
