@@ -12,6 +12,7 @@
     formalization: '形式化', '': 'Wiki'
   };
 
+  var PREVIEW_TOP_N = 40;
   var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   var pinnedNode = null;
 
@@ -143,7 +144,7 @@
 
       var topIds = new Set(
         gd.nodes.slice().sort(function(a,b){ return (degreeMap[b.id]||0)-(degreeMap[a.id]||0); })
-        .slice(0,40).map(function(n){ return n.id; })
+        .slice(0, PREVIEW_TOP_N).map(function(n){ return n.id; })
       );
 
       var nodes = gd.nodes.filter(function(n){ return topIds.has(n.id); }).map(function(n){
@@ -288,7 +289,9 @@
       }
 
       var orphans = (stats.orphan_nodes||[]).length;
-      statsEl.textContent = totalNodes + ' 节点 · ' + totalEdges + ' 条边 · 孤儿 ' + orphans + ' 个 | 显示 Top-40';
+      statsEl.textContent =
+        '全站 ' + totalNodes + ' 节点 · ' + totalEdges + ' 条边 · 孤儿 ' + orphans +
+        ' 个 | 预览：按连接度 Top-' + PREVIEW_TOP_N + ' 枢纽（仅绘子图内连边）';
     }).catch(function(){});
   }).catch(function(){});
 })();
