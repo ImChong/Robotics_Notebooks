@@ -60,8 +60,17 @@
 - **对 wiki 的映射：**
   - [sources/sites/bifrost-umi-project.md](../sites/bifrost-umi-project.md)
 
+### 6) 与 TWIST2 / HuMI 等采集范式对照（arXiv Related Works）
+
+- **链接：** <https://arxiv.org/abs/2605.03452> §II-A
+- **摘录要点：** 论文将 **TWIST2、CLONE、Touch Dreaming** 归为 **机器人内环遥操作**（具身一致但成本高）；**EgoHumanoid** 偏 egocentric 人示范迁移；**UMI / HoMMI** 为便携无机器人臂/移动操作；**HuMI** 用 Vive+UMI 夹爪但标定重、重定向与 WBC 紧耦合。**BifrostUMI** 用 **Pico + UMI 夹爪** 做 **全身** 无机器人采集，并 **显式 SKR** 桥接扩散策略与 WBC。
+- **对 wiki 的映射：**
+  - [TWIST2](../../wiki/entities/paper-twist2.md) — 真机便携全身遥操作对照
+  - [BifrostUMI](../../wiki/entities/paper-bifrost-umi.md) — 三层级 visuomotor 分解
+
 ## 当前提炼状态
 
 - [x] arXiv 摘要与项目页 Method / Hardware / Experiments 已摘录
-- [x] wiki 映射：`wiki/entities/paper-bifrost-umi.md`；交叉 [teleoperation](../../wiki/tasks/teleoperation.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)、[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[loco-manipulation](../../wiki/tasks/loco-manipulation.md)
+- [x] arXiv Related Works 与 TWIST2 等采集范式对照已摘录（2026-06-12）
+- [x] wiki 映射：`wiki/entities/paper-bifrost-umi.md`；交叉 [teleoperation](../../wiki/tasks/teleoperation.md)、[motion-retargeting](../../wiki/concepts/motion-retargeting.md)、[diffusion-policy](../../wiki/methods/diffusion-policy.md)、[loco-manipulation](../../wiki/tasks/loco-manipulation.md)、[paper-twist2](../../wiki/entities/paper-twist2.md)
 - [ ] 官方代码发布后补充 `sources/repos/` 条目

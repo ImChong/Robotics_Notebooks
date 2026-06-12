@@ -70,6 +70,7 @@
 | [x] [humanoid_rl_stack_42_catalog.md](papers/humanoid_rl_stack_42_catalog.md) | 具身智能研究室 42 篇 humanoid RL 身体系统栈：独立 `humanoid_rl_stack_*` source + `paper-hrl-stack-*` 实体总索引 |
 | [x] [humanoid_amp_survey_19_catalog.md](papers/humanoid_amp_survey_19_catalog.md) | 具身智能研究室 19 篇 AMP 运动先验：独立 `humanoid_amp_survey_*` source + `paper-amp-survey-*` 实体总索引 |
 | [x] [bifrost_umi_arxiv_2605_03452.md](papers/bifrost_umi_arxiv_2605_03452.md) | BifrostUMI：无机器人示范 + 扩散高层 + SKR + G1 全身 visuomotor（arXiv:2605.03452，BAAI Aether）摘录与 wiki 映射 |
+| [x] [clot_arxiv_2602_15060.md](papers/clot_arxiv_2602_15060.md) | CLOT：闭环全局全身遥操作 + Observation Pre-shift + Transformer+AMP（arXiv:2602.15060，上交/上海 AI Lab）一手摘录与 wiki 映射 |
 | [x] [barkour_arxiv_2305_14654.md](papers/barkour_arxiv_2305_14654.md) | Barkour：四足敏捷障碍课基准 + 专长 PPO + Locomotion-Transformer 蒸馏 + sim2real（arXiv:2305.14654）摘录与 wiki 映射 |
 | [x] [bam_extended_friction_servos_arxiv_2410_08650.md](papers/bam_extended_friction_servos_arxiv_2410_08650.md) | BAM：舵机扩展摩擦 M1–M6 + 摆锤辨识 + MuJoCo 2R 验证（arXiv:2410.08650，ICRA 2025）摘录与 wiki 映射 |
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
@@ -234,6 +235,7 @@
 | [x] [zkf1997_dart.md](repos/zkf1997_dart.md) | DART / DartControl：自回归潜扩散文本→人体运动与潜空间控制官方代码（ICLR 2025，arXiv:2410.05260，ETH） |
 | [x] [zilize-awesome-text-to-motion.md](repos/zilize-awesome-text-to-motion.md) | awesome-text-to-motion：文本驱动单人人体运动生成综述/数据集/模型精选与 GitHub Pages 交互索引（Zilize） |
 | [x] [tencent_hunyuan_hy_motion_1_0.md](repos/tencent_hunyuan_hy_motion_1_0.md) | HY-Motion-1.0：腾讯混元文本→3D 人体运动 DiT+Flow Matching 官方代码与 HF 权重入口 |
+| [x] [twist2.md](repos/twist2.md) | TWIST2：便携全身遥操作与 visuomotor 自主全栈开源（arXiv:2505.02833，Amazon FAR / G1） |
 | [x] [bigai-lift-humanoid.md](repos/bigai-lift-humanoid.md) | LIFT-humanoid：BIGAI 人形 SAC 预训练 + Brax 物理知情世界模型微调开源管线 |
 | [x] [nousresearch_hermes_agent.md](repos/nousresearch_hermes_agent.md) | NousResearch/hermes-agent：常驻自主代理运行时（AIAgent + 网关 + 记忆/技能闭环 + 多沙箱 + 轨迹导出，MIT） |
 | [x] [obra-superpowers.md](repos/obra-superpowers.md) | obra/superpowers：编码代理可组合技能 + TDD / worktree / 子代理交付方法论（多 harness 插件） |
@@ -245,6 +247,7 @@
 | [x] [panniantong_agent_reach.md](repos/panniantong_agent_reach.md) | Panniantong/Agent-Reach：编码代理互联网接入脚手架（CLI + doctor + 可插拔渠道与上游工具链） |
 | [x] [crisp_real2sim_repo.md](repos/crisp_real2sim_repo.md) | CRISP-Real2Sim：ICLR 2026 单目视频 Real2Sim 官方代码入口索引 |
 | [x] [coins.md](repos/coins.md) | COINS：ECCV 2022 语义可控人–场景交互合成 + PROX-S 官方代码（zkf1997/COINS） |
+| [x] [clot.md](repos/clot.md) | CLOT：闭环全局全身遥操作官方实现（arXiv:2602.15060，上交/上海 AI Lab） |
 | [x] [cyoahs-robot-motion-editor.md](repos/cyoahs-robot-motion-editor.md) | cyoahs/robot_motion_editor：浏览器 URDF + CSV 关键帧/曲线编辑，Unitree/Seed 互转（MIT） |
 | [x] [project-instinct-robot-motion-editor.md](repos/project-instinct-robot-motion-editor.md) | project-instinct/robot-motion-editor：Flask + Three.js 的 URDF + NPZ 曲线编辑与平滑（Project Instinct） |
 | [x] [jc-bao-spider-project.md](repos/jc-bao-spider-project.md) | jc-bao/spider-project：SPIDER 论文配套 GitHub Pages 站点源码仓 |
@@ -297,6 +300,7 @@
 | [x] [omniretarget-dataset-huggingface.md](sites/omniretarget-dataset-huggingface.md) | OmniRetarget Dataset（HF）：G1 重定向轨迹 4.0 h（OMOMO + 自采 MoCap；.npz qpos+fps） |
 | [x] [bfm4humanoid-github-io.md](sites/bfm4humanoid-github-io.md) | BFM 项目页 bfm4humanoid.github.io（Roundhouse Kick / Side Salto / VR 遥操作演示，代码 In Coming） |
 | [x] [bifrost-umi-project.md](sites/bifrost-umi-project.md) | BifrostUMI 项目页 baai-aether.github.io/BifrostUMI（三层级方法、采集硬件、G1 实验、BibTeX） |
+| [x] [clot-project.md](sites/clot-project.md) | CLOT 项目页 zhutengjie.github.io/CLOT.github.io（闭环全局遥操作演示；非 clot.github.io） |
 | [x] [businesswire-lingbot-map-2026-04-16.md](sites/businesswire-lingbot-map-2026-04-16.md) | Business Wire：LingBot-Map 媒体发布稿（传播侧参考，性能数字需回查论文） |
 | [x] [cia_can_knowledge_can_classic_and_hs.md](sites/cia_can_knowledge_can_classic_and_hs.md) | CiA CAN knowledge：经典 CAN、HS 物理层、历史与物理层选项索引 |
 | [x] [cia_can_fd_basic_idea.md](sites/cia_can_fd_basic_idea.md) | CiA：CAN FD（Flexible Data Rate）基本思想 |
@@ -359,6 +363,7 @@
 | [x] [worldvln-embodiedcity.md](sites/worldvln-embodiedcity.md) | WorldVLN 项目页 embodiedcity.github.io/WorldVLN（闭环推理、两阶段训练、室内外 UAV 与真机演示，arXiv:2605.15964） |
 | [x] [worldlabs-ai.md](sites/worldlabs-ai.md) | World Labs 官网：Marble / Spark / Marble Labs；Spark 2.0 见 blogs/worldlabs_spark_2_0_streaming_3dgs.md |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
+| [x] [twist2-project.md](sites/twist2-project.md) | TWIST2 项目页 yanjieze.com/projects/TWIST2（颈增广、PICO 遥操作、分层 visuomotor、开源数据；ICRA 2026） |
 | [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 
 ### courses/ — 课程与协议入门归档
