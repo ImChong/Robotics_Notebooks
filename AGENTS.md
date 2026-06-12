@@ -151,7 +151,7 @@
   （这是 Karpathy"compilation beats retrieval"的核心体现：页面本身即溯源）
 - **每个 wiki 页面必须包含 `## 英文缩写速查` 区块**（紧跟一句话定义之后；三列：缩写 / 英文全称 / 简要说明；至少 3 行）。格式见 [schema/page-types.md](schema/page-types.md)；ingest 步骤见 [schema/ingest-workflow.md](schema/ingest-workflow.md)
 - **CI 质量网关（必须通过）**：
-  - 提交前必须本地运行 `make ci-preflight`，它会按固定顺序同步 `index.md`、`exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 与 `docs/index.html`，然后执行 lint/search/export 检查。
+  - 提交前必须本地运行 `make ci-preflight`，它会按固定顺序同步 `index.md`、`exports/`、`docs/exports/`、`docs/search-index.json`、`docs/sitemap.xml`、`README.md` 与 `docs/index.html`，然后执行 lint/search/export 检查。其中大体积站点 JSON 与 sitemap 已 gitignore、**不随提交入库**（Pages 部署时现场生成），preflight 重新生成它们只为本地检查与预览。
   - 若只想确认派生文件是否已经全部提交，运行 `make ci-check`；该命令会在重新生成后发现未提交的统计/导出差异并失败。
   - 不要只手动运行 `make catalog`、`make graph` 或 `make export` 其中一部分；最近的 GitHub Actions 问题主要来自这些派生文件不同步。
   - **严禁使用 `[[...]]` 语法**进行内链（代码块内除外），必须使用标准 `[text](path)` 格式，以确保 `lint_wiki.py` 的入链统计与断链检查准确。
@@ -201,11 +201,11 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 | Wiki health check | `make lint` |
 | Pre-commit preflight (syncs all derived files + checks) | `make ci-preflight` |
 | Unit tests only | `make test` |
-| Serve static site locally | `cd docs && python3 -m http.server 8080` |
+| Serve static site locally | `make export graph && cd docs && python3 -m http.server 8080`（站点 JSON 不入库，先生成约 40s） |
 
 ### Before committing wiki changes
 
-Always run `make ci-preflight` — it regenerates derived files (`index.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data.
+Always run `make ci-preflight` — it regenerates derived files (`index.md`, `exports/`, `docs/exports/`, search index, sitemap, README stats, `docs/index.html`) and then runs lint + export checks. Committing without this causes CI failures from stale derived data. Note: the large site JSONs and sitemap are gitignored (generated at Pages deploy time) — only the small derived files (stats, badges, `index.md`) still need to be committed.
 
 **ingest 提速**：交叉更新多个 wiki 后先 `make bump-wiki-from-sources`（或 `bump_wiki_updated_for_sources.py` 指定本次 `sources/papers/...`），再 commit，最后 **只跑一轮** `make ci-preflight`（preflight 内 lint 只执行一次；图谱社区检测已改用 Louvain，全库约 2–5 分钟量级）。
 

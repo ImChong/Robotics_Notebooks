@@ -57,6 +57,13 @@ jobs:
       - name: ESLint docs/main.js
         run: npm run lint:js
 
+      # 快照测试（test_community_naming / test_wiki_roadmaps_export）读取
+      # exports/link-graph.json 与 exports/site-data-v1.json，二者不再入库，先生成
+      - name: Generate export snapshots for tests
+        run: |
+          python3 scripts/export_minimal.py
+          python3 scripts/generate_link_graph.py
+
       - name: Pytest with coverage
         env:
           PYTHONPATH: scripts

@@ -49,7 +49,9 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add exports/ docs/exports/ docs/search-index.json docs/sitemap.xml index.md README.md
+          # 大体积站点 JSON 与 sitemap 已改为 pages.yml 部署时生成（见 .gitignore），
+          # 此处仅提交仍入库的小型派生文件（统计、徽章、目录等）
+          git add exports/ docs/exports/ index.md README.md
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

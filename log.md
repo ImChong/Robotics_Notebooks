@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] structural | 站点大 JSON（search-index/index-v1/site-data-v1/link-graph×2 份）与 sitemap 移出 git，改为 pages.yml 部署时生成；export.yml 仅提交小型派生文件；tests.yml pytest 前生成快照；修复 archive v3–v9 共 7 处 Karpathy Wiki 断链
+
 ## [2026-06-12] ingest | sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md + robocup_spl + artemis — 人形机器人群控一手资料；wiki/concepts/humanoid-multi-robot-coordination.md wiki/entities/paper-humanoid-soccer-swarm-intelligence.md wiki/tasks/humanoid-soccer.md
 
 ## [2026-06-12] structural | docs/checklists 清理首批 — v1–v23 归档至 archive/、移除 PR 验证截图产物、.obsidian/workspace.json 停止跟踪、删除 .codex、AGENTS.md 清单指针 v23→v24；详见 docs/change-log.md

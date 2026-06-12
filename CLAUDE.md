@@ -79,8 +79,9 @@ Strong success criteria let you loop independently. Weak criteria ("make it work
 
 ### 5.1 三步走（与 Cursor Cloud Agent 同流程）
 
-1. **本地起静态服务**（仓库根目录）：
+1. **本地起静态服务**（仓库根目录）。站点大 JSON 与 sitemap 不入库（部署时生成），起服务前先生成一次（约 40 秒，纯标准库）：
    ```bash
+   make export graph
    cd docs && python3 -m http.server 8765
    ```
 2. **构造 detail-page-id 并截图**（推荐使用仓库脚本，自带 timeout + PNG 落盘判据）：
