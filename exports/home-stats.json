@@ -1,178 +1,178 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1160,
-  "edge_count": 7061,
+  "node_count": 1156,
+  "edge_count": 7053,
   "coverage": {
-    "covered": 1144,
-    "total": 1158,
+    "covered": 1140,
+    "total": 1154,
     "percent": 99
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-notebook-visualmimic.md",
-      "detail_id": "entity-paper-notebook-visualmimic",
-      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "path": "wiki/entities/1x-technologies.md",
+      "detail_id": "entity-1x-technologies",
+      "label": "1X Technologies",
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-      "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-      "label": "Paper Notebooks · Foundational RL",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
-      "detail_id": "wiki-overview-paper-notebook-category-02-motion-retargeting",
-      "label": "Paper Notebooks · Motion Retargeting",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
-      "detail_id": "wiki-overview-paper-notebook-category-03-high-impact-selection",
-      "label": "Paper Notebooks · High Impact Selection",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
-      "label": "Paper Notebooks · Loco-Manipulation and WBC",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
-      "label": "Paper Notebooks · Locomotion",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-06-manipulation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-06-manipulation",
-      "label": "Paper Notebooks · Manipulation",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-07-teleoperation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-07-teleoperation",
-      "label": "Paper Notebooks · Teleoperation",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-08-navigation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-08-navigation",
-      "label": "Paper Notebooks · Navigation",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-09-state-estimation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-09-state-estimation",
-      "label": "Paper Notebooks · State Estimation",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
-      "detail_id": "wiki-overview-paper-notebook-category-10-sim-to-real",
-      "label": "Paper Notebooks · Sim-to-Real",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
-      "detail_id": "wiki-overview-paper-notebook-category-11-simulation-benchmark",
-      "label": "Paper Notebooks · Simulation Benchmark",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-12-hardware-design.md",
-      "detail_id": "wiki-overview-paper-notebook-category-12-hardware-design",
-      "label": "Paper Notebooks · Hardware Design",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
-      "label": "Paper Notebooks · Physics-Based Animation",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/paper-notebook-category-14-human-motion.md",
-      "detail_id": "wiki-overview-paper-notebook-category-14-human-motion",
-      "label": "Paper Notebooks · Human Motion",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-paper-notebooks-index.md",
-      "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
-      "label": "Humanoid Paper Notebooks 知识库索引",
-      "type": "overview",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
-      "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
-      "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
-      "type": "concept",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-soccer-swarm-intelligence.md",
-      "detail_id": "entity-paper-humanoid-soccer-swarm-intelligence",
-      "label": "Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams",
+      "path": "wiki/entities/agent-reach.md",
+      "detail_id": "entity-agent-reach",
+      "label": "Agent Reach（Panniantong）",
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/humanoid-soccer.md",
-      "detail_id": "wiki-tasks-humanoid-soccer",
-      "label": "Humanoid Soccer",
-      "type": "task",
+      "path": "wiki/entities/agibot-lingxi-x1.md",
+      "detail_id": "entity-agibot-lingxi-x1",
+      "label": "智元灵犀 X1（Agibot 开源人形）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/aholo-viewer.md",
+      "detail_id": "entity-aholo-viewer",
+      "label": "Aholo Viewer",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/airsim.md",
+      "detail_id": "entity-airsim",
+      "label": "AirSim",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/allegro-hand.md",
+      "detail_id": "entity-allegro-hand",
+      "label": "Allegro Hand (灵巧手)",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/aloha.md",
+      "detail_id": "entity-aloha",
+      "label": "ALOHA (双臂遥操作硬件)",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amp-for-hardware.md",
+      "detail_id": "entity-amp-for-hardware",
+      "label": "AMP_for_hardware",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amp-mjlab.md",
+      "detail_id": "entity-amp-mjlab",
+      "label": "AMP_mjlab (G1 统一 AMP 策略)",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amp-rsl-rl.md",
+      "detail_id": "entity-amp-rsl-rl",
+      "label": "AMP-RSL-RL",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/andrej-karpathy.md",
+      "detail_id": "entity-andrej-karpathy",
+      "label": "Andrej Karpathy",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/anygrasp.md",
+      "detail_id": "entity-anygrasp",
+      "label": "AnyGrasp（抓取感知 SDK）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/anymal.md",
+      "detail_id": "entity-anymal",
+      "label": "ANYmal 四足机器人",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/april-tag.md",
+      "detail_id": "entity-april-tag",
+      "label": "AprilTag（视觉 fiducial 与检测库）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/asimov-v1.md",
+      "detail_id": "entity-asimov-v1",
+      "label": "Asimov v1（开源人形机器人仓库）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/atom01-deploy.md",
+      "detail_id": "entity-atom01-deploy",
+      "label": "Atom01 Deploy",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/atom01-description.md",
+      "detail_id": "entity-atom01-description",
+      "label": "Atom01 Description",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/atom01-firmware.md",
+      "detail_id": "entity-atom01-firmware",
+      "label": "Atom01 Firmware",
+      "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-visualmimic.md",
-    "detail_id": "entity-paper-notebook-visualmimic",
-    "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+    "path": "wiki/entities/1x-technologies.md",
+    "detail_id": "entity-1x-technologies",
+    "label": "1X Technologies",
     "type": "entity",
     "recency": "2026-06-12",
     "source": "log.md"

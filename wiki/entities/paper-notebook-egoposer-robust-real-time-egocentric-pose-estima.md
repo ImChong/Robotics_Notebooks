@@ -10,16 +10,16 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_egoposer-robust-real-time-egocentric-pose-estima.md
-summary: "[EgoPoser：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "EgoPoser：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
-# [EgoPoser
+# EgoPoser
 
 **[EgoPoser: Robust Real-Time Egocentric Pose Estimation from Sparse and Intermittent Observations Everywhere](https://arxiv.org/pdf/2308.06493)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：07_Teleoperation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
-[EgoPoser 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+EgoPoser 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
 
 ## 英文缩写速查
 

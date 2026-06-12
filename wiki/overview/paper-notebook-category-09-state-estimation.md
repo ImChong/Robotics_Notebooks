@@ -30,10 +30,10 @@ summary: "Paper Notebooks 分类 09：状态估计（12 篇深读笔记索引）
 - [InEKFormer](../entities/paper-notebook-inekformer.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots/InEKFormer__A_Hybrid_State_Estimator_for_Humanoid_Robots.html)
 - [Kimera](../entities/kimera.md) — 待深读
 - [Legged Robot State-Estimation Through Combined Forward Kinematic and Preintegrated Contact Factors](../concepts/state-estimation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors/Legged_Robot_State-Estimation_via_Forward_Kinematic_and_Preintegrated_Contact_Factors.html)
-- [ORB-SLAM3](../entities/paper-notebook-orb-slam3-an-accurate-open-source-library-for-vi.md) — 待深读
+- [ORB-SLAM3](../entities/orb-slam3.md) — 见 wiki 实体页
 - [Physics-Informed Neural Networks with Unscented Kalman Filter for Sensorless Joint Torque Estimation in Humanoid Robots](../entities/paper-notebook-physics-informed-neural-networks-with-ukf-for-se.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/09_State_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation/Physics-Informed_Neural_Networks_with_UKF_for_Sensorless_Joint_Torque_Estimation.html)
 - [The invariant extended Kalman filter as a stable observer](../entities/paper-notebook-the-invariant-extended-kalman-filter-as-a-stable.md) — 待深读
-- [VINS-Fusion](../entities/paper-notebook-vins-fusion-an-optimization-based-multi-sensor-s.md) — 待深读
+- [VINS-Fusion](../entities/vins-fusion.md) — 见 wiki 实体页
 
 ## 与其他页面的关系
 

@@ -9,16 +9,16 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_parc-physics-based-augmentation-with-reinforceme.md
-summary: "[PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "PARC：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
-# [PARC
+# PARC
 
 **[PARC: Physics-based Augmentation with Reinforcement Learning for Character Controllers](https://michaelx.io/parc/index.html)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：13_Physics-Based_Animation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
-[PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+PARC 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
 
 ## 英文缩写速查
 

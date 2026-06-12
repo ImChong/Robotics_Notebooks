@@ -15,6 +15,7 @@ from sync_paper_notebook_links import (  # noqa: E402
     SCHEMA_DIR,
     auto_match,
     build_paper_index,
+    clean_display_title,
     collect_wiki_index,
     load_manual_map,
     norm_title,
@@ -89,16 +90,6 @@ def normalize_arxiv(value: str | None) -> str | None:
     return cleaned if ARXIV_ID_RE.match(cleaned) else None
 
 
-def clean_progress_title(title: str) -> str:
-    title = title.strip()
-    link = re.match(r"^\[([^\]]+)\]\([^)]+\)$", title)
-    if link:
-        title = link.group(1).strip()
-    if title.lower().startswith("[website],"):
-        return title.split(",", 1)[1].strip()
-    return title
-
-
 def progress_entry_to_paper(entry: dict) -> dict:
     folder = entry["folder"]
     dir_name = Path(folder).name
@@ -109,7 +100,7 @@ def progress_entry_to_paper(entry: dict) -> dict:
     return {
         "folder": folder,
         "dir": dir_name,
-        "title": clean_progress_title(entry["title"]),
+        "title": clean_display_title(entry["title"]),
         "arxiv": normalize_arxiv(entry.get("arxiv")),
         "url": f"{NOTEBOOK_SITE}/{folder}/{html_name}",
         "category": category,
@@ -167,15 +158,15 @@ def parse_progress_md(text: str) -> list[dict]:
         paper_col = cols[1]
         link = re.search(r"\[([^\]]+)\]\((https://arxiv\.org/abs/[^)]+)\)", paper_col)
         if link:
-            title = clean_progress_title(link.group(1))
+            title = clean_display_title(link.group(1))
             arxiv = normalize_arxiv(link.group(2).rsplit("/", 1)[-1])
         else:
             generic = re.search(r"\[([^\]]+)\]\(([^)]+)\)", paper_col)
             if generic:
-                title = clean_progress_title(generic.group(1))
+                title = clean_display_title(generic.group(1))
                 arxiv = None
             else:
-                title = clean_progress_title(re.sub(r"✅.*$", "", paper_col))
+                title = clean_display_title(re.sub(r"✅.*$", "", paper_col))
                 title = title.replace("🌟", "").strip()
                 arxiv = None
         note_match = re.search(r"\[笔记\]\(([^)]+)\)", paper_col)
@@ -292,7 +283,9 @@ def dedupe_category_entries(
     return list(by_wiki.values())
 
 
-def category_entry_suffix(paper: dict) -> str:
+def category_entry_suffix(paper: dict, wiki_rel: str = "") -> str:
+    if wiki_rel and "paper-notebook-" not in Path(wiki_rel).name:
+        return "见 wiki 实体页"
     if paper.get("planned"):
         return "待深读"
     return f"[深读笔记]({paper['url']})"
@@ -629,7 +622,7 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(items, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}")
             lines.append("")
         if no_sub:
             lines.append("### 其他")
@@ -637,13 +630,13 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(no_sub, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}")
             lines.append("")
     else:
         for paper, wiki_rel, _ in sorted(papers_in_cat, key=lambda x: x[0]["title"]):
             label = short_label(paper["title"])
             wiki_path = wiki_rel.replace("wiki/", "../")
-            lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper)}")
+            lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}")
         lines.append("")
 
     lines.extend(
