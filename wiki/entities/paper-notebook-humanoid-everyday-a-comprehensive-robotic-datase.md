@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
 updated: 2026-06-11
+arxiv: "2510.08807"
+venue: "2025.10"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md
   - ../overview/humanoid-paper-notebooks-index.md

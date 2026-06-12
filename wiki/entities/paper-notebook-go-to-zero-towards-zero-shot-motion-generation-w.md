@@ -3,6 +3,7 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
 updated: 2026-06-11
+venue: "2025.07"
 related:
   - ../overview/paper-notebook-category-14-human-motion.md
   - ../overview/humanoid-paper-notebooks-index.md

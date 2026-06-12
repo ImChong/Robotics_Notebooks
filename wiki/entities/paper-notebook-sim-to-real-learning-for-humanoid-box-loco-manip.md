@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
 updated: 2026-06-11
+arxiv: "2310.03191"
+venue: "2023.10"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
