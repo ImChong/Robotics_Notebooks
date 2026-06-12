@@ -20,6 +20,9 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  15. wiki/entities/paper-* 元数据基线（V23 新增，信息型）：
      - frontmatter 至少含 arxiv/venue/code 三类来源键之一；
      - 正文至少含「方法栈 / 评测 / 与其他工作对比」三段式。
+ 16. 陈旧声明巡检（V24 新增，信息型）：正文含「SOTA / state-of-the-art /
+     当前最强 / 最新」等绝对化措辞，但 frontmatter updated 早于库内共享 tag
+     的更晚页面时，提示复核断言时效性。
 
 用法：
   python3 scripts/lint_wiki.py
@@ -44,6 +47,20 @@ CANONICAL_FACTS_FILE = REPO_ROOT / "schema" / "canonical-facts.json"
 # methods/ 页面入链数超过该阈值即视为"高频引用"，需有对应 queries/comparisons 操作落地
 METHOD_PRACTITIONER_INBOUND_THRESHOLD = 3
 
+# 绝对化/时效性措辞（stale claim 巡检 V1）：正文出现这些词，但该页 frontmatter
+# updated 早于库内共享 tag 的更晚页面时，给出 INFO 级提示，提示复核断言时效性。
+STALE_CLAIM_PATTERNS = [
+    r"SOTA",
+    r"state[- ]of[- ]the[- ]art",
+    r"当前最强",
+    r"目前最强",
+    r"当前最佳",
+    r"目前最佳",
+    r"业界最强",
+    r"迄今最强",
+    r"最新",
+]
+
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
 INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
@@ -51,6 +68,7 @@ INFO_ONLY_KEYS: set[str] = {
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
     "paper_missing_three_sections",
+    "stale_claims",
 }
 
 
@@ -203,6 +221,7 @@ def _empty_results() -> dict[str, Any]:
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
         "paper_missing_three_sections": [],
+        "stale_claims": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -399,6 +418,73 @@ def _frontmatter_updated_date(path: Path) -> date | None:
         return date.fromisoformat(upd_m.group(1))
     except ValueError:
         return None
+
+
+def _frontmatter_block(content: str) -> str:
+    """提取 frontmatter（--- 与 --- 之间的 YAML 文本），无则返回空串。"""
+    m = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+    return m.group(1) if m else ""
+
+
+def _frontmatter_tags(fm_block: str) -> set[str]:
+    """解析 frontmatter 列表式 tags 为小写标签集合（无则空集）。"""
+    m = re.search(r"^tags:\s*\n((?:\s*-\s*.+\n?)+)", fm_block, re.MULTILINE)
+    if not m:
+        return set()
+    tags: set[str] = set()
+    for line in m.group(1).splitlines():
+        tm = re.match(r"\s*-\s*(.+?)\s*$", line)
+        if tm:
+            tags.add(tm.group(1).strip().lower())
+    return tags
+
+
+def _check_stale_claims(pages: list[Path], results: dict[str, Any]) -> None:
+    """陈旧声明（stale claim）巡检 V1（信息型，不阻塞 CI）。
+
+    正文（去除 frontmatter / 代码块 / 误区区块后）出现绝对化或时效性措辞
+    （SOTA / state-of-the-art / 当前最强 / 最新 等），且该页 frontmatter
+    ``updated`` 早于库内共享至少一个 tag 的更晚页面时，提示该断言可能已过时、
+    建议复核。属信息型预警，不计入 lint 失败总数。
+    """
+    meta: list[tuple[Path, date | None, set[str], str]] = []
+    for page in pages:
+        content = page.read_text(encoding="utf-8")
+        body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
+        body = strip_misconception_sections(strip_code_blocks(body))
+        meta.append(
+            (
+                page,
+                _frontmatter_updated_date(page),
+                _frontmatter_tags(_frontmatter_block(content)),
+                body,
+            )
+        )
+
+    for page, upd, tags, body in meta:
+        if upd is None or not tags:
+            continue
+        hit = None
+        for pat in STALE_CLAIM_PATTERNS:
+            m = re.search(pat, body, re.IGNORECASE)
+            if m:
+                hit = m.group(0)
+                break
+        if hit is None:
+            continue
+        newer = next(
+            (
+                (other, o_upd)
+                for other, o_upd, o_tags, _ in meta
+                if other != page and o_upd is not None and o_upd > upd and tags & o_tags
+            ),
+            None,
+        )
+        if newer is not None:
+            results["stale_claims"].append(
+                f"{page.relative_to(REPO_ROOT)}（含绝对化措辞「{hit}」，updated={upd.isoformat()}；"
+                f"同主题更新页 {newer[0].relative_to(REPO_ROOT)} updated={newer[1].isoformat()}）"
+            )
 
 
 def _wiki_reviewed_on_or_after_source(wiki_target: Path, src_mtime: float) -> bool:
@@ -878,6 +964,7 @@ def lint() -> dict[str, Any]:
     _check_methods_entities(pages, results)
     _check_methods_without_practitioner_query(pages, inbound, results)
     _check_paper_entity_metadata(pages, results)
+    _check_stale_claims(pages, results)
 
     return results
 
@@ -955,6 +1042,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "paper_missing_three_sections",
             "paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "stale_claims",
+            "陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）",
             "💡",
         ),
     ]
