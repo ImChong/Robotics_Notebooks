@@ -37,7 +37,6 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [Flow Matching Imitation Learning for Multi-Support Manipulation](../entities/paper-notebook-flow-matching-imitation-learning-for-multi-suppo.md) — 待深读
 - [Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing](../entities/paper-notebook-full-order-sampling-based-mpc-for-torque-level-l.md) — 待深读
 - [GENMO](../methods/genmo.md) — 待深读
-- [Generating Diverse and Natural 3D Human Motions From Text](../entities/paper-notebook-generating-diverse-and-natural-3d-human-motions.md) — 待深读
 - [Generating Diverse and Natural 3D Human Motions from Textual Descriptions](../entities/paper-notebook-humanml3d.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
 - [Go to Zero](../entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — 待深读
 - [Guided Motion Diffusion for Controllable Human Motion Synthesis](../entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) — 待深读
@@ -48,6 +47,7 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 待深读
 - [Learned Motion Matching](../methods/diffusion-motion-generation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Learned_Motion_Matching/Learned_Motion_Matching.html)
 - [Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation](../entities/paper-notebook-learning-differentiable-reachability-maps-for-op.md) — 待深读
+- [Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation](../entities/paper-notebook-learning-humanoid-end-effector-control-for-open.md) — 待深读
 - [MAGNet](../entities/paper-notebook-magnet.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling.html)
 - [MANIKIN](../entities/paper-notebook-manikin-biomechanically-accurate-neural-inverse.md) — 待深读
 - [OmniControl](../entities/paper-notebook-omnicontrol-control-any-joint-at-any-time-for-hu.md) — 待深读

@@ -1,13 +1,133 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1167,
-  "edge_count": 7070,
+  "node_count": 1160,
+  "edge_count": 7050,
   "coverage": {
-    "covered": 1151,
-    "total": 1165,
+    "covered": 1144,
+    "total": 1158,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
+      "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
+      "label": "Paper Notebooks · Foundational RL",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-02-motion-retargeting.md",
+      "detail_id": "wiki-overview-paper-notebook-category-02-motion-retargeting",
+      "label": "Paper Notebooks · Motion Retargeting",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
+      "detail_id": "wiki-overview-paper-notebook-category-03-high-impact-selection",
+      "label": "Paper Notebooks · High Impact Selection",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
+      "detail_id": "wiki-overview-paper-notebook-category-04-loco-manipulation-and-wbc",
+      "label": "Paper Notebooks · Loco-Manipulation and WBC",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
+      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
+      "label": "Paper Notebooks · Locomotion",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-06-manipulation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-06-manipulation",
+      "label": "Paper Notebooks · Manipulation",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-07-teleoperation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-07-teleoperation",
+      "label": "Paper Notebooks · Teleoperation",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-08-navigation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-08-navigation",
+      "label": "Paper Notebooks · Navigation",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-09-state-estimation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-09-state-estimation",
+      "label": "Paper Notebooks · State Estimation",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
+      "detail_id": "wiki-overview-paper-notebook-category-10-sim-to-real",
+      "label": "Paper Notebooks · Sim-to-Real",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-11-simulation-benchmark.md",
+      "detail_id": "wiki-overview-paper-notebook-category-11-simulation-benchmark",
+      "label": "Paper Notebooks · Simulation Benchmark",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-12-hardware-design.md",
+      "detail_id": "wiki-overview-paper-notebook-category-12-hardware-design",
+      "label": "Paper Notebooks · Hardware Design",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
+      "detail_id": "wiki-overview-paper-notebook-category-13-physics-based-animation",
+      "label": "Paper Notebooks · Physics-Based Animation",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-14-human-motion.md",
+      "detail_id": "wiki-overview-paper-notebook-category-14-human-motion",
+      "label": "Paper Notebooks · Human Motion",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-paper-notebooks-index.md",
+      "detail_id": "wiki-overview-humanoid-paper-notebooks-index",
+      "label": "Humanoid Paper Notebooks 知识库索引",
+      "type": "overview",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
       "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
@@ -47,133 +167,13 @@
       "type": "method",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/hil-hybrid-imitation-learning.md",
-      "detail_id": "wiki-methods-hil-hybrid-imitation-learning",
-      "label": "HIL: Hybrid Imitation Learning（混合模仿学习）",
-      "type": "method",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
-      "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
-      "label": "MTRG: Multi-Task Reference and Goal-Driven RL",
-      "type": "method",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bifrost-umi.md",
-      "detail_id": "entity-paper-bifrost-umi",
-      "label": "BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-16-clot.md",
-      "detail_id": "entity-paper-amp-survey-16-clot",
-      "label": "CLOT",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-      "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-      "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-cassie-biped-versatile-locomotion-rl.md",
-      "detail_id": "entity-paper-cassie-biped-versatile-locomotion-rl",
-      "label": "Reinforcement Learning for Versatile, Dynamic, and Robust Bipedal Locomotion Control（Cassie）",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-digit-humanoid-locomotion-rl.md",
-      "detail_id": "entity-paper-digit-humanoid-locomotion-rl",
-      "label": "Real-World Humanoid Locomotion with Reinforcement Learning（Digit）",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-pilot-perceptive-loco-manipulation.md",
-      "detail_id": "entity-paper-pilot-perceptive-loco-manipulation",
-      "label": "PILOT：非结构化场景感知统一 loco-manipulation 低层控制器",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
-      "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
-      "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md",
-      "detail_id": "entity-paper-notebook-a-behavior-architecture-for-fast-humanoid-robot",
-      "label": "A Behavior Architecture for Fast Humanoid Robot Door Traversals",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots.md",
-      "detail_id": "entity-paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots",
-      "label": "A Gait Driven RL Framework for Humanoid Robots",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-hierarchical-framework-for-humanoid-locomotion.md",
-      "detail_id": "entity-paper-notebook-a-hierarchical-framework-for-humanoid-locomotion",
-      "label": "A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md",
-      "detail_id": "entity-paper-notebook-a-hierarchical-model-based-system-for-high-perfo",
-      "label": "ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con.md",
-      "detail_id": "entity-paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con",
-      "label": "A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
-    "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
-    "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
-    "type": "concept",
+    "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
+    "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
+    "label": "Paper Notebooks · Foundational RL",
+    "type": "overview",
     "recency": "2026-06-12",
     "source": "log.md"
   }

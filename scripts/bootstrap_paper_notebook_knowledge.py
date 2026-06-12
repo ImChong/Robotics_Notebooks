@@ -248,20 +248,48 @@ def paper_catalog_score(paper: dict) -> int:
 
 
 def merge_paper_catalog(*groups: list[dict]) -> list[dict]:
+    """Merge papers.json, progress.json, and PROGRESS.md without duplicate index rows.
+
+    Completed deep-read notes win over PROGRESS.md slug aliases in the same category
+    (same folder slug or short title), which otherwise produced paired 深读笔记/待深读 lines.
+    """
     merged: dict[str, dict] = {}
     for group in groups:
         for paper in group:
             key = paper_dedup_key(paper)
             if key not in merged or paper_catalog_score(paper) > paper_catalog_score(merged[key]):
                 merged[key] = paper
-    by_dir: dict[str, dict] = {}
-    for paper in merged.values():
-        dir_key = paper["dir"]
-        if dir_key not in by_dir or paper_catalog_score(paper) > paper_catalog_score(
-            by_dir[dir_key]
-        ):
-            by_dir[dir_key] = paper
-    return sorted(by_dir.values(), key=lambda p: (p.get("category", ""), p["title"]))
+
+    completed = [p for p in merged.values() if not p.get("planned")]
+    planned_papers = [p for p in merged.values() if p.get("planned")]
+    completed_dir_slugs: set[tuple[str, str]] = set()
+    completed_label_slugs: set[tuple[str, str]] = set()
+    for paper in completed:
+        cat = paper.get("category", "")
+        completed_dir_slugs.add((cat, slugify(paper["dir"], 48)))
+        completed_label_slugs.add((cat, slugify(short_label(paper["title"]), 48)))
+
+    catalog = list(completed)
+    for paper in planned_papers:
+        cat = paper.get("category", "")
+        dir_slug = slugify(paper["dir"], 48)
+        label_slug = slugify(short_label(paper["title"]), 48)
+        if (cat, dir_slug) in completed_dir_slugs or (cat, label_slug) in completed_label_slugs:
+            continue
+        catalog.append(paper)
+    return sorted(catalog, key=lambda p: (p.get("category", ""), p["title"]))
+
+
+def dedupe_category_entries(
+    papers_in_cat: list[tuple[dict, str, dict]],
+) -> list[tuple[dict, str, dict]]:
+    """One list row per wiki target; prefer completed notes over planned stubs."""
+    by_wiki: dict[str, tuple[dict, str, dict]] = {}
+    for paper, wiki_rel, meta in papers_in_cat:
+        existing = by_wiki.get(wiki_rel)
+        if existing is None or paper_catalog_score(paper) > paper_catalog_score(existing[0]):
+            by_wiki[wiki_rel] = (paper, wiki_rel, meta)
+    return list(by_wiki.values())
 
 
 def category_entry_suffix(paper: dict) -> str:
@@ -783,6 +811,7 @@ def main() -> int:
                 continue
             wiki_rel = full_map[paper["dir"]][0]
             papers_in_cat.append((paper, wiki_rel, meta_by_dir.get(paper["dir"], {})))
+        papers_in_cat = dedupe_category_entries(papers_in_cat)
         if not papers_in_cat:
             continue
         subs = section.get("subcategories")

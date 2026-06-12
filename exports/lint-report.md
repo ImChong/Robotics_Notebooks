@@ -100,4 +100,4 @@
 - wiki/entities/paper-worldvln-aerial-vln-wam.md（含绝对化措辞「SOTA」，updated=2026-05-24；同主题更新页 wiki/entities/dreamwaq-plus.md updated=2026-06-11）
 - wiki/entities/paper-yolo-unified-realtime-detection.md（含绝对化措辞「SOTA」，updated=2026-06-06；同主题更新页 wiki/comparisons/cnn-vs-vit-backbones.md updated=2026-06-07）
 
-📊 Sources 覆盖率：1151/1165 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1144/1158 (99%) wiki/entity 页有 ingest 来源

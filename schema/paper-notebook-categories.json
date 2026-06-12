@@ -3,7 +3,7 @@
     "display_name": "Foundational RL",
     "zhname": "基础强化学习",
     "wiki": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-    "count": 28
+    "count": 15
   },
   "02_Motion_Retargeting": {
     "display_name": "Motion Retargeting",
@@ -15,19 +15,19 @@
     "display_name": "High Impact Selection",
     "zhname": "高影响力精选",
     "wiki": "wiki/overview/paper-notebook-category-03-high-impact-selection.md",
-    "count": 37
+    "count": 31
   },
   "04_Loco-Manipulation_and_WBC": {
     "display_name": "Loco-Manipulation and WBC",
     "zhname": "运动操作与全身控制",
     "wiki": "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md",
-    "count": 262
+    "count": 158
   },
   "05_Locomotion": {
     "display_name": "Locomotion",
     "zhname": "行走运动",
     "wiki": "wiki/overview/paper-notebook-category-05-locomotion.md",
-    "count": 82
+    "count": 81
   },
   "06_Manipulation": {
     "display_name": "Manipulation",
@@ -39,13 +39,13 @@
     "display_name": "Teleoperation",
     "zhname": "遥操作",
     "wiki": "wiki/overview/paper-notebook-category-07-teleoperation.md",
-    "count": 24
+    "count": 20
   },
   "08_Navigation": {
     "display_name": "Navigation",
     "zhname": "导航",
     "wiki": "wiki/overview/paper-notebook-category-08-navigation.md",
-    "count": 18
+    "count": 17
   },
   "09_State_Estimation": {
     "display_name": "State Estimation",
@@ -57,7 +57,7 @@
     "display_name": "Sim-to-Real",
     "zhname": "仿真到现实",
     "wiki": "wiki/overview/paper-notebook-category-10-sim-to-real.md",
-    "count": 11
+    "count": 8
   },
   "11_Simulation_Benchmark": {
     "display_name": "Simulation Benchmark",
@@ -69,13 +69,13 @@
     "display_name": "Hardware Design",
     "zhname": "硬件设计",
     "wiki": "wiki/overview/paper-notebook-category-12-hardware-design.md",
-    "count": 39
+    "count": 38
   },
   "13_Physics-Based_Animation": {
     "display_name": "Physics-Based Animation",
     "zhname": "物理动画",
     "wiki": "wiki/overview/paper-notebook-category-13-physics-based-animation.md",
-    "count": 31
+    "count": 27
   },
   "14_Human_Motion": {
     "display_name": "Human Motion",

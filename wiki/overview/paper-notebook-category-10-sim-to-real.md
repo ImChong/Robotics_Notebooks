@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 10：仿真到现实（11 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 10：仿真到现实（8 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Sim-to-Real
@@ -28,11 +28,8 @@ summary: "Paper Notebooks 分类 10：仿真到现实（11 篇深读笔记索引
 - [HALO](../entities/paper-notebook-halo-closing-sim-to-real-gap-for-heavy-loaded-hu.md) — 待深读
 - [LIFT](../entities/lift-humanoid.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F/LIFT__Towards_Bridging_the_Gap_between_Large-Scale_Pretraining_and_Efficient_F.html)
 - [PolySim](../concepts/sim2real.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/PolySim__Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_via_Multi-Simulato/PolySim__Bridging_the_Sim-to-Real_Gap_for_Humanoid_Control_via_Multi-Simulato.html)
-- [RAPT](../concepts/sim2real.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_/RAPT__Model-Predictive_Out-of-Distribution_Detection_and_Failure_Diagnosis_for_.html)
-- [RMA](../concepts/sim2real.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/RMA_Rapid_Motor_Adaptation/RMA_Rapid_Motor_Adaptation.html)
 - [Robot Trains Robot](../entities/paper-notebook-robot-trains-robot-automatic-real-world-policy-a.md) — 待深读
 - [Sim-to-Real of Humanoid Locomotion Policies via Joint Torque Space Perturbation Injection](../entities/paper-notebook-sim-to-real-of-humanoid-locomotion-policies-via.md) — 待深读
-- [Towards Bridging the Gap](../concepts/sim2real.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/10_Sim-to-Real/PACE_Systematic_Sim-to-Real_Transfer_for_Diverse_Legged_Robots/PACE_Systematic_Sim-to-Real_Transfer_for_Diverse_Legged_Robots.html)
 
 ## 与其他页面的关系
 
