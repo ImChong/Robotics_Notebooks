@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] ingest | sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md + robocup_spl + artemis — 人形机器人群控一手资料；wiki/concepts/humanoid-multi-robot-coordination.md wiki/entities/paper-humanoid-soccer-swarm-intelligence.md wiki/tasks/humanoid-soccer.md
+
 ## [2026-06-12] structural | docs/checklists 清理首批 — v1–v23 归档至 archive/、移除 PR 验证截图产物、.obsidian/workspace.json 停止跟踪、删除 .codex、AGENTS.md 清单指针 v23→v24；详见 docs/change-log.md
 
 ## [2026-06-12] ingest | sources/papers/smplolympics_arxiv_2407_00187.md + table_tennis_strategy_skill_arxiv_2407_16210.md — SMPLOlympics 体育 benchmark 与 PhysicsPingPong 乒乓球分层控制；wiki/entities/smplolympics.md wiki/methods/table-tennis-strategy-skill-learning.md

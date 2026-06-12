@@ -25,3 +25,4 @@
 
 - [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.09431>
+- 群控策展扩充：[artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md)
