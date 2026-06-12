@@ -2407,6 +2407,8 @@
 
     /* ── 悬停高亮 ── */
     const neighborSet = new Set();
+    // 选中态（侧边栏打开）下允许悬停浮窗的节点：选中节点 + 直连邻居；非选中态为 null
+    let sidebarFocusIds = null;
 
     function buildNeighborSet(d) {
       neighborSet.clear();
@@ -2442,8 +2444,12 @@
       .on('mouseenter', (ev, d) => {
         // 时序动画进行中：禁用节点悬停，避免选中尚未显现的背景节点
         if (timelineAnimating) return;
-        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑
-        if (sidebar.classList.contains('open')) return;
+        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑；
+        // 但选中节点及其直连邻居仍可悬停显示浮窗卡片
+        if (sidebar.classList.contains('open')) {
+          if (sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+          return;
+        }
         // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
         if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
 
@@ -2478,8 +2484,12 @@
       })
       .on('mouseleave', () => {
         if (timelineAnimating) return;
-        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑
-        if (sidebar.classList.contains('open')) return;
+        // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），不执行 mouseleave 的样式重置逻辑，
+        // 只收起悬停浮窗
+        if (sidebar.classList.contains('open')) {
+          if (!isMobile || !pinnedNode) hideTooltip();
+          return;
+        }
 
         node.select('.node-glow').attr('fill-opacity', 0);
         link.attr('stroke', edgeBaseColor());
@@ -3375,6 +3385,8 @@
         if (direct.has(tId) && sId !== d.id) secondary.add(sId);
       });
 
+      sidebarFocusIds = new Set([d.id, ...direct]);
+
       hideTooltip();
       // 时序动画期间：未显现的节点/连线必须保持隐藏，高亮只在「已显现子集」内进行
       const tlShown = id => !timelineAnimating || timelineRevealedIds.has(id);
@@ -3481,6 +3493,7 @@
     }
     function closeSidebar() {
       sidebar.classList.remove('open');
+      sidebarFocusIds = null;
       pinnedNode = null;
       if (isMobile) hideTooltip();
       if (timelineAnimating) {
