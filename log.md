@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] fix(media): AMP_mjlab 讲解视频布局修复 — 纵向堆叠 + fit_in_frame 消除文字/图形重叠
+
+- 重写 `media/manim/amp-mjlab/amp_mjlab_training_flow.py` 布局：取消左右并排，统一纵向排版与自动缩放
+- 重渲染 `media/videos/amp-mjlab/amp-mjlab-training-flow.mp4`
+
 ## [2026-06-12] feat(media): AMP_mjlab ManimGL 训练流程讲解视频 — media/manim/amp-mjlab + media/videos/amp-mjlab/amp-mjlab-training-flow.mp4；wiki/entities/amp-mjlab.md 嵌入视频
 
 - 基于 ccrpRepo/AMP_mjlab 实际源码（train.py、AmpOnPolicyRunner.learn、rl_cfg、amp_env_cfg）用 3b1b/manim 生成约 54s 训练管线动画
