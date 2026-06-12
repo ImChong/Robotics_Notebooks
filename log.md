@@ -2,6 +2,8 @@
 
 ## [2026-06-12] ingest | sources/papers/smplolympics_arxiv_2407_00187.md + table_tennis_strategy_skill_arxiv_2407_16210.md — SMPLOlympics 体育 benchmark 与 PhysicsPingPong 乒乓球分层控制；wiki/entities/smplolympics.md wiki/methods/table-tennis-strategy-skill-learning.md
 
+## [2026-06-12] ingest | sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md + mtrg_reference_goal_driven_rl_arxiv_2602_20375.md + zest.md — HIL/MTRG 新入库，ZEST 交叉引用；wiki/methods/hil-hybrid-imitation-learning.md wiki/methods/mtrg-reference-goal-driven-rl.md
+
 ## [2026-06-12] fix(graph): 合并 Paper Notebooks 分类页与对应 task/concept 页的重复图谱社区
 
 - 实现：`COMMUNITY_HUB_ALIASES` + `_merge_partition_by_hub_equivalence`（如 `论文深读·灵巧操作` 与 `操作（Manipulation）` 合并为同一社区）

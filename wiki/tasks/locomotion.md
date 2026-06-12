@@ -284,6 +284,9 @@ flowchart TD
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
 - [SMPLOlympics](../entities/smplolympics.md) — arXiv:2407.00187（SMPL 仿真人形 10 项奥运运动 benchmark；PPO/AMP/PULSE 基线）
 - [Table Tennis Strategy & Skill（PhysicsPingPong）](../methods/table-tennis-strategy-skill-learning.md) — arXiv:2407.16210（SIGGRAPH 2024 分层乒乓球 + VR 人–机）
+- [MTRG](../methods/mtrg-reference-goal-driven-rl.md) — arXiv:2602.20375（G1 箱式跑酷：参考仅塑形 + goal 部署，无对抗）
+- [HIL](../methods/hil-hybrid-imitation-learning.md) — arXiv:2505.12619（物理角色跑酷：tracking + 场景条件 AMP）
+- [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口

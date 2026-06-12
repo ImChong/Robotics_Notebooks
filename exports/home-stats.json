@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1163,
-  "edge_count": 7025,
+  "node_count": 1165,
+  "edge_count": 7046,
   "coverage": {
-    "covered": 1147,
-    "total": 1161,
+    "covered": 1149,
+    "total": 1163,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -20,6 +20,22 @@
       "path": "wiki/methods/table-tennis-strategy-skill-learning.md",
       "detail_id": "wiki-methods-table-tennis-strategy-skill-learning",
       "label": "Table Tennis Strategy & Skill Learning（PhysicsPingPong）",
+      "type": "method",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/hil-hybrid-imitation-learning.md",
+      "detail_id": "wiki-methods-hil-hybrid-imitation-learning",
+      "label": "HIL: Hybrid Imitation Learning（混合模仿学习）",
+      "type": "method",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
+      "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
+      "label": "MTRG: Multi-Task Reference and Goal-Driven RL",
       "type": "method",
       "recency": "2026-06-12",
       "source": "log.md"
@@ -148,22 +164,6 @@
       "path": "wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md",
       "detail_id": "entity-paper-notebook-a-systematic-study-of-data-modalities-and-strate",
       "label": "A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md",
-      "detail_id": "entity-paper-notebook-a-whole-body-motion-imitation-framework-from-hum",
-      "label": "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md",
-      "detail_id": "entity-paper-notebook-ace-a-cross-platform-visual-exoskeletons-system",
-      "label": "ACE",
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"

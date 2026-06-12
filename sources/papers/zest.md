@@ -1,7 +1,8 @@
 # ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control
 
 - **标题**: ZEST: Zero-shot Embodied Skill Transfer for Athletic Robot Control
-- **链接**: https://arxiv.org/abs/2602.00401
+- **链接**: https://arxiv.org/abs/2602.00401v1（PDF：https://arxiv.org/pdf/2602.00401v1）
+- **论文 PDF**: https://arxiv.org/pdf/2602.00401v1
 - **作者**: Jean-Pierre Sleiman, He Li, Alphonsus Adu-Bredu, Scott Kuindersma, Farbod Farshidian
 - **机构**: Boston Dynamics, RAI Institute, ETH Zurich
 - **发表日期**: 2026-02
@@ -28,7 +29,9 @@ ZEST 提出了一种统一的框架，旨在通过强化学习（RL）将多样�
 - **Spot (四足机器人)**: 证明了跨形态通用性。
 
 ## 对 Wiki 的映射
-- **wiki/methods/zest.md** (新建)
-- **wiki/concepts/sim2real.md** (补充高保真执行器建模与域随机化)
-- **wiki/tasks/humanoid-locomotion.md** (补充多接触与高动态行为)
-- **wiki/concepts/curriculum-learning.md** (补充虚拟辅助力辅助训练)
+- **wiki/methods/zest.md** — 主方法页
+- **wiki/methods/mtrg-reference-goal-driven-rl.md** — 同团队后人形 goal 泛化；论文以 ZEST mocap 为 tracking 基线
+- **wiki/methods/hil-hybrid-imitation-learning.md** — 同作者早期 tracking + AMP 混合模仿
+- **wiki/concepts/sim2real.md** — 高保真执行器建模与域随机化
+- **wiki/tasks/humanoid-locomotion.md** — 多接触与高动态行为
+- **wiki/concepts/curriculum-learning.md** — 虚拟辅助扳手 + 自适应采样课程
