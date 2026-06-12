@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 03：高影响力精选（37 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 03：高影响力精选（31 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · High Impact Selection
@@ -25,15 +25,12 @@ summary: "Paper Notebooks 分类 03：高影响力精选（37 篇深读笔记索
 ### 全身控制核心
 
 - [ExBody2 Advanced Expressive Whole-Body Control](../concepts/whole-body-control.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/ExBody2_Advanced_Expressive_Whole-Body_Control/ExBody2_Advanced_Expressive_Whole-Body_Control.html)
-- [Expressive Whole-Body Control for Humanoid Robots](../concepts/whole-body-control.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Expressive_Whole-Body_Control_for_Humanoid_Robots/Expressive_Whole-Body_Control_for_Humanoid_Robots.html)
 - [HOVER Versatile Neural Whole-Body Controller](../entities/paper-bfm-14-hover.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HOVER_Versatile_Neural_Whole-Body_Controller/HOVER_Versatile_Neural_Whole-Body_Controller.html)
-- [HugWBC A Unified and General Humanoid Whole-Body Controller](../concepts/whole-body-control.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller/HugWBC_A_Unified_and_General_Humanoid_Whole-Body_Controller.html)
 - [SONIC Supersizing Motion Tracking for Natural Humanoid Control](../methods/sonic-motion-tracking.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control/SONIC_Supersizing_Motion_Tracking_for_Natural_Humanoid_Control.html)
 - [UH-1 Learning from Massive Human Videos for Universal Humanoid Pose Control](../entities/dataset-bfm-humanoid-x.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control/UH-1_Learning_from_Massive_Human_Videos_for_Universal_Humanoid_Pose_Control.html)
 
 ### 遥操作与模仿学习
 
-- [HOMIE Humanoid Loco-Manipulation with Isomorphic Exoskeleton Cockpit](../tasks/loco-manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit/HOMIE_Humanoid_Loco-Manipulation_with_Isomorphic_Exoskeleton_Cockpit.html)
 - [OmniH2O Universal Whole-Body Teleoperation](../entities/paper-hrl-stack-08-omnih2o.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/OmniH2O_Universal_Whole-Body_Teleoperation/OmniH2O_Universal_Whole-Body_Teleoperation.html)
 - [iDP3 Generalizable Humanoid Manipulation with 3D Diffusion Policies](../methods/diffusion-policy.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies/iDP3_Generalizable_Humanoid_Manipulation_with_3D_Diffusion_Policies.html)
 
@@ -66,12 +63,9 @@ summary: "Paper Notebooks 分类 03：高影响力精选（37 篇深读笔记索
 - [Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training](../entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md) — 待深读
 - [Distillation-PPO](../entities/paper-notebook-distillation-ppo-a-novel-two-stage-rl-framework.md) — 待深读
 - [ExBody2](../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md) — 待深读
-- [Expressive Whole-Body Control for Humanoid Robots](../entities/paper-notebook-expressive-whole-body-control-for-humanoid-robot.md) — 待深读
-- [GR00T N1](../entities/paper-hrl-stack-34-gr00t_n1.md) — 待深读
 - [Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction](../entities/paper-notebook-gait-adaptive-perceptive-humanoid-locomotion-wit.md) — 待深读
 - [Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion](../entities/paper-notebook-gait-conditioned-rl-with-multi-phase-curriculum.md) — 待深读
 - [Learning a Vision-Based Footstep Planner for Hierarchical Walking Control](../entities/paper-notebook-learning-a-vision-based-footstep-planner-for-hie.md) — 待深读
-- [OmniH2O](../entities/paper-hrl-stack-08-omnih2o.md) — 待深读
 - [PHUMA](../entities/dataset-bfm-phuma.md) — 待深读
 - [Reference-Free Sampling-Based Model Predictive Control](../entities/paper-notebook-reference-free-sampling-based-model-predictive-c.md) — 待深读
 - [Sampling-Based System Identification with Active Exploration for Legged Robot Sim2Real Learning](../entities/paper-notebook-sampling-based-system-identification-with-active.md) — 待深读

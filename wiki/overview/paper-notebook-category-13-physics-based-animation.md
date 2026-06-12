@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 13：物理动画（31 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Physics-Based Animation
@@ -34,7 +34,6 @@ summary: "Paper Notebooks 分类 13：物理动画（31 篇深读笔记索引）
 - [Hierarchical Planning and Control for Box Loco-Manipulation](../entities/paper-notebook-hierarchical-planning-and-control-for-box-loco-m.md) — 待深读
 - [Hierarchical visuomotor control of humanoids](../entities/paper-notebook-hierarchical-visuomotor-control-of-humanoids.md) — 待深读
 - [Humanoid Robot Acrobatics Utilizing Complete Articulated Rigid Body Dynamics](../entities/paper-notebook-humanoid-robot-acrobatics-utilizing-complete-art.md) — 待深读
-- [InterMimic](../entities/paper-behavior-foundation-model-humanoid.md) — 待深读
 - [InterPrior](../entities/paper-interprior.md) — 待深读
 - [Iterative Closed-Loop Motion Synthesis for Scaling the Capabilities of Humanoid Control](../entities/paper-notebook-iterative-closed-loop-motion-synthesis.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/Iterative_Closed-Loop_Motion_Synthesis/Iterative_Closed-Loop_Motion_Synthesis.html)
 - [Learning Symmetric and Low-energy Locomotion](../entities/paper-notebook-learning-symmetric-and-low-energy-locomotion.md) — 待深读
@@ -50,9 +49,6 @@ summary: "Paper Notebooks 分类 13：物理动画（31 篇深读笔记索引）
 - [SimGenHOI](../entities/paper-notebook-simgenhoi-physically-realistic-whole-body-humano.md) — 待深读
 - [SkillMimic](../entities/paper-notebook-skillmimic-learning-basketball-interaction-skill.md) — 待深读
 - [Spatial relationship preserving character motion adaptation](../entities/paper-notebook-spatial-relationship-preserving-character-motion.md) — 待深读
-- [TokenHSI](../entities/paper-behavior-foundation-model-humanoid.md) — 待深读
-- [Unified Human-Scene Interaction via Prompted Chain-of-Contacts](../entities/paper-behavior-foundation-model-humanoid.md) — 待深读
-- [Zero-Shot Whole-Body Humanoid Control via Behavioral Foundation Models](../entities/paper-behavior-foundation-model-humanoid.md) — 待深读
 
 ## 与其他页面的关系
 

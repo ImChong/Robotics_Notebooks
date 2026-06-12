@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Hardware Design
@@ -32,7 +32,6 @@ summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）
 - [ByteWrist](../entities/paper-notebook-bytewrist-a-parallel-robotic-wrist-enabling-flex.md) — 待深读
 - [CAD-Driven Co-Design for Flight-Ready Jet-Powered Humanoids](../entities/paper-notebook-cad-driven-co-design-for-flight-ready-jet-powere.md) — 待深读
 - [Characteristics, Management, and Utilization of Muscles in Musculoskeletal Humanoids](../entities/paper-notebook-characteristics-management-and-utilization-of-mu.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Characteristics_Management_and_Utilization_of_Muscles_in_Musculoskeletal_Humanoids/Characteristics_Management_and_Utilization_of_Muscles_in_Musculoskeletal_Humanoids.html)
-- [Control of Humanoid Robots with Parallel Mechanisms using Kinematic Actuation Models](../concepts/humanoid-parallel-joint-kinematics.md) — 待深读
 - [DIJIT](../entities/paper-notebook-dijit-a-robotic-head-for-an-active-observer.md) — 待深读
 - [DecARt Leg](../entities/paper-notebook-decart-leg-design-and-evaluation-of-a-novel-huma.md) — 待深读
 - [Design and Control of a Bipedal Robotic Character](../entities/paper-notebook-design-and-control-of-a-bipedal-robotic-characte.md) — 待深读

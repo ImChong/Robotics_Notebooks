@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 01：基础强化学习（28 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 01：基础强化学习（15 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Foundational RL
@@ -23,30 +23,17 @@ summary: "Paper Notebooks 分类 01：基础强化学习（28 篇深读笔记索
 ## 本类论文索引
 
 - [ADD](../methods/add.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ADD_Adversarial_Differential_Discriminators/ADD_Adversarial_Differential_Discriminators.html)
-- [ADD](../methods/add.md) — 待深读
 - [AMP](../entities/paper-amp-survey-01-amp.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control/AMP_Adversarial_Motion_Priors_for_Stylized_Physics-Based_Character_Control.html)
-- [AMP](../entities/paper-amp-survey-01-amp.md) — 待深读
 - [ASE](../entities/paper-bfm-25-ase.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control/ASE_Adversarial_Skill_Embeddings_for_Large-Scale_Motion_Control.html)
-- [ASE](../entities/paper-bfm-25-ase.md) — 待深读
-- [AWR](../methods/awr.md) — 待深读
 - [Advantage Weighted Regression](../methods/awr.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/AWR_Advantage_Weighted_Regression/AWR_Advantage_Weighted_Regression.html)
 - [BeyondMimic](../entities/paper-beyondmimic.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/BeyondMimic/BeyondMimic.html)
-- [BeyondMimic](../entities/paper-beyondmimic.md) — 待深读
 - [CALM](../entities/paper-bfm-19-calm.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters/CALM_Conditional_Adversarial_Latent_Models_for_Directable_Virtual_Characters.html)
-- [CALM](../entities/paper-bfm-19-calm.md) — 待深读
 - [DeepMimic](../entities/paper-hrl-stack-11-deepmimic.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills/DeepMimic_Example-Guided_Deep_RL_of_Physics-Based_Character_Skills.html)
-- [DeepMimic](../entities/paper-hrl-stack-11-deepmimic.md) — 待深读
 - [Diffusion Policy](../methods/diffusion-policy.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Diffusion_Policy/Diffusion_Policy.html)
-- [Diffusion Policy](../methods/diffusion-policy.md) — 待深读
 - [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World/Domain_Randomization_for_Transferring_Deep_Neural_Networks_from_Simulation_to_the_Real_World.html)
-- [Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World](../entities/paper-notebook-domain-randomization-for-transferring-deep-neura.md) — 待深读
-- [LCP](../methods/lcp.md) — 待深读
 - [Learning Smooth Humanoid Locomotion through Lipschitz-Constrained Policies](../entities/paper-notebook-lcp-sim-to-real-action-smoothing.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/LCP_Sim-to-Real_Action_Smoothing/LCP_Sim-to-Real_Action_Smoothing.html)
 - [MimicKit](../entities/mimickit.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control/MimicKit_A_Reinforcement_Learning_Framework_for_Motion_Imitation_and_Control.html)
 - [PHC](../entities/paper-bfm-22-phc.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PHC_Perpetual_Humanoid_Control/PHC_Perpetual_Humanoid_Control.html)
-- [PHC](../entities/paper-bfm-22-phc.md) — 待深读
-- [PPO](../entities/paper-notebook-ppo-proximal-policy-optimization.md) — 待深读
-- [PULSE](../entities/paper-notebook-pulse-physically-plausible-universal-latent-skil.md) — 待深读
 - [PULSE](../entities/zhengyi-luo.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PULSE_Physics-based_Universal_Latent_Space/PULSE_Physics-based_Universal_Latent_Space.html)
 - [Proximal Policy Optimization Algorithms](../methods/reinforcement-learning.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/PPO_Proximal_Policy_Optimization/PPO_Proximal_Policy_Optimization.html)
 - [Understanding Domain Randomization for Sim-to-real Transfer](../entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/01_Foundational_RL/Domain_Randomization_Understanding_Sim-to-Real_Transfer/Domain_Randomization_Understanding_Sim-to-Real_Transfer.html)

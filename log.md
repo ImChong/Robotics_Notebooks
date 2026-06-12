@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] fix(wiki): Paper Notebooks 分类索引去重 — 已完成深读笔记不再与 PROGRESS.md 待深读别名并列；`merge_paper_catalog` + `dedupe_category_entries`；重生成 `wiki/overview/paper-notebook-category-*.md`
+
+- 相关：`wiki/overview/humanoid-paper-notebooks-index.md`、`scripts/bootstrap_paper_notebook_knowledge.py`
+- 清理 4 个已无入链的 `paper-notebook-*` 计划占位实体（PPO/PULSE/Expressive WBC/Generating Diverse → 已有深读或概念页承接）
+- 验证：`tests/test_bootstrap_paper_notebook_dedupe.py`、`make ci-preflight`
+
 ## [2026-06-12] structural | 站点大 JSON（search-index/index-v1/site-data-v1/link-graph×2 份）与 sitemap 移出 git，改为 pages.yml 部署时生成；export.yml 仅提交小型派生文件；tests.yml pytest 前生成快照；修复 archive v3–v9 共 7 处 Karpathy Wiki 断链
 
 ## [2026-06-12] ingest | sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md + robocup_spl + artemis — 人形机器人群控一手资料；wiki/concepts/humanoid-multi-robot-coordination.md wiki/entities/paper-humanoid-soccer-swarm-intelligence.md wiki/tasks/humanoid-soccer.md

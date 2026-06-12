@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 08：导航（18 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 08：导航（17 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Navigation
@@ -39,7 +39,6 @@ summary: "Paper Notebooks 分类 08：导航（18 篇深读笔记索引）。"
 - [Quantum deep reinforcement learning for humanoid robot navigation task](../entities/paper-notebook-quantum-deep-rl-for-humanoid-robot-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation/Quantum_Deep_RL_for_Humanoid_Robot_Navigation.html)
 - [RL with Data Bootstrapping for Dynamic Subgoal Pursuit in Humanoid Robot Navigation](../entities/paper-notebook-rl-with-data-bootstrapping-for-dynamic-subgoal-p.md) — 待深读
 - [STATE-NAV](../tasks/vision-language-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain/STATE-NAV__Stability-Aware_Traversability_Estimation_for_Bipedal_Navigation_on_Rough_Terrain.html)
-- [Thinking in 360°](../tasks/vision-language-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild/Thinking_in_360__Humanoid_Visual_Search_in_the_Wild.html)
 
 ## 与其他页面的关系
 
