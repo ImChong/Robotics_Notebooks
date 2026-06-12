@@ -1,62 +1,121 @@
 ---
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
-status: planned
-updated: 2026-06-11
+tags:
+  - paper
+  - humanoid
+  - soccer
+  - robocup
+  - team-coordination
+  - perception
+  - model-based
+  - humanoid-paper-notebooks
+status: draft
+updated: 2026-06-12
 arxiv: "2512.09431"
 related:
+  - ../tasks/humanoid-soccer.md
+  - ../concepts/humanoid-multi-robot-coordination.md
+  - ./paper-humanoid-soccer-swarm-intelligence.md
   - ../overview/paper-notebook-category-05-locomotion.md
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
+  - ../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md
   - ../../sources/papers/humanoid_pnb_a-hierarchical-model-based-system-for-high-perfo.md
-summary: "A Hierarchical, Model-Based System for High-Performance Humanoid Soccer：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "ARTEMIS（arXiv:2512.09431）：UCLA RoboCup 2024 Adult-Size 人形足球冠军系统——立体视觉+CLAP 定位、DAVG+cf-MPC 避障导航、集中式 behavior planner 协调角色与射门，与 swarm 去中心化群控形成对照。"
 ---
 
-# A Hierarchical, Model-Based System for High-Performance Humanoid Soccer
+# ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer
 
-**A Hierarchical, Model-Based System for High-Performance Humanoid Soccer** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：05_Locomotion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
+**ARTEMIS**（*Advanced Robotic Technology for Enhanced Mobility and Improved Stability*，arXiv:2512.09431，UCLA RoMeLa 等）是 **RoboCup 2024 Adult-Size Humanoid Soccer 冠军** 的软硬件一体方案：成人尺寸 QDD 人形、in-gait 大力踢球、立体视觉感知，以及 **集中式 behavior planner** 驱动的 **多机战术协调**（角色、射门、避障导航）。
 
 ## 一句话定义
 
-A Hierarchical, Model-Based System for High-Performance Humanoid Soccer 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+**用强感知把球和队友都看见，用 MPC 躲开对手和边界，再用集中行为管理器决定谁进攻谁防守——把单机 RL 射门技能嵌进能打赢真机联赛的全栈。**
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略 |
-| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制基础设施 |
-| Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
+| ARTEMIS | Advanced Robotic Technology for Enhanced Mobility and Improved Stability | 本文 UCLA 成人尺寸人形足球平台 |
+| CLAP | — | 几何定位模块；融合场地标志与惯性估计位姿 |
+| cf-MPC | Collision-free Model Predictive Control | 无碰撞模型预测跟踪中层导航 |
+| DAVG | Dynamic Augmented Visibility Graphs | 动态可见图路径规划 |
+| QDD | Quasi-Direct-Drive | 准直驱高扭矩关节，支撑动态踢球与行走 |
+| ROS 2 | Robot Operating System 2 | 感知/定位/导航/行为高层节点通信框架 |
 
-## 为什么重要
+## 为什么重要（含群控视角）
 
-- 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
-- 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
+- **真机国际赛冠军验证：** 相对 [Swarm 人形足球](paper-humanoid-soccer-swarm-intelligence.md) 的 Webots 仿真，ARTEMIS 在 **Adult-Size 对抗赛** 证明 **集中式战术栈 + 强感知** 路线可夺冠。
+- **明确处理队友/对手：** 检测管道输出 **球、球门、队友、对手**；cf-MPC 把其他机器人当作 **移动障碍**——这是群控与单机射门 RL 的核心差异。
+- **指出 RL 技能模块的嵌入位：** 论文批评近年 deep RL 足球技能 **未建模队友/对手**，必须外包给手工栈；ARTEMIS 提供 **可嵌入的完整架构** 参照。
+- **Paper Notebooks 待深读：** 姊妹仓库 PROGRESS 仍标记待深读；本页基于 arXiv 一手论文 **群控相关章节** 策展（非深读笔记全文）。
 
-## 核心信息
+## 系统架构（群控相关）
 
-| 字段 | 内容 |
-|------|------|
-| 分类 | 05_Locomotion |
-| 深读状态 | 待撰写（[PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)） |
-| 计划文件夹 | `papers/05_Locomotion/a-hierarchical-model-based-system-for-high-perfo` |
-| arXiv | <https://arxiv.org/abs/2512.09431> |
+```mermaid
+flowchart TB
+  subgraph perc ["感知 · ~60 Hz"]
+    zed["ZED 2 立体"]
+    det["球·标志·队友·对手"]
+    prox["深度近距障碍"]
+    zed --> det
+    zed --> prox
+  end
+
+  subgraph loc ["定位"]
+    clap["CLAP 几何融合"]
+    det --> clap
+  end
+
+  subgraph mid ["中层导航"]
+    davg["DAVG 路径"]
+    mpc["cf-MPC 跟踪"]
+    clap --> davg --> mpc
+  end
+
+  subgraph high ["高层 · 群控核心"]
+    mem["赛况记忆"]
+    pred["短视界运动预测"]
+    role["角色·位姿·射门决策"]
+    kickm["Kick Manager"]
+    neckm["Neck Manager"]
+    mem --> pred --> role
+    role --> kickm
+    role --> neckm
+  end
+
+  subgraph low ["低层 · 1 kHz SHM"]
+    wbc["全身行走 / in-gait kick"]
+  end
+
+  mpc --> high
+  high --> low
+```
+
+- **Behavior planner：** 根据 evolving game state 选 **desired pose、角色、kick**；与 kick/neck manager 分工。
+- **通信：** 论文侧重 **机载视觉互见**；非 SPL 式极限 WiFi 拍卖（见 [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) 三线对比）。
 
 ## 实验与评测
 
-- 深读笔记尚未完成；量化 benchmark、消融与实机指标待笔记撰写后补充。
+- **RoboCup 2024 Adult-Size：** 冠军；真机对抗下 in-gait 踢球、避障与战术切换。
+- **受控实验：** 论文另报告定量/定性消融（细节见 arXiv 正文 §IV–VII）。
+- **与 swarm 论文不可直接比数值：** 联赛规则、机体尺寸、对手强度不同；选型应看 **部署形态**（真机联赛 vs 仿真 swarm 基准）。
 
 ## 与其他页面的关系
 
-- 分类父节点：[paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
-- 总索引：[humanoid-paper-notebooks-index.md](../overview/humanoid-paper-notebooks-index.md)
+- [人形多机协调](../concepts/humanoid-multi-robot-coordination.md) — 集中 vs 去中心化总览
+- [Swarm Intelligence 人形足球](paper-humanoid-soccer-swarm-intelligence.md) — 去中心化对照
+- [Humanoid Soccer](../tasks/humanoid-soccer.md)
+- [paper-notebook-category-05-locomotion](../overview/paper-notebook-category-05-locomotion.md)
 
 ## 参考来源
 
+- [artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md](../../sources/papers/artemis_humanoid_soccer_team_coordination_arxiv_2512_09431.md)
 - [humanoid_pnb_a-hierarchical-model-based-system-for-high-perfo.md](../../sources/papers/humanoid_pnb_a-hierarchical-model-based-system-for-high-perfo.md)
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2512.09431>
 
 ## 推荐继续阅读
 
-- [Paper Notebooks 阅读进度（PROGRESS.md）](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- Wang, Q., et al. (2025). arXiv:2512.09431.
+- Nadiri, F., & Rad, A. B. (2025). *Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams*. Sensors. <https://doi.org/10.3390/s25113496>
+- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)

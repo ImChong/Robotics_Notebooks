@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1165,
-  "edge_count": 7046,
+  "node_count": 1167,
+  "edge_count": 7070,
   "coverage": {
-    "covered": 1149,
-    "total": 1163,
+    "covered": 1151,
+    "total": 1165,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
+      "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
+      "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
+      "type": "concept",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-humanoid-soccer-swarm-intelligence.md",
+      "detail_id": "entity-paper-humanoid-soccer-swarm-intelligence",
+      "label": "Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-soccer.md",
+      "detail_id": "wiki-tasks-humanoid-soccer",
+      "label": "Humanoid Soccer",
+      "type": "task",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/smplolympics.md",
       "detail_id": "entity-smplolympics",
@@ -131,7 +155,7 @@
     {
       "path": "wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md",
       "detail_id": "entity-paper-notebook-a-hierarchical-model-based-system-for-high-perfo",
-      "label": "A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
+      "label": "ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md",
-      "detail_id": "entity-paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by",
-      "label": "[A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU]",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-survey-of-behavior-foundation-model.md",
-      "detail_id": "entity-paper-notebook-a-survey-of-behavior-foundation-model",
-      "label": "A Survey of Behavior Foundation Model",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md",
-      "detail_id": "entity-paper-notebook-a-systematic-study-of-data-modalities-and-strate",
-      "label": "A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/smplolympics.md",
-    "detail_id": "entity-smplolympics",
-    "label": "SMPLOlympics（仿真人形体育环境套件）",
-    "type": "entity",
+    "path": "wiki/concepts/humanoid-multi-robot-coordination.md",
+    "detail_id": "wiki-concepts-humanoid-multi-robot-coordination",
+    "label": "人形多机协调（Humanoid Multi-Robot Coordination）",
+    "type": "concept",
     "recency": "2026-06-12",
     "source": "log.md"
   }
