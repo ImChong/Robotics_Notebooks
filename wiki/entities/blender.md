@@ -2,7 +2,7 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-12
 related:
   - ./nvidia-omniverse.md
   - ./mixamo.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../concepts/character-animation-vs-robotics.md
+  - ./manim.md
 sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
@@ -94,6 +95,7 @@ flowchart LR
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md)
+- [Manim（程序化数学动画，讲解层互补）](./manim.md)
 - [HomeWorld 全屋场景生成论文实体](./paper-homeworld-whole-home-scene-generation.md)
 
 ## 参考来源
