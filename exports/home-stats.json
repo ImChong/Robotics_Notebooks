@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1161,
-  "edge_count": 7008,
+  "node_count": 1163,
+  "edge_count": 7029,
   "coverage": {
-    "covered": 1145,
-    "total": 1159,
+    "covered": 1147,
+    "total": 1161,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/hil-hybrid-imitation-learning.md",
+      "detail_id": "wiki-methods-hil-hybrid-imitation-learning",
+      "label": "HIL: Hybrid Imitation Learning（混合模仿学习）",
+      "type": "method",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
+      "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
+      "label": "MTRG: Multi-Task Reference and Goal-Driven RL",
+      "type": "method",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-bifrost-umi.md",
       "detail_id": "entity-paper-bifrost-umi",
@@ -151,29 +167,13 @@
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-activeumi-robotic-manipulation-with-active-perce.md",
-      "detail_id": "entity-paper-notebook-activeumi-robotic-manipulation-with-active-perce",
-      "label": "ActiveUMI",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adamimic.md",
-      "detail_id": "entity-paper-notebook-adamimic",
-      "label": "AdaMimic",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-bifrost-umi.md",
-    "detail_id": "entity-paper-bifrost-umi",
-    "label": "BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）",
-    "type": "entity",
+    "path": "wiki/methods/hil-hybrid-imitation-learning.md",
+    "detail_id": "wiki-methods-hil-hybrid-imitation-learning",
+    "label": "HIL: Hybrid Imitation Learning（混合模仿学习）",
+    "type": "method",
     "recency": "2026-06-12",
     "source": "log.md"
   }

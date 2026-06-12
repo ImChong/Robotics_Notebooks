@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-12
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -282,6 +282,9 @@ flowchart TD
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Learning to Adapt（Nature MI 2025 四足 bio-inspired 多步态）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) — πG/BGS/πL 分层 DRL，盲零样本复杂地形（RaiSim / ihcr）
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
+- [MTRG](../methods/mtrg-reference-goal-driven-rl.md) — arXiv:2602.20375（G1 箱式跑酷：参考仅塑形 + goal 部署，无对抗）
+- [HIL](../methods/hil-hybrid-imitation-learning.md) — arXiv:2505.12619（物理角色跑酷：tracking + 场景条件 AMP）
+- [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
 
 ### Benchmark 入口
