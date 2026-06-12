@@ -44,10 +44,7 @@ def test_merge_partition_by_hub_equivalence_merges_alias_hubs() -> None:
             "wiki/methods/foo.md": 2,
         }
     )
-    node_map = {
-        nid: {"id": nid, "label": nid.split("/")[-1]}
-        for nid in degree_map
-    }
+    node_map = {nid: {"id": nid, "label": nid.split("/")[-1]} for nid in degree_map}
 
     merged = glg._merge_partition_by_hub_equivalence(partition, degree_map, node_map)
     assert len(merged) == 1

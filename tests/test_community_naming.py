@@ -71,8 +71,7 @@ class CommunityHubNamePatternTest(unittest.TestCase):
             with self.subTest(canonical=canonical, label=label):
                 if canonical in seen:
                     self.fail(
-                        f"duplicate canonical hub {canonical!r}: "
-                        f"{seen[canonical]!r} and {label!r}"
+                        f"duplicate canonical hub {canonical!r}: {seen[canonical]!r} and {label!r}"
                     )
                 seen[canonical] = label
 
