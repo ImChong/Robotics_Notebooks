@@ -185,6 +185,7 @@ LATEST_NODES_CAP = 30
 LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
 
+
 def wiki_recency_date(content: str, page: Path) -> date:
     """用于「最近更新」排序：取 frontmatter 的 updated / created 与文件 mtime 中的最大值。"""
     candidates: list[date] = []
