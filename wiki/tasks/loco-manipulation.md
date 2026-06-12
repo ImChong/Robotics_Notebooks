@@ -20,6 +20,7 @@ sources:
   - ../../sources/repos/awesome-humanoid-robot-learning.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
+  - ../../sources/papers/visualmimic_arxiv_2509_20322.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -82,51 +83,56 @@ flowchart TD
 - **趋势**：强调从互联网规模的人类视频中学习，而非依赖昂贵的机器人演示。
 - **代表作**：Ψ₀ (2026), WholeBodyVLA (2025), SENTINEL (2025), [DAJI](../entities/paper-daji-anticipatory-joint-intent.md)（2026，语言条件预期关节意图接口）。
 
-### 4. 残差与自适应学习 (Residual & Adaptive)
+### 4. 视觉分层 Sim2Real（Keypoint Tracker + Depth Visuomotor）
+- **核心**：**任务无关低层** 从人类动作蒸馏 **关键点跟踪器**（motion teacher → keypoint student）；**任务专用高层** 从特权物体状态教师蒸馏 **egocentric 深度 visuomotor 生成器**；接口为 root + 头/双手/双足共 5 点，共享低层、逐任务训高层。
+- **稳定技巧**：低层训时命令噪声；高层动作 clip 到人类动作空间（HMS）；仿真深度 heavy masking 抗 visual gap。
+- **代表作**：[VisualMimic](../entities/paper-notebook-visualmimic.md) (Stanford, 2025, arXiv:2509.20322) — 真机零样本 **push / lift / kick / dribble**；**3.8 kg** 大箱全身 push 与 **户外** 泛化；相对 [TWIST](../entities/paper-twist.md) 补视觉、[VideoMimic](../entities/videomimic.md) 补 loco-manip、[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md) 走 **关键点+深度** 而非 RGB 大规模蒸馏。
+
+### 5. 残差与自适应学习 (Residual & Adaptive)
 - **核心**：在 **预训练全身先验**（GMT、WBC 等）或高层规划输出之上，用轻量 RL 学习 **残差修正**，注入物体条件、地形或扰动补偿，避免每条任务从零学平衡与步态。
 - **代表作**：[ResMimic](../entities/paper-resmimic.md) (Amazon FAR, 2025, arXiv:2510.05070) — **GMT 预训练 + 物体条件残差**、点云/接触奖励与虚拟力课程，G1 真机 **4.5–5.5 kg** 全身接触搬运；SteadyTray (2026), SEEC (2025)。
 
-### 5. 触觉增强的行为克隆路线 (Touch-Aware BC)
+### 6. 触觉增强的行为克隆路线 (Touch-Aware BC)
 - **核心**：把接触信号纳入全身操作策略训练，而不是只依赖视觉与本体感受。
 - **代表作**：[HTD](../methods/humanoid-transformer-touch-dreaming.md) (2026) 使用 lower-body controller 保持全身稳定，并在模仿学习中预测未来手部力和触觉 latent，提升插入、折叠、工具使用和端杯移动等接触丰富任务的成功率。
 
-### 6. 反向层级架构 (MPC-over-RL)
+### 7. 反向层级架构 (MPC-over-RL)
 - **核心**：底层使用通用的 RL WBC 策略（如 Relic）提供稳定的运动基座；高层使用基于采样的 MPC（如 CEM）在底层策略的命令空间内进行在线规划。
 - **代表作**：[Sumo](../methods/sumo.md) (2026) 实现了 Spot 和 G1 操纵比自身更重、更大的物体（如扶起轮胎、拖拽大型护栏）。
 
-### 7. 视频生成驱动路线 (Video-Generation-Driven)
+### 8. 视频生成驱动路线 (Video-Generation-Driven)
 - **核心**：把第三人称视频生成模型当成"想象出来的示教源"，再用动作估计 + 通用动作跟踪把视频翻译为机器人可执行轨迹，端到端避免任务级真实数据采集。
 - **代表作**：[ExoActor](../methods/exoactor.md) (BAAI, 2026) — 在 Unitree G1 上做零样本任务的 B/A/S 三级评测，覆盖从基础导航到精细多步操作（如把瓶子直立放进篮子）。
 
-### 8. 无机器人示范 + 分层 visuomotor（Robot-Free → SKR → WBC）
+### 9. 无机器人示范 + 分层 visuomotor（Robot-Free → SKR → WBC）
 - **核心**：采集阶段用便携 VR/夹爪设备记录 **稀疏关键点 + 腕部视觉**（无需目标人形）；高层 **Diffusion Policy** 预测任务空间轨迹，经 **SKR** 保留度量几何后接 **全身 IK + WBC** 在 G1 上执行 loco-manipulation。
 - **代表作**：[BifrostUMI](../entities/paper-bifrost-umi.md) (BAAI Aether, 2026) — 杂乱桌面 pick-place 与桌下全身处置；受 [UMI](https://arxiv.org/abs/2402.10329) 启发。
 
-### 9. 光真实感合成演示 + VLA 微调（3DGS × 程序化 motion）
+### 10. 光真实感合成演示 + VLA 微调（3DGS × 程序化 motion）
 - **核心**：用 **3DGS 背景 + mesh 前景** 合成接近真机头摄的图像，在 **MuJoCo + 低层 WBC（SONIC）** 上程序化生成 loco-manip 演示；**motion 与外观解耦** 后可 GPU 重渲染增广，再微调预训练 **VLA**（ψ0 / π0.5 / GR00T 等）。
 - **代表作**：[LEGS](../entities/paper-legs-embodied-gaussian-splatting-vla.md) (Stanford, 2026, arXiv:2606.01458) — 无遥操作合成数据在 G1 上匹配或超过 50-demo teleop，长时程 Task 3 上 teleop 可全线失败而 LEGS 仍成功。
 
-### 10. 冻结策略 + 因子化在线适配（负载 × 动力学解耦）
+### 11. 冻结策略 + 因子化在线适配（负载 × 动力学解耦）
 - **核心**：先 **AMP/RL 预训练** 全身搬箱策略并 **冻结**；再用 **观测–动作历史** 学 **物体/负载** 与 **动力学** 双 latent，以 **分裂世界模型预测** + **GRL 交叉对抗** 减少混编，经 **分层 FiLM** 注入冻结网络；面向 **质量/搬放高度** 变化与 sim–real 动力学差的 **零样本真机** 部署。
 - **代表作**：[SplitAdapter](../entities/paper-splitadapter-load-aware-loco-manipulation.md) (Samsung, 2026, arXiv:2606.03297) — 在 PhysHSI 类基策略上，MuJoCo sim-to-sim **86/90** vs **71/90** Full-task；G1 真机 **96.3%** vs **59.3%**，**6 kg** 与 **0 cm 地面搬起** 增益最大。
 
-### 11. 感知统一低层 LLC（单阶段全身 RL + 高程图）
+### 12. 感知统一低层 LLC（单阶段全身 RL + 高程图）
 - **核心**：**单策略 PPO** 同时输出 **行走与上肢** 力矩/关节目标；机载 **LiDAR 高程图** 经 **跨模态编码**（本体预测 + 注意力地形）进入 **MoE** 全身 actor；上肢 **残差** 跟踪 $q^{\mathrm{upper}^*}$；**渐进命令课程** 替代 MoCap，作为上层 VLA/遥操作/分层 RL 的 **稳健低层 API**。
 - **代表作**：[PILOT](../entities/paper-pilot-perceptive-loco-manipulation.md) (上海交大, 2026, arXiv:2601.17440) — G1 真机楼梯/高台等非结构化 **loco-manipulation**；相对 HOMIE/FALCON/AMO 跟踪误差更低；全地形 stumble 消融验证感知、注意力与 MoE。
 
-### 12. 多向深度感知行走 + 载荷（FALCON 解耦 + 分地形蒸馏）
+### 13. 多向深度感知行走 + 载荷（FALCON 解耦 + 分地形蒸馏）
 - **核心**：**FALCON 式双智能体**（下身条件 **多视角深度**，上身 **盲策略**）；Stage 1 用 **特权高程图** 训 **分地形专家** 并加 **末端力课程** 面向载荷；Stage 2 **DAgger** 蒸馏为统一深度 Transformer，辅以 **DFSV**（速度选相机）与 **RSM**（窄地形泛化）；配套 **Warp 多深度射线渲染** 降低训练成本。
 - **代表作**：[RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) (Amazon FAR, 2026, arXiv:2602.03002) — G1 **前后双深度** 双向楼梯/坡/垫脚石；**2 kg 载荷** loco-manipulation；相对单前向深度方法强调 **多向与非对称感知**。
 
-### 13. 梯上稳定操作（攀爬策略 + 双智能体遥操作）
+### 14. 梯上稳定操作（攀爬策略 + 双智能体遥操作）
 - **核心**：先学 **深度 visuomotor 攀爬策略** 到梯顶；再训 **双智能体 manipulation**——下身 $\pi^l$ 维持梯子接触与骨盆姿态，上身 $\pi^u$ 跟踪 VR 遥操作目标；相对现成 **全身遥操作**（如 TWIST2）在梯顶切换后更不易失稳。
 - **代表作**：[LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) (Amazon FAR 等, 2026, arXiv:2606.05873) — G1 **零样本 sim-to-real** 多样梯子双向攀爬；梯顶 **调画 / 换灯泡 / 高处递箱**；深度经 **VFM + RFM** 桥接真机。
 
-### 14. 训练期质心 MPC 地标奖励 + 部署期纯 RL（CD-MPC · πⁿ MPC）
+### 15. 训练期质心 MPC 地标奖励 + 部署期纯 RL（CD-MPC · πⁿ MPC）
 - **核心**：**训练时** 用 **质心动力学 MPC（CD-MPC）** 批求解预测轨迹，转为 **landmark guidance reward** 监督 PPO；**部署时** 仅 MLP 关节策略（无在线 MPC）；配套 **[πⁿ MPC](../methods/pi-mpc.md)** 实现长时域 × 数千环境 GPU 批 ADMM。
 - **代表作**：[MPC-RL](../entities/paper-mpc-rl-humanoid-locomotion-manipulation.md) (Caltech/JHU, 2026, arXiv:2606.05687) — Themis 真机行走、推恢复、未知负重与 **290 kg 推车** loco-manipulation；[junhengl/mpc-rl](https://github.com/junhengl/mpc-rl) 开源。
 
-### 15. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
+### 16. 实时 World Action Model + 统一全身 motion token（双 DiT · SONIC 解码）
 - **核心**：**Video DiT** 在 **单次前向**（固定 flow 步隐状态）提供 egocentric **动力学先验**，**Motion DiT** 在同一 **SONIC motion token** 空间预测 **locomotion / 躯干 / 身高 / 足端 / 双手**；替代「上身关节 + 下身基座命令」分层，使腿能执行 **踩踏板、踢球** 等任务驱动足部行为；三阶段 **大规模 egocentric 视频 → 跨具身 G1 动作 → 全身 VR 遥操作微调**。
 - **代表作**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) (Mondo Robotics / HKUST, 2026, arXiv:2603.10448) — 双 DiT **联合** flow matching，G1 三项全身 + 八项桌面；前序 VAM 基座；[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) (arXiv:2606.09215) 将其推到 **实时九项全身 loco-manip**（**76.1%** vs GR00T-N1.7 **43.9%**，**4.9 Hz**）。
 
@@ -162,6 +168,7 @@ flowchart TD
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — LiDAR 高程图 + MoE 单阶段感知全身 LLC（arXiv:2601.17440）
 - [OmniRetarget（论文实体）](../entities/paper-hrl-stack-03-omniretarget.md) / [holosoma](../entities/holosoma.md) — 交互保留重定向与 loco-manipulation 参考数据生成
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 预训练 + 残差后训练的全身 loco-manipulation（arXiv:2510.05070）
+- [VisualMimic（论文实体）](../entities/paper-notebook-visualmimic.md) — 视觉分层 sim2real + 关键点 tracker 全身 loco-manipulation（arXiv:2509.20322）
 - [Motion Retargeting](../concepts/motion-retargeting.md) — 人形搬运/攀台等技能的上游映射层
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
@@ -183,6 +190,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/pilot_arxiv_2601_17440.md](../../sources/papers/pilot_arxiv_2601_17440.md) — PILOT：感知统一 loco-manipulation 低层控制器（arXiv:2601.17440）
 - **ingest 档案：** [sources/papers/omniretarget_arxiv_2509_26633.md](../../sources/papers/omniretarget_arxiv_2509_26633.md) — OmniRetarget：交互保留人形重定向（ICRA 2026）
 - **ingest 档案：** [sources/papers/resmimic_arxiv_2510_05070.md](../../sources/papers/resmimic_arxiv_2510_05070.md) — ResMimic：GMT→残差全身 loco-manipulation（arXiv:2510.05070）
+- **ingest 档案：** [sources/papers/visualmimic_arxiv_2509_20322.md](../../sources/papers/visualmimic_arxiv_2509_20322.md) — VisualMimic：视觉分层 sim2real + 关键点 tracker loco-manipulation（arXiv:2509.20322）
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 

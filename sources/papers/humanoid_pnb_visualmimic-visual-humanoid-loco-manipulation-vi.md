@@ -1,27 +1,19 @@
 # VisualMimic: Visual Humanoid Loco-Manipulation via Motion Tracking and Generation
 
-> 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
+> **别名归档：** 与 [`humanoid_pnb_visualmimic.md`](./humanoid_pnb_visualmimic.md) 指向同一论文；一手资料主文件见 [`visualmimic_arxiv_2509_20322.md`](./visualmimic_arxiv_2509_20322.md)。
 
 - **标题：** VisualMimic: Visual Humanoid Loco-Manipulation via Motion Tracking and Generation
-- **类型：** paper
-- **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
-- **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/visualmimic-visual-humanoid-loco-manipulation-vi/visualmimic-visual-humanoid-loco-manipulation-vi.md`
-- **分类：** 04_Loco-Manipulation_and_WBC
+- **类型：** paper（Paper Notebooks progress 别名条目）
 - **arXiv：** <https://arxiv.org/abs/2509.20322>
-- **入库日期：** 2026-06-11
-- **一句话说明：** 列入 Paper Notebooks 阅读进度，深读笔记尚未完成；本文件为 **进度 → wiki** 溯源锚点。
-
-## 核心摘录（策展，非全文）
-
-- 本文件锚定 **待深读** 论文在姊妹仓库 `progress.json` 中的条目；笔记完成后应改用笔记页链接并深化 wiki 归纳。
-- 知识归纳见 wiki 实体页：[paper-notebook-visualmimic](../../wiki/entities/paper-notebook-visualmimic.md).
+- **计划笔记路径：** `papers/04_Loco-Manipulation_and_WBC/visualmimic-visual-humanoid-loco-manipulation-vi/visualmimic-visual-humanoid-loco-manipulation-vi.md`
+- **入库日期：** 2026-06-11（别名）；2026-06-12 合并至主归档
 
 ## 对 wiki 的映射
 
+- 主 source：[visualmimic_arxiv_2509_20322.md](./visualmimic_arxiv_2509_20322.md)
 - [paper-notebook-visualmimic](../../wiki/entities/paper-notebook-visualmimic.md)
-- 分类父节点：[paper-notebook-category-04-loco-manipulation-and-wbc](../../wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md)
 
 ## 参考来源（原始）
 
-- [Humanoid Robot Learning Paper Notebooks · PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
 - 论文：<https://arxiv.org/abs/2509.20322>
+- 主归档：[visualmimic_arxiv_2509_20322.md](./visualmimic_arxiv_2509_20322.md)
