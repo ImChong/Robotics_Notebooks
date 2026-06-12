@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-12",
   "node_count": 1160,
-  "edge_count": 7050,
+  "edge_count": 7061,
   "coverage": {
     "covered": 1144,
     "total": 1158,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
       "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
@@ -151,29 +167,13 @@
       "type": "task",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/smplolympics.md",
-      "detail_id": "entity-smplolympics",
-      "label": "SMPLOlympics（仿真人形体育环境套件）",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/table-tennis-strategy-skill-learning.md",
-      "detail_id": "wiki-methods-table-tennis-strategy-skill-learning",
-      "label": "Table Tennis Strategy & Skill Learning（PhysicsPingPong）",
-      "type": "method",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/paper-notebook-category-01-foundational-rl.md",
-    "detail_id": "wiki-overview-paper-notebook-category-01-foundational-rl",
-    "label": "Paper Notebooks · Foundational RL",
-    "type": "overview",
+    "path": "wiki/entities/paper-notebook-visualmimic.md",
+    "detail_id": "entity-paper-notebook-visualmimic",
+    "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+    "type": "entity",
     "recency": "2026-06-12",
     "source": "log.md"
   }

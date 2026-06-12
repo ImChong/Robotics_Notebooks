@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-12
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（158 篇深读笔记索引）。"
@@ -172,7 +172,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（158 篇深�
 - [VIRAL](../entities/paper-hrl-stack-28-viral.md) — 待深读
 - [VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md) — 待深读
 - [VMP](../entities/paper-notebook-vmp.md) — 待深读
-- [VisualMimic](../entities/paper-notebook-visualmimic.md) — 待深读
+- [VisualMimic](../entities/paper-notebook-visualmimic.md) — 已 ingest（arXiv:2509.20322；视觉分层 sim2real + 关键点 tracker；深读笔记待撰写）
 - [Whole-Body Dynamic Throwing with Legged Manipulators](../entities/paper-notebook-whole-body-dynamic-throwing-with-legged-manipula.md) — 待深读
 - [Whole-Body Model-Predictive Control of Legged Robots with MuJoCo](../entities/paper-notebook-whole-body-model-predictive-control-of-legged-ro.md) — 待深读
 - [WholeBodyVLA](../entities/paper-hrl-stack-30-wholebodyvla.md) — 待深读

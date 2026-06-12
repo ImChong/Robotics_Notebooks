@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] ingest | sources/papers/visualmimic_arxiv_2509_20322.md — VisualMimic 视觉分层 sim2real loco-manipulation；升格 wiki/entities/paper-notebook-visualmimic.md，更新 wiki/tasks/loco-manipulation.md
+
 ## [2026-06-12] fix(wiki): Paper Notebooks 分类索引去重 — 已完成深读笔记不再与 PROGRESS.md 待深读别名并列；`merge_paper_catalog` + `dedupe_category_entries`；重生成 `wiki/overview/paper-notebook-category-*.md`
 
 - 相关：`wiki/overview/humanoid-paper-notebooks-index.md`、`scripts/bootstrap_paper_notebook_knowledge.py`
