@@ -9,16 +9,16 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_zeroth-bot-https-github-com-zeroth-robotics-zero.md
-summary: "[Zeroth Bot]：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Zeroth Bot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
-# [Zeroth Bot]
+# Zeroth Bot
 
 **[Zeroth Bot](https://github.com/zeroth-robotics/zeroth-bot)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：12_Hardware_Design）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
-[Zeroth Bot] 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+Zeroth Bot 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
 
 ## 英文缩写速查
 

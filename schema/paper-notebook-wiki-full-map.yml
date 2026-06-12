@@ -773,7 +773,7 @@ overrides:
   gbc-generalized-behavior-cloning-framework-for-w:
   - wiki/entities/paper-notebook-gbc.md
   genesis-a-generative-and-universal-physics-engin:
-  - wiki/entities/paper-notebook-genesis-a-generative-and-universal-physics-engin.md
+  - wiki/entities/genesis-sim.md
   genie-sim-3-0-a-high-fidelity-comprehensive-simu:
   - wiki/entities/paper-notebook-genie-sim-3-0-a-high-fidelity-comprehensive-simu.md
   genmo-a-generalist-model-for-human-motion:
@@ -1013,7 +1013,7 @@ overrides:
   more-mixture-of-residual-experts-for-humanoid-li:
   - wiki/entities/paper-amp-survey-08-more.md
   mujoco-playground:
-  - wiki/entities/paper-notebook-mujoco-playground-https-playground-mujoco-org.md
+  - wiki/entities/mujoco-playground.md
   multi-task-deep-reinforcement-learning-with-popa:
   - wiki/entities/paper-notebook-multi-task-deep-reinforcement-learning-with-popa.md
   natural-humanoid-robot-locomotion-with-generativ:
@@ -1051,7 +1051,7 @@ overrides:
   optimizing-bipedal-locomotion-for-the-100m-dash:
   - wiki/entities/paper-notebook-optimizing-bipedal-locomotion-for-the-100m-dash.md
   orb-slam3-an-accurate-open-source-library-for-vi:
-  - wiki/entities/paper-notebook-orb-slam3-an-accurate-open-source-library-for-vi.md
+  - wiki/entities/orb-slam3.md
   orca-open-source-reliable-cost-effective-anthrop:
   - wiki/entities/paper-notebook-orca-open-source-reliable-cost-effective-anthrop.md
   parc-physics-based-augmentation-with-reinforceme:
@@ -1271,7 +1271,7 @@ overrides:
   videomimic-visual-imitation-enables-contextual-h:
   - wiki/entities/videomimic.md
   vins-fusion-an-optimization-based-multi-sensor-s:
-  - wiki/entities/paper-notebook-vins-fusion-an-optimization-based-multi-sensor-s.md
+  - wiki/entities/vins-fusion.md
   viral-visual-sim-to-real-at-scale-for-humanoid-l:
   - wiki/entities/paper-viral-humanoid-visual-sim2real.md
   vision-in-action-learning-active-perception-from:

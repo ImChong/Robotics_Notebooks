@@ -9,16 +9,16 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_manikin-biomechanically-accurate-neural-inverse.md
-summary: "[MANIKIN：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "MANIKIN：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
-# [MANIKIN
+# MANIKIN
 
 **[MANIKIN: Biomechanically Accurate Neural Inverse Kinematics for Human Motion Estimation](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/00194.pdf)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：14_Human_Motion）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
-[MANIKIN 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+MANIKIN 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
 
 ## 英文缩写速查
 

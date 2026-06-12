@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] fix(wiki): 合并 MuJoCo Playground 等重复节点并修复 paper-notebook 标题 `[ ]` 残留
+
+- 合并 4 对计划子节点 → 已有实体：`paper-notebook-mujoco-playground-*` → [`wiki/entities/mujoco-playground.md`](wiki/entities/mujoco-playground.md)；另 Genesis / ORB-SLAM3 / VINS-Fusion 同理
+- 根因修复：`short_label` / `clean_display_title` 剥离 markdown 链接与残留方括号；`collect_wiki_index` 索引全部 `wiki/entities/*`；`dedupe_paper_notebook_nodes.py` 增加按标题合并 + 全量标题修复
+- 相关：`wiki/overview/paper-notebook-category-09-state-estimation.md`、`wiki/overview/paper-notebook-category-11-simulation-benchmark.md`、`schema/paper-notebook-wiki-full-map.yml`
+- 验证：`tests/test_paper_notebook_title_cleanup.py`、`make ci-preflight`
+
 ## [2026-06-12] fix(wiki): Paper Notebooks 分类索引去重 — 已完成深读笔记不再与 PROGRESS.md 待深读别名并列；`merge_paper_catalog` + `dedupe_category_entries`；重生成 `wiki/overview/paper-notebook-category-*.md`
 
 - 相关：`wiki/overview/humanoid-paper-notebooks-index.md`、`scripts/bootstrap_paper_notebook_knowledge.py`

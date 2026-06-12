@@ -9,16 +9,16 @@ related:
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_sim-to-real-reinforcement-learning-for-vision-ba.md
-summary: "[Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids]：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+summary: "Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
-# [Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids]
+# Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids
 
 **[Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](https://toruowo.github.io/recipe/)** 已列入 [Humanoid Robot Learning Paper Notebooks](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/index.html) 的 **PROGRESS.md 待深读** 清单（分类：06_Manipulation）。本页为 **计划索引实体**，深读笔记尚未撰写；笔记完成后应链向笔记站并深化归纳。
 
 ## 一句话定义
 
-[Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids] 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
+Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读进度（待深读）阶段。
 
 ## 英文缩写速查
 

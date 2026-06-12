@@ -29,7 +29,7 @@ summary: "Paper Notebooks 分类 11：仿真与基准（20 篇深读笔记索引
 - [DualTHOR](../entities/paper-notebook-dualthor-a-dual-arm-humanoid-simulation-platform.md) — 待深读
 - [GRUtopia](../concepts/simulation-evaluation-infrastructure.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/GRUtopia__Dream_General_Robots_in_a_City_at_Scale/GRUtopia__Dream_General_Robots_in_a_City_at_Scale.html)
 - [Generative World Modelling for Humanoids](../methods/generative-world-models.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
-- [Genesis](../entities/paper-notebook-genesis-a-generative-and-universal-physics-engin.md) — 待深读
+- [Genesis](../entities/genesis-sim.md) — 见 wiki 实体页
 - [Humanoid Everyday](../entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md) — 待深读
 - [Humanoid World Models](../entities/paper-notebook-humanoid-world-models-open-world-foundation-mode.md) — 待深读
 - [HumanoidGen](../entities/paper-notebook-humanoidgen-data-generation-for-bimanual-dextero.md) — 待深读
@@ -38,7 +38,7 @@ summary: "Paper Notebooks 分类 11：仿真与基准（20 篇深读笔记索引
 - [ManiSkill3](../entities/paper-notebook-maniskill3-gpu-parallelized-robotics-simulation.md) — 待深读
 - [Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) — 待深读
 - [MolmoSpaces](../tasks/vision-language-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation.html)
-- [MuJoCo Playground](../entities/paper-notebook-mujoco-playground-https-playground-mujoco-org.md) — 待深读
+- [MuJoCo Playground](../entities/mujoco-playground.md) — 见 wiki 实体页
 - [RoboCasa365](../entities/paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md) — 待深读
 - [RoboCasa](../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md) — 待深读
 - [Towards Motion Turing Test](../entities/paper-notebook-towards-motion-turing-test.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots/Towards_Motion_Turing_Test__Evaluating_Human-Likeness_in_Humanoid_Robots.html)

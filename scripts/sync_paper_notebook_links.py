@@ -37,7 +37,23 @@ def fetch_json(url: str) -> dict:
         return json.load(resp)
 
 
+def clean_display_title(title: str) -> str:
+    """Strip markdown link wrappers and stray brackets from Paper Notebooks titles."""
+    title = title.strip()
+    link = re.match(r"^\[([^\]]+)\]\([^)]+\)$", title)
+    if link:
+        title = link.group(1).strip()
+    if title.lower().startswith("[website],"):
+        title = title.split(",", 1)[1].strip()
+    if title.startswith("[") and "]" in title:
+        title = title[1 : title.index("]")].strip()
+    elif title.startswith("["):
+        title = title[1:].strip()
+    return title
+
+
 def short_label(title: str) -> str:
+    title = clean_display_title(title)
     label = title.split(":")[0].split("(")[0].strip()
     return label or title.strip()
 
@@ -126,8 +142,8 @@ def collect_wiki_index() -> dict[str, dict[str, set[str]]]:
         text = wiki_path.read_text(encoding="utf-8")
         frontmatter = parse_frontmatter(text)
         h1 = re.search(r"^#\s+(.+)$", text, re.M)
-        if h1 and "/entities/paper-" in rel:
-            h1_entity_to_wiki[norm_title(h1.group(1))].add(rel)
+        if h1 and rel.startswith("wiki/entities/"):
+            h1_entity_to_wiki[norm_title(clean_display_title(h1.group(1)))].add(rel)
         if rel.startswith("wiki/methods/"):
             method_slug_to_wiki[wiki_path.stem.lower()].add(rel)
 
@@ -156,6 +172,8 @@ def _entity_pick_score(rel: str) -> tuple[int, int, str]:
     score = 0
     if "paper-notebook-" in rel:
         score -= 100
+    if rel.startswith("wiki/entities/") and "paper-" not in Path(rel).name:
+        score += 30
     if "paper-bfm-" in rel or "paper-hrl-stack-" in rel or "paper-amp-survey-" in rel:
         score -= 40
     if rel.startswith("wiki/methods/"):
@@ -175,10 +193,10 @@ def _entity_pick_score(rel: str) -> tuple[int, int, str]:
 def pick_entity_or_single(candidates: set[str]) -> list[str]:
     if len(candidates) == 1:
         return [next(iter(candidates))]
-    deep = [c for c in candidates if "/entities/paper-" in c and "paper-notebook-" not in c]
+    deep = [c for c in candidates if c.startswith("wiki/entities/") and "paper-notebook-" not in c]
     if deep:
         return [sorted(deep, key=_entity_pick_score)[0]]
-    entity = sorted(c for c in candidates if "/entities/paper-" in c)
+    entity = sorted(c for c in candidates if c.startswith("wiki/entities/"))
     if len(entity) == 1:
         return entity
     methods = sorted(c for c in candidates if c.startswith("wiki/methods/"))

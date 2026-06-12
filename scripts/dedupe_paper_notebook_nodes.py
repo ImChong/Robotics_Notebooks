@@ -11,7 +11,9 @@ import yaml
 from sync_paper_notebook_links import (
     ROOT,
     SCHEMA_DIR,
+    clean_display_title,
     inject_link,
+    norm_title,
     parse_frontmatter,
     short_label,
 )
@@ -50,7 +52,12 @@ def entity_score(path: Path) -> int:
     return score
 
 
-def find_merge_pairs() -> list[tuple[str, str]]:
+def page_h1_title(path: Path) -> str | None:
+    match = re.search(r"^#\s+(.+)$", path.read_text(encoding="utf-8"), re.M)
+    return match.group(1).strip() if match else None
+
+
+def find_arxiv_merge_pairs() -> list[tuple[str, str]]:
     by_arxiv: dict[str, list[Path]] = {}
     for path in (WIKI / "entities").glob("paper*.md"):
         arxiv = fm_arxiv(path.read_text(encoding="utf-8"))
@@ -76,6 +83,76 @@ def find_merge_pairs() -> list[tuple[str, str]]:
         for stub in notebooks:
             pairs.append((str(stub.relative_to(ROOT)), str(keeper.relative_to(ROOT))))
     return pairs
+
+
+def find_title_merge_pairs() -> list[tuple[str, str]]:
+    entities_dir = WIKI / "entities"
+    keepers_by_title: dict[str, list[Path]] = {}
+    for path in entities_dir.glob("*.md"):
+        if "paper-notebook-" in path.name:
+            continue
+        h1 = page_h1_title(path)
+        if not h1:
+            continue
+        keepers_by_title.setdefault(norm_title(clean_display_title(h1)), []).append(path)
+
+    pairs: list[tuple[str, str]] = []
+    seen_remove: set[str] = set()
+    for stub in entities_dir.glob("paper-notebook-*.md"):
+        h1 = page_h1_title(stub)
+        if not h1:
+            continue
+        keepers = keepers_by_title.get(norm_title(clean_display_title(h1)), [])
+        if not keepers:
+            continue
+        keeper = sorted(keepers, key=entity_score, reverse=True)[0]
+        remove_rel = str(stub.relative_to(ROOT))
+        if remove_rel in seen_remove:
+            continue
+        seen_remove.add(remove_rel)
+        pairs.append((remove_rel, str(keeper.relative_to(ROOT))))
+    return pairs
+
+
+def find_merge_pairs() -> list[tuple[str, str]]:
+    merged: dict[str, str] = {}
+    for remove_rel, keep_rel in find_arxiv_merge_pairs() + find_title_merge_pairs():
+        merged[remove_rel] = keep_rel
+    return list(merged.items())
+
+
+def repair_bracket_titles(dry_run: bool) -> int:
+    """Fix paper-notebook stubs whose H1/summary still contain stray [ ] from titles."""
+    fixed = 0
+    for path in (WIKI / "entities").glob("paper-notebook-*.md"):
+        text = path.read_text(encoding="utf-8")
+        h1 = page_h1_title(path)
+        if not h1 or not h1.startswith("["):
+            continue
+        bold = re.search(r"^\*\*(.+?)\*\*", text, re.M)
+        raw_title = clean_display_title(bold.group(1)) if bold else clean_display_title(h1)
+        label = short_label(raw_title)
+        new = text
+        new = re.sub(r"^#\s+.+$", f"# {label}", new, count=1, flags=re.M)
+        new = re.sub(
+            r'^summary:\s*".*?"\s*$',
+            f'summary: "{label}：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"',
+            new,
+            count=1,
+            flags=re.M,
+        )
+        new = re.sub(
+            r"^## 一句话定义\n\n\[?.+? 的人形机器人学习论文条目",
+            f"## 一句话定义\n\n{label} 的人形机器人学习论文条目",
+            new,
+            count=1,
+            flags=re.M,
+        )
+        if new != text:
+            fixed += 1
+            if not dry_run:
+                path.write_text(new, encoding="utf-8")
+    return fixed
 
 
 def replace_links(remove_rel: str, keep_rel: str, dry_run: bool) -> int:
@@ -148,8 +225,10 @@ def main() -> int:
     args = parser.parse_args()
 
     pairs = find_merge_pairs()
-    if not pairs:
-        print("no duplicate paper-notebook stubs found")
+    repaired = repair_bracket_titles(args.dry_run)
+
+    if not pairs and not repaired:
+        print("no duplicate paper-notebook stubs found; no bracket titles to repair")
         return 0
 
     deleted_src = 0
@@ -176,7 +255,8 @@ def main() -> int:
 
     print(
         f"{'would merge' if args.dry_run else 'merged'} {len(pairs)} stub pairs; "
-        f"{'would delete' if args.dry_run else 'deleted'} {deleted_src} sources"
+        f"{'would delete' if args.dry_run else 'deleted'} {deleted_src} sources; "
+        f"{'would repair' if args.dry_run else 'repaired'} {repaired} bracket titles"
     )
     return 0
 
