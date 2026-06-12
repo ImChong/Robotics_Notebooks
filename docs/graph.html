@@ -2425,6 +2425,19 @@
         || currentTopic !== 'all';
     }
 
+    function edgeNodeId(endpoint) {
+      return typeof endpoint === 'object' ? endpoint.id : endpoint;
+    }
+
+    /** 悬停/聚焦高亮：筛选态下与灰色节点相连的边不参与高亮 */
+    function edgeHighlightsWithNode(e, nodeId) {
+      const s = edgeNodeId(e.source);
+      const t = edgeNodeId(e.target);
+      if (s !== nodeId && t !== nodeId) return false;
+      if (!hasActiveGraphFilter()) return true;
+      return visibleNodeIds.has(s) && visibleNodeIds.has(t);
+    }
+
     node
       .on('mouseenter', (ev, d) => {
         // 时序动画进行中：禁用节点悬停，避免选中尚未显现的背景节点
@@ -2445,20 +2458,14 @@
           n.id === d.id ? 0.18 : 0);
         link
           .attr('stroke', e => {
-            const s = typeof e.source === 'object' ? e.source.id : e.source;
-            const t = typeof e.target === 'object' ? e.target.id : e.target;
             const dimColor = isDark() ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.06)';
-            return (s === d.id || t === d.id) ? nodeColor(d) : dimColor;
+            return edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : dimColor;
           })
           .attr('stroke-width', e => {
-            const s = typeof e.source === 'object' ? e.source.id : e.source;
-            const t = typeof e.target === 'object' ? e.target.id : e.target;
-            return (s === d.id || t === d.id) ? linkWidthBase * 1.8 : linkWidthBase * 0.5;
+            return edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.8 : linkWidthBase * 0.5;
           })
           .attr('stroke-opacity', e => {
-            const s = typeof e.source === 'object' ? e.source.id : e.source;
-            const t = typeof e.target === 'object' ? e.target.id : e.target;
-            return (s === d.id || t === d.id) ? 0.7 : 0.3;
+            return edgeHighlightsWithNode(e, d.id) ? 0.7 : 0.3;
           });
         showTooltip(ev, d);
       })
@@ -3382,17 +3389,15 @@
         .style('stroke-width', null)
         .attr('stroke', e => {
           const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-          return (sId === d.id || tId === d.id) ? nodeColor(d) : edgeBaseColor();
+          return edgeHighlightsWithNode(e, d.id) ? nodeColor(d) : edgeBaseColor();
         })
         .attr('stroke-opacity', e => {
           const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
           if (!tlShown(sId) || !tlShown(tId)) return 0;   // 任一端未显现 → 连线隐藏
-          const involved = (sId === d.id || tId === d.id);
-          return involved ? 0.85 : 0.18;
+          return edgeHighlightsWithNode(e, d.id) ? 0.85 : 0.18;
         })
         .attr('stroke-width', e => {
-          const { sourceId: sId, targetId: tId } = edgeNodeIds(e);
-          return (sId === d.id || tId === d.id) ? linkWidthBase * 1.5 : linkWidthBase;
+          return edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.5 : linkWidthBase;
         });
 
       const color = nodeColor(d);
