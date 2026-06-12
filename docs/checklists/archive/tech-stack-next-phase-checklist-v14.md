@@ -3,7 +3,7 @@
 最后更新：2026-04-20（V14 启动，基于 V13 全部交付）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v13.md`](tech-stack-next-phase-checklist-v13.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/overview/robot-learning-overview.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/overview/robot-learning-overview.md)
 
 ---
 

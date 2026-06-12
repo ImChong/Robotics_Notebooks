@@ -20,3 +20,6 @@ exports/search-cache.json
 
 # Cloud Agent 本地验证截图与临时 HTML（勿提交）
 .cursor-artifacts/
+
+# Obsidian 本地工作区状态（窗口布局、最近文件，因人而异不入库；共享配置 app.json 等仍跟踪）
+.obsidian/workspace.json

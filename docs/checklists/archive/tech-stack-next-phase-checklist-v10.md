@@ -3,7 +3,7 @@
 最后更新：2026-04-17（V10 启动，基于 V9 完整交付）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`docs/checklists/tech-stack-next-phase-checklist-v9.md`](tech-stack-next-phase-checklist-v9.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 
