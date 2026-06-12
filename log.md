@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] feat(media): AMP_mjlab ManimGL 训练流程讲解视频 — media/manim/amp-mjlab + media/videos/amp-mjlab/amp-mjlab-training-flow.mp4；wiki/entities/amp-mjlab.md 嵌入视频
+
+- 基于 ccrpRepo/AMP_mjlab 实际源码（train.py、AmpOnPolicyRunner.learn、rl_cfg、amp_env_cfg）用 3b1b/manim 生成约 54s 训练管线动画
+- 相关：[`wiki/entities/amp-mjlab.md`](wiki/entities/amp-mjlab.md)、[`media/manim/amp-mjlab/README.md`](media/manim/amp-mjlab/README.md)
+
 ## [2026-06-12] fix(wiki): 合并 MuJoCo Playground 等重复节点并修复 paper-notebook 标题 `[ ]` 残留
 
 - 合并 4 对计划子节点 → 已有实体：`paper-notebook-mujoco-playground-*` → [`wiki/entities/mujoco-playground.md`](wiki/entities/mujoco-playground.md)；另 Genesis / ORB-SLAM3 / VINS-Fusion 同理

@@ -43,6 +43,14 @@ summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实
 
 传统做法需要维护独立的 "locomotion 策略" 和 "recovery 策略"，并在运行时检测跌倒再触发切换，模式切换时易产生动作撕裂（behavioral discontinuity）。AMP_mjlab 的统一策略消除了这个切换逻辑，同时 AMP 判别器保证了动作的自然风格。
 
+## 训练流程讲解视频
+
+基于 [ccrpRepo/AMP_mjlab](https://github.com/ccrpRepo/AMP_mjlab) 实际源码，用 [3b1b/manim](https://github.com/3b1b/manim)（ManimGL）生成的训练管线讲解动画（约 54 秒）：
+
+<video controls src="../../media/videos/amp-mjlab/amp-mjlab-training-flow.mp4" title="AMP_mjlab 训练流程"></video>
+
+场景脚本与重渲染说明见 [`media/manim/amp-mjlab/README.md`](../../media/manim/amp-mjlab/README.md)。章节与源码对照：`train.py` 入口 → `AmpOnPolicyRunner.learn()`  rollout（24×4096）→ `predict_amp_reward` → PPO/判别器更新 → `save()` 导出 ONNX。
+
 ## 训练到部署流程图
 
 ```mermaid

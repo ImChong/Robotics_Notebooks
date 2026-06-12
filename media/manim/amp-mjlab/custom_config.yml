@@ -1,0 +1,13 @@
+media_dir: /workspace/media/manim/amp-mjlab
+video_dir: /workspace/media/videos/amp-mjlab
+images_dir: /workspace/media/manim/amp-mjlab/images
+text_dir: /workspace/media/manim/amp-mjlab/text
+tex_dir: /workspace/media/manim/amp-mjlab/tex
+log_dir: /workspace/media/manim/amp-mjlab/logs
+window_position: UR
+fullscreen: False
+write_to_movie: True
+file_writer_config:
+  fps: 30
+  pixel_width: 1920
+  pixel_height: 1080

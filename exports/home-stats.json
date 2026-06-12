@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/amp-mjlab.md",
+      "detail_id": "entity-amp-mjlab",
+      "label": "AMP_mjlab (G1 统一 AMP 策略)",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/1x-technologies.md",
       "detail_id": "entity-1x-technologies",
       "label": "1X Technologies",
@@ -76,14 +84,6 @@
       "path": "wiki/entities/amp-for-hardware.md",
       "detail_id": "entity-amp-for-hardware",
       "label": "AMP_for_hardware",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-mjlab.md",
-      "detail_id": "entity-amp-mjlab",
-      "label": "AMP_mjlab (G1 统一 AMP 策略)",
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
@@ -170,9 +170,9 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/1x-technologies.md",
-    "detail_id": "entity-1x-technologies",
-    "label": "1X Technologies",
+    "path": "wiki/entities/amp-mjlab.md",
+    "detail_id": "entity-amp-mjlab",
+    "label": "AMP_mjlab (G1 统一 AMP 策略)",
     "type": "entity",
     "recency": "2026-06-12",
     "source": "log.md"
