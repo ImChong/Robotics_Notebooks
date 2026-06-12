@@ -25,7 +25,7 @@ summary: "ResNet（arXiv:1512.03385，CVPR 2016）用残差映射与恒等捷径
 
 # ResNet（Deep Residual Learning for Image Recognition）
 
-**ResNet**（Residual Network）是 Kaiming He 等提出的 **深度残差学习** 框架（arXiv:1512.03385，CVPR 2016 Best Paper）。其核心思想是让堆叠层学习 **残差函数** $\mathcal{F}(\mathbf{x}) = \mathcal{H}(\mathbf{x}) - \mathbf{x}$，通过 **捷径连接（shortcut）** 实现 $\mathbf{y} = \mathcal{F}(\mathbf{x}) + \mathbf{x}$，从而缓解单纯加深网络时的 **退化（degradation）** 现象，使 **百层量级** CNN 在 ImageNet 上稳定训练并取得当时 SOTA。
+**ResNet**（Residual Network）是 Kaiming He 等提出的 **深度残差学习** 框架（arXiv:1512.03385，CVPR 2016 Best Paper）。其核心思想是让堆叠层学习 **残差函数** $\mathcal{F}(\mathbf{x}) = \mathcal{H}(\mathbf{x}) - \mathbf{x}$，通过 **捷径连接（shortcut）** 实现 $\mathbf{y} = \mathcal{F}(\mathbf{x}) + \mathbf{x}$，从而缓解单纯加深网络时的 **退化（degradation）** 现象，使 **百层量级** CNN 在 ImageNet 上稳定训练并取得 **当时最优分类精度**。
 
 ## 一句话定义
 
@@ -38,7 +38,6 @@ summary: "ResNet（arXiv:1512.03385，CVPR 2016）用残差映射与恒等捷径
 | CNN | Convolutional Neural Network | 卷积神经网络，处理图像/深度感知 |
 | BN | Batch Normalization | 批归一化，极深网络训练的标准配套 |
 | FLOPs | Floating Point Operations | 浮点运算量，衡量网络计算复杂度 |
-| SOTA | State of the Art | 当前最优水平 |
 | FPN | Feature Pyramid Network | 多尺度特征金字塔，检测常用 neck |
 | ImageNet | ImageNet Large Scale Visual Recognition Challenge | 大规模图像分类基准数据集 |
 

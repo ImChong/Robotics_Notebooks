@@ -12,6 +12,7 @@ tags:
   - flocking
 status: complete
 updated: 2026-06-12
+venue: "Sensors 2025, 25(11):3496"
 doi: "10.3390/s25113496"
 related:
   - ../tasks/humanoid-soccer.md
