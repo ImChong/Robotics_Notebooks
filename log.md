@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] ingest | sources/repos/manim-community.md + manim-3b1b.md + sites/manim-community.md — Manim/ManimCE/ManimGL 程序化数学动画；wiki/entities/manim.md，交叉 character-animation-vs-robotics、blender
+
 ## [2026-06-12] fix(wiki): 合并 MuJoCo Playground 等重复节点并修复 paper-notebook 标题 `[ ]` 残留
 
 - 合并 4 对计划子节点 → 已有实体：`paper-notebook-mujoco-playground-*` → [`wiki/entities/mujoco-playground.md`](wiki/entities/mujoco-playground.md)；另 Genesis / ORB-SLAM3 / VINS-Fusion 同理

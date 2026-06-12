@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1156,
-  "edge_count": 7053,
+  "node_count": 1157,
+  "edge_count": 7061,
   "coverage": {
-    "covered": 1140,
-    "total": 1154,
+    "covered": 1141,
+    "total": 1155,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/manim.md",
+      "detail_id": "entity-manim",
+      "label": "Manim（程序化数学动画引擎）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/1x-technologies.md",
       "detail_id": "entity-1x-technologies",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-firmware.md",
-      "detail_id": "entity-atom01-firmware",
-      "label": "Atom01 Firmware",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/1x-technologies.md",
-    "detail_id": "entity-1x-technologies",
-    "label": "1X Technologies",
+    "path": "wiki/entities/manim.md",
+    "detail_id": "entity-manim",
+    "label": "Manim（程序化数学动画引擎）",
     "type": "entity",
     "recency": "2026-06-12",
     "source": "log.md"
