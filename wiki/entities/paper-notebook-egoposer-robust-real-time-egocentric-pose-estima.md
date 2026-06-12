@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
 updated: 2026-06-11
+arxiv: "2308.06493"
+venue: "ECCV 2024"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
   - ../overview/humanoid-paper-notebooks-index.md

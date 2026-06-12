@@ -3,6 +3,8 @@ type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
 updated: 2026-06-11
+arxiv: "2003.05212"
+venue: "IROS 2020"
 related:
   - ../overview/paper-notebook-category-07-teleoperation.md
   - ../overview/humanoid-paper-notebooks-index.md

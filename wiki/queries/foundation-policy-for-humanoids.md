@@ -16,7 +16,7 @@ related:
 > **Query 产物**：本页由以下问题触发：「人形机器人 foundation policy 现在适合什么，不适合什么？」
 > 综合来源：[Foundation Policy](../concepts/foundation-policy.md)、[VLA](../methods/vla.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)、[Manipulation](../tasks/manipulation.md)、[Locomotion](../tasks/locomotion.md)
 
-# 人形机器人（Humanoid）Foundation Policy 适用边界分析
+# 人形机器人（Humanoid）Foundation Policy 与 VLA 适用边界分析
 
 > 关键词：humanoid foundation policy、humanoid VLA、humanoid loco-manipulation。
 
