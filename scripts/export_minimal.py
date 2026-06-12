@@ -9,6 +9,7 @@ from typing import Any, Dict, List
 from build_search_index import generate_search_index
 from search_indexing import parse_frontmatter, strip_frontmatter
 from utils.paths import path_to_id
+from utils.wiki_cache import wiki_stem_to_path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / "exports" / "index-v1.json"
@@ -341,8 +342,7 @@ def collect_markdown_links(text: str, current_path: Path) -> List[str]:
             continue
         general.append(path_to_id(resolved, ROOT))
     if current_path.parts and "wiki" in current_path.parts:
-        wiki_dir = ROOT / "wiki"
-        stem_to_path = {p.stem: p for p in wiki_dir.rglob("*.md")}
+        stem_to_path = wiki_stem_to_path()
         for target in re.findall(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", text):
             linked_path = stem_to_path.get(target.strip())
             if linked_path:

@@ -42,6 +42,7 @@ from pathlib import Path
 from typing import Any
 
 from export_minimal import extract_summary
+from utils.wiki_cache import wiki_stem_to_path
 
 REPO_ROOT = Path(__file__).parent.parent
 WIKI_DIR = REPO_ROOT / "wiki"
@@ -183,16 +184,6 @@ LATEST_NODES_DEFAULT = 20
 LATEST_NODES_CAP = 30
 LATEST_NODES_WINDOW_DAYS = 30
 LATEST_NODES_ENV_VAR = "GRAPH_LATEST_NODES_MAX"
-
-# Wikilink [[stem]] 解析缓存（wiki 文件集合不变时可复用）
-_STEM_TO_PATH: dict[str, Path] | None = None
-
-
-def _wiki_stem_index() -> dict[str, Path]:
-    global _STEM_TO_PATH
-    if _STEM_TO_PATH is None:
-        _STEM_TO_PATH = {p.stem: p for p in WIKI_DIR.rglob("*.md")}
-    return _STEM_TO_PATH
 
 
 def wiki_recency_date(content: str, page: Path) -> date:
@@ -476,7 +467,7 @@ def extract_internal_links(content: str, source_path: Path) -> list[Path]:
                             targets.append(resolved)
 
     # 3. Wikilinks [[name]]
-    stem_map = _wiki_stem_index()
+    stem_map = wiki_stem_to_path()
     for match in re.finditer(r"\[\[([^\]|]+)(?:\|[^\]]+)?\]\]", content):
         stem = match.group(1).strip()
         if stem in stem_map:
