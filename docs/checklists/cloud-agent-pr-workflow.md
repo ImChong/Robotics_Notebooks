@@ -5,7 +5,7 @@
 ## 1. 分支与提交
 
 1. 自 `main`（或任务指定的 base）检出功能分支，名称使用仓库约定前缀与后缀（例如 `cursor/<topic>-e361`）。
-2. 涉及 `wiki/` 或派生索引时，提交前**必须**运行 `make ci-preflight`（或任务要求的等价 CI 门禁），避免 `exports/`、`docs/search-index.json` 等与远端不一致。
+2. 涉及 `wiki/` 或派生索引时，提交前**必须**运行 `make ci-preflight`（或任务要求的等价 CI 门禁），避免仍入库的派生文件（统计、徽章、`index.md` 等）与远端不一致；大体积站点 JSON 与 sitemap 已 gitignore，无需提交。
 3. 仅 `stage` 与本次任务相关的文件；提交信息遵循根目录 [`AGENTS.md`](../../AGENTS.md) 中的 **中文 commit 规范**。
 
 ## 2. 推送远端
@@ -28,10 +28,11 @@ git push -u origin <branch-name>
 
 ### 4.1 站点详情页（wiki / entity 正文）
 
-知识页、实体页在站点上由 **`docs/detail.html`** 渲染，数据来自 `docs/exports/site-data-v1.json`（由 `make ci-preflight` 生成）。截图前应确保本地 `docs/exports/` 与当前分支一致。
+知识页、实体页在站点上由 **`docs/detail.html`** 渲染，数据来自 `docs/exports/site-data-v1.json`。该文件与 `docs/search-index.json`、`docs/sitemap.xml`、`link-graph.json` 等大体积站点数据**不入库**（Pages 部署时现场生成），本地截图前必须先生成，并确保与当前分支一致。
 
-1. **启动本地静态服务**（在仓库根目录）  
+1. **生成站点数据并启动本地静态服务**（在仓库根目录）  
    ```bash
+   make export graph   # 或 make ci-preflight；约 40 秒，纯标准库
    cd docs && python3 -m http.server 8765
    ```
 2. **构造 URL**  

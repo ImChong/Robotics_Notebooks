@@ -15,8 +15,19 @@ playwright-report/
 # Local vector artifacts
 exports/vector-index.npz
 
-# Local search cache (CLI use only — docs/search-index.json is a Pages artifact and must be tracked)
+# Local search cache (CLI use only)
 exports/search-cache.json
+
+# 部署时生成的站点数据（pages.yml 构建步骤现场生成，不入库；
+# 本地预览静态站前先 `make export graph` 生成一次，约 40 秒）
+docs/search-index.json
+docs/sitemap.xml
+docs/exports/index-v1.json
+docs/exports/site-data-v1.json
+docs/exports/link-graph.json
+exports/index-v1.json
+exports/site-data-v1.json
+exports/link-graph.json
 
 # Cloud Agent 本地验证截图与临时 HTML（勿提交）
 .cursor-artifacts/

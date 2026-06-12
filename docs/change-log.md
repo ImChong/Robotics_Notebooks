@@ -14,6 +14,16 @@
 
 ---
 
+## 2026-06-12 — 仓库清理第二批：站点大 JSON 改为部署时生成
+
+依据清理计划第二批（架构项）执行：
+
+- `docs/search-index.json`、`docs/sitemap.xml`、`index-v1.json` / `site-data-v1.json` / `link-graph.json`（`exports/` 与 `docs/exports/` 双份）共 8 个生成产物移出 git 跟踪并加入 `.gitignore`，此前它们以每次内容提交约 33MB 的速度膨胀仓库历史。
+- `pages.yml` 构建 job 新增「Generate site data」步骤（等价 `make export graph`，纯标准库，约 42 秒），部署时现场生成；顺带修复线上数据滞后问题——此前 auto-export 提交带 `[skip ci]` 不触发 Pages 部署，线上搜索索引与详情数据**永远滞后一次内容提交**，现在每次推送部署即最新。
+- `export.yml` 仅提交仍入库的小型派生文件（统计、徽章、`index.md`）；`tests.yml` 在 pytest 前生成快照测试所需的 `link-graph.json` 与 `site-data-v1.json`；`ci_preflight.py` 的 `GENERATED_PATHS` 同步收窄。
+- 本地预览流程变更：起静态服务前先 `make export graph`（约 40 秒）。AGENTS.md、CLAUDE.md §5.1、cloud-agent-pr-workflow.md 已同步更新。
+- 附带修复：`docs/checklists/archive/` v3–v9 共 7 处指向 Karpathy LLM Wiki 的历史断链（2026-04-17 v1–v9 搬入 `docs/checklists/` 时未改写相对链接所致），统一改写为 `../../../wiki/references/llm-wiki-karpathy.md`。
+
 ## 2026-06-12 — 仓库清理首批：checklists 归档与一次性产物移除
 
 依据 `docs/plans/2026-04-29-repo-cleanup-planning.md` 首批试点执行：

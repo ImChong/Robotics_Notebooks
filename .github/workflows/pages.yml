@@ -21,6 +21,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      # 站点大 JSON（search-index / index-v1 / site-data-v1 / link-graph）与 sitemap
+      # 不入库，部署时现场生成（等价 make export graph，纯标准库依赖，约 40s）
+      - name: Generate site data
+        run: |
+          python3 scripts/export_minimal.py
+          python3 scripts/generate_link_graph.py
+          python3 scripts/generate_home_stats.py
+          python3 scripts/graph_exports_sync.py
+
       - name: Copy README to docs
         run: cp README.md docs/README.md
 

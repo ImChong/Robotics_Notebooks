@@ -18,12 +18,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
+# 仅含仍入库的派生文件；大体积站点 JSON 与 sitemap 已 gitignore，
+# 由 pages.yml 部署时生成（docs/exports、exports 目录内被 ignore 的文件不会出现在 git diff）
 GENERATED_PATHS = [
     "index.md",
     "README.md",
     "docs/index.html",
-    "docs/sitemap.xml",
-    "docs/search-index.json",
     "docs/exports",
     "exports",
 ]
