@@ -2,8 +2,9 @@
 type: entity
 tags: [humanoid, teleoperation, sim2real, motion-tracking, egocentric-vision, cmu, nvidia, gear]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-12
 related:
+  - ./smplolympics.md
   - ./tairan-he.md
   - ../methods/sonic-motion-tracking.md
   - ../tasks/teleoperation.md
@@ -55,6 +56,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 - [Sim2Real](../concepts/sim2real.md)
 - [MimicKit](./mimickit.md)
 - [人形机器人](./humanoid-robot.md)
+- [SMPLOlympics](./smplolympics.md) — 博士阶段主导的 SMPL 仿真人形体育 benchmark
 
 ## 参考来源
 

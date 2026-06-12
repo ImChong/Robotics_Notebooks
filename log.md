@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] ingest | sources/papers/smplolympics_arxiv_2407_00187.md + table_tennis_strategy_skill_arxiv_2407_16210.md — SMPLOlympics 体育 benchmark 与 PhysicsPingPong 乒乓球分层控制；wiki/entities/smplolympics.md wiki/methods/table-tennis-strategy-skill-learning.md
+
 ## [2026-06-12] fix(graph): 合并 Paper Notebooks 分类页与对应 task/concept 页的重复图谱社区
 
 - 实现：`COMMUNITY_HUB_ALIASES` + `_merge_partition_by_hub_equivalence`（如 `论文深读·灵巧操作` 与 `操作（Manipulation）` 合并为同一社区）

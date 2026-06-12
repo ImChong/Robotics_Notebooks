@@ -2,7 +2,7 @@
 type: method
 tags: [il, behavior-cloning, diffusion-policy, sim2real]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-12
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ./bc-z.md
