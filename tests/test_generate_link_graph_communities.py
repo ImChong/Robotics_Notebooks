@@ -27,6 +27,33 @@ def test_detect_communities_completes_quickly_on_medium_graph() -> None:
     assert elapsed < 2.0, f"detect_communities too slow: {elapsed:.2f}s"
 
 
+def test_merge_partition_by_hub_equivalence_merges_alias_hubs() -> None:
+    """Paper Notebooks 分类页与对应 task 页应合并为同一社区分区。"""
+    partition = [
+        [
+            "wiki/overview/paper-notebook-category-06-manipulation.md",
+            "wiki/entities/paper-a.md",
+        ],
+        ["wiki/tasks/manipulation.md", "wiki/methods/foo.md"],
+    ]
+    degree_map = glg.Counter(
+        {
+            "wiki/overview/paper-notebook-category-06-manipulation.md": 50,
+            "wiki/entities/paper-a.md": 1,
+            "wiki/tasks/manipulation.md": 10,
+            "wiki/methods/foo.md": 2,
+        }
+    )
+    node_map = {
+        nid: {"id": nid, "label": nid.split("/")[-1]}
+        for nid in degree_map
+    }
+
+    merged = glg._merge_partition_by_hub_equivalence(partition, degree_map, node_map)
+    assert len(merged) == 1
+    assert sum(len(group) for group in merged) == 4
+
+
 def test_merge_communities_to_cap_merges_smallest() -> None:
     partition = [["a", "b"], ["c"], ["d", "e", "f"]]
     adjacency = {

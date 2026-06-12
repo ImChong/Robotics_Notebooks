@@ -59,6 +59,23 @@ class CommunityHubNamePatternTest(unittest.TestCase):
                     f"override {hub_id!r} name={hub_name!r}",
                 )
 
+    def test_exported_communities_have_no_duplicate_canonical_hubs(self) -> None:
+        """同一 canonical 枢纽不应出现两个命名社区（如 Manipulation 与论文深读·Manipulation）。"""
+        seen: dict[str, str] = {}
+        for meta in _load_exported_communities():
+            if meta.get("id") == glg.OTHER_COMMUNITY_ID:
+                continue
+            hub_id = str(meta.get("hub_id") or "")
+            canonical = glg.canonical_community_hub(hub_id)
+            label = str(meta.get("label", ""))
+            with self.subTest(canonical=canonical, label=label):
+                if canonical in seen:
+                    self.fail(
+                        f"duplicate canonical hub {canonical!r}: "
+                        f"{seen[canonical]!r} and {label!r}"
+                    )
+                seen[canonical] = label
+
     def test_exported_community_labels_conform_to_pattern(self) -> None:
         """快照里全部命名社区（除「其他社区」）的 label 应符合 中文（English） 社区。"""
         for meta in _load_exported_communities():
