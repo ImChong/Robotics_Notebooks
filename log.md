@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] tooling | lint_wiki.py 新增「缺页概念巡检 V1」(`_check_missing_concept_pages`) — V24 P0 第 2 项
+
+- 全库自动统计正文以 `**加粗**`/`` `反引号` `` 高频出现（≥6 个不同页面引用）但缺独立 `concepts/methods/formalizations` 页的术语，输出"建议新建页"候选（INFO 级，不阻塞 CI），作为后续 ingest/query 选题入口
+- 与既有 `_check_missing_concepts`（人工 watch 列表映射已知 slug）互补；单 token 词形过滤路径/文件名、大小写归并、候选上限 15、停用词剔除 frontmatter 键
+- 实测候选 8 条（PPO/MuJoCo/Transformer 等），新增 INFO 区块至健康报告；`docs/checklists/tech-stack-next-phase-checklist-v24.md` P0 该项打勾
+- 验证：`tests/test_lint_wiki_missing_concept_pages.py` 6 例通过；`ruff format/check`、`mypy scripts/lint_wiki.py` 全绿；`python3 scripts/lint_wiki.py` 退出码 0
+
 ## [2026-06-12] ingest | sources/repos/manim-community.md + manim-3b1b.md + sites/manim-community.md — Manim/ManimCE/ManimGL 程序化数学动画；wiki/entities/manim.md，交叉 character-animation-vs-robotics、blender
 
 ## [2026-06-12] fix(wiki): 合并 MuJoCo Playground 等重复节点并修复 paper-notebook 标题 `[ ]` 残留

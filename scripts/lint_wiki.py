@@ -23,6 +23,9 @@ lint_wiki.py — 自动化 wiki 健康检查脚本
  16. 陈旧声明巡检（V24 新增，信息型）：正文含「SOTA / state-of-the-art /
      当前最强 / 最新」等绝对化措辞，但 frontmatter updated 早于库内共享 tag
      的更晚页面时，提示复核断言时效性。
+ 17. 缺页概念巡检（V24 新增，信息型）：正文以 **加粗** 或 `反引号` 形式被多页
+     高频引用、但库内无独立 concepts/methods/formalizations 页的术语，输出
+     "建议新建页"候选清单，作为后续 ingest/query 选题入口。
 
 用法：
   python3 scripts/lint_wiki.py
@@ -61,9 +64,38 @@ STALE_CLAIM_PATTERNS = [
     r"最新",
 ]
 
+# 缺页概念巡检 V1：正文以 **加粗** 或 `反引号` 形式被多页引用、但库内无独立
+# concepts/methods/formalizations 页的术语，给出"建议新建页"候选（INFO 级）。
+# 单 token 词形（可含连字符 / 加号），用于排除路径、文件名、整句等噪声。
+MISSING_CONCEPT_TERM_RE = re.compile(r"^[A-Za-z][A-Za-z0-9+\-]{1,30}$")
+# 被至少这么多不同页面引用才视为"高频"，避免低频术语刷屏。
+MISSING_CONCEPT_PAGE_MIN_PAGES = 6
+# 候选输出上限，避免淹没健康报告。
+MISSING_CONCEPT_PAGE_MAX_CANDIDATES = 15
+# 明显非概念的高频 token（frontmatter 键 / 布尔值等），不计入候选。
+MISSING_CONCEPT_STOPWORDS: set[str] = {
+    "type",
+    "tags",
+    "related",
+    "sources",
+    "updated",
+    "summary",
+    "description",
+    "true",
+    "false",
+    "null",
+    "id",
+    "title",
+    "wiki",
+    "md",
+    "http",
+    "https",
+}
+
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
 INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
+    "missing_concept_pages",
     "missing_abbrev_glossary",
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
@@ -200,6 +232,7 @@ def _empty_results() -> dict[str, Any]:
         "broken_links": [],
         "stub_pages": [],
         "missing_pages": [],
+        "missing_concept_pages": [],
         "broken_source_refs": [],
         "sources_orphans": [],
         "stale_pages": [],
@@ -327,6 +360,64 @@ def _check_missing_concepts(pages: list[Path], results: dict[str, Any]) -> None:
     for term, count in sorted(term_counts.items(), key=lambda x: -x[1]):
         results["missing_pages"].append(
             f"{term} （出现 {count} 次，建议新建 wiki/{watch_terms[term]}.md）"
+        )
+
+
+def _check_missing_concept_pages(pages: list[Path], results: dict[str, Any]) -> None:
+    """缺页概念巡检 V1（信息型，不阻塞 CI）。
+
+    统计正文中以 ``**加粗**`` 或 `` `反引号` `` 形式高频出现（被
+    ``MISSING_CONCEPT_PAGE_MIN_PAGES`` 个以上不同页面引用），但库内没有独立
+    concepts/methods/formalizations 页的术语，输出"建议新建页"候选清单，
+    作为后续 ingest/query 选题入口。与 ``_check_missing_concepts``（人工 watch
+    列表、负责把已知术语映射到既有 slug）互补：本检查是全库自动统计。
+    """
+    # 已有独立页 stem（仅 concepts/methods/formalizations 视为"已建页"）
+    covered_stems: set[str] = set()
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT) if page.is_relative_to(REPO_ROOT) else page
+        parts = rel.parts
+        if "wiki" in parts:
+            idx = parts.index("wiki")
+            if len(parts) > idx + 1 and parts[idx + 1] in {
+                "concepts",
+                "methods",
+                "formalizations",
+            }:
+                covered_stems.add(page.stem.lower())
+
+    # 术语 slug → 引用它的页面集合；slug → 首见展示形（保留原大小写）
+    term_pages: dict[str, set[str]] = {}
+    term_display: dict[str, str] = {}
+    for page in pages:
+        content = page.read_text(encoding="utf-8")
+        body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL)
+        body = re.sub(r"```.*?```", "", body, flags=re.DOTALL)  # 仅去围栏块，保留行内反引号
+        rel_str = str(page.relative_to(REPO_ROOT)) if page.is_relative_to(REPO_ROOT) else str(page)
+        terms_in_page: set[str] = set()
+        for m in re.finditer(r"\*\*([^*\n]+)\*\*", body):
+            terms_in_page.add(m.group(1).strip())
+        for m in re.finditer(r"`([^`\n]+)`", body):
+            terms_in_page.add(m.group(1).strip())
+        for term in terms_in_page:
+            if not MISSING_CONCEPT_TERM_RE.match(term):
+                continue
+            slug = term.lower()
+            if slug in MISSING_CONCEPT_STOPWORDS or slug in covered_stems:
+                continue
+            term_display.setdefault(slug, term)
+            term_pages.setdefault(slug, set()).add(rel_str)
+
+    candidates = [
+        (slug, len(refs))
+        for slug, refs in term_pages.items()
+        if len(refs) >= MISSING_CONCEPT_PAGE_MIN_PAGES
+    ]
+    candidates.sort(key=lambda x: (-x[1], x[0]))
+    for slug, count in candidates[:MISSING_CONCEPT_PAGE_MAX_CANDIDATES]:
+        results["missing_concept_pages"].append(
+            f"{term_display[slug]}（被 {count} 个页面以加粗/反引号引用，"
+            f"但无独立 concepts/methods/formalizations 页，建议评估新建）"
         )
 
 
@@ -953,6 +1044,7 @@ def lint() -> dict[str, Any]:
 
     _check_per_page(pages, inbound, broken_links, results)
     _check_missing_concepts(pages, results)
+    _check_missing_concept_pages(pages, results)
     _check_sources_health(results)
     _check_contradictions(pages, results)
     _check_frontmatter(pages, results)
@@ -1018,6 +1110,11 @@ def format_report(results: dict[str, Any]) -> str:
         ("contradictions", "潜在矛盾（跨页面相反定性描述）", "⚠️"),
         ("stub_pages", "空壳页面（< 200 字）", "⚠️"),
         ("missing_pages", "频繁提及但缺少 wiki 页面的概念", "💡"),
+        (
+            "missing_concept_pages",
+            "多页以加粗/反引号高频引用但缺独立 concepts/methods/formalizations 页（信息型，不阻塞 CI）",
+            "💡",
+        ),
         ("missing_type", "Frontmatter 缺少 type 字段", "⚠️"),
         ("log_inactive", "log.md 活跃度警告", "⚠️"),
         ("missing_summary", "缺少摘要字段（summary/description）", "⚠️"),
