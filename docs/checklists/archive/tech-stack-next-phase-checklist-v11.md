@@ -3,7 +3,7 @@
 最后更新：2026-04-17（V11 P0-P5 全部完成，90节点/521边/17项lint/100%覆盖率）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`docs/checklists/tech-stack-next-phase-checklist-v10.md`](tech-stack-next-phase-checklist-v10.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 
