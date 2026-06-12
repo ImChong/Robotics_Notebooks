@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] fix(graph): 合并 Paper Notebooks 分类页与对应 task/concept 页的重复图谱社区
+
+- 实现：`COMMUNITY_HUB_ALIASES` + `_merge_partition_by_hub_equivalence`（如 `论文深读·灵巧操作` 与 `操作（Manipulation）` 合并为同一社区）
+- 测试：`test_merge_partition_by_hub_equivalence_merges_alias_hubs`、`test_exported_communities_have_no_duplicate_canonical_hubs`
+- 验证：`make ci-preflight` 通过
+
 ## [2026-06-12] ingest | sources/papers/bifrost_umi_arxiv_2605_03452.md — 增补 arXiv Related Works 与 TWIST2 采集范式对照；交叉 wiki/entities/paper-bifrost-umi.md
 
 ## [2026-06-12] ingest | sources/papers/clot_arxiv_2602_15060.md + sources/sites/clot-project.md + sources/repos/clot.md — CLOT arXiv/项目页/代码 ingest；深化 wiki/entities/paper-amp-survey-16-clot.md（闭环全局、Observation Pre-shift）

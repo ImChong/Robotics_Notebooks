@@ -113,6 +113,37 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/mimickit.md": "运动模仿与控制（MimicKit）",
     "wiki/entities/isaac-gym-isaac-lab.md": "仿真训练（Isaac Gym / Isaac Lab）",
 }
+# Paper Notebooks 分类父节点与 wiki 知识页语义等价：社区检测后合并为同一社区，命名取 canonical 枢纽。
+# 规范见 schema/naming.md § 图谱社区命名；分类元数据见 schema/paper-notebook-categories.json。
+COMMUNITY_HUB_ALIASES: dict[str, str] = {
+    "wiki/overview/paper-notebook-category-01-foundational-rl.md": (
+        "wiki/methods/reinforcement-learning.md"
+    ),
+    "wiki/overview/paper-notebook-category-02-motion-retargeting.md": (
+        "wiki/concepts/motion-retargeting.md"
+    ),
+    "wiki/overview/paper-notebook-category-04-loco-manipulation-and-wbc.md": (
+        "wiki/tasks/loco-manipulation.md"
+    ),
+    "wiki/overview/paper-notebook-category-05-locomotion.md": "wiki/tasks/locomotion.md",
+    "wiki/overview/paper-notebook-category-06-manipulation.md": "wiki/tasks/manipulation.md",
+    "wiki/overview/paper-notebook-category-07-teleoperation.md": "wiki/tasks/teleoperation.md",
+    "wiki/overview/paper-notebook-category-08-navigation.md": (
+        "wiki/tasks/vision-language-navigation.md"
+    ),
+    "wiki/overview/paper-notebook-category-09-state-estimation.md": (
+        "wiki/concepts/state-estimation.md"
+    ),
+    "wiki/overview/paper-notebook-category-10-sim-to-real.md": "wiki/concepts/sim2real.md",
+    "wiki/overview/paper-notebook-category-12-hardware-design.md": (
+        "wiki/overview/humanoid-hardware-101-technology-map.md"
+    ),
+}
+
+
+def canonical_community_hub(hub_id: str) -> str:
+    """将别名枢纽页解析为 canonical 枢纽（用于社区合并与命名）。"""
+    return COMMUNITY_HUB_ALIASES.get(hub_id, hub_id)
 
 
 def resolve_community_hub_name(hub_id: str, fallback_label: str) -> str:
@@ -676,6 +707,35 @@ def louvain_communities(
     )
 
 
+def _hub_for_members(
+    members: list[str],
+    degree_map: Counter[str],
+    node_map: dict[str, dict[str, Any]],
+) -> str:
+    return max(
+        members,
+        key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
+    )
+
+
+def _merge_partition_by_hub_equivalence(
+    partition: list[list[str]],
+    degree_map: Counter[str],
+    node_map: dict[str, dict[str, Any]],
+) -> list[list[str]]:
+    """合并枢纽页语义等价的社区分区（如 Paper Notebooks 分类页 vs 对应 task/concept 页）。"""
+    if not COMMUNITY_HUB_ALIASES:
+        return partition
+
+    buckets: dict[str, set[str]] = defaultdict(set)
+    for members in partition:
+        hub_id = _hub_for_members(members, degree_map, node_map)
+        buckets[canonical_community_hub(hub_id)].update(members)
+
+    merged = [sorted(members) for members in buckets.values()]
+    return sorted(merged, key=lambda members: (-len(members), members[0] if members else ""))
+
+
 def assign_communities(
     nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
@@ -687,7 +747,11 @@ def assign_communities(
         degree_map[edge["target"]] += 1
 
     adjacency = build_undirected_adjacency(node_ids, edges)
-    sorted_groups = detect_communities(adjacency)
+    sorted_groups = _merge_partition_by_hub_equivalence(
+        detect_communities(adjacency),
+        degree_map,
+        {node["id"]: node for node in nodes},
+    )
 
     node_map = {node["id"]: node for node in nodes}
     community_meta: dict[str, dict[str, Any]] = {}
@@ -696,9 +760,8 @@ def assign_communities(
     for idx, members in enumerate(sorted_groups):
         if idx < MAX_COMMUNITIES:
             community_id = f"community-{idx}"
-            hub_id = max(
-                members,
-                key=lambda node_id: (degree_map.get(node_id, 0), node_map[node_id]["label"]),
+            hub_id = canonical_community_hub(
+                _hub_for_members(members, degree_map, node_map),
             )
             hub_name = resolve_community_hub_name(hub_id, node_map[hub_id]["label"])
             label = f"{hub_name} 社区"
