@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-12",
   "node_count": 1161,
-  "edge_count": 6994,
+  "edge_count": 7008,
   "coverage": {
     "covered": 1145,
     "total": 1159,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-bifrost-umi.md",
+      "detail_id": "entity-paper-bifrost-umi",
+      "label": "BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-amp-survey-16-clot.md",
+      "detail_id": "entity-paper-amp-survey-16-clot",
+      "label": "CLOT",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
       "detail_id": "entity-paper-behavior-foundation-model-humanoid",
@@ -143,38 +167,14 @@
       "type": "entity",
       "recency": "2026-06-11",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md",
-      "detail_id": "entity-paper-notebook-adapting-humanoid-locomotion-over-challenging-te",
-      "label": "Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md",
-      "detail_id": "entity-paper-notebook-adaptive-invariant-extended-kalman-filter-for-le",
-      "label": "Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha.md",
-      "detail_id": "entity-paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha",
-      "label": "AdaptNet",
-      "type": "entity",
-      "recency": "2026-06-11",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-behavior-foundation-model-humanoid.md",
-    "detail_id": "entity-paper-behavior-foundation-model-humanoid",
-    "label": "BFM（Behavior Foundation Model for Humanoid Robots）",
+    "path": "wiki/entities/paper-bifrost-umi.md",
+    "detail_id": "entity-paper-bifrost-umi",
+    "label": "BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）",
     "type": "entity",
-    "recency": "2026-06-11",
+    "recency": "2026-06-12",
     "source": "log.md"
   }
 }

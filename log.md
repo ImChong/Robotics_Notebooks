@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-12] ingest | sources/papers/bifrost_umi_arxiv_2605_03452.md — 增补 arXiv Related Works 与 TWIST2 采集范式对照；交叉 wiki/entities/paper-bifrost-umi.md
+
+## [2026-06-12] ingest | sources/papers/clot_arxiv_2602_15060.md + sources/sites/clot-project.md + sources/repos/clot.md — CLOT arXiv/项目页/代码 ingest；深化 wiki/entities/paper-amp-survey-16-clot.md（闭环全局、Observation Pre-shift）
+
+## [2026-06-12] ingest | sources/sites/twist2-project.md + sources/repos/twist2.md — TWIST2 项目页/仓库一手 ingest；深化 wiki/entities/paper-twist2.md（Mermaid 管线、ICRA 2026、分层 visuomotor）
+
 ## [2026-06-11] structural | scripts/lint_wiki.py — V24 P0「陈旧声明（stale claim）巡检 V1」：新增 `_check_stale_claims` 信息型检查 + 6 例单测 + lint 报告基线快照
 
 - 实现：正文（去 frontmatter / 代码块 / 误区区块）命中「SOTA / state-of-the-art / 当前最强 / 最新」等绝对化措辞，且本页 frontmatter `updated` 早于库内共享 ≥1 个 tag 的更晚页面时，输出 💡 INFO 级提示；列入 `INFO_ONLY_KEYS`，不计入 lint 失败总数、不阻塞 CI

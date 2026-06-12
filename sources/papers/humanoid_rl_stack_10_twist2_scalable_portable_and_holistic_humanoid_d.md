@@ -6,23 +6,25 @@
 - **类型：** paper
 - **系统栈层：** 01 数据 · 重定向 · 遥操作
 - **机构：** Amazon FAR；斯坦福大学；USC；伯克利；CMU
-- **项目/论文链接：** <https://yanjieze.com/TWIST2/>
-- **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
-- **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
-- **入库日期：** 2026-05-26
-- **一句话说明：** 如果说 TWIST 证明了全身遥操作这条路能走，TWIST2 关心的就是：**这条路能不能规模化。**
+- **论文链接：** <https://arxiv.org/abs/2505.02833>
+- **项目页：** <https://yanjieze.com/projects/TWIST2/>
+- **代码：** <https://github.com/amazon-far/TWIST2>
+- **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
+- **入库日期：** 2026-05-26（2026-06-12 增补项目页一手摘录）
+- **一句话说明：** 如果说 TWIST 证明了全身遥操作能走通，TWIST2 解决 **规模化**：便携硬件 + 开源全栈 + 社区数据集 + 从遥操作到 visuomotor 自主的闭环管线。
 
-## 核心摘录（策展，非全文）
+## 核心摘录（项目页 + 策展）
 
 - **在身体系统栈中的位置：** 01 数据 · 重定向 · 遥操作，编号 **10/42**。
-- **公众号导读要点：** 如果说 TWIST 证明了全身遥操作这条路能走，TWIST2 关心的就是：**这条路能不能规模化。**
-- **读者动作：** 方法细节以论文 PDF / 项目页为准；总框架见 [人形 RL 身体系统栈](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)。
+- **工程要点：** 2-DoF 颈 egocentric 感知；PICO 便携全身流；低层 RL tracking + 高层扩散模仿；15 min 级高密度采集；ICRA 2026。
+- **读者动作：** 复现见项目页五步教程；方法细节见 [twist2-project.md](../sites/twist2-project.md)；总框架见 [人形 RL 身体系统栈](../../wiki/overview/humanoid-rl-motion-control-body-system-stack.md)。
 
 ## 对 wiki 的映射
 
-  - （待交叉链接）
+- [TWIST2（论文实体）](../../wiki/entities/paper-twist2.md)
+- [teleoperation](../../wiki/tasks/teleoperation.md)
 
 ## 参考来源（原始）
 
+- 项目页：[twist2-project.md](../sites/twist2-project.md)
 - 微信公众号编译：[wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
-- 姊妹篇 AMP 专题：[wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md](../blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
