@@ -2,12 +2,13 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-06-05
+updated: 2026-06-12
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
   - ./imitation-learning.md
   - ./beyondmimic.md
+  - ./hil-hybrid-imitation-learning.md
   - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/papers/amp.md
@@ -49,7 +50,11 @@ summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学
 - **高动态步态**（如 running, jumping）：故意省略 AMP。因为在高度动态的过程中，AMP 的正则化会过度约束运动，反而阻碍动作的学习。
 这种**选择性应用 AMP** 的策略，可以在统一的 RL 框架下实现多样化步态的控制。
 
-### 4. 状态相关 AMP（SD-AMP，arXiv:2605.18611）
+### 4. 场景条件 AMP：[HIL](./hil-hybrid-imitation-learning.md)
+
+[HIL](./hil-hybrid-imitation-learning.md)（arXiv:2505.12619）将 AMP style reward 与 **motion tracking** 并行训练，并把 **场景点云** 送入判别器，使风格奖励同时约束「像参考」与「适配当前障碍」。这是 AMP 在人–场景跑酷动画中的代表性扩展；后人形 [MTRG](./mtrg-reference-goal-driven-rl.md) 则完全去掉对抗分支，改用参考塑形 + goal 泛化。
+
+### 5. 状态相关 AMP（SD-AMP，arXiv:2605.18611）
 
 当**同一策略**需同时覆盖 **locomotion + fall recovery** 时，单一全局 AMP 先验易把行走统计与起身动力学混在一个判别器里。SD-AMP 在**训练期**用投影重力门控 $|g_z+1|>0.6$（约 37° 倾角）路由到 **recovery 判别器**，否则路由到 **速度条件 locomotion 判别器**（$\hat{v}_t$ 在 walk/run 参考间混合）；部署仍为单 ONNX、无运行时模式变量。详见 [SD-AMP 统一走跑起身实体页](../entities/paper-unified-walk-run-recovery-sdamp.md)。
 
