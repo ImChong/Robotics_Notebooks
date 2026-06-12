@@ -47,8 +47,8 @@ flowchart TB
     Gen[目标泛化<br/>g_t 随机<br/>稀疏 r_goal]
   end
   subgraph curriculum [λ 课程 — 来自 ZEST]
-    W[虚拟辅助扳手 β(λ)]
-    Mix[模仿采样概率 p_imi(λ)]
+    W["虚拟辅助扳手 β(λ)"]
+    Mix["模仿采样概率 p_imi(λ)"]
   end
   S --> PI[Goal-conditioned π]
   G --> PI

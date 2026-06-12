@@ -51,7 +51,7 @@ flowchart LR
   A --> F
   T --> D
   F --> D
-  T --> PI[统一策略 π(s, scene, goal)]
+  T --> PI["统一策略 π(s, scene, goal)"]
   F --> PI
 ```
 
