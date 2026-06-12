@@ -2419,16 +2419,23 @@
       }
     }
 
+    function hasActiveGraphFilter() {
+      return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
+        || focusedCommunityId || focusedType || focusedHealth !== null
+        || currentTopic !== 'all';
+    }
+
     node
       .on('mouseenter', (ev, d) => {
         // 时序动画进行中：禁用节点悬停，避免选中尚未显现的背景节点
         if (timelineAnimating) return;
         // V21 修复：如果当前已经点击聚焦了某个节点（侧边栏打开），跳过 hover 高亮逻辑
         if (sidebar.classList.contains('open')) return;
-        
+        // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
+        if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
+
         buildNeighborSet(d);
-        const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
-          || focusedCommunityId || focusedType || focusedHealth !== null;
+        const hasFilter = hasActiveGraphFilter();
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
           if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
@@ -2809,9 +2816,7 @@
 
     function applyFilters() {
       if (timelineAnimating) return;
-      const hasFilter = topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
-        || focusedCommunityId || focusedType || focusedHealth !== null
-        || currentTopic !== 'all';
+      const hasFilter = hasActiveGraphFilter();
       visibleNodeIds.clear();
       let visible = 0;
 
@@ -2821,7 +2826,10 @@
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
-        d3.select(this).style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+        const g = d3.select(this);
+        g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+        // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
+        g.style('pointer-events', hasFilter && !ok ? 'none' : null);
 
         d3.select(this).select('.node-circle')
           .attr('fill-opacity', ok ? 1 : 0.06)
