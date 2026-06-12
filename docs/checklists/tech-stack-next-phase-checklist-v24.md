@@ -26,8 +26,8 @@
 
 - [x] **陈旧声明（stale claim）巡检 V1**：
     - [x] `scripts/lint_wiki.py` 新增 `stale_claim_check`：扫描正文出现「SOTA / 最新 / 当前最强 / state-of-the-art」等绝对化措辞但 frontmatter `updated` 早于库内同主题更晚页面的情形，给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。（实现 `_check_stale_claims`，按共享 tag 判定同主题；基线快照 5 条；`tests/test_lint_wiki_stale_claims.py` 6 例覆盖）
-- [ ] **缺页概念巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `missing_concept_page_check`：统计正文中以 `**术语**`/反引号高频出现（≥ N 页引用）但无独立 `wiki/concepts|methods|formalizations` 页的术语，输出"建议新建页"候选清单（INFO 级，不阻塞 CI），作为后续 ingest/query 选题入口。
+- [x] **缺页概念巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `missing_concept_page_check`：统计正文中以 `**术语**`/反引号高频出现（≥ N 页引用）但无独立 `wiki/concepts|methods|formalizations` 页的术语，输出"建议新建页"候选清单（INFO 级，不阻塞 CI），作为后续 ingest/query 选题入口。（实现 `_check_missing_concept_pages`：阈值 ≥6 个不同页面、单 token 词形过滤路径/文件名、大小写归并、候选上限 15、停用词剔除 frontmatter 键；`tests/test_lint_wiki_missing_concept_pages.py` 6 例覆盖）
 - [x] **query → wiki 回填脚手架**：
     - [x] 新增 `scripts/scaffold_wiki_page.py`：给定 type（concept/comparison/query/...）与标题，按全库 frontmatter 规范生成骨架（含速查区块锚点、`related`/`sources` 占位、三段式正文骨架），降低把 query 答案沉淀回 wiki 的手工成本；自带 `--dry-run` 与 lint 自检。
 
