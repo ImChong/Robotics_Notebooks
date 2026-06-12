@@ -622,9 +622,7 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(items, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(
-                    f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}"
-                )
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}")
             lines.append("")
         if no_sub:
             lines.append("### 其他")
@@ -632,9 +630,7 @@ def render_category_page(
             for paper, wiki_rel, _ in sorted(no_sub, key=lambda x: x[0]["title"]):
                 label = short_label(paper["title"])
                 wiki_path = wiki_rel.replace("wiki/", "../")
-                lines.append(
-                    f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}"
-                )
+                lines.append(f"- [{label}]({wiki_path}) — {category_entry_suffix(paper, wiki_rel)}")
             lines.append("")
     else:
         for paper, wiki_rel, _ in sorted(papers_in_cat, key=lambda x: x[0]["title"]):

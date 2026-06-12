@@ -36,7 +36,7 @@ def test_pick_entity_or_single_prefers_non_paper_entity() -> None:
 
 
 def test_auto_match_maps_mujoco_playground_to_repo_entity(tmp_path, monkeypatch) -> None:
-  # Use live wiki index from repo; only assert mapping exists.
+    # Use live wiki index from repo; only assert mapping exists.
     wiki_index = collect_wiki_index()
     paper = {"title": "[MuJoCo Playground](https://playground.mujoco.org/)", "arxiv": None}
     picked = auto_match(paper, wiki_index)
@@ -51,4 +51,6 @@ def test_category_entry_suffix_for_existing_entity() -> None:
         bootstrap.category_entry_suffix(paper, "wiki/entities/mujoco-playground.md")
         == "见 wiki 实体页"
     )
-    assert bootstrap.category_entry_suffix(paper, "wiki/entities/paper-notebook-demo.md") == "待深读"
+    assert (
+        bootstrap.category_entry_suffix(paper, "wiki/entities/paper-notebook-demo.md") == "待深读"
+    )
