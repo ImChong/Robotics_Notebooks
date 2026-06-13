@@ -4048,12 +4048,16 @@
       var docTokens = doc.tokens || {};
       var lenNorm = 1 - b + b * (dl / avgdl);
 
+      // ⚡ Bolt Optimization: Hoist invariant math calculation outside the hot token loop
+      // Expected impact: Eliminates redundant floating-point multiplications for each query token.
+      var k1_lenNorm = k1 * lenNorm;
+
       for (var i = 0; i < queryTokens.length; i++) {
         var token = queryTokens[i];
         var tf = docTokens[token] || 0;
         if (!tf) continue;
         var idf = idfMap[token] || 0;
-        score += idf * (tf * k1_plus_1) / (tf + k1 * lenNorm);
+        score += idf * (tf * k1_plus_1) / (tf + k1_lenNorm);
       }
       return score;
     }
@@ -4090,7 +4094,15 @@
         if (docTokens[token] > 0) {
             score += 1;
         } else {
-            if (tk === undefined) { tk = doc._tokenKeysStr = '\n' + Object.keys(docTokens).join('\n') + '\n'; }
+            if (tk === undefined) {
+                var tkStr = '\n';
+                for (var key in docTokens) {
+                    if (Object.prototype.hasOwnProperty.call(docTokens, key)) {
+                        tkStr += key + '\n';
+                    }
+                }
+                tk = doc._tokenKeysStr = tkStr;
+            }
             if (tk.indexOf(token) >= 0) {
                 score += 1;
             }
