@@ -91,6 +91,7 @@ flowchart LR
 - [DeepMimic](./deepmimic.md) — tracking 分支的理论祖先
 - [AMP & HumanX](./amp-reward.md) — style / 判别器奖励
 - [MTRG](./mtrg-reference-goal-driven-rl.md) — 无对抗的参考塑形 + 目标泛化（人形）
+- [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 三条路线选型
 - [ZEST](./zest.md) — 工业侧极简 motion imitation 与 sim2real
 - [Locomotion](../tasks/locomotion.md) — 跑酷与障碍穿越任务挂接
 

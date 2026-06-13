@@ -50,6 +50,18 @@ summary: "ARTEMIS（arXiv:2512.09431）：UCLA RoboCup 2024 Adult-Size 人形足
 - **指出 RL 技能模块的嵌入位：** 论文批评近年 deep RL 足球技能 **未建模队友/对手**，必须外包给手工栈；ARTEMIS 提供 **可嵌入的完整架构** 参照。
 - **Paper Notebooks 待深读：** 姊妹仓库 PROGRESS 仍标记待深读；本页基于 arXiv 一手论文 **群控相关章节** 策展（非深读笔记全文）。
 
+## 方法栈
+
+| 层级 | 模块 | 作用 |
+|------|------|------|
+| 感知 | ZED 2 立体 + 检测管道 | 球、球门、队友、对手与近距障碍 |
+| 定位 | CLAP 几何融合 | 场地标志 + 惯性估计全局位姿 |
+| 中层导航 | DAVG 路径 + cf-MPC 跟踪 | 动态避障、无碰撞轨迹跟踪 |
+| 高层群控 | Behavior planner + Kick/Neck Manager | 角色、desired pose、射门与视线决策 |
+| 低层执行 | 1 kHz SHM 全身控制 | in-gait 行走与大力踢球 |
+
+参考 **仅参与训练奖励塑形** 的 RL 技能模块可嵌入 Kick Manager；论文强调近年 deep RL 足球技能多未建模队友/对手，需外包给上述手工栈。
+
 ## 系统架构（群控相关）
 
 ```mermaid

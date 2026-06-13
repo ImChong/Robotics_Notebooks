@@ -1,6 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-12] tooling | lint_wiki.py 新增「缺页概念巡检 V1」(`_check_missing_concept_pages`) — V24 P0 第 2 项
+## [2026-06-12] structural | wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、wiki/queries/table-tennis-hierarchical-skill-learning-guide.md + 5 页陈旧措辞 + 2 页 paper 实体 — 消除 10 条 lint 信息型预警
+
+- 为高频引用 methods 补落地：[`hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)（覆盖 HIL/MTRG）、[`table-tennis-hierarchical-skill-learning-guide.md`](wiki/queries/table-tennis-hierarchical-skill-learning-guide.md)
+- `paper-humanoid-soccer-swarm-intelligence` 补 `venue` 键；`paper-notebook-a-hierarchical-model-based-system-for-high-perfo` 补「方法栈」段
+- 软化 5 页绝对化 SOTA 措辞：`generative-vision-pretraining`、`paper-resnet`、`paper-wem`、`paper-worldvln`、`paper-yolo`
+- 验证：`make ci-preflight`
+
 
 - 全库自动统计正文以 `**加粗**`/`` `反引号` `` 高频出现（≥6 个不同页面引用）但缺独立 `concepts/methods/formalizations` 页的术语，输出"建议新建页"候选（INFO 级，不阻塞 CI），作为后续 ingest/query 选题入口
 - 与既有 `_check_missing_concepts`（人工 watch 列表映射已知 slug）互补；单 token 词形过滤路径/文件名、大小写归并、候选上限 15、停用词剔除 frontmatter 键

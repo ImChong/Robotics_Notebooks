@@ -80,6 +80,7 @@ flowchart TB
 ## 关联页面
 
 - [SMPLOlympics](../entities/smplolympics.md) — 统一体育环境与乒乓球基线
+- [乒乓球分层技能选型指南](../queries/table-tennis-hierarchical-skill-learning-guide.md) — ASE 专家 + mixer + 策略层选型
 - [Imitation Learning](./imitation-learning.md) — 技能层模仿学习背景
 - [ASE](./ase.md) — 技能模仿骨架
 - [AMP](./amp-reward.md) — style reward 家族

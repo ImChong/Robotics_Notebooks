@@ -105,6 +105,7 @@ Critic 见 task indicator 与接触力、辅助扳手等特权信息，仅用于
 
 - [ZEST](./zest.md) — assistive wrench 课程与 tracking 基线
 - [HIL](./hil-hybrid-imitation-learning.md) — 对抗式混合模仿对照
+- [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 三条路线选型
 - [DeepMimic](./deepmimic.md) — 显式 tracking 传统
 - [Curriculum Learning](../concepts/curriculum-learning.md)
 - [Humanoid Locomotion](../tasks/humanoid-locomotion.md)

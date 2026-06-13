@@ -44,7 +44,6 @@ summary: "WorldVLN（arXiv:2605.15964）：首个面向空中 VLN 的自回归 W
 | WAM | World Action Model | 联合世界模型与动作预测的架构 |
 | VLM | Vision-Language Model | 视觉-语言多模态理解模型，VLA 的上游 |
 | WM | World Model | 学习环境动态以供想象/规划的世界模型 |
-| SOTA | State of the Art | 当前最优水平 |
 | AI | Artificial Intelligence | 人工智能 |
 
 ## 为什么重要

@@ -79,7 +79,7 @@ flowchart LR
 ## 实验与评测
 
 - Pascal VOC 2007：**YOLO 63.4 mAP @ 45 FPS**；**Fast YOLO 52.7 mAP @ 155 FPS**（Titan X）。
-- VOC 2012 leaderboard：与 SOTA 两阶段方法对比见论文 Table 3；**Fast R-CNN + YOLO** 组合 **70.7 mAP**。
+- VOC 2012 leaderboard：与 **当时领先的两阶段方法** 对比见论文 Table 3；**Fast R-CNN + YOLO** 组合 **70.7 mAP**。
 - 跨域：在 **artwork** 上泛化优于 DPM / R-CNN。
 
 ## 与其他工作对比

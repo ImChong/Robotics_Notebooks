@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-12",
-  "node_count": 1157,
-  "edge_count": 7061,
+  "node_count": 1159,
+  "edge_count": 7082,
   "coverage": {
-    "covered": 1141,
-    "total": 1155,
+    "covered": 1143,
+    "total": 1157,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+      "type": "comparison",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/table-tennis-hierarchical-skill-learning-guide.md",
+      "detail_id": "wiki-queries-table-tennis-hierarchical-skill-learning-guide",
+      "label": "物理乒乓球分层技能学习选型指南",
+      "type": "query",
+      "recency": "2026-06-12",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/manim.md",
       "detail_id": "entity-manim",
@@ -151,29 +167,13 @@
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-deploy.md",
-      "detail_id": "entity-atom01-deploy",
-      "label": "Atom01 Deploy",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-description.md",
-      "detail_id": "entity-atom01-description",
-      "label": "Atom01 Description",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/manim.md",
-    "detail_id": "entity-manim",
-    "label": "Manim（程序化数学动画引擎）",
-    "type": "entity",
+    "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+    "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+    "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+    "type": "comparison",
     "recency": "2026-06-12",
     "source": "log.md"
   }

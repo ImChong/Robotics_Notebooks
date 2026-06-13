@@ -2,7 +2,7 @@
 
 ## [2026-06-12] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **18** 条信息型预警）：
+共发现 **0** 个问题（另含 **8** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -92,22 +92,16 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（3 个）
-- wiki/methods/hil-hybrid-imitation-learning.md（被 9 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/mtrg-reference-goal-driven-rl.md（被 7 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/table-tennis-strategy-skill-learning.md（被 4 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-humanoid-soccer-swarm-intelligence.md
+### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
-- wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md（缺 方法）
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
+- 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（5 个）
-- wiki/concepts/generative-vision-pretraining.md（含绝对化措辞「SOTA」，updated=2026-06-09；同主题更新页 wiki/concepts/vision-backbones.md updated=2026-06-10）
-- wiki/entities/paper-resnet-deep-residual-learning.md（含绝对化措辞「SOTA」，updated=2026-06-06；同主题更新页 wiki/comparisons/cnn-vs-vit-backbones.md updated=2026-06-07）
-- wiki/entities/paper-wem-world-ego-modeling.md（含绝对化措辞「SOTA」，updated=2026-06-01；同主题更新页 wiki/entities/cosmos-3.md updated=2026-06-06）
-- wiki/entities/paper-worldvln-aerial-vln-wam.md（含绝对化措辞「SOTA」，updated=2026-05-24；同主题更新页 wiki/entities/dreamwaq-plus.md updated=2026-06-11）
-- wiki/entities/paper-yolo-unified-realtime-detection.md（含绝对化措辞「SOTA」，updated=2026-06-06；同主题更新页 wiki/comparisons/cnn-vs-vit-backbones.md updated=2026-06-07）
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
+- 无
 
-📊 Sources 覆盖率：1141/1155 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1143/1157 (99%) wiki/entity 页有 ingest 来源
