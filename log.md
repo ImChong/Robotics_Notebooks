@@ -1,6 +1,6 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-13] ingest | sources/papers/ruka_v2_arxiv_2603_26660.md + sources/repos/ruka-v2.md + sources/sites/ruka-hand-v2-github-io.md — NYU 全开源腱驱动灵巧手 RUKA-v2；升格 wiki/entities/ruka-v2-hand.md，交叉 ruka-v1/orca-hand/dexterous-data-collection-guide
+## [2026-06-13] structural | tech-map/modules/system/ros2.md + sources/sites/ros2-official-documentation.md — 填充 tech-node-system-ros2 空详情页；归档 ROS 2 Humble 一手文档，交叉 ros2-basics / ros2-vs-lcm / sim2real 部署链
 
 ## [2026-06-12] structural | wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、wiki/queries/table-tennis-hierarchical-skill-learning-guide.md + 5 页陈旧措辞 + 2 页 paper 实体 — 消除 10 条 lint 信息型预警
 

@@ -9,14 +9,6 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/ruka-v2-hand.md",
-      "detail_id": "entity-ruka-v2-hand",
-      "label": "RUKA-v2 Hand",
-      "type": "entity",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
       "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
       "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
@@ -167,14 +159,22 @@
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/asimov-v1.md",
+      "detail_id": "entity-asimov-v1",
+      "label": "Asimov v1（开源人形机器人仓库）",
+      "type": "entity",
+      "recency": "2026-06-12",
+      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/ruka-v2-hand.md",
-    "detail_id": "entity-ruka-v2-hand",
-    "label": "RUKA-v2 Hand",
-    "type": "entity",
-    "recency": "2026-06-13",
+    "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+    "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+    "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+    "type": "comparison",
+    "recency": "2026-06-12",
     "source": "log.md"
   }
 }
