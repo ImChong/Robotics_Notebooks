@@ -14,14 +14,14 @@ sources:
   - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
   - ../../sources/repos/ruka-v2.md
   - ../../sources/sites/ruka-hand-v2-github-io.md
-summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指 DoF + 2-DoF 平行腕 + 指根外展/内收，材料约 $1.5K；AnyTeleop 重定向 + OpenTeach VR 遥操作 + BAKU 模仿学习已验证。"
+summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指 DoF + 2-DoF 平行腕 + 指根外展/内收，材料约 1.5K USD；AnyTeleop 重定向 + OpenTeach VR 遥操作 + BAKU 模仿学习已验证。"
 ---
 
 # RUKA-v2 Hand
 
 ## 一句话定义
 
-**RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md) 基础上增加 **解耦 2-DoF 平行腕** 与 **MCP 外展/内收**，材料成本约 **$1,500**；官方入口为项目页 [ruka-hand-v2.github.io](https://ruka-hand-v2.github.io/) 与代码库 [ruka-hand-v2/RUKA-v2](https://github.com/ruka-hand-v2/RUKA-v2)。
+**RUKA-v2** 是纽约大学团队发布的 **全硬件、全软件、全文档开源** 腱驱动仿人灵巧手：在 [RUKA v1](./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md) 基础上增加 **解耦 2-DoF 平行腕** 与 **MCP 外展/内收**，材料成本约 **1,500 USD**；官方入口为项目页 [ruka-hand-v2.github.io](https://ruka-hand-v2.github.io/) 与代码库 [ruka-hand-v2/RUKA-v2](https://github.com/ruka-hand-v2/RUKA-v2)。
 
 ## 英文缩写速查
 
@@ -36,7 +36,7 @@ summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指
 
 ## 为什么重要
 
-- **可及性：** 相对 Allegro（~$16K）、Sharpa（~$50K）等，RUKA-v2 以 **3D 打印 + 现货件** 把 **16 主动 DoF + 腕** 压到 **~$1.5K** 量级，且论文 Table 1 标注 **硬件与软件均全公开**（✓），适合高校 lab 复刻与改 CAD。
+- **可及性：** 相对 Allegro（约 16K USD）、Sharpa（约 50K USD）等，RUKA-v2 以 **3D 打印 + 现货件** 把 **16 主动 DoF + 腕** 压到 **约 1.5K USD** 量级，且论文 Table 1 标注 **硬件与软件均全公开**（✓），适合高校 lab 复刻与改 CAD。
 - **补齐 v1 短板：** v1 缺 **腕** 与 **指间外收**；用户研究显示 v2 遥操作 **完成时间 −51.3%**、**成功率 +21.2%**（相对 v1，三项任务）。
 - **学习闭环已跑通：** 单臂 10 + 双臂 3 遥操作任务，以及 **BAKU** 视觉 BC 三任务（面包 pick-place、开音乐盒、捡笔），证明其作为 **数据采集 + IL 平台** 的可行性。
 - **控制可复现：** 将 retargeting 与 joint→motor 映射 **解耦**；采用 **AnyTeleop 向量重定向** + **线性 motor 映射** + **自动 per-motor 校准**，并开源 **磁编码器** 套件以降低对动捕手套的依赖。
@@ -53,7 +53,7 @@ summary: "RUKA-v2（NYU）：全栈开源腱驱动仿人灵巧手，16 主动指
 | 指尖 | **E-flesh** 软接触（3D 打印）；可选触觉 |
 | 传感（可选） | **AS5600 磁编码器** 可拆卸套件（校准与 ground truth） |
 | 安装 | **侧装** 腕法兰，便于桌面 7-DoF 臂 |
-| 成本 | 材料 **~$1,500**（论文）；项目页写 **<$2,000** |
+| 成本 | 材料 **约 1,500 USD**（论文）；项目页写 **低于 2,000 USD** |
 | 耐久 | 论文：**>5 h** 连续运行无热限；静态载荷见下表 |
 
 **静态载荷（摘要，15–20 s 保持）：** 非拇指 DIP–PIP **1200 g**；MCP **780 g**；外展 **150 g**；拇指 **835 g**；腕 supination/pronation **1215 g**。
@@ -80,12 +80,12 @@ flowchart LR
 
 | 平台 | 开源 | 成本量级 | 主动 DoF | 腕 DoF | 驱动 |
 |------|------|----------|----------|--------|------|
-| Allegro V4 | 部分 | ~$16K | 16 | 0 | 直驱 |
-| RUKA v1 | ✓ | ~$1.3K | 11 | 0 | 腱 |
-| ORCA | ✓ | ~$3.5K | 17 | 1 | 腱 |
-| RUKA-v2 | ✓ | ~$1.5K | 16 | 2 | 腱 |
-| Wuji Hand | ✗ | ~$5.5K | 20 | 0 | 直驱 |
-| Sharpa Wave | ✗ | ~$50K | 22 | 0 | 直驱 |
+| Allegro V4 | 部分 | 约 16K USD | 16 | 0 | 直驱 |
+| RUKA v1 | ✓ | 约 1.3K USD | 11 | 0 | 腱 |
+| ORCA | ✓ | 约 3.5K USD | 17 | 1 | 腱 |
+| RUKA-v2 | ✓ | 约 1.5K USD | 16 | 2 | 腱 |
+| Wuji Hand | ✗ | 约 5.5K USD | 20 | 0 | 直驱 |
+| Sharpa Wave | ✗ | 约 50K USD | 22 | 0 | 直驱 |
 
 ## 常见误区
 
