@@ -204,14 +204,17 @@ def compute_score(
     len_norm = 1 - b + b * dl / avgdl
     k1_plus_1 = k1 + 1
 
+    # ⚡ Bolt Optimization: Hoist invariant math calculations outside the hot `query_tokens` loop
+    # Expected impact: Eliminates redundant floating-point multiplications per query token.
+    k1_len_norm = k1 * len_norm
+    idf_numerator_factor = 0.693 * k1_plus_1
+
     for token in query_tokens:
         tf = token_counts.get(token, 0)
         if tf == 0:
             continue
-        idf = 0.693
-        numerator = tf * k1_plus_1
-        denominator = tf + k1 * len_norm
-        term_score = idf * numerator / denominator
+        denominator = tf + k1_len_norm
+        term_score = tf * idf_numerator_factor / denominator
         if token in title_l:
             term_score *= 5.0
         elif summary and token in summary:
