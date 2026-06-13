@@ -2,9 +2,10 @@
 type: query
 tags: [dexterity, data-collection, teleoperation, simulation, robot-hand]
 status: complete
-updated: 2026-04-21
+updated: 2026-06-13
 related:
   - ../entities/allegro-hand.md
+  - ../entities/ruka-v2-hand.md
   - ../comparisons/data-gloves-vs-vision-teleop.md
   - ../methods/behavior-cloning.md
   - ./demo-data-collection-guide.md
@@ -41,7 +42,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **原理**：利用手部追踪算法（如 Mediapipe 或专有引擎）实时估计人类操作者的指关节角度，并通过**重定向 (Retargeting)** 映射到灵巧手的 URDF 模型上。
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
 - **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。
-- **代表项目**：AnyTeleop, DexCap。
+- **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线。
 
 ## 2. 穿戴式数据手套 (Data Gloves)
 
@@ -67,6 +68,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 
 ## 关联页面
 - [Allegro Hand 实体](../entities/allegro-hand.md)
+- [RUKA-v2 Hand 实体](../entities/ruka-v2-hand.md) — 全栈开源腱驱动 + VR 遥操作范例
 - [Behavior Cloning](../methods/behavior-cloning.md)
 - [多模态融合技巧](./multimodal-fusion-tricks.md)
 - [操作演示数据采集总指南](./demo-data-collection-guide.md)

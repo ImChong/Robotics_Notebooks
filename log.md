@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-13] ingest | sources/papers/ruka_v2_arxiv_2603_26660.md + sources/repos/ruka-v2.md + sources/sites/ruka-hand-v2-github-io.md — NYU 全开源腱驱动灵巧手 RUKA-v2；升格 wiki/entities/ruka-v2-hand.md，交叉 ruka-v1/orca-hand/dexterous-data-collection-guide
+
 ## [2026-06-12] structural | wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、wiki/queries/table-tennis-hierarchical-skill-learning-guide.md + 5 页陈旧措辞 + 2 页 paper 实体 — 消除 10 条 lint 信息型预警
 
 - 为高频引用 methods 补落地：[`hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)（覆盖 HIL/MTRG）、[`table-tennis-hierarchical-skill-learning-guide.md`](wiki/queries/table-tennis-hierarchical-skill-learning-guide.md)

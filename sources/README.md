@@ -64,6 +64,7 @@
 | [x] [now_you_see_that_arxiv_2602_06382.md](papers/now_you_see_that_arxiv_2602_06382.md) | Now You See That：8 步立体深度增广 + 多 critic/discriminator 特权 RL + vision-aware DAgger 蒸馏（arXiv:2602.06382，RSS 2026，HIT/HONOR）摘录与 wiki 映射 |
 | [x] [php_parkour_arxiv_2602_15827.md](papers/php_parkour_arxiv_2602_15827.md) | PHP：motion matching 长程跑酷参考 + DAgger+PPO 深度多技能策略（arXiv:2602.15827，RSS 2026，Amazon FAR）摘录与 wiki 映射 |
 | [x] [rpl_arxiv_2602_03002.md](papers/rpl_arxiv_2602_03002.md) | RPL：分地形高程专家 + 多视角深度 DAgger 蒸馏 + DFSV/RSM 多向感知行走（arXiv:2602.03002，Amazon FAR / G1）摘录与 wiki 映射 |
+| [x] [ruka_v2_arxiv_2603_26660.md](papers/ruka_v2_arxiv_2603_26660.md) | RUKA-v2：NYU 全开源腱驱动灵巧手（2-DoF 腕 + 指根外展/内收，arXiv:2603.26660）摘录与 wiki 映射 |
 | [x] [resmimic_arxiv_2510_05070.md](papers/resmimic_arxiv_2510_05070.md) | ResMimic：GMT 预训练 + 残差后训练的人形全身 loco-manipulation（arXiv:2510.05070，Amazon FAR / G1）摘录与 wiki 映射 |
 | [x] [rhythm_arxiv_2603_02856.md](papers/rhythm_arxiv_2603_02856.md) | Rhythm：双 G1 交互全身控制 IAMR + IGRL + MAGIC 数据集（arXiv:2603.02856）摘录与 wiki 映射 |
 | [x] [omniretarget_arxiv_2509_26633.md](papers/omniretarget_arxiv_2509_26633.md) | OmniRetarget：interaction mesh + Sequential SOCP 交互保留重定向与增广（ICRA 2026，arXiv:2509.26633；holosoma + HF 数据集）全文消化与 wiki 映射 |
@@ -132,6 +133,7 @@
 | [x] [pupperv3_monorepo.md](repos/pupperv3_monorepo.md) | Nate711/pupperv3-monorepo：Pupper v3 机载 ROS 2 软件（与官方文档 ~/pupperv3-monorepo 一致） |
 | [x] [esi_bench.md](repos/esi_bench.md) | ESI-Bench/ESI-Bench：OmniGibson 主动探索评测与 HF 数据集（arXiv:2605.18746） |
 | [x] [robot_lab.md](repos/robot_lab.md) | robot_lab：基于 IsaacLab 的 RL 扩展框架，支持 26+ 机器人（四足 / 轮足 / 人形） |
+| [x] [ruka-v2.md](repos/ruka-v2.md) | RUKA-v2：NYU 全开源腱驱动灵巧手官方代码（CAD/控制器/校准/遥操作，MIT） |
 | [x] [rpl_cs_ucl_sds.md](repos/rpl_cs_ucl_sds.md) | RPL-CS-UCL/SDS：See it, Do it, Sorted 四足单视频技能官方实现（与 E-SDS 同系） |
 | [x] [roboto_origin.md](repos/roboto_origin.md) | Roboparty 人形机器人开源聚合入口（硬件/训练/部署/描述/固件） |
 | [x] [omg-tsinghua-mars-lab.md](repos/omg-tsinghua-mars-lab.md) | tsinghua-mars-lab/OMG：omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker、训练/推理/部署；配套项目页） |
@@ -293,6 +295,7 @@
 | [x] [now-you-see-that-github-io.md](sites/now-you-see-that-github-io.md) | Now You See That 项目页 hellod035.github.io（RSS 2026、深度增广可视化、跑酷/楼梯/平衡恢复实机视频；arXiv:2602.06382） |
 | [x] [php-parkour-github-io.md](sites/php-parkour-github-io.md) | PHP 项目页 php-parkour.github.io（RSS 2026、浏览器 MuJoCo demo、跑酷实机视频；配套 arXiv:2602.15827） |
 | [x] [rpl-humanoid-github-io.md](sites/rpl-humanoid-github-io.md) | RPL 项目页 rpl-humanoid.github.io（双向楼梯/坡/垫脚石、2 kg 载荷、DFSV/RSM 消融；配套 arXiv:2602.03002） |
+| [x] [ruka-hand-v2-github-io.md](sites/ruka-hand-v2-github-io.md) | RUKA-v2 项目页 ruka-hand-v2.github.io（全开源腱驱动灵巧手、2-DoF 腕、OpenTeach/BAKU 演示；配套 arXiv:2603.26660） |
 | [x] [omniretarget-github-io.md](sites/omniretarget-github-io.md) | OmniRetarget 项目页 omniretarget.github.io（ICRA 2026、增广交互演示、GMR/PHC 基线对比；配套 arXiv:2509.26633） |
 | [x] [omg-tsinghua-mars-lab-github-io.md](sites/omg-tsinghua-mars-lab-github-io.md) | OMG 项目页 tsinghua-mars-lab.github.io/OMG（清华 MARS Lab omni-modal G1 运动生成、OMG-Data、多模态真机演示） |
 | [x] [opendrivelab-robonaldo.md](sites/opendrivelab-robonaldo.md) | RoboNaldo 项目页 opendrivelab.com/RoboNaldo（三阶段射门课程、G1 室外演示与热图；配套 arXiv:2606.11092） |
