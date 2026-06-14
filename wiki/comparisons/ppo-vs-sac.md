@@ -8,6 +8,7 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/intentional_streaming_rl.md
 related:
+  - ../methods/ppo.md
   - ../methods/policy-optimization.md
   - ../methods/reinforcement-learning.md
   - ../methods/intentional-updates-streaming-rl.md

@@ -3,6 +3,7 @@ type: method
 tags: [rl, policy-optimization, ppo, sac, locomotion]
 status: complete
 related:
+  - ./ppo.md
   - ./intentional-updates-streaming-rl.md
   - ./reinforcement-learning.md
   - ./imitation-learning.md
@@ -170,6 +171,7 @@ SAC 常用于：
 
 ## 关联页面
 
+- [PPO（Proximal Policy Optimization）](./ppo.md) — clip 代理目标的 on-policy 主力算法
 - [Reinforcement Learning](./reinforcement-learning.md)
 - [Imitation Learning](./imitation-learning.md)
 - [Locomotion](../tasks/locomotion.md)
