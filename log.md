@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] ingest | sources/papers/agi_to_asi_arxiv_2606_12683.md — DeepMind From AGI to ASI 技术报告；wiki/entities/paper-from-agi-to-asi.md；交叉 embodied-scaling-laws / data-flywheel / robot-learning-three-eras-narrative
+
 ## [2026-06-14] ingest | sources/papers/oasis_humanoid_loco_manip_2606_08548.md — OASIS arXiv:2606.08548 全文精读入库，升格 wiki/entities/paper-loco-manip-04-oasis.md
 
 ## [2026-06-14] ingest | sources/papers/mighty_arxiv_2511_10822.md + sources/repos/mighty.md — MIT ACL MIGHTY Hermite 样条 UAV 轨迹规划（RA-L 2026）；wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md；交叉 multirotor-simulation-planning-control-stack、ego-planner-swarm

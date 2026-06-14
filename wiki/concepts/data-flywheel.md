@@ -3,7 +3,12 @@ type: concept
 title: Data Flywheel (具身数据飞轮)
 tags: [data-cycle, robot-learning, scaling, automation]
 summary: "数据飞轮通过“采集-清洗-训练-部署”的自动化闭环，利用 Scaling Law 实现机器人策略性能与场景覆盖的持续自我强化。"
-updated: 2026-05-01
+updated: 2026-06-14
+related:
+  - ./embodied-scaling-laws.md
+  - ../entities/paper-from-agi-to-asi.md
+sources:
+  - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
 ---
 
 # Data Flywheel (具身数据飞轮)
@@ -38,7 +43,10 @@ updated: 2026-05-01
 
 主流数据飞轮以"部署 → 抽取好动作 → 模仿学习"为主，本质把部署当成**高质量演示的来源**。AGIBOT 在 [LWD](../methods/lwd.md) 中提出了另一种范式：把成功 / 失败 / 半成 / 救场 / 人为干预**全部**作为 RL 训练信号，offline 与 online 阶段共用同一个学习器，形成 **offline-to-online RL 数据飞轮**——不再丢弃失败轨迹，长程任务上的提升尤其显著。
 
+在宏观 AI 进展框架下，DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **test-time 搜索/推理结果蒸馏回训练集**（AlphaZero 式）与 **仿真/交互轨迹扩增** 列为对抗 **数据墙** 的主通道之一——与具身飞轮「部署产生新数据」同构，但强调 **算力换数据质量** 而非仅堆人类演示。
+
 ## 参考来源
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)
 - [sources/papers/lwd.md](../../sources/papers/lwd.md) — LWD 把数据飞轮重定义为 offline-to-online RL 闭环
+- [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md) — 数据 RSI 与仿真/交互数据对抗数据墙

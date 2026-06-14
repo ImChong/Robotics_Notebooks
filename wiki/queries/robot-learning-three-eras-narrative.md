@@ -2,12 +2,14 @@
 type: query
 tags: [history, embodied-ai, vla, imitation-learning, reinforcement-learning, scaling, google-deepmind, ted-xiao]
 status: complete
-updated: 2026-05-10
+updated: 2026-06-14
 summary: "把『存在性证明 / 基础模型 / Scaling』当作阅读透镜：串联 QT-Opt→SayCan/RT/DIAL/OXE→Gemini 与社区评测，事实以论文与官方发布为准；组织叙事单独标注来源。"
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
   - ../../sources/papers/rl_foundation_models.md
+  - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
 related:
+  - ../entities/paper-from-agi-to-asi.md
   - ../concepts/foundation-policy.md
   - ../concepts/deep-rl-game-milestones.md
   - ../concepts/open-x-embodiment.md
@@ -77,6 +79,7 @@ related:
 
 ## 轴线 III — Scaling：评测、数据形态与产业侧闭链叙事
 
+- **宏观连续谱**：DeepMind [*From AGI to ASI*](../entities/paper-from-agi-to-asi.md) 把 **有效算力增长、数据墙、测试时 scaling 与多智能体集体** 放入 **后 AGI** 预测框架——可与本轴线的产业 scaling 叙事前后对照（非时间线承诺）。
 - **分布式真实评测**：[RoboArena](../methods/roboarena.md)。
 - **闭源模型族**：[Gemini Robotics](../entities/gemini-robotics.md)（以官方博客与技术报告为准）。
 - **开源 generalist**：[Octo](../methods/octo-model.md)；**商业数据叙事**：[Generalist AI](../entities/generalist-ai-robotics.md)（以公司博客为准，区分论文与市场宣传）。
@@ -108,6 +111,7 @@ related:
 ## 参考来源
 
 - [ted_xiao_embodied_three_eras_primary_refs.md](../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md)
+- [From AGI to ASI 论文摘录（arXiv:2606.12683）](../../sources/papers/agi_to_asi_arxiv_2606_12683.md)
 - [rl_foundation_models.md](../../sources/papers/rl_foundation_models.md)
 
 ## 推荐继续阅读
