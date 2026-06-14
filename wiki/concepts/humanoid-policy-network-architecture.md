@@ -16,6 +16,7 @@ related:
   - ../methods/robotics-transformer-rt-series.md
   - ../concepts/world-action-models.md
   - ../concepts/foundation-policy.md
+  - ../concepts/neural-feedback-controller.md
   - ../concepts/latent-imagination.md
   - ../methods/generative-world-models.md
   - ../entities/amp-mjlab.md
@@ -152,6 +153,7 @@ flowchart TD
 
 ## 关联页面
 
+- [神经反馈控制器](./neural-feedback-controller.md) — Policy 作为 $\pi(x)$ 状态反馈律与推理算力直觉
 - [Transformer](./transformer.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
