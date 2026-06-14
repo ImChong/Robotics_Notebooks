@@ -182,7 +182,7 @@ def compute_avgdl(docs: list[dict]) -> float:
 def compute_score(
     token_counts: dict[str, int],
     query_tokens: list[str],
-    title: str = "",
+    title_l: str = "",
     avgdl: float = 0.0,
     k1: float = 1.5,
     b: float = 0.75,
@@ -191,14 +191,13 @@ def compute_score(
     dl: int = 1,
     doc_path: str = "",
     today_date: date | None = None,
+    summary_l: str = "",
 ) -> float:
     if not query_tokens:
         return 0.0
     score = 0.0
     fm = fm or {}
     avgdl = avgdl or dl
-    summary = str(fm.get("summary", fm.get("description", ""))).lower()
-    title_l = (title or "").lower()
 
     # Pre-compute document-level constants outside the loop
     len_norm = 1 - b + b * dl / avgdl
@@ -217,7 +216,7 @@ def compute_score(
         term_score = tf * idf_numerator_factor / denominator
         if token in title_l:
             term_score *= 5.0
-        elif summary and token in summary:
+        elif summary_l and token in summary_l:
             term_score *= 2.0
         score += term_score
 
@@ -413,14 +412,16 @@ def search(
     )  # tokenizer is normalized; keep CLI flag for output highlighting compatibility
     docs = iter_wiki_documents()
 
-    # ⚡ Bolt Optimization: Cache token counts to avoid redundant tokenization
-    # Tokenizing the body text is expensive. Doing it twice (once for avgdl, once for scoring)
-    # doubles the search latency. We cache it here on the doc objects.
+    # ⚡ Bolt Optimization: Cache token counts and lowercased fields to avoid redundant allocations
+    # Tokenizing and lowercasing per-document properties on every query is expensive. We cache them here.
     for doc in docs:
         if "token_counts" not in doc:
             counts = Counter(tokenize_text(doc["body"]))
             doc["token_counts"] = counts
             doc["dl"] = max(sum(counts.values()), 1)
+            doc["title_l"] = (doc.get("title") or "").lower()
+            fm = doc.get("frontmatter") or {}
+            doc["summary_l"] = str(fm.get("summary", fm.get("description", ""))).lower()
 
     avgdl = compute_avgdl(docs)
 
@@ -461,13 +462,14 @@ def search(
         score = compute_score(
             token_counts=token_counts,
             query_tokens=query_tokens,
-            title=doc["title"],
+            title_l=doc["title_l"],
             avgdl=avgdl,
             fm=fm,
             page_type=doc["page_type"],
             dl=doc.get("dl", 1),
             doc_path=doc["path"],
             today_date=today_date,
+            summary_l=doc["summary_l"],
         )
         if query_tokens and not semantic and score <= 0:
             continue

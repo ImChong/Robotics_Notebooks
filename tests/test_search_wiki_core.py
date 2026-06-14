@@ -52,40 +52,46 @@ class TestNormalizeScores(unittest.TestCase):
 class TestComputeScore(unittest.TestCase):
     def test_no_query_tokens(self):
         self.assertEqual(
-            compute_score({"a": 1}, [], title="t", avgdl=5.0, fm={}, page_type="concept"),
+            compute_score({"a": 1}, [], title_l="t", avgdl=5.0, fm={}, page_type="concept"),
             0.0,
         )
 
     def test_title_boost(self):
         tc = {"mpc": 2}
         s_title = compute_score(
-            tc, ["mpc"], title="MPC intro", avgdl=10.0, fm={}, page_type="method"
+            tc, ["mpc"], title_l="mpc intro", avgdl=10.0, fm={}, page_type="method"
         )
-        s_not = compute_score(tc, ["mpc"], title="other", avgdl=10.0, fm={}, page_type="method")
+        s_not = compute_score(tc, ["mpc"], title_l="other", avgdl=10.0, fm={}, page_type="method")
         self.assertGreater(s_title, s_not)
 
     def test_summary_boost(self):
         tc = {"foo": 1}
         fm = {"summary": "Contains foo term"}
         with_summary = compute_score(
-            tc, ["foo"], title="none", avgdl=5.0, fm=fm, page_type="concept"
+            tc,
+            ["foo"],
+            title_l="none",
+            avgdl=5.0,
+            fm=fm,
+            summary_l="contains foo term",
+            page_type="concept",
         )
-        without = compute_score(tc, ["foo"], title="none", avgdl=5.0, fm={}, page_type="concept")
+        without = compute_score(tc, ["foo"], title_l="none", avgdl=5.0, fm={}, page_type="concept")
         self.assertGreater(with_summary, without)
 
     def test_page_type_multipliers(self):
         tc = {"x": 1}
-        base = compute_score(tc, ["x"], title="", avgdl=5.0, fm={}, page_type="concept")
-        q = compute_score(tc, ["x"], title="", avgdl=5.0, fm={}, page_type="query")
-        c = compute_score(tc, ["x"], title="", avgdl=5.0, fm={}, page_type="comparison")
+        base = compute_score(tc, ["x"], title_l="", avgdl=5.0, fm={}, page_type="concept")
+        q = compute_score(tc, ["x"], title_l="", avgdl=5.0, fm={}, page_type="query")
+        c = compute_score(tc, ["x"], title_l="", avgdl=5.0, fm={}, page_type="comparison")
         self.assertLess(q, base)
         self.assertEqual(c, base)
 
     def test_comparison_boost_only_with_intent(self):
         tc = {"对比": 1}
-        plain = compute_score(tc, ["mpc"], title="", avgdl=5.0, fm={}, page_type="comparison")
+        plain = compute_score(tc, ["mpc"], title_l="", avgdl=5.0, fm={}, page_type="comparison")
         intent = compute_score(
-            tc, ["mpc", "对比"], title="", avgdl=5.0, fm={}, page_type="comparison"
+            tc, ["mpc", "对比"], title_l="", avgdl=5.0, fm={}, page_type="comparison"
         )
         self.assertGreater(intent, plain)
 
@@ -101,18 +107,20 @@ class TestComputeScore(unittest.TestCase):
         boosted = compute_score(
             tc,
             ["wbc", "全身控制"],
-            title="Whole-Body Control (WBC，全身控制)",
+            title_l="whole-body control (wbc，全身控制)",
             avgdl=10.0,
             fm={"summary": "WBC 全身控制 QP"},
+            summary_l="wbc 全身控制 qp",
             page_type="concept",
             doc_path="wiki/concepts/whole-body-control.md",
         )
         entity = compute_score(
             tc,
             ["wbc", "全身控制"],
-            title="wbc_fsm",
+            title_l="wbc_fsm",
             avgdl=10.0,
             fm={"summary": "全身控制部署"},
+            summary_l="全身控制部署",
             page_type="entity",
             doc_path="wiki/entities/wbc-fsm.md",
         )
@@ -122,12 +130,12 @@ class TestComputeScore(unittest.TestCase):
         tc = {"z": 1}
         today = date.today().isoformat()
         recent = compute_score(
-            tc, ["z"], title="", avgdl=3.0, fm={"updated": today}, page_type="concept"
+            tc, ["z"], title_l="", avgdl=3.0, fm={"updated": today}, page_type="concept"
         )
         old = compute_score(
             tc,
             ["z"],
-            title="",
+            title_l="",
             avgdl=3.0,
             fm={"updated": "1990-01-01"},
             page_type="concept",
