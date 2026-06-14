@@ -72,3 +72,7 @@
 ## 2026-06-13 - Avoid Array Allocation in Stringification & Hoist Hot Loop Invariants
 **Learning:** In hot execution paths like `substringScore` and BM25 loops, repeatedly evaluating `Object.keys(obj).join()`, redundant multiplications (`k1 * lenNorm`), and property allocations degrades performance. Using `Object.keys` allocates an intermediate array, and doing mathematical operations inside a token loop multiplies CPU overhead.
 **Action:** Replace `Object.keys(obj).join()` with a `for...in` string concatenation loop to preserve fast substring match performance (`indexOf`) while completely eliminating array allocation overhead. Furthermore, always hoist constant mathematical operations and scale factors outside inner token loops.
+
+## 2026-06-14 - Python Loop Optimization: Cache String Operations
+**Learning:** In the python search ranking code (`scripts/search_wiki_core.py`), extracting and lowercasing document properties (`fm.get("summary").lower()`, `title.lower()`) inside the inner scoring loop `compute_score` creates unnecessary string allocation and lowercasing operations for every document on every query.
+**Action:** Always cache derived strings (like lowercased strings) on static `doc` instances during an initial pass, and pass them as arguments to scoring functions instead of repeatedly recalculating them inside the hot loop to reduce CPU cycles and GC thrashing.
