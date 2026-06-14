@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-from-agi-to-asi.md",
+      "detail_id": "entity-paper-from-agi-to-asi",
+      "label": "From AGI to ASI（DeepMind 技术报告）",
+      "type": "entity",
+      "recency": "2026-06-14",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-loco-manip-04-oasis.md",
       "detail_id": "entity-paper-loco-manip-04-oasis",
       "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
@@ -159,20 +167,12 @@
       "type": "comparison",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/table-tennis-hierarchical-skill-learning-guide.md",
-      "detail_id": "wiki-queries-table-tennis-hierarchical-skill-learning-guide",
-      "label": "物理乒乓球分层技能学习选型指南",
-      "type": "query",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-loco-manip-04-oasis.md",
-    "detail_id": "entity-paper-loco-manip-04-oasis",
-    "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
+    "path": "wiki/entities/paper-from-agi-to-asi.md",
+    "detail_id": "entity-paper-from-agi-to-asi",
+    "label": "From AGI to ASI（DeepMind 技术报告）",
     "type": "entity",
     "recency": "2026-06-14",
     "source": "log.md"
