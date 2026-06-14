@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-14",
-  "node_count": 1175,
-  "edge_count": 7186,
+  "node_count": 1176,
+  "edge_count": 7193,
   "coverage": {
-    "covered": 1159,
-    "total": 1173,
+    "covered": 1160,
+    "total": 1174,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md",
+      "detail_id": "entity-paper-mighty-hermite-spline-trajectory-planning",
+      "label": "MIGHTY（Hermite 样条高效 UAV 轨迹规划）",
+      "type": "entity",
+      "recency": "2026-06-14",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/loco-manip-8-papers-technology-map.md",
       "detail_id": "wiki-overview-loco-manip-8-papers-technology-map",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/1x-technologies.md",
-      "detail_id": "entity-1x-technologies",
-      "label": "1X Technologies",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/loco-manip-8-papers-technology-map.md",
-    "detail_id": "wiki-overview-loco-manip-8-papers-technology-map",
-    "label": "Loco-Manip 数据入口：8 篇论文技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md",
+    "detail_id": "entity-paper-mighty-hermite-spline-trajectory-planning",
+    "label": "MIGHTY（Hermite 样条高效 UAV 轨迹规划）",
+    "type": "entity",
     "recency": "2026-06-14",
     "source": "log.md"
   }
