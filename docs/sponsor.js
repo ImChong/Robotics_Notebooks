@@ -32,12 +32,7 @@
     toggle.setAttribute('aria-haspopup', 'dialog');
     toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">❤</span>';
 
-    var themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      headerRight.insertBefore(toggle, themeToggle);
-    } else {
-      headerRight.appendChild(toggle);
-    }
+    headerRight.appendChild(toggle);
 
     var dialog = document.createElement('div');
     dialog.id = 'sponsorDialog';
