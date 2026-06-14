@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md — 具身智能研究室 Loco-Manip 8 篇数据入口周报；父节点 loco-manip-8-papers-technology-map + 四组 loco-manip-category-* 子节点 + 8 篇论文实体
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：`sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md`、`sources/raw/wechat_loco_manip_8_papers_2026-06-14.md`、`sources/papers/loco_manip_8_papers_catalog.md`、`sources/papers/loco_manip_survey_*.md`（8 篇）
+- 沉淀页面：[`wiki/overview/loco-manip-8-papers-technology-map.md`](wiki/overview/loco-manip-8-papers-technology-map.md)（父）、[`loco-manip-category-01-egocentric-data.md`](wiki/overview/loco-manip-category-01-egocentric-data.md) … [`loco-manip-category-04-contact-teleop.md`](wiki/overview/loco-manip-category-04-contact-teleop.md)（子）、`wiki/entities/paper-loco-manip-01-ego-pi.md` … `paper-loco-manip-08-x-op.md`
+- 去重：GenHOI（arXiv:2606.12995）≠ 既有 SimGenHOI 节点
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+- 验证：`make ci-preflight`
+
 ## [2026-06-14] structural | wiki/methods/ppo.md + wiki/concepts/transformer.md + sources/papers/attention_is_all_you_need.md — 新建 PPO/Transformer 概念方法页，消除 lint 高频术语缺页误报
 
 - 新建：[`wiki/methods/ppo.md`](wiki/methods/ppo.md)（clip 代理目标、GAE、机器人 RL 落地要点）、[`wiki/concepts/transformer.md`](wiki/concepts/transformer.md)（自注意力 / MHA / 机器人 VLA·ACT 角色）
