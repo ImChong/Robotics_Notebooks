@@ -108,11 +108,12 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 .github-link {
   display: inline-flex;
   align-items: center;
-  height: 38px;
+  height: 30px;
   padding: 0 2px;
   font-size: 0.85rem;
   color: var(--text-muted);
   text-decoration: none;
+  box-sizing: border-box;
 }
 .github-link:hover {
   color: var(--accent);
@@ -123,18 +124,19 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 44px;
+  min-width: 36px;
   height: 30px;
-  padding: 0 8px;
+  padding: 0 0.6rem;
   background: none;
   border: 1px solid var(--border);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   line-height: 1;
   text-align: center;
   color: var(--text);
   flex-shrink: 0;
+  box-sizing: border-box;
 }
 .theme-toggle:hover {
   border-color: var(--accent);
@@ -1505,40 +1507,42 @@ body.sponsor-dialog-open {
 
 @media (max-width: 860px) {
   .header-inner {
-    gap: 10px;
-    padding: 10px 16px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.45rem;
+    padding: 10px 8px;
     align-items: center;
   }
   .site-title {
-    font-size: 1.08rem;
+    font-size: 1rem;
     line-height: 1.25;
     font-weight: 700;
-    flex: 1 1 auto;
+    flex: 1 1 0;
+    min-width: 0;
     white-space: normal;
-    max-width: calc(100% - 150px);
+    max-width: none;
   }
   .header-spacer {
-    flex: 1 1 auto;
-    min-width: 0;
+    display: none;
   }
   .header-right {
-    gap: 0.7rem;
-    margin-left: auto;
-    justify-content: flex-end;
+    gap: 0.35rem;
+    margin-left: 0;
+    justify-content: flex-start;
   }
   .github-link {
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     white-space: nowrap;
   }
   .theme-toggle,
   .sponsor-toggle {
-    min-width: 36px;
-    padding: 0.3rem 0.6rem;
+    min-width: 32px;
+    height: 30px;
+    padding: 0 0.45rem;
     border-radius: 6px;
     flex-shrink: 0;
     font-size: 0.85rem;
     line-height: 1;
-    height: auto;
   }
   .hero {
     padding: 28px 0 28px;
