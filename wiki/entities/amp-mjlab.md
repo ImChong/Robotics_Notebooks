@@ -2,8 +2,9 @@
 type: entity
 tags: [repo, amp, imitation-learning, mjlab, rsl-rl, unitree, humanoid, locomotion, recovery]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-14
 related:
+  - ../concepts/neural-feedback-controller.md
   - ../methods/amp-reward.md
   - ./mjlab.md
   - ./unitree-g1.md
@@ -15,12 +16,15 @@ related:
 sources:
   - ../../sources/repos/amp_mjlab.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/personal/amp_mjlab_policy_training_essence.md
 summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。"
 ---
 
 # AMP_mjlab (G1 统一 AMP 策略)
 
 **AMP_mjlab** 是一个针对 **Unitree G1** 人形机器人的强化学习训练框架，建立在 **mjlab**（MuJoCo 并行仿真）和 **rsl_rl**（RSL PPO 训练库）之上，核心贡献在于用一个统一策略同时学习正常行走（locomotion）与跌倒恢复（fall-recovery）。
+
+> **训练产物本质**：导出的 policy 是 **状态反馈神经控制器** $\pi(o)$，把仿真经验压缩进 MLP 权重，而非固定动作轨迹。直觉与 PPO 更新、推理 FLOPs 估算见 [神经反馈控制器](../concepts/neural-feedback-controller.md)。
 
 ## 英文缩写速查
 
@@ -347,6 +351,7 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 ## 关联页面
 
 - [AMP & HumanX 方法](../methods/amp-reward.md) — AMP 方法本体
+- [神经反馈控制器](../concepts/neural-feedback-controller.md) — Policy 训练产物与控制论直觉
 - [mjlab](./mjlab.md) — 底层仿真框架（Isaac Lab API + MuJoCo Warp）
 - [Unitree G1](./unitree-g1.md) — 目标硬件
 - [legged_gym](./legged-gym.md) — 同为 rsl_rl + 并行仿真，基于 IsaacGym
@@ -357,6 +362,7 @@ README 明确提示约 `2w`（20k）iterations 附近会出现多个指标突变
 
 - [RL Sim2Sim 在线演示：G1 AMP Walk/Run/Getup](https://imchong.github.io/RL_Sim2Sim_Demo_Website/index.html)
 - [sources/repos/amp_mjlab.md](../../sources/repos/amp_mjlab.md)
+- [AMP_mjlab Policy 训练本质 FAQ（维护者整理）](../../sources/personal/amp_mjlab_policy_training_essence.md)
 - [ccrpRepo/AMP_mjlab GitHub Repo](https://github.com/ccrpRepo/AMP_mjlab)
 
 ## 源码阅读建议顺序

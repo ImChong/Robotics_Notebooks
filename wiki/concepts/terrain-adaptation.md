@@ -8,6 +8,7 @@ related:
   - ../tasks/locomotion.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ./footstep-planning.md
+  - ./terrain-latent-representation.md
   - ./sim2real.md
   - ./privileged-training.md
   - ../tasks/balance-recovery.md
@@ -80,7 +81,7 @@ sources:
 最常见的结构化表示。把局部地形编码成栅格高度，可直接供 teacher policy、MPC 或步位规划器使用。
 
 ### 2. 点云 / 深度图
-信息更丰富，但噪声更大、实时处理代价更高，常需先转成局部可行接触区域。
+信息更丰富，但噪声更大、实时处理代价更高，常需先转成局部可行接触区域，或经 Encoder 压成 **低维 terrain latent**（见 [地形 Latent 表征](./terrain-latent-representation.md)），而非显式 64×64 高度栅格。
 
 ### 3. 接触反馈
 足端是否滑动、接触是否建立、法向力是否异常，都是补救感知误差的重要信号。

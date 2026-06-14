@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-14",
-  "node_count": 1177,
-  "edge_count": 7220,
+  "node_count": 1179,
+  "edge_count": 7247,
   "coverage": {
-    "covered": 1161,
-    "total": 1175,
+    "covered": 1163,
+    "total": 1177,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/neural-feedback-controller.md",
+      "detail_id": "wiki-concepts-neural-feedback-controller",
+      "label": "神经反馈控制器（Neural Feedback Controller）",
+      "type": "concept",
+      "recency": "2026-06-14",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-from-agi-to-asi.md",
       "detail_id": "entity-paper-from-agi-to-asi",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-13",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
-      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
-      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
-      "type": "comparison",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-from-agi-to-asi.md",
-    "detail_id": "entity-paper-from-agi-to-asi",
-    "label": "From AGI to ASI（DeepMind 技术报告）",
-    "type": "entity",
+    "path": "wiki/concepts/neural-feedback-controller.md",
+    "detail_id": "wiki-concepts-neural-feedback-controller",
+    "label": "神经反馈控制器（Neural Feedback Controller）",
+    "type": "concept",
     "recency": "2026-06-14",
     "source": "log.md"
   }
