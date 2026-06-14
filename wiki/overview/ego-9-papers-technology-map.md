@@ -2,7 +2,7 @@
 type: overview
 tags: [egocentric, ego, data-collection, imitation-learning, world-models, survey, embodied-ai]
 status: complete
-updated: 2026-06-01
+updated: 2026-06-14
 related:
   - ./ego-category-01-data-collection.md
   - ./ego-category-02-human-to-robot.md
@@ -110,6 +110,7 @@ flowchart TB
 ## 关联页面
 
 - [模仿学习](../methods/imitation-learning.md)、[VLA](../methods/vla.md)、[生成式世界模型](../methods/generative-world-models.md)
+- [Loco-Manip 8 篇数据入口技术地图](./loco-manip-8-papers-technology-map.md)
 - [Agent Reach](../entities/agent-reach.md) — 本文微信抓取工具链
 
 ## 参考来源
