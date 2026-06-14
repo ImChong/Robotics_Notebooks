@@ -1938,5 +1938,171 @@
     "neg_claims": [
       "CRISP.*Sim2Real.*残差|CRISP.*真机.*直接.*RL|CRISP.*不.*回.*仿真|CRISP.*纯.*域随机化"
     ]
+  },
+  "ResNet 残差缓解退化": {
+    "terms": [
+      "ResNet",
+      "残差|残差连接|捷径|shortcut|residual"
+    ],
+    "pos_claims": [
+      "残差.*退化|捷径连接.*退化|缓解.*退化|残差.*可训|百层.*可训|学习.*残差|残差扰动|shortcut.*degrad"
+    ],
+    "neg_claims": [
+      "残差连接.*导致.*退化|残差.*加剧.*梯度消失|ResNet.*无法.*加深|捷径连接.*无.*用|残差.*没有.*帮助"
+    ]
+  },
+  "深层网络退化非过拟合": {
+    "terms": [
+      "退化问题|degradation",
+      "训练误差|training error|更深"
+    ],
+    "pos_claims": [
+      "更深.*训练误差.*升高|退化.*非.*过拟合|训练误差.*反而.*升高|退化.*不是.*过拟合|degradation.*not.*overfit"
+    ],
+    "neg_claims": [
+      "退化问题.*就是.*过拟合|退化.*源于.*过拟合|更深网络.*训练误差.*必然.*下降|degradation.*caused by.*overfitting"
+    ]
+  },
+  "ViT 数据量门槛": {
+    "terms": [
+      "ViT",
+      "数据量|数据规模|data"
+    ],
+    "pos_claims": [
+      "ViT.*大数据|ViT.*小数据.*欠拟合|ViT.*需.*大数据|ViT.*SSL.*预训练|数据.*越大.*增益|大数据.*反超|ViT.*data.?hungry"
+    ],
+    "neg_claims": [
+      "ViT.*小数据.*即可.*收敛|ViT.*无需.*大数据|ViT.*数据量.*需求.*低|ViT.*小样本.*优于.*CNN"
+    ]
+  },
+  "ViT 归纳偏置弱": {
+    "terms": [
+      "ViT",
+      "归纳偏置|inductive bias"
+    ],
+    "pos_claims": [
+      "ViT.*归纳偏置.*弱|归纳偏置.*弱.*ViT|位置.*全靠.*学习|ViT.*weak.*inductive|弱.*位置.*学习"
+    ],
+    "neg_claims": [
+      "ViT.*归纳偏置.*强|ViT.*自带.*局部.*归纳偏置|ViT.*平移等变.*强|ViT.*强.*归纳偏置"
+    ]
+  },
+  "CNN 归纳偏置强": {
+    "terms": [
+      "CNN",
+      "归纳偏置|inductive bias"
+    ],
+    "pos_claims": [
+      "CNN.*归纳偏置.*强|卷积.*局部性|平移等变|CNN.*中小数据.*收敛|卷积.*归纳偏置|强.*局部性|locality.*equivariance"
+    ],
+    "neg_claims": [
+      "CNN.*归纳偏置.*弱|卷积.*无.*归纳偏置|CNN.*需.*大数据.*才.*收敛|CNN.*无.*平移等变"
+    ]
+  },
+  "YOLO 单阶段实时": {
+    "terms": [
+      "YOLO",
+      "单阶段|单次回归|one.?stage|实时|real.?time"
+    ],
+    "pos_claims": [
+      "YOLO.*单阶段|YOLO.*单次回归|YOLO.*实时|单次.*回归.*实时|YOLO.*end.?to.?end.*回归|S.S.*网格.*一次|45.*FPS"
+    ],
+    "neg_claims": [
+      "YOLO.*两阶段|YOLO.*区域提议|YOLO.*RPN|YOLO.*无法.*实时|YOLO.*non.?real.?time"
+    ]
+  },
+  "两阶段精度高延迟大": {
+    "terms": [
+      "Faster R.?CNN|两阶段|two.?stage",
+      "精度|延迟|accuracy|latency"
+    ],
+    "pos_claims": [
+      "两阶段.*精度.*高|Faster R.?CNN.*精度高.*延迟|两阶段.*延迟.*较大|精度高.*延迟较大|区域提议.*精度"
+    ],
+    "neg_claims": [
+      "两阶段.*延迟.*更低|Faster R.?CNN.*实时.*优于.*YOLO|两阶段.*比.*单阶段.*快|两阶段.*精度.*更低"
+    ]
+  },
+  "YOLO 误差结构": {
+    "terms": [
+      "YOLO",
+      "定位.*误差|背景.*误报|localization|background"
+    ],
+    "pos_claims": [
+      "定位.*错误.*占比.*最高|定位.*误差.*高|背景.*误报.*显著.*更少|背景.*误报.*更少|定位.*错误.*最高"
+    ],
+    "neg_claims": [
+      "YOLO.*背景.*误报.*更多|YOLO.*定位.*误差.*更低.*Fast R.?CNN|YOLO.*定位.*几乎.*无.*误差"
+    ]
+  },
+  "注意力二次复杂度": {
+    "terms": [
+      "注意力|attention",
+      "token|分辨率|复杂度"
+    ],
+    "pos_claims": [
+      "注意力.*二次|二次.*增长|随.*token.*二次|quadratic|注意力.*随.*token数.*平方|token.*数.*二次"
+    ],
+    "neg_claims": [
+      "朴素.*注意力.*线性.*token|注意力.*随.*token.*线性增长|自注意力.*复杂度.*与.*token.*无关|注意力.*常数.*复杂度"
+    ]
+  },
+  "冻结预训练表征样本效率高": {
+    "terms": [
+      "冻结.*预训练|冻结.*骨干|frozen.*pretrain",
+      "样本效率|sample.?efficien"
+    ],
+    "pos_claims": [
+      "冻结.*预训练.*样本效率.*高|冻结.*骨干.*样本效率.*高|预训练.*表征.*降低.*数据|冻结.*高.*样本效率|降低.*一到两个量级"
+    ],
+    "neg_claims": [
+      "冻结.*预训练.*样本效率.*低|冻结.*骨干.*需.*更多.*交互|冻结.*表征.*样本效率.*差"
+    ]
+  },
+  "端到端视觉策略样本效率低": {
+    "terms": [
+      "端到端|end.?to.?end|E2E",
+      "视觉.*表征|策略.*输入|从头学|从头.*训练"
+    ],
+    "pos_claims": [
+      "端到端.*样本效率.*低|端到端.*需.*大量.*交互|从头.*学.*视觉.*海量|端到端.*易过拟合|从头学.*低.*样本效率"
+    ],
+    "neg_claims": [
+      "端到端.*样本效率.*高|端到端.*无需.*大量.*交互|从头.*学.*视觉.*数据.*需求.*低|端到端.*泛化.*最强"
+    ]
+  },
+  "R3M 人类视频预训练表征": {
+    "terms": [
+      "R3M"
+    ],
+    "pos_claims": [
+      "R3M.*Ego4D|R3M.*人类.*视频|R3M.*操作.*表征|Ego4D.*预训练|R3M.*Reusable.*Representation"
+    ],
+    "neg_claims": [
+      "R3M.*仿真.*数据.*预训练|R3M.*ImageNet.*分类.*预训练|R3M.*端到端.*从头|R3M.*非.*预训练"
+    ]
+  },
+  "VC-1 具身视觉骨干": {
+    "terms": [
+      "VC-1|VC1|Visual Cortex 1"
+    ],
+    "pos_claims": [
+      "VC-1.*MAE|VC-1.*ViT|VC-1.*具身|CortexBench|VC-1.*预训练.*视觉骨干|Visual Cortex.*具身"
+    ],
+    "neg_claims": [
+      "VC-1.*CNN.*骨干|VC-1.*监督.*分类.*预训练|VC-1.*非.*预训练|VC-1.*端到端.*从头"
+    ]
+  },
+  "视觉域差距优先于换骨干": {
+    "terms": [
+      "视觉.*域差距|视觉.*域.*差距|domain gap|域差距",
+      "骨干|backbone"
+    ],
+    "pos_claims": [
+      "域差距.*比.*换骨干.*致命|视觉.*域差距.*比.*骨干.*关键|标定.*时序.*比.*骨干|换.*骨干.*策略.*未必.*更好|骨干越强.*未必.*更好"
+    ],
+    "neg_claims": [
+      "换.*更强.*骨干.*策略.*必然.*更好|骨干越强.*机器人策略.*越好(?!.*误区)|视觉.*域差距.*无关紧要|换骨干.*最.*关键"
+    ]
   }
 }

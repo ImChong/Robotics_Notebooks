@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-13] structural | schema/canonical-facts.json — V24 P2 事实库由 172 → 186 条，补齐视觉骨干/机器人表征矛盾检测规则
+
+- 新增 14 条矛盾检测规则：ResNet 残差缓解退化、深层网络退化非过拟合、ViT 数据量门槛、ViT 归纳偏置弱、CNN 归纳偏置强、YOLO 单阶段实时、两阶段精度高延迟大、YOLO 误差结构、注意力二次复杂度、冻结预训练表征样本效率高、端到端视觉策略样本效率低、R3M 人类视频预训练表征、VC-1 具身视觉骨干、视觉域差距优先于换骨干
+- 逐条经脚本校验：每条 `terms`+`pos_claims` 对现存 wiki 页（cnn-vs-vit-backbones / vision-backbones / object-detection / visual-representation-for-policy / perception-backbone-selection 等）均有命中，`neg_claims` 仅刻画错误论断、不误伤正文
+- `docs/checklists/tech-stack-next-phase-checklist-v24.md` P2 与 DoD 事实库条目打勾
+- 验证：`python3 scripts/lint_wiki.py` 退出码 0，矛盾检测 0 项；JSON 合法
+
 ## [2026-06-13] structural | tech-map/modules/system/ros2.md + sources/sites/ros2-official-documentation.md — 填充 tech-node-system-ros2 空详情页；归档 ROS 2 Humble 一手文档，交叉 ros2-basics / ros2-vs-lcm / sim2real 部署链
 
 ## [2026-06-12] structural | wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、wiki/queries/table-tennis-hierarchical-skill-learning-guide.md + 5 页陈旧措辞 + 2 页 paper 实体 — 消除 10 条 lint 信息型预警

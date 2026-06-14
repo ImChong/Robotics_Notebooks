@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v24
 
-最后更新：2026-06-06（V24 启动，基于 V23 完整交付）
+最后更新：2026-06-13（P2 事实库扩展至 186 条完成）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v23.md`](archive/tech-stack-next-phase-checklist-v23.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -42,8 +42,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 172 → **≥ 185 条**：新增视觉骨干（ResNet 残差连接 / ViT 数据量门槛 / YOLO 单阶段 vs 两阶段）与机器人表征（冻结预训练表征 vs 端到端、R3M/VC-1 定位）专题的矛盾检测规则。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 172 → **186 条**：新增视觉骨干（ResNet 残差连接 / ViT 数据量门槛 / YOLO 单阶段 vs 两阶段）与机器人表征（冻结预训练表征 vs 端到端、R3M/VC-1 定位）专题的矛盾检测规则。（共 14 条：ResNet 残差缓解退化、深层网络退化非过拟合、ViT 数据量门槛、ViT 归纳偏置弱、CNN 归纳偏置强、YOLO 单阶段实时、两阶段精度高延迟大、YOLO 误差结构、注意力二次复杂度、冻结预训练表征样本效率高、端到端视觉策略样本效率低、R3M 人类视频预训练表征、VC-1 具身视觉骨干、视觉域差距优先于换骨干；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报，`make lint` 矛盾检测 0 项。）
 
 ## P3: 交互层"专题与感知"增强 (UX/UI)
 
@@ -58,7 +58,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `stale_claim_check` / `missing_concept_page_check` 均为 INFO 级，不阻塞 CI）。
 - [ ] 知识图谱节点数 **≥ 705**，边数 **≥ 5050**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **185 条** 以上（重点补 视觉骨干 / 机器人表征 矛盾检测规则）。
+- [x] 事实库扩展至 **185 条** 以上（已达 186 条；重点补 视觉骨干 / 机器人表征 矛盾检测规则）。
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V24 关键改动。
 
