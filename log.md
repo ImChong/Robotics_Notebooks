@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] structural | docs/graph.html — V24 P3 图谱新增「视觉感知骨干」专题视图（vision-backbone）
+
+- `TOPIC_FILTERS` 新增 `vision-backbone` 项：path 片段 `backbone/backbones/cnn/vit/resnet/yolo/detection` 并集命中；因核心页同处 community-3（与动作重定向共享）不宜按社区命中，`nodeMatchesTopic` 扩展支持 `ids` 显式纳入 `visual-representation-for-policy` / `generative-vision-pretraining` 两页
+- `#filter-topic-chips` 新增 `data-topic="vision-backbone"`（👁️ 视觉骨干）chip，专题视图精准命中 9 个相关节点（cnn-vs-vit / vision-backbones / visual-representation-for-policy / perception-backbone-selection / object-detection / object-detection-model-selection / generative-vision-pretraining + ResNet/YOLO 实体）
+- `docs/checklists/tech-stack-next-phase-checklist-v24.md` P3 首项打勾
+- 验证：`make lint` 退出码 0（仅 1 条信息型预警）；Puppeteer 截图归档 `.cursor-artifacts/screenshots/graph-topic-vision-backbone.png`
+
 ## [2026-06-14] ingest | sources/personal/amp_mjlab_policy_training_essence.md + perceptive_locomotion_representation_essence.md — 两条 ChatGPT 对话核心知识点：wiki/concepts/neural-feedback-controller.md、terrain-latent-representation.md；增补 privileged-training、amp-mjlab
 
 ## [2026-06-14] ingest | sources/papers/agi_to_asi_arxiv_2606_12683.md — DeepMind From AGI to ASI 技术报告；wiki/entities/paper-from-agi-to-asi.md；交叉 embodied-scaling-laws / data-flywheel / robot-learning-three-eras-narrative

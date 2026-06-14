@@ -1448,6 +1448,7 @@
           <button class="filter-topic-chip" type="button" data-topic="wbt" title="全身运动跟踪（WBT）"><span>🕺</span><span>WBT</span></button>
           <button class="filter-topic-chip" type="button" data-topic="cross-embodiment" title="跨具身迁移"><span>🔀</span><span>跨具身</span></button>
           <button class="filter-topic-chip" type="button" data-topic="safe-fine-tuning" title="真机安全微调"><span>🛡️</span><span>安全微调</span></button>
+          <button class="filter-topic-chip" type="button" data-topic="vision-backbone" title="视觉感知骨干"><span>👁️</span><span>视觉骨干</span></button>
         </div>
       </details>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
@@ -1777,6 +1778,15 @@
         segments: new Set([
           'safe','safety','cbf','clf','barrier','lyapunov','slowrl','lora','cmdp'
         ])
+      },
+      'vision-backbone': {
+        segments: new Set([
+          'backbone','backbones','cnn','vit','resnet','yolo','detection'
+        ]),
+        ids: new Set([
+          'wiki/concepts/visual-representation-for-policy.md',
+          'wiki/concepts/generative-vision-pretraining.md'
+        ])
       }
     };
     let currentTopic = 'all';
@@ -1796,6 +1806,7 @@
       if (cfg.excludeSegments) {
         for (const ex of cfg.excludeSegments) if (segs.has(ex)) return false;
       }
+      if (cfg.ids && cfg.ids.has(d.id)) return true;
       if (cfg.communities && cfg.communities.has(d.community)) return true;
       if (cfg.segments) {
         for (const seg of cfg.segments) if (segs.has(seg)) return true;
