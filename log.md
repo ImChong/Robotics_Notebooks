@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] ingest | sources/papers/mighty_arxiv_2511_10822.md + sources/repos/mighty.md — MIT ACL MIGHTY Hermite 样条 UAV 轨迹规划（RA-L 2026）；wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md；交叉 multirotor-simulation-planning-control-stack、ego-planner-swarm
+
 ## [2026-06-14] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md — 具身智能研究室 Loco-Manip 8 篇数据入口周报；父节点 loco-manip-8-papers-technology-map + 四组 loco-manip-category-* 子节点 + 8 篇论文实体
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.4.0（`pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
