@@ -2044,9 +2044,11 @@
     }
 
     /* ── Zoom ── */
+    const GRAPH_ZOOM_MIN = 0.08;
+    const GRAPH_ZOOM_MAX = 5;
     const gRoot = svg.append('g');
     const zoom = d3.zoom()
-      .scaleExtent([0.08, 5])
+      .scaleExtent([GRAPH_ZOOM_MIN, GRAPH_ZOOM_MAX])
       .on('zoom', ev => {
         gRoot.attr('transform', ev.transform);
         const k = ev.transform.k;
@@ -3064,20 +3066,15 @@
 
     // 相机自适应到「已显现」节点（生长时随之缩放，类似 Obsidian）
     function fitToTimelineNodes() {
-      if (!updateGraphViewport()) return;
       const vis = nodes.filter(n => timelineRevealedIds.has(n.id) && n.x != null);
       if (vis.length < 2) return;
-      const xs = vis.map(n => n.x), ys = vis.map(n => n.y);
-      const x0 = Math.min(...xs), x1 = Math.max(...xs);
-      const y0 = Math.min(...ys), y1 = Math.max(...ys);
-      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      const pad = 160;
-      const scale = Math.min(2.2, Math.max(0.45,
-        Math.min(W / Math.max(x1 - x0 + pad, 200), H / Math.max(y1 - y0 + pad, 200))));
-      svg.transition('tlfit').duration(500).ease(d3.easeCubicOut).call(
-        zoom.transform,
-        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
-      );
+      const transform = computeGraphFitTransform(vis, {
+        pad: isMobile ? 56 : 160,
+        minSpan: isMobile ? 120 : 200,
+        minScale: isMobile ? GRAPH_ZOOM_MIN : 0.45,
+        maxScale: 2.2,
+      });
+      applyGraphFitTransform(transform, { duration: 500, ease: d3.easeCubicOut, name: 'tlfit' });
     }
 
     // 跳转到指定进度：显现前 targetIdx 个节点
@@ -3239,62 +3236,105 @@
 
     syncTimelineInteractionState();
 
+    function graphFitPadding() {
+      return isMobile ? 48 : 120;
+    }
+
+    function nodeGraphMargin(d) {
+      const r = scaledRadius(d);
+      const labelExtent = scaledFontSize(d) + 16;
+      return Math.max(r + 4, r + labelExtent);
+    }
+
+    function computeGraphFitTransform(nodeList, opts) {
+      opts = opts || {};
+      if (!updateGraphViewport()) return null;
+      const list = (nodeList || []).filter(n => n.x != null && n.y != null);
+      if (!list.length) return null;
+
+      let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+      for (const n of list) {
+        const m = nodeGraphMargin(n);
+        if (n.x - m < x0) x0 = n.x - m;
+        if (n.x + m > x1) x1 = n.x + m;
+        if (n.y - m < y0) y0 = n.y - m;
+        if (n.y + m > y1) y1 = n.y + m;
+      }
+
+      const bw = Math.max(x1 - x0, 40);
+      const bh = Math.max(y1 - y0, 40);
+      const cx = (x0 + x1) / 2;
+      const cy = (y0 + y1) / 2;
+      const pad = opts.pad != null ? opts.pad : graphFitPadding();
+      const minSpan = opts.minSpan != null ? opts.minSpan : 0;
+      const minScale = opts.minScale != null ? opts.minScale : GRAPH_ZOOM_MIN;
+      const maxScale = opts.maxScale != null ? opts.maxScale : GRAPH_ZOOM_MAX;
+      const spanW = Math.max(bw + pad, minSpan);
+      const spanH = Math.max(bh + pad, minSpan);
+      const scale = Math.min(maxScale, Math.max(minScale, Math.min(W / spanW, H / spanH)));
+
+      return d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale);
+    }
+
+    function applyGraphFitTransform(transform, transitionOpts) {
+      if (!transform) return;
+      const dur = transitionOpts && transitionOpts.duration != null ? transitionOpts.duration : 650;
+      const ease = transitionOpts && transitionOpts.ease;
+      if (dur <= 0) {
+        svg.call(zoom.transform, transform);
+        return;
+      }
+      let t = svg.transition();
+      if (transitionOpts && transitionOpts.name) t = t.name(transitionOpts.name);
+      t = t.duration(dur);
+      if (ease) t = t.ease(ease);
+      t.call(zoom.transform, transform);
+    }
+
     function fitToVisibleNodes() {
-      if (!updateGraphViewport()) return;
-      const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
-      if (visNodes.length === 0) return;
-      const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
-      const x0 = Math.min(...xs), x1 = Math.max(...xs);
-      const y0 = Math.min(...ys), y1 = Math.max(...ys);
-      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      const pad = 140;
-      const scale = Math.min(5, Math.max(0.4,
-        Math.min(W / Math.max(x1 - x0 + pad, 200), H / Math.max(y1 - y0 + pad, 200))));
-      svg.transition().duration(650).call(
-        zoom.transform,
-        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
+      const transform = computeGraphFitTransform(
+        nodes.filter(n => visibleNodeIds.has(n.id)),
+        {
+          pad: isMobile ? 56 : 140,
+          minSpan: isMobile ? 120 : 200,
+          minScale: isMobile ? GRAPH_ZOOM_MIN : 0.4,
+        }
       );
+      applyGraphFitTransform(transform);
     }
 
     /* ── 适配屏幕到所有节点 ── */
     function fitToScreen() {
-      if (!updateGraphViewport()) return;
-      const allNodes = nodes.filter(n => n.x != null);
-      if (allNodes.length === 0) return;
-      const xs = allNodes.map(n => n.x), ys = allNodes.map(n => n.y);
-      const x0 = Math.min(...xs), x1 = Math.max(...xs);
-      const y0 = Math.min(...ys), y1 = Math.max(...ys);
-      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      const pad = 120;
-      const scale = Math.min(5, Math.max(0.5,
-        Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
-      svg.transition().duration(650).call(
-        zoom.transform,
-        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
-      );
+      const transform = computeGraphFitTransform(nodes, {
+        minScale: GRAPH_ZOOM_MIN,
+        maxScale: GRAPH_ZOOM_MAX,
+      });
+      applyGraphFitTransform(transform);
     }
 
     /* ── 搜索飞行定位 ── */
     function flyToVisible() {
-      if (!updateGraphViewport()) return;
       const visNodes = nodes.filter(n => visibleNodeIds.has(n.id) && n.x != null);
       if (visNodes.length === 0 || visNodes.length > 15) return;
-      const xs = visNodes.map(n => n.x), ys = visNodes.map(n => n.y);
-      const x0 = Math.min(...xs), x1 = Math.max(...xs);
-      const y0 = Math.min(...ys), y1 = Math.max(...ys);
-      const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
-      const pad = 120;
-      const scale = Math.min(5, Math.max(0.5,
-        Math.min(W / (x1 - x0 + pad), H / (y1 - y0 + pad))));
-      svg.transition().duration(650).call(
-        zoom.transform,
-        d3.zoomIdentity.translate(W / 2 - scale * cx, H / 2 - scale * cy).scale(scale)
-      );
+      const transform = computeGraphFitTransform(visNodes, {
+        minScale: GRAPH_ZOOM_MIN,
+        maxScale: GRAPH_ZOOM_MAX,
+      });
+      applyGraphFitTransform(transform);
     }
 
     /* ── resize（移动端地址栏收起会改变可视高度）── */
     function onGraphViewportResize() {
       if (!updateGraphViewport()) return;
+      if (timelineAnimating) {
+        simulation.alpha(0.1).restart();
+        return;
+      }
+      if (isMobile) {
+        if (currentTopic !== 'all') fitToVisibleNodes();
+        else fitToScreen();
+        return;
+      }
       simulation.alpha(0.1).restart();
     }
     window.addEventListener('resize', onGraphViewportResize);
