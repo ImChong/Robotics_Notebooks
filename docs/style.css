@@ -118,7 +118,8 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   color: var(--accent);
   text-decoration: none;
 }
-.theme-toggle {
+.theme-toggle,
+.sponsor-toggle {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -133,6 +134,7 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
   line-height: 1;
   text-align: center;
   color: var(--text);
+  flex-shrink: 0;
 }
 .theme-toggle:hover {
   border-color: var(--accent);
@@ -143,21 +145,6 @@ a:hover { color: var(--accent-hover); text-decoration: none; opacity: 0.85; }
 [data-theme="light"] .icon-sun { display: none; }
 [data-theme="light"] .icon-moon { display: inline; }
 
-.sponsor-toggle {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  height: 30px;
-  padding: 0 8px;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.95rem;
-  line-height: 1;
-  color: var(--text);
-}
 .sponsor-toggle:hover {
   border-color: #e2566a;
 }
@@ -1543,7 +1530,8 @@ body.sponsor-dialog-open {
     font-size: 0.82rem;
     white-space: nowrap;
   }
-  .theme-toggle {
+  .theme-toggle,
+  .sponsor-toggle {
     min-width: 36px;
     padding: 0.3rem 0.6rem;
     border-radius: 6px;
