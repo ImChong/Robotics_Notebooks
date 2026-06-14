@@ -124,6 +124,7 @@ flowchart TB
 - [Unitree G1](./unitree-g1.md) — 评测平台
 - [GS-Playground](./gs-playground.md) — 另一条 3DGS×仿真视觉 RL 路线
 - [VIRAL](./paper-viral-humanoid-visual-sim2real.md) — 视觉 sim 数据 + loco-manip（RL 蒸馏而非 VLA 合成 IL）
+- [OASIS](./paper-loco-manip-04-oasis.md) — 仿真 teleop + 离线渲染域随机化 + Flow Matching（arXiv:2606.08548）
 - [Teleoperation](../tasks/teleoperation.md) — 数据成本对照
 - [MotionWAM](./paper-motionwam-humanoid-loco-manipulation-wam.md) — 同 G1+SONIC 栈的 **WAM 预训练** 路线对照（arXiv:2606.09215）
 

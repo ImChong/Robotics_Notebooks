@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] ingest | sources/papers/oasis_humanoid_loco_manip_2606_08548.md — OASIS arXiv:2606.08548 全文精读入库，升格 wiki/entities/paper-loco-manip-04-oasis.md
+
 ## [2026-06-14] ingest | sources/papers/mighty_arxiv_2511_10822.md + sources/repos/mighty.md — MIT ACL MIGHTY Hermite 样条 UAV 轨迹规划（RA-L 2026）；wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md；交叉 multirotor-simulation-planning-control-stack、ego-planner-swarm
 
 ## [2026-06-14] ingest | sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md — 具身智能研究室 Loco-Manip 8 篇数据入口周报；父节点 loco-manip-8-papers-technology-map + 四组 loco-manip-category-* 子节点 + 8 篇论文实体

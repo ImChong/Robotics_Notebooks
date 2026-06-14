@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, sim2real, visual-rl, loco-manipulation, teacher-student, dagger, ppo, unitree-g1, isaac-lab, cvpr2026, nvidia, cmu]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-14
 arxiv: "2511.15200"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
@@ -94,6 +94,7 @@ summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 
 - [GR00T-VisualSim2Real](./gr00t-visual-sim2real.md) — NVlabs 开源实现与 DoorMan 姊妹工作
 - [DoorMan（论文实体）](./paper-doorman-opening-sim2real-door.md) — arXiv:2512.01061，铰接 loco-manipulation 与 GRPO 自举
 - [LEGS（论文实体）](./paper-legs-embodied-gaussian-splatting-vla.md) — 同为 G1 loco-manip 数据路线：VIRAL 走 RL 蒸馏，LEGS 走 3DGS 合成 IL 微调 VLA（arXiv:2606.01458）
+- [OASIS（论文实体）](./paper-loco-manip-04-oasis.md) — 仿真 teleop + 视觉域随机化 + Flow Matching 层级策略（arXiv:2606.08548）
 - [Tairan He](./tairan-he.md) — 作者侧总索引
 - [Sim2Real](../concepts/sim2real.md)
 - [Privileged Training](../concepts/privileged-training.md)

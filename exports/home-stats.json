@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-14",
   "node_count": 1176,
-  "edge_count": 7193,
+  "edge_count": 7206,
   "coverage": {
     "covered": 1160,
     "total": 1174,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-loco-manip-04-oasis.md",
+      "detail_id": "entity-paper-loco-manip-04-oasis",
+      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-14",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md",
       "detail_id": "entity-paper-mighty-hermite-spline-trajectory-planning",
@@ -159,20 +167,12 @@
       "type": "query",
       "recency": "2026-06-12",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/manim.md",
-      "detail_id": "entity-manim",
-      "label": "Manim（程序化数学动画引擎）",
-      "type": "entity",
-      "recency": "2026-06-12",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md",
-    "detail_id": "entity-paper-mighty-hermite-spline-trajectory-planning",
-    "label": "MIGHTY（Hermite 样条高效 UAV 轨迹规划）",
+    "path": "wiki/entities/paper-loco-manip-04-oasis.md",
+    "detail_id": "entity-paper-loco-manip-04-oasis",
+    "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
     "type": "entity",
     "recency": "2026-06-14",
     "source": "log.md"
