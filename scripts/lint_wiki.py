@@ -92,6 +92,23 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
     "https",
 }
 
+# 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
+# 不应再按裸 token 误报为「缺独立 concepts/methods 页」。映射到既有页：
+#   amp      → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
+#   g1       → entities/unitree-g1.md（硬件，归 entities）
+#   heracles → entities/paper-heracles-humanoid-diffusion.md（具体系统）
+#   mjlab    → entities/mjlab.md（库/工具）
+#   mujoco   → entities/mujoco.md（仿真器/工具）
+#   sonic    → methods/sonic-motion-tracking.md（具体方法）
+MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
+    "amp",
+    "g1",
+    "heracles",
+    "mjlab",
+    "mujoco",
+    "sonic",
+}
+
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
 INFO_ONLY_KEYS: set[str] = {
     "missing_pages",
@@ -403,7 +420,11 @@ def _check_missing_concept_pages(pages: list[Path], results: dict[str, Any]) -> 
             if not MISSING_CONCEPT_TERM_RE.match(term):
                 continue
             slug = term.lower()
-            if slug in MISSING_CONCEPT_STOPWORDS or slug in covered_stems:
+            if (
+                slug in MISSING_CONCEPT_STOPWORDS
+                or slug in MISSING_CONCEPT_COVERED_ELSEWHERE
+                or slug in covered_stems
+            ):
                 continue
             term_display.setdefault(slug, term)
             term_pages.setdefault(slug, set()).add(rel_str)

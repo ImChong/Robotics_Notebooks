@@ -6,6 +6,7 @@ updated: 2026-06-10
 summary: "人形与腿式模仿/强化策略里，网络“长什么样”往往被写在论文 Method：从浅层 MLP 到 AMP 判别器、MoE、Transformer/Diffusion chunk，再到 VLA 与 WAM；真机强项常是小 MLP，难点在观测、奖励与 sim2real。"
 related:
   - ./whole-body-control.md
+  - ./transformer.md
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../methods/amp-reward.md
@@ -151,6 +152,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Transformer](./transformer.md)
 - [Imitation Learning](../methods/imitation-learning.md)
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [VLA](../methods/vla.md)
