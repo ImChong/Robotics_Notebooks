@@ -1,5 +1,19 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-14] structural | wiki/methods/ppo.md + wiki/concepts/transformer.md + sources/papers/attention_is_all_you_need.md — 新建 PPO/Transformer 概念方法页，消除 lint 高频术语缺页误报
+
+- 新建：[`wiki/methods/ppo.md`](wiki/methods/ppo.md)（clip 代理目标、GAE、机器人 RL 落地要点）、[`wiki/concepts/transformer.md`](wiki/concepts/transformer.md)（自注意力 / MHA / 机器人 VLA·ACT 角色）
+- 入库：[`sources/papers/attention_is_all_you_need.md`](sources/papers/attention_is_all_you_need.md)（Vaswani et al. 2017 一手摘要）
+- 交叉更新：[`wiki/methods/policy-optimization.md`](wiki/methods/policy-optimization.md)、[`wiki/concepts/deep-learning-foundations.md`](wiki/concepts/deep-learning-foundations.md)、[`wiki/concepts/humanoid-policy-network-architecture.md`](wiki/concepts/humanoid-policy-network-architecture.md)、[`wiki/comparisons/ppo-vs-sac.md`](wiki/comparisons/ppo-vs-sac.md)
+- 验证：`make ci-preflight`
+
+## [2026-06-13] ingest | sources/papers/ruka_v2_arxiv_2603_26660.md + sources/repos/ruka-v2.md + sources/sites/ruka-hand-v2-github-io.md — NYU 全开源腱驱动灵巧手 RUKA-v2；升格 wiki/entities/ruka-v2-hand.md，交叉 orca-hand / dexterous-data-collection-guide / manipulation
+
+- 新建实体：[`wiki/entities/ruka-v2-hand.md`](wiki/entities/ruka-v2-hand.md)（16 指 DoF + 2-DoF 腕、AnyTeleop + OpenTeach + BAKU 验证链）
+- 交叉更新：[`wiki/entities/orca-hand.md`](wiki/entities/orca-hand.md)、[`wiki/queries/dexterous-data-collection-guide.md`](wiki/queries/dexterous-data-collection-guide.md)、[`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md`](wiki/entities/paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md)
+- 后续修正：[`wiki/entities/ruka-v2-hand.md`](wiki/entities/ruka-v2-hand.md) 成本字段 `$1,500` 改 `$1{,}500` 避免 KaTeX 误解析
+- 验证：`make ci-preflight`
+
 ## [2026-06-13] structural | schema/canonical-facts.json — V24 P2 事实库由 172 → 186 条，补齐视觉骨干/机器人表征矛盾检测规则
 
 - 新增 14 条矛盾检测规则：ResNet 残差缓解退化、深层网络退化非过拟合、ViT 数据量门槛、ViT 归纳偏置弱、CNN 归纳偏置强、YOLO 单阶段实时、两阶段精度高延迟大、YOLO 误差结构、注意力二次复杂度、冻结预训练表征样本效率高、端到端视觉策略样本效率低、R3M 人类视频预训练表征、VC-1 具身视觉骨干、视觉域差距优先于换骨干
