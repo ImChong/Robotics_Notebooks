@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-15] structural | docs/detail.html + docs/main.js + docs/topic-filters.js — V24 P3 详情页"所属专题"轻量徽标，专题命中规则抽共享模块并收口 V24
+
+- 新增 `docs/topic-filters.js` 作为专题命中规则单一事实源（`TOPIC_FILTERS` / `TOPIC_META` / `matches` / `topicsForNode`）；`docs/graph.html` 移除内联 `TOPIC_FILTERS` 与 `nodeMatchesTopic` 实现改为消费共享模块，并新增 `?topic=<key>` URL 参数自动激活对应专题视图
+- `docs/main.js` 新增 `renderDetailTopicBadges`：复用 `link-graph.json` 现成社区数据计算当前页命中的专题，渲染"所属专题"徽标 → `graph.html?topic=<key>`（无命中静默隐藏）；`docs/detail.html` 增 `#detailTopicBadges` 容器，`docs/style.css` 增 `.detail-topic-badge` 胶囊样式
+- `docs/checklists/tech-stack-next-phase-checklist-v24.md`：P3 可选项打勾，验收标准（make lint / 节点边数 / community 均衡 / log 记录）逐条复核打勾，V24 全部条目收口
+- 验证：`make lint` 退出码 0（「✅ 所有检查通过！」）；节点 1183 / 边 7292、`community_quality_warning=false`、最大社区占比 0.179；Puppeteer 端到端截图归档 `.cursor-artifacts/screenshots/detail-topic-badge.png`、`graph-topic-from-url.png`（详情页徽标→图谱专题视图链路打通）
+
 ## [2026-06-15] ingest | sources/repos/gen2humanoid.md — 入库 Gen2Humanoid 文本→HY-Motion→GMR 人形管线；新建 wiki/entities/gen2humanoid.md；交叉 hy-motion-1、motion-retargeting-gmr、motion-retargeting-pipeline
 
 ## [2026-06-15] ingest | MoveIt/MoveIt 2 一手资料 — sources/sites/moveit-*.md + sources/repos/moveit-*.md、ros-planning-srdfdom.md；新建 wiki/entities/moveit2.md；交叉 manipulation、curobo、ros2-official-documentation

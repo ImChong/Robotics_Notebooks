@@ -1525,6 +1525,7 @@
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
+  <script src="topic-filters.js"></script>
   <script>
   (async function () {
     /* ── 颜色 & 类型标签 ── */
@@ -1701,117 +1702,12 @@
 
     /* ── 专题视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
     // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
-    const TOPIC_FILTERS = {
-      'motion-retargeting': {
-        communities: new Set(['community-3']),
-        segments: new Set([
-          'retargeting','retarget','gmr','nmr','reactor','sonic','exoactor',
-          'spider','wilor','mocap','teleoperation','deepmimic','amp',
-          'character','animation','keyframe','pipeline'
-        ])
-      },
-      'grasp': {
-        segments: new Set([
-          'grasp','graspnet','anygrasp','dexterous','manipulation',
-          'pick','place','bimanual','curobo'
-        ])
-      },
-      'tactile': {
-        segments: new Set([
-          'tactile','haptic','impedance','force','contact','visuo'
-        ]),
-        excludeSegments: new Set(['reinforcement'])
-      },
-      'communication': {
-        segments: new Set([
-          'ethercat','can','uart','dds','foxglove','rs485','rs232',
-          'serial','communication','protocol','bus','protocols','firmware'
-        ])
-      },
-      'wbc': {
-        communities: new Set(['community-0']),
-        segments: new Set([
-          'wbc','tsid','hqp','cbf','clf','whole','body','balance','hierarchical'
-        ])
-      },
-      'locomotion': {
-        communities: new Set(['community-11', 'community-9']),
-        segments: new Set([
-          'locomotion','gait','mpc','zmp','lip','walking','swing','stance','capture'
-        ])
-      },
-      'vla': {
-        communities: new Set(['community-5']),
-        segments: new Set([
-          'vla','foundation','octo','openvla','rt','pi0','gr00t'
-        ])
-      },
-      'learning': {
-        communities: new Set(['community-4', 'community-6']),
-        segments: new Set([
-          'imitation','reinforcement','ppo','sac','behavior','cloning','dreamer'
-        ])
-      },
-      'sim2real': {
-        segments: new Set([
-          'sim2real', 'randomization', 'domain'
-        ])
-      },
-      'state-estimation': {
-        segments: new Set([
-          'estimation','ekf','ukf','slam','vio','odometry'
-        ])
-      },
-      'wbt': {
-        segments: new Set([
-          'wbt','tracking','beyondmimic','sdamp','heracles','opentrack',
-          'maskedmimic','sonic','any2any','twist','twist2'
-        ])
-      },
-      'cross-embodiment': {
-        segments: new Set([
-          'embodiment','any2any','transfer'
-        ])
-      },
-      'safe-fine-tuning': {
-        communities: new Set(['community-13']),
-        segments: new Set([
-          'safe','safety','cbf','clf','barrier','lyapunov','slowrl','lora','cmdp'
-        ])
-      },
-      'vision-backbone': {
-        segments: new Set([
-          'backbone','backbones','cnn','vit','resnet','yolo','detection'
-        ]),
-        ids: new Set([
-          'wiki/concepts/visual-representation-for-policy.md',
-          'wiki/concepts/generative-vision-pretraining.md'
-        ])
-      }
-    };
+    // 专题命中规则迁移至共享模块 topic-filters.js（与详情页徽标同源）。
+    const TOPIC_FILTERS = window.RNTopicFilters.TOPIC_FILTERS;
     let currentTopic = 'all';
 
-    function nodeSegments(d) {
-      if (d._segs) return d._segs;
-      const base = (d.id || '').toLowerCase().replace(/\.md$/, '');
-      d._segs = new Set(base.split(/[/._-]/).filter(Boolean));
-      return d._segs;
-    }
-
     function nodeMatchesTopic(d) {
-      if (currentTopic === 'all') return true;
-      const cfg = TOPIC_FILTERS[currentTopic];
-      if (!cfg) return true;
-      const segs = nodeSegments(d);
-      if (cfg.excludeSegments) {
-        for (const ex of cfg.excludeSegments) if (segs.has(ex)) return false;
-      }
-      if (cfg.ids && cfg.ids.has(d.id)) return true;
-      if (cfg.communities && cfg.communities.has(d.community)) return true;
-      if (cfg.segments) {
-        for (const seg of cfg.segments) if (segs.has(seg)) return true;
-      }
-      return false;
+      return window.RNTopicFilters.matches(d, currentTopic);
     }
 
     /* ── 可变物理参数 ── */
@@ -3637,6 +3533,12 @@
     /* ════════════════════════════════════════════
        ?focus=<id> URL 参数：页面加载后飞行定位
     ════════════════════════════════════════════ */
+
+    /* ?topic=<key> URL 参数：从详情页"专题徽标"跳入时自动激活对应专题视图 */
+    const topicParam = new URLSearchParams(location.search).get('topic');
+    if (topicParam && TOPIC_FILTERS[topicParam]) {
+      setActiveTopic(topicParam);
+    }
 
     const focusId = new URLSearchParams(location.search).get('focus');
     if (focusId) {

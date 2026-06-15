@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v24
 
-最后更新：2026-06-13（P2 事实库扩展至 186 条完成）
+最后更新：2026-06-15（P3 详情页专题徽标交付，V24 全部条目收口）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v23.md`](archive/tech-stack-next-phase-checklist-v23.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -49,18 +49,18 @@
 
 - [x] **图谱页"视觉感知骨干"专题视图**：
     - [x] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V23 13 项基础上新增「视觉感知骨干」专题（`vision-backbone`）；命中规则复用 path 片段并集机制（`backbone/backbones/cnn/vit/resnet/yolo/detection`），因核心页同处 community-3（与动作重定向共享）不宜按社区命中，新增 `ids` 显式纳入 `visual-representation-for-policy` / `generative-vision-pretraining` 两页；同步在 `#filter-topic-chips` 增加 `data-topic="vision-backbone"`（👁️ 视觉骨干）chip；专题视图精准命中 9 个相关节点（cnn-vs-vit / vision-backbones / visual-representation-for-policy / perception-backbone-selection / object-detection / object-detection-model-selection / generative-vision-pretraining + ResNet/YOLO 实体）。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-vision-backbone.png`。
-- [ ] **详情页"同专题相关页"提示（可选）**：
-    - [ ] 评估在详情页对命中某专题的页面给出"属于 X 专题"轻量徽标 + 跳转图谱专题视图的链接（空态降级隐藏）。
+- [x] **详情页"同专题相关页"提示（可选）**：
+    - [x] 在详情页对命中某专题的页面给出"属于 X 专题"轻量徽标 + 跳转图谱专题视图的链接（空态降级隐藏）。专题命中规则抽到共享模块 `docs/topic-filters.js`（单一事实源，graph.html 与 detail.html 同源消费），详情页 `renderDetailTopicBadges` 复用 `link-graph.json` 现成社区数据计算命中并渲染徽标 → `graph.html?topic=<key>`；graph.html 新增 `?topic=` URL 参数自动激活对应专题视图。端到端验证：`vision-backbones` 详情页渲染「👁️ 视觉骨干」徽标，点击跳转后 graph 自动激活 `vision-backbone` 专题（截图归档 `.cursor-artifacts/screenshots/detail-topic-badge.png`、`graph-topic-from-url.png`）。
 
 ---
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `stale_claim_check` / `missing_concept_page_check` 均为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 705**，边数 **≥ 5050**（见 `exports/graph-stats.json`）。
+- [x] `make lint`: 0 errors（新引入的 `stale_claim_check` / `missing_concept_page_check` 均为 INFO 级，不阻塞 CI）。（2026-06-15 复核：`make lint` 通过，「✅ 所有检查通过！」）
+- [x] 知识图谱节点数 **≥ 705**，边数 **≥ 5050**（见 `exports/graph-stats.json`）。（2026-06-15：节点 1183 / 边 7292，远超目标）
 - [x] 事实库扩展至 **185 条** 以上（已达 186 条；重点补 视觉骨干 / 机器人表征 矛盾检测规则）。
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
-- [ ] `log.md` 记录 V24 关键改动。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。（2026-06-15：`false`，最大社区占比 0.179）
+- [x] `log.md` 记录 V24 关键改动。
 
 ---
 
