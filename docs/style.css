@@ -20,6 +20,11 @@
   --header-h: 58px;
   /* 与 https://imchong.github.io/ 主栏 (.container / .header-inner) 一致 */
   --content-max-width: 960px;
+  --detail-toc-width: 320px;
+  --detail-layout-gap: 40px;
+  /* TOC + gap；详情/路线正文区外层宽于主栏，主栏仍保持 --content-max-width */
+  --detail-layout-toc-offset: calc(var(--detail-toc-width) + var(--detail-layout-gap));
+  --detail-layout-max-width: calc(var(--content-max-width) + var(--detail-layout-toc-offset));
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
   --transition: 0.3s ease;
 }
@@ -731,10 +736,7 @@ body.sponsor-dialog-open {
   display: none;
 }
 .detail-content-layout {
-  display: flex;
-  gap: 40px;
   align-items: start;
-  justify-content: center;
 }
 #detail-content-section {
   padding-top: 12px;
@@ -777,7 +779,7 @@ body.sponsor-dialog-open {
   box-sizing: border-box;
 }
 .detail-toc-panel {
-  width: 320px;
+  width: var(--detail-toc-width);
   flex-shrink: 0;
   position: sticky;
   top: 92px;
@@ -787,10 +789,26 @@ body.sponsor-dialog-open {
   background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
+  /* 外层 grid 容纳 TOC + 主栏；主栏左缘与上方 hero / subnav 对齐，避免负边距被 overflow-x:clip 裁切 */
+  .container.detail-content-layout,
+  .detail-hero > .container.detail-hero-stack {
+    max-width: var(--detail-layout-max-width);
+    margin-inline: auto;
+    display: grid;
+    grid-template-columns: var(--detail-toc-width) minmax(0, 1fr);
+    gap: var(--detail-layout-gap);
+    align-items: start;
+  }
+  .detail-hero > .container.detail-hero-stack > * {
+    grid-column: 2;
+  }
+  .page-subnav-wrap > .container.page-subnav {
+    max-width: var(--detail-layout-max-width);
+    margin-inline: auto;
+    padding-left: calc(24px + var(--detail-layout-toc-offset));
+  }
   .detail-toc-panel {
-    /* width(320) + .detail-content-layout gap(40) — 与主栏对齐且不占横向滚动 */
-    margin-left: -360px;
     display: flex;
     flex-direction: column;
     /* 长目录超出视口时：卡片高度封顶，仅目录列表区域滚动 */
