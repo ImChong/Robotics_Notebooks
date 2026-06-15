@@ -1,5 +1,5 @@
 // Robotics Notebooks Service Worker — 离线缓存支持
-const CACHE_NAME = 'robotics-wiki-2026-06-15';
+const CACHE_NAME = 'robotics-wiki-2026-06-15-v2';
 const ASSETS_TO_CACHE = [
   '/Robotics_Notebooks/',
   '/Robotics_Notebooks/index.html',
@@ -42,6 +42,22 @@ self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET') return;
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin) return;
+
+  // sponsor.js 等小脚本优先走网络，避免 emoji/文案更新后仍显示旧缓存
+  if (url.pathname.endsWith('/sponsor.js')) {
+    event.respondWith(
+      fetch(event.request)
+        .then((resp) => {
+          if (resp && resp.status === 200) {
+            const clone = resp.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return resp;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then((cached) => {
