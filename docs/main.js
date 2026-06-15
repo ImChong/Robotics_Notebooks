@@ -2570,6 +2570,31 @@
     });
   }
 
+  // 详情页"属于 X 专题"轻量徽标：复用 graph.html 的专题命中规则（topic-filters.js），
+  // 命中则给出跳转图谱专题视图的链接；无命中或无依赖时静默隐藏（空态降级）。
+  function renderDetailTopicBadges(detailPage) {
+    var wrap = document.getElementById('detailTopicBadges');
+    if (!wrap) return;
+    var TF = window.RNTopicFilters;
+    var currentPath = (detailPage && detailPage.path) || '';
+    if (!TF || !currentPath) { wrap.hidden = true; return; }
+
+    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
+      if (!node) { wrap.hidden = true; return; }
+      var topics = TF.topicsForNode({ id: node.id, community: node.community });
+      if (!topics.length) { wrap.hidden = true; return; }
+      var html = '<span class="detail-topic-badges-label">所属专题</span>' + topics.map(function (key) {
+        var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
+        return '<a class="detail-topic-badge" href="graph.html?topic=' + encodeURIComponent(key) +
+          '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
+          '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
+      }).join('');
+      wrap.innerHTML = html;
+      wrap.hidden = false;
+    }).catch(function () { wrap.hidden = true; });
+  }
+
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
@@ -2964,6 +2989,7 @@
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
 
     renderDetailMiniMap(detailPage, detailPages);
+    renderDetailTopicBadges(detailPage);
     renderDetailRecentIngestTimeline(detailPage);
 
     var hashForLayoutScroll = window.location.hash.replace(/^#/, '');
