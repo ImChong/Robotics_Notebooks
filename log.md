@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-15] ingest | sources/papers/rumelhart_backprop_learning_representations_nature_1986.md — Rumelhart et al. 1986 Nature 反向传播一手归档；新建 wiki/concepts/backpropagation.md；交叉 deep-learning-foundations / transformer / udl_book
+
 ## [2026-06-14] structural | docs/graph.html — V24 P3 图谱新增「视觉感知骨干」专题视图（vision-backbone）
 
 - `TOPIC_FILTERS` 新增 `vision-backbone` 项：path 片段 `backbone/backbones/cnn/vit/resnet/yolo/detection` 并集命中；因核心页同处 community-3（与动作重定向共享）不宜按社区命中，`nodeMatchesTopic` 扩展支持 `ids` 显式纳入 `visual-representation-for-policy` / `generative-vision-pretraining` 两页
