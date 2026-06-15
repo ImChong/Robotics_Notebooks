@@ -538,7 +538,12 @@
     }
     cells.push(current);
 
-    const trimmed = cells.map(function (c) { return c.trim(); });
+    // ⚡ Bolt Optimization: Replace .map with standard for loop
+    // Expected impact: Eliminates function closure allocation and invocation overhead in hot text parsing loops.
+    const trimmed = [];
+    for (let j = 0; j < cells.length; j++) {
+      trimmed.push(cells[j].trim());
+    }
     if (trimmed.length > 0 && trimmed[0] === '') trimmed.shift();
     if (trimmed.length > 0 && trimmed[trimmed.length - 1] === '') trimmed.pop();
     return trimmed;
@@ -1814,31 +1819,51 @@
     function flushList() {
       if (!listItems.length) return;
       const openTag = listTag === 'ol' ? 'ol' : 'ul';
-      const hasTask = listItems.some(function (it) { return it && it.task; });
+
+      // ⚡ Bolt Optimization: Replace .some and .map with standard for loop
+      // Expected impact: Eliminates function closure allocation and invocation overhead in hot text parsing loops.
+      let hasTask = false;
+      for (let i = 0; i < listItems.length; i++) {
+        if (listItems[i] && listItems[i].task) {
+          hasTask = true;
+          break;
+        }
+      }
+
       const listOpen = (function () {
         if (openTag === 'ul') return hasTask ? '<ul class="contains-task-list">' : '<ul>';
         if (openTag === 'ol') return '<ol>';
         return '<ul>';
       })();
-      blocks.push(listOpen + listItems.map(function (item) {
+
+      let listItemsHtml = '';
+      for (let i = 0; i < listItems.length; i++) {
+        const item = listItems[i];
         const body = renderMathBlocks(renderInlineMarkdown(item.text, context));
         if (item.task) {
           const checkedAttr = item.checked ? ' checked' : '';
-          return '<li class="task-list-item"><label><input type="checkbox"' + checkedAttr + ' disabled aria-readonly="true" /> <span class="task-list-item-body">' + body + '</span></label></li>';
+          listItemsHtml += '<li class="task-list-item"><label><input type="checkbox"' + checkedAttr + ' disabled aria-readonly="true" /> <span class="task-list-item-body">' + body + '</span></label></li>';
+        } else {
+          listItemsHtml += '<li>' + body + '</li>';
         }
-        return '<li>' + body + '</li>';
-      }).join('') + '</' + openTag + '>');
+      }
+
+      blocks.push(listOpen + listItemsHtml + '</' + openTag + '>');
       listItems = [];
       listTag = '';
     }
 
     function flushQuote() {
       if (!quoteLines.length) return;
-      blocks.push((function () {
-        return '<blockquote>';
-      })() + quoteLines.map(function (line) {
-        return '<p>' + renderMathBlocks(renderInlineMarkdown(line, context)) + '</p>';
-      }).join('') + '</blockquote>');
+
+      // ⚡ Bolt Optimization: Replace .map with standard for loop string concatenation
+      // Expected impact: Eliminates function closure allocation and invocation overhead in hot text parsing loops.
+      let quoteHtml = '<blockquote>';
+      for (let i = 0; i < quoteLines.length; i++) {
+        quoteHtml += '<p>' + renderMathBlocks(renderInlineMarkdown(quoteLines[i], context)) + '</p>';
+      }
+      quoteHtml += '</blockquote>';
+      blocks.push(quoteHtml);
       quoteLines = [];
     }
 
@@ -1851,14 +1876,26 @@
 
     function flushTable() {
       if (!tableLines.length) return;
-      const htmlRows = tableLines.map(function (row, i) {
+
+      // ⚡ Bolt Optimization: Replace .map.join with standard for loop
+      // Expected impact: Eliminates function closure allocation and invocation overhead in hot text parsing loops.
+      let htmlRows = '';
+      for (let i = 0; i < tableLines.length; i++) {
+        const row = tableLines[i];
         const isHeader = i === 0;
         const isSeparator = row.replace(/\|/g, '').replace(/-/g, '').replace(/:/g, '').trim().length === 0;
-        if (isSeparator) return '';
+        if (isSeparator) continue;
         const cells = splitMarkdownTableCells(row);
         const tag = isHeader ? 'th' : 'td';
-        return '<tr>' + cells.map(function (c) { return '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(c, context)) + '</' + tag + '>'; }).join('') + '</tr>';
-      }).join('');
+
+        let rowHtml = '<tr>';
+        for (let j = 0; j < cells.length; j++) {
+          rowHtml += '<' + tag + '>' + renderMathBlocks(renderInlineMarkdown(cells[j], context)) + '</' + tag + '>';
+        }
+        rowHtml += '</tr>';
+        htmlRows += rowHtml;
+      }
+
       blocks.push(
         '<div class="table-wrapper">'
         + '<div class="table-scroll"><table>' + htmlRows + '</table></div>'

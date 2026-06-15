@@ -43,8 +43,8 @@ class DetailContentSyncTests(unittest.TestCase):
             "function renderCodeBlock(code, lang)",
             "function escapeMermaidForInnerHtml(text)",
             "return '<div class=\"mermaid\">' + escapeMermaidForInnerHtml(String(code || '').trim()) + '</div>';",
-            "return '<blockquote>'",
-            "return '<ul>'",
+            "let quoteHtml = '<blockquote>';",
+            "if (openTag === 'ul') return hasTask ? '<ul class=\"contains-task-list\">' : '<ul>';",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
