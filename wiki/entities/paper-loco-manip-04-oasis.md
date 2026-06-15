@@ -146,6 +146,22 @@ flowchart TB
 - **纯 OASIS 仿真数据** 在多数任务 **≥ 纯真机 teleop**；论文归因于仿真覆盖更广光照/背景，真机数据环境相对固定。
 - **等量混合** 优于任一单源——仿真供视觉泛化，真机补接触与感知细节。
 
+## 与其他工作对比
+
+同属 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中「绕开真机 teleop 规模瓶颈」一脉，OASIS 与 [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md)、[VIRAL](./paper-viral-humanoid-visual-sim2real.md) 给出三条互补路线：
+
+| 维度 | OASIS（本页） | LEGS | VIRAL |
+|------|---------------|------|-------|
+| 数据来源 | 仿真 VR teleop（人类演示） | 3DGS 合成轨迹，无 teleop | RL 特权教师 rollout |
+| 视觉合成 | Isaac Sim Path-Tracing + 域随机化 | 3D Gaussian Splatting 重建渲染 | 仿真渲染 + 视觉蒸馏 |
+| 策略学习 | 层级 Flow Matching IL | 合成数据 IL | 特权 RL → 视觉学生蒸馏 |
+| motion 多样性来源 | 操作员 VR teleop（受人类上限） | 合成轨迹生成 | RL 探索（覆盖更广） |
+| 真机验证 | G1 零样本，四类 loco-manip 任务 | G1 操作任务 | G1 视觉 sim2real |
+
+- **相对 LEGS：** 两者都把「视觉多样性」从真机数据中解耦，但 OASIS 仍保留 **VR teleop** 提供接触可行的全身轨迹，LEGS 则连 teleop 都省去、纯靠 3DGS 合成——OASIS 接触/动力学更贴真机，LEGS 采集成本更低。
+- **相对 VIRAL：** OASIS 的 motion 来自 **人类 teleop**（多样性受操作员上限、未做轨迹动力学扰动），VIRAL 的 PPO 教师靠 **RL 探索** 拓宽 motion 覆盖；OASIS 胜在演示语义自然、易对齐任务，VIRAL 胜在探索式覆盖更广。
+- **共同结论：** 三条路线都验证了 **仿真/合成数据可在 G1 loco-manip 上替代或增强真机 teleop**；OASIS 进一步给出「**纯仿真 ≥ 等量真机、混合最优**」的量化证据。
+
 ## 常见误区或局限
 
 - **不是「消灭真机」：** 混合数据最优；仿真单独已在多数任务可用，但接触丰富任务仍受 **资产精度** 限制。
