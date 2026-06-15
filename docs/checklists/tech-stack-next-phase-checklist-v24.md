@@ -47,8 +47,8 @@
 
 ## P3: 交互层"专题与感知"增强 (UX/UI)
 
-- [ ] **图谱页"视觉感知骨干"专题视图**：
-    - [ ] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V23 13 项基础上新增「视觉感知骨干」专题；命中规则复用 community id + path 片段双路并集机制；同步在 `#filter-topic-chips` 增加对应 `data-topic` chip；新增视图配 Puppeteer 截图归档到 `.cursor-artifacts/screenshots/`。
+- [x] **图谱页"视觉感知骨干"专题视图**：
+    - [x] `docs/graph.html` 的 `TOPIC_FILTERS` 在 V23 13 项基础上新增「视觉感知骨干」专题（`vision-backbone`）；命中规则复用 path 片段并集机制（`backbone/backbones/cnn/vit/resnet/yolo/detection`），因核心页同处 community-3（与动作重定向共享）不宜按社区命中，新增 `ids` 显式纳入 `visual-representation-for-policy` / `generative-vision-pretraining` 两页；同步在 `#filter-topic-chips` 增加 `data-topic="vision-backbone"`（👁️ 视觉骨干）chip；专题视图精准命中 9 个相关节点（cnn-vs-vit / vision-backbones / visual-representation-for-policy / perception-backbone-selection / object-detection / object-detection-model-selection / generative-vision-pretraining + ResNet/YOLO 实体）。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-vision-backbone.png`。
 - [ ] **详情页"同专题相关页"提示（可选）**：
     - [ ] 评估在详情页对命中某专题的页面给出"属于 X 专题"轻量徽标 + 跳转图谱专题视图的链接（空态降级隐藏）。
 
