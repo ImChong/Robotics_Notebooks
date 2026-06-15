@@ -20,6 +20,8 @@
   --header-h: 58px;
   /* 与 https://imchong.github.io/ 主栏 (.container / .header-inner) 一致 */
   --content-max-width: 960px;
+  /* 负边距 TOC 完整露出： (vw - content-max) / 2 + container-padding - (toc宽+gap) ≥ 0 → vw ≥ 1632 */
+  --detail-toc-desktop-min: 1632px;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, "Noto Sans SC", sans-serif;
   --transition: 0.3s ease;
 }
@@ -787,7 +789,7 @@ body.sponsor-dialog-open {
   background: var(--surface);
   box-shadow: var(--shadow-sm);
 }
-@media (min-width: 1200px) {
+@media (min-width: 1632px) {
   .detail-toc-panel {
     /* width(320) + .detail-content-layout gap(40) — 与主栏对齐且不占横向滚动 */
     margin-left: -360px;
@@ -1452,7 +1454,7 @@ body.sponsor-dialog-open {
   opacity: 1;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1631px) {
   .detail-toc-panel {
     position: fixed;
     top: 16px;
