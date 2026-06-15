@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-15",
-  "node_count": 1180,
-  "edge_count": 7258,
+  "node_count": 1181,
+  "edge_count": 7268,
   "coverage": {
-    "covered": 1164,
-    "total": 1178,
+    "covered": 1165,
+    "total": 1179,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/cad-skills.md",
+      "detail_id": "entity-cad-skills",
+      "label": "CAD Skills",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/text-to-cad.md",
+      "detail_id": "wiki-concepts-text-to-cad",
+      "label": "文字生成 CAD（Text-to-CAD）",
+      "type": "concept",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/urdf-studio.md",
+      "detail_id": "entity-urdf-studio",
+      "label": "URDF-Studio",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/backpropagation.md",
       "detail_id": "wiki-concepts-backpropagation",
@@ -127,53 +167,13 @@
       "type": "concept",
       "recency": "2026-06-14",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/ppo-vs-sac.md",
-      "detail_id": "wiki-comparisons-ppo-vs-sac",
-      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
-      "type": "comparison",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ruka-v2-hand.md",
-      "detail_id": "entity-ruka-v2-hand",
-      "label": "RUKA-v2 Hand",
-      "type": "entity",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/orca-hand.md",
-      "detail_id": "entity-orca-hand",
-      "label": "Orca Hand（虎鲸巧手）",
-      "type": "entity",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-13",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/backpropagation.md",
-    "detail_id": "wiki-concepts-backpropagation",
-    "label": "反向传播算法 (Backpropagation)",
-    "type": "concept",
+    "path": "wiki/entities/cad-skills.md",
+    "detail_id": "entity-cad-skills",
+    "label": "CAD Skills",
+    "type": "entity",
     "recency": "2026-06-15",
     "source": "log.md"
   }

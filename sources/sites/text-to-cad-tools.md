@@ -1,7 +1,7 @@
 # 文字生成 CAD / 对话式 CAD 工具（原始资料索引）
 
 - **类型**：网站与在线产品（机械 CAD / AEC / API / 脚本栈 / 网格生成）汇编
-- **收录日期**：2026-05-13；**最近更新**：2026-05-21（补充 GenCAD / GenCAD-3D 学习与逆向工程入口）
+- **收录日期**：2026-05-13；**最近更新**：2026-06-15（补充 CAD Skills Agent Skills 库）
 - **说明**：以下为可检索的**公开入口**与一句话定位；**定价、导出格式列表、合规边界以各产品当前文档为准**，本文件不做采购或合规建议。
 
 ## 一句话
@@ -41,6 +41,14 @@
 - **Fusion 360 产品总览**：<https://www.autodesk.com/products/fusion-360/overview>
 - **生成式设计（Generative Design）方案页**：<https://www.autodesk.com/solutions/generative-design> — 用于理解「约束驱动 + 拓扑探索」类 AI 与传统 **text-to-solid** 黑盒生成的差别。
 
+## Agent Skills 全链路（CAD Skills，earthtojake/text-to-cad）
+
+- **GitHub**：<https://github.com/earthtojake/text-to-cad> — 品牌 **CAD Skills**；MIT；公开强调 **STEP 优先 build123d** + **URDF/SRDF/SDF** + 本地 **CAD Viewer** + **DXF / 切片 / 打印** 等 11 项 skills。
+- **文档**：<https://www.cadskills.xyz> · **Demo**：<https://demo.cadskills.xyz>
+- **安装（Skills CLI）**：`npx skills install earthtojake/text-to-cad`；亦支持 Codex / Claude Code 插件 marketplace（见仓库 README）。
+- **要点**：`skills/cad/SKILL.md` 规定 brief → `gen_step()` 源码 → STEP → inspect/snapshot → CAD Viewer handoff；URDF 等 skill 以 `gen_urdf()` 为真值；含 10 项机械 benchmark（`benchmarks/01`…`10`，重资产 Git LFS）。
+- **wiki**：[wiki/entities/cad-skills.md](../../wiki/entities/cad-skills.md)
+
 ## 参数化脚本 CAD（LLM 友好、机器人夹具常用）
 
 - **OpenSCAD（程序化 CSG）**：<https://openscad.org/>
@@ -78,7 +86,7 @@
 
 ## 对 wiki 的映射
 
-- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/gencad.md](../../wiki/entities/gencad.md)、[wiki/entities/gencad-3d.md](../../wiki/entities/gencad-3d.md)
+- 升格页面：[wiki/concepts/text-to-cad.md](../../wiki/concepts/text-to-cad.md)、[wiki/entities/cad-skills.md](../../wiki/entities/cad-skills.md)、[wiki/entities/gencad.md](../../wiki/entities/gencad.md)、[wiki/entities/gencad-3d.md](../../wiki/entities/gencad-3d.md)
 
 ## 参考链接（索引）
 
