@@ -30,7 +30,7 @@
     toggle.setAttribute('aria-label', '赞助我');
     toggle.setAttribute('title', '赞助我');
     toggle.setAttribute('aria-haspopup', 'dialog');
-    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">❤</span>';
+    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">🧋</span>';
 
     headerRight.appendChild(toggle);
 
