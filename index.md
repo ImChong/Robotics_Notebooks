@@ -64,6 +64,7 @@
 - [AprilTag](wiki/entities/april-tag.md)
 - [Agent Reach](wiki/entities/agent-reach.md)（编码代理互联网接入脚手架：CLI + doctor + 可插拔渠道；上游 yt-dlp / gh / MCP 等）
 - [AnyGrasp（抓取感知 SDK）](wiki/entities/anygrasp.md)
+- [MoveIt 2](wiki/entities/moveit2.md)（ROS 2 机械臂运动规划、Planning Scene、OMPL/Pilz/CHOMP 与 MTC pick-and-place）
 - [Grasp Pose Estimation（抓取位姿估计）](wiki/methods/grasp-pose-estimation.md)（6-DoF 抓取检测谱系：GraspNet → Contact-GraspNet → GSNet/Graspness/AnyGrasp，含点云/RGBD 输入与评测指标）
 - [Crocoddyl](wiki/entities/crocoddyl.md)
 - [cuRobo](wiki/entities/curobo.md)
@@ -304,6 +305,7 @@ SORT type ASC
 - [MotionCode™](entities/motioncode.md) — MotionCode**（官网 [motioncode.ai](https://motioncode.ai/)）将自身定位为「解码人体运动」的实体，公开业务拆为 **Move / Media /  `📅2026-05-07` `[entity_page]`
 - [Motrix (Motphys 机器人仿真与训练平台)](entities/motrix.md) — Motrix** 是由 Motphys 开发的高性能机器人物理仿真与强化学习训练平台。它由核心仿真引擎 **MotrixSim** 和上层学习框架 **MotrixLab** 组成，旨在为机器人研 `📅unknown` `[entity_page]`
 - [MuJoCo MJX（MuJoCo XLA）](entities/mujoco-mjx.md) — MuJoCo MJX**（常写作 **MJX**）是 Google DeepMind 在 **JAX** 上对 [MuJoCo](./mujoco.md) 物理引擎的 **重实现**：通过 PyP `📅2026-05-18` `[entity_page]`
+- [MoveIt 2](entities/moveit2.md) — MoveIt 2** 是面向 **ROS 2** 的开源 **运动规划、操作与运动学** 框架（[moveit/moveit2](https://github.com/moveit/moveit2 `📅2026-06-15` `[entity_page]`
 - [MuJoCo Playground](entities/mujoco-playground.md) — MuJoCo Playground**（[google-deepmind/mujoco_playground](https://github.com/google-deepmind/mujoco_ `📅unknown` `[entity_page]`
 - [MuJoCo (物理引擎)](entities/mujoco.md) — MuJoCo (Multi-Joint dynamics with Contact)** 是一款专为机器人、生物力学和控制研究开发的高性能物理引擎。自被 DeepMind 收购并完全开源（Apac `📅unknown` `[entity_page]`
 - [MuSHR](entities/mushr.md) — MuSHR**（Multi-agent System for non-Holonomic Racing）是面向 **教学与研究** 的 ROS 小车开源平台。 `📅unknown` `[entity_page]`

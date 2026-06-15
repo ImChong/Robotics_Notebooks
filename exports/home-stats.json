@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-15",
-  "node_count": 1180,
-  "edge_count": 7258,
+  "node_count": 1181,
+  "edge_count": 7271,
   "coverage": {
-    "covered": 1164,
-    "total": 1178,
+    "covered": 1165,
+    "total": 1179,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/moveit2.md",
+      "detail_id": "entity-moveit2",
+      "label": "MoveIt 2",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/curobo.md",
+      "detail_id": "entity-curobo",
+      "label": "cuRobo",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/backpropagation.md",
       "detail_id": "wiki-concepts-backpropagation",
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-13",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/orca-hand.md",
-      "detail_id": "entity-orca-hand",
-      "label": "Orca Hand（虎鲸巧手）",
-      "type": "entity",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-06-13",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-13",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/backpropagation.md",
-    "detail_id": "wiki-concepts-backpropagation",
-    "label": "反向传播算法 (Backpropagation)",
-    "type": "concept",
+    "path": "wiki/entities/moveit2.md",
+    "detail_id": "entity-moveit2",
+    "label": "MoveIt 2",
+    "type": "entity",
     "recency": "2026-06-15",
     "source": "log.md"
   }

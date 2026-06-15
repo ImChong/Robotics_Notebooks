@@ -36,7 +36,7 @@
 |------|------|------|
 | **ros2_control** | https://control.ros.org/humble/ | 硬件抽象层（`hardware_interface`）、控制器管理器、与 Gazebo/MuJoCo 仿真对接 |
 | **Navigation2** | https://navigation.ros.org/ | 移动机器人导航参考栈 |
-| **MoveIt 2** | https://moveit.picknik.ai/ | 机械臂运动规划与碰撞检测 |
+| **MoveIt 2** | https://moveit.picknik.ai/ | 机械臂运动规划与碰撞检测（详见 [MoveIt 2 实体页](../../wiki/entities/moveit2.md)） |
 | **ROS 2 Design** | https://design.ros2.org/ | 架构决策记录（为何选 DDS、为何弃用 Master 等） |
 
 ## 与本仓库现有资料的关系
@@ -44,7 +44,7 @@
 - 部署实践索引：[sim2real.md](../sim2real.md)（Humble、ros2_control、ATOM01 等）
 - 概念页：[ros2-basics](../../wiki/concepts/ros2-basics.md)
 - 选型对比：[ros2-vs-lcm](../../wiki/comparisons/ros2-vs-lcm.md)
-- 实体案例：[navigation2](../../wiki/entities/navigation2.md)、[booster-robocup-demo](../../wiki/entities/booster-robocup-demo.md)、[autoware](../../wiki/entities/autoware.md)
+- 实体案例：[navigation2](../../wiki/entities/navigation2.md)、[moveit2](../../wiki/entities/moveit2.md)、[booster-robocup-demo](../../wiki/entities/booster-robocup-demo.md)、[autoware](../../wiki/entities/autoware.md)
 - 技术栈模块：[tech-map/modules/system/ros2.md](../../tech-map/modules/system/ros2.md)
 
 ## 对 wiki 的映射
