@@ -13,6 +13,7 @@ related:
   - ./crocoddyl.md
   - ./pinocchio.md
   - ./urdf-studio.md
+  - ./cad-skills.md
   - ./navigation2.md
 sources:
   - ../../sources/sites/moveit-official-portal.md
@@ -48,7 +49,7 @@ summary: "MoveIt 2 是 ROS 2 上事实标准的机械臂运动规划与操作框
 
 - **操作栈事实标准**：门户称 MoveIt 已用于 **150+ 机器人**；[Manipulation](../tasks/manipulation.md) 中「感知→抓取→执行」的 **可达性/碰撞过滤** 常落点 MoveIt 或与其集成的 GPU 规划器（如 [cuRobo](./curobo.md) / Isaac ROS cuMotion）。
 - **ROS 2 生态枢纽**：与 [ROS 2 基础](../concepts/ros2-basics.md)、**ros2_control**、Gazebo/Ignition 仿真、RViz 可视化形成 **「描述—规划—控制—仿真」** 闭环；移动底盘侧对照 [Navigation2](./navigation2.md)。
-- **配置即产品**：**Setup Assistant** 向导生成 `moveit_config`；语义层 **SRDF** 由 [srdfdom](https://github.com/ros-planning/srdfdom) 解析，与 [URDF-Studio](./urdf-studio.md) 等 URDF/SRDF 产出工具上下游衔接。
+- **配置即产品**：**Setup Assistant** 向导生成 `moveit_config`；语义层 **SRDF** 由 [srdfdom](https://github.com/ros-planning/srdfdom) 解析，与 [URDF-Studio](./urdf-studio.md)、[CAD Skills](./cad-skills.md) 等 URDF/SRDF 产出工具上下游衔接。
 
 ## MoveIt 1 vs MoveIt 2 vs MoveIt Pro
 
@@ -121,6 +122,7 @@ flowchart TB
 - [ROS 2 基础](../concepts/ros2-basics.md) — 中间件与 launch 前提
 - [cuRobo](./curobo.md) — GPU 运动生成与 MoveIt 插件集成
 - [URDF-Studio](./urdf-studio.md) — Web 端 URDF/MJCF 编辑；与 MoveIt 配置上下游
+- [CAD Skills](./cad-skills.md) — SRDF/URDF Agent Skills 与 MoveIt 语义层
 - [Model Predictive Control](../methods/model-predictive-control.md) / [Trajectory Optimization](../methods/trajectory-optimization.md) — 规划算法对照
 
 ## 推荐继续阅读

@@ -52,6 +52,7 @@ updated: 2026-05-22
 - [open-source-humanoid-hardware](open-source-humanoid-hardware.md) (开源硬件参考)
 - [Articraft](./articraft.md)（agent + SDK + harness：可关节 3D 仿真资产生成，与 URDF/网格下游对照）
 - [文字生成 CAD（Text-to-CAD）](../concepts/text-to-cad.md)（自然语言 → STEP 等上游几何与机器人描述衔接）
+- [CAD Skills](./cad-skills.md)（Agent Skills：build123d→STEP→URDF/SRDF/SDF CLI 规约；与本页 Web GUI 对照）
 - [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
 - [Tnkr](./tnkr.md)（开源整机项目仓库：CAD 装配流、电气文档与部署数据闭环）
 

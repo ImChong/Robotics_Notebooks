@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-15",
-  "node_count": 1181,
-  "edge_count": 7271,
+  "node_count": 1182,
+  "edge_count": 7282,
   "coverage": {
-    "covered": 1165,
-    "total": 1179,
+    "covered": 1166,
+    "total": 1180,
     "percent": 99
   },
   "latest_wiki_nodes": [
@@ -28,6 +28,46 @@
       "path": "wiki/entities/curobo.md",
       "detail_id": "entity-curobo",
       "label": "cuRobo",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/cad-skills.md",
+      "detail_id": "entity-cad-skills",
+      "label": "CAD Skills",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/text-to-cad.md",
+      "detail_id": "wiki-concepts-text-to-cad",
+      "label": "文字生成 CAD（Text-to-CAD）",
+      "type": "concept",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/urdf-studio.md",
+      "detail_id": "entity-urdf-studio",
+      "label": "URDF-Studio",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/articraft.md",
+      "detail_id": "entity-articraft",
+      "label": "Articraft",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mattpocock-skills.md",
+      "detail_id": "entity-mattpocock-skills",
+      "label": "Skills For Real Engineers（mattpocock）",
       "type": "entity",
       "recency": "2026-06-15",
       "source": "log.md"
@@ -126,46 +166,6 @@
       "label": "Transformer",
       "type": "concept",
       "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/policy-optimization.md",
-      "detail_id": "wiki-methods-policy-optimization",
-      "label": "Policy Optimization",
-      "type": "method",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/humanoid-policy-network-architecture.md",
-      "detail_id": "wiki-concepts-humanoid-policy-network-architecture",
-      "label": "人形与腿式策略的网络架构（Policy Network Architecture）",
-      "type": "concept",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/ppo-vs-sac.md",
-      "detail_id": "wiki-comparisons-ppo-vs-sac",
-      "label": "PPO vs SAC (vs BRRL/BPO)：机器人 RL 算法选型",
-      "type": "comparison",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ruka-v2-hand.md",
-      "detail_id": "entity-ruka-v2-hand",
-      "label": "RUKA-v2 Hand",
-      "type": "entity",
-      "recency": "2026-06-13",
       "source": "log.md"
     }
   ],

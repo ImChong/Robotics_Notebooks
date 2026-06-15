@@ -81,6 +81,7 @@
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](wiki/concepts/planetary-roller-screw-humanoid-leg-actuation.md)（Optimus 类腿部直线执行器 + 连杆：负载/自锁/力控 vs 动态带宽的权衡）
 - [人形机器人并联关节解算](wiki/concepts/humanoid-parallel-joint-kinematics.md)（闭链踝、力分配与仿真接口分层）
 - [文字生成 CAD（Text-to-CAD）](wiki/concepts/text-to-cad.md)（可用早期：概念件 / 脚本参数化 / STEP 衔接；整机装配仍以专业 CAD 为主）
+- [CAD Skills（earthtojake/text-to-cad）](wiki/entities/cad-skills.md)（Agent Skills：build123d STEP-first + URDF/SRDF/SDF + 制造/打印全链路）
 - [Articraft](wiki/entities/articraft.md)（agent + SDK + harness：可关节 3D 仿真资产与 Articraft-10K；arXiv:2605.15187）
 - [World Labs](wiki/entities/world-labs.md)（空间智能：Marble 生成式 3D 世界 + Spark 流式 3DGS Web 渲染）
 - [Superpowers（obra）](wiki/entities/superpowers-obra.md)（编码代理可组合技能 + TDD / worktree / 子代理交付；与 LLM Wiki 规约对照）
@@ -208,6 +209,7 @@ SORT type ASC
 - [Boston Dynamics（波士顿动力）](entities/boston-dynamics.md) — Boston Dynamics** 是一家全球顶尖的机器人工程公司，以其在足式机器人运动控制、平衡和动力学领域的卓越成就而闻名。从 1992 年从 MIT 的 Leg Laboratory 独立至 `📅unknown` `[entity_page]`
 - [BotLab / MotionCanvas（浏览器内策略–仿真编排）](entities/botlab-motioncanvas.md) — BotLab** 是 [地瓜机器人（D-Robotics）](https://www.d-robotics.cc/) 提供的 **Web 端机器人学习与控制实验台**；应用壳层标题为 **Moti `📅unknown` `[entity_page]`
 - [Brax（JAX 可微物理与 RL 训练）](entities/brax.md) — Brax** 指 GitHub 仓库 [`google/brax`](https://github.com/google/brax)：在 **JAX** 上提供 **刚体仿真** 与 **强化学习 `📅2026-05-18` `[entity_page]`
+- [CAD Skills](entities/cad-skills.md) — CAD Skills** 是 [earthtojake/text-to-cad](https://github.com/earthtojake/text-to-cad) 仓库（品牌名 **CAD  `📅2026-06-15` `[entity_page]`
 - [Cartographer](entities/cartographer.md) — Cartographer** 是 Google 开源的 **子图 SLAM** 系统，支持 2D/3D 激光与多传感器配置。 `📅unknown` `[entity_page]`
 - [Caveman](entities/caveman.md) — Caveman** 是 [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman) 仓库分发的 **编码代理输出压缩技能/插 `📅unknown` `[entity_page]`
 - [Cosmos 3（NVIDIA 全模态世界模型）](entities/cosmos-3.md) — Cosmos 3**（2026-06，[arXiv:2606.02800](https://arxiv.org/abs/2606.02800)，[项目页](https://research.nvi `📅unknown` `[entity_page]`

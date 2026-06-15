@@ -11,7 +11,7 @@
 ## 为什么值得保留
 
 - **MoveIt 配置三件套中的「语义」真值：** URDF 描述 link/joint 几何与运动学；SRDF 描述 **哪些 link 组成 arm/gripper 规划组**、**哪些 link 对可忽略碰撞**、**ready/home 等 group state**。
-- MoveIt 2 文档明确 move_group 需要 **URDF + SRDF + MoveIt configuration**；外部 URDF/SRDF 生成工具产出须与此格式兼容。
+- MoveIt 2 文档明确 move_group 需要 **URDF + SRDF + MoveIt configuration**；CAD/URDF 工具链（如 [CAD Skills](../../wiki/entities/cad-skills.md) 的 SRDF skill）产出须与此格式兼容。
 
 ## 能力摘录（据 README）
 
