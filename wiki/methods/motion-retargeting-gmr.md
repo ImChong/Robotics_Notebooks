@@ -2,7 +2,7 @@
 type: method
 tags: [robotics, kinematics, retargeting, humanoid]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-15
 related:
   - ../concepts/motion-retargeting.md
   - ./neural-motion-retargeting-nmr.md
@@ -11,12 +11,14 @@ related:
   - ./beyondmimic.md
   - ./sonic-motion-tracking.md
   - ../entities/paper-htd-refine-monocular-hmr.md
+  - ../entities/gen2humanoid.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
+  - ../../sources/repos/gen2humanoid.md
 summary: "GMR (General Motion Retargeting) 是一种高效的通用动作重定向方法，主要解决从人类动捕数据到异构机器人骨架的几何映射问题。"
 ---
 
@@ -187,3 +189,4 @@ $$
 - [GMR vs NMR vs Reactor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三种路线的并排选型对照。
 - [DART（DartControl）](./dart-control.md) — SMPL-X 运动学输出经 GMR 等人形执行接口的常见上游之一。
 - [SONIC（规模化运动跟踪）](./sonic-motion-tracking.md) — 与「跳过重定向、直接 tracking」路线对照阅读。
+- [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion 生成轨迹经 GMR 到多机型的端到端胶水管线。

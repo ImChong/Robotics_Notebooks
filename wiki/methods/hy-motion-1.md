@@ -2,16 +2,18 @@
 type: method
 tags: [human-motion, text-to-motion, flow-matching, diffusion-transformer, smpl-h, preference-optimization, digital-human]
 status: complete
-updated: 2026-06-09
+updated: 2026-06-15
 related:
   - ./diffusion-motion-generation.md
   - ./dart-control.md
   - ./genmo.md
   - ../entities/awesome-text-to-motion-zilize.md
+  - ../entities/gen2humanoid.md
   - ../formalizations/probability-flow.md
 sources:
   - ../../sources/papers/hy_motion_arxiv_2512_23464.md
   - ../../sources/repos/tencent_hunyuan_hy_motion_1_0.md
+  - ../../sources/repos/gen2humanoid.md
 summary: "腾讯混元 HY-Motion 1.0：将 DiT+流匹配的人体文本→3D 运动生成扩至十亿级参数，配套三千小时级预训练、四百小时级高质量微调与 DPO/Flow-GRPO 对齐，并开源代码与权重。"
 ---
 
@@ -135,6 +137,7 @@ flowchart TB
 - [Awesome Text-to-Motion（Zilize）](../entities/awesome-text-to-motion-zilize.md) — T2M 文献与数据集拓扑索引
 - [Probability Flow](../formalizations/probability-flow.md) — 流匹配与连续归一化流基础
 - [GMR: 通用动作重定向](./motion-retargeting-gmr.md) — 从人体 SMPL 系运动到机器人骨架的常见工程落点
+- [Gen2Humanoid](../entities/gen2humanoid.md) — HY-Motion + GMR 的端到端文本→人形参考管线集成
 - [HY-Motion vs GENMO vs Kimodo](../comparisons/hy-motion-vs-genmo-vs-kimodo.md) — 三条「文本/多模态 → 人体运动」生成式骨干选型对比
 
 ## 参考来源

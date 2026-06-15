@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-15] ingest | sources/repos/gen2humanoid.md — 入库 Gen2Humanoid 文本→HY-Motion→GMR 人形管线；新建 wiki/entities/gen2humanoid.md；交叉 hy-motion-1、motion-retargeting-gmr、motion-retargeting-pipeline
+
 ## [2026-06-15] ingest | MoveIt/MoveIt 2 一手资料 — sources/sites/moveit-*.md + sources/repos/moveit-*.md、ros-planning-srdfdom.md；新建 wiki/entities/moveit2.md；交叉 manipulation、curobo、ros2-official-documentation
 
 - 原始资料：[`sources/sites/moveit-official-portal.md`](sources/sites/moveit-official-portal.md)、[`sources/sites/moveit2-picknik-documentation.md`](sources/sites/moveit2-picknik-documentation.md)、[`sources/sites/moveit1-noetic-tutorials.md`](sources/sites/moveit1-noetic-tutorials.md)、[`sources/repos/moveit-moveit2.md`](sources/repos/moveit-moveit2.md)、[`sources/repos/moveit-moveit1.md`](sources/repos/moveit-moveit1.md)、[`sources/repos/ros-planning-srdfdom.md`](sources/repos/ros-planning-srdfdom.md)

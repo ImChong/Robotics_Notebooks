@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-15",
-  "node_count": 1182,
-  "edge_count": 7282,
+  "node_count": 1183,
+  "edge_count": 7292,
   "coverage": {
-    "covered": 1166,
-    "total": 1180,
+    "covered": 1167,
+    "total": 1181,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gen2humanoid.md",
+      "detail_id": "entity-gen2humanoid",
+      "label": "Gen2Humanoid（文本→人形运动端到端管线）",
+      "type": "entity",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/moveit2.md",
       "detail_id": "entity-moveit2",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-14",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/transformer.md",
-      "detail_id": "wiki-concepts-transformer",
-      "label": "Transformer",
-      "type": "concept",
-      "recency": "2026-06-14",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/moveit2.md",
-    "detail_id": "entity-moveit2",
-    "label": "MoveIt 2",
+    "path": "wiki/entities/gen2humanoid.md",
+    "detail_id": "entity-gen2humanoid",
+    "label": "Gen2Humanoid（文本→人形运动端到端管线）",
     "type": "entity",
     "recency": "2026-06-15",
     "source": "log.md"
