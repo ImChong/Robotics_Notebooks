@@ -2,8 +2,9 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-06-06
+updated: 2026-06-15
 related:
+  - ./backpropagation.md
   - ./vision-backbones.md
   - ./transformer.md
   - ../methods/object-detection.md
@@ -39,7 +40,7 @@ sources:
 
 ### 2. 优化与训练 (Optimization)
 - **损失函数 (Loss Functions)**: 定义了模型预测与真实值之间的距离（如 MSE, Cross-Entropy）。
-- **随机梯度下降 (SGD)**: 通过反向传播（Backpropagation）计算梯度并更新参数。
+- **随机梯度下降 (SGD)**: 通过 [反向传播（Backpropagation）](./backpropagation.md) 计算梯度，再由 SGD/Adam 等优化器更新参数。
 - **初始化与残差连接 (Residual Connections)**: 缓解极深网络的 **退化（degradation）** 与优化困难，使百层 CNN（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）可训练；详见 [视觉骨干](./vision-backbones.md)。
 
 ### 3. 泛化理论 (Generalization)
@@ -54,6 +55,7 @@ sources:
 - **生成 (Generation)**: [生成式模型基础](../formalizations/generative-foundations.md) 为动作轨迹生成提供数学底座。
 
 ## 关联页面
+- [反向传播算法](./backpropagation.md)
 - [视觉骨干](./vision-backbones.md)
 - [Transformer](./transformer.md)
 - [目标检测（方法）](../methods/object-detection.md)

@@ -60,6 +60,7 @@ $$
 - **VLA / 通用策略**：[Robotics Transformer（RT 系列）](../methods/robotics-transformer-rt-series.md) 将视觉-语言-动作统一为注意力建模。
 
 ## 关联页面
+- [反向传播算法](./backpropagation.md)
 - [深度学习基础](./deep-learning-foundations.md)
 - [人形策略网络架构](./humanoid-policy-network-architecture.md)
 - [BC with Transformer](../methods/bc-with-transformer.md)

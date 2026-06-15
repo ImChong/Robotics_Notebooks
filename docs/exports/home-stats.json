@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-15",
-  "node_count": 1179,
-  "edge_count": 7247,
+  "node_count": 1180,
+  "edge_count": 7258,
   "coverage": {
-    "covered": 1163,
-    "total": 1177,
+    "covered": 1164,
+    "total": 1178,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/concepts/backpropagation.md",
+      "detail_id": "wiki-concepts-backpropagation",
+      "label": "反向传播算法 (Backpropagation)",
+      "type": "concept",
+      "recency": "2026-06-15",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/neural-feedback-controller.md",
       "detail_id": "wiki-concepts-neural-feedback-controller",
@@ -159,22 +167,14 @@
       "type": "task",
       "recency": "2026-06-13",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md",
-      "detail_id": "entity-paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit",
-      "label": "RUKA",
-      "type": "entity",
-      "recency": "2026-06-13",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/neural-feedback-controller.md",
-    "detail_id": "wiki-concepts-neural-feedback-controller",
-    "label": "神经反馈控制器（Neural Feedback Controller）",
+    "path": "wiki/concepts/backpropagation.md",
+    "detail_id": "wiki-concepts-backpropagation",
+    "label": "反向传播算法 (Backpropagation)",
     "type": "concept",
-    "recency": "2026-06-14",
+    "recency": "2026-06-15",
     "source": "log.md"
   }
 }
