@@ -30,7 +30,7 @@
     toggle.setAttribute('aria-label', '赞助我');
     toggle.setAttribute('title', '赞助我');
     toggle.setAttribute('aria-haspopup', 'dialog');
-    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">❤</span>';
+    toggle.innerHTML = '<span class="sponsor-icon" aria-hidden="true">☕</span>';
 
     headerRight.appendChild(toggle);
 
@@ -46,7 +46,7 @@
       '<div class="sponsor-dialog-card">' +
         '<div class="sponsor-dialog-header">' +
           '<h2 id="sponsorDialogTitle" class="sponsor-dialog-title">赞助我</h2>' +
-          '<p class="sponsor-dialog-hint">微信扫一扫，赞助支持作者 ❤</p>' +
+          '<p class="sponsor-dialog-hint">微信扫一扫，赞助支持作者 ☕</p>' +
         '</div>' +
         '<div class="sponsor-dialog-body">' +
           '<img class="sponsor-qr" src="' + assetBase + 'sponsor/wechat-pay.png" alt="微信收款码" width="260" height="352" />' +
