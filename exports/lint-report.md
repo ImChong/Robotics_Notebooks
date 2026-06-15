@@ -97,4 +97,4 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1166/1180 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1167/1181 (99%) wiki/entity 页有 ingest 来源

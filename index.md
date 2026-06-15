@@ -246,6 +246,7 @@ SORT type ASC
 - [GE-Sim 2.0（Genie Envisioner World Simulator 2.0）](entities/ge-sim-2.md) — GE-Sim 2.0**（arXiv:2605.27491，AgiBot 等）是 **Genie Envisioner** 平台上的 **闭环视频世界模拟器**：在 [Genie Envision `📅unknown` `[entity_page]`
 - [GelSlim（薄片化视觉触觉传感器）](entities/gel-slim.md) — GelSlim** 是以 MIT 为主线的视觉触觉传感器（vision-based tactile sensor）家族，目标是把 [GelSight](../concepts/tactile-se `📅unknown` `[entity_page]`
 - [Gemini Robotics](entities/gemini-robotics.md) — Gemini Robotics**：面向物理交互的 Gemini 系列机器人模型，通常包含 **VLA 式策略骨干**与强调空间 / 任务推理的 **Embodied Reasoning（ER） `📅unknown` `[entity_page]`
+- [Gen2Humanoid（文本→人形运动端到端管线）](entities/gen2humanoid.md) — Gen2Humanoid**（[RavenLeeANU/Gen2Humanoid](https://github.com/RavenLeeANU/Gen2Humanoid)）把两条成熟开源能力—— `📅2026-06-15` `[entity_page]`
 - [GenCAD-3D（Multimodal Geometry → CAD Program）](entities/gencad-3d.md) — GenCAD-3D** 是 MIT **Nomi Yu、Md Ferdous Alam、A John Hart、Faez Ahmed** 的工作（arXiv:2509.15246，[JMD](ht `📅2026-05-21` `[entity_page]`
 - [GenCAD（Image-Conditioned CAD Program Generation）](entities/gencad.md) — GenCAD** 是 MIT **Md Ferdous Alam** 与 **Faez Ahmed** 的工作（arXiv:2409.16294，[项目页](https://gencad.gith `📅2026-05-21` `[entity_page]`
 - [GENE-26.5（Genesis AI 操作基础模型）](entities/gene-26-5-genesis-ai.md) — GENE-26.5** 指 **Genesis AI**（全栈机器人公司，官网域名 genesis-ai.company）在 2026 年前后对外发布的 **机器人操作基础模型** 品牌，与开源物 `📅unknown` `[entity_page]`
