@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-15] ingest | MoveIt/MoveIt 2 一手资料 — sources/sites/moveit-*.md + sources/repos/moveit-*.md、ros-planning-srdfdom.md；新建 wiki/entities/moveit2.md；交叉 manipulation、curobo、ros2-official-documentation
+
+- 原始资料：[`sources/sites/moveit-official-portal.md`](sources/sites/moveit-official-portal.md)、[`sources/sites/moveit2-picknik-documentation.md`](sources/sites/moveit2-picknik-documentation.md)、[`sources/sites/moveit1-noetic-tutorials.md`](sources/sites/moveit1-noetic-tutorials.md)、[`sources/repos/moveit-moveit2.md`](sources/repos/moveit-moveit2.md)、[`sources/repos/moveit-moveit1.md`](sources/repos/moveit-moveit1.md)、[`sources/repos/ros-planning-srdfdom.md`](sources/repos/ros-planning-srdfdom.md)
+- 沉淀页面：[`wiki/entities/moveit2.md`](wiki/entities/moveit2.md)；交叉更新 [`wiki/tasks/manipulation.md`](wiki/tasks/manipulation.md)、[`wiki/entities/curobo.md`](wiki/entities/curobo.md)、[`sources/sites/ros2-official-documentation.md`](sources/sites/ros2-official-documentation.md)
+
 ## [2026-06-15] ingest | sources/repos/earthtojake-text-to-cad.md — 入库 CAD Skills（earthtojake/text-to-cad）Agent Skills 库；新建 wiki/entities/cad-skills.md；交叉 text-to-cad、urdf-studio、articraft、mattpocock-skills
 
 - 原始资料：[`sources/repos/earthtojake-text-to-cad.md`](sources/repos/earthtojake-text-to-cad.md)

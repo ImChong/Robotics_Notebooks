@@ -116,6 +116,7 @@ flowchart LR
 - [Motion Retargeting（运动重定向）](../concepts/motion-retargeting.md) — V2 将 **高 DoF 无碰撞 IK** 与 **重定向 / 策略训练** 质量关联的叙事入口
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md) — NVIDIA 仿真与 **Isaac Sim** 生态入口
 - [ScheduleStream](./schedulestream.md) — **任务层调度 + stream 采样**；连续 motion 段可与 cuRobo 类后端互补
+- [MoveIt 2](./moveit2.md) — ROS 2 规划宿主；cuMotion 等以 MoveIt 插件集成
 
 ## 参考来源
 

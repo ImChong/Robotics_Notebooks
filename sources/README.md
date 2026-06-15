@@ -172,6 +172,8 @@
 | [x] [junhengl_mpc_rl.md](repos/junhengl_mpc_rl.md) | junhengl/mpc-rl：MPC-RL 官方代码（CD-MPC 奖励、πⁿ MPC、mjlab+rsl-rl，arXiv:2606.05687） |
 | [x] [mondo_robotics_dit4dit.md](repos/mondo_robotics_dit4dit.md) | Mondo-Robotics/DiT4DiT：双 DiT VAM 官方训练/评测/部署代码（arXiv:2603.10448） |
 | [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
+| [x] [moveit-moveit1.md](repos/moveit-moveit1.md) | moveit/moveit：MoveIt 1（ROS 1 / Noetic）官方源码 |
+| [x] [moveit-moveit2.md](repos/moveit-moveit2.md) | moveit/moveit2：MoveIt 2（ROS 2）运动规划与操作框架 |
 | [x] [motion_imitation_peng.md](repos/motion_imitation_peng.md) | erwincoumans/motion_imitation：四足模仿动物奠基仓库 |
 | [x] [mjlab.md](repos/mjlab.md) | mjlab：Isaac Lab API + MuJoCo Warp 轻量 GPU RL 框架（AMP_mjlab / unitree_rl_mjlab 的底层） |
 | [x] [newton-physics.md](repos/newton-physics.md) | Newton Physics：Warp + MuJoCo Warp GPU 可微物理引擎（LF 托管，Disney/DeepMind/NVIDIA） |
@@ -192,6 +194,7 @@
 | [x] [multirotor_uav_stack_catalog.md](repos/multirotor_uav_stack_catalog.md) | 多旋翼栈 10 仓索引：PX4、XTDrone、EGO-Planner、AirSim、Flightmare、PyBullet Gym、swarm RL、Crazyflie、MAVSDK |
 | [x] [navigation_slam_autonomy_stack_catalog.md](repos/navigation_slam_autonomy_stack_catalog.md) | 导航·SLAM·自动驾驶 21 仓索引：Nav2、slam_toolbox、Cartographer、FAST-LIO、VINS、Autoware、Isaac ROS、LeRobot、OpenVLA 等 |
 | [x] [navigation2.md](repos/navigation2.md) | Navigation2：ROS 2 导航框架 |
+| [x] [ros-planning-srdfdom.md](repos/ros-planning-srdfdom.md) | ros-planning/srdfdom：SRDF 解析/写入（MoveIt 语义配置） |
 | [x] [slam_toolbox.md](repos/slam_toolbox.md) | SLAM Toolbox：2D lifelong SLAM |
 | [x] [cartographer.md](repos/cartographer.md) | Google Cartographer 2D/3D SLAM |
 | [x] [fast_lio.md](repos/fast_lio.md) | FAST-LIO：LiDAR-惯性里程计 |
@@ -352,6 +355,9 @@
 | [x] [mamma-tue-mpg-de.md](sites/mamma-tue-mpg-de.md) | MAMMA 项目页 mamma.is.tue.mpg.de（MammaNet、MAMMASyn、Vicon 对比、iPhone demo；配套 arXiv:2506.13040） |
 | [x] [mimic-video-github-io.md](sites/mimic-video-github-io.md) | mimic-video 项目页 mimic-video.github.io（VAM 摘要、Cosmos-Predict2 方法叙述、真机与仿真结果、BibTeX） |
 | [x] [motion-tracking-axell-top.md](sites/motion-tracking-axell-top.md) | motion-tracking.axell.top：Axellwppr/motion_tracking 预训练策略浏览器演示 |
+| [x] [moveit-official-portal.md](sites/moveit-official-portal.md) | MoveIt 官方门户 moveit.ai：版本矩阵、安装与 MoveIt Pro 区分 |
+| [x] [moveit1-noetic-tutorials.md](sites/moveit1-noetic-tutorials.md) | MoveIt 1 Noetic 官方教程（moveit.github.io/moveit_tutorials） |
+| [x] [moveit2-picknik-documentation.md](sites/moveit2-picknik-documentation.md) | MoveIt 2 官方文档 moveit.picknik.ai（概念/教程/API） |
 | [x] [cosmos3-project.md](sites/cosmos3-project.md) | Cosmos 3 项目页 research.nvidia.com/labs/cosmos-lab/cosmos3（全模态 Physical AI 能力 demo 与榜单摘要，arXiv:2606.02800） |
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
