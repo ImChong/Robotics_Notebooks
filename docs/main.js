@@ -2595,6 +2595,28 @@
     }).catch(function () { wrap.hidden = true; });
   }
 
+  // 详情页"所属社区"轻量徽标：复用 link-graph.json 的社区划分定位当前页所在社区，
+  // 给出跳转图谱对应社区聚焦视图的链接；当前页不在图谱（无节点 / 无社区）时静默隐藏。
+  function renderDetailCommunityBadge(detailPage) {
+    var wrap = document.getElementById('detailCommunityBadges');
+    if (!wrap) return;
+    var currentPath = (detailPage && detailPage.path) || '';
+    if (!currentPath) { wrap.hidden = true; return; }
+
+    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
+      if (!node || !node.community) { wrap.hidden = true; return; }
+      var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
+      if (!community) { wrap.hidden = true; return; }
+      var label = shortenCommunityLabel(community.label);
+      wrap.innerHTML = '<span class="detail-topic-badges-label">所属社区</span>' +
+        '<a class="detail-topic-badge detail-community-badge" href="graph.html?community=' +
+        encodeURIComponent(community.id) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
+        '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
+      wrap.hidden = false;
+    }).catch(function () { wrap.hidden = true; });
+  }
+
   function renderDetailMiniMap(detailPage, detailPages) {
     var wrap = document.getElementById('detailMiniMapWrap');
     var svgEl = document.getElementById('detailMiniMapSvg');
@@ -2990,6 +3012,7 @@
 
     renderDetailMiniMap(detailPage, detailPages);
     renderDetailTopicBadges(detailPage);
+    renderDetailCommunityBadge(detailPage);
     renderDetailRecentIngestTimeline(detailPage);
 
     var hashForLayoutScroll = window.location.hash.replace(/^#/, '');

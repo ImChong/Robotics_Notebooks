@@ -674,6 +674,14 @@ body.sponsor-dialog-open {
   border-color: rgba(0, 212, 255, 0.5);
 }
 .detail-topic-badge span:first-child { font-size: .85rem; line-height: 1; }
+.detail-community-badge {
+  border-color: rgba(167, 139, 250, 0.35);
+  background: rgba(167, 139, 250, 0.08);
+}
+.detail-community-badge:hover {
+  border-color: rgba(167, 139, 250, 0.55);
+  background: rgba(167, 139, 250, 0.16);
+}
 .detail-mini-map {
   background: var(--bg-alt);
   border: 1px solid var(--border);
