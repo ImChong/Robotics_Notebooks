@@ -2722,8 +2722,8 @@
     return '<span class="detail-meta-badge detail-meta-date">' + escapeHtml(String(dateStr)) + '</span>';
   }
 
-  function renderDetailMetaSource(detailPage) {
-    var link = document.getElementById('detailContentSourceLink');
+  function renderDetailMetaSource(detailPage, linkId) {
+    var link = document.getElementById(linkId || 'detailContentSourceLink');
     if (!link) return;
     var path = (detailPage && detailPage.path) || '';
     if (!path) {
@@ -3404,6 +3404,7 @@
         contentRootEmpty.innerHTML = '';
         removeLoadingState(contentRootEmpty);
       }
+      renderDetailMetaSource(null, 'roadmapContentSourceLink');
       var tocRootEmpty = document.getElementById('roadmapTocList');
       if (tocRootEmpty) removeLoadingState(tocRootEmpty);
       return;
@@ -3484,6 +3485,7 @@
 
     if (!contentMarkdown) {
       setRoadmapContentChromeVisible(false);
+      renderDetailMetaSource(null, 'roadmapContentSourceLink');
       if (contentEl) {
         contentEl.innerHTML = '';
         removeLoadingState(contentEl);
@@ -3505,6 +3507,7 @@
     if (tocEl) {
       renderDetailToc(tocEl, headings, roadmapMarkdownContext);
     }
+    renderDetailMetaSource(detail, 'roadmapContentSourceLink');
     if (contentEl) {
       contentEl.innerHTML = renderMarkdownContent(contentMarkdown, headings, roadmapMarkdownContext);
       renderDetailMath(contentEl);
