@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List
 
 import yaml
-
 from utils.paths import path_to_id
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
