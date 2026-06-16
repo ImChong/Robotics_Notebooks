@@ -9,7 +9,7 @@
 [![Wiki Lint](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml/badge.svg)](https://github.com/ImChong/Robotics_Notebooks/actions/workflows/lint.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Knowledge Graph](https://img.shields.io/badge/知识图谱-1193节点_7421边-blue?logo=d3.js)](https://imchong.github.io/Robotics_Notebooks/graph.html)
-[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-99%25-green)](docs/checklists/tech-stack-next-phase-checklist-v24.md)
+[![Sources Coverage](https://img.shields.io/badge/sources覆盖率-99%25-green)](docs/checklists/tech-stack-next-phase-checklist-v25.md)
 
 
 
@@ -66,7 +66,7 @@
 
 ## 维护看板
 
-- 当前技术栈执行清单：[V24](docs/checklists/tech-stack-next-phase-checklist-v24.md)
+- 当前技术栈执行清单：[V25](docs/checklists/tech-stack-next-phase-checklist-v25.md)
 - 前端体验优化清单：[frontend-optimization-v1](docs/checklists/frontend-optimization-v1.md)
 - 历史执行清单索引：[docs/checklists/README.md](docs/checklists/README.md)
 
