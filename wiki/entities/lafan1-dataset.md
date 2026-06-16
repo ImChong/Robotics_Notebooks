@@ -3,7 +3,7 @@ type: entity
 title: LaFAN1（Ubisoft La Forge 动捕数据集）
 tags: [dataset, mocap, bvh, locomotion, animation, ubisoft, siggraph-2020]
 summary: "LaFAN1 是 Ubisoft La Forge 在 GitHub 发布的 BVH 动捕数据集（SIGGRAPH 2020 论文配套），覆盖行走、舞蹈、跌倒恢复等多主题；许可为 CC BY-NC-ND 4.0，工程上常被用作全身跟踪与重定向研究的基准动作源。"
-updated: 2026-06-05
+updated: 2026-06-16
 related:
   - ../concepts/motion-retargeting.md
   - ./wbc-fsm.md
@@ -13,6 +13,8 @@ related:
   - ../methods/amp-reward.md
   - ./paper-unified-walk-run-recovery-sdamp.md
   - ./amass.md
+  - ./omomo-dataset.md
+  - ../comparisons/humanoid-reference-motion-datasets.md
 sources:
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
@@ -64,6 +66,8 @@ sources:
 - **[wbc_fsm](./wbc-fsm.md)**：以 LAFAN1 为 MoCap 源的重定向 + RL + ONNX 部署范例。
 - **[GMR](../methods/motion-retargeting-gmr.md)**：讨论几何重定向时常与 BVH / 骨架比例问题一并出现。
 - **[AMASS](./amass.md)**：另一条「SMPL 统一库」路线；LaFAN1 则是「单一棚拍、原始 BVH」路线，二者在表示与许可上均不同。
+- **[OMOMO](./omomo-dataset.md)**：物体交互 MoCap；OmniRetarget 的 `robot-object/` 来自 OMOMO，LAFAN1 子集因许可需用户自行重定向。
+- **[五集选型对比](../comparisons/humanoid-reference-motion-datasets.md)**
 
 ## 参考来源
 

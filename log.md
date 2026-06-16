@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] ingest | sources/repos/omomo_release.md, sources/repos/phuma.md, sources/sites/humanoideveryday.md — AMASS/LaFAN1/OMOMO/PHUMA/Humanoid Everyday 五集入库
+
+- 原始资料：[`sources/sites/amass-dataset.md`](sources/sites/amass-dataset.md)、[`sources/repos/ubisoft-laforge-animation-dataset.md`](sources/repos/ubisoft-laforge-animation-dataset.md)、[`sources/repos/omomo_release.md`](sources/repos/omomo_release.md)、[`sources/repos/phuma.md`](sources/repos/phuma.md)、[`sources/sites/humanoideveryday.md`](sources/sites/humanoideveryday.md)
+- 沉淀页面：[`wiki/entities/omomo-dataset.md`](wiki/entities/omomo-dataset.md)、[`wiki/entities/humanoid-everyday-dataset.md`](wiki/entities/humanoid-everyday-dataset.md)、[`wiki/comparisons/humanoid-reference-motion-datasets.md`](wiki/comparisons/humanoid-reference-motion-datasets.md)；升格 [`wiki/entities/dataset-bfm-phuma.md`](wiki/entities/dataset-bfm-phuma.md)
+- 交叉更新：[`wiki/entities/amass.md`](wiki/entities/amass.md)、[`wiki/entities/lafan1-dataset.md`](wiki/entities/lafan1-dataset.md)、[`wiki/concepts/motion-retargeting.md`](wiki/concepts/motion-retargeting.md)、[`wiki/entities/omniretarget-dataset.md`](wiki/entities/omniretarget-dataset.md)、[`wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md`](wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md)
+
 ## [2026-06-16] ingest | sources/blogs/qwen_robot_suite.md — 入库 Qwen-Robot Suite 总览与 Nav/Manip/World 子博客；新建 wiki/entities/qwen-robot-{suite,nav,manip,world}.md；交叉 qwen-vla、vla、vln、generative-world-models
 
 - 原始资料：[`sources/blogs/qwen_robot_suite.md`](sources/blogs/qwen_robot_suite.md)（<https://qwen.ai/blog?id=qwen-robotsuite>）、[`qwen_robot_nav.md`](sources/blogs/qwen_robot_nav.md)、[`qwen_robot_manip.md`](sources/blogs/qwen_robot_manip.md)、[`qwen_robot_world.md`](sources/blogs/qwen_robot_world.md)

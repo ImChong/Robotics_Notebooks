@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, tracking, rl, xbpeng]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-16
 related:
   - ../entities/protomotions.md
   - ./amp-reward.md

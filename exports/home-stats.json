@@ -1,13 +1,85 @@
 {
   "generated_at": "2026-06-16",
-  "node_count": 1190,
-  "edge_count": 7367,
+  "node_count": 1193,
+  "edge_count": 7421,
   "coverage": {
-    "covered": 1174,
-    "total": 1188,
+    "covered": 1177,
+    "total": 1191,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/omomo-dataset.md",
+      "detail_id": "entity-omomo-dataset",
+      "label": "OMOMO（Object Motion Guided Human Motion Synthesis）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/humanoid-everyday-dataset.md",
+      "detail_id": "entity-humanoid-everyday-dataset",
+      "label": "Humanoid Everyday",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
+      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
+      "label": "人形参考运动与操作数据集选型",
+      "type": "comparison",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/dataset-bfm-phuma.md",
+      "detail_id": "entity-dataset-bfm-phuma",
+      "label": "PHUMA（Physically Reliable Humanoid Locomotion Dataset）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/amass.md",
+      "detail_id": "entity-amass",
+      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lafan1-dataset.md",
+      "detail_id": "entity-lafan1-dataset",
+      "label": "LaFAN1（Ubisoft La Forge Animation Dataset）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/omniretarget-dataset.md",
+      "detail_id": "entity-omniretarget-dataset",
+      "label": "OmniRetarget Dataset（G1 交互重定向轨迹）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md",
+      "detail_id": "entity-paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase",
+      "label": "Humanoid Everyday",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/qwen-robot-suite.md",
       "detail_id": "entity-qwen-robot-suite",
@@ -95,84 +167,12 @@
       "type": "task",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/wuji-robotics.md",
-      "detail_id": "entity-wuji-robotics",
-      "label": "舞肌科技（上海舞肌科技有限公司）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/pybullet.md",
-      "detail_id": "entity-pybullet",
-      "label": "PyBullet",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/embodied-rl-minimal-closed-loop.md",
-      "detail_id": "wiki-concepts-embodied-rl-minimal-closed-loop",
-      "label": "具身 RL 最小闭环（Embodied RL Minimal Closed Loop）",
-      "type": "concept",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/reinforcement-learning.md",
-      "detail_id": "wiki-methods-reinforcement-learning",
-      "label": "Reinforcement Learning (RL, 强化学习)",
-      "type": "method",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/mdp.md",
-      "detail_id": "wiki-formalizations-mdp",
-      "label": "Markov Decision Process (MDP)",
-      "type": "formalization",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/pomdp.md",
-      "detail_id": "wiki-formalizations-pomdp",
-      "label": "Partially Observable MDP (POMDP)",
-      "type": "formalization",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
-      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
-      "label": "《具身智能基础》专栏：几何三篇技术地图",
-      "type": "overview",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gen2humanoid.md",
-      "detail_id": "entity-gen2humanoid",
-      "label": "Gen2Humanoid（文本→人形运动端到端管线）",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/moveit2.md",
-      "detail_id": "entity-moveit2",
-      "label": "MoveIt 2",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/qwen-robot-suite.md",
-    "detail_id": "entity-qwen-robot-suite",
-    "label": "Qwen-Robot Suite",
+    "path": "wiki/entities/omomo-dataset.md",
+    "detail_id": "entity-omomo-dataset",
+    "label": "OMOMO（Object Motion Guided Human Motion Synthesis）",
     "type": "entity",
     "recency": "2026-06-16",
     "source": "log.md"

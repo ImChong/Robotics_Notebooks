@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-06-12
+updated: 2026-06-16
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -145,6 +145,10 @@ subject to: FK(θ) = p_target (末端位置约束)
 | CMU MoCap Database | 大量人类动作捕捉数据 |
 | [AMASS](../entities/amass.md) | 多源光学动捕统一到 **SMPL** 序列的大规模档案（注册下载；许可见官方） |
 | [LaFAN1](../entities/lafan1-dataset.md) | Ubisoft 发布的多主题 **BVH** 棚拍动捕（**CC BY-NC-ND**；常用作基准与部署案例数据源） |
+| [OMOMO](../entities/omomo-dataset.md) | 人–物交互 MoCap（~10 h / 15 物体）；loco-manipulation 重定向常见上游 |
+| [PHUMA](../entities/dataset-bfm-phuma.md) | **已重定向** 的 G1/H1-2 locomotion（~73 h）；PhySINK 物理可信管线 |
+| [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形** 多模态操作集（260 任务）；非 MoCap 参考库 |
+| [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md) | AMASS / LaFAN1 / OMOMO / PHUMA / Humanoid Everyday 对照 |
 | [Mixamo](../entities/mixamo.md) | Adobe **商业**角色与动画库；快速原型与美术管线友好，**不等同**于可自由再分发的原始 MoCap 研究档案 |
 | SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |
 | [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
@@ -195,6 +199,9 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - **ingest 档案：** [sources/sites/jc-bao-spider-project-github-io.md](../../sources/sites/jc-bao-spider-project-github-io.md) — SPIDER 项目页 jc-bao.github.io/spider-project（管线演示与 BibTeX）
 - **ingest 档案：** [sources/sites/amass-dataset.md](../../sources/sites/amass-dataset.md) — AMASS：SMPL 统一人体动捕元数据集（MPI-IS 站点与 ICCV 2019 论文索引）
 - **ingest 档案：** [sources/repos/ubisoft-laforge-animation-dataset.md](../../sources/repos/ubisoft-laforge-animation-dataset.md) — LaFAN1：Ubisoft BVH 动捕与评估脚本（SIGGRAPH 2020 论文配套）
+- **ingest 档案：** [sources/repos/omomo_release.md](../../sources/repos/omomo_release.md) — OMOMO：人–物交互 MoCap（SIGGRAPH Asia 2023）
+- **ingest 档案：** [sources/repos/phuma.md](../../sources/repos/phuma.md) — PHUMA：G1/H1-2 预重定向 locomotion（arXiv:2510.26236）
+- **ingest 档案：** [sources/sites/humanoideveryday.md](../../sources/sites/humanoideveryday.md) — Humanoid Everyday：真机开放世界操作集
 - **ingest 档案：** [sources/sites/mixamo.md](../../sources/sites/mixamo.md) — Mixamo：Adobe 在线角色与动画服务（商业许可与管线说明）
 
 ---
@@ -223,6 +230,10 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [FreeMoCap](../entities/freemocap.md) — 低成本开源动捕软件栈，与重定向 / 仿真训练组合使用时的入口之一
 - [AMASS](../entities/amass.md) — SMPL 系大规模统一动捕档案，常与 AMP / 生成式运动模型一起出现
 - [LaFAN1](../entities/lafan1-dataset.md) — BVH 多主题棚拍数据与过渡任务基准（注意 NC-ND 许可）
+- [OMOMO](../entities/omomo-dataset.md) — 人–物交互 MoCap，OmniRetarget `robot-object/` 源
+- [PHUMA](../entities/dataset-bfm-phuma.md) — 预重定向 G1/H1-2 locomotion（PhySINK）
+- [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) — 真机人形操作多模态集
+- [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md)
 - [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — interaction mesh 硬约束 + 单演示增广的交互保留重定向（ICRA 2026）
 - [holosoma](../entities/holosoma.md) — OmniRetarget 开源实现与 WBT/locomotion 训练部署框架
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md) — G1 交互重定向轨迹 HuggingFace 公开子集

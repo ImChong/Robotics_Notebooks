@@ -3,7 +3,7 @@ type: entity
 title: AMASS（统一 SMPL 表示的大规模人体动捕档案）
 tags: [dataset, mocap, smpl, human-motion, deep-learning, animation, mpi-tuebingen]
 summary: "AMASS 将多份光学标记动捕数据通过 MoSh++ 拟合到 SMPL 参数序列，形成可合并训练的人体运动档案；站点提供注册下载与教程代码，是机器人学习里常见的人体参考运动来源之一。"
-updated: 2026-06-09
+updated: 2026-06-16
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -11,6 +11,9 @@ related:
   - ./protomotions.md
   - ./kimodo.md
   - ../methods/amp-reward.md
+  - ./dataset-bfm-phuma.md
+  - ./omomo-dataset.md
+  - ../comparisons/humanoid-reference-motion-datasets.md
 sources:
   - ../../sources/sites/amass-dataset.md
 ---
@@ -82,6 +85,9 @@ flowchart LR
 - [Kimodo](./kimodo.md)
 - [DART（DartControl）](../methods/dart-control.md) — 在 AMASS 上训练的自回归人体运动原语潜扩散（ICLR 2025）
 - [LaFAN1 动捕数据集](./lafan1-dataset.md)
+- [PHUMA](./dataset-bfm-phuma.md) — PhySINK 重定向后的 G1 locomotion 对照
+- [OMOMO](./omomo-dataset.md) — 人–物交互 MoCap 源
+- [五集选型对比](../comparisons/humanoid-reference-motion-datasets.md)
 
 ## 推荐继续阅读
 

@@ -21,6 +21,8 @@
 ## 对 wiki 的映射
 
   - [deepmimic](../../wiki/methods/deepmimic.md)
+  - [lafan1-dataset](../../wiki/entities/lafan1-dataset.md)
+  - [humanoid-reference-motion-datasets](../../wiki/comparisons/humanoid-reference-motion-datasets.md)
 
 ## 参考来源（原始）
 
