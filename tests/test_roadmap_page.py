@@ -18,6 +18,7 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
             'id="roadmapContent"',
+            'id="roadmapContentSourceLink"',
             'id="roadmapTocList"',
         ]
         for marker in required_ids:
@@ -33,6 +34,7 @@ class RoadmapPageTests(unittest.TestCase):
             "roadmap_pages",
             "graph-stats.json",
             "renderRoadmapMarkdownBody",
+            "roadmapContentSourceLink",
             "findRoadmapStageEntryAnchor",
             "bindSelftestMermaidRerender",
             "roadmap-stage-entry-embed",
