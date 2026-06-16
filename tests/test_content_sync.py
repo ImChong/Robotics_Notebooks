@@ -413,7 +413,61 @@ console.log('ok');
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertEqual(content.count("function escapeHtml"), 1)
 
-    def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
+    def test_main_js_strips_related_section_from_detail_body(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        expected_snippets = [
+            "DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面']",
+            "function stripDetailContentSections(markdown, sectionLabels)",
+            "stripDetailContentSections(detailPage.content_markdown || '', DETAIL_CONTENT_SKIP_SECTIONS)",
+        ]
+        for snippet in expected_snippets:
+            self.assertIn(snippet, content)
+
+    def test_strip_detail_content_sections_removes_related_heading_block(self):
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('var DETAIL_CONTENT_SKIP_SECTIONS');
+const end = content.indexOf('function stripDetailContentSections', start);
+const fnStart = content.indexOf('function stripDetailContentSections', start);
+const fnEnd = content.indexOf('function buildMarkdownRouteIndex', fnStart);
+eval(content.slice(start, fnEnd));
+const sample = [
+  '## 核心内容',
+  '',
+  '正文段落。',
+  '',
+  '## 关联页面',
+  '',
+  '- [Sim2Real](sim2real.md)',
+  '- [Locomotion](locomotion.md)',
+  '',
+  '## 常见误区',
+  '',
+  '误区说明。',
+].join('\n');
+const stripped = stripDetailContentSections(sample, DETAIL_CONTENT_SKIP_SECTIONS);
+if (stripped.includes('## 关联页面')) throw new Error('related heading should be removed');
+if (stripped.includes('sim2real.md')) throw new Error('related links should be removed');
+if (!stripped.includes('## 核心内容')) throw new Error('missing core heading');
+if (!stripped.includes('## 常见误区')) throw new Error('missing trailing heading');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
         style_content = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
         expected_snippets = [
             ".heading-anchor-link",

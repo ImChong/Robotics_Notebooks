@@ -129,6 +129,42 @@
     return source.slice(endMatch.index + endMatch[0].length).trim();
   }
 
+  // 详情页正文与独立 UI 区块重复展示的 H2 导航节（与 wiki_to_marp 跳过规则对齐子集）。
+  var DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面'];
+
+  function stripDetailContentSections(markdown, sectionLabels) {
+    var labels = Array.isArray(sectionLabels) ? sectionLabels : [];
+    if (!labels.length) return String(markdown || '');
+    var lines = String(markdown || '').replace(/\r\n/g, '\n').split('\n');
+    var out = [];
+    var skipping = false;
+    for (var i = 0; i < lines.length; i++) {
+      var line = lines[i];
+      var trimmed = line.trim();
+      if (/^##\s+/.test(trimmed)) {
+        var headingText = trimmed.replace(/^##\s+/, '');
+        var shouldSkip = false;
+        for (var j = 0; j < labels.length; j++) {
+          if (headingText.indexOf(labels[j]) >= 0) {
+            shouldSkip = true;
+            break;
+          }
+        }
+        if (shouldSkip) {
+          skipping = true;
+          continue;
+        }
+        skipping = false;
+      }
+      if (skipping) continue;
+      out.push(line);
+    }
+    while (out.length && !out[out.length - 1].trim()) {
+      out.pop();
+    }
+    return out.join('\n');
+  }
+
   function renderHomeStats(graphStats, coverageText) {
     var heroNodeCount = document.getElementById('heroNodeCount');
     var heroEdgeCount = document.getElementById('heroEdgeCount');
@@ -2937,7 +2973,7 @@
       removeLoadingState(breadcrumb);
     }
 
-    const contentMarkdown = detailPage.content_markdown || '';
+    const contentMarkdown = stripDetailContentSections(detailPage.content_markdown || '', DETAIL_CONTENT_SKIP_SECTIONS);
     var detailMermaidPromise = Promise.resolve();
     const detailHeadings = collectMarkdownHeadings(contentMarkdown);
     if (tocSectionEl) {
