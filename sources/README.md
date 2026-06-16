@@ -139,6 +139,7 @@
 | [x] [rpl_cs_ucl_sds.md](repos/rpl_cs_ucl_sds.md) | RPL-CS-UCL/SDS：See it, Do it, Sorted 四足单视频技能官方实现（与 E-SDS 同系） |
 | [x] [roboto_origin.md](repos/roboto_origin.md) | Roboparty 人形机器人开源聚合入口（硬件/训练/部署/描述/固件） |
 | [x] [omg-tsinghua-mars-lab.md](repos/omg-tsinghua-mars-lab.md) | tsinghua-mars-lab/OMG：omni-modal G1 运动生成（OMG-DiT + HoloMotion tracker、训练/推理/部署；配套项目页） |
+| [x] [omomo_release.md](repos/omomo_release.md) | OMOMO：人–物交互 MoCap ~10 h / 15 物体（SIGGRAPH Asia 2023；OmniRetarget/ResMimic 上游） |
 | [x] [openloong.md](repos/openloong.md) | OpenLoong 青龙全栈开源（Framework / Dyn-Control / 数据集 / loongOpen 组织矩阵） |
 | [x] [openloong_hardware.md](repos/openloong_hardware.md) | OpenLoong-Hardware / AtomGit：青龙公版机 PDF 图纸与 v2.5 硬件说明 |
 | [x] [atom01_hardware.md](repos/atom01_hardware.md) | Atom01 硬件仓库（结构/CAD/PCB/BOM） |
@@ -149,6 +150,7 @@
 | [x] [open_duck_mini.md](repos/open_duck_mini.md) | Open Duck Mini：BDX 迷你双足 Hub（CAD/BOM/v2 sim2real 文档） |
 | [x] [pan_motion_retargeting.md](repos/pan_motion_retargeting.md) | hlcdyy/pan-motion-retargeting：学习式人↔四足重定向（TVCG 2023） |
 | [x] [phc.md](repos/phc.md) | ZhengyiLuo/PHC：SMPL fitting 重定向 + 物理人形控制 |
+| [x] [phuma.md](repos/phuma.md) | DAVIAN-Robotics/PHUMA：G1/H1-2 预重定向 locomotion ~73 h（PhySINK，arXiv:2510.26236） |
 | [x] [open_duck_playground.md](repos/open_duck_playground.md) | Open Duck Playground：MuJoCo Playground/MJX RL 训练与 ONNX 导出 |
 | [x] [open_duck_reference_motion_generator.md](repos/open_duck_reference_motion_generator.md) | Open Duck 参考运动：Placo 参数化步态 → 模仿奖励系数 |
 | [x] [open_duck_mini_runtime.md](repos/open_duck_mini_runtime.md) | Open Duck Mini Runtime：Pi Zero 2W 机载 ONNX 与 Feetech 驱动 |
@@ -309,6 +311,7 @@
 | [x] [opendrivelab-robonaldo.md](sites/opendrivelab-robonaldo.md) | RoboNaldo 项目页 opendrivelab.com/RoboNaldo（三阶段射门课程、G1 室外演示与热图；配套 arXiv:2606.11092） |
 | [x] [resmimic-github-io.md](sites/resmimic-github-io.md) | ResMimic 项目页 resmimic.github.io（GMT+残差真机演示、基线对比、关节残差可视化；配套 arXiv:2510.05070） |
 | [x] [omniretarget-dataset-huggingface.md](sites/omniretarget-dataset-huggingface.md) | OmniRetarget Dataset（HF）：G1 重定向轨迹 4.0 h（OMOMO + 自采 MoCap；.npz qpos+fps） |
+| [x] [humanoideveryday.md](sites/humanoideveryday.md) | Humanoid Everyday：260 任务真机多模态人形操作集 + 云端评测（arXiv:2510.08807） |
 | [x] [bfm4humanoid-github-io.md](sites/bfm4humanoid-github-io.md) | BFM 项目页 bfm4humanoid.github.io（Roundhouse Kick / Side Salto / VR 遥操作演示，代码 In Coming） |
 | [x] [bifrost-umi-project.md](sites/bifrost-umi-project.md) | BifrostUMI 项目页 baai-aether.github.io/BifrostUMI（三层级方法、采集硬件、G1 实验、BibTeX） |
 | [x] [clot-project.md](sites/clot-project.md) | CLOT 项目页 zhutengjie.github.io/CLOT.github.io（闭环全局遥操作演示；非 clot.github.io） |

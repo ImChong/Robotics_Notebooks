@@ -20,7 +20,10 @@
 
 ## 对 wiki 的映射
 
-  - [behavior-foundation-model](../../wiki/concepts/behavior-foundation-model.md)
+  - [PHUMA](../../wiki/entities/dataset-bfm-phuma.md)
+  - [omomo-dataset](../../wiki/entities/omomo-dataset.md)
+  - [humanoid-everyday-dataset](../../wiki/entities/humanoid-everyday-dataset.md)
+  - [humanoid-reference-motion-datasets](../../wiki/comparisons/humanoid-reference-motion-datasets.md)
 
 ## 参考来源（原始）
 

@@ -8,7 +8,8 @@ status: complete
 related:
   - ./paper-hrl-stack-03-omniretarget.md
   - ./holosoma.md
-  - ./lafan1-dataset.md
+  - ./omomo-dataset.md
+  - ../comparisons/humanoid-reference-motion-datasets.md
   - ../concepts/motion-retargeting.md
   - ../tasks/loco-manipulation.md
   - ./unitree-g1.md
@@ -92,7 +93,7 @@ flowchart LR
 
 - **生成方法：** [OmniRetarget](./paper-hrl-stack-03-omniretarget.md)
 - **代码工具：** [holosoma](./holosoma.md)
-- **源数据：** [LaFAN1](./lafan1-dataset.md)（需自行重定向）
+- **源数据：** [LaFAN1](./lafan1-dataset.md)（需自行重定向）、[OMOMO](./omomo-dataset.md)（`robot-object/` 主源）
 - **问题域：** [Motion Retargeting](../concepts/motion-retargeting.md)
 
 ## 参考来源
