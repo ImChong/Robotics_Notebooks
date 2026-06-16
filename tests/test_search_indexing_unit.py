@@ -56,6 +56,15 @@ key: value
         expected = {"title": "Test", "key": "value"}
         self.assertEqual(parse_frontmatter(content), expected)
 
+    def test_parse_frontmatter_unescapes_yaml_quotes(self):
+        content = (
+            '---\n'
+            'summary: "ZeroWBC 把\\"教人形机器人做事\\"的重心搬到视频"\n'
+            "---\n"
+        )
+        expected = {"summary": 'ZeroWBC 把"教人形机器人做事"的重心搬到视频'}
+        self.assertEqual(parse_frontmatter(content), expected)
+
 
 class TestSearchIndexingText(unittest.TestCase):
     def test_strip_frontmatter_removes_block(self) -> None:

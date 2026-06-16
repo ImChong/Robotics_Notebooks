@@ -6,7 +6,9 @@ import math
 import re
 from collections import Counter
 from pathlib import Path
-from typing import Dict, Iterable, List
+from typing import Any, Dict, Iterable, List
+
+import yaml
 
 from utils.paths import path_to_id
 
@@ -38,26 +40,38 @@ TOKEN_SYNONYMS = {
 }
 
 
+def _normalize_frontmatter_value(value: Any) -> str | list[str] | None:
+    if value is None:
+        return None
+    if isinstance(value, list):
+        return [str(item) for item in value]
+    if isinstance(value, (str, int, float, bool)):
+        return str(value)
+    return str(value)
+
+
 def parse_frontmatter(content: str) -> dict[str, str | list[str]]:
-    fm: dict[str, str | list[str]] = {}
     if not content.startswith("---"):
-        return fm
+        return {}
     end = content.find("\n---", 3)
     if end == -1:
-        return fm
+        return {}
     block = content[3:end].strip()
-    for line in block.splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or ":" not in line:
+    if not block:
+        return {}
+    try:
+        parsed = yaml.safe_load(block)
+    except yaml.YAMLError:
+        return {}
+    if not isinstance(parsed, dict):
+        return {}
+    fm: dict[str, str | list[str]] = {}
+    for key, value in parsed.items():
+        if not isinstance(key, str):
             continue
-        key, _, val = line.partition(":")
-        key = key.strip()
-        val = val.strip()
-        if val.startswith("[") and val.endswith("]"):
-            items = [v.strip().strip("\"'") for v in val[1:-1].split(",") if v.strip()]
-            fm[key] = items
-        else:
-            fm[key] = val.strip("\"'")
+        normalized = _normalize_frontmatter_value(value)
+        if normalized is not None:
+            fm[key] = normalized
     return fm
 
 
