@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/humanoid-robot.md",
+      "detail_id": "entity-humanoid-robot",
+      "label": "人形机器人（Humanoid Robot）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/current-robotics-curr0.md",
       "detail_id": "entity-current-robotics-curr0",
       "label": "Curr-0（Current Robotics · Loco-Dexterous Manipulation）",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-15",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/neural-feedback-controller.md",
-      "detail_id": "wiki-concepts-neural-feedback-controller",
-      "label": "神经反馈控制器（Neural Feedback Controller）",
-      "type": "concept",
-      "recency": "2026-06-14",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/current-robotics-curr0.md",
-    "detail_id": "entity-current-robotics-curr0",
-    "label": "Curr-0（Current Robotics · Loco-Dexterous Manipulation）",
+    "path": "wiki/entities/humanoid-robot.md",
+    "detail_id": "entity-humanoid-robot",
+    "label": "人形机器人（Humanoid Robot）",
     "type": "entity",
     "recency": "2026-06-16",
     "source": "log.md"

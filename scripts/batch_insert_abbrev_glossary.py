@@ -17,9 +17,23 @@ GLOSSARIES: dict[str, str] = {
 | DIAYN | Diversity Is All You Need | 内在奖励技能发现类预训练代表 |""",
     "wiki/entities/humanoid-robot.md": """| DoF | Degrees of Freedom | 人形通常 20–50+ 关节自由度 |
 | MoCap | Motion Capture | 人体演示数据来源，支撑 IL/重定向 |
+| IL | Imitation Learning | 从专家演示/动捕学习策略 |
 | VLA | Vision-Language-Action | 类人形态便于接入多模态基础策略 |
 | WBC | Whole-Body Control | 协调多肢满足平衡与操作任务 |
-| Sim2Real | Simulation to Real | 仿真策略迁移真机的核心工程议题 |""",
+| Sim2Real | Simulation to Real | 仿真策略迁移真机的核心工程议题 |
+| CAD | Computer-Aided Design | 机构建模与硬件设计 |
+| URDF | Unified Robot Description Format | 机器人动力学模型与仿真导入 |
+| MPC | Model Predictive Control | 滚动优化质心/接触的站立步态基线 |
+| RL | Reinforcement Learning | 仿真中训练行走与全身策略 |
+| HIL | Hardware-in-the-Loop | 真机联仿/台架测试，上保护绳前的安全验证 |
+| QDD | Quasi-Direct Drive | 低减速比准直驱，Unitree 等平台常见 |
+| SEA | Series Elastic Actuator | 串联弹性执行器，Digit 等平台采用 |
+| PRS | Planetary Roller Screw | 行星滚柱丝杠直线腿驱动（如 Optimus） |
+| EtherCAT | Ethernet for Control Automation Technology | 工业实时总线，OpenLoong 等全尺寸人形采用 |
+| ROS 2 | Robot Operating System 2 | 人形高频控制的通信与中间件栈 |
+| FastDDS | Fast Data Distribution Service | ROS 2 默认 DDS 实现，影响控制延迟 |
+| HAL | Hardware Abstraction Layer | 屏蔽不同机型的底层驱动差异 |
+| MuJoCo | Multi-Joint dynamics with Contact | 接触丰富动力学仿真与分析 |""",
     "wiki/methods/generative-world-models.md": """| WM | World Model | 预测环境动态，供规划/RL/评估使用 |
 | GWM | Generative World Model | 用生成式 AI 从视频学习世界规律 |
 | RL | Reinforcement Learning | 可在想象 rollout 中试错的训练范式 |
