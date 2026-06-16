@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-16",
-  "node_count": 1185,
-  "edge_count": 7317,
+  "node_count": 1186,
+  "edge_count": 7331,
   "coverage": {
-    "covered": 1169,
-    "total": 1183,
+    "covered": 1170,
+    "total": 1184,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/current-robotics-curr0.md",
+      "detail_id": "entity-current-robotics-curr0",
+      "label": "Curr-0（Current Robotics · Loco-Dexterous Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/wuji-robotics.md",
+      "detail_id": "entity-wuji-robotics",
+      "label": "舞肌科技（上海舞肌科技有限公司）",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/pybullet.md",
       "detail_id": "entity-pybullet",
@@ -143,36 +167,12 @@
       "type": "concept",
       "recency": "2026-06-14",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-from-agi-to-asi.md",
-      "detail_id": "entity-paper-from-agi-to-asi",
-      "label": "From AGI to ASI（DeepMind 技术报告）",
-      "type": "entity",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-04-oasis.md",
-      "detail_id": "entity-paper-loco-manip-04-oasis",
-      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md",
-      "detail_id": "entity-paper-mighty-hermite-spline-trajectory-planning",
-      "label": "MIGHTY（Hermite 样条高效 UAV 轨迹规划）",
-      "type": "entity",
-      "recency": "2026-06-14",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/pybullet.md",
-    "detail_id": "entity-pybullet",
-    "label": "PyBullet",
+    "path": "wiki/entities/current-robotics-curr0.md",
+    "detail_id": "entity-current-robotics-curr0",
+    "label": "Curr-0（Current Robotics · Loco-Dexterous Manipulation）",
     "type": "entity",
     "recency": "2026-06-16",
     "source": "log.md"

@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-14
+updated: 2026-06-16
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
@@ -18,6 +18,7 @@ sources:
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/papers/legs_arxiv_2606_01458.md
+  - ../../sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md
   - ../../sources/papers/splitadapter_arxiv_2606_03297.md
   - ../../sources/repos/awesome-humanoid-robot-learning.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
@@ -142,6 +143,10 @@ flowchart TD
 - **核心**：2026-06 周报将 loco-manip 数据生产拆为 **四组入口**——第一视角语义与全身动作（Ego-Pi、EgoPriMo）、生成视频与仿真 teleop（GenHOI、OASIS）、解耦命令与统一 WBC（VAIC、M3imic）、触觉与跨本体遥操作（WT-UMI、X-OP）；强调 **对齐、接触、命令接口与跨平台复用** 比单点真机采集更关键。
 - **策展地图**：[Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md)（具身智能研究室微信公众号，2026-06-14）。
 
+### 18. 可穿戴人类数据 + 三系统耦合单策略 + 世界模型迭代环（HumanEx · Curr-0）
+- **核心**：用软可穿戴 **HumanEx** 在野外采集 **embodied + interactive + retargetable** 人类演示（含 **incidental behavior**），将缩放律从 **robot-hour** 推向 **human-task-hour**；**System 2（推理接地）→ System 1（全身平衡与可达）→ System 0（21-DoF 灵巧手物交互）** 在 **70+ DoF** 人形上 **端到端单策略** 闭环，反对「先走再手」流水线；**多模态世界模型** 作可扩展评测与 **Human-in-the-World-Model** 部署后纠正。
+- **代表作**：[Curr-0](../entities/current-robotics-curr0.md) (Current Robotics, 2026-06) — 博客报告 **21k h** 人类数据 / **2.8k h** 全身演示；演示泡茶、盖章、点香、踩踏板倒垃圾、肘推门送玩偶等 **loco-dexterous** 任务。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -180,6 +185,7 @@ flowchart TD
 - [DiT4DiT（论文实体）](../entities/paper-dit4dit-video-action-model.md) — 双 DiT 联合 VAM，G1 全身 loco-manip 前序（arXiv:2603.10448）
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
+- [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
