@@ -2708,17 +2708,16 @@
   }
 
   function renderDetailMetaSource(detailPage) {
-    var wrap = document.getElementById('detailMetaSource');
-    if (!wrap) return;
+    var link = document.getElementById('detailContentSourceLink');
+    if (!link) return;
     var path = (detailPage && detailPage.path) || '';
     if (!path) {
-      wrap.innerHTML = '';
-      wrap.hidden = true;
+      link.removeAttribute('href');
+      link.hidden = true;
       return;
     }
-    wrap.innerHTML = '<a class="detail-meta-source-link" href="https://github.com/ImChong/Robotics_Notebooks/blob/main/' +
-      escapeHtml(path) + '" target="_blank" rel="noopener noreferrer">在 GitHub 查看源文件 →</a>';
-    wrap.hidden = false;
+    link.href = 'https://github.com/ImChong/Robotics_Notebooks/blob/main/' + path;
+    link.hidden = false;
   }
 
   // 详情页"属于 X 专题"轻量徽标：复用 graph.html 的专题命中规则（topic-filters.js），

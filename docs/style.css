@@ -662,9 +662,6 @@ body.sponsor-dialog-open {
   gap: 8px;
   margin-top: 14px;
 }
-.detail-meta-source-wrap {
-  margin-top: 14px;
-}
 .detail-topic-badges-label {
   font-size: .78rem;
   color: var(--text-muted);
@@ -772,12 +769,25 @@ body.sponsor-dialog-open {
   overflow-wrap: normal;
   word-break: normal;
 }
-.detail-meta-source-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-size: .88rem;
+.detail-content-sync {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  padding: 0 0 6px;
 }
-.detail-meta-source-link:hover { text-decoration: underline; }
+.detail-content-sync .detail-markdown-body {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-bottom: 0;
+}
+.detail-content-sync-foot {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
+  padding: 0 20px 4px;
+}
 .empty-state code {
   overflow-wrap: anywhere;
 }
