@@ -416,7 +416,9 @@ console.log('ok');
     def test_main_js_strips_related_section_from_detail_body(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            "DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面', '参考来源']",
+            "DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面']",
+            "function stripLinkedReferenceSourceLines(markdown)",
+            "stripLinkedReferenceSourceLines(",
             "function stripDetailContentSections(markdown, sectionLabels)",
             "stripDetailContentSections(detailPage.content_markdown || '', DETAIL_CONTENT_SKIP_SECTIONS)",
         ]
@@ -468,13 +470,12 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
-    def test_strip_detail_content_sections_removes_reference_sources_heading_block(self):
+    def test_strip_linked_reference_source_lines_keeps_plain_text_only(self):
         node = r"""
 const fs = require('fs');
 const content = fs.readFileSync(process.argv[2], 'utf8');
-const start = content.indexOf('var DETAIL_CONTENT_SKIP_SECTIONS');
-const fnStart = content.indexOf('function stripDetailContentSections', start);
-const fnEnd = content.indexOf('function buildMarkdownRouteIndex', fnStart);
+const start = content.indexOf('function referenceSourceLineHasLink');
+const fnEnd = content.indexOf('function renderHomeStats', start);
 eval(content.slice(start, fnEnd));
 const sample = [
   '## 核心内容',
@@ -484,14 +485,16 @@ const sample = [
   '## 参考来源',
   '',
   '- [Paper](https://example.com/paper)',
+  '- Tobin et al. 2017, Domain Randomization paper',
   '',
   '## 常见误区',
   '',
   '误区说明。',
 ].join('\n');
-const stripped = stripDetailContentSections(sample, DETAIL_CONTENT_SKIP_SECTIONS);
-if (stripped.includes('## 参考来源')) throw new Error('reference heading should be removed');
-if (stripped.includes('example.com/paper')) throw new Error('reference links should be removed');
+const stripped = stripLinkedReferenceSourceLines(sample);
+if (!stripped.includes('## 参考来源')) throw new Error('reference heading should remain for plain text');
+if (stripped.includes('example.com/paper')) throw new Error('linked reference should be removed from body');
+if (!stripped.includes('Tobin et al. 2017')) throw new Error('plain text reference should remain in body');
 if (!stripped.includes('## 常见误区')) throw new Error('missing trailing heading');
 console.log('ok');
 """

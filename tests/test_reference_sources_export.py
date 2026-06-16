@@ -14,7 +14,7 @@ class ReferenceSourcesExportTests(unittest.TestCase):
         self.assertGreaterEqual(len(sources), 10)
         labels = [entry["label"] for entry in sources]
         self.assertTrue(any("KungFuAthleteBot" in label for label in labels))
-        self.assertTrue(any("Tobin" in label for label in labels))
+        self.assertFalse(any(label.startswith("Tobin") for label in labels))
         detail_ids = [entry.get("detail_id", "") for entry in sources]
         self.assertIn("reference-papers-sim2real", detail_ids)
         github_urls = [entry.get("url", "") for entry in sources]
@@ -32,16 +32,18 @@ class ReferenceSourcesExportTests(unittest.TestCase):
         sources = collect_reference_sources(sample, path)
         self.assertEqual(sources, [{"label": "https://example.com/paper", "url": "https://example.com/paper"}])
 
-    def test_parse_reference_line_keeps_plain_text_entry(self) -> None:
+    def test_collect_reference_sources_excludes_plain_text_entry(self) -> None:
         sample = (
             "## 参考来源\n\n"
             "- Tobin et al. 2017, *Domain Randomization for Transferring Deep Neural Networks from Simulation to the Real World*\n"
+            "- [Paper notes](https://example.com/paper)\n"
         )
         path = ROOT / "wiki" / "concepts" / "sample.md"
         sources = collect_reference_sources(sample, path)
         self.assertEqual(len(sources), 1)
-        self.assertIn("Tobin", sources[0]["label"])
-        self.assertNotIn("url", sources[0])
+        self.assertEqual(sources[0]["url"], "https://example.com/paper")
+        labels = [entry["label"] for entry in sources]
+        self.assertFalse(any("Tobin" in label for label in labels))
 
 
 if __name__ == "__main__":

@@ -462,6 +462,8 @@ def collect_reference_sources(text: str, current_path: Path, limit: int = 32) ->
     seen: set[str] = set()
     for line in section.splitlines():
         for entry in parse_reference_line(line, current_path):
+            if not entry.get("url") and not entry.get("detail_id"):
+                continue
             key = _reference_entry_key(entry)
             if not key or key in seen:
                 continue
