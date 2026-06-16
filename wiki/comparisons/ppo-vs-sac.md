@@ -257,6 +257,8 @@ $$J(\pi) = \sum_t \mathbb{E}_{(s_t, a_t) \sim \rho_\pi} \left[ r(s_t, a_t) + \al
 ## 关联页面
 
 - [Policy Optimization](../methods/policy-optimization.md) — PPO / SAC 算法详细展开
+- [PPO（近端策略优化）](../methods/ppo.md) — PPO 方法专页（clip 代理目标 / on-policy）
+- [SAC（软演员-评论家）](../methods/sac.md) — SAC 方法专页（最大熵 / off-policy / 自动调温度）
 - [Reinforcement Learning](../methods/reinforcement-learning.md) — RL 方法全局视角
 - [Locomotion](../tasks/locomotion.md) — PPO 主要应用场景
 - [GAE](../formalizations/gae.md) — PPO 的优势估计方法（广义优势估计）

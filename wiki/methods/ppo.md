@@ -7,6 +7,7 @@ summary: "PPO 用 clip 代理目标约束策略更新幅度，兼顾稳定性与
 related:
   - ./policy-optimization.md
   - ./reinforcement-learning.md
+  - ./sac.md
   - ./gae.md
   - ../concepts/neural-feedback-controller.md
   - ../comparisons/ppo-vs-sac.md
@@ -89,6 +90,7 @@ $$
 ## 关联页面
 - [Policy Optimization（算法族总览）](./policy-optimization.md)
 - [Reinforcement Learning（强化学习基础）](./reinforcement-learning.md)
+- [SAC（软演员-评论家）](./sac.md)
 - [GAE（广义优势估计）](./gae.md)
 - [PPO vs SAC（对比）](../comparisons/ppo-vs-sac.md)
 - [PPO vs SAC for Robots（选型 Query）](../queries/ppo-vs-sac-for-robots.md)
