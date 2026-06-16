@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] ingest | sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md — Agent Reach 抓取深蓝《具身智能基础》专栏 04（RL 最小闭环）并并入运动控制路线
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
+- 原始资料：[`sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md`](sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md)（<https://mp.weixin.qq.com/s/hHkQqLfIOTn0CoAZNuLWJA>）；落盘 [`sources/raw/wechat_shenlan_rl_minimal_closed_loop_2026-06-16.md`](sources/raw/wechat_shenlan_rl_minimal_closed_loop_2026-06-16.md)
+- 沉淀页面：[`wiki/entities/pybullet.md`](wiki/entities/pybullet.md)、[`wiki/concepts/embodied-rl-minimal-closed-loop.md`](wiki/concepts/embodied-rl-minimal-closed-loop.md)（**公众号文本身不设独立 wiki 节点**）
+- 交叉更新：[`roadmap/motion-control.md`](roadmap/motion-control.md)（L5.0 桥梁 + L5.1 推荐路径 + L7.5 趋势表）、[`wiki/methods/reinforcement-learning.md`](wiki/methods/reinforcement-learning.md)、[`wiki/formalizations/mdp.md`](wiki/formalizations/mdp.md)、[`wiki/formalizations/pomdp.md`](wiki/formalizations/pomdp.md)、[`wiki/overview/shenlan-embodied-ai-fundamentals-series.md`](wiki/overview/shenlan-embodied-ai-fundamentals-series.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-15] structural | docs/detail.html + docs/main.js + docs/topic-filters.js — V24 P3 详情页"所属专题"轻量徽标，专题命中规则抽共享模块并收口 V24
 
 - 新增 `docs/topic-filters.js` 作为专题命中规则单一事实源（`TOPIC_FILTERS` / `TOPIC_META` / `matches` / `topicsForNode`）；`docs/graph.html` 移除内联 `TOPIC_FILTERS` 与 `nodeMatchesTopic` 实现改为消费共享模块，并新增 `?topic=<key>` URL 参数自动激活对应专题视图

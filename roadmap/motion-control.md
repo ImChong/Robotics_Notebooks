@@ -887,6 +887,41 @@ flowchart TD
 - 始终追问：这个策略学到的是高层决策、低层 tracking，还是把两者混在一起了
 - 遇到 sim2real、接触切换、可解释性问题时，回到 L4 的模型与约束视角重新审题
 
+### L5.0 桥梁：从「路牌」到可跑代码的最小闭环
+
+进入 PPO 调参之前，建议先用 **50 行量级脚本** 把 [MDP 五元组](../wiki/formalizations/mdp.md) 与仿真步进对齐——详见 [具身 RL 最小闭环](../wiki/concepts/embodied-rl-minimal-closed-loop.md)。
+
+**策略直觉（岔路口比喻）**：智能体没有标准答案标注，只靠环境反馈迭代；「往右走胜率 501/1000」那块牌子就是 **策略** $\pi(a|s)$。围棋落子是**离散动作**；人形关节力矩/目标是**连续动作**——载体相同，动作空间不同。工程上策略多为神经网络，用 PPO/SAC 等梯度更新。
+
+**MDP 与 POMDP**：
+
+| 要素 | 具身含义 | 真机注意 |
+|------|----------|----------|
+| $S$ | IMU、关节角、深度/点云等 | 常有噪声与延迟 |
+| $A$ | 力矩、关节目标、步态参数 | 多为连续向量 |
+| $R$ | 前进、平衡、抓取成功、摔倒惩罚 | 塑造行为的关键杠杆 |
+| $P$ | 仿真器或真机动力学 | PyBullet / MuJoCo / Isaac 各不同 |
+| $\gamma$ | 远期奖励折扣 | 影响「短视」vs「长远」 |
+
+标准 MDP 假设全状态可观测；真机部署几乎都是 [POMDP](../wiki/formalizations/pomdp.md)——用多帧视觉 + RNN/Transformer 编码隐状态再出动作。
+
+**PPO vs SAC 具身分工（入门速查）**：
+
+| 算法 | 优先场景 | 核心机制 |
+|------|----------|----------|
+| [PPO](../wiki/methods/policy-optimization.md) | 四足/人形行走、大规模并行仿真 | Clip 限制策略更新幅度，训练稳 |
+| [SAC](../wiki/comparisons/ppo-vs-sac.md) | 灵巧手、精细抓取、扰动敏感任务 | 最大熵正则，探索更充分 |
+
+共同准则：**策略单次迭代不能跳变太大**，否则已学行为崩溃。稀疏奖励操作可叠 [HER](../wiki/methods/her.md)。
+
+**最小闭环实验（推荐顺序）**：
+
+1. [PyBullet](../wiki/entities/pybullet.md) KUKA 臂定点：手写 $S,A,R$ + `stepSimulation` 实现 $P$（先不接 RL）。
+2. Gymnasium 玩具环境 + PPO，熟悉 on-policy API。
+3. Isaac Lab 人形并行训练（见 L5.2）。
+
+深蓝具身智能《具身智能基础》专栏第 4 篇对以上脉络有面向初学者的展开（已消化入库，**不设独立 wiki 节点**）；与 L0–L4 几何/控制主线互补，见 [专栏地图](../wiki/overview/shenlan-embodied-ai-fundamentals-series.md)。
+
 ### L5.1 强化学习基础
 
 > **场景隐喻：** 把机器人扔进仿真器，给它定一个奖励规则（"前进 +1，摔倒 -10"），让它反复试错——它能学出一个策略。L5.1 教你这套"试错训练"框架。
@@ -910,8 +945,10 @@ flowchart TD
 **核心问题：** RL 怎么让人形机器人自己学会走路
 
 **推荐做什么：**
+- 先跑通 [具身 RL 最小闭环](../wiki/concepts/embodied-rl-minimal-closed-loop.md)：[PyBullet](../wiki/entities/pybullet.md) KUKA 定点任务，把 $S,A,R,P$ 与 `stepSimulation` 对齐（可用手写速度控制，不必先上 PPO）
 - 用 PPO 在简单环境（gymnasium）里训一个策略
 - 理解 reward shaping、policy gradient、value function 的意义
+- 对照 [MDP](../wiki/formalizations/mdp.md) 五元组，能说清自己环境里的 $S,A,R,P,\gamma$ 各是什么
 
 **推荐读什么：**
 - [动手学强化学习（蘑菇书）](../wiki/entities/hands-on-rl-book.md) — 中文 RL 基础与 PPO/SAC 实践（[在线书](https://hrl.boyuai.com/) / [视频课](https://www.boyuai.com/elites/course/xVqhU42F5IDky94x)）
@@ -919,6 +956,7 @@ flowchart TD
 - [Reinforcement Learning](../wiki/methods/reinforcement-learning.md)（本仓库）
 - [Policy Optimization](../wiki/methods/policy-optimization.md)（本仓库）
 - [PPO vs SAC](../wiki/comparisons/ppo-vs-sac.md)（本仓库）
+- [POMDP](../wiki/formalizations/pomdp.md)（本仓库）— 真机部署前必读
 
 **学完输出什么：**
 - 能解释 PPO 的核心思路
@@ -1304,6 +1342,8 @@ flowchart TD
 | **AMP / Motion Prior** | 用对抗式损失把 MoCap 动作蒸馏到 RL 策略 | AMP, ASE, CALM, PHC | [模仿学习纵深路线](depth-imitation-learning.md) |
 | **End-to-End Locomotion**| 视觉 + 本体观测 → 关节动作的端到端 RL | [Extreme Parkour](../wiki/entities/extreme-parkour.md), ANYmal Parkour, [DreamWaQ++](../wiki/entities/dreamwaq-plus.md) | [RL 纵深路线](depth-rl-locomotion.md) |
 | **Whole-Body Loco-Manipulation** | 走着同时操作（搬箱子、推门）| HumanPlus, OmniH2O, OKAMI | [Manipulation 任务地图](../wiki/tasks/manipulation.md) |
+| **LLM + RL 分层** | 语义/任务层大模型 + 底层 RL 力控执行 | 各类 VLA + 低层策略栈 | [VLA](../wiki/methods/vla.md) · [具身 RL 最小闭环](../wiki/concepts/embodied-rl-minimal-closed-loop.md) |
+| **Intrinsic reward 探索** | 无手工奖励时的自驱动预训练 | RND, DIAYN 等 | [Intrinsic reward 预训练](../wiki/overview/bfm-category-03-intrinsic-reward-pretraining.md) |
 | **Tactile / 力觉闭环** | 高频触觉反馈用于精细装配 | DIGIT, GelSight 系列 | （扩展阅读） |
 
 > 这一节不展开任何一个方向——它们随便一个都够再开一条主线。读到这里，你已经能 **听懂每一条** 在解决什么问题，这就是 L7 的目的。

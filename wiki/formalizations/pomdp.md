@@ -42,6 +42,7 @@ $$ b_t(s) = P(s_t = s | o_{1:t}, a_{1:t-1}) $$
 ## 关联页面
 - [MDP 形式化](./mdp.md)
 - [State Estimation (状态估计)](../concepts/state-estimation.md)
+- [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 真机部署为何几乎总是 POMDP
 
 ## 参考来源
 - Kaelbling, L. P., et al. (1998). *Planning and learning in partially observable stochastic domains*.

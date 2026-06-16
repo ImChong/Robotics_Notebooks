@@ -240,6 +240,9 @@ flowchart LR
 - [Query：人形机器人 RL 实战 Cookbook](../queries/humanoid-rl-cookbook.md)
 - [Bellman 方程](../formalizations/bellman-equation.md) — 所有 RL 算法的数学根基：最优值函数满足 Bellman 最优方程
 - [MDP](../formalizations/mdp.md) — RL 的形式化框架，Bellman 方程定义在 MDP 上
+- [POMDP](../formalizations/pomdp.md) — 真机部分可观测场景的标准扩展
+- [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 仿真里把 $S,A,R,P$ 跑通再上学習算法
+- [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
 
 ## 继续深挖入口
 
