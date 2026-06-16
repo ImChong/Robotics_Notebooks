@@ -410,6 +410,7 @@ def build_item(path: Path) -> dict[str, Any]:
         "related": collect_markdown_links(text, path),
         "source_links": collect_external_links(text),
         "status": "active",
+        "updated": fm.get("updated"),
     }
 
     parts = path.relative_to(ROOT).parts
@@ -670,6 +671,7 @@ def build_site_data(items: List[Dict]) -> Dict:
             "related": item.get("related", []),
             "source_links": item.get("source_links", []),
             "status": item.get("status", "active"),
+            "updated": item.get("updated"),
         }
         for item in items
     }
