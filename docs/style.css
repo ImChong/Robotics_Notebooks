@@ -705,6 +705,25 @@ body.sponsor-dialog-open {
   border-color: rgba(167, 139, 250, 0.55);
   background: rgba(167, 139, 250, 0.16);
 }
+.detail-meta-date {
+  border-color: rgba(155, 155, 160, 0.38);
+  background: rgba(155, 155, 160, 0.1);
+  color: var(--text-muted);
+  cursor: default;
+  pointer-events: none;
+}
+.detail-meta-date:hover {
+  background: rgba(155, 155, 160, 0.1);
+  border-color: rgba(155, 155, 160, 0.38);
+}
+[data-theme="light"] .detail-meta-date {
+  border-color: rgba(134, 134, 139, 0.35);
+  background: rgba(134, 134, 139, 0.08);
+}
+[data-theme="light"] .detail-meta-date:hover {
+  background: rgba(134, 134, 139, 0.08);
+  border-color: rgba(134, 134, 139, 0.35);
+}
 .detail-mini-map {
   background: var(--bg-alt);
   border: 1px solid var(--border);

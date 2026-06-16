@@ -2717,6 +2717,11 @@
     row.hidden = false;
   }
 
+  function renderDetailMetaDateBadge(dateStr) {
+    if (!dateStr) return '';
+    return '<span class="detail-meta-badge detail-meta-date">' + escapeHtml(String(dateStr)) + '</span>';
+  }
+
   function renderDetailMetaSource(detailPage) {
     var link = document.getElementById('detailContentSourceLink');
     if (!link) return;
@@ -3084,27 +3089,13 @@
       removeLoadingState(summaryEl);
     }
     if (metaEl) {
-      var updatedRow = document.getElementById('detailMetaUpdated');
-      var communityRow = document.getElementById('detailMetaCommunity');
-      var topicRow = document.getElementById('detailMetaTopic');
-      if (updatedRow) {
-        if (detailPage.updated) {
-          updatedRow.innerHTML = '<strong>更新时间：</strong>' + escapeHtml(detailPage.updated);
-          updatedRow.classList.remove('data-meta');
-          updatedRow.hidden = false;
-        } else {
-          updatedRow.hidden = true;
-          updatedRow.innerHTML = '';
-        }
-      }
-      if (communityRow) {
-        communityRow.hidden = true;
-        communityRow.innerHTML = '';
-      }
-      if (topicRow) {
-        topicRow.hidden = true;
-        topicRow.innerHTML = '';
-      }
+      renderDetailMetaItemRow(
+        'detailMetaUpdated',
+        '更新时间',
+        detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
+      );
+      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
+      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
       removeLoadingState(metaEl);
     }
     renderDetailMetaSource(detailPage);
