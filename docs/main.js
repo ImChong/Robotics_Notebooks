@@ -3265,7 +3265,7 @@
       metaEl.innerHTML = [
         '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
         '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
-        '<p><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自 <code>graph-stats.json</code>）。</p>'
+        '<p class="detail-meta-note"><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自 <code>graph-stats.json</code>）。</p>'
       ].join('');
       removeLoadingState(metaEl);
     }
@@ -3483,7 +3483,7 @@
       graphMeta.innerHTML = [
         '<p><strong>overview：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).overview_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).overview_id || '-') + '</code></a></p>',
         '<p><strong>dependency_graph：</strong><a href="' + escapeHtml(detailHref((techMapPage.graph_meta || {}).dependency_graph_id || '')) + '"><code>' + escapeHtml((techMapPage.graph_meta || {}).dependency_graph_id || '-') + '</code></a></p>',
-        '<p class="data-meta">当前页面直接消费 <code>tech_map_page</code>，节点统一回流到 detail page。</p>'
+        '<p class="detail-meta-note data-meta">当前页面直接消费 <code>tech_map_page</code>，节点统一回流到 detail page。</p>'
       ].join('');
       removeLoadingState(graphMeta);
     }
