@@ -3419,9 +3419,10 @@
         sbRelSec.hidden = true;
       }
 
-      const paperLinks = (item?.source_links || []).filter(url =>
-        String(url).includes('Humanoid_Robot_Learning_Paper_Notebooks')
-      );
+      const paperLinks = (item?.source_links || []).filter(function (entry) {
+        const url = typeof entry === 'string' ? entry : (entry && entry.url) || '';
+        return String(url).includes('Humanoid_Robot_Learning_Paper_Notebooks');
+      });
       if (paperLinks.length) {
         sbPaperList.innerHTML = paperLinks.slice(0, 6).map((url, idx) => {
           if (!isSafeUrl(url)) return '';

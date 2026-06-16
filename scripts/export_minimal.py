@@ -368,6 +368,114 @@ def collect_external_links(text: str) -> List[str]:
     return out
 
 
+GITHUB_BLOB_BASE = "https://github.com/ImChong/Robotics_Notebooks/blob/main/"
+
+
+def clean_reference_label(text: str) -> str:
+    text = text.strip()
+    text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)
+    text = text.replace("**", "")
+    text = re.sub(r"\s+", " ", text)
+    return text.strip(" ：:，,。")
+
+
+def extract_section_body(text: str, heading_labels: List[str]) -> str:
+    lines = text.splitlines()
+    collecting = False
+    section_lines: List[str] = []
+    for line in lines:
+        stripped = line.strip()
+        if stripped.startswith("## ") or stripped.startswith("### "):
+            heading = re.sub(r"^#+\s*", "", stripped)
+            if any(label in heading for label in heading_labels):
+                collecting = True
+                section_lines = []
+                continue
+            if collecting:
+                break
+        if collecting:
+            section_lines.append(line)
+    return "\n".join(section_lines).strip()
+
+
+def resolve_reference_target(target: str, current_path: Path) -> Dict[str, str]:
+    target = target.split("#", 1)[0].strip()
+    if target.startswith(("http://", "https://")):
+        return {"url": target.rstrip(".,")}
+    if not target.endswith(".md"):
+        return {"url": target}
+    resolved = (current_path.parent / target).resolve()
+    try:
+        rel_path = resolved.relative_to(ROOT)
+    except ValueError:
+        return {"url": target}
+    rel_posix = rel_path.as_posix()
+    if _is_indexed_link_target(resolved):
+        return {"detail_id": path_to_id(resolved, ROOT)}
+    return {"url": f"{GITHUB_BLOB_BASE}{rel_posix}"}
+
+
+def _reference_entry_key(entry: Dict[str, str]) -> str:
+    return entry.get("detail_id") or entry.get("url") or entry.get("label", "")
+
+
+def parse_reference_line(line: str, current_path: Path) -> List[Dict[str, str]]:
+    stripped = line.strip()
+    if stripped.startswith("- "):
+        stripped = stripped[2:].strip()
+    if not stripped:
+        return []
+
+    link_matches = list(re.finditer(r"\[([^\]]+)\]\(([^)]+)\)", stripped))
+    if link_matches:
+        entries: List[Dict[str, str]] = []
+        for match in link_matches:
+            label = match.group(1).strip()
+            target = match.group(2).strip()
+            tail = stripped[match.end() :].strip()
+            if tail.startswith(("—", "-")):
+                tail = tail.lstrip("—-").strip()
+                if tail:
+                    label = f"{label} — {tail}"
+            entry: Dict[str, str] = {"label": label}
+            entry.update(resolve_reference_target(target, current_path))
+            entries.append(entry)
+        return entries
+
+    urls = re.findall(r"https?://[^)\s>]+", stripped)
+    if urls:
+        url = urls[0].rstrip(".,")
+        label = clean_reference_label(re.sub(r"https?://\S+", "", stripped))
+        if not label:
+            label = url
+        return [{"label": label, "url": url}]
+
+    return [{"label": clean_reference_label(stripped)}]
+
+
+def collect_reference_sources(
+    text: str, current_path: Path, limit: int = 32
+) -> List[Dict[str, str]]:
+    section = extract_section_body(text, ["参考来源"])
+    if not section:
+        return [{"label": url, "url": url} for url in collect_external_links(text)[:limit]]
+
+    results: List[Dict[str, str]] = []
+    seen: set[str] = set()
+    for line in section.splitlines():
+        for entry in parse_reference_line(line, current_path):
+            if not entry.get("url") and not entry.get("detail_id"):
+                continue
+            key = _reference_entry_key(entry)
+            if not key or key in seen:
+                continue
+            seen.add(key)
+            results.append(entry)
+            if len(results) >= limit:
+                return results
+    return results
+
+
 def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
     stages: List[Dict[str, Any]] = []
     current: Dict[str, Any] | None = None
@@ -408,7 +516,7 @@ def build_item(path: Path) -> dict[str, Any]:
         "content_markdown": extract_body_markdown(text),
         "tags": infer_tags(path, title, text),
         "related": collect_markdown_links(text, path),
-        "source_links": collect_external_links(text),
+        "source_links": collect_reference_sources(body_text, path),
         "status": "active",
         "updated": fm.get("updated"),
     }
