@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] structural | wiki/entities/humanoid-robot.md — 补全 HIL（Hardware-in-the-Loop）及正文全部缩写速查
+
+- 页面：[`wiki/entities/humanoid-robot.md`](wiki/entities/humanoid-robot.md) — 流程图「HIL 与台架安全测试」指硬件在环，非 Hybrid Imitation Learning
+- 词典：[`schema/abbrev-glossary.json`](schema/abbrev-glossary.json) 新增 HIL / PRS / HAL / FastDDS
+
 ## [2026-06-16] ingest | sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md — Current Robotics Curr-0 人形 loco-dexterous 全栈博客入库
 
 - 原始资料：[`sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md`](sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md)（<https://current-robotics.com/blog/curr-0>）
