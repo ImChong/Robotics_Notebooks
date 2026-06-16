@@ -759,6 +759,12 @@ body.sponsor-dialog-open {
   overflow-wrap: normal;
   word-break: normal;
 }
+.detail-meta-source-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-size: .88rem;
+}
+.detail-meta-source-link:hover { text-decoration: underline; }
 .empty-state code {
   overflow-wrap: anywhere;
 }

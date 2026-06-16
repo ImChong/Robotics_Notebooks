@@ -2956,12 +2956,15 @@
       removeLoadingState(summaryEl);
     }
     if (metaEl) {
-      metaEl.innerHTML = [
-        '<p><strong>id：</strong><code>' + escapeHtml(detailPage.id || detailId) + '</code></p>',
-        '<p><strong>type：</strong>' + escapeHtml(detailPage.type || '-') + '</p>',
-        '<p><strong>status：</strong>' + escapeHtml(detailPage.status || 'active') + '</p>',
-        '<p><strong>path：</strong><code>' + escapeHtml(detailPage.path || '-') + '</code></p>'
-      ].join('');
+      var metaRows = [];
+      if (detailPage.updated) {
+        metaRows.push('<p><strong>更新时间：</strong>' + escapeHtml(detailPage.updated) + '</p>');
+      }
+      if (detailPage.path) {
+        metaRows.push('<p><a class="detail-meta-source-link" href="https://github.com/ImChong/Robotics_Notebooks/blob/main/' +
+          escapeHtml(detailPage.path) + '" target="_blank" rel="noopener noreferrer">在 GitHub 查看源文件 →</a></p>');
+      }
+      metaEl.innerHTML = metaRows.join('');
       removeLoadingState(metaEl);
     }
     if (breadcrumb) {
