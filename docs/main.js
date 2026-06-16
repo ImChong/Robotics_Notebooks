@@ -2606,6 +2606,12 @@
     });
   }
 
+  function setDetailMetaReadyState(state) {
+    if (document.documentElement) {
+      document.documentElement.dataset.detailMetaReady = state;
+    }
+  }
+
   function syncDetailBadgeRowVisibility() {
     var row = document.getElementById('detailBadgeRow');
     var communityWrap = document.getElementById('detailCommunityBadges');
@@ -2633,12 +2639,16 @@
   // 命中则给出跳转图谱专题视图的链接；无命中或无依赖时静默隐藏（空态降级）。
   function renderDetailTopicBadges(detailPage) {
     var wrap = document.getElementById('detailTopicBadges');
-    if (!wrap) return;
+    if (!wrap) return Promise.resolve();
     var TF = window.RNTopicFilters;
     var currentPath = (detailPage && detailPage.path) || '';
-    if (!TF || !currentPath) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
+    if (!TF || !currentPath) {
+      wrap.hidden = true;
+      syncDetailBadgeRowVisibility();
+      return Promise.resolve();
+    }
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var topics = TF.topicsForNode({ id: node.id, community: node.community });
@@ -2659,11 +2669,15 @@
   // 给出跳转图谱对应社区聚焦视图的链接；当前页不在图谱（无节点 / 无社区）时静默隐藏。
   function renderDetailCommunityBadge(detailPage) {
     var wrap = document.getElementById('detailCommunityBadges');
-    if (!wrap) return;
+    if (!wrap) return Promise.resolve();
     var currentPath = (detailPage && detailPage.path) || '';
-    if (!currentPath) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
+    if (!currentPath) {
+      wrap.hidden = true;
+      syncDetailBadgeRowVisibility();
+      return Promise.resolve();
+    }
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
       if (!node || !node.community) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
@@ -2919,6 +2933,7 @@
         removeLoadingState(metaEl);
       }
       renderDetailMetaSource(null);
+      setDetailMetaReadyState('true');
       var badgeRow = document.getElementById('detailBadgeRow');
       if (badgeRow) badgeRow.hidden = true;
       var communityBadges = document.getElementById('detailCommunityBadges');
@@ -2996,6 +3011,13 @@
       removeLoadingState(metaEl);
     }
     renderDetailMetaSource(detailPage);
+    setDetailMetaReadyState('pending');
+    Promise.all([
+      renderDetailCommunityBadge(detailPage),
+      renderDetailTopicBadges(detailPage)
+    ]).finally(function () {
+      setDetailMetaReadyState('true');
+    });
     if (breadcrumb) {
       breadcrumb.innerHTML = [
         '<a href="index.html">首页</a>',
@@ -3079,8 +3101,6 @@
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
 
     renderDetailMiniMap(detailPage, detailPages);
-    renderDetailTopicBadges(detailPage);
-    renderDetailCommunityBadge(detailPage);
     renderDetailRecentIngestTimeline(detailPage);
 
     var hashForLayoutScroll = window.location.hash.replace(/^#/, '');
