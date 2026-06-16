@@ -1,11 +1,11 @@
 'use strict';
 /**
- * 对本地 detail.html 做视口截图：等待正文与来源区渲染后，将指定 id 滚入视口再截图。
- * 供 screenshot_site_detail.sh 在传入锚点时使用（headless Chrome 的 --virtual-time-budget
- * 无法可靠等待 Mermaid / fetch 完成后再滚动）。
+ * 对本地 detail.html 做视口截图：等待正文与元信息异步渲染后，可选将指定 id 滚入视口再截图。
+ * 供 screenshot_site_detail.sh 使用（headless Chrome 的 --virtual-time-budget
+ * 无法可靠等待 fetch / Mermaid 完成）。
  *
  * 用法:
- *   node scripts/screenshot_detail_anchor_viewport.cjs <pageUrl> <outPng> <viewportHeight> <elementId>
+ *   node scripts/screenshot_detail_anchor_viewport.cjs <pageUrl> <outPng> <viewportHeight> [elementId]
  *
  * 环境变量:
  *   PUPPETEER_EXECUTABLE_PATH — Chromium/Chrome 可执行文件路径（默认 google-chrome）
@@ -15,15 +15,34 @@ const puppeteer = require('puppeteer-core');
 
 const pageUrl = process.argv[2];
 const outPath = process.argv[3];
-const viewportHeight = parseInt(process.argv[4] || '1000', 10);
-const anchorId = process.argv[5] || 'detail-sources';
+const viewportHeight = parseInt(process.argv[4] || '2400', 10);
+const anchorId = process.argv[5] || '';
 
 const executablePath =
   process.env.PUPPETEER_EXECUTABLE_PATH || process.env.CHROME || 'google-chrome';
 
+async function waitForDetailPageReady(page) {
+  await page.waitForSelector('#detailMeta:not(.data-loading)', { timeout: 90000 });
+  await page.waitForFunction(
+    function () {
+      return document.documentElement.dataset.detailMetaReady === 'true';
+    },
+    { timeout: 90000 }
+  );
+  await page.waitForFunction(
+    function () {
+      const title = document.getElementById('detailTitle');
+      if (!title) return false;
+      const text = (title.textContent || '').trim();
+      return text && !/正在读取/.test(text) && text !== '未找到对应 detail page';
+    },
+    { timeout: 90000 }
+  );
+}
+
 (async function main() {
   if (!pageUrl || !outPath) {
-    console.error('用法: node screenshot_detail_anchor_viewport.cjs <url> <out.png> <height> <elementId>');
+    console.error('用法: node screenshot_detail_anchor_viewport.cjs <url> <out.png> <height> [elementId]');
     process.exit(2);
   }
   const browser = await puppeteer.launch({
@@ -39,47 +58,56 @@ const executablePath =
       deviceScaleFactor: 1
     });
     await page.goto(pageUrl, { waitUntil: 'networkidle2', timeout: 120000 });
-    // 骨架屏同样是 article.card，不能用来判断「已写入真实来源」；以去掉 data-loading 为准。
-    await page.waitForSelector('#detailSourceList:not(.data-loading)', { timeout: 90000 });
-    await page.waitForFunction(
-      function () {
-        const root = document.getElementById('detailSourceList');
-        if (!root) return false;
-        return (
-          root.querySelector('.detail-source-url') !== null ||
-          /暂无来源|无可展示/.test(root.textContent || '')
-        );
-      },
-      { timeout: 90000 }
-    );
-    await page.waitForSelector('#' + anchorId, { timeout: 10000 });
+    await waitForDetailPageReady(page);
 
-    async function scrollAnchorIntoView() {
-      await page.evaluate(function (id) {
-        const el = document.getElementById(id);
-        if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
-      }, anchorId);
+    if (anchorId === 'detail-sources') {
+      await page.waitForSelector('#detailSourceList:not(.data-loading)', { timeout: 90000 });
+      await page.waitForFunction(
+        function () {
+          const root = document.getElementById('detailSourceList');
+          if (!root) return false;
+          return (
+            root.querySelector('.detail-source-url') !== null ||
+            /暂无来源|无可展示/.test(root.textContent || '')
+          );
+        },
+        { timeout: 90000 }
+      );
     }
 
-    await scrollAnchorIntoView();
-    await new Promise(function (resolve) {
-      setTimeout(resolve, 600);
-    });
-    await scrollAnchorIntoView();
+    if (anchorId) {
+      await page.waitForSelector('#' + anchorId, { timeout: 10000 });
 
-    const anchorOk = await page.evaluate(function (id) {
-      const el = document.getElementById(id);
-      if (!el) return false;
-      const r = el.getBoundingClientRect();
-      // scrollIntoView(block:start) 在吸顶 header 下常见 top≈200~320，仍算「来源区已进入视口」
-      return r.top >= -80 && r.top < 520 && r.bottom > 120;
-    }, anchorId);
-    if (!anchorOk) {
-      throw new Error(
-        'screenshot_detail_anchor_viewport: 锚点 #' +
-          anchorId +
-          ' 未滚入视口上部，请检查页面 id 或等待条件。'
-      );
+      async function scrollAnchorIntoView() {
+        await page.evaluate(function (id) {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ block: 'start', behavior: 'instant' });
+        }, anchorId);
+      }
+
+      await scrollAnchorIntoView();
+      await new Promise(function (resolve) {
+        setTimeout(resolve, 600);
+      });
+      await scrollAnchorIntoView();
+
+      const anchorOk = await page.evaluate(function (id) {
+        const el = document.getElementById(id);
+        if (!el) return false;
+        const r = el.getBoundingClientRect();
+        return r.top >= -80 && r.top < 520 && r.bottom > 120;
+      }, anchorId);
+      if (!anchorOk) {
+        throw new Error(
+          'screenshot_detail_anchor_viewport: 锚点 #' +
+            anchorId +
+            ' 未滚入视口上部，请检查页面 id 或等待条件。'
+        );
+      }
+    } else {
+      await new Promise(function (resolve) {
+        setTimeout(resolve, 400);
+      });
     }
 
     await page.screenshot({ path: outPath, type: 'png' });

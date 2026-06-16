@@ -2692,20 +2692,53 @@
     });
   }
 
+  function setDetailMetaReadyState(state) {
+    if (document.documentElement) {
+      document.documentElement.dataset.detailMetaReady = state;
+    }
+  }
+
+  function syncDetailBadgeRowVisibility() {
+    var row = document.getElementById('detailBadgeRow');
+    var communityWrap = document.getElementById('detailCommunityBadges');
+    var topicWrap = document.getElementById('detailTopicBadges');
+    if (!row) return;
+    var hasVisible = (communityWrap && !communityWrap.hidden) || (topicWrap && !topicWrap.hidden);
+    row.hidden = !hasVisible;
+  }
+
+  function renderDetailMetaSource(detailPage) {
+    var wrap = document.getElementById('detailMetaSource');
+    if (!wrap) return;
+    var path = (detailPage && detailPage.path) || '';
+    if (!path) {
+      wrap.innerHTML = '';
+      wrap.hidden = true;
+      return;
+    }
+    wrap.innerHTML = '<a class="detail-meta-source-link" href="https://github.com/ImChong/Robotics_Notebooks/blob/main/' +
+      escapeHtml(path) + '" target="_blank" rel="noopener noreferrer">在 GitHub 查看源文件 →</a>';
+    wrap.hidden = false;
+  }
+
   // 详情页"属于 X 专题"轻量徽标：复用 graph.html 的专题命中规则（topic-filters.js），
   // 命中则给出跳转图谱专题视图的链接；无命中或无依赖时静默隐藏（空态降级）。
   function renderDetailTopicBadges(detailPage) {
     var wrap = document.getElementById('detailTopicBadges');
-    if (!wrap) return;
+    if (!wrap) return Promise.resolve();
     var TF = window.RNTopicFilters;
     var currentPath = (detailPage && detailPage.path) || '';
-    if (!TF || !currentPath) { wrap.hidden = true; return; }
+    if (!TF || !currentPath) {
+      wrap.hidden = true;
+      syncDetailBadgeRowVisibility();
+      return Promise.resolve();
+    }
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { wrap.hidden = true; return; }
+      if (!node) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var topics = TF.topicsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { wrap.hidden = true; return; }
+      if (!topics.length) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var html = '<span class="detail-topic-badges-label">所属专题</span>' + topics.map(function (key) {
         var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
         return '<a class="detail-topic-badge" href="graph.html?topic=' + encodeURIComponent(key) +
@@ -2714,29 +2747,35 @@
       }).join('');
       wrap.innerHTML = html;
       wrap.hidden = false;
-    }).catch(function () { wrap.hidden = true; });
+      syncDetailBadgeRowVisibility();
+    }).catch(function () { wrap.hidden = true; syncDetailBadgeRowVisibility(); });
   }
 
   // 详情页"所属社区"轻量徽标：复用 link-graph.json 的社区划分定位当前页所在社区，
   // 给出跳转图谱对应社区聚焦视图的链接；当前页不在图谱（无节点 / 无社区）时静默隐藏。
   function renderDetailCommunityBadge(detailPage) {
     var wrap = document.getElementById('detailCommunityBadges');
-    if (!wrap) return;
+    if (!wrap) return Promise.resolve();
     var currentPath = (detailPage && detailPage.path) || '';
-    if (!currentPath) { wrap.hidden = true; return; }
+    if (!currentPath) {
+      wrap.hidden = true;
+      syncDetailBadgeRowVisibility();
+      return Promise.resolve();
+    }
 
-    fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node || !node.community) { wrap.hidden = true; return; }
+      if (!node || !node.community) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
-      if (!community) { wrap.hidden = true; return; }
+      if (!community) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
       var label = shortenCommunityLabel(community.label);
       wrap.innerHTML = '<span class="detail-topic-badges-label">所属社区</span>' +
         '<a class="detail-topic-badge detail-community-badge" href="graph.html?community=' +
         encodeURIComponent(community.id) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
         '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
       wrap.hidden = false;
-    }).catch(function () { wrap.hidden = true; });
+      syncDetailBadgeRowVisibility();
+    }).catch(function () { wrap.hidden = true; syncDetailBadgeRowVisibility(); });
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -2979,6 +3018,14 @@
         metaEl.innerHTML = '<p class="data-meta">当前没有匹配到 detail_pages 项。</p>';
         removeLoadingState(metaEl);
       }
+      renderDetailMetaSource(null);
+      setDetailMetaReadyState('true');
+      var badgeRow = document.getElementById('detailBadgeRow');
+      if (badgeRow) badgeRow.hidden = true;
+      var communityBadges = document.getElementById('detailCommunityBadges');
+      if (communityBadges) communityBadges.hidden = true;
+      var topicBadges = document.getElementById('detailTopicBadges');
+      if (topicBadges) topicBadges.hidden = true;
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
         tocEl.innerHTML = '';
@@ -3046,13 +3093,17 @@
       if (detailPage.updated) {
         metaRows.push('<p><strong>更新时间：</strong>' + escapeHtml(detailPage.updated) + '</p>');
       }
-      if (detailPage.path) {
-        metaRows.push('<p><a class="detail-meta-source-link" href="https://github.com/ImChong/Robotics_Notebooks/blob/main/' +
-          escapeHtml(detailPage.path) + '" target="_blank" rel="noopener noreferrer">在 GitHub 查看源文件 →</a></p>');
-      }
       metaEl.innerHTML = metaRows.join('');
       removeLoadingState(metaEl);
     }
+    renderDetailMetaSource(detailPage);
+    setDetailMetaReadyState('pending');
+    Promise.all([
+      renderDetailCommunityBadge(detailPage),
+      renderDetailTopicBadges(detailPage)
+    ]).finally(function () {
+      setDetailMetaReadyState('true');
+    });
     if (breadcrumb) {
       breadcrumb.innerHTML = [
         '<a href="index.html">首页</a>',
@@ -3138,8 +3189,6 @@
     renderSourceCards(sourceEl, detailPage.source_links, '当前 detail page 暂无来源链接。');
 
     renderDetailMiniMap(detailPage, detailPages);
-    renderDetailTopicBadges(detailPage);
-    renderDetailCommunityBadge(detailPage);
     renderDetailRecentIngestTimeline(detailPage);
 
     var hashForLayoutScroll = window.location.hash.replace(/^#/, '');
