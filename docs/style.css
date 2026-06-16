@@ -645,11 +645,24 @@ body.sponsor-dialog-open {
   max-width: 100%;
   padding: 14px 16px;
 }
+.detail-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+  margin-top: 14px;
+}
+.detail-badge-row .detail-topic-badges {
+  margin-top: 0;
+}
 .detail-topic-badges {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  margin-top: 14px;
+}
+.detail-meta-source-wrap {
   margin-top: 14px;
 }
 .detail-topic-badges-label {
