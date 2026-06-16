@@ -453,7 +453,9 @@ def parse_reference_line(line: str, current_path: Path) -> List[Dict[str, str]]:
     return [{"label": clean_reference_label(stripped)}]
 
 
-def collect_reference_sources(text: str, current_path: Path, limit: int = 32) -> List[Dict[str, str]]:
+def collect_reference_sources(
+    text: str, current_path: Path, limit: int = 32
+) -> List[Dict[str, str]]:
     section = extract_section_body(text, ["参考来源"])
     if not section:
         return [{"label": url, "url": url} for url in collect_external_links(text)[:limit]]

@@ -19,18 +19,19 @@ class ReferenceSourcesExportTests(unittest.TestCase):
         self.assertIn("reference-papers-sim2real", detail_ids)
         github_urls = [entry.get("url", "") for entry in sources]
         self.assertTrue(
-            any(url.startswith("https://github.com/ImChong/Robotics_Notebooks/blob/main/sources/") for url in github_urls)
+            any(
+                url.startswith("https://github.com/ImChong/Robotics_Notebooks/blob/main/sources/")
+                for url in github_urls
+            )
         )
 
     def test_collect_reference_sources_fallback_to_external_links(self) -> None:
-        sample = (
-            "# Title\n\n"
-            "## 核心内容\n\n"
-            "正文含 https://example.com/paper 链接。\n"
-        )
+        sample = "# Title\n\n## 核心内容\n\n正文含 https://example.com/paper 链接。\n"
         path = ROOT / "wiki" / "concepts" / "sample.md"
         sources = collect_reference_sources(sample, path)
-        self.assertEqual(sources, [{"label": "https://example.com/paper", "url": "https://example.com/paper"}])
+        self.assertEqual(
+            sources, [{"label": "https://example.com/paper", "url": "https://example.com/paper"}]
+        )
 
     def test_collect_reference_sources_excludes_plain_text_entry(self) -> None:
         sample = (
