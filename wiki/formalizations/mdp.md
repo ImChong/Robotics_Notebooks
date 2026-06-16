@@ -6,6 +6,7 @@ related:
   - ./bellman-equation.md
   - ../methods/reinforcement-learning.md
   - ../methods/policy-optimization.md
+  - ../concepts/embodied-rl-minimal-closed-loop.md
 sources:
   - ../../sources/papers/policy_optimization.md
 summary: "Markov Decision Process (MDP)"

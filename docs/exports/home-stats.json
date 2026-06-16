@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-16",
-  "node_count": 1183,
-  "edge_count": 7292,
+  "node_count": 1185,
+  "edge_count": 7317,
   "coverage": {
-    "covered": 1167,
-    "total": 1181,
+    "covered": 1169,
+    "total": 1183,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/pybullet.md",
+      "detail_id": "entity-pybullet",
+      "label": "PyBullet",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/embodied-rl-minimal-closed-loop.md",
+      "detail_id": "wiki-concepts-embodied-rl-minimal-closed-loop",
+      "label": "具身 RL 最小闭环（Embodied RL Minimal Closed Loop）",
+      "type": "concept",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/reinforcement-learning.md",
+      "detail_id": "wiki-methods-reinforcement-learning",
+      "label": "Reinforcement Learning (RL, 强化学习)",
+      "type": "method",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/mdp.md",
+      "detail_id": "wiki-formalizations-mdp",
+      "label": "Markov Decision Process (MDP)",
+      "type": "formalization",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/pomdp.md",
+      "detail_id": "wiki-formalizations-pomdp",
+      "label": "Partially Observable MDP (POMDP)",
+      "type": "formalization",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+      "label": "《具身智能基础》专栏：几何三篇技术地图",
+      "type": "overview",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/gen2humanoid.md",
       "detail_id": "entity-gen2humanoid",
@@ -119,62 +167,14 @@
       "type": "entity",
       "recency": "2026-06-14",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-8-papers-technology-map.md",
-      "detail_id": "wiki-overview-loco-manip-8-papers-technology-map",
-      "label": "Loco-Manip 数据入口：8 篇论文技术地图",
-      "type": "overview",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-category-01-egocentric-data.md",
-      "detail_id": "wiki-overview-loco-manip-category-01-egocentric-data",
-      "label": "Loco-Manip 分类 01：第一视角数据",
-      "type": "overview",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-category-04-contact-teleop.md",
-      "detail_id": "wiki-overview-loco-manip-category-04-contact-teleop",
-      "label": "Loco-Manip 分类 04：触觉与跨本体遥操作",
-      "type": "overview",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-loco-manip-01-ego-pi.md",
-      "detail_id": "entity-paper-loco-manip-01-ego-pi",
-      "label": "Ego-Pi",
-      "type": "entity",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-14",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/ppo.md",
-      "detail_id": "wiki-methods-ppo",
-      "label": "PPO（Proximal Policy Optimization）",
-      "type": "method",
-      "recency": "2026-06-14",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gen2humanoid.md",
-    "detail_id": "entity-gen2humanoid",
-    "label": "Gen2Humanoid（文本→人形运动端到端管线）",
+    "path": "wiki/entities/pybullet.md",
+    "detail_id": "entity-pybullet",
+    "label": "PyBullet",
     "type": "entity",
-    "recency": "2026-06-15",
+    "recency": "2026-06-16",
     "source": "log.md"
   }
 }

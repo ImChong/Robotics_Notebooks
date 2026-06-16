@@ -6,6 +6,7 @@ updated: 2026-06-08
 summary: "erwincoumans/motion_imitation 是 Peng 等「模仿动物」四足论文官方实现：动物 MoCap → 四足参考 → PyBullet RL 模仿，为 legged_gym/AMP 生态奠基。"
 related:
   - ../tasks/locomotion.md
+  - ./pybullet.md
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
   - ./legged-gym.md

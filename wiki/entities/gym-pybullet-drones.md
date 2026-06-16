@@ -4,6 +4,7 @@ tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter
 status: complete
 updated: 2026-05-27
 related:
+  - ./pybullet.md
   - ../overview/multirotor-simulation-planning-control-stack.md
   - ./flightmare.md
   - ./quad-swarm-rl.md

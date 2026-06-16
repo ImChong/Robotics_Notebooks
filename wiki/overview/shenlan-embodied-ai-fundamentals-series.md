@@ -15,6 +15,7 @@ sources:
   - ../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md
   - ../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md
   - ../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md
+  - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
 summary: "深蓝具身智能《具身智能基础》专栏几何主线：李群/李代数（姿态）→ 三维坐标变换（感知–操作对齐）→ 黎曼流形与切空间（统一流形计算语言）；三篇构成从「怎么转」到「怎么对齐坐标」再到「为什么在弯曲空间算」的递进图谱。"
 ---
 
@@ -56,6 +57,7 @@ flowchart TB
 | 01 | [李群、李代数、四元数](../formalizations/lie-group-rigid-body-motions.md) | 姿态与刚体运动 | 旋转/位姿如何在 **流形** 上合法表示与优化？四元数、矩阵、李代数如何分工？ |
 | 02 | [三维世界坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) | 感知–操作对齐 | 世界 / 相机 / 像素如何经 $K,[R|t]$ 串联？深度与手眼标定如何闭合抓取链？ |
 | 03 | [黎曼流形与切空间](../formalizations/riemannian-manifold-tangent-space.md) | 统一几何语言 | 为何欧式插值会「多转 340°」？Exp/Log 与工程近似如何支撑 RL / 控制？ |
+| 04 | （RL 最小闭环，**已并入运动控制路线 L5**） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) | 策略/MDP/POMDP/PPO·SAC/PyBullet 入门；[source](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md)（`hHkQqLfIOTn0CoAZNuLWJA`） |
 
 ## 原始资料
 
@@ -64,6 +66,7 @@ flowchart TB
 | 01 | [wechat_shenlan_lie_group_lie_algebra_quaternion.md](../../sources/blogs/wechat_shenlan_lie_group_lie_algebra_quaternion.md) | `JviRH2LW-fkCHA5gY7Qflw` |
 | 02 | [wechat_shenlan_3d_coordinate_transforms.md](../../sources/blogs/wechat_shenlan_3d_coordinate_transforms.md) | `P5Jm7bMhaTHsytHStFbbLg` |
 | 03 | [wechat_shenlan_riemannian_manifold_tangent_space.md](../../sources/blogs/wechat_shenlan_riemannian_manifold_tangent_space.md) | `uFTKN5FDvlHQxOSspvxVZw` |
+| 04 | [wechat_shenlan_rl_embodied_minimal_closed_loop.md](../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md) | `hHkQqLfIOTn0CoAZNuLWJA`（知识已并入 [运动控制路线 L5](../../roadmap/motion-control.md)，不设独立 wiki 节点） |
 
 ## 按目标选入口
 
@@ -73,6 +76,7 @@ flowchart TB
 | VLA / 抓取真机「看起来对、抓空」 | [02 坐标变换](../formalizations/3d-coordinate-transforms-vision-robotics.md) → [grasp-pose-estimation](../methods/grasp-pose-estimation.md) |
 | RL 在大角度旋转上发散、想理解流形优化 | [03 黎曼流形](../formalizations/riemannian-manifold-tangent-space.md) → 回看 01 |
 | 补 2025 VLA 开源复现地图（同公众号） | [VLA 复现景观](./vla-open-source-repro-landscape-2025.md) |
+| 想补 RL 入门最小闭环（策略/MDP/PPO·SAC/PyBullet） | [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) → [运动控制路线 L5.0](../../roadmap/motion-control.md#l50-桥梁从路牌到可跑代码的最小闭环) |
 | 补世界模型 15 项目地图（同公众号） | [世界模型三线地图](./world-models-15-open-source-technology-map.md) |
 
 ## 常见误区
