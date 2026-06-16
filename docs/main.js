@@ -1591,6 +1591,7 @@
     setRoadmapFlowChromeVisible(true);
     var treeHtml = buildRoadmapVerticalTreeHTML(stages, roadmapId, detailPages);
     flowRoot.innerHTML = treeHtml;
+    syncRoadmapStagesMetaHref(roadmapPage);
   }
 
   function renderDetailMath(container) {
@@ -2783,6 +2784,48 @@
     return renderMetaCommunityBadge((detailPage && detailPage.path) || '', 'detailMetaCommunity');
   }
 
+  function findRoadmapStageHeadingId(stage, contentEl) {
+    if (!contentEl || !stage) return '';
+    var sid = String(stage.id || '').toLowerCase();
+    if (!sid) return '';
+    var h2 = Array.from(contentEl.querySelectorAll('h2[id]')).find(function (h) {
+      return h.id === sid || h.id.indexOf(sid + '-') === 0;
+    });
+    return h2 ? h2.id : '';
+  }
+
+  /** 阶段已嵌入正文时 #roadmap-flow 会隐藏，需把元信息徽标改指向首个 L 章节。 */
+  function syncRoadmapStagesMetaHref(roadmapPage) {
+    var link = document.querySelector('#roadmapMetaStages a.detail-meta-badge');
+    if (!link || !roadmapPage) return;
+    var flowSection = document.getElementById('roadmap-flow');
+    if (flowSection && !flowSection.hidden) {
+      link.href = '#roadmap-flow';
+      link.title = '跳转到阶段速览';
+      return;
+    }
+    var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+    if (!stages.length) return;
+    var contentEl = document.getElementById('roadmapContent');
+    var targetId = '';
+    var targetStage = stages[0];
+    var i;
+    for (i = 0; i < stages.length; i++) {
+      targetId = findRoadmapStageHeadingId(stages[i], contentEl);
+      if (targetId) {
+        targetStage = stages[i];
+        break;
+      }
+    }
+    if (targetId) {
+      link.href = '#' + targetId;
+      link.title = '跳转到「' + (targetStage.title || targetStage.id || targetId) + '」等学习阶段';
+      return;
+    }
+    link.href = '#roadmap-content';
+    link.title = '跳转到路线正文';
+  }
+
   function renderRoadmapMetaPanel(roadmapPage, roadmapId, detailPages) {
     var metaEl = document.getElementById('roadmapMeta');
     var detail = (detailPages && detailPages[roadmapId]) || {};
@@ -3531,6 +3574,7 @@
       notifyTocSpyScrollSync();
       removeLoadingState(contentEl);
     }
+    syncRoadmapStagesMetaHref(roadmapPage);
   }
 
   function renderTechMapNodeCard(node, detailPages) {
