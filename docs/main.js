@@ -331,26 +331,32 @@
 
     var bodyHtml;
     if (fromLog && groups.length > 1) {
-      bodyHtml = groups
-        .map(function (group) {
-          var cards = group.items.map(function (meta) { return renderCard(meta, false); }).join('');
-          var dateLabel = group.date
-            ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
-            : String(group.items.length) + ' 项';
-          return (
-            '<section class="home-latest-wiki-timeline-group">' +
-            '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
-            '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + cards + '</div>' +
-            '</section>'
-          );
-        })
-        .join('');
+      bodyHtml = '';
+      for (var gi = 0; gi < groups.length; gi++) {
+        var group = groups[gi];
+        var groupCards = '';
+        for (var ci = 0; ci < group.items.length; ci++) {
+          groupCards += renderCard(group.items[ci], false);
+        }
+        var dateLabel = group.date
+          ? escapeHtml(group.date) + ' · ' + String(group.items.length) + ' 项'
+          : String(group.items.length) + ' 项';
+        bodyHtml += (
+          '<section class="home-latest-wiki-timeline-group">' +
+          '<h3 class="home-latest-wiki-timeline-date">' + dateLabel + '</h3>' +
+          '<div class="home-latest-wiki-cards card-grid home-latest-wiki-grid">' + groupCards + '</div>' +
+          '</section>'
+        );
+      }
       bodyHtml = '<div class="home-latest-wiki-timeline">' + bodyHtml + '</div>';
     } else {
-      var cards = items.map(function (meta) { return renderCard(meta, !fromLog); }).join('');
+      var itemsCards = '';
+      for (var j = 0; j < items.length; j++) {
+        itemsCards += renderCard(items[j], !fromLog);
+      }
       var wrapClass =
         items.length > 1 ? 'home-latest-wiki-cards card-grid home-latest-wiki-grid' : 'home-latest-wiki-cards';
-      bodyHtml = '<div class="' + wrapClass + '">' + cards + '</div>';
+      bodyHtml = '<div class="' + wrapClass + '">' + itemsCards + '</div>';
     }
     mount.innerHTML = introHtml + bodyHtml;
   }
@@ -2187,7 +2193,11 @@
       removeLoadingState(container);
       return;
     }
-    container.innerHTML = items.map(renderItem).join('');
+    var html = '';
+    for (var i = 0; i < items.length; i++) {
+      html += renderItem(items[i]);
+    }
+    container.innerHTML = html;
     removeLoadingState(container);
   }
 
@@ -3367,21 +3377,28 @@
     renderInternalLinks(referenceEl, modulePage.references, detailPages, { emptyText: '当前模块暂无 references。' });
     if (roadmapEl) {
       const roadmapPages = pages.roadmap_pages || {};
-      roadmapEl.innerHTML = Array.isArray(modulePage.roadmaps) && modulePage.roadmaps.length ? modulePage.roadmaps.map(function (id) {
-        const page = roadmapPages[id] || {};
-        return [
-          '<article class="card data-card">',
-          '  <div>',
-          '    <h3><a href="' + escapeHtml(roadmapHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
-          '    <p class="card-meta">roadmap_page</p>',
-          '    <p>' + escapeHtml(page.summary || '当前路线暂无摘要') + '</p>',
-          '  </div>',
-          '  <div class="chip-list">',
-          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(roadmapHref(id)) + '">打开路线页</a>',
-          '  </div>',
-          '</article>'
-        ].join('');
-      }).join('') : '<article class="card"><p>当前模块暂无 roadmap 入口。</p></article>';
+      if (Array.isArray(modulePage.roadmaps) && modulePage.roadmaps.length) {
+        var roadmapHtml = '';
+        for (var i = 0; i < modulePage.roadmaps.length; i++) {
+          var id = modulePage.roadmaps[i];
+          const page = roadmapPages[id] || {};
+          roadmapHtml += [
+            '<article class="card data-card">',
+            '  <div>',
+            '    <h3><a href="' + escapeHtml(roadmapHref(id)) + '">' + escapeHtml(page.title || id) + '</a></h3>',
+            '    <p class="card-meta">roadmap_page</p>',
+            '    <p>' + escapeHtml(page.summary || '当前路线暂无摘要') + '</p>',
+            '  </div>',
+            '  <div class="chip-list">',
+            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(roadmapHref(id)) + '">打开路线页</a>',
+            '  </div>',
+            '</article>'
+          ].join('');
+        }
+        roadmapEl.innerHTML = roadmapHtml;
+      } else {
+        roadmapEl.innerHTML = '<article class="card"><p>当前模块暂无 roadmap 入口。</p></article>';
+      }
       removeLoadingState(roadmapEl);
     }
     renderChipList(relatedModuleEl, modulePage.related_modules, {
@@ -3579,6 +3596,15 @@
     const ingestBadge = hasIngest
       ? '<span class="ingest-badge" title="已有 sources/ ingest 来源：' + escapeHtml(detail.ingest_source || '') + '">📄 ingest</span>'
       : '<span class="ingest-badge ingest-missing" title="暂无 sources/papers/ 对应条目">— no ingest</span>';
+    var relatedHtml = '';
+    if (related.length) {
+      for (var i = 0; i < related.length; i++) {
+        relatedHtml += '<li><a href="' + escapeHtml(detailHref(related[i])) + '"><code>' + escapeHtml(related[i]) + '</code></a></li>';
+      }
+    } else {
+      relatedHtml = '<li>当前节点暂无 related</li>';
+    }
+
     return [
       '<article class="card data-card" data-layer="' + escapeHtml(node.layer || 'meta') + '">',
       '  <div>',
@@ -3590,7 +3616,7 @@
       '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
       '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
       '  </div>',
-      '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
+      '  <ul>' + relatedHtml + '</ul>',
       '</article>'
     ].join('');
   }
@@ -3602,17 +3628,25 @@
       acc[layer].push(node);
       return acc;
     }, {});
-    return Object.keys(grouped).map(function (layer) {
-      const layerNodes = grouped[layer];
-      return [
-        '<details class="tech-map-group" open>',
-        '  <summary class="tech-map-group-summary">' + escapeHtml(layer) + ' · ' + escapeHtml(layerNodes.length) + '</summary>',
-        '  <div class="card-grid data-grid tech-map-group-grid">',
-             layerNodes.map(function (node) { return renderTechMapNodeCard(node, detailPages); }).join(''),
-        '  </div>',
-        '</details>'
-      ].join('');
-    }).join('');
+    var html = '';
+    for (var layer in grouped) {
+      if (Object.prototype.hasOwnProperty.call(grouped, layer)) {
+        const layerNodes = grouped[layer];
+        var cardsHtml = '';
+        for (var i = 0; i < layerNodes.length; i++) {
+          cardsHtml += renderTechMapNodeCard(layerNodes[i], detailPages);
+        }
+        html += [
+          '<details class="tech-map-group" open>',
+          '  <summary class="tech-map-group-summary">' + escapeHtml(layer) + ' · ' + escapeHtml(layerNodes.length) + '</summary>',
+          '  <div class="card-grid data-grid tech-map-group-grid">',
+               cardsHtml,
+          '  </div>',
+          '</details>'
+        ].join('');
+      }
+    }
+    return html;
   }
 
   function renderTechMapNodes(nodes, detailPages, activeLayer) {
@@ -3855,6 +3889,10 @@
         const references = Array.isArray(modulePage.references) ? modulePage.references.length : 0;
         const roadmaps = Array.isArray(modulePage.roadmaps) ? modulePage.roadmaps.length : 0;
         const entries = Array.isArray(modulePage.entry_items) ? modulePage.entry_items.slice(0, 4) : [];
+        var entriesHtml = '';
+        for (var i = 0; i < entries.length; i++) {
+          entriesHtml += '    <li><a href="' + escapeHtml(detailHref(entries[i])) + '"><code>' + escapeHtml(entries[i]) + '</code></a></li>';
+        }
         return [
           '<article class="card data-card">',
           '  <div>',
@@ -3868,7 +3906,7 @@
           '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>',
           '  </div>',
           '  <ul>',
-               entries.map(function (item) { return '    <li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join(''),
+               entriesHtml,
           '  </ul>',
           '</article>'
         ].join('');
