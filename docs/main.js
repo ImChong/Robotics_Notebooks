@@ -130,7 +130,7 @@
   }
 
   // 详情页正文与独立 UI 区块重复展示的 H2 导航节（与 wiki_to_marp 跳过规则对齐子集）。
-  var DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面'];
+  var DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面', '参考来源'];
 
   function stripDetailContentSections(markdown, sectionLabels) {
     var labels = Array.isArray(sectionLabels) ? sectionLabels : [];
@@ -2318,6 +2318,25 @@
     });
   }
 
+  function normalizeSourceLink(entry) {
+    if (entry == null) return { label: '', url: '', detail_id: '' };
+    if (typeof entry === 'string') {
+      return { label: entry, url: entry, detail_id: '' };
+    }
+    return {
+      label: String(entry.label || entry.url || entry.detail_id || ''),
+      url: String(entry.url || ''),
+      detail_id: String(entry.detail_id || '')
+    };
+  }
+
+  function sourceLinkHref(entry) {
+    var item = normalizeSourceLink(entry);
+    if (item.detail_id) return detailHref(item.detail_id);
+    if (item.url && isSafeUrl(item.url)) return item.url;
+    return '';
+  }
+
   function renderSourceCards(container, links, emptyText) {
     if (!container) return;
     if (!Array.isArray(links) || !links.length) {
@@ -2326,16 +2345,26 @@
       return;
     }
 
-    container.innerHTML = links.map(function (url) {
-      const safe = isSafeUrl(url);
-      const linkHtml = safe
-        ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">打开来源</a>'
-        : '<span class="data-meta">来源链接无效或不安全</span>';
+    container.innerHTML = links.map(function (entry) {
+      const item = normalizeSourceLink(entry);
+      const href = sourceLinkHref(entry);
+      const isExternal = href && /^https?:/i.test(href);
+      const linkHtml = href
+        ? (isExternal
+          ? '<a href="' + escapeHtml(href) + '" target="_blank" rel="noopener noreferrer">打开来源</a>'
+          : '<a href="' + escapeHtml(href) + '">打开详情</a>')
+        : '';
+      const titleHtml = linkHtml
+        ? '<h3>' + linkHtml + '</h3>'
+        : '<h3>' + escapeHtml(item.label || '参考条目') + '</h3>';
+      const metaHtml = href
+        ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(item.label || href) + '</code></p>'
+        : '<p class="data-submeta">' + escapeHtml(item.label || '') + '</p>';
       return [
         '<article class="card data-card">',
         '  <div>',
-        '    <h3>' + linkHtml + '</h3>',
-        '    <p class="data-submeta detail-source-url" title="' + escapeHtml(url) + '"><code>' + escapeHtml(url) + '</code></p>',
+        '    ' + titleHtml,
+        '    ' + metaHtml,
         '  </div>',
         '</article>'
       ].join('');
@@ -3716,9 +3745,13 @@
             '  </div>',
             '  <div>',
             '    <h4>来源链接</h4>',
-            '    <ul>' + (sources.length ? sources.map(function (url) {
-                   const safe = isSafeUrl(url);
-                   return '<li>' + (safe ? '<a href="' + escapeHtml(url) + '" target="_blank" rel="noopener noreferrer">' + escapeHtml(url) + '</a>' : '<code>' + escapeHtml(url) + '</code> (unsafe)') + '</li>';
+            '    <ul>' + (sources.length ? sources.map(function (entry) {
+                   const item = normalizeSourceLink(entry);
+                   const href = sourceLinkHref(entry);
+                   const label = item.label || href || '参考条目';
+                   if (!href) return '<li>' + escapeHtml(label) + '</li>';
+                   const external = /^https?:/i.test(href);
+                   return '<li><a href="' + escapeHtml(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtml(label) + '</a></li>';
                  }).join('') : '<li>暂无来源链接</li>') + '</ul>',
             '  </div>',
             '  <div class="chip-list">',

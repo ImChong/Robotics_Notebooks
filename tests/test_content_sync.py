@@ -416,7 +416,7 @@ console.log('ok');
     def test_main_js_strips_related_section_from_detail_body(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
-            "DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面']",
+            "DETAIL_CONTENT_SKIP_SECTIONS = ['关联页面', '参考来源']",
             "function stripDetailContentSections(markdown, sectionLabels)",
             "stripDetailContentSections(detailPage.content_markdown || '', DETAIL_CONTENT_SKIP_SECTIONS)",
         ]
@@ -468,6 +468,49 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_strip_detail_content_sections_removes_reference_sources_heading_block(self):
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('var DETAIL_CONTENT_SKIP_SECTIONS');
+const fnStart = content.indexOf('function stripDetailContentSections', start);
+const fnEnd = content.indexOf('function buildMarkdownRouteIndex', fnStart);
+eval(content.slice(start, fnEnd));
+const sample = [
+  '## 核心内容',
+  '',
+  '正文段落。',
+  '',
+  '## 参考来源',
+  '',
+  '- [Paper](https://example.com/paper)',
+  '',
+  '## 常见误区',
+  '',
+  '误区说明。',
+].join('\n');
+const stripped = stripDetailContentSections(sample, DETAIL_CONTENT_SKIP_SECTIONS);
+if (stripped.includes('## 参考来源')) throw new Error('reference heading should be removed');
+if (stripped.includes('example.com/paper')) throw new Error('reference links should be removed');
+if (!stripped.includes('## 常见误区')) throw new Error('missing trailing heading');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
+    def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
         style_content = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
         expected_snippets = [
             ".heading-anchor-link",
