@@ -3540,6 +3540,20 @@
       setActiveTopic(topicParam);
     }
 
+    /* ?community=<id> URL 参数：从详情页"所属社区"徽标跳入时聚焦该社区，
+       与图例点击同源（focusedCommunityId），布局稳定后框定该社区可见节点 */
+    const communityParam = new URLSearchParams(location.search).get('community');
+    if (communityParam && communityMetaMap.has(communityParam)) {
+      focusedCommunityId = communityParam;
+      renderLegend();
+      renderFilterPanel();
+      applyFilters();
+      updateFilterCount();
+      const fitFocusedCommunity = () => fitToVisibleNodes();
+      simulation.on('end.community', () => { fitFocusedCommunity(); simulation.on('end.community', null); });
+      setTimeout(fitFocusedCommunity, 1400);
+    }
+
     const focusId = new URLSearchParams(location.search).get('focus');
     if (focusId) {
       const focusNode = nodes.find(n => n.id === focusId ||
