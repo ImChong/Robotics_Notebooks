@@ -54,7 +54,6 @@
               <div id="detailCommunityBadges" class="detail-topic-badges" aria-label="所属社区" hidden></div>
               <div id="detailTopicBadges" class="detail-topic-badges" aria-label="所属专题" hidden></div>
             </div>
-            <div id="detailMetaSource" class="detail-meta-source-wrap" hidden></div>
           </aside>
         </div>
         <aside id="detailMiniMapWrap" class="detail-mini-map" aria-label="知识地图局部视图" hidden>
@@ -109,7 +108,12 @@
         <div class="detail-content-main">
           <section id="detail-content-body">
             <h2 class="section-title">正文同步内容</h2>
-            <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
+            <div class="detail-content-sync">
+              <article id="detailContent" class="detail-markdown-body data-loading">正在读取正文同步内容…</article>
+              <div class="detail-content-sync-foot">
+                <a id="detailContentSourceLink" class="detail-mini-map-all-link" href="#" target="_blank" rel="noopener noreferrer" hidden>在 GitHub 查看源文件 →</a>
+              </div>
+            </div>
           </section>
 
           <section class="section" id="detail-tags" style="padding: 40px 0;">
