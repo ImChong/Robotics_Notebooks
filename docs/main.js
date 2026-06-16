@@ -148,8 +148,15 @@
     var pendingReferenceHeading = null;
     var referencePlainLines = [];
 
+    function referencePlainLinesHasText() {
+      for (var p = 0; p < referencePlainLines.length; p++) {
+        if (String(referencePlainLines[p] || '').trim()) return true;
+      }
+      return false;
+    }
+
     function flushReferenceSection() {
-      if (referencePlainLines.length) {
+      if (referencePlainLinesHasText()) {
         if (pendingReferenceHeading) out.push(pendingReferenceHeading);
         for (var r = 0; r < referencePlainLines.length; r++) {
           out.push(referencePlainLines[r]);
@@ -175,7 +182,7 @@
         continue;
       }
       if (inReferenceSection) {
-        if (!trimmed || !referenceSourceLineHasLink(line)) {
+        if (!referenceSourceLineHasLink(line)) {
           referencePlainLines.push(line);
         }
         continue;
