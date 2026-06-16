@@ -2,8 +2,8 @@
 
 最后更新：2026-06-15（P3 详情页专题徽标交付，V24 全部条目收口）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v23.md`](archive/tech-stack-next-phase-checklist-v23.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v23.md`](tech-stack-next-phase-checklist-v23.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 
