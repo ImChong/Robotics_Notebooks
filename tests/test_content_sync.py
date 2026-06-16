@@ -513,6 +513,48 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_strip_linked_reference_source_lines_removes_heading_when_only_links(self):
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function referenceSourceLineHasLink');
+const fnEnd = content.indexOf('function renderHomeStats', start);
+eval(content.slice(start, fnEnd));
+const sample = [
+  '## 核心内容',
+  '',
+  '正文段落。',
+  '',
+  '## 参考来源',
+  '',
+  '- [Paper](https://example.com/paper)',
+  '- [Repo](https://github.com/example/repo)',
+  '',
+  '## 常见误区',
+  '',
+  '误区说明。',
+].join('\n');
+const stripped = stripLinkedReferenceSourceLines(sample);
+if (stripped.includes('## 参考来源')) throw new Error('reference heading should be removed when only links');
+if (stripped.includes('example.com/paper')) throw new Error('linked reference should be removed from body');
+if (!stripped.includes('## 常见误区')) throw new Error('missing trailing heading');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_style_css_contains_heading_anchor_active_toc_and_hash_target_styles(self):
         style_content = (ROOT / "docs" / "style.css").read_text(encoding="utf-8")
         expected_snippets = [
