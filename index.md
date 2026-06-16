@@ -922,6 +922,10 @@ SORT type ASC
 - [PyTorch](entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
 - [quad-swarm-rl](entities/quad-swarm-rl.md) — quad-swarm-rl**（[Zhehui-Huang/quad-swarm-rl](https://github.com/Zhehui-Huang/quad-swarm-rl)）是 **多四 `📅unknown` `[entity_page]`
 - [四足机器人（Quadruped Robot）](entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
+- [Qwen-RobotManip](entities/qwen-robot-manip.md) — Qwen-RobotManip 是通义操作 VLA 基础模型：Qwen3.5-4B VL + flow-matching DiT，以 80 维 canonical state-action、相机系 EEF delta 与 in-context 适配实现跨本体对齐。 `📅2026-06-16` `[entity_page]`
+- [Qwen-RobotNav](entities/qwen-robot-nav.md) — Qwen-RobotNav 是基于 Qwen3-VL 的可扩展导航模型：以任务模式与可控观测参数统一 VLN/PointNav/ObjNav/跟踪/闭环驾驶，15.6M 样本单权重。 `📅2026-06-16` `[entity_page]`
+- [Qwen-Robot Suite](entities/qwen-robot-suite.md) — Qwen-Robot Suite 是通义团队的具身基础模型套件：Nav / Manip / World 三模型以语言优先接口暴露，可与通用 Qwen 规划器组合成 agentic 物理智能闭环。 `📅2026-06-16` `[entity_page]`
+- [Qwen-RobotWorld](entities/qwen-robot-world.md) — Qwen-RobotWorld 是通义具身世界模型：以自然语言统一操作/驾驶/导航动作接口，MMDiT + Qwen2.5-VL 在 EWK 8.6M 对上联合训练。 `📅2026-06-16` `[entity_page]`
 - [Qwen-VLA](entities/qwen-vla.md) — Qwen-VLA**（[QwenLM/Qwen-VLA](https://github.com/QwenLM/Qwen-VLA)）把 **操作（manipulation）**、**视觉–语言导航（ `📅unknown` `[entity_page]`
 - [RLDX-1](entities/rldx-1.md) — RLDX-1** 是面向类人**灵巧操作**的 **Vision-Language-Action（VLA）** 开源模型与代码库（技术报告见 arXiv:2605.03269）。在继承大规模 VL `📅unknown` `[entity_page]`
 - [Robot Explorer](entities/robot-explorer.md) — Robot Explorer** 是一个基于 Web 的交互式 3D 机器人探索工具，专注于机器人动力学分析、运动学可视化与教育演示。它由开发者 `ferrolho` 维护，支持在浏览器中直接操控 `📅unknown` `[entity_page]`

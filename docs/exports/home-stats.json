@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-06-16",
-  "node_count": 1186,
-  "edge_count": 7331,
+  "node_count": 1190,
+  "edge_count": 7367,
   "coverage": {
-    "covered": 1170,
-    "total": 1184,
+    "covered": 1174,
+    "total": 1188,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/qwen-robot-suite.md",
+      "detail_id": "entity-qwen-robot-suite",
+      "label": "Qwen-Robot Suite",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/qwen-robot-nav.md",
+      "detail_id": "entity-qwen-robot-nav",
+      "label": "Qwen-RobotNav",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/qwen-robot-manip.md",
+      "detail_id": "entity-qwen-robot-manip",
+      "label": "Qwen-RobotManip",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/qwen-robot-world.md",
+      "detail_id": "entity-qwen-robot-world",
+      "label": "Qwen-RobotWorld",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/qwen-vla.md",
+      "detail_id": "entity-qwen-vla",
+      "label": "Qwen-VLA",
+      "type": "entity",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/generative-world-models.md",
+      "detail_id": "wiki-methods-generative-world-models",
+      "label": "Generative World Models (生成式世界模型)",
+      "type": "method",
+      "recency": "2026-06-16",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/humanoid-robot.md",
       "detail_id": "entity-humanoid-robot",
@@ -103,76 +167,12 @@
       "type": "entity",
       "recency": "2026-06-15",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/curobo.md",
-      "detail_id": "entity-curobo",
-      "label": "cuRobo",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/cad-skills.md",
-      "detail_id": "entity-cad-skills",
-      "label": "CAD Skills",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/text-to-cad.md",
-      "detail_id": "wiki-concepts-text-to-cad",
-      "label": "文字生成 CAD（Text-to-CAD）",
-      "type": "concept",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/urdf-studio.md",
-      "detail_id": "entity-urdf-studio",
-      "label": "URDF-Studio",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mattpocock-skills.md",
-      "detail_id": "entity-mattpocock-skills",
-      "label": "Skills For Real Engineers（mattpocock）",
-      "type": "entity",
-      "recency": "2026-06-15",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/backpropagation.md",
-      "detail_id": "wiki-concepts-backpropagation",
-      "label": "反向传播算法 (Backpropagation)",
-      "type": "concept",
-      "recency": "2026-06-15",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/humanoid-robot.md",
-    "detail_id": "entity-humanoid-robot",
-    "label": "人形机器人（Humanoid Robot）",
+    "path": "wiki/entities/qwen-robot-suite.md",
+    "detail_id": "entity-qwen-robot-suite",
+    "label": "Qwen-Robot Suite",
     "type": "entity",
     "recency": "2026-06-16",
     "source": "log.md"

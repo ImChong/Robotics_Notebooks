@@ -12,10 +12,14 @@ related:
   - ../tasks/vision-language-navigation.md
   - ../tasks/loco-manipulation.md
   - ./xiaomi-robotics-0.md
+  - ./qwen-robot-suite.md
+  - ./qwen-robot-manip.md
+  - ./qwen-robot-nav.md
   - ../overview/vla-open-source-repro-landscape-2025.md
 sources:
   - ../../sources/repos/qwen-vla.md
   - ../../sources/papers/qwenvla_arxiv_2605_30280.md
+  - ../../sources/blogs/qwen_robot_suite.md
 summary: "Qwen-VLA 是通义团队开源的统一 VLA 通才：Qwen3.5-4B 视觉–语言骨干 + 1.15B DiT flow-matching 动作解码器，以 embodiment-aware 文本 prompt 在同一权重下覆盖操作、导航与轨迹预测，渐进训练含动作预训练、多模态 CPT、SFT 与 RL。"
 ---
 
@@ -44,6 +48,7 @@ summary: "Qwen-VLA 是通义团队开源的统一 VLA 通才：Qwen3.5-4B 视觉
 
 - **跨任务统一：** 同一模型同时出现在 **LIBERO / RoboTwin** 类操作基准与 **R2R / RxR** 类导航基准的 README 表格中，便于对照 [VLN](../tasks/vision-language-navigation.md) 与 [Manipulation](../tasks/manipulation.md) 是否应共享策略抽象。
 - **Qwen3 生态的「重炮」对照：** 相对 [StarVLA](../methods/star-vla.md) 的极简 MLP 头基准，Qwen-VLA 代表 **大规模渐进预训练 + RL** 的通才路线；相对 [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) 的 **异步 chunk 部署** 叙事，Qwen-VLA 更突出 **单 checkpoint 跨本体 / 跨任务** 与 **OOD 真机** 表。
+- **与 [Qwen-Robot Suite](./qwen-robot-suite.md) 的分工：** 通才 **单权重**（操作+导航+轨迹）vs Suite **三模型分域**（[Nav](./qwen-robot-nav.md) / [Manip](./qwen-robot-manip.md) / [World](./qwen-robot-world.md)）+ agent 工具接口；[Qwen-RobotManip](./qwen-robot-manip.md) 与本文 **架构同族**（Qwen3.5 + DiT flow），但更强调 **跨本体对齐、H2R 合成与 OOD 评测 north star**。
 - **开源入口完整：** 官方仓库提供技术报告、博客与 Demo 链接，便于与 [VLA 方法页](../methods/vla.md) 及 [2025 开源复现景观](../overview/vla-open-source-repro-landscape-2025.md) 串联阅读。
 
 ## 核心结构/机制
@@ -115,6 +120,8 @@ flowchart TB
 - [Xiaomi-Robotics-0](./xiaomi-robotics-0.md) — Qwen3-VL + DiT flow 的另一开源实例（偏实时 chunk）
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — R2R / RxR 任务语境
 - [Loco-manipulation](../tasks/loco-manipulation.md) — 操作与移动联合任务语境
+- [Qwen-Robot Suite](./qwen-robot-suite.md) — 通义分域具身三件套与 agent 闭环
+- [Qwen-RobotManip](./qwen-robot-manip.md) — Suite 内操作专精 foundation
 
 ## 推荐继续阅读
 

@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] ingest | sources/blogs/qwen_robot_suite.md — 入库 Qwen-Robot Suite 总览与 Nav/Manip/World 子博客；新建 wiki/entities/qwen-robot-{suite,nav,manip,world}.md；交叉 qwen-vla、vla、vln、generative-world-models
+
+- 原始资料：[`sources/blogs/qwen_robot_suite.md`](sources/blogs/qwen_robot_suite.md)（<https://qwen.ai/blog?id=qwen-robotsuite>）、[`qwen_robot_nav.md`](sources/blogs/qwen_robot_nav.md)、[`qwen_robot_manip.md`](sources/blogs/qwen_robot_manip.md)、[`qwen_robot_world.md`](sources/blogs/qwen_robot_world.md)
+- 沉淀页面：[`wiki/entities/qwen-robot-suite.md`](wiki/entities/qwen-robot-suite.md)、[`wiki/entities/qwen-robot-nav.md`](wiki/entities/qwen-robot-nav.md)、[`wiki/entities/qwen-robot-manip.md`](wiki/entities/qwen-robot-manip.md)、[`wiki/entities/qwen-robot-world.md`](wiki/entities/qwen-robot-world.md)
+- 交叉更新：[`wiki/entities/qwen-vla.md`](wiki/entities/qwen-vla.md)、[`wiki/methods/vla.md`](wiki/methods/vla.md)、[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/methods/generative-world-models.md`](wiki/methods/generative-world-models.md)
 ## [2026-06-16] structural | wiki/entities/humanoid-robot.md — 补全 HIL（Hardware-in-the-Loop）及正文全部缩写速查
 
 - 页面：[`wiki/entities/humanoid-robot.md`](wiki/entities/humanoid-robot.md) — 流程图「HIL 与台架安全测试」指硬件在环，非 Hybrid Imitation Learning

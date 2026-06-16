@@ -39,6 +39,7 @@ sources:
 - **机器人场景**：家庭或服务机器人需要理解「穿过客厅，在冰箱左侧停下」这类指令；VLN 提供了可复现的 **语言–几何–动作** 闭环基准。
 - **与纯导航的区别**：传统导航多依赖地图与坐标目标；VLN 强调 **语义描述**（地标、相对运动），更贴近人类口头指路。
 - **与 VLA 的衔接**：高层策略可将 VLN 视作「语言条件下的路径生成」子问题；仿真基准（如 Matterport3D 上的 **R2R / RxR**）与真实视频蒸馏数据（如室内 tour）常混合使用以缓解 **sim–real** 与 **轨迹分布** 差异。通才 VLA 如 [Qwen-VLA](../entities/qwen-vla.md) 在官方 README 中把 **操作与 VLN 基准** 放进 **同一 checkpoint** 联合评测，可作为「导航是否应并入统一 VLA」的工程参照。
+- **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。
 
 ## 核心要素
 
