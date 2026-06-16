@@ -293,6 +293,7 @@
 | [x] [fsck_superpowers_announcement_2025-10-09.md](blogs/fsck_superpowers_announcement_2025-10-09.md) | Jesse Vincent：Superpowers 发布文（skills、插件启动 hook、worktree / 子代理 / 技能压力测试叙事） |
 | [x] [google-research-barkour-quadruped-agility-2023-05-26.md](blogs/google-research-barkour-quadruped-agility-2023-05-26.md) | Google Research 官方博客：Barkour 四足敏捷基准与 Locomotion-Transformer 叙事（2023-05-26） |
 | [x] [worldlabs_spark_2_0_streaming_3dgs.md](blogs/worldlabs_spark_2_0_streaming_3dgs.md) | World Labs：Spark 2.0 流式 3DGS（LoD splat 树、.RAD、虚拟 splat 分页）技术博客归档 |
+| [x] [current_robotics_curr0_loco_dexterous_manipulation.md](blogs/current_robotics_curr0_loco_dexterous_manipulation.md) | Current Robotics：Curr-0 人形 loco-dexterous manipulation 全栈（HumanEx 可穿戴数据 + 三系统单策略 + 多模态世界模型评测/后训练，2026-06） |
 
 ### sites/ — 网站与在线工具归档
 | 文件 | 内容 |

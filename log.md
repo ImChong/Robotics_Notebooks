@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] ingest | sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md — Current Robotics Curr-0 人形 loco-dexterous 全栈博客入库
+
+- 原始资料：[`sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md`](sources/blogs/current_robotics_curr0_loco_dexterous_manipulation.md)（<https://current-robotics.com/blog/curr-0>）
+- 沉淀页面：[`wiki/entities/current-robotics-curr0.md`](wiki/entities/current-robotics-curr0.md)
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)（路线 §18 + 关联页）、[`wiki/entities/wuji-robotics.md`](wiki/entities/wuji-robotics.md)、[`sources/README.md`](sources/README.md)
+
 ## [2026-06-16] ingest | sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md — Agent Reach 抓取深蓝《具身智能基础》专栏 04（RL 最小闭环）并并入运动控制路线
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；Jina Reader 对 `mp.weixin.qq.com` 返回 CAPTCHA，未采用
