@@ -2735,51 +2735,94 @@
     link.hidden = false;
   }
 
-  // 详情页"属于 X 专题"轻量徽标：复用 graph.html 的专题命中规则（topic-filters.js），
-  // 命中则给出跳转图谱专题视图的链接；无命中或无依赖时静默隐藏（空态降级）。
-  function renderDetailTopicBadges(detailPage) {
+  // 专题徽标：复用 graph.html 的专题命中规则（topic-filters.js），rowId 可复用于路线页等。
+  function renderMetaTopicBadges(currentPath, rowId) {
+    var topicRowId = rowId || 'detailMetaTopic';
     var TF = window.RNTopicFilters;
-    var currentPath = (detailPage && detailPage.path) || '';
     if (!TF || !currentPath) {
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow(topicRowId, '所属专题', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); return; }
+      if (!node) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
       var topics = TF.topicsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); return; }
+      if (!topics.length) { renderDetailMetaItemRow(topicRowId, '所属专题', ''); return; }
       var html = topics.map(function (key) {
         var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
         return '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }).join('');
-      renderDetailMetaItemRow('detailMetaTopic', '所属专题', html);
-    }).catch(function () { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); });
+      renderDetailMetaItemRow(topicRowId, '所属专题', html);
+    }).catch(function () { renderDetailMetaItemRow(topicRowId, '所属专题', ''); });
   }
 
-  // 详情页"所属社区"轻量徽标：复用 link-graph.json 的社区划分定位当前页所在社区，
-  // 给出跳转图谱对应社区聚焦视图的链接；当前页不在图谱（无节点 / 无社区）时静默隐藏。
-  function renderDetailCommunityBadge(detailPage) {
-    var currentPath = (detailPage && detailPage.path) || '';
+  function renderDetailTopicBadges(detailPage) {
+    return renderMetaTopicBadges((detailPage && detailPage.path) || '', 'detailMetaTopic');
+  }
+
+  // 社区徽标：复用 link-graph.json 的社区划分，rowId 可复用于路线页等。
+  function renderMetaCommunityBadge(currentPath, rowId) {
+    var communityRowId = rowId || 'detailMetaCommunity';
     if (!currentPath) {
-      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
+      renderDetailMetaItemRow(communityRowId, '所属社区', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node || !node.community) { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); return; }
+      if (!node || !node.community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
-      if (!community) { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); return; }
+      if (!community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var label = shortenCommunityLabel(community.label);
       var html = '<a class="detail-meta-badge detail-community-badge" href="graph.html?community=' +
         encodeURIComponent(community.id) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
         '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
-      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', html);
-    }).catch(function () { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); });
+      renderDetailMetaItemRow(communityRowId, '所属社区', html);
+    }).catch(function () { renderDetailMetaItemRow(communityRowId, '所属社区', ''); });
+  }
+
+  function renderDetailCommunityBadge(detailPage) {
+    return renderMetaCommunityBadge((detailPage && detailPage.path) || '', 'detailMetaCommunity');
+  }
+
+  function renderRoadmapMetaPanel(roadmapPage, roadmapId, detailPages) {
+    var metaEl = document.getElementById('roadmapMeta');
+    var detail = (detailPages && detailPages[roadmapId]) || {};
+    var stages = (roadmapPage && roadmapPage.stages) || [];
+    var updatedRow = document.getElementById('roadmapMetaUpdated');
+
+    if (updatedRow) {
+      if (detail.updated) {
+        updatedRow.innerHTML = '<strong>更新时间：</strong>' + escapeHtml(detail.updated);
+        updatedRow.classList.remove('data-meta');
+        updatedRow.hidden = false;
+      } else {
+        updatedRow.hidden = true;
+        updatedRow.innerHTML = '';
+      }
+    }
+
+    if (stages.length) {
+      var stageLabel = stages.length + ' 个阶段';
+      var stagesHtml = '<a class="detail-meta-badge" href="#roadmap-flow" title="跳转到阶段速览">' +
+        '<span>🗺️</span><span>' + escapeHtml(stageLabel) + '</span></a>';
+      renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', stagesHtml);
+    } else {
+      renderDetailMetaItemRow('roadmapMetaStages', '学习阶段', '');
+    }
+
+    renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
+    renderDetailMetaItemRow('roadmapMetaTopic', '所属专题', '');
+    if (metaEl) removeLoadingState(metaEl);
+
+    var graphPath = detail.path || '';
+    return Promise.all([
+      renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
+      renderMetaTopicBadges(graphPath, 'roadmapMetaTopic')
+    ]);
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -3400,14 +3443,7 @@
       var ogDescRoadmap = document.getElementById('metaOgDescription');
       if (ogDescRoadmap) ogDescRoadmap.setAttribute('content', roadmapSummaryText.slice(0, 200));
     }
-    if (metaEl) {
-      metaEl.innerHTML = [
-        '<p><strong>id：</strong><code>' + escapeHtml(roadmapPage.id || roadmapId) + '</code></p>',
-        '<p><strong>阶段数：</strong>' + escapeHtml((roadmapPage.stages || []).length) + '</p>',
-        '<p><strong>互链枢纽：</strong>下方模块展示全站 wiki 链接图中总度数最高的 10 个页面（数据来自 <code>graph-stats.json</code>）。</p>'
-      ].join('');
-      removeLoadingState(metaEl);
-    }
+    renderRoadmapMetaPanel(roadmapPage, roadmapId, detailPages);
     if (breadcrumb) {
       breadcrumb.innerHTML = [
         '<a href="index.html">首页</a>',
