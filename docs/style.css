@@ -645,45 +645,58 @@ body.sponsor-dialog-open {
   max-width: 100%;
   padding: 14px 16px;
 }
-.detail-badge-row {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
-  margin-top: 14px;
+.detail-meta-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 8px;
+  font-size: .88rem;
 }
-.detail-badge-row .detail-topic-badges {
-  margin-top: 0;
+.detail-meta-list p {
+  min-width: 0;
+  margin: 0;
 }
-.detail-topic-badges {
+.detail-meta-list code,
+.empty-state code {
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  font-size: .92em;
+  white-space: normal;
+}
+/* 元信息栏宽度有限：anywhere 会在 graph-stats.json 等标识符中间断行；改为 normal 优先整段 code 换行 */
+.detail-meta-list code {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.detail-meta-item {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 6px 8px;
 }
-.detail-topic-badges-label {
-  font-size: .78rem;
-  color: var(--text-muted);
+.detail-meta-item strong {
+  font-weight: 650;
 }
-.detail-topic-badge {
+.detail-meta-badge {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  padding: 3px 10px;
+  padding: 2px 9px;
   border-radius: 999px;
   border: 1px solid rgba(0, 212, 255, 0.3);
   background: rgba(0, 212, 255, 0.06);
   color: var(--text);
-  font-size: .8rem;
+  font-size: inherit;
+  line-height: 1.35;
   text-decoration: none;
   transition: background .15s ease, border-color .15s ease;
 }
-.detail-topic-badge:hover {
+.detail-meta-badge:hover {
   background: rgba(0, 212, 255, 0.14);
   border-color: rgba(0, 212, 255, 0.5);
 }
-.detail-topic-badge span:first-child { font-size: .85rem; line-height: 1; }
+.detail-meta-badge span:first-child { font-size: .95em; line-height: 1; }
 .detail-community-badge {
   border-color: rgba(167, 139, 250, 0.35);
   background: rgba(167, 139, 250, 0.08);
@@ -744,30 +757,6 @@ body.sponsor-dialog-open {
 .detail-mini-map-svg .mini-node-current circle {
   stroke: var(--accent);
   stroke-width: 2.4px;
-}
-.detail-meta-list {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 8px;
-  font-size: .88rem;
-}
-.detail-meta-list p {
-  min-width: 0;
-  margin: 0;
-}
-.detail-meta-list code,
-.empty-state code {
-  padding: 2px 6px;
-  border-radius: 8px;
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  font-size: .92em;
-  white-space: normal;
-}
-/* 元信息栏宽度有限：anywhere 会在 graph-stats.json 等标识符中间断行；改为 normal 优先整段 code 换行 */
-.detail-meta-list code {
-  overflow-wrap: normal;
-  word-break: normal;
 }
 .detail-content-sync {
   border: 1px solid var(--border);

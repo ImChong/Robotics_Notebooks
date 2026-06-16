@@ -2705,13 +2705,16 @@
     }
   }
 
-  function syncDetailBadgeRowVisibility() {
-    var row = document.getElementById('detailBadgeRow');
-    var communityWrap = document.getElementById('detailCommunityBadges');
-    var topicWrap = document.getElementById('detailTopicBadges');
+  function renderDetailMetaItemRow(rowId, label, valueHtml) {
+    var row = document.getElementById(rowId);
     if (!row) return;
-    var hasVisible = (communityWrap && !communityWrap.hidden) || (topicWrap && !topicWrap.hidden);
-    row.hidden = !hasVisible;
+    if (!valueHtml) {
+      row.hidden = true;
+      row.innerHTML = '';
+      return;
+    }
+    row.innerHTML = '<strong>' + escapeHtml(label) + '：</strong>' + valueHtml;
+    row.hidden = false;
   }
 
   function renderDetailMetaSource(detailPage) {
@@ -2730,58 +2733,48 @@
   // 详情页"属于 X 专题"轻量徽标：复用 graph.html 的专题命中规则（topic-filters.js），
   // 命中则给出跳转图谱专题视图的链接；无命中或无依赖时静默隐藏（空态降级）。
   function renderDetailTopicBadges(detailPage) {
-    var wrap = document.getElementById('detailTopicBadges');
-    if (!wrap) return Promise.resolve();
     var TF = window.RNTopicFilters;
     var currentPath = (detailPage && detailPage.path) || '';
     if (!TF || !currentPath) {
-      wrap.hidden = true;
-      syncDetailBadgeRowVisibility();
+      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
+      if (!node) { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); return; }
       var topics = TF.topicsForNode({ id: node.id, community: node.community });
-      if (!topics.length) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
-      var html = '<span class="detail-topic-badges-label">所属专题</span>' + topics.map(function (key) {
+      if (!topics.length) { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); return; }
+      var html = topics.map(function (key) {
         var meta = TF.TOPIC_META[key] || { emoji: '🏷️', label: key };
-        return '<a class="detail-topic-badge" href="graph.html?topic=' + encodeURIComponent(key) +
+        return '<a class="detail-meta-badge" href="graph.html?topic=' + encodeURIComponent(key) +
           '" title="在知识图谱中查看「' + escapeHtml(meta.label) + '」专题视图">' +
           '<span>' + meta.emoji + '</span><span>' + escapeHtml(meta.label) + '</span></a>';
       }).join('');
-      wrap.innerHTML = html;
-      wrap.hidden = false;
-      syncDetailBadgeRowVisibility();
-    }).catch(function () { wrap.hidden = true; syncDetailBadgeRowVisibility(); });
+      renderDetailMetaItemRow('detailMetaTopic', '所属专题', html);
+    }).catch(function () { renderDetailMetaItemRow('detailMetaTopic', '所属专题', ''); });
   }
 
   // 详情页"所属社区"轻量徽标：复用 link-graph.json 的社区划分定位当前页所在社区，
   // 给出跳转图谱对应社区聚焦视图的链接；当前页不在图谱（无节点 / 无社区）时静默隐藏。
   function renderDetailCommunityBadge(detailPage) {
-    var wrap = document.getElementById('detailCommunityBadges');
-    if (!wrap) return Promise.resolve();
     var currentPath = (detailPage && detailPage.path) || '';
     if (!currentPath) {
-      wrap.hidden = true;
-      syncDetailBadgeRowVisibility();
+      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
       return Promise.resolve();
     }
 
     return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
       var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
-      if (!node || !node.community) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
+      if (!node || !node.community) { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
-      if (!community) { wrap.hidden = true; syncDetailBadgeRowVisibility(); return; }
+      if (!community) { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); return; }
       var label = shortenCommunityLabel(community.label);
-      wrap.innerHTML = '<span class="detail-topic-badges-label">所属社区</span>' +
-        '<a class="detail-topic-badge detail-community-badge" href="graph.html?community=' +
+      var html = '<a class="detail-meta-badge detail-community-badge" href="graph.html?community=' +
         encodeURIComponent(community.id) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
         '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
-      wrap.hidden = false;
-      syncDetailBadgeRowVisibility();
-    }).catch(function () { wrap.hidden = true; syncDetailBadgeRowVisibility(); });
+      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', html);
+    }).catch(function () { renderDetailMetaItemRow('detailMetaCommunity', '所属社区', ''); });
   }
 
   function renderDetailMiniMap(detailPage, detailPages) {
@@ -3026,12 +3019,8 @@
       }
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
-      var badgeRow = document.getElementById('detailBadgeRow');
-      if (badgeRow) badgeRow.hidden = true;
-      var communityBadges = document.getElementById('detailCommunityBadges');
-      if (communityBadges) communityBadges.hidden = true;
-      var topicBadges = document.getElementById('detailTopicBadges');
-      if (topicBadges) topicBadges.hidden = true;
+      renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
+      renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
         tocEl.innerHTML = '';
@@ -3095,11 +3084,27 @@
       removeLoadingState(summaryEl);
     }
     if (metaEl) {
-      var metaRows = [];
-      if (detailPage.updated) {
-        metaRows.push('<p><strong>更新时间：</strong>' + escapeHtml(detailPage.updated) + '</p>');
+      var updatedRow = document.getElementById('detailMetaUpdated');
+      var communityRow = document.getElementById('detailMetaCommunity');
+      var topicRow = document.getElementById('detailMetaTopic');
+      if (updatedRow) {
+        if (detailPage.updated) {
+          updatedRow.innerHTML = '<strong>更新时间：</strong>' + escapeHtml(detailPage.updated);
+          updatedRow.classList.remove('data-meta');
+          updatedRow.hidden = false;
+        } else {
+          updatedRow.hidden = true;
+          updatedRow.innerHTML = '';
+        }
       }
-      metaEl.innerHTML = metaRows.join('');
+      if (communityRow) {
+        communityRow.hidden = true;
+        communityRow.innerHTML = '';
+      }
+      if (topicRow) {
+        topicRow.hidden = true;
+        topicRow.innerHTML = '';
+      }
       removeLoadingState(metaEl);
     }
     renderDetailMetaSource(detailPage);
