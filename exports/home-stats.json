@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-17",
-  "node_count": 1195,
-  "edge_count": 7449,
+  "node_count": 1209,
+  "edge_count": 7616,
   "coverage": {
     "covered": 1179,
-    "total": 1193,
-    "percent": 99
+    "total": 1207,
+    "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-motion-retargeting.md",
+      "detail_id": "wiki-overview-topic-motion-retargeting",
+      "label": "动作重定向（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-vision-backbone.md",
+      "detail_id": "wiki-overview-topic-vision-backbone",
+      "label": "视觉感知骨干（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/pybullet.md",
       "detail_id": "entity-pybullet",
@@ -151,29 +167,13 @@
       "type": "method",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/vision-language-navigation.md",
-      "detail_id": "wiki-tasks-vision-language-navigation",
-      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
-      "type": "task",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/generative-world-models.md",
-      "detail_id": "wiki-methods-generative-world-models",
-      "label": "Generative World Models (生成式世界模型)",
-      "type": "method",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/pybullet.md",
-    "detail_id": "entity-pybullet",
-    "label": "PyBullet",
-    "type": "entity",
+    "path": "wiki/overview/topic-motion-retargeting.md",
+    "detail_id": "wiki-overview-topic-motion-retargeting",
+    "label": "动作重定向（专题汇总）",
+    "type": "overview",
     "recency": "2026-06-17",
     "source": "log.md"
   }

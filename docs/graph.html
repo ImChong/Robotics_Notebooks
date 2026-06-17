@@ -126,6 +126,72 @@
       color: #e6edf3;
     }
     .filter-topic-chip span:first-child { font-size: .9rem; line-height: 1; }
+    /* 专题汇总导读条（画布左上角，选中非「全量」专题时显示） */
+    .topic-intro-banner {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 12;
+      max-width: min(420px, calc(100% - 24px));
+      padding: 10px 12px 10px 11px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 212, 255, 0.28);
+      background: rgba(13, 17, 23, 0.88);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      pointer-events: auto;
+    }
+    .topic-intro-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+    .topic-intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #7dd3fc;
+      letter-spacing: .02em;
+    }
+    .topic-intro-hub-tag {
+      font-size: .62rem;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: rgba(0, 212, 255, 0.12);
+      color: rgba(255, 255, 255, 0.72);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    .topic-intro-text {
+      margin: 0 0 8px;
+      font-size: .76rem;
+      line-height: 1.55;
+      color: rgba(255, 255, 255, 0.62);
+    }
+    .topic-intro-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .74rem;
+      font-weight: 600;
+      color: #38bdf8;
+      text-decoration: none;
+    }
+    .topic-intro-link:hover { color: #7dd3fc; text-decoration: underline; }
+    .node-topic-hub .node-glow { fill-opacity: 0.28 !important; }
+    .node-topic-hub .node-circle {
+      stroke-width: 2.5px !important;
+      stroke-opacity: 0.85 !important;
+      filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.45));
+    }
+    .node-topic-hub .node-label {
+      font-weight: 700;
+      fill: rgba(255, 255, 255, 0.92) !important;
+    }
     .chip-group { display: flex; gap: 6px; flex-wrap: wrap; }
     .chip {
       height: 28px;
@@ -535,6 +601,19 @@
       border-color: rgba(22,90,180,0.45);
       color: #1659b4;
     }
+    [data-theme="light"] .topic-intro-banner {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(22, 89, 180, 0.25);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
+    }
+    [data-theme="light"] .topic-intro-badge { color: #1659b4; }
+    [data-theme="light"] .topic-intro-hub-tag {
+      background: rgba(22, 89, 180, 0.1);
+      color: rgba(15, 23, 42, 0.65);
+    }
+    [data-theme="light"] .topic-intro-text { color: rgba(15, 23, 42, 0.68); }
+    [data-theme="light"] .topic-intro-link { color: #1659b4; }
+    [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
     [data-theme="light"] #graph-back {
@@ -1368,6 +1447,14 @@
     <div id="graph-loading" hidden aria-hidden="true"></div>
     <svg id="graph-canvas"></svg>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
+    <div id="topic-intro-banner" class="topic-intro-banner" hidden>
+      <div class="topic-intro-head">
+        <span class="topic-intro-badge" id="topic-intro-badge"></span>
+        <span class="topic-intro-hub-tag">专题汇总</span>
+      </div>
+      <p class="topic-intro-text" id="topic-intro-text"></p>
+      <a id="topic-intro-link" class="topic-intro-link" href="#">打开专题汇总页 →</a>
+    </div>
     <button id="graph-legend-fab" type="button" aria-label="打开图例" aria-expanded="false" aria-controls="graph-legend" title="图例">🎨</button>
     <div id="graph-legend-scrim" hidden aria-hidden="true"></div>
     <div id="graph-legend" role="region" aria-label="图谱图例"></div>
@@ -1704,7 +1791,42 @@
     // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
     // 专题命中规则迁移至共享模块 topic-filters.js（与详情页徽标同源）。
     const TOPIC_FILTERS = window.RNTopicFilters.TOPIC_FILTERS;
+    const TOPIC_META = window.RNTopicFilters.TOPIC_META;
     let currentTopic = 'all';
+    const topicIntroBanner = document.getElementById('topic-intro-banner');
+    const topicIntroBadge = document.getElementById('topic-intro-badge');
+    const topicIntroText = document.getElementById('topic-intro-text');
+    const topicIntroLink = document.getElementById('topic-intro-link');
+
+    function isCurrentTopicHub(d) {
+      return currentTopic !== 'all'
+        && window.RNTopicFilters.isTopicHub(d, currentTopic);
+    }
+
+    function updateTopicIntroBanner() {
+      if (!topicIntroBanner) return;
+      if (!currentTopic || currentTopic === 'all') {
+        topicIntroBanner.hidden = true;
+        return;
+      }
+      const meta = TOPIC_META[currentTopic];
+      if (!meta) {
+        topicIntroBanner.hidden = true;
+        return;
+      }
+      topicIntroBanner.hidden = false;
+      if (topicIntroBadge) {
+        topicIntroBadge.innerHTML = '<span>' + (meta.emoji || '🏷️') + '</span><span>'
+          + escapeHtml(meta.label || currentTopic) + '</span>';
+      }
+      if (topicIntroText) topicIntroText.textContent = meta.description || '';
+      if (topicIntroLink && meta.wikiPath) {
+        topicIntroLink.href = 'detail.html?id=' + encodeURIComponent(toDetailId(meta.wikiPath));
+        topicIntroLink.hidden = false;
+      } else if (topicIntroLink) {
+        topicIntroLink.hidden = true;
+      }
+    }
 
     function nodeMatchesTopic(d) {
       return window.RNTopicFilters.matches(d, currentTopic);
@@ -2690,6 +2812,7 @@
         });
       }
       if (topicCurrentEl && activeBtn) topicCurrentEl.innerHTML = activeBtn.innerHTML;
+      updateTopicIntroBanner();
       applyFilters();
       updateFilterCount();
       if (currentTopic !== 'all') fitToVisibleNodes();
@@ -2754,14 +2877,24 @@
 
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
         const g = d3.select(this);
+        const hub = isCurrentTopicHub(d);
+        g.classed('node-topic-hub', hub);
         g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         g.style('pointer-events', hasFilter && !ok ? 'none' : null);
 
+        const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
+        d3.select(this).select('.node-glow')
+          .attr('r', hubR + 8)
+          .attr('fill-opacity', hub && ok ? 0.28 : 0);
         d3.select(this).select('.node-circle')
+          .attr('r', hubR)
           .attr('fill-opacity', ok ? 1 : 0.06)
-          .attr('stroke-opacity', ok ? 0.35 : 0.05);
-        d3.select(this).select('.node-label').style('opacity', ok && searchQuery ? 0.9 : null);
+          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : 0.05)
+          .attr('stroke-width', hub ? 2.5 : 1.5);
+        d3.select(this).select('.node-label')
+          .style('opacity', ok && (searchQuery || hub) ? 0.92 : null)
+          .style('font-weight', hub ? 700 : null);
       });
 
       link
