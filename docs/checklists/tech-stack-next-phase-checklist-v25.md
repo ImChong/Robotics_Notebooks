@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **数据集页元数据巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `dataset_metadata_check`：对 `tags` 含 `dataset` 的实体页，检查正文是否含规模 / 模态 / 许可证 / 重定向就绪度等标准化速查字段，缺失给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。
+- [x] **数据集页元数据巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `dataset_metadata_check`：对 `tags` 含 `dataset` 的实体页，检查正文是否含规模 / 模态 / 许可证 / 重定向就绪度等标准化速查字段，缺失给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。（2026-06-17 完成：新增 `_check_dataset_entity_metadata` 与 result key `dataset_missing_metadata`（INFO 级，不计失败总数）；正文按关键词命中近似四维度，全库巡检命中 17 页基线写入 `exports/lint-report.md`；新增 `tests/test_lint_wiki_dataset_metadata.py` 4 用例。）
 - [ ] **数据集选型脚手架强化**：
     - [ ] 复用 `scripts/scaffold_wiki_page.py`，为 `entity`（数据集）类型补充含「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」速查块的骨架模板，降低后续数据集 ingest 的手工成本；自带 `--dry-run` 与 lint 自检。
 
