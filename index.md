@@ -912,6 +912,7 @@ SORT type ASC
 - [PHC（Perpetual Humanoid Control）](entities/phc.md) — PHC**（<https://github.com/ZhengyiLuo/PHC>，ICCV 2023）是 [Zhengyi Luo](./zhengyi-luo.md) 团队的 **物理仿真人形 `📅unknown` `[entity_page]`
 - [PhysX-Omni（统一仿真就绪物理 3D 生成）](entities/physx-omni.md) — PhysX-Omni**（S-Lab NTU / ACE Robotics，arXiv:2605.21572）是面向 **具身 AI、游戏与物理仿真** 的 **统一 sim-ready 3D 生 `📅unknown` `[entity_page]`
 - [Pinocchio (刚体动力学库)](entities/pinocchio.md) — Pinocchio** 是一个由法国国家信息与自动化研究所（INRIA）开源的，专注于**高计算效率**和**分析导数 (Analytical Derivatives)** 的刚体动力学（Rigi `📅unknown` `[entity_page]`
+- [PlotJuggler](entities/plotjuggler.md) — PlotJuggler**（[PlotJuggler/PlotJuggler](https://github.com/PlotJuggler/PlotJuggler)）是面向工程师的 **时序数据 `📅unknown` `[entity_page]`
 - [Pollen Reachy2](entities/pollen-reachy2.md) — Reachy2** 是 **Pollen Robotics** 推出的 **开源模块化移动人形**：强调 **仿人双臂、全向移动、VR 遥操作** 与 **软硬件全开放**；主线文档在 **[do `📅unknown` `[entity_page]`
 - [Poppy 开源机器人平台](entities/poppy-project-robots.md) — Poppy** 是由 **法国 Inria** 相关社区推动的 **开源 3D 打印机器人** 家族：包含 **Poppy Humanoid**、**Poppy Torso**、**Ergo Jr `📅unknown` `[entity_page]`
 - [ppf-contact-solver（ZOZO Contact Solver）](entities/ppf-contact-solver.md) — ppf-contact-solver**（README 亦称 *ZOZO's Contact Solver*）是 [ZOZO, Inc.](https://corp.zozo.com/en/) 技 `📅unknown` `[entity_page]`
