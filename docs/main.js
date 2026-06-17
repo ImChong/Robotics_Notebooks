@@ -1673,7 +1673,12 @@
   function renderDetailTocList(nodes, markdownContext) {
     if (!Array.isArray(nodes) || !nodes.length) return '';
     const context = markdownContext || {};
-    return '<ol>' + nodes.map(function (node) {
+
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Eliminates intermediate array allocations and closure overhead, reducing memory pressure.
+    let html = '<ol>';
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
       const heading = node.heading;
       const labelHtml = renderTocHeadingLabel(
         stripTocHeadingNumberPrefix(heading.text, heading.level),
@@ -1687,8 +1692,10 @@
       } else {
         entryHtml = '<a href="#' + slugAttr + '">' + labelHtml + '</a>';
       }
-      return '<li class="' + levelClass + '">' + entryHtml + renderDetailTocList(node.children, context) + '</li>';
-    }).join('') + '</ol>';
+      html += '<li class="' + levelClass + '">' + entryHtml + renderDetailTocList(node.children, context) + '</li>';
+    }
+    html += '</ol>';
+    return html;
   }
 
   function renderDetailToc(container, headings, markdownContext) {
@@ -2326,26 +2333,29 @@
       return;
     }
 
-    container.innerHTML = ids.map(function (id) {
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Eliminates intermediate array allocations and closure overhead, reducing memory pressure.
+    let html = '';
+    for (let i = 0; i < ids.length; i++) {
+      const id = ids[i];
       const page = detailPages[id] || {};
       const href = page.type === 'roadmap_page' ? roadmapHref(id) : detailHref(id);
       const buttonText = page.type === 'roadmap_page' ? '打开路线页' : '打开详情页';
       const summaryFallback = (options && options.summaryFallback) || '当前关联项暂无摘要';
       const chipExtra = options && typeof options.chipExtra === 'function' ? options.chipExtra(id, page) : '';
-      return [
-        '<article class="card data-card">',
-        '  <div>',
-        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(buildInternalLinkTitle(id, page, options)) + '</a></h3>',
-        '    <p class="card-meta">' + escapeHtml(buildInternalLinkCardMeta(page, id, options)) + '</p>',
-        '    <p>' + escapeHtml(page.summary || summaryFallback) + '</p>',
-        '  </div>',
-        '  <div class="chip-list">',
-        chipExtra,
-        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>',
-        '  </div>',
-        '</article>'
-      ].join('');
-    }).join('');
+      html += '<article class="card data-card">' +
+        '  <div>' +
+        '    <h3><a href="' + escapeHtml(href) + '">' + escapeHtml(buildInternalLinkTitle(id, page, options)) + '</a></h3>' +
+        '    <p class="card-meta">' + escapeHtml(buildInternalLinkCardMeta(page, id, options)) + '</p>' +
+        '    <p>' + escapeHtml(page.summary || summaryFallback) + '</p>' +
+        '  </div>' +
+        '  <div class="chip-list">' +
+        chipExtra +
+        '    <a class="btn-secondary btn-inline" href="' + escapeHtml(href) + '">' + buttonText + '</a>' +
+        '  </div>' +
+        '</article>';
+    }
+    container.innerHTML = html;
     removeLoadingState(container);
   }
 
@@ -2420,7 +2430,11 @@
       return;
     }
 
-    container.innerHTML = links.map(function (entry) {
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Eliminates intermediate array allocations and closure overhead, reducing memory pressure.
+    let html = '';
+    for (let i = 0; i < links.length; i++) {
+      const entry = links[i];
       const item = normalizeSourceLink(entry);
       const href = sourceLinkHref(entry);
       const isExternal = href && /^https?:/i.test(href);
@@ -2435,15 +2449,14 @@
       const metaHtml = href
         ? '<p class="data-submeta detail-source-url" title="' + escapeHtml(href) + '"><code>' + escapeHtml(item.label || href) + '</code></p>'
         : '<p class="data-submeta">' + escapeHtml(item.label || '') + '</p>';
-      return [
-        '<article class="card data-card">',
-        '  <div>',
-        '    ' + titleHtml,
-        '    ' + metaHtml,
-        '  </div>',
-        '</article>'
-      ].join('');
-    }).join('');
+      html += '<article class="card data-card">' +
+        '  <div>' +
+        '    ' + titleHtml +
+        '    ' + metaHtml +
+        '  </div>' +
+        '</article>';
+    }
+    container.innerHTML = html;
     removeLoadingState(container);
   }
 
