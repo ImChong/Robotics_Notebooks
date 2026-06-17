@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-16] checklist-v25 | V24 收口 & 初始化 V25
+
+- V24 全部条目此前已收口（P0–P3 + DoD 逐条 `[x]`，`make lint` 0 errors，图谱 1193 节点 / 7421 边、`community_quality_warning=false`、最大社区占比 0.177、事实库 186 条）。
+- 新建 [`docs/checklists/tech-stack-next-phase-checklist-v25.md`](docs/checklists/tech-stack-next-phase-checklist-v25.md)：专题选定为「人形训练数据管线」，承接 V24 收尾密集 ingest 的 AMASS/LaFAN1/OMOMO/PHUMA/Humanoid Everyday 五套数据集与 motion-retargeting 概念页，规划「原始动作捕捉/视频 → 重定向 → RL/IL 训练输入」端到端知识链（P1 query+concept）、数据层矛盾检测规则扩展（P2 事实库 186→≥196）、数据集页元数据巡检（P0）与图谱第 15 项「训练数据管线」专题视图（P3）。
+- 同步将 README badge / 维护看板、`AGENTS.md`、`docs/README.md`、`docs/checklists/README.md` 的「当前清单」指针从 V24 切到 V25；V24 移入 `archive/` 并修正其内部相对链接，进入历史归档区。
+
 ## [2026-06-16] ingest | sources/repos/omomo_release.md, sources/repos/phuma.md, sources/sites/humanoideveryday.md — AMASS/LaFAN1/OMOMO/PHUMA/Humanoid Everyday 五集入库
 
 - 原始资料：[`sources/sites/amass-dataset.md`](sources/sites/amass-dataset.md)、[`sources/repos/ubisoft-laforge-animation-dataset.md`](sources/repos/ubisoft-laforge-animation-dataset.md)、[`sources/repos/omomo_release.md`](sources/repos/omomo_release.md)、[`sources/repos/phuma.md`](sources/repos/phuma.md)、[`sources/sites/humanoideveryday.md`](sources/sites/humanoideveryday.md)
