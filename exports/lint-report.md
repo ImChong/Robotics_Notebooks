@@ -2,7 +2,7 @@
 
 ## [2026-06-17] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **2** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -91,10 +91,10 @@
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md（缺 方法）
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md（含绝对化措辞「SOTA」，updated=2026-06-14；同主题更新页 wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md updated=2026-06-17）
 
-📊 Sources 覆盖率：1178/1192 (99%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1179/1193 (99%) wiki/entity 页有 ingest 来源

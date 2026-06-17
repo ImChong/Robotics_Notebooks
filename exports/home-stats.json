@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-17",
-  "node_count": 1194,
-  "edge_count": 7436,
+  "node_count": 1195,
+  "edge_count": 7448,
   "coverage": {
-    "covered": 1178,
-    "total": 1192,
+    "covered": 1179,
+    "total": 1193,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
+      "label": "MotionDisco（极端人形 Loco-Manipulation 运动发现）",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/omomo-dataset.md",
       "detail_id": "entity-omomo-dataset",
@@ -151,30 +167,14 @@
       "type": "entity",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/current-robotics-curr0.md",
-      "detail_id": "entity-current-robotics-curr0",
-      "label": "Curr-0（Current Robotics · Loco-Dexterous Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/omomo-dataset.md",
-    "detail_id": "entity-omomo-dataset",
-    "label": "OMOMO（Object Motion Guided Human Motion Synthesis）",
+    "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
+    "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
+    "label": "MotionDisco（极端人形 Loco-Manipulation 运动发现）",
     "type": "entity",
-    "recency": "2026-06-16",
+    "recency": "2026-06-17",
     "source": "log.md"
   }
 }
