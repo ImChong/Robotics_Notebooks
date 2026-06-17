@@ -4,6 +4,7 @@ tags: [rl, policy-optimization, ppo, sac, locomotion]
 status: complete
 related:
   - ./ppo.md
+  - ./sac.md
   - ./intentional-updates-streaming-rl.md
   - ./reinforcement-learning.md
   - ./imitation-learning.md
