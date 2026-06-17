@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/plotjuggler.md",
+      "detail_id": "entity-plotjuggler",
+      "label": "PlotJuggler",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/soma-x.md",
       "detail_id": "entity-soma-x",
       "label": "SOMA-X（统一参数化人体模型）",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-nav.md",
-      "detail_id": "entity-qwen-robot-nav",
-      "label": "Qwen-RobotNav",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/soma-x.md",
-    "detail_id": "entity-soma-x",
-    "label": "SOMA-X（统一参数化人体模型）",
+    "path": "wiki/entities/plotjuggler.md",
+    "detail_id": "entity-plotjuggler",
+    "label": "PlotJuggler",
     "type": "entity",
     "recency": "2026-06-17",
     "source": "log.md"
