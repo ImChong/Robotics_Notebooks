@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] ingest | sources/repos/nvlabs-soma-x.md、sources/sites/soma-x-docs.md、sources/papers/soma_arxiv_2603_16858.md — NVlabs/SOMA-X 统一参数化人体模型入库；新建 wiki/entities/soma-x.md；交叉 soma-retargeter、motion-retargeting、genmo、kimodo
+
 ## [2026-06-17] ingest | sources/repos/sbto.md — 深化 Atarilab/sbto 仓库 ingest；新建 wiki/entities/sbto.md
 
 ## [2026-06-17] ingest | sources/papers/dynaretarget_arxiv_2602_06827.md — DynaRetarget/SBTO 全文 ingest；wiki/methods/dynaretarget-sbto-motion-retargeting.md、wiki/entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md、sources/repos/sbto.md、sources/sites/dynaretarget-github-io.md

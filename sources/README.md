@@ -99,6 +99,7 @@
 | [x] [host_humanoid_standingup_arxiv_2502_08378.md](papers/host_humanoid_standingup_arxiv_2502_08378.md) | HoST：多 critic PPO 跨姿态人形起身，G1 真机直接部署（arXiv:2502.08378，RSS 2025 系统论文 finalist）摘录与 wiki 映射 |
 | [x] [humanoid_gym_arxiv_2404_05695.md](papers/humanoid_gym_arxiv_2404_05695.md) | Humanoid-Gym：人形 PPO + 步态相位奖励 + MuJoCo sim2sim + XBot 零样本 sim2real（arXiv:2404.05695，RobotEra）摘录与 wiki 映射 |
 | [x] [slowrl_arxiv_2603_17092.md](papers/slowrl_arxiv_2603_17092.md) | SLowRL：LoRA + Recovery 安全真机微调四足动态策略（arXiv:2603.17092，Go2）摘录与 wiki 映射 |
+| [x] [soma_arxiv_2603_16858.md](papers/soma_arxiv_2603_16858.md) | SOMA：统一参数化人体模型 canonical pivot（arXiv:2603.16858；NVlabs/SOMA-X + SEED 生态）摘录与 wiki 映射 |
 | [x] [any2any_arxiv_2605_23733.md](papers/any2any_arxiv_2605_23733.md) | Any2Any：跨具身 WBT 运动学对齐 + LoRA 动力学适配（arXiv:2605.23733，LimX）摘录与 wiki 映射 |
 | [x] [urdd_beyond_urdf_arxiv_2512_23135.md](papers/urdd_beyond_urdf_arxiv_2512_23135.md) | URDD：Beyond URDF 通用机器人描述目录（arXiv:2512.23135）摘录与 wiki 映射 |
 
@@ -162,6 +163,7 @@
 | [x] [host_internrobotics.md](repos/host_internrobotics.md) | InternRobotics/HoST：RSS 2025 人形多姿态起身 RL（Isaac Gym + legged_gym，arXiv:2502.08378） |
 | [x] [smp_suz_tsinghua.md](repos/smp_suz_tsinghua.md) | SUZ-tsinghua/smp：Unitree G1 上 SMP（mjlab）端到端复现，预置三套 prior 与乘性 task×SMP 奖励 |
 | [x] [soma_retargeter.md](repos/soma_retargeter.md) | NVIDIA/soma-retargeter：SOMA BVH→G1 CSV GPU 重定向 |
+| [x] [nvlabs-soma-x.md](repos/nvlabs-soma-x.md) | NVlabs/SOMA-X：统一 SMPL/MHR/Anny 等人体拓扑 + PoseInversion + Warp GPU 管线 |
 | [x] [stmr_quadruped_retargeting.md](repos/stmr_quadruped_retargeting.md) | STMR 生态：Quadruped_Retargeting + Motion-Timing + STMR_RL |
 | [x] [apollo-lab-yale-apollo-py.md](repos/apollo-lab-yale-apollo-py.md) | apollo-py：Apollo Toolbox Python 包骨架（与 URDD 论文配套的轻量 README 入口） |
 | [x] [apollo-lab-yale-apollo-resources.md](repos/apollo-lab-yale-apollo-resources.md) | apollo-resources：URDD 机器人/环境资产与 GitHub Pages 宿主（Apollo-Lab-Yale） |
@@ -352,6 +354,7 @@
 | [x] [jc-bao-spider-project-github-io.md](sites/jc-bao-spider-project-github-io.md) | SPIDER 项目页 jc-bao.github.io/spider-project（管线、交互可视化、BibTeX） |
 | [x] [kairos-homeworld-github-io.md](sites/kairos-homeworld-github-io.md) | Kairos · HomeWorld 项目页 kairos-homeworld.github.io（四阶段全屋生成、300K/5K 数据集 teaser、具身交互 demo、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
+| [x] [soma-x-docs.md](sites/soma-x-docs.md) | SOMA-X 官方 API 文档站 nvlabs.github.io/SOMA-X/stable/ |
 | [x] [sprint-anonymous-project-page.md](sites/sprint-anonymous-project-page.md) | SPRINT 匿名项目页 anonymous.4open.science/w/SPRINT-138A（跨身高先验与真机冲刺 demo；arXiv:2605.28549） |
 | [x] [ssr-humanoid-github-io.md](sites/ssr-humanoid-github-io.md) | SSR 项目页 ssr-humanoid.github.io（多样楼梯/沟壑/高台、1.3 km 户外长程与跨平台 demo；arXiv:2605.30770） |
 | [x] [lift-humanoid-github-io.md](sites/lift-humanoid-github-io.md) | LIFT 项目页 lift-humanoid.github.io（三阶段框架、MuJoCo Playground/Brax 视频、真机微调与零样本户外片段） |
