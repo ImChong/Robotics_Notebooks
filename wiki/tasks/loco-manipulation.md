@@ -3,12 +3,13 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-16
+updated: 2026-06-17
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
+  - ../../sources/papers/motiondisco_arxiv_2606_06139.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
@@ -147,6 +148,10 @@ flowchart TD
 - **核心**：用软可穿戴 **HumanEx** 在野外采集 **embodied + interactive + retargetable** 人类演示（含 **incidental behavior**），将缩放律从 **robot-hour** 推向 **human-task-hour**；**System 2（推理接地）→ System 1（全身平衡与可达）→ System 0（21-DoF 灵巧手物交互）** 在 **70+ DoF** 人形上 **端到端单策略** 闭环，反对「先走再手」流水线；**多模态世界模型** 作可扩展评测与 **Human-in-the-World-Model** 部署后纠正。
 - **代表作**：[Curr-0](../entities/current-robotics-curr0.md) (Current Robotics, 2026-06) — 博客报告 **21k h** 人类数据 / **2.8k h** 全身演示；演示泡茶、盖章、点香、踩踏板倒垃圾、肘推门送玩偶等 **loco-dexterous** 任务。
 
+### 19. LLM 引导程序搜索 + 接触显式轨迹优化（Motion Discovery · 无示范）
+- **核心**：把长时程 loco-manip 拆成 **离散接触模式序列** 的程序搜索问题；**LLM 进化式变异** Python 接触计划（`walk` / `append_mode` 等 API），由 **顺序运动学剪枝 + kinodynamic TO** 评分并返回 **文本失败反馈** 闭环指导下一轮变异；发现轨迹经 **DeepMimic 式 RL 跟踪** 在真机零样本部署——**不依赖遥操作或人体重定向**。
+- **代表作**：[MotionDisco](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) (TUM / NYU / CMU, 2026, arXiv:2606.06139) — **8** 项任务（攀台、穿障、桌下取放等）；相对单次 LLM 调用，进化搜索 + 文本反馈显著提高有效接触计划比例；**G1** 真机据作者称首个完全由自动化进化搜索发现并执行的长时程 loco-manipulation。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -186,6 +191,7 @@ flowchart TD
 - [MotionWAM（论文实体）](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) — 实时 WAM + 统一全身 token 的人形 loco-manip（arXiv:2606.09215）
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
+- [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -208,6 +214,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/dit4dit_arxiv_2603_10448.md](../../sources/papers/dit4dit_arxiv_2603_10448.md) — DiT4DiT：双 DiT 联合 VAM 与 G1 全身 loco-manip（arXiv:2603.10448）
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
+- **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）
 
 ## 一句话记忆
 

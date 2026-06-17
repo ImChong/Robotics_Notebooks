@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] ingest | sources/papers/motiondisco_arxiv_2606_06139.md — MotionDisco LLM 引导运动发现
+
+- 原始资料：[`sources/papers/motiondisco_arxiv_2606_06139.md`](sources/papers/motiondisco_arxiv_2606_06139.md)（<https://arxiv.org/abs/2606.06139>、<https://atarilab.github.io/motiondisco.io/>）
+- 沉淀页面：[`wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md`](wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md)
+- 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)（路线 §19 + 关联页）
+
 ## [2026-06-16] checklist-v25 | V24 收口 & 初始化 V25
 
 - V24 全部条目此前已收口（P0–P3 + DoD 逐条 `[x]`，`make lint` 0 errors，图谱 1193 节点 / 7421 边、`community_quality_warning=false`、最大社区占比 0.177、事实库 186 条）。
