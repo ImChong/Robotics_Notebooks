@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] ingest | sources/papers/dynaretarget_arxiv_2602_06827.md — DynaRetarget/SBTO 全文 ingest；wiki/methods/dynaretarget-sbto-motion-retargeting.md、wiki/entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md、sources/repos/sbto.md、sources/sites/dynaretarget-github-io.md
+
 ## [2026-06-17] structural | wiki/overview/topic-*.md + docs/topic-filters.js + docs/graph.html — 14 项图谱专题各增汇总节点与导读 UI
 
 - 新建 14 个专题汇总页：[`wiki/overview/topic-motion-retargeting.md`](wiki/overview/topic-motion-retargeting.md) … [`topic-vision-backbone.md`](wiki/overview/topic-vision-backbone.md)（一句话定义、缩写速查、覆盖范围、专题互链、参考来源）

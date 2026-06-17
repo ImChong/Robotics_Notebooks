@@ -13,6 +13,7 @@ related:
   - ../methods/neural-motion-retargeting-nmr.md
   - ../methods/reactor-physics-aware-motion-retargeting.md
   - ../methods/spider-physics-informed-dexterous-retargeting.md
+  - ../methods/dynaretarget-sbto-motion-retargeting.md
   - ../methods/sonic-motion-tracking.md
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
@@ -27,6 +28,7 @@ sources:
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
   - ../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md
+  - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
   - ../../sources/papers/exoactor.md
   - ../../sources/papers/htd_refine_arxiv_2605_26879.md
 ---
@@ -138,6 +140,7 @@ flowchart TD
 - **QP 接触补偿（如 HALO 风格）**：在重定向轨迹基础上，叠加最小修正使脚位置/接触约束严格满足。
 - **仿真内 RL tracking rollout**：用跟踪策略在仿真里复现参考动作，记录的真实仿真状态作为「物理一致版本」，即 [NMR](../methods/neural-motion-retargeting-nmr.md) 中 CEPR、[ReActor](../methods/reactor-physics-aware-motion-retargeting.md) 中下层策略所做的事。
 - **并行仿真采样优化（SPIDER）**：在可并行的接触动力学仿真里，对**整条控制序列**做带退火噪声的采样更新，并可用**虚拟接触力**做课程式引导；输出可直接作为机器人 rollout 数据或经域随机化后用于 RL（见 [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md)）。
+- **增量时域 SBTO（DynaRetarget）**：在 MuJoCo 中对 **PD 目标 knot** 做 **CEM 采样优化**，**外环增量扩展优化时域**以克服 SBMPC 短视距；把 [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) 等 **kinematic 参考** refinement 为长时域动力学可行轨迹，再供 PPO tracking（见 [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md)）。
 
 ### 8. 产物落地（Outputs）
 - **离线参考轨迹库**：`.pkl` / `.csv` / 自定义二进制，供 [BeyondMimic](../methods/beyondmimic.md) / [DeepMimic](../methods/deepmimic.md) 等模仿学习直接使用。
@@ -152,6 +155,7 @@ flowchart TD
 | **重定向 + 仿真 RL 配对** | SMPL 大库 | 是（GMR 当作前端） | CEPR 仿真 rollout | [NMR](../methods/neural-motion-retargeting-nmr.md) |
 | **双层联合优化** | SMPL / 跨形态 | 是（参考可学习） | 下层 RL 在同一环 | [ReActor](../methods/reactor-physics-aware-motion-retargeting.md) |
 | **并行仿真 + 采样轨迹优化** | 人体+物体运动学 + mesh | 是（IK 初参考） | 采样型 MPC/CEM 式更新 + 课程式虚拟接触 | [SPIDER](../methods/spider-physics-informed-dexterous-retargeting.md) |
+| **增量 SBTO 全轨迹精炼** | OmniRetarget 等 kinematic 参考 | 是（IK 前端） | CEM + 增量 horizon MuJoCo rollout | [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) |
 | **跳过中间重定向** | 视频生成噪声源 | 否（直送 tracking） | 下游通用跟踪器 | [SONIC](../methods/sonic-motion-tracking.md) / [ExoActor](../methods/exoactor.md) 反例 |
 
 > 选型直觉：**源数据越干净，重定向收益越高**；**源数据已是上游估计/生成结果**时，中间几何重定向可能放大全局漂移与脚滑，需要做"跳过重定向"的消融。
@@ -187,6 +191,7 @@ flowchart TD
 - [sources/papers/neural_motion_retargeting_nmr.md](../../sources/papers/neural_motion_retargeting_nmr.md) — NMR/CEPR：以 GMR 为前端 + 分簇 RL 专家做配对数据
 - [sources/papers/reactor_rl_physics_aware_motion_retargeting.md](../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md) — ReActor：双层联合优化参考与跟踪策略
 - [sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md](../../sources/papers/spider_scalable_physics_informed_dexterous_retargeting.md) — SPIDER：并行仿真采样优化 + 虚拟接触引导
+- [sources/papers/dynaretarget_arxiv_2602_06827.md](../../sources/papers/dynaretarget_arxiv_2602_06827.md) — DynaRetarget：增量 SBTO + 下游 RL tracking
 - [sources/papers/exoactor.md](../../sources/papers/exoactor.md) — ExoActor：视频生成源下"跳过中间重定向"的反例消融
 - Ze Y. et al., *GMR: General Motion Retargeting* — [arXiv:2505.02833](https://arxiv.org/abs/2505.02833)
 - Peng et al., *AMP: Adversarial Motion Priors* (SIGGRAPH 2021) — 重定向产物在 RL 风格先验中的下游用途
@@ -200,6 +205,7 @@ flowchart TD
 - [NMR（神经运动重定向）](../methods/neural-motion-retargeting-nmr.md) — 流水线中"前端 + 配对数据 + 神经推断"的实例
 - [ReActor（物理感知 RL 运动重定向）](../methods/reactor-physics-aware-motion-retargeting.md) — 把参考形变与跟踪策略联合训练的流水线变体
 - [SPIDER（物理感知采样式灵巧重定向）](../methods/spider-physics-informed-dexterous-retargeting.md) — 运动学参考后在并行仿真里做采样轨迹优化与接触课程
+- [DynaRetarget / SBTO（增量采样式动力学重定向）](../methods/dynaretarget-sbto-motion-retargeting.md) — kinematic 参考经增量时域 SBTO refinement 后接 PPO tracking
 - [GMR vs NMR vs ReActor（重定向方法谱系对比）](../comparisons/gmr-vs-nmr-vs-reactor.md) — 三条主流路线如何在同一条流水线上占据不同位置的选型视角
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md) — "跳过中间重定向"流水线的下游通用 tracker
 - [Whole-Body Control](./whole-body-control.md) — 下游消费参考的控制器接口

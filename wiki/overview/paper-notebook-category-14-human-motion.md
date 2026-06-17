@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-17
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读笔记索引）。"
@@ -26,7 +26,7 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [Climber Force and Motion Estimation from Video](../entities/paper-notebook-climber-force-and-motion-estimation-from-video.md) — 待深读
 - [ClimbingCap](../entities/paper-notebook-climbingcap-multi-modal-dataset-and-method-for-r.md) — 待深读
 - [Control Operators for Interactive Character Animation](../entities/paper-notebook-control-operators-for-interactive-character-anim.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html)
-- [DynaRetarget](../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) — 待深读
+- [DynaRetarget](../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) — wiki 已 ingest（[SBTO 方法页](../methods/dynaretarget-sbto-motion-retargeting.md)）；Paper Notebooks 深读笔记待撰写
 - [Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction](../entities/paper-notebook-efficient-and-scalable-monocular-human-object-in.md) — 待深读
 - [EmbodMocap](../overview/ego-category-01-data-collection.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents.html)
 - [Example-based Motion Synthesis via Generative Motion Matching](../entities/paper-notebook-example-based-motion-synthesis-via-generative-mo.md) — 待深读
