@@ -2,22 +2,24 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, nvidia, unitree-g1, gpu]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-17
 summary: "NVIDIA soma-retargeter：SOMA BVH → G1 关节 CSV 的 GPU IK 重定向库，隶属 SOMA-X / SEED 人形运动数据生态。"
 related:
   - ../concepts/motion-retargeting.md
   - ../methods/motion-retargeting-gmr.md
+  - ./soma-x.md
   - ./protomotions.md
   - ./unitree-g1.md
   - ./newton-physics.md
 sources:
   - ../../sources/repos/soma_retargeter.md
+  - ../../sources/repos/nvlabs-soma-x.md
   - ../../sources/papers/genmo.md
 ---
 
 # SOMA Retargeter
 
-**SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](https://github.com/NVlabs/SOMA-X)** 统一比例骨架上的 **BVH 人体运动** 转为 **人形机器人关节 CSV**，使用 [Newton](./newton-physics.md) + NVIDIA Warp 做 GPU 加速多目标 IK，并内置人体–机器人比例缩放、足部稳定与逐 DoF 限位钳制。
+**SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](./soma-x.md)** 统一比例骨架上的 **BVH 人体运动** 转为 **人形机器人关节 CSV**，使用 [Newton](./newton-physics.md) + NVIDIA Warp 做 GPU 加速多目标 IK，并内置人体–机器人比例缩放、足部稳定与逐 DoF 限位钳制。
 
 ## 英文缩写速查
 
@@ -55,6 +57,7 @@ flowchart LR
 
 ## 关联页面
 
+- [SOMA-X](./soma-x.md)
 - [Motion Retargeting](../concepts/motion-retargeting.md)
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [ProtoMotions](./protomotions.md)
@@ -63,6 +66,7 @@ flowchart LR
 ## 参考来源
 
 - [SOMA Retargeter 仓库归档](../../sources/repos/soma_retargeter.md)
+- [NVlabs/SOMA-X 仓库归档](../../sources/repos/nvlabs-soma-x.md)
 - [GENMO 论文归档中的 NVIDIA 栈互链](../../sources/papers/genmo.md)
 
 ## 推荐继续阅读

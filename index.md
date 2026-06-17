@@ -954,6 +954,7 @@ SORT type ASC
 - [SMP on G1（mjlab 复现）](entities/smp-g1-mjlab.md) — SUZ-tsinghua/smp](https://github.com/SUZ-tsinghua/smp)** 在 [MimicKit](./mimickit.md) 原版 **未提供 Uni `📅unknown` `[entity_page]`
 - [SMPLOlympics（仿真人形体育环境套件）](entities/smplolympics.md) — SMPLOlympics**（Luo et al., [arXiv:2407.00187](https://arxiv.org/abs/2407.00187)）在 **Isaac Gym** 中为 `📅unknown` `[entity_page]`
 - [SOMA Retargeter](entities/soma-retargeter.md) — SOMA Retargeter**（<https://github.com/NVIDIA/soma-retargeter>，Apache-2.0）将 **[SOMA-X](https://gith `📅unknown` `[entity_page]`
+- [SOMA-X（统一参数化人体模型）](entities/soma-x.md) — SOMA-X**（[NVlabs/SOMA-X](https://github.com/NVlabs/SOMA-X)，PyPI `py-soma-x`，[arXiv:2603.16858](htt `📅unknown` `[entity_page]`
 - [Spark（Web 3DGS 渲染器）](entities/spark-3dgs-renderer.md) — Spark** 是 [World Labs](./world-labs.md) 维护的 **开源 3D Gaussian Splatting（3DGS）** 渲染栈，面向 **THREE.js + `📅unknown` `[entity_page]`
 - [Stanford Doggo / Pupper（开源四足）](entities/stanford-doggo-and-pupper.md) — Stanford Doggo** 与 **Stanford Pupper** 同属斯坦福学生机器人俱乐部叙事下的 **开源四足**：**Doggo** 强调 **高动态跳跃**（转载中约 **5  `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`

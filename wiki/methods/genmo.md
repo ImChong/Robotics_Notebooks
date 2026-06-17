@@ -2,7 +2,7 @@
 type: method
 tags: [human-motion, diffusion, smpl, perception, video-to-control, nvidia]
 status: complete
-updated: 2026-06-09
+updated: 2026-06-17
 related:
   - ./hy-motion-1.md
   - ./exoactor.md
@@ -153,7 +153,7 @@ flowchart LR
 GEM/GENMO 是 NVIDIA Research 人形运动数据栈的「人体运动 I/O」环节，与下列工作官方互链：
 
 - [GEM-X](https://github.com/NVlabs/GEM-X)：把 GEM 扩展到全身（手、脸）。
-- [SOMA-X](https://github.com/NVlabs/SOMA-X) + SOMA Retargeter：body model 与重定向。
+- [SOMA-X](../entities/soma-x.md) + [SOMA Retargeter](../entities/soma-retargeter.md)：统一 body model 与 G1 重定向。
 - [ProtoMotions](../entities/protomotions.md)：大规模并行人形仿真与 RL 训练框架，常以 SMPL 系动作（含 GEM 产出）作为参考运动来源。
 - [SONIC](./sonic-motion-tracking.md)：把人体运动作为 token 化条件喂入大规模 motion tracking 控制器，落到 Unitree G1 等硬件。
 - [Kimodo](../entities/kimodo.md)：文本 + 运动学约束的运动扩散与生成工具链。

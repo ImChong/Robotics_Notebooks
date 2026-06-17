@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-06-16
+updated: 2026-06-17
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -152,6 +152,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md) | AMASS / LaFAN1 / OMOMO / PHUMA / Humanoid Everyday 对照 |
 | [Mixamo](../entities/mixamo.md) | Adobe **商业**角色与动画库；快速原型与美术管线友好，**不等同**于可自由再分发的原始 MoCap 研究档案 |
 | SMPL / SMPL-X | 人类体型参数化模型，便于重定向 |
+| [SOMA-X](../entities/soma-x.md) | NVIDIA 统一参数化人体拓扑（SMPL/MHR/Anny 等枢纽）；AMASS/SMPL→SOMA 转换 |
 | [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
 | [SOMA Retargeter](../entities/soma-retargeter.md) | NVIDIA SOMA BVH→G1 CSV，GPU IK（SEED 数据生态） |
 | [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |

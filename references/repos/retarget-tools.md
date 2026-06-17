@@ -13,6 +13,7 @@
 ## 人体表示与参数化模型
 
 - [三维人体动捕模型 SMPL：A Skinned Multi Person Linear Model](https://yunyang1994.github.io/2021/08/21/%E4%B8%89%E7%BB%B4%E4%BA%BA%E4%BD%93%E6%A8%A1%E5%9E%8B-SMPL-A-Skinned-Multi-Person-Linear-Model/) — SMPL 系表示是多数重定向与视频人体估计管线的共同前置语言。
+- [SOMA-X](https://github.com/NVlabs/SOMA-X) — NVIDIA 统一参数化人体拓扑（SMPL/MHR/Anny 等枢纽 + PoseInversion）；wiki [SOMA-X](../../wiki/entities/soma-x.md)
 - [fairmotion](https://github.com/facebookresearch/fairmotion) — Meta 通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK、可视化）；重定向上游数据基础设施，本身不做机器人重定向（2023 已归档）；wiki [fairmotion](../../wiki/entities/fairmotion.md)
 
 ## 人形：几何重定向与通用实现
