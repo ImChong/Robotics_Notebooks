@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-17",
-  "node_count": 1209,
-  "edge_count": 7616,
+  "node_count": 1211,
+  "edge_count": 7649,
   "coverage": {
-    "covered": 1179,
-    "total": 1207,
+    "covered": 1181,
+    "total": 1209,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/sbto.md",
+      "detail_id": "entity-sbto",
+      "label": "sbto（DynaRetarget SBTO 官方实现）",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
+      "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
+      "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
+      "type": "method",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md",
+      "detail_id": "entity-paper-notebook-dynaretarget-dynamically-feasible-retargeting-us",
+      "label": "DynaRetarget",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/topic-motion-retargeting.md",
       "detail_id": "wiki-overview-topic-motion-retargeting",
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-world.md",
-      "detail_id": "entity-qwen-robot-world",
-      "label": "Qwen-RobotWorld",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/qwen-vla.md",
-      "detail_id": "entity-qwen-vla",
-      "label": "Qwen-VLA",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/topic-motion-retargeting.md",
-    "detail_id": "wiki-overview-topic-motion-retargeting",
-    "label": "动作重定向（专题汇总）",
-    "type": "overview",
+    "path": "wiki/entities/sbto.md",
+    "detail_id": "entity-sbto",
+    "label": "sbto（DynaRetarget SBTO 官方实现）",
+    "type": "entity",
     "recency": "2026-06-17",
     "source": "log.md"
   }

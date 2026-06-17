@@ -23,7 +23,7 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ./unitree-g1.md
   - ./paper-notebook-task-and-motion-planning-for-humanoid-loco-manip.md
-  - ./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
+  - ../methods/dynaretarget-sbto-motion-retargeting.md
   - ./paper-resmimic.md
 sources:
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
@@ -110,7 +110,7 @@ flowchart LR
 - **误区：** 把 MotionDisco 等同于「LLM 直接输出关节轨迹」；关键是 **离散接触模式程序搜索** + **TO 反馈闭环**，连续运动由优化器恢复。
 - **误区：** 认为已解决开放环境部署；当前 **假设已知场景文本**、**无感知**，且接触模型仅 **单边粘附 + 箱状刚体**。
 - **局限：** `walk()` 为 **直线平地步态**，不自动绕障——可动物体须先移开；与 **重定向/遥操作路线** 相比，搜索仍依赖准确场景几何与手工目标规格。
-- **对照：** 若已有高质量人类演示，[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) + [DynaRetarget](./paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) 动态精炼可能更高效；MotionDisco 瞄准 **无示范的新接触技能发现**。
+- **对照：** 若已有高质量人类演示，[Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) + [DynaRetarget / SBTO](../methods/dynaretarget-sbto-motion-retargeting.md) 动态精炼可能更高效；MotionDisco 瞄准 **无示范的新接触技能发现**。
 
 ## 与其他工作对比
 
