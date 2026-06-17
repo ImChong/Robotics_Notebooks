@@ -80,3 +80,6 @@
 ## 2025-02-18 - Eliminate Intermediate Arrays in Frontend String Generation
 **Learning:** In JavaScript, constructing dynamic HTML strings by chaining `.map()` and `.join('')` allocates intermediate arrays and function closures for every iteration. In large render cycles (like rendering multiple wiki cards or large tables), this creates memory pressure and triggers garbage collection overhead.
 **Action:** Replaced `.map(fn).join('')` patterns with single-pass `for` loops appending directly to a string accumulator (`var html = ''; for (...) { html += ... }`). Apply this pattern generally for hot UI rendering loops to minimize garbage collection latency.
+## 2025-02-18 - Optimize nested .map().join('') operations
+**Learning:** Even when replacing outer `.map().join('')` operations with `for` loops, inner operations that still use `.join('')` inside the loop (like rendering arrays of tags or HTML strings from static templates) continue to create intermediate array allocations on every iteration.
+**Action:** When refactoring mapping operations to standard `for` loops for performance, ensure all nested array allocations, especially `.join('')` on literal arrays inside the hot loop, are also unrolled into string concatenations to fully eliminate closure and array overhead.
