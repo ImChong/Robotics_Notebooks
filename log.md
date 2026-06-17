@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] structural | wiki/overview/topic-*.md + docs/topic-filters.js + docs/graph.html — 14 项图谱专题各增汇总节点与导读 UI
+
+- 新建 14 个专题汇总页：[`wiki/overview/topic-motion-retargeting.md`](wiki/overview/topic-motion-retargeting.md) … [`topic-vision-backbone.md`](wiki/overview/topic-vision-backbone.md)（一句话定义、缩写速查、覆盖范围、专题互链、参考来源）
+- [`docs/topic-filters.js`](docs/topic-filters.js)：`TOPIC_HUB_IDS` / `TOPIC_META.wikiPath+description`；各专题 `ids` 显式纳入汇总节点，保证专题视图下始终可见
+- [`docs/graph.html`](docs/graph.html)：选中专题时画布左上角显示「专题汇总」导读条 + 汇总节点高亮（`.node-topic-hub`）；链接跳转详情页
+- 验证：`make ci-preflight` 通过（1209 nodes / 7615 edges）
+
 ## [2026-06-17] ingest | sources/repos/bullet3.md, sources/sites/pybullet-org.md — 官方 Bullet3 仓与 pybullet.org 入库；升格 wiki/entities/pybullet.md
 
 - 原始资料：[`sources/repos/bullet3.md`](sources/repos/bullet3.md)（<https://github.com/bulletphysics/bullet3>）、[`sources/sites/pybullet-org.md`](sources/sites/pybullet-org.md)（<https://pybullet.org/wordpress/>）
