@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-17",
   "node_count": 1195,
-  "edge_count": 7448,
+  "edge_count": 7449,
   "coverage": {
     "covered": 1179,
     "total": 1193,
     "percent": 99
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/pybullet.md",
+      "detail_id": "entity-pybullet",
+      "label": "PyBullet",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
       "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/humanoid-robot.md",
-      "detail_id": "entity-humanoid-robot",
-      "label": "人形机器人（Humanoid Robot）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md",
-    "detail_id": "entity-paper-motiondisco-extreme-humanoid-loco-manipulation",
-    "label": "MotionDisco（极端人形 Loco-Manipulation 运动发现）",
+    "path": "wiki/entities/pybullet.md",
+    "detail_id": "entity-pybullet",
+    "label": "PyBullet",
     "type": "entity",
     "recency": "2026-06-17",
     "source": "log.md"
