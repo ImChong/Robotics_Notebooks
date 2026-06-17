@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-17",
-  "node_count": 1213,
-  "edge_count": 7669,
+  "node_count": 1214,
+  "edge_count": 7683,
   "coverage": {
-    "covered": 1183,
-    "total": 1211,
+    "covered": 1184,
+    "total": 1212,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -12,6 +12,38 @@
       "path": "wiki/entities/plotjuggler.md",
       "detail_id": "entity-plotjuggler",
       "label": "PlotJuggler",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md",
+      "detail_id": "wiki-methods-toporetarget-interaction-preserving-dexterous-retargeting",
+      "label": "TopoRetarget（交互保留灵巧重定向）",
+      "type": "method",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/wuji-robotics.md",
+      "detail_id": "entity-wuji-robotics",
+      "label": "舞肌科技（上海舞肌科技有限公司）",
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
@@ -132,38 +164,6 @@
       "path": "wiki/entities/lafan1-dataset.md",
       "detail_id": "entity-lafan1-dataset",
       "label": "LaFAN1（Ubisoft La Forge Animation Dataset）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/omniretarget-dataset.md",
-      "detail_id": "entity-omniretarget-dataset",
-      "label": "OmniRetarget Dataset（G1 交互重定向轨迹）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md",
-      "detail_id": "entity-paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase",
-      "label": "Humanoid Everyday",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-suite.md",
-      "detail_id": "entity-qwen-robot-suite",
-      "label": "Qwen-Robot Suite",
       "type": "entity",
       "recency": "2026-06-16",
       "source": "log.md"
