@@ -78,6 +78,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/entities/mujoco.md": "物理引擎（MuJoCo）",
     "wiki/methods/reinforcement-learning.md": "强化学习（Reinforcement Learning, RL）",
     "wiki/queries/real-time-control-middleware-guide.md": "实时运控中间件（Real-Time Control Middleware）",
+    "wiki/overview/motor-drive-firmware-bus-protocols.md": "电机驱动器底软通信协议（Motor Drive Firmware Bus Protocols）",
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
     "wiki/methods/vla.md": "视觉-语言-动作（VLA）",
     "wiki/concepts/motion-retargeting.md": "动作重定向（Motion Retargeting）",
