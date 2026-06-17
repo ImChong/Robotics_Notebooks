@@ -11,6 +11,7 @@ related:
   - ../tasks/locomotion.md
   - ../concepts/domain-randomization.md
   - ../concepts/privileged-training.md
+  - ../entities/plotjuggler.md
 ---
 
 # RL 策略真机调试 Playbook
@@ -112,6 +113,7 @@ ros2 topic echo /robot/obs --no-arr > obs_log.txt
 ```
 
 **推荐工具链：**
+- **[PlotJuggler](../entities/plotjuggler.md)**：拖拽式多曲线、rosbag2/ROS topic 与布局保存；适合快速对齐仿真与真机同名 topic 字段
 - **rerun.io**：实时可视化关节角、力矩、IMU，与仿真曲线叠加对比
 - **ROS2 bag**：完整记录一个 episode 的所有话题，离线回放分析
 - **Matplotlib / Pandas**：绘制 obs/action 时序曲线，对比仿真 rollout
