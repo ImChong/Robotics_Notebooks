@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] ingest | sources/papers/toporetarget_arxiv_2606_16272.md — 接入 TopoRetarget 交互保留灵巧重定向；wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md、wiki/concepts/motion-retargeting.md、wiki/tasks/manipulation.md、wiki/entities/wuji-robotics.md
+
 ## [2026-06-17] ingest | sources/repos/nvlabs-soma-x.md、sources/sites/soma-x-docs.md、sources/papers/soma_arxiv_2603_16858.md — NVlabs/SOMA-X 统一参数化人体模型入库；新建 wiki/entities/soma-x.md；交叉 soma-retargeter、motion-retargeting、genmo、kimodo
 
 ## [2026-06-17] ingest | sources/repos/sbto.md — 深化 Atarilab/sbto 仓库 ingest；新建 wiki/entities/sbto.md
