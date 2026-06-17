@@ -232,6 +232,7 @@
 | [x] [gr00t_visual_sim2real.md](repos/gr00t_visual_sim2real.md) | GR00T-VisualSim2Real：NVIDIA 视觉 Sim2Real 框架，VIRAL + DoorMan 双 CVPR 2026 论文，PPO Teacher + DAgger RGB Student，Unitree G1 |
 | [x] [horizon_robotics_holomotion.md](repos/horizon_robotics_holomotion.md) | HoloMotion：地平线人形全身运动跟踪开源栈（GitHub + Pages 文档 + arXiv:2605.15336 + HF 权重 + Docker） |
 | [x] [homeworld.md](repos/homeworld.md) | Kairos-HomeWorld/HomeWorld：全屋 sim-ready 室内场景生成（arXiv:2606.06390；代码/数据集 Coming Soon） |
+| [x] [sbto.md](repos/sbto.md) | Atarilab/sbto：DynaRetarget SBTO 官方实现（MuJoCo + Hydra + CEM，OmniRetarget G1–物体 refinement，MIT，arXiv:2602.06827） |
 | [x] [holosoma.md](repos/holosoma.md) | holosoma：Amazon FAR 人形 RL 训练/推理 + OmniRetarget 重定向（IsaacGym/IsaacSim/MJWarp，G1/T1，arXiv:2509.26633） |
 | [x] [resmimic.md](repos/resmimic.md) | ResMimic：GMT→残差 loco-manipulation 仿真基础设施与数据（arXiv:2510.05070，Amazon FAR / G1） |
 | [x] [human2humanoid.md](repos/human2humanoid.md) | LeCAR-Lab/human2humanoid：人形全身遥操 + AMASS 重定向脚本 |

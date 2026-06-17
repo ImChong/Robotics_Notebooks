@@ -28,6 +28,7 @@
 - [ProtoMotions](https://github.com/NVlabs/ProtoMotions) — 大规模并行仿真；wiki [ProtoMotions](../../wiki/entities/protomotions.md)
 - [MimicKit](https://github.com/xbpeng/MimicKit) — 轻量模仿学习 + GMR 转换；wiki [MimicKit](../../wiki/entities/mimickit.md)
 - [SPIDER](https://github.com/facebookresearch/spider) — 物理采样式重定向；wiki [SPIDER](../../wiki/methods/spider-physics-informed-dexterous-retargeting.md)
+- [sbto](https://github.com/Atarilab/sbto) / [DynaRetarget](https://atarilab.github.io/dynaretarget.io/) — 增量 SBTO 动力学 refinement（OmniRetarget 参考 → MuJoCo CEM）；wiki [sbto](../../wiki/entities/sbto.md)
 - [human2humanoid](https://github.com/LeCAR-Lab/human2humanoid) — 遥操 + AMASS 重定向；wiki [human2humanoid](../../wiki/entities/human2humanoid.md)
 - [AMP-RSL-RL](https://github.com/gbionics/amp-rsl-rl) — rsl_rl(PPO)+AMP 人形模仿，对称性增广、可 pip 安装（IIT）；wiki [amp-rsl-rl](../../wiki/entities/amp-rsl-rl.md)
 
