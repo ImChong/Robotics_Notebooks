@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/sbto.md",
+      "detail_id": "entity-sbto",
+      "label": "sbto（DynaRetarget SBTO 官方实现）",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
       "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
       "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/qwen-robot-world.md",
-      "detail_id": "entity-qwen-robot-world",
-      "label": "Qwen-RobotWorld",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/dynaretarget-sbto-motion-retargeting.md",
-    "detail_id": "wiki-methods-dynaretarget-sbto-motion-retargeting",
-    "label": "DynaRetarget / SBTO（增量采样式动力学重定向）",
-    "type": "method",
+    "path": "wiki/entities/sbto.md",
+    "detail_id": "entity-sbto",
+    "label": "sbto（DynaRetarget SBTO 官方实现）",
+    "type": "entity",
     "recency": "2026-06-17",
     "source": "log.md"
   }
