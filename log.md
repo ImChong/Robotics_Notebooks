@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-17] ingest | sources/repos/bullet3.md, sources/sites/pybullet-org.md — 官方 Bullet3 仓与 pybullet.org 入库；升格 wiki/entities/pybullet.md
+
+- 原始资料：[`sources/repos/bullet3.md`](sources/repos/bullet3.md)（<https://github.com/bulletphysics/bullet3>）、[`sources/sites/pybullet-org.md`](sources/sites/pybullet-org.md)（<https://pybullet.org/wordpress/>）
+- 沉淀页面：[`wiki/entities/pybullet.md`](wiki/entities/pybullet.md)
+- 交叉更新：[`sources/README.md`](sources/README.md)
 ## [2026-06-17] ingest | sources/papers/motiondisco_arxiv_2606_06139.md — MotionDisco LLM 引导运动发现
 
 - 原始资料：[`sources/papers/motiondisco_arxiv_2606_06139.md`](sources/papers/motiondisco_arxiv_2606_06139.md)（<https://arxiv.org/abs/2606.06139>、<https://atarilab.github.io/motiondisco.io/>）

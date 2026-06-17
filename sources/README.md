@@ -106,6 +106,7 @@
 | 文件 | 内容 |
 |------|------|
 | [mujoco.md](repos/mujoco.md) | MuJoCo 物理引擎 |
+| [x] [bullet3.md](repos/bullet3.md) | Bullet3 Physics SDK：C++ 核心与 PyBullet / pybullet_envs 官方仓 |
 | [x] [mujoco-mjx.md](repos/mujoco-mjx.md) | MuJoCo MJX：JAX/XLA 重实现（`mujoco-mjx`） |
 | [x] [brax.md](repos/brax.md) | Brax：JAX 可微物理与 RL 训练（README 维护边界与 MJX/Playground 指引） |
 | [x] [boyu_ai_hands_on_rl.md](repos/boyu_ai_hands_on_rl.md) | Hands-on-RL / 蘑菇书：中文 RL 教材 Jupyter 仓（PPO/SAC/MARL 等，配套 hrl.boyuai.com） |
@@ -367,6 +368,7 @@
 | [x] [nvidia-research-egoscale.md](sites/nvidia-research-egoscale.md) | NVIDIA Research GEAR：EgoScale 项目页 research.nvidia.com/labs/gear/egoscale（演示、管线叙述、BibTeX；GitHub 标注 Coming Soon） |
 | [x] [mixamo.md](sites/mixamo.md) | Mixamo：Adobe 在线角色绑定与动画库（商业服务说明） |
 | [x] [mujoco-mjx-readthedocs.md](sites/mujoco-mjx-readthedocs.md) | MuJoCo 官方文档：MJX（readthedocs） |
+| [x] [pybullet-org.md](sites/pybullet-org.md) | PyBullet / Bullet 官方站 pybullet.org（案例、Colab、论坛与 bullet3 发布索引） |
 | [x] [pupper-v3-documentation-readthedocs.md](sites/pupper-v3-documentation-readthedocs.md) | Pupper v3 官方文档站（建造/安全/规格/ROS2 monorepo/RL·VLM 与 CS 123 入口） |
 | [x] [nvidia-physical-ai-learning.md](sites/nvidia-physical-ai-learning.md) | NVIDIA Physical AI Learning 门户（Isaac/OpenUSD/SO-101 等自学路径索引） |
 | [x] [nvidia-newton-physics.md](sites/nvidia-newton-physics.md) | NVIDIA Developer：Newton Physics 产品页（Warp、OpenUSD、Isaac Lab 集成叙事） |
