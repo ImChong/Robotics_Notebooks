@@ -2,7 +2,7 @@
 type: entity
 tags: [simulation, physics-engine, rendering, compiler, foundation-model, evaluation, genesis-ai]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-18
 related:
   - ./genesis-sim.md
   - ./gene-26-5-genesis-ai.md

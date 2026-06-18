@@ -8,6 +8,10 @@
 - 新建索引（15）：`wiki/entities/paper-motion-cerebellum-*`（GuideWalk、T-GMP、MARCH、TAGA、TRAM、Stubborn、ConstrainedMimic、SafeWBC、MuGen、CEER、HANDOFF、主动空间大脑、HOIST、HumanoidMimicGen、GRAIL）
 - 交叉更新：[`wiki/overview/humanoid-rl-motion-control-body-system-stack.md`](wiki/overview/humanoid-rl-motion-control-body-system-stack.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
 
+## [2026-06-18] ingest | sources/papers/deepinsight_arxiv_2606_17574.md — DeepInsight Physical AI 全栈统一评测基础设施；wiki/entities/deepinsight.md；交叉 simulation-evaluation-infrastructure、robot-training-stack-layers-technology-map
+
+## [2026-06-18] ingest | sources/papers/rove_arxiv_2606_17011.md — ROVE 人形 VLA 干预后训练；wiki/entities/paper-rove-humanoid-vla-intervention.md；交叉 teleoperation、vla、online-vs-offline-rl
+
 ## [2026-06-18] ingest | sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md — 《具身智能基础》专栏 05 齐次坐标与齐次变换；新建 wiki/formalizations/homogeneous-coordinates-transform.md；更新专栏父节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0 + [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai)（Camoufox）；专辑 <https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzkwMDcyNDUzMQ==&action=getalbum&album_id=4525948187102363653> 共 5 篇，本篇短链 <https://mp.weixin.qq.com/s/3vwaizPOgJKCwQ9e5LuKGA>
