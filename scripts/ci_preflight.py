@@ -122,6 +122,11 @@ def main() -> None:
         import lint_wiki
 
         assert lint_results is not None
+        # sync_all_stats updates README badges; re-check so pre-sync lint does not
+        # fail CI when graph stats drifted but badges were auto-corrected.
+        lint_results["readme_badge"] = []
+        lint_wiki._check_readme_badges(lint_results)
+
         run(["python3", "scripts/eval_search_quality.py"], "Run search regression")
         print(lint_wiki.format_report(lint_results))
         failing = lint_wiki._failing_total(lint_results)
