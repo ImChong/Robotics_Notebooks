@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, bimanual, humanoid, dual-arm, whole-body, imitation-learning, teleoperation]
 status: stub
-updated: 2026-04-20
+updated: 2026-06-18
 summary: "双臂协调操作（Bimanual Manipulation）要求两只手臂在力学和时序上协同完成单臂无法完成的任务，是人形机器人操作能力的核心挑战之一。"
 sources:
   - ../../sources/papers/imitation_learning.md
@@ -164,6 +164,7 @@ $${}^A T_{obj} \cdot {}^{obj} T_B = {}^A T_B$$
 - [Whole-Body Control](../concepts/whole-body-control.md) — 处理双臂闭链约束的控制框架
 - [Whole-Body Coordination](../concepts/whole-body-coordination.md) — 多肢体协调的概念框架
 - [Teleoperation](./teleoperation.md) — 双臂数据采集的主要手段
+- [UME-EXO（论文实体）](../entities/paper-ume-exo.md) — 外骨骼力矩反馈双臂示教与冰箱开门/递接等柔顺任务
 - [Contact-Rich Manipulation](../concepts/contact-rich-manipulation.md) — 双臂操作大量涉及接触丰富型场景（组装、插拔、折叠）
 - [Action Chunking](../methods/action-chunking.md) — 双臂协调常依赖动作块输出保持短时同步
 - [ALOHA](../entities/aloha.md) — 开源双臂遥操作硬件标准
