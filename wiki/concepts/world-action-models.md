@@ -2,7 +2,7 @@
 type: concept
 tags: [world-action-models, wam, vla, world-models, embodied-ai, survey]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-18
 summary: "World Action Models（WAM）把环境前向预测与可执行动作生成耦合在同一具身策略里，以联合分布 p(o',a|o,l) 为对象，区别于纯反应式 VLA 与单独的世界模型。"
 related:
   - ../entities/paper-dit4dit-video-action-model.md
@@ -18,6 +18,7 @@ related:
   - ../methods/pelican-unified-1.md
   - ../methods/defi-decoupled-dynamics-vla.md
   - ../entities/tau0-world-model.md
+  - ../entities/paper-kairos-native-world-model-stack.md
   - ../tasks/loco-manipulation.md
 sources:
   - ../../sources/papers/world_action_models_survey_2605.md
@@ -94,6 +95,8 @@ sources:
 **文献实例（Joint 族 + 双 DiT 联合训练 · VAM）**：[DiT4DiT](../entities/paper-dit4dit-video-action-model.md) 以 **Cosmos-Predict2.5 Video DiT** 与 **Action DiT** **端到端 dual flow-matching** 联合优化，用 **固定 flow 步隐状态** 条件动作；§3 验证视频生成相对 Grounding/FLARE 的 **~10× 样本效率**；LIBERO **98.6%**、G1 真机桌面与全身 loco-manip（arXiv:2603.10448，Mondo Robotics / HKUST，[开源](https://github.com/Mondo-Robotics/DiT4DiT)）。
 
 **文献实例（Joint 族 + 双 DiT 实时闭环 · 人形 loco-manip）**：[MotionWAM](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) 以 **Cosmos-Predict2.5 系 Video DiT** 在 **固定 flow 步单次前向** 的隐状态条件 **Motion DiT**，在 **SONIC 统一全身 motion token** 上联合预测行走、躯干、身高、足端交互与双手操作；三阶段 **egocentric 视频 → 跨具身动作 → 全身遥操作** 微调，在 **宇树 G1** 九项真机任务上相对同演示微调的 VLA 基线 **整体成功率 +32% 绝对值**，并报告 **任务驱动足部行为**（arXiv:2606.09215，Mondo Robotics / HKUST）。
+
+**文献实例（Joint 族 + 原生 CEDC · 4B 部署导向）**：[Kairos](../entities/paper-kairos-native-world-model-stack.md) 以 **Video DiT + Action DiT（MoT）** 联合 flow matching，**Stage I–II 仅训 VideoDiT、Stage III 联合 ActionDiT**；推理支持 **action-only**（不滚未来视频）与 **Kairos-joint**（联合去噪，LIBERO-Plus **89.0→90.8**）。原生 **跨具身数据课程** 与 **仅训 ActionDiT** 消融（**−23.2** LIBERO-Plus）强调：世界生成监督是控制相关表征的必要来源（arXiv:2606.16533，Kairos Team / kairos-agi）。
 
 ```mermaid
 flowchart TB

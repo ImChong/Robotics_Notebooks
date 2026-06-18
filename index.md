@@ -420,6 +420,7 @@ SORT type ASC
 - [Heracles：跟踪精度与生成式恢复的扩散中间件](entities/paper-heracles-humanoid-diffusion.md) — Heracles**（*Bridging Precise Tracking and Generative Synthesis for General Humanoid Control*，arXiv `📅unknown` `[entity_page]`
 - [Hiking in the Wild](entities/paper-hiking-in-the-wild.md) — Hiking in the Wild** 关注复杂野外地形中的感知式徒步 / 跑酷，强调持续通过楼梯、沟壑、高台、斜坡与边缘密集区域。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目 `📅unknown` `[entity_page]`
 - [HomeWorld（Kairos · Whole-Home Scene Generation）](entities/paper-homeworld-whole-home-scene-generation.md) — HomeWorld**（*Kairos · HomeWorld*，arXiv:2606.06390，[项目页](https://kairos-homeworld.github.io/)，[GitH `📅unknown` `[entity_page]`
+- [Kairos（原生世界模型栈 · kairos-agi）](entities/paper-kairos-native-world-model-stack.md) — Kairos**（*Kairos: A Native World Model Stack for Physical AI*，arXiv:2606.16533，[代码](https://github.com/kairos-agi/kairos-sensenova)）原生 Physical AI 世界模型栈：CEDC + SWA/DSWA/GLA + WAM `📅2026-06-18` `[entity_page]`
 - [HoST：跨多样姿态的人形起身控制](entities/paper-host-humanoid-standingup.md) — HoST（Humanoid Standing-up Control）** 是上海 AI Lab 等团队提出的强化学习框架（arXiv:2502.08378，**RSS 2025 Best Syst `📅unknown` `[entity_page]`
 - [Retargeting Matters](entities/paper-hrl-stack-01-retargeting_matters.md) — Retargeting Matters** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeU `📅unknown` `[entity_page]`
 - [Make Tracking Easy](entities/paper-hrl-stack-02-make_tracking_easy.md) — Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUP `📅unknown` `[entity_page]`

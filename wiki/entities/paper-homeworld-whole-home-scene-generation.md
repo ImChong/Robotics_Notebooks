@@ -11,7 +11,7 @@ tags:
   - vlm
   - llm
 status: complete
-updated: 2026-06-05
+updated: 2026-06-18
 arxiv: "2606.06390"
 code: https://github.com/Kairos-HomeWorld/HomeWorld
 related:
@@ -134,7 +134,7 @@ flowchart TB
 ## 常见误区与局限
 
 - **误区：** 把 **「sim-ready」** 等同于 **任意引擎零配置导入**；仍需核对 **URDF/碰撞网格/关节定义** 与目标仿真器（MuJoCo、Isaac、SAPIEN 等）的对接成本（见 [Manipulation](../tasks/manipulation.md) 对 sim-ready 资产的说明）。
-- **误区：** 与 **Kairos 3.0**（kairos-agi 视频世界模型）混淆——**品牌名相近、任务不同**；HomeWorld 是 **静态室内场景合成**，不是流式视频 WM。
+- **误区：** 与 **Kairos 3.0**（[kairos-agi 原生视频/WAM 世界模型栈](./paper-kairos-native-world-model-stack.md)）混淆——**品牌名相近、任务不同**；HomeWorld 是 **静态室内场景合成**，不是流式视频 WM。
 - **局限：** 代码/数据集 **尚未公开**（ingest 时）；闭环 **RL/VLA 增益** 在项目 demo 与媒体报道中为 **定性**；**动态可变形物体、流体、长程任务成功率** 未作为主指标。
 
 ## 关联页面
@@ -145,6 +145,7 @@ flowchart TB
 - [Manipulation](../tasks/manipulation.md) — 可操作物体与操作仿真数据链
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md) — 室内语言导航 benchmark 与户型数据
 - [PhysX-Omni](./physx-omni.md) — 物体级 sim-ready 3D 生成对照
+- [Kairos（原生世界模型栈）](./paper-kairos-native-world-model-stack.md) — **同名不同项目**：kairos-agi 视频/WAM 栈
 
 ## 参考来源
 
