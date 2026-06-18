@@ -146,12 +146,8 @@ def find_stub_stub_merge_pairs() -> list[tuple[str, str]]:
     for paths in by_h1.values():
         if len(paths) < 2:
             continue
-        with_arxiv = [
-            p for p in paths if fm_arxiv(p.read_text(encoding="utf-8"))
-        ]
-        without_arxiv = [
-            p for p in paths if not fm_arxiv(p.read_text(encoding="utf-8"))
-        ]
+        with_arxiv = [p for p in paths if fm_arxiv(p.read_text(encoding="utf-8"))]
+        without_arxiv = [p for p in paths if not fm_arxiv(p.read_text(encoding="utf-8"))]
         if not with_arxiv or not without_arxiv:
             continue
         keeper = sorted(with_arxiv, key=entity_score, reverse=True)[0]
@@ -166,9 +162,7 @@ def find_stub_stub_merge_pairs() -> list[tuple[str, str]]:
 def find_merge_pairs() -> list[tuple[str, str]]:
     merged: dict[str, str] = {}
     for remove_rel, keep_rel in (
-        find_arxiv_merge_pairs()
-        + find_title_merge_pairs()
-        + find_stub_stub_merge_pairs()
+        find_arxiv_merge_pairs() + find_title_merge_pairs() + find_stub_stub_merge_pairs()
     ):
         merged[remove_rel] = keep_rel
     return list(merged.items())
