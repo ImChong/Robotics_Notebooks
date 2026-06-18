@@ -2,13 +2,17 @@
 type: method
 tags: [rl, adaptation, world-model, transformer, locomotion]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-18
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ./model-based-rl.md
   - ./beyondmimic.md
   - ../concepts/domain-randomization.md
 sources:
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "Any2Track 与 RGMT 代表了基于 Transformer 和世界模型的自适应运动控制范式，通过显式建模历史扰动与未来指令来实现鲁棒的轨迹跟踪。"
 ---
 

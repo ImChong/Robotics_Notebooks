@@ -6,12 +6,16 @@ updated: 2026-06-18
 arxiv: "2606.13232"
 summary: "全身触觉接口 + 力监督接触规划，补视觉难判的接触状态。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/loco-manip-8-papers-technology-map.md
   - ../overview/loco-manip-category-04-contact-teleop.md
 sources:
   - ../../sources/papers/loco_manip_survey_07_wt_umi.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # WT-UMI
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **I 柔顺与接触**（64/64）：接触数据：触觉和力监督进入数据链路。
 - 全身触觉接口 + 力监督接触规划，补视觉难判的接触状态。
 - 在 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中属于 **[04 触觉与跨本体遥操作](../overview/loco-manip-category-04-contact-teleop.md)**。
 

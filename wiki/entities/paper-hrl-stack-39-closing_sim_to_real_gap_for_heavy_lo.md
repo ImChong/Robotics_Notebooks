@@ -6,12 +6,16 @@ updated: 2026-06-18
 venue: curated
 summary: "HALO 解决 heavy-loaded humanoid agile motion skills。真实机器人执行任务时经常会携带未知负载，而负载会改变机器人动力学。一个空载时表现很好的策略，拿重物后可能直接失效。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-08-real-tasks.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_39_closing_sim_to_real_gap_for_heavy_loaded_humanoi.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # Closing Sim-to-Real Gap for Heavy-loaded Humanoid Agile Motion Skills via Differentiable Simulation
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **H 真实任务**（55/64）：任务：重载技能里的可微仿真和物理对齐。
 - HALO 解决 heavy-loaded humanoid agile motion skills。真实机器人执行任务时经常会携带未知负载，而负载会改变机器人动力学。一个空载时表现很好的策略，拿重物后可能直接失效。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **05 接触 · 柔顺 · 安全恢复** 簇。
 

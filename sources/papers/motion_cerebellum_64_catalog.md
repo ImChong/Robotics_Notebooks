@@ -56,10 +56,10 @@
 | 27 | SONIC | 跟踪策略：把 motion tracking 规模化成控制基座 | [SONIC](../../wiki/entities/paper-sonic.md) |
 | 28 | HoloMotion-1 | 跟踪策略：视频动作也进入运动基座训练 | [HoloMotion-1](../../wiki/entities/holomotion.md) |
 | 29 | HumanoidGPT | 跟踪策略：海量动作帧和 Transformer 化 | [HumanoidGPT](../../wiki/entities/paper-humanoid-gpt.md) |
-| 30 | LIMMT | 跟踪策略：数据质量筛选比盲目堆量更重要 | [LIMMT](../methods/limmt-gqs-motion-curation.md) |
+| 30 | LIMMT | 跟踪策略：数据质量筛选比盲目堆量更重要 | [LIMMT](../../wiki/methods/limmt-gqs-motion-curation.md) |
 | 31 | M3imic | 跟踪策略：多模态动作条件下的统一模仿 | [M3imic](../../wiki/entities/paper-loco-manip-06-m3imic.md) |
 | 32 | RGMT | 鲁棒性：泛化和扰动下的动作跟踪 | [RGMT](../../wiki/entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md) |
-| 33 | Any2Track | 鲁棒性：任意动作、任意扰动继续跟踪 | [Any2Track](../methods/any2track.md) |
+| 33 | Any2Track | 鲁棒性：任意动作、任意扰动继续跟踪 | [Any2Track](../../wiki/methods/any2track.md) |
 | 34 | Stubborn | 恢复：把跟踪和跌倒恢复放进统一 RL | [Stubborn](../../wiki/entities/paper-motion-cerebellum-stubborn.md) |
 | 35 | ConstrainedMimic | 安全：给 motion tracking 加实时约束层 | [ConstrainedMimic](../../wiki/entities/paper-motion-cerebellum-constrainedmimic.md) |
 | 36 | SafeWBC | 安全：控制屏障函数接到全身控制后面 | [SafeWBC](../../wiki/entities/paper-motion-cerebellum-safewbc.md) |

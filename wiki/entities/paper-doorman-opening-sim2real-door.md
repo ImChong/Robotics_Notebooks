@@ -7,6 +7,8 @@ arxiv: "2512.01061"
 venue: "CVPR 2026"
 code: https://github.com/NVlabs/GR00T-VisualSim2Real
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-08-real-tasks.md
   - ./gr00t-visual-sim2real.md
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./tairan-he.md
@@ -22,6 +24,8 @@ related:
 sources:
   - ../../sources/papers/doorman_opening_sim2real_arxiv_2512_01061.md
   - ../../sources/sites/doorman-humanoid-github-io.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化，并在同 WBC 栈上报告相对人类遥操作的成功率与耗时优势。"
 ---
 
@@ -47,6 +51,7 @@ summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 lo
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **H 真实任务**（52/64）：任务：开门把视觉、接触、移动和平衡全照出来。
 - **任务对准日常难点**：门把手弹簧负载、铰链约束力与 **全身平衡** 强耦合，是「看似简单、实则难」的 **接触丰富 loco-manipulation** 代表。
 - **算法配方可复用**：**分阶段重置** 解决教师 RL 在长桥接转移上的探索不足；**DAgger → GRPO** 把「模仿特权教师」与「在自身观测分布上自举」拆成可插拔两阶段。
 - **视觉 Sim2Real 证据链完整**：系统消融 **PBR 纹理 / 穹顶光 / 相机参数** 对 RGB 策略泛化的影响，量化 **无强视觉随机化时性能崩塌** 的现象。

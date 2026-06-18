@@ -6,12 +6,16 @@ updated: 2026-06-18
 arxiv: "2606.04829"
 summary: "多模态动作参考 → 共享 latent 命令 → 统一全身控制器。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/loco-manip-8-papers-technology-map.md
   - ../overview/loco-manip-category-03-command-controller.md
 sources:
   - ../../sources/papers/loco_manip_survey_06_m3imic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # M3imic
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（31/64）：跟踪策略：多模态动作条件下的统一模仿。
 - 多模态动作参考 → 共享 latent 命令 → 统一全身控制器。
 - 在 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中属于 **[03 命令空间与控制器](../overview/loco-manip-category-03-command-controller.md)**。
 

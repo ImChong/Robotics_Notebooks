@@ -5,10 +5,14 @@ status: planned
 updated: 2026-06-18
 arxiv: "2605.20373"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
   - ../overview/humanoid-paper-notebooks-index.md
 sources:
   - ../../sources/papers/humanoid_pnb_sugar-a-scalable-human-video-driven-generalizabl.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "SUGAR：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
 ---
 
@@ -30,6 +34,7 @@ SUGAR 的人形机器人学习论文条目，当前处于 Paper Notebooks 阅读
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（23/64）：数据入口：视频驱动的泛化移动操作数据。
 - 列入 Paper Notebooks **progress 待深读** 清单，便于与全库 [人形论文笔记总索引](../overview/humanoid-paper-notebooks-index.md) 及分类父节点交叉检索。
 - 在深读笔记完成前，本页作为 **占位子节点**，避免知识图谱缺失该论文实体。
 

@@ -2,8 +2,10 @@
 type: method
 tags: [humanoid, motion-tracking, data-curation, amass, rl, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-06-09
+updated: 2026-06-18
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ./egm-efficient-general-mimic.md
   - ./any2track.md
   - ../entities/paper-twist2.md
@@ -16,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/limmt_arxiv_2606_06953.md
   - ../../sources/sites/limmt-giraffeguan-github-io.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "LIMMT（ICML 2026）：以 GQS 三阶段管线从大规模 MoCap 中策展物理可行、行为多样且动态丰富的子集；在 Any2Track / TWIST2 上 3% AMASS 即可优于全量训练，并 plug-and-play 迁移至 PHUMA 与 G1 真机。"
 ---
 

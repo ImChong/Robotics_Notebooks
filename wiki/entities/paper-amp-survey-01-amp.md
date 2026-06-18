@@ -6,6 +6,8 @@ updated: 2026-06-18
 venue: curated
 summary: "AMP 的核心不是让角色逐帧复现某段参考动作，而是让策略生成的状态转移尽量接近动作数据里的状态转移。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
@@ -14,6 +16,8 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_01_amp_adversarial_motion_priors_for_stylized_physi.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # AMP
@@ -29,6 +33,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（12/64）：源流：用对抗运动先验让动作像人。
 - AMP 的核心不是让角色逐帧复现某段参考动作，而是让策略生成的状态转移尽量接近动作数据里的状态转移。
 - 在 [人形 AMP 运动先验综述](../overview/humanoid-amp-motion-prior-survey.md) 中与 mimic / 身体系统栈分工对照阅读。
 

@@ -6,6 +6,8 @@ updated: 2026-06-18
 venue: curated
 summary: "NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/neural-motion-retargeting-nmr.md
@@ -13,6 +15,8 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # Make Tracking Easy
@@ -30,6 +34,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（19/64）：重定向：神经重定向与物理修正数据。
 - NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
 

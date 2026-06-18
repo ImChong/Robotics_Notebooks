@@ -6,6 +6,8 @@ updated: 2026-06-18
 venue: curated
 summary: "GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid motion tracking policies 依赖人类动作重定向，但人和机器人之间存在 **embodiment gap**。重定向阶段留下的脚滑、不可行姿态、起始姿态不合理等问题，会直接影响后面的 **RL 控制器**。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/motion-retargeting-gmr.md
@@ -13,6 +15,8 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_01_retargeting_matters_general_motion_retargeting_f.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # Retargeting Matters
@@ -30,6 +34,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（18/64）：重定向：人类动作变成可跟踪机器人参考。
 - GMR 的核心命题很直接：**retargeting matters**。论文指出，humanoid motion tracking policies 依赖人类动作重定向，但人和机器人之间存在 **embodiment gap**。重定向阶段留下的脚滑、不可行姿态、起始姿态不合理等问题，会直接影响后面的 **RL 控制器**。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
 

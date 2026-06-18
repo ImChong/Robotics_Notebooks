@@ -8,6 +8,8 @@ venue: "2025 · CoRL"
 code: https://github.com/YanjieZe/TWIST
 summary: "TWIST：全身遥操作模仿系统；在 RL 身体系统栈属数据/遥操作层，在 BFM 谱系强调遥操作作为持续数据生产方式。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
@@ -22,6 +24,8 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # TWIST
@@ -38,6 +42,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（43/64）：遥操作：全身遥操作也是动作小脑的数据入口。
 - TWIST 和 H2O / OmniH2O 属于同一条技术线，但它强调的是另一个问题：**人形机器人的遥操作不能只控制手，也不能只控制底盘，而是要控制整具身体。**
 - 遥操作同时是 BFM 数据生产方式：稳定全身轨迹沉淀为训练语料。
 

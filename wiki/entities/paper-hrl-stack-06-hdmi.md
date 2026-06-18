@@ -6,12 +6,16 @@ updated: 2026-06-18
 venue: curated
 summary: "HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # HDMI
@@ -27,6 +31,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（22/64）：数据入口：人类视频到交互式全身控制。
 - HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
 

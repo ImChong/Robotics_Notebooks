@@ -6,6 +6,8 @@ updated: 2026-06-18
 venue: curated
 summary: "DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/deepmimic.md
@@ -13,6 +15,8 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_11_deepmimic_example_guided_deep_reinforcement_lear.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # DeepMimic
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（11/64）：源流：参考动作 + 强化学习。
 - DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **02 参考跟踪 · 通用控制** 簇。
 

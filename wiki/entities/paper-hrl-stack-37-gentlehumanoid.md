@@ -6,6 +6,8 @@ updated: 2026-06-18
 venue: curated
 summary: "GentleHumanoid 关注 upper-body compliance for contact-rich human and object interaction。它的目标是让人形机器人在握手、拥抱、辅助坐站、气球操作等任务里保持安全、自然的接触。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../methods/gentlehumanoid-motion-tracking.md
@@ -13,6 +15,8 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_37_gentlehumanoid_learning_upper_body_compliance_fo.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # GentleHumanoid
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **I 柔顺与接触**（62/64）：接触：人和物体接触里的上半身分寸感。
 - GentleHumanoid 关注 upper-body compliance for contact-rich human and object interaction。它的目标是让人形机器人在握手、拥抱、辅助坐站、气球操作等任务里保持安全、自然的接触。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **05 接触 · 柔顺 · 安全恢复** 簇。
 

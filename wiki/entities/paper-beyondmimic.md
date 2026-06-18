@@ -8,6 +8,8 @@ venue: "2025 · arXiv"
 code: https://github.com/HybridRobotics/whole_body_tracking
 summary: "BeyondMimic：从 motion tracking 到 guided diffusion 的通用人形控制；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系属 hierarchical control。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
@@ -21,6 +23,8 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # BeyondMimic
@@ -37,6 +41,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（26/64）：跟踪策略：从动作跟踪到多功能人形控制。
 - BeyondMimic 的完整题目是 From Motion Tracking to Versatile Humanoid Control via Guided Diffusion。它放在 OmniTrack、RGMT 旁边很合适，因为它同样在处理「参考动作如何变成可执行控制」这个问题，但切入点更偏生成式。
 - guided diffusion 进入全身控制；生成方案仍需低层执行器兜底。
 
