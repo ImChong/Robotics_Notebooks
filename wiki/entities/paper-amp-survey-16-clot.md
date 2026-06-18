@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-18
 arxiv: "2602.15060"
 venue: "arXiv"
 code: https://github.com/zhutengjie/CLOT

@@ -2,7 +2,7 @@
 type: method
 tags: [rl, sampling, data-generation, humanoid, physics-feasibility]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-18
 related:
   - ./imitation-learning.md
   - ./beyondmimic.md

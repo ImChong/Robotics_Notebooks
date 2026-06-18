@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, human-pose, monocular-video, motion-retargeting, upstream]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-18
 summary: "GVHMR（zju3dv/GVHMR）从单目视频恢复全局人体运动（SMPL 系），常作为 GMR 与人形重定向管线的上游观测模块。"
 related:
   - ../concepts/motion-retargeting.md

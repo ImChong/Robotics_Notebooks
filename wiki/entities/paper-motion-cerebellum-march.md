@@ -1,0 +1,56 @@
+---
+type: entity
+tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
+status: complete
+updated: 2026-06-18
+summary: "底座：模型辅助稀疏落脚控制。输入是稀疏落脚目标、机器人状态和模型预测信息；实现上用模型辅助强化学习指导足端放置和身体运动，让策略在复杂地形上减少盲目探索；它把模型知识放进感知落脚控制。"
+related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-01-locomotion-base.md
+sources:
+  - ../../sources/papers/motion_cerebellum_survey_04_march.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+---
+
+# MARCH
+
+**MARCH** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 04/64** 篇，归类为 **A 走路底座**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| WBC | Whole-Body Control | 协调全身关节满足多任务/约束的控制层 |
+| RL | Reinforcement Learning | 通过与环境交互学习策略的范式 |
+| Loco-Manip | Loco-Manipulation | 行走与操作动力学耦合的全身任务 |
+
+## 为什么重要
+
+- 底座：模型辅助稀疏落脚控制。输入是稀疏落脚目标、机器人状态和模型预测信息；实现上用模型辅助强化学习指导足端放置和身体运动，让策略在复杂地形上减少盲目探索；它把模型知识放进感知落脚控制。
+- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[走路底座](../overview/motion-cerebellum-category-01-locomotion-base.md)**。
+
+## 核心信息（索引级）
+
+| 字段 | 内容 |
+|------|------|
+| 编号 | 04/64 |
+| 分组 | A 走路底座 |
+| 机构 | 塔夫茨大学 |
+| 论文/项目 | https://arxiv.org/abs/2606.10288v1 |
+
+## 与其他页面的关系
+
+- 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
+- 分类 hub：[motion-cerebellum-category-01-locomotion-base.md](../overview/motion-cerebellum-category-01-locomotion-base.md)
+
+## 参考来源
+
+- [motion_cerebellum_survey_04_march.md](../../sources/papers/motion_cerebellum_survey_04_march.md)
+- [motion_cerebellum_64_catalog.md](../../sources/papers/motion_cerebellum_64_catalog.md)
+- [wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md)
+
+## 推荐继续阅读
+
+- [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md)
+- [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
-updated: 2026-05-25
+updated: 2026-06-18
 arxiv: "2605.23733"
 related:
   - ../methods/sonic-motion-tracking.md

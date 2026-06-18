@@ -10,7 +10,7 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 arxiv: "2606.05687"
 related:
   - ../methods/pi-mpc.md

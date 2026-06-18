@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-18
 arxiv: "2505.02833"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2

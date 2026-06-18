@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, sim2real, online-adaptation, world-model, film, grl, amp, physhsi, unitree-g1, isaac-gym, mujoco, box-manipulation, samsung]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-18
 arxiv: "2606.03297"
 related:
   - ../tasks/loco-manipulation.md

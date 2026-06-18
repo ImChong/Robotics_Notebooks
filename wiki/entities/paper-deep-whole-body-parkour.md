@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, amp, motion-prior]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 venue: curated
 summary: "Deep Whole-body Parkour：全身跑酷与 PHP 同簇但侧重点不同；在 RL 身体系统栈属感知式高动态运动，在 AMP 专题属交互与长时程簇。"
 related:

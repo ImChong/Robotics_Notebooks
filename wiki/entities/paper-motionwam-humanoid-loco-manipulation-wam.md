@@ -12,7 +12,7 @@ tags:
   - real-time-control
   - unified-action-space
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 arxiv: "2606.09215"
 related:
   - ./paper-dit4dit-video-action-model.md

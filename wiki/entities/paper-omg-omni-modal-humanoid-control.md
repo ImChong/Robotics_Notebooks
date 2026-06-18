@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, motion-generation, diffusion, dit, omni-modal, text-to-motion, audio-conditioned, motion-tracking, foundation-model, unitree-g1, tsinghua, mars-lab]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 code: https://github.com/tsinghua-mars-lab/OMG
 related:
   - ../methods/diffusion-motion-generation.md

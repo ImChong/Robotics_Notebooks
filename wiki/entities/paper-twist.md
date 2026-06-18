@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-18
 arxiv: "2505.02833"
 venue: "2025 · CoRL"
 code: https://github.com/YanjieZe/TWIST

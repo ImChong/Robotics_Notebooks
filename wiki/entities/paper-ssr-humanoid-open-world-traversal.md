@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, locomotion, perception, depth, foothold-guidance, symmetry, amp, open-world, stairs, parkour, sim2real, agibot, zju]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 arxiv: "2605.30770"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

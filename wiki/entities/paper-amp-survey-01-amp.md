@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 venue: curated
 summary: "AMP 的核心不是让角色逐帧复现某段参考动作，而是让策略生成的状态转移尽量接近动作数据里的状态转移。"
 related:

@@ -16,7 +16,7 @@ tags:
   - isaac-sim
   - amazon-far
 status: complete
-updated: 2026-06-09
+updated: 2026-06-18
 arxiv: "2606.05873"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

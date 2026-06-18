@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-18
 arxiv: "2506.20487"
 venue: "2024 · TOG"
 code: https://github.com/NVlabs/ProtoMotions

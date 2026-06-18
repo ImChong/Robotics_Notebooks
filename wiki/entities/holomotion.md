@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, humanoid, motion-tracking, foundation-model, horizon-robotics, transformer, mixture-of-experts, ppo, zero-shot, teleoperation, imitation-learning]
 status: complete
-updated: 2026-05-18
+updated: 2026-06-18
 related:
   - ../methods/sonic-motion-tracking.md
   - ../methods/reinforcement-learning.md
