@@ -2,7 +2,7 @@
 type: formalization
 tags: [foundation-policy, machine-learning, math, alignment, multi-task]
 status: complete
-updated: 2026-04-21
+updated: 2026-06-18
 related:
   - ../methods/vla.md
   - ../concepts/embodied-scaling-laws.md
