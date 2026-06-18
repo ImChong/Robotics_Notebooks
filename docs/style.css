@@ -698,12 +698,12 @@ body.sponsor-dialog-open {
 }
 .detail-meta-badge span:first-child { font-size: .95em; line-height: 1; }
 .detail-community-badge {
-  border-color: rgba(167, 139, 250, 0.35);
-  background: rgba(167, 139, 250, 0.08);
+  border-color: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.35);
+  background: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.08);
 }
 .detail-community-badge:hover {
-  border-color: rgba(167, 139, 250, 0.55);
-  background: rgba(167, 139, 250, 0.16);
+  border-color: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.55);
+  background: rgba(var(--community-r, 167), var(--community-g, 139), var(--community-b, 250), 0.16);
 }
 .detail-meta-date {
   border-color: rgba(155, 155, 160, 0.38);

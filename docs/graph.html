@@ -3542,7 +3542,8 @@
       }
       if (sbCommunity) {
         if (d.community && communityLabel && window.RNGraphTooltip?.buildCommunityBadgeHtml) {
-          sbCommunity.innerHTML = window.RNGraphTooltip.buildCommunityBadgeHtml(d.community, communityLabel);
+          sbCommunity.innerHTML = window.RNGraphTooltip.buildCommunityBadgeHtml(
+            d.community, communityLabel, communityColor);
           sbCommunity.hidden = false;
         } else {
           sbCommunity.innerHTML = '';

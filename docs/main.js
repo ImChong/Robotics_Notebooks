@@ -2789,10 +2789,14 @@
       if (!node || !node.community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
       var community = (gd.communities || []).find(function (c) { return c.id === node.community; });
       if (!community) { renderDetailMetaItemRow(communityRowId, '所属社区', ''); return; }
-      var label = shortenCommunityLabel(community.label);
-      var html = '<a class="detail-meta-badge detail-community-badge" href="graph.html?community=' +
-        encodeURIComponent(community.id) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
-        '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
+      var tooltipApi = window.RNGraphTooltip || {};
+      var colorMap = tooltipApi.buildCommunityColorMap
+        ? tooltipApi.buildCommunityColorMap(gd.communities || [])
+        : {};
+      var communityColor = colorMap[community.id] || '';
+      var html = tooltipApi.buildCommunityBadgeHtml
+        ? tooltipApi.buildCommunityBadgeHtml(community.id, community.label, communityColor)
+        : '';
       renderDetailMetaItemRow(communityRowId, '所属社区', html);
     }).catch(function () { renderDetailMetaItemRow(communityRowId, '所属社区', ''); });
   }

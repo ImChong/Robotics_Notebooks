@@ -141,6 +141,60 @@
     return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
   }
 
+  /** 与 graph.html COMMUNITY_COLORS 一致：Tableau10 + 扩展色 */
+  var COMMUNITY_COLORS_FALLBACK = [
+    '#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f',
+    '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac',
+    '#e377c2', '#bcbd22', '#17becf', '#aec7e8', '#ffbb78', '#98df8a', '#c5b0d5'
+  ];
+
+  function getCommunityColors() {
+    if (typeof window !== 'undefined' && window.d3 && window.d3.schemeTableau10) {
+      return window.d3.schemeTableau10.concat(COMMUNITY_COLORS_FALLBACK.slice(10));
+    }
+    return COMMUNITY_COLORS_FALLBACK.slice();
+  }
+
+  /** 与 graph.html getSortedCommunities 一致，保证徽标色与图谱社区色对齐 */
+  function getSortedCommunities(communities) {
+    var list = (communities || []).slice();
+    return list.sort(function (a, b) {
+      if (a.id === 'community-other') return 1;
+      if (b.id === 'community-other') return -1;
+      var sizeDiff = (b.size || 0) - (a.size || 0);
+      if (sizeDiff !== 0) return sizeDiff;
+      return String(a.label || a.id).localeCompare(String(b.label || b.id), 'zh-CN');
+    });
+  }
+
+  function buildCommunityColorMap(communities) {
+    var palette = getCommunityColors();
+    var map = {};
+    getSortedCommunities(communities).forEach(function (c, idx) {
+      map[c.id] = palette[idx % palette.length];
+    });
+    return map;
+  }
+
+  function hexToRgbChannels(hex) {
+    var h = String(hex || '').replace('#', '').trim();
+    if (h.length === 3) {
+      h = h.split('').map(function (ch) { return ch + ch; }).join('');
+    }
+    if (h.length !== 6 || !/^[0-9a-fA-F]{6}$/.test(h)) return null;
+    return {
+      r: parseInt(h.slice(0, 2), 16),
+      g: parseInt(h.slice(2, 4), 16),
+      b: parseInt(h.slice(4, 6), 16)
+    };
+  }
+
+  function communityBadgeStyleAttr(color) {
+    var rgb = hexToRgbChannels(color);
+    if (!rgb) return '';
+    return ' style="--community-r:' + rgb.r + ';--community-g:' + rgb.g + ';--community-b:' + rgb.b + '"';
+  }
+
   /** 浮窗/侧边栏类型徽章：优先用社区色着色，不再单独展示社区色块 */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
@@ -158,12 +212,13 @@
     return '<div class="tt-meta-badges">' + html + '</div>';
   }
 
-  /** 与详情页一致的社区跳转按钮 */
-  function buildCommunityBadgeHtml(communityId, communityLabel) {
+  /** 与详情页一致的社区跳转按钮；communityColor 与图谱节点社区色一致 */
+  function buildCommunityBadgeHtml(communityId, communityLabel, communityColor) {
     if (!communityId || !communityLabel) return '';
     var label = shortenCommunityLabel(communityLabel);
-    return '<a class="detail-meta-badge detail-community-badge" href="graph.html?community=' +
-      encodeURIComponent(communityId) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
+    return '<a class="detail-meta-badge detail-community-badge"' + communityBadgeStyleAttr(communityColor) +
+      ' href="graph.html?community=' + encodeURIComponent(communityId) +
+      '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
       '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
   }
 
@@ -191,6 +246,11 @@
     GRAPH_NODE_TYPE_LABEL: GRAPH_NODE_TYPE_LABEL,
     GRAPH_NODE_TYPE_COLOR: GRAPH_NODE_TYPE_COLOR,
     shortenCommunityLabel: shortenCommunityLabel,
+    COMMUNITY_COLORS_FALLBACK: COMMUNITY_COLORS_FALLBACK,
+    getCommunityColors: getCommunityColors,
+    getSortedCommunities: getSortedCommunities,
+    buildCommunityColorMap: buildCommunityColorMap,
+    communityBadgeStyleAttr: communityBadgeStyleAttr,
     buildMetaBadgesHtml: buildMetaBadgesHtml,
     buildCommunityBadgeHtml: buildCommunityBadgeHtml,
     buildNodeTooltipHtml: buildNodeTooltipHtml
