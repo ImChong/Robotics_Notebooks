@@ -43,6 +43,7 @@
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |
 | [x] [holomotion_arxiv_2605_15336.md](papers/holomotion_arxiv_2605_15336.md) | HoloMotion-1：混合大规模运动语料 + 稀疏 MoE Transformer + 序列级 PPO 的人形零样本全身跟踪（arXiv:2605.15336，Horizon Robotics）摘录与 wiki 映射 |
 | [x] [homeworld_arxiv_2606_06390.md](papers/homeworld_arxiv_2606_06390.md) | HomeWorld（Kairos）：文本到 sim-ready 全屋 furnished 3D 四阶段流水线 + 300K 中国住宅平面图数据集（arXiv:2606.06390，Ace Robotics / CUHK MMLab）摘录与 wiki 映射 |
+| [x] [kairos_arxiv_2606_16533.md](papers/kairos_arxiv_2606_16533.md) | Kairos：原生 Physical AI 世界模型栈（CEDC + SWA/DSWA/GLA + WAM；Kairos-4B，arXiv:2606.16533，Kairos Team / kairos-agi）摘录与 wiki 映射 |
 | [x] [physforge_arxiv_2605_05163.md](papers/physforge_arxiv_2605_05163.md) | PhysForge：VLM 分层物理蓝图 + KVI 协同扩散生成仿真就绪关节 3D 资产；PhysDB 约 15 万四档标注（arXiv:2605.05163，HKU MMLab / 腾讯混元等）摘录与 wiki 映射 |
 | [x] [physx_omni_arxiv_2605_21572.md](papers/physx_omni_arxiv_2605_21572.md) | PhysX-Omni：统一刚体/可变形/关节体 sim-ready 3D 生成；PhysXVerse + PhysX-Bench（arXiv:2605.21572，NTU S-Lab）摘录与 wiki 映射 |
 | [x] [pilot_arxiv_2601_17440.md](papers/pilot_arxiv_2601_17440.md) | PILOT：LiDAR 高程图 + 跨模态编码 + MoE 单阶段感知全身 loco-manipulation LLC（arXiv:2601.17440，上海交大 / G1）摘录与 wiki 映射 |
@@ -176,6 +177,7 @@
 | [x] [metalhead.md](repos/metalhead.md) | inspirai/MetalHead：Unitree A1 AMP walk/jump/recovery |
 | [x] [mamma.md](repos/mamma.md) | cuevhv/mamma：CVPR 2026 MAMMA 多视角 markerless SMPL-X 管线（CLI + GUI） |
 | [x] [junhengl_mpc_rl.md](repos/junhengl_mpc_rl.md) | junhengl/mpc-rl：MPC-RL 官方代码（CD-MPC 奖励、πⁿ MPC、mjlab+rsl-rl，arXiv:2606.05687） |
+| [x] [kairos_sensenova.md](repos/kairos_sensenova.md) | kairos-agi/kairos-sensenova：Kairos 原生世界模型栈官方仓（arXiv:2606.16533；HF/ModelScope Kairos 3.0 权重） |
 | [x] [mondo_robotics_dit4dit.md](repos/mondo_robotics_dit4dit.md) | Mondo-Robotics/DiT4DiT：双 DiT VAM 官方训练/评测/部署代码（arXiv:2603.10448） |
 | [x] [mocap_retarget.md](repos/mocap_retarget.md) | ccrpRepo/mocap_retarget：工程向动捕→机器人重定向参考 |
 | [x] [moveit-moveit1.md](repos/moveit-moveit1.md) | moveit/moveit：MoveIt 1（ROS 1 / Noetic）官方源码 |
