@@ -85,7 +85,7 @@ flowchart LR
 
 ## 实验要点（索引级）
 
-- **仿真**：静态复杂场景相对 SOTA **计算时间 −9.3%**、**飞行时间 −13.1%**，**成功率 100%**；动态障碍场景验证安全行为。
+- **仿真**：静态复杂场景相对此前最优基线 **计算时间 −9.3%**、**飞行时间 −13.1%**，**成功率 100%**；动态障碍场景验证安全行为。
 - **真机**：LiDAR 感知定位；静态 clutter **最高 6.7 m/s**；长航时与 **在线新增动态障碍** 实验（见项目视频）。
 - **复现**：Ubuntu 22.04 + ROS 2 Humble；`docker/make run-interactive` 或 `setup.sh` + `run_sim.py`（细节见 [sources/repos/mighty.md](../../sources/repos/mighty.md)）。
 

@@ -113,6 +113,7 @@ flowchart LR
 - [sbto（SBTO 官方实现）](../entities/sbto.md) — 仓库结构与 Hydra 用法
 - [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) — 默认 kinematic 参考数据源与对比 baseline。
 - [Loco-Manipulation（移动操作）](../tasks/loco-manipulation.md) — 任务域。
+- [DynaRetarget vs TopoRetarget（接触保真重定向对比）](../comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 动力学层 vs 运动学层接触保真选型对比。
 
 ## 推荐继续阅读
 

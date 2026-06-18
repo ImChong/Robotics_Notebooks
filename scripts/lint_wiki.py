@@ -94,12 +94,13 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 
 # 高频术语但「已在 entities/ 或非同名 stem 的 methods 页有恰当归属」，
 # 不应再按裸 token 误报为「缺独立 concepts/methods 页」。映射到既有页：
-#   amp      → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
-#   g1       → entities/unitree-g1.md（硬件，归 entities）
-#   heracles → entities/paper-heracles-humanoid-diffusion.md（具体系统）
-#   mjlab    → entities/mjlab.md（库/工具）
-#   mujoco   → entities/mujoco.md（仿真器/工具）
-#   sonic    → methods/sonic-motion-tracking.md（具体方法）
+#   amp        → methods/amp-reward.md + overview/humanoid-amp-motion-prior-survey.md
+#   g1         → entities/unitree-g1.md（硬件，归 entities）
+#   heracles   → entities/paper-heracles-humanoid-diffusion.md（具体系统）
+#   mjlab      → entities/mjlab.md（库/工具）
+#   mujoco     → entities/mujoco.md（仿真器/工具）
+#   sonic      → methods/sonic-motion-tracking.md（具体方法）
+#   locomotion → tasks/locomotion.md（+ humanoid-/hybrid-locomotion，任务域，归 tasks）
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "g1",
@@ -107,6 +108,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mjlab",
     "mujoco",
     "sonic",
+    "locomotion",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key
