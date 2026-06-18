@@ -117,6 +117,7 @@ INFO_ONLY_KEYS: set[str] = {
     "methods_without_practitioner_query",
     "paper_missing_source_meta",
     "paper_missing_three_sections",
+    "dataset_missing_metadata",
     "stale_claims",
 }
 
@@ -271,6 +272,7 @@ def _empty_results() -> dict[str, Any]:
         "methods_without_practitioner_query": [],
         "paper_missing_source_meta": [],
         "paper_missing_three_sections": [],
+        "dataset_missing_metadata": [],
         "stale_claims": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
@@ -1016,6 +1018,113 @@ def _check_paper_entity_metadata(pages: list[Path], results: dict[str, Any]) -> 
             )
 
 
+def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -> None:
+    """V25: 数据集实体页元数据巡检 V1（信息型，不阻塞 CI）。
+
+    针对 frontmatter ``tags`` 含 ``dataset`` 的 ``wiki/entities/*.md``：检查正文是否
+    覆盖「规模 / 模态 / 许可证 / 重定向就绪度」四类标准化速查维度（以关键词命中近似）。
+    缺失维度作为 INFO 级提示写入 lint 报告，沉淀数据层 ingest 的元数据基线，
+    不计入 lint 失败总数。
+    """
+    dimension_patterns: list[tuple[str, list[str]]] = [
+        # 规模：时长 / 条目 / 序列 / 被试 / 帧 等量级描述
+        (
+            "规模",
+            [
+                "规模",
+                "小时",
+                "hours?",
+                "条",
+                "序列",
+                "帧",
+                "frames?",
+                "samples?",
+                "被试",
+                "subjects?",
+                "轨迹",
+                "episodes?",
+                "数量级",
+            ],
+        ),
+        # 模态：动捕 / 视频 / 深度 / 点云 / SMPL / 文本 等数据形态
+        (
+            "模态",
+            [
+                "模态",
+                "modality",
+                "mocap",
+                "动捕",
+                "视频",
+                "video",
+                "rgb",
+                "深度",
+                "depth",
+                "点云",
+                "point cloud",
+                "smpl",
+                "文本",
+                "imu",
+            ],
+        ),
+        # 许可证：开源协议 / 注册 / 商用约束
+        (
+            "许可证",
+            [
+                "许可证",
+                "license",
+                "协议",
+                "授权",
+                "注册",
+                "cc[- ]?by",
+                "\\bmit\\b",
+                "apache",
+                "开源",
+                "non-commercial",
+                "商用",
+            ],
+        ),
+        # 重定向就绪度：能否直接喂给目标形态 / 是否需重定向 / 训练输入
+        (
+            "重定向就绪度",
+            [
+                "重定向",
+                "retarget",
+                "形态",
+                "骨架",
+                "适配",
+                "morphology",
+                "训练输入",
+                "策略输入",
+                "物理可行",
+                "可部署",
+            ],
+        ),
+    ]
+
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 3 or parts[0] != "wiki" or parts[1] != "entities":
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        tags = _frontmatter_tags(fm_block)
+        # tags 既支持列表式（- dataset），也支持内联式 [dataset, ...]
+        if "dataset" not in tags and not re.search(
+            r"^tags:\s*\[[^\]]*\bdataset\b", fm_block, re.MULTILINE
+        ):
+            continue
+
+        body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL).lower()
+        missing = [
+            name for name, pats in dimension_patterns if not any(re.search(p, body) for p in pats)
+        ]
+        if missing:
+            results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查 + entities/ 出边检查。
 
@@ -1077,6 +1186,7 @@ def lint() -> dict[str, Any]:
     _check_methods_entities(pages, results)
     _check_methods_without_practitioner_query(pages, inbound, results)
     _check_paper_entity_metadata(pages, results)
+    _check_dataset_entity_metadata(pages, results)
     _check_stale_claims(pages, results)
 
     return results
@@ -1160,6 +1270,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "paper_missing_three_sections",
             "paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "dataset_missing_metadata",
+            "dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）",
             "💡",
         ),
         (

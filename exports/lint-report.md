@@ -2,7 +2,7 @@
 
 ## [2026-06-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **5** 条信息型预警）：
+共发现 **0** 个问题（另含 **22** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -94,6 +94,25 @@
 
 ### 💡 paper-* 实体正文缺「方法/评测/对比」三段式（信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md（缺 方法）
+
+### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（17 个）
+- wiki/entities/aloha.md（缺 模态 / 重定向就绪度）
+- wiki/entities/dataset-bfm-babel.md（缺 模态 / 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-humanml3d.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-humanoid-x.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-kit-ml.md（缺 模态 / 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-lafan.md（缺 模态 / 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-motion-x.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-motion-xpp.md（缺 模态 / 许可证 / 重定向就绪度）
+- wiki/entities/dataset-bfm-posescript.md（缺 模态 / 许可证 / 重定向就绪度）
+- wiki/entities/gencad-3d.md（缺 重定向就绪度）
+- wiki/entities/generalist-ai-robotics.md（缺 重定向就绪度）
+- wiki/entities/paper-homeworld-whole-home-scene-generation.md（缺 重定向就绪度）
+- wiki/entities/paper-physforge-physics-grounded-3d-assets.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/physx-omni.md（缺 重定向就绪度）
+- wiki/entities/robotwin.md（缺 许可证 / 重定向就绪度）
+- wiki/entities/sage-sim2real-actuator-gap-estimator.md（缺 许可证）
+- wiki/entities/sceneverse-pp.md（缺 许可证 / 重定向就绪度）
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md（含绝对化措辞「SOTA」，updated=2026-06-14；同主题更新页 wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md updated=2026-06-17）
