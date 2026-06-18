@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1219,
-  "edge_count": 7727,
+  "node_count": 1220,
+  "edge_count": 7742,
   "coverage": {
-    "covered": 1189,
-    "total": 1217,
+    "covered": 1190,
+    "total": 1218,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -12,6 +12,14 @@
       "path": "wiki/entities/deepinsight.md",
       "detail_id": "entity-deepinsight",
       "label": "DeepInsight（XPENG Robotics 全栈评测基础设施）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
+      "detail_id": "entity-paper-rove-humanoid-vla-intervention",
+      "label": "ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）",
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
@@ -156,14 +164,6 @@
       "path": "wiki/entities/amp-mjlab.md",
       "detail_id": "entity-amp-mjlab",
       "label": "AMP_mjlab (G1 统一 AMP 策略)",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-rsl-rl.md",
-      "detail_id": "entity-amp-rsl-rl",
-      "label": "AMP-RSL-RL",
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
