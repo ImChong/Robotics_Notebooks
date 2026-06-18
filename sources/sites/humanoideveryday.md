@@ -30,5 +30,5 @@
 ## 对 Wiki 的映射
 
 - **wiki/entities/humanoid-everyday-dataset.md**：数据集实体页（归纳级，区别于 Paper Notebooks 待深读占位）。
-- **wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md**：索引实体补链至数据集页。
+- **wiki/entities/humanoid-everyday-dataset.md**：数据集实体页。
 - **wiki/comparisons/humanoid-reference-motion-datasets.md**：与 MoCap / 预重定向参考库对照。

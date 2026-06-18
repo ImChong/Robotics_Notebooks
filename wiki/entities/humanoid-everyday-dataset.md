@@ -8,12 +8,10 @@ status: complete
 related:
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
-  - ./paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md
   - ../comparisons/humanoid-reference-motion-datasets.md
   - ../concepts/embodied-data-cleaning.md
 sources:
   - ../../sources/sites/humanoideveryday.md
-  - ../../sources/papers/humanoid_pnb_humanoid-everyday-a-comprehensive-robotic-datase.md
 ---
 
 # Humanoid Everyday
@@ -68,14 +66,13 @@ flowchart LR
 
 ## 与其他页面的关系
 
-- **论文索引占位**：[Humanoid Everyday（Paper Notebooks）](./paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md)
+- **论文索引占位**：[Humanoid Everyday（Paper Notebooks）](./humanoid-everyday-dataset.md)
 - **任务域**：[Loco-Manipulation](../tasks/loco-manipulation.md)、[Teleoperation](../tasks/teleoperation.md)
 - **选型对照**：[humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md)
 
 ## 参考来源
 
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
-- [humanoid_pnb 进度锚点](../../sources/papers/humanoid_pnb_humanoid-everyday-a-comprehensive-robotic-datase.md)
 - 项目页：<https://humanoideveryday.github.io/>
 
 ## 关联页面

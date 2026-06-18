@@ -255,10 +255,16 @@ def merge_paper_catalog(*groups: list[dict]) -> list[dict]:
     planned_papers = [p for p in merged.values() if p.get("planned")]
     completed_dir_slugs: set[tuple[str, str]] = set()
     completed_label_slugs: set[tuple[str, str]] = set()
+    arxiv_label_slugs: set[tuple[str, str]] = set()
     for paper in completed:
         cat = paper.get("category", "")
         completed_dir_slugs.add((cat, slugify(paper["dir"], 48)))
         completed_label_slugs.add((cat, slugify(short_label(paper["title"]), 48)))
+    for paper in merged.values():
+        if not paper.get("arxiv"):
+            continue
+        cat = paper.get("category", "")
+        arxiv_label_slugs.add((cat, slugify(short_label(paper["title"]), 48)))
 
     catalog = list(completed)
     for paper in planned_papers:
@@ -266,6 +272,8 @@ def merge_paper_catalog(*groups: list[dict]) -> list[dict]:
         dir_slug = slugify(paper["dir"], 48)
         label_slug = slugify(short_label(paper["title"]), 48)
         if (cat, dir_slug) in completed_dir_slugs or (cat, label_slug) in completed_label_slugs:
+            continue
+        if not paper.get("arxiv") and (cat, label_slug) in arxiv_label_slugs:
             continue
         catalog.append(paper)
     return sorted(catalog, key=lambda p: (p.get("category", ""), p["title"]))

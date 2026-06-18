@@ -50,7 +50,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [H-RDT](../entities/paper-notebook-h-rdt-human-manipulation-enhanced-bimanual-robot.md) — 待深读
 - [Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation](../entities/paper-notebook-hierarchical-vision-language-planning-for-multi.md) — 待深读
 - [HumDex](../tasks/manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy.html)
-- [Humanoid Everyday](../entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md) — 待深读
+- [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) — 见 wiki 实体页
 - [Humanoid Policy ~ Human Policy](../entities/paper-notebook-humanoid-policy-human-policy.md) — 待深读
 - [HumanoidVLM](../entities/paper-notebook-humanoidvlm-vision-language-guided-impedance-con.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation.html)
 - [Humanoids in Hospitals](../entities/paper-notebook-humanoids-in-hospitals-a-technical-study-of-huma.md) — 待深读
