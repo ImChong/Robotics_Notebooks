@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ume-exo.md",
+      "detail_id": "entity-paper-ume-exo",
+      "label": "UME-EXO（Universal Manipulation Exoskeleton）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/molmo-motion.md",
       "detail_id": "entity-molmo-motion",
       "label": "MolmoMotion",
@@ -159,20 +167,12 @@
       "type": "overview",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-06-cross-embodiment-teleop.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-06-cross-embodiment-teleop",
-      "label": "运动小脑分类 F：跨本体与遥操作",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/molmo-motion.md",
-    "detail_id": "entity-molmo-motion",
-    "label": "MolmoMotion",
+    "path": "wiki/entities/paper-ume-exo.md",
+    "detail_id": "entity-paper-ume-exo",
+    "label": "UME-EXO（Universal Manipulation Exoskeleton）",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
