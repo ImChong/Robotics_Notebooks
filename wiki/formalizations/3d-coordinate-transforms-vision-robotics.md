@@ -5,6 +5,7 @@ status: complete
 updated: 2026-06-09
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ./homogeneous-coordinates-transform.md
   - ./lie-group-rigid-body-motions.md
   - ./se3-representation.md
   - ../methods/grasp-pose-estimation.md

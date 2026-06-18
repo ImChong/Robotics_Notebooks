@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1217,
-  "edge_count": 7706,
+  "node_count": 1218,
+  "edge_count": 7717,
   "coverage": {
-    "covered": 1187,
-    "total": 1215,
+    "covered": 1188,
+    "total": 1216,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/formalizations/homogeneous-coordinates-transform.md",
+      "detail_id": "wiki-formalizations-homogeneous-coordinates-transform",
+      "label": "齐次坐标与齐次变换（SE(3) 工程底座）",
+      "type": "formalization",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/shenlan-embodied-ai-fundamentals-series.md",
+      "detail_id": "wiki-overview-shenlan-embodied-ai-fundamentals-series",
+      "label": "《具身智能基础》专栏技术地图",
+      "type": "overview",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/lie-group-rigid-body-motions.md",
+      "detail_id": "wiki-formalizations-lie-group-rigid-body-motions",
+      "label": "李群、李代数与刚体旋转（SO(3) / SE(3)）",
+      "type": "formalization",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/3d-coordinate-transforms-vision-robotics.md",
+      "detail_id": "wiki-formalizations-3d-coordinate-transforms-vision-robotics",
+      "label": "三维坐标变换（视觉–机器人对齐）",
+      "type": "formalization",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/se3-representation.md",
+      "detail_id": "wiki-formalizations-se3-representation",
+      "label": "SE(3) Representation (位姿表示形式化)",
+      "type": "formalization",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/wtfos.md",
       "detail_id": "entity-wtfos",
@@ -127,53 +167,13 @@
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/anygrasp.md",
-      "detail_id": "entity-anygrasp",
-      "label": "AnyGrasp（抓取感知 SDK）",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/anymal.md",
-      "detail_id": "entity-anymal",
-      "label": "ANYmal 四足机器人",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/april-tag.md",
-      "detail_id": "entity-april-tag",
-      "label": "AprilTag（视觉 fiducial 与检测库）",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/articraft.md",
-      "detail_id": "entity-articraft",
-      "label": "Articraft",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/asimov-v1.md",
-      "detail_id": "entity-asimov-v1",
-      "label": "Asimov v1（开源人形机器人仓库）",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/wtfos.md",
-    "detail_id": "entity-wtfos",
-    "label": "wtfOS",
-    "type": "entity",
+    "path": "wiki/formalizations/homogeneous-coordinates-transform.md",
+    "detail_id": "wiki-formalizations-homogeneous-coordinates-transform",
+    "label": "齐次坐标与齐次变换（SE(3) 工程底座）",
+    "type": "formalization",
     "recency": "2026-06-18",
     "source": "log.md"
   }

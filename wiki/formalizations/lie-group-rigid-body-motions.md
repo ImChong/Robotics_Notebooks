@@ -5,6 +5,7 @@ status: complete
 updated: 2026-06-04
 related:
   - ../overview/shenlan-embodied-ai-fundamentals-series.md
+  - ./homogeneous-coordinates-transform.md
   - ./3d-coordinate-transforms-vision-robotics.md
   - ./riemannian-manifold-tangent-space.md
   - ./se3-representation.md
