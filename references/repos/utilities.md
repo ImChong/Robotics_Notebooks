@@ -14,5 +14,6 @@
 
 ## 机器人设计工作站
 - **[urdf-studio](../../wiki/entities/urdf-studio.md)**: 专业级 Web 机器人设计与组装平台，支持 Skeleton/Detail/Hardware 全流程管理与 AI 辅助。
+- **[step2urdf](../../wiki/entities/step2urdf.md)**: 浏览器端 STEP→URDF 转换；OpenCascade.js 本地解析、几何驱动关节识别与惯量估算，在线版 [step2urdf.top](https://step2urdf.top/)。
 - **[Tnkr](../../wiki/entities/tnkr.md)**: 开源整机项目协作平台（CAD/线束/代码/部署一体），对接 GitHub、Onshape 与 AI 助手 Leonardo。
 
