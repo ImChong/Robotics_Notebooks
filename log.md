@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/papers/ume_exo_arxiv_2606_14218.md、sources/sites/ume-exo-project.md — UME 外骨骼力矩反馈遥操作；wiki/entities/paper-ume-exo.md；交叉 teleoperation、bimanual-manipulation、loco-manipulation、motion-retargeting、action-chunking
+
 ## [2026-06-18] ingest | sources/blogs/allenai_molmo_motion.md — MolmoMotion 语言条件 3D 点轨迹预测；wiki/entities/molmo-motion.md；交叉 generative-world-models、manipulation、video-as-simulation
 
 ## [2026-06-18] ingest | sources/papers/greenvla_arxiv_2602_00919.md — Green-VLA 五阶段 VLA；wiki/entities/paper-greenvla-staged-vla-humanoid.md、wiki/methods/vla.md、wiki/tasks/manipulation.md
