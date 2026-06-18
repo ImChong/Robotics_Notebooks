@@ -1028,17 +1028,77 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
     """
     dimension_patterns: list[tuple[str, list[str]]] = [
         # 规模：时长 / 条目 / 序列 / 被试 / 帧 等量级描述
-        ("规模", ["规模", "小时", "hours?", "条", "序列", "帧", "frames?",
-                  "samples?", "被试", "subjects?", "轨迹", "episodes?", "数量级"]),
+        (
+            "规模",
+            [
+                "规模",
+                "小时",
+                "hours?",
+                "条",
+                "序列",
+                "帧",
+                "frames?",
+                "samples?",
+                "被试",
+                "subjects?",
+                "轨迹",
+                "episodes?",
+                "数量级",
+            ],
+        ),
         # 模态：动捕 / 视频 / 深度 / 点云 / SMPL / 文本 等数据形态
-        ("模态", ["模态", "modality", "mocap", "动捕", "视频", "video", "rgb",
-                  "深度", "depth", "点云", "point cloud", "smpl", "文本", "imu"]),
+        (
+            "模态",
+            [
+                "模态",
+                "modality",
+                "mocap",
+                "动捕",
+                "视频",
+                "video",
+                "rgb",
+                "深度",
+                "depth",
+                "点云",
+                "point cloud",
+                "smpl",
+                "文本",
+                "imu",
+            ],
+        ),
         # 许可证：开源协议 / 注册 / 商用约束
-        ("许可证", ["许可证", "license", "协议", "授权", "注册", "cc[- ]?by",
-                    "\\bmit\\b", "apache", "开源", "non-commercial", "商用"]),
+        (
+            "许可证",
+            [
+                "许可证",
+                "license",
+                "协议",
+                "授权",
+                "注册",
+                "cc[- ]?by",
+                "\\bmit\\b",
+                "apache",
+                "开源",
+                "non-commercial",
+                "商用",
+            ],
+        ),
         # 重定向就绪度：能否直接喂给目标形态 / 是否需重定向 / 训练输入
-        ("重定向就绪度", ["重定向", "retarget", "形态", "骨架", "适配", "morphology",
-                          "训练输入", "策略输入", "物理可行", "可部署"]),
+        (
+            "重定向就绪度",
+            [
+                "重定向",
+                "retarget",
+                "形态",
+                "骨架",
+                "适配",
+                "morphology",
+                "训练输入",
+                "策略输入",
+                "物理可行",
+                "可部署",
+            ],
+        ),
     ]
 
     for page in pages:
@@ -1059,9 +1119,7 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
 
         body = re.sub(r"^---\n.*?\n---", "", content, flags=re.DOTALL).lower()
         missing = [
-            name
-            for name, pats in dimension_patterns
-            if not any(re.search(p, body) for p in pats)
+            name for name, pats in dimension_patterns if not any(re.search(p, body) for p in pats)
         ]
         if missing:
             results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")

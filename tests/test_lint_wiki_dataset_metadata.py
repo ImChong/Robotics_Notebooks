@@ -42,8 +42,7 @@ def test_inline_tags_are_detected(tmp_path: Path, monkeypatch) -> None:
     wiki = _setup_wiki(tmp_path, monkeypatch)
     page = wiki / "entities" / "bar-dataset.md"
     page.write_text(
-        "---\ntype: entity\ntags: [dataset, human-motion]\n---\n"
-        "正文仅描述规模 1000 条。\n",
+        "---\ntype: entity\ntags: [dataset, human-motion]\n---\n正文仅描述规模 1000 条。\n",
         encoding="utf-8",
     )
     results = _run([page])
