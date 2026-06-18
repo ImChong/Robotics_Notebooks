@@ -2520,7 +2520,6 @@
 
   function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId) {
     var summary = formatGraphTooltipSummary(d.summary);
-    var communityLabel = d.community && communityLabelMap[d.community];
     var communityColor = d.community ? nodeFill(d) : '';
     var linkHtml;
     if (d.isCurrent) {
@@ -2536,7 +2535,6 @@
         type: d.type || '',
         title: d.label || d.id,
         summary: summary,
-        communityLabel: communityLabel || '',
         communityColor: communityColor,
         linkHtml: linkHtml
       });

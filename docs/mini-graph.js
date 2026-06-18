@@ -44,14 +44,12 @@
   function tooltipHtml(d, nodeFill, communityLabelMap) {
     var summary = tooltipSummary(d.summary);
     var detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
-    var communityLabel = d.community && communityLabelMap[d.community];
     var communityColor = d.community ? nodeFill(d) : '';
     if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
       return window.RNGraphTooltip.buildNodeTooltipHtml({
         type: d.type || '',
         title: d.label || d.id,
         summary: summary,
-        communityLabel: communityLabel || '',
         communityColor: communityColor,
         linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">打开详情页 →</a>'
       });

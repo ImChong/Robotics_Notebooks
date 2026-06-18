@@ -1,18 +1,31 @@
-// Capture graph hover tooltips (type badge = type color, community badge = community color).
+// Capture graph hover tooltips (type badge colored by community; sidebar community = detail button).
 // Usage: node scripts/screenshot_graph_tooltip_verify.cjs [basePort] [outDir]
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 
+const CHROME_CANDIDATES = [
+  process.env.PUPPETEER_EXECUTABLE_PATH,
+  process.env.CHROME_PATH,
+  '/opt/pw-browsers/chromium-1194/chrome-linux/chrome',
+  '/usr/local/bin/google-chrome',
+  '/usr/bin/google-chrome',
+  '/usr/bin/chromium',
+  '/usr/bin/chromium-browser',
+].filter(Boolean);
+const exe = CHROME_CANDIDATES.find((p) => fs.existsSync(p));
+if (!exe) {
+  console.error('No Chrome/Chromium found. Set PUPPETEER_EXECUTABLE_PATH or CHROME_PATH.');
+  process.exit(1);
+}
+
+const d3Local = path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js');
+const d3Body = fs.existsSync(d3Local) ? fs.readFileSync(d3Local) : null;
+
 (async () => {
   const port = process.argv[2] || '8765';
   const outDir = path.resolve(process.argv[3] || path.join(__dirname, '..', '.cursor-artifacts', 'screenshots'));
   fs.mkdirSync(outDir, { recursive: true });
-
-  const exe = process.env.PUPPETEER_EXECUTABLE_PATH
-    || (fs.existsSync('/usr/local/bin/google-chrome') ? '/usr/local/bin/google-chrome' : 'google-chrome');
-  const d3Local = path.resolve(__dirname, '..', 'node_modules', 'd3', 'dist', 'd3.min.js');
-  const d3Body = fs.existsSync(d3Local) ? fs.readFileSync(d3Local) : null;
 
   const browser = await puppeteer.launch({
     executablePath: exe,
@@ -35,35 +48,51 @@ const path = require('path');
     }
   }
 
-  async function hoverGraphNodeWithCommunity(page, rootSelector, circleSelector) {
-    const sel = circleSelector || (rootSelector + ' circle');
-    const pt = await page.evaluate((circleSel) => {
-      const circles = Array.from(document.querySelectorAll(circleSel));
-      for (let i = 0; i < circles.length; i++) {
-        const circle = circles[i];
-        const rect = circle.getBoundingClientRect();
-        if (rect.width <= 0 || rect.height <= 0) continue;
-        return {
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-        };
-      }
-      return null;
-    }, sel);
-    if (!pt) throw new Error('no hover target for ' + sel);
-    await page.mouse.move(pt.x, pt.y);
-    return pt;
+  async function prepareGraphPage(page, url) {
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 120000 });
+    await page.waitForFunction(() => {
+      const count = document.getElementById('graph-node-count');
+      const nodes = document.querySelectorAll('#graph-canvas .node-g');
+      return count && count.textContent && !count.textContent.includes('加载中') && nodes.length > 0;
+    }, { timeout: 90000 });
+    await new Promise((r) => setTimeout(r, 6000));
+    await page.evaluate(() => {
+      const ld = document.getElementById('graph-loading');
+      if (ld) ld.style.display = 'none';
+    });
   }
 
-  async function waitTooltip(page, tooltipSelector, requireCommunity) {
-    await page.waitForFunction((sel, needCommunity) => {
+  /** Headless 下 mouse.move 常无法触发 SVG mouseenter，改用 dispatchEvent */
+  async function triggerGraphTooltip(page, rootSelector, nodeSelector) {
+    const ok = await page.evaluate((rootSel, nodeSel) => {
+      const root = document.querySelector(rootSel);
+      if (!root) return false;
+      const nodes = Array.from(root.querySelectorAll(nodeSel || '.node-g'));
+      for (let i = 0; i < nodes.length; i++) {
+        const g = nodes[i];
+        const circle = g.querySelector('circle');
+        if (!circle) continue;
+        const rect = circle.getBoundingClientRect();
+        if (rect.width <= 0 || rect.height <= 0) continue;
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const ev = new MouseEvent('mouseenter', { bubbles: true, clientX: x, clientY: y });
+        g.dispatchEvent(ev);
+        circle.dispatchEvent(ev);
+        return true;
+      }
+      return false;
+    }, rootSelector, nodeSelector);
+    if (!ok) throw new Error('no hover target for ' + rootSelector);
+    await new Promise((r) => setTimeout(r, 400));
+  }
+
+  async function waitTooltip(page, tooltipSelector) {
+    await page.waitForFunction((sel) => {
       const el = document.querySelector(sel);
       if (!el || el.classList.contains('hidden')) return false;
-      const type = el.querySelector('.tt-type');
-      if (!type) return false;
-      if (!needCommunity) return true;
-      return !!el.querySelector('.tt-community');
-    }, { timeout: 30000 }, tooltipSelector, !!requireCommunity);
+      return !!el.querySelector('.tt-type');
+    }, { timeout: 30000 }, tooltipSelector);
     await new Promise((r) => setTimeout(r, 400));
   }
 
@@ -95,33 +124,26 @@ const path = require('path');
     {
       const page = await browser.newPage();
       await setupPage(page);
-      await page.goto(`http://127.0.0.1:${port}/graph.html`, { waitUntil: 'domcontentloaded', timeout: 45000 });
-      await page.waitForFunction(() => {
-        const count = document.getElementById('graph-node-count');
-        const nodes = document.querySelectorAll('#graph-canvas .node-g');
-        return count && count.textContent && !count.textContent.includes('加载中') && nodes.length > 0;
-      }, { timeout: 90000 });
-      await new Promise((r) => setTimeout(r, 4000));
-      await hoverGraphNodeWithCommunity(page, '#graph-canvas', '#graph-canvas .node-circle');
-      await waitTooltip(page, '#graph-tooltip', true);
+      await prepareGraphPage(page, `http://127.0.0.1:${port}/graph.html`);
+      await triggerGraphTooltip(page, '#graph-canvas', '.node-g');
+      await waitTooltip(page, '#graph-tooltip');
       const out = path.join(outDir, 'graph-tooltip-badges.png');
       await screenshotTooltip(page, '#graph-tooltip', out);
       const meta = await page.evaluate(() => {
         const tip = document.querySelector('#graph-tooltip');
         const type = tip?.querySelector('.tt-type');
-        const community = tip?.querySelector('.tt-community');
         return {
           typeText: type?.textContent?.trim() || '',
           typeBg: type ? getComputedStyle(type).backgroundColor : '',
-          communityText: community?.textContent?.trim() || '',
-          communityBg: community ? getComputedStyle(community).backgroundColor : '',
+          hasCommunityBadge: !!tip?.querySelector('.tt-community'),
         };
       });
       shots.push({ page: 'graph.html', out, meta });
 
       // 1b) graph sidebar badges (PC click opens sidebar)
       const clickPt = await page.evaluate(() => {
-        const circle = document.querySelector('#graph-canvas .node-circle');
+        const g = document.querySelector('#graph-canvas .node-g');
+        const circle = g && g.querySelector('.node-circle');
         if (!circle) return null;
         const rect = circle.getBoundingClientRect();
         return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
@@ -132,7 +154,7 @@ const path = require('path');
         const sidebar = document.getElementById('graph-sidebar');
         if (!sidebar || !sidebar.classList.contains('open')) return false;
         const type = sidebar.querySelector('#sb-meta-badges .tt-type');
-        const community = sidebar.querySelector('#sb-meta-badges .tt-community');
+        const community = sidebar.querySelector('#sb-community .detail-community-badge');
         return !!(type && community);
       }, { timeout: 15000 });
       await new Promise((r) => setTimeout(r, 400));
@@ -156,12 +178,12 @@ const path = require('path');
       const sidebarMeta = await page.evaluate(() => {
         const sidebar = document.getElementById('graph-sidebar');
         const type = sidebar?.querySelector('#sb-meta-badges .tt-type');
-        const community = sidebar?.querySelector('#sb-meta-badges .tt-community');
+        const community = sidebar?.querySelector('#sb-community .detail-community-badge');
         return {
           typeText: type?.textContent?.trim() || '',
           typeBg: type ? getComputedStyle(type).backgroundColor : '',
           communityText: community?.textContent?.trim() || '',
-          communityBg: community ? getComputedStyle(community).backgroundColor : '',
+          hasMetaCommunityBadge: !!sidebar?.querySelector('#sb-meta-badges .tt-community'),
         };
       });
       shots.push({ page: 'graph.html sidebar', out: sidebarOut, meta: sidebarMeta });
@@ -172,11 +194,11 @@ const path = require('path');
     {
       const page = await browser.newPage();
       await setupPage(page);
-      await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      await page.goto(`http://127.0.0.1:${port}/index.html`, { waitUntil: 'networkidle2', timeout: 120000 });
       await page.waitForSelector('#mini-graph-svg .mini-graph-node circle', { timeout: 60000 });
       await new Promise((r) => setTimeout(r, 5000));
-      await hoverGraphNodeWithCommunity(page, '#mini-graph-svg', '#mini-graph-svg .mini-graph-node circle');
-      await waitTooltip(page, '#mini-graph-tooltip', true);
+      await triggerGraphTooltip(page, '#mini-graph-svg', '.mini-graph-node');
+      await waitTooltip(page, '#mini-graph-tooltip');
       const out = path.join(outDir, 'mini-graph-tooltip-badges.png');
       await screenshotTooltip(page, '#mini-graph-tooltip', out);
       shots.push({ page: 'index.html', out });
@@ -188,13 +210,13 @@ const path = require('path');
       const page = await browser.newPage();
       await setupPage(page);
       await page.goto(`http://127.0.0.1:${port}/detail.html?id=wiki-concepts-sim2real`, {
-        waitUntil: 'domcontentloaded',
-        timeout: 45000,
+        waitUntil: 'networkidle2',
+        timeout: 120000,
       });
       await page.waitForSelector('#detailMiniMapSvg .mini-node circle', { timeout: 60000 });
-      await new Promise((r) => setTimeout(r, 3000));
-      await hoverGraphNodeWithCommunity(page, '#detailMiniMapSvg', '#detailMiniMapSvg .mini-node circle');
-      await waitTooltip(page, '#detail-mini-map-tooltip', true);
+      await new Promise((r) => setTimeout(r, 4000));
+      await triggerGraphTooltip(page, '#detailMiniMapSvg', '.mini-node');
+      await waitTooltip(page, '#detail-mini-map-tooltip');
       const out = path.join(outDir, 'detail-mini-map-tooltip-badges.png');
       await screenshotTooltip(page, '#detail-mini-map-tooltip', out);
       shots.push({ page: 'detail.html', out });
