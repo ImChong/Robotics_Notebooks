@@ -4,6 +4,8 @@ title: Motrix (MotrixSim / MotrixLab)
 tags: [simulation, physics-engine, robot-learning, rust, mjcf, web-viewer]
 summary: "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，并提供浏览器 Web Viewer 零安装验模。"
 updated: 2026-06-18
+related:
+  - ./botworld.md
 ---
 
 # Motrix (Motphys 机器人仿真与训练平台)
@@ -35,7 +37,7 @@ updated: 2026-06-18
 - **算法适配**：支持 SKRL, RSLRL 等主流强化学习框架，并支持 **JAX** 和 **PyTorch** 双后端。
 
 ### 3. MotrixSim Web Viewer (浏览器端)
-- **入口**：[Motrix Viewer](https://motrix.motphys.com/) — 现代浏览器 + **WebAssembly** 即可运行，无需本地安装。
+- **入口**：[Motrix Viewer](https://motrix.motphys.com/) — 现代浏览器 + **WebAssembly** 即可运行，无需本地安装；亦作为 [BotWorld](./botworld.md) 插件中心推荐入口，便于从资产广场跳转验模。
 - **加载方式**：Web 端无法像桌面版直接读本地盘；应**将整个模型文件夹**（含 `scene.xml`、meshes、textures 等相对路径依赖）拖入页面，再在左侧 `Customize` 文件树中点击场景文件。
 - **文件来源**：
   - **Online**：站点内置只读示例，加载 manifest 后自动列出。
@@ -63,6 +65,7 @@ updated: 2026-06-18
 - [simulation](../../references/repos/simulation.md) (仿真平台导航)
 - [rl-frameworks](../../references/repos/rl-frameworks.md) (RL 框架导航)
 - [mujoco](mujoco.md) (底层物理引擎参考)
+- [BotWorld](./botworld.md) — 机器人资产广场；插件中心挂载 Motrix Viewer
 
 ## 推荐继续阅读
 

@@ -4,6 +4,10 @@ title: URDF-Studio
 tags: [utility, design, workstation, hardware, ai]
 summary: "URDF-Studio 是专业级 Web 机器人设计与组装工作站，支持模块化设计流、硬件 BOM 管理及 AI 辅助建模。"
 updated: 2026-06-18
+related:
+  - ./botworld.md
+  - ./robot-viewer.md
+  - ./step2urdf.md
 ---
 
 # URDF-Studio
@@ -36,6 +40,7 @@ updated: 2026-06-18
 - **硬件原型开发**：通过其 Hardware 模式管理电机选型，并一键生成 CSV/PDF 格式的 BOM 清单供采购使用。
 - **快速仿真适配**：将复杂的机器人设计快速转换为适合 [isaac-gym-isaac-lab](isaac-gym-isaac-lab.md) 或 [mujoco](mujoco.md) 的描述文件。
 - **团队协作**：提供项目级的工作区管理，方便分享和复用机器人资产。
+- **广场分发入口**：[BotWorld](./botworld.md) 将 URDF Studio 作为内置工作区，支持从资产广场 **Import to Workspace** 并经由 **BotPilot** 审核后公开发布模型包。
 - **与整机协作平台对照：** [Tnkr](./tnkr.md) 从 **Onshape/GitHub 接入 + CAD 装配说明 + 线束标注** 组织开源整机项目；URDF-Studio 则专注 **URDF/MJCF/USD 描述文件与 BOM** 编辑，二者可上下游衔接而非互替。
 - **与 STEP 转换对照：** [step2urdf](./step2urdf.md) 从 **已有 STEP 装配体** 一键推断关节并导出 URDF（OpenCascade.js 本地处理）；URDF-Studio 更适合 **从零设计或深度编辑** 描述文件与硬件元数据，二者可 **STEP→step2urdf→URDF-Studio** 串联。
 
@@ -57,6 +62,7 @@ updated: 2026-06-18
 - [GenCAD](./gencad.md) / [GenCAD-3D](./gencad-3d.md)（图像 / 点云 / 网格 → CAD program 的逆向工程上游，输出可推入 Part Studio，再经 URDF-Studio 转 URDF/MJCF/USD）
 - [Tnkr](./tnkr.md)（开源整机项目仓库：CAD 装配流、电气文档与部署数据闭环）
 - [step2urdf](./step2urdf.md)（STEP→URDF 浏览器转换，CAD 导入上游）
+- [BotWorld](./botworld.md)（机器人资产广场与 URDF Studio 统一 Web 入口）
 
 ## 参考来源
 - [URDF-Studio 原始资料](../../sources/repos/urdf-studio.md)

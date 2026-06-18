@@ -2,7 +2,7 @@
 type: entity
 tags: [software, simulation, web, onnx, mujoco, unitree, embodied-ai]
 status: complete
-updated: 2026-05-12
+updated: 2026-06-18
 related:
   - ./mujoco.md
   - ./unitree-g1.md
@@ -10,6 +10,7 @@ related:
   - ../concepts/sim2real.md
   - ./isaac-gym-isaac-lab.md
   - ../concepts/character-animation-vs-robotics.md
+  - ./botworld.md
 sources:
   - ../../sources/sites/botlab_motioncanvas.md
 summary: "BotLab（站点内产品名 MotionCanvas）是地瓜机器人提供的浏览器端节点图工具：在网页里编排观测、历史堆叠、ONNX 策略与 MuJoCo 步进，并支持 MSCP 图与 Netron 模型预览，面向 Unitree G1 / Go2 等策略的快速试验与教学演示。"
@@ -40,6 +41,7 @@ summary: "BotLab（站点内产品名 MotionCanvas）是地瓜机器人提供的
 - **对齐训练侧 obs 语义**：历史缓冲节点显式支持 **IsaacGym** 与 **IsaacLab** 两种堆叠约定，减少「仿真里能跑、图上维度对不上」的低级错误。
 - **推理–物理同步可配置**：**Strict** 与 **Pipelined（Fast）** 两种模式对应「每步必等推理完成」与「仿真不阻塞、始终施加最新可用动作」，是端侧 sim 与异步推理讨论里的常见分歧点。
 - **端云协同入口**：与地瓜 **RDK** 硬件/社区同一品牌脉络，可作为具身智能教学中「从策略文件到可交互仿真」的零安装跳板（仍受浏览器 WebGL2 / WebGPU 能力约束）。
+- **资产广场集成**：[BotWorld](./botworld.md) 将 BotLab 作为独立分区展示，并与 **RoboGo、Motrix Viewer** 等同列于插件中心，形成「下载资产 → 导入 BotLab 调试」的短链路。
 
 ## 核心结构 / 机制
 
@@ -73,6 +75,7 @@ flowchart LR
 - 与 [Unitree G1](./unitree-g1.md)、[四足机器人](./quadruped-robot.md)（Go2）策略文件名与 obs 维度在模板中强相关。
 - [Sim2Real](../concepts/sim2real.md) 讨论中，可把本工具视为 **策略侧快速可视化** 的一环，而非系统辨识或域随机化的主战场。
 - 「节点图/动画语言进入策略调试」的工具层定位，见 [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 解释为何同一张画布既能服务角色化人形又能服务通用机器人控制。
+- [BotWorld](./botworld.md) — 资产广场与 BotLab 项目展示入口（`botlab.d-robotics.cc` 亦可从广场跳转）。
 
 ## 推荐继续阅读
 

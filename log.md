@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/sites/botworld.md — 接入 BotWorld 机器人资产平台；wiki/entities/botworld.md；交叉 urdf-studio、botlab-motioncanvas、step2urdf、motrix
+
+- 原始资料：[`sources/sites/botworld.md`](sources/sites/botworld.md)（<https://botworld.enkeebot.com/>；前端 bundle 策展）
+- 沉淀页面：[`wiki/entities/botworld.md`](wiki/entities/botworld.md)
+- 交叉更新：[`wiki/entities/urdf-studio.md`](wiki/entities/urdf-studio.md)、[`wiki/entities/botlab-motioncanvas.md`](wiki/entities/botlab-motioncanvas.md)、[`wiki/entities/step2urdf.md`](wiki/entities/step2urdf.md)、[`wiki/entities/motrix.md`](wiki/entities/motrix.md)
+
 ## [2026-06-18] ingest | sources/sites/motrixsim-web-viewer.md — 归档 MotrixSim Web Viewer 并更新 wiki/entities/motrix.md
 
 - 原始资料：[`sources/sites/motrixsim-web-viewer.md`](sources/sites/motrixsim-web-viewer.md)（<https://motrix.motphys.com/>、ReadTheDocs WebViewer 指南）

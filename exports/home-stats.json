@@ -1,17 +1,33 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1246,
-  "edge_count": 8017,
+  "node_count": 1247,
+  "edge_count": 8032,
   "coverage": {
-    "covered": 1216,
-    "total": 1244,
+    "covered": 1217,
+    "total": 1245,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/motrix.md",
-      "detail_id": "entity-motrix",
-      "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "path": "wiki/entities/botworld.md",
+      "detail_id": "entity-botworld",
+      "label": "BotWorld（机器人资产平台）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/urdf-studio.md",
+      "detail_id": "entity-urdf-studio",
+      "label": "URDF-Studio",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/botlab-motioncanvas.md",
+      "detail_id": "entity-botlab-motioncanvas",
+      "label": "BotLab / MotionCanvas（浏览器内策略–仿真编排）",
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
@@ -20,6 +36,14 @@
       "path": "wiki/entities/step2urdf.md",
       "detail_id": "entity-step2urdf",
       "label": "step2urdf",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/motrix.md",
+      "detail_id": "entity-motrix",
+      "label": "Motrix (Motphys 机器人仿真与训练平台)",
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-hoist.md",
-      "detail_id": "entity-paper-motion-cerebellum-hoist",
-      "label": "HOIST",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-humanoidmimicgen.md",
-      "detail_id": "entity-paper-motion-cerebellum-humanoidmimicgen",
-      "label": "HumanoidMimicGen",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-march.md",
-      "detail_id": "entity-paper-motion-cerebellum-march",
-      "label": "MARCH",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/motrix.md",
-    "detail_id": "entity-motrix",
-    "label": "Motrix (Motphys 机器人仿真与训练平台)",
+    "path": "wiki/entities/botworld.md",
+    "detail_id": "entity-botworld",
+    "label": "BotWorld（机器人资产平台）",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"

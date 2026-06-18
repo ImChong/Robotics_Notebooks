@@ -24,4 +24,5 @@
 
 ## 对 Wiki 的映射
 - **wiki/entities/urdf-studio.md** (新建)
+- **wiki/entities/botworld.md** — URDF Studio 作为 BotWorld 内置工作区
 - **references/repos/utilities.md** (更新)
