@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/repos/wtfos.md、sources/sites/fpv-wtf.md — wtfOS DJI 数字 FPV 固件框架入库；新建 wiki/entities/wtfos.md；交叉 multirotor-simulation-planning-control-stack、betaflight
+
+- 原始资料：[`sources/repos/wtfos.md`](sources/repos/wtfos.md)（<https://github.com/fpv-wtf/wtfos>）、[`sources/sites/fpv-wtf.md`](sources/sites/fpv-wtf.md)（<https://fpv.wtf/>）
+- 沉淀页面：[`wiki/entities/wtfos.md`](wiki/entities/wtfos.md)
+- 交叉更新：[`wiki/overview/multirotor-simulation-planning-control-stack.md`](wiki/overview/multirotor-simulation-planning-control-stack.md)、[`wiki/entities/betaflight.md`](wiki/entities/betaflight.md)
 ## [2026-06-17] lint | scripts/lint_wiki.py — V25 P0 数据集页元数据巡检 V1（`dataset_metadata_check`）
 
 - 变更：[`scripts/lint_wiki.py`](scripts/lint_wiki.py) 新增 `_check_dataset_entity_metadata`，针对 frontmatter `tags` 含 `dataset` 的 `wiki/entities/*.md`（兼容列表式与内联式 tags），按关键词命中近似检查正文是否覆盖「规模 / 模态 / 许可证 / 重定向就绪度」四类标准化速查维度，缺失维度作为 INFO 级 result key `dataset_missing_metadata` 写入报告，加入 `INFO_ONLY_KEYS`（不计入失败总数、不阻塞 CI）。

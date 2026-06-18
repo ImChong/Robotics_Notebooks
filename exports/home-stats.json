@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1216,
-  "edge_count": 7701,
+  "node_count": 1217,
+  "edge_count": 7706,
   "coverage": {
-    "covered": 1186,
-    "total": 1214,
+    "covered": 1187,
+    "total": 1215,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/wtfos.md",
+      "detail_id": "entity-wtfos",
+      "label": "wtfOS",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
+      "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
+      "label": "多旋翼仿真—规划—飞控开源栈总览",
+      "type": "overview",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/betaflight.md",
+      "detail_id": "entity-betaflight",
+      "label": "Betaflight",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/1x-technologies.md",
       "detail_id": "entity-1x-technologies",
@@ -143,38 +167,14 @@
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-deploy.md",
-      "detail_id": "entity-atom01-deploy",
-      "label": "Atom01 Deploy",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-description.md",
-      "detail_id": "entity-atom01-description",
-      "label": "Atom01 Description",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/atom01-firmware.md",
-      "detail_id": "entity-atom01-firmware",
-      "label": "Atom01 Firmware",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/1x-technologies.md",
-    "detail_id": "entity-1x-technologies",
-    "label": "1X Technologies",
+    "path": "wiki/entities/wtfos.md",
+    "detail_id": "entity-wtfos",
+    "label": "wtfOS",
     "type": "entity",
-    "recency": "2026-06-17",
+    "recency": "2026-06-18",
     "source": "log.md"
   }
 }
