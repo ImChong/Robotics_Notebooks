@@ -2,10 +2,11 @@
 type: entity
 tags: [deployment, sim2real, embedded, raspberry-pi, open-source, biped]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-18
 related:
   - ./open-duck-mini.md
   - ./open-duck-playground.md
+  - ./xpad.md
   - ../concepts/sim2real.md
   - ../concepts/processor-in-the-loop-sim2real.md
 sources:
@@ -40,7 +41,7 @@ summary: "Open Duck Mini Runtime 在 Raspberry Pi Zero 2W 上运行 ONNX 行走�
 | OS | Raspberry Pi OS Lite 64-bit；SSH / WiFi 预配置 |
 | 总线 | I2C 启用；Feetech PWM 控制（`hwi_feetech_pwm_control.py`） |
 | 低延迟 USB | udev 将 FTDI `latency_timer` 设为 1 |
-| 输入 | Xbox One 蓝牙配对；`test_xbox_controller.py` |
+| 输入 | Xbox One **蓝牙**配对（走 HID，非 xpad）；`test_xbox_controller.py`；USB 有线 Xbox 手柄见 [xpad](./xpad.md) |
 | 推理 | `v2_rl_walk_mujoco.py` + ONNX；部署 checklist |
 | 标定 | `find_soft_offsets.py` → 各关节 `joints_offsets` |
 
@@ -59,6 +60,7 @@ summary: "Open Duck Mini Runtime 在 Raspberry Pi Zero 2W 上运行 ONNX 行走�
 
 - [Open Duck Mini](./open-duck-mini.md)
 - [Open Duck Playground](./open-duck-playground.md)
+- [xpad](./xpad.md) — Linux USB Xbox 手柄驱动（与蓝牙 HID 路径对照）
 - [Sim2Real](../concepts/sim2real.md)
 - [Processor-in-the-Loop Sim2Real](../concepts/processor-in-the-loop-sim2real.md)
 

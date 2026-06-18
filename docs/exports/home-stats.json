@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1245,
-  "edge_count": 8024,
+  "node_count": 1246,
+  "edge_count": 8031,
   "coverage": {
-    "covered": 1215,
-    "total": 1243,
+    "covered": 1216,
+    "total": 1244,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/xpad.md",
+      "detail_id": "entity-xpad",
+      "label": "xpad（Linux Xbox 手柄驱动）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/teleoperation.md",
+      "detail_id": "wiki-tasks-teleoperation",
+      "label": "Teleoperation（遥操作）",
+      "type": "task",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/open-duck-mini-runtime.md",
+      "detail_id": "entity-open-duck-mini-runtime",
+      "label": "Open Duck Mini Runtime",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/botworld.md",
       "detail_id": "entity-botworld",
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-grail.md",
-      "detail_id": "entity-paper-motion-cerebellum-grail",
-      "label": "GRAIL",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-guidewalk.md",
-      "detail_id": "entity-paper-motion-cerebellum-guidewalk",
-      "label": "GuideWalk",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-handoff.md",
-      "detail_id": "entity-paper-motion-cerebellum-handoff",
-      "label": "HANDOFF",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/botworld.md",
-    "detail_id": "entity-botworld",
-    "label": "BotWorld（机器人资产平台）",
+    "path": "wiki/entities/xpad.md",
+    "detail_id": "entity-xpad",
+    "label": "xpad（Linux Xbox 手柄驱动）",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"

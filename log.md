@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/repos/xpad.md — 接入 Linux Xbox USB 手柄内核驱动 xpad 并新建 wiki/entities/xpad.md，交叉更新 teleoperation 与 open-duck-mini-runtime
+
+- 原始资料：[`sources/repos/xpad.md`](sources/repos/xpad.md)（<https://github.com/paroj/xpad>）
+- 沉淀页面：[`wiki/entities/xpad.md`](wiki/entities/xpad.md)
+- 交叉更新：[`wiki/tasks/teleoperation.md`](wiki/tasks/teleoperation.md)、[`wiki/entities/open-duck-mini-runtime.md`](wiki/entities/open-duck-mini-runtime.md)
 ## [2026-06-18] ingest | sources/sites/botworld.md — 接入 BotWorld 机器人资产平台；wiki/entities/botworld.md；交叉 urdf-studio、botlab-motioncanvas、step2urdf、motrix
 
 - 原始资料：[`sources/sites/botworld.md`](sources/sites/botworld.md)（<https://botworld.enkeebot.com/>；前端 bundle 策展）
