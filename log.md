@@ -6,6 +6,12 @@
 - 测试：新增 [`tests/test_lint_wiki_dataset_metadata.py`](tests/test_lint_wiki_dataset_metadata.py) 4 用例（完整页通过、内联 tags 命中并记缺失维度、非 dataset 页跳过、INFO 不计失败总数）。
 - 验证：`make lint` 0 errors（信息型预警 21→22）；全库巡检命中 17 页缺失维度，基线快照写入 [`exports/lint-report.md`](exports/lint-report.md)；`ruff check` 通过；lint_wiki 相关 51 用例全绿。
 
+## [2026-06-17] ingest | sources/repos/betaflight.md、sources/sites/betaflight-com.md — Betaflight FPV 飞控固件入库；新建 wiki/entities/betaflight.md；交叉 multirotor-simulation-planning-control-stack、px4-autopilot、gym-pybullet-drones
+
+- 原始资料：[`sources/repos/betaflight.md`](sources/repos/betaflight.md)（<https://github.com/betaflight/betaflight>）、[`sources/sites/betaflight-com.md`](sources/sites/betaflight-com.md)（<https://betaflight.com/>）
+- 沉淀页面：[`wiki/entities/betaflight.md`](wiki/entities/betaflight.md)
+- 交叉更新：[`wiki/overview/multirotor-simulation-planning-control-stack.md`](wiki/overview/multirotor-simulation-planning-control-stack.md)、[`wiki/entities/px4-autopilot.md`](wiki/entities/px4-autopilot.md)、[`wiki/entities/gym-pybullet-drones.md`](wiki/entities/gym-pybullet-drones.md)
+
 ## [2026-06-17] ingest | sources/repos/plotjuggler.md — PlotJuggler 时序可视化工具入库；新建 wiki/entities/plotjuggler.md；交叉 robot-policy-debug-playbook、ros2-basics、px4-autopilot
 
 ## [2026-06-17] ingest | sources/papers/toporetarget_arxiv_2606_16272.md — 接入 TopoRetarget 交互保留灵巧重定向；wiki/methods/toporetarget-interaction-preserving-dexterous-retargeting.md、wiki/concepts/motion-retargeting.md、wiki/tasks/manipulation.md、wiki/entities/wuji-robotics.md
