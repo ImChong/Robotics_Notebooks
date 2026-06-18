@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1218,
-  "edge_count": 7717,
+  "node_count": 1219,
+  "edge_count": 7732,
   "coverage": {
-    "covered": 1188,
-    "total": 1216,
+    "covered": 1189,
+    "total": 1217,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
+      "detail_id": "entity-paper-rove-humanoid-vla-intervention",
+      "label": "ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/formalizations/homogeneous-coordinates-transform.md",
       "detail_id": "wiki-formalizations-homogeneous-coordinates-transform",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/andrej-karpathy.md",
-      "detail_id": "entity-andrej-karpathy",
-      "label": "Andrej Karpathy",
-      "type": "entity",
-      "recency": "2026-06-17",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/formalizations/homogeneous-coordinates-transform.md",
-    "detail_id": "wiki-formalizations-homogeneous-coordinates-transform",
-    "label": "齐次坐标与齐次变换（SE(3) 工程底座）",
-    "type": "formalization",
+    "path": "wiki/entities/paper-rove-humanoid-vla-intervention.md",
+    "detail_id": "entity-paper-rove-humanoid-vla-intervention",
+    "label": "ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）",
+    "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
   }
