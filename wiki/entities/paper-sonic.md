@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 summary: "SONIC：规模化运动跟踪人形全身控制；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系强调 goal-conditioned 与运控基座覆盖面。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
@@ -20,6 +22,8 @@ sources:
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # SONIC
@@ -36,6 +40,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（27/64）：跟踪策略：把 motion tracking 规模化成控制基座。
 - SONIC 的题目是 Supersizing Motion Tracking for Natural Humanoid Whole-Body Control。它把 humanoid whole-body motion tracker 当成基础模型来扩展，研究参数规模、数据规模、训练计算对控制能力的影响。
 - supersizing motion tracking；运控基座被上层调用前底层动作覆盖面必须足够宽。
 

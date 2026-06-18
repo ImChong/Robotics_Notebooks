@@ -2,10 +2,12 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, amp, motion-prior]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 venue: curated
 summary: "Deep Whole-body Parkour：全身跑酷与 PHP 同簇但侧重点不同；在 RL 身体系统栈属感知式高动态运动，在 AMP 专题属交互与长时程簇。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
@@ -17,6 +19,8 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # Deep Whole-body Parkour
@@ -33,6 +37,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **A 走路底座**（8/64）：底座：手脚躯干一起参与跑酷。
 - Deep Whole-body Parkour 和 PHP 都做跑酷，但侧重点不同。
 - 不是 AMP 主线论文，但对理解人形运动系统与感知 locomotion 很重要。
 

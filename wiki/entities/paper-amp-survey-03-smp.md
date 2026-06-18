@@ -2,10 +2,12 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 venue: curated
 summary: "SMP 是我觉得非常值得放进这篇文章的一篇。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../methods/smp.md
@@ -13,6 +15,8 @@ sources:
   - ../../sources/papers/humanoid_amp_survey_03_smp_reusable_score_matching_motion_priors_for_ph.md
   - ../../sources/papers/humanoid_amp_survey_19_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # SMP
@@ -29,6 +33,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（13/64）：源流：用 score-matching 学可复用运动先验。
 - SMP 是我觉得非常值得放进这篇文章的一篇。
 - 在 [人形 AMP 运动先验综述](../overview/humanoid-amp-motion-prior-survey.md) 中与 mimic / 身体系统栈分工对照阅读。
 

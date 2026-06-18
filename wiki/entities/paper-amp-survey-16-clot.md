@@ -2,12 +2,14 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-18
 arxiv: "2602.15060"
 venue: "arXiv"
 code: https://github.com/zhutengjie/CLOT
 summary: "CLOT：闭环全局位姿反馈的长时程全身遥操作——Observation Pre-shift 解耦观测/奖励、Transformer+PPO+AMP，在 Adam Pro 全尺寸人形上实现无漂移 mimicry。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../tasks/teleoperation.md
@@ -23,6 +25,8 @@ sources:
   - ../../sources/sites/clot-project.md
   - ../../sources/repos/clot.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # CLOT
@@ -44,6 +48,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（46/64）：遥操作：闭环全局运动跟踪用于全身遥操作。
 - **局部帧跟踪的结构性缺陷**：[TWIST2](./paper-twist2.md) 等便携方案擅长 **局部关节级 mimicry**，但忽视 **全局位姿反馈** 时，长时程必然 **漂移**——对全尺寸人形（高质心）尤危险。
 - **闭环全局同步**：OptiTrack 同时捕获人与机 **全局位姿**，在线重定向后单一 **全局身体跟踪策略** 即可兜底上层 VLA/AGI 犯错时的 **身体分布边界**（AMP 专题导读语境）。
 - **训练技巧可复用**：**Observation Pre-shift** 把「激进全局纠错」变成 **数据驱动的平滑插值学习**；与 **Transformer 长上下文**、**AMP 风格正则** 组合，在仿真与真机均验证。

@@ -2,16 +2,20 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 venue: curated
 summary: "OmniXtreme 的关键词是 generality barrier in high-dynamic humanoid control。它指出，当动作库越来越多、动作越来越极端时，通用性和跟踪精度之间会出现冲突。一个策略想覆盖更多动作，可能会损失高动态技能的执行质量。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_16_omnixtreme_breaking_the_generality_barrier_in_hi.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # OmniXtreme
@@ -27,6 +31,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **A 走路底座**（6/64）：底座：高动态技能把稳定边界往外推。
 - OmniXtreme 的关键词是 generality barrier in high-dynamic humanoid control。它指出，当动作库越来越多、动作越来越极端时，通用性和跟踪精度之间会出现冲突。一个策略想覆盖更多动作，可能会损失高动态技能的执行质量。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **02 参考跟踪 · 通用控制** 簇。
 

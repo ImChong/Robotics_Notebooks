@@ -2,16 +2,20 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-18
 arxiv: "2606.07934"
 summary: "MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
   - ../overview/loco-manip-8-papers-technology-map.md
   - ../overview/loco-manip-category-04-contact-teleop.md
 sources:
   - ../../sources/papers/loco_manip_survey_08_x_op.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # X-OP
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（45/64）：遥操作：MPC 重定向的跨本体全身遥操作。
 - MPC 重定向跨本体全身遥操作，使 teleop 数据可跨平台复用。
 - 在 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中属于 **[04 触觉与跨本体遥操作](../overview/loco-manip-category-04-contact-teleop.md)**。
 

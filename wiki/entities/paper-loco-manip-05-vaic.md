@@ -2,16 +2,20 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-18
 arxiv: "2606.09286"
 summary: "解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-07-loco-manip-interface.md
   - ../overview/loco-manip-8-papers-technology-map.md
   - ../overview/loco-manip-category-03-command-controller.md
 sources:
   - ../../sources/papers/loco_manip_survey_05_vaic.md
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # VAIC
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **G Loco-Manip 接口**（50/64）：接口：视觉目标到解耦全身物体交互控制。
 - 解耦命令（速度/阶段/物体状态）+ 视觉，敏捷搬推拉滑板交互。
 - 在 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中属于 **[03 命令空间与控制器](../overview/loco-manip-category-03-command-controller.md)**。
 

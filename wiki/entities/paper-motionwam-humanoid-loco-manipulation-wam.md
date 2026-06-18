@@ -12,9 +12,11 @@ tags:
   - real-time-control
   - unified-action-space
 status: complete
-updated: 2026-06-10
+updated: 2026-06-18
 arxiv: "2606.09215"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-05-promptable-control.md
   - ./paper-dit4dit-video-action-model.md
   - ../concepts/world-action-models.md
   - ../tasks/loco-manipulation.md
@@ -30,6 +32,8 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
 sources:
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 World Action Model——Video DiT 单次前向隐状态条件 Motion DiT，在统一 SONIC motion token 空间联合预测行走、躯干、身高、足端交互与双手操作；三阶段 egocentric 视频→跨具身动作→全身遥操作微调；G1 九项真机任务平均成功率 76.1%，较同演示微调 GR00T-N1.7 高约 32 个百分点。"
 ---
 
@@ -54,6 +58,7 @@ summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 W
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **E 可提示控制**（41/64）：可提示小脑：世界动作模型把视觉和动作 latent 接起来。
 - **WAM 的「速度墙」与人形「空间墙」同时被点名：** 既有 WAM 在高维 latent 上 **迭代去噪太慢**，难以闭环平衡人形；分层系统又让腿只能 **被动保平衡**，无法 **踩踏板、踢球** 等 **足端任务语义**——MotionWAM 用 **$\tau_f \approx 1$ 单次前向隐状态** 与 **统一 motion token** 同时回应两条线。
 - **与 VLA 的对照实验干净：** 全部方法在 **同一 Stage 3 演示** 上微调，且经 **同一 SONIC 低层接口** 执行；最强 VLA（GR00T-N1.7）平均 **43.9%** vs MotionWAM **76.1%**，说明 **视频动力学先验** 对 **闭环物理人形** 的增益难以用 **更强语义 VLM** 单独替代。
 - **与 [LEGS](./paper-legs-embodied-gaussian-splatting-vla.md) 形成互补：** 二者均在 **G1 + SONIC + 语言条件** 栈上工作，但 LEGS 走 **合成数据 + VLA 微调**，MotionWAM 走 **大规模 egocentric 视频预训练 + WAM 联合建模**——代表 loco-manip **数据工厂 vs 世界–动作基础模型** 两条 2026 路线。

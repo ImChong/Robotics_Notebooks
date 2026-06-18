@@ -2,11 +2,13 @@
 type: entity
 tags: [paper, humanoid, rl, motion-retargeting, motion-control, interaction-mesh, loco-manipulation, data-generation, amazon-far, body-system-stack, icra-2026]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-18
 arxiv: "2509.26633"
 venue: ICRA 2026
 summary: "OmniRetarget 用 interaction mesh + Sequential SOCP 硬约束生成交互保留的人形运动学参考，支持单演示增广与 holosoma 开源管线；下游 5 reward + 4 DR 无 curriculum 即可 G1 零样本实机 30 s parkour/loco-manipulation；PHP 等论文的原子技能重定向上游。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ./paper-hrl-stack-22-perceptive_humanoid_parkour.md
@@ -25,6 +27,8 @@ sources:
   - ../../sources/sites/omniretarget-dataset-huggingface.md
   - ../../sources/papers/humanoid_rl_stack_03_omniretarget_interaction_preserving_data_generat.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # OmniRetarget
@@ -48,6 +52,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（20/64）：重定向：交互关系保持的数据生成。
 - **关键词是 interaction-preserving：** 不仅匹配关键点，而是保留 agent–object–terrain 的相对几何与接触关系，缓解传统 PHC/GMR 的穿透、脚滑与「场景盲」。
 - **硬约束 + 可增广：** Sequential SOCP 每帧求解；固定源 mesh、变化目标场景即可批量生成新轨迹——论文报告 **8+ 小时**、项目页 **9+ 小时** 重定向，kinematic 指标优于 PHC/GMR/VideoMimic。
 - **极简下游 RL：** 与 BeyondMimic 叙事一致，**5 项 reward + 4 项 DR**、**无 curriculum** 即可在 G1 上零样本实机长时程 parkour / loco-manipulation（最长约 **30 s**）。

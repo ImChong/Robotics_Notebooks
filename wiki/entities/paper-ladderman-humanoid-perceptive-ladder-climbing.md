@@ -16,9 +16,11 @@ tags:
   - isaac-sim
   - amazon-far
 status: complete
-updated: 2026-06-09
+updated: 2026-06-18
 arxiv: "2606.05873"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-08-real-tasks.md
   - ../tasks/stair-obstacle-perceptive-locomotion.md
   - ../tasks/humanoid-locomotion.md
   - ../tasks/loco-manipulation.md
@@ -34,6 +36,8 @@ related:
 sources:
   - ../../sources/papers/ladderman_arxiv_2606_05873.md
   - ../../sources/sites/ladderman-robot-github-io.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion tracking 从单参考学多几何攀爬专家，hybrid DAgger+RL 蒸馏为深度统一策略；VFM+RFM 零样本 sim-to-real；梯上双智能体遥操作相对 TWIST2 更稳；G1 真机多样梯子双向攀爬约 3.4 s/踏棍。"
 ---
 
@@ -61,6 +65,7 @@ summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion 
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **H 真实任务**（59/64）：任务：爬梯和梯上操作暴露手脚协同难题。
 - **填补「梯子」空白：** 仓库内楼梯/跑酷文献多，但 **梯子稀疏踏棍 + 扶手** 对感知精度与全身协调要求更高；LadderMan 是 **端到端深度攀爬** 在 **人形真机** 上的系统案例。
 - **单参考 → 多几何泛化：** **Hybrid motion tracking**（上身松弛、下身严格 + 梯子接触/攀爬奖励）避免为每种 $(\phi,z)$ 收集大动捕库——与 [RPL](./paper-rpl-robust-humanoid-perceptive-locomotion.md) 的 **分地形高程专家** 形成互补范式。
 - **深度 sim-to-real 新配方：** 相对重度 depth randomization，**VFM 真机深度 + RFM + 极简噪声** 在 **细薄踏棍** 上更关键（真机消融：w/o VFM **3/10**，w/o RFM **0/10**）。

@@ -2,16 +2,20 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 venue: curated
 summary: "这篇中文文件名是“北京理工：雷神”，论文题目对应 Human-Level Whole-Body Reactions for Intense Contact-Rich Environments。它关注的是强接触环境中的全身反应。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-09-compliance-contact.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_42_thor_towards_human_level_whole_body_reactions_fo.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # Thor
@@ -27,6 +31,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **I 柔顺与接触**（63/64）：接触：强接触环境里的全身反应。
 - 这篇中文文件名是“北京理工：雷神”，论文题目对应 Human-Level Whole-Body Reactions for Intense Contact-Rich Environments。它关注的是强接触环境中的全身反应。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **05 接触 · 柔顺 · 安全恢复** 簇。
 

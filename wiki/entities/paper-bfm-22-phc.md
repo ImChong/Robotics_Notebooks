@@ -2,12 +2,14 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-18
 arxiv: "2305.06456"
 venue: "2023 · ICCV"
 code: https://github.com/ZhengyiLuo/PHC
 summary: "长期稳定 avatar 控制；身体行为连续性是 BFM 前置积累。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
@@ -16,6 +18,8 @@ sources:
   - ../../sources/papers/bfm_awesome_phc_arxiv_2305_06456.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # PHC
@@ -31,6 +35,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（14/64）：跟踪：大规模动作模仿与失败恢复。
 - 长期稳定 avatar 控制；身体行为连续性是 BFM 前置积累。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)**（02 Goal-conditioned 学习），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 

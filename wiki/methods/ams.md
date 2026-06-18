@@ -2,13 +2,17 @@
 type: method
 tags: [rl, sampling, data-generation, humanoid, physics-feasibility]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-18
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-01-locomotion-base.md
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ../concepts/reward-design.md
 sources:
   - ../../sources/papers/motion_control_projects.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "AMS (Adaptive Motion Synthesis) 提出了一种物理可行性过滤与混合奖励机制，通过在极端动作处引入先验来提升复杂平衡任务的训练成功率。"
 ---
 

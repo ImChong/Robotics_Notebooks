@@ -2,15 +2,19 @@
 type: entity
 tags: [repo, human-pose, monocular-video, motion-retargeting, upstream]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-18
 summary: "GVHMR（zju3dv/GVHMR）从单目视频恢复全局人体运动（SMPL 系），常作为 GMR 与人形重定向管线的上游观测模块。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-03-data-pipeline.md
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
   - ../methods/motion-retargeting-gmr.md
   - ./paper-htd-refine-monocular-hmr.md
 sources:
   - ../../sources/repos/gvhmr.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # GVHMR
@@ -28,6 +32,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（16/64）：数据入口：视频动作恢复到重力对齐世界坐标。
 - **重定向不是第一步**：现场只有手机视频时，必须先有 GVHMR（或同类 HMR）才能把像素变成关节/网格序列，再交给 [GMR](../methods/motion-retargeting-gmr.md) 等几何重定向。
 - **生态互操作**：[GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 等后处理可在重定向前改善 jitter/脚滑。
 - **数据管线常见位**：HY-Motion、ETH 扩散 locomotion 等多篇工作把 GVHMR 列为视频→SMPL 重建环节。

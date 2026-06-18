@@ -2,12 +2,14 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-18
 arxiv: "2505.02833"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
 summary: "TWIST2：便携可扩展全身人形数据采集系统——2-DoF 颈 egocentric 感知、PICO 全身遥操作、RL 低层跟踪 + 扩散高层 visuomotor 自主；全栈开源与社区数据集。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-06-cross-embodiment-teleop.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
   - ../overview/bfm-41-papers-technology-map.md
@@ -29,6 +31,8 @@ sources:
   - ../../sources/repos/twist2.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # TWIST2
@@ -48,6 +52,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（44/64）：遥操作：可扩展、可携带的全身数据采集。
 - **数据飞轮需要工程化**：BFM 与 visuomotor 策略依赖 **持续、长时程、全身灵巧** 示范；TWIST2 把采集效率推到 **15 分钟级百次成功**（双手灵巧 / 移动操作）。
 - **Egocentric 主动感知**：自研 **2-DoF 颈** 让遥操作员获得 **主动第一人称视角**——长时程叠毛巾、穿门搬运等任务对 **视觉–运动闭环** 至关重要。
 - **从遥操作到自主的完整闭环**：同一管线可训 **Diffusion Policy** 等高层策略（Kick-T、WB-Dex），而非只停留在示范录制。

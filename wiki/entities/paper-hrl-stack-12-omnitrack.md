@@ -2,16 +2,20 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-18
 venue: curated
 summary: "OmniTrack 关注 physics-consistent reference。它的出发点是：从人类动作或重定向数据里得到的参考轨迹常常不干净，可能有浮空、脚滑、不稳定接触和噪声。如果训练策略时强迫控制器去追踪这些参考，策略就会在“像参考”和“保持物理稳定”之间冲突。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-04-wbt-base.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../overview/humanoid-amp-motion-prior-survey.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_12_omnitrack_general_motion_tracking_via_physics_co.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # OmniTrack
@@ -27,6 +31,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（25/64）：跟踪策略：物理一致参考让 tracking 更稳。
 - OmniTrack 关注 physics-consistent reference。它的出发点是：从人类动作或重定向数据里得到的参考轨迹常常不干净，可能有浮空、脚滑、不稳定接触和噪声。如果训练策略时强迫控制器去追踪这些参考，策略就会在“像参考”和“保持物理稳定”之间冲突。
 - 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **02 参考跟踪 · 通用控制** 簇。
 

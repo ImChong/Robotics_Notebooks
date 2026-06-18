@@ -2,12 +2,14 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-18
 arxiv: "2506.20487"
 venue: "2024 · TOG"
 code: https://github.com/NVlabs/ProtoMotions
 summary: "稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。"
 related:
+  - ../overview/humanoid-motion-cerebellum-technology-map.md
+  - ../overview/motion-cerebellum-category-02-motion-imitation.md
   - ../concepts/behavior-foundation-model.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../overview/bfm-category-02-goal-conditioned-learning.md
@@ -16,6 +18,8 @@ sources:
   - ../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/papers/motion_cerebellum_64_catalog.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 ---
 
 # MaskedMimic
@@ -31,6 +35,7 @@ sources:
 
 ## 为什么重要
 
+- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（15/64）：跟踪：用遮蔽补全把稀疏目标变成全身动作。
 - 稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
 - 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)**（02 Goal-conditioned 学习），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
 
