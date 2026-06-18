@@ -1,4 +1,4 @@
-// Capture graph hover tooltips (type badge = type color, community badge = community color).
+// Capture graph hover tooltips (type badge colored by community; sidebar community = detail button).
 // Usage: node scripts/screenshot_graph_tooltip_verify.cjs [basePort] [outDir]
 const puppeteer = require('puppeteer-core');
 const fs = require('fs');
@@ -55,15 +55,12 @@ const path = require('path');
     return pt;
   }
 
-  async function waitTooltip(page, tooltipSelector, requireCommunity) {
-    await page.waitForFunction((sel, needCommunity) => {
+  async function waitTooltip(page, tooltipSelector) {
+    await page.waitForFunction((sel) => {
       const el = document.querySelector(sel);
       if (!el || el.classList.contains('hidden')) return false;
-      const type = el.querySelector('.tt-type');
-      if (!type) return false;
-      if (!needCommunity) return true;
-      return !!el.querySelector('.tt-community');
-    }, { timeout: 30000 }, tooltipSelector, !!requireCommunity);
+      return !!el.querySelector('.tt-type');
+    }, { timeout: 30000 }, tooltipSelector);
     await new Promise((r) => setTimeout(r, 400));
   }
 
@@ -103,18 +100,16 @@ const path = require('path');
       }, { timeout: 90000 });
       await new Promise((r) => setTimeout(r, 4000));
       await hoverGraphNodeWithCommunity(page, '#graph-canvas', '#graph-canvas .node-circle');
-      await waitTooltip(page, '#graph-tooltip', true);
+      await waitTooltip(page, '#graph-tooltip');
       const out = path.join(outDir, 'graph-tooltip-badges.png');
       await screenshotTooltip(page, '#graph-tooltip', out);
       const meta = await page.evaluate(() => {
         const tip = document.querySelector('#graph-tooltip');
         const type = tip?.querySelector('.tt-type');
-        const community = tip?.querySelector('.tt-community');
         return {
           typeText: type?.textContent?.trim() || '',
           typeBg: type ? getComputedStyle(type).backgroundColor : '',
-          communityText: community?.textContent?.trim() || '',
-          communityBg: community ? getComputedStyle(community).backgroundColor : '',
+          hasCommunityBadge: !!tip?.querySelector('.tt-community'),
         };
       });
       shots.push({ page: 'graph.html', out, meta });
@@ -132,7 +127,7 @@ const path = require('path');
         const sidebar = document.getElementById('graph-sidebar');
         if (!sidebar || !sidebar.classList.contains('open')) return false;
         const type = sidebar.querySelector('#sb-meta-badges .tt-type');
-        const community = sidebar.querySelector('#sb-meta-badges .tt-community');
+        const community = sidebar.querySelector('#sb-community .detail-community-badge');
         return !!(type && community);
       }, { timeout: 15000 });
       await new Promise((r) => setTimeout(r, 400));
@@ -156,12 +151,12 @@ const path = require('path');
       const sidebarMeta = await page.evaluate(() => {
         const sidebar = document.getElementById('graph-sidebar');
         const type = sidebar?.querySelector('#sb-meta-badges .tt-type');
-        const community = sidebar?.querySelector('#sb-meta-badges .tt-community');
+        const community = sidebar?.querySelector('#sb-community .detail-community-badge');
         return {
           typeText: type?.textContent?.trim() || '',
           typeBg: type ? getComputedStyle(type).backgroundColor : '',
           communityText: community?.textContent?.trim() || '',
-          communityBg: community ? getComputedStyle(community).backgroundColor : '',
+          hasMetaCommunityBadge: !!sidebar?.querySelector('#sb-meta-badges .tt-community'),
         };
       });
       shots.push({ page: 'graph.html sidebar', out: sidebarOut, meta: sidebarMeta });
@@ -176,7 +171,7 @@ const path = require('path');
       await page.waitForSelector('#mini-graph-svg .mini-graph-node circle', { timeout: 60000 });
       await new Promise((r) => setTimeout(r, 5000));
       await hoverGraphNodeWithCommunity(page, '#mini-graph-svg', '#mini-graph-svg .mini-graph-node circle');
-      await waitTooltip(page, '#mini-graph-tooltip', true);
+      await waitTooltip(page, '#mini-graph-tooltip');
       const out = path.join(outDir, 'mini-graph-tooltip-badges.png');
       await screenshotTooltip(page, '#mini-graph-tooltip', out);
       shots.push({ page: 'index.html', out });
@@ -194,7 +189,7 @@ const path = require('path');
       await page.waitForSelector('#detailMiniMapSvg .mini-node circle', { timeout: 60000 });
       await new Promise((r) => setTimeout(r, 3000));
       await hoverGraphNodeWithCommunity(page, '#detailMiniMapSvg', '#detailMiniMapSvg .mini-node circle');
-      await waitTooltip(page, '#detail-mini-map-tooltip', true);
+      await waitTooltip(page, '#detail-mini-map-tooltip');
       const out = path.join(outDir, 'detail-mini-map-tooltip-badges.png');
       await screenshotTooltip(page, '#detail-mini-map-tooltip', out);
       shots.push({ page: 'detail.html', out });

@@ -136,20 +136,31 @@
       ';color:' + escapeHtml(String(fg)) + '">' + escapeHtml(String(label)) + '</span>';
   }
 
-  /** 类型徽章用类型色；社区徽章用社区色 */
+  function shortenCommunityLabel(label) {
+    if (!label) return '未分类';
+    return String(label).replace(/\s*社区\s*$/, '').trim() || '未分类';
+  }
+
+  /** 浮窗/侧边栏类型徽章：优先用社区色着色，不再单独展示社区色块 */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
     var typeKey = opts.type != null ? opts.type : '';
     var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
     var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
     var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
-    var typeColor = typeColors[typeKey] || typeColors[''] || '#64748b';
-    var html = colorBadgeHtml('tt-type', typeLabel, typeColor);
-    if (opts.communityLabel) {
-      var communityColor = opts.communityColor || '#64748b';
-      html += colorBadgeHtml('tt-community', opts.communityLabel, communityColor);
-    }
+    var badgeColor = opts.badgeColor || opts.communityColor
+      || typeColors[typeKey] || typeColors[''] || '#64748b';
+    var html = colorBadgeHtml('tt-type', typeLabel, badgeColor);
     return '<div class="tt-meta-badges">' + html + '</div>';
+  }
+
+  /** 与详情页一致的社区跳转按钮 */
+  function buildCommunityBadgeHtml(communityId, communityLabel) {
+    if (!communityId || !communityLabel) return '';
+    var label = shortenCommunityLabel(communityLabel);
+    return '<a class="detail-meta-badge detail-community-badge" href="graph.html?community=' +
+      encodeURIComponent(communityId) + '" title="在知识图谱中查看「' + escapeHtml(label) + '」社区视图">' +
+      '<span>🧭</span><span>' + escapeHtml(label) + '</span></a>';
   }
 
   function buildNodeTooltipHtml(opts) {
@@ -175,7 +186,9 @@
     formatTooltipSummary: formatTooltipSummary,
     GRAPH_NODE_TYPE_LABEL: GRAPH_NODE_TYPE_LABEL,
     GRAPH_NODE_TYPE_COLOR: GRAPH_NODE_TYPE_COLOR,
+    shortenCommunityLabel: shortenCommunityLabel,
     buildMetaBadgesHtml: buildMetaBadgesHtml,
+    buildCommunityBadgeHtml: buildCommunityBadgeHtml,
     buildNodeTooltipHtml: buildNodeTooltipHtml
   };
 })();
