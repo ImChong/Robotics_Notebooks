@@ -56,7 +56,7 @@ summary: "MotionDisco（arXiv:2606.06139）：LLM 引导进化式程序搜索 + 
 - **真机闭环里程碑：** 作者称 **首个** 完全通过 **自动化进化搜索** 发现并在真机上执行 **长时程 loco-manipulation** 的工作（攀台、穿障、桌下取放等），与 [ResMimic](./paper-resmimic.md)、[OmniRetarget](./paper-hrl-stack-03-omniretarget.md) 等 **演示驱动** 路线形成鲜明对照。
 - **团队谱系：** TUM Khadiv 组在 **人形 TAMP / 动态 loco-manip** 上持续积累（Humanoids 2025 TAMP、ICRA 2026 动态发现 workshop 等）；MotionDisco 把 **程序进化（ShinkaEvolve 族）** 与 **接触显式 TO（acados / Hippo）** 推到 **G1 真机**。
 
-## 核心结构
+## 核心机制（归纳）
 
 | 模块 | 作用 |
 |------|------|

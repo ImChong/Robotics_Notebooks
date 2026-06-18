@@ -116,6 +116,7 @@ flowchart LR
 - [OmniRetarget（人形交互保留重定向）](../entities/paper-hrl-stack-03-omniretarget.md) — 同人族 interaction mesh，全身 loco-manipulation 尺度。
 - [Manipulation（操作）](../tasks/manipulation.md) — contact-rich 灵巧技能任务背景。
 - [舞肌科技 / Wuji Hand](../entities/wuji-robotics.md) — 论文主真机平台。
+- [DynaRetarget vs TopoRetarget（接触保真重定向对比）](../comparisons/dynaretarget-vs-toporetarget-retargeting.md) — 运动学层 vs 动力学层接触保真选型对比。
 
 ## 推荐继续阅读
 
