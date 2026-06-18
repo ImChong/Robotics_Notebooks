@@ -6,6 +6,8 @@
 - 交叉更新：[`sources/repos/motphys-motrix.md`](sources/repos/motphys-motrix.md)
 - 沉淀页面：[`wiki/entities/motrix.md`](wiki/entities/motrix.md) — 新增 MotrixSim Web Viewer 小节（WASM、Online/Customize、拖文件夹加载、快捷键）
 
+## [2026-06-18] ingest | sources/repos/step2urdf.md、sources/sites/step2urdf-top.md — STEP→URDF 浏览器工具 step2urdf；wiki/entities/step2urdf.md；交叉 urdf-studio、cad-skills、references/repos/utilities.md
+
 ## [2026-06-18] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md — 运动小脑 64 篇长文：父节点 wiki/overview/humanoid-motion-cerebellum-technology-map.md + 九组 motion-cerebellum-category-* hub；复用 paper-hrl-stack-* 等既有节点，新建 15 篇 paper-motion-cerebellum-*
 
 - 工具：Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；短链 <https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA>

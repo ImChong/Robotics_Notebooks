@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1245,
-  "edge_count": 8008,
+  "node_count": 1246,
+  "edge_count": 8017,
   "coverage": {
-    "covered": 1215,
-    "total": 1243,
+    "covered": 1216,
+    "total": 1244,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -12,6 +12,14 @@
       "path": "wiki/entities/motrix.md",
       "detail_id": "entity-motrix",
       "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/step2urdf.md",
+      "detail_id": "entity-step2urdf",
+      "label": "step2urdf",
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
@@ -156,14 +164,6 @@
       "path": "wiki/entities/paper-motion-cerebellum-march.md",
       "detail_id": "entity-paper-motion-cerebellum-march",
       "label": "MARCH",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-mugen.md",
-      "detail_id": "entity-paper-motion-cerebellum-mugen",
-      "label": "MuGen",
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
