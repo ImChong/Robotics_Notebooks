@@ -42,6 +42,30 @@ def test_merge_paper_catalog_drops_planned_alias_when_note_exists() -> None:
     assert not merged[0].get("planned")
 
 
+def test_merge_paper_catalog_drops_planned_alias_without_arxiv_when_label_has_arxiv() -> None:
+    canonical = _planned_alias(
+        dir="child-a-whole-body-humanoid-teleoperation-system",
+        title="CHILD: a Whole-Body Humanoid Teleoperation System",
+        arxiv="2508.00162",
+        folder="papers/07_Teleoperation/child-a-whole-body-humanoid-teleoperation-system",
+        category="07_Teleoperation",
+        from_progress_md=False,
+    )
+    alias = _planned_alias(
+        dir="child-controller-for-humanoid-imitation-and-live",
+        title=(
+            "CHILD: Controller for Humanoid Imitation and Live Demonstration "
+            "a Whole-Body Humanoid Teleoperation System"
+        ),
+        arxiv=None,
+        folder="papers/07_Teleoperation/child-controller-for-humanoid-imitation-and-live",
+        category="07_Teleoperation",
+    )
+    merged = bootstrap.merge_paper_catalog([canonical], [alias])
+    assert len(merged) == 1
+    assert merged[0]["dir"] == "child-a-whole-body-humanoid-teleoperation-system"
+
+
 def test_dedupe_category_entries_keeps_one_row_per_wiki_target() -> None:
     completed = _completed_paper()
     planned = _planned_alias()

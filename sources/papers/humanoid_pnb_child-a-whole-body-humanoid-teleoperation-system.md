@@ -1,8 +1,8 @@
-# CHILD: a Whole-Body Humanoid Teleoperation System
+# CHILD: Controller for Humanoid Imitation and Live Demonstration: a Whole-Body Humanoid Teleoperation System
 
 > 来源归档（ingest · Humanoid Paper Notebooks progress 待深读）
 
-- **标题：** CHILD: a Whole-Body Humanoid Teleoperation System
+- **标题：** CHILD (Controller for Humanoid Imitation and Live Demonstration): a Whole-Body Humanoid Teleoperation System
 - **类型：** paper
 - **深读状态：** 待撰写（见 [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)）
 - **计划笔记路径：** `papers/07_Teleoperation/child-a-whole-body-humanoid-teleoperation-system/child-a-whole-body-humanoid-teleoperation-system.md`

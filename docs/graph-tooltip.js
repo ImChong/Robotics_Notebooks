@@ -144,13 +144,17 @@
   /** 浮窗/侧边栏类型徽章：优先用社区色着色，不再单独展示社区色块 */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
-    var typeKey = opts.type != null ? opts.type : '';
-    var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
-    var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
-    var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
-    var badgeColor = opts.badgeColor || opts.communityColor
-      || typeColors[typeKey] || typeColors[''] || '#64748b';
-    var html = colorBadgeHtml('tt-type', typeLabel, badgeColor);
+    var html = '';
+    if (opts.showType !== false) {
+      var typeKey = opts.type != null ? opts.type : '';
+      var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
+      var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
+      var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
+      var badgeColor = opts.badgeColor || opts.communityColor
+        || typeColors[typeKey] || typeColors[''] || '#64748b';
+      html = colorBadgeHtml('tt-type', typeLabel, badgeColor);
+    }
+    if (!html) return '';
     return '<div class="tt-meta-badges">' + html + '</div>';
   }
 

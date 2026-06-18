@@ -613,7 +613,7 @@ overrides:
   child-a-whole-body-humanoid-teleoperation-system:
   - wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md
   child-controller-for-humanoid-imitation-and-live:
-  - wiki/entities/paper-notebook-child-controller-for-humanoid-imitation-and-live.md
+  - wiki/entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md
   chip-adaptive-compliance-for-humanoid-control-th:
   - wiki/entities/paper-hrl-stack-36-chip.md
   climber-force-and-motion-estimation-from-video:
@@ -837,7 +837,7 @@ overrides:
   human-robot-collaboration-for-the-remote-control:
   - wiki/entities/paper-notebook-human-robot-collaboration-for-the-remote-control.md
   humanoid-everyday-a-comprehensive-robotic-datase:
-  - wiki/entities/paper-notebook-humanoid-everyday-a-comprehensive-robotic-datase.md
+  - wiki/entities/humanoid-everyday-dataset.md
   humanoid-goalkeeper-learning-from-position-condi:
   - wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md
   humanoid-hanoi-investigating-shared-whole-body-c:

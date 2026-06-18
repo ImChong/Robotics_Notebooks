@@ -257,6 +257,7 @@
       position: fixed;
       top: calc(var(--header-h) + 46px);
       left: 0; right: 0; bottom: 0;
+      transition: right .22s cubic-bezier(.4,0,.2,1);
     }
     #graph-canvas {
       width: 100%; height: 100%;
@@ -3452,6 +3453,25 @@
     const sbPaperList  = document.getElementById('sb-paper-list');
     const sbOpenLink   = document.getElementById('sb-open-link');
     const sbClose      = document.getElementById('sb-close');
+    const SIDEBAR_TRANSITION_MS = 220;
+
+    function scheduleSidebarViewportSync() {
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        wrap.removeEventListener('transitionend', onEnd);
+        clearTimeout(fallbackTimer);
+        updateGraphViewport();
+        if (!timelineAnimating) simulation.alpha(0.1).restart();
+      };
+      const onEnd = (ev) => {
+        if (ev.target !== wrap || ev.propertyName !== 'right') return;
+        finish();
+      };
+      wrap.addEventListener('transitionend', onEnd);
+      const fallbackTimer = setTimeout(finish, SIDEBAR_TRANSITION_MS + 40);
+    }
 
     function edgeNodeIds(e) {
       return {
@@ -3504,7 +3524,9 @@
 
       const info  = d._info;
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
-      const summary = (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
+      const summary = window.RNGraphTooltip?.formatTooltipSummary
+        ? window.RNGraphTooltip.formatTooltipSummary(info.summary || '', 150)
+        : (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
 
       const communityLabel = communityLabelMap.get(d.community);
       const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
@@ -3528,7 +3550,13 @@
         }
       }
       sbTitle.textContent = info.title || d.label;
-      sbSummary.textContent = summary;
+      if (summary) {
+        sbSummary.hidden = false;
+        sbSummary.textContent = summary;
+      } else {
+        sbSummary.hidden = true;
+        sbSummary.textContent = '';
+      }
 
       // tags from index
       const item = indexItems.find(it => it.path === d.id);
@@ -3589,9 +3617,11 @@
 
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
+      scheduleSidebarViewportSync();
     }
     function closeSidebar() {
       sidebar.classList.remove('open');
+      scheduleSidebarViewportSync();
       sidebarFocusIds = null;
       pinnedNode = null;
       if (isMobile) hideTooltip();
