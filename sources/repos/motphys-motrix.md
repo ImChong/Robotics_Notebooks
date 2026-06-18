@@ -4,6 +4,8 @@
 - **链接**: 
   - https://github.com/Motphys/MotrixLab
   - https://github.com/Motphys/motrixsim-docs
+  - https://motrix.motphys.com/（MotrixSim Web Viewer）
+  - https://motrixsim.readthedocs.io/en/latest/user_guide/getting_started/motrixsim_web.html
 - **类型**: repo / simulation-engine / rl-platform
 - **作者**: Motphys
 - **核心关注点**: 高性能多体动力学仿真、Rust 后端、MJCF 兼容性、强化学习集成
@@ -35,8 +37,10 @@
 - **运动控制**: 开发与测试传统控制算法（MPC, WBC）。
 - **强化学习**: 训练腿式行走与机械臂操作。
 - **工业仿真**: 数字化工厂与数字孪生。
+- **浏览器检视**: [MotrixSim Web Viewer](../sites/motrixsim-web-viewer.md) — WASM 在线加载 MJCF/URDF/JSON，零安装验模与演示。
 
 ## 对 Wiki 的映射
-- **wiki/entities/motrix.md** (新建)
+- **wiki/entities/motrix.md** — 实体页（含 Web Viewer）
+- **sources/sites/motrixsim-web-viewer.md** — Web Viewer 用户指南归档
 - **references/repos/simulation.md** (更新)
 - **references/repos/rl-frameworks.md** (更新)

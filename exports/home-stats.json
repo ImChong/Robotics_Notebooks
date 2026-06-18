@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/motrix.md",
+      "detail_id": "entity-motrix",
+      "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/overview/motion-cerebellum-category-01-locomotion-base.md",
       "detail_id": "wiki-overview-motion-cerebellum-category-01-locomotion-base",
       "label": "运动小脑分类 A：走路底座",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-safewbc.md",
-      "detail_id": "entity-paper-motion-cerebellum-safewbc",
-      "label": "SafeWBC",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/motion-cerebellum-category-01-locomotion-base.md",
-    "detail_id": "wiki-overview-motion-cerebellum-category-01-locomotion-base",
-    "label": "运动小脑分类 A：走路底座",
-    "type": "overview",
+    "path": "wiki/entities/motrix.md",
+    "detail_id": "entity-motrix",
+    "label": "Motrix (Motphys 机器人仿真与训练平台)",
+    "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
   }
