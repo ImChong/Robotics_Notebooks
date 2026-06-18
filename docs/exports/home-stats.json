@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
+      "detail_id": "entity-paper-kairos-native-world-model-stack",
+      "label": "Kairos（原生世界模型栈 · kairos-agi）",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/xpad.md",
       "detail_id": "entity-xpad",
       "label": "xpad（Linux Xbox 手柄驱动）",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-constrainedmimic.md",
-      "detail_id": "entity-paper-motion-cerebellum-constrainedmimic",
-      "label": "ConstrainedMimic",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/xpad.md",
-    "detail_id": "entity-xpad",
-    "label": "xpad（Linux Xbox 手柄驱动）",
+    "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
+    "detail_id": "entity-paper-kairos-native-world-model-stack",
+    "label": "Kairos（原生世界模型栈 · kairos-agi）",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
