@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1247,
-  "edge_count": 8045,
+  "node_count": 1248,
+  "edge_count": 8058,
   "coverage": {
-    "covered": 1217,
-    "total": 1245,
+    "covered": 1218,
+    "total": 1246,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/enpire.md",
+      "detail_id": "wiki-methods-enpire",
+      "label": "ENPIRE",
+      "type": "method",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
       "detail_id": "entity-paper-kairos-native-world-model-stack",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-ceer.md",
-      "detail_id": "entity-paper-motion-cerebellum-ceer",
-      "label": "CEER",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
-    "detail_id": "entity-paper-kairos-native-world-model-stack",
-    "label": "Kairos（原生世界模型栈 · kairos-agi）",
-    "type": "entity",
+    "path": "wiki/methods/enpire.md",
+    "detail_id": "wiki-methods-enpire",
+    "label": "ENPIRE",
+    "type": "method",
     "recency": "2026-06-18",
     "source": "log.md"
   }

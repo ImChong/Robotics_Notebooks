@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/papers/enpire_nvidia_gear_2026.md、sources/sites/nvidia-research-enpire.md — ENPIRE 真机 coding-agent 策略自改进；wiki/methods/enpire.md；交叉 manipulation、simulation-evaluation-infrastructure
+
 ## [2026-06-18] ingest | sources/papers/kairos_arxiv_2606_16533.md — Kairos 原生世界模型栈；wiki/entities/paper-kairos-native-world-model-stack.md；交叉 generative-world-models、world-action-models、homeworld
 
 ## [2026-06-18] ingest | sources/repos/xpad.md — 接入 Linux Xbox USB 手柄内核驱动 xpad 并新建 wiki/entities/xpad.md，交叉更新 teleoperation 与 open-duck-mini-runtime

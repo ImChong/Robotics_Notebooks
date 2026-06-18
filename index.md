@@ -47,6 +47,7 @@
 - [mimic-video（VAM）](wiki/methods/mimic-video.md)（互联网视频潜计划 + 流匹配动作解码；arXiv:2512.15692）
 - [DeFI（解耦前向/逆动力学 VLA）](wiki/methods/defi-decoupled-dynamics-vla.md)（GFDM + GIDM 分阶段预训练；arXiv:2604.16391）
 - [EgoScale](wiki/methods/egoscale.md)（2 万小时级 egocentric 人视频预训练 VLA + 对齐 mid-training；arXiv:2602.16710）
+- [ENPIRE](wiki/methods/enpire.md)（coding agent 真机策略自改进闭环：EN–PI–R–E 四模块 + AutoEnvBench；NVIDIA GEAR 2026）
 - [Model Predictive Control (MPC)](wiki/methods/model-predictive-control.md)
 - [Trajectory Optimization](wiki/methods/trajectory-optimization.md)
 - [Locomotion](wiki/tasks/locomotion.md)
@@ -1099,6 +1100,7 @@ SORT type ASC
 - [EFGCL（External Force-Guided Curriculum Learning）](methods/efgcl.md) — EFGCL** 是一种面向腿足机器人**高动态全身动作**的 **guided RL / 物理引导探索** 训练范式：在仿真里对机器人施加**外部辅助力**，使其在课程早期就能反复完成目标动作；再 `📅2026-05-13` `[method_page]`
 - [EGM（Efficient General Mimic，高效通用模仿跟踪）](methods/egm-efficient-general-mimic.md) — EGM**（Yang 等，arXiv:2512.19043）研究 **单一神经网络策略** 在仿真中对 **多段人体参考运动** 做 **全身动态跟踪**：重点解决 **大规模 MoCap 冗余/ `📅unknown` `[method_page]`
 - [EgoScale](methods/egoscale.md) — EgoScale**（NVIDIA GEAR 等，arXiv:2602.16710）研究的是：能否把 **互联网尺度的第一人称人操作视频** 当成 **灵巧机械臂–手策略** 的主监督来源，并在数 `📅2026-05-17` `[method_page]`
+- [ENPIRE](methods/enpire.md) — **ENPIRE**（NVIDIA GEAR 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + 手工改代码」变成 **coding agent 可重复管理的物理反馈优化 `📅2026-06-18` `[method_page]`
 - [ExoActor (视频生成驱动的交互式人形控制)](methods/exoactor.md) — ExoActor** 把"第三人称（exocentric）视频生成"作为人形机器人 **交互动力学的统一接口**：给定任务指令与场景观测，先让大型视频生成模型"想象"出一段任务执行视频，再把视频翻 `📅unknown` `[method_page]`
 - [Generalized Advantage Estimation (GAE)](methods/gae.md) — GAE** 解决了强化学习中一个核心痛点：如何准确估计一个动作比平均水平“好多少”（即优势函数 $A(s, a)$），同时保持低方差。 `📅unknown` `[method_page]`
 - [Generative Data Augmentation (生成式数据增强)](methods/generative-data-augmentation.md) — 在具身智能训练中，**生成式数据增强** 是解决“长尾效应 (Long-tail Distribution)”的关键。虽然我们可以轻易采集到成千上万条成功的“拿杯子”演示，但“杯子滑落”、“手部剧烈抖 `📅unknown` `[method_page]`
