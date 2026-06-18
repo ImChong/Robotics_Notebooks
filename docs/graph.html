@@ -307,9 +307,26 @@
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 4px;
-      margin-bottom: 6px;
       text-transform: uppercase;
       letter-spacing: .04em;
+    }
+    .tt-community {
+      display: inline-block;
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: .02em;
+    }
+    .tt-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    .tt-meta-badges .tt-type,
+    .tt-meta-badges .tt-community {
+      margin-bottom: 0;
     }
     .tt-title { font-size: .92rem; font-weight: 700; color: #e6edf3; margin-bottom: 5px; line-height: 1.3; }
     .tt-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
@@ -1313,10 +1330,28 @@
       border-bottom: 1px solid rgba(255,255,255,0.07);
       gap: 10px;
     }
-    .sb-type-badge {
-      display: inline-block; font-size: .68rem; font-weight: 700;
-      padding: 2px 8px; border-radius: 4px; text-transform: uppercase;
-      letter-spacing: .04em; margin-bottom: 6px; flex-shrink: 0;
+    #graph-sidebar .tt-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+    #graph-sidebar .tt-type {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    #graph-sidebar .tt-community {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      letter-spacing: .02em;
     }
     .sb-title { font-size: .92rem; font-weight: 700; color: #e6edf3; line-height: 1.3; }
     .sb-close {
@@ -1333,23 +1368,6 @@
       background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.55);
     }
     .sb-summary { font-size: .78rem; color: rgba(255,255,255,0.45); line-height: 1.55; margin-bottom: 12px; }
-    .sb-meta-block { margin-bottom: 12px; }
-    .sb-community-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: .72rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      color: rgba(255,255,255,0.72);
-    }
-    .sb-community-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
     .sb-section-title {
       font-size: .7rem; font-weight: 700; color: rgba(255,255,255,0.3);
       text-transform: uppercase; letter-spacing: .06em; margin-bottom: 7px;
@@ -1385,7 +1403,6 @@
     [data-theme="light"] .sb-title { color: #1a1a1a; }
     [data-theme="light"] .sb-summary { color: rgba(0,0,0,0.5); }
     [data-theme="light"] .sb-tag { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.5); }
-    [data-theme="light"] .sb-community-badge { background: rgba(0,0,0,0.06); color: rgba(0,0,0,0.62); }
     [data-theme="light"] .sb-section-title { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close { color: rgba(0,0,0,0.35); }
     [data-theme="light"] .sb-close:hover { color: rgba(0,0,0,0.8); }
@@ -1574,7 +1591,7 @@
   <aside id="graph-sidebar" aria-label="节点详情">
     <div class="sb-header">
       <div>
-        <span class="sb-type-badge" id="sb-type-badge"></span>
+        <div id="sb-meta-badges"></div>
         <div class="sb-title" id="sb-title">选择节点查看详情</div>
       </div>
       <button id="sb-close" class="sb-close" aria-label="关闭侧边栏">✕</button>
@@ -1582,13 +1599,6 @@
     <div class="sb-body">
       <div class="sb-tags" id="sb-tags"></div>
       <p class="sb-summary" id="sb-summary"></p>
-      <div class="sb-meta-block" id="sb-community-block" hidden>
-        <div class="sb-section-title">所属社区</div>
-        <div class="sb-community-badge" id="sb-community-badge">
-          <span class="sb-community-dot" id="sb-community-dot"></span>
-          <span id="sb-community-label"></span>
-        </div>
-      </div>
       <div id="sb-neighbors-section" hidden>
         <div class="sb-section-title">图邻居 <span id="sb-neighbors-count" class="sb-neighbors-count"></span></div>
         <ul class="sb-related-list sb-neighbors-list" id="sb-neighbors-list"></ul>
@@ -1624,12 +1634,15 @@
       comparison:    '#c084fc',
       query:         '#94a3b8',
       formalization: '#fb923c',
+      overview:      '#64748b',
+      reference:     '#64748b',
       '':            '#64748b',
     };
     const TYPE_LABEL = {
       concept: '概念', method: '方法', task: '任务',
       entity: '工具', comparison: '对比', query: 'Query',
-      formalization: '形式化', '': 'Wiki',
+      formalization: '形式化', overview: '总览', reference: '参考',
+      '': 'Wiki',
     };
     const TYPE_FILTER_OPTIONS = [
       { value: 'concept', label: '概念', color: '#60a5fa' },
@@ -2355,20 +2368,24 @@
     }
 
     function tooltipHtml(d) {
-      const color = nodeColor(d);
       const info = d._info;
-      const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const summary = tooltipSummary(info.summary);
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       const communityLabel = communityLabelMap.get(d.community);
-      const community = communityLabel
-        ? `<div class="tt-summary">社区：${escapeHtml(String(communityLabel))}</div>`
-        : '';
-      return `<span class="tt-type" style="background:${escapeHtml(String(color))};color:#0d1117">${escapeHtml(String(typeLabel))}</span>` +
-             `<div class="tt-title">${escapeHtml(String(info.title || d.label))}</div>` +
-             (summary ? `<div class="tt-summary">${escapeHtml(String(summary))}</div>` : '') +
-             community +
-             `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">打开详情页 →</a>`;
+      const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
+      if (window.RNGraphTooltip?.buildNodeTooltipHtml) {
+        return window.RNGraphTooltip.buildNodeTooltipHtml({
+          type: d.type || '',
+          typeLabels: TYPE_LABEL,
+          typeColors: TYPE_COLOR,
+          title: info.title || d.label,
+          summary,
+          communityLabel: communityLabel || '',
+          communityColor: communityLabel ? communityColor : '',
+          linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">打开详情页 →</a>`
+        });
+      }
+      return '';
     }
 
     function showTooltip(ev, d) {
@@ -3427,13 +3444,10 @@
     ════════════════════════════════════════════ */
 
     const sidebar      = document.getElementById('graph-sidebar');
-    const sbTypeBadge  = document.getElementById('sb-type-badge');
+    const sbMetaBadges = document.getElementById('sb-meta-badges');
     const sbTitle      = document.getElementById('sb-title');
     const sbTags       = document.getElementById('sb-tags');
     const sbSummary    = document.getElementById('sb-summary');
-    const sbCommunityBlock = document.getElementById('sb-community-block');
-    const sbCommunityDot   = document.getElementById('sb-community-dot');
-    const sbCommunityLabel = document.getElementById('sb-community-label');
     const sbNeighborsSec  = document.getElementById('sb-neighbors-section');
     const sbNeighborsList = document.getElementById('sb-neighbors-list');
     const sbNeighborsCount = document.getElementById('sb-neighbors-count');
@@ -3493,25 +3507,25 @@
           return edgeHighlightsWithNode(e, d.id) ? linkWidthBase * 1.5 : linkWidthBase;
         });
 
-      const color = nodeColor(d);
       const info  = d._info;
-      const typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
       const summary = (info.summary || '').slice(0, 150) + (info.summary?.length > 150 ? '…' : '');
 
-      sbTypeBadge.style.background = color;
-      sbTypeBadge.style.color = '#0d1117';
-      sbTypeBadge.textContent = typeLabel;
+      const communityLabel = communityLabelMap.get(d.community);
+      const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
+      if (sbMetaBadges && window.RNGraphTooltip?.buildMetaBadgesHtml) {
+        sbMetaBadges.innerHTML = window.RNGraphTooltip.buildMetaBadgesHtml({
+          type: d.type || '',
+          typeLabels: TYPE_LABEL,
+          typeColors: TYPE_COLOR,
+          communityLabel: communityLabel || '',
+          communityColor: communityLabel ? communityColor : '',
+        });
+      } else if (sbMetaBadges) {
+        sbMetaBadges.innerHTML = '';
+      }
       sbTitle.textContent = info.title || d.label;
       sbSummary.textContent = summary;
-      const sbCommunityText = communityLabelMap.get(d.community);
-      if (sbCommunityText) {
-        sbCommunityBlock.hidden = false;
-        sbCommunityDot.style.background = communityColorMap.get(d.community) || color;
-        sbCommunityLabel.textContent = sbCommunityText;
-      } else {
-        sbCommunityBlock.hidden = true;
-      }
 
       // tags from index
       const item = indexItems.find(it => it.path === d.id);

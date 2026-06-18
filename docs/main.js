@@ -2509,17 +2509,7 @@
     return null;
   }
 
-  var TYPE_COLOR_DETAIL_MINI = {
-    concept: '#60a5fa', method: '#34d399', task: '#f472b6',
-    entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
-    formalization: '#fb923c', '': '#64748b'
-  };
   var DETAIL_MINI_TABLEAU10 = ['#4e79a7', '#f28e2b', '#e15759', '#76b7b2', '#59a14f', '#edc948', '#b07aa1', '#ff9da7', '#9c755f', '#bab0ac'];
-  var GRAPH_NODE_TYPE_LABEL = {
-    concept: '概念', method: '方法', task: '任务',
-    entity: '工具', comparison: '对比', query: 'Query',
-    formalization: '形式化', '': 'Wiki'
-  };
 
   function formatGraphTooltipSummary(raw) {
     if (window.RNGraphTooltip && window.RNGraphTooltip.formatTooltipSummary) {
@@ -2529,13 +2519,9 @@
   }
 
   function buildGraphNodeTooltipHtml(d, nodeFill, communityLabelMap, pathToId) {
-    var color = nodeFill(d);
-    var typeLabel = GRAPH_NODE_TYPE_LABEL[d.type] || d.type || 'Wiki';
     var summary = formatGraphTooltipSummary(d.summary);
     var communityLabel = d.community && communityLabelMap[d.community];
-    var community = communityLabel
-      ? '<div class="tt-summary">社区：' + escapeHtml(String(communityLabel)) + '</div>'
-      : '';
+    var communityColor = d.community ? nodeFill(d) : '';
     var linkHtml;
     if (d.isCurrent) {
       linkHtml = '<div class="tt-summary">当前页面</div>';
@@ -2545,12 +2531,17 @@
       var linkText = pid ? '打开详情页 →' : '在完整图谱中查看 →';
       linkHtml = '<a class="tt-link" href="' + escapeHtml(href) + '">' + escapeHtml(linkText) + '</a>';
     }
-    return '<span class="tt-type" style="background:' + escapeHtml(String(color)) + ';color:#0d1117">' +
-      escapeHtml(String(typeLabel)) + '</span>' +
-      '<div class="tt-title">' + escapeHtml(String(d.label || d.id)) + '</div>' +
-      (summary ? '<div class="tt-summary">' + escapeHtml(String(summary)) + '</div>' : '') +
-      community +
-      linkHtml;
+    if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
+      return window.RNGraphTooltip.buildNodeTooltipHtml({
+        type: d.type || '',
+        title: d.label || d.id,
+        summary: summary,
+        communityLabel: communityLabel || '',
+        communityColor: communityColor,
+        linkHtml: linkHtml
+      });
+    }
+    return '';
   }
 
   function setupGraphHoverTooltip(tooltipEl) {
@@ -2958,7 +2949,9 @@
       function nodeFill(d) {
         var cc = d.community && communityColor[d.community];
         if (cc) return cc;
-        return TYPE_COLOR_DETAIL_MINI[d.type] || TYPE_COLOR_DETAIL_MINI[''];
+        var typeColors = window.RNGraphTooltip && window.RNGraphTooltip.GRAPH_NODE_TYPE_COLOR;
+        if (typeColors) return typeColors[d.type] || typeColors[''];
+        return '#64748b';
       }
 
       var hoverTip = setupGraphHoverTooltip(tooltipEl);

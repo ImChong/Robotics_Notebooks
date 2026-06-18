@@ -6,12 +6,6 @@
   var tooltip  = document.getElementById('mini-graph-tooltip');
   if (!miniWrap || !miniSvg) return;
 
-  var TYPE_LABEL = {
-    concept: '概念', method: '方法', task: '任务',
-    entity: '工具', comparison: '对比', query: 'Query',
-    formalization: '形式化', '': 'Wiki'
-  };
-
   var PREVIEW_TOP_N = 40;
   var isMobile = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
   var pinnedNode = null;
@@ -48,20 +42,21 @@
   }
 
   function tooltipHtml(d, nodeFill, communityLabelMap) {
-    var color = nodeFill(d);
-    var typeLabel = TYPE_LABEL[d.type] || d.type || 'Wiki';
     var summary = tooltipSummary(d.summary);
     var detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
     var communityLabel = d.community && communityLabelMap[d.community];
-    var community = communityLabel
-      ? '<div class="tt-summary">社区：' + escapeHtml(String(communityLabel)) + '</div>'
-      : '';
-    return '<span class="tt-type" style="background:' + escapeHtml(String(color)) + ';color:#0d1117">' +
-      escapeHtml(String(typeLabel)) + '</span>' +
-      '<div class="tt-title">' + escapeHtml(String(d.label || d.id)) + '</div>' +
-      (summary ? '<div class="tt-summary">' + escapeHtml(String(summary)) + '</div>' : '') +
-      community +
-      '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">打开详情页 →</a>';
+    var communityColor = d.community ? nodeFill(d) : '';
+    if (window.RNGraphTooltip && window.RNGraphTooltip.buildNodeTooltipHtml) {
+      return window.RNGraphTooltip.buildNodeTooltipHtml({
+        type: d.type || '',
+        title: d.label || d.id,
+        summary: summary,
+        communityLabel: communityLabel || '',
+        communityColor: communityColor,
+        linkHtml: '<a class="tt-link" href="' + escapeHtml(detailUrl) + '">打开详情页 →</a>'
+      });
+    }
+    return '';
   }
 
   function showTooltip(ev, d, nodeFill, communityLabelMap) {
