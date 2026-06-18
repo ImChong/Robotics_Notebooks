@@ -118,6 +118,53 @@ const path = require('path');
         };
       });
       shots.push({ page: 'graph.html', out, meta });
+
+      // 1b) graph sidebar badges (PC click opens sidebar)
+      const clickPt = await page.evaluate(() => {
+        const circle = document.querySelector('#graph-canvas .node-circle');
+        if (!circle) return null;
+        const rect = circle.getBoundingClientRect();
+        return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+      });
+      if (!clickPt) throw new Error('graph.html: no node to click for sidebar');
+      await page.mouse.click(clickPt.x, clickPt.y);
+      await page.waitForFunction(() => {
+        const sidebar = document.getElementById('graph-sidebar');
+        if (!sidebar || !sidebar.classList.contains('open')) return false;
+        const type = sidebar.querySelector('#sb-meta-badges .tt-type');
+        const community = sidebar.querySelector('#sb-meta-badges .tt-community');
+        return !!(type && community);
+      }, { timeout: 15000 });
+      await new Promise((r) => setTimeout(r, 400));
+      const sidebarOut = path.join(outDir, 'graph-sidebar-badges.png');
+      const sidebarBox = await page.evaluate(() => {
+        const el = document.getElementById('graph-sidebar');
+        if (!el) return null;
+        const r = el.getBoundingClientRect();
+        return { x: r.x, y: r.y, width: r.width, height: Math.min(r.height, 320) };
+      });
+      if (!sidebarBox) throw new Error('sidebar box missing');
+      await page.screenshot({
+        path: sidebarOut,
+        clip: {
+          x: Math.max(0, sidebarBox.x),
+          y: Math.max(0, sidebarBox.y),
+          width: Math.min(1440, sidebarBox.width),
+          height: Math.min(900, sidebarBox.height),
+        },
+      });
+      const sidebarMeta = await page.evaluate(() => {
+        const sidebar = document.getElementById('graph-sidebar');
+        const type = sidebar?.querySelector('#sb-meta-badges .tt-type');
+        const community = sidebar?.querySelector('#sb-meta-badges .tt-community');
+        return {
+          typeText: type?.textContent?.trim() || '',
+          typeBg: type ? getComputedStyle(type).backgroundColor : '',
+          communityText: community?.textContent?.trim() || '',
+          communityBg: community ? getComputedStyle(community).backgroundColor : '',
+        };
+      });
+      shots.push({ page: 'graph.html sidebar', out: sidebarOut, meta: sidebarMeta });
       await page.close();
     }
 
