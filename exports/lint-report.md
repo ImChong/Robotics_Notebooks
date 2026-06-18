@@ -2,7 +2,7 @@
 
 ## [2026-06-18] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **1** 个问题（另含 **49** 条信息型预警）：
+共发现 **0** 个问题（另含 **49** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -79,8 +79,8 @@
 ### ⚠️ Methods 页面缺少 Formalization/Concept 链接（0 个）
 - 无
 
-### ⚠️ Methods 页面缺少主要路线区块（1 个）
-- wiki/methods/enpire.md
+### ⚠️ Methods 页面缺少主要路线区块（0 个）
+- 无
 
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
