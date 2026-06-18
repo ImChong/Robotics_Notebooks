@@ -2,7 +2,7 @@
 type: method
 tags: [vla, foundation-policy, physical-intelligence, flow-matching, manipulation, prompting, cross-embodiment]
 status: complete
-updated: 2026-06-04
+updated: 2026-06-18
 related:
   - ./π0-policy.md
   - ./vla.md
