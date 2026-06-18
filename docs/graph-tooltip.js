@@ -139,16 +139,20 @@
   /** 类型徽章用类型色；社区徽章用社区色 */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
-    var typeKey = opts.type != null ? opts.type : '';
-    var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
-    var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
-    var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
-    var typeColor = typeColors[typeKey] || typeColors[''] || '#64748b';
-    var html = colorBadgeHtml('tt-type', typeLabel, typeColor);
+    var html = '';
+    if (opts.showType !== false) {
+      var typeKey = opts.type != null ? opts.type : '';
+      var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
+      var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
+      var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
+      var typeColor = typeColors[typeKey] || typeColors[''] || '#64748b';
+      html = colorBadgeHtml('tt-type', typeLabel, typeColor);
+    }
     if (opts.communityLabel) {
       var communityColor = opts.communityColor || '#64748b';
       html += colorBadgeHtml('tt-community', opts.communityLabel, communityColor);
     }
+    if (!html) return '';
     return '<div class="tt-meta-badges">' + html + '</div>';
   }
 
