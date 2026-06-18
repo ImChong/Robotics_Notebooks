@@ -2269,9 +2269,26 @@ body.sponsor-dialog-open {
   font-weight: 700;
   padding: 2px 7px;
   border-radius: 4px;
-  margin-bottom: 6px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+.graph-hover-tooltip .tt-community {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.02em;
+}
+.graph-hover-tooltip .tt-meta-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+.graph-hover-tooltip .tt-meta-badges .tt-type,
+.graph-hover-tooltip .tt-meta-badges .tt-community {
+  margin-bottom: 0;
 }
 .graph-hover-tooltip .tt-title {
   font-size: 0.92rem;

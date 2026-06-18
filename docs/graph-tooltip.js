@@ -107,10 +107,75 @@
     return s;
   }
 
+  var GRAPH_NODE_TYPE_LABEL = {
+    concept: '概念', method: '方法', task: '任务',
+    entity: '工具', comparison: '对比', query: 'Query',
+    formalization: '形式化', overview: '总览', reference: '参考',
+    '': 'Wiki'
+  };
+
+  var GRAPH_NODE_TYPE_COLOR = {
+    concept: '#60a5fa', method: '#34d399', task: '#f472b6',
+    entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
+    formalization: '#fb923c', overview: '#64748b', reference: '#64748b',
+    '': '#64748b'
+  };
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function colorBadgeHtml(className, label, bgColor, textColor) {
+    var fg = textColor || '#0d1117';
+    return '<span class="' + className + '" style="background:' + escapeHtml(String(bgColor)) +
+      ';color:' + escapeHtml(String(fg)) + '">' + escapeHtml(String(label)) + '</span>';
+  }
+
+  /** 类型徽章用类型色；社区徽章用社区色 */
+  function buildMetaBadgesHtml(opts) {
+    opts = opts || {};
+    var typeKey = opts.type != null ? opts.type : '';
+    var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
+    var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
+    var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
+    var typeColor = typeColors[typeKey] || typeColors[''] || '#64748b';
+    var html = colorBadgeHtml('tt-type', typeLabel, typeColor);
+    if (opts.communityLabel) {
+      var communityColor = opts.communityColor || '#64748b';
+      html += colorBadgeHtml('tt-community', opts.communityLabel, communityColor);
+    }
+    return '<div class="tt-meta-badges">' + html + '</div>';
+  }
+
+  function buildNodeTooltipHtml(opts) {
+    opts = opts || {};
+    var badges = buildMetaBadgesHtml(opts);
+    var title = escapeHtml(String(opts.title || opts.id || ''));
+    var summary = opts.summary
+      ? '<div class="tt-summary">' + escapeHtml(String(opts.summary)) + '</div>'
+      : '';
+    var extra = opts.extraHtml || '';
+    var link = opts.linkHtml || '';
+    return badges +
+      '<div class="tt-title">' + title + '</div>' +
+      summary +
+      extra +
+      link;
+  }
+
   window.RNGraphTooltip = {
     bindBlankDismiss: bindGraphTooltipBlankDismiss,
     bindOutsideDismiss: bindGraphTooltipOutsideDismiss,
     isMetadataOnlySummary: isMetadataOnlySummary,
-    formatTooltipSummary: formatTooltipSummary
+    formatTooltipSummary: formatTooltipSummary,
+    GRAPH_NODE_TYPE_LABEL: GRAPH_NODE_TYPE_LABEL,
+    GRAPH_NODE_TYPE_COLOR: GRAPH_NODE_TYPE_COLOR,
+    buildMetaBadgesHtml: buildMetaBadgesHtml,
+    buildNodeTooltipHtml: buildNodeTooltipHtml
   };
 })();
