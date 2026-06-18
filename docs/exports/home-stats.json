@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/motrix.md",
+      "detail_id": "entity-motrix",
+      "label": "Motrix (Motphys 机器人仿真与训练平台)",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/step2urdf.md",
       "detail_id": "entity-step2urdf",
       "label": "step2urdf",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-mugen.md",
-      "detail_id": "entity-paper-motion-cerebellum-mugen",
-      "label": "MuGen",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/step2urdf.md",
-    "detail_id": "entity-step2urdf",
-    "label": "step2urdf",
+    "path": "wiki/entities/motrix.md",
+    "detail_id": "entity-motrix",
+    "label": "Motrix (Motphys 机器人仿真与训练平台)",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
