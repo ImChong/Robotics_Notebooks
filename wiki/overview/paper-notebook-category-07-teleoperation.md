@@ -5,7 +5,7 @@ status: complete
 updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 07：遥操作（20 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 07：遥操作（19 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Teleoperation
@@ -24,7 +24,6 @@ summary: "Paper Notebooks 分类 07：遥操作（20 篇深读笔记索引）。
 
 - [A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](../entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md) — 待深读
 - [AvatarPoser](../entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — 待深读
-- [CHILD](../entities/paper-notebook-child-controller-for-humanoid-imitation-and-live.md) — 待深读
 - [CHILD](../entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) — 待深读
 - [CLONE](../entities/paper-bfm-12-clone.md) — 待深读
 - [CLOT](../entities/paper-amp-survey-16-clot.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation.html)

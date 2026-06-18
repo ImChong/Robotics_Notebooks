@@ -36,6 +36,8 @@ def entity_score(path: Path) -> int:
     score = 0
     if "paper-notebook-" in path.name:
         score -= 50
+    if fm_arxiv(text):
+        score += 25
     if "status: complete" in fm or "status: complete\n" in fm:
         score += 30
     if "paper-notebook-stub" in fm or "paper-notebook-planned" in fm:
@@ -114,9 +116,60 @@ def find_title_merge_pairs() -> list[tuple[str, str]]:
     return pairs
 
 
+def find_stub_stub_merge_pairs() -> list[tuple[str, str]]:
+    """Merge duplicate paper-notebook stubs (no deep wiki keeper yet)."""
+    entities_dir = WIKI / "entities"
+    stubs = list(entities_dir.glob("paper-notebook-*.md"))
+    merged: dict[str, str] = {}
+
+    by_arxiv: dict[str, list[Path]] = {}
+    for stub in stubs:
+        arxiv = fm_arxiv(stub.read_text(encoding="utf-8"))
+        if arxiv:
+            by_arxiv.setdefault(arxiv, []).append(stub)
+
+    for paths in by_arxiv.values():
+        if len(paths) < 2:
+            continue
+        keeper = sorted(paths, key=entity_score, reverse=True)[0]
+        for stub in paths:
+            if stub == keeper:
+                continue
+            merged[str(stub.relative_to(ROOT))] = str(keeper.relative_to(ROOT))
+
+    by_h1: dict[str, list[Path]] = {}
+    for stub in stubs:
+        h1 = page_h1_title(stub)
+        if h1:
+            by_h1.setdefault(h1, []).append(stub)
+
+    for paths in by_h1.values():
+        if len(paths) < 2:
+            continue
+        with_arxiv = [
+            p for p in paths if fm_arxiv(p.read_text(encoding="utf-8"))
+        ]
+        without_arxiv = [
+            p for p in paths if not fm_arxiv(p.read_text(encoding="utf-8"))
+        ]
+        if not with_arxiv or not without_arxiv:
+            continue
+        keeper = sorted(with_arxiv, key=entity_score, reverse=True)[0]
+        for stub in without_arxiv:
+            remove_rel = str(stub.relative_to(ROOT))
+            if remove_rel not in merged:
+                merged[remove_rel] = str(keeper.relative_to(ROOT))
+
+    return list(merged.items())
+
+
 def find_merge_pairs() -> list[tuple[str, str]]:
     merged: dict[str, str] = {}
-    for remove_rel, keep_rel in find_arxiv_merge_pairs() + find_title_merge_pairs():
+    for remove_rel, keep_rel in (
+        find_arxiv_merge_pairs()
+        + find_title_merge_pairs()
+        + find_stub_stub_merge_pairs()
+    ):
         merged[remove_rel] = keep_rel
     return list(merged.items())
 
@@ -206,6 +259,10 @@ def update_full_map(remove_rel: str, keep_rel: str, dry_run: bool) -> int:
     data = yaml.safe_load(FULL_MAP_PATH.read_text(encoding="utf-8")) or {}
     overrides = data.get("overrides", {})
     updated = 0
+    remove_key = Path(remove_rel).stem.removeprefix("paper-notebook-")
+    if overrides.get(remove_key) == [remove_rel]:
+        overrides[remove_key] = [keep_rel]
+        updated += 1
     for key, targets in list(overrides.items()):
         new_targets = [keep_rel if t == remove_rel else t for t in targets]
         if new_targets != targets:
