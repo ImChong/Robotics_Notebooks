@@ -2,7 +2,7 @@
 type: concept
 tags: [scaling-laws, data-engine, foundation-policy, machine-learning]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-18
 related:
   - ./open-x-embodiment.md
   - ../entities/paper-from-agi-to-asi.md

@@ -103,6 +103,7 @@ flowchart TB
 - [Sim2Real](sim2real.md) — 迁移与域随机化；本概念侧重 **评测闭环**
 - [Isaac Gym / Isaac Lab](../entities/isaac-gym-isaac-lab.md) — 高并行仿真与 RL 评测生态
 - [VLA](../methods/vla.md) — 操作基础模型评测基准语境
+- [ENPIRE](../methods/enpire.md) — 真机闭环 autoresearch 与 RoboCasa 仿真 ablation 的分工样本
 - [数据飞轮](data-flywheel.md) — 评测驱动的数据采集闭环
 
 ## 推荐继续阅读
