@@ -227,6 +227,7 @@ SORT type ASC
 - [PHUMA（BFM 行为数据）](entities/dataset-bfm-phuma.md) — PHUMA** 列入 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 数据集表（2025 · a `📅unknown` `[entity_page]`
 - [PoseScript（BFM 行为数据）](entities/dataset-bfm-posescript.md) — PoseScript** 列入 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) 数据集表（202 `📅unknown` `[entity_page]`
 - [dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）](entities/dm-control.md) — dm_control** 指 GitHub 上的 [`google-deepmind/dm_control`](https://github.com/google-deepmind/dm_cont `📅unknown` `[entity_page]`
+- [DeepInsight（XPENG Robotics 全栈评测基础设施）](entities/deepinsight.md) — DeepInsight**（2026-06，[arXiv:2606.17574](https://arxiv.org/abs/2606.17574)，XPENG Robotics）是面向 **embodied humanoid stack** 的 **统一评测基础设施** `📅unknown` `[entity_page]`
 - [Drake (机器人工具箱)](entities/drake.md) — Drake** 是由丰田研究院（Toyota Research Institute, TRI）主导开发，由 Russ Tedrake（MIT 教授）团队深度参与的核心开源机器人软件库。它并非单纯的 `📅unknown` `[entity_page]`
 - [DreamWaQ++（障碍感知四足多模态强化学习）](entities/dreamwaq-plus.md) — DreamWaQ++**（Nahrendra et al., [arXiv:2409.19709](https://arxiv.org/abs/2409.19709)，**IEEE T-RO 20 `📅unknown` `[entity_page]`
 - [easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）](entities/easy-quadruped.md) — easy_quadruped** 是在 [StanfordQuadruped](https://github.com/stanfordroboticsclub/StanfordQuadruped `📅unknown` `[entity_page]`
