@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1248,
-  "edge_count": 8058,
+  "node_count": 1249,
+  "edge_count": 8072,
   "coverage": {
-    "covered": 1218,
-    "total": 1246,
+    "covered": 1219,
+    "total": 1247,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-greenvla-staged-vla-humanoid.md",
+      "detail_id": "entity-paper-greenvla-staged-vla-humanoid",
+      "label": "Green-VLA：分阶段通才 VLA 与人形部署",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/enpire.md",
       "detail_id": "wiki-methods-enpire",
@@ -143,37 +167,13 @@
       "type": "overview",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-08-real-tasks.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-08-real-tasks",
-      "label": "运动小脑分类 H：真实任务",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-09-compliance-contact.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-09-compliance-contact",
-      "label": "运动小脑分类 I：柔顺与接触",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum.md",
-      "detail_id": "entity-paper-motion-cerebellum-active-spatial-brain-generalized-cerebellum",
-      "label": "主动空间大脑与泛化动作小脑",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/enpire.md",
-    "detail_id": "wiki-methods-enpire",
-    "label": "ENPIRE",
-    "type": "method",
+    "path": "wiki/entities/paper-greenvla-staged-vla-humanoid.md",
+    "detail_id": "entity-paper-greenvla-staged-vla-humanoid",
+    "label": "Green-VLA：分阶段通才 VLA 与人形部署",
+    "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"
   }
