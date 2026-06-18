@@ -1197,6 +1197,7 @@ SORT type ASC
 - [GAE（广义优势估计）](formalizations/gae.md) — GAE（Generalized Advantage Estimation）** 是估计策略梯度中优势函数 $A(s,a)$ 的标准方法，通过参数 $\lambda \in [0,1]$ 在**偏差 `📅unknown` `[formalization_page]`
 - [生成式模型基础 (Generative Foundations)](formalizations/generative-foundations.md) —  缩写 | 英文全称 | 简要说明  `📅unknown` `[formalization_page]`
 - [HJB 方程（Hamilton-Jacobi-Bellman）](formalizations/hjb.md) — HJB 方程**是连续时间最优控制的基本方程，给出了最优值函数 $V^*(x,t)$ 满足的偏微分方程（PDE）。它是 Bellman 最优方程在连续时间域的推广。 `📅unknown` `[formalization_page]`
+- [齐次坐标与齐次变换（SE(3) 工程底座）](formalizations/homogeneous-coordinates-transform.md) — 一句话：** 三维刚体运动在笛卡尔坐标下是 **「先乘 $R$ 再加 $t$」** 的混合运算；齐次坐标通过 **最后一维 $w$** 把点与方向区分开，并把运动写成 **$4\times4$ 矩阵乘法**，使多级变换可连乘、可进 SLAM/控制/深度学习优化栈。 `📅2026-06-18` `[formalization_page]`
 - [Kalman Filter (KF)](formalizations/kalman-filter.md) — 线性卡尔曼滤波（Kalman Filter, KF）**：在 **线性动力学 + 线性观测 + 高斯噪声** 假设下，给出状态后验均值与协方差的 **递推最小方差（贝叶斯意义下最优）** 估计。 `📅unknown` `[formalization_page]`
 - [李群、李代数与刚体旋转（SO(3) / SE(3)）](formalizations/lie-group-rigid-body-motions.md) — 一句话：** 三维刚体运动生活在 **李群** SO(3)（旋转）与 SE(3)（旋转+平移）上；**李代数** so(3)/se(3) 是群在单位元处的切空间，把非线性姿态变化变成可求导的向量； `📅unknown` `[formalization_page]`
 - [LQR / iLQR](formalizations/lqr.md) — LQR（Linear Quadratic Regulator，线性二次调节器）**：最优控制中最经典的解析解，针对线性系统 + 二次代价函数，给出最优状态反馈增益的闭式解。**iLQR（itera `📅unknown` `[formalization_page]`
