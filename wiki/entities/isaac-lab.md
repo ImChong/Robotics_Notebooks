@@ -2,7 +2,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real]
 status: stable
-updated: 2026-06-08
+updated: 2026-06-18
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md

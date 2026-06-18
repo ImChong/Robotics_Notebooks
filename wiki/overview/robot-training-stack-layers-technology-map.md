@@ -2,7 +2,7 @@
 type: overview
 tags: [simulation, training-stack, isaac-lab, mujoco, mjlab, unilab, newton, genesis, reinforcement-learning, survey]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-18
 related:
   - ../entities/isaac-lab.md
   - ../entities/mujoco.md
@@ -10,6 +10,7 @@ related:
   - ../entities/mjlab.md
   - ../entities/unilab.md
   - ../entities/newton-physics.md
+  - ../entities/deepinsight.md
   - ../entities/genesis-world-10.md
   - ../queries/simulator-selection-guide.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -81,7 +82,7 @@ flowchart TB
 | **③ 任务入口** | MuJoCo Playground、mjlab | [mujoco-playground](../entities/mujoco-playground.md)、[mjlab](../entities/mjlab.md) | **time-to-robot**：从行为/奖励想法到真机验证要多久？ |
 | **④ 异构运行时** | UniLab | [unilab](../entities/unilab.md) | 瓶颈在物理 step 还是采集–学习–同步整条回路？ |
 | **⑤ 底层连接器** | Newton | [newton-physics](../entities/newton-physics.md) | 能否在 OpenUSD / Warp / MuJoCo Warp / Lab 之间可插拔？ |
-| **⑥ 闭环评估** | Genesis World | [genesis-world-10](../entities/genesis-world-10.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) | 仿真能否作为基础模型的**评估引擎**而非仅数据生成器？ |
+| **⑥ 闭环评估** | Genesis World、DeepInsight | [genesis-world-10](../entities/genesis-world-10.md)、[deepinsight](../entities/deepinsight.md)、[仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md) | 仿真能否作为基础模型的**评估引擎**？全栈能否在**统一 trace** 上诊断跨层回归？ |
 
 ## 原始资料
 
@@ -99,6 +100,7 @@ flowchart TB
 | 无 CUDA 或要 CPU 物理 + GPU 学习重叠 | [UniLab](../entities/unilab.md) |
 | 关注底层物理可微与多框架对接 | [Newton Physics](../entities/newton-physics.md) |
 | 基础模型闭环评测、real-to-sim 相关性 | [Genesis World 1.0](../entities/genesis-world-10.md) |
+| FM→策略→WBC 全栈评测 orchestration、跨层 trace 诊断 | [DeepInsight](../entities/deepinsight.md) |
 | 算法/身体能力分层（非工具链） | [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) |
 | 世界模型在训练环中的位置 | [世界模型训练闭环 taxonomy](./robot-world-models-training-loop-taxonomy.md) |
 

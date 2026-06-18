@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/papers/deepinsight_arxiv_2606_17574.md — DeepInsight Physical AI 全栈统一评测基础设施；wiki/entities/deepinsight.md；交叉 simulation-evaluation-infrastructure、robot-training-stack-layers-technology-map
+
 ## [2026-06-18] ingest | sources/papers/rove_arxiv_2606_17011.md — ROVE 人形 VLA 干预后训练；wiki/entities/paper-rove-humanoid-vla-intervention.md；交叉 teleoperation、vla、online-vs-offline-rl
 
 ## [2026-06-18] ingest | sources/blogs/wechat_shenlan_homogeneous_coordinates_transform.md — 《具身智能基础》专栏 05 齐次坐标与齐次变换；新建 wiki/formalizations/homogeneous-coordinates-transform.md；更新专栏父节点

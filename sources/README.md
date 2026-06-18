@@ -78,6 +78,7 @@
 | [x] [brax_arxiv_2106_13281.md](papers/brax_arxiv_2106_13281.md) | Brax：大规模可微刚体仿真与 RL（arXiv:2106.13281，NeurIPS 2021）摘录与 wiki 映射 |
 | [x] [capvector_arxiv_2605_10903.md](papers/capvector_arxiv_2605_10903.md) | CapVector：参数空间 capability vector（θ_ao−θ_ft）合并 + 下游正交正则的 VLA 微调（arXiv:2605.10903，HKUSTGZ/浙大/西湖/清华/智源等）摘录与 wiki 映射 |
 | [x] [cosmos3_arxiv_2606_02800.md](papers/cosmos3_arxiv_2606_02800.md) | Cosmos 3：全模态 MoT 世界模型平台（语言/图像/视频/音频/动作，arXiv:2606.02800，NVIDIA Cosmos Lab）摘录与 wiki 映射 |
+| [x] [deepinsight_arxiv_2606_17574.md](papers/deepinsight_arxiv_2606_17574.md) | DeepInsight：Physical AI 全栈统一评测基础设施 System 2/1/0 + 统一 trace（arXiv:2606.17574，XPENG Robotics）摘录与 wiki 映射 |
 | [x] [daji_arxiv_2605_14417.md](papers/daji_arxiv_2605_14417.md) | DAJI：语言条件人形控制的预期关节意图接口（DAJI-Flow + DAJI-Act，arXiv:2605.14417）摘录与 wiki 映射 |
 | [x] [dit4dit_arxiv_2603_10448.md](papers/dit4dit_arxiv_2603_10448.md) | DiT4DiT：双 DiT 联合 flow matching VAM，LIBERO/RoboCasa/G1 真机（arXiv:2603.10448，Mondo Robotics / HKUST）摘录与 wiki 映射 |
 | [x] [lingbot_map_arxiv_2604_14141.md](papers/lingbot_map_arxiv_2604_14141.md) | LingBot-Map：GCA 流式 3D 重建 + Paged KV（arXiv:2604.14141）摘录与 wiki 映射 |
