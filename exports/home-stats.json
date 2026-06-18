@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-18",
-  "node_count": 1249,
-  "edge_count": 8072,
+  "node_count": 1250,
+  "edge_count": 8081,
   "coverage": {
-    "covered": 1219,
-    "total": 1247,
+    "covered": 1220,
+    "total": 1248,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/molmo-motion.md",
+      "detail_id": "entity-molmo-motion",
+      "label": "MolmoMotion",
+      "type": "entity",
+      "recency": "2026-06-18",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-greenvla-staged-vla-humanoid.md",
       "detail_id": "entity-paper-greenvla-staged-vla-humanoid",
@@ -159,20 +167,12 @@
       "type": "overview",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-07-loco-manip-interface.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-07-loco-manip-interface",
-      "label": "运动小脑分类 G：Loco-Manip 接口",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-greenvla-staged-vla-humanoid.md",
-    "detail_id": "entity-paper-greenvla-staged-vla-humanoid",
-    "label": "Green-VLA：分阶段通才 VLA 与人形部署",
+    "path": "wiki/entities/molmo-motion.md",
+    "detail_id": "entity-molmo-motion",
+    "label": "MolmoMotion",
     "type": "entity",
     "recency": "2026-06-18",
     "source": "log.md"

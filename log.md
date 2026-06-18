@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] ingest | sources/blogs/allenai_molmo_motion.md — MolmoMotion 语言条件 3D 点轨迹预测；wiki/entities/molmo-motion.md；交叉 generative-world-models、manipulation、video-as-simulation
+
 ## [2026-06-18] ingest | sources/papers/greenvla_arxiv_2602_00919.md — Green-VLA 五阶段 VLA；wiki/entities/paper-greenvla-staged-vla-humanoid.md、wiki/methods/vla.md、wiki/tasks/manipulation.md
 
 ## [2026-06-18] ingest | sources/papers/enpire_nvidia_gear_2026.md、sources/sites/nvidia-research-enpire.md — ENPIRE 真机 coding-agent 策略自改进；wiki/methods/enpire.md；交叉 manipulation、simulation-evaluation-infrastructure
