@@ -26,8 +26,8 @@
 
 - [x] **数据集页元数据巡检 V1**：
     - [x] `scripts/lint_wiki.py` 新增 `dataset_metadata_check`：对 `tags` 含 `dataset` 的实体页，检查正文是否含规模 / 模态 / 许可证 / 重定向就绪度等标准化速查字段，缺失给出 INFO 级提示（不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。（2026-06-17 完成：新增 `_check_dataset_entity_metadata` 与 result key `dataset_missing_metadata`（INFO 级，不计失败总数）；正文按关键词命中近似四维度，全库巡检命中 17 页基线写入 `exports/lint-report.md`；新增 `tests/test_lint_wiki_dataset_metadata.py` 4 用例。）
-- [ ] **数据集选型脚手架强化**：
-    - [ ] 复用 `scripts/scaffold_wiki_page.py`，为 `entity`（数据集）类型补充含「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」速查块的骨架模板，降低后续数据集 ingest 的手工成本；自带 `--dry-run` 与 lint 自检。
+- [x] **数据集选型脚手架强化**：
+    - [x] 复用 `scripts/scaffold_wiki_page.py`，为 `entity`（数据集）类型补充含「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」速查块的骨架模板，降低后续数据集 ingest 的手工成本；自带 `--dry-run` 与 lint 自检。（2026-06-18 完成：新增 `--dataset` 旗标（仅 entity 类型，否则 rc=2），生成「## 数据集速查」五维度速查块并在 frontmatter 写入 `dataset` tag；速查块关键词全覆盖 lint `dataset_metadata_check` 四维度，新建数据集页 0 缺失；新增 3 条用例（速查块/tag/位置、lint 巡检 0 缺失、非 entity 拒绝）至 `tests/test_scaffold_wiki_page.py`，`ruff` 与 `lint_wiki` 通过。）
 
 ## P1: 人形训练数据管线专题 (Quality)
 
