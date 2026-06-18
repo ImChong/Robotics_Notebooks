@@ -2,10 +2,11 @@
 type: entity
 tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent]
 status: complete
-updated: 2026-05-27
+updated: 2026-06-17
 related:
   - ./pybullet.md
   - ../overview/multirotor-simulation-planning-control-stack.md
+  - ./betaflight.md
   - ./flightmare.md
   - ./quad-swarm-rl.md
   - ./px4-autopilot.md
@@ -43,7 +44,7 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 | **VisionAviary** | 叠加视觉观测 |
 | **多机** | 多 quad 同场景交互 |
 
-支持 **CF2X、HB** 等机型参数；可选 Crazyflie 尺度与 Betaflight 风格参数（见上游文档）。
+支持 **CF2X、HB** 等机型参数；可选 Crazyflie 尺度与 [Betaflight](./betaflight.md) 风格参数（见上游文档）。
 
 **与 PX4 关系**：本环境 **不运行** [PX4](./px4-autopilot.md) SITL；策略上真机需 **接口转换 + Sim2Real**（见 [Sim2Real](../concepts/sim2real.md)）。
 
@@ -61,6 +62,7 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 ## 关联页面
 
 - [多旋翼栈总览](../overview/multirotor-simulation-planning-control-stack.md)
+- [Betaflight](./betaflight.md) — 真机 FPV 飞控与仿真参数对照
 - [quad-swarm-rl](./quad-swarm-rl.md)
 - [Sim2Real](../concepts/sim2real.md)
 

@@ -1,17 +1,41 @@
 {
   "generated_at": "2026-06-17",
-  "node_count": 1214,
-  "edge_count": 7683,
+  "node_count": 1215,
+  "edge_count": 7690,
   "coverage": {
-    "covered": 1184,
-    "total": 1212,
+    "covered": 1185,
+    "total": 1213,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/plotjuggler.md",
-      "detail_id": "entity-plotjuggler",
-      "label": "PlotJuggler",
+      "path": "wiki/entities/betaflight.md",
+      "detail_id": "entity-betaflight",
+      "label": "Betaflight",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/multirotor-simulation-planning-control-stack.md",
+      "detail_id": "wiki-overview-multirotor-simulation-planning-control-stack",
+      "label": "多旋翼仿真—规划—飞控开源栈总览",
+      "type": "overview",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/px4-autopilot.md",
+      "detail_id": "entity-px4-autopilot",
+      "label": "PX4 Autopilot",
+      "type": "entity",
+      "recency": "2026-06-17",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gym-pybullet-drones.md",
+      "detail_id": "entity-gym-pybullet-drones",
+      "label": "gym-pybullet-drones",
       "type": "entity",
       "recency": "2026-06-17",
       "source": "log.md"
@@ -143,36 +167,12 @@
       "type": "comparison",
       "recency": "2026-06-16",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/dataset-bfm-phuma.md",
-      "detail_id": "entity-dataset-bfm-phuma",
-      "label": "PHUMA（Physically Reliable Humanoid Locomotion Dataset）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amass.md",
-      "detail_id": "entity-amass",
-      "label": "AMASS（Archive of Motion Capture as Surface Shapes）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/lafan1-dataset.md",
-      "detail_id": "entity-lafan1-dataset",
-      "label": "LaFAN1（Ubisoft La Forge Animation Dataset）",
-      "type": "entity",
-      "recency": "2026-06-16",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/plotjuggler.md",
-    "detail_id": "entity-plotjuggler",
-    "label": "PlotJuggler",
+    "path": "wiki/entities/betaflight.md",
+    "detail_id": "entity-betaflight",
+    "label": "Betaflight",
     "type": "entity",
     "recency": "2026-06-17",
     "source": "log.md"

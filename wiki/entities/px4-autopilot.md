@@ -12,6 +12,7 @@ related:
   - ./ego-planner-swarm.md
   - ./xtdrone.md
   - ./crazyflie-firmware.md
+  - ./betaflight.md
 sources:
   - ../../sources/repos/px4_autopilot.md
   - ../../sources/sites/cia_dronecan_uavcan.md
@@ -71,6 +72,7 @@ summary: "PX4 是 Dronecode 生态的开源自动驾驶仪：多机型飞控固�
 - [MAVSDK](./mavsdk.md)
 - [XTDrone](./xtdrone.md)
 - [EGO-Planner Swarm](./ego-planner-swarm.md)
+- [Betaflight](./betaflight.md) — FPV 手飞飞控对照
 - [Sim2Real](../concepts/sim2real.md)
 
 ## 推荐继续阅读

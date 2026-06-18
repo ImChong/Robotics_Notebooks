@@ -98,4 +98,4 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
 - wiki/entities/paper-mighty-hermite-spline-trajectory-planning.md（含绝对化措辞「SOTA」，updated=2026-06-14；同主题更新页 wiki/entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md updated=2026-06-17）
 
-📊 Sources 覆盖率：1184/1212 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1185/1213 (98%) wiki/entity 页有 ingest 来源
