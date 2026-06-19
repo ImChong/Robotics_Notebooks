@@ -105,6 +105,10 @@ flowchart TB
 
 > **ingest 注：** 项目页与 GitHub 标注 **Code / Dataset Coming Soon**；定量 user study 与基线细节以 arXiv PDF 为准。
 
+## 重定向与部署就绪度
+
+- **重定向就绪度：** 输出 **sim-ready** 全屋 3D（带物理属性 / 纹理 / 光照），可导入 MuJoCo / URDF 仿真，作操作 / 导航 RL 与 VLA 的训练场景（可部署到仿真环境）。
+
 ## 方法栈要点
 
 1. **K-D tree 作为 LLM 输出空间：** 交替垂直/水平切分室内区域，叶节点赋 room type；比直接回归多边形 **更易约束、可确定性反解** 为常规平面图。

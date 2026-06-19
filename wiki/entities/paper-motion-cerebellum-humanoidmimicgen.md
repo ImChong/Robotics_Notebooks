@@ -3,6 +3,7 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
 updated: 2026-06-18
+venue: curated
 summary: "任务数据：全身规划驱动移动操作数据生成。输入是任务目标、场景几何和可用动作模板；实现上用全身规划器先生成移动、接触和操作轨迹，再把轨迹转成机器人可跟踪示范数据；它把数据生产从人工逐条示教改成规划驱动的批量生成。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -43,6 +44,11 @@ sources:
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-08-real-tasks.md](../overview/motion-cerebellum-category-08-real-tasks.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
+- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

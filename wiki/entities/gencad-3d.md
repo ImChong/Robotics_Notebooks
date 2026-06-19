@@ -81,6 +81,10 @@ flowchart TB
 - **推理示例：** 可对自定义 **STL** 跑 `visualize_diffusion_inference`；生成 **h5** 程序后可用 **Onshape API** 推送到 Part Studio（需用户密钥，见仓库 README）。
 - **环境：** `pythonocc-core`（README 示例 **7.9.0**）+ PyTorch；Chamfer/IoU 评测需按 README 准备点云采样（与 DeepCAD 评测脚本衔接）。
 
+## 数据与就绪度速查
+
+- **重定向就绪度（资产层面）：** 输出参数化 CAD 命令序列，可导出 STEP/STL 等网格，便于下游 CAD 编辑与仿真导入适配；非机器人动作数据，无运动重定向语境。
+
 ## 常见误区或局限
 
 - **误区：** 认为 **SynthBal** 可替代 **真实扫描域适应**；论文仍强调 **GenCAD3D_Scans** 对 **激光扫描伪影** 的必要性。

@@ -28,6 +28,10 @@ sources:
 
 知识库中另有「通用策略（generalist policy）」泛指任意跨任务模型；本页仅指 **Generalist AI 公司**，避免与 [Octo](../methods/octo-model.md)、[VLA](../methods/vla.md)、[Open X-Embodiment](../concepts/open-x-embodiment.md) 等开源或开放数据路线混淆。
 
+## 数据与就绪度
+
+- **数据 / 重定向就绪度：** 公司对外强调海量人类 / 机器人交互数据预训练；具体数据形态、跨本体形态适配与开放程度以官方博文为准（非公开可直接重定向的数据集）。
+
 ## 关联页面
 
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md)

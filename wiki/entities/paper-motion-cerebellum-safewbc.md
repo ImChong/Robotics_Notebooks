@@ -3,6 +3,7 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
 updated: 2026-06-18
+venue: curated
 summary: "安全：控制屏障函数接到全身控制后面。输入是全身控制命令、状态约束和扰动裕度；实现上用输入到状态安全控制屏障函数修正控制量，使关节限位、自碰撞、障碍距离等约束保持安全；重点是把安全层接到 WBC/策略输出后面。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -43,6 +44,11 @@ sources:
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-04-wbt-base.md](../overview/motion-cerebellum-category-04-wbt-base.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
+- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

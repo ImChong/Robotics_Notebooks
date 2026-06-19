@@ -38,6 +38,11 @@ updated: 2026-05-01
 - **仿真对应**：[robotwin](robotwin.md) 2.0 等平台常提供 ALOHA 的仿真版本以进行数据增强。
 - **进阶版本**：后续发展出了 Mobile ALOHA (具备移动底盘版本) 和更加紧凑的方案。
 
+## 数据速查
+
+- **模态：** 多视角 RGB（约 4 路相机）+ 双臂关节位置/动作（ACT 本体接口），无深度/力矩通道。
+- **重定向就绪度：** 数据绑定 ALOHA / ViperX 双臂形态；迁移到其他机器人需重定向或按目标本体重新采集。
+
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [ALOHA Project Page](https://tonyzhaozh.github.io/aloha/)

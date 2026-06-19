@@ -3,6 +3,7 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
 updated: 2026-06-18
+arxiv: "2605.24592"
 summary: "可提示小脑：多技能生成式运动控制。输入是多技能运动数据和任务条件；实现上用 VQ-VAE 离散化运动技能，再结合模型式 RL 和师生蒸馏训练统一控制器；目标是让多个 locomotion 技能共享一个生成式动作空间。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -43,6 +44,11 @@ sources:
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-05-promptable-control.md](../overview/motion-cerebellum-category-05-promptable-control.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
+- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

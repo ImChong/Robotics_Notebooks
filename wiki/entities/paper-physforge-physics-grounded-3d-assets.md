@@ -96,6 +96,11 @@ flowchart LR
 
 - 正文已给出与相邻路线 / baseline 的 **定性对照**；定量表格与 ablation 见原文（[参考来源](#参考来源)）。
 
+## 数据与就绪度速查
+
+- **许可证：** PhysDB 源自 Objaverse 等，研究用途；商用以官方页面 / 源数据许可为准。
+- **重定向就绪度：** 生成 **关节化 sim-ready** 资产（含运动学 / affordance），可导出 URDF 导入仿真适配。
+
 ## 参考来源
 
 - [PhysForge 论文摘录（arXiv:2605.05163）](../../sources/papers/physforge_arxiv_2605_05163.md)

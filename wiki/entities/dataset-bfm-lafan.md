@@ -36,6 +36,9 @@ sources:
 | 规模（列表标注） | 77 clips · 4.6 h |
 | 论文/说明 | <https://arxiv.org/abs/2102.04942> |
 | 入口 | <https://github.com/ubisoft/ubisoft-laforge-animation-dataset> |
+| 模态 | Ubisoft 高质量动捕（BVH 骨架），无文本标注 |
+| 许可证 | Ubisoft La Forge 数据集许可（研究用途）；商用以官方仓库声明为准 |
+| 重定向就绪度 | Ubisoft 骨架，需重定向到目标人形形态后方可作训练输入 |
 
 ## 与其他页面的关系
 

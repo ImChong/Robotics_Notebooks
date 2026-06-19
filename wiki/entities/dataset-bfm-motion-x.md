@@ -35,6 +35,8 @@ sources:
 | 规模（列表标注） | 81084 clips · 144.2 h |
 | 论文/说明 | <https://proceedings.neurips.cc/paper_files/paper/2023/file/4f8e27f6036c1d8b4a66b5b3a947dd7b-Paper-Datasets_and_Benchmarks.pdf> |
 | 入口 | <https://github.com/IDEA-Research/Motion-X> |
+| 许可证 | 学术研究用途；继承上游源数据（如 AMASS）许可，商用授权以官方页面为准 |
+| 重定向就绪度 | 人体骨架/SMPL 原生，喂人形机器人前需 **retarget 重定向** 到目标形态，非即插即用策略输入 |
 
 ## 与其他页面的关系
 

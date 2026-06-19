@@ -3,6 +3,7 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
 updated: 2026-06-18
+venue: curated
 summary: "接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -43,6 +44,11 @@ sources:
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-07-loco-manip-interface.md](../overview/motion-cerebellum-category-07-loco-manip-interface.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
+- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

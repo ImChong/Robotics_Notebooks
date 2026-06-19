@@ -3,6 +3,7 @@ type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
 updated: 2026-06-18
+venue: curated
 summary: "接口：上层规划与泛化动作小脑分工。输入是上层任务命令、物体/负载状态和机器人本体状态；实现上把移动、操作、平衡和负载扰动拆成可控接口，再通过蒸馏、MPC 引导或强化学习训练全身策略；重点是让 VLA/planner 可以稳定调用身体。"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
@@ -43,6 +44,11 @@ sources:
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-07-loco-manip-interface.md](../overview/motion-cerebellum-category-07-loco-manip-interface.md)
+
+## 实验与评测
+
+- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
+- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

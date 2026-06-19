@@ -81,6 +81,10 @@ flowchart LR
 - **误区：** 与 [PhysForge](./paper-physforge-physics-grounded-3d-assets.md) 混为同一系统——PhysForge 走 **分层物理蓝图 + KineVoxel 扩散**；PhysX-Omni 走 **纯 VLM 自回归 + RLE 体素 + TRELLIS**，同属 sim-ready 3D 但 **表征与训练栈不同**。
 - **局限：** 训练与推理依赖 **大显存 VLM 微调、TRELLIS 与子模块生态**（PartNet-mobility、Depth-Anything 等）；真机策略实验以论文与仓库 **演示脚本** 为准，工程化产品管线仍需自行验收物理参数。
 
+## 数据与就绪度速查
+
+- **重定向就绪度：** 生成资产带绝对尺度、材料与运动学，可经官方管线导出 **URDF/XML**，sim-ready 直接导入仿真（可部署到仿真环境）。
+
 ## 关联页面
 
 - [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) — **VLM 蓝图 + 扩散 KVI** 的物理 3D 生成对照。

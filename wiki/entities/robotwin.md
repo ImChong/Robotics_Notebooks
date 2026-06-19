@@ -38,6 +38,11 @@ updated: 2026-05-01
 - **硬件对应**：其仿真场景常模拟 [ALOHA](./aloha.md) 或类似的双臂遥操作设备。
 - **资产生成研究**：近期工作如 [PhysForge（论文实体）](./paper-physforge-physics-grounded-3d-assets.md) 将 **物理接地、可关节 3D 资产** 作为具身与游戏管线的数据引擎，并在论文演示中引用 **RoboTwin** 作为操作仿真导入场景之一（细节以原论文为准）。
 
+## 数据速查
+
+- **许可证：** 开源（官方 GitHub 仓库发布）；具体协议以仓库 LICENSE 为准。
+- **重定向就绪度：** 仿真自动合成双臂轨迹，绑定特定 embodiment；跨形态部署需重定向或按目标本体重采。
+
 ## 参考来源
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [RoboTwin 官方仓库](https://github.com/msc-robotwin/robotwin)
