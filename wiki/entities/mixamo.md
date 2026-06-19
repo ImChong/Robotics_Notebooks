@@ -3,10 +3,11 @@ type: entity
 title: Mixamo（Adobe 在线角色与动画服务）
 tags: [commercial, animation, mocap-derived, character-rigging, game-pipeline, adobe]
 summary: "Mixamo 是 Adobe 运营的在线角色与动画库：提供预设绑定角色、自动骨骼绑定与大量全身动作下载；面向影视/游戏管线，属商业服务。机器人研究中多作快速视觉原型源，不等同于可自由再分发的原始 MoCap 档案。"
-updated: 2026-05-15
+updated: 2026-06-19
 status: complete
 related:
   - ../concepts/motion-retargeting.md
+  - ./metahuman.md
   - ./motioncode.md
   - ./amass.md
   - ./lafan1-dataset.md
@@ -44,6 +45,7 @@ sources:
 
 - **[Motion Retargeting](../concepts/motion-retargeting.md)**：把 Mixamo 动作接到机器人或物理仿真时的必经概念页。
 - **[MotionCode](./motioncode.md)**：同属「产业侧人体运动资产」叙事，可对照商业数据供应商与自采 MoCap。
+- **[MetaHuman](./metahuman.md)**：Epic UE 生态 **高保真数字人** 与单相机 Animator 表演；与 Mixamo 同属商业角色管线，拓扑与许可模型不同。
 - **[ZEST](../methods/zest.md)**：讨论异构人类运动数据（含非物理真实动画）作为 RL 输入时的框架参照。
 
 ## 参考来源
@@ -54,6 +56,7 @@ sources:
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [MetaHuman](./metahuman.md)
 - [MotionCode](./motioncode.md)
 - [AMASS](./amass.md)
 - [LaFAN1](./lafan1-dataset.md)

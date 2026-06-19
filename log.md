@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/sites/metahuman-epic-docs.md — Epic MetaHuman 官方文档索引；补全 wiki/entities/metahuman.md 文档节
+
+- 原始资料：[metahuman-epic-docs.md](sources/sites/metahuman-epic-docs.md)（<https://dev.epicgames.com/documentation/metahuman/metahuman-documentation>）；侧栏 15 篇子文档摘要
+- 说明：Animator 三路径（实时/深度/单目）、UE Cine/Optimized/UEFN 管线、Facial Description Standard、Devkit/OpenRigLogic
+- 沉淀页面：[wiki/entities/metahuman.md](wiki/entities/metahuman.md)
+
+## [2026-06-19] ingest | sources/sites/metahuman-com.md — Epic MetaHuman 数字人平台；wiki/entities/metahuman.md；交叉 motion-retargeting、mixamo、blender
+
+- 原始资料：[metahuman-com.md](sources/sites/metahuman-com.md)（<https://www.metahuman.com/>）；复核 5.8 发布说明
+- 说明：Creator + Animator 高保真数字人；5.8 全身 Mesh to MetaHuman、单相机无标记全身 Animator、Crowds、OpenRigLogic（MIT）
+- 沉淀页面：[wiki/entities/metahuman.md](wiki/entities/metahuman.md)
+- 交叉更新：[wiki/concepts/motion-retargeting.md](wiki/concepts/motion-retargeting.md)、[wiki/entities/mixamo.md](wiki/entities/mixamo.md)、[wiki/entities/blender.md](wiki/entities/blender.md)
+
 ## [2026-06-19] ingest | sources/repos/crisp_real2sim_repo.md — 校正 CRISP 官方实现为 Z1hanW/CRISP-Real2Sim 并补全 scripts 1–8 + MotionTracking 工程管线
 
 - 原始资料：[crisp_real2sim_repo.md](sources/repos/crisp_real2sim_repo.md)（<https://github.com/Z1hanW/CRISP-Real2Sim>）；复核 [crisp_real2sim_iclr2026.md](sources/papers/crisp_real2sim_iclr2026.md)、[crisp-real2sim-project-github-io.md](sources/sites/crisp-real2sim-project-github-io.md)

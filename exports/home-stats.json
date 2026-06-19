@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-19",
-  "node_count": 1254,
-  "edge_count": 8136,
+  "node_count": 1255,
+  "edge_count": 8150,
   "coverage": {
-    "covered": 1224,
-    "total": 1252,
+    "covered": 1225,
+    "total": 1253,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/metahuman.md",
+      "detail_id": "entity-metahuman",
+      "label": "MetaHuman（Epic 数字人平台）",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mixamo.md",
+      "detail_id": "entity-mixamo",
+      "label": "Mixamo",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/blender.md",
+      "detail_id": "entity-blender",
+      "label": "Blender（开源 3D 创作套件）",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/crisp-real2sim.md",
       "detail_id": "wiki-methods-crisp-real2sim",
@@ -135,45 +167,13 @@
       "type": "comparison",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/humanoid-locomotion.md",
-      "detail_id": "wiki-tasks-humanoid-locomotion",
-      "label": "Humanoid Locomotion (人形机器人移动)",
-      "type": "task",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-ume-exo.md",
-      "detail_id": "entity-paper-ume-exo",
-      "label": "UME-EXO（Universal Manipulation Exoskeleton）",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/molmo-motion.md",
-      "detail_id": "entity-molmo-motion",
-      "label": "MolmoMotion",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-greenvla-staged-vla-humanoid.md",
-      "detail_id": "entity-paper-greenvla-staged-vla-humanoid",
-      "label": "Green-VLA：分阶段通才 VLA 与人形部署",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/crisp-real2sim.md",
-    "detail_id": "wiki-methods-crisp-real2sim",
-    "label": "CRISP（Contact-guided Real2Sim）",
-    "type": "method",
+    "path": "wiki/entities/metahuman.md",
+    "detail_id": "entity-metahuman",
+    "label": "MetaHuman（Epic 数字人平台）",
+    "type": "entity",
     "recency": "2026-06-19",
     "source": "log.md"
   }
