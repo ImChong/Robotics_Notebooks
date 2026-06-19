@@ -2,7 +2,7 @@
 type: method
 title: CRISP（Contact-guided Real2Sim）
 tags: [real2sim, monocular-video, human-scene-interaction, reinforcement-learning, humanoid, iclr2026, planar-primitives]
-updated: 2026-06-09
+updated: 2026-06-19
 summary: "CRISP 从单目视频恢复可物理仿真的人形运动与「凸平面片」场景原语，用人–场景接触补全遮挡结构，并用 RL 人形控制做物理一致性闭环，面向 Real2Sim 资产规模化。"
 related:
   - ../concepts/sim2real.md
@@ -61,6 +61,35 @@ flowchart LR
   R --> S
 ```
 
+## 工程实现（官方代码）
+
+官方实现托管在 **[Z1hanW/CRISP-Real2Sim](https://github.com/Z1hanW/CRISP-Real2Sim)**（`CRISP-Real2Sim/CRISP-Real2Sim` 组织仓仅为 GitHub Pages 站点源码）。README 将复现拆为两段：
+
+1. **重建管线（`scripts/` 1–8）：** 视频抽帧 → 人体 mask → 场景重建 → 相机后处理 → **GVHMR** 人体运动 → 人–场景对齐优化 → **凸平面拟合** → 后处理对齐与 **bridge**；输出 `results/output/scene/`（原始重建）与 `post_scene/`（z-up 对齐、供下游 RL 桥接）。
+2. **`MotionTracking/`：** 将 CRISP 资产桥接进 RL 环境，覆盖训练、评估、Viser 调试与 SMPL 运动导出。
+
+```mermaid
+flowchart TB
+  subgraph prep [数据与资产]
+    V[单目视频 / 图像序列]
+    A[SMPL·SMPL-X 与 prep 资产]
+  end
+  subgraph scripts [scripts 1–8]
+    S1[mask · 场景重建 · 相机]
+    S2[GVHMR · 人对齐]
+    S3[平面拟合 · post_scene]
+  end
+  subgraph mt [MotionTracking]
+    B[bridge CRISP 序列]
+    T[RL 训练 / 评估]
+    Viz[Viser / agent 可视化]
+  end
+  V --> S1 --> S2 --> S3 --> B --> T --> Viz
+  A --> S1
+```
+
+**可选扩展：** InteractVLM 类 **contact hallucination**（`scripts/0_interactvlm.sh`）与 **NKSR** 稠密表面测试路径；主流程不依赖。作者另发布 [视频数据集](https://drive.google.com/drive/folders/1PX8Pqzqjlh5v0Z6xt-NjzTgpugk4igoN)（含 PROX / EMDB / RICH 相关剪辑），并注明高动态片段上 HMR 仍可能失败。
+
 ## 核心机制（编译理解）
 
 1. **平面原语而非万能稠密表面**：在深度点云上聚类并拟合**凸平面片**，使接触求解更接近游戏/仿真引擎里常用的碰撞近似，减少不可控的自穿透与抖动接触法向。
@@ -91,11 +120,13 @@ flowchart LR
 
 - [CRISP（ICLR 2026）论文摘录](../../sources/papers/crisp_real2sim_iclr2026.md)
 - [CRISP 项目页归档](../../sources/sites/crisp-real2sim-project-github-io.md)
-- [CRISP-Real2Sim 官方仓库索引](../../sources/repos/crisp_real2sim_repo.md)
+- [CRISP-Real2Sim 官方仓库索引](../../sources/repos/crisp_real2sim_repo.md)（Z1hanW/CRISP-Real2Sim）
 
 ## 推荐继续阅读
 
+- [Z1hanW/CRISP-Real2Sim（GitHub）](https://github.com/Z1hanW/CRISP-Real2Sim) — 克隆复现与 `run_crisp_video.sh` 入口
 - [机器人论文阅读笔记：CRISP](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/13_Physics-Based_Animation/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit/CRISP__Contact-Guided_Real2Sim_from_Monocular_Video_with_Planar_Scene_Primit.html)
 - [OpenReview：CRISP 论文页](https://openreview.net/forum?id=xlr3NqxUqY)
+- [arXiv:2512.14696](https://arxiv.org/abs/2512.14696)
 - [VideoMimic 项目页](https://videomimic.github.io/)（站点中与 CRISP 做交互对比的基线之一）
 - [Sim2Real 论文导航](../../references/papers/sim2real.md)

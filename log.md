@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/repos/crisp_real2sim_repo.md — 校正 CRISP 官方实现为 Z1hanW/CRISP-Real2Sim 并补全 scripts 1–8 + MotionTracking 工程管线
+
+- 原始资料：[crisp_real2sim_repo.md](sources/repos/crisp_real2sim_repo.md)（<https://github.com/Z1hanW/CRISP-Real2Sim>）；复核 [crisp_real2sim_iclr2026.md](sources/papers/crisp_real2sim_iclr2026.md)、[crisp-real2sim-project-github-io.md](sources/sites/crisp-real2sim-project-github-io.md)
+- 说明：先前误链 `crisp-real2sim/CRISP-Real2Sim`（实为 GitHub Pages 站点仓）；主代码为作者仓，含 `run_crisp_video.sh`、可选 contact hallucination / NKSR、Google Drive 视频数据集
+- 沉淀页面：[wiki/methods/crisp-real2sim.md](wiki/methods/crisp-real2sim.md)（新增「工程实现」节与 Mermaid）
+
 ## [2026-06-19] ingest | sources/papers/mujica_arxiv_2605_13058.md — MUJICA 轮足多技能统一控制（wiki/entities/paper-mujica-wheel-legged-multi-skill.md 及轮足/混合运动/sim2real 交叉引用）
 
 - 原始资料：[mujica_arxiv_2605_13058.md](sources/papers/mujica_arxiv_2605_13058.md)（<https://arxiv.org/abs/2605.13058>）；[项目页](https://hyzenthlayer.github.io/mujica/)

@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-19
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
