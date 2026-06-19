@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/papers/phygile_arxiv_2603_19305.md、sources/sites/phygile-page.md — PhyGile 文本驱动机器人原生扩散与 GMT 闭环；wiki/entities/paper-phygile.md；交叉 diffusion-motion-generation、humanoid-motion-tracking-method-selection、paper-notebook-gmt
+
+- 原始资料：[phygile_arxiv_2603_19305.md](sources/papers/phygile_arxiv_2603_19305.md)（<https://arxiv.org/abs/2603.19305>）；[phygile-page.md](sources/sites/phygile-page.md)（<https://baojch.github.io/phygile-page/>）
+- 说明：physics-prefix 引导的 **262D robot-native** 扩散生成 + 课程式 **MoE GMT** 跟踪器闭环；真机 breakdance、侧手翻、高踢、旋跳等高动态全身动作
+- 沉淀页面：[wiki/entities/paper-phygile.md](wiki/entities/paper-phygile.md)
+- 交叉更新：[wiki/methods/diffusion-motion-generation.md](wiki/methods/diffusion-motion-generation.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)、[wiki/entities/paper-notebook-gmt.md](wiki/entities/paper-notebook-gmt.md)
+
 ## [2026-06-19] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md、sources/repos/humanoid_gpt_galaxy_general_robotics.md — Humanoid-GPT 复核：仓库已发布推理/部署与 ONNX checkpoint；wiki/entities/paper-humanoid-gpt.md 补工程节
 
 - 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）
