@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-19",
-  "node_count": 1251,
-  "edge_count": 8091,
+  "node_count": 1252,
+  "edge_count": 8103,
   "coverage": {
-    "covered": 1221,
-    "total": 1249,
+    "covered": 1222,
+    "total": 1250,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
+      "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
+      "label": "MUJICA：轮足多技能统一本体控制架构",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-humanoid-gpt.md",
       "detail_id": "entity-paper-humanoid-gpt",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-01-locomotion-base.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-01-locomotion-base",
-      "label": "运动小脑分类 A：走路底座",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoid-gpt.md",
-    "detail_id": "entity-paper-humanoid-gpt",
-    "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+    "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
+    "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
+    "label": "MUJICA：轮足多技能统一本体控制架构",
     "type": "entity",
     "recency": "2026-06-19",
     "source": "log.md"

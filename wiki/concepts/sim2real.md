@@ -34,7 +34,7 @@ related:
   - ../entities/open-duck-mini.md
   - ../entities/physx-omni.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-06-14
+updated: 2026-06-19
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 ---
@@ -183,6 +183,8 @@ flowchart TD
 > 部署后的真机在线适配自成一段窄口议题（低秩残差 / 生成兜底 / CBF 安全壳三条路径），单列于 [真机安全 RL 微调](./safe-real-world-rl-fine-tuning.md)。
 
 - **安全、参数高效的真机微调（四足）：** [SLowRL](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **冻结仿真策略** 上只训 **rank-1 LoRA**，并用 **Recovery Policy + Safety Filter** 约束真机探索；Unitree Go2 jump/trot 上相对全参 PPO 微调约 **46.5%** 墙钟缩短、训练期摔倒近零，适合讨论「**不全参、不盲探索**」的 sim2real 收尾阶段。
+
+- **训练期电机包络约束（轮足零样本）：** [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）将 **DC 电机速度–扭矩硬约束** 写入 **P3O**，把仿真违规从 **>90%** 压到 **<3.5%**，支撑 Go2-W **高台攀爬** 等极限机动零样本上真机而不触发过流保护——适合讨论「**约束即 sim2real 安全层**」而非仅域随机化。
 
 - **补充参照（学习式管线）：** [LIFT](../entities/lift-humanoid.md) 将「预训练期高随机性探索」与「微调期真机侧确定性动作」拆开，并把随机探索主要约束在 **物理知情世界模型** 的 rollout 中，用于讨论 **安全–样本效率** 折中；其站点亦给出 **预训练任务设计不当 → 零样本 sim2real 失败**、再靠短时段实机数据恢复的案例叙事。
 

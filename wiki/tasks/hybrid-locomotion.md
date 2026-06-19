@@ -3,11 +3,13 @@ type: task
 tags: [locomotion, hybrid, wheel-legged, transformable, whole-body]
 status: in-progress
 summary: "Hybrid Locomotion 关注结合不同运动模式（如轮腿结合、双足/四足切换）的机器人系统及其控制挑战。"
-updated: 2026-05-03
+updated: 2026-06-19
 sources:
   - ../../sources/papers/x2n_transformable.md
+  - ../../sources/papers/mujica_arxiv_2605_13058.md
 related:
   - ../concepts/wheel-legged-quadruped.md
+  - ../entities/paper-mujica-wheel-legged-multi-skill.md
 ---
 
 # Hybrid Locomotion (混合运动)
@@ -34,6 +36,11 @@ related:
 
 ## 代表系统
 
+### MUJICA（Unitree Go2-W 轮足四足）
+
+- [MUJICA](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **轮足四足** 上实现 **全向滚动、高台攀爬、摔倒恢复** 三类异构技能的 **单策略联合学习**，并用 **技能指示变量 + 高层选择器** 做自主模态切换（纯本体，无外部感知）。
+- 强调 **轮–腿协同** 与 **DC 电机速度–扭矩包络** 约束，真机零样本完成 **1 m 高台** 与楼梯/坡道/高台连续任务链。
+
 ### X2-N (Transformable Wheel-legged Humanoid)
 - 结合了类人（humanoid）形态和轮腿（wheel-legged）形态的高自由度可变形机器人。
 - 采用基于 RL 的控制框架统一处理 locomotion（运动）、transformation（变形）和 manipulation（操作）。
@@ -45,7 +52,9 @@ related:
 - [Locomotion](./locomotion.md)
 - [Loco-Manipulation](./loco-manipulation.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [MUJICA（轮足多技能统一控制）](../entities/paper-mujica-wheel-legged-multi-skill.md)
 
 ## 参考来源
 
 - [X2-N: A Transformable Wheel-legged Humanoid Robot with Dual-mode Locomotion and Manipulation](../../sources/papers/x2n_transformable.md)
+- [MUJICA（arXiv:2605.13058）](../../sources/papers/mujica_arxiv_2605_13058.md)
