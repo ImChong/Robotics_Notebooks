@@ -9,6 +9,30 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
+      "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
+      "label": "MTRG / GfR: Multi-Task Reference and Goal-Driven RL",
+      "type": "method",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
+      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
+      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
+      "type": "comparison",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/humanoid-locomotion.md",
+      "detail_id": "wiki-tasks-humanoid-locomotion",
+      "label": "Humanoid Locomotion (人形机器人移动)",
+      "type": "task",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-ume-exo.md",
       "detail_id": "entity-paper-ume-exo",
       "label": "UME-EXO（Universal Manipulation Exoskeleton）",
@@ -143,38 +167,14 @@
       "type": "overview",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-03-data-pipeline.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-03-data-pipeline",
-      "label": "运动小脑分类 C：数据入口",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-04-wbt-base.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-04-wbt-base",
-      "label": "运动小脑分类 D：全身跟踪基座",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-05-promptable-control.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-05-promptable-control",
-      "label": "运动小脑分类 E：可提示控制",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ume-exo.md",
-    "detail_id": "entity-paper-ume-exo",
-    "label": "UME-EXO（Universal Manipulation Exoskeleton）",
-    "type": "entity",
-    "recency": "2026-06-18",
+    "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
+    "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
+    "label": "MTRG / GfR: Multi-Task Reference and Goal-Driven RL",
+    "type": "method",
+    "recency": "2026-06-19",
     "source": "log.md"
   }
 }

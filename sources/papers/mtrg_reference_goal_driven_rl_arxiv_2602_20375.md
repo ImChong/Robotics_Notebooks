@@ -3,13 +3,17 @@
 > 来源归档（ingest）
 
 - **标题：** Generalizing from References using a Multi-Task Reference and Goal-Driven RL Framework
-- **工作简称：** **MTRG**（Multi-Task Reference and Goal-Driven RL；论文正文未给出官方缩写，本库用作导航标签）
+- **官方项目名：** **GfR**（Generalizing from References；项目页 <https://jiashunwang.github.io/GfR/>）
+- **工作简称：** **MTRG**（Multi-Task Reference and Goal-Driven RL；本库方法页导航标签；与 GfR 指同一工作）
+- **会议：** **Robotics: Science and Systems (RSS) 2026**（项目页标注；arXiv 预印本同步）
 - **类型：** paper / humanoid whole-body control / parkour / sim-to-real
 - **arXiv：** <https://arxiv.org/abs/2602.20375>（PDF：<https://arxiv.org/pdf/2602.20375>）
+- **项目页 PDF 镜像：** <https://jiashunwang.github.io/GfR/static/mat/gfr_paper.pdf>
+- **项目页归档：** [gfr-project.md](../sites/gfr-project.md)
 - **演示视频：** <https://youtu.be/9NamvWhtFPM>
 - **作者：** Jiashun Wang, M. Eva Mungai, He Li, Jean Pierre Sleiman, Jessica Hodgins, Farbod Farshidian
 - **机构：** RAI Institute, Carnegie Mellon University
-- **入库日期：** 2026-06-12
+- **入库日期：** 2026-06-12（2026-06-19 补录 GfR 项目页与 RSS 2026 定稿信息）
 - **一句话说明：** 单一 **goal-conditioned** 策略在**共享观测/动作空间**上联合优化两类任务——**(i) 参考塑形模仿**（参考只进奖励、不进策略输入）与 **(ii) 纯目标泛化**（随机目标、稀疏任务奖励）——无需对抗、相位或部署时参考轨迹，在 **Unitree G1** 箱式跑酷场上实现 walk-jump / walk-climb / climb-down 的 OOD 初始条件泛化与长程技能组合。
 
 ## 核心摘录
@@ -46,7 +50,9 @@
 - **技能**：walk-jump、walk-climb、climb-down（每技能一条参考 + 镜像增广）。
 - **对比**（Table I）：相对 **ZEST mocap**（参考作为策略输入跟踪）与 **tabula rasa RL**，在 nominal 与 beyond-nominal 初始条件下 **success rate 最高**；策略会按距离选择先走再跳或直接跳、左右腿自适应攀爬等，而非回放单条参考。
 - **消融**：去掉任务课程或模仿分支 → beyond-nominal success 崩溃；去掉泛化分支 → OOD 鲁棒性显著下降。
-- **长程组合**：MuJoCo 中将 walk-climb / walk-jump / climb-down 策略串联执行多箱跑酷序列。
+- **长程组合**：**rule-based state machine** 按箱体布局下发任务级 goal，将 walk-climb / walk-jump / climb-down 三策略串联为多箱跑酷（论文 Fig. 4–5）；真机可顺序执行跳—下攀—走—攀等，无需针对每段精细 reset。
+- **MuJoCo sim-to-sim**：Isaac Lab 训练策略在 **MuJoCo** 中直接组合执行，验证跨物理引擎可迁移性（Fig. 4）。
+- **扩展（Fig. 6）**：单策略 + **one-hot 技能嵌入** + **elevation map** 外感受，核心目标与 \(\lambda\) 课程不变即可支持多技能与地形感知。
 
 ### 5) 与相关工作的关系
 
@@ -64,5 +70,6 @@
 
 ## 参考来源（原始）
 
-- 论文：<https://arxiv.org/abs/2602.20375>
+- 项目页：<https://jiashunwang.github.io/GfR/>
+- 论文：<https://arxiv.org/abs/2602.20375>（PDF 镜像：<https://jiashunwang.github.io/GfR/static/mat/gfr_paper.pdf>）
 - 视频：<https://youtu.be/9NamvWhtFPM>

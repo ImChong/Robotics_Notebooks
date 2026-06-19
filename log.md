@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/sites/gfr-project.md — 补录 GfR 项目页（RSS 2026）与 PDF 镜像；交叉更新 wiki/methods/mtrg-reference-goal-driven-rl.md、wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
+
+- 原始资料：[`sources/sites/gfr-project.md`](sources/sites/gfr-project.md)（<https://jiashunwang.github.io/GfR/>；PDF：<https://jiashunwang.github.io/GfR/static/mat/gfr_paper.pdf>）
+- 说明：arXiv:2602.20375 已于 2026-06-12 以 MTRG 入库；本次补 **GfR** 官方项目名、**RSS 2026** 定稿、长程状态机组合、MuJoCo sim-to-sim 与 elevation map 扩展
+- 交叉更新：[`wiki/methods/mtrg-reference-goal-driven-rl.md`](wiki/methods/mtrg-reference-goal-driven-rl.md)、[`wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md`](wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md)、[`wiki/tasks/humanoid-locomotion.md`](wiki/tasks/humanoid-locomotion.md)
+
 ## [2026-06-18] structural | scripts/scaffold_wiki_page.py — V25 P0「数据集选型脚手架强化」：新增 `--dataset` 旗标生成数据集实体骨架（五维度速查块 + `dataset` tag）
 
 - 改动：`scripts/scaffold_wiki_page.py` 新增 `--dataset`（仅 `entity` 类型，否则 rc=2），输出「## 数据集速查」表格覆盖「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」并在 frontmatter 写入 `dataset` tag；速查块关键词全覆盖 `lint_wiki._check_dataset_entity_metadata` 四维度，新建数据集页元数据巡检 0 缺失。

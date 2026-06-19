@@ -2,7 +2,7 @@
 type: comparison
 tags: [humanoid, parkour, imitation-learning, motion-tracking, amp, goal-conditioned, unitree-g1, character-animation]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ../methods/hil-hybrid-imitation-learning.md
   - ../methods/mtrg-reference-goal-driven-rl.md
@@ -14,20 +14,24 @@ related:
 sources:
   - ../../sources/papers/hil_hybrid_imitation_learning_arxiv_2505_12619.md
   - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
+  - ../../sources/sites/gfr-project.md
   - ../../sources/papers/zest.md
-summary: "跑酷/障碍穿越场景下 HIL（仿真角色 tracking+AMP）、MTRG（G1 参考塑形+goal 部署）与 ZEST（跨形态 tracking 真机）三条路线的对比与选型。"
+summary: "跑酷/障碍穿越场景下 HIL（仿真角色 tracking+AMP）、GfR/MTRG（G1 参考塑形+goal 部署）与 ZEST（跨形态 tracking 真机）三条路线的对比与选型。"
 ---
 
 # HIL vs MTRG vs ZEST：跑酷模仿学习路线对比
 
-同一作者群从 **物理角色动画跑酷**（[HIL](../methods/hil-hybrid-imitation-learning.md)）演进到 **人形 G1 箱式跑酷**（[MTRG](../methods/mtrg-reference-goal-driven-rl.md)），并与工业侧极简 tracking 真机路线 [ZEST](../methods/zest.md) 形成对照。三者都处理「像参考」与「能改目标/障碍」的张力，但 **参考是否进策略、是否用对抗、是否上硬件** 的分工截然不同。
+同一作者群从 **物理角色动画跑酷**（[HIL](../methods/hil-hybrid-imitation-learning.md)）演进到 **人形 G1 箱式跑酷**（[GfR / MTRG](../methods/mtrg-reference-goal-driven-rl.md)，**RSS 2026**），并与工业侧极简 tracking 真机路线 [ZEST](../methods/zest.md) 形成对照。
+
+三者都处理「像参考」与「能改目标/障碍」的张力，但 **参考是否进策略、是否用对抗、是否上硬件** 的分工截然不同。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
+| GfR | Generalizing from References | MTRG 方法的官方项目名（RSS 2026） |
 | HIL | Hybrid Imitation Learning | 跟踪 + 对抗模仿的并行多任务框架 |
-| MTRG | Multi-Task Reference and Goal-Driven RL | 参考塑形 + 目标泛化的并行多任务框架 |
+| MTRG | Multi-Task Reference and Goal-Driven RL | 本库对 GfR 的方法导航标签 |
 | AMP | Adversarial Motion Prior | 判别器提供 style reward 的运动先验 |
 | OOD | Out-of-Distribution | 训练分布外的初始位姿、距离与障碍布局 |
 | MoCap | Motion Capture | walk-jump / climb 等技能的参考来源 |

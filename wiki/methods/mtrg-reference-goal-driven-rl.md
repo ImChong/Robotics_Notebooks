@@ -2,27 +2,30 @@
 type: method
 tags: [humanoid, reinforcement-learning, motion-imitation, parkour, goal-conditioned, unitree-g1, sim2real]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ./zest.md
   - ./hil-hybrid-imitation-learning.md
   - ./deepmimic.md
   - ../tasks/humanoid-locomotion.md
   - ../concepts/curriculum-learning.md
+  - ../entities/unitree-g1.md
 sources:
   - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
-summary: "MTRG 用单一 goal-conditioned 策略联合参考塑形模仿与纯目标泛化，参考仅出现在训练奖励中，在 G1 箱式跑酷上超越 ZEST tracking 与 tabula rasa 的 OOD 鲁棒性。"
+  - ../../sources/sites/gfr-project.md
+summary: "GfR/MTRG 用单一 goal-conditioned 策略联合参考塑形模仿与纯目标泛化，参考仅出现在训练奖励中，在 G1 箱式跑酷上超越 ZEST tracking 与 tabula rasa 的 OOD 鲁棒性。"
 ---
 
-# MTRG: Multi-Task Reference and Goal-Driven RL
+# MTRG / GfR: Multi-Task Reference and Goal-Driven RL
 
-**MTRG**（本库对 arXiv:2602.20375 的工作简称）把参考运动当作**行为塑形先验**而非部署时约束：一个策略只观察当前状态与 **2D 目标位置**，在训练中同时接受**稠密模仿奖励**与**稀疏目标奖励**，从而学会可复用、可转向、可应对 OOD 初始条件的人形跑酷技能。
+**GfR**（[Generalizing from References](https://jiashunwang.github.io/GfR/)，**RSS 2026**）提出多任务 RL 范式，把参考运动当作**行为塑形先验**而非部署时约束。本库方法页以 **MTRG**（Multi-Task Reference and Goal-Driven RL）作导航标签，与官方项目名 **GfR** 指同一工作：一个策略只观察当前状态与 **2D 目标位置**，在训练中同时接受**稠密模仿奖励**与**稀疏目标奖励**，从而学会可复用、可转向、可应对 OOD 初始条件的人形跑酷技能。
 
 ## 英文缩写速查
 
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
-| MTRG | Multi-Task Reference and Goal-Driven RL | 参考塑形 + 目标泛化的并行多任务框架 |
+| GfR | Generalizing from References | 官方项目名（RSS 2026 主页） |
+| MTRG | Multi-Task Reference and Goal-Driven RL | 本库方法导航标签；与 GfR 同指 arXiv:2602.20375 |
 | RL | Reinforcement Learning | PPO 训练 G1 全身策略 |
 | MDP | Markov Decision Process | 共享观测/动作、分任务奖励的建模方式 |
 | PD | Proportional-Derivative Control | 残差动作映射为关节目标再算力矩 |
@@ -85,8 +88,39 @@ Critic 见 task indicator 与接触力、辅助扳手等特权信息，仅用于
 | walk-climb | 左右腿领先自适应攀爬 |
 | climb-down | 单脚蹬箱调整重心再下 |
 
-- **长程组合**：多箱 MuJoCo 序列串联三技能策略。
-- **对比**：ZEST mocap 在 beyond-nominal 上 walk-jump success **0.17** vs MTRG **0.62**（论文表 I）。
+- **长程组合**：**rule-based state machine** 按箱体布局下发任务级 goal，串联 walk-climb / walk-jump / climb-down 三策略完成多箱跑酷（真机 Fig. 5；MuJoCo Fig. 4）。
+- **MuJoCo sim-to-sim**：Isaac Lab 训练策略不经重训即在 MuJoCo 中组合执行，验证跨物理引擎鲁棒性。
+- **对比**：ZEST mocap 在 beyond-nominal 上 walk-jump success **0.17** vs GfR/MTRG **0.62**（论文 Table I）。
+
+## 长程技能组合与 sim-to-sim
+
+部署时策略仅见 \((s_t, g_t)\)，长程跑酷由**上层规则状态机**提供分段 goal，而非在策略内维护参考相位：
+
+```mermaid
+flowchart LR
+  SM[Rule-based state machine<br/>按箱体布局下发 g_t]
+  WC[walk-climb π]
+  WJ[walk-jump π]
+  CD[climb-down π]
+  SM --> WC --> SM
+  SM --> WJ --> SM
+  SM --> CD --> SM
+  WC --> MuJoCo[MuJoCo 组合 rollout]
+  WJ --> MuJoCo
+  CD --> MuJoCo
+```
+
+- **真机**：同一组合策略可顺序执行跳—下攀—走—攀等，无需为每段精细 reset（论文 Fig. 5）。
+- **sim-to-sim**：三技能策略在 MuJoCo 中串联「走—攀—下—走—跳—再攀」，证明技能在**不同初始配置与目标**下可复用（Fig. 4）。
+
+## 框架扩展（多技能 + 感知）
+
+论文 §III-E 展示同一训练范式可**最小改动**扩展：
+
+- **one-hot 技能嵌入**：单策略执行多类技能，条件于技能 ID。
+- **elevation map**：将高度图作为外感受输入，适配更复杂地形。
+
+核心多任务目标与 \(\lambda\) 课程**无需重写**——适合作为「可复用低层技能库」基础，再叠加上层规划或感知栈。
 
 ## 与 HIL / ZEST 的分工
 
@@ -114,10 +148,14 @@ Critic 见 task indicator 与接触力、辅助扳手等特权信息，仅用于
 ## 参考来源
 
 - [Generalizing from References using a Multi-Task Reference and Goal-Driven RL Framework](../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md)
+- [GfR 项目页（RSS 2026）](../../sources/sites/gfr-project.md)
 - [arXiv:2602.20375](https://arxiv.org/abs/2602.20375)
+- [GfR 主页](https://jiashunwang.github.io/GfR/)
 - [演示视频](https://youtu.be/9NamvWhtFPM)
 
 ## 推荐继续阅读
+
+- [GfR 项目页](https://jiashunwang.github.io/GfR/) — 长程组合、MuJoCo 与感知扩展视频
 
 - [ZEST 论文](https://arxiv.org/abs/2602.00401) — 辅助扳手与跨形态 tracking 细节
 - [HIL 演示](https://youtu.be/le4248gIMME) — 同作者早期混合模仿与场景点云设计

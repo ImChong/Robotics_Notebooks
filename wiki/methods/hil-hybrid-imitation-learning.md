@@ -2,7 +2,7 @@
 type: method
 tags: [imitation-learning, character-animation, parkour, amp, motion-tracking, human-scene-interaction]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ./deepmimic.md
   - ./amp-reward.md
