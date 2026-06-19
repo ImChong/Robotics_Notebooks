@@ -3,7 +3,7 @@ type: method
 title: ZEST (Zero-shot Embodied Skill Transfer)
 tags: [robot-learning, humanoid, locomotion, atlas, sim2real, multi-contact]
 summary: "ZEST 是波士顿动力开发的统一框架，通过自适应采样与自动课程学习，将异构动捕/视频数据直接转化为机器人的零样本高动态运动技能。"
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ./mtrg-reference-goal-driven-rl.md
   - ./hil-hybrid-imitation-learning.md

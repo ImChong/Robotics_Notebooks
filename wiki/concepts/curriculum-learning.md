@@ -3,7 +3,7 @@ title: Curriculum Learning（课程学习）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-06-12
+updated: 2026-06-19
 summary: 从简单到复杂的渐进式训练策略，在机器人 RL 中用于解决稀疏奖励、地形多样性和任务复杂度梯度问题。
 ---
 
