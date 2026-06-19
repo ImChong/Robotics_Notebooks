@@ -6,8 +6,10 @@
 - **类型：** project site
 - **官方入口：** <https://crisp-real2sim.github.io/CRISP-Real2Sim/>
 - **论文（OpenReview）：** <https://openreview.net/forum?id=xlr3NqxUqY>
-- **代码：** <https://github.com/crisp-real2sim/CRISP-Real2Sim>
+- **代码（实现）：** <https://github.com/Z1hanW/CRISP-Real2Sim>
+- **站点源码（GitHub Pages）：** <https://github.com/CRISP-Real2Sim/CRISP-Real2Sim>
 - **入库日期：** 2026-05-17
+- **最近复核：** 2026-06-19
 - **一句话说明：** ICLR 2026 项目主页：交互式 Viser 演示（输入视频 vs 本文仿真）、与 **VideoMimic** 并排对比、**Scene-Aware Policy** 子页、Method 图与 BibTeX；站点声明动态可视化由 Viser 驱动，并与 IsaacGym 类仿真输出对标表述。
 
 ## 页面结构（检索自 2026-05-17 公开站点）

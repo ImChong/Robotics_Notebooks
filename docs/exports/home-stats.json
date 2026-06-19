@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/crisp-real2sim.md",
+      "detail_id": "wiki-methods-crisp-real2sim",
+      "label": "CRISP（Contact-guided Real2Sim）",
+      "type": "method",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
       "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
       "label": "MUJICA：轮足多技能统一本体控制架构",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
-    "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
-    "label": "MUJICA：轮足多技能统一本体控制架构",
-    "type": "entity",
+    "path": "wiki/methods/crisp-real2sim.md",
+    "detail_id": "wiki-methods-crisp-real2sim",
+    "label": "CRISP（Contact-guided Real2Sim）",
+    "type": "method",
     "recency": "2026-06-19",
     "source": "log.md"
   }

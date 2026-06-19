@@ -262,7 +262,7 @@
 | [x] [simplefoc_arduino_foc.md](repos/simplefoc_arduino_foc.md) | SimpleFOC / Arduino-FOC：跨 MCU 开源 FOC 库与 Shield/Mini 硬件生态（BLDC/步进） |
 | [x] [hxxxz0_daji.md](repos/hxxxz0_daji.md) | Hxxxz0/DAJI：语言条件人形预期关节意图官方代码（arXiv:2605.14417） |
 | [x] [panniantong_agent_reach.md](repos/panniantong_agent_reach.md) | Panniantong/Agent-Reach：编码代理互联网接入脚手架（CLI + doctor + 可插拔渠道与上游工具链） |
-| [x] [crisp_real2sim_repo.md](repos/crisp_real2sim_repo.md) | CRISP-Real2Sim：ICLR 2026 单目视频 Real2Sim 官方代码入口索引 |
+| [x] [crisp_real2sim_repo.md](repos/crisp_real2sim_repo.md) | Z1hanW/CRISP-Real2Sim：ICLR 2026 单目视频 Real2Sim 官方实现（scripts 1–8 + MotionTracking RL） |
 | [x] [coins.md](repos/coins.md) | COINS：ECCV 2022 语义可控人–场景交互合成 + PROX-S 官方代码（zkf1997/COINS） |
 | [x] [clot.md](repos/clot.md) | CLOT：闭环全局全身遥操作官方实现（arXiv:2602.15060，上交/上海 AI Lab） |
 | [x] [cyoahs-robot-motion-editor.md](repos/cyoahs-robot-motion-editor.md) | cyoahs/robot_motion_editor：浏览器 URDF + CSV 关键帧/曲线编辑，Unitree/Seed 互转（MIT） |

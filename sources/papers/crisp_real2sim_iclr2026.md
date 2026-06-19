@@ -7,8 +7,10 @@
 - **会议：** ICLR 2026（Poster）
 - **OpenReview：** <https://openreview.net/forum?id=xlr3NqxUqY>
 - **项目页：** <https://crisp-real2sim.github.io/CRISP-Real2Sim/>
-- **代码：** <https://github.com/crisp-real2sim/CRISP-Real2Sim>
+- **代码：** <https://github.com/Z1hanW/CRISP-Real2Sim>
+- **arXiv：** <https://arxiv.org/abs/2512.14696>
 - **入库日期：** 2026-05-17
+- **最近复核：** 2026-06-19
 - **一句话说明：** 从单目 RGB 视频恢复**可物理仿真**的人形运动与场景几何：深度点云上拟合**仿真就绪的凸平面原语**，用人–场景接触补全遮挡几何，再用 RL 驱动人形控制器做物理一致性闭环，显著降低运动跟踪失败率并提高仿真吞吐。
 
 ## 核心论文摘录（MVP）
@@ -35,6 +37,14 @@
 - **对 wiki 的映射：**
   - [Whole-Body Control](../../wiki/concepts/whole-body-control.md)
   - [Reinforcement Learning](../../wiki/methods/reinforcement-learning.md)
+
+### 4) 官方代码与复现管线（Z1hanW/CRISP-Real2Sim README）
+
+- **链接：** <https://github.com/Z1hanW/CRISP-Real2Sim>
+- **核心贡献：** 公开端到端脚本链：`scripts` 1–8 完成视频→平面场景+人对齐，`MotionTracking/` 完成 CRISP 资产桥接与 RL 训练/评估；区分 `scene/` 与 `post_scene/` 输出，并发布含 PROX/EMDB/RICH 相关片段的视频数据集。
+- **对 wiki 的映射：**
+  - [CRISP](../../wiki/methods/crisp-real2sim.md)「工程实现」节
+  - [CRISP-Real2Sim 仓库索引](../repos/crisp_real2sim_repo.md)
 
 ## BibTeX（项目页提供）
 
