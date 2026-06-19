@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-18] structural | scripts/scaffold_wiki_page.py — V25 P0「数据集选型脚手架强化」：新增 `--dataset` 旗标生成数据集实体骨架（五维度速查块 + `dataset` tag）
+
+- 改动：`scripts/scaffold_wiki_page.py` 新增 `--dataset`（仅 `entity` 类型，否则 rc=2），输出「## 数据集速查」表格覆盖「规模 / 模态 / 许可证 / 适配形态 / 重定向就绪度」并在 frontmatter 写入 `dataset` tag；速查块关键词全覆盖 `lint_wiki._check_dataset_entity_metadata` 四维度，新建数据集页元数据巡检 0 缺失。
+- 测试：[`tests/test_scaffold_wiki_page.py`](tests/test_scaffold_wiki_page.py) 新增 3 用例（速查块/tag/位置、lint 巡检 0 缺失、非 entity 拒绝）；`ruff check/format` 与 `python3 scripts/lint_wiki.py` 通过。
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v25.md`](docs/checklists/tech-stack-next-phase-checklist-v25.md) P0「数据集选型脚手架强化」打勾。
+
 ## [2026-06-18] ingest | sources/papers/ume_exo_arxiv_2606_14218.md、sources/sites/ume-exo-project.md — UME 外骨骼力矩反馈遥操作；wiki/entities/paper-ume-exo.md；交叉 teleoperation、bimanual-manipulation、loco-manipulation、motion-retargeting、action-chunking
 
 ## [2026-06-18] ingest | sources/blogs/allenai_molmo_motion.md — MolmoMotion 语言条件 3D 点轨迹预测；wiki/entities/molmo-motion.md；交叉 generative-world-models、manipulation、video-as-simulation
