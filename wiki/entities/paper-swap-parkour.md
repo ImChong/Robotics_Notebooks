@@ -98,6 +98,7 @@ flowchart TB
 - **与 MFRL 跑酷对比：** [Extreme Parkour](./extreme-parkour.md) 直接 obs→action + 蒸馏，**无多步 latent 想象**；SWAP 强调 **长程 proactive 预测** 与 **对称结构化潜空间** 对极限探索效率的贡献。
 - **与 WMP 对比：** 消融 **SWAP (w/o Eq)** 即标准网络 RSSM 跑酷（论文明示等同 WMP 基线）；全 SWAP 在 **box 攀台**（大状态-动作、双侧力平衡敏感）上优势最大。
 - **与软对称对比：** SymLoss 仅边际改善；**网络拓扑硬约束** 才能避免 **单腿依赖、撞墙逃避** 等不对称次优陷阱。
+- **与高台攀爬对照（轮足）：** [MUJICA](./paper-mujica-wheel-legged-multi-skill.md) 在 **Go2-W 轮足** 上以 **纯本体单策略** 做 **1 m 高台**（轮–腿钩挂）；SWAP 为 **纯四足 + 深度 WM**，Apollo **1.63 m 攀台**——机体与感知栈不同，可对照「高台」任务边界。
 - **对称群：** 反射群 $\mathbb{Z}_2$；关节/速度/地形 heightmap 的 **左右置换规则** 见论文 Table I（如 abad 关节符号翻转、terrain 左中右 块置换）。
 
 ## 实验要点

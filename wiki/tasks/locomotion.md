@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -131,6 +131,7 @@ flowchart TD
 - **楼梯与离散接触上的学习案例：** [FastStair（论文实体页）](../entities/paper-faststair-humanoid-stair-ascent.md) 归纳 arXiv:2601.10365：用 **GPU 并行 DCM 落脚点离散搜索** 在 Isaac Lab RL 中提供显式可行落点监督，再以 **分速专家 + LoRA 融合** 缓解保守性与全速域动作分布差异，在 LimX Oli 上给出高速上楼梯实机叙事。
 - **显式楼梯几何条件化：** [Explicit Stair Geometry Conditioning（论文实体页）](../entities/paper-explicit-stair-geometry-humanoid-locomotion.md)（arXiv:2605.09944）从点云 BEV 预测 **踢面高度 / 踏面深度 / 航向 / 楼梯状态** 四维 token，直接条件化 **PPO**；在 **Unitree G1** 上零样本实机，户外 **连续 33 级** 上楼，训练分布外踢面高度优于视觉 **MoRE** 基线。
 - **四足真机安全微调：** [SLowRL（论文实体页）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md)（arXiv:2603.17092）在 **Unitree Go2** 上对 jump/trot 做 **冻结主策略 + rank-1 LoRA + Recovery 安全滤波** 真机 PPO 微调，相对全参微调显著降摔倒与墙钟时间（见 [Sim2Real](../concepts/sim2real.md)）。
+- **轮足多技能盲走：** [MUJICA（论文实体页）](../entities/paper-mujica-wheel-legged-multi-skill.md)（arXiv:2605.13058）在 **Go2-W** 上用 **单策略 + 技能选择器** 联合全向移动、高台攀爬与摔倒恢复，并以 **DC 电机 P3O 约束** 零样本上真机（**1 m 高台**）。
 
 ### 5. 状态估计与延迟
 足式机器人在接触切换时很难直接观测机身速度和足端滑移；IMU、编码器、足端接触和视觉地形之间还存在时间同步与延迟问题。状态估计偏一点，控制器可能表现为“突然踢地”“脚底打滑”或“落脚点漂移”。

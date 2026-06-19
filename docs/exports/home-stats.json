@@ -1,18 +1,34 @@
 {
   "generated_at": "2026-06-19",
-  "node_count": 1253,
-  "edge_count": 8122,
+  "node_count": 1254,
+  "edge_count": 8136,
   "coverage": {
-    "covered": 1223,
-    "total": 1251,
+    "covered": 1224,
+    "total": 1252,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/paper-swap-parkour.md",
-      "detail_id": "entity-paper-swap-parkour",
-      "label": "SWAP：对称等变世界模型四足跑酷",
+      "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
+      "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
+      "label": "MUJICA：轮足多技能统一本体控制架构",
       "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/wheel-legged-quadruped.md",
+      "detail_id": "wiki-concepts-wheel-legged-quadruped",
+      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
+      "type": "concept",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/hybrid-locomotion.md",
+      "detail_id": "wiki-tasks-hybrid-locomotion",
+      "label": "Hybrid Locomotion (混合运动)",
+      "type": "task",
       "recency": "2026-06-19",
       "source": "log.md"
     },
@@ -21,6 +37,22 @@
       "detail_id": "wiki-tasks-locomotion",
       "label": "Locomotion",
       "type": "task",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-swap-parkour.md",
+      "detail_id": "entity-paper-swap-parkour",
+      "label": "SWAP：对称等变世界模型四足跑酷",
+      "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
     },
@@ -135,44 +167,12 @@
       "type": "method",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/enpire.md",
-      "detail_id": "wiki-methods-enpire",
-      "label": "ENPIRE",
-      "type": "method",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-kairos-native-world-model-stack.md",
-      "detail_id": "entity-paper-kairos-native-world-model-stack",
-      "label": "Kairos（原生世界模型栈 · kairos-agi）",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/xpad.md",
-      "detail_id": "entity-xpad",
-      "label": "xpad（Linux Xbox 手柄驱动）",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-swap-parkour.md",
-    "detail_id": "entity-paper-swap-parkour",
-    "label": "SWAP：对称等变世界模型四足跑酷",
+    "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
+    "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
+    "label": "MUJICA：轮足多技能统一本体控制架构",
     "type": "entity",
     "recency": "2026-06-19",
     "source": "log.md"

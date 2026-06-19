@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/papers/mujica_arxiv_2605_13058.md — MUJICA 轮足多技能统一控制（wiki/entities/paper-mujica-wheel-legged-multi-skill.md 及轮足/混合运动/sim2real 交叉引用）
+
+- 原始资料：[mujica_arxiv_2605_13058.md](sources/papers/mujica_arxiv_2605_13058.md)（<https://arxiv.org/abs/2605.13058>）；[项目页](https://hyzenthlayer.github.io/mujica/)
+- 说明：Go2-W **纯本体** 单策略联合全向移动、高台攀爬、摔倒恢复；**P3O + DC 电机硬约束** + 两阶段技能选择器；真机 **1 m 高台** 与连续多技能链
+- 沉淀页面：[wiki/entities/paper-mujica-wheel-legged-multi-skill.md](wiki/entities/paper-mujica-wheel-legged-multi-skill.md)
+- 交叉更新：[wiki/concepts/wheel-legged-quadruped.md](wiki/concepts/wheel-legged-quadruped.md)、[wiki/tasks/hybrid-locomotion.md](wiki/tasks/hybrid-locomotion.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)
+
 ## [2026-06-19] ingest | sources/papers/swap_parkour_arxiv_2606_19928.md、sources/sites/swap-parkour-github-io.md — SWAP 对称等变世界模型四足跑酷；wiki/entities/paper-swap-parkour.md；交叉 locomotion、stair-obstacle、extreme-parkour
 
 - 原始资料：[swap_parkour_arxiv_2606_19928.md](sources/papers/swap_parkour_arxiv_2606_19928.md)（<https://arxiv.org/abs/2606.19928>）；[swap-parkour-github-io.md](sources/sites/swap-parkour-github-io.md)（<https://swap-parkour.github.io/>）
