@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/papers/swap_parkour_arxiv_2606_19928.md、sources/sites/swap-parkour-github-io.md — SWAP 对称等变世界模型四足跑酷；wiki/entities/paper-swap-parkour.md；交叉 locomotion、stair-obstacle、extreme-parkour
+
 ## [2026-06-19] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md、sources/repos/humanoid_gpt_galaxy_general_robotics.md — Humanoid-GPT 复核：仓库已发布推理/部署与 ONNX checkpoint；wiki/entities/paper-humanoid-gpt.md 补工程节
 
 - 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）
