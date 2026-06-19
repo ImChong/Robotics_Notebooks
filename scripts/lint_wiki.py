@@ -101,6 +101,7 @@ MISSING_CONCEPT_STOPWORDS: set[str] = {
 #   mujoco     → entities/mujoco.md（仿真器/工具）
 #   sonic      → methods/sonic-motion-tracking.md（具体方法）
 #   locomotion → tasks/locomotion.md（+ humanoid-/hybrid-locomotion，任务域，归 tasks）
+#   step       → entities/step2urdf.md（CAD 交换格式，已在 concepts/text-to-cad.md 引介）
 MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "amp",
     "g1",
@@ -109,6 +110,7 @@ MISSING_CONCEPT_COVERED_ELSEWHERE: set[str] = {
     "mujoco",
     "sonic",
     "locomotion",
+    "step",
 }
 
 # 仅用于信息提示、不计入 lint 失败总数的检查 key

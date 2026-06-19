@@ -35,6 +35,9 @@ sources:
 | 规模（列表标注） | - clips · - h |
 | 论文/说明 | <https://arxiv.org/abs/2210.11795> |
 | 入口 | <https://github.com/naver/posescript> |
+| 模态 | SMPL 静态姿态（源自 AMASS）+ 自然语言 pose 描述 |
+| 许可证 | NAVER 发布，研究用途；商用以官方页面为准 |
+| 重定向就绪度 | SMPL 人体姿态，迁移到人形机器人需重定向到目标形态 |
 
 ## 与其他页面的关系
 

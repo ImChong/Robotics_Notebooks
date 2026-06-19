@@ -62,7 +62,7 @@ summary: "Kairos（Kairos 3.0）：原生 Physical AI 世界模型栈——CEDC 
 - **WAM 不是外挂仿真器：** **Video DiT + Action DiT** 联合 flow matching；消融显示 **仅训 ActionDiT** 相对联合训练 LIBERO-Plus **−23.2** 点——世界生成监督为控制提供 **可恢复的动力学表征**（见 [World Action Models](../concepts/world-action-models.md)）。
 - **部署是一等公民：** **DMD + Consistency Distillation** 蒸馏至 **4 步**；**Kairos-4B** 报告相对 **Cosmos-Predict2.5-14B 28×–85×** 延迟优势，DiT 单步随分辨率/时长 **近线性**——把 WM 从离线演示推向 **闭环可嵌入**。
 
-## 核心结构
+## 核心结构（方法栈）
 
 | 模块 | 作用 |
 |------|------|
@@ -143,7 +143,7 @@ flowchart TB
 
 相对 **Cosmos-Predict2.5-14B**：延迟 **28×–85×** 优势；相对 **Wan2.2-5B**：**2.5×–3.7×** 加速（论文 §6.1）。
 
-## 与相邻路线的分界
+## 与相邻路线的分界（对比）
 
 | 对比轴 | Kairos | [Cosmos 3](./cosmos-3.md) | [τ₀-WM](./tau0-world-model.md) | [DiT4DiT](./paper-dit4dit-video-action-model.md) |
 |--------|--------|---------------------------|--------------------------------|------------------------------------------------|

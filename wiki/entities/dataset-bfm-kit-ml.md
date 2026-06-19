@@ -35,6 +35,9 @@ sources:
 | 规模（列表标注） | 3911 clips · 11.2 h |
 | 论文/说明 | <https://arxiv.org/abs/1607.03827> |
 | 入口 | <https://motion-annotation.humanoids.kit.edu/dataset/> |
+| 模态 | 光学动捕（Master Motor Map 骨架）+ 自然语言动作描述 |
+| 许可证 | 研究用途；商用以官方页面为准 |
+| 重定向就绪度 | MMM 骨架，需重定向到目标人形形态后方可作训练输入 |
 
 ## 与其他页面的关系
 

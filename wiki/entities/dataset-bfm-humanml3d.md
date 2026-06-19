@@ -36,6 +36,8 @@ sources:
 | 规模（列表标注） | 14616 clips · 28.6 h |
 | 论文/说明 | <https://openaccess.thecvf.com/content/CVPR2022/papers/Guo_Generating_Diverse_and_Natural_3D_Human_Motions_From_Text_CVPR_2022_paper.pdf> |
 | 入口 | <https://github.com/EricGuo5513/HumanML3D> |
+| 许可证 | 代码 MIT；动作源自 AMASS + HumanAct12，学术研究用途；继承上游源数据（如 AMASS）许可，商用授权以官方页面为准 |
+| 重定向就绪度 | 人体骨架/SMPL 原生，喂人形机器人前需 **retarget 重定向** 到目标形态，非即插即用策略输入 |
 
 ## 与其他页面的关系
 
