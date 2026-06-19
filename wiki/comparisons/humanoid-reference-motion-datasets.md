@@ -98,6 +98,8 @@ flowchart TD
 ## 关联页面
 
 - [Motion Retargeting](../concepts/motion-retargeting.md)
+- [Motion Data Quality（动作数据质量维度）](../concepts/motion-data-quality.md) — 把本表五集落到物理可行性/接触一致性/形态差距/规模多样性四个评估轴
+- [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 把本表作为「参考来源」第一层接入端到端三层决策树
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
 - [Unitree G1](../entities/unitree-g1.md)
