@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md、sources/repos/humanoid_gpt_galaxy_general_robotics.md — Humanoid-GPT 复核：仓库已发布推理/部署与 ONNX checkpoint；wiki/entities/paper-humanoid-gpt.md 补工程节
+
+- 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）
+- 说明：2026-06-04 首入库后复核官方仓库 README——已发布推理/评测/真机部署、`pns_wo_priv216.onnx` checkpoint 与 `projects/{hme,gqs,tracking_transformer}`；训练代码与 2B 数据仍 TODO；补 RoPE、视频估计动作与 G1_VERSION 工程细节
+- 沉淀页面：[wiki/entities/paper-humanoid-gpt.md](wiki/entities/paper-humanoid-gpt.md)
+
 ## [2026-06-19] ingest | sources/sites/gfr-project.md — 补录 GfR 项目页（RSS 2026）与 PDF 镜像；交叉更新 wiki/methods/mtrg-reference-goal-driven-rl.md、wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md、sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
 
 - 原始资料：[`sources/sites/gfr-project.md`](sources/sites/gfr-project.md)（<https://jiashunwang.github.io/GfR/>；PDF：<https://jiashunwang.github.io/GfR/static/mat/gfr_paper.pdf>）
