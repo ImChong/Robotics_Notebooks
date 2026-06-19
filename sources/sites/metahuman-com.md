@@ -52,6 +52,7 @@
 ## 对 wiki 的映射
 
 - 升格页面：[wiki/entities/metahuman.md](../../wiki/entities/metahuman.md)
+- 文档归档：[metahuman-epic-docs.md](./metahuman-epic-docs.md)
 - 交叉引用：[wiki/concepts/motion-retargeting.md](../../wiki/concepts/motion-retargeting.md)（工具表）、[wiki/entities/mixamo.md](../../wiki/entities/mixamo.md)、[wiki/entities/blender.md](../../wiki/entities/blender.md)
 
 ## 参考链接
@@ -64,4 +65,5 @@
 - 许可说明：<https://www.metahuman.com/license>
 - 5.8 发布：<https://www.metahuman.com/news/metahuman-5-8-is-now-available>
 - OpenRigLogic：<https://github.com/EpicGames/OpenRigLogic>（以仓库当前状态为准）
+- 官方文档：<https://dev.epicgames.com/documentation/metahuman/metahuman-documentation>
 - Unreal Engine：<https://www.unrealengine.com/>
