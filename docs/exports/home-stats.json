@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-humanoid-gpt.md",
+      "detail_id": "entity-paper-humanoid-gpt",
+      "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
       "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
       "label": "MTRG / GfR: Multi-Task Reference and Goal-Driven RL",
@@ -159,21 +167,13 @@
       "type": "overview",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/motion-cerebellum-category-02-motion-imitation.md",
-      "detail_id": "wiki-overview-motion-cerebellum-category-02-motion-imitation",
-      "label": "运动小脑分类 B：动作模仿源流",
-      "type": "overview",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
-    "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
-    "label": "MTRG / GfR: Multi-Task Reference and Goal-Driven RL",
-    "type": "method",
+    "path": "wiki/entities/paper-humanoid-gpt.md",
+    "detail_id": "entity-paper-humanoid-gpt",
+    "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
+    "type": "entity",
     "recency": "2026-06-19",
     "source": "log.md"
   }
