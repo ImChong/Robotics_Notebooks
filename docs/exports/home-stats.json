@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-19",
-  "node_count": 1252,
-  "edge_count": 8109,
+  "node_count": 1253,
+  "edge_count": 8122,
   "coverage": {
-    "covered": 1222,
-    "total": 1250,
+    "covered": 1223,
+    "total": 1251,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-swap-parkour.md",
+      "detail_id": "entity-paper-swap-parkour",
+      "label": "SWAP：对称等变世界模型四足跑酷",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
+      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
+      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
+      "type": "task",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/extreme-parkour.md",
+      "detail_id": "entity-extreme-parkour",
+      "label": "Extreme Parkour（端到端四足感知跑酷）",
+      "type": "entity",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-phygile.md",
       "detail_id": "entity-paper-phygile",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-18",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/teleoperation.md",
-      "detail_id": "wiki-tasks-teleoperation",
-      "label": "Teleoperation（遥操作）",
-      "type": "task",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini-runtime.md",
-      "detail_id": "entity-open-duck-mini-runtime",
-      "label": "Open Duck Mini Runtime",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/botworld.md",
-      "detail_id": "entity-botworld",
-      "label": "BotWorld（机器人资产平台）",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/urdf-studio.md",
-      "detail_id": "entity-urdf-studio",
-      "label": "URDF-Studio",
-      "type": "entity",
-      "recency": "2026-06-18",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-phygile.md",
-    "detail_id": "entity-paper-phygile",
-    "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
+    "path": "wiki/entities/paper-swap-parkour.md",
+    "detail_id": "entity-paper-swap-parkour",
+    "label": "SWAP：对称等变世界模型四足跑酷",
     "type": "entity",
     "recency": "2026-06-19",
     "source": "log.md"

@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] ingest | sources/papers/swap_parkour_arxiv_2606_19928.md、sources/sites/swap-parkour-github-io.md — SWAP 对称等变世界模型四足跑酷；wiki/entities/paper-swap-parkour.md；交叉 locomotion、stair-obstacle、extreme-parkour
+
+- 原始资料：[swap_parkour_arxiv_2606_19928.md](sources/papers/swap_parkour_arxiv_2606_19928.md)（<https://arxiv.org/abs/2606.19928>）；[swap-parkour-github-io.md](sources/sites/swap-parkour-github-io.md)（<https://swap-parkour.github.io/>）
+- 说明：SE-RSSM 对称等变潜变量世界模型 + 等变 Actor / 不变 Critic 端到端四足跑酷；Apollo 实机 **2.13 m 远跳 / 1.63 m 攀台**；镜像 OOD 与户外零样本泛化
+- 沉淀页面：[wiki/entities/paper-swap-parkour.md](wiki/entities/paper-swap-parkour.md)
+- 交叉更新：[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/entities/extreme-parkour.md](wiki/entities/extreme-parkour.md)
+
 ## [2026-06-19] ingest | sources/papers/phygile_arxiv_2603_19305.md、sources/sites/phygile-page.md — PhyGile 文本驱动机器人原生扩散与 GMT 闭环；wiki/entities/paper-phygile.md；交叉 diffusion-motion-generation、humanoid-motion-tracking-method-selection、paper-notebook-gmt
 
 - 原始资料：[phygile_arxiv_2603_19305.md](sources/papers/phygile_arxiv_2603_19305.md)（<https://arxiv.org/abs/2603.19305>）；[phygile-page.md](sources/sites/phygile-page.md)（<https://baojch.github.io/phygile-page/>）

@@ -16,6 +16,7 @@ related:
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/dreamwaq-plus.md
   - ../entities/extreme-parkour.md
+  - ../entities/paper-swap-parkour.md
   - ../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md
   - ../entities/paper-deep-whole-body-parkour.md
   - ../entities/paper-hiking-in-the-wild.md
@@ -37,6 +38,7 @@ sources:
   - ../../sources/papers/e_sds_arxiv_2512_16446.md
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
+  - ../../sources/papers/swap_parkour_arxiv_2606_19928.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
 summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：按「是否显式地形感知」「上/下楼梯」「越障/跑酷」组织文献与概念，后续 ingest 默认挂接本页。"
 ---
@@ -72,7 +74,7 @@ summary: "楼梯、台阶与离散障碍上的腿式/人形运动中心节点：
 | **感知** | 机载高程图 / 深度 / LiDAR / 点云进入策略或奖励 | FastStair、E-SDS、DreamWaQ++、PHP、Extreme Parkour |
 | **盲走 / 弱感知** | 仅本体 + 隐式地形或接触后修正 | DreamWaQ 系盲走基线、部分「blind stair」RL、Walk These Ways 的 OOD 试参 |
 | **楼梯** | 重复踢面/踏面、离散高度阶跃 | 上楼梯（FastStair）、下楼梯（E-SDS 分水岭）、四足楼梯竞速（DreamWaQ++） |
-| **越障 / 跑酷** | 攀爬、翻越、沟壑、高台、技能链 | PHP、Deep Whole-body Parkour、Hiking in the Wild、Extreme Parkour |
+| **越障 / 跑酷** | 攀爬、翻越、沟壑、高台、技能链 | PHP、Deep Whole-body Parkour、Hiking in the Wild、Extreme Parkour、SWAP |
 
 ```mermaid
 flowchart TB
@@ -90,6 +92,7 @@ flowchart TB
   SD --> ES["E-SDS 楼梯下降"]
   OB --> PHP["PHP 人形跑酷"]
   OB --> EP["Extreme Parkour 四足"]
+  OB --> SWAP["SWAP 四足 WM 跑酷"]
 ```
 
 ## 资料索引（仓库内）
@@ -124,6 +127,7 @@ flowchart TB
 | 人形 G1 | **深度** | [PHP（Perceptive Humanoid Parkour）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) | motion matching 合成长程参考 + DAgger+PPO 单策略 |
 | 人形 | **深度**（策展） | [Deep Whole-body Parkour](../entities/paper-deep-whole-body-parkour.md) | 全身跑酷，与 PHP 同簇 |
 | 四足 Go1 | **单目深度** | [Extreme Parkour](../entities/extreme-parkour.md) | 端到端跑酷；两阶段特权 scandots → 深度蒸馏 |
+| 四足 Apollo | **深度 + RSSM WM** | [SWAP](../entities/paper-swap-parkour.md) | 对称等变潜变量世界模型 + 等变 Actor-Critic；2.13 m 远跳 / 1.63 m 攀台 |
 
 ### 概念与方法（跨论文）
 
@@ -150,6 +154,7 @@ flowchart TB
 | 人形 **梯子攀爬** + **梯上遥操作**（稀疏踏棍） | [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) |
 | 人形 **BFM 式开放 raw 参考** + **地形感知落脚/间隙**（楼梯/块/户外） | [Perceptive BFM](../entities/paper-perceptive-bfm.md) |
 | 四足 **极限跑酷** 端到端 | [Extreme Parkour](../entities/extreme-parkour.md) |
+| 四足 **世界模型跑酷** + 对称等变 | [SWAP](../entities/paper-swap-parkour.md) |
 | 理解 DCM / 落脚点如何进 RL | [Capture Point / DCM](../concepts/capture-point-dcm.md) |
 
 ## 常见误区

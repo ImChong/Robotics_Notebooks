@@ -21,6 +21,7 @@ related:
   - ./legged-gym.md
   - ./unitree.md
   - ./dreamwaq-plus.md
+  - ./paper-swap-parkour.md
   - ../methods/dagger.md
 sources:
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
@@ -127,6 +128,7 @@ flowchart TB
 - [Locomotion](../tasks/locomotion.md) — 四足 RL 与跑酷任务地图
 - [Sim2Real](../concepts/sim2real.md) — ROA / 域随机与部署叙事
 - [DreamWaQ++](./dreamwaq-plus.md) — 四足感知 loco 姊妹路线
+- [SWAP（对称等变世界模型跑酷）](./paper-swap-parkour.md) — RSSM + 硬等变约束；Apollo 纪录级 gap/box
 
 ## 推荐继续阅读
 
