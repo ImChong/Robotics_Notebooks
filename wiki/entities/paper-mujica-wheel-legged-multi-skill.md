@@ -121,6 +121,7 @@ flowchart TB
 | MoE-loco / 混合专家 | 本体 | 门控多专家 | 步态切换为主 |
 | Chamorro ICRA'24 盲楼梯 | 本体 + 地形布尔 | 双任务指示 | 楼梯攀爬，非统一三技能 |
 | Science Robotics 轮足导航 | 感知导航栈 | 学习与导航耦合 | 强调自主导航而非极限攀爬 |
+| [SWAP](./paper-swap-parkour.md) | 深度 + RSSM WM | 单任务跑酷 WM | **纯四足** 1.63 m 攀台（非轮足）；对照「高台」不同机体与感知栈 |
 
 ## 参考来源
 

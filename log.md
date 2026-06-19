@@ -2,6 +2,25 @@
 
 ## [2026-06-19] ingest | sources/papers/mujica_arxiv_2605_13058.md — MUJICA 轮足多技能统一控制（wiki/entities/paper-mujica-wheel-legged-multi-skill.md 及轮足/混合运动/sim2real 交叉引用）
 
+- 原始资料：[mujica_arxiv_2605_13058.md](sources/papers/mujica_arxiv_2605_13058.md)（<https://arxiv.org/abs/2605.13058>）；[项目页](https://hyzenthlayer.github.io/mujica/)
+- 说明：Go2-W **纯本体** 单策略联合全向移动、高台攀爬、摔倒恢复；**P3O + DC 电机硬约束** + 两阶段技能选择器；真机 **1 m 高台** 与连续多技能链
+- 沉淀页面：[wiki/entities/paper-mujica-wheel-legged-multi-skill.md](wiki/entities/paper-mujica-wheel-legged-multi-skill.md)
+- 交叉更新：[wiki/concepts/wheel-legged-quadruped.md](wiki/concepts/wheel-legged-quadruped.md)、[wiki/tasks/hybrid-locomotion.md](wiki/tasks/hybrid-locomotion.md)、[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/concepts/sim2real.md](wiki/concepts/sim2real.md)
+
+## [2026-06-19] ingest | sources/papers/swap_parkour_arxiv_2606_19928.md、sources/sites/swap-parkour-github-io.md — SWAP 对称等变世界模型四足跑酷；wiki/entities/paper-swap-parkour.md；交叉 locomotion、stair-obstacle、extreme-parkour
+
+- 原始资料：[swap_parkour_arxiv_2606_19928.md](sources/papers/swap_parkour_arxiv_2606_19928.md)（<https://arxiv.org/abs/2606.19928>）；[swap-parkour-github-io.md](sources/sites/swap-parkour-github-io.md)（<https://swap-parkour.github.io/>）
+- 说明：SE-RSSM 对称等变潜变量世界模型 + 等变 Actor / 不变 Critic 端到端四足跑酷；Apollo 实机 **2.13 m 远跳 / 1.63 m 攀台**；镜像 OOD 与户外零样本泛化
+- 沉淀页面：[wiki/entities/paper-swap-parkour.md](wiki/entities/paper-swap-parkour.md)
+- 交叉更新：[wiki/tasks/locomotion.md](wiki/tasks/locomotion.md)、[wiki/tasks/stair-obstacle-perceptive-locomotion.md](wiki/tasks/stair-obstacle-perceptive-locomotion.md)、[wiki/entities/extreme-parkour.md](wiki/entities/extreme-parkour.md)
+
+## [2026-06-19] ingest | sources/papers/phygile_arxiv_2603_19305.md、sources/sites/phygile-page.md — PhyGile 文本驱动机器人原生扩散与 GMT 闭环；wiki/entities/paper-phygile.md；交叉 diffusion-motion-generation、humanoid-motion-tracking-method-selection、paper-notebook-gmt
+
+- 原始资料：[phygile_arxiv_2603_19305.md](sources/papers/phygile_arxiv_2603_19305.md)（<https://arxiv.org/abs/2603.19305>）；[phygile-page.md](sources/sites/phygile-page.md)（<https://baojch.github.io/phygile-page/>）
+- 说明：physics-prefix 引导的 **262D robot-native** 扩散生成 + 课程式 **MoE GMT** 跟踪器闭环；真机 breakdance、侧手翻、高踢、旋跳等高动态全身动作
+- 沉淀页面：[wiki/entities/paper-phygile.md](wiki/entities/paper-phygile.md)
+- 交叉更新：[wiki/methods/diffusion-motion-generation.md](wiki/methods/diffusion-motion-generation.md)、[wiki/queries/humanoid-motion-tracking-method-selection.md](wiki/queries/humanoid-motion-tracking-method-selection.md)、[wiki/entities/paper-notebook-gmt.md](wiki/entities/paper-notebook-gmt.md)
+
 ## [2026-06-19] ingest | sources/papers/humanoid_gpt_arxiv_2606_03985.md、sources/repos/humanoid_gpt_galaxy_general_robotics.md — Humanoid-GPT 复核：仓库已发布推理/部署与 ONNX checkpoint；wiki/entities/paper-humanoid-gpt.md 补工程节
 
 - 原始资料：[humanoid_gpt_arxiv_2606_03985.md](sources/papers/humanoid_gpt_arxiv_2606_03985.md)（<https://arxiv.org/abs/2606.03985>）；[humanoid_gpt_galaxy_general_robotics.md](sources/repos/humanoid_gpt_galaxy_general_robotics.md)（<https://github.com/GalaxyGeneralRobotics/Humanoid-GPT>）

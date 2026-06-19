@@ -280,6 +280,7 @@ flowchart TD
 
 ### 论文入口
 - [Extreme Parkour（端到端四足感知跑酷）](../entities/extreme-parkour.md) — arXiv:2309.14341（ICRA 2024；scandots + 航向双重蒸馏 → 单目深度，Go1）
+- [SWAP（对称等变世界模型四足跑酷）](../entities/paper-swap-parkour.md) — arXiv:2606.19928（SE-RSSM + 等变 Actor-Critic 端到端；Apollo 2.13 m 远跳 / 1.63 m 攀台）
 - [E-SDS（环境统计条件化 VLM 奖励 + 人形感知地形 RL）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — arXiv:2512.16446（UCL / Isaac Lab / G1）
 - [Learning to Adapt（Nature MI 2025 四足 bio-inspired 多步态）](../entities/paper-learning-to-adapt-bio-inspired-quadruped-gait.md) — πG/BGS/πL 分层 DRL，盲零样本复杂地形（RaiSim / ihcr）
 - [Perceptive Humanoid Parkour（PHP）](../entities/paper-hrl-stack-22-perceptive_humanoid_parkour.md) — arXiv:2602.15827（motion matching 长程参考 + 深度多技能蒸馏，G1 跑酷）
