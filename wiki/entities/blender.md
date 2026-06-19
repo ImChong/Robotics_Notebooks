@@ -2,10 +2,11 @@
 type: entity
 tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-19
 related:
   - ./nvidia-omniverse.md
   - ./mixamo.md
+  - ./metahuman.md
   - ./ppf-contact-solver.md
   - ./sam3dbody-cpp.md
   - ./robot-motion-keyframe-editors.md
@@ -75,7 +76,7 @@ flowchart LR
   BL -->|渲染 / 预览| VIS
 ```
 
-- **与商业 DCC 对照**：[Mixamo](./mixamo.md) 提供 **在线角色与动作库**；Blender 提供 **本地全流程编辑与 GPL 源码**——科研复现与插件二次开发通常偏向后者。
+- **与商业 DCC 对照**：[Mixamo](./mixamo.md) 提供 **在线角色与动作库**；[MetaHuman](./metahuman.md) 提供 **UE 生态高保真数字人 + Animator 表演**；Blender 提供 **本地全流程编辑与 GPL 源码**——科研复现与插件二次开发通常偏向后者。
 - **与仿真底座对照**：[NVIDIA Omniverse](./nvidia-omniverse.md) 强调 **USD 协作 + GPU 物理**；Blender 强调 **authoring + 动画**——Omniverse 文档亦将 Blender 列为常见 USD 来源之一。
 - **与专用机器人编辑器对照**：[机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) 绑定 **URDF/MJCF/CSV/NPZ**；Blender 绑定 **通用网格与骨骼**——二者常在 pipeline 中 **串联** 而非互斥。
 
