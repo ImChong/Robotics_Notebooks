@@ -8,7 +8,7 @@ tags:
   - software-engineering
   - methodology
 status: complete
-updated: 2026-05-17
+updated: 2026-06-20
 related:
   - ./mattpocock-skills.md
   - ./hermes-agent.md
