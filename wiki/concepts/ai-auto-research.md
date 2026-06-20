@@ -6,6 +6,7 @@ updated: 2026-06-20
 summary: "AI Auto-Research 指 LLM/agent 贯穿学术研究全生命周期（创意→文献→实验→写作→审稿→传播）的辅助与自动化；可靠部署依赖人机共治、分层验证与跨阶段溯源，而非端到端完全自主。"
 related:
   - ../references/llm-wiki-karpathy.md
+  - ../entities/karpathy-autoresearch.md
   - ../entities/hermes-agent.md
   - ../entities/agent-reach.md
   - ../entities/superpowers-obra.md
@@ -13,6 +14,7 @@ related:
 sources:
   - ../../sources/papers/ai_auto_research_survey_2605_18661.md
   - ../../sources/repos/awesome-ai-auto-research.md
+  - ../../sources/repos/karpathy-autoresearch.md
   - ../../sources/sites/awesome-ai-auto-research.md
 ---
 
@@ -39,6 +41,7 @@ AI 可以加速「研究形态」的产出，但 **科学实质**（证据、判
 - **本库即实例**：Robotics_Notebooks 采用 [Karpathy LLM Wiki 模式](../references/llm-wiki-karpathy.md) — `ingest` / `query` / `lint` 把资料 **编译进 wiki** 并强制 `## 参考来源`，对应综述中 S2（文献综合）与 **治理/溯源** 主张。
 - **机器人 ML 研究栈**：S3（实验编排、paper-to-code、benchmark 复现）与 S4（图表）直接关联 sim2real、RL/IL 管线维护；综述列出的 **PaperBench、MLE-Bench、ResearchCodeBench** 等是评估「agent 能否做研究级实验」的通用标尺。
 - **Agent 基础设施对照**：[Hermes Agent](../entities/hermes-agent.md)（常驻运行时）、[Agent Reach](../entities/agent-reach.md)（外网读搜）、[Superpowers](../entities/superpowers-obra.md)（交付流程技能）分别覆盖执行、检索与工程纪律 — 宜按生命周期阶段 **组合** 而非指望单 agent 端到端。
+- **S3 最小实例**：[karpathy/autoresearch](../entities/karpathy-autoresearch.md) 把代理限制为只改 `train.py`、固定 5 分钟训练与 **val_bpb** 去留环，人类迭代 `program.md` — 直接演示 **Explore→Execute→Verify** 在 LLM 训练 ablation 上的落地。
 
 ## 核心结构：四阶段八阶段
 
@@ -100,7 +103,7 @@ flowchart LR
 | 综述阶段 | 本库对应实践 |
 |----------|----------------|
 | S2 文献综合 | `sources/` 收录 + `wiki/` 提炼；禁止 `[[wikilink]]`，强制 `[text](path)` 以利 lint |
-| S3 实验/代码 | `make ci-preflight`、脚本与导出链；agent 改 wiki 需跑门禁 |
+| S3 实验/代码 | `make ci-preflight`、脚本与导出链；agent 改 wiki 需跑门禁；[autoresearch](../entities/karpathy-autoresearch.md) 为「代理改训练脚本 + 固定预算 metric」参照 |
 | S5 写作 | wiki 页结构（一句话定义、缩写速查、参考来源） |
 | 跨阶段溯源 | 每页 `## 参考来源` + `log.md` 时间线；首页 `latest_wiki_nodes` 由日志驱动 |
 | 人机共治 | LLM 维护 wiki，人类 curator 审阅 PR / 合并 |
@@ -120,12 +123,14 @@ flowchart LR
 - [Hermes Agent](../entities/hermes-agent.md) — 常驻 agent OS：工具、记忆、网关、cron。
 - [Agent Reach](../entities/agent-reach.md) — 微信/ arXiv 等 **读搜上游** 聚合，偏 S2 资料获取。
 - [Superpowers（obra）](../entities/superpowers-obra.md) — TDD、worktree、评审子代理等 **交付纪律**。
+- [karpathy/autoresearch](../entities/karpathy-autoresearch.md) — S3 单 GPU LLM 训练 **自主实验环** 最小实现。
 - [World Action Models（WAM）](./world-action-models.md) — 另一篇生命周期级综述（具身 AI）；可对照「领域综述 + Awesome 列表」维护模式。
 
 ## 参考来源
 
 - [sources/papers/ai_auto_research_survey_2605_18661.md](../../sources/papers/ai_auto_research_survey_2605_18661.md)
 - [sources/repos/awesome-ai-auto-research.md](../../sources/repos/awesome-ai-auto-research.md)
+- [sources/repos/karpathy-autoresearch.md](../../sources/repos/karpathy-autoresearch.md)
 - [sources/sites/awesome-ai-auto-research.md](../../sources/sites/awesome-ai-auto-research.md)
 
 ## 关联页面
@@ -134,6 +139,7 @@ flowchart LR
 - [Hermes Agent](../entities/hermes-agent.md)
 - [Agent Reach](../entities/agent-reach.md)
 - [Superpowers（obra）](../entities/superpowers-obra.md)
+- [karpathy/autoresearch](../entities/karpathy-autoresearch.md)
 - [World Action Models（WAM）](./world-action-models.md)
 - [schema/ingest-workflow.md](../../schema/ingest-workflow.md)
 
@@ -142,3 +148,4 @@ flowchart LR
 - Kong et al., *AI for Auto-Research: Roadmap & User Guide* — [arXiv:2605.18661](https://arxiv.org/abs/2605.18661) · [PDF](https://arxiv.org/pdf/2605.18661)
 - **Awesome AI Auto-Research** — [GitHub](https://github.com/worldbench/awesome-ai-auto-research) · [项目站点](https://worldbench.github.io/awesome-ai-auto-research)
 - Karpathy, [LLM Wiki Gist](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) — 与本库维护哲学同源
+- [karpathy/autoresearch](https://github.com/karpathy/autoresearch) — S3 自主 LLM 训练实验最小闭环

@@ -77,6 +77,7 @@
   - [LLM Wiki（Karpathy 模式）](../../wiki/references/llm-wiki-karpathy.md) — 本库 ingest/query/lint 与综述 S2 文献综合、知识编译同源。
   - [schema/ingest-workflow.md](../../schema/ingest-workflow.md) — 运维规范即「人机共治」研究自动化实例。
   - [Hermes Agent](../../wiki/entities/hermes-agent.md)、[Agent Reach](../../wiki/entities/agent-reach.md)、[Superpowers（obra）](../../wiki/entities/superpowers-obra.md) — 工具/技能/外网读搜层实例。
+  - [karpathy/autoresearch](../../wiki/entities/karpathy-autoresearch.md) — S3 单 GPU LLM 训练自主实验最小闭环（`program.md` + `train.py` + val_bpb）。
 
 ## 参考来源（原始）
 
