@@ -348,7 +348,7 @@ def _filter_doc(doc: dict, type_filter: str | None, tag_filters: list[str] | Non
 
 
 def _find_matched_lines(
-    lines: list[str], query_words: list[str], context_lines: int
+    lines: list[str], lines_lower: list[str], query_words: list[str], context_lines: int
 ) -> list[tuple[int, list[str], int]]:
     matched_lines: list[tuple[int, list[str], int]] = []
     if not query_words:
@@ -357,8 +357,7 @@ def _find_matched_lines(
     if not lowered_words:
         return matched_lines
 
-    for i, line in enumerate(lines):
-        line_lower = line.lower()
+    for i, line_lower in enumerate(lines_lower):
         found = False
         for word in lowered_words:
             if word in line_lower:
@@ -423,6 +422,10 @@ def search(
             fm = doc.get("frontmatter") or {}
             doc["summary_l"] = str(fm.get("summary", fm.get("description", ""))).lower()
 
+            # ⚡ Bolt Optimization: Pre-split and pre-lower lines for context matching
+            doc["lines"] = doc["body"].splitlines()
+            doc["lines_lower"] = [line.lower() for line in doc["lines"]]
+
     avgdl = compute_avgdl(docs)
 
     vector_matrix = None
@@ -474,8 +477,11 @@ def search(
         if query_tokens and not semantic and score <= 0:
             continue
 
-        lines = body.splitlines()
-        matched_lines = _find_matched_lines(lines, effective_query_words, context_lines)
+        lines = doc["lines"]
+        lines_lower = doc["lines_lower"]
+        matched_lines = _find_matched_lines(
+            lines, lines_lower, effective_query_words, context_lines
+        )
         if not matched_lines:
             summary_line = doc["summary"] or (lines[0] if lines else "")
             matched_lines = [(1, [summary_line], 0)]
