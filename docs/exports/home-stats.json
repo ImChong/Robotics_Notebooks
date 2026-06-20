@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-19",
+  "generated_at": "2026-06-20",
   "node_count": 1257,
   "edge_count": 8186,
   "coverage": {
@@ -9,10 +9,18 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/metahuman.md",
-      "detail_id": "entity-metahuman",
-      "label": "MetaHuman（Epic 数字人平台）",
-      "type": "entity",
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-data-quality.md",
+      "detail_id": "wiki-concepts-motion-data-quality",
+      "label": "Motion Data Quality（动作数据质量维度）",
+      "type": "concept",
       "recency": "2026-06-19",
       "source": "log.md"
     },
@@ -21,6 +29,22 @@
       "detail_id": "wiki-concepts-motion-retargeting",
       "label": "Motion Retargeting（动作重定向）",
       "type": "concept",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
+      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
+      "label": "人形参考运动与操作数据集选型",
+      "type": "comparison",
+      "recency": "2026-06-19",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/metahuman.md",
+      "detail_id": "entity-metahuman",
+      "label": "MetaHuman（Epic 数字人平台）",
+      "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
     },
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-humanoid-gpt.md",
-      "detail_id": "entity-paper-humanoid-gpt",
-      "label": "Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/mtrg-reference-goal-driven-rl.md",
-      "detail_id": "wiki-methods-mtrg-reference-goal-driven-rl",
-      "label": "MTRG / GfR: Multi-Task Reference and Goal-Driven RL",
-      "type": "method",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md",
-      "detail_id": "wiki-comparisons-hil-vs-mtrg-vs-zest-parkour-imitation",
-      "label": "HIL vs MTRG vs ZEST：跑酷模仿学习路线对比",
-      "type": "comparison",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/metahuman.md",
-    "detail_id": "entity-metahuman",
-    "label": "MetaHuman（Epic 数字人平台）",
-    "type": "entity",
+    "path": "wiki/queries/humanoid-training-data-pipeline.md",
+    "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+    "label": "人形训练数据管线选型指南",
+    "type": "query",
     "recency": "2026-06-19",
     "source": "log.md"
   }
