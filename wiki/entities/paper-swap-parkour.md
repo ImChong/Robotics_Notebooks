@@ -93,7 +93,7 @@ flowchart TB
   env --> prop
 ```
 
-## 方法栈（提炼）
+## 方法栈与对比（提炼）
 
 - **与 MFRL 跑酷对比：** [Extreme Parkour](./extreme-parkour.md) 直接 obs→action + 蒸馏，**无多步 latent 想象**；SWAP 强调 **长程 proactive 预测** 与 **对称结构化潜空间** 对极限探索效率的贡献。
 - **与 WMP 对比：** 消融 **SWAP (w/o Eq)** 即标准网络 RSSM 跑酷（论文明示等同 WMP 基线）；全 SWAP 在 **box 攀台**（大状态-动作、双侧力平衡敏感）上优势最大。
