@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-20] ingest | sources/blogs/wechat_shenlan_vln_10_papers_survey.md — VLN 10 篇技术地图与论文节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）
+- 原始资料：`sources/blogs/wechat_shenlan_vln_10_papers_survey.md`、`sources/raw/wechat_vln_10_papers_2026-06-20.md`、`sources/papers/vln_10_papers_catalog.md`、`sources/papers/vln_survey_*.md`（10 篇）
+- 沉淀页面：[`wiki/overview/vln-10-papers-technology-map.md`](wiki/overview/vln-10-papers-technology-map.md)（父）、[`vln-category-01-datasets-platforms.md`](wiki/overview/vln-category-01-datasets-platforms.md)、[`vln-category-02-algorithm-frameworks.md`](wiki/overview/vln-category-02-algorithm-frameworks.md)（子）、`wiki/entities/paper-vln-01-r2r.md` … `paper-vln-10-navid.md`
+- 去重：**NaVid**（RSS 2024，arXiv:2402.15852）≠ **Uni-NaVid**（RSS 2025 导航 VLA 复现栈）
+- 交叉更新：[`wiki/tasks/vision-language-navigation.md`](wiki/tasks/vision-language-navigation.md)、[`wiki/overview/vln-open-source-repro-paradigms.md`](wiki/overview/vln-open-source-repro-paradigms.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+- 验证：`make ci-preflight`
+
 ## [2026-06-19] structural | checklist-v25 P1 训练数据管线知识链（+2 页）；新建 wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/motion-data-quality.md
 
 - 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P1 第一项「训练数据管线知识链 (+2)」收口

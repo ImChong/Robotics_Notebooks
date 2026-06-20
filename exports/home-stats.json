@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-20",
-  "node_count": 1257,
-  "edge_count": 8186,
+  "node_count": 1270,
+  "edge_count": 8254,
   "coverage": {
-    "covered": 1227,
-    "total": 1255,
+    "covered": 1240,
+    "total": 1268,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/vln-10-papers-technology-map.md",
+      "detail_id": "wiki-overview-vln-10-papers-technology-map",
+      "label": "VLN 10 篇论文技术地图",
+      "type": "overview",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/vln-category-01-datasets-platforms.md",
+      "detail_id": "wiki-overview-vln-category-01-datasets-platforms",
+      "label": "VLN 分类 01：数据集与仿真平台",
+      "type": "overview",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/vln-category-02-algorithm-frameworks.md",
+      "detail_id": "wiki-overview-vln-category-02-algorithm-frameworks",
+      "label": "VLN 分类 02：算法框架",
+      "type": "overview",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-vln-01-r2r.md",
+      "detail_id": "entity-paper-vln-01-r2r",
+      "label": "R2R",
+      "type": "entity",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/vision-language-navigation.md",
+      "detail_id": "wiki-tasks-vision-language-navigation",
+      "label": "视觉–语言导航（Vision-and-Language Navigation, VLN）",
+      "type": "task",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/vln-open-source-repro-paradigms.md",
+      "detail_id": "wiki-overview-vln-open-source-repro-paradigms",
+      "label": "VLN 开源复现：四范式学习路径",
+      "type": "overview",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/humanoid-training-data-pipeline.md",
       "detail_id": "wiki-queries-humanoid-training-data-pipeline",
@@ -119,62 +167,14 @@
       "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/stair-obstacle-perceptive-locomotion.md",
-      "detail_id": "wiki-tasks-stair-obstacle-perceptive-locomotion",
-      "label": "楼梯与障碍 Locomotion（感知 / 盲走中心节点）",
-      "type": "task",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/extreme-parkour.md",
-      "detail_id": "entity-extreme-parkour",
-      "label": "Extreme Parkour（端到端四足感知跑酷）",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-phygile.md",
-      "detail_id": "entity-paper-phygile",
-      "label": "PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/diffusion-motion-generation.md",
-      "detail_id": "wiki-methods-diffusion-motion-generation",
-      "label": "Diffusion-based Motion Generation (基于扩散模型的运动生成)",
-      "type": "method",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-motion-tracking-method-selection.md",
-      "detail_id": "wiki-queries-humanoid-motion-tracking-method-selection",
-      "label": "人形运动跟踪方法选型指南",
-      "type": "query",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-gmt.md",
-      "detail_id": "entity-paper-notebook-gmt",
-      "label": "GMT",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/humanoid-training-data-pipeline.md",
-    "detail_id": "wiki-queries-humanoid-training-data-pipeline",
-    "label": "人形训练数据管线选型指南",
-    "type": "query",
-    "recency": "2026-06-19",
+    "path": "wiki/overview/vln-10-papers-technology-map.md",
+    "detail_id": "wiki-overview-vln-10-papers-technology-map",
+    "label": "VLN 10 篇论文技术地图",
+    "type": "overview",
+    "recency": "2026-06-20",
     "source": "log.md"
   }
 }
