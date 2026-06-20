@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-20",
-  "node_count": 1270,
-  "edge_count": 8254,
+  "node_count": 1271,
+  "edge_count": 8272,
   "coverage": {
-    "covered": 1240,
-    "total": 1268,
+    "covered": 1241,
+    "total": 1269,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-oscar.md",
+      "detail_id": "entity-paper-oscar",
+      "label": "OSCAR（跨具身动作条件世界模型）",
+      "type": "entity",
+      "recency": "2026-06-20",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/vln-10-papers-technology-map.md",
       "detail_id": "wiki-overview-vln-10-papers-technology-map",
@@ -159,21 +167,13 @@
       "type": "concept",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-swap-parkour.md",
-      "detail_id": "entity-paper-swap-parkour",
-      "label": "SWAP：对称等变世界模型四足跑酷",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/vln-10-papers-technology-map.md",
-    "detail_id": "wiki-overview-vln-10-papers-technology-map",
-    "label": "VLN 10 篇论文技术地图",
-    "type": "overview",
+    "path": "wiki/entities/paper-oscar.md",
+    "detail_id": "entity-paper-oscar",
+    "label": "OSCAR（跨具身动作条件世界模型）",
+    "type": "entity",
     "recency": "2026-06-20",
     "source": "log.md"
   }
