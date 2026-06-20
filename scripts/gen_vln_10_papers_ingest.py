@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """One-off generator for VLN 10-papers ingest (2026-06-20)."""
+
 from __future__ import annotations
 
 from pathlib import Path
@@ -156,34 +157,34 @@ PAPERS = [
 
 def write_paper_source(p: dict) -> None:
     path = ROOT / "sources/papers" / f"vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md"
-    content = f"""# {p['short']}: {p['title']}
+    content = f"""# {p["short"]}: {p["title"]}
 
-> 来源归档（ingest · VLN 10 篇盘点 第 {p['num']}/10）
+> 来源归档（ingest · VLN 10 篇盘点 第 {p["num"]}/10）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** paper
-- **VLN 分类：** {p['cat_name']}（[深蓝具身智能 10 篇编译](../blogs/{BLOG})）
-- **机构：** {p['inst']}
-- **出处：** {p['venue']} · arXiv:{p['arxiv']}
+- **VLN 分类：** {p["cat_name"]}（[深蓝具身智能 10 篇编译](../blogs/{BLOG})）
+- **机构：** {p["inst"]}
+- **出处：** {p["venue"]} · arXiv:{p["arxiv"]}
 - **索引来源：** [{BLOG}](../blogs/{BLOG})（<{WECHAT_URL}>）
 - **入库日期：** 2026-06-20
-- **一句话说明：** {p['summary']}
+- **一句话说明：** {p["summary"]}
 
 ## 核心摘录（策展，非全文）
 
-- **在 VLN 地图中的位置：** {p['cat_name']}，编号 **{p['num']}/10**。
-- **公众号导读要点：** {p['why']}
-- **Google Scholar 引用量（文内）：** {p['cites']} 次（以原文发表后统计为准，会随时间变化）。
+- **在 VLN 地图中的位置：** {p["cat_name"]}，编号 **{p["num"]}/10**。
+- **公众号导读要点：** {p["why"]}
+- **Google Scholar 引用量（文内）：** {p["cites"]} 次（以原文发表后统计为准，会随时间变化）。
 
 ## 对 wiki 的映射
 
-- [paper-vln-{p['num']}-{p['slug']}](../../wiki/entities/paper-vln-{p['num']}-{p['slug']}.md)
+- [paper-vln-{p["num"]}-{p["slug"]}](../../wiki/entities/paper-vln-{p["num"]}-{p["slug"]}.md)
 - [vln-10-papers-technology-map](../../wiki/overview/vln-10-papers-technology-map.md)
-- [vln-category-{p['cat']}-{'datasets-platforms' if p['cat'] == '01' else 'algorithm-frameworks'}](../../wiki/overview/vln-category-{p['cat']}-{'datasets-platforms' if p['cat'] == '01' else 'algorithm-frameworks'}.md)
+- [vln-category-{p["cat"]}-{"datasets-platforms" if p["cat"] == "01" else "algorithm-frameworks"}](../../wiki/overview/vln-category-{p["cat"]}-{"datasets-platforms" if p["cat"] == "01" else "algorithm-frameworks"}.md)
 
 ## 参考来源（原始）
 
-- 论文：<https://arxiv.org/abs/{p['arxiv']}>
+- 论文：<https://arxiv.org/abs/{p["arxiv"]}>
 - 微信公众号编译：[{BLOG}](../blogs/{BLOG})
 """
     path.write_text(content, encoding="utf-8")
@@ -201,21 +202,21 @@ type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai]
 status: complete
 updated: 2026-06-20
-arxiv: "{p['arxiv']}"
-summary: "{p['summary']}"
+arxiv: "{p["arxiv"]}"
+summary: "{p["summary"]}"
 related:
   - ../overview/vln-10-papers-technology-map.md
   - ../overview/{cat_hub}.md
   - ../tasks/vision-language-navigation.md
 sources:
-  - ../../sources/papers/vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md
+  - ../../sources/papers/vln_survey_{p["num"]}_{p["slug"].replace("-", "_")}.md
   - ../../sources/blogs/{BLOG}
   - ../../sources/papers/{CATALOG}
 ---
 
-# {p['short']}
+# {p["short"]}
 
-**{p['short']}** 收录于 [深蓝具身智能 · VLN 10 项代表性研究]({WECHAT_URL}) **第 {p['num']}/10** 篇，归类为 **{p['cat_name']}**。本页为知识库 **策展摘要**；方法细节以论文 PDF 为准。
+**{p["short"]}** 收录于 [深蓝具身智能 · VLN 10 项代表性研究]({WECHAT_URL}) **第 {p["num"]}/10** 篇，归类为 **{p["cat_name"]}**。本页为知识库 **策展摘要**；方法细节以论文 PDF 为准。
 
 ## 英文缩写速查
 
@@ -227,24 +228,24 @@ sources:
 
 ## 为什么重要
 
-- {p['why']}
-- 在 [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md) 中属于 **[{p['cat_name']}](../overview/{cat_hub}.md)**。
+- {p["why"]}
+- 在 [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md) 中属于 **[{p["cat_name"]}](../overview/{cat_hub}.md)**。
 
 ## 核心信息（索引级）
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | {p['num']}/10 |
-| 分组 | {p['cat_name']} |
-| 出处 | {p['venue']} · arXiv:{p['arxiv']} |
-| 机构 | {p['inst']} |
+| 编号 | {p["num"]}/10 |
+| 分组 | {p["cat_name"]} |
+| 出处 | {p["venue"]} · arXiv:{p["arxiv"]} |
+| 机构 | {p["inst"]} |
 
 ## 与其他页面的关系
 
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[{cat_hub}.md](../overview/{cat_hub}.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
-- 原始 source：[vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md](../../sources/papers/vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md)
+- 原始 source：[vln_survey_{p["num"]}_{p["slug"].replace("-", "_")}.md](../../sources/papers/vln_survey_{p["num"]}_{p["slug"].replace("-", "_")}.md)
 
 ## 实验与评测
 
@@ -252,10 +253,10 @@ sources:
 
 ## 参考来源
 
-- [vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md](../../sources/papers/vln_survey_{p['num']}_{p['slug'].replace('-', '_')}.md) — VLN 10 篇策展摘录
+- [vln_survey_{p["num"]}_{p["slug"].replace("-", "_")}.md](../../sources/papers/vln_survey_{p["num"]}_{p["slug"].replace("-", "_")}.md) — VLN 10 篇策展摘录
 - [{CATALOG}](../../sources/papers/{CATALOG})
 - [{BLOG}](../../sources/blogs/{BLOG})
-- 论文：<https://arxiv.org/abs/{p['arxiv']}>
+- 论文：<https://arxiv.org/abs/{p["arxiv"]}>
 
 ## 推荐继续阅读
 
