@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-20] ingest | sources/repos/karpathy-autoresearch.md — Karpathy 单 GPU 自主 LLM 训练实验环；wiki/entities/karpathy-autoresearch.md；交叉 ai-auto-research、andrej-karpathy
+
 ## [2026-06-20] ingest | sources/papers/ai_auto_research_survey_2605_18661.md — AI Auto-Research 综述与 Awesome 列表；wiki/concepts/ai-auto-research.md；交叉 llm-wiki-karpathy、agent-reach、hermes-agent、world-action-models
 
 ## [2026-06-20] ingest | sources/papers/oscar_arxiv_2606_04463.md — OSCAR 跨具身骨架条件世界模型；wiki/entities/paper-oscar.md；交叉 generative-world-models、roboarena、robot-world-models-training-loop-taxonomy、world-models-route-03-virtual-sandbox
