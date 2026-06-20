@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-20] ingest | sources/papers/oscar_arxiv_2606_04463.md — OSCAR 跨具身骨架条件世界模型；wiki/entities/paper-oscar.md；交叉 generative-world-models、roboarena、robot-world-models-training-loop-taxonomy、world-models-route-03-virtual-sandbox
+
 ## [2026-06-20] ingest | sources/blogs/wechat_shenlan_vln_10_papers_survey.md — VLN 10 篇技术地图与论文节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install -e` + `agent-reach install --channels=wechat`）；微信正文经 `~/.agent-reach/tools/wechat-article-for-ai`（Camoufox）

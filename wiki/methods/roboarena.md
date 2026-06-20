@@ -2,9 +2,11 @@
 type: method
 tags: [benchmark, evaluation, generalist-policy, distributed]
 status: complete
-updated: 2026-05-10
+updated: 2026-06-20
 related:
   - ./octo-model.md
+  - ../entities/paper-oscar.md
+  - ../entities/paper-shenlan-wm-15-worldgym.md
   - ../queries/robot-learning-three-eras-narrative.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
@@ -27,10 +29,12 @@ summary: "RoboArena 通过多机构分布式真实机器人评测与盲测配对
 
 - **分布式配对评测**：多实验室各自选题与环境，对两套策略做盲测配对，聚合排名而非单一榜单得分。
 - **约束 overly broad 声称**：当 [Foundation Policy](../concepts/foundation-policy.md) / [VLA](./vla.md) 能力叙事扩张时，用真实多样性对抗中心化静态基准的过拟合。
+- **WM 虚拟评测代理**：动作条件视频世界模型可在 rollout 上估计策略成功率并与真机排名对照——[OSCAR](../entities/paper-oscar.md) 在 RoboArena 七策略池报告 Pearson **ρ +0.750**；同类路线见 [WorldGym](../entities/paper-shenlan-wm-15-worldgym.md)。
 
 ## 关联页面
 
 - [Octo Model](./octo-model.md)
+- [OSCAR](../entities/paper-oscar.md) — 跨具身骨架条件 WM 虚拟策略评估
 - [Foundation Policy](../concepts/foundation-policy.md)
 
 ## 参考来源
