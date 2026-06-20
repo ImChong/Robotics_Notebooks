@@ -1,5 +1,14 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-19] structural | checklist-v25 P1 训练数据管线知识链（+2 页）；新建 wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/motion-data-quality.md
+
+- 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P1 第一项「训练数据管线知识链 (+2)」收口
+- 新建页面：
+  - [wiki/queries/humanoid-training-data-pipeline.md](wiki/queries/humanoid-training-data-pipeline.md) — 端到端 Query：原始 MoCap / 人体视频 → 重定向 → RL/IL 训练输入三层决策树（含 Mermaid、端到端 pipeline、5 条误区、缩写速查）
+  - [wiki/concepts/motion-data-quality.md](wiki/concepts/motion-data-quality.md) — 动作数据质量四轴（物理可行性/接触一致性/形态差距/规模多样性）串联门模型 + 与重定向必要性因果链 + 五集对照
+- 交叉补强：[wiki/concepts/motion-retargeting.md](wiki/concepts/motion-retargeting.md)、[wiki/comparisons/humanoid-reference-motion-datasets.md](wiki/comparisons/humanoid-reference-motion-datasets.md) 补入对两新页的入链（无孤儿）
+- 验证：`make export graph` → 1257 节点 / 8186 边 / 0 孤儿；`make ci-preflight` 12/12 通过；`lint_wiki` 0 error
+
 ## [2026-06-19] ingest | sources/sites/metahuman-epic-docs.md — Epic MetaHuman 官方文档索引；补全 wiki/entities/metahuman.md 文档节
 
 - 原始资料：[metahuman-epic-docs.md](sources/sites/metahuman-epic-docs.md)（<https://dev.epicgames.com/documentation/metahuman/metahuman-documentation>）；侧栏 15 篇子文档摘要
