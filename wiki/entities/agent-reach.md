@@ -15,9 +15,12 @@ related:
   - ./hermes-agent.md
   - ./articraft.md
   - ../references/llm-wiki-karpathy.md
+  - ../concepts/ai-auto-research.md
 sources:
   - ../../sources/repos/panniantong_agent_reach.md
 summary: "Agent Reach（Panniantong/Agent-Reach）是面向编码代理的「安装 + 环境诊断 + SKILL 注册」脚手架：把网页/社媒/视频/GitHub/RSS/语义搜索等能力拆成可插拔渠道，聚合上游开源 CLI 与 MCP（如 twitter-cli、rdt-cli、yt-dlp、Jina Reader、gh、mcporter+Exa），凭据默认落本地；代理实际读写仍直接调用上游工具而非强制经本仓转发。"
+updated: 2026-06-20
+
 ---
 
 # Agent Reach（Panniantong）

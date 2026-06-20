@@ -9,7 +9,7 @@ tags:
   - persistent-memory
   - messaging-gateway
 status: complete
-updated: 2026-05-21
+updated: 2026-06-20
 related:
   - ./caveman.md
   - ./superpowers-obra.md
@@ -17,6 +17,7 @@ related:
   - ./agent-reach.md
   - ../references/llm-wiki-karpathy.md
   - ../../schema/ingest-workflow.md
+  - ../concepts/ai-auto-research.md
 sources:
   - ../../sources/repos/nousresearch_hermes_agent.md
   - ../../sources/sites/hermes-agent-nousresearch-docs.md
