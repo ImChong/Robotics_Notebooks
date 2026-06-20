@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1]
 summary: "五类常用人形数据源的表示、任务域、是否预重定向与典型下游对照，帮助在 tracking、HOI 与真机操作之间选型。"
-updated: 2026-06-16
+updated: 2026-06-20
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -80,6 +80,19 @@ flowchart TD
 2. **交互 loco-manipulation**：OMOMO（+ 自采 MoCap）→ [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) → G1 `qpos` → RL。
 3. **轻量 recovery 原型**：LaFAN1 子集 → 重定向 → 单策略走/跑/起身（见 [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
 4. **操作策略（非参考轨迹）**：Humanoid Everyday 真机轨迹 → 模仿 / VLA；与 MoCap 库 **互补而非替代**。
+
+## 四段衔接：数据来源 → 质量评估 → 重定向 → 策略输入
+
+本表只解决端到端链路的**第一段（数据来源）**。把视角拉远，一份参考运动要变成 RL/IL 能消费的训练输入，需要顺次过四道关：
+
+| 段 | 视角 | 本表五集如何落位 | 主页面 |
+|----|------|----------------|--------|
+| ① 数据来源 | 选 MoCap / 视频 / 真机执行数据 | 上方对照表与决策树 | 本页 |
+| ② 质量评估 | 物理可行性 / 接触一致性 / 形态差距 / 规模多样性 四轴体检 | AMASS 弱物理、PHUMA 已过滤、Humanoid Everyday 已消除形态差距 | [Motion Data Quality](../concepts/motion-data-quality.md) |
+| ③ 重定向 | 形态差距大则几何映射 + 动力学一致化，差距可忽略则跳过 | AMASS/LaFAN1/OMOMO 必重定向；PHUMA 预重定向；Humanoid Everyday 免重定向 | [Motion Retargeting](../concepts/motion-retargeting.md) |
+| ④ 策略输入 | 喂给 WBT / AMP / IL / VLA 的最终训练数据 | 见对照表「典型下游」行 | [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) |
+
+> 衔接判据由**第②段**给出：[四质量轴](../concepts/motion-data-quality.md) 按 **形态差距 → 接触 → 物理 → 规模** 顺序体检，决定第③段重定向**要不要做、要补几层**——这也是为什么 PHUMA / Humanoid Everyday 能跳过或简化重定向，而纯光学 MoCap 必须先过物理一致化层。整条链的端到端决策树见 [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md)。
 
 ## 常见误区
 

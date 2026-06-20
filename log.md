@@ -2132,3 +2132,9 @@
 ## [2026-05-15] structural | schema/search-regression-cases.json — WBC×QP BM25 回归 expected_top_k 3→5（语料扩张后 whole-body-control 概念页常居第 4–5 位）
 
 ## [2026-05-15] ingest | sources/repos/pytorch-official.md — 收录 pytorch.org 与 get-started/docs/tutorials；新建 wiki/entities/pytorch.md；互链深度学习基础、Isaac Lab
+
+## [2026-06-20] structural | checklist-v25 P1 数据层专题交叉补强 —— motion-retargeting 与 humanoid-reference-motion-datasets 明示「数据来源 → 质量评估 → 重定向 → 策略输入」四段衔接
+
+- `wiki/comparisons/humanoid-reference-motion-datasets.md` 新增「四段衔接」表与因果判据段，把五集数据落到①数据来源→②质量评估→③重定向→④策略输入四段，并显式回链 `motion-data-quality.md` 与 `humanoid-training-data-pipeline.md`。
+- `wiki/concepts/motion-retargeting.md` 新增「上游衔接」表，把重定向定位为链路第③段，明示其触发与补层由 motion-data-quality 四轴（形态差距/接触/物理）决定，与 P1 新页形成双向回链、消除孤儿。
+- `make lint` 0 errors（仅 3 条既有信息型预警）；勾选 v25 P1「数据层专题交叉补强」条目。
