@@ -2,8 +2,10 @@
 type: overview
 tags: [vln, navigation, open-source, reproduction, habitat, vla, embodied-ai]
 status: complete
-updated: 2026-05-22
+updated: 2026-06-20
 related:
+  - ./vln-10-papers-technology-map.md
+  - ../entities/paper-vln-10-navid.md
   - ../tasks/vision-language-navigation.md
   - ../methods/vla.md
   - ../methods/diffusion-policy.md
@@ -93,6 +95,8 @@ flowchart LR
 
 ## 关联页面
 
+- [VLN 10 篇论文技术地图](./vln-10-papers-technology-map.md)
+- [NaVid（盘点第 10 篇）](../entities/paper-vln-10-navid.md)
 - [视觉–语言导航（VLN）](../tasks/vision-language-navigation.md)
 - [VLA（Vision-Language-Action）](../methods/vla.md)
 - [VLA 开源复现景观（2025）](./vla-open-source-repro-landscape-2025.md)

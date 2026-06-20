@@ -2,9 +2,10 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-06-07
+updated: 2026-06-20
 status: complete
 related:
+  - ../overview/vln-10-papers-technology-map.md
   - ../overview/vln-open-source-repro-paradigms.md
   - ../entities/sceneverse-pp.md
   - ../entities/esi-bench.md
@@ -64,6 +65,7 @@ sources:
 
 ## 与其他页面的关系
 
+- **技术地图**：[VLN 10 篇论文技术地图](../overview/vln-10-papers-technology-map.md) — 2018–2024 代表性工作按「数据集/平台 → 算法框架」两组入口串读，贯穿减负演进线（R2R → NaVid）。
 - **复现路径**：[VLN 四范式开源复现策展](../overview/vln-open-source-repro-paradigms.md) — VLFM / NavGPT / NoMaD / Uni-NaVid 由浅入深（模块化→LLM→扩散 e2e→导航 VLA）。
 - **空中 WAM**：[WorldVLN](../entities/paper-worldvln-aerial-vln-wam.md) — 潜自回归世界转移 + 航点解码 + Action-aware GRPO；室内外 UAV 基准与真机部署（arXiv:2605.15964）。
 - **数据**：[SceneVerse++](../entities/sceneverse-pp.md) 将室内漫游视频转为 R2R 兼容的离散导航数据，并报告在相关基准上的增益。
@@ -82,6 +84,7 @@ sources:
 
 ## 关联页面
 
+- [VLN 10 篇论文技术地图](../overview/vln-10-papers-technology-map.md)
 - [VLN 开源复现：四范式学习路径](../overview/vln-open-source-repro-paradigms.md)
 - [WorldVLN（空中 VLN · WAM）](../entities/paper-worldvln-aerial-vln-wam.md)
 - [World Action Models（WAM）](../concepts/world-action-models.md)
