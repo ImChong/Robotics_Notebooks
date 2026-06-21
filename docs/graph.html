@@ -2442,7 +2442,11 @@
 
     function isSafeUrl(url) {
       if (!url) return false;
-      const s = String(url).trim();
+      // eslint-disable-next-line no-control-regex
+    let s = String(url).replace(/[\x00-\x1F\x7F-\x9F]/g, '').trim();
+      s = s.replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
+           .replace(/&#([0-9]+);?/g, (_, dec) => String.fromCharCode(parseInt(dec, 10)))
+           .replace(/&colon;?/gi, ':');
       if (/^\/\//.test(s)) return false;
       if (/^(?:https?|mailto|tel):/i.test(s)) return true;
       if (/:/i.test(s)) return false;
