@@ -2,7 +2,7 @@
 type: query
 tags: [simulator, mujoco, isaac-lab, genesis, locomotion, rl]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-21
 summary: MuJoCo、Isaac Lab、Genesis 三款主流 RL 仿真器的横向对比与选型指南，聚焦 locomotion 训练场景；并挂接六层训练栈地图以区分「同层竞争」与「分层互补」。
 sources:
   - ../../sources/papers/sim2real.md
@@ -20,6 +20,7 @@ related:
   - ../entities/brax.md
   - ../entities/newton-physics.md
   - ../entities/mjlab.md
+  - ../entities/spear-sim.md
 ---
 
 # Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis
@@ -142,8 +143,13 @@ related:
 │   └─ 是 → Genesis（新兴框架，上手快）
 │
 └─ 需要逼真传感器（camera / lidar）仿真？
-    └─ 是 → Isaac Lab（Omniverse 渲染管线）
+    ├─ 大规模 GPU 并行 RL 环境 → Isaac Lab（Omniverse 渲染管线）
+    └─ 已有 UE 项目 / Epic 样例 / Hypersim 级 GT 合成数据 → [SPEAR](../entities/spear-sim.md)（通用 UE 反射 API + 高速 NumPy 渲染）
 ```
+
+### 补充：UE 光真实感可编程后端（[SPEAR](../entities/spear-sim.md)）
+
+本页主对比仍为 **MuJoCo / Isaac Lab / Genesis**（locomotion RL 训练）。若目标是 **绑定任意 Unreal Engine 项目**、需要 **14K+ 反射 API**、**56 FPS 级 1080p GT 渲染**（深度/法线/语义/内禀分解等），或 **MuJoCo↔UE 协同仿真**，应单独评估 **SPEAR**——它与 Isaac Lab 竞争的是「视觉与场景可编程性」，而非默认的万环境 PPO 并行。对照 [AirSim](../entities/airsim.md)（UAV 视觉、维护期）与 [MetaHuman](../entities/metahuman.md)（数字人资产）。
 
 ### 补充：[Newton Physics](../entities/newton-physics.md) 与 [mjlab](../entities/mjlab.md)
 
@@ -214,3 +220,4 @@ related:
 - [mjlab](../entities/mjlab.md) — MuJoCo Warp 上的轻量 RL 框架
 - [UniLab](../entities/unilab.md) — CPU 批量仿真 + GPU 学习的异构机器人 RL 训练栈
 - [ppf-contact-solver](../entities/ppf-contact-solver.md) — 可变形 shell/solid/rod 离线 GPU 接触求解
+- [SPEAR](../entities/spear-sim.md) — UE 通用可编程光真实感与 GT 合成数据后端

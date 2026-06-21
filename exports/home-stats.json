@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-21",
-  "node_count": 1274,
-  "edge_count": 8303,
+  "node_count": 1275,
+  "edge_count": 8316,
   "coverage": {
-    "covered": 1244,
-    "total": 1272,
+    "covered": 1245,
+    "total": 1273,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/spear-sim.md",
+      "detail_id": "entity-spear-sim",
+      "label": "SPEAR（Photorealistic Embodied AI Simulator）",
+      "type": "entity",
+      "recency": "2026-06-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-06-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/metahuman.md",
+      "detail_id": "entity-metahuman",
+      "label": "MetaHuman（Epic 数字人平台）",
+      "type": "entity",
+      "recency": "2026-06-21",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/airsim.md",
+      "detail_id": "entity-airsim",
+      "label": "AirSim",
+      "type": "entity",
+      "recency": "2026-06-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/gvhmr.md",
       "detail_id": "entity-gvhmr",
@@ -121,14 +153,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/metahuman.md",
-      "detail_id": "entity-metahuman",
-      "label": "MetaHuman（Epic 数字人平台）",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/mixamo.md",
       "detail_id": "entity-mixamo",
       "label": "Mixamo",
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/crisp-real2sim.md",
-      "detail_id": "wiki-methods-crisp-real2sim",
-      "label": "CRISP（Contact-guided Real2Sim）",
-      "type": "method",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-mujica-wheel-legged-multi-skill.md",
-      "detail_id": "entity-paper-mujica-wheel-legged-multi-skill",
-      "label": "MUJICA：轮足多技能统一本体控制架构",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/wheel-legged-quadruped.md",
-      "detail_id": "wiki-concepts-wheel-legged-quadruped",
-      "label": "轮足四足机器人（四轮足 / Wheel-Legged Quadruped）",
-      "type": "concept",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/gvhmr.md",
-    "detail_id": "entity-gvhmr",
-    "label": "GVHMR",
+    "path": "wiki/entities/spear-sim.md",
+    "detail_id": "entity-spear-sim",
+    "label": "SPEAR（Photorealistic Embodied AI Simulator）",
     "type": "entity",
     "recency": "2026-06-21",
     "source": "log.md"
