@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-21] ingest | sources/repos/spear-sim.md — SPEAR UE 光真实感具身仿真库；wiki/entities/spear-sim.md；交叉 simulator-selection-guide、metahuman、airsim
+
+- 原始资料：[spear-sim.md](sources/repos/spear-sim.md)（<https://github.com/spear-sim/spear>）
+- 说明：UE 反射 API、begin_frame/end_frame 事务模型、56 FPS GT 渲染、MuJoCo co-sim、MetaHumans 多视角示例
+- 沉淀页面：[wiki/entities/spear-sim.md](wiki/entities/spear-sim.md)
+- 交叉更新：[wiki/queries/simulator-selection-guide.md](wiki/queries/simulator-selection-guide.md)、[wiki/entities/metahuman.md](wiki/entities/metahuman.md)、[wiki/entities/airsim.md](wiki/entities/airsim.md)
+- 验证：`make ci-preflight`
+
 ## [2026-06-21] ingest | sources/papers/gvhmr_arxiv_2409_06662.md — GVHMR Gravity-View 单目 world-grounded HMR；深化 wiki/entities/gvhmr.md
 
 - 原始资料：[gvhmr_arxiv_2409_06662.md](sources/papers/gvhmr_arxiv_2409_06662.md)、[gvhmr-zju3dv-github-io.md](sources/sites/gvhmr-zju3dv-github-io.md)、[gvhmr.md](sources/repos/gvhmr.md)（<https://zju3dv.github.io/gvhmr/>、<https://github.com/zju3dv/GVHMR>）
