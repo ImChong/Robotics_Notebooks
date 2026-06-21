@@ -138,6 +138,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) — 把 EN–PI–R–E 落到环境前提、范式选型与机队 scaling 的实操页
 - ENPIRE 官方项目页：<https://research.nvidia.com/labs/gear/enpire/>
 - RoboCasa 论文（仿真日常操作基准）：<https://arxiv.org/abs/2406.02545>
 - Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
