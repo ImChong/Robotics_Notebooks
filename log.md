@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-21] structural | 图谱社区 — 弱归属节点归入「其他社区」；scripts/generate_link_graph.py、docs/graph.html
+
+- 规则：与同社区邻居边占比 &lt; 50% 的非枢纽节点不再强行贴标签，统一落入 `community-other`（其他社区）；图谱图例/筛选始终展示该桶
+- 验证：`make ci-preflight`
+
 ## [2026-06-21] ingest | sources/repos/spear-sim.md — SPEAR UE 光真实感具身仿真库；wiki/entities/spear-sim.md；交叉 simulator-selection-guide、metahuman、airsim
 
 - 原始资料：[spear-sim.md](sources/repos/spear-sim.md)（<https://github.com/spear-sim/spear>）

@@ -1780,8 +1780,12 @@
       communityColorMap = new Map();
       communityLabelMap = new Map();
       communityMetaMap = new Map();
-      getSortedCommunities().forEach((community, idx) => {
-        communityColorMap.set(community.id, COMMUNITY_COLORS[idx % COMMUNITY_COLORS.length]);
+      let namedColorIdx = 0;
+      getSortedCommunities().forEach((community) => {
+        const color = community.id === 'community-other'
+          ? '#94a3b8'
+          : COMMUNITY_COLORS[namedColorIdx++ % COMMUNITY_COLORS.length];
+        communityColorMap.set(community.id, color);
         communityLabelMap.set(community.id, community.label || community.id);
         communityMetaMap.set(community.id, community);
       });

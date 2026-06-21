@@ -170,8 +170,11 @@
   function buildCommunityColorMap(communities) {
     var palette = getCommunityColors();
     var map = {};
-    getSortedCommunities(communities).forEach(function (c, idx) {
-      map[c.id] = palette[idx % palette.length];
+    var namedColorIdx = 0;
+    getSortedCommunities(communities).forEach(function (c) {
+      map[c.id] = c.id === 'community-other'
+        ? '#94a3b8'
+        : palette[namedColorIdx++ % palette.length];
     });
     return map;
   }

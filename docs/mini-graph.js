@@ -117,8 +117,15 @@
     var palette = (typeof d3 !== 'undefined' && d3.schemeTableau10) ? d3.schemeTableau10 : TABLEAU10;
     var communityFill = {};
     var communityLabelMap = {};
-    (gd.communities || []).forEach(function(c, idx) {
-      communityFill[c.id] = palette[idx % palette.length];
+    var namedColorIdx = 0;
+    (gd.communities || []).slice().sort(function (a, b) {
+      if (a.id === 'community-other') return 1;
+      if (b.id === 'community-other') return -1;
+      return (b.size || 0) - (a.size || 0);
+    }).forEach(function(c) {
+      communityFill[c.id] = c.id === 'community-other'
+        ? '#94a3b8'
+        : palette[namedColorIdx++ % palette.length];
       communityLabelMap[c.id] = c.label || c.id;
     });
     function nodeFill(d) {
