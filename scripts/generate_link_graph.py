@@ -764,9 +764,7 @@ def _demote_weak_community_members(
     for node_id, community_id in list(node_to_community.items()):
         if community_id == OTHER_COMMUNITY_ID or node_id in hub_ids:
             continue
-        ratio = _intra_community_edge_ratio(
-            node_id, community_id, adjacency, node_to_community
-        )
+        ratio = _intra_community_edge_ratio(node_id, community_id, adjacency, node_to_community)
         if ratio < threshold:
             node_to_community[node_id] = OTHER_COMMUNITY_ID
 
