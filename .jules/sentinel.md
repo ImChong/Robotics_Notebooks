@@ -6,3 +6,7 @@
 **Vulnerability:** Inline JavaScript event handlers (like `onclick`) were unsafely injected into dynamically constructed HTML strings via `innerHTML`.
 **Learning:** Even when inputs are escaped, inline event handlers in strings parsed by `innerHTML` pose a risk for DOM-based XSS, introduce scope leaks, and violate Content Security Policy (CSP) best practices against `unsafe-inline`.
 **Prevention:** Avoid inline event handlers in generated HTML. Instead, attach centralized event listeners (event delegation) to stable parent containers and use classes or data attributes to handle child element interactions safely.
+## 2024-10-24 - DOM XSS via HTML Entity URL Bypass
+**Vulnerability:** The `isSafeUrl` function only checked the original string against a regex. Browsers decode HTML entities (like `&#58;` for `:`) when evaluating URLs in `href` or `src` attributes, allowing attackers to bypass frontend validation and execute JavaScript via `javascript&#58;alert(1)`.
+**Learning:** URL validation algorithms must decode HTML entities and strip control characters in the same way the browser rendering engine does before applying security checks, otherwise entity-encoded malicious payloads will bypass the filter but still execute.
+**Prevention:** Always decode hex (`&#xXX;`), decimal (`&#XXX;`), and named (`&colon;`) entities, and strip invisible control characters before validating the URL scheme to prevent DOM XSS entity bypasses.
