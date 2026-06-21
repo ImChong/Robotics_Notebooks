@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-21",
   "node_count": 1274,
-  "edge_count": 8298,
+  "edge_count": 8303,
   "coverage": {
     "covered": 1244,
     "total": 1272,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gvhmr.md",
+      "detail_id": "entity-gvhmr",
+      "label": "GVHMR",
+      "type": "entity",
+      "recency": "2026-06-21",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/karpathy-autoresearch.md",
       "detail_id": "entity-karpathy-autoresearch",
@@ -159,22 +167,14 @@
       "type": "concept",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/hybrid-locomotion.md",
-      "detail_id": "wiki-tasks-hybrid-locomotion",
-      "label": "Hybrid Locomotion (混合运动)",
-      "type": "task",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/karpathy-autoresearch.md",
-    "detail_id": "entity-karpathy-autoresearch",
-    "label": "autoresearch（karpathy/autoresearch）",
+    "path": "wiki/entities/gvhmr.md",
+    "detail_id": "entity-gvhmr",
+    "label": "GVHMR",
     "type": "entity",
-    "recency": "2026-06-20",
+    "recency": "2026-06-21",
     "source": "log.md"
   }
 }
