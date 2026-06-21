@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-06-19
+updated: 2026-06-20
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -100,6 +100,21 @@ subject to: FK(θ) = p_target (末端位置约束)
     - **QP 优化 (如 HALO)**：通过约束二次规划，强制满足固定脚位置和地表接触约束，修正 Base 位姿漂移。
     - **RL Fine-tuning**：以重定向轨迹作为参考，通过 RL 在仿真中进行鲁棒性训练。
     - **WBC 跟踪**：将重定向轨迹作为 WBC 的任务目标，由底层控制器实时处理平衡与力矩限制。
+
+---
+
+## 上游衔接：数据来源 → 质量评估 → 重定向 → 策略输入
+
+重定向不是链路的起点。它的**输入由前两段决定，输出喂给第四段**——是否需要重定向、需要补几层，并非由重定向本身决定，而是由**第②段的数据质量体检**给出判据：
+
+| 段 | 视角 | 关键判据 | 主页面 |
+|----|------|---------|--------|
+| ① 数据来源 | 选 MoCap / 视频 / 真机执行数据 | 表示、规模、许可证、是否预重定向 | [人形数据五集选型](../comparisons/humanoid-reference-motion-datasets.md) |
+| ② 质量评估 | 物理可行性 / 接触一致性 / 形态差距 / 规模多样性 四轴 | **形态差距大 → 本页重定向不可省略** | [Motion Data Quality](./motion-data-quality.md) |
+| ③ **重定向（本页）** | 几何映射 + 动力学一致化，把人体参考变成机器人可执行参考 | 接触保真、限位满足、物理可行 | 本页 §「两层架构模式」 |
+| ④ 策略输入 | 物理可行参考 → WBT / AMP / IL 训练数据 | 真机可执行的策略 | [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) |
+
+> 因果方向：[第②段四质量轴](./motion-data-quality.md) 中的**形态差距**轴直接决定本页是否被触发（差距可忽略时如真机执行数据 [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) 可跳过重定向直接 IL）；**接触一致性 / 物理可行性**两轴则决定本页 §「动力学一致化层」要补 QP / RL 几层。整条链的端到端决策树见 [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md)。
 
 ---
 
