@@ -64,3 +64,55 @@ def test_merge_communities_to_cap_merges_smallest() -> None:
     merged = glg._merge_communities_to_cap(partition, adjacency, cap=2)
     assert len(merged) == 2
     assert sum(len(c) for c in merged) == 6
+
+
+def test_demote_weak_community_members_moves_peripheral_nodes() -> None:
+    """跨社区桥接节点应归入「其他社区」，社区枢纽页豁免。"""
+    node_to_community = {
+        "hub-a": "community-0",
+        "core-a": "community-0",
+        "bridge": "community-0",
+        "core-b": "community-1",
+    }
+    community_meta = {
+        "community-0": {
+            "id": "community-0",
+            "label": "A 社区",
+            "size": 3,
+            "hub_id": "hub-a",
+        },
+        "community-1": {
+            "id": "community-1",
+            "label": "B 社区",
+            "size": 1,
+            "hub_id": "core-b",
+        },
+    }
+    adjacency = {
+        "hub-a": {"core-a", "bridge"},
+        "core-a": {"hub-a"},
+        "bridge": {"hub-a", "core-b", "loner"},
+        "core-b": {"bridge"},
+        "loner": {"bridge"},
+    }
+
+    glg._demote_weak_community_members(node_to_community, community_meta, adjacency, threshold=0.5)
+
+    assert node_to_community["hub-a"] == "community-0"
+    assert node_to_community["core-a"] == "community-0"
+    assert node_to_community["bridge"] == glg.OTHER_COMMUNITY_ID
+    assert node_to_community["core-b"] == "community-1"
+
+
+def test_assign_communities_always_includes_other_bucket() -> None:
+    nodes = [
+        {"id": "a", "label": "A"},
+        {"id": "b", "label": "B"},
+        {"id": "c", "label": "C"},
+    ]
+    edges = [{"source": "a", "target": "b"}, {"source": "b", "target": "c"}]
+    communities, community_meta = glg.assign_communities(nodes, edges)
+
+    assert glg.OTHER_COMMUNITY_ID in community_meta
+    assert any(c["id"] == glg.OTHER_COMMUNITY_ID for c in communities)
+    assert all("community" in node for node in nodes)

@@ -59,6 +59,8 @@ PRIMARY_COMMUNITY_CAP = 16
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
 OTHER_COMMUNITY_LABEL = "其他社区"
+# 与同社区邻居的边占比低于此值的非枢纽节点归入「其他社区」（避免强行贴标签）。
+COMMUNITY_MEMBERSHIP_THRESHOLD = 0.5
 # 社区展示名格式：「中文（English） 社区」。规范见 schema/naming.md § 图谱社区命名。
 # 社区基名默认取枢纽页 H1，但 H1 风格不一；此处按 hub 路径给出统一 override，脚本再追加 ` 社区`。
 # 未命中 override 时回退 H1，并在 generate 阶段对不符合 COMMUNITY_HUB_NAME_RE 的基名打印 WARNING。
@@ -729,6 +731,64 @@ def _merge_partition_by_hub_equivalence(
     return sorted(merged, key=lambda members: (-len(members), members[0] if members else ""))
 
 
+def _intra_community_edge_ratio(
+    node_id: str,
+    community_id: str,
+    adjacency: dict[str, set[str]],
+    node_to_community: dict[str, str],
+) -> float:
+    neighbors = adjacency.get(node_id, set())
+    if not neighbors:
+        return 0.0
+    same = sum(1 for nb in neighbors if node_to_community.get(nb) == community_id)
+    return same / len(neighbors)
+
+
+def _community_hub_ids(community_meta: dict[str, dict[str, Any]]) -> set[str]:
+    return {
+        str(meta["hub_id"])
+        for meta in community_meta.values()
+        if meta["id"] != OTHER_COMMUNITY_ID and meta.get("hub_id")
+    }
+
+
+def _demote_weak_community_members(
+    node_to_community: dict[str, str],
+    community_meta: dict[str, dict[str, Any]],
+    adjacency: dict[str, set[str]],
+    *,
+    threshold: float = COMMUNITY_MEMBERSHIP_THRESHOLD,
+) -> None:
+    """弱归属节点归入「其他社区」：邻居半数以上不在本社区，且非社区枢纽页。"""
+    hub_ids = _community_hub_ids(community_meta)
+    for node_id, community_id in list(node_to_community.items()):
+        if community_id == OTHER_COMMUNITY_ID or node_id in hub_ids:
+            continue
+        ratio = _intra_community_edge_ratio(
+            node_id, community_id, adjacency, node_to_community
+        )
+        if ratio < threshold:
+            node_to_community[node_id] = OTHER_COMMUNITY_ID
+
+
+def _recalculate_community_sizes(
+    community_meta: dict[str, dict[str, Any]],
+    node_to_community: dict[str, str],
+) -> None:
+    for meta in community_meta.values():
+        meta["size"] = 0
+    for community_id in node_to_community.values():
+        if community_id in community_meta:
+            community_meta[community_id]["size"] += 1
+
+
+def _ensure_other_community_bucket(community_meta: dict[str, dict[str, Any]]) -> None:
+    community_meta.setdefault(
+        OTHER_COMMUNITY_ID,
+        {"id": OTHER_COMMUNITY_ID, "label": OTHER_COMMUNITY_LABEL, "size": 0, "hub_id": None},
+    )
+
+
 def assign_communities(
     nodes: list[dict[str, Any]],
     edges: list[dict[str, str]],
@@ -770,6 +830,10 @@ def assign_communities(
             community_meta[community_id]["hub_id"] = hub_id
         for node_id in members:
             node_to_community[node_id] = community_id
+
+    _demote_weak_community_members(node_to_community, community_meta, adjacency)
+    _ensure_other_community_bucket(community_meta)
+    _recalculate_community_sizes(community_meta, node_to_community)
 
     for node in nodes:
         node["community"] = node_to_community.get(node["id"], OTHER_COMMUNITY_ID)
