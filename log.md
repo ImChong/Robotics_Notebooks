@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-21] ingest | sources/papers/gvhmr_arxiv_2409_06662.md — GVHMR Gravity-View 单目 world-grounded HMR；深化 wiki/entities/gvhmr.md
+
+- 原始资料：[gvhmr_arxiv_2409_06662.md](sources/papers/gvhmr_arxiv_2409_06662.md)、[gvhmr-zju3dv-github-io.md](sources/sites/gvhmr-zju3dv-github-io.md)、[gvhmr.md](sources/repos/gvhmr.md)（<https://zju3dv.github.io/gvhmr/>、<https://github.com/zju3dv/GVHMR>）
+- 说明：Gravity-View 坐标逐帧 HMR、预处理→Transformer→世界轨迹管线、AMASS/BEDLAM/H36M/3DPW 训练、SimpleVO 工程更新
+- 沉淀页面：[wiki/entities/gvhmr.md](wiki/entities/gvhmr.md)
+- 验证：`make ci-preflight`
 ## [2026-06-20] ingest | sources/repos/karpathy-autoresearch.md — Karpathy 单 GPU 自主 LLM 训练实验环；wiki/entities/karpathy-autoresearch.md；交叉 ai-auto-research、andrej-karpathy
 
 ## [2026-06-20] ingest | sources/papers/ai_auto_research_survey_2605_18661.md — AI Auto-Research 综述与 Awesome 列表；wiki/concepts/ai-auto-research.md；交叉 llm-wiki-karpathy、agent-reach、hermes-agent、world-action-models

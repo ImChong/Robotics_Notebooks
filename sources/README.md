@@ -23,6 +23,7 @@
 | [x] [imitation_learning.md](papers/imitation_learning.md) | IL ingest 摘要（DAgger/ACT/Diffusion） |
 | [x] [whole_body_control.md](papers/whole_body_control.md) | WBC ingest 摘要（TSID/HQP/Crocoddyl） |
 | [x] [gentlehumanoid_upper_body_compliance.md](papers/gentlehumanoid_upper_body_compliance.md) | GentleHumanoid（arXiv:2511.04679）原始资料归档；已沉淀 `wiki/methods/gentlehumanoid-motion-tracking.md` |
+| [x] [gvhmr_arxiv_2409_06662.md](papers/gvhmr_arxiv_2409_06662.md) | GVHMR：Gravity-View 单目 world-grounded HMR（arXiv:2409.06662，SIGGRAPH Asia 2024）摘录与 wiki 映射 |
 | [-] [humanoid_hardware.md](papers/humanoid_hardware.md) | 人形机器人硬件论文归档（当前暂缓） |
 | [x] [modern_robotics_textbook.md](papers/modern_robotics_textbook.md) | Lynch & Park《Modern Robotics》教材：李群/螺旋理论统一描述运动学/动力学/控制（13 章） |
 | [x] [robot_link_rotor_inertia_primary_refs.md](papers/robot_link_rotor_inertia_primary_refs.md) | 连杆 URDF 惯量 + 转子反射惯量（MuJoCo armature / Gautier–Khalil 1990）一手资料索引 |
@@ -192,7 +193,7 @@
 | [x] [mujoco_playground.md](repos/mujoco_playground.md) | google-deepmind/mujoco_playground：MJX 机器人 RL 环境库（time-to-robot 训练入口） |
 | [x] [freemocap.md](repos/freemocap.md) | FreeMoCap：开源低成本多相机动捕与 GUI 平台（AGPL） |
 | [x] [fairmotion.md](repos/fairmotion.md) | fairmotion：Meta 通用动捕数据处理库（BVH/AMASS IO，已归档），重定向上游 |
-| [x] [gvhmr.md](repos/gvhmr.md) | zju3dv/GVHMR：单目视频全局人体运动恢复（SMPL），重定向上游 |
+| [x] [gvhmr.md](repos/gvhmr.md) | zju3dv/GVHMR：Gravity-View 单目 world-grounded HMR（SMPL），重定向上游；配套论文与项目页 |
 | [x] [ubisoft-laforge-animation-dataset.md](repos/ubisoft-laforge-animation-dataset.md) | LaFAN1：Ubisoft La Forge BVH 动捕与 SIGGRAPH 2020 评估脚本（CC BY-NC-ND） |
 | [x] [videomimic.md](repos/videomimic.md) | hongsukchoi/VideoMimic：视频驱动人形模仿与重定向 |
 | [x] [walk_the_dog.md](repos/walk_the_dog.md) | PeizhuoLi/walk-the-dog：SIGGRAPH 2024 人↔狗相位流形跨形态对齐 |
@@ -351,6 +352,7 @@
 | [x] [hoshi-no-ai-rhythm-github-io.md](sites/hoshi-no-ai-rhythm-github-io.md) | Rhythm 项目页 hoshi-no-ai.github.io/Rhythm（双 G1 真机交互演示、IAMR/IGRL/MAGIC；配套 arXiv:2603.02856） |
 | [x] [gencad-github-io.md](sites/gencad-github-io.md) | GenCAD 项目页 gencad.github.io（图像条件 CAD program 生成 Demo，arXiv:2409.16294） |
 | [x] [gencad3d-github-io.md](sites/gencad3d-github-io.md) | GenCAD-3D 项目页 gencad3d.github.io（点云/网格→CAD、SynthBal，arXiv:2509.15246） |
+| [x] [gvhmr-zju3dv-github-io.md](sites/gvhmr-zju3dv-github-io.md) | GVHMR 项目页 zju3dv.github.io/gvhmr（GV 坐标管线、训练/评测、BibTeX；arXiv:2409.06662） |
 | [x] [hrl-boyuai-hands-on-rl.md](sites/hrl-boyuai-hands-on-rl.md) | 动手学强化学习在线书 hrl.boyuai.com（章节 + 在线 notebook + 课件） |
 | [x] [hermes-agent-nousresearch-docs.md](sites/hermes-agent-nousresearch-docs.md) | Hermes Agent 官方站 hermes-agent.nousresearch.com（产品页 + Docusaurus 文档 + llms.txt 索引） |
 | [x] [npcliu-faststair-github-io.md](sites/npcliu-faststair-github-io.md) | FastStair 项目页 npcliu.github.io/FastStair（摘要、视频区、BibTeX） |
