@@ -34,8 +34,8 @@
 - [x] **训练数据管线知识链 (+2)**：
     - [x] `wiki/queries/humanoid-training-data-pipeline.md`（端到端 Query：原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的选型决策树，覆盖参考运动来源、重定向方案、训练范式三层的取舍与典型失败模式）。（2026-06-19 完成：三层决策树（来源/重定向/范式）+ Mermaid 流程图 + 端到端 pipeline + 5 条误区 + 缩写速查；来源层接 humanoid-reference-motion-datasets 五集表，质量评估接 motion-data-quality 四轴。）
     - [x] `wiki/concepts/motion-data-quality.md`（动作数据质量维度概念页：物理可行性 / 接触一致性 / 形态差距（morphology gap）/ 规模与多样性四个评估轴，与重定向必要性的因果关系）。（2026-06-19 完成：四轴串联门模型 + 四轴↔重定向必要性因果链 + 五集数据集四轴对照表；并补 motion-retargeting.md 与五集对比页对本页/Query 的入链，无孤儿。）
-- [ ] **数据层专题交叉补强**：
-    - [ ] 在 `wiki/comparisons/humanoid-reference-motion-datasets.md` 与 `wiki/concepts/motion-retargeting.md` 中明示「数据来源 → 质量评估 → 重定向 → 策略输入」的衔接，并与 P1 新页形成双向回链，消除孤儿页。
+- [x] **数据层专题交叉补强**：
+    - [x] 在 `wiki/comparisons/humanoid-reference-motion-datasets.md` 与 `wiki/concepts/motion-retargeting.md` 中明示「数据来源 → 质量评估 → 重定向 → 策略输入」的衔接，并与 P1 新页形成双向回链，消除孤儿页。（2026-06-20 完成：对比页新增「四段衔接」表 + 因果判据段，重定向页新增「上游衔接」表把重定向定位为链路第③段、由 motion-data-quality 四轴的形态差距/接触/物理轴决定触发与补层；两页均显式回链 motion-data-quality 与 humanoid-training-data-pipeline，双向闭环；`make lint` 0 errors。）
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
