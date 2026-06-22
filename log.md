@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] ingest | sources/papers/halomi_arxiv_2606_18772.md — HALOMI 主动感知无机器人示范→人形 loco-manipulation；wiki/entities/paper-halomi-humanoid-loco-manipulation.md；交叉 loco-manipulation、teleoperation
+
 ## [2026-06-21] structural | checklist-v25 P2 事实库扩展 +12 条数据层矛盾检测规则（186 → 198 条）；schema/canonical-facts.json
 
 - 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P2「事实库扩展」收口（≥ 196 条目标达成，实际 198 条）
