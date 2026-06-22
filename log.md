@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] ingest | sources/papers/x_ionet_arxiv_2511_08277.md — X-IONet 跨平台单 IMU 惯性里程计；wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md；交叉 state-estimation、ekf、topic-state-estimation
+
+- 原始资料：[x_ionet_arxiv_2511_08277.md](sources/papers/x_ionet_arxiv_2511_08277.md)（<https://arxiv.org/abs/2511.08277>，IEEE RA-L Vol. 11 No. 7, July 2026）
+- 沉淀页面：[wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md](wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md)
+- 交叉更新：[wiki/concepts/state-estimation.md](wiki/concepts/state-estimation.md)、[wiki/formalizations/ekf.md](wiki/formalizations/ekf.md)、[wiki/overview/topic-state-estimation.md](wiki/overview/topic-state-estimation.md)
+
 ## [2026-06-22] ingest | sources/papers/rf_detr_arxiv_2511_09554.md — RF-DETR 实时 DETR；wiki/entities/rf-detr.md；交叉 object-detection、object-detection-model-selection
 
 - 原始资料：[rf_detr_arxiv_2511_09554.md](sources/papers/rf_detr_arxiv_2511_09554.md)、[rf_detr.md](sources/repos/rf_detr.md)、[rfdetr-docs.md](sources/sites/rfdetr-docs.md)（<https://arxiv.org/abs/2511.09554>、<https://github.com/roboflow/rf-detr>、<https://rfdetr.roboflow.com/latest/>）
