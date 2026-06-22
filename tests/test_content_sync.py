@@ -345,11 +345,44 @@ console.log('ok');
             "typeof window.renderMathInElement !== 'function'",
             "window.renderMathInElement(container, {",
             "left: '$$', right: '$$', display: true",
+            "left: '\\\\[', right: '\\\\]', display: true",
             "left: '\\\\(', right: '\\\\)', display: false",
             "renderDetailMath(contentEl);",
         ]
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
+
+    def test_bracket_display_math_gets_block_wrapper(self):
+        """\\[...\\] display math (common in formalization pages) should wrap math-block for KaTeX."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('function renderMathBlocks(text)');
+const end = content.indexOf('function applyMathBlocksInHtmlFragment', start);
+eval(content.slice(start, end));
+const sample = '\\[ i_a + i_b + i_c = 0 \\]';
+const out = renderMathBlocks(sample);
+if (!out.includes('class="math-block"')) throw new Error('missing math-block wrapper');
+if (!out.includes('i_a + i_b + i_c = 0')) throw new Error('bracket math content lost');
+const aligned = '\\[ \\begin{aligned} i_d &= i_\\alpha \\\\ i_q &= i_\\beta \\end{aligned} \\]';
+const out2 = renderMathBlocks(aligned);
+if (!out2.includes('class="math-block"')) throw new Error('aligned block missing wrapper');
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
 
     def test_main_js_contains_toc_active_state_and_anchor_copy_hooks(self):
         content = MAIN_JS.read_text(encoding="utf-8")

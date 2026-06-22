@@ -458,6 +458,11 @@
         mathTokens.push({ token: token, html: '$$' + expr + '$$' });
         return token;
       })
+      .replace(/\\\[([\s\S]+?)\\\]/g, function (match, expr) {
+        const token = mathPrefix + mathTokens.length + '@@';
+        mathTokens.push({ token: token, html: '\\[' + expr + '\\]' });
+        return token;
+      })
       .replace(/\\\(([\s\S]+?)\\\)/g, function (match, expr) {
         const token = mathPrefix + mathTokens.length + '@@';
         mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
@@ -555,6 +560,9 @@
     return String(text || '')
       .replace(/\\\((.+?)\\\)/g, function (_, expr) {
         return '<span class="math-inline">\\(' + expr + '\\)</span>';
+      })
+      .replace(/\\\[([\s\S]+?)\\\]/g, function (_, expr) {
+        return '<div class="math-block">\\[' + expr.trim() + '\\]</div>';
       })
       .replace(/\$\$([\s\S]+?)\$\$/g, function (_, expr) {
         return '<div class="math-block">$$' + expr.trim() + '$$</div>';
@@ -1609,6 +1617,7 @@
     window.renderMathInElement(container, {
       delimiters: [
         { left: '$$', right: '$$', display: true },
+        { left: '\\[', right: '\\]', display: true },
         { left: '\\(', right: '\\)', display: false }
       ],
       ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option'],
