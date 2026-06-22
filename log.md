@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] ingest | sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md — 十年 TOP 8 仿真平台盘点；wiki/overview/sim-platforms-decade-technology-map.md；8 平台各建实体节点
+
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install` + 手动安装 [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox））
+- 原始资料：`sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md`、`sources/raw/wechat_sim_platforms_top8_2026-06-22.md`（<https://mp.weixin.qq.com/s/iaw_lWAR--AwppyMeIK4lw>）
+- 沉淀页面：[`wiki/overview/sim-platforms-decade-technology-map.md`](wiki/overview/sim-platforms-decade-technology-map.md)
+- 新建实体：`wiki/entities/ai2-thor.md`、`matterport3d-simulator.md`、`habitat-sim.md`、`igibson.md`、`maniskill2.md`、`behavior-1k.md`、`carla.md`、`robogen.md`
+- 交叉更新：[`mujoco.md`](wiki/entities/mujoco.md)、[`isaac-gym.md`](wiki/entities/isaac-gym.md)、[`pybullet.md`](wiki/entities/pybullet.md)、[`genesis-sim.md`](wiki/entities/genesis-sim.md)、[`sapien.md`](wiki/entities/sapien.md)、[`simulator-selection-guide.md`](wiki/queries/simulator-selection-guide.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-06-22] ingest | sources/papers/halomi_arxiv_2606_18772.md — HALOMI 主动感知无机器人示范→人形 loco-manipulation；wiki/entities/paper-halomi-humanoid-loco-manipulation.md；交叉 loco-manipulation、teleoperation
 
 ## [2026-06-21] structural | checklist-v25 P2 事实库扩展 +12 条数据层矛盾检测规则（186 → 198 条）；schema/canonical-facts.json

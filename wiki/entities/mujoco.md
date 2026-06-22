@@ -2,8 +2,9 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-22
 related:
+  - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco-mjx.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -20,6 +21,7 @@ related:
 sources:
   - ../../sources/papers/simulation.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
+  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
 ---
 

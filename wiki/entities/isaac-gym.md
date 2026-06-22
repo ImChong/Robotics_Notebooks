@@ -2,8 +2,9 @@
 type: entity
 tags: [entity, simulator, isaac, gpu-simulation, reinforcement-learning, sim2real, legacy]
 status: stable
-updated: 2026-05-31
+updated: 2026-06-22
 related:
+  - ../overview/sim-platforms-decade-technology-map.md
   - ./isaac-gym-isaac-lab.md
   - ./isaac-lab.md
   - ./legged-gym.md
@@ -14,6 +15,7 @@ sources:
   - ../../sources/papers/simulation_tools.md
   - ../../sources/papers/policy_optimization.md
   - ../../sources/repos/isaac_gym_isaac_lab.md
+  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "NVIDIA 早期 GPU 并行 RL 仿真框架（PhysX + tensor API），足式/人形大规模训练的开创基线；已 deprecated，新实验应迁移 Isaac Lab，但复现 2021–2024 论文仍常需读懂它。"
 ---
 

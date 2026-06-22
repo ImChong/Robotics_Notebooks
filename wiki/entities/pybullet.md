@@ -2,10 +2,12 @@
 type: entity
 tags: [simulation, physics-engine, reinforcement-learning, pybullet, bullet3, python]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-22
 related:
   - ./gym-pybullet-drones.md
   - ./motion-imitation-quadruped.md
+  - ./igibson.md
+  - ../overview/sim-platforms-decade-technology-map.md
   - ./mujoco.md
   - ./isaac-gym-isaac-lab.md
   - ../concepts/embodied-rl-minimal-closed-loop.md
@@ -16,6 +18,7 @@ sources:
   - ../../sources/repos/bullet3.md
   - ../../sources/sites/pybullet-org.md
   - ../../sources/blogs/wechat_shenlan_rl_embodied_minimal_closed_loop.md
+  - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "PyBullet 是 Bullet3 物理引擎的 Python 绑定：URDF 加载、关节驱动、碰撞与传感器接口轻量，pip 即可安装；常用于 RL 入门闭环、四足模仿与课程实验；精细接触与人形大规模并行不如 MuJoCo / Isaac Lab。"
 ---
 
