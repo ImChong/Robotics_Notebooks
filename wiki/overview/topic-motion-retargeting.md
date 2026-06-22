@@ -45,6 +45,7 @@ summary: "动作重定向专题汇总：把人体/动物参考动作映射到人
 - **[WBT](./topic-wbt.md)**：消费重定向轨迹做全身跟踪策略。
 - **[跨具身](./topic-cross-embodiment.md)**：重定向是跨形态迁移的前置步骤。
 - **[IL/RL](./topic-learning.md)**：重定向数据常作为 BC 示范或 AMP 风格约束。
+- **[训练数据](./topic-data-pipeline.md)**：重定向是训练数据管线的第③段，承接质量评估、产出策略输入。
 
 ## 关联页面
 
