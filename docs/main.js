@@ -4399,9 +4399,14 @@
       var detailUrl = 'detail.html?id=' + encodeURIComponent(item.id);
       var graphUrl = 'graph.html?focus=' + encodeURIComponent(item.id);
       var typeLabel = item.page_type || (item.path ? item.path.split('/').slice(1, 3).join(' / ') : '');
-      var tagLine = (item.tags || []).slice(0, 4).map(function(tag) {
-        return '<span class="data-chip">' + escapeHtml(tag) + '</span>';
-      }).join('');
+
+      var tagLine = '';
+      var itemTags = item.tags || [];
+      var maxTags = Math.min(itemTags.length, 4);
+      for (var ti = 0; ti < maxTags; ti++) {
+        tagLine += '<span class="data-chip">' + escapeHtml(itemTags[ti]) + '</span>';
+      }
+
       var explain = queryTokens && queryTokens.length
         ? '<span style="font-size:.72rem;color:var(--text-muted);margin-left:6px">'
           + matchExplanation(item, queryTokens) + '</span>'
@@ -4420,9 +4425,11 @@
     function renderCards(matched, queryTokens) {
       if (!matched.length) return;
       if (!queryTokens || !queryTokens.length) {
-        searchResults.innerHTML = matched.map(function(item) {
-          return buildResultCardHtml(item, queryTokens);
-        }).join('');
+        var noQueryHtml = '';
+        for (var mi = 0; mi < matched.length; mi++) {
+          noQueryHtml += buildResultCardHtml(matched[mi], queryTokens);
+        }
+        searchResults.innerHTML = noQueryHtml;
         return;
       }
       // ⚡ Bolt Optimization: Replace exact/potential intermediate arrays with single-pass HTML concatenation
