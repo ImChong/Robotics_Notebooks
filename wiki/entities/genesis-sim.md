@@ -3,8 +3,10 @@ type: entity
 title: Genesis (仿真器)
 tags: [simulation, physics-engine, robot-learning, differentiable]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
-updated: 2026-05-28
+updated: 2026-06-22
 related:
+  - ./igibson.md
+  - ../overview/sim-platforms-decade-technology-map.md
   - ./genesis-world-10.md
   - ./gene-26-5-genesis-ai.md
   - ../concepts/simulation-evaluation-infrastructure.md
@@ -65,5 +67,6 @@ related:
 - [Xbotics-Embodied-Guide](../../sources/repos/xbotics-embodied-guide.md)
 - [机器人仿真工具核心论文（含 Genesis arXiv 摘录）](../../sources/papers/simulation_tools.md)
 - [genesis_gene_ecosystem（Genesis / GENE 资料总档）](../../sources/papers/genesis_gene_ecosystem.md)
+- [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md)
 - [Genesis Project Page](https://genesis-world.github.io/)
 - [Genesis: A Generative and Universal Physics Engine（arXiv）](https://arxiv.org/abs/2412.12919)

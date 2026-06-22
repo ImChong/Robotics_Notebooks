@@ -295,6 +295,7 @@
 | [x] [wechat_shenlan_vla_github_repro_survey_2025.md](blogs/wechat_shenlan_vla_github_repro_survey_2025.md) | 深蓝具身智能：2025 GitHub 高 star VLA 开源栈复现推荐（OpenPI、VLA-Adapter、RLinf 等 11 项；`k_i-1NEBP-lEzth19HOHkQ`） |
 | [x] [wechat_shenlan_vln_repro_four_paradigms_2026.md](blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md) | 深蓝具身智能：VLN 四范式新手复现（VLFM、NavGPT、NoMaD、Uni-NaVid；`AzCDukzwrfIyms_65kh1mg`） |
 | [x] [wechat_shenlan_vln_10_papers_survey.md](blogs/wechat_shenlan_vln_10_papers_survey.md) | 深蓝具身智能：VLN 10 项代表性研究盘点（两组 `wiki/overview/vln-category-*` 图谱 hub；Agent Reach + Camoufox；`2_dYaN6IeWn_vvS_jmGqRQ`） |
+| [x] [wechat_shenlan_sim_platforms_top8_decade.md](blogs/wechat_shenlan_sim_platforms_top8_decade.md) | 深蓝具身智能：十年 TOP 8 仿真平台盘点（`iaw_lWAR--AwppyMeIK4lw`；Agent Reach + wechat-article-for-ai；`wiki/overview/sim-platforms-decade-technology-map.md` + 8 实体节点） |
 | [x] [wechat_shenlan_world_models_15_open_source_2026.md](blogs/wechat_shenlan_world_models_15_open_source_2026.md) | 深蓝具身智能：世界模型 15 开源项目三线地图（级联/联合/沙盒；`KZT8sI4n7GvHWyM20wN3gg`） |
 | [x] [wechat_embodied_ai_lab_ego_9_papers_survey.md](blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md) | 具身智能研究室：9 篇 Ego 第一视角数据入口专题（四类问题各建 `wiki/overview/ego-category-*` 图谱 hub；Agent Reach + Camoufox；`4JQ1xa-cJ7J1ep_e4txNnA`） |
 | [x] [wechat_embodied_ai_lab_bfm_41_papers_survey.md](blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md) | 具身智能研究室：41 篇 BFM 运控基座技术地图（五类问题各建 `wiki/overview/bfm-category-*` 图谱 hub；`Ei32la_vo0UW9Y_QCAqB2g`） |

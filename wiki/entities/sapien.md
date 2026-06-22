@@ -3,8 +3,11 @@ type: entity
 title: SAPIEN (仿真引擎)
 tags: [simulation, physics-engine, manipulation, sapien]
 summary: "SAPIEN 是针对关节体交互与机器人操作设计的高性能仿真引擎，支持大规模 PartNet-Mobility 数据集，适用于细粒度操作任务。"
-updated: 2026-05-30
+updated: 2026-06-22
 related:
+  - ./maniskill2.md
+  - ./robogen.md
+  - ../overview/sim-platforms-decade-technology-map.md
   - ./physx-omni.md
   - ./paper-physforge-physics-grounded-3d-assets.md
   - ./robotwin.md
@@ -48,4 +51,4 @@ related:
 - [Embodied-AI-Guide](../../sources/repos/embodied-ai-guide.md)
 - [SAPIEN Project Page](https://sapien.ucsd.edu/)
 - [sources/papers/physforge_arxiv_2605_05163.md](../../sources/papers/physforge_arxiv_2605_05163.md) — PhysForge：VLM 物理蓝图 + KineVoxel 扩散合成关节资产，PhysDB 物理标注与 SAPIEN 等仿真平台互链
-- [sources/papers/physx_omni_arxiv_2605_21572.md](../../sources/papers/physx_omni_arxiv_2605_21572.md) — PhysX-Omni：统一 sim-ready 物理 3D 生成；代码致谢 PartNet-mobility / SAPIEN 生态
+  - [sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md](../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md) — PhysX-Omni：统一 sim-ready 物理 3D 生成；代码致谢 PartNet-mobility / SAPIEN 生态
