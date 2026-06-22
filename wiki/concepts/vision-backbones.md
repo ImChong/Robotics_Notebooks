@@ -7,7 +7,7 @@ tags:
   - backbone
   - deep-learning
 status: complete
-updated: 2026-06-10
+updated: 2026-06-22
 related:
   - ./deep-learning-foundations.md
   - ./generative-vision-pretraining.md

@@ -2,14 +2,15 @@
 type: query
 tags: [object-detection, perception, computer-vision, real-time, yolo, faster-rcnn, robotics, deployment]
 status: complete
-updated: 2026-06-07
-summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
+updated: 2026-06-22
+summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段 / 实时 DETR」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
 related:
   - ../methods/object-detection.md
   - ../concepts/vision-backbones.md
   - perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/paper-resnet-deep-residual-learning.md
+  - ../entities/rf-detr.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
   - ../methods/visual-servoing.md
@@ -18,6 +19,7 @@ sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
+  - ../../sources/papers/rf_detr_arxiv_2511_09554.md
 ---
 
 > **Query 产物**：本页由以下问题触发：「机器人感知栈里到底该选单阶段（YOLO 系）还是两阶段（Faster R-CNN 系）检测器？机载实时和服务器侧高精度的选型逻辑有什么不同？2D 框够用吗？」
@@ -31,7 +33,7 @@ sources:
 检测要在哪里跑、延迟预算多少？
 ├── 机载 / 边缘（Jetson 级算力，要 >10–30 FPS 闭环）
 │   ├── 目标类别固定、场景受控（球 / 障碍 / 人）
-│   │   └→ 单阶段（YOLO 系）+ TensorRT/INT8 量化
+│   │   └→ 单阶段（YOLO 系）或 无 NMS 实时 DETR（[RF-DETR](../entities/rf-detr.md)）+ TensorRT/FP16
 │   └── 类别开放 / 需语言指令
 │       └→ 轻量开放词汇检测（OWL-ViT / Grounding-DINO 蒸馏版）兜底
 └── 服务器侧 / 离线（算力充足，精度优先）
@@ -43,7 +45,7 @@ sources:
 
 ## 快速结论
 
-- **第一刀永远是「延迟预算」而不是「mAP 榜单」**：机载实时闭环先锁单阶段（YOLO 系）+ 量化，把架构版本之争放到后面。
+- **第一刀永远是「延迟预算」而不是「mAP 榜单」**：机载实时闭环先锁 **单阶段 YOLO 或 RF-DETR 等无 NMS 实时检测器** + TensorRT/量化，把架构版本之争放到后面。
 - **两阶段不是「过时」而是「换赛道」**：Faster R-CNN/RetinaNet 在小目标、密集、定位精度敏感的服务器侧场景仍是更稳的起点。
 - **2D 框只是感知的起点，不是终点**：抓取/操作几乎都要在检测器后面级联 **深度/点云/6D 位姿**（见 [Grasp Pose Estimation](../methods/grasp-pose-estimation.md)）。
 - **输入分辨率与 NMS 阈值常比换最新版本更关键**：仿真纹理 vs 真机的数据分布差异，往往比 YOLOv5→v8 的架构差距更影响真机成功率。
@@ -55,7 +57,7 @@ sources:
 
 | 场景 | 主线方案 | 关键约束 | 失败模式 | 兜底 |
 |------|---------|---------|---------|------|
-| 机载边缘（Jetson / NPU） | 单阶段 + TensorRT/INT8 | 延迟、显存、功耗 | 量化掉点、小目标漏检 | 降分辨率 + 提高输入 FPS；ROI 跟踪减少全图推理 |
+| 机载边缘（Jetson / NPU） | 单阶段 YOLO 或 [RF-DETR](../entities/rf-detr.md) + TensorRT/FP16 | 延迟、显存、功耗 | 量化掉点、小目标漏检 | 降分辨率 + 提高输入 FPS；ROI 跟踪减少全图推理 |
 | 移动机器人导航 | 单阶段中等输入分辨率 | 运动模糊、视角变化 | 远距离小目标、动态遮挡 | 多帧时序聚合 + 跟踪滤波 |
 | 服务器侧抓取感知 | 两阶段 / RetinaNet | 精度优先、延迟可放宽 | 透明/反光件深度缺失 | 级联深度补全 + 6D 位姿网络 |
 | 离线标注 / 数据闭环 | 两阶段高分辨率集成 | 召回与定位精度 | 标注分布偏置 | 半自动标注 + 人工复核 |
@@ -65,6 +67,7 @@ sources:
 | 范式 | 代表 | 优势 | 风险 | 何时优先 |
 |------|------|------|------|---------|
 | 单阶段密集回归 | [YOLO v1](../entities/paper-yolo-unified-realtime-detection.md)、SSD、RetinaNet | 端到端、全图上下文、快 | 小目标/密集场景定位错误偏高 | 机载实时、类别固定、闭环感知 |
+| 端到端 DETR（无 NMS） | [RF-DETR](../entities/rf-detr.md)、RT-DETR | **ViT 域迁移**、确定性延迟、检测/分割统一 API | closed-vocab 需微调；XL 权重许可受限 | 垂直域 fine-tune、要与 YOLO 比 RF100-VL 类 benchmark |
 | 两阶段提议+分类 | Faster R-CNN（RPN + RoI） | 定位精度高、小目标更稳 | 延迟大、工程链路长 | 服务器侧、高精度、小目标 |
 | 单阶段 + Focal loss | RetinaNet | 单阶段逼近两阶段精度 | 仍需调难易样本平衡 | 想兼顾速度与精度时的折中 |
 | 骨干升级（与范式正交） | ResNet-FPN（[ResNet](../entities/paper-resnet-deep-residual-learning.md)） | 多尺度特征、精度地基 | 算力随深度上升 | 任何范式都先确认骨干与 FPN 配置 |
@@ -155,6 +158,7 @@ sources:
 - [YOLO v1 论文摘录（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md) — 单阶段实时检测范式与误差画像
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md) — 检测骨干与 FPN 的精度地基
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md) — 两阶段/单阶段谱系与对比
+- [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md) — 实时 DETR 与域迁移 benchmark
 
 ## 关联页面
 
@@ -162,6 +166,7 @@ sources:
 - [目标检测（方法）](../methods/object-detection.md) — 本 Query 的方法谱系基础页（两阶段 vs 单阶段技术路线）
 - [视觉骨干（概念）](../concepts/vision-backbones.md) — 检测器骨干与多尺度特征的上游
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md) — 单阶段回归检测开山工作
+- [RF-DETR（实体）](../entities/rf-detr.md) — 无 NMS 实时 DETR 与 vertical-domain fine-tune
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md) — ResNet-FPN 骨干代表
 - [Manipulation（任务）](../tasks/manipulation.md) — 检测 → 抓取候选的下游任务
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md) — 机载实时检测的典型约束场景

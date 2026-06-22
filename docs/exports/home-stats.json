@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-22",
-  "node_count": 1285,
-  "edge_count": 8419,
+  "node_count": 1286,
+  "edge_count": 8427,
   "coverage": {
-    "covered": 1255,
-    "total": 1283,
+    "covered": 1256,
+    "total": 1284,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/rf-detr.md",
+      "detail_id": "entity-rf-detr",
+      "label": "RF-DETR（Roboflow Detection Transformer）",
+      "type": "entity",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/object-detection.md",
+      "detail_id": "wiki-methods-object-detection",
+      "label": "目标检测（Object Detection）",
+      "type": "method",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/object-detection-model-selection.md",
+      "detail_id": "wiki-queries-object-detection-model-selection",
+      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
+      "type": "query",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/sim-platforms-decade-technology-map.md",
       "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
@@ -143,37 +167,13 @@
       "type": "overview",
       "recency": "2026-06-20",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vln-category-01-datasets-platforms.md",
-      "detail_id": "wiki-overview-vln-category-01-datasets-platforms",
-      "label": "VLN 分类 01：数据集与仿真平台",
-      "type": "overview",
-      "recency": "2026-06-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vln-category-02-algorithm-frameworks.md",
-      "detail_id": "wiki-overview-vln-category-02-algorithm-frameworks",
-      "label": "VLN 分类 02：算法框架",
-      "type": "overview",
-      "recency": "2026-06-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-vln-01-r2r.md",
-      "detail_id": "entity-paper-vln-01-r2r",
-      "label": "R2R",
-      "type": "entity",
-      "recency": "2026-06-20",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/sim-platforms-decade-technology-map.md",
-    "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
-    "label": "十年仿真平台技术地图（TOP 8）",
-    "type": "overview",
+    "path": "wiki/entities/rf-detr.md",
+    "detail_id": "entity-rf-detr",
+    "label": "RF-DETR（Roboflow Detection Transformer）",
+    "type": "entity",
     "recency": "2026-06-22",
     "source": "log.md"
   }

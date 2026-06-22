@@ -7,7 +7,7 @@ tags:
   - real-time
   - robotics
 status: complete
-updated: 2026-06-10
+updated: 2026-06-22
 related:
   - ../concepts/vision-backbones.md
   - ../comparisons/cnn-vs-vit-backbones.md
@@ -15,13 +15,15 @@ related:
   - ../queries/perception-backbone-selection.md
   - ../entities/paper-yolo-unified-realtime-detection.md
   - ../entities/paper-resnet-deep-residual-learning.md
+  - ../entities/rf-detr.md
   - ../tasks/manipulation.md
   - ../tasks/humanoid-soccer.md
 sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
   - ../../sources/papers/vision_backbone_detection_classics.md
-summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，是机器人导航与操作视觉栈的核心模块。"
+  - ../../sources/papers/rf_detr_arxiv_2511_09554.md
+summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精度高，YOLO 等单阶段方法以端到端回归实现机载实时感知，DETR/RF-DETR 等无 NMS Transformer 路线在 ViT 骨干下补齐精度–延迟前沿，是机器人导航与操作视觉栈的核心模块。"
 ---
 
 # 目标检测（Object Detection）
@@ -38,6 +40,7 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 | R-CNN | Regions with CNN features | 区域 CNN 两阶段检测开山工作 |
 | RPN | Region Proposal Network | Faster R-CNN 中的可学习提议子网 |
 | YOLO | You Only Look Once | 单次回归实时检测范式 |
+| DETR | DEtection TRansformer | 集合预测、无 anchor/NMS 的检测 Transformer |
 | IOU | Intersection over Union | 框重叠率，训练与评估核心量 |
 | NMS | Non-Maximum Suppression | 去重后处理 |
 | FPN | Feature Pyramid Network | 多尺度特征金字塔 |
@@ -69,6 +72,16 @@ summary: "目标检测在图像中定位并分类物体；两阶段 R-CNN 族精
 | RetinaNet | Focal loss 平衡难易样本 | 单阶段逼近两阶段精度 |
 
 **机器人语境：** 机载实时 **球体/障碍/人** 检测；后续 YOLOv5–v8、TensorRT 加速为工程主流。
+
+### 端到端 Transformer：DETR / RF-DETR（无 NMS）
+
+| 方法 | 核心思想 | 典型性能（近期） |
+|------|----------|------------------|
+| DETR | 集合预测 + Hungarian 匹配 | 精度高、早期训练慢 |
+| RT-DETR / LW-DETR | 实时化 hybrid encoder + 轻量 decoder | 接近 YOLO 延迟 |
+| [RF-DETR](../entities/rf-detr.md) | **DINOv2 骨干 + weight-sharing NAS**；一次训练后在 Pareto 前沿选分辨率/decoder 深度 | **RF-DETR-L 56.5 AP @ 6.8 ms**；2XL **首破 60 AP**（COCO, T4 TRT FP16） |
+
+**机器人语境：** 需要 **无 NMS 确定性延迟**、**ViT 域迁移**（如 RF100-VL 类垂直数据集）或 **检测+分割统一 API** 时，[RF-DETR](../entities/rf-detr.md) 是 YOLO 之外的工程选项；开放词汇/语言指令仍走 GroundingDINO 等 VLM 路线。
 
 ### 流程总览
 
@@ -112,6 +125,7 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [感知骨干/表征选型 Query](../queries/perception-backbone-selection.md)
 - [ResNet（论文实体）](../entities/paper-resnet-deep-residual-learning.md)
 - [YOLO v1（论文实体）](../entities/paper-yolo-unified-realtime-detection.md)
+- [RF-DETR（实体）](../entities/rf-detr.md)
 - [Manipulation（任务）](../tasks/manipulation.md)
 - [Humanoid Soccer（任务）](../tasks/humanoid-soccer.md)
 - [Booster RoboCup Demo](../entities/booster-robocup-demo.md)
@@ -123,9 +137,11 @@ YOLO v1 误差分析（相对 Fast R-CNN）：
 - [YOLO v1 论文摘录（arXiv:1506.02640）](../../sources/papers/yolo_arxiv_1506_02640.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 - [经典视觉骨干与检测文献簇](../../sources/papers/vision_backbone_detection_classics.md)
+- [RF-DETR 论文摘录（arXiv:2511.09554）](../../sources/papers/rf_detr_arxiv_2511_09554.md)
 
 ## 推荐继续阅读
 
 - [YOLO 论文 PDF](https://arxiv.org/pdf/1506.02640.pdf)
 - [Faster R-CNN](https://arxiv.org/abs/1506.01497)
 - [Ultralytics YOLO 文档](https://docs.ultralytics.com/)（工程后继）
+- [RF-DETR 文档](https://rfdetr.roboflow.com/latest/)（实时 DETR 微调与部署）

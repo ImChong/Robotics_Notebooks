@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] ingest | sources/papers/rf_detr_arxiv_2511_09554.md — RF-DETR 实时 DETR；wiki/entities/rf-detr.md；交叉 object-detection、object-detection-model-selection
+
+- 原始资料：[rf_detr_arxiv_2511_09554.md](sources/papers/rf_detr_arxiv_2511_09554.md)、[rf_detr.md](sources/repos/rf_detr.md)、[rfdetr-docs.md](sources/sites/rfdetr-docs.md)（<https://arxiv.org/abs/2511.09554>、<https://github.com/roboflow/rf-detr>、<https://rfdetr.roboflow.com/latest/>）
+- 沉淀页面：[wiki/entities/rf-detr.md](wiki/entities/rf-detr.md)
+- 交叉更新：[wiki/methods/object-detection.md](wiki/methods/object-detection.md)、[wiki/queries/object-detection-model-selection.md](wiki/queries/object-detection-model-selection.md)
+
 ## [2026-06-22] ingest | sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md — 十年 TOP 8 仿真平台盘点；wiki/overview/sim-platforms-decade-technology-map.md；8 平台各建实体节点
 
 - 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install` + 手动安装 [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox））
