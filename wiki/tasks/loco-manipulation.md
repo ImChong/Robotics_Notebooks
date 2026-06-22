@@ -3,13 +3,14 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-18
+updated: 2026-06-22
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
   - ../../sources/papers/dit4dit_arxiv_2603_10448.md
   - ../../sources/papers/motionwam_arxiv_2606_09215.md
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
+  - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/papers/mpc_rl_arxiv_2606_05687.md
   - ../../sources/papers/pilot_arxiv_2601_17440.md
   - ../../sources/papers/teleoperation.md
@@ -192,6 +193,7 @@ flowchart TD
 - [Loco-Manip 8 篇数据入口技术地图](../overview/loco-manip-8-papers-technology-map.md) — 2026-06 周报：四组数据入口（Ego-Pi/OASIS/VAIC/WT-UMI 等 8 篇）
 - [Curr-0（Current Robotics）](../entities/current-robotics-curr0.md) — HumanEx 可穿戴数据 + 三系统单策略 + 世界模型评测/后训练全栈（2026-06 博客）
 - [MotionDisco（论文实体）](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) — LLM 进化接触计划搜索 + TO 反馈 + G1 真机运动发现（arXiv:2606.06139）
+- [HALOMI（论文实体）](../entities/paper-halomi-humanoid-loco-manipulation.md) — UMI+egocentric 无机器人示范、BFM-Zero 流形头手 WBC、π₀.₅ VLA 与 G1 主动颈（arXiv:2606.18772）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -215,6 +217,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/motionwam_arxiv_2606_09215.md](../../sources/papers/motionwam_arxiv_2606_09215.md) — MotionWAM：实时 WAM 人形全身 loco-manipulation（arXiv:2606.09215）
 - **ingest 档案：** [sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md](../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md) — Loco-Manip 8 篇数据入口周报（`Ez87ljBYmCyIpLKjMjEyaQ`）
 - **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）
+- **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：主动感知无机器人示范→人形 loco-manipulation（arXiv:2606.18772）
 
 ## 一句话记忆
 

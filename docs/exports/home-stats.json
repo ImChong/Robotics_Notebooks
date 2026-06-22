@@ -1,13 +1,21 @@
 {
-  "generated_at": "2026-06-21",
-  "node_count": 1275,
-  "edge_count": 8316,
+  "generated_at": "2026-06-22",
+  "node_count": 1276,
+  "edge_count": 8332,
   "coverage": {
-    "covered": 1245,
-    "total": 1273,
+    "covered": 1246,
+    "total": 1274,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-halomi-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-halomi-humanoid-loco-manipulation",
+      "label": "HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）",
+      "type": "entity",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/spear-sim.md",
       "detail_id": "entity-spear-sim",
@@ -159,22 +167,14 @@
       "type": "entity",
       "recency": "2026-06-19",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/blender.md",
-      "detail_id": "entity-blender",
-      "label": "Blender（开源 3D 创作套件）",
-      "type": "entity",
-      "recency": "2026-06-19",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/spear-sim.md",
-    "detail_id": "entity-spear-sim",
-    "label": "SPEAR（Photorealistic Embodied AI Simulator）",
+    "path": "wiki/entities/paper-halomi-humanoid-loco-manipulation.md",
+    "detail_id": "entity-paper-halomi-humanoid-loco-manipulation",
+    "label": "HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）",
     "type": "entity",
-    "recency": "2026-06-21",
+    "recency": "2026-06-22",
     "source": "log.md"
   }
 }

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-22
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
