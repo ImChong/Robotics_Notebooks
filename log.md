@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — 复核 arXiv:2605.26879（HTD-Refine）已入库；修正 wiki/entities/paper-htd-refine-monocular-hmr.md 英文缩写速查
+
+- 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；项目页代码仍为 Coming Soon（2026-06-22 复核）
+- 沉淀页面：[wiki/entities/paper-htd-refine-monocular-hmr.md](wiki/entities/paper-htd-refine-monocular-hmr.md)（修正 HMR/PVA/MPJVE 等核心缩写表）
+- 首次入库：2026-06-04（source + wiki + motion-retargeting / whole-body-tracking / GMR / GVHMR 交叉引用均已就绪）
+
 ## [2026-06-22] ingest | sources/papers/x_ionet_arxiv_2511_08277.md — X-IONet 跨平台单 IMU 惯性里程计；wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md；交叉 state-estimation、ekf、topic-state-estimation
 
 - 原始资料：[x_ionet_arxiv_2511_08277.md](sources/papers/x_ionet_arxiv_2511_08277.md)（<https://arxiv.org/abs/2511.08277>，IEEE RA-L Vol. 11 No. 7, July 2026）
