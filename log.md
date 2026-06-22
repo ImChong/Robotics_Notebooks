@@ -2,6 +2,13 @@
 
 ## [2026-06-22] ingest | sources/papers/halomi_arxiv_2606_18772.md — HALOMI 主动感知无机器人示范→人形 loco-manipulation；wiki/entities/paper-halomi-humanoid-loco-manipulation.md；交叉 loco-manipulation、teleoperation
 
+## [2026-06-21] structural | checklist-v25 P2 事实库扩展 +12 条数据层矛盾检测规则（186 → 198 条）；schema/canonical-facts.json
+
+- 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P2「事实库扩展」收口（≥ 196 条目标达成，实际 198 条）
+- 新增规则（数据层矛盾检测）：纯光学 MoCap 缺力/接触不可直执行、人体视频 3D/接触信息弱、形态差距大重定向不可省略、几何重定向≠物理可执行、PHUMA 物理过滤已重定向免工程、接触一致性为物理可行性前置、规模不能替代物理可行性、真机执行数据天然物理可行但任务窄、四质量轴串联门体检顺序、Humanoid Everyday 非重定向源、已重定向数据集免重定向直接训练、物理不可行参考致 RL 学错力矩
+- 校验：逐条经脚本核验对 `motion-data-quality` / `humanoid-training-data-pipeline` / `motion-retargeting` / `humanoid-reference-motion-datasets` 等现存页有 pos 命中、neg 0 命中；`make lint` 0 errors、潜在矛盾 0 条
+- 验证：`make lint`
+
 ## [2026-06-21] structural | 图谱社区 — 弱归属节点归入「其他社区」；scripts/generate_link_graph.py、docs/graph.html
 
 - 规则：与同社区邻居边占比 &lt; 50% 的非枢纽节点不再强行贴标签，统一落入 `community-other`（其他社区）；图谱图例/筛选始终展示该桶

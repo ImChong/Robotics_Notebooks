@@ -39,8 +39,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 186 → **≥ 196 条**：新增数据层矛盾检测规则（动作捕捉缺接触/力信息导致物理不可行、人体视频规模大但标注/3D 信息弱、形态差距使原始动作不可直接复用、重定向不可省略、物理过滤数据集（PHUMA 类）相对纯 mocap 的可部署性等）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 186 → **≥ 196 条**：新增数据层矛盾检测规则（动作捕捉缺接触/力信息导致物理不可行、人体视频规模大但标注/3D 信息弱、形态差距使原始动作不可直接复用、重定向不可省略、物理过滤数据集（PHUMA 类）相对纯 mocap 的可部署性等）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报。（2026-06-21 完成：新增 12 条数据层矛盾检测规则（186 → **198 条**），覆盖纯光学 MoCap 缺力/接触不可直执行、人体视频 3D/接触信息弱、形态差距大重定向不可省略、几何重定向≠物理可执行、PHUMA 物理过滤已重定向免工程、接触一致性为物理可行性前置、规模不能替代物理可行性、真机执行数据天然物理可行但任务窄、四质量轴串联门体检顺序、Humanoid Everyday 非重定向源、已重定向数据集免重定向直接训练、物理不可行参考致 RL 学错力矩；逐条经脚本校验对 `motion-data-quality` / `humanoid-training-data-pipeline` / `motion-retargeting` / `humanoid-reference-motion-datasets` 等现存页有 pos 命中、neg 0 命中，`make lint` 0 errors、潜在矛盾 0 条。）
 
 ## P3: 交互层"数据管线"增强 (UX/UI)
 
@@ -55,7 +55,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `dataset_metadata_check` 为 INFO 级，不阻塞 CI）。
 - [ ] 知识图谱节点数 **≥ 1205**，边数 **≥ 7460**（见 `exports/graph-stats.json`）。
-- [ ] 事实库扩展至 **196 条** 以上（重点补 数据质量 / 物理可行性 / 重定向必要性 矛盾检测规则）。
+- [x] 事实库扩展至 **196 条** 以上（重点补 数据质量 / 物理可行性 / 重定向必要性 矛盾检测规则）。（2026-06-21 达成：198 条。）
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
 - [ ] `log.md` 记录 V25 关键改动。
 
