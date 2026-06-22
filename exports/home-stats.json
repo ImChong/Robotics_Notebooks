@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
+      "detail_id": "entity-paper-htd-refine-monocular-hmr",
+      "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
+      "type": "entity",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md",
       "detail_id": "entity-paper-x-ionet-cross-platform-inertial-odometry",
       "label": "X-IONet（跨平台惯性里程计网络）",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-21",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gvhmr.md",
-      "detail_id": "entity-gvhmr",
-      "label": "GVHMR",
-      "type": "entity",
-      "recency": "2026-06-21",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md",
-    "detail_id": "entity-paper-x-ionet-cross-platform-inertial-odometry",
-    "label": "X-IONet（跨平台惯性里程计网络）",
+    "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
+    "detail_id": "entity-paper-htd-refine-monocular-hmr",
+    "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
     "type": "entity",
     "recency": "2026-06-22",
     "source": "log.md"
