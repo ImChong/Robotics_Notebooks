@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-22",
-  "node_count": 1286,
-  "edge_count": 8427,
+  "node_count": 1287,
+  "edge_count": 8436,
   "coverage": {
-    "covered": 1256,
-    "total": 1284,
+    "covered": 1257,
+    "total": 1285,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md",
+      "detail_id": "entity-paper-x-ionet-cross-platform-inertial-odometry",
+      "label": "X-IONet（跨平台惯性里程计网络）",
+      "type": "entity",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/state-estimation.md",
+      "detail_id": "wiki-concepts-state-estimation",
+      "label": "State Estimation",
+      "type": "concept",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/ekf.md",
+      "detail_id": "wiki-formalizations-ekf",
+      "label": "Extended Kalman Filter (EKF)",
+      "type": "formalization",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-state-estimation.md",
+      "detail_id": "wiki-overview-topic-state-estimation",
+      "label": "状态估计（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/rf-detr.md",
       "detail_id": "entity-rf-detr",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-21",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/karpathy-autoresearch.md",
-      "detail_id": "entity-karpathy-autoresearch",
-      "label": "autoresearch（karpathy/autoresearch）",
-      "type": "entity",
-      "recency": "2026-06-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/ai-auto-research.md",
-      "detail_id": "wiki-concepts-ai-auto-research",
-      "label": "AI Auto-Research（学术研究自动化）",
-      "type": "concept",
-      "recency": "2026-06-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-oscar.md",
-      "detail_id": "entity-paper-oscar",
-      "label": "OSCAR（跨具身动作条件世界模型）",
-      "type": "entity",
-      "recency": "2026-06-20",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/vln-10-papers-technology-map.md",
-      "detail_id": "wiki-overview-vln-10-papers-technology-map",
-      "label": "VLN 10 篇论文技术地图",
-      "type": "overview",
-      "recency": "2026-06-20",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rf-detr.md",
-    "detail_id": "entity-rf-detr",
-    "label": "RF-DETR（Roboflow Detection Transformer）",
+    "path": "wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md",
+    "detail_id": "entity-paper-x-ionet-cross-platform-inertial-odometry",
+    "label": "X-IONet（跨平台惯性里程计网络）",
     "type": "entity",
     "recency": "2026-06-22",
     "source": "log.md"

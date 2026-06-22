@@ -13,7 +13,7 @@ sources:
   - ../../sources/papers/perception_localization.md
   - ../../sources/courses/mit_underactuated_kalman_lqr.md
 summary: "Extended Kalman Filter (EKF)"
-updated: 2026-06-11
+updated: 2026-06-22
 ---
 
 # Extended Kalman Filter (EKF)
@@ -135,6 +135,7 @@ EKF 在旋转相关状态上有一致性问题（observability 不一致）。**
 
 ## 推荐继续阅读
 
+- [X-IONet](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 学习预测位移/协方差 + EKF 的跨平台惯性里程计实例（TLIO 范式延伸）
 - [State Estimation](../concepts/state-estimation.md)
 - Hartley et al., *Contact-Aided Invariant Extended Kalman Filtering*（InEKF 实现参考）
 

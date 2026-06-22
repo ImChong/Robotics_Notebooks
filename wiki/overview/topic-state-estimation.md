@@ -48,6 +48,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 
 ## 关联页面
 
+- [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
 - [3D Spatial VQA](../concepts/3d-spatial-vqa.md)
