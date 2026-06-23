@@ -556,16 +556,21 @@
     return rendered;
   }
 
+  /** Strip markdown-only escapes (e.g. ^\* setpoints) that break KaTeX inside math. */
+  function normalizeMathExpr(expr) {
+    return String(expr || '').replace(/\\\*/g, '*');
+  }
+
   function renderMathBlocks(text) {
     return String(text || '')
       .replace(/\\\((.+?)\\\)/g, function (_, expr) {
-        return '<span class="math-inline">\\(' + expr + '\\)</span>';
+        return '<span class="math-inline">\\(' + normalizeMathExpr(expr) + '\\)</span>';
       })
       .replace(/\\\[([\s\S]+?)\\\]/g, function (_, expr) {
-        return '<div class="math-block">\\[' + expr.trim() + '\\]</div>';
+        return '<div class="math-block">\\[' + normalizeMathExpr(expr.trim()) + '\\]</div>';
       })
       .replace(/\$\$([\s\S]+?)\$\$/g, function (_, expr) {
-        return '<div class="math-block">$$' + expr.trim() + '$$</div>';
+        return '<div class="math-block">$$' + normalizeMathExpr(expr.trim()) + '$$</div>';
       });
   }
 

@@ -201,12 +201,13 @@ console.log('ok');
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
+            "function normalizeMathExpr(expr)",
             "function renderMathBlocks(text)",
             "function applyMathBlocksInHtmlFragment(html)",
             "function convertMermaidFencesInHtmlFragment(html)",
             'class="math-block"',
             'class="math-inline"',
-            "expr.trim() +",
+            "normalizeMathExpr(expr.trim())",
             "renderMathBlocks(renderInlineMarkdown(paragraphLines.join(",
             "convertMermaidFencesInHtmlFragment(htmlBlockLines.join",
             "applyMathBlocksInHtmlFragment(htmlFragment)",
@@ -221,7 +222,7 @@ console.log('ok');
         node = r"""
 const fs = require('fs');
 const content = fs.readFileSync(process.argv[2], 'utf8');
-const start = content.indexOf('function renderMathBlocks(text)');
+const start = content.indexOf('function normalizeMathExpr(expr)');
 const end = content.indexOf('function splitMarkdownTableCells', start);
 eval(content.slice(start, end));
 const sample = [
@@ -357,7 +358,7 @@ console.log('ok');
         node = r"""
 const fs = require('fs');
 const content = fs.readFileSync(process.argv[2], 'utf8');
-const start = content.indexOf('function renderMathBlocks(text)');
+const start = content.indexOf('function normalizeMathExpr(expr)');
 const end = content.indexOf('function applyMathBlocksInHtmlFragment', start);
 eval(content.slice(start, end));
 const sample = '\\[ i_a + i_b + i_c = 0 \\]';
@@ -367,6 +368,10 @@ if (!out.includes('i_a + i_b + i_c = 0')) throw new Error('bracket math content 
 const aligned = '\\[ \\begin{aligned} i_d &= i_\\alpha \\\\ i_q &= i_\\beta \\end{aligned} \\]';
 const out2 = renderMathBlocks(aligned);
 if (!out2.includes('class="math-block"')) throw new Error('aligned block missing wrapper');
+const escapedStar = '\\( i_d^\\* = 0 \\)';
+const out3 = renderMathBlocks(escapedStar);
+if (!out3.includes('i_d^* = 0')) throw new Error('markdown star escape not normalized: ' + out3);
+if (out3.includes('\\*')) throw new Error('raw \\* still present: ' + out3);
 console.log('ok');
 """
         import subprocess

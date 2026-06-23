@@ -134,7 +134,7 @@ flowchart TD
 | 对齐 | 极对数、电角度零位、相序 |
 | 电流环 | 带宽与 PWM 频率（腿足目标常 >20 kHz 电流环量级，见 Actuator 102） |
 | MTPA / 弱磁 | 高速区按 \(L_d, L_q\) 分配 \(i_d, i_q\) |
-| 力矩模式 | 上层 CAN/EtherCAT 力矩指令 → \(i_q^\*\) |
+| 力矩模式 | 上层 CAN/EtherCAT 力矩指令 → \(i_q^*\) |
 
 原型阶段可用 [SimpleFOC](../entities/simplefoc.md) 在 MCU 上验证算法；量产关节多用工业伺服栈。
 
