@@ -26,8 +26,8 @@ summary: "四足控制 L0 策展：具身智能研究室《从动力学建模到
 | 缩写 | 英文全称 | 简要说明 |
 |------|----------|----------|
 | URDF | Unified Robot Description Format | 机器人连杆/关节/惯量描述格式 |
-| ABA | Articulated Body Algorithm | 正向动力学 $ \tau \to \ddot{q} $ |
-| RNEA | Recursive Newton–Euler Algorithm | 逆动力学 $ \ddot{q} \to \tau $ |
+| ABA | Articulated Body Algorithm | 正向动力学 $\tau \to \ddot{q}$ |
+| RNEA | Recursive Newton–Euler Algorithm | 逆动力学 $\ddot{q} \to \tau$ |
 | PPO | Proximal Policy Optimization | 四足 loco 主流 on-policy 算法 |
 | DR | Domain Randomization | 训练时随机化物理参数以提升迁移 |
 | RMA | Rapid Motor Adaptation | 特权教师 → 可部署学生的蒸馏范式 |

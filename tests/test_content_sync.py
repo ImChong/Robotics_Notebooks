@@ -389,6 +389,37 @@ console.log('ok');
         self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
         self.assertIn("ok", result.stdout)
 
+    def test_inline_math_with_padding_spaces_in_table_cells(self):
+        """$ ... $ with spaces inside delimiters (abbrev glossary tables) should render."""
+        node = r"""
+const fs = require('fs');
+const content = fs.readFileSync(process.argv[2], 'utf8');
+const start = content.indexOf('const matchHtmlRegExp');
+const end = content.indexOf('function normalizeMathExpr(expr)', start);
+eval(content.slice(start, end));
+const sample = '正向动力学 $ \\tau \\to \\ddot{q} $';
+const out = renderInlineMarkdown(sample, {});
+if (!out.includes('\\tau \\to \\ddot{q}')) throw new Error('math content lost: ' + out);
+if (out.includes('$')) throw new Error('raw dollar delimiters remain: ' + out);
+const tight = renderInlineMarkdown('$\\ddot{q} \\to \\tau$', {});
+if (!tight.includes('\\ddot{q} \\to \\tau')) throw new Error('tight math broken: ' + tight);
+console.log('ok');
+"""
+        import subprocess
+        import tempfile
+
+        with tempfile.NamedTemporaryFile("w", suffix=".js", delete=False) as tmp:
+            tmp.write(node)
+            tmp_path = tmp.name
+        result = subprocess.run(
+            ["node", tmp_path, str(MAIN_JS)],
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stderr or result.stdout)
+        self.assertIn("ok", result.stdout)
+
     def test_main_js_contains_toc_active_state_and_anchor_copy_hooks(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
