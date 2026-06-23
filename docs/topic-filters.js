@@ -27,7 +27,8 @@
     'wbt': 'wiki/overview/topic-wbt.md',
     'cross-embodiment': 'wiki/overview/topic-cross-embodiment.md',
     'safe-fine-tuning': 'wiki/overview/topic-safe-fine-tuning.md',
-    'vision-backbone': 'wiki/overview/topic-vision-backbone.md'
+    'vision-backbone': 'wiki/overview/topic-vision-backbone.md',
+    'data-pipeline': 'wiki/overview/topic-data-pipeline.md'
   };
 
   function hubIdSet(key) {
@@ -143,6 +144,18 @@
         'wiki/concepts/visual-representation-for-policy.md',
         'wiki/concepts/generative-vision-pretraining.md'
       ]))
+    },
+    'data-pipeline': {
+      segments: new Set([
+        'dataset', 'datasets', 'amass', 'lafan1', 'lafan', 'omomo',
+        'phuma', 'everyday', 'retargeting'
+      ]),
+      ids: mergeIds('data-pipeline', new Set([
+        'wiki/queries/humanoid-training-data-pipeline.md',
+        'wiki/concepts/motion-data-quality.md',
+        'wiki/concepts/motion-retargeting.md',
+        'wiki/comparisons/humanoid-reference-motion-datasets.md'
+      ]))
     }
   };
 
@@ -231,6 +244,12 @@
       label: '视觉骨干',
       wikiPath: TOPIC_HUB_IDS['vision-backbone'],
       description: 'CNN/ViT 骨干→检测头→策略输入的视觉表征与选型。'
+    },
+    'data-pipeline': {
+      emoji: '📦',
+      label: '训练数据',
+      wikiPath: TOPIC_HUB_IDS['data-pipeline'],
+      description: '原始动作捕捉/视频→质量评估→重定向→RL/IL 策略输入的端到端数据链路。'
     }
   };
 
