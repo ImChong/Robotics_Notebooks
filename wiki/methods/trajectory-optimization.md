@@ -93,6 +93,10 @@ $$ x(0) = x_0, \quad x(T) \in \mathcal{X}_f $$
 - [ZMP + LIP 形式化](../formalizations/zmp-lip.md)
 - [对比：轨迹优化 vs RL](../comparisons/trajectory-opt-vs-rl.md)
 - [人形机器人并联关节解算](../concepts/humanoid-parallel-joint-kinematics.md) — 闭链传动在 TO/MPC 中的 \(J_A\) 与电机侧约束
+- [Quasi-Newton BFGS](./quasi-newton-bfgs.md) — TrajOpt NLP 常用求解内核
+- [Adjoint Sensitivity Analysis](../formalizations/adjoint-sensitivity-analysis.md) — 轨迹代价梯度
+- [Collision Distance Optimization](../concepts/collision-distance-optimization.md) — 避障约束与 SDF
+- [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md) — 数值优化课程地图
 
 ## 参考来源
 - [lqr_ilqr_primary_refs.md](../../sources/papers/lqr_ilqr_primary_refs.md) — iLQR / DDP 一手论文索引
