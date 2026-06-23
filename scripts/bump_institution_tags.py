@@ -49,7 +49,18 @@ HARDWARE_PLATFORM_TAGS = frozenset(
     {"hardware", "platform", "humanoid", "quadruped", "legged", "actuator", "locomotion"}
 )
 
-TOOL_NAME_HINTS = ("-sim", "_sim", "-gym", "-lab", "-ros", "-sdk", "-lib", "-slam", "-vio", "-vslam")
+TOOL_NAME_HINTS = (
+    "-sim",
+    "_sim",
+    "-gym",
+    "-lab",
+    "-ros",
+    "-sdk",
+    "-lib",
+    "-slam",
+    "-vio",
+    "-vslam",
+)
 
 # 短 alias 在正文易误命中，仅允许出现在 tags 或显式覆盖。
 SHORT_ALIASES = frozenset({"eth", "mit", "meta", "hku", "pku", "zju", "sfu", "tri"})
@@ -158,7 +169,6 @@ PAGE_INSTITUTION_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/asimov-v1.md": ["unitree"],
     "wiki/entities/atom01-deploy.md": ["linux-foundation"],
     "wiki/entities/awesome-text-to-motion-zilize.md": ["linux-foundation"],
-    "wiki/entities/jackhan-mujoco-walke3-simulation.md": [],
     "wiki/entities/paper-slowrl-safe-lora-locomotion-sim2real.md": ["unitree", "nvidia"],
     "wiki/entities/paper-quadruped-agile-sim2real-rss2018.md": ["mit"],
     "wiki/entities/paper-cassie-iterative-locomotion-sim2real.md": ["berkeley"],
@@ -264,7 +274,11 @@ def is_tool_entity(rel_path: str, tags: list[str]) -> bool:
         return False
     stem = Path(rel_path).stem
     tag_set = {t.lower() for t in tags}
-    if "paper-notebook" in stem or "paper-notebook-stub" in tag_set or "paper-notebook-planned" in tag_set:
+    if (
+        "paper-notebook" in stem
+        or "paper-notebook-stub" in tag_set
+        or "paper-notebook-planned" in tag_set
+    ):
         return False
     if tag_set <= {"paper", "humanoid-paper-notebooks"} or "paper-notebook" in tag_set:
         return False
@@ -312,29 +326,29 @@ def infer_institution_ids(
 
     tags = _parse_frontmatter_list(content, "tags")
     for token in tags:
-        cid = alias_map.get(token.lower())
-        if cid:
-            add(cid)
+        canonical = alias_map.get(token.lower())
+        if canonical:
+            add(canonical)
 
     scan = _scan_region(content)
-    for keyword, cid in label_keywords:
+    for keyword, inst_id in label_keywords:
         if _keyword_in_text(keyword, scan):
-            add(cid)
+            add(inst_id)
 
-    for alias, cid in alias_map.items():
+    for alias, inst_id in alias_map.items():
         if alias in SHORT_ALIASES:
             continue
         if len(alias) < 4:
             continue
         if _keyword_in_text(alias, scan):
-            add(cid)
+            add(inst_id)
 
     for alias in SHORT_ALIASES:
-        cid = alias_map.get(alias)
-        if not cid or cid in seen:
+        canonical = alias_map.get(alias)
+        if not canonical or canonical in seen:
             continue
         if alias in {t.lower() for t in tags}:
-            add(cid)
+            add(canonical)
 
     return found
 
@@ -423,7 +437,9 @@ def main() -> int:
     if not args.dry_run:
         for path in sorted(WIKI_DIR.rglob("*.md")):
             rel = path.relative_to(REPO_ROOT).as_posix()
-            if not is_tool_entity(rel, _parse_frontmatter_list(path.read_text(encoding="utf-8"), "tags")):
+            if not is_tool_entity(
+                rel, _parse_frontmatter_list(path.read_text(encoding="utf-8"), "tags")
+            ):
                 continue
             content = path.read_text(encoding="utf-8")
             if not _derive_institutions(content, alias_map):

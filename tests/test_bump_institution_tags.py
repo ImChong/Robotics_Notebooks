@@ -5,8 +5,6 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 
-import pytest
-
 _REPO = Path(__file__).resolve().parent.parent
 _SPEC = importlib.util.spec_from_file_location(
     "bump_institution_tags",
