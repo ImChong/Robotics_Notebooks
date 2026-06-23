@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, autonomous-driving, ros2, perception, planning, open-source]
+tags: [repo, autonomous-driving, ros2, perception, planning, open-source, linux-foundation]
 status: complete
 updated: 2026-05-27
 related:

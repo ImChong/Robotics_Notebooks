@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, vln, navigation, matterport3d, rgb-d]
+tags: [entity, simulator, vln, navigation, matterport3d, rgb-d, princeton]
 status: complete
 updated: 2026-06-22
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, ros2, navigation, nav2, mobile-robot, planning]
+tags: [repo, ros2, navigation, nav2, mobile-robot, planning, linux-foundation]
 status: complete
 updated: 2026-06-09
 related:

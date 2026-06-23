@@ -1,6 +1,7 @@
 ---
+
 type: comparison
-tags: [motion-retargeting, humanoid, dexterous-manipulation, loco-manipulation, sampling-based-optimization, reinforcement-learning, contact-rich-manipulation, comparison, engineering-selection]
+tags: [motion-retargeting, humanoid, dexterous-manipulation, loco-manipulation, sampling-based-optimization, reinforcement-learning, contact-rich-manipulation, comparison, engineering-selection, horizon-robotics]
 status: complete
 updated: 2026-06-18
 sources:

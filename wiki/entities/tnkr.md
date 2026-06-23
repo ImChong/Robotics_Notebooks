@@ -1,7 +1,8 @@
 ---
+
 type: entity
 title: Tnkr
-tags: [platform, open-source, collaboration, documentation, hardware-software-codata]
+tags: [platform, open-source, collaboration, documentation, hardware-software-codata, linux-foundation]
 summary: "Tnkr 是面向开源机器人项目的协作平台：把硬件 CAD、电气布线、软件版本、部署与数据/模型收进同一项目仓库，并内置 AI 工程助手 Leonardo。"
 updated: 2026-05-28
 related:

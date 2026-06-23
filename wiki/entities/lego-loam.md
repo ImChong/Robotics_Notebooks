@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, lidar, loam, ground-vehicle, slam]
+tags: [repo, lidar, loam, ground-vehicle, slam, hku]
 status: complete
 updated: 2026-05-27
 related:

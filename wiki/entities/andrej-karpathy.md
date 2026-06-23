@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning]
+tags: [deep-learning, education, tesla, openai, llm, methodology, computer-vision, reinforcement-learning, stanford]
 status: complete
 updated: 2026-06-20
 related:

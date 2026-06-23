@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng]
+tags: [framework, rl, motion-imitation, isaac-gym, isaac-lab, newton, xbpeng, nvidia, berkeley, stanford]
 status: complete
 updated: 2026-05-12
 related:

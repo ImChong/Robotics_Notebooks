@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, humanoid, amp, rsl-rl, imitation-learning]
+tags: [repo, humanoid, amp, rsl-rl, imitation-learning, eth]
 status: complete
 updated: 2026-06-08
 summary: "gbionics/amp-rsl-rl 在 rsl_rl 的 PPO 上扩展 AMP（对抗式运动先验），让人形从动捕数据学运动技能；IIT 维护，含对称性增广，可 pip 安装。"

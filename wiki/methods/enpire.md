@@ -1,6 +1,7 @@
 ---
+
 type: method
-tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning]
+tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
 updated: 2026-06-23
 date: 2026-06-18

@@ -1,6 +1,7 @@
 ---
+
 type: overview
-tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving]
+tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
 updated: 2026-06-09
 related:

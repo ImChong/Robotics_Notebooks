@@ -1,4 +1,5 @@
 ---
+
 type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
@@ -10,6 +11,8 @@ related:
   - ./unitree-ros.md
   - ../concepts/wheel-legged-quadruped.md
   - ./dreamwaq-plus.md
+tags: [unitree]
+
 ---
 
 # Unitree

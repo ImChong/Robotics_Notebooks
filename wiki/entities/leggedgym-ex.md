@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, quadruped, legged-gym, amp, deepmimic, multi-simulator]
+tags: [repo, quadruped, legged-gym, amp, deepmimic, multi-simulator, eth, booster]
 status: complete
 updated: 2026-06-08
 summary: "lupinjia/LeggedGym-Ex 扩展 legged_gym 至多仿真器并集成 AMP、DeepMimic 等模仿任务，覆盖 Go2、K1、TRON1 等机型。"

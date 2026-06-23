@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [quadruped, sim2real, reinforcement-learning, legged]
+tags: [quadruped, sim2real, reinforcement-learning, legged, mit]
 status: stable
 summary: "RSS 2018：随机化动力学与感知，在仿真中学敏捷四足运动并迁移真机；建立早期 sim2real 扭矩/敏捷控制参照系。"
 updated: 2026-05-22

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks]
+tags: [paper, humanoid, loco-manipulation, visual-rl, sim2real, hierarchical-control, teacher-student, dagger, ppo, keypoint-tracking, depth, humanoid-paper-notebooks, stanford]
 status: complete
 updated: 2026-06-12
 arxiv: "2509.20322"

@@ -1,6 +1,7 @@
 ---
+
 type: overview
-tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics]
+tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics, mit]
 status: complete
 updated: 2026-05-26
 related:

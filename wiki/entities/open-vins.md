@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, vio, msckf, research, ros]
+tags: [repo, vio, msckf, research, ros, cmu]
 status: complete
 updated: 2026-05-27
 related:

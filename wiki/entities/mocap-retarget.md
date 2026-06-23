@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, motion-retargeting, mocap, humanoid, engineering]
+tags: [repo, motion-retargeting, mocap, humanoid, engineering, nvidia]
 status: complete
 updated: 2026-06-08
 summary: "ccrpRepo/mocap_retarget 是工程向动捕→机器人运动空间转换的参考管线，适合作为几何重定向脚本与配置的对照样本。"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, vslam, modular, research]
+tags: [repo, vslam, modular, research, eth]
 status: complete
 updated: 2026-05-27
 related:

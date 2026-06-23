@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, reinforcement-learning, sim2real, legged, digit, pd-control]
+tags: [humanoid, reinforcement-learning, sim2real, legged, digit, pd-control, berkeley]
 status: stable
 summary: "UC Berkeley：全尺寸 Digit 人形上大规模并行 RL + 因果 Transformer 策略，零样本户外行走与 sim2real 流水线（含关节 PD 部署链）。"
 updated: 2026-05-22

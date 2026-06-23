@@ -1,7 +1,8 @@
 ---
+
 type: entity
 title: SAPIEN (仿真引擎)
-tags: [simulation, physics-engine, manipulation, sapien]
+tags: [simulation, physics-engine, manipulation, sapien, ucsd]
 summary: "SAPIEN 是针对关节体交互与机器人操作设计的高性能仿真引擎，支持大规模 PartNet-Mobility 数据集，适用于细粒度操作任务。"
 updated: 2026-06-22
 related:

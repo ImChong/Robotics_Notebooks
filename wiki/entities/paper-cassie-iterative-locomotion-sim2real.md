@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [cassie, reinforcement-learning, sim2real, reward-design, legged]
+tags: [cassie, reinforcement-learning, sim2real, reward-design, legged, berkeley]
 status: stable
 summary: "Cassie 行走：记录 reward / observation / action 接口多轮迭代的 sim2real 设计史，含 DASS 等跨迭代经验复用。"
 updated: 2026-05-22

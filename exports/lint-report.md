@@ -85,6 +85,9 @@
 ### ⚠️ Entities 页面缺少 Methods/Tasks 关联出边（0 个）
 - 无
 
+### ❌ 工具实体缺少可派生的所属机构（0 个）
+- 无
+
 ### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（4 个）
 - wiki/methods/convex-relaxation-robotics.md（被 10 个页面引用，无 queries/comparisons 落地）
 - wiki/methods/lqr-ilqr.md（被 5 个页面引用，无 queries/comparisons 落地）

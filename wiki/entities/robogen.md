@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, data-generation, llm, embodied-ai, procedural]
+tags: [entity, simulator, data-generation, llm, embodied-ai, procedural, stanford]
 status: complete
 updated: 2026-06-22
 related:

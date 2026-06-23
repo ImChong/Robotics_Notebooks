@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [perception, computer-vision, calibration, fiducial, c, software]
+tags: [perception, computer-vision, calibration, fiducial, c, software, mit]
 status: complete
 updated: 2026-05-12
 related:

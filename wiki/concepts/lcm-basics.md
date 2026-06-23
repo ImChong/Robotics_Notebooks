@@ -1,6 +1,7 @@
 ---
+
 type: concept
-tags: [middleware, software, lcm, communication, realtime]
+tags: [middleware, software, lcm, communication, realtime, mit]
 status: complete
 updated: 2026-04-21
 related:

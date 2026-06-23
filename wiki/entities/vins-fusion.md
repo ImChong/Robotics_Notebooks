@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, vio, visual-inertial, optimization, uav]
+tags: [repo, vio, visual-inertial, optimization, uav, hku]
 status: complete
 updated: 2026-05-27
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, firmware, fpv, multirotor, uav, open-source, flight-controller]
+tags: [repo, firmware, fpv, multirotor, uav, open-source, flight-controller, linux-foundation]
 status: complete
 updated: 2026-06-18
 related:

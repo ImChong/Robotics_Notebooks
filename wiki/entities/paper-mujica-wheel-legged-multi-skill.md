@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, wheel-legged, quadruped, multi-skill, blind-locomotion, constrained-rl, p3o, sim2real, unitree-go2w, isaac-lab]
+tags: [paper, wheel-legged, quadruped, multi-skill, blind-locomotion, constrained-rl, p3o, sim2real, unitree-go2w, isaac-lab, unitree]
 status: complete
 updated: 2026-06-19
 arxiv: "2605.13058"

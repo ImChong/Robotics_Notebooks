@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, hardware, open-source, mujoco, cad, can-bus, sim2real]
+tags: [humanoid, hardware, open-source, mujoco, cad, can-bus, sim2real, unitree]
 status: complete
 updated: 2026-05-12
 related:

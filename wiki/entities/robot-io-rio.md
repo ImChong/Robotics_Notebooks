@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [framework, robot-learning, vla, teleoperation, real-time, open-source, cross-embodiment]
+tags: [framework, robot-learning, vla, teleoperation, real-time, open-source, cross-embodiment, nvidia, cmu]
 status: complete
 updated: 2026-05-15
 related:

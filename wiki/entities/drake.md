@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [software, simulation, optimization, trajectory-optimization, c++]
+tags: [software, simulation, optimization, trajectory-optimization, c++, toyota-research, mit]
 status: complete
 updated: 2026-04-21
 related:

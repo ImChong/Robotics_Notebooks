@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [industry, world-models, 3dgs, generative-ai, spatial-intelligence, web, simulation-adjacent]
+tags: [industry, world-models, 3dgs, generative-ai, spatial-intelligence, web, simulation-adjacent, nvidia]
 status: complete
 updated: 2026-05-28
 related:

@@ -1,9 +1,12 @@
 ---
+
 type: entity
 sources:
   - ../../sources/papers/optimal_control.md
 summary: "Crocoddyl"
 updated: 2026-05-16
+tags: [inria]
+
 ---
 
 # Crocoddyl

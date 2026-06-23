@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - world-models
@@ -29,6 +30,8 @@ sources:
   - ../../sources/papers/kairos_arxiv_2606_16533.md
   - ../../sources/repos/kairos_sensenova.md
 summary: "Kairos（Kairos 3.0）：原生 Physical AI 世界模型栈——CEDC 跨具身预训练、理解/生成/预测统一 MoT、SWA+DSWA+GLA 混合线性时序记忆与部署协同设计；Kairos-4B 在具身 WM 与 LIBERO-Plus/RoboTwin 2.0 等 WAM 基准报告 SOTA 级结果与近线性推理扩展。"
+tags: [world-models, world-action-models, wam, physical-ai, video-generation, diffusion, linear-attention, deployment, manipulation, huggingface]
+
 ---
 
 # Kairos（原生世界模型栈 · kairos-agi）

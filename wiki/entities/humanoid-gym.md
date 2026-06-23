@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - humanoid
@@ -26,6 +27,8 @@ sources:
   - ../../sources/repos/humanoid-gym.md
   - ../../sources/repos/humanoid-gym-modified.md
 summary: "Humanoid-Gym（arXiv:2404.05695）：Isaac Gym 上人形 PPO 训练框架，步态相位奖励 + 非对称 AC + DR，XBot 零样本 sim2real；内置 MuJoCo sim2sim 校准管线。"
+tags: [humanoid, reinforcement-learning, locomotion, sim2real, isaac-gym, legged-gym, ppo, domain-randomization, nvidia]
+
 ---
 
 # Humanoid-Gym（人形零样本 Sim2Real 训练框架）

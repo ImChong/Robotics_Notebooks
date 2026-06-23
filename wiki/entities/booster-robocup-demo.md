@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, robocup, ros2, booster-robotics, perception, rl]
+tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
 status: drafting
 updated: 2026-04-27
 related:

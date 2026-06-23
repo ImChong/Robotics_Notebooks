@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, firmware, fpv, dji, digital-fpv, multirotor, uav, open-source, video-link]
+tags: [repo, firmware, fpv, dji, digital-fpv, multirotor, uav, open-source, video-link, linux-foundation]
 status: complete
 updated: 2026-06-18
 related:

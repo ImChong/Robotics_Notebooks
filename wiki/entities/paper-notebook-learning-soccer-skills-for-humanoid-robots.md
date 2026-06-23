@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
+tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
 updated: 2026-06-07
 arxiv: "2602.05310"

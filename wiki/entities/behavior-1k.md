@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities]
+tags: [entity, simulator, benchmark, embodied-ai, omniverse, everyday-activities, nvidia]
 status: complete
 updated: 2026-06-22
 related:

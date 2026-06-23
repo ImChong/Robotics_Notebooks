@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, curated-list, text-to-motion, human-motion, smpl, dataset, survey]
+tags: [repo, curated-list, text-to-motion, human-motion, smpl, dataset, survey, linux-foundation]
 status: complete
 updated: 2026-06-09
 related:

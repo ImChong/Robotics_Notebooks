@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, perception, tactile-sensing, vision-based-tactile, manipulation, dexterity, sensor]
+tags: [hardware, perception, tactile-sensing, vision-based-tactile, manipulation, dexterity, sensor, mit]
 status: complete
 updated: 2026-04-29
 related:

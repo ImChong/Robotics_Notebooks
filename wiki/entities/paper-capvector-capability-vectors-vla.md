@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -21,6 +22,8 @@ sources:
   - ../../sources/sites/capvector-github-io.md
   - ../../sources/repos/openhelix_team_capvector.md
 summary: "CapVector（arXiv:2605.10903）：在参数空间用 θ_ao−θ_ft 抽取辅助目标 SFT 的 capability vector，与预训练权重合并得 θ_meta；下游以标准 SFT 加轻量正交正则保留注入能力，在 OpenVLA-OFT / StarVLA / π_0.5 与 Spatial Forcing、LaRA-VLA 等组合上报告 LIBERO、RoboTwin 与跨域迁移及真机叙事。"
+tags: [paper, vla, finetuning, model-merging, libero, robotwin, hkust, meta]
+
 ---
 
 # CapVector（VLA 参数空间可迁移能力向量）

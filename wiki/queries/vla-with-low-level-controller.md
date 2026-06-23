@@ -1,6 +1,7 @@
 ---
+
 type: query
-tags: [vla, wbc, mpc, impedance-control, architecture, fusion, latency, manipulation, humanoid]
+tags: [vla, wbc, mpc, impedance-control, architecture, fusion, latency, manipulation, humanoid, horizon-robotics]
 status: complete
 summary: "VLA 如何与低级关节控制器（MPC/WBC）融合：梳理3种主流架构（VLA+PD、VLA+阻抗、VLA+WBC异步）、输出格式选择、action chunking 缓冲策略与实践挑战。"
 sources:

@@ -9,6 +9,30 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/lerobot.md",
+      "detail_id": "entity-lerobot",
+      "label": "LeRobot (Hugging Face)",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/legged-gym.md",
+      "detail_id": "entity-legged-gym",
+      "label": "legged_gym",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/nvidia-gear-lab.md",
       "detail_id": "entity-nvidia-gear-lab",
       "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
@@ -143,36 +167,12 @@
       "type": "concept",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/domain-randomization.md",
-      "detail_id": "wiki-concepts-domain-randomization",
-      "label": "Domain Randomization",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/floating-base-dynamics.md",
-      "detail_id": "wiki-concepts-floating-base-dynamics",
-      "label": "Floating Base Dynamics",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulator-selection-guide.md",
-      "detail_id": "wiki-queries-simulator-selection-guide",
-      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
-      "type": "query",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/nvidia-gear-lab.md",
-    "detail_id": "entity-nvidia-gear-lab",
-    "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
+    "path": "wiki/entities/isaac-lab.md",
+    "detail_id": "entity-isaac-lab",
+    "label": "Isaac Lab",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"

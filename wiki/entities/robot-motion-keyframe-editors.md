@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, data-pipeline]
+tags: [tooling, motion-editing, keyframes, urdf, mujoco, imitation-learning, data-pipeline, nvidia, stanford]
 status: complete
 updated: 2026-05-17
 related:

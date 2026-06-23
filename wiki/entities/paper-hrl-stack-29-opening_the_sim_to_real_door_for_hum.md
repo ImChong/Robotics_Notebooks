@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, nvidia]
 status: complete
 updated: 2026-06-11
 arxiv: "2512.01061"

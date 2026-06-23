@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, mavlink, px4, api, uav, offboard, companion-computer]
+tags: [repo, mavlink, px4, api, uav, offboard, companion-computer, linux-foundation]
 status: complete
 updated: 2026-05-27
 related:

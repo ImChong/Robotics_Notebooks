@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, ros2, slam, 2d-lidar, mapping, navigation]
+tags: [repo, ros2, slam, 2d-lidar, mapping, navigation, linux-foundation]
 status: complete
 updated: 2026-05-27
 related:

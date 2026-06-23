@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, swarm, crazyflie, ros2, motion-capture, multirotor]
+tags: [repo, swarm, crazyflie, ros2, motion-capture, multirotor, bitcraze]
 status: complete
 updated: 2026-05-27
 related:

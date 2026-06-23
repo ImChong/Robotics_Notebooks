@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, manipulation, benchmark, sapien, generalization]
+tags: [entity, simulator, manipulation, benchmark, sapien, generalization, ucsd]
 status: complete
 updated: 2026-06-22
 related:

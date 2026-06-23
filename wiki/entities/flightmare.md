@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, simulation, uav, unity, reinforcement-learning, rpg, agile-flight]
+tags: [repo, simulation, uav, unity, reinforcement-learning, rpg, agile-flight, eth]
 status: complete
 updated: 2026-05-27
 related:

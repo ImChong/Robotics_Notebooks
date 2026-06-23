@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -23,6 +24,8 @@ sources:
   - ../../sources/sites/gencad3d-github-io.md
   - ../../sources/repos/yunomi-git-gencad-3d.md
 summary: "GenCAD-3D（arXiv:2509.15246）：对比学习对齐点云/网格与 CAD 潜空间，条件潜扩散生成 CAD program；SynthBal 缓解 DeepCAD 复杂度长尾；发布多模态数据集、HF 权重与 51 件激光扫描真值子集。"
+tags: [paper, cad, generative-ai, diffusion, contrastive-learning, reverse-engineering, point-cloud, mesh, dataset, mit]
+
 ---
 
 # GenCAD-3D（Multimodal Geometry → CAD Program）

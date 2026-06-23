@@ -1,6 +1,7 @@
 ---
+
 type: method
-tags: [mpc, solver, admm, nmpc, gpu, parallel-computing]
+tags: [mpc, solver, admm, nmpc, gpu, parallel-computing, tsinghua, horizon-robotics]
 status: complete
 updated: 2026-06-10
 related:

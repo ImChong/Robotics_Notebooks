@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, ros, education, ackermann, navigation, racing]
+tags: [repo, ros, education, ackermann, navigation, racing, mit]
 status: complete
 updated: 2026-05-27
 related:

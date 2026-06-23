@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [perception, human-mesh-recovery, onnx, cpp, deployment, motion-capture, bvh, real-time, open-source]
+tags: [perception, human-mesh-recovery, onnx, cpp, deployment, motion-capture, bvh, real-time, open-source, meta]
 status: complete
 updated: 2026-05-30
 related:

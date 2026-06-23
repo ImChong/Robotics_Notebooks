@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, 3dgs, gaussian-splatting, web, mesh, streaming, lod, typescript]
+tags: [repo, 3dgs, gaussian-splatting, web, mesh, streaming, lod, typescript, linux-foundation]
 status: complete
 updated: 2026-05-28
 related:

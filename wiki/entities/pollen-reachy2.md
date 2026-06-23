@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, mobile-manipulator, open-source, pollen, reachy, embodied-ai]
+tags: [humanoid, mobile-manipulator, open-source, pollen, reachy, embodied-ai, huggingface]
 status: complete
 updated: 2026-05-18
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, motion-capture, mocap, computer-vision, education, opensource]
+tags: [repo, motion-capture, mocap, computer-vision, education, opensource, freemocap]
 status: complete
 updated: 2026-06-09
 related:

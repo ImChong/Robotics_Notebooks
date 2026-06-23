@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
+tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, nvidia]
 status: planned
 updated: 2026-06-11
 arxiv: "2504.00614"

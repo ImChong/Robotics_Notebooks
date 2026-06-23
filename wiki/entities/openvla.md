@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, vla, manipulation, open-source, vision-language-action]
+tags: [repo, vla, manipulation, open-source, vision-language-action, stanford]
 status: complete
 updated: 2026-05-27
 related:
