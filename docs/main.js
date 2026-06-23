@@ -2921,15 +2921,15 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
-    renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     renderDetailMetaItemRow('roadmapMetaTopic', '所属专题', '');
+    renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
-      renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution'),
-      renderMetaTopicBadges(graphPath, 'roadmapMetaTopic')
+      renderMetaTopicBadges(graphPath, 'roadmapMetaTopic'),
+      renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution')
     ]);
   }
 
@@ -3178,8 +3178,8 @@
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
         tocEl.innerHTML = '';
@@ -3249,16 +3249,16 @@
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
-      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
+      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       removeLoadingState(metaEl);
     }
     renderDetailMetaSource(detailPage);
     setDetailMetaReadyState('pending');
     Promise.all([
       renderDetailCommunityBadge(detailPage),
-      renderDetailInstitutionBadges(detailPage),
-      renderDetailTopicBadges(detailPage)
+      renderDetailTopicBadges(detailPage),
+      renderDetailInstitutionBadges(detailPage)
     ]).finally(function () {
       setDetailMetaReadyState('true');
     });
