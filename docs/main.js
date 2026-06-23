@@ -2825,6 +2825,33 @@
     return renderMetaCommunityBadge((detailPage && detailPage.path) || '', 'detailMetaCommunity');
   }
 
+  // 机构徽标：复用 link-graph.json 的 institutions 派生，一个节点可属于多个机构。
+  function renderMetaInstitutionBadges(currentPath, rowId) {
+    var instRowId = rowId || 'detailMetaInstitution';
+    if (!currentPath) {
+      renderDetailMetaItemRow(instRowId, '所属机构', '');
+      return Promise.resolve();
+    }
+    return fetch('exports/link-graph.json').then(function (r) { return r.json(); }).then(function (gd) {
+      var node = (gd.nodes || []).find(function (n) { return n.id === currentPath; });
+      var ids = (node && node.institutions) || [];
+      if (!ids.length) { renderDetailMetaItemRow(instRowId, '所属机构', ''); return; }
+      var labelById = {};
+      (gd.institutions || []).forEach(function (it) { labelById[it.id] = it.label; });
+      var html = ids.map(function (id) {
+        var label = labelById[id] || id;
+        return '<a class="detail-meta-badge" href="index.html?institution=' + encodeURIComponent(id) +
+          '#wiki-search" title="在首页筛选「' + escapeHtml(label) + '」相关页面">' +
+          '<span>🏛️</span><span>' + escapeHtml(label) + '</span></a>';
+      }).join('');
+      renderDetailMetaItemRow(instRowId, '所属机构', html);
+    }).catch(function () { renderDetailMetaItemRow(instRowId, '所属机构', ''); });
+  }
+
+  function renderDetailInstitutionBadges(detailPage) {
+    return renderMetaInstitutionBadges((detailPage && detailPage.path) || '', 'detailMetaInstitution');
+  }
+
   function findRoadmapStageHeadingId(stage, contentEl) {
     if (!contentEl || !stage) return '';
     var sid = String(stage.id || '').toLowerCase();
@@ -2894,12 +2921,14 @@
     }
 
     renderDetailMetaItemRow('roadmapMetaCommunity', '所属社区', '');
+    renderDetailMetaItemRow('roadmapMetaInstitution', '所属机构', '');
     renderDetailMetaItemRow('roadmapMetaTopic', '所属专题', '');
     if (metaEl) removeLoadingState(metaEl);
 
     var graphPath = detail.path || '';
     return Promise.all([
       renderMetaCommunityBadge(graphPath, 'roadmapMetaCommunity'),
+      renderMetaInstitutionBadges(graphPath, 'roadmapMetaInstitution'),
       renderMetaTopicBadges(graphPath, 'roadmapMetaTopic')
     ]);
   }
@@ -3149,6 +3178,7 @@
       renderDetailMetaSource(null);
       setDetailMetaReadyState('true');
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
+      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
       if (tocSectionEl) tocSectionEl.hidden = true;
       if (tocEl) {
@@ -3219,6 +3249,7 @@
         detailPage.updated ? renderDetailMetaDateBadge(detailPage.updated) : ''
       );
       renderDetailMetaItemRow('detailMetaCommunity', '所属社区', '');
+      renderDetailMetaItemRow('detailMetaInstitution', '所属机构', '');
       renderDetailMetaItemRow('detailMetaTopic', '所属专题', '');
       removeLoadingState(metaEl);
     }
@@ -3226,6 +3257,7 @@
     setDetailMetaReadyState('pending');
     Promise.all([
       renderDetailCommunityBadge(detailPage),
+      renderDetailInstitutionBadges(detailPage),
       renderDetailTopicBadges(detailPage)
     ]).finally(function () {
       setDetailMetaReadyState('true');
@@ -4191,6 +4223,7 @@
   var searchInput = document.getElementById('wikiSearchInput');
   var searchResults = document.getElementById('wikiSearchResults');
   var communityFilter = document.getElementById('wikiCommunityFilter');
+  var institutionFilter = document.getElementById('wikiInstitutionFilter');
   var tagCloudEl = document.getElementById('wikiTagCloud');
   if (searchInput && searchResults) {
     var _indexData = null;
@@ -4203,6 +4236,10 @@
     var _communityByPath = null;
     var _communityByPathPromise = null;
     var _communitySelectPopulated = false;
+
+    // 研究机构筛选与社区筛选共用 link-graph.json：一次 fetch 同时构建两套映射。
+    var _institutionByPath = null;
+    var _institutionSelectPopulated = false;
 
     function populateCommunitySelect(communities) {
       if (!communityFilter || _communitySelectPopulated) return;
@@ -4230,6 +4267,30 @@
       }
     }
 
+    function populateInstitutionSelect(institutions) {
+      if (!institutionFilter || _institutionSelectPopulated) return;
+      _institutionSelectPopulated = true;
+      var preserved = institutionFilter.value;
+      var opts = ['<option value="">全部机构</option>'];
+      var sorted = (institutions || []).slice().sort(function (a, b) {
+        return (b.size || 0) - (a.size || 0);
+      });
+      for (var ii = 0; ii < sorted.length; ii++) {
+        var inst = sorted[ii];
+        if (!inst || !inst.id) continue;
+        var label = inst.label || inst.id;
+        if (inst.size != null) label += ' (' + inst.size + ')';
+        opts.push(
+          '<option value="' + escapeHtml(inst.id) + '">' + escapeHtml(label) + '</option>'
+        );
+      }
+      institutionFilter.innerHTML = opts.join('');
+      if (preserved) {
+        institutionFilter.value = preserved;
+        if (institutionFilter.value !== preserved) institutionFilter.value = '';
+      }
+    }
+
     function ensureCommunityByPath() {
       if (_communityByPath) return Promise.resolve(_communityByPath);
       if (_communityByPathPromise) return _communityByPathPromise;
@@ -4240,17 +4301,23 @@
         })
         .then(function(data) {
           var m = new Map();
+          var inst = new Map();
           var nodes = data.nodes || [];
           for (var ni = 0; ni < nodes.length; ni++) {
             var node = nodes[ni];
-            if (node.id && node.community) m.set(node.id, node.community);
+            if (!node.id) continue;
+            if (node.community) m.set(node.id, node.community);
+            if (node.institutions && node.institutions.length) inst.set(node.id, node.institutions);
           }
           _communityByPath = m;
+          _institutionByPath = inst;
           populateCommunitySelect(data.communities || []);
+          populateInstitutionSelect(data.institutions || []);
           return m;
         })
         .catch(function() {
           _communityByPath = new Map();
+          _institutionByPath = new Map();
           return _communityByPath;
         });
       return _communityByPathPromise;
@@ -4539,7 +4606,8 @@
       _selectedIndex = -1;
       var q = query.trim();
       var communityVal = communityFilter ? communityFilter.value : '';
-      if (!q && !communityVal) { renderEmptyState(); return; }
+      var institutionVal = institutionFilter ? institutionFilter.value : '';
+      if (!q && !communityVal && !institutionVal) { renderEmptyState(); return; }
       searchResults.innerHTML = '<p style="color:var(--text-muted);grid-column:1/-1">加载离线搜索索引中…</p>';
       Promise.all([ensureSearchIndex(), ensureCommunityByPath()])
         .then(function(results) {
@@ -4559,12 +4627,17 @@
 
           // ⚡ Bolt Optimization: Single-pass search filtering
           // Expected impact: Eliminates redundant `substringScore` and `.map()` iterations, reducing search CPU time by ~40% for large indexes.
+          var institutionMap = _institutionByPath || new Map();
           var matched = [];
           for (var i = 0; i < docs.length; i++) {
             var doc = docs[i];
             if (communityVal) {
               var docCommunity = communityMap.get(doc.path);
               if (docCommunity !== communityVal) continue;
+            }
+            if (institutionVal) {
+              var docInst = institutionMap.get(doc.path);
+              if (!docInst || docInst.indexOf(institutionVal) < 0) continue;
             }
 
             var partial = 0;
@@ -4600,9 +4673,9 @@
             return String(a.title || '').localeCompare(String(b.title || ''));
           }).slice(0, 10);
           if (!matched.length) {
-            if (communityVal && !q) {
+            if ((communityVal || institutionVal) && !q) {
               searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted)">'
-                + '<p>当前社区下暂无索引条目，或该社区数据仍在加载。</p></div>';
+                + '<p>当前筛选条件下暂无索引条目，或数据仍在加载。</p></div>';
             } else {
               renderNoResults(q);
             }
@@ -4642,6 +4715,7 @@
         searchResults.innerHTML = '';
         _selectedIndex = -1;
         if (communityFilter) communityFilter.value = '';
+        if (institutionFilter) institutionFilter.value = '';
       }
     });
 
@@ -4667,6 +4741,21 @@
     if (communityFilter) {
       communityFilter.addEventListener('change', triggerSearch);
       ensureCommunityByPath();
+    }
+    if (institutionFilter) {
+      institutionFilter.addEventListener('change', triggerSearch);
+      // 从详情页「所属机构」徽标跳入：?institution=<id> 预选机构筛选并展示结果。
+      var _instParam = new URLSearchParams(window.location.search).get('institution');
+      if (_instParam) {
+        ensureCommunityByPath().then(function () {
+          institutionFilter.value = _instParam;
+          if (institutionFilter.value === _instParam) {
+            triggerSearch();
+            var sec = document.getElementById('wiki-search');
+            if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      }
     }
 
     searchResults.addEventListener('click', function(e) {
@@ -4697,6 +4786,7 @@
       if (term && searchInput) {
         searchInput.value = term;
         if (communityFilter) communityFilter.value = '';
+        if (institutionFilter) institutionFilter.value = '';
         triggerSearch();
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       }

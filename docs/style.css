@@ -1680,7 +1680,8 @@ body.sponsor-dialog-open {
     padding: 12px 12px;
     font-size: 1rem;
   }
-  #wikiCommunityFilter {
+  #wikiCommunityFilter,
+  #wikiInstitutionFilter {
     padding: 10px 8px;
     font-size: 0.78rem;
     background-position: right 6px center;
@@ -1709,11 +1710,12 @@ body.sponsor-dialog-open {
   color: var(--text);
   outline: none;
 }
-/* 社区筛选下拉约占整条搜索栏宽度的 1/3，过长文案省略 */
-#wikiCommunityFilter {
-  flex: 0 0 33.333%;
-  width: 33.333%;
-  max-width: 33.333%;
+/* 社区 / 研究机构筛选下拉各占搜索栏约 1/4，过长文案省略 */
+#wikiCommunityFilter,
+#wikiInstitutionFilter {
+  flex: 0 1 26%;
+  width: 26%;
+  max-width: 26%;
   min-width: 0;
   box-sizing: border-box;
   border: none;

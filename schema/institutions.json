@@ -1,0 +1,30 @@
+{
+  "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。新增机构在此追加即可，无需改前端。",
+  "registry": {
+    "nvidia": { "label": "NVIDIA", "aliases": ["nvidia", "gear"] },
+    "google-deepmind": { "label": "Google DeepMind", "aliases": ["deepmind", "google-deepmind"] },
+    "google": { "label": "Google", "aliases": ["google", "google-research", "google-brain"] },
+    "meta": { "label": "Meta AI", "aliases": ["meta", "meta-ai", "fair"] },
+    "microsoft": { "label": "Microsoft", "aliases": ["microsoft", "msr"] },
+    "physical-intelligence": { "label": "Physical Intelligence", "aliases": ["physical-intelligence"] },
+    "cmu": { "label": "卡内基梅隆大学（CMU）", "aliases": ["cmu"] },
+    "mit": { "label": "麻省理工（MIT）", "aliases": ["mit"] },
+    "stanford": { "label": "斯坦福大学（Stanford）", "aliases": ["stanford"] },
+    "berkeley": { "label": "加州大学伯克利分校（UC Berkeley）", "aliases": ["berkeley", "ucb", "uc-berkeley"] },
+    "princeton": { "label": "普林斯顿大学（Princeton）", "aliases": ["princeton"] },
+    "eth": { "label": "苏黎世联邦理工（ETH Zürich）", "aliases": ["eth", "ethz", "eth-zurich"] },
+    "tsinghua": { "label": "清华大学（Tsinghua）", "aliases": ["tsinghua", "thu"] },
+    "pku": { "label": "北京大学（PKU）", "aliases": ["pku"] },
+    "sjtu": { "label": "上海交通大学（SJTU）", "aliases": ["sjtu"] },
+    "zju": { "label": "浙江大学（ZJU）", "aliases": ["zju"] },
+    "hku": { "label": "香港大学（HKU）", "aliases": ["hku"] },
+    "hkust": { "label": "香港科技大学（HKUST）", "aliases": ["hkust"] },
+    "shanghai-ai-lab": { "label": "上海人工智能实验室（Shanghai AI Lab）", "aliases": ["shanghai-ai-lab", "shlab"] },
+    "unitree": { "label": "宇树科技（Unitree）", "aliases": ["unitree"] },
+    "agibot": { "label": "智元机器人（AgiBot）", "aliases": ["agibot"] },
+    "fourier": { "label": "傅利叶（Fourier）", "aliases": ["fourier"] },
+    "galbot": { "label": "银河通用（Galbot）", "aliases": ["galbot"] },
+    "booster": { "label": "加速进化（Booster Robotics）", "aliases": ["booster"] },
+    "xpeng": { "label": "小鹏（XPeng）", "aliases": ["xpeng"] }
+  }
+}
