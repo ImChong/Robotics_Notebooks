@@ -1103,17 +1103,6 @@
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,0.28) transparent;
     }
-    /* 研究机构筛选列表：独立于着色维度，限高滚动，避免面板过长 */
-    .filter-institution-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-      max-height: 220px;
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(255,255,255,0.28) transparent;
-      padding: 4px 0 8px;
-    }
     .filter-body::-webkit-scrollbar {
       width: 8px;
     }
@@ -1563,16 +1552,10 @@
           <button class="filter-topic-chip" type="button" data-topic="data-pipeline" title="训练数据管线"><span>📦</span><span>训练数据</span></button>
         </div>
       </details>
-      <details class="filter-topic-section" id="filter-institution-section">
-        <summary class="filter-topic-summary">
-          <span class="filter-topic-summary-label">研究机构</span>
-          <span class="filter-topic-summary-current" id="filter-institution-current"><span>🏛️</span><span>全部</span></span>
-        </summary>
-        <div class="filter-institution-list" id="filter-institution-list"></div>
-      </details>
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
+        <button id="filter-mode-institution" class="chip" type="button">按机构</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
@@ -1731,6 +1714,7 @@
     const filterSubtitle = document.getElementById('filter-subtitle');
     const filterModeTypeBtn = document.getElementById('filter-mode-type');
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
+    const filterModeInstitutionBtn = document.getElementById('filter-mode-institution');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
@@ -1843,62 +1827,32 @@
       });
     }
 
+    function formatInstitutionOptionLabel(institutionId) {
+      const meta = institutionMetaMap.get(institutionId);
+      const label = institutionLabelMap.get(institutionId) || institutionId;
+      if (!meta || meta.size == null) return label;
+      return label + ' (' + meta.size + ')';
+    }
+
     function nodeInstitutions(d) {
       return Array.isArray(d.institutions) ? d.institutions : [];
     }
 
-    // 研究机构筛选：独立于着色维度的过滤面（与「专题视图」同类），多选；命中任一
-    // 所选机构即保留，着色仍由 colorMode 决定（社区/类型/健康度），不改图例配色。
-    const activeInstitutions = new Set();
-
-    function nodeMatchesInstitutionFilter(d) {
-      if (!activeInstitutions.size) return true;
-      return nodeInstitutions(d).some((id) => activeInstitutions.has(id));
-    }
-
-    function updateInstitutionFilterSummary() {
-      const cur = document.getElementById('filter-institution-current');
-      if (!cur) return;
-      const n = activeInstitutions.size;
-      cur.innerHTML = '<span>🏛️</span><span>' + (n ? n + ' 个机构' : '全部') + '</span>';
-    }
-
-    function renderInstitutionFilterSection() {
-      const listEl = document.getElementById('filter-institution-list');
-      if (!listEl) return;
-      const insts = getSortedInstitutions();
-      if (!insts.length) {
-        listEl.innerHTML = '<div class="filter-empty">暂无机构数据</div>';
-        updateInstitutionFilterSummary();
-        return;
-      }
-      listEl.innerHTML = insts.map((inst) => {
-        const checked = activeInstitutions.has(inst.id) ? ' checked' : '';
-        const color = institutionColorMap.get(inst.id) || COMMUNITY_COLORS[9];
-        const countBadge = inst.size != null
-          ? '<span class="filter-count-badge">' + escapeHtml(String(inst.size)) + '</span>'
-          : '';
-        return '<label class="filter-item">'
-          + '<input type="checkbox" data-institution-filter value="' + escapeHtml(inst.id) + '"' + checked + ' /> '
-          + '<span class="filter-dot" style="background:' + escapeHtml(color) + '"></span>'
-          + '<span class="filter-item-label">' + escapeHtml(institutionLabelMap.get(inst.id) || inst.id) + '</span>'
-          + countBadge
-          + '</label>';
-      }).join('');
-      listEl.querySelectorAll('input[data-institution-filter]').forEach((cb) => {
-        cb.addEventListener('change', () => {
-          if (areFiltersLocked()) return;
-          if (cb.checked) activeInstitutions.add(cb.value);
-          else activeInstitutions.delete(cb.value);
-          applyFilters();
-          updateFilterCount();
-          updateInstitutionFilterSummary();
-        });
-      });
-      updateInstitutionFilterSummary();
+    /** 多机构节点取规模最大的机构作为主色/磁吸簇（与社区单值维度对齐） */
+    function primaryInstitution(d) {
+      const insts = nodeInstitutions(d);
+      if (!insts.length) return null;
+      return insts.slice().sort((a, b) => {
+        const sa = institutionMetaMap.get(a)?.size || 0;
+        const sb = institutionMetaMap.get(b)?.size || 0;
+        if (sb !== sa) return sb - sa;
+        return String(institutionLabelMap.get(a) || a).localeCompare(
+          String(institutionLabelMap.get(b) || b), 'zh-CN');
+      })[0];
     }
 
     let focusedCommunityId = null;
+    let focusedInstitutionId = null;
     let focusedType = null;
     let focusedHealth = null;
 
@@ -1970,6 +1924,10 @@
       if (colorMode === 'community') {
         return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
       }
+      if (colorMode === 'institution') {
+        const instId = primaryInstitution(d);
+        return instId ? (institutionColorMap.get(instId) || COMMUNITY_COLORS[9]) : '#94a3b8';
+      }
       if (colorMode === 'health') {
         return HEALTH_COLORS[d.health_score != null ? Math.min(d.health_score, 3) : 0];
       }
@@ -2000,6 +1958,20 @@
             ? `<span class="legend-count">${escapeHtml(String(community.size))}</span>`
             : '';
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(String(communityId))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
+          </div>`);
+        }
+      } else if (colorMode === 'institution') {
+        rows.push('<div class="legend-title">按机构着色</div>');
+        for (const inst of getSortedInstitutions()) {
+          const instId = inst.id;
+          const label = institutionLabelMap.get(instId) || inst.label || instId;
+          const color = institutionColorMap.get(instId) || COMMUNITY_COLORS[9];
+          const isActive = (focusedInstitutionId === instId);
+          const countHtml = inst.size != null
+            ? `<span class="legend-count">${escapeHtml(String(inst.size))}</span>`
+            : '';
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-institution-id="${escapeHtml(String(instId))}">
             <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
           </div>`);
         }
@@ -2039,6 +2011,7 @@
       if (graphLegendFab) {
         const fabLabels = {
           community: '按社区着色',
+          institution: '按机构着色',
           health: '按健康度着色',
           type: '按类型着色',
         };
@@ -2070,7 +2043,6 @@
 
     initCommunityMapsFromGraph();
     initInstitutionMapsFromGraph();
-    renderInstitutionFilterSection();
     renderLegend();
 
     /* ── 计算节点度数 ── */
@@ -2235,10 +2207,15 @@
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic) {
-        const categories = (colorMode === 'community') 
-          ? Array.from(communityLabelMap.keys())
-          : Array.from(new Set(nodes.map(n => n.type)));
-          
+        let categories;
+        if (colorMode === 'community') {
+          categories = Array.from(communityLabelMap.keys());
+        } else if (colorMode === 'institution') {
+          categories = Array.from(institutionLabelMap.keys());
+        } else {
+          categories = Array.from(new Set(nodes.map(n => n.type)));
+        }
+
         const angleStep = (2 * Math.PI) / (categories.length || 1);
         const radius = Math.min(W, H) * 0.25;
         const centers = {};
@@ -2249,14 +2226,13 @@
           };
         });
 
-        const getTargetX = d => {
-          const key = (colorMode === 'community') ? d.community : d.type;
-          return centers[key]?.x || W/2;
+        const getClusterKey = d => {
+          if (colorMode === 'community') return d.community;
+          if (colorMode === 'institution') return primaryInstitution(d);
+          return d.type;
         };
-        const getTargetY = d => {
-          const key = (colorMode === 'community') ? d.community : d.type;
-          return centers[key]?.y || H/2;
-        };
+        const getTargetX = d => centers[getClusterKey(d)]?.x || W/2;
+        const getTargetY = d => centers[getClusterKey(d)]?.y || H/2;
 
         simulation.force('x', d3.forceX(getTargetX).strength(0.18));
         simulation.force('y', d3.forceY(getTargetY).strength(0.18));
@@ -2328,6 +2304,13 @@
           color: communityColorMap.get(community.id) || COMMUNITY_COLORS[9]
         }));
       }
+      if (colorMode === 'institution') {
+        return getSortedInstitutions().map((inst) => ({
+          value: inst.id,
+          label: formatInstitutionOptionLabel(inst.id),
+          color: institutionColorMap.get(inst.id) || COMMUNITY_COLORS[9]
+        }));
+      }
       if (colorMode === 'health') {
         return HEALTH_FILTER_OPTIONS;
       }
@@ -2336,6 +2319,7 @@
 
     function getColorModeLabel(mode) {
       if (mode === 'community') return '按社区';
+      if (mode === 'institution') return '按机构';
       if (mode === 'health') return '按健康度';
       return '按类型';
     }
@@ -2348,6 +2332,7 @@
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
       if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
+      if (filterModeInstitutionBtn) filterModeInstitutionBtn.classList.toggle('active', colorMode === 'institution');
       if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
       if (!filterPanelBody) return;
       const options = getFilterOptions();
@@ -2358,7 +2343,8 @@
           '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
           + options.map(option => {
               const checked = activeFilters.has(option.value) ? ' checked' : '';
-              const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+              const meta = colorMode === 'community' ? communityMetaMap.get(option.value)
+                : colorMode === 'institution' ? institutionMetaMap.get(option.value) : null;
               const countBadge = meta && meta.size != null
                 ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
                 : '';
@@ -2400,6 +2386,7 @@
       colorMode = mode;
       activeFilters.clear();
       focusedCommunityId = null;
+      focusedInstitutionId = null;
       focusedType = null;
       focusedHealth = null;
       updateFilterCount();
@@ -2410,6 +2397,7 @@
 
     if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
     if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    if (filterModeInstitutionBtn) filterModeInstitutionBtn.addEventListener('click', () => setColorMode('institution'));
     if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     function syncGraphDomFromSimulation() {
@@ -2578,8 +2566,8 @@
 
     function hasActiveGraphFilter() {
       return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
-        || focusedCommunityId || focusedType || focusedHealth !== null
-        || activeInstitutions.size > 0 || currentTopic !== 'all';
+        || focusedCommunityId || focusedInstitutionId || focusedType || focusedHealth !== null
+        || currentTopic !== 'all';
     }
 
     function edgeNodeId(endpoint) {
@@ -2870,15 +2858,30 @@
       if (!row) return;
 
       const cid = row.getAttribute('data-community-id');
+      const iid = row.getAttribute('data-institution-id');
       const type = row.getAttribute('data-type');
       const health = row.getAttribute('data-health');
 
       if (cid) {
         focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
+        focusedInstitutionId = null;
+        focusedType = null;
+        focusedHealth = null;
+      } else if (iid) {
+        focusedInstitutionId = (focusedInstitutionId === iid) ? null : iid;
+        focusedCommunityId = null;
+        focusedType = null;
+        focusedHealth = null;
       } else if (type) {
         focusedType = (focusedType === type) ? null : type;
+        focusedCommunityId = null;
+        focusedInstitutionId = null;
+        focusedHealth = null;
       } else if (health !== null) {
         focusedHealth = (focusedHealth === health) ? null : health;
+        focusedCommunityId = null;
+        focusedInstitutionId = null;
+        focusedType = null;
       } else {
         return;
       }
@@ -2894,19 +2897,23 @@
     document.getElementById('filter-clear').addEventListener('click', () => {
       if (areFiltersLocked()) return;
       activeFilters.clear();
-      activeInstitutions.clear();
       topDegreeLimit = totalNodeCount;
       topDegreeIds = null;
+      focusedCommunityId = null;
+      focusedInstitutionId = null;
+      focusedType = null;
+      focusedHealth = null;
       initDegreeTopSlider();
       renderFilterPanel();
-      renderInstitutionFilterSection();
       setActiveTopic('all');
     });
     renderFilterPanel();
 
     /* ── checkbox 筛选 ── */
     function updateFilterCount() {
-      const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentTopic && currentTopic !== 'all' ? 1 : 0);
+      const count = activeFilters.size + (topDegreeIds ? 1 : 0) + (currentTopic && currentTopic !== 'all' ? 1 : 0)
+        + (focusedCommunityId ? 1 : 0) + (focusedInstitutionId ? 1 : 0)
+        + (focusedType ? 1 : 0) + (focusedHealth !== null ? 1 : 0);
       const countEl = document.getElementById('filter-count');
       if (count > 0) {
         countEl.textContent = count;
@@ -2957,11 +2964,15 @@
 
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;
+      if (focusedInstitutionId) return nodeInstitutions(d).includes(focusedInstitutionId);
       if (focusedType) return d.type === focusedType;
       if (focusedHealth !== null) return String(d.health_score != null ? d.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
+      }
+      if (colorMode === 'institution') {
+        return nodeInstitutions(d).some((id) => activeFilters.has(id));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(d.health_score != null ? d.health_score : 0));
@@ -2971,11 +2982,15 @@
 
     function edgeMatchesCurrentFilter(n) {
       if (focusedCommunityId) return n.community === focusedCommunityId;
+      if (focusedInstitutionId) return nodeInstitutions(n).includes(focusedInstitutionId);
       if (focusedType) return n.type === focusedType;
       if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
+      }
+      if (colorMode === 'institution') {
+        return nodeInstitutions(n).some((id) => activeFilters.has(id));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(n.health_score != null ? n.health_score : 0));
@@ -2997,7 +3012,7 @@
 
       node.each(function(d) {
         const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
-          && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+          && nodeMatchesSearch(d) && nodeMatchesTopic(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
@@ -3030,8 +3045,8 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return 0.2;
           return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
+                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s)
+                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t)) ? 1 : 0.2;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
@@ -3039,8 +3054,8 @@
           const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
           if (!s || !t) return linkWidthBase * 0.5;
           const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t);
+            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s)
+            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t);
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
@@ -3839,6 +3854,7 @@
        与图例点击同源（focusedCommunityId），布局稳定后框定该社区可见节点 */
     const communityParam = new URLSearchParams(location.search).get('community');
     if (communityParam && communityMetaMap.has(communityParam)) {
+      setColorMode('community');
       focusedCommunityId = communityParam;
       renderLegend();
       renderFilterPanel();
@@ -3847,6 +3863,20 @@
       const fitFocusedCommunity = () => fitToVisibleNodes();
       simulation.on('end.community', () => { fitFocusedCommunity(); simulation.on('end.community', null); });
       setTimeout(fitFocusedCommunity, 1400);
+    }
+
+    /* ?institution=<id> URL 参数：从详情页"所属机构"徽标跳入时聚焦该机构 */
+    const institutionParam = new URLSearchParams(location.search).get('institution');
+    if (institutionParam && institutionMetaMap.has(institutionParam)) {
+      setColorMode('institution');
+      focusedInstitutionId = institutionParam;
+      renderLegend();
+      renderFilterPanel();
+      applyFilters();
+      updateFilterCount();
+      const fitFocusedInstitution = () => fitToVisibleNodes();
+      simulation.on('end.institution', () => { fitFocusedInstitution(); simulation.on('end.institution', null); });
+      setTimeout(fitFocusedInstitution, 1400);
     }
 
     const focusId = new URLSearchParams(location.search).get('focus');
