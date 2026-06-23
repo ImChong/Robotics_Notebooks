@@ -1,180 +1,180 @@
 {
   "generated_at": "2026-06-23",
-  "node_count": 1288,
-  "edge_count": 8450,
+  "node_count": 1306,
+  "edge_count": 8597,
   "coverage": {
-    "covered": 1257,
-    "total": 1286,
+    "covered": 1275,
+    "total": 1304,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/overview/topic-data-pipeline.md",
-      "detail_id": "wiki-overview-topic-data-pipeline",
-      "label": "训练数据管线（专题汇总）",
-      "type": "overview",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/humanoid-training-data-pipeline.md",
-      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
-      "label": "人形训练数据管线选型指南",
-      "type": "query",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-data-quality.md",
-      "detail_id": "wiki-concepts-motion-data-quality",
-      "label": "Motion Data Quality（动作数据质量维度）",
-      "type": "concept",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/motion-retargeting.md",
-      "detail_id": "wiki-concepts-motion-retargeting",
-      "label": "Motion Retargeting（动作重定向）",
-      "type": "concept",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
-      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
-      "label": "人形参考运动与操作数据集选型",
-      "type": "comparison",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/topic-motion-retargeting.md",
-      "detail_id": "wiki-overview-topic-motion-retargeting",
-      "label": "动作重定向（专题汇总）",
-      "type": "overview",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/topic-wbt.md",
-      "detail_id": "wiki-overview-topic-wbt",
-      "label": "全身运动跟踪 WBT（专题汇总）",
-      "type": "overview",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
-      "detail_id": "entity-paper-htd-refine-monocular-hmr",
-      "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
+      "path": "wiki/entities/numerical-optimization-curriculum.md",
+      "detail_id": "entity-numerical-optimization-curriculum",
+      "label": "数值优化学习策展（机器人 L0+）",
       "type": "entity",
-      "recency": "2026-06-22",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md",
-      "detail_id": "entity-paper-x-ionet-cross-platform-inertial-odometry",
-      "label": "X-IONet（跨平台惯性里程计网络）",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/state-estimation.md",
-      "detail_id": "wiki-concepts-state-estimation",
-      "label": "State Estimation",
-      "type": "concept",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/ekf.md",
-      "detail_id": "wiki-formalizations-ekf",
-      "label": "Extended Kalman Filter (EKF)",
+      "path": "wiki/formalizations/convex-functions.md",
+      "detail_id": "wiki-formalizations-convex-functions",
+      "label": "Convex Functions（凸函数）",
       "type": "formalization",
-      "recency": "2026-06-22",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/topic-state-estimation.md",
-      "detail_id": "wiki-overview-topic-state-estimation",
-      "label": "状态估计（专题汇总）",
-      "type": "overview",
-      "recency": "2026-06-22",
+      "path": "wiki/formalizations/kkt-conditions.md",
+      "detail_id": "wiki-formalizations-kkt-conditions",
+      "label": "KKT Conditions（KKT 条件）",
+      "type": "formalization",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/rf-detr.md",
-      "detail_id": "entity-rf-detr",
-      "label": "RF-DETR（Roboflow Detection Transformer）",
-      "type": "entity",
-      "recency": "2026-06-22",
+      "path": "wiki/formalizations/quadratic-programming.md",
+      "detail_id": "wiki-formalizations-quadratic-programming",
+      "label": "Quadratic Programming（二次规划）",
+      "type": "formalization",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/object-detection.md",
-      "detail_id": "wiki-methods-object-detection",
-      "label": "目标检测（Object Detection）",
+      "path": "wiki/formalizations/symmetric-cone-programming.md",
+      "detail_id": "wiki-formalizations-symmetric-cone-programming",
+      "label": "Symmetric Cone Programming（对称锥规划）",
+      "type": "formalization",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/adjoint-sensitivity-analysis.md",
+      "detail_id": "wiki-formalizations-adjoint-sensitivity-analysis",
+      "label": "Adjoint Sensitivity Analysis（伴随灵敏度分析）",
+      "type": "formalization",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/line-search-steepest-descent.md",
+      "detail_id": "wiki-methods-line-search-steepest-descent",
+      "label": "Line Search & Steepest Descent（线搜索与最速下降）",
       "type": "method",
-      "recency": "2026-06-22",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/queries/object-detection-model-selection.md",
-      "detail_id": "wiki-queries-object-detection-model-selection",
-      "label": "Query：目标检测模型选型（机载实时 vs 服务器侧 / 单阶段 vs 两阶段 / 2D 框 vs 级联位姿）",
+      "path": "wiki/methods/quasi-newton-bfgs.md",
+      "detail_id": "wiki-methods-quasi-newton-bfgs",
+      "label": "Quasi-Newton BFGS / L-BFGS（拟牛顿法）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/conjugate-gradient-method.md",
+      "detail_id": "wiki-methods-conjugate-gradient-method",
+      "label": "Conjugate Gradient Method（共轭梯度法）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/penalty-barrier-augmented-lagrangian.md",
+      "detail_id": "wiki-methods-penalty-barrier-augmented-lagrangian",
+      "label": "Penalty / Barrier / Augmented Lagrangian（罚函数、障碍法与增广拉格朗日）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/nonlinear-model-predictive-control.md",
+      "detail_id": "wiki-methods-nonlinear-model-predictive-control",
+      "label": "Nonlinear Model Predictive Control（NMPC）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/time-optimal-path-parameterization.md",
+      "detail_id": "wiki-methods-time-optimal-path-parameterization",
+      "label": "Time-Optimal Path Parameterization（TOPP）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/smooth-navigation-path-generation.md",
+      "detail_id": "wiki-methods-smooth-navigation-path-generation",
+      "label": "Smooth Navigation Path Generation（平滑导航路径生成）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/convex-relaxation-robotics.md",
+      "detail_id": "wiki-methods-convex-relaxation-robotics",
+      "label": "Convex Relaxation in Robotics（机器人凸松弛）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/constrained-optimization.md",
+      "detail_id": "wiki-concepts-constrained-optimization",
+      "label": "Constrained Optimization（约束优化）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/control-allocation.md",
+      "detail_id": "wiki-concepts-control-allocation",
+      "label": "Control Allocation（控制分配）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/collision-distance-optimization.md",
+      "detail_id": "wiki-concepts-collision-distance-optimization",
+      "label": "Collision Distance Optimization（碰撞距离优化）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/optimization-software-selection.md",
+      "detail_id": "wiki-queries-optimization-software-selection",
+      "label": "Optimization Software Selection（优化软件选型）",
       "type": "query",
-      "recency": "2026-06-22",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/overview/sim-platforms-decade-technology-map.md",
-      "detail_id": "wiki-overview-sim-platforms-decade-technology-map",
-      "label": "十年仿真平台技术地图（TOP 8）",
-      "type": "overview",
-      "recency": "2026-06-22",
+      "path": "wiki/concepts/optimal-control.md",
+      "detail_id": "wiki-concepts-optimal-control",
+      "label": "Optimal Control (OCP)",
+      "type": "concept",
+      "recency": "2026-06-23",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/ai2-thor.md",
-      "detail_id": "entity-ai2-thor",
-      "label": "AI2-THOR",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mujoco.md",
-      "detail_id": "entity-mujoco",
-      "label": "MuJoCo (物理引擎)",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/isaac-gym.md",
-      "detail_id": "entity-isaac-gym",
-      "label": "Isaac Gym",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/pybullet.md",
-      "detail_id": "entity-pybullet",
-      "label": "PyBullet",
-      "type": "entity",
-      "recency": "2026-06-22",
+      "path": "wiki/methods/trajectory-optimization.md",
+      "detail_id": "wiki-methods-trajectory-optimization",
+      "label": "Trajectory Optimization（轨迹优化）",
+      "type": "method",
+      "recency": "2026-06-23",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/topic-data-pipeline.md",
-    "detail_id": "wiki-overview-topic-data-pipeline",
-    "label": "训练数据管线（专题汇总）",
-    "type": "overview",
-    "recency": "2026-06-22",
+    "path": "wiki/entities/numerical-optimization-curriculum.md",
+    "detail_id": "entity-numerical-optimization-curriculum",
+    "label": "数值优化学习策展（机器人 L0+）",
+    "type": "entity",
+    "recency": "2026-06-23",
     "source": "log.md"
   }
 }
