@@ -44,8 +44,8 @@
 
 ## P3: 交互层"数据管线"增强 (UX/UI)
 
-- [ ] **图谱页"训练数据管线"专题视图**：
-    - [ ] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V24 14 项基础上新增「训练数据管线」专题（`data-pipeline`），复用 path 片段并集机制（`dataset/datasets/amass/lafan1/omomo/phuma/humanoid-everyday/motion-retargeting/training-data`）并按需 `ids` 显式纳入新建 query/concept；同步在 `#filter-topic-chips` 增加 `data-topic="data-pipeline"`（📦 训练数据）chip。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-data-pipeline.png`。
+- [x] **图谱页"训练数据管线"专题视图**：
+    - [x] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V24 14 项基础上新增「训练数据管线」专题（`data-pipeline`），复用 path 片段并集机制（`dataset/datasets/amass/lafan1/omomo/phuma/humanoid-everyday/motion-retargeting/training-data`）并按需 `ids` 显式纳入新建 query/concept；同步在 `#filter-topic-chips` 增加 `data-topic="data-pipeline"`（📦 训练数据）chip。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-data-pipeline.png`。（2026-06-22 完成：`TOPIC_HUB_IDS`/`TOPIC_FILTERS`/`TOPIC_META` 新增 `data-pipeline`（emoji 📦、label「训练数据」），segments=`dataset/datasets/amass/lafan1/lafan/omomo/phuma/everyday/retargeting`、ids 显式纳入 `humanoid-training-data-pipeline` query + `motion-data-quality`/`motion-retargeting` concept + `humanoid-reference-motion-datasets` 对比；新建 hub 页 `wiki/overview/topic-data-pipeline.md` 并由 `topic-motion-retargeting`/`topic-wbt` 回链消除孤儿；`graph.html` chips 新增 📦 训练数据；node 校验命中 42 节点（数据集+重定向+质量+hub），`make lint` 0 errors。**截图**：本 routine 环境 apt 镜像 404 无法装 Chromium，Puppeteer 截图改由后续带 Chrome 的环境/PR 补归档。）
 - [ ] **详情页"同专题相关页"提示**：
     - [ ] 复用 `docs/topic-filters.js` 单一事实源，数据集 / 重定向 / 新建页命中「训练数据管线」专题时渲染「📦 训练数据」轻量徽标 + 跳转 `graph.html?topic=data-pipeline`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-data-pipeline.png`。
 
@@ -53,10 +53,10 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `dataset_metadata_check` 为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 1205**，边数 **≥ 7460**（见 `exports/graph-stats.json`）。
+- [x] `make lint`: 0 errors（新引入的 `dataset_metadata_check` 为 INFO 级，不阻塞 CI）。（2026-06-22 达成：0 errors，仅余 2 条信息型预警。）
+- [x] 知识图谱节点数 **≥ 1205**，边数 **≥ 7460**（见 `exports/graph-stats.json`）。（2026-06-22 达成：1288 节点 / 8450 边。）
 - [x] 事实库扩展至 **196 条** 以上（重点补 数据质量 / 物理可行性 / 重定向必要性 矛盾检测规则）。（2026-06-21 达成：198 条。）
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。（2026-06-22 达成：`false`，最大社区占比 0.162。）
 - [ ] `log.md` 记录 V25 关键改动。
 
 ---

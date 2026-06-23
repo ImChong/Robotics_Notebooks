@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-22] structural | checklist-v25 P3 新增「训练数据管线」图谱专题视图（`data-pipeline`）；docs/topic-filters.js、docs/graph.html、wiki/overview/topic-data-pipeline.md
+
+- 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P3「图谱页"训练数据管线"专题视图」收口（V24 14 项 → 15 项专题）
+- 单一事实源：[docs/topic-filters.js](docs/topic-filters.js) 的 `TOPIC_HUB_IDS`/`TOPIC_FILTERS`/`TOPIC_META` 新增 `data-pipeline`（emoji 📦、label「训练数据」）；segments=`dataset/datasets/amass/lafan1/lafan/omomo/phuma/everyday/retargeting`，ids 显式纳入 [humanoid-training-data-pipeline](wiki/queries/humanoid-training-data-pipeline.md) query + [motion-data-quality](wiki/concepts/motion-data-quality.md)/[motion-retargeting](wiki/concepts/motion-retargeting.md) concept + [humanoid-reference-motion-datasets](wiki/comparisons/humanoid-reference-motion-datasets.md) 对比
+- 新建 hub 页：[wiki/overview/topic-data-pipeline.md](wiki/overview/topic-data-pipeline.md)（专题汇总锚点），并由 [topic-motion-retargeting](wiki/overview/topic-motion-retargeting.md)/[topic-wbt](wiki/overview/topic-wbt.md)「与其他专题的关系」回链消除孤儿
+- 交互层：[docs/graph.html](docs/graph.html) `#filter-topic-chips` 新增 `data-topic="data-pipeline"`（📦 训练数据）chip
+- 校验：node 载入 topic-filters.js 对 `exports/link-graph.json` 命中 42 节点（数据集 + 重定向 + 质量 + hub）；`make export graph` 重生成派生文件（1288 节点 / 8450 边）；`python3 scripts/update_badge.py` 同步 README badge；`make lint` 0 errors（仅 2 条信息型预警）
+- 待补：截图（apt 镜像 404 无法装 Chromium，Puppeteer `graph-topic-data-pipeline.png` 由后续带 Chrome 环境补归档）
+- 验证：`make lint`
+
 ## [2026-06-22] ingest | sources/papers/htd_refine_arxiv_2605_26879.md — 复核 arXiv:2605.26879（HTD-Refine）已入库；修正 wiki/entities/paper-htd-refine-monocular-hmr.md 英文缩写速查
 
 - 原始资料：[htd_refine_arxiv_2605_26879.md](sources/papers/htd_refine_arxiv_2605_26879.md)（<https://arxiv.org/abs/2605.26879>）；项目页代码仍为 Coming Soon（2026-06-22 复核）
