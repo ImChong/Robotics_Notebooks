@@ -156,7 +156,7 @@ i_q &= -i_\alpha \sin\theta_{el} + i_\beta \cos\theta_{el}
 
 | 轴 | 方向 | 物理角色 |
 |----|------|----------|
-| **d 轴** | 与转子永磁磁链对齐 | 励磁分量；表贴式永磁常取 \(i_d^\* = 0\) |
+| **d 轴** | 与转子永磁磁链对齐 | 励磁分量；表贴式永磁常取 \(i_d^* = 0\) |
 | **q 轴** | 超前 d 轴 90°（电角度） | 力矩分量；\(i_q\) 产生主要电磁转矩 |
 
 ---
@@ -209,8 +209,8 @@ K_t = \frac{3}{2} p \psi_f \quad (\text{表贴式})
 
 **控制含义**：
 
-- 表贴式：**令 \(i_d^\* = 0\)**，全部电流用于产生力矩 → \(i_q^\* = \tau^\*/K_t\)。
-- IPM：\(i_d^\* \neq 0\) 时可沿 MTPA 轨迹分配 \((i_d, i_q)\) 以最小化电流幅值。
+- 表贴式：**令 \(i_d^* = 0\)**，全部电流用于产生力矩 → \(i_q^* = \tau^*/K_t\)。
+- IPM：\(i_d^* \neq 0\) 时可沿 MTPA 轨迹分配 \((i_d, i_q)\) 以最小化电流幅值。
 
 ---
 
@@ -220,7 +220,7 @@ K_t = \frac{3}{2} p \psi_f \quad (\text{表贴式})
 
 \[
 \begin{aligned}
-e_d &= i_d^\* - i_d, \quad e_q = i_q^\* - i_q \\
+e_d &= i_d^* - i_d, \quad e_q = i_q^* - i_q \\
 u_d &= K_{p,d} e_d + K_{i,d} \int e_d\, dt \\
 u_q &= K_{p,q} e_q + K_{i,q} \int e_q\, dt
 \end{aligned}
@@ -229,10 +229,10 @@ u_q &= K_{p,q} e_q + K_{i,q} \int e_q\, dt
 **表贴式力矩模式**（最常见入门假设）：
 
 \[
-i_d^\* = 0, \quad i_q^\* = \frac{\tau^\*}{K_t}
+i_d^* = 0, \quad i_q^* = \frac{\tau^*}{K_t}
 \]
 
-上层运动环（位置/速度/力矩）只改 \(\tau^\*\) 或 \(i_q^\*\)；FOC 电流环以 **\(f_{FOC} \gg f_{motion}\)** 运行（SimpleFOC 典型 >1 kHz；腿足工业驱动目标见 [Actuator 102 热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md)）。
+上层运动环（位置/速度/力矩）只改 \(\tau^*\) 或 \(i_q^*\)；FOC 电流环以 **\(f_{FOC} \gg f_{motion}\)** 运行（SimpleFOC 典型 >1 kHz；腿足工业驱动目标见 [Actuator 102 热学与力矩控制](../overview/humanoid-actuator-102-thermal-and-control.md)）。
 
 **电压限幅**：\(|u_d + j u_q| \leq V_{\max}\)（圆限幅或母线电压六边形限幅），饱和时 \(i_q\) 跟踪变差 → 高速力矩下降。
 
@@ -305,7 +305,7 @@ u_c &= -\tfrac{1}{2} u_\alpha - \tfrac{\sqrt{3}}{2} u_\beta
 7. PWM:     duty_a,b,c ← voltage_to_pwm(u_a, u_b, u_c, V_bus)
 ```
 
-与 SimpleFOC API 对应：`loopFOC()` 执行步骤 1–7；`move()` 在上层生成 \(i_q^\*\) 或电压目标。
+与 SimpleFOC API 对应：`loopFOC()` 执行步骤 1–7；`move()` 在上层生成 \(i_q^*\) 或电压目标。
 
 ---
 
