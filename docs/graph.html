@@ -1555,6 +1555,7 @@
       <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
         <button id="filter-mode-type" class="chip" type="button">按类型</button>
         <button id="filter-mode-community" class="chip active" type="button">按社区</button>
+        <button id="filter-mode-institution" class="chip" type="button">按机构</button>
         <button id="filter-mode-health" class="chip" type="button">按健康度</button>
       </div>
       <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
@@ -1713,6 +1714,7 @@
     const filterSubtitle = document.getElementById('filter-subtitle');
     const filterModeTypeBtn = document.getElementById('filter-mode-type');
     const filterModeCommunityBtn = document.getElementById('filter-mode-community');
+    const filterModeInstitutionBtn = document.getElementById('filter-mode-institution');
     const filterModeHealthBtn = document.getElementById('filter-mode-health');
     const filterPanelBody = document.getElementById('filter-panel-body');
     const filterPanelScrim = document.getElementById('filter-panel-scrim');
@@ -1798,9 +1800,48 @@
       if (!meta || meta.size == null) return label;
       return label + ' (' + meta.size + ')';
     }
+
+    // 研究机构维度：一个节点可属于多个机构（d.institutions 为 id 数组），复用社区色板。
+    let institutionColorMap = new Map();
+    let institutionLabelMap = new Map();
+    let institutionMetaMap = new Map();
+
+    function getSortedInstitutions() {
+      const list = graphData && graphData.institutions ? graphData.institutions.slice() : [];
+      return list.sort((a, b) => {
+        const sizeDiff = (b.size || 0) - (a.size || 0);
+        if (sizeDiff !== 0) return sizeDiff;
+        return String(a.label || a.id).localeCompare(String(b.label || b.id), 'zh-CN');
+      });
+    }
+
+    function initInstitutionMapsFromGraph() {
+      institutionColorMap = new Map();
+      institutionLabelMap = new Map();
+      institutionMetaMap = new Map();
+      let idx = 0;
+      getSortedInstitutions().forEach((inst) => {
+        institutionColorMap.set(inst.id, COMMUNITY_COLORS[idx++ % COMMUNITY_COLORS.length]);
+        institutionLabelMap.set(inst.id, inst.label || inst.id);
+        institutionMetaMap.set(inst.id, inst);
+      });
+    }
+
+    function formatInstitutionOptionLabel(instId) {
+      const meta = institutionMetaMap.get(instId);
+      const label = institutionLabelMap.get(instId) || instId;
+      if (!meta || meta.size == null) return label;
+      return label + ' (' + meta.size + ')';
+    }
+
+    function nodeInstitutions(d) {
+      return Array.isArray(d.institutions) ? d.institutions : [];
+    }
+
     let focusedCommunityId = null;
     let focusedType = null;
     let focusedHealth = null;
+    let focusedInstitutionId = null;
 
     /* ── 专题视图（V22 P3）：复用 link-graph.json 的 path / community 元数据 ── */
     // 每个专题给一组路径片段或 community id，命中即视为属于该专题（叠加关系，任一命中即可）。
@@ -1870,6 +1911,10 @@
       if (colorMode === 'community') {
         return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
       }
+      if (colorMode === 'institution') {
+        const insts = nodeInstitutions(d);
+        return insts.length ? (institutionColorMap.get(insts[0]) || COMMUNITY_COLORS[9]) : '#94a3b8';
+      }
       if (colorMode === 'health') {
         return HEALTH_COLORS[d.health_score != null ? Math.min(d.health_score, 3) : 0];
       }
@@ -1900,6 +1945,24 @@
             ? `<span class="legend-count">${escapeHtml(String(community.size))}</span>`
             : '';
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-community-id="${escapeHtml(String(communityId))}">
+            <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
+          </div>`);
+        }
+      } else if (colorMode === 'institution') {
+        rows.push('<div class="legend-title">按研究机构着色</div>');
+        const sortedInstitutions = getSortedInstitutions();
+        if (!sortedInstitutions.length) {
+          rows.push('<div class="legend-row">暂无机构数据</div>');
+        }
+        for (const inst of sortedInstitutions) {
+          const instId = inst.id;
+          const label = institutionLabelMap.get(instId) || inst.label || instId;
+          const color = institutionColorMap.get(instId) || COMMUNITY_COLORS[9];
+          const isActive = (focusedInstitutionId === instId);
+          const countHtml = inst.size != null
+            ? `<span class="legend-count">${escapeHtml(String(inst.size))}</span>`
+            : '';
+          rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-institution-id="${escapeHtml(String(instId))}">
             <div class="legend-dot" style="background:${escapeHtml(String(color))}"></div><span class="legend-label-text">${escapeHtml(String(label))}</span>${countHtml}
           </div>`);
         }
@@ -1939,6 +2002,7 @@
       if (graphLegendFab) {
         const fabLabels = {
           community: '按社区着色',
+          institution: '按研究机构着色',
           health: '按健康度着色',
           type: '按类型着色',
         };
@@ -1969,6 +2033,7 @@
       .catch(() => { /* 侧栏 tags / related 退化为空，不阻塞主图 */ });
 
     initCommunityMapsFromGraph();
+    initInstitutionMapsFromGraph();
     renderLegend();
 
     /* ── 计算节点度数 ── */
@@ -2226,6 +2291,13 @@
           color: communityColorMap.get(community.id) || COMMUNITY_COLORS[9]
         }));
       }
+      if (colorMode === 'institution') {
+        return getSortedInstitutions().map((inst) => ({
+          value: inst.id,
+          label: formatInstitutionOptionLabel(inst.id),
+          color: institutionColorMap.get(inst.id) || COMMUNITY_COLORS[9]
+        }));
+      }
       if (colorMode === 'health') {
         return HEALTH_FILTER_OPTIONS;
       }
@@ -2234,6 +2306,7 @@
 
     function getColorModeLabel(mode) {
       if (mode === 'community') return '按社区';
+      if (mode === 'institution') return '按机构';
       if (mode === 'health') return '按健康度';
       return '按类型';
     }
@@ -2246,6 +2319,7 @@
       if (filterSubtitle) filterSubtitle.textContent = '当前' + getColorModeLabel(colorMode) + '着色与筛选';
       if (filterModeTypeBtn) filterModeTypeBtn.classList.toggle('active', colorMode === 'type');
       if (filterModeCommunityBtn) filterModeCommunityBtn.classList.toggle('active', colorMode === 'community');
+      if (filterModeInstitutionBtn) filterModeInstitutionBtn.classList.toggle('active', colorMode === 'institution');
       if (filterModeHealthBtn) filterModeHealthBtn.classList.toggle('active', colorMode === 'health');
       if (!filterPanelBody) return;
       const options = getFilterOptions();
@@ -2256,7 +2330,8 @@
           '<div class="filter-section-title">' + escapeHtml(getColorModeLabel(colorMode)) + '筛选</div>'
           + options.map(option => {
               const checked = activeFilters.has(option.value) ? ' checked' : '';
-              const meta = colorMode === 'community' ? communityMetaMap.get(option.value) : null;
+              const meta = colorMode === 'community' ? communityMetaMap.get(option.value)
+                : colorMode === 'institution' ? institutionMetaMap.get(option.value) : null;
               const countBadge = meta && meta.size != null
                 ? '<span class="filter-count-badge">' + escapeHtml(String(meta.size)) + '</span>'
                 : '';
@@ -2300,6 +2375,7 @@
       focusedCommunityId = null;
       focusedType = null;
       focusedHealth = null;
+      focusedInstitutionId = null;
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
@@ -2308,6 +2384,7 @@
 
     if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
     if (filterModeCommunityBtn) filterModeCommunityBtn.addEventListener('click', () => setColorMode('community'));
+    if (filterModeInstitutionBtn) filterModeInstitutionBtn.addEventListener('click', () => setColorMode('institution'));
     if (filterModeHealthBtn) filterModeHealthBtn.addEventListener('click', () => setColorMode('health'));
 
     function syncGraphDomFromSimulation() {
@@ -2476,7 +2553,7 @@
 
     function hasActiveGraphFilter() {
       return topDegreeIds !== null || activeFilters.size > 0 || searchQuery.length > 0
-        || focusedCommunityId || focusedType || focusedHealth !== null
+        || focusedCommunityId || focusedInstitutionId || focusedType || focusedHealth !== null
         || currentTopic !== 'all';
     }
 
@@ -2768,11 +2845,14 @@
       if (!row) return;
 
       const cid = row.getAttribute('data-community-id');
+      const instId = row.getAttribute('data-institution-id');
       const type = row.getAttribute('data-type');
       const health = row.getAttribute('data-health');
 
       if (cid) {
         focusedCommunityId = (focusedCommunityId === cid) ? null : cid;
+      } else if (instId) {
+        focusedInstitutionId = (focusedInstitutionId === instId) ? null : instId;
       } else if (type) {
         focusedType = (focusedType === type) ? null : type;
       } else if (health !== null) {
@@ -2853,11 +2933,15 @@
 
     function nodeMatchesCurrentFilter(d) {
       if (focusedCommunityId) return d.community === focusedCommunityId;
+      if (focusedInstitutionId) return nodeInstitutions(d).includes(focusedInstitutionId);
       if (focusedType) return d.type === focusedType;
       if (focusedHealth !== null) return String(d.health_score != null ? d.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(d.community);
+      }
+      if (colorMode === 'institution') {
+        return nodeInstitutions(d).some(id => activeFilters.has(id));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(d.health_score != null ? d.health_score : 0));
@@ -2867,11 +2951,15 @@
 
     function edgeMatchesCurrentFilter(n) {
       if (focusedCommunityId) return n.community === focusedCommunityId;
+      if (focusedInstitutionId) return nodeInstitutions(n).includes(focusedInstitutionId);
       if (focusedType) return n.type === focusedType;
       if (focusedHealth !== null) return String(n.health_score != null ? n.health_score : 0) === focusedHealth;
       if (!activeFilters.size) return true;
       if (colorMode === 'community') {
         return activeFilters.has(n.community);
+      }
+      if (colorMode === 'institution') {
+        return nodeInstitutions(n).some(id => activeFilters.has(id));
       }
       if (colorMode === 'health') {
         return activeFilters.has(String(n.health_score != null ? n.health_score : 0));
