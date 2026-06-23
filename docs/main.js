@@ -468,10 +468,12 @@
         mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
         return token;
       })
-      .replace(/\$([^$\s](?:[^$]*[^$\s])?)\$/g, function (match, expr) {
+      .replace(/\$\s*([^$]+?)\s*\$/g, function (match, expr) {
+        const trimmed = String(expr || '').trim();
+        if (!trimmed) return match;
         const token = mathPrefix + mathTokens.length + '@@';
         // Normalize $...$ to \(...\) so downstream renderMathBlocks can catch it
-        mathTokens.push({ token: token, html: '\\(' + expr + '\\)' });
+        mathTokens.push({ token: token, html: '\\(' + trimmed + '\\)' });
         return token;
       });
 
