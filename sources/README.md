@@ -414,6 +414,7 @@
 | [x] [boyuai_hands_on_rl_elites_course.md](courses/boyuai_hands_on_rl_elites_course.md) | 伯禹平台《动手学强化学习》张伟楠视频课（免费，与蘑菇书/ hrl.boyuai.com 配套） |
 | [x] [nvidia_sim_to_real_so101_isaac.md](courses/nvidia_sim_to_real_so101_isaac.md) | NVIDIA：SO-101 操作臂 Sim2Real 动手课（GR00T/LeRobot/Isaac Lab、四类 gap 策略） |
 | [x] [stanford_cs123_robotics_ai.md](courses/stanford_cs123_robotics_ai.md) | Stanford CS 123 Robotics & AI（Pupper v3 配套实验课，cs123-stanford.readthedocs.io） |
+| [x] [numerical_optimization_foundations_robotics.md](courses/numerical_optimization_foundations_robotics.md) | 具身智能研究室《数值优化基础》六章大纲（无约束/约束/对称锥/凸松弛；映射 `numerical-optimization-curriculum`） |
 
 ### notes/ — 原始笔记归档
 | 文件 | 内容 |

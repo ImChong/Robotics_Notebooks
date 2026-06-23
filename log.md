@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] ingest | sources/courses/numerical_optimization_foundations_robotics.md — 具身智能研究室《数值优化基础》六章课程大纲；新增 numerical-optimization-curriculum 策展页 + 18 个 formalization/method/concept/query 节点
+
+- 原始资料：[numerical_optimization_foundations_robotics.md](sources/courses/numerical_optimization_foundations_robotics.md) — 数值优化基础（机器人应用）课程大纲整理
+- 策展入口：[wiki/entities/numerical-optimization-curriculum.md](wiki/entities/numerical-optimization-curriculum.md)
+- 新建 formalization：[convex-functions](wiki/formalizations/convex-functions.md)、[kkt-conditions](wiki/formalizations/kkt-conditions.md)、[quadratic-programming](wiki/formalizations/quadratic-programming.md)、[symmetric-cone-programming](wiki/formalizations/symmetric-cone-programming.md)、[adjoint-sensitivity-analysis](wiki/formalizations/adjoint-sensitivity-analysis.md)
+- 新建 method：[line-search-steepest-descent](wiki/methods/line-search-steepest-descent.md)、[quasi-newton-bfgs](wiki/methods/quasi-newton-bfgs.md)、[conjugate-gradient-method](wiki/methods/conjugate-gradient-method.md)、[penalty-barrier-augmented-lagrangian](wiki/methods/penalty-barrier-augmented-lagrangian.md)、[nonlinear-model-predictive-control](wiki/methods/nonlinear-model-predictive-control.md)、[time-optimal-path-parameterization](wiki/methods/time-optimal-path-parameterization.md)、[smooth-navigation-path-generation](wiki/methods/smooth-navigation-path-generation.md)、[convex-relaxation-robotics](wiki/methods/convex-relaxation-robotics.md)
+- 新建 concept：[constrained-optimization](wiki/concepts/constrained-optimization.md)、[control-allocation](wiki/concepts/control-allocation.md)、[collision-distance-optimization](wiki/concepts/collision-distance-optimization.md)
+- 新建 query：[optimization-software-selection](wiki/queries/optimization-software-selection.md)
+- 交叉更新：[optimal-control](wiki/concepts/optimal-control.md)、[trajectory-optimization](wiki/methods/trajectory-optimization.md)、[model-predictive-control](wiki/methods/model-predictive-control.md)、[linear-algebra-curriculum](wiki/entities/linear-algebra-curriculum.md)、[roadmap/motion-control.md](roadmap/motion-control.md)
+
 ## [2026-06-22] structural | checklist-v25 P3 新增「训练数据管线」图谱专题视图（`data-pipeline`）；docs/topic-filters.js、docs/graph.html、wiki/overview/topic-data-pipeline.md
 
 - 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P3「图谱页"训练数据管线"专题视图」收口（V24 14 项 → 15 项专题）

@@ -438,7 +438,7 @@ flowchart TD
 
 > **上一层的局限：** L2 动力学告诉你"输入力矩 → 输出加速度"的物理关系，但不告诉你"现在该输入多少力矩"——这是控制器的工作。L3 是 L4 所有方法（LIP / MPC / WBC）的底层语法。
 
-**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)。
+**本阶段入口：** [Optimal Control](../wiki/concepts/optimal-control.md)、[LQR](../wiki/formalizations/lqr.md)、[Model Predictive Control](../wiki/methods/model-predictive-control.md)、[HQP](../wiki/concepts/hqp.md)、[Trajectory Optimization](../wiki/methods/trajectory-optimization.md)、[Numerical Optimization Curriculum](../wiki/entities/numerical-optimization-curriculum.md)（数值优化 L0+ 课程地图）。
 
 ### 英文缩写速查（L3）
 
@@ -455,7 +455,7 @@ flowchart TD
 
 ### 前置知识
 - L2 内容（动力学）
-- 一点数值优化直觉
+- 一点数值优化直觉（见 [Numerical Optimization Curriculum](../wiki/entities/numerical-optimization-curriculum.md)）
 
 ### 核心问题
 - PID / LQR / MPC 分别在解决什么问题

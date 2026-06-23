@@ -212,7 +212,7 @@ WBC（全身控制）本质上是一个**分层最优控制**：
 ### 非凸代价
 很多 OCP 是非凸的，容易陷入局部最优。
 
-常用 tricks：多初始点、random restarts、convex relaxation。
+常用 tricks：多初始点、random restarts、[凸松弛](../methods/convex-relaxation-robotics.md)。
 
 ### 约束处理
 硬约束 vs 软约束的设计对求解器的鲁棒性影响很大。
@@ -238,6 +238,9 @@ OCP 在线求解的计算量是大问题，尤其非线性 MPC。
 - [Locomotion](../tasks/locomotion.md)
 - [MDP](../formalizations/mdp.md) — OCP 是确定性版本的 MDP；OCP 不含随机转移，RL 含随机转移
 - [Bellman 方程](../formalizations/bellman-equation.md) — Bellman 最优方程是 OCP（尤其是 LQR）的解析求解基础
+- [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md) — 数值优化基础课程地图（KKT / QP / NMPC / 凸松弛）
+- [Constrained Optimization](./constrained-optimization.md) — OCP 的约束形式分类
+- [Nonlinear MPC](../methods/nonlinear-model-predictive-control.md) — 在线非线性 OCP
 
 ## 推荐继续阅读
 

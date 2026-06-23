@@ -92,6 +92,7 @@ flowchart LR
 - [SE(3) Representation](../formalizations/se3-representation.md)
 - [LQR / iLQR](../formalizations/lqr.md)
 - [Pinocchio](./pinocchio.md)
+- [Numerical Optimization Curriculum](./numerical-optimization-curriculum.md) — L0+ 数值优化（QP / NMPC / TrajOpt 算法）
 
 ## 参考来源
 
