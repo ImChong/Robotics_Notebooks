@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [software, animation, python, visualization, education, open-source, math]
+tags: [software, animation, python, visualization, education, open-source, math, mit]
 status: complete
 updated: 2026-06-12
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, humanoid, text-to-motion, motion-retargeting, pipeline, hy-motion, gmr, viser]
+tags: [repo, humanoid, text-to-motion, motion-retargeting, pipeline, hy-motion, gmr, viser, baai]
 status: complete
 updated: 2026-06-15
 summary: "Gen2Humanoid：把 HY-Motion-1.0 文本→人体运动与 GMR 人形重定向串成一条 CLI 管线，输出 pickle 关节轨迹并支持 viser 人机并排预览；面向「语言描述→人形参考动作」快速原型，不含物理后处理与 tracking 训练。"

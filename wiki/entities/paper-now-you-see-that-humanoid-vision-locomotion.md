@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, locomotion, perception, depth, end-to-end-vision, privileged-distillation, multi-critic, amp, sim2real, stairs, parkour, dagger, ppo, hit, honor-robotics, rss-2026]
+tags: [paper, humanoid, locomotion, perception, depth, end-to-end-vision, privileged-distillation, multi-critic, amp, sim2real, stairs, parkour, dagger, ppo, hit, honor-robotics, rss-2026, unitree]
 status: complete
 updated: 2026-06-11
 arxiv: "2602.06382"

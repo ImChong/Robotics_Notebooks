@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation]
+tags: [entity, simulator, autonomous-driving, carla, urban, sensor-simulation, microsoft]
 status: complete
 updated: 2026-06-22
 related:

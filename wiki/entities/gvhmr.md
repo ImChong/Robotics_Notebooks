@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024]
+tags: [repo, paper, human-pose, hmr, monocular-video, smpl, world-grounded, motion-retargeting, upstream, siggraph-asia-2024, tsinghua, zju]
 status: complete
 updated: 2026-06-21
 arxiv: "2409.06662"

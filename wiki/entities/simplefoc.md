@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, framework, motor-control, foc, bldc, embedded, open-source]
+tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, linux-foundation]
 status: complete
 updated: 2026-05-26
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, vslam, vio, visual-slam, research]
+tags: [repo, vslam, vio, visual-slam, research, eth]
 status: complete
 updated: 2026-05-27
 related:

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [robot, hardware, humanoid, quadruped, industry]
+tags: [robot, hardware, humanoid, quadruped, industry, mit]
 status: complete
 updated: 2026-04-21
 related:

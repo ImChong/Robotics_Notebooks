@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -22,6 +23,8 @@ related:
 sources:
   - ../../sources/papers/physforge_arxiv_2605_05163.md
 summary: "PhysForge（arXiv:2605.05163）：VLM 生成分层物理蓝图 + KineVoxel Injection 协同扩散合成仿真就绪关节 3D 资产；PhysDB 约 15 万四档物理标注；报告在 PhysXNet / PhysDB / PartObjaverse-Tiny 等与操作仿真、游戏引擎导入相关的评测与演示。"
+tags: [paper, 3d-generation, vision-language-model, diffusion, simulation, embodied-ai, dataset, articulated-objects, hku]
+
 ---
 
 # PhysForge（Physics-Grounded 3D Assets for Interactive Virtual Worlds）

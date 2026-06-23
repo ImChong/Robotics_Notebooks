@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, education, autonomous-navigation, path-planning, slam, localization, python, textbook]
+tags: [repo, education, autonomous-navigation, path-planning, slam, localization, python, textbook, mit]
 status: complete
 updated: 2026-06-09
 related:

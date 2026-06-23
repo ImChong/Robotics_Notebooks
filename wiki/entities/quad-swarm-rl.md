@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, reinforcement-learning, swarm, gym, quadcopter, multi-agent]
+tags: [repo, reinforcement-learning, swarm, gym, quadcopter, multi-agent, mit]
 status: complete
 updated: 2026-05-27
 related:

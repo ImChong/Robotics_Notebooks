@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, teleoperation, vla, data-collection, vr]
+tags: [hardware, teleoperation, vla, data-collection, vr, meta]
 status: complete
 updated: 2026-04-21
 related:

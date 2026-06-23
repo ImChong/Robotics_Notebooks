@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, humanoid, teleoperation, motion-retargeting, lecar-lab]
+tags: [repo, humanoid, teleoperation, motion-retargeting, lecar-lab, cmu]
 status: complete
 updated: 2026-06-08
 summary: "LeCAR-Lab human2humanoid 是人形全身实时遥操作与模仿学习开源栈，README 提供 AMASS→机器人重定向脚本，同系 OmniH2O / H2O / ASAP。"

@@ -1,6 +1,7 @@
 ---
+
 type: method
-tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl]
+tags: [pelican-unified, uei, vla, world-models, diffusion, joint-wam, embodied-ai, qwen3-vl, x-humanoid]
 status: complete
 date: 2026-05-16
 updated: 2026-05-16

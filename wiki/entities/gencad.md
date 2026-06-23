@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -21,6 +22,8 @@ sources:
   - ../../sources/sites/gencad-github-io.md
   - ../../sources/repos/ferdous-alam-gencad.md
 summary: "GenCAD（arXiv:2409.16294）：图像条件生成参数化 CAD 命令序列（CAD program），经对比学习对齐 CAD–渲染图潜空间，再用潜扩散先验采样并解码；输出可经几何内核编译为 B-rep，支持生成与同库检索。"
+tags: [paper, cad, generative-ai, diffusion, contrastive-learning, reverse-engineering, computer-vision, mit]
+
 ---
 
 # GenCAD（Image-Conditioned CAD Program Generation）

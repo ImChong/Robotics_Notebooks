@@ -1,4 +1,5 @@
 ---
+
 title: 人形机器人硬件选型指南
 type: query
 status: complete
@@ -10,6 +11,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
   - ../../sources/blogs/wechat_human_five_humanoid_hardware_101.md
+tags: [unitree]
+
 ---
 
 > **Query 产物**：本页由以下问题触发：「做人形机器人运动控制研究，该选哪个硬件平台？」

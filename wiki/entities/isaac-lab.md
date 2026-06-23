@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real]
+tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
 updated: 2026-06-18
 related:

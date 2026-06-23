@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab]
+tags: [repo, planning, swarm, esdf, uav, ros, zju-fast-lab, zju]
 status: complete
 updated: 2026-06-14
 related:

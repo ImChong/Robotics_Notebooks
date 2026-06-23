@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, hardware, open-source, robotics, research]
+tags: [humanoid, hardware, open-source, robotics, research, berkeley]
 status: complete
 updated: 2026-06-01
 related:

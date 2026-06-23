@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] structural | schema/institutions.json、scripts/bump_institution_tags.py — 批量补全 wiki 节点所属机构 tags；工具实体 lint 门禁
+
+- 扩展机构注册表（Hugging Face、AI2、Amazon、INRIA、Blender Foundation、X-Humanoid、SDU、RoboParty、FreeMoCap 等）与 Unitree 产品 alias
+- 新增 `scripts/bump_institution_tags.py`：从摘要区/H1/显式覆盖表推断机构并写入 frontmatter tags
+- 批量更新 ~150 页 wiki（含 Isaac Lab、LeRobot、legged_gym、OpenVLA 等工具实体）；可派生机构节点 89→309
+- lint：`tool_missing_institution` 检查工具实体须有所属机构
+- 代表页：[wiki/entities/isaac-lab.md](wiki/entities/isaac-lab.md)、[wiki/entities/lerobot.md](wiki/entities/lerobot.md)、[wiki/entities/legged-gym.md](wiki/entities/legged-gym.md)
+
 ## [2026-06-23] ingest | sources/sites/nvidia-research-gear-lab.md — NVIDIA GEAR Lab 主页；升格 wiki/entities/nvidia-gear-lab.md 并交叉 EgoScale/ENPIRE/SONIC/GR00T-WBC
 
 ## [2026-06-23] ingest | sources/papers/vesta_arxiv_2606_20905.md — Vesta 通才具身 planner；升格 wiki/entities/paper-vesta-generalist-embodied-reasoning.md 并交叉更新 vla / VLN / SayCan

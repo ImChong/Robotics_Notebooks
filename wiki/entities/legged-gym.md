@@ -1,4 +1,5 @@
 ---
+
 type: entity
 summary: "legged_gym"
 updated: 2026-06-04
@@ -10,6 +11,8 @@ sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/rl_pd_action_interface_locomotion.md
   - ../../sources/papers/extreme_parkour_arxiv_2309_14341.md
+tags: [eth]
+
 ---
 
 # legged_gym

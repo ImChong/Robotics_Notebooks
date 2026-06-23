@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl]
+tags: [repo, motion-retargeting, humanoid, physics-based-control, smpl, nvidia]
 status: complete
 updated: 2026-06-09
 summary: "PHC（ZhengyiLuo/PHC）是 ICCV 2023 物理人形控制框架，含 SMPL→自定义人形 shape/motion fitting 重定向脚本与万级动作模仿训练。"

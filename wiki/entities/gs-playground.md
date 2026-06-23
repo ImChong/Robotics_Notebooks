@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026]
+tags: [repo, simulation, 3dgs, gaussian-splatting, photorealistic, visual-rl, sim2real, rss2026, nvidia]
 status: complete
 updated: 2026-06-04
 related:

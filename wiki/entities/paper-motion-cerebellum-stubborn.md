@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, motion-cerebellum-survey, humanoid, motion-control, fall-recovery, reinforcement-learning]
+tags: [paper, motion-cerebellum-survey, humanoid, motion-control, fall-recovery, reinforcement-learning, unitree]
 status: complete
 updated: 2026-06-23
 venue: arXiv:2606.12814

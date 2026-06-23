@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
+tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, meta]
 status: planned
 updated: 2026-06-11
 arxiv: "2511.14756"

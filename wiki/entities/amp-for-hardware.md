@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, quadruped, amp, legged-gym, isaac-gym]
+tags: [repo, quadruped, amp, legged-gym, isaac-gym, nvidia]
 status: complete
 updated: 2026-06-08
 summary: "Alescontrela/AMP_for_hardware 将 Adversarial Motion Priors 落到 Isaac Gym 四足硬件训练栈，是 MetalHead 等项目的上游 fork。"

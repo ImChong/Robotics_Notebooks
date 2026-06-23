@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, mocap, motion-data, smpl, toolkit]
+tags: [repo, mocap, motion-data, smpl, toolkit, meta]
 status: complete
 updated: 2026-06-08
 summary: "facebookresearch/fairmotion 是 Meta 的通用动捕数据处理库（BVH/AMASS IO、3D 变换、FK、可视化）；2023 年已归档，常作重定向管线的上游数据基础设施，本身不做机器人重定向。"

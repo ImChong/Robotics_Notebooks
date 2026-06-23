@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [vla, manipulation, lerobot, diffusion, qwen3-vl, tactile, action-chunking, repo]
+tags: [vla, manipulation, lerobot, diffusion, qwen3-vl, tactile, action-chunking, repo, huggingface]
 status: complete
 updated: 2026-05-11
 related:

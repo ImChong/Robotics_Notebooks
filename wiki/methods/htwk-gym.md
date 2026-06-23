@@ -1,6 +1,7 @@
 ---
+
 type: method
-tags: [rl, isaac-gym, booster-t1, soccer, locomotion]
+tags: [rl, isaac-gym, booster-t1, soccer, locomotion, booster]
 status: drafting
 updated: 2026-04-27
 related:

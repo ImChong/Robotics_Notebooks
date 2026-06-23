@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, motion-retargeting, cross-embodiment, quadruped, humanoid, learning-based]
+tags: [repo, motion-retargeting, cross-embodiment, quadruped, humanoid, learning-based, nvidia]
 status: complete
 updated: 2026-06-08
 summary: "hlcdyy/pan-motion-retargeting 实现按身体部位注意力的学习式重定向，支持双足↔四足及 Mixamo 跨结构映射（TVCG 2023）。"

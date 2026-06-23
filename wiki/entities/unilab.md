@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac]
+tags: [framework, robot-rl, systems, heterogeneous-training, cpu-simulation, gpu-learning, mujoco, motrixsim, cross-platform, macos, ppo, sac, tsinghua]
 status: complete
 updated: 2026-06-08
 arxiv: "2605.30313"

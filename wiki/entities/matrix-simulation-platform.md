@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [simulation, quadruped, differentiable-physics, mujoco, unreal-engine, genisom, gpu-parallel]
+tags: [simulation, quadruped, differentiable-physics, mujoco, unreal-engine, genisom, gpu-parallel, nvidia]
 status: complete
 updated: 2026-06-23
 related:

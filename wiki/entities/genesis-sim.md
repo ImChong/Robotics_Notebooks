@@ -1,7 +1,8 @@
 ---
+
 type: entity
 title: Genesis (仿真器)
-tags: [simulation, physics-engine, robot-learning, differentiable]
+tags: [simulation, physics-engine, robot-learning, differentiable, genesis-ai]
 summary: "Genesis 是新兴的高性能多物理场仿真平台，支持刚体、流体及微分仿真，适用于大规模并行机器人数据生成。"
 updated: 2026-06-22
 related:

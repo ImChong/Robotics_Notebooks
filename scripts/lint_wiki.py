@@ -271,6 +271,7 @@ def _empty_results() -> dict[str, Any]:
         "method_missing_link": [],
         "method_missing_sections": [],
         "entity_missing_outgoing": [],
+        "tool_missing_institution": [],
         "wikilink_syntax": [],
         "unclosed_autolinks": [],
         "methods_without_practitioner_query": [],
@@ -1129,6 +1130,31 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
             results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")
 
 
+def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None:
+    """entities/ 软件工具页须能派生至少一个所属机构（见 schema/institutions.json）。"""
+    from bump_institution_tags import (
+        INSTITUTIONS_PATH,
+        _build_alias_map,
+        _derive_institutions,
+        _load_registry,
+        _parse_frontmatter_list,
+        is_tool_entity,
+    )
+
+    alias_map = _build_alias_map(_load_registry(INSTITUTIONS_PATH))
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 2 or parts[0] != "wiki" or parts[1] != "entities":
+            continue
+        content = page.read_text(encoding="utf-8")
+        tags = _parse_frontmatter_list(content, "tags")
+        if not is_tool_entity(rel.as_posix(), tags):
+            continue
+        if not _derive_institutions(content, alias_map):
+            results["tool_missing_institution"].append(str(rel))
+
+
 def _check_methods_entities(pages: list[Path], results: dict[str, Any]) -> None:
     """methods/ 页面结构检查 + entities/ 出边检查。
 
@@ -1192,6 +1218,7 @@ def lint() -> dict[str, Any]:
     _check_paper_entity_metadata(pages, results)
     _check_dataset_entity_metadata(pages, results)
     _check_stale_claims(pages, results)
+    _check_tool_institutions(pages, results)
 
     return results
 
@@ -1261,6 +1288,7 @@ def format_report(results: dict[str, Any]) -> str:
         ("method_missing_link", "Methods 页面缺少 Formalization/Concept 链接", "⚠️"),
         ("method_missing_sections", "Methods 页面缺少主要路线区块", "⚠️"),
         ("entity_missing_outgoing", "Entities 页面缺少 Methods/Tasks 关联出边", "⚠️"),
+        ("tool_missing_institution", "工具实体缺少可派生的所属机构", "❌"),
         (
             "methods_without_practitioner_query",
             "高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）",

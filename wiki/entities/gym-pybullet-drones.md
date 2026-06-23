@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent]
+tags: [repo, simulation, reinforcement-learning, pybullet, gymnasium, quadcopter, multi-agent, mit]
 status: complete
 updated: 2026-06-17
 related:

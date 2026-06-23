@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, lidar, lio, gtsam, slam, gps]
+tags: [repo, lidar, lio, gtsam, slam, gps, hku]
 status: complete
 updated: 2026-05-27
 related:

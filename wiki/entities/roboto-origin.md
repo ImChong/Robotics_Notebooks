@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, hardware, open-source, ros2, isaac-lab]
+tags: [humanoid, hardware, open-source, ros2, isaac-lab, roboparty]
 status: complete
 updated: 2026-04-25
 related:

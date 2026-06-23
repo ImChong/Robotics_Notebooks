@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [software, simulation, physics-engine, gpu, deformable, fem, contact, cloth, offline, blender, zozo]
+tags: [software, simulation, physics-engine, gpu, deformable, fem, contact, cloth, offline, blender, zozo, nvidia]
 status: complete
 updated: 2026-05-25
 related:

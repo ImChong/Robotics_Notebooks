@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [platform, assets, urdf, simulation, embodied-ai, web]
+tags: [platform, assets, urdf, simulation, embodied-ai, web, nvidia]
 status: complete
 updated: 2026-06-18
 related:

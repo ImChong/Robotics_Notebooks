@@ -1,7 +1,8 @@
 ---
+
 type: method
 title: Chasing Autonomy Pipeline
-tags: [robot-learning, humanoid, locomotion, reinforcement-learning, sim2real, motion-retargeting]
+tags: [robot-learning, humanoid, locomotion, reinforcement-learning, sim2real, motion-retargeting, unitree]
 summary: "一种结合硬约束动态重定向与控制引导强化学习的流水线，利用单一人类演示实现高性能的人形机器人跑步与避障。"
 updated: 2026-06-05
 ---

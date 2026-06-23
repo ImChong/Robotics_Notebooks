@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source]
+tags: [repo, 3dgs, gaussian-splatting, web, threejs, webgl2, streaming, lod, open-source, linux-foundation]
 status: complete
 updated: 2026-05-28
 related:

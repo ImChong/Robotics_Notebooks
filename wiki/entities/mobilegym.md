@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [benchmark, mobile-gui-agent, simulation, online-rl, grpo, evaluation, mllm, vlm, android, playwright]
+tags: [benchmark, mobile-gui-agent, simulation, online-rl, grpo, evaluation, mllm, vlm, android, playwright, tsinghua]
 status: complete
 updated: 2026-06-02
 related:

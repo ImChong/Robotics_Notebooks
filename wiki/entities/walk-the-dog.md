@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, motion-retargeting, cross-embodiment, quadruped, humanoid, siggraph]
+tags: [repo, motion-retargeting, cross-embodiment, quadruped, humanoid, siggraph, nvidia]
 status: complete
 updated: 2026-06-08
 summary: "WalkTheDog（SIGGRAPH 2024）用相位流形实现人↔狗无监督跨形态运动对齐；Python 训练 + Unity 可视化与 motion matching 演示。"

@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - world-models
@@ -26,6 +27,8 @@ sources:
   - ../../sources/repos/oscar_public.md
   - ../../sources/sites/oscar-project-page.md
 summary: "OSCAR：以 2D 运动学骨架作跨具身动作条件，四阶段数据管线筛得 18 万集，单 GH200 微调 Cosmos-Predict2.5-2B；开环视频质量超越 14B Kinema4D，RoboArena 虚拟策略评测与真机排名强相关。"
+tags: [world-models, video-generation, manipulation, cross-embodiment, policy-evaluation, cosmos, skeleton-conditioning, nvidia]
+
 ---
 
 # OSCAR（跨具身动作条件世界模型）

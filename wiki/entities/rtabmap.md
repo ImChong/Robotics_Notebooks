@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, slam, rgbd, ros, mapping, loop-closure]
+tags: [repo, slam, rgbd, ros, mapping, loop-closure, hku]
 status: complete
 updated: 2026-05-27
 related:

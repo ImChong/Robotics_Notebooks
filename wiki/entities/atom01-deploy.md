@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, deployment, ros2, middleware, sim2real, roboparty]
+tags: [humanoid, deployment, ros2, middleware, sim2real, roboparty, linux-foundation]
 status: complete
 updated: 2026-04-25
 related:

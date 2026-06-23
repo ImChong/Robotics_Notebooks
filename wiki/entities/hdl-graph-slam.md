@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, lidar, graph-slam, ndt, outdoor]
+tags: [repo, lidar, graph-slam, ndt, outdoor, hku]
 status: complete
 updated: 2026-05-27
 related:

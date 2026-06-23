@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, simulation, unreal-engine, photorealistic, embodied-ai, synthetic-data, computer-vision]
+tags: [repo, simulation, unreal-engine, photorealistic, embodied-ai, synthetic-data, computer-vision, nvidia]
 status: complete
 updated: 2026-06-21
 related:

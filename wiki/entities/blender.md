@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization]
+tags: [software, dcc, 3d-creation, animation, open-source, asset-pipeline, visualization, blender-foundation]
 status: complete
 updated: 2026-06-19
 related:

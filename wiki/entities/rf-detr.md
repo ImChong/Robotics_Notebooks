@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - repo
@@ -26,6 +27,8 @@ sources:
   - ../../sources/repos/rf_detr.md
   - ../../sources/sites/rfdetr-docs.md
 summary: "RF-DETR 是 Roboflow 提出的实时 DETR 族：DINOv2 骨干 + 端到端 weight-sharing NAS，单次训练后在 Pareto 前沿选精度–延迟点；COCO 上 2XL 首破 60 AP，支持检测/分割/关键点微调与 ONNX–TensorRT 部署。"
+tags: [repo, paper, computer-vision, object-detection, instance-segmentation, real-time, perception, robotics, nvidia, cmu]
+
 ---
 
 # RF-DETR（Roboflow Detection Transformer）

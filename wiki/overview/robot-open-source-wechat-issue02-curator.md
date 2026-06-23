@@ -1,6 +1,7 @@
 ---
+
 type: overview
-tags: [open-source, hardware, humanoid, quadruped, manipulator, mobile-robot, wechat-curator]
+tags: [open-source, hardware, humanoid, quadruped, manipulator, mobile-robot, wechat-curator, stanford]
 status: complete
 updated: 2026-05-18
 related:

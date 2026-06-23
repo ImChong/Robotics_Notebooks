@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [software, dynamics, c++, whole-body-control, algorithms]
+tags: [software, dynamics, c++, whole-body-control, algorithms, inria]
 status: complete
 updated: 2026-05-29
 related:

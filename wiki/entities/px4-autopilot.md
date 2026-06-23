@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, autopilot, px4, mavlink, uav, multirotor, open-source]
+tags: [repo, autopilot, px4, mavlink, uav, multirotor, open-source, linux-foundation]
 status: complete
 updated: 2026-05-27
 related:

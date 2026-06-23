@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [repo, sim2real, actuator, friction, mujoco, dynamixel, system-identification, servo]
+tags: [repo, sim2real, actuator, friction, mujoco, dynamixel, system-identification, servo, google]
 status: complete
 updated: 2026-05-28
 code: https://github.com/Rhoban/bam

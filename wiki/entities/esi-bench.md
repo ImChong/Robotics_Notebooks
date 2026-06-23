@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm]
+tags: [benchmark, embodied-ai, spatial-intelligence, mllm, omnigibson, behavior-1k, evaluation, vlm, huggingface]
 status: complete
 updated: 2026-06-07
 related:
