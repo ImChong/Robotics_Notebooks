@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-22",
+  "generated_at": "2026-06-23",
   "node_count": 1288,
   "edge_count": 8450,
   "coverage": {
@@ -8,6 +8,62 @@
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-data-pipeline.md",
+      "detail_id": "wiki-overview-topic-data-pipeline",
+      "label": "训练数据管线（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-data-quality.md",
+      "detail_id": "wiki-concepts-motion-data-quality",
+      "label": "Motion Data Quality（动作数据质量维度）",
+      "type": "concept",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/motion-retargeting.md",
+      "detail_id": "wiki-concepts-motion-retargeting",
+      "label": "Motion Retargeting（动作重定向）",
+      "type": "concept",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
+      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
+      "label": "人形参考运动与操作数据集选型",
+      "type": "comparison",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-motion-retargeting.md",
+      "detail_id": "wiki-overview-topic-motion-retargeting",
+      "label": "动作重定向（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-wbt.md",
+      "detail_id": "wiki-overview-topic-wbt",
+      "label": "全身运动跟踪 WBT（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-22",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
       "detail_id": "entity-paper-htd-refine-monocular-hmr",
@@ -111,69 +167,13 @@
       "type": "entity",
       "recency": "2026-06-22",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/genesis-sim.md",
-      "detail_id": "entity-genesis-sim",
-      "label": "Genesis (仿真器)",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/sapien.md",
-      "detail_id": "entity-sapien",
-      "label": "SAPIEN (仿真引擎)",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulator-selection-guide.md",
-      "detail_id": "wiki-queries-simulator-selection-guide",
-      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
-      "type": "query",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-halomi-humanoid-loco-manipulation.md",
-      "detail_id": "entity-paper-halomi-humanoid-loco-manipulation",
-      "label": "HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）",
-      "type": "entity",
-      "recency": "2026-06-22",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/spear-sim.md",
-      "detail_id": "entity-spear-sim",
-      "label": "SPEAR（Photorealistic Embodied AI Simulator）",
-      "type": "entity",
-      "recency": "2026-06-21",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/metahuman.md",
-      "detail_id": "entity-metahuman",
-      "label": "MetaHuman（Epic 数字人平台）",
-      "type": "entity",
-      "recency": "2026-06-21",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/airsim.md",
-      "detail_id": "entity-airsim",
-      "label": "AirSim",
-      "type": "entity",
-      "recency": "2026-06-21",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-htd-refine-monocular-hmr.md",
-    "detail_id": "entity-paper-htd-refine-monocular-hmr",
-    "label": "HTD-Refine：对齐高阶时序动力学的单目人体运动恢复",
-    "type": "entity",
+    "path": "wiki/overview/topic-data-pipeline.md",
+    "detail_id": "wiki-overview-topic-data-pipeline",
+    "label": "训练数据管线（专题汇总）",
+    "type": "overview",
     "recency": "2026-06-22",
     "source": "log.md"
   }
