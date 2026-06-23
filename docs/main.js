@@ -3945,64 +3945,86 @@
 
     const moduleGrid = document.getElementById('modulePreviewGrid');
     if (moduleGrid) {
-      const moduleCards = Object.values(modulePages).map(function (modulePage) {
-        const references = Array.isArray(modulePage.references) ? modulePage.references.length : 0;
-        const roadmaps = Array.isArray(modulePage.roadmaps) ? modulePage.roadmaps.length : 0;
-        const entries = Array.isArray(modulePage.entry_items) ? modulePage.entry_items.slice(0, 4) : [];
+      // ⚡ Bolt Optimization: Replace Object.values().map().join('') with for...in and string concatenation
+      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
+      var moduleCardsHtml = '';
+      var moduleCardsCount = 0;
+      for (var moduleId in modulePages) {
+        if (!Object.prototype.hasOwnProperty.call(modulePages, moduleId)) continue;
+        var modulePage = modulePages[moduleId] || {};
+        var references = Array.isArray(modulePage.references) ? modulePage.references.length : 0;
+        var roadmaps = Array.isArray(modulePage.roadmaps) ? modulePage.roadmaps.length : 0;
+        var entries = Array.isArray(modulePage.entry_items) ? modulePage.entry_items.slice(0, 4) : [];
         var entriesHtml = '';
         for (var i = 0; i < entries.length; i++) {
           entriesHtml += '    <li><a href="' + escapeHtml(detailHref(entries[i])) + '"><code>' + escapeHtml(entries[i]) + '</code></a></li>';
         }
-        return [
-          '<article class="card data-card">',
-          '  <div>',
-          '    <h3>' + escapeHtml(modulePage.title || modulePage.module_id || '未命名模块') + '</h3>',
-          '    <p class="card-meta">tag: ' + escapeHtml(modulePage.tag || '-') + '</p>',
-          '    <p>' + escapeHtml(modulePage.summary || '暂无模块摘要') + '</p>',
-          '  </div>',
-          '  <div class="chip-list">',
-          '    <span class="data-chip">入口 ' + escapeHtml((modulePage.entry_items || []).length) + '</span>',
-          '    <span class="data-chip">参考 ' + escapeHtml(references) + '</span>',
-          '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>',
-          '  </div>',
-          '  <ul>',
-               entriesHtml,
-          '  </ul>',
-          '</article>'
-        ].join('');
-      });
-      moduleGrid.innerHTML = moduleCards.length ? moduleCards.join('') : '<article class="card"><p>暂无模块页数据</p></article>';
+        moduleCardsHtml += '<article class="card data-card">' +
+          '  <div>' +
+          '    <h3>' + escapeHtml(modulePage.title || modulePage.module_id || '未命名模块') + '</h3>' +
+          '    <p class="card-meta">tag: ' + escapeHtml(modulePage.tag || '-') + '</p>' +
+          '    <p>' + escapeHtml(modulePage.summary || '暂无模块摘要') + '</p>' +
+          '  </div>' +
+          '  <div class="chip-list">' +
+          '    <span class="data-chip">入口 ' + escapeHtml((modulePage.entry_items || []).length) + '</span>' +
+          '    <span class="data-chip">参考 ' + escapeHtml(references) + '</span>' +
+          '    <span class="data-chip">路线 ' + escapeHtml(roadmaps) + '</span>' +
+          '  </div>' +
+          '  <ul>' +
+               entriesHtml +
+          '  </ul>' +
+          '</article>';
+        moduleCardsCount++;
+      }
+      moduleGrid.innerHTML = moduleCardsCount > 0 ? moduleCardsHtml : '<article class="card"><p>暂无模块页数据</p></article>';
       removeLoadingState(moduleGrid);
     }
 
     const roadmapGrid = document.getElementById('roadmapPreviewGrid');
     if (roadmapGrid) {
-      const roadmapCards = Object.entries(roadmapPages).map(function (entry) {
-        const roadmapId = entry[0];
-        const roadmapPage = entry[1] || {};
-        const stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
-        const related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items.slice(0, 4) : [];
-        return [
-          '<article class="card data-card">',
-          '  <div>',
-          '    <h3><a href="' + escapeHtml(roadmapHref(roadmapId)) + '">' + escapeHtml(roadmapPage.title || roadmapId) + '</a></h3>',
-          '    <p class="card-meta">' + escapeHtml(roadmapId) + '</p>',
-          '    <p>' + escapeHtml(roadmapPage.summary || '暂无路线摘要') + '</p>',
-          '  </div>',
-          '  <div class="chip-list">',
-          '    <span class="data-chip">阶段 ' + escapeHtml(stages.length) + '</span>',
-          '    <span class="data-chip">关联项 ' + escapeHtml(related.length) + '</span>',
-          '  </div>',
-          '  <ul>',
-               stages.slice(0, 4).map(function (stage) { return '    <li>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</li>'; }).join(''),
-          '  </ul>',
-          '  <div class="chip-list">',
-               related.map(function (item) { return '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '">' + escapeHtml(item) + '</a>'; }).join(''),
-          '  </div>',
-          '</article>'
-        ].join('');
-      });
-      roadmapGrid.innerHTML = roadmapCards.length ? roadmapCards.join('') : '<article class="card"><p>暂无路线页数据</p></article>';
+      // ⚡ Bolt Optimization: Replace Object.entries().map().join('') with for...in and string concatenation
+      // Expected impact: Eliminates intermediate array allocations and closure overhead during page initialization, reducing memory pressure.
+      var roadmapCardsHtml = '';
+      var roadmapCardsCount = 0;
+      for (var roadmapId in roadmapPages) {
+        if (!Object.prototype.hasOwnProperty.call(roadmapPages, roadmapId)) continue;
+        var roadmapPage = roadmapPages[roadmapId] || {};
+        var stages = Array.isArray(roadmapPage.stages) ? roadmapPage.stages : [];
+        var related = Array.isArray(roadmapPage.related_items) ? roadmapPage.related_items.slice(0, 4) : [];
+
+        var stagesHtml = '';
+        var maxStages = Math.min(stages.length, 4);
+        for (var j = 0; j < maxStages; j++) {
+          var stage = stages[j];
+          stagesHtml += '    <li>' + escapeHtml(stage.title || stage.id || '未命名阶段') + '</li>';
+        }
+
+        var relatedHtml = '';
+        for (var k = 0; k < related.length; k++) {
+          var item = related[k];
+          relatedHtml += '<a class="data-chip" href="' + escapeHtml(detailHref(item)) + '">' + escapeHtml(item) + '</a>';
+        }
+
+        roadmapCardsHtml += '<article class="card data-card">' +
+          '  <div>' +
+          '    <h3><a href="' + escapeHtml(roadmapHref(roadmapId)) + '">' + escapeHtml(roadmapPage.title || roadmapId) + '</a></h3>' +
+          '    <p class="card-meta">' + escapeHtml(roadmapId) + '</p>' +
+          '    <p>' + escapeHtml(roadmapPage.summary || '暂无路线摘要') + '</p>' +
+          '  </div>' +
+          '  <div class="chip-list">' +
+          '    <span class="data-chip">阶段 ' + escapeHtml(stages.length) + '</span>' +
+          '    <span class="data-chip">关联项 ' + escapeHtml(related.length) + '</span>' +
+          '  </div>' +
+          '  <ul>' +
+               stagesHtml +
+          '  </ul>' +
+          '  <div class="chip-list">' +
+               relatedHtml +
+          '  </div>' +
+          '</article>';
+        roadmapCardsCount++;
+      }
+      roadmapGrid.innerHTML = roadmapCardsCount > 0 ? roadmapCardsHtml : '<article class="card"><p>暂无路线页数据</p></article>';
       removeLoadingState(roadmapGrid);
     }
 
