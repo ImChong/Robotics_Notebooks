@@ -2,7 +2,7 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-23
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
@@ -16,6 +16,7 @@ related:
   - ../tasks/manipulation.md
   - ./egoscale.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/nvidia-gear-lab.md
 sources:
   - ../../sources/papers/enpire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-enpire.md
@@ -23,7 +24,7 @@ sources:
 
 # ENPIRE
 
-**ENPIRE**（NVIDIA GEAR 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + 手工改代码」变成 **coding agent 可重复管理的物理反馈优化**——像数字 AutoResearch 一样，在 **reset → rollout → verify → refine** 环上自动搜训练配方与算法变体。
+**ENPIRE**（NVIDIA [GEAR Lab](../entities/nvidia-gear-lab.md) 等，2026）研究的是：能否把 **真机机器人策略开发** 从「人类盯实验 + 手工改代码」变成 **coding agent 可重复管理的物理反馈优化**——像数字 AutoResearch 一样，在 **reset → rollout → verify → refine** 环上自动搜训练配方与算法变体。
 
 ## 一句话定义
 

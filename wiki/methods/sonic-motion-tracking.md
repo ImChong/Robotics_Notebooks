@@ -3,7 +3,7 @@ type: method
 tags: [humanoid, imitation-learning, motion-tracking, foundation-model, nvidia, vla, teleoperation]
 status: complete
 date: 2026-05-14
-updated: 2026-06-19
+updated: 2026-06-23
 related:
   - ../entities/paper-motionwam-humanoid-loco-manipulation-wam.md
   - ../entities/paper-humanoid-gpt.md
@@ -18,6 +18,7 @@ related:
   - ../tasks/loco-manipulation.md
   - ../entities/zhengyi-luo.md
   - ../entities/gr00t-wholebodycontrol.md
+  - ../entities/nvidia-gear-lab.md
   - ../entities/holomotion.md
   - ../entities/paper-legs-embodied-gaussian-splatting-vla.md
   - ./gentlehumanoid-motion-tracking.md

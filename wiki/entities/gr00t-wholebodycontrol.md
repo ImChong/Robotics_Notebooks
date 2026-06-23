@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, whole-body-control, humanoid, nvidia, sonic, motionbricks, isaac-lab, vla]
 status: complete
-updated: 2026-05-28
+updated: 2026-06-23
 related:
   - ../methods/motionbricks.md
   - ../methods/sonic-motion-tracking.md
@@ -11,6 +11,7 @@ related:
   - ../concepts/whole-body-control.md
   - ./gr00t-visual-sim2real.md
   - ./isaac-gym-isaac-lab.md
+  - ./nvidia-gear-lab.md
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
 summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目，并提供 Isaac Lab 对齐文档与 VLA 数据链教程。"

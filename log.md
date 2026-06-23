@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] ingest | sources/sites/nvidia-research-gear-lab.md — NVIDIA GEAR Lab 主页；升格 wiki/entities/nvidia-gear-lab.md 并交叉 EgoScale/ENPIRE/SONIC/GR00T-WBC
+
 ## [2026-06-23] ingest | sources/papers/vesta_arxiv_2606_20905.md — Vesta 通才具身 planner；升格 wiki/entities/paper-vesta-generalist-embodied-reasoning.md 并交叉更新 vla / VLN / SayCan
 
 ## [2026-06-23] ingest | sources/papers/stubborn_arxiv_2606_12814.md — Stubborn 统一 RL 人形跟踪与跌倒恢复；深读 arXiv:2606.12814 并升格 wiki/entities/paper-motion-cerebellum-stubborn.md

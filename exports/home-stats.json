@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-23",
-  "node_count": 1318,
-  "edge_count": 8763,
+  "node_count": 1319,
+  "edge_count": 8781,
   "coverage": {
-    "covered": 1287,
-    "total": 1316,
+    "covered": 1288,
+    "total": 1317,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/nvidia-gear-lab.md",
+      "detail_id": "entity-nvidia-gear-lab",
+      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-vesta-generalist-embodied-reasoning.md",
       "detail_id": "entity-paper-vesta-generalist-embodied-reasoning",
@@ -159,20 +167,12 @@
       "type": "query",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
-      "detail_id": "entity-paper-amp-survey-05-motionbricks",
-      "label": "MotionBricks（AMP 专题 #05）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vesta-generalist-embodied-reasoning.md",
-    "detail_id": "entity-paper-vesta-generalist-embodied-reasoning",
-    "label": "Vesta（A Generalist Embodied Reasoning Model）",
+    "path": "wiki/entities/nvidia-gear-lab.md",
+    "detail_id": "entity-nvidia-gear-lab",
+    "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"
