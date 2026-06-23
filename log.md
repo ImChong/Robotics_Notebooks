@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] structural | wiki/entities/paper-amp-survey-05-motionbricks.md、wiki/methods/motionbricks.md — 消歧 MotionBricks 实体索引页与方法页，加强双向互链
+
+- 实体页 `paper-amp-survey-05-motionbricks`：H1 改为「AMP 专题 #05」、顶部引导至方法页、「与其他页面的关系」补方法页与 Kimodo 对照
+- 方法页 `motionbricks`：补 AMP 专题 #05/19 策展语境与回链实体索引页
+- 验证：`make ci-preflight`
+
 ## [2026-06-22] structural | checklist-v25 P3 新增「训练数据管线」图谱专题视图（`data-pipeline`）；docs/topic-filters.js、docs/graph.html、wiki/overview/topic-data-pipeline.md
 
 - 执行清单：[docs/checklists/tech-stack-next-phase-checklist-v25.md](docs/checklists/tech-stack-next-phase-checklist-v25.md) P3「图谱页"训练数据管线"专题视图」收口（V24 14 项 → 15 项专题）

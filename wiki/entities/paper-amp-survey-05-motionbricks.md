@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-23
 venue: curated
 summary: "MotionBricks 比 Kimodo 更靠近机器人。"
 related:
@@ -15,9 +15,11 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
 ---
 
-# MotionBricks
+# MotionBricks（AMP 专题 #05）
 
 **MotionBricks** 收录于 [具身智能研究室 · AMP 运动先验专题](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w) **第 05/19** 篇，归类为 **01 分布约束与先验组件化**。本页为知识库 **策展摘要**。
+
+> **技术细节**：架构、Smart Primitives、GR00T 集成与实机指标见 **[MotionBricks 方法页](../methods/motionbricks.md)**。本页仅保留 AMP 专题策展定位，不与方法页合并。
 
 ## 英文缩写速查
 
@@ -43,8 +45,10 @@ sources:
 
 ## 与其他页面的关系
 
+- 方法归纳（主阅读入口）：[motionbricks.md](../methods/motionbricks.md)
 - AMP 综述：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
+- 姊妹篇 Kimodo：[kimodo.md](../entities/kimodo.md) — 同段「先验组件化」；Kimodo 偏文生运动扩散，MotionBricks 更靠近机器人实时身体 API
 - 原始 source：[humanoid_amp_survey_05_motionbricks_scalable_real_time_motions_with_mod.md](../../sources/papers/humanoid_amp_survey_05_motionbricks_scalable_real_time_motions_with_mod.md)
 
 ## 实验与评测
@@ -61,5 +65,6 @@ sources:
 
 ## 推荐继续阅读
 
+- [MotionBricks 方法页](../methods/motionbricks.md) — 模块化潜空间、Smart Primitives 与 GR00T WBC 栈
 - [AMP 专题长文（微信公众号）](https://mp.weixin.qq.com/s/YZsm3855iP3TNTTt1aou7w)
 - [42 篇 RL 身体系统栈姊妹篇](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA)
