@@ -201,12 +201,13 @@ console.log('ok');
     def test_main_js_contains_math_rendering_hooks_for_detail_content(self):
         content = MAIN_JS.read_text(encoding="utf-8")
         expected_snippets = [
+            "function normalizeMathExpr(expr)",
             "function renderMathBlocks(text)",
             "function applyMathBlocksInHtmlFragment(html)",
             "function convertMermaidFencesInHtmlFragment(html)",
             'class="math-block"',
             'class="math-inline"',
-            "expr.trim() +",
+            "normalizeMathExpr(expr.trim())",
             "renderMathBlocks(renderInlineMarkdown(paragraphLines.join(",
             "convertMermaidFencesInHtmlFragment(htmlBlockLines.join",
             "applyMathBlocksInHtmlFragment(htmlFragment)",
@@ -221,7 +222,7 @@ console.log('ok');
         node = r"""
 const fs = require('fs');
 const content = fs.readFileSync(process.argv[2], 'utf8');
-const start = content.indexOf('function renderMathBlocks(text)');
+const start = content.indexOf('function normalizeMathExpr(expr)');
 const end = content.indexOf('function splitMarkdownTableCells', start);
 eval(content.slice(start, end));
 const sample = [
