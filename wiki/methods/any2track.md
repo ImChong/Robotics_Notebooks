@@ -2,7 +2,7 @@
 type: method
 tags: [rl, adaptation, world-model, transformer, locomotion]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-23
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
