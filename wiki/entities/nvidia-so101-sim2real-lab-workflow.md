@@ -19,6 +19,8 @@ sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/sites/nvidia-physical-ai-learning.md
 summary: "NVIDIA 官方 SO-101 操作臂动手课：离心管瓶 pick-place 任务上，用 LeRobot 采集、GR00T N1.6 训练 VLA，并在 Isaac Lab 与真机上对比 DR、Co-training、Cosmos 与 SAGE+GapONet 四类 sim2real 策略。"
+institutions: [nvidia]
+
 ---
 
 # NVIDIA SO-101 Sim2Real 实验 workflow

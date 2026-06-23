@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] structural | schema/institutions.json + scripts/generate_link_graph.py — 扩展机构派生（tag 连字符拆分、entity 路径/sources/URL）并为 159 个 wiki 页补全 frontmatter institutions
+
+- 派生增强：`derive_node_institutions` 支持 `unitree-go2` 等连字符 tag、entity 页路径/标题/sources/主链 URL
+- 批量写入：`scripts/bump_wiki_institutions.py` → 159 个 `wiki/...` 页新增 `institutions:`（图谱节点 80→159）
+- 相关页面：见 `python3 scripts/bump_wiki_institutions.py --dry-run` 输出列表；图谱按机构着色见 `docs/graph.html`
+
 ## [2026-06-23] ingest | sources/sites/nvidia-research-gear-lab.md — NVIDIA GEAR Lab 主页；升格 wiki/entities/nvidia-gear-lab.md 并交叉 EgoScale/ENPIRE/SONIC/GR00T-WBC
 
 ## [2026-06-23] ingest | sources/papers/vesta_arxiv_2606_20905.md — Vesta 通才具身 planner；升格 wiki/entities/paper-vesta-generalist-embodied-reasoning.md 并交叉更新 vla / VLN / SayCan

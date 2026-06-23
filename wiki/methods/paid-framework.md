@@ -14,6 +14,8 @@ sources:
   - ../../sources/repos/humanoid_soccer.md
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
 summary: "PAiD (Perception-Action integrated Decision-making) 是一种渐进式的人形机器人技能学习框架，通过模仿学习与感知-动作融合实现鲁棒的类人化踢球。"
+institutions: [unitree]
+
 ---
 
 # PAiD Framework

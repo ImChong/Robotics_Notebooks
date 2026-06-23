@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_human_five_humanoid_actuator_102.md
   - ../../sources/raw/wechat_humanoid_actuator_102_2026-06-02.md
+institutions: [unitree]
+
 ---
 
 # Actuator 102 · 07：决策矩阵与三大物种

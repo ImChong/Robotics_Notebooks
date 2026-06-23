@@ -14,6 +14,8 @@ sources:
   - ../../sources/repos/mujoco-mjx.md
   - ../../sources/sites/mujoco-mjx-readthedocs.md
 summary: "MuJoCo MJX 是 MuJoCo 的 JAX/XLA 重实现：以 `mujoco-mjx` 分发、与主版本号对齐，便于在同一 MJCF 资产上做 GPU 批量与可微 rollout，功能完备度需对照官方 feature parity 文档。"
+institutions: [google-deepmind]
+
 ---
 
 # MuJoCo MJX（MuJoCo XLA）

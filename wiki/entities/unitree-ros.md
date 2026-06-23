@@ -15,6 +15,8 @@ sources:
   - ../../sources/repos/unitree_ros.md
   - ../../sources/repos/unitree_ros_to_real.md
 summary: "unitree_ros 是 Unitree 官方 ROS1（Melodic/Kinetic）+ Gazebo8 的机器人描述与关节级仿真栈；真机 ROS 控制依赖 unitree_ros_to_real 与 unitree_legged_msgs。README 明确 Gazebo 侧不做高层行走，与 MuJoCo 上的 unitree_rl_mjlab 形成并行官方路线。"
+institutions: [unitree]
+
 ---
 
 # unitree_ros（Unitree 官方 ROS1 / Gazebo 栈）

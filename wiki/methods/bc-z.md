@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "BC-Z 通过大规模真实世界模仿学习与灵活任务条件（语言等），展示桌面操控策略对新任务的零样本泛化潜力。"
+institutions: [google]
+
 ---
 
 # BC-Z

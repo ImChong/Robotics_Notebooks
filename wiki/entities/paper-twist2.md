@@ -33,6 +33,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
+institutions: [unitree]
+
 ---
 
 # TWIST2

@@ -18,6 +18,8 @@ sources:
   - ../../sources/papers/swap_parkour_arxiv_2606_19928.md
   - ../../sources/sites/swap-parkour-github-io.md
 summary: "SWAP（arXiv:2606.19928）在 RSSM 潜变量世界模型与 Actor-Critic 上硬嵌入左右镜像等变（SE-CNN/MLP/GRU），端到端训练四足极限跑酷；Apollo 实机 2.13 m 远跳 / 1.63 m 攀台，并对镜像地形与户外场景零样本泛化。"
+institutions: [zju]
+
 ---
 
 # SWAP：对称等变世界模型四足跑酷

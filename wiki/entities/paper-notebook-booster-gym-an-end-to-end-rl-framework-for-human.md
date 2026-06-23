@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_booster-gym-an-end-to-end-rl-framework-for-human.md
 summary: "Booster Gym：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+institutions: [booster]
+
 ---
 
 # Booster Gym

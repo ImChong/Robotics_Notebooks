@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "智元机器人（Agibot）灵犀 X1：硬件设计资料、训练/推理代码与搭建指南集中在官网文档中心；GitHub 以 AgibotTech 组织为入口。"
+institutions: [agibot]
+
 ---
 
 # 智元灵犀 X1（Agibot 开源人形）

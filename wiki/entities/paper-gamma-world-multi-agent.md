@@ -24,6 +24,8 @@ sources:
   - ../../sources/sites/nvidia-gamma-world-project.md
   - ../../sources/repos/gamma_world.md
 summary: "Gamma-World（arXiv:2605.28816）：多智能体生成式交互世界模型，SRAE 置换对称身份 + Sparse Hub 线性跨体注意力 + 块因果学生 24 FPS；2 人训练零样本泛化 4 人，并展示真实多机协调。"
+institutions: [nvidia]
+
 ---
 
 # Gamma-World（γ-World / Generative Multi-Agent World Model）

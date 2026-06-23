@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/papers/switch_humanoid.md
 summary: "Switch 是一种分层人形机器人控制框架，通过「增强技能图」与「缓冲节点」设计，实现了多样化敏捷技能之间的 100% 成功切换与极强的扰动鲁棒性。"
+institutions: [unitree]
+
 ---
 
 # Switch: 敏捷技能切换框架

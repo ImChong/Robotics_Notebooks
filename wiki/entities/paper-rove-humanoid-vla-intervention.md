@@ -20,6 +20,8 @@ sources:
   - ../../sources/papers/rove_arxiv_2606_17011.md
   - ../../sources/sites/xpeng-robotics-rove.md
 summary: "ROVE（arXiv:2606.17011，XPENG Robotics 等）为人形 VLA 部署后训练提出人机闭环 RL：全身 MoCap 干预采集将轨迹分为 rollout/adaptation/recovery，以 OVE 状态价值 critic 与跨 embodiment 人类视频从混合质量经验中提取 advantage-conditioned 策略，真机接触丰富与精细操作任务上优于 SFT 与 HG-DAgger/Filtered BC/RECAP，并随三轮 rollout–intervention 迭代持续提升。"
+institutions: [xpeng]
+
 ---
 
 # ROVE（Unlocking Human Interventions for Humanoid Manipulation via RL）

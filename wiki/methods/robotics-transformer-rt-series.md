@@ -11,6 +11,8 @@ sources:
   - ../../sources/papers/rl_foundation_models.md
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "RT-1 将语言条件图像操控建模为序列预测；RT-2 将大规模视觉语言模型接入同一接口形成 VLA，是通用操作策略的关键基线系列。"
+institutions: [google]
+
 ---
 
 # Robotics Transformer（RT-1 / RT-2）

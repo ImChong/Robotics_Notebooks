@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/repos/unitree_rl_mjlab.md
 summary: "unitree_rl_mjlab 是 Unitree 官方基于 mjlab 的 RL 训练框架，支持 Go2/G1/H1_2 等 7 款机型，覆盖速度跟踪与动作模仿，内建 ONNX 导出到 C++ 真机部署的完整链路。"
+institutions: [unitree]
+
 ---
 
 # unitree_rl_mjlab (Unitree 官方 RL 框架)

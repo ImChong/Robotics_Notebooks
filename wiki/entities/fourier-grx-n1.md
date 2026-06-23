@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "傅利叶智能开源人形线 GRX N1：以 fftai.github.io 文档站与 FFTAI 组织 GitHub 为主入口；BOM/STEP 等物料常以网盘分发，需与官方渠道交叉校验。"
+institutions: [fourier]
+
 ---
 
 # 傅利叶 GRX N1（开源人形）

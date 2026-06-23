@@ -29,6 +29,10 @@ related:
   - ../methods/imitation-learning.md
   - ../methods/reinforcement-learning.md
   - ../concepts/embodied-scaling-laws.md
+institutions:
+  - google-deepmind
+  - google
+
 ---
 
 > **Query 产物**：本页由以下问题触发：「围绕 Ted Xiao 访谈编译稿中出现的机器人学习话题，能否用一手文献串联成可维护的知识索引？」  

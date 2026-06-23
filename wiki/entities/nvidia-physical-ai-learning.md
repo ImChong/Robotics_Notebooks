@@ -13,6 +13,8 @@ sources:
   - ../../sources/sites/nvidia-physical-ai-learning.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
 summary: "NVIDIA Physical AI Learning 是官方免费自学门户，索引 Isaac、OpenUSD、医疗机器人与 SO-101 操作臂 Sim2Real 等多条动手路径，并对接 Brev 云 GPU 环境。"
+institutions: [nvidia]
+
 ---
 
 # NVIDIA Physical AI Learning

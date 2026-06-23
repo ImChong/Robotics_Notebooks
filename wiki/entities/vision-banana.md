@@ -13,6 +13,8 @@ sources:
   - ../../sources/papers/vision_banana_arxiv_2604_20329.md
   - ../../sources/sites/vision-banana-project.md
 summary: "Vision Banana（arXiv:2604.20329，DeepMind）在 Nano Banana Pro 上以极低比例混入视觉任务数据做 instruction-tuning，把分割/深度/法线输出参数化为可解码 RGB 图，在 zero-shot transfer 下多项 2D/3D 基准达或超 SAM 3、Depth Anything 3 等专家，且保留图像生成能力。"
+institutions: [google-deepmind]
+
 ---
 
 # Vision Banana

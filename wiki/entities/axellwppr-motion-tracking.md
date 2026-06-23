@@ -12,6 +12,8 @@ sources:
   - ../../sources/repos/axellwppr_motion_tracking.md
   - ../../sources/sites/motion-tracking-axell-top.md
 summary: "Axellwppr/motion_tracking：GentleHumanoid 论文对应的 mjlab 全身跟踪训练/评估/部署仓，含 AMASS/LAFAN 数据管线、WandB 训练、ONNX sim2real 与 VR 遥操作配置。"
+institutions: [unitree]
+
 ---
 
 # Axellwppr/motion_tracking

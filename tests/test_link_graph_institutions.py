@@ -8,6 +8,8 @@ REGISTRY = {
     "nvidia": {"label": "NVIDIA", "aliases": ["nvidia", "gear"]},
     "cmu": {"label": "卡内基梅隆大学（CMU）", "aliases": ["cmu"]},
     "tsinghua": {"label": "清华大学（Tsinghua）", "aliases": ["tsinghua", "thu"]},
+    "berkeley": {"label": "UC Berkeley", "aliases": ["berkeley"]},
+    "unitree": {"label": "Unitree", "aliases": ["unitree"]},
 }
 ALIASES = glg._build_institution_alias_map(REGISTRY)
 
@@ -46,6 +48,23 @@ def test_explicit_institutions_override_tags() -> None:
 def test_no_institution_tags_yields_empty() -> None:
     assert glg.derive_node_institutions(_page("tags: [paper, humanoid]"), ALIASES) == []
     assert glg.derive_node_institutions("# No frontmatter\n", ALIASES) == []
+
+
+def test_hyphenated_tag_splits_to_institution() -> None:
+    page = _page("tags: [unitree-go2, repo]")
+    assert glg.derive_node_institutions(page, ALIASES) == ["unitree"]
+
+
+def test_entity_path_derives_institution() -> None:
+    page = _page("tags: [paper]\nsources:\n  - ../../sources/papers/berkeley-humanoid.md")
+    page_id = "wiki/entities/paper-notebook-berkeley-humanoid.md"
+    assert glg.derive_node_institutions(page, ALIASES, page_id=page_id) == ["berkeley"]
+
+
+def test_explicit_institutions_skip_entity_signals() -> None:
+    page = _page("institutions: [cmu]\nsources:\n  - ../../sources/sites/nvidia-lab.md")
+    page_id = "wiki/entities/demo-tool.md"
+    assert glg.derive_node_institutions(page, ALIASES, page_id=page_id) == ["cmu"]
 
 
 def test_build_summary_sorts_by_size_then_label() -> None:

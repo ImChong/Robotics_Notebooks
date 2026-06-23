@@ -22,6 +22,11 @@ related:
 sources:
   - ../../sources/papers/viral-humanoid-visual-sim2real.md
 summary: "VIRAL（arXiv:2511.15200，CVPR 2026）给出人形 loco-manipulation 的视觉 Sim2Real 全栈配方：PPO 特权教师以 delta 命令驱动预训练 WBC，大规模分块渲染仿真中用 DAgger+BC 蒸馏 RGB 学生，并结合 SysID、相机对齐与强视觉域随机化在 Unitree G1 上零样本部署。"
+institutions:
+  - unitree
+  - nvidia
+  - cmu
+
 ---
 
 # VIRAL（Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation）

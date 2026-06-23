@@ -30,6 +30,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "OASIS（arXiv:2606.08548）用 Hunyuan3D+Qwen3-VL 从真实图建仿真场景，VR 仿真 teleop 录状态后离线 Path-Tracing 域随机化扩增，训练 Flow Matching 高层+Teleopit 低层层级策略；G1 零样本部署，纯仿真数据在多数任务匹配或超过等量真机 teleop。"
+institutions: [unitree]
+
 ---
 
 # OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）

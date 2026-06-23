@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/sites/omniretarget-dataset-huggingface.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
+institutions: [unitree]
+
 ---
 
 # OmniRetarget Dataset（G1 交互重定向轨迹）

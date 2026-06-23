@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/repos/htwk_gym.md
 summary: "htwk-gym 是由 HTWK Leipzig 开发的人形机器人足球 RL 框架，专注于 Booster T1/K1 平台的参数化步行与踢球技能训练。"
+institutions: [booster]
+
 ---
 
 # htwk-gym

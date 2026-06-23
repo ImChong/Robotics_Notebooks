@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/repos/cartographer.md
 summary: "Google Cartographer 提供实时 2D/3D SLAM：子图 scan matching + 位姿图优化，cartographer_ros 广泛用于工业与科研。"
+institutions: [google]
+
 ---
 
 # Cartographer

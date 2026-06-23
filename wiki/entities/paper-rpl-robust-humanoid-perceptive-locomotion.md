@@ -34,6 +34,8 @@ sources:
   - ../../sources/papers/rpl_arxiv_2602_03002.md
   - ../../sources/sites/rpl-humanoid-github-io.md
 summary: "RPL（arXiv:2602.03002，Amazon FAR）两阶段训练：特权高程图分地形专家（FALCON 双智能体 PPO）经 DAgger 蒸馏为多视角深度 Transformer 统一策略；DFSV 与 RSM 鲁棒双向行走与未见窄地形；Warp 多深度渲染约 5× 加速；G1 真机带 2 kg 载荷穿越坡/楼梯/垫脚石。"
+institutions: [unitree]
+
 ---
 
 # RPL：复杂地形上的鲁棒人形多向感知行走

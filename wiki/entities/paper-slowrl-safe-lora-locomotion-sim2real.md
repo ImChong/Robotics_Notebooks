@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/slowrl_arxiv_2603_17092.md
 summary: "SLowRL（arXiv:2603.17092）冻结仿真预训练腿足策略，用 rank-1 LoRA 与训练期 Recovery 安全滤波在 Unitree Go2 真机上微调 jump/trot，墙钟约快 46.5%、近零摔倒，主张 sim2real 残差为低维流形对齐。"
+institutions: [unitree]
+
 ---
 
 # SLowRL：安全低秩 RL 真机运动微调

@@ -26,6 +26,10 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "SSR（arXiv:2605.30770）用单阶段第一视角深度 PPO，以想象落脚点引导、等变潜空间对称增广与分地形多判别器 AMP 联合学习安全落脚与自然全身运动，在 AgiBot X2 上零样本穿越楼梯/沟壑/高台并完成 1.3 km 户外长程。"
+institutions:
+  - agibot
+  - zju
+
 ---
 
 # SSR：开放世界人形安全对称穿越

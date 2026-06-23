@@ -14,6 +14,8 @@ sources:
   - ../../sources/papers/sam_3d_body_arxiv_2602_15989.md
   - ../../sources/repos/sam-3d-body.md
 summary: "SAM 3D Body（3DB）是 Meta 发布的可提示单图全身人体网格恢复基础模型：基于 MHR 参数化解耦骨架与表面，encoder–decoder 架构支持 2D 关键点/mask 引导，在 3DPW/EMDB 等基准报告 SOTA 级误差，并开放 checkpoint、数据集与 Hugging Face 推理接口。"
+institutions: [meta]
+
 ---
 
 # SAM 3D Body（3DB）

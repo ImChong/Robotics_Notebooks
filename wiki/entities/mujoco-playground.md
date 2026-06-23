@@ -19,6 +19,8 @@ sources:
   - ../../sources/repos/mujoco_playground.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "MuJoCo Playground 是 DeepMind 基于 MJX 的开源机器人 RL 环境集合，定位在「任务与训练入口层」：用四足/人形/灵巧手/机械臂等可复现环境与较短链路，把研究者从行为目标尽快带到真机策略验证（time-to-robot）。"
+institutions: [google-deepmind]
+
 ---
 
 # MuJoCo Playground

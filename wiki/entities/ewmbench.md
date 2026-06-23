@@ -15,6 +15,8 @@ sources:
   - ../../sources/repos/ewmbench.md
   - ../../sources/sites/agibot-world.md
 summary: "EWMBench 是面向具身世界模型（EWM）视频生成的公开基准与工具链：在 Agibot-World 子集上统一初始化后，从场景守恒、末端轨迹与语义/逻辑对齐三轴评测候选文生视频模型，并开源数据与评测代码。"
+institutions: [agibot]
+
 ---
 
 # EWMBench（具身世界模型生成评测）

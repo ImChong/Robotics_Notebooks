@@ -15,6 +15,10 @@ sources:
   - ../../sources/repos/soma_retargeter.md
   - ../../sources/repos/nvlabs-soma-x.md
   - ../../sources/papers/genmo.md
+institutions:
+  - nvidia
+  - unitree
+
 ---
 
 # SOMA Retargeter

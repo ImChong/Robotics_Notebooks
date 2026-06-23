@@ -15,6 +15,8 @@ sources:
   - ../../sources/papers/neural_motion_retargeting_nmr.md
   - ../../sources/papers/reactor_rl_physics_aware_motion_retargeting.md
 summary: "NMR 将人形运动重定向表述为从人体运动分布到机器人可行流形的学习映射；通过 CEPR 管线（筛选→GMR→聚类 RL 专家→仿真 rollout）构造物理一致的人机配对数据，训练 CNN–Transformer 非自回归网络，缓解传统优化重定向的非凸与噪声传播问题。"
+institutions: [unitree]
+
 ---
 
 # NMR（神经运动重定向与人形全身控制）

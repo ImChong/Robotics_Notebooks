@@ -17,6 +17,10 @@ sources:
   - ../../sources/sites/xue-bin-peng.md
   - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
 summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学家，博士师从 Levine / Abbeel；以 DeepMimic、AMP、ASE、动力学随机化 Sim2Real 等工作定义了物理角色与腿式机器人 RL 运动控制的一条主干研究线，并通过 MimicKit 统一开源实现。"
+institutions:
+  - nvidia
+  - berkeley
+
 ---
 
 # Xue Bin Peng（彭学斌）

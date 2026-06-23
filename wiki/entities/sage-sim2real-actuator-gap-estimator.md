@@ -16,6 +16,10 @@ sources:
   - ../../sources/repos/sage-sim2real-actuator-gap.md
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
 summary: "SAGE 在 Isaac Sim 中重放关节轨迹并与真机日志对齐，用 RMSE/相关/余弦相似度等指标量化执行器层 sim2real gap，并支持导出成对数据用于 gap 补偿建模。"
+institutions:
+  - unitree
+  - nvidia
+
 ---
 
 # SAGE（Sim2Real Actuator Gap Estimator）

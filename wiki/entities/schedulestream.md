@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/schedulestream_arxiv_2511_04758.md
   - ../../sources/repos/nvlabs-schedulestream.md
 summary: "ScheduleStream 是 NVIDIA 提出的领域无关「规划+调度+连续采样」框架：用 durative action 表达可并行多臂动作，在 TAMPAS 应用里把 PDDLStream 式 stream 批量化到 GPU，输出碰撞自由时间表而非单臂串行 TAMP 计划。"
+institutions: [nvidia]
+
 ---
 
 # ScheduleStream

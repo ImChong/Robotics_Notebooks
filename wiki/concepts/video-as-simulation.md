@@ -22,6 +22,8 @@ sources:
   - ../../sources/papers/wem_arxiv_2605_19957.md
   - ../../sources/blogs/allenai_molmo_motion.md
 summary: "视频即仿真（Video-as-Simulation）代表了仿真技术的新范式：通过交互式视频预测器代替传统的刚体动力学引擎，实现了在像素级别进行无限逼真的反事实物理演练。"
+institutions: [google-deepmind]
+
 ---
 
 # Video-as-Simulation (视频即仿真)

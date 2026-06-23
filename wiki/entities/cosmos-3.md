@@ -29,6 +29,8 @@ sources:
   - ../../sources/sites/cosmos3-project.md
   - ../../sources/repos/nvidia_cosmos.md
 summary: "Cosmos 3 是 NVIDIA 第三代全模态 Physical AI 世界模型：MoT 统一架构下联合理解/生成语言、图像、视频、音频与动作，Reasoner 与 Generator 双运行时面覆盖 VLM、视频 WM、正逆动力学与操纵策略。"
+institutions: [nvidia]
+
 ---
 
 # Cosmos 3（NVIDIA 全模态世界模型）

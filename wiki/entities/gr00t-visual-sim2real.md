@@ -22,6 +22,10 @@ sources:
   - ../../sources/sites/doorman-humanoid-github-io.md
   - ../../sources/papers/viral-humanoid-visual-sim2real.md
 summary: "GR00T-VisualSim2Real 是 NVIDIA NVlabs 开源的视觉 Sim2Real 框架，包含 VIRAL 和 DoorMan 两项 CVPR 2026 研究，用 PPO Teacher + DAgger Student 蒸馏范式将仅靠 RGB 的策略零样本迁移到 Unitree G1 真机。"
+institutions:
+  - unitree
+  - nvidia
+
 ---
 
 # GR00T-VisualSim2Real (NVIDIA 视觉 Sim2Real 框架)

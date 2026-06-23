@@ -1,5 +1,5 @@
 {
-  "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。新增机构在此追加即可，无需改前端。",
+  "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags / institutions 派生「所属机构」；页面可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），tag 连字符可拆分（如 unitree-go2→unitree）；entity 页另从路径/标题、sources 路径与主链 URL 派生。新增机构在此追加即可，无需改前端。",
   "registry": {
     "nvidia": { "label": "NVIDIA", "aliases": ["nvidia", "gear"] },
     "google-deepmind": { "label": "Google DeepMind", "aliases": ["deepmind", "google-deepmind"] },

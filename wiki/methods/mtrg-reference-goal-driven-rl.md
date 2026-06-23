@@ -14,6 +14,8 @@ sources:
   - ../../sources/papers/mtrg_reference_goal_driven_rl_arxiv_2602_20375.md
   - ../../sources/sites/gfr-project.md
 summary: "GfR/MTRG 用单一 goal-conditioned 策略联合参考塑形模仿与纯目标泛化，参考仅出现在训练奖励中，在 G1 箱式跑酷上超越 ZEST tracking 与 tabula rasa 的 OOD 鲁棒性。"
+institutions: [unitree]
+
 ---
 
 # MTRG / GfR: Multi-Task Reference and Goal-Driven RL

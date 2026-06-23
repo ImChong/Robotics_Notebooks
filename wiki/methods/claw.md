@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/blogs/claw_unitree_g1_language_annotated_motion_data.md
 summary: "CLAW (Composable Language-Annotated Whole-Body Motion Data Generation) 是一种面向人形机器人的网页交互式数据生成流水线，利用 MuJoCo 仿真和底层规划器自动生成带语言标签且符合物理约束的全身运动数据。"
+institutions: [unitree]
+
 ---
 
 # CLAW (宇树 G1 全身动作数据生成管线)

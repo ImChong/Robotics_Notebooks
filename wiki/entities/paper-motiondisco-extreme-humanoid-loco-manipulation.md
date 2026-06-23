@@ -28,6 +28,8 @@ related:
 sources:
   - ../../sources/papers/motiondisco_arxiv_2606_06139.md
 summary: "MotionDisco（arXiv:2606.06139）：LLM 引导进化式程序搜索 + 接触显式 kinodynamic TO，从零发现长时程人形 loco-manipulation 接触计划；DeepMimic 式 RL 跟踪在 G1 真机零样本部署，无需遥操作或人体重定向。"
+institutions: [unitree]
+
 ---
 
 # MotionDisco（极端人形 Loco-Manipulation 运动发现）

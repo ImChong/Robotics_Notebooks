@@ -16,6 +16,8 @@ sources:
   - ../../sources/courses/stanford_cs123_robotics_ai.md
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "Stanford Doggo 与 Pupper 开源四足生态：Doggo 偏高动态跳跃；Pupper 从教学版演进至 v3 伴侣平台（~$2000 自组、Pi 5 + GIM4305、仿真 RL、VLM/语音、ROS 2 monorepo 与 CS 123 课程）。"
+institutions: [stanford]
+
 ---
 
 # Stanford Doggo / Pupper（开源四足）

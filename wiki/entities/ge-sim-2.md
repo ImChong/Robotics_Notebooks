@@ -16,6 +16,8 @@ sources:
   - ../../sources/repos/ge_sim_v2.md
   - ../../sources/sites/ge-sim-v2-project.md
 summary: "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）在 GE-Sim 动作条件多视角视频生成上，用大规模真机数据重训并叠加本体状态专家、VLM 世界裁判与蒸馏加速，形成可闭环策略交互与可扩展评测/奖励的操纵视频世界模拟器（2B，WorldArena 榜首）。"
+institutions: [agibot]
+
 ---
 
 # GE-Sim 2.0（Genie Envisioner World Simulator 2.0）

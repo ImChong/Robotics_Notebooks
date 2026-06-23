@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/genmo.md
   - ../../sources/repos/genmo.md
 summary: "GENMO（官方代码与权重以 GEM 名义发布）把人体运动估计重新表述为带多模态条件的约束式扩散生成；通过 dual-mode 训练范式（估计模式 + 生成模式）与 multi-text 注入块，让同一权重在视频、2D 关键点、文本、音乐与 3D 关键帧条件下同时做轨迹恢复与合成。"
+institutions: [nvidia]
+
 ---
 
 # GENMO（统一人体运动估计与生成）

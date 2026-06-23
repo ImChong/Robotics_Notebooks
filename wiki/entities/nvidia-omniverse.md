@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/papers/simulation.md
 summary: "NVIDIA Omniverse 是 Isaac Sim 的底层支撑平台，是一个基于 USD 格式、工业级的实时三维协作与仿真引擎，旨在为具身智能提供高保真的数字化孪生环境。"
+institutions: [nvidia]
+
 ---
 
 # NVIDIA Omniverse (具身仿真底座)

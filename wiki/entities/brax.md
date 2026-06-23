@@ -15,6 +15,10 @@ sources:
   - ../../sources/repos/brax.md
   - ../../sources/papers/brax_arxiv_2106_13281.md
 summary: "Brax 是 Google 开源的 JAX 可微物理与 RL 训练库；当前 README 将维护重心收敛到 brax/training，并引导新环境使用 MuJoCo Playground、新物理后端使用 MJX / MuJoCo Warp。"
+institutions:
+  - google
+  - google-deepmind
+
 ---
 
 # Brax（JAX 可微物理与 RL 训练）

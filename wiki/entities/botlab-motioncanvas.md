@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/sites/botlab_motioncanvas.md
 summary: "BotLab（站点内产品名 MotionCanvas）是地瓜机器人提供的浏览器端节点图工具：在网页里编排观测、历史堆叠、ONNX 策略与 MuJoCo 步进，并支持 MSCP 图与 Netron 模型预览，面向 Unitree G1 / Go2 等策略的快速试验与教学演示。"
+institutions: [unitree]
+
 ---
 
 # BotLab / MotionCanvas（浏览器内策略–仿真编排）

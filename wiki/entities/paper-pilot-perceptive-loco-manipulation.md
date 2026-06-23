@@ -29,6 +29,8 @@ related:
 sources:
   - ../../sources/papers/pilot_arxiv_2601_17440.md
 summary: "PILOT（arXiv:2601.17440，上海交大）用单阶段 PPO 统一 LiDAR 高程图感知行走与大工作空间全身操作：跨模态编码器 + 4 专家 MoE + 上肢残差；G1 真机非结构化楼梯/高台 loco-manipulation 遥操作与分层 RL。"
+institutions: [unitree]
+
 ---
 
 # PILOT：非结构化场景感知统一 loco-manipulation 低层控制器

@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/halomi_arxiv_2606_18772.md
   - ../../sources/sites/halomi-humanoid-project.md
 summary: "HALOMI（arXiv:2606.18772，上交/萨塞克斯/华理）从 UMI 式无机器人 egocentric 示范学习人形 loco-manipulation：Pika 双夹爪+头盔追踪头手轨迹，BFM-Zero 潜空间流形约束全身控制器跟踪稀疏世界系目标，ego-view 对齐与控制器感知参考适配缩小人–机鸿沟，π₀.₅ VLA 在 G1 主动颈平台上五项真机任务约 85% 成功率。"
+institutions: [unitree]
+
 ---
 
 # HALOMI（Learning Humanoid Loco-Manipulation with Active Perception from Human Demonstrations）

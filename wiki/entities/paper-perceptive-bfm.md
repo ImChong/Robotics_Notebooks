@@ -28,6 +28,10 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "Perceptive BFM（妙动科技等，CoRL 2026）：保留原始人体运动参考为部署命令，用机器人中心高程感知在线补落脚/间隙/接触时序；TCRS 离线合成地形监督，PMT 四阶段（盲 teacher→视觉 student→目标帧对齐蒸馏→identity-gated 残差）在 Unitree G1 上单策略覆盖跟踪、风格动作、杂技与 mocap 遥操作。"
+institutions:
+  - unitree
+  - hkust
+
 ---
 
 # Perceptive BFM：Adapting Human Motion Priors to Robot-Centric Terrain

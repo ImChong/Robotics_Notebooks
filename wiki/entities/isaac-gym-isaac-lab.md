@@ -5,6 +5,8 @@ sources:
   - ../../sources/papers/simulation_tools.md
 summary: "Isaac Gym / Isaac Lab"
 updated: 2026-06-21
+institutions: [nvidia]
+
 ---
 
 # Isaac Gym / Isaac Lab

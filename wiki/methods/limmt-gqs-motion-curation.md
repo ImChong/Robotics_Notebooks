@@ -21,6 +21,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "LIMMT（ICML 2026）：以 GQS 三阶段管线从大规模 MoCap 中策展物理可行、行为多样且动态丰富的子集；在 Any2Track / TWIST2 上 3% AMASS 即可优于全量训练，并 plug-and-play 迁移至 PHUMA 与 G1 真机。"
+institutions: [unitree]
+
 ---
 
 # LIMMT / GQS：人形 Motion Tracking 的数据策展

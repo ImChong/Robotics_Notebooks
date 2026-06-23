@@ -18,6 +18,8 @@ sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
   - ../../sources/personal/amp_mjlab_policy_training_essence.md
 summary: "AMP_mjlab 是基于 mjlab + rsl_rl 的 Unitree G1 统一 AMP 策略实现，用单一 actor-critic + 判别器同时覆盖 locomotion 与 fall-recovery，消除模式切换断裂。"
+institutions: [unitree]
+
 ---
 
 # AMP_mjlab (G1 统一 AMP 策略)

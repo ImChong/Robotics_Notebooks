@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/repos/robot_lab.md
 summary: "robot_lab 是基于 NVIDIA IsaacLab 的机器人 RL 扩展库，在独立仓库中注册 24+ 速度跟踪环境与 BeyondMimic/AMP 等任务，覆盖四足、轮足与人形多厂商机型，训练后可通过 rl_sar 衔接 Gazebo/真机部署。"
+institutions: [unitree]
+
 ---
 
 # robot_lab (IsaacLab 扩展框架)

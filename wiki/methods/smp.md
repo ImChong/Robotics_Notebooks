@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/smp.md
   - ../../sources/repos/smp_suz_tsinghua.md
 summary: "SMP (Score-Matching Motion Priors) 通过预训练扩散模型作为“冻结奖励器”，实现了高效、可组合且无需原始数据的运动模仿学习。"
+institutions: [unitree]
+
 ---
 
 # SMP: 基于得分匹配的可复用运动先验

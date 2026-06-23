@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/repos/fast_lio.md
 summary: "FAST-LIO 是高效鲁棒的 LiDAR-惯性里程计：ikd-Tree + 迭代 ESKF，适合 3D 旋转激光高频状态估计。"
+institutions: [hku]
+
 ---
 
 # FAST-LIO

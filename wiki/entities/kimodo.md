@@ -18,6 +18,10 @@ sources:
   - ../../sources/sites/kimodo-project.md
   - ../../sources/papers/kimodo_arxiv_2603_15546.md
 summary: "Kimodo 是 NVIDIA 开源的运动学扩散模型：在约 700 小时 Rigplay 动捕上训练，两阶段 root/body 去噪器支持文本与全身/末端/2D 路径约束，覆盖 SOMA / G1 / SMPL-X，并提供 Benchmark、时间线 Demo 与 ProtoMotions / GEAR-SONIC 下游衔接。"
+institutions:
+  - nvidia
+  - unitree
+
 ---
 
 # Kimodo（可控人体与人形运动扩散）

@@ -20,6 +20,8 @@ sources:
   - ../../sources/sites/gentle-humanoid-axell-top.md
   - ../../sources/repos/axellwppr_motion_tracking.md
 summary: "GentleHumanoid（arXiv:2511.04679）把阻抗参考动力学嵌入全身 motion tracking：统一弹簧式 resistive/guiding 交互力、肩肘腕链上运动学一致采样、5–15 N 可调力阈值与 teacher–student PPO；Unitree G1 上验证拥抱/坐–站/软物体操控，开源工程栈见 Axellwppr/motion_tracking（mjlab）。"
+institutions: [unitree]
+
 ---
 
 # GentleHumanoid（上半身柔顺全身运动跟踪）

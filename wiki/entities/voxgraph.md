@@ -9,6 +9,8 @@ related:
 sources:
   - ../../sources/repos/voxgraph.md
 summary: "Voxgraph 基于 Voxblox TSDF 子图做位姿图优化，支持多会话建图与度量地图对齐。"
+institutions: [eth]
+
 ---
 
 # Voxgraph

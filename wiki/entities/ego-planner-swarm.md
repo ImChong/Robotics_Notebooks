@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/repos/ego_planner_swarm.md
 summary: "EGO-Planner Swarm 是 ZJU FAST Lab 的单/多机局部轨迹规划器：ESDF 地图 + B-spline 优化，输出可对接 PX4 Offboard 的位置/速度设定点。"
+institutions: [zju]
+
 ---
 
 # EGO-Planner Swarm

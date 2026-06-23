@@ -16,6 +16,10 @@ related:
 sources:
   - ../../sources/sites/zhengyiluo.md
 summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、CMU RI 博士（Kris Kitani）；工作横跨人形通用低层控制、人–人形遥操作、视觉 Sim2Real 与交互感知，是 HOVER、ASAP、OmniH2O、PDC 与 SONIC 等社区关键论文的核心作者之一。"
+institutions:
+  - cmu
+  - nvidia
+
 ---
 
 # Zhengyi Luo（罗正宜）

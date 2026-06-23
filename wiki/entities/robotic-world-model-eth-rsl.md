@@ -13,6 +13,8 @@ sources:
   - ../../sources/repos/leggedrobotics_robotic_world_model.md
   - ../../sources/repos/leggedrobotics_robotic_world_model_lite.md
 summary: "ETH RSL 的 Robotic World Model（RWM）与 Uncertainty-Aware RWM（RWM-U）：在 Isaac Lab 中联训神经动力学与 PPO，并支持在线或纯离线想象 rollout 训练模型基策略；Lite 仓剥离仿真仅保留离线管线与 Colab 入口。"
+institutions: [eth]
+
 ---
 
 # Robotic World Model（ETH RSL：RWM / RWM-U）

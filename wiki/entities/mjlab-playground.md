@@ -14,6 +14,10 @@ related:
 sources:
   - ../../sources/repos/mjlab_playground.md
 summary: "mujocolab 维护的 mjlab 任务集合仓库：从 MuJoCo Playground 起步移植任务，提供 uv 驱动的并行训练与策略回放入口，首批覆盖 Go1 / Booster T1 等平地摔倒恢复（getup）示例。"
+institutions:
+  - unitree
+  - booster
+
 ---
 
 # mjlab_playground（mjlab 任务集合）

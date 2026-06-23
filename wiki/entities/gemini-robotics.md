@@ -9,6 +9,10 @@ related:
   - ../methods/robotics-transformer-rt-series.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
+institutions:
+  - google-deepmind
+  - google
+
 ---
 
 # Gemini Robotics

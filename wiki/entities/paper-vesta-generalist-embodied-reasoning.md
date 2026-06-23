@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/vesta_arxiv_2606_20905.md
 summary: "Vesta（arXiv:2606.20905）在 Qwen3-VL-8B 上以空间导向 SFT 混合语料与极简 image+text memory harness，统一定位、VLN、具身推理与长时程子任务规划；四轴 benchmark 平均超最强单基线 >20 pt，真机 Gr00t-N1.6+YAM 记忆任务 +38.3% 成功率。"
+institutions: [nvidia]
+
 ---
 
 # Vesta（A Generalist Embodied Reasoning Model）

@@ -20,6 +20,8 @@ related:
 sources:
   - ../../sources/papers/enpire_nvidia_gear_2026.md
   - ../../sources/sites/nvidia-research-enpire.md
+institutions: [nvidia]
+
 ---
 
 # ENPIRE

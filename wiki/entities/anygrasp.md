@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/repos/anygrasp-sdk.md
 summary: "AnyGrasp 是面向平行夹爪的稠密 7-DoF 抓取感知与跨帧跟踪管线：单前向从深度点云预测大量候选并做时空关联，官方以 SDK（预编译库 + License）形式发布。"
+institutions: [sjtu]
+
 ---
 
 # AnyGrasp（抓取感知 SDK）

@@ -19,6 +19,8 @@ sources:
   - ../../sources/papers/humannet.md
   - ../../sources/papers/humannet_table1_benchmark_corpora.md
   - ../../sources/repos/humannet.md
+institutions: [pku]
+
 ---
 
 # HumanNet

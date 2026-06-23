@@ -30,6 +30,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "PHP（arXiv:2602.15827）用 motion matching 将 OmniRetarget 原子跑酷技能与 locomotion 合成为长程参考，再以 DAgger+PPO 蒸馏为单一深度学生策略，使 Unitree G1 仅凭机载深度与 2D 速度指令完成 1.25 m 攀墙与多障碍长程跑酷。"
+institutions: [unitree]
+
 ---
 
 # Perceptive Humanoid Parkour（PHP）

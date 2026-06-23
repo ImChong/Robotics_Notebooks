@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/repos/easy_quadruped.md
 summary: "easy_quadruped 是 StanfordQuadruped（Pupper）控制栈的独立 fork：模型式 Trot 步态 + IK + MuJoCo 浮动机身闭环，附带任务调度与舵机标定，适合低成本四足控制入门。"
+institutions: [stanford]
+
 ---
 
 # easy_quadruped（Pupper 控制栈 + MuJoCo 闭环）

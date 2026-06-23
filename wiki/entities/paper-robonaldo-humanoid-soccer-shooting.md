@@ -30,6 +30,8 @@ sources:
   - ../../sources/papers/robonaldo_arxiv_2606_11092.md
   - ../../sources/sites/opendrivelab-robonaldo.md
 summary: "RoboNaldo（arXiv:2606.11092）：以单条人类踢球参考为 scaffold 的三阶段 motion-guided curriculum RL——先学稳定全身踢球先验，再适应任意球位定点射门，最后经 locomotion 命令与 kick-trigger 泛化到来球射门；G1 机载 LiDAR/IR 感知在真草场外实现 3 m 平均误差 0.73 m/0.86 m 与最高 13.10 m/s 触球球速。"
+institutions: [unitree]
+
 ---
 
 # RoboNaldo（人形足球射门 · Motion-Guided Curriculum RL）

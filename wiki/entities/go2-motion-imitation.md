@@ -11,6 +11,8 @@ related:
   - ./genesis-world-10.md
 sources:
   - ../../sources/repos/go2_motion_imitation.md
+institutions: [unitree]
+
 ---
 
 # Go2 Motion Imitation

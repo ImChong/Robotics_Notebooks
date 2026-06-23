@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/repos/nvidia_isaac_teleop.md
 summary: "Isaac Teleop 是 NVIDIA 统一的仿真与真机遥操作框架：标准化 XR/外设接口、图式 retargeting 与 MCAP/示范录制，并作为 Isaac Lab 3.x 的 XR 遥操作主线替代 openxr 设备栈。"
+institutions: [nvidia]
+
 ---
 
 # Isaac Teleop

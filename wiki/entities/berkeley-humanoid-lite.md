@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "Berkeley Humanoid Lite（BHL）：UC Berkeley Hybrid Robotics 的低成本准直驱人形开源项目，含 MuJoCo 仿真、PPO 与遥操作等入门链路。"
+institutions: [berkeley]
+
 ---
 
 # Berkeley Humanoid Lite（BHL）

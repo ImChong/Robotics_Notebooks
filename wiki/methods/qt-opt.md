@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "QT-Opt 用大规模离线 + 在线真实机器人数据训练视觉条件下的连续动作 Q 学习，是早期证明「像素操控可扩展」的代表系统之一。"
+institutions: [google]
+
 ---
 
 # QT-Opt

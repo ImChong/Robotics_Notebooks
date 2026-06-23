@@ -21,6 +21,8 @@ sources:
   - ../../sources/papers/phygile_arxiv_2603_19305.md
   - ../../sources/sites/phygile-page.md
 summary: "PhyGile（arXiv:2603.19305）以 physics-prefix 引导的 262D 机器人原生扩散生成与课程式 MoE GMT 跟踪器闭环，从文本直接产出可执行高动态全身动作，真机验证 breakdance、侧手翻与旋跳等超越低动态行走的前沿敏捷运动。"
+institutions: [shanghai-ai-lab]
+
 ---
 
 # PhyGile（Physics-Prefix Guided Motion Generation for Agile General Humanoid Motion Tracking）

@@ -17,6 +17,8 @@ related:
 sources:
   - ../../sources/papers/egoscale_arxiv_2602_16710.md
   - ../../sources/sites/nvidia-research-egoscale.md
+institutions: [nvidia]
+
 ---
 
 # EgoScale

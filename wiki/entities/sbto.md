@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/repos/sbto.md
   - ../../sources/papers/dynaretarget_arxiv_2602_06827.md
+institutions: [unitree]
+
 ---
 
 # sbto（DynaRetarget SBTO 官方实现）

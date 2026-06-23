@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_berkeley-humanoid-a-research-platform-for-learni.md
 summary: "Berkeley Humanoid：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+institutions: [berkeley]
+
 ---
 
 # Berkeley Humanoid

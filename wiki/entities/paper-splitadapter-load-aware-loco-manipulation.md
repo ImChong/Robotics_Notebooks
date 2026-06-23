@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "SplitAdapter（arXiv:2606.03297）冻结 PhysHSI 类 AMP 人形搬箱策略，用物体/负载与动力学双分支历史编码、分裂世界模型、GRL 交叉对抗解耦与分层 FiLM 做负载感知在线适配；MuJoCo sim-to-sim 与 Unitree G1 零样本真机在 2–6 kg 与多搬放高度下显著提升 Full-task 成功率，6 kg 重载增益最大。"
+institutions: [unitree]
+
 ---
 
 # SplitAdapter（Load-Aware Humanoid Loco-Manipulation via Factorized Adaptation）

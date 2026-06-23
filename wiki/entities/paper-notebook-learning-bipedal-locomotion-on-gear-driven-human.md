@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_learning-bipedal-locomotion-on-gear-driven-human.md
 summary: "Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+institutions: [nvidia]
+
 ---
 
 # Learning Bipedal Locomotion on Gear-Driven Humanoid Robot Using Foot-Mounted IMUs

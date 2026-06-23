@@ -31,6 +31,8 @@ sources:
   - ../../sources/repos/mondo_robotics_dit4dit.md
   - ../../sources/sites/dit4dit-project.md
 summary: "DiT4DiT（arXiv:2603.10448）：端到端双 DiT Video-Action Model——Cosmos-Predict2.5 Video DiT 与 Action DiT 联合 flow matching，用固定 flow 步视频隐状态条件动作；LIBERO 98.6%、RoboCasa-GR1 50.8%，G1 真机桌面与全身 loco-manip 超 GR00T-N1.5；开源代码；同团队后续演进为 MotionWAM 实时人形 WAM。"
+institutions: [unitree]
+
 ---
 
 # DiT4DiT（双 DiT 联合视频–动作建模）

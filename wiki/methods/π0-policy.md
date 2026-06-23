@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/papers/diffusion_and_gen.md
 summary: "π₀ (Pi-zero) 是由 Physical Intelligence 提出的一种通用的 Vision-Language-Action 模型，通过结合流匹配（Flow Matching）与大规模预训练，实现了对复杂机器人操作任务的高效建模。"
+institutions: [google-deepmind]
+
 ---
 
 # π₀ (Pi-zero) 策略模型

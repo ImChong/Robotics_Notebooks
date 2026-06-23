@@ -10,6 +10,8 @@ related:
   - ./unitree-ros.md
   - ../concepts/wheel-legged-quadruped.md
   - ./dreamwaq-plus.md
+institutions: [unitree]
+
 ---
 
 # Unitree

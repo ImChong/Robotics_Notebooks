@@ -19,6 +19,8 @@ sources:
   - ../../sources/sites/resmimic-github-io.md
   - ../../sources/repos/resmimic.md
 summary: "ResMimic（arXiv:2510.05070，Amazon FAR）用两阶段残差学习把大规模 GMT 先验接到物体条件 loco-manipulation：点云物体跟踪奖励、接触奖励与虚拟力课程稳定训练，G1 真机实现 92.5% sim-to-sim 成功率与 4.5–5.5 kg 全身接触搬运。"
+institutions: [unitree]
+
 ---
 
 # ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）

@@ -17,6 +17,8 @@ related:
 sources:
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
 summary: "SD-AMP（arXiv:2605.18611）用投影重力门控在训练期切换 recovery 与速度条件 locomotion 两个 AMP 判别器，三条 LAFAN1 参考即让 Unitree G1 单策略统一走、跑与俯卧/仰卧起身，真机 50 Hz ONNX 无运行时模式切换。"
+institutions: [unitree]
+
 ---
 
 # SD-AMP：统一走、跑与起身的对抗运动先验

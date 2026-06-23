@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/repos/omomo_release.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
+institutions: [stanford]
+
 ---
 
 # OMOMO（Object Motion Guided Human Motion Synthesis）

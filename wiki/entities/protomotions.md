@@ -16,6 +16,8 @@ related:
 sources:
   - ../../sources/repos/protomotions.md
 summary: "ProtoMotions3 是 NVIDIA 开源的 GPU 加速人形仿真与学习框架，强调多后端、大规模动捕数据管线、模块化任务拼装与 ONNX 化 Sim2Real 部署。"
+institutions: [nvidia]
+
 ---
 
 # ProtoMotions: 大规模人形机器人仿真框架

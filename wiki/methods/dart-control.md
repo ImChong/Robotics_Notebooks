@@ -17,6 +17,8 @@ sources:
   - ../../sources/repos/zkf1997_dart.md
   - ../../sources/sites/dart-control-project.md
 summary: "DART（DartControl，ICLR 2025）：重叠运动原语上的潜扩散自回归模型，在在线文本流与历史条件下实时合成任意长 SMPL-X 运动，并在同一潜空间用噪声优化或 RL 实现空间/场景约束控制。"
+institutions: [eth]
+
 ---
 
 # DART（DartControl：实时文本驱动人体运动控制）

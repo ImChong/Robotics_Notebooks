@@ -24,6 +24,11 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "Humanoid-GPT（arXiv:2606.03985，CVPR 2026）在 2B 帧 G1 重定向语料上，以 HME 聚类训练数百 PPO motion expert，再经并行 DAgger 蒸馏为 GPT 式因果 Transformer 通用人形 tracker，同时实现高动态跟踪与未见动作零样本泛化，并给出数据/模型 scaling law；真机 G1 相对 SONIC 四类对比与 TensorRT <1.5ms 部署。"
+institutions:
+  - unitree
+  - galbot
+  - tsinghua
+
 ---
 
 # Humanoid-GPT（Scaling Data and Structure for Zero-Shot Motion Tracking）

@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/imitation_learning.md
 summary: "Meta Quest (Oculus) 遥操作方案是目前具身智能研究中成本最低、效率最高的数据采集手段之一，通过 VR 头显的手部追踪技术直接映射人类动作到机器人。"
+institutions: [meta]
+
 ---
 
 # Meta Quest (Oculus) 遥操作

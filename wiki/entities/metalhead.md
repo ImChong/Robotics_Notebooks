@@ -11,6 +11,8 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/repos/metalhead.md
+institutions: [unitree]
+
 ---
 
 # MetalHead

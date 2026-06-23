@@ -16,6 +16,10 @@ related:
 sources:
   - ../../sources/repos/holosoma.md
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
+institutions:
+  - unitree
+  - booster
+
 ---
 
 # holosoma（Amazon FAR 人形 RL + 重定向框架）

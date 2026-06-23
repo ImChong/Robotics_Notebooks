@@ -16,6 +16,10 @@ sources:
   - ../../sources/repos/smp_suz_tsinghua.md
   - ../../sources/papers/smp.md
 summary: "SUZ-tsinghua/smp 在 mjlab 上为 Unitree G1 端到端复现 SMP：DDPM 运动先验预训练、冻结 SDS 引导奖励、GSI 初始化与四类下游任务，并预置三套 prior 以跳过预训练。"
+institutions:
+  - unitree
+  - tsinghua
+
 ---
 
 # SMP on G1（mjlab 复现）

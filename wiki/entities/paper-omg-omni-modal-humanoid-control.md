@@ -23,6 +23,10 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "OMG（清华 MARS Lab）提出 generator–tracker 分层的 omni-modal 人形运动生成：OMG-DiT 将语言/音频/人体参考/运动历史及组合实时转为 G1 可跟踪轨迹，OMG-Data 约 1174.66 h；开源训练/推理/部署代码，tracker 复用 HoloMotion。"
+institutions:
+  - unitree
+  - tsinghua
+
 ---
 
 # OMG：Omni-Modal Motion Generation for Generalist Humanoid Control

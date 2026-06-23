@@ -22,6 +22,10 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_legs_vla_3dgs_loco_manip.md
   - ../../sources/sites/legsvla-github-io.md
 summary: "LEGS（arXiv:2606.01458）用 3DGS 背景 + SAM3D mesh 前景 + MuJoCo/Sonic 合成无遥操作人形 loco-manip 演示，motion 与外观解耦可 GPU 重渲染；在 G1 上微调 ψ0/π0.5/GR00T N1.6 匹配或超过 50-demo teleop，并优于 mesh-only 合成基线。"
+institutions:
+  - unitree
+  - stanford
+
 ---
 
 # LEGS（Loco-manipulation via Embodied Gaussian Splatting）

@@ -29,6 +29,8 @@ related:
 sources:
   - ../../sources/papers/explicit_stair_geometry_arxiv_2605_09944.md
 summary: "显式楼梯几何条件化（arXiv:2605.09944）：BEV 点云预测踢面高度/踏面深度/航向与楼梯状态，直接条件化 PPO 人形策略；Isaac Lab 训练、G1 零样本实机，户外连续 33 级上楼，OOD 踢面高度泛化优于视觉 MoRE。"
+institutions: [unitree]
+
 ---
 
 # 显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）

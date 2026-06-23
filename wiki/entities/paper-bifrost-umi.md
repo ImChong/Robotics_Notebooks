@@ -21,6 +21,8 @@ sources:
   - ../../sources/papers/bifrost_umi_arxiv_2605_03452.md
   - ../../sources/sites/bifrost-umi-project.md
 summary: "BifrostUMI（arXiv:2605.03452，BAAI Aether）将 UMI 式无机器人示范扩展到人形全身操作：Pico 追踪 + 双腕鱼眼夹爪采集关键点与视觉，扩散高层策略预测 47-D 稀疏关键点动作块，经 SKR 保留度量空间结构并重定向到 G1，再由 mink IK 与全身控制器闭环执行。"
+institutions: [unitree]
+
 ---
 
 # BifrostUMI（Bridging Robot-Free Demonstrations and Humanoid Whole-Body Manipulation）

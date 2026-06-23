@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/mujica_arxiv_2605_13058.md
 summary: "MUJICA（arXiv:2605.13058，ICRA 2026）在 Unitree Go2-W 上用单一本体策略联合全向移动、高台攀爬与摔倒恢复，以 DC 电机硬约束 P3O 与高层技能选择器实现安全零样本 sim2real 与自主模态切换。"
+institutions: [unitree]
+
 ---
 
 # MUJICA：轮足多技能统一本体控制架构

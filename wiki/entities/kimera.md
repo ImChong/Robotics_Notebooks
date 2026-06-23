@@ -9,6 +9,8 @@ related:
 sources:
   - ../../sources/repos/kimera.md
 summary: "Kimera 是 MIT SPARK 语义 SLAM 套件：Kimera-VIO、Kimera-RPGO、Kimera-Semantics 模块化组合。"
+institutions: [mit]
+
 ---
 
 # Kimera

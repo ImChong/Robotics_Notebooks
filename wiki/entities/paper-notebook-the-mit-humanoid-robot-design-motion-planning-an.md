@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_the-mit-humanoid-robot-design-motion-planning-an.md
 summary: "The MIT Humanoid Robot：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+institutions: [mit]
+
 ---
 
 # The MIT Humanoid Robot

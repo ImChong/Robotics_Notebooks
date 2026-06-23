@@ -23,6 +23,10 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md
 summary: "ETH RSL 等工作（arXiv:2604.17335）将地形条件扩散运动生成器与 DeepMimic 式 RL 全身跟踪器分层耦合，经冻结生成器的闭环微调实现 onboard 感知下的全身箱攀、跨栏、楼梯与混合地形穿越，Unitree G1 真机验证。"
+institutions:
+  - unitree
+  - eth
+
 ---
 
 # Learning Whole-Body Humanoid Locomotion via Motion Generation and Motion Tracking

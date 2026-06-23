@@ -19,6 +19,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "Any2Any（arXiv:2605.23733）把单源人形 WBT 专家经运动学对齐与动力学敏感模块上的 LoRA 后训练迁到新机体，约 1% 全量训练成本将 Gear-SONIC 等骨干迁到 LimX Oli/Luna 等平台并真机验证。"
+institutions: [unitree]
+
 ---
 
 # Any2Any：跨具身高效全身跟踪迁移

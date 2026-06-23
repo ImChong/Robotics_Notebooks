@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/papers/lwd.md
 summary: "LWD 是 AGIBOT 提出的车队级 offline-to-online RL 后训练框架，通过 DIVL + QAM 把部署中的异构经验（成功/失败/人为干预）转化为单一 VLA generalist 策略的持续改进。"
+institutions: [agibot]
+
 ---
 
 # LWD（Learning while Deploying）

@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/papers/locomotion_rl.md
 summary: "ANYmal 是由 ETH Zurich 和 ANYbotics 开发的高性能四足机器人平台。它以 SEA 力控执行器和极高的防护等级著称，是机器人强化学习与 Sim2Real 技术研究的标志性载体。"
+institutions: [eth]
+
 ---
 
 # ANYmal 四足机器人

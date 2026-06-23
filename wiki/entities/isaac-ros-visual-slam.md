@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/repos/isaac_ros_visual_slam.md
 summary: "Isaac ROS Visual SLAM 基于 NVIDIA cuVSLAM，在 Jetson/x86+GPU 上提供加速视觉里程计/SLAM，作为 ROS 2 组件接入 Nav2 感知链。"
+institutions: [nvidia]
+
 ---
 
 # Isaac ROS Visual SLAM

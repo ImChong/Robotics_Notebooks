@@ -27,6 +27,10 @@ sources:
   - ../../sources/sites/lift-humanoid-github-io.md
   - ../../sources/repos/bigai-lift-humanoid.md
 summary: "LIFT（BIGAI）把人形控制的「墙钟大规模仿真预训练」与「样本高效、较安全的适应微调」串成三阶段：JAX 大规模并行 SAC → 离线训练物理知情（拉格朗日 + 残差）世界模型 → 真机/目标环境确定性采集 + 仅在模型 rollout 中保留随机探索；配套开源与项目页给出 MuJoCo Playground / Brax / Booster T1 等实证叙事。"
+institutions:
+  - booster
+  - unitree
+
 ---
 
 # LIFT（人形大规模预训练 + 高效微调）

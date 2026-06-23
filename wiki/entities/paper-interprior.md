@@ -19,6 +19,8 @@ sources:
   - ../../sources/papers/interprior_arxiv_2602_06035.md
   - ../../sources/sites/sirui-xu-interprior-github-io.md
 summary: "InterPrior（arXiv:2602.06035，CVPR 2026 Highlight）提出物理 HOI 的规模化生成式控制：InterMimic+ 全参考 PPO 专家 → 掩码多模态目标条件变分蒸馏 → 带正则与失败态重置的 RL 微调，将模仿覆盖与 RL 鲁棒性结合，报告未见物体/目标下的全身 loco-manipulation 与用户交互控制，并展示 G1 sim-to-sim。"
+institutions: [unitree]
+
 ---
 
 # InterPrior（Scaling Generative Control for Physics-Based Human-Object Interactions）

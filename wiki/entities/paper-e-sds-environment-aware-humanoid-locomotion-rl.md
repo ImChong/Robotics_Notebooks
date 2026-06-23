@@ -26,6 +26,8 @@ sources:
   - ../../sources/papers/sds_quadruped_arxiv_2410_11571.md
   - ../../sources/repos/rpl_cs_ucl_sds.md
 summary: "E-SDS（arXiv:2512.16446，UCL）在 SDS 式 VLM 视频分析之上，把仿真采样的地形统计并入奖励生成，使 PPO 策略显式使用高度图与 LiDAR；Isaac Lab 中 Unitree G1 四类地形实验显示相对手工感知基线显著降速跟误差，且论文称仅该方法完成楼梯下降。"
+institutions: [unitree]
+
 ---
 
 # E-SDS（Environment-aware See it, Do it, Sorted）

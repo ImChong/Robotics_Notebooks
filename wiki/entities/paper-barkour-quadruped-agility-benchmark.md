@@ -30,6 +30,10 @@ sources:
   - ../../sources/repos/google_deepmind_barkour_robot.md
   - ../../sources/repos/mujoco_menagerie_google_barkour_models.md
 summary: "Barkour：受犬敏捷赛启发的四足障碍课与 0–1 敏捷分；专长 PPO + 导航状态机与 Locomotion-Transformer 蒸馏两基线；配套开源机体/固件与 MuJoCo Menagerie（v0/vB）。"
+institutions:
+  - google-deepmind
+  - google
+
 ---
 
 # Barkour（四足敏捷评测基准与开源生态）

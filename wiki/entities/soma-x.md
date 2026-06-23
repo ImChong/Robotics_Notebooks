@@ -15,6 +15,8 @@ sources:
   - ../../sources/repos/nvlabs-soma-x.md
   - ../../sources/sites/soma-x-docs.md
   - ../../sources/papers/soma_arxiv_2603_16858.md
+institutions: [nvidia]
+
 ---
 
 # SOMA-X（统一参数化人体模型）

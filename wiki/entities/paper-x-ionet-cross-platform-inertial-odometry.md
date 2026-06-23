@@ -23,6 +23,8 @@ related:
 sources:
   - ../../sources/papers/x_ionet_arxiv_2511_08277.md
 summary: "X-IONet：单 IMU 跨平台惯性里程计；规则专家路由 + 双阶段 attention 位移网络输出位移/不确定性，EKF 融合；RoNIN/GrandTour/Go2 SOTA。"
+institutions: [unitree]
+
 ---
 
 # X-IONet（跨平台惯性里程计网络）

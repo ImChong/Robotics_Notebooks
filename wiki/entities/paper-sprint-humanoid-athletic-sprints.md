@@ -18,6 +18,8 @@ related:
 sources:
   - ../../sources/papers/sprint_arxiv_2605_28549.md
 summary: "SPRINT（arXiv:2605.28549）用 5 条 LAFAN1 重定向步态训练频率自适应频谱先验，再以冻结先验 + PPO 残差在 Unitree G1 上实现 0–6 m/s 连续变速与零样本真机冲刺 6 m/s。"
+institutions: [unitree]
+
 ---
 
 # SPRINT：人形竞技冲刺的高效频谱先验

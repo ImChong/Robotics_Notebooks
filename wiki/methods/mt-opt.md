@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "MT-Opt 把多任务机器人强化学习扩展到连续动作与共享数据采集栈，用任务判定与跨任务经验共享提升样本效率。"
+institutions: [google]
+
 ---
 
 # MT-Opt

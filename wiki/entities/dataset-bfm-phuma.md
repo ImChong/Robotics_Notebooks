@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/bfm_awesome_dataset_phuma_arxiv_2510_26236.md
   - ../../sources/papers/bfm_awesome_41_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+institutions: [unitree]
+
 ---
 
 # PHUMA（Physically Reliable Humanoid Locomotion Dataset）

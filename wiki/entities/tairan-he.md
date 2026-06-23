@@ -17,6 +17,10 @@ related:
 sources:
   - ../../sources/sites/tairan-he.md
 summary: "何泰然（Tairan He）为 CMU RI 博士、NVIDIA GEAR 实习背景，研究聚焦人形规模化学习与视觉 Sim2Real；代表作含 OmniH2O、HOVER、ASAP、VIRAL / DoorMan 等，主页为论文与项目总索引。"
+institutions:
+  - cmu
+  - nvidia
+
 ---
 
 # Tairan He（何泰然）

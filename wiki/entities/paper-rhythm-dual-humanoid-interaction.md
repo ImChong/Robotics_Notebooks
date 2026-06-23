@@ -20,6 +20,8 @@ sources:
   - ../../sources/papers/rhythm_arxiv_2603_02856.md
   - ../../sources/sites/hoshi-no-ai-rhythm-github-io.md
 summary: "Rhythm（arXiv:2603.02856）提出双 humanoid 物理交互统一框架：IAMR 解耦自运动与交互几何生成可行双人参考并发布 MAGIC 数据集，IGRL 以 MAPPO + 图结构奖励学耦合动力学，相对定位与相位同步在 Unitree G1 真机实现拥抱、共舞等复杂交互的 sim2real 迁移。"
+institutions: [unitree]
+
 ---
 
 # Rhythm（Learning Interactive Whole-Body Control for Dual Humanoids）

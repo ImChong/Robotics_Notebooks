@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/papers/pi07.md
 summary: "π₀.7 是 Physical Intelligence 的通才机器人 VLA：用多模态提示（子任务语言、片段元数据、控制模态、视觉子目标）在训练时对齐异质数据，在推理时 steer 策略，从异质数据中蒸馏出可与 RL 专精模型比肩的开箱操作性能，并报告组合任务与跨本体泛化的实证迹象。"
+institutions: [physical-intelligence]
+
 ---
 
 # π₀.7（Pi-zero 0.7）通才 VLA

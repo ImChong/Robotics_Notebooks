@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "斯坦福等 2020 年推出的 iGibson：在 PyBullet 上融合大规模真实感室内场景与可交互日常物体，支持长视距操作任务，为 VLA 提供更贴近现实的测试环境。"
+institutions: [stanford]
+
 ---
 
 # iGibson

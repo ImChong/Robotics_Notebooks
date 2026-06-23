@@ -17,6 +17,8 @@ sources:
   - ../../sources/sites/gfr-project.md
   - ../../sources/papers/zest.md
 summary: "跑酷/障碍穿越场景下 HIL（仿真角色 tracking+AMP）、GfR/MTRG（G1 参考塑形+goal 部署）与 ZEST（跨形态 tracking 真机）三条路线的对比与选型。"
+institutions: [unitree]
+
 ---
 
 # HIL vs MTRG vs ZEST：跑酷模仿学习路线对比

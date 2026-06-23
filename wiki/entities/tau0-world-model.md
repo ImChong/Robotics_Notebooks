@@ -28,6 +28,8 @@ sources:
   - ../../sources/sites/tau0-wm-agibot-finch.md
   - ../../sources/repos/sii_research_tau_0_wm.md
 summary: "τ₀-WM（5B）：在 Wan-2.2 级视频扩散骨干上联合训练多视角未来 latent 与连续 action chunk，用异构约 2.73 万小时数据与模态掩码分监督；推理时策略采样 + 动作条件仿真评估 + Re-denoising Consistency，形成 propose–evaluate–revise 测试时闭环。"
+institutions: [agibot]
+
 ---
 
 # τ₀-World Model（τ0-WM）

@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/repos/gr00t_wholebodycontrol.md
 summary: "GR00T-WholeBodyControl 是 NVlabs 的人形全身控制单仓：托管解耦 WBC（GR00T N1.5/N1.6）、GEAR-SONIC（SONIC 训练/部署/C++ 推理/VR 采集）与 MotionBricks 预览子项目，并提供 Isaac Lab 对齐文档与 VLA 数据链教程。"
+institutions: [nvidia]
+
 ---
 
 # GR00T-WholeBodyControl（人形全身控制统一平台）

@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/repos/robot_lab.md
 summary: "轮足四足机器人在四条腿末端集成驱动轮，平地偏滚动效率，崎岖地形仍依赖足式步态；典型如 Unitree Go2W / B2W，仿真框架 robot_lab 将其与纯四足、人形并列注册。"
+institutions: [unitree]
+
 ---
 
 # 轮足四足机器人（四轮足 / Wheel-Legged Quadruped）

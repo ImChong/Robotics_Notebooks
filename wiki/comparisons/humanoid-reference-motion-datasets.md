@@ -18,6 +18,8 @@ sources:
   - ../../sources/repos/omomo_release.md
   - ../../sources/repos/phuma.md
   - ../../sources/sites/humanoideveryday.md
+institutions: [unitree]
+
 ---
 
 # 人形参考运动与操作数据集选型

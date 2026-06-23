@@ -12,6 +12,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree G1 是一款由宇树科技推出的入门级教育科研用人形机器人，以其极高的性价比、高集成度以及对仿真学习框架的良好支持而备受关注。"
+institutions: [unitree]
+
 ---
 
 # Unitree G1 (人形机器人)

@@ -27,6 +27,10 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "DoorMan（arXiv:2512.01061，CVPR 2026）以人形纯 RGB 开门为 loco-manipulation 基准：Isaac Lab 中特权教师 PPO 配合分阶段重置探索，经 DAgger 蒸馏到视觉学生，再用 GRPO 微调缓解部分可观测性；大规模物理与 PBR/光照随机化支撑真机零样本泛化，并在同 WBC 栈上报告相对人类遥操作的成功率与耗时优势。"
+institutions:
+  - unitree
+  - nvidia
+
 ---
 
 # DoorMan（Opening the Sim-to-Real Door for Humanoid Pixel-to-Action Policy Transfer）

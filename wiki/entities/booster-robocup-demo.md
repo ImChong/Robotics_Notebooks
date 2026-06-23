@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/repos/booster-robocup-demo.md
 summary: "Booster Robotics RoboCup Demo 是专为 Booster 系列人形机器人设计的足球比赛自主决策框架，集成了 YOLOv8 感知与基于强化学习的视觉踢球算法。"
+institutions: [booster]
+
 ---
 
 # Booster Robotics RoboCup Demo

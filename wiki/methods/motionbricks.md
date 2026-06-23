@@ -17,6 +17,8 @@ sources:
   - ../../sources/papers/motionbricks.md
   - ../../sources/repos/gr00t_wholebodycontrol.md
 summary: "MotionBricks 是 NVIDIA 开发的高性能运动生成框架，通过模块化潜空间底座与智能基元（Smart Primitives）实现了超大规模技能库的实时、高精度合成，是 GR00T 全身控制栈的关键层。"
+institutions: [nvidia]
+
 ---
 
 # MotionBricks: 模块化生成式运动合成框架

@@ -11,6 +11,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_unitree-h1-whitepaper.md
 summary: "Unitree H1 是全球首款能够完成原地后空翻的全尺寸电驱动人形机器人，凭借自研的高扭矩密度电机和强大的计算能力，成为了具身智能科研领域的\"国民级\"硬件平台。"
+institutions: [unitree]
+
 ---
 
 # Unitree H1 Humanoid Robot Whitepaper & Specifications

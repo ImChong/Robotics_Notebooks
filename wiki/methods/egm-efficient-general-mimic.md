@@ -16,6 +16,8 @@ sources:
   - ../../sources/papers/egm_arxiv_2512_19043.md
   - ../../sources/blogs/egm_themoonlight_literature_review_2512_19043.md
 summary: "EGM（Efficient General Mimic）：以 Bin 级跨动作课程自适应采样、上下身分组的复合解耦 MoE（CDMoE）与三阶段教师–学生训练，在少量高质量重定向动捕上学习可泛化的人形高动态全身跟踪策略。"
+institutions: [unitree]
+
 ---
 
 # EGM（Efficient General Mimic，高效通用模仿跟踪）

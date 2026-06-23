@@ -18,6 +18,10 @@ related:
 sources:
   - ../../sources/papers/agi_to_asi_arxiv_2606_12683.md
 summary: "DeepMind 技术报告 From AGI to ASI（arXiv:2606.12683）：刻画后 AGI 时代四条并行能力路径（scaling、范式演进、递归自改进、多智能体集体）与六类瓶颈；对机器人读者，价值在于把 VLA/世界模型/仿真数据飞轮与宏观算力、数据墙、抽象壁垒和具身概念发现放进同一预测框架。"
+institutions:
+  - google-deepmind
+  - google
+
 ---
 
 # From AGI to ASI（DeepMind 技术报告）

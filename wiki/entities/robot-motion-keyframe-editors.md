@@ -15,6 +15,8 @@ sources:
   - ../../sources/repos/stanford-tml-robot-keyframe-kit.md
   - ../../sources/repos/project-instinct-robot-motion-editor.md
 summary: "三条互补的「机器人参考运动 / 关键帧」编辑链路：浏览器内 URDF+CSV（cyoahs）、MuJoCo MJCF+物理+Viser（Stanford robot_keyframe_kit）、Flask+URDF+NPZ（Project Instinct），分别服务日志后处理、仿真内关键帧编排与学习数据曲线修整。"
+institutions: [stanford]
+
 ---
 
 # 机器人关键帧与运动编辑工具（选型入口）

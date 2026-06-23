@@ -14,6 +14,8 @@ sources:
   - ../../sources/repos/dm_control.md
   - ../../sources/papers/dm_control_suite.md
 summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Control Suite 连续控制基准为核心，并提供查看器、MJCF 组合与 locomotion 等扩展，是学术 RL 与仿真实验的常用入口之一。"
+institutions: [google-deepmind]
+
 ---
 
 # dm_control（DeepMind Control Suite 与 MuJoCo Python 栈）

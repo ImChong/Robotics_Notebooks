@@ -35,6 +35,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "MotionWAM（arXiv:2606.09215）：实时人形 loco-manipulation 的 World Action Model——Video DiT 单次前向隐状态条件 Motion DiT，在统一 SONIC motion token 空间联合预测行走、躯干、身高、足端交互与双手操作；三阶段 egocentric 视频→跨具身动作→全身遥操作微调；G1 九项真机任务平均成功率 76.1%，较同演示微调 GR00T-N1.7 高约 32 个百分点。"
+institutions: [unitree]
+
 ---
 
 # MotionWAM（实时人形 Loco-Manipulation · World Action Model）

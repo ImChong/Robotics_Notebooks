@@ -24,6 +24,8 @@ sources:
   - ../../sources/papers/mighty_arxiv_2511_10822.md
   - ../../sources/repos/mighty.md
 summary: "MIGHTY（arXiv:2511.10822 · RA-L 2026）：MIT ACL 的五次 Hermite 样条软约束 UAV 规划器——单次 NLP 联合优化 knot 位姿/速度/加速度与段时长；相对 EGO-Planner/MINCO 仿真计算 −9.3%、飞行 −13.1%；真机 clutter 最高 6.7 m/s；ROS 2 Humble 开源。"
+institutions: [mit]
+
 ---
 
 # MIGHTY（Hermite 样条高效 UAV 轨迹规划）

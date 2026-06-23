@@ -18,6 +18,8 @@ sources:
   - ../../sources/papers/ume_exo_arxiv_2606_14218.md
   - ../../sources/sites/ume-exo-project.md
 summary: "UME（Universal Manipulation Exoskeleton，arXiv:2606.14218）是 Ant Group / Stanford 提出的低成本上肢外骨骼遥操作平台：实时透明触觉力矩反馈、全身臂形与关节力矩同步记录、IMU 驱动移动底座与通用 3-1-3 子链重定向；ACT 融合力矩模态学习主动柔顺双臂全身策略，在力主导与极窄空间任务上显著优于无力矩与 UMI 式末端示教。"
+institutions: [stanford]
+
 ---
 
 # UME-EXO（Universal Manipulation Exoskeleton）

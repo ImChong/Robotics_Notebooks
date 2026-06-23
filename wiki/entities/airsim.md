@@ -14,6 +14,8 @@ related:
 sources:
   - ../../sources/repos/airsim.md
 summary: "Microsoft AirSim：基于 Unreal/Unity 的无人机与自动驾驶视觉仿真，提供 RGB/深度/分割与 PX4 耦合，常用于 SLAM、避障与视觉 Sim2Real（项目已进入维护模式）。"
+institutions: [microsoft]
+
 ---
 
 # AirSim

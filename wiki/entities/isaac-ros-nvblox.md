@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/repos/isaac_ros_nvblox.md
 summary: "Isaac ROS Nvblox 用 GPU 维护 TSDF/ESDF 体素地图，为 Nav2 提供 3D 障碍与局部代价，支持动态场景重建。"
+institutions: [nvidia]
+
 ---
 
 # Isaac ROS Nvblox

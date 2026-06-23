@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "Learning from Play（Play-LMP）从非任务化的遥操作『玩耍』轨迹中学习潜在规划结构，再用目标条件策略完成指定任务。"
+institutions: [google]
+
 ---
 
 # Learning from Play（Play-LMP）

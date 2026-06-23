@@ -22,6 +22,8 @@ related:
 sources:
   - ../../sources/repos/nvlabs-curobo.md
 summary: "cuRobo 是 NVIDIA 开源的 GPU 并行机器人运动生成库：在统一碰撞与运动学内核上叠加无碰撞 IK、几何规划、多样本并行轨迹优化与 MPPI；cuRoboV2 在同一代码基上引入 B 样条+力矩约束、稠密 ESDF 感知与面向高自由度整机的可扩展动力学模块，把叙事从典型操作臂扩展到双臂与人形。"
+institutions: [nvidia]
+
 ---
 
 # cuRobo

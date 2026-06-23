@@ -19,6 +19,8 @@ related:
 sources:
   - ../../sources/sites/nvidia-research-gear-lab.md
 summary: "NVIDIA GEAR（Generalist Embodied Agent Research）由 Jim Fan 与 Yuke Zhu 领导，公开使命是构建虚拟与物理世界的具身智能体基础模型；研究议程覆盖多模态基础模型、通用人形机器人、Foundation Agents 与仿真合成数据，并发布 GR00T、SONIC、EgoScale、ENPIRE 等代表性工作。"
+institutions: [nvidia]
+
 ---
 
 # NVIDIA GEAR Lab（Generalist Embodied Agent Research）

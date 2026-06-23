@@ -21,6 +21,8 @@ sources:
   - ../../sources/sites/newton-physics-docs-overview.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
 summary: "Newton 是 Linux Foundation 托管的 GPU 加速、可扩展、可微物理引擎：基于 NVIDIA Warp，以 MuJoCo Warp 为主要后端，支持 URDF/MJCF/USD 与多求解器，并与 Isaac Lab、MuJoCo Playground 等机器人学习栈对接。"
+institutions: [nvidia]
+
 ---
 
 # Newton Physics（物理引擎）

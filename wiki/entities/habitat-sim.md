@@ -13,6 +13,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "Meta AI 2019 年推出的高速具身 AI 仿真平台：单 GPU 数千至上万 FPS 渲染，使大规模真实扫描场景上的端到端 RL 训练可行；Habitat 2.0/3.0 扩展可交互物体与人类化身。"
+institutions: [meta]
+
 ---
 
 # Habitat-Sim

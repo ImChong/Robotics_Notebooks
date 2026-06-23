@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "DIAL 用微调后的视觉语言模型为大规模无详细语言标注的演示轨迹自动生成多样指令，再训练语言条件 BC，扩展语义覆盖与泛化指令。"
+institutions: [google]
+
 ---
 
 # DIAL（指令增强）

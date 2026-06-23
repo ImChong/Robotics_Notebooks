@@ -16,6 +16,8 @@ sources:
   - ../../sources/sites/host-humanoid-standingup-project.md
   - ../../sources/repos/host_internrobotics.md
 summary: "HoST（arXiv:2502.08378，RSS 2025 系统论文 finalist）用多 critic PPO、四地形课程与竖直拉力探索，从零学习 Unitree G1 跨地面/平台/墙/坡等多姿态起身，并以 L2C2 与动作 rescaler 约束实现真机直接部署。"
+institutions: [unitree]
+
 ---
 
 # HoST：跨多样姿态的人形起身控制

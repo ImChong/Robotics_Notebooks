@@ -39,6 +39,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "LadderMan（arXiv:2606.05873，Amazon FAR）两阶段：hybrid motion tracking 从单参考学多几何攀爬专家，hybrid DAgger+RL 蒸馏为深度统一策略；VFM+RFM 零样本 sim-to-real；梯上双智能体遥操作相对 TWIST2 更稳；G1 真机多样梯子双向攀爬约 3.4 s/踏棍。"
+institutions: [unitree]
+
 ---
 
 # LadderMan：人形感知梯子攀爬与梯上操作

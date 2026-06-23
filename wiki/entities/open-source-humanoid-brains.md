@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "主流开源人形机器人“大脑”（主控电脑）选型：对比了 NVIDIA Jetson Orin、高性能 X86 工控机及国产边缘算力平台的性能边界与适用场景。"
+institutions: [nvidia]
+
 ---
 
 # 开源人形机器人“大脑” (主控电脑) 选型

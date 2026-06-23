@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/papers/humanoid_pnb_proprioceptive-actuator-design-in-the-mit-cheeta.md
 summary: "Proprioceptive actuator design in the MIT Cheetah：列入 Paper Notebooks PROGRESS.md 待深读清单；深读笔记完成后升格为完整索引实体。"
+institutions: [mit]
+
 ---
 
 # Proprioceptive actuator design in the MIT Cheetah

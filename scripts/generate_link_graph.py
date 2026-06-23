@@ -40,7 +40,7 @@ import re
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from export_minimal import extract_summary
 from utils.wiki_cache import wiki_stem_to_path
@@ -85,6 +85,29 @@ INSTITUTION_REGISTRY: dict[str, dict[str, Any]] = _load_institution_registry(
     INSTITUTIONS_REGISTRY_PATH
 )
 INSTITUTION_ALIAS_MAP: dict[str, str] = _build_institution_alias_map(INSTITUTION_REGISTRY)
+
+# entity 页 URL 扫描（仅 sources + summary，避免正文外链误命中）
+INSTITUTION_URL_PATTERNS: dict[str, list[str]] = {
+    "nvidia": [
+        r"research\.nvidia\.com",
+        r"github\.com/nv-tlabs/",
+        r"github\.com/NVIDIA/",
+    ],
+    "google-deepmind": [r"deepmind\.google", r"deepmind\.com", r"github\.com/google-deepmind/"],
+    "google": [r"github\.com/google-research/", r"ai\.googleblog\.com"],
+    "meta": [r"ai\.meta\.com", r"github\.com/facebookresearch/", r"github\.com/fairinternal/"],
+    "microsoft": [r"microsoft\.com/research", r"github\.com/microsoft/"],
+    "berkeley": [r"berkeley\.edu", r"github\.com/berkeley-humanoid"],
+    "stanford": [r"stanford\.edu"],
+    "mit": [r"\.mit\.edu"],
+    "cmu": [r"\.cmu\.edu"],
+    "eth": [r"ethz\.ch", r"leggedrobotics\.com"],
+    "tsinghua": [r"tsinghua\.edu\.cn"],
+    "pku": [r"pku\.edu\.cn"],
+    "unitree": [r"unitree\.com", r"github\.com/unitreerobotics"],
+    "agibot": [r"agibot\.com", r"zhiyuan-robot\.com"],
+    "physical-intelligence": [r"physicalintelligence\.company"],
+}
 
 # 主社区检测（Louvain）合并后的目标社区数上限（与 MAX_COMMUNITIES 命名席位对齐）。
 PRIMARY_COMMUNITY_CAP = 16
@@ -482,11 +505,85 @@ def parse_frontmatter_list(content: str, key: str) -> list[str]:
     return []
 
 
-def derive_node_institutions(content: str, alias_map: dict[str, str] | None = None) -> list[str]:
+def _institution_tokens_from_pathish(text: str) -> list[str]:
+    return [token for token in re.split(r"[-_/.\s]+", text.lower()) if token]
+
+
+def _expand_frontmatter_institution_tokens(raw_tokens: list[str]) -> list[str]:
+    expanded: list[str] = []
+    for token in raw_tokens:
+        lowered = str(token).strip().lower()
+        if not lowered:
+            continue
+        expanded.append(lowered)
+        expanded.extend(_institution_tokens_from_pathish(lowered))
+    return expanded
+
+
+def _append_institution_token_matches(
+    tokens: Iterable[str],
+    alias_map: dict[str, str],
+    seen: set[str],
+    out: list[str],
+) -> None:
+    for token in tokens:
+        canonical = alias_map.get(token)
+        if canonical and canonical not in seen:
+            seen.add(canonical)
+            out.append(canonical)
+
+
+def _derive_entity_institution_signals(
+    page_id: str,
+    content: str,
+    alias_map: dict[str, str],
+) -> list[str]:
+    """entity 页从路径/标题、sources 路径与主链 URL 派生机构（精确 token，避免子串误命中）。"""
+    if not page_id.startswith("wiki/entities/"):
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    path = Path(page_id)
+    title = extract_title(content) or path.stem
+    for text in (path.stem, title):
+        _append_institution_token_matches(
+            _institution_tokens_from_pathish(text),
+            alias_map,
+            seen,
+            out,
+        )
+    for src in parse_frontmatter_list(content, "sources"):
+        _append_institution_token_matches(
+            _institution_tokens_from_pathish(Path(src).stem),
+            alias_map,
+            seen,
+            out,
+        )
+    scan_parts = parse_frontmatter_list(content, "sources")
+    summary = extract_summary(content)
+    if summary:
+        scan_parts.append(summary)
+    scan_text = "\n".join(scan_parts)
+    for inst_id, patterns in INSTITUTION_URL_PATTERNS.items():
+        for pattern in patterns:
+            if re.search(pattern, scan_text, re.IGNORECASE):
+                if inst_id not in seen:
+                    seen.add(inst_id)
+                    out.append(inst_id)
+                break
+    return out
+
+
+def derive_node_institutions(
+    content: str,
+    alias_map: dict[str, str] | None = None,
+    page_id: str | None = None,
+) -> list[str]:
     """节点「所属机构」（canonical id，去重保序，可多归属）。
 
-    frontmatter 显式 `institutions:` 非空时以其为准（覆盖）；否则从 `tags:` 派生。
-    两种来源都经 alias_map 归一到 canonical id，非机构 token 丢弃。
+    frontmatter 显式 `institutions:` 非空时以其为准（覆盖）；否则从 `tags:` 派生，
+    并在 entity 页叠加路径/标题、sources 路径与主链 URL 信号。
+    tag token 支持连字符拆分（如 unitree-go2 → unitree）。
     """
     if alias_map is None:
         alias_map = INSTITUTION_ALIAS_MAP
@@ -494,11 +591,19 @@ def derive_node_institutions(content: str, alias_map: dict[str, str] | None = No
     source = explicit if explicit else parse_frontmatter_list(content, "tags")
     out: list[str] = []
     seen: set[str] = set()
-    for token in source:
-        canonical = alias_map.get(str(token).strip().lower())
-        if canonical and canonical not in seen:
-            seen.add(canonical)
-            out.append(canonical)
+    _append_institution_token_matches(
+        _expand_frontmatter_institution_tokens(source),
+        alias_map,
+        seen,
+        out,
+    )
+    if explicit:
+        return out
+    if page_id:
+        for inst_id in _derive_entity_institution_signals(page_id, content, alias_map):
+            if inst_id not in seen:
+                seen.add(inst_id)
+                out.append(inst_id)
     return out
 
 
@@ -960,7 +1065,7 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             "summary": extract_summary(content),
             "_recency": wiki_recency_date(content, page).isoformat(),
         }
-        institutions = derive_node_institutions(content)
+        institutions = derive_node_institutions(content, page_id=page_id)
         if institutions:
             node["institutions"] = institutions
         nodes.append(node)

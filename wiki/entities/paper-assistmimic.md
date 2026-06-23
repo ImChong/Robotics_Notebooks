@@ -20,6 +20,8 @@ sources:
   - ../../sources/papers/assistmimic_arxiv_2603_11346.md
   - ../../sources/sites/yutoshibata07-assistmimic-github-io.md
 summary: "AssistMimic（arXiv:2603.11346，CVPR 2026）将紧密接触的双人 assistive 动作模仿表述为 MARL：联合训练 supporter/recipient 的 PHC 式 tracking 策略，以单人 prior 零填充初始化、recipient-adaptive 动态参考重定向与接触促进奖励解决高接触探索，在 Inter-X / HHI-Assist 上首次稳定跟踪力交换参考并泛化至未见动力学与扩散生成交互。"
+institutions: [cmu]
+
 ---
 
 # AssistMimic（Learning to Assist: Physics-Grounded Human-Human Control）

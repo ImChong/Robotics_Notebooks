@@ -10,6 +10,8 @@ related:
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue02_10_robots.md
 summary: "TidyBot2：面向家庭物品整理的移动操作研究平台；项目站、硬件文档与论文 PDF 同源发布，代码通常挂靠在主导研究者 GitHub。"
+institutions: [princeton]
+
 ---
 
 # TidyBot2

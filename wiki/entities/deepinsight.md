@@ -15,6 +15,8 @@ related:
 sources:
   - ../../sources/papers/deepinsight_arxiv_2606_17574.md
 summary: "DeepInsight 是 XPENG Robotics 的 Physical AI 全栈统一评测基础设施：单一 runtime 贯通 System 2 基础模型、System 1 视运动策略与 System 0 全身控制，以 task/resource/result 三抽象与统一 trace 实现跨层回归定位。"
+institutions: [xpeng]
+
 ---
 
 # DeepInsight（XPENG Robotics 全栈评测基础设施）
