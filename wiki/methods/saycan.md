@@ -2,10 +2,11 @@
 type: method
 tags: [llm, robotics, affordance, planning, language]
 status: complete
-updated: 2026-05-10
+updated: 2026-06-23
 related:
   - ./vla.md
   - ../tasks/manipulation.md
+  - ../entities/paper-vesta-generalist-embodied-reasoning.md
 sources:
   - ../../sources/blogs/ted_xiao_embodied_three_eras_primary_refs.md
 summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函数估计在环境中的可行性，将常识推理与机器人局部可达性结合。"
@@ -28,6 +29,7 @@ summary: "SayCan 用语言模型生成高层子任务候选，用语义价值函
 
 - **分层接口**：LLM 产出候选子技能序列；学得的价值或成功率估计裁剪「物理上可行」的一步（affordance grounding）。
 - **与端到端 VLA 对照**：SayCan 仍是「规划器 + 底层策略」叙事；端到端策略见 [VLA](./vla.md)、[Robotics Transformer](./robotics-transformer-rt-series.md)；抽象层见 [Foundation Policy](../concepts/foundation-policy.md)。
+- **现代 VLM planner 延伸**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 将 SayCan 式 **文本子任务规划** 扩展到 **VLN + 空间 grounding + memory-conditioned CoT**，仍通过 **Gr00t-N1.6** 等 actor 执行（arXiv:2606.20905）。
 
 ## 关联页面
 

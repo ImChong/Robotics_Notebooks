@@ -15,6 +15,7 @@ related:
   - ../methods/vla.md
   - ../concepts/foundation-policy.md
   - ../queries/real-robot-policy-autoresearch-harness.md
+  - ./paper-vesta-generalist-embodied-reasoning.md
 sources:
   - ../../sources/sites/nvidia-research-gear-lab.md
 summary: "NVIDIA GEAR（Generalist Embodied Agent Research）由 Jim Fan 与 Yuke Zhu 领导，公开使命是构建虚拟与物理世界的具身智能体基础模型；研究议程覆盖多模态基础模型、通用人形机器人、Foundation Agents 与仿真合成数据，并发布 GR00T、SONIC、EgoScale、ENPIRE 等代表性工作。"
@@ -90,6 +91,7 @@ flowchart TB
 |------|------|----------|
 | **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
 | **ENPIRE** | 真机 coding-agent 策略自改进 harness | [enpire.md](../methods/enpire.md) |
+| **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |
 | **Real-robot autoresearch** | ENPIRE 与机队 scaling 讨论 | [real-robot-policy-autoresearch-harness.md](../queries/real-robot-policy-autoresearch-harness.md) |
 
