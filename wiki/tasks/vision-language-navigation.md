@@ -2,7 +2,7 @@
 type: task
 tags: [vln, navigation, embodied-ai, vision-language, matterport]
 summary: "视觉–语言导航（VLN）要求智能体在三维环境中依据自然语言指令执行一系列离散或连续动作到达目标，是连接语言理解与空间运动规划的基准任务。"
-updated: 2026-06-22
+updated: 2026-06-23
 status: complete
 related:
   - ../overview/vln-10-papers-technology-map.md
@@ -14,6 +14,7 @@ related:
   - ../concepts/world-action-models.md
   - ../methods/vla.md
   - ../entities/paper-homeworld-whole-home-scene-generation.md
+  - ../entities/paper-vesta-generalist-embodied-reasoning.md
   - locomotion.md
 sources:
   - ../../sources/blogs/wechat_shenlan_vln_repro_four_paradigms_2026.md
@@ -41,6 +42,7 @@ sources:
 - **与纯导航的区别**：传统导航多依赖地图与坐标目标；VLN 强调 **语义描述**（地标、相对运动），更贴近人类口头指路。
 - **与 VLA 的衔接**：高层策略可将 VLN 视作「语言条件下的路径生成」子问题；仿真基准（如 Matterport3D 上的 **R2R / RxR**）与真实视频蒸馏数据（如室内 tour）常混合使用以缓解 **sim–real** 与 **轨迹分布** 差异。通才 VLA 如 [Qwen-VLA](../entities/qwen-vla.md) 在官方 README 中把 **操作与 VLN 基准** 放进 **同一 checkpoint** 联合评测，可作为「导航是否应并入统一 VLA」的工程参照。
 - **Agentic 导航基座**：[Qwen-RobotNav](../entities/qwen-robot-nav.md) 以 **可控观测协议 + 任务 mode** 统一 VLN / ObjNav / 跟踪 / NAVSIM 驾驶，并作为 **Qwen3.7-Plus** 等 planner 的导航原语；与 [Qwen-Robot Suite](../entities/qwen-robot-suite.md) 长时程 **EQA / 开放世界寻物** demo 一并阅读。
+- **通才 planner 统一导航 + 推理**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 在同一 **Qwen3-VL-8B** checkpoint 上同时 SFT **VLN-CE（R2R/RxR/ScaleVLN）** 与具身 cognition/localization；R2R-CE **SR 55.5%** 与 InternVLA-N1 specialist 持平，而 **Nav-only finetune 的 generalist 竞品在 R2R 上 SR=0**（灾难性遗忘）——说明 VLN 是否应并入 **更大 planner mix** 时需评估 **域外遗忘** 而不仅是导航榜分数。
 
 ## 核心要素
 
@@ -73,6 +75,7 @@ sources:
 - **空间推理**：[3D 空间 VQA](../concepts/3d-spatial-vqa.md) 侧重问答；VLN 侧重 **时序决策**，二者常共享场景表示与 VLM 骨干。[ESI-Bench](../entities/esi-bench.md) 则在 OmniGibson 上评测 **为看见而行动** 的细粒度空间 QA，与 VLN 的 **轨迹到达** 目标互补。
 - **运动基础**：[Locomotion](locomotion.md) 提供低层移动能力；VLN 更多占据 **任务规划与语义接地** 层，可与 VLA 分层结合。
 - **模型**：[VLA](../methods/vla.md) 可作为统一骨架，在导航子任务上接入离散动作头或目标点输出。
+- **通才 embodied planner**：[Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) — 导航与具身推理、长时程子任务规划 **单模型 SFT**；R2R-CE 与 offline planning / 真机 memory 任务一并报告（arXiv:2606.20905）。
 
 ## 参考来源
 

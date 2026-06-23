@@ -3,7 +3,7 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-05-22
+updated: 2026-06-23
 summary: 在灵巧操作任务中，如何在 VLA、Video-Action Model、解耦动力学 VLA、世界模型与开源策略家族之间选型与组合。
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
@@ -38,6 +38,7 @@ sources:
 | **GFDM+GIDM 解耦** | DeFI | 人视频无动作标签仍可预训练 | 多阶段预训练与适配器 |
 | **像素世界模型** | DWM | 在模型内 planning 交互 | 仿真-真机 gap |
 | **语言接触全身** | CLAW | 语言指令与接触模态联合 | 数据与 sim 对齐 |
+| **通才 VLM planner + actor VLA** | Vesta + Gr00t-N1.6 | 单 checkpoint 覆盖 VLN/空间推理/子任务规划；actor 执行文本子任务 | 两级延迟、actor 错误仍主导失败 |
 
 ---
 
@@ -50,6 +51,8 @@ sources:
 ### 长程、多步、语言条件
 
 [mimic-video](../methods/mimic-video.md) 的 video-action 路线适合需要**潜空间长程一致性**的任务；[DeFI](../methods/defi-decoupled-dynamics-vla.md) 强调 CALVIN / SimplerEnv 类长程指标。
+
+**Planner + actor 分层（非端到端 VLA）：** [Vesta](../entities/paper-vesta-generalist-embodied-reasoning.md) 用 **image+text memory** 与 **CoT 子任务** 作 System-2，配对 **Gr00t-N1.6** 等 actor；真机记忆型任务 **+38.3%**（arXiv:2606.20905）。与 [SayCan](../methods/saycan.md) 同族但 **统一多认知轴 SFT**。
 
 ### 人视频预训练 → 机器人微调
 

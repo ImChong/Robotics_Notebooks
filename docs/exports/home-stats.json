@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-23",
-  "node_count": 1317,
-  "edge_count": 8745,
+  "node_count": 1318,
+  "edge_count": 8763,
   "coverage": {
-    "covered": 1286,
-    "total": 1315,
+    "covered": 1287,
+    "total": 1316,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-vesta-generalist-embodied-reasoning.md",
+      "detail_id": "entity-paper-vesta-generalist-embodied-reasoning",
+      "label": "Vesta（A Generalist Embodied Reasoning Model）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-motion-cerebellum-stubborn.md",
       "detail_id": "entity-paper-motion-cerebellum-stubborn",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/motionbricks.md",
-      "detail_id": "wiki-methods-motionbricks",
-      "label": "MotionBricks: 模块化生成式运动合成框架",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-motion-cerebellum-stubborn.md",
-    "detail_id": "entity-paper-motion-cerebellum-stubborn",
-    "label": "Stubborn",
+    "path": "wiki/entities/paper-vesta-generalist-embodied-reasoning.md",
+    "detail_id": "entity-paper-vesta-generalist-embodied-reasoning",
+    "label": "Vesta（A Generalist Embodied Reasoning Model）",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"
