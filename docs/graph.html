@@ -1539,6 +1539,25 @@
         <span id="filter-panel-title">🔍 图谱筛选</span>
         <button id="filter-close" class="filter-close" aria-label="关闭面板">✕</button>
       </div>
+      <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
+        <button id="filter-mode-type" class="chip" type="button">按类型</button>
+        <button id="filter-mode-community" class="chip active" type="button">按社区</button>
+        <button id="filter-mode-health" class="chip" type="button">按健康度</button>
+      </div>
+      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
+      <div id="filter-degree-section" class="filter-degree-section">
+        <div class="filter-section-title">连接数 Top N</div>
+        <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
+        <div class="slider-row">
+          <div class="slider-label">
+            <span>显示节点数</span>
+            <span class="slider-val" id="val-degree-top">全部</span>
+          </div>
+          <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
+                 aria-label="按连接数显示前 N 个节点" />
+        </div>
+      </div>
+      <div id="filter-panel-body" class="filter-body"></div>
       <details class="filter-topic-section" id="filter-topic-section">
         <summary class="filter-topic-summary">
           <span class="filter-topic-summary-label">专题视图</span>
@@ -1570,25 +1589,6 @@
         </summary>
         <div class="filter-institution-list" id="filter-institution-list"></div>
       </details>
-      <div class="filter-mode-tabs" id="filter-mode-tabs" aria-label="筛选维度">
-        <button id="filter-mode-type" class="chip" type="button">按类型</button>
-        <button id="filter-mode-community" class="chip active" type="button">按社区</button>
-        <button id="filter-mode-health" class="chip" type="button">按健康度</button>
-      </div>
-      <div class="filter-subtitle" id="filter-subtitle">当前按社区着色与筛选</div>
-      <div id="filter-degree-section" class="filter-degree-section">
-        <div class="filter-section-title">连接数 Top N</div>
-        <p class="filter-degree-hint">按节点连接数（度）保留前 N 个；滑到最右为全部节点。</p>
-        <div class="slider-row">
-          <div class="slider-label">
-            <span>显示节点数</span>
-            <span class="slider-val" id="val-degree-top">全部</span>
-          </div>
-          <input type="range" id="sl-degree-top" min="10" max="10" value="10" step="1"
-                 aria-label="按连接数显示前 N 个节点" />
-        </div>
-      </div>
-      <div id="filter-panel-body" class="filter-body"></div>
       <div class="filter-footer">
         <button id="filter-clear" class="filter-clear">清除全部</button>
       </div>
