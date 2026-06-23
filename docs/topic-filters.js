@@ -148,7 +148,8 @@
     'data-pipeline': {
       segments: new Set([
         'dataset', 'datasets', 'amass', 'lafan1', 'lafan', 'omomo',
-        'phuma', 'everyday', 'retargeting'
+        'phuma', 'everyday', 'retargeting', 'retarget', 'retargeter',
+        'omniretarget', 'mocap', 'freemocap'
       ]),
       ids: mergeIds('data-pipeline', new Set([
         'wiki/queries/humanoid-training-data-pipeline.md',

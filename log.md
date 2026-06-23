@@ -2246,3 +2246,9 @@
 - `wiki/comparisons/humanoid-reference-motion-datasets.md` 新增「四段衔接」表与因果判据段，把五集数据落到①数据来源→②质量评估→③重定向→④策略输入四段，并显式回链 `motion-data-quality.md` 与 `humanoid-training-data-pipeline.md`。
 - `wiki/concepts/motion-retargeting.md` 新增「上游衔接」表，把重定向定位为链路第③段，明示其触发与补层由 motion-data-quality 四轴（形态差距/接触/物理）决定，与 P1 新页形成双向回链、消除孤儿。
 - `make lint` 0 errors（仅 3 条既有信息型预警）；勾选 v25 P1「数据层专题交叉补强」条目。
+
+## [2026-06-23] structural | checklist-v25 P3 详情页「训练数据管线」专题徽标联动 —— 修正分词粒度漏匹配
+
+- 详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges`）本就以 `docs/topic-filters.js` 为单一事实源、`topicsForNode` 数据驱动：命中 `data-pipeline` 即渲染「📦 训练数据」徽标并跳 `graph.html?topic=data-pipeline`，空态降级隐藏整行——P3 第①项把 `data-pipeline` 写入单一事实源后，详情页徽标已自动联动，无需二次实现。
+- 本次补强 `data-pipeline.segments` +5（`retarget`/`retargeter`/`omniretarget`/`mocap`/`freemocap`），修正纯分词粒度导致的漏匹配（`mocap-retarget`/`soma-retargeter`/`paper-...-omniretarget`/`freemocap` 等重定向与动捕实体此前只命中 `motion-retargeting`）；node 逐页校验后数据集 + 重定向 + mocap 实体 46/46 候选页全部稳定命中专题（全库 47 节点）。
+- `make lint` 0 errors（另含 4 条信息型预警，不阻塞 CI）；勾选 v25 P3「详情页『同专题相关页』提示」条目。截图待带 Chrome 的环境补归档。
