@@ -374,7 +374,8 @@ floating base 系统还有一个麻烦点：
 - Featherstone, *Rigid Body Dynamics Algorithms*
 - [Modern Robotics 教材](../entities/modern-robotics-book.md)
 - [Centroidal Dynamics](./centroidal-dynamics.md)
-- [TSID](./tsid.md)
+- [Articulated Body Algorithms](../formalizations/articulated-body-algorithms.md) — ABA / RNEA 与 $M(q)$、$g(q)$ 计算
+- [URDF Robot Description](./urdf-robot-description.md)
 - [State Estimation](./state-estimation.md)
 
 ## 一句话记忆

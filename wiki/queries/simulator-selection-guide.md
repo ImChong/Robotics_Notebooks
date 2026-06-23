@@ -36,6 +36,7 @@ related:
 |------|---------|
 | 学术研究 / 精确物理 / 算法验证 | **MuJoCo** |
 | 大规模并行训练 / 产业化部署 | **Isaac Lab** |
+| 四足课程 / MuJoCo+UE 联合 / 智身 SDK 闭环 | **[MATRiX](../entities/matrix-simulation-platform.md)** |
 | 极速原型验证 / 新兴框架尝鲜 | **Genesis** |
 | 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
