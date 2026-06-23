@@ -1709,11 +1709,11 @@ body.sponsor-dialog-open {
   color: var(--text);
   outline: none;
 }
-/* 社区筛选下拉占搜索栏约 1/4，过长文案省略 */
+/* 社区筛选下拉约占整条搜索栏宽度的 1/3，过长文案省略 */
 #wikiCommunityFilter {
-  flex: 0 1 26%;
-  width: 26%;
-  max-width: 26%;
+  flex: 0 0 33.333%;
+  width: 33.333%;
+  max-width: 33.333%;
   min-width: 0;
   box-sizing: border-box;
   border: none;
