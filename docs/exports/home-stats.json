@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-23",
   "node_count": 1306,
-  "edge_count": 8597,
+  "edge_count": 8600,
   "coverage": {
     "covered": 1275,
     "total": 1304,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
+      "detail_id": "entity-paper-amp-survey-05-motionbricks",
+      "label": "MotionBricks（AMP 专题 #05）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motionbricks.md",
+      "detail_id": "wiki-methods-motionbricks",
+      "label": "MotionBricks: 模块化生成式运动合成框架",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/numerical-optimization-curriculum.md",
       "detail_id": "entity-numerical-optimization-curriculum",
@@ -151,28 +167,12 @@
       "type": "query",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/optimal-control.md",
-      "detail_id": "wiki-concepts-optimal-control",
-      "label": "Optimal Control (OCP)",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/trajectory-optimization.md",
-      "detail_id": "wiki-methods-trajectory-optimization",
-      "label": "Trajectory Optimization（轨迹优化）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/numerical-optimization-curriculum.md",
-    "detail_id": "entity-numerical-optimization-curriculum",
-    "label": "数值优化学习策展（机器人 L0+）",
+    "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
+    "detail_id": "entity-paper-amp-survey-05-motionbricks",
+    "label": "MotionBricks（AMP 专题 #05）",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"

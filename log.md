@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] structural | wiki/entities/paper-amp-survey-05-motionbricks.md、wiki/methods/motionbricks.md — 消歧 MotionBricks 实体索引页与方法页，加强双向互链
+
+- 实体页 `paper-amp-survey-05-motionbricks`：H1 改为「AMP 专题 #05」、顶部引导至方法页、「与其他页面的关系」补方法页与 Kimodo 对照
+- 方法页 `motionbricks`：补 AMP 专题 #05/19 策展语境与回链实体索引页
+- 验证：`make ci-preflight`
+
 ## [2026-06-23] ingest | sources/courses/numerical_optimization_foundations_robotics.md — 具身智能研究室《数值优化基础》六章课程大纲；新增 numerical-optimization-curriculum 策展页 + 18 个 formalization/method/concept/query 节点
 
 - 原始资料：[numerical_optimization_foundations_robotics.md](sources/courses/numerical_optimization_foundations_robotics.md) — 数值优化基础（机器人应用）课程大纲整理
