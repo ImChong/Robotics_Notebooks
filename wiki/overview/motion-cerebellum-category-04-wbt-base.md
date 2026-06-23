@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, wbt-base]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-23
 summary: "运动小脑 64 篇长文 · D 全身跟踪基座（13 篇）— 跟踪策略等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md

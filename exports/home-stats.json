@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-23",
   "node_count": 1317,
-  "edge_count": 8735,
+  "edge_count": 8745,
   "coverage": {
     "covered": 1286,
     "total": 1315,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-motion-cerebellum-stubborn.md",
+      "detail_id": "entity-paper-motion-cerebellum-stubborn",
+      "label": "Stubborn",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/quadruped-control-curriculum.md",
       "detail_id": "entity-quadruped-control-curriculum",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/numerical-optimization-curriculum.md",
-      "detail_id": "entity-numerical-optimization-curriculum",
-      "label": "数值优化学习策展（机器人 L0+）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/quadruped-control-curriculum.md",
-    "detail_id": "entity-quadruped-control-curriculum",
-    "label": "四足控制学习策展（仿真 → RL → 实机）",
+    "path": "wiki/entities/paper-motion-cerebellum-stubborn.md",
+    "detail_id": "entity-paper-motion-cerebellum-stubborn",
+    "label": "Stubborn",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"

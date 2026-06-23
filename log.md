@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] ingest | sources/papers/stubborn_arxiv_2606_12814.md — Stubborn 统一 RL 人形跟踪与跌倒恢复；深读 arXiv:2606.12814 并升格 wiki/entities/paper-motion-cerebellum-stubborn.md
+
+- 原始资料：[stubborn_arxiv_2606_12814.md](sources/papers/stubborn_arxiv_2606_12814.md) — arXiv:2606.12814 + [项目页](https://aislab-sustech.github.io/Stubborn/)
+- 策展增补：[motion_cerebellum_survey_34_stubborn.md](sources/papers/motion_cerebellum_survey_34_stubborn.md) — 运动小脑 34/64 索引同步
+- 升格实体：[wiki/entities/paper-motion-cerebellum-stubborn.md](wiki/entities/paper-motion-cerebellum-stubborn.md) — yaw-aligned 表征、Bernoulli PT、AdpS 采样、LAFAN1/G1 实验与 Mermaid 流程图
+
 ## [2026-06-23] ingest | sources/courses/quadruped_control_simulation_rl_curriculum.md — 具身智能研究室《四足机器人：从动力学建模到强化学习》八章课程大纲；新增 quadruped-control-curriculum 策展页 + 11 个 concept/method/formalization/entity 节点
 
 - 原始资料：[quadruped_control_simulation_rl_curriculum.md](sources/courses/quadruped_control_simulation_rl_curriculum.md) — 四足控制与仿真 RL 课程大纲整理
