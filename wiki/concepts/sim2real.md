@@ -242,6 +242,8 @@ flowchart TD
 - [CRISP（Contact-guided Real2Sim）](../methods/crisp-real2sim.md) — 单目视频 → 凸平面场景原语 + 接触补全 → RL 物理闭环的 Real2Sim（ICLR 2026）
 - [SLowRL（安全 LoRA 真机微调）](../entities/paper-slowrl-safe-lora-locomotion-sim2real.md) — 四足动态策略的低秩 + Recovery 安全层
 - [BAM 扩展摩擦（舵机仿真）](../entities/paper-bam-extended-friction-servo-actuators.md)、[BAM 开源仓库](../entities/bam-better-actuator-models.md) — M1–M6 摩擦辨识与 MuJoCo 2R 验证
+- [Friction Compensation](./friction-compensation.md) — 前馈摩擦补偿与 Project 3 式三组对比实验
+- [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md) — 四足 SysID → Sim2Real 系统课程
 
 ## 继续深挖入口
 

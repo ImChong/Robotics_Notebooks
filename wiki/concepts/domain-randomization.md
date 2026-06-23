@@ -140,6 +140,7 @@ Sim2Real 的核心问题是 **domain gap**——仿真和现实的差异。
 ## 关联页面
 
 - [Sim2Real](./sim2real.md)
+- [Procedural Terrain Generation](./procedural-terrain-generation.md) — DR 的地形载体（坡、台阶、碎石）
 - [Reinforcement Learning](../methods/reinforcement-learning.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)

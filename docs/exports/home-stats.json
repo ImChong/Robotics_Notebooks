@@ -1,13 +1,149 @@
 {
   "generated_at": "2026-06-23",
-  "node_count": 1306,
-  "edge_count": 8600,
+  "node_count": 1317,
+  "edge_count": 8735,
   "coverage": {
-    "covered": 1275,
-    "total": 1304,
+    "covered": 1286,
+    "total": 1315,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/quadruped-control-curriculum.md",
+      "detail_id": "entity-quadruped-control-curriculum",
+      "label": "四足控制学习策展（仿真 → RL → 实机）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/matrix-simulation-platform.md",
+      "detail_id": "entity-matrix-simulation-platform",
+      "label": "MATRiX（智身科技联合仿真平台）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/roamerx-navigation.md",
+      "detail_id": "entity-roamerx-navigation",
+      "label": "RoamerX（智身四足导航栈）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/differentiable-simulation.md",
+      "detail_id": "wiki-concepts-differentiable-simulation",
+      "label": "Differentiable Simulation（可微仿真）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/urdf-robot-description.md",
+      "detail_id": "wiki-concepts-urdf-robot-description",
+      "label": "URDF（统一机器人描述格式）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/joint-friction-models.md",
+      "detail_id": "wiki-concepts-joint-friction-models",
+      "label": "Joint Friction Models（关节摩擦模型）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/friction-compensation.md",
+      "detail_id": "wiki-concepts-friction-compensation",
+      "label": "Friction Compensation（摩擦补偿）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/procedural-terrain-generation.md",
+      "detail_id": "wiki-concepts-procedural-terrain-generation",
+      "label": "Procedural Terrain Generation（程序化地形生成）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/hierarchical-quadruped-navigation-stack.md",
+      "detail_id": "wiki-concepts-hierarchical-quadruped-navigation-stack",
+      "label": "Hierarchical Quadruped Navigation Stack（四足分层导航栈）",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/articulated-body-algorithms.md",
+      "detail_id": "wiki-formalizations-articulated-body-algorithms",
+      "label": "Articulated Body Algorithms（ABA / RNEA）",
+      "type": "formalization",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/pid-control.md",
+      "detail_id": "wiki-methods-pid-control",
+      "label": "PID Control（比例-积分-微分控制）",
+      "type": "method",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/quadruped-robot.md",
+      "detail_id": "entity-quadruped-robot",
+      "label": "四足机器人（Quadruped Robot）",
+      "type": "entity",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/system-identification.md",
+      "detail_id": "wiki-concepts-system-identification",
+      "label": "System Identification",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/domain-randomization.md",
+      "detail_id": "wiki-concepts-domain-randomization",
+      "label": "Domain Randomization",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/floating-base-dynamics.md",
+      "detail_id": "wiki-concepts-floating-base-dynamics",
+      "label": "Floating Base Dynamics",
+      "type": "concept",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-06-23",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
       "detail_id": "entity-paper-amp-survey-05-motionbricks",
@@ -31,148 +167,12 @@
       "type": "entity",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/convex-functions.md",
-      "detail_id": "wiki-formalizations-convex-functions",
-      "label": "Convex Functions（凸函数）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/kkt-conditions.md",
-      "detail_id": "wiki-formalizations-kkt-conditions",
-      "label": "KKT Conditions（KKT 条件）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/quadratic-programming.md",
-      "detail_id": "wiki-formalizations-quadratic-programming",
-      "label": "Quadratic Programming（二次规划）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/symmetric-cone-programming.md",
-      "detail_id": "wiki-formalizations-symmetric-cone-programming",
-      "label": "Symmetric Cone Programming（对称锥规划）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/adjoint-sensitivity-analysis.md",
-      "detail_id": "wiki-formalizations-adjoint-sensitivity-analysis",
-      "label": "Adjoint Sensitivity Analysis（伴随灵敏度分析）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/line-search-steepest-descent.md",
-      "detail_id": "wiki-methods-line-search-steepest-descent",
-      "label": "Line Search & Steepest Descent（线搜索与最速下降）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/quasi-newton-bfgs.md",
-      "detail_id": "wiki-methods-quasi-newton-bfgs",
-      "label": "Quasi-Newton BFGS / L-BFGS（拟牛顿法）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/conjugate-gradient-method.md",
-      "detail_id": "wiki-methods-conjugate-gradient-method",
-      "label": "Conjugate Gradient Method（共轭梯度法）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/penalty-barrier-augmented-lagrangian.md",
-      "detail_id": "wiki-methods-penalty-barrier-augmented-lagrangian",
-      "label": "Penalty / Barrier / Augmented Lagrangian（罚函数、障碍法与增广拉格朗日）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/nonlinear-model-predictive-control.md",
-      "detail_id": "wiki-methods-nonlinear-model-predictive-control",
-      "label": "Nonlinear Model Predictive Control（NMPC）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/time-optimal-path-parameterization.md",
-      "detail_id": "wiki-methods-time-optimal-path-parameterization",
-      "label": "Time-Optimal Path Parameterization（TOPP）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/smooth-navigation-path-generation.md",
-      "detail_id": "wiki-methods-smooth-navigation-path-generation",
-      "label": "Smooth Navigation Path Generation（平滑导航路径生成）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/convex-relaxation-robotics.md",
-      "detail_id": "wiki-methods-convex-relaxation-robotics",
-      "label": "Convex Relaxation in Robotics（机器人凸松弛）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/constrained-optimization.md",
-      "detail_id": "wiki-concepts-constrained-optimization",
-      "label": "Constrained Optimization（约束优化）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/control-allocation.md",
-      "detail_id": "wiki-concepts-control-allocation",
-      "label": "Control Allocation（控制分配）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/collision-distance-optimization.md",
-      "detail_id": "wiki-concepts-collision-distance-optimization",
-      "label": "Collision Distance Optimization（碰撞距离优化）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/optimization-software-selection.md",
-      "detail_id": "wiki-queries-optimization-software-selection",
-      "label": "Optimization Software Selection（优化软件选型）",
-      "type": "query",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
-    "detail_id": "entity-paper-amp-survey-05-motionbricks",
-    "label": "MotionBricks（AMP 专题 #05）",
+    "path": "wiki/entities/quadruped-control-curriculum.md",
+    "detail_id": "entity-quadruped-control-curriculum",
+    "label": "四足控制学习策展（仿真 → RL → 实机）",
     "type": "entity",
     "recency": "2026-06-23",
     "source": "log.md"

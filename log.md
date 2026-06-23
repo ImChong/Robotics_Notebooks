@@ -1,5 +1,15 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-23] ingest | sources/courses/quadruped_control_simulation_rl_curriculum.md — 具身智能研究室《四足机器人：从动力学建模到强化学习》八章课程大纲；新增 quadruped-control-curriculum 策展页 + 11 个 concept/method/formalization/entity 节点
+
+- 原始资料：[quadruped_control_simulation_rl_curriculum.md](sources/courses/quadruped_control_simulation_rl_curriculum.md) — 四足控制与仿真 RL 课程大纲整理
+- 策展入口：[wiki/entities/quadruped-control-curriculum.md](wiki/entities/quadruped-control-curriculum.md)
+- 新建 entity：[matrix-simulation-platform](wiki/entities/matrix-simulation-platform.md)、[roamerx-navigation](wiki/entities/roamerx-navigation.md)
+- 新建 concept：[differentiable-simulation](wiki/concepts/differentiable-simulation.md)、[urdf-robot-description](wiki/concepts/urdf-robot-description.md)、[joint-friction-models](wiki/concepts/joint-friction-models.md)、[friction-compensation](wiki/concepts/friction-compensation.md)、[procedural-terrain-generation](wiki/concepts/procedural-terrain-generation.md)、[hierarchical-quadruped-navigation-stack](wiki/concepts/hierarchical-quadruped-navigation-stack.md)
+- 新建 formalization：[articulated-body-algorithms](wiki/formalizations/articulated-body-algorithms.md)
+- 新建 method：[pid-control](wiki/methods/pid-control.md)
+- 交叉更新：[quadruped-robot](wiki/entities/quadruped-robot.md)、[system-identification](wiki/concepts/system-identification.md)、[sim2real](wiki/concepts/sim2real.md)、[domain-randomization](wiki/concepts/domain-randomization.md)、[floating-base-dynamics](wiki/concepts/floating-base-dynamics.md)、[simulator-selection-guide](wiki/queries/simulator-selection-guide.md)
+
 ## [2026-06-23] structural | wiki/entities/paper-amp-survey-05-motionbricks.md、wiki/methods/motionbricks.md — 消歧 MotionBricks 实体索引页与方法页，加强双向互链
 
 - 实体页 `paper-amp-survey-05-motionbricks`：H1 改为「AMP 专题 #05」、顶部引导至方法页、「与其他页面的关系」补方法页与 Kimodo 对照
