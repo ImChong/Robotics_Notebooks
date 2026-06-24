@@ -2,7 +2,7 @@
 
 ## [2026-06-24] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **0** 条信息型预警）：
+共发现 **0** 个问题（另含 **1** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -100,7 +100,7 @@
 ### 💡 dataset 实体正文缺「规模/模态/许可证/重定向就绪度」速查维度（信息型，不阻塞 CI）（0 个）
 - 无
 
-### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
-- 无
+### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（1 个）
+- wiki/entities/paper-x-ionet-cross-platform-inertial-odometry.md（含绝对化措辞「SOTA」，updated=2026-06-22；同主题更新页 wiki/entities/paper-ultra-fusion-multi-sensor-slam.md updated=2026-06-24）
 
-📊 Sources 覆盖率：1290/1319 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1291/1320 (98%) wiki/entity 页有 ingest 来源
