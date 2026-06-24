@@ -40,7 +40,7 @@ class DetailPageScaffoldTests(unittest.TestCase):
         content = MAIN_JS.read_text(encoding="utf-8")
         self.assertIn("graph.html?institution=", content)
         self.assertIn("机构视图", content)
-        self.assertNotIn("index.html?q=", content[content.index("renderMetaInstitutionBadges"):])
+        self.assertNotIn("index.html?q=", content[content.index("renderMetaInstitutionBadges") :])
 
 
 if __name__ == "__main__":
