@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-24",
-  "node_count": 1321,
-  "edge_count": 8800,
+  "node_count": 1322,
+  "edge_count": 8809,
   "coverage": {
-    "covered": 1290,
-    "total": 1319,
+    "covered": 1291,
+    "total": 1320,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
+      "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
+      "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
+      "type": "entity",
+      "recency": "2026-06-24",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/wokwi.md",
       "detail_id": "entity-wokwi",
@@ -159,20 +167,12 @@
       "type": "formalization",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/pid-control.md",
-      "detail_id": "wiki-methods-pid-control",
-      "label": "PID Control（比例-积分-微分控制）",
-      "type": "method",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/wokwi.md",
-    "detail_id": "entity-wokwi",
-    "label": "Wokwi",
+    "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
+    "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
+    "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
     "type": "entity",
     "recency": "2026-06-24",
     "source": "log.md"
