@@ -64,7 +64,7 @@
 
 1. **优先**在 `scripts/generate_link_graph.py` 的 `COMMUNITY_NAME_OVERRIDES` 中为枢纽页（hub）显式指定 `中文（English）` 基名；脚本会自动追加 ` 社区` 后缀。
 2. 未命中 override 时回退为枢纽页 H1 标题 + ` 社区`，但 H1 风格不一（纯英文、英文在前等），**新增或变更社区划分后应检查并补 override**。
-3. `其他社区` 为兜底桶，不参与上述格式。
+3. 兜底桶 `community-other` 固定为 `其他（Other） 社区`，与命名社区共用同一格式。
 4. 运行 `make graph` 或 `make ci-preflight` 时，若某社区基名不符合 `中文（…）` 模式，脚本会打印 `WARNING`；CI 不因此失败，但维护者应补 override。
 
 ### 命名反例（勿用）

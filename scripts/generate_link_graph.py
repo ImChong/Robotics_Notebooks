@@ -91,7 +91,7 @@ PRIMARY_COMMUNITY_CAP = 16
 # 输出中显式命名的最多社区数：二级拆分后给细分社区更多席位，避免大量节点落入"其他社区"。
 MAX_COMMUNITIES = 16
 OTHER_COMMUNITY_ID = "community-other"
-OTHER_COMMUNITY_LABEL = "其他社区"
+OTHER_COMMUNITY_LABEL = "其他（Other） 社区"
 # 与同社区邻居的边占比低于此值的非枢纽节点归入「其他社区」（避免强行贴标签）。
 COMMUNITY_MEMBERSHIP_THRESHOLD = 0.5
 # 社区展示名格式：「中文（English） 社区」。规范见 schema/naming.md § 图谱社区命名。
