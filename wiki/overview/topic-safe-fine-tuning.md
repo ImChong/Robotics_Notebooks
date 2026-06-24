@@ -8,7 +8,7 @@ summary: "真机安全微调专题汇总：Sim2Real 部署后的在线 RL 适配
 
 # 真机安全微调（专题汇总）
 
-> **图谱专题视图**：本页是知识图谱「🛡️ 安全微调」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=safe-fine-tuning) 筛选时，本节点为汇总锚点。
+> **图谱专题视图**：本页是知识图谱「🛡️ 安全微调 (Safe Fine-Tuning)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=safe-fine-tuning) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 

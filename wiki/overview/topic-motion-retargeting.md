@@ -8,7 +8,7 @@ summary: "动作重定向专题汇总：把人体/动物参考动作映射到人
 
 # 动作重定向（专题汇总）
 
-> **图谱专题视图**：本页是知识图谱「🤸 动作重定向」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=motion-retargeting) 筛选时，本节点为汇总锚点。
+> **图谱专题视图**：本页是知识图谱「🤸 动作重定向 (Motion Retargeting)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=motion-retargeting) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
