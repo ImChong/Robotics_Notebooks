@@ -164,91 +164,91 @@
   var TOPIC_META = {
     'motion-retargeting': {
       emoji: '🤸',
-      label: '动作重定向',
+      label: '动作重定向 (Motion Retargeting)',
       wikiPath: TOPIC_HUB_IDS['motion-retargeting'],
       description: '把人体/动物参考动作映射到异构机器人骨架，衔接 MoCap、IK 重定向与 WBT 训练数据。'
     },
     'grasp': {
       emoji: '🤏',
-      label: '抓取',
+      label: '抓取 (Grasp)',
       wikiPath: TOPIC_HUB_IDS.grasp,
       description: '接触丰富环境下的感知抓取、灵巧操作与 loco-manip 操作子栈。'
     },
     'tactile': {
       emoji: '✋',
-      label: '触觉',
+      label: '触觉 (Tactile)',
       wikiPath: TOPIC_HUB_IDS.tactile,
       description: '触觉传感、视触觉融合与阻抗/力控闭环，支撑稳定抓取与交互。'
     },
     'communication': {
       emoji: '🔌',
-      label: '通信协议',
+      label: '通信协议 (Communication)',
       wikiPath: TOPIC_HUB_IDS.communication,
       description: '电机驱动、EtherCAT/CAN 现场总线与 ROS 2 / LCM 中间件的底层数据链路。'
     },
     'wbc': {
       emoji: '🦾',
-      label: 'WBC',
+      label: '全身控制 (WBC)',
       wikiPath: TOPIC_HUB_IDS.wbc,
       description: '浮基人形上的全身任务/力分配，TSID、HQP 与 CBF 安全约束。'
     },
     'locomotion': {
       emoji: '🚶',
-      label: 'Locomotion',
+      label: '步态与移动 (Locomotion)',
       wikiPath: TOPIC_HUB_IDS.locomotion,
       description: '腿式与人形在不同地形上的步态生成、平衡与感知式移动。'
     },
     'vla': {
       emoji: '👀',
-      label: 'VLA',
+      label: '视觉-语言-动作 (VLA)',
       wikiPath: TOPIC_HUB_IDS.vla,
       description: '视觉-语言-动作统一建模与 BFM 身体接口，面向多任务 loco-manip。'
     },
     'learning': {
       emoji: '🎓',
-      label: 'IL/RL',
+      label: '模仿/强化学习 (IL/RL)',
       wikiPath: TOPIC_HUB_IDS.learning,
       description: '强化学习、模仿学习及 PPO/SAC 等范式的选型与机器人落地要点。'
     },
     'sim2real': {
       emoji: '🔁',
-      label: 'Sim2Real',
+      label: '仿真到现实 (Sim2Real)',
       wikiPath: TOPIC_HUB_IDS.sim2real,
       description: '仿真策略迁移真机：域随机化、系统辨识与残差适配路线。'
     },
     'state-estimation': {
       emoji: '📊',
-      label: '状态估计',
+      label: '状态估计 (State Estimation)',
       wikiPath: TOPIC_HUB_IDS['state-estimation'],
       description: '多传感器融合、SLAM/VIO/LIO 与 Kalman/优化估计框架。'
     },
     'wbt': {
       emoji: '🕺',
-      label: 'WBT',
+      label: '全身运动跟踪 (WBT)',
       wikiPath: TOPIC_HUB_IDS.wbt,
       description: '全身参考动作跟踪：重定向→训练→跨具身→真机部署的端到端流水线。'
     },
     'cross-embodiment': {
       emoji: '🔀',
-      label: '跨具身',
+      label: '跨具身迁移 (Cross-Embodiment)',
       wikiPath: TOPIC_HUB_IDS['cross-embodiment'],
       description: '跨机器人形态/仿真-真机的技能与动作迁移策略。'
     },
     'safe-fine-tuning': {
       emoji: '🛡️',
-      label: '安全微调',
+      label: '安全微调 (Safe Fine-Tuning)',
       wikiPath: TOPIC_HUB_IDS['safe-fine-tuning'],
       description: '真机在线 RL 适配：低秩残差、CBF/CLF 安全壳与 Recovery 兜底。'
     },
     'vision-backbone': {
       emoji: '👁️',
-      label: '视觉骨干',
+      label: '视觉骨干 (Vision Backbone)',
       wikiPath: TOPIC_HUB_IDS['vision-backbone'],
       description: 'CNN/ViT 骨干→检测头→策略输入的视觉表征与选型。'
     },
     'data-pipeline': {
       emoji: '📦',
-      label: '训练数据',
+      label: '训练数据 (Data Pipeline)',
       wikiPath: TOPIC_HUB_IDS['data-pipeline'],
       description: '原始动作捕捉/视频→质量评估→重定向→RL/IL 策略输入的端到端数据链路。'
     }

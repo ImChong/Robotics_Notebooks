@@ -8,7 +8,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 
 # 状态估计（专题汇总）
 
-> **图谱专题视图**：本页是知识图谱「📊 状态估计」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=state-estimation) 筛选时，本节点为汇总锚点。
+> **图谱专题视图**：本页是知识图谱「📊 状态估计 (State Estimation)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=state-estimation) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 

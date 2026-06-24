@@ -8,7 +8,7 @@ summary: "Locomotion 步态专题汇总：双足/人形/四足在不同地形上
 
 # Locomotion 步态（专题汇总）
 
-> **图谱专题视图**：本页是知识图谱「🚶 Locomotion」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=locomotion) 筛选时，本节点为汇总锚点。
+> **图谱专题视图**：本页是知识图谱「🚶 步态与移动 (Locomotion)」专题的统一入口；在 [图谱专题视图](../../docs/graph.html?topic=locomotion) 筛选时，本节点为汇总锚点。
 
 ## 一句话定义
 
