@@ -74,6 +74,31 @@
 - `Humanoid Hardware 101：七类子系统技术地图 社区` — 英文主名 + 中文副标题，未遵循「中文（English）」
 - `BFM 技术地图（Behavior Foundation Model） 社区` — 英文缩写开头、中文不在主位
 
+## 研究机构命名
+
+知识图谱与详情页「所属机构」徽标使用的展示名来自 [`schema/institutions.json`](institutions.json) 的 `label` 字段，**统一格式**：
+
+```text
+中文（English）
+```
+
+### 格式要求
+
+与上文「图谱社区命名」的基名规则相同（不含 ` 社区` 后缀）：
+
+| 部分 | 规则 | 示例 |
+|------|------|------|
+| 中文主名 | 放在最前，用简体中文概括机构 | `英伟达`、`清华大学` |
+| 英文副名 | 放在**全角括号** `（）` 内；可为品牌、缩写或官方英文名 | `（NVIDIA）`、`（Tsinghua）` |
+
+完整示例：`英伟达（NVIDIA）`、`地平线（Horizon Robotics）`、`清华大学（Tsinghua）`。
+
+### 维护方式
+
+1. 新增机构时在 `schema/institutions.json` 的 `registry` 追加 `id`、`label`、`aliases`。
+2. `aliases` 为 frontmatter `tags` 的精确匹配 token（小写）；`label` 仅用于展示，不参与匹配。
+3. 运行 `make graph` 时，若某 `label` 不符合 `INSTITUTION_LABEL_RE`，脚本会打印 `WARNING`；CI 不因此失败，但维护者应修正 `label`。
+
 ## 避免事项
 
 不要：
@@ -82,3 +107,4 @@
 - 把多个不相关主题塞进同一个文件
 - 把 README 继续当总索引和总内容的混合垃圾场
 - 让图谱社区名直接沿用 wiki H1 而不检查是否符合「中文（English） 社区」格式
+- 让机构 `label` 使用纯英文或「English（中文）」颠倒格式

@@ -3886,6 +3886,21 @@
       setTimeout(fitFocusedCommunity, 1400);
     }
 
+    /* ?institution=<id> URL 参数：从详情页"所属机构"徽标跳入时聚焦该机构，
+       与机构筛选 checkbox 同源（activeInstitutions），布局稳定后框定可见节点 */
+    const institutionParam = new URLSearchParams(location.search).get('institution');
+    if (institutionParam && institutionMetaMap.has(institutionParam)) {
+      activeInstitutions.add(institutionParam);
+      renderInstitutionFilterSection();
+      applyFilters();
+      updateFilterCount();
+      const instSection = document.getElementById('filter-institution-section');
+      if (instSection) instSection.open = true;
+      const fitFocusedInstitution = () => fitToVisibleNodes();
+      simulation.on('end.institution', () => { fitFocusedInstitution(); simulation.on('end.institution', null); });
+      setTimeout(fitFocusedInstitution, 1400);
+    }
+
     const focusId = new URLSearchParams(location.search).get('focus');
     if (focusId) {
       const focusNode = nodes.find(n => n.id === focusId ||

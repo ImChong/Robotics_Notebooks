@@ -36,6 +36,12 @@ class DetailPageScaffoldTests(unittest.TestCase):
         for snippet in expected_snippets:
             self.assertIn(snippet, content)
 
+    def test_institution_badges_link_to_graph_institution_filter(self):
+        content = MAIN_JS.read_text(encoding="utf-8")
+        self.assertIn("graph.html?institution=", content)
+        self.assertIn("机构视图", content)
+        self.assertNotIn("index.html?q=", content[content.index("renderMetaInstitutionBadges") :])
+
 
 if __name__ == "__main__":
     unittest.main()
