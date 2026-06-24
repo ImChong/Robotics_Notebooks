@@ -39,8 +39,11 @@ tags: [paper, humanoid]
 
 
 def test_skip_stub_pages_not_processed() -> None:
-    assert sync._should_process(
-        "wiki/entities/paper-notebook-foo.md",
-        ["paper-notebook-stub"],
-        entities_only=True,
-    ) is False
+    assert (
+        sync._should_process(
+            "wiki/entities/paper-notebook-foo.md",
+            ["paper-notebook-stub"],
+            entities_only=True,
+        )
+        is False
+    )

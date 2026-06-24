@@ -295,7 +295,12 @@ SYNC_PAGE_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/paper-rma-rapid-motor-adaptation.md": ["berkeley", "cmu"],
     "wiki/entities/paper-shape-your-body-value-gradient-design.md": ["tu-darmstadt", "dfki"],
     "wiki/entities/paper-shenlan-wm-01-tesseract.md": ["hkust"],
-    "wiki/entities/paper-shenlan-wm-02-vpp.md": ["berkeley", "shanghai-ai-lab", "shanghai-pil", "tsinghua"],
+    "wiki/entities/paper-shenlan-wm-02-vpp.md": [
+        "berkeley",
+        "shanghai-ai-lab",
+        "shanghai-pil",
+        "tsinghua",
+    ],
     "wiki/entities/paper-shenlan-wm-03-lapa.md": ["ai2", "kaist", "microsoft", "nvidia", "uw"],
     "wiki/entities/paper-shenlan-wm-04-mimic-video.md": ["nvidia"],
     "wiki/entities/paper-shenlan-wm-05-villa-x.md": ["microsoft", "tsinghua"],
