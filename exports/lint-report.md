@@ -2,7 +2,7 @@
 
 ## [2026-06-24] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -88,11 +88,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（4 个）
-- wiki/methods/convex-relaxation-robotics.md（被 10 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/lqr-ilqr.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/penalty-barrier-augmented-lagrangian.md（被 5 个页面引用，无 queries/comparisons 落地）
-- wiki/methods/quasi-newton-bfgs.md（被 6 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
@@ -106,4 +103,4 @@
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
 
-📊 Sources 覆盖率：1289/1318 (98%) wiki/entity 页有 ingest 来源
+📊 Sources 覆盖率：1290/1319 (98%) wiki/entity 页有 ingest 来源
