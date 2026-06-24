@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -27,6 +28,8 @@ sources:
   - ../../sources/sites/kairos-homeworld-github-io.md
   - ../../sources/repos/homeworld.md
 summary: "HomeWorld（arXiv:2606.06390）：文本 prompt → 四阶段可控流水线产出 sim-ready 全屋 furnished 3D（K-D tree LLM 平面图 + 图像分层 roaming + VLM 递归修正 + 可操纵小物）；300K 中国住宅矢量平面图与 5K 全屋 3D 数据集待开源。"
+tags: [paper, scene-generation, indoor-scene, floorplan, embodied-ai, simulation, dataset, vlm, llm, cuhk]
+
 ---
 
 # HomeWorld（Kairos · Whole-Home Scene Generation）

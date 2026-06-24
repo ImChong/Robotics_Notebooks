@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-24] structural | schema/institutions.json、scripts/sync_institution_tags.py — 实体页机构标签批量补全（表格/sources/覆盖表）
+
+- 扩展机构注册表：中科大、BIGAI、HIT、TeleAI、NYU、Motphys 等 **60+** 条目（46→109）
+- 新增 `scripts/sync_institution_tags.py`：从 `|机构|` 表、sources 机构行、GitHub org 与覆盖表写入 frontmatter tags
+- 批量更新 **~200** 个 `wiki/entities/` 页（含 HRL 栈、BFM、Ego、深澜 WM、公司/数据集实体）；可派生机构节点 **310→529**（实体非占位 **467/484**）
+- 测试：`tests/test_sync_institution_tags.py`
+
 ## [2026-06-24] ingest | sources/sites/wokwi-com.md — Wokwi 在线嵌入式仿真平台；升格 wiki/entities/wokwi.md 并交叉 motor-drive-firmware-bus-protocols / simplefoc
 
 - 原始资料：[wokwi-com.md](sources/sites/wokwi-com.md)

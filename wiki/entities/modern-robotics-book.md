@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational]
+tags: [textbook, kinematics, dynamics, control, lie-group, screw-theory, foundational, northwestern]
 status: complete
 updated: 2026-04-30
 related:

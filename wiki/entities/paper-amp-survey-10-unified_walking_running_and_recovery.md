@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
+tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, hku]
 status: complete
 updated: 2026-06-11
 arxiv: "2605.18611"

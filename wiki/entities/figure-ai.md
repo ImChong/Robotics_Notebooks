@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, humanoid, industry, vla]
+tags: [hardware, humanoid, industry, vla, figure-ai]
 status: complete
 updated: 2026-05-07
 related:

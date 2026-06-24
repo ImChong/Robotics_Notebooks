@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers]
+tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, kit]
 status: complete
 updated: 2026-05-26
 summary: "较早的语言–动作配对数据。"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135]
+tags: [paper, robot-description, urdf, urdd, preprocessing, yale, apollo-lab, rust, bevy, three-js, collision-geometry, forward-kinematics, arxiv-2512-23135, linux-foundation]
 status: complete
 updated: 2026-05-17
 arxiv: "2512.23135"

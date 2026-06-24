@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, egocentric, ego-survey, embodied-ai]
+tags: [paper, egocentric, ego-survey, embodied-ai, meta]
 status: complete
 updated: 2026-06-01
 venue: "2026 · 项目"

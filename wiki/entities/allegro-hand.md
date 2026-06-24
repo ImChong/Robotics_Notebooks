@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, dexterity, manipulation, robot-hand, research]
+tags: [hardware, dexterity, manipulation, robot-hand, research, wonik-robotics]
 status: complete
 updated: 2026-04-21
 related:

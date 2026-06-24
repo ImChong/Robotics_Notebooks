@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia]
 status: complete
 updated: 2026-06-18
 arxiv: "2511.07820"

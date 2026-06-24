@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, hkust, nvidia, uw, stanford, kaist, berkeley]
 status: complete
 updated: 2026-06-11
 venue: curated

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, loco-manipulation, loco-manip-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-survey, humanoid, stanford, meta]
 status: complete
 updated: 2026-06-14
 arxiv: "2606.08107"

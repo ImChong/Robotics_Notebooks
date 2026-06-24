@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [textbook, reinforcement-learning, chinese, education, ppo, sac, dqn, marl]
+tags: [textbook, reinforcement-learning, chinese, education, ppo, sac, dqn, marl, sjtu]
 status: complete
 updated: 2026-05-21
 related:

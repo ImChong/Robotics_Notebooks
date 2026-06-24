@@ -1,7 +1,8 @@
 ---
+
 type: entity
 title: Motrix (MotrixSim / MotrixLab)
-tags: [simulation, physics-engine, robot-learning, rust, mjcf, web-viewer]
+tags: [simulation, physics-engine, robot-learning, rust, mjcf, web-viewer, motphys]
 summary: "Motrix 是高性能机器人物理仿真与训练平台，采用 Rust 开发，深度兼容 MJCF 格式，并提供浏览器 Web Viewer 零安装验模。"
 updated: 2026-06-18
 related:

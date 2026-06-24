@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, lumos, teleai, sjtu, zju]
 status: complete
 updated: 2026-06-18
 venue: curated

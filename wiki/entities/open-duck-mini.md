@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx]
+tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
 updated: 2026-05-28
 related:

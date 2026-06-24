@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025]
+tags: [paper, sim2real, actuator, friction, mujoco, system-identification, servo, dynamixel, icra-2025, google]
 status: complete
 updated: 2026-05-28
 arxiv: "2410.08650"

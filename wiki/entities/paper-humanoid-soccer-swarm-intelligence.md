@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -24,6 +25,8 @@ sources:
   - ../../sources/papers/humanoid_soccer_swarm_intelligence_sensors_2025.md
   - ../../sources/papers/robocup_spl_limited_communication_coordination_arxiv_2401_15026.md
 summary: "Sensors 2025：面向人形足球队的去中心化群智能框架——轻量 UDP + ACO 蚁群角色分配 + Reynolds flocking 编队 + 自适应故障恢复；Webots 4v4 相对集中式基线进球 +25–40%、控球 +8–10%，角色重分配约 2.3 s。"
+tags: [paper, humanoid, soccer, swarm-intelligence, multi-robot, decentralized-control, robocup, aco, flocking, sfu]
+
 ---
 
 # Swarm Intelligence for Collaborative Play in Humanoid Soccer Teams

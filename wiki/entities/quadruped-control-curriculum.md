@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [course, quadruped, reinforcement-learning, sim2real, locomotion, curriculum]
+tags: [course, quadruped, reinforcement-learning, sim2real, locomotion, curriculum, motrix]
 status: complete
 updated: 2026-06-23
 related:

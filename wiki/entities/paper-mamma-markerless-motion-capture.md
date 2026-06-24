@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion]
+tags: [paper, motion-capture, markerless, smpl-x, multi-view, dense-landmarks, cvpr-2026, human-motion, eth, max-planck]
 status: complete
 updated: 2026-06-09
 arxiv: "2506.13040"

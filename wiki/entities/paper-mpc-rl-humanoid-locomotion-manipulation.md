@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -31,6 +32,8 @@ sources:
   - ../../sources/papers/motion_cerebellum_64_catalog.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_motion_cerebellum_survey.md
 summary: "MPC-RL（arXiv:2606.05687）：训练期质心 MPC 预测地标奖励指导 PPO，πⁿ MPC GPU 批求解器支撑 4096 环境长时域；部署纯 RL；Themis 真机行走、推恢复、负重与 290 kg 推车 loco-manipulation。"
+tags: [paper, humanoid, locomotion, loco-manipulation, mpc, reinforcement-learning, centroidal-dynamics, training-time-guidance, eth]
+
 ---
 
 # MPC-RL（人形 Locomotion 与 Loco-Manipulation 的训练期 MPC 指导）

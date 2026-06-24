@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [reinforcement-learning, locomotion, action-space, character-animation, pd-control, xbpeng]
+tags: [reinforcement-learning, locomotion, action-space, character-animation, pd-control, xbpeng, ubc]
 status: stable
 summary: "SCA 2017：在步态模仿任务上对比扭矩、肌肉激活、目标关节角（PD）与目标角速度四种 DeepRL 动作空间，论证带局部反馈的高层参数化通常学得更快、更鲁棒、运动质量更好。"
 updated: 2026-05-21

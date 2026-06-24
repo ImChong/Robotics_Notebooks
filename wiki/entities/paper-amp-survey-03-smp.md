@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
+tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, sfu, stanford, nvidia, sony, snap]
 status: complete
 updated: 2026-06-18
 venue: curated

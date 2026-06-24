@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -27,6 +28,8 @@ sources:
   - ../../sources/papers/learning_to_adapt_nature_2025.md
   - ../../sources/repos/ihcr_learning_to_adapt.md
 summary: "Nature MI 2025：分层 DRL 嵌入步态切换（πG）、BGS 步态程序性记忆与 πL 自适应微调，8 步态盲零样本复杂地形部署；CoT/τ%/Wext/接触误差统一选 gait。"
+tags: [paper, quadruped, locomotion, multi-gait, bio-inspired, reinforcement-learning, sim2real, gait-selection, raisim, purdue]
+
 ---
 
 # Learning to Adapt：生物启发步态策略与四足 versatile locomotion

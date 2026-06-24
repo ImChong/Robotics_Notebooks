@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [cassie, reinforcement-learning, biped, sim2real, pd-control]
+tags: [cassie, reinforcement-learning, biped, sim2real, pd-control, oregon-state, ubc]
 status: stable
 summary: "高保真 Cassie 模型上的 DRL 反馈控制：跟踪参考运动、扰动与延迟鲁棒性，为「PD 目标空间」提供早期清晰 MDP 表述。"
 updated: 2026-05-22

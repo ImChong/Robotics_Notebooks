@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, bit, sjtu, hust, bigai, ustc]
 status: complete
 updated: 2026-06-18
 venue: curated

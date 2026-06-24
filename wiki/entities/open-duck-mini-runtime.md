@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [deployment, sim2real, embedded, raspberry-pi, open-source, biped]
+tags: [deployment, sim2real, embedded, raspberry-pi, open-source, biped, disney, open-duck]
 status: complete
 updated: 2026-06-18
 related:

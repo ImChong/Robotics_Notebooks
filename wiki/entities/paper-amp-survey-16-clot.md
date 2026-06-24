@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro]
+tags: [paper, humanoid, amp, motion-prior, teleoperation, whole-body-control, motion-tracking, transformer, sim2real, pndbotics-adam-pro, shanghai-ai-lab, sjtu]
 status: complete
 updated: 2026-06-18
 arxiv: "2602.15060"

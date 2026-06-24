@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
+tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia]
 status: complete
 updated: 2026-06-18
 arxiv: "2606.05160"

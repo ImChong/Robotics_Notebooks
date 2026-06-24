@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand]
+tags: [hardware, humanoid, industry, actuator, manipulation, dexterous-hand, wuji-robotics]
 status: complete
 updated: 2026-06-17
 related:

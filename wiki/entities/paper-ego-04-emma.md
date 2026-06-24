@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, egocentric, ego-survey, embodied-ai]
+tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech]
 status: complete
 updated: 2026-06-01
 arxiv: "2509.04443"

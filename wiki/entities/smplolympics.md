@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [benchmark, humanoid, simulation, smpl, sports, reinforcement-learning, isaac-gym]
+tags: [benchmark, humanoid, simulation, smpl, sports, reinforcement-learning, isaac-gym, cmu, nvidia]
 status: complete
 updated: 2026-06-12
 arxiv: "2407.00187"

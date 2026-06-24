@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program]
+tags: [humanoid, rl, sim2real, perception, whole-body-control, research-program, shanghai-pil, tsinghua]
 status: complete
 date: 2026-05-12
 updated: 2026-05-28

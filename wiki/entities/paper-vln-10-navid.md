@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, vln, vln-survey, navigation, embodied-ai]
+tags: [paper, vln, vln-survey, navigation, embodied-ai, pku]
 status: complete
 updated: 2026-06-20
 arxiv: "2402.15852"

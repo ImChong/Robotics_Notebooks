@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, egocentric, ego-survey, embodied-ai]
+tags: [paper, egocentric, ego-survey, embodied-ai, stanford]
 status: complete
 updated: 2026-06-01
 arxiv: "2605.30282"

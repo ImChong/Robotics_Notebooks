@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [imitation, locomotion, placo, reference-motion, open-source, biped]
+tags: [imitation, locomotion, placo, reference-motion, open-source, biped, disney, open-duck]
 status: complete
 updated: 2026-05-28
 related:
