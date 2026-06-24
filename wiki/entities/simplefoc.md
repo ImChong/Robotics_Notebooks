@@ -3,11 +3,12 @@
 type: entity
 tags: [repo, framework, motor-control, foc, bldc, embedded, open-source, linux-foundation]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-24
 related:
   - ../concepts/field-oriented-control.md
   - ../overview/motor-drive-firmware-bus-protocols.md
   - ./atom01-firmware.md
+  - ./wokwi.md
   - ../concepts/can-bus-protocol.md
 sources:
   - ../../sources/repos/simplefoc_arduino_foc.md
@@ -99,6 +100,7 @@ flowchart TB
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [电机驱动器底软通信协议总览](../overview/motor-drive-firmware-bus-protocols.md)
 - [Atom01 Firmware](./atom01-firmware.md)（开源人形底层固件对照）
+- [Wokwi](./wokwi.md) — 无硬件时在浏览器验证 Arduino/ESP32/STM32 外设与 FOC 原型
 
 ## 推荐继续阅读
 

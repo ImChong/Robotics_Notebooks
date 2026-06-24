@@ -45,6 +45,7 @@
     "x-humanoid": { "label": "X-Humanoid", "aliases": ["x-humanoid"] },
     "sdu": { "label": "山东大学（SDU）", "aliases": ["sdu", "jackhan-sdu"] },
     "roboparty": { "label": "RoboParty", "aliases": ["roboparty"] },
-    "freemocap": { "label": "FreeMoCap Project", "aliases": ["freemocap"] }
+    "freemocap": { "label": "FreeMoCap Project", "aliases": ["freemocap"] },
+    "wokwi": { "label": "Wokwi", "aliases": ["wokwi"] }
   }
 }

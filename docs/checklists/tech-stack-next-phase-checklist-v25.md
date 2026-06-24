@@ -46,8 +46,8 @@
 
 - [x] **图谱页"训练数据管线"专题视图**：
     - [x] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V24 14 项基础上新增「训练数据管线」专题（`data-pipeline`），复用 path 片段并集机制（`dataset/datasets/amass/lafan1/omomo/phuma/humanoid-everyday/motion-retargeting/training-data`）并按需 `ids` 显式纳入新建 query/concept；同步在 `#filter-topic-chips` 增加 `data-topic="data-pipeline"`（📦 训练数据）chip。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-data-pipeline.png`。（2026-06-22 完成：`TOPIC_HUB_IDS`/`TOPIC_FILTERS`/`TOPIC_META` 新增 `data-pipeline`（emoji 📦、label「训练数据」），segments=`dataset/datasets/amass/lafan1/lafan/omomo/phuma/everyday/retargeting`、ids 显式纳入 `humanoid-training-data-pipeline` query + `motion-data-quality`/`motion-retargeting` concept + `humanoid-reference-motion-datasets` 对比；新建 hub 页 `wiki/overview/topic-data-pipeline.md` 并由 `topic-motion-retargeting`/`topic-wbt` 回链消除孤儿；`graph.html` chips 新增 📦 训练数据；node 校验命中 42 节点（数据集+重定向+质量+hub），`make lint` 0 errors。**截图**：本 routine 环境 apt 镜像 404 无法装 Chromium，Puppeteer 截图改由后续带 Chrome 的环境/PR 补归档。）
-- [ ] **详情页"同专题相关页"提示**：
-    - [ ] 复用 `docs/topic-filters.js` 单一事实源，数据集 / 重定向 / 新建页命中「训练数据管线」专题时渲染「📦 训练数据」轻量徽标 + 跳转 `graph.html?topic=data-pipeline`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-data-pipeline.png`。
+- [x] **详情页"同专题相关页"提示**：
+    - [x] 复用 `docs/topic-filters.js` 单一事实源，数据集 / 重定向 / 新建页命中「训练数据管线」专题时渲染「📦 训练数据」轻量徽标 + 跳转 `graph.html?topic=data-pipeline`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-data-pipeline.png`。（2026-06-23 完成：详情页「所属专题」徽标行（`main.js renderMetaTopicBadges`）本就由 `topic-filters.js` 同一事实源数据驱动，`topicsForNode` 命中 `data-pipeline` 即渲染「📦 训练数据」徽标并跳 `graph.html?topic=data-pipeline`，空态（`topics.length===0`）降级隐藏整行——P3 第①项把 `data-pipeline` 写入单一事实源后，详情页徽标已自动联动，无需二次实现。本次补强 `data-pipeline.segments` +4（`retarget`/`retargeter`/`omniretarget`/`mocap`/`freemocap`）修正分词粒度漏匹配，使全部数据集 + 重定向 + mocap 实体（46/46 候选页，全库 47 节点）均稳定命中专题徽标；node 校验逐页通过、`make lint` 0 errors。**截图**：本 routine 环境无 Chromium/Puppeteer（apt 镜像 404），`detail-topic-data-pipeline.png` 改由后续带 Chrome 的环境/PR 补归档，与 P3 第①项截图同批。）
 
 ---
 
