@@ -404,9 +404,9 @@ def infer_institution_ids(rel_path: str, content: str, alias_map: dict[str, str]
                 add(cid)
 
     for org in re.findall(r"github\.com/([^/\s\"']+)", content):
-        cid = GITHUB_ORG_MAP.get(org)
-        if cid:
-            add(cid)
+        gh_cid = GITHUB_ORG_MAP.get(org)
+        if gh_cid:
+            add(gh_cid)
 
     return found
 
