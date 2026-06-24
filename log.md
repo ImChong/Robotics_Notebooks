@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-24] structural | scripts/generate_link_graph.py — 兜底社区标签改为「其他（Other） 社区」
+
 ## [2026-06-24] structural | docs/topic-filters.js、docs/graph.html、wiki/overview/topic-*.md — 专题标签统一为「中文 (English)」格式（与类型图例一致）
 
 

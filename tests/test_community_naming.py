@@ -76,10 +76,8 @@ class CommunityHubNamePatternTest(unittest.TestCase):
                 seen[canonical] = label
 
     def test_exported_community_labels_conform_to_pattern(self) -> None:
-        """快照里全部命名社区（除「其他社区」）的 label 应符合 中文（English） 社区。"""
+        """快照里全部社区（含兜底桶）的 label 应符合 中文（English） 社区。"""
         for meta in _load_exported_communities():
-            if meta.get("id") == glg.OTHER_COMMUNITY_ID:
-                continue
             label = str(meta.get("label", ""))
             with self.subTest(community_id=meta.get("id"), label=label):
                 self.assertTrue(label.endswith(" 社区"), label)
