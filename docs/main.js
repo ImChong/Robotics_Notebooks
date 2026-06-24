@@ -2840,8 +2840,8 @@
       (gd.institutions || []).forEach(function (it) { labelById[it.id] = it.label; });
       var html = ids.map(function (id) {
         var label = labelById[id] || id;
-        return '<a class="detail-meta-badge" href="index.html?q=' + encodeURIComponent(label) +
-          '#wiki-search" title="在首页搜索「' + escapeHtml(label) + '」相关页面">' +
+        return '<a class="detail-meta-badge" href="graph.html?institution=' + encodeURIComponent(id) +
+          '" title="在知识图谱中查看「' + escapeHtml(label) + '」机构视图">' +
           '<span>🏛️</span><span>' + escapeHtml(label) + '</span></a>';
       }).join('');
       renderDetailMetaItemRow(instRowId, '所属机构', html);
