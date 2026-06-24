@@ -68,6 +68,8 @@
     "ubc": { "label": "英属哥伦比亚大学（UBC）", "aliases": ["ubc"] },
     "hust": { "label": "华中科技大学（HUST）", "aliases": ["hust"] },
     "bit": { "label": "北京理工大学（BIT）", "aliases": ["bit", "bit-cn"] },
+    "cqu": { "label": "重庆大学（CQU）", "aliases": ["cqu"] },
+    "scu": { "label": "四川大学（SCU）", "aliases": ["scu"] },
     "ningbo-eastern": { "label": "宁波东方理工大学", "aliases": ["ningbo-eastern"] },
     "fudan": { "label": "复旦大学（Fudan）", "aliases": ["fudan"] },
     "opendrivelab": { "label": "OpenDriveLab", "aliases": ["opendrivelab"] },
