@@ -4,14 +4,14 @@
 
 ## 当前入口
 
-- [技术栈项目执行清单 v25](tech-stack-next-phase-checklist-v25.md) — 当前技术栈、自动化、专题建设与 UX 推进看板。
+- [技术栈项目执行清单 v26](tech-stack-next-phase-checklist-v26.md) — 当前技术栈、自动化、专题建设与 UX 推进看板。
 - [前端体验优化清单 v1](frontend-optimization-v1.md) — GitHub Pages 首页与交互体验优化计划。
 - [Cursor Cloud Agent：PR 与验证截图流程](cloud-agent-pr-workflow.md) — Cloud Agent 推送分支、开 PR、附验证截图的路径约定。
 - [GitHub Actions CI 门禁](github-actions-ci-gate.md) — 合并 `main` 前必须等全量 Actions 全绿；branch protection 建议。
 
 ## 历史执行清单
 
-这些文件记录从 v1 到 v23 的阶段性目标和已完成事项，主要用于追溯决策，不作为当前待办入口。历史版本统一存放在 [`archive/`](archive/) 子目录。
+这些文件记录从 v1 到 v25 的阶段性目标和已完成事项，主要用于追溯决策，不作为当前待办入口。历史版本统一存放在 [`archive/`](archive/) 子目录。
 
 - [v1](archive/tech-stack-next-phase-checklist-v1.md)
 - [v2](archive/tech-stack-next-phase-checklist-v2.md)
@@ -37,6 +37,7 @@
 - [v22](archive/tech-stack-next-phase-checklist-v22.md)
 - [v23](archive/tech-stack-next-phase-checklist-v23.md)
 - [v24](archive/tech-stack-next-phase-checklist-v24.md)
+- [v25](archive/tech-stack-next-phase-checklist-v25.md)
 
 ## 维护规则
 

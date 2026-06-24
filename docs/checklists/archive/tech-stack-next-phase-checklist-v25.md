@@ -1,9 +1,9 @@
 # 技术栈项目执行清单 v25
 
-最后更新：2026-06-16（V24 全部条目收口，基于最新数据集 ingest 初始化 V25）
+最后更新：2026-06-24（V25 全部条目 + DoD 逐条收口，归档并初始化 V26）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
-上一版清单：[`tech-stack-next-phase-checklist-v24.md`](archive/tech-stack-next-phase-checklist-v24.md)
-方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
+上一版清单：[`tech-stack-next-phase-checklist-v24.md`](tech-stack-next-phase-checklist-v24.md)
+方法论参考：[Karpathy LLM Wiki](../../../wiki/references/llm-wiki-karpathy.md)
 
 ---
 
@@ -57,7 +57,7 @@
 - [x] 知识图谱节点数 **≥ 1205**，边数 **≥ 7460**（见 `exports/graph-stats.json`）。（2026-06-22 达成：1288 节点 / 8450 边。）
 - [x] 事实库扩展至 **196 条** 以上（重点补 数据质量 / 物理可行性 / 重定向必要性 矛盾检测规则）。（2026-06-21 达成：198 条。）
 - [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。（2026-06-22 达成：`false`，最大社区占比 0.162。）
-- [ ] `log.md` 记录 V25 关键改动。
+- [x] `log.md` 记录 V25 关键改动。（2026-06-24 达成：P0/P1/P2/P3 各条目此前已逐条追加 log 条目；本次补「checklist-v25 \| DoD 收口 & 初始化 V26」总结条目，回填全版交付基线（图谱 1322 节点 / 8809 边、事实库 198 条、`community_quality_warning=false`、最大社区占比 0.165、15 项专题视图）。）
 
 ---
 

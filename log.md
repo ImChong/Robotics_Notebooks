@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-24] checklist-v25 | DoD 收口 & 初始化 V26
+
+- V25 全部条目收口：P0（数据集页元数据巡检 `dataset_metadata_check` + scaffold `--dataset` 旗标）、P1（`humanoid-training-data-pipeline` query + `motion-data-quality` concept + 数据层四段衔接交叉补强）、P2（事实库 186 → 198 条，新增 12 条数据层矛盾检测规则）、P3（图谱第 15 项「训练数据管线」专题视图 `data-pipeline` + 详情页徽标联动）逐条 `[x]`；DoD 末项「`log.md` 记录 V25 关键改动」由本条目收口。
+- V25 交付基线：`make lint` 0 errors（仅 1 条信息型预警），图谱 **1322 节点 / 8809 边**，事实库 **198 条**，`community_quality_warning=false`、最大社区占比 **0.165**，图谱专题视图 15 项。
+- 新建 [`docs/checklists/tech-stack-next-phase-checklist-v26.md`](docs/checklists/tech-stack-next-phase-checklist-v26.md)：专题选定为「仿真物理保真度链路」，承接 V25 收尾密集 ingest 的 `differentiable-simulation` / `articulated-body-algorithms` / `contact-dynamics` / `joint-friction-models` / `friction-compensation` / `urdf-robot-description` / `procedural-terrain-generation` 等仿真物理底座概念页，规划「几何/URDF → 刚体动力学算法 → 接触/摩擦模型 → 执行器模型」端到端保真度知识链（P1 query+concept）、物理保真度矛盾检测规则扩展（P2 事实库 198→≥208）、动力学/仿真概念页交叉链路巡检（P0）与图谱第 16 项「物理保真度」专题视图（P3）。
+- 同步将 README badge / 维护看板、`AGENTS.md`、`docs/README.md`、`docs/checklists/README.md` 的「当前清单」指针从 V25 切到 V26；V25 移入 `archive/` 并修正其内部相对链接（上一版清单同级、方法论参考 `../../../wiki/...`），进入历史归档区。
+
 ## [2026-06-24] structural | scripts/generate_link_graph.py — 兜底社区标签改为「其他（Other） 社区」
 
 ## [2026-06-24] structural | docs/topic-filters.js、docs/graph.html、wiki/overview/topic-*.md — 专题标签统一为「中文 (English)」格式（与类型图例一致）
