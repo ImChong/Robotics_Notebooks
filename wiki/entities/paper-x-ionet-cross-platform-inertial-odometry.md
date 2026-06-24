@@ -11,7 +11,7 @@ tags:
   - pedestrian
   - unitree
 status: complete
-updated: 2026-06-22
+updated: 2026-06-24
 arxiv: "2511.08277"
 venue: "IEEE RA-L 2026"
 related:
@@ -22,12 +22,12 @@ related:
   - ../tasks/locomotion.md
 sources:
   - ../../sources/papers/x_ionet_arxiv_2511_08277.md
-summary: "X-IONet：单 IMU 跨平台惯性里程计；规则专家路由 + 双阶段 attention 位移网络输出位移/不确定性，EKF 融合；RoNIN/GrandTour/Go2 SOTA。"
+summary: "X-IONet：单 IMU 跨平台惯性里程计；规则专家路由 + 双阶段 attention 位移网络输出位移/不确定性，EKF 融合；RoNIN/GrandTour/Go2 基准相对最强基线全面领先。"
 ---
 
 # X-IONet（跨平台惯性里程计网络）
 
-**X-IONet**（Cross-Platform Inertial Odometry Network）是 Shen & Chen 提出的 **仅用单 IMU** 的跨平台惯性里程计框架（IEEE RA-L Vol. 11 No. 7, July 2026；[arXiv:2511.08277](https://arxiv.org/abs/2511.08277)）。它用 **规则式专家选择** 区分行人 vs 四足运动模式，将 IMU 序列路由到 **平台专属位移网络**；网络采用 **双阶段 attention** 同时建模时间依赖与轴间相关，回归 **位移 + 协方差**，再经 **EKF** 做鲁棒状态估计。在 **RoNIN**、**GrandTour** 与自采 **Unitree Go2** 数据上达到 SOTA，尤其 Go2 上 ATE/RTE 相对最强基线降低 **52.8% / 41.3%**。
+**X-IONet**（Cross-Platform Inertial Odometry Network）是 Shen & Chen 提出的 **仅用单 IMU** 的跨平台惯性里程计框架（IEEE RA-L Vol. 11 No. 7, July 2026；[arXiv:2511.08277](https://arxiv.org/abs/2511.08277)）。它用 **规则式专家选择** 区分行人 vs 四足运动模式，将 IMU 序列路由到 **平台专属位移网络**；网络采用 **双阶段 attention** 同时建模时间依赖与轴间相关，回归 **位移 + 协方差**，再经 **EKF** 做鲁棒状态估计。在 **RoNIN**、**GrandTour** 与自采 **Unitree Go2** 数据上（截至论文发表 2026-06）相对各自最强基线全面领先，尤其 Go2 上 ATE/RTE 相对最强基线降低 **52.8% / 41.3%**。
 
 ## 一句话定义
 
