@@ -2,9 +2,10 @@
 type: comparison
 tags: [slam, lidar, vio, lio, selection, ros]
 status: complete
-updated: 2026-05-27
+updated: 2026-06-24
 related:
   - ../overview/navigation-slam-autonomy-stack.md
+  - ../entities/paper-ultra-fusion-multi-sensor-slam.md
   - ../entities/navigation2.md
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
@@ -23,7 +24,8 @@ sources:
   - ../../sources/repos/open_vins.md
   - ../../sources/repos/lego_loam.md
   - ../../sources/repos/rtabmap.md
-summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM vs LeGO-LOAM vs ORB-SLAM3 vs VINS vs OpenVINS vs RTAB-Map，按传感器、后端、ROS 集成与场景对照。"
+  - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
+summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM vs LeGO-LOAM vs ORB-SLAM3 vs VINS vs OpenVINS vs RTAB-Map vs Ultra-Fusion，按传感器、后端、ROS 集成与场景对照。"
 ---
 
 # LiDAR / LIO / VIO 开源选型对比
@@ -52,6 +54,9 @@ summary: "LiDAR 里程计/SLAM 与视觉惯性系统选型：FAST-LIO vs LIO-SAM
 | **RTAB-Map** | RGB-D/立体/激光 | 记忆管理 | ROS/ROS2 | 一套 GUI 走通 | 高动态需额外处理 |
 | **voxgraph** | 深度/TSDF | 位姿图 + Voxblox | ROS | 多会话子图 | 生态小于 LIO 系 |
 | **Isaac cuVSLAM** | 多相机 | GPU | Isaac ROS | Jetson 部署 | 绑定 NVIDIA 栈 |
+| **Ultra-Fusion** | CIL + 轮速/GNSS 可选 | 统一滑窗 BA + FRS | 待发布 | **可配置 WIO/VIO/LIO/LVIO**、退化调度、在线时空标定 | 复杂度高；ITS 多平台评测导向 |
+
+> **退化与标定扰动维度：** [Ultra-Fusion](../entities/paper-ultra-fusion-multi-sensor-slam.md) 在 M3DGR 等基准上对 60+ 系统做 **传感器退化**（弱光、长廊、GNSS 拒止、打滑）与 **时空标定注入** Stress test，适合在固定传感器栈选型之外评估 **鲁棒融合架构**。
 
 ## 决策流（简图）
 
@@ -107,6 +112,7 @@ flowchart TD
 ## 参考来源
 
 - [navigation_slam_autonomy_stack_catalog.md](../../sources/repos/navigation_slam_autonomy_stack_catalog.md)
+- [ultra_fusion_arxiv_2606_21223.md](../../sources/papers/ultra_fusion_arxiv_2606_21223.md) — 大规模退化/标定扰动基准与 Ultra-Fusion 对照
 - 各对比对象 `sources/repos/*.md`
 
 ## 关联页面

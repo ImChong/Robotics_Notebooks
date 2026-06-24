@@ -2,7 +2,7 @@
 type: overview
 tags: [topic, topic-state-estimation, slam, odometry, ekf, perception]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-24
 summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与 Kalman/优化估计框架，服务 locomotion 与导航中的位姿与速度估计。"
 ---
 
@@ -48,6 +48,7 @@ summary: "状态估计专题汇总：本体感知融合、SLAM/VIO/LIO 选型与
 
 ## 关联页面
 
+- [Ultra-Fusion（多传感器 SLAM）](../entities/paper-ultra-fusion-multi-sensor-slam.md) — 统一滑窗 LVIO/LVWIO、退化调度与在线时空标定（arXiv:2606.21223）
 - [X-IONet（跨平台惯性里程计）](../entities/paper-x-ionet-cross-platform-inertial-odometry.md) — 单 IMU 行人/四足 IO + EKF（IEEE RA-L 2026）
 - [Contact Estimation](../concepts/contact-estimation.md)
 - [Terrain Latent Representation](../concepts/terrain-latent-representation.md)
