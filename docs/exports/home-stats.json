@@ -1,13 +1,37 @@
 {
-  "generated_at": "2026-06-23",
-  "node_count": 1319,
-  "edge_count": 8781,
+  "generated_at": "2026-06-24",
+  "node_count": 1320,
+  "edge_count": 8793,
   "coverage": {
-    "covered": 1288,
-    "total": 1317,
+    "covered": 1289,
+    "total": 1318,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/wokwi.md",
+      "detail_id": "entity-wokwi",
+      "label": "Wokwi",
+      "type": "entity",
+      "recency": "2026-06-24",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/motor-drive-firmware-bus-protocols.md",
+      "detail_id": "wiki-overview-motor-drive-firmware-bus-protocols",
+      "label": "电机驱动器底软通信协议总览",
+      "type": "overview",
+      "recency": "2026-06-24",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/simplefoc.md",
+      "detail_id": "entity-simplefoc",
+      "label": "SimpleFOC（Arduino-FOC 生态）",
+      "type": "entity",
+      "recency": "2026-06-24",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/isaac-lab.md",
       "detail_id": "entity-isaac-lab",
@@ -143,38 +167,14 @@
       "type": "method",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/quadruped-robot.md",
-      "detail_id": "entity-quadruped-robot",
-      "label": "四足机器人（Quadruped Robot）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/isaac-lab.md",
-    "detail_id": "entity-isaac-lab",
-    "label": "Isaac Lab",
+    "path": "wiki/entities/wokwi.md",
+    "detail_id": "entity-wokwi",
+    "label": "Wokwi",
     "type": "entity",
-    "recency": "2026-06-23",
+    "recency": "2026-06-24",
     "source": "log.md"
   }
 }
