@@ -1673,9 +1673,14 @@
       entity: 'Entity', query: 'Query', overview: 'Overview',
       reference: 'Reference', roadmap_page: 'Roadmap',
     };
+    function formatTypeLegendLabel(type) {
+      const zh = TYPE_LABEL[type] || type;
+      const en = TYPE_LEGEND_EN[type] || type;
+      return zh + ' (' + en + ')';
+    }
     const TYPE_FILTER_OPTIONS = TYPE_LEGEND_ORDER.map((type) => ({
       value: type,
-      label: TYPE_LABEL[type] || type,
+      label: formatTypeLegendLabel(type),
       color: TYPE_COLOR[type] || TYPE_COLOR[''],
     })).concat([
       { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' },
@@ -2053,7 +2058,7 @@
         const typeRows = TYPE_LEGEND_ORDER.map((type) => ({
           type,
           color: TYPE_COLOR[type] || TYPE_COLOR[''],
-          label: (TYPE_LABEL[type] || type) + ' ' + (TYPE_LEGEND_EN[type] || type),
+          label: formatTypeLegendLabel(type),
         }));
         for (const t of typeRows) {
           const isActive = (focusedType === t.type);
