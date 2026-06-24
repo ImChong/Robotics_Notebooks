@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl]
+tags: [world-models, model-based-rl, isaac-lab, anymal, eth-rsl, open-source, dynamics-model, offline-rl, eth]
 status: complete
 updated: 2026-05-17
 related:

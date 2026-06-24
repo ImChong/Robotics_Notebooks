@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, shanghai-pil, pku, tsinghua]
 status: complete
 updated: 2026-06-10
 arxiv: "2509.13833"

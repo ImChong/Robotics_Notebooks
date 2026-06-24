@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -25,6 +26,8 @@ sources:
   - ../../sources/repos/hxxxz0_daji.md
   - ../../sources/blogs/wechat_embodied_ai_lab_daji_semantic_body_interface.md
 summary: "DAJI（arXiv:2605.14417）：用预期关节意图作语言条件人形的可部署中间接口——DAJI-Flow 自回归生成低频意图片段，DAJI-Act 结合本体感知解码高频动作；相对参考轨迹追踪，强调动作出现前的支撑切换与平衡准备，长程流式消融显示未来信息对闭环成功率至关重要。"
+tags: [paper, humanoid, language-conditioned-control, loco-manipulation, whole-body-control, latent-interface, streaming-instruction, hkust-gz, limx, sdu]
+
 ---
 
 # DAJI（预期关节意图 · 语言条件人形控制）

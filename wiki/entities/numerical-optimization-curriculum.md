@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [course, numerical-optimization, convex-optimization, mpc, trajectory-optimization, foundational]
+tags: [course, numerical-optimization, convex-optimization, mpc, trajectory-optimization, foundational, stanford]
 status: complete
 updated: 2026-06-23
 related:

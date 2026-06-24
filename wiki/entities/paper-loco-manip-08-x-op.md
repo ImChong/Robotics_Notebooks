@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, loco-manipulation, loco-manip-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-survey, humanoid, berkeley, amazon]
 status: complete
 updated: 2026-06-18
 arxiv: "2606.07934"

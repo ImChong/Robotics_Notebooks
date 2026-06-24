@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [textbook, linear-algebra, education, foundational, kinematics, control]
+tags: [textbook, linear-algebra, education, foundational, kinematics, control, georgia-tech]
 status: complete
 updated: 2026-05-31
 related:

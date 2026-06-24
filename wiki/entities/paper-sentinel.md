@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, vla]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, vla, beingbeyond, pku]
 status: complete
 updated: 2026-06-10
 arxiv: "2511.19236"

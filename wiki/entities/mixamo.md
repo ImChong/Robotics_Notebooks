@@ -1,7 +1,8 @@
 ---
+
 type: entity
 title: Mixamo（Adobe 在线角色与动画服务）
-tags: [commercial, animation, mocap-derived, character-rigging, game-pipeline, adobe]
+tags: [commercial, animation, mocap-derived, character-rigging, game-pipeline, adobe, autodesk]
 summary: "Mixamo 是 Adobe 运营的在线角色与动画库：提供预设绑定角色、自动骨骼绑定与大量全身动作下载；面向影视/游戏管线，属商业服务。机器人研究中多作快速视觉原型源，不等同于可自由再分发的原始 MoCap 档案。"
 updated: 2026-06-19
 status: complete

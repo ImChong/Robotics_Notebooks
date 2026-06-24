@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
+tags: [paper, motion-cerebellum-survey, humanoid, motion-control, snu]
 status: complete
 updated: 2026-06-18
 venue: curated

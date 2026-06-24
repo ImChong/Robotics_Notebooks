@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [company, embodied-foundation-model, dataset, scaling]
+tags: [company, embodied-foundation-model, dataset, scaling, generalist-ai]
 title: Generalist AI（机器人）
 summary: "Generalist AI 是宣称以超大规模真实交互数据预训练具身基础模型的商业团队之一；公开材料侧重数据规模与 GEN 系列迭代，引用应以官网博客为准。"
 updated: 2026-05-10

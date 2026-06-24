@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - llm-agents
@@ -19,6 +20,8 @@ related:
 sources:
   - ../../sources/repos/sensenova-skills.md
 summary: "SenseNova-Skills 是 OpenSenseNova 发布的 Agent Skills 办公技能库：分层编排信息图、PPT、Excel 分析与可恢复深度研究，推荐与 Hermes/OpenClaw 及 SenseNova API 组合；对机器人研究者有行业调研与报告产出参照价值。"
+tags: [llm-agents, agent-infrastructure, skills, office-productivity, deep-research, data-analysis, sensenova]
+
 ---
 
 # SenseNova-Skills（OpenSenseNova）

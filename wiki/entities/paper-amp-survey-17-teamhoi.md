@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
+tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, sea-ai-lab]
 status: complete
 updated: 2026-06-11
 venue: curated

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers]
+tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, openai]
 status: complete
 updated: 2026-05-26
 arxiv: "1810.12894"

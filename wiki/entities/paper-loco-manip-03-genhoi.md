@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, loco-manipulation, loco-manip-survey, humanoid]
+tags: [paper, loco-manipulation, loco-manip-survey, humanoid, hkust-gz, ustc, nus, hkust, hku]
 status: complete
 updated: 2026-06-14
 arxiv: "2606.12995"

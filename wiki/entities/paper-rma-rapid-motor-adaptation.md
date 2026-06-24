@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - quadruped
@@ -24,6 +25,8 @@ sources:
   - ../../sources/sites/rma-legged-robots-github-io.md
   - ../../sources/repos/antonilo_rl_locomotion.md
 summary: "RMA（RSS 2021）：特权环境 extrinsics 训练 base policy，历史本体–动作监督训练 adaptation module；A1 异步 10/100 Hz 零微调部署，秒级适应变地形与载荷。"
+tags: [quadruped, reinforcement-learning, locomotion, sim2real, privileged-training, online-adaptation, berkeley, cmu]
+
 ---
 
 # RMA: Rapid Motor Adaptation for Legged Robots

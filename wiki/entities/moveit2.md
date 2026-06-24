@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [ros2, motion-planning, manipulation, inverse-kinematics, collision-checking, ompl, moveit, pick-and-place]
+tags: [ros2, motion-planning, manipulation, inverse-kinematics, collision-checking, ompl, moveit, pick-and-place, linux-foundation]
 status: complete
 date: 2026-06-15
 updated: 2026-06-15

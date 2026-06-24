@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, amp, motion-prior, adversarial-imitation]
+tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, eth, ut-austin, nvidia]
 status: complete
 updated: 2026-06-23
 venue: curated

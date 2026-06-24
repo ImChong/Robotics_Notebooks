@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers]
+tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, pku]
 status: complete
 updated: 2026-05-26
 summary: "文本到人体动作生成常用基准。"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, robot-design, co-design, multi-embodiment, reinforcement-learning, ppo, urma, value-function, locomotion, mujoco, mjx, quadruped, humanoid]
+tags: [paper, robot-design, co-design, multi-embodiment, reinforcement-learning, ppo, urma, value-function, locomotion, mujoco, mjx, quadruped, humanoid, tu-darmstadt, dfki]
 status: complete
 updated: 2026-06-02
 arxiv: "2606.00702"

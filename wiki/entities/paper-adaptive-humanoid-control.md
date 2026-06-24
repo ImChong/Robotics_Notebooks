@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack, amp, motion-prior]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, amp, motion-prior, teleai, npu, hit, heu, shanghaitech, ustc]
 status: complete
 updated: 2026-06-10
 venue: curated

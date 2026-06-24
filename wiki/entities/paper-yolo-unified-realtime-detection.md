@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -22,6 +23,8 @@ sources:
   - ../../sources/papers/yolo_arxiv_1506_02640.md
   - ../../sources/papers/vision_backbone_detection_classics.md
 summary: "YOLO v1（arXiv:1506.02640）将目标检测重构为单次 CNN 回归，在 Pascal VOC 上达 63.4 mAP @ 45 FPS，开启端到端实时检测范式并深刻影响机器人机载感知栈。"
+tags: [paper, computer-vision, object-detection, real-time, perception, robotics, ai2, uw]
+
 ---
 
 # YOLO v1（You Only Look Once）

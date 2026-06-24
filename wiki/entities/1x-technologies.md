@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [hardware, humanoid, industry, teleoperation]
+tags: [hardware, humanoid, industry, teleoperation, 1x-technologies]
 status: complete
 updated: 2026-05-07
 related:

@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - paper
@@ -30,6 +31,8 @@ sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_ego_9_papers_survey.md
   - ../../sources/papers/ego_survey_07_wem.md
 summary: "WEM（arXiv:2605.19957）：World-Ego Modeling 将具身未来解耦为持久场景 world 与指令条件 ego；RCA 规划器 + CP-MoE 扩散生成长程混合导航–操作视频；HTEWorld（BEHAVIOR-1K）125K 训练片段与 300 条多轮评测轨迹，EWMScore 61.48（论文报告领先）。"
+tags: [paper, world-models, video-generation, embodied-ai, navigation, manipulation, benchmark, diffusion, mixture-of-experts, nvidia]
+
 ---
 
 # WEM（World-Ego Modeling / World-Ego Model）

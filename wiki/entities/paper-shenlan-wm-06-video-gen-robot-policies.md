@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, world-models, shenlan-survey, open-source]
+tags: [paper, world-models, shenlan-survey, open-source, toyota-research]
 status: complete
 updated: 2026-06-03
 arxiv: "2508.00795"

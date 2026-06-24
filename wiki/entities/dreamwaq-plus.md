@@ -1,4 +1,5 @@
 ---
+
 type: entity
 tags:
   - quadruped
@@ -25,6 +26,8 @@ sources:
   - ../../sources/papers/dreamwaq_plus_arxiv_2409_19709.md
   - ../../sources/sites/dreamwaqpp-github-io.md
 summary: "DreamWaQ++（T-RO 2026）：四足多模态 RL，融合本体与外感知点云，单阶段非对称 AC+PPO，在楼梯/陡坡/OOD 与传感器失效下保持障碍感知行走。"
+tags: [quadruped, reinforcement-learning, locomotion, perception, sim2real, privileged-training, point-cloud, kaist, mit]
+
 ---
 
 # DreamWaQ++（障碍感知四足多模态强化学习）

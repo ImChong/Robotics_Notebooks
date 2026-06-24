@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers]
+tags: [dataset, bfm, behavior-foundation-model, human-motion, awesome-bfm-papers, inria]
 status: complete
 updated: 2026-05-26
 summary: "语言描述与姿态桥接。"

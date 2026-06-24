@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, human-scene-interaction, generative-model, smpl-x, transformer, vae, synthetic-data, prox, eccv2022, computer-graphics]
+tags: [paper, human-scene-interaction, generative-model, smpl-x, transformer, vae, synthetic-data, prox, eccv2022, computer-graphics, stanford, eth]
 status: complete
 updated: 2026-06-19
 arxiv: "2207.12824"

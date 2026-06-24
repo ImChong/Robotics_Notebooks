@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [rl, mujoco, mjx, locomotion, imitation, open-source, jax]
+tags: [rl, mujoco, mjx, locomotion, imitation, open-source, jax, disney, open-duck]
 status: complete
 updated: 2026-05-28
 related:

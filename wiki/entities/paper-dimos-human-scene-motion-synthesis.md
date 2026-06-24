@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, human-scene-interaction, character-animation, reinforcement-learning, motion-synthesis, iccv2023]
+tags: [paper, human-scene-interaction, character-animation, reinforcement-learning, motion-synthesis, iccv2023, eth, google]
 status: complete
 updated: 2026-06-09
 arxiv: "2305.12411"

@@ -1,6 +1,7 @@
 ---
+
 type: entity
-tags: [paper, humanoid, rl, motion-control, body-system-stack]
+tags: [paper, humanoid, rl, motion-control, body-system-stack, ningbo-eastern, polyu, limx, ustc]
 status: complete
 updated: 2026-06-11
 venue: "project"
