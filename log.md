@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-24] ingest | sources/sites/wokwi-com.md — Wokwi 在线嵌入式仿真平台；升格 wiki/entities/wokwi.md 并交叉 motor-drive-firmware-bus-protocols / simplefoc
+
+- 原始资料：[wokwi-com.md](sources/sites/wokwi-com.md)
+- 升格实体：[wiki/entities/wokwi.md](wiki/entities/wokwi.md)
+- 交叉更新：[motor-drive-firmware-bus-protocols](wiki/overview/motor-drive-firmware-bus-protocols.md)、[simplefoc](wiki/entities/simplefoc.md)
+- 机构注册表：`schema/institutions.json` 追加 Wokwi
+
 ## [2026-06-23] structural | schema/institutions.json、scripts/bump_institution_tags.py — 批量补全 wiki 节点所属机构 tags；工具实体 lint 门禁
 
 - 扩展机构注册表（Hugging Face、AI2、Amazon、INRIA、Blender Foundation、X-Humanoid、SDU、RoboParty、FreeMoCap 等）与 Unitree 产品 alias

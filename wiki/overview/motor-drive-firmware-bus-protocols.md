@@ -3,7 +3,7 @@
 type: overview
 tags: [hardware, firmware, motor-drive, fieldbus, can-bus, canopen, ethercat, embedded, robotics, mit]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-24
 related:
   - ../concepts/can-bus-protocol.md
   - ../concepts/can-fd.md
@@ -13,6 +13,7 @@ related:
   - ../concepts/ttl-serial-logic-level.md
   - ../concepts/field-oriented-control.md
   - ../entities/simplefoc.md
+  - ../entities/wokwi.md
   - ../comparisons/can-vs-ethercat-joint-bus.md
   - ../formalizations/control-loop-latency-modeling.md
   - ../concepts/processor-in-the-loop-sim2real.md
@@ -141,7 +142,7 @@ flowchart TB
    L1 CAN FD → L2 **DroneCAN** → 与关节 CANopen **分总线** 或网关隔离。
 
 5. **Bring-up 阶段**  
-   L1 UART → 标定、读版本、产测；**不替代** 关节闭环总线。
+   L1 UART → 标定、读版本、产测；**不替代** 关节闭环总线。无硬件时可先用 [Wokwi](../entities/wokwi.md) 等 **MCU 外设仿真** 做 I2C/UART/PWM 冒烟，再焊板联调。
 
 ## 选型决策（简图）
 
@@ -176,6 +177,7 @@ flowchart TD
 
 - [磁场定向控制（FOC）](../concepts/field-oriented-control.md)
 - [SimpleFOC](../entities/simplefoc.md)
+- [Wokwi](../entities/wokwi.md) — 浏览器端 MCU/外设仿真，固件 bring-up 与教学
 - [CAN 总线（经典）](../concepts/can-bus-protocol.md)
 - [CAN FD](../concepts/can-fd.md)
 - [EtherCAT 协议基础](../concepts/ethercat-protocol.md)
