@@ -5,7 +5,7 @@ from __future__ import annotations
 import generate_link_graph as glg
 
 REGISTRY = {
-    "nvidia": {"label": "NVIDIA", "aliases": ["nvidia", "gear"]},
+    "nvidia": {"label": "英伟达（NVIDIA）", "aliases": ["nvidia", "gear"]},
     "cmu": {"label": "卡内基梅隆大学（CMU）", "aliases": ["cmu"]},
     "tsinghua": {"label": "清华大学（Tsinghua）", "aliases": ["tsinghua", "thu"]},
 }
@@ -56,6 +56,6 @@ def test_build_summary_sorts_by_size_then_label() -> None:
         {"id": "d"},
     ]
     summary = glg.build_institutions_summary(nodes, REGISTRY)
-    assert summary[0] == {"id": "nvidia", "label": "NVIDIA", "size": 2}
-    assert {"id": "cmu", "label": "卡内基梅隆大学（CMU）", "size": 2} in summary
+    assert summary[0] == {"id": "cmu", "label": "卡内基梅隆大学（CMU）", "size": 2}
+    assert {"id": "nvidia", "label": "英伟达（NVIDIA）", "size": 2} in summary
     assert all(item["size"] >= 1 for item in summary)

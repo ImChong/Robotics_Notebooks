@@ -1,139 +1,867 @@
 {
-  "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。新增机构在此追加即可，无需改前端。",
+  "_doc": "研究机构注册表（单一事实源）。generate_link_graph.py 据此从每个 wiki 节点的 frontmatter tags 派生「所属机构」，页面也可用 frontmatter `institutions: [..]` 显式覆盖。aliases 为精确匹配的 tag token（小写），不做子串匹配以避免误命中。展示 label 统一为「中文（English）」格式（见 schema/naming.md § 研究机构命名）。新增机构在此追加即可，无需改前端。",
   "registry": {
-    "nvidia": { "label": "NVIDIA", "aliases": ["nvidia", "gear"] },
-    "google-deepmind": { "label": "Google DeepMind", "aliases": ["google-deepmind", "deepmind"] },
-    "google": { "label": "Google", "aliases": ["google", "google-research", "google-brain"] },
-    "meta": { "label": "Meta AI", "aliases": ["meta", "meta-ai", "fair"] },
-    "microsoft": { "label": "Microsoft", "aliases": ["microsoft", "msr"] },
-    "openai": { "label": "OpenAI", "aliases": ["openai"] },
-    "physical-intelligence": { "label": "Physical Intelligence", "aliases": ["physical-intelligence"] },
-    "cmu": { "label": "卡内基梅隆大学（CMU）", "aliases": ["cmu"] },
-    "mit": { "label": "麻省理工（MIT）", "aliases": ["mit"] },
-    "stanford": { "label": "斯坦福大学（Stanford）", "aliases": ["stanford"] },
-    "berkeley": { "label": "加州大学伯克利分校（UC Berkeley）", "aliases": ["berkeley", "ucb", "uc-berkeley"] },
-    "princeton": { "label": "普林斯顿大学（Princeton）", "aliases": ["princeton"] },
-    "eth": { "label": "苏黎世联邦理工（ETH Zürich）", "aliases": ["eth", "ethz", "eth-zurich"] },
-    "tsinghua": { "label": "清华大学（Tsinghua）", "aliases": ["tsinghua", "thu"] },
-    "pku": { "label": "北京大学（PKU）", "aliases": ["pku"] },
-    "sjtu": { "label": "上海交通大学（SJTU）", "aliases": ["sjtu"] },
-    "zju": { "label": "浙江大学（ZJU）", "aliases": ["zju"] },
-    "hku": { "label": "香港大学（HKU）", "aliases": ["hku"] },
-    "hkust": { "label": "香港科技大学（HKUST）", "aliases": ["hkust"] },
-    "hkust-gz": { "label": "香港科技大学（广州）", "aliases": ["hkust-gz", "hkust-guangzhou"] },
-    "shanghai-ai-lab": { "label": "上海人工智能实验室（Shanghai AI Lab）", "aliases": ["shanghai-ai-lab", "shlab"] },
-    "unitree": { "label": "宇树科技（Unitree）", "aliases": ["unitree", "unitree-g1", "unitree-go2", "unitree-a1"] },
-    "agibot": { "label": "智元机器人（AgiBot）", "aliases": ["agibot"] },
-    "fourier": { "label": "傅利叶（Fourier）", "aliases": ["fourier"] },
-    "galbot": { "label": "银河通用（Galbot）", "aliases": ["galbot"] },
-    "booster": { "label": "加速进化（Booster Robotics）", "aliases": ["booster"] },
-    "xpeng": { "label": "小鹏（XPeng）", "aliases": ["xpeng"] },
-    "huggingface": { "label": "Hugging Face", "aliases": ["huggingface", "hugging-face"] },
-    "ai2": { "label": "艾伦人工智能研究所（AI2）", "aliases": ["ai2", "allen-ai"] },
-    "amazon": { "label": "Amazon", "aliases": ["amazon", "amazon-far"] },
-    "inria": { "label": "INRIA", "aliases": ["inria"] },
-    "toyota-research": { "label": "丰田研究院（TRI）", "aliases": ["toyota-research", "tri"] },
-    "sfu": { "label": "西蒙菲莎大学（SFU）", "aliases": ["sfu"] },
-    "bitcraze": { "label": "Bitcraze", "aliases": ["bitcraze"] },
-    "epic-games": { "label": "Epic Games", "aliases": ["epic-games", "epic"] },
-    "linux-foundation": { "label": "Linux Foundation", "aliases": ["linux-foundation"] },
-    "horizon-robotics": { "label": "地平线（Horizon Robotics）", "aliases": ["horizon-robotics", "horizon"] },
-    "baai": { "label": "北京智源人工智能研究院（BAAI）", "aliases": ["baai", "baai-aether"] },
-    "bigai": { "label": "北京通用人工智能研究院（BIGAI）", "aliases": ["bigai"] },
-    "limx": { "label": "逐际动力（LimX Dynamics）", "aliases": ["limx"] },
-    "ucsd": { "label": "加州大学圣地亚哥分校（UCSD）", "aliases": ["ucsd"] },
-    "genesis-ai": { "label": "Genesis AI", "aliases": ["genesis-ai"] },
-    "openloong": { "label": "青龙（OpenLoong）", "aliases": ["openloong"] },
-    "blender-foundation": { "label": "Blender Foundation", "aliases": ["blender-foundation", "blender"] },
-    "x-humanoid": { "label": "X-Humanoid", "aliases": ["x-humanoid"] },
-    "sdu": { "label": "山东大学（SDU）", "aliases": ["sdu", "jackhan-sdu"] },
-    "roboparty": { "label": "RoboParty", "aliases": ["roboparty"] },
-    "freemocap": { "label": "FreeMoCap Project", "aliases": ["freemocap"] },
-    "wokwi": { "label": "Wokwi", "aliases": ["wokwi"] },
-    "ustc": { "label": "中国科学技术大学（USTC）", "aliases": ["ustc"] },
-    "shanghaitech": { "label": "上海科技大学", "aliases": ["shanghaitech"] },
-    "teleai": { "label": "中国电信 TeleAI", "aliases": ["teleai", "china-telecom-ai"] },
-    "hit": { "label": "哈尔滨工业大学（HIT）", "aliases": ["hit"] },
-    "heu": { "label": "哈尔滨工程大学（HEU）", "aliases": ["heu"] },
-    "npu": { "label": "西北工业大学（NPU）", "aliases": ["npu", "nwpu"] },
-    "shanghai-pil": { "label": "上海期智研究院", "aliases": ["shanghai-pil", "pi-shanghai"] },
-    "cuhk": { "label": "香港中文大学（CUHK）", "aliases": ["cuhk"] },
-    "umich": { "label": "密歇根大学（UMich）", "aliases": ["umich"] },
-    "uw": { "label": "华盛顿大学（UW）", "aliases": ["uw", "university-of-washington"] },
-    "ut-austin": { "label": "德州大学奥斯汀分校（UT Austin）", "aliases": ["ut-austin", "utaustin"] },
-    "xiaomi-robotics": { "label": "小米机器人实验室", "aliases": ["xiaomi-robotics", "xiaomi"] },
-    "lumos": { "label": "Lumos Robotics", "aliases": ["lumos", "lumos-robotics"] },
-    "nju": { "label": "南京大学（NJU）", "aliases": ["nju"] },
-    "huawei": { "label": "华为（Huawei）", "aliases": ["huawei"] },
-    "ubc": { "label": "英属哥伦比亚大学（UBC）", "aliases": ["ubc"] },
-    "hust": { "label": "华中科技大学（HUST）", "aliases": ["hust"] },
-    "bit": { "label": "北京理工大学（BIT）", "aliases": ["bit", "bit-cn"] },
-    "cqu": { "label": "重庆大学（CQU）", "aliases": ["cqu"] },
-    "scu": { "label": "四川大学（SCU）", "aliases": ["scu"] },
-    "ningbo-eastern": { "label": "宁波东方理工大学", "aliases": ["ningbo-eastern"] },
-    "fudan": { "label": "复旦大学（Fudan）", "aliases": ["fudan"] },
-    "opendrivelab": { "label": "OpenDriveLab", "aliases": ["opendrivelab"] },
-    "bjut": { "label": "北京工业大学（BJUT）", "aliases": ["bjut"] },
-    "cau": { "label": "中国农业大学（CAU）", "aliases": ["cau"] },
-    "bytedance": { "label": "字节跳动（ByteDance）", "aliases": ["bytedance", "bytedance-seed"] },
-    "sysu": { "label": "中山大学（SYSU）", "aliases": ["sysu"] },
-    "caltech": { "label": "加州理工学院（Caltech）", "aliases": ["caltech"] },
-    "uf": { "label": "佛罗里达大学（UF）", "aliases": ["uf"] },
-    "tufts": { "label": "塔夫茨大学（Tufts）", "aliases": ["tufts"] },
-    "upenn": { "label": "宾夕法尼亚大学（UPenn）", "aliases": ["upenn", "penn"] },
-    "snu": { "label": "首尔大学（SNU）", "aliases": ["snu", "seoul-national-university"] },
-    "nus": { "label": "新加坡国立大学（NUS）", "aliases": ["nus"] },
-    "scut": { "label": "华南理工大学（SCUT）", "aliases": ["scut"] },
-    "anu": { "label": "澳大利亚国立大学（ANU）", "aliases": ["anu"] },
-    "adelaide": { "label": "阿德莱德大学（Adelaide）", "aliases": ["adelaide"] },
-    "oregon-state": { "label": "俄勒冈州立大学（Oregon State）", "aliases": ["oregon-state", "oregon-state-university"] },
-    "georgia-tech": { "label": "佐治亚理工学院（Georgia Tech）", "aliases": ["georgia-tech", "gatech"] },
-    "duke": { "label": "杜克大学（Duke）", "aliases": ["duke"] },
-    "nyu": { "label": "纽约大学（NYU）", "aliases": ["nyu"] },
-    "jku": { "label": "约翰内斯开普勒大学（JKU）", "aliases": ["jku"] },
-    "polyu": { "label": "香港理工大学（PolyU）", "aliases": ["polyu"] },
-    "ucas": { "label": "中国科学院大学（UCAS）", "aliases": ["ucas"] },
-    "sea-ai-lab": { "label": "Sea AI Lab", "aliases": ["sea-ai-lab", "garena"] },
-    "beingbeyond": { "label": "BeingBeyond", "aliases": ["beingbeyond"] },
-    "tju": { "label": "天津大学（TJU）", "aliases": ["tju"] },
-    "buaa": { "label": "北京航空航天大学（BUAA）", "aliases": ["buaa"] },
-    "zgca": { "label": "中关村人工智能研究院（ZGCA）", "aliases": ["zgca", "zgca-ai"] },
-    "usc": { "label": "南加州大学（USC）", "aliases": ["usc"] },
-    "sony": { "label": "Sony", "aliases": ["sony"] },
-    "snap": { "label": "Snap", "aliases": ["snap"] },
-    "kaist": { "label": "韩国科学技术院（KAIST）", "aliases": ["kaist"] },
-    "max-planck": { "label": "马克斯·普朗克研究所（Max Planck）", "aliases": ["max-planck", "mpi"] },
-    "figure-ai": { "label": "Figure AI", "aliases": ["figure-ai", "figure"] },
-    "1x-technologies": { "label": "1X Technologies", "aliases": ["1x-technologies", "1x"] },
-    "elephant-robotics": { "label": "大象机器人（Elephant Robotics）", "aliases": ["elephant-robotics", "elephantrobotics"] },
-    "robotis": { "label": "ROBOTIS", "aliases": ["robotis"] },
-    "kinova": { "label": "Kinova", "aliases": ["kinova"] },
-    "shadow-robotics": { "label": "Shadow Robot Company", "aliases": ["shadow-robotics", "shadow"] },
-    "alibaba": { "label": "阿里巴巴（Alibaba）", "aliases": ["alibaba", "qwen"] },
-    "autodesk": { "label": "Autodesk", "aliases": ["autodesk", "mixamo"] },
-    "wonik-robotics": { "label": "Wonik Robotics（Allegro Hand）", "aliases": ["wonik-robotics", "allegro"] },
-    "northwestern": { "label": "西北大学（Northwestern）", "aliases": ["northwestern"] },
-    "uiuc": { "label": "伊利诺伊大学厄巴纳-香槟分校（UIUC）", "aliases": ["uiuc", "zju-uiuc"] },
-    "generalist-ai": { "label": "Generalist AI", "aliases": ["generalist-ai"] },
-    "wuji-robotics": { "label": "无界机器人（Wuji Robotics）", "aliases": ["wuji-robotics", "wuji"] },
-    "motrix": { "label": "Motrix Techknowledge", "aliases": ["motrix"] },
-    "odri": { "label": "Open Dynamic Robot Initiative（ODRI）", "aliases": ["odri"] },
-    "source-robotics": { "label": "Source Robotics", "aliases": ["source-robotics"] },
-    "open-duck": { "label": "Open Duck Mini", "aliases": ["open-duck"] },
-    "disney": { "label": "Disney Research", "aliases": ["disney"] },
-    "karpathy": { "label": "Andrej Karpathy", "aliases": ["karpathy"] },
-    "sensenova": { "label": "商汤科技 SenseNova", "aliases": ["sensenova"] },
-    "leju": { "label": "乐聚机器人（Leju）", "aliases": ["leju"] },
-    "tu-darmstadt": { "label": "达姆施塔特工业大学（TU Darmstadt）", "aliases": ["tu-darmstadt", "darmstadt"] },
-    "dfki": { "label": "德国人工智能研究中心（DFKI）", "aliases": ["dfki"] },
-    "zozo": { "label": "ZOZO, Inc.", "aliases": ["zozo"] },
-    "jd": { "label": "京东（JD）", "aliases": ["jd", "jdcloud"] },
-    "pybullet": { "label": "PyBullet / Bullet Physics", "aliases": ["pybullet", "bullet"] },
-    "purdue": { "label": "普渡大学（Purdue）", "aliases": ["purdue"] },
-    "franka": { "label": "Franka Robotics", "aliases": ["franka", "franka-emika"] },
-    "kit": { "label": "卡尔斯鲁厄理工学院（KIT）", "aliases": ["kit", "karlsruhe"] },
-    "motphys": { "label": "Motphys（Motrix）", "aliases": ["motphys", "motrix"] },
-    "motioncode": { "label": "MotionCode", "aliases": ["motioncode"] },
-    "current-robotics": { "label": "Current Robotics", "aliases": ["current-robotics", "curr0"] }
+    "nvidia": {
+      "label": "英伟达（NVIDIA）",
+      "aliases": [
+        "nvidia",
+        "gear"
+      ]
+    },
+    "google-deepmind": {
+      "label": "谷歌 DeepMind（Google DeepMind）",
+      "aliases": [
+        "google-deepmind",
+        "deepmind"
+      ]
+    },
+    "google": {
+      "label": "谷歌（Google）",
+      "aliases": [
+        "google",
+        "google-research",
+        "google-brain"
+      ]
+    },
+    "meta": {
+      "label": "元宇宙人工智能（Meta AI）",
+      "aliases": [
+        "meta",
+        "meta-ai",
+        "fair"
+      ]
+    },
+    "microsoft": {
+      "label": "微软（Microsoft）",
+      "aliases": [
+        "microsoft",
+        "msr"
+      ]
+    },
+    "openai": {
+      "label": "开放人工智能（OpenAI）",
+      "aliases": [
+        "openai"
+      ]
+    },
+    "physical-intelligence": {
+      "label": "物理智能（Physical Intelligence）",
+      "aliases": [
+        "physical-intelligence"
+      ]
+    },
+    "cmu": {
+      "label": "卡内基梅隆大学（CMU）",
+      "aliases": [
+        "cmu"
+      ]
+    },
+    "mit": {
+      "label": "麻省理工（MIT）",
+      "aliases": [
+        "mit"
+      ]
+    },
+    "stanford": {
+      "label": "斯坦福大学（Stanford）",
+      "aliases": [
+        "stanford"
+      ]
+    },
+    "berkeley": {
+      "label": "加州大学伯克利分校（UC Berkeley）",
+      "aliases": [
+        "berkeley",
+        "ucb",
+        "uc-berkeley"
+      ]
+    },
+    "princeton": {
+      "label": "普林斯顿大学（Princeton）",
+      "aliases": [
+        "princeton"
+      ]
+    },
+    "eth": {
+      "label": "苏黎世联邦理工（ETH Zürich）",
+      "aliases": [
+        "eth",
+        "ethz",
+        "eth-zurich"
+      ]
+    },
+    "tsinghua": {
+      "label": "清华大学（Tsinghua）",
+      "aliases": [
+        "tsinghua",
+        "thu"
+      ]
+    },
+    "pku": {
+      "label": "北京大学（PKU）",
+      "aliases": [
+        "pku"
+      ]
+    },
+    "sjtu": {
+      "label": "上海交通大学（SJTU）",
+      "aliases": [
+        "sjtu"
+      ]
+    },
+    "zju": {
+      "label": "浙江大学（ZJU）",
+      "aliases": [
+        "zju"
+      ]
+    },
+    "hku": {
+      "label": "香港大学（HKU）",
+      "aliases": [
+        "hku"
+      ]
+    },
+    "hkust": {
+      "label": "香港科技大学（HKUST）",
+      "aliases": [
+        "hkust"
+      ]
+    },
+    "hkust-gz": {
+      "label": "香港科技大学广州校区（HKUST-GZ）",
+      "aliases": [
+        "hkust-gz",
+        "hkust-guangzhou"
+      ]
+    },
+    "shanghai-ai-lab": {
+      "label": "上海人工智能实验室（Shanghai AI Lab）",
+      "aliases": [
+        "shanghai-ai-lab",
+        "shlab"
+      ]
+    },
+    "unitree": {
+      "label": "宇树科技（Unitree）",
+      "aliases": [
+        "unitree",
+        "unitree-g1",
+        "unitree-go2",
+        "unitree-a1"
+      ]
+    },
+    "agibot": {
+      "label": "智元机器人（AgiBot）",
+      "aliases": [
+        "agibot"
+      ]
+    },
+    "fourier": {
+      "label": "傅利叶（Fourier）",
+      "aliases": [
+        "fourier"
+      ]
+    },
+    "galbot": {
+      "label": "银河通用（Galbot）",
+      "aliases": [
+        "galbot"
+      ]
+    },
+    "booster": {
+      "label": "加速进化（Booster Robotics）",
+      "aliases": [
+        "booster"
+      ]
+    },
+    "xpeng": {
+      "label": "小鹏（XPeng）",
+      "aliases": [
+        "xpeng"
+      ]
+    },
+    "huggingface": {
+      "label": "拥抱脸（Hugging Face）",
+      "aliases": [
+        "huggingface",
+        "hugging-face"
+      ]
+    },
+    "ai2": {
+      "label": "艾伦人工智能研究所（AI2）",
+      "aliases": [
+        "ai2",
+        "allen-ai"
+      ]
+    },
+    "amazon": {
+      "label": "亚马逊（Amazon）",
+      "aliases": [
+        "amazon",
+        "amazon-far"
+      ]
+    },
+    "inria": {
+      "label": "法国国家信息与自动化研究所（INRIA）",
+      "aliases": [
+        "inria"
+      ]
+    },
+    "toyota-research": {
+      "label": "丰田研究院（TRI）",
+      "aliases": [
+        "toyota-research",
+        "tri"
+      ]
+    },
+    "sfu": {
+      "label": "西蒙菲莎大学（SFU）",
+      "aliases": [
+        "sfu"
+      ]
+    },
+    "bitcraze": {
+      "label": "微型四轴无人机平台（Bitcraze）",
+      "aliases": [
+        "bitcraze"
+      ]
+    },
+    "epic-games": {
+      "label": "史诗游戏（Epic Games）",
+      "aliases": [
+        "epic-games",
+        "epic"
+      ]
+    },
+    "linux-foundation": {
+      "label": "开源软件基金会（Linux Foundation）",
+      "aliases": [
+        "linux-foundation"
+      ]
+    },
+    "horizon-robotics": {
+      "label": "地平线（Horizon Robotics）",
+      "aliases": [
+        "horizon-robotics",
+        "horizon"
+      ]
+    },
+    "baai": {
+      "label": "北京智源人工智能研究院（BAAI）",
+      "aliases": [
+        "baai",
+        "baai-aether"
+      ]
+    },
+    "bigai": {
+      "label": "北京通用人工智能研究院（BIGAI）",
+      "aliases": [
+        "bigai"
+      ]
+    },
+    "limx": {
+      "label": "逐际动力（LimX Dynamics）",
+      "aliases": [
+        "limx"
+      ]
+    },
+    "ucsd": {
+      "label": "加州大学圣地亚哥分校（UCSD）",
+      "aliases": [
+        "ucsd"
+      ]
+    },
+    "genesis-ai": {
+      "label": "创世纪 AI（Genesis AI）",
+      "aliases": [
+        "genesis-ai"
+      ]
+    },
+    "openloong": {
+      "label": "青龙（OpenLoong）",
+      "aliases": [
+        "openloong"
+      ]
+    },
+    "blender-foundation": {
+      "label": "三维开源基金会（Blender Foundation）",
+      "aliases": [
+        "blender-foundation",
+        "blender"
+      ]
+    },
+    "x-humanoid": {
+      "label": "北京人形机器人创新中心（X-Humanoid）",
+      "aliases": [
+        "x-humanoid"
+      ]
+    },
+    "sdu": {
+      "label": "山东大学（SDU）",
+      "aliases": [
+        "sdu",
+        "jackhan-sdu"
+      ]
+    },
+    "roboparty": {
+      "label": "机器人派对（RoboParty）",
+      "aliases": [
+        "roboparty"
+      ]
+    },
+    "freemocap": {
+      "label": "自由动作捕捉（FreeMoCap Project）",
+      "aliases": [
+        "freemocap"
+      ]
+    },
+    "wokwi": {
+      "label": "在线电路仿真（Wokwi）",
+      "aliases": [
+        "wokwi"
+      ]
+    },
+    "ustc": {
+      "label": "中国科学技术大学（USTC）",
+      "aliases": [
+        "ustc"
+      ]
+    },
+    "shanghaitech": {
+      "label": "上海科技大学（ShanghaiTech）",
+      "aliases": [
+        "shanghaitech"
+      ]
+    },
+    "teleai": {
+      "label": "中国电信人工智能（TeleAI）",
+      "aliases": [
+        "teleai",
+        "china-telecom-ai"
+      ]
+    },
+    "hit": {
+      "label": "哈尔滨工业大学（HIT）",
+      "aliases": [
+        "hit"
+      ]
+    },
+    "heu": {
+      "label": "哈尔滨工程大学（HEU）",
+      "aliases": [
+        "heu"
+      ]
+    },
+    "npu": {
+      "label": "西北工业大学（NPU）",
+      "aliases": [
+        "npu",
+        "nwpu"
+      ]
+    },
+    "shanghai-pil": {
+      "label": "上海期智研究院（Shanghai PIL）",
+      "aliases": [
+        "shanghai-pil",
+        "pi-shanghai"
+      ]
+    },
+    "cuhk": {
+      "label": "香港中文大学（CUHK）",
+      "aliases": [
+        "cuhk"
+      ]
+    },
+    "umich": {
+      "label": "密歇根大学（UMich）",
+      "aliases": [
+        "umich"
+      ]
+    },
+    "uw": {
+      "label": "华盛顿大学（UW）",
+      "aliases": [
+        "uw",
+        "university-of-washington"
+      ]
+    },
+    "ut-austin": {
+      "label": "德州大学奥斯汀分校（UT Austin）",
+      "aliases": [
+        "ut-austin",
+        "utaustin"
+      ]
+    },
+    "xiaomi-robotics": {
+      "label": "小米机器人实验室（Xiaomi Robotics）",
+      "aliases": [
+        "xiaomi-robotics",
+        "xiaomi"
+      ]
+    },
+    "lumos": {
+      "label": "光明机器人（Lumos Robotics）",
+      "aliases": [
+        "lumos",
+        "lumos-robotics"
+      ]
+    },
+    "nju": {
+      "label": "南京大学（NJU）",
+      "aliases": [
+        "nju"
+      ]
+    },
+    "huawei": {
+      "label": "华为（Huawei）",
+      "aliases": [
+        "huawei"
+      ]
+    },
+    "ubc": {
+      "label": "英属哥伦比亚大学（UBC）",
+      "aliases": [
+        "ubc"
+      ]
+    },
+    "hust": {
+      "label": "华中科技大学（HUST）",
+      "aliases": [
+        "hust"
+      ]
+    },
+    "bit": {
+      "label": "北京理工大学（BIT）",
+      "aliases": [
+        "bit",
+        "bit-cn"
+      ]
+    },
+    "cqu": {
+      "label": "重庆大学（CQU）",
+      "aliases": [
+        "cqu"
+      ]
+    },
+    "scu": {
+      "label": "四川大学（SCU）",
+      "aliases": [
+        "scu"
+      ]
+    },
+    "ningbo-eastern": {
+      "label": "宁波东方理工大学（Eastern Institute of Technology, Ningbo）",
+      "aliases": [
+        "ningbo-eastern"
+      ]
+    },
+    "fudan": {
+      "label": "复旦大学（Fudan）",
+      "aliases": [
+        "fudan"
+      ]
+    },
+    "opendrivelab": {
+      "label": "自动驾驶开放实验室（OpenDriveLab）",
+      "aliases": [
+        "opendrivelab"
+      ]
+    },
+    "bjut": {
+      "label": "北京工业大学（BJUT）",
+      "aliases": [
+        "bjut"
+      ]
+    },
+    "cau": {
+      "label": "中国农业大学（CAU）",
+      "aliases": [
+        "cau"
+      ]
+    },
+    "bytedance": {
+      "label": "字节跳动（ByteDance）",
+      "aliases": [
+        "bytedance",
+        "bytedance-seed"
+      ]
+    },
+    "sysu": {
+      "label": "中山大学（SYSU）",
+      "aliases": [
+        "sysu"
+      ]
+    },
+    "caltech": {
+      "label": "加州理工学院（Caltech）",
+      "aliases": [
+        "caltech"
+      ]
+    },
+    "uf": {
+      "label": "佛罗里达大学（UF）",
+      "aliases": [
+        "uf"
+      ]
+    },
+    "tufts": {
+      "label": "塔夫茨大学（Tufts）",
+      "aliases": [
+        "tufts"
+      ]
+    },
+    "upenn": {
+      "label": "宾夕法尼亚大学（UPenn）",
+      "aliases": [
+        "upenn",
+        "penn"
+      ]
+    },
+    "snu": {
+      "label": "首尔大学（SNU）",
+      "aliases": [
+        "snu",
+        "seoul-national-university"
+      ]
+    },
+    "nus": {
+      "label": "新加坡国立大学（NUS）",
+      "aliases": [
+        "nus"
+      ]
+    },
+    "scut": {
+      "label": "华南理工大学（SCUT）",
+      "aliases": [
+        "scut"
+      ]
+    },
+    "anu": {
+      "label": "澳大利亚国立大学（ANU）",
+      "aliases": [
+        "anu"
+      ]
+    },
+    "adelaide": {
+      "label": "阿德莱德大学（Adelaide）",
+      "aliases": [
+        "adelaide"
+      ]
+    },
+    "oregon-state": {
+      "label": "俄勒冈州立大学（Oregon State）",
+      "aliases": [
+        "oregon-state",
+        "oregon-state-university"
+      ]
+    },
+    "georgia-tech": {
+      "label": "佐治亚理工学院（Georgia Tech）",
+      "aliases": [
+        "georgia-tech",
+        "gatech"
+      ]
+    },
+    "duke": {
+      "label": "杜克大学（Duke）",
+      "aliases": [
+        "duke"
+      ]
+    },
+    "nyu": {
+      "label": "纽约大学（NYU）",
+      "aliases": [
+        "nyu"
+      ]
+    },
+    "jku": {
+      "label": "约翰内斯开普勒大学（JKU）",
+      "aliases": [
+        "jku"
+      ]
+    },
+    "polyu": {
+      "label": "香港理工大学（PolyU）",
+      "aliases": [
+        "polyu"
+      ]
+    },
+    "ucas": {
+      "label": "中国科学院大学（UCAS）",
+      "aliases": [
+        "ucas"
+      ]
+    },
+    "sea-ai-lab": {
+      "label": "东南亚人工智能实验室（Sea AI Lab）",
+      "aliases": [
+        "sea-ai-lab",
+        "garena"
+      ]
+    },
+    "beingbeyond": {
+      "label": "超越智能（BeingBeyond）",
+      "aliases": [
+        "beingbeyond"
+      ]
+    },
+    "tju": {
+      "label": "天津大学（TJU）",
+      "aliases": [
+        "tju"
+      ]
+    },
+    "buaa": {
+      "label": "北京航空航天大学（BUAA）",
+      "aliases": [
+        "buaa"
+      ]
+    },
+    "zgca": {
+      "label": "中关村人工智能研究院（ZGCA）",
+      "aliases": [
+        "zgca",
+        "zgca-ai"
+      ]
+    },
+    "usc": {
+      "label": "南加州大学（USC）",
+      "aliases": [
+        "usc"
+      ]
+    },
+    "sony": {
+      "label": "索尼（Sony）",
+      "aliases": [
+        "sony"
+      ]
+    },
+    "snap": {
+      "label": "斯纳普（Snap）",
+      "aliases": [
+        "snap"
+      ]
+    },
+    "kaist": {
+      "label": "韩国科学技术院（KAIST）",
+      "aliases": [
+        "kaist"
+      ]
+    },
+    "max-planck": {
+      "label": "马克斯·普朗克研究所（Max Planck）",
+      "aliases": [
+        "max-planck",
+        "mpi"
+      ]
+    },
+    "figure-ai": {
+      "label": "人形机器人公司（Figure AI）",
+      "aliases": [
+        "figure-ai",
+        "figure"
+      ]
+    },
+    "1x-technologies": {
+      "label": "挪威人形机器人公司（1X Technologies）",
+      "aliases": [
+        "1x-technologies",
+        "1x"
+      ]
+    },
+    "elephant-robotics": {
+      "label": "大象机器人（Elephant Robotics）",
+      "aliases": [
+        "elephant-robotics",
+        "elephantrobotics"
+      ]
+    },
+    "robotis": {
+      "label": "乐百机器人（ROBOTIS）",
+      "aliases": [
+        "robotis"
+      ]
+    },
+    "kinova": {
+      "label": "科诺瓦机器人（Kinova）",
+      "aliases": [
+        "kinova"
+      ]
+    },
+    "shadow-robotics": {
+      "label": "影子机器人公司（Shadow Robot Company）",
+      "aliases": [
+        "shadow-robotics",
+        "shadow"
+      ]
+    },
+    "alibaba": {
+      "label": "阿里巴巴（Alibaba）",
+      "aliases": [
+        "alibaba",
+        "qwen"
+      ]
+    },
+    "autodesk": {
+      "label": "欧特克（Autodesk）",
+      "aliases": [
+        "autodesk",
+        "mixamo"
+      ]
+    },
+    "wonik-robotics": {
+      "label": "元映机器人（Wonik Robotics）",
+      "aliases": [
+        "wonik-robotics",
+        "allegro"
+      ]
+    },
+    "northwestern": {
+      "label": "西北大学（Northwestern）",
+      "aliases": [
+        "northwestern"
+      ]
+    },
+    "uiuc": {
+      "label": "伊利诺伊大学厄巴纳-香槟分校（UIUC）",
+      "aliases": [
+        "uiuc",
+        "zju-uiuc"
+      ]
+    },
+    "generalist-ai": {
+      "label": "通用人工智能（Generalist AI）",
+      "aliases": [
+        "generalist-ai"
+      ]
+    },
+    "wuji-robotics": {
+      "label": "无界机器人（Wuji Robotics）",
+      "aliases": [
+        "wuji-robotics",
+        "wuji"
+      ]
+    },
+    "motrix": {
+      "label": "莫翠克斯（Motrix Techknowledge）",
+      "aliases": [
+        "motrix"
+      ]
+    },
+    "odri": {
+      "label": "开放动态机器人倡议（ODRI）",
+      "aliases": [
+        "odri"
+      ]
+    },
+    "source-robotics": {
+      "label": "源动力机器人（Source Robotics）",
+      "aliases": [
+        "source-robotics"
+      ]
+    },
+    "open-duck": {
+      "label": "开源鸭子机器人（Open Duck Mini）",
+      "aliases": [
+        "open-duck"
+      ]
+    },
+    "disney": {
+      "label": "迪士尼研究（Disney Research）",
+      "aliases": [
+        "disney"
+      ]
+    },
+    "karpathy": {
+      "label": "安德烈·卡帕西（Andrej Karpathy）",
+      "aliases": [
+        "karpathy"
+      ]
+    },
+    "sensenova": {
+      "label": "商汤科技（SenseNova）",
+      "aliases": [
+        "sensenova"
+      ]
+    },
+    "leju": {
+      "label": "乐聚机器人（Leju）",
+      "aliases": [
+        "leju"
+      ]
+    },
+    "tu-darmstadt": {
+      "label": "达姆施塔特工业大学（TU Darmstadt）",
+      "aliases": [
+        "tu-darmstadt",
+        "darmstadt"
+      ]
+    },
+    "dfki": {
+      "label": "德国人工智能研究中心（DFKI）",
+      "aliases": [
+        "dfki"
+      ]
+    },
+    "zozo": {
+      "label": "日本祖祖（ZOZO, Inc.）",
+      "aliases": [
+        "zozo"
+      ]
+    },
+    "jd": {
+      "label": "京东（JD）",
+      "aliases": [
+        "jd",
+        "jdcloud"
+      ]
+    },
+    "pybullet": {
+      "label": "子弹物理仿真引擎（PyBullet / Bullet Physics）",
+      "aliases": [
+        "pybullet",
+        "bullet"
+      ]
+    },
+    "purdue": {
+      "label": "普渡大学（Purdue）",
+      "aliases": [
+        "purdue"
+      ]
+    },
+    "franka": {
+      "label": "弗兰卡机器人（Franka Robotics）",
+      "aliases": [
+        "franka",
+        "franka-emika"
+      ]
+    },
+    "kit": {
+      "label": "卡尔斯鲁厄理工学院（KIT）",
+      "aliases": [
+        "kit",
+        "karlsruhe"
+      ]
+    },
+    "motphys": {
+      "label": "莫特菲斯（Motphys）",
+      "aliases": [
+        "motphys",
+        "motrix"
+      ]
+    },
+    "motioncode": {
+      "label": "动作编码（MotionCode）",
+      "aliases": [
+        "motioncode"
+      ]
+    },
+    "current-robotics": {
+      "label": "现行机器人（Current Robotics）",
+      "aliases": [
+        "current-robotics",
+        "curr0"
+      ]
+    }
   }
 }
