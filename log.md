@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-24] structural | schema/institutions.json、wiki/entities/paper-ultra-fusion-multi-sensor-slam.md — 补全 Ultra-Fusion 机构标签（bit/sjtu/npu/cqu/scu）并更新 ingest 规范
+
 ## [2026-06-24] ingest | sources/papers/ultra_fusion_arxiv_2606_21223.md — Ultra-Fusion 多传感器 SLAM；沉淀 wiki/entities/paper-ultra-fusion-multi-sensor-slam.md，互链 sensor-fusion、lidar-slam-lio-vio-selection、topic-state-estimation
 
 ## [2026-06-24] structural | schema/institutions.json、scripts/sync_institution_tags.py — 实体页机构标签批量补全（表格/sources/覆盖表）

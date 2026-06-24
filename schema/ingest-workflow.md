@@ -85,6 +85,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 - 或新建一个 wiki 页
 
 同时补充：
+- **`机构标签`** — 论文/实体页须在 frontmatter `tags` 中写入 `schema/institutions.json` 已注册的机构 **alias**（如 `sjtu`、`nvidia`）；正文 **核心信息** 表或 `| 机构 |` 行写明中文全称。多机构联合论文写全；注册表无对应条目时可先略过，或追加注册表后再写 tag。可用 `python3 scripts/sync_institution_tags.py` 从 `| 机构 |` 表与 sources 机构行同步。
 - **`英文缩写速查`** — 紧跟页面「一句话定义」之后，固定标题 `## 英文缩写速查`，三列表格（缩写 / 英文全称 / 简要说明）；至少 3 行，覆盖本页核心缩写。格式与编写要求见 [page-types.md](page-types.md)「新增页面最低质量标准」。
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
