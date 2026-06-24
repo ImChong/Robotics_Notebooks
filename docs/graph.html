@@ -1652,24 +1652,39 @@
       formalization: '#fb923c',
       overview:      '#64748b',
       reference:     '#64748b',
+      roadmap:       '#22d3ee',
+      roadmap_page:  '#22d3ee',
       '':            '#64748b',
     };
     const TYPE_LABEL = {
       concept: '概念', method: '方法', task: '任务',
       entity: '工具', comparison: '对比', query: 'Query',
       formalization: '形式化', overview: '总览', reference: '参考',
+      roadmap: '路线', roadmap_page: '路线',
       '': 'Wiki',
     };
-    const TYPE_FILTER_OPTIONS = [
-      { value: 'concept', label: '概念', color: '#60a5fa' },
-      { value: 'method', label: '方法', color: '#34d399' },
-      { value: 'task', label: '任务', color: '#f472b6' },
-      { value: 'formalization', label: '形式化', color: '#fb923c' },
-      { value: 'comparison', label: '对比', color: '#c084fc' },
-      { value: 'entity', label: '工具', color: '#fbbf24' },
-      { value: 'query', label: 'Query', color: '#94a3b8' },
-      { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' }
+    const TYPE_LEGEND_ORDER = [
+      'concept', 'method', 'task', 'formalization', 'comparison',
+      'entity', 'query', 'overview', 'reference', 'roadmap_page',
     ];
+    const TYPE_LEGEND_EN = {
+      concept: 'Concept', method: 'Method', task: 'Task',
+      formalization: 'Formalization', comparison: 'Comparison',
+      entity: 'Entity', query: 'Query', overview: 'Overview',
+      reference: 'Reference', roadmap_page: 'Roadmap',
+    };
+    function formatTypeLegendLabel(type) {
+      const zh = TYPE_LABEL[type] || type;
+      const en = TYPE_LEGEND_EN[type] || type;
+      return zh + ' (' + en + ')';
+    }
+    const TYPE_FILTER_OPTIONS = TYPE_LEGEND_ORDER.map((type) => ({
+      value: type,
+      label: formatTypeLegendLabel(type),
+      color: TYPE_COLOR[type] || TYPE_COLOR[''],
+    })).concat([
+      { value: '__orphan__', label: '孤儿（度≤1）', color: '#94a3b8' },
+    ]);
     const HEALTH_FILTER_OPTIONS = [
       { value: '0', label: '0 分', color: '#f87171' },
       { value: '1', label: '1 分', color: '#fb923c' },
@@ -1966,6 +1981,27 @@
     }
 
     const HEALTH_COLORS = ['#f87171', '#fb923c', '#facc15', '#4ade80'];
+    function metaBadgeColor(d) {
+      if (colorMode === 'community') {
+        return d.community
+          ? (communityColorMap.get(d.community) || COMMUNITY_COLORS[9])
+          : (TYPE_COLOR[d.type] || TYPE_COLOR['']);
+      }
+      if (colorMode === 'health') {
+        const score = d.health_score != null ? Math.min(d.health_score, 3) : 0;
+        return HEALTH_COLORS[score];
+      }
+      return TYPE_COLOR[d.type] || TYPE_COLOR[''];
+    }
+    function buildNodeMetaBadges(d) {
+      if (!window.RNGraphTooltip?.buildMetaBadgesHtml) return '';
+      return window.RNGraphTooltip.buildMetaBadgesHtml({
+        type: d.type || '',
+        typeLabels: TYPE_LABEL,
+        typeColors: TYPE_COLOR,
+        badgeColor: metaBadgeColor(d),
+      });
+    }
     function nodeColor(d)  {
       if (colorMode === 'community') {
         return communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
@@ -2019,15 +2055,11 @@
         }
       } else {
         rows.push('<div class="legend-title">按类型着色</div>');
-        const typeRows = [
-          { type: 'concept',       color: '#60a5fa', label: '概念 Concept' },
-          { type: 'method',        color: '#34d399', label: '方法 Method' },
-          { type: 'task',          color: '#f472b6', label: '任务 Task' },
-          { type: 'formalization', color: '#fb923c', label: '形式化 Formalization' },
-          { type: 'comparison',    color: '#c084fc', label: '对比 Comparison' },
-          { type: 'entity',        color: '#fbbf24', label: '工具 Entity' },
-          { type: 'query',         color: '#94a3b8', label: 'Query 产物' },
-        ];
+        const typeRows = TYPE_LEGEND_ORDER.map((type) => ({
+          type,
+          color: TYPE_COLOR[type] || TYPE_COLOR[''],
+          label: formatTypeLegendLabel(type),
+        }));
         for (const t of typeRows) {
           const isActive = (focusedType === t.type);
           rows.push(`<div class="legend-row ${isActive ? 'active' : ''}" data-type="${escapeHtml(String(t.type))}">
@@ -2392,6 +2424,16 @@
         .attr('stroke', d => nodeColor(d));
       renderLegend();
       renderFilterPanel();
+      refreshMetaBadges();
+    }
+
+    function refreshMetaBadges() {
+      if (pinnedNode && tooltip && !tooltip.classList.contains('hidden')) {
+        tooltip.innerHTML = tooltipHtml(pinnedNode);
+      }
+      if (sidebarNode && sidebar?.classList.contains('open') && sbMetaBadges) {
+        sbMetaBadges.innerHTML = buildNodeMetaBadges(sidebarNode);
+      }
     }
 
     function setColorMode(mode) {
@@ -2464,6 +2506,7 @@
 
     /* ── 固定卡片状态（仅移动端使用）── */
     let pinnedNode = null;
+    let sidebarNode = null;
 
     function tooltipSummary(raw) {
       return window.RNGraphTooltip?.formatTooltipSummary
@@ -2475,13 +2518,12 @@
       const info = d._info;
       const summary = tooltipSummary(info.summary);
       const detailUrl = 'detail.html?id=' + encodeURIComponent(toDetailId(d.id));
-      const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
       if (window.RNGraphTooltip?.buildNodeTooltipHtml) {
         return window.RNGraphTooltip.buildNodeTooltipHtml({
           type: d.type || '',
           typeLabels: TYPE_LABEL,
           typeColors: TYPE_COLOR,
-          communityColor: d.community ? communityColor : '',
+          badgeColor: metaBadgeColor(d),
           title: info.title || d.label,
           summary,
           linkHtml: `<a class="tt-link" href="${escapeHtml(detailUrl)}" target="_self">打开详情页 →</a>`
@@ -3643,15 +3685,9 @@
 
       const communityLabel = communityLabelMap.get(d.community);
       const communityColor = communityColorMap.get(d.community) || COMMUNITY_COLORS[9];
-      if (sbMetaBadges && window.RNGraphTooltip?.buildMetaBadgesHtml) {
-        sbMetaBadges.innerHTML = window.RNGraphTooltip.buildMetaBadgesHtml({
-          type: d.type || '',
-          typeLabels: TYPE_LABEL,
-          typeColors: TYPE_COLOR,
-          communityColor: d.community ? communityColor : '',
-        });
-      } else if (sbMetaBadges) {
-        sbMetaBadges.innerHTML = '';
+      sidebarNode = d;
+      if (sbMetaBadges) {
+        sbMetaBadges.innerHTML = buildNodeMetaBadges(d);
       }
       if (sbCommunity) {
         if (d.community && communityLabel && window.RNGraphTooltip?.buildCommunityBadgeHtml) {
@@ -3737,6 +3773,7 @@
       sidebar.classList.remove('open');
       scheduleSidebarViewportSync();
       sidebarFocusIds = null;
+      sidebarNode = null;
       pinnedNode = null;
       if (isMobile) hideTooltip();
       if (timelineAnimating) {

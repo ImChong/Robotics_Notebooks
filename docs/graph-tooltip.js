@@ -111,6 +111,7 @@
     concept: '概念', method: '方法', task: '任务',
     entity: '工具', comparison: '对比', query: 'Query',
     formalization: '形式化', overview: '总览', reference: '参考',
+    roadmap: '路线', roadmap_page: '路线',
     '': 'Wiki'
   };
 
@@ -118,6 +119,7 @@
     concept: '#60a5fa', method: '#34d399', task: '#f472b6',
     entity: '#fbbf24', comparison: '#c084fc', query: '#94a3b8',
     formalization: '#fb923c', overview: '#64748b', reference: '#64748b',
+    roadmap: '#22d3ee', roadmap_page: '#22d3ee',
     '': '#64748b'
   };
 
@@ -198,7 +200,7 @@
     return ' style="--community-r:' + rgb.r + ';--community-g:' + rgb.g + ';--community-b:' + rgb.b + '"';
   }
 
-  /** 浮窗/侧边栏类型徽章：优先用社区色着色，不再单独展示社区色块 */
+  /** 浮窗/侧边栏类型徽章：badgeColor 由图谱 colorMode 决定（社区/类型/健康度） */
   function buildMetaBadgesHtml(opts) {
     opts = opts || {};
     var html = '';
@@ -207,8 +209,9 @@
       var typeLabels = opts.typeLabels || GRAPH_NODE_TYPE_LABEL;
       var typeColors = opts.typeColors || GRAPH_NODE_TYPE_COLOR;
       var typeLabel = typeLabels[typeKey] || typeKey || 'Wiki';
-      var badgeColor = opts.badgeColor || opts.communityColor
-        || typeColors[typeKey] || typeColors[''] || '#64748b';
+      var badgeColor = opts.badgeColor != null ? opts.badgeColor
+        : (opts.communityColor
+          || typeColors[typeKey] || typeColors[''] || '#64748b');
       html = colorBadgeHtml('tt-type', typeLabel, badgeColor);
     }
     if (!html) return '';
