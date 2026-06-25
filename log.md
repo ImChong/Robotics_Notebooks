@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/repos/tensorflow-official.md — 接入 TensorFlow 官网与 GitHub 并升格 wiki/entities/tensorflow.md；交叉更新 deep-learning-foundations、pytorch、htwk-gym
+
+- 原始资料：[tensorflow-official.md](sources/repos/tensorflow-official.md)
+- 升格实体：[tensorflow.md](wiki/entities/tensorflow.md)
+- 交叉更新：[deep-learning-foundations.md](wiki/concepts/deep-learning-foundations.md)、[pytorch.md](wiki/entities/pytorch.md)、[htwk-gym.md](wiki/methods/htwk-gym.md)
 ## [2026-06-25] fix(wiki): 修复 DAgger / BC 页 LaTeX 中 `\theta` 被制表符破坏导致 KaTeX 渲染失败
 
 - 根因：`wiki/methods/dagger.md`、`wiki/methods/behavior-cloning.md` 中 `\theta` 的 `\t` 被存成字面制表符，KaTeX 将 `_heta` 当作无效下标

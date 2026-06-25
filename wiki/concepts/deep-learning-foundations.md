@@ -12,6 +12,7 @@ related:
 sources:
   - ../../sources/books/udl_book.md
   - ../../sources/repos/pytorch-official.md
+  - ../../sources/repos/tensorflow-official.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
 ---
 
@@ -64,10 +65,12 @@ sources:
 - [生成式模型基础](../formalizations/generative-foundations.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [PyTorch](../entities/pytorch.md)
+- [TensorFlow](../entities/tensorflow.md)
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
+- [TensorFlow 官方站点与文档索引](../../sources/repos/tensorflow-official.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
 
 ## 推荐继续阅读

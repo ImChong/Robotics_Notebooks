@@ -41,6 +41,7 @@
 - [Sim2Real](wiki/concepts/sim2real.md)
 - [Reinforcement Learning](wiki/methods/reinforcement-learning.md)
 - [PyTorch](wiki/entities/pytorch.md)
+- [TensorFlow](wiki/entities/tensorflow.md)
 - [Imitation Learning](wiki/methods/imitation-learning.md)
 - [World Action Models（WAM）](wiki/concepts/world-action-models.md)（联合未来–动作分布的具身策略范式；综述与 Awesome-WAM 资源入口）
 - [Pelican-Unified 1.0（UEI）](wiki/methods/pelican-unified-1.md)（Qwen3-VL 推理末态 \(z\) + Wan 系 UFG：同一扩散去噪联合未来视频与动作；arXiv:2605.15153）
@@ -923,6 +924,7 @@ SORT type ASC
 - [PX4 Autopilot](entities/px4-autopilot.md) — PX4**（[PX4/PX4-Autopilot](https://github.com/PX4/PX4-Autopilot)）是面向多旋翼、固定翼、VTOL 等的 **开源飞控固件**，通过  `📅unknown` `[entity_page]`
 - [PythonRobotics](entities/python-robotics.md) — PythonRobotics**（[AtsushiSakai/PythonRobotics](https://github.com/AtsushiSakai/PythonRobotics)）是 G `📅unknown` `[entity_page]`
 - [PyTorch](entities/pytorch.md) — PyTorch** 是由 **PyTorch 基金会**（Linux Foundation 旗下） stewardship 的开源深度学习框架。它以 **Python 优先** 与 **命令式（e `📅2026-05-15` `[entity_page]`
+- [TensorFlow](entities/tensorflow.md) — TensorFlow** 是由 **Google Brain** 团队最初开发、现由全球社区维护的 **端到端开源机器学习平台**。它以 **`tf.keras`** 高层 API 降低建模门槛， `📅2026-06-25` `[entity_page]`
 - [quad-swarm-rl](entities/quad-swarm-rl.md) — quad-swarm-rl**（[Zhehui-Huang/quad-swarm-rl](https://github.com/Zhehui-Huang/quad-swarm-rl)）是 **多四 `📅unknown` `[entity_page]`
 - [四足机器人（Quadruped Robot）](entities/quadruped-robot.md) — 四足机器人是以四条腿与环境形成间歇接触的腿足平台，侧重崎岖地形移动与户外部署，常与强化学习 locomotion、Sim2Real 及分层导航结合。 `📅unknown` `[entity_page]`
 - [Qwen-RobotManip](entities/qwen-robot-manip.md) — Qwen-RobotManip 是通义操作 VLA 基础模型：Qwen3.5-4B VL + flow-matching DiT，以 80 维 canonical state-action、相机系 EEF delta 与 in-context 适配实现跨本体对齐。 `📅2026-06-16` `[entity_page]`

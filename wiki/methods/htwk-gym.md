@@ -31,7 +31,7 @@ htwk-gym 并不训练单一的行走策略，而是训练一个**参数化控制
 
 ### 3. 多端导出与部署 (Deployment Pipeline)
 - **PyTorch JIT**：用于仿真评估和高性能 PC 部署。
-- **TFLite 量化**：通过 TensorFlow Lite 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。
+- **TFLite 量化**：通过 [TensorFlow](../entities/tensorflow.md) Lite / LiteRT 将策略量化，使其能够运行在 Booster 机器人内部的嵌入式 ARM/NVIDIA Orin 模块上。
 
 ## 主要技术路线
 
