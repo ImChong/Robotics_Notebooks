@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, ubc, berkeley]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。"
 related:
@@ -22,7 +22,13 @@ sources:
 
 # DeepMimic
 
-**DeepMimic** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 11/42** 篇，归类为 **02 参考跟踪 · 通用控制**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**DeepMimic** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 11/42** 篇，归类为 **02 参考跟踪 · 通用控制**。
+
+> **深读页：** [deepmimic](../methods/deepmimic.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。
 
 ## 英文缩写速查
 
@@ -33,9 +39,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（11/64）：源流：参考动作 + 强化学习。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **02 参考跟踪 · 通用控制**（#11/42）。
 - DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **02 参考跟踪 · 通用控制** 簇。
+- 它要解决的问题很朴素：给定一段 reference motion clip，怎么让一个物理仿真角色学会执行类似动作，同时还能满足任务目标。论文用深度强化学习，把 imitation reward 和 task reward 结合起来，训练角色完成走路、跑步、翻滚、武术、投掷等动作。
+- DeepMimic 的关键贡献不是“让角色动起来”，而是提出了一种后来被大量继承的范式：
 
 ## 核心信息（索引级）
 
@@ -47,16 +54,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://xbpeng.github.io/projects/DeepMimic/index.html> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+DeepMimic 是这批论文里最经典的一篇。它来自物理角色动画领域，但今天再看，它仍然是很多 humanoid motion tracking 工作的起点。
+
+### 2）策展导读要点
+
+它要解决的问题很朴素：给定一段 reference motion clip，怎么让一个物理仿真角色学会执行类似动作，同时还能满足任务目标。论文用深度强化学习，把 imitation reward 和 task reward 结合起来，训练角色完成走路、跑步、翻滚、武术、投掷等动作。
+
+### 3）策展导读要点
+
+DeepMimic 的关键贡献不是“让角色动起来”，而是提出了一种后来被大量继承的范式：
+
+### 4）策展导读要点
+
+这个中间层对人形机器人非常重要。因为纯 RL 从零学复杂全身动作，探索成本太高；而纯 kinematic 动作又不保证物理可执行。DeepMimic 夹在中间：既利用人类动作数据，又让动作通过物理仿真闭环。
+
+## 常见误区
+
+1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_11_deepmimic_example_guided_deep_reinforcement_lear.md](../../sources/papers/humanoid_rl_stack_11_deepmimic_example_guided_deep_reinforcement_lear.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

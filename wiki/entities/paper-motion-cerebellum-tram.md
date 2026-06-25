@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, upenn]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "数据入口：野外视频到全局人体轨迹。输入是野外单目视频；实现上恢复全局人体轨迹、相机运动和三维人体姿态，为后续机器人重定向提供带世界坐标的动作源；价值在于把互联网视频从局部姿态提升到可用的全局运动数据。"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # TRAM
 
-**TRAM** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 17/64** 篇，归类为 **C 数据入口**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**TRAM** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 17/64** 篇，归类为 **C 数据入口**。
+
+## 一句话定义
+
+数据入口：野外视频到全局人体轨迹。输入是野外单目视频；实现上恢复全局人体轨迹、相机运动和三维人体姿态，为后续机器人重定向提供带世界坐标的动作源；价值在于把互联网视频从局部姿态提升到可用的全局运动数据。
 
 ## 英文缩写速查
 
@@ -30,7 +34,7 @@ sources:
 ## 为什么重要
 
 - 数据入口：野外视频到全局人体轨迹。输入是野外单目视频；实现上恢复全局人体轨迹、相机运动和三维人体姿态，为后续机器人重定向提供带世界坐标的动作源；价值在于把互联网视频从局部姿态提升到可用的全局运动数据。
-- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[数据入口](../overview/motion-cerebellum-category-03-data-pipeline.md)**。
+- 运动小脑 64 篇 **#17/64** · 数据入口：野外视频到全局人体轨迹。
 
 ## 核心信息（索引级）
 
@@ -41,15 +45,29 @@ sources:
 | 机构 | 宾夕法尼亚大学 |
 | 论文/项目 | https://yufu-wang.github.io/tram4d/ |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+数据入口：野外视频到全局人体轨迹。输入是野外单目视频；实现上恢复全局人体轨迹、相机运动和三维人体姿态，为后续机器人重定向提供带世界坐标的动作源；价值在于把互联网视频从局部姿态提升到可用的全局运动数据。
+
+### 2）策展导读要点
+
+机构：宾夕法尼亚大学
+
+## 常见误区
+
+1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-03-data-pipeline.md](../overview/motion-cerebellum-category-03-data-pipeline.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
-- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

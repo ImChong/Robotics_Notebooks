@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, vla, beingbeyond, pku]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-25
 arxiv: "2511.19236"
 venue: "2025 · arXiv"
 summary: "SENTINEL：语言–全身动作端到端映射；在 RL 身体系统栈属视觉闭环/任务接口层，在 BFM 谱系属 hierarchical control。"
@@ -25,7 +25,11 @@ sources:
 
 # SENTINEL
 
-**SENTINEL**（*A Fully End-to-End Language-Action Model for Humanoid Robots*，arXiv:2511.19236）将自然语言与本体感知直接映射到全身低层动作。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**SENTINEL**（*A Fully End-to-End Language-Action Model for Humanoid Robots*，arXiv:2511.19236）将自然语言与本体感知直接映射到全身低层动作。
+
+## 一句话定义
+
+SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它看起来是这批论文里最“端到端”的方向之一。
 
 ## 英文缩写速查
 
@@ -37,8 +41,10 @@ sources:
 
 ## 为什么重要
 
-- SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它看起来是这批论文里最「端到端」的方向之一。
-- 语言–全身动作端到端；中间须有处理平衡/接触的身体通道。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **04 视觉闭环 · 任务接口 · 世界模型**（#31/42）。
+- SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它看起来是这批论文里最“端到端”的方向之一。
+- 但读细之后会发现，它并没有绕过运动控制。它先训练一个能跟踪人类动作的全身控制器，然后用这个控制器在仿真里 rollout，得到机器人自己的 state-action trajectories，再用语言标注训练 language-action model。
+- 也就是说，SENTINEL 的监督信号不是“人体应该怎么动”，而是“机器人在动力学里实际能怎么动”。
 
 ## 核心信息（索引级）
 
@@ -63,17 +69,39 @@ sources:
 | 分组 | 05 Hierarchical control |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+SENTINEL 直接把自然语言和本体感知映射到全身低层动作。它看起来是这批论文里最“端到端”的方向之一。
+
+### 2）策展导读要点
+
+但读细之后会发现，它并没有绕过运动控制。它先训练一个能跟踪人类动作的全身控制器，然后用这个控制器在仿真里 rollout，得到机器人自己的 state-action trajectories，再用语言标注训练 language-action model。
+
+### 3）策展导读要点
+
+也就是说，SENTINEL 的监督信号不是“人体应该怎么动”，而是“机器人在动力学里实际能怎么动”。
+
+### 4）策展导读要点
+
+论文用 Transformer + flow matching action head 预测 action chunk，并用 residual action head 做后训练，提升真实部署和扰动下稳定性。它还讨论了长期观测、done prediction、classifier-free guidance、action chunk horizon 等细节。
+
+## 常见误区
+
+1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - VLA 语境：[vla.md](../methods/vla.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

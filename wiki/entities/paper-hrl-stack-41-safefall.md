@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bigai, sdu, tsinghua]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。"
 related:
@@ -21,7 +21,11 @@ sources:
 
 # SafeFall
 
-**SafeFall** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 41/42** 篇，归类为 **05 接触 · 柔顺 · 安全恢复**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**SafeFall** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 41/42** 篇，归类为 **05 接触 · 柔顺 · 安全恢复**。
+
+## 一句话定义
+
+SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。
 
 ## 英文缩写速查
 
@@ -32,9 +36,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（37/64）：安全：失败不可避免时降低损伤。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **05 接触 · 柔顺 · 安全恢复**（#41/42）。
 - SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **05 接触 · 柔顺 · 安全恢复** 簇。
+- SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免时，激活保护策略，减少硬件冲击。系统包含一个轻量 GRU-based fall predictor 和一个 damage mitigation policy。正常控制时它保持 dormant，不干扰 nominal controller。
+- 论文在 Unitree G1 上做真实实验，包括不同方向外力推扰、走路时误踩台阶、高速跑步绊倒等场景，并报告最大关节力、接触力等指标改善。
 
 ## 核心信息（索引级）
 
@@ -46,16 +51,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://safefall.github.io> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+SafeFall 做的是 protective control for humanoid robots。它的出发点非常现实：双足机器人不可避免会摔倒，而摔倒会损伤传感器、执行器和结构件。
+
+### 2）策展导读要点
+
+SafeFall 不是让机器人永远不摔，而是在检测到跌倒不可避免时，激活保护策略，减少硬件冲击。系统包含一个轻量 GRU-based fall predictor 和一个 damage mitigation policy。正常控制时它保持 dormant，不干扰 nominal controller。
+
+### 3）策展导读要点
+
+论文在 Unitree G1 上做真实实验，包括不同方向外力推扰、走路时误踩台阶、高速跑步绊倒等场景，并报告最大关节力、接触力等指标改善。
+
+### 4）策展导读要点
+
+我的判断**人形机器人真实部署时，安全不是没有失败，而是失败不应造成灾难性损伤。**
+
+## 常见误区
+
+1. 柔顺/恢复策略要在 **接触丰富** 与 **长期稳定** 间折中，不能只看单帧姿态。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md](../../sources/papers/humanoid_rl_stack_41_safefall_learning_protective_control_for_humanoi.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

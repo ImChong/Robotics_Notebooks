@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia, hku, tsinghua]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-25
 arxiv: "2511.17373"
 venue: "2025 · arXiv"
 code: https://github.com/OpenDriveLab/AMS
@@ -26,7 +26,13 @@ sources:
 
 # Agility Meets Stability
 
-**Agility Meets Stability**（AMS，arXiv:2511.17373）讨论高动态敏捷动作与稳定恢复能力在同一控制器中的权衡；MoCap/仿真/视频等异构混合是 BFM 数据常态。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**Agility Meets Stability**（AMS，arXiv:2511.17373）讨论高动态敏捷动作与稳定恢复能力在同一控制器中的权衡；MoCap/仿真/视频等异构混合是 BFM 数据常态。
+
+> **深读页：** [ams](../methods/ams.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+AMS，全称 Agility Meets Stability，明确讨论一个矛盾：高动态敏捷动作和稳定恢复能力很难在同一个控制器里兼得。
 
 ## 英文缩写速查
 
@@ -39,8 +45,10 @@ sources:
 
 ## 为什么重要
 
-- 高动态敏捷动作和稳定恢复能力很难在同一个控制器里兼得。
-- 异构数据下敏捷与稳定权衡；MoCap/仿真/视频等混合是 BFM 数据常态。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **02 参考跟踪 · 通用控制**（#18/42）。
+- AMS，全称 Agility Meets Stability，明确讨论一个矛盾：高动态敏捷动作和稳定恢复能力很难在同一个控制器里兼得。
+- 论文利用异构数据：人类动作提供敏捷技能，合成 balance motions 提供稳定性和恢复能力。它希望一个策略既能跟踪动态动作，又能在扰动或失衡时保持稳定。
+- 这篇论文让我想到一个很现实的问题：很多机器人 demo 很敏捷，但边界状态下恢复能力弱；另一类控制器很稳，但动作保守。AMS 试图把这两种能力放在同一个框架里。
 
 ## 核心信息（索引级）
 
@@ -67,17 +75,39 @@ sources:
 | 分组 | 02 Goal-conditioned 学习 |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+AMS，全称 Agility Meets Stability，明确讨论一个矛盾：高动态敏捷动作和稳定恢复能力很难在同一个控制器里兼得。
+
+### 2）策展导读要点
+
+论文利用异构数据：人类动作提供敏捷技能，合成 balance motions 提供稳定性和恢复能力。它希望一个策略既能跟踪动态动作，又能在扰动或失衡时保持稳定。
+
+### 3）策展导读要点
+
+这篇论文让我想到一个很现实的问题：很多机器人 demo 很敏捷，但边界状态下恢复能力弱；另一类控制器很稳，但动作保守。AMS 试图把这两种能力放在同一个框架里。
+
+### 4）策展导读要点
+
+我的判断**真正可部署的人形机器人不能只做敏捷动作，也不能只做保守稳定，它必须在二者之间动态切换。**
+
+## 常见误区
+
+1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 方法页：[ams.md](../methods/ams.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

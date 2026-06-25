@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, vln, vln-survey, navigation, embodied-ai, meta, georgia-tech, oregon-state]
 status: complete
-updated: 2026-06-20
+updated: 2026-06-25
 arxiv: "2004.02857"
 summary: "基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。"
 related:
@@ -18,7 +18,11 @@ sources:
 
 # VLN-CE
 
-**VLN-CE** 收录于 [深蓝具身智能 · VLN 10 项代表性研究](https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ) **第 02/10** 篇，归类为 **01 数据集与仿真平台**。本页为知识库 **策展摘要**；方法细节以论文 PDF 为准。
+**VLN-CE** 收录于 [深蓝具身智能 · VLN 10 项代表性研究](https://mp.weixin.qq.com/s/2_dYaN6IeWn_vvS_jmGqRQ) **第 02/10** 篇，归类为 **01 数据集与仿真平台**。
+
+## 一句话定义
+
+基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。
 
 ## 英文缩写速查
 
@@ -31,7 +35,7 @@ sources:
 ## 为什么重要
 
 - 弥合离散图跳转与真实机器人连续运动之间的差距，提供 R2R 对应的连续环境标准 benchmark。
-- 在 [VLN 10 篇技术地图](../overview/vln-10-papers-technology-map.md) 中属于 **[01 数据集与仿真平台](../overview/vln-category-01-datasets-platforms.md)**。
+- 基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。
 
 ## 核心信息（索引级）
 
@@ -42,16 +46,35 @@ sources:
 | 出处 | ECCV 2020 · arXiv:2004.02857 |
 | 机构 | 俄勒冈州立大学、佐治亚理工学院、Facebook AI Research |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+**任务形式：** 基于 Habitat 将 VLN 从离散导航图迁移到连续 3D 环境，智能体以底层前进/转向在物理空间移动。
+
+### 2）策展导读要点
+
+**机构/出处：** 俄勒冈州立大学、佐治亚理工学院、Facebook AI Research · ECCV 2020
+
+### 3）策展导读要点
+
+**在 VLN 地图中的位置：** 01 数据集与仿真平台（#02/10）。
+
+## 常见误区
+
+1. VLN benchmark 提升不等于真机部署；连续环境 (VLN-CE) 与离散图设定不可直接混比。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[vln-10-papers-technology-map.md](../overview/vln-10-papers-technology-map.md)
 - 分类 hub：[vln-category-01-datasets-platforms.md](../overview/vln-category-01-datasets-platforms.md)
 - 任务页：[vision-language-navigation.md](../tasks/vision-language-navigation.md)
 - 原始 source：[vln_survey_02_vln_ce.md](../../sources/papers/vln_survey_02_vln_ce.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF** 为准。
 
 ## 参考来源
 

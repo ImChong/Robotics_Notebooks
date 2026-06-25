@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, egocentric, ego-survey, embodied-ai, georgia-tech, stanford]
 status: complete
-updated: 2026-06-01
+updated: 2026-06-25
 arxiv: "2410.24221"
 code: https://egomimic.github.io/
 summary: "Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数据缩放效率高于等量机器人数据。"
@@ -20,7 +20,11 @@ sources:
 
 # EgoMimic
 
-**EgoMimic** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 03/9** 篇，归类为 **02 人→机器人**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**EgoMimic** 收录于 [具身智能研究室 · Ego 9 篇专题](https://mp.weixin.qq.com/s/4JQ1xa-cJ7J1ep_e4txNnA) **第 03/9** 篇，归类为 **02 人→机器人**。
+
+## 一句话定义
+
+Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数据缩放效率高于等量机器人数据。
 
 ## 英文缩写速查
 
@@ -32,8 +36,8 @@ sources:
 
 ## 为什么重要
 
-- Aria 第一视角 + 3D 手部轨迹与机器人遥操数据共训 IL；人类数据缩放效率高于等量机器人数据。
-- 在 [Ego 9 篇技术地图](../overview/ego-9-papers-technology-map.md) 的四类问题坐标中，属于 **[02 人→机器人](../overview/ego-category-02-human-to-robot.md)**。
+- EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视角视频，加上 3D 手部轨迹，可以作为 imitation learning 的数据来源。
+- 这件事的关键，是它没有只把人类视频当成高层意图。它更进一步，把人类数据和机器人遥操作数据一起训练，让策略同时吸收两种来源。
 
 ## 核心信息（索引级）
 
@@ -45,15 +49,34 @@ sources:
 | 论文/项目 | <https://arxiv.org/abs/2410.24221> |
 | 代码/项目 | <https://egomimic.github.io/> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+EgoMimic 的判断很大胆：人类戴着 Project Aria 眼镜采到的第一视角视频，加上 3D 手部轨迹，可以作为 imitation learning 的数据来源。
+
+### 2）策展导读要点
+
+这件事的关键，是它没有只把人类视频当成高层意图。它更进一步，把人类数据和机器人遥操作数据一起训练，让策略同时吸收两种来源。
+
+### 3）策展导读要点
+
+我比较看重这个点：**EgoMimic 把第一视角数据从“看人怎么做”推进到“让机器人跟着学”。** 当然，中间要处理人的手和机器人的运动差异、外观差异、数据分布差异，这些都不是小问题。但它证明了一件事：第一视角数据不一定只能做视觉理解，它可以进入策略学习。
+
+## 常见误区
+
+1. Ego 视频不会天然等于机器人策略数据；须经过重建、对齐、重定向与物理过滤。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[ego-9-papers-technology-map.md](../overview/ego-9-papers-technology-map.md)
 - 分类 hub：[ego-category-02-human-to-robot.md](../overview/ego-category-02-human-to-robot.md)
 - 原始 source：[ego_survey_03_egomimic.md](../../sources/papers/ego_survey_03_egomimic.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准。
 
 ## 参考来源
 

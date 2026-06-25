@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-25
 arxiv: "2504.21738"
 venue: "2025 · arXiv"
 summary: "语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。"
@@ -20,7 +20,13 @@ sources:
 
 # LangWBC
 
-**LangWBC** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 37/41** 篇，归类为 **05 Hierarchical control**（2025 · arXiv）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**LangWBC** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 37/41** 篇，归类为 **05 Hierarchical control**（2025 · arXiv）。
+
+> **深读页：** [vla](../methods/vla.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
 
 ## 英文缩写速查
 
@@ -33,7 +39,7 @@ sources:
 ## 为什么重要
 
 - 语言直接进入端到端 WBC；难在语义进入身体后不打散稳定性。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Hierarchical control](../overview/bfm-category-05-hierarchical-control.md)**（05 Hierarchical control），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **05 Hierarchical control**（#37/41）。
 
 ## 核心信息（索引级）
 
@@ -44,16 +50,30 @@ sources:
 | 出处 | 2025 · arXiv |
 | 论文 | <https://arxiv.org/abs/2504.21738> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+语言、VLA、扩散或规划器作为上层，**调用** 已封装的底层全身能力（tracking / WBC / latent skill）。
+
+### 2）策展导读要点
+
+接口设计（命令空间、时序、安全层）决定上层智能能否稳定使用身体。
+
+## 常见误区
+
+1. 语言/VLA 调用身体时，瓶颈往往在 **底层跟踪鲁棒性**，而非上层 token 设计 alone。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_langwbc_arxiv_2504_21738.md](../../sources/papers/bfm_awesome_langwbc_arxiv_2504_21738.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

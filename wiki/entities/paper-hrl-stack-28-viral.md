@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, cuhk, nvidia, berkeley, cmu]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-25
 venue: curated
 summary: "VIRAL 做的是 Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation。它要让人形机器人仅凭机载 RGB 摄像头，在仿真中训练后零样本迁移到真实机器人，完成移动抓取和放置任务。"
 related:
@@ -18,7 +18,13 @@ sources:
 
 # VIRAL
 
-**VIRAL** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 28/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**VIRAL** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 28/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。
+
+> **深读页：** [paper-viral-humanoid-visual-sim2real](../entities/paper-viral-humanoid-visual-sim2real.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+VIRAL 做的是 Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation。它要让人形机器人仅凭机载 RGB 摄像头，在仿真中训练后零样本迁移到真实机器人，完成移动抓取和放置任务。
 
 ## 英文缩写速查
 
@@ -32,8 +38,10 @@ sources:
 
 ## 为什么重要
 
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **04 视觉闭环 · 任务接口 · 世界模型**（#28/42）。
 - VIRAL 做的是 Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation。它要让人形机器人仅凭机载 RGB 摄像头，在仿真中训练后零样本迁移到真实机器人，完成移动抓取和放置任务。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **04 视觉闭环 · 任务接口 · 世界模型** 簇。
+- VIRAL 的整体结构是 teacher-student。教师在仿真里拥有 privileged state，学习长时程 loco-manipulation；学生只看 RGB 和本体感知，通过 DAgger 和行为克隆蒸馏教师能力。
+- 论文还展示了训练规模的重要性。低计算规模下 teacher 和 student 都容易失败；扩大仿真规模后，视觉策略才更稳定。
 
 ## 核心信息（索引级）
 
@@ -45,16 +53,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://viral-humanoid.github.io> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+VIRAL 做的是 Visual Sim-to-Real at Scale for Humanoid Loco-Manipulation。它要让人形机器人仅凭机载 RGB 摄像头，在仿真中训练后零样本迁移到真实机器人，完成移动抓取和放置任务。
+
+### 2）策展导读要点
+
+VIRAL 的整体结构是 teacher-student。教师在仿真里拥有 privileged state，学习长时程 loco-manipulation；学生只看 RGB 和本体感知，通过 DAgger 和行为克隆蒸馏教师能力。
+
+### 3）策展导读要点
+
+论文还展示了训练规模的重要性。低计算规模下 teacher 和 student 都容易失败；扩大仿真规模后，视觉策略才更稳定。
+
+### 4）策展导读要点
+
+我的判断**VIRAL 的价值不只是一个任务成功，而是把视觉 sim-to-real 变成一套可扩展工程流程。**
+
+## 常见误区
+
+1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_28_viral_visual_sim_to_real_at_scale_for_humanoid_l.md](../../sources/papers/humanoid_rl_stack_28_viral_visual_sim_to_real_at_scale_for_humanoid_l.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

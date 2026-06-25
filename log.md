@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] structural(wiki): 批量深化 119 篇 survey 策展实体页 — HRL 42 / BFM 41 / VLN 10 / 深蓝 WM 15 / Ego 9 / Loco-Manip 8 / 运动小脑 15 + 脚本
+
+- 工具：[scripts/deepen_survey_stub_pages.py](scripts/deepen_survey_stub_pages.py) — 从 raw 微信抓取与 catalog 元数据编译 `一句话定义` / `核心机制` / `常见误区`；已有深读页（SONIC、BeyondMimic、GMR 等）保留 survey 坐标并链至方法/实体深读
+- 栈覆盖：42 篇 RL 身体系统栈、`paper-bfm-*`（41）、`paper-vln-*`（10）、`paper-shenlan-wm-*`（15）、`paper-ego-*`（9）、`paper-loco-manip-*`（8）、`paper-motion-cerebellum-*`（15）、`paper-sonic` / `paper-twist` / `paper-beyondmimic` 等别名节点
+- 刻意保留浅页：`paper-notebook-visualmimic`（Humanoid Paper Notebooks 外链索引）
+- 总览：[humanoid-rl-motion-control-body-system-stack.md](wiki/overview/humanoid-rl-motion-control-body-system-stack.md) 局限段改为「编译实体页」
+
 ## [2026-06-25] fix(actions): COMMUNITY_NAME_OVERRIDES 补全身运动跟踪流水线 — 修复 community-12 命名不符合 中文（English） 社区 导致 pytest 失败
 
 - `scripts/generate_link_graph.py`：`wiki/concepts/whole-body-tracking-pipeline.md` → `全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）`

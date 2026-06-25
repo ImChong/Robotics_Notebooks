@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, nju, huawei]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。"
 related:
@@ -22,7 +22,13 @@ sources:
 
 # Make Tracking Easy
 
-**Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 02/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**Make Tracking Easy** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 02/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
+
+> **深读页：** [neural-motion-retargeting-nmr](../methods/neural-motion-retargeting-nmr.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。
 
 ## 英文缩写速查
 
@@ -35,9 +41,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（19/64）：重定向：神经重定向与物理修正数据。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#02/42）。
 - NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
+- 它的核心思路是：不要只把 retargeting 看成逐帧几何优化，而要把它看成 **数据分布学习**。论文提出 CEPR 等机制，用层次化和 VAE-based motion clustering 的方式，把大量动作组织成 latent motifs，再学习更稳定的重定向过程。
+- NMR 的重要性在于，它把 **“重定向质量”** 进一步推到了模型化层面。GMR 强调 retargeting matters，NMR 则进一步问：如果传统 retargeting 本身不稳定，能不能训练一个神经网络来学习更好的 retargeting 分布？
 
 ## 核心信息（索引级）
 
@@ -49,16 +56,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://nju3dv-humanoidgroup.github.io/nmr.github.io/> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+NMR，也就是 Neural Motion Retargeting，进一步推进了 GMR 的问题。它认为传统优化式 retargeting 是非凸的，容易出现局部最优，从而带来 self-penetration、foot sliding、物理不可行等伪影。
+
+### 2）策展导读要点
+
+它的核心思路是：不要只把 retargeting 看成逐帧几何优化，而要把它看成 **数据分布学习**。论文提出 CEPR 等机制，用层次化和 VAE-based motion clustering 的方式，把大量动作组织成 latent motifs，再学习更稳定的重定向过程。
+
+### 3）策展导读要点
+
+NMR 的重要性在于，它把 **“重定向质量”** 进一步推到了模型化层面。GMR 强调 retargeting matters，NMR 则进一步问：如果传统 retargeting 本身不稳定，能不能训练一个神经网络来学习更好的 retargeting 分布？
+
+### 4）策展导读要点
+
+这件事对人形机器人很实际。因为未来动作来源不会只有干净 mocap，还会有 monocular video、生成视频、遥操作、互联网视频、混合数据源。数据越杂，传统优化式重定向越难完全靠手工规则解决。
+
+## 常见误区
+
+1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md](../../sources/papers/humanoid_rl_stack_02_make_tracking_easy_neural_motion_retargeting_for.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

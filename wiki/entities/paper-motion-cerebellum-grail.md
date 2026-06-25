@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 arxiv: "2606.05160"
 summary: "任务数据：3D 资产和视频先验生成 Loco-Manip 数据。输入是移动操作任务、场景几何、物体状态和机器人模型；实现上用规划、仿真、生成式数据或自主探索产生手脚协同轨迹，再筛选成可训练示范；目标是补足人形 loco-manip 最缺的长"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # GRAIL
 
-**GRAIL** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 57/64** 篇，归类为 **H 真实任务**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**GRAIL** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 57/64** 篇，归类为 **H 真实任务**。
+
+## 一句话定义
+
+任务数据：3D 资产和视频先验生成 Loco-Manip 数据。输入是移动操作任务、场景几何、物体状态和机器人模型；实现上用规划、仿真、生成式数据或自主探索产生手脚协同轨迹，再筛选成可训练示范；目标是补足人形 loco-manip 最缺的长程、接触丰富数据。
 
 ## 英文缩写速查
 
@@ -30,7 +34,7 @@ sources:
 ## 为什么重要
 
 - 任务数据：3D 资产和视频先验生成 Loco-Manip 数据。输入是移动操作任务、场景几何、物体状态和机器人模型；实现上用规划、仿真、生成式数据或自主探索产生手脚协同轨迹，再筛选成可训练示范；目标是补足人形 loco-manip 最缺的长程、接触丰富数据。
-- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[真实任务](../overview/motion-cerebellum-category-08-real-tasks.md)**。
+- 运动小脑 64 篇 **#57/64** · 任务数据：3D 资产和视频先验生成 Loco-Manip 数据。
 
 ## 核心信息（索引级）
 
@@ -41,15 +45,29 @@ sources:
 | 机构 | 英伟达 |
 | 论文/项目 | https://arxiv.org/abs/2606.05160v1 |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+任务数据：3D 资产和视频先验生成 Loco-Manip 数据。输入是移动操作任务、场景几何、物体状态和机器人模型；实现上用规划、仿真、生成式数据或自主探索产生手脚协同轨迹，再筛选成可训练示范；目标是补足人形 loco-manip 最缺的长程、接触丰富数据。
+
+### 2）策展导读要点
+
+机构：英伟达
+
+## 常见误区
+
+1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-08-real-tasks.md](../overview/motion-cerebellum-category-08-real-tasks.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
-- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 
