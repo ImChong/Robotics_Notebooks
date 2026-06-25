@@ -259,7 +259,8 @@
       left: 0; right: 0; bottom: 0;
       transition: right .22s cubic-bezier(.4,0,.2,1);
     }
-    #graph-canvas {
+    #graph-canvas,
+    #graph-canvas-3d {
       width: 100%; height: 100%;
       background:
         radial-gradient(circle at 20% 20%, rgba(96,165,250,.04) 0%, transparent 50%),
@@ -269,6 +270,12 @@
       display: block;
     }
     #graph-canvas:active { cursor: grabbing; }
+    #graph-canvas-3d {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+    }
+    #graph-canvas-3d[hidden] { display: none !important; }
 
     /* dot-grid overlay (CSS only) */
     #graph-wrap::before {
@@ -644,7 +651,8 @@
       color: #2f2d29;
     }
     /* 画布背景 */
-    [data-theme="light"] #graph-canvas {
+    [data-theme="light"] #graph-canvas,
+    [data-theme="light"] #graph-canvas-3d {
       background:
         radial-gradient(circle at 20% 20%, rgba(96,165,250,.07) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(52,211,153,.07) 0%, transparent 50%),
@@ -892,6 +900,47 @@
       color: rgba(255,255,255,0.35);
       text-transform: uppercase;
       letter-spacing: .06em;
+    }
+    .view-mode-toggle {
+      display: flex;
+      gap: 6px;
+      padding: 2px 14px 12px;
+    }
+    .view-mode-btn {
+      flex: 1;
+      height: 30px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.62);
+      font-size: .74rem;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color .15s, background .15s, color .15s;
+    }
+    .view-mode-btn:hover {
+      border-color: rgba(255,255,255,0.28);
+      color: rgba(255,255,255,0.9);
+    }
+    .view-mode-btn.is-active {
+      background: rgba(0,212,255,0.16);
+      border-color: rgba(0,212,255,0.55);
+      color: #e6edf3;
+    }
+    .view-mode-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+    [data-theme="light"] .view-mode-btn {
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.03);
+      color: rgba(0,0,0,0.55);
+    }
+    [data-theme="light"] .view-mode-btn.is-active {
+      background: #e6f7ff;
+      border-color: rgba(22,89,180,0.45);
+      color: #1659b4;
     }
     .physics-actions {
       display: flex;
@@ -1470,6 +1519,7 @@
   <div id="graph-wrap">
     <div id="graph-loading" hidden aria-hidden="true"></div>
     <svg id="graph-canvas"></svg>
+    <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
     <div id="topic-intro-banner" class="topic-intro-banner" hidden>
       <div class="topic-intro-head">
@@ -1505,6 +1555,13 @@
           <input type="checkbox" id="check-magnetic" />
           <span>🧲 磁吸模式</span>
         </label>
+      </div>
+
+      <div class="slider-divider"></div>
+      <div class="physics-section-title">视图模式</div>
+      <div class="view-mode-toggle" role="group" aria-label="2D / 3D 视图切换">
+        <button type="button" id="view-mode-2d" class="view-mode-btn is-active" aria-pressed="true">2D 平面</button>
+        <button type="button" id="view-mode-3d" class="view-mode-btn" aria-pressed="false">3D 立体</button>
       </div>
 
       <div class="slider-divider"></div>
@@ -1635,9 +1692,11 @@
 
   <!-- ── D3.js ── -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
+  <script src="graph-3d.js"></script>
   <script src="topic-filters.js"></script>
   <script>
   (async function () {
@@ -1969,6 +2028,159 @@
     const fontSliderVal  = 15;     // 字体缩放（相对 nodeScale）
     let isMagnetic     = false;
 
+    const SPATIAL_VIEW_KEY = 'rn-graph-spatial-view';
+    let spatialViewMode = (function () {
+      try {
+        const saved = localStorage.getItem(SPATIAL_VIEW_KEY);
+        return saved === '3d' ? '3d' : '2d';
+      } catch (_e) {
+        return '2d';
+      }
+    })();
+    let graph3dView = null;
+    const graphCanvas3d = document.getElementById('graph-canvas-3d');
+    const viewMode2dBtn = document.getElementById('view-mode-2d');
+    const viewMode3dBtn = document.getElementById('view-mode-3d');
+    const graphHintEl = document.getElementById('graph-hint');
+
+    function is3DView() { return spatialViewMode === '3d'; }
+
+    function updateGraphHint() {
+      if (!graphHintEl) return;
+      graphHintEl.innerHTML = is3DView()
+        ? '拖拽旋转 · 滚轮缩放<br>点击节点查看详情'
+        : '滚轮缩放 · 拖拽平移<br>点击节点查看详情';
+    }
+
+    function updateViewModeButtons() {
+      if (viewMode2dBtn) {
+        viewMode2dBtn.classList.toggle('is-active', !is3DView());
+        viewMode2dBtn.setAttribute('aria-pressed', !is3DView() ? 'true' : 'false');
+      }
+      if (viewMode3dBtn) {
+        viewMode3dBtn.classList.toggle('is-active', is3DView());
+        viewMode3dBtn.setAttribute('aria-pressed', is3DView() ? 'true' : 'false');
+      }
+    }
+
+    function getMagneticConfig3D() {
+      if (!isMagnetic) return null;
+      const categories = (colorMode === 'community')
+        ? Array.from(communityLabelMap.keys())
+        : Array.from(new Set(nodes.map(n => n.type)));
+      const centers = window.RNGraph3D?.buildMagneticCenters3D
+        ? window.RNGraph3D.buildMagneticCenters3D(categories)
+        : {};
+      return {
+        enabled: true,
+        centers,
+        getKey: d => ((colorMode === 'community') ? d.community : d.type) || '',
+      };
+    }
+
+    function ensureGraph3DView() {
+      if (graph3dView || !window.RNGraph3D?.create || !graphCanvas3d) return graph3dView;
+      try {
+        graph3dView = window.RNGraph3D.create({
+        container: graphCanvas3d,
+        nodes,
+        edges,
+        getNodeColor: nodeColor,
+        getNodeRadius: scaledRadius,
+        getLinkColor: edgeBaseColor,
+        getLinkWidth: () => linkWidthBase,
+        isDark,
+        getVisibleNodeIds: () => visibleNodeIds,
+        hasActiveFilter: hasActiveGraphFilter,
+        edgeHighlightsWithNode,
+        getChargeStrength: () => chargeStrength,
+        getMagneticConfig: getMagneticConfig3D,
+        onNodeClick: (d, ev) => {
+          if (timelinePlaying) return;
+          if (isMobile) {
+            if (pinnedNode === d) {
+              pinnedNode = null;
+              hideTooltip();
+            } else {
+              pinnedNode = d;
+              showTooltip(ev, d);
+            }
+          } else {
+            openSidebar(d);
+          }
+        },
+        onNodeHover: (d, ev) => {
+          if (timelineAnimating || isMobile) return;
+          if (sidebar.classList.contains('open')) {
+            if (d && sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+            else hideTooltip();
+            return;
+          }
+          if (d) showTooltip(ev, d);
+          else hideTooltip();
+        },
+        onBackgroundClick: () => {
+          if (isMobile) {
+            dismissMobilePinnedTooltip();
+            return;
+          }
+          closeSidebar();
+        },
+      });
+      } catch (err) {
+        console.error('3D graph init failed:', err);
+        graph3dView = null;
+      }
+      return graph3dView;
+    }
+
+    function setSpatialViewMode(mode, opts) {
+      opts = opts || {};
+      if (mode !== '2d' && mode !== '3d') return;
+      if (!opts.force && mode === spatialViewMode) return;
+
+      if (mode === '3d') {
+        if (timelineAnimating) teardownTimelineMode();
+        if (!window.RNGraph3D?.isAvailable?.()) {
+          window.alert('3D 视图库加载失败，请刷新页面后重试');
+          return;
+        }
+        ensureGraph3DView();
+        if (!graph3dView) return;
+        svg.style('display', 'none');
+        graphCanvas3d.hidden = false;
+        graph3dView.show();
+        graph3dView.syncFilters();
+        graph3dView.updateForces();
+        graph3dView.fitToScreen(0);
+      } else {
+        if (graph3dView) graph3dView.hide();
+        graphCanvas3d.hidden = true;
+        svg.style('display', 'block');
+        syncGraphDomFromSimulation();
+        fitToScreen();
+      }
+
+      spatialViewMode = mode;
+      try { localStorage.setItem(SPATIAL_VIEW_KEY, mode); } catch (_e) { /* ignore */ }
+      updateViewModeButtons();
+      updateGraphHint();
+      syncTimeline3DState();
+    }
+
+    function syncTimeline3DState() {
+      const disabled = is3DView();
+      if (timelineAnimateBtn) {
+        timelineAnimateBtn.disabled = disabled;
+        timelineAnimateBtn.title = disabled
+          ? '时序动画仅支持 2D 视图'
+          : '按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
+      }
+    }
+
+    updateGraphHint();
+    updateViewModeButtons();
+
     /* ── 主题辅助（响应 data-theme 切换）── */
     function isDark() {
       return document.documentElement.getAttribute('data-theme') !== 'light';
@@ -2264,6 +2476,10 @@
       .alphaDecay(0.025);
 
     function updateForces() {
+      if (is3DView() && graph3dView) {
+        graph3dView.updateForces();
+        return;
+      }
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic) {
@@ -2422,6 +2638,7 @@
       node.select('.node-circle')
         .attr('fill', d => nodeColor(d))
         .attr('stroke', d => nodeColor(d));
+      if (graph3dView) graph3dView.refreshColors();
       renderLegend();
       renderFilterPanel();
       refreshMetaBadges();
@@ -2467,6 +2684,11 @@
     }
 
     function restartForceSimulation() {
+      if (is3DView() && graph3dView) {
+        graph3dView.restartSimulation();
+        graph3dView.fitToScreen();
+        return;
+      }
       node.select('.node-label').style('opacity', 0);
       updateGraphViewport();
       randomizeNodePositions();
@@ -3086,6 +3308,7 @@
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
+      if (graph3dView && is3DView()) graph3dView.syncFilters();
       if (searchQuery) flyToVisible();
     }
 
@@ -3484,6 +3707,11 @@
     }
 
     function applyGraphFitTransform(transform, transitionOpts) {
+      if (is3DView() && graph3dView) {
+        const dur = transitionOpts && transitionOpts.duration != null ? transitionOpts.duration : 650;
+        graph3dView.fitToScreen(dur);
+        return;
+      }
       if (!transform) return;
       const dur = transitionOpts && transitionOpts.duration != null ? transitionOpts.duration : 650;
       const ease = transitionOpts && transitionOpts.ease;
@@ -3499,6 +3727,10 @@
     }
 
     function fitToVisibleNodes() {
+      if (is3DView() && graph3dView) {
+        graph3dView.fitToVisible();
+        return;
+      }
       const transform = computeGraphFitTransform(
         nodes.filter(n => visibleNodeIds.has(n.id)),
         {
@@ -3533,6 +3765,7 @@
     /* ── resize（移动端地址栏收起会改变可视高度）── */
     function onGraphViewportResize() {
       if (!updateGraphViewport()) return;
+      if (graph3dView) graph3dView.resize();
       if (timelineAnimating) {
         simulation.alpha(0.1).restart();
         return;
@@ -3553,6 +3786,7 @@
     new MutationObserver(() => {
       link.attr('stroke', edgeBaseColor());
       label.attr('fill', labelFill());
+      if (graph3dView) graph3dView.refreshColors();
     }).observe(document.documentElement, {
       attributes: true,
       attributeFilter: ['data-theme'],
@@ -3588,6 +3822,14 @@
       isMagnetic = ev.target.checked;
       updateForces();
     });
+
+    if (viewMode2dBtn) {
+      viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
+    }
+    if (viewMode3dBtn) {
+      viewMode3dBtn.addEventListener('click', () => setSpatialViewMode('3d'));
+    }
+    syncTimeline3DState();
 
     /* ════════════════════════════════════════════
        右侧详情侧边栏
@@ -3767,6 +4009,9 @@
 
       sidebar.classList.add('open');
       wrap.classList.add('sidebar-open');
+      if (graph3dView && is3DView()) {
+        graph3dView.applySidebarHighlight(d, direct, secondary);
+      }
       scheduleSidebarViewportSync();
     }
     function closeSidebar() {
@@ -3775,6 +4020,7 @@
       sidebarFocusIds = null;
       sidebarNode = null;
       pinnedNode = null;
+      if (graph3dView && is3DView()) graph3dView.clearSidebarHighlight();
       if (isMobile) hideTooltip();
       if (timelineAnimating) {
         // 时序模式：只恢复「已显现子集」的渲染，不触发 applyFilters 重建全图，也不重启力模拟/相机
@@ -3907,6 +4153,11 @@
         n.id === decodeURIComponent(focusId));
       if (focusNode) {
         const flyToFocus = () => {
+          if (is3DView() && graph3dView) {
+            graph3dView.focusNode(focusNode);
+            openSidebar(focusNode);
+            return;
+          }
           if (focusNode.x == null) return;
           const scale = 2.2;
           svg.transition().duration(700).call(
@@ -3920,6 +4171,10 @@
         simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
         setTimeout(flyToFocus, 1400);
       }
+    }
+
+    if (spatialViewMode === '3d') {
+      whenGraphViewportReady(() => setSpatialViewMode('3d', { force: true }));
     }
 
   })();
