@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-25",
   "node_count": 1336,
-  "edge_count": 9109,
+  "edge_count": 9115,
   "coverage": {
     "covered": 1305,
     "total": 1334,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md",
+      "detail_id": "entity-paper-notebook-learning-human-like-badminton-skills-for-humanoi",
+      "label": "LHBS：人形拟人羽毛球技能学习",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/tensorrt.md",
       "detail_id": "entity-tensorrt",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tensorrt.md",
-    "detail_id": "entity-tensorrt",
-    "label": "TensorRT",
+    "path": "wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md",
+    "detail_id": "entity-paper-notebook-learning-human-like-badminton-skills-for-humanoi",
+    "label": "LHBS：人形拟人羽毛球技能学习",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
