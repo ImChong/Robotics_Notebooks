@@ -174,18 +174,19 @@
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
+      var dimOpacity = filtered ? 0.02 : 0.15;
       if (sidebarNodeId) {
         if (d.id === sidebarNodeId || sidebarDirect.has(d.id)) return 1;
         if (sidebarSecondary.has(d.id)) return 0.4;
-        return 0.05;
+        return filtered && !ok ? 0.02 : 0.05;
       }
       if (hoverNodeId) {
         if (!filtered) return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
-        if (!ok) return 0.08;
-        return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
+        if (!ok) return 0.02;
+        return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : dimOpacity;
       }
       if (!filtered) return 1;
-      return ok ? 1 : 0.08;
+      return ok ? 1 : 0.02;
     }
 
     function isNeighborOf(nodeId, otherId) {
@@ -210,8 +211,8 @@
         if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.45 : 0.1;
       }
       if (!filtered) return 0.06;
-      if (!visible.has(s) || !visible.has(t)) return 0.03;
-      return 0.06;
+      if (!visible.has(s) || !visible.has(t)) return 0.012;
+      return 0.08;
     }
 
     function linkColorFor(l) {
@@ -247,7 +248,9 @@
 
     function sphereRadiusFor(d) {
       var r = getNodeRadius(d);
-      return Math.max(11, r * 1.65);
+      var base = Math.max(11, r * 1.65);
+      if (hasActiveFilter() && getVisibleNodeIds().has(d.id)) return base * 1.12;
+      return base;
     }
 
     function nodeValFor(d) {
@@ -271,6 +274,7 @@
       });
       var mesh = new bundledThree.Mesh(geometry, material);
       mesh.userData.nodeId = d.id;
+      mesh.userData.baseRadius = Math.max(11, getNodeRadius(d) * 1.65);
       return mesh;
     }
 
@@ -287,6 +291,10 @@
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
         obj.visible = opacity > 0.02;
+        var targetR = sphereRadiusFor(d);
+        var baseR = obj.userData.baseRadius || targetR;
+        var scale = baseR > 0 ? targetR / baseR : 1;
+        obj.scale.set(scale, scale, scale);
       });
     }
 
@@ -355,6 +363,71 @@
       var next = measureContainerSize(container);
       graph.width(next.width);
       graph.height(next.height);
+    }
+
+    function inflateBbox(bbox, nodeFilter) {
+      var padR = 0;
+      nodes3d.forEach(function (n) {
+        if (nodeFilter && !nodeFilter(n)) return;
+        if (n.x == null || n.y == null || n.z == null) return;
+        padR = Math.max(padR, sphereRadiusFor(n) + 8);
+      });
+      return {
+        x: [bbox.x[0] - padR, bbox.x[1] + padR],
+        y: [bbox.y[0] - padR, bbox.y[1] + padR],
+        z: [bbox.z[0] - padR, bbox.z[1] + padR],
+      };
+    }
+
+    function fitCameraToBbox(bbox, duration) {
+      if (!graph || !bbox) return false;
+      var cx = (bbox.x[0] + bbox.x[1]) / 2;
+      var cy = (bbox.y[0] + bbox.y[1]) / 2;
+      var cz = (bbox.z[0] + bbox.z[1]) / 2;
+      var halfX = Math.max((bbox.x[1] - bbox.x[0]) / 2, 8);
+      var halfY = Math.max((bbox.y[1] - bbox.y[0]) / 2, 8);
+      var halfZ = Math.max((bbox.z[1] - bbox.z[0]) / 2, 8);
+      var radius = Math.sqrt(halfX * halfX + halfY * halfY + halfZ * halfZ);
+
+      var view = measureContainerSize(container);
+      var cam3d = graph.camera();
+      var fovDeg = (cam3d && cam3d.fov) || 50;
+      var fov = fovDeg * Math.PI / 180;
+      var aspect = view.width / Math.max(view.height, 1);
+      var distV = radius / Math.sin(fov / 2);
+      var hFov = 2 * Math.atan(Math.tan(fov / 2) * aspect);
+      var distH = radius / Math.sin(hFov / 2);
+      var dist = Math.max(distV, distH, 48);
+      dist *= 0.78;
+
+      var lookAt = { x: cx, y: cy, z: cz };
+      var cur = graph.cameraPosition();
+      var dx = cur.x - cur.lookAt.x;
+      var dy = cur.y - cur.lookAt.y;
+      var dz = cur.z - cur.lookAt.z;
+      var len = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      if (len < 1e-3) {
+        dx = 0.35;
+        dy = 0.55;
+        dz = 1.0;
+        len = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      }
+      graph.cameraPosition(
+        { x: cx + (dx / len) * dist, y: cy + (dy / len) * dist, z: cz + (dz / len) * dist },
+        lookAt,
+        duration == null ? 650 : duration
+      );
+      return true;
+    }
+
+    function zoomFitToNodes(duration, nodeFilter) {
+      if (!graph) return;
+      var filterFn = nodeFilter || function () { return true; };
+      var bbox = graph.getGraphBbox(filterFn);
+      if (bbox) bbox = inflateBbox(bbox, filterFn);
+      if (!fitCameraToBbox(bbox, duration)) {
+        graph.zoomToFit(duration, 0, filterFn);
+      }
     }
 
     function onContainerPointerMove(ev) {
@@ -463,12 +536,12 @@
       },
 
       fitToScreen: function (ms) {
-        graph.zoomToFit(ms == null ? 650 : ms, 16);
+        zoomFitToNodes(ms == null ? 650 : ms);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        graph.zoomToFit(ms == null ? 650 : ms, 64, function (n) { return visible.has(n.id); });
+        zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
       },
 
       focusNode: function (node, ms) {
