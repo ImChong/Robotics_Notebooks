@@ -324,7 +324,12 @@ def _default_abbr(stack: str) -> str:
             ("Loco-Manip", "Loco-Manipulation", "移动操作耦合任务"),
         ],
     }
-    lines = ["## 英文缩写速查", "", "| 缩写 | 英文全称 | 简要说明 |", "|------|----------|----------|"]
+    lines = [
+        "## 英文缩写速查",
+        "",
+        "| 缩写 | 英文全称 | 简要说明 |",
+        "|------|----------|----------|",
+    ]
     for abbr, full, desc in rows.get(stack, rows["hrl"]):
         lines.append(f"| {abbr} | {full} | {desc} |")
     return "\n".join(lines)
@@ -364,10 +369,16 @@ def should_skip(path: Path, text: str) -> bool:
 
 class Deepener:
     def __init__(self) -> None:
-        self.hrl_raw = _parse_hrl_extended(RAW_HRL.read_text(encoding="utf-8")) if RAW_HRL.exists() else {}
+        self.hrl_raw = (
+            _parse_hrl_extended(RAW_HRL.read_text(encoding="utf-8")) if RAW_HRL.exists() else {}
+        )
         self.hrl_map = _build_hrl_entity_map()
-        self.mc_raw = _parse_motion_cerebellum(RAW_MC.read_text(encoding="utf-8")) if RAW_MC.exists() else {}
-        self.loco_raw = _parse_loco_manip(RAW_LOCO.read_text(encoding="utf-8")) if RAW_LOCO.exists() else {}
+        self.mc_raw = (
+            _parse_motion_cerebellum(RAW_MC.read_text(encoding="utf-8")) if RAW_MC.exists() else {}
+        )
+        self.loco_raw = (
+            _parse_loco_manip(RAW_LOCO.read_text(encoding="utf-8")) if RAW_LOCO.exists() else {}
+        )
         self.ego_raw = _parse_ego(RAW_EGO.read_text(encoding="utf-8")) if RAW_EGO.exists() else {}
         self.wm_raw = _parse_wm_sources()
         self.bfm_by_entity = {}
@@ -376,7 +387,9 @@ class Deepener:
             slug = slug.replace("_", "-")
             if p["id"] == 13:
                 continue
-            self.bfm_by_entity[f"paper-bfm-{p['id']:02d}-{slug.replace('bfm-', '').replace('bfm_', '')}.md"] = p
+            self.bfm_by_entity[
+                f"paper-bfm-{p['id']:02d}-{slug.replace('bfm-', '').replace('bfm_', '')}.md"
+            ] = p
             ent = ROOT / "scripts/generate_bfm_awesome_wiki_entities.py"
             mod = _load_module("bfm_ent", ent)
             en = mod.paper_entity_name(p)
@@ -431,7 +444,10 @@ class Deepener:
             if num in self.hrl_raw:
                 p = self.hrl_raw[num]
                 e.one_liner = p.get("note") or summary
-                e.why_bullets = [p.get("note", ""), f"42 篇栈 **#{num:02d}** · {HRL_LAYER[p['layer']]}。"]
+                e.why_bullets = [
+                    p.get("note", ""),
+                    f"42 篇栈 **#{num:02d}** · {HRL_LAYER[p['layer']]}。",
+                ]
                 e.mechanism_bullets = p.get("paragraphs", [])[:4] or [p.get("note", "")]
                 e.misconceptions = [HRL_LAYER_MISCON.get(p["layer"], "")]
                 return e
@@ -461,7 +477,9 @@ class Deepener:
                 f"**机构/出处：** {p['inst']} · {p['venue']}",
                 f"**在 VLN 地图中的位置：** {p['cat_name']}（#{p['num']}/10）。",
             ]
-            e.misconceptions = ["VLN benchmark 提升不等于真机部署；连续环境 (VLN-CE) 与离散图设定不可直接混比。"]
+            e.misconceptions = [
+                "VLN benchmark 提升不等于真机部署；连续环境 (VLN-CE) 与离散图设定不可直接混比。"
+            ]
             return e
 
         if name.startswith("paper-shenlan-wm-"):
@@ -492,9 +510,17 @@ class Deepener:
                         break
             if mc:
                 e.one_liner = mc["reason"]
-                e.why_bullets = [mc["reason"], f"运动小脑 64 篇 **#{mc['num']}/64** · {mc['tagline']}。"]
-                e.mechanism_bullets = [mc["reason"], f"机构：{mc['inst']}" if mc.get("inst") else mc["tagline"]]
-                e.misconceptions = ["运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。"]
+                e.why_bullets = [
+                    mc["reason"],
+                    f"运动小脑 64 篇 **#{mc['num']}/64** · {mc['tagline']}。",
+                ]
+                e.mechanism_bullets = [
+                    mc["reason"],
+                    f"机构：{mc['inst']}" if mc.get("inst") else mc["tagline"],
+                ]
+                e.misconceptions = [
+                    "运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。"
+                ]
                 return e
             if summary:
                 e.one_liner = summary
@@ -508,9 +534,14 @@ class Deepener:
             loc = self.loco_raw.get(slug)
             if loc:
                 e.one_liner = loc["summary"]
-                e.why_bullets = [loc["summary"], f"Loco-Manip 8 篇 **#{loc['num']}/8** · {loc['meta']}。"]
+                e.why_bullets = [
+                    loc["summary"],
+                    f"Loco-Manip 8 篇 **#{loc['num']}/8** · {loc['meta']}。",
+                ]
                 e.mechanism_bullets = [loc["summary"]]
-                e.misconceptions = ["Loco-manip 数据/接口论文不自动解决 **底层 WBC 鲁棒性**；须与跟踪/接触控制对照。"]
+                e.misconceptions = [
+                    "Loco-manip 数据/接口论文不自动解决 **底层 WBC 鲁棒性**；须与跟踪/接触控制对照。"
+                ]
                 return e
 
         if name.startswith("paper-ego-"):
@@ -518,10 +549,14 @@ class Deepener:
             if m:
                 num = int(m.group(1))
                 eg = self.ego_raw.get(num, {})
-                e.one_liner = summary or (eg.get("paragraphs", [""])[0][:200] if eg.get("paragraphs") else "")
+                e.one_liner = summary or (
+                    eg.get("paragraphs", [""])[0][:200] if eg.get("paragraphs") else ""
+                )
                 e.why_bullets = eg.get("paragraphs", [])[:2] or [summary]
                 e.mechanism_bullets = eg.get("paragraphs", [])[:3] or [summary]
-                e.misconceptions = ["Ego 视频不会天然等于机器人策略数据；须经过重建、对齐、重定向与物理过滤。"]
+                e.misconceptions = [
+                    "Ego 视频不会天然等于机器人策略数据；须经过重建、对齐、重定向与物理过滤。"
+                ]
                 return e
 
         if summary:
