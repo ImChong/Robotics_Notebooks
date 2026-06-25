@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, nvidia]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 arxiv: "2511.07820"
 venue: "2025 · arXiv"
 summary: "SONIC：规模化运动跟踪人形全身控制；在 RL 身体系统栈属参考跟踪层，在 BFM 谱系强调 goal-conditioned 与运控基座覆盖面。"
@@ -29,7 +29,13 @@ sources:
 
 # SONIC
 
-**SONIC**（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*，arXiv:2511.07820）把 humanoid whole-body motion tracker 当作可扩展的基础模型来研究。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**SONIC**（*Supersizing Motion Tracking for Natural Humanoid Whole-Body Control*，arXiv:2511.07820）把 humanoid whole-body motion tracker 当作可扩展的基础模型来研究。
+
+> **深读页：** [sonic-motion-tracking](../methods/sonic-motion-tracking.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+SONIC 的题目是 Supersizing Motion Tracking for Natural Humanoid Whole-Body Control。它把 humanoid whole-body motion tracker 当成基础模型来扩展，研究参数规模、数据规模、训练计算对控制能力的影响。
 
 ## 英文缩写速查
 
@@ -41,9 +47,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（27/64）：跟踪策略：把 motion tracking 规模化成控制基座。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **02 参考跟踪 · 通用控制**（#17/42）。
 - SONIC 的题目是 Supersizing Motion Tracking for Natural Humanoid Whole-Body Control。它把 humanoid whole-body motion tracker 当成基础模型来扩展，研究参数规模、数据规模、训练计算对控制能力的影响。
-- supersizing motion tracking；运控基座被上层调用前底层动作覆盖面必须足够宽。
+- 这篇论文和传统 motion tracking 工作的区别在于，它不只问“某个策略能不能跟某些动作”，而是问：
+- 它还讨论下游任务、交互式运动控制，以及 motion 和 VLA 表示的迁移价值。这意味着 motion tracker 不再只是一个执行模块，而可能成为上层任务模型的底层表征。
 
 ## 核心信息（索引级）
 
@@ -69,17 +76,39 @@ sources:
 | 分组 | 02 Goal-conditioned 学习 |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+SONIC 的题目是 Supersizing Motion Tracking for Natural Humanoid Whole-Body Control。它把 humanoid whole-body motion tracker 当成基础模型来扩展，研究参数规模、数据规模、训练计算对控制能力的影响。
+
+### 2）策展导读要点
+
+这篇论文和传统 motion tracking 工作的区别在于，它不只问“某个策略能不能跟某些动作”，而是问：
+
+### 3）策展导读要点
+
+它还讨论下游任务、交互式运动控制，以及 motion 和 VLA 表示的迁移价值。这意味着 motion tracker 不再只是一个执行模块，而可能成为上层任务模型的底层表征。
+
+### 4）策展导读要点
+
+SONIC 的方向很重要，但也要谨慎：运动控制的 scaling 不会和语言模型完全一样，因为机器人还受硬件、物理和实时闭环约束。参数变大不一定能直接解决接触和安全问题。
+
+## 常见误区
+
+1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 方法深读：[sonic-motion-tracking.md](../methods/sonic-motion-tracking.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

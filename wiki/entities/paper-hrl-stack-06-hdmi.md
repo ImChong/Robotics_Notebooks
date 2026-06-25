@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, cmu]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。"
 related:
@@ -21,7 +21,11 @@ sources:
 
 # HDMI
 
-**HDMI** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 06/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**HDMI** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 06/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
+
+## 一句话定义
+
+HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
 
 ## 英文缩写速查
 
@@ -32,9 +36,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（22/64）：数据入口：人类视频到交互式全身控制。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#06/42）。
 - HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
+- 这篇论文要解决的是：如果视频里有人推箱子、搬箱子、开门、滚球、放倒木板，人形机器人能不能把这些人-物交互变成自己可以执行的全身技能？
+- HDMI 的管线分成三步：先从单目 RGB 视频里估计人体和物体轨迹，并重定向成人形机器人参考数据；再用强化学习训练一个 robot-object co-tracking policy，让机器人同时跟踪自己的身体状态和物体状态；最后把策略零样本部署到真实 Unitree G1 上。
 
 ## 核心信息（索引级）
 
@@ -46,16 +51,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://hdmi-humanoid.github.io> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+HDMI 的全称是 HumanoiD iMitation for Interaction。它也从人类视频出发，但比 HumanX 更进一步，把重点放在 contact-rich humanoid-object interaction 上。
+
+### 2）策展导读要点
+
+这篇论文要解决的是：如果视频里有人推箱子、搬箱子、开门、滚球、放倒木板，人形机器人能不能把这些人-物交互变成自己可以执行的全身技能？
+
+### 3）策展导读要点
+
+HDMI 的管线分成三步：先从单目 RGB 视频里估计人体和物体轨迹，并重定向成人形机器人参考数据；再用强化学习训练一个 robot-object co-tracking policy，让机器人同时跟踪自己的身体状态和物体状态；最后把策略零样本部署到真实 Unitree G1 上。
+
+### 4）策展导读要点
+
+这里最关键的变化是，控制器不再只追踪“机器人像不像人”，还要追踪“物体有没有按预期被改变”。这就把模仿学习从 body motion tracking 推到了 object interaction tracking。
+
+## 常见误区
+
+1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md](../../sources/papers/humanoid_rl_stack_06_hdmi_learning_interactive_humanoid_whole_body_co.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

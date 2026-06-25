@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, sfu, stanford]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 arxiv: "2505.02833"
 venue: "2025 · CoRL"
 code: https://github.com/YanjieZe/TWIST
@@ -32,7 +32,11 @@ sources:
 
 # TWIST
 
-**TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**TWIST**（*Teleoperated Whole-Body Imitation System*，arXiv:2505.02833，CoRL 2025）是全身人形遥操作与模仿学习系统。
+
+## 一句话定义
+
+TWIST 和 H2O / OmniH2O 属于同一条技术线，但它强调的是另一个问题：**人形机器人的遥操作不能只控制手，也不能只控制底盘，而是要控制整具身体。**
 
 ## 英文缩写速查
 
@@ -44,9 +48,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **F 跨本体与遥操作**（43/64）：遥操作：全身遥操作也是动作小脑的数据入口。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#09/42）。
 - TWIST 和 H2O / OmniH2O 属于同一条技术线，但它强调的是另一个问题：**人形机器人的遥操作不能只控制手，也不能只控制底盘，而是要控制整具身体。**
-- 遥操作同时是 BFM 数据生产方式：稳定全身轨迹沉淀为训练语料。
+- 很多移动操作系统会把问题拆开：底盘负责移动，手臂负责操作，头部或相机负责观察。这样做工程上可控，但人形机器人不是简单的“移动底盘 + 双臂机械臂”。
+- 它的腰、腿、手臂、头部和重心会互相影响。人一边走一边伸手、一边转身一边操作时，身体协调本身就是任务的一部分。
 
 ## 核心信息（索引级）
 
@@ -73,17 +78,39 @@ sources:
 | 分组 | 02 Goal-conditioned 学习 |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+TWIST 和 H2O / OmniH2O 属于同一条技术线，但它强调的是另一个问题：**人形机器人的遥操作不能只控制手，也不能只控制底盘，而是要控制整具身体。**
+
+### 2）策展导读要点
+
+很多移动操作系统会把问题拆开：底盘负责移动，手臂负责操作，头部或相机负责观察。这样做工程上可控，但人形机器人不是简单的“移动底盘 + 双臂机械臂”。
+
+### 3）策展导读要点
+
+它的腰、腿、手臂、头部和重心会互相影响。人一边走一边伸手、一边转身一边操作时，身体协调本身就是任务的一部分。
+
+### 4）策展导读要点
+
+TWIST 的思路是，用运动捕捉系统采集人的全身动作，再通过重定向和强化学习控制器，把人的运动变成机器人可以执行的全身动作。它不是只追求“姿态像人”，而是要让机器人在真实任务里完成全身操作、腿式操作、移动和表达性动作。
+
+## 常见误区
+
+1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 后继系统：[paper-twist2.md](./paper-twist2.md)
 - 任务语境：[teleoperation.md](../tasks/teleoperation.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

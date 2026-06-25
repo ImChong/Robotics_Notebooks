@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。"
 related:
@@ -16,7 +16,11 @@ sources:
 
 # CEER
 
-**CEER** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 47/64** 篇，归类为 **G Loco-Manip 接口**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**CEER** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 47/64** 篇，归类为 **G Loco-Manip 接口**。
+
+## 一句话定义
+
+接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。
 
 ## 英文缩写速查
 
@@ -29,7 +33,7 @@ sources:
 ## 为什么重要
 
 - 接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。
-- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[Loco-Manip 接口](../overview/motion-cerebellum-category-07-loco-manip-interface.md)**。
+- 运动小脑 64 篇 **#47/64** · 接口：EE-root 命令连接高层和全身控制。
 
 ## 核心信息（索引级）
 
@@ -40,15 +44,29 @@ sources:
 | 机构 | 机构待核对 |
 | 论文/项目 | https://robotproject8.github.io/ceer\_page/ |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+接口：EE-root 命令连接高层和全身控制。输入是根部运动目标、末端执行器目标和柔顺控制参数；实现上把根部控制与柔顺末端执行器解耦，再通过层级接口协调移动和操作；重点是降低手、脚、腰之间的强耦合，让上层更容易调用。
+
+### 2）策展导读要点
+
+机构：机构待核对
+
+## 常见误区
+
+1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-07-loco-manip-interface.md](../overview/motion-cerebellum-category-07-loco-manip-interface.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
-- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

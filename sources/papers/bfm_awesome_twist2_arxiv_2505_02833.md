@@ -6,7 +6,7 @@
 - **类型：** paper
 - **BFM 分类：** 02 Goal-conditioned 学习（[awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）
 - **出处：** 2025 · arXiv · **ICRA 2026 接收**（项目页）
-- **论文链接：** <https://arxiv.org/abs/2505.02833>
+- **论文链接：** <https://arxiv.org/abs/2511.02832>
 - **项目页：** <https://yanjieze.com/projects/TWIST2/>
 - **代码/数据：** <https://github.com/amazon-far/TWIST2> · <https://twist-data.github.io/>
 - **机构：** Amazon FAR；Stanford；USC；UC Berkeley；CMU
@@ -50,7 +50,7 @@
 
 ## 参考来源（原始）
 
-- 论文：<https://arxiv.org/abs/2505.02833>
+- 论文：<https://arxiv.org/abs/2511.02832>
 - 项目页：[twist2-project.md](../sites/twist2-project.md)
 - 代码：[twist2.md](../repos/twist2.md)
 - 策展列表：<https://github.com/friedrichyuan/awesome-bfm-papers>

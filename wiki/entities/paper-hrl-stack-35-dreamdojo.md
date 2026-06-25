@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, ut-austin, hkust, nvidia, uw, stanford, kaist, berkeley]
 status: complete
-updated: 2026-06-11
+updated: 2026-06-25
 venue: curated
 summary: "DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # DreamDojo
 
-**DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 35/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**DreamDojo** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 35/42** 篇，归类为 **04 视觉闭环 · 任务接口 · 世界模型**。
+
+## 一句话定义
+
+DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
 
 ## 英文缩写速查
 
@@ -29,8 +33,10 @@ sources:
 
 ## 为什么重要
 
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **04 视觉闭环 · 任务接口 · 世界模型**（#35/42）。
 - DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **04 视觉闭环 · 任务接口 · 世界模型** 簇。
+- 这里最关键的不是“会生成视频”，而是它试图让世界模型具备机器人策略可用的物理和动作可控性。
+- 论文用大规模第一视角人类视频做预训练，数据规模达到 44K 小时；然后用 continuous latent action 解决人类视频没有机器人动作标签的问题；最后再用少量目标机器人数据 post-train，让模型对具体机器人 embodiment 和 action space 变得可控。
 
 ## 核心信息（索引级）
 
@@ -42,16 +48,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://dreamdojo-world.github.io/> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+DreamDojo 也是这次新增材料里非常值得单独放大的工作。它做的不是 VLA，而是 robot world model：给定机器人当前观察和动作，预测接下来会发生什么。
+
+### 2）策展导读要点
+
+这里最关键的不是“会生成视频”，而是它试图让世界模型具备机器人策略可用的物理和动作可控性。
+
+### 3）策展导读要点
+
+论文用大规模第一视角人类视频做预训练，数据规模达到 44K 小时；然后用 continuous latent action 解决人类视频没有机器人动作标签的问题；最后再用少量目标机器人数据 post-train，让模型对具体机器人 embodiment 和 action space 变得可控。
+
+### 4）策展导读要点
+
+DreamDojo 的下游实验也很有意思。它不只是拿世界模型做长视频生成，而是拿来做 live teleoperation、policy evaluation 和 model-based planning。
+
+## 常见误区
+
+1. VLA/世界模型条目解决 **接口与预测**，不自动替代已封装的底层 WBC 能力。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md](../../sources/papers/humanoid_rl_stack_35_dreamdojo_a_generalist_robot_world_model_from_la.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

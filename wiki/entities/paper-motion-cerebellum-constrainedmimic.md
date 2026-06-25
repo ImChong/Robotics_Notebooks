@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia, stanford]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "安全：给 motion tracking 加实时约束层。输入是 motion tracking 策略输出和实时安全约束；实现上在策略动作外叠加约束投影/安全过滤，让跟踪参考时不突破关节、接触或碰撞边界；目标是保留动作表现同时守住安全。"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # ConstrainedMimic
 
-**ConstrainedMimic** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 35/64** 篇，归类为 **D 全身跟踪基座**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**ConstrainedMimic** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 35/64** 篇，归类为 **D 全身跟踪基座**。
+
+## 一句话定义
+
+安全：给 motion tracking 加实时约束层。输入是 motion tracking 策略输出和实时安全约束；实现上在策略动作外叠加约束投影/安全过滤，让跟踪参考时不突破关节、接触或碰撞边界；目标是保留动作表现同时守住安全。
 
 ## 英文缩写速查
 
@@ -30,7 +34,7 @@ sources:
 ## 为什么重要
 
 - 安全：给 motion tracking 加实时约束层。输入是 motion tracking 策略输出和实时安全约束；实现上在策略动作外叠加约束投影/安全过滤，让跟踪参考时不突破关节、接触或碰撞边界；目标是保留动作表现同时守住安全。
-- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[全身跟踪基座](../overview/motion-cerebellum-category-04-wbt-base.md)**。
+- 运动小脑 64 篇 **#35/64** · 安全：给 motion tracking 加实时约束层。
 
 ## 核心信息（索引级）
 
@@ -41,15 +45,29 @@ sources:
 | 机构 | 斯坦福大学、英伟达研究院 |
 | 论文/项目 | https://danielpmorton.github.io/ |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+安全：给 motion tracking 加实时约束层。输入是 motion tracking 策略输出和实时安全约束；实现上在策略动作外叠加约束投影/安全过滤，让跟踪参考时不突破关节、接触或碰撞边界；目标是保留动作表现同时守住安全。
+
+### 2）策展导读要点
+
+机构：斯坦福大学、英伟达研究院
+
+## 常见误区
+
+1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-04-wbt-base.md](../overview/motion-cerebellum-category-04-wbt-base.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
-- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

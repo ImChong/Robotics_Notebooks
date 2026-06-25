@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-25
 arxiv: "2412.04368"
 venue: "2024 · arXiv"
 summary: "潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。"
@@ -19,7 +19,11 @@ sources:
 
 # Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting
 
-**Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 03/41** 篇，归类为 **01 Forward-backward 表征**（2024 · arXiv）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**Finer Behavioral Foundation Models via Auto-regressive Features and Advantage Weighting** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 03/41** 篇，归类为 **01 Forward-backward 表征**（2024 · arXiv）。
+
+## 一句话定义
+
+潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。
 
 ## 英文缩写速查
 
@@ -31,7 +35,7 @@ sources:
 ## 为什么重要
 
 - 潜空间要「细」才可被上层精确调用；FB-AW / FB-AWARE 在连续控制 benchmark 上优于粗表征。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Forward-backward 表征](../overview/bfm-category-01-forward-backward-representation.md)**（01 Forward-backward 表征），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **01 Forward-backward 表征**（#03/41）。
 
 ## 核心信息（索引级）
 
@@ -42,16 +46,34 @@ sources:
 | 出处 | 2024 · arXiv |
 | 论文 | <https://arxiv.org/abs/2412.04368> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+在无监督或多任务 RL 中学习 **forward-backward（FB）** 或 successor 结构，把异构任务压进可调用的身体潜空间。
+
+### 2）策展导读要点
+
+上层通过 **目标姿态、奖励向量或 latent prompt** 在潜空间中检索/组合行为，而非为每个技能单独训练策略。
+
+### 3）策展导读要点
+
+与单技能 motion tracking 对照：BFM 关心 **覆盖面与可组合性**，不只单一参考跟踪成功率。
+
+## 常见误区
+
+1. BFM-Zero 类工作不是「更大动作数据集」本身，而是 **潜空间可被 prompt 检索** 的身体接口。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_fb_aw_arxiv_2412_04368.md](../../sources/papers/bfm_awesome_fb_aw_arxiv_2412_04368.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

@@ -254,7 +254,7 @@
 | [x] [zkf1997_dart.md](repos/zkf1997_dart.md) | DART / DartControl：自回归潜扩散文本→人体运动与潜空间控制官方代码（ICLR 2025，arXiv:2410.05260，ETH） |
 | [x] [zilize-awesome-text-to-motion.md](repos/zilize-awesome-text-to-motion.md) | awesome-text-to-motion：文本驱动单人人体运动生成综述/数据集/模型精选与 GitHub Pages 交互索引（Zilize） |
 | [x] [tencent_hunyuan_hy_motion_1_0.md](repos/tencent_hunyuan_hy_motion_1_0.md) | HY-Motion-1.0：腾讯混元文本→3D 人体运动 DiT+Flow Matching 官方代码与 HF 权重入口 |
-| [x] [twist2.md](repos/twist2.md) | TWIST2：便携全身遥操作与 visuomotor 自主全栈开源（arXiv:2505.02833，Amazon FAR / G1） |
+| [x] [twist2.md](repos/twist2.md) | TWIST2：便携全身遥操作与 visuomotor 自主全栈开源（arXiv:2511.02832，Amazon FAR / G1） |
 | [x] [bigai-lift-humanoid.md](repos/bigai-lift-humanoid.md) | LIFT-humanoid：BIGAI 人形 SAC 预训练 + Brax 物理知情世界模型微调开源管线 |
 | [x] [nousresearch_hermes_agent.md](repos/nousresearch_hermes_agent.md) | NousResearch/hermes-agent：常驻自主代理运行时（AIAgent + 网关 + 记忆/技能闭环 + 多沙箱 + 轨迹导出，MIT） |
 | [x] [obra-superpowers.md](repos/obra-superpowers.md) | obra/superpowers：编码代理可组合技能 + TDD / worktree / 子代理交付方法论（多 harness 插件） |

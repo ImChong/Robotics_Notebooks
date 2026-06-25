@@ -1,25 +1,57 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1326,
-  "edge_count": 8978,
+  "node_count": 1325,
+  "edge_count": 8977,
   "coverage": {
-    "covered": 1295,
-    "total": 1324,
+    "covered": 1294,
+    "total": 1323,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/tairan-he.md",
-      "detail_id": "entity-tairan-he",
-      "label": "Tairan He（何泰然）",
+      "path": "wiki/entities/extreme-parkour.md",
+      "detail_id": "entity-extreme-parkour",
+      "label": "Extreme Parkour（端到端四足感知跑酷）",
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/yanjie-ze.md",
-      "detail_id": "entity-yanjie-ze",
-      "label": "Yanjie Ze（迮炎杰）",
+      "path": "wiki/entities/paper-bfm-04-fast-imitation-bfm.md",
+      "detail_id": "entity-paper-bfm-04-fast-imitation-bfm",
+      "label": "Fast Imitation via Behavior Foundation Models",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-05-learning-one-representation.md",
+      "detail_id": "entity-paper-bfm-05-learning-one-representation",
+      "label": "Learning One Representation to Optimize All Rewards",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-12-clone.md",
+      "detail_id": "entity-paper-bfm-12-clone",
+      "label": "CLONE",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-17-maskedmimic.md",
+      "detail_id": "entity-paper-bfm-17-maskedmimic",
+      "label": "MaskedMimic",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-19-calm.md",
+      "detail_id": "entity-paper-bfm-19-calm",
+      "label": "CALM",
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
@@ -36,6 +68,30 @@
       "path": "wiki/entities/paper-twist2.md",
       "detail_id": "entity-paper-twist2",
       "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
+      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
+      "label": "人形机器人 RL 运动控制：身体系统栈视角",
+      "type": "overview",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tairan-he.md",
+      "detail_id": "entity-tairan-he",
+      "label": "Tairan He（何泰然）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/yanjie-ze.md",
+      "detail_id": "entity-yanjie-ze",
+      "label": "Yanjie Ze（迮炎杰）",
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
@@ -111,68 +167,12 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
-      "detail_id": "entity-paper-amp-survey-05-motionbricks",
-      "label": "MotionBricks：模块化实时运动生成（AMP 专题 #05）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md",
-      "detail_id": "entity-paper-amp-survey-06-natural_humanoid_robot_locomotion_wi",
-      "label": "GMP：生成式运动先验与自然人形走跑",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md",
-      "detail_id": "entity-paper-amp-survey-07-adversarial_locomotion_and_motion_im",
-      "label": "ALMI：对抗 locomotion 与运动模仿的人形策略学习",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hiking-in-the-wild.md",
-      "detail_id": "entity-paper-hiking-in-the-wild",
-      "label": "Hiking in the Wild：可扩展感知跑酷框架",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md",
-      "detail_id": "entity-paper-amp-survey-10-unified_walking_running_and_recovery",
-      "label": "SD-AMP：统一走跑起身（AMP 专题 #10）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-adaptive-humanoid-control.md",
-      "detail_id": "entity-paper-adaptive-humanoid-control",
-      "label": "AHC：多行为蒸馏与强化微调的自适应人形控制",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-12-haml.md",
-      "detail_id": "entity-paper-amp-survey-12-haml",
-      "label": "HAML：单策略人形对抗多技能学习",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tairan-he.md",
-    "detail_id": "entity-tairan-he",
-    "label": "Tairan He（何泰然）",
+    "path": "wiki/entities/extreme-parkour.md",
+    "detail_id": "entity-extreme-parkour",
+    "label": "Extreme Parkour（端到端四足感知跑酷）",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"

@@ -2,8 +2,8 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, teleoperation, loco-manipulation, diffusion-policy, data-collection, unitree-g1, icra-2026]
 status: complete
-updated: 2026-06-18
-arxiv: "2505.02833"
+updated: 2026-06-25
+arxiv: "2511.02832"
 venue: "ICRA 2026 · arXiv"
 code: https://github.com/amazon-far/TWIST2
 summary: "TWIST2：便携可扩展全身人形数据采集系统——2-DoF 颈 egocentric 感知、PICO 全身遥操作、RL 低层跟踪 + 扩散高层 visuomotor 自主；全栈开源与社区数据集。"
@@ -38,7 +38,7 @@ sources:
 
 # TWIST2
 
-**TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2505.02833，**ICRA 2026**）是 Amazon FAR 等团队提出的 **下一代便携全身人形数据采集与遥操作系统**：在 [TWIST](./paper-twist.md) 跟踪控制器之上，用 **2-DoF 颈增广**、**PICO 便携全身流** 与 **分层 visuomotor 学习**（RL 低层 + 模仿高层）把「能遥操作」推进到「**能规模化攒数据并学自主**」。
+**TWIST2**（*Scalable, Portable, and Holistic Humanoid Data Collection System*，arXiv:2511.02832，**ICRA 2026**）是 Amazon FAR 等团队提出的 **下一代便携全身人形数据采集与遥操作系统**：在 [TWIST](./paper-twist.md) 跟踪控制器之上，用 **2-DoF 颈增广**、**PICO 便携全身流** 与 **分层 visuomotor 学习**（RL 低层 + 模仿高层）把「能遥操作」推进到「**能规模化攒数据并学自主**」。
 
 ## 英文缩写速查
 
@@ -136,7 +136,7 @@ flowchart TB
 - [bfm_awesome_twist2_arxiv_2505_02833.md](../../sources/papers/bfm_awesome_twist2_arxiv_2505_02833.md) — BFM 41 篇策展
 - [humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md](../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md) — 42 篇栈策展
 - [wechat_embodied_ai_lab_humanoid_rl_motion_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)
-- 论文：<https://arxiv.org/abs/2505.02833>
+- 论文：<https://arxiv.org/abs/2511.02832>
 
 ## 推荐继续阅读
 

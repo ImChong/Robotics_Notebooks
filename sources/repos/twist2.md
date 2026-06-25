@@ -7,7 +7,7 @@
 - **来源：** Amazon FAR（Frontier AI & Robotics）
 - **链接：** <https://github.com/amazon-far/TWIST2>
 - **项目页：** <https://yanjieze.com/projects/TWIST2/>
-- **论文：** <https://arxiv.org/abs/2505.02833>
+- **论文：** <https://arxiv.org/abs/2511.02832>
 - **入库日期：** 2026-06-12
 - **一句话说明：** TWIST2 官方仓库：**训练/部署代码**、**控制器 checkpoint**、**2-DoF 颈硬件设计（BOM/3D 打印/装配视频）** 全开源，支持在 **Unitree G1** 上复现便携全身遥操作与 visuomotor 自主策略管线。
 - **沉淀到 wiki：** [`wiki/entities/paper-twist2.md`](../../wiki/entities/paper-twist2.md)
@@ -16,7 +16,7 @@
 
 ## 核心定位
 
-**TWIST2** 是 [*Scalable, Portable, and Holistic Humanoid Data Collection System*](https://arxiv.org/abs/2505.02833) 的官方实现入口，与 [项目页](https://yanjieze.com/projects/TWIST2/) 及 [TWIST-Data 社区数据集](https://twist-data.github.io/) 配套。
+**TWIST2** 是 [*Scalable, Portable, and Holistic Humanoid Data Collection System*](https://arxiv.org/abs/2511.02832) 的官方实现入口，与 [项目页](https://yanjieze.com/projects/TWIST2/) 及 [TWIST-Data 社区数据集](https://twist-data.github.io/) 配套。
 
 ---
 

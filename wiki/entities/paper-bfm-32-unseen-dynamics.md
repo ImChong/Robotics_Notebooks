@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-25
 arxiv: "2505.13150"
 venue: "2025 · arXiv"
 summary: "负载/地面/硬件参数变化下的零样本动力学适配。"
@@ -21,7 +21,13 @@ sources:
 
 # Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics
 
-**Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 32/41** 篇，归类为 **04 Adaptation**（2025 · arXiv）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**Zero-Shot Adaptation of Behavioral Foundation Models to Unseen Dynamics** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 32/41** 篇，归类为 **04 Adaptation**（2025 · arXiv）。
+
+> **深读页：** [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+负载/地面/硬件参数变化下的零样本动力学适配。
 
 ## 英文缩写速查
 
@@ -34,7 +40,7 @@ sources:
 ## 为什么重要
 
 - 负载/地面/硬件参数变化下的零样本动力学适配。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Adaptation](../overview/bfm-category-04-adaptation.md)**（04 Adaptation），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **04 Adaptation**（#32/41）。
 
 ## 核心信息（索引级）
 
@@ -45,16 +51,30 @@ sources:
 | 出处 | 2025 · arXiv |
 | 论文 | <https://arxiv.org/abs/2505.13150> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+在预训练 BFM 上通过 **task token、动力学适配或少量示范** 快速迁移到新任务/新机体。
+
+### 2）策展导读要点
+
+核心问题是 **保留基座能力的同时** 以低成本吸收新约束，而非从零重训。
+
+## 常见误区
+
+1. Fast adaptation 论文通常假设 **已有强预训练基座**；弱基座上 adapter 收益有限。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_unseen_dynamics_arxiv_2505_13150.md](../../sources/papers/bfm_awesome_unseen_dynamics_arxiv_2505_13150.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

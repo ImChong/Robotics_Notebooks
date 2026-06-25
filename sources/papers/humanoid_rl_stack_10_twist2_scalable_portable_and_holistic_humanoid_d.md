@@ -6,7 +6,7 @@
 - **类型：** paper
 - **系统栈层：** 01 数据 · 重定向 · 遥操作
 - **机构：** Amazon FAR；斯坦福大学；USC；伯克利；CMU
-- **论文链接：** <https://arxiv.org/abs/2505.02833>
+- **论文链接：** <https://arxiv.org/abs/2511.02832>
 - **项目页：** <https://yanjieze.com/projects/TWIST2/>
 - **代码：** <https://github.com/amazon-far/TWIST2>
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)

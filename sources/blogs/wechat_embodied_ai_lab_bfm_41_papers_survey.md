@@ -60,7 +60,7 @@
 | 07 | Sonic: Supersizing Motion Tracking for Natural Humanoid Whole-Body Control | 2025 | https://arxiv.org/abs/2511.07820 |
 | 08 | Track Any Motions under Any Disturbances (OpenTrack) | 2025 | https://arxiv.org/abs/2509.13833 |
 | 09 | Agility Meets Stability: Versatile Humanoid Control with Heterogeneous Data (AMS) | 2025 | https://arxiv.org/abs/2511.17373 |
-| 10 | TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System | 2025 | https://arxiv.org/abs/2505.02833 |
+| 10 | TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System | 2025 | https://arxiv.org/abs/2511.02832 |
 | 11 | TWIST: Teleoperated Whole-Body Imitation System | 2025 | CoRL |
 | 12 | CLONE: Closed-Loop Whole-Body Humanoid Teleoperation for Long-Horizon Tasks | 2025 | CoRL |
 | 13 | Behavior Foundation Model for Humanoid Robots | 2025 | https://arxiv.org/pdf/2509.13780 |

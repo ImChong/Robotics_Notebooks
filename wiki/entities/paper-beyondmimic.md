@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-06-23
+updated: 2026-06-25
 arxiv: "2508.08241"
 venue: "2025 · arXiv"
 code: https://github.com/HybridRobotics/whole_body_tracking
@@ -30,7 +30,13 @@ sources:
 
 # BeyondMimic
 
-**BeyondMimic**（*From Motion Tracking to Versatile Humanoid Control via Guided Diffusion*，arXiv:2508.08241）将 guided diffusion 引入全身人形控制。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**BeyondMimic**（*From Motion Tracking to Versatile Humanoid Control via Guided Diffusion*，arXiv:2508.08241）将 guided diffusion 引入全身人形控制。
+
+> **深读页：** [beyondmimic](../methods/beyondmimic.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+BeyondMimic 的完整题目是 From Motion Tracking to Versatile Humanoid Control via Guided Diffusion。它放在 OmniTrack、RGMT 旁边很合适，因为它同样在处理“参考动作如何变成可执行控制”这个问题，但切入点更偏生成式。
 
 ## 英文缩写速查
 
@@ -42,9 +48,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **D 全身跟踪基座**（26/64）：跟踪策略：从动作跟踪到多功能人形控制。
-- BeyondMimic 的完整题目是 From Motion Tracking to Versatile Humanoid Control via Guided Diffusion。它放在 OmniTrack、RGMT 旁边很合适，因为它同样在处理「参考动作如何变成可执行控制」这个问题，但切入点更偏生成式。
-- guided diffusion 进入全身控制；生成方案仍需低层执行器兜底。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **02 参考跟踪 · 通用控制**（#15/42）。
+- BeyondMimic 的完整题目是 From Motion Tracking to Versatile Humanoid Control via Guided Diffusion。它放在 OmniTrack、RGMT 旁边很合适，因为它同样在处理“参考动作如何变成可执行控制”这个问题，但切入点更偏生成式。
+- 普通 motion tracking 通常假设参考轨迹已经给定，控制器只需要尽量追踪。但真实任务里，参考动作可能缺局部细节，可能和当前环境不匹配，也可能需要根据任务目标在线调整。
+- BeyondMimic 的思路是引入 guided diffusion，让策略不只是被动追踪参考，而是能在约束和目标引导下生成、修正更合适的动作。
 
 ## 核心信息（索引级）
 
@@ -70,17 +77,39 @@ sources:
 | 分组 | 05 Hierarchical control |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+BeyondMimic 的完整题目是 From Motion Tracking to Versatile Humanoid Control via Guided Diffusion。它放在 OmniTrack、RGMT 旁边很合适，因为它同样在处理“参考动作如何变成可执行控制”这个问题，但切入点更偏生成式。
+
+### 2）策展导读要点
+
+普通 motion tracking 通常假设参考轨迹已经给定，控制器只需要尽量追踪。但真实任务里，参考动作可能缺局部细节，可能和当前环境不匹配，也可能需要根据任务目标在线调整。
+
+### 3）策展导读要点
+
+BeyondMimic 的思路是引入 guided diffusion，让策略不只是被动追踪参考，而是能在约束和目标引导下生成、修正更合适的动作。
+
+### 4）策展导读要点
+
+这篇论文的价值在于，它把“模仿”往“可控生成”推进了一步。DeepMimic 那条线解决的是“如何跟着人类动作学”；OmniTrack 和 RGMT 解决的是“参考动作怎样更物理、更鲁棒”；BeyondMimic 则进一步问：如果参考本身不够，能不能让模型在物理约束下补出更可执行的行为？
+
+## 常见误区
+
+1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 方法深读：[beyondmimic.md](../methods/beyondmimic.md)
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

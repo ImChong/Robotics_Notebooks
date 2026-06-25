@@ -137,11 +137,11 @@ PAPERS: list[dict] = [
     },
     {
         "id": 10,
-        "slug": "twist2_arxiv_2505_02833",
+        "slug": "twist2_arxiv_2511_02832",
         "title": "TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System",
         "year": 2025,
         "venue": "arXiv",
-        "paper": "https://arxiv.org/abs/2505.02833",
+        "paper": "https://arxiv.org/abs/2511.02832",
         "code": "https://github.com/amazon-far/TWIST2",
         "group": "goal-conditioned",
         "note": "可扩展全身数据采集系统；BFM 进化依赖持续数据管线而非一次性动作集。",

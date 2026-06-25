@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。"
 related:
@@ -21,7 +21,11 @@ sources:
 
 # HumanX
 
-**HumanX** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 05/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**HumanX** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 05/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
+
+## 一句话定义
+
+HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
 
 ## 英文缩写速查
 
@@ -32,9 +36,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（21/64）：数据入口：从人类视频学敏捷交互技能。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#05/42）。
 - HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
+- 它的框架包括两个部分：XGen 和 XMimic。XGen 用来从视频中合成物理合理的交互数据，并支持对象 mesh、尺寸、轨迹等增强；XMimic 则学习这些数据里的泛化交互技能。
+- 这篇论文最重要的不是“机器人会打球”，而是数据生产思路：真实机器人交互数据贵，人类视频多，但视频里的动作和机器人身体不匹配，物体状态也不一定完整。HumanX 试图把视频中的人-物交互转换成机器人可以训练的数据。
 
 ## 核心信息（索引级）
 
@@ -46,16 +51,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://wyhuai.github.io/human-x/> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。
+
+### 2）策展导读要点
+
+它的框架包括两个部分：XGen 和 XMimic。XGen 用来从视频中合成物理合理的交互数据，并支持对象 mesh、尺寸、轨迹等增强；XMimic 则学习这些数据里的泛化交互技能。
+
+### 3）策展导读要点
+
+这篇论文最重要的不是“机器人会打球”，而是数据生产思路：真实机器人交互数据贵，人类视频多，但视频里的动作和机器人身体不匹配，物体状态也不一定完整。HumanX 试图把视频中的人-物交互转换成机器人可以训练的数据。
+
+### 4）策展导读要点
+
+它和 OmniRetarget 的区别在于：OmniRetarget 更像一个交互保留的重定向引擎，HumanX 更像从人类视频到机器人交互技能的完整管线。
+
+## 常见误区
+
+1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md](../../sources/papers/humanoid_rl_stack_05_humanx_toward_agile_and_generalizable_humanoid_i.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, jku, nyu, berkeley]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？"
 related:
@@ -21,7 +21,11 @@ sources:
 
 # From Generated Human Videos to Physically Plausible Robot Trajectories
 
-**From Generated Human Videos to Physically Plausible Robot Trajectories** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 04/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**From Generated Human Videos to Physically Plausible Robot Trajectories** 收录于 [具身智能研究室 · 42 篇 humanoid RL 运动控制长文](https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA) **第 04/42** 篇，归类为 **01 数据 · 重定向 · 遥操作**。
+
+## 一句话定义
+
+这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？
 
 ## 英文缩写速查
 
@@ -32,9 +36,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（24/64）：数据入口：生成视频到物理可执行轨迹。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **01 数据 · 重定向 · 遥操作**（#04/42）。
 - 这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？
-- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 的八层框架中，属于 **01 数据 · 重定向 · 遥操作** 簇。
+- 生成视频可能在视觉上合理，但会有形变、遮挡、肢体穿模、动作不连续、人体比例不稳定等问题。对人眼来说，这些瑕疵可能可以忽略；但对机器人来说，一点姿态错误就可能变成无法执行的轨迹。
+- 论文提出两阶段管线：先把生成视频 lift 成 4D human representation，再重定向到 humanoid morphology；之后用 GenMimic 这样的 physics-aware RL policy 来跟踪 3D keypoints，并引入 symmetry 和 keypoint-weighted rewards。
 
 ## 核心信息（索引级）
 
@@ -46,16 +51,38 @@ sources:
 | 出处 | curated |
 | 链接 | <https://genmimic.github.io/> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+这篇论文关注一个很值得追踪的问题：视频生成模型越来越强，可以生成各种人类动作视频，那机器人能不能直接执行生成视频里的动作？
+
+### 2）策展导读要点
+
+生成视频可能在视觉上合理，但会有形变、遮挡、肢体穿模、动作不连续、人体比例不稳定等问题。对人眼来说，这些瑕疵可能可以忽略；但对机器人来说，一点姿态错误就可能变成无法执行的轨迹。
+
+### 3）策展导读要点
+
+论文提出两阶段管线：先把生成视频 lift 成 4D human representation，再重定向到 humanoid morphology；之后用 GenMimic 这样的 physics-aware RL policy 来跟踪 3D keypoints，并引入 symmetry 和 keypoint-weighted rewards。
+
+### 4）策展导读要点
+
+我的判断**未来视频生成模型可能会成为机器人动作创意来源，但不会直接成为机器人控制器。中间必须有物理过滤和机器人化过程。**
+
+## 常见误区
+
+1. 重定向/遥操作不是「训练前脚本」——参考质量上限往往 **早于** RL 策略决定。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 总框架：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
 - 原始 source：[humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md](../../sources/papers/humanoid_rl_stack_04_from_generated_human_videos_to_physically_plausi.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

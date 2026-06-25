@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, zgca, buaa, deepcybo, tju]
 status: complete
-updated: 2026-06-14
+updated: 2026-06-25
 arxiv: "2606.08495"
 summary: "ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # EgoPriMo
 
-**EgoPriMo** 收录于 [具身智能研究室 · Loco-Manip 8 篇周报](https://mp.weixin.qq.com/s/Ez87ljBYmCyIpLKjMjEyaQ) **第 02/8** 篇，归类为 **01 第一视角数据**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**EgoPriMo** 收录于 [具身智能研究室 · Loco-Manip 8 篇周报](https://mp.weixin.qq.com/s/Ez87ljBYmCyIpLKjMjEyaQ) **第 02/8** 篇，归类为 **01 第一视角数据**。
+
+## 一句话定义
+
+ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
 
 ## 英文缩写速查
 
@@ -30,7 +34,6 @@ sources:
 ## 为什么重要
 
 - ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
-- 在 [Loco-Manip 8 篇技术地图](../overview/loco-manip-8-papers-technology-map.md) 中属于 **[01 第一视角数据](../overview/loco-manip-category-01-egocentric-data.md)**。
 
 ## 核心信息（索引级）
 
@@ -41,15 +44,26 @@ sources:
 | 出处 | 2026 · arXiv:2606.08495 |
 | 论文/项目 | <https://arxiv.org/abs/2606.08495> |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+ego 观察 + 文本 → SMPL 全身动作 → 人形控制器。
+
+## 常见误区
+
+1. 策展编译不能替代原文消融与实机协议；量化指标以 PDF 为准。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[loco-manip-8-papers-technology-map.md](../overview/loco-manip-8-papers-technology-map.md)
 - 分类 hub：[loco-manip-category-01-egocentric-data.md](../overview/loco-manip-category-01-egocentric-data.md)
 - 原始 source：[loco_manip_survey_02_egoprimo.md](../../sources/papers/loco_manip_survey_02_egoprimo.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准。
 
 ## 参考来源
 

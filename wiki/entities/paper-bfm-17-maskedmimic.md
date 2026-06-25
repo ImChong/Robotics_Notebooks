@@ -3,8 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-06-18
-arxiv: "2506.20487"
+updated: 2026-06-25
 venue: "2024 · TOG"
 code: https://github.com/NVlabs/ProtoMotions
 summary: "稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。"
@@ -25,7 +24,11 @@ sources:
 
 # MaskedMimic
 
-**MaskedMimic** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 17/41** 篇，归类为 **02 Goal-conditioned 学习**（2024 · TOG）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**MaskedMimic** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 17/41** 篇，归类为 **02 Goal-conditioned 学习**（2024 · TOG）。
+
+## 一句话定义
+
+稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
 
 ## 英文缩写速查
 
@@ -36,9 +39,8 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **B 动作模仿源流**（15/64）：跟踪：用遮蔽补全把稀疏目标变成全身动作。
 - 稀疏/遮蔽条件下补全全身轨迹；贴近语言只给部分约束的现实。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Goal-conditioned 学习](../overview/bfm-category-02-goal-conditioned-learning.md)**（02 Goal-conditioned 学习），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **02 Goal-conditioned 学习**（#17/41）。
 
 ## 核心信息（索引级）
 
@@ -50,16 +52,34 @@ sources:
 | 论文 | <https://research.nvidia.com/labs/par/maskedmimic/assets/SIGGRAPHAsia2024_MaskedMimic.pdf> |
 - **代码/项目：** <https://github.com/NVlabs/ProtoMotions>
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+以 **goal / reference / command** 为条件训练全身跟踪或交互策略，扩展人形可执行动作库。
+
+### 2）策展导读要点
+
+数据侧常融合 MoCap、视频、遥操作与 HOI；控制侧强调 **抗扰、恢复与跨参考泛化**。
+
+### 3）策展导读要点
+
+在 BFM taxonomy 中回答「身体能覆盖多少目标条件技能」。
+
+## 常见误区
+
+1. Goal-conditioned 跟踪不等于 unlimited skills：仍受数据分布、接触建模与实机 Sim2Real 约束。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_maskedmimic_tog_2024.md](../../sources/papers/bfm_awesome_maskedmimic_tog_2024.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

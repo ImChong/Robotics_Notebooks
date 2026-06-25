@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, meta, cmu]
 status: complete
-updated: 2026-06-22
+updated: 2026-06-25
 arxiv: "2511.04131"
 venue: "2025 · arXiv"
 code: https://github.com/LeCAR-Lab/BFM-Zero
@@ -30,7 +30,13 @@ sources:
 
 # BFM-Zero
 
-**BFM-Zero**（*A Promptable Behavioral Foundation Model for Humanoid Control*，arXiv:2511.04131）训练可提示的行为基础模型，用 latent prompt 统一目标姿态、奖励优化、恢复与少样本适配。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**BFM-Zero**（*A Promptable Behavioral Foundation Model for Humanoid Control*，arXiv:2511.04131）训练可提示的行为基础模型，用 latent prompt 统一目标姿态、奖励优化、恢复与少样本适配。
+
+> **深读页：** [paper-behavior-foundation-model-humanoid](../entities/paper-behavior-foundation-model-humanoid.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+BFM-Zero 是这批论文里概念最值得单独拎出来的一篇。它的目标是训练一个 promptable behavioral foundation model for humanoid control。
 
 ## 英文缩写速查
 
@@ -42,9 +48,10 @@ sources:
 
 ## 为什么重要
 
-- 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **E 可提示控制**（38/64）：可提示小脑：目标、奖励、轨迹 prompt 调用身体。
-- BFM-Zero 是这批论文里概念最值得单独拎出来的一篇：技能切换≈搜索身体潜空间，接近产业「运控基座」。
-- latent prompt 统一目标姿态、奖励优化、恢复与少样本适配。
+- 在 [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) 中属于 **02 参考跟踪 · 通用控制**（#19/42）。
+- BFM-Zero 是这批论文里概念最值得单独拎出来的一篇。它的目标是训练一个 promptable behavioral foundation model for humanoid control。
+- 它不是为每个任务单独训练策略，而是通过无监督强化学习学一个统一 latent space，让运动追踪、目标姿态、奖励优化等任务都能映射到同一个行为空间。
+- 它的关键思想是 Forward-Backward representation。给定某类 reward 或 prompt，系统可以在 latent space 里找到对应的 z，策略再以 z 为条件执行行为。
 
 ## 核心信息（索引级）
 
@@ -71,17 +78,39 @@ sources:
 | 分组 | 01 Forward-backward 表征 |
 | 索引来源 | [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+BFM-Zero 是这批论文里概念最值得单独拎出来的一篇。它的目标是训练一个 promptable behavioral foundation model for humanoid control。
+
+### 2）策展导读要点
+
+它不是为每个任务单独训练策略，而是通过无监督强化学习学一个统一 latent space，让运动追踪、目标姿态、奖励优化等任务都能映射到同一个行为空间。
+
+### 3）策展导读要点
+
+它的关键思想是 Forward-Backward representation。给定某类 reward 或 prompt，系统可以在 latent space 里找到对应的 z，策略再以 z 为条件执行行为。
+
+### 4）策展导读要点
+
+语言模型有 token，视觉模型有 patch，人形机器人可能也需要一种行为 token 或 latent action。上层系统不一定直接输出 29 个关节目标，而是输出“向前走、低重心、右手支撑、保持柔顺、恢复站立”这类身体意图的 latent prompt。
+
+## 常见误区
+
+1. Motion tracking 论文的泛化常指 **参考分布内**；换数据源或接触条件仍可能崩塌。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - RL 身体系统栈：[humanoid-rl-motion-control-body-system-stack.md](../overview/humanoid-rl-motion-control-body-system-stack.md)
 - BFM 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - AMP 姊妹篇：[humanoid-amp-motion-prior-survey.md](../overview/humanoid-amp-motion-prior-survey.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 

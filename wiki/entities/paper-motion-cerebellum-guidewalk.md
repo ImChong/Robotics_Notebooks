@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, hit, leju]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 venue: curated
 summary: "底座：把导航接口接到地形自适应步态。输入是导航速度/路径参考、地形几何和机器人状态；实现上把参考轨迹投到可落脚地形上，再训练低层策略跟踪 SE(2) 速度接口；这样标准导航栈可以调用人形步态。"
 related:
@@ -17,7 +17,11 @@ sources:
 
 # GuideWalk
 
-**GuideWalk** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 01/64** 篇，归类为 **A 走路底座**。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**GuideWalk** 收录于 [具身智能研究室 · 运动小脑 64 篇长文](https://mp.weixin.qq.com/s/Kx9myecE1Z0eGqOapoqQnA) **第 01/64** 篇，归类为 **A 走路底座**。
+
+## 一句话定义
+
+底座：把导航接口接到地形自适应步态。输入是导航速度/路径参考、地形几何和机器人状态；实现上把参考轨迹投到可落脚地形上，再训练低层策略跟踪 SE(2) 速度接口；这样标准导航栈可以调用人形步态。
 
 ## 英文缩写速查
 
@@ -30,7 +34,7 @@ sources:
 ## 为什么重要
 
 - 底座：把导航接口接到地形自适应步态。输入是导航速度/路径参考、地形几何和机器人状态；实现上把参考轨迹投到可落脚地形上，再训练低层策略跟踪 SE(2) 速度接口；这样标准导航栈可以调用人形步态。
-- 在 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中属于 **[走路底座](../overview/motion-cerebellum-category-01-locomotion-base.md)**。
+- 运动小脑 64 篇 **#01/64** · 底座：把导航接口接到地形自适应步态。
 
 ## 核心信息（索引级）
 
@@ -41,15 +45,29 @@ sources:
 | 机构 | 哈尔滨工业大学、乐聚机器人 |
 | 论文/项目 | https://GuideWalk.github.io |
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+底座：把导航接口接到地形自适应步态。输入是导航速度/路径参考、地形几何和机器人状态；实现上把参考轨迹投到可落脚地形上，再训练低层策略跟踪 SE(2) 速度接口；这样标准导航栈可以调用人形步态。
+
+### 2）策展导读要点
+
+机构：哈尔滨工业大学、乐聚机器人
+
+## 常见误区
+
+1. 运动小脑条目解决 **身体层** 问题，不替代 VLA/世界模型的任务规划。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-motion-cerebellum-technology-map.md](../overview/humanoid-motion-cerebellum-technology-map.md)
 - 分类 hub：[motion-cerebellum-category-01-locomotion-base.md](../overview/motion-cerebellum-category-01-locomotion-base.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息（索引级）** 表）。
-- 如需与运动小脑同组篇目对照实验，请回到 [运动小脑技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 对应分类 hub 的评测段落。
 
 ## 参考来源
 

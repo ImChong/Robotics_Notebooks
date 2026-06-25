@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, berkeley]
 status: complete
-updated: 2026-05-26
+updated: 2026-06-25
 arxiv: "2102.09430"
 venue: "2020 · ICML"
 code: https://github.com/younggyoseo/RE3
@@ -21,7 +21,13 @@ sources:
 
 # State Entropy Maximization with Random Encoders for Efficient Exploration
 
-**State Entropy Maximization with Random Encoders for Efficient Exploration** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 28/41** 篇，归类为 **03 Intrinsic reward 预训练**（2020 · ICML）。本页为知识库 **策展摘要**；方法细节以论文 PDF 与项目页为准。
+**State Entropy Maximization with Random Encoders for Efficient Exploration** 收录于 [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers) **第 28/41** 篇，归类为 **03 Intrinsic reward 预训练**（2020 · ICML）。
+
+> **深读页：** [reinforcement-learning](../methods/reinforcement-learning.md) — 方法机制与实验细节见链接页；本页保留 survey 坐标与交叉引用。
+
+## 一句话定义
+
+状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
 
 ## 英文缩写速查
 
@@ -34,7 +40,7 @@ sources:
 ## 为什么重要
 
 - 状态熵最大化打开探索；人形需覆盖更多姿态以防 OOD 失败。
-- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 的五类问题坐标中，属于 **[Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md)**（03 Intrinsic reward 预训练），可与 [Behavior Foundation Model](../concepts/behavior-foundation-model.md) taxonomy 对照阅读。
+- 在 [BFM 41 篇技术地图](../overview/bfm-41-papers-technology-map.md) 中属于 **03 Intrinsic reward 预训练**（#28/41）。
 
 ## 核心信息（索引级）
 
@@ -46,16 +52,30 @@ sources:
 | 论文 | <https://arxiv.org/abs/2102.09430> |
 - **代码/项目：** <https://github.com/younggyoseo/RE3>
 
+## 核心机制（归纳）
+
+### 1）策展导读要点
+
+无明确外部任务时，用 **intrinsic reward**（探索、多样性、后继态等）预训练身体策略。
+
+### 2）策展导读要点
+
+为后续 goal-conditioned 或 imitation 提供 **可迁移的探索先验**，降低冷启动样本需求。
+
+## 常见误区
+
+1. Intrinsic 预训练不替代任务奖励；它提供 **探索覆盖**，下游仍需任务或示范对齐。
+
+## 实验与评测
+
+- 本页在公众号/survey **策展编译**基础上补充机制归纳；**量化 benchmark、消融与实机指标以原文 PDF / 项目页为准**（链接见 [参考来源](#参考来源)）。
+- 与同栈姊妹篇对照时，请回到对应 **技术地图 / 42 篇栈 / BFM 地图 / VLN 地图** 总览中的实验段落。
+
 ## 与其他页面的关系
 
 - 技术地图：[bfm-41-papers-technology-map.md](../overview/bfm-41-papers-technology-map.md)
 - BFM 概念：[behavior-foundation-model.md](../concepts/behavior-foundation-model.md)
 - 原始 source：[bfm_awesome_re3_icml_2020.md](../../sources/papers/bfm_awesome_re3_icml_2020.md)
-
-## 实验与评测
-
-- 本页为 **策展索引级** 摘要；量化 benchmark、消融与实机指标以 **原文 PDF / 项目页** 为准（链接见 [参考来源](#参考来源) 与上文 **核心信息** 表）。
-- 若需与姊妹篇对照，请回到对应 **技术地图 / 42 篇栈 / AMP 专题** 总览中的实验段落。
 
 ## 参考来源
 
