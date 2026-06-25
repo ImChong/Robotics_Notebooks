@@ -71,7 +71,7 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 待深读
 - [MASH](../entities/paper-notebook-mash-cooperative-heterogeneous-multi-agent-rl-fo.md) — 待深读
 - [Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation](../entities/paper-notebook-mechanical-intelligence-aware-curriculum-rl-for.md) — 待深读
-- [MoRE](../entities/paper-amp-survey-08-more.md) — 待深读
+- [MoRE](../entities/paper-amp-survey-08-more.md) — [知识库深读](https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-paper-amp-survey-08-more)（arXiv:2506.08840）
 - [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 待深读
 - [No More Marching](../entities/paper-notebook-no-more-marching-learning-humanoid-locomotion-fo.md) — 待深读
 - [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)

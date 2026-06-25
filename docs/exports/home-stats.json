@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-25",
   "node_count": 1325,
-  "edge_count": 8850,
+  "edge_count": 8862,
   "coverage": {
     "covered": 1294,
     "total": 1323,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-amp-survey-08-more.md",
+      "detail_id": "entity-paper-amp-survey-08-more",
+      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/paper-notebook-category-05-locomotion.md",
+      "detail_id": "wiki-overview-paper-notebook-category-05-locomotion",
+      "label": "Paper Notebooks · Locomotion",
+      "type": "overview",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/amp-reward.md",
+      "detail_id": "wiki-methods-amp-reward",
+      "label": "AMP & HumanX: 判别器驱动的风格学习",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/terrain-adaptation.md",
+      "detail_id": "wiki-concepts-terrain-adaptation",
+      "label": "Terrain Adaptation（地形适应）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md",
+      "detail_id": "entity-paper-explicit-stair-geometry-humanoid-locomotion",
+      "label": "显式楼梯几何条件化人形运动（Explicit Stair Geometry Conditioning）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-loco-manip-04-oasis.md",
       "detail_id": "entity-paper-loco-manip-04-oasis",
@@ -119,60 +167,12 @@
       "type": "entity",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/nvidia-gear-lab.md",
-      "detail_id": "entity-nvidia-gear-lab",
-      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-vesta-generalist-embodied-reasoning.md",
-      "detail_id": "entity-paper-vesta-generalist-embodied-reasoning",
-      "label": "Vesta（A Generalist Embodied Reasoning Model）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-motion-cerebellum-stubborn.md",
-      "detail_id": "entity-paper-motion-cerebellum-stubborn",
-      "label": "Stubborn",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/quadruped-control-curriculum.md",
-      "detail_id": "entity-quadruped-control-curriculum",
-      "label": "四足控制学习策展（仿真 → RL → 实机）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/matrix-simulation-platform.md",
-      "detail_id": "entity-matrix-simulation-platform",
-      "label": "MATRiX（智身科技联合仿真平台）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/roamerx-navigation.md",
-      "detail_id": "entity-roamerx-navigation",
-      "label": "RoamerX（智身四足导航栈）",
-      "type": "entity",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-loco-manip-04-oasis.md",
-    "detail_id": "entity-paper-loco-manip-04-oasis",
-    "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
+    "path": "wiki/entities/paper-amp-survey-08-more.md",
+    "detail_id": "entity-paper-amp-survey-08-more",
+    "label": "MoRE：复杂地形上的人形多步态残差专家混合",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"

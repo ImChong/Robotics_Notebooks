@@ -2,10 +2,11 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-25
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
+  - ../entities/paper-amp-survey-08-more.md
   - ./imitation-learning.md
   - ./beyondmimic.md
   - ./hil-hybrid-imitation-learning.md
@@ -13,6 +14,7 @@ related:
 sources:
   - ../../sources/papers/amp.md
   - ../../sources/papers/unified_walk_run_recovery_sdamp_arxiv_2605_18611.md
+  - ../../sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md
   - ../../sources/papers/motion_control_projects.md
 summary: "AMP (Adversarial Motion Prior) 通过判别器奖励引导机器人学习自然、平滑的动作风格，而 HumanX 进一步将接触图引入 AMP 框架以解决复杂的交互任务。"
@@ -100,7 +102,7 @@ $$
 ## 关联页面
 
 - [Query：人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
-- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
+- [SD-AMP 统一走跑起身](../entities/paper-unified-walk-run-recovery-sdamp.md)、[MoRE 复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md)、[SPRINT 竞技冲刺频谱先验](../entities/paper-sprint-humanoid-athletic-sprints.md)、[Heracles 扩散中间件](../entities/paper-heracles-humanoid-diffusion.md)
 - [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)
 - [protomotions](../entities/protomotions.md) — 提供大规模并行训练支持。
 

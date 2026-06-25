@@ -12,7 +12,7 @@ tags:
   - isaac-lab
   - sim2real
 status: complete
-updated: 2026-06-05
+updated: 2026-06-25
 arxiv: "2605.09944"
 related:
   - ../tasks/locomotion.md
@@ -141,7 +141,7 @@ flowchart TB
 - [FastStair](./paper-faststair-humanoid-stair-ascent.md) — 另一路人形楼梯 RL（规划引导 + LoRA）
 - [E-SDS](./paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — G1 感知行走与楼梯下降（VLM 奖励）
 - [Unitree G1](./unitree-g1.md) — 实机平台
-- [MoRE（AMP 综述条目）](./paper-amp-survey-08-more.md) — 论文对比的视觉多专家基线
+- [MoRE（AMP 专题 #08）](./paper-amp-survey-08-more.md) — 本文视觉复杂地形基线；arXiv:2506.08840，latent residual MoE + 多判别器 AMP
 
 ## 与其他工作对比
 

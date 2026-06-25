@@ -2,11 +2,12 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-19
+updated: 2026-06-25
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
   - ../entities/paper-rma-rapid-motor-adaptation.md
+  - ../entities/paper-amp-survey-08-more.md
   - ../concepts/state-estimation.md
   - ../methods/reinforcement-learning.md
   - ../methods/imitation-learning.md
@@ -306,6 +307,7 @@ flowchart TD
 - [Hybrid Locomotion](./hybrid-locomotion.md)
 - [人形腿部行星滚柱丝杠直线驱动（PRS）](../concepts/planetary-roller-screw-humanoid-leg-actuation.md) — 腿部执行器路线与行走动态、能耗叙事
 - [Whole-Body Control](../concepts/whole-body-control.md)
+- [MoRE：复杂地形多步态 AMP](../entities/paper-amp-survey-08-more.md) — 深度相机 + 多判别器先验 + gait command 切换
 - [MPC](../methods/model-predictive-control.md)
 
 ## 推荐继续阅读
