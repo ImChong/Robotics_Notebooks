@@ -1,13 +1,69 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1336,
-  "edge_count": 9109,
+  "node_count": 1338,
+  "edge_count": 9139,
   "coverage": {
-    "covered": 1305,
-    "total": 1334,
+    "covered": 1307,
+    "total": 1336,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/simulation-physics-fidelity.md",
+      "detail_id": "wiki-queries-simulation-physics-fidelity",
+      "label": "仿真物理保真度链路选型指南",
+      "type": "query",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/physics-fidelity-sim2real-gap.md",
+      "detail_id": "wiki-concepts-physics-fidelity-sim2real-gap",
+      "label": "Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-dynamics.md",
+      "detail_id": "wiki-concepts-contact-dynamics",
+      "label": "Contact Dynamics",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/joint-friction-models.md",
+      "detail_id": "wiki-concepts-joint-friction-models",
+      "label": "Joint Friction Models（关节摩擦模型）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/urdf-robot-description.md",
+      "detail_id": "wiki-concepts-urdf-robot-description",
+      "label": "URDF（统一机器人描述格式）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/differentiable-simulation.md",
+      "detail_id": "wiki-concepts-differentiable-simulation",
+      "label": "Differentiable Simulation（可微仿真）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/formalizations/articulated-body-algorithms.md",
+      "detail_id": "wiki-formalizations-articulated-body-algorithms",
+      "label": "Articulated Body Algorithms（ABA / RNEA）",
+      "type": "formalization",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/tensorrt.md",
       "detail_id": "entity-tensorrt",
@@ -111,69 +167,13 @@
       "type": "concept",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/htwk-gym.md",
-      "detail_id": "wiki-methods-htwk-gym",
-      "label": "htwk-gym",
-      "type": "method",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/weights-and-biases.md",
-      "detail_id": "entity-weights-and-biases",
-      "label": "Weights & Biases（W&B）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/tensorboard.md",
-      "detail_id": "entity-tensorboard",
-      "label": "TensorBoard",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/wandb-vs-tensorboard.md",
-      "detail_id": "wiki-comparisons-wandb-vs-tensorboard",
-      "label": "Weights & Biases vs TensorBoard（训练实验监控选型）",
-      "type": "comparison",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/amp-mjlab.md",
-      "detail_id": "entity-amp-mjlab",
-      "label": "AMP_mjlab (G1 统一 AMP 策略)",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mjlab.md",
-      "detail_id": "entity-mjlab",
-      "label": "mjlab (轻量 GPU 加速 RL 框架)",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/dagger.md",
-      "detail_id": "wiki-methods-dagger",
-      "label": "DAgger（Dataset Aggregation）",
-      "type": "method",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tensorrt.md",
-    "detail_id": "entity-tensorrt",
-    "label": "TensorRT",
-    "type": "entity",
+    "path": "wiki/queries/simulation-physics-fidelity.md",
+    "detail_id": "wiki-queries-simulation-physics-fidelity",
+    "label": "仿真物理保真度链路选型指南",
+    "type": "query",
     "recency": "2026-06-25",
     "source": "log.md"
   }

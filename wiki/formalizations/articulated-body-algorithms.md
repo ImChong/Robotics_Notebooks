@@ -76,6 +76,8 @@ $$
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Pinocchio](../entities/pinocchio.md)
 - [TSID Formulation](./tsid-formulation.md)
+- [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — ABA/RNEA 属第 ② 刚体动力学层
+- [Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md) — 积分步长/求解器精度与长视界发散
 
 ## 推荐继续阅读
 

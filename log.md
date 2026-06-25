@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] structural | checklist-v26 P1 — 仿真物理保真度知识链 +2 页落地并完成四层交叉回链
+
+- 新增 Query：[simulation-physics-fidelity.md](wiki/queries/simulation-physics-fidelity.md)（几何/URDF → 刚体动力学（ABA/RNEA）→ 接触/摩擦 → 执行器四层保真度取舍决策树，配 Mermaid，覆盖每层对 sim2real gap 的贡献/建模成本/典型失败模式）
+- 新增 Concept：[physics-fidelity-sim2real-gap.md](wiki/concepts/physics-fidelity-sim2real-gap.md)（物理保真度 ↔ sim2real gap 因果分层，明示各层简化如何转化为可观测 gap，及与域随机化/系统辨识的互补关系）
+- 交叉回链：[contact-dynamics](wiki/concepts/contact-dynamics.md)、[joint-friction-models](wiki/concepts/joint-friction-models.md)、[urdf-robot-description](wiki/concepts/urdf-robot-description.md)、[differentiable-simulation](wiki/concepts/differentiable-simulation.md)、[articulated-body-algorithms](wiki/formalizations/articulated-body-algorithms.md) 五页与新页双向回链，消除孤儿页
+- 图谱：节点 1336→1338、边 9109→9139；社区重分区后新增 `humanoid-soccer` 社区，补 `COMMUNITY_NAME_OVERRIDES` 命名 override（`community_quality_warning=false`，`largest_community_ratio=0.183`）
+- 门禁：`make lint` 0 问题；`tests/test_community_naming`、`test_generate_link_graph_communities` 等单测通过
+
 ## [2026-06-25] ingest | sources/repos/tensorrt-official.md + openvino-official.md + ncnn-official.md — 补全 TensorRT 实体并扩展 OpenVINO/ncnn 与机载推理选型对比
 
 - 原始资料：[tensorrt-official.md](sources/repos/tensorrt-official.md)、[openvino-official.md](sources/repos/openvino-official.md)、[ncnn-official.md](sources/repos/ncnn-official.md)

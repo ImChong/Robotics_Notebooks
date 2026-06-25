@@ -301,6 +301,8 @@ locomotion 本质上可以看成是：
 - [TSID](./tsid.md)
 - [Contact Complementarity](../formalizations/contact-complementarity.md) — 接触动力学的 LCP 数学框架
 - [Contact Wrench Cone](../formalizations/contact-wrench-cone.md) — 面接触可行 wrench 集合的凸锥形式化
+- [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — 接触模型属第 ③ 层，硬 LCP 与可微性的取舍
+- [Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 接触简化如何转化为打滑/冲击失配
 
 ## 一句话记忆
 
