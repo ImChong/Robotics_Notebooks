@@ -118,6 +118,8 @@
     var onPointerMove = opts.onPointerMove;
     var getVisibleNodeIds = opts.getVisibleNodeIds || function () { return new Set(); };
     var hasActiveFilter = opts.hasActiveFilter || function () { return false; };
+    var isTimelineAnimating = opts.isTimelineAnimating || function () { return false; };
+    var getTimelineRevealedIds = opts.getTimelineRevealedIds || function () { return new Set(); };
     var edgeHighlightsWithNode = opts.edgeHighlightsWithNode;
     var getChargeStrength = opts.getChargeStrength || function () { return -800; };
     var getMagneticConfig = opts.getMagneticConfig || function () { return null; };
@@ -159,7 +161,7 @@
       return isDark() ? '#0d1117' : '#eef2f7';
     }
 
-    function buildLinks() {
+    function buildLinks(nodeFilter) {
       return edges
         .map(function (e) {
           var sId = edgeEndpointId(e.source);
@@ -167,12 +169,14 @@
           var source = nodeById.get(sId);
           var target = nodeById.get(tId);
           if (!source || !target) return null;
+          if (nodeFilter && (!nodeFilter(source) || !nodeFilter(target))) return null;
           return { source: source, target: target, _ref: e };
         })
         .filter(Boolean);
     }
 
     function nodeOpacityFor(d) {
+      if (isTimelineAnimating() && !getTimelineRevealedIds().has(d.id)) return 0;
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
@@ -199,6 +203,11 @@
     function linkOpacityFor(l) {
       var s = edgeEndpointId(l.source);
       var t = edgeEndpointId(l.target);
+      if (isTimelineAnimating()) {
+        var revealed = getTimelineRevealedIds();
+        if (!revealed.has(s) || !revealed.has(t)) return 0;
+        if (!sidebarNodeId && !hoverNodeId) return 0.35;
+      }
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       if (sidebarNodeId && edgeHighlightsWithNode) {
@@ -404,7 +413,125 @@
         if (!n3) return;
         if (src.x != null) n3.x = src.x;
         if (src.y != null) n3.y = src.y;
+        if (src.z != null) n3.z = src.z;
       });
+    }
+
+    function syncSourceFrom3D() {
+      nodes3d.forEach(function (n3) {
+        var src = resolveSourceNode(n3.id);
+        if (!src) return;
+        if (n3.x != null) src.x = n3.x;
+        if (n3.y != null) src.y = n3.y;
+        if (n3.z != null) src.z = n3.z;
+      });
+    }
+
+    function snapshotPositions() {
+      return nodes3d.map(function (n) {
+        return { id: n.id, x: n.x, y: n.y, z: n.z };
+      });
+    }
+
+    function restorePositions(saved) {
+      if (!saved || !saved.length) return;
+      var byId = new Map(saved.map(function (p) { return [p.id, p]; }));
+      nodes3d.forEach(function (n3) {
+        var p = byId.get(n3.id);
+        if (!p) return;
+        if (p.x != null) n3.x = p.x;
+        if (p.y != null) n3.y = p.y;
+        if (p.z != null) n3.z = p.z;
+        n3.vx = 0;
+        n3.vy = 0;
+        n3.vz = 0;
+        delete n3.fx;
+        delete n3.fy;
+        delete n3.fz;
+      });
+      syncSourceFrom3D();
+      graph.graphData({ nodes: nodes3d, links: buildLinks() });
+      refreshAppearance();
+    }
+
+    function seedTimelineNodePosition(sourceNode, revealedIds, incident) {
+      var n3 = nodeById.get(sourceNode.id);
+      var sx = 0;
+      var sy = 0;
+      var sz = 0;
+      var cnt = 0;
+      var inc = incident && incident.get(sourceNode.id);
+      if (inc) {
+        for (var i = 0; i < inc.length; i++) {
+          var e = inc[i];
+          var sid = edgeEndpointId(e.source);
+          var otherId = sid === sourceNode.id ? edgeEndpointId(e.target) : sid;
+          var other = resolveSourceNode(otherId);
+          if (!other || !revealedIds.has(other.id) || other.x == null) continue;
+          var other3 = nodeById.get(other.id);
+          sx += other.x;
+          sy += other.y;
+          sz += other.z != null ? other.z : (other3 && other3.z != null ? other3.z : 0);
+          cnt++;
+        }
+      }
+      var x;
+      var y;
+      var z;
+      if (cnt > 0) {
+        x = sx / cnt + (Math.random() - 0.5) * 30;
+        y = sy / cnt + (Math.random() - 0.5) * 30;
+        z = sz / cnt + (Math.random() - 0.5) * 30;
+      } else {
+        x = (Math.random() - 0.5) * 80;
+        y = (Math.random() - 0.5) * 80;
+        z = (Math.random() - 0.5) * 80;
+      }
+      sourceNode.x = x;
+      sourceNode.y = y;
+      sourceNode.z = z;
+      sourceNode.vx = 0;
+      sourceNode.vy = 0;
+      if (n3) {
+        n3.x = x;
+        n3.y = y;
+        n3.z = z;
+        n3.vx = 0;
+        n3.vy = 0;
+        n3.vz = 0;
+        delete n3.fx;
+        delete n3.fy;
+        delete n3.fz;
+      }
+    }
+
+    function syncTimelineSimulation(revealedIds) {
+      if (!graph) return;
+      syncPositionsFromSource();
+      var revNodes = nodes3d.filter(function (n) { return revealedIds.has(n.id); });
+      graph.graphData({ nodes: revNodes, links: buildLinks(function (n) { return revealedIds.has(n.id); }) });
+      refreshAppearance();
+      if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
+      else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+    }
+
+    function restoreFullGraphData() {
+      if (!graph) return;
+      syncPositionsFromSource();
+      graph.graphData({ nodes: nodes3d, links: buildLinks() });
+      refreshAppearance();
+    }
+
+    function resumeTimelineSimulation() {
+      if (!graph) return;
+      if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.3);
+    }
+
+    function softenTimelineSimulation() {
+      if (!graph) return;
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
     }
 
     function syncViewport() {
@@ -603,6 +730,19 @@
         var visible = getVisibleNodeIds();
         zoomFitToNodes(ms == null ? 650 : ms, function (n) { return visible.has(n.id); });
       },
+
+      fitToTimelineNodes: function (revealedIds, ms) {
+        zoomFitToNodes(ms == null ? 650 : ms, function (n) { return revealedIds.has(n.id); });
+      },
+
+      seedTimelineNodePosition: seedTimelineNodePosition,
+      syncTimelineSimulation: syncTimelineSimulation,
+      restoreFullGraphData: restoreFullGraphData,
+      resumeTimelineSimulation: resumeTimelineSimulation,
+      softenTimelineSimulation: softenTimelineSimulation,
+      snapshotPositions: snapshotPositions,
+      restorePositions: restorePositions,
+      syncSourceFrom3D: syncSourceFrom3D,
 
       focusNode: function (node, ms) {
         var n3 = node && nodeById.get(node.id);

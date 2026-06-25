@@ -2137,6 +2137,8 @@
         isDark,
         getVisibleNodeIds: () => visibleNodeIds,
         hasActiveFilter: hasActiveGraphFilter,
+        isTimelineAnimating: () => timelineAnimating,
+        getTimelineRevealedIds: () => timelineRevealedIds,
         edgeHighlightsWithNode,
         getChargeStrength: () => chargeStrength,
         getMagneticConfig: getMagneticConfig3D,
@@ -2206,7 +2208,6 @@
       spatialViewMode = mode;
 
       if (mode === '3d') {
-        if (timelineAnimating) teardownTimelineMode();
         if (!window.RNGraph3D?.isAvailable?.()) {
           spatialViewMode = '2d';
           window.alert('3D 视图库加载失败，请刷新页面后重试');
@@ -2229,7 +2230,22 @@
         }
         applyFilters();
         graph3dView.show();
+        graph3dView.syncFilters();
+        if (timelineAnimating && graph3dView) {
+          graph3dView.syncTimelineSimulation(timelineRevealedIds);
+          if (timelinePlaying) graph3dView.resumeTimelineSimulation();
+          else graph3dView.softenTimelineSimulation();
+          fitToTimelineNodes();
+        }
       } else {
+        if (timelineAnimating) {
+          if (graph3dView?.syncSourceFrom3D) graph3dView.syncSourceFrom3D();
+          syncTimelineSimulation();
+          renderTimelineStatic();
+          updateTimelineLinks(timelineRevealedIds);
+          if (timelinePlaying) simulation.alphaTarget(0.3).restart();
+          else simulation.alphaTarget(0);
+        }
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
         graph3dHoverNode = null;
@@ -2237,7 +2253,8 @@
         svg.style('display', 'block');
         syncGraphDomFromSimulation();
         resumeSimulation2D();
-        fitToScreen();
+        if (timelineAnimating) fitToTimelineNodes();
+        else fitToScreen();
       }
 
       try { localStorage.setItem(SPATIAL_VIEW_KEY, mode); } catch (_e) { /* ignore */ }
@@ -2248,13 +2265,11 @@
     }
 
     function syncTimeline3DState() {
-      const disabled = is3DView();
-      if (timelineAnimateBtn) {
-        timelineAnimateBtn.disabled = disabled;
-        timelineAnimateBtn.title = disabled
-          ? '时序动画仅支持 2D 视图'
-          : '按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
-      }
+      if (!timelineAnimateBtn) return;
+      timelineAnimateBtn.disabled = false;
+      timelineAnimateBtn.title = is3DView()
+        ? '按页面更新时间顺序在 3D 视图中逐帧显现节点与连线'
+        : '按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
     }
 
     updateGraphHint();
@@ -3548,6 +3563,10 @@
 
     // 新节点出生位置：落在已显现邻居的质心附近；无邻居则落在画布中心附近
     function seedTimelineNodePosition(d) {
+      if (is3DView() && graph3dView) {
+        graph3dView.seedTimelineNodePosition(d, timelineRevealedIds, timelineIncident);
+        return;
+      }
       let sx = 0, sy = 0, cnt = 0;
       const inc = timelineIncident && timelineIncident.get(d.id);
       if (inc) {
@@ -3575,6 +3594,10 @@
 
     // 把力模拟成员同步为「当前已显现」的节点与其内部边
     function syncTimelineSimulation() {
+      if (is3DView() && graph3dView) {
+        graph3dView.syncTimelineSimulation(timelineRevealedIds);
+        return;
+      }
       const revNodes = nodes.filter(n => timelineRevealedIds.has(n.id));
       const revEdges = edges.filter(e => {
         const s = typeof e.source === 'object' ? e.source.id : e.source;
@@ -3589,21 +3612,42 @@
 
     // 进入前布局快照与还原（退出时回到进入前的样子）
     function snapshotTimelinePositions() {
-      timelineSavedPositions = nodes.map(n => ({ id: n.id, x: n.x, y: n.y }));
+      var by3d = new Map();
+      if (graph3dView?.snapshotPositions) {
+        graph3dView.snapshotPositions().forEach(function (p) { by3d.set(p.id, p); });
+      }
+      timelineSavedPositions = nodes.map(function (n) {
+        var p = { id: n.id, x: n.x, y: n.y };
+        var p3 = by3d.get(n.id);
+        if (p3 && p3.z != null) p.z = p3.z;
+        return p;
+      });
     }
     function restoreTimelinePositions() {
       if (!timelineSavedPositions) return;
       const byId = new Map(nodes.map(n => [n.id, n]));
       timelineSavedPositions.forEach(p => {
         const n = byId.get(p.id);
-        if (n) { n.x = p.x; n.y = p.y; n.vx = 0; n.vy = 0; n.fx = null; n.fy = null; }
+        if (!n) return;
+        n.x = p.x;
+        n.y = p.y;
+        n.vx = 0;
+        n.vy = 0;
+        n.fx = null;
+        n.fy = null;
+        if (p.z != null) n.z = p.z;
       });
+      if (graph3dView?.restorePositions) graph3dView.restorePositions(timelineSavedPositions);
     }
 
     // 相机自适应到「已显现」节点（生长时随之缩放，类似 Obsidian）
     function fitToTimelineNodes() {
       const vis = nodes.filter(n => timelineRevealedIds.has(n.id) && n.x != null);
       if (vis.length < 2) return;
+      if (is3DView() && graph3dView) {
+        graph3dView.fitToTimelineNodes(timelineRevealedIds, 500);
+        return;
+      }
       const transform = computeGraphFitTransform(vis, {
         pad: isMobile ? 56 : 160,
         minSpan: isMobile ? 120 : 200,
@@ -3637,6 +3681,7 @@
       syncTimelineSimulation();                 // 成员 = 已显现子集；暂停时力模拟仍继续
       timelineIdx = targetIdx;
       updateTimelineLinks(timelineRevealedIds);
+      if (is3DView() && graph3dView) graph3dView.syncFilters();
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
@@ -3645,7 +3690,8 @@
       if (timelineIdx >= timelineTotal) seekTimeline(0, false); // 已到末尾再播放则从头开始
       timelinePlaying = true;
       updateTimelineControls();
-      simulation.alphaTarget(0.3).restart();    // 力模拟持续运行，新节点逐帧被带动
+      if (is3DView() && graph3dView) graph3dView.resumeTimelineSimulation();
+      else simulation.alphaTarget(0.3).restart();    // 力模拟持续运行，新节点逐帧被带动
       timelineAnimTimer = setInterval(() => {
         if (timelineIdx >= timelineTotal) { onTimelinePlaybackComplete(); return; }
         seekTimeline(timelineIdx + timelineBatchSize, true);
@@ -3658,7 +3704,8 @@
       if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
       timelinePlaying = false;
       updateTimelineControls();
-      simulation.alphaTarget(0);     // 缓缓收敛（最后一批节点落位），不立即冻结
+      if (is3DView() && graph3dView) graph3dView.softenTimelineSimulation();
+      else simulation.alphaTarget(0);     // 缓缓收敛（最后一批节点落位），不立即冻结
       fitToTimelineNodes();
     }
 
@@ -3668,8 +3715,13 @@
         timelineAnimTimer = null;
       }
       timelinePlaying = false;
-      svg.interrupt('tlfit');
-      simulation.alphaTarget(0.3).restart();   // 仅停计时器，力导向布局继续演化
+      if (is3DView() && graph3dView) {
+        // 3D 无命名 transition，直接继续力导向演化
+      } else {
+        svg.interrupt('tlfit');
+      }
+      if (is3DView() && graph3dView) graph3dView.resumeTimelineSimulation();
+      else simulation.alphaTarget(0.3).restart();   // 仅停计时器，力导向布局继续演化
       updateTimelineControls();
     }
 
@@ -3683,6 +3735,7 @@
 
       snapshotTimelinePositions();
       buildTimelineAdjacency();
+      if (is3DView()) ensureGraph3DView();
       fitToScreen();                 // 先框定整图范围（用进入前布局），生长从中心展开
 
       timelineAnimating = true;
@@ -3704,7 +3757,12 @@
       node.select('.node-label').style('opacity', 0);
       link.interrupt().attr('stroke-opacity', 0);
       syncTimelineSimulation();
-      simulation.stop();
+      if (is3DView() && graph3dView) {
+        graph3dView.syncFilters();
+        graph3dView.softenTimelineSimulation();
+      } else {
+        simulation.stop();
+      }
 
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
       updateTimelineProgress(0, timelineTotal);
@@ -3722,8 +3780,10 @@
       timelineTotal = 0;
       node.interrupt().style('pointer-events', null);  // 恢复指针事件
       link.interrupt();
-      svg.interrupt('tlfit');
+      if (!is3DView()) svg.interrupt('tlfit');
       updateTimelineControls();
+
+      if (graph3dView) graph3dView.restoreFullGraphData();
 
       const linkForce = simulation.force('link');
       linkForce.links([]);
@@ -3736,6 +3796,11 @@
       teardownTimelineMode();
       // 还原进入前布局并定格
       restoreTimelinePositions();
+      if (is3DView() && graph3dView) {
+        graph3dView.softenTimelineSimulation();
+        fitToScreen();
+        return;
+      }
       simulation.stop();
       syncGraphDomFromSimulation();
       node.select('.node-label').transition().duration(350).style('opacity', 0.85);
@@ -3873,7 +3938,10 @@
       if (!updateGraphViewport()) return;
       if (graph3dView) graph3dView.resize();
       if (is3DView()) {
-        if (graph3dView) graph3dView.fitToScreen(0);
+        if (graph3dView) {
+          if (timelineAnimating) graph3dView.fitToTimelineNodes(timelineRevealedIds, 0);
+          else graph3dView.fitToScreen(0);
+        }
         return;
       }
       if (timelineAnimating) {
@@ -4138,6 +4206,7 @@
         link.style('opacity', null).style('stroke-width', null)
             .attr('stroke', edgeBaseColor()).attr('stroke-width', linkWidthBase);
         updateTimelineLinks(timelineRevealedIds);
+        if (is3DView() && graph3dView) graph3dView.syncFilters();
         wrap.classList.remove('sidebar-open');
         return;
       }
