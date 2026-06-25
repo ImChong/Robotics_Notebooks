@@ -2180,7 +2180,13 @@
         graphCanvas3d.hidden = false;
         ensureGraph3DView();
         if (!graph3dView) {
+          graphCanvas3d.hidden = true;
+          graph3dHoverNode = null;
+          hideTooltip();
+          svg.style('display', 'block');
+          syncGraphDomFromSimulation();
           resumeSimulation2D();
+          window.alert('3D 视图初始化失败，请刷新页面后重试');
           return;
         }
         graph3dView.show();
