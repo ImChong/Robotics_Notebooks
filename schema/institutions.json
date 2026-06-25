@@ -322,6 +322,14 @@
         "freemocap"
       ]
     },
+    "weights-and-biases": {
+      "label": "Weights & Biases（W&B）",
+      "aliases": [
+        "weights-and-biases",
+        "wandb",
+        "w-and-b"
+      ]
+    },
     "wokwi": {
       "label": "在线电路仿真（Wokwi）",
       "aliases": [

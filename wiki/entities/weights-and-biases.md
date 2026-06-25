@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [software, experiment-tracking, mlops, pytorch, reinforcement-learning, collaboration]
+tags: [software, experiment-tracking, mlops, pytorch, reinforcement-learning, collaboration, weights-and-biases]
 status: complete
 updated: 2026-06-25
 related:
