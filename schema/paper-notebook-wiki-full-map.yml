@@ -133,7 +133,7 @@ overrides:
   ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control:
   - wiki/tasks/teleoperation.md
   Extreme_Parkour_with_Legged_Robots:
-  - wiki/entities/paper-notebook-extreme-parkour-with-legged-robots.md
+  - wiki/entities/extreme-parkour.md
   FALCON__Learning_Force-Adaptive_Humanoid_Loco-Manipulation:
   - wiki/entities/paper-notebook-falcon.md
   FAME__Force-Adaptive_RL_for_Expanding_the_Manipulation_Envelope_of_a_Full-Scale_:

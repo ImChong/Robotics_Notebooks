@@ -4,7 +4,6 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
 updated: 2026-06-25
-arxiv: "2506.20487"
 venue: "2024 · SIGGRAPH"
 code: https://github.com/NVlabs/CALM
 summary: "可指挥 latent skill；BFM 前史：技能空间先于大基座。"

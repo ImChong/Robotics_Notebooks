@@ -4,7 +4,6 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
 updated: 2026-06-25
-arxiv: "2506.20487"
 venue: "2021 · NeurIPS"
 code: https://github.com/ahmed-touati/controllable_agent
 summary: "FB 嵌入统一表示，面对不同 reward 推导策略；为 BFM「先学可迁移结构」打底。"

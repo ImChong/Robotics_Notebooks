@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] structural(wiki): 重复节点审计修复 — extreme-parkour 合并、BFM 误标 arXiv 清理、TWIST2 更正为 2511.02832
+
+- dedupe：扩展 [scripts/dedupe_paper_notebook_nodes.py](scripts/dedupe_paper_notebook_nodes.py) `find_arxiv_merge_pairs` 扫描全实体；`paper-notebook-extreme-parkour-with-legged-robots` → [extreme-parkour.md](wiki/entities/extreme-parkour.md)；同步 [schema/paper-notebook-wiki-full-map.yml](schema/paper-notebook-wiki-full-map.yml)
+- BFM 元数据：移除 5 篇单篇实体误标综述 arXiv `2506.20487`（[paper-bfm-04](wiki/entities/paper-bfm-04-fast-imitation-bfm.md)、[05](wiki/entities/paper-bfm-05-learning-one-representation.md)、[12](wiki/entities/paper-bfm-12-clone.md)、[17](wiki/entities/paper-bfm-17-maskedmimic.md)、[19](wiki/entities/paper-bfm-19-calm.md)）
+- TWIST2：全库更正为 arXiv:2511.02832（保留 [paper-twist.md](wiki/entities/paper-twist.md) 的 2505.02833）；[paper-twist2.md](wiki/entities/paper-twist2.md)、sources、BFM 生成器 id 10
+
 ## [2026-06-25] structural(wiki): 批量深化 119 篇 survey 策展实体页 — HRL 42 / BFM 41 / VLN 10 / 深蓝 WM 15 / Ego 9 / Loco-Manip 8 / 运动小脑 15 + 脚本
 
 - 工具：[scripts/deepen_survey_stub_pages.py](scripts/deepen_survey_stub_pages.py) — 从 raw 微信抓取与 catalog 元数据编译 `一句话定义` / `核心机制` / `常见误区`；已有深读页（SONIC、BeyondMimic、GMR 等）保留 survey 坐标并链至方法/实体深读

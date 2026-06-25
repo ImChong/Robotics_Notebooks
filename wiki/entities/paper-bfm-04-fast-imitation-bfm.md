@@ -4,7 +4,6 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, meta]
 status: complete
 updated: 2026-06-25
-arxiv: "2506.20487"
 venue: "2024 · NeurIPS"
 summary: "有行为基座后新动作应少走弯路；降低技能扩展的真机数据与训练成本。"
 related:

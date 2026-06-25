@@ -45,7 +45,7 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [Dribble Master](../entities/paper-notebook-dribble-master-learning-agile-humanoid-dribbling.md) — 待深读
 - [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 待深读
 - [End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy](../entities/paper-notebook-end-to-end-humanoid-robot-safe-and-comfortable-l.md) — 待深读
-- [Extreme Parkour with Legged Robots](../entities/paper-notebook-extreme-parkour-with-legged-robots.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html)
+- [Extreme Parkour with Legged Robots](../entities/extreme-parkour.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html)
 - [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) — 待深读
 - [FastTD3](../entities/paper-notebook-fasttd3-simple-fast-and-capable-reinforcement-le.md) — 待深读
 - [GaussGym](../entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md) — 待深读

@@ -135,6 +135,7 @@ flowchart TB
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Extreme Parkour with Legged Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html)
 - Cheng et al., [Extreme Parkour with Legged Robots](https://arxiv.org/abs/2309.14341)（ICRA 2024）
 - Zhuang et al., *Robot Parkour Learning*（2023）— Unitree 生态 Teacher–Student 跑酷
 - Kumar et al., *RMA: Rapid Motor Adaptation*（2021）— scandots→深度的 adaptation 先例

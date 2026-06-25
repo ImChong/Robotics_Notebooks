@@ -1,13 +1,77 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1325,
-  "edge_count": 8961,
+  "node_count": 1324,
+  "edge_count": 8959,
   "coverage": {
-    "covered": 1294,
-    "total": 1323,
+    "covered": 1293,
+    "total": 1322,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/extreme-parkour.md",
+      "detail_id": "entity-extreme-parkour",
+      "label": "Extreme Parkour（端到端四足感知跑酷）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-04-fast-imitation-bfm.md",
+      "detail_id": "entity-paper-bfm-04-fast-imitation-bfm",
+      "label": "Fast Imitation via Behavior Foundation Models",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-05-learning-one-representation.md",
+      "detail_id": "entity-paper-bfm-05-learning-one-representation",
+      "label": "Learning One Representation to Optimize All Rewards",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-12-clone.md",
+      "detail_id": "entity-paper-bfm-12-clone",
+      "label": "CLONE",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-17-maskedmimic.md",
+      "detail_id": "entity-paper-bfm-17-maskedmimic",
+      "label": "MaskedMimic",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-bfm-19-calm.md",
+      "detail_id": "entity-paper-bfm-19-calm",
+      "label": "CALM",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist.md",
+      "detail_id": "entity-paper-twist",
+      "label": "TWIST",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
       "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
@@ -103,77 +167,13 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-adaptive-humanoid-control.md",
-      "detail_id": "entity-paper-adaptive-humanoid-control",
-      "label": "AHC：多行为蒸馏与强化微调的自适应人形控制",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-12-haml.md",
-      "detail_id": "entity-paper-amp-survey-12-haml",
-      "label": "HAML：单策略人形对抗多技能学习",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-08-more.md",
-      "detail_id": "entity-paper-amp-survey-08-more",
-      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md",
-      "detail_id": "entity-paper-amp-survey-13-humanoid_goalkeeper",
-      "label": "Humanoid Goalkeeper：位置条件化任务–运动约束守门",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-14-husky.md",
-      "detail_id": "entity-paper-amp-survey-14-husky",
-      "label": "HUSKY：物理感知人形滑板全身控制",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI：可部署的真实世界人形–场景交互",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-17-teamhoi.md",
-      "detail_id": "entity-paper-amp-survey-17-teamhoi",
-      "label": "TeamHOI：任意队形的协作人–物交互统一策略",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-    "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-    "label": "人形机器人 RL 运动控制：身体系统栈视角",
-    "type": "overview",
+    "path": "wiki/entities/extreme-parkour.md",
+    "detail_id": "entity-extreme-parkour",
+    "label": "Extreme Parkour（端到端四足感知跑酷）",
+    "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
   }

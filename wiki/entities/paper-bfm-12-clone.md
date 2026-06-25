@@ -4,7 +4,6 @@ type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, stanford]
 status: complete
 updated: 2026-06-25
-arxiv: "2506.20487"
 venue: "2025 · CoRL"
 code: https://github.com/humanoid-clone/CLONE/
 summary: "长时程闭环遥操作；片段演示不足以支撑复杂任务级 BFM 数据。"

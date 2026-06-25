@@ -61,7 +61,7 @@ def page_h1_title(path: Path) -> str | None:
 
 def find_arxiv_merge_pairs() -> list[tuple[str, str]]:
     by_arxiv: dict[str, list[Path]] = {}
-    for path in (WIKI / "entities").glob("paper*.md"):
+    for path in (WIKI / "entities").glob("*.md"):
         arxiv = fm_arxiv(path.read_text(encoding="utf-8"))
         if not arxiv:
             continue

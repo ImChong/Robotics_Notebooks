@@ -5,7 +5,7 @@
 - **标题：** TWIST2: Scalable, Portable, and Holistic Humanoid Data Collection System
 - **类型：** site（项目页 + 复现教程 + 实验视频）
 - **URL：** <https://yanjieze.com/projects/TWIST2/>（旧路径 <https://yanjieze.com/TWIST2/> 重定向至此）
-- **论文：** <https://arxiv.org/abs/2505.02833>
+- **论文：** <https://arxiv.org/abs/2511.02832>
 - **代码：** <https://github.com/amazon-far/TWIST2>
 - **数据集：** <https://twist-data.github.io/>
 - **入库日期：** 2026-06-12
@@ -25,7 +25,7 @@
 | Long-Horizon | 连续叠毛巾、找布折叠、踢球/篮球、穿门搬运、地面捡砖、绕圈等 |
 | Autonomy | Kick-T、WB-Dex 等 visuomotor 自主技能；扩散策略预测全身关节位置 ghost 轨迹 |
 | Related Works | TWIST（CoRL 2025 跟踪控制器）、GMR（重定向）、iDP3（3D 扩散 visuomotor 基座） |
-| BibTeX | `@article{ze2025twist2,...}`（项目页标注 arXiv:2511.02832；知识库主索引沿用 2505.02833） |
+| BibTeX | `@article{ze2025twist2,...}`（arXiv:2511.02832） |
 
 ## 对 wiki 的映射
 
