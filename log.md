@@ -2,6 +2,10 @@
 
 ## [2026-06-25] ingest | sources/sites/weights-and-biases.md + sources/repos/tensorboard.md — W&B / TensorBoard 实体与选型对比；交叉 amp-mjlab、mjlab、robot-policy-debug-playbook
 
+- 原始资料：[weights-and-biases.md](sources/sites/weights-and-biases.md)、[tensorboard.md](sources/repos/tensorboard.md)
+- 升格实体：[weights-and-biases.md](wiki/entities/weights-and-biases.md)、[tensorboard.md](wiki/entities/tensorboard.md)
+- 选型对比：[wandb-vs-tensorboard.md](wiki/comparisons/wandb-vs-tensorboard.md)
+- 交叉更新：[amp-mjlab.md](wiki/entities/amp-mjlab.md)、[mjlab.md](wiki/entities/mjlab.md)、[robot-policy-debug-playbook.md](wiki/queries/robot-policy-debug-playbook.md)
 ## [2026-06-25] fix(wiki): 修复 DAgger / BC 页 LaTeX 中 `\theta` 被制表符破坏导致 KaTeX 渲染失败
 
 - 根因：`wiki/methods/dagger.md`、`wiki/methods/behavior-cloning.md` 中 `\theta` 的 `\t` 被存成字面制表符，KaTeX 将 `_heta` 当作无效下标
