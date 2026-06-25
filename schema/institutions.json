@@ -695,6 +695,13 @@
         "kinova"
       ]
     },
+    "kyber-labs": {
+      "label": "灵巧操作初创（Kyber Labs）",
+      "aliases": [
+        "kyber-labs",
+        "kyber"
+      ]
+    },
     "shadow-robotics": {
       "label": "影子机器人公司（Shadow Robot Company）",
       "aliases": [
