@@ -83,6 +83,8 @@ flowchart LR
 - [强化学习](../methods/reinforcement-learning.md)
 - [htwk-gym（TFLite 部署示例）](../methods/htwk-gym.md)
 - [反向传播算法](../concepts/backpropagation.md)
+- [ONNX](./onnx.md)
+- [MNN](./mnn.md)
 
 ## 参考来源
 

@@ -190,7 +190,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 
 最后一段路："仿真里跑得好"≠"真机能用"。三层契约：
 
-- **推理层**：ONNX / TensorRT，控制频率通常 50 Hz；策略冻结。
+- **推理层**：[ONNX](../entities/onnx.md) / [ONNX Runtime](../entities/onnxruntime.md) / TensorRT（选型见 [对比页](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)），控制频率通常 50 Hz；策略冻结。
 - **安全监督层**：力矩限位、关节速度护栏、跌倒检测、故障切换到安全姿态；详见 [Balance Recovery](../tasks/balance-recovery.md)。
 - **在线适配层**：残差策略（residual policy）、安全 LoRA 微调、CBF/CLF 安全壳。这是后续真机 RL 微调的入口（见 V23 P2 真机安全微调专题）。
 
@@ -290,6 +290,8 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 - [人形运动跟踪方法选型指南](../queries/humanoid-motion-tracking-method-selection.md) — 选型决策树
 - [跨具身策略迁移选型指南](../queries/cross-embodiment-transfer-strategy.md) — 阶段 5 三路径选型与故障模式
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md) — 8 层总框架
+- [ONNX](../entities/onnx.md) / [ONNX Runtime](../entities/onnxruntime.md) — 真机推理层格式与 runtime
+- [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — 机载推理选型
 
 ## 推荐继续阅读
 

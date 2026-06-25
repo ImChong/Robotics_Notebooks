@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1329,
-  "edge_count": 9018,
+  "node_count": 1333,
+  "edge_count": 9074,
   "coverage": {
-    "covered": 1298,
-    "total": 1327,
+    "covered": 1302,
+    "total": 1331,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/onnx.md",
+      "detail_id": "entity-onnx",
+      "label": "ONNX",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/onnxruntime.md",
+      "detail_id": "entity-onnxruntime",
+      "label": "ONNX Runtime",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/mnn.md",
+      "detail_id": "entity-mnn",
+      "label": "MNN",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md",
+      "detail_id": "wiki-comparisons-onnxruntime-vs-mnn-vs-tensorrt",
+      "label": "ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）",
+      "type": "comparison",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/pytorch.md",
+      "detail_id": "entity-pytorch",
+      "label": "PyTorch",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/tensorflow.md",
       "detail_id": "entity-tensorflow",
@@ -17,18 +57,34 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
       "type": "concept",
       "recency": "2026-06-25",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/pytorch.md",
-      "detail_id": "entity-pytorch",
-      "label": "PyTorch",
-      "type": "entity",
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/robot-policy-debug-playbook.md",
+      "detail_id": "wiki-queries-robot-policy-debug-playbook",
+      "label": "RL 策略真机调试 Playbook",
+      "type": "query",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
       "recency": "2026-06-25",
       "source": "log.md"
     },
@@ -81,14 +137,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/queries/robot-policy-debug-playbook.md",
-      "detail_id": "wiki-queries-robot-policy-debug-playbook",
-      "label": "RL 策略真机调试 Playbook",
-      "type": "query",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/methods/dagger.md",
       "detail_id": "wiki-methods-dagger",
       "label": "DAgger（Dataset Aggregation）",
@@ -119,60 +167,12 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-05-learning-one-representation.md",
-      "detail_id": "entity-paper-bfm-05-learning-one-representation",
-      "label": "Learning One Representation to Optimize All Rewards",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-12-clone.md",
-      "detail_id": "entity-paper-bfm-12-clone",
-      "label": "CLONE",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-17-maskedmimic.md",
-      "detail_id": "entity-paper-bfm-17-maskedmimic",
-      "label": "MaskedMimic",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-19-calm.md",
-      "detail_id": "entity-paper-bfm-19-calm",
-      "label": "CALM",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-twist.md",
-      "detail_id": "entity-paper-twist",
-      "label": "TWIST",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-twist2.md",
-      "detail_id": "entity-paper-twist2",
-      "label": "TWIST2",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/tensorflow.md",
-    "detail_id": "entity-tensorflow",
-    "label": "TensorFlow",
+    "path": "wiki/entities/onnx.md",
+    "detail_id": "entity-onnx",
+    "label": "ONNX",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"

@@ -163,3 +163,6 @@ ros2 topic echo /robot/obs --no-arr > obs_log.txt
 - [Locomotion](../tasks/locomotion.md) — 足式任务的评价指标与挑战
 - [Domain Randomization](../concepts/domain-randomization.md) — DR 参数设计指导
 - [Privileged Training](../concepts/privileged-training.md) — Teacher-Student 框架对 sim2real 的帮助
+- [ONNX](../entities/onnx.md) — 策略导出格式与 opset 对齐
+- [ONNX Runtime](../entities/onnxruntime.md) — 机载 C++ 推理 Session 与 EP 选型
+- [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md) — runtime 横向对比

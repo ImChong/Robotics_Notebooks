@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/repos/onnx-official.md + onnxruntime-official.md + mnn-official.md — 接入 ONNX/MNN 一手资料并升格实体与 runtime 选型对比
+
+- 原始资料：[onnx-official.md](sources/repos/onnx-official.md)、[onnxruntime-official.md](sources/repos/onnxruntime-official.md)、[mnn-official.md](sources/repos/mnn-official.md)
+- 升格实体：[onnx.md](wiki/entities/onnx.md)、[onnxruntime.md](wiki/entities/onnxruntime.md)、[mnn.md](wiki/entities/mnn.md)
+- 选型对比：[onnxruntime-vs-mnn-vs-tensorrt.md](wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)
+- 交叉更新：[pytorch.md](wiki/entities/pytorch.md)、[tensorflow.md](wiki/entities/tensorflow.md)、[sim2real.md](wiki/concepts/sim2real.md)、[whole-body-tracking-pipeline.md](wiki/concepts/whole-body-tracking-pipeline.md)、[robot-policy-debug-playbook.md](wiki/queries/robot-policy-debug-playbook.md)
+
 ## [2026-06-25] ingest | sources/repos/tensorflow-official.md — 接入 TensorFlow 官网与 GitHub 并升格 wiki/entities/tensorflow.md；交叉更新 deep-learning-foundations、pytorch、htwk-gym
 
 - 原始资料：[tensorflow-official.md](sources/repos/tensorflow-official.md)
