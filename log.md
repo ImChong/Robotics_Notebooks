@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/yanjieze.md — Yanjie Ze 个人主页归档并升格 wiki/entities/yanjie-ze.md；交叉 TWIST/TWIST2/GMR/VisualMimic/ResMimic 等
+
+- 原始资料：[yanjieze.md](sources/sites/yanjieze.md)
+- 升格实体：[yanjie-ze.md](wiki/entities/yanjie-ze.md)
+- 交叉更新：[paper-twist.md](wiki/entities/paper-twist.md)、[paper-twist2.md](wiki/entities/paper-twist2.md)、[motion-retargeting-gmr.md](wiki/methods/motion-retargeting-gmr.md)、[paper-notebook-visualmimic.md](wiki/entities/paper-notebook-visualmimic.md)、[paper-resmimic.md](wiki/entities/paper-resmimic.md)
 ## [2026-06-25] fix(actions): COMMUNITY_NAME_OVERRIDES 补全身运动跟踪流水线 — 修复 community-12 命名不符合 中文（English） 社区 导致 pytest 失败
 
 - `scripts/generate_link_graph.py`：`wiki/concepts/whole-body-tracking-pipeline.md` → `全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）`

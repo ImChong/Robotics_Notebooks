@@ -18,6 +18,7 @@ related:
   - ../concepts/behavior-foundation-model.md
   - ../tasks/teleoperation.md
   - ../entities/paper-twist2.md
+  - ./yanjie-ze.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_09_twist_teleoperated_whole_body_imitation_system.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md

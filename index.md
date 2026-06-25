@@ -986,6 +986,7 @@ SORT type ASC
 - [Xiaomi-Robotics-0](entities/xiaomi-robotics-0.md) — Xiaomi-Robotics-0** 将 **预训练 VLM（Qwen3-VL-4B-Instruct）** 与 **扩散式 Transformer 动作头（DiT）** 组合成端到端 **VL `📅unknown` `[entity_page]`
 - [XTDrone](entities/xtdrone.md) — XTDrone**（[robin-shaun/XTDrone](https://github.com/robin-shaun/XTDrone)）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](entities/xue-bin-peng.md) — Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与  `📅unknown` `[entity_page]`
+- [Yanjie Ze（迮炎杰）](entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与 Amazon FAR 合作网络中的 **GMR 重定向 → TWIST 全身跟踪 → TWIST2 可扩展数据采集** 技术线。 `📅2026-06-25` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）

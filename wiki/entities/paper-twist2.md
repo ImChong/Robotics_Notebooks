@@ -22,6 +22,7 @@ related:
   - ./paper-twist.md
   - ./paper-bifrost-umi.md
   - ./paper-amp-survey-16-clot.md
+  - ./yanjie-ze.md
 sources:
   - ../../sources/papers/humanoid_rl_stack_10_twist2_scalable_portable_and_holistic_humanoid_d.md
   - ../../sources/papers/humanoid_rl_stack_42_catalog.md

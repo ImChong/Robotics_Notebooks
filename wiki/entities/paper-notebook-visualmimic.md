@@ -18,6 +18,7 @@ related:
   - ./videomimic.md
   - ./paper-resmimic.md
   - ./paper-viral-humanoid-visual-sim2real.md
+  - ./yanjie-ze.md
 sources:
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
   - ../../sources/papers/humanoid_pnb_visualmimic.md

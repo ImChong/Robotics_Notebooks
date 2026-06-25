@@ -9,6 +9,7 @@ related:
   - ./humanoid-robot.md
   - ./zhengyi-luo.md
   - ./xue-bin-peng.md
+  - ./yanjie-ze.md
   - ../concepts/sim2real.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -73,6 +74,7 @@ flowchart LR
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
 - [Xue Bin Peng（彭学斌）](./xue-bin-peng.md)
+- [Yanjie Ze（迮炎杰）](./yanjie-ze.md)
 
 ## 参考来源
 
