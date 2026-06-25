@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/wuji_robotics.md — 补正舞肌科技官网 wuji.tech（中/英）与智能数据手套叙事；修正 schema/institutions.json「无界机器人」误标；wiki/entities/wuji-robotics.md
+
 ## [2026-06-25] ingest | sources/papers/coordex_arxiv_2606_23680.md — CoorDex body/hand 潜先验协调残差 dexterous loco-manipulation；wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md；交叉 loco-manipulation、wuji-robotics
 
 ## [2026-06-25] ingest | sources/sites/hiw-500-dataset.md — HIW-500 野外 G1 遥操作数据集；升格 wiki/entities/hiw-500-dataset.md，互链 teleoperation / humanoid-training-data-pipeline / topic-data-pipeline

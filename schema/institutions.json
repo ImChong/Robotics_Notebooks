@@ -743,10 +743,11 @@
       ]
     },
     "wuji-robotics": {
-      "label": "无界机器人（Wuji Robotics）",
+      "label": "舞肌科技（Wuji Technology）",
       "aliases": [
         "wuji-robotics",
-        "wuji"
+        "wuji",
+        "wuji-tech"
       ]
     },
     "motrix": {
