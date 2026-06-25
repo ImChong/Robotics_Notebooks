@@ -10,6 +10,7 @@ related:
   - ./humanoid-robot.md
   - ./zhengyi-luo.md
   - ./xue-bin-peng.md
+  - ./yanjie-ze.md
   - ../concepts/sim2real.md
   - ../tasks/loco-manipulation.md
   - ../tasks/teleoperation.md
@@ -38,7 +39,7 @@ summary: "何泰然（Tairan He）现为 OpenAI Member of Technical Staff；CMU 
 ## 为什么重要
 
 - **问题域与仓库主线重合**：其公开论文串覆盖 [Sim2Real](../concepts/sim2real.md)、[Privileged Training](../concepts/privileged-training.md)、[Loco-Manipulation](../tasks/loco-manipulation.md)、[Teleoperation](../tasks/teleoperation.md) 与规模化仿真训练，是理解「2023–2026 人形学习论文潮」的 **作者级索引**。
-- **职业轨迹具风向标意义**：从 CMU LECAR / NVIDIA GEAR 博士训练到 **OpenAI 通用人形方向**（主页 2026-05 新闻），与 [Zhengyi Luo](./zhengyi-luo.md)（NVIDIA GEAR）等同期人形研究者形成可对照的 **产业–学术迁移谱系**。
+- **职业轨迹具风向标意义**：从 CMU LECAR / NVIDIA GEAR 博士训练到 **OpenAI 通用人形方向**（主页 2026-05 新闻），与 [Zhengyi Luo](./zhengyi-luo.md)（NVIDIA GEAR）、[Yanjie Ze](./yanjie-ze.md)（Figure AI）等同期人形研究者形成可对照的 **产业–学术迁移谱系**。
 - **工程可检索**：个人页集中给出项目站与 BibTeX，比零散抓 arXiv 更适合作为 ingest 溯源与后续 curator 补链入口。
 
 ## 职业与研究脉络（归纳）
@@ -83,6 +84,7 @@ flowchart LR
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
 - [Xue Bin Peng（彭学斌）](./xue-bin-peng.md)
+- [Yanjie Ze（迮炎杰）](./yanjie-ze.md)
 
 ## 参考来源
 

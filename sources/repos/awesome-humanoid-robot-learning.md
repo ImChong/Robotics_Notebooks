@@ -27,6 +27,7 @@
 *   **Robot-Free Demonstrations**: 从人类视频或自我视角视频直接学习（如 ZeroWBC, EgoHumanoid）。
 
 ## 相关引用
+- [yanjie-ze](../../wiki/entities/yanjie-ze.md)
 - [humanoid-locomotion](../../wiki/tasks/humanoid-locomotion.md)
 - [loco-manipulation](../../wiki/tasks/loco-manipulation.md)
 - [whole-body-control](../../wiki/concepts/whole-body-control.md)
