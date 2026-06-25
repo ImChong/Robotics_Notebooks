@@ -399,7 +399,7 @@
 | [x] [worldlabs-ai.md](sites/worldlabs-ai.md) | World Labs 官网：Marble / Spark / Marble Labs；Spark 2.0 见 blogs/worldlabs_spark_2_0_streaming_3dgs.md |
 | [x] [text-to-cad-tools.md](sites/text-to-cad-tools.md) | Zoo / KittyCAD 与文字生成 CAD、同类 API 与 AEC 工具公开链接索引 |
 | [x] [twist2-project.md](sites/twist2-project.md) | TWIST2 项目页 yanjieze.com/projects/TWIST2（颈增广、PICO 遥操作、分层 visuomotor、开源数据；ICRA 2026） |
-| [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
+| [x] [wuji_robotics.md](sites/wuji_robotics.md) | 舞肌科技：官网 wuji.tech + F 系列 / Pan Motor 电机资料 + Wuji Hand 灵巧手（docs.wuji.tech / 招聘与媒体锚点） |
 
 ### courses/ — 课程与协议入门归档
 | 文件 | 内容 |

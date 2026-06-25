@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/wuji-robotics.md",
+      "detail_id": "entity-wuji-robotics",
+      "label": "舞肌科技（上海舞肌科技有限公司）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md",
       "detail_id": "entity-paper-coordex-dexterous-humanoid-loco-manipulation",
       "label": "CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/procedural-terrain-generation.md",
-      "detail_id": "wiki-concepts-procedural-terrain-generation",
-      "label": "Procedural Terrain Generation（程序化地形生成）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md",
-    "detail_id": "entity-paper-coordex-dexterous-humanoid-loco-manipulation",
-    "label": "CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）",
+    "path": "wiki/entities/wuji-robotics.md",
+    "detail_id": "entity-wuji-robotics",
+    "label": "舞肌科技（上海舞肌科技有限公司）",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
