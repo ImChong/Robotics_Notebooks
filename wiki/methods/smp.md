@@ -2,7 +2,7 @@
 type: method
 tags: [score-matching, diffusion, generative-prior, humanoid, unitree-g1]
 status: complete
-updated: 2026-05-27
+updated: 2026-06-25
 related:
   - ../entities/mimickit.md
   - ../entities/smp-g1-mjlab.md

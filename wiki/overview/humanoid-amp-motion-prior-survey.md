@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-25
 related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md
@@ -172,7 +172,7 @@ flowchart TB
 ## 局限
 
 - 公众号标题写「20 篇」、正文编号至 19；本页 **不臆造第 20 篇**。
-- 上表 19 篇均已各有 `wiki/entities/paper-amp-survey-*` **索引节点**；AMP / ADD / SMP 等另有 `wiki/methods/` 方法页。实体页为策展摘要，细节以论文 PDF / 项目页为准。
+- 上表 19 篇均已各有 `wiki/entities/` **深读实体页**（2026-06-25 批量深化）；AMP / ADD / SMP 等另有 `wiki/methods/` 方法页。细节仍以论文 PDF / 项目页为准。
 - 策展框架不等于领域共识；与 [ULTRA Survey](../tasks/ultra-survey.md) 等其它综述可能分层不同。
 
 ## 关联页面
