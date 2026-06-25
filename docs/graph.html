@@ -182,16 +182,6 @@
       text-decoration: none;
     }
     .topic-intro-link:hover { color: #7dd3fc; text-decoration: underline; }
-    #filter-toggle.is-filter-active {
-      background: rgba(96, 165, 250, 0.18);
-      border-color: rgba(96, 165, 250, 0.62);
-      color: #e6edf3;
-      box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.18);
-    }
-    #filter-toggle.is-filter-active:hover {
-      border-color: rgba(96, 165, 250, 0.82);
-      color: #fff;
-    }
     .node-topic-hub .node-glow { fill-opacity: 0.28 !important; }
     .node-topic-hub .node-circle {
       stroke-width: 2.5px !important;
@@ -662,12 +652,6 @@
     }
     [data-theme="light"] .topic-intro-text { color: rgba(15, 23, 42, 0.68); }
     [data-theme="light"] .topic-intro-link { color: #1659b4; }
-    [data-theme="light"] #filter-toggle.is-filter-active {
-      background: #e6f7ff;
-      border-color: #1659b4;
-      color: #1659b4;
-      box-shadow: 0 0 0 1px rgba(22, 89, 180, 0.12);
-    }
     [data-theme="light"] .node-topic-hub .node-label { fill: rgba(15, 23, 42, 0.88) !important; }
     [data-theme="light"] .toolbar-sep { background: rgba(0,0,0,0.1); }
     [data-theme="light"] #graph-node-count { color: rgba(0,0,0,0.38); }
@@ -2227,8 +2211,8 @@
           window.alert('3D 视图初始化失败，请刷新页面后重试');
           return;
         }
-        applyFilters();
         graph3dView.show();
+        graph3dView.syncFilters();
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
@@ -2244,7 +2228,6 @@
       updateViewModeButtons();
       updateGraphHint();
       syncTimeline3DState();
-      applyFilters();
     }
 
     function syncTimeline3DState() {
@@ -2948,12 +2931,12 @@
       return typeof endpoint === 'object' ? endpoint.id : endpoint;
     }
 
-    /** 悬停/聚焦高亮：3D 筛选态下与灰色节点相连的边不参与高亮 */
+    /** 悬停/聚焦高亮：筛选态下与灰色节点相连的边不参与高亮 */
     function edgeHighlightsWithNode(e, nodeId) {
       const s = edgeNodeId(e.source);
       const t = edgeNodeId(e.target);
       if (s !== nodeId && t !== nodeId) return false;
-      if (!is3DView() || !hasActiveGraphFilter()) return true;
+      if (!hasActiveGraphFilter()) return true;
       return visibleNodeIds.has(s) && visibleNodeIds.has(t);
     }
 
@@ -2967,15 +2950,14 @@
           if (sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(ev, d);
           return;
         }
-        // 3D 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
-        if (is3DView() && hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
+        // 筛选态下灰色节点不响应悬停（pointer-events 已关，此处作兜底）
+        if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
 
         buildNeighborSet(d);
         const hasFilter = hasActiveGraphFilter();
-        const dimNodes = is3DView();
         node.select('.node-circle').attr('fill-opacity', n => {
-          // 3D 筛选后被隐藏的节点保持原始低透明度，不被 hover 恢复
-          if (dimNodes && hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
+          // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
+          if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
           return neighborSet.has(n.id) ? 1 : 0.15;
         });
         node.select('.node-glow').attr('fill-opacity', n =>
@@ -3271,13 +3253,8 @@
     function updateFilterCount() {
       const count = activeFilters.size + activeInstitutions.size + (topDegreeIds ? 1 : 0) + (currentTopic && currentTopic !== 'all' ? 1 : 0);
       const countEl = document.getElementById('filter-count');
-      const filterActive = hasActiveGraphFilter();
-      if (filterToggle) filterToggle.classList.toggle('is-filter-active', filterActive);
       if (count > 0) {
         countEl.textContent = count;
-        countEl.style.display = 'inline-flex';
-      } else if (filterActive) {
-        countEl.textContent = '•';
         countEl.style.display = 'inline-flex';
       } else {
         countEl.style.display = 'none';
@@ -3360,7 +3337,6 @@
     function applyFilters() {
       if (timelineAnimating) return;
       const hasFilter = hasActiveGraphFilter();
-      const dimNodes = is3DView();
       visibleNodeIds.clear();
       let visible = 0;
 
@@ -3373,9 +3349,9 @@
         const g = d3.select(this);
         const hub = isCurrentTopicHub(d);
         g.classed('node-topic-hub', hub);
-        g.style('opacity', dimNodes && hasFilter ? (ok ? 1 : 0.08) : 1);
-        // 3D 筛选态下灰色节点不捕获指针；2D 保持全部节点可交互
-        g.style('pointer-events', dimNodes && hasFilter && !ok ? 'none' : null);
+        g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+        // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
+        g.style('pointer-events', hasFilter && !ok ? 'none' : null);
 
         const hubR = hub ? scaledRadius(d) * 1.28 : scaledRadius(d);
         d3.select(this).select('.node-glow')
@@ -3383,8 +3359,8 @@
           .attr('fill-opacity', hub && ok ? 0.28 : 0);
         d3.select(this).select('.node-circle')
           .attr('r', hubR)
-          .attr('fill-opacity', dimNodes && hasFilter && !ok ? 0.06 : 1)
-          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : (dimNodes && hasFilter ? 0.05 : 0.35))
+          .attr('fill-opacity', ok ? 1 : 0.06)
+          .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : 0.05)
           .attr('stroke-width', hub ? 2.5 : 1.5);
         d3.select(this).select('.node-label')
           .style('opacity', ok && (searchQuery || hub) ? 0.92 : null)
@@ -3413,7 +3389,6 @@
           return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
         });
       updateCount(visible);
-      updateFilterCount();
       if (graph3dView && is3DView()) graph3dView.syncFilters();
       if (searchQuery) flyToVisible();
     }
