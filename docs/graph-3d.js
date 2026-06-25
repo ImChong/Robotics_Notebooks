@@ -119,6 +119,10 @@
     var getVisibleNodeIds = opts.getVisibleNodeIds || function () { return new Set(); };
     var hasActiveFilter = opts.hasActiveFilter || function () { return false; };
     var edgeHighlightsWithNode = opts.edgeHighlightsWithNode;
+    var edgePassesFilter = opts.edgePassesFilter;
+    var getNodeSphereRadius = opts.getNodeSphereRadius;
+    var getLinkFilteredOpacity = opts.getLinkFilteredOpacity;
+    var getLinkFilteredWidth = opts.getLinkFilteredWidth;
     var getChargeStrength = opts.getChargeStrength || function () { return -800; };
     var getMagneticConfig = opts.getMagneticConfig || function () { return null; };
     var resolveSourceNode = opts.resolveSourceNode || function (id) {
@@ -212,6 +216,8 @@
         if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.45 : 0.1;
       }
       if (!filtered) return 0.06;
+      var ref = l._ref;
+      if (getLinkFilteredOpacity && ref) return getLinkFilteredOpacity(ref);
       if (!visible.has(s) || !visible.has(t)) return 0.03;
       return 0.06;
     }
@@ -244,10 +250,15 @@
         var eRef = l._ref;
         if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 1.8;
       }
+      if (hasActiveFilter()) {
+        var fRef = l._ref;
+        if (getLinkFilteredWidth && fRef) return getLinkFilteredWidth(fRef);
+      }
       return base;
     }
 
     function sphereRadiusFor(d) {
+      if (getNodeSphereRadius) return getNodeSphereRadius(d);
       var r = getNodeRadius(d);
       return Math.max(11, r * 1.65);
     }

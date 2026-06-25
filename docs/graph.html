@@ -2132,10 +2132,15 @@
         getVisibleNodeIds: () => visibleNodeIds,
         hasActiveFilter: hasActiveGraphFilter,
         edgeHighlightsWithNode,
+        edgePassesFilter: edgePassesGraphFilter,
+        getNodeSphereRadius: sphereRadiusFor3D,
+        getLinkFilteredOpacity: linkFilterOpacity3D,
+        getLinkFilteredWidth: linkFilterWidth3D,
         getChargeStrength: () => chargeStrength,
         getMagneticConfig: getMagneticConfig3D,
         onNodeClick: (d, ev) => {
           if (timelinePlaying) return;
+          if (hasActiveGraphFilter() && !visibleNodeIds.has(d.id)) return;
           if (isMobile) {
             if (pinnedNode === d) {
               pinnedNode = null;
@@ -2221,8 +2226,13 @@
           window.alert('3D 视图初始化失败，请刷新页面后重试');
           return;
         }
+        applyFilters();
         graph3dView.show();
-        graph3dView.syncFilters();
+        if (hasActiveGraphFilter()) {
+          window.requestAnimationFrame(function () {
+            if (graph3dView) graph3dView.fitToVisible(450);
+          });
+        }
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
@@ -2969,8 +2979,8 @@
         const hasFilter = hasActiveGraphFilter();
         node.select('.node-circle').attr('fill-opacity', n => {
           // 过滤后被隐藏的节点保持原始低透明度，不被 hover 恢复
-          if (hasFilter && !visibleNodeIds.has(n.id)) return 0.06;
-          return neighborSet.has(n.id) ? 1 : 0.15;
+          if (hasFilter && !visibleNodeIds.has(n.id)) return GRAPH_FILTER_NODE_DIM_FILL;
+          return neighborSet.has(n.id) ? 1 : GRAPH_FILTER_NODE_HOVER_DIM;
         });
         node.select('.node-glow').attr('fill-opacity', n =>
           n.id === d.id ? 0.18 : 0);
@@ -3346,6 +3356,49 @@
           || d.id.toLowerCase().includes(searchQuery);
     }
 
+    /** 2D/3D 共享筛选外观（3D 直接复用 2D applyFilters 同款数值与判定） */
+    const GRAPH_FILTER_NODE_DIM = 0.08;
+    const GRAPH_FILTER_NODE_DIM_FILL = 0.06;
+    const GRAPH_FILTER_NODE_HOVER_DIM = 0.15;
+    const GRAPH_FILTER_LINK_DIM = 0.2;
+    const GRAPH_FILTER_LINK_3D_BASE = 0.06;
+    const GRAPH_FILTER_LINK_3D_VISIBLE = 0.3; // 对比度与 2D 的 1:0.2 同比例（×5）
+    const GRAPH_FILTER_LINK_WIDTH_DIM = 0.5;
+
+    function nodePassesGraphFilter(d) {
+      return nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
+        && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+    }
+
+    function edgeEndpoints(e) {
+      const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
+      const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
+      return { s, t };
+    }
+
+    function edgePassesGraphFilter(e) {
+      const { s, t } = edgeEndpoints(e);
+      if (!s || !t) return false;
+      return nodePassesGraphFilter(s) && nodePassesGraphFilter(t);
+    }
+
+    function sphereRadiusFor3D(d) {
+      const hub = isCurrentTopicHub(d);
+      const r = scaledRadius(d) * (hub ? 1.28 : 1);
+      return Math.max(11, r * 1.65);
+    }
+
+    function linkFilterOpacity3D(e) {
+      if (!hasActiveGraphFilter()) return GRAPH_FILTER_LINK_3D_BASE;
+      return edgePassesGraphFilter(e) ? GRAPH_FILTER_LINK_3D_VISIBLE : GRAPH_FILTER_LINK_3D_BASE;
+    }
+
+    function linkFilterWidth3D(e) {
+      const base = linkWidthBase * 0.3;
+      if (!hasActiveGraphFilter()) return base;
+      return edgePassesGraphFilter(e) ? base : base * GRAPH_FILTER_LINK_WIDTH_DIM;
+    }
+
     function applyFilters() {
       if (timelineAnimating) return;
       const hasFilter = hasActiveGraphFilter();
@@ -3353,15 +3406,14 @@
       let visible = 0;
 
       node.each(function(d) {
-        const ok = nodeMatchesDegreeTop(d) && nodeMatchesCurrentFilter(d)
-          && nodeMatchesSearch(d) && nodeMatchesTopic(d) && nodeMatchesInstitutionFilter(d);
+        const ok = nodePassesGraphFilter(d);
         if (ok) { visible++; visibleNodeIds.add(d.id); }
 
         // V21 修复：显式重置节点整体 opacity (移除 openSidebar 可能留下的残留)
         const g = d3.select(this);
         const hub = isCurrentTopicHub(d);
         g.classed('node-topic-hub', hub);
-        g.style('opacity', hasFilter ? (ok ? 1 : 0.08) : 1);
+        g.style('opacity', hasFilter ? (ok ? 1 : GRAPH_FILTER_NODE_DIM) : 1);
         // 灰色节点不捕获指针，避免触发浮窗/点击；解除筛选后恢复
         g.style('pointer-events', hasFilter && !ok ? 'none' : null);
 
@@ -3371,7 +3423,7 @@
           .attr('fill-opacity', hub && ok ? 0.28 : 0);
         d3.select(this).select('.node-circle')
           .attr('r', hubR)
-          .attr('fill-opacity', ok ? 1 : 0.06)
+          .attr('fill-opacity', ok ? 1 : GRAPH_FILTER_NODE_DIM_FILL)
           .attr('stroke-opacity', ok ? (hub ? 0.85 : 0.35) : 0.05)
           .attr('stroke-width', hub ? 2.5 : 1.5);
         d3.select(this).select('.node-label')
@@ -3383,22 +3435,15 @@
         .style('opacity', null) // V21 修复：清除 openSidebar 的内联 style 干扰
         .attr('stroke-opacity', e => {
           if (!hasFilter) return 1;
-          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
-          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return 0.2;
-          return (nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-                  && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-                  && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t)) ? 1 : 0.2;
+          const { s, t } = edgeEndpoints(e);
+          if (!s || !t) return GRAPH_FILTER_LINK_DIM;
+          return edgePassesGraphFilter(e) ? 1 : GRAPH_FILTER_LINK_DIM;
         })
         .attr('stroke-width', e => {
           if (!hasFilter) return linkWidthBase;
-          const s = typeof e.source === 'object' ? e.source : nodes.find(n => n.id === e.source);
-          const t = typeof e.target === 'object' ? e.target : nodes.find(n => n.id === e.target);
-          if (!s || !t) return linkWidthBase * 0.5;
-          const edgeOk = nodeMatchesDegreeTop(s) && nodeMatchesDegreeTop(t)
-            && edgeMatchesCurrentFilter(s) && nodeMatchesSearch(s) && nodeMatchesTopic(s) && nodeMatchesInstitutionFilter(s)
-            && edgeMatchesCurrentFilter(t) && nodeMatchesSearch(t) && nodeMatchesTopic(t) && nodeMatchesInstitutionFilter(t);
-          return edgeOk ? linkWidthBase : linkWidthBase * 0.5;
+          const { s, t } = edgeEndpoints(e);
+          if (!s || !t) return linkWidthBase * GRAPH_FILTER_LINK_WIDTH_DIM;
+          return edgePassesGraphFilter(e) ? linkWidthBase : linkWidthBase * GRAPH_FILTER_LINK_WIDTH_DIM;
         });
       updateCount(visible);
       if (graph3dView && is3DView()) graph3dView.syncFilters();
