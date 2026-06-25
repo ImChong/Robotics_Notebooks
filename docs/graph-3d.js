@@ -176,19 +176,18 @@
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
-      var dimOpacity = filtered ? 0.02 : 0.15;
       if (sidebarNodeId) {
         if (d.id === sidebarNodeId || sidebarDirect.has(d.id)) return 1;
         if (sidebarSecondary.has(d.id)) return 0.4;
-        return filtered && !ok ? 0.02 : 0.05;
+        return 0.05;
       }
       if (hoverNodeId) {
         if (!filtered) return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
-        if (!ok) return 0.02;
-        return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : dimOpacity;
+        if (!ok) return 0.08;
+        return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
       }
       if (!filtered) return 1;
-      return ok ? 1 : 0.02;
+      return ok ? 1 : 0.08;
     }
 
     function isNeighborOf(nodeId, otherId) {
@@ -213,8 +212,8 @@
         if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.45 : 0.1;
       }
       if (!filtered) return 0.06;
-      if (!visible.has(s) || !visible.has(t)) return 0.012;
-      return 0.08;
+      if (!visible.has(s) || !visible.has(t)) return 0.03;
+      return 0.06;
     }
 
     function linkColorFor(l) {
@@ -250,9 +249,7 @@
 
     function sphereRadiusFor(d) {
       var r = getNodeRadius(d);
-      var base = Math.max(11, r * 1.65);
-      if (hasActiveFilter() && getVisibleNodeIds().has(d.id)) return base * 1.12;
-      return base;
+      return Math.max(11, r * 1.65);
     }
 
     function nodeValFor(d) {
