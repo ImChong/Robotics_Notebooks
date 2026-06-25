@@ -12,6 +12,7 @@ related:
   - ./sonic-motion-tracking.md
   - ../entities/paper-htd-refine-monocular-hmr.md
   - ../entities/gen2humanoid.md
+  - ../entities/yanjie-ze.md
 sources:
   - ../../sources/papers/motion_control_projects.md
   - ../../sources/papers/exoactor.md

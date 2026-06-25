@@ -962,7 +962,7 @@ SORT type ASC
 - [Stanford Doggo / Pupper（开源四足）](entities/stanford-doggo-and-pupper.md) — Stanford Doggo** 与 **Stanford Pupper** 同属斯坦福学生机器人俱乐部叙事下的 **开源四足**：**Doggo** 强调 **高动态跳跃**（转载中约 **5  `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](entities/superpowers-obra.md) — Superpowers** 是 [obra/superpowers](https://github.com/obra/superpowers) 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
-- [Tairan He（何泰然）](entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：博士阶段在 CMU LECAR 与 NVIDIA GEAR 等合作网络中，系统推进 **特权 `📅unknown` `[entity_page]`
+- [Tairan He（何泰然）](entities/tairan-he.md) — Tairan He** 现为 **OpenAI Member of Technical Staff**；CMU RI 博士（2026-04 答辩）期间在 LECAR / NVIDIA GEAR 推进 **特权教师 RL → 视觉学生** 的 Sim2Real 管线，代表作含 VIRAL、DoorMan、OmniH2O。 `📅2026-06-25` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，[AGIBOT Finch 研究页](https://finch.agibot.com/research/tau0-wm)， `📅unknown` `[entity_page]`
 - [TidyBot2](entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心**推动的开源人形平台：转载清单给出 **云端文档总览**、**x-humanoid.com 开源页** 与 Git `📅unknown` `[entity_page]`
@@ -985,6 +985,7 @@ SORT type ASC
 - [Xiaomi-Robotics-0](entities/xiaomi-robotics-0.md) — Xiaomi-Robotics-0** 将 **预训练 VLM（Qwen3-VL-4B-Instruct）** 与 **扩散式 Transformer 动作头（DiT）** 组合成端到端 **VL `📅unknown` `[entity_page]`
 - [XTDrone](entities/xtdrone.md) — XTDrone**（[robin-shaun/XTDrone](https://github.com/robin-shaun/XTDrone)）把 **[PX4](./px4-autopilot. `📅unknown` `[entity_page]`
 - [Xue Bin Peng（彭学斌）](entities/xue-bin-peng.md) — Xue Bin Peng** 是 **物理仿真角色与腿式机器人强化学习运动控制** 领域的核心研究者之一：将 **示例引导 RL（DeepMimic）**、**对抗式运动先验（AMP）** 与  `📅unknown` `[entity_page]`
+- [Yanjie Ze（迮炎杰）](entities/yanjie-ze.md) — Yanjie Ze** 是面向 **人形机器人模仿学习与 loco-manipulation** 的研究者：从 SJTU 阶段的 **3D 视觉 RL / 扩散策略**，到 Stanford 与 Amazon FAR 合作网络中的 **GMR 重定向 → TWIST 全身跟踪 → TWIST2 可扩展数据采集** 技术线。 `📅2026-06-25` `[entity_page]`
 - [Zhengyi Luo（罗正宜）](entities/zhengyi-luo.md) — Zhengyi Luo** 的研究把 **人形机器人的通用低层控制** 与 **视觉–语言–动作、Sim2Real 与遥操作数据闭环** 串在同一职业轨迹上：博士阶段提出并开源 **PHC / P `📅unknown` `[entity_page]`
 
 ### Wiki Concepts（概念页）

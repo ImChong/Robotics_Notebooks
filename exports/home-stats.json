@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1324,
-  "edge_count": 8959,
+  "node_count": 1325,
+  "edge_count": 8977,
   "coverage": {
-    "covered": 1293,
-    "total": 1322,
+    "covered": 1294,
+    "total": 1323,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -81,6 +81,46 @@
       "source": "log.md"
     },
     {
+      "path": "wiki/entities/tairan-he.md",
+      "detail_id": "entity-tairan-he",
+      "label": "Tairan He（何泰然）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/yanjie-ze.md",
+      "detail_id": "entity-yanjie-ze",
+      "label": "Yanjie Ze（迮炎杰）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-resmimic.md",
+      "detail_id": "entity-paper-resmimic",
+      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/concepts/whole-body-tracking-pipeline.md",
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
       "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
@@ -124,46 +164,6 @@
       "path": "wiki/entities/paper-amp-survey-04-kimodo.md",
       "detail_id": "entity-paper-amp-survey-04-kimodo",
       "label": "Kimodo：可扩展可控人体运动生成（AMP 专题 #04）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-05-motionbricks.md",
-      "detail_id": "entity-paper-amp-survey-05-motionbricks",
-      "label": "MotionBricks：模块化实时运动生成（AMP 专题 #05）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md",
-      "detail_id": "entity-paper-amp-survey-06-natural_humanoid_robot_locomotion_wi",
-      "label": "GMP：生成式运动先验与自然人形走跑",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md",
-      "detail_id": "entity-paper-amp-survey-07-adversarial_locomotion_and_motion_im",
-      "label": "ALMI：对抗 locomotion 与运动模仿的人形策略学习",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hiking-in-the-wild.md",
-      "detail_id": "entity-paper-hiking-in-the-wild",
-      "label": "Hiking in the Wild：可扩展感知跑酷框架",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md",
-      "detail_id": "entity-paper-amp-survey-10-unified_walking_running_and_recovery",
-      "label": "SD-AMP：统一走跑起身（AMP 专题 #10）",
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"

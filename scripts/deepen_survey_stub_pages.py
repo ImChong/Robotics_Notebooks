@@ -372,14 +372,11 @@ class Deepener:
         self.wm_raw = _parse_wm_sources()
         self.bfm_by_entity = {}
         for p in BFM_PAPERS:
-            name = f"paper-bfm-{p['id']:02d}-"
             slug = p["slug"].split("_arxiv")[0].split("_icml")[0].split("_neurips")[0]
             slug = slug.replace("_", "-")
             if p["id"] == 13:
                 continue
             self.bfm_by_entity[f"paper-bfm-{p['id']:02d}-{slug.replace('bfm-', '').replace('bfm_', '')}.md"] = p
-            # also map stripped slug
-            short = slug.replace("bfm-zero", "bfm-zero")  # noqa: placeholder
             ent = ROOT / "scripts/generate_bfm_awesome_wiki_entities.py"
             mod = _load_module("bfm_ent", ent)
             en = mod.paper_entity_name(p)
