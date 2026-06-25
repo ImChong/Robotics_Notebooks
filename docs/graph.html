@@ -2760,7 +2760,7 @@
     function restartForceSimulation() {
       if (is3DView() && graph3dView) {
         graph3dView.restartSimulation();
-        graph3dView.fitToScreen();
+        graph3dView.fitToScreen(350);
         return;
       }
       node.select('.node-label').style('opacity', 0);
