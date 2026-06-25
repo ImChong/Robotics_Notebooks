@@ -2,7 +2,7 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-06-18
+updated: 2026-06-25
 related:
   - ../entities/physx-omni.md
   - ../entities/paper-physforge-physics-grounded-3d-assets.md

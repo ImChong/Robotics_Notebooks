@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1323,
-  "edge_count": 8821,
+  "node_count": 1324,
+  "edge_count": 8835,
   "coverage": {
-    "covered": 1292,
-    "total": 1321,
+    "covered": 1293,
+    "total": 1322,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-coordex-dexterous-humanoid-loco-manipulation",
+      "label": "CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/hiw-500-dataset.md",
       "detail_id": "entity-hiw-500-dataset",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/hierarchical-quadruped-navigation-stack.md",
-      "detail_id": "wiki-concepts-hierarchical-quadruped-navigation-stack",
-      "label": "Hierarchical Quadruped Navigation Stack（四足分层导航栈）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/hiw-500-dataset.md",
-    "detail_id": "entity-hiw-500-dataset",
-    "label": "HIW-500（野外人形遥操作数据集）",
+    "path": "wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md",
+    "detail_id": "entity-paper-coordex-dexterous-humanoid-loco-manipulation",
+    "label": "CoorDex（Coordinating Body and Hand Priors for Continuous Dexterous Humanoid Loco-Manipulation）",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
