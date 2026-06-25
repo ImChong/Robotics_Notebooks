@@ -39,9 +39,13 @@
     copy.vx = 0;
     copy.vy = 0;
     copy.vz = 0;
-    copy.fx = null;
-    copy.fy = null;
-    copy.fz = null;
+    // 不要把 fx/fy/fz 设为 null：3d-force-graph 在拖拽结束时只有当「拖拽前该轴为
+    // undefined」才解除钉固（源码判断 void 0 === 轴值）。设成 null 会被判定为
+    // 「拖拽前已钉固」，从而保留落点、不回弹。删除属性（保持 undefined），
+    // 自由节点松手后即可回弹到力学平衡位置（与 2D drag end 清空 fx/fy 行为一致）。
+    delete copy.fx;
+    delete copy.fy;
+    delete copy.fz;
     return copy;
   }
 
