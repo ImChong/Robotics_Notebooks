@@ -47,7 +47,7 @@ sources:
 给定专家数据集 $D = \{(o_i, a_i)\}$，BC 通常优化：
 
 $$
-\min_	heta \; \mathbb{E}_{(o,a)\sim D}[\ell(\pi_	heta(o), a)]
+\min_\theta \; \mathbb{E}_{(o,a)\sim D}[\ell(\pi_\theta(o), a)]
 $$
 
 常见设定：
