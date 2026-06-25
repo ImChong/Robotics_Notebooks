@@ -134,7 +134,9 @@
     var lastPointer = { clientX: 0, clientY: 0 };
     var size = measureContainerSize(container);
     var bundledThree = null;
+    var sharedSphereGeometry = null;
     var customMeshesInstalled = false;
+    var meshInstallScheduled = false;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -251,18 +253,24 @@
     }
 
     function nodeValFor(d) {
-      // 自定义 mesh 安装前（最初约 700ms）由 3d-force-graph 默认球体渲染，
-      // 其半径 = cbrt(nodeVal) × nodeRelSize。配合 nodeRelSize(1) 取 radius³，
-      // 使默认球体半径恰为 sphereRadiusFor，避免进入 3D 瞬间“大球→骤缩”的跳变。
+      // 自定义 mesh 安装前由 3d-force-graph 默认球体渲染；nodeResolution(8) 仅作短暂占位。
       var radius = sphereRadiusFor(d);
       return radius * radius * radius;
+    }
+
+    function ensureSharedSphereGeometry(T) {
+      if (!sharedSphereGeometry) {
+        // 单位球 + mesh.scale：1336 节点共享一份几何体，避免逐节点 new SphereGeometry 阻塞主线程。
+        sharedSphereGeometry = new T.SphereGeometry(1, 12, 10);
+      }
+      return sharedSphereGeometry;
     }
 
     function createNodeMesh(d) {
       if (!bundledThree) return null;
       var radius = sphereRadiusFor(d);
       var opacity = nodeOpacityFor(d);
-      var geometry = new bundledThree.SphereGeometry(radius, 18, 14);
+      var geometry = ensureSharedSphereGeometry(bundledThree);
       var MaterialCtor = bundledThree.MeshLambertMaterial;
       var material = new MaterialCtor({
         color: getNodeColor(d),
@@ -270,6 +278,7 @@
         opacity: opacity,
       });
       var mesh = new bundledThree.Mesh(geometry, material);
+      mesh.scale.set(radius, radius, radius);
       mesh.userData.nodeId = d.id;
       return mesh;
     }
@@ -282,7 +291,9 @@
         if (!obj.isMesh || !obj.userData || !obj.userData.nodeId || !obj.material) return;
         var d = nodeById.get(obj.userData.nodeId);
         if (!d) return;
+        var radius = sphereRadiusFor(d);
         var opacity = nodeOpacityFor(d);
+        obj.scale.set(radius, radius, radius);
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
@@ -308,6 +319,7 @@
       if (customMeshesInstalled || !graph) return false;
       bundledThree = captureBundledThree(graph);
       if (!bundledThree) return false;
+      ensureSharedSphereGeometry(bundledThree);
       graph
         .nodeThreeObject(function (d) { return createNodeMesh(d); })
         .nodeThreeObjectExtend(false);
@@ -316,6 +328,46 @@
       customMeshesInstalled = true;
       refreshAppearance();
       return true;
+    }
+
+    function scheduleCustomMeshInstall(onReady) {
+      if (customMeshesInstalled) {
+        if (onReady) onReady();
+        return;
+      }
+      if (meshInstallScheduled) return;
+      meshInstallScheduled = true;
+      var attempts = 0;
+      function tryInstall() {
+        attempts += 1;
+        if (installCustomNodeMeshes()) {
+          meshInstallScheduled = false;
+          if (onReady) onReady();
+          return;
+        }
+        if (attempts < 12) {
+          window.requestAnimationFrame(tryInstall);
+        } else {
+          meshInstallScheduled = false;
+        }
+      }
+      window.requestAnimationFrame(tryInstall);
+    }
+
+    function resetNodePositionsInPlace() {
+      sourceNodes.forEach(function (src) {
+        var n3 = nodeById.get(src.id);
+        if (!n3) return;
+        n3.x = src.x != null ? src.x : (Math.random() - 0.5) * 80;
+        n3.y = src.y != null ? src.y : (Math.random() - 0.5) * 80;
+        n3.z = src.z != null ? src.z : (Math.random() - 0.5) * 80;
+        n3.vx = 0;
+        n3.vy = 0;
+        n3.vz = 0;
+        delete n3.fx;
+        delete n3.fy;
+        delete n3.fz;
+      });
     }
 
     function applyMagneticForces() {
@@ -371,10 +423,11 @@
       .graphData({ nodes: nodes3d, links: buildLinks() })
       .backgroundColor(backgroundColor())
       .showNavInfo(false)
-      .warmupTicks(40)
+      .warmupTicks(0)
+      .cooldownTicks(24)
       .nodeId('id')
       .nodeRelSize(1)
-      .nodeResolution(24)
+      .nodeResolution(8)
       .nodeColor(function (d) { return getNodeColor(d); })
       .nodeVal(nodeValFor)
       .nodeOpacity(function (d) { return nodeOpacityFor(d); })
@@ -401,6 +454,8 @@
     var chargeForce = graph.d3Force('charge');
     if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
 
+    scheduleCustomMeshInstall();
+
     return {
       show: function () {
         container.hidden = false;
@@ -411,11 +466,13 @@
         this.resumeSimulation();
         var self = this;
         window.requestAnimationFrame(function () { syncViewport(); });
-        window.setTimeout(function () {
-          if (!customMeshesInstalled) installCustomNodeMeshes();
-          self.fitToScreen(800);
-        }, 700);
-        window.setTimeout(function () { self.fitToScreen(600); }, 2600);
+        if (customMeshesInstalled) {
+          self.fitToScreen(450);
+        } else {
+          scheduleCustomMeshInstall(function () {
+            self.fitToScreen(450);
+          });
+        }
       },
 
       hide: function () {
@@ -452,10 +509,17 @@
         var charge = graph.d3Force('charge');
         if (charge && charge.strength) charge.strength(getChargeStrength());
         applyMagneticForces();
-        graph.d3ReheatSimulation();
+        if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
+        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
+        else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
       },
 
       restartSimulation: function () {
+        if (customMeshesInstalled) {
+          resetNodePositionsInPlace();
+          this.updateForces();
+          return;
+        }
         nodes3d = sourceNodes.map(cloneNodeFor3D);
         rebuildNodeIndex();
         graph.graphData({ nodes: nodes3d, links: buildLinks() });
