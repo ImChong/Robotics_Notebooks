@@ -738,10 +738,14 @@
       background: rgba(22,89,180,0.08);
       color: #1659b4;
     }
-    [data-theme="light"] .physics-action-btn.is-running,
-    [data-theme="light"] .physics-action-btn:disabled {
+    [data-theme="light"] .physics-action-btn.is-running {
       border-color: rgba(22,89,180,0.4);
       background: rgba(22,89,180,0.1);
+    }
+    [data-theme="light"] .physics-action-btn:disabled {
+      color: rgba(0,0,0,0.32);
+      border-color: rgba(0,0,0,0.1);
+      background: rgba(0,0,0,0.04);
     }
     [data-theme="light"] .slider-divider { background: rgba(0,0,0,0.06); }
     [data-theme="light"] input[type=range] { background: rgba(0,0,0,0.1); }
@@ -978,12 +982,18 @@
       color: #e6edf3;
       background: rgba(0,212,255,0.08);
     }
-    .physics-action-btn.is-running,
-    .physics-action-btn:disabled {
+    .physics-action-btn.is-running {
       opacity: 0.72;
       cursor: wait;
       border-color: rgba(0,212,255,0.55);
       background: rgba(0,212,255,0.16);
+    }
+    .physics-action-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      color: rgba(255,255,255,0.35);
+      border-color: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
     }
     .physics-action-btn.is-timeline-active {
       border-color: rgba(0,212,255,0.55);
@@ -2169,9 +2179,14 @@
       if (mode !== '2d' && mode !== '3d') return;
       if (!opts.force && mode === spatialViewMode) return;
 
+      // 先切换状态：resumeSimulation2D / 力模拟 tick / fitToScreen 都依赖 is3DView()，
+      // 必须在调用它们之前就反映目标视图，否则回到 2D 时力模拟会被旧状态挡住、无法重启。
+      spatialViewMode = mode;
+
       if (mode === '3d') {
         if (timelineAnimating) teardownTimelineMode();
         if (!window.RNGraph3D?.isAvailable?.()) {
+          spatialViewMode = '2d';
           window.alert('3D 视图库加载失败，请刷新页面后重试');
           return;
         }
@@ -2180,6 +2195,7 @@
         graphCanvas3d.hidden = false;
         ensureGraph3DView();
         if (!graph3dView) {
+          spatialViewMode = '2d';
           graphCanvas3d.hidden = true;
           graph3dHoverNode = null;
           hideTooltip();
@@ -2202,7 +2218,6 @@
         fitToScreen();
       }
 
-      spatialViewMode = mode;
       try { localStorage.setItem(SPATIAL_VIEW_KEY, mode); } catch (_e) { /* ignore */ }
       updateViewModeButtons();
       updateGraphHint();
