@@ -2053,7 +2053,17 @@
     const nodeScale      = 1.0;    // 节点大小倍数
     const linkWidthBase  = 1.0;    // 连接线基础粗细（px）
     const fontSliderVal  = 15;     // 字体缩放（相对 nodeScale）
-    let isMagnetic     = false;
+    let isMagnetic2D = false;
+    let isMagnetic3D = false;
+    const checkMagneticEl = document.getElementById('check-magnetic');
+
+    function isMagneticForCurrentView() {
+      return is3DView() ? isMagnetic3D : isMagnetic2D;
+    }
+
+    function syncMagneticCheckbox() {
+      if (checkMagneticEl) checkMagneticEl.checked = isMagneticForCurrentView();
+    }
 
     const SPATIAL_VIEW_KEY = 'rn-graph-spatial-view';
     let spatialViewMode = (function () {
@@ -2092,7 +2102,7 @@
     }
 
     function getMagneticConfig3D() {
-      if (!isMagnetic) return null;
+      if (!isMagnetic3D) return null;
       const categories = (colorMode === 'community')
         ? Array.from(communityLabelMap.keys())
         : Array.from(new Set(nodes.map(n => n.type)));
@@ -2228,6 +2238,8 @@
       updateViewModeButtons();
       updateGraphHint();
       syncTimeline3DState();
+      syncMagneticCheckbox();
+      updateForces();
     }
 
     function syncTimeline3DState() {
@@ -2557,7 +2569,7 @@
       if (is3DView()) return;
       simulation.force('charge').strength(chargeStrength);
       
-      if (isMagnetic) {
+      if (isMagnetic2D) {
         const categories = (colorMode === 'community') 
           ? Array.from(communityLabelMap.keys())
           : Array.from(new Set(nodes.map(n => n.type)));
@@ -2744,7 +2756,7 @@
       updateFilterCount();
       refreshNodeColors();
       applyFilters();
-      if (isMagnetic) updateForces();
+      if (isMagneticForCurrentView()) updateForces();
     }
 
     if (filterModeTypeBtn) filterModeTypeBtn.addEventListener('click', () => setColorMode('type'));
@@ -3902,11 +3914,14 @@
       updateForces();
     });
 
-    /* 磁吸模式 checkbox */
-    document.getElementById('check-magnetic').addEventListener('change', ev => {
-      isMagnetic = ev.target.checked;
-      updateForces();
-    });
+    /* 磁吸模式 checkbox（2D / 3D 各自独立记忆） */
+    if (checkMagneticEl) {
+      checkMagneticEl.addEventListener('change', ev => {
+        if (is3DView()) isMagnetic3D = ev.target.checked;
+        else isMagnetic2D = ev.target.checked;
+        updateForces();
+      });
+    }
 
     if (viewMode2dBtn) {
       viewMode2dBtn.addEventListener('click', () => setSpatialViewMode('2d'));
