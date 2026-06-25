@@ -254,7 +254,7 @@ python scripts/train.py Unitree-G1-AMP-Flat --env.scene.num-envs=8192 --gpu-ids 
 
 ### 2. 训练监控与曲线分析
 
-使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程。下表所列 tag 均来自 AMP_mjlab 自带 `rsl_rl/runners/amp_on_policy_runner.py` 与 mjlab `reward_manager` 写入 TensorBoard 的实际命名空间（参考 README 中的 `logs.png` 截图）。
+使用 `tensorboard --logdir logs/rsl_rl` 监控训练过程（工具说明见 [TensorBoard](./tensorboard.md)；与 [W&B](./weights-and-biases.md) 选型见 [对比页](../comparisons/wandb-vs-tensorboard.md)）。下表所列 tag 均来自 AMP_mjlab 自带 `rsl_rl/runners/amp_on_policy_runner.py` 与 mjlab `reward_manager` 写入 TensorBoard 的实际命名空间（参考 README 中的 `logs.png` 截图）。
 
 #### 2.1 训练总览（`Train/`）
 
