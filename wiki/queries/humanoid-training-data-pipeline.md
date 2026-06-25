@@ -3,10 +3,11 @@ title: 人形训练数据管线选型指南
 type: query
 status: complete
 created: 2026-06-19
-updated: 2026-06-21
+updated: 2026-06-25
 summary: 从原始动作捕捉 / 人体视频 → 重定向 → RL/IL 训练输入的端到端选型决策树，覆盖参考运动来源、重定向方案、训练范式三层取舍与典型失败模式。
 tags: [dataset, motion-retargeting, data-pipeline, humanoid, training-data]
 sources:
+  - ../../sources/sites/hiw-500-dataset.md
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/phuma.md
   - ../../sources/repos/omomo_release.md
@@ -63,10 +64,11 @@ flowchart TD
 | 高质量棚拍 MoCap | [LaFAN1](../entities/lafan1-dataset.md) | 干净、含 recovery | 规模小、**NC-ND 许可** |
 | 人–物交互 MoCap | [OMOMO](../entities/omomo-dataset.md) | HOI / loco-manip 源 | 接触需对齐、规模中等 |
 | 已重定向 locomotion | [PHUMA](../entities/dataset-bfm-phuma.md) | **物理可信 + 免重定向** | 分布由策展决定 |
-| 真机操作数据 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | 天然物理可行、多模态 | 任务窄、非参考库 |
+| 真机操作数据 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | 天然物理可行、多模态 | 任务相对策展、非参考库 |
+| 真机 in-the-wild 遥操作 | [HIW-500](../entities/hiw-500-dataset.md) | **500+ h** 家庭场景、语言子任务标注、开源规模大 | 夹爪末端、地域/户型偏差、LeRobot 格式待全量 |
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
 
-**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday。
+**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500。
 
 ---
 

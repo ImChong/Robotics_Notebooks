@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/hiw-500-dataset.md — HIW-500 野外 G1 遥操作数据集；升格 wiki/entities/hiw-500-dataset.md，互链 teleoperation / humanoid-training-data-pipeline / topic-data-pipeline
+
 ## [2026-06-24] checklist-v25 | DoD 收口 & 初始化 V26
 
 - V25 全部条目收口：P0（数据集页元数据巡检 `dataset_metadata_check` + scaffold `--dataset` 旗标）、P1（`humanoid-training-data-pipeline` query + `motion-data-quality` concept + 数据层四段衔接交叉补强）、P2（事实库 186 → 198 条，新增 12 条数据层矛盾检测规则）、P3（图谱第 15 项「训练数据管线」专题视图 `data-pipeline` + 详情页徽标联动）逐条 `[x]`；DoD 末项「`log.md` 记录 V25 关键改动」由本条目收口。

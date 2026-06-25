@@ -68,7 +68,7 @@ flowchart LR
 
 - **论文索引占位**：[Humanoid Everyday（Paper Notebooks）](./humanoid-everyday-dataset.md)
 - **任务域**：[Loco-Manipulation](../tasks/loco-manipulation.md)、[Teleoperation](../tasks/teleoperation.md)
-- **选型对照**：[humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md)
+- **选型对照**：[humanoid-reference-motion-datasets](../comparisons/humanoid-reference-motion-datasets.md)、[HIW-500](./hiw-500-dataset.md)（家庭 in-the-wild 遥操作 · 500+ h）
 
 ## 参考来源
 
