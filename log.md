@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/tairan-he.md — 复核 tairanhe.com：OpenAI MTS、博士答辩与 CVPR 2026 VIRAL/DoorMan 等更新
+
+- 原始资料：[tairan-he.md](sources/sites/tairan-he.md)
+- 更新实体：[tairan-he.md](wiki/entities/tairan-he.md)
 ## [2026-06-25] fix(actions): COMMUNITY_NAME_OVERRIDES 补全身运动跟踪流水线 — 修复 community-12 命名不符合 中文（English） 社区 导致 pytest 失败
 
 - `scripts/generate_link_graph.py`：`wiki/concepts/whole-body-tracking-pipeline.md` → `全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）`

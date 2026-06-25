@@ -963,7 +963,7 @@ SORT type ASC
 - [Stanford Doggo / Pupper（开源四足）](entities/stanford-doggo-and-pupper.md) — Stanford Doggo** 与 **Stanford Pupper** 同属斯坦福学生机器人俱乐部叙事下的 **开源四足**：**Doggo** 强调 **高动态跳跃**（转载中约 **5  `📅unknown` `[entity_page]`
 - [STMR 四足时空重定向](entities/stmr-quadruped-retargeting.md) — STMR**（*Spatio-Temporal Motion Retargeting for Quadruped Robots*，IEEE T-RO 2025，arXiv:[2404.11557 `📅unknown` `[entity_page]`
 - [Superpowers（obra）](entities/superpowers-obra.md) — Superpowers** 是 [obra/superpowers](https://github.com/obra/superpowers) 仓库及其插件分发形态的总称：把作者团队在实践中沉淀的 `📅unknown` `[entity_page]`
-- [Tairan He（何泰然）](entities/tairan-he.md) — Tairan He** 是面向 **通用人形 loco-manipulation** 的机器学习研究者：博士阶段在 CMU LECAR 与 NVIDIA GEAR 等合作网络中，系统推进 **特权 `📅unknown` `[entity_page]`
+- [Tairan He（何泰然）](entities/tairan-he.md) — Tairan He** 现为 **OpenAI Member of Technical Staff**；CMU RI 博士（2026-04 答辩）期间在 LECAR / NVIDIA GEAR 推进 **特权教师 RL → 视觉学生** 的 Sim2Real 管线，代表作含 VIRAL、DoorMan、OmniH2O。 `📅2026-06-25` `[entity_page]`
 - [τ₀-World Model（τ0-WM）](entities/tau0-world-model.md) — τ₀-World Model（τ0-WM）**（2026-05-31，[AGIBOT Finch 研究页](https://finch.agibot.com/research/tau0-wm)， `📅unknown` `[entity_page]`
 - [TidyBot2](entities/tidybot2.md) — TidyBot2** 是一个面向 **家庭场景物品整理** 的 **移动操作机器人** 研究平台：项目主页 **[tidybot2.github.io](https://tidybot2.gith `📅unknown` `[entity_page]`
 - [天工 Lite / Pro（开源人形）](entities/tienkung-humanoid-open-source.md) — 天工（TienKung）** Lite / Pro 是**北京人形机器人创新中心**推动的开源人形平台：转载清单给出 **云端文档总览**、**x-humanoid.com 开源页** 与 Git `📅unknown` `[entity_page]`

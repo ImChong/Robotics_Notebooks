@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-25",
   "node_count": 1325,
-  "edge_count": 8960,
+  "edge_count": 8961,
   "coverage": {
     "covered": 1294,
     "total": 1323,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tairan-he.md",
+      "detail_id": "entity-tairan-he",
+      "label": "Tairan He（何泰然）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/whole-body-tracking-pipeline.md",
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-deep-whole-body-parkour.md",
-      "detail_id": "entity-paper-deep-whole-body-parkour",
-      "label": "Deep Whole-body Parkour：感知式全身跑酷",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-    "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-    "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-    "type": "concept",
+    "path": "wiki/entities/tairan-he.md",
+    "detail_id": "entity-tairan-he",
+    "label": "Tairan He（何泰然）",
+    "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
   }
