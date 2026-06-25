@@ -287,6 +287,7 @@ SORT type ASC
 - [Kimera](entities/kimera.md) — Kimera** 将 **视觉-惯性里程计、鲁棒位姿图与语义网格** 组合为度量-语义地图。 `📅unknown` `[entity_page]`
 - [Kimodo（可控人体与人形运动扩散）](entities/kimodo.md) — Kimodo**（**Ki**nematic **Mo**tion **D**iffusi**o**n）在 **运动学空间** 对骨架姿态序列做 **显式扩散去噪**：在约 **700 小时**  `📅unknown` `[entity_page]`
 - [Kinova Gen3](entities/kinova-gen3.md) — Kinova Gen3** 是 **Kinova** 公司的 **轻型六轴协作机械臂**：面向 **医疗、服务与科研**；产品介绍在 **[Gen3 产品页](https://www.kinova `📅unknown` `[entity_page]`
+- [Kyber Labs](entities/kyber-labs.md) — Kyber Labs** 是一家 Brooklyn（Newlab）初创公司，自 **2022** 年起公开叙事为 **「为 AI 控制而设计的机器人操作平台」**：核心是 **双臂 + 仿人灵巧手 `📅unknown` `[entity_page]`
 - [LaFAN1（Ubisoft La Forge Animation Dataset）](entities/lafan1-dataset.md) — LaFAN1** 指 Ubisoft 在仓库 [`ubisoft/ubisoft-laforge-animation-dataset`](https://github.com/ubisoft/ub `📅unknown` `[entity_page]`
 - [legged_gym](entities/legged-gym.md) — legged_gym** 是 ETH Zurich RSL（Robotic Systems Lab）开源的足式机器人强化学习训练框架，建立在 **Isaac Gym** 之上。 `📅unknown` `[entity_page]`
 - [LeggedGym-Ex](entities/leggedgym-ex.md) — LeggedGym-Ex**（<https://github.com/lupinjia/LeggedGym-Ex>）在 [legged_gym](./legged-gym.md) 范式上扩展  `📅unknown` `[entity_page]`
