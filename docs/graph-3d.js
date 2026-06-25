@@ -287,12 +287,25 @@
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
+        this.resumeSimulation();
         var self = this;
         window.setTimeout(function () { self.fitToScreen(700); }, 1000);
       },
 
       hide: function () {
+        this.pauseSimulation();
         container.hidden = true;
+      },
+
+      pauseSimulation: function () {
+        if (!graph) return;
+        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+        if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
+      },
+
+      resumeSimulation: function () {
+        if (!graph) return;
+        if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
       },
 
       resize: function () {

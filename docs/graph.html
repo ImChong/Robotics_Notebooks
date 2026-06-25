@@ -2169,10 +2169,12 @@
           window.alert('3D 视图库加载失败，请刷新页面后重试');
           return;
         }
+        pauseSimulation2D();
         svg.style('display', 'none');
         graphCanvas3d.hidden = false;
         ensureGraph3DView();
         if (!graph3dView) {
+          resumeSimulation2D();
           return;
         }
         graph3dView.show();
@@ -2184,6 +2186,7 @@
         hideTooltip();
         svg.style('display', 'block');
         syncGraphDomFromSimulation();
+        resumeSimulation2D();
         fitToScreen();
       }
 
@@ -2501,6 +2504,17 @@
       .force('collision', d3.forceCollide().radius(d => scaledRadius(d) + 5).strength(0.7))
       .alphaDecay(0.025);
 
+    function pauseSimulation2D() {
+      simulation.stop();
+      simulation.alphaTarget(0);
+    }
+
+    function resumeSimulation2D() {
+      if (is3DView()) return;
+      simulation.alphaTarget(0);
+      simulation.alpha(0.18).restart();
+    }
+
     function updateForces() {
       if (is3DView() && graph3dView) {
         graph3dView.updateForces();
@@ -2559,11 +2573,16 @@
       .style('cursor', 'pointer')
       .call(d3.drag()
         .on('start', (ev, d) => {
+          if (is3DView()) return;
           if (!ev.active) simulation.alphaTarget(0.3).restart();
           d.fx = d.x; d.fy = d.y;
         })
-        .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
+        .on('drag', (ev, d) => {
+          if (is3DView()) return;
+          d.fx = ev.x; d.fy = ev.y;
+        })
         .on('end', (ev, d) => {
+          if (is3DView()) return;
           if (!ev.active) simulation.alphaTarget(0);
           d.fx = null; d.fy = null;
         })
@@ -3894,7 +3913,7 @@
         wrap.removeEventListener('transitionend', onEnd);
         clearTimeout(fallbackTimer);
         updateGraphViewport();
-        if (!timelineAnimating) simulation.alpha(0.1).restart();
+        if (!timelineAnimating && !is3DView()) simulation.alpha(0.1).restart();
       };
       const onEnd = (ev) => {
         if (ev.target !== wrap || ev.propertyName !== 'right') return;
@@ -4076,11 +4095,13 @@
       const cx = (wrap.clientWidth || W) / 2;
       const cy = (wrap.clientHeight || H) / 2;
       simulation.force('center', d3.forceCenter(cx, cy).strength(0.05));
-      simulation.alpha(0.1).restart();
-      simulation.on('end.sidebar', () => {
-        simulation.on('end.sidebar', null);
-        fitToScreen();
-      });
+      if (!is3DView()) {
+        simulation.alpha(0.1).restart();
+        simulation.on('end.sidebar', () => {
+          simulation.on('end.sidebar', null);
+          fitToScreen();
+        });
+      }
     }
 
     sbClose.addEventListener('click', closeSidebar);
