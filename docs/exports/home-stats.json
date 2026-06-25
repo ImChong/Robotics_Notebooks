@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-06-25",
   "node_count": 1325,
-  "edge_count": 8846,
+  "edge_count": 8850,
   "coverage": {
     "covered": 1294,
     "total": 1323,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-loco-manip-04-oasis.md",
+      "detail_id": "entity-paper-loco-manip-04-oasis",
+      "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/humanoid-training-data-pipeline.md",
+      "detail_id": "wiki-queries-humanoid-training-data-pipeline",
+      "label": "人形训练数据管线选型指南",
+      "type": "query",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/kyber-labs.md",
       "detail_id": "entity-kyber-labs",
@@ -143,36 +167,12 @@
       "type": "entity",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/differentiable-simulation.md",
-      "detail_id": "wiki-concepts-differentiable-simulation",
-      "label": "Differentiable Simulation（可微仿真）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/urdf-robot-description.md",
-      "detail_id": "wiki-concepts-urdf-robot-description",
-      "label": "URDF（统一机器人描述格式）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/joint-friction-models.md",
-      "detail_id": "wiki-concepts-joint-friction-models",
-      "label": "Joint Friction Models（关节摩擦模型）",
-      "type": "concept",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kyber-labs.md",
-    "detail_id": "entity-kyber-labs",
-    "label": "Kyber Labs",
+    "path": "wiki/entities/paper-loco-manip-04-oasis.md",
+    "detail_id": "entity-paper-loco-manip-04-oasis",
+    "label": "OASIS（From Simulation Data Collection to Real-World Humanoid Loco-Manipulation）",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"

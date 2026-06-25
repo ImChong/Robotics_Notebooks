@@ -34,7 +34,7 @@ related:
   - ../entities/open-duck-mini.md
   - ../entities/physx-omni.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-06-19
+updated: 2026-06-25
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 ---
@@ -232,6 +232,7 @@ flowchart TD
 - [RMA（论文实体）](../entities/paper-rma-rapid-motor-adaptation.md) — 特权 extrinsics + 历史适应模块；A1 异步 10/100 Hz 部署
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md) — 真机部署阶段系统排障指南
 - [LEGS（论文实体）](../entities/paper-legs-embodied-gaussian-splatting-vla.md) — 3DGS 缩小 **视觉** sim2real gap 以合成 VLA 训练数据（arXiv:2606.01458）
+- [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 仿真 VR teleop + Path-Tracing 视觉域随机化；**纯仿真数据** 训练 G1 loco-manip 零样本可 ≥ 等量真机 teleop（arXiv:2606.08548）
 - [NVIDIA SO-101 Sim2Real 实验 workflow](../entities/nvidia-so101-sim2real-lab-workflow.md) — 官方动手课：四类 sim2real 策略 + GR00T N1.6 VLA + LeRobot/Isaac Lab
 - [GR00T-VisualSim2Real](../entities/gr00t-visual-sim2real.md) — NVIDIA 视觉 Sim2Real 框架，PPO Teacher + DAgger RGB Student，Unitree G1 零样本迁移（CVPR 2026）
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — **深度** sim-to-real：真机用 **VFM（Fast-FoundationStereo）** 替代重度 depth randomization，配合 **RFM** 聚焦梯子踏棍（arXiv:2606.05873）
