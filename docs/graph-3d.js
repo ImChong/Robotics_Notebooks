@@ -508,8 +508,28 @@
     function syncTimelineSimulation(revealedIds) {
       if (!graph) return;
       syncPositionsFromSource();
-      var revNodes = nodes3d.filter(function (n) { return revealedIds.has(n.id); });
-      graph.graphData({ nodes: revNodes, links: buildLinks(function (n) { return revealedIds.has(n.id); }) });
+      // 保持完整 graphData（自定义 mesh 在子集替换时易丢渲染）；未显现节点钉在原点且透明
+      nodes3d.forEach(function (n3) {
+        if (revealedIds.has(n3.id)) {
+          delete n3.fx;
+          delete n3.fy;
+          delete n3.fz;
+        } else {
+          n3.x = 0;
+          n3.y = 0;
+          n3.z = 0;
+          n3.vx = 0;
+          n3.vy = 0;
+          n3.vz = 0;
+          n3.fx = 0;
+          n3.fy = 0;
+          n3.fz = 0;
+        }
+      });
+      graph.graphData({
+        nodes: nodes3d,
+        links: buildLinks(function (n) { return revealedIds.has(n.id); }),
+      });
       refreshAppearance();
       if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
       if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
