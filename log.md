@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] fix(actions): COMMUNITY_NAME_OVERRIDES 补全身运动跟踪流水线 — 修复 community-12 命名不符合 中文（English） 社区 导致 pytest 失败
+
+- `scripts/generate_link_graph.py`：`wiki/concepts/whole-body-tracking-pipeline.md` → `全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）`
+- 验证：`make ci-preflight`、`make test`（含 `test_community_naming`）通过
+
 ## [2026-06-25] structural | AMP 专题 19 篇占位页批量深化收口 — 总览局限段更新为「深读实体页」
 
 - 变更：[humanoid-amp-motion-prior-survey.md](wiki/overview/humanoid-amp-motion-prior-survey.md) 不再将 19 篇标为「策展索引级」；#01–#19 均已 MoRE/CLOT 级深读（#08/#16 先行，#01–#07/#09–#15/#17–#19 本日批次完成）

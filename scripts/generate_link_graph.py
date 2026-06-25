@@ -120,6 +120,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/concepts/contact-rich-manipulation.md": "接触丰富型操作（Contact-Rich Manipulation）",
     "wiki/methods/vla.md": "视觉-语言-动作（VLA）",
     "wiki/concepts/motion-retargeting.md": "动作重定向（Motion Retargeting）",
+    "wiki/concepts/whole-body-tracking-pipeline.md": "全身运动跟踪流水线（Whole-Body Tracking Pipeline, WBT）",
     "wiki/entities/humanoid-robot.md": "人形机器人（Humanoid Robot）",
     "wiki/entities/unitree-g1.md": "宇树 G1 人形机器人（Unitree G1）",
     "wiki/methods/behavior-cloning.md": "行为克隆（Behavior Cloning）",
