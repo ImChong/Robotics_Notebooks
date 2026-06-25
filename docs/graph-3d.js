@@ -302,10 +302,6 @@
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
         obj.visible = opacity > 0.02;
-        var targetR = sphereRadiusFor(d);
-        var baseR = obj.userData.baseRadius || targetR;
-        var scale = baseR > 0 ? targetR / baseR : 1;
-        obj.scale.set(scale, scale, scale);
       });
     }
 
