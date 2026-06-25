@@ -13,6 +13,7 @@ related:
   - ../concepts/sim2real.md
   - ./tairan-he.md
   - ./zhengyi-luo.md
+  - ./yanjie-ze.md
 sources:
   - ../../sources/sites/xue-bin-peng.md
   - ../../sources/papers/deeprl_locomotion_action_space_sca2017.md
@@ -61,6 +62,7 @@ summary: "彭学斌（Xue Bin Peng）为 SFU 助理教授兼 NVIDIA 研究科学
 - [Sim2Real](../concepts/sim2real.md)
 - [Tairan He（何泰然）](./tairan-he.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
+- [Yanjie Ze（迮炎杰）](./yanjie-ze.md)
 - [DeepRL 动作空间对比（SCA 2017）](./paper-deeprl-locomotion-action-space-sca2017.md)
 - [Character Animation vs Robotics](../concepts/character-animation-vs-robotics.md) — 其图形学起源方法被搬到真实人形 RL 的张力讨论
 

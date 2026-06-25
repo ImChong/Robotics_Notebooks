@@ -14,6 +14,7 @@ related:
   - ./paper-twist.md
   - ./videomimic.md
   - ./paper-hrl-stack-03-omniretarget.md
+  - ./yanjie-ze.md
 sources:
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
   - ../../sources/sites/resmimic-github-io.md

@@ -1,13 +1,61 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1325,
-  "edge_count": 8960,
+  "node_count": 1326,
+  "edge_count": 8977,
   "coverage": {
-    "covered": 1294,
-    "total": 1323,
+    "covered": 1295,
+    "total": 1324,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/yanjie-ze.md",
+      "detail_id": "entity-yanjie-ze",
+      "label": "Yanjie Ze（迮炎杰）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist.md",
+      "detail_id": "entity-paper-twist",
+      "label": "TWIST",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-twist2.md",
+      "detail_id": "entity-paper-twist2",
+      "label": "TWIST2",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/motion-retargeting-gmr.md",
+      "detail_id": "wiki-methods-motion-retargeting-gmr",
+      "label": "GMR: 通用动作重定向",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-visualmimic.md",
+      "detail_id": "entity-paper-notebook-visualmimic",
+      "label": "VisualMimic（Visual Humanoid Loco-Manipulation via Motion Tracking and Generation）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-resmimic.md",
+      "detail_id": "entity-paper-resmimic",
+      "label": "ResMimic（GMT → 人形全身 Loco-Manipulation 残差学习）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/whole-body-tracking-pipeline.md",
       "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
@@ -119,61 +167,13 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-unified-walk-run-recovery-sdamp.md",
-      "detail_id": "entity-paper-unified-walk-run-recovery-sdamp",
-      "label": "SD-AMP：统一走、跑与起身的对抗运动先验",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md",
-      "detail_id": "entity-paper-amp-survey-13-humanoid_goalkeeper",
-      "label": "Humanoid Goalkeeper：位置条件化任务–运动约束守门",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-14-husky.md",
-      "detail_id": "entity-paper-amp-survey-14-husky",
-      "label": "HUSKY：物理感知人形滑板全身控制",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-15-physhsi.md",
-      "detail_id": "entity-paper-amp-survey-15-physhsi",
-      "label": "PhysHSI：可部署的真实世界人形–场景交互",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-17-teamhoi.md",
-      "detail_id": "entity-paper-amp-survey-17-teamhoi",
-      "label": "TeamHOI：任意队形的协作人–物交互统一策略",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-deep-whole-body-parkour.md",
-      "detail_id": "entity-paper-deep-whole-body-parkour",
-      "label": "Deep Whole-body Parkour：感知式全身跑酷",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-    "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-    "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-    "type": "concept",
+    "path": "wiki/entities/yanjie-ze.md",
+    "detail_id": "entity-yanjie-ze",
+    "label": "Yanjie Ze（迮炎杰）",
+    "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
   }
