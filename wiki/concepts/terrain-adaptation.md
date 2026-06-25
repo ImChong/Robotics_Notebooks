@@ -2,7 +2,7 @@
 type: concept
 tags: [locomotion, terrain, perception, footstep-planning, sim2real]
 status: complete
-updated: 2026-06-09
+updated: 2026-06-25
 summary: "Terrain Adaptation 指机器人根据地形感知结果调整步位、身体姿态和接触策略，以在不平整环境中保持稳定移动。"
 related:
   - ../tasks/locomotion.md
@@ -15,6 +15,7 @@ related:
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/paper-faststair-humanoid-stair-ascent.md
   - ../entities/paper-explicit-stair-geometry-humanoid-locomotion.md
+  - ../entities/paper-amp-survey-08-more.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
@@ -141,6 +142,7 @@ sources:
 - [Privileged Training](./privileged-training.md)
 - [Sim2Real](./sim2real.md)
 - [Balance Recovery](../tasks/balance-recovery.md)
+- [MoRE（复杂地形多步态 AMP）](../entities/paper-amp-survey-08-more.md) — 深度外感知 + 多判别器先验下的 gait 切换范例
 
 ## 推荐继续阅读
 

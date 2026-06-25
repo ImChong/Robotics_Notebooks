@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md — 补完成 MoRE（AMP #08）深读；wiki/entities/paper-amp-survey-08-more.md；交叉 amp-reward、terrain-adaptation、explicit-stair-geometry、locomotion
+
+- 原始资料：[more_mixture_residual_experts_arxiv_2506_08840.md](sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md) — arXiv:2506.08840 + 项目页
+- 策展索引补强：[humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md](sources/papers/humanoid_amp_survey_08_more_mixture_of_residual_experts_for_humanoid_li.md)
+- 升格实体：[wiki/entities/paper-amp-survey-08-more.md](wiki/entities/paper-amp-survey-08-more.md) — 两阶段管线、MoE 残差、多判别器 AMP、Mermaid 流程图
+- 交叉更新：[paper-notebook-category-05-locomotion](wiki/overview/paper-notebook-category-05-locomotion.md)、[amp-reward](wiki/methods/amp-reward.md)、[locomotion](wiki/tasks/locomotion.md)、[terrain-adaptation](wiki/concepts/terrain-adaptation.md)、[paper-explicit-stair-geometry-humanoid-locomotion](wiki/entities/paper-explicit-stair-geometry-humanoid-locomotion.md)
+
 ## [2026-06-25] ingest | sources/papers/oasis_humanoid_loco_manip_2606_08548.md — 复核 OASIS arXiv:2606.08548 入库；交叉补强 wiki/entities/paper-loco-manip-04-oasis.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/sim2real.md
 
 ## [2026-06-25] ingest | sources/sites/kyberlabs-ai.md — Kyber Labs 背驱动灵巧手操作平台；wiki/entities/kyber-labs.md；交叉 notable-commercial-robot-platforms、wuji-robotics、allegro-hand
