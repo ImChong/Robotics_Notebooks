@@ -43,6 +43,43 @@
     };
   }
 
+  function captureBundledThree(graph) {
+    if (!graph || !graph.scene) return null;
+    var scene = graph.scene();
+    if (!scene) return null;
+    var captured = null;
+    scene.traverse(function (obj) {
+      if (!captured && obj.isMesh && obj.geometry && obj.material) {
+        captured = {
+          SphereGeometry: obj.geometry.constructor,
+          MeshLambertMaterial: obj.material.constructor,
+          Mesh: obj.constructor,
+          AmbientLight: null,
+          DirectionalLight: null,
+        };
+      }
+      if (captured && obj.isLight) {
+        if (obj.type === 'AmbientLight') captured.AmbientLight = obj.constructor;
+        if (obj.type === 'DirectionalLight') captured.DirectionalLight = obj.constructor;
+      }
+    });
+    if (!captured || !captured.SphereGeometry || !captured.Mesh) return null;
+    return captured;
+  }
+
+  function ensureSceneLights(scene, T) {
+    if (!scene || !T) return;
+    var hasLight = false;
+    scene.traverse(function (obj) { if (obj.isLight) hasLight = true; });
+    if (hasLight) return;
+    if (T.AmbientLight) scene.add(new T.AmbientLight(0xffffff, 0.92));
+    if (T.DirectionalLight) {
+      var dir = new T.DirectionalLight(0xffffff, 0.88);
+      dir.position.set(90, 140, 110);
+      scene.add(dir);
+    }
+  }
+
   function create(opts) {
     if (!isAvailable()) return null;
     opts = opts || {};
@@ -75,6 +112,8 @@
     var nodeById = new Map();
     var lastPointer = { clientX: 0, clientY: 0 };
     var size = measureContainerSize(container);
+    var bundledThree = null;
+    var customMeshesInstalled = false;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -134,18 +173,18 @@
       var filtered = hasActiveFilter();
       if (sidebarNodeId && edgeHighlightsWithNode) {
         var ref = l._ref;
-        if (!ref) return 0.18;
-        if (!filtered) return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.85 : 0.18;
-        if (!visible.has(s) || !visible.has(t)) return 0.18;
-        return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.85 : 0.18;
+        if (!ref) return 0.08;
+        if (!filtered) return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.55 : 0.08;
+        if (!visible.has(s) || !visible.has(t)) return 0.08;
+        return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.55 : 0.08;
       }
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.7 : 0.3;
+        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.45 : 0.1;
       }
-      if (!filtered) return 0.35;
-      if (!visible.has(s) || !visible.has(t)) return 0.08;
-      return 0.35;
+      if (!filtered) return 0.06;
+      if (!visible.has(s) || !visible.has(t)) return 0.03;
+      return 0.06;
     }
 
     function linkColorFor(l) {
@@ -167,7 +206,7 @@
     }
 
     function linkWidthFor(l) {
-      var base = getLinkWidth() * 0.4;
+      var base = getLinkWidth() * 0.3;
       if (sidebarNodeId) {
         var ref = l._ref;
         if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 1.5;
@@ -179,19 +218,74 @@
       return base;
     }
 
-    function nodeValFor(d) {
+    function sphereRadiusFor(d) {
       var r = getNodeRadius(d);
-      return Math.max(5, Math.pow(r / 2.4, 1.35));
+      return Math.max(11, r * 1.65);
+    }
+
+    function nodeValFor(d) {
+      var radius = sphereRadiusFor(d);
+      return radius * radius;
+    }
+
+    function createNodeMesh(d) {
+      if (!bundledThree) return null;
+      var radius = sphereRadiusFor(d);
+      var opacity = nodeOpacityFor(d);
+      var geometry = new bundledThree.SphereGeometry(radius, 18, 14);
+      var MaterialCtor = bundledThree.MeshLambertMaterial;
+      var material = new MaterialCtor({
+        color: getNodeColor(d),
+        transparent: opacity < 0.999,
+        opacity: opacity,
+      });
+      var mesh = new bundledThree.Mesh(geometry, material);
+      mesh.userData.nodeId = d.id;
+      return mesh;
+    }
+
+    function updateNodeMeshes() {
+      if (!graph || !bundledThree) return;
+      var scene = graph.scene && graph.scene();
+      if (!scene) return;
+      scene.traverse(function (obj) {
+        if (!obj.isMesh || !obj.userData || !obj.userData.nodeId || !obj.material) return;
+        var d = nodeById.get(obj.userData.nodeId);
+        if (!d) return;
+        var opacity = nodeOpacityFor(d);
+        obj.material.color.set(getNodeColor(d));
+        obj.material.opacity = opacity;
+        obj.material.transparent = opacity < 0.999;
+        obj.visible = opacity > 0.02;
+      });
     }
 
     function refreshAppearance() {
+      if (!customMeshesInstalled) {
+        graph
+          .nodeColor(function (d) { return getNodeColor(d); })
+          .nodeVal(nodeValFor)
+          .nodeOpacity(function (d) { return nodeOpacityFor(d); });
+      }
       graph
-        .nodeColor(function (d) { return getNodeColor(d); })
-        .nodeVal(nodeValFor)
-        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); });
+      updateNodeMeshes();
+    }
+
+    function installCustomNodeMeshes() {
+      if (customMeshesInstalled || !graph) return false;
+      bundledThree = captureBundledThree(graph);
+      if (!bundledThree) return false;
+      graph
+        .nodeThreeObject(function (d) { return createNodeMesh(d); })
+        .nodeThreeObjectExtend(false);
+      graph.graphData({ nodes: nodes3d, links: buildLinks() });
+      ensureSceneLights(graph.scene(), bundledThree);
+      customMeshesInstalled = true;
+      refreshAppearance();
+      return true;
     }
 
     function applyMagneticForces() {
@@ -251,8 +345,10 @@
       .height(size.height)
       .graphData({ nodes: nodes3d, links: buildLinks() })
       .backgroundColor(backgroundColor())
+      .showNavInfo(false)
+      .warmupTicks(40)
       .nodeId('id')
-      .nodeRelSize(8)
+      .nodeRelSize(14)
       .nodeResolution(24)
       .nodeColor(function (d) { return getNodeColor(d); })
       .nodeVal(nodeValFor)
@@ -289,7 +385,12 @@
         refreshAppearance();
         this.resumeSimulation();
         var self = this;
-        window.setTimeout(function () { self.fitToScreen(700); }, 1000);
+        window.requestAnimationFrame(function () { syncViewport(); });
+        window.setTimeout(function () {
+          if (!customMeshesInstalled) installCustomNodeMeshes();
+          self.fitToScreen(800);
+        }, 700);
+        window.setTimeout(function () { self.fitToScreen(600); }, 2600);
       },
 
       hide: function () {
@@ -300,12 +401,12 @@
       pauseSimulation: function () {
         if (!graph) return;
         if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
-        if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
       },
 
       resumeSimulation: function () {
         if (!graph) return;
         if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
       },
 
       resize: function () {
@@ -337,20 +438,21 @@
       },
 
       fitToScreen: function (ms) {
-        graph.zoomToFit(ms == null ? 650 : ms, 60);
+        graph.zoomToFit(ms == null ? 650 : ms, 16);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        graph.zoomToFit(ms == null ? 650 : ms, 160, function (n) { return visible.has(n.id); });
+        graph.zoomToFit(ms == null ? 650 : ms, 64, function (n) { return visible.has(n.id); });
       },
 
       focusNode: function (node, ms) {
         var n3 = node && nodeById.get(node.id);
         if (!n3 || n3.x == null) return;
         var z = n3.z != null ? n3.z : 0;
+        var dist = Math.max(180, sphereRadiusFor(n3) * 16);
         graph.cameraPosition(
-          { x: n3.x, y: n3.y, z: z + 220 },
+          { x: n3.x, y: n3.y, z: z + dist },
           n3,
           ms == null ? 700 : ms
         );
