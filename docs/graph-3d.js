@@ -139,6 +139,7 @@
     var sharedSphereGeometry = null;
     var customMeshesInstalled = false;
     var meshInstallScheduled = false;
+    var timelineDefaultNodes = false;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -297,7 +298,7 @@
     }
 
     function updateNodeMeshes() {
-      if (!graph || !bundledThree) return;
+      if (!graph || !bundledThree || !customMeshesInstalled) return;
       var scene = graph.scene && graph.scene();
       if (!scene) return;
       scene.traverse(function (obj) {
@@ -328,6 +329,23 @@
       updateNodeMeshes();
     }
 
+    function useTimelineDefaultNodes(enabled) {
+      if (!graph || enabled === timelineDefaultNodes) return;
+      timelineDefaultNodes = enabled;
+      if (enabled) {
+        graph.nodeThreeObject(null);
+        customMeshesInstalled = false;
+      } else if (bundledThree) {
+        graph
+          .nodeThreeObject(function (d) { return createNodeMesh(d); })
+          .nodeThreeObjectExtend(false);
+        customMeshesInstalled = true;
+        ensureSceneLights(graph.scene(), bundledThree);
+      } else {
+        scheduleCustomMeshInstall();
+      }
+    }
+
     function installCustomNodeMeshes() {
       if (customMeshesInstalled || !graph) return false;
       bundledThree = captureBundledThree(graph);
@@ -339,6 +357,7 @@
       graph.graphData({ nodes: nodes3d, links: buildLinks() });
       ensureSceneLights(graph.scene(), bundledThree);
       customMeshesInstalled = true;
+      timelineDefaultNodes = false;
       refreshAppearance();
       return true;
     }
@@ -507,30 +526,25 @@
 
     function syncTimelineSimulation(revealedIds) {
       if (!graph) return;
-      syncPositionsFromSource();
-      // 保持完整 graphData（自定义 mesh 在子集替换时易丢渲染）；未显现节点钉在原点且透明
-      nodes3d.forEach(function (n3) {
-        if (revealedIds.has(n3.id)) {
-          delete n3.fx;
-          delete n3.fy;
-          delete n3.fz;
-        } else {
-          n3.x = 0;
-          n3.y = 0;
-          n3.z = 0;
-          n3.vx = 0;
-          n3.vy = 0;
-          n3.vz = 0;
-          n3.fx = 0;
-          n3.fy = 0;
-          n3.fz = 0;
-        }
+      useTimelineDefaultNodes(true);
+      var revNodes = nodes3d.filter(function (n) { return revealedIds.has(n.id); });
+      revNodes.forEach(function (n3) {
+        delete n3.fx;
+        delete n3.fy;
+        delete n3.fz;
       });
-      graph.graphData({
-        nodes: nodes3d,
-        links: buildLinks(function (n) { return revealedIds.has(n.id); }),
-      });
-      refreshAppearance();
+      graph
+        .nodeColor(function (d) { return getNodeColor(d); })
+        .nodeVal(nodeValFor)
+        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+        .linkColor(function (l) { return linkColorFor(l); })
+        .linkWidth(function (l) { return linkWidthFor(l); })
+        .linkOpacity(function (l) { return linkOpacityFor(l); })
+        .graphData({
+          nodes: revNodes,
+          links: buildLinks(function (n) { return revealedIds.has(n.id); }),
+        });
+      if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
       if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
       if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
       else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
@@ -538,6 +552,7 @@
 
     function restoreFullGraphData() {
       if (!graph) return;
+      useTimelineDefaultNodes(false);
       syncPositionsFromSource();
       graph.graphData({ nodes: nodes3d, links: buildLinks() });
       refreshAppearance();
@@ -675,7 +690,7 @@
     return {
       show: function () {
         container.hidden = false;
-        syncPositionsFromSource();
+        if (!isTimelineAnimating()) syncPositionsFromSource();
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
