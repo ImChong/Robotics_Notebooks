@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/kyberlabs-ai.md — Kyber Labs 背驱动灵巧手操作平台；wiki/entities/kyber-labs.md；交叉 notable-commercial-robot-platforms、wuji-robotics、allegro-hand
+
 ## [2026-06-25] ingest | sources/sites/wuji_robotics.md — 补正舞肌科技官网 wuji.tech（中/英）与智能数据手套叙事；修正 schema/institutions.json「无界机器人」误标；wiki/entities/wuji-robotics.md
 
 ## [2026-06-25] ingest | sources/papers/coordex_arxiv_2606_23680.md — CoorDex body/hand 潜先验协调残差 dexterous loco-manipulation；wiki/entities/paper-coordex-dexterous-humanoid-loco-manipulation.md；交叉 loco-manipulation、wuji-robotics

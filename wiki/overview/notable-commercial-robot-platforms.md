@@ -1,11 +1,12 @@
 ---
 type: overview
-updated: 2026-05-12
+updated: 2026-06-25
 summary: "按人形、四足与腿足梳理当前知名度高、常被产业与媒体报道的商业机器人平台，并指向本库已有实体页与深度对比页。"
 sources:
   - ../../sources/repos/notable-commercial-robot-platforms.md
 related:
   - ../entities/wuji-robotics.md
+  - ../entities/kyber-labs.md
   - ../entities/humanoid-robot.md
   - ../entities/quadruped-robot.md
   - ../entities/motioncode.md
@@ -76,6 +77,7 @@ related:
 | 厂商（例子） | 典型标签 | 本库延伸阅读 |
 |--------------|-----------|----------------|
 | 舞肌科技（上海舞肌） | **F 系列 / Pan Motor** 关节电机叙事 + 官方 **Wuji Hand** 五指灵巧手 | [舞肌科技](../entities/wuji-robotics.md) |
+| Kyber Labs（Brooklyn） | **背驱动仿人灵巧手** + 双臂操作平台；**skills-based AI**；明确不做整机人形 | [Kyber Labs](../entities/kyber-labs.md) |
 
 ## 四足与腿足：常见平台
 
