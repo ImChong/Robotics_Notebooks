@@ -66,9 +66,10 @@ flowchart TD
 | 已重定向 locomotion | [PHUMA](../entities/dataset-bfm-phuma.md) | **物理可信 + 免重定向** | 分布由策展决定 |
 | 真机操作数据 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | 天然物理可行、多模态 | 任务相对策展、非参考库 |
 | 真机 in-the-wild 遥操作 | [HIW-500](../entities/hiw-500-dataset.md) | **500+ h** 家庭场景、语言子任务标注、开源规模大 | 夹爪末端、地域/户型偏差、LeRobot 格式待全量 |
+| 纯仿真 teleop + 视觉扩增 | [OASIS](../entities/paper-loco-manip-04-oasis.md) | Real-to-Sim 资产、VR 仿真 teleop、离线域随机化渲染；**纯仿真数据可 ≥ 等量真机 teleop** | 资产/接触精度依赖生成模型；motion 多样性受操作员上限 |
 | 人体视频 | [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) | 规模可极大 | 3D/接触信息弱，需重建 |
 
-**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500。
+**决策要点**：目标是 G1/H1-2 全身跟踪且不想从零重定向 → 直接选 PHUMA；要最大人体分布 → AMASS；要物体交互 → OMOMO；要真机操作模仿 → Humanoid Everyday；要 **家庭 in-the-wild 长程家务遥操作** 且需最大开源规模 → HIW-500；要 **绕开真机 teleop 复位/空间成本** 且接受仿真资产管线 → OASIS。
 
 ---
 
@@ -122,6 +123,7 @@ flowchart TD
 3. **几何重定向 = 可上机**：缺动力学一致化层，脚滑/自碰会进入策略。
 4. **PHUMA 当 AMASS 用**：PHUMA 已重定向且策展，分布更窄但免工程；AMASS 覆盖广但成本自担。
 5. **Humanoid Everyday 当重定向源**：它是机器人执行数据，不解决「人→机器人参考」问题。
+6. **「仿真数据一定不如真机」**： [OASIS](../entities/paper-loco-manip-04-oasis.md) 在 G1 loco-manip 上报告 **等量纯仿真 teleop 可匹配或超过真机 teleop**，但依赖视觉域随机化与资产质量；混合数据往往最优。
 
 ---
 
@@ -145,6 +147,8 @@ flowchart TD
 - [PHUMA 仓库归档](../../sources/repos/phuma.md)
 - [OMOMO 仓库归档](../../sources/repos/omomo_release.md)
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
+- [HIW-500 项目页归档](../../sources/sites/hiw-500-dataset.md)
+- [oasis_humanoid_loco_manip_2606_08548.md](../../sources/papers/oasis_humanoid_loco_manip_2606_08548.md) — OASIS 纯仿真 loco-manip 数据采集（arXiv:2606.08548）
 
 ## 关联页面
 
@@ -157,6 +161,8 @@ flowchart TD
 - [Imitation Learning](../methods/imitation-learning.md) — 仅有演示时的训练范式
 - [跨具身策略迁移选型指南](./cross-embodiment-transfer-strategy.md) — 换机体后的迁移决策
 - [RL vs IL](../comparisons/rl-vs-il.md) — 第 3 层范式分流的总论
+- [OASIS（论文实体）](../entities/paper-loco-manip-04-oasis.md) — 纯仿真 VR teleop + 视觉域随机化 loco-manip 数据管线
+- [Loco-Manipulation](../tasks/loco-manipulation.md) — loco-manip 任务定义与数据路线谱系
 
 ## 一句话记忆
 

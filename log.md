@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/papers/oasis_humanoid_loco_manip_2606_08548.md — 复核 OASIS arXiv:2606.08548 入库；交叉补强 wiki/entities/paper-loco-manip-04-oasis.md、wiki/queries/humanoid-training-data-pipeline.md、wiki/concepts/sim2real.md
+
 ## [2026-06-25] ingest | sources/sites/kyberlabs-ai.md — Kyber Labs 背驱动灵巧手操作平台；wiki/entities/kyber-labs.md；交叉 notable-commercial-robot-platforms、wuji-robotics、allegro-hand
 
 ## [2026-06-25] ingest | sources/sites/wuji_robotics.md — 补正舞肌科技官网 wuji.tech（中/英）与智能数据手套叙事；修正 schema/institutions.json「无界机器人」误标；wiki/entities/wuji-robotics.md

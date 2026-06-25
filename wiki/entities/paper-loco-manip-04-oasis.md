@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, loco-manip-survey, sim2real, teleoperation, flow-matching, domain-randomization, unitree-g1, isaac-sim, teleai]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-25
 arxiv: "2606.08548"
 code: https://github.com/TeleHuman/OASIS
 project: https://oasis-humanoid.github.io/
@@ -22,6 +22,7 @@ related:
   - ./paper-viral-humanoid-visual-sim2real.md
   - ./unitree-g1.md
   - ./isaac-gym-isaac-lab.md
+  - ../queries/humanoid-training-data-pipeline.md
 sources:
   - ../../sources/papers/oasis_humanoid_loco_manip_2606_08548.md
   - ../../sources/papers/loco_manip_survey_04_oasis.md
@@ -189,6 +190,7 @@ flowchart TB
 - [Motion Retargeting (GMR)](../methods/motion-retargeting-gmr.md)
 - [Unitree G1](./unitree-g1.md)
 - [Isaac Gym / Isaac Lab](./isaac-gym-isaac-lab.md)
+- [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 纯仿真 teleop 数据路线选型坐标
 
 ## 实验与评测
 
