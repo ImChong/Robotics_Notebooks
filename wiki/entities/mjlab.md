@@ -3,7 +3,7 @@
 type: entity
 tags: [repo, framework, mujoco, mujoco-warp, isaac-lab-api, reinforcement-learning, gpu-simulation, nvidia, unitree]
 status: complete
-updated: 2026-06-08
+updated: 2026-06-25
 related:
   - ./mujoco.md
   - ./mujoco-playground.md
@@ -16,6 +16,9 @@ related:
   - ./smp-g1-mjlab.md
   - ./unitree-rl-mjlab.md
   - ./asimov-v1.md
+  - ./weights-and-biases.md
+  - ./tensorboard.md
+  - ../comparisons/wandb-vs-tensorboard.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/repos/mjlab.md
@@ -75,7 +78,7 @@ mjlab 架构
 | 速度跟踪 | humanoid / 四足速度指令跟踪，flat / rough terrain |
 | 动作模仿 | 参考运动数据驱动的 motion imitation |
 | 多 GPU 训练 | 分布式 multi-GPU scaling |
-| 实验追踪 | 集成 Weights & Biases |
+| 实验追踪 | 集成 [Weights & Biases](./weights-and-biases.md)（训练期标量本地对照可用 [TensorBoard](./tensorboard.md)） |
 | Dummy agent | 零动作 / 随机动作快速 sanity check |
 
 ## 与其他仿真框架的定位

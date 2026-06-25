@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/weights-and-biases.md + sources/repos/tensorboard.md — W&B / TensorBoard 实体与选型对比；交叉 amp-mjlab、mjlab、robot-policy-debug-playbook
+
 ## [2026-06-25] fix(wiki): 修复 DAgger / BC 页 LaTeX 中 `\theta` 被制表符破坏导致 KaTeX 渲染失败
 
 - 根因：`wiki/methods/dagger.md`、`wiki/methods/behavior-cloning.md` 中 `\theta` 的 `\t` 被存成字面制表符，KaTeX 将 `_heta` 当作无效下标
