@@ -4564,7 +4564,18 @@
         if (pl === undefined) { pl = doc._path_l = String(doc.path || '').toLowerCase(); }
         if (pl.indexOf(token) >= 0) score += 5;
 
-        if (ts === undefined) { ts = doc._tagsStr = '\n' + (doc.tags || []).join('\n').toLowerCase() + '\n'; }
+        if (ts === undefined) {
+          var _tags = doc.tags;
+          if (_tags && _tags.length > 0) {
+            var _tsStr = '\n';
+            for (var _j = 0; _j < _tags.length; _j++) {
+              _tsStr += _tags[_j] + '\n';
+            }
+            ts = doc._tagsStr = _tsStr.toLowerCase();
+          } else {
+            ts = doc._tagsStr = '\n';
+          }
+        }
         if (ts.indexOf(token) >= 0) score += 4;
 
         if (sl === undefined) { sl = doc._summary_l = String(doc.summary || '').toLowerCase(); }

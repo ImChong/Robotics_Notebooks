@@ -89,3 +89,7 @@
 ## 2026-06-22 - Avoid .map().join('') in Frontend Render Card Logic
 **Learning:** In frontend JavaScript processing arrays into HTML strings (like `matched.map(item => buildResultCardHtml(item)).join('')` in `docs/main.js`), chaining `.map()` and `.join('')` allocates intermediate arrays and function closures for every iteration. When used inside hot paths like search result rendering or card building, it creates unnecessary memory pressure and garbage collection overhead.
 **Action:** When mapping arrays into dynamic HTML strings, replace the `.map().join('')` pattern with a standard `for` loop that uses direct string concatenation (e.g., `var html = ''; for (var i = 0; i < items.length; i++) html += ...;`). This avoids both closure allocation and the creation of large intermediate arrays.
+
+## 2023-10-25 - Avoid `.join()` string concatenation in JavaScript Hot Paths
+**Learning:** In JavaScript (specifically frontend `docs/main.js`), generating delimited strings from arrays lazily via `(doc.tags || []).join('\n')` inside hot query/iteration loops incurs unnecessary memory allocations and CPU overhead compared to standard `for` loop concatenation. This array `.join()` operation was identified as a major bottleneck in the `substringScore` frontend search loop.
+**Action:** When dynamically generating strings from literal arrays or collections in hot paths, directly concatenate the items using a `for` loop with `+=` instead of creating intermediate allocations through `.join()`.
