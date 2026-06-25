@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] structural | AMP 专题 19 篇占位页批量深化收口 — 总览局限段更新为「深读实体页」
+
+- 变更：[humanoid-amp-motion-prior-survey.md](wiki/overview/humanoid-amp-motion-prior-survey.md) 不再将 19 篇标为「策展索引级」；#01–#19 均已 MoRE/CLOT 级深读（#08/#16 先行，#01–#07/#09–#15/#17–#19 本日批次完成）
+
 ## [2026-06-25] ingest | AMP 专题 #01–#12 batch deepen — 12 实体页 MoRE/CLOT 级深读 + 策展 source 深读指针 + 5 篇 arXiv/MDPI 归档
 
 - 升格实体（#01–#07、#09–#12）：[paper-amp-survey-01-amp](wiki/entities/paper-amp-survey-01-amp.md)、[paper-amp-survey-02-physics_based_motion_imitation_with](wiki/entities/paper-amp-survey-02-physics_based_motion_imitation_with.md)、[paper-amp-survey-03-smp](wiki/entities/paper-amp-survey-03-smp.md)、[paper-amp-survey-04-kimodo](wiki/entities/paper-amp-survey-04-kimodo.md)、[paper-amp-survey-05-motionbricks](wiki/entities/paper-amp-survey-05-motionbricks.md)、[paper-amp-survey-06-natural_humanoid_robot_locomotion_wi](wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[paper-amp-survey-07-adversarial_locomotion_and_motion_im](wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)、[paper-hiking-in-the-wild](wiki/entities/paper-hiking-in-the-wild.md)、[paper-amp-survey-10-unified_walking_running_and_recovery](wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md)、[paper-adaptive-humanoid-control](wiki/entities/paper-adaptive-humanoid-control.md)、[paper-amp-survey-12-haml](wiki/entities/paper-amp-survey-12-haml.md)
