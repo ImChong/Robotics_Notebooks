@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, amp, motion-prior, adversarial-imitation, locomotion, survey, rl]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-25
 related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ../methods/amp-reward.md

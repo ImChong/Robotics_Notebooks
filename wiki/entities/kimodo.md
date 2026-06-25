@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, diffusion, motion-generation, humanoid, nvidia, unitree-g1, soma, smpl-x, text-to-motion]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-25
 related:
   - ../methods/diffusion-motion-generation.md
   - ../methods/motionbricks.md
