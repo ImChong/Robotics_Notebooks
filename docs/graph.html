@@ -281,6 +281,7 @@
       outline: none;
     }
     #graph-canvas-3d[hidden] { display: none !important; }
+    #graph-canvas-3d .scene-nav-info { display: none !important; }
 
     /* dot-grid overlay (CSS only) */
     #graph-wrap::before {
@@ -568,8 +569,8 @@
       }
     }
 
-    /* ── 提示条 ── */
-    #graph-hint {
+    /* ── 提示条（2D / 3D 互斥，同位置切换）── */
+    .graph-hint {
       position: absolute;
       bottom: 20px; right: 20px;
       z-index: 10;
@@ -577,7 +578,9 @@
       color: rgba(255,255,255,0.2);
       text-align: right;
       line-height: 1.7;
+      pointer-events: none;
     }
+    .graph-hint[hidden] { display: none !important; }
 
     /* ── SVG 节点动画 ── */
     .node-circle { transition: r .15s, fill-opacity .15s; }
@@ -760,7 +763,7 @@
     }
     [data-theme="light"] .timeline-scrub-label { color: rgba(0,0,0,0.45); }
     /* 提示文字 */
-    [data-theme="light"] #graph-hint { color: rgba(0,0,0,0.22); }
+    [data-theme="light"] .graph-hint { color: rgba(0,0,0,0.22); }
 
     /* ── 筛选面板（白天模式）── */
     [data-theme="light"] .filter-panel {
@@ -1659,8 +1662,11 @@
       <div class="filter-resize-handle filter-resize-se" role="separator" aria-label="拖拽右下角调整面板大小" tabindex="-1"></div>
     </div>
 
-    <div id="graph-hint">
+    <div id="graph-hint-2d" class="graph-hint">
       滚轮缩放 · 拖拽平移<br>点击节点查看详情
+    </div>
+    <div id="graph-hint-3d" class="graph-hint" hidden>
+      拖拽旋转 · 滚轮缩放<br>点击节点查看详情
     </div>
   </div>
 
@@ -2047,15 +2053,15 @@
     const graphCanvas3d = document.getElementById('graph-canvas-3d');
     const viewMode2dBtn = document.getElementById('view-mode-2d');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
-    const graphHintEl = document.getElementById('graph-hint');
+    const graphHint2dEl = document.getElementById('graph-hint-2d');
+    const graphHint3dEl = document.getElementById('graph-hint-3d');
 
     function is3DView() { return spatialViewMode === '3d'; }
 
     function updateGraphHint() {
-      if (!graphHintEl) return;
-      graphHintEl.innerHTML = is3DView()
-        ? '拖拽旋转 · 滚轮缩放<br>点击节点查看详情'
-        : '滚轮缩放 · 拖拽平移<br>点击节点查看详情';
+      const in3d = is3DView();
+      if (graphHint2dEl) graphHint2dEl.hidden = in3d;
+      if (graphHint3dEl) graphHint3dEl.hidden = !in3d;
     }
 
     function updateViewModeButtons() {
