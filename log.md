@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md — LHBS Imitation-to-Interaction 四阶段羽毛球技能；升格 wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
+
 ## [2026-06-25] ingest | sources/repos/tensorrt-official.md + openvino-official.md + ncnn-official.md — 补全 TensorRT 实体并扩展 OpenVINO/ncnn 与机载推理选型对比
 
 - 原始资料：[tensorrt-official.md](sources/repos/tensorrt-official.md)、[openvino-official.md](sources/repos/openvino-official.md)、[ncnn-official.md](sources/repos/ncnn-official.md)
