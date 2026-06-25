@@ -13,6 +13,23 @@
     return typeof endpoint === 'object' ? endpoint.id : endpoint;
   }
 
+  /**
+   * 页面加载的是 2D 版 d3（含 forceX/forceY，但无 forceZ），3d-force-graph 内部
+   * 的 d3-force-3d 又不对外暴露。手写一个等价的 z 轴定向力供磁吸布局使用。
+   */
+  function createForceZ(getZ, strength) {
+    var nodesRef = [];
+    function force(alpha) {
+      for (var i = 0; i < nodesRef.length; i++) {
+        var n = nodesRef[i];
+        if (n.z == null) continue;
+        n.vz += (getZ(n) - n.z) * strength * alpha;
+      }
+    }
+    force.initialize = function (ns) { nodesRef = ns; };
+    return force;
+  }
+
   function cloneNodeFor3D(source) {
     var copy = Object.assign({}, source);
     if (source._info) copy._info = Object.assign({}, source._info);
@@ -120,6 +137,18 @@
     }
     rebuildNodeIndex();
 
+    // 预建邻接表：edges 在视图生命周期内不变，构建一次即可。
+    // 避免 isNeighborOf 在每次 hover 刷新时对每个节点都全量遍历边（O(N×E)）。
+    var adjacency = new Map();
+    edges.forEach(function (e) {
+      var s = edgeEndpointId(e.source);
+      var t = edgeEndpointId(e.target);
+      if (!adjacency.has(s)) adjacency.set(s, new Set());
+      if (!adjacency.has(t)) adjacency.set(t, new Set());
+      adjacency.get(s).add(t);
+      adjacency.get(t).add(s);
+    });
+
     function backgroundColor() {
       return isDark() ? '#0d1117' : '#eef2f7';
     }
@@ -156,14 +185,8 @@
     }
 
     function isNeighborOf(nodeId, otherId) {
-      for (var i = 0; i < edges.length; i++) {
-        var e = edges[i];
-        var s = edgeEndpointId(e.source);
-        var t = edgeEndpointId(e.target);
-        if (s === nodeId && t === otherId) return true;
-        if (t === nodeId && s === otherId) return true;
-      }
-      return false;
+      var set = adjacency.get(nodeId);
+      return set ? set.has(otherId) : false;
     }
 
     function linkOpacityFor(l) {
@@ -224,8 +247,11 @@
     }
 
     function nodeValFor(d) {
+      // 自定义 mesh 安装前（最初约 700ms）由 3d-force-graph 默认球体渲染，
+      // 其半径 = cbrt(nodeVal) × nodeRelSize。配合 nodeRelSize(1) 取 radius³，
+      // 使默认球体半径恰为 sphereRadiusFor，避免进入 3D 瞬间“大球→骤缩”的跳变。
       var radius = sphereRadiusFor(d);
-      return radius * radius;
+      return radius * radius * radius;
     }
 
     function createNodeMesh(d) {
@@ -298,7 +324,6 @@
       }
       var centers = magneticConfig.centers || {};
       var getKey = magneticConfig.getKey || function () { return ''; };
-      var forceZ = window.d3 && window.d3.forceZ;
       graph.d3Force('x', window.d3.forceX(function (d) {
         var key = getKey(d);
         return centers[key] ? centers[key].x : 0;
@@ -307,14 +332,10 @@
         var key = getKey(d);
         return centers[key] ? centers[key].y : 0;
       }).strength(0.18));
-      if (forceZ) {
-        graph.d3Force('z', forceZ(function (d) {
-          var key = getKey(d);
-          return centers[key] ? centers[key].z : 0;
-        }).strength(0.18));
-      } else {
-        graph.d3Force('z', null);
-      }
+      graph.d3Force('z', createForceZ(function (d) {
+        var key = getKey(d);
+        return centers[key] ? centers[key].z : 0;
+      }, 0.18));
     }
 
     function syncPositionsFromSource() {
@@ -348,7 +369,7 @@
       .showNavInfo(false)
       .warmupTicks(40)
       .nodeId('id')
-      .nodeRelSize(14)
+      .nodeRelSize(1)
       .nodeResolution(24)
       .nodeColor(function (d) { return getNodeColor(d); })
       .nodeVal(nodeValFor)
