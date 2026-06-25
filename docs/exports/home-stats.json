@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
       "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
       "label": "人形机器人 AMP：运动先验综述视角",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-19-embrace_collisions.md",
-      "detail_id": "entity-paper-amp-survey-19-embrace_collisions",
-      "label": "Embrace Collisions：可部署的接触无关人形 Shadowing",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-amp-motion-prior-survey.md",
-    "detail_id": "wiki-overview-humanoid-amp-motion-prior-survey",
-    "label": "人形机器人 AMP：运动先验综述视角",
-    "type": "overview",
+    "path": "wiki/concepts/whole-body-tracking-pipeline.md",
+    "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
+    "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
+    "type": "concept",
     "recency": "2026-06-25",
     "source": "log.md"
   }
