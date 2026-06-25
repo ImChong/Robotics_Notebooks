@@ -77,6 +77,8 @@ flowchart LR
 
 - [ONNX](./onnx.md)
 - [ONNX Runtime](./onnxruntime.md)
+- [TensorRT](./tensorrt.md)
+- [ncnn](./ncnn.md)
 - [PyTorch](./pytorch.md)
 - [TensorFlow](./tensorflow.md)
 - [Sim2Real](../concepts/sim2real.md)

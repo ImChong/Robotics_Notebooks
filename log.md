@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/repos/tensorrt-official.md + openvino-official.md + ncnn-official.md — 补全 TensorRT 实体并扩展 OpenVINO/ncnn 与机载推理选型对比
+
+- 原始资料：[tensorrt-official.md](sources/repos/tensorrt-official.md)、[openvino-official.md](sources/repos/openvino-official.md)、[ncnn-official.md](sources/repos/ncnn-official.md)
+- 升格实体：[tensorrt.md](wiki/entities/tensorrt.md)、[openvino.md](wiki/entities/openvino.md)、[ncnn.md](wiki/entities/ncnn.md)
+- 更新对比：[onnxruntime-vs-mnn-vs-tensorrt.md](wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)（延伸 LiteRT/ExecuTorch/LibTorch 一览）
+- 交叉更新：[onnx.md](wiki/entities/onnx.md)、[onnxruntime.md](wiki/entities/onnxruntime.md)、[mnn.md](wiki/entities/mnn.md)
+
 ## [2026-06-25] ingest | sources/repos/onnx-official.md + onnxruntime-official.md + mnn-official.md — 接入 ONNX/MNN 一手资料并升格实体与 runtime 选型对比
 
 - 原始资料：[onnx-official.md](sources/repos/onnx-official.md)、[onnxruntime-official.md](sources/repos/onnxruntime-official.md)、[mnn-official.md](sources/repos/mnn-official.md)

@@ -77,7 +77,9 @@ flowchart LR
 ## 关联页面
 
 - [ONNX](./onnx.md)
+- [TensorRT](./tensorrt.md)
 - [MNN](./mnn.md)
+- [OpenVINO](./openvino.md)
 - [PyTorch](./pytorch.md)
 - [AMP_mjlab](./amp-mjlab.md)
 - [jackhan-feap-mujoco-deployment](./jackhan-feap-mujoco-deployment.md)

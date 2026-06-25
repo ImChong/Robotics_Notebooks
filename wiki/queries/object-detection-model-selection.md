@@ -2,7 +2,7 @@
 type: query
 tags: [object-detection, perception, computer-vision, real-time, yolo, faster-rcnn, robotics, deployment]
 status: complete
-updated: 2026-06-22
+updated: 2026-06-25
 summary: "目标检测模型选型 Query：从「机载实时 vs 服务器侧高精度」「单阶段 vs 两阶段 / 实时 DETR」「2D 框够不够 vs 要不要级联位姿」三轴出发，给出机器人感知栈里检测器的选型逻辑、部署陷阱与组合 pipeline。"
 related:
   - ../methods/object-detection.md

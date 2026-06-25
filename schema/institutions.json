@@ -97,6 +97,13 @@
         "thu"
       ]
     },
+    "tencent": {
+      "label": "腾讯（Tencent）",
+      "aliases": [
+        "tencent",
+        "ncnn"
+      ]
+    },
     "pku": {
       "label": "北京大学（PKU）",
       "aliases": [
@@ -212,6 +219,13 @@
       "label": "法国国家信息与自动化研究所（INRIA）",
       "aliases": [
         "inria"
+      ]
+    },
+    "intel": {
+      "label": "英特尔（Intel）",
+      "aliases": [
+        "intel",
+        "openvino"
       ]
     },
     "toyota-research": {

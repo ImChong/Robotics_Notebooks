@@ -47,7 +47,7 @@ updated: 2026-06-25
 - **人形 RL / tracking**：[Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) 真机层普遍写「**ONNX / TensorRT @ ~50 Hz**」；策略冻结，观测构造需与训练 **字节级一致**。
 - **感知**：[RF-DETR](./rf-detr.md) 等工作流 `model.export(format="onnx")` 后再接 TensorRT/Jetson。
 - **浏览器 Demo**：[BotLab MotionCanvas](../entities/botlab-motioncanvas.md) 用 **ONNX Runtime WASM/WebGPU** 在浏览器跑 policy。
-- **格式 ≠ 运行时**：`.onnx` 文件需由 [ONNX Runtime](./onnxruntime.md)、TensorRT、MNN 等 **执行**；选型见 [ONNX Runtime vs MNN vs TensorRT](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)。
+- **格式 ≠ 运行时**：`.onnx` 文件需由 [ONNX Runtime](./onnxruntime.md)、[TensorRT](./tensorrt.md)、[MNN](./mnn.md) 等 **执行**；选型见 [机载推理 Runtime 选型](../comparisons/onnxruntime-vs-mnn-vs-tensorrt.md)。
 
 ## 常见误区或局限
 
@@ -76,6 +76,7 @@ flowchart LR
 ## 关联页面
 
 - [ONNX Runtime](./onnxruntime.md)
+- [TensorRT](./tensorrt.md)
 - [MNN](./mnn.md)
 - [PyTorch](./pytorch.md)
 - [TensorFlow](./tensorflow.md)

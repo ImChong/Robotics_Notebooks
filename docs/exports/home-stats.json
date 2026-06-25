@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1333,
-  "edge_count": 9074,
+  "node_count": 1336,
+  "edge_count": 9109,
   "coverage": {
-    "covered": 1302,
-    "total": 1331,
+    "covered": 1305,
+    "total": 1334,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tensorrt.md",
+      "detail_id": "entity-tensorrt",
+      "label": "TensorRT",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/openvino.md",
+      "detail_id": "entity-openvino",
+      "label": "OpenVINO",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/ncnn.md",
+      "detail_id": "entity-ncnn",
+      "label": "ncnn",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md",
+      "detail_id": "wiki-comparisons-onnxruntime-vs-mnn-vs-tensorrt",
+      "label": "ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）",
+      "type": "comparison",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/onnx.md",
       "detail_id": "entity-onnx",
@@ -29,14 +61,6 @@
       "detail_id": "entity-mnn",
       "label": "MNN",
       "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md",
-      "detail_id": "wiki-comparisons-onnxruntime-vs-mnn-vs-tensorrt",
-      "label": "ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）",
-      "type": "comparison",
       "recency": "2026-06-25",
       "source": "log.md"
     },
@@ -143,36 +167,12 @@
       "type": "method",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/extreme-parkour.md",
-      "detail_id": "entity-extreme-parkour",
-      "label": "Extreme Parkour（端到端四足感知跑酷）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-bfm-04-fast-imitation-bfm.md",
-      "detail_id": "entity-paper-bfm-04-fast-imitation-bfm",
-      "label": "Fast Imitation via Behavior Foundation Models",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/onnx.md",
-    "detail_id": "entity-onnx",
-    "label": "ONNX",
+    "path": "wiki/entities/tensorrt.md",
+    "detail_id": "entity-tensorrt",
+    "label": "TensorRT",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
