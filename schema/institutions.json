@@ -323,7 +323,7 @@
       ]
     },
     "weights-and-biases": {
-      "label": "Weights & Biases（W&B）",
+      "label": "权重与偏置（Weights & Biases）",
       "aliases": [
         "weights-and-biases",
         "wandb",
