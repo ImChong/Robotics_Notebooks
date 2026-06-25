@@ -3,7 +3,7 @@
 type: entity
 tags: [humanoid, robocup, ros2, booster-robotics, perception, rl, booster]
 status: drafting
-updated: 2026-04-27
+updated: 2026-06-25
 related:
   - ./robot-lab.md
   - ../concepts/ros2-basics.md
