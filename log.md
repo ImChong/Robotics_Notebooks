@@ -1,5 +1,18 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | AMP 专题 #13–#19 深读（Goalkeeper/HUSKY/PhysHSI/TeamHOI/Deep Parkour/Embrace Collisions）— 6 篇 arXiv source + 6 实体页；策展 source 交叉链接
+
+- arXiv 深读：[humanoid_goalkeeper_arxiv_2510_18002.md](sources/papers/humanoid_goalkeeper_arxiv_2510_18002.md)、[husky_humanoid_skateboarding_arxiv_2602_03205.md](sources/papers/husky_humanoid_skateboarding_arxiv_2602_03205.md)、[physhsi_arxiv_2510_11072.md](sources/papers/physhsi_arxiv_2510_11072.md)、[teamhoi_arxiv_2603_07988.md](sources/papers/teamhoi_arxiv_2603_07988.md)、[deep_whole_body_parkour_arxiv_2601_07701.md](sources/papers/deep_whole_body_parkour_arxiv_2601_07701.md)、[embrace_collisions_arxiv_2502_01465.md](sources/papers/embrace_collisions_arxiv_2502_01465.md)
+- 升格实体：[paper-amp-survey-13-humanoid_goalkeeper](wiki/entities/paper-amp-survey-13-humanoid_goalkeeper.md)、[paper-amp-survey-14-husky](wiki/entities/paper-amp-survey-14-husky.md)、[paper-amp-survey-15-physhsi](wiki/entities/paper-amp-survey-15-physhsi.md)、[paper-amp-survey-17-teamhoi](wiki/entities/paper-amp-survey-17-teamhoi.md)、[paper-deep-whole-body-parkour](wiki/entities/paper-deep-whole-body-parkour.md)、[paper-amp-survey-19-embrace_collisions](wiki/entities/paper-amp-survey-19-embrace_collisions.md)
+- 策展索引补强：`humanoid_amp_survey_13`–`19`（含 #18）、[humanoid_rl_stack_23_deep_whole_body_parkour](sources/papers/humanoid_rl_stack_23_deep_whole_body_parkour.md)
+
+## [2026-06-25] ingest | sources/papers/gmp_generative_motion_prior_arxiv_2503_09015.md 等 — AMP 专题 #06 GMP、#07 ALMI、#09 Hiking、#10 SD-AMP 索引、#11 AHC、#12 HAML 深读实体与 arXiv/MDPI 归档；交叉 humanoid-amp-motion-prior-survey
+
+- 原始资料：[gmp_generative_motion_prior_arxiv_2503_09015.md](sources/papers/gmp_generative_motion_prior_arxiv_2503_09015.md)、[almi_adversarial_locomotion_motion_imitation_arxiv_2504_14305.md](sources/papers/almi_adversarial_locomotion_motion_imitation_arxiv_2504_14305.md)、[hiking_in_the_wild_arxiv_2601_07718.md](sources/papers/hiking_in_the_wild_arxiv_2601_07718.md)、[adaptive_humanoid_control_ahc_arxiv_2511_06371.md](sources/papers/adaptive_humanoid_control_ahc_arxiv_2511_06371.md)、[haml_humanoid_adversarial_multi_skill_learning_mdpi_2026.md](sources/papers/haml_humanoid_adversarial_multi_skill_learning_mdpi_2026.md)
+- 升格实体：[wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md](wiki/entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md)、[wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md](wiki/entities/paper-amp-survey-07-adversarial_locomotion_and_motion_im.md)、[wiki/entities/paper-hiking-in-the-wild.md](wiki/entities/paper-hiking-in-the-wild.md)、[wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md](wiki/entities/paper-amp-survey-10-unified_walking_running_and_recovery.md)、[wiki/entities/paper-adaptive-humanoid-control.md](wiki/entities/paper-adaptive-humanoid-control.md)、[wiki/entities/paper-amp-survey-12-haml.md](wiki/entities/paper-amp-survey-12-haml.md)
+- 策展索引补强：humanoid_amp_survey_06/07/09/10/11/12
+- SD-AMP 深读页（既有）：[wiki/entities/paper-unified-walk-run-recovery-sdamp.md](wiki/entities/paper-unified-walk-run-recovery-sdamp.md)
+
 ## [2026-06-25] ingest | sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md — 补完成 MoRE（AMP #08）深读；wiki/entities/paper-amp-survey-08-more.md；交叉 amp-reward、terrain-adaptation、explicit-stair-geometry、locomotion
 
 - 原始资料：[more_mixture_residual_experts_arxiv_2506_08840.md](sources/papers/more_mixture_residual_experts_arxiv_2506_08840.md) — arXiv:2506.08840 + 项目页
