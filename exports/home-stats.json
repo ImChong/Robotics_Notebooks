@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-25",
-  "node_count": 1328,
-  "edge_count": 9010,
+  "node_count": 1329,
+  "edge_count": 9018,
   "coverage": {
-    "covered": 1297,
-    "total": 1326,
+    "covered": 1298,
+    "total": 1327,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tensorflow.md",
+      "detail_id": "entity-tensorflow",
+      "label": "TensorFlow",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/deep-learning-foundations.md",
+      "detail_id": "wiki-concepts-deep-learning-foundations",
+      "label": "深度学习基础 (Deep Learning Foundations)",
+      "type": "concept",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/pytorch.md",
+      "detail_id": "entity-pytorch",
+      "label": "PyTorch",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/htwk-gym.md",
+      "detail_id": "wiki-methods-htwk-gym",
+      "label": "htwk-gym",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/weights-and-biases.md",
       "detail_id": "entity-weights-and-biases",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-rl-motion-control-body-system-stack.md",
-      "detail_id": "wiki-overview-humanoid-rl-motion-control-body-system-stack",
-      "label": "人形机器人 RL 运动控制：身体系统栈视角",
-      "type": "overview",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/tairan-he.md",
-      "detail_id": "entity-tairan-he",
-      "label": "Tairan He（何泰然）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/yanjie-ze.md",
-      "detail_id": "entity-yanjie-ze",
-      "label": "Yanjie Ze（迮炎杰）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/motion-retargeting-gmr.md",
-      "detail_id": "wiki-methods-motion-retargeting-gmr",
-      "label": "GMR: 通用动作重定向",
-      "type": "method",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/weights-and-biases.md",
-    "detail_id": "entity-weights-and-biases",
-    "label": "Weights & Biases（W&B）",
+    "path": "wiki/entities/tensorflow.md",
+    "detail_id": "entity-tensorflow",
+    "label": "TensorFlow",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
