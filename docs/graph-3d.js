@@ -2,8 +2,8 @@
   'use strict';
 
   /**
-   * 知识图谱 3D 视图封装（基于 3d-force-graph / Three.js）。
-   * 由 graph.html 在切换到 3D 模式时初始化；与 2D 力模拟共享 nodes 数组。
+   * 知识图谱 3D 视图（3d-force-graph）。
+   * 使用独立节点副本，避免与 2D d3 力模拟争用节点对象。
    */
   function isAvailable() {
     return typeof window.ForceGraph3D === 'function';
@@ -13,12 +13,42 @@
     return typeof endpoint === 'object' ? endpoint.id : endpoint;
   }
 
+  function cloneNodeFor3D(source) {
+    var copy = Object.assign({}, source);
+    if (source._info) copy._info = Object.assign({}, source._info);
+    copy.x = source.x != null ? source.x : (Math.random() - 0.5) * 80;
+    copy.y = source.y != null ? source.y : (Math.random() - 0.5) * 80;
+    copy.z = source.z != null ? source.z : (Math.random() - 0.5) * 80;
+    copy.vx = 0;
+    copy.vy = 0;
+    copy.vz = 0;
+    copy.fx = null;
+    copy.fy = null;
+    copy.fz = null;
+    return copy;
+  }
+
+  function measureContainerSize(container) {
+    var w = container.clientWidth;
+    var h = container.clientHeight;
+    if (w > 0 && h > 0) return { width: w, height: h };
+    var wrap = container.parentElement;
+    if (wrap) {
+      w = wrap.clientWidth;
+      h = wrap.clientHeight;
+    }
+    return {
+      width: Math.max(w || 0, 1200),
+      height: Math.max(h || 0, 800),
+    };
+  }
+
   function create(opts) {
     if (!isAvailable()) return null;
     opts = opts || {};
 
     var container = opts.container;
-    var nodes = opts.nodes || [];
+    var sourceNodes = opts.nodes || [];
     var edges = opts.edges || [];
     var getNodeColor = opts.getNodeColor || function () { return '#64748b'; };
     var getNodeRadius = opts.getNodeRadius || function () { return 6; };
@@ -27,20 +57,27 @@
     var isDark = opts.isDark || function () { return true; };
     var onNodeClick = opts.onNodeClick;
     var onNodeHover = opts.onNodeHover;
+    var onPointerMove = opts.onPointerMove;
     var getVisibleNodeIds = opts.getVisibleNodeIds || function () { return new Set(); };
     var hasActiveFilter = opts.hasActiveFilter || function () { return false; };
     var edgeHighlightsWithNode = opts.edgeHighlightsWithNode;
     var getChargeStrength = opts.getChargeStrength || function () { return -800; };
     var getMagneticConfig = opts.getMagneticConfig || function () { return null; };
+    var resolveSourceNode = opts.resolveSourceNode || function (id) {
+      return sourceNodes.find(function (n) { return n.id === id; });
+    };
 
+    var nodes3d = sourceNodes.map(cloneNodeFor3D);
     var sidebarNodeId = null;
     var sidebarDirect = new Set();
     var sidebarSecondary = new Set();
     var hoverNodeId = null;
     var nodeById = new Map();
+    var lastPointer = { clientX: 0, clientY: 0 };
+    var size = measureContainerSize(container);
 
     function rebuildNodeIndex() {
-      nodeById = new Map(nodes.map(function (n) { return [n.id, n]; }));
+      nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
     }
     rebuildNodeIndex();
 
@@ -65,21 +102,16 @@
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
-
       if (sidebarNodeId) {
         if (d.id === sidebarNodeId || sidebarDirect.has(d.id)) return 1;
         if (sidebarSecondary.has(d.id)) return 0.4;
         return 0.05;
       }
-
       if (hoverNodeId) {
-        if (!filtered) {
-          return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
-        }
+        if (!filtered) return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
         if (!ok) return 0.08;
         return hoverNodeId === d.id || isNeighborOf(hoverNodeId, d.id) ? 1 : 0.15;
       }
-
       if (!filtered) return 1;
       return ok ? 1 : 0.08;
     }
@@ -100,27 +132,20 @@
       var t = edgeEndpointId(l.target);
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
-
       if (sidebarNodeId && edgeHighlightsWithNode) {
         var ref = l._ref;
         if (!ref) return 0.18;
-        if (!filtered) {
-          return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.85 : 0.18;
-        }
+        if (!filtered) return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.85 : 0.18;
         if (!visible.has(s) || !visible.has(t)) return 0.18;
         return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.85 : 0.18;
       }
-
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode) {
-          return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.7 : 0.3;
-        }
+        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.7 : 0.3;
       }
-
-      if (!filtered) return 0.55;
-      if (!visible.has(s) || !visible.has(t)) return 0.12;
-      return 0.55;
+      if (!filtered) return 0.35;
+      if (!visible.has(s) || !visible.has(t)) return 0.08;
+      return 0.35;
     }
 
     function linkColorFor(l) {
@@ -142,67 +167,31 @@
     }
 
     function linkWidthFor(l) {
-      var base = getLinkWidth();
+      var base = getLinkWidth() * 0.4;
       if (sidebarNodeId) {
         var ref = l._ref;
-        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) {
-          return base * 1.5;
-        }
+        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 1.5;
       }
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) {
-          return base * 1.8;
-        }
+        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 1.8;
       }
       return base;
     }
 
-    nodes.forEach(function (n) {
-      if (n.z == null) n.z = (Math.random() - 0.5) * 40;
-    });
-
-    var graph = window.ForceGraph3D()(container)
-      .graphData({ nodes: nodes, links: buildLinks() })
-      .backgroundColor(backgroundColor())
-      .showNavInfo(false)
-      .nodeId('id')
-      .nodeLabel(function (d) {
-        return (d._info && d._info.title) || d.label || d.id;
-      })
-      .nodeColor(function (d) { return getNodeColor(d); })
-      .nodeVal(function (d) {
-        var r = getNodeRadius(d);
-        return Math.max(0.5, (r * r) / 16);
-      })
-      .nodeOpacity(function (d) { return nodeOpacityFor(d); })
-      .linkColor(function (l) { return linkColorFor(l); })
-      .linkWidth(function (l) { return linkWidthFor(l); })
-      .linkOpacity(function (l) { return linkOpacityFor(l); })
-      .linkDirectionalParticles(0)
-      .enableNodeDrag(true)
-      .onNodeClick(function (node, ev) {
-        if (onNodeClick) onNodeClick(node, ev);
-      })
-      .onNodeHover(function (node, ev) {
-        hoverNodeId = node ? node.id : null;
-        refreshAppearance();
-        if (onNodeHover) onNodeHover(node, ev);
-      })
-      .onBackgroundClick(function () {
-        hoverNodeId = null;
-        refreshAppearance();
-        if (opts.onBackgroundClick) opts.onBackgroundClick();
-      });
-
-    var chargeForce = graph.d3Force('charge');
-    if (chargeForce && chargeForce.strength) {
-      chargeForce.strength(getChargeStrength());
+    function nodeValFor(d) {
+      var r = getNodeRadius(d);
+      return Math.max(5, Math.pow(r / 2.4, 1.35));
     }
-    var linkForce = graph.d3Force('link');
-    if (linkForce) {
-      if (linkForce.distance) linkForce.distance(80);
-      if (linkForce.strength) linkForce.strength(0.35);
+
+    function refreshAppearance() {
+      graph
+        .nodeColor(function (d) { return getNodeColor(d); })
+        .nodeVal(nodeValFor)
+        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+        .linkColor(function (l) { return linkColorFor(l); })
+        .linkWidth(function (l) { return linkWidthFor(l); })
+        .linkOpacity(function (l) { return linkOpacityFor(l); });
     }
 
     function applyMagneticForces() {
@@ -213,11 +202,9 @@
         graph.d3Force('z', null);
         return;
       }
-
       var centers = magneticConfig.centers || {};
       var getKey = magneticConfig.getKey || function () { return ''; };
       var forceZ = window.d3 && window.d3.forceZ;
-
       graph.d3Force('x', window.d3.forceX(function (d) {
         var key = getKey(d);
         return centers[key] ? centers[key].x : 0;
@@ -236,49 +223,81 @@
       }
     }
 
-    function refreshAppearance() {
-      graph
-        .nodeColor(function (d) { return getNodeColor(d); })
-        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
-        .linkColor(function (l) { return linkColorFor(l); })
-        .linkWidth(function (l) { return linkWidthFor(l); })
-        .linkOpacity(function (l) { return linkOpacityFor(l); });
+    function syncPositionsFromSource() {
+      sourceNodes.forEach(function (src) {
+        var n3 = nodeById.get(src.id);
+        if (!n3) return;
+        if (src.x != null) n3.x = src.x;
+        if (src.y != null) n3.y = src.y;
+      });
     }
 
-    function randomizePositions() {
-      for (var i = 0; i < nodes.length; i++) {
-        var n = nodes[i];
-        n.fx = null;
-        n.fy = null;
-        n.fz = null;
-        n.vx = 0;
-        n.vy = 0;
-        n.vz = 0;
-        n.x = (Math.random() - 0.5) * 160;
-        n.y = (Math.random() - 0.5) * 160;
-        n.z = (Math.random() - 0.5) * 160;
-      }
+    function syncViewport() {
+      var next = measureContainerSize(container);
+      graph.width(next.width);
+      graph.height(next.height);
     }
+
+    function onContainerPointerMove(ev) {
+      lastPointer.clientX = ev.clientX;
+      lastPointer.clientY = ev.clientY;
+      if (onPointerMove) onPointerMove(ev);
+    }
+    container.addEventListener('mousemove', onContainerPointerMove);
+    container.addEventListener('pointermove', onContainerPointerMove);
+
+    var graph = window.ForceGraph3D()(container)
+      .width(size.width)
+      .height(size.height)
+      .graphData({ nodes: nodes3d, links: buildLinks() })
+      .backgroundColor(backgroundColor())
+      .nodeId('id')
+      .nodeRelSize(8)
+      .nodeResolution(24)
+      .nodeColor(function (d) { return getNodeColor(d); })
+      .nodeVal(nodeValFor)
+      .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+      .linkColor(function (l) { return linkColorFor(l); })
+      .linkWidth(function (l) { return linkWidthFor(l); })
+      .linkOpacity(function (l) { return linkOpacityFor(l); })
+      .enableNodeDrag(true)
+      .onNodeClick(function (node, ev) {
+        var src = resolveSourceNode(node.id) || node;
+        if (onNodeClick) onNodeClick(src, ev || lastPointer);
+      })
+      .onNodeHover(function (node) {
+        hoverNodeId = node ? node.id : null;
+        refreshAppearance();
+        var src = node ? (resolveSourceNode(node.id) || node) : null;
+        if (onNodeHover) onNodeHover(src, lastPointer);
+      })
+      .onBackgroundClick(function () {
+        hoverNodeId = null;
+        refreshAppearance();
+        if (opts.onBackgroundClick) opts.onBackgroundClick();
+      });
+
+    var chargeForce = graph.d3Force('charge');
+    if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
 
     return {
       show: function () {
         container.hidden = false;
-        graph.width(container.clientWidth);
-        graph.height(container.clientHeight);
+        syncPositionsFromSource();
+        syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
-        graph.resumeAnimation();
+        var self = this;
+        window.setTimeout(function () { self.fitToScreen(700); }, 1000);
       },
 
       hide: function () {
         container.hidden = true;
-        graph.pauseAnimation();
       },
 
       resize: function () {
         if (container.hidden) return;
-        graph.width(container.clientWidth);
-        graph.height(container.clientHeight);
+        syncViewport();
       },
 
       syncFilters: function () {
@@ -298,38 +317,29 @@
       },
 
       restartSimulation: function () {
-        randomizePositions();
+        nodes3d = sourceNodes.map(cloneNodeFor3D);
         rebuildNodeIndex();
-        refreshAppearance();
-        graph.graphData({ nodes: nodes, links: buildLinks() });
+        graph.graphData({ nodes: nodes3d, links: buildLinks() });
         this.updateForces();
       },
 
       fitToScreen: function (ms) {
-        var duration = ms == null ? 650 : ms;
-        graph.zoomToFit(duration, 120);
+        graph.zoomToFit(ms == null ? 650 : ms, 60);
       },
 
       fitToVisible: function (ms) {
         var visible = getVisibleNodeIds();
-        var list = nodes.filter(function (n) { return visible.has(n.id); });
-        if (!list.length) {
-          this.fitToScreen(ms);
-          return;
-        }
-        var duration = ms == null ? 650 : ms;
-        graph.zoomToFit(duration, 140, function (n) { return visible.has(n.id); });
+        graph.zoomToFit(ms == null ? 650 : ms, 160, function (n) { return visible.has(n.id); });
       },
 
       focusNode: function (node, ms) {
-        if (!node || node.x == null) return;
-        var duration = ms == null ? 700 : ms;
-        var dist = 220;
-        var z = node.z != null ? node.z : 0;
+        var n3 = node && nodeById.get(node.id);
+        if (!n3 || n3.x == null) return;
+        var z = n3.z != null ? n3.z : 0;
         graph.cameraPosition(
-          { x: node.x, y: node.y, z: z + dist },
-          node,
-          duration
+          { x: n3.x, y: n3.y, z: z + 220 },
+          n3,
+          ms == null ? 700 : ms
         );
       },
 
@@ -349,12 +359,14 @@
       },
 
       destroy: function () {
+        container.removeEventListener('mousemove', onContainerPointerMove);
+        container.removeEventListener('pointermove', onContainerPointerMove);
         if (graph._destructor) graph._destructor();
+        container.replaceChildren();
       },
     };
   }
 
-  /** 3D 磁吸模式：在球面上均匀分布聚类中心 */
   function buildMagneticCenters3D(categories) {
     var centers = {};
     var count = categories.length || 1;

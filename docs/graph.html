@@ -274,6 +274,11 @@
       position: absolute;
       inset: 0;
       z-index: 2;
+      touch-action: none;
+    }
+    #graph-canvas-3d canvas {
+      display: block;
+      outline: none;
     }
     #graph-canvas-3d[hidden] { display: none !important; }
 
@@ -1692,7 +1697,7 @@
 
   <!-- ── D3.js ── -->
   <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.73.3/dist/3d-force-graph.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph@1.80.0/dist/3d-force-graph.min.js"></script>
   <script src="main.js"></script>
   <script src="graph-tooltip.js"></script>
   <script src="graph-node-size.js"></script>
@@ -2038,6 +2043,7 @@
       }
     })();
     let graph3dView = null;
+    let graph3dHoverNode = null;
     const graphCanvas3d = document.getElementById('graph-canvas-3d');
     const viewMode2dBtn = document.getElementById('view-mode-2d');
     const viewMode3dBtn = document.getElementById('view-mode-3d');
@@ -2085,6 +2091,7 @@
         container: graphCanvas3d,
         nodes,
         edges,
+        resolveSourceNode: (id) => nodes.find(n => n.id === id),
         getNodeColor: nodeColor,
         getNodeRadius: scaledRadius,
         getLinkColor: edgeBaseColor,
@@ -2109,21 +2116,38 @@
             openSidebar(d);
           }
         },
-        onNodeHover: (d, ev) => {
+        onNodeHover: (d, pointer) => {
+          graph3dHoverNode = d || null;
           if (timelineAnimating || isMobile) return;
           if (sidebar.classList.contains('open')) {
-            if (d && sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(ev, d);
+            if (d && sidebarFocusIds && sidebarFocusIds.has(d.id)) showTooltip(pointer, d);
             else hideTooltip();
             return;
           }
-          if (d) showTooltip(ev, d);
+          if (hasActiveGraphFilter() && d && !visibleNodeIds.has(d.id)) {
+            hideTooltip();
+            return;
+          }
+          if (d) showTooltip(pointer, d);
           else hideTooltip();
         },
+        onPointerMove: (ev) => {
+          if (!is3DView() || timelineAnimating || isMobile) return;
+          if (!graph3dHoverNode) return;
+          if (sidebar.classList.contains('open')) {
+            if (sidebarFocusIds && sidebarFocusIds.has(graph3dHoverNode.id)) showTooltip(ev, graph3dHoverNode);
+            return;
+          }
+          if (hasActiveGraphFilter() && !visibleNodeIds.has(graph3dHoverNode.id)) return;
+          showTooltip(ev, graph3dHoverNode);
+        },
         onBackgroundClick: () => {
+          graph3dHoverNode = null;
           if (isMobile) {
             dismissMobilePinnedTooltip();
             return;
           }
+          hideTooltip();
           closeSidebar();
         },
       });
@@ -2145,17 +2169,19 @@
           window.alert('3D 视图库加载失败，请刷新页面后重试');
           return;
         }
-        ensureGraph3DView();
-        if (!graph3dView) return;
         svg.style('display', 'none');
         graphCanvas3d.hidden = false;
+        ensureGraph3DView();
+        if (!graph3dView) {
+          return;
+        }
         graph3dView.show();
         graph3dView.syncFilters();
-        graph3dView.updateForces();
-        graph3dView.fitToScreen(0);
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
+        graph3dHoverNode = null;
+        hideTooltip();
         svg.style('display', 'block');
         syncGraphDomFromSimulation();
         fitToScreen();
@@ -2480,6 +2506,7 @@
         graph3dView.updateForces();
         return;
       }
+      if (is3DView()) return;
       simulation.force('charge').strength(chargeStrength);
       
       if (isMagnetic) {
@@ -2698,6 +2725,7 @@
 
     /* ── Tick ── */
     simulation.on('tick', () => {
+      if (is3DView()) return;
       syncGraphDomFromSimulation();
     });
 
@@ -2755,6 +2783,7 @@
     }
 
     function showTooltip(ev, d) {
+      if (!d) return;
       tooltip.innerHTML = tooltipHtml(d);
       tooltip.classList.remove('hidden');
       // 清理可能残留的 left/top/width，确保重新计算尺寸
@@ -2774,6 +2803,7 @@
     }
 
     function moveTooltip(ev) {
+      if (!ev || ev.clientX == null || ev.clientY == null) return;
       const x = ev.clientX + 14, y = ev.clientY - 10;
       const tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
       tooltip.style.left = (x + tw > window.innerWidth - 20 ? x - tw - 28 : x) + 'px';
@@ -3766,6 +3796,10 @@
     function onGraphViewportResize() {
       if (!updateGraphViewport()) return;
       if (graph3dView) graph3dView.resize();
+      if (is3DView()) {
+        if (graph3dView) graph3dView.fitToScreen(0);
+        return;
+      }
       if (timelineAnimating) {
         simulation.alpha(0.1).restart();
         return;
