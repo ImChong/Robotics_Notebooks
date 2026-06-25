@@ -2284,8 +2284,9 @@
     let graphMaxDegree = 1;
     function baseRadius(d) { return window.RNGraphNodeSize.radiusForDegree(d._degree || 0, graphMaxDegree); }
     function scaledRadius(d) { return baseRadius(d) * nodeScale; }
-    // 最终字号 = baseRadius × nodeScale × 0.4 × (fontSliderVal/10)
-    // 0.4 让 baseRadius=10 的节点在 nodeScale=1, fontSliderVal=10 时字体≈10px
+    // 最终字号 = max(6, baseRadius × nodeScale × 0.4 × (fontSliderVal/10))
+    // 当前常量 nodeScale=1、fontSliderVal=15 ⇒ 字号 = max(6, baseRadius×0.6)；
+    // baseRadius∈[4,30] 对应约 [6,18]px（6px 为下限，防止低度数节点标签过小）
     function scaledFontSize(d) { return Math.max(6, baseRadius(d) * nodeScale * 0.4 * (fontSliderVal / 10)); }
     function toDetailId(path) {
       const item = indexItems && indexItems.find(it => it.path === path || it.id === path);
