@@ -1,13 +1,21 @@
 {
-  "generated_at": "2026-06-24",
-  "node_count": 1322,
-  "edge_count": 8809,
+  "generated_at": "2026-06-25",
+  "node_count": 1323,
+  "edge_count": 8821,
   "coverage": {
-    "covered": 1291,
-    "total": 1320,
+    "covered": 1292,
+    "total": 1321,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hiw-500-dataset.md",
+      "detail_id": "entity-hiw-500-dataset",
+      "label": "HIW-500（野外人形遥操作数据集）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
       "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
@@ -159,22 +167,14 @@
       "type": "concept",
       "recency": "2026-06-23",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/articulated-body-algorithms.md",
-      "detail_id": "wiki-formalizations-articulated-body-algorithms",
-      "label": "Articulated Body Algorithms（ABA / RNEA）",
-      "type": "formalization",
-      "recency": "2026-06-23",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
-    "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
-    "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
+    "path": "wiki/entities/hiw-500-dataset.md",
+    "detail_id": "entity-hiw-500-dataset",
+    "label": "HIW-500（野外人形遥操作数据集）",
     "type": "entity",
-    "recency": "2026-06-24",
+    "recency": "2026-06-25",
     "source": "log.md"
   }
 }

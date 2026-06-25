@@ -52,6 +52,7 @@ summary: "训练数据管线专题汇总：从原始动作捕捉 / 人体视频 
 - [OMOMO](../entities/omomo-dataset.md)
 - [PHUMA](../entities/dataset-bfm-phuma.md)
 - [Humanoid Everyday](../entities/humanoid-everyday-dataset.md)
+- [HIW-500](../entities/hiw-500-dataset.md)
 
 ## 参考来源
 
