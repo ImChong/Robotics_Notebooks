@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] fix(wiki): 修复 DAgger / BC 页 LaTeX 中 `\theta` 被制表符破坏导致 KaTeX 渲染失败
+
+- 根因：`wiki/methods/dagger.md`、`wiki/methods/behavior-cloning.md` 中 `\theta` 的 `\t` 被存成字面制表符，KaTeX 将 `_heta` 当作无效下标
+- 修复：还原为 `\pi_\theta`、`\min_\theta` 等正确 LaTeX
+
 ## [2026-06-25] structural(wiki): 重复节点审计修复 — extreme-parkour 合并、BFM 误标 arXiv 清理、TWIST2 更正为 2511.02832
 
 - dedupe：扩展 [scripts/dedupe_paper_notebook_nodes.py](scripts/dedupe_paper_notebook_nodes.py) `find_arxiv_merge_pairs` 扫描全实体；`paper-notebook-extreme-parkour-with-legged-robots` → [extreme-parkour.md](wiki/entities/extreme-parkour.md)；同步 [schema/paper-notebook-wiki-full-map.yml](schema/paper-notebook-wiki-full-map.yml)

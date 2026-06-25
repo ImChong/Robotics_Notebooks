@@ -9,6 +9,22 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/methods/dagger.md",
+      "detail_id": "wiki-methods-dagger",
+      "label": "DAgger（Dataset Aggregation）",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/behavior-cloning.md",
+      "detail_id": "wiki-methods-behavior-cloning",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/extreme-parkour.md",
       "detail_id": "entity-extreme-parkour",
       "label": "Extreme Parkour（端到端四足感知跑酷）",
@@ -151,29 +167,13 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-03-smp.md",
-      "detail_id": "entity-paper-amp-survey-03-smp",
-      "label": "SMP：可复用 Score-Matching 运动先验",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-04-kimodo.md",
-      "detail_id": "entity-paper-amp-survey-04-kimodo",
-      "label": "Kimodo：可扩展可控人体运动生成（AMP 专题 #04）",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/extreme-parkour.md",
-    "detail_id": "entity-extreme-parkour",
-    "label": "Extreme Parkour（端到端四足感知跑酷）",
-    "type": "entity",
+    "path": "wiki/methods/dagger.md",
+    "detail_id": "wiki-methods-dagger",
+    "label": "DAgger（Dataset Aggregation）",
+    "type": "method",
     "recency": "2026-06-25",
     "source": "log.md"
   }
