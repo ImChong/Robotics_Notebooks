@@ -389,7 +389,7 @@
 | [x] [nvidia-newton-physics.md](sites/nvidia-newton-physics.md) | NVIDIA Developer：Newton Physics 产品页（Warp、OpenUSD、Isaac Lab 集成叙事） |
 | [x] [openloong_community.md](sites/openloong_community.md) | OpenLoong 社区：青龙·公版机门户（硬件 v2.5、控制框架、数据集、文档/论坛） |
 | [x] [newton-physics-docs-overview.md](sites/newton-physics-docs-overview.md) | Newton 官方文档 Overview（ModelBuilder 仿真循环、多求解器、URDF/MJCF/USD） |
-| [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
+| [x] [tairan-he.md](sites/tairan-he.md) | Tairan He（何泰然）个人主页：OpenAI MTS；CMU / NVIDIA GEAR 人形学习论文与项目总索引 |
 | [x] [yanjieze.md](sites/yanjieze.md) | Yanjie Ze（迮炎杰）个人主页：Stanford / Amazon FAR / Figure AI 人形模仿学习与 GMR–TWIST 技术线总索引 |
 | [x] [vision-banana-project.md](sites/vision-banana-project.md) | Vision Banana 项目页 vision-banana.github.io（交互分割/深度/法线演示、zero-shot 榜单，arXiv:2604.20329） |
 | [x] [wm-robot-survey-ntumars.md](sites/wm-robot-survey-ntumars.md) | NTUMARS 机器人世界模型综述项目站 ntumars.github.io/wm-robot-survey（arXiv:2605.00080） |

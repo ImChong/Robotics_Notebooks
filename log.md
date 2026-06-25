@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-25] ingest | sources/sites/tairan-he.md — 复核 tairanhe.com：OpenAI MTS、博士答辩与 CVPR 2026 VIRAL/DoorMan 等更新
+
+- 原始资料：[tairan-he.md](sources/sites/tairan-he.md)
+- 更新实体：[tairan-he.md](wiki/entities/tairan-he.md)
+
 ## [2026-06-25] ingest | sources/sites/yanjieze.md — Yanjie Ze 个人主页归档并升格 wiki/entities/yanjie-ze.md；交叉 TWIST/TWIST2/GMR/VisualMimic/ResMimic 等
 
 - 原始资料：[yanjieze.md](sources/sites/yanjieze.md)

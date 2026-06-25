@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-25",
   "node_count": 1326,
-  "edge_count": 8977,
+  "edge_count": 8978,
   "coverage": {
     "covered": 1295,
     "total": 1324,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/tairan-he.md",
+      "detail_id": "entity-tairan-he",
+      "label": "Tairan He（何泰然）",
+      "type": "entity",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/yanjie-ze.md",
       "detail_id": "entity-yanjie-ze",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-amp-survey-08-more.md",
-      "detail_id": "entity-paper-amp-survey-08-more",
-      "label": "MoRE：复杂地形上的人形多步态残差专家混合",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/yanjie-ze.md",
-    "detail_id": "entity-yanjie-ze",
-    "label": "Yanjie Ze（迮炎杰）",
+    "path": "wiki/entities/tairan-he.md",
+    "detail_id": "entity-tairan-he",
+    "label": "Tairan He（何泰然）",
     "type": "entity",
     "recency": "2026-06-25",
     "source": "log.md"
