@@ -189,7 +189,8 @@ This is a **pure content + tooling** repo — no backend services, databases, or
 
 ### Gotchas
 
-- `pip-audit` (used in `make ci-test`) requires `python3-venv` to be installed at the system level (`apt install python3-venv`). The update script handles `pip install` but system packages must be pre-installed.
+- `pip-audit` (used in `make ci-test`) requires `python3-venv` to be installed at the system level (`apt install python3.12-venv`). The update script handles `pip install` but system packages must be pre-installed.
+- `make test` / `make ci-test` 依赖 gitignore 的站点 JSON（`exports/site-data-v1.json` 等）。全新环境若未先生成，`test_community_naming` 与 `test_wiki_roadmaps_export` 会因 `FileNotFoundError` 失败。**跑测试前先执行一次 `make export graph`**（约 30s）生成派生数据，之后 `make test`/`make ci-test` 即可全绿。
 - Python tools (`ruff`, `mypy`, `pytest`, `pip-audit`, etc.) install to `~/.local/bin`. Ensure `PATH` includes `$HOME/.local/bin` before running Make targets.
 - `PYTHONPATH=scripts` is required for `mypy` and `pytest` (already set in the Makefile targets).
 
