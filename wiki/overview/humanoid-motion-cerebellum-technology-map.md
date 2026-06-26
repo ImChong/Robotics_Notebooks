@@ -16,6 +16,7 @@ related:
   - ./humanoid-rl-motion-control-body-system-stack.md
   - ./bfm-41-papers-technology-map.md
   - ./loco-manip-8-papers-technology-map.md
+  - ./humanoid-loco-manip-161-papers-technology-map.md
   - ./humanoid-amp-motion-prior-survey.md
   - ../concepts/whole-body-control.md
   - ../methods/vla.md
@@ -153,6 +154,7 @@ flowchart TB
 - [人形 RL 身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 42 篇姊妹篇（八层管线）
 - [BFM 41 篇技术地图](./bfm-41-papers-technology-map.md) — 运控基座横切面
 - [Loco-Manip 8 篇技术地图](./loco-manip-8-papers-technology-map.md) — 数据入口周报
+- [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md) — 移动操作全谱十类策展（2026-06）
 - [AMP 运动先验综述](./humanoid-amp-motion-prior-survey.md) — B 组源流补充
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Agent Reach](../entities/agent-reach.md) — 微信正文抓取工具链

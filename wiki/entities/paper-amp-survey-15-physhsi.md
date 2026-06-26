@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, adversarial-imitation, hsi, sim2real, unitree-g1, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2510.11072"
 venue: arXiv
 summary: "PhysHSI（arXiv:2510.11072）：AMP+混合 RSI 学搬箱/坐/躺/站起，判别器含物体位姿；真机 LiDAR+相机粗细分层定位，G1 室内外自然 HSI。"

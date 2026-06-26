@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, meta]
 status: planned
-updated: 2026-06-11
+updated: 2026-06-26
 arxiv: "2511.14756"
 venue: "2025.11"
 related:

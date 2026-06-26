@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, bfm, behavior-foundation-model, awesome-bfm-papers, nvidia]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2410.21229"
 venue: "2025 · ICRA"
 code: https://github.com/NVlabs/HOVER/

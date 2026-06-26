@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bfm, behavior-foundation-model, stanford, berkeley]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2508.08241"
 venue: "2025 · arXiv"
 code: https://github.com/HybridRobotics/whole_body_tracking

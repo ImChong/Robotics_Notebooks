@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "GentleHumanoid 关注 upper-body compliance for contact-rich human and object interaction。它的目标是让人形机器人在握手、拥抱、辅助坐站、气球操作等任务里保持安全、自然的接触。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, motion-tracking, residual-learning, reinforcement-learning, ppo, gmt, sim2real, unitree-g1, amazon-far, whole-body]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2510.05070"
 related:
   - ../tasks/loco-manipulation.md
