@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-02-upper-body-interface.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-hmc.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_039_hmc.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ HMC 主要解决数据闭环：用遥操作/外骨骼数据、接触力/触觉�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-hmc](../entities/paper-notebook-hmc.md)
+- 同题深读/既有实体：[paper-loco-manip-161-039-hmc](../entities/paper-loco-manip-161-039-hmc.md)

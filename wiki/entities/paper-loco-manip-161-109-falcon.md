@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-falcon.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_109_falcon.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ FALCON 主要解决数据闭环：用本体状态与关节序列、人类视频/
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-falcon](../entities/paper-notebook-falcon.md)
+- 同题深读/既有实体：[paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md)

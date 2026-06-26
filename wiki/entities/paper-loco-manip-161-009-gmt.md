@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-gmt.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_009_gmt.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ GMT 把本体状态与关节序列、仿真交互数据转成可跟踪的身体�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-gmt](../entities/paper-notebook-gmt.md)
+- 同题深读/既有实体：[paper-loco-manip-161-009-gmt](../entities/paper-loco-manip-161-009-gmt.md)

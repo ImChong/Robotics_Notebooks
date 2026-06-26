@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, hit, leju]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "底座：用地形条件运动先验改善自然步态。输入是地形条件和运动先验；实现上训练地形条件生成式运动先验，再用它约束强化学习策略生成自然多地形步态；重点是让步态风格和地形适配同时成立。"
 related:

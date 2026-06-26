@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-26] structural(wiki): Loco-Manip 161 与 paper-notebook stub 去重合并 — 33 对并入 paper-loco-manip-161-* / genie-sim-3
+
+- 工具：`make paper-notebook-dedupe`（[dedupe_paper_notebook_nodes.py](scripts/dedupe_paper_notebook_nodes.py)）
+- 合并：33 对 `paper-notebook-*` stub → 对应 [`wiki/entities/paper-loco-manip-161-{NNN}-*.md`](wiki/entities/)（含 [`genie-sim-3.md`](wiki/entities/genie-sim-3.md) ← Genie Sim 3.0 stub）；删除 34 条冗余 `sources/papers/humanoid_pnb_*` stub source
+- 复跑判据：loco-manip 相关 dedupe 对 **0** 残留
+- 交叉更新：[`schema/paper-notebook-wiki-full-map.yml`](schema/paper-notebook-wiki-full-map.yml)、若干 category 页与引用 stub 的 wiki 页
+
 ## [2026-06-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md — 人形 Loco-Manip 161 篇十方向全景；父节点 + 十组 category 子节点 + 161 篇 paper-loco-manip-161-* 独立实体
 
 - 原始资料：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[wechat_humanoid_loco_manip_161_2026-06-26.md](sources/raw/wechat_humanoid_loco_manip_161_2026-06-26.md)、[humanoid_loco_manip_161_catalog.md](sources/papers/humanoid_loco_manip_161_catalog.md)、`sources/papers/loco_manip_161_survey_{001..161}_*.md`

@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_007_exbody2.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ ExBody2 把本体状态与关节序列、人类视频/动捕轨迹转成可跟�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-exbody2-advanced-expressive-humanoid-whole-body](../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md)
+- 同题深读/既有实体：[paper-loco-manip-161-007-exbody2](../entities/paper-loco-manip-161-007-exbody2.md)

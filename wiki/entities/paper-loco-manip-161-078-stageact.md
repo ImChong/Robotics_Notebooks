@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-stageact.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_078_stageact.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ StageACT 主要解决数据闭环：用相机图像/多视角观测、本体状�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-stageact](../entities/paper-notebook-stageact.md)
+- 同题深读/既有实体：[paper-loco-manip-161-078-stageact](../entities/paper-loco-manip-161-078-stageact.md)

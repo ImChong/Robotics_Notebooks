@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 arxiv: "2602.02960"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md

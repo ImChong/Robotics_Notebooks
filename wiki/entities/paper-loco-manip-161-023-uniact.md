@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-uniact.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_023_uniact.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ UniAct 把语言指令转成可跟踪的身体目标，并通过策略网络和�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-uniact](../entities/paper-notebook-uniact.md)
+- 同题深读/既有实体：[paper-loco-manip-161-023-uniact](../entities/paper-loco-manip-161-023-uniact.md)

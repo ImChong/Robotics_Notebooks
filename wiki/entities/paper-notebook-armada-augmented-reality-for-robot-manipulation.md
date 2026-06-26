@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-11
+updated: 2026-06-26
 arxiv: "2412.10631"
 related:
   - ../overview/paper-notebook-category-06-manipulation.md

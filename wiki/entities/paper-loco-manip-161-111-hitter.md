@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-hitter.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_111_hitter.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ HITTER 先从人类视频/动捕轨迹、接触力/触觉信号恢复场景、�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-hitter](../entities/paper-notebook-hitter.md)
+- 同题深读/既有实体：[paper-loco-manip-161-111-hitter](../entities/paper-loco-manip-161-111-hitter.md)

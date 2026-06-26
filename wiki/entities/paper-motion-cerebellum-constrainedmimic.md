@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "安全：给 motion tracking 加实时约束层。输入是 motion tracking 策略输出和实时安全约束；实现上在策略动作外叠加约束投影/安全过滤，让跟踪参考时不突破关节、接触或碰撞边界；目标是保留动作表现同时守住安全。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 arxiv: "2110.03239"
 related:
   - ../overview/paper-notebook-category-01-foundational-rl.md

@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-01-motion-base-wbt.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-unitracker.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_024_unitracker.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ UniTracker 把相机图像/多视角观测、本体状态与关节序列、仿�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-unitracker](../entities/paper-notebook-unitracker.md)
+- 同题深读/既有实体：[paper-loco-manip-161-024-unitracker](../entities/paper-loco-manip-161-024-unitracker.md)

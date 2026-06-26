@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-from-w1.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_096_from-w1.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ FRoM-W1 先从语言指令、本体状态与关节序列、仿真交互数据恢
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-from-w1](../entities/paper-notebook-from-w1.md)
+- 同题深读/既有实体：[paper-loco-manip-161-096-from-w1](../entities/paper-loco-manip-161-096-from-w1.md)

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 venue: "Unitree Robotics (whitepaper)"
 code: https://github.com/unitreerobotics/unitree_sdk2
 related:

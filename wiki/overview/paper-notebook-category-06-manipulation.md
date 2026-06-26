@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-16
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）。"
@@ -43,10 +43,10 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [EgoDex](../entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 待深读
 - [EgoMI](../entities/paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md) — 待深读
 - [EgoMimic](../entities/paper-ego-01-aoe.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video.html)
-- [EgoVLA](../entities/paper-notebook-egovla-learning-vision-language-action-models-fr.md) — 待深读
+- [EgoVLA](../entities/paper-loco-manip-161-161-egovla.md) — 待深读
 - [Endowing GPT-4 with a Humanoid Body](../entities/paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the.md) — 待深读
 - [Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation](../entities/paper-notebook-rgmp-s.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation.html)
-- [Genie Sim 3.0](../entities/paper-notebook-genie-sim-3-0-a-high-fidelity-comprehensive-simu.md) — 待深读
+- [Genie Sim 3.0](../entities/genie-sim-3.md) — 待深读
 - [H-RDT](../entities/paper-notebook-h-rdt-human-manipulation-enhanced-bimanual-robot.md) — 待深读
 - [Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation](../entities/paper-notebook-hierarchical-vision-language-planning-for-multi.md) — 待深读
 - [HumDex](../tasks/manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy.html)
@@ -66,7 +66,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [MobileH2R](../entities/paper-notebook-mobileh2r-learning-generalizable-human-to-mobile.md) — 待深读
 - [OKAMI](../entities/paper-notebook-okami-teaching-humanoid-robots-manipulation-skil.md) — 待深读
 - [Object-Centric Dexterous Manipulation from Human Motion Data](../entities/paper-notebook-object-centric-dexterous-manipulation-from-human.md) — 待深读
-- [Open-TeleVision](../entities/paper-notebook-open-television-teleoperation-with-immersive-act.md) — 待深读
+- [Open-TeleVision](../entities/paper-loco-manip-161-131-open-television.md) — 待深读
 - [RGMP](../entities/paper-notebook-rgmp-recurrent-geometric-prior-multimodal-policy.md) — 待深读
 - [Residual Off-Policy RL for Finetuning Behavior Cloning Policies](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md) — 待深读
 - [Robot Drummer](../entities/paper-notebook-robot-drummer-learning-rhythmic-skills-for-human.md) — 待深读

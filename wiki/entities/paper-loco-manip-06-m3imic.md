@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, tsinghua]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2606.04829"
 summary: "多模态动作参考 → 共享 latent 命令 → 统一全身控制器。"
 related:

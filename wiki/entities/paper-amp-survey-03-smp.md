@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, amp, motion-prior, diffusion, score-matching, sfu, nvidia, sony, stanford]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2512.03028"
 venue: arXiv
 summary: "SMP（arXiv:2512.03028）预训练冻结运动扩散，用 SDS 将 ε-预测误差映射为可复用风格奖励，下游 RL 无需再保留 MoCap 与在线判别器。"

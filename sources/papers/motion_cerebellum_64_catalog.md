@@ -44,7 +44,7 @@
 | 20 | OmniRetarget | 重定向：交互关系保持的数据生成 | [OmniRetarget](../../wiki/entities/paper-hrl-stack-03-omniretarget.md) |
 | 21 | HumanX | 数据入口：从人类视频学敏捷交互技能 | [HumanX](../../wiki/entities/paper-hrl-stack-05-humanx.md) |
 | 22 | HDMI | 数据入口：人类视频到交互式全身控制 | [HDMI](../../wiki/entities/paper-hrl-stack-06-hdmi.md) |
-| 23 | SUGAR | 数据入口：视频驱动的泛化移动操作数据 | [SUGAR](../../wiki/entities/paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md) |
+| 23 | SUGAR | 数据入口：视频驱动的泛化移动操作数据 | [SUGAR](../../wiki/entities/paper-loco-manip-161-076-sugar.md) |
 | 24 | GenMimic | 数据入口：生成视频到物理可执行轨迹 | [GenMimic](../../wiki/entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) |
 
 ## D. 全身跟踪基座（13）

@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-hypermotion.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_065_hypermotion.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ HYPERmotion 先从语言指令、相机图像/多视角观测、本体状态与�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-hypermotion](../entities/paper-notebook-hypermotion.md)
+- 同题深读/既有实体：[paper-loco-manip-161-065-hypermotion](../entities/paper-loco-manip-161-065-hypermotion.md)

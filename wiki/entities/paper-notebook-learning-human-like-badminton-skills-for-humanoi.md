@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, humanoid-paper-notebooks, amp, motion-prior, badminton, sim2real, dagger, goal-conditioned-rl, hku]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2602.08370"
 related:
   - ../overview/paper-notebook-category-04-loco-manipulation-and-wbc.md
