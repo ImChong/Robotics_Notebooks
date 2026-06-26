@@ -332,10 +332,12 @@
 
     function refreshAppearance() {
       if (!customMeshesInstalled) {
+        // nodeOpacity 是标量配置：传函数会算出 NaN 不透明度让默认球体全透明。
+        // 自定义 mesh 装上前用常量 1 保底可见，逐节点淡化交给 updateNodeMeshes。
         graph
           .nodeColor(function (d) { return getNodeColor(d); })
           .nodeVal(nodeValFor)
-          .nodeOpacity(function (d) { return nodeOpacityFor(d); });
+          .nodeOpacity(1);
       }
       graph
         .linkColor(function (l) { return linkColorFor(l); })
@@ -621,7 +623,7 @@
         .nodeResolution(8)
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
-        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+        .nodeOpacity(1)
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
@@ -670,6 +672,13 @@
           reheatAfterGraphData();
           syncViewport();
           if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
+          // 默认渲染把 nodeOpacity 当标量，传入函数会得到 NaN 不透明度（节点全透明不可见）。
+          // 装上自定义 mesh 后由 createNodeMesh / updateNodeMeshes 写入逐节点数值不透明度。
+          scheduleCustomMeshInstall(function () {
+            if (!graph) return;
+            reheatAfterGraphData();
+            scheduleInitialFit(350);
+          });
           scheduleInitialFit(650);
         });
       },
