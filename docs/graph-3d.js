@@ -225,6 +225,18 @@
       return set ? set.has(otherId) : false;
     }
 
+    // 3D 下「筛选 = 直接隐藏」：命中筛选集合之外的节点/连线整体不渲染，而非淡化。
+    // 2D 视图仍沿用淡化逻辑（见 graph.html applyFilters），这两个判定只作用于 3D。
+    function nodeHiddenByFilter(d) {
+      return hasActiveFilter() && !getVisibleNodeIds().has(d.id);
+    }
+
+    function linkVisibleFor(l) {
+      if (!hasActiveFilter()) return true;
+      var visible = getVisibleNodeIds();
+      return visible.has(edgeEndpointId(l.source)) && visible.has(edgeEndpointId(l.target));
+    }
+
     function linkOpacityFor(l) {
       var s = edgeEndpointId(l.source);
       var t = edgeEndpointId(l.target);
@@ -328,7 +340,7 @@
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
-        obj.visible = opacity > 0.02;
+        obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
       });
     }
 
@@ -344,7 +356,8 @@
       graph
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
-        .linkOpacity(function (l) { return linkOpacityFor(l); });
+        .linkOpacity(function (l) { return linkOpacityFor(l); })
+        .linkVisibility(function (l) { return linkVisibleFor(l); });
       updateNodeMeshes();
     }
 
@@ -660,6 +673,7 @@
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
+        .linkVisibility(function (l) { return linkVisibleFor(l); })
         .enableNodeDrag(true)
         .onNodeClick(function (node, ev) {
           var src = resolveSourceNode(node.id) || node;
