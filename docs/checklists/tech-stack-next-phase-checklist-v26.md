@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v26
 
-最后更新：2026-06-24（V25 全部条目收口，基于最新仿真物理保真度 ingest 初始化 V26）
+最后更新：2026-06-25（P1 仿真物理保真度知识链 +2 页落地并完成四层交叉回链）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -29,11 +29,11 @@
 
 ## P1: 仿真物理保真度链路专题 (Quality)
 
-- [ ] **物理保真度知识链 (+2)**：
-    - [ ] `wiki/queries/simulation-physics-fidelity.md`（端到端 Query：几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层保真度的取舍决策树，覆盖每层对 sim2real gap 的贡献、建模成本与典型失败模式，配 Mermaid 流程图）。
-    - [ ] `wiki/concepts/physics-fidelity-sim2real-gap.md`（物理保真度 ↔ sim2real gap 因果概念页：四层保真度维度分层，明示每一维度的简化如何转化为可观测的 sim2real gap，以及与域随机化/系统辨识的互补关系）。
-- [ ] **仿真物理层专题交叉补强**：
-    - [ ] 在 `wiki/concepts/contact-dynamics.md`、`joint-friction-models.md`、`articulated-body-algorithms.md`、`differentiable-simulation.md`、`urdf-robot-description.md` 等页与 P1 新页形成双向回链，明示「几何 → 动力学 → 接触/摩擦 → 执行器」四层在保真度链路中的定位，消除孤儿页。
+- [x] **物理保真度知识链 (+2)**：
+    - [x] `wiki/queries/simulation-physics-fidelity.md`（端到端 Query：几何/URDF 精度 → 刚体动力学算法（ABA/RNEA）→ 接触/摩擦模型 → 执行器模型四层保真度的取舍决策树，覆盖每层对 sim2real gap 的贡献、建模成本与典型失败模式，配 Mermaid 流程图）。
+    - [x] `wiki/concepts/physics-fidelity-sim2real-gap.md`（物理保真度 ↔ sim2real gap 因果概念页：四层保真度维度分层，明示每一维度的简化如何转化为可观测的 sim2real gap，以及与域随机化/系统辨识的互补关系）。
+- [x] **仿真物理层专题交叉补强**：
+    - [x] 在 `wiki/concepts/contact-dynamics.md`、`joint-friction-models.md`、`articulated-body-algorithms.md`（formalizations/）、`differentiable-simulation.md`、`urdf-robot-description.md` 五页与 P1 新页形成双向回链，明示「几何 → 动力学 → 接触/摩擦 → 执行器」四层在保真度链路中的定位，消除孤儿页。
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
@@ -52,9 +52,9 @@
 ## 验收标准 (Definition of DoD)
 
 - [ ] `make lint`: 0 errors（新引入的 `physics_concept_crosslink_check` 为 INFO 级，不阻塞 CI）。
-- [ ] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`）。
+- [x] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`：现 1338 节点 / 9145 边）。
 - [ ] 事实库扩展至 **208 条** 以上（重点补 物理保真度 / 接触摩擦 / 执行器建模 矛盾检测规则）。
-- [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。
+- [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`（现 0.183；新增 `humanoid-soccer` 社区命名 override）。
 - [ ] `log.md` 记录 V26 关键改动。
 
 ---

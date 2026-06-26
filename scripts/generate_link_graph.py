@@ -153,6 +153,7 @@ COMMUNITY_NAME_OVERRIDES: dict[str, str] = {
     "wiki/methods/model-predictive-control.md": "模型预测控制（Model Predictive Control, MPC）",
     "wiki/entities/mimickit.md": "运动模仿与控制（MimicKit）",
     "wiki/entities/isaac-gym-isaac-lab.md": "仿真训练（Isaac Gym / Isaac Lab）",
+    "wiki/tasks/humanoid-soccer.md": "人形足球（Humanoid Soccer）",
 }
 # Paper Notebooks 分类父节点与 wiki 知识页语义等价：社区检测后合并为同一社区，命名取 canonical 枢纽。
 # 规范见 schema/naming.md § 图谱社区命名；分类元数据见 schema/paper-notebook-categories.json。

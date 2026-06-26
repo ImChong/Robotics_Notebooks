@@ -85,6 +85,8 @@ $$
 - [System Identification](./system-identification.md)
 - [Sim2Real](./sim2real.md)
 - [Quadruped Control Curriculum](../entities/quadruped-control-curriculum.md)
+- [仿真物理保真度链路](../queries/simulation-physics-fidelity.md) — 摩擦模型属第 ③ 接触/摩擦层
+- [Physics Fidelity ↔ Sim2Real Gap](./physics-fidelity-sim2real-gap.md) — 摩擦简化如何转化为打滑/接触 gap
 
 ## 推荐继续阅读
 
