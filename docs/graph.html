@@ -2232,9 +2232,8 @@
         }
         graph3dView.show();
         graph3dView.syncFilters();
-        window.setTimeout(function () {
-          if (is3DView() && graph3dView) graph3dView.fitToScreen(0);
-        }, 120);
+        // 不在切换时自动适配：仅首次力布局结束后由 graph-3d 自动适配一次，
+        // 之后只有用户点「适配屏幕」按钮才适配。
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
@@ -3872,7 +3871,7 @@
       if (!updateGraphViewport()) return;
       if (graph3dView) graph3dView.resize();
       if (is3DView()) {
-        if (graph3dView) graph3dView.fitToScreen(0);
+        // 3D：仅同步视口尺寸（上面 resize() 已处理），不自动适配屏幕。
         return;
       }
       if (timelineAnimating) {

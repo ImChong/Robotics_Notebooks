@@ -165,6 +165,8 @@
     var sharedSphereGeometry = null;
     var customMeshesInstalled = false;
     var meshInstallScheduled = false;
+    var pendingFirstShowKick = false;
+    var initialFitDone = false;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -579,13 +581,15 @@
     }
 
     function scheduleInitialFit(ms) {
+      // 只在「首次力布局结束」时自动适配一次；适配后注销 onEngineStop，
+      // 之后任何交互（hover / 点击 / 拖拽引发的 reheat）都不再自动适配屏幕。
+      if (initialFitDone) return;
       var duration = ms == null ? 450 : ms;
       function runFit() {
-        if (!graph) return;
-        if (typeof graph.zoomToFit === 'function') {
-          graph.zoomToFit(duration, 100);
-          return;
-        }
+        if (!graph || initialFitDone) return;
+        initialFitDone = true;
+        // 用基于节点数据坐标的安全 fit：库自带 zoomToFit 在场景对象尚未生成时
+        // （getGraphBbox 返回 null）会静默 no-op，首次切换易停在未取景的相机上。
         zoomFitToNodes(duration);
       }
       if (typeof graph.onEngineStop === 'function') {
@@ -654,7 +658,26 @@
       graph = window.ForceGraph3D()(container);
       graph.pauseAnimation();
       bindGraphInstance();
+      pendingFirstShowKick = true;
       return graph;
+    }
+
+    // Chrome 下 2D 第一次切到 3D 偶发整屏空白（新建 WebGL 渲染器后首帧渲染管线未完成），
+    // 现象上只有「切回 2D 再切 3D」能恢复——本质是在已建好的渲染器上重跑一次 graphData。
+    // 这里在首次 show 后幂等地复刻该恢复动作，避免用户手动来回切。
+    function firstShowKick() {
+      if (!pendingFirstShowKick) return;
+      pendingFirstShowKick = false;
+      window.setTimeout(function () {
+        if (!graph || container.hidden) return;
+        syncViewport();
+        pauseRenderLoop();
+        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          reheatAfterGraphData();
+        });
+      }, 250);
     }
 
     return {
@@ -671,7 +694,6 @@
           if (!graph) return;
           reheatAfterGraphData();
           syncViewport();
-          if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
           // 默认渲染把 nodeOpacity 当标量，传入函数会得到 NaN 不透明度（节点全透明不可见）。
           // 装上自定义 mesh 后由 createNodeMesh / updateNodeMeshes 写入逐节点数值不透明度。
           scheduleCustomMeshInstall(function () {
@@ -680,6 +702,7 @@
             scheduleInitialFit(350);
           });
           scheduleInitialFit(650);
+          firstShowKick();
         });
       },
 
