@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-06-26",
-  "node_count": 1351,
-  "edge_count": 9234,
+  "node_count": 1362,
+  "edge_count": 9377,
   "coverage": {
-    "covered": 1320,
-    "total": 1349,
+    "covered": 1331,
+    "total": 1360,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
+      "label": "人形 Loco-Manip 161 篇技术地图",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-01-motion-base-wbt.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-01-motion-base-wbt",
+      "label": "Loco-Manip 161 分类 01：运控基座与通用全身跟踪",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/loco-manip-161-category-10-ego-video.md",
+      "detail_id": "wiki-overview-loco-manip-161-category-10-ego-video",
+      "label": "Loco-Manip 161 分类 10：从人类第一视角视频学习",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
+      "detail_id": "wiki-overview-humanoid-motion-cerebellum-technology-map",
+      "label": "运动小脑技术地图：64 篇论文的九组视角",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/agibot-june-2026-release-technology-map.md",
       "detail_id": "wiki-overview-agibot-june-2026-release-technology-map",
@@ -127,52 +167,12 @@
       "type": "concept",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/joint-friction-models.md",
-      "detail_id": "wiki-concepts-joint-friction-models",
-      "label": "Joint Friction Models（关节摩擦模型）",
-      "type": "concept",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/urdf-robot-description.md",
-      "detail_id": "wiki-concepts-urdf-robot-description",
-      "label": "URDF（统一机器人描述格式）",
-      "type": "concept",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/differentiable-simulation.md",
-      "detail_id": "wiki-concepts-differentiable-simulation",
-      "label": "Differentiable Simulation（可微仿真）",
-      "type": "concept",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/formalizations/articulated-body-algorithms.md",
-      "detail_id": "wiki-formalizations-articulated-body-algorithms",
-      "label": "Articulated Body Algorithms（ABA / RNEA）",
-      "type": "formalization",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md",
-      "detail_id": "entity-paper-notebook-learning-human-like-badminton-skills-for-humanoi",
-      "label": "LHBS：人形拟人羽毛球技能学习",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/agibot-june-2026-release-technology-map.md",
-    "detail_id": "wiki-overview-agibot-june-2026-release-technology-map",
-    "label": "智元 2026-06 发布技术地图",
+    "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
+    "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
+    "label": "人形 Loco-Manip 161 篇技术地图",
     "type": "overview",
     "recency": "2026-06-26",
     "source": "log.md"

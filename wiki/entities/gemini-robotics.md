@@ -3,7 +3,7 @@ type: entity
 tags: [google-deepmind, vla, gemini, embodied-ai, product]
 title: Gemini Robotics
 summary: "Gemini Robotics 是 Google DeepMind 基于 Gemini 多模态栈发布的机器人视觉–语言–动作与具身推理模型族（含 ER / 1.5 等迭代），强调泛化、交互与自然语言指令。"
-updated: 2026-05-10
+updated: 2026-06-26
 related:
   - ../methods/vla.md
   - ../methods/robotics-transformer-rt-series.md

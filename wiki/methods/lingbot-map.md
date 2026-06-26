@@ -2,7 +2,7 @@
 type: method
 tags: [3d-reconstruction, foundation-model, transformer, slam, streaming-perception]
 status: drafting
-updated: 2026-05-17
+updated: 2026-06-26
 related:
   - ../concepts/state-estimation.md
   - ../concepts/3d-spatial-vqa.md

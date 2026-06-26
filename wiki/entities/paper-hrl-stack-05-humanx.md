@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, shanghai-ai-lab, hkust]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "HumanX 也从视频出发，但它关心的是 agile and generalizable humanoid interaction skills。它想把人类视频转成机器人可学习的交互技能，覆盖篮球、足球、羽毛球等任务。"
 related:

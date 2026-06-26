@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 arxiv: "2606.05160"
 summary: "任务数据：3D 资产和视频先验生成 Loco-Manip 数据。输入是移动操作任务、场景几何、物体状态和机器人模型；实现上用规划、仿真、生成式数据或自主探索产生手脚协同轨迹，再筛选成可训练示范；目标是补足人形 loco-manip 最缺的长"
 related:

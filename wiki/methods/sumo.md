@@ -3,6 +3,8 @@ type: method
 title: Sumo (MPC-over-RL 层级控制)
 tags: [robot-learning, mpc, loco-manipulation, whole-body-control, spot, g1]
 summary: "Sumo 采用反向层级架构（MPC 驱动底层 RL），通过将通用策略纳入规划循环，实现腿式机器人对超限重物的零样本动态操纵。"
+updated: 2026-06-26
+
 ---
 
 # Sumo (Dynamic and Generalizable Whole-Body Loco-Manipulation)

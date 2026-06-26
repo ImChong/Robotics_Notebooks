@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned]
 status: planned
-updated: 2026-06-18
+updated: 2026-06-26
 arxiv: "2605.20373"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
