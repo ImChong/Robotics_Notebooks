@@ -52,7 +52,7 @@
 ## 验收标准 (Definition of DoD)
 
 - [ ] `make lint`: 0 errors（新引入的 `physics_concept_crosslink_check` 为 INFO 级，不阻塞 CI）。
-- [x] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`：现 1338 节点 / 9139 边）。
+- [x] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`：现 1338 节点 / 9145 边）。
 - [ ] 事实库扩展至 **208 条** 以上（重点补 物理保真度 / 接触摩擦 / 执行器建模 矛盾检测规则）。
 - [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`（现 0.183；新增 `humanoid-soccer` 社区命名 override）。
 - [ ] `log.md` 记录 V26 关键改动。

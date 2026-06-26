@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-06-25",
+  "generated_at": "2026-06-26",
   "node_count": 1338,
-  "edge_count": 9139,
+  "edge_count": 9145,
   "coverage": {
     "covered": 1307,
     "total": 1336,
@@ -61,6 +61,14 @@
       "detail_id": "wiki-formalizations-articulated-body-algorithms",
       "label": "Articulated Body Algorithms（ABA / RNEA）",
       "type": "formalization",
+      "recency": "2026-06-25",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md",
+      "detail_id": "entity-paper-notebook-learning-human-like-badminton-skills-for-humanoi",
+      "label": "LHBS：人形拟人羽毛球技能学习",
+      "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
     },
@@ -157,14 +165,6 @@
       "detail_id": "wiki-queries-robot-policy-debug-playbook",
       "label": "RL 策略真机调试 Playbook",
       "type": "query",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/deep-learning-foundations.md",
-      "detail_id": "wiki-concepts-deep-learning-foundations",
-      "label": "深度学习基础 (Deep Learning Foundations)",
-      "type": "concept",
       "recency": "2026-06-25",
       "source": "log.md"
     }

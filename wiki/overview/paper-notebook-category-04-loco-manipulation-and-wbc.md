@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-12
+updated: 2026-06-25
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 04：运动操作与全身控制（158 篇深读笔记索引）。"
@@ -99,7 +99,7 @@ summary: "Paper Notebooks 分类 04：运动操作与全身控制（158 篇深�
 - [Learning Gentle Humanoid Locomotion and End-Effector Stabilization Control](../entities/paper-notebook-learning-gentle-humanoid-locomotion-and-end-effe.md) — 待深读
 - [Learning Getting-Up Policies for Real-World Humanoid Robots](../entities/paper-notebook-learning-getting-up-policies-for-real-world-huma.md) — 待深读
 - [Learning Human-Humanoid Coordination for Collaborative Object Carrying](../entities/paper-notebook-learning-human-humanoid-coordination-for-collabo.md) — 待深读
-- [Learning Human-Like Badminton Skills for Humanoid Robots](../entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots.html)
+- [Learning Human-Like Badminton Skills for Humanoid Robots](../entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md) — **LHBS**：Imitation-to-Interaction 四阶段；[项目页](https://astrorix.github.io/LHBS/) · [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots/Learning_Human-Like_Badminton_Skills_for_Humanoid_Robots.html)
 - [Learning Human-to-Humanoid Real-Time Whole-Body Teleoperation](../entities/paper-hrl-stack-07-learning_human_to_humanoid_real_time.md) — 待深读
 - [Learning Humanoid Standing-up Control across Diverse Postures](../entities/paper-host-humanoid-standingup.md) — 待深读
 - [Learning Humanoid Standing-up Control across Diverse Postures](../entities/paper-host-humanoid-standingup.md) — 待深读

@@ -8,6 +8,8 @@
 - 图谱：节点 1336→1338、边 9109→9139；社区重分区后新增 `humanoid-soccer` 社区，补 `COMMUNITY_NAME_OVERRIDES` 命名 override（`community_quality_warning=false`，`largest_community_ratio=0.183`）
 - 门禁：`make lint` 0 问题；`tests/test_community_naming`、`test_generate_link_graph_communities` 等单测通过
 
+## [2026-06-25] ingest | sources/papers/lhbs_learning_human_like_badminton_skills_arxiv_2602_08370.md — LHBS Imitation-to-Interaction 四阶段羽毛球技能；升格 wiki/entities/paper-notebook-learning-human-like-badminton-skills-for-humanoi.md
+
 ## [2026-06-25] ingest | sources/repos/tensorrt-official.md + openvino-official.md + ncnn-official.md — 补全 TensorRT 实体并扩展 OpenVINO/ncnn 与机载推理选型对比
 
 - 原始资料：[tensorrt-official.md](sources/repos/tensorrt-official.md)、[openvino-official.md](sources/repos/openvino-official.md)、[ncnn-official.md](sources/repos/ncnn-official.md)
