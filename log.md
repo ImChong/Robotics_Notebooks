@@ -1,10 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md — 人形 Loco-Manip 161 篇十方向全景；父节点 humanoid-loco-manip-161-papers-technology-map + 十组 loco-manip-161-category-* 子节点
+## [2026-06-26] ingest | sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md — 人形 Loco-Manip 161 篇十方向全景；父节点 + 十组 category 子节点 + 161 篇 paper-loco-manip-161-* 独立实体
 
-- 原始资料：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[wechat_humanoid_loco_manip_161_2026-06-26.md](sources/raw/wechat_humanoid_loco_manip_161_2026-06-26.md)、[humanoid_loco_manip_161_catalog.md](sources/papers/humanoid_loco_manip_161_catalog.md)
-- 工具：Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；<https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A>
-- 沉淀页面：[`wiki/overview/humanoid-loco-manip-161-papers-technology-map.md`](wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（**父**）、[`loco-manip-161-category-01-motion-base-wbt.md`](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) … [`loco-manip-161-category-10-ego-video.md`](wiki/overview/loco-manip-161-category-10-ego-video.md)（**子**）；catalog 挂接约 94/161 既有实体
+- 原始资料：[wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)、[wechat_humanoid_loco_manip_161_2026-06-26.md](sources/raw/wechat_humanoid_loco_manip_161_2026-06-26.md)、[humanoid_loco_manip_161_catalog.md](sources/papers/humanoid_loco_manip_161_catalog.md)、`sources/papers/loco_manip_161_survey_{001..161}_*.md`
+- 工具：Agent Reach v1.5.0 + wechat-article-for-ai（Camoufox）；[bootstrap_loco_manip_161_entities.py](scripts/bootstrap_loco_manip_161_entities.py)；<https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A>
+- 沉淀页面：[`wiki/overview/humanoid-loco-manip-161-papers-technology-map.md`](wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（**父**）、[`loco-manip-161-category-01-motion-base-wbt.md`](wiki/overview/loco-manip-161-category-01-motion-base-wbt.md) … [`loco-manip-161-category-10-ego-video.md`](wiki/overview/loco-manip-161-category-10-ego-video.md)（**子**）、**161** 篇 [`wiki/entities/paper-loco-manip-161-{NNN}-*.md`](wiki/entities/)（**独立节点**；与姊妹篇重叠者在 `related` 交叉链深读页）
 - 交叉更新：[`wiki/tasks/loco-manipulation.md`](wiki/tasks/loco-manipulation.md)、[`wiki/overview/humanoid-motion-cerebellum-technology-map.md`](wiki/overview/humanoid-motion-cerebellum-technology-map.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
 
 ## [2026-06-26] ingest | sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md — 智元 2026-06 发布七段落地链路；父节点 agibot-june-2026-release-technology-map + 六组 agibot-release-category-* 子节点 + 七项目实体

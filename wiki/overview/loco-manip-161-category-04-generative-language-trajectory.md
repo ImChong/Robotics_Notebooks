@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 04：生成式运动、语言控制与轨迹规划
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **04 生成式运动、语言控制与轨迹规划** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**04 生成式运动、语言控制与轨迹规划**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,22 +33,22 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 093 | DreamControl | [paper-notebook-dreamcontrol](../entities/paper-notebook-dreamcontrol.md) |
-| 094 | EMOTION | [paper-notebook-emotion](../entities/paper-notebook-emotion.md) |
-| 095 | EgoPriMo | [paper-loco-manip-02-egoprimo](../entities/paper-loco-manip-02-egoprimo.md) |
-| 096 | FRoM-W1 | [paper-notebook-from-w1](../entities/paper-notebook-from-w1.md) |
-| 097 | Harmon | [paper-notebook-harmon](../entities/paper-notebook-harmon.md) |
-| 098 | LangWBC | [paper-bfm-37-langwbc](../entities/paper-bfm-37-langwbc.md) |
-| 099 | MotionDisco | [paper-motiondisco-extreme-humanoid-loco-manipulation](../entities/paper-motiondisco-extreme-humanoid-loco-manipulation.md) |
-| 100 | MotionWAM | [paper-motionwam-humanoid-loco-manipulation-wam](../entities/paper-motionwam-humanoid-loco-manipulation-wam.md) |
-| 101 | OMG | [paper-omg-omni-modal-humanoid-control](../entities/paper-omg-omni-modal-humanoid-control.md) |
-| 102 | Robot Motion Diffusion Model | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 103 | SONIC | [paper-sonic](../entities/paper-sonic.md) |
-| 104 | SafeFlow | [paper-notebook-safeflow-real-time-text-driven-humanoid-whole-bo](../entities/paper-notebook-safeflow-real-time-text-driven-humanoid-whole-bo.md) |
-| 105 | TextOp | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 106 | 从语言到运动 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 107 | 使用潜在扩散模型进行物理一致的人形移动操作 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 108 | 揭示数据和模型扩展对人形机器人高级控制的影响 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
+| 093 | DreamControl | [paper-loco-manip-161-093-dreamcontrol](../entities/paper-loco-manip-161-093-dreamcontrol.md) |
+| 094 | EMOTION | [paper-loco-manip-161-094-emotion](../entities/paper-loco-manip-161-094-emotion.md) |
+| 095 | EgoPriMo | [paper-loco-manip-161-095-egoprimo](../entities/paper-loco-manip-161-095-egoprimo.md) |
+| 096 | FRoM-W1 | [paper-loco-manip-161-096-from-w1](../entities/paper-loco-manip-161-096-from-w1.md) |
+| 097 | Harmon | [paper-loco-manip-161-097-harmon](../entities/paper-loco-manip-161-097-harmon.md) |
+| 098 | LangWBC | [paper-loco-manip-161-098-langwbc](../entities/paper-loco-manip-161-098-langwbc.md) |
+| 099 | MotionDisco | [paper-loco-manip-161-099-motiondisco](../entities/paper-loco-manip-161-099-motiondisco.md) |
+| 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../entities/paper-loco-manip-161-100-motionwam.md) |
+| 101 | OMG | [paper-loco-manip-161-101-omg](../entities/paper-loco-manip-161-101-omg.md) |
+| 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
+| 103 | SONIC | [paper-loco-manip-161-103-sonic](../entities/paper-loco-manip-161-103-sonic.md) |
+| 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../entities/paper-loco-manip-161-104-safeflow.md) |
+| 105 | TextOp | [paper-loco-manip-161-105-textop](../entities/paper-loco-manip-161-105-textop.md) |
+| 106 | 从语言到运动 | [paper-loco-manip-161-106-n106](../entities/paper-loco-manip-161-106-n106.md) |
+| 107 | 使用潜在扩散模型进行物理一致的人形移动操作 | [paper-loco-manip-161-107-n107](../entities/paper-loco-manip-161-107-n107.md) |
+| 108 | 揭示数据和模型扩展对人形机器人高级控制的影响 | [paper-loco-manip-161-108-n108](../entities/paper-loco-manip-161-108-n108.md) |
 
 ## 关联页面
 

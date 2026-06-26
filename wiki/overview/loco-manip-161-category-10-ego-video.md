@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 10：从人类第一视角视频学习
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **10 从人类第一视角视频学习** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**10 从人类第一视角视频学习**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,7 +33,7 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 161 | EgoVLA | [paper-notebook-egovla-learning-vision-language-action-models-fr](../entities/paper-notebook-egovla-learning-vision-language-action-models-fr.md) |
+| 161 | EgoVLA | [paper-loco-manip-161-161-egovla](../entities/paper-loco-manip-161-161-egovla.md) |
 
 ## 关联页面
 
