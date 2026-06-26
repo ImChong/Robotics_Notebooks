@@ -9,155 +9,107 @@
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/genie-sim-3.md",
-      "detail_id": "entity-genie-sim-3",
-      "label": "Genie Sim 3.0",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
-      "label": "人形 Loco-Manip 161 篇技术地图",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-01-motion-base-wbt.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-01-motion-base-wbt",
-      "label": "Loco-Manip 161 分类 01：运控基座与通用全身跟踪",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/loco-manip-161-category-10-ego-video.md",
-      "detail_id": "wiki-overview-loco-manip-161-category-10-ego-video",
-      "label": "Loco-Manip 161 分类 10：从人类第一视角视频学习",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/humanoid-motion-cerebellum-technology-map.md",
-      "detail_id": "wiki-overview-humanoid-motion-cerebellum-technology-map",
-      "label": "运动小脑技术地图：64 篇论文的九组视角",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/agibot-june-2026-release-technology-map.md",
-      "detail_id": "wiki-overview-agibot-june-2026-release-technology-map",
-      "label": "智元 2026-06 发布技术地图",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/agibot-release-category-01-data-entry.md",
-      "detail_id": "wiki-overview-agibot-release-category-01-data-entry",
-      "label": "智元发布分类 01：数据入口",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/agibot-release-category-06-application-delivery.md",
-      "detail_id": "wiki-overview-agibot-release-category-06-application-delivery",
-      "label": "智元发布分类 06：应用编排与交付",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agibot-world-2026.md",
-      "detail_id": "entity-agibot-world-2026",
-      "label": "AGIBOT WORLD 2026",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/go-2.md",
-      "detail_id": "entity-go-2",
-      "label": "GO-2（智元执行基座）",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agibot-bfm-2.md",
-      "detail_id": "entity-agibot-bfm-2",
-      "label": "BFM-2（智元运控基座）",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/agibot-agile.md",
-      "detail_id": "entity-agibot-agile",
-      "label": "AGILE（智元感控一体）",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/genie-studio-agent.md",
-      "detail_id": "entity-genie-studio-agent",
-      "label": "Genie Studio Agent",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ge-sim-2.md",
-      "detail_id": "entity-ge-sim-2",
-      "label": "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/bfm-41-papers-technology-map.md",
-      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
-      "label": "BFM 技术地图：41 篇论文的五类问题视角",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
-      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
-      "label": "机器人世界模型：训练闭环与三线 taxonomy",
-      "type": "overview",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulation-physics-fidelity.md",
-      "detail_id": "wiki-queries-simulation-physics-fidelity",
-      "label": "仿真物理保真度链路选型指南",
-      "type": "query",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/physics-fidelity-sim2real-gap.md",
-      "detail_id": "wiki-concepts-physics-fidelity-sim2real-gap",
-      "label": "Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）",
+      "path": "wiki/concepts/3d-spatial-vqa.md",
+      "detail_id": "wiki-concepts-3d-spatial-vqa",
+      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
       "type": "concept",
-      "recency": "2026-06-25",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/ai-auto-research.md",
+      "detail_id": "wiki-concepts-ai-auto-research",
+      "label": "AI Auto-Research（学术研究自动化）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/armature-modeling.md",
+      "detail_id": "wiki-concepts-armature-modeling",
+      "label": "Armature Modeling（电枢惯量建模）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/backpropagation.md",
+      "detail_id": "wiki-concepts-backpropagation",
+      "label": "反向传播算法 (Backpropagation)",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/behavior-foundation-model.md",
+      "detail_id": "wiki-concepts-behavior-foundation-model",
+      "label": "Behavior Foundation Model（行为基础模型，BFM）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/can-bus-protocol.md",
+      "detail_id": "wiki-concepts-can-bus-protocol",
+      "label": "CAN 总线（经典 CAN / CAN 2.0）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/can-fd.md",
+      "detail_id": "wiki-concepts-can-fd",
+      "label": "CAN FD（Flexible Data Rate）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/capture-point-dcm.md",
+      "detail_id": "wiki-concepts-capture-point-dcm",
+      "label": "Capture Point / DCM",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/centroidal-dynamics.md",
+      "detail_id": "wiki-concepts-centroidal-dynamics",
+      "label": "Centroidal Dynamics",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/character-animation-vs-robotics.md",
+      "detail_id": "wiki-concepts-character-animation-vs-robotics",
+      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/clock-synchronization-algorithms.md",
+      "detail_id": "wiki-concepts-clock-synchronization-algorithms",
+      "label": "时钟同步算法 (Clock Synchronization Algorithms)",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/collision-distance-optimization.md",
+      "detail_id": "wiki-concepts-collision-distance-optimization",
+      "label": "Collision Distance Optimization（碰撞距离优化）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/constrained-optimization.md",
+      "detail_id": "wiki-concepts-constrained-optimization",
+      "label": "Constrained Optimization（约束优化）",
+      "type": "concept",
+      "recency": "2026-06-26",
       "source": "log.md"
     },
     {
@@ -165,15 +117,63 @@
       "detail_id": "wiki-concepts-contact-dynamics",
       "label": "Contact Dynamics",
       "type": "concept",
-      "recency": "2026-06-25",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-estimation.md",
+      "detail_id": "wiki-concepts-contact-estimation",
+      "label": "Contact Estimation（接触估计）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/contact-rich-manipulation.md",
+      "detail_id": "wiki-concepts-contact-rich-manipulation",
+      "label": "Contact-Rich Manipulation（接触丰富型操作）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/control-allocation.md",
+      "detail_id": "wiki-concepts-control-allocation",
+      "label": "Control Allocation（控制分配）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/control-barrier-function.md",
+      "detail_id": "wiki-concepts-control-barrier-function",
+      "label": "Control Barrier Function（控制屏障函数）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/curriculum-learning.md",
+      "detail_id": "wiki-concepts-curriculum-learning",
+      "label": "Curriculum Learning（课程学习）",
+      "type": "concept",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/data-flywheel.md",
+      "detail_id": "wiki-concepts-data-flywheel",
+      "label": "Data Flywheel (具身数据飞轮)",
+      "type": "concept",
+      "recency": "2026-06-26",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/genie-sim-3.md",
-    "detail_id": "entity-genie-sim-3",
-    "label": "Genie Sim 3.0",
-    "type": "entity",
+    "path": "wiki/concepts/3d-spatial-vqa.md",
+    "detail_id": "wiki-concepts-3d-spatial-vqa",
+    "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
+    "type": "concept",
     "recency": "2026-06-26",
     "source": "log.md"
   }

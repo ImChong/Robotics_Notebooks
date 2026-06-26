@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-26] feat(lint): V26 P0 — 动力学/仿真概念页交叉链路巡检 `physics_concept_crosslink`（INFO 级）
+
+- 改动：[`scripts/lint_wiki.py`](scripts/lint_wiki.py) 新增 `_check_physics_concept_crosslink`——对 `tags` 含 `dynamics`/`simulation`/`physics` 的 `wiki/concepts/*` 与 `wiki/formalizations/*` 概念页，检查正文是否回链「仿真物理保真度」专题枢纽（[`simulation-physics-fidelity`](wiki/queries/simulation-physics-fidelity.md) / [`physics-fidelity-sim2real-gap`](wiki/concepts/physics-fidelity-sim2real-gap.md)），缺失给 INFO 级提示不阻塞 CI；枢纽页自身豁免；同时支持列表式与内联式 `tags`
+- 测试：新增 [`tests/test_lint_wiki_physics_crosslink.py`](tests/test_lint_wiki_physics_crosslink.py) 6 用例（有/无回链、列表式/内联式 tag、枢纽豁免、INFO 不计失败）全绿；`ruff` / `mypy` 通过
+- 基线快照：[`exports/lint-report.md`](exports/lint-report.md) 现 **15** 页待回链；P1 已回链的 5 页（contact-dynamics / joint-friction-models / articulated-body-algorithms / differentiable-simulation / urdf-robot-description）正确豁免；`make lint` 0 errors
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v26.md`](docs/checklists/tech-stack-next-phase-checklist-v26.md) P0 打勾
+
 ## [2026-06-26] structural(wiki): Loco-Manip 161 与 paper-notebook stub 去重合并 — 33 对并入 paper-loco-manip-161-* / genie-sim-3
 
 - 工具：`make paper-notebook-dedupe`（[dedupe_paper_notebook_nodes.py](scripts/dedupe_paper_notebook_nodes.py)）

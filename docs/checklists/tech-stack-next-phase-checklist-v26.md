@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v26
 
-最后更新：2026-06-25（P1 仿真物理保真度知识链 +2 页落地并完成四层交叉回链）
+最后更新：2026-06-26（P0 动力学/仿真概念页交叉链路巡检 `physics_concept_crosslink` INFO 级落地 + 测试 + 报告基线）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **动力学/仿真概念页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `physics_concept_crosslink_check`：对 `tags` 含 `dynamics` / `simulation` / `physics` 的概念页，检查正文是否回链到 sim2real / 物理保真度专题枢纽（缺失给 INFO 级提示，不阻塞 CI），并写入 lint 报告基线快照；新增用例覆盖到 `tests/`。
+- [x] **动力学/仿真概念页交叉链路巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `_check_physics_concept_crosslink`：对 `tags` 含 `dynamics` / `simulation` / `physics` 的 `concepts/` 与 `formalizations/` 概念页，检查正文是否回链到「仿真物理保真度」专题枢纽（`simulation-physics-fidelity` / `physics-fidelity-sim2real-gap`，缺失给 INFO 级 `physics_concept_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；已写入 lint 报告基线快照（`exports/lint-report.md`，现 15 页待回链，P1 已回链的 5 页正确豁免）；新增 `tests/test_lint_wiki_physics_crosslink.py` 6 个用例覆盖（列表式/内联式 tag、有/无回链、枢纽豁免、INFO 不计失败）。
 
 ## P1: 仿真物理保真度链路专题 (Quality)
 

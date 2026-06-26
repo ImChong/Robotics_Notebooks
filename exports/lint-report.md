@@ -2,7 +2,7 @@
 
 ## [2026-06-26] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **162** 条信息型预警）：
+共发现 **0** 个问题（另含 **177** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -262,5 +262,22 @@
 
 ### 💡 陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）（0 个）
 - 无
+
+### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（15 个）
+- wiki/concepts/armature-modeling.md
+- wiki/concepts/centroidal-dynamics.md
+- wiki/concepts/embodied-data-cleaning.md
+- wiki/concepts/embodied-rl-minimal-closed-loop.md
+- wiki/concepts/humanoid-parallel-joint-kinematics.md
+- wiki/concepts/lip-zmp.md
+- wiki/concepts/procedural-terrain-generation.md
+- wiki/concepts/robot-link-and-rotor-inertia.md
+- wiki/concepts/simulation-evaluation-infrastructure.md
+- wiki/concepts/video-as-simulation.md
+- wiki/formalizations/contact-complementarity.md
+- wiki/formalizations/contact-wrench-cone.md
+- wiki/formalizations/friction-cone.md
+- wiki/formalizations/tsid-formulation.md
+- wiki/formalizations/zmp-lip.md
 
 📊 Sources 覆盖率：1459/1488 (98%) wiki/entity 页有 ingest 来源
