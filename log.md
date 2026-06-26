@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-26] ingest | sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md — 智元 2026-06 发布七段落地链路；父节点 agibot-june-2026-release-technology-map + 六组 agibot-release-category-* 子节点 + 七项目实体
+
+- 原始资料：[wechat_embodied_ai_lab_agibot_june_2026_release.md](sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md)、[wechat_agibot_june_2026_release_2026-06-26.md](sources/raw/wechat_agibot_june_2026_release_2026-06-26.md)
+- 工具：已安装 [Panniantong/Agent-Reach](https://github.com/Panniantong/Agent-Reach) v1.5.0（`pip install` + 手动安装 [wechat-article-for-ai](https://github.com/bzd6661/wechat-article-for-ai) 至 `~/.agent-reach/tools/`（Camoufox））
+- 沉淀页面：[`wiki/overview/agibot-june-2026-release-technology-map.md`](wiki/overview/agibot-june-2026-release-technology-map.md)（**父**）、[`agibot-release-category-01-data-entry.md`](wiki/overview/agibot-release-category-01-data-entry.md) … [`agibot-release-category-06-application-delivery.md`](wiki/overview/agibot-release-category-06-application-delivery.md)（**子**）、[`agibot-world-2026.md`](wiki/entities/agibot-world-2026.md)、[`genie-sim-3.md`](wiki/entities/genie-sim-3.md)、[`go-2.md`](wiki/entities/go-2.md)、[`agibot-bfm-2.md`](wiki/entities/agibot-bfm-2.md)、[`agibot-agile.md`](wiki/entities/agibot-agile.md)、[`genie-studio-agent.md`](wiki/entities/genie-studio-agent.md)；复用 [`ge-sim-2.md`](wiki/entities/ge-sim-2.md)
+- 交叉更新：[`bfm-41-papers-technology-map.md`](wiki/overview/bfm-41-papers-technology-map.md)、[`robot-world-models-training-loop-taxonomy.md`](wiki/overview/robot-world-models-training-loop-taxonomy.md)、[`sources/README.md`](sources/README.md)、[`sources/repos/panniantong_agent_reach.md`](sources/repos/panniantong_agent_reach.md)
+
 ## [2026-06-25] structural | checklist-v26 P1 — 仿真物理保真度知识链 +2 页落地并完成四层交叉回链
 
 - 新增 Query：[simulation-physics-fidelity.md](wiki/queries/simulation-physics-fidelity.md)（几何/URDF → 刚体动力学（ABA/RNEA）→ 接触/摩擦 → 执行器四层保真度取舍决策树，配 Mermaid，覆盖每层对 sim2real gap 的贡献/建模成本/典型失败模式）
