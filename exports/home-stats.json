@@ -1,13 +1,109 @@
 {
   "generated_at": "2026-06-26",
-  "node_count": 1338,
-  "edge_count": 9145,
+  "node_count": 1351,
+  "edge_count": 9234,
   "coverage": {
-    "covered": 1307,
-    "total": 1336,
+    "covered": 1320,
+    "total": 1349,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/agibot-june-2026-release-technology-map.md",
+      "detail_id": "wiki-overview-agibot-june-2026-release-technology-map",
+      "label": "智元 2026-06 发布技术地图",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/agibot-release-category-01-data-entry.md",
+      "detail_id": "wiki-overview-agibot-release-category-01-data-entry",
+      "label": "智元发布分类 01：数据入口",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/agibot-release-category-06-application-delivery.md",
+      "detail_id": "wiki-overview-agibot-release-category-06-application-delivery",
+      "label": "智元发布分类 06：应用编排与交付",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agibot-world-2026.md",
+      "detail_id": "entity-agibot-world-2026",
+      "label": "AGIBOT WORLD 2026",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/genie-sim-3.md",
+      "detail_id": "entity-genie-sim-3",
+      "label": "Genie Sim 3.0",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/go-2.md",
+      "detail_id": "entity-go-2",
+      "label": "GO-2（智元执行基座）",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agibot-bfm-2.md",
+      "detail_id": "entity-agibot-bfm-2",
+      "label": "BFM-2（智元运控基座）",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/agibot-agile.md",
+      "detail_id": "entity-agibot-agile",
+      "label": "AGILE（智元感控一体）",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/genie-studio-agent.md",
+      "detail_id": "entity-genie-studio-agent",
+      "label": "Genie Studio Agent",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/ge-sim-2.md",
+      "detail_id": "entity-ge-sim-2",
+      "label": "GE-Sim 2.0（Genie Envisioner World Simulator 2.0）",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/bfm-41-papers-technology-map.md",
+      "detail_id": "wiki-overview-bfm-41-papers-technology-map",
+      "label": "BFM 技术地图：41 篇论文的五类问题视角",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/robot-world-models-training-loop-taxonomy.md",
+      "detail_id": "wiki-overview-robot-world-models-training-loop-taxonomy",
+      "label": "机器人世界模型：训练闭环与三线 taxonomy",
+      "type": "overview",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/simulation-physics-fidelity.md",
       "detail_id": "wiki-queries-simulation-physics-fidelity",
@@ -71,110 +167,14 @@
       "type": "entity",
       "recency": "2026-06-25",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/tensorrt.md",
-      "detail_id": "entity-tensorrt",
-      "label": "TensorRT",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/openvino.md",
-      "detail_id": "entity-openvino",
-      "label": "OpenVINO",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/ncnn.md",
-      "detail_id": "entity-ncnn",
-      "label": "ncnn",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/onnxruntime-vs-mnn-vs-tensorrt.md",
-      "detail_id": "wiki-comparisons-onnxruntime-vs-mnn-vs-tensorrt",
-      "label": "ONNX Runtime vs MNN vs TensorRT（机载推理 Runtime 选型）",
-      "type": "comparison",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/onnx.md",
-      "detail_id": "entity-onnx",
-      "label": "ONNX",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/onnxruntime.md",
-      "detail_id": "entity-onnxruntime",
-      "label": "ONNX Runtime",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/mnn.md",
-      "detail_id": "entity-mnn",
-      "label": "MNN",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/pytorch.md",
-      "detail_id": "entity-pytorch",
-      "label": "PyTorch",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/tensorflow.md",
-      "detail_id": "entity-tensorflow",
-      "label": "TensorFlow",
-      "type": "entity",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/whole-body-tracking-pipeline.md",
-      "detail_id": "wiki-concepts-whole-body-tracking-pipeline",
-      "label": "Whole-Body Tracking Pipeline（全身运动跟踪流水线）",
-      "type": "concept",
-      "recency": "2026-06-25",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/robot-policy-debug-playbook.md",
-      "detail_id": "wiki-queries-robot-policy-debug-playbook",
-      "label": "RL 策略真机调试 Playbook",
-      "type": "query",
-      "recency": "2026-06-25",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/simulation-physics-fidelity.md",
-    "detail_id": "wiki-queries-simulation-physics-fidelity",
-    "label": "仿真物理保真度链路选型指南",
-    "type": "query",
-    "recency": "2026-06-25",
+    "path": "wiki/overview/agibot-june-2026-release-technology-map.md",
+    "detail_id": "wiki-overview-agibot-june-2026-release-technology-map",
+    "label": "智元 2026-06 发布技术地图",
+    "type": "overview",
+    "recency": "2026-06-26",
     "source": "log.md"
   }
 }

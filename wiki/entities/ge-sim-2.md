@@ -2,8 +2,10 @@
 type: entity
 tags: [world-models, video-generation, manipulation, simulation, closed-loop, agibot, multi-view, evaluation, open-source]
 status: complete
-updated: 2026-05-30
+updated: 2026-06-26
 related:
+  - ../overview/agibot-june-2026-release-technology-map.md
+  - ../overview/agibot-release-category-03-world-model.md
   - ../methods/generative-world-models.md
   - ../concepts/video-as-simulation.md
   - ../tasks/manipulation.md
@@ -12,6 +14,7 @@ related:
   - ../overview/robot-world-models-training-loop-taxonomy.md
   - ./tau0-world-model.md
 sources:
+  - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/papers/ge_sim_2_arxiv_2605_27491.md
   - ../../sources/repos/ge_sim_v2.md
   - ../../sources/sites/ge-sim-v2-project.md
@@ -111,6 +114,7 @@ flowchart TB
 - [Model-Based RL](../methods/model-based-rl.md) — 想象 rollout 与奖励驱动学习接口
 - [EWMBench](./ewmbench.md) — 同厂牌 EWM **开环** 三维评测
 - [机器人世界模型：训练闭环 taxonomy](../overview/robot-world-models-training-loop-taxonomy.md) — ③ 视频世界模型 · 从想象到训练闭环
+- [智元 2026-06 发布技术地图](../overview/agibot-june-2026-release-technology-map.md) — GE-Sim 2.0 在七段落地链路中的 **03 世界模型** 位
 - [τ₀-World Model（τ0-WM）](./tau0-world-model.md) — 同 Agibot 系 **5B 统一视频–动作** 与测试时 propose–evaluate–revise（策略–仿真一体，非独立 Judge 栈）
 
 ## 参考来源
@@ -118,6 +122,7 @@ flowchart TB
 - [GE-Sim 2.0 论文摘录](../../sources/papers/ge_sim_2_arxiv_2605_27491.md)
 - [GE-Sim-V2 仓库归档](../../sources/repos/ge_sim_v2.md)
 - [GE-Sim 2.0 项目页归档](../../sources/sites/ge-sim-v2-project.md)
+- [wechat_embodied_ai_lab_agibot_june_2026_release.md](../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md) — 2026-06 发布会策展解读
 - Qiu et al., *GE-Sim 2.0: A Roadmap Towards Comprehensive Closed-loop Video World Simulators for Robotic Manipulation*, [arXiv:2605.27491](https://arxiv.org/abs/2605.27491)
 
 ## 推荐继续阅读

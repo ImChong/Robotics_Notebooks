@@ -19,8 +19,11 @@ related:
   - ../methods/any2track.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../concepts/foundation-policy.md
+  - ../entities/agibot-bfm-2.md
+  - ./agibot-june-2026-release-technology-map.md
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_bfm_41_papers_survey.md
+  - ../../sources/blogs/wechat_embodied_ai_lab_agibot_june_2026_release.md
   - ../../sources/repos/awesome_bfm_papers.md
   - ../../sources/papers/bfm_survey_arxiv_2506_20487.md
   - ../../sources/papers/bfm_awesome_41_catalog.md

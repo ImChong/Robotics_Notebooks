@@ -133,6 +133,7 @@ flowchart TB
 - [World Action Models（WAM）](../concepts/world-action-models.md) — 未来与动作联合建模的平行综述（arXiv:2605.12090）
 - [VLA](../methods/vla.md) — 反应式策略与长程物理推演的张力
 - [人形 RL 运动控制：身体系统栈](./humanoid-rl-motion-control-body-system-stack.md) — 第 8 层「世界模型 = 上线前试运行」
+- [智元 2026-06 发布技术地图](./agibot-june-2026-release-technology-map.md) — GE-Sim 2.0 与 Genie Sim 3.0 在同发布会语境下的分工
 
 ## 参考来源
 
