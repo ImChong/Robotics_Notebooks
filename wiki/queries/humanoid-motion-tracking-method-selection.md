@@ -3,7 +3,7 @@ title: 人形运动跟踪方法选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-06-19
+updated: 2026-06-26
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/deepmimic.md
@@ -81,7 +81,7 @@ flowchart TD
 
 [GentleHumanoid](../methods/gentlehumanoid-motion-tracking.md) 把力/柔顺约束写进跟踪目标，适合接触丰富场景。参考不足时，[ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) 用于扩充或平滑参考分布。
 
-当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-notebook-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
+当入口是 **自然语言** 且目标是 **机器人可执行的高动态全身**（而非人体 SMPL 再 retarget）时，优先评估 **[PhyGile](../entities/paper-phygile.md)**：**262D robot-native 扩散 + physics-prefix + GMT 验证/微调闭环**；与 [Harmon](../entities/paper-loco-manip-161-097-harmon.md) 同族但强调 **物理前缀与跟踪器共训**，避免人体 T2M 先验的推理期重定向鸿沟。
 
 ### 5. 大扰动：跟踪 vs 生成中间件 vs 统一 AMP
 

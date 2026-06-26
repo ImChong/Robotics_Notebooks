@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-trajbooster.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_080_trajbooster.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ TrajBooster 的实现路径是先把相机图像/多视角观测、本体状态�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-trajbooster](../entities/paper-notebook-trajbooster.md)
+- 同题深读/既有实体：[paper-loco-manip-161-080-trajbooster](../entities/paper-loco-manip-161-080-trajbooster.md)

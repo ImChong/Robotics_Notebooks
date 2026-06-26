@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-08-hardware-deployment.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_137_gallant.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ Gallant 先从相机图像/多视角观测、本体状态与关节序列、深�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and](../entities/paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and.md)
+- 同题深读/既有实体：[paper-loco-manip-161-137-gallant](../entities/paper-loco-manip-161-137-gallant.md)

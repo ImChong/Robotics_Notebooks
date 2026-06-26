@@ -28,7 +28,7 @@
   - 为后续 physics-prefix 适配提供 **可验证、可微调** 的 GMT 执行底座。
 - **对 wiki 的映射：**
   - [PhyGile](../../wiki/entities/paper-phygile.md) — GMT 子系统与 MoE 课程叙事
-  - [paper-notebook-gmt](../../wiki/entities/paper-notebook-gmt.md) — 与独立 GMT 论文实体交叉索引
+  - [paper-loco-manip-161-009-gmt](../../wiki/entities/paper-loco-manip-161-009-gmt.md) — 与独立 GMT 论文实体交叉索引
 
 ### 3) TP-MoE 条件机器人原生扩散生成（262D）
 

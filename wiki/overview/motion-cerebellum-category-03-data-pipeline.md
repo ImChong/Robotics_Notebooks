@@ -42,7 +42,7 @@ sources:
 | 20 | OmniRetarget | [paper-hrl-stack-03-omniretarget.md](../entities/paper-hrl-stack-03-omniretarget.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 21 | HumanX | [paper-hrl-stack-05-humanx.md](../entities/paper-hrl-stack-05-humanx.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 22 | HDMI | [paper-hrl-stack-06-hdmi.md](../entities/paper-hrl-stack-06-hdmi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
-| 23 | SUGAR | [paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md](../entities/paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
+| 23 | SUGAR | [paper-notebook-sugar-a-scalable-human-video-driven-generalizabl.md](../entities/paper-loco-manip-161-076-sugar.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 24 | GenMimic | [paper-hrl-stack-04-from_generated_human_videos_to_physi.md](../entities/paper-hrl-stack-04-from_generated_human_videos_to_physi.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 
 ## 关联页面

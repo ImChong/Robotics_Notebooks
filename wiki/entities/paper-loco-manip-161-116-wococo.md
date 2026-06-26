@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-wococo.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_116_wococo.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ WoCoCo 先从本体状态与关节序列、人类视频/动捕轨迹、仿真交
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-wococo](../entities/paper-notebook-wococo.md)
+- 同题深读/既有实体：[paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md)

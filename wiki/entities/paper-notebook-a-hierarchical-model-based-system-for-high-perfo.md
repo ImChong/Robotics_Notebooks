@@ -10,7 +10,7 @@ tags:
   - model-based
   - humanoid-paper-notebooks
 status: draft
-updated: 2026-06-12
+updated: 2026-06-26
 arxiv: "2512.09431"
 related:
   - ../tasks/humanoid-soccer.md

@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-opt2skill.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_072_opt2skill.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ Opt2Skill 先从相机图像/多视角观测、仿真交互数据、接触力/�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-opt2skill](../entities/paper-notebook-opt2skill.md)
+- 同题深读/既有实体：[paper-loco-manip-161-072-opt2skill](../entities/paper-loco-manip-161-072-opt2skill.md)

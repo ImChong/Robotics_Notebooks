@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-26",
-  "node_count": 1523,
-  "edge_count": 10021,
+  "node_count": 1490,
+  "edge_count": 9923,
   "coverage": {
-    "covered": 1492,
-    "total": 1521,
+    "covered": 1459,
+    "total": 1488,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/genie-sim-3.md",
+      "detail_id": "entity-genie-sim-3",
+      "label": "Genie Sim 3.0",
+      "type": "entity",
+      "recency": "2026-06-26",
+      "source": "log.md"
+    },
     {
       "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
       "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
@@ -76,14 +84,6 @@
       "path": "wiki/entities/agibot-world-2026.md",
       "detail_id": "entity-agibot-world-2026",
       "label": "AGIBOT WORLD 2026",
-      "type": "entity",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/genie-sim-3.md",
-      "detail_id": "entity-genie-sim-3",
-      "label": "Genie Sim 3.0",
       "type": "entity",
       "recency": "2026-06-26",
       "source": "log.md"
@@ -170,10 +170,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/overview/humanoid-loco-manip-161-papers-technology-map.md",
-    "detail_id": "wiki-overview-humanoid-loco-manip-161-papers-technology-map",
-    "label": "人形 Loco-Manip 161 篇技术地图",
-    "type": "overview",
+    "path": "wiki/entities/genie-sim-3.md",
+    "detail_id": "entity-genie-sim-3",
+    "label": "Genie Sim 3.0",
+    "type": "entity",
     "recency": "2026-06-26",
     "source": "log.md"
   }

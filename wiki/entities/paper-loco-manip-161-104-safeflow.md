@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-safeflow-real-time-text-driven-humanoid-whole-bo.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_104_safeflow.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ SafeFlow 先从本体状态与关节序列恢复场景、目标或运动表征�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-safeflow-real-time-text-driven-humanoid-whole-bo](../entities/paper-notebook-safeflow-real-time-text-driven-humanoid-whole-bo.md)
+- 同题深读/既有实体：[paper-loco-manip-161-104-safeflow](../entities/paper-loco-manip-161-104-safeflow.md)

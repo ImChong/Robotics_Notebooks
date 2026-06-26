@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-emotion.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_094_emotion.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ EMOTION 先从视觉、状态和动作数据恢复场景、目标或运动表征
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-emotion](../entities/paper-notebook-emotion.md)
+- 同题深读/既有实体：[paper-loco-manip-161-094-emotion](../entities/paper-loco-manip-161-094-emotion.md)

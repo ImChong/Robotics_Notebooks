@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-07-data-teleop.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-humanoidexo.md
+  - ../entities/paper-loco-manip-161-067-humanoidexo.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_130_humanoidexo.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +74,4 @@ HumanoidExo 主要解决数据闭环：用人类视频/动捕轨迹、遥操作/
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-humanoidexo](../entities/paper-notebook-humanoidexo.md)
+- 同题深读/既有实体：[paper-loco-manip-161-067-humanoidexo](../entities/paper-loco-manip-161-067-humanoidexo.md)

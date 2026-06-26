@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, nvidia]
 status: planned
-updated: 2026-06-11
+updated: 2026-06-26
 arxiv: "2504.00614"
 related:
   - ../overview/paper-notebook-category-05-locomotion.md

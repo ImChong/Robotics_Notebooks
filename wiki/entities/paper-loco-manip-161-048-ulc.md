@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-02-upper-body-interface.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-ulc.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_048_ulc.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ ULC 把本体状态与关节序列、接触力/触觉信号转成可跟踪的身
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-ulc](../entities/paper-notebook-ulc.md)
+- 同题深读/既有实体：[paper-loco-manip-161-048-ulc](../entities/paper-loco-manip-161-048-ulc.md)

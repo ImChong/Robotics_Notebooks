@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-planned, horizon-robotics]
 status: planned
-updated: 2026-06-11
+updated: 2026-06-26
 arxiv: "2509.20717"
 related:
   - ../overview/paper-notebook-category-13-physics-based-animation.md

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 13：物理动画（27 篇深读笔记索引）。"

@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）。"
@@ -55,7 +55,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）
 - [RUKA](../entities/paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md) — 待深读
 - [The Duke Humanoid](../entities/paper-notebook-the-duke-humanoid-design-and-control-for-energy.md) — 待深读
 - [The MIT Humanoid Robot](../entities/paper-notebook-the-mit-humanoid-robot-design-motion-planning-an.md) — 待深读
-- [ToddlerBot](../entities/paper-notebook-toddlerbot-open-source-ml-compatible-humanoid-pl.md) — 待深读
+- [ToddlerBot](../entities/paper-loco-manip-161-141-toddlerbot.md) — 待深读
 - [Toward Humanoid Brain-Body Co-design](../entities/paper-notebook-toward-humanoid-brain-body-co-design-joint-optim.md) — 待深读
 - [Unitree H1 Humanoid Robot Whitepaper & Specifications](../entities/paper-notebook-unitree-h1-whitepaper.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html)
 - [Zeroth Bot](../entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md) — 待深读

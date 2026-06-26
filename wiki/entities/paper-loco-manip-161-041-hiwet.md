@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-02-upper-body-interface.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-hiwet.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_041_hiwet.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -73,5 +72,6 @@ HiWET 把本体状态与关节序列、仿真交互数据、接触力/触觉信�
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：HiWET](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/HiWET__Hierarchical_World-Frame_End-Effector_Tracking_for_Long-Horizon_Humanoid_Loco-Manipulation/HiWET__Hierarchical_World-Frame_End-Effector_Tracking_for_Long-Horizon_Humanoid_Loco-Manipulation.html)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-hiwet](../entities/paper-notebook-hiwet.md)
+- 同题深读/既有实体：[paper-loco-manip-161-041-hiwet](../entities/paper-loco-manip-161-041-hiwet.md)

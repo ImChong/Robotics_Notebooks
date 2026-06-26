@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 arxiv: "2010.11251"
 venue: "Science Robotics 2020"
 related:

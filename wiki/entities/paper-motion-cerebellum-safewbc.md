@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, snu]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "安全：控制屏障函数接到全身控制后面。输入是全身控制命令、状态约束和扰动裕度；实现上用输入到状态安全控制屏障函数修正控制量，使关节限位、自碰撞、障碍距离等约束保持安全；重点是把安全层接到 WBC/策略输出后面。"
 related:

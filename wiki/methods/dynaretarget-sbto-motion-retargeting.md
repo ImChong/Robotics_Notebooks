@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, humanoid, loco-manipulation, trajectory-optimization, sampling-based-optimization, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-06-17
-updated: 2026-06-17
+updated: 2026-06-26
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md

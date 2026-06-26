@@ -9,7 +9,6 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-04-generative-language-trajectory.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-dreamcontrol.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_093_dreamcontrol.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +73,4 @@ DreamControl 先从本体状态与关节序列、人类视频/动捕轨迹、仿
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-dreamcontrol](../entities/paper-notebook-dreamcontrol.md)
+- 同题深读/既有实体：[paper-loco-manip-161-093-dreamcontrol](../entities/paper-loco-manip-161-093-dreamcontrol.md)

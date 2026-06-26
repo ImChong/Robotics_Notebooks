@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 03：高影响力精选（31 篇深读笔记索引）。"
@@ -62,7 +62,7 @@ summary: "Paper Notebooks 分类 03：高影响力精选（31 篇深读笔记索
 - [AME-2](../entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md) — 待深读
 - [Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training](../entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md) — 待深读
 - [Distillation-PPO](../entities/paper-notebook-distillation-ppo-a-novel-two-stage-rl-framework.md) — 待深读
-- [ExBody2](../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md) — 待深读
+- [ExBody2](../entities/paper-loco-manip-161-007-exbody2.md) — 待深读
 - [Gait-Adaptive Perceptive Humanoid Locomotion with Real-Time Under-Base Terrain Reconstruction](../entities/paper-notebook-gait-adaptive-perceptive-humanoid-locomotion-wit.md) — 待深读
 - [Gait-Conditioned RL with Multi-Phase Curriculum for Humanoid Locomotion](../entities/paper-notebook-gait-conditioned-rl-with-multi-phase-curriculum.md) — 待深读
 - [Learning a Vision-Based Footstep Planner for Hierarchical Walking Control](../entities/paper-notebook-learning-a-vision-based-footstep-planner-for-hie.md) — 待深读

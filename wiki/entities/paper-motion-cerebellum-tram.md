@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, upenn]
 status: complete
-updated: 2026-06-25
+updated: 2026-06-26
 venue: curated
 summary: "数据入口：野外视频到全局人体轨迹。输入是野外单目视频；实现上恢复全局人体轨迹、相机运动和三维人体姿态，为后续机器人重定向提供带世界坐标的动作源；价值在于把互联网视频从局部姿态提升到可用的全局运动数据。"
 related:

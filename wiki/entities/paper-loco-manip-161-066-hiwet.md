@@ -9,7 +9,7 @@ related:
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-03-visuomotor.md
   - ../tasks/loco-manipulation.md
-  - ../entities/paper-notebook-hiwet.md
+  - ../entities/paper-loco-manip-161-041-hiwet.md
 sources:
   - ../../sources/papers/loco_manip_161_survey_066_hiwet.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -74,4 +74,4 @@ HiWET 先从相机图像/多视角观测、本体状态与关节序列、仿真�
 ## 推荐继续阅读
 
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
-- 同题深读/既有实体：[paper-notebook-hiwet](../entities/paper-notebook-hiwet.md)
+- 同题深读/既有实体：[paper-loco-manip-161-041-hiwet](../entities/paper-loco-manip-161-041-hiwet.md)

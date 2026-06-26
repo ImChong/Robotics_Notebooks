@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid, motion-control, motion-cerebellum, survey, whole-body-control, loco-manipulation, foundation-model]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-26
 related:
   - ./motion-cerebellum-category-01-locomotion-base.md
   - ./motion-cerebellum-category-02-motion-imitation.md

@@ -11,7 +11,7 @@ tags:
   - centroidal-dynamics
   - training-time-guidance
 status: complete
-updated: 2026-06-18
+updated: 2026-06-26
 arxiv: "2606.05687"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

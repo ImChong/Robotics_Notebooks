@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-17
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读笔记索引）。"

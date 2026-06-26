@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 venue: "SIGGRAPH Asia 2025"
 code: https://github.com/gouruiyu/ControlOperators
 related:

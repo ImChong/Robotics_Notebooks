@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid-paper-notebooks, paper-notebook-stub, unitree]
 status: stub
-updated: 2026-06-07
+updated: 2026-06-26
 arxiv: "2601.12790"
 related:
   - ../overview/paper-notebook-category-08-navigation.md

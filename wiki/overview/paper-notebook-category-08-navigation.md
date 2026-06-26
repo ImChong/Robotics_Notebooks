@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-07
+updated: 2026-06-26
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 08：导航（17 篇深读笔记索引）。"
@@ -25,7 +25,7 @@ summary: "Paper Notebooks 分类 08：导航（17 篇深读笔记索引）。"
 - [ARMOR](../entities/paper-notebook-armor-egocentric-perception-for-humanoid-robot-c.md) — 待深读
 - [EgoActor](../entities/paper-notebook-egoactor.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum/EgoActor__Grounding_Task_Planning_into_Spatial-aware_Egocentric_Actions_for_Hum.html)
 - [FocusNav](../entities/paper-notebook-focusnav.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/08_Navigation/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local/FocusNav__Spatial_Selective_Attention_with_Waypoint_Guidance_for_Humanoid_Local.html)
-- [Gallant](../entities/paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and.md) — 待深读
+- [Gallant](../entities/paper-loco-manip-161-137-gallant.md) — 待深读
 - [Hand-Eye Autonomous Delivery](../entities/paper-notebook-hand-eye-autonomous-delivery-learning-humanoid-n.md) — 待深读
 - [Humanoid Occupancy](../entities/paper-notebook-humanoid-occupancy-enabling-a-generalized-multim.md) — 待深读
 - [HumanoidPano](../entities/paper-notebook-humanoidpano-hybrid-spherical-panoramic-lidar-cr.md) — 待深读
