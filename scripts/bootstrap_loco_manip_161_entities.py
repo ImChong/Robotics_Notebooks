@@ -11,8 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "sources/raw/wechat_humanoid_loco_manip_161_2026-06-26"
 RAW_MD = list(RAW.glob("*.md"))[0] if RAW.exists() else None
 if RAW_MD is None:
-    RAW_MD = ROOT / "sources/raw/wechat_humanoid_loco_manip_161_2026-06-26" / (
-        "重磅整理！161篇论文带你看人形机器人移动操作的十个方向和技术版图全景.md"
+    RAW_MD = (
+        ROOT
+        / "sources/raw/wechat_humanoid_loco_manip_161_2026-06-26"
+        / ("重磅整理！161篇论文带你看人形机器人移动操作的十个方向和技术版图全景.md")
     )
 
 CATS = {
@@ -52,7 +54,9 @@ def parse_papers(text: str) -> list[dict]:
         for block in re.split(r"^### ", part, flags=re.M)[1:]:
             blines = block.strip().splitlines()
             header = blines[0].strip()
-            hm = re.match(r"(\d{3})\s+(.+?)(?:｜|\|)", header) or re.match(r"(\d{3})\s+(.+)", header)
+            hm = re.match(r"(\d{3})\s+(.+?)(?:｜|\|)", header) or re.match(
+                r"(\d{3})\s+(.+)", header
+            )
             num = int(hm.group(1))
             short = hm.group(2).strip()
             title = inst = link = date_s = summary = ""
@@ -101,28 +105,28 @@ def load_prior_wiki_from_catalog() -> dict[int, str]:
 def write_source(p: dict, entity_name: str) -> Path:
     cat_id, cat_label, _ = CATS[p["cat_num"]]
     path = ROOT / "sources/papers" / f"loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md"
-    body = f"""# {p['short']}
+    body = f"""# {p["short"]}
 
-> 来源归档（ingest · 人形 Loco-Manip 161 篇长文 第 {p['num']:03d}/161）
+> 来源归档（ingest · 人形 Loco-Manip 161 篇长文 第 {p["num"]:03d}/161）
 
-- **标题：** {p['title']}
+- **标题：** {p["title"]}
 - **类型：** paper
 - **Loco-Manip 161 分类：** {cat_id} {cat_label}
-- **机构：** {p['inst'] or '（见原文）'}
-- **项目页：** {p['link'] or '（见原文）'}
-- **发表日期：** {p['date'] or '（见原文）'}
+- **机构：** {p["inst"] or "（见原文）"}
+- **项目页：** {p["link"] or "（见原文）"}
+- **发表日期：** {p["date"] or "（见原文）"}
 - **入库日期：** {TODAY}
-- **一句话说明：** {p['summary'] or p['short']}
+- **一句话说明：** {p["summary"] or p["short"]}
 
 ## 核心摘录（策展，非全文）
 
-- **在 161 篇地图中的位置：** {cat_id} {cat_label}，编号 **{p['num']:03d}/161**。
-- **算法实现总结（公众号）：** {p['summary'] or '（见 raw 正文）'}
+- **在 161 篇地图中的位置：** {cat_id} {cat_label}，编号 **{p["num"]:03d}/161**。
+- **算法实现总结（公众号）：** {p["summary"] or "（见 raw 正文）"}
 
 ## 对 wiki 的映射
 
 - [{entity_name}](../../wiki/entities/{entity_name}.md)
-- [loco-manip-161-category-{p['cat_num']:02d}-{CATS[p['cat_num']][2]}](../../wiki/overview/loco-manip-161-category-{p['cat_num']:02d}-{CATS[p['cat_num']][2]}.md)
+- [loco-manip-161-category-{p["cat_num"]:02d}-{CATS[p["cat_num"]][2]}](../../wiki/overview/loco-manip-161-category-{p["cat_num"]:02d}-{CATS[p["cat_num"]][2]}.md)
 
 ## 参考来源（原始）
 
@@ -163,9 +167,9 @@ sources:
   - ../../sources/papers/humanoid_loco_manip_161_catalog.md
 ---
 
-# {p['short'].split('｜')[0].split('|')[0].strip()}
+# {p["short"].split("｜")[0].split("|")[0].strip()}
 
-**{p['short'].split('｜')[0].split('|')[0].strip()}** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 {p['num']:03d}/161** 篇，归类为 **{cat_id} {cat_label}**。
+**{p["short"].split("｜")[0].split("|")[0].strip()}** 收录于 [具身智能研究室 · 人形 Loco-Manip 161 篇长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) **第 {p["num"]:03d}/161** 篇，归类为 **{cat_id} {cat_label}**。
 
 ## 一句话定义
 
@@ -182,18 +186,18 @@ sources:
 ## 为什么重要
 
 - {one_liner}
-- 人形 Loco-Manip 161 篇 **#{p['num']:03d}/161** · {cat_label}。
+- 人形 Loco-Manip 161 篇 **#{p["num"]:03d}/161** · {cat_label}。
 
 ## 核心信息（索引级）
 
 | 字段 | 内容 |
 |------|------|
-| 编号 | {p['num']:03d}/161 |
+| 编号 | {p["num"]:03d}/161 |
 | 分组 | {cat_id} {cat_label} |
-| 原文题目 | {p['title'] or '（见项目页）'} |
-| 机构 | {p['inst'] or '（见原文）'} |
-| 发表日期 | {p['date'] or '（见原文）'} |
-| 论文/项目 | {p['link'] or '（见原文）'} |
+| 原文题目 | {p["title"] or "（见项目页）"} |
+| 机构 | {p["inst"] or "（见原文）"} |
+| 发表日期 | {p["date"] or "（见原文）"} |
+| 论文/项目 | {p["link"] or "（见原文）"} |
 
 ## 核心机制（归纳）
 
@@ -209,12 +213,12 @@ sources:
 ## 与其他页面的关系
 
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
-- 分类 hub：[loco-manip-161-category-{p['cat_num']:02d}-{cat_slug}.md](../overview/loco-manip-161-category-{p['cat_num']:02d}-{cat_slug}.md)
-- 原始 source：[loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md](../../sources/papers/loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md)
+- 分类 hub：[loco-manip-161-category-{p["cat_num"]:02d}-{cat_slug}.md](../overview/loco-manip-161-category-{p["cat_num"]:02d}-{cat_slug}.md)
+- 原始 source：[loco_manip_161_survey_{p["num"]:03d}_{p["slug"]}.md](../../sources/papers/loco_manip_161_survey_{p["num"]:03d}_{p["slug"]}.md)
 
 ## 参考来源
 
-- [loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md](../../sources/papers/loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md) — 161 篇策展摘录
+- [loco_manip_161_survey_{p["num"]:03d}_{p["slug"]}.md](../../sources/papers/loco_manip_161_survey_{p["num"]:03d}_{p["slug"]}.md) — 161 篇策展摘录
 - [humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)
 - [wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md](../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md)
 
@@ -265,7 +269,9 @@ def write_catalog(papers: list[dict]) -> None:
                 f"| {p['num']:03d} | {p['short']} | [{en}](../../wiki/entities/{en}.md) |\n"
             )
         lines.append("\n")
-    (ROOT / "sources/papers/humanoid_loco_manip_161_catalog.md").write_text("".join(lines), encoding="utf-8")
+    (ROOT / "sources/papers/humanoid_loco_manip_161_catalog.md").write_text(
+        "".join(lines), encoding="utf-8"
+    )
 
 
 def write_category_pages(papers: list[dict]) -> None:
