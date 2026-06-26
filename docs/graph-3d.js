@@ -415,11 +415,39 @@
       if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
     }
 
+    var resumeDeferrals = 0;
     function resumeRenderLoop() {
       if (!graph) return;
+      // 3d-force-graph 在 kapsule 的防抖 digest 里才创建 WebGL renderer 并由 init 自启渲染环。
+      // 主线程繁忙时本函数（经 afterGraphDataApplied 的 2×rAF 调度）可能早于该 digest 跑完，
+      // 此刻 renderer 尚未就绪；若仍 resumeAnimation，会让库内部 _animationCycle 在对象未就绪时
+      // 同步抛错——且抛错发生在 requestAnimationFrame 重排之前 → 渲染环被永久中断、整屏黑屏。
+      // 故 renderer 未就绪时推迟到下一帧重试（有上限兜底）；待库 init digest 建好 renderer 并自启
+      // 渲染环后，这里再 resumeAnimation 也只是无害的 no-op。
+      if (typeof graph.renderer === 'function' && !graph.renderer()) {
+        if (resumeDeferrals++ < 120) window.requestAnimationFrame(resumeRenderLoop);
+        return;
+      }
+      resumeDeferrals = 0;
       // 只恢复渲染环，不再把 alphaTarget 钉在 0.25（那会让力模拟永不收敛、一直微抖）。
       // alphaTarget 保持 0，配合 reheat 的 alpha=1 实现「冲一下→自然衰减到静止」。
       if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+    }
+
+    // 渲染环自愈：万一 3d-force-graph 的 _animationCycle 仍在内部对象（renderObjs / forceGraph）
+    // 未就绪时被唤醒并同步抛错，rAF 链会断开（抛错在 requestAnimationFrame 重排之前），表现为整屏
+    // 黑屏且不再自行恢复。此处监听 window error，命中库自身的该类崩溃后下一帧重新点火渲染环；
+    // 因为抛错时 animationFrameRequestId 仍为 null，resumeRenderLoop 在 renderer 就绪后即可重启。
+    var renderLoopHealAttempts = 0;
+    function reviveRenderLoopOnError(ev) {
+      if (!graph || container.hidden) return;
+      var fname = (ev && ev.filename) || '';
+      if (fname.indexOf('3d-force-graph') === -1) return;
+      var msg = (ev && ev.message) || (ev && ev.error && ev.error.message) || '';
+      if (msg.indexOf('tick') === -1 && msg.indexOf('renderObjs') === -1 && msg.indexOf('forceGraph') === -1) return;
+      if (renderLoopHealAttempts >= 60) return;
+      renderLoopHealAttempts += 1;
+      window.requestAnimationFrame(function () { resumeRenderLoop(); });
     }
 
   /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
@@ -641,6 +669,7 @@
     }
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
+    window.addEventListener('error', reviveRenderLoopOnError);
 
     var graph = null;
 
@@ -849,6 +878,7 @@
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
+        window.removeEventListener('error', reviveRenderLoopOnError);
         if (graph && graph._destructor) graph._destructor();
         graph = null;
         container.replaceChildren();

@@ -4291,7 +4291,15 @@
     }
 
     if (spatialViewMode === '3d') {
-      const enter3dWhenReady = () => setSpatialViewMode('3d', { force: true });
+      // 只进入一次：simulation 收敛(end.initial3d)与 2200ms 兜底都会触发，需去重，
+      // 否则二次以 force:true 重跑 setSpatialViewMode('3d') → show() 重入，徒增 graphData
+      // 重排与渲染环 pause/resume 抢跑风险。
+      let entered3dOnLoad = false;
+      const enter3dWhenReady = () => {
+        if (entered3dOnLoad) return;
+        entered3dOnLoad = true;
+        setSpatialViewMode('3d', { force: true });
+      };
       simulation.on('end.initial3d', () => {
         simulation.on('end.initial3d', null);
         whenGraphViewportReady(enter3dWhenReady);
