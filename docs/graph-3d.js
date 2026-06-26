@@ -354,6 +354,7 @@
           .nodeOpacity(1);
       }
       graph
+        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
@@ -670,6 +671,7 @@
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
+        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
