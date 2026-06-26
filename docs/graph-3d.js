@@ -403,6 +403,14 @@
       if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
     }
 
+  /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
+    function reheatAfterGraphData() {
+      if (!graph) return;
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+      if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+      resumeRenderLoop();
+    }
+
     function resetNodePositionsInPlace() {
       sourceNodes.forEach(function (src) {
         var n3 = nodeById.get(src.id);
@@ -594,13 +602,16 @@
 
     var graph = null;
 
-    function ensureGraph() {
-      if (graph) return graph;
-      size = measureContainerSize(container);
-      graph = window.ForceGraph3D()(container)
+    function afterGraphDataApplied(fn) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(fn);
+      });
+    }
+
+    function bindGraphInstance() {
+      graph
         .width(size.width)
         .height(size.height)
-        .graphData({ nodes: nodes3d, links: buildLinks() })
         .backgroundColor(backgroundColor())
         .showNavInfo(false)
         .warmupTicks(8)
@@ -632,8 +643,15 @@
         });
       var chargeForce = graph.d3Force('charge');
       if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
-      // 构造器 init 首帧 layout 未就绪会抛 tick 异常并中断 rAF，此处立即重启渲染环。
-      resumeRenderLoop();
+    }
+
+    function ensureGraph() {
+      if (graph) return graph;
+      size = measureContainerSize(container);
+      // init 末尾会同步启动 rAF；先 pause，待 graphData onFinishUpdate 后再 resume。
+      graph = window.ForceGraph3D()(container);
+      graph.pauseAnimation();
+      bindGraphInstance();
       return graph;
     }
 
@@ -645,16 +663,15 @@
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
+        pauseRenderLoop();
         graph.graphData({ nodes: nodes3d, links: buildLinks() });
-        resumeRenderLoop();
-        if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
-        if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.9);
-        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
-        window.requestAnimationFrame(function () {
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          reheatAfterGraphData();
           syncViewport();
           if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
+          scheduleInitialFit(650);
         });
-        scheduleInitialFit(650);
       },
 
       hide: function () {
@@ -685,12 +702,15 @@
       },
 
       updateForces: function () {
+        if (!graph) return;
         var charge = graph.d3Force('charge');
         if (charge && charge.strength) charge.strength(getChargeStrength());
         applyMagneticForces();
-        if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
-        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
-        else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
+          else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        });
       },
 
       restartSimulation: function () {

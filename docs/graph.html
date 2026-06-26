@@ -2072,6 +2072,10 @@
         try { localStorage.setItem(SPATIAL_VIEW_KEY, '2d'); } catch (_e) { /* ignore */ }
         return '2d';
       }
+      if (spatialViewParam === '3d') {
+        try { localStorage.setItem(SPATIAL_VIEW_KEY, '3d'); } catch (_e) { /* ignore */ }
+        return '3d';
+      }
       try {
         const saved = localStorage.getItem(SPATIAL_VIEW_KEY);
         return saved === '3d' ? '3d' : '2d';
@@ -2228,7 +2232,9 @@
         }
         graph3dView.show();
         graph3dView.syncFilters();
-        graph3dView.fitToScreen(0);
+        window.setTimeout(function () {
+          if (is3DView() && graph3dView) graph3dView.fitToScreen(0);
+        }, 120);
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
