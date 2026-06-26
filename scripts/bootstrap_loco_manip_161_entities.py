@@ -3,7 +3,6 @@
 
 from __future__ import annotations
 
-import json
 import re
 from datetime import date
 from pathlib import Path
@@ -140,9 +139,9 @@ def write_entity(p: dict, prior: str | None) -> str:
     source_rel = f"../../sources/papers/loco_manip_161_survey_{p['num']:03d}_{p['slug']}.md"
     one_liner = p["summary"] or p["title"]
     related = [
-        f"  - ../overview/humanoid-loco-manip-161-papers-technology-map.md",
+        "  - ../overview/humanoid-loco-manip-161-papers-technology-map.md",
         f"  - ../overview/loco-manip-161-category-{p['cat_num']:02d}-{cat_slug}.md",
-        f"  - ../tasks/loco-manipulation.md",
+        "  - ../tasks/loco-manipulation.md",
     ]
     if prior and prior != f"wiki/entities/{entity_name}":
         rel = prior.replace("wiki/", "../")
