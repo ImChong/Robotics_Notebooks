@@ -167,6 +167,11 @@
     var meshInstallScheduled = false;
     var pendingFirstShowKick = false;
     var initialFitDone = false;
+    // 时序激活动画：null = 关闭（正常渲染）；Set = 仅「已激活」节点可见，其余整体隐藏。
+    var timelineRevealedIds = null;
+    var timelinePopIn = new Map();   // nodeId -> 激活起始时间戳（pop-in 放大动画）
+    var timelinePopRaf = null;
+    var TIMELINE_POP_MS = 280;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -203,6 +208,8 @@
     }
 
     function nodeOpacityFor(d) {
+      // 时序激活模式下只有「已激活」节点可见（未激活的直接隐藏），不参与 hover/侧栏淡化。
+      if (timelineActive()) return timelineRevealedIds.has(d.id) ? 1 : 0;
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
@@ -231,15 +238,43 @@
       return hasActiveFilter() && !getVisibleNodeIds().has(d.id);
     }
 
+    function timelineActive() {
+      return timelineRevealedIds !== null;
+    }
+
+    // 时序模式下未激活的节点整体不渲染（与筛选隐藏同一套机制）。
+    function nodeTimelineHidden(d) {
+      return timelineActive() && !timelineRevealedIds.has(d.id);
+    }
+
+    function nodeHidden(d) {
+      return nodeHiddenByFilter(d) || nodeTimelineHidden(d);
+    }
+
+    // 节点刚被激活时的放大系数：0.2 → 1，easeOutCubic 收敛，营造「点亮」感。
+    function timelinePopFactor(id) {
+      if (!timelinePopIn.has(id)) return 1;
+      var t = (performance.now() - timelinePopIn.get(id)) / TIMELINE_POP_MS;
+      if (t >= 1) { timelinePopIn.delete(id); return 1; }
+      var e = 1 - Math.pow(1 - t, 3);
+      return 0.2 + 0.8 * e;
+    }
+
     function linkVisibleFor(l) {
+      var ls = edgeEndpointId(l.source);
+      var lt = edgeEndpointId(l.target);
+      // 时序模式：仅当两端节点都已激活时连线才出现。
+      if (timelineActive() && (!timelineRevealedIds.has(ls) || !timelineRevealedIds.has(lt))) return false;
       if (!hasActiveFilter()) return true;
       var visible = getVisibleNodeIds();
-      return visible.has(edgeEndpointId(l.source)) && visible.has(edgeEndpointId(l.target));
+      return visible.has(ls) && visible.has(lt);
     }
 
     function linkOpacityFor(l) {
       var s = edgeEndpointId(l.source);
       var t = edgeEndpointId(l.target);
+      // 时序模式下可见连线给一个稳定的较高不透明度（已由 linkVisibility 过滤掉未激活端点）。
+      if (timelineActive()) return 0.25;
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       if (sidebarNodeId && edgeHighlightsWithNode) {
@@ -334,13 +369,13 @@
         if (!obj.isMesh || !obj.userData || !obj.userData.nodeId || !obj.material) return;
         var d = nodeById.get(obj.userData.nodeId);
         if (!d) return;
-        var radius = sphereRadiusFor(d);
+        var radius = sphereRadiusFor(d) * timelinePopFactor(obj.userData.nodeId);
         var opacity = nodeOpacityFor(d);
         obj.scale.set(radius, radius, radius);
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
-        obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
+        obj.visible = !nodeHidden(d) && opacity > 0.02;
       });
     }
 
@@ -354,12 +389,26 @@
           .nodeOpacity(1);
       }
       graph
-        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
+        .nodeVisibility(function (d) { return !nodeHidden(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
       updateNodeMeshes();
+    }
+
+    // pop-in 期间逐帧刷新节点 mesh 缩放，让「激活」放大过程平滑（由 3d-force-graph 的渲染环负责出图）。
+    function timelinePopTick() {
+      timelinePopRaf = null;
+      if (!timelineActive()) { timelinePopIn.clear(); return; }
+      updateNodeMeshes();
+      if (timelinePopIn.size > 0) timelinePopRaf = window.requestAnimationFrame(timelinePopTick);
+    }
+
+    function ensureTimelinePopRunning() {
+      if (timelinePopRaf == null && timelinePopIn.size > 0) {
+        timelinePopRaf = window.requestAnimationFrame(timelinePopTick);
+      }
     }
 
     function installCustomNodeMeshes() {
@@ -700,7 +749,7 @@
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
-        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
+        .nodeVisibility(function (d) { return !nodeHidden(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
@@ -807,6 +856,26 @@
 
       syncFilters: function () {
         refreshAppearance();
+      },
+
+      // 时序激活动画入口：传入「已激活」节点 id 集合则只显示这些节点（新激活的会 pop-in）；
+      // 传 null 退出时序模式、恢复正常渲染。graph.html 的定时器按时间顺序逐步扩大该集合。
+      setTimelineRevealed: function (idSet) {
+        if (idSet == null) {
+          timelineRevealedIds = null;
+          timelinePopIn.clear();
+          if (timelinePopRaf != null) { window.cancelAnimationFrame(timelinePopRaf); timelinePopRaf = null; }
+          refreshAppearance();
+          return;
+        }
+        var now = performance.now();
+        var prev = timelineRevealedIds;
+        idSet.forEach(function (id) {
+          if (!prev || !prev.has(id)) timelinePopIn.set(id, now);
+        });
+        timelineRevealedIds = new Set(idSet);
+        refreshAppearance();
+        ensureTimelinePopRunning();
       },
 
       refreshColors: function () {
