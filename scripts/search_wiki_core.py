@@ -87,6 +87,8 @@ CANONICAL_TOPIC_PAGES: dict[str, str] = {
     "vla": "wiki/methods/vla.md",
     "vision-language-action": "wiki/methods/vla.md",
     "sim2real": "wiki/concepts/sim2real.md",
+    "接触力": "wiki/concepts/contact-dynamics.md",
+    "contact dynamics": "wiki/concepts/contact-dynamics.md",
 }
 
 COMPARISON_INTENT_MARKERS = frozenset(
