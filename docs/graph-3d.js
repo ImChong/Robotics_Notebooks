@@ -475,6 +475,25 @@
       graph.height(next.height);
     }
 
+    // 强制 three.js 重建 WebGL drawing buffer 并重绘：先把宽度收窄 1px（必产生一次
+    // renderer.setSize），维持几帧让渲染器在新 buffer 上真正绘制、合成层重新拿到画面，
+    // 再还原真实尺寸。3d-force-graph 的 drawing buffer 完全由 .width()/.height() 决定，
+    // 重跑 graphData 不会触发 setSize；而尺寸变化会重建 drawing buffer + 重排 canvas +
+    // 重绘合成层——正是「切回 2D 再切 3D」能恢复整屏空白的本质。收窄 1px 露出的是
+    // #graph-canvas-3d 自身的同色暗背景，且仅维持几帧，肉眼不可见。
+    function forceRendererResize() {
+      if (!graph) return;
+      var s = measureContainerSize(container);
+      graph.width(Math.max(1, s.width - 1)).height(s.height);
+      var frames = 0;
+      function restore() {
+        if (!graph) return;
+        if (++frames < 3) { window.requestAnimationFrame(restore); return; }
+        graph.width(s.width).height(s.height);
+      }
+      window.requestAnimationFrame(restore);
+    }
+
     function graphFitPadPx() {
       var view = measureContainerSize(container);
       return Math.min(view.width, view.height) < 520 ? 48 : 120;
@@ -673,8 +692,9 @@
     }
 
     // Chrome 下 2D 第一次切到 3D 偶发整屏空白（新建 WebGL 渲染器后首帧渲染管线未完成），
-    // 现象上只有「切回 2D 再切 3D」能恢复——本质是在已建好的渲染器上重跑一次 graphData。
-    // 这里在首次 show 后幂等地复刻该恢复动作，避免用户手动来回切。
+    // 现象上只有「切回 2D 再切 3D」能恢复。仅重跑 graphData 不会触发 renderer.setSize，
+    // 无法恢复空白；恢复的本质是 drawing buffer 重建 + 合成层重绘，由 forceRendererResize
+    // 显式抖动尺寸来强制完成。这里在首次 show 后幂等地复刻该恢复动作，避免用户手动来回切。
     function firstShowKick() {
       if (!pendingFirstShowKick) return;
       pendingFirstShowKick = false;
@@ -686,6 +706,9 @@
         afterGraphDataApplied(function () {
           if (!graph) return;
           reheatAfterGraphData();
+          // 渲染环恢复后再强制一次尺寸重建：仅重跑 graphData 不动 drawing buffer，
+          // 无法恢复新建渲染器首帧偶发的整屏空白；显式抖动尺寸才能强制重建+重绘。
+          forceRendererResize();
         });
       }, 250);
     }
