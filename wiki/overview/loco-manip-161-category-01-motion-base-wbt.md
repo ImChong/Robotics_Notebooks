@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 01：运控基座与通用全身跟踪
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **01 运控基座与通用全身跟踪** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**01 运控基座与通用全身跟踪**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,37 +33,37 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 001 | Agility Meets Stability | [ams](../methods/ams.md) |
-| 002 | Any2Any | [paper-any2any-cross-embodiment-wbt](../entities/paper-any2any-cross-embodiment-wbt.md) |
-| 003 | BFM-Zero | [paper-bfm-zero](../entities/paper-bfm-zero.md) |
-| 004 | BeyondMimic | [paper-beyondmimic](../entities/paper-beyondmimic.md) |
-| 005 | CHIP | [paper-hrl-stack-36-chip](../entities/paper-hrl-stack-36-chip.md) |
-| 006 | CLONE | [paper-bfm-12-clone](../entities/paper-bfm-12-clone.md) |
-| 007 | ExBody2 | [paper-notebook-exbody2-advanced-expressive-humanoid-whole-body](../entities/paper-notebook-exbody2-advanced-expressive-humanoid-whole-body.md) |
-| 008 | FRoM-W1 | [paper-notebook-from-w1](../entities/paper-notebook-from-w1.md) |
-| 009 | GMT | [paper-notebook-gmt](../entities/paper-notebook-gmt.md) |
-| 010 | HOVER | [paper-bfm-14-hover](../entities/paper-bfm-14-hover.md) |
-| 011 | HoloMotion | [holomotion](../entities/holomotion.md) |
-| 012 | HumanPlus | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 013 | KungfuBot2 | [paper-notebook-kungfubot-2](../entities/paper-notebook-kungfubot-2.md) |
-| 014 | MOSAIC | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 015 | Make Tracking Easy | [paper-hrl-stack-02-make_tracking_easy](../entities/paper-hrl-stack-02-make_tracking_easy.md) |
-| 016 | OmniH2O | [human2humanoid](../entities/human2humanoid.md) |
-| 017 | OmniRetarget | [paper-hrl-stack-03-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
-| 018 | Retargeting | [paper-hrl-stack-01-retargeting_matters](../entities/paper-hrl-stack-01-retargeting_matters.md) |
-| 019 | SONIC | [paper-sonic](../entities/paper-sonic.md) |
-| 020 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) |
-| 021 | TWIST | [paper-twist](../entities/paper-twist.md) |
-| 022 | TextOp | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 023 | UniAct | [paper-notebook-uniact](../entities/paper-notebook-uniact.md) |
-| 024 | UniTracker | [paper-notebook-unitracker](../entities/paper-notebook-unitracker.md) |
-| 025 | 人形操作接口 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 026 | 人形机器人富有表现力的全身控制 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 027 | 人形机器人行为基础模型 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 028 | 从专家到通用：走向人形机器人的通用全身控制 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 029 | 学习人对人的实时全身远程操作 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 030 | 跟踪任何干扰下的任何动作 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 031 | 鲁棒且通用的人形运动跟踪 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
+| 001 | Agility Meets Stability | [paper-loco-manip-161-001-agility-meets-stability](../entities/paper-loco-manip-161-001-agility-meets-stability.md) |
+| 002 | Any2Any | [paper-loco-manip-161-002-any2any](../entities/paper-loco-manip-161-002-any2any.md) |
+| 003 | BFM-Zero | [paper-loco-manip-161-003-bfm-zero](../entities/paper-loco-manip-161-003-bfm-zero.md) |
+| 004 | BeyondMimic | [paper-loco-manip-161-004-beyondmimic](../entities/paper-loco-manip-161-004-beyondmimic.md) |
+| 005 | CHIP | [paper-loco-manip-161-005-chip](../entities/paper-loco-manip-161-005-chip.md) |
+| 006 | CLONE | [paper-loco-manip-161-006-clone](../entities/paper-loco-manip-161-006-clone.md) |
+| 007 | ExBody2 | [paper-loco-manip-161-007-exbody2](../entities/paper-loco-manip-161-007-exbody2.md) |
+| 008 | FRoM-W1 | [paper-loco-manip-161-008-from-w1](../entities/paper-loco-manip-161-008-from-w1.md) |
+| 009 | GMT | [paper-loco-manip-161-009-gmt](../entities/paper-loco-manip-161-009-gmt.md) |
+| 010 | HOVER | [paper-loco-manip-161-010-hover](../entities/paper-loco-manip-161-010-hover.md) |
+| 011 | HoloMotion | [paper-loco-manip-161-011-holomotion](../entities/paper-loco-manip-161-011-holomotion.md) |
+| 012 | HumanPlus | [paper-loco-manip-161-012-humanplus](../entities/paper-loco-manip-161-012-humanplus.md) |
+| 013 | KungfuBot2 | [paper-loco-manip-161-013-kungfubot2](../entities/paper-loco-manip-161-013-kungfubot2.md) |
+| 014 | MOSAIC | [paper-loco-manip-161-014-mosaic](../entities/paper-loco-manip-161-014-mosaic.md) |
+| 015 | Make Tracking Easy | [paper-loco-manip-161-015-make-tracking-easy](../entities/paper-loco-manip-161-015-make-tracking-easy.md) |
+| 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../entities/paper-loco-manip-161-016-omnih2o.md) |
+| 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../entities/paper-loco-manip-161-017-omniretarget.md) |
+| 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../entities/paper-loco-manip-161-018-retargeting.md) |
+| 019 | SONIC | [paper-loco-manip-161-019-sonic](../entities/paper-loco-manip-161-019-sonic.md) |
+| 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../entities/paper-loco-manip-161-020-twist2.md) |
+| 021 | TWIST | [paper-loco-manip-161-021-twist](../entities/paper-loco-manip-161-021-twist.md) |
+| 022 | TextOp | [paper-loco-manip-161-022-textop](../entities/paper-loco-manip-161-022-textop.md) |
+| 023 | UniAct | [paper-loco-manip-161-023-uniact](../entities/paper-loco-manip-161-023-uniact.md) |
+| 024 | UniTracker | [paper-loco-manip-161-024-unitracker](../entities/paper-loco-manip-161-024-unitracker.md) |
+| 025 | 人形操作接口 | [paper-loco-manip-161-025-n025](../entities/paper-loco-manip-161-025-n025.md) |
+| 026 | 人形机器人富有表现力的全身控制 | [paper-loco-manip-161-026-n026](../entities/paper-loco-manip-161-026-n026.md) |
+| 027 | 人形机器人行为基础模型 | [paper-loco-manip-161-027-n027](../entities/paper-loco-manip-161-027-n027.md) |
+| 028 | 从专家到通用：走向人形机器人的通用全身控制 | [paper-loco-manip-161-028-n028](../entities/paper-loco-manip-161-028-n028.md) |
+| 029 | 学习人对人的实时全身远程操作 | [paper-loco-manip-161-029-n029](../entities/paper-loco-manip-161-029-n029.md) |
+| 030 | 跟踪任何干扰下的任何动作 | [paper-loco-manip-161-030-n030](../entities/paper-loco-manip-161-030-n030.md) |
+| 031 | 鲁棒且通用的人形运动跟踪 | [paper-loco-manip-161-031-n031](../entities/paper-loco-manip-161-031-n031.md) |
 
 ## 关联页面
 

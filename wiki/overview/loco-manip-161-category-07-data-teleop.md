@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 07：数据采集与遥操作系统
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **07 数据采集与遥操作系统** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**07 数据采集与遥操作系统**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,13 +33,13 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 128 | BifrostUMI | [paper-bifrost-umi](../entities/paper-bifrost-umi.md) |
-| 129 | HOMIE | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 130 | HumanoidExo | [paper-notebook-humanoidexo](../entities/paper-notebook-humanoidexo.md) |
-| 131 | Open-TeleVision | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 132 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) |
-| 133 | TWIST | [paper-twist](../entities/paper-twist.md) |
-| 134 | WT-UMI | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
+| 128 | BifrostUMI | [paper-loco-manip-161-128-bifrostumi](../entities/paper-loco-manip-161-128-bifrostumi.md) |
+| 129 | HOMIE | [paper-loco-manip-161-129-homie](../entities/paper-loco-manip-161-129-homie.md) |
+| 130 | HumanoidExo | [paper-loco-manip-161-130-humanoidexo](../entities/paper-loco-manip-161-130-humanoidexo.md) |
+| 131 | Open-TeleVision | [paper-loco-manip-161-131-open-television](../entities/paper-loco-manip-161-131-open-television.md) |
+| 132 | TWIST2 | [paper-loco-manip-161-132-twist2](../entities/paper-loco-manip-161-132-twist2.md) |
+| 133 | TWIST | [paper-loco-manip-161-133-twist](../entities/paper-loco-manip-161-133-twist.md) |
+| 134 | WT-UMI | [paper-loco-manip-161-134-wt-umi](../entities/paper-loco-manip-161-134-wt-umi.md) |
 
 ## 关联页面
 

@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 08：硬件平台、感知配置与部署扩展
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **08 硬件平台、感知配置与部署扩展** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**08 硬件平台、感知配置与部署扩展**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,17 +33,17 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 135 | AMO | [paper-notebook-amo](../entities/paper-notebook-amo.md) |
-| 136 | DemoHLM | [paper-notebook-demohlm](../entities/paper-notebook-demohlm.md) |
-| 137 | Gallant | [paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and](../entities/paper-notebook-gallant-voxel-grid-based-humanoid-locomotion-and.md) |
-| 138 | Mobile-TeleVision | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 139 | Open-TeleVision | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 140 | TWIST2 | [paper-twist2](../entities/paper-twist2.md) |
-| 141 | ToddlerBot | [paper-notebook-toddlerbot-open-source-ml-compatible-humanoid-pl](../entities/paper-notebook-toddlerbot-open-source-ml-compatible-humanoid-pl.md) |
-| 142 | 具有实时基础地形重建的步态自适应感知人形运动 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 143 | 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 | [paper-notebook-open-television-teleoperation-with-immersive-act](../entities/paper-notebook-open-television-teleoperation-with-immersive-act.md) |
-| 144 | 学习人对人的实时全身远程操作。 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 145 | 手眼自主配送 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
+| 135 | AMO | [paper-loco-manip-161-135-amo](../entities/paper-loco-manip-161-135-amo.md) |
+| 136 | DemoHLM | [paper-loco-manip-161-136-demohlm](../entities/paper-loco-manip-161-136-demohlm.md) |
+| 137 | Gallant | [paper-loco-manip-161-137-gallant](../entities/paper-loco-manip-161-137-gallant.md) |
+| 138 | Mobile-TeleVision | [paper-loco-manip-161-138-mobile-television](../entities/paper-loco-manip-161-138-mobile-television.md) |
+| 139 | Open-TeleVision | [paper-loco-manip-161-139-open-television](../entities/paper-loco-manip-161-139-open-television.md) |
+| 140 | TWIST2 | [paper-loco-manip-161-140-twist2](../entities/paper-loco-manip-161-140-twist2.md) |
+| 141 | ToddlerBot | [paper-loco-manip-161-141-toddlerbot](../entities/paper-loco-manip-161-141-toddlerbot.md) |
+| 142 | 具有实时基础地形重建的步态自适应感知人形运动 | [paper-loco-manip-161-142-n142](../entities/paper-loco-manip-161-142-n142.md) |
+| 143 | 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 | [paper-loco-manip-161-143-act](../entities/paper-loco-manip-161-143-act.md) |
+| 144 | 学习人对人的实时全身远程操作。 | [paper-loco-manip-161-144-n144](../entities/paper-loco-manip-161-144-n144.md) |
+| 145 | 手眼自主配送 | [paper-loco-manip-161-145-n145](../entities/paper-loco-manip-161-145-n145.md) |
 
 ## 关联页面
 

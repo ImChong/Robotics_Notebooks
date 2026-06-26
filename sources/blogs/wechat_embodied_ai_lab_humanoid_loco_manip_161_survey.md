@@ -37,7 +37,7 @@
 
 - [humanoid-loco-manip-161-papers-technology-map](../../wiki/overview/humanoid-loco-manip-161-papers-technology-map.md)（**父节点** + Mermaid）
 - 子分类 hub：`wiki/overview/loco-manip-161-category-01-motion-base-wbt.md` … `10-ego-video.md`
-- 全量索引：[humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)（**94/161** 已挂接既有 wiki 实体，其余 catalog only）
+- 全量索引：[humanoid_loco_manip_161_catalog.md](../../sources/papers/humanoid_loco_manip_161_catalog.md)（**161/161** 各建 `paper-loco-manip-161-{NNN}-*` 独立实体）
 - 与 [运动小脑 64 篇](../../wiki/overview/humanoid-motion-cerebellum-technology-map.md)、[Loco-Manip 8 篇](../../wiki/overview/loco-manip-8-papers-technology-map.md) **交叉覆盖、视角不同**
 
 ## 可信度与使用边界

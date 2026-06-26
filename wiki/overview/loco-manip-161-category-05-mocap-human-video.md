@@ -13,7 +13,7 @@ sources:
 
 # Loco-Manip 161 分类 05：动捕、人类视频与交互动作规划
 
-> **图谱分类节点**：对应 [具身智能研究室 · 161 篇人形移动操作长文](https://mp.weixin.qq.com/s/pACh9EhsISiyPGdiiR0C3A) 的 **05 动捕、人类视频与交互动作规划** 分组；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
+> **图谱分类节点**：**05 动捕、人类视频与交互动作规划**；总地图见 [人形 Loco-Manip 161 篇技术地图](./humanoid-loco-manip-161-papers-technology-map.md)。
 
 ## 英文缩写速查
 
@@ -33,17 +33,17 @@ sources:
 
 | # | 工作 | Wiki 实体 |
 |---|------|-----------|
-| 109 | FALCON | [paper-notebook-falcon](../entities/paper-notebook-falcon.md) |
-| 110 | HDMI | [paper-hrl-stack-06-hdmi](../entities/paper-hrl-stack-06-hdmi.md) |
-| 111 | HITTER | [paper-notebook-hitter](../entities/paper-notebook-hitter.md) |
-| 112 | HumanX | [paper-hrl-stack-05-humanx](../entities/paper-hrl-stack-05-humanx.md) |
-| 113 | Humanoid | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 114 | OmniRetarget | [paper-hrl-stack-03-omniretarget](../entities/paper-hrl-stack-03-omniretarget.md) |
-| 115 | ResMimic | [paper-resmimic](../entities/paper-resmimic.md) |
-| 116 | WoCoCo | [paper-notebook-wococo](../entities/paper-notebook-wococo.md) |
-| 117 | 多阶段强化学习的人形全身羽毛球 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 118 | 腿式机械手全身动态投掷 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
-| 119 | 迈向多样化人形乒乓球：具有预测增强的统一强化学习 | —（见 [catalog](../../sources/papers/humanoid_loco_manip_161_catalog.md)） |
+| 109 | FALCON | [paper-loco-manip-161-109-falcon](../entities/paper-loco-manip-161-109-falcon.md) |
+| 110 | HDMI | [paper-loco-manip-161-110-hdmi](../entities/paper-loco-manip-161-110-hdmi.md) |
+| 111 | HITTER | [paper-loco-manip-161-111-hitter](../entities/paper-loco-manip-161-111-hitter.md) |
+| 112 | HumanX | [paper-loco-manip-161-112-humanx](../entities/paper-loco-manip-161-112-humanx.md) |
+| 113 | Humanoid | [paper-loco-manip-161-113-humanoid](../entities/paper-loco-manip-161-113-humanoid.md) |
+| 114 | OmniRetarget | [paper-loco-manip-161-114-omniretarget](../entities/paper-loco-manip-161-114-omniretarget.md) |
+| 115 | ResMimic | [paper-loco-manip-161-115-resmimic](../entities/paper-loco-manip-161-115-resmimic.md) |
+| 116 | WoCoCo | [paper-loco-manip-161-116-wococo](../entities/paper-loco-manip-161-116-wococo.md) |
+| 117 | 多阶段强化学习的人形全身羽毛球 | [paper-loco-manip-161-117-n117](../entities/paper-loco-manip-161-117-n117.md) |
+| 118 | 腿式机械手全身动态投掷 | [paper-loco-manip-161-118-n118](../entities/paper-loco-manip-161-118-n118.md) |
+| 119 | 迈向多样化人形乒乓球：具有预测增强的统一强化学习 | [paper-loco-manip-161-119-n119](../entities/paper-loco-manip-161-119-n119.md) |
 
 ## 关联页面
 
