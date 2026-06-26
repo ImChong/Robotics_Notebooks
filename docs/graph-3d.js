@@ -403,14 +403,15 @@
 
     function resumeRenderLoop() {
       if (!graph) return;
+      // 只恢复渲染环，不再把 alphaTarget 钉在 0.25（那会让力模拟永不收敛、一直微抖）。
+      // alphaTarget 保持 0，配合 reheat 的 alpha=1 实现「冲一下→自然衰减到静止」。
       if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
     }
 
   /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
     function reheatAfterGraphData() {
       if (!graph) return;
-      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
       if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
       resumeRenderLoop();
     }
@@ -595,7 +596,9 @@
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
       }
-      window.setTimeout(runFit, 2000);
+      // 自然收敛约需 ~270 tick（≈4.5s），兜底超时放宽到 9s，让 onEngineStop（布局收敛完成）
+      // 成为主触发，避免兜底在收敛中途抢先适配。
+      window.setTimeout(runFit, 9000);
     }
 
     function onContainerPointerMove(ev) {
@@ -620,8 +623,15 @@
         .height(size.height)
         .backgroundColor(backgroundColor())
         .showNavInfo(false)
-        .warmupTicks(8)
-        .cooldownTicks(24)
+        // 像 2D 那样自然震荡收敛：不再 24 tick 硬停，而是让 alpha 从 1 自然衰减到
+        // alphaMin 再停（≈270 tick）。三方库默认 cooldownTicks=∞ 且 d3AlphaMin=0
+        // （永不因 alpha 停，只会跑满 cooldownTime），故显式开启 alpha 收敛阈值并对齐
+        // 2D 的 alphaDecay(0.025)；warmup 设 0 以便从第一帧就能看到力模拟过程。
+        .warmupTicks(0)
+        .cooldownTicks(Infinity)
+        .d3AlphaDecay(0.025)
+        .d3AlphaMin(0.001)
+        .d3VelocityDecay(0.4)
         .nodeId('id')
         .nodeRelSize(1)
         .nodeResolution(8)
@@ -694,6 +704,9 @@
           if (!graph) return;
           reheatAfterGraphData();
           syncViewport();
+          // 首次进入时先框住初始布局，便于观看力模拟震荡收敛全过程；收敛完成（onEngineStop）
+          // 后由 scheduleInitialFit 再适配一次最终结果。仅首次，re-entry/交互不触发。
+          if (!initialFitDone) zoomFitToNodes(0);
           // 默认渲染把 nodeOpacity 当标量，传入函数会得到 NaN 不透明度（节点全透明不可见）。
           // 装上自定义 mesh 后由 createNodeMesh / updateNodeMeshes 写入逐节点数值不透明度。
           scheduleCustomMeshInstall(function () {
@@ -740,8 +753,9 @@
         applyMagneticForces();
         afterGraphDataApplied(function () {
           if (!graph) return;
-          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
-          else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+          // 力参数变化后重跑一轮自然收敛（alpha=1→0），而非把 alphaTarget 钉在 0.22。
+          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+          if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
         });
       },
 
