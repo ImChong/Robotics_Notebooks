@@ -521,6 +521,10 @@
       #graph-toolbar {
         padding: 6px 12px;
         gap: 6px;
+        /* 移动端工具栏内容仅 ~43px，但 #graph-wrap 顶部按 header+46px 定位；
+           补足 min-height 让工具栏正好填满该 46px 带，避免底部露出比画布更浅的
+           页面背景(#1c1c1e)形成一条灰条。 */
+        min-height: 46px;
       }
       #graph-search {
         width: 120px;
