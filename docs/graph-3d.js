@@ -64,28 +64,56 @@
     };
   }
 
+  function isSphereGeometryType(geometry) {
+    if (!geometry || !geometry.type) return false;
+    return /^Sphere(Buffer)?Geometry$/i.test(geometry.type);
+  }
+
+  function captureBundledThreeFromMesh(obj) {
+    return {
+      SphereGeometry: obj.geometry.constructor,
+      MeshLambertMaterial: obj.material.constructor,
+      Mesh: obj.constructor,
+      AmbientLight: null,
+      DirectionalLight: null,
+    };
+  }
+
+  function validateBundledThree(T) {
+    if (!T || !T.SphereGeometry || !T.MeshLambertMaterial || !T.Mesh) return false;
+    try {
+      var probe = new T.SphereGeometry(1, 8, 6);
+      if (probe && probe.dispose) probe.dispose();
+      return true;
+    } catch (_e) {
+      return false;
+    }
+  }
+
+  /**
+   * 只从 three-forcegraph 的默认节点球体抓取 THREE 构造器。
+   * 若误抓连线 TubeGeometry，后续 new SphereGeometry(...) 会失败，导致 3D 节点全空。
+   */
   function captureBundledThree(graph) {
     if (!graph || !graph.scene) return null;
     var scene = graph.scene();
     if (!scene) return null;
     var captured = null;
     scene.traverse(function (obj) {
-      if (!captured && obj.isMesh && obj.geometry && obj.material) {
-        captured = {
-          SphereGeometry: obj.geometry.constructor,
-          MeshLambertMaterial: obj.material.constructor,
-          Mesh: obj.constructor,
-          AmbientLight: null,
-          DirectionalLight: null,
-        };
-      }
-      if (captured && obj.isLight) {
-        if (obj.type === 'AmbientLight') captured.AmbientLight = obj.constructor;
-        if (obj.type === 'DirectionalLight') captured.DirectionalLight = obj.constructor;
+      if (!obj.isMesh || !obj.geometry || !obj.material) return;
+      if (obj.__graphObjType !== 'node') return;
+      if (!isSphereGeometryType(obj.geometry)) return;
+      if (!captured || obj.__graphDefaultObj) {
+        captured = captureBundledThreeFromMesh(obj);
       }
     });
-    if (!captured || !captured.SphereGeometry || !captured.Mesh) return null;
-    return captured;
+    if (!captured) return null;
+    scene.traverse(function (obj) {
+      if (!captured || !obj.isLight) return;
+      if (obj.type === 'AmbientLight') captured.AmbientLight = obj.constructor;
+      if (obj.type === 'DirectionalLight') captured.DirectionalLight = obj.constructor;
+    });
+    return validateBundledThree(captured) ? captured : null;
   }
 
   function ensureSceneLights(scene, T) {
@@ -339,20 +367,48 @@
       if (meshInstallScheduled) return;
       meshInstallScheduled = true;
       var attempts = 0;
+      var maxAttempts = 90;
+      var onReadyCalled = false;
+      function finish(onReadyFn) {
+        meshInstallScheduled = false;
+        if (onReadyFn && !onReadyCalled) {
+          onReadyCalled = true;
+          onReadyFn();
+        }
+      }
       function tryInstall() {
         attempts += 1;
         if (installCustomNodeMeshes()) {
-          meshInstallScheduled = false;
-          if (onReady) onReady();
+          finish(onReady);
           return;
         }
-        if (attempts < 12) {
+        if (attempts < maxAttempts) {
           window.requestAnimationFrame(tryInstall);
         } else {
-          meshInstallScheduled = false;
+          finish(onReady);
         }
       }
       window.requestAnimationFrame(tryInstall);
+    }
+
+    function pauseRenderLoop() {
+      if (!graph) return;
+      if (typeof graph.pauseAnimation === 'function') graph.pauseAnimation();
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+    }
+
+    function resumeRenderLoop() {
+      if (!graph) return;
+      if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+    }
+
+  /** graphData 更新完成后再 reheat / resume，避免 layout 未就绪时 tick 抛错中断 rAF。 */
+    function reheatAfterGraphData() {
+      if (!graph) return;
+      if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+      if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+      resumeRenderLoop();
     }
 
     function resetNodePositionsInPlace() {
@@ -371,12 +427,16 @@
       });
     }
 
+    function clearMagneticForces() {
+      ['x', 'y', 'z'].forEach(function (name) {
+        if (graph.d3Force(name)) graph.d3Force(name, null);
+      });
+    }
+
     function applyMagneticForces() {
       var magneticConfig = getMagneticConfig();
       if (!magneticConfig || !magneticConfig.enabled) {
-        graph.d3Force('x', null);
-        graph.d3Force('y', null);
-        graph.d3Force('z', null);
+        clearMagneticForces();
         return;
       }
       var centers = magneticConfig.centers || {};
@@ -408,6 +468,38 @@
       var next = measureContainerSize(container);
       graph.width(next.width);
       graph.height(next.height);
+    }
+
+    function bboxFromNodeData(nodeFilter) {
+      var filterFn = nodeFilter || function () { return true; };
+      var minX = Infinity;
+      var maxX = -Infinity;
+      var minY = Infinity;
+      var maxY = -Infinity;
+      var minZ = Infinity;
+      var maxZ = -Infinity;
+      var count = 0;
+      nodes3d.forEach(function (n) {
+        if (!filterFn(n) || n.x == null || n.y == null || n.z == null) return;
+        var r = sphereRadiusFor(n) + 8;
+        count += 1;
+        minX = Math.min(minX, n.x - r);
+        maxX = Math.max(maxX, n.x + r);
+        minY = Math.min(minY, n.y - r);
+        maxY = Math.max(maxY, n.y + r);
+        minZ = Math.min(minZ, n.z - r);
+        maxZ = Math.max(maxZ, n.z + r);
+      });
+      if (!count || !isFinite(minX)) return null;
+      return { x: [minX, maxX], y: [minY, maxY], z: [minZ, maxZ] };
+    }
+
+    function bboxSpan(bbox) {
+      if (!bbox) return 0;
+      var halfX = (bbox.x[1] - bbox.x[0]) / 2;
+      var halfY = (bbox.y[1] - bbox.y[0]) / 2;
+      var halfZ = (bbox.z[1] - bbox.z[0]) / 2;
+      return Math.sqrt(halfX * halfX + halfY * halfY + halfZ * halfZ);
     }
 
     function inflateBbox(bbox, nodeFilter) {
@@ -468,11 +560,36 @@
     function zoomFitToNodes(duration, nodeFilter) {
       if (!graph) return;
       var filterFn = nodeFilter || function () { return true; };
-      var bbox = graph.getGraphBbox(filterFn);
+      var sceneBbox = graph.getGraphBbox(filterFn);
+      var dataBbox = bboxFromNodeData(filterFn);
+      var bbox = dataBbox || sceneBbox;
+      if (sceneBbox && dataBbox) {
+        var sceneSpan = bboxSpan(sceneBbox);
+        var dataSpan = bboxSpan(dataBbox);
+        // 力模拟首帧前三维对象常堆在原点；数据坐标已展开时优先信 scene bbox。
+        if (sceneSpan >= dataSpan * 0.25) bbox = sceneBbox;
+        else bbox = dataBbox;
+      }
       if (bbox) bbox = inflateBbox(bbox, filterFn);
       if (!fitCameraToBbox(bbox, duration)) {
-        graph.zoomToFit(duration, 0, filterFn);
+        graph.zoomToFit(duration, 80, filterFn);
       }
+    }
+
+    function scheduleInitialFit(ms) {
+      var duration = ms == null ? 450 : ms;
+      function runFit() {
+        if (!graph) return;
+        if (typeof graph.zoomToFit === 'function') {
+          graph.zoomToFit(duration, 100);
+          return;
+        }
+        zoomFitToNodes(duration);
+      }
+      if (typeof graph.onEngineStop === 'function') {
+        graph.onEngineStop(function () { runFit(); });
+      }
+      window.setTimeout(runFit, 2000);
     }
 
     function onContainerPointerMove(ev) {
@@ -483,78 +600,91 @@
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
 
-    var graph = window.ForceGraph3D()(container)
-      .width(size.width)
-      .height(size.height)
-      .graphData({ nodes: nodes3d, links: buildLinks() })
-      .backgroundColor(backgroundColor())
-      .showNavInfo(false)
-      .warmupTicks(0)
-      .cooldownTicks(24)
-      .nodeId('id')
-      .nodeRelSize(1)
-      .nodeResolution(8)
-      .nodeColor(function (d) { return getNodeColor(d); })
-      .nodeVal(nodeValFor)
-      .nodeOpacity(function (d) { return nodeOpacityFor(d); })
-      .linkColor(function (l) { return linkColorFor(l); })
-      .linkWidth(function (l) { return linkWidthFor(l); })
-      .linkOpacity(function (l) { return linkOpacityFor(l); })
-      .enableNodeDrag(true)
-      .onNodeClick(function (node, ev) {
-        var src = resolveSourceNode(node.id) || node;
-        if (onNodeClick) onNodeClick(src, ev || lastPointer);
-      })
-      .onNodeHover(function (node) {
-        hoverNodeId = node ? node.id : null;
-        refreshAppearance();
-        var src = node ? (resolveSourceNode(node.id) || node) : null;
-        if (onNodeHover) onNodeHover(src, lastPointer);
-      })
-      .onBackgroundClick(function () {
-        hoverNodeId = null;
-        refreshAppearance();
-        if (opts.onBackgroundClick) opts.onBackgroundClick();
+    var graph = null;
+
+    function afterGraphDataApplied(fn) {
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(fn);
       });
+    }
 
-    var chargeForce = graph.d3Force('charge');
-    if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
+    function bindGraphInstance() {
+      graph
+        .width(size.width)
+        .height(size.height)
+        .backgroundColor(backgroundColor())
+        .showNavInfo(false)
+        .warmupTicks(8)
+        .cooldownTicks(24)
+        .nodeId('id')
+        .nodeRelSize(1)
+        .nodeResolution(8)
+        .nodeColor(function (d) { return getNodeColor(d); })
+        .nodeVal(nodeValFor)
+        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+        .linkColor(function (l) { return linkColorFor(l); })
+        .linkWidth(function (l) { return linkWidthFor(l); })
+        .linkOpacity(function (l) { return linkOpacityFor(l); })
+        .enableNodeDrag(true)
+        .onNodeClick(function (node, ev) {
+          var src = resolveSourceNode(node.id) || node;
+          if (onNodeClick) onNodeClick(src, ev || lastPointer);
+        })
+        .onNodeHover(function (node) {
+          hoverNodeId = node ? node.id : null;
+          refreshAppearance();
+          var src = node ? (resolveSourceNode(node.id) || node) : null;
+          if (onNodeHover) onNodeHover(src, lastPointer);
+        })
+        .onBackgroundClick(function () {
+          hoverNodeId = null;
+          refreshAppearance();
+          if (opts.onBackgroundClick) opts.onBackgroundClick();
+        });
+      var chargeForce = graph.d3Force('charge');
+      if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
+    }
 
-    scheduleCustomMeshInstall();
+    function ensureGraph() {
+      if (graph) return graph;
+      size = measureContainerSize(container);
+      // init 末尾会同步启动 rAF；先 pause，待 graphData onFinishUpdate 后再 resume。
+      graph = window.ForceGraph3D()(container);
+      graph.pauseAnimation();
+      bindGraphInstance();
+      return graph;
+    }
 
     return {
       show: function () {
         container.hidden = false;
         syncPositionsFromSource();
+        ensureGraph();
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
-        this.resumeSimulation();
-        var self = this;
-        window.requestAnimationFrame(function () { syncViewport(); });
-        if (customMeshesInstalled) {
-          self.fitToScreen(450);
-        } else {
-          scheduleCustomMeshInstall(function () {
-            self.fitToScreen(450);
-          });
-        }
+        pauseRenderLoop();
+        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          reheatAfterGraphData();
+          syncViewport();
+          if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
+          scheduleInitialFit(650);
+        });
       },
 
       hide: function () {
-        this.pauseSimulation();
+        pauseRenderLoop();
         container.hidden = true;
       },
 
       pauseSimulation: function () {
-        if (!graph) return;
-        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0);
+        pauseRenderLoop();
       },
 
       resumeSimulation: function () {
-        if (!graph) return;
-        if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
-        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+        resumeRenderLoop();
       },
 
       resize: function () {
@@ -572,12 +702,15 @@
       },
 
       updateForces: function () {
+        if (!graph) return;
         var charge = graph.d3Force('charge');
         if (charge && charge.strength) charge.strength(getChargeStrength());
         applyMagneticForces();
-        if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.45);
-        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
-        else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        afterGraphDataApplied(function () {
+          if (!graph) return;
+          if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.22);
+          else if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
+        });
       },
 
       restartSimulation: function () {
@@ -631,7 +764,8 @@
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
-        if (graph._destructor) graph._destructor();
+        if (graph && graph._destructor) graph._destructor();
+        graph = null;
         container.replaceChildren();
       },
     };

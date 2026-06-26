@@ -2066,7 +2066,16 @@
     }
 
     const SPATIAL_VIEW_KEY = 'rn-graph-spatial-view';
+    const spatialViewParam = new URLSearchParams(location.search).get('view');
     let spatialViewMode = (function () {
+      if (spatialViewParam === '2d') {
+        try { localStorage.setItem(SPATIAL_VIEW_KEY, '2d'); } catch (_e) { /* ignore */ }
+        return '2d';
+      }
+      if (spatialViewParam === '3d') {
+        try { localStorage.setItem(SPATIAL_VIEW_KEY, '3d'); } catch (_e) { /* ignore */ }
+        return '3d';
+      }
       try {
         const saved = localStorage.getItem(SPATIAL_VIEW_KEY);
         return saved === '3d' ? '3d' : '2d';
@@ -2223,6 +2232,9 @@
         }
         graph3dView.show();
         graph3dView.syncFilters();
+        window.setTimeout(function () {
+          if (is3DView() && graph3dView) graph3dView.fitToScreen(0);
+        }, 120);
       } else {
         if (graph3dView) graph3dView.hide();
         graphCanvas3d.hidden = true;
@@ -4276,7 +4288,12 @@
     }
 
     if (spatialViewMode === '3d') {
-      whenGraphViewportReady(() => setSpatialViewMode('3d', { force: true }));
+      const enter3dWhenReady = () => setSpatialViewMode('3d', { force: true });
+      simulation.on('end.initial3d', () => {
+        simulation.on('end.initial3d', null);
+        whenGraphViewportReady(enter3dWhenReady);
+      });
+      setTimeout(() => whenGraphViewportReady(enter3dWhenReady), 2200);
     }
 
   })();
