@@ -570,16 +570,18 @@
 
     function scheduleInitialFit(ms) {
       var duration = ms == null ? 450 : ms;
-      var done = false;
       function runFit() {
-        if (done) return;
-        done = true;
+        if (!graph) return;
+        if (typeof graph.zoomToFit === 'function') {
+          graph.zoomToFit(duration, 100);
+          return;
+        }
         zoomFitToNodes(duration);
       }
       if (typeof graph.onEngineStop === 'function') {
         graph.onEngineStop(function () { runFit(); });
       }
-      window.setTimeout(runFit, 1800);
+      window.setTimeout(runFit, 2000);
     }
 
     function onContainerPointerMove(ev) {
@@ -590,60 +592,69 @@
     container.addEventListener('mousemove', onContainerPointerMove);
     container.addEventListener('pointermove', onContainerPointerMove);
 
-    var graph = window.ForceGraph3D()(container)
-      .width(size.width)
-      .height(size.height)
-      .graphData({ nodes: nodes3d, links: buildLinks() })
-      .backgroundColor(backgroundColor())
-      .showNavInfo(false)
-      .warmupTicks(8)
-      .cooldownTicks(24)
-      .nodeId('id')
-      .nodeRelSize(1)
-      .nodeResolution(8)
-      .nodeColor(function (d) { return getNodeColor(d); })
-      .nodeVal(nodeValFor)
-      .nodeOpacity(function (d) { return nodeOpacityFor(d); })
-      .linkColor(function (l) { return linkColorFor(l); })
-      .linkWidth(function (l) { return linkWidthFor(l); })
-      .linkOpacity(function (l) { return linkOpacityFor(l); })
-      .enableNodeDrag(true)
-      .onNodeClick(function (node, ev) {
-        var src = resolveSourceNode(node.id) || node;
-        if (onNodeClick) onNodeClick(src, ev || lastPointer);
-      })
-      .onNodeHover(function (node) {
-        hoverNodeId = node ? node.id : null;
-        refreshAppearance();
-        var src = node ? (resolveSourceNode(node.id) || node) : null;
-        if (onNodeHover) onNodeHover(src, lastPointer);
-      })
-      .onBackgroundClick(function () {
-        hoverNodeId = null;
-        refreshAppearance();
-        if (opts.onBackgroundClick) opts.onBackgroundClick();
-      });
+    var graph = null;
 
-    var chargeForce = graph.d3Force('charge');
-    if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
-
-    // 构造器 init 会在 graphData 生效前同步跑一帧并抛 layout.tick 异常，需在此重启渲染环。
-    resumeRenderLoop();
+    function ensureGraph() {
+      if (graph) return graph;
+      size = measureContainerSize(container);
+      graph = window.ForceGraph3D()(container)
+        .width(size.width)
+        .height(size.height)
+        .graphData({ nodes: nodes3d, links: buildLinks() })
+        .backgroundColor(backgroundColor())
+        .showNavInfo(false)
+        .warmupTicks(8)
+        .cooldownTicks(24)
+        .nodeId('id')
+        .nodeRelSize(1)
+        .nodeResolution(8)
+        .nodeColor(function (d) { return getNodeColor(d); })
+        .nodeVal(nodeValFor)
+        .nodeOpacity(function (d) { return nodeOpacityFor(d); })
+        .linkColor(function (l) { return linkColorFor(l); })
+        .linkWidth(function (l) { return linkWidthFor(l); })
+        .linkOpacity(function (l) { return linkOpacityFor(l); })
+        .enableNodeDrag(true)
+        .onNodeClick(function (node, ev) {
+          var src = resolveSourceNode(node.id) || node;
+          if (onNodeClick) onNodeClick(src, ev || lastPointer);
+        })
+        .onNodeHover(function (node) {
+          hoverNodeId = node ? node.id : null;
+          refreshAppearance();
+          var src = node ? (resolveSourceNode(node.id) || node) : null;
+          if (onNodeHover) onNodeHover(src, lastPointer);
+        })
+        .onBackgroundClick(function () {
+          hoverNodeId = null;
+          refreshAppearance();
+          if (opts.onBackgroundClick) opts.onBackgroundClick();
+        });
+      var chargeForce = graph.d3Force('charge');
+      if (chargeForce && chargeForce.strength) chargeForce.strength(getChargeStrength());
+      // 构造器 init 首帧 layout 未就绪会抛 tick 异常并中断 rAF，此处立即重启渲染环。
+      resumeRenderLoop();
+      return graph;
+    }
 
     return {
       show: function () {
         container.hidden = false;
         syncPositionsFromSource();
+        ensureGraph();
         syncViewport();
         graph.backgroundColor(backgroundColor());
         refreshAppearance();
+        graph.graphData({ nodes: nodes3d, links: buildLinks() });
         resumeRenderLoop();
         if (typeof graph.d3ReheatSimulation === 'function') graph.d3ReheatSimulation();
-        window.requestAnimationFrame(function () { syncViewport(); });
-        scheduleInitialFit(450);
-        scheduleCustomMeshInstall(function () {
-          scheduleInitialFit(350);
+        if (typeof graph.d3Alpha === 'function') graph.d3Alpha(0.9);
+        if (typeof graph.d3AlphaTarget === 'function') graph.d3AlphaTarget(0.25);
+        window.requestAnimationFrame(function () {
+          syncViewport();
+          if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
         });
+        scheduleInitialFit(650);
       },
 
       hide: function () {
@@ -733,7 +744,8 @@
       destroy: function () {
         container.removeEventListener('mousemove', onContainerPointerMove);
         container.removeEventListener('pointermove', onContainerPointerMove);
-        if (graph._destructor) graph._destructor();
+        if (graph && graph._destructor) graph._destructor();
+        graph = null;
         container.replaceChildren();
       },
     };
