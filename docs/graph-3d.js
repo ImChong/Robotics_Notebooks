@@ -165,6 +165,7 @@
     var sharedSphereGeometry = null;
     var customMeshesInstalled = false;
     var meshInstallScheduled = false;
+    var pendingFirstShowKick = false;
 
     function rebuildNodeIndex() {
       nodeById = new Map(nodes3d.map(function (n) { return [n.id, n]; }));
@@ -582,10 +583,8 @@
       var duration = ms == null ? 450 : ms;
       function runFit() {
         if (!graph) return;
-        if (typeof graph.zoomToFit === 'function') {
-          graph.zoomToFit(duration, 100);
-          return;
-        }
+        // 用基于节点数据坐标的安全 fit：库自带 zoomToFit 在场景对象尚未生成时
+        // （getGraphBbox 返回 null）会静默 no-op，首次切换易停在未取景的相机上。
         zoomFitToNodes(duration);
       }
       if (typeof graph.onEngineStop === 'function') {
@@ -654,7 +653,23 @@
       graph = window.ForceGraph3D()(container);
       graph.pauseAnimation();
       bindGraphInstance();
+      pendingFirstShowKick = true;
       return graph;
+    }
+
+    // 首次创建 WebGL 渲染器后，部分浏览器/GPU 需要一次额外的 resize + resume + fit
+    // 才会真正出图（否则 2D 第一次切到 3D 时画布停在空白，要拖动/缩放才出现）。幂等。
+    function firstShowKick() {
+      if (!pendingFirstShowKick) return;
+      pendingFirstShowKick = false;
+      [180, 520].forEach(function (delay) {
+        window.setTimeout(function () {
+          if (!graph || container.hidden) return;
+          syncViewport();
+          resumeRenderLoop();
+          zoomFitToNodes(0);
+        }, delay);
+      });
     }
 
     return {
@@ -671,7 +686,7 @@
           if (!graph) return;
           reheatAfterGraphData();
           syncViewport();
-          if (typeof graph.zoomToFit === 'function') graph.zoomToFit(0, 90);
+          zoomFitToNodes(0);
           // 默认渲染把 nodeOpacity 当标量，传入函数会得到 NaN 不透明度（节点全透明不可见）。
           // 装上自定义 mesh 后由 createNodeMesh / updateNodeMeshes 写入逐节点数值不透明度。
           scheduleCustomMeshInstall(function () {
@@ -680,6 +695,7 @@
             scheduleInitialFit(350);
           });
           scheduleInitialFit(650);
+          firstShowKick();
         });
       },
 
