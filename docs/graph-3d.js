@@ -475,6 +475,11 @@
       graph.height(next.height);
     }
 
+    function graphFitPadPx() {
+      var view = measureContainerSize(container);
+      return Math.min(view.width, view.height) < 520 ? 48 : 120;
+    }
+
     function bboxFromNodeData(nodeFilter) {
       var filterFn = nodeFilter || function () { return true; };
       var minX = Infinity;
@@ -486,7 +491,7 @@
       var count = 0;
       nodes3d.forEach(function (n) {
         if (!filterFn(n) || n.x == null || n.y == null || n.z == null) return;
-        var r = sphereRadiusFor(n) + 8;
+        var r = sphereRadiusFor(n) + 4;
         count += 1;
         minX = Math.min(minX, n.x - r);
         maxX = Math.max(maxX, n.x + r);
@@ -507,17 +512,13 @@
       return Math.sqrt(halfX * halfX + halfY * halfY + halfZ * halfZ);
     }
 
-    function inflateBbox(bbox, nodeFilter) {
-      var padR = 0;
-      nodes3d.forEach(function (n) {
-        if (nodeFilter && !nodeFilter(n)) return;
-        if (n.x == null || n.y == null || n.z == null) return;
-        padR = Math.max(padR, sphereRadiusFor(n) + 8);
-      });
+    function inflateBbox(bbox) {
+      // bbox 已含节点半径；仅留极小呼吸空间，避免与 fitCameraToBbox 的边距重复叠加。
+      var pad = 8;
       return {
-        x: [bbox.x[0] - padR, bbox.x[1] + padR],
-        y: [bbox.y[0] - padR, bbox.y[1] + padR],
-        z: [bbox.z[0] - padR, bbox.z[1] + padR],
+        x: [bbox.x[0] - pad, bbox.x[1] + pad],
+        y: [bbox.y[0] - pad, bbox.y[1] + pad],
+        z: [bbox.z[0] - pad, bbox.z[1] + pad],
       };
     }
 
@@ -528,19 +529,18 @@
       var cz = (bbox.z[0] + bbox.z[1]) / 2;
       var halfX = Math.max((bbox.x[1] - bbox.x[0]) / 2, 8);
       var halfY = Math.max((bbox.y[1] - bbox.y[0]) / 2, 8);
-      var halfZ = Math.max((bbox.z[1] - bbox.z[0]) / 2, 8);
-      var radius = Math.sqrt(halfX * halfX + halfY * halfY + halfZ * halfZ);
 
       var view = measureContainerSize(container);
       var cam3d = graph.camera();
       var fovDeg = (cam3d && cam3d.fov) || 50;
       var fov = fovDeg * Math.PI / 180;
       var aspect = view.width / Math.max(view.height, 1);
-      var distV = radius / Math.sin(fov / 2);
+      // 与 2D computeGraphFitTransform 对齐：按轴向半宽/半高分别取景，再取较远相机距离。
+      var pad = graphFitPadPx() / 2;
+      var distV = (halfY + pad) / Math.tan(fov / 2);
       var hFov = 2 * Math.atan(Math.tan(fov / 2) * aspect);
-      var distH = radius / Math.sin(hFov / 2);
-      var dist = Math.max(distV, distH, 48);
-      dist *= 0.78;
+      var distH = (halfX + pad) / Math.tan(hFov / 2);
+      var dist = Math.max(distV, distH, 32);
 
       var lookAt = { x: cx, y: cy, z: cz };
       var cur = graph.cameraPosition();
@@ -575,9 +575,9 @@
         if (sceneSpan >= dataSpan * 0.25) bbox = sceneBbox;
         else bbox = dataBbox;
       }
-      if (bbox) bbox = inflateBbox(bbox, filterFn);
+      if (bbox) bbox = inflateBbox(bbox);
       if (!fitCameraToBbox(bbox, duration)) {
-        graph.zoomToFit(duration, 80, filterFn);
+        graph.zoomToFit(duration, graphFitPadPx() / 2, filterFn);
       }
     }
 
