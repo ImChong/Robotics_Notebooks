@@ -9,13 +9,17 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / "sources/raw/wechat_humanoid_loco_manip_161_2026-06-26"
-RAW_MD = list(RAW.glob("*.md"))[0] if RAW.exists() else None
-if RAW_MD is None:
-    RAW_MD = (
-        ROOT
-        / "sources/raw/wechat_humanoid_loco_manip_161_2026-06-26"
-        / ("重磅整理！161篇论文带你看人形机器人移动操作的十个方向和技术版图全景.md")
-    )
+
+
+def _resolve_raw_md() -> Path:
+    if RAW.exists():
+        files = list(RAW.glob("*.md"))
+        if files:
+            return files[0]
+    return RAW / "重磅整理！161篇论文带你看人形机器人移动操作的十个方向和技术版图全景.md"
+
+
+RAW_MD = _resolve_raw_md()
 
 CATS = {
     1: ("01", "运控基座与通用全身跟踪", "motion-base-wbt"),
@@ -49,6 +53,8 @@ def parse_papers(text: str) -> list[dict]:
     for part in re.split(r"^## ", text, flags=re.M)[1:]:
         lines = part.strip().splitlines()
         cat_m = re.match(r"(\d+)(.+)", lines[0].strip())
+        if not cat_m:
+            continue
         cat_num = int(cat_m.group(1))
         cat_name = cat_m.group(2).strip()
         for block in re.split(r"^### ", part, flags=re.M)[1:]:
@@ -57,6 +63,8 @@ def parse_papers(text: str) -> list[dict]:
             hm = re.match(r"(\d{3})\s+(.+?)(?:｜|\|)", header) or re.match(
                 r"(\d{3})\s+(.+)", header
             )
+            if not hm:
+                continue
             num = int(hm.group(1))
             short = hm.group(2).strip()
             title = inst = link = date_s = summary = ""
