@@ -33,6 +33,7 @@
 
 - **wiki/concepts/deep-learning-foundations.md**: 整合 1-9 章的理论基础。
 - **wiki/concepts/backpropagation.md**: 基于第 7 章 *Gradients and Initialization* 细化反向传播与链式法则。
+- **wiki/methods/sgd.md** 等优化器 method 页 + **wiki/comparisons/deep-learning-optimizers.md**: 基于第 6 章 *Training Models* 与 [deep_learning_optimizers.md](../papers/deep_learning_optimizers.md) 一手论文。
 - **wiki/formalizations/transformers-foundation.md**: 基于第 12 章细化 Transformer 数学基础。
 - **wiki/formalizations/generative-foundations.md**: 整合 14-18 章，涵盖 GANs, VAEs, Diffusion。
 - **wiki/concepts/generalization-theory.md**: 基于第 20 章探讨深度学习为何有效。

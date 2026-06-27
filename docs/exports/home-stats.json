@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-27",
-  "node_count": 1491,
-  "edge_count": 9952,
+  "node_count": 1501,
+  "edge_count": 10028,
   "coverage": {
-    "covered": 1460,
-    "total": 1489,
+    "covered": 1470,
+    "total": 1499,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/sgd.md",
+      "detail_id": "wiki-methods-sgd",
+      "label": "SGD（Stochastic Gradient Descent）",
+      "type": "method",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/deep-learning-optimizers.md",
+      "detail_id": "wiki-comparisons-deep-learning-optimizers",
+      "label": "Deep Learning Optimizers：选型对比",
+      "type": "comparison",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/kinetiq-ascend.md",
       "detail_id": "entity-kinetiq-ascend",
@@ -151,29 +167,13 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-estimation.md",
-      "detail_id": "wiki-concepts-contact-estimation",
-      "label": "Contact Estimation（接触估计）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kinetiq-ascend.md",
-    "detail_id": "entity-kinetiq-ascend",
-    "label": "KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）",
-    "type": "entity",
+    "path": "wiki/methods/sgd.md",
+    "detail_id": "wiki-methods-sgd",
+    "label": "SGD（Stochastic Gradient Descent）",
+    "type": "method",
     "recency": "2026-06-27",
     "source": "log.md"
   }
