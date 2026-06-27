@@ -507,9 +507,72 @@
       }
     }
 
-    /* 加载状态仅由工具栏 #graph-node-count 提示，不遮挡画布 */
+    /* ── 加载页：2D / 3D 图就绪前覆盖画布，带进度条 ── */
     #graph-loading {
-      display: none !important;
+      position: absolute;
+      inset: 0;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96,165,250,.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,.06) 0%, transparent 50%),
+        #0d1117;
+      opacity: 1;
+      transition: opacity .45s ease;
+    }
+    #graph-loading[hidden] { display: none !important; }
+    #graph-loading.is-hidden { opacity: 0; pointer-events: none; }
+    .graph-loading-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: min(320px, 72vw);
+      text-align: center;
+    }
+    .graph-loading-spinner {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.12);
+      border-top-color: #00d4ff;
+      animation: graph-loading-spin .8s linear infinite;
+    }
+    @keyframes graph-loading-spin { to { transform: rotate(360deg); } }
+    .graph-loading-title {
+      font-size: .92rem;
+      font-weight: 600;
+      color: #e6edf3;
+      letter-spacing: .02em;
+    }
+    .graph-loading-bar {
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.1);
+      overflow: hidden;
+    }
+    .graph-loading-bar-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #60a5fa, #34d399);
+      transition: width .3s ease;
+    }
+    .graph-loading-pct {
+      font-size: .8rem;
+      color: rgba(255,255,255,0.55);
+      font-variant-numeric: tabular-nums;
+    }
+    #graph-loading.is-error .graph-loading-spinner {
+      animation: none;
+      border-color: rgba(248,113,113,0.3);
+      border-top-color: #f87171;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .graph-loading-spinner { animation-duration: 1.8s; }
     }
 
     /* ── 移动端优化 ── */
@@ -680,6 +743,20 @@
     [data-theme="light"] #graph-wrap::before {
       background-image: radial-gradient(circle, rgba(0,0,0,.06) 1px, transparent 1px);
     }
+    /* 加载页（浅色主题） */
+    [data-theme="light"] #graph-loading {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(96,165,250,.09) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(52,211,153,.09) 0%, transparent 50%),
+        #eef2f7;
+    }
+    [data-theme="light"] .graph-loading-title { color: #2f2d29; }
+    [data-theme="light"] .graph-loading-spinner {
+      border-color: rgba(0,0,0,0.12);
+      border-top-color: #2563eb;
+    }
+    [data-theme="light"] .graph-loading-bar { background: rgba(0,0,0,0.1); }
+    [data-theme="light"] .graph-loading-pct { color: rgba(0,0,0,0.45); }
     /* Tooltip */
     [data-theme="light"] #graph-tooltip {
       background: rgba(255,255,255,0.98);
@@ -1545,7 +1622,14 @@
 
   <!-- ── 图谱容器 ── -->
   <div id="graph-wrap">
-    <div id="graph-loading" hidden aria-hidden="true"></div>
+    <div id="graph-loading" role="status" aria-live="polite">
+      <div class="graph-loading-inner">
+        <div class="graph-loading-spinner" aria-hidden="true"></div>
+        <div class="graph-loading-title" id="graph-loading-title">知识图谱加载中…</div>
+        <div class="graph-loading-bar"><div class="graph-loading-bar-fill" id="graph-loading-fill"></div></div>
+        <div class="graph-loading-pct" id="graph-loading-pct">0%</div>
+      </div>
+    </div>
     <svg id="graph-canvas"></svg>
     <div id="graph-canvas-3d" hidden aria-label="3D 知识图谱"></div>
     <div id="graph-tooltip" class="hidden" role="tooltip"></div>
@@ -2384,21 +2468,87 @@
       }
     }
 
+    /* ── 加载页进度控制 ──
+       下载数据(5→78%) → 解析(→80%) → 构图渲染/力布局展开(88→99%) → 就绪(100%)，逐段推进。 */
+    const loadingEl    = document.getElementById('graph-loading');
+    const loadingFill  = document.getElementById('graph-loading-fill');
+    const loadingPct   = document.getElementById('graph-loading-pct');
+    const loadingTitle = document.getElementById('graph-loading-title');
+    let loadingValue = 0;
+    let loadingDone  = false;
+
+    function setLoadingProgress(pct) {
+      if (loadingDone) return;
+      pct = Math.max(loadingValue, Math.min(99, pct));  // 单调递增、封顶 99，完成时才到 100
+      loadingValue = pct;
+      if (loadingFill) loadingFill.style.width = pct.toFixed(0) + '%';
+      if (loadingPct)  loadingPct.textContent = Math.round(pct) + '%';
+    }
+
+    function finishLoading() {
+      if (loadingDone) return;
+      loadingDone = true;
+      if (loadingFill) loadingFill.style.width = '100%';
+      if (loadingPct)  loadingPct.textContent = '100%';
+      if (loadingEl) {
+        loadingEl.classList.add('is-hidden');
+        setTimeout(() => { loadingEl.hidden = true; }, 500);
+      }
+    }
+
+    function failLoading(msg) {
+      if (loadingDone) return;
+      loadingDone = true;  // 停止后续进度推进
+      if (loadingEl) loadingEl.classList.add('is-error');
+      if (loadingTitle) loadingTitle.textContent = msg || '加载失败，请刷新页面重试';
+      if (loadingPct) loadingPct.textContent = '';
+    }
+
+    /* 流式读取以反映真实下载进度；无法读取流或缺少 Content-Length 时退化为一次性解析。 */
+    async function fetchJsonWithProgress(url, onProgress) {
+      const resp = await fetch(url);
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      const total = Number(resp.headers.get('Content-Length')) || 0;
+      if (!resp.body || !resp.body.getReader || !total) return resp.json();
+      const reader = resp.body.getReader();
+      const chunks = [];
+      let received = 0;
+      for (;;) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        chunks.push(value);
+        received += value.length;
+        if (onProgress) onProgress(Math.min(1, received / total));
+      }
+      let size = 0;
+      for (const c of chunks) size += c.length;
+      const merged = new Uint8Array(size);
+      let pos = 0;
+      for (const c of chunks) { merged.set(c, pos); pos += c.length; }
+      return JSON.parse(new TextDecoder('utf-8').decode(merged));
+    }
+
+    setLoadingProgress(5);
+
     /* ── 加载数据 ──
        仅首屏阻塞 link-graph.json（~570KB，含 summary）。
        index-v1.json（~3.4MB）懒加载，供节点侧栏的 tags / related / source_links 使用。 */
     let graphData;
     let indexItems = [];
     try {
-      graphData = await fetch('exports/link-graph.json').then(r => r.json());
+      graphData = await fetchJsonWithProgress('exports/link-graph.json', frac => {
+        setLoadingProgress(5 + frac * 73);   // 下载阶段（首屏主要耗时）：5% → 78%
+      });
     } catch (e) {
       const countEl = document.getElementById('graph-node-count');
       if (countEl) {
         countEl.textContent = '数据加载失败';
         countEl.title = e.message || '';
       }
+      failLoading('数据加载失败，请刷新页面重试');
       return;
     }
+    setLoadingProgress(80);   // 数据解析完成，进入构图渲染
     fetch('exports/index-v1.json')
       .then(r => r.json())
       .then(d => { indexItems = d.items || []; })
@@ -2790,6 +2940,7 @@
     function finishSimulationLoad() {
       node.select('.node-label').transition().duration(400).style('opacity', 0.85);
       whenGraphViewportReady(() => fitToScreen());
+      finishLoading();   // 力布局收敛 → 图就绪，关闭加载页
     }
 
     function restartForceSimulation() {
@@ -2810,6 +2961,16 @@
       if (is3DView()) return;
       syncGraphDomFromSimulation();
     });
+
+    /* 构图渲染 / 力布局展开阶段推进进度条：alpha 由 1 衰减，映射到 88% → 99%（2D / 3D 通用）。 */
+    simulation.on('tick.loading', () => {
+      if (loadingDone) return;
+      setLoadingProgress(88 + (1 - simulation.alpha()) * 11);
+    });
+
+    /* 加载页揭幕（2D）：数据与首屏渲染就绪、力布局展开约 1.2s 后揭幕。
+       大图完全收敛较慢，剩余收敛实时可见，无需一直遮挡画布。3D 由 enter3dWhenReady 关闭。 */
+    if (!is3DView()) setTimeout(() => finishLoading(), 1200);
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
@@ -4394,7 +4555,9 @@
       const enter3dWhenReady = () => {
         if (entered3dOnLoad) return;
         entered3dOnLoad = true;
-        setSpatialViewMode('3d', { force: true });
+        // 即便 3D 初始化抛错（如无 WebGL），也必须关闭加载页，避免画布被永久遮挡。
+        try { setSpatialViewMode('3d', { force: true }); }
+        finally { finishLoading(); }
       };
       simulation.on('end.initial3d', () => {
         simulation.on('end.initial3d', null);
