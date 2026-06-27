@@ -2469,7 +2469,7 @@
     }
 
     /* ── 加载页进度控制 ──
-       下载数据(5→78%) → 解析(→80%) → 构图渲染/力布局展开(88→99%) → 就绪(100%)，逐段推进。 */
+       下载数据(5→78%) → 解析(→80%) → 构图渲染(→100%)；力布局在加载页关闭后于画布上继续展开。 */
     const loadingEl    = document.getElementById('graph-loading');
     const loadingFill  = document.getElementById('graph-loading-fill');
     const loadingPct   = document.getElementById('graph-loading-pct');
@@ -2770,6 +2770,7 @@
     }
 
     /* ── 渲染边 ── */
+    setLoadingProgress(88);   // 开始挂载节点/边 DOM
     const gEdges = gRoot.append('g').attr('class', 'edges');
     const link = gEdges.selectAll('line')
       .data(edges)
@@ -2826,6 +2827,24 @@
       .attr('fill', labelFill())
       .attr('pointer-events', 'none')
       .style('opacity', 0);
+
+    let entered3dOnLoad = false;
+    function enter3dOnLoadOnce() {
+      if (entered3dOnLoad) return;
+      entered3dOnLoad = true;
+      try { setSpatialViewMode('3d', { force: true }); }
+      catch (err) { console.error('3D graph init failed on load:', err); }
+    }
+
+    function finishGraphRenderLoad() {
+      finishLoading();
+      if (spatialViewMode === '3d') {
+        requestAnimationFrame(() => whenGraphViewportReady(enter3dOnLoadOnce));
+      }
+    }
+
+    syncGraphDomFromSimulation();
+    whenGraphViewportReady(() => finishGraphRenderLoad());
 
     function getFilterOptions() {
       if (colorMode === 'community') {
@@ -2940,7 +2959,6 @@
     function finishSimulationLoad() {
       node.select('.node-label').transition().duration(400).style('opacity', 0.85);
       whenGraphViewportReady(() => fitToScreen());
-      finishLoading();   // 力布局收敛 → 图就绪，关闭加载页
     }
 
     function restartForceSimulation() {
@@ -2961,16 +2979,6 @@
       if (is3DView()) return;
       syncGraphDomFromSimulation();
     });
-
-    /* 构图渲染 / 力布局展开阶段推进进度条：alpha 由 1 衰减，映射到 88% → 99%（2D / 3D 通用）。 */
-    simulation.on('tick.loading', () => {
-      if (loadingDone) return;
-      setLoadingProgress(88 + (1 - simulation.alpha()) * 11);
-    });
-
-    /* 加载页揭幕（2D）：数据与首屏渲染就绪、力布局展开约 1.2s 后揭幕。
-       大图完全收敛较慢，剩余收敛实时可见，无需一直遮挡画布。3D 由 enter3dWhenReady 关闭。 */
-    if (!is3DView()) setTimeout(() => finishLoading(), 1200);
 
     /* ── 布局稳定后标签渐显 ── */
     simulation.on('end', () => {
@@ -4545,25 +4553,6 @@
         simulation.on('end.focus', () => { flyToFocus(); simulation.on('end.focus', null); });
         setTimeout(flyToFocus, 1400);
       }
-    }
-
-    if (spatialViewMode === '3d') {
-      // 只进入一次：simulation 收敛(end.initial3d)与 2200ms 兜底都会触发，需去重，
-      // 否则二次以 force:true 重跑 setSpatialViewMode('3d') → show() 重入，徒增 graphData
-      // 重排与渲染环 pause/resume 抢跑风险。
-      let entered3dOnLoad = false;
-      const enter3dWhenReady = () => {
-        if (entered3dOnLoad) return;
-        entered3dOnLoad = true;
-        // 即便 3D 初始化抛错（如无 WebGL），也必须关闭加载页，避免画布被永久遮挡。
-        try { setSpatialViewMode('3d', { force: true }); }
-        finally { finishLoading(); }
-      };
-      simulation.on('end.initial3d', () => {
-        simulation.on('end.initial3d', null);
-        whenGraphViewportReady(enter3dWhenReady);
-      });
-      setTimeout(() => whenGraphViewportReady(enter3dWhenReady), 2200);
     }
 
   })();
