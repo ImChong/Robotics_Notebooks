@@ -11,7 +11,7 @@ tags:
   - isaac-sim
   - inverse-kinematics
 status: complete
-updated: 2026-05-30
+updated: 2026-06-27
 related:
   - ../methods/trajectory-optimization.md
   - ./crocoddyl.md

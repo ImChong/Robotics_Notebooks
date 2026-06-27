@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-06-27",
-  "node_count": 1491,
-  "edge_count": 9952,
+  "node_count": 1498,
+  "edge_count": 10019,
   "coverage": {
-    "covered": 1460,
-    "total": 1489,
+    "covered": 1467,
+    "total": 1496,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/newtons-method.md",
+      "detail_id": "wiki-methods-newtons-method",
+      "label": "Newton's Method（牛顿法）",
+      "type": "method",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/second-order-optimizers.md",
+      "detail_id": "wiki-comparisons-second-order-optimizers",
+      "label": "Second-Order Optimizers：选型对比",
+      "type": "comparison",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/kinetiq-ascend.md",
       "detail_id": "entity-kinetiq-ascend",
@@ -151,29 +167,13 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-estimation.md",
-      "detail_id": "wiki-concepts-contact-estimation",
-      "label": "Contact Estimation（接触估计）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/kinetiq-ascend.md",
-    "detail_id": "entity-kinetiq-ascend",
-    "label": "KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）",
-    "type": "entity",
+    "path": "wiki/methods/newtons-method.md",
+    "detail_id": "wiki-methods-newtons-method",
+    "label": "Newton's Method（牛顿法）",
+    "type": "method",
     "recency": "2026-06-27",
     "source": "log.md"
   }

@@ -2,7 +2,7 @@
 type: method
 tags: [control, optimization, motion-planning, trajectory-optimization, mpc, humanoid]
 status: complete
-updated: 2026-06-10
+updated: 2026-06-27
 related:
   - ./model-predictive-control.md
   - ../concepts/optimal-control.md
