@@ -67,7 +67,7 @@ $$f(\alpha x + (1-\alpha) y) \le \alpha f(x) + (1-\alpha) f(y), \quad \alpha \in
 ### 高阶信息（课程 1.2）
 
 - **梯度** $\nabla f$：一阶下降方向
-- **Hessian** $\nabla^2 f$：曲率；牛顿法 / Gauss-Newton 的核心
+- **Hessian** $\nabla^2 f$：曲率；[Newton](../methods/newtons-method.md) / [Gauss-Newton](../methods/gauss-newton.md) 的核心
 - **强凸**：$\nabla^2 f \succ 0$ 时收敛更快、条件数更好
 
 ## 机器人中的典型用法

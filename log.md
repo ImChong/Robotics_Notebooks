@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-27] ingest | sources/papers/second_order_optimizers.md — 6 类二阶/拟牛顿优化器；wiki/methods/newtons-method.md、gauss-newton.md、levenberg-marquardt.md、bfgs.md、l-bfgs.md、truncated-newton.md + wiki/comparisons/second-order-optimizers.md + 交叉 quasi-newton-bfgs / line-search / convex-functions
+
 ## [2026-06-27] ingest | sources/papers/deep_learning_optimizers.md — 9 类深度学习优化器一手资料；wiki/methods/sgd.md、sgd-momentum.md、nesterov-momentum.md、adagrad.md、rmsprop.md、adadelta.md、adam.md、adamw.md、lion.md + wiki/comparisons/deep-learning-optimizers.md + 交叉 deep-learning-foundations / backpropagation
 
 ## [2026-06-27] ingest | sources/blogs/thehumanoid_kinetiq_ascend.md — Humanoid KinetIQ Ascend 真机 CFM-VLA PPO；wiki/entities/kinetiq-ascend.md + 交叉 VLA/BC/manipulation

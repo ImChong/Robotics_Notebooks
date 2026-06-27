@@ -2,20 +2,25 @@
 type: method
 tags: [optimization, quasi-newton, bfgs, trajectory-optimization, numerical-methods]
 status: complete
-updated: 2026-06-23
+updated: 2026-06-27
 related:
+  - ./bfgs.md
+  - ./l-bfgs.md
   - ./line-search-steepest-descent.md
   - ./conjugate-gradient-method.md
+  - ./newtons-method.md
   - ../entities/curobo.md
   - ./trajectory-optimization.md
+  - ../comparisons/second-order-optimizers.md
 sources:
+  - ../../sources/papers/second_order_optimizers.md
   - ../../sources/courses/numerical_optimization_foundations_robotics.md
-summary: "拟牛顿 BFGS / L-BFGS：用低秩更新近似 Hessian 逆，是 cuRobo 等 GPU TrajOpt 与大规模 NLP 的默认选择。"
+summary: "拟牛顿 BFGS / L-BFGS 总览：分别见独立节点 bfgs.md 与 l-bfgs.md；是 cuRobo 等 GPU TrajOpt 的默认选择。"
 ---
 
-# Quasi-Newton BFGS / L-BFGS（拟牛顿法）
+# Quasi-Newton BFGS / L-BFGS（拟牛顿法总览）
 
-**拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵 $B_k$ 或 $H_k \approx (\nabla^2 f)^{-1}$。**BFGS** 是最常用更新；**L-BFGS** 只存最近 $m$ 步向量，适合高维 TrajOpt。
+**拟牛顿法**：不显式形成 Hessian，用梯度差分维护近似矩阵。本页为 **总览入口**；各算法细节见独立节点 **[BFGS](./bfgs.md)** 与 **[L-BFGS](./l-bfgs.md)**。
 
 ## 一句话定义
 
@@ -31,15 +36,12 @@ summary: "拟牛顿 BFGS / L-BFGS：用低秩更新近似 Hessian 逆，是 cuRo
 | GN | Gauss-Newton | 最小二乘 TrajOpt 的曲率来源 |
 | SQP | Sequential Quadratic Programming | 每步解 QP，与 BFGS 可组合 |
 
-## 核心更新（BFGS）
+## 核心更新（详见独立节点）
 
-令 $s_k = x_{k+1}-x_k$，$y_k = \nabla f_{k+1}-\nabla f_k$：
+- **[BFGS](./bfgs.md)**：满内存秩-2 更新，$O(n^2)$ 存储，中低维 NLP。
+- **[L-BFGS](./l-bfgs.md)**：two-loop recursion，$O(mn)$ 内存，高维 TrajOpt 工业默认。
 
-$$H_{k+1} = (I - \rho_k s_k y_k^T) H_k (I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T, \quad \rho_k = 1/(y_k^T s_k)$$
-
-每步方向 $p_k = -H_k \nabla f_k$，再 **线搜索** 定步长。
-
-**L-BFGS**：不显式存 $H_k$，用 two-loop recursion 计算 $p_k$，内存 $O(mn)$。
+令 $s_k = x_{k+1}-x_k$，$y_k = \nabla f_{k+1}-\nabla f_k$，BFGS 更新公式见 [bfgs.md](./bfgs.md)。
 
 ## 机器人中的典型应用
 
@@ -68,9 +70,12 @@ $$H_{k+1} = (I - \rho_k s_k y_k^T) H_k (I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T
 
 ## 与其他页面的关系
 
+- [BFGS](./bfgs.md) · [L-BFGS](./l-bfgs.md) — 独立算法节点
+- [Second-Order Optimizers 对比](../comparisons/second-order-optimizers.md)
+- [Newton's Method](./newtons-method.md) · [Gauss-Newton](./gauss-newton.md)
 - [Convex Functions](../formalizations/convex-functions.md) — 凸光滑时超线性收敛
 - [Line Search Steepest Descent](./line-search-steepest-descent.md)
-- [Conjugate Gradient Method](./conjugate-gradient-method.md) — 大型线性子问题替代
+- [Conjugate Gradient Method](./conjugate-gradient-method.md)
 - [Trajectory Optimization](./trajectory-optimization.md)
 - [Numerical Optimization Curriculum](../entities/numerical-optimization-curriculum.md)
 
@@ -81,4 +86,5 @@ $$H_{k+1} = (I - \rho_k s_k y_k^T) H_k (I - \rho_k y_k s_k^T) + \rho_k s_k s_k^T
 
 ## 参考来源
 
+- [Second-Order Optimizers 论文摘录](../../sources/papers/second_order_optimizers.md)
 - [sources/courses/numerical_optimization_foundations_robotics.md](../../sources/courses/numerical_optimization_foundations_robotics.md) — 第 2 章 2.2 拟牛顿法

@@ -83,7 +83,11 @@
 | 课程总览 | [numerical-optimization-curriculum](../../wiki/entities/numerical-optimization-curriculum.md) |
 | 凸函数 / 凸集 | [convex-functions](../../wiki/formalizations/convex-functions.md) |
 | 线搜索最速下降 | [line-search-steepest-descent](../../wiki/methods/line-search-steepest-descent.md) |
-| 拟牛顿 BFGS | [quasi-newton-bfgs](../../wiki/methods/quasi-newton-bfgs.md) |
+| 牛顿法 / 阻尼牛顿 | [newtons-method](../../wiki/methods/newtons-method.md) |
+| Gauss-Newton / LM | [gauss-newton](../../wiki/methods/gauss-newton.md)、[levenberg-marquardt](../../wiki/methods/levenberg-marquardt.md) |
+| 拟牛顿 BFGS / L-BFGS | [bfgs](../../wiki/methods/bfgs.md)、[l-bfgs](../../wiki/methods/l-bfgs.md)、[quasi-newton-bfgs](../../wiki/methods/quasi-newton-bfgs.md) |
+| 截断牛顿 | [truncated-newton](../../wiki/methods/truncated-newton.md) |
+| 二阶优化器选型 | [second-order-optimizers](../../wiki/comparisons/second-order-optimizers.md) |
 | 共轭梯度 | [conjugate-gradient-method](../../wiki/methods/conjugate-gradient-method.md) |
 | 平滑导航路径 | [smooth-navigation-path-generation](../../wiki/methods/smooth-navigation-path-generation.md) |
 | 约束优化 | [constrained-optimization](../../wiki/concepts/constrained-optimization.md) |
