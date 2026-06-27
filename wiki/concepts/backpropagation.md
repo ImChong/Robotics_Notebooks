@@ -2,14 +2,18 @@
 type: concept
 summary: "反向传播是在分层可微计算图上高效应用链式法则、逐层回传损失梯度以训练神经网络权重的核心算法，是现代机器人端到端感知与策略学习的优化底座。"
 description: 反向传播（Backpropagation）算法：链式法则、前向/反向两趟、与自动微分及机器人策略训练的关系。
-updated: 2026-06-15
+updated: 2026-06-27
 related:
   - ./deep-learning-foundations.md
   - ./transformer.md
+  - ../methods/sgd.md
+  - ../methods/adam.md
+  - ../comparisons/deep-learning-optimizers.md
   - ../entities/pytorch.md
   - ../methods/reinforcement-learning.md
 sources:
   - ../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md
+  - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/books/udl_book.md
 ---
 
@@ -51,7 +55,7 @@ $$
 
 ### 3. 与优化器的关系
 
-BP **只负责算梯度**；**SGD / Adam** 等优化器用 $\theta \leftarrow \theta - \eta \nabla_\theta L$ 更新参数。二者常连用，但不应混为一谈。
+BP **只负责算梯度**；[SGD](../methods/sgd.md)、[Adam](../methods/adam.md) 等优化器用 $\theta \leftarrow \theta - \eta \nabla_\theta L$（或自适应变体）更新参数。二者常连用，但不应混为一谈；各优化器机制与选型见 [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)。
 
 ### 4. 表征学习与隐藏层
 
@@ -75,6 +79,9 @@ BP **只负责算梯度**；**SGD / Adam** 等优化器用 $\theta \leftarrow \t
 ## 关联页面
 
 - [深度学习基础](./deep-learning-foundations.md)
+- [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
+- [SGD](../methods/sgd.md)
+- [Adam](../methods/adam.md)
 - [Transformer](./transformer.md)
 - [视觉骨干](./vision-backbones.md)
 - [强化学习](../methods/reinforcement-learning.md)
@@ -84,6 +91,7 @@ BP **只负责算梯度**；**SGD / Adam** 等优化器用 $\theta \leftarrow \t
 ## 参考来源
 
 - [Learning representations by back-propagating errors（Nature, 1986）](../../sources/papers/rumelhart_backprop_learning_representations_nature_1986.md)
+- [Deep Learning Optimizers 论文摘录](../../sources/papers/deep_learning_optimizers.md)
 - [Understanding Deep Learning (Prince, 2023) — 第 7 章 Gradients and Initialization](../../sources/books/udl_book.md)
 - Rumelhart, D. E., Hinton, G. E. & Williams, R. J. (1986). *Learning representations by back-propagating errors*. Nature 323, 533–536. <https://doi.org/10.1038/323533a0>
 
