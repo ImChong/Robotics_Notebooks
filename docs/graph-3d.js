@@ -814,7 +814,12 @@
       if (graph) return graph;
       size = measureContainerSize(container);
       // init 末尾会同步启动 rAF；先 pause，待 graphData onFinishUpdate 后再 resume。
-      graph = window.ForceGraph3D()(container);
+      // rendererConfig 透传给内部 three.js WebGLRenderer：powerPreference='high-performance'
+      // 提示浏览器/驱动在双显卡设备（典型为带集显+独显的笔记本）上优先选用独立 GPU。
+      // 仅为性能提示——单 GPU 设备无效果，浏览器亦可忽略，不影响渲染正确性。
+      graph = window.ForceGraph3D({
+        rendererConfig: { powerPreference: 'high-performance' },
+      })(container);
       graph.pauseAnimation();
       bindGraphInstance();
       pendingFirstShowKick = true;
