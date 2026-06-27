@@ -142,6 +142,7 @@ $$
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Contact Dynamics](../concepts/contact-dynamics.md) — 互补约束是接触动力学的数学核心
 - [Whole-Body Control](../concepts/whole-body-control.md) — WBC 中的接触约束建模依赖互补理论
 - [Trajectory Optimization](../methods/trajectory-optimization.md) — Contact-Implicit TO 直接使用互补约束

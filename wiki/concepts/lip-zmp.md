@@ -263,6 +263,7 @@ LIP / ZMP 常用于上层步态规划，WBC 负责下层把这些目标变成全
 
 ## 推荐继续阅读
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - Kajita et al., *Introduction to Humanoid Robotics*
 - Kajita et al., *Biped walking pattern generation by using preview control of zero-moment point*
 - Wieber, *Trajectory Free Linear Model Predictive Control for Stable Walking in the Presence of Strong Perturbations*

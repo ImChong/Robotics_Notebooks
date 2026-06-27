@@ -105,6 +105,7 @@ flowchart TB
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Asimov v1](../entities/asimov-v1.md)
 - [Dexterous Kinematics](./dexterous-kinematics.md)
 - [Armature Modeling](./armature-modeling.md)

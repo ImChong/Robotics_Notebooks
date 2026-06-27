@@ -86,6 +86,7 @@ $$
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [连杆惯量与转子惯量](./robot-link-and-rotor-inertia.md) — URDF link 惯量 vs 关节 `armature` 的分工与一手来源索引
 - [BeyondMimic](../methods/beyondmimic.md) — 强调 armature 精确建模的代表性模仿学习框架。
 - [Actuator Network (执行器网络)](../methods/actuator-network.md) — 更复杂的执行器建模方式（如神经网络模拟）。

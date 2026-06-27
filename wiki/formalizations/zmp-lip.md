@@ -80,6 +80,7 @@ $$
 3. **线性 MPC**：将上述方程作为预测模型，在 QP 求解器中施加 ZMP 边界约束，实现鲁棒步行。
 
 ## 关联页面
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [LIP / ZMP 概念](../concepts/lip-zmp.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Model Predictive Control](../methods/model-predictive-control.md)

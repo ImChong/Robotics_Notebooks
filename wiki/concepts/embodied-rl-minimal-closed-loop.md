@@ -103,6 +103,7 @@ flowchart LR
 
 ## 关联趋势（扩展阅读）
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - **LLM + RL**：语义规划 + 底层 RL 执行。
 - **多任务统一策略**：单网络覆盖 loco / 操作。
 - **内在奖励探索**：[Intrinsic reward 预训练](../overview/bfm-category-03-intrinsic-reward-pretraining.md) — 无手工奖励时的自驱动探索。

@@ -97,6 +97,7 @@ flowchart TB
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — Genesis World 在「闭环评估基础设施层」的策展坐标
 - [DeepInsight](../entities/deepinsight.md) — System 2/1/0 统一 trace 与跨层 failure localization
 - [Genesis World 1.0](../entities/genesis-world-10.md) — 产业侧全栈实现与自报相关性案例

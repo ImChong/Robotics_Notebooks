@@ -80,6 +80,7 @@ $$
 3. **抓取规划**：在操纵物体时，指尖力必须位于接触面的摩擦锥内以防止物体滑脱。
 
 ## 关联页面
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Contact Dynamics](../concepts/contact-dynamics.md)
 - [Centroidal Dynamics](../concepts/centroidal-dynamics.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
