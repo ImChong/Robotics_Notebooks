@@ -167,8 +167,12 @@
     var meshInstallScheduled = false;
     var pendingFirstShowKick = false;
     var initialFitDone = false;
-    // 时序激活动画：null = 关闭（正常渲染）；Set = 仅「已激活」节点可见，其余整体隐藏。
+    // 时序激活动画：null = 关闭（正常渲染）；Set = 「已激活」节点集合（= 进入力模拟的子集）。
+    // 仿 2D：每激活一个节点就把它种在已激活邻居附近、加入力模拟子集并重排，整图随时间生长。
     var timelineRevealedIds = null;
+    var timelineOrder = [];          // 按时间排序后的 node3d 列表（timelineBegin 传入）
+    var timelineCount = 0;           // 当前已激活数量（= 力模拟子集大小）
+    var timelineSnapshot = null;     // 进入前全图位置快照（退出时还原）
     var timelinePopIn = new Map();   // nodeId -> 激活起始时间戳（pop-in 放大动画）
     var timelinePopRaf = null;
     var TIMELINE_POP_MS = 280;
@@ -207,9 +211,50 @@
         .filter(Boolean);
     }
 
+    // 仅保留两端都已激活的连线（供时序生长时的力模拟子集使用）。
+    function buildTimelineLinks() {
+      return edges
+        .map(function (e) {
+          var sId = edgeEndpointId(e.source);
+          var tId = edgeEndpointId(e.target);
+          if (!timelineRevealedIds.has(sId) || !timelineRevealedIds.has(tId)) return null;
+          var source = nodeById.get(sId);
+          var target = nodeById.get(tId);
+          if (!source || !target) return null;
+          return { source: source, target: target, _ref: e };
+        })
+        .filter(Boolean);
+    }
+
+    // 新激活节点的出生位置：落在已激活邻居的质心附近（+ 抖动）；无已激活邻居则落在原点附近。
+    // 之后由力模拟把它推到平衡位置，从而实现「冒一个、重排一次」的生长。
+    function seedTimelineNodePos(d) {
+      var sx = 0, sy = 0, sz = 0, cnt = 0;
+      var neighbors = adjacency.get(d.id);
+      if (neighbors) {
+        neighbors.forEach(function (otherId) {
+          if (!timelineRevealedIds.has(otherId)) return;
+          var o = nodeById.get(otherId);
+          if (!o || o.x == null) return;
+          sx += o.x; sy += o.y; sz += (o.z != null ? o.z : 0); cnt += 1;
+        });
+      }
+      if (cnt > 0) {
+        d.x = sx / cnt + (Math.random() - 0.5) * 24;
+        d.y = sy / cnt + (Math.random() - 0.5) * 24;
+        d.z = sz / cnt + (Math.random() - 0.5) * 24;
+      } else {
+        d.x = (Math.random() - 0.5) * 40;
+        d.y = (Math.random() - 0.5) * 40;
+        d.z = (Math.random() - 0.5) * 40;
+      }
+      d.vx = 0; d.vy = 0; d.vz = 0;
+      delete d.fx; delete d.fy; delete d.fz;
+    }
+
     function nodeOpacityFor(d) {
-      // 时序激活模式下只有「已激活」节点可见（未激活的直接隐藏），不参与 hover/侧栏淡化。
-      if (timelineActive()) return timelineRevealedIds.has(d.id) ? 1 : 0;
+      // 时序激活模式下子集内节点全部点亮（不参与 hover/侧栏淡化），未激活节点根本不在图里。
+      if (timelineActive()) return 1;
       var visible = getVisibleNodeIds();
       var filtered = hasActiveFilter();
       var ok = visible.has(d.id);
@@ -242,15 +287,6 @@
       return timelineRevealedIds !== null;
     }
 
-    // 时序模式下未激活的节点整体不渲染（与筛选隐藏同一套机制）。
-    function nodeTimelineHidden(d) {
-      return timelineActive() && !timelineRevealedIds.has(d.id);
-    }
-
-    function nodeHidden(d) {
-      return nodeHiddenByFilter(d) || nodeTimelineHidden(d);
-    }
-
     // 节点刚被激活时的放大系数：0.2 → 1，easeOutCubic 收敛，营造「点亮」感。
     function timelinePopFactor(id) {
       if (!timelinePopIn.has(id)) return 1;
@@ -261,13 +297,9 @@
     }
 
     function linkVisibleFor(l) {
-      var ls = edgeEndpointId(l.source);
-      var lt = edgeEndpointId(l.target);
-      // 时序模式：仅当两端节点都已激活时连线才出现。
-      if (timelineActive() && (!timelineRevealedIds.has(ls) || !timelineRevealedIds.has(lt))) return false;
       if (!hasActiveFilter()) return true;
       var visible = getVisibleNodeIds();
-      return visible.has(ls) && visible.has(lt);
+      return visible.has(edgeEndpointId(l.source)) && visible.has(edgeEndpointId(l.target));
     }
 
     function linkOpacityFor(l) {
@@ -345,7 +377,8 @@
 
     function createNodeMesh(d) {
       if (!bundledThree) return null;
-      var radius = sphereRadiusFor(d);
+      // 应用 pop-in 系数，避免新激活节点出现的首帧以全尺寸闪一下。
+      var radius = sphereRadiusFor(d) * timelinePopFactor(d.id);
       var opacity = nodeOpacityFor(d);
       var geometry = ensureSharedSphereGeometry(bundledThree);
       var MaterialCtor = bundledThree.MeshLambertMaterial;
@@ -375,7 +408,7 @@
         obj.material.color.set(getNodeColor(d));
         obj.material.opacity = opacity;
         obj.material.transparent = opacity < 0.999;
-        obj.visible = !nodeHidden(d) && opacity > 0.02;
+        obj.visible = !nodeHiddenByFilter(d) && opacity > 0.02;
       });
     }
 
@@ -389,7 +422,7 @@
           .nodeOpacity(1);
       }
       graph
-        .nodeVisibility(function (d) { return !nodeHidden(d); })
+        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
@@ -749,7 +782,7 @@
         .nodeColor(function (d) { return getNodeColor(d); })
         .nodeVal(nodeValFor)
         .nodeOpacity(1)
-        .nodeVisibility(function (d) { return !nodeHidden(d); })
+        .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
         .linkWidth(function (l) { return linkWidthFor(l); })
         .linkOpacity(function (l) { return linkOpacityFor(l); })
@@ -858,24 +891,73 @@
         refreshAppearance();
       },
 
-      // 时序激活动画入口：传入「已激活」节点 id 集合则只显示这些节点（新激活的会 pop-in）；
-      // 传 null 退出时序模式、恢复正常渲染。graph.html 的定时器按时间顺序逐步扩大该集合。
-      setTimelineRevealed: function (idSet) {
-        if (idSet == null) {
-          timelineRevealedIds = null;
-          timelinePopIn.clear();
-          if (timelinePopRaf != null) { window.cancelAnimationFrame(timelinePopRaf); timelinePopRaf = null; }
-          refreshAppearance();
-          return;
-        }
-        var now = performance.now();
-        var prev = timelineRevealedIds;
-        idSet.forEach(function (id) {
-          if (!prev || !prev.has(id)) timelinePopIn.set(id, now);
+      // ── 时序激活动画（生长式，仿 2D）──
+      // timelineBegin：进入时序模式，按时间顺序的 node id 列表初始化；先清空力模拟子集（0 个节点）。
+      timelineBegin: function (orderedIds) {
+        if (!graph) return;
+        timelineSnapshot = nodes3d.map(function (n) {
+          return { n: n, x: n.x, y: n.y, z: n.z };
         });
-        timelineRevealedIds = new Set(idSet);
-        refreshAppearance();
+        timelineOrder = (orderedIds || [])
+          .map(function (id) { return nodeById.get(id); })
+          .filter(Boolean);
+        timelineCount = 0;
+        timelineRevealedIds = new Set();
+        timelinePopIn.clear();
+        graph.graphData({ nodes: [], links: [] });
+      },
+
+      // timelineSeek：把已激活数量推进/回退到 count。新激活节点种在已激活邻居附近后加入力模拟
+      // 子集并重排（alpha 经 graphData 重置为 1，已平衡节点净力≈0 故几乎不动，新节点被推入位）。
+      timelineSeek: function (count) {
+        if (!graph || timelineRevealedIds === null) return;
+        count = Math.max(0, Math.min(timelineOrder.length, Math.round(count)));
+        if (count === timelineCount) return;
+        var now = performance.now();
+        if (count > timelineCount) {
+          for (var i = timelineCount; i < count; i++) {
+            var d = timelineOrder[i];
+            timelineRevealedIds.add(d.id);   // 先入集合，便于后续节点把它当已激活邻居
+            seedTimelineNodePos(d);
+            timelinePopIn.set(d.id, now);
+          }
+        } else {
+          for (var j = count; j < timelineCount; j++) {
+            var rd = timelineOrder[j];
+            timelineRevealedIds.delete(rd.id);
+            timelinePopIn.delete(rd.id);
+          }
+        }
+        timelineCount = count;
+        graph.graphData({ nodes: timelineOrder.slice(0, count), links: buildTimelineLinks() });
         ensureTimelinePopRunning();
+      },
+
+      // 相机适配到「已激活」子集（生长时随之缩放，类似 2D fitToTimelineNodes）。
+      timelineFit: function (ms) {
+        if (timelineRevealedIds === null) return;
+        zoomFitToNodes(ms == null ? 500 : ms, function (n) { return timelineRevealedIds.has(n.id); });
+      },
+
+      // timelineEnd：退出时序模式 —— 还原进入前全图位置，恢复完整 graphData 并重排收敛。
+      timelineEnd: function () {
+        if (timelinePopRaf != null) { window.cancelAnimationFrame(timelinePopRaf); timelinePopRaf = null; }
+        timelinePopIn.clear();
+        timelineRevealedIds = null;
+        timelineOrder = [];
+        timelineCount = 0;
+        if (timelineSnapshot) {
+          timelineSnapshot.forEach(function (s) {
+            s.n.x = s.x; s.n.y = s.y; s.n.z = s.z;
+            s.n.vx = 0; s.n.vy = 0; s.n.vz = 0;
+            delete s.n.fx; delete s.n.fy; delete s.n.fz;
+          });
+          timelineSnapshot = null;
+        }
+        if (!graph) return;
+        graph.graphData({ nodes: nodes3d, links: buildLinks() });
+        refreshAppearance();
+        reheatAfterGraphData();
       },
 
       refreshColors: function () {

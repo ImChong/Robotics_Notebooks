@@ -3747,10 +3747,10 @@
       fitToScreen();
     }
 
-    /* ── 3D 激活时序动画 ──
-       复用 2D 的进度 UI（播放/暂停/回到起点/进度条）与共享状态变量，但推进逻辑改为
-       驱动 graph3dView.setTimelineRevealed：按 recency 顺序逐步把节点加入「已激活」集合，
-       未激活节点在 3D 中整体隐藏，新激活节点 pop-in 放大。布局沿用 3D 初始力学位置，不重排。 */
+    /* ── 3D 激活时序动画（生长式，仿 2D）──
+       复用 2D 的进度 UI（播放/暂停/回到起点/进度条）与共享状态变量。推进逻辑驱动
+       graph3dView.timelineBegin/Seek/End：按 recency 顺序把节点逐个种到已激活邻居附近、
+       加入力模拟子集并重排，整图随时间「冒一个、重排一次」地生长；相机随子集自适应缩放。 */
     function enterTimelineMode3D() {
       if (!graph3dView) return;
       if (typeof closeSidebar === 'function') closeSidebar();
@@ -3763,14 +3763,13 @@
       timeline3D = true;
       timelineAnimating = true;
       timelineIdx = 0;
-      timelineRevealedIds.clear();
+      timelineLastFit = 0;
 
       timelineBatchSize = timelineTotal > 400 ? 4 : (timelineTotal > 180 ? 2 : 1);
       timelineStepMs = Math.min(90, Math.max(14,
         Math.floor(TIMELINE_TARGET_MS / Math.ceil(timelineTotal / timelineBatchSize))));
 
-      graph3dView.fitToScreen(450);                    // 先框住整图，激活在固定布局上铺开
-      graph3dView.setTimelineRevealed(timelineRevealedIds);  // 先全部隐藏
+      graph3dView.timelineBegin(timelineOrdered.map(n => n.id));  // 进入时序、清空力模拟子集
 
       if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
       updateTimelineProgress(0, timelineTotal);
@@ -3783,13 +3782,8 @@
       if (!timelineAnimating || !timeline3D) return;
       targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
       if (targetIdx === timelineIdx) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
-      if (targetIdx > timelineIdx) {
-        for (let i = timelineIdx; i < targetIdx; i++) timelineRevealedIds.add(timelineOrdered[i].id);
-      } else {
-        for (let i = targetIdx; i < timelineIdx; i++) timelineRevealedIds.delete(timelineOrdered[i].id);
-      }
       timelineIdx = targetIdx;
-      if (graph3dView) graph3dView.setTimelineRevealed(timelineRevealedIds);
+      if (graph3dView) graph3dView.timelineSeek(targetIdx);   // 增/减力模拟子集成员并重排
       updateTimelineProgress(timelineIdx, timelineTotal);
     }
 
@@ -3798,10 +3792,15 @@
       if (timelineIdx >= timelineTotal) seekTimeline3D(0);   // 已到末尾再播放则从头开始
       timelinePlaying = true;
       updateTimelineControls();
-      if (graph3dView) graph3dView.resumeSimulation();       // 保活渲染环，确保 pop-in 出图
+      if (graph3dView) graph3dView.resumeSimulation();       // 保活渲染环（力模拟生长出图）
       timelineAnimTimer = setInterval(() => {
         if (timelineIdx >= timelineTotal) { onTimelinePlaybackComplete3D(); return; }
         seekTimeline3D(timelineIdx + timelineBatchSize);
+        const now = performance.now();
+        if (now - timelineLastFit > 650) {   // 节流：随生长把相机适配到已激活子集
+          timelineLastFit = now;
+          if (graph3dView) graph3dView.timelineFit(600);
+        }
       }, timelineStepMs);
     }
 
@@ -3809,6 +3808,7 @@
       if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
       timelinePlaying = false;
       updateTimelineControls();
+      if (graph3dView) graph3dView.timelineFit(700);   // 收尾再适配一次最终布局
     }
 
     function pauseTimelinePlayback3D() {
@@ -3822,10 +3822,10 @@
       timelinePlaying = false;
       timelineAnimating = false;
       timeline3D = false;
-      timelineRevealedIds.clear();
       timelineIdx = 0;
       timelineTotal = 0;
-      if (graph3dView) graph3dView.setTimelineRevealed(null);   // 恢复全部节点正常渲染
+      if (graph3dView) graph3dView.timelineEnd();   // 还原进入前布局、恢复完整图并重排
+      updateCount(hasActiveGraphFilter() ? visibleNodeIds.size : nodes.length);  // 复位工具栏计数文案
       updateTimelineControls();
     }
 
