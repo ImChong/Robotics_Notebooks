@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-27",
-  "node_count": 1498,
-  "edge_count": 10019,
+  "node_count": 1508,
+  "edge_count": 10096,
   "coverage": {
-    "covered": 1467,
-    "total": 1496,
+    "covered": 1477,
+    "total": 1506,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -20,6 +20,22 @@
       "path": "wiki/comparisons/second-order-optimizers.md",
       "detail_id": "wiki-comparisons-second-order-optimizers",
       "label": "Second-Order Optimizers：选型对比",
+      "type": "comparison",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sgd.md",
+      "detail_id": "wiki-methods-sgd",
+      "label": "SGD（Stochastic Gradient Descent）",
+      "type": "method",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/deep-learning-optimizers.md",
+      "detail_id": "wiki-comparisons-deep-learning-optimizers",
+      "label": "Deep Learning Optimizers：选型对比",
       "type": "comparison",
       "recency": "2026-06-27",
       "source": "log.md"
@@ -148,22 +164,6 @@
       "path": "wiki/concepts/collision-distance-optimization.md",
       "detail_id": "wiki-concepts-collision-distance-optimization",
       "label": "Collision Distance Optimization（碰撞距离优化）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/constrained-optimization.md",
-      "detail_id": "wiki-concepts-constrained-optimization",
-      "label": "Constrained Optimization（约束优化）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-dynamics.md",
-      "detail_id": "wiki-concepts-contact-dynamics",
-      "label": "Contact Dynamics",
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"

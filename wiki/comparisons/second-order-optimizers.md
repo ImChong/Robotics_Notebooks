@@ -12,6 +12,7 @@ related:
   - ../methods/l-bfgs.md
   - ../methods/truncated-newton.md
   - ../methods/quasi-newton-bfgs.md
+  - ./deep-learning-optimizers.md
   - ../methods/trajectory-optimization.md
   - ../queries/numerical-optimization-method-selection.md
   - ../entities/curobo.md
@@ -81,7 +82,7 @@ flowchart TD
 | cuRobo 类 GPU motion gen | [L-BFGS](../methods/l-bfgs.md) | 并行多 seed | 满 BFGS |
 | 低维 OCP 验证 | Newton / iLQR | Truncated Newton | 高维满牛顿 |
 | 可微仿真 TrajOpt 研究 | Truncated Newton | L-BFGS | 未验证的 exotic |
-| 深度学习策略训练 | Adam（见一阶对比） | — | 把 TrajOpt 优化器当 RL 默认 |
+| 深度学习策略训练 | Adam（见 [Deep Learning Optimizers 对比](./deep-learning-optimizers.md)） | — | 把 TrajOpt 优化器当 RL 默认 |
 
 ---
 
@@ -113,6 +114,7 @@ flowchart TD
 - [Newton](../methods/newtons-method.md) · [Gauss-Newton](../methods/gauss-newton.md) · [LM](../methods/levenberg-marquardt.md)
 - [BFGS](../methods/bfgs.md) · [L-BFGS](../methods/l-bfgs.md) · [Truncated Newton](../methods/truncated-newton.md)
 - [Quasi-Newton BFGS 总览](../methods/quasi-newton-bfgs.md)
+- [Deep Learning Optimizers 对比](./deep-learning-optimizers.md) — 一阶（SGD/Adam）分层
 - [Trajectory Optimization](../methods/trajectory-optimization.md)
 - [Numerical Optimization Method Selection](../queries/numerical-optimization-method-selection.md)
 - [cuRobo](../entities/curobo.md)

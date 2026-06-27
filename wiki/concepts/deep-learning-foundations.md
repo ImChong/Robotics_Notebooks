@@ -2,15 +2,20 @@
 type: concept
 summary: "深度学习基础是现代机器人感知、控制与生成式策略的函数逼近底座，涵盖神经网络表示、优化训练和泛化机制。"
 description: 深度学习的基础理论体系，涵盖了从监督学习、神经网络架构到优化算法与泛化理论的核心概念。
-updated: 2026-06-15
+updated: 2026-06-27
 related:
   - ./backpropagation.md
   - ./vision-backbones.md
   - ./transformer.md
   - ../methods/object-detection.md
+  - ../methods/sgd.md
+  - ../methods/adam.md
+  - ../methods/adamw.md
+  - ../comparisons/deep-learning-optimizers.md
   - ../entities/paper-resnet-deep-residual-learning.md
 sources:
   - ../../sources/books/udl_book.md
+  - ../../sources/papers/deep_learning_optimizers.md
   - ../../sources/repos/pytorch-official.md
   - ../../sources/repos/tensorflow-official.md
   - ../../sources/papers/resnet_arxiv_1512_03385.md
@@ -41,7 +46,7 @@ sources:
 
 ### 2. 优化与训练 (Optimization)
 - **损失函数 (Loss Functions)**: 定义了模型预测与真实值之间的距离（如 MSE, Cross-Entropy）。
-- **随机梯度下降 (SGD)**: 通过 [反向传播（Backpropagation）](./backpropagation.md) 计算梯度，再由 SGD/Adam 等优化器更新参数。
+- **优化器 (Optimizers)**: 通过 [反向传播（Backpropagation）](./backpropagation.md) 计算梯度后，由 [SGD](../methods/sgd.md)、[Adam](../methods/adam.md)、[AdamW](../methods/adamw.md) 等更新参数；完整族谱与选型见 [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)。
 - **初始化与残差连接 (Residual Connections)**: 缓解极深网络的 **退化（degradation）** 与优化困难，使百层 CNN（如 [ResNet](../entities/paper-resnet-deep-residual-learning.md)）可训练；详见 [视觉骨干](./vision-backbones.md)。
 
 ### 3. 泛化理论 (Generalization)
@@ -57,6 +62,10 @@ sources:
 
 ## 关联页面
 - [反向传播算法](./backpropagation.md)
+- [Deep Learning Optimizers 对比](../comparisons/deep-learning-optimizers.md)
+- [SGD](../methods/sgd.md)
+- [Adam](../methods/adam.md)
+- [AdamW](../methods/adamw.md)
 - [视觉骨干](./vision-backbones.md)
 - [Transformer](./transformer.md)
 - [目标检测（方法）](../methods/object-detection.md)
@@ -69,6 +78,7 @@ sources:
 
 ## 参考来源
 - [Understanding Deep Learning (Prince, 2023)](../../sources/books/udl_book.md)
+- [Deep Learning Optimizers 论文摘录](../../sources/papers/deep_learning_optimizers.md)
 - [PyTorch 官方站点与文档索引](../../sources/repos/pytorch-official.md)
 - [TensorFlow 官方站点与文档索引](../../sources/repos/tensorflow-official.md)
 - [ResNet 论文摘录（arXiv:1512.03385）](../../sources/papers/resnet_arxiv_1512_03385.md)
