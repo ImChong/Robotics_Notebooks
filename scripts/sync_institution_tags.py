@@ -328,6 +328,7 @@ SYNC_PAGE_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/motrix.md": ["motphys"],
     "wiki/entities/motioncode.md": ["motioncode"],
     "wiki/entities/current-robotics-curr0.md": ["current-robotics"],
+    "wiki/entities/kinetiq-ascend.md": ["humanoid-ai"],
     "wiki/entities/ruka-v2-hand.md": ["nyu"],
     "wiki/entities/smplolympics.md": ["cmu", "nvidia"],
 }

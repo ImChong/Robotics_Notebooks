@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-27",
-  "node_count": 1490,
-  "edge_count": 9938,
+  "node_count": 1491,
+  "edge_count": 9952,
   "coverage": {
-    "covered": 1459,
-    "total": 1488,
+    "covered": 1460,
+    "total": 1489,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/kinetiq-ascend.md",
+      "detail_id": "entity-kinetiq-ascend",
+      "label": "KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）",
+      "type": "entity",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/vla.md",
+      "detail_id": "wiki-methods-vla",
+      "label": "VLA（Vision-Language-Action）",
+      "type": "method",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/behavior-cloning.md",
+      "detail_id": "wiki-methods-behavior-cloning",
+      "label": "Behavior Cloning（行为克隆）",
+      "type": "method",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-06-27",
+      "source": "log.md"
+    },
     {
       "path": "wiki/concepts/3d-spatial-vqa.md",
       "detail_id": "wiki-concepts-3d-spatial-vqa",
@@ -135,46 +167,14 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/control-allocation.md",
-      "detail_id": "wiki-concepts-control-allocation",
-      "label": "Control Allocation（控制分配）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/control-barrier-function.md",
-      "detail_id": "wiki-concepts-control-barrier-function",
-      "label": "Control Barrier Function（控制屏障函数）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/curriculum-learning.md",
-      "detail_id": "wiki-concepts-curriculum-learning",
-      "label": "Curriculum Learning（课程学习）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/data-flywheel.md",
-      "detail_id": "wiki-concepts-data-flywheel",
-      "label": "Data Flywheel (具身数据飞轮)",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/concepts/3d-spatial-vqa.md",
-    "detail_id": "wiki-concepts-3d-spatial-vqa",
-    "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-    "type": "concept",
-    "recency": "2026-06-26",
+    "path": "wiki/entities/kinetiq-ascend.md",
+    "detail_id": "entity-kinetiq-ascend",
+    "label": "KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）",
+    "type": "entity",
+    "recency": "2026-06-27",
     "source": "log.md"
   }
 }

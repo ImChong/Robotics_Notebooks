@@ -10,6 +10,7 @@ related:
   - ./diffusion-policy.md
   - ../comparisons/rl-vs-il.md
   - ../tasks/manipulation.md
+  - ../entities/kinetiq-ascend.md
 sources:
   - ../../sources/papers/imitation_learning.md
   - ../../sources/papers/diffusion_and_gen.md
@@ -41,6 +42,7 @@ sources:
 - 它几乎是所有模仿学习 pipeline 的起点：先训一个能跑的 BC baseline，再谈 DAgger、Diffusion Policy 或 IL+RL。
 - 在奖励函数很难设计、但演示数据容易拿到的任务里，BC 往往是最低门槛方案。
 - 许多真机操作系统都会先用 BC 做 warm start，再用更复杂方法提升鲁棒性。
+- **工业操作的新共识（2026）：** BC 往往只需覆盖 **行为模态**；**速度与近完美可靠性** 需 RL 在真实动力学下优化——见 [KinetIQ Ascend](../entities/kinetiq-ascend.md) 对 **示教速度上限、因果混淆、失败代价不可见** 的讨论。
 
 ## 输入、输出与训练目标
 
@@ -126,6 +128,7 @@ $$
 - [Diffusion Policy](./diffusion-policy.md)
 - [Manipulation](../tasks/manipulation.md)
 - [RL vs Imitation Learning](../comparisons/rl-vs-il.md)
+- [KinetIQ Ascend](../entities/kinetiq-ascend.md) — BC 预训练 + 真机 PPO 突破工业可靠性/速度天花板
 
 ## 推荐继续阅读
 

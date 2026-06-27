@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-27] ingest | sources/blogs/thehumanoid_kinetiq_ascend.md — Humanoid KinetIQ Ascend 真机 CFM-VLA PPO；wiki/entities/kinetiq-ascend.md + 交叉 VLA/BC/manipulation
+
+- 原始资料：[thehumanoid_kinetiq_ascend.md](sources/blogs/thehumanoid_kinetiq_ascend.md)（<https://thehumanoid.ai/technology/kinetiq-ascend/>）
+- 沉淀页面：[wiki/entities/kinetiq-ascend.md](wiki/entities/kinetiq-ascend.md)
+- 交叉更新：[wiki/methods/vla.md](wiki/methods/vla.md)、[wiki/methods/behavior-cloning.md](wiki/methods/behavior-cloning.md)、[wiki/tasks/manipulation.md](wiki/tasks/manipulation.md)、[schema/institutions.json](schema/institutions.json)
+
 ## [2026-06-26] feat(lint): V26 P0 — 动力学/仿真概念页交叉链路巡检 `physics_concept_crosslink`（INFO 级）
 
 - 改动：[`scripts/lint_wiki.py`](scripts/lint_wiki.py) 新增 `_check_physics_concept_crosslink`——对 `tags` 含 `dynamics`/`simulation`/`physics` 的 `wiki/concepts/*` 与 `wiki/formalizations/*` 概念页，检查正文是否回链「仿真物理保真度」专题枢纽（[`simulation-physics-fidelity`](wiki/queries/simulation-physics-fidelity.md) / [`physics-fidelity-sim2real-gap`](wiki/concepts/physics-fidelity-sim2real-gap.md)），缺失给 INFO 级提示不阻塞 CI；枢纽页自身豁免；同时支持列表式与内联式 `tags`

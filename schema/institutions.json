@@ -899,6 +899,14 @@
         "current-robotics",
         "curr0"
       ]
+    },
+    "humanoid-ai": {
+      "label": "Humanoid（Humanoid）",
+      "aliases": [
+        "humanoid-ai",
+        "thehumanoid",
+        "kinetiq"
+      ]
     }
   }
 }
