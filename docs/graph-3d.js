@@ -541,12 +541,15 @@
     }
 
     function resetNodePositionsInPlace() {
+      // 「刷新布局」时每个节点都重新随机散布在中心附近（与 2D randomizeNodePositions 对齐）。
+      // sourceNodes 与 2D 力模拟共用同一批对象，src.x/src.y 早被 2D 布局写满；若沿用 src 坐标，
+      // 刷新只会重随机 z，x/y 仍钉在上次布局——观感上几乎不变。这里三轴一律重随机，得到全新布局。
       sourceNodes.forEach(function (src) {
         var n3 = nodeById.get(src.id);
         if (!n3) return;
-        n3.x = src.x != null ? src.x : (Math.random() - 0.5) * 80;
-        n3.y = src.y != null ? src.y : (Math.random() - 0.5) * 80;
-        n3.z = src.z != null ? src.z : (Math.random() - 0.5) * 80;
+        n3.x = (Math.random() - 0.5) * 80;
+        n3.y = (Math.random() - 0.5) * 80;
+        n3.z = (Math.random() - 0.5) * 80;
         n3.vx = 0;
         n3.vy = 0;
         n3.vz = 0;
