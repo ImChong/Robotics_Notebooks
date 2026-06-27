@@ -5,6 +5,7 @@ status: complete
 updated: 2026-06-27
 summary: "机器人常见二阶与拟牛顿优化器（Newton、Gauss-Newton、LM、BFGS、L-BFGS、Truncated Newton）的机制对比与 TrajOpt/最小二乘选型指南。"
 related:
+  - ../methods/line-search-steepest-descent.md
   - ../methods/newtons-method.md
   - ../methods/gauss-newton.md
   - ../methods/levenberg-marquardt.md
@@ -71,6 +72,8 @@ flowchart TD
 | [L-BFGS](../methods/l-bfgs.md) | ✓ | 最近 $m$ 步梯度差分 | $O(mn)$ | 线搜索 | 高维 TrajOpt |
 | [Truncated Newton](../methods/truncated-newton.md) | ✓ | HVP + CG | $O(n)$ | 线搜索 | 大规模可微 NLP |
 
+> 表中「全局 LR」一列均为 **线搜索**——这些方法共享同一套 [下降方向 + 线搜索骨架](../methods/line-search-steepest-descent.md)（Armijo/Wolfe 步长），区别只在曲率来源。把 [最速下降 + 线搜索](../methods/line-search-steepest-descent.md) 当作一阶 NLP baseline，再按下表升级到二阶/拟牛顿。
+
 ---
 
 ## 机器人场景选型
@@ -111,6 +114,7 @@ flowchart TD
 
 ## 关联页面
 
+- [Line Search & Steepest Descent](../methods/line-search-steepest-descent.md) — 一阶 NLP baseline 与共享的线搜索骨架
 - [Newton](../methods/newtons-method.md) · [Gauss-Newton](../methods/gauss-newton.md) · [LM](../methods/levenberg-marquardt.md)
 - [BFGS](../methods/bfgs.md) · [L-BFGS](../methods/l-bfgs.md) · [Truncated Newton](../methods/truncated-newton.md)
 - [Quasi-Newton BFGS 总览](../methods/quasi-newton-bfgs.md)

@@ -32,6 +32,21 @@ sources:
 
 > 小 CNN 用 SGD+Momentum；机器人 RL 默认 Adam；大模型预训练用 AdamW；内存紧再试 Lion——其余多为历史基线或教学对照。
 
+## 英文缩写速查
+
+| 缩写 | 英文全称 | 简要说明 |
+|------|----------|----------|
+| SGD | Stochastic Gradient Descent | 随机梯度下降，所有一阶优化器的基线 |
+| NAG | Nesterov Accelerated Gradient | 前瞻动量，Nesterov 加速 |
+| RMSProp | Root Mean Square Propagation | 梯度平方 EMA 自适应 LR |
+| Adam | Adaptive Moment Estimation | 一阶 + 二阶矩自适应，RL 默认 |
+| AdamW | Adam with decoupled Weight decay | 解耦权重衰减的 Adam，大模型默认 |
+| LR | Learning Rate | 学习率，全局步长 |
+| WD | Weight Decay | 权重衰减正则 |
+| EMA | Exponential Moving Average | 指数滑动平均，二阶矩估计常用 |
+| BP | Backpropagation | 反向传播，负责算梯度而非更新 |
+| VLA | Vision-Language-Action | 视觉-语言-动作模型，常用 AdamW 微调 |
+
 ---
 
 ## 优化器族谱
