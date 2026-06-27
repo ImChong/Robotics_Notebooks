@@ -1868,6 +1868,7 @@
     let colorMode = 'community';
     let activeFilters = new Set();
     let timelineAnimating = false;   // 处于时序模式（播放 / 暂停 / 拖拽中均为 true）
+    let timeline3D = false;          // 当前时序模式跑在 3D 视图（决定走 3D 还是 2D 推进逻辑）
     let timelinePlaying = false;     // 计时器是否正在推进
     let timelineAnimTimer = null;
     let timelineOrdered = [];        // 按时间排序后的节点
@@ -2208,12 +2209,14 @@
       if (mode !== '2d' && mode !== '3d') return;
       if (!opts.force && mode === spatialViewMode) return;
 
+      // 切换视图前先干净退出时序动画（2D / 3D 任一形态），避免遗留定时器与显隐状态跨视图泄漏。
+      if (timelineAnimating) teardownTimelineMode();
+
       // 先切换状态：resumeSimulation2D / 力模拟 tick / fitToScreen 都依赖 is3DView()，
       // 必须在调用它们之前就反映目标视图，否则回到 2D 时力模拟会被旧状态挡住、无法重启。
       spatialViewMode = mode;
 
       if (mode === '3d') {
-        if (timelineAnimating) teardownTimelineMode();
         if (!window.RNGraph3D?.isAvailable?.()) {
           spatialViewMode = '2d';
           window.alert('3D 视图库加载失败，请刷新页面后重试');
@@ -2258,11 +2261,10 @@
     }
 
     function syncTimeline3DState() {
-      const disabled = is3DView();
       if (timelineAnimateBtn) {
-        timelineAnimateBtn.disabled = disabled;
-        timelineAnimateBtn.title = disabled
-          ? '时序动画仅支持 2D 视图'
+        timelineAnimateBtn.disabled = false;
+        timelineAnimateBtn.title = is3DView()
+          ? '按页面更新时间顺序在 3D 立体视图中逐帧激活节点与连线'
           : '按页面更新时间顺序逐帧显现节点与连线（类似 Obsidian 图谱 Animate）';
       }
     }
@@ -3717,6 +3719,7 @@
 
     // 拆除时序模式：停播、恢复完整力模拟成员、复位节点显隐（供退出与「刷新布局」共用）
     function teardownTimelineMode() {
+      if (timeline3D) { teardownTimelineMode3D(); return; }
       pauseTimelinePlayback();
       timelineAnimating = false;
       timelineRevealedIds.clear();
@@ -3744,31 +3747,124 @@
       fitToScreen();
     }
 
+    /* ── 3D 激活时序动画（生长式，仿 2D）──
+       复用 2D 的进度 UI（播放/暂停/回到起点/进度条）与共享状态变量。推进逻辑驱动
+       graph3dView.timelineBegin/Seek/End：按 recency 顺序把节点逐个种到已激活邻居附近、
+       加入力模拟子集并重排，整图随时间「冒一个、重排一次」地生长；相机随子集自适应缩放。 */
+    function enterTimelineMode3D() {
+      if (!graph3dView) return;
+      if (typeof closeSidebar === 'function') closeSidebar();
+      hideTooltip();
+
+      timelineOrdered = sortNodesByTimeline(nodes);
+      timelineTotal = timelineOrdered.length;
+      if (!timelineTotal) return;
+
+      timeline3D = true;
+      timelineAnimating = true;
+      timelineIdx = 0;
+      timelineLastFit = 0;
+
+      timelineBatchSize = timelineTotal > 400 ? 4 : (timelineTotal > 180 ? 2 : 1);
+      timelineStepMs = Math.min(90, Math.max(14,
+        Math.floor(TIMELINE_TARGET_MS / Math.ceil(timelineTotal / timelineBatchSize))));
+
+      graph3dView.timelineBegin(timelineOrdered.map(n => n.id));  // 进入时序、清空力模拟子集
+
+      if (timelineProgressEl) timelineProgressEl.max = String(timelineTotal);
+      updateTimelineProgress(0, timelineTotal);
+      updateTimelineControls();
+
+      startTimelinePlayback3D();
+    }
+
+    function seekTimeline3D(targetIdx) {
+      if (!timelineAnimating || !timeline3D) return;
+      targetIdx = Math.max(0, Math.min(timelineTotal, Math.round(targetIdx)));
+      if (targetIdx === timelineIdx) { updateTimelineProgress(timelineIdx, timelineTotal); return; }
+      timelineIdx = targetIdx;
+      if (graph3dView) graph3dView.timelineSeek(targetIdx);   // 增/减力模拟子集成员并重排
+      updateTimelineProgress(timelineIdx, timelineTotal);
+    }
+
+    function startTimelinePlayback3D() {
+      if (!timelineAnimating || timelinePlaying || !timeline3D) return;
+      if (timelineIdx >= timelineTotal) seekTimeline3D(0);   // 已到末尾再播放则从头开始
+      timelinePlaying = true;
+      updateTimelineControls();
+      if (graph3dView) graph3dView.resumeSimulation();       // 保活渲染环（力模拟生长出图）
+      timelineAnimTimer = setInterval(() => {
+        if (timelineIdx >= timelineTotal) { onTimelinePlaybackComplete3D(); return; }
+        seekTimeline3D(timelineIdx + timelineBatchSize);
+        const now = performance.now();
+        if (now - timelineLastFit > 650) {   // 节流：随生长把相机适配到已激活子集
+          timelineLastFit = now;
+          if (graph3dView) graph3dView.timelineFit(600);
+        }
+      }, timelineStepMs);
+    }
+
+    function onTimelinePlaybackComplete3D() {
+      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
+      timelinePlaying = false;
+      updateTimelineControls();
+      if (graph3dView) graph3dView.timelineFit(700);   // 收尾再适配一次最终布局
+    }
+
+    function pauseTimelinePlayback3D() {
+      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
+      timelinePlaying = false;
+      updateTimelineControls();
+    }
+
+    function teardownTimelineMode3D() {
+      if (timelineAnimTimer) { clearInterval(timelineAnimTimer); timelineAnimTimer = null; }
+      timelinePlaying = false;
+      timelineAnimating = false;
+      timeline3D = false;
+      timelineIdx = 0;
+      timelineTotal = 0;
+      if (graph3dView) graph3dView.timelineEnd();   // 还原进入前布局、恢复完整图并重排
+      updateCount(hasActiveGraphFilter() ? visibleNodeIds.size : nodes.length);  // 复位工具栏计数文案
+      updateTimelineControls();
+    }
+
+    function exitTimelineMode3D() {
+      teardownTimelineMode3D();
+    }
+
+    // ── 调度：按当前视图把控件事件转发到 2D 或 3D 时序逻辑 ──
+    function timelineDispatchEnter() { if (is3DView()) enterTimelineMode3D(); else enterTimelineMode(); }
+    function timelineDispatchExit() { if (timeline3D) exitTimelineMode3D(); else exitTimelineMode(); }
+    function timelineDispatchPlay() { if (timeline3D) startTimelinePlayback3D(); else startTimelinePlayback(); }
+    function timelineDispatchPause() { if (timeline3D) pauseTimelinePlayback3D(); else pauseTimelinePlayback(); }
+    function timelineDispatchSeek(idx) { if (timeline3D) seekTimeline3D(idx); else seekTimeline(idx, false); }
+
     if (timelineAnimateBtn) {
       timelineAnimateBtn.addEventListener('click', () => {
-        if (timelineAnimating) exitTimelineMode();
-        else enterTimelineMode();
+        if (timelineAnimating) timelineDispatchExit();
+        else timelineDispatchEnter();
       });
     }
     if (timelinePlayPauseBtn) {
       timelinePlayPauseBtn.addEventListener('click', () => {
         if (!timelineAnimating) return;
-        if (timelinePlaying) pauseTimelinePlayback();
-        else startTimelinePlayback();
+        if (timelinePlaying) timelineDispatchPause();
+        else timelineDispatchPlay();
       });
     }
     if (timelineRestartBtn) {
       timelineRestartBtn.addEventListener('click', () => {
         if (!timelineAnimating) return;
-        pauseTimelinePlayback();
-        seekTimeline(0, false);
+        timelineDispatchPause();
+        timelineDispatchSeek(0);
       });
     }
     if (timelineProgressEl) {
       timelineProgressEl.addEventListener('input', () => {
         if (!timelineAnimating) return;
-        pauseTimelinePlayback();            // 拖拽时暂停，交由用户控制
-        seekTimeline(Number(timelineProgressEl.value), false);
+        timelineDispatchPause();            // 拖拽时暂停，交由用户控制
+        timelineDispatchSeek(Number(timelineProgressEl.value));
       });
     }
 
