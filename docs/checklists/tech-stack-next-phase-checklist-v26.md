@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v26
 
-最后更新：2026-06-26（P0 动力学/仿真概念页交叉链路巡检 `physics_concept_crosslink` INFO 级落地 + 测试 + 报告基线）
+最后更新：2026-06-27（P2 事实库扩展：新增 12 条物理保真度矛盾检测规则，198 → 210 条，`make lint` 潜在矛盾 0 个）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -37,8 +37,8 @@
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 
-- [ ] **事实库扩展**：
-    - [ ] `schema/canonical-facts.json` 由 198 → **≥ 208 条**：新增物理保真度矛盾检测规则（接触保真度↑ 与可微性/仿真吞吐冲突、几何/URDF 精度 vs 仿真速度、刚体假设无法刻画软接触、摩擦模型简化导致打滑/接触误差、理想化执行器导致力矩 gap、可微仿真梯度质量受接触不连续制约等）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报。
+- [x] **事实库扩展**：
+    - [x] `schema/canonical-facts.json` 由 198 → **210 条**：新增 12 条物理保真度矛盾检测规则（接触保真度↑ 与可微性/仿真吞吐冲突、几何/URDF 惯量误差被上层逐级放大、硬接触穿透致冲击力偏大、库仑摩擦低估静摩擦致打滑、理想力矩源致执行器力矩 gap、可微仿真梯度受接触不连续制约、硬 LCP 接触不可微、积分步长过大致能量漂移/发散、软接触引入穿透与虚假阻尼、域随机化覆盖残差非替代保真度、保真度+SysID 互补、几何/URDF 层最便宜应优先做）；逐条经脚本校验对现存 wiki 页有 pos 命中且 0 误报（`make lint` 潜在矛盾 0 个）。
 
 ## P3: 交互层"物理保真度"增强 (UX/UI)
 
@@ -53,7 +53,7 @@
 
 - [ ] `make lint`: 0 errors（新引入的 `physics_concept_crosslink_check` 为 INFO 级，不阻塞 CI）。
 - [x] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`：现 1338 节点 / 9145 边）。
-- [ ] 事实库扩展至 **208 条** 以上（重点补 物理保真度 / 接触摩擦 / 执行器建模 矛盾检测规则）。
+- [x] 事实库扩展至 **210 条**（重点补 物理保真度 / 接触摩擦 / 执行器建模 矛盾检测规则）。
 - [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`（现 0.183；新增 `humanoid-soccer` 社区命名 override）。
 - [ ] `log.md` 记录 V26 关键改动。
 

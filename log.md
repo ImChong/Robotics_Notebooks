@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-27] feat(facts): V26 P2 — 事实库扩展 12 条物理保真度矛盾检测规则（198 → 210）
+
+- 改动：[`schema/canonical-facts.json`](schema/canonical-facts.json) 由 198 → **210** 条，新增 12 条围绕「仿真物理保真度链路」的矛盾检测规则：接触保真度↑ 与可微性/吞吐冲突、几何/URDF 惯量误差被上层逐级放大、硬接触穿透致冲击力偏大、库仑摩擦低估静摩擦致打滑、理想力矩源致执行器力矩 gap、可微仿真梯度受接触不连续制约、硬 LCP 接触不可微、积分步长过大致能量漂移/发散、软接触引入穿透与虚假阻尼、域随机化覆盖残差非替代保真度、保真度+SysID 互补、几何/URDF 层最便宜应优先做
+- 校验：逐条经脚本核对对现存 wiki 页（[`simulation-physics-fidelity`](wiki/queries/simulation-physics-fidelity.md) / [`physics-fidelity-sim2real-gap`](wiki/concepts/physics-fidelity-sim2real-gap.md) / `contact-dynamics` / `joint-friction-models` / `differentiable-simulation` / `urdf-robot-description`）有 pos 命中且 0 误报；`make lint` 潜在矛盾 **0** 个、0 errors；`ci-preflight` 12/12 通过
+- 清单：[`docs/checklists/tech-stack-next-phase-checklist-v26.md`](docs/checklists/tech-stack-next-phase-checklist-v26.md) P2 与 DoD 事实库项打勾
+
 ## [2026-06-27] ingest | sources/papers/second_order_optimizers.md — 6 类二阶/拟牛顿优化器；wiki/methods/newtons-method.md、gauss-newton.md、levenberg-marquardt.md、bfgs.md、l-bfgs.md、truncated-newton.md + wiki/comparisons/second-order-optimizers.md + 交叉 quasi-newton-bfgs / line-search / convex-functions
 
 ## [2026-06-27] ingest | sources/papers/deep_learning_optimizers.md — 9 类深度学习优化器一手资料；wiki/methods/sgd.md、sgd-momentum.md、nesterov-momentum.md、adagrad.md、rmsprop.md、adadelta.md、adam.md、adamw.md、lion.md + wiki/comparisons/deep-learning-optimizers.md + 交叉 deep-learning-foundations / backpropagation
