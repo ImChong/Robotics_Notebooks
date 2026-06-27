@@ -54,6 +54,12 @@ Gemini Robotics 的实现路径是先把语言指令、相机图像/多视角观
 
 Gemini Robotics 的实现路径是先把语言指令、相机图像/多视角观测编码成多模态表征，再用ACT/行为克隆模仿学习、扩散策略/流匹配、VLA 多模态动作模型预测全身轨迹/动作序列、动作 chunk/token。关键点是保留 VLM 的语义理解，同时增加机器人状态和动作头，避免只停留在语言规划。
 
+## 评测与指标（索引级）
+
+- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](https://deepmind.google/discover/blog/gemini-robotics-brings-ai-into-the-physical-world/)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-09-vla-world-models.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

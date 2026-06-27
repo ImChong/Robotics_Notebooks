@@ -53,6 +53,12 @@ FRoM-W1 先从语言指令、本体状态与关节序列、仿真交互数据恢
 
 FRoM-W1 先从语言指令、本体状态与关节序列、仿真交互数据恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、VLM 语义规划/路由生成全身轨迹/动作序列。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。
 
+## 评测与指标（索引级）
+
+- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](https://openmoss.github.io/FRoM-W1)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-04-generative-language-trajectory.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

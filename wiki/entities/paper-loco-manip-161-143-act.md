@@ -54,6 +54,12 @@ sources:
 
 在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 把相机图像/多视角观测、本体状态与关节序列、接触力/触觉信号转成可跟踪的身体目标，并通过ACT/行为克隆模仿学习、MM-DiT/Transformer 动作头训练或组合全身策略，最终输出动作 chunk/token。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。
 
+## 评测与指标（索引级）
+
+- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](http://github.com/kuehnrobin/)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-08-hardware-deployment.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

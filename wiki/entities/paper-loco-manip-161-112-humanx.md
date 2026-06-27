@@ -54,6 +54,12 @@ HumanX 先从人类视频/动捕轨迹恢复场景、目标或运动表征，再
 
 HumanX 先从人类视频/动捕轨迹恢复场景、目标或运动表征，再用ACT/行为克隆模仿学习、IK/动作重定向、分层技能/专家策略生成可执行动作命令。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。
 
+## 评测与指标（索引级）
+
+- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](https://wyhuai.github.io/human-x/)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

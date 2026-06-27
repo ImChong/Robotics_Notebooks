@@ -53,6 +53,12 @@ sources:
 
 这篇工作先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用PPO/RL 策略训练、AMP/运动先验、全身控制器/WBC/MPC生成全身轨迹/动作序列、低层控制器目标。关键点是把PPO/RL 策略训练、AMP/运动先验放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。
 
+## 评测与指标（索引级）
+
+- 本条目为 161 篇策展索引级摘录，**未搬运原文量化 benchmark 与实机指标**；评测口径与具体数值以原文 PDF / 项目页为准。
+- 评测原始出处：[原文 / 项目页](https://humanoid-badminton.github.io/Humanoid-Whole-Body-Badminton-via-Multi-Stage-Reinforcement-Learning/)（见上方「核心信息」表「论文/项目」一行）。
+- 横向评测对照请回到 [分类 hub](../overview/loco-manip-161-category-05-mocap-human-video.md) 与 [技术地图](../overview/humanoid-loco-manip-161-papers-technology-map.md)。
+
 ## 常见误区
 
 1. 161 篇策展条目提供 **地图坐标**；量化 benchmark 与实机指标以原文 PDF / 项目页为准。

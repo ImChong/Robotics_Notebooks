@@ -50,6 +50,7 @@ $$ \min_{\mathcal{X}} \sum w_k \| J_k \ddot{q} + \dot{J}_k \dot{q} - \ddot{x}_{d
 - **优先级处理**：通过不同的权重 $w_k$，确保安全任务优先于动作性能。
 
 ## 关联页面
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Whole-Body Control (WBC)](../concepts/whole-body-control.md)
 - [Floating Base Dynamics](../concepts/floating-base-dynamics.md)
 - [Friction Cone 形式化](./friction-cone.md)

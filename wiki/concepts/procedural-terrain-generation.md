@@ -74,6 +74,7 @@ PPO 并行训练
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Domain Randomization](./domain-randomization.md)
 - [Curriculum Learning](./curriculum-learning.md)
 - [Terrain Adaptation](./terrain-adaptation.md)

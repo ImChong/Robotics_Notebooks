@@ -141,6 +141,7 @@ flowchart LR
 
 ## 关联页面
 
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [Armature Modeling（电枢惯量建模）](./armature-modeling.md) — 反射惯量公式、双驱动、BeyondMimic PD 标定
 - [System Identification](./system-identification.md) — 连杆参数与执行器层辨识
 - [Floating Base Dynamics](./floating-base-dynamics.md) — $M(q)$ 与 CRBA

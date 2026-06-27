@@ -151,6 +151,7 @@ def rectangular_foot_cwc(mu, X, Y, fz_min=5.0):
 3. Grasp 的 force closure 和 Loco 的 CWS 判据其实是**同一个数学对象** CWC 在不同任务下的换名字。
 
 ## 关联页面
+- [仿真物理保真度链路选型指南](../queries/simulation-physics-fidelity.md) — 本页所述物理/仿真要素在保真度链路（建模 ① → 数值 ② → 接触 ③ → 随机化 ④）中的定位
 - [摩擦锥 (Friction Cone)](./friction-cone.md)
 - [Contact Dynamics (接触动力学)](../concepts/contact-dynamics.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
