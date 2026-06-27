@@ -123,6 +123,7 @@ INFO_ONLY_KEYS: set[str] = {
     "paper_missing_three_sections",
     "dataset_missing_metadata",
     "stale_claims",
+    "physics_concept_crosslink",
 }
 
 
@@ -279,6 +280,7 @@ def _empty_results() -> dict[str, Any]:
         "paper_missing_three_sections": [],
         "dataset_missing_metadata": [],
         "stale_claims": [],
+        "physics_concept_crosslink": [],
         "_ingest_covered": 0,
         "_ingest_total": 0,
     }
@@ -1130,6 +1132,46 @@ def _check_dataset_entity_metadata(pages: list[Path], results: dict[str, Any]) -
             results["dataset_missing_metadata"].append(f"{rel}（缺 {' / '.join(missing)}）")
 
 
+# 物理保真度专题枢纽页：动力学/仿真/物理概念页应回链至少一个，形成保真度链路闭环
+PHYSICS_FIDELITY_HUBS: tuple[str, ...] = (
+    "simulation-physics-fidelity",
+    "physics-fidelity-sim2real-gap",
+)
+
+
+def _check_physics_concept_crosslink(pages: list[Path], results: dict[str, Any]) -> None:
+    """V26: 动力学/仿真概念页交叉链路巡检 V1（信息型，不阻塞 CI）。
+
+    对 frontmatter ``tags`` 含 ``dynamics`` / ``simulation`` / ``physics`` 的
+    ``wiki/concepts/*`` 与 ``wiki/formalizations/*`` 概念页，检查正文是否回链到
+    「仿真物理保真度」专题枢纽页（``simulation-physics-fidelity`` /
+    ``physics-fidelity-sim2real-gap``）。缺失回链作为 INFO 级提示写入 lint 报告，
+    沉淀物理保真度知识链的交叉链路基线，不计入 lint 失败总数。枢纽页自身豁免。
+    """
+    target_tags = {"dynamics", "simulation", "physics"}
+    for page in pages:
+        rel = page.relative_to(REPO_ROOT)
+        parts = rel.parts
+        if len(parts) < 3 or parts[0] != "wiki" or parts[1] not in ("concepts", "formalizations"):
+            continue
+        if page.stem in PHYSICS_FIDELITY_HUBS:
+            continue
+
+        content = page.read_text(encoding="utf-8")
+        fm_match = re.match(r"^---\n(.*?)\n---", content, re.DOTALL)
+        fm_block = fm_match.group(1) if fm_match else ""
+        # tags 既支持列表式（- dynamics），也支持内联式 [dynamics, ...]
+        tags = _frontmatter_tags(fm_block)
+        inline = re.search(r"^tags:\s*\[([^\]]*)\]", fm_block, re.MULTILINE)
+        if inline:
+            tags |= {t.strip().lower() for t in inline.group(1).split(",")}
+        if not (tags & target_tags):
+            continue
+
+        if not any(hub in content for hub in PHYSICS_FIDELITY_HUBS):
+            results["physics_concept_crosslink"].append(str(rel))
+
+
 def _check_tool_institutions(pages: list[Path], results: dict[str, Any]) -> None:
     """entities/ 软件工具页须能派生至少一个所属机构（见 schema/institutions.json）。"""
     from bump_institution_tags import (
@@ -1218,6 +1260,7 @@ def lint() -> dict[str, Any]:
     _check_paper_entity_metadata(pages, results)
     _check_dataset_entity_metadata(pages, results)
     _check_stale_claims(pages, results)
+    _check_physics_concept_crosslink(pages, results)
     _check_tool_institutions(pages, results)
 
     return results
@@ -1312,6 +1355,11 @@ def format_report(results: dict[str, Any]) -> str:
         (
             "stale_claims",
             "陈旧声明（含绝对化措辞但同主题有更晚更新页，建议复核；信息型，不阻塞 CI）",
+            "💡",
+        ),
+        (
+            "physics_concept_crosslink",
+            "动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）",
             "💡",
         ),
     ]
