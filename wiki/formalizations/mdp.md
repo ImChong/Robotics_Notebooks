@@ -76,11 +76,11 @@ $$\pi: S \rightarrow \text{Prob}(A)$$
 
 **状态值函数** $V^\pi(s)$：从状态 $s$ 开始，按策略 $\pi$ 行事的期望累积折扣奖励
 
-$$V^\pi(s) = \mathbb{E}_\pi\left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \middle| s_t = s \right]$$
+$$V^\pi(s) = \mathbb{E}_\pi\Big[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \;\Big|\; s_t = s \Big]$$
 
 **动作值函数** $Q^\pi(s,a)$：从状态 $s$ 出发，执行动作 $a$ 后按策略 $\pi$ 行事的期望累积折扣奖励
 
-$$Q^\pi(s,a) = \mathbb{E}_\pi\left[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \middle| s_t = s, a_t = a \right]$$
+$$Q^\pi(s,a) = \mathbb{E}_\pi\Big[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \;\Big|\; s_t = s, a_t = a \Big]$$
 
 两者关系：
 
@@ -102,11 +102,11 @@ $$Q^{\pi^*}(s,a) \geq Q^\pi(s,a), \quad \forall s,a$$
 
 值函数满足递归关系（Bellman 方程）：
 
-$$V^\pi(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma V^\pi(s') \right]$$
+$$V^\pi(s) = \sum_a \pi(a|s) \sum_{s'} P(s'|s,a) \bigl( R(s,a,s') + \gamma V^\pi(s') \bigr)$$
 
 最优值函数（Bellman 最优方程）：
 
-$$V^*(s) = \max_a \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma V^*(s') \right]$$
+$$V^*(s) = \max_a \sum_{s'} P(s'|s,a) \bigl( R(s,a,s') + \gamma V^*(s') \bigr)$$
 
 这是所有 RL 算法的起点——解这个方程，就得到了最优策略。
 
