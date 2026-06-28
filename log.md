@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-28] ingest | sources/papers/flap_arxiv_2606_17630.md — FLAP 无先验地图 FOV 主动感知 3D UAV 规划；wiki/entities/paper-flap-fov-active-perception-3d-navigation.md + 交叉 multirotor-simulation-planning-control-stack / ego-planner-swarm
+
 ## [2026-06-27] feat(facts): V26 P2 — 事实库扩展 12 条物理保真度矛盾检测规则（198 → 210）
 
 - 改动：[`schema/canonical-facts.json`](schema/canonical-facts.json) 由 198 → **210** 条，新增 12 条围绕「仿真物理保真度链路」的矛盾检测规则：接触保真度↑ 与可微性/吞吐冲突、几何/URDF 惯量误差被上层逐级放大、硬接触穿透致冲击力偏大、库仑摩擦低估静摩擦致打滑、理想力矩源致执行器力矩 gap、可微仿真梯度受接触不连续制约、硬 LCP 接触不可微、积分步长过大致能量漂移/发散、软接触引入穿透与虚假阻尼、域随机化覆盖残差非替代保真度、保真度+SysID 互补、几何/URDF 层最便宜应优先做
