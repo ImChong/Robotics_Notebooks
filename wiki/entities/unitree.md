@@ -4,7 +4,7 @@ type: entity
 sources:
   - ../../sources/papers/humanoid_hardware.md
 summary: "Unitree"
-updated: 2026-06-22
+updated: 2026-06-28
 related:
   - ./humanoid-robot.md
   - ./quadruped-robot.md
