@@ -4036,47 +4036,80 @@
         'entity-isaac-gym-isaac-lab',
         'tech-node-control-mpc'
       ];
-      const detailCards = preferredDetails
-        .map(function (id) { return detailPages[id]; })
-        .filter(Boolean)
-        .map(function (detailPage) {
-          const tags = Array.isArray(detailPage.tags) ? detailPage.tags.slice(0, 5) : [];
-          const related = Array.isArray(detailPage.related) ? detailPage.related.slice(0, 4) : [];
-          const sources = Array.isArray(detailPage.source_links) ? detailPage.source_links.slice(0, 2) : [];
-          return [
-            '<article class="card data-card">',
-            '  <div>',
-            '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>',
-            '    <p class="card-meta">' + escapeHtml(detailPage.type || 'detail_page') + '</p>',
-            '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>',
-            '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>',
-            '  </div>',
-            '  <div>',
-            '    <h4>标签</h4>',
-            '    <div class="chip-list">' + (tags.length ? tags.map(function (tag) { return '<span class="data-chip">' + escapeHtml(tag) + '</span>'; }).join('') : '<span class="data-meta">暂无标签</span>') + '</div>',
-            '  </div>',
-            '  <div>',
-            '    <h4>关联项</h4>',
-            '    <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>暂无关联项</li>') + '</ul>',
-            '  </div>',
-            '  <div>',
-            '    <h4>来源链接</h4>',
-            '    <ul>' + (sources.length ? sources.map(function (entry) {
-                   const item = normalizeSourceLink(entry);
-                   const href = sourceLinkHref(entry);
-                   const label = item.label || href || '参考条目';
-                   if (!href) return '<li>' + escapeHtml(label) + '</li>';
-                   const external = /^https?:/i.test(href);
-                   return '<li><a href="' + escapeHtml(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtml(label) + '</a></li>';
-                 }).join('') : '<li>暂无来源链接</li>') + '</ul>',
-            '  </div>',
-            '  <div class="chip-list">',
-            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>',
-            '  </div>',
-            '</article>'
-          ].join('');
-        });
-      detailGrid.innerHTML = detailCards.length ? detailCards.join('') : '<article class="card"><p>暂无详情页数据</p></article>';
+      // ⚡ Bolt Optimization: Replace chained array methods (.map, .filter, .join) with string concatenation in a for loop
+      // Expected impact: Eliminates closure creation and intermediate array allocations during layout generation.
+      var detailCardsHtml = '';
+      for (var dk = 0; dk < preferredDetails.length; dk++) {
+        var dpId = preferredDetails[dk];
+        var detailPage = detailPages[dpId];
+        if (!detailPage) continue;
+
+        var tags = Array.isArray(detailPage.tags) ? detailPage.tags.slice(0, 5) : [];
+        var detailRelated = Array.isArray(detailPage.related) ? detailPage.related.slice(0, 4) : [];
+        var sources = Array.isArray(detailPage.source_links) ? detailPage.source_links.slice(0, 2) : [];
+
+        var tagsHtml = '';
+        if (tags.length) {
+          for (var ti = 0; ti < tags.length; ti++) {
+             tagsHtml += '<span class="data-chip">' + escapeHtml(tags[ti]) + '</span>';
+          }
+        } else {
+          tagsHtml = '<span class="data-meta">暂无标签</span>';
+        }
+
+        var detailRelatedHtml = '';
+        if (detailRelated.length) {
+          for (var ri = 0; ri < detailRelated.length; ri++) {
+            var itemStr = detailRelated[ri];
+            detailRelatedHtml += '<li><a href="' + escapeHtml(detailHref(itemStr)) + '"><code>' + escapeHtml(itemStr) + '</code></a></li>';
+          }
+        } else {
+          detailRelatedHtml = '<li>暂无关联项</li>';
+        }
+
+        var sourcesHtml = '';
+        if (sources.length) {
+           for (var si = 0; si < sources.length; si++) {
+              var entry = sources[si];
+              var itemObj = normalizeSourceLink(entry);
+              var href = sourceLinkHref(entry);
+              var label = itemObj.label || href || '参考条目';
+              if (!href) {
+                sourcesHtml += '<li>' + escapeHtml(label) + '</li>';
+              } else {
+                var external = /^https?:/i.test(href);
+                sourcesHtml += '<li><a href="' + escapeHtml(href) + '"' + (external ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHtml(label) + '</a></li>';
+              }
+           }
+        } else {
+           sourcesHtml = '<li>暂无来源链接</li>';
+        }
+
+        detailCardsHtml += '<article class="card data-card">' +
+            '  <div>' +
+            '    <h3><a href="' + escapeHtml(detailHref(detailPage.id)) + '">' + escapeHtml(detailPage.title || detailPage.id) + '</a></h3>' +
+            '    <p class="card-meta">' + escapeHtml(detailPage.type || 'detail_page') + '</p>' +
+            '    <p>' + escapeHtml(detailPage.summary || '暂无摘要') + '</p>' +
+            '    <p class="data-submeta"><code>' + escapeHtml(detailPage.path || detailPage.id || '') + '</code></p>' +
+            '  </div>' +
+            '  <div>' +
+            '    <h4>标签</h4>' +
+            '    <div class="chip-list">' + tagsHtml + '</div>' +
+            '  </div>' +
+            '  <div>' +
+            '    <h4>关联项</h4>' +
+            '    <ul>' + detailRelatedHtml + '</ul>' +
+            '  </div>' +
+            '  <div>' +
+            '    <h4>来源链接</h4>' +
+            '    <ul>' + sourcesHtml + '</ul>' +
+            '  </div>' +
+            '  <div class="chip-list">' +
+            '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(detailPage.id)) + '">打开详情页</a>' +
+            '  </div>' +
+            '</article>';
+      }
+      detailGrid.innerHTML = detailCardsHtml || '<article class="card"><p>暂无详情页数据</p></article>';
       removeLoadingState(detailGrid);
     }
 
@@ -4106,24 +4139,37 @@
 
     const techMapNodeGrid = document.getElementById('techMapNodeGrid');
     if (techMapNodeGrid) {
-      const nodeCards = techMapNodes.slice(0, 6).map(function (node) {
-        const related = Array.isArray(node.related) ? node.related.slice(0, 3) : [];
-        return [
-          '<article class="card data-card">',
-          '  <div>',
-          '    <h3><a href="' + escapeHtml(detailHref(node.id)) + '">' + escapeHtml(node.title || node.id) + '</a></h3>',
-          '    <p class="card-meta">layer: ' + escapeHtml(node.layer || '-') + ' · kind: ' + escapeHtml(node.node_kind || '-') + '</p>',
-          '    <p>' + escapeHtml(node.summary || '暂无节点摘要') + '</p>',
-          '  </div>',
-          '  <div class="chip-list">',
-          '    <span class="data-chip"><code>' + escapeHtml(node.id || '-') + '</code></span>',
-          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(node.id)) + '">打开详情页</a>',
-          '  </div>',
-          '  <ul>' + (related.length ? related.map(function (item) { return '<li><a href="' + escapeHtml(detailHref(item)) + '"><code>' + escapeHtml(item) + '</code></a></li>'; }).join('') : '<li>当前节点暂无 related</li>') + '</ul>',
-          '</article>'
-        ].join('');
-      });
-      techMapNodeGrid.innerHTML = nodeCards.length ? nodeCards.join('') : '<article class="card"><p>暂无 tech-map 节点数据</p></article>';
+      // ⚡ Bolt Optimization: Replace chained array operations and nested .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure creation and array allocation during layout generation, reducing memory GC pauses.
+      var nodeCardsHtml = '';
+      var techNodesLimit = Math.min(techMapNodes.length, 6);
+      for (var tn = 0; tn < techNodesLimit; tn++) {
+        var nodeObj = techMapNodes[tn];
+        var nodeRelated = Array.isArray(nodeObj.related) ? nodeObj.related.slice(0, 3) : [];
+        var nodeRelatedHtml = '';
+        if (nodeRelated.length) {
+          for (var nri = 0; nri < nodeRelated.length; nri++) {
+            var nodeItemStr = nodeRelated[nri];
+            nodeRelatedHtml += '<li><a href="' + escapeHtml(detailHref(nodeItemStr)) + '"><code>' + escapeHtml(nodeItemStr) + '</code></a></li>';
+          }
+        } else {
+          nodeRelatedHtml = '<li>当前节点暂无 related</li>';
+        }
+
+        nodeCardsHtml += '<article class="card data-card">' +
+          '  <div>' +
+          '    <h3><a href="' + escapeHtml(detailHref(nodeObj.id)) + '">' + escapeHtml(nodeObj.title || nodeObj.id) + '</a></h3>' +
+          '    <p class="card-meta">layer: ' + escapeHtml(nodeObj.layer || '-') + ' · kind: ' + escapeHtml(nodeObj.node_kind || '-') + '</p>' +
+          '    <p>' + escapeHtml(nodeObj.summary || '暂无节点摘要') + '</p>' +
+          '  </div>' +
+          '  <div class="chip-list">' +
+          '    <span class="data-chip"><code>' + escapeHtml(nodeObj.id || '-') + '</code></span>' +
+          '    <a class="btn-secondary btn-inline" href="' + escapeHtml(detailHref(nodeObj.id)) + '">打开详情页</a>' +
+          '  </div>' +
+          '  <ul>' + nodeRelatedHtml + '</ul>' +
+          '</article>';
+      }
+      techMapNodeGrid.innerHTML = nodeCardsHtml || '<article class="card"><p>暂无 tech-map 节点数据</p></article>';
       removeLoadingState(techMapNodeGrid);
     }
   }
@@ -4806,8 +4852,13 @@
       return;
     }
 
-    container.innerHTML = others.map(item => {
-      return '<a href="detail.html?id=' + encodeURIComponent(item.id) + '" class="data-chip">' + escapeHtml(item.title || item.id) + '</a>';
-    }).join('');
+    // ⚡ Bolt Optimization: Replace .map().join('') with a standard for loop and string concatenation
+    // Expected impact: Prevents intermediate array and closure allocations during rendering.
+    var othersHtml = '';
+    for (var oi = 0; oi < others.length; oi++) {
+      var item = others[oi];
+      othersHtml += '<a href="detail.html?id=' + encodeURIComponent(item.id) + '" class="data-chip">' + escapeHtml(item.title || item.id) + '</a>';
+    }
+    container.innerHTML = othersHtml;
   }
 })();
