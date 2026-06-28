@@ -10,6 +10,7 @@ related:
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
   - ../queries/simulator-selection-guide.md
+  - ./gymnasium.md
 sources:
   - ../../sources/repos/dm_control.md
   - ../../sources/papers/dm_control_suite.md
@@ -41,7 +42,7 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 ## 为什么重要
 
 - **可比基准**：奖励大多落在 \([0,1]\)，配合固定步数评估，学习曲线与跨任务汇总更直观，便于算法论文横向对比。
-- **与 Gym 生态并行**：论文明确在与 OpenAI Gym 连续控制域相近的定位上，强调观测语义分离与代码可维护性；许多工作仍同时报告 Gym/MuJoCo 与 dm_control 结果。
+- **与 Gymnasium 生态并行**：论文明确在与 OpenAI Gym（现由 [Gymnasium](./gymnasium.md) 承接）连续控制域相近的定位上，强调观测语义分离与代码可维护性；许多工作仍同时报告 Gymnasium/MuJoCo 与 dm_control 结果。
 - **方法论参考**：任务设计经过多智能体反复试练，以降低物理发散与「投机解」风险，对自建自定义环境具有工程借鉴意义。
 - **栈完整**：除 `suite` 外，仓库还提供交互式 `viewer`、Python 侧 MJCF 编辑 `mjcf`、组件化环境 `composer` 与 `locomotion` 扩展（详见仓库 README）。
 
@@ -68,6 +69,7 @@ summary: "dm_control 是 Google DeepMind 开源的 MuJoCo Python 栈：以 Contr
 - [MuJoCo（物理引擎）](./mujoco.md) — 底层动力学与接触求解
 - [MuJoCo MJX](./mujoco-mjx.md) — JAX 批量 / 可微执行后端（与 MJCF 对齐）
 - [Brax](./brax.md) — JAX RL 训练；README 引导与 Playground / MJX 组合
+- [Gymnasium](./gymnasium.md) — 单智能体 RL 环境 API 标准；与 Control Suite 并行的另一条 MuJoCo 基准线
 - [Reinforcement Learning（方法总览）](../methods/reinforcement-learning.md) — 与连续控制基准的关系
 - [Locomotion（任务）](../tasks/locomotion.md) — walker / humanoid 等域在任务层面的位置
 - [仿真器选型指南（Query）](../queries/simulator-selection-guide.md) — 与 Isaac Lab、Genesis 等并列讨论时的上下文

@@ -64,7 +64,7 @@ flowchart LR
 
 | # | 平台 | Wiki 节点 | 文内强调 | 被引量（文内） |
 |---|------|-----------|----------|----------------|
-| 01 | MuJoCo | [mujoco](../entities/mujoco.md) | 连续时间动力学、OpenAI Gym 底层 | 9530 |
+| 01 | MuJoCo | [mujoco](../entities/mujoco.md) | 连续时间动力学、[Gymnasium](../entities/gymnasium.md) MuJoCo 域底层 | 9530 |
 | 02 | AI2-THOR | [ai2-thor](../entities/ai2-thor.md) | 室内 3D + 细粒度状态交互 | 1510 |
 | 03 | Matterport3D Simulator | [matterport3d-simulator](../entities/matterport3d-simulator.md) | 真实扫描 RGB-D + R2R 基准 | 2270 |
 | 04 | Habitat | [habitat-sim](../entities/habitat-sim.md) | 单 GPU 数千–上万 FPS | 2426 |

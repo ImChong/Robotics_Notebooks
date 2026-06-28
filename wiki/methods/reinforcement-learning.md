@@ -23,6 +23,7 @@ related:
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/lift-humanoid.md
   - ../entities/paper-shape-your-body-value-gradient-design.md
+  - ../entities/gymnasium.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
   - ../../sources/papers/policy_optimization.md
@@ -243,6 +244,7 @@ flowchart LR
 - [POMDP](../formalizations/pomdp.md) — 真机部分可观测场景的标准扩展
 - [具身 RL 最小闭环](../concepts/embodied-rl-minimal-closed-loop.md) — 仿真里把 $S,A,R,P$ 跑通再上学習算法
 - [PyBullet](../entities/pybullet.md) — 轻量入门仿真器
+- [Gymnasium](../entities/gymnasium.md) — 单智能体 RL 环境 API 标准（`reset` / `step` / `spaces`）
 
 ## 继续深挖入口
 
