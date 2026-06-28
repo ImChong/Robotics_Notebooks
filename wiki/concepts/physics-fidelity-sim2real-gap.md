@@ -104,6 +104,7 @@ URDF 的连杆尺寸、碰撞体形状、质量、质心与惯量张量是动力
 
 ## 关联页面
 
+- 专题汇总：[仿真物理保真度（专题汇总）](../overview/topic-physics-fidelity.md)
 - 端到端决策：[仿真物理保真度链路选型](../queries/simulation-physics-fidelity.md)
 - 工程主线：[Sim2Real](./sim2real.md)
 - 几何层：[URDF 机器人描述](./urdf-robot-description.md)

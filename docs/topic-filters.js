@@ -28,7 +28,8 @@
     'cross-embodiment': 'wiki/overview/topic-cross-embodiment.md',
     'safe-fine-tuning': 'wiki/overview/topic-safe-fine-tuning.md',
     'vision-backbone': 'wiki/overview/topic-vision-backbone.md',
-    'data-pipeline': 'wiki/overview/topic-data-pipeline.md'
+    'data-pipeline': 'wiki/overview/topic-data-pipeline.md',
+    'physics-fidelity': 'wiki/overview/topic-physics-fidelity.md'
   };
 
   function hubIdSet(key) {
@@ -157,6 +158,17 @@
         'wiki/concepts/motion-retargeting.md',
         'wiki/comparisons/humanoid-reference-motion-datasets.md'
       ]))
+    },
+    'physics-fidelity': {
+      segments: new Set([
+        'dynamics', 'contact', 'friction', 'articulated', 'body',
+        'differentiable', 'simulation', 'urdf', 'floating', 'centroidal', 'fidelity'
+      ]),
+      ids: mergeIds('physics-fidelity', new Set([
+        'wiki/queries/simulation-physics-fidelity.md',
+        'wiki/concepts/physics-fidelity-sim2real-gap.md',
+        'wiki/formalizations/articulated-body-algorithms.md'
+      ]))
     }
   };
 
@@ -251,6 +263,12 @@
       label: '训练数据 (Data Pipeline)',
       wikiPath: TOPIC_HUB_IDS['data-pipeline'],
       description: '原始动作捕捉/视频→质量评估→重定向→RL/IL 策略输入的端到端数据链路。'
+    },
+    'physics-fidelity': {
+      emoji: '⚙️',
+      label: '物理保真度 (Physics Fidelity)',
+      wikiPath: TOPIC_HUB_IDS['physics-fidelity'],
+      description: '几何/URDF→刚体动力学→接触/摩擦→执行器四层仿真物理保真度与各层 sim2real gap 取舍。'
     }
   };
 

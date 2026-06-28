@@ -110,6 +110,7 @@ URDF 的连杆几何、碰撞体、质量、质心与惯量张量是后三层的
 
 ## 关联页面
 
+- 专题汇总：[仿真物理保真度（专题汇总）](../overview/topic-physics-fidelity.md)
 - 因果概念页：[Physics Fidelity ↔ Sim2Real Gap](../concepts/physics-fidelity-sim2real-gap.md)
 - 工程主线：[Sim2Real](../concepts/sim2real.md)
 - 各层入口：[URDF 描述](../concepts/urdf-robot-description.md)、[ABA/RNEA](../formalizations/articulated-body-algorithms.md)、[Contact Dynamics](../concepts/contact-dynamics.md)、[Joint Friction Models](../concepts/joint-friction-models.md)、[Friction Compensation](../concepts/friction-compensation.md)、[Differentiable Simulation](../concepts/differentiable-simulation.md)

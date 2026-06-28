@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v26
 
-最后更新：2026-06-27（P2 事实库扩展：新增 12 条物理保真度矛盾检测规则，198 → 210 条，`make lint` 潜在矛盾 0 个）
+最后更新：2026-06-28（P3 图谱页"物理保真度"专题视图：新增 `physics-fidelity` 专题至 16 项，新建汇总枢纽页 `topic-physics-fidelity.md`，专题命中 85 节点，图谱 0 孤儿）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -42,8 +42,8 @@
 
 ## P3: 交互层"物理保真度"增强 (UX/UI)
 
-- [ ] **图谱页"物理保真度"专题视图**：
-    - [ ] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V25 15 项基础上新增「物理保真度」专题（`physics-fidelity`），复用 path 片段并集机制（`dynamics/contact/friction/articulated-body/differentiable-simulation/urdf/floating-base/centroidal`）并按需 `ids` 显式纳入新建 query/concept；同步在 `#filter-topic-chips` 增加 `data-topic="physics-fidelity"`（⚙️ 物理保真度）chip。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-physics-fidelity.png`。
+- [x] **图谱页"物理保真度"专题视图**：
+    - [x] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V25 15 项基础上新增「物理保真度」专题（`physics-fidelity`），复用 path 片段并集机制（`dynamics/contact/friction/articulated-body/differentiable-simulation/urdf/floating-base/centroidal/fidelity`）并按需 `ids` 显式纳入新建 query/concept（`simulation-physics-fidelity` / `physics-fidelity-sim2real-gap` / `articulated-body-algorithms`）；同步在 `#filter-topic-chips` 增加 `data-topic="physics-fidelity"`（⚙️ 物理保真度）chip。新建专题汇总枢纽页 `wiki/overview/topic-physics-fidelity.md` 并从 query/concept 双向回链消除孤儿（`graph-stats.json` 0 orphans）；专题命中 85 节点。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-physics-fidelity.png`（页头实测 `85 / 1512 节点`）。
 - [ ] **详情页"同专题相关页"提示**：
     - [ ] 复用 `docs/topic-filters.js` 单一事实源，动力学 / 仿真 / 新建页命中「物理保真度」专题时渲染「⚙️ 物理保真度」轻量徽标 + 跳转 `graph.html?topic=physics-fidelity`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-physics-fidelity.png`。
 
