@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-flap-fov-active-perception-3d-navigation.md",
+      "detail_id": "entity-paper-flap-fov-active-perception-3d-navigation",
+      "label": "FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）",
+      "type": "entity",
+      "recency": "2026-06-28",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/queries/simulation-physics-fidelity.md",
       "detail_id": "wiki-queries-simulation-physics-fidelity",
       "label": "仿真物理保真度链路选型指南",
@@ -159,22 +167,14 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/character-animation-vs-robotics.md",
-      "detail_id": "wiki-concepts-character-animation-vs-robotics",
-      "label": "Character Animation vs Robotics（角色动画与机器人控制的边界）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/simulation-physics-fidelity.md",
-    "detail_id": "wiki-queries-simulation-physics-fidelity",
-    "label": "仿真物理保真度链路选型指南",
-    "type": "query",
-    "recency": "2026-06-27",
+    "path": "wiki/entities/paper-flap-fov-active-perception-3d-navigation.md",
+    "detail_id": "entity-paper-flap-fov-active-perception-3d-navigation",
+    "label": "FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）",
+    "type": "entity",
+    "recency": "2026-06-28",
     "source": "log.md"
   }
 }
