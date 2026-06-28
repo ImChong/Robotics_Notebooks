@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-28",
-  "node_count": 1509,
-  "edge_count": 10104,
+  "node_count": 1510,
+  "edge_count": 10119,
   "coverage": {
-    "covered": 1478,
-    "total": 1507,
+    "covered": 1479,
+    "total": 1508,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/gymnasium.md",
+      "detail_id": "entity-gymnasium",
+      "label": "Gymnasium（RL 环境 API 标准）",
+      "type": "entity",
+      "recency": "2026-06-28",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-flap-fov-active-perception-3d-navigation.md",
       "detail_id": "entity-paper-flap-fov-active-perception-3d-navigation",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/centroidal-dynamics.md",
-      "detail_id": "wiki-concepts-centroidal-dynamics",
-      "label": "Centroidal Dynamics",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-flap-fov-active-perception-3d-navigation.md",
-    "detail_id": "entity-paper-flap-fov-active-perception-3d-navigation",
-    "label": "FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）",
+    "path": "wiki/entities/gymnasium.md",
+    "detail_id": "entity-gymnasium",
+    "label": "Gymnasium（RL 环境 API 标准）",
     "type": "entity",
     "recency": "2026-06-28",
     "source": "log.md"

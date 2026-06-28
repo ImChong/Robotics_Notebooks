@@ -13,6 +13,7 @@ related:
   - ./px4-autopilot.md
   - ../concepts/sim2real.md
   - ./mujoco.md
+  - ./gymnasium.md
 sources:
   - ../../sources/repos/gym_pybullet_drones.md
 summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 RL 环境：单/多机、多种控制接口，广泛用于四旋翼强化学习论文复现与教学。"
@@ -66,6 +67,7 @@ summary: "gym-pybullet-drones 是 UTIAS DSL 的 PyBullet + Gymnasium 四旋翼 R
 - [Betaflight](./betaflight.md) — 真机 FPV 飞控与仿真参数对照
 - [quad-swarm-rl](./quad-swarm-rl.md)
 - [Sim2Real](../concepts/sim2real.md)
+- [Gymnasium](./gymnasium.md) — 本环境所实现的 RL API 标准
 
 ## 推荐继续阅读
 

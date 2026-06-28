@@ -13,6 +13,7 @@ related:
   - ./paper-barkour-quadruped-agility-benchmark.md
   - ./robot-motion-keyframe-editors.md
   - ./dm-control.md
+  - ./gymnasium.md
   - ./jackhan-walke3-e3-ecosystem.md
   - ./nvidia-omniverse.md
   - ./newton-physics.md
@@ -50,7 +51,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 
 ## 对机器人研究的统治力
 
-- **RL 领域的基准测试**：OpenAI Gym 中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动。它是评价 PPO, SAC 等深度强化学习算法的绝对标准。DeepMind 的 [dm-control](./dm-control.md) 则在 MuJoCo 上提供另一套广泛使用、约定更统一的连续控制基准（Control Suite）与 Python 工具链。四足敏捷方向另有官方资产 **MuJoCo Menagerie** 中的 [`google_barkour_v0` / `google_barkour_vb`](./paper-barkour-quadruped-agility-benchmark.md)（与 [Barkour](./paper-barkour-quadruped-agility-benchmark.md) 论文及开源机体 README 交叉索引）。
+- **RL 领域的基准测试**：Gymnasium（原 OpenAI Gym）注册表中的连续控制任务（如 HalfCheetah, Ant, Humanoid）几乎全部由 MuJoCo 驱动，是评价 PPO、SAC 等算法的常用标准；接口层见 [Gymnasium](./gymnasium.md)。DeepMind 的 [dm-control](./dm-control.md) 则在 MuJoCo 上提供另一套广泛使用、约定更统一的连续控制基准（Control Suite）与 Python 工具链。四足敏捷方向另有官方资产 **MuJoCo Menagerie** 中的 [`google_barkour_v0` / `google_barkour_vb`](./paper-barkour-quadruped-agility-benchmark.md)（与 [Barkour](./paper-barkour-quadruped-agility-benchmark.md) 论文及开源机体 README 交叉索引）。
 - **Sim2Real 的证明**：诸多成功的 Sim2Real 论文（尤其是四足机器人和灵巧手操作领域）都证明了：只要系统辨识和域随机化做得好，在 MuJoCo 中训练的策略可以直接无缝迁移到物理硬件上。
 
 ## 优势与局限
@@ -69,6 +70,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
 - [Brax](./brax.md) — JAX 侧 RL 训练与 README 中的 Playground / MJX 迁移指引
 - [机器人关键帧与运动编辑工具](./robot-motion-keyframe-editors.md) — MJCF 场景上的关键帧编排与 LZ4 轨迹包（Stanford `robot_keyframe_kit` 等）
+- [Gymnasium](./gymnasium.md) — 单智能体 RL 环境 API；MuJoCo 域经典控制基准的注册入口
 - [dm_control / Control Suite](./dm-control.md) — MuJoCo 上的连续控制基准与 Python 栈
 - [对比：MuJoCo vs Isaac Sim](../comparisons/mujoco-vs-isaac-sim.md)
 - [Motrix](./motrix.md) — 现代化 Rust 高性能仿真引擎

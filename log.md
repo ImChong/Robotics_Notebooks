@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-28] ingest | sources/repos/gymnasium.md — Gymnasium RL 环境 API 标准；wiki/entities/gymnasium.md + 交叉 mujoco / dm-control / reinforcement-learning / gym-pybullet-drones / sim-platforms-decade
+
 ## [2026-06-28] ingest | sources/papers/flap_arxiv_2606_17630.md — FLAP 无先验地图 FOV 主动感知 3D UAV 规划；wiki/entities/paper-flap-fov-active-perception-3d-navigation.md + 交叉 multirotor-simulation-planning-control-stack / ego-planner-swarm
 
 ## [2026-06-27] feat(facts): V26 P2 — 事实库扩展 12 条物理保真度矛盾检测规则（198 → 210）

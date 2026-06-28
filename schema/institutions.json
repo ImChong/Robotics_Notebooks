@@ -311,6 +311,13 @@
         "blender"
       ]
     },
+    "farama": {
+      "label": "法马拉基金会（Farama Foundation）",
+      "aliases": [
+        "farama",
+        "farama-foundation"
+      ]
+    },
     "x-humanoid": {
       "label": "北京人形机器人创新中心（X-Humanoid）",
       "aliases": [
