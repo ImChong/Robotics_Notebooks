@@ -1,8 +1,8 @@
 # Wiki 健康报告
 
-## [2026-06-27] lint | health-check | 自动化 wiki 健康检查
+## [2026-06-28] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **2** 条信息型预警）：
+共发现 **0** 个问题（另含 **0** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -13,8 +13,8 @@
 ### ⚠️ 缺少参考来源区块（0 个）
 - 无
 
-### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（1 个）
-- wiki/comparisons/deep-learning-optimizers.md
+### 💡 缺少英文缩写速查区块（新建/大幅改写页须补齐；全库 backlog 信息型）（0 个）
+- 无
 
 ### ❌ 英文缩写速查位置错误（应在「一句话定义」之后、「为什么重要」之前）（0 个）
 - 无
@@ -88,8 +88,8 @@
 ### ❌ 工具实体缺少可派生的所属机构（0 个）
 - 无
 
-### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（1 个）
-- wiki/methods/line-search-steepest-descent.md（被 9 个页面引用，无 queries/comparisons 落地）
+### 💡 高频引用 methods/ 缺 queries/ 或 comparisons/ 落地（信息型，不阻塞 CI）（0 个）
+- 无
 
 ### 💡 paper-* 实体 frontmatter 缺 arxiv/venue/code 来源键（信息型，不阻塞 CI）（0 个）
 - 无
