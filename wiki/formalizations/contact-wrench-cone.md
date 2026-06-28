@@ -54,7 +54,7 @@ $$
 该顶点力对 $\{C\}$ 原点的贡献为 $\begin{bmatrix} \mathbf{f}_i \\ \mathbf{p}_i \times \mathbf{f}_i \end{bmatrix}$。整个接触面在 $\{C\}$ 下的可行 wrench 就是
 
 $$
-\mathcal{W} = \left\{ \sum_{i=1}^{N}\sum_{k=1}^{K} \lambda_{i,k} \begin{bmatrix} \mathbf{s}_{i,k} \\ \mathbf{p}_i \times \mathbf{s}_{i,k} \end{bmatrix} \;\Big|\; \lambda_{i,k} \geq 0 \right\}
+\mathcal{W} = \left\{ \sum_{i=1}^{N}\sum_{k=1}^{K} \lambda_{i,k} \begin{bmatrix} \mathbf{s}_{i,k} \\ \mathbf{p}_i \times \mathbf{s}_{i,k} \end{bmatrix} \mid \lambda_{i,k} \geq 0 \right\}
 $$
 
 这正是由有限个“基础 wrench”张成的**有限凸锥**。
