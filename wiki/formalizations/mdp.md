@@ -76,11 +76,11 @@ $$\pi: S \rightarrow \text{Prob}(A)$$
 
 **状态值函数** $V^\pi(s)$：从状态 $s$ 开始，按策略 $\pi$ 行事的期望累积折扣奖励
 
-$$V^\pi(s) = \mathbb{E}_\pi\Big[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \;\Big|\; s_t = s \Big]$$
+$$V^\pi(s) = \mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k R_{t+k} \mid s_t = s\right]$$
 
 **动作值函数** $Q^\pi(s,a)$：从状态 $s$ 出发，执行动作 $a$ 后按策略 $\pi$ 行事的期望累积折扣奖励
 
-$$Q^\pi(s,a) = \mathbb{E}_\pi\Big[ \sum_{k=0}^{\infty} \gamma^k R_{t+k} \;\Big|\; s_t = s, a_t = a \Big]$$
+$$Q^\pi(s,a) = \mathbb{E}_\pi\left[\sum_{k=0}^{\infty} \gamma^k R_{t+k} \mid s_t = s, a_t = a\right]$$
 
 两者关系：
 
