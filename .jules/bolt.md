@@ -93,3 +93,7 @@
 ## 2023-10-25 - Avoid `.join()` string concatenation in JavaScript Hot Paths
 **Learning:** In JavaScript (specifically frontend `docs/main.js`), generating delimited strings from arrays lazily via `(doc.tags || []).join('\n')` inside hot query/iteration loops incurs unnecessary memory allocations and CPU overhead compared to standard `for` loop concatenation. This array `.join()` operation was identified as a major bottleneck in the `substringScore` frontend search loop.
 **Action:** When dynamically generating strings from literal arrays or collections in hot paths, directly concatenate the items using a `for` loop with `+=` instead of creating intermediate allocations through `.join()`.
+
+## 2026-06-25 - Avoid Map and Join in HTML Node Rendering
+**Learning:** In frontend JavaScript processing, chained array operations like `.filter(Boolean).map(...).join('')` inside layout rendering (e.g., `techMapNodes` and `detailCards` generation) create multiple intermediate arrays and force closures on every element. This causes garbage collection pauses during initial page render.
+**Action:** Replace chained array methods `.map()` and `.join('')` with single-pass `for` loops concatenating directly to an HTML string accumulator, specifically in the DOM rendering pipelines, to minimize memory allocations.
