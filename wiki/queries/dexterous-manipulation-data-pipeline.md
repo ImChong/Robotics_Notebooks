@@ -3,7 +3,13 @@ title: 灵巧操作数据管线与 RL 训练基建指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-05-21
+updated: 2026-06-29
+related:
+  - ../methods/auto-labeling-pipelines.md
+  - ../methods/wilor.md
+  - ../methods/gae.md
+  - ../methods/actuator-network.md
+  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
 summary: 灵巧操作从自动标注、手部重建到 RL 优势估计与执行器建模的数据与训练基建选型。
 sources:
   - ../../sources/papers/policy_optimization.md
@@ -67,6 +73,10 @@ sources:
 [Actuator Network](../methods/actuator-network.md) 用学习的方式补偿仿真与真机扭矩/摩擦差异，是 [Sim2Real Gap Reduction](./sim2real-gap-reduction.md) 工具箱的一员，与域随机化、系统辨识并列而非替代。
 
 **建议顺序**：先 SysID + DR → 仍有系统性扭矩误差再上加 Actuator Network。
+
+## 5. 端到端视频→策略：Video to Data / CHORD
+
+NVIDIA [Video to Data (V2D)](https://nvidia-isaac.github.io/video_to_data/) 把 **视频 ingest → 重建 → Robotic Grounding** 拆成三阶段可缓存管线；[CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) 是 Grounding 阶段的 **接触力旋量（CWS）RL 奖励** 与 **4,739** 项双手 benchmark 载体，在 [Isaac Lab](../entities/isaac-lab.md) 上训练。与本文 §1–4 的「单点工具」互补：当演示来自 **动捕或自研视频重建** 且目标是 **接触丰富双手 RL** 时，可把 V2D 当作上游数据工厂，CHORD 当作接触监督与规模化评测入口。
 
 ---
 

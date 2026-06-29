@@ -6,6 +6,7 @@ updated: 2026-06-29
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-scenebot.md
+  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -19,6 +20,7 @@ related:
 sources:
   - ../../sources/papers/contact_planning.md
   - ../../sources/papers/contact_dynamics.md
+  - ../../sources/papers/chord_nvidia_video_to_data_2026.md
 ---
 
 # Contact-Rich Manipulation（接触丰富型操作）
@@ -95,6 +97,8 @@ sources:
 
 - [Contact Dynamics](./contact-dynamics.md) 提供接触力、摩擦锥和约束一致性的物理基础。
 - [TSID](./tsid.md) / [Whole-Body Control](./whole-body-control.md) 提供多任务和力约束执行层。
+- [SceneBot](../entities/paper-scenebot.md) — 人形 **contact-prompted tracking** 侧接触接口。
+- [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — **接触位置 vs 接触力旋量** 的演示迁移；CWS 奖励覆盖推/撬/滑等瞬态接触阶段。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
 ## 常见误区

@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-06-18
+updated: 2026-06-29
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
@@ -15,6 +15,7 @@ related:
   - ./legged-gym.md
   - ../methods/reinforcement-learning.md
   - ../tasks/locomotion.md
+  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
 sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
@@ -151,6 +152,12 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 在人形和足式 locomotion 研究里，它是当前主流的训练环境和 benchmark 平台。
 
 见：[Locomotion](../tasks/locomotion.md)
+
+### 和 Manipulation 的关系
+
+灵巧操作与大规模式仿 benchmark 亦在 Isaac Lab 上落地；NVIDIA [CHORD](./paper-chord-contact-wrench-dexterous-manipulation.md) 在 Lab 上发布 **4,739** 项双手任务库并用 **接触力旋量（CWS）** RL 奖励做 Robotic Grounding，是 [Video to Data](https://nvidia-isaac.github.io/video_to_data/) 管线的训练后端实例。
+
+见：[Manipulation](../tasks/manipulation.md)
 
 ### 和 Sim2Real 的关系
 
