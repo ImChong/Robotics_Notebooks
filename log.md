@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] ingest | sources/papers/humanoid_pnb_vmp.md — VMP β-VAE motion prior + 条件 PPO 全身跟踪；wiki/entities/paper-notebook-vmp.md；交叉 whole-body-tracking-pipeline / character-animation-vs-robotics / humanoid-motion-tracking-method-selection
+
 ## [2026-06-29] structural | wiki/entities/paper-sonic.md — 合并 Loco-Manip 161 重复 SONIC stub（#019/#103）至 canonical 实体 + 方法页
 
 - 删除：[`paper-loco-manip-161-019-sonic.md`](wiki/entities/paper-loco-manip-161-019-sonic.md)、[`paper-loco-manip-161-103-sonic.md`](wiki/entities/paper-loco-manip-161-103-sonic.md)

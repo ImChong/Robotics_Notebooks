@@ -3,7 +3,7 @@ type: concept
 tags: [humanoid, character-animation, entertainment-robotics, motion-retargeting, reward-design, style-prior]
 status: complete
 created: 2026-05-19
-updated: 2026-06-12
+updated: 2026-06-29
 related:
   - ./motion-retargeting.md
   - ./motion-retargeting-pipeline.md
@@ -12,6 +12,7 @@ related:
   - ../entities/paper-deeprl-locomotion-action-space-sca2017.md
   - ../queries/legged-humanoid-rl-pd-gain-setting.md
   - ../methods/disney-olaf-character-robot.md
+  - ../entities/paper-notebook-vmp.md
   - ../methods/deepmimic.md
   - ../methods/amp-reward.md
   - ../methods/ase.md
@@ -25,6 +26,7 @@ sources:
   - ../../sources/sites/blender-org.md
   - ../../sources/repos/blender.md
   - ../../sources/papers/disney_olaf_character_robot.md
+  - ../../sources/papers/humanoid_pnb_vmp.md
   - ../../sources/papers/amp.md
   - ../../sources/papers/deepmimic.md
   - ../../sources/sites/botlab_motioncanvas.md
@@ -190,7 +192,7 @@ flowchart LR
 
 - 上游链路与方法谱系：[Motion Retargeting](./motion-retargeting.md)、[Motion Retargeting Pipeline](./motion-retargeting-pipeline.md)、[GMR vs NMR vs ReActor](../comparisons/gmr-vs-nmr-vs-reactor.md)。
 - 安全与奖励配比：[Reward Design](./reward-design.md)、[Control Barrier Function](./control-barrier-function.md)。
-- 实机案例：[Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)；中性平台 [Roboto Origin](../entities/roboto-origin.md)、[Asimov v1](../entities/asimov-v1.md)。
+- 实机案例：[Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)、[VMP](../entities/paper-notebook-vmp.md)（LIME 双足 + 动画参考接口）；中性平台 [Roboto Origin](../entities/roboto-origin.md)、[Asimov v1](../entities/asimov-v1.md)。
 - 风格先验方法：[DeepMimic](../methods/deepmimic.md)、[AMP](../methods/amp-reward.md)、[ASE](../methods/ase.md)；原作者索引 [Xue Bin Peng](../entities/xue-bin-peng.md)。
 - **室内人–场景交互合成（运动学角色）：** [DIMOS](../entities/paper-dimos-human-scene-motion-synthesis.md)（ICCV 2023）用 RL 在 CVAE 运动基元潜空间上合成走–坐–躺序列，服务 AR/VR 与训练数据规模化；上真机需经重定向与接触动力学重建模，与 DeepMimic/AMP 的「仿真物理角色 → 机器人」迁移链正交。
 - 工具层：[BotLab / MotionCanvas](../entities/botlab-motioncanvas.md)、[机器人关键帧与运动编辑工具](../entities/robot-motion-keyframe-editors.md)。
@@ -204,6 +206,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/papers/disney_olaf_character_robot.md](../../sources/papers/disney_olaf_character_robot.md) — Olaf 实机角色（arXiv:2512.16705）
+- [sources/papers/humanoid_pnb_vmp.md](../../sources/papers/humanoid_pnb_vmp.md) — VMP β-VAE motion prior + 条件跟踪（SCA 2024）
 - [sources/papers/deepmimic.md](../../sources/papers/deepmimic.md) — DeepMimic 显式跟踪奖励
 - [sources/papers/amp.md](../../sources/papers/amp.md) — AMP 判别器风格先验
 - [sources/sites/botlab_motioncanvas.md](../../sources/sites/botlab_motioncanvas.md) — BotLab / MotionCanvas 浏览器节点图

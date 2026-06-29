@@ -3,7 +3,7 @@ type: concept
 tags: [robotics, humanoid, whole-body-tracking, wbt, pipeline, motion-tracking, cross-embodiment, sim2real]
 status: complete
 created: 2026-05-29
-updated: 2026-06-25
+updated: 2026-06-29
 summary: "Whole-Body Tracking（WBT）端到端流水线：参考采集 → 重定向 → 训练数据 → 策略学习 → 跨具身迁移 → 真机部署的统一视图，对比 SONIC / BeyondMimic / SD-AMP / Heracles / Any2Any / GMT(RGMT) 等 6 条主流落地路径在每一阶段的取舍。"
 related:
   - ./motion-retargeting-pipeline.md
@@ -24,6 +24,7 @@ related:
   - ../entities/paper-perceptive-bfm.md
   - ../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md
   - ../entities/paper-resmimic.md
+  - ../entities/paper-notebook-vmp.md
   - ../queries/humanoid-motion-tracking-method-selection.md
   - ../overview/humanoid-rl-motion-control-body-system-stack.md
   - ../entities/sam-3d-body.md
@@ -38,6 +39,7 @@ sources:
   - ../../sources/papers/humanoid_rl_stack_17_sonic_supersizing_motion_tracking_for_natural_hu.md
   - ../../sources/papers/humanoid_rl_stack_15_beyondmimic_from_motion_tracking_to_versatile_hu.md
   - ../../sources/papers/humanoid_rl_stack_40_heracles_bridging_precise_tracking_and_generativ.md
+  - ../../sources/papers/humanoid_pnb_vmp.md
 ---
 
 # Whole-Body Tracking Pipeline（全身运动跟踪流水线）
@@ -172,6 +174,7 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | 路线 | 核心思想 | 代表 |
 |------|----------|------|
 | **显式 tracking 奖励** | 分项 reward 直接对齐参考（位姿/速度/末端） | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
+| **预训练 latent + 显式跟踪** | β-VAE 运动先验与 PPO 解耦，动画参考接口 | [VMP](../entities/paper-notebook-vmp.md) |
 | **对抗式 motion prior** | 判别器约束风格分布，tracking 由任务奖励驱动 | [AMP](../methods/amp-reward.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md) |
 | **生成式中间件** | 扩散/VAE 在 tracking 失败时改写参考 | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
 | **规模化通用 tracker** | 海量参考 + 大模型，把 tracking 当**预训练任务** | [SONIC](../methods/sonic-motion-tracking.md)、[GMT/RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
@@ -204,8 +207,10 @@ WBT 的核心分歧在**奖励/损失**怎么写。四条主流：
 | **Heracles** | 跟踪失败时由扩散重生成 | — | tracking + 扩散中间件兜底 | 单具身 | 项目页 demo | [Heracles](../entities/paper-heracles-humanoid-diffusion.md) |
 | **Any2Any** | 复用源机参考池 | 运动学对齐层 | LoRA 后训练（约 1% 算力） | 多目标机 LoRA 适配 | LimX Oli/Luna、G1、H1 | [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md) |
 | **GMT (RGMT)** | 多任务参考 + 扰动课程 | 上游通用 | 历史编码 + 命令交叉注意力 | 单具身（强抗扰） | Unitree G1 项目页 | [RGMT](../entities/paper-hrl-stack-14-robust_and_generalized_humanoid_moti.md)、[Any2Track](../methods/any2track.md) |
+| **VMP** | 11 h 未过滤 CMU/Mixamo/Reallusion | IK retarget（LIME） | β-VAE prior + 条件 PPO 跟踪 | 单具身角色平台 | LIME 双足真机 | [VMP](../entities/paper-notebook-vmp.md) |
 
 > **选型直觉**：
+> - **动画工作流 + 角色真机** → VMP（kinematic 参考 + latent 上下文）
 > - **想"开箱即用通用 tracker"** → SONIC / GMT 系（高代价但泛化最好）
 > - **预算紧、想跑通一条线** → BeyondMimic 单具身重训（最成熟）
 > - **要少参考做多行为** → SD-AMP（3 条参考覆盖走/跑/起身）
