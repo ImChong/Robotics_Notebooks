@@ -1,6 +1,6 @@
 ---
 type: entity
-tags: [paper, haptic, wearable, pneumatic, soft-robotics, vr, teleoperation, human-robot-interaction]
+tags: [paper, haptic, wearable, pneumatic, soft-robotics, vr, teleoperation, human-robot-interaction, sssa]
 status: complete
 updated: 2026-06-29
 arxiv: "2509.05433"
