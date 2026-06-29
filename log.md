@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] ingest | sources/papers/hapmorph_arxiv_2509_05433.md — HapMorph AFPA 可穿戴气动解耦尺寸+刚度；wiki/entities/paper-hapmorph-pneumatic-haptic-render.md + teleoperation/topic-tactile 交叉
+
 ## [2026-06-28] feat(ui): V26 P3 — 图谱页"物理保真度"专题视图（专题扩至 16 项）
 
 - 改动：[`docs/topic-filters.js`](docs/topic-filters.js) 新增 `physics-fidelity` 专题（`TOPIC_HUB_IDS` / `TOPIC_FILTERS` / `TOPIC_META`），复用 path 片段并集机制（`dynamics/contact/friction/articulated/body/differentiable/simulation/urdf/floating/centroidal/fidelity`）并按需 `ids` 显式纳入新建 query/concept；[`docs/graph.html`](docs/graph.html) `#filter-topic-chips` 增加 `data-topic="physics-fidelity"`（⚙️ 物理保真度）chip
