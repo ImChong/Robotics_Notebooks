@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28",
+  "generated_at": "2026-06-29",
   "node_count": 1512,
   "edge_count": 10143,
   "coverage": {
@@ -8,6 +8,30 @@
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/overview/topic-physics-fidelity.md",
+      "detail_id": "wiki-overview-topic-physics-fidelity",
+      "label": "仿真物理保真度（专题汇总）",
+      "type": "overview",
+      "recency": "2026-06-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulation-physics-fidelity.md",
+      "detail_id": "wiki-queries-simulation-physics-fidelity",
+      "label": "仿真物理保真度链路选型指南",
+      "type": "query",
+      "recency": "2026-06-28",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/physics-fidelity-sim2real-gap.md",
+      "detail_id": "wiki-concepts-physics-fidelity-sim2real-gap",
+      "label": "Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）",
+      "type": "concept",
+      "recency": "2026-06-28",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/rek.md",
       "detail_id": "entity-rek",
@@ -30,22 +54,6 @@
       "label": "FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）",
       "type": "entity",
       "recency": "2026-06-28",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/simulation-physics-fidelity.md",
-      "detail_id": "wiki-queries-simulation-physics-fidelity",
-      "label": "仿真物理保真度链路选型指南",
-      "type": "query",
-      "recency": "2026-06-27",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/physics-fidelity-sim2real-gap.md",
-      "detail_id": "wiki-concepts-physics-fidelity-sim2real-gap",
-      "label": "Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）",
-      "type": "concept",
-      "recency": "2026-06-27",
       "source": "log.md"
     },
     {
@@ -159,21 +167,13 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/can-fd.md",
-      "detail_id": "wiki-concepts-can-fd",
-      "label": "CAN FD（Flexible Data Rate）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/rek.md",
-    "detail_id": "entity-rek",
-    "label": "REK（Robot Embodied Kombat · 人形格斗联赛）",
-    "type": "entity",
+    "path": "wiki/overview/topic-physics-fidelity.md",
+    "detail_id": "wiki-overview-topic-physics-fidelity",
+    "label": "仿真物理保真度（专题汇总）",
+    "type": "overview",
     "recency": "2026-06-28",
     "source": "log.md"
   }
