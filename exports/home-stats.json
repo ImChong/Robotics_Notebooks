@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-29",
   "node_count": 1515,
-  "edge_count": 10187,
+  "edge_count": 10199,
   "coverage": {
     "covered": 1484,
     "total": 1513,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-notebook-vmp.md",
+      "detail_id": "entity-paper-notebook-vmp",
+      "label": "VMP（Versatile Motion Priors）",
+      "type": "entity",
+      "recency": "2026-06-29",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
       "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/armature-modeling.md",
-      "detail_id": "wiki-concepts-armature-modeling",
-      "label": "Armature Modeling（电枢惯量建模）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
-    "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
-    "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
+    "path": "wiki/entities/paper-notebook-vmp.md",
+    "detail_id": "entity-paper-notebook-vmp",
+    "label": "VMP（Versatile Motion Priors）",
     "type": "entity",
     "recency": "2026-06-29",
     "source": "log.md"

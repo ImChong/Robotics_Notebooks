@@ -7,6 +7,7 @@ updated: 2026-06-29
 summary: 在人形 RL 运动控制栈中，如何按任务阶段在 DeepMimic / BeyondMimic / AMP 家族 / 通用 tracker / 接触丰富场景 tracking / 生成式动作先验之间选型。
 sources:
   - ../../sources/papers/scenebot_arxiv_2606_27581.md
+  - ../../sources/papers/humanoid_pnb_vmp.md
   - ../../sources/papers/deepmimic.md
   - ../../sources/papers/amp.md
   - ../../sources/papers/smp.md
@@ -52,6 +53,7 @@ flowchart TD
 | 证明「能跟参考跑起来」 | 显式 tracking reward | [DeepMimic](../methods/deepmimic.md)、[BeyondMimic](../methods/beyondmimic.md) |
 | 任务完成后仍像「人」 | 对抗式 motion prior | [AMP](../methods/amp-reward.md)、[ADD](../methods/add.md)、[SMP](../methods/smp.md) |
 | 多动作通用 tracker | 规模化 tracking policy | [Any2Track](../methods/any2track.md)、[AMS](../methods/ams.md)、[MotionBricks](../methods/motionbricks.md)、[EGM](../methods/egm-efficient-general-mimic.md)、[SONIC](../methods/sonic-motion-tracking.md)、[Humanoid-GPT](../entities/paper-humanoid-gpt.md) |
+| 动画参考 + latent 上下文跟踪 | 两阶段 VAE prior + 显式 PPO | [VMP](../entities/paper-notebook-vmp.md)（SCA 2024；LIME 真机） |
 | 接触丰富场景 tracking | 参考运动 + per-link contact label | [SceneBot](../entities/paper-scenebot.md)（hindsight 场景重建 + 单策略 terrain/object） |
 | 数据稀缺、要合成参考 | 生成式动作 | [ASE](../methods/ase.md)、[GenMo](../methods/genmo.md)、[扩散动作生成](../methods/diffusion-motion-generation.md) |
 
@@ -69,7 +71,7 @@ flowchart TD
 
 当任务奖励已满足，仍出现步态不自然时，引入 [AMP](../methods/amp-reward.md) 判别器先验。[ADD](../methods/add.md) 用对抗差分减轻多目标手调；[SMP](../methods/smp.md) 走 **冻结扩散 + SDS** 路线（非判别器），先验预训练后可**丢弃原始 MoCap**、在多任务多策略间复用，代价是两阶段训练、同采样量 wall-clock 约为 AMP 的 ~1.8×（论文报告 600M samples：SMP ~11.5h vs AMP ~6.2h）。
 
-**选型轴**：每任务都要重训先验 / 必须保留数据集 → AMP/ADD；先验一次训好跨任务复用、不愿在 RL 阶段保留 MoCap → SMP。三者对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
+**选型轴**：每任务都要重训先验 / 必须保留数据集 → AMP/ADD；先验一次训好跨任务复用、不愿在 RL 阶段保留 MoCap → SMP；需要 **动画师可直接编 kinematic 参考**、且希望 **latent 与跟踪解耦**（相对 CALM/ASE 端到端）→ [VMP](../entities/paper-notebook-vmp.md)。三者对比见 [AMP / ADD / SMP 运动先验变体对比](../comparisons/amp-add-smp-motion-prior-variants.md)。
 
 ### 3. 通用 tracker 与实时原语
 
@@ -149,6 +151,8 @@ flowchart TD
 
 ## 参考来源
 
+- [SceneBot（arXiv:2606.27581）](../../sources/papers/scenebot_arxiv_2606_27581.md)
+- [VMP（SCA 2024 PDF）](../../sources/papers/humanoid_pnb_vmp.md)
 - [DeepMimic 论文摘要](../../sources/papers/deepmimic.md)
 - [AMP 论文摘要](../../sources/papers/amp.md)
 - [具身智能研究室：人形 AMP 先验综述](../../sources/blogs/wechat_embodied_ai_lab_humanoid_amp_motion_prior_survey.md)
@@ -169,6 +173,7 @@ flowchart TD
 - [Heracles](../entities/paper-heracles-humanoid-diffusion.md)、[PhyGile](../entities/paper-phygile.md)、[SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)、[SPRINT](../entities/paper-sprint-humanoid-athletic-sprints.md)
 - [Any2Any](../entities/paper-any2any-cross-embodiment-wbt.md)
 - [SceneBot](../entities/paper-scenebot.md)
+- [VMP](../entities/paper-notebook-vmp.md)
 
 ## 一句话记忆
 

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] ingest | sources/papers/humanoid_pnb_vmp.md — VMP β-VAE motion prior + 条件 PPO 全身跟踪；wiki/entities/paper-notebook-vmp.md；交叉 whole-body-tracking-pipeline / character-animation-vs-robotics / humanoid-motion-tracking-method-selection
+
 ## [2026-06-29] ingest | sources/papers/chord_nvidia_video_to_data_2026.md — CHORD 接触力旋量引导灵巧操作；wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md；交叉 contact-rich-manipulation / manipulation / SPIDER / dexterous-data-pipeline / Isaac Lab
 
 ## [2026-06-29] ingest | sources/papers/scenebot_arxiv_2606_27581.md — 接入 SceneBot contact-prompted 全身场景交互跟踪；沉淀 wiki/entities/paper-scenebot.md；交叉更新 SONIC、运动跟踪选型、loco-manipulation、OmniRetarget
