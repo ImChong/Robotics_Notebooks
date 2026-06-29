@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "H2-COMPACT 先从相机图像/多视角观测、本体状态与关节序列、仿真交互数据恢复场景、目标或运动表征，再用扩散策略/流匹配、分层技能/专家策略生成关节位置/力矩命令、全身轨迹/动作序列、地形/场景表征。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

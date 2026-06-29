@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "这篇工作先从相机图像/多视角观测、人类视频/动捕轨迹、仿真交互数据恢复场景、目标或运动表征，再用扩散策略/流匹配、IK/动作重定向、分层技能/专家策略生成可执行动作命令。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

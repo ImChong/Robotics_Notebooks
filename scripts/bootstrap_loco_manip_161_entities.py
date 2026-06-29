@@ -39,6 +39,12 @@ TODAY = date.today().isoformat()
 # Prior catalog cross-links (wiki path without .md) for related pages
 PRIOR_WIKI: dict[int, str] = {}
 
+# Loco-Manip 161 槽位 → 已有 canonical 实体（跳过独立 stub 生成）
+CANONICAL_ENTITY_BY_NUM: dict[int, str] = {
+    19: "paper-sonic",
+    103: "paper-sonic",
+}
+
 
 def slugify(text: str, num: int) -> str:
     s = re.sub(r"[^a-zA-Z0-9]+", "-", text).strip("-").lower()
@@ -394,6 +400,11 @@ def main() -> None:
     assert len(papers) == 161, len(papers)
 
     for p in papers:
+        canonical = CANONICAL_ENTITY_BY_NUM.get(p["num"])
+        if canonical:
+            p["entity"] = canonical
+            write_source(p, canonical)
+            continue
         prior = prior_map.get(p["num"])
         en = write_entity(p, prior)
         write_source(p, en)
