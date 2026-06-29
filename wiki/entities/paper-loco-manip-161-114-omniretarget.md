@@ -2,10 +2,11 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "OmniRetarget 先从本体状态与关节序列、人类视频/动捕轨迹、接触力/触觉信号恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、IK/动作重定向生成全身轨迹/动作序列、地形/场景表征。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
 related:
+  - ./paper-scenebot.md
   - ../overview/humanoid-loco-manip-161-papers-technology-map.md
   - ../overview/loco-manip-161-category-05-mocap-human-video.md
   - ../tasks/loco-manipulation.md
@@ -67,6 +68,7 @@ OmniRetarget 先从本体状态与关节序列、人类视频/动捕轨迹、接
 
 ## 与其他页面的关系
 
+- [SceneBot](./paper-scenebot.md) — **hindsight scene reconstruction** 对照：论文在 OMOMO 上报告 reconstruction 训练优于 tuned Omni-retarget（物体-手对齐/穿透更少）；OmniRetarget 偏 **interaction-preserving retarget**，SceneBot 偏 **从运动反推可支撑机器人的场景资产**。
 - 技术地图：[humanoid-loco-manip-161-papers-technology-map.md](../overview/humanoid-loco-manip-161-papers-technology-map.md)
 - 分类 hub：[loco-manip-161-category-05-mocap-human-video.md](../overview/loco-manip-161-category-05-mocap-human-video.md)
 - 原始 source：[loco_manip_161_survey_114_omniretarget.md](../../sources/papers/loco_manip_161_survey_114_omniretarget.md)

@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] ingest | sources/papers/scenebot_arxiv_2606_27581.md — 接入 SceneBot contact-prompted 全身场景交互跟踪；沉淀 wiki/entities/paper-scenebot.md；交叉更新 SONIC、运动跟踪选型、loco-manipulation、OmniRetarget
+
 ## [2026-06-29] ingest | sources/papers/hapmorph_arxiv_2509_05433.md — HapMorph AFPA 可穿戴气动解耦尺寸+刚度；wiki/entities/paper-hapmorph-pneumatic-haptic-render.md + teleoperation/topic-tactile 交叉
 
 ## [2026-06-28] feat(ui): V26 P3 — 图谱页"物理保真度"专题视图（专题扩至 16 项）
