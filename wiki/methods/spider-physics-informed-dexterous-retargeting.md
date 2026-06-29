@@ -3,7 +3,7 @@ type: method
 tags: [robotics, motion-retargeting, dexterous-manipulation, humanoid, physics-simulation, imitation-learning, contact-rich-manipulation]
 status: complete
 date: 2026-05-17
-updated: 2026-06-17
+updated: 2026-06-29
 related:
   - ../concepts/motion-retargeting.md
   - ../concepts/motion-retargeting-pipeline.md
@@ -13,6 +13,7 @@ related:
   - ./dynaretarget-sbto-motion-retargeting.md
   - ./toporetarget-interaction-preserving-dexterous-retargeting.md
   - ../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md
+  - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ./imitation-learning.md
 sources:
@@ -91,6 +92,7 @@ flowchart LR
 - **相对 NMR / CEPR**：NMR 用 **RL 跟踪专家**在仿真里构造人机配对监督，再训练**前向网络**做快速推断；SPIDER 不显式以「训练大网络」为主叙事，而是强调**采样优化 + 接触课程**在跨机型数据生成上的**通用外壳**（仍可与学习式模块组合）。
 - **相对 ReActor**：ReActor 用**双层 RL**联合更新「参数化参考」与「跟踪策略」；SPIDER 用**采样轨迹分布**直接优化控制序列，**不更新策略网络**，更靠近「轨迹级 MPC/CEM 式」物理修补器。
 - **相对 DynaRetarget / SBTO**：同为采样物理 refinement；SPIDER 用 **SBMPC 短 horizon**，DynaRetarget 用 **incremental full-horizon SBTO**，论文在 OmniRetarget 285 motions 上报告 SBTO 成功率约 **2×** SPIDER（Table III）。
+- **相对 CHORD：** [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) 在 RL 奖励里用 **接触力旋量 support function** 比较演示与执行，并作为 DexMachina/SPIDER **位置引导** 的对照基线之一；SPIDER 侧重 **轨迹级采样重定向 + 虚拟接触课程**，CHORD 侧重 **策略学习 + CWS 奖励**。
 - **相对 TopoRetarget：** 后者用 **运动学 interaction mesh Laplacian** 保留 hand–object 接触结构并实时求解（~5 ms/帧），不做仿真动力学 refinement；SPIDER 侧重 **轨迹级动力学可行** 与虚拟接触课程，二者可串联（运动学参考 → 物理采样修补）。
 
 ## 局限与阅读时注意点
@@ -108,6 +110,7 @@ flowchart LR
 - [ReActor（物理感知 RL 运动重定向）](./reactor-physics-aware-motion-retargeting.md) — 双层 RL 式物理一致参考生成，对照采样优化路径。
 - [DynaRetarget / SBTO（增量采样式动力学重定向）](./dynaretarget-sbto-motion-retargeting.md) — SBMPC 对照：incremental full-horizon refinement。
 - [TopoRetarget（交互保留灵巧重定向）](./toporetarget-interaction-preserving-dexterous-retargeting.md) — 运动学 interaction mesh 对照：实时 Laplacian 灵巧重定向。
+- [CHORD（接触力旋量引导灵巧操作）](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — 共享虚拟接触/VOC 叙事；CHORD 在 RL 奖励层用 wrench 空间替代位置匹配。
 - [Manipulation（操作）](../tasks/manipulation.md) — 灵巧接触丰富任务的需求背景。
 
 ## 推荐继续阅读

@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-29",
-  "node_count": 1514,
-  "edge_count": 10169,
+  "node_count": 1515,
+  "edge_count": 10187,
   "coverage": {
-    "covered": 1483,
-    "total": 1512,
+    "covered": 1484,
+    "total": 1513,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
+      "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
+      "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-29",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-scenebot.md",
       "detail_id": "entity-paper-scenebot",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-26",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/backpropagation.md",
-      "detail_id": "wiki-concepts-backpropagation",
-      "label": "反向传播算法 (Backpropagation)",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-scenebot.md",
-    "detail_id": "entity-paper-scenebot",
-    "label": "SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）",
+    "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
+    "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
+    "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
     "type": "entity",
     "recency": "2026-06-29",
     "source": "log.md"
