@@ -1,5 +1,13 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] structural | checklist-v26 P3 详情页「物理保真度」专题徽标端到端验证 —— 复用单一事实源补归档截图
+
+- 详情页「所属专题」徽标行（[`docs/main.js`](docs/main.js) `renderMetaTopicBadges`）本就以 [`docs/topic-filters.js`](docs/topic-filters.js) 为单一事实源、`topicsForNode` 数据驱动：V26 P3 把 `physics-fidelity` 写入单一事实源后，动力学/仿真/新建页命中即自动渲染「⚙️ 物理保真度」徽标并跳 `graph.html?topic=physics-fidelity`，空态降级隐藏整行，无需二次实现。
+- node 逐页校验 `contact-dynamics` / `physics-fidelity-sim2real-gap` / `simulation-physics-fidelity` / `articulated-body-algorithms` / `joint-friction-models` / `topic-physics-fidelity` 等候选页全部稳定命中 `physics-fidelity`（全库 86 节点）。
+- Puppeteer 截图归档 [`detail-topic-physics-fidelity.png`](.cursor-artifacts/screenshots/detail-topic-physics-fidelity.png)：`contact-dynamics` 详情页「所属专题」行实测渲染「✋ 触觉 + ⚙️ 物理保真度」双徽标。
+- `make lint` 0 errors（仅 2 条信息型预警，不阻塞 CI）；勾选 v26 P3「详情页『同专题相关页』提示」与 DoD「make lint 0 errors」「log.md 记录」三项，清单全数完成。
+- v26 全数完成后按维护规则新建 [`tech-stack-next-phase-checklist-v27.md`](docs/checklists/tech-stack-next-phase-checklist-v27.md)（聚焦「接触力旋量闭环」知识链：感知/估计 → 力旋量 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略），把 v26 移入 `archive/` 并刷新 `docs/checklists/README.md` 当前入口/历史链接。
+
 ## [2026-06-29] ingest | sources/papers/humanoid_pnb_vmp.md — VMP β-VAE motion prior + 条件 PPO 全身跟踪；wiki/entities/paper-notebook-vmp.md；交叉 whole-body-tracking-pipeline / character-animation-vs-robotics / humanoid-motion-tracking-method-selection
 
 ## [2026-06-29] structural | wiki/entities/paper-sonic.md — 合并 Loco-Manip 161 重复 SONIC stub（#019/#103）至 canonical 实体 + 方法页

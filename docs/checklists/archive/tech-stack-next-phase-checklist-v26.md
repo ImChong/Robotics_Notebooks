@@ -1,6 +1,6 @@
 # 技术栈项目执行清单 v26
 
-最后更新：2026-06-28（P3 图谱页"物理保真度"专题视图：新增 `physics-fidelity` 专题至 16 项，新建汇总枢纽页 `topic-physics-fidelity.md`，专题命中 85 节点，图谱 0 孤儿）
+最后更新：2026-06-29（P3 详情页「物理保真度」专题徽标端到端验证：复用 `topic-filters.js` 单一事实源，`contact-dynamics` 详情页实测渲染「✋ 触觉 + ⚙️ 物理保真度」双徽标，`make lint` 0 errors，**v26 清单全数完成**）
 项目仓库：<https://github.com/ImChong/Robotics_Notebooks>
 上一版清单：[`tech-stack-next-phase-checklist-v25.md`](archive/tech-stack-next-phase-checklist-v25.md)
 方法论参考：[Karpathy LLM Wiki](../../wiki/references/llm-wiki-karpathy.md)
@@ -44,18 +44,18 @@
 
 - [x] **图谱页"物理保真度"专题视图**：
     - [x] `docs/graph.html` / `docs/topic-filters.js` 的专题命中规则在 V25 15 项基础上新增「物理保真度」专题（`physics-fidelity`），复用 path 片段并集机制（`dynamics/contact/friction/articulated-body/differentiable-simulation/urdf/floating-base/centroidal/fidelity`）并按需 `ids` 显式纳入新建 query/concept（`simulation-physics-fidelity` / `physics-fidelity-sim2real-gap` / `articulated-body-algorithms`）；同步在 `#filter-topic-chips` 增加 `data-topic="physics-fidelity"`（⚙️ 物理保真度）chip。新建专题汇总枢纽页 `wiki/overview/topic-physics-fidelity.md` 并从 query/concept 双向回链消除孤儿（`graph-stats.json` 0 orphans）；专题命中 85 节点。Puppeteer 截图归档至 `.cursor-artifacts/screenshots/graph-topic-physics-fidelity.png`（页头实测 `85 / 1512 节点`）。
-- [ ] **详情页"同专题相关页"提示**：
-    - [ ] 复用 `docs/topic-filters.js` 单一事实源，动力学 / 仿真 / 新建页命中「物理保真度」专题时渲染「⚙️ 物理保真度」轻量徽标 + 跳转 `graph.html?topic=physics-fidelity`（空态降级隐藏）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-physics-fidelity.png`。
+- [x] **详情页"同专题相关页"提示**：
+    - [x] 复用 `docs/topic-filters.js` 单一事实源，动力学 / 仿真 / 新建页命中「物理保真度」专题时渲染「⚙️ 物理保真度」轻量徽标 + 跳转 `graph.html?topic=physics-fidelity`（空态降级隐藏）。详情页「所属专题」徽标行（`docs/main.js renderMetaTopicBadges` → `topicsForNode`）本就数据驱动，P3 把 `physics-fidelity` 写入单一事实源后自动联动，无需二次实现；node 逐页校验候选页全部稳定命中（全库 86 节点）。端到端验证截图归档至 `.cursor-artifacts/screenshots/detail-topic-physics-fidelity.png`（`contact-dynamics` 详情页实测渲染「✋ 触觉 + ⚙️ 物理保真度」双徽标）。
 
 ---
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `physics_concept_crosslink_check` 为 INFO 级，不阻塞 CI）。
+- [x] `make lint`: 0 errors（新引入的 `physics_concept_crosslink_check` 为 INFO 级，不阻塞 CI；现 0 页待回链，另含 2 条既有信息型预警）。
 - [x] 知识图谱节点数 **≥ 1335**，边数 **≥ 8850**（见 `exports/graph-stats.json`：现 1338 节点 / 9145 边）。
 - [x] 事实库扩展至 **210 条**（重点补 物理保真度 / 接触摩擦 / 执行器建模 矛盾检测规则）。
 - [x] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`（现 0.183；新增 `humanoid-soccer` 社区命名 override）。
-- [ ] `log.md` 记录 V26 关键改动。
+- [x] `log.md` 记录 V26 关键改动。
 
 ---
 
