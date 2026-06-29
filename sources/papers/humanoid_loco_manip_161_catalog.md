@@ -32,7 +32,7 @@
 | 016 | OmniH2O | [paper-loco-manip-161-016-omnih2o](../../wiki/entities/paper-loco-manip-161-016-omnih2o.md) |
 | 017 | OmniRetarget | [paper-loco-manip-161-017-omniretarget](../../wiki/entities/paper-loco-manip-161-017-omniretarget.md) |
 | 018 | Retargeting | [paper-loco-manip-161-018-retargeting](../../wiki/entities/paper-loco-manip-161-018-retargeting.md) |
-| 019 | SONIC | [paper-loco-manip-161-019-sonic](../../wiki/entities/paper-loco-manip-161-019-sonic.md) |
+| 019 | SONIC | [paper-sonic](../../wiki/entities/paper-sonic.md) |
 | 020 | TWIST2 | [paper-loco-manip-161-020-twist2](../../wiki/entities/paper-loco-manip-161-020-twist2.md) |
 | 021 | TWIST | [paper-loco-manip-161-021-twist](../../wiki/entities/paper-loco-manip-161-021-twist.md) |
 | 022 | TextOp | [paper-loco-manip-161-022-textop](../../wiki/entities/paper-loco-manip-161-022-textop.md) |
@@ -137,7 +137,7 @@
 | 100 | MotionWAM | [paper-loco-manip-161-100-motionwam](../../wiki/entities/paper-loco-manip-161-100-motionwam.md) |
 | 101 | OMG | [paper-loco-manip-161-101-omg](../../wiki/entities/paper-loco-manip-161-101-omg.md) |
 | 102 | Robot Motion Diffusion Model | [paper-loco-manip-161-102-robot-motion-diffusion-model](../../wiki/entities/paper-loco-manip-161-102-robot-motion-diffusion-model.md) |
-| 103 | SONIC | [paper-loco-manip-161-103-sonic](../../wiki/entities/paper-loco-manip-161-103-sonic.md) |
+| 103 | SONIC | [paper-sonic](../../wiki/entities/paper-sonic.md) |
 | 104 | SafeFlow | [paper-loco-manip-161-104-safeflow](../../wiki/entities/paper-loco-manip-161-104-safeflow.md) |
 | 105 | TextOp | [paper-loco-manip-161-105-textop](../../wiki/entities/paper-loco-manip-161-105-textop.md) |
 | 106 | 从语言到运动 | [paper-loco-manip-161-106-n106](../../wiki/entities/paper-loco-manip-161-106-n106.md) |

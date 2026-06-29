@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-06-29",
-  "node_count": 1515,
-  "edge_count": 10199,
+  "node_count": 1513,
+  "edge_count": 10195,
   "coverage": {
-    "covered": 1484,
-    "total": 1513,
+    "covered": 1482,
+    "total": 1511,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -13,6 +13,22 @@
       "detail_id": "entity-paper-notebook-vmp",
       "label": "VMP（Versatile Motion Priors）",
       "type": "entity",
+      "recency": "2026-06-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-sonic.md",
+      "detail_id": "entity-paper-sonic",
+      "label": "SONIC",
+      "type": "entity",
+      "recency": "2026-06-29",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/sonic-motion-tracking.md",
+      "detail_id": "wiki-methods-sonic-motion-tracking",
+      "label": "SONIC（规模化运动跟踪人形控制）",
+      "type": "method",
       "recency": "2026-06-29",
       "source": "log.md"
     },
@@ -150,22 +166,6 @@
       "label": "Manipulation",
       "type": "task",
       "recency": "2026-06-27",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/3d-spatial-vqa.md",
-      "detail_id": "wiki-concepts-3d-spatial-vqa",
-      "label": "3D 空间 VQA（3D Spatial Visual Question Answering）",
-      "type": "concept",
-      "recency": "2026-06-26",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/ai-auto-research.md",
-      "detail_id": "wiki-concepts-ai-auto-research",
-      "label": "AI Auto-Research（学术研究自动化）",
-      "type": "concept",
-      "recency": "2026-06-26",
       "source": "log.md"
     }
   ],

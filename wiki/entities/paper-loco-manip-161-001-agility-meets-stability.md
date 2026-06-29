@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "Agility Meets Stability 把本体状态与关节序列、人类视频/动捕轨迹、仿真交互数据转成可跟踪的身体目标，并通过异构动捕与合成平衡数据、混合奖励与动态采样、分层技能/专家策略训练或组合全身策略，最终输出全身轨迹/动作序列、低层控制器目标。关键点是把敏捷动捕和合成平衡样本放进同一策略，但用混合奖励分别约束动作跟踪与极端平衡。"
 related:
