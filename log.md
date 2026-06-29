@@ -1,5 +1,11 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-29] structural | wiki/entities/paper-sonic.md — 合并 Loco-Manip 161 重复 SONIC stub（#019/#103）至 canonical 实体 + 方法页
+
+- 删除：[`paper-loco-manip-161-019-sonic.md`](wiki/entities/paper-loco-manip-161-019-sonic.md)、[`paper-loco-manip-161-103-sonic.md`](wiki/entities/paper-loco-manip-161-103-sonic.md)
+- 保留 canonical：[`paper-sonic.md`](wiki/entities/paper-sonic.md) + [`sonic-motion-tracking.md`](wiki/methods/sonic-motion-tracking.md)
+- 交叉更新：Loco-Manip 161 category 01/04 表、[`humanoid_loco_manip_161_catalog.md`](sources/papers/humanoid_loco_manip_161_catalog.md)、对应 source 映射；[`bootstrap_loco_manip_161_entities.py`](scripts/bootstrap_loco_manip_161_entities.py) 增加 `CANONICAL_ENTITY_BY_NUM` 防再生
+
 ## [2026-06-29] ingest | sources/papers/chord_nvidia_video_to_data_2026.md — CHORD 接触力旋量引导灵巧操作；wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md；交叉 contact-rich-manipulation / manipulation / SPIDER / dexterous-data-pipeline / Isaac Lab
 
 ## [2026-06-29] ingest | sources/papers/scenebot_arxiv_2606_27581.md — 接入 SceneBot contact-prompted 全身场景交互跟踪；沉淀 wiki/entities/paper-scenebot.md；交叉更新 SONIC、运动跟踪选型、loco-manipulation、OmniRetarget

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "GentleHumanoid 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用PPO/RL 策略训练、全身控制器/WBC/MPC生成末端执行器/腕手目标。关键点是把PPO/RL 策略训练、全身控制器/WBC/MPC放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

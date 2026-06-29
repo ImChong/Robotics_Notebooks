@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "OmniH2O 主要解决数据闭环：用语言指令、相机图像/多视角观测、人类视频/动捕轨迹采集人类操作和机器人状态，再通过教师-学生知识迁移、PPO/RL 策略训练、ACT/行为克隆模仿学习转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是用特权信息训练教师策略，再把能力蒸馏到只能使用部署观测的学生策略。"
 related:

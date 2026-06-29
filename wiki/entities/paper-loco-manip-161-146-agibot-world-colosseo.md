@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-29
 venue: curated
 summary: "AgiBot World Colosseo 的实现路径是先把语言指令、相机图像/多视角观测、本体状态与关节序列编码成多模态表征，再用VLM 语义规划/路由、潜变量/动作 token、MM-DiT/Transformer 动作头预测全身轨迹/动作序列、末端执行器/腕手目标、动作 chunk/token。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
 related:

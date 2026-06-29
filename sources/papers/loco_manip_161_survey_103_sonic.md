@@ -18,7 +18,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-103-sonic](../../wiki/entities/paper-loco-manip-161-103-sonic.md)
+- [paper-sonic](../../wiki/entities/paper-sonic.md)
 - [loco-manip-161-category-04-generative-language-trajectory](../../wiki/overview/loco-manip-161-category-04-generative-language-trajectory.md)
 
 ## 参考来源（原始）
