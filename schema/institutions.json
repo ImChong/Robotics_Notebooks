@@ -914,6 +914,14 @@
         "thehumanoid",
         "kinetiq"
       ]
+    },
+    "sssa": {
+      "label": "圣安娜高等研究学院（Scuola Superiore Sant'Anna）",
+      "aliases": [
+        "sssa",
+        "sant-anna",
+        "scuola-sant-anna"
+      ]
     }
   }
 }
