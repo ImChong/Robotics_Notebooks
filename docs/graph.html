@@ -3091,8 +3091,72 @@
       return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
     }
 
-    function isSafeUrl(url) {
+    const NOTEBOOK_SITE_PREFIX = 'imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/';
+
+    function normalizeSourceLinkEntry(entry) {
+      if (entry == null) return { label: '', url: '' };
+      if (typeof entry === 'string') return { label: entry, url: entry };
+      return {
+        label: String((entry && entry.label) || (entry && entry.url) || ''),
+        url: String((entry && entry.url) || '')
+      };
+    }
+
+    function isPaperNotebookHtmlUrl(url) {
       if (!url) return false;
+      const base = String(url).split('#')[0].split('?')[0];
+      return base.includes(NOTEBOOK_SITE_PREFIX) && /\.html$/i.test(base);
+    }
+
+    function cleanPaperNotebookLabel(label, url, fallbackTitle) {
+      let text = String(label || '').trim();
+      text = text.replace(/^机器人论文阅读笔记[:：]\s*/u, '');
+      text = text.replace(/^[深读笔记论]+[:：<\s]+/u, '').replace(/[<>]+$/g, '').trim();
+      if (!text || text.length < 3) {
+        const stem = decodeURIComponent(String(url).split('/').pop().replace(/\.html$/i, ''));
+        text = stem.replace(/__+/g, ': ').replace(/[_-]+/g, ' ').trim();
+      }
+      if (!text && fallbackTitle) text = String(fallbackTitle);
+      return text || '论文阅读笔记';
+    }
+
+    function collectPaperNotebookLinks(item) {
+      if (!item) return [];
+      const seen = new Set();
+      const out = [];
+      function push(url, label) {
+        if (!isPaperNotebookHtmlUrl(url) || !isSafeUrl(url)) return;
+        const key = String(url).split('#')[0].split('?')[0];
+        if (seen.has(key)) return;
+        seen.add(key);
+        out.push({ url: key, label: cleanPaperNotebookLabel(label, key, item.title) });
+      }
+      const mapped = item.paper_notebook_links;
+      if (Array.isArray(mapped)) {
+        mapped.forEach(entry => {
+          const norm = normalizeSourceLinkEntry(entry);
+          push(norm.url, norm.label);
+        });
+      }
+      (item.source_links || []).forEach(entry => {
+        const norm = normalizeSourceLinkEntry(entry);
+        push(norm.url, norm.label);
+      });
+      const content = item.content_markdown || '';
+      const mdRe = /\[机器人论文阅读笔记[:：]([^\]]+)\]\((https:\/\/imchong\.github\.io\/Humanoid_Robot_Learning_Paper_Notebooks\/papers\/[^)]+\.html)\)/gi;
+      let match;
+      while ((match = mdRe.exec(content)) !== null) {
+        push(match[2], match[1]);
+      }
+      const bareRe = /https:\/\/imchong\.github\.io\/Humanoid_Robot_Learning_Paper_Notebooks\/papers\/[^\s)<>"']+\.html/gi;
+      while ((match = bareRe.exec(content)) !== null) {
+        push(match[0], '');
+      }
+      return out.slice(0, 6);
+    }
+
+    function isSafeUrl(url) {
+      if (!url || (typeof url !== 'string' && typeof url !== 'number')) return false;
       // eslint-disable-next-line no-control-regex
     let s = String(url).replace(/[\x00-\x1F\x7F-\x9F]/g, '').trim();
       s = s.replace(/&#x([0-9a-f]+);?/gi, (_, hex) => String.fromCharCode(parseInt(hex, 16)))
@@ -4370,16 +4434,10 @@
         sbRelSec.hidden = true;
       }
 
-      const paperLinks = (item?.source_links || []).filter(function (entry) {
-        const url = typeof entry === 'string' ? entry : (entry && entry.url) || '';
-        return String(url).includes('Humanoid_Robot_Learning_Paper_Notebooks');
-      });
+      const paperLinks = collectPaperNotebookLinks(item);
       if (paperLinks.length) {
-        sbPaperList.innerHTML = paperLinks.slice(0, 6).map((url, idx) => {
-          if (!isSafeUrl(url)) return '';
-          const stem = decodeURIComponent(String(url).split('/').pop().replace(/\.html$/, ''));
-          const label = stem.replace(/[_-]+/g, ' ').trim() || `论文阅读笔记 ${idx + 1}`;
-          return `<li><a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(label)}</a></li>`;
+        sbPaperList.innerHTML = paperLinks.map(link => {
+          return `<li><a href="${escapeHtml(link.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(link.label)}</a></li>`;
         }).join('');
         sbPaperSec.hidden = false;
       } else {
