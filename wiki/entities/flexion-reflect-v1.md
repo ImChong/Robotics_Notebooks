@@ -22,7 +22,7 @@ summary: "Flexion Reflect v1.0（2026-06）是人形长程自主智能平台：R
 
 | 字段 | 内容 |
 |------|------|
-| **机构** | Flexion Robotics AG（苏黎世 / 旧金山） |
+| **机构** | 弗莱鑫机器人 Flexion Robotics AG（苏黎世 / 旧金山） |
 | **类型** | 产业博客发布的系统集成平台（非单篇论文） |
 | **前序** | [Reflect v0](https://flexion.ai/news/flexion-reflect-v0)（2025-11）架构公开 |
 | **发布** | 2026-06-29 |

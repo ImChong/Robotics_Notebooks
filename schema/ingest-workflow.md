@@ -86,6 +86,7 @@ python3 scripts/ingest_paper.py my_topic --title "..." --desc "..."
 
 同时补充：
 - **`机构标签`** — 论文/实体页须在 frontmatter `tags` 中写入 `schema/institutions.json` 已注册的机构 **alias**（如 `sjtu`、`nvidia`）；正文 **核心信息** 表或 `| 机构 |` 行写明中文全称。多机构联合论文写全；注册表无对应条目时可先略过，或追加注册表后再写 tag。可用 `python3 scripts/sync_institution_tags.py` 从 `| 机构 |` 表与 sources 机构行同步。
+  - **新增机构注册时**：`label` 必须为 **`中文（English）`** 全角括号格式（如 `弗莱鑫机器人（Flexion Robotics）`），见 [naming.md § 研究机构命名](naming.md)。`make ci-preflight` **不跑** pytest；改 `institutions.json` 后须额外 `make test`，否则 GitHub Actions **Tests** job 会因 `test_institution_naming` 失败。
 - **`英文缩写速查`** — 紧跟页面「一句话定义」之后，固定标题 `## 英文缩写速查`，三列表格（缩写 / 英文全称 / 简要说明）；至少 3 行，覆盖本页核心缩写。格式与编写要求见 [page-types.md](page-types.md)「新增页面最低质量标准」。
 - `参考来源` — 必须标注本次 ingest 的原始资料（至少 1 条），格式：
   ```markdown
@@ -137,6 +138,25 @@ python3 scripts/bump_wiki_updated_for_sources.py sources/papers/your_new_paper.m
 make ci-preflight  # 推荐：同步派生文件 + lint + export 质量门（单次约 2–5 分钟）
 # 仅快速体检、不改派生文件时：make lint
 ```
+
+**提交前完整门禁**（与 GitHub Actions 对齐；`ci-preflight` 本身**不含** pytest / ruff / mypy）：
+
+```bash
+make ci-test       # 镜像 .github/workflows/tests.yml（含 pytest）
+```
+
+#### ingest 高发 CI 失败点
+
+| 症状 / 触发场景 | 根因 | 本地修复 |
+|----------------|------|----------|
+| **Tests / pytest** 报 `institution ... label=...` | 新增 `schema/institutions.json` 时 `label` 非 `中文（English）`（纯英文或颠倒格式） | 按 [naming.md § 研究机构命名](naming.md) 改 `label`，再 `make test` |
+| **Wiki Lint** 或 **Export Quality** 失败 | 只跑了 `make catalog` / `make graph` 之一，派生 JSON / `index.md` / badge 未同步 | 只跑一轮 `make ci-preflight`，把列出的派生文件一并 commit |
+| **CI PR Gate (smoke)** 失败 | 大改后未 `make ci-preflight` 或 `make ci-check` | `make ci-check` 确认工作区与重生派生文件一致 |
+| **pytest** `FileNotFoundError`（`link-graph.json` 等） | 全新环境未生成 gitignore 的站点 JSON | 先 `make export graph`，再 `make test` |
+| lint「sources 比 wiki 新」反复失败 | 交叉改多个 wiki 后未 bump `updated` | 先 `make bump-wiki-from-sources`（或指定 source），再 **一轮** `make ci-preflight` |
+| 首页「最新知识节点」缺本次页 | `log.md` 当日块未写 `wiki/...` 路径 | `make log` 正文显式列出相关 wiki 路径后重跑 `make ci-preflight` |
+
+> **维护者习惯**：wiki / sources / schema 改动后，默认顺序为 `make ci-preflight` →（若动过 `institutions.json`、脚本或 `tests/`）`make test` → commit 全部相关派生文件 → push。
 
 ### 步骤 9：记录到 `log.md`
 
