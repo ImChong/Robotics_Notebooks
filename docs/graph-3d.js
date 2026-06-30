@@ -343,15 +343,22 @@
       return getLinkColor();
     }
 
+    function linkBaseWidth() {
+      return getLinkWidth() * 0.3;
+    }
+
+    // 期望连线宽度（高亮连线除染色外再加粗）。实际粗细不靠 linkWidth 访问器生效——
+    // three-forcegraph 把圆柱半径烘进几何体，事后改访问器不会重建几何（连线只会被染色、
+    // 不会变粗），所以这里返回的宽度交由 linkScaleUpdate（linkPositionUpdate 钩子）以 mesh 半径轴缩放来落地。
     function linkWidthFor(l) {
-      var base = getLinkWidth() * 0.3;
+      var base = linkBaseWidth();
       if (sidebarNodeId) {
         var ref = l._ref;
-        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 1.5;
+        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 3.5;
       }
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 1.8;
+        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 3;
       }
       return base;
     }
@@ -412,6 +419,22 @@
       });
     }
 
+    // 连线加粗：linkWidth 访问器只在「创建连线几何」时把半径烘进圆柱，事后改它不会重建已渲染
+    // 连线；而高亮(改 linkColor 等)又会让库整体重建连线对象，抹掉任何对其 scale/geometry 的事后改动。
+    // 故改用 linkPositionUpdate —— 库每帧/每次重建连线时都会回调它来摆放连线，正是稳定的落点：
+    // 在这里按「期望宽度 / 基准宽度」设置 mesh 半径轴(x/y)缩放；返回 falsy 让库继续做默认定位
+    // （只写 scale.z 长度 + lookAt 朝向），两者互不干扰，加粗即可稳定保留、且无需重建几何或重排布局。
+    function linkScaleUpdate(obj, _coords, link) {
+      var mult = 1;
+      if (sidebarNodeId || hoverNodeId) {
+        var base = linkBaseWidth();
+        if (base > 0) mult = linkWidthFor(link) / base;
+      }
+      obj.scale.x = mult;
+      obj.scale.y = mult;
+      return false;
+    }
+
     function refreshAppearance() {
       if (!customMeshesInstalled) {
         // nodeOpacity 是标量配置：传函数会算出 NaN 不透明度让默认球体全透明。
@@ -424,7 +447,8 @@
       graph
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
-        .linkWidth(function (l) { return linkWidthFor(l); })
+        // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
+        .linkWidth(linkBaseWidth)
         .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); });
       updateNodeMeshes();
@@ -787,7 +811,9 @@
         .nodeOpacity(1)
         .nodeVisibility(function (d) { return !nodeHiddenByFilter(d); })
         .linkColor(function (l) { return linkColorFor(l); })
-        .linkWidth(function (l) { return linkWidthFor(l); })
+        // 几何半径恒为基准宽度；逐连线加粗交给 linkPositionUpdate 里的 mesh 半径轴缩放。
+        .linkWidth(linkBaseWidth)
+        .linkPositionUpdate(linkScaleUpdate)
         .linkOpacity(function (l) { return linkOpacityFor(l); })
         .linkVisibility(function (l) { return linkVisibleFor(l); })
         .enableNodeDrag(true)
