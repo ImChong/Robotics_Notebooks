@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] structural | schema/ingest-workflow.md — 补充 ingest 高发 CI 失败点与 institutions label 门禁说明
+
+## [2026-06-30] ingest | sources/blogs/flexion_reflect_v1_0.md — Flexion Reflect v1.0 长程人形自主平台；wiki/entities/flexion-reflect-v1.md；交叉 loco-manipulation / VLA / WBC
+
 ## [2026-06-30] ingest | sources/papers/cwi_arxiv_2606_27676.md — CWI 复合全身模仿 loco-manipulation；wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md；交叉 loco-manipulation / teleoperation
 
 ## [2026-06-29] structural | checklist-v26 P3 详情页「物理保真度」专题徽标端到端验证 —— 复用单一事实源补归档截图

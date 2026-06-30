@@ -915,6 +915,13 @@
         "kinetiq"
       ]
     },
+    "flexion": {
+      "label": "弗莱鑫机器人（Flexion Robotics）",
+      "aliases": [
+        "flexion",
+        "flexion-robotics"
+      ]
+    },
     "sssa": {
       "label": "圣安娜高等研究学院（Scuola Superiore Sant'Anna）",
       "aliases": [
