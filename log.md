@@ -1,6 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-30] fix(wiki) | wiki/entities/paper-scenebot.md — 修复流程图 Mermaid 语法错误（节点 ID `graph` 与保留字冲突，改为 `iscene`）
+## [2026-06-30] structural | 移除冗余 Sim2Real 详情节点 — tech-map/modules/rl/sim2real.md、references/papers/sim2real.md
+
+- 删除：`tech-map/modules/rl/sim2real.md`（tech-node-rl-sim2real 空桩）、`references/papers/sim2real.md`（reference-papers-sim2real 与 wiki/concepts/sim2real 重复）
+- 交叉更新：`wiki/concepts/sim2real.md`、`wiki/concepts/system-identification.md`、`wiki/methods/crisp-real2sim.md`、`references/papers/README.md`；内链改指向 wiki 概念页与 comparisons/sim2real-approaches
 
 
 - **P0 合并**：`wiki/queries/sim2real-deployment-checklist.md` 内容并入 `wiki/queries/sim2real-checklist.md`「快速部署检查」节；原页保留重定向桩
