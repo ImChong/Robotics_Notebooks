@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1514,
-  "edge_count": 10227,
+  "node_count": 1515,
+  "edge_count": 10238,
   "coverage": {
-    "covered": 1483,
-    "total": 1512,
+    "covered": 1484,
+    "total": 1513,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/en02-op.md",
+      "detail_id": "entity-en02-op",
+      "label": "EN02-OP（Westwood 开源三指末端）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/grail-locomanipulation-dataset.md",
       "detail_id": "entity-grail-locomanipulation-dataset",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-28",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/gymnasium.md",
-      "detail_id": "entity-gymnasium",
-      "label": "Gymnasium（RL 环境 API 标准）",
-      "type": "entity",
-      "recency": "2026-06-28",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/grail-locomanipulation-dataset.md",
-    "detail_id": "entity-grail-locomanipulation-dataset",
-    "label": "GRAIL Loco-Manipulation Dataset（G1 合成轨迹）",
+    "path": "wiki/entities/en02-op.md",
+    "detail_id": "entity-en02-op",
+    "label": "EN02-OP（Westwood 开源三指末端）",
     "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"

@@ -11,6 +11,7 @@ related:
   - ./paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md
   - ./orca-hand.md
   - ./allegro-hand.md
+  - ./en02-op.md
 sources:
   - ../../sources/papers/ruka_v2_arxiv_2603_26660.md
   - ../../sources/repos/ruka-v2.md

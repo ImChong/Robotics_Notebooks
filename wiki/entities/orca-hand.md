@@ -8,6 +8,7 @@ related:
   - ../overview/robot-open-source-wechat-issue01-curator.md
   - ./humanoid-robot.md
   - ./ruka-v2-hand.md
+  - ./en02-op.md
 sources:
   - ../../sources/blogs/wechat_jixie_robot_open_source_treasury_issue01_10_robots.md
 summary: "Orca Hand（虎鲸巧手）：官网开源仿生灵巧手 CAD/BOM、固件与上位机；GitHub 组织 orcahand 聚合实现与示例。"
