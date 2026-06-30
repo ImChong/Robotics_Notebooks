@@ -2,7 +2,7 @@
 type: method
 tags: [humanoid, motion-tracking, data-curation, amass, rl, unitree-g1, imitation-learning]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md
   - ../overview/motion-cerebellum-category-04-wbt-base.md
