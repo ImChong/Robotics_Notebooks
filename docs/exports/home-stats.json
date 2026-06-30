@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1514,
-  "edge_count": 10209,
+  "node_count": 1515,
+  "edge_count": 10219,
   "coverage": {
-    "covered": 1483,
-    "total": 1512,
+    "covered": 1484,
+    "total": 1513,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/flexion-reflect-v1.md",
+      "detail_id": "entity-flexion-reflect-v1",
+      "label": "Flexion Reflect v1.0（长程人形自主平台）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md",
       "detail_id": "entity-paper-cwi-composite-humanoid-whole-body-imitation",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-27",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/behavior-cloning.md",
-      "detail_id": "wiki-methods-behavior-cloning",
-      "label": "Behavior Cloning（行为克隆）",
-      "type": "method",
-      "recency": "2026-06-27",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md",
-    "detail_id": "entity-paper-cwi-composite-humanoid-whole-body-imitation",
-    "label": "CWI（Composite Humanoid Whole-Body Imitation · Loco-Manipulation）",
+    "path": "wiki/entities/flexion-reflect-v1.md",
+    "detail_id": "entity-flexion-reflect-v1",
+    "label": "Flexion Reflect v1.0（长程人形自主平台）",
     "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"
