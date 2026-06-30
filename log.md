@@ -1,6 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-30] structural | wiki/queries/sim2real-* — 合并 Sim2Real 重复节点：deployment-checklist→checklist、搜索降噪、专题规则收紧
+## [2026-06-30] fix(wiki) | wiki/entities/paper-scenebot.md — 修复流程图 Mermaid 语法错误（节点 ID `graph` 与保留字冲突，改为 `iscene`）
+
 
 - **P0 合并**：`wiki/queries/sim2real-deployment-checklist.md` 内容并入 `wiki/queries/sim2real-checklist.md`「快速部署检查」节；原页保留重定向桩
 - **P0 瘦身**：`wiki/queries/sim2real-gap-reduction.md` 删除重复 Pipeline checklist；`wiki/concepts/sim2real.md` 主要方法改为链向 `comparisons/sim2real-approaches.md`
