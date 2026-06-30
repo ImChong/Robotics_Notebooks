@@ -18,6 +18,7 @@ related:
   - ../entities/sam-3d-body.md
   - ../entities/sam3dbody-cpp.md
   - ../entities/paper-htd-refine-monocular-hmr.md
+  - ../entities/paper-opencap-monocular.md
   - ../entities/paper-mamma-markerless-motion-capture.md
   - ../entities/paper-rhythm-dual-humanoid-interaction.md
   - ../methods/imitation-learning.md
@@ -68,7 +69,7 @@ flowchart TD
   subgraph src["上游源（异构）"]
     A1[棚拍 MoCap<br/>BVH / FBX]
     A2[SMPL / SMPL-X 序列<br/>AMASS / MAMMA 等多视角采集]
-    A3[单目视频 → 姿态估计<br/>GVHMR / WHAM / SAM 3D Body 等]
+    A3[单目视频 → 姿态估计<br/>GVHMR / WHAM / OpenCap Monocular / SAM 3D Body 等]
     A4[生成式动作模型<br/>GENMO / HY-Motion / 扩散等]
     A5[实时遥操作流]
   end
@@ -107,6 +108,7 @@ flowchart TD
 - **多视角 SMPL-X 采集**：棚拍可用 **[MAMMA](../entities/paper-mamma-markerless-motion-capture.md)** 等 markerless 多相机管线直接产出 **SMPL-X 时序**（双人交互场景相对单目 HMR 噪声更低），与 AMASS 离线库互补。
 - **双人→双机 kinematic conflict**：异构人体 MoCap 映射到 **同构双 humanoid** 时，**个体缩放流形** 与 **统一交互流形** 不可兼得；[Rhythm](../entities/paper-rhythm-dual-humanoid-interaction.md) 的 **IAMR** 通过 $\mathcal{E}_{self}$ / $\mathcal{E}_{inter}$ 解耦能量并导出交互图，是 MAGIC 数据集与下游 IGRL 的上游环节。
 - **视频 HMR 可选精炼**：对 GVHMR / TRAM 等输出的 world-space SMPL，可在进入拓扑映射前接入 **[HTD-Refine](../entities/paper-htd-refine-monocular-hmr.md)** 类 **速度–加速度对齐后处理**，减轻 jitter 与脚滑（不改变 HMR 骨干本身）。
+- **生物力学单目源（非默认）：** [OpenCap Monocular](../entities/paper-opencap-monocular.md) 输出 OpenSim `.trc`/`.mot` 与关节力矩/GRF，面向临床动力学；接入机器人栈前需骨架映射与坐标对齐，通常不如 GVHMR→GMR 直接。
 - **风险**：朝向定义不一致是最常见的「整段漂移」根源，比关节角错误更难调试。
 
 ### 2. 骨架拓扑与 DoF 映射（Skeleton Mapping）

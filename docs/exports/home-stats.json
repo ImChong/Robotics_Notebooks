@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1515,
-  "edge_count": 10238,
+  "node_count": 1516,
+  "edge_count": 10249,
   "coverage": {
-    "covered": 1484,
-    "total": 1513,
+    "covered": 1485,
+    "total": 1514,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-opencap-monocular.md",
+      "detail_id": "entity-paper-opencap-monocular",
+      "label": "OpenCap Monocular：单手机视频的人体运动学与动力学",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/en02-op.md",
       "detail_id": "entity-en02-op",
@@ -159,20 +167,12 @@
       "type": "concept",
       "recency": "2026-06-28",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/rek.md",
-      "detail_id": "entity-rek",
-      "label": "REK（Robot Embodied Kombat · 人形格斗联赛）",
-      "type": "entity",
-      "recency": "2026-06-28",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/en02-op.md",
-    "detail_id": "entity-en02-op",
-    "label": "EN02-OP（Westwood 开源三指末端）",
+    "path": "wiki/entities/paper-opencap-monocular.md",
+    "detail_id": "entity-paper-opencap-monocular",
+    "label": "OpenCap Monocular：单手机视频的人体运动学与动力学",
     "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"
