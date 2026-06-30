@@ -97,3 +97,7 @@
 ## 2026-06-25 - Avoid Map and Join in HTML Node Rendering
 **Learning:** In frontend JavaScript processing, chained array operations like `.filter(Boolean).map(...).join('')` inside layout rendering (e.g., `techMapNodes` and `detailCards` generation) create multiple intermediate arrays and force closures on every element. This causes garbage collection pauses during initial page render.
 **Action:** Replace chained array methods `.map()` and `.join('')` with single-pass `for` loops concatenating directly to an HTML string accumulator, specifically in the DOM rendering pipelines, to minimize memory allocations.
+
+## 2026-06-30 - Replace .forEach and .map().join('') with standard for loops in search UI logic
+**Learning:** In frontend JavaScript handling search inputs and tag rendering (`docs/main.js`), repeatedly using array iteration methods like `.forEach()` and `.map().join('')` in frequently executed paths (like tag cloud generation and rendering empty states) incurs unnecessary memory allocations and closure overhead, leading to garbage collection pauses that can degrade UI responsiveness.
+**Action:** When iterating over elements or generating HTML from arrays, particularly within search and UI rendering components, replace `.forEach()` and `.map().join('')` with standard `for` loops and direct string concatenation. This eliminates closures and intermediate arrays, resulting in faster and smoother execution.
