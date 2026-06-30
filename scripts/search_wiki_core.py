@@ -101,12 +101,8 @@ STUB_DOWNRANK_STATUSES = frozenset({"planned", "stub"})
 DEPLOYMENT_INTENT_MARKERS = frozenset(
     {"部署", "checklist", "检查", "清单", "上机", "真机部署", "部署清单"}
 )
-GAP_INTENT_MARKERS = frozenset(
-    {"gap", "根因", "缩减", "reduction", "迁移失败", "失败分类"}
-)
-DEBUG_INTENT_MARKERS = frozenset(
-    {"调试", "playbook", "排查", "失效", "摔倒", "抖动", "真机差"}
-)
+GAP_INTENT_MARKERS = frozenset({"gap", "根因", "缩减", "reduction", "迁移失败", "失败分类"})
+DEBUG_INTENT_MARKERS = frozenset({"调试", "playbook", "排查", "失效", "摔倒", "抖动", "真机差"})
 
 SIM2REAL_CHECKLIST_PAGE = "wiki/queries/sim2real-checklist.md"
 SIM2REAL_GAP_PAGE = "wiki/queries/sim2real-gap-reduction.md"

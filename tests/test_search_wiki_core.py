@@ -194,14 +194,10 @@ class TestComputeScore(unittest.TestCase):
 
     def test_sim2real_intent_boost_helpers(self):
         self.assertGreater(
-            _sim2real_intent_boost(
-                "wiki/queries/sim2real-checklist.md", ["sim2real", "部署"]
-            ),
+            _sim2real_intent_boost("wiki/queries/sim2real-checklist.md", ["sim2real", "部署"]),
             1.0,
         )
-        self.assertEqual(
-            _sim2real_intent_boost("wiki/entities/foo.md", ["locomotion"]), 1.0
-        )
+        self.assertEqual(_sim2real_intent_boost("wiki/entities/foo.md", ["locomotion"]), 1.0)
 
 
 class TestComputeAvgdl(unittest.TestCase):
