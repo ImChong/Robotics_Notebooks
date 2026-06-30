@@ -786,6 +786,13 @@
         "wuji-tech"
       ]
     },
+    "westwood-robotics": {
+      "label": "韦斯特伍德机器人（Westwood Robotics）",
+      "aliases": [
+        "westwood-robotics",
+        "westwood"
+      ]
+    },
     "motrix": {
       "label": "莫翠克斯（Motrix Techknowledge）",
       "aliases": [

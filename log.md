@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] ingest | sources/repos/en02-op.md — Westwood EN02-OP 开源三指末端；wiki/entities/en02-op.md；交叉 topic-grasp / manipulation
+
 ## [2026-06-30] ingest | sources/sites/grail-locomanipulation-huggingface.md — 入库 GRAIL Hugging Face 数据集；wiki/entities/grail-locomanipulation-dataset.md
 
 ## [2026-06-30] ingest | sources/papers/grail_arxiv_2606_05160.md — 合并重复 GRAIL 实体页并深读入库；wiki/entities/paper-grail.md
