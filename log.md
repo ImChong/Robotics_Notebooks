@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] query | checklist-v27 P1 接触力旋量闭环知识链（+2）—— 新建端到端 Query 与带宽概念页
+
+- 新建 [`wiki/queries/contact-wrench-closed-loop.md`](wiki/queries/contact-wrench-closed-loop.md)：把分散的「① 接触感知/估计 → ② 力旋量表示 → ③ 阻抗/导纳/混合力位控制 → ④ 接触丰富操作策略」四层串成端到端决策链，含 TL;DR 四层定位表、Mermaid 四层决策树、按层归因的失败模式速查；内链回 `contact-estimation` / `force-control-basics` / `hybrid-force-position-control` / `impedance-control` / `visuo-tactile-fusion` 与 CHORD / SceneBot / HapMorph 来源。
+- 新建 [`wiki/concepts/contact-force-loop-bandwidth.md`](wiki/concepts/contact-force-loop-bandwidth.md)：力控闭环带宽 ↔ 接触稳定性，明示感知时延、控制刚度、接触离散化（ZOH）三者「短板约束」共同钳住可达带宽，量化震荡/穿透两条边界，并解释「环境越硬阻抗刚度越低」的来源与阻抗/导纳选型耦合。
+- 两页正文双向内链互为入链，`make graph` 后 0 orphans；知识图谱 1517→**1519** 节点、10258→**10271** 边；`update_badge.py` 同步 README 徽标。
+- `make lint` **0 errors**（仅 3 条既有信息型预警，不阻塞 CI）；勾选 v27 P1「接触力旋量闭环知识链 (+2)」。
+
 ## [2026-06-30] ingest | sources/repos/mujoco.md, sources/repos/mujoco_wasm.md — 官方 MuJoCo WASM 绑定与 zalo 社区 demo；wiki/entities/mujoco-wasm.md；交叉 mujoco / robot-viewer
 
 ## [2026-06-30] ingest | sources/papers/opencap_monocular_arxiv_2603_24733.md — OpenCap Monocular 单手机生物力学运动学/动力学；wiki/entities/paper-opencap-monocular.md

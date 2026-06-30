@@ -1005,6 +1005,7 @@ SORT type ASC
 - [时钟同步算法 (Clock Synchronization Algorithms)](concepts/clock-synchronization-algorithms.md) — 时钟同步算法** 解决一个看似简单、却在多板卡运控里反复折腾人的问题：**两台机器的时间到底差多少，怎么把这个差距持续压到与控制环路相比可忽略的水平？** 在人形机器人里，IMU 在一块板、关节驱 `📅unknown` `[wiki_page]`
 - [Contact Dynamics](concepts/contact-dynamics.md) — Contact Dynamics（接触动力学）**：研究机器人与环境交互时，**接触力 (Contact Force)**、**摩擦锥 (Friction Cone)** 约束和系统运动之间关系的 `📅unknown` `[wiki_page]`
 - [Contact Estimation（接触估计）](concepts/contact-estimation.md) — Contact Estimation 是指在机器人运动过程中，**实时判断哪个足/末端执行器处于接触状态（与地面或物体接触）**，并尽可能估计接触力的大小和方向。 `📅unknown` `[wiki_page]`
+- [Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）](concepts/contact-force-loop-bandwidth.md) — 力控闭环带宽**：在与刚性环境接触时，力控制器能稳定跟踪力指令的最高频率。它不是一个可以随意调大的旋钮——它被**感知时延、控制刚度、接触离散化**三者联合钳住，超过这条边界，接触就会震荡或穿透。 `📅unknown` `[wiki_page]`
 - [Contact-Rich Manipulation（接触丰富型操作）](concepts/contact-rich-manipulation.md) — Contact-Rich Manipulation**：那些必须利用接触力、摩擦、约束和接触序列本身才能完成的操作任务，例如插拔、拧瓶盖、推门、卡扣装配、双手推箱等。 `📅unknown` `[wiki_page]`
 - [Control Barrier Function（控制屏障函数）](concepts/control-barrier-function.md) — 控制屏障函数（Control Barrier Function，CBF）**：一种将系统安全约束转化为可在控制层实时强制执行的数学工具。通过定义一个标量函数 $h(x)$，使得 $h(x) \ge `📅unknown` `[wiki_page]`
 - [Curriculum Learning（课程学习）](concepts/curriculum-learning.md) — Curriculum Learning 是一种训练策略：在学习早期提供更简单的任务或环境，随着策略能力提升逐渐增加难度，模拟人类"从简单到复杂"的学习过程。 `📅unknown` `[wiki_page]`
