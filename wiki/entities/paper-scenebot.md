@@ -52,9 +52,9 @@ flowchart TB
   subgraph data ["(a) Hindsight 场景重建"]
     human["人体/机器人运动<br/>AMASS · OMOMO · Bones · LAFAN"]
     retarget["运动学 retarget → G1"]
-    graph["Robot-scene interaction graph<br/>关键 link × terrain/object"]
+    iscene["Robot-scene interaction graph<br/>关键 link × terrain/object"]
     assets["2.5D 地形 + 平行板物体"]
-    human --> retarget --> graph --> assets
+    human --> retarget --> iscene --> assets
   end
 
   subgraph train ["(b) Contact-aware RL 训练"]

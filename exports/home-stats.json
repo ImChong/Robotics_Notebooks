@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-scenebot.md",
+      "detail_id": "entity-paper-scenebot",
+      "label": "SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/queries/sim2real-deployment-checklist.md",
       "detail_id": "wiki-queries-sim2real-deployment-checklist",
       "label": "Sim2Real 真机部署清单（已合并）",
@@ -89,14 +97,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-scenebot.md",
-      "detail_id": "entity-paper-scenebot",
-      "label": "SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/paper-hapmorph-pneumatic-haptic-render.md",
       "detail_id": "entity-paper-hapmorph-pneumatic-haptic-render",
       "label": "HapMorph：多维气动触觉属性渲染框架",
@@ -170,10 +170,10 @@
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/sim2real-deployment-checklist.md",
-    "detail_id": "wiki-queries-sim2real-deployment-checklist",
-    "label": "Sim2Real 真机部署清单（已合并）",
-    "type": "query",
+    "path": "wiki/entities/paper-scenebot.md",
+    "detail_id": "entity-paper-scenebot",
+    "label": "SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）",
+    "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"
   }
