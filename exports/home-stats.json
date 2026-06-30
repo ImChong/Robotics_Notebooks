@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-06-30",
   "node_count": 1515,
-  "edge_count": 10219,
+  "edge_count": 10221,
   "coverage": {
     "covered": 1484,
     "total": 1513,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/queries/sim2real-deployment-checklist.md",
+      "detail_id": "wiki-queries-sim2real-deployment-checklist",
+      "label": "Sim2Real 真机部署清单（已合并）",
+      "type": "query",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-checklist.md",
+      "detail_id": "wiki-queries-sim2real-checklist",
+      "label": "Sim2Real 工程 Checklist",
+      "type": "query",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/sim2real-gap-reduction.md",
+      "detail_id": "wiki-queries-sim2real-gap-reduction",
+      "label": "Sim2Real Gap 缩减实战指南",
+      "type": "query",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/concepts/sim2real.md",
+      "detail_id": "wiki-concepts-sim2real",
+      "label": "Sim2Real",
+      "type": "concept",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/flexion-reflect-v1.md",
       "detail_id": "entity-flexion-reflect-v1",
@@ -135,45 +167,13 @@
       "type": "comparison",
       "recency": "2026-06-27",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sgd.md",
-      "detail_id": "wiki-methods-sgd",
-      "label": "SGD（Stochastic Gradient Descent）",
-      "type": "method",
-      "recency": "2026-06-27",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/comparisons/deep-learning-optimizers.md",
-      "detail_id": "wiki-comparisons-deep-learning-optimizers",
-      "label": "Deep Learning Optimizers：选型对比",
-      "type": "comparison",
-      "recency": "2026-06-27",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/kinetiq-ascend.md",
-      "detail_id": "entity-kinetiq-ascend",
-      "label": "KinetIQ Ascend（Humanoid · 真机 VLA 强化学习后训练）",
-      "type": "entity",
-      "recency": "2026-06-27",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-06-27",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/flexion-reflect-v1.md",
-    "detail_id": "entity-flexion-reflect-v1",
-    "label": "Flexion Reflect v1.0（长程人形自主平台）",
-    "type": "entity",
+    "path": "wiki/queries/sim2real-deployment-checklist.md",
+    "detail_id": "wiki-queries-sim2real-deployment-checklist",
+    "label": "Sim2Real 真机部署清单（已合并）",
+    "type": "query",
     "recency": "2026-06-30",
     "source": "log.md"
   }

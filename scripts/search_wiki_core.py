@@ -95,10 +95,73 @@ COMPARISON_INTENT_MARKERS = frozenset(
     {"对比", "比较", "选型", "vs", "versus", "区别", "差异", "对照"}
 )
 
+STUB_DOWNRANK_TAGS = frozenset({"paper-notebook-stub", "paper-notebook-planned"})
+STUB_DOWNRANK_STATUSES = frozenset({"planned", "stub"})
+
+DEPLOYMENT_INTENT_MARKERS = frozenset(
+    {"部署", "checklist", "检查", "清单", "上机", "真机部署", "部署清单"}
+)
+GAP_INTENT_MARKERS = frozenset({"gap", "根因", "缩减", "reduction", "迁移失败", "失败分类"})
+DEBUG_INTENT_MARKERS = frozenset({"调试", "playbook", "排查", "失效", "摔倒", "抖动", "真机差"})
+
+SIM2REAL_CHECKLIST_PAGE = "wiki/queries/sim2real-checklist.md"
+SIM2REAL_GAP_PAGE = "wiki/queries/sim2real-gap-reduction.md"
+SIM2REAL_DEBUG_PAGE = "wiki/queries/robot-policy-debug-playbook.md"
+
 
 def _query_has_comparison_intent(query_tokens: list[str]) -> bool:
     joined = " ".join(query_tokens).lower()
     return any(marker in joined for marker in COMPARISON_INTENT_MARKERS)
+
+
+def _query_joined(query_tokens: list[str]) -> str:
+    return " ".join(query_tokens).lower()
+
+
+def _query_has_sim2real_topic(query_tokens: list[str]) -> bool:
+    joined = _query_joined(query_tokens)
+    return "sim2real" in joined or "sim-to-real" in joined or "sim to real" in joined
+
+
+def _page_status_downrank(fm: dict) -> float:
+    tags = {str(t).lower() for t in (fm.get("tags") or [])}
+    status = str(fm.get("status", "")).lower()
+    summary = str(fm.get("summary", "")).lower()
+    boost = 1.0
+    if tags & STUB_DOWNRANK_TAGS or status in STUB_DOWNRANK_STATUSES:
+        boost *= 0.35
+    if "redirect" in tags or "已合并" in summary:
+        boost *= 0.55
+    return boost
+
+
+def _sim2real_intent_boost(doc_path: str, query_tokens: list[str]) -> float:
+    """Sim2Real 查询族：按部署 / gap 诊断 / 真机调试意图提权对应 query 页。"""
+    rel = doc_path.replace("\\", "/").lower()
+    joined = _query_joined(query_tokens)
+    boost = 1.0
+
+    has_deploy = any(m in joined for m in DEPLOYMENT_INTENT_MARKERS)
+    has_gap = any(m in joined for m in GAP_INTENT_MARKERS)
+    has_debug = any(m in joined for m in DEBUG_INTENT_MARKERS)
+    has_sim2real = _query_has_sim2real_topic(query_tokens)
+
+    if not (has_sim2real or has_deploy or has_gap or has_debug):
+        return boost
+
+    if rel == SIM2REAL_CHECKLIST_PAGE and has_deploy:
+        if has_sim2real:
+            boost *= 2.5
+        else:
+            boost *= 1.9 if has_debug else 2.2
+    elif rel == SIM2REAL_GAP_PAGE and has_gap:
+        boost *= 2.0
+    elif rel == SIM2REAL_DEBUG_PAGE and has_debug and not has_deploy:
+        boost *= 2.0
+    elif rel == SIM2REAL_DEBUG_PAGE and has_debug and has_deploy:
+        boost *= 1.45
+
+    return boost
 
 
 def _canonical_topic_boost(doc_path: str, query_tokens: list[str]) -> float:
@@ -243,6 +306,8 @@ def compute_score(
 
     if doc_path:
         score *= _canonical_topic_boost(doc_path, query_tokens)
+        score *= _page_status_downrank(fm)
+        score *= _sim2real_intent_boost(doc_path, query_tokens)
 
     return score
 

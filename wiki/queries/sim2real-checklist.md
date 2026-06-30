@@ -2,18 +2,59 @@
 type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
-summary: "> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」"
-updated: 2026-04-25
+summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）；合并原 sim2real-deployment-checklist。"
+updated: 2026-06-30
+related:
+  - ./sim2real-gap-reduction.md
+  - ./robot-policy-debug-playbook.md
+  - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/sim2real.md
 ---
 
-> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」
+> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」（含原「真机部署 RL 策略前后要检查什么？」）
 > 综合来源：[Sim2Real](../concepts/sim2real.md)、[Domain Randomization](../concepts/domain-randomization.md)、[System Identification](../concepts/system-identification.md)、[Privileged Training](../concepts/privileged-training.md)、[Locomotion](../tasks/locomotion.md)
 
 # Sim2Real 工程 Checklist
 
 从仿真训练到真实机器人部署的工程清单。每个阶段都有容易踩的坑，按顺序逐项核查。
+
+> 旧独立页 [Sim2Real 真机部署清单](./sim2real-deployment-checklist.md) 已合并至下文「快速部署检查」节。
+
+## 快速部署检查
+
+> **3 分钟版**：上机前只看本节 + [阶段 4：真机初次部署](#阶段-4真机初次部署)。迁移失败根因分类见 [Gap 缩减指南](./sim2real-gap-reduction.md)；已上机后的症状排查见 [真机调试 Playbook](./robot-policy-debug-playbook.md)。
+
+### 训练端准备
+
+| 检查项 | 典型范围 | 通过标准 |
+|-------|---------|---------|
+| 质量/惯量随机化 | ±20% | 仿真中性能稳定 |
+| 关节摩擦/阻尼随机化 | ±30% | 无明显策略退化 |
+| 延迟随机化 | 0~40ms | 覆盖真实延迟上限 |
+| 观测噪声 | 参照真机规格 | 噪声量级与真机一致 |
+
+- [ ] 关节力矩限制在仿真中强制执行（与真机规格一致）
+- [ ] 策略输出频率与真机控制频率匹配（50Hz 或 100Hz）
+- [ ] 观测归一化参数在导出时固定（不依赖运行时统计）
+
+### 部署端检查
+
+- [ ] 模型文件版本与训练代码一致
+- [ ] 观测空间维度和顺序与真机接口匹配（逐字段核对）
+- [ ] 动作空间映射：仿真关节顺序 ↔ 真机 CAN ID 顺序
+- [ ] 推理延迟测试 < 5ms
+- [ ] 初始姿态与仿真初始化姿态一致（误差 < 5°）
+
+### 调试端常见问题
+
+| 现象 | 可能原因 | 排查方向 |
+|-----|---------|---------|
+| 上机立刻摔倒 | 观测顺序错误 | 核对 obs/action 映射 |
+| 原地抖动 | 控制频率不匹配 | 检查 PD 增益 |
+| 向一侧漂移 | IMU 安装偏差 | 校准 IMU offset |
+| 步伐极小 | 命令归一化错误 | 打印原始策略输入 |
+| 关节力矩饱和 | 力矩映射错误 | 核查 scale 因子 |
 
 ---
 
@@ -33,6 +74,8 @@ sources:
 | IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
 | RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
 | DR | Domain Randomization | 训练时随机化仿真参数以提升跨域鲁棒迁移 |
+| RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
+| CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
 
 ## 阶段 0：仿真建模（训练之前）
 
@@ -149,6 +192,8 @@ sources:
 ## 关联页面
 
 - [Sim2Real](../concepts/sim2real.md) — 理论方法总览
+- [Sim2Real Gap 缩减指南](./sim2real-gap-reduction.md) — 迁移失败根因分类与修复决策树
+- [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的系统排查
 - [Domain Randomization](../concepts/domain-randomization.md) — 随机化策略详解
 - [System Identification](../concepts/system-identification.md) — 参数辨识方法
 - [Privileged Training](../concepts/privileged-training.md) — Teacher-Student / RMA 框架

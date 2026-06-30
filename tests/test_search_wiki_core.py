@@ -13,6 +13,8 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from search_indexing import REPO_ROOT
 from search_wiki_core import (
     _canonical_topic_boost,
+    _page_status_downrank,
+    _sim2real_intent_boost,
     collect_known_terms,
     compute_avgdl,
     compute_score,
@@ -141,6 +143,61 @@ class TestComputeScore(unittest.TestCase):
             page_type="concept",
         )
         self.assertGreater(recent, old)
+
+    def test_stub_status_downrank(self):
+        tc = {"sim2real": 2}
+        normal = compute_score(
+            tc,
+            ["sim2real"],
+            title_l="sim2real",
+            avgdl=5.0,
+            fm={"status": "complete"},
+            page_type="entity",
+            doc_path="wiki/entities/paper-rma-rapid-motor-adaptation.md",
+        )
+        stub = compute_score(
+            tc,
+            ["sim2real"],
+            title_l="sim2real",
+            avgdl=5.0,
+            fm={"status": "stub", "tags": ["paper-notebook-stub"]},
+            page_type="entity",
+            doc_path="wiki/entities/paper-notebook-domain-randomization-understanding-sim-to-real-t.md",
+        )
+        self.assertGreater(normal, stub)
+
+    def test_sim2real_deployment_intent_boosts_checklist(self):
+        tc = {"sim2real": 2, "部署": 1}
+        checklist = compute_score(
+            tc,
+            ["sim2real", "部署"],
+            title_l="sim2real checklist",
+            avgdl=5.0,
+            fm={"status": "complete"},
+            page_type="query",
+            doc_path="wiki/queries/sim2real-checklist.md",
+        )
+        entity = compute_score(
+            tc,
+            ["sim2real", "部署"],
+            title_l="humanoid gym sim2real",
+            avgdl=5.0,
+            fm={"status": "complete"},
+            page_type="entity",
+            doc_path="wiki/entities/humanoid-gym.md",
+        )
+        self.assertGreater(checklist, entity)
+
+    def test_page_status_downrank_helper(self):
+        self.assertEqual(_page_status_downrank({"status": "complete"}), 1.0)
+        self.assertLess(_page_status_downrank({"status": "stub"}), 1.0)
+
+    def test_sim2real_intent_boost_helpers(self):
+        self.assertGreater(
+            _sim2real_intent_boost("wiki/queries/sim2real-checklist.md", ["sim2real", "部署"]),
+            1.0,
+        )
+        self.assertEqual(_sim2real_intent_boost("wiki/entities/foo.md", ["locomotion"]), 1.0)
 
 
 class TestComputeAvgdl(unittest.TestCase):

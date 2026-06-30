@@ -34,7 +34,7 @@ related:
   - ../entities/open-duck-mini.md
   - ../entities/physx-omni.md
 summary: "Sim2Real 关注如何把仿真中学到的策略稳定迁移到真实机器人，是机器人学习落地的核心鸿沟。"
-updated: 2026-06-25
+updated: 2026-06-30
 sources:
   - ../../sources/papers/physx_omni_arxiv_2605_21572.md
 ---
@@ -94,49 +94,20 @@ flowchart TD
 
 ## 主要方法
 
-### 1. Domain Randomization
-在仿真中随机化物理参数，强制策略适应多样化环境。
+Sim2Real 应对 domain gap 的路线可按 **仿真端随机化（DR）**、**分布对齐（SysID / Domain Adaptation）**、**真机微调（Privileged / RMA）** 三大类组合使用。横向对比、选型决策树与代表工作见 **[Sim2Real 方法横向对比](../comparisons/sim2real-approaches.md)**；各子题深挖入口：
 
-代表工作：Tobio et al. 2018, "Sim-to-Real Transfer of Robotic Control with Dynamics Randomization"
+| 路线 | 站内入口 |
+|------|----------|
+| 域随机化 | [Domain Randomization](./domain-randomization.md) |
+| 系统辨识 | [System Identification](./system-identification.md) |
+| 领域自适应（视觉等） | 见 [Sim2Real 方法对比](../comparisons/sim2real-approaches.md) § Domain Adaptation |
+| 特权 / Teacher–Student | [Privileged Training](./privileged-training.md) |
+| 在线适应（RMA） | [RMA 论文实体](../entities/paper-rma-rapid-motor-adaptation.md) |
+| 课程学习 | 见 [Locomotion](../tasks/locomotion.md) 训练管线 |
 
-### 2. System Identification
-精确测量真实机器人参数，减少仿真-现实差距。
+以下三项偏 **工程落地**，在对比页中不展开：
 
-### 3. Domain Adaptation
-用视觉/感知层面的 domain adaptation 减少感知差异。
-
-### 4. Curriculum Learning
-从简单环境逐步过渡到复杂/真实环境。
-
-### 5. Privileged Information / Teacher-Student
-训练时用额外信息（如 true state、环境参数），推理时只用可观测信息。见 [Privileged Training](./privileged-training.md)。
-
-### 6. RMA（Rapid Motor Adaptation）
-
-**RMA** 是目前 sim2real 领域最有影响力的 Teacher-Student + **在线适应** 框架之一（Kumar et al., RSS 2021）。完整提炼见 **[RMA 论文实体页](../entities/paper-rma-rapid-motor-adaptation.md)**。
-
-**两阶段流程：**
-
-```
-阶段 1：训练 Base Policy π + Encoder μ（仿真中）
-  输入：x_t, a_{t-1} + 特权 e_t（质量/摩擦/电机强度等）
-  编码：z_t = μ(e_t)（8 维 extrinsics，非完整物理参数辨识）
-  算法：PPO 联合训练
-
-阶段 2：训练 Adaptation Module φ（仿真中，on-policy 数据）
-  输入：过去 k=50 步 (x,a) 历史（0.5 s）
-  目标：回归 z_t = μ(e_t)
-  损失：MSE(ẑ_t, z_t)；用随机初始化 φ rollout，避免只见过专家轨迹
-
-部署（真实机器人，A1 零微调）：
-  φ @ 10 Hz 输出 ẑ_t；π @ 100 Hz 用缓存 ẑ_t + (x_t,a_{t-1}) → 关节位置 → PD 力矩
-```
-
-**为什么有效**：命令关节运动与实际运动的偏差隐含环境 extrinsics；$\phi$ 从 **单条历史轨迹 <1 s** 在线估计 $\hat{z}_t$，无需在新场景采集数分钟真机数据（对比 Peng et al. 2018 latent 优化）。
-
-**在 Unitree A1 上实测**：岩石、油滑、泡沫床垫、植被、楼梯、沙地等 OOD 地形零样本迁移；相对厂商控制器与 w/o adaptation 消融显著更稳。
-
-### 7. Sim2Real SOP (标准作业程序)
+### Sim2Real SOP（标准作业程序）
 
 根据 [xbotics-embodied-guide](../../sources/repos/xbotics-embodied-guide.md) 的总结，为了提高 Sim2Real 的可复现性，应遵循标准化的工程步骤：
 - **前置阶段**：精确的 URDF 建模与动力学参数初步对齐；若场景物体来自 **生成式 sim-ready 管线**（如 [PhysX-Omni](../entities/physx-omni.md) 导出的 URDF/XML），须单独验收 **惯性、碰撞盒与关节轴** 是否与目标仿真器一致，不宜默认「生成即可用」。
@@ -145,13 +116,13 @@ flowchart TD
 - **中间件对齐**：统一仿真与真机的控制频率（如 50Hz 策略 + 200Hz 关节 PD）与动作/状态归一化标准。
 - **实物测试**：采用“吊架测试 -> 空转测试 -> 落地测试”的渐进式 SOP。
 
-### 8. 高保真执行器对齐 (Actuator Alignment)
+### 高保真执行器对齐（Actuator Alignment）
 
 **解析摩擦扩展（舵机 / 伺服）：** [BAM](../entities/paper-bam-extended-friction-servo-actuators.md)（ICRA 2025，[Rhoban/bam](https://github.com/Rhoban/bam)）在 MuJoCo 等默认 Coulomb–Viscous 之外，用 **M1–M6 可辨识摩擦上界**（Stribeck、负载相关、谐波二次项）与摆锤台架 **CMA-ES** 标定，在 Dynamixel / eRob 2R 臂上可将轨迹 MAE 降至约一半——尤其适合 **RL 低 PD 增益** 下执行器滞后明显的场景；与 [Actuator Network](../methods/actuator-network.md)（数据驱动）及 [SAGE](../entities/sage-sim2real-actuator-gap-estimator.md)（gap 度量）可组合使用。
 
 根据 [zest](../methods/zest.md) 的实践，缩小动力学差距的关键在于精确处理闭链执行器（如膝盖、脚踝）的物理特性。通过基于电枢（Armature）分析值的增益选择程序，可以在不使用反馈补偿器的情况下，实现高动态动作的零样本迁移。机构层闭链几何、驱动—关节力映射与「训练用开环树 / 真机串并联」落差，可对照 [人形机器人并联关节解算](./humanoid-parallel-joint-kinematics.md)（含 LiPS、Kinematic Actuation Models 等文献锚点）。
 
-### 9. 处理器在环（固件 + 外设路径）
+### 处理器在环（固件 + 外设路径）
 
 当失效主要来自 **固件调度、总线语义与传感器融合实现** 而非刚体参数本身时，可在仿真中运行**未改动的生产固件**，并用 I2C/CAN 等外设仿真注入寄存器级数据流与请求–响应抖动，使 RL 策略与底层栈在同一闭环里被联合测试。工程动机与管线拆分见 [处理器在环 Sim2Real](./processor-in-the-loop-sim2real.md)。
 

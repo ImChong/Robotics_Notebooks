@@ -118,23 +118,7 @@ contact_noise:  0.05            # 接触检测误报率
 
 ## 完整 Sim2Real Pipeline Checklist
 
-### 阶段 1：仿真配置
-- [ ] URDF 参数准确（可用 system identification 工具）
-- [ ] 执行器模型：ActuatorNet 或 PD + 延迟
-- [ ] 控制频率与真机一致
-- [ ] DR 范围：物理参数 ±30%，推力随机化
-
-### 阶段 2：训练配置
-- [ ] 地形课程从简单到复杂
-- [ ] 策略输入包含历史观测（3-5 步）
-- [ ] 惩罚项防止过激动作（关节速度/力矩限制）
-- [ ] 若有示范数据：加 AMP 或 teacher 蒸馏
-
-### 阶段 3：部署验证
-- [ ] 先在仿真中跑满参数化范围测试
-- [ ] 首次真机测试：低速 + 安全装置 + 人工监护
-- [ ] 监控量：关节温度、电流峰值、控制延迟
-- [ ] 逐步提升速度/地形难度
+完整五阶段工程清单（建模 → DR → 仿真验证 → SysID → 上机 → Gap 闭环）见 **[Sim2Real 工程 Checklist](./sim2real-checklist.md)**；上机前 3 分钟快速版见该页 **[快速部署检查](./sim2real-checklist.md#快速部署检查)**。
 
 ## 英文缩写速查
 
@@ -166,7 +150,8 @@ contact_noise:  0.05            # 接触检测误报率
 - [Sim2Real](../concepts/sim2real.md) — sim2real 概念综述
 - [Domain Randomization](../concepts/domain-randomization.md) — DR 方法详解
 - [Privileged Training](../concepts/privileged-training.md) — teacher-student 蒸馏
-- [Sim2Real Checklist](./sim2real-checklist.md) — 部署前完整检查清单
+- [Sim2Real Checklist](./sim2real-checklist.md) — 部署前完整检查清单（含快速部署检查）
+- [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 已上机后的症状排查
 
 ## 一句话记忆
 

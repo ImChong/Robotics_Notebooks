@@ -107,7 +107,7 @@
     },
     'sim2real': {
       segments: new Set([
-        'sim2real', 'randomization', 'domain'
+        'sim2real', 'randomization'
       ]),
       ids: mergeIds('sim2real')
     },
