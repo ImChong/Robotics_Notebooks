@@ -2013,13 +2013,6 @@
       "summary": "> **Query 产物**：本页由以下问题触发：「从仿真到真机部署，有哪些必须检查的工程事项？」"
     },
     {
-      "id": "wiki-queries-sim2real-deployment-checklist",
-      "path": "wiki/queries/sim2real-deployment-checklist.md",
-      "title": "Sim2Real 真机部署清单",
-      "page_type": "query",
-      "summary": "真机部署 RL 策略前后的完整检查清单，覆盖训练端、部署端、调试端三个阶段。"
-    },
-    {
       "id": "wiki-queries-sim2real-gap-reduction",
       "path": "wiki/queries/sim2real-gap-reduction.md",
       "title": "Sim2Real Gap 缩减实战指南",
