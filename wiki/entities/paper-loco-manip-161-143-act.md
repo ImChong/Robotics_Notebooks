@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "在人形操作的ACT模仿学习中，主动立体相机的性能优于多传感器设置 把相机图像/多视角观测、本体状态与关节序列、接触力/触觉信号转成可跟踪的身体目标，并通过ACT/行为克隆模仿学习、MM-DiT/Transformer 动作头训练或组合全身策略，最终输出动作 chunk/token。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。"
 related:

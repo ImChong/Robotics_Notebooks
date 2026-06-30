@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nvidia]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 venue: curated
 summary: "任务数据：全身规划驱动移动操作数据生成。输入是任务目标、场景几何和可用动作模板；实现上用全身规划器先生成移动、接触和操作轨迹，再把轨迹转成机器人可跟踪示范数据；它把数据生产从人工逐条示教改成规划驱动的批量生成。"
 related:

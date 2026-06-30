@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "Psi0 的实现路径是先把语言指令、相机图像/多视角观测、本体状态与关节序列编码成多模态表征，再用异构动捕与合成平衡数据、VLM 语义规划/路由、潜变量/动作 token预测动作 chunk/token。关键点是把异构动捕与合成平衡数据、VLM 语义规划/路由放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "HumanX 先从人类视频/动捕轨迹恢复场景、目标或运动表征，再用ACT/行为克隆模仿学习、IK/动作重定向、分层技能/专家策略生成可执行动作命令。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
 related:

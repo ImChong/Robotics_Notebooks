@@ -2,7 +2,7 @@
 type: overview
 tags: [motion-cerebellum, humanoid, category-hub, survey, real-tasks]
 status: complete
-updated: 2026-06-18
+updated: 2026-06-30
 summary: "运动小脑 64 篇长文 · H 真实任务（8 篇）— 任务等站位。"
 related:
   - ./humanoid-motion-cerebellum-technology-map.md
@@ -40,7 +40,7 @@ sources:
 | 54 | SplitAdapter | [paper-splitadapter-load-aware-loco-manipulation.md](../entities/paper-splitadapter-load-aware-loco-manipulation.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 55 | HALO | [paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md](../entities/paper-hrl-stack-39-closing_sim_to_real_gap_for_heavy_lo.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 56 | HumanoidMimicGen | [paper-motion-cerebellum-humanoidmimicgen.md](../entities/paper-motion-cerebellum-humanoidmimicgen.md) | [catalog](../../sources/papers/motion_cerebellum_survey_56_humanoidmimicgen.md) |
-| 57 | GRAIL | [paper-motion-cerebellum-grail.md](../entities/paper-motion-cerebellum-grail.md) | [catalog](../../sources/papers/motion_cerebellum_survey_57_grail.md) |
+| 57 | GRAIL | [paper-grail.md](../entities/paper-grail.md) | [catalog](../../sources/papers/motion_cerebellum_survey_57_grail.md) |
 | 58 | OASIS | [paper-loco-manip-04-oasis.md](../entities/paper-loco-manip-04-oasis.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 | 59 | LadderMan | [paper-ladderman-humanoid-perceptive-ladder-climbing.md](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) | [catalog](../../sources/papers/motion_cerebellum_64_catalog.md) |
 

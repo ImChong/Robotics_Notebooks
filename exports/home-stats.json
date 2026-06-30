@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1514,
-  "edge_count": 10216,
+  "node_count": 1513,
+  "edge_count": 10219,
   "coverage": {
-    "covered": 1483,
-    "total": 1512,
+    "covered": 1482,
+    "total": 1511,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-grail.md",
+      "detail_id": "entity-paper-grail",
+      "label": "GRAIL",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/sim2real-checklist.md",
       "detail_id": "wiki-queries-sim2real-checklist",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-06-28",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/newtons-method.md",
-      "detail_id": "wiki-methods-newtons-method",
-      "label": "Newton's Method（牛顿法）",
-      "type": "method",
-      "recency": "2026-06-27",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/sim2real-checklist.md",
-    "detail_id": "wiki-queries-sim2real-checklist",
-    "label": "Sim2Real 工程 Checklist",
-    "type": "query",
+    "path": "wiki/entities/paper-grail.md",
+    "detail_id": "entity-paper-grail",
+    "label": "GRAIL",
+    "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"
   }

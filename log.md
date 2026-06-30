@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] ingest | sources/papers/grail_arxiv_2606_05160.md — 合并重复 GRAIL 实体页并深读入库；wiki/entities/paper-grail.md
+
 ## [2026-06-30] structural | 删除冗余详情节点 wiki-queries-sim2real-deployment-checklist
 
 - 删除：`wiki/queries/sim2real-deployment-checklist.md`（内容已并入 `sim2real-checklist.md`「快速部署检查」节，重定向桩不再保留）

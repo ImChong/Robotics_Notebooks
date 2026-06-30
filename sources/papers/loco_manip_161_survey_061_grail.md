@@ -7,6 +7,8 @@
 - **Loco-Manip 161 分类：** 03 视觉感知驱动的人形移动操作
 - **机构：** NVIDIA、UCLA
 - **项目页：** https://research.nvidia.com/labs/dair/grail/
+- **arXiv：** https://arxiv.org/abs/2606.05160
+- **代码：** https://github.com/NVlabs/GRAIL
 - **发表日期：** 2026年6月3日
 - **入库日期：** 2026-06-26
 - **一句话说明：** GRAIL 先从相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹恢复场景、目标或运动表征，再用ACT/行为克隆模仿学习、扩散策略/流匹配、世界模型/视频预测生成末端执行器/腕手目标。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。
@@ -18,7 +20,7 @@
 
 ## 对 wiki 的映射
 
-- [paper-loco-manip-161-061-grail](../../wiki/entities/paper-loco-manip-161-061-grail.md)
+- [paper-grail](../../wiki/entities/paper-grail.md)
 - [loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 
 ## 参考来源（原始）

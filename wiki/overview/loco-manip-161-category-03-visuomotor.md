@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 summary: "人形 Loco-Manip 161 篇 · 03 视觉感知驱动的人形移动操作（37 篇）— 视觉完成目标定位、场景理解和操作闭环。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -38,7 +38,7 @@ sources:
 | 058 | Cybo-Waiter | [paper-loco-manip-161-058-cybo-waiter](../entities/paper-loco-manip-161-058-cybo-waiter.md) |
 | 059 | DemoHLM | [paper-loco-manip-161-059-demohlm](../entities/paper-loco-manip-161-059-demohlm.md) |
 | 060 | EgoHumanoid | [paper-loco-manip-161-060-egohumanoid](../entities/paper-loco-manip-161-060-egohumanoid.md) |
-| 061 | GRAIL | [paper-loco-manip-161-061-grail](../entities/paper-loco-manip-161-061-grail.md) |
+| 061 | GRAIL | [paper-grail](../entities/paper-grail.md) |
 | 062 | H2-COMPACT | [paper-loco-manip-161-062-h2-compact](../entities/paper-loco-manip-161-062-h2-compact.md) |
 | 063 | HALOMI | [paper-loco-manip-161-063-halomi](../entities/paper-loco-manip-161-063-halomi.md) |
 | 064 | HMC | [paper-loco-manip-161-064-hmc](../entities/paper-loco-manip-161-064-hmc.md) |

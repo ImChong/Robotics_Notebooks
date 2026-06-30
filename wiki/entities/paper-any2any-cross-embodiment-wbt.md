@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, whole-body-tracking, cross-embodiment, lora, peft, sonic, limx, unitree-g1, isaac-lab]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 arxiv: "2605.23733"
 related:
   - ../overview/humanoid-motion-cerebellum-technology-map.md

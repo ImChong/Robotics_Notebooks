@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, nus, scut, zju]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 venue: curated
 summary: "底座：主动凝视进入敏捷运动闭环。输入是视觉场景、本体状态和任务目标；实现上学习主动凝视策略，让机器人在运动中选择看哪里，再把感知结果用于敏捷运动控制；它把视觉注意力纳入 locomotion 闭环。"
 related:

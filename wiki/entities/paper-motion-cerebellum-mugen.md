@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, motion-cerebellum-survey, humanoid, motion-control, pku]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 arxiv: "2605.24592"
 summary: "可提示小脑：多技能生成式运动控制。输入是多技能运动数据和任务条件；实现上用 VQ-VAE 离散化运动技能，再结合模型式 RL 和师生蒸馏训练统一控制器；目标是让多个 locomotion 技能共享一个生成式动作空间。"
 related:
