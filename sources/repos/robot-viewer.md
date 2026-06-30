@@ -23,4 +23,5 @@
 
 ## 对 Wiki 的映射
 - **wiki/entities/robot-viewer.md** (新建)
+- **wiki/entities/mujoco-wasm.md** — 浏览器 MuJoCo 绑定生态（依赖 [mujoco_wasm](mujoco_wasm.md) / `@mujoco/mujoco`）
 - **references/repos/utilities.md** (更新)

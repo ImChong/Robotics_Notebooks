@@ -3,7 +3,7 @@
 按用途整理的仿真与训练平台入口。若需理解仿真在控制—学习—部署链中的位置，见 [仿真（系统集成层）](../../tech-map/modules/system/simulation.md)。
 
 当前重点平台：
-- MuJoCo；连续控制基准与 Python 工具链见 [dm_control](../../wiki/entities/dm-control.md)
+- MuJoCo（含浏览器 [MuJoCo WASM](../../wiki/entities/mujoco-wasm.md) 绑定）；连续控制基准与 Python 工具链见 [dm_control](../../wiki/entities/dm-control.md)
 - Isaac Gym
 - Isaac Lab
 - Isaac Sim

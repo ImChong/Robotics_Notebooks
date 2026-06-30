@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1516,
-  "edge_count": 10249,
+  "node_count": 1517,
+  "edge_count": 10258,
   "coverage": {
-    "covered": 1485,
-    "total": 1514,
+    "covered": 1486,
+    "total": 1515,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/mujoco-wasm.md",
+      "detail_id": "entity-mujoco-wasm",
+      "label": "MuJoCo WASM（浏览器物理仿真）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-opencap-monocular.md",
       "detail_id": "entity-paper-opencap-monocular",
@@ -159,20 +167,12 @@
       "type": "query",
       "recency": "2026-06-28",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/physics-fidelity-sim2real-gap.md",
-      "detail_id": "wiki-concepts-physics-fidelity-sim2real-gap",
-      "label": "Physics Fidelity ↔ Sim2Real Gap（物理保真度与仿真到现实差距）",
-      "type": "concept",
-      "recency": "2026-06-28",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-opencap-monocular.md",
-    "detail_id": "entity-paper-opencap-monocular",
-    "label": "OpenCap Monocular：单手机视频的人体运动学与动力学",
+    "path": "wiki/entities/mujoco-wasm.md",
+    "detail_id": "entity-mujoco-wasm",
+    "label": "MuJoCo WASM（浏览器物理仿真）",
     "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"

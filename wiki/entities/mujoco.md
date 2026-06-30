@@ -2,9 +2,10 @@
 type: entity
 tags: [software, simulation, physics-engine, reinforcement-learning, deepmind]
 status: complete
-updated: 2026-06-22
+updated: 2026-06-30
 related:
   - ../overview/sim-platforms-decade-technology-map.md
+  - ./mujoco-wasm.md
   - ./mujoco-mjx.md
   - ./mujoco-playground.md
   - ../overview/robot-training-stack-layers-technology-map.md
@@ -21,6 +22,7 @@ related:
   - ../concepts/sim2real.md
 sources:
   - ../../sources/papers/simulation.md
+  - ../../sources/repos/mujoco.md
   - ../../sources/blogs/wechat_embodied_ai_lab_robot_training_stack_layers_2026.md
   - ../../sources/blogs/wechat_shenlan_sim_platforms_top8_decade.md
 summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引擎。开源后成为机器人强化学习的基石，以极佳的接触稳定性和解析优化支持著称。"
@@ -39,6 +41,7 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 | MJX | MuJoCo JAX | JAX/XLA 后端，便于可微与批量 |
 | RL | Reinforcement Learning | 腿足/人形 loco 常用训练后端 |
 | PD | Proportional–Derivative | 仿真中常见的低层关节控制接口 |
+| WASM | WebAssembly | 浏览器内运行 MuJoCo 的 `@mujoco/mujoco` 绑定载体 |
 
 ## 核心设计理念
 
@@ -63,8 +66,10 @@ summary: "MuJoCo 是专为生物力学、机器人学开发的高精度物理引
 - **局限**：
   - 原生 CPU MuJoCo 在单机多 GPU **环境复制数** 上，仍常逊色于 Isaac Gym 类专并行栈；需要 JAX/GPU 批量路径时，应评估 [**MuJoCo MJX**](./mujoco-mjx.md)（及官方文档中的 feature parity）。
   - 对流体、软体（Soft body）和极其复杂的传感器渲染（如高保真相机）支持较弱；大规模 **壳/体 FEM + 亿级接触** 的离线路径见 [ppf-contact-solver](./ppf-contact-solver.md)。
+  - **浏览器 WASM**（[`@mujoco/mujoco`](./mujoco-wasm.md)）适合 demo、教学与轻量 Sim2Sim，吞吐与 API 完备度仍弱于原生绑定；多线程版另需 COOP/COEP 隔离头。
 
 ## 关联页面
+- [MuJoCo WASM（浏览器绑定）](./mujoco-wasm.md) — 官方 `@mujoco/mujoco` 与社区 demo（zalo/mujoco_wasm）生态
 - [MuJoCo Playground](./mujoco-playground.md) — MJX 上的任务入口层，强调 time-to-robot 与 sim2real 短链路
 - [训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md) — MuJoCo 在物理/sim2sim 层的定位
 - [MuJoCo MJX（JAX / XLA 后端）](./mujoco-mjx.md) — 与 MJCF 对齐的 JAX 重实现，用于高吞吐与可微 rollout
