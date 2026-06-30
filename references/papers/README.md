@@ -38,7 +38,7 @@ updated: 2026-04-23
 | 想看 locomotion RL 论文 | [Locomotion RL](locomotion-rl.md) |
 | 想看模仿学习论文 | [Imitation Learning](imitation-learning.md) |
 | 想看 WBC / TSID / whole-body 论文 | [Whole-Body Control](whole-body-control.md) |
-| 想看 sim2real 论文 | [Sim2Real](sim2real.md) |
+| 想看 sim2real 论文 | [Sim2Real（概念总览）](../../wiki/concepts/sim2real.md) |
 | 想看人形硬件论文与平台脉络 | [Humanoid Hardware](humanoid-hardware.md) |
 | 想先看综述再扩展 | [Survey Papers](survey-papers.md) |
 
@@ -74,7 +74,7 @@ updated: 2026-04-23
 - Domain Randomization
 
 建议从这里进入：
-- [Sim2Real](sim2real.md)
+- [Sim2Real（概念总览）](../../wiki/concepts/sim2real.md)
 - [Survey Papers](survey-papers.md)
 
 ### 硬件 / 人形平台主线

@@ -1368,7 +1368,6 @@ SORT type ASC
 - [Locomotion RL](references/papers/locomotion-rl.md) — 聚焦人形/腿足机器人 locomotion 中的强化学习论文。 `📅unknown` `[reference_page]`
 - [MPC (Model Predictive Control)](references/papers/mpc.md) — 聚焦模型预测控制在机器人（特别是腿式/人形）中的理论、工程实现与应用论文。 `📅unknown` `[reference_page]`
 - [Optimal Control](references/papers/optimal-control.md) — 最优控制理论基础、动态规划与轨迹优化奠基工作。 `📅unknown` `[reference_page]`
-- [Sim2Real](references/papers/sim2real.md) — 聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移相关论文。 `📅unknown` `[reference_page]`
 - [Survey Papers](references/papers/survey-papers.md) — 用于汇总机器人学习、运动控制、人形机器人、模仿学习等方向的领域综述（Review/Survey）。 `📅unknown` `[reference_page]`
 - [System Identification](references/papers/system-identification.md) — 聚焦机器人动力学辨识、执行器建模与在线参数估计论文。 `📅unknown` `[reference_page]`
 - [Whole-Body Control](references/papers/whole-body-control.md) — 聚焦任务空间控制、TSID、QP-WBC、人形全身运动控制相关论文。 `📅unknown` `[reference_page]`

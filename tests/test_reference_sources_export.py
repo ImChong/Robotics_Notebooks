@@ -16,7 +16,7 @@ class ReferenceSourcesExportTests(unittest.TestCase):
         self.assertTrue(any("KungFuAthleteBot" in label for label in labels))
         self.assertFalse(any(label.startswith("Tobin") for label in labels))
         detail_ids = [entry.get("detail_id", "") for entry in sources]
-        self.assertIn("reference-papers-sim2real", detail_ids)
+        self.assertTrue(any("Sim2Real 方法横向对比" in label or "sim2real-approaches" in label for label in labels))
         github_urls = [entry.get("url", "") for entry in sources]
         self.assertTrue(
             any(

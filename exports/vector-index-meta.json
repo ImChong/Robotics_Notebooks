@@ -67,13 +67,6 @@
       "summary": "最优控制理论基础、动态规划与轨迹优化奠基工作。"
     },
     {
-      "id": "reference-papers-sim2real",
-      "path": "references/papers/sim2real.md",
-      "title": "Sim2Real",
-      "page_type": "reference",
-      "summary": "聚焦域随机化、系统辨识、鲁棒训练、部署经验与真实机器人迁移相关论文。"
-    },
-    {
       "id": "reference-papers-survey-papers",
       "path": "references/papers/survey-papers.md",
       "title": "Survey Papers",
@@ -233,13 +226,6 @@
       "title": "PPO",
       "page_type": "tech_map_node",
       "summary": "PPO 是机器人强化学习中最常见、最实用的基础算法之一。"
-    },
-    {
-      "id": "tech-node-rl-sim2real",
-      "path": "tech-map/modules/rl/sim2real.md",
-      "title": "Sim2Real",
-      "page_type": "tech_map_node",
-      "summary": "重点关注域随机化、系统辨识、鲁棒训练与部署闭环。"
     },
     {
       "id": "tech-node-robotics-dynamics",
