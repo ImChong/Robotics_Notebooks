@@ -2,7 +2,7 @@
 type: query
 tags: [sim2real, deployment, locomotion, humanoid, rl]
 status: complete
-summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）；合并原 sim2real-deployment-checklist。"
+summary: "从仿真到真机部署的完整工程清单（含快速部署检查 3 分钟版）。"
 updated: 2026-06-30
 related:
   - ./sim2real-gap-reduction.md
@@ -18,8 +18,6 @@ sources:
 # Sim2Real 工程 Checklist
 
 从仿真训练到真实机器人部署的工程清单。每个阶段都有容易踩的坑，按顺序逐项核查。
-
-> 旧独立页 [Sim2Real 真机部署清单](./sim2real-deployment-checklist.md) 已合并至下文「快速部署检查」节。
 
 ## 快速部署检查
 

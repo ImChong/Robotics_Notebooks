@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] structural | 删除冗余详情节点 wiki-queries-sim2real-deployment-checklist
+
+- 删除：`wiki/queries/sim2real-deployment-checklist.md`（内容已并入 `sim2real-checklist.md`「快速部署检查」节，重定向桩不再保留）
+- 交叉更新：`wiki/queries/sim2real-checklist.md`、`wiki/queries/README.md`
+
 ## [2026-06-30] structural | 移除冗余 Sim2Real 详情节点 — tech-map/modules/rl/sim2real.md、references/papers/sim2real.md
 
 - 删除：`tech-map/modules/rl/sim2real.md`（tech-node-rl-sim2real 空桩）、`references/papers/sim2real.md`（reference-papers-sim2real 与 wiki/concepts/sim2real 重复）
