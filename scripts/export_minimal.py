@@ -6,6 +6,8 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List
 
+import yaml
+
 from build_search_index import generate_search_index
 from search_indexing import parse_frontmatter, strip_frontmatter
 from utils.paths import path_to_id
@@ -18,6 +20,21 @@ DOCS_OUTPUT = ROOT / "docs" / "exports" / "index-v1.json"
 DOCS_SITE_OUTPUT = ROOT / "docs" / "exports" / "site-data-v1.json"
 SITEMAP_OUTPUT = ROOT / "docs" / "sitemap.xml"
 BASE_URL = "https://imchong.github.io/Robotics_Notebooks"
+SCHEMA_DIR = ROOT / "schema"
+PAPER_NOTEBOOK_INDEX_PATH = SCHEMA_DIR / "paper-notebook-index.json"
+PAPER_NOTEBOOK_FULL_MAP_PATH = SCHEMA_DIR / "paper-notebook-wiki-full-map.yml"
+PAPER_NOTEBOOK_SITE_PREFIX = (
+    "https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/"
+)
+PAPER_NOTEBOOK_HTML_RE = re.compile(
+    r"https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^\s)<>\"']+\.html",
+    re.IGNORECASE,
+)
+PAPER_NOTEBOOK_MD_LINK_RE = re.compile(
+    r"\[机器人论文阅读笔记[:：]([^\]]+)\]"
+    r"\((https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)]+\.html)\)",
+    re.IGNORECASE,
+)
 
 
 def build_ingest_index() -> Dict[str, str]:
@@ -503,6 +520,106 @@ def parse_roadmap_stages(text: str, current_path: Path) -> List[Dict[str, Any]]:
     return stages
 
 
+def _paper_notebook_short_label(title: str) -> str:
+    title = title.strip()
+    if title.lower().startswith("[website],"):
+        title = title.split(",", 1)[1].strip()
+    if title.startswith("[") and "]" in title:
+        title = title[1 : title.index("]")].strip()
+    label = title.split(":")[0].split("(")[0].strip()
+    return label or title.strip()
+
+
+def _clean_paper_notebook_label(label: str, url: str, fallback_title: str = "") -> str:
+    text = label.strip()
+    text = re.sub(r"^机器人论文阅读笔记[:：]\s*", "", text)
+    text = re.sub(r"^[深读笔记论]+[:：<\s]+", "", text)
+    text = text.strip("<> ").strip()
+    if not text or len(text) < 3:
+        stem = url.rsplit("/", 1)[-1].removesuffix(".html")
+        text = stem.replace("__", ": ").replace("_", " ").strip()
+    if not text:
+        text = _paper_notebook_short_label(fallback_title)
+    return text or "论文阅读笔记"
+
+
+def _is_paper_notebook_html_url(url: str) -> bool:
+    if not url:
+        return False
+    base = url.split("#", 1)[0].split("?", 1)[0]
+    return base.startswith(PAPER_NOTEBOOK_SITE_PREFIX) and base.endswith(".html")
+
+
+def build_wiki_paper_notebook_link_index() -> dict[str, dict[str, str]]:
+    if not PAPER_NOTEBOOK_INDEX_PATH.exists() or not PAPER_NOTEBOOK_FULL_MAP_PATH.exists():
+        return {}
+
+    papers = {entry["dir"]: entry for entry in json.loads(PAPER_NOTEBOOK_INDEX_PATH.read_text(encoding="utf-8"))}
+    overrides = yaml.safe_load(PAPER_NOTEBOOK_FULL_MAP_PATH.read_text(encoding="utf-8")).get("overrides", {})
+    out: dict[str, dict[str, str]] = {}
+    for paper_dir, wiki_paths in overrides.items():
+        paper = papers.get(paper_dir)
+        if not paper:
+            continue
+        url = str(paper.get("url") or "")
+        if not _is_paper_notebook_html_url(url):
+            continue
+        label = _paper_notebook_short_label(str(paper.get("title") or paper_dir))
+        for wiki_path in wiki_paths:
+            path = wiki_path if str(wiki_path).startswith("wiki/") else f"wiki/{wiki_path}"
+            out[path] = {"url": url, "label": label}
+    return out
+
+
+def collect_paper_notebook_links(
+    item: dict[str, Any],
+    wiki_link_index: dict[str, dict[str, str]] | None = None,
+) -> list[dict[str, str]]:
+    path = str(item.get("path") or "")
+    content = str(item.get("content_markdown") or "")
+    title = str(item.get("title") or "")
+    results: list[dict[str, str]] = []
+    seen: set[str] = set()
+
+    def push(url: str, label: str = "") -> None:
+        if not _is_paper_notebook_html_url(url):
+            return
+        key = url.split("#", 1)[0].split("?", 1)[0]
+        if key in seen:
+            return
+        seen.add(key)
+        results.append({"url": key, "label": _clean_paper_notebook_label(label, key, title)})
+
+    if wiki_link_index and path in wiki_link_index:
+        mapped = wiki_link_index[path]
+        push(str(mapped.get("url") or ""), str(mapped.get("label") or ""))
+
+    for entry in item.get("source_links", []):
+        if isinstance(entry, dict):
+            push(str(entry.get("url") or ""), str(entry.get("label") or ""))
+        else:
+            push(str(entry), str(entry))
+
+    for match in PAPER_NOTEBOOK_MD_LINK_RE.finditer(content):
+        push(match.group(2), match.group(1))
+
+    for match in PAPER_NOTEBOOK_HTML_RE.finditer(content):
+        push(match.group(0), "")
+
+    return results[:6]
+
+
+def attach_paper_notebook_links(
+    items: list[dict[str, Any]],
+    wiki_link_index: dict[str, dict[str, str]] | None = None,
+) -> None:
+    index = wiki_link_index if wiki_link_index is not None else build_wiki_paper_notebook_link_index()
+    for item in items:
+        links = collect_paper_notebook_links(item, index)
+        if links:
+            item["paper_notebook_links"] = links
+
+
 def build_item(path: Path) -> dict[str, Any]:
     text = read_text(path)
     fm = parse_frontmatter(text)
@@ -859,6 +976,7 @@ def main() -> None:
     global _INGEST_INDEX
     _INGEST_INDEX = build_ingest_index()
     items = [build_item(p) for p in collect_paths()]
+    attach_paper_notebook_links(items)
     payload = {
         "version": "v1",
         "generated_mode": "script",
