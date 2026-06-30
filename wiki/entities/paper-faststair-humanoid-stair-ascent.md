@@ -13,7 +13,7 @@ tags:
   - limx-dynamics
   - stairs
 status: complete
-updated: 2026-06-05
+updated: 2026-06-30
 arxiv: "2601.10365"
 related:
   - ../tasks/stair-obstacle-perceptive-locomotion.md

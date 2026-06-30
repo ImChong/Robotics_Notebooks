@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-06-29
+updated: 2026-06-30
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
@@ -27,6 +27,7 @@ sources:
   - ../../sources/papers/omniretarget_arxiv_2509_26633.md
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
+  - ../../sources/papers/cwi_arxiv_2606_27676.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -159,6 +160,10 @@ flowchart TD
 - **不对称先验：** body prior 负责步态、躯干与 **腕位涌现**；**wrist-stabilized hand prior** 在仿真中运动学固定腕、只学指协调，避免手潜码容量被 6D 腕运动占用。
 - **代表作**：[CoorDex](../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) (UNC / Berkeley, 2026, arXiv:2606.23680) — Isaac Lab **G1+WUJI** 仿真 **边走边抓瓶（55%）/ 后退开门（66%）/ 转身持物（89%）**；WalkGrab 消融：关节空间 PPO 与 Monolithic 潜残差在同奖励下 **0%**，凸显 **潜接口 + body–hand 结构** 必要性；真机视频为 **G1+Dex3-1** 轨迹回放定性验证。
 
+### 21. 复合全身模仿：上身全库 + 下身双 AMP + 多 critic（CWI）
+- **核心**：**不解耦成两个策略**，而是 **按角色解耦 MoCap**——**AMASS 上身全库** 保留多样操作参考（基座系、未过滤），**精选行走/蹲起小库** 经 **双 AMP 判别器** 提供稳定下身风格先验；**multi-critic PPO** 分离 locomotion / manipulation / style 优势估计；**师生蒸馏** 将稠密上身 teacher 压到 **双手 9D keypoint + 速度/身高** 部署接口。
+- **代表作**：[CWI](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) (LimX / HKU / SUSTech / HKUST / ZJU-UIUC, 2026, arXiv:2606.27676) — **LimX Oli** 31-DoF 仿真优于重实现 HOVER*/FALCON*/HOMIE*；真机拧盖/开门/搬箱等；**Meta Quest VR** 无全身 MoCap；消融：去蒸馏手端误差 **42.9→173.2 mm**，去 AMP 风格 DTW **0.45→1.41**。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -203,6 +208,7 @@ flowchart TD
 - [HALOMI（论文实体）](../entities/paper-halomi-humanoid-loco-manipulation.md) — UMI+egocentric 无机器人示范、BFM-Zero 流形头手 WBC、π₀.₅ VLA 与 G1 主动颈（arXiv:2606.18772）
 - [CoorDex（论文实体）](../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — body/hand 潜先验协调残差、连续高 DoF dexterous loco-manipulation（arXiv:2606.23680）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact-prompted 单策略 WBT：自由空间+地形+搬箱/上楼；hindsight 场景重建数据引擎（arXiv:2606.27581）
+- [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — 复合全身模仿：AMASS 上身 + 双 AMP 下身 + multi-critic + VR 双手接口（arXiv:2606.27676）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -228,6 +234,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/motiondisco_arxiv_2606_06139.md](../../sources/papers/motiondisco_arxiv_2606_06139.md) — MotionDisco：LLM 引导运动发现与人形 loco-manipulation（arXiv:2606.06139）
 - **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：主动感知无机器人示范→人形 loco-manipulation（arXiv:2606.18772）
 - **ingest 档案：** [sources/papers/coordex_arxiv_2606_23680.md](../../sources/papers/coordex_arxiv_2606_23680.md) — CoorDex：body/hand 潜先验协调残差 dexterous loco-manipulation（arXiv:2606.23680）
+- **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：复合全身模仿 loco-manipulation（arXiv:2606.27676）
 
 ## 一句话记忆
 

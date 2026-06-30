@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] ingest | sources/papers/cwi_arxiv_2606_27676.md — CWI 复合全身模仿 loco-manipulation；wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md；交叉 loco-manipulation / teleoperation
+
 ## [2026-06-29] structural | checklist-v26 P3 详情页「物理保真度」专题徽标端到端验证 —— 复用单一事实源补归档截图
 
 - 详情页「所属专题」徽标行（[`docs/main.js`](docs/main.js) `renderMetaTopicBadges`）本就以 [`docs/topic-filters.js`](docs/topic-filters.js) 为单一事实源、`topicsForNode` 数据驱动：V26 P3 把 `physics-fidelity` 写入单一事实源后，动力学/仿真/新建页命中即自动渲染「⚙️ 物理保真度」徽标并跳 `graph.html?topic=physics-fidelity`，空态降级隐藏整行，无需二次实现。

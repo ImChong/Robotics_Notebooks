@@ -1,13 +1,21 @@
 {
-  "generated_at": "2026-06-29",
-  "node_count": 1513,
-  "edge_count": 10195,
+  "generated_at": "2026-06-30",
+  "node_count": 1514,
+  "edge_count": 10209,
   "coverage": {
-    "covered": 1482,
-    "total": 1511,
+    "covered": 1483,
+    "total": 1512,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md",
+      "detail_id": "entity-paper-cwi-composite-humanoid-whole-body-imitation",
+      "label": "CWI（Composite Humanoid Whole-Body Imitation · Loco-Manipulation）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-notebook-vmp.md",
       "detail_id": "entity-paper-notebook-vmp",
@@ -159,22 +167,14 @@
       "type": "method",
       "recency": "2026-06-27",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-06-27",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-vmp.md",
-    "detail_id": "entity-paper-notebook-vmp",
-    "label": "VMP（Versatile Motion Priors）",
+    "path": "wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md",
+    "detail_id": "entity-paper-cwi-composite-humanoid-whole-body-imitation",
+    "label": "CWI（Composite Humanoid Whole-Body Imitation · Loco-Manipulation）",
     "type": "entity",
-    "recency": "2026-06-29",
+    "recency": "2026-06-30",
     "source": "log.md"
   }
 }
