@@ -17,9 +17,11 @@ related:
   - ../entities/paper-viral-humanoid-visual-sim2real.md
   - ../entities/paper-loco-manip-161-148-gr00t-n1.md
   - ../entities/videomimic.md
+  - ./grail-locomanipulation-dataset.md
 sources:
   - ../../sources/papers/grail_arxiv_2606_05160.md
   - ../../sources/repos/grail_nvlabs.md
+  - ../../sources/sites/grail-locomanipulation-huggingface.md
   - ../../sources/papers/loco_manip_161_survey_061_grail.md
   - ../../sources/papers/motion_cerebellum_survey_57_grail.md
   - ../../sources/blogs/wechat_embodied_ai_lab_humanoid_loco_manip_161_survey.md
@@ -45,6 +47,7 @@ sources:
 - **数据瓶颈切口清晰：** 遥操作/动捕质量高但难规模化；野外视频重建 4D 又面临相机、尺度、形态与接触歧义。GRAIL 在 **生成视频之前** 就固定物体几何、相机参数、metric 尺度、环境深度与 **机器人比例角色**，把 VFM 当 **交互先验** 而非「事后猜场景」。
 - **规模与覆盖：** 生成 **20,000+** 序列，横跨 pick-up（桌面/地面）、全身操作、sitting、楼梯/坡道/路缘等 **物体中心 + 场景中心** 两类能力块。
 - **闭环真机验证：** 仅用 GRAIL 数据训练 egocentric RGB 策略，在 **Unitree G1** 上达到 pick-up **84%**、stair-climbing **90%** 真机成功率；并展示 **95% GRAIL + 5% 遥操作** 混合微调 GR00T 优于纯遥操作。
+- **公开数据集：** [GRAIL Loco-Manipulation Dataset](./grail-locomanipulation-dataset.md) 在 Hugging Face 发布 **~22k** 条 G1 物理可行轨迹（video + 4D recon + robot/objects pkl + USD），与论文 sim-to-real 实验同源。
 - **双地图坐标：** 同时出现在 [Loco-Manip 161 篇 #061/161](../overview/loco-manip-161-category-03-visuomotor.md) 与 [运动小脑 64 篇 #57/64](../overview/motion-cerebellum-category-08-real-tasks.md)；本页为合并后的 **单一 canonical 实体**。
 
 ## 核心信息（索引级）
@@ -57,6 +60,7 @@ sources:
 | arXiv | [2606.05160](https://arxiv.org/abs/2606.05160) |
 | 项目页 | [research.nvidia.com/labs/dair/grail/](https://research.nvidia.com/labs/dair/grail/) |
 | 代码 | [github.com/NVlabs/GRAIL](https://github.com/NVlabs/GRAIL) |
+| 公开数据集 | [PhysicalAI-Robotics-Locomanipulation-GRAIL](https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL)（~22k 运动 / 250 GB） |
 
 ## 核心机制（提炼）
 
@@ -116,17 +120,20 @@ flowchart TB
 - 运动小脑地图：[humanoid-motion-cerebellum-technology-map](../overview/humanoid-motion-cerebellum-technology-map.md)、[H 真实任务](../overview/motion-cerebellum-category-08-real-tasks.md)
 - 低层控制：[SONIC](../methods/sonic-motion-tracking.md)、[Unitree G1](./unitree-g1.md)
 - 视觉 sim-to-real 姊妹篇：[VIRAL](./paper-viral-humanoid-visual-sim2real.md)、[VideoMimic](./videomimic.md)
+- 公开轨迹集：[GRAIL Loco-Manipulation Dataset](./grail-locomanipulation-dataset.md)
 
 ## 推荐继续阅读
 
 - [GRAIL 项目页](https://research.nvidia.com/labs/dair/grail/)
 - [arXiv:2606.05160](https://arxiv.org/abs/2606.05160)
 - [NVlabs/GRAIL](https://github.com/NVlabs/GRAIL)
+- [GRAIL 数据集（Hugging Face）](https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL)
 - [Loco-Manipulation 任务页](../tasks/loco-manipulation.md)
 
 ## 参考来源
 
 - [grail_arxiv_2606_05160.md](../../sources/papers/grail_arxiv_2606_05160.md) — arXiv / 项目页深读策展
 - [grail_nvlabs.md](../../sources/repos/grail_nvlabs.md) — 官方代码仓
+- [grail-locomanipulation-huggingface.md](../../sources/sites/grail-locomanipulation-huggingface.md) — Hugging Face 公开数据集
 - [loco_manip_161_survey_061_grail.md](../../sources/papers/loco_manip_161_survey_061_grail.md) — Loco-Manip 161 策展摘录
 - [motion_cerebellum_survey_57_grail.md](../../sources/papers/motion_cerebellum_survey_57_grail.md) — 运动小脑 64 策展摘录

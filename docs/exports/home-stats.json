@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-06-30",
-  "node_count": 1513,
-  "edge_count": 10219,
+  "node_count": 1514,
+  "edge_count": 10227,
   "coverage": {
-    "covered": 1482,
-    "total": 1511,
+    "covered": 1483,
+    "total": 1512,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/grail-locomanipulation-dataset.md",
+      "detail_id": "entity-grail-locomanipulation-dataset",
+      "label": "GRAIL Loco-Manipulation Dataset（G1 合成轨迹）",
+      "type": "entity",
+      "recency": "2026-06-30",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-grail.md",
       "detail_id": "entity-paper-grail",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-06-28",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-flap-fov-active-perception-3d-navigation.md",
-      "detail_id": "entity-paper-flap-fov-active-perception-3d-navigation",
-      "label": "FLAP（FOV 约束主动感知 · 无先验地图 3D 导航）",
-      "type": "entity",
-      "recency": "2026-06-28",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-grail.md",
-    "detail_id": "entity-paper-grail",
-    "label": "GRAIL",
+    "path": "wiki/entities/grail-locomanipulation-dataset.md",
+    "detail_id": "entity-grail-locomanipulation-dataset",
+    "label": "GRAIL Loco-Manipulation Dataset（G1 合成轨迹）",
     "type": "entity",
     "recency": "2026-06-30",
     "source": "log.md"

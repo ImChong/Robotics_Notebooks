@@ -31,9 +31,13 @@
 5. **策展地图坐标：** 同时出现在 [Loco-Manip 161 篇 #061](../../sources/papers/loco_manip_161_survey_061_grail.md)（03 视觉感知驱动）与 [运动小脑 64 篇 #57](../../sources/papers/motion_cerebellum_survey_57_grail.md)（H 真实任务）；知识库已合并为单一实体页。
    - **对 wiki 的映射：** [paper-grail](../../wiki/entities/paper-grail.md)
 
+6. **公开数据集：** [PhysicalAI-Robotics-Locomanipulation-GRAIL](https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL) 发布 ~22k 条 G1 post-SONIC 轨迹（video + 4D recon + robot/objects pkl + USD，约 250 GB）。
+   - **对 wiki 的映射：** [grail-locomanipulation-dataset](../../wiki/entities/grail-locomanipulation-dataset.md)
+
 ## 对 wiki 的映射
 
 - 沉淀实体页：[paper-grail](../../wiki/entities/paper-grail.md)
+- 公开数据集：[grail-locomanipulation-dataset](../../wiki/entities/grail-locomanipulation-dataset.md)
 - Loco-Manip 分类 hub：[loco-manip-161-category-03-visuomotor](../../wiki/overview/loco-manip-161-category-03-visuomotor.md)
 - 运动小脑分类 hub：[motion-cerebellum-category-08-real-tasks](../../wiki/overview/motion-cerebellum-category-08-real-tasks.md)
 - 姊妹策展：[loco_manip_161_survey_061_grail.md](./loco_manip_161_survey_061_grail.md)、[motion_cerebellum_survey_57_grail.md](./motion_cerebellum_survey_57_grail.md)
@@ -43,3 +47,4 @@
 - 项目页：<https://research.nvidia.com/labs/dair/grail/>
 - arXiv：<https://arxiv.org/abs/2606.05160>
 - 代码：<https://github.com/NVlabs/GRAIL>
+- 数据集：<https://huggingface.co/datasets/nvidia/PhysicalAI-Robotics-Locomanipulation-GRAIL>
