@@ -3499,6 +3499,7 @@
     const summaryEl = document.getElementById('roadmapSummary');
     const metaEl = document.getElementById('roadmapMeta');
     const relatedEl = document.getElementById('roadmapRelatedList');
+    const paperRelatedEl = document.getElementById('roadmapPaperRelatedList');
     const emptyState = document.getElementById('roadmapEmptyState');
     const breadcrumb = document.getElementById('roadmapBreadcrumb');
 
@@ -3514,6 +3515,7 @@
         removeLoadingState(metaEl);
       }
       renderInternalLinks(relatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
+      renderInternalLinks(paperRelatedEl, [], detailPages, { emptyText: '当前无可展示的相关项。' });
       if (breadcrumb) removeLoadingState(breadcrumb);
       setRoadmapFlowChromeVisible(false);
       setRoadmapContentChromeVisible(false);
@@ -3579,11 +3581,14 @@
       })
       .then(function (stats) {
         renderRoadmapGraphHubs(relatedEl, (stats && stats.top_hubs) || [], detailPages);
+        renderRoadmapGraphHubs(paperRelatedEl, (stats && stats.top_paper_hubs) || [], detailPages);
       })
       .catch(function () {
-        renderInternalLinks(relatedEl, [], detailPages, {
+        var hubErr = {
           emptyText: '暂时无法加载链接图统计。请刷新页面，或在本地确认已生成 docs/exports/graph-stats.json。'
-        });
+        };
+        renderInternalLinks(relatedEl, [], detailPages, hubErr);
+        renderInternalLinks(paperRelatedEl, [], detailPages, hubErr);
       });
     renderRoadmapFlowSection(roadmapPage, roadmapId, detailPages);
     renderRoadmapMarkdownBody(roadmapPage, roadmapId, siteData, detailPages);
