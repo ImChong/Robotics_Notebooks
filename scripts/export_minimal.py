@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any, Dict, List
 
 import yaml
-
 from build_search_index import generate_search_index
 from search_indexing import parse_frontmatter, strip_frontmatter
 from utils.paths import path_to_id
@@ -554,8 +553,13 @@ def build_wiki_paper_notebook_link_index() -> dict[str, dict[str, str]]:
     if not PAPER_NOTEBOOK_INDEX_PATH.exists() or not PAPER_NOTEBOOK_FULL_MAP_PATH.exists():
         return {}
 
-    papers = {entry["dir"]: entry for entry in json.loads(PAPER_NOTEBOOK_INDEX_PATH.read_text(encoding="utf-8"))}
-    overrides = yaml.safe_load(PAPER_NOTEBOOK_FULL_MAP_PATH.read_text(encoding="utf-8")).get("overrides", {})
+    papers = {
+        entry["dir"]: entry
+        for entry in json.loads(PAPER_NOTEBOOK_INDEX_PATH.read_text(encoding="utf-8"))
+    }
+    overrides = yaml.safe_load(PAPER_NOTEBOOK_FULL_MAP_PATH.read_text(encoding="utf-8")).get(
+        "overrides", {}
+    )
     out: dict[str, dict[str, str]] = {}
     for paper_dir, wiki_paths in overrides.items():
         paper = papers.get(paper_dir)
@@ -613,7 +617,9 @@ def attach_paper_notebook_links(
     items: list[dict[str, Any]],
     wiki_link_index: dict[str, dict[str, str]] | None = None,
 ) -> None:
-    index = wiki_link_index if wiki_link_index is not None else build_wiki_paper_notebook_link_index()
+    index = (
+        wiki_link_index if wiki_link_index is not None else build_wiki_paper_notebook_link_index()
+    )
     for item in items:
         links = collect_paper_notebook_links(item, index)
         if links:
