@@ -28,6 +28,7 @@ sources:
   - ../../sources/papers/resmimic_arxiv_2510_05070.md
   - ../../sources/papers/visualmimic_arxiv_2509_20322.md
   - ../../sources/papers/cwi_arxiv_2606_27676.md
+  - ../../sources/blogs/flexion_reflect_v1_0.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -209,6 +210,7 @@ flowchart TD
 - [CoorDex（论文实体）](../entities/paper-coordex-dexterous-humanoid-loco-manipulation.md) — body/hand 潜先验协调残差、连续高 DoF dexterous loco-manipulation（arXiv:2606.23680）
 - [SceneBot（论文实体）](../entities/paper-scenebot.md) — contact-prompted 单策略 WBT：自由空间+地形+搬箱/上楼；hindsight 场景重建数据引擎（arXiv:2606.27581）
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — 复合全身模仿：AMASS 上身 + 双 AMP 下身 + multi-critic + VR 双手接口（arXiv:2606.27676）
+- [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -235,6 +237,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/halomi_arxiv_2606_18772.md](../../sources/papers/halomi_arxiv_2606_18772.md) — HALOMI：主动感知无机器人示范→人形 loco-manipulation（arXiv:2606.18772）
 - **ingest 档案：** [sources/papers/coordex_arxiv_2606_23680.md](../../sources/papers/coordex_arxiv_2606_23680.md) — CoorDex：body/hand 潜先验协调残差 dexterous loco-manipulation（arXiv:2606.23680）
 - **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：复合全身模仿 loco-manipulation（arXiv:2606.27676）
+- **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
 
 ## 一句话记忆
 
