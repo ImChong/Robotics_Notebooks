@@ -138,7 +138,7 @@ sources:
 
 - [Sim2Real](../concepts/sim2real.md)
 - [Domain Randomization](../concepts/domain-randomization.md)
-- [Query：Sim2Real 真机部署清单](../queries/sim2real-deployment-checklist.md)
+- [Query：Sim2Real 工程 Checklist](../queries/sim2real-checklist.md#快速部署检查)
 - [Query：RL 策略真机调试 Playbook](../queries/robot-policy-debug-playbook.md)
 
 ## 当前图谱里的几个 community 应该怎么读

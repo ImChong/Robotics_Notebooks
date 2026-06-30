@@ -1128,7 +1128,7 @@ flowchart TD
 
 > **上一层的局限：** L4 / L5 都在仿真里假设理想：传感器无噪声、执行器无延迟、动力学完全已知。真机里这三条全都不成立，需要 system identification + domain randomization + teacher-student 等专门桥接技术。
 
-**本阶段入口：** [Sim2Real](../wiki/concepts/sim2real.md)、[System Identification](../wiki/concepts/system-identification.md)、[Domain Randomization](../wiki/concepts/domain-randomization.md)、[Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)、[部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)、[机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)。
+**本阶段入口：** [Sim2Real](../wiki/concepts/sim2real.md)、[System Identification](../wiki/concepts/system-identification.md)、[Domain Randomization](../wiki/concepts/domain-randomization.md)、[Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)、[机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)。
 
 ### 英文缩写速查（L6）
 
@@ -1160,7 +1160,7 @@ flowchart TD
 - [System Identification](../wiki/concepts/system-identification.md)（本仓库）
 - [Domain Randomization](../wiki/concepts/domain-randomization.md)（本仓库）
 - [Sim2Real Checklist](../wiki/queries/sim2real-checklist.md)（本仓库）
-- [Sim2Real 部署检查清单](../wiki/queries/sim2real-deployment-checklist.md)（本仓库）
+- [Sim2Real 工程 Checklist](../wiki/queries/sim2real-checklist.md#快速部署检查)（本仓库）
 - [机器人策略调试手册](../wiki/queries/robot-policy-debug-playbook.md)（本仓库）
 
 ### 学完输出什么

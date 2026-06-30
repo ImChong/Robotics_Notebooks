@@ -1,6 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-06-30] structural | schema/ingest-workflow.md — 补充 ingest 高发 CI 失败点与 institutions label 门禁说明
+## [2026-06-30] structural | wiki/queries/sim2real-* — 合并 Sim2Real 重复节点：deployment-checklist→checklist、搜索降噪、专题规则收紧
+
+- **P0 合并**：`wiki/queries/sim2real-deployment-checklist.md` 内容并入 `wiki/queries/sim2real-checklist.md`「快速部署检查」节；原页保留重定向桩
+- **P0 瘦身**：`wiki/queries/sim2real-gap-reduction.md` 删除重复 Pipeline checklist；`wiki/concepts/sim2real.md` 主要方法改为链向 `comparisons/sim2real-approaches.md`
+- **P1 搜索**：`scripts/search_wiki_core.py` — paper-notebook stub/planned 降权；sim2real 部署/gap/调试意图提权
+- **P2 图谱**：`docs/topic-filters.js` — sim2real 专题 segments 移除宽泛 `domain`
+- 交叉更新：`topic-sim2real.md`、`robot-policy-debug-playbook.md`、`domain-randomization-guide.md` 等；`schema/search-regression-cases.json`
 
 ## [2026-06-30] ingest | sources/blogs/flexion_reflect_v1_0.md — Flexion Reflect v1.0 长程人形自主平台；wiki/entities/flexion-reflect-v1.md；交叉 loco-manipulation / VLA / WBC
 

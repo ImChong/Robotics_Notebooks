@@ -40,7 +40,7 @@ sources:
 
 - 触觉采样率与控制环是否对齐（见 [实时控制中间件指南](./real-time-control-middleware-guide.md)）
 - 接触标签与视觉/本体是否时间同步
-- Sim 中接触模型是否与真机一致（见 [Sim2Real 部署清单](./sim2real-deployment-checklist.md)）
+- Sim 中接触模型是否与真机一致（见 [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)）
 
 ---
 

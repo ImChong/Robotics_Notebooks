@@ -50,7 +50,7 @@
 |------|---------|---------|
 | [mpc-wbc-integration](../concepts/mpc-wbc-integration.md) | MPC 和 WBC 在人形机器人 locomotion 里是怎么配合工作的？ | MPC、WBC、Locomotion、Optimal Control |
 | [rl-algorithm-selection](./rl-algorithm-selection.md) | 在足式/人形机器人里，PPO / SAC / TD3 怎么选？ | RL、Policy Optimization、Locomotion、Sim2Real |
-| [sim2real-checklist](./sim2real-checklist.md) | 从仿真到真机部署，有哪些必须检查的工程事项？ | Sim2Real、Domain Randomization、SysID、Privileged Training |
+| [sim2real-checklist](./sim2real-checklist.md) | 从仿真到真机部署，有哪些必须检查的工程事项？（含快速部署检查） | Sim2Real、Domain Randomization、SysID、Privileged Training |
 | [control-architecture-comparison](./control-architecture-comparison.md) | 人形机器人的主流控制架构有哪些，各有什么优劣？ | WBC vs RL、MPC-WBC、RL、IL、TSID |
 | [humanoid-hardware-selection](./humanoid-hardware-selection.md) | 做人形机器人运动控制研究，该选哪个硬件平台？ | Locomotion、Sim2Real、Loco-Manipulation |
 | [wbc-implementation-guide](./wbc-implementation-guide.md) | 如何从零搭建一个 WBC 控制器？ | WBC、TSID、HQP、Centroidal Dynamics、Contact Estimation |
@@ -66,7 +66,7 @@
 | [il-for-manipulation](./il-for-manipulation.md) | 做机器人操作用模仿学习还是 RL？怎么收集数据？ | Manipulation、Imitation Learning、Behavior Cloning、DAgger、RL |
 | [vla-deployment-guide](./vla-deployment-guide.md) | 如何在真机上部署 VLA 策略？推理延迟怎么控制？ | VLA、Foundation Policy、Manipulation、Loco-Manipulation、Deployment |
 | [foundation-policy-for-humanoids](./foundation-policy-for-humanoids.md) | 人形机器人 foundation policy 现在适合什么，不适合什么？ | Foundation Policy、VLA、Loco-Manipulation、Manipulation、Locomotion |
-| [sim2real-deployment-checklist](./sim2real-deployment-checklist.md) | 真机部署 RL 策略前后要检查什么？ | Sim2Real、Domain Randomization、Privileged Training、SysID、Locomotion |
+| [sim2real-deployment-checklist](./sim2real-deployment-checklist.md) | （已合并）真机部署 RL 策略前后要检查什么？→ 见 checklist 快速部署节 | 重定向桩 |
 | [open-source-motion-control-projects](./open-source-motion-control-projects.md) | 飞书公开文档《开源运动控制项目》里抽出了哪些可复用的方法模式？ | RL、IL、Model-Based RL、Locomotion、Manipulation、Motion Retargeting |
 | [humanoid-motion-control-know-how](./humanoid-motion-control-know-how.md) | 飞书公开文档《人形机器人运动控制 Know-How》对技术栈项目最有价值的结构是什么？ | OCP、LIP/ZMP、WBC、TSID、State Estimation、Sim2Real |
 | [robot-policy-debug-playbook](./robot-policy-debug-playbook.md) | RL 策略在仿真中好但真机差，如何系统排查？ | Sim2Real、Domain Randomization、Privileged Training、Deployment |

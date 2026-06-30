@@ -10,13 +10,13 @@ sources:
 related:
   - ../concepts/domain-randomization.md
   - ../concepts/sim2real.md
-  - ../queries/sim2real-deployment-checklist.md
+  - ./sim2real-checklist.md
 ---
 
 # Query：sim2real Domain Randomization 参数设计指南
 
 > **Query 产物**：本页由以下问题触发：「做 sim2real，如何设计 domain randomization 的参数与分布范围？」
-> 综合来源：[Domain Randomization](../concepts/domain-randomization.md)、[Sim2Real](../concepts/sim2real.md)、[Sim2Real 部署检查清单](../queries/sim2real-deployment-checklist.md)
+> 综合来源：[Domain Randomization](../concepts/domain-randomization.md)、[Sim2Real](../concepts/sim2real.md)、[Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)
 
 ## TL;DR 决策规则
 
@@ -290,4 +290,4 @@ init_base_ori  ~ Uniform(-0.05, 0.05)  # rad，小倾斜扰动
 
 - [Domain Randomization（概念）](../concepts/domain-randomization.md) — DR 核心概念与主要类型
 - [Sim2Real（概念）](../concepts/sim2real.md) — Sim2Real 全景：DR 在其中的位置
-- [Query：Sim2Real 部署检查清单](../queries/sim2real-deployment-checklist.md) — 部署前的逐项验证流程
+- [Query：Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查) — 部署前的逐项验证流程（含快速部署检查）

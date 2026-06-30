@@ -107,9 +107,9 @@
   {
     "query": "真机部署 sim2real 调试",
     "mode": "bm25",
-    "must_include": ["wiki/queries/sim2real-deployment-checklist.md"],
+    "must_include": ["wiki/queries/sim2real-checklist.md"],
     "expected_top_k": 5,
-    "note": "V11 新增部署检查清单 Query 页"
+    "note": "部署检查已合并入 sim2real-checklist 快速部署节"
   },
   {
     "query": "humanoid foundation policy VLA",

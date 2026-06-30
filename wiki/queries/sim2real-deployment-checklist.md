@@ -1,58 +1,27 @@
 ---
 type: query
-tags: [sim2real, deployment, checklist, real-robot, debugging, locomotion]
+tags: [sim2real, deployment, checklist, redirect]
 status: complete
-summary: 真机部署 RL 策略前后的完整检查清单，覆盖训练端、部署端、调试端三个阶段。
+summary: "【已合并】真机部署检查清单已并入 Sim2Real 工程 Checklist 的「快速部署检查」节；本页保留检索与旧链接兼容。"
+updated: 2026-06-30
 sources:
   - ../../sources/papers/sim2real.md
 related:
+  - ./sim2real-checklist.md
   - ../concepts/sim2real.md
-  - ../concepts/domain-randomization.md
-  - ../tasks/locomotion.md
-  - ../comparisons/sim2real-approaches.md
 ---
 
-# Sim2Real 真机部署清单
+# Sim2Real 真机部署清单（已合并）
 
-> **Query 产物**：本页由问题「真机部署 RL 策略前后要检查什么？」触发。
-> 综合来源：[Sim2Real](../concepts/sim2real.md)、[Domain Randomization](../concepts/domain-randomization.md)
+> **Query 产物**：原问题「真机部署 RL 策略前后要检查什么？」已合并至 [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)；本页保留旧链接与检索兼容。
+>
+> **本页内容已合并至** [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)。
+>
+> 原触发问题：「真机部署 RL 策略前后要检查什么？」——训练端 / 部署端 / 调试端三阶段检查项现位于母页 **「快速部署检查」** 节；完整五阶段流水线（建模 → DR → 验证 → SysID → 上机 → Gap 闭环）见同一母页后续章节。
 
 ## 一句话定义
 
-把仿真训练好的策略部署到真机，需要在**训练端、部署端、调试端**三个阶段依次排查问题，避免策略在真机上失效或损坏硬件。
-
----
-
-## 阶段一：训练端准备
-
-| 检查项 | 典型范围 | 通过标准 |
-|-------|---------|---------|
-| 质量/惯量随机化 | ±20% | 仿真中性能稳定 |
-| 关节摩擦/阻尼随机化 | ±30% | 无明显策略退化 |
-| 延迟随机化 | 0~40ms | 覆盖真实延迟上限 |
-| 观测噪声 | 参照真机规格 | 噪声量级与真机一致 |
-
-- [ ] 关节力矩限制在仿真中强制执行（与真机规格一致）
-- [ ] 策略输出频率与真机控制频率匹配（50Hz 或 100Hz）
-- [ ] 观测归一化参数在导出时固定（不依赖运行时统计）
-
-## 阶段二：部署端检查
-
-- [ ] 模型文件版本与训练代码一致
-- [ ] 观测空间维度和顺序与真机接口匹配（逐字段核对）
-- [ ] 动作空间映射：仿真关节顺序 ↔ 真机 CAN ID 顺序
-- [ ] 推理延迟测试 < 5ms
-- [ ] 初始姿态与仿真初始化姿态一致（误差 < 5°）
-
-## 阶段三：调试端常见问题
-
-| 现象 | 可能原因 | 排查方向 |
-|-----|---------|---------|
-| 上机立刻摔倒 | 观测顺序错误 | 核对 obs/action 映射 |
-| 原地抖动 | 控制频率不匹配 | 检查 PD 增益 |
-| 向一侧漂移 | IMU 安装偏差 | 校准 IMU offset |
-| 步伐极小 | 命令归一化错误 | 打印原始策略输入 |
-| 关节力矩饱和 | 力矩映射错误 | 核查 scale 因子 |
+真机部署 RL 策略的检查项已并入 [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查)，避免与全流程清单重复维护。
 
 ## 英文缩写速查
 
@@ -61,21 +30,15 @@ related:
 | Sim2Real | Simulation to Real | 把仿真中学到的策略迁移落地真机的工程主线 |
 | RL | Reinforcement Learning | 通过与环境交互最大化长期回报来学习策略的范式 |
 | CAN | Controller Area Network | 电机/关节常用的现场总线通信协议 |
-| PD | Proportional–Derivative | 关节位置/阻抗底层控制，策略输出常为其 setpoint |
-| IMU | Inertial Measurement Unit | 惯性测量单元，提供加速度与角速度 |
-| RMA | Rapid Motor Adaptation | 从历史轨迹隐式估计环境参数的快速运动自适应 |
-| Locomotion | Robot Locomotion | 足式/人形等无轮移动能力的总称 |
 
 ## 参考来源
 
-- Kumar et al., *RMA: Rapid Motor Adaptation* (2021)
+- [Sim2Real 工程 Checklist](./sim2real-checklist.md) — 合并后的 canonical 页
 - [Sim2Real 概念页](../concepts/sim2real.md)
-- [Domain Randomization](../concepts/domain-randomization.md)
 
 ## 关联页面
 
+- [Sim2Real 工程 Checklist](./sim2real-checklist.md#快速部署检查) — **请从此进入**
+- [Sim2Real Gap 缩减指南](./sim2real-gap-reduction.md)
+- [RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md)
 - [Sim2Real](../concepts/sim2real.md)
-- [Domain Randomization](../concepts/domain-randomization.md)
-- [Locomotion](../tasks/locomotion.md)
-- [Sim2Real 方法对比](../comparisons/sim2real-approaches.md)
-- [Query：RL 策略真机调试 Playbook](./robot-policy-debug-playbook.md) — 系统排障流程的完整版本
