@@ -4410,17 +4410,27 @@
     function renderTagCloud(items) {
       if (!tagCloudEl) return;
       var freq = {};
-      items.forEach(function(item) {
-        (item.tags || []).forEach(function(tag) {
+
+      // ⚡ Bolt Optimization: Replace nested .forEach and .map().join('') with standard for loops
+      // Expected impact: Eliminates closure allocation and intermediate array manipulation overhead during tag cloud rendering.
+      for (var i = 0; i < items.length; i++) {
+        var itemTags = items[i].tags;
+        if (!itemTags) continue;
+        for (var j = 0; j < itemTags.length; j++) {
+          var tag = itemTags[j];
           if (tag) freq[tag] = (freq[tag] || 0) + 1;
-        });
-      });
+        }
+      }
       var sorted = Object.entries(freq).sort(function(a,b){ return b[1]-a[1]; }).slice(0,20);
-      tagCloudEl.innerHTML = sorted.map(function(entry) {
-        var tag = entry[0], count = entry[1];
-        return '<button class="tag-chip" data-wiki-tag="' + escapeHtml(tag) + '" title="' + count + ' 页面">'
-          + escapeHtml(tag) + '</button>';
-      }).join('');
+
+      var tagHtml = '';
+      for (var k = 0; k < sorted.length; k++) {
+        var entry = sorted[k];
+        var tagName = entry[0], count = entry[1];
+        tagHtml += '<button class="tag-chip" data-wiki-tag="' + escapeHtml(tagName) + '" title="' + count + ' 页面">'
+          + escapeHtml(tagName) + '</button>';
+      }
+      tagCloudEl.innerHTML = tagHtml;
     }
 
     function getResultCards() {
@@ -4433,18 +4443,26 @@
       if (idx < -1) idx = cards.length - 1;
       if (idx >= cards.length) idx = -1;
       _selectedIndex = idx;
-      cards.forEach(function(card, i) {
+
+      // ⚡ Bolt Optimization: Replace .forEach with standard for loop
+      // Expected impact: Eliminates closure allocation during keyboard navigation.
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i];
         card.classList.toggle('search-result-selected', i === idx);
         if (i === idx) card.scrollIntoView({ block: 'nearest' });
-      });
+      }
     }
 
     var HOT_QUERIES = ['强化学习', 'WBC 全身控制', 'Sim2Real', '模仿学习', '运动控制', 'MPC'];
 
     function renderEmptyState() {
-      var hotHtml = HOT_QUERIES.map(function(q) {
-        return '<button class="tag-chip js-hot-query-btn" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
-      }).join('');
+      // ⚡ Bolt Optimization: Replace .map().join('') with string concatenation in for loop
+      // Expected impact: Eliminates closure allocation and intermediate array manipulation overhead.
+      var hotHtml = '';
+      for (var i = 0; i < HOT_QUERIES.length; i++) {
+        var q = HOT_QUERIES[i];
+        hotHtml += '<button class="tag-chip js-hot-query-btn" data-query="' + escapeHtml(q) + '" style="cursor:pointer">' + escapeHtml(q) + '</button>';
+      }
       searchResults.innerHTML = '<div style="grid-column:1/-1;color:var(--text-muted);font-size:.85rem">'
         + '<p style="margin-bottom:.5rem">热门查询：</p>'
         + '<div class="chip-list">' + hotHtml + '</div>'
