@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "FRoM-W1 先从语言指令、本体状态与关节序列、仿真交互数据恢复场景、目标或运动表征，再用PPO/RL 策略训练、ACT/行为克隆模仿学习、VLM 语义规划/路由生成全身轨迹/动作序列。关键点是把示范轨迹压成可监督的动作预测问题，再通过动作 chunk 或闭环执行降低时序抖动。"
 related:

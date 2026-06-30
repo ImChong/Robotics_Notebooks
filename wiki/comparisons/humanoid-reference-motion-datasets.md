@@ -3,7 +3,7 @@ type: comparison
 title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday）
 tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1]
 summary: "五类常用人形数据源的表示、任务域、是否预重定向与典型下游对照，帮助在 tracking、HOI 与真机操作之间选型。"
-updated: 2026-06-20
+updated: 2026-06-30
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -12,6 +12,7 @@ related:
   - ../entities/omomo-dataset.md
   - ../entities/dataset-bfm-phuma.md
   - ../entities/humanoid-everyday-dataset.md
+  - ../entities/grail-locomanipulation-dataset.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
@@ -80,6 +81,7 @@ flowchart TD
 2. **交互 loco-manipulation**：OMOMO（+ 自采 MoCap）→ [OmniRetarget](../entities/paper-hrl-stack-03-omniretarget.md) → G1 `qpos` → RL。
 3. **轻量 recovery 原型**：LaFAN1 子集 → 重定向 → 单策略走/跑/起身（见 [SD-AMP](../entities/paper-unified-walk-run-recovery-sdamp.md)）。
 4. **操作策略（非参考轨迹）**：Humanoid Everyday 真机轨迹 → 模仿 / VLA；与 MoCap 库 **互补而非替代**。
+5. **全合成 G1 loco-manip 参考**：[GRAIL Dataset](../entities/grail-locomanipulation-dataset.md) 直接提供 post-SONIC 物理可行 `robot/` + `objects/` 轨迹，适合 tracker / IL / 视觉策略数据混合。
 
 ## 四段衔接：数据来源 → 质量评估 → 重定向 → 策略输入
 
@@ -99,6 +101,7 @@ flowchart TD
 - **把 Humanoid Everyday 当 MoCap 重定向源**：它是 **机器人执行数据**，不解决「人体→机器人参考」问题。
 - **忽视 PHUMA 与 AMASS 的重叠与差异**：PHUMA 策展自大规模互联网/Motion-X 系源，强调 **物理可信 + 已重定向**；AMASS 覆盖更广但 **伪影与重定向成本** 由用户承担。
 - **LaFAN1 许可当 MIT**：**NC-ND** 限制衍生数据与商业再分发；OmniRetarget 因此 **不公开发布 LAFAN1 重定向结果**。
+- **把 GRAIL 当真机 MoCap**：其为 **全合成 G1 轨迹**；视觉下游仍可能有 sim-to-real 鸿沟，且物体 USD 许可随 RoboCasa/ComAsset 等上游而异。
 
 ## 参考来源
 
@@ -107,6 +110,7 @@ flowchart TD
 - [OMOMO 仓库归档](../../sources/repos/omomo_release.md)
 - [PHUMA 仓库归档](../../sources/repos/phuma.md)
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
+- [GRAIL 数据集 Hugging Face 归档](../../sources/sites/grail-locomanipulation-huggingface.md)
 
 ## 关联页面
 
@@ -115,6 +119,7 @@ flowchart TD
 - [人形训练数据管线选型指南](../queries/humanoid-training-data-pipeline.md) — 把本表作为「参考来源」第一层接入端到端三层决策树
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
+- [GRAIL Loco-Manipulation Dataset](../entities/grail-locomanipulation-dataset.md)
 - [Unitree G1](../entities/unitree-g1.md)
 
 ## 推荐继续阅读

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-survey, humanoid, georgia-tech]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 arxiv: "2606.13232"
 summary: "全身触觉接口 + 力监督接触规划，补视觉难判的接触状态。"
 related:

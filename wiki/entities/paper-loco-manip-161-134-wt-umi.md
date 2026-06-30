@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "WT-UMI 主要解决数据闭环：用相机图像/多视角观测、遥操作/外骨骼数据、接触力/触觉信号采集人类操作和机器人状态，再通过ACT/行为克隆模仿学习、扩散策略/流匹配转成可训练、可复用的全身轨迹/动作序列、末端执行器/腕手目标、动作 chunk/token。关键点是把动作生成看成条件生成问题，用扩散或流匹配在多模态动作分布里采样可执行轨迹。"
 related:

@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, bit, sjtu, hust, bigai, ustc]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 venue: curated
 summary: "OmniXtreme 的关键词是 generality barrier in high-dynamic humanoid control。它指出，当动作库越来越多、动作越来越极端时，通用性和跟踪精度之间会出现冲突。一个策略想覆盖更多动作，可能会损失高动态技能的执行质量。"
 related:

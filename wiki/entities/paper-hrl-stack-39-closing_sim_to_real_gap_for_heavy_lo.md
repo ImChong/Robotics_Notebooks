@@ -3,7 +3,7 @@
 type: entity
 tags: [paper, humanoid, rl, motion-control, body-system-stack, lumos, teleai, sjtu, zju]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-30
 venue: curated
 summary: "HALO 解决 heavy-loaded humanoid agile motion skills。真实机器人执行任务时经常会携带未知负载，而负载会改变机器人动力学。一个空载时表现很好的策略，拿重物后可能直接失效。"
 related:

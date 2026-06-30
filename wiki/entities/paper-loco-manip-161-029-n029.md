@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-29
+updated: 2026-06-30
 venue: curated
 summary: "这篇工作主要解决数据闭环：用相机图像/多视角观测、本体状态与关节序列、人类视频/动捕轨迹采集人类操作和机器人状态，再通过IK/动作重定向转成可训练、可复用的全身轨迹/动作序列、低层控制器目标。关键点是把IK/动作重定向放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

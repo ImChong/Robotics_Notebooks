@@ -88,7 +88,7 @@
 | 058 | Cybo-Waiter | [paper-loco-manip-161-058-cybo-waiter](../../wiki/entities/paper-loco-manip-161-058-cybo-waiter.md) |
 | 059 | DemoHLM | [paper-loco-manip-161-059-demohlm](../../wiki/entities/paper-loco-manip-161-059-demohlm.md) |
 | 060 | EgoHumanoid | [paper-loco-manip-161-060-egohumanoid](../../wiki/entities/paper-loco-manip-161-060-egohumanoid.md) |
-| 061 | GRAIL | [paper-loco-manip-161-061-grail](../../wiki/entities/paper-loco-manip-161-061-grail.md) |
+| 061 | GRAIL | [paper-grail](../../wiki/entities/paper-grail.md) |
 | 062 | H2-COMPACT | [paper-loco-manip-161-062-h2-compact](../../wiki/entities/paper-loco-manip-161-062-h2-compact.md) |
 | 063 | HALOMI | [paper-loco-manip-161-063-halomi](../../wiki/entities/paper-loco-manip-161-063-halomi.md) |
 | 064 | HMC | [paper-loco-manip-161-064-hmc](../../wiki/entities/paper-loco-manip-161-064-hmc.md) |
