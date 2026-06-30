@@ -17,6 +17,7 @@ class RoadmapPageTests(unittest.TestCase):
             'id="roadmapMetaStages"',
             'id="roadmapFlowMermaidRoot"',
             'id="roadmapRelatedList"',
+            'id="roadmapPaperRelatedList"',
             'id="roadmapContent"',
             'id="roadmapContentSourceLink"',
             'id="roadmapTocList"',

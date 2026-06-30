@@ -126,5 +126,33 @@ class ResolveLatestNodesMaxTest(unittest.TestCase):
         self.assertEqual(self_loops, [])
 
 
+class PaperHubStatsTest(unittest.TestCase):
+    """top_paper_hubs：仅论文节点（type=entity 且带 paper 标签）按互链度排序。"""
+
+    def test_build_graph_data_marks_paper_nodes(self) -> None:
+        nodes, _ = glg._build_graph_data()
+        by_id = {n["id"]: n for n in nodes}
+        bfm = by_id.get("wiki/entities/paper-behavior-foundation-model-humanoid.md")
+        self.assertIsNotNone(bfm)
+        self.assertTrue(bfm.get("_is_paper"))
+        # 概念页不是论文节点
+        sim2real = by_id.get("wiki/concepts/sim2real.md")
+        self.assertIsNotNone(sim2real)
+        self.assertFalse(sim2real.get("_is_paper"))
+
+    def test_top_paper_hubs_are_papers_sorted_desc(self) -> None:
+        nodes, edges = glg._build_graph_data()
+        communities, community_meta = glg.assign_communities(nodes, edges)
+        paper_ids = {n["id"] for n in nodes if n.get("_is_paper")}
+        stats = glg._compute_graph_stats(nodes, edges, communities, community_meta)
+        hubs = stats["top_paper_hubs"]
+        self.assertTrue(hubs)
+        self.assertLessEqual(len(hubs), 10)
+        degrees = [h["degree"] for h in hubs]
+        self.assertEqual(degrees, sorted(degrees, reverse=True))
+        for hub in hubs:
+            self.assertIn(hub["id"], paper_ids)
+
+
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()

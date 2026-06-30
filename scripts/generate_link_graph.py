@@ -974,13 +974,17 @@ def _build_graph_data() -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
             continue
         content = page.read_text(encoding="utf-8")
         page_id = str(page.relative_to(REPO_ROOT))
+        node_type = parse_frontmatter_type(content)
+        node_tags = [str(t).strip().lower() for t in parse_frontmatter_list(content, "tags")]
         node: dict[str, Any] = {
             "id": page_id,
             "label": extract_title(content) or page.stem,
-            "type": parse_frontmatter_type(content),
+            "type": node_type,
             "health_score": compute_health_score(content),
             "summary": extract_summary(content),
             "_recency": wiki_recency_date(content, page).isoformat(),
+            # 论文节点：type=entity 且 frontmatter tags 含 paper（私有标记，写出前剔除）
+            "_is_paper": node_type == "entity" and "paper" in node_tags,
         }
         institutions = derive_node_institutions(content)
         if institutions:
@@ -1022,6 +1026,15 @@ def _compute_graph_stats(
     hub_list = [
         {"id": node["id"], "label": node["label"], "degree": total_degree[node["id"]]}
         for node in top_hubs
+    ]
+
+    paper_nodes = [node for node in nodes if node.get("_is_paper")]
+    top_paper_hubs = sorted(
+        paper_nodes, key=lambda node: total_degree.get(node["id"], 0), reverse=True
+    )[:10]
+    paper_hub_list = [
+        {"id": node["id"], "label": node["label"], "degree": total_degree[node["id"]]}
+        for node in top_paper_hubs
     ]
 
     orphans = [
@@ -1077,6 +1090,7 @@ def _compute_graph_stats(
         "edge_count": len(edges),
         "community_count": len(communities),
         "top_hubs": hub_list,
+        "top_paper_hubs": paper_hub_list,
         "orphan_nodes": orphans,
         "type_distribution": dict(sorted(type_dist.items(), key=lambda x: x[1], reverse=True)),
         "community_distribution": community_dist,
@@ -1116,6 +1130,7 @@ def main() -> None:
     )
 
     for node in nodes:
+        node.pop("_is_paper", None)
         recency = node.pop("_recency", None)
         if recency:
             node["recency"] = recency
