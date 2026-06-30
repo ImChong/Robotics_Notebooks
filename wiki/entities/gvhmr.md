@@ -18,6 +18,7 @@ related:
   - ../methods/crisp-real2sim.md
   - ./paper-htd-refine-monocular-hmr.md
   - ./paper-motion-cerebellum-tram.md
+  - ./paper-opencap-monocular.md
 sources:
   - ../../sources/papers/gvhmr_arxiv_2409_06662.md
   - ../../sources/sites/gvhmr-zju3dv-github-io.md
@@ -45,7 +46,7 @@ sources:
 - 在 [运动小脑 64 篇技术地图](../overview/humanoid-motion-cerebellum-technology-map.md) 中归类为 **C 数据入口**（16/64）：**视频动作恢复到重力对齐世界坐标**。
 - **重定向不是第一步**：现场只有手机视频时，必须先有 GVHMR（或 [TRAM](./paper-motion-cerebellum-tram.md) 等同类 HMR）才能把像素变成 **带世界坐标的 SMPL 序列**，再交给 [GMR](../methods/motion-retargeting-gmr.md) 等几何重定向（见 [humanoid-training-data-pipeline](../queries/humanoid-training-data-pipeline.md)）。
 - **坐标设计直击长视频痛点：** world 系定义随序列变化而歧义；GV 系 **每帧由重力+视线唯一确定**，天然对齐重力，避免沿重力方向的漂移累积。
-- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。
+- **生态互操作：** [GMR](https://github.com/YanjieZe/GMR) 官方支持 GVHMR 输入；[HTD-Refine](./paper-htd-refine-monocular-hmr.md) 可作为 **后处理** 改善 jitter/脚滑；[HY-Motion 1.0](../methods/hy-motion-1.md)、[CRISP-Real2Sim](../methods/crisp-real2sim.md) 等把其列为 **视频→SMPL** 环节。若目标是 **临床级运动学/动力学**（OpenSim 力矩、GRF）而非机器人 SMPL 重定向，见 [OpenCap Monocular](./paper-opencap-monocular.md)。
 
 ## 流程总览
 
@@ -140,6 +141,7 @@ flowchart LR
 - [GMR](../methods/motion-retargeting-gmr.md)
 - [HTD-Refine](./paper-htd-refine-monocular-hmr.md)
 - [TRAM](./paper-motion-cerebellum-tram.md)
+- [OpenCap Monocular](./paper-opencap-monocular.md) — 单手机生物力学运动学/动力学（WHAM 上游 + OpenSim），机器人重定向非默认路径
 
 ## 参考来源
 

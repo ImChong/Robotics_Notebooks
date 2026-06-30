@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-06-30] ingest | sources/papers/opencap_monocular_arxiv_2603_24733.md — OpenCap Monocular 单手机生物力学运动学/动力学；wiki/entities/paper-opencap-monocular.md
+
 ## [2026-06-30] ingest | sources/repos/en02-op.md — Westwood EN02-OP 开源三指末端；wiki/entities/en02-op.md；交叉 topic-grasp / manipulation
 
 ## [2026-06-30] ingest | sources/sites/grail-locomanipulation-huggingface.md — 入库 GRAIL Hugging Face 数据集；wiki/entities/grail-locomanipulation-dataset.md

@@ -13,6 +13,7 @@ related:
   - ../concepts/whole-body-tracking-pipeline.md
   - ./freemocap.md
   - ./gvhmr.md
+  - ./paper-opencap-monocular.md
   - ./amass.md
   - ../methods/motion-retargeting-gmr.md
   - ../overview/paper-notebook-category-14-human-motion.md
@@ -139,7 +140,7 @@ flowchart TB
 
 - **重定向流水线：** [Motion Retargeting Pipeline](../concepts/motion-retargeting-pipeline.md) — MAMMA 属于上游 **「干净多视角 → SMPL-X」** 源，与棚拍 BVH、AMASS 同级，优于单目估计噪声源。
 - **全身跟踪下游：** [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md) — 精炼 SMPL-X 可作为 WBT/模仿学习参考轨迹输入。
-- **开源 MoCap 对照：** [FreeMoCap](./freemocap.md) — 低成本多相机平台；[GVHMR](./gvhmr.md) — 单目视频上游。
+- **开源 MoCap 对照：** [FreeMoCap](./freemocap.md) — 低成本多相机平台；[GVHMR](./gvhmr.md) — 单目视频上游；[OpenCap Monocular](./paper-opencap-monocular.md) — 单手机 OpenSim 运动学/动力学。
 - **动捕数据生态：** [AMASS](./amass.md) — 统一 SMPL 大库；MAMMA 提供 **现场采集** 到 SMPL-X 的替代 Vicon 路径。
 - **论文笔记索引：** [Human Motion 分类](../overview/paper-notebook-category-14-human-motion.md)
 

@@ -936,6 +936,14 @@
         "sant-anna",
         "scuola-sant-anna"
       ]
+    },
+    "university-of-utah": {
+      "label": "犹他大学（University of Utah）",
+      "aliases": [
+        "university-of-utah",
+        "utah",
+        "utah-mobl"
+      ]
     }
   }
 }
