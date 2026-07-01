@@ -90,14 +90,14 @@ flowchart TB
 ### Goal-conditioned 子脉络（最贴近人形真机）
 
 - **跟踪驱动**：逐步对齐参考关节/姿态（DeepMimic 系）→ ASE/CALM/CASE 潜空间 → MaskedMimic / HOVER **多模式统一**。
-- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）；[ReactiveBFM](../entities/paper-reactivebfm.md) 把 BFM/SONIC 类 tracker 与 **自回归运动扩散规划器** 闭合成 **真机可部署 reactive 系统**，用 prefix curriculum 缓解开环级联的 exposure bias。
+- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）；[ReactiveBFM](../entities/paper-reactivebfm.md) 把 BFM/SONIC 类 tracker 与 **自回归运动扩散规划器** 闭合成 **真机可部署 reactive 系统**，用 prefix curriculum 缓解开环级联的 exposure bias；[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（SIGGRAPH 2026）在 **物理角色动画** 侧把 **FSQ 离散技能 + GPT 式下一 token 预测 + CoLA 微调** 推到 **>600 h** 规模——与 BFM 人形真机栈 **互补对照**（仿真生成式先验 vs 机器人执行器）。
 
 ## 适应两线（怎么接到新任务）
 
 | 路线 | 做法 | 代表（awesome 列表） |
 |------|------|----------------------|
 | **微调** | 全参 / LoRA / 修改潜任务向量、Task Tokens | Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation |
-| **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、[ReactiveBFM](../entities/paper-reactivebfm.md)（闭环 AR 规划 + BFM 跟踪，真机 reactive WBC） |
+| **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、[ReactiveBFM](../entities/paper-reactivebfm.md)（闭环 AR 规划 + BFM 跟踪，真机 reactive WBC）、[GPC](../entities/paper-gpc-generative-pretrained-controllers.md)（离散 token 自回归生成式控制器 + PEFT，物理角色动画） |
 
 与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 叙事一致：**VLA / 语言 / 扩散规划** 与 **运动跟踪执行器** 分层的工程趋势。
 
@@ -125,6 +125,7 @@ flowchart TB
 - [BFM（Behavior Foundation Model for Humanoid Robots）](../entities/paper-behavior-foundation-model-humanoid.md) — CVAE+掩码人形 WBC 单篇深读
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 地形感知 PMT/TCRS
 - [ReactiveBFM](../entities/paper-reactivebfm.md) — 闭环 AR 规划 + BFM 跟踪，真机 reactive WBC
+- [GPC](../entities/paper-gpc-generative-pretrained-controllers.md) — FSQ 离散技能 + GPT 式预训练生成式控制器（>600 h，SIGGRAPH 2026）
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)

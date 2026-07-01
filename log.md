@@ -1,5 +1,9 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/aspire_nvidia_gear_2026.md — 接入 NVIDIA ASPIRE 持续学习技能库系统；wiki/methods/aspire.md、wiki/entities/nvidia-gear-lab.md、wiki/methods/enpire.md、wiki/tasks/manipulation.md、wiki/queries/real-robot-policy-autoresearch-harness.md
+
+## [2026-07-01] ingest | sources/papers/gpc_arxiv_2606_29148.md — GPC 生成式预训练物理控制器；wiki/entities/paper-gpc-generative-pretrained-controllers.md
+
 ## [2026-07-01] ingest | sources/sites/tnkr-open-duck-mini-v2.md — 接入 Tnkr Open Duck Mini v2 项目文档；交叉更新 wiki/entities/open-duck-mini.md、wiki/entities/tnkr.md、wiki/entities/open-duck-mini-runtime.md
 
 ## [2026-07-01] ingest | sources/papers/reactivebfm_arxiv_2606_30362.md — ReactiveBFM 闭环规划–控制；wiki/entities/paper-reactivebfm.md
