@@ -101,3 +101,7 @@
 ## 2026-06-30 - Replace .forEach and .map().join('') with standard for loops in search UI logic
 **Learning:** In frontend JavaScript handling search inputs and tag rendering (`docs/main.js`), repeatedly using array iteration methods like `.forEach()` and `.map().join('')` in frequently executed paths (like tag cloud generation and rendering empty states) incurs unnecessary memory allocations and closure overhead, leading to garbage collection pauses that can degrade UI responsiveness.
 **Action:** When iterating over elements or generating HTML from arrays, particularly within search and UI rendering components, replace `.forEach()` and `.map().join('')` with standard `for` loops and direct string concatenation. This eliminates closures and intermediate arrays, resulting in faster and smoother execution.
+
+## 2026-07-01 - Python YAML Parsing Optimization
+**Learning:** PyYAML's `yaml.safe_load` in Python without `CSafeLoader` uses a pure Python scanner/parser, which is extremely slow when processing thousands of small markdown files with frontmatter (e.g., `search_indexing.py` where parsing takes ~2.5s for ~1500 files).
+**Action:** Always prefer `yaml.load(content, Loader=yaml.CSafeLoader)` when `yaml.CSafeLoader` is available. Add a `hasattr(yaml, "CSafeLoader")` check to safely fallback to `yaml.safe_load` for environments missing the C extension.

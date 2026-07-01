@@ -59,7 +59,10 @@ def parse_frontmatter(content: str) -> dict[str, str | list[str]]:
     if not block:
         return {}
     try:
-        parsed = yaml.safe_load(block)
+        if hasattr(yaml, "CSafeLoader"):
+            parsed = yaml.load(block, Loader=yaml.CSafeLoader)
+        else:
+            parsed = yaml.safe_load(block)
     except yaml.YAMLError:
         return {}
     if not isinstance(parsed, dict):
