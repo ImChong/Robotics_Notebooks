@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1523,
-  "edge_count": 10327,
+  "node_count": 1524,
+  "edge_count": 10336,
   "coverage": {
-    "covered": 1492,
-    "total": 1521,
+    "covered": 1493,
+    "total": 1522,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-robustness-robotic-manipulation-survey.md",
+      "detail_id": "entity-paper-robustness-robotic-manipulation-survey",
+      "label": "Robustness of Robotic Manipulation",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/methods/aspire.md",
       "detail_id": "wiki-methods-aspire",
@@ -29,14 +45,6 @@
       "detail_id": "wiki-methods-enpire",
       "label": "ENPIRE",
       "type": "method",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
       "recency": "2026-07-01",
       "source": "log.md"
     },
@@ -159,21 +167,13 @@
       "type": "query",
       "recency": "2026-06-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/sim2real.md",
-      "detail_id": "wiki-concepts-sim2real",
-      "label": "Sim2Real",
-      "type": "concept",
-      "recency": "2026-06-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/methods/aspire.md",
-    "detail_id": "wiki-methods-aspire",
-    "label": "ASPIRE",
-    "type": "method",
+    "path": "wiki/entities/paper-robustness-robotic-manipulation-survey.md",
+    "detail_id": "entity-paper-robustness-robotic-manipulation-survey",
+    "label": "Robustness of Robotic Manipulation",
+    "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"
   }
