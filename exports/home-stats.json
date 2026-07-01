@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1529,
-  "edge_count": 10394,
+  "node_count": 1530,
+  "edge_count": 10405,
   "coverage": {
-    "covered": 1498,
-    "total": 1527,
+    "covered": 1499,
+    "total": 1528,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hrdexdb-dataset.md",
+      "detail_id": "entity-hrdexdb-dataset",
+      "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/dexterous-data-collection-guide.md",
+      "detail_id": "wiki-queries-dexterous-data-collection-guide",
+      "label": "灵巧操作数据采集指南",
+      "type": "query",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-grasp.md",
+      "detail_id": "wiki-overview-topic-grasp",
+      "label": "抓取与操作（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
       "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
@@ -97,14 +129,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/contact-rich-manipulation.md",
       "detail_id": "wiki-concepts-contact-rich-manipulation",
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
@@ -143,36 +167,12 @@
       "type": "method",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/nvidia-gear-lab.md",
-      "detail_id": "entity-nvidia-gear-lab",
-      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/enpire.md",
-      "detail_id": "wiki-methods-enpire",
-      "label": "ENPIRE",
-      "type": "method",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
-      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
-      "label": "真机策略 autoresearch 闭环搭建指南",
-      "type": "query",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
-    "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
-    "label": "OmniContact（Chaining Meta-Skills via Contact Flow）",
+    "path": "wiki/entities/hrdexdb-dataset.md",
+    "detail_id": "entity-hrdexdb-dataset",
+    "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

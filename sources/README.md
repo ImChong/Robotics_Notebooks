@@ -44,6 +44,7 @@
 | [x] [hy_motion_arxiv_2512_23464.md](papers/hy_motion_arxiv_2512_23464.md) | HY-Motion 1.0：十亿级 DiT+流匹配文本→SMPL-H 运动（arXiv:2512.23464）摘录与 wiki 映射 |
 | [x] [holomotion_arxiv_2605_15336.md](papers/holomotion_arxiv_2605_15336.md) | HoloMotion-1：混合大规模运动语料 + 稀疏 MoE Transformer + 序列级 PPO 的人形零样本全身跟踪（arXiv:2605.15336，Horizon Robotics）摘录与 wiki 映射 |
 | [x] [homeworld_arxiv_2606_06390.md](papers/homeworld_arxiv_2606_06390.md) | HomeWorld（Kairos）：文本到 sim-ready 全屋 furnished 3D 四阶段流水线 + 300K 中国住宅平面图数据集（arXiv:2606.06390，Ace Robotics / CUHK MMLab）摘录与 wiki 映射 |
+| [x] [hrdexdb_arxiv_2604_14944.md](papers/hrdexdb_arxiv_2604_14944.md) | HRDexDB：同物体配对人–灵巧机器人抓取序列集（100+ 物体 · 23 相机 · 3D + 触觉；arXiv:2604.14944，SNU / RLWRLD）摘录与 wiki 映射 |
 | [x] [kairos_arxiv_2606_16533.md](papers/kairos_arxiv_2606_16533.md) | Kairos：原生 Physical AI 世界模型栈（CEDC + SWA/DSWA/GLA + WAM；Kairos-4B，arXiv:2606.16533，Kairos Team / kairos-agi）摘录与 wiki 映射 |
 | [x] [physforge_arxiv_2605_05163.md](papers/physforge_arxiv_2605_05163.md) | PhysForge：VLM 分层物理蓝图 + KVI 协同扩散生成仿真就绪关节 3D 资产；PhysDB 约 15 万四档标注（arXiv:2605.05163，HKU MMLab / 腾讯混元等）摘录与 wiki 映射 |
 | [x] [physx_omni_arxiv_2605_21572.md](papers/physx_omni_arxiv_2605_21572.md) | PhysX-Omni：统一刚体/可变形/关节体 sim-ready 3D 生成；PhysXVerse + PhysX-Bench（arXiv:2605.21572，NTU S-Lab）摘录与 wiki 映射 |
@@ -368,6 +369,7 @@
 | [x] [jc-bao-spider-project-github-io.md](sites/jc-bao-spider-project-github-io.md) | SPIDER 项目页 jc-bao.github.io/spider-project（管线、交互可视化、BibTeX） |
 | [x] [kairos-homeworld-github-io.md](sites/kairos-homeworld-github-io.md) | Kairos · HomeWorld 项目页 kairos-homeworld.github.io（四阶段全屋生成、300K/5K 数据集 teaser、具身交互 demo、BibTeX） |
 | [x] [snuvclab-dwm-github-io.md](sites/snuvclab-dwm-github-io.md) | DWM 项目页 snuvclab.github.io/dwm（TL;DR、方法洞察、BibTeX） |
+| [x] [snuvclab-hrdexdb-github-io.md](sites/snuvclab-hrdexdb-github-io.md) | HRDexDB 项目页 snuvclab.github.io/HRDexDB（配对人–机灵巧抓取 · 2.1K seq · 触觉；arXiv:2604.14944） |
 | [x] [soma-x-docs.md](sites/soma-x-docs.md) | SOMA-X 官方 API 文档站 nvlabs.github.io/SOMA-X/stable/ |
 | [x] [sprint-anonymous-project-page.md](sites/sprint-anonymous-project-page.md) | SPRINT 匿名项目页 anonymous.4open.science/w/SPRINT-138A（跨身高先验与真机冲刺 demo；arXiv:2605.28549） |
 | [x] [ssr-humanoid-github-io.md](sites/ssr-humanoid-github-io.md) | SSR 项目页 ssr-humanoid.github.io（多样楼梯/沟壑/高台、1.3 km 户外长程与跨平台 demo；arXiv:2605.30770） |
