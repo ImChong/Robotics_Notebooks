@@ -18,6 +18,7 @@ related:
   - ../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md
   - ../entities/dreamwaq-plus.md
   - ../entities/paper-perceptive-bfm.md
+  - ../entities/paper-fada-humanoid.md
   - ../formalizations/gae.md
   - ../formalizations/mdp.md
 sources:
@@ -240,6 +241,7 @@ $$L_{actor} = -\mathbb{E}[\log \pi_\theta(a|s_{obs}) \cdot A(s_{priv}, a)]$$
 - [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 人形分地形高程专家 → 多视角深度学生
 - [LadderMan](../entities/paper-ladderman-humanoid-perceptive-ladder-climbing.md) — 单参考 hybrid tracking 专家 → 深度 visuomotor 学生
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — TCRS 合成 **地形一致 adapted 参考** 作盲 teacher 监督；部署仍用 **raw 参考 + 视觉学生**
+- [FADA](../entities/paper-fada-humanoid.md) — 仿真特权 oracle → DAgger 蒸馏 Planner–IDM；部署仅 LoRA 微调 IDM（arXiv:2606.28476）
 - [GAE（广义优势估计）](../formalizations/gae.md) — Teacher 策略训练阶段通常使用 GAE 优势估计
 - [MDP](../formalizations/mdp.md) — 特权训练本质上是 MDP 中部分可观测性的一种工程解决方案
 

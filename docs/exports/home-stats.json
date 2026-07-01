@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1520,
-  "edge_count": 10283,
+  "node_count": 1521,
+  "edge_count": 10297,
   "coverage": {
-    "covered": 1489,
-    "total": 1518,
+    "covered": 1490,
+    "total": 1519,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -12,6 +12,14 @@
       "path": "wiki/entities/paper-reactivebfm.md",
       "detail_id": "entity-paper-reactivebfm",
       "label": "ReactiveBFM",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-fada-humanoid.md",
+      "detail_id": "entity-paper-fada-humanoid",
+      "label": "FADA（Few-Shot Domain Adaptation via Dynamics Alignment）",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
@@ -156,14 +164,6 @@
       "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
       "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
       "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-scenebot.md",
-      "detail_id": "entity-paper-scenebot",
-      "label": "SceneBot（Contact-Prompted Whole-Body Tracking with Scene-Interaction）",
       "type": "entity",
       "recency": "2026-06-29",
       "source": "log.md"
