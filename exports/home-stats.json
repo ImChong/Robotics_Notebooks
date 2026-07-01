@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1527,
-  "edge_count": 10375,
+  "node_count": 1528,
+  "edge_count": 10386,
   "coverage": {
-    "covered": 1496,
-    "total": 1525,
+    "covered": 1497,
+    "total": 1526,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/hrdexdb-dataset.md",
+      "detail_id": "entity-hrdexdb-dataset",
+      "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/dexterous-data-collection-guide.md",
+      "detail_id": "wiki-queries-dexterous-data-collection-guide",
+      "label": "灵巧操作数据采集指南",
+      "type": "query",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/overview/topic-grasp.md",
+      "detail_id": "wiki-overview-topic-grasp",
+      "label": "抓取与操作（专题汇总）",
+      "type": "overview",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
       "detail_id": "entity-paper-argus-dynamic-symmetry",
@@ -81,14 +113,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/concepts/contact-rich-manipulation.md",
       "detail_id": "wiki-concepts-contact-rich-manipulation",
       "label": "Contact-Rich Manipulation（接触丰富型操作）",
@@ -143,36 +167,12 @@
       "type": "method",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
-      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
-      "label": "真机策略 autoresearch 闭环搭建指南",
-      "type": "query",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
-      "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
-      "label": "GPC（Generative Pretrained Controllers）",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini.md",
-      "detail_id": "entity-open-duck-mini",
-      "label": "Open Duck Mini",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
-    "detail_id": "entity-paper-argus-dynamic-symmetry",
-    "label": "Argus（Dynamic Symmetry / Dynamic Isotropy）",
+    "path": "wiki/entities/hrdexdb-dataset.md",
+    "detail_id": "entity-hrdexdb-dataset",
+    "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

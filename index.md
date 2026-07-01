@@ -633,6 +633,7 @@ SORT type ASC
 - [Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots](entities/paper-notebook-human-robot-collaboration-for-the-remote-control.md) — Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots** 已列入 [Humanoid Robot L `📅unknown` `[entity_page]`
 - [Generating Diverse and Natural 3D Human Motions from Textual Descriptions](entities/paper-notebook-humanml3d.md) — Generating Diverse and Natural 3D Human Motions from Textual Descriptions** 收录于 [Humanoid Robot Le `📅unknown` `[entity_page]`
 - [Humanoid Everyday](entities/humanoid-everyday-dataset.md) — USC/TRI 大规模人形真机操作集：260 任务、10.3k 轨迹、300 万+ 帧多模态 `📅2026-06-16` `[entity_page]`
+- [HRDexDB（人–机器人配对灵巧抓取数据集）](entities/hrdexdb-dataset.md) — SNU/RLWRLD 同物体配对人–灵巧机器人抓取序列集：100+ 物体 · 23 相机 · 3D + 触觉 `📅2026-07-01` `[entity_page]`
 - [Humanoid Hanoi](entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — Humanoid Hanoi: Investigating Shared Whole-Body Control for Skill-Based Box Rearrangement** 已列入 [H `📅unknown` `[entity_page]`
 - [Humanoid Locomotion as Next Token Prediction](entities/paper-notebook-humanoid-locomotion-as-next-token-prediction.md) — Humanoid Locomotion as Next Token Prediction** 收录于 [Humanoid Robot Learning Paper Notebooks](https `📅unknown` `[entity_page]`
 - [Humanoid Manipulation Interface](entities/paper-notebook-humanoid-manipulation-interface.md) — Humanoid Manipulation Interface: Humanoid Whole-Body Manipulation from Robot-Free Demonstrations `📅unknown` `[entity_page]`

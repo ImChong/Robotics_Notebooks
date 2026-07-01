@@ -43,6 +43,7 @@ summary: "灵巧操作数据采集指南：介绍了如何利用 Shadow Hand、A
 - **优点**：无需佩戴繁琐设备，操作者手部无约束。
 - **缺点**：视觉遮挡严重（例如手指重叠时）；缺乏力反馈，操作者很难感知抓握力度。
 - **代表项目**：AnyTeleop, DexCap；开源硬件侧 [RUKA-v2 Hand](../entities/ruka-v2-hand.md) 已集成 **AnyTeleop 向量重定向 + OpenTeach/Oculus VR** 遥操作管线。
+- **配对数据集参考**：[HRDexDB](../entities/hrdexdb-dataset.md) 采用 **XSens + MANUS 手套** 遥操 xArm6 + 多灵巧手，在 23 路同步相机下采集 **同物体人–机配对** 3D 轨迹与触觉（与纯视觉 teleop 的遮挡权衡不同）。
 
 ## 2. 穿戴式数据手套 (Data Gloves)
 
