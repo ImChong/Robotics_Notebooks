@@ -99,7 +99,7 @@ flowchart TB
 - **扰动：** 从 $\mathcal{W}^{h,k}$ 采样 wrench 扰动物体，对齐演示力学。
 - **残差动作：** retarget 运动作先验 + 残差（ManipTrans 风格）。
 
-### Benchmark 与定量（论文 §3.3–4.1）
+## 评测：Benchmark 与定量（论文 §3.3–4.1）
 
 | 维度 | 规模 / 结果 |
 |------|-------------|

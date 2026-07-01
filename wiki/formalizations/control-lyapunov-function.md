@@ -1,7 +1,7 @@
 ---
 type: formalization
 tags: [control, lyapunov, clf, stability, qp, optimization, safety]
-status: stub
+status: complete
 summary: "Control Lyapunov Function（控制李雅普诺夫函数）通过构造满足 V̇(x)≤-αV(x) 的标量函数，为控制系统提供可证明的渐近稳定性保证，是 CLF-CBF-QP 框架的稳定性核心。"
 sources:
   - ../../sources/papers/optimal_control_theory.md
