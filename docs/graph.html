@@ -2239,9 +2239,11 @@
             if (pinnedNode === d) {
               pinnedNode = null;
               hideTooltip();
+              clearGraph3DMobileHighlight();
             } else {
               pinnedNode = d;
               showTooltip(ev, d);
+              syncGraph3DMobileHighlight(d);
             }
           } else {
             openSidebar(d);
@@ -2324,6 +2326,7 @@
         }
         graph3dView.show();
         graph3dView.syncFilters();
+        if (isMobile && pinnedNode) syncGraph3DMobileHighlight(pinnedNode);
         // 不在切换时自动适配：仅首次力布局结束后由 graph-3d 自动适配一次，
         // 之后只有用户点「适配屏幕」按钮才适配。
       } else {
@@ -3082,6 +3085,7 @@
           setTimeout(() => {
             pinnedNode = null;
             hideTooltip();
+            clearGraph3DMobileHighlight();
           }, 100);
         }
       }
@@ -4322,8 +4326,8 @@
       };
     }
 
-    function openSidebar(d) {
-      // V19: 高亮当前节点及 2-hop 邻居
+    /** 侧栏/3D 选中高亮：当前节点的一跳与二跳邻居集合 */
+    function buildSidebarNeighborSets(d) {
       const direct = new Set();
       const secondary = new Set();
       edges.forEach(e => {
@@ -4336,7 +4340,25 @@
         if (direct.has(sId) && tId !== d.id) secondary.add(tId);
         if (direct.has(tId) && sId !== d.id) secondary.add(sId);
       });
+      return { direct, secondary };
+    }
 
+    /** 触屏 3D：固定卡片选中态写入持久高亮（不依赖 hover，旋转视角不会丢） */
+    function syncGraph3DMobileHighlight(d) {
+      if (!isMobile || !graph3dView || !is3DView() || !d) return;
+      const { direct, secondary } = buildSidebarNeighborSets(d);
+      graph3dView.applySidebarHighlight(d, direct, secondary);
+    }
+
+    function clearGraph3DMobileHighlight() {
+      if (!graph3dView || !is3DView()) return;
+      if (sidebar.classList.contains('open')) return;
+      graph3dView.clearSidebarHighlight();
+    }
+
+    function openSidebar(d) {
+      // V19: 高亮当前节点及 2-hop 邻居
+      const { direct, secondary } = buildSidebarNeighborSets(d);
       sidebarFocusIds = new Set([d.id, ...direct]);
 
       hideTooltip();
@@ -4496,6 +4518,7 @@
       if (!isMobile || !pinnedNode) return false;
       pinnedNode = null;
       hideTooltip();
+      clearGraph3DMobileHighlight();
       return true;
     }
 
