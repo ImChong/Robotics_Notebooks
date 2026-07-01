@@ -944,6 +944,20 @@
         "utah",
         "utah-mobl"
       ]
+    },
+    "noitom": {
+      "label": "诺亦腾机器人（Noitom Robotics）",
+      "aliases": [
+        "noitom",
+        "noitom-robotics"
+      ]
+    },
+    "whu": {
+      "label": "武汉大学（WHU）",
+      "aliases": [
+        "whu",
+        "wuhan-university"
+      ]
     }
   }
 }

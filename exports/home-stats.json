@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1528,
-  "edge_count": 10386,
+  "node_count": 1530,
+  "edge_count": 10405,
   "coverage": {
-    "covered": 1497,
-    "total": 1526,
+    "covered": 1499,
+    "total": 1528,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -37,6 +37,22 @@
       "detail_id": "wiki-overview-topic-grasp",
       "label": "抓取与操作（专题汇总）",
       "type": "overview",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
+      "label": "OmniContact（Chaining Meta-Skills via Contact Flow）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/omnicontact-sim2sim.md",
+      "detail_id": "entity-omnicontact-sim2sim",
+      "label": "OmniContact sim2sim",
+      "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
@@ -148,22 +164,6 @@
       "path": "wiki/methods/aspire.md",
       "detail_id": "wiki-methods-aspire",
       "label": "ASPIRE",
-      "type": "method",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/nvidia-gear-lab.md",
-      "detail_id": "entity-nvidia-gear-lab",
-      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/enpire.md",
-      "detail_id": "wiki-methods-enpire",
-      "label": "ENPIRE",
       "type": "method",
       "recency": "2026-07-01",
       "source": "log.md"

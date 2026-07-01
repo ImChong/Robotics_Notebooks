@@ -2,6 +2,8 @@
 
 ## [2026-07-01] ingest | sources/papers/hrdexdb_arxiv_2604_14944.md — HRDexDB 配对灵巧抓取数据集；wiki/entities/hrdexdb-dataset.md、wiki/tasks/manipulation.md、wiki/queries/dexterous-data-collection-guide.md、wiki/overview/topic-grasp.md
 
+## [2026-07-01] ingest | sources/papers/omnicontact_arxiv_2606_26201.md — OmniContact Contact Flow meta-skill 链式 loco-manipulation；wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md、wiki/entities/omnicontact-sim2sim.md
+
 ## [2026-07-01] ingest | sources/papers/argus_dynamic_symmetry_scirobotics_2026.md、sources/repos/argus_general_robotics_lab.md — Argus 动态对称与全向球形腿式机器人（Science Robotics 2026）；wiki/entities/paper-argus-dynamic-symmetry.md、wiki/tasks/locomotion.md、wiki/tasks/loco-manipulation.md、wiki/tasks/balance-recovery.md
 
 ## [2026-07-01] ingest | sources/repos/tsil.md — TSIL 官方仓库接入；更新 wiki/entities/paper-tsil-temporal-self-imitation-learning.md
