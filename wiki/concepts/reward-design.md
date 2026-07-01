@@ -9,8 +9,9 @@ related:
   - ./domain-randomization.md
   - ../queries/reward-design-guide.md
   - ../methods/disney-olaf-character-robot.md
+  - ../entities/paper-tsil-temporal-self-imitation-learning.md
 summary: "Reward Design 研究如何把任务目标转成可学习的奖励信号，是机器人 RL 成败的关键工程环节。"
-updated: 2026-06-11
+updated: 2026-07-01
 sources:
   - ../../sources/papers/policy_optimization.md
   - ../../sources/papers/privileged_training.md
@@ -136,6 +137,9 @@ $$R'(s, a, s') = R(s, a, s') + \gamma \Phi(s') - \Phi(s)$$
 
 ### LLM-based Reward Design
 近期趋势：用 LLM 自动生成初始奖励函数，再通过迭代 RL 训练+人工反馈修正。代表：EUREKA (Ma et al. 2023)。
+
+### 4. 从成功轨迹挖掘时间效率（TSIL）
+长时域操作 RL 中，加大稀疏成功奖励或逐步时间惩罚往往**不能**稳定区分「快成功」与「慢成功 / 绕路刷 shaping」。[TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) 把训练期涌现的**最快成功完成时间**按任务配置写成自适应目标 $D(\phi)$，并回放效率加权轨迹——把**时间结构**当作自监督，而非只靠手工 shaping 调参。
 
 ## 与其他页面的关系
 
