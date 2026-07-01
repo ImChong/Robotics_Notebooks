@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/robustness_robotic_manipulation_dong_2026.md — 操作鲁棒性系统综述；wiki/entities/paper-robustness-robotic-manipulation-survey.md、wiki/tasks/manipulation.md
+
 ## [2026-07-01] ingest | sources/papers/aspire_nvidia_gear_2026.md — 接入 NVIDIA ASPIRE 持续学习技能库系统；wiki/methods/aspire.md、wiki/entities/nvidia-gear-lab.md、wiki/methods/enpire.md、wiki/tasks/manipulation.md、wiki/queries/real-robot-policy-autoresearch-harness.md
 
 ## [2026-07-01] ingest | sources/papers/gpc_arxiv_2606_29148.md — GPC 生成式预训练物理控制器；wiki/entities/paper-gpc-generative-pretrained-controllers.md
