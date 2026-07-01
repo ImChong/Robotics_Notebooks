@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1521,
-  "edge_count": 10297,
+  "node_count": 1522,
+  "edge_count": 10311,
   "coverage": {
-    "covered": 1490,
-    "total": 1519,
+    "covered": 1491,
+    "total": 1520,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/methods/aspire.md",
+      "detail_id": "wiki-methods-aspire",
+      "label": "ASPIRE",
+      "type": "method",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-gear-lab.md",
+      "detail_id": "entity-nvidia-gear-lab",
+      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/methods/enpire.md",
+      "detail_id": "wiki-methods-enpire",
+      "label": "ENPIRE",
+      "type": "method",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/manipulation.md",
+      "detail_id": "wiki-tasks-manipulation",
+      "label": "Manipulation",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/real-robot-policy-autoresearch-harness.md",
+      "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
+      "label": "真机策略 autoresearch 闭环搭建指南",
+      "type": "query",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-reactivebfm.md",
       "detail_id": "entity-paper-reactivebfm",
@@ -127,53 +167,13 @@
       "type": "entity",
       "recency": "2026-06-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-cwi-composite-humanoid-whole-body-imitation.md",
-      "detail_id": "entity-paper-cwi-composite-humanoid-whole-body-imitation",
-      "label": "CWI（Composite Humanoid Whole-Body Imitation · Loco-Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-vmp.md",
-      "detail_id": "entity-paper-notebook-vmp",
-      "label": "VMP（Versatile Motion Priors）",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-sonic.md",
-      "detail_id": "entity-paper-sonic",
-      "label": "SONIC",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/sonic-motion-tracking.md",
-      "detail_id": "wiki-methods-sonic-motion-tracking",
-      "label": "SONIC（规模化运动跟踪人形控制）",
-      "type": "method",
-      "recency": "2026-06-29",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
-      "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
-      "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-reactivebfm.md",
-    "detail_id": "entity-paper-reactivebfm",
-    "label": "ReactiveBFM",
-    "type": "entity",
+    "path": "wiki/methods/aspire.md",
+    "detail_id": "wiki-methods-aspire",
+    "label": "ASPIRE",
+    "type": "method",
     "recency": "2026-07-01",
     "source": "log.md"
   }

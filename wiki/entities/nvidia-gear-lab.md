@@ -2,8 +2,9 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-01
 related:
+  - ../methods/aspire.md
   - ../methods/egoscale.md
   - ../methods/enpire.md
   - ../methods/sonic-motion-tracking.md
@@ -91,6 +92,7 @@ flowchart TB
 |------|------|----------|
 | **SONIC** | 规模化人形 motion tracking / 统一低层接口 | [sonic-motion-tracking.md](../methods/sonic-motion-tracking.md) |
 | **ENPIRE** | 真机 coding-agent 策略自改进 harness | [enpire.md](../methods/enpire.md) |
+| **ASPIRE** | 持续学习 code-as-policy + 可扩展技能库 | [aspire.md](../methods/aspire.md) |
 | **Vesta** | 统一定位/VLN/具身推理/记忆子任务规划的通才 planner VLM | [paper-vesta-generalist-embodied-reasoning.md](./paper-vesta-generalist-embodied-reasoning.md) |
 | **GR00T Visual Sim2Real** | VIRAL / DoorMan 等像素→动作迁移 | [gr00t-visual-sim2real.md](./gr00t-visual-sim2real.md) |
 | **Real-robot autoresearch** | ENPIRE 与机队 scaling 讨论 | [real-robot-policy-autoresearch-harness.md](../queries/real-robot-policy-autoresearch-harness.md) |
@@ -106,6 +108,7 @@ flowchart TB
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md) — GEAR 人形 **低层控制单仓**（WBC + SONIC + MotionBricks）
 - [EgoScale](../methods/egoscale.md) — GEAR **人视频 → 灵巧 VLA** scaling 叙事
 - [ENPIRE](../methods/enpire.md) — GEAR **真机 autoresearch** 闭环
+- [ASPIRE](../methods/aspire.md) — GEAR **程序技能库持续学习**（code-as-policy + 进化搜索）
 - [Zhengyi Luo](./zhengyi-luo.md) / [Tairan He](./tairan-he.md) — GEAR–CMU 合作作者网络节点
 - [Foundation Policy](../concepts/foundation-policy.md) — 通才策略抽象层
 
@@ -127,4 +130,5 @@ flowchart TB
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [EgoScale](../methods/egoscale.md)
 - [ENPIRE](../methods/enpire.md)
+- [ASPIRE](../methods/aspire.md)
 - [GR00T-WholeBodyControl](./gr00t-wholebodycontrol.md)

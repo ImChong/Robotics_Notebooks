@@ -3,10 +3,11 @@
 type: method
 tags: [coding-agents, dexterous-manipulation, real-world-rl, nvidia-gear, auto-reset, policy-improvement, autoresearch, behavior-cloning, reinforcement-learning, nvidia]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-01
 date: 2026-06-18
 summary: "ENPIRE 把真机策略自改进封装成 coding agent 可编排的 EN–PI–R–E 闭环：自动 reset/verify 环境、多范式策略改进、并行 rollout 与跨假设演化，在 Push-T、插针、GPU 插拔、扎/剪扎带等灵巧任务上报告约 99% pass@8，并给出 AutoEnvBench 与 MRU/MTU 机队 scaling 指标。"
 related:
+  - ./aspire.md
   - ./imitation-learning.md
   - ./behavior-cloning.md
   - ./reinforcement-learning.md
@@ -136,12 +137,14 @@ flowchart TB
 - 与 [仿真评测基础设施](../concepts/simulation-evaluation-infrastructure.md)：RoboCasa 评测用于 **密集 agent 行为 ablation**；真机环仍是 **最终判据**，二者分工而非互替。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：MRU/MTU 与多机队曲线可视为 **物理 autoresearch 的 scaling 维度**，与数据/模型缩放律互补。
 - 与 [EgoScale](./egoscale.md)：同属 NVIDIA GEAR **灵巧操作** 叙事，但 EgoScale 强调 **人视频规模预训练 VLA**；ENPIRE 强调 **agent 编排的真机策略搜索闭环**。
+- 与 [ASPIRE](./aspire.md)：同属 GEAR **coding-agent 机器人研发自动化** 谱系；ENPIRE 优化 **策略训练配方（BC/RL 等）**，ASPIRE 优化 **控制程序 + 技能库复利**（逐原语 trace 调试与进化搜索）。
 - 与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md)：GEAR 生态内 **低层 WBC / SONIC** 与 ENPIRE 的 **桌面灵巧 autoresearch** 面向不同层级，可对照「能力栈 vs 研究自动化栈」。
 
 ## 推荐继续阅读
 
 - [真机策略 autoresearch 闭环搭建指南](../queries/real-robot-policy-autoresearch-harness.md) — 把 EN–PI–R–E 落到环境前提、范式选型与机队 scaling 的实操页
 - ENPIRE 官方项目页：<https://research.nvidia.com/labs/gear/enpire/>
+- [ASPIRE](./aspire.md) — GEAR 姊妹工作：持续学习技能库 + code-as-policy
 - RoboCasa 论文（仿真日常操作基准）：<https://arxiv.org/abs/2406.02545>
 - Karpathy LLM Wiki 模式（本库维护哲学）：[llm-wiki-karpathy](../references/llm-wiki-karpathy.md)
 
