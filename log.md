@@ -1,5 +1,12 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] structural | scripts/bootstrap_paper_notebook_knowledge.py — 同步 Humanoid_Robot_Learning_Paper_Notebooks 最新 progress.json / PROGRESS.md：full-map 549 篇、索引 513 篇；新建 4 个 `wiki/entities/paper-notebook-*` 与 11 个 sources；修复 61 处深读 URL；更新 14 类分类父节点与 `humanoid-paper-notebooks-index.md`；修复 `sync_paper_notebook_links.py` 替换 URL 时吞掉 `>` 的 lint 问题
+
+- 数据源：[progress.json](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/progress.json)（284 完成 / 87 待读）+ [papers/PROGRESS.md](https://github.com/ImChong/Humanoid_Robot_Learning_Paper_Notebooks/blob/main/papers/PROGRESS.md)
+- 工具：`make paper-notebook-bootstrap`、`make paper-notebook-links`、`make paper-notebook-summaries`
+- 新建：`wiki/entities/paper-notebook-learning-contact-representation-for-leg-odometry.md`、`wiki/entities/paper-notebook-learning-multi-modal-whole-body-control-for-real.md`、`wiki/entities/paper-notebook-physics-based-motion-tracking-of-contact-rich-in.md`、`wiki/entities/paper-notebook-simulator-adaptation-via-proprioceptive-distribu.md`
+- 相关：`wiki/overview/paper-notebook-category-*.md`、`wiki/overview/humanoid-paper-notebooks-index.md`、`schema/paper-notebook-wiki-full-map.yml`
+
 ## [2026-07-01] ingest | sources/papers/hrdexdb_arxiv_2604_14944.md — HRDexDB 配对灵巧抓取数据集；wiki/entities/hrdexdb-dataset.md、wiki/tasks/manipulation.md、wiki/queries/dexterous-data-collection-guide.md、wiki/overview/topic-grasp.md
 
 ## [2026-07-01] ingest | sources/papers/omnicontact_arxiv_2606_26201.md — OmniContact Contact Flow meta-skill 链式 loco-manipulation；wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md、wiki/entities/omnicontact-sim2sim.md

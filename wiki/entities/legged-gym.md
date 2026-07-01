@@ -252,6 +252,8 @@ tags: [eth]
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Extreme Parkour with Legged Robots](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html)
+- [机器人论文阅读笔记：Real-World Humanoid Locomotion with RL](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Real-World_Humanoid_Locomotion_with_RL/Real-World_Humanoid_Locomotion_with_RL.html)
 - [Humanoid-Gym](./humanoid-gym.md) — 基于 legged_gym 的人形专用 RL 框架与 XBot 零样本 sim2real
 - [机器人论文阅读笔记：Humanoid-Gym Zero-Shot Sim2Real Transfer](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/03_High_Impact_Selection/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer/Humanoid-Gym_Zero-Shot_Sim2Real_Transfer.html)
 - 官方仓库：<https://github.com/leggedrobotics/legged_gym>

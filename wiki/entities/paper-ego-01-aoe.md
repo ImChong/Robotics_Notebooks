@@ -82,5 +82,6 @@ sources:
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：EgoMimic](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video.html)
 - [Ego 9 篇技术地图](../overview/ego-9-papers-technology-map.md)
 - [人形 RL 身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)

@@ -2,10 +2,10 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-01
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 06：灵巧操作（59 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Manipulation
@@ -36,26 +36,28 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [DexterCap](../entities/paper-notebook-dextercap.md) — 待深读
 - [Dexterity from Smart Lenses](../entities/paper-notebook-dexterity-from-smart-lenses-multi-fingered-robot.md) — 待深读
 - [Dexterous Safe Control for Humanoids in Cluttered Environments via Projected Safe Set Algorithm](../entities/paper-notebook-dexterous-safe-control-for-humanoids-in-cluttere.md) — 待深读
-- [DreamDojo](../entities/paper-hrl-stack-35-dreamdojo.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos/DreamDojo_A_Generalist_Robot_World_Model_from_Large-Scale_Human_Videos.html)
+- [DreamDojo](../entities/paper-hrl-stack-35-dreamdojo.md) — 见 wiki 实体页
 - [DreamGen](../entities/paper-notebook-dreamgen-unlocking-generalization-in-robot-learn.md) — 待深读
 - [DreamZero](../entities/paper-notebook-dreamzero-world-action-models-are-zero-shot-poli.md) — 待深读
 - [EgoDemoGen](../entities/paper-notebook-egodemogen-novel-egocentric-demonstration-genera.md) — 待深读
-- [EgoDex](../entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 待深读
+- [EgoDex](../entities/humannet.md) — 见 wiki 实体页
+- [EgoDex（计划索引）](../entities/paper-notebook-egodex-learning-dexterous-manipulation-from-larg.md) — 待深读
 - [EgoMI](../entities/paper-notebook-egomi-learning-active-vision-and-whole-body-mani.md) — 待深读
-- [EgoMimic](../entities/paper-ego-01-aoe.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video/EgoMimic_Scaling_Imitation_Learning_via_Egocentric_Video.html)
-- [EgoVLA](../entities/paper-loco-manip-161-161-egovla.md) — 待深读
+- [EgoMimic](../entities/paper-ego-01-aoe.md) — 见 wiki 实体页
+- [EgoVLA](../entities/paper-loco-manip-161-161-egovla.md) — 见 wiki 实体页
 - [Endowing GPT-4 with a Humanoid Body](../entities/paper-notebook-endowing-gpt-4-with-a-humanoid-body-building-the.md) — 待深读
 - [Generalizable Geometric Prior and Recurrent Spiking Feature Learning for Humanoid Robot Manipulation](../entities/paper-notebook-rgmp-s.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation/RGMP-S__Generalizable_Geometric_Prior_and_Recurrent_Spiking_Feature_Learning_for_Humanoid_Manipulation.html)
-- [Genie Sim 3.0](../entities/genie-sim-3.md) — 待深读
+- [Genie Sim 3.0](../entities/genie-sim-3.md) — 见 wiki 实体页
 - [H-RDT](../entities/paper-notebook-h-rdt-human-manipulation-enhanced-bimanual-robot.md) — 待深读
 - [Hierarchical Vision-Language Planning for Multi-Step Humanoid Manipulation](../entities/paper-notebook-hierarchical-vision-language-planning-for-multi.md) — 待深读
-- [HumDex](../tasks/manipulation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy/HumDex_Humanoid_Dexterous_Manipulation_Made_Easy.html)
+- [HumDex](../tasks/manipulation.md) — 见 wiki 实体页
 - [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) — 见 wiki 实体页
 - [Humanoid Policy ~ Human Policy](../entities/paper-notebook-humanoid-policy-human-policy.md) — 待深读
 - [HumanoidVLM](../entities/paper-notebook-humanoidvlm-vision-language-guided-impedance-con.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation/HumanoidVLM_Vision-Language-Guided_Impedance_Control_for_Contact-Rich_Humanoid_Manipulation.html)
 - [Humanoids in Hospitals](../entities/paper-notebook-humanoids-in-hospitals-a-technical-study-of-huma.md) — 待深读
 - [In-N-On](../entities/paper-notebook-in-n-on-scaling-egocentric-manipulation-with-in.md) — 待深读
 - [Is imitation learning the route to humanoid robots?](../entities/paper-notebook-is-imitation-learning-the-route-to-humanoid-robo.md) — 待深读
+- [Learning Versatile Humanoid Manipulation with Touch Dreaming](../entities/gel-slim.md) — 见 wiki 实体页
 - [Learning Visuotactile Skills with Two Multifingered Hands](../entities/paper-notebook-learning-visuotactile-skills-with-two-multifinge.md) — 待深读
 - [Learning to Grasp Anything by Playing with Random Toys](../entities/paper-notebook-learning-to-grasp-anything-by-playing-with-rando.md) — 待深读
 - [Learning to Look Around](../entities/paper-notebook-learning-to-look-around-enhancing-teleoperation.md) — 待深读
@@ -66,7 +68,7 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [MobileH2R](../entities/paper-notebook-mobileh2r-learning-generalizable-human-to-mobile.md) — 待深读
 - [OKAMI](../entities/paper-notebook-okami-teaching-humanoid-robots-manipulation-skil.md) — 待深读
 - [Object-Centric Dexterous Manipulation from Human Motion Data](../entities/paper-notebook-object-centric-dexterous-manipulation-from-human.md) — 待深读
-- [Open-TeleVision](../entities/paper-loco-manip-161-131-open-television.md) — 待深读
+- [Open-TeleVision](../entities/paper-loco-manip-161-131-open-television.md) — 见 wiki 实体页
 - [RGMP](../entities/paper-notebook-rgmp-recurrent-geometric-prior-multimodal-policy.md) — 待深读
 - [Residual Off-Policy RL for Finetuning Behavior Cloning Policies](../entities/paper-notebook-residual-off-policy-rl-for-finetuning-behavior-c.md) — 待深读
 - [Robot Drummer](../entities/paper-notebook-robot-drummer-learning-rhythmic-skills-for-human.md) — 待深读
@@ -75,10 +77,10 @@ summary: "Paper Notebooks 分类 06：灵巧操作（57 篇深读笔记索引）
 - [Sim-to-Real Reinforcement Learning for Vision-Based Dexterous Manipulation on Humanoids](../entities/paper-notebook-sim-to-real-reinforcement-learning-for-vision-ba.md) — 待深读
 - [TOP](../entities/paper-notebook-top-time-optimization-policy-for-stable-and-accu.md) — 待深读
 - [Towards Proprioception-Aware Embodied Planning for Dual-Arm Humanoid Robots](../entities/paper-notebook-towards-proprioception-aware-embodied-planning-f.md) — 待深读
-- [Unified Video Action Model](../entities/paper-shenlan-wm-10-uva.md) — 待深读
+- [Unified Video Action Model](../entities/paper-shenlan-wm-10-uva.md) — 见 wiki 实体页
 - [Vision in Action](../entities/paper-notebook-vision-in-action-learning-active-perception-from.md) — 待深读
-- [Visual-tactile pretraining and online multitask learning for humanlike manipulation dexterity](../entities/paper-notebook-visual-tactile-pretraining-and-online-multitask.md) — 待深读
-- [cuRoboV2](../entities/curobo.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/06_Manipulation/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields/cuRoboV2_Dynamics-Aware_Motion_Generation_with_Depth-Fused_Distance_Fields.html)
+- [Visual-tactile pretraining and online multitask learning](../entities/paper-notebook-visual-tactile-pretraining-and-online-multitask.md) — 待深读
+- [cuRoboV2](../entities/curobo.md) — 见 wiki 实体页
 
 ## 与其他页面的关系
 

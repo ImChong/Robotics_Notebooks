@@ -2,10 +2,10 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 12：硬件设计（39 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Hardware Design
@@ -23,7 +23,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）
 ## 本类论文索引
 
 - [A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation](../entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md) — 待深读
-- [A Framework for Optimal Ankle Design of Humanoid Robots](../concepts/humanoid-parallel-joint-kinematics.md) — 待深读
+- [A Framework for Optimal Ankle Design of Humanoid Robots](../concepts/humanoid-parallel-joint-kinematics.md) — 见 wiki 实体页
 - [AGILOped](../entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md) — 待深读
 - [Aero Hand Open](../entities/paper-notebook-aero-hand-open.md) — 待深读
 - [Antagonistic Bowden-Cable Actuation of a Lightweight Robotic Hand](../entities/paper-notebook-antagonistic-bowden-cable-actuation-of-a-lightwe.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand/Antagonistic_Bowden-Cable_Actuation_of_a_Lightweight_Robotic_Hand.html)
@@ -47,7 +47,7 @@ summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）
 - [Micro-Wheeled_leg-Robot](../entities/paper-notebook-micro-wheeled-leg-robot.md) — 待深读
 - [ORCA](../entities/paper-notebook-orca-open-source-reliable-cost-effective-anthrop.md) — 待深读
 - [OSMO](../entities/paper-notebook-osmo-open-source-tactile-glove-for-human-to-robo.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer/OSMO_Open-Source_Tactile_Glove_for_Human-to-Robot_Skill_Transfer.html)
-- [Olaf](../methods/disney-olaf-character-robot.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World/Olaf_Bringing_an_Animated_Character_to_Life_in_the_Physical_World.html)
+- [Olaf](../methods/disney-olaf-character-robot.md) — 见 wiki 实体页
 - [PIMBS](../entities/paper-notebook-pimbs-efficient-body-schema-learning-for-musculo.md) — 待深读
 - [Proprioceptive actuator design in the MIT Cheetah](../entities/paper-notebook-proprioceptive-actuator-design-in-the-mit-cheeta.md) — 待深读
 - [Quasi-Direct Drive for Low-Cost Compliant Robotic Manipulation](../entities/paper-notebook-quasi-direct-drive-for-low-cost-compliant-roboti.md) — 待深读
@@ -55,9 +55,10 @@ summary: "Paper Notebooks 分类 12：硬件设计（38 篇深读笔记索引）
 - [RUKA](../entities/paper-notebook-ruka-rethinking-the-design-of-humanoid-hands-wit.md) — 待深读
 - [The Duke Humanoid](../entities/paper-notebook-the-duke-humanoid-design-and-control-for-energy.md) — 待深读
 - [The MIT Humanoid Robot](../entities/paper-notebook-the-mit-humanoid-robot-design-motion-planning-an.md) — 待深读
-- [ToddlerBot](../entities/paper-loco-manip-161-141-toddlerbot.md) — 待深读
+- [ToddlerBot](../entities/paper-loco-manip-161-141-toddlerbot.md) — 见 wiki 实体页
 - [Toward Humanoid Brain-Body Co-design](../entities/paper-notebook-toward-humanoid-brain-body-co-design-joint-optim.md) — 待深读
 - [Unitree H1 Humanoid Robot Whitepaper & Specifications](../entities/paper-notebook-unitree-h1-whitepaper.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/12_Hardware_Design/Unitree_H1_Whitepaper/Unitree_H1_Whitepaper.html)
+- [X2-N](../tasks/hybrid-locomotion.md) — 见 wiki 实体页
 - [Zeroth Bot](../entities/paper-notebook-zeroth-bot-https-github-com-zeroth-robotics-zero.md) — 待深读
 - [iRonCub 3](../entities/paper-notebook-ironcub-3-the-jet-powered-flying-humanoid-robot.md) — 待深读
 

@@ -2,10 +2,10 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
-summary: "Paper Notebooks 分类 11：仿真与基准（20 篇深读笔记索引）。"
+summary: "Paper Notebooks 分类 11：仿真与基准（21 篇深读笔记索引）。"
 ---
 
 # Paper Notebooks · Simulation Benchmark
@@ -27,8 +27,9 @@ summary: "Paper Notebooks 分类 11：仿真与基准（20 篇深读笔记索引
 - [ComFree-Sim](../entities/paper-notebook-comfree-sim.md) — 待深读
 - [DexMimicGen](../entities/paper-notebook-dexmimicgen-automated-data-generation-for-bimanu.md) — 待深读
 - [DualTHOR](../entities/paper-notebook-dualthor-a-dual-arm-humanoid-simulation-platform.md) — 待深读
-- [GRUtopia](../concepts/simulation-evaluation-infrastructure.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/GRUtopia__Dream_General_Robots_in_a_City_at_Scale/GRUtopia__Dream_General_Robots_in_a_City_at_Scale.html)
-- [Generative World Modelling for Humanoids](../methods/generative-world-models.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report/Generative_World_Modelling_for_Humanoids__1X_World_Model_Challenge_Technical_Report.html)
+- [GRAIL](../entities/grail-locomanipulation-dataset.md) — 见 wiki 实体页
+- [GRUtopia](../concepts/simulation-evaluation-infrastructure.md) — 见 wiki 实体页
+- [Generative World Modelling for Humanoids](../methods/generative-world-models.md) — 见 wiki 实体页
 - [Genesis](../entities/genesis-sim.md) — 见 wiki 实体页
 - [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) — 见 wiki 实体页
 - [Humanoid World Models](../entities/paper-notebook-humanoid-world-models-open-world-foundation-mode.md) — 待深读
@@ -37,7 +38,7 @@ summary: "Paper Notebooks 分类 11：仿真与基准（20 篇深读笔记索引
 - [ManiSkill-HAB](../entities/paper-notebook-maniskill-hab-a-benchmark-for-low-level-manipula.md) — 待深读
 - [ManiSkill3](../entities/paper-notebook-maniskill3-gpu-parallelized-robotics-simulation.md) — 待深读
 - [Mimicking-Bench](../entities/paper-notebook-mimicking-bench-a-benchmark-for-generalizable-hu.md) — 待深读
-- [MolmoSpaces](../tasks/vision-language-navigation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/11_Simulation_Benchmark/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation/MolmoSpaces__A_Large-Scale_Open_Ecosystem_for_Robot_Navigation_and_Manipulation.html)
+- [MolmoSpaces](../tasks/vision-language-navigation.md) — 见 wiki 实体页
 - [MuJoCo Playground](../entities/mujoco-playground.md) — 见 wiki 实体页
 - [RoboCasa365](../entities/paper-notebook-robocasa365-a-large-scale-simulation-framework-f.md) — 待深读
 - [RoboCasa](../entities/paper-notebook-robocasa-large-scale-simulation-of-everyday-task.md) — 待深读

@@ -96,6 +96,7 @@ flowchart LR
 
 ## 推荐继续阅读
 
+- [机器人论文阅读笔记：Perceptive Humanoid Parkour](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/04_Loco-Manipulation_and_WBC/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching/Perceptive_Humanoid_Parkour__Chaining_Dynamic_Human_Skills_via_Motion_Matching.html)
 - GitHub：<https://github.com/amazon-far/holosoma>
 - OmniRetarget 项目页：<https://omniretarget.github.io/>
 - 数据集：<https://huggingface.co/datasets/omniretarget/OmniRetarget_Dataset>

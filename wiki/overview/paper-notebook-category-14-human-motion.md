@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-06-07
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读笔记索引）。"
@@ -26,9 +26,9 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [Climber Force and Motion Estimation from Video](../entities/paper-notebook-climber-force-and-motion-estimation-from-video.md) — 待深读
 - [ClimbingCap](../entities/paper-notebook-climbingcap-multi-modal-dataset-and-method-for-r.md) — 待深读
 - [Control Operators for Interactive Character Animation](../entities/paper-notebook-control-operators-for-interactive-character-anim.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Control_Operators_for_Interactive_Character_Animation/Control_Operators_for_Interactive_Character_Animation.html)
-- [DynaRetarget](../entities/paper-notebook-dynaretarget-dynamically-feasible-retargeting-us.md) — wiki 已 ingest（[SBTO 方法页](../methods/dynaretarget-sbto-motion-retargeting.md)）；Paper Notebooks 深读笔记待撰写
+- [DynaRetarget](../entities/sbto.md) — 见 wiki 实体页
 - [Efficient and Scalable Monocular Human-Object Interaction Motion Reconstruction](../entities/paper-notebook-efficient-and-scalable-monocular-human-object-in.md) — 待深读
-- [EmbodMocap](../overview/ego-category-01-data-collection.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents/EmbodMocap__In-the-Wild_4D_Human-Scene_Reconstruction_for_Embodied_Agents.html)
+- [EmbodMocap](../overview/ego-category-01-data-collection.md) — 见 wiki 实体页
 - [Example-based Motion Synthesis via Generative Motion Matching](../entities/paper-notebook-example-based-motion-synthesis-via-generative-mo.md) — 待深读
 - [FAME](../entities/paper-notebook-fame.md) — 待深读
 - [FLAM](../entities/paper-notebook-flam-foundation-model-based-body-stabilization-f.md) — 待深读
@@ -36,16 +36,16 @@ summary: "Paper Notebooks 分类 14：人体动作分析与生成（40 篇深读
 - [Flexible Motion In-betweening with Diffusion Models](../entities/paper-notebook-flexible-motion-in-betweening-with-diffusion-mod.md) — 待深读
 - [Flow Matching Imitation Learning for Multi-Support Manipulation](../entities/paper-notebook-flow-matching-imitation-learning-for-multi-suppo.md) — 待深读
 - [Full-Order Sampling-Based MPC for Torque-Level Locomotion Control via Diffusion-Style Annealing](../entities/paper-notebook-full-order-sampling-based-mpc-for-torque-level-l.md) — 待深读
-- [GENMO](../methods/genmo.md) — 待深读
+- [GENMO](../entities/soma-retargeter.md) — 见 wiki 实体页
 - [Generating Diverse and Natural 3D Human Motions from Textual Descriptions](../entities/paper-notebook-humanml3d.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/HumanML3D/HumanML3D.html)
 - [Go to Zero](../entities/paper-notebook-go-to-zero-towards-zero-shot-motion-generation-w.md) — 待深读
 - [Guided Motion Diffusion for Controllable Human Motion Synthesis](../entities/paper-notebook-guided-motion-diffusion-for-controllable-human-m.md) — 待深读
 - [HUMOTO](../entities/paper-notebook-humoto-a-4d-dataset-of-mocap-human-object-intera.md) — 待深读
 - [Humanoid Hanoi](../entities/paper-notebook-humanoid-hanoi-investigating-shared-whole-body-c.md) — 待深读
 - [Implicit Bézier Motion Model for Precise Spatial and Temporal Control](../entities/paper-notebook-implicit-b-zier-motion-model-for-precise-spatial.md) — 待深读
-- [Kimodo](../entities/paper-amp-survey-04-kimodo.md) — 待深读
+- [Kimodo](../entities/kimodo.md) — 见 wiki 实体页
 - [KungfuBot](../entities/paper-notebook-kungfubot-physics-based-humanoid-whole-body-cont.md) — 待深读
-- [Learned Motion Matching](../methods/diffusion-motion-generation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/Learned_Motion_Matching/Learned_Motion_Matching.html)
+- [Learned Motion Matching](../methods/diffusion-motion-generation.md) — 见 wiki 实体页
 - [Learning Differentiable Reachability Maps for Optimization-based Humanoid Motion Generation](../entities/paper-notebook-learning-differentiable-reachability-maps-for-op.md) — 待深读
 - [Learning Humanoid End-Effector Control for Open-Vocabulary Visual Loco-Manipulation](../entities/paper-notebook-learning-humanoid-end-effector-control-for-open.md) — 待深读
 - [MAGNet](../entities/paper-notebook-magnet.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/14_Human_Motion/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling/MAGNet__Diffusion_Forcing_for_Multi-Agent_Interaction_Sequence_Modeling.html)

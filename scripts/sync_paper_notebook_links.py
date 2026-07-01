@@ -287,7 +287,7 @@ def fix_stale_urls(papers: list[dict], dry_run: bool) -> int:
         text = wiki_path.read_text(encoding="utf-8")
         new_text = text
         for match in re.finditer(
-            r"https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)\s]+",
+            r"https://imchong\.github\.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/[^)\s>]+",
             text,
         ):
             old_url = match.group(0)
