@@ -2,6 +2,8 @@
 
 ## [2026-07-01] ingest | sources/papers/aspire_nvidia_gear_2026.md — 接入 NVIDIA ASPIRE 持续学习技能库系统；wiki/methods/aspire.md、wiki/entities/nvidia-gear-lab.md、wiki/methods/enpire.md、wiki/tasks/manipulation.md、wiki/queries/real-robot-policy-autoresearch-harness.md
 
+## [2026-07-01] ingest | sources/papers/gpc_arxiv_2606_29148.md — GPC 生成式预训练物理控制器；wiki/entities/paper-gpc-generative-pretrained-controllers.md
+
 ## [2026-07-01] ingest | sources/papers/reactivebfm_arxiv_2606_30362.md — ReactiveBFM 闭环规划–控制；wiki/entities/paper-reactivebfm.md
 
 ## [2026-07-01] ingest | sources/papers/fada_arxiv_2606_28476.md — FADA 少样本动力学对齐；wiki/entities/paper-fada-humanoid.md

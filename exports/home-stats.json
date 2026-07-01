@@ -1,10 +1,10 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1522,
-  "edge_count": 10311,
+  "node_count": 1523,
+  "edge_count": 10324,
   "coverage": {
-    "covered": 1491,
-    "total": 1520,
+    "covered": 1492,
+    "total": 1521,
     "percent": 98
   },
   "latest_wiki_nodes": [
@@ -45,6 +45,14 @@
       "detail_id": "wiki-queries-real-robot-policy-autoresearch-harness",
       "label": "真机策略 autoresearch 闭环搭建指南",
       "type": "query",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
+      "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
+      "label": "GPC（Generative Pretrained Controllers）",
+      "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
@@ -157,14 +165,6 @@
       "detail_id": "wiki-queries-sim2real-gap-reduction",
       "label": "Sim2Real Gap 缩减实战指南",
       "type": "query",
-      "recency": "2026-06-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/flexion-reflect-v1.md",
-      "detail_id": "entity-flexion-reflect-v1",
-      "label": "Flexion Reflect v1.0（长程人形自主平台）",
-      "type": "entity",
       "recency": "2026-06-30",
       "source": "log.md"
     }
