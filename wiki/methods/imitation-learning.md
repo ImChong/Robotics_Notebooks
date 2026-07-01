@@ -14,6 +14,7 @@ related:
   - ../entities/mimickit.md
   - ../entities/humannet.md
   - ../entities/paper-interprior.md
+  - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ./mimic-video.md
   - ./egoscale.md
   - ./amp-reward.md
@@ -112,6 +113,7 @@ flowchart TD
 常见组合策略：
 - **IL 初始化 + RL 微调**：先用 IL 训一个不错的初始策略，再用 RL 探索超越专家
 - **IL + RL 混合**：如 GAIL 本身就是 IL 和 RL 的混合
+- **自模仿（SIL）**：用智能体自身轨迹作监督；[TSIL](../entities/paper-tsil-temporal-self-imitation-learning.md) 进一步按**时间效率**而非纯回报筛选快速成功轨迹，用于长时域操作 PPO
 
 ## 在人形机器人中的应用
 
@@ -201,6 +203,7 @@ flowchart TD
 - [AMS](./ams.md) — 物理可行性过滤与混合奖励机制
 - [HAIC](./haic.md) — 基于世界模型的教师-学生训练范式
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — HOI 模仿专家 → 变分蒸馏 → RL 微调的可泛化运动先验（arXiv:2602.06035）
+- [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — RL 训练期按配置挖掘快速成功并效率加权回放（arXiv:2606.19752）
 
 ## 推荐继续阅读
 

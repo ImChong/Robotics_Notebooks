@@ -23,6 +23,7 @@ related:
   - ../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md
   - ../entities/lift-humanoid.md
   - ../entities/paper-shape-your-body-value-gradient-design.md
+  - ../entities/paper-tsil-temporal-self-imitation-learning.md
   - ../entities/gymnasium.md
 sources:
   - ../../sources/papers/intentional_streaming_rl.md
@@ -223,6 +224,7 @@ flowchart LR
 - [InterPrior（论文实体）](../entities/paper-interprior.md) — 模仿初始化 + RL 微调巩固 HOI 先验（arXiv:2602.06035）
 - [E-SDS（论文实体）](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 地形统计条件化 VLM 奖励 + 人形感知行走 PPO（arXiv:2512.16446）
 - [ResMimic（论文实体）](../entities/paper-resmimic.md) — GMT 先验 + 物体条件残差 PPO 的两阶段 loco-manipulation（arXiv:2510.05070）
+- [TSIL（论文实体）](../entities/paper-tsil-temporal-self-imitation-learning.md) — 长时域操作 PPO：自适应时间目标 + 效率加权自模仿（arXiv:2606.19752）
 - [Sim2Real](../concepts/sim2real.md)
 - [Whole-Body Control](../concepts/whole-body-control.md)
 - [Locomotion](../tasks/locomotion.md)
