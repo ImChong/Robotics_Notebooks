@@ -2,13 +2,14 @@
 type: concept
 tags: [bfm, behavior-foundation-model, humanoid, whole-body-control, foundation-policy, pretraining, survey]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-01
 related:
   - ./foundation-policy.md
   - ./whole-body-control.md
   - ../overview/bfm-41-papers-technology-map.md
   - ../entities/paper-behavior-foundation-model-humanoid.md
   - ../entities/paper-perceptive-bfm.md
+  - ../entities/paper-reactivebfm.md
   - ../methods/sonic-motion-tracking.md
   - ../methods/beyondmimic.md
   - ../methods/dagger.md
@@ -89,14 +90,14 @@ flowchart TB
 ### Goal-conditioned 子脉络（最贴近人形真机）
 
 - **跟踪驱动**：逐步对齐参考关节/姿态（DeepMimic 系）→ ASE/CALM/CASE 潜空间 → MaskedMimic / HOVER **多模式统一**。
-- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）。
+- **本库已深读代表**：[BFM](../entities/paper-behavior-foundation-model-humanoid.md) 把多接口写成 **位级掩码 + CVAE + 在线蒸馏**；[SONIC](../methods/sonic-motion-tracking.md) 强调 **MoCap 规模 + 网络/算力 scaling**；[Perceptive BFM](../entities/paper-perceptive-bfm.md) 在 **保留 raw 参考接口** 前提下用 **机器人中心感知** 闭合操作者–环境失配（楼梯/块/户外真机）；[ReactiveBFM](../entities/paper-reactivebfm.md) 把 BFM/SONIC 类 tracker 与 **自回归运动扩散规划器** 闭合成 **真机可部署 reactive 系统**，用 prefix curriculum 缓解开环级联的 exposure bias。
 
 ## 适应两线（怎么接到新任务）
 
 | 路线 | 做法 | 代表（awesome 列表） |
 |------|------|----------------------|
 | **微调** | 全参 / LoRA / 修改潜任务向量、Task Tokens | Fast Adaptation with BFM、Zero-Shot Dynamics Adaptation |
-| **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD |
+| **层次化** | 高层生成子目标或 motion token，BFM 作低层 tracker | SENTINEL、BeyondMimic、LangWBC、LeVERB、CloSD、[ReactiveBFM](../entities/paper-reactivebfm.md)（闭环 AR 规划 + BFM 跟踪，真机 reactive WBC） |
 
 与 [GR00T-WholeBodyControl](../entities/gr00t-wholebodycontrol.md) 叙事一致：**VLA / 语言 / 扩散规划** 与 **运动跟踪执行器** 分层的工程趋势。
 
@@ -123,6 +124,7 @@ flowchart TB
 - [Whole-Body Control](./whole-body-control.md) — WBC 问题定义与 QP/学习法谱系
 - [BFM（Behavior Foundation Model for Humanoid Robots）](../entities/paper-behavior-foundation-model-humanoid.md) — CVAE+掩码人形 WBC 单篇深读
 - [Perceptive BFM](../entities/paper-perceptive-bfm.md) — raw 参考 + 地形感知 PMT/TCRS
+- [ReactiveBFM](../entities/paper-reactivebfm.md) — 闭环 AR 规划 + BFM 跟踪，真机 reactive WBC
 - [SONIC](../methods/sonic-motion-tracking.md) — goal-conditioned scaling 代表
 - [人形运动跟踪方法选型](../queries/humanoid-motion-tracking-method-selection.md)
 - [人形 RL 运动控制身体系统栈](../overview/humanoid-rl-motion-control-body-system-stack.md)
