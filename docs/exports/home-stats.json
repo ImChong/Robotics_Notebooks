@@ -9,6 +9,14 @@
   },
   "latest_wiki_nodes": [
     {
+      "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
+      "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
+      "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
       "path": "wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md",
       "detail_id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
       "label": "T-Rex：触觉反应式灵巧操作",
@@ -159,20 +167,12 @@
       "type": "query",
       "recency": "2026-06-30",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-force-loop-bandwidth.md",
-      "detail_id": "wiki-concepts-contact-force-loop-bandwidth",
-      "label": "Contact-Force-Loop Bandwidth（力控闭环带宽 ↔ 接触稳定性）",
-      "type": "concept",
-      "recency": "2026-06-30",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md",
-    "detail_id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
-    "label": "T-Rex：触觉反应式灵巧操作",
+    "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
+    "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
+    "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [sensor-fusion, perception, localization, vio, ekf, state-estimation]
-updated: 2026-06-24
+updated: 2026-07-01
 related:
   - ./state-estimation.md
   - ../entities/paper-ultra-fusion-multi-sensor-slam.md
