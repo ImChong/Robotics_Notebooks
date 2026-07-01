@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1527,
-  "edge_count": 10375,
+  "node_count": 1529,
+  "edge_count": 10394,
   "coverage": {
-    "covered": 1496,
-    "total": 1525,
+    "covered": 1498,
+    "total": 1527,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
+      "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
+      "label": "OmniContact（Chaining Meta-Skills via Contact Flow）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/omnicontact-sim2sim.md",
+      "detail_id": "entity-omnicontact-sim2sim",
+      "label": "OmniContact sim2sim",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
       "detail_id": "entity-paper-argus-dynamic-symmetry",
@@ -151,28 +167,12 @@
       "type": "query",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
-      "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
-      "label": "GPC（Generative Pretrained Controllers）",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini.md",
-      "detail_id": "entity-open-duck-mini",
-      "label": "Open Duck Mini",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
-    "detail_id": "entity-paper-argus-dynamic-symmetry",
-    "label": "Argus（Dynamic Symmetry / Dynamic Isotropy）",
+    "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
+    "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
+    "label": "OmniContact（Chaining Meta-Skills via Contact Flow）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

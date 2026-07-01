@@ -2,7 +2,7 @@
 type: method
 tags: [rl, imitation-learning, gan, motion-prior, humanoid]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-01
 related:
   - ../entities/mimickit.md
   - ../entities/protomotions.md
