@@ -8,6 +8,8 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 related:
+  - ../queries/contact-wrench-closed-loop.md
+  - ./contact-force-loop-bandwidth.md
   - ./impedance-control.md
   - ./contact-rich-manipulation.md
   - ./whole-body-control.md
@@ -101,6 +103,8 @@ $$ \tau = J^T ( S f_{pos} + \bar{S} f_{force} ) $$
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **③ 控制层**（力位子空间正交划分这条路线）
+- [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 力控子空间的带宽/刚度取舍与传感器时延边界
 - [Impedance Control](./impedance-control.md)
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)

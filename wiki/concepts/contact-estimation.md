@@ -130,6 +130,8 @@ J^T · f = τ_gravity_compensation - τ_actuator
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **① 感知/估计层**（闭环闭的是「估计出来的力」，估计时延会传导到上层）
+- [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 感知时延这一项如何联合钳住可达带宽
 - [Whole-Body Control](./whole-body-control.md) — WBC 需要接触状态集合作为输入约束
 - [TSID](./tsid.md) — TSID 求解前必须确定接触集合
 - [Centroidal Dynamics](./centroidal-dynamics.md) — 接触力是质心加速度的来源
