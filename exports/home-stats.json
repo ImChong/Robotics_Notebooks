@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1521,
-  "edge_count": 10297,
+  "node_count": 1522,
+  "edge_count": 10310,
   "coverage": {
-    "covered": 1490,
-    "total": 1519,
+    "covered": 1491,
+    "total": 1520,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
+      "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
+      "label": "GPC（Generative Pretrained Controllers）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-reactivebfm.md",
       "detail_id": "entity-paper-reactivebfm",
@@ -159,20 +167,12 @@
       "type": "method",
       "recency": "2026-06-29",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-chord-contact-wrench-dexterous-manipulation.md",
-      "detail_id": "entity-paper-chord-contact-wrench-dexterous-manipulation",
-      "label": "CHORD（Contact Wrench Guidance for Dexterous Manipulation）",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-reactivebfm.md",
-    "detail_id": "entity-paper-reactivebfm",
-    "label": "ReactiveBFM",
+    "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
+    "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
+    "label": "GPC（Generative Pretrained Controllers）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

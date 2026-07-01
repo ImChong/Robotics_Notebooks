@@ -2,7 +2,7 @@
 type: method
 tags: [generative-model, wbc, humanoid, motion-synthesis, gr00t, nvidia]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-01
 related:
   - ../entities/paper-amp-survey-05-motionbricks.md
   - ../overview/humanoid-amp-motion-prior-survey.md
