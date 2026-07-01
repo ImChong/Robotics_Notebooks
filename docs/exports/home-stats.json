@@ -1,7 +1,7 @@
 {
   "generated_at": "2026-07-01",
   "node_count": 1523,
-  "edge_count": 10324,
+  "edge_count": 10327,
   "coverage": {
     "covered": 1492,
     "total": 1521,
@@ -52,6 +52,30 @@
       "path": "wiki/entities/paper-gpc-generative-pretrained-controllers.md",
       "detail_id": "entity-paper-gpc-generative-pretrained-controllers",
       "label": "GPC（Generative Pretrained Controllers）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/open-duck-mini.md",
+      "detail_id": "entity-open-duck-mini",
+      "label": "Open Duck Mini",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tnkr.md",
+      "detail_id": "entity-tnkr",
+      "label": "Tnkr",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/open-duck-mini-runtime.md",
+      "detail_id": "entity-open-duck-mini-runtime",
+      "label": "Open Duck Mini Runtime",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
@@ -141,30 +165,6 @@
       "detail_id": "wiki-concepts-sim2real",
       "label": "Sim2Real",
       "type": "concept",
-      "recency": "2026-06-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/system-identification.md",
-      "detail_id": "wiki-concepts-system-identification",
-      "label": "System Identification",
-      "type": "concept",
-      "recency": "2026-06-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/crisp-real2sim.md",
-      "detail_id": "wiki-methods-crisp-real2sim",
-      "label": "CRISP（Contact-guided Real2Sim）",
-      "type": "method",
-      "recency": "2026-06-30",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/sim2real-gap-reduction.md",
-      "detail_id": "wiki-queries-sim2real-gap-reduction",
-      "label": "Sim2Real Gap 缩减实战指南",
-      "type": "query",
       "recency": "2026-06-30",
       "source": "log.md"
     }

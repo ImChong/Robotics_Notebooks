@@ -4,11 +4,15 @@ type: entity
 title: Tnkr
 tags: [platform, open-source, collaboration, documentation, hardware-software-codata, linux-foundation]
 summary: "Tnkr 是面向开源机器人项目的协作平台：把硬件 CAD、电气布线、软件版本、部署与数据/模型收进同一项目仓库，并内置 AI 工程助手 Leonardo。"
-updated: 2026-05-28
+updated: 2026-07-01
 related:
   - ./lerobot.md
   - ./urdf-studio.md
+  - ./open-duck-mini.md
   - ../concepts/sim2real.md
+sources:
+  - ../../sources/repos/tnkr.md
+  - ../../sources/sites/tnkr-open-duck-mini-v2.md
 ---
 
 # Tnkr
@@ -96,12 +100,27 @@ flowchart LR
 - **设计与分析工具：** [URDF-Studio](./urdf-studio.md)、[robot-explorer](./robot-explorer.md)、[robot-viewer](./robot-viewer.md) — 描述文件编辑与运动学分析；可与 Tnkr 的 CAD/装配流上下游配合。
 - **开源整机索引：** [humanoid-robot](./humanoid-robot.md)、[机器人开源宝库（微信策展第01期）](../overview/robot-open-source-wechat-issue01-curator.md) — 发现可 fork 的开源平台后，可用 Tnkr 类工具降低「只拿到 CAD 却装不起来」的摩擦（需项目方主动发布）。
 
+## 范例项目：Open Duck Mini V2
+
+[Tnkr Open Duck Mini V2](https://tnkr.ai/open-duck-mini/open-duck-mini-v2) 是当前库内**文档最完整**的 Tnkr 整机范例：把 v2 复现拆成 **Hardware（Print → BOM → Assembly → Wiring）** 与 **Software（Runtime → Deploy → Train）**，并开放 **Files（STL）** 与 **Pull Requests**。
+
+| Tnkr 能力 | 在 Open Duck v2 上的体现 |
+|-----------|---------------------------|
+| 分步装配 | 交互式 Assembly Instructions（Configure Motors 前置） |
+| 电气文档 | Electronics & Wiring + Servo Connection Map |
+| 软件溯源 | 链到 GitHub Runtime / Playground；部署与训练分节 |
+| 社区协作 | 项目页 Pull Requests；与 Discord 社区并行 |
+
+详情见 [Open Duck Mini](./open-duck-mini.md) 与 [Tnkr 文档归档](../../sources/sites/tnkr-open-duck-mini-v2.md)。
+
 ## 推荐继续阅读
 
 - [Tnkr 官方站点](https://tnkr.ai/)
 - [Launch 视频：We built the GitHub for robotics](https://www.youtube.com/watch?v=nLVeWpSb38U)（@TnkrdotAI）
+- [Open Duck Mini V2 on Tnkr](https://tnkr.ai/open-duck-mini/open-duck-mini-v2) — 平台能力落地范例
 
 ## 参考来源
 
 - [Tnkr 平台归档](../../sources/repos/tnkr.md)
 - [Tnkr 发布视频摘录](../../sources/blogs/tnkr_launch_youtube_nlv.md)
+- [Tnkr Open Duck Mini V2 项目文档](../../sources/sites/tnkr-open-duck-mini-v2.md)

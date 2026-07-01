@@ -48,7 +48,7 @@
 
 ## 文档与 Sim2Real 要点（v2）
 
-- **组装：** `docs/assembly_guide.md`（进行中）、[Tnkr 指南](https://tnkr.ai/explore/docs/open-duck-mini/open-duck-mini-v2#home)、`docs/print_guide.md`
+- **组装：** [Tnkr v2 项目文档（主线）](../sites/tnkr-open-duck-mini-v2.md)（https://tnkr.ai/open-duck-mini/open-duck-mini-v2）、`docs/assembly_guide.md`（进行中，与 Tnkr 步骤对齐）、`docs/print_guide.md`
 - **Sim2Real 管线说明：** `docs/sim2real.md`（准确 MJCF + BAM 电机模型 → Playground 训练 → Runtime 上机）
 - **预训练策略：** `BEST_WALK_ONNX.onnx` / `BEST_WALK_ONNX_2.onnx`；MuJoCo 回放 `v2_rl_walk_mujoco.py`
 

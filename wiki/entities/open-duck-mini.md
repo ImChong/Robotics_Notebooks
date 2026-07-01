@@ -3,17 +3,19 @@
 type: entity
 tags: [biped, open-source, hardware, entertainment-robotics, sim2real, diy, disney-bdx, disney, open-duck]
 status: complete
-updated: 2026-05-28
+updated: 2026-07-01
 related:
   - ./open-duck-playground.md
   - ./open-duck-reference-motion-generator.md
   - ./open-duck-mini-runtime.md
+  - ./tnkr.md
   - ../methods/disney-olaf-character-robot.md
   - ../concepts/sim2real.md
   - ../tasks/locomotion.md
   - ./open-source-humanoid-hardware.md
 sources:
   - ../../sources/repos/open_duck_mini.md
+  - ../../sources/sites/tnkr-open-duck-mini-v2.md
 summary: "Open Duck Mini 是 Disney BDX 双足角色的开源迷你复刻（v2 约 42 cm、BOM 目标 <$400）：Onshape CAD + Feetech 舵机 + 四仓分工（Hub / Playground / 参考运动 / Runtime），完整覆盖 CAD→MJX→RL→Pi Zero 2W 真机。"
 ---
 
@@ -70,7 +72,33 @@ flowchart LR
 
 - **尺寸：** 腿伸展约 **42 cm**；BOM 目标 **低于 $400**。
 - **执行器：** Feetech 总线舵机（腿部 `xc330-M288-T` 等）；辨识参数见 [BAM STS3215 7.4V](https://github.com/Rhoban/bam/tree/main/params/feetech_sts3215_7_4V)。
-- **制造：** 3D 打印 + 公开 BOM；[Tnkr 组装指南](https://tnkr.ai/explore/docs/open-duck-mini/open-duck-mini-v2#home) 与社区 Discord。
+- **制造：** 3D 打印 + 公开 BOM；**v2 主线装配**见 [Tnkr 项目文档](https://tnkr.ai/open-duck-mini/open-duck-mini-v2)（Print → BOM → 分步 Assembly → 线束 → Runtime/部署/训练）；GitHub `assembly_guide.md` 仍 incomplete，与 Tnkr 步骤对齐。社区 Discord 与 [Tnkr](./tnkr.md) Pull Requests 可跟进改版。
+
+## Tnkr 文档树（v2 复现导航）
+
+[Tnkr Open Duck Mini V2](https://tnkr.ai/open-duck-mini/open-duck-mini-v2) 把 Hardware 与 Software 收在同一项目页，推荐按下列顺序阅读：
+
+| 分区 | 节点 | 作用 |
+|------|------|------|
+| Hardware | Print Guide | PLA 15% infill；`foot_bottom_tpu.stl` 用 TPU 40% |
+| Hardware | Bill of Materials | 物料表；Files 页可下 STL（tnkr-cdn） |
+| Hardware | Assembly Instructions | **交互式分步装配**（见下） |
+| Hardware | Electronics & Wiring | 全局线束、Servo Map、Pi Zero 2W |
+| Software | Open Duck Mini Runtime | OS、venv、udev、标定脚本 |
+| Software | Deploy / Train | 上机 checklist、ONNX 预演、Playground 训练链 |
+
+**装配前置（不可跳过）：** 在拧任何结构件之前，用 [Runtime](https://github.com/apirrone/Open_Duck_Mini_Runtime) 的 `configure_motor.py` 为 **14 路 Feetech 写 ID 并对零**；金属对金属螺钉用 Loctite 243（塑料螺钉禁用）。详见 [Open Duck Mini Runtime](./open-duck-mini-runtime.md) 电机 ID 表。
+
+```mermaid
+flowchart TD
+  PRINT[Print Guide\nPLA + TPU 脚] --> BOM[BOM / 采购]
+  MOTOR[Configure Motors\n14 ID + 对零] --> ASM[Assembly Instructions\n躯干→脚→小腿→大腿→髋→颈头→机身]
+  BOM --> ASM
+  ASM --> WIRE[Electronics & Wiring]
+  WIRE --> RT[Runtime 安装\nPi Zero 2W]
+  RT --> DEP[Deploy\n偏置 + ONNX 行走]
+  DEP --> TRAIN[Train\nPlayground 可选自训]
+```
 
 ## Sim2Real 关键步骤
 
@@ -88,6 +116,7 @@ flowchart LR
 ## 参考来源
 
 - [sources/repos/open_duck_mini.md](../../sources/repos/open_duck_mini.md)
+- [Tnkr Open Duck Mini V2 项目文档](../../sources/sites/tnkr-open-duck-mini-v2.md)
 - [apirrone/Open_Duck_Mini](https://github.com/apirrone/Open_Duck_Mini)（v2 分支）
 - Disney Research：[Design and Control of a Bipedal Robotic Character (BDX)](https://la.disneyresearch.com/publication/design-and-control-of-a-bipedal-robotic-character/)
 
@@ -96,12 +125,14 @@ flowchart LR
 - [Open Duck Playground](./open-duck-playground.md)
 - [Open Duck Reference Motion Generator](./open-duck-reference-motion-generator.md)
 - [Open Duck Mini Runtime](./open-duck-mini-runtime.md)
+- [Tnkr](./tnkr.md) — 平台级文档与 Open Duck v2 范例项目
 - [Disney Olaf 角色机器人](../methods/disney-olaf-character-robot.md)
 - [Sim2Real](../concepts/sim2real.md)
 - [Locomotion](../tasks/locomotion.md)
 
 ## 推荐继续阅读
 
+- [Tnkr Open Duck Mini V2 项目文档](https://tnkr.ai/open-duck-mini/open-duck-mini-v2) — v2 主线装配/线束/部署
 - [MuJoCo Playground 官方站点](https://playground.mujoco.org/)
 - [Haonan Yu — Sim2Real 实践博客](https://www.haonanyu.blog/post/sim2real/)
 - [开源人形机器人硬件方案对比](./open-source-humanoid-hardware.md)（全尺寸人形选型对照）

@@ -22,6 +22,7 @@
 | 官网 | https://tnkr.ai/ | 产品定位、Leonardo、协作工作流（站点有 bot 防护，自动化抓取可能失败） |
 | 发布视频 | https://www.youtube.com/watch?v=nLVeWpSb38U | *We built the GitHub for robotics \| Tnkr launch*（@TnkrdotAI） |
 | 营销站镜像 | https://tnkrai.framer.website/ | Framer 落地页，文案与官网一致时可作对照 |
+| **范例项目** | https://tnkr.ai/open-duck-mini/open-duck-mini-v2 | [Open Duck Mini v2](../sites/tnkr-open-duck-mini-v2.md) 完整 Hardware+Software 文档树 |
 
 ## 核心能力（归纳）
 
