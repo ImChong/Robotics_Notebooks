@@ -16,7 +16,7 @@ tags:
   - cqu
   - scu
 status: complete
-updated: 2026-06-24
+updated: 2026-07-01
 arxiv: "2606.21223"
 venue: "arXiv 2026"
 related:
@@ -28,12 +28,14 @@ related:
   - ./fast-lio.md
 sources:
   - ../../sources/papers/ultra_fusion_arxiv_2606_21223.md
+  - ../../sources/repos/ultra_fusion.md
+  - ../../sources/repos/m3dgr.md
 summary: "Ultra-Fusion（arXiv:2606.21223）：统一滑窗估计器内融合 WIO/VIO/LIO/LVIO 与可选轮速/GNSS；可观测性感知初始化、因子级可靠性调度与在线时空标定，在 M3DGR 等基准上对 60+ SLAM 系统做退化与标定扰动评测。"
 ---
 
 # Ultra-Fusion（韧性多传感器融合 SLAM）
 
-**Ultra-Fusion**（Tian et al., arXiv:2606.21223，[项目页](https://sjtuyinjie.github.io/ultrafusion-web/)）面向 **智能交通系统（ITS）** 中的 **轮式、腿式与低空 UAV** 定位，提出 **紧耦合、可配置传感器栈** 的统一 SLAM 框架。核心是在 **单一滑窗因子图** 内按时间戳排序异构测量，支持 **WIO / VIO / LIO / LVIO** 及可选 **轮速 / GNSS**，并通过 **可观测性感知初始化**、**因子级可靠性调度（FRS）** 与 **在线 LiDAR–IMU 时空标定（OSC）** 应对 **传感器退化**（弱光、LiDAR 退化、打滑、GNSS 拒止）与 **时空标定扰动**。论文在 **M3DGR、M2DGR-Plus、KAIST、GrandTour、MARS-LVIG** 上对 **60+** 开源 SLAM 系统做系统评测，并扩展 M3DGR 仿真退化轨迹。
+**Ultra-Fusion**（Tian et al., arXiv:2606.21223，[项目页](https://sjtuyinjie.github.io/ultrafusion-web/)，[代码](https://github.com/sjtuyinjie/Ultra-Fusion)）由 **Yihong Tian、Junjie Zhang、Liuyang Li、Deteng Zhang、Yunfei Zuo、Jie Yin**（北京理工大学 / 重庆大学 / 四川大学 / 西北工业大学 / 上海交通大学）提出，面向 **智能交通系统（ITS）** 中的 **轮式、腿式与低空 UAV** 定位，提出 **紧耦合、可配置传感器栈** 的统一 SLAM 框架。核心是在 **单一滑窗因子图** 内按时间戳排序异构测量，支持 **WIO / VIO / LIO / LVIO** 及可选 **轮速 / GNSS**，并通过 **可观测性感知初始化**、**因子级可靠性调度（FRS）** 与 **在线 LiDAR–IMU 时空标定（OSC）** 应对 **传感器退化**（弱光、LiDAR 退化、打滑、GNSS 拒止）与 **时空标定扰动**。论文在 **M3DGR、M2DGR-Plus、KAIST、GrandTour、MARS-LVIG** 上对 **60+** 开源 SLAM 系统做系统评测，并扩展 M3DGR 仿真退化轨迹。
 
 ## 一句话定义
 
@@ -66,9 +68,12 @@ summary: "Ultra-Fusion（arXiv:2606.21223）：统一滑窗估计器内融合 WI
 
 | 字段 | 内容 |
 |------|------|
-| 机构 | 北京理工大学；重庆大学；四川大学；西北工业大学；上海交通大学 |
+| 作者 | Yihong Tian¹, Junjie Zhang², Liuyang Li³, Deteng Zhang⁴, Yunfei Zuo¹, Jie Yin⁵（通讯） |
+| 机构 | ¹北京理工大学 · ²重庆大学 · ³四川大学 · ⁴西北工业大学 · ⁵上海交通大学 |
 | 出处 | arXiv:2606.21223 |
 | 项目 | <https://sjtuyinjie.github.io/ultrafusion-web/> |
+| 代码 | <https://github.com/sjtuyinjie/Ultra-Fusion> |
+| 基准数据 | [M3DGR](https://github.com/sjtuyinjie/M3DGR)（IROS 2025） |
 
 ## 方法与核心结构
 
@@ -129,7 +134,7 @@ flowchart TB
 
 - **误区：「多传感器融合 = 把所有传感器永远全开」。** 本文强调 **可靠性调度**；退化模态应 **降权或门控**，而非硬融合。
 - **误区：「LVIO 一定优于 LIO」。** 视觉在弱纹理/夜间仍可能失效；需结合 [选型对比](../comparisons/lidar-slam-lio-vio-selection.md) 与平台传感器配置判断。
-- **局限：** 代码与扩展数据集 **论文接受后发布**；真机部署仍需 **传感器标定、时间同步与算力预算** 验证。
+- **局限：** 真机部署仍需 **传感器标定、时间同步与算力预算** 验证；ROS 2 工程集成与 Nav2 衔接需自行评估。
 - **局限：** 与 [FAST-LIO](./fast-lio.md) 等 **轻量 LIO** 相比，全模态 LVWIO + 在线标定 **复杂度更高**，适合 **多模态 ITS 平台** 而非极简 3D LIO 场景。
 
 ## 与其他页面的关系
@@ -144,11 +149,14 @@ flowchart TB
 ## 参考来源
 
 - [ultra_fusion_arxiv_2606_21223.md](../../sources/papers/ultra_fusion_arxiv_2606_21223.md)
+- [ultra_fusion.md](../../sources/repos/ultra_fusion.md)
+- [m3dgr.md](../../sources/repos/m3dgr.md)
 - Tian et al., *Ultra-Fusion: A Resilient Tightly-Coupled Multi-Sensor Fusion SLAM Framework under Sensor Degradation and Spatiotemporal Perturbation for Intelligent Transportation Systems*, arXiv:2606.21223, 2026 — <https://arxiv.org/abs/2606.21223>
 
 ## 推荐继续阅读
 
 - [Ultra-Fusion 项目页](https://sjtuyinjie.github.io/ultrafusion-web/) — 交互点云/3DGS demo 与分场景视频
+- [Ultra-Fusion 代码仓库](https://github.com/sjtuyinjie/Ultra-Fusion)
+- [M3DGR 数据集仓库](https://github.com/sjtuyinjie/M3DGR) — 退化与多模态 ITS 评测数据
 - Zheng et al., *FAST-LIVO2* — 固定 CIL 紧耦合 LVIO 强基线（<https://github.com/hku-mars/FAST-LIVO2>）
 - Yin et al., *Ground-Fusion / Ground-Fusion++* — 同一团队 IROS 路线，对比 **统一估计器** 的演进
-- [M3DGR 扩展基准](https://github.com/sjtuyinjie/M3DGR) — 退化与多模态 ITS 评测数据

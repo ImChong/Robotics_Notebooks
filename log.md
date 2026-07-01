@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/ultra_fusion_arxiv_2606_21223.md — Ultra-Fusion 补全作者与代码/M3DGR 仓库归档；wiki/entities/paper-ultra-fusion-multi-sensor-slam.md
+
 ## [2026-07-01] ingest | sources/papers/trex_arxiv_2606_17055.md — T-Rex 触觉反应式灵巧操作；wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md、wiki/methods/vla.md、wiki/methods/egoscale.md、wiki/tasks/manipulation.md、wiki/concepts/contact-rich-manipulation.md、wiki/concepts/visuo-tactile-fusion.md、wiki/queries/manipulation-vla-architecture-selection.md
 
 ## [2026-07-01] ingest | sources/papers/robustness_robotic_manipulation_dong_2026.md — 操作鲁棒性系统综述；wiki/entities/paper-robustness-robotic-manipulation-survey.md、wiki/tasks/manipulation.md

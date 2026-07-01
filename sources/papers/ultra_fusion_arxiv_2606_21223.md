@@ -5,11 +5,12 @@
 - **标题：** Ultra-Fusion: A Resilient Tightly-Coupled Multi-Sensor Fusion SLAM Framework under Sensor Degradation and Spatiotemporal Perturbation for Intelligent Transportation Systems
 - **类型：** paper / slam / multi-sensor-fusion / localization / its / lidar / vio / gnss
 - **arXiv：** <https://arxiv.org/abs/2606.21223> · PDF：<https://arxiv.org/pdf/2606.21223>
+- **作者：** Yihong Tian¹, Junjie Zhang², Liuyang Li³, Deteng Zhang⁴, Yunfei Zuo¹, Jie Yin⁵（通讯）
+- **作者单位：** ¹北京理工大学（BIT）· ²重庆大学（CQU）· ³四川大学（SCU）· ⁴西北工业大学（NWPU）· ⁵上海交通大学（SJTU）
 - **项目页：** <https://sjtuyinjie.github.io/ultrafusion-web/>
-- **代码（论文承诺）：** <https://github.com/sjtuyinjie/Ultra-Fusion>（接受后发布）
-- **扩展基准：** <https://github.com/sjtuyinjie/M3DGR>
-- **机构：** 北京理工大学、重庆大学、四川大学、西北工业大学、上海交通大学（通讯：Jie Yin）
-- **入库日期：** 2026-06-24
+- **代码：** <https://github.com/sjtuyinjie/Ultra-Fusion>
+- **扩展基准 / 数据集：** <https://github.com/sjtuyinjie/M3DGR>
+- **入库日期：** 2026-06-24（2026-07-01 补全作者与仓库归档）
 - **一句话说明：** 提出 **统一滑窗估计器**，在 **同一优化窗口** 内按时间戳排序并接纳 **WIO / VIO / LIO / LVIO** 及可选 **轮速 / GNSS** 因子；配合 **可观测性感知初始化**、**因子级可靠性调度（FRS）** 与 **在线 LiDAR–IMU 时空标定（OSC）**，在 M3DGR、M2DGR-Plus、KAIST、GrandTour、MARS-LVIG 上对 **60+** 开源 SLAM 系统做大规模鲁棒性评测，覆盖轮式、腿式与 UAV 平台。
 
 ## 核心摘录（面向 wiki 编译）
@@ -39,8 +40,13 @@
 - **要点：** 相对 **FAST-LIVO2**（固定 CIL、无在线时空标定）、**Ground-Fusion / Ground-Fusion++**（GNSS 可选但模式与子系统绑定），Ultra-Fusion 强调 **可配置 WIO/VIO/LIO/LVIO + 可选 W/G**、**图内退化调度** 与 **在线时空标定**，并支持 **高斯泼溅（GS）** 彩色建图输出。
 - **对 wiki 的映射：** [`wiki/comparisons/lidar-slam-lio-vio-selection.md`](../../wiki/comparisons/lidar-slam-lio-vio-selection.md)
 
+## 对 wiki 的映射（仓库层）
+
+- 代码归档：[sources/repos/ultra_fusion.md](../repos/ultra_fusion.md)
+- 数据集归档：[sources/repos/m3dgr.md](../repos/m3dgr.md)
+
 ## 当前提炼状态
 
 - [x] 要点摘录与 wiki 映射
 - [x] 实体页与对比/概念页交叉引用
-- [ ] 代码仓库公开后补充 `sources/repos/ultra_fusion.md`
+- [x] 代码与 M3DGR 数据集仓库归档
