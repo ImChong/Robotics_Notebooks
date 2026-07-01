@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/sites/tnkr-open-duck-mini-v2.md — 接入 Tnkr Open Duck Mini v2 项目文档；交叉更新 wiki/entities/open-duck-mini.md、wiki/entities/tnkr.md、wiki/entities/open-duck-mini-runtime.md
+
 ## [2026-07-01] ingest | sources/papers/reactivebfm_arxiv_2606_30362.md — ReactiveBFM 闭环规划–控制；wiki/entities/paper-reactivebfm.md
 
 ## [2026-07-01] ingest | sources/papers/fada_arxiv_2606_28476.md — FADA 少样本动力学对齐；wiki/entities/paper-fada-humanoid.md
