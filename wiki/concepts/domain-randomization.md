@@ -1,7 +1,7 @@
 ---
 type: concept
 summary: "Domain Randomization 通过在仿真中随机化参数扩大训练分布，是 sim2real 的主流鲁棒化手段。"
-updated: 2026-06-14
+updated: 2026-07-01
 ---
 
 # Domain Randomization

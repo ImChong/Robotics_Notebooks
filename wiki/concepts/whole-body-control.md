@@ -2,7 +2,7 @@
 type: concept
 tags: [control, wbc, humanoid, optimization]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-01
 related:
   - ../tasks/locomotion.md
   - ../methods/imitation-learning.md
@@ -96,7 +96,7 @@ flowchart TD
 ### 3. Learning-based & Generative WBC
 用 RL 或 IL 学习全身策略，或利用生成模型直接产生全身参考轨迹。
 
-代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及 **行为基础模型（BFM）** 谱系——见 [Behavior Foundation Model 概念页](./behavior-foundation-model.md)（综述 taxonomy + [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）；单篇深读见把多种 mode 抽到 **位级掩码 + CVAE** 的 [BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)。
+代表：DeepMimic, ASE, CALM, MimicKit, [MotionBricks](../methods/motionbricks.md) (Generative Backbone)，以及 **行为基础模型（BFM）** 谱系——见 [Behavior Foundation Model 概念页](./behavior-foundation-model.md)（综述 taxonomy + [awesome-bfm-papers](https://github.com/friedrichyuan/awesome-bfm-papers)）；单篇深读见把多种 mode 抽到 **位级掩码 + CVAE** 的 [BFM 论文实体](../entities/paper-behavior-foundation-model-humanoid.md)，以及把 BFM tracker 与 **闭环 AR 运动规划** 集成的 [ReactiveBFM](../entities/paper-reactivebfm.md)（arXiv:2606.30362，G1 真机 reactive WBC）。
 
 ## 最小代码骨架
 
@@ -177,6 +177,7 @@ print("joint acceleration command:", qdd_star)
 - [wbc_fsm](../entities/wbc-fsm.md) — WBC+FSM 在 Unitree G1 上的 C++ 部署实现
 - [Behavior Foundation Model（BFM 概念）](./behavior-foundation-model.md) — 人形 WBC 行为基础模型 taxonomy
 - [BFM（Behavior Foundation Model 论文实体）](../entities/paper-behavior-foundation-model-humanoid.md) — 把 WBC 多接口重表述为 CVAE 生成 + 位级掩码的人形基础模型
+- [ReactiveBFM（论文实体）](../entities/paper-reactivebfm.md) — BFM 类 tracker + 闭环 AR-MDM 规划，缓解开环级联 exposure bias（arXiv:2606.30362）
 - [GentleHumanoid（上半身柔顺运动跟踪）](../methods/gentlehumanoid-motion-tracking.md) — 在 motion tracking 中集成阻抗参考动力学与可调力阈值
 - [PILOT（论文实体）](../entities/paper-pilot-perceptive-loco-manipulation.md) — 学习型 **单阶段 MoE 全身 LLC**：LiDAR 高程图 + 跨模态编码，作 loco-manipulation 上层 API（arXiv:2601.17440）
 

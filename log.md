@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/reactivebfm_arxiv_2606_30362.md — ReactiveBFM 闭环规划–控制；wiki/entities/paper-reactivebfm.md
+
 ## [2026-06-30] query | checklist-v27 P1 接触力旋量闭环知识链（+2）—— 新建端到端 Query 与带宽概念页
 
 - 新建 [`wiki/queries/contact-wrench-closed-loop.md`](wiki/queries/contact-wrench-closed-loop.md)：把分散的「① 接触感知/估计 → ② 力旋量表示 → ③ 阻抗/导纳/混合力位控制 → ④ 接触丰富操作策略」四层串成端到端决策链，含 TL;DR 四层定位表、Mermaid 四层决策树、按层归因的失败模式速查；内链回 `contact-estimation` / `force-control-basics` / `hybrid-force-position-control` / `impedance-control` / `visuo-tactile-fusion` 与 CHORD / SceneBot / HapMorph 来源。

@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1519,
-  "edge_count": 10271,
+  "node_count": 1520,
+  "edge_count": 10283,
   "coverage": {
-    "covered": 1488,
-    "total": 1517,
+    "covered": 1489,
+    "total": 1518,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-reactivebfm.md",
+      "detail_id": "entity-paper-reactivebfm",
+      "label": "ReactiveBFM",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/queries/contact-wrench-closed-loop.md",
       "detail_id": "wiki-queries-contact-wrench-closed-loop",
@@ -159,22 +167,14 @@
       "type": "entity",
       "recency": "2026-06-29",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-hapmorph-pneumatic-haptic-render.md",
-      "detail_id": "entity-paper-hapmorph-pneumatic-haptic-render",
-      "label": "HapMorph：多维气动触觉属性渲染框架",
-      "type": "entity",
-      "recency": "2026-06-29",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/queries/contact-wrench-closed-loop.md",
-    "detail_id": "wiki-queries-contact-wrench-closed-loop",
-    "label": "Query：接触力旋量闭环知识链",
-    "type": "query",
-    "recency": "2026-06-30",
+    "path": "wiki/entities/paper-reactivebfm.md",
+    "detail_id": "entity-paper-reactivebfm",
+    "label": "ReactiveBFM",
+    "type": "entity",
+    "recency": "2026-07-01",
     "source": "log.md"
   }
 }
