@@ -1,7 +1,7 @@
 ---
 type: concept
 tags: [control, safety, cbf, qp, optimization, humanoid, whole-body-control]
-status: stub
+status: complete
 summary: "Control Barrier Function（控制屏障函数）通过维持 h(x)≥0 来为机器人系统提供可证明的安全保证，常与 QP 结合嵌入实时控制回路。"
 sources:
   - ../../sources/papers/optimal_control_theory.md

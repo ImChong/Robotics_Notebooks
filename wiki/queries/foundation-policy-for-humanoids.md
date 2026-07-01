@@ -1,7 +1,7 @@
 ---
 type: query
 tags: [foundation-policy, humanoid, vla, locomotion, manipulation, loco-manipulation, generalization]
-status: stub
+status: complete
 summary: "综合分析人形机器人 foundation policy 的当前适用边界：操作任务已有初步可用，运动控制尚不成熟，loco-manipulation 仍是前沿。"
 sources:
   - ../../sources/papers/rl_foundation_models.md

@@ -91,7 +91,7 @@ flowchart TB
 3. **Object：** 与接触面平行的 plate 集合；抓取轨迹由相关边空间均值确定。
 4. **训练辅助：** 物体重建轨迹未必从地面静止开始 → 力闭合前 **heuristic stabilizing force**；**contact-mismatch termination** 限时建立期望接触。
 
-### 奖励与关键消融
+## 评测：奖励与关键消融
 
 - **$r_{\text{cr}}$：** desired/actual contact 一致（仅期望接触时计分）。
 - **$r_{\text{dr}}$：** 累计接触时长，clip **0.5 s** 防拒释。

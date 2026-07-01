@@ -61,7 +61,7 @@ summary: "CWI（arXiv:2606.27676，逐际动力等）：复合全身模仿——
 - **LimX 工程线补全：** 与 [FastStair](./paper-faststair-humanoid-stair-ascent.md)（高速楼梯）、[Any2Any](./paper-any2any-cross-embodiment-wbt.md)（跨机体 WBT）等同属 **LimX Oli** 平台叙事；CWI 覆盖 **日常 loco-manipulation + 便携 VR 遥操作**，接口刻意 **极简** 以利现场部署。
 - **与 [LIMMT](../methods/limmt-gqs-motion-curation.md) 形成对照：** LIMMT 问「如何从全库 **筛 3%** 高质量 tracking 片段」；CWI 问「能否 **不按同一分布过滤全身**，而是 **上身全留、下身换小库 + AMP**」——代表 2026 人形模仿 **数据策展 vs 复合解耦** 两条路线。
 
-## 核心结构
+## 方法与核心结构
 
 | 模块 | 作用 |
 |------|------|
