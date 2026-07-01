@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-01
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 07：遥操作（19 篇深读笔记索引）。"
@@ -25,12 +25,12 @@ summary: "Paper Notebooks 分类 07：遥操作（19 篇深读笔记索引）。
 - [A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU](../entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md) — 待深读
 - [AvatarPoser](../entities/paper-notebook-avatarposer-articulated-full-body-pose-tracking.md) — 待深读
 - [CHILD](../entities/paper-notebook-child-a-whole-body-humanoid-teleoperation-system.md) — 待深读
-- [CLONE](../entities/paper-bfm-12-clone.md) — 待深读
-- [CLOT](../entities/paper-amp-survey-16-clot.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation/CLOT__Closed-Loop_Global_Motion_Tracking_for_Whole-Body_Humanoid_Teleoperation.html)
+- [CLONE](../entities/paper-bfm-12-clone.md) — 见 wiki 实体页
+- [CLOT](../entities/paper-amp-survey-16-clot.md) — 见 wiki 实体页
 - [Deep Imitation Learning for Humanoid Loco-manipulation through Human Teleoperation](../entities/paper-notebook-deep-imitation-learning-for-humanoid-loco-manipu.md) — 待深读
 - [Development of an Intuitive GUI for Non-Expert Teleoperation of Humanoid Robots](../entities/paper-notebook-intuitive-gui-for-non-expert-teleoperation-of-hu.md) — 待深读
 - [EgoPoser](../entities/paper-notebook-egoposer-robust-real-time-egocentric-pose-estima.md) — 待深读
-- [ExtremControl](../tasks/teleoperation.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/07_Teleoperation/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control/ExtremControl__Low-Latency_Humanoid_Teleoperation_with_Direct_Extremity_Control.html)
+- [ExtremControl](../tasks/teleoperation.md) — 见 wiki 实体页
 - [Heavy lifting tasks via haptic teleoperation of a wheeled humanoid](../entities/paper-notebook-heavy-lifting-tasks-via-haptic-teleoperation-of.md) — 待深读
 - [High-Speed and Impact Resilient Teleoperation of Humanoid Robots](../entities/paper-notebook-high-speed-and-impact-resilient-teleoperation-of.md) — 待深读
 - [Human-Robot Collaboration for the Remote Control of Mobile Humanoid Robots](../entities/paper-notebook-human-robot-collaboration-for-the-remote-control.md) — 待深读

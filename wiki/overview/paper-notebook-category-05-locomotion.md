@@ -2,7 +2,7 @@
 type: overview
 tags: [humanoid-paper-notebooks, paper-index, overview]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-01
 related:
   - ./humanoid-paper-notebooks-index.md
 summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）。"
@@ -43,16 +43,16 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [Do You Have Freestyle? Expressive Humanoid Locomotion via Audio Control](../entities/paper-notebook-do-you-have-freestyle-expressive-humanoid-locomo.md) — 待深读
 - [DoublyAware](../entities/paper-notebook-doublyaware-dual-planning-and-policy-awareness-f.md) — 待深读
 - [Dribble Master](../entities/paper-notebook-dribble-master-learning-agile-humanoid-dribbling.md) — 待深读
-- [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 待深读
+- [E-SDS](../entities/paper-e-sds-environment-aware-humanoid-locomotion-rl.md) — 见 wiki 实体页
 - [End-to-End Humanoid Robot Safe and Comfortable Locomotion Policy](../entities/paper-notebook-end-to-end-humanoid-robot-safe-and-comfortable-l.md) — 待深读
-- [Extreme Parkour with Legged Robots](../entities/extreme-parkour.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Extreme_Parkour_with_Legged_Robots/Extreme_Parkour_with_Legged_Robots.html)
-- [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) — 待深读
+- [Extreme Parkour with Legged Robots](../entities/legged-gym.md) — 见 wiki 实体页
+- [FastStair](../entities/paper-faststair-humanoid-stair-ascent.md) — 见 wiki 实体页
 - [FastTD3](../entities/paper-notebook-fasttd3-simple-fast-and-capable-reinforcement-le.md) — 待深读
 - [GaussGym](../entities/paper-notebook-gaussgym-an-open-source-real-to-sim-framework-fo.md) — 待深读
 - [Geometry-Aware Predictive Safety Filters on Humanoids](../entities/paper-notebook-geometry-aware-predictive-safety-filters-on-huma.md) — 待深读
 - [H-Zero](../entities/paper-notebook-h-zero-cross-humanoid-locomotion-pretraining-ena.md) — 待深读
 - [HWC-Loco](../entities/paper-notebook-hwc-loco-a-hierarchical-whole-body-control-appro.md) — 待深读
-- [HoRD](../tasks/humanoid-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation/HoRD__Robust_Humanoid_Control_via_History-Conditioned_RL_and_Online_Distillation.html)
+- [HoRD](../tasks/humanoid-locomotion.md) — 见 wiki 实体页
 - [HuMam](../entities/paper-notebook-humam-humanoid-motion-control-via-end-to-end-dee.md) — 待深读
 - [Humanoid Whole-Body Locomotion on Narrow Terrain via Dynamic Balance and Reinforcement Learning](../entities/paper-notebook-humanoid-whole-body-locomotion-on-narrow-terrain.md) — 待深读
 - [Learning Aerodynamics for the Control of Flying Humanoid Robots](../entities/paper-notebook-learning-aerodynamics-for-the-control-of-flying.md) — 待深读
@@ -65,23 +65,23 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [Learning to Get Up Across Morphologies](../entities/paper-notebook-learning-to-get-up-across-morphologies-zero-shot.md) — 待深读
 - [Learning to Walk and Fly with Adversarial Motion Priors](../entities/paper-notebook-learning-to-walk-and-fly-with-adversarial-motion.md) — 待深读
 - [Learning to Walk in Costume](../entities/paper-notebook-learning-to-walk-in-costume-adversarial-motion-p.md) — 待深读
-- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/paper-digit-humanoid-locomotion-rl.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)
+- [Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](../entities/gel-slim.md) — 见 wiki 实体页
 - [Let Humanoids Hike! Integrative Skill Development on Complex Trails](../entities/paper-notebook-let-humanoids-hike-integrative-skill-development.md) — 待深读
-- [LiPS](../concepts/humanoid-parallel-joint-kinematics.md) — 待深读
+- [LiPS](../concepts/humanoid-parallel-joint-kinematics.md) — 见 wiki 实体页
 - [LocoFormer](../entities/paper-notebook-locoformer-generalist-locomotion-via-long-contex.md) — 待深读
 - [MASH](../entities/paper-notebook-mash-cooperative-heterogeneous-multi-agent-rl-fo.md) — 待深读
 - [Mechanical Intelligence-Aware Curriculum RL for Humanoids with Parallel Actuation](../entities/paper-notebook-mechanical-intelligence-aware-curriculum-rl-for.md) — 待深读
-- [MoRE](../entities/paper-amp-survey-08-more.md) — [知识库深读](https://imchong.github.io/Robotics_Notebooks/detail.html?id=entity-paper-amp-survey-08-more)（arXiv:2506.08840）
-- [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 待深读
+- [MoRE](../entities/paper-amp-survey-08-more.md) — 见 wiki 实体页
+- [Natural Humanoid Robot Locomotion with Generative Motion Prior](../entities/paper-amp-survey-06-natural_humanoid_robot_locomotion_wi.md) — 见 wiki 实体页
 - [No More Marching](../entities/paper-notebook-no-more-marching-learning-humanoid-locomotion-fo.md) — 待深读
-- [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels/Now_You_See_That_Learning_End-to-End_Humanoid_Locomotion_from_Raw_Pixels.html)
+- [Now You See That](../entities/paper-now-you-see-that-humanoid-vision-locomotion.md) — 见 wiki 实体页
 - [Omni-Perception](../entities/paper-notebook-omni-perception-omnidirectional-collision-avoida.md) — 待深读
 - [One Policy but Many Worlds](../entities/paper-notebook-one-policy-but-many-worlds-a-scalable-unified-po.md) — 待深读
 - [Optimizing Bipedal Locomotion for The 100m Dash With Comparison to Human Running](../entities/paper-notebook-optimizing-bipedal-locomotion-for-the-100m-dash.md) — 待深读
 - [PPF](../entities/paper-notebook-ppf-pre-training-and-preservative-fine-tuning-of.md) — 待深读
 - [PolygMap](../entities/paper-notebook-polygmap-a-perceptive-locomotion-framework-for-h.md) — 待深读
 - [Preference-Conditioned Multi-Objective RL for Integrated Command Tracking and Force Compliance in Humanoid Locomotion](../entities/paper-notebook-preference-conditioned-multi-objective-rl-for-in.md) — 待深读
-- [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 待深读
+- [RPL](../entities/paper-rpl-robust-humanoid-perceptive-locomotion.md) — 见 wiki 实体页
 - [Real-Time Polygonal Semantic Mapping for Humanoid Robot Stair Climbing](../entities/paper-notebook-real-time-polygonal-semantic-mapping-for-humanoi.md) — 待深读
 - [Reduced-Order Model-Guided RL for Demonstration-Free Humanoid Locomotion](../entities/paper-notebook-reduced-order-model-guided-rl-for-demonstration.md) — 待深读
 - [RoboMirror](../entities/paper-notebook-robomirror-understand-before-you-imitate-for-vid.md) — 待深读
@@ -90,7 +90,7 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [RuN](../entities/paper-notebook-run-residual-policy-for-natural-humanoid-locomot.md) — 待深读
 - [SHIELD](../entities/paper-notebook-shield-safety-on-humanoids-via-cbfs-in-expectati.md) — 待深读
 - [SKATER](../entities/paper-notebook-skater-synthesized-kinematics-for-advanced-trave.md) — 待深读
-- [Scalable and General Whole-Body Control for Cross-Humanoid Locomotion](../concepts/whole-body-control.md) — [深读笔记](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/XHugWBC__Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_Locomotion/XHugWBC__Scalable_and_General_Whole-Body_Control_for_Cross-Humanoid_Locomotion.html)
+- [Scalable and General Whole-Body Control for Cross-Humanoid Locomotion](../concepts/whole-body-control.md) — 见 wiki 实体页
 - [SoccerDiffusion](../entities/paper-notebook-soccerdiffusion-toward-learning-end-to-end-human.md) — 待深读
 - [Spectral Normalization for Lipschitz-Constrained Policies on Learning Humanoid Locomotion](../entities/paper-notebook-spectral-normalization-for-lipschitz-constrained.md) — 待深读
 - [Stabilizing Humanoid Robot Trajectory Generation via Physics-Informed Learning](../entities/paper-notebook-stabilizing-humanoid-robot-trajectory-generation.md) — 待深读
@@ -100,7 +100,7 @@ summary: "Paper Notebooks 分类 05：行走运动（81 篇深读笔记索引）
 - [TD-GRPC](../entities/paper-notebook-td-grpc-temporal-difference-learning-with-group.md) — 待深读
 - [Traversing Narrow Paths](../entities/paper-notebook-traversing-narrow-paths-a-two-stage-rl-framework.md) — 待深读
 - [VB-Com](../entities/paper-notebook-vb-com-learning-vision-blind-composite-humanoid.md) — 待深读
-- [VideoMimic](../entities/videomimic.md) — 待深读
+- [VideoMimic](../entities/videomimic.md) — 见 wiki 实体页
 - [Walk the PLANC](../entities/paper-notebook-walk-the-planc-physics-guided-rl-for-agile-human.md) — 待深读
 - [Whole-body Humanoid Robot Locomotion with Human Reference](../entities/paper-notebook-whole-body-humanoid-robot-locomotion-with-human.md) — 待深读
 

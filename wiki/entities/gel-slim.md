@@ -112,3 +112,7 @@ GelSlim 在策略学习里最大的难题是**仿真**——硅胶的非线性�
 - Taylor, I. H., Dong, S., Rodriguez, A. (2022). *GelSlim 3.0: High-Resolution Measurement of Shape, Force and Slip in a Compact Tactile-Sensing Finger*. ICRA.
 - Ma, D., Donlon, E., Dong, S., Rodriguez, A. (2019). *Dense Tactile Force Estimation Using GelSlim and Inverse FEM*. ICRA.
 - Yuan, W., Dong, S., Adelson, E. (2017). *GelSight: High-Resolution Robot Tactile Sensors for Estimating Geometry and Force*. Sensors.
+
+## 推荐继续阅读
+
+- [机器人论文阅读笔记：Learning to Walk in Minutes Using Massively Parallel Deep Reinforcement Learning](https://imchong.github.io/Humanoid_Robot_Learning_Paper_Notebooks/papers/05_Locomotion/Learning_to_Walk_in_Minutes/Learning_to_Walk_in_Minutes.html)

@@ -1,178 +1,178 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1530,
-  "edge_count": 10405,
+  "node_count": 1534,
+  "edge_count": 10402,
   "coverage": {
-    "covered": 1499,
-    "total": 1528,
+    "covered": 1503,
+    "total": 1532,
     "percent": 98
   },
   "latest_wiki_nodes": [
     {
-      "path": "wiki/entities/hrdexdb-dataset.md",
-      "detail_id": "entity-hrdexdb-dataset",
-      "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
+      "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
+      "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
+      "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/manipulation.md",
-      "detail_id": "wiki-tasks-manipulation",
-      "label": "Manipulation",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/dexterous-data-collection-guide.md",
-      "detail_id": "wiki-queries-dexterous-data-collection-guide",
-      "label": "灵巧操作数据采集指南",
-      "type": "query",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/overview/topic-grasp.md",
-      "detail_id": "wiki-overview-topic-grasp",
-      "label": "抓取与操作（专题汇总）",
-      "type": "overview",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-omnicontact-humanoid-loco-manipulation.md",
-      "detail_id": "entity-paper-omnicontact-humanoid-loco-manipulation",
-      "label": "OmniContact（Chaining Meta-Skills via Contact Flow）",
+      "path": "wiki/entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md",
+      "detail_id": "entity-paper-notebook-a-behavior-architecture-for-fast-humanoid-robot",
+      "label": "A Behavior Architecture for Fast Humanoid Robot Door Traversals",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/omnicontact-sim2sim.md",
-      "detail_id": "entity-omnicontact-sim2sim",
-      "label": "OmniContact sim2sim",
+      "path": "wiki/entities/paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots.md",
+      "detail_id": "entity-paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots",
+      "label": "A Gait Driven RL Framework for Humanoid Robots",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
-      "detail_id": "entity-paper-argus-dynamic-symmetry",
-      "label": "Argus（Dynamic Symmetry / Dynamic Isotropy）",
+      "path": "wiki/entities/paper-notebook-a-hierarchical-framework-for-humanoid-locomotion.md",
+      "detail_id": "entity-paper-notebook-a-hierarchical-framework-for-humanoid-locomotion",
+      "label": "A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/tasks/locomotion.md",
-      "detail_id": "wiki-tasks-locomotion",
-      "label": "Locomotion",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/loco-manipulation.md",
-      "detail_id": "wiki-tasks-loco-manipulation",
-      "label": "Loco-Manipulation (移动操作)",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/tasks/balance-recovery.md",
-      "detail_id": "wiki-tasks-balance-recovery",
-      "label": "Balance Recovery（平衡恢复）",
-      "type": "task",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-tsil-temporal-self-imitation-learning.md",
-      "detail_id": "entity-paper-tsil-temporal-self-imitation-learning",
-      "label": "TSIL（Temporal Self-Imitation Learning）",
+      "path": "wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md",
+      "detail_id": "entity-paper-notebook-a-hierarchical-model-based-system-for-high-perfo",
+      "label": "ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-ultra-fusion-multi-sensor-slam.md",
-      "detail_id": "entity-paper-ultra-fusion-multi-sensor-slam",
-      "label": "Ultra-Fusion（韧性多传感器融合 SLAM）",
+      "path": "wiki/entities/paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con.md",
+      "detail_id": "entity-paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con",
+      "label": "A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md",
-      "detail_id": "entity-paper-trex-tactile-reactive-dexterous-manipulation",
-      "label": "T-Rex：触觉反应式灵巧操作",
+      "path": "wiki/entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md",
+      "detail_id": "entity-paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by",
+      "label": "A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/vla.md",
-      "detail_id": "wiki-methods-vla",
-      "label": "VLA（Vision-Language-Action）",
-      "type": "method",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/methods/egoscale.md",
-      "detail_id": "wiki-methods-egoscale",
-      "label": "EgoScale",
-      "type": "method",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/contact-rich-manipulation.md",
-      "detail_id": "wiki-concepts-contact-rich-manipulation",
-      "label": "Contact-Rich Manipulation（接触丰富型操作）",
-      "type": "concept",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/concepts/visuo-tactile-fusion.md",
-      "detail_id": "wiki-concepts-visuo-tactile-fusion",
-      "label": "视触觉融合（Visuo-Tactile Fusion）",
-      "type": "concept",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/queries/manipulation-vla-architecture-selection.md",
-      "detail_id": "wiki-queries-manipulation-vla-architecture-selection",
-      "label": "操作 VLA 与视频-动作架构选型指南",
-      "type": "query",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-robustness-robotic-manipulation-survey.md",
-      "detail_id": "entity-paper-robustness-robotic-manipulation-survey",
-      "label": "Robustness of Robotic Manipulation",
+      "path": "wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md",
+      "detail_id": "entity-paper-notebook-a-systematic-study-of-data-modalities-and-strate",
+      "label": "A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation",
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     },
     {
-      "path": "wiki/methods/aspire.md",
-      "detail_id": "wiki-methods-aspire",
-      "label": "ASPIRE",
-      "type": "method",
+      "path": "wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md",
+      "detail_id": "entity-paper-notebook-a-whole-body-motion-imitation-framework-from-hum",
+      "label": "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md",
+      "detail_id": "entity-paper-notebook-ace-a-cross-platform-visual-exoskeletons-system",
+      "label": "ACE",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-activeumi-robotic-manipulation-with-active-perce.md",
+      "detail_id": "entity-paper-notebook-activeumi-robotic-manipulation-with-active-perce",
+      "label": "ActiveUMI",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-adamimic.md",
+      "detail_id": "entity-paper-notebook-adamimic",
+      "label": "AdaMimic",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md",
+      "detail_id": "entity-paper-notebook-adapting-humanoid-locomotion-over-challenging-te",
+      "label": "Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md",
+      "detail_id": "entity-paper-notebook-adaptive-invariant-extended-kalman-filter-for-le",
+      "label": "Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha.md",
+      "detail_id": "entity-paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha",
+      "label": "AdaptNet",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md",
+      "detail_id": "entity-paper-notebook-advancing-humanoid-locomotion-mastering-challeng",
+      "label": "Advancing Humanoid Locomotion",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-aero-hand-open.md",
+      "detail_id": "entity-paper-notebook-aero-hand-open",
+      "label": "Aero Hand Open",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md",
+      "detail_id": "entity-paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re",
+      "label": "AGILOped",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md",
+      "detail_id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
+      "label": "AME-2",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-notebook-amor-adaptive-character-control-through-multi-ob.md",
+      "detail_id": "entity-paper-notebook-amor-adaptive-character-control-through-multi-ob",
+      "label": "AMOR",
+      "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/hrdexdb-dataset.md",
-    "detail_id": "entity-hrdexdb-dataset",
-    "label": "HRDexDB（人–机器人配对灵巧抓取数据集）",
+    "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
+    "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
+    "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"
