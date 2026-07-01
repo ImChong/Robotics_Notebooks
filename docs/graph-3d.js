@@ -69,6 +69,24 @@
     return /^Sphere(Buffer)?Geometry$/i.test(geometry.type);
   }
 
+  function isCylinderGeometryType(geometry) {
+    if (!geometry || !geometry.type) return false;
+    return /^Cylinder(Buffer)?Geometry$/i.test(geometry.type);
+  }
+
+  /** three-forcegraph 连线可能是 Group 包裹的 Cylinder mesh，缩放必须落在圆柱体上。 */
+  function resolveLinkCylinderMesh(linkObj) {
+    if (!linkObj) return null;
+    if (linkObj.isMesh && linkObj.geometry && isCylinderGeometryType(linkObj.geometry)) return linkObj;
+    if (linkObj.children && linkObj.children.length) {
+      for (var i = 0; i < linkObj.children.length; i++) {
+        var ch = linkObj.children[i];
+        if (ch.isMesh && ch.geometry && isCylinderGeometryType(ch.geometry)) return ch;
+      }
+    }
+    return linkObj.isMesh ? linkObj : null;
+  }
+
   function captureBundledThreeFromMesh(obj) {
     return {
       SphereGeometry: obj.geometry.constructor,
@@ -312,13 +330,13 @@
       if (sidebarNodeId && edgeHighlightsWithNode) {
         var ref = l._ref;
         if (!ref) return 0.08;
-        if (!filtered) return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.55 : 0.08;
+        if (!filtered) return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.88 : 0.06;
         if (!visible.has(s) || !visible.has(t)) return 0.08;
-        return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.55 : 0.08;
+        return edgeHighlightsWithNode(ref, sidebarNodeId) ? 0.88 : 0.06;
       }
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.45 : 0.1;
+        if (eRef && edgeHighlightsWithNode) return edgeHighlightsWithNode(eRef, hoverNodeId) ? 0.68 : 0.1;
       }
       if (!filtered) return 0.06;
       if (!visible.has(s) || !visible.has(t)) return 0.03;
@@ -344,7 +362,8 @@
     }
 
     function linkBaseWidth() {
-      return getLinkWidth() * 0.3;
+      // 3D 世界坐标下节点球体半径约 11–40；基准连线需与节点同量级才可见。
+      return getLinkWidth() * 0.5;
     }
 
     // 期望连线宽度（高亮连线除染色外再加粗）。实际粗细不靠 linkWidth 访问器生效——
@@ -354,11 +373,11 @@
       var base = linkBaseWidth();
       if (sidebarNodeId) {
         var ref = l._ref;
-        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 3.5;
+        if (ref && edgeHighlightsWithNode && edgeHighlightsWithNode(ref, sidebarNodeId)) return base * 12;
       }
       if (hoverNodeId) {
         var eRef = l._ref;
-        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 3;
+        if (eRef && edgeHighlightsWithNode && edgeHighlightsWithNode(eRef, hoverNodeId)) return base * 8;
       }
       return base;
     }
@@ -425,13 +444,15 @@
     // 在这里按「期望宽度 / 基准宽度」设置 mesh 半径轴(x/y)缩放；返回 falsy 让库继续做默认定位
     // （只写 scale.z 长度 + lookAt 朝向），两者互不干扰，加粗即可稳定保留、且无需重建几何或重排布局。
     function linkScaleUpdate(obj, _coords, link) {
+      var mesh = resolveLinkCylinderMesh(obj);
+      if (!mesh) return false;
       var mult = 1;
       if (sidebarNodeId || hoverNodeId) {
         var base = linkBaseWidth();
         if (base > 0) mult = linkWidthFor(link) / base;
       }
-      obj.scale.x = mult;
-      obj.scale.y = mult;
+      mesh.scale.x = mult;
+      mesh.scale.y = mult;
       return false;
     }
 

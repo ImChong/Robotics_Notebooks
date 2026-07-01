@@ -1,4 +1,4 @@
-// Verify PR #867: selected/hovered 3D links thicken via linkPositionUpdate (mesh x/y scale).
+// Verify 3D selected/hovered links thicken via linkPositionUpdate (mesh x/y scale).
 // Also records a short MP4 comparing sidebar closed vs open.
 // Usage: node scripts/verify_graph_3d_link_thickness.cjs [baseUrl] [outDir]
 const puppeteer = require('puppeteer-core');
@@ -42,8 +42,8 @@ async function sampleLinkScales(page, label) {
     return {
       label,
       cylinders: scales.length,
-      thick35: scales.filter((s) => s.x >= 3.4 && s.x <= 3.6).length,
-      thick3: scales.filter((s) => s.x >= 2.9 && s.x <= 3.1).length,
+      thick12: scales.filter((s) => s.x >= 11.9 && s.x <= 12.1).length,
+      thick8: scales.filter((s) => s.x >= 7.9 && s.x <= 8.1).length,
       unit: scales.filter((s) => Math.abs(s.x - 1) < 0.05).length,
       maxX: scales.reduce((m, s) => Math.max(m, s.x), 0),
       sidebarOpen: document.getElementById('sidebar')?.classList.contains('open'),
@@ -127,7 +127,7 @@ function framesToMp4(frameDir, outMp4, fps) {
     await sleep(6000);
     await hideLoading(page);
     const baseline = await sampleLinkScales(page, 'baseline-no-sidebar');
-    baseline.pass = baseline.maxX <= 1.1 && baseline.thick35 === 0;
+    baseline.pass = baseline.maxX <= 1.1 && baseline.thick12 === 0;
     report.cases.push(baseline);
     await page.screenshot({ path: path.join(outDir, 'graph-3d-link-baseline.png') });
 
@@ -137,7 +137,7 @@ function framesToMp4(frameDir, outMp4, fps) {
     }
     await captureFrames(page, framesDir, 4, 500);
 
-    // Case 2: open sidebar via ?focus= (selected node links should scale x/y to 3.5)
+    // Case 2: open sidebar via ?focus= (selected node links should scale x/y to 12)
     await page.goto(urlWith({ view: '3d', focus: focusId }), { waitUntil: 'domcontentloaded', timeout: 120000 });
     await page.waitForFunction(() => {
       const el = document.getElementById('graph-loading');
@@ -146,7 +146,7 @@ function framesToMp4(frameDir, outMp4, fps) {
     await sleep(7000);
     await hideLoading(page);
     const focused = await sampleLinkScales(page, 'sidebar-focus');
-    focused.pass = focused.thick35 > 0 && focused.unit > 0 && focused.maxX >= 3.4;
+    focused.pass = focused.thick12 > 0 && focused.unit > 0 && focused.maxX >= 11.9;
     report.cases.push(focused);
     await page.screenshot({ path: path.join(outDir, 'graph-3d-link-focused.png') });
     await captureFrames(page, framesDir, 8, 500);
@@ -155,7 +155,7 @@ function framesToMp4(frameDir, outMp4, fps) {
     await page.click('#sb-close');
     await sleep(2500);
     const cleared = await sampleLinkScales(page, 'sidebar-closed');
-    cleared.pass = cleared.maxX <= 1.1 && cleared.thick35 === 0;
+    cleared.pass = cleared.maxX <= 1.1 && cleared.thick12 === 0;
     report.cases.push(cleared);
     await captureFrames(page, framesDir, 4, 500);
 
