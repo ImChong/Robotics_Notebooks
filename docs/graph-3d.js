@@ -525,19 +525,24 @@
     function resumeRenderLoop() {
       if (!graph) return;
       // 3d-force-graph 在 kapsule 的防抖 digest 里才创建 WebGL renderer 并由 init 自启渲染环。
-      // 主线程繁忙时本函数（经 afterGraphDataApplied 的 2×rAF 调度）可能早于该 digest 跑完，
+      // 主线程繁忙时本函数（经 afterGraphDataApplied 调度）可能早于该 digest 跑完，
       // 此刻 renderer 尚未就绪；若仍 resumeAnimation，会让库内部 _animationCycle 在对象未就绪时
       // 同步抛错——且抛错发生在 requestAnimationFrame 重排之前 → 渲染环被永久中断、整屏黑屏。
       // 故 renderer 未就绪时推迟到下一帧重试（有上限兜底）；待库 init digest 建好 renderer 并自启
       // 渲染环后，这里再 resumeAnimation 也只是无害的 no-op。
       if (typeof graph.renderer === 'function' && !graph.renderer()) {
-        if (resumeDeferrals++ < 120) window.requestAnimationFrame(resumeRenderLoop);
+        if (resumeDeferrals++ < 180) window.requestAnimationFrame(resumeRenderLoop);
         return;
       }
-      resumeDeferrals = 0;
-      // 只恢复渲染环，不再把 alphaTarget 钉在 0.25（那会让力模拟永不收敛、一直微抖）。
-      // alphaTarget 保持 0，配合 reheat 的 alpha=1 实现「冲一下→自然衰减到静止」。
-      if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+      // renderer 已就绪但 graphData digest 可能尚未把 layout 赋给 forceGraph；此时
+      // _animationCycle → forceGraph.tickFrame → layout.tick() 仍会同步抛错并永久中断 rAF。
+      // 捕获后推迟重试，直到 layout 建好（首次 2D→3D 切换、主线程繁忙时常见）。
+      try {
+        if (typeof graph.resumeAnimation === 'function') graph.resumeAnimation();
+        resumeDeferrals = 0;
+      } catch (_resumeErr) {
+        if (resumeDeferrals++ < 180) window.requestAnimationFrame(resumeRenderLoop);
+      }
     }
 
     // 渲染环自愈：万一 3d-force-graph 的 _animationCycle 仍在内部对象（renderObjs / forceGraph）
@@ -783,9 +788,25 @@
     var graph = null;
 
     function afterGraphDataApplied(fn) {
-      window.requestAnimationFrame(function () {
-        window.requestAnimationFrame(fn);
-      });
+      // graphData 经 kapsule 防抖 digest 异步落地；2×rAF 在 2D 力模拟刚停、1500+ 节点
+      // 首次进 3D 时不足以等到 renderer/layout 就绪。轮询 renderer 后再回调，配合
+      // resumeRenderLoop 的 try/catch 重试，避免 layout.tick 抢跑导致渲染环永久中断。
+      var attempts = 0;
+      function wait() {
+        attempts += 1;
+        if (!graph) {
+          if (attempts < 240) window.requestAnimationFrame(wait);
+          else fn();
+          return;
+        }
+        if (typeof graph.renderer === 'function' && !graph.renderer()) {
+          if (attempts < 240) window.requestAnimationFrame(wait);
+          else fn();
+          return;
+        }
+        fn();
+      }
+      window.requestAnimationFrame(wait);
     }
 
     function bindGraphInstance() {
