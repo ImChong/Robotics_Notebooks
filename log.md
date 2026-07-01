@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/repos/tsil.md — TSIL 官方仓库接入；更新 wiki/entities/paper-tsil-temporal-self-imitation-learning.md
+
 ## [2026-07-01] ingest | sources/papers/tsil_arxiv_2606_19752.md — Temporal Self-Imitation Learning 论文入库与 wiki/entities/paper-tsil-temporal-self-imitation-learning.md
 
 ## [2026-07-01] ingest | sources/papers/ultra_fusion_arxiv_2606_21223.md — Ultra-Fusion 补全作者与代码/M3DGR 仓库归档；wiki/entities/paper-ultra-fusion-multi-sensor-slam.md

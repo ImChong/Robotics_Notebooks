@@ -13,3 +13,4 @@
 
 - [paper-tsil-temporal-self-imitation-learning](../../wiki/entities/paper-tsil-temporal-self-imitation-learning.md)
 - [tsil_arxiv_2606_19752.md](../papers/tsil_arxiv_2606_19752.md)
+- [tsil.md](../repos/tsil.md)（官方 GitHub 仓库）
