@@ -2,11 +2,12 @@
 type: task
 tags: [locomotion, balance, stability, humanoid, bipedal, control]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-01
 related:
   - ../entities/paper-unified-walk-run-recovery-sdamp.md
   - ../entities/paper-heracles-humanoid-diffusion.md
   - ../entities/paper-host-humanoid-standingup.md
+  - ../entities/paper-argus-dynamic-symmetry.md
 summary: "Balance Recovery 研究机器人在受扰动后如何通过步位、姿态和接触调整重新稳定下来。"
 ---
 

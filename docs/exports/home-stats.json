@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-01",
-  "node_count": 1526,
-  "edge_count": 10363,
+  "node_count": 1527,
+  "edge_count": 10375,
   "coverage": {
-    "covered": 1495,
-    "total": 1524,
+    "covered": 1496,
+    "total": 1525,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
+      "detail_id": "entity-paper-argus-dynamic-symmetry",
+      "label": "Argus（Dynamic Symmetry / Dynamic Isotropy）",
+      "type": "entity",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/locomotion.md",
+      "detail_id": "wiki-tasks-locomotion",
+      "label": "Locomotion",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/balance-recovery.md",
+      "detail_id": "wiki-tasks-balance-recovery",
+      "label": "Balance Recovery（平衡恢复）",
+      "type": "task",
+      "recency": "2026-07-01",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-tsil-temporal-self-imitation-learning.md",
       "detail_id": "entity-paper-tsil-temporal-self-imitation-learning",
@@ -135,44 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/tnkr.md",
-      "detail_id": "entity-tnkr",
-      "label": "Tnkr",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/open-duck-mini-runtime.md",
-      "detail_id": "entity-open-duck-mini-runtime",
-      "label": "Open Duck Mini Runtime",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-reactivebfm.md",
-      "detail_id": "entity-paper-reactivebfm",
-      "label": "ReactiveBFM",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-fada-humanoid.md",
-      "detail_id": "entity-paper-fada-humanoid",
-      "label": "FADA（Few-Shot Domain Adaptation via Dynamics Alignment）",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-tsil-temporal-self-imitation-learning.md",
-    "detail_id": "entity-paper-tsil-temporal-self-imitation-learning",
-    "label": "TSIL（Temporal Self-Imitation Learning）",
+    "path": "wiki/entities/paper-argus-dynamic-symmetry.md",
+    "detail_id": "entity-paper-argus-dynamic-symmetry",
+    "label": "Argus（Dynamic Symmetry / Dynamic Isotropy）",
     "type": "entity",
     "recency": "2026-07-01",
     "source": "log.md"

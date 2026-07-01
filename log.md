@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/argus_dynamic_symmetry_scirobotics_2026.md、sources/repos/argus_general_robotics_lab.md — Argus 动态对称与全向球形腿式机器人（Science Robotics 2026）；wiki/entities/paper-argus-dynamic-symmetry.md、wiki/tasks/locomotion.md、wiki/tasks/loco-manipulation.md、wiki/tasks/balance-recovery.md
+
 ## [2026-07-01] ingest | sources/repos/tsil.md — TSIL 官方仓库接入；更新 wiki/entities/paper-tsil-temporal-self-imitation-learning.md
 
 ## [2026-07-01] ingest | sources/papers/tsil_arxiv_2606_19752.md — Temporal Self-Imitation Learning 论文入库与 wiki/entities/paper-tsil-temporal-self-imitation-learning.md
