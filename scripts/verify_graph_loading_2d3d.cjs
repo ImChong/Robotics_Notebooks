@@ -152,7 +152,9 @@ function isLoadingDismissed(st) {
     report.cases.push(case1);
     await page.screenshot({ path: path.join(outDir, 'graph-loading-2d-ready.png') });
 
-    // Case 2: switch to 3D — loading stays dismissed, 3D canvas shown
+    // Case 2: switch to 3D — loading stays dismissed, 3D canvas shown, no render-loop crash
+    const pageErrors = [];
+    page.on('pageerror', (e) => pageErrors.push(String(e.message || e)));
     await clickViewMode(page, '3d');
     await sleep(2500);
     const after3dSwitch = await loadingState(page);
@@ -163,8 +165,9 @@ function isLoadingDismissed(st) {
       view3dActive: view3d.btn3dActive && !view3d.btn2dActive,
       has3dCanvas: view3d.has3dCanvas,
       svgHidden: view3d.svgDisplay === 'none',
+      noTickCrash: !pageErrors.some((m) => m.includes("reading 'tick'")),
     };
-    case2.pass = case2.loadingDismissed && is3dViewActive(view3d);
+    case2.pass = case2.loadingDismissed && is3dViewActive(view3d) && case2.noTickCrash;
     report.cases.push(case2);
     await page.screenshot({ path: path.join(outDir, 'graph-loading-3d-switched.png') });
 
