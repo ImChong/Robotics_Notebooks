@@ -2,7 +2,7 @@
 type: concept
 tags: [perception, manipulation, contact-rich, multimodal, tactile-sensing, fusion]
 status: complete
-updated: 2026-05-21
+updated: 2026-07-01
 related:
   - ./tactile-sensing.md
   - ./contact-rich-manipulation.md
@@ -17,6 +17,7 @@ related:
   - ../queries/grasp-policy-selection.md
   - ../comparisons/anygrasp-vs-graspnet.md
   - ../methods/tactile-impedance-control.md
+  - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./hybrid-force-position-control.md
 sources:
   - ../../sources/papers/perception.md
@@ -152,7 +153,7 @@ flowchart LR
 - **误区 2：视觉触觉传感器（如 GelSight）就解决了一切。**
   GelSight 给出的依然是「接触局部」的信号，仍然需要全局相机做粗对位；它替代不了视觉 + 触觉的分工，只是把触觉那一路的信息密度变高了。
 - **误区 3：把触觉信号简单拼到视觉 token 后面。**
-  在 VLA / Diffusion Policy 中，token 数量不平衡几乎一定让触觉被忽略；必须在结构上显式偏置或在 loss 中保护触觉路径。
+  在 VLA / Diffusion Policy 中，token 数量不平衡几乎一定让触觉被忽略；必须在结构上显式偏置或在 loss 中保护触觉路径。[T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) 给出 VLA 尺度反例：**π₀.₅ + tactile** 平均成功率低于无触觉 π₀.₅，需 **频率解耦触觉专家 + 时序力 VQ-VAE**。
 - **误区 4：用力残差代替触觉就行。**
   力残差只能告诉「有没有接触」，无法告诉「接触发生在指尖哪一块」。空间分布是视觉触觉传感器或阵列式传感器的核心价值。
 

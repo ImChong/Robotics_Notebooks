@@ -2,11 +2,12 @@
 type: concept
 tags: [manipulation, contact, force-control, impedance-control, tsid]
 status: complete
-updated: 2026-06-29
+updated: 2026-07-01
 summary: "Contact-Rich Manipulation 指需要持续建模接触、摩擦和力约束的操作任务，难点不在于碰到物体，而在于控制接触过程本身。"
 related:
   - ../entities/paper-scenebot.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
+  - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ./contact-dynamics.md
   - ./tsid.md
@@ -99,6 +100,7 @@ sources:
 - [TSID](./tsid.md) / [Whole-Body Control](./whole-body-control.md) 提供多任务和力约束执行层。
 - [SceneBot](../entities/paper-scenebot.md) — 人形 **contact-prompted tracking** 侧接触接口。
 - [CHORD](../entities/paper-chord-contact-wrench-dexterous-manipulation.md) — **接触位置 vs 接触力旋量** 的演示迁移；CWS 奖励覆盖推/撬/滑等瞬态接触阶段。
+- [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — **学习式触觉反应 VLA**：12 项双手力控/形变/协调真机任务与 **开源触觉 play 数据集**；强调 **异步高频触觉专家** 而非朴素模态拼接。
 - [Manipulation](../tasks/manipulation.md) 是更上层的任务总览；本页强调其中“最难的接触子域”。
 
 ## 常见误区

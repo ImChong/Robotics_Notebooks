@@ -3,7 +3,7 @@ title: 操作 VLA 与视频-动作架构选型指南
 type: query
 status: complete
 created: 2026-05-21
-updated: 2026-06-23
+updated: 2026-07-01
 summary: 在灵巧操作任务中，如何在 VLA、Video-Action Model、解耦动力学 VLA、世界模型与开源策略家族之间选型与组合。
 sources:
   - ../../sources/blogs/wechat_shenlan_vla_github_repro_survey_2025.md
@@ -26,6 +26,7 @@ sources:
 | 强调语义-动力学一体潜计划 | Video-Action Model | [mimic-video](../methods/mimic-video.md) |
 | 需要显式交互物理想象 | 灵巧世界模型 | [DWM](../methods/dwm.md) |
 | 语言+接触+全身协调 | 接触感知 transformer 路线 | [CLAW](../methods/claw.md) |
+| 双手灵巧 + 高频触觉反应 | 变频率 MoT + 触觉 mid-training | [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) |
 
 ---
 
@@ -38,6 +39,7 @@ sources:
 | **GFDM+GIDM 解耦** | DeFI | 人视频无动作标签仍可预训练 | 多阶段预训练与适配器 |
 | **像素世界模型** | DWM | 在模型内 planning 交互 | 仿真-真机 gap |
 | **语言接触全身** | CLAW | 语言指令与接触模态联合 | 数据与 sim 对齐 |
+| **触觉反应灵巧双手** | T-Rex | 慢 VLA 规划 + 快触觉残差；人预训练 + 触觉 play mid-training | 需触觉硬件与 mid-training 数据 |
 | **通才 VLM planner + actor VLA** | Vesta + Gr00t-N1.6 | 单 checkpoint 覆盖 VLN/空间推理/子任务规划；actor 执行文本子任务 | 两级延迟、actor 错误仍主导失败 |
 
 ---
@@ -104,4 +106,4 @@ sources:
 
 ## 一句话记忆
 
-> **有机器人动作数据走 VLA/π/STAR/Pelican；有人视频走 DeFI；要长程语义-动力学一体走 mimic-video；要物理想象走 DWM；要语言+接触全身走 CLAW。**
+> **有机器人动作数据走 VLA/π/STAR/Pelican；有人视频走 DeFI；要长程语义-动力学一体走 mimic-video；要物理想象走 DWM；要语言+接触全身走 CLAW；要双手灵巧高频触觉反应走 T-Rex。**

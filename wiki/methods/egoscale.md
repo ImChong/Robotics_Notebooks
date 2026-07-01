@@ -3,7 +3,7 @@
 type: method
 tags: [vla, egocentric-video, dexterous-manipulation, flow-matching, human-robot-transfer, imitation-learning, nvidia-gear, scaling-laws, nvidia]
 status: complete
-updated: 2026-06-23
+updated: 2026-07-01
 date: 2026-05-17
 summary: "EgoScale 用超两万小时、带腕与重定向高 DoF 手部标签的第一人称人视频预训练流式 VLA，实证人数据规模与验证损失近 log-linear 缩放且与真机灵巧表现强相关，再以小规模视点对齐的人–机 mid-training 把表示锚到机器人，从而在极少机端演示下获得高灵巧长程操作与 one-shot 迹象。"
 related:
@@ -13,6 +13,7 @@ related:
   - ../concepts/motion-retargeting.md
   - ../concepts/embodied-scaling-laws.md
   - ../entities/humannet.md
+  - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ../tasks/manipulation.md
   - ../entities/nvidia-gear-lab.md
 sources:
@@ -91,6 +92,7 @@ flowchart LR
 - 与 [HumanNet](../entities/humannet.md)：HumanNet 侧重建 **互联网级人中心语料与标注管线**；EgoScale 给出 **两万小时量级 egocentric + 动作标签** 上 **VLA 预训练缩放** 的实证数据点。
 - 与 [具身规模法则](../concepts/embodied-scaling-laws.md)：可把本文的 **log-linear 验证损失–数据规模** 与 **下游完成度** 的联动，当作 **人侧监督缩放** 的一个具体案例研究。
 - 与 [Motion Retargeting](../concepts/motion-retargeting.md)：重定向是 **人手关键点 → 机器人手关节** 的硬接口；误差形态会进入 **预训练标签噪声** 讨论。
+- 与 [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md)：同人灵巧线后续工作；共享 **人 egocentric 预训练 + 机端 mid-training** 骨架，T-Rex 把 mid-training 换成 **触觉同步 play** 并引入 **高频触觉专家**；论文以 EgoScale 为 **最强无触觉基线（35% vs 65%）**。
 
 ## 推荐继续阅读
 
