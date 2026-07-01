@@ -864,8 +864,11 @@
           if (onNodeClick) onNodeClick(src, ev || lastPointer);
         })
         .onNodeHover(function (node) {
-          hoverNodeId = node ? node.id : null;
-          refreshAppearance();
+          // 侧栏/触屏选中态由 sidebarNodeId 驱动；旋转视角时 hover 会短暂落空，不能覆盖持久高亮。
+          if (!sidebarNodeId) {
+            hoverNodeId = node ? node.id : null;
+            refreshAppearance();
+          }
           var src = node ? (resolveSourceNode(node.id) || node) : null;
           if (onNodeHover) onNodeHover(src, lastPointer);
         })
