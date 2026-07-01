@@ -2,7 +2,7 @@
 type: task
 tags: [locomotion, bipedal, humanoid, rl, control]
 status: complete
-updated: 2026-06-25
+updated: 2026-07-01
 related:
   - ../concepts/whole-body-control.md
   - ../concepts/sim2real.md
@@ -39,6 +39,7 @@ related:
   - ../entities/paper-anymal-walk-minutes-parallel-drl.md
   - ../entities/paper-walk-these-ways-quadruped-mob.md
   - ../entities/paper-cassie-feedback-control-drl.md
+  - ../entities/paper-argus-dynamic-symmetry.md
   - ../entities/paper-quadruped-torque-control-rl.md
   - ../entities/paper-quadruped-agile-sim2real-rss2018.md
   - ../entities/paper-barkour-quadruped-agility-benchmark.md
@@ -293,6 +294,7 @@ flowchart TD
 - [HIL vs MTRG vs ZEST 跑酷路线对比](../comparisons/hil-vs-mtrg-vs-zest-parkour-imitation.md) — 跑酷模仿三条路线选型
 - [ZEST](../methods/zest.md) — arXiv:2602.00401（跨形态高动态模仿与零样本硬件部署）
 - [Locomotion RL 论文导航](../../references/papers/locomotion-rl.md)
+- [Argus（动态对称 / 球形腿式全向移动）](../entities/paper-argus-dynamic-symmetry.md) — Science Robotics 2026；动态各向同性 η 与 20 腿无朝向偏好 locomotion
 
 ### Benchmark 入口
 - [Locomotion Benchmarks](../../references/benchmarks/locomotion-benchmarks.md)

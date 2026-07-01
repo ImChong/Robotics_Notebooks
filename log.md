@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-01] ingest | sources/papers/argus_dynamic_symmetry_scirobotics_2026.md、sources/repos/argus_general_robotics_lab.md — Argus 动态对称与全向球形腿式机器人（Science Robotics 2026）；wiki/entities/paper-argus-dynamic-symmetry.md、wiki/tasks/locomotion.md、wiki/tasks/loco-manipulation.md、wiki/tasks/balance-recovery.md
+
 ## [2026-07-01] ingest | sources/papers/ultra_fusion_arxiv_2606_21223.md — Ultra-Fusion 补全作者与代码/M3DGR 仓库归档；wiki/entities/paper-ultra-fusion-multi-sensor-slam.md
 
 ## [2026-07-01] ingest | sources/papers/trex_arxiv_2606_17055.md — T-Rex 触觉反应式灵巧操作；wiki/entities/paper-trex-tactile-reactive-dexterous-manipulation.md、wiki/methods/vla.md、wiki/methods/egoscale.md、wiki/tasks/manipulation.md、wiki/concepts/contact-rich-manipulation.md、wiki/concepts/visuo-tactile-fusion.md、wiki/queries/manipulation-vla-architecture-selection.md
