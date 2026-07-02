@@ -5,6 +5,7 @@ status: complete
 updated: 2026-06-23
 related:
   - ./smplolympics.md
+  - ./jim-fan.md
   - ./tairan-he.md
   - ../methods/sonic-motion-tracking.md
   - ../tasks/teleoperation.md
@@ -33,7 +34,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 ## 为什么重要
 
-- **人形学习管线枢纽作者**：与 [Tairan He](./tairan-he.md) 等在 **OmniH2O、HOVER、ASAP、SONIC、VIRAL** 上高度重叠署名，是理解 **2023–2026 通用人形控制 + 视觉迁移** 论文簇的关键人物节点；所属研究组见 [NVIDIA GEAR Lab](./nvidia-gear-lab.md)。
+- **人形学习管线枢纽作者**：与 [Tairan He](./tairan-he.md) 等在 **OmniH2O、HOVER、ASAP、SONIC、VIRAL** 上高度重叠署名，是理解 **2023–2026 通用人形控制 + 视觉迁移** 论文簇的关键人物节点；所属研究组见 [NVIDIA GEAR Lab](./nvidia-gear-lab.md)（PI：[Jim Fan](./jim-fan.md)、Yuke Zhu）。
 - **开源资产多**：PHC、PULSE、SimXR、EmbodiedPose、UniversalHumanoidControl 等仓库长期被社区用作 **仿真人形 baseline 与重定向参考**（以各仓库 README 为准）。
 
 ## 核心研究脉络（归纳）
@@ -50,6 +51,7 @@ summary: "罗正宜（Zhengyi Luo）为 NVIDIA GEAR Lab 高级研究科学家、
 
 ## 关联页面
 
+- [Jim Fan（范林熹）](./jim-fan.md)
 - [Tairan He（何泰然）](./tairan-he.md)
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
 - [NVIDIA GEAR Lab](./nvidia-gear-lab.md)
