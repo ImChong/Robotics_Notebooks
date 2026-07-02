@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1551,
-  "edge_count": 10586,
+  "node_count": 1552,
+  "edge_count": 10598,
   "coverage": {
-    "covered": 1520,
-    "total": 1549,
+    "covered": 1521,
+    "total": 1550,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/robot-retargeter.md",
+      "detail_id": "entity-robot-retargeter",
+      "label": "robot_retargeter",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md",
       "detail_id": "entity-paper-vs-graphs-visual-slam-scene-graph",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-behavior-architecture-for-fast-humanoid-robot.md",
-      "detail_id": "entity-paper-notebook-a-behavior-architecture-for-fast-humanoid-robot",
-      "label": "A Behavior Architecture for Fast Humanoid Robot Door Traversals",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md",
-    "detail_id": "entity-paper-vs-graphs-visual-slam-scene-graph",
-    "label": "vS-Graphs（视觉 SLAM + 3D 场景图）",
+    "path": "wiki/entities/robot-retargeter.md",
+    "detail_id": "entity-robot-retargeter",
+    "label": "robot_retargeter",
     "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"

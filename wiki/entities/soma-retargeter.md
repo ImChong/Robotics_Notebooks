@@ -2,7 +2,7 @@
 type: entity
 tags: [repo, motion-retargeting, humanoid, nvidia, unitree-g1, gpu]
 status: complete
-updated: 2026-06-17
+updated: 2026-07-02
 summary: "NVIDIA soma-retargeter：SOMA BVH → G1 关节 CSV 的 GPU IK 重定向库，隶属 SOMA-X / SEED 人形运动数据生态。"
 related:
   - ../concepts/motion-retargeting.md
@@ -11,6 +11,7 @@ related:
   - ./protomotions.md
   - ./unitree-g1.md
   - ./newton-physics.md
+  - ./robot-retargeter.md
 sources:
   - ../../sources/repos/soma_retargeter.md
   - ../../sources/repos/nvlabs-soma-x.md
@@ -34,7 +35,7 @@ sources:
 ## 为什么重要
 
 - **NVIDIA 人形栈一环**：与 [GENMO](../methods/genmo.md)、[Kimodo](./kimodo.md)、[ProtoMotions](./protomotions.md)、SONIC 并列出现在官方 README「Related Work」。
-- **数据闭环**：HuggingFace [SEED](https://huggingface.co/datasets/bones-studio/seed) 中 G1 轨迹即由本工具重定向生成，降低「只有人体数据、没有机器人参考」的摩擦。
+- **数据闭环**：HuggingFace [SEED](https://huggingface.co/datasets/bones-studio/seed) 中 G1 轨迹即由本工具重定向生成，降低「只有人体数据、没有机器人参考」的摩擦。若已有 **SMPL-X / LAFAN1 CSV** 而非 SOMA BVH，可对照 [robot_retargeter](./robot-retargeter.md)（mink IK + 多机型并排）选型。
 - **工程形态清晰**：交互 OpenGL viewer + headless 批处理 `bvh_to_csv_converter.py`，适合资产管线而非在线遥操。
 
 ## 流程总览

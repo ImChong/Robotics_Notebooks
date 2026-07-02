@@ -14,6 +14,7 @@ related:
   - ../methods/amp-reward.md
   - ./dataset-bfm-phuma.md
   - ./omomo-dataset.md
+  - ./robot-retargeter.md
   - ../comparisons/humanoid-reference-motion-datasets.md
 sources:
   - ../../sources/sites/amass-dataset.md
