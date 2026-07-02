@@ -3,7 +3,7 @@ type: task
 tags: [loco-manipulation, humanoid, whole-body, manipulation, locomotion]
 status: complete
 summary: "Loco-Manipulation 关注机器人边移动边操作的全身协调问题。2025-2026 年的趋势正从分层控制扩展到生成模型、VLA 与触觉增强的统一全身感知控制。"
-updated: 2026-07-01
+updated: 2026-07-02
 sources:
   - ../../sources/blogs/wechat_embodied_ai_lab_loco_manip_8_papers_survey.md
   - ../../sources/papers/loco_manip_8_papers_catalog.md
@@ -30,6 +30,7 @@ sources:
   - ../../sources/papers/cwi_arxiv_2606_27676.md
   - ../../sources/papers/omnicontact_arxiv_2606_26201.md
   - ../../sources/blogs/flexion_reflect_v1_0.md
+  - ../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md
 ---
 
 # Loco-Manipulation (移动操作)
@@ -166,6 +167,10 @@ flowchart TD
 - **核心**：**不解耦成两个策略**，而是 **按角色解耦 MoCap**——**AMASS 上身全库** 保留多样操作参考（基座系、未过滤），**精选行走/蹲起小库** 经 **双 AMP 判别器** 提供稳定下身风格先验；**multi-critic PPO** 分离 locomotion / manipulation / style 优势估计；**师生蒸馏** 将稠密上身 teacher 压到 **双手 9D keypoint + 速度/身高** 部署接口。
 - **代表作**：[CWI](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) (LimX / HKU / SUSTech / HKUST / ZJU-UIUC, 2026, arXiv:2606.27676) — **LimX Oli** 31-DoF 仿真优于重实现 HOVER*/FALCON*/HOMIE*；真机拧盖/开门/搬箱等；**Meta Quest VR** 无全身 MoCap；消融：去蒸馏手端误差 **42.9→173.2 mm**，去 AMP 风格 DTW **0.45→1.41**。
 
+### 22. MimicGen 式全身规划合成示范（HumanoidMimicGen · 单 demo → 千级 IL 数据）
+- **核心**：将 **object-centric 技能片段适配**（MimicGen / SkillGen / DexMimicGen 谱系）扩展到 **双足 G1 loco-manipulation**；**Homie RL 下肢 + 上身关节** 混合控制，**静态操作 / 动态行走** 解耦规划，**cuRobo 全身 IK + 碰撞规划** 交织技能 DAG 执行；**motion noise + init randomization** 提升 IL 鲁棒性。
+- **代表作**：[HumanoidMimicGen](../entities/paper-humanoidmimicgen.md) (NVIDIA / UT Austin, 2026, arXiv:2605.27724) — **九任务 G1 仿真基准**；单 VR 示范 → **1000** 轨迹，VLA（GR00T N1.6）平均 PSR **0.89** vs DexMimicGen+ **0.33**；真机 **sim-and-real co-training +20%**。
+
 ## 重点应用领域
 
 | 领域 | 典型任务 | 代表研究 |
@@ -214,6 +219,7 @@ flowchart TD
 - [CWI（论文实体）](../entities/paper-cwi-composite-humanoid-whole-body-imitation.md) — 复合全身模仿：AMASS 上身 + 双 AMP 下身 + multi-critic + VR 双手接口（arXiv:2606.27676）
 - [OmniContact（论文实体）](../entities/paper-omnicontact-humanoid-loco-manipulation.md) — Contact Flow 分层 meta-skill 链式组合、50 Hz 重规划与 VLM 语义任务（arXiv:2606.26201）
 - [Flexion Reflect v1.0](../entities/flexion-reflect-v1.md) — 产业长程自主栈：Reflect-VLM mission + VLA/RL 运动 + Reflex WBC + FlexComm（2026-06 博客）
+- [HumanoidMimicGen（论文实体）](../entities/paper-humanoidmimicgen.md) — MimicGen 式全身规划合成 loco-manip 示范 + G1 九任务基准 + co-training（arXiv:2605.27724）
 
 ## 参考来源
 - [awesome-humanoid-robot-learning](../../sources/repos/awesome-humanoid-robot-learning.md) — 持续更新的人形机器人学习论文集
@@ -241,6 +247,7 @@ flowchart TD
 - **ingest 档案：** [sources/papers/coordex_arxiv_2606_23680.md](../../sources/papers/coordex_arxiv_2606_23680.md) — CoorDex：body/hand 潜先验协调残差 dexterous loco-manipulation（arXiv:2606.23680）
 - **ingest 档案：** [sources/papers/cwi_arxiv_2606_27676.md](../../sources/papers/cwi_arxiv_2606_27676.md) — CWI：复合全身模仿 loco-manipulation（arXiv:2606.27676）
 - **ingest 档案：** [sources/papers/omnicontact_arxiv_2606_26201.md](../../sources/papers/omnicontact_arxiv_2606_26201.md) — OmniContact：Contact Flow meta-skill 链式 loco-manipulation（arXiv:2606.26201）
+- **ingest 档案：** [sources/papers/humanoidmimicgen_arxiv_2605_27724.md](../../sources/papers/humanoidmimicgen_arxiv_2605_27724.md) — HumanoidMimicGen：全身规划驱动 loco-manip 合成示范（arXiv:2605.27724）
 - **ingest 档案：** [sources/blogs/flexion_reflect_v1_0.md](../../sources/blogs/flexion_reflect_v1_0.md) — Flexion Reflect v1.0：长程 NL mission 跨楼层 loco-manip 产业演示（2026-06）
 
 ## 一句话记忆

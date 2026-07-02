@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1534,
-  "edge_count": 10429,
+  "node_count": 1535,
+  "edge_count": 10444,
   "coverage": {
-    "covered": 1503,
-    "total": 1532,
+    "covered": 1504,
+    "total": 1533,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoidmimicgen.md",
+      "detail_id": "entity-paper-humanoidmimicgen",
+      "label": "HumanoidMimicGen",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
       "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
@@ -151,28 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adapting-humanoid-locomotion-over-challenging-te.md",
-      "detail_id": "entity-paper-notebook-adapting-humanoid-locomotion-over-challenging-te",
-      "label": "Adapting Humanoid Locomotion over Challenging Terrain via Two-Phase Training",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adaptive-invariant-extended-kalman-filter-for-le.md",
-      "detail_id": "entity-paper-notebook-adaptive-invariant-extended-kalman-filter-for-le",
-      "label": "Adaptive Invariant Extended Kalman Filter for Legged Robot State Estimation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-hrl-stack-34-gr00t_n1.md",
-    "detail_id": "entity-paper-hrl-stack-34-gr00t_n1",
-    "label": "GR00T N1",
+    "path": "wiki/entities/paper-humanoidmimicgen.md",
+    "detail_id": "entity-paper-humanoidmimicgen",
+    "label": "HumanoidMimicGen",
     "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"

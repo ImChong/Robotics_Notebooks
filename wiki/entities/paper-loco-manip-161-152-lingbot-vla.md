@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-02
 venue: curated
 summary: "LingBot-VLA 的实现路径是先把语言指令、相机图像/多视角观测编码成多模态表征，再用VLA 多模态动作模型、VLM 语义规划/路由预测可执行动作命令。关键点是保留 VLM 的语义理解，同时增加机器人状态和动作头，避免只停留在语言规划。"
 related:

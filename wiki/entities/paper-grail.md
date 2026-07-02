@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, nvidia, unitree]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-02
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）用全数字管线从 3D 资产与视频基础模型先验生成 20,000+ 人形 loco-manipulation 序列，经 SONIC 系任务通用 tracker 与 egocentric 视觉策略在 Unitree G1 真机验证（pick-up 84%、爬楼梯 90%）。"

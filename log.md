@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
+
 ## [2026-07-02] ingest | sources/papers/gr00t_n1_arxiv_2503_14734.md — 基于 arXiv:2503.14734 与 NVIDIA 白皮书深化 GR00T N1 canonical 实体页
 
 - 论文源：[arXiv:2503.14734](https://arxiv.org/abs/2503.14734)、[GR00T_1_Whitepaper.pdf](https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf)
