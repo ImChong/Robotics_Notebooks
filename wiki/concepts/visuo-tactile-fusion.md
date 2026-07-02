@@ -19,6 +19,8 @@ related:
   - ../methods/tactile-impedance-control.md
   - ../entities/paper-trex-tactile-reactive-dexterous-manipulation.md
   - ./hybrid-force-position-control.md
+  - ../queries/contact-wrench-closed-loop.md
+  - ./contact-force-loop-bandwidth.md
 sources:
   - ../../sources/papers/perception.md
   - ../../sources/papers/contact_dynamics.md
@@ -183,6 +185,8 @@ flowchart LR
 - [AnyGrasp vs GraspNet](../comparisons/anygrasp-vs-graspnet.md) — ① 抓取检测家族对比
 - [Tactile Impedance Control](../methods/tactile-impedance-control.md) — ③ 精细操作阶段的触觉闭环
 - [Hybrid Force-Position Control](./hybrid-force-position-control.md) — ② 插装/③ 精细操作的执行层切换
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **① 感知/估计层**（视触觉证据补法向力与打滑）
+- [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 触觉采样率须 ≥ 控制环，否则感知时延压低可达带宽
 
 ## 参考来源
 

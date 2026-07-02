@@ -32,8 +32,8 @@
 - [x] **接触力旋量闭环知识链 (+2)**：
     - [x] `wiki/queries/contact-wrench-closed-loop.md`（端到端 Query：接触感知/估计 → 力旋量表示 → 阻抗/导纳/混合力位控制 → 接触丰富操作策略四层闭环的取舍决策树，覆盖每层对操作稳定性/安全性的贡献、带宽/刚度/时延成本与典型失败模式，配 Mermaid 流程图）。
     - [x] `wiki/concepts/contact-force-loop-bandwidth.md`（力控闭环带宽 ↔ 接触稳定性概念页：明示感知时延、控制刚度、接触离散化如何共同决定可达带宽与接触震荡/穿透边界，以及与阻抗/导纳选型的关系）。
-- [ ] **接触/力控层专题交叉补强**：
-    - [ ] 在 `wiki/concepts/contact-estimation.md`、`force-control-basics.md`、`hybrid-force-position-control.md`、`impedance-control.md`、`visuo-tactile-fusion.md` 五页与 P1 新页形成双向回链，明示「感知 → 力旋量 → 控制 → 操作」四层在闭环链路中的定位，消除孤儿页。
+- [x] **接触/力控层专题交叉补强**：
+    - [x] 在 `wiki/concepts/contact-estimation.md`、`force-control-basics.md`、`hybrid-force-position-control.md`、`impedance-control.md`、`visuo-tactile-fusion.md` 五页与 P1 新页形成双向回链，明示「感知 → 力旋量 → 控制 → 操作」四层在闭环链路中的定位，消除孤儿页。
 
 ## P2: 事实库与矛盾检测扩展 (Quantity)
 

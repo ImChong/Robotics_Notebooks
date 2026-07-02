@@ -8,6 +8,8 @@ sources:
   - ../../sources/papers/contact_dynamics.md
   - ../../sources/papers/contact_planning.md
 related:
+  - ../queries/contact-wrench-closed-loop.md
+  - ./contact-force-loop-bandwidth.md
   - ./contact-rich-manipulation.md
   - ./whole-body-control.md
   - ./tsid.md
@@ -99,6 +101,8 @@ $$ f = K_d (x_d - x) + B_d (\dot{x}_d - \dot{x}) $$
 
 ## 关联页面
 
+- [Query：接触力旋量闭环知识链](../queries/contact-wrench-closed-loop.md) — 本页是四层闭环里的 **③ 控制层**（阻抗/导纳对偶这条路线）
+- [Contact-Force-Loop Bandwidth（力控闭环带宽）](./contact-force-loop-bandwidth.md) — 「环境越硬刚度越低」反直觉法则的稳定性来源
 - [Contact-Rich Manipulation](./contact-rich-manipulation.md)
 - [Whole-Body Control](./whole-body-control.md)
 - [Force Control Basics (力控制基础)](./force-control-basics.md) — 阻抗控制的理论背景
