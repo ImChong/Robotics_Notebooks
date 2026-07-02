@@ -1,9 +1,9 @@
 ---
 type: comparison
-title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday）
-tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1]
-summary: "五类常用人形数据源的表示、任务域、是否预重定向与典型下游对照，帮助在 tracking、HOI 与真机操作之间选型。"
-updated: 2026-06-30
+title: 人形参考运动与操作数据集选型（AMASS / LAFAN1 / OMOMO / PHUMA / Humanoid Everyday / KungFuAthlete）
+tags: [dataset, comparison, motion-retargeting, humanoid, mocap, unitree-g1, martial-arts]
+summary: "常用人形数据源的表示、任务域、是否预重定向与典型下游对照；含 KungFuAthlete 高动态武术扩展。"
+updated: 2026-07-02
 status: complete
 related:
   - ../concepts/motion-retargeting.md
@@ -13,12 +13,14 @@ related:
   - ../entities/dataset-bfm-phuma.md
   - ../entities/humanoid-everyday-dataset.md
   - ../entities/grail-locomanipulation-dataset.md
+  - ../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md
 sources:
   - ../../sources/sites/amass-dataset.md
   - ../../sources/repos/ubisoft-laforge-animation-dataset.md
   - ../../sources/repos/omomo_release.md
   - ../../sources/repos/phuma.md
   - ../../sources/sites/humanoideveryday.md
+  - ../../sources/papers/kung_fu_athlete_bot.md
 ---
 
 # 人形参考运动与操作数据集选型
@@ -45,6 +47,19 @@ sources:
 | [OMOMO](../entities/omomo-dataset.md) | **人–物交互** MoCap；loco-manipulation 重定向源 |
 | [PHUMA](../entities/dataset-bfm-phuma.md) | **已 PhySINK 重定向到 G1/H1-2** 的 73 h locomotion；宇树友好 |
 | [Humanoid Everyday](../entities/humanoid-everyday-dataset.md) | **真机人形操作** 多模态集；非 MoCap 参考库 |
+| [KungFuAthlete](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) | **武术高动态** 视频→GVHMR→GMR；Jump 子集动力学上界；Ground ready |
+
+## 扩展：高动态极限（KungFuAthlete）
+
+| 维度 | KungFuAthlete |
+|------|---------------|
+| **来源** | 国家级运动员 **日常训练视频**（非棚拍 MoCap） |
+| **规模** | 848 样本（197 视频 / 1,726 子片段后过滤） |
+| **子集** | **Ground**（~84% 日常训练）；**Jump**（空翻、旋子，动力学显著高于 LAFAN1/PHUMA/AMASS） |
+| **管线** | GVHMR → GMR → **根高度抛物线校正** + SG 平滑 |
+| **预重定向** | 论文管线输出机器人参考；Jump 子集仍 minor imperfections |
+| **典型下游** | FastSAC **tracking+recovery** 单策略；Unitree G1 真机 |
+| **选型提示** | 要 **push WBT 动力学上界** 或武术域 → 优先 Jump/Ground 对照实验；要稳定 locomotion 库 → 仍选 PHUMA/AMASS |
 
 ## 对照表
 
@@ -73,6 +88,8 @@ flowchart TD
   q3 -->|否| amass
   start --> q4{要真机操作 / loco-manip<br/>多模态学习?}
   q4 -->|是| he[Humanoid Everyday]
+  start --> q5{要武术 / 空翻<br/>极高动态上界?}
+  q5 -->|是| kfa[KungFuAthlete Jump/Ground]
 ```
 
 ## 组合使用（常见管线）
@@ -111,6 +128,7 @@ flowchart TD
 - [PHUMA 仓库归档](../../sources/repos/phuma.md)
 - [Humanoid Everyday 项目页归档](../../sources/sites/humanoideveryday.md)
 - [GRAIL 数据集 Hugging Face 归档](../../sources/sites/grail-locomanipulation-huggingface.md)
+- [KungFuAthleteBot 论文 ingest](../../sources/papers/kung_fu_athlete_bot.md)
 
 ## 关联页面
 
@@ -120,6 +138,7 @@ flowchart TD
 - [Whole-Body Tracking Pipeline](../concepts/whole-body-tracking-pipeline.md)
 - [OmniRetarget 数据集](../entities/omniretarget-dataset.md)
 - [GRAIL Loco-Manipulation Dataset](../entities/grail-locomanipulation-dataset.md)
+- [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 武术高动态 + tracking∪recovery
 - [Unitree G1](../entities/unitree-g1.md)
 
 ## 推荐继续阅读
