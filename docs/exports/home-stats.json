@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1535,
-  "edge_count": 10444,
+  "node_count": 1538,
+  "edge_count": 10474,
   "coverage": {
-    "covered": 1504,
-    "total": 1533,
+    "covered": 1507,
+    "total": 1536,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/autodl.md",
+      "detail_id": "entity-autodl",
+      "label": "AutoDL",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gpufree.md",
+      "detail_id": "entity-gpufree",
+      "label": "算力自由（GPUFree）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/autodl-vs-gpufree.md",
+      "detail_id": "wiki-comparisons-autodl-vs-gpufree",
+      "label": "AutoDL vs 算力自由（国内 GPU 云租卡选型）",
+      "type": "comparison",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-humanoidmimicgen.md",
       "detail_id": "entity-paper-humanoidmimicgen",
@@ -127,52 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md",
-      "detail_id": "entity-paper-notebook-a-systematic-study-of-data-modalities-and-strate",
-      "label": "A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md",
-      "detail_id": "entity-paper-notebook-a-whole-body-motion-imitation-framework-from-hum",
-      "label": "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ace-a-cross-platform-visual-exoskeletons-system.md",
-      "detail_id": "entity-paper-notebook-ace-a-cross-platform-visual-exoskeletons-system",
-      "label": "ACE",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-activeumi-robotic-manipulation-with-active-perce.md",
-      "detail_id": "entity-paper-notebook-activeumi-robotic-manipulation-with-active-perce",
-      "label": "ActiveUMI",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adamimic.md",
-      "detail_id": "entity-paper-notebook-adamimic",
-      "label": "AdaMimic",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-humanoidmimicgen.md",
-    "detail_id": "entity-paper-humanoidmimicgen",
-    "label": "HumanoidMimicGen",
+    "path": "wiki/entities/autodl.md",
+    "detail_id": "entity-autodl",
+    "label": "AutoDL",
     "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"

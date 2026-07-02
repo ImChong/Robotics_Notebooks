@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/sites/autodl.md、sources/sites/gpufree.md — AutoDL 与算力自由 GPU 云入库；wiki/entities/autodl.md、wiki/entities/gpufree.md、wiki/comparisons/autodl-vs-gpufree.md；交叉更新 wiki/entities/isaac-lab.md、wiki/queries/simulator-selection-guide.md
+
 ## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
 
 ## [2026-07-02] ingest | sources/papers/gr00t_n1_arxiv_2503_14734.md — 基于 arXiv:2503.14734 与 NVIDIA 白皮书深化 GR00T N1 canonical 实体页
