@@ -8,6 +8,7 @@ related:
   - ./paper-doorman-opening-sim2real-door.md
   - ./gr00t-visual-sim2real.md
   - ./humanoid-robot.md
+  - ./jim-fan.md
   - ./zhengyi-luo.md
   - ./xue-bin-peng.md
   - ./yanjie-ze.md
@@ -45,7 +46,7 @@ summary: "何泰然（Tairan He）现为 OpenAI Member of Technical Staff；CMU 
 ## 职业与研究脉络（归纳）
 
 1. **SJTU 本科 + MSRA**：计算机本科（导师 Weinan Zhang），奠定大规模机器学习基础。
-2. **CMU RI 博士 + NVIDIA GEAR 实习**：与 Guanya Shi、Changliu Liu 及 GEAR（Jim Fan、Yuke Zhu）合作，产出 OmniH2O、HOVER、ASAP、VIRAL、DoorMan 等 **人形 Sim2Real 主线**；**2026-04 答辩**。
+2. **CMU RI 博士 + NVIDIA GEAR 实习**：与 Guanya Shi、Changliu Liu 及 GEAR（[Jim Fan](./jim-fan.md)、Yuke Zhu）合作，产出 OmniH2O、HOVER、ASAP、VIRAL、DoorMan 等 **人形 Sim2Real 主线**；**2026-04 答辩**。
 3. **OpenAI（2026-05 起）**：主页首段自述为 *Member of Technical Staff at OpenAI building physical AGI*，新闻栏表述为 *general-purpose robots*。
 
 ## 核心研究脉络（技术向）
@@ -82,6 +83,8 @@ flowchart LR
 - [Loco-Manipulation](../tasks/loco-manipulation.md)
 - [Teleoperation](../tasks/teleoperation.md)
 - [SONIC（规模化运动跟踪）](../methods/sonic-motion-tracking.md)
+- [Jim Fan（范林熹）](./jim-fan.md)
+- [NVIDIA GEAR Lab](./nvidia-gear-lab.md)
 - [Zhengyi Luo（罗正宜）](./zhengyi-luo.md)
 - [Xue Bin Peng（彭学斌）](./xue-bin-peng.md)
 - [Yanjie Ze（迮炎杰）](./yanjie-ze.md)

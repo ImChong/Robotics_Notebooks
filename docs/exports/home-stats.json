@@ -1,13 +1,45 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1534,
-  "edge_count": 10412,
+  "node_count": 1535,
+  "edge_count": 10428,
   "coverage": {
-    "covered": 1503,
-    "total": 1532,
+    "covered": 1504,
+    "total": 1533,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/jim-fan.md",
+      "detail_id": "entity-jim-fan",
+      "label": "Linxi \"Jim\" Fan（范林熹）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/nvidia-gear-lab.md",
+      "detail_id": "entity-nvidia-gear-lab",
+      "label": "NVIDIA GEAR Lab（Generalist Embodied Agent Research）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/tairan-he.md",
+      "detail_id": "entity-tairan-he",
+      "label": "Tairan He（何泰然）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/zhengyi-luo.md",
+      "detail_id": "entity-zhengyi-luo",
+      "label": "Zhengyi Luo（罗正宜）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
       "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
@@ -135,46 +167,14 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-aero-hand-open.md",
-      "detail_id": "entity-paper-notebook-aero-hand-open",
-      "label": "Aero Hand Open",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re.md",
-      "detail_id": "entity-paper-notebook-agiloped-agile-open-source-humanoid-robot-for-re",
-      "label": "AGILOped",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi.md",
-      "detail_id": "entity-paper-notebook-ame-2-agile-and-generalized-legged-locomotion-vi",
-      "label": "AME-2",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-amor-adaptive-character-control-through-multi-ob.md",
-      "detail_id": "entity-paper-notebook-amor-adaptive-character-control-through-multi-ob",
-      "label": "AMOR",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
-    "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
-    "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
+    "path": "wiki/entities/jim-fan.md",
+    "detail_id": "entity-jim-fan",
+    "label": "Linxi \"Jim\" Fan（范林熹）",
     "type": "entity",
-    "recency": "2026-07-01",
+    "recency": "2026-07-02",
     "source": "log.md"
   }
 }

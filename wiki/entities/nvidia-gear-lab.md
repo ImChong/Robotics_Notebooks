@@ -2,7 +2,7 @@
 type: entity
 tags: [nvidia, research-lab, embodied-ai, foundation-models, humanoid, vla, simulation, gear]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-02
 related:
   - ../methods/aspire.md
   - ../methods/egoscale.md
@@ -11,6 +11,7 @@ related:
   - ./gr00t-wholebodycontrol.md
   - ./paper-hrl-stack-34-gr00t_n1.md
   - ./gr00t-visual-sim2real.md
+  - ./jim-fan.md
   - ./zhengyi-luo.md
   - ./tairan-he.md
   - ../methods/vla.md
@@ -24,7 +25,7 @@ summary: "NVIDIA GEAR（Generalist Embodied Agent Research）由 Jim Fan 与 Yuk
 
 # NVIDIA GEAR Lab（Generalist Embodied Agent Research）
 
-**GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **Linxi "Jim" Fan** 与 **Yuke Zhu** 领导。公开 slogan 为 *Building Generally Capable Agents in Many Worlds, Virtual and Real*——强调在 **仿真与真机** 两侧同时推进 **通才（generalist）** 具身能力，而非孤立优化单任务 specialist。
+**GEAR** 是 NVIDIA Research 下的 **具身智能基础研究组**（门户：<https://research.nvidia.com/labs/gear/>），由 **[Linxi "Jim" Fan](./jim-fan.md)** 与 **Yuke Zhu** 领导。公开 slogan 为 *Building Generally Capable Agents in Many Worlds, Virtual and Real*——强调在 **仿真与真机** 两侧同时推进 **通才（generalist）** 具身能力，而非孤立优化单任务 specialist。
 
 ## 英文缩写速查
 
@@ -109,6 +110,7 @@ flowchart TB
 - [EgoScale](../methods/egoscale.md) — GEAR **人视频 → 灵巧 VLA** scaling 叙事
 - [ENPIRE](../methods/enpire.md) — GEAR **真机 autoresearch** 闭环
 - [ASPIRE](../methods/aspire.md) — GEAR **程序技能库持续学习**（code-as-policy + 进化搜索）
+- [Jim Fan（范林熹）](./jim-fan.md) — GEAR 共同 PI、AI Agents Initiative 负责人
 - [Zhengyi Luo](./zhengyi-luo.md) / [Tairan He](./tairan-he.md) — GEAR–CMU 合作作者网络节点
 - [Foundation Policy](../concepts/foundation-policy.md) — 通才策略抽象层
 
