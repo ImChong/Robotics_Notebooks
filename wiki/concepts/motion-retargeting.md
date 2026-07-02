@@ -172,6 +172,7 @@ subject to: FK(θ) = p_target (末端位置约束)
 | [SOMA-X](../entities/soma-x.md) | NVIDIA 统一参数化人体拓扑（SMPL/MHR/Anny 等枢纽）；AMASS/SMPL→SOMA 转换 |
 | [PHC](../entities/phc.md) | SMPL→人形 fitting 重定向 + 物理模仿控制（AMASS 管线） |
 | [SOMA Retargeter](../entities/soma-retargeter.md) | NVIDIA SOMA BVH→G1 CSV，GPU IK（SEED 数据生态） |
+| [robot_retargeter](../entities/robot-retargeter.md) | SMPL-X / 源机器人 CSV→多机型 CSV；mink+MuJoCo IK、接触足端锁定与多机并排可视化 |
 | [mocap_retarget](../entities/mocap-retarget.md) | 工程向动捕→机器人脚本参考 |
 | [GVHMR](../entities/gvhmr.md) | 单目视频→SMPL 全局人体运动（重定向上游） |
 | [VideoMimic](../entities/videomimic.md) | 视频→人形参考 + RL 模仿 |
@@ -266,6 +267,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 - [BifrostUMI（论文实体）](../entities/paper-bifrost-umi.md) — Robot-Free 示范的 SKR 与全身 WBC 接口
 - [PHC](../entities/phc.md) — SMPL fitting 重定向与大规模物理模仿
 - [SOMA Retargeter](../entities/soma-retargeter.md) — SOMA/SEED→G1 批处理重定向
+- [robot_retargeter](../entities/robot-retargeter.md) — SMPL-X / LAFAN1 CSV→多机型 mink IK 重定向
 - [GVHMR](../entities/gvhmr.md) / [VideoMimic](../entities/videomimic.md) — 视频→人体/人形两条管线入口
 - [human2humanoid](../entities/human2humanoid.md) — 遥操与 AMASS 重定向同仓
 - [mocap_retarget](../entities/mocap-retarget.md) — 轻量工程向 MoCap 映射参考

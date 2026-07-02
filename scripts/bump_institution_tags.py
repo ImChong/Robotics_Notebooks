@@ -163,6 +163,7 @@ PAGE_INSTITUTION_OVERRIDES: dict[str, list[str]] = {
     "wiki/entities/walk-the-dog.md": ["nvidia"],
     "wiki/entities/pan-motion-retargeting.md": ["nvidia"],
     "wiki/entities/mocap-retarget.md": ["nvidia"],
+    "wiki/entities/robot-retargeter.md": [],
     "wiki/entities/robot-motion-keyframe-editors.md": ["nvidia"],
     "wiki/entities/tnkr.md": ["linux-foundation"],
     "wiki/entities/world-labs.md": ["nvidia"],
