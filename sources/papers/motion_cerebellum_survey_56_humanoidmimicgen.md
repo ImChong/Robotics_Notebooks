@@ -17,7 +17,8 @@
 
 ## 对 wiki 的映射
 
-- [paper-motion-cerebellum-humanoidmimicgen](../../wiki/entities/paper-motion-cerebellum-humanoidmimicgen.md)
+- [paper-humanoidmimicgen](../../wiki/entities/paper-humanoidmimicgen.md) — arXiv 深读实体
+- [paper-motion-cerebellum-humanoidmimicgen](../../wiki/entities/paper-motion-cerebellum-humanoidmimicgen.md) — 运动小脑策展索引
 - [motion-cerebellum-category-08-real-tasks](../../wiki/overview/motion-cerebellum-category-08-real-tasks.md)
 
 ## 参考来源（原始）
