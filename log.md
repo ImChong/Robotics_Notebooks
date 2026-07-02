@@ -2,6 +2,17 @@
 
 ## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
 
+## [2026-07-02] ingest | sources/papers/gr00t_n1_arxiv_2503_14734.md — 基于 arXiv:2503.14734 与 NVIDIA 白皮书深化 GR00T N1 canonical 实体页
+
+- 论文源：[arXiv:2503.14734](https://arxiv.org/abs/2503.14734)、[GR00T_1_Whitepaper.pdf](https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf)
+- wiki：[paper-hrl-stack-34-gr00t_n1.md](wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — 补充双系统架构、数据金字塔、GR00T-N1-2B 规格与仿真/真机量化评测
+
+## [2026-07-02] structural | wiki/entities/paper-hrl-stack-34-gr00t_n1.md — 合并 GR00T N1 重复实体页（原 paper-loco-manip-161-148-gr00t-n1 与 paper-hrl-stack-34-gr00t_n1）；更新 Loco-Manip 161 catalog、category-09 hub、paper-grail 交叉引用与 bootstrap_loco_manip_161_entities CANONICAL_ENTITY_BY_NUM
+
+- 删除：`wiki/entities/paper-loco-manip-161-148-gr00t-n1.md`
+- 保留 canonical：`wiki/entities/paper-hrl-stack-34-gr00t_n1.md`（双 survey 坐标：42 篇栈 #34 + Loco-Manip 161 #148）
+- 相关：`wiki/overview/loco-manip-161-category-09-vla-world-models.md`、`sources/papers/humanoid_loco_manip_161_catalog.md`、`sources/papers/loco_manip_161_survey_148_gr00t-n1.md`
+
 ## [2026-07-02] ingest | sources/sites/jim-fan.md — Jim Fan 个人主页/NVIDIA 档案/Google Scholar 入库；wiki/entities/jim-fan.md；交叉更新 wiki/entities/nvidia-gear-lab.md、wiki/entities/tairan-he.md、wiki/entities/zhengyi-luo.md
 
 ## [2026-07-01] structural | V27 P1 接触/力控层专题交叉补强 — contact-estimation / force-control-basics / hybrid-force-position-control / impedance-control / visuo-tactile-fusion 五页与接触力旋量闭环链新页（contact-wrench-closed-loop / contact-force-loop-bandwidth）形成双向回链，明示「感知①→力旋量②→控制③→操作④」四层定位；重生派生统计（node 1534 / edge 10412，largest_community_ratio 0.162，community_quality_warning=false）

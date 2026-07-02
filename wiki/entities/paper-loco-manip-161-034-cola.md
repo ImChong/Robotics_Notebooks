@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-02
 venue: curated
 summary: "COLA 先从本体状态与关节序列、人类视频/动捕轨迹、仿真交互数据恢复场景、目标或运动表征，再用PPO/RL 策略训练、世界模型/视频预测、闭环纠错/人类干预生成全身轨迹/动作序列、低层控制器目标。关键点是把PPO/RL 策略训练、世界模型/视频预测放在同一条训练/部署链路里，减少高层目标到低层动作之间的断点。"
 related:

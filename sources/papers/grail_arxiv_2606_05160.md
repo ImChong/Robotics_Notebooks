@@ -26,7 +26,7 @@
    - **对 wiki 的映射：** [SONIC](../../wiki/methods/sonic-motion-tracking.md)、[Unitree G1](../../wiki/entities/unitree-g1.md)
 
 4. **Sim-to-real：** 仅用 GRAIL 生成数据训练 egocentric RGB 策略（VIRAL 管线 + 视觉域随机化与相机对齐），部署于 Unitree G1；pick-up **84%**、stair-climbing **90%** 真机成功率。另以 95% GRAIL + 5% 遥操作混合微调 GR00T，抓取成功率优于纯遥操作。
-   - **对 wiki 的映射：** [paper-viral-humanoid-visual-sim2real](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)、[loco-manip-161-148-gr00t-n1](../../wiki/entities/paper-loco-manip-161-148-gr00t-n1.md)
+   - **对 wiki 的映射：** [paper-viral-humanoid-visual-sim2real](../../wiki/entities/paper-viral-humanoid-visual-sim2real.md)、[paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
 
 5. **策展地图坐标：** 同时出现在 [Loco-Manip 161 篇 #061](../../sources/papers/loco_manip_161_survey_061_grail.md)（03 视觉感知驱动）与 [运动小脑 64 篇 #57](../../sources/papers/motion_cerebellum_survey_57_grail.md)（H 真实任务）；知识库已合并为单一实体页。
    - **对 wiki 的映射：** [paper-grail](../../wiki/entities/paper-grail.md)

@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, loco-manipulation, loco-manip-161-survey, humanoid]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-02
 venue: curated
 summary: "HYPERmotion 先从语言指令、相机图像/多视角观测、本体状态与关节序列恢复场景、目标或运动表征，再用PPO/RL 策略训练、VLM 语义规划/路由、全身控制器/WBC/MPC生成可执行动作命令。关键点是把任务拆成可路由的技能或专家策略，再用高层模块在执行中选择和组合。"
 related:

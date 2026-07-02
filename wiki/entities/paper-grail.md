@@ -2,7 +2,7 @@
 type: entity
 tags: [paper, humanoid, loco-manipulation, synthetic-data, sim2real, motion-control, nvidia, unitree]
 status: complete
-updated: 2026-06-30
+updated: 2026-07-02
 arxiv: "2606.05160"
 venue: "arXiv 2026"
 summary: "GRAIL（NVIDIA/UCLA，arXiv:2606.05160）用全数字管线从 3D 资产与视频基础模型先验生成 20,000+ 人形 loco-manipulation 序列，经 SONIC 系任务通用 tracker 与 egocentric 视觉策略在 Unitree G1 真机验证（pick-up 84%、爬楼梯 90%）。"
@@ -15,7 +15,7 @@ related:
   - ../methods/sonic-motion-tracking.md
   - ../entities/unitree-g1.md
   - ../entities/paper-viral-humanoid-visual-sim2real.md
-  - ../entities/paper-loco-manip-161-148-gr00t-n1.md
+  - ../entities/paper-hrl-stack-34-gr00t_n1.md
   - ../entities/videomimic.md
   - ./grail-locomanipulation-dataset.md
 sources:
@@ -67,7 +67,7 @@ sources:
 1. **资产条件 4D HOI 生成：** Infinigen 构建场景 → 机器人比例角色与物体刚性仿真落稳 → Blender 渲染首帧（已知内外参）→ VLM 生成交互提示 → VFM 合成静态相机 HOI 视频。
 2. **交互感知重建：** GENMO 估计身体、WiLoR  refine 双手、FoundationPose 跟踪物体；在特权 3D 配置下联合优化关键点、投影、深度与接触损失，输出 metric 4D HOI。
 3. **任务通用 tracker：** 重定向到 G1 后，在预训练 [SONIC](../methods/sonic-motion-tracking.md) 全身控制器上训练两类互补策略——**物体感知 latent adaptor**（操作，调制 latent token + 手部动作）与 **场景感知 tracker**（地形/坐姿，微调控制器 + height-map encoder）。
-4. **Sim-to-real 视觉策略：** 渲染 egocentric RGB 训练视觉策略（[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md) 管线 + 域随机化与相机对齐），闭环部署 G1 pick-up 与爬楼梯；亦可作为 [GR00T](../entities/paper-loco-manip-161-148-gr00t-n1.md) 微调数据。
+4. **Sim-to-real 视觉策略：** 渲染 egocentric RGB 训练视觉策略（[VIRAL](../entities/paper-viral-humanoid-visual-sim2real.md) 管线 + 域随机化与相机对齐），闭环部署 G1 pick-up 与爬楼梯；亦可作为 [GR00T](../entities/paper-hrl-stack-34-gr00t_n1.md) 微调数据。
 
 ## 流程总览
 
