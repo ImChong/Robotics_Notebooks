@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/sites/runpod.md 等 — 国外 GPU 云六平台入库；wiki/comparisons/international-gpu-cloud-platforms.md；交叉更新 china-gpu-cloud-platforms、simulator-selection-guide、isaac-lab
+
 ## [2026-07-02] ingest | sources/sites/matpool.md、featurize.md、gpushare.md、ai-galaxy.md — 扩展国内 GPU 云平台实体；wiki/comparisons/china-gpu-cloud-platforms.md 统一选型对比；移除 autodl-vs-gpufree
 
 ## [2026-07-02] ingest | sources/sites/autodl.md、sources/sites/gpufree.md — AutoDL 与算力自由 GPU 云入库；wiki/entities/autodl.md、wiki/entities/gpufree.md；交叉更新 wiki/entities/isaac-lab.md、wiki/queries/simulator-selection-guide.md
