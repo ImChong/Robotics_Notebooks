@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
+
 ## [2026-07-02] ingest | sources/sites/jim-fan.md — Jim Fan 个人主页/NVIDIA 档案/Google Scholar 入库；wiki/entities/jim-fan.md；交叉更新 wiki/entities/nvidia-gear-lab.md、wiki/entities/tairan-he.md、wiki/entities/zhengyi-luo.md
 
 ## [2026-07-01] structural | V27 P1 接触/力控层专题交叉补强 — contact-estimation / force-control-basics / hybrid-force-position-control / impedance-control / visuo-tactile-fusion 五页与接触力旋量闭环链新页（contact-wrench-closed-loop / contact-force-loop-bandwidth）形成双向回链，明示「感知①→力旋量②→控制③→操作④」四层定位；重生派生统计（node 1534 / edge 10412，largest_community_ratio 0.162，community_quality_warning=false）

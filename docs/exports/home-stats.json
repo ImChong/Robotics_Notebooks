@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1535,
-  "edge_count": 10428,
+  "node_count": 1536,
+  "edge_count": 10443,
   "coverage": {
-    "covered": 1504,
-    "total": 1533,
+    "covered": 1505,
+    "total": 1534,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-humanoidmimicgen.md",
+      "detail_id": "entity-paper-humanoidmimicgen",
+      "label": "HumanoidMimicGen",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/loco-manipulation.md",
+      "detail_id": "wiki-tasks-loco-manipulation",
+      "label": "Loco-Manipulation (移动操作)",
+      "type": "task",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/jim-fan.md",
       "detail_id": "entity-jim-fan",
@@ -151,28 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha.md",
-      "detail_id": "entity-paper-notebook-adaptnet-policy-adaptation-for-physics-based-cha",
-      "label": "AdaptNet",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-advancing-humanoid-locomotion-mastering-challeng.md",
-      "detail_id": "entity-paper-notebook-advancing-humanoid-locomotion-mastering-challeng",
-      "label": "Advancing Humanoid Locomotion",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/jim-fan.md",
-    "detail_id": "entity-jim-fan",
-    "label": "Linxi \"Jim\" Fan（范林熹）",
+    "path": "wiki/entities/paper-humanoidmimicgen.md",
+    "detail_id": "entity-paper-humanoidmimicgen",
+    "label": "HumanoidMimicGen",
     "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"
