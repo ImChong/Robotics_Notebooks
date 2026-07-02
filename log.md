@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/papers/flying_knots_arxiv_2602_21302.md — Flying Knots Task-Level ILC 可变形绳操作；wiki/entities/paper-flying-knots.md、wiki/entities/flying-knots-public.md；交叉更新 manipulation、contact-rich-manipulation
+
 ## [2026-07-02] ingest | sources/repos/robot_retargeter.md — robot_retargeter SMPL-X/多机型 mink 重定向；wiki/entities/robot-retargeter.md；交叉更新 motion-retargeting、motion-retargeting-pipeline、soma-retargeter、amass
 
 ## [2026-07-02] ingest | sources/papers/vsgraphs_arxiv_2503_01783.md — vS-Graphs 视觉 SLAM+3D 场景图；沉淀 wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md，互链 orb-slam3、navigation-slam-autonomy-stack
