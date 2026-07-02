@@ -958,6 +958,24 @@
         "whu",
         "wuhan-university"
       ]
+    },
+    "uni-luxembourg": {
+      "label": "卢森堡大学（University of Luxembourg）",
+      "aliases": [
+        "uni-luxembourg",
+        "luxembourg",
+        "university-of-luxembourg",
+        "uni-lu"
+      ]
+    },
+    "unizar": {
+      "label": "萨拉戈萨大学（Universidad de Zaragoza）",
+      "aliases": [
+        "unizar",
+        "zaragoza",
+        "universidad-de-zaragoza",
+        "university-of-zaragoza"
+      ]
     }
   }
 }

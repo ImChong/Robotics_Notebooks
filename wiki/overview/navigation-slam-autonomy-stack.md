@@ -3,7 +3,7 @@
 type: overview
 tags: [navigation, slam, ros2, autoware, lidar, vio, mobile-robot, autonomous-driving, openloong]
 status: complete
-updated: 2026-06-09
+updated: 2026-07-02
 related:
   - ../entities/python-robotics.md
   - ../entities/navigation2.md
@@ -12,6 +12,7 @@ related:
   - ../entities/fast-lio.md
   - ../entities/lio-sam.md
   - ../entities/orb-slam3.md
+  - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
   - ../entities/vins-fusion.md
   - ../entities/open-vins.md
   - ../entities/rtabmap.md
@@ -141,6 +142,7 @@ flowchart TB
 ### 视觉 / VIO
 
 - **[ORB-SLAM3](../entities/orb-slam3.md)**：多地图、视觉/视觉-惯性；研究基准强，工程需自行对接 ROS 2。
+- **[vS-Graphs](../entities/paper-vs-graphs-visual-slam-scene-graph.md)**：ORB-SLAM3 扩展，在线构建可优化 **3D 场景图**（墙/房间/楼层），适合需要 **布局级语义** 的室内 RGB-D SLAM 研究。
 - **[VINS-Fusion](../entities/vins-fusion.md)**：优化式多传感器；支持 GPS 全局融合。
 - **[OpenVINS](../entities/open-vins.md)**：MSCKF 系，便于 **算法对比实验**。
 - **[OpenVSLAM](../entities/openvslam.md)** → 社区多迁移至 **stella_vslam** 分支维护。

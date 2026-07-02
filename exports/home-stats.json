@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1550,
-  "edge_count": 10579,
+  "node_count": 1551,
+  "edge_count": 10586,
   "coverage": {
-    "covered": 1519,
-    "total": 1548,
+    "covered": 1520,
+    "total": 1549,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md",
+      "detail_id": "entity-paper-vs-graphs-visual-slam-scene-graph",
+      "label": "vS-Graphs（视觉 SLAM + 3D 场景图）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/international-gpu-cloud-platforms.md",
       "detail_id": "wiki-comparisons-international-gpu-cloud-platforms",
@@ -159,21 +167,13 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots.md",
-      "detail_id": "entity-paper-notebook-a-gait-driven-rl-framework-for-humanoid-robots",
-      "label": "A Gait Driven RL Framework for Humanoid Robots",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/international-gpu-cloud-platforms.md",
-    "detail_id": "wiki-comparisons-international-gpu-cloud-platforms",
-    "label": "国外 GPU 云平台选型（机器人学习与仿真）",
-    "type": "comparison",
+    "path": "wiki/entities/paper-vs-graphs-visual-slam-scene-graph.md",
+    "detail_id": "entity-paper-vs-graphs-visual-slam-scene-graph",
+    "label": "vS-Graphs（视觉 SLAM + 3D 场景图）",
+    "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"
   }
