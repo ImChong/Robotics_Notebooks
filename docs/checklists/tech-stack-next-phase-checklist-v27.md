@@ -24,8 +24,8 @@
 
 ## P0: 自动化与工具链深度强化 (Engineering)
 
-- [ ] **接触/力控/操作概念页交叉链路巡检 V1**：
-    - [ ] `scripts/lint_wiki.py` 新增 `_check_contact_control_crosslink`：对 `tags` 含 `contact` / `force-control` / `impedance` / `manipulation` / `tactile` 的 `concepts/` 概念页，检查正文是否回链到「接触力旋量闭环」专题枢纽（`contact-wrench-closed-loop` / `topic-contact-force-control`，缺失给 INFO 级 `contact_control_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；写入 lint 报告基线快照（`exports/lint-report.md`）；新增 `tests/test_lint_wiki_contact_control_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、枢纽豁免、INFO 不计失败）。
+- [x] **接触/力控/操作概念页交叉链路巡检 V1**：
+    - [x] `scripts/lint_wiki.py` 新增 `_check_contact_control_crosslink`：对 `tags` 含 `contact` / `force-control` / `impedance` / `manipulation` / `tactile`（子串匹配派生标签）的 `concepts/` 概念页，检查正文是否回链到「接触力旋量闭环」专题枢纽（`contact-wrench-closed-loop` / `topic-contact-force-control`，缺失给 INFO 级 `contact_control_crosslink` 提示，不阻塞 CI），枢纽页自身豁免；已写入 lint 报告基线快照（`exports/lint-report.md`，当前 10 页 backlog）；新增 `tests/test_lint_wiki_contact_control_crosslink.py` 用例覆盖（列表式/内联式 tag、有/无回链、双枢纽、枢纽豁免、INFO 不计失败）。
 
 ## P1: 接触力旋量闭环知识链专题 (Quality)
 
@@ -51,7 +51,7 @@
 
 ## 验收标准 (Definition of DoD)
 
-- [ ] `make lint`: 0 errors（新引入的 `contact_control_crosslink_check` 为 INFO 级，不阻塞 CI）。
+- [~] `make lint`: 0 errors（新引入的 `contact_control_crosslink` 为 INFO 级，不阻塞 CI）——已达成 0 errors + 14 条信息型预警。
 - [ ] 知识图谱节点数 **≥ 1525**，边数 **≥ 10260**（见 `exports/graph-stats.json`）。
 - [ ] 事实库扩展至 **≥ 220 条**（重点补 力控带宽 / 阻抗导纳 / 视触觉时延 矛盾检测规则）。
 - [ ] `community_quality_warning` 保持 `false` 且 `largest_community_ratio ≤ 0.25`。

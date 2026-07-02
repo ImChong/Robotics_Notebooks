@@ -2,7 +2,7 @@
 
 ## [2026-07-02] lint | health-check | 自动化 wiki 健康检查
 
-共发现 **0** 个问题（另含 **4** 条信息型预警）：
+共发现 **0** 个问题（另含 **14** 条信息型预警）：
 
 ### ⚠️ 孤儿页（无入链）（0 个）
 - 无
@@ -107,5 +107,17 @@
 
 ### 💡 动力学/仿真/物理概念页缺回链「仿真物理保真度」专题枢纽（信息型，不阻塞 CI）（0 个）
 - 无
+
+### 💡 接触/力控/操作概念页缺回链「接触力旋量闭环」专题枢纽（信息型，不阻塞 CI）（10 个）
+- wiki/concepts/contact-rich-manipulation.md
+- wiki/concepts/dexterous-kinematics.md
+- wiki/concepts/embodied-data-cleaning.md
+- wiki/concepts/footstep-planning.md
+- wiki/concepts/foundation-policy.md
+- wiki/concepts/open-x-embodiment.md
+- wiki/concepts/physics-fidelity-sim2real-gap.md
+- wiki/concepts/state-estimation.md
+- wiki/concepts/tactile-sensing.md
+- wiki/concepts/whole-body-coordination.md
 
 📊 Sources 覆盖率：1523/1552 (98%) wiki/entity 页有 ingest 来源
