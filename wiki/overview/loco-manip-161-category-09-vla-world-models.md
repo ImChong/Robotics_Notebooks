@@ -2,7 +2,7 @@
 type: overview
 tags: [loco-manipulation, humanoid, category-hub, survey]
 status: complete
-updated: 2026-06-26
+updated: 2026-07-02
 summary: "人形 Loco-Manip 161 篇 · 09 人形 VLA、世界模型与通用操作（15 篇）— 视觉、语言、动作和世界建模接到执行层。"
 related:
   - ./humanoid-loco-manip-161-papers-technology-map.md
@@ -35,7 +35,7 @@ sources:
 |---|------|-----------|
 | 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../entities/paper-loco-manip-161-146-agibot-world-colosseo.md) |
 | 147 | DIAL | [paper-loco-manip-161-147-dial](../entities/paper-loco-manip-161-147-dial.md) |
-| 148 | GR00T N1 | [paper-loco-manip-161-148-gr00t-n1](../entities/paper-loco-manip-161-148-gr00t-n1.md) |
+| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../entities/paper-hrl-stack-34-gr00t_n1.md) |
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../entities/paper-loco-manip-161-149-gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../entities/paper-loco-manip-161-150-genie-envisioner.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../entities/paper-loco-manip-161-151-legs.md) |
