@@ -2,8 +2,9 @@
 type: task
 tags: [manipulation, il, diffusion-policy, humanoid]
 status: draft
-updated: 2026-07-01
+updated: 2026-07-02
 related:
+  - ../entities/paper-flying-knots.md
   - ../entities/paper-robustness-robotic-manipulation-survey.md
   - ../entities/physx-omni.md
   - ../entities/paper-physforge-physics-grounded-3d-assets.md
@@ -78,6 +79,7 @@ flowchart TD
 ### 学习路线
 - **RL**：在仿真中学习抓取策略
 - **IL**：从演示中学习操作技能
+- **Task-Level ILC（可变形体）**：[Flying Knots](../entities/paper-flying-knots.md)（arXiv:2602.21302）— **单次人类示教 + 粒子绳模型 + critical-point 逆模型 QP**，在 xArm7 真机上 **≤10 trials** 完成动态打结，绳型间 **2–5 trials** 可迁移；与大规模 BC/扩散策略形成 **样本效率** 对照
 - **VLA (Vision-Language-Action Model)**：端到端视觉-语言-动作模型
   - 代表：UnifoLM, π₀, [Green-VLA](../entities/paper-greenvla-staged-vla-humanoid.md)（五阶段课程 + 统一多本体动作 + Green 人形上身部署，arXiv:2602.00919）
   - **产线后训练：** [KinetIQ Ascend](../entities/kinetiq-ascend.md)（Humanoid, 2026）在 **CFM-VLA** 上用 **真机 PPO** 把 BC 策略推到工业级吞吐/可靠性（双臂 Alpha、稀疏奖励、数天 robot-time）
@@ -116,6 +118,7 @@ flowchart TD
 - [DeFI（解耦前向/逆动力学 VLA）](../methods/defi-decoupled-dynamics-vla.md) — 混合视频前向 + 自监督逆向预训练的操作策略
 - [EgoScale](../methods/egoscale.md) — 人视频规模预训练 VLA + 对齐 mid-training 的灵巧操作迁移
 - [T-Rex](../entities/paper-trex-tactile-reactive-dexterous-manipulation.md) — 触觉反应式灵巧 VLA + 开源触觉数据集与 12 任务基准
+- [Flying Knots](../entities/paper-flying-knots.md) — 绳索动态打结的 Task-Level ILC + 单示教真机迭代（arXiv:2602.21302）
 - [ENPIRE](../methods/enpire.md) — coding agent 驱动的真机策略自改进闭环（自动 reset/verify + 多 PI 范式 + 机队 scaling）
 - [ASPIRE](../methods/aspire.md) — 持续学习 code-as-policy：逐原语 trace 调试 + 技能库复利 + 进化搜索（LIBERO-Pro / Robosuite / BEHAVIOR-1K）
 - [Embodied Scaling Laws](../concepts/embodied-scaling-laws.md) — 操作数据的规模化定律

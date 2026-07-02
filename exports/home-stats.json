@@ -1,13 +1,29 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1552,
-  "edge_count": 10598,
+  "node_count": 1554,
+  "edge_count": 10607,
   "coverage": {
-    "covered": 1521,
-    "total": 1550,
+    "covered": 1523,
+    "total": 1552,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/entities/paper-flying-knots.md",
+      "detail_id": "entity-paper-flying-knots",
+      "label": "Flying Knots（Task-Level ILC for Deformable Rope Manipulation）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/flying-knots-public.md",
+      "detail_id": "entity-flying-knots-public",
+      "label": "flying_knots_public（开源仓库）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/robot-retargeter.md",
       "detail_id": "entity-robot-retargeter",
@@ -151,28 +167,12 @@
       "type": "entity",
       "recency": "2026-07-02",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/zhengyi-luo.md",
-      "detail_id": "entity-zhengyi-luo",
-      "label": "Zhengyi Luo（罗正宜）",
-      "type": "entity",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma.md",
-      "detail_id": "entity-paper-notebook-a-21-dof-humanoid-dexterous-hand-with-hybrid-sma",
-      "label": "A 21-DOF Humanoid Dexterous Hand with Hybrid SMA-Motor Actuation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/robot-retargeter.md",
-    "detail_id": "entity-robot-retargeter",
-    "label": "robot_retargeter",
+    "path": "wiki/entities/paper-flying-knots.md",
+    "detail_id": "entity-paper-flying-knots",
+    "label": "Flying Knots（Task-Level ILC for Deformable Rope Manipulation）",
     "type": "entity",
     "recency": "2026-07-02",
     "source": "log.md"
