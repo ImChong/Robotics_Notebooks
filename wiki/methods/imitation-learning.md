@@ -147,7 +147,7 @@ flowchart TD
 - **技能组合**：如何把多个独立技能串成复杂长序列
 
 ## 参考来源
-- [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
+- [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术参考与 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 
 - Ross et al., *A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning* — DAgger 原论文
 - Chi et al., *Diffusion Policy: Visuomotor Policy Learning via Action Diffusion* — 生成式 IL 代表工作

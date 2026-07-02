@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/papers/kung_fu_athlete_bot.md — KungFuAthleteBot 高动态武术数据集与 tracking+recovery；wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md、wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/tasks/balance-recovery.md
+
 ## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
 
 ## [2026-07-02] ingest | sources/papers/gr00t_n1_arxiv_2503_14734.md — 基于 arXiv:2503.14734 与 NVIDIA 白皮书深化 GR00T N1 canonical 实体页
