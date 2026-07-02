@@ -19,7 +19,11 @@ related:
   - ../concepts/sim2real.md
   - ./autodl.md
   - ./gpufree.md
-  - ../comparisons/autodl-vs-gpufree.md
+  - ./matpool.md
+  - ./featurize.md
+  - ./gpushare.md
+  - ./ai-galaxy.md
+  - ../comparisons/china-gpu-cloud-platforms.md
 sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
@@ -170,7 +174,7 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 
 ### 和云 GPU 算力的关系
 
-本地工作站缺多卡或大显存时，可用国内 GPU 容器云租开发机跑 Lab 训练；须区分 **headless 训练** 与 **带 GUI 的 Omniverse 仿真**（后者需要带 **RT 核心** 的 GPU 与桌面/Vulkan 镜像）。选型见 [AutoDL](./autodl.md)、[算力自由](./gpufree.md) 与 [autodl-vs-gpufree](../comparisons/autodl-vs-gpufree.md)。
+本地工作站缺多卡或大显存时，可用国内 GPU 容器云租开发机跑 Lab 训练；须区分 **headless 训练** 与 **带 GUI 的 Omniverse 仿真**（后者需要带 **RT 核心** 的 GPU 与桌面/Vulkan 镜像）。选型见 [国内 GPU 云平台对比](../comparisons/china-gpu-cloud-platforms.md)。
 
 ## 常见误区
 

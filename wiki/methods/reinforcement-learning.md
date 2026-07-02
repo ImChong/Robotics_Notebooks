@@ -2,7 +2,7 @@
 type: method
 tags: [rl, locomotion, policy-optimization, model-free]
 status: complete
-updated: 2026-07-01
+updated: 2026-07-02
 related:
   - ../concepts/humanoid-policy-network-architecture.md
   - ../concepts/deep-rl-game-milestones.md
@@ -197,7 +197,7 @@ flowchart LR
 
 ## 参考来源
 - [sources/papers/intentional_streaming_rl.md](../../sources/papers/intentional_streaming_rl.md) — 流式 RL 意图更新（Intentional TD / PG）ingest 档案
-- [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
+- [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — 高动态武术 tracking+recovery（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 
 - Sutton & Barto, *Reinforcement Learning: An Introduction* — RL 标准教材，MDP 框架基础
 - Schulman et al., *Proximal Policy Optimization Algorithms* — 机器人领域最常用的 policy gradient 算法

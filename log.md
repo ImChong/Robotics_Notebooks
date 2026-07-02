@@ -1,6 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
-## [2026-07-02] ingest | sources/sites/autodl.md、sources/sites/gpufree.md — AutoDL 与算力自由 GPU 云入库；wiki/entities/autodl.md、wiki/entities/gpufree.md、wiki/comparisons/autodl-vs-gpufree.md；交叉更新 wiki/entities/isaac-lab.md、wiki/queries/simulator-selection-guide.md
+## [2026-07-02] ingest | sources/sites/matpool.md、featurize.md、gpushare.md、ai-galaxy.md — 扩展国内 GPU 云平台实体；wiki/comparisons/china-gpu-cloud-platforms.md 统一选型对比；移除 autodl-vs-gpufree
+
+## [2026-07-02] ingest | sources/sites/autodl.md、sources/sites/gpufree.md — AutoDL 与算力自由 GPU 云入库；wiki/entities/autodl.md、wiki/entities/gpufree.md；交叉更新 wiki/entities/isaac-lab.md、wiki/queries/simulator-selection-guide.md
+
+## [2026-07-02] ingest | sources/papers/kung_fu_athlete_bot.md — KungFuAthleteBot 高动态武术数据集与 tracking+recovery；wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md、wiki/comparisons/humanoid-reference-motion-datasets.md、wiki/tasks/balance-recovery.md
 
 ## [2026-07-02] ingest | sources/papers/humanoidmimicgen_arxiv_2605_27724.md — HumanoidMimicGen 全身规划 loco-manip 合成示范；wiki/entities/paper-humanoidmimicgen.md、wiki/tasks/loco-manipulation.md
 

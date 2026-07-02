@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1538,
-  "edge_count": 10474,
+  "node_count": 1543,
+  "edge_count": 10533,
   "coverage": {
-    "covered": 1507,
-    "total": 1536,
+    "covered": 1512,
+    "total": 1541,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
+      "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
+      "label": "国内 GPU 云平台选型（机器人学习与仿真）",
+      "type": "comparison",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/autodl.md",
       "detail_id": "entity-autodl",
@@ -25,14 +33,6 @@
       "source": "log.md"
     },
     {
-      "path": "wiki/comparisons/autodl-vs-gpufree.md",
-      "detail_id": "wiki-comparisons-autodl-vs-gpufree",
-      "label": "AutoDL vs 算力自由（国内 GPU 云租卡选型）",
-      "type": "comparison",
-      "recency": "2026-07-02",
-      "source": "log.md"
-    },
-    {
       "path": "wiki/entities/isaac-lab.md",
       "detail_id": "entity-isaac-lab",
       "label": "Isaac Lab",
@@ -45,6 +45,30 @@
       "detail_id": "wiki-queries-simulator-selection-guide",
       "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
       "type": "query",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md",
+      "detail_id": "entity-paper-kungfuathlete-humanoid-martial-arts-tracking",
+      "label": "KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/comparisons/humanoid-reference-motion-datasets.md",
+      "detail_id": "wiki-comparisons-humanoid-reference-motion-datasets",
+      "label": "人形参考运动与操作数据集选型",
+      "type": "comparison",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/tasks/balance-recovery.md",
+      "detail_id": "wiki-tasks-balance-recovery",
+      "label": "Balance Recovery（平衡恢复）",
+      "type": "task",
       "recency": "2026-07-02",
       "source": "log.md"
     },
@@ -143,37 +167,13 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md",
-      "detail_id": "entity-paper-notebook-a-hierarchical-model-based-system-for-high-perfo",
-      "label": "ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con.md",
-      "detail_id": "entity-paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con",
-      "label": "A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md",
-      "detail_id": "entity-paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by",
-      "label": "A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/autodl.md",
-    "detail_id": "entity-autodl",
-    "label": "AutoDL",
-    "type": "entity",
+    "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
+    "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
+    "label": "国内 GPU 云平台选型（机器人学习与仿真）",
+    "type": "comparison",
     "recency": "2026-07-02",
     "source": "log.md"
   }

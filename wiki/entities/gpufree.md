@@ -5,7 +5,11 @@ status: complete
 updated: 2026-07-02
 related:
   - ./autodl.md
-  - ../comparisons/autodl-vs-gpufree.md
+  - ./matpool.md
+  - ./featurize.md
+  - ./gpushare.md
+  - ./ai-galaxy.md
+  - ../comparisons/china-gpu-cloud-platforms.md
   - ./isaac-lab.md
   - ./isaac-gym-isaac-lab.md
   - ../methods/reinforcement-learning.md
@@ -89,7 +93,7 @@ flowchart TB
 ## 与其他页面的关系
 
 - [AutoDL](./autodl.md) — 同类国内 GPU 云；社区文档与镜像生态更成熟
-- [autodl-vs-gpufree](../comparisons/autodl-vs-gpufree.md) — 并列选型
+- [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 六平台并列对比
 - [Isaac Lab](./isaac-lab.md) — 常见高算力 + 图形仿真栈
 - [Isaac Gym / Isaac Lab 总览](./isaac-gym-isaac-lab.md) — GPU 并行仿真背景
 - [仿真选型指南](../queries/simulator-selection-guide.md) — 框架与算力协同决策

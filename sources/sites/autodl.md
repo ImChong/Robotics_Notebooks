@@ -13,7 +13,7 @@
 
 - **机器人学习常见算力入口**：本库旧版资源地图与 `sources/train.md` 已列出 AutoDL；Isaac Lab / 大规模 PPO 训练常需 **24GB+ 显存 × 多卡**，个人工作站不足时云实例是现实选项。
 - **文档体系成熟**：官方帮助文档覆盖快速开始、GPU 选型、计费、数据上传、VSCode/PyCharm 远程、守护进程与实例保留策略，适合作为「如何租卡跑训练」的操作参考。
-- **与 GPUFree 对照**：同属国内按需 GPU 云，但镜像生态、存储路径、会员与区域布局不同；选型见 [autodl-vs-gpufree](../../wiki/comparisons/autodl-vs-gpufree.md)。
+- 统一选型：[china-gpu-cloud-platforms.md](../../wiki/comparisons/china-gpu-cloud-platforms.md)
 
 ## 平台要点（文档 2026-07 摘录）
 
@@ -55,5 +55,5 @@
 ## 对 wiki 的映射
 
 - 实体页：[autodl.md](../../wiki/entities/autodl.md)
-- 选型对比：[autodl-vs-gpufree.md](../../wiki/comparisons/autodl-vs-gpufree.md)
+- 统一选型：[china-gpu-cloud-platforms.md](../../wiki/comparisons/china-gpu-cloud-platforms.md)
 - 交叉：[isaac-lab.md](../../wiki/entities/isaac-lab.md)、[robot-training-stack-layers-technology-map.md](../../wiki/overview/robot-training-stack-layers-technology-map.md)

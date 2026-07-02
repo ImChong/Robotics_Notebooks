@@ -3,7 +3,7 @@ title: Motion Retargeting（动作重定向）
 type: concept
 status: complete
 created: 2026-04-14
-updated: 2026-07-01
+updated: 2026-07-02
 summary: 将人类或动物参考动作映射到异构机器人骨架上，在保留运动风格和语义的同时满足机器人的关节限制和动力学约束。
 ---
 
@@ -200,7 +200,7 @@ Motion Retargeting 的质量直接决定 AMP 能学到多自然的动作。
 ---
 
 ## 参考来源
-- [KungFuAthleteBot](../../sources/papers/kung_fu_athlete_bot.md)
+- [KungFuAthleteBot](../entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md) — GVHMR→GMR 根高度抛物线校正（[source](../../sources/papers/kung_fu_athlete_bot.md)）
 - [Chasing Autonomy: Dynamic Retargeting and Control Guided RL for Performant and Controllable Humanoid Running](../../sources/papers/chasing_autonomy.md)
 
 - Peng et al., *AMP: Adversarial Motion Priors for Style-Preserving Physics-Based Character Control* (2021) — AMP 中的 motion retargeting 应用

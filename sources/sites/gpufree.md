@@ -57,5 +57,5 @@
 ## 对 wiki 的映射
 
 - 实体页：[gpufree.md](../../wiki/entities/gpufree.md)
-- 选型对比：[autodl-vs-gpufree.md](../../wiki/comparisons/autodl-vs-gpufree.md)
+- 统一选型：[china-gpu-cloud-platforms.md](../../wiki/comparisons/china-gpu-cloud-platforms.md)
 - 交叉：[isaac-lab.md](../../wiki/entities/isaac-lab.md)、[queries/simulator-selection-guide.md](../../wiki/queries/simulator-selection-guide.md)
