@@ -3,10 +3,11 @@
 type: entity
 tags: [repo, vslam, vio, visual-slam, research, eth]
 status: complete
-updated: 2026-05-27
+updated: 2026-07-02
 related:
   - ../comparisons/lidar-slam-lio-vio-selection.md
   - ../entities/vins-fusion.md
+  - ../entities/paper-vs-graphs-visual-slam-scene-graph.md
   - ../overview/navigation-slam-autonomy-stack.md
 sources:
   - ../../sources/repos/orb_slam3.md
