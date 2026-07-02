@@ -217,7 +217,7 @@
 |---|------|-----------|
 | 146 | AgiBot World Colosseo | [paper-loco-manip-161-146-agibot-world-colosseo](../../wiki/entities/paper-loco-manip-161-146-agibot-world-colosseo.md) |
 | 147 | DIAL | [paper-loco-manip-161-147-dial](../../wiki/entities/paper-loco-manip-161-147-dial.md) |
-| 148 | GR00T N1 | [paper-loco-manip-161-148-gr00t-n1](../../wiki/entities/paper-loco-manip-161-148-gr00t-n1.md) |
+| 148 | GR00T N1 | [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md) |
 | 149 | Gemini Robotics | [paper-loco-manip-161-149-gemini-robotics](../../wiki/entities/paper-loco-manip-161-149-gemini-robotics.md) |
 | 150 | Genie Envisioner | [paper-loco-manip-161-150-genie-envisioner](../../wiki/entities/paper-loco-manip-161-150-genie-envisioner.md) |
 | 151 | LEGS | [paper-loco-manip-161-151-legs](../../wiki/entities/paper-loco-manip-161-151-legs.md) |

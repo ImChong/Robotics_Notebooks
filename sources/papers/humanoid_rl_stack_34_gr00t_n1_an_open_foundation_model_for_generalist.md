@@ -6,7 +6,8 @@
 - **类型：** paper
 - **系统栈层：** 04 视觉闭环 · 任务接口 · 世界模型
 - **机构：** NVIDIA 等
-- **项目/论文链接：** <https://github.com/NVIDIA/Isaac-GR00T>
+- **项目/论文链接：** <https://arxiv.org/abs/2503.14734> · <https://github.com/NVIDIA/Isaac-GR00T>
+- **官方白皮书：** <https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf>
 - **索引来源：** [具身智能研究室 · 42 篇 RL 运动控制长文](../blogs/wechat_embodied_ai_lab_humanoid_rl_motion_survey.md)（<https://mp.weixin.qq.com/s/hz9JXtJeUPRfUGzfD-pZuA>）
 - **原始抓取：** [wechat_humanoid_rl_42_survey_2026-05-26.md](../raw/wechat_humanoid_rl_42_survey_2026-05-26.md)（Agent Reach + Camoufox）
 - **入库日期：** 2026-05-26
@@ -20,7 +21,8 @@
 
 ## 对 wiki 的映射
 
-  - [gr00t-wholebodycontrol](../../wiki/entities/gr00t-wholebodycontrol.md)
+  - [paper-hrl-stack-34-gr00t_n1](../../wiki/entities/paper-hrl-stack-34-gr00t_n1.md)
+  - [gr00t_n1_arxiv_2503_14734.md](./gr00t_n1_arxiv_2503_14734.md)
 
 ## 参考来源（原始）
 
