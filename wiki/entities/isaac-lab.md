@@ -3,7 +3,7 @@
 type: entity
 tags: [entity, simulator, isaac, isaac-sim, gpu-simulation, reinforcement-learning, sim2real, nvidia]
 status: stable
-updated: 2026-06-29
+updated: 2026-07-02
 related:
   - ./isaac-gym-isaac-lab.md
   - ./isaac-gym.md
@@ -17,6 +17,13 @@ related:
   - ../tasks/locomotion.md
   - ../entities/paper-chord-contact-wrench-dexterous-manipulation.md
   - ../concepts/sim2real.md
+  - ./autodl.md
+  - ./gpufree.md
+  - ./matpool.md
+  - ./featurize.md
+  - ./gpushare.md
+  - ./ai-galaxy.md
+  - ../comparisons/china-gpu-cloud-platforms.md
 sources:
   - ../../sources/courses/nvidia_sim_to_real_so101_isaac.md
   - ../../sources/papers/simulation_tools.md
@@ -164,6 +171,10 @@ Isaac Lab 是 RL 训练的现代「基础设施层」，把环境、观测、奖
 它提供仿真训练和 domain randomization 的主要工作台，但 sim2real 成功与否还取决于状态估计、系统辨识、执行器建模、观测延迟等。
 
 见：[Sim2Real](../concepts/sim2real.md)
+
+### 和云 GPU 算力的关系
+
+本地工作站缺多卡或大显存时，可用国内 GPU 容器云租开发机跑 Lab 训练；须区分 **headless 训练** 与 **带 GUI 的 Omniverse 仿真**（后者需要带 **RT 核心** 的 GPU 与桌面/Vulkan 镜像）。选型见 [国内 GPU 云平台对比](../comparisons/china-gpu-cloud-platforms.md)。
 
 ## 常见误区
 

@@ -1,13 +1,53 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1536,
-  "edge_count": 10463,
+  "node_count": 1543,
+  "edge_count": 10533,
   "coverage": {
-    "covered": 1505,
-    "total": 1534,
+    "covered": 1512,
+    "total": 1541,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
+      "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
+      "label": "国内 GPU 云平台选型（机器人学习与仿真）",
+      "type": "comparison",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/autodl.md",
+      "detail_id": "entity-autodl",
+      "label": "AutoDL",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/gpufree.md",
+      "detail_id": "entity-gpufree",
+      "label": "算力自由（GPUFree）",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/entities/isaac-lab.md",
+      "detail_id": "entity-isaac-lab",
+      "label": "Isaac Lab",
+      "type": "entity",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
+    {
+      "path": "wiki/queries/simulator-selection-guide.md",
+      "detail_id": "wiki-queries-simulator-selection-guide",
+      "label": "Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis",
+      "type": "query",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md",
       "detail_id": "entity-paper-kungfuathlete-humanoid-martial-arts-tracking",
@@ -127,53 +167,13 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-hierarchical-model-based-system-for-high-perfo.md",
-      "detail_id": "entity-paper-notebook-a-hierarchical-model-based-system-for-high-perfo",
-      "label": "ARTEMIS：A Hierarchical, Model-Based System for High-Performance Humanoid Soccer",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con.md",
-      "detail_id": "entity-paper-notebook-a-humanoid-visual-tactile-action-dataset-for-con",
-      "label": "A Humanoid Visual-Tactile-Action Dataset for Contact-Rich Manipulation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by.md",
-      "detail_id": "entity-paper-notebook-a-mobile-robot-hand-arm-teleoperation-system-by",
-      "label": "A Mobile Robot Hand-Arm Teleoperation System by Vision and IMU",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-systematic-study-of-data-modalities-and-strate.md",
-      "detail_id": "entity-paper-notebook-a-systematic-study-of-data-modalities-and-strate",
-      "label": "A Systematic Study of Data Modalities and Strategies for Co-training Large Behavior Models for Robot Manipulation",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-whole-body-motion-imitation-framework-from-hum.md",
-      "detail_id": "entity-paper-notebook-a-whole-body-motion-imitation-framework-from-hum",
-      "label": "A Whole-Body Motion Imitation Framework from Human Data for Full-Size Humanoid Robot",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/entities/paper-kungfuathlete-humanoid-martial-arts-tracking.md",
-    "detail_id": "entity-paper-kungfuathlete-humanoid-martial-arts-tracking",
-    "label": "KungFuAthleteBot（KungFuAthlete Dataset + Fall-Resilient Tracking）",
-    "type": "entity",
+    "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
+    "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
+    "label": "国内 GPU 云平台选型（机器人学习与仿真）",
+    "type": "comparison",
     "recency": "2026-07-02",
     "source": "log.md"
   }
