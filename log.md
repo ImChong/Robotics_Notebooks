@@ -1,5 +1,10 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] ingest | sources/papers/gr00t_n1_arxiv_2503_14734.md — 基于 arXiv:2503.14734 与 NVIDIA 白皮书深化 GR00T N1 canonical 实体页
+
+- 论文源：[arXiv:2503.14734](https://arxiv.org/abs/2503.14734)、[GR00T_1_Whitepaper.pdf](https://d1qx31qr3h6wln.cloudfront.net/publications/GR00T_1_Whitepaper.pdf)
+- wiki：[paper-hrl-stack-34-gr00t_n1.md](wiki/entities/paper-hrl-stack-34-gr00t_n1.md) — 补充双系统架构、数据金字塔、GR00T-N1-2B 规格与仿真/真机量化评测
+
 ## [2026-07-02] structural | wiki/entities/paper-hrl-stack-34-gr00t_n1.md — 合并 GR00T N1 重复实体页（原 paper-loco-manip-161-148-gr00t-n1 与 paper-hrl-stack-34-gr00t_n1）；更新 Loco-Manip 161 catalog、category-09 hub、paper-grail 交叉引用与 bootstrap_loco_manip_161_entities CANONICAL_ENTITY_BY_NUM
 
 - 删除：`wiki/entities/paper-loco-manip-161-148-gr00t-n1.md`
