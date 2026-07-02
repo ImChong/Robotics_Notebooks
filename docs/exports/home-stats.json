@@ -1,13 +1,21 @@
 {
   "generated_at": "2026-07-02",
-  "node_count": 1543,
-  "edge_count": 10533,
+  "node_count": 1550,
+  "edge_count": 10579,
   "coverage": {
-    "covered": 1512,
-    "total": 1541,
+    "covered": 1519,
+    "total": 1548,
     "percent": 98
   },
   "latest_wiki_nodes": [
+    {
+      "path": "wiki/comparisons/international-gpu-cloud-platforms.md",
+      "detail_id": "wiki-comparisons-international-gpu-cloud-platforms",
+      "label": "国外 GPU 云平台选型（机器人学习与仿真）",
+      "type": "comparison",
+      "recency": "2026-07-02",
+      "source": "log.md"
+    },
     {
       "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
       "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
@@ -159,20 +167,12 @@
       "type": "entity",
       "recency": "2026-07-01",
       "source": "log.md"
-    },
-    {
-      "path": "wiki/entities/paper-notebook-a-hierarchical-framework-for-humanoid-locomotion.md",
-      "detail_id": "entity-paper-notebook-a-hierarchical-framework-for-humanoid-locomotion",
-      "label": "A Hierarchical Framework for Humanoid Locomotion with Supernumerary Limbs",
-      "type": "entity",
-      "recency": "2026-07-01",
-      "source": "log.md"
     }
   ],
   "latest_wiki_node": {
-    "path": "wiki/comparisons/china-gpu-cloud-platforms.md",
-    "detail_id": "wiki-comparisons-china-gpu-cloud-platforms",
-    "label": "国内 GPU 云平台选型（机器人学习与仿真）",
+    "path": "wiki/comparisons/international-gpu-cloud-platforms.md",
+    "detail_id": "wiki-comparisons-international-gpu-cloud-platforms",
+    "label": "国外 GPU 云平台选型（机器人学习与仿真）",
     "type": "comparison",
     "recency": "2026-07-02",
     "source": "log.md"

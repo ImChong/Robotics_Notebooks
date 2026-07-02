@@ -29,7 +29,13 @@ related:
   - ../entities/matpool.md
   - ../entities/featurize.md
   - ../entities/gpushare.md
-  - ../entities/ai-galaxy.md
+  - ../comparisons/international-gpu-cloud-platforms.md
+  - ../entities/runpod.md
+  - ../entities/vast-ai.md
+  - ../entities/lambda-cloud.md
+  - ../entities/google-colab.md
+  - ../entities/aws-ec2-gpu.md
+  - ../entities/google-cloud-gpu.md
 ---
 
 # Locomotion RL 仿真器选型指南：MuJoCo vs Isaac Lab vs Genesis
@@ -48,7 +54,8 @@ related:
 | 缩短想法→真机验证墙钟（MJX 生态） | **MuJoCo Playground** |
 | 无 CUDA / CPU 物理 + GPU 学习异构 | **UniLab** |
 | 跨项目理解「谁在跟谁竞争」 | 先读 **[训练栈分层地图](../overview/robot-training-stack-layers-technology-map.md)** |
-| 本地缺 GPU / 多卡，需租国内云算力 | 见 [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md)（AutoDL / 算力自由 / 矩池云 / Featurize / 恒源云 / 智星云） |
+| 本地缺 GPU / 多卡，需租国内云算力 | 见 [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) |
+| 海外数据栈 / 无法用国内平台 | 见 [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md) |
 
 ---
 
@@ -232,4 +239,5 @@ related:
 - [UniLab](../entities/unilab.md) — CPU 批量仿真 + GPU 学习的异构机器人 RL 训练栈
 - [ppf-contact-solver](../entities/ppf-contact-solver.md) — 可变形 shell/solid/rod 离线 GPU 接触求解
 - [SPEAR](../entities/spear-sim.md) — UE 通用可编程光真实感与 GT 合成数据后端
-- [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 六平台租卡对比
+- [国内 GPU 云平台选型](../comparisons/china-gpu-cloud-platforms.md) — 六平台国内租卡对比
+- [国外 GPU 云平台选型](../comparisons/international-gpu-cloud-platforms.md) — RunPod / Vast / Lambda / Colab / AWS / GCP
