@@ -1,5 +1,7 @@
 > 核心规范：所有日常动作（ingest / query / lint / structural）必须追加记录到此文件。
 
+## [2026-07-02] lint | scripts/lint_wiki.py 新增 `_check_contact_control_crosslink`（V27 P0）——接触/力控/操作概念页交叉链路巡检 V1，INFO 级不阻塞 CI，回链「接触力旋量闭环」枢纽（contact-wrench-closed-loop / topic-contact-force-control）；新增 tests/test_lint_wiki_contact_control_crosslink.py（7 例）；刷新 exports/lint-report.md 基线（10 页 backlog，0 errors）
+
 ## [2026-07-02] ingest | sources/papers/flying_knots_arxiv_2602_21302.md — Flying Knots Task-Level ILC 可变形绳操作；wiki/entities/paper-flying-knots.md、wiki/entities/flying-knots-public.md；交叉更新 manipulation、contact-rich-manipulation
 
 ## [2026-07-02] ingest | sources/repos/robot_retargeter.md — robot_retargeter SMPL-X/多机型 mink 重定向；wiki/entities/robot-retargeter.md；交叉更新 motion-retargeting、motion-retargeting-pipeline、soma-retargeter、amass
